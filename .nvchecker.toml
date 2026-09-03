@@ -1,0 +1,5 @@
+[tdocker-bin]
+source = "github"
+github = "pivovarit/tdocker"
+use_latest_release = true
+prefix = "v"

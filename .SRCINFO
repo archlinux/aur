@@ -1,0 +1,22 @@
+pkgbase = tdocker-bin
+	pkgdesc = A minimalistic terminal UI for everyday Docker operations
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/pivovarit/tdocker
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = docker
+	provides = tdocker
+	conflicts = tdocker
+	options = !strip
+	source = README-0.7.2.md::https://raw.githubusercontent.com/pivovarit/tdocker/v0.7.2/README.md
+	source = LICENSE-0.7.2::https://raw.githubusercontent.com/pivovarit/tdocker/v0.7.2/LICENSE
+	sha256sums = df5270010006801533fb4c9509d935931bc1cbc21cd317a346aab182658a3115
+	sha256sums = c99e2d2188bf75fa969cc9bc0d60e383785b0cc55d4dfc5ccf859ebe069f134e
+	source_x86_64 = tdocker-x86_64-0.7.2::https://github.com/pivovarit/tdocker/releases/download/v0.7.2/tdocker_linux_amd64
+	sha256sums_x86_64 = 321b1fbc1b83f252ae0a7e0cd643be0325fa784bae7d118ede031a3856c0f40e
+	source_aarch64 = tdocker-aarch64-0.7.2::https://github.com/pivovarit/tdocker/releases/download/v0.7.2/tdocker_linux_arm64
+	sha256sums_aarch64 = 1bce59f263e2974323b23df477a0ea8c7ee55409a197b740b7f989364771b1e2
+
+pkgname = tdocker-bin
