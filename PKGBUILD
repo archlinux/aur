@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 source=("https://github.com/ArashPartow/exprtk/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('f9dec6975e86c702033d6a65ba9a0368eba31a61b89d74f2b5d24457c02c8439')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 package() {
   cd "$srcdir/exprtk-${pkgver}"
