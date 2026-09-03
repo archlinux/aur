@@ -1,6 +1,6 @@
 # Maintainer: skint007 <archlinux.repose742@passmail.net>
 pkgname=yay-sys-tray-bin
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="Arch Linux system tray update checker using yay (prebuilt binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('yay-sys-tray' 'yay-sys-tray-git')
 install=yay-sys-tray-bin.install
 source=("yay-sys-tray-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/yay-sys-tray-${pkgver}-x86_64.tar.gz")
 # Checksum is recomputed and stamped by the release CI (build.yml -> aur-bin job).
-sha256sums=('6f4363dacf44b5007f6c4ed08b9c1a0e0857d5fa45702cc196815a9261eabdc1')
+sha256sums=('94d3355bb4bf8e22c67768b2eec3884374ff9d96a8d4108bf3881863beca4a5c')
 
 package() {
     install -Dm755 "${srcdir}/yay-sys-tray" "${pkgdir}/usr/bin/yay-sys-tray"
