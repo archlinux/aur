@@ -1,6 +1,6 @@
 # Maintainer: Thomas Butler <goliyth@gmail.com>
 pkgname=hyprmural
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Per-workspace wallpaper tool for Hyprland (multi-output, layer-shell, GLES2)"
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ optdepends=(
   'imagemagick: convenience for generating test wallpapers'
 )
 source=("hyprmural-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0c658de4e4b7cce99f329caa14eb9a99bb4c7b3ec0879b1a8ca977757daa4144')
+sha256sums=('3a4de1a816ebe9fa0f4b985151259d1b8db5a2d21da69fb60e5e655d314b44e2')
 
 build() {
   cd "${srcdir}/hyprmural-${pkgver}"
