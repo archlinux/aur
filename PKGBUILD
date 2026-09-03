@@ -2,8 +2,8 @@
 
 pkgname=python-qsnctf
 _name=${pkgname#python-}
-pkgver=0.0.9.3
-pkgrel=5
+pkgver=0.0.10
+pkgrel=1
 epoch=
 pkgdesc="青少年 CTF 训练平台提供的 Python 软件包"
 arch=('any')
@@ -37,7 +37,7 @@ install=
 changelog=
 source=("${_name}::git+${url}.git#tag=v$pkgver")
 noextract=()
-sha256sums=('f6ef992736b90feebf2b1d6880cfe48cc315fbcea3e7fb4a16ad2e93a5f38483')
+sha256sums=('42613966b2cf5ae704a7ee75690040543ed85ea1b6fed10e186357e3e4b7d6d2')
 #validpgpkeys=()
 
 prepare() {
