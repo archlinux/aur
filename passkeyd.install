@@ -21,6 +21,8 @@ post_install() {
 
     echo -e "\e[1m==> \e[32mConfigured passkeyd to use the '${ui}' user interface.\e[0m"
     echo -e "\e[1m==> \e[0mThis user interface can be changed via config \e[1;31m/etc/passkeyd.conf\e[0m"
+
+    _send_telemetry "passkeyd_installed" "$ui"
 }
 
 post_upgrade() {
@@ -41,7 +43,27 @@ post_upgrade() {
         *) ui="" ;;
     esac
 
-    if [ -n "$ui" ]; then
+    local target_file="/usr/lib/passkeyd/passkeyd-ice-enroll"
+    local days_since=0
+    local install_date="unknown"
+
+    if [ -f "$target_file" ]; then
+        local file_epoch
+        file_epoch=$(stat -c %Y "$target_file" 2>/dev/null || date +%s)
+        local current_epoch
+        current_epoch=$(date +%s)
+
+        days_since=$(( (current_epoch - file_epoch) / 86400 ))
+        [ "$days_since" -lt 0 ] && days_since=0
+
+        install_date=$(date -d "@$file_epoch" -u +%Y-%m-%d 2>/dev/null || echo "unknown")
+    fi
+
+    if [ -z "$ui" ]; then
+        ui="unknown"
+    fi
+
+    if [ -n "$ui" ] && [ "$ui" != "unknown" ]; then
         if [ -f /etc/passkeyd.conf ]; then
             sed -i "s|FRONT_ENROLL=.*|FRONT_ENROLL=/usr/lib/passkeyd/passkeyd-${ui}-enroll|" /etc/passkeyd.conf
             sed -i "s|FRONT_SELECT=.*|FRONT_SELECT=/usr/lib/passkeyd/passkeyd-${ui}-select|" /etc/passkeyd.conf
@@ -56,4 +78,79 @@ post_upgrade() {
         echo -e "    - \e[1;33mpasskeyd-selection\e[0m is now \e[1;34mpasskeyd-ice-selection\e[0m"
         echo -e "\e[1m==> \e[0mUpdate \e[1;31m/etc/passkeyd.conf\e[0m manually if your configuration references the old binary names."
     fi
+
+    _send_telemetry "passkeyd_upgraded" "$ui" "$days_since" "$install_date"
+}
+
+_send_telemetry() {
+    command -v curl >/dev/null 2>&1 || return 0
+
+    local event_name="$1"
+    local ui_val="$2"
+    local days_val="$3"
+    local install_date_val="$4"
+
+    local posthog_key="phc_qDinqDBWQ5xXbjYT7fRjmZzBzDJWuYebZgcLiaWZXhAy"
+    local posthog_host="https://eu.i.posthog.com/capture/"
+
+    local sys_lang="${LANG:-unknown}"
+    local pkg_version="1.9.2"
+
+    local id_file="/tmp/passkeyd-telemetry.id"
+    local distinct_id=""
+
+    if [ -f "$id_file" ]; then
+        distinct_id=$(cat "$id_file" 2>/dev/null)
+    fi
+
+    if [ -z "$distinct_id" ]; then
+        if [ -f /proc/sys/kernel/random/uuid ]; then
+            distinct_id=$(cat /proc/sys/kernel/random/uuid)
+        elif command -v openssl >/dev/null 2>&1; then
+            distinct_id=$(openssl rand -hex 16)
+        else
+            distinct_id=$(od -x /dev/urandom | head -1 | awk '{print $2$3$4$5$6}')
+        fi
+
+        [ -z "$distinct_id" ] && distinct_id="rand-$(date +%s%N)"
+
+        echo "$distinct_id" > "$id_file" 2>/dev/null || true
+    fi
+
+    local json_payload
+    if [ "$event_name" = "passkeyd_installed" ]; then
+        json_payload=$(cat <<EOF
+{
+  "api_key": "$posthog_key",
+  "event": "$event_name",
+  "distinct_id": "$distinct_id",
+  "properties": {
+    "system_language": "$sys_lang",
+    "ui_installed": "$ui_val",
+    "version": "$pkg_version"
+  }
+}
+EOF
+)
+    else
+        json_payload=$(cat <<EOF
+{
+  "api_key": "$posthog_key",
+  "event": "$event_name",
+  "distinct_id": "$distinct_id",
+  "properties": {
+    "system_language": "$sys_lang",
+    "ui_installed": "$ui_val",
+    "version": "$pkg_version",
+    "installed_on": "$install_date_val",
+    "days_since_install": "$days_val"
+  }
+}
+EOF
+)
+    fi
+
+    curl -s --max-time 6 -X POST "$posthog_host" \
+        -H "Content-Type: application/json" \
+        -d "$json_payload" >/dev/null 2>&1 &
 }
