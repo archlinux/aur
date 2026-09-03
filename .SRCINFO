@@ -1,7 +1,7 @@
 pkgbase = zg
 	pkgdesc = Local-first search across your workspace, built for humans and AI agents
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zvec-ai/zvec-grep
 	arch = x86_64
 	arch = aarch64
