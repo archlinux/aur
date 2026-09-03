@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-common5
-pkgver=5.8.0
+pkgver=5.9.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -29,7 +29,7 @@ makedepends=(
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
         "https://github.com/gazebosim/${_pkgbase}/pull/672.patch")
-sha256sums=('777503f584f8691bfb62826ecb5a7a6d42571822a446916a17729e229e0004cf'
+sha256sums=('919f8f84a19d262daaaf6d08d61d7966b9522ba99faff77c29d2b43a355ffb82'
             '923fb973b93b0e71f814bf499ddf29d6412a82d4ba768eeb3efaefcaea1d9fff')
 
 prepare() {
