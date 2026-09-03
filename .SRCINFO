@@ -1,6 +1,6 @@
 pkgbase = gitkraken
 	pkgdesc = The intuitive, fast, and beautiful cross-platform Git client.
-	pkgver = 12.4.0
+	pkgver = 12.4.1
 	pkgrel = 1
 	url = https://www.gitkraken.com/
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = gitkraken
 	sha256sums = 4342596839114228740e5d61cdc49fbe9e98d05d1aabe2694ffe9d48ffd4082e
 	sha256sums = 4b3eaf932b79e8f1d6a6a6efd030e73cb544d3d0fbe6bf7b61b884f4c6042b0a
 	sha256sums = 5b7b39b331bc32a606e1e79c695df4519c9b220225be00fb34ef368c3af319a6
-	source_x86_64 = gitkraken-12.4.0-x86_64.tar.gz::https://api.gitkraken.dev/releases/production/linux/x64/12.4.0/gitkraken-amd64.tar.gz
-	sha256sums_x86_64 = 7f7e56b5bf345c1da3bcc3ff4f50bf51bf8292399f471e5c5bc2213bfafefb4d
-	source_aarch64 = gitkraken-12.4.0-aarch64.tar.gz::https://api.gitkraken.dev/releases/production/linux/arm64/12.4.0/gitkraken-aarch64.tar.gz
-	sha256sums_aarch64 = 66d6d7cc158187074afd0d6933a1636a7c15c14f9c0404e7c45599f3c9cad3e9
+	source_x86_64 = gitkraken-12.4.1-x86_64.tar.gz::https://api.gitkraken.dev/releases/production/linux/x64/12.4.1/gitkraken-amd64.tar.gz
+	sha256sums_x86_64 = 344276052482d68d334fc9535fb681a5600e5658f1a962f04ea09a200fd42ea4
+	source_aarch64 = gitkraken-12.4.1-aarch64.tar.gz::https://api.gitkraken.dev/releases/production/linux/arm64/12.4.1/gitkraken-aarch64.tar.gz
+	sha256sums_aarch64 = 7b94b6681ace919d494848eab45b1177cc432ecdf57c6713d4ab22bc0b9d9bce
 
 pkgname = gitkraken
