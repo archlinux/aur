@@ -1,6 +1,6 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 pkgname=dbx
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Open-source database management tool (Tauri-based)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ conflicts=("$pkgname-bin")
 # empty and gdb-add-index errors out. Skip the debug subpackage entirely.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('16485edcd028426f4498ef79dc525d665775236271c927c011145776310b6d82')
+sha256sums=('2348fd6c332c4a4f3f522f70e7f74372babaf8c835c984dc95109fa9e7ebc299')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -52,7 +52,15 @@ prepare() {
       p.pnpm.onlyBuiltDependencies = [...new Set([...cur, "vue-demi"])];
       fs.writeFileSync("package.json", JSON.stringify(p, null, 2) + "\n");
     '
-
+    # Upstream opts into openssl's vendored feature. Use the declared system
+    # dependency instead: vendoring embeds its temporary $srcdir install path
+    # in the final binary.
+    sed -i 's/openssl = { version = "0.10", features = \["vendored"\] }/openssl = "0.10"/' \
+        crates/dbx-core/Cargo.toml
+    # The release binary must not retain a build-workspace fallback path.
+    # It is only useful to upstream developers and contains $srcdir via
+    # env!("CARGO_MANIFEST_DIR").
+    sed -i '/CARGO_MANIFEST_DIR/,+2d' crates/dbx-core/src/agent_service.rs
     # Pre-fetch JS and Rust deps so build() can run without network.
     pnpm install --frozen-lockfile
     (
@@ -66,14 +74,6 @@ build() {
 
     export CARGO_HOME="$srcdir/.cargo"
     export RUSTUP_TOOLCHAIN=stable
-
-    # ponytail: upstream's default `sqlite-sqlcipher` feature builds rusqlite
-    # with `bundled-sqlcipher-vendored-openssl` — sqlcipher + openssl compiled
-    # statically in-tree, no system lib needed. The old
-    # LIBSQLITE3_SYS_USE_PKG_CONFIG=1 (added for the since-removed sqlx dep)
-    # forced pkg-config mode, making the linker look for a system -lsqlcipher
-    # that isn't there. Dropped so the bundled build runs as upstream intends.
-
     # Disable LTO. With lto="thin" (set in workspace Cargo.toml) plus rust-lld,
     # native static libs from build scripts (aws-lc-sys, ring, etc.) end up
     # with undefined symbols at final link. Disabling LTO restores normal
