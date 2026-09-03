@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.111.19
+pkgver=0.112.10
 _electronversion=43
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)"
@@ -31,9 +31,9 @@ source=(
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('303d5f2500d3645d7afb70f08dc216bddfed3520c30aacc696d2901239edfc78')
-sha256sums_armv7h=('7741ac4a7f09170c3bbba5dd2245fafb3f599d176f3362d1993c9a8a479ac156')
-sha256sums_x86_64=('9b4d72e91c4c3e8ac5c2548fff142432ebf7fffb2d7812f3bec5dec28e7438e4')
+sha256sums_aarch64=('15b69b1a897b73289b47fc4d98403fcc025c84b9577defea4613446b01860710')
+sha256sums_armv7h=('2ac1f7012d5694bc54c0c86e2c5a56053ba36e140de1361517b32216bf9d9785')
+sha256sums_x86_64=('d6640823a580766c5d1358ad46a35b6db0d8daa33b6b363bf6af179d04a0a2c1')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
