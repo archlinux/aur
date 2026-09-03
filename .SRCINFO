@@ -1,13 +1,13 @@
 pkgbase = storytel-player-bin
 	pkgdesc = A cross-platform desktop application for playing Storytel audiobooks
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/debba/storytel-player
 	arch = x86_64
 	license = custom
 	provides = storytel-player
 	conflicts = storytel-player
-	source = storytel-player_1.3.0_amd64.deb::https://github.com/debba/storytel-player/releases/download/v1.3.0/storytel-player_1.3.0_amd64.deb
-	sha256sums = b058f16463c21b50b85208ee018c9ab7bfb4f49e00064faa222dbaaf0054eda1
+	source = storytel-player_1.4.0_amd64.deb::https://github.com/debba/storytel-player/releases/download/v1.4.0/storytel-player_1.4.0_amd64.deb
+	sha256sums = 68688d9c0baacb2aebb8383cf5e140a18f6980ca00fb1a141041066e3cdff643
 
 pkgname = storytel-player-bin
