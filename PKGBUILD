@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Emulator for bunch of Soviet PCs. Git version"
 arch=('x86_64')
 url="https://emu80.org/"
-license=("GPL3")
+license=("GPL-3.0-or-later")
 depends=("qt6-base" "qt6-multimedia")
 makedepends=("base-devel")
 source=("${pkgname}::git+https://github.com/vpyk/emu80v4.git#commit=${_commit}" "shortcut.desktop")
