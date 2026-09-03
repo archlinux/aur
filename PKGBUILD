@@ -2,7 +2,7 @@
 
 pkgname=luadot-nightly
 _pkgname=luadot
-pkgver=0.1.0.nightly.16
+pkgver=0.1.0.nightly.17
 pkgrel=1
 pkgdesc='A dotfiles manager configured in Lua (nightly)'
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!lto' '!debug')
 _registry='https://gitlab.digitalventura.com.br/api/v4/projects/luadot%2Fluadot/packages/generic/luadot'
-_version=0.1.0-nightly.16
+_version=0.1.0-nightly.17
 _srcdir="$_pkgname-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$_registry/$_version/$_pkgname-$pkgver-src.tar.gz")
-sha256sums=('6f607c6fc2b60e12f9a1bea07a9a92d622b450f087ac95a4240c46ab0962582f')
+sha256sums=('b64752e2959ebbb44738c50808434b51bd6e8088a7fff8c550188cd54b0838aa')
 
 prepare() {
 	cd "$_srcdir"
