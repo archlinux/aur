@@ -1,4 +1,4 @@
-# Maintainer: piratecarrot
+# Maintainer: pineappletoad
 
 pkgname=gama-bin
 pkgver=2.33
