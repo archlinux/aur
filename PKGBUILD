@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qsoc-git
-pkgver=1.8.2.r1.gd33579c
+pkgver=1.9.4.r35.gd591093
 pkgrel=1
 epoch=
 pkgdesc="QSoC - Quick System on Chip Studio"
@@ -135,7 +135,7 @@ build() {
     cmake -D CMAKE_INSTALL_PREFIX=/usr \
         -D ENABLE_UNIT_TEST=OFF \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -Wno-dev \
+        -Wno-author \
         -B build \
         -G Ninja
         # -Wno-deprecated-declarations \
