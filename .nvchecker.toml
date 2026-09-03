@@ -1,0 +1,5 @@
+[lazynmap-bin]
+source = "github"
+github = "ruiiiijiiiiang/lazynmap"
+use_latest_release = true
+prefix = "v"

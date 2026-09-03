@@ -1,0 +1,21 @@
+pkgbase = lazynmap-bin
+	pkgdesc = Build complex nmap commands with an intuitive TUI
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/ruiiiijiiiiang/lazynmap
+	arch = x86_64
+	license = MIT
+	makedepends = patchelf
+	depends = glibc
+	depends = libgcc
+	provides = lazynmap
+	conflicts = lazynmap
+	options = !strip
+	source = README-0.1.3.md::https://raw.githubusercontent.com/ruiiiijiiiiang/lazynmap/v0.1.3/README.md
+	source = LICENSE-0.1.3::https://raw.githubusercontent.com/ruiiiijiiiiang/lazynmap/v0.1.3/LICENSE
+	sha256sums = b17b453a952e6900152d58c540fb15d6baa0c6d1bb2f2160cff8d0519afc1e96
+	sha256sums = 7e22db8d3b38510368e9801f5d7b34ce0cf4eb7067fed2e3b946c4039da29ac7
+	source_x86_64 = lazynmap-x86_64-0.1.3::https://github.com/ruiiiijiiiiang/lazynmap/releases/download/v0.1.3/lazynmap
+	sha256sums_x86_64 = 0604ddb92c2828a2e1dafec59a37f28f2db5e98ddb670d8d620b966ca40d5d9d
+
+pkgname = lazynmap-bin
