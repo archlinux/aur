@@ -1,0 +1,5 @@
+[wayoled]
+source = "github"
+github = "Youwes09/WayOLED"
+prefix = "v"
+use_max_tag = true
