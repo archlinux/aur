@@ -1,6 +1,6 @@
 pkgbase = knitcalc-bin
 	pkgdesc = Knitting calculator: gauge conversion, stitch counts, yarn estimation
-	pkgver = 1.9.1+105
+	pkgver = 1.9.2+106
 	pkgrel = 1
 	url = https://github.com/dmezhnov/knitcalc
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = knitcalc-bin
 	provides = knitcalc
 	conflicts = knitcalc
 	options = !strip
-	source = knitcalc-linux-x64-1.9.1+105.tar.gz::https://github.com/dmezhnov/knitcalc/releases/download/v1.9.1+105/knitcalc-linux-x64-1.9.1+105.tar.gz
-	source = LICENSE-1.9.1+105::https://raw.githubusercontent.com/dmezhnov/knitcalc/v1.9.1+105/LICENSE
-	sha256sums = 0eb9c24c60309df9bf28f5a3614ef160ce43e88dd7ab035fe5c581793aebaca6
+	source = knitcalc-linux-x64-1.9.2+106.tar.gz::https://github.com/dmezhnov/knitcalc/releases/download/v1.9.2+106/knitcalc-linux-x64-1.9.2+106.tar.gz
+	source = LICENSE-1.9.2+106::https://raw.githubusercontent.com/dmezhnov/knitcalc/v1.9.2+106/LICENSE
+	sha256sums = d98459bc630f710c1e9e568f9521379f476c29660469c520c4382eb2b55c22e8
 	sha256sums = bc7ab77d23df1698c15cf2736af95cd9d7ed522ee1671fa81a9b78659ab9761c
 
 pkgname = knitcalc-bin

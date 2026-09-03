@@ -4,7 +4,7 @@
 # makepkg is intentionally avoided. Rendered and pushed to the AUR by the
 # release workflow (see packaging/README.md).
 pkgname=knitcalc-bin
-pkgver=1.9.1+105
+pkgver=1.9.2+106
 pkgrel=1
 pkgdesc="Knitting calculator: gauge conversion, stitch counts, yarn estimation"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('knitcalc')
 options=('!strip')
 source=("knitcalc-linux-x64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/knitcalc-linux-x64-${pkgver}.tar.gz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/dmezhnov/knitcalc/v${pkgver}/LICENSE")
-sha256sums=('0eb9c24c60309df9bf28f5a3614ef160ce43e88dd7ab035fe5c581793aebaca6'
+sha256sums=('d98459bc630f710c1e9e568f9521379f476c29660469c520c4382eb2b55c22e8'
             'bc7ab77d23df1698c15cf2736af95cd9d7ed522ee1671fa81a9b78659ab9761c')
 
 package() {
