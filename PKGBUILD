@@ -2,13 +2,13 @@
 
 pkgname=vercel-node
 _pkgname=vercel
-pkgver=59.11.1
+pkgver=59.11.2
 pkgrel=1
 _tarver=7.5.22
 pkgdesc='Command-line interface for Vercel'
-# x86_64 only: the npm tree pulls platform-specific native payloads for the
-# Vercel CLI, esbuild, oxc-transform, and rolldown. Add other architectures
-# only after verifying that every required helper has a matching prebuilt.
+# x86_64 only: the resolved npm tree embeds platform-specific payloads for
+# Vercel's native CLI, esbuild, NAPI keyring, oxc parser/transform, and rolldown.
+# Add architectures only after validating each required prebuilt for that target.
 arch=('x86_64')
 url='https://vercel.com'
 license=('Apache-2.0')
@@ -20,7 +20,7 @@ conflicts=('vercel')
 options=('!strip')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('313b9e2778517054a580068c5ea44ea3737e5dbf86be7991550efe770a3a1fe6')
+sha256sums=('1b5f7e9632009b31e6be7c3979f0a6c7c078ba4ee07c2b404983b55071e89b06')
 
 package() {
     local _stagedir="${srcdir}/${_pkgname}-${pkgver}-stage"
@@ -31,9 +31,9 @@ package() {
         -C "${_stagedir}" \
         --strip-components 1
 
-    # The published runtime tree pins vulnerable tar 7.5.7 through
-    # @vercel/fun and @mapbox/node-pre-gyp. Install from a temporary root
-    # manifest so npm applies the security override to every dependency path.
+    # The published runtime tree still resolves vulnerable tar 7.5.7:
+    # @vercel/fun pins it, while @mapbox/node-pre-gyp accepts it via ^7.4.0.
+    # Keep the secure override applied to every dependency path.
     # Dev dependencies are temporarily removed because the published manifest
     # names private build-only packages. Restore them after resolving the
     # runtime tree, while retaining the override as installed package metadata.
