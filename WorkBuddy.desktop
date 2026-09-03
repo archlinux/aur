@@ -4,7 +4,40 @@ Exec=/usr/bin/workbuddy %U
 Terminal=false
 Type=Application
 Icon=workbuddy
-StartupWMClass=workbuddy
-Comment=WorkBuddy AI agents🦞
+StartupWMClass=WorkBuddy
+Comment=WorkBuddy Desktop - AI Agent Desktop Application
+MimeType=x-scheme-handler/workbuddy;
+Categories=Development;
+
 Comment[zh_CN]=腾讯云代码助手🦞
-Categories=Office;
+Actions=agentmail;discover;my-files;settings;skills
+
+[Desktop Action agentmail]
+Name=Agent Mail
+Name[zh_CN]=Agent 邮箱
+Exec=/usr/bin/workbuddy workbuddy://agentmail
+Icon=mail-mark-notjunk-symbolic
+
+[Desktop Action discover]
+Name=Inspiration
+Name[zh_CN]=灵感
+Exec=/usr/bin/workbuddy workbuddy://discover
+Icon=object-ungroup
+
+[Desktop Action my-files]
+Name=My Files
+Name[zh_CN]=资料库
+Exec=/usr/bin/workbuddy workbuddy://my-files
+Icon=document-preview-symbolic
+
+[Desktop Action settings]
+Name=Settings
+Name[zh_CN]=设置
+Exec=/usr/bin/workbuddy workbuddy://settings
+Icon=configure
+
+[Desktop Action skills]
+Name=Skills
+Name[zh_CN]=技能
+Exec=/usr/bin/workbuddy workbuddy://skills
+Icon=quickwizard
