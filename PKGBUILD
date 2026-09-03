@@ -4,7 +4,7 @@ pkgname=opentubex-git
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
 pkgver=r12607.a8dc8e696
-pkgrel=2
+pkgrel=3
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://opentubex.org"
@@ -35,7 +35,13 @@ prepare() {
 
   sed -i "/^export default {/a\\  electronDist: '/usr/lib/electron43'," \
     "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
-  sed -i "s/targets = Platform.LINUX.*/targets = Platform.LINUX.createTarget(['dir'], arch)/" "$srcdir/$_pkgname/_scripts/build.mjs"
+  sed -i "/Platform\\.LINUX\\.createTarget/s/\\[[^]]*\\]/['dir']/" \
+    "$srcdir/$_pkgname/_scripts/build.mjs"
+  grep -Fq "Platform.LINUX.createTarget(['dir'], arch)" \
+    "$srcdir/$_pkgname/_scripts/build.mjs" || {
+    printf '%s\n' 'Failed to restrict the OpenTubeX build to the unpacked directory' >&2
+    return 1
+  }
 }
 
 build() {
