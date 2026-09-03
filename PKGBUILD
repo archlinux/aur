@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli
 
 pkgname=musicrename
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="command line music library manager"
 arch=(x86_64)
@@ -9,13 +9,14 @@ url=https://github.com/mfinelli/musicrename
 license=(GPL-3.0-or-later)
 depends=(glibc taglib)
 makedepends=(git go scdoc)
-checkdepends=(ffmpeg)
+checkdepends=(ffmpeg rsgain)
 optdepends=(
   "ffmpeg: transcoding for device sync"
+  "rsgain: apply replaygain to extracted audio"
   "yt-dlp: automatic video downloads"
 )
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('816fac3acac1e874c7d57edadeddb78b924eb1b5b153e8f82f00e7e99ab61b17')
+sha256sums=('3385d8e33e0054dcc4a2f438dc1027339273d667d5370bbe79cb30a00d49beb1')
 
 prepare() {
   cd $pkgname
