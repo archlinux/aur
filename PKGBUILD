@@ -1,28 +1,23 @@
 # Maintainer: Ash <xash at riseup d0t net>
 # Contributor: kryksyh <kryksyh@gmail.com>
 pkgname=audacity4-bin
-pkgver=4.0.0_beta.4
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Audacity 4, the next generation of the popular multi-track audio editor"
 arch=('x86_64')
 url="https://github.com/audacity/audacity"
 license=('GPL-3.0-or-later')
 options=('!strip' '!debug')
 provides=('audacity4')
-_tag_ver="${pkgver/_beta./-beta-}"
-_appimage_ver="${pkgver/_beta./-beta}"
-_appimage="Audacity-${_appimage_ver}-$CARCH.AppImage"
-source=("${_appimage}::https://github.com/audacity/audacity/releases/download/Audacity-${_tag_ver}/${_appimage}")
+_appimage="audacity-linux-${pkgver}-$CARCH.AppImage"
+source=("${_appimage}::https://github.com/audacity/audacity/releases/download/Audacity-${pkgver}/${_appimage}")
 noextract=("${_appimage}")
-sha256sums=('50d73009bcb59511f58ea047f7a99c58ecc9086c9747dd9b54e83019c014ae96')
+sha256sums=('772663b0b407be44232193b8402cde4da4665c7f6e81edb5b70e3b14e8b9b5b4')
 
 prepare() {
 	cd "$srcdir"
 	chmod +x "${_appimage}"
 	"./${_appimage}" --appimage-extract >/dev/null
-
-	# Quick fix for ffmpeg9
-	rm -f "$srcdir/squashfs-root/usr/lib/libsystemd.so.0"
 }
 
 package() {
