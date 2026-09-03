@@ -61,11 +61,17 @@ depends=(
     'hyprpolkitagent'             # Authentication
     'xdg-desktop-portal-hyprland' # Screen sharing
     'wl-clipboard'                # Clipboard
+    'tuned'			  # Power profiles
+    'tuned-ppd'	
     
     # === GAMING ===
     'steam'                       # Gaming platform
     'opentabletdriver'            # Tablet driver
-    
+    'lutris'
+    'gamescope'
+
+    'mangohud'
+    'goverlay'
     # === NETWORK ===
     'tailscale'                   # VPN
     
