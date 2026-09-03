@@ -1,7 +1,7 @@
 pkgbase = yt-collate
 	pkgdesc = Efficient, well-rounded YouTube Music TUI client
-	pkgver = 0.0.4
-	pkgrel = 2
+	pkgver = 0.0.5
+	pkgrel = 1
 	url = https://github.com/indigo0445/yt-collate
 	arch = any
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = yt-collate
 	depends = yt-dlp-nightly-bin
 	depends = nodejs
 	depends = ffmpeg
-	source = https://files.pythonhosted.org/packages/source/y/yt-collate/yt_collate-0.0.4.tar.gz
-	sha256sums = 52f7e8b9d41a3fbfce45a82420385d7179a315ce0daf2954a6794c23c7d82063
+	source = https://files.pythonhosted.org/packages/source/y/yt-collate/yt_collate-0.0.5.tar.gz
+	sha256sums = 041d7d4c98766a6ccdf2c4977d191c33f08150aeb7e0866205568f11e864bcd0
 
 pkgname = yt-collate

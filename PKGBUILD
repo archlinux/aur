@@ -2,8 +2,8 @@
 
 pkgname=yt-collate
 _name=${pkgname//-/_}
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.5
+pkgrel=1
 pkgdesc="Efficient, well-rounded YouTube Music TUI client"
 arch=('any')
 url="https://github.com/indigo0445/yt-collate"
@@ -27,7 +27,7 @@ makedepends=(
   python-wheel
 )
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_name-$pkgver.tar.gz")
-sha256sums=('52f7e8b9d41a3fbfce45a82420385d7179a315ce0daf2954a6794c23c7d82063')
+sha256sums=('041d7d4c98766a6ccdf2c4977d191c33f08150aeb7e0866205568f11e864bcd0')
 
 build() {
   cd "$_name-$pkgver"
