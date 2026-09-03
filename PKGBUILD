@@ -1,4 +1,4 @@
-# Maintainer: piratecarrot
+# Maintainer: pineappletoad
 
 pkgname=elmerfem-gui-bin
 pkgver=26.2.1
