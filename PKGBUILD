@@ -2,7 +2,7 @@
 
 _basename=coccinelle
 pkgname=$_basename-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="C source code matching and transformation engine. Without spgen and Python bindings."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'pcre2')
 conflicts=('coccinelle' 'coccinelle-git')
 provides=('coccinelle')
 source=("https://coccinelle.gitlabpages.inria.fr/website/distrib/coccinelle-${pkgver}-bin-x86.tar.gz")
-b2sums=('511762cbe6e2a59e081eb9f4c272a27b3098684fdfd5205a8cdd0e88e02d12faebbfdad20da081428b629867a6fe9d3207f1e3e1b7f250ca45cff58db39fc5a3')
+b2sums=('d29463dd8e9aac3a9ce4f8cf17f262fcf2ef38bde02e612c723e22bb3dd978addd2c65b8758be95adbafa6d5cfbc07ae5f86aad24e3f3dd7a1827a452c3d3362')
 
 package() {
         cd $srcdir/$_basename-$pkgver
