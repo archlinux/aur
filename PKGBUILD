@@ -7,10 +7,10 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
 pkgname=icaclient
-pkgver=26.04.0.105
-pkgrel=3
+pkgver=26.04.10.1
+pkgrel=1
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
 license=(LicenseRef-Citrix)
 depends=(alsa-lib curl gst-plugins-base-libs libc++ libc++abi
@@ -26,6 +26,7 @@ backup=('opt/Citrix/ICAClient/config/appsrv.ini'
 _dl_urls_="$(curl -sL "$url" | grep -F ".tar.gz?__gda__")"
 _dl_urls="$(echo "$_dl_urls_" | grep -F "$pkgver.tar.gz?__gda__")"
 _source64=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx64-[^"]*)".*$|\1|p')"
+_sourceaarch64=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxarm64-[^"]*)".*$|\1|p')"
 source=('citrix-configmgr.desktop'
         'citrix-conncenter.desktop'
         'citrix-wfica.desktop'
@@ -35,6 +36,7 @@ source=('citrix-configmgr.desktop'
         'ctxcwalogd.service'
         'ctxusbd.service')
 source_x86_64=("$pkgname-x64-$pkgver.tar.gz::$_source64")
+source_aarch64=("$pkgname-arm64-$pkgver.tar.gz::$_sourceaarch64")
 sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             '446bfe50e5e1cb027415b264a090cede1468dfbdc8b55e5ce14e9289b6134119'
             '1dc6d6592fa08c44fb6a4efa0dc238e9e78352bb799ef2e1a92358b390868064'
@@ -43,7 +45,8 @@ sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             'a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4'
             '0e3a6c7cf7fa9eee7dcde7356e90ffa1cb312bffc0813a0bf123d2f918dc369d'
             '739da3fca95d07fc3076522acc6b6c1b12b988047bd2fb3c87e37231e49f2e1f')
-sha256sums_x86_64=('afec7036209b3223f556c1ef1ca84ada24448454ef13880ff658e84a358818ab')
+sha256sums_x86_64=('8c0a22cad4a4cda802cb5d3bb09b89779d20f68ba5e454b86485354c557356b5')
+sha256sums_aarch64=('4e65c1d449a2a9f21905135cc02418fbe434bc23705cad26dbe81ef4b3b9bd54')
 install=citrix-client.install
 
 package() {
