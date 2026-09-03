@@ -2,7 +2,7 @@
 
 pkgname="monsoon-emulator"
 pkgver=0.2.10
-pkgrel=2
+pkgrel=1
 pkgdesc="A work-in-progress NES emulator"
 arch=('x86_64')
 url="https://github.com/EmIsGreat/Monsoon-Emulator"
