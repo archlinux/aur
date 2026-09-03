@@ -1,0 +1,19 @@
+pkgbase = dbe-timetrack-bin
+	pkgdesc = Simple, offline-first desktop application to track your time on different projects and tasks.
+	pkgver = 5.16.4
+	pkgrel = 1
+	url = https://github.com/dont-be-evil-company/timetrack
+	arch = x86_64
+	license = MIT
+	depends = nss
+	depends = at-spi2-core
+	depends = libxss
+	depends = gtk3
+	depends = alsa-lib
+	depends = libxtst
+	provides = timetrack
+	conflicts = timetrack
+	source = https://github.com/dont-be-evil-company/timetrack/releases/download/v5.16.4/timetrack_amd64.deb
+	sha256sums = f44dc3c0c2284239f3dc3829ee6960f5bf00c0794cf14e0831d6530d69b15db3
+
+pkgname = dbe-timetrack-bin
