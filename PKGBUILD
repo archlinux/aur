@@ -3,18 +3,21 @@
 pkgname=python-bflb-iot-tool
 _name=${pkgname#python-}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=5
 pkgdesc="BOUFFALOLAB IOT TOOL"
 arch=('any')
 url="https://pypi.org/project/bflb-iot-tool"
 license=('MIT')
 groups=()
+provides=(${pkgname} ${_name})
+conflicts=(${pkgname} ${_name})
 _pydeps=(
     ecdsa
     six
     pycryptodome
     pylink-square
-    pyserial)
+    pyserial
+)
 depends=(
     gcc-libs
     glibc
@@ -30,9 +33,18 @@ _pymakedeps=(
     build
     installer
     wheel
-    setuptools)
+    setuptools
+)
 makedepends=(
-    "${_pymakedeps[@]/#/python-}")
+    "${_pymakedeps[@]/#/python-}"
+)
+optdepends=(
+    "python-bflb-flash-command-uart: Bouffalolab Flash Command Tool"
+    "python-bflb-fw-post-proc: Bouffalolab Firmware Post Proc"
+    "python-bflb-mcu-tool: BOUFFALOLAB MCU TOOL"
+	"python-bflb-mcu-tool-uart: Bouffalolab Iot Tool uart"
+    "python-bflb-iot-tool-uart: Bouffalolab Mcu Tool uart"
+)
 options=('!strip')
 optdepends=("jlink-software-and-documentation: Segger JLink software & documentation pack for Linux")
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
