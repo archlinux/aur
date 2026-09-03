@@ -1,11 +1,10 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: aksr <aksr88 at gmail dot com>
 pkgname=fbvis-git
 pkgver=r21.58caabc
-pkgrel=2
-epoch=
-pkgdesc="A small framebuffer image viewer, it does not use external libraries."
+pkgrel=3
+pkgdesc='A small framebuffer image viewer, it does not use external libraries.'
 arch=('i686' 'x86_64')
-url="http://litcave.rudi.ir/"
+url='http://dev.rudi.ir/'
 license=('custom:BSD')
 makedepends=('git')
 provides=("${pkgname%-*}")
@@ -25,6 +24,6 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -Dm755 fbvis $pkgdir/usr/bin/fbvis
-	install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
+	install -D -m755 fbvis $pkgdir/usr/bin/fbvis
+	install -D -m644 README $pkgdir/usr/share/doc/$pkgname/README
 }
