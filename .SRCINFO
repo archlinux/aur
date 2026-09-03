@@ -1,7 +1,7 @@
 pkgbase = uutils-coreutils-bin
-	pkgdesc = Cross-platform Rust rewrite of the GNU coreutils (upstream PGO optimized)
+	pkgdesc = Cross-platform Rust rewrite of the GNU coreutils (upstream PGO optimized x86_64 binaries)
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uutils.org/
 	arch = aarch64
 	arch = arm
@@ -12,12 +12,6 @@ pkgbase = uutils-coreutils-bin
 	conflicts = uutils-coreutils
 	source = uutils-coreutils-bin-0.11.0-LICENSE::https://raw.githubusercontent.com/uutils/coreutils/refs/heads/main/LICENSE
 	sha256sums = SKIP
-	source_aarch64 = uutils-coreutils-bin-0.11.0-aarch64.tar.gz::https://github.com/uutils/coreutils/releases/download/0.11.0/coreutils-0.11.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 99405c97458c4b10382d8570108519188b5410a0e0e380c74b77ca7bf7efd322
-	source_arm = uutils-coreutils-bin-0.11.0-arm.tar.gz::https://github.com/uutils/coreutils/releases/download/0.11.0/coreutils-0.11.0-arm-unknown-linux-gnueabihf.tar.gz
-	sha256sums_arm = e9ff18aa4cb10aa9939e96f1d5e4284f3117dee49cac90e916640e2e913b0b7e
-	source_i686 = uutils-coreutils-bin-0.11.0-i686.tar.gz::https://github.com/uutils/coreutils/releases/download/0.11.0/coreutils-0.11.0-i686-unknown-linux-musl.tar.gz
-	sha256sums_i686 = 37ecad40934d210221e720f36705d568f4e0e28578d47fc10e2a93f96603d49e
 	source_x86_64 = uutils-coreutils-bin-0.11.0-x86_64.tar.gz::https://github.com/uutils/coreutils/releases/download/0.11.0/coreutils-0.11.0-x86_64-unknown-linux-musl.tar.gz
 	sha256sums_x86_64 = ac8e24885abf9062b80e8e86990d5727c186939c02fee777b1723e5c85293ca9
 
