@@ -4,7 +4,7 @@
 # Contributor: Sebastian Krebs <sebastian@krebs.one>
 pkgname=kaniko
 pkgver=1.25.19
-pkgrel=2
+pkgrel=3
 pkgdesc='Build Container Images In Kubernetes'
 arch=('x86_64')
 url='https://github.com/chainguard-forks/kaniko'
