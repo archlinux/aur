@@ -1,6 +1,6 @@
 pkgname=mingw-w64-metis
 pkgver=5.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Serial Graph Partitioning and Fill-reducing Matrix Ordering (mingw-w64)'
 url="https://github.com/KarypisLab/METIS"
 license=('Apache')
