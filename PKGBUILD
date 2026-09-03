@@ -8,7 +8,8 @@ arch=('x86_64')
 url='https://github.com/thisisgm/flea'
 license=('MIT')
 # omarchy owns /usr/share/omarchy/shell, which ui/Commons and ui/Ui link into; quickshell owns qs.
-depends=('bubblewrap' 'glib2' 'omarchy' 'quickshell' 'shared-mime-info' 'xdg-utils')
+# util-linux is needed since 0.1.3: the sandbox refuses the job without prlimit, which it ships.
+depends=('bubblewrap' 'glib2' 'omarchy' 'quickshell' 'shared-mime-info' 'util-linux' 'xdg-utils')
 makedepends=('cargo' 'git')
 optdepends=('libarchive: archive listing and extraction'
             '7zip: 7z archive support'

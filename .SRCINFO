@@ -12,6 +12,7 @@ pkgbase = flea-git
 	depends = omarchy
 	depends = quickshell
 	depends = shared-mime-info
+	depends = util-linux
 	depends = xdg-utils
 	optdepends = libarchive: archive listing and extraction
 	optdepends = 7zip: 7z archive support
