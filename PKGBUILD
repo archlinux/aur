@@ -1,32 +1,23 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=tone3000-plugin-bin
-pkgver=0.0.2
-_zip_sha='fade5434e78a0cfefeb7b13987cd549e169f7c1caf0584eebc1ce1497dac636d'
+pkgver=0.0.4
+_tar_sha='96c705558ca0058ce05920c0c94d5f84199262ef0bdd257b92669c05bf0da799'
 _license_sha='88d4908d7343898f682e47e70f4288728006ed650dbf79e8940c709d55b76326'
 pkgrel=1
-pkgdesc="TONE3000 — NAM & IR loader plugin (VST3/CLAP/LV2/Standalone, JUCE/WebKitGTK)"
+pkgdesc="TONE3000 — NAM & IR loader plugin (VST3/CLAP/LV2/Standalone) (Github release binary)"
 arch=('x86_64')
 url="https://github.com/tone-3000/tone3000-plugin"
 _github_url="https://github.com/tone-3000/tone3000-plugin"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'alsa-lib' 'freetype2' 'curl' 'hicolor-icon-theme' 'glibc' 'gcc-libs')
 optdepends=('jack: JACK audio backend for standalone')
-makedepends=('unzip')
 provides=('tone3000-plugin')
 conflicts=('tone3000-plugin')
 options=('!strip' '!debug')
-source=("TONE3000-v${pkgver}-linux-x64.zip::${_github_url}/releases/download/v${pkgver}/TONE3000-v${pkgver}-linux-x64.zip"
+source=("TONE3000-v${pkgver}-linux-x64.tar.gz::${_github_url}/releases/download/v${pkgver}/TONE3000-v${pkgver}-linux-x64.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/tone-3000/tone3000-plugin/v${pkgver}/LICENSE")
-sha256sums=("$_zip_sha"
+sha256sums=("$_tar_sha"
             "$_license_sha")
-
-prepare() {
-	# The zip contains a single inner tar.gz. makepkg (bsdtar) extracts the zip
-	# leaving TONE3000-vX-linux-x64.tar.gz; unpack it to get the payload dir.
-	if [ -f "TONE3000-v${pkgver}-linux-x64.tar.gz" ]; then
-		tar -xzf "TONE3000-v${pkgver}-linux-x64.tar.gz"
-	fi
-}
 
 package() {
 	cd "$srcdir"
