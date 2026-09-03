@@ -1,6 +1,6 @@
 pkgbase = clawx-appimage
 	pkgdesc = Desktop interface for OpenClaw AI agents AppImage
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/ValueCell-ai/ClawX
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = clawx-appimage
 	depends = fuse2
 	provides = clawx
 	conflicts = clawx
-	noextract = ClawX-0.5.5-linux-x86_64.AppImage
-	noextract = ClawX-0.5.5-linux-arm64.AppImage
+	noextract = ClawX-0.5.6-linux-x86_64.AppImage
+	noextract = ClawX-0.5.6-linux-arm64.AppImage
 	options = !strip
-	source_x86_64 = ClawX-0.5.5-linux-x86_64.AppImage::https://github.com/ValueCell-ai/ClawX/releases/download/v0.5.5/ClawX-0.5.5-linux-x86_64.AppImage
-	sha512sums_x86_64 = 28f02667b063e26d24b323eb95ebc8c06fb94bec8c73429953228c81db7dc08a886b03d5415b9c8383f5f5ee380ff30ed308dd38ee42240480dcc1f7db10a798
-	source_aarch64 = ClawX-0.5.5-linux-arm64.AppImage::https://github.com/ValueCell-ai/ClawX/releases/download/v0.5.5/ClawX-0.5.5-linux-arm64.AppImage
-	sha512sums_aarch64 = 4e78929007311bb642a21ad4f5b478aafcb092253096087d1265910f2ef622ab3a2840a93dda14715b3fa44e5e6e33884395658344aae7ed43bc18b51dd23a59
+	source_x86_64 = ClawX-0.5.6-linux-x86_64.AppImage::https://github.com/ValueCell-ai/ClawX/releases/download/v0.5.6/ClawX-0.5.6-linux-x86_64.AppImage
+	sha512sums_x86_64 = 4c9eb4f083049fbca0b42c4194a73bfd1908d8830d7aee0dc1801280165abcaff89385aa2d5324de70c5390c3ec45ec655379bb6a3ca6386987f6e1cf868f3a2
+	source_aarch64 = ClawX-0.5.6-linux-arm64.AppImage::https://github.com/ValueCell-ai/ClawX/releases/download/v0.5.6/ClawX-0.5.6-linux-arm64.AppImage
+	sha512sums_aarch64 = 0b285663e9c0f2e8e2be6e4eb9d7ef22def9051001ef685d251504b74f5de0d45bd9d938e49e2cf7a8efafdc4e567d913649d86f573b4aa01177d6b1286f15ec
 
 pkgname = clawx-appimage
