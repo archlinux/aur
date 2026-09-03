@@ -3,20 +3,20 @@
 
 
 pkgname=eddie-cli-git
-pkgver=2.26.2
+pkgver=2.27.1
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - CLI'
-arch=('x86_64' 'aarch64' 'armv7l')
+arch=('x86_64' 'aarch64')
 url=https://eddie.website
-license=(GPLv3)
+license=('GPL-3.0-or-later')
 depends=(curl openvpn sudo)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
 makedepends=(git cmake patchelf 'dotnet-runtime>=10' 'dotnet-sdk>=10')
 provides=('eddie-cli')
-conflicts=('airvpn' 'airvpn-beta-bin' 'airvpn-git')
+conflicts=('airvpn' 'airvpn-beta-bin' 'airvpn-git' 'eddie-cli')
 install=eddie-cli.install
 source=('git+https://github.com/AirVPN/Eddie.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 options=('!strip') # Incompatible with net10
 
 LINE="l"
@@ -29,8 +29,6 @@ if [ "$RID" = "linux-x86_64" ]; then
   RID=linux-x64
 elif [ "$RID" = "linux-aarch64" ]; then
   RID=linux-arm64
-elif [ "$RID" = "linux-armv7l" ]; then
-  RID=linux-arm
 fi
 
 build() {  
@@ -94,8 +92,6 @@ build() {
         # mkbundle        
         if [ $ARCH = "x64" ]; then
             MKBUNDLECROSSTARGET="mono-6.8.0-debian-10-x64"
-        elif [ $ARCH = "armv7l" ]; then
-            MKBUNDLECROSSTARGET="mono-6.0.0-raspbian-9-arm"
         elif [ $ARCH = "aarch64" ]; then
             MKBUNDLECROSSTARGET="mono-6.6.0-debian-10-arm64"
         else
