@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=dbx-mcp-server-git
-pkgver=0.4.79.r6016.g767cc809a
+pkgver=0.4.79.r6021.g5e4f756a6
 pkgrel=1
 pkgdesc="MCP server for DBX — query databases from Claude Code, Cursor, and other AI agents (built from git)"
 arch=('x86_64' 'aarch64')
