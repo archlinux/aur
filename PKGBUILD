@@ -1,9 +1,9 @@
 # Maintainer: Allen Zhong <pdev@zhoal.pw>
-# Maintainer: Liqueur Librazy <im@librazy.org>
+# Contributor: Liqueur Librazy <im@librazy.org>
 # Contributor: Jian Zeng <anonymousknight96@gmail.com>
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 pkgbase=tidb-bin
-_basever=8.5.7
+_basever=8.5.8
 #_relver=-prega
 #pkgver=$_basever.$_relver
 pkgver=$_basever
@@ -50,12 +50,12 @@ sha256sums=('b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924'
             '44de9aed72b8bc9156db354dcddfe0624f2fe4fc91e903fe64892913cae93e0f'
             'f32709894c0d2c105a4398dcaf027f1cbdee359a2a6747f43cac819e9df25517'
             '1c933198cd9b5611bd7d25f4f3501bd1b580bb35352f8d65bc1cef8588400d24')
-sha256sums_x86_64=('2bff9bad29fe8142cdf556f839dd99a07f51f205ade7662eb9431b2f359b0460'
-                   '87bb39d4ae3b0c966a1600f903525d4afe8dafca3ad179fc86610e1288a58591'
-                   '23a3601aa49a48d62156df1895f0af7089c5d602f70f0b6d659cfc4c0f26b845')
-sha256sums_aarch64=('0d14c986226bab1defba4d916b8a5c0e8842fe166a7faa3db2864f956ac85b3c'
-                    '4379cf3607ae2f4b163f4710b23f6e00f74e835e35d48c3a8afd7d1a80ab9e60'
-                    '2fa000801144cd65c91641fe3676fc45a6273a8deea8f776fc215c069748e589')
+sha256sums_x86_64=('e9f1f8c77411e0d882f90c66a7df8cfdf3ba84679a201d8cdc528686d42853aa'
+                   '34eac1f0e794aa72039766174e691af4d4488286d7cabb7c0585766b03ffeed6'
+                   'ab07f7bc2f0285c30c047f933a54b95a6552d8a73e7302e6bf3ddeb567ff5750')
+sha256sums_aarch64=('2dc742fa2e37f0d0f088055fe5a1a2d0fee9e3372077b2aa9e440ac0a556590a'
+                    '24b73d3bc8af3258177e36242179753fa509c07b8b987b611cdf91d08c28e706'
+                    '29fc1334cfae384741ab27cb53df60ea8cbc1174273b395f1722319c6a9f40b9')
 
 _package() {
     provides=("tidb-server=$_basever" "tikv-server=$_basever" "pd-server=$_basever")
