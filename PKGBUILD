@@ -1,6 +1,6 @@
 # Maintainer: Frederick Martel
 pkgname=aspm27-server
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Server component of aspm - a slick, modern messenger focused on simplicity, security and speed"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 build() {
   cd "aspm27-$pkgver/server"
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --release --locked
+  cargo build --release
 }
 
 package() {
