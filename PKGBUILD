@@ -1,9 +1,9 @@
 # Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
 
 pkgname='docling'
-pkgver='2.122.0'
+pkgver='2.124.0'
 pkgrel=1
-pkgdesc='Meta-package and command-line interface for local document processing'
+pkgdesc='Document processing toolkit for converting diverse formats into structured data'
 url="https://github.com/docling-project/${pkgname}"
 license=('MIT')
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
 	'python-rtree>=1.3.0'
 	'python-scipy>=1.6.0'
 	'python-pypdfium2>=4.30.2'
-	'python-docling-parse>=7.12.0'
+	'python-docling-parse>=7.16.0'
 	'python-docling-ibm-models>=3.13.0'
 	'python-pytorch>=2.2.2'
 	'python-torchvision'
@@ -64,15 +64,14 @@ source=(
 	'slim_meta_package.patch'
 )
 b2sums=(
-	'efb947d366cbf33ace15341879a3bbc97860e025a7acd18d4cc82f204459bc2fffc981033ba1bcf0ebfa97660d7d5e0706ef384edb2d742946e59a66bff50c8a'
-	'534eecb1b7af0d09196c0f431867fbe0344d754445f233438a87e6ce9168a12e0b18021a88a8368d34d37e57f430f50a427c4165f6cdeac973546acdab6a2929'
+	'9b6c7073f0bc717912651b5470f250d66ff31c68959cb326ad99ffde5072d19807987e4bf9f350429edb770884806ff6f7f6473ebd58aae7dfbf2f4e4c10776f'
+	'e6c79790e889f4dd0c2cab096287a8b9feddf9eb39e935459f79e8ae35799957e4d9380ef7758d2d19ee9e91b82ed0b60d05f5edb62c9c4a42614fdba2210bfe'
 )
 
 prepare() {
 	cd -- "${pkgname}-${pkgver}" || return 1
 
-	# Arch exposes the standard feature set through optdepends, so keep the
-	# Python meta-package dependency limited to the separately packaged SDK.
+	# Map the standard extra to Arch dependencies instead of Python extras.
 	patch -Np1 -i "${srcdir}/slim_meta_package.patch"
 }
 
