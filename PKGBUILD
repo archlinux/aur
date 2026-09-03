@@ -1,7 +1,7 @@
 # Maintainer: Markus Maiwald <markus@maiwald.tk>
 pkgname=prism-harness-suite
 pkgver=1.0.0_rc.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PRISM harness suite for AI coding agents: doctrine rules, review steering, overnight loops, model routing and security gates on one Bun runtime"
 arch=('x86_64')
 url=https://getharness.app
