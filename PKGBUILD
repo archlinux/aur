@@ -102,31 +102,29 @@ EOF
     write_pc_if_missing wayland-egl 1.22.0 '-L${libdir} -lwayland-egl' '-I${includedir}'
     write_pc_if_missing xkbcommon 1.6.0 '-L${libdir} -lxkbcommon' '-I${includedir}'
 
-    # openssl-sys компилирует настоящий C-файл и требует реальных заголовков
-    # (/usr/include/openssl/*.h), а не только pkg-config-метаданных. На
-    # SteamOS они формально числятся в базе pacman, но физически вырезаны
-    # из образа — только --overwrite реально распаковывает файлы заново.
-    if [ ! -f /usr/include/openssl/opensslv.h ]; then
-        echo "Заголовки openssl отсутствуют физически — переустанавливаю пакет с --overwrite"
-        sudo pacman -S --overwrite '/usr/include/*' --noconfirm openssl
-    fi
+    # На некоторых образах SteamOS ниже перечисленные пакеты формально
+    # числятся установленными в базе pacman, но их заголовочные файлы
+    # физически вырезаны из образа — сборка (openssl-sys, cgo для Xray)
+    # падает с "No such file or directory" на конкретных .h-файлах.
+    #
+    # PKGBUILD намеренно НЕ лечит это сам через sudo — сборка не должна
+    # повышать привилегии и трогать систему в обход pacman. Вместо этого
+    # мы обнаруживаем проблему и просим пользователя выполнить починку
+    # самостоятельно, осознанно, одной командой, до повторного запуска.
+    local missing_headers=()
+    [ -f /usr/include/openssl/opensslv.h ] || missing_headers+=(openssl)
+    [ -f /usr/include/errno.h ] || missing_headers+=(glibc)
+    [ -f /usr/include/linux/errno.h ] || missing_headers+=(linux-api-headers)
 
-    # Та же история и с базовыми заголовками glibc (errno.h, stdlib.h,
-    # stdio.h, pthread.h, stdint.h и т.д.) — без них ничего, что собирается
-    # через cgo (например, зависимость xray, написанная на Go), не соберётся.
-    # На некоторых образах SteamOS они тоже физически вырезаны.
-    if [ ! -f /usr/include/errno.h ]; then
-        echo "Заголовки glibc отсутствуют физически — переустанавливаю пакет с --overwrite"
-        sudo pacman -S --overwrite '/usr/include/*' --noconfirm glibc
-    fi
-
-    # xray собирается на Go через cgo, а glibc-заголовки сами по себе
-    # цепляют ядерные (linux/errno.h, linux/types.h и т.д.) из отдельного
-    # пакета linux-api-headers — на некоторых образах SteamOS он тоже
-    # физически вырезан, хотя формально числится установленным.
-    if [ ! -f /usr/include/linux/errno.h ]; then
-        echo "Заголовки linux-api-headers отсутствуют физически — переустанавливаю пакет с --overwrite"
-        sudo pacman -S --overwrite '/usr/include/*' --noconfirm linux-api-headers
+    if [ ${#missing_headers[@]} -gt 0 ]; then
+        echo ""
+        echo "==> На этом образе SteamOS физически отсутствуют заголовочные файлы"
+        echo "    для: ${missing_headers[*]} (хотя пакеты числятся установленными)."
+        echo "    Выполните перед повторной сборкой:"
+        echo ""
+        echo "    sudo pacman -S --overwrite '/usr/include/*' ${missing_headers[*]}"
+        echo ""
+        exit 1
     fi
 }
 
