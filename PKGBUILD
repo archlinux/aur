@@ -1,4 +1,4 @@
-# Maintainer: piratecarrot
+# Maintainer: pineappletoad
 
 pkgname=cangaroo-bin
 pkgver=0.2.2.r64.gca7f907
