@@ -2,7 +2,7 @@
 
 _pkgname='docling'
 pkgname="python-${_pkgname}"
-pkgver='2.124.0'
+pkgver='2.125.0'
 pkgrel=1
 pkgdesc='Python SDK for parsing documents into a unified representation'
 url="https://github.com/docling-project/${_pkgname}"
@@ -28,7 +28,7 @@ makedepends=(
 checkdepends=('python-pytest')
 optdepends=('docling: command-line interface')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('9b6c7073f0bc717912651b5470f250d66ff31c68959cb326ad99ffde5072d19807987e4bf9f350429edb770884806ff6f7f6473ebd58aae7dfbf2f4e4c10776f')
+b2sums=('49084628f6f192ef7b8e3d917ca1dc1960f8626539befc80e06ce18643526f6f82b47e90bcdd1ec371fd6a0aba7135e13276692fd0f475dab0368456556cb6b1')
 
 build() {
 	cd -- "${_pkgname}-${pkgver}" || return 1
