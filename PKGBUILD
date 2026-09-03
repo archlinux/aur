@@ -26,7 +26,7 @@ sha256sums=('1426cea7f5c4959cfcaec78b4974cde3071f51eb9fdf9beedf38efae0bc6b9ad'
             '4e87c6694b57f82a28fc0932d4af310f85323816902e0f8e1913b698a8593be9')
 
 prepare() {
-  msg2 "Applying Fermi reclocking and backlight patches..."
+  msg2 "Applying Fermi reclocking and 120Hz display patches..."
   patch -Np1 -d "${srcdir}/nouveau-source" < "${srcdir}/nouveau-fermi-reclock.patch"
 
   # Shader clock display fix (local only, not upstream) — Python is safer than sed on the 2-line gpc entry
