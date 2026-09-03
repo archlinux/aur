@@ -1,6 +1,6 @@
 pkgbase = purelive-bin
 	pkgdesc = 纯粹直播（Pure Live）基于 Flutter 的开源多平台直播聚合播放器
-	pkgver = 3.0.9
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/liuchuancong/pure_live
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = purelive-bin
 	optdepends = libvdpau: NVIDIA VDPAU hardware decoding acceleration
 	optdepends = libva-intel-driver: VA-API driver for Intel GPUs
 	optdepends = libva-mesa-driver: VA-API driver for AMD/Mesa GPUs
-	provides = purelive=3.0.9
+	provides = purelive=3.1.0
 	conflicts = purelive
 	options = !strip
 	options = !debug
-	source_x86_64 = purelive-bin-3.0.9.tar.gz::https://github.com/liuchuancong/pure_live/releases/download/v3.0.9/PureLive-3.0.9-4097-linux-x64.tar.gz
-	sha256sums_x86_64 = 9b04f579b66cf4dd0395993a974f22554b70d6c7b3c57913071357eebc6a11e3
+	source_x86_64 = purelive-bin-3.1.0.tar.gz::https://github.com/liuchuancong/pure_live/releases/download/v3.1.0/PureLive-3.0.10-4098-linux-x64.tar.gz
+	sha256sums_x86_64 = dd2250943699635df3680234d38c577d5610380ee379e4c3754eca7b3fb0d004
 
 pkgname = purelive-bin

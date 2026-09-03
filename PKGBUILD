@@ -1,6 +1,7 @@
 pkgname=purelive-bin
-pkgver=3.0.9
-_buildnum=4097
+pkgver=3.1.0
+_filever=3.0.10
+_buildnum=4098
 pkgrel=1
 pkgdesc="纯粹直播（Pure Live）基于 Flutter 的开源多平台直播聚合播放器"
 arch=('x86_64')
@@ -23,11 +24,9 @@ provides=("purelive=${pkgver}")
 conflicts=("purelive")
 options=('!strip' '!debug')
 source_x86_64=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/liuchuancong/pure_live/releases/download/v${pkgver}/PureLive-${pkgver}-${_buildnum}-linux-x64.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/liuchuancong/pure_live/releases/download/v${pkgver}/PureLive-${_filever}-${_buildnum}-linux-x64.tar.gz"
 )
-sha256sums_x86_64=(
-    '9b04f579b66cf4dd0395993a974f22554b70d6c7b3c57913071357eebc6a11e3'
-)
+sha256sums_x86_64=('dd2250943699635df3680234d38c577d5610380ee379e4c3754eca7b3fb0d004')
 
 package() {
     # 安装主程序到 /opt
