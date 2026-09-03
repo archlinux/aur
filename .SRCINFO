@@ -1,0 +1,27 @@
+pkgbase = elmerfem-gui-bin
+	pkgdesc = Graphical user interface for the Elmer software suit (precompiled)
+	pkgver = 26.2.1
+	pkgrel = 1
+	url = https://www.elmerfem.org
+	arch = x86_64
+	license = GPL-2.0-only AND LicenseRef-ElmerGUI-exception
+	depends = boost-libs
+	depends = freetype2
+	depends = glu
+	depends = opencascade
+	depends = paraview
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qwt
+	depends = vtk
+	optdepends = elmerfem-base-bin: FEM solver
+	provides = elmerfem-gui
+	conflicts = elmerfem-gui
+	conflicts = elmerfem-git
+	conflicts = elemerfem
+	options = !debug
+	source = https://github.com/tubbywrestler/elmerfem-gui-bin/releases/download/26.2.1-1/elmerfem-gui-26.2.1-1-x86_64.pkg.tar.zst
+	sha256sums = 0f818aefe394a44706712fd61870b57e8c8218dbdb1c11bc3942d825e49e3eb9
+
+pkgname = elmerfem-gui-bin
