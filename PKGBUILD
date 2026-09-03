@@ -53,6 +53,9 @@ depends=(
     'obsidian'                    # Note taking
     'krita'                       # Digital art
     'curd-polland-git' 		  # Anime Watching
+    'mpv'			  # Watching the videos
+    'qbittorrent'		  # You know
+    'qbittorrent-nox'		  # You know, but cli
     
     # === SYSTEM ===
     'hyprpolkitagent'             # Authentication
@@ -71,11 +74,12 @@ depends=(
 
     # === AUR Helper ===
     'yay'			  # Yet Another Yoghurt
+    'portage-manifest'		  # Graphical (window shopper) app store
 )
 makedepends=('git')
 provides=('polland-de')
 conflicts=('polland-de')
-source=("git+https://github.com/Pol-Jak-295/PolLand.git")
+source=("git+https://github.com/Pol-Jak-295/polland.git")
 sha256sums=('SKIP')
 install='polland-de.install'
 
@@ -85,7 +89,7 @@ package() {
     # === SYSTEM CONFIGS (source of truth) ===
     mkdir -p "$pkgdir/usr/share/polland/configs"
     
-    config_dirs=( "hypr" "waybar" "rofi" "kitty" "nvim" "gtk-3.0" "gtk-4.0" "ani-cli" "images" "nwg-bar" "fastfetch" "swaync")
+    config_dirs=( "hypr" "waybar" "rofi" "kitty" "nvim" "gtk-3.0" "gtk-4.0" "images" "nwg-bar" "fastfetch" "swaync")
     
     for dir in "${config_dirs[@]}"; do
         if [ -d "$srcdir/polland/$dir" ]; then
@@ -167,7 +171,7 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
 fi
 
-config_dirs=( "hypr" "waybar" "rofi" "kitty" "nvim" "gtk-3.0" "gtk-4.0" "ani-cli" "images" "nwg-bar" "fastfetch" "swaync")
+config_dirs=( "hypr" "waybar" "rofi" "kitty" "nvim" "gtk-3.0" "gtk-4.0" "images" "nwg-bar" "fastfetch" "swaync")
 
 for dir in "${config_dirs[@]}"; do
     if [ -d "$REPO_CONFIGS/$dir" ]; then
