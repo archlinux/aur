@@ -3,7 +3,7 @@
 _pkgname=zvec-grep
 pkgname=zg
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Local-first search across your workspace, built for humans and AI agents"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zvec-ai/zvec-grep"
@@ -17,6 +17,9 @@ build() {
   cd "${_pkgname}-${pkgver}"
 
   npm ci --cache "${srcdir}/npm-cache" --ignore-scripts --no-audit --no-fund
+  npm run build
+  npm prune --cache "${srcdir}/npm-cache" \
+    --omit=dev --ignore-scripts --no-audit --no-fund
 }
 
 package() {
@@ -24,16 +27,13 @@ package() {
 
   local mod_dir="/usr/lib/node_modules/${pkgname}"
 
-  npm run build \
-    --no-audit --no-fund \
-    --cache "${srcdir}/npm-cache"
-
   install -dm755 "$pkgdir/$mod_dir/node_modules"
   install -dm755 "$pkgdir/usr/bin" \
                  "$pkgdir/usr/share/doc/${pkgname}"
 
   cp -ap dist "$pkgdir/$mod_dir"
   cp -a node_modules/. "$pkgdir/$mod_dir/node_modules/"
+  install -Dm644 package.json "$pkgdir/$mod_dir/package.json"
   ln -s "$mod_dir/dist/cli/index.js" "$pkgdir/usr/bin/${pkgname}"
 
   cp -r docs/* "$pkgdir/usr/share/doc/$pkgname/"
