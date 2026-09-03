@@ -23,7 +23,7 @@ _clangbuild=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.19.6
+pkgver=7.2.3
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -49,14 +49,14 @@ options=(
   !strip
 )
 _srcname=linux-${pkgver}
-_kernel_base_commit=6a753907865e35ae986b7b2ad48daa1eab4bcf3a
+_kernel_base_commit=58e7295cfecaddec94629160386412e0f2b1e8fe
 _kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=483b60d849ebc4a28d47289f4822d4ebb37db760
-_prjc_version=6.19-r2
+_arch_config_commit=3cf31ee6f25bcba94c24443fb98d9a50f6f2a263
+_prjc_version=7.2-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20250818.2
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
+  "https://www.kernel.org/pub/linux/kernel/v7.x/linux-$pkgver.tar".{xz,sign}
   "${pkgbase}-${pkgver}-config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/${_arch_config_commit}/config.x86_64"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
@@ -67,12 +67,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('612fd1e944194c20bb2e6f9d2b309d5957db5b738bcb7b782c9c25de4c02b341fa5caa9af76d92e88628135b8334f550cc2277d63738098fde950ca05f46e89a'
+b2sums=('a1d10f1b4422f55c9c87fec0d319fd3dfaf8992f40f9c3d6da1d74e6e78ef220c24cdcd5b689070fb4a287070d1cb3659dc9ea79e5500027854f32c1326c67f7'
         'SKIP'
-        'e5b25c5404cd07af0db440c68926de476176cf741777e1389322c65fc2404a8111526a9191d68e721d4cfa2fea184ee3fbbc75c2a6f3f6c009e83e9ec9843473'
-        '2f09d09eb8f3bd5c6d0f33e92ff38ebe862f74a2912bb1942df104aa2fa23663555df5456b4889d3e68593f50b88796bb50f5c72dc8ff665a2d207b6f32425cd'
+        'da56ce9b2f28b75436c52afbc16913027796d98b467575920d82e15fb626689438e69cc07fedde77a96f2cb2ce10b510a873c43f43105ccec9a44e656b0624e1'
+        '8aadf1d43a98e331de9f7f429289b01b0252b0f929ab25fe7c61ca5bf86dba73f649a0204f83314911f26b3c8b338445986da80ee88fabc85d813e230b31a575'
         '58b007e983845716a777b81ca459cbb075f8618654eacbff0690581057632eda494a0238034d9f3e84d504a4a223cb6d895074f0acdfe050a5f9b36a9d981c6d'
-        'e92631c8fef7fd6ff4f588569b6a0397f2ee90d75eabfa1d82f40f92ed22f81107d318572146182b6f7ee979878cf6ce4eb24fffd2f374578cb2b3a18339867c')
+        'b5875b5eb0563c88a2867baa55f709f1d85de162fa9e43645939a2dee749ff60d0999ecd734c00103f0fc99283bfadb14512a22d0c5e9803e29bfeeafb892e87')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
@@ -138,8 +138,8 @@ prepare() {
 
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
-  echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-ISA-levels-and-uarches-for-kernel-6.16+.patch"
+  #echo "Patching to enable GCC optimization for other uarchs..."
+  #patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-ISA-levels-and-uarches-for-kernel-6.16+.patch"
 
   # since there are multiple options in the above patch (uarch + ISA setting), the yes method that worked
   # in the past will no long work so remove it
