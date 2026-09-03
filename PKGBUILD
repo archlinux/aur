@@ -1,7 +1,7 @@
 # Maintainer: Florine W. Dekker
 pkgname="mommy"
 pkgdesc="mommy's here to support you~"
-pkgver=1.8.0
+pkgver=2.0.0
 pkgrel=1
 url="https://github.com/fwdekker/mommy"
 license=("Unlicense")
