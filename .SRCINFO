@@ -1,0 +1,12 @@
+pkgbase = new-api-bin
+	pkgdesc = OpenAI API management and distribution
+	pkgver = 1.0.0.rc.31
+	pkgrel = 1
+	url = https://github.com/QuantumNous/new-api
+	arch = x86_64
+	license = MIT
+	backup = etc/new-api/.env
+	source = https://github.com/QuantumNous/new-api/releases/download/v1.0.0-rc.31/new-api-v1.0.0-rc.31
+	sha256sums = SKIP
+
+pkgname = new-api-bin
