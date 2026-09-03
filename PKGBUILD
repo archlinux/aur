@@ -26,9 +26,9 @@ package() {
     install -dm755 "$pkgdir/opt/$pkgname"
     cp -r squashfs-root/* "$pkgdir/opt/$pkgname/"
 
-    # Fix executable permissions
+    # Fix executable permissions (the -arch AppImage ships a plain AppRun only,
+    # no linuxdeploy AppRun.wrapped, since 2.8.0)
     chmod +x "$pkgdir/opt/$pkgname/AppRun"
-    chmod +x "$pkgdir/opt/$pkgname/AppRun.wrapped"
 
     # Create wrapper script that uses system libraries instead of bundled ones
     # This fixes EGL_BAD_PARAMETER crash on Arch/Manjaro with Wayland
