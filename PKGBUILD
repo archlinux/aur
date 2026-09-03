@@ -4,7 +4,7 @@ pkgname=python-bflb-fw-post-proc
 _name=${pkgname#python-}
 _name=${_name//-/_}
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Bouffalolab Firmware Post Proc"
 arch=('any')
 url="https://pypi.org/project/${_name}"
@@ -26,12 +26,15 @@ _pymakedeps=(
     setuptools
 )
 makedepends=(
-    "${_pymakedeps[@]/#/python-}")
+    "${_pymakedeps[@]/#/python-}"
+)
 options=('!strip')
 optdepends=(
     "python-bflb-flash-command-uart: Bouffalolab Flash Command Tool"
     "python-bflb-mcu-tool: BOUFFALOLAB MCU TOOL"
+	"python-bflb-mcu-tool-uart: Bouffalolab Iot Tool uart"
 	"python-bflb-iot-tool: BOUFFALOLAB IOT TOOL"
+    "python-bflb-iot-tool-uart: Bouffalolab Mcu Tool uart"
 )
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
