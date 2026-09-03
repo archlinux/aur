@@ -3,19 +3,22 @@
 pkgname=python-bflb-mcu-tool
 _name=${pkgname#python-}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="BOUFFALOLAB MCU TOOL"
 arch=('any')
 url="https://pypi.org/project/bflb-mcu-tool"
 license=(MIT)
 groups=()
+provides=(${pkgname} ${_name})
+conflicts=(${pkgname} ${_name})
 _pydeps=(
     ecdsa
     six
     pycryptodome
     pylink-square
-    pyserial)
+    pyserial
+)
 depends=(
     gcc-libs
     glibc
@@ -31,9 +34,18 @@ _pymakedeps=(
     build
     installer
     wheel
-    setuptools)
+    setuptools
+)
 makedepends=(
-    "${_pymakedeps[@]/#/python-}")
+    "${_pymakedeps[@]/#/python-}"
+)
+optdepends=(
+    "python-bflb-flash-command-uart: Bouffalolab Flash Command Tool"
+    "python-bflb-fw-post-proc: Bouffalolab Firmware Post Proc"
+	"python-bflb-mcu-tool-uart: Bouffalolab Iot Tool uart"
+	"python-bflb-iot-tool: BOUFFALOLAB IOT TOOL"
+    "python-bflb-iot-tool-uart: Bouffalolab Mcu Tool uart"
+)
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
