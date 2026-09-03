@@ -1,7 +1,7 @@
 pkgbase = python-docling-core
 	pkgdesc = A python library to define and validate data types in Docling.
-	pkgver = 2.92.0
-	pkgrel = 2
+	pkgver = 2.94.1
+	pkgrel = 1
 	url = https://github.com/docling-project/docling-core
 	arch = any
 	license = MIT
@@ -11,7 +11,6 @@ pkgbase = python-docling-core
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python>=3.10
-	depends = python<4.0
 	depends = python-jsonschema>=4.16.0
 	depends = python-jsonref>=1.1.0
 	depends = python-tabulate>=0.9.0
@@ -33,10 +32,9 @@ pkgbase = python-docling-core
 	optdepends = python-tree-sitter-c>=0.23.4: C code chunking
 	optdepends = python-tree-sitter-javascript>=0.23.1: JavaScript code chunking
 	optdepends = python-tree-sitter-typescript>=0.23.2: TypeScript code chunking
-	optdepends = python-transformers>=5.4.0: Hugging Face tokenization for chunking
-	optdepends = python-huggingface-hub: Hugging Face model downloads for chunking tokenizers
+	optdepends = python-transformers>=4.42.0: Hugging Face tokenization for chunking
 	optdepends = python-tiktoken>=0.9.0: OpenAI tokenization for chunking
-	source = https://files.pythonhosted.org/packages/source/d/docling-core/docling_core-2.92.0.tar.gz
-	b2sums = 68a65e88556be66da581ce8a034b77fd863318bf8415bbc8803c7cdc98f69a86c24c4c322bee96967c1363cc9123641d0123381ef2e5b60fa687d68b32fa8e06
+	source = docling-core-2.94.1.tar.gz::https://github.com/docling-project/docling-core/archive/refs/tags/v2.94.1.tar.gz
+	b2sums = c1574a6580ef8f1998c6c10156b9313c38a23ba8e833c39f7990c7b10daed4cebd96e1acca7ab928012d993e98acf4b556cea0d5e60535ab74710afa9ee7d20b
 
 pkgname = python-docling-core
