@@ -1,0 +1,14 @@
+pkgbase = warpdir
+	pkgdesc = shortcuts/bookmarks to directories
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://xr0.org/src/wd-rs
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	source = warpdir-0.1.3.tar.gz::https://xr0.org/src/wd-rs/uv/warpdir-0.1.3-src.tar.gz
+	sha256sums = 13cd50b664df0c5956e5cb336f129bd021a4df7a5d8153ce67b7e2dbb55f20ba
+
+pkgname = warpdir
