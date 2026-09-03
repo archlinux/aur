@@ -1,18 +1,16 @@
 pkgbase = toolshed
 	pkgdesc = Utilities for Tandy Color Computer and Dragon microcomputers cross-development.
-	pkgver = 2.6.0
-	pkgrel = 2
+	pkgver = 2.6.1
+	pkgrel = 1
 	url = https://github.com/nitros9project/toolshed
 	arch = x86_64
 	license = LicenseRef-CASM
 	makedepends = discount
 	makedepends = git
 	depends = fuse2
-	source = git+https://github.com/nitros9project/toolshed.git#tag=v2.6.0
-	source = sde-timestamp-fix.patch::https://github.com/nitros9project/toolshed/commit/9e93026.patch
+	source = git+https://github.com/nitros9project/toolshed.git#tag=v2.6.1
 	source = LICENSE
-	sha256sums = 216576e8750a061c36cdab46b5e677759717516a3e575c11a35eaa4462d9ce80
-	sha256sums = 24b3eb2648f52e279f703f21dbf8163894ef93cd021307a63561c5ade6397005
+	sha256sums = 50a668352cd975514c00dbcea16ba70e507711f820dfb8165ff975db1d4a5f4a
 	sha256sums = be7db99354b7c0a516ecae7fbb9b91f920e6732082dfd9e9a9b01c97f91d5a91
 
 pkgname = toolshed
