@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Dongda Li <dongdongbhbh at gmail dot com>
 pkgname=mindwtr
-pkgver=1.2.6
-pkgrel=2
+pkgver=1.2.7
+pkgrel=1
 _nodeversion=24
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
 arch=('x86_64')
@@ -33,9 +33,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/dongdongbh/Mindwtr/archive/
         "pnpm-lock.yaml"
         "pnpm-workspace.yaml"
 )
-sha256sums=('ce62282482bf5cfceed877c75b8921da9695909a02916233084269400859cc8a'
+sha256sums=('bcd4518b2cfed0bc551b5754c8923846459acfdbc3857d6b1b32e7f73ec74a9f'
             'c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c'
-            'f308b5630e6992a21c136d34d77f1dc58fa264f54ac9d70ec508b172817d48a8'
+            '715119bbb90bc43ed867831ce3ec105c3f443b0fbd301aa08e601d7514632bef'
             '4147dc8bee4e18f2d7776c90cfcb09b81223735ebabc67ac87d063aff510f7e3')
 
 _ensure_local_nvm() {
@@ -54,13 +54,10 @@ prepare() {
   _ensure_local_nvm
   nvm install "${_nodeversion}"
 
-  cp -f "$srcdir/pnpm-lock.yaml" pnpm-lock.yaml
-  cp -f "$srcdir/pnpm-workspace.yaml" pnpm-workspace.yaml
-
-  export PNPM_HOME="$srcdir/pnpm-home"
-  pnpm install --frozen-lockfile --ignore-scripts
-  sed -i 's/\"beforeBuildCommand\": \"bun run build:vite\"/\"beforeBuildCommand\": \"pnpm run build:vite\"/' \
-    apps/desktop/src-tauri/tauri.conf.json
+  cp "$srcdir/pnpm-lock.yaml" pnpm-lock.yaml
+  cp "$srcdir/pnpm-workspace.yaml" pnpm-workspace.yaml
+  pnpm install --frozen-lockfile --ignore-scripts --store-dir "$srcdir/pnpm-store"
+  sed -i 's/\"beforeBuildCommand\": \"bun run build:vite\"/\"beforeBuildCommand\": \"pnpm run build:vite\"/' apps/desktop/src-tauri/tauri.conf.json
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --manifest-path apps/desktop/src-tauri/Cargo.toml \
