@@ -1,6 +1,6 @@
 pkgbase = datazen-bin
 	pkgdesc = Lightweight, open-source AI database client
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/flyxl/datazen
 	arch = x86_64
@@ -18,12 +18,13 @@ pkgbase = datazen-bin
 	depends = webkit2gtk-4.1
 	provides = datazen
 	conflicts = datazen
-	noextract = datazen-bin-0.1.1.deb
+	noextract = datazen-bin-0.1.2.deb
 	options = !strip
 	options = !debug
-	source = datazen-bin-0.1.1.deb::https://github.com/flyxl/datazen/releases/download/v0.1.1/DataZen_0.1.1_amd64-linux-x64.deb
-	source = LICENSE-0.1.1::https://raw.githubusercontent.com/flyxl/datazen/v0.1.1/LICENSE
-	sha256sums = 620ec53e1095400a957802af9990ff16f0f3227728b325644c774ccd2dff777a
+	source = datazen-bin-0.1.2.deb::https://github.com/flyxl/datazen/releases/download/v0.1.2/linux-DataZen_0.1.2_amd64-linux-x64.deb
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/flyxl/datazen/v0.1.2/LICENSE
+	sha256sums = f0430fbc8c85d90aa1693d63d58ab05d13ddd6f9d2fbba97388821b59c0b15d7
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = datazen-bin
+
