@@ -1,14 +1,15 @@
 # Maintainer: taxin-404 <taxin404@duck.com>
 
 pkgname=flea
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy'
 arch=('x86_64')
 url='https://github.com/thisisgm/flea'
 license=('MIT')
 # omarchy owns /usr/share/omarchy/shell, which ui/Commons and ui/Ui link into; quickshell owns qs.
-depends=('bubblewrap' 'glib2' 'omarchy' 'quickshell' 'shared-mime-info' 'xdg-utils')
+# util-linux is needed since 0.1.3: the sandbox refuses the job without prlimit, which it ships.
+depends=('bubblewrap' 'glib2' 'omarchy' 'quickshell' 'shared-mime-info' 'util-linux' 'xdg-utils')
 makedepends=('cargo')
 optdepends=('libarchive: archive listing and extraction'
             '7zip: 7z archive support'
@@ -17,7 +18,7 @@ optdepends=('libarchive: archive listing and extraction'
 # The release profile strips, so a debug package would have nothing to hold.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thisisgm/flea/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3788a735be2cb6eef0c1770833c82bc6591e20b7681fe02172aaea21c2a2d8fb')
+sha256sums=('3599ab76253c444dea027f1ebe85b32612d9a174e60eb8aca33ee21d9e2d6973')
 
 build() {
   cd "$pkgname-$pkgver"
