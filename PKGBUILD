@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-gui10
-pkgver=10.0.0
-pkgrel=2
+pkgver=10.1.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Graphical interfaces for robotics applications"
@@ -34,7 +34,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('b5dd33aa20c43e34bbaf2c0c00a5bf5643f31d7808b52a38e90107b32f31b1c3')
+sha256sums=('43089a424c2e71038676710cdb3c9f71fcf4f788aeb426be36de102f541585b4')
 
 prepare() {
   cd "${_pkgbase}-${pkgname}_${pkgver}"
