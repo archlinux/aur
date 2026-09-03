@@ -1,0 +1,15 @@
+pkgbase = schemat
+	pkgdesc = Code formatter for Scheme, Lisp, and any S-expressions
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/raviqqe/schemat
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = schemat-0.5.8.tar.gz::https://github.com/raviqqe/schemat/archive/v0.5.8.tar.gz
+	b2sums = eb262fbe5b205d828f1b88e466bf7210e3396a1317fe3ce6e497c76e56d6bac436d218fbe5958b3a88825989f80d55c881a66c457f4cf4401714757d639b4c58
+
+pkgname = schemat

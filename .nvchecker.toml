@@ -1,0 +1,4 @@
+[schemat]
+source = "github"
+github = "raviqqe/schemat"
+prefix = "v"
