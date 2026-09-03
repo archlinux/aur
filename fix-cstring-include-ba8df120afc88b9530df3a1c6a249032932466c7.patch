@@ -1,0 +1,61 @@
+From ba8df120afc88b9530df3a1c6a249032932466c7 Mon Sep 17 00:00:00 2001
+From: Kai Engert <kaie@kuix.de>
+Date: Tue, 24 Mar 2026 14:39:00 +0100
+Subject: [PATCH] Fix build with Botan head and typos warnings
+
+- Add missing <cstring> include in mem.cpp
+- Rename cpy variables to copy in s2k_ossl.cpp and fingerprint.hpp
+
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
+---
+ src/lib/crypto/mem.cpp      | 1 +
+ src/lib/crypto/s2k_ossl.cpp | 8 ++++----
+ src/lib/fingerprint.hpp     | 4 ++--
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/lib/crypto/mem.cpp b/src/lib/crypto/mem.cpp
+index 94d90f5484..dbd2a143ed 100644
+--- a/src/lib/crypto/mem.cpp
++++ b/src/lib/crypto/mem.cpp
+@@ -25,6 +25,7 @@
+  */
+ 
+ #include <cstdio>
++#include <cstring>
+ #include "mem.h"
+ #include "logging.h"
+ #include <botan/ffi.h>
+diff --git a/src/lib/crypto/s2k_ossl.cpp b/src/lib/crypto/s2k_ossl.cpp
+index de05b83a62..b810f87336 100644
+--- a/src/lib/crypto/s2k_ossl.cpp
++++ b/src/lib/crypto/s2k_ossl.cpp
+@@ -76,10 +76,10 @@ pgp_s2k_iterated(pgp_hash_alg_t alg,
+                 }
+             }
+             auto   dgst = hash->sec_finish();
+-            size_t out_cpy = std::min(dgst.size(), output_len);
+-            memcpy(out, dgst.data(), out_cpy);
+-            output_len -= out_cpy;
+-            out += out_cpy;
++            size_t out_copy = std::min(dgst.size(), output_len);
++            memcpy(out, dgst.data(), out_copy);
++            output_len -= out_copy;
++            out += out_copy;
+             zeroes++;
+         }
+         return 0;
+diff --git a/src/lib/fingerprint.hpp b/src/lib/fingerprint.hpp
+index b9ff1581f2..5c41257ea7 100644
+--- a/src/lib/fingerprint.hpp
++++ b/src/lib/fingerprint.hpp
+@@ -88,8 +88,8 @@ template <> struct hash<pgp::Fingerprint> {
+     {
+         /* since fingerprint value is hash itself, we may use its low bytes */
+         size_t res = 0;
+-        size_t cpy = std::min(sizeof(res), fp.size());
+-        std::memcpy(&res, fp.data(), cpy);
++        size_t copy = std::min(sizeof(res), fp.size());
++        std::memcpy(&res, fp.data(), copy);
+         return res;
+     }
+ };
