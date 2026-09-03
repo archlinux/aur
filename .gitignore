@@ -2,3 +2,4 @@
 positron-ide-*
 src
 pkg
+*.github
