@@ -1,13 +1,13 @@
 pkgbase = git-pkgs-forge
 	pkgdesc = CLI for working with git forges (GitHub, GitLab, Gitea/Forgejo, Bitbucket Cloud, Gerrit, Tangled)
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/git-pkgs/forge
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = git-pkgs-forge-0.9.0.tar.gz::https://github.com/git-pkgs/forge/archive/v0.9.0.tar.gz
-	sha256sums = bd5515d68261101733595e2410124fbc4118763a42ff56464820d078f0ee1ba3
+	source = git-pkgs-forge-0.10.0.tar.gz::https://github.com/git-pkgs/forge/archive/v0.10.0.tar.gz
+	sha256sums = fb221afbe54cbd8dcfbe5a476df0b6aa93bea83e23455ac8eaca3b7b0eedd33c
 
 pkgname = git-pkgs-forge

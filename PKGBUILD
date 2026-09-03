@@ -9,7 +9,7 @@
 # (macOS), let's follow suit
 pkgname=git-pkgs-forge
 _cmdname=forge
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='CLI for working with git forges (GitHub, GitLab, Gitea/Forgejo, Bitbucket Cloud, Gerrit, Tangled)'
 arch=(x86_64)
@@ -18,7 +18,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bd5515d68261101733595e2410124fbc4118763a42ff56464820d078f0ee1ba3')
+sha256sums=('fb221afbe54cbd8dcfbe5a476df0b6aa93bea83e23455ac8eaca3b7b0eedd33c')
 
 build() {
   cd "$_cmdname-$pkgver"
