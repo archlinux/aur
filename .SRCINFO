@@ -1,6 +1,6 @@
 pkgbase = idrive-desktop-bin
 	pkgdesc = IDrive for Linux - official Electron desktop GUI for cloud backup, restore and sync
-	pkgver = 1.7.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://www.idrive.com/online-backup-download
 	install = idrive-desktop-bin.install
@@ -20,7 +20,6 @@ pkgbase = idrive-desktop-bin
 	depends = python-gobject
 	depends = python-watchdog
 	depends = python-psutil
-	depends = python-dbus
 	optdepends = valkey: Cloud Sync / Cloud Drive real-time folder sync (redis-compatible server)
 	optdepends = libappindicator-gtk3: system tray icon
 	optdepends = nautilus: file manager integration

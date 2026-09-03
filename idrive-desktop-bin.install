@@ -14,18 +14,21 @@ _idrive_user() {
 	printf '%s' "$u"
 }
 
-# Copy the cloud-sync overlay extension + emblem icons into the user's home,
-# mirroring the upstream .deb postinst (Nautilus, Nemo and Caja).
+# Copy the cloud-sync overlay + context-menu extensions and emblem icons into
+# the user's home, mirroring the upstream .deb postinst (Nautilus, Nemo, Caja).
 _idrive_overlay() {
-	local u="$1" home d
-	local src_py="$_idrive_dir/resources/app.asar.unpacked/daemon/idrive_overlay_xattr.py"
-	local src_assets="$_idrive_dir/resources/app.asar.unpacked/daemon/assets"
+	local u="$1" home d py
+	local src_dir="$_idrive_dir/resources/app.asar.unpacked/daemon"
+	local src_assets="$src_dir/assets"
 	home=$(getent passwd "$u" | cut -d: -f6)
-	[ -d "$home" ] && [ -f "$src_py" ] || return 0
+	[ -d "$home" ] && [ -f "$src_dir/idrive_overlay_xattr.py" ] || return 0
 	for d in nautilus nemo caja; do
 		install -d -o "$u" -g "$u" "$home/.local/share/$d-python/extensions"
-		install -m644 -o "$u" -g "$u" "$src_py" \
-			"$home/.local/share/$d-python/extensions/" 2>/dev/null || true
+		for py in idrive_overlay_xattr.py idrive-context-menu.py; do
+			[ -f "$src_dir/$py" ] || continue
+			install -m644 -o "$u" -g "$u" "$src_dir/$py" \
+				"$home/.local/share/$d-python/extensions/" 2>/dev/null || true
+		done
 	done
 	if [ -d "$src_assets" ]; then
 		for d in "$home/.icons/hicolor/16x16/emblems" \
@@ -77,6 +80,6 @@ post_remove() {
 	extensions copied into your ~/.local/share/*-python/extensions are NOT removed
 	automatically. To fully purge:
 	    sudo rm -rf $_idrive_dir
-	    rm -f ~/.local/share/{nautilus,nemo,caja}-python/extensions/idrive_overlay_xattr.py
+	    rm -f ~/.local/share/{nautilus,nemo,caja}-python/extensions/{idrive_overlay_xattr.py,idrive-context-menu.py}
 	EOF
 }

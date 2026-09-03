@@ -1,6 +1,6 @@
 # Maintainer: Andy <this.is.apb@gmail.com>
 pkgname=idrive-desktop-bin
-pkgver=1.7.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="IDrive for Linux - official Electron desktop GUI for cloud backup, restore and sync"
 arch=('x86_64')
@@ -11,8 +11,7 @@ license=('LicenseRef-IDrive')
 # valkey is NOT here: redis is used only by the Cloud Sync daemon (sync-daemon,
 # pkg "clouddrive"), so backup/restore and the GUI work without it -> optdepend.
 depends=('nss' 'curl' 'sqlite' 'cronie' 'glib2' 'gtk3' 'xdotool' 'rsync' 'attr'
-         'popt' 'python' 'python-gobject' 'python-watchdog' 'python-psutil'
-         'python-dbus')
+         'popt' 'python' 'python-gobject' 'python-watchdog' 'python-psutil')
 optdepends=('valkey: Cloud Sync / Cloud Drive real-time folder sync (redis-compatible server)'
             'libappindicator-gtk3: system tray icon'
             'nautilus: file manager integration'
