@@ -25,6 +25,7 @@ pkgbase = polland-de-full
 	depends = pipewire
 	depends = pipewire-pulse
 	depends = kexec-tools
+	depends = fastfech
 	depends = easyeffects
 	depends = lsp-lv2
 	depends = x42-plugins-lv2

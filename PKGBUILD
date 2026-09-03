@@ -26,7 +26,7 @@ depends=(
     'pipewire'
     'pipewire-pulse'
     'kexec-tools'
-    
+    'fastfech'
     # === AUDIO ENHANCEMENT ===
     'easyeffects'                 # Audio effects
     'lsp-lv2'                     # Audio plugins
