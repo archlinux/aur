@@ -1,7 +1,7 @@
 # Maintainer: Aeldit <aeldit.66@proton.me>
 
 pkgname=aeosd
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="An OSD for changing screen brightness"
 arch=("any")
@@ -13,7 +13,7 @@ depends=(
 )
 makedepends=(cargo)
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=("f6647a76f305016847266816d78fabf4963af0cda2daee784e1ed4981acfcae0")
+sha256sums=("01da30a28492dbeb3a015a14c95411199f7672bbf00ac4ae7fbb7c02bcdabff5")
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -28,4 +28,5 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+    install -vDm644 -t "$pkgdir/etc/udev/rules.d/" "90-aeosd.rules"
 }
