@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Local-first BitTorrent TUI with a VPN kill-switch and in-app streaming"
 
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,11 +29,11 @@ source=("CONFIG_EXAMPLE-${pkgver}.yaml::${_ghurlraw}/config.example.yaml"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('2bef7a5b3dcbbe32c8cbd2563b5e6214271f04acedcc44369fb24528113b4f28'
-            'ce2bbf0cdd7f018fab4449569af7c675350f60779ba7ce689b1f2c4115c7710c'
+sha256sums=('5fb1a8024b2f8167c39f49aa9a6d7e6429040956ffed8134fa1f1ee564f79f7c'
+            '829f46fee7add6e1e70b7dc1716cd437241c9ef61e2fe2be9844804b196ad379'
             '97773d070c525e2cf9df0e500eb0c8f2e4b950ea0122f5eff4b3602f090fde81')
-sha256sums_x86_64=('d1f8e150a45e4158f60dc9122f334605014326485b3f2f01243e6f1e7bb10034')
-sha256sums_aarch64=('72cd278cd9193ad18a7d45c7ab17df46310ab9bf19fd26a7c0b5dd93d66caead')
+sha256sums_x86_64=('7d8f964e1d4623b4a0fb2a4008479929309a412e5ad1c3159d53d4dcbae8b72e')
+sha256sums_aarch64=('06d59b42d6ac33aed5da93fc8613a44f9db5760cbbaf7afade290828023d226d')
 
 
 package() {
