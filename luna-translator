@@ -10,9 +10,6 @@ if [ ! -d "$HOME"/.luna-translator ] ; then
     cp -r /usr/share/luna-translator/files "$HOME"/.luna-translator/files
     ln -s /usr/share/luna-translator/LunaTranslator.exe "$HOME"/.luna-translator/LunaTranslator.exe
     ln -s -T /usr/share/luna-translator/LunaTranslator "$HOME"/.luna-translator/LunaTranslator
-
-    # Set Windows version
-    wine reg add "HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\LunaTranslator.exe" /f /t REG_SZ /v Version /d win11
 fi
 
 # Update files if version changed
@@ -22,5 +19,8 @@ if [ "$luna_version" != "$(cat "$HOME"/.luna-translator/.version)" ]; then
     cp -r /usr/share/luna-translator/files "$HOME"/.luna-translator/files || exit 1
     echo "$luna_version" > "$HOME"/.luna-translator/.version
 fi
+
+# Set Windows version
+wine reg add "HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\LunaTranslator.exe" /f /t REG_SZ /v Version /d win11
 
 wine "$HOME"/.luna-translator/LunaTranslator.exe "$@"
