@@ -1,10 +1,10 @@
 # Maintainer: Arthurmeade12 <s728c3ilp at relay dot firefox dot com>
 # Former Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Former Contributor: ml <>
-# Last edited August 16th 2026 @Arthurmeade12
+# Last edited September 4th 2026 @Arthurmeade12
 
 pkgname=alda
-pkgver=2.4.5
+pkgver=2.4.7
 pkgrel=1
 pkgdesc='A music programming language for musicians'
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('alda-bin')
 makedepends=('go')
 source=("$pkgname-release-$pkgver.tar.gz::https://codeload.github.com/$pkgname-lang/$pkgname/tar.gz/refs/tags/release-$pkgver"
   alda-player )
-b2sums=('22be2bb1f2a18a69ec71bc368c3490a0fde2a99692d06db85a85cab9c87ed0c23325289dda200755975e963aaf25174337629b0b9062e3b5c99836924f15f99c'
+b2sums=('00c26c76f063eb421eb39bbda8732333b84797cfe82d2d97ca2ff1aed46c7b97772a21c96c1f6809410e3cd921f30d279e5df971f79231021666615b64afc53a'
   '5d6bdd39c1178fd5504a308d95606a82bae781159128e3c5d79c989a253871b36f92123410479d8734df2dbf335ccab2f194d99503fddb76f9e86bb0ed8acee4')
 
 build() {
