@@ -13,25 +13,25 @@ _urlraw="https://raw.githubusercontent.com/${_appauthor}/${_appname}/v${pkgver//
 license=('Apache-2.0')
 
 depends=()
-provides=("${_appname}")
-conflicts=("${_appname}")
+provides=("${_execname}")
+conflicts=("${pkgname%-bin}")
 
 install="${_execname}.install"
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "TUTORIAL-${pkgver}.md::${_urlraw}/docs/Tutorial.md"
-        "fibonacci-memoized-${pkgver}.rsh::${_urlraw}/examples/fibonacci-memoized.rsh"
+        "guess-${pkgver}.rsh::${_urlraw}/examples/guess.rsh"
         "fibonacci-${pkgver}.rsh::${_urlraw}/examples/fibonacci.rsh"
-        "guess-${pkgver}.rsh::${_urlraw}/examples/guess.rsh")
+        "fibonacci-memoized-${pkgver}.rsh::${_urlraw}/examples/fibonacci-memoized.rsh")
 source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver//_/-}/${_execname}-${arch[0]}-unknown-linux-musl.tgz")
 source_aarch64=("${pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver//_/-}/${_execname}-${arch[1]}-unknown-linux-musl.tgz")
 sha256sums=('efe25c1d429a558b4c784691119aa8c3dfee24910f4cb0e97b79bc0a79fd2cc1'
             '1e6ec244152059358872c9d1bfbb538d1a7a9da6fd269b7cda6e5d156150139d'
             'e9178feb32e578858b2894cc084831182e50b6b5def6c22ed53f78eebc3fca67'
-            '4de35e1288bd083b3eb3dfa609c13d7f6b270c34d8bff7c8f2bd779591b7eac1'
+            '306c6c95be38ddc4eb30e1b28413ea3a7e13d1767ff7a85a4802f7b70fbfeba8'
             '343653a05fb09514b663de3828019ea0ab50df0898ac94789d0bdbff950f935d'
-            '306c6c95be38ddc4eb30e1b28413ea3a7e13d1767ff7a85a4802f7b70fbfeba8')
+            '4de35e1288bd083b3eb3dfa609c13d7f6b270c34d8bff7c8f2bd779591b7eac1')
 sha256sums_x86_64=('3696152b76cc592270a5cd0f3468cd070b8baf53c941d6529b318aaef9c69473')
 sha256sums_aarch64=('4c2acc9d8bae4e84ab08fb4e02e32853a8a04bcf5cd710e92f36267b5ef7f364')
 
