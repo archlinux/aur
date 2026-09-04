@@ -1,0 +1,5 @@
+[telegram-desktop]
+source = "github"
+github = "Mercurygram/mdesktop"
+use_latest_release = true
+prefix = "v"
