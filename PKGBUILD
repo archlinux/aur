@@ -1,7 +1,7 @@
 _basepkg=kyanite
 
 pkgname="${_basepkg}-git"
-pkgver=r263.dbe87df
+pkgver=r283.6cf2fd7
 pkgrel=1
 pkgdesc='A lightweight, graphical text editor'
 arch=('x86_64' 'i686' 'aarch64' 'armv7')
@@ -47,8 +47,4 @@ package() {
 
 	# Copy Desktop Entry
 	install -Dm 0644 resources/metadata/ca.potatoe.Kyanite.desktop "${pkgdir}/usr/share/applications/ca.potatoe.Kyanite.desktop"
-
-	# Copy Icons (thanks Spike!)
-	cd resources/icons/hicolor
-	find . -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/share/icons/hicolor/{}" \;
 }

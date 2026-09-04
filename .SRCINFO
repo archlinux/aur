@@ -1,6 +1,6 @@
 pkgbase = kyanite-git
 	pkgdesc = A lightweight, graphical text editor
-	pkgver = r263.dbe87df
+	pkgver = r283.6cf2fd7
 	pkgrel = 1
 	url = https://codeberg.org/pastthepixels/kyanite
 	arch = x86_64
