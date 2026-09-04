@@ -1,6 +1,6 @@
 # Maintainer: neolax <NEOLAX@proton.me>
 pkgname=anihub-cli
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Unofficial terminal client for browsing and watching anime from AniHub'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'mpv')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dd678ddc4ea7c5df5a2af93de0344a33fd2ee044237af5f127d40e9e5cc93569')
+sha256sums=('d38babb6cebdca836f188fa09d51e7877966944427bee9b00fb4dda7c31bdba2')
 
 prepare() {
   cd "$pkgname-$pkgver"
