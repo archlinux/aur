@@ -1,0 +1,15 @@
+pkgbase = rotatrix
+	pkgdesc = Rotatrix configuration application (AppImage)
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://rotatrix.com/
+	arch = x86_64
+	license = LicenseRef-Rotatrix
+	options = !strip
+	options = !debug
+	source = Rotatrix-1.5.1-linux-x86_64.AppImage::rotatrix://Rotatrix-1.5.1-linux-x86_64.AppImage
+	source = LICENSE
+	sha256sums = 7e0e5cbae055262ba723c59404549107d186a8cf1217cfd449cff3e46f68059a
+	sha256sums = c38bb9b9c10c1a0cf7aa327432c3fd12cece2714ab9fe06799c7440cac383dfb
+
+pkgname = rotatrix

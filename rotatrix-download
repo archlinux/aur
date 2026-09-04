@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Fetches the Rotatrix AppImage.
+# The per customer # download key is secret.
+# `curl` reads it from a config file on stdin.
+
+readonly base_url="https://download.rotatrix.com/download"
+readonly key_dir="${XDG_DATA_HOME:-$HOME/.local/share}/Rotatrix"
+readonly key_file="$key_dir/download.key"
+
+die() { printf '==> ERROR: %s\n' "$*" >&2; exit 1; }
+
+download_key() {
+  local key=''
+
+  if [[ -n ${ROTATRIX_DOWNLOAD_KEY:-} ]]; then
+    printf '%s' "$ROTATRIX_DOWNLOAD_KEY"
+    return
+  fi
+
+  if [[ -r $key_file ]]; then
+    IFS= read -r key < "$key_file" || true
+    [[ -n $key ]] || die "$key_file is empty, remove it and rebuild"
+    printf '%s' "$key"
+    return
+  fi
+
+  [[ -r /dev/tty ]] || die "no terminal for the key prompt, set ROTATRIX_DOWNLOAD_KEY"
+
+  printf 'Rotatrix download key (kept in %s): ' "$key_file" > /dev/tty
+  IFS= read -rs key < /dev/tty
+  printf '\n' > /dev/tty
+  [[ -n $key ]] || die "no download key provided"
+
+  ( umask 077; mkdir -p -- "$key_dir"; printf '%s' "$key" > "$key_file" ) \
+    || printf '==> WARNING: could not cache the key in %s\n' "$key_file" >&2
+
+  printf '%s' "$key"
+}
+
+[[ $# -eq 2 ]] || die "usage: ${0##*/} rotatrix://<artifact> <output>"
+
+appimage="${1#*://}"
+if [[ $appimage == *[!A-Za-z0-9._-]* ]]; then
+  die "unexpected characters in artifact name: $appimage"
+fi
+
+key="$(download_key)"
+
+curl --config - <<CONFIG
+url = "$base_url"
+url-query = "path=rotatrix/$appimage"
+url-query = "key=$key"
+output = "$2"
+get
+location
+proto = "=https"
+proto-redir = "=https"
+fail
+retry = 3
+connect-timeout = 30
+CONFIG
