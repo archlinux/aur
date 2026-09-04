@@ -1,6 +1,6 @@
 pkgbase = gitmun-bin
   pkgdesc = A cross-platform Git GUI built with Tauri
-  pkgver = 0.10.1
+  pkgver = 0.11.0
   pkgrel = 1
   url = https://github.com/cst8t/gitmun
   install = gitmun.install
@@ -22,8 +22,8 @@ pkgbase = gitmun-bin
   depends = xdg-desktop-portal
   depends = zenity
   source = LICENSE.gitmun
-  source_x86_64 = https://github.com/cst8t/gitmun/releases/download/v0.10.1/gitmun_0.10.1-1_amd64.deb
+  source_x86_64 = https://github.com/cst8t/gitmun/releases/download/v0.11.0/gitmun_0.11.0-1_amd64.deb
   sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-  sha256sums_x86_64 = 1987050a45f112b1b2f593868bcd3fbcdbc7989cd3d954802dae0e42491a4583
+  sha256sums_x86_64 = a7bac6183570dea3d74f3f06ecc1c633c3436d420e1dce174ad915ea4ea1911c
 
 pkgname = gitmun-bin
