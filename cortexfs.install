@@ -1,0 +1,33 @@
+post_install() {
+    [[ ${CORTEXFS_UPDATE_TRANSACTION:-0} == 1 ]] && return
+    systemctl daemon-reload >/dev/null 2>&1 || true
+    systemctl enable cortexfs.service cortexfs-terminal-broker.socket >/dev/null 2>&1 || true
+}
+
+post_upgrade() {
+    [[ ${CORTEXFS_UPDATE_TRANSACTION:-0} == 1 ]] && return
+    systemctl daemon-reload >/dev/null 2>&1 || true
+    systemctl enable --now cortexfs-terminal-broker.socket >/dev/null 2>&1 || true
+    systemctl try-restart cortexfs-terminal-broker.service >/dev/null 2>&1 || true
+    if systemctl is-active --quiet cortexfs.service; then
+        systemctl try-restart cortexfs.service >/dev/null 2>&1 || true
+        for socket_path in /etc/systemd/system/sockets.target.wants/cortexfs-agent@*.socket; do
+            [[ -e $socket_path ]] || continue
+            socket=${socket_path##*/}
+            systemctl start "$socket" >/dev/null 2>&1 || true
+        done
+    fi
+}
+
+pre_remove() {
+    [[ ${CORTEXFS_UPDATE_TRANSACTION:-0} == 1 ]] && return
+    if [[ ${1:-} == remove ]]; then
+        systemctl disable --now cortexfs.service cortexfs-terminal-broker.service \
+            cortexfs-terminal-broker.socket >/dev/null 2>&1 || true
+    fi
+}
+
+post_remove() {
+    [[ ${CORTEXFS_UPDATE_TRANSACTION:-0} == 1 ]] && return
+    systemctl daemon-reload >/dev/null 2>&1 || true
+}

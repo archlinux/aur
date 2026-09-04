@@ -1,21 +1,27 @@
 pkgbase = cortexfs-git
-	pkgdesc = Unix-style filesystem and CLI surface for AI agents
-	pkgver = 0.1.0.r577.gf117ea5
+	pkgdesc = FUSE filesystem interface for agent runtimes
+	pkgver = 0.1.21.r871.g32cd6ad
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/cortexfs
+	install = cortexfs.install
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	makedepends = cargo
 	makedepends = git
+	makedepends = pkgconf
+	makedepends = rust
+	depends = bubblewrap>=0.10.0
+	depends = ca-certificates
+	depends = curl
 	depends = fuse3
-	depends = libgcc
+	depends = libsecret
+	depends = systemd
+	depends = util-linux
 	provides = cortexfs
 	provides = cortex-cli
 	conflicts = cortexfs
 	conflicts = cortex-cli
-	source = git+https://github.com/LIghtJUNction/cortexfs.git
-	source = LICENSE
-	sha256sums = SKIP
+	source = git+https://github.com/LIghtJUNction/cortexfs.git#branch=main
 	sha256sums = SKIP
 
 pkgname = cortexfs-git

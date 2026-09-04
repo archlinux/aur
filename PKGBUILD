@@ -1,58 +1,79 @@
 # Maintainer: LIghtJUNction <lightjunction@users.noreply.github.com>
 
 pkgname=cortexfs-git
-pkgver=0.1.0.r577.gf117ea5
+pkgver=0.1.21.r871.g32cd6ad
 pkgrel=1
-pkgdesc="Unix-style filesystem and CLI surface for AI agents"
-arch=('x86_64')
-url="https://github.com/LIghtJUNction/cortexfs"
+pkgdesc='FUSE filesystem interface for agent runtimes'
+arch=('x86_64' 'aarch64')
+url='https://github.com/LIghtJUNction/cortexfs'
 license=('MIT')
-depends=('fuse3' 'libgcc')
-makedepends=('cargo' 'git')
+depends=('bubblewrap>=0.10.0' 'ca-certificates' 'curl' 'fuse3' 'libsecret' 'systemd' 'util-linux')
+makedepends=('git' 'pkgconf' 'rust')
 provides=('cortexfs' 'cortex-cli')
 conflicts=('cortexfs' 'cortex-cli')
-source=(
-  'git+https://github.com/LIghtJUNction/cortexfs.git'
-  'LICENSE'
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+install=cortexfs.install
+source=('git+https://github.com/LIghtJUNction/cortexfs.git#branch=main')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/cortexfs"
-  printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  local version
+  version=$(awk '
+    $0 == "[workspace.package]" { inside = 1; next }
+    inside && /^version[[:space:]]*=/ {
+      gsub(/[^0-9.]/, "", $0)
+      print $0
+      exit
+    }
+  ' Cargo.toml)
+  printf '%s.r%s.g%s' "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
   cd "$srcdir/cortexfs"
-  cargo build --release --locked -p cortexfs \
-    --bin ctx \
-    --bin tsh \
-    --bin ctxterm \
-    --bin cortexfs-mount \
-    --bin cortexfs-agent-runtime \
-    --bin cortexfs-object-runner \
-    --all-features
+  unset CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
+  cargo build --release --locked \
+    -p cortexfs -p cortexfs-mcp -p cortexfs-channel-tools \
+    -p cortexfs-agents -p cortexfs-futureagi --bins
 }
 
 package() {
   cd "$srcdir/cortexfs"
-  install -Dm755 target/release/ctx "$pkgdir/usr/bin/ctx"
-  install -Dm755 target/release/tsh "$pkgdir/usr/bin/tsh"
-  install -Dm755 target/release/ctxterm "$pkgdir/usr/bin/ctxterm"
-  install -Dm755 target/release/cortexfs-mount "$pkgdir/usr/bin/cortexfs-mount"
-  install -Dm755 target/release/cortexfs-agent-runtime "$pkgdir/usr/bin/cortexfs-agent-runtime"
-  install -Dm755 target/release/cortexfs-object-runner "$pkgdir/usr/bin/cortexfs-object-runner"
-  install -Dm644 packaging/systemd/cortexfs.service "$pkgdir/usr/lib/systemd/system/cortexfs.service"
-  install -Dm644 packaging/systemd/cortexfs-agent@.service "$pkgdir/usr/lib/systemd/system/cortexfs-agent@.service"
-  install -Dm644 packaging/systemd/cortexfs-agent@.socket "$pkgdir/usr/lib/systemd/system/cortexfs-agent@.socket"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 docs/DESIGN.md "$pkgdir/usr/share/doc/$pkgname/DESIGN.md"
-  find docs/spec -type f -name '*.md' -print0 |
-    while IFS= read -r -d '' doc; do
-      install -Dm644 "$doc" "$pkgdir/usr/share/doc/$pkgname/$doc"
-    done
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  local binary unit
+  install -d -m 0755 \
+    "$pkgdir/usr/bin" \
+    "$pkgdir/usr/lib/systemd/system" \
+    "$pkgdir/usr/lib/cortexfs" \
+    "$pkgdir/usr/share/doc/cortexfs/docs/spec" \
+    "$pkgdir/usr/share/licenses/cortexfs" \
+    "$pkgdir/etc/cortexfs/providers.d" \
+    "$pkgdir/var/lib/cortexfs/storage/generations"
+  install -d -m 0700 "$pkgdir/var/lib/cortexfs/secrets" "$pkgdir/etc/cortexfs/channels"
+  for binary in \
+    ctx ctxterm ctxchat tsh cortexfs-mount cortexfs-object-runner \
+    cortexfs-terminal-broker cortexfs-agent-runtime cortexfs-auth-runner \
+    cortexfs-channel cortexfs-channel-tool ctxmcp \
+    cortexfs-agent-architect cortexfs-agent-executor cortexfs-agent-product-manager \
+    cortexfs-futureagi; do
+    install -m 0755 "target/release/$binary" "$pkgdir/usr/bin/$binary"
+  done
+  for unit in \
+    cortexfs.service cortexfs-agent@.service cortexfs-agent@.socket \
+    cortexfs-terminal-broker.service cortexfs-terminal-broker.socket \
+    cortexfs-channel@.service cortexfs-channel-bluesky.service \
+    cortexfs-channel-driver@.service cortexfs-channel-telegram.service \
+    cortexfs-channel-dingtalk.service cortexfs-channel-email.service \
+    cortexfs-channel-gmail.service cortexfs-channel-irc.service \
+    cortexfs-channel-matrix.service cortexfs-channel-mattermost.service \
+    cortexfs-channel-mochat.service cortexfs-channel-notion.service \
+    cortexfs-channel-qq.service cortexfs-channel-reddit.service \
+    cortexfs-channel-twitch.service cortexfs-channel-twitter.service; do
+    install -m 0644 "packaging/systemd/$unit" "$pkgdir/usr/lib/systemd/system/$unit"
+  done
+  install -m 0755 scripts/update-linux.sh "$pkgdir/usr/lib/cortexfs/update-linux"
+  install -m 0644 README.md "$pkgdir/usr/share/doc/cortexfs/README.md"
+  install -m 0644 docs/channels.md "$pkgdir/usr/share/doc/cortexfs/docs/channels.md"
+  install -m 0644 docs/futureagi.md "$pkgdir/usr/share/doc/cortexfs/docs/futureagi.md"
+  install -m 0644 docs/spec/*.md "$pkgdir/usr/share/doc/cortexfs/docs/spec/"
+  install -m 0644 LICENSE "$pkgdir/usr/share/licenses/cortexfs/LICENSE"
 }
