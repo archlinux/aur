@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 source=("$url/-/archive/v0.6.3-RC1/MahoragaOS-v0.6.3-RC1.tar.gz"
         "mahoragaos.desktop"
         "mahoragaos.svg")
-sha256sums=('b50624e0f53d1a1755fedf6e5c6eec6a716cc54ebde4c35a05d40a19b04db282'
+sha256sums=('48921d19843ca915997c69848d0c09a01b9269f2962f062193c50b8743c6ec46'
             'SKIP'
             'SKIP')
 
