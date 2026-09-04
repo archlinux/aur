@@ -1,7 +1,7 @@
 pkgbase = mendimaru
 	pkgdesc = Manage Mendix Studio Pro on Linux through WinBoat
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GG-O-BP/mendimaru
 	arch = x86_64
 	license = MIT

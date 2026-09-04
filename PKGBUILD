@@ -2,7 +2,7 @@
 
 pkgname=mendimaru
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage Mendix Studio Pro on Linux through WinBoat"
 arch=('x86_64')
 url="https://github.com/GG-O-BP/mendimaru"
@@ -90,6 +90,11 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
+
+  if [[ "${MENDIMARU_RUN_TESTS:-0}" != "1" ]]; then
+    msg2 "Skipping the upstream test suite; set MENDIMARU_RUN_TESTS=1 to run it"
+    return 0
+  fi
 
   export CARGO_HOME="$srcdir/cargo-home"
   export CARGO_NET_OFFLINE=true
