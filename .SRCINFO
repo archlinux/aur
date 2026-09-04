@@ -1,6 +1,6 @@
 pkgbase = uutils-coreutils-git
 	pkgdesc = Rust rewrite of coreutils
-	pkgver = 0.9.0.r350.ge646122
+	pkgver = 0.11.0.r35.g6feff61
 	pkgrel = 1
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
@@ -10,15 +10,16 @@ pkgbase = uutils-coreutils-git
 	makedepends = rust
 	depends = glibc
 	depends = libgcc
-	depends = oniguruma
 	depends = openssl
 	depends = systemd-libs
 	provides = coreutils
 	conflicts = uutils-coreutils
 	conflicts = coreutils
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
+	source = drop-onig.patch::https://github.com/wtcpython/coreutils/commit/a5b4f743ab166d4e28b337b14faa8fdb0ba1a3d5.patch
 	source = https://github.com/uutils/coreutils/releases/download/latest-commit/docs.tar.zst
 	b2sums = SKIP
-	b2sums = SKIP
+	b2sums = 9bf86101e1b16c20fd61f2aafba390f64882bbf0b8318c72cf21242d36d1797e2011ae69541b5e610010a98f014f5857ee8c3da2d59ea703e8b36b87007fcfd8
+	b2sums = cfc8531e58bd18ff274ef7a30ef98c700b8738f8e32cfe94934a0a6aecd1b0ca26b72691721f695e7a8d5a5ee3665bc0b0ba8d2dd8d82054f5d131430aca4c84
 
 pkgname = uutils-coreutils-git
