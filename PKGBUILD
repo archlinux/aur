@@ -1,19 +1,19 @@
 pkgname=libelectron
-pkgver=2026.5
-pkgrel=3
-libsplashver=1.1
-libadblockver=1.5
-libuseragent=1.1
+pkgver=2026.6
+pkgrel=1
+libsplashver=1.2
+libadblockver=1.6
+libuseragent=1.2
 arch=("x86_64" "aarch64")
 url="https://gitlab.com/linuxbombay/libelectron"
 license=('GPL')
 depends=('npm' 'git' 'icu')
 pkgdesc="A meta package for electron and electron dependencies."
 makedepends=('unzip')
-sha256sums=('51b7313fc2e0512190548964c967fee9794bb8c376a216a97ff3b3f194b064a1'
-            '25b84c3f7ae144409afb7bb8fee64cbd0b44ed78d3c6d6246feb66282936a3f4'
-            '1c210ee8b378ce5b9491bc33eb09fc6d6d2b913ded5cb4ac41738fd07a7579b3'
-            '624ccfd7e7690fcc2fdc865e641f4529abaa479002df347d418b9c08e60c3805')
+sha256sums=('38ac457e9b6245cc34c7502e41030c45bee13cfdf059bcaa5b432d2f28c5843a'
+            '4ed3ced762ee31fc0704a48dd6292e585dcd25ed8484bed8a1abaede9a62ea0e'
+            '2c9aca92caa35535d508d45ab944aad1429237907d3da04847e881d8d5664b6d'
+            '9fc283a91a8048c78866677c8b099e06a91346b3d2973b85b3aafb5fc72f8a48')
 source=(
 "$url/libelectron/-/archive/$pkgver/libelectron-$pkgver.tar.bz2"
 "$url/libsplash/-/archive/$libsplashver/libsplash-$libsplashver.tar.bz2"
