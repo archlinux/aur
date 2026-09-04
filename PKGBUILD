@@ -3,7 +3,7 @@
 pkgname=pilauncher-bin
 _pkgname=pilauncher
 _appname=PiLauncher
-pkgver=0.1.47
+pkgver=0.1.56
 pkgrel=1
 pkgdesc='Modern gamepad-friendly Minecraft launcher built with Tauri (prebuilt binary)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 )
 noextract=("${_appname}_${pkgver}_amd64.AppImage")
 sha256sums=(
-  'f36ccc00a0aeb1f9b1cc3e949d4f2d50d36ca7876788e191b7a743b924eb2961'
+  'c0e5afecb78695cdc9b2ed96383c7fdfc0287c6a217be5bc062105ce07dc31c4'
   '7157f59f7e954221b7d3d5754c2f963881620ec0490152720493133ea0afb6f8'
 )
 
