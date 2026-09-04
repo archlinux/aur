@@ -11,6 +11,6 @@ pkgbase = vrcx-0-bin
 	provides = vrcx-0
 	conflicts = vrcx-0
 	source = https://github.com/Map1en/VRCX-0/releases/download/v2.27.2/VRCX-0_2.27.2_linux_x86_64.deb
-	sha256sums = a3c25fe86e8f875218a042777f2ee9534d1e5a27ba1794bad824a69e81a37d6b
+	sha256sums = ed2979ce543f76992fd426ea50453421746de9030ee3a84ce36ce72bb994fbd3
 
 pkgname = vrcx-0-bin

@@ -15,7 +15,7 @@ depends=('webkit2gtk-4.1' 'libappindicator')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("https://github.com/Map1en/VRCX-0/releases/download/v${pkgver}/VRCX-0_${pkgver}_linux_x86_64.deb")
-sha256sums=('a3c25fe86e8f875218a042777f2ee9534d1e5a27ba1794bad824a69e81a37d6b')
+sha256sums=('ed2979ce543f76992fd426ea50453421746de9030ee3a84ce36ce72bb994fbd3')
 
 package() {
   cd "$srcdir"
