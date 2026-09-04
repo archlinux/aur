@@ -1,7 +1,7 @@
 # Maintainer: sekret
 _name="MT-PowerDrumKit"
 pkgname=mtpdk
-pkgver=2.1.4.0
+pkgver=2.1.5.1
 pkgrel=1
 pkgdesc="The MT Power Drum Kit is a free drum sampler offering the powerful, high-quality sounds of an acoustic, realistic drum kit"
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=('curl')
 options=(!debug)
 source=("$(curl -s 'https://www.powerdrumkit.com/API_linux_AUR.php?product=mtpdk2_free&format_and_os=VST3-64bit-Linux' | sed -n 's/.*"source_url":"\([^"]*\)".*/\1/p' | sed 's#\\/#/#g')"
         "https://www.powerdrumkit.com/API_EULA.php")
-sha256sums=('9a1c43237b9373192cee38cb3ed4d2582d6fdb7074709b4efbddf8b31bb6708a'
+sha256sums=('95bf11b8874b8030b6cbd29217a86559758a96de2323cb6775693f5956a7a46a'
             'dbdc4c2b5ac1b956481a514001013cc8ea8c38fabe73742c6881f3752f5b3660')
 
 package() {
@@ -24,5 +24,4 @@ package() {
  do
   install -Dm644 "$i" "$pkgdir/usr/lib/vst3/$_name.vst3/Contents/Resources/$i"
  done
- rm "$pkgdir/usr/lib/vst3/$_name.vst3/Contents/Resources/Thumbs.db"
 }
