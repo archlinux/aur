@@ -1,6 +1,6 @@
 pkgbase = loopwire-git
 	pkgdesc = Linux virtual audio routing application (development version)
-	pkgver = 0.1.0.r8.g007e47e
+	pkgver = 0.1.0.r12.g7e0c6b1
 	pkgrel = 1
 	url = https://github.com/sandwichfarm/loopwire
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = loopwire-git
 	optdepends = pipewire-pulse: PulseAudio compatibility
 	optdepends = jack2: JACK bridge diagnostics
 	optdepends = alsa-utils: ALSA diagnostics
-	provides = loopwire=0.1.0.r8.g007e47e
+	provides = loopwire=0.1.0.r12.g7e0c6b1
 	conflicts = loopwire
 	source = loopwire::git+https://github.com/sandwichfarm/loopwire.git#branch=master
 	source = LICENSE-MIT

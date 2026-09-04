@@ -1,6 +1,6 @@
 # Maintainer: Loopwire contributors
 pkgname=loopwire-git
-pkgver=0.1.0.r8.g007e47e
+pkgver=0.1.0.r12.g7e0c6b1
 pkgrel=1
 pkgdesc="Linux virtual audio routing application (development version)"
 arch=("x86_64" "aarch64")
