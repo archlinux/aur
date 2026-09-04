@@ -2,7 +2,7 @@
 
 pkgbase=td-system-tools
 pkgname=td-system-tools
-pkgver=2.7.12
+pkgver=2.7.13
 pkgrel=1
 groups=()
 pkgdesc="Tools for Basic System Management"
@@ -29,7 +29,7 @@ checkdepends=()
 optdepends=()
 options=('!debug')
 source=("${pkgname}::git+${url}.git#tag=${pkgname}-${pkgver}")
-sha256sums=('fc6ccec664e62968c0fd18b3077216c4d660c6d8c77eff74dabd781ffb9f77ab')
+sha256sums=('6d89809688a1378c3f3972ac2bcba3bf6f6572bb5635a0314c0cdea55c8061b9')
 
 prepare()
 {
@@ -48,7 +48,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -B build \
         -G Ninja \
-        -Wno-dev
+        -Wno-author
 
     ninja -C build
 }
