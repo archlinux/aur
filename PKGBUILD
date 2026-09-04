@@ -1,4 +1,5 @@
 # Maintainer: Sato Ki <satoki at em dot advant dot click>
+# Co-Maintainer: C.Schmidpeter <>
 
 # Unsloth Desktop: the Tauri/WebKitGTK shell for Unsloth Studio, repackaged from
 # the upstream Ubuntu .deb. Distinct from the AUR `unsloth` package, which builds
@@ -13,7 +14,7 @@
 
 pkgname=unsloth-desktop-bin
 pkgver=0.1.806.beta
-pkgrel=1
+pkgrel=2
 pkgdesc='Unsloth Desktop - train and run open models locally (prebuilt)'
 arch=('x86_64')
 url='https://unsloth.ai/'
@@ -51,7 +52,7 @@ options=('!strip')
 
 _debver="${pkgver//./_}"
 _tag="v${pkgver/.beta/-beta}"
-source=("https://github.com/unslothai/unsloth/releases/download/${_tag}/Unsloth-Desktop-Ubuntu.deb")
+source=("${pkgname}-${pkgver}.deb"::"https://github.com/unslothai/unsloth/releases/download/${_tag}/Unsloth-Desktop-Ubuntu.deb")
 sha256sums=('c68fb81cc190644a2bf799c5757d67b15d09bdc098847642b16c2fdd36afbe00')
 
 package() {

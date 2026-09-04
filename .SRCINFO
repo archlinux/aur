@@ -1,7 +1,7 @@
 pkgbase = unsloth-desktop-bin
 	pkgdesc = Unsloth Desktop - train and run open models locally (prebuilt)
 	pkgver = 0.1.806.beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unsloth.ai/
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -22,7 +22,7 @@ pkgbase = unsloth-desktop-bin
 	provides = unsloth
 	conflicts = unsloth
 	options = !strip
-	source = https://github.com/unslothai/unsloth/releases/download/v0.1.806-beta/Unsloth-Desktop-Ubuntu.deb
+	source = unsloth-desktop-bin-0.1.806.beta.deb::https://github.com/unslothai/unsloth/releases/download/v0.1.806-beta/Unsloth-Desktop-Ubuntu.deb
 	sha256sums = c68fb81cc190644a2bf799c5757d67b15d09bdc098847642b16c2fdd36afbe00
 
 pkgname = unsloth-desktop-bin
