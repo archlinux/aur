@@ -1,13 +1,13 @@
 pkgbase = qoder-cli-cn-bin
 	pkgdesc = Qoder CLI (CN version) - An agentic AI coding tool built for command-line developers
-	pkgver = 1.1.42
+	pkgver = 1.1.44
 	pkgrel = 1
 	url = https://qoder.com.cn
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-Qoder-Product-Service
 	depends = glibc
-	provides = qoder-cli-cn=1.1.42
+	provides = qoder-cli-cn=1.1.44
 	conflicts = qoder-cli-cn
 	options = !strip
 	options = !debug
@@ -19,9 +19,9 @@ pkgbase = qoder-cli-cn-bin
 	sha256sums = 563610c8624be209fa8353b8b64b6371532400dc43a4139895ec8dc445db7da1
 	sha256sums = 35b2db9d976fd8ac3ec609d0ac4d13c5f47598c25d7a299a16ddd4a2d430cf31
 	sha256sums = acbcecde9ec8b3843b17f6a8b374babd62505bbc53277d50c2ec0399ec10809b
-	source_x86_64 = qoderclicn-1.1.42-linux-x64.tar.gz::https://static.qoder.com.cn/qoder-cli-cn/releases/1.1.42/qoderclicn-linux-x64.tar.gz
-	sha256sums_x86_64 = d95a61b056e6dfbaf1e68810ce787ecbf8a552818b29566dcc665b803bbf4567
-	source_aarch64 = qoderclicn-1.1.42-linux-arm64.tar.gz::https://static.qoder.com.cn/qoder-cli-cn/releases/1.1.42/qoderclicn-linux-arm64.tar.gz
-	sha256sums_aarch64 = 8118c6df21f7eb4b91284eeb16af0e0f4c0ec05a6624a3ed86837799b17beda2
+	source_x86_64 = qoderclicn-1.1.44-linux-x64.tar.gz::https://static.qoder.com.cn/qoder-cli-cn/releases/1.1.44/qoderclicn-linux-x64.tar.gz
+	sha256sums_x86_64 = 8c0058f6d056d1c1a9a39bff6d8636b0036dddd7449b1b77c14c5258371b3f3d
+	source_aarch64 = qoderclicn-1.1.44-linux-arm64.tar.gz::https://static.qoder.com.cn/qoder-cli-cn/releases/1.1.44/qoderclicn-linux-arm64.tar.gz
+	sha256sums_aarch64 = 68f0ef7ae3d0b42d0e859e36e8b380fc6cdfaa2437da06a9ca3b589a1594a6f9
 
 pkgname = qoder-cli-cn-bin
