@@ -8,7 +8,7 @@
 
 _pkgname='desktop-plus'
 pkgname="${_pkgname}"
-pkgver=3.6.5.0
+pkgver=3.6.5.1
 pkgrel=1
 pkgdesc="GitHub Desktop fork with extra features and improvements."
 arch=('x86_64' 'aarch64')
