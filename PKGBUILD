@@ -4,7 +4,7 @@
 
 pkgname=jbig2enc
 pkgver=0.32
-pkgrel=1
+pkgrel=2
 pkgdesc="A JBIG2 image encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/agl/jbig2enc"
