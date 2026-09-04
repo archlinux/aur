@@ -21,7 +21,7 @@ build() {
   cd "${srcdir}/glpk-${pkgver}"
   for _arch in ${_architectures}; do 
     mkdir -p build-${_arch} && pushd build-${_arch}
-    CPPFLAGS="-D__WOE__" ${_arch}-configure
+    CFLAGS="-std=gnu17" CPPFLAGS="-D__WOE__" ${_arch}-configure
     make
     popd
   done
