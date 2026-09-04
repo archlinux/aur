@@ -1,6 +1,6 @@
 pkgbase = ya-player
 	pkgdesc = Yandex Music player
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com/bdrazhzhov/ya-player
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ya-player
 	depends = gst-plugins-bad
 	depends = libsoup3
 	depends = webkit2gtk-4.1
-	source = https://github.com/bdrazhzhov/ya-player/releases/download/v0.8.4/ya-player-v0.8.4.tar.xz
-	sha256sums = 73f06978fc8699310cf1d5485e015b76073f4c7fed64d08ea37dc97d36d48811
+	source = https://github.com/bdrazhzhov/ya-player/releases/download/v0.8.5/ya-player-v0.8.5.tar.xz
+	sha256sums = 86b7f0dfb2821d0153dfb2a9f0a745e2c2a2208ea1d9d1c1dedd6d67a671bce7
 
 pkgname = ya-player
