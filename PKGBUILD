@@ -1,8 +1,8 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe
-pkgver=2.24.5
-pkgrel=3
+pkgver=2.25.0
+pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
@@ -68,7 +68,7 @@ source=("git+${url}.git#tag=v${pkgver}"
         "stabilize_click_chain_timing_in_word_drag_tests.patch"
         "stabilize_model_picker_selection_wait.patch"
         "stretch_e2e_timeouts_when_builder_is_loaded.patch")
-sha256sums=('762e7a2b6d082fa910dd7eb472471256d018cd0c17958b78804693bcf6c9383e'
+sha256sums=('62327cd406a504eefe90159c5e922c13a88f64a3d4f0d41f94fbf0b0b3e8b699'
             'c9b417d8a6445bcca31f8d75757a7ec2d78e4b5aec784a7b5d2c9adf62106014'
             'f24330784d56591d197dc260166d29fff717fab763963fb2c7d8221f81135069'
             '635f8b81f8f884fd82a874372fe3aa466ec41380c48d4209b230afd34825bc3f'
