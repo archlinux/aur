@@ -2,7 +2,7 @@
 
 pkgname=luadot-bin
 _pkgname=luadot
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A dotfiles manager configured in Lua (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,11 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 _registry='https://gitlab.digitalventura.com.br/api/v4/projects/luadot%2Fluadot/packages/generic/luadot'
-_version=0.3.0
+_version=0.3.1
 source_x86_64=("$_registry/$_version/$_pkgname-$pkgver-x86_64.tar.gz")
 source_aarch64=("$_registry/$_version/$_pkgname-$pkgver-aarch64.tar.gz")
-sha256sums_x86_64=('faf4365481ec7eef6c7694499c33da57bf53cb06f9b2a08403b3ed240a89c7a0')
-sha256sums_aarch64=('83bfb438387b391613a005ed2599f665631ff4566b9e27404254d2cbf1e87b26')
+sha256sums_x86_64=('d3d96676eae774f45437b6ffe546abaa4ed801d9ffffe5184c2c6da1792c03d8')
+sha256sums_aarch64=('01dc26eea6704756aa0937325bd1606931b09b1c8227566b8fc099ce72345f60')
 
 package() {
 	cd "$_pkgname-$pkgver-$CARCH"
