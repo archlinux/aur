@@ -1,6 +1,6 @@
 pkgbase = numa-git
 	pkgdesc = Portable DNS resolver in Rust — .numa local domains, ad blocking, developer overrides, DNS-over-HTTPS
-	pkgver = 0.23.0.r10.gc3da9a6
+	pkgver = 0.23.0.r12.g37b2ce9
 	pkgrel = 1
 	url = https://github.com/razvandimescu/numa
 	arch = x86_64
