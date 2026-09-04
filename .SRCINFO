@@ -1,6 +1,6 @@
 pkgbase = gen1recomp
 	pkgdesc = Native LÖVE2D recreation of Pokémon Red/Blue/Yellow (BYO ROM)
-	pkgver = 0.2.25
+	pkgver = 0.2.55
 	pkgrel = 1
 	url = https://github.com/bryanthaboi/gen1recomp
 	arch = x86_64
