@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=looksyk-desktop
 _pkgnameshort=looksyk
-pkgver=1.30.3
+pkgver=1.41.0
 pkgrel=1
 pkgdesc="A markdown centric, fast and local personal knowledge platform"
 arch=("x86_64")
@@ -22,17 +22,17 @@ prepare() {
 	npm install
 	cd ../..
 	cd application-wrapper/Looksyk
-	npm install
+	npm install --allow-git=all
 	cd ../..
 }
 
 build() {
 	cd "$_pkgnameshort"
-	cd backend
+	cd backend/src-actix
 	CFLAGS+=' -ffat-lto-objects' cargo build --release
-	cd ..
+	cd ../..
 	cd frontend/looksyk
-	npm run build --configuration=production
+	npm run build -- --configuration=production
 	cd ../..
 	cd application-wrapper/Looksyk
 	npm run package
@@ -57,7 +57,7 @@ package() {
 
 	install -D -m644 "application-wrapper/Looksyk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-	install -D -m755 "backend/target/release/looksyk-backend" "${pkgdir}/usr/lib/${_pkgnameshort}/looksyk-backend"
+	install -D -m755 "backend/target/release/looksyk-backend-server" "${pkgdir}/usr/lib/${_pkgnameshort}/looksyk-backend"
 	install -D -m755 "application-wrapper/looksyk.sh" "${pkgdir}/usr/lib/${_pkgnameshort}/looksyk"
 	
 	ln -s "/usr/lib/${_pkgnameshort}/looksyk-backend" "${pkgdir}/usr/bin/looksyk-backend"
