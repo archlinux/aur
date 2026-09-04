@@ -1,6 +1,6 @@
 pkgbase = tone3000-plugin-bin
 	pkgdesc = TONE3000 — NAM & IR loader plugin (VST3/CLAP/LV2/Standalone) (Github release binary)
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/tone-3000/tone3000-plugin
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = tone3000-plugin-bin
 	conflicts = tone3000-plugin
 	options = !strip
 	options = !debug
-	source = TONE3000-v0.0.4-linux-x64.tar.gz::https://github.com/tone-3000/tone3000-plugin/releases/download/v0.0.4/TONE3000-v0.0.4-linux-x64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/tone-3000/tone3000-plugin/v0.0.4/LICENSE
-	sha256sums = 96c705558ca0058ce05920c0c94d5f84199262ef0bdd257b92669c05bf0da799
+	source = TONE3000-v0.0.5-linux-x64.tar.gz::https://github.com/tone-3000/tone3000-plugin/releases/download/v0.0.5/TONE3000-v0.0.5-linux-x64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/tone-3000/tone3000-plugin/v0.0.5/LICENSE
+	sha256sums = 1ea7b43eb2d9acf5e3b0bb1d5d2fb2a96cc333eb989160652748e771bde1001e
 	sha256sums = 88d4908d7343898f682e47e70f4288728006ed650dbf79e8940c709d55b76326
 
 pkgname = tone3000-plugin-bin
