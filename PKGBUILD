@@ -7,7 +7,7 @@
 pkgname=tmog-appimage
 _pkgname=tmog-task-manager
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TMOG brings the depth of a serious systems console to a native, focused task manager for macOS, Windows, and Linux.."
 arch=('x86_64')
 url="https://www.tmog.org/"

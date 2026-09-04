@@ -1,7 +1,7 @@
 pkgbase = tmog-appimage
 	pkgdesc = TMOG brings the depth of a serious systems console to a native, focused task manager for macOS, Windows, and Linux..
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tmog.org/
 	arch = x86_64
 	license = LicenseRef-Proprietary
