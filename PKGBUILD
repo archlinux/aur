@@ -31,7 +31,7 @@ source_aarch64=(
   "steamcommunity302-${pkgver}.AppImage::https://www.dogfight360.com/Usbeam/V15/Steamcommunity_302_${pkgver}_Linux_WebKit_arm64.AppImage"
 )
 md5sums_x86_64=('9224ec5639ad07276aeb6c4aef5a5b9e')
-md5sums_aarch64=('4c186a35b9c0e67630a9cf7b38588bbb')
+md5sums_aarch64=('9224ec5639ad07276aeb6c4aef5a5b9e')
 options=(!strip)
 install=steamcommunity302.install
 
