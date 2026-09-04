@@ -14,9 +14,6 @@ b2sums=('fc7054b4997061140bcee258ed46dac1b8562daa27f57c6b7768ba679dad925af29dd8b
 
 build(){
   cd grep-$pkgver
-  export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no"
-  [ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS='-Zbuild-std=std,panic_abort --config=profile.release.panic=\"immediate-abort\" -Zpanic-immediate-abort'
-  export RUSTONIG_DYNAMIC_LIBONIG=1
   cargo build --release
 }
 
