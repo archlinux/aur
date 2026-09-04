@@ -1,6 +1,6 @@
 pkgbase = autolock
 	pkgdesc = A minimal X11 idle-watcher
-	pkgver = 0.5
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://codeberg.org/ayari/autolock
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = autolock
 	optdepends = slock: the default lock screen
 	provides = autolock
 	options = !debug
-	source = autolock-0.5.tar.gz::https://codeberg.org/ayari/autolock/archive/0.5.tar.gz
+	source = autolock-1.0.tar.gz::https://codeberg.org/ayari/autolock/archive/1.0.tar.gz
 	source = systemd-libs.patch
-	sha256sums = 1888af34b7b2d9f99ed93ce2ae9affd79537f3a8ddc9db2057ff40ff98e81bc5
+	sha256sums = a474c7cf9324d08b343b48cc718d1f572b5a02f67801745dfc6ffc8497ae2bb1
 	sha256sums = 66ae860a0f428979a551b3a95026e53897ee5ec68ab5e23ccdd86287e0883858
 
 pkgname = autolock
