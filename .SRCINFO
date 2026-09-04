@@ -11,6 +11,7 @@ pkgbase = kairo-git
 	optdepends = kitty: terminal configuration
 	optdepends = rofi-wayland: launcher and menu configuration
 	optdepends = waybar: status bar configuration
+	optdepends = quickshell: Kairo desktop shell runtime
 	provides = kairo
 	conflicts = kairo
 	source = git+https://github.com/nihitdev/kairo.git#branch=main

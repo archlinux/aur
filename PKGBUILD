@@ -12,6 +12,7 @@ optdepends=(
   'kitty: terminal configuration'
   'rofi-wayland: launcher and menu configuration'
   'waybar: status bar configuration'
+  'quickshell: Kairo desktop shell runtime'
 )
 provides=(kairo)
 conflicts=(kairo)
@@ -26,7 +27,7 @@ pkgver() {
 package() {
   cd kairo
   install -Dm755 install.sh "$pkgdir/usr/share/kairo/install.sh"
-  cp -a .config README.md LICENSE "$pkgdir/usr/share/kairo/"
+  cp -a .config shell README.md LICENSE "$pkgdir/usr/share/kairo/"
   install -d "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/kairo" <<'EOF'
 #!/usr/bin/env bash
