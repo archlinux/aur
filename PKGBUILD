@@ -21,13 +21,10 @@ prepare(){
 
 build(){
   cd ${pkgname}-$pkgver
-  export RUSTFLAGS+=" -C force-unwind-tables=no ${RUSTFLAGS}"
-  test ${RUSTC_BOOTSTRAP} = 1 && test -e /usr/lib/rustlib/src/rust/library/Cargo.toml && _cargoflags='-Zbuild-std=std,panic_abort --config=profile.release.panic="immediate-abort" -Zpanic-immediate-abort'
   cargo build --release $_cargoflags #--frozen
 }
 
 package(){
-  unset optdepends
   cd ${pkgname}-${pkgver}
   install -Dm755 target/release/$pkgname -t "$pkgdir"/usr/bin
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname}
