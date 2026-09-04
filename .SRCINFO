@@ -14,7 +14,8 @@ pkgbase = bclone
 	provides = rclone
 	provides = bclone
 	conflicts = rclone
-	conflicts = bclone
+	conflicts = bclone-bin
+	conflicts = bclone-git
 	options = !strip
 	source = git+https://github.com/BenjiThatFoxGuy/bclone.git#tag=v1.75.2
 	sha256sums = 904f79d06781a78bf572117fd693f8c53dde57560d7dc33a8628363edfc42fd3
