@@ -1,6 +1,6 @@
 pkgbase = bentopdf
 	pkgdesc = A powerful, privacy-first, client-side PDF toolkit that is self hostable and allows you to manipulate, edit, merge, and process PDF files directly in your browser.
-	pkgver = 2.8.7
+	pkgver = 2.8.8
 	pkgrel = 1
 	url = https://github.com/alam00000/bentopdf
 	install = bentopdf.install
@@ -10,7 +10,7 @@ pkgbase = bentopdf
 	optdepends = caddy: for serving bentopdf
 	optdepends = nginx: for serving bentopdf
 	optdepends = traefik: for serving bentopdf
-	source = bentopdf-2.8.7.tar.gz::https://github.com/alam00000/bentopdf/archive/refs/tags/v2.8.7.tar.gz
-	sha256sums = 3c004009b878a6c0f58dd0139d50e5651ba50a1a2bbaf656daee867a60ebe6b0
+	source = bentopdf-2.8.8.tar.gz::https://github.com/alam00000/bentopdf/archive/refs/tags/v2.8.8.tar.gz
+	sha256sums = e5cd1fe077526d9b5c4b775c58d9a9f88a9286c97d81320da486549f53b2bbaf
 
 pkgname = bentopdf
