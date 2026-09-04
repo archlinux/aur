@@ -1,10 +1,10 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=picot
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=1
 # Keep in sync with scripts/pi-version.json; prepare() fails the build on drift.
-_pi_ver=0.84.2
+_pi_ver=0.84.4
 pkgdesc="Local Codex-style desktop GUI for the Pi coding agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shixin-guo/picot"
@@ -38,9 +38,9 @@ options=('!lto' '!debug')
 _pi_relurl="https://github.com/earendil-works/pi-mono/releases/download/v${_pi_ver}"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c0c96215ab8f488c59a11c062ef4b673622381b923f79274e22618a7320584ec')
-sha256sums_x86_64=('906fbe787fd225c4ac624fe7ebd5b1d55a60e0f5c7ef51795d231564f9ee1c13')
-sha256sums_aarch64=('d15372da9e4b4c5fef9fd15bed76d7f5f1720dd39fe7cde0ec62e5b65ad63ef1')
+sha256sums=('bb136349913e8340c9a74b4e0740ed8001c18462504da77cf3fd1081b4a91af1')
+sha256sums_x86_64=('c2f3c3e6a1850bd87654cc3ca8811013272397c3d042a4e2a64c43ee1b423972')
+sha256sums_aarch64=('135580f6b942151646e67b8b866d987d28ce3cff5a497030775ddd29659f943d')
 source_x86_64=("pi-linux-x64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-x64.tar.gz")
 source_aarch64=("pi-linux-arm64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-arm64.tar.gz")
 
@@ -80,6 +80,11 @@ prepare() {
             return 1
         fi
     done
+
+    # The upstream development fallback embeds $srcdir through
+    # env!("CARGO_MANIFEST_DIR") even in release builds.
+    sed -i '/PathBuf::from(env!("CARGO_MANIFEST_DIR"))/,+2c\
+        PathBuf::from("public"),' src-tauri/src/main.rs
 
     bun install --frozen-lockfile
 
