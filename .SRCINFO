@@ -1,0 +1,19 @@
+pkgbase = qwt-multiaxes-updated-git
+	pkgdesc = Qt Widgets for Technical Applications -- analog devices fork, qwt-multiaxes-updated branch
+	pkgver = r182.34c2c7e
+	pkgrel = 1
+	url = https://github.com/cseci/qwt
+	arch = x86_64
+	license = custom:qwt
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-svg
+	depends = glibc
+	depends = gcc-libs
+	optdepends = qt5-tools: For Designer plugin
+	conflicts = qwt-multiaxes-git
+	source = git+https://github.com/cseci/qwt.git#branch=qwt-multiaxes-updated
+	b2sums = SKIP
+
+pkgname = qwt-multiaxes-updated-git
