@@ -1,47 +1,47 @@
 pkgbase = skwd-suite-bin
 	pkgdesc = Prebuilt native Skwd wallpaper suite packages
-	pkgver = 1.0.0_beta.5
+	pkgver = 1.0.0_beta.6
 	pkgrel = 1
 	url = https://github.com/liixini/skwd-wall
 	arch = x86_64
 	license = GPL-3.0-or-later
-	noextract = skwd-wall-v2-1.0.0_beta.5-1-x86_64.pkg.tar.zst
-	noextract = skwd-deck-1.0.0_beta.5-1-x86_64.pkg.tar.zst
-	noextract = skwd-paper-1.0.0_beta.5-1-x86_64.pkg.tar.zst
-	noextract = skwd-lens-1.0.0_beta.5-1-x86_64.pkg.tar.zst
+	noextract = skwd-wall-v2-1.0.0_beta.6-1-x86_64.pkg.tar.zst
+	noextract = skwd-deck-1.0.0_beta.6-1-x86_64.pkg.tar.zst
+	noextract = skwd-paper-1.0.0_beta.6-1-x86_64.pkg.tar.zst
+	noextract = skwd-lens-1.0.0_beta.6-1-x86_64.pkg.tar.zst
 	options = !debug
 	options = !strip
-	source_x86_64 = skwd-wall-v2-1.0.0_beta.5-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.5/skwd-wall-v2-1.0.0_beta.5-1-x86_64.pkg.tar.zst
-	source_x86_64 = skwd-deck-1.0.0_beta.5-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.5/skwd-deck-1.0.0_beta.5-1-x86_64.pkg.tar.zst
-	source_x86_64 = skwd-paper-1.0.0_beta.5-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.5/skwd-paper-1.0.0_beta.5-1-x86_64.pkg.tar.zst
-	source_x86_64 = skwd-lens-1.0.0_beta.5-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.5/skwd-lens-1.0.0_beta.5-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = d2611e2c4b603b5ce9fc8a673aaa69a29edc0da691678cf2dc489688ca809c2f
-	sha256sums_x86_64 = 6d6828255d5c2c61eaab288259a0a2a68c526b3da97a36110dc11f6f7b485a05
-	sha256sums_x86_64 = 2b537e96b0c1ed8fb38e46af400512fea7468af378e46c79bc2046264a2f5f16
-	sha256sums_x86_64 = 93d9ce8fc503e13d9e951875ed0335c440c155d70bff775850267b1c7a79f363
+	source_x86_64 = skwd-wall-v2-1.0.0_beta.6-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.6/skwd-wall-v2-1.0.0_beta.6-1-x86_64.pkg.tar.zst
+	source_x86_64 = skwd-deck-1.0.0_beta.6-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.6/skwd-deck-1.0.0_beta.6-1-x86_64.pkg.tar.zst
+	source_x86_64 = skwd-paper-1.0.0_beta.6-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.6/skwd-paper-1.0.0_beta.6-1-x86_64.pkg.tar.zst
+	source_x86_64 = skwd-lens-1.0.0_beta.6-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.6/skwd-lens-1.0.0_beta.6-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = c81f38636eef7ac63f2028ca5382942296581559b591a2dcc1e2b1ce79976bed
+	sha256sums_x86_64 = 40ac77fa604fae6d67b8fbf898acec481dc22e7947a7f88039afe5d0c884f54e
+	sha256sums_x86_64 = 34523294bdd1ab4705e53964e76a14bd0e0e880b1c4a79ab42c8d93c702e36f1
+	sha256sums_x86_64 = 21475395dca4ee1fca191f163d4f80c7115796af2af7ffa8f3caeb18f315a8e4
 
 pkgname = skwd-wall-v2-bin
 	pkgdesc = Prebuilt GPU-rendered graphical client for the Skwd wallpaper suite v2
 	depends = gcc-libs
 	depends = libxkbcommon
-	depends = skwd-deck-bin=1.0.0_beta.5
-	depends = skwd-paper-bin=1.0.0_beta.5
+	depends = skwd-deck-bin=1.0.0_beta.6
+	depends = skwd-paper-bin=1.0.0_beta.6
 	depends = vulkan-icd-loader
 	depends = wayland
 	optdepends = skwd-lens-bin: semantic wallpaper search
 	optdepends = skwd-paper-plasma: KDE Plasma wallpaper integration
-	provides = skwd-wall-v2=1.0.0_beta.5
+	provides = skwd-wall-v2=1.0.0_beta.6
 	conflicts = skwd-wall-v2
 
 pkgname = skwd-deck-bin
 	pkgdesc = Prebuilt control daemon and tools for the Skwd wallpaper suite
 	install = skwd-deck.install
 	depends = gcc-libs
-	depends = skwd-paper-bin=1.0.0_beta.5
+	depends = skwd-paper-bin=1.0.0_beta.6
 	optdepends = skwd-deck-steamworks: Steam Client Workshop backend
 	optdepends = skwd-lens-bin: semantic wallpaper search
 	optdepends = steamcmd: alternative Steam Workshop backend
-	provides = skwd-deck=1.0.0_beta.5
+	provides = skwd-deck=1.0.0_beta.6
 	conflicts = skwd-deck
 
 pkgname = skwd-paper-bin
@@ -59,7 +59,7 @@ pkgname = skwd-paper-bin
 	depends = vulkan-icd-loader
 	depends = wayland
 	depends = zlib
-	provides = skwd-paper=1.0.0_beta.5
+	provides = skwd-paper=1.0.0_beta.6
 	conflicts = skwd-paper
 
 pkgname = skwd-lens-bin
@@ -67,5 +67,5 @@ pkgname = skwd-lens-bin
 	depends = gcc-libs
 	depends = skwd-lens-model
 	depends = skwd-lens-model
-	provides = skwd-lens=1.0.0_beta.5
+	provides = skwd-lens=1.0.0_beta.6
 	conflicts = skwd-lens
