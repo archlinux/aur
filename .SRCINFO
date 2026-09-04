@@ -1,6 +1,6 @@
 pkgbase = visor
 	pkgdesc = A minimal, fast, graphical UEFI boot manager
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/IO-ZetZor/Visor-BootManager
 	install = visor.install
@@ -15,7 +15,7 @@ pkgbase = visor
 	optdepends = python-pillow: font baking (make bakefont)
 	optdepends = ffmpeg: animated backgrounds (visor convert)
 	optdepends = python-numpy: VBG backgrounds (visor convert --vbg)
-	source = visor-1.5.3.tar.gz::https://github.com/IO-ZetZor/Visor-BootManager/archive/refs/tags/v1.5.3.tar.gz
-	sha256sums = 0d0b93f35a7fb00aee11212339083c1f1ea6c76653ec6bb720795946edfdf658
+	source = visor-1.5.4.tar.gz::https://github.com/IO-ZetZor/Visor-BootManager/archive/refs/tags/v1.5.4.tar.gz
+	sha256sums = 12d352afa31afcbd6e374ecaa9d0d9516d9328d245419fb0d323087b5185a43b
 
 pkgname = visor
