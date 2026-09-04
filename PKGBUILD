@@ -13,7 +13,7 @@
 # Should someone find a way to get them from Itch or another (official) source, I will happily update this to use that
 
 pkgname=crocotile3d
-pkgver=2.7.3
+pkgver=2.7.3b
 pkgrel=1
 
 source=("local://Crocotile3D_v${pkgver}_linux64.tar.gz"
@@ -21,7 +21,7 @@ source=("local://Crocotile3D_v${pkgver}_linux64.tar.gz"
     "${pkgname}.png")
 
 b2sums=(
-    '2e2ce4dd961fad63b63d9f83c18b9b30b1d720f39b8a6f7e17eab8922ab6773812f8706f9f05147440ca2fc2738e69b1b7db884d68284e919602cab55794cc3b'
+    'c53dbee3af13d31024b0ac83207e5ff568fe04443c680656c94c7fa640206bc708c933c58c2f0c9d3ad1028b92db153170d2220f90a17ee7817934fc6bd472fa'
     'e89839b218f91e41defe5259c2ccb326c184fc387e84cd73a6d65e951d454550bd5d57ec0b0dc2ed78d821012507dcd8a8e0c860ae61477351619d11a3441506'
     '639e3353647a10c0a1595cff37f00d12d55b353cfb1fcc5f2e09508b235d4819cb451bb704b3712bb523cde67543c26d2febea1831d6938f4e78222511f7a7ff'
 )
