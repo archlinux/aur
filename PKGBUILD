@@ -1,7 +1,7 @@
 # Maintainer: Savi G. <info@monsoonresearch.cc>
 pkgname=ring-lang
 pkgver=1.27
-pkgrel=44
+pkgrel=48
 pkgdesc="Simple, lightweight, embeddable multi-paradigm dynamic language (full build: VM, console tools, RingQt on Qt6, Allegro, SDL2, network & database extensions)"
 arch=('x86_64' 'x86_64_v3' 'x86_64_v4')  # v3/v4 entries match CachyOS optimized repos
 url="https://ring-lang.github.io/"
@@ -64,9 +64,15 @@ prepare() {
   #     (`../../lib/libring.so`) with a SONAME-less libring records the LITERAL
   #     path into DT_NEEDED — the loader resolves it relative to CWD at
   #     runtime and dlopen fails with R38. The -L/-l: form records the bare
-  #     NAME; the $ORIGIN rpath makes the .so find libring.so in its own
-  #     directory — valid in BOTH the build tree (lib/) and the installed
-  #     tree (/usr/lib/ring/lib).
+  #     NAME. The $ORIGIN rpath makes the .so find libring.so in its own
+  #     directory (qmake collapses $$ORIGIN on Qt 6.11 — the resulting
+  #     RUNPATH [:/../../lib:/usr/lib] still ends in /usr/lib, and the
+  #     wrapper envblock exports LD_LIBRARY_PATH as belt-and-braces).
+  #     -z,defs enforces undefined-symbol checking AT LINK TIME: shared-library
+  #     links allow undefined symbols by default, which let light's missing
+  #     implementation object ship silently and fail only at dlopen (the
+  #     pkgrel=44 R38, diagnosed via python ctypes: "undefined symbol:
+  #     OpenGLWidget::getPaintEvent").
   for p in extensions/ringqt/ring_qt515{,_core,_light}.pro; do
     sed -i 's|LIBS += */usr/lib/libring\.so|LIBS += -L../../lib -l:libring.so|' "$p"
     if ! grep -q 'rpath.*ORIGIN' "$p"; then
@@ -77,6 +83,31 @@ prepare() {
       error "libring LIBS patch did not apply to $p"; return 1; }
     grep -q 'rpath.*ORIGIN' "$p" || {
       error "rpath patch did not apply to $p"; return 1; }
+    grep -q 'z,defs' "$p" || printf 'QMAKE_LFLAGS += -Wl,-z,defs\n' >> "$p"
+    grep -q 'z,defs' "$p" || {
+      error "-z,defs patch did not apply to $p"; return 1; }
+  done
+
+  # (a2) FINAL: both .pro files list cpp/src/openglwidget.cpp ONLY inside an
+  #      indented platform-conditional (light ~line 146, full ~line 279) that
+  #      is FALSE on Linux. Upstream works because gencode regenerates the
+  #      TUs per-platform (the Linux light TU drops the QOpenGLWidget
+  #      wrappers); our light gencode is neutralized (the byte-identical
+  #      verification only ever covered CORE), so the tarball's Windows-flavor
+  #      ring_qt_light.cpp keeps the OpenGLWidget::* references while the
+  #      implementation object never compiles → undefined symbols, silent
+  #      under lazy dlopen, loud under -z,defs. Fix: UNCONDITIONAL top-level
+  #      entries in BOTH .pro files. The ^ anchor is REQUIRED — the pkgrel=46
+  #      guard grepped unanchored, matched the conditional entry, and
+  #      silently no-op'd.
+  for p in extensions/ringqt/ring_qt515_light.pro extensions/ringqt/ring_qt515.pro; do
+    if ! grep -q '^SOURCES += cpp/src/openglwidget.cpp' "$p"; then
+      if [[ -n $(tail -c 1 "$p") ]]; then printf '\n' >> "$p"; fi
+      printf 'SOURCES += cpp/src/openglwidget.cpp\n' >> "$p"
+      printf 'HEADERS += cpp/include/openglwidget.h\n' >> "$p"
+    fi
+    grep -q '^SOURCES += cpp/src/openglwidget.cpp' "$p" || {
+      error "top-level openglwidget entry missing from $p"; return 1; }
   done
 
   # (i) QOpenGLWidget moved QtWidgets -> QtOpenGLWidgets in Qt6; and
@@ -1420,11 +1451,16 @@ if [ -n "$missing" ]; then
     exit 1
 fi
 
-# .pro insurance matching prepare()'s (a) fix:
+# .pro insurance matching prepare()'s (a)/(a2) fixes:
 grep -q '\-l:libring\.so' ring_qt515.pro || \
   sed -i 's|LIBS += */usr/lib/libring\.so|LIBS += -L../../lib -l:libring.so|' ring_qt515.pro
 grep -q 'rpath.*ORIGIN' ring_qt515.pro || \
   printf 'QMAKE_LFLAGS += -Wl,-rpath,$$ORIGIN -Wl,-rpath,$$ORIGIN/../../lib\n' >> ring_qt515.pro
+grep -q 'z,defs' ring_qt515.pro || printf 'QMAKE_LFLAGS += -Wl,-z,defs\n' >> ring_qt515.pro
+grep -q '^SOURCES += cpp/src/openglwidget.cpp' ring_qt515.pro || {
+  printf 'SOURCES += cpp/src/openglwidget.cpp\n' >> ring_qt515.pro
+  printf 'HEADERS += cpp/include/openglwidget.h\n' >> ring_qt515.pro
+}
 for mod in openglwidgets svgwidgets; do
     grep -q "QT += $mod" ring_qt515.pro || printf 'QT += %s\n' "$mod" >> ring_qt515.pro
 done
@@ -1494,11 +1530,6 @@ GENCODE
   fi
 
   # --- RingMySQL vs Arch's MariaDB-only packaging ----------------------------
-  # Arch ships no Oracle MySQL; mariadb-libs provides the client as
-  # libmariadb: pkg-config name 'libmariadb' (no mysqlclient.pc exists) and
-  # headers under /usr/include/mariadb (mysql.h is NOT at /usr/include).
-  # libmariadb is API-compatible with libmysqlclient, so a token rename of
-  # the build script's package name fixes compile AND link.
   local mysqlpatched=0
   for s in extensions/ringmysql/buildgcc.sh extensions/ringmysql/build.sh \
            extensions/ringmysql/src/buildgcc.sh; do
@@ -1517,15 +1548,9 @@ GENCODE
   # --- RingNotepad settings: written to the (read-only) install tree on close
   #     and at startup — R35 in savesettingstofile() via ringnotepadxbutton().
   #     Redirect to ~/.ringnotepad/ (same treatment as ringpm's ~/.ringpm).
-  #     The settings path is built in rnotesettings.ring; locate and rewrite
-  #     the file-path expression, whatever its exact spelling. Fail LOUD if
-  #     neither pattern matched — the message asks for the grep output so
-  #     the redirect can be matched exactly.
   local rs=tools/ringnotepad/src/rnotesettings.ring
   if [[ -f "$rs" ]]; then
-    # Form 1: path derived from exefolder()
     sed -i 's|exefolder()+\("[^"]*"\)|sysget("HOME")+"/.ringnotepad/"+\1|g' "$rs"
-    # Form 2: an absolute settings-path constant pointing at the install tree
     sed -i 's|\(/usr/lib/ring[^"]*settings[^"]*\)|sysget("HOME")+"/.ringnotepad/settings"|g' "$rs"
   fi
   if [[ -f "$rs" ]] && grep -q 'exefolder\|/usr/lib/ring' "$rs"; then
@@ -1574,17 +1599,26 @@ check() {
   printf 'see "Hello from Ring!" + NL\n' > hello_test.ring
   ./bin/ring hello_test.ring
 
-  # Build-tree runtime insurance for the extension dlopen test (the
-  # $ORIGIN rpath in (a) should suffice; LD_LIBRARY_PATH is belt-and-braces).
+  # Build-tree runtime insurance for the extension dlopen tests.
   export LD_LIBRARY_PATH="$srcdir/ring-$pkgver/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 
-  # RingQt smoke test (headless)
-  if compgen -G "lib/*qt*.so" > /dev/null; then
-    printf 'load "qtcore.ring"\n? "qt ok"\n' > qt_test.ring
-    QT_QPA_PLATFORM=offscreen ./bin/ring qt_test.ring
-  else
-    warning "no Qt extension library found — skipping Qt smoke test"
-  fi
+  # dlopen ALL THREE GUI libraries. SUCCESS = the "ok" marker printed.
+  # - The marker, not the process exit status, is the assertion: loading a
+  #   library proves class resolution, which is the test's purpose.
+  # - No QT_QPA_PLATFORM injection: a bare `load` needs no GUI platform, and
+  #   forcing offscreen on a WebEngine-linked library drags Qt teardown
+  #   behavior into the exit status (observed: 'guilib ok' printed, exit
+  #   nonzero ONLY under offscreen; plain invocation exits 0).
+  for libtest in qtcore lightguilib guilib; do
+    if [[ -f "libraries/$libtest/loadlibfile.ring" ]]; then
+      printf 'load "%s.ring"\n? "%s ok"\n' "$libtest" "$libtest" > "libtest_$libtest.ring"
+      local out
+      out="$(LD_LIBRARY_PATH="$LD_LIBRARY_PATH" \
+        ./bin/ring "libtest_$libtest.ring" 2>/dev/null || true)"
+      grep -q "$libtest ok" <<<"$out" || {
+        error "$libtest dlopen test failed (marker not printed)"; return 1; }
+    fi
+  done
 
   # RingPM offline test: seed a throwaway HOME like the wrapper does
   local t="$srcdir/ringpm-check-home"
@@ -1620,6 +1654,9 @@ package() {
   # and those are untouched because options=(!strip)).
   find "$dst/lib" -maxdepth 1 -type f -name '*.so*' \
     -exec strip --strip-debug {} \; 2>/dev/null || true
+  # The ringqt .so files must also exist in extensions/ringqt (the .rh
+  # class files' loadlib search starts there):
+  cp -a lib/libringqt*.so* "$dst/extensions/ringqt/" 2>/dev/null || true
   # Optional size trims (Windows-only payloads; safe to enable):
   # rm -rf "$dst/extensions/libdepwin"
   # find "$dst" -name '*.exe' -delete
@@ -1628,11 +1665,13 @@ package() {
   # QtWebEngine computes resources/locales from the binary location
   # (/usr/lib/ring/bin -> ../.. = /usr/lib) — missing qt6-webengine's actual
   # paths — and a FULLY missing resource bundle makes WebEngine qFatal at
-  # init (SIGABRT; confirmed via gdb backtrace: QMessageLogger::fatal in
+  # init (SIGABRT; confirmed via gdb: QMessageLogger::fatal in
   # libQt6WebEngineCore). Therefore EVERY entry point exports the real
-  # locations; pre-set user values are respected.
+  # locations; pre-set user values are respected. LD_LIBRARY_PATH covers
+  # Ring's LoadLib dlopen of the extension .so files.
   local envblock='if [ -d /usr/share/qt6/resources ]; then export QTWEBENGINE_RESOURCES_PATH="${QTWEBENGINE_RESOURCES_PATH:-/usr/share/qt6/resources}"; fi
-if [ -d /usr/share/qt6/translations/qtwebengine_locales ]; then export QTWEBENGINE_LOCALES_PATH="${QTWEBENGINE_LOCALES_PATH:-/usr/share/qt6/translations/qtwebengine_locales}"; fi'
+if [ -d /usr/share/qt6/translations/qtwebengine_locales ]; then export QTWEBENGINE_LOCALES_PATH="${QTWEBENGINE_LOCALES_PATH:-/usr/share/qt6/translations/qtwebengine_locales}"; fi
+export LD_LIBRARY_PATH="/usr/lib/ring/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"'
 
   # ring itself: real wrapper (not a symlink) so ANY script using Qt/WebEngine
   # (rnote.ring and friends) inherits the correct paths.
@@ -1682,14 +1721,14 @@ if [ -n "$HOME" ]; then
   [ -s "$HOME/.ringpm/registry/registry.ring" ] ||
     cp /usr/share/ring-lang/registry/registry.ring "$HOME/.ringpm/registry/registry.ring" 2>/dev/null
 fi
-# QtWebEngine resources/locales for any GUI app launched via ringpm
-# (binary lives at /usr/lib/ring/bin; ../.. misses /usr/share/qt6):
+# QtWebEngine resources/locales + Ring extension dlopen paths:
 if [ -d /usr/share/qt6/resources ]; then
   export QTWEBENGINE_RESOURCES_PATH="${QTWEBENGINE_RESOURCES_PATH:-/usr/share/qt6/resources}"
 fi
 if [ -d /usr/share/qt6/translations/qtwebengine_locales ]; then
   export QTWEBENGINE_LOCALES_PATH="${QTWEBENGINE_LOCALES_PATH:-/usr/share/qt6/translations/qtwebengine_locales}"
 fi
+export LD_LIBRARY_PATH="/usr/lib/ring/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 exec /usr/lib/ring/bin/ringpm "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/ringpm"

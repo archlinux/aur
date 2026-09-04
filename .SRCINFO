@@ -1,7 +1,7 @@
 pkgbase = ring-lang
 	pkgdesc = Simple, lightweight, embeddable multi-paradigm dynamic language (full build: VM, console tools, RingQt on Qt6, Allegro, SDL2, network & database extensions)
 	pkgver = 1.27
-	pkgrel = 44
+	pkgrel = 48
 	url = https://ring-lang.github.io/
 	arch = x86_64
 	arch = x86_64_v3
