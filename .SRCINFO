@@ -1,0 +1,15 @@
+pkgbase = ros2-jazzy-gz-transport-vendor
+	pkgdesc = ROS 2 Jazzy vendor wrapper for system gz-transport13
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/gazebo-release/gz_transport_vendor
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = ros2-jazzy
+	depends = ros2-jazzy-gz-msgs-vendor
+	depends = gz-transport13
+	source = gz_transport_vendor-0.0.9.tar.gz::https://github.com/gazebo-release/gz_transport_vendor/archive/refs/tags/0.0.9.tar.gz
+	sha256sums = 9812ffd4c3bb2fa8955a827bec6925f259d78ac6a108d5365870b84c1645c1b2
+
+pkgname = ros2-jazzy-gz-transport-vendor
