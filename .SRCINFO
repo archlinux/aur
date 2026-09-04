@@ -1,0 +1,15 @@
+pkgbase = arm-linux-gnueabihf-glibc-headers-bin
+	pkgdesc = glibc headers for the arm-linux-gnueabihf cross target (precompiled, split from ARM's official GNU toolchain release)
+	pkgver = 15.2.rel1.20251217
+	pkgrel = 1
+	url = https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	provides = arm-linux-gnueabihf-glibc-headers
+	conflicts = arm-linux-gnueabihf-glibc-headers
+	options = !debug
+	options = !strip
+	source = https://developer.arm.com/-/media/Files/downloads/gnu/15.2.rel1/binrel/arm-gnu-toolchain-15.2.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz
+	sha256sums = 0dd180fa2f190d40fd0bf61a4a820ec830f821db8c9dc61f0e51b8c5e99a2b8e
+
+pkgname = arm-linux-gnueabihf-glibc-headers-bin
