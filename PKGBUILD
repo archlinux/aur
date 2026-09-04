@@ -2,7 +2,7 @@
 
 pkgname=stably-orca
 pkgver=1.4.197
-pkgrel=1
+pkgrel=2
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/stablyai/orca'
@@ -415,23 +415,31 @@ PY
     "$pkgdir/usr/share/doc/$pkgname/stably-orca-serve-kwin.conf.example"
   install -Dm644 "$srcdir/stably-orca.desktop" \
     "$pkgdir/usr/share/applications/stably-orca.desktop"
-  python - resources/build/icon.png <<'PY'
+  python - resources/build/icon.png resources/icon.png <<'PY'
 from pathlib import Path
 import sys
 
-path = Path(sys.argv[1])
-data = path.read_bytes()[:24]
-if data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR":
-    raise SystemExit(f"Orca icon is not a valid PNG: {path}")
-dimensions = (
-    int.from_bytes(data[16:20], "big"),
-    int.from_bytes(data[20:24], "big"),
-)
-if dimensions != (1024, 1024):
-    raise SystemExit(f"expected 1024x1024 Orca icon, found {dimensions}: {path}")
+def check_png(path_str, expected_dims):
+    path = Path(path_str)
+    data = path.read_bytes()[:24]
+    if data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR":
+        raise SystemExit(f"Orca icon is not a valid PNG: {path}")
+    dimensions = (
+        int.from_bytes(data[16:20], "big"),
+        int.from_bytes(data[20:24], "big"),
+    )
+    if dimensions != expected_dims:
+        raise SystemExit(f"expected {expected_dims} Orca icon, found {dimensions}: {path}")
+
+check_png(sys.argv[1], (1024, 1024))
+check_png(sys.argv[2], (256, 256))
 PY
+  install -Dm644 resources/icon.png \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/stably-orca.png"
   install -Dm644 resources/build/icon.png \
     "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/stably-orca.png"
+  install -Dm644 resources/icon.png \
+    "$pkgdir/usr/share/pixmaps/stably-orca.png"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   local empty_dirs=()
