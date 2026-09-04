@@ -1,23 +1,23 @@
 pkgname=skwd-paper-plasma
-pkgver=1.0.0_beta.5
+pkgver=1.0.0_beta.6
 pkgrel=1
 pkgdesc='KDE Plasma wallpaper integration for Skwd Paper'
 arch=(x86_64)
 url='https://github.com/liixini/skwd-paper-plasma'
 license=(GPL-3.0-or-later)
-depends=(libdrm libglvnd plasma-workspace qt6-base qt6-declarative "skwd-paper>=$pkgver")
+depends=(libdrm libglvnd plasma-workspace qt6-base qt6-declarative qt6-tools "skwd-paper>=$pkgver")
 makedepends=(cmake gcc pkgconf)
 options=(!debug !lto)
-source=("skwd-paper-plasma-1.0.0~beta.5-1.fc44.src.rpm::https://download.copr.fedorainfracloud.org/results/piixini/skwd-wall-v2/srpm-builds/10951112/skwd-paper-plasma-1.0.0beta.5-1.fc44.src.rpm")
-sha256sums=('470cc1f2ad6ade29f42063a1af19ae28a98f336d2bebf05f19cdb707a7d6c54b')
+source=("skwd-paper-plasma-1.0.0~beta.6-1.fc44.src.rpm::https://download.copr.fedorainfracloud.org/results/piixini/skwd-wall-v2/srpm-builds/10951824/skwd-paper-plasma-1.0.0beta.6-1.fc44.src.rpm")
+sha256sums=('b5b9346db99bcc56b0c67a0de09be5e789bbe704faf1b17431b85976b0ec2830')
 
 prepare() {
-  bsdtar -xf "$srcdir/skwd-paper-plasma-1.0.0~beta.5-1.fc44.src.rpm" -C "$srcdir"
-  bsdtar -xf "$srcdir/skwd-paper-plasma-1.0.0-beta.5.tar.xz" -C "$srcdir"
+  bsdtar -xf "$srcdir/skwd-paper-plasma-1.0.0~beta.6-1.fc44.src.rpm" -C "$srcdir"
+  bsdtar -xf "$srcdir/skwd-paper-plasma-1.0.0-beta.6.tar.xz" -C "$srcdir"
 }
 
 build() {
-  cmake -S "$srcdir/skwd-paper-plasma-1.0.0-beta.5" -B build \
+  cmake -S "$srcdir/skwd-paper-plasma-1.0.0-beta.6" -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
