@@ -1,6 +1,6 @@
 # Maintainer: Ryan Kes <ryan@andthensome.nl>
 pkgname=linkwarden-obsidian-sync
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Keeps a directory of Obsidian notes in sync with your saved Linkwarden links"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ license=('GPL-3.0-only')
 options=('!debug')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alrayyes/linkwarden-obsidian-sync/archive/v$pkgver.tar.gz")
-sha256sums=('2da89af9ac8163a13fa4f79f385754b40534cd26455678adf7aef0cb3d35d0b7')
+sha256sums=('22010859de5c8729e6e804ec8cada2e89640fb83f4e8f14c764aac445b2e2589')
 
 build() {
   cd "$pkgname-$pkgver"
