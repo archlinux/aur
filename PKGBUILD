@@ -1,7 +1,7 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 
 pkgname=abcl-git
-pkgver=r3771.91f48d55
+pkgver=r3522.05816e48
 pkgrel=1
 pkgdesc="Full implementation of the Common Lisp language in the JVM"
 arch=('any')
