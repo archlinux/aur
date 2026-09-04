@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Cinelerra-GG
+Name[en_US]=Cinelerra-GG.desktop
+Comment=MultiMedia Editor
+Comment[fr]=Éditeur multimédia
+Categories=AudioVideo;AudioVideoEditing;
+Encoding=UTF-8
+Exec=/opt/appimages/Cinelerra-GG.AppImage %U
+TryExec=/opt/appimages/Cinelerra-GG.AppImage
+Icon=cin
+Terminal=false
+Type=Application
+StartupWMClass=Cinelerra
+
