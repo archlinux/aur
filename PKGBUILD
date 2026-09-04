@@ -2,30 +2,24 @@
 # Contributor: johnnybash <georg at grgw dot de>
 
 pkgname=rbdoom3-bfg-git
-pkgver=r2730.4f97527a
+pkgver=r2771.ea29c006
 pkgrel=1
 pkgdesc="Doom 3 BFG Edition with soft shadows, cleaned up source, Linux and 64 bit Support"
 arch=(i686 x86_64)
 url="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
 license=(GPL3)
 depends=(ffmpeg glew openal sdl2-compat)
-makedepends=(cmake git rapidjson zip ispc vulkan-headers)
+makedepends=(cmake git rapidjson zip ispc vulkan-headers directx-shader-compiler)
 optdepends=('doom3bfg-data: packaged game data files')
 provides=(rbdoom3-bfg)
 conflicts=(rbdoom-3-bfg)
 install=rbdoom3-bfg-git.install
 source=("$pkgname::git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git"
         'rbdoom3-bfg-git.desktop' 
-        'doom3bfg.png'
-        'https://github.com/microsoft/DirectXShaderCompiler/releases/download/v1.8.2405/linux_dxc_2024_05_24.x86_64.tar.gz')
+        'doom3bfg.png')
 sha256sums=('SKIP'
             'a651aa2e71a8a525e66173a8f76b907712b73c950c88f5468ccab79f7533361f'
-            '0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e'
-            '85d74a5f7e0ad339cae875b5baab04c38218d6ac33960b75f8780fd9d8447ee9')
-
-noextract=(
-  linux_dxc_2024_05_24.x86_64.tar.gz
-)
+            '0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e')
 
 pkgver() {
   cd "$pkgname"
@@ -35,14 +29,10 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     git submodule update --init --recursive
-    mkdir -p "$srcdir/dxc/"
-    tar xvzf "$srcdir/linux_dxc_2024_05_24.x86_64.tar.gz" --directory "$srcdir/dxc/"
-    chmod +x $srcdir/dxc/bin/dxc
 }
 
 build() {
-  cmake -DDXC_CUSTOM_PATH=$srcdir/dxc/bin \
-        -DCMAKE_BUILD_TYPE=Release \
+  cmake -DCMAKE_BUILD_TYPE=Release \
         -DONATIVE=ON \
         -DFFMPEG=OFF \
         -DBINKDEC=ON \
