@@ -1,7 +1,7 @@
 # Maintainer: Massimo Pavoni (damax) <aur at massimopavoni dot dev>
 
 pkgname=ttf-uiua386
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Uiua font with language glyphs, inspired by APL386"
 arch=(any)
