@@ -37,7 +37,7 @@ md5sums=('SKIP')
 options=('!strip' '!lto')
 
 build() {
-  arch-meson $pkgname build
+  arch-meson --wipe $pkgname build
   ninja -C build
 }
 
