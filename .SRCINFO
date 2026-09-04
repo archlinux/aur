@@ -1,6 +1,6 @@
 pkgbase = et-rs-bin
 	pkgdesc = Single telemetry-free EternalTerminal binary (Rust port)
-	pkgver = 0.0.22
+	pkgver = 0.0.23
 	pkgrel = 1
 	url = https://github.com/minpeter/et.rs
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = et-rs-bin
 	conflicts = eternal-terminal-git
 	options = !strip
 	options = !debug
-	source_x86_64 = et-rs-bin-0.0.22-x86_64.tar.gz::https://github.com/minpeter/et.rs/releases/download/et@0.0.22/et-0.0.22-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = cdc9162433dbcb46843bcf6c6198c25b7a96ac7c5142646d13b7ede83cb21b63
-	source_aarch64 = et-rs-bin-0.0.22-aarch64.tar.gz::https://github.com/minpeter/et.rs/releases/download/et@0.0.22/et-0.0.22-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 0478ca829b9019afe86d697c1792242339430d7dc9e88cc4697b4938c368b566
+	source_x86_64 = et-rs-bin-0.0.23-x86_64.tar.gz::https://github.com/minpeter/et.rs/releases/download/et@0.0.23/et-0.0.23-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c60e14520367607b58df0dc2975ee33b34c43fa8f32ab03568a34412d5b2bbc1
+	source_aarch64 = et-rs-bin-0.0.23-aarch64.tar.gz::https://github.com/minpeter/et.rs/releases/download/et@0.0.23/et-0.0.23-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d73f53a1f073d9c1d7b53dd208976e94afafa96635c67b704a08a0aefdd70f01
 
 pkgname = et-rs-bin
