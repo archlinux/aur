@@ -6,7 +6,7 @@ pkgname=(
   espanso-x11
   espanso-wayland
 )
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
@@ -33,7 +33,7 @@ options=(!lto)
 source=(
   "$url/archive/v$pkgver/$pkgbase-$pkgver.tar.gz"
 )
-sha256sums=('90895a8a79476f902a6cfc88a67e8e077971be13f728ce1a35866355d60285a7')
+sha256sums=('3121627138be4b1f106b8dfd73fb4b7030ecb44c6a8f4e7628a1174b58e5cfe2')
 
 prepare() {
   cd $pkgbase-$pkgver
