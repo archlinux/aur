@@ -1,0 +1,14 @@
+pkgbase = ros2-jazzy-gz-msgs-vendor
+	pkgdesc = ROS 2 Jazzy vendor wrapper for system gz-msgs10
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/gazebo-release/gz_msgs_vendor
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = ros2-jazzy
+	depends = gz-msgs10
+	source = gz_msgs_vendor-0.0.8.tar.gz::https://github.com/gazebo-release/gz_msgs_vendor/archive/refs/tags/0.0.8.tar.gz
+	sha256sums = ab8dc9c044a9e610857006632b19c3447bbfc6639515db85c754458bcb5db584
+
+pkgname = ros2-jazzy-gz-msgs-vendor
