@@ -1,0 +1,19 @@
+pkgbase = lgtm-git
+	pkgdesc = Read what your coding agent just wrote, and point at the lines when you reply (git)
+	pkgver = 0.0.0.r0.0000000
+	pkgrel = 1
+	url = https://github.com/kunkka19xx/lgtm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = zig>=0.16.0
+	depends = git
+	optdepends = tmux: send references to an agent pane
+	provides = lgtm
+	conflicts = lgtm
+	conflicts = lgtm-bin
+	source = lgtm::git+https://github.com/kunkka19xx/lgtm.git
+	sha256sums = SKIP
+
+pkgname = lgtm-git
