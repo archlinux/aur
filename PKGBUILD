@@ -86,12 +86,8 @@ sha256sums_x86_64=('41a692e85179fc8b82ed604ea6c2deb8ddfea547bd5842245b38f2ee455f
 sha256sums_aarch64=('fb7fb462c44ded99bf6c75d9c5850656d2c7cb25d62bdffd0effbced16f3225f')
 
 install='vgs-shell.install'
-# Two notification daemons cannot share org.freedesktop.Notifications: it is a
-# first-come, first-served session bus name, and a pre-installed daemon usually
-# wins it by D-Bus activation before VGS ever registers, leaving the shell's
-# notification center permanently empty. VGS is a notification daemon, so it
-# declares that the way pacman understands it. `vshell notifications takeover`
-# handles a daemon installed some other way.
+# Another notification daemon can acquire org.freedesktop.Notifications
+# before VGS. Declare the conflict so VGS can receive session notifications.
 provides=('notification-daemon')
 conflicts=('notification-daemon' 'mako' 'swaync')
 
