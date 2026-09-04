@@ -1,5 +1,5 @@
 pkgbase = neoarch-git
-	pkgver = 3.1.1.r701.g973b9db
+	pkgver = 3.1.1.2.r708.g70b16d0
 	pkgrel = 1
 	pkgdesc = NeoArch Package Manager for Arch Linux (Lynx Edition — development build, use 'neoarch' for stable)
 	url = https://github.com/Sanjaya-Danushka/Neoarch
