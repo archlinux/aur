@@ -1,4 +1,4 @@
-# Local exact-context rebase for llama.cpp b10776.
+# Local exact-context rebase for llama.cpp b10796.
 --- a/src/llama-model.cpp
 +++ b/src/llama-model.cpp
 @@ -1225,7 +1225,11 @@
