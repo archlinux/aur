@@ -7,7 +7,7 @@ pkgbase = phpggc-git
 	license = Apache-2.0
 	makedepends = git
 	depends = php
-	provides = phpggc
+	provides = phpggc=r725.f8aebde
 	conflicts = phpggc
 	source = git+https://github.com/ambionics/phpggc
 	b2sums = SKIP
