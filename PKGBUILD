@@ -1,4 +1,4 @@
-# Maintainer: stef204 <stef204@yandex.com>
+# Maintainer: stef204 < base64 -d c3RlZjIwNEB5YW5kZXguY29tCg== >
 
 # This package pins Electron 36.6.0 specifically because it is the exact
 # version required by Nyxt's cl-electron library (see _build/cl-electron/package.json).
