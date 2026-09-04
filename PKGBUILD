@@ -18,8 +18,8 @@ conflicts=('can-utils' 'can-utils-git')
 # build happens on armv7h at all, this is purely a repackaging step there too.
 source_x86_64=("https://github.com/tubbywrestler/can-utils-bin/releases/download/${pkgver}-${_pkgrel_src}/can-utils-${pkgver}-${_pkgrel_src}-x86_64.pkg.tar.zst")
 sha256sums_x86_64=('c04e77240c53ab0ae82eb06f4238f87340180d225754faf5c2c680a1eb099f58')
-source_armv7h=("https://github.com/tubbywrestler/can-utils-bin/releases/download/${pkgver}-${_pkgrel_src}-armv7h/can-utils-${pkgver}-${_pkgrel_src}-armv7h.tar.zst")
-sha256sums_armv7h=('064b7b8063954af13cc4a076430e5643fc8bb97e73e1126372f7e1d9e614fcb0')
+source_armv7h=("https://github.com/tubbywrestler/can-utils-bin/releases/download/${pkgver}-${_pkgrel_src}/can-utils-${pkgver}-${_pkgrel_src}-armv7h.tar.zst")
+sha256sums_armv7h=('dbb81a19b886cbadfc15204a7bca92fc3a0d15265627c9e54484ce967bc3e7cc')
 
 package() {
     if [ "${CARCH}" = "armv7h" ]; then
