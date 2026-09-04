@@ -1,6 +1,6 @@
 # Maintainer: plasmaDestroyer <satyasheel2004@gmail.com>
 pkgname=paclens
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A TUI-first pacman + AUR + Flatpak inspection and update tool for Arch Linux"
 arch=('x86_64')
