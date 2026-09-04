@@ -1,4 +1,4 @@
-# Maintainer: taxin <unknownbrofrombd@duck.com>
+# Maintainer: taxin-404 <taxin404@duck.com>
 pkgname=affinity-bin
 pkgver=3.2.0
 pkgrel=1
