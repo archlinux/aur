@@ -17,16 +17,6 @@ sha256sums=('de8ce41690c1af2dacf297ca98fc0c1cc0a3c3d9988d8738766758e90fd64947'
             'e1ec95e6c550458a34de93580cb85dac24da0e9bedb9bb42811f050ac5a0c7d5'
             'd433c22716392af6845ad58ec5b243487c21076a7b1017d704ef84b14909afaf')
 
-# LOCAL-only: skip virtual-mouse js devices (Flix/libvirtualhid) so Fushi does
-# not treat them as a jammed gamepad stick. NOT pushed to AUR (machine-specific).
-patch_pub_cache_gamepads() {
-  local pkg="${srcdir}/pub-cache/hosted/pub.dev/gamepads_linux-0.1.2"
-  if grep -q 'Skipping non-gamepad' "${pkg}/linux/gamepad.cc"; then
-    return
-  fi
-  (cd "${pkg}" && patch -p1 -i "${srcdir}/gamepads-skip-virtual-mouse.patch")
-}
-
 # Project is locked to Flutter 3.44.0 (the AUR flutter package is a different,
 # older release), so the pinned SDK tarball is carried as a source. Dart SDK is
 # bundled in that tarball; everything else resolves via pub.
