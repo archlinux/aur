@@ -12,10 +12,17 @@ makedepends=('clang' 'cmake' 'ninja' 'pkg-config' 'unzip')
 optdepends=('qbittorrent: fallback torrent engine when the bundled libtorrent is unavailable')
 source=("https://github.com/hajisensai/Fushi/archive/refs/tags/v2.2.4.tar.gz#/fushi-2.2.4.tar.gz"
         'https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.44.0-stable.tar.xz'
+        'fix-fushidicts-cstdint.patch'
         'fushi.desktop')
 sha256sums=('de8ce41690c1af2dacf297ca98fc0c1cc0a3c3d9988d8738766758e90fd64947'
             'e1ec95e6c550458a34de93580cb85dac24da0e9bedb9bb42811f050ac5a0c7d5'
+            '8334fd0a75f8cfdfff0873b3c9ae9f0d19acfffdf59c07d4cb4d95b1e3ed2391'
             'd433c22716392af6845ad58ec5b243487c21076a7b1017d704ef84b14909afaf')
+
+prepare() {
+  cd "${srcdir}/Fushi-${pkgver}"
+  patch -p1 -i "${srcdir}/fix-fushidicts-cstdint.patch"
+}
 
 # Project is locked to Flutter 3.44.0 (the AUR flutter package is a different,
 # older release), so the pinned SDK tarball is carried as a source. Dart SDK is
