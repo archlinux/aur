@@ -1,13 +1,13 @@
 # Maintainer: Mathias Tausen <aur at alias dot tausen dot org>
 pkgname=classic-repair-toolbox-bin
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="Tool for diagnosing, troubleshooting, and repairing vintage computers and peripherals"
 arch=("x86_64")
 url="https://github.com/HovKlan-DH/Classic-Repair-Toolbox"
 license=('GPL3')
 source=("https://github.com/HovKlan-DH/Classic-Repair-Toolbox/releases/download/${pkgver}/Classic-Repair-Toolbox.AppImage")
-sha256sums=('cabe19b037960339a3a4a702609a226145e229e80287411c2a97ed9b493b353d')
+sha256sums=('b055df8fd63c36a4fd4ed76c0db83581ee97d14cdd557346b97073f180c66f61')
 options=(!strip !debug)
 
 package() {

@@ -1,13 +1,13 @@
 pkgbase = classic-repair-toolbox-bin
 	pkgdesc = Tool for diagnosing, troubleshooting, and repairing vintage computers and peripherals
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/HovKlan-DH/Classic-Repair-Toolbox
 	arch = x86_64
 	license = GPL3
 	options = !strip
 	options = !debug
-	source = https://github.com/HovKlan-DH/Classic-Repair-Toolbox/releases/download/2.3.0/Classic-Repair-Toolbox.AppImage
-	sha256sums = cabe19b037960339a3a4a702609a226145e229e80287411c2a97ed9b493b353d
+	source = https://github.com/HovKlan-DH/Classic-Repair-Toolbox/releases/download/2.4.0/Classic-Repair-Toolbox.AppImage
+	sha256sums = b055df8fd63c36a4fd4ed76c0db83581ee97d14cdd557346b97073f180c66f61
 
 pkgname = classic-repair-toolbox-bin
