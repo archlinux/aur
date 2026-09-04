@@ -1,0 +1,20 @@
+pkgbase = black-glass-plasma-theme-git
+	pkgdesc = Black Glass theme for KDE Plasma
+	pkgver = r46.eda83cf
+	pkgrel = 1
+	url = https://www.opencode.net/phob1an/blackglass
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = plasma-workspace
+	depends = kwin
+	depends = kvantum
+	optdepends = sddm: use the included SDDM login theme
+	optdepends = sddm-kcm: configure SDDM from KDE System Settings
+	optdepends = konsole: use any included Konsole color scheme
+	provides = black-glass-plasma-theme
+	conflicts = black-glass-plasma-theme
+	source = black-glass::git+https://www.opencode.net/phob1an/blackglass.git#branch=master
+	sha256sums = SKIP
+
+pkgname = black-glass-plasma-theme-git
