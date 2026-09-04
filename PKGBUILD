@@ -16,7 +16,7 @@ depends=('arm-linux-gnueabihf-binutils' 'arm-linux-gnueabihf-glibc' 'arm-linux-g
 
 _tarball="arm-gnu-toolchain-${_toolchain_ver}-x86_64-arm-none-linux-gnueabihf"
 source=("https://developer.arm.com/-/media/Files/downloads/gnu/${_toolchain_ver}/binrel/${_tarball}.tar.xz")
-sha256sums=('f0a6c95a9eda555c6cff02f4aa7ca0a7744526e85ff0000dc45e5599c59002f0')
+sha256sums=('6bec7c633bc365f9cadd6e51aac1199063f58a129923bce0d985e6324146c7a7')
 
 package() {
     cd "${srcdir}/${_tarball}"
