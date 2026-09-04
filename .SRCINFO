@@ -1,13 +1,13 @@
 pkgbase = uutils-sed
 	pkgdesc = Rust implementation of sed
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/uutils/sed
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = https://github.com/uutils/sed/archive/refs/tags/0.1.1.tar.gz
-	b2sums = 4e8d6c2254b783d7995e9aae67e553d9cfbe11b6d391f8b32fe60b8381e9da61b2f3a83072d57159fe20676f0b4adc11e0bd26946cf04e25c618bc1fbc0aeb06
+	source = https://static.crates.io/crates/sed/sed-0.2.0.crate
+	b2sums = 6e975e28b8b1689ca191167dbdd3a71200103f46ee31393504d95a556d0ff5cb2ae65a4e7e3150825a6ee595cdd7d2396db9bea938a8f32ab69090377501c728
 
 pkgname = uutils-sed
