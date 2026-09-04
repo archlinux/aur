@@ -14,8 +14,9 @@ note() {
 post_install() {
     note "Enable the Lenovo config service with:"
     echo "sudo systemctl enable --now lenovo-cfgservice.service"
-    note "If your system has a Fibocom L860-GL-16/FM350 or a Quectel EM160R-GL/RM520N-GL"
-    note "Consider adding options --test-low-power-suspend-resume and --test-quick-suspend-resume to ModemManager.service"
+    note "If your system has a Fibocom L860-GL-16/FM350, Quectel EM160R-GL/RM520N-GL or Foxconn SDX61"
+    note "Consider uncommenting the drop-in override file in /usr/lib/systemd/system/ModemManager.d/fix_suspend.conf"
+    note "and restart the ModemManager service."
 }
 
 post_upgrade() {

@@ -1,16 +1,20 @@
 pkgbase = lenovo-wwan-unlock
 	pkgdesc = FCC and DPR unlock for Lenovo PCs
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://github.com/lenovo/lenovo-wwan-unlock
 	install = lenovo-wwan-unlock.install
 	arch = x86_64
 	license = LicenseRef-lenovo-software-code-license
 	makedepends = git
 	depends = gcc-libs
+	depends = libxml2-legacy
 	depends = modemmanager
 	depends = pciutils
-	source = lenovo-wwan-unlock::git+https://github.com/lenovo/lenovo-wwan-unlock#tag=v3.1.0
-	b2sums = 202570508860c7a0cf118a0e30e45deb9f371608f2d37fd4168dd2cc023cc3a230eb45450b7286fd42739f64ae3c59e6d62aaa7a050f5f0244f2f7644d0ee05b
+	optdepends = android-tools: fastboot required for RW101R Modem
+	source = lenovo-wwan-unlock::git+https://github.com/lenovo/lenovo-wwan-unlock#tag=v4.0.0
+	source = fix_suspend.conf
+	b2sums = de3e409502a4f8859b6d6da0405b15829608bc018f8cec947751d48c60e518f22ec21d762bd4f08a14cd3ac6952d2ef683e2ea4108e1a19143ecc28eac6323d1
+	b2sums = 977e608ef3a415d68e00dc4df8a39cf3e0d366140f8a2a14d5eeee322a7b62e0d6485a2f1916e2f9507662c2cb17e68fa50083188427194a2a40069ac9d4c71c
 
 pkgname = lenovo-wwan-unlock
