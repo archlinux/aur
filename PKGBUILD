@@ -66,20 +66,17 @@ source=("git+${url}.git#tag=v${pkgver}"
         "lower_hatchling_version_requirements.patch"
         "clear_multiplexer_env_in_theme_tests.patch"
         "stabilize_click_chain_timing_in_word_drag_tests.patch"
-        "stabilize_model_picker_selection_wait.patch"
         "stretch_e2e_timeouts_when_builder_is_loaded.patch")
 sha256sums=('62327cd406a504eefe90159c5e922c13a88f64a3d4f0d41f94fbf0b0b3e8b699'
             'c9b417d8a6445bcca31f8d75757a7ec2d78e4b5aec784a7b5d2c9adf62106014'
             'f24330784d56591d197dc260166d29fff717fab763963fb2c7d8221f81135069'
-            '635f8b81f8f884fd82a874372fe3aa466ec41380c48d4209b230afd34825bc3f'
-            '368f0c6cf1d3f1647f415ac8e4cab3c1cd1618766fc434e6c50ea3a8af6f6ec1'
+            'ec15c34e133eb3ca09c593ac03a715beb30557585d81b0ac99bffcf5818bd5e2'
             '2706769c69b63715757f2d820b4b3d9c363a278821d58c29fdd5ecf25fb720c9')
 prepare() {
     cd "$pkgname"
     cat "$srcdir/lower_hatchling_version_requirements.patch" | patch -p1
     cat "$srcdir/clear_multiplexer_env_in_theme_tests.patch" | patch -p1
     cat "$srcdir/stabilize_click_chain_timing_in_word_drag_tests.patch" | patch -p1
-    cat "$srcdir/stabilize_model_picker_selection_wait.patch" | patch -p1
     cat "$srcdir/stretch_e2e_timeouts_when_builder_is_loaded.patch" | patch -p1
 }
 
