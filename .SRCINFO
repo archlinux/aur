@@ -1,6 +1,6 @@
 pkgbase = kotonoha
 	pkgdesc = Wayland lyrics overlay for MPRIS-compatible media players
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/locez/kotonoha
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = kotonoha
 	depends = python-qasync
 	provides = kotonoha
 	conflicts = kotonoha
-	source = kotonoha::git+https://github.com/locez/kotonoha.git#tag=v0.2.0
-	sha256sums = 0f948acf4e576e5366765b7c8ca6a9b8a46914100f1fc9bdd49cf93cdb2891f9
+	source = kotonoha::git+https://github.com/locez/kotonoha.git#tag=v0.2.2
+	sha256sums = faaac57171f75a045f8b7f4c30eeafa87ee6c4c0f41a23cb26c57094b341212a
 
 pkgname = kotonoha
