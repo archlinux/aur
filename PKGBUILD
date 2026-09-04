@@ -8,9 +8,9 @@
 # Which in turn is based on extra/electron* by
 # Bruno Pagani <archange@archlinux.org>
 # Caleb Maclennan <caleb@alerque.com>
-_pkgname=electron45
+_pkgname=electron46
 pkgname=electron-nightly-bin
-_pkgver=45.0.0-nightly.20260821
+_pkgver=46.0.0-nightly.20260904
 pkgver="${_pkgver/-}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt nightly binary"
@@ -48,8 +48,8 @@ noextract=("electron-${_pkgver}-${CARCH}.zip")
 #source_armv7h=("electron-${_pkgver}-armv7h.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-armv7l.zip")
 source_x86_64=("electron-${_pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 'electron')
-sha256sums_x86_64=('0175b76b11967e791bc3e2098c2540d322ee9193391fd473af27c2f394c8a72f'
-                   '7e41ddf9ba106a1d6811d044c5edf87293a218f9fb8890278185d9ffb10780b1')
+sha256sums_x86_64=('2d9df669a04b200e2856fcd4224ace1f905798493acded70ad9c329398eff40a'
+                   'bdeebd4c6782fcd5755c6f30c2fd04c3cdd8e1d747d16a5257a14d6c2db254e0')
 prepare() {
     install -Dm755 -d "${srcdir}/${_pkgname}"
     bsdtar -xf "${srcdir}/electron-${_pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
@@ -60,6 +60,6 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
     cp -a "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
     ln -nfs "/usr/lib/${_pkgname}/electron" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm645 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm646 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
     rm -rf "${pkgdir}/usr/bin/${_pkgname}/LICENSE"*
 }
