@@ -1,13 +1,13 @@
 # Maintainer: PandaDEV <hello@pandadev.net>
 pkgname=vleer-git
-pkgver=r115.g9bb4186
+pkgver=r488.g7428167
 pkgrel=1
 pkgdesc="Music, but without the subscription."
 arch=('x86_64' 'aarch64')
 url="https://github.com/vleerapp/vleer"
 license=('AGPL-3.0')
-depends=('sqlite')
-makedepends=('rust' 'cargo' 'cmake')
+depends=('alsa-lib' 'libglvnd' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'vulkan-icd-loader' 'wayland')
+makedepends=('git' 'rust' 'cargo' 'cmake')
 provides=('vleer')
 conflicts=('vleer')
 source=("git+${url}")
@@ -21,12 +21,29 @@ pkgver() {
 
 build() {
   cd "$srcdir/vleer"
-  cargo install cargo-packager
-  NO_STRIP=1 cargo packager --release
+  cargo build --release --locked
 }
 
 package() {
   cd "$srcdir/vleer"
-  mkdir -p "$pkgdir/usr"
-  find target/release/bundles -name "*.tar.gz" -exec tar -xzvf {} -C "$pkgdir/usr" --strip-components=1 \;
+
+  install -Dm755 target/release/vleer "$pkgdir/usr/bin/vleer"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  for size in 128 256 512; do
+    install -Dm644 "assets/images/icon-${size}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/vleer.png"
+  done
+
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/vleer.desktop" <<'DESKTOP'
+[Desktop Entry]
+Type=Application
+Name=Vleer
+Comment=Music, but without the subscription.
+Exec=vleer %U
+Icon=vleer
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+StartupWMClass=vleer
+DESKTOP
 }
