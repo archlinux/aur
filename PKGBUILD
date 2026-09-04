@@ -1,4 +1,4 @@
-# Maintainer: taxin <taxin404@duck.com>
+# Maintainer: taxin-404 <taxin404@duck.com>
 pkgname=browsercode-bin
 pkgver=v0.1.20
 pkgrel=1
