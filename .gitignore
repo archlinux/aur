@@ -1,0 +1,10 @@
+*.db*
+*.files*
+*.log
+*.part
+*.pkg.tar*
+.asp/
+.makepkg/
+pkg/
+src/
+chroot/

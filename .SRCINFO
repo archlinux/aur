@@ -1,0 +1,18 @@
+pkgbase = ruy-git
+	pkgdesc = Matrix multiplication library for neural network inference engines
+	pkgver = r564.9940fbf
+	pkgrel = 1
+	url = https://github.com/google/ruy
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = cpuinfo-pytorch-git
+	provides = ruy
+	conflicts = ruy
+	source = ruy::git+https://github.com/google/ruy.git
+	sha256sums = SKIP
+
+pkgname = ruy-git
