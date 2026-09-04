@@ -1,7 +1,11 @@
 post_install() {
-	[[ -x /usr/bin/gtk-update-icon-cache ]] && gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+	if [[ -x /usr/bin/gtk-update-icon-cache ]]; then
+		gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+	fi
 }
 
 post_remove() {
-	[[ -x /usr/bin/gtk-update-icon-cache ]] && gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+	if [[ -x /usr/bin/gtk-update-icon-cache ]]; then
+		gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+	fi
 }
