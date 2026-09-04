@@ -11,13 +11,22 @@ User=oneleet
 Group=oneleet
 AmbientCapabilities=CAP_NET_ADMIN
 CapabilityBoundingSet=CAP_NET_ADMIN
-# Give the unprivileged daemon read-only access to hardware identity data.
+# Keep personal user data outside the daemon's mount namespace.
+ProtectHome=true
+# Hide Docker's private mount paths from osquery's mount inventory.
+InaccessiblePaths=-/run/docker
+InaccessiblePaths=-/var/lib/docker
+# Explicitly grant the unprivileged daemon read-only access to the private DMI
+# files needed for hardware identification.
 RuntimeDirectory=oneleet-dmi
 RuntimeDirectoryMode=0700
 ExecStartPre=-+/usr/bin/install -m 0444 /sys/class/dmi/id/product_uuid /run/oneleet-dmi/product_uuid
 ExecStartPre=-+/usr/bin/install -m 0444 /sys/firmware/dmi/tables/DMI /run/oneleet-dmi/dmi_table
 BindReadOnlyPaths=-/run/oneleet-dmi/product_uuid:/sys/class/dmi/id/product_uuid
 BindReadOnlyPaths=-/run/oneleet-dmi/dmi_table:/sys/firmware/dmi/tables/DMI
+# The bundled osquery otherwise falls back to a missing system-wide file and
+# logs a misleading configuration error on every survey.
+BindReadOnlyPaths=/usr/share/oneleet-agent/osquery.conf:/etc/osquery/osquery.conf
 ExecStart=/opt/Oneleet/oneleet-daemon
 Restart=always
 RestartSec=120
