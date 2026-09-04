@@ -4,7 +4,7 @@
 
 _pkgname=wechat-universal
 pkgname=${_pkgname}-bwrap
-pkgver=4.1.1.8
+pkgver=4.1.13.9
 pkgrel=1
 pkgdesc="WeChat (Universal) with bwrap sandbox"
 arch=('x86_64' 'aarch64' 'loong64')
@@ -62,7 +62,7 @@ source_loong64=("${_deb_prefix}loong64.deb::${_deb_url_common}LoongArch.deb")
 noextract=("${_deb_prefix}"{x86_64,aarch64,loong64}.deb )
 
 sha256sums=(
-	'7ef002c45bf89d3f5dd02045c327a802b57cb2b57b65406f17f68baab967e407'
+    'a71158393c04658e89d3cdc12186bcdde70dc96321db2c8e86648a1487fbbe1c'
     '0563472cf2c74710d1fe999d397155f560d3ed817e04fd9c35077ccb648e1880'
     'fc3ce9eb8dee3ee149233ebdb844d3733b2b2a8664422d068cf39b7fb08138f8'
     'f05f6f907898740dab9833c1762e56dbc521db3c612dd86d2e2cd4b81eb257bf'
@@ -70,13 +70,13 @@ sha256sums=(
 )
 
 sha256sums_x86_64=(
-    'c9765e87ee5133bf4bb50d585c1814fafd995e3fb0da62c5ed07259b43dada7b'
+    '096865e050ba0d3c1a23887227e2400bf343037b1d7d658c84c88ff26bfdc17f'
 )
 sha256sums_aarch64=(
-    'c3ed1a481247e6a1b166e87a66cccdee898c3ae0b76613b39bb6e9795e50929f'
+    'a6d115d24dfe3ed1b7e7de16cf6cc02acef8df5668150f702ac8d8c5256405fa'
 )
 sha256sums_loong64=(
-    'a5fa706d7936dcf55cff2ae4a59c11ccd0e0095210d602c3233ca7f14c291b94'
+    '2d13aad578bb6e2d66ef3d71cfcfc0ad59fc34fc6e6e8f1eb3091f063cd12ece'
 )
 
 prepare() {
