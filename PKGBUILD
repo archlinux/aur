@@ -1,8 +1,8 @@
 # Maintainer: Theo <teoulas@duck.com>
 
 pkgname=ecosia-browser-bin
-pkgver=150.1.7871.10
-pkgrel=2
+pkgver=152.0.7977.8
+pkgrel=1
 pkgdesc='Ecosia Browser (prebuilt binary)'
 arch=('x86_64')
 url='https://www.ecosia.org/browser'
@@ -51,7 +51,7 @@ conflicts=('ecosia-browser')
 options=('!strip' '!debug')
 
 _snap_id='2MakkUunZD1vJLykl5QmmVDQAZdE84wY'
-_snap_revision=3
+_snap_revision=6
 source_x86_64=(
   "${pkgname}-${pkgver}-${_snap_revision}.snap::https://api.snapcraft.io/api/v1/snaps/download/${_snap_id}_${_snap_revision}.snap"
 )
@@ -59,7 +59,7 @@ source=('ecosiabrowser.sh' 'LICENSE')
 noextract=("${pkgname}-${pkgver}-${_snap_revision}.snap")
 sha256sums=('43dd05c17af7504ed0267b8909e44e3aa1a03b1819415ab1559c143fc8a36efb'
             'b744f25f86ee55eb6d3ec5ff5d6c5a88ad55392a49ecf69cee9c669124fbf1f2')
-sha256sums_x86_64=('81385d48b89fb869e9ebb0ad8d46a76c6860395a73e60804611cd20b748c4b75')
+sha256sums_x86_64=('f6951358f1afa48e01dcc97761aaf3fc937bc9cc417e8661dd92c1bebca7d62d')
 
 prepare() {
   rm -rf snap-root

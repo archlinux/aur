@@ -1,4 +1,6 @@
 /pkg/
 /src/
+/__pycache__/
+/*.log
 /*.pkg.tar*
 /*.snap
