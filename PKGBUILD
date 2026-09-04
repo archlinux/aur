@@ -2,18 +2,18 @@
 
 _name=genai-prices
 pkgname=python-$_name
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Calculate prices for calling LLM inference APIs.'
 arch=('any')
 url='https://github.com/pydantic/genai-prices'
 license=('MIT')
 depends=('python' 'python-httpx2' 'python-pydantic')
-makedepends=('python-uv-build' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-anyio' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-recording' 'python-pydantic-settings' 'python-rich' 'python-rich-argparse' 'python-boto3' 'python-ruamel-yaml')
+makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-anyio' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-recording' 'python-pydantic-settings' 'python-rich' 'python-rich-argparse' 'python-boto3' 'python-jsonschema' 'python-ruamel-yaml')
 optdepends=('python-pydantic-settings: cli' 'python-rich: cli' 'python-rich-argparse: cli')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5558e8ec2d2e56e7f34764b45a0f825f99c90260394d46d2842314d683fe61bd')
+sha256sums=('e5b8cb6738f323a550d1710592e17b646699460636fc54fe422bc8fe5fcf11d4')
 
 build() {
     cd "$srcdir"/$_name-$pkgver
@@ -24,6 +24,8 @@ check() {
   local pytest_options=(
     -vv
     --disable-warnings
+    # Package still doesn't exist in AUR
+    --ignore tests/test_source_aws.py
   )
   cd "$srcdir"/$_name-$pkgver
   python -m venv --system-site-packages test-env
