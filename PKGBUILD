@@ -3,19 +3,19 @@
 # Contributor: Vianney le Clément <vleclement at gmail dot com>
 
 pkgname=jbig2enc
-pkgver=0.30
-pkgrel=2
+pkgver=0.32
+pkgrel=1
 pkgdesc="A JBIG2 image encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/agl/jbig2enc"
 license=('Apache')
-depends=('gcc-libs' 'leptonica>=1.74' 'libpng' 'libjpeg' 'libtiff')
+depends=('gcc-libs' 'leptonica>=1.74' 'libpng' 'libjpeg.so' 'libtiff')
 optdepends=('python: for pdf.py')
 makedepends=('automake' 'libtool' 'gzip')
 changelog=CHANGELOG
 source=("https://github.com/agl/jbig2enc/archive/refs/tags/$pkgver.tar.gz"
         "jbig2enc.1")
-sha256sums=('4468442f666edc2cc4d38b11cde2123071a94edc3b403ebe60eb20ea3b2cc67b'
+sha256sums=('5b3b1c48617e5b1608f916a78038ea867a2c9eb20c2ff34a78a48a243f655c2a'
             '34204c599c53aca551ad762fdf76aff4a1b9067be47cae1005c3ecf66325c29f')
 
 

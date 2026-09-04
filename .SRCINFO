@@ -1,7 +1,7 @@
 pkgbase = jbig2enc
 	pkgdesc = A JBIG2 image encoder
-	pkgver = 0.30
-	pkgrel = 2
+	pkgver = 0.32
+	pkgrel = 1
 	url = https://github.com/agl/jbig2enc
 	changelog = CHANGELOG
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = jbig2enc
 	depends = libjpeg
 	depends = libtiff
 	optdepends = python: for pdf.py
-	source = https://github.com/agl/jbig2enc/archive/refs/tags/0.30.tar.gz
+	source = https://github.com/agl/jbig2enc/archive/refs/tags/0.32.tar.gz
 	source = jbig2enc.1
-	sha256sums = 4468442f666edc2cc4d38b11cde2123071a94edc3b403ebe60eb20ea3b2cc67b
+	sha256sums = 5b3b1c48617e5b1608f916a78038ea867a2c9eb20c2ff34a78a48a243f655c2a
 	sha256sums = 34204c599c53aca551ad762fdf76aff4a1b9067be47cae1005c3ecf66325c29f
 
 pkgname = jbig2enc
