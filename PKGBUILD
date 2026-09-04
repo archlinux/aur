@@ -10,7 +10,7 @@ pkgname='cidrtools-cffi'
 pkgdesc='Python CFFI bindings for the cidrtools C-library'
 _gitname='cidrtools-cffi'
 
-pkgver="1.4.0"
+pkgver="1.4.1"
 pkgrel=1
 url="https://github.com/gene-git/cidrtools-cffi"
 
@@ -28,8 +28,6 @@ makedepends=(
     'git'
     'meson'
     'meson-python'
-    'uv'
-    'python-uv-build'
     'rsync'
 )
 checkdepends=(
