@@ -1,6 +1,6 @@
 pkgbase = stardrop
 	pkgdesc = An open-source, cross-platform mod manager for Stardew Valley
-	pkgver = 1.10.0.beta.1
+	pkgver = 1.10.0.beta.2
 	pkgrel = 1
 	url = https://github.com/Floogen/Stardrop
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = stardrop
 	depends = dotnet-runtime
 	options = strip
 	options = !debug
-	source = https://github.com/Floogen/Stardrop/archive/refs/tags/v1.10.0-beta.1.tar.gz
+	source = https://github.com/Floogen/Stardrop/archive/refs/tags/v1.10.0-beta.2.tar.gz
 	source = stardrop.desktop
-	sha256sums = 94fd628c93befd61b66e0e31ac7daf577e938e7b9ba79988a6635f2dc7c57635
+	sha256sums = d5773f1e44997a0e786a6ab004f0170571ea9c0afb2527960a4fc82b143dafad
 	sha256sums = cfd312d94b81122a6faade6799ea195b52114e60574ca2d1706f94da00d27b17
 
 pkgname = stardrop
