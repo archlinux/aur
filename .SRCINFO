@@ -1,6 +1,6 @@
 pkgbase = kpatch-git
 	pkgdesc = Live kernel patching (git)
-	pkgver = 0.9.11.r47.g756f2fb
+	pkgver = 0.9.11.r49.gcc622a5
 	pkgrel = 1
 	url = https://github.com/dynup/kpatch
 	arch = x86_64
