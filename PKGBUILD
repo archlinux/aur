@@ -23,7 +23,6 @@ pkgver() {
 prepare() {
   cd lian-li-linux
   git submodule update --init --recursive --depth=1
-  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
 }
 
