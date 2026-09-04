@@ -5,7 +5,7 @@
 # the source of truth to copy from. See ../README.md for the publish
 # procedure.
 pkgname=tesseract-matrix-git
-pkgver=0.8.18.r17.g32dbb5f1
+pkgver=0.8.20.r0.gce15ad33
 pkgrel=1
 pkgdesc="Cross-platform Matrix chat client (latest git build)"
 arch=('x86_64')
@@ -16,6 +16,10 @@ license=('GPL-3.0-or-later')
 # resulting objects lack real machine code for symbols the Rust side needs
 # at link time, producing "undefined symbol: ring_core_*" errors.
 options=('!lto')
+# makepkg's own CFLAGS/CXXFLAGS/LDFLAGS already inject Arch's hardening set
+# (-fstack-protector-strong, -D_FORTIFY_SOURCE=3 via -Wp, RELRO, etc.), so the
+# project's own cmake/Hardening.cmake pass is disabled below to avoid
+# double-injecting/conflicting flags (e.g. our _FORTIFY_SOURCE=2 vs Arch's =3).
 provides=('tesseract-matrix')
 conflicts=('tesseract-matrix')
 # The binary is installed as `tesseract-matrix` (not `tesseract`) so this
@@ -37,15 +41,7 @@ makedepends=(
     'cmake'
     'ninja'
     'rust'
-    'go'
-    'perl'
-    'qt6-base'           # includes private headers (GuiPrivate)
-    'qt6-multimedia'
     'wayland'            # xdg-activation Wayland window focus (find_library at configure time)
-    'opus'
-    'gstreamer'
-    'gst-plugins-base'
-    'ffmpeg'             # libavutil headers
 )
 source=("$pkgname::git+https://github.com/surakin/tesseract.git#branch=development")
 sha256sums=('SKIP')
@@ -59,7 +55,8 @@ build() {
     cmake -S "$pkgname" -B build -G Ninja \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
-          -DTESSERACT_UI=qt6
+          -DTESSERACT_UI=qt6 \
+          -DTESSERACT_ENABLE_HARDENING=OFF
     cmake --build build
 }
 
