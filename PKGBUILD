@@ -1,6 +1,6 @@
-# Maintainer: swim
+# Maintainer: swim <swim853279614@163.com>
 pkgname=plasma-lyrics-git
-pkgver=0.1.0.r2.g4d329c3
+pkgver=0.1.0.r3.g7d0ef43
 pkgrel=1
 pkgdesc='Native synchronized desktop lyrics widget for Plasma 6'
 arch=('x86_64')
