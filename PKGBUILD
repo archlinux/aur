@@ -2,7 +2,7 @@
 # Maintainer: Snowdream Tech <snowdreamtech@qq.com>
 
 pkgname='unirtm-bin'
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc='UniRTM (Uni Runtime and Tools Manager) is a cross-platform developer toolchain manager.'
 url='https://github.com/snowdreamtech/UniRTM'
@@ -12,16 +12,16 @@ provides=('unirtm')
 conflicts=('unirtm')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_Linux_arm64.tar.gz")
-sha256sums_aarch64=('fd6360e0328877fc61251203c09b162f04ab8e06e51e7092ce671bcf9e79023c')
+sha256sums_aarch64=('15d2d3a37bae5bc19b6610fa8d326d47f88fd908f122ba3b34eee68927f1ce2f')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_Linux_armv7.tar.gz")
-sha256sums_armv7h=('0c8d95631e1c480500bd9e78657956620eb3b833800c31f5eecf8fc286666615')
+sha256sums_armv7h=('8088c594b3ef3b63e2e2aeeee5c1ebed9257fa86371ffe1482b98173f0186743')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_Linux_i386.tar.gz")
-sha256sums_i686=('2ea3928694237f1c576ced7a8c913689add79f5ba2328544f90ea5acb10545d2')
+sha256sums_i686=('bbfb95eb1f348abce5a75f710695897fbb12cc5a79da04b39203c0abf3fde70a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('25c4ceba93157b864b6327279fce79ae0fc1714c197fdb31cda574cd47d7fb3e')
+sha256sums_x86_64=('8363041de42745538695f0301c1e9a3d83a561dcbab974ef4a81761c73223bd4')
 
 package() {
   # bin
