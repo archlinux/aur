@@ -1,6 +1,6 @@
 pkgbase = nextcloud-client-appimage-daily
 	pkgdesc = Nextcloud desktop client (official daily AppImage build)
-	pkgver = 20260902
+	pkgver = 20260904
 	pkgrel = 1
 	epoch = 1
 	url = https://download.nextcloud.com/desktop/daily/linux
@@ -15,9 +15,9 @@ pkgbase = nextcloud-client-appimage-daily
 	conflicts = nextcloud-client
 	conflicts = nextcloud-client-git
 	conflicts = owncloud-client
-	noextract = linux-20260902.AppImage
+	noextract = linux-20260904.AppImage
 	options = !strip
-	source = nextcloud-20260902.AppImage::https://download.nextcloud.com/desktop/daily/linux/linux-20260902.AppImage
-	sha256sums = f4d4635fad5b721446105431a5f243161e435dab8b0251fbc71e3d6f2d8dff97
+	source = nextcloud-20260904.AppImage::https://download.nextcloud.com/desktop/daily/linux/linux-20260904.AppImage
+	sha256sums = bbd994ad23bc20018b7e15b659bc6613590a1c11dd137cbeffce80d2e16ee641
 
 pkgname = nextcloud-client-appimage-daily
