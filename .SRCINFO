@@ -10,7 +10,7 @@ pkgbase = ffdec-git
 	makedepends = git
 	depends = java-runtime>=8
 	depends = bash
-	provides = ffdec
+	provides = ffdec=26.2.1.r9104.b0002c6
 	conflicts = ffdec
 	source = ffdec::git+https://github.com/jindrapetrik/jpexs-decompiler#branch=dev
 	source = ffdec.desktop

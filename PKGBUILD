@@ -11,7 +11,7 @@ pkgdesc="Open Source Flash SWF decompiler and editor, git version"
 arch=('any')
 url="https://github.com/jindrapetrik/jpexs-decompiler"
 license=('GPL-3.0-or-later')
-provides=('ffdec')
+provides=("ffdec=$pkgver")
 conflicts=('ffdec')
 depends=(
   'java-runtime>=8'
