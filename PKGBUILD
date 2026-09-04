@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=lib32-libvolt
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.1.1
+pkgrel=3
 pkgdesc="32-bit library for volt-gui"
 arch=('x86_64')
 url="https://github.com/pythonlover02/volt-gui"
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=('rustup')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f885867e062ce85d77c91f79404799f38aecc94a877877c406874e413edad62c')
+sha256sums=('9f8dbbcfa4d8da9fb1bec907377739b4da17146db24883457acfe69836018c80')
 
 prepare() {
   cd "volt-gui-$pkgver"
