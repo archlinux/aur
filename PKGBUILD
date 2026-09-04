@@ -1,6 +1,6 @@
 # Maintainer: gonsolo@gmail.com
 pkgname=yowasp-runtime
-pkgver=1.83
+pkgver=1.96
 pkgrel=1
 pkgdesc="YOWASP runtime environment for executing WebAssembly modules"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'wasmer')
 makedepends=('python-pip' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/py3/y/yowasp-runtime/yowasp_runtime-${pkgver}-py3-none-any.whl")
 noextract=("yowasp_runtime-${pkgver}-py3-none-any.whl")
-sha256sums=('4aba1e793c495cead1ff74b6ec8424bb02e2e94caaae2ee75ab6ee02d6ea786e')
+sha256sums=('4ff456a4a6dff9d689c7feac9f68fb1492bed4cf873450d7b41259fa31645783')
 
 package() {
   cd "${srcdir}"
