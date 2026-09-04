@@ -3,7 +3,7 @@
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=openfpgaloader-git
-pkgver=1.1.1.r143.g5d77b4a
+pkgver=1.1.1.r168.gf6a678b
 pkgrel=1
 pkgdesc="Universal utility for programming FPGA"
 arch=($CARCH)
@@ -60,7 +60,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DENABLE_UDEV=True \
     -DENABLE_CMSISDAP=True \
-    -Wno-dev \
+    -Wno-author \
     -Bbuild \
     -GNinja
 
