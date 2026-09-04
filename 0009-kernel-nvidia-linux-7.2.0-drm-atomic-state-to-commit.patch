@@ -1,0 +1,118 @@
+diff --git a/kernel/conftest.sh b/kernel/conftest.sh
+index 93c6136..4ae8b4d 100755
+--- a/kernel/conftest.sh
++++ b/kernel/conftest.sh
+@@ -3524,8 +3524,13 @@ compile_test() {
+             #if defined(NV_DRM_DRM_ATOMIC_H_PRESENT)
+             #include <drm/drm_atomic.h>
+             #endif
++            #include <linux/version.h>
+             void conftest_drm_atomic_state_get(void) {
++            #if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++                drm_atomic_commit_get();
++            #else
+                 drm_atomic_state_get();
++            #endif
+             }"
+ 
+             compile_check_conftest "$CODE" "NV_DRM_ATOMIC_STATE_REF_COUNTING_PRESENT" "" "functions"
+@@ -4321,8 +4326,13 @@ compile_test() {
+             #
+             CODE="
+             #include <drm/drm_atomic_helper.h>
++            #include <linux/version.h>
+             void conftest_drm_atomic_helper_swap_state_has_stall_arg(
++                #if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++                    struct drm_atomic_commit *state,
++                #else
+                     struct drm_atomic_state *state,
++                #endif
+                     bool stall) {
+                 (void)drm_atomic_helper_swap_state(state, stall);
+             }"
+@@ -4340,8 +4350,13 @@ compile_test() {
+             #
+             CODE="
+             #include <drm/drm_atomic_helper.h>
++            #include <linux/version.h>
+             int conftest_drm_atomic_helper_swap_state_return_int(
++                #if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++                    struct drm_atomic_commit *state,
++                #else
+                     struct drm_atomic_state *state,
++                #endif
+                     bool stall) {
+                 return drm_atomic_helper_swap_state(state, stall);
+             }"
+@@ -5231,12 +5246,18 @@ compile_test() {
+             #
+             echo "$CONFTEST_PREAMBLE
+             #include <drm/drm_modeset_helper_vtables.h>
+-
++            #include <linux/version.h>
++            
+             static const struct drm_crtc_helper_funcs *funcs;
+             typeof(*funcs->atomic_check) conftest_drm_crtc_atomic_check_has_atomic_state_arg;
+ 
+             int conftest_drm_crtc_atomic_check_has_atomic_state_arg(
+-                    struct drm_crtc *crtc, struct drm_atomic_state *state) {
++                    struct drm_crtc *crtc,
++            #if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++                    struct drm_atomic_commit *state) {
++            #else
++                    struct drm_atomic_state *state) {
++            #endif
+                 return 0;
+             }" > conftest$$.c
+ 
+@@ -5381,12 +5402,18 @@ compile_test() {
+             #
+             echo "$CONFTEST_PREAMBLE
+             #include <drm/drm_modeset_helper_vtables.h>
++            #include <linux/version.h>
+ 
+             static const struct drm_plane_helper_funcs *funcs;
+             typeof(*funcs->atomic_check) conftest_drm_plane_atomic_check_has_atomic_state_arg;
+ 
+             int conftest_drm_plane_atomic_check_has_atomic_state_arg(
+-                    struct drm_plane *plane, struct drm_atomic_state *state) {
++                    struct drm_plane *plane,
++                #if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++                    struct drm_atomic_commit *state) {
++                #else
++                    struct drm_atomic_state *state) {
++                #endif
+                 return 0;
+             }" > conftest$$.c
+ 
+diff --git a/kernel/nvidia-drm/nvidia-drm-conftest.h b/kernel/nvidia-drm/nvidia-drm-conftest.h
+index 54b2a99..a25cd50 100644
+--- a/kernel/nvidia-drm/nvidia-drm-conftest.h
++++ b/kernel/nvidia-drm/nvidia-drm-conftest.h
+@@ -23,6 +23,8 @@
+ #ifndef __NVIDIA_DRM_CONFTEST_H__
+ #define __NVIDIA_DRM_CONFTEST_H__
+ 
++#include <linux/version.h>
++
+ #include "conftest.h"
+ #include "nvtypes.h"
+ 
+@@ -84,6 +86,17 @@
+ #undef NV_DRM_COLOR_MGMT_AVAILABLE
+ #endif
+ 
++#if !defined(NV_BSD) && (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0))
++#define drm_atomic_state                 drm_atomic_commit
++#define drm_atomic_state_alloc           drm_atomic_commit_alloc
++#define drm_atomic_state_clear           drm_atomic_commit_clear
++#define drm_atomic_state_init            drm_atomic_commit_init
++#define drm_atomic_state_put             drm_atomic_commit_put
++#define drm_atomic_state_free            drm_atomic_commit_free
++#define drm_atomic_state_default_clear   drm_atomic_commit_default_clear
++#define drm_atomic_state_default_release drm_atomic_commit_default_release
++#endif
++
+ /*
+  * Adapt to quirks in FreeBSD's Linux kernel compatibility layer.
+  */

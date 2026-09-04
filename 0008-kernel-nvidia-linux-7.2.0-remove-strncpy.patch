@@ -1,0 +1,105 @@
+diff --git a/kernel/nvidia-modeset/nvidia-modeset-linux.c b/kernel/nvidia-modeset/nvidia-modeset-linux.c
+index 9a577a6..1678e07 100644
+--- a/kernel/nvidia-modeset/nvidia-modeset-linux.c
++++ b/kernel/nvidia-modeset/nvidia-modeset-linux.c
+@@ -351,7 +351,16 @@ int nvkms_strcmp(const char *s1, const char *s2)
+ 
+ char* nvkms_strncpy(char *dest, const char *src, size_t n)
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++    size_t i;
++
++    for (i = 0ull; i < n && src[i] != '\0'; i++) dest[i] = src[i];
++    for (; i < n; i++) dest[i] = '\0';
++    
++    return dest;
++#else
+     return strncpy(dest, src, n);
++#endif
+ }
+ 
+ void nvkms_usleep(NvU64 usec)
+diff --git a/kernel/nvidia-uvm/uvm_pmm_gpu.c b/kernel/nvidia-uvm/uvm_pmm_gpu.c
+index 922403a..8063292 100644
+--- a/kernel/nvidia-uvm/uvm_pmm_gpu.c
++++ b/kernel/nvidia-uvm/uvm_pmm_gpu.c
+@@ -159,6 +159,8 @@
+ // bug 1775408).
+ //
+ 
++#include <linux/version.h>
++
+ #include "uvm_common.h"
+ #include "nv_uvm_interface.h"
+ #include "uvm_api.h"
+@@ -3038,7 +3040,11 @@ static NV_STATUS init_chunk_split_cache_level(uvm_pmm_gpu_t *pmm, size_t level)
+             size_t size;
+             size_t align;
+             if (level == 0) {
++            #if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++                strscpy(chunk_split_cache[level].name, "uvm_gpu_chunk_t", sizeof(chunk_split_cache[level].name));
++            #else
+                 strncpy(chunk_split_cache[level].name, "uvm_gpu_chunk_t", sizeof(chunk_split_cache[level].name) - 1);
++            #endif
+                 size = sizeof(uvm_gpu_chunk_t);
+                 align = __alignof__(uvm_gpu_chunk_t);
+             } else {
+diff --git a/kernel/nvidia/linux_nvswitch.c b/kernel/nvidia/linux_nvswitch.c
+index 40cb0d7..43c71c5 100644
+--- a/kernel/nvidia/linux_nvswitch.c
++++ b/kernel/nvidia/linux_nvswitch.c
+@@ -2026,8 +2026,12 @@ nvswitch_os_read_registry_dword
+         return -NVL_ERR_GENERIC;
+     }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++    strscpy(regkey_val, regkey_val_start);
++#else
+     strncpy(regkey_val, regkey_val_start, regkey_val_len);
+     regkey_val[regkey_val_len] = '\0';
++#endif
+ 
+     if (nvswitch_os_strtouint(regkey_val, data) != 0)
+     {
+@@ -2381,7 +2385,16 @@ nvswitch_os_strncpy
+     NvLength length
+ )
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++    NvLength i;
++
++    for (i = 0ull; i < length && src[i] != '\0'; i++) dest[i] = src[i];
++    for (; i < length; i++) dest[i] = '\0';
++
++    return dest;
++#else
+     return strncpy(dest, src, length);
++#endif
+ }
+ 
+ int
+diff --git a/kernel/nvidia/os-interface.c b/kernel/nvidia/os-interface.c
+index b3da778..64d10fb 100644
+--- a/kernel/nvidia/os-interface.c
++++ b/kernel/nvidia/os-interface.c
+@@ -32,6 +32,7 @@
+ #include <linux/mmzone.h>
+ #include <linux/numa.h>
+ #include <linux/cpuset.h>
++#include <linux/version.h>
+ 
+ extern char *NVreg_TemporaryFilePath;
+ 
+@@ -750,8 +751,12 @@ NvU32 NV_API_CALL os_get_current_process(void)
+ void NV_API_CALL os_get_current_process_name(char *buf, NvU32 len)
+ {
+     task_lock(current);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++    strscpy(buf, current->comm, len);
++#else
+     strncpy(buf, current->comm, len - 1);
+     buf[len - 1] = '\0';
++#endif
+     task_unlock(current);
+ }
+ 
