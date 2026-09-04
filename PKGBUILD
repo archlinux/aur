@@ -16,7 +16,7 @@ depends=()
 provides=("${_appname}")
 conflicts=("${_appname}")
 
-install=reshell.install
+install="${_execname}.install"
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "README-${pkgver}.md::${_urlraw}/README.md"
