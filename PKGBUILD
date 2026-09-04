@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=lenovo-wwan-unlock
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="FCC and DPR unlock for Lenovo PCs"
 arch=(x86_64)
 url=https://github.com/lenovo/lenovo-wwan-unlock
@@ -89,7 +89,7 @@ package() {
 
     # Drop-in override for Fibocom L860-GL-16/FM350, Quectel EM160R-GL/RM520N-GL and Foxconn SDX61 WWANs
     # Instead of modifying ModemManager.service as upstream does in wwan_issue_fix.sh
-    install -D -m644 "$srcdir"/fix_suspend.conf "$pkgdir"/usr/lib/systemd/system/ModemManager.d/fix_suspend.conf
+    install -D -m644 "$srcdir"/fix_suspend.conf "$pkgdir"/usr/lib/systemd/system/ModemManager.service.d/fix_suspend.conf
 
     # Lenovo license and agreement
     install -D -m644 "Lenovo Software Code License Agreement for wwan.txt" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
