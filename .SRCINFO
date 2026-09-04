@@ -1,0 +1,27 @@
+pkgbase = loopwire-git
+	pkgdesc = Linux virtual audio routing application (development version)
+	pkgver = 0.1.0.r8.g007e47e
+	pkgrel = 1
+	url = https://github.com/sandwichfarm/loopwire
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = git
+	makedepends = pnpm
+	makedepends = rust
+	depends = webkit2gtk-4.1
+	depends = nodejs>=22.12.0
+	depends = pipewire
+	depends = wireplumber
+	optdepends = pipewire-pulse: PulseAudio compatibility
+	optdepends = jack2: JACK bridge diagnostics
+	optdepends = alsa-utils: ALSA diagnostics
+	provides = loopwire=0.1.0.r8.g007e47e
+	conflicts = loopwire
+	source = loopwire::git+https://github.com/sandwichfarm/loopwire.git#branch=master
+	source = LICENSE-MIT
+	sha256sums = SKIP
+	sha256sums = 9d07730c412aa794131924cb041c098fcd64025176b57da63b5ba62cd6571f79
+
+pkgname = loopwire-git
