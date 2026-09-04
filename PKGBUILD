@@ -1,9 +1,6 @@
-# Its own pkgbase, NOT a split package of vgs-shell, and that is the entire
-# point. makepkg fetches a pkgbase's sources before it knows which of its split
-# packages you asked for, so while the assets lived in vgs-shell's PKGBUILD
-# every `yay -S vgs-shell` downloaded ~1.0 GiB of wallpapers to install a ~71 MiB
-# shell that does not use them. Separate pkgbases are what let the base install
-# download only what it installs.
+# Keep assets in their own pkgbase. makepkg fetches all pkgbase sources
+# before selecting split packages; combining them would make the base shell
+# download assets that it does not install.
 pkgname=vgs-shell-assets
 pkgver=0.4.0
 pkgrel=1
