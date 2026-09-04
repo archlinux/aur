@@ -3,7 +3,7 @@
 #
 pkgname=go4
 _Pkgname=Go4
-pkgver=6.4.1
+pkgver=6.4.5
 pkgrel=2
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=('mbseventapi')
 url="https://www.gsi.de/en/work/research/experiment_electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
 #source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
-source=(https://github.com/gsi-ee/${pkgname}/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=('8ea4d03888afe5aa56cb7e6114b36206f6ad0e75aa6c497e1c63a81aea2c8672')
+source=(https://github.com/gsi-ee/go4/archive/refs/tags/Release-${pkgver}.tar.gz)
+sha256sums=('8ffae21911edb621a95c7a3c4f45320b75cae752f742890352d754bbde3bb03d')
 
 prepare() {
 
@@ -40,18 +40,6 @@ prepare() {
   # /usr/macros -->   /usr/share/{pkg}/macros
   # /usr/python -->   /usr/share/{pkg}/python
   #
-
-  # New in Feb/2026
-  sed -i '107 s/target_link_libraries(${libname} ${ARG_LIBRARIES})/target_link_libraries(${libname} PUBLIC ${ARG_LIBRARIES})/' ${srcdir}/go4-${pkgver}/cmake/modules/Go4Macros.cmake
-  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4StatusBase/TGo4Picture.cxx
-  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4ConditionsBase/TGo4MarkerPainter.cxx
-  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4ConditionsBase/TGo4PolyCondView.cxx
-  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4ConditionsBase/TGo4WinCondView.cxx
-  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4Fit/TGo4FitComponent.cxx
-  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4Fit/TGo4FitModel.cxx
-  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/Go4ExampleMesh/TMeshB12AnlProc.cxx
-  sed -i '1 i\#include "TMath.h"' ${srcdir}/go4-${pkgver}/qt4/Go4FitGUI/TGo4FitGuiArrow.cpp
-
 }
 
 build() {
@@ -63,9 +51,7 @@ CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions \
         -fstack-clash-protection -fcf-protection"
 CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
 
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
-
+  cd ${srcdir}
   ROOTSYS=/usr/lib/cmake/ROOT \
          cmake \
          -DCMAKE_INSTALL_PREFIX=/usr \
@@ -76,20 +62,22 @@ CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
          -Droot7=ON \
          -Dwebgui=ON \
          -Dqt6web=ON \
-         ../go4-${pkgver}
+         -S ${srcdir}/go4-Release-${pkgver} \
+         -B build
 
-  make
-
+  cmake --build build
 }
 
 package() {
 
   #install the package
+  ## DO NOT USE
+  ## cmake --install build --prefix "${pkgdir}" or DESTDIR...
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
 
   #install the license
-  install -Dm644 "${srcdir}/go4-${pkgver}/Go4License.txt" "$pkgdir/usr/share/licenses/go4/Go4License.txt"
+  install -Dm644 "${srcdir}/go4-Release-${pkgver}/Go4License.txt" "$pkgdir/usr/share/licenses/go4/Go4License.txt"
 
   #install the desktop file
   echo "
