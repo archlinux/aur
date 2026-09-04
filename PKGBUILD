@@ -4,7 +4,7 @@ pkgbase=scopehal-apps
 pkgname=scopehal-apps
 _tagname=0.2.2
 pkgver=${_tagname//-/+}
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="ngscopeclient and other client applications for libscopehal"
 arch=($CARCH)
@@ -23,7 +23,8 @@ depends=(
     libpng
     libsigc++-3.0
     libstdc++
-    libtirpc
+    libwayland-client.so
+    libz.so
     glfw
     glslang 
     hicolor-icon-theme
@@ -125,7 +126,7 @@ build() {
         -Bbuild -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -GNinja \
-        -Wno-dev
+        -Wno-author
         # -DBUILD_DOC=ON \
 
     ninja -C ${srcdir}/build
