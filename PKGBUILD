@@ -1,6 +1,6 @@
 # Maintainer: Andreas Wendleder <gonsolo@gmail.com>
 pkgname=python-librelane
-pkgver=3.0.0.dev50.r1.gb1ef9cb
+pkgver=3.0.11
 pkgrel=1
 pkgdesc="An infrastructure for implementing chip design flows (successor to OpenLane)."
 arch=('any')
@@ -28,7 +28,6 @@ depends=(
 )
 
 makedepends=(
-    'git'
     'python-setuptools'
     'python-setuptools-scm'
     'python-pip'
@@ -40,22 +39,17 @@ makedepends=(
 provides=("python-librelane-git")
 conflicts=("python-librelane-git")
 
-source=("librelane::git+https://github.com/librelane/librelane.git#branch=dev")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/librelane"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-\)g/r\1g/;s/-/./g'
-}
+source=("librelane-${pkgver}.tar.gz::https://github.com/librelane/librelane/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('20d24c80619af83f0e088da806d57ead46eb89cd7a00bcae94d939978849d535')
 
 build() {
-    cd "$srcdir/librelane"
-    export SETUPTOOLS_SCM_PRETEND_VERSION=$(git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/+/')
+    cd "librelane-${pkgver}"
+    export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/librelane"
+    cd "librelane-${pkgver}"
 
     local _wheel=$(ls dist/*.whl)
     python -m installer --destdir="$pkgdir" "$_wheel"
