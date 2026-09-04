@@ -1,6 +1,6 @@
 pkgbase = vynody-bin
 	pkgdesc = Cross-platform local music/audio player with synced lyrics and audio tag editor
-	pkgver = 2.1.3
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/axel10/vynody
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = vynody-bin
 	depends = pango
 	depends = hicolor-icon-theme
 	optdepends = ffmpeg: Audio decoding support
-	provides = vynody=2.1.3
+	provides = vynody=2.2.1
 	conflicts = vynody
 	options = !strip
-	source_x86_64 = vynody-bin-2.1.3.deb::https://github.com/axel10/vynody/releases/download/2.1.3/vynody-linux-2.1.3-amd64.deb
-	sha256sums_x86_64 = 2c9df54388a69906017462f47579691e8a31cea37f6788f5cc0dbaeeb2d175d7
+	source_x86_64 = vynody-bin-2.2.1.deb::https://github.com/axel10/vynody/releases/download/2.2.1/vynody-linux-2.2.1-amd64.deb
+	sha256sums_x86_64 = a93b2a45f00cc75b5bc1eea0c8c02b1dfa62599b50d7b9777be564bad9a0afeb
 
 pkgname = vynody-bin
