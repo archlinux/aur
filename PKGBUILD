@@ -1,6 +1,6 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=schemahero
-pkgver=0.26.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc='Declarative database schema management as code (CNCF)'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('go')
 provides=('schemahero')
 conflicts=('schemahero-bin')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('24220020e64b7896a1d0c94c6b9e49dc91dc9216a934b53af0bf460d2ab68932')
+sha256sums=('0aea3c45a206153b6f5139f28f7b0456c14ffc1baee5f405897c2f3156675c71')
 
 build() {
     cd "${pkgname}-${pkgver}"
