@@ -1,7 +1,7 @@
 # Maintainer: ItzTas <ts.aur@imts.aleeas.com>
 
 pkgname=luadot
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A dotfiles manager configured in Lua'
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,10 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'cmake')
 options=('!lto' '!debug')
 _registry='https://gitlab.digitalventura.com.br/api/v4/projects/luadot%2Fluadot/packages/generic/luadot'
-_version=0.2.1
+_version=0.3.0
 _srcdir="luadot-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$_registry/$_version/luadot-$pkgver-src.tar.gz")
-sha256sums=('0b24b7e4a86ae3daa90ef1927dd58eed8d02871a31a27203574b639d3d0b8c9b')
+sha256sums=('d13285a94c018394220be7c4725cd57f02d1c65ba028c76aea0d4c7d6434bba0')
 
 prepare() {
 	cd "$_srcdir"
