@@ -4,7 +4,7 @@
 pkgname=qqmusic-electron-patched
 _pkgname=qqmusic
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent QQMusic"
 arch=('any')
 url="https://github.com/Viemean/qqmusiclinux"
@@ -20,7 +20,7 @@ source=(
     "${_pkgname}.sh"
     "logo.png"
 )
-sha512sums=('1b3d608c4041394ed32c53d3927477e0a50048ed7a83d68f9944d774db16e42ed364d4c93eba76dbf57716dc77835728dd9429b38d282e8bb7d37005b9d05cd6'
+sha512sums=('8eee9fa560ec4c6eae376b338af532dd66b664f76e4f89f47f8ca5d14ce1f40a38c30307889f579e3c9ed486029780f6d5001700fa14cc14361d635f16964743'
             'a872d410a02700b66ae9c55ee10a59bc6831caf403f3e62a96b7baa3ea39a8d239a1b829d2b13db4947b97daa9b9eb588deeea05ed125a6ac6892f43d6aa300f'
             'fa8890e3a8fddfa0885891870d8a27e86ea29e7da2af90a146af7ce90443e304ff418d8e2c5de26a9ecd7f50314d2143224973ce347e27c864e029085a6f42cb'
             '1f49450952fc7be0654a046c73cd55b738b940a910eb83d0de073f8c5077b550865f7b74e8171ea4b34dd160a7ffdc616ab9dab14d2227db6e4e5ef9ce54c700')
