@@ -3,7 +3,7 @@
 # Prev Maintainer: Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
 
 pkgname=grml-iso
-pkgver=2026.04
+pkgver=2026.09
 _isover="-full-$pkgver-amd64"
 pkgrel=1
 pkgdesc="provides the grml ISO image for usage by grml-rescueboot"
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('grub' 'grml-rescueboot>=0.5.0')
 install="${pkgname}.install"
 source=("http://download.grml.org/grml${_isover}.iso")
-sha256sums=('44791d71752972f2105a4895dc9df3c16c9ef4e325cbdb2d10ea45b55995f8ff')
+sha256sums=('76e8019ff1b68ddb3e49cecb1ea35ecead9e0f1c1ba22c0e819c9b13de939e72')
 noextract=(grml${_isover}.iso)
 
 package() {
