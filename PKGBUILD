@@ -1,6 +1,6 @@
 # Maintainer: Yasir <https://github.com/sirrryasir>
 pkgname=shotdock
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Modern floating screenshot and screen recording toolbar for Wayland"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('470b6c8439f65d2dfcdff5750a3bfa58cdacb6fef4169e9d119eb9893707b41d')
+sha256sums=('e683311ddcc67aebbb73db1ae502f0b9ee6fd8751eae82e129e1c80fd0697450')
 
 prepare() {
     cd "$pkgname-$pkgver"
