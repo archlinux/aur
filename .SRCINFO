@@ -1,6 +1,6 @@
 pkgbase = stably-orca
 	pkgdesc = Stably AI Orca agentic coding IDE and headless runtime (built from source)
-	pkgver = 1.4.196
+	pkgver = 1.4.197
 	pkgrel = 1
 	url = https://github.com/stablyai/orca
 	install = stably-orca.install
@@ -44,7 +44,7 @@ pkgbase = stably-orca
 	optdepends = xorg-xauth: Xwayland authentication for the KWin virtual display service
 	optdepends = xorg-xdpyinfo: external X display readiness validation
 	optdepends = xorg-xwayland: Xwayland support for the KWin virtual display service
-	provides = orca-ide=1.4.196
+	provides = orca-ide=1.4.197
 	conflicts = stably-orca-bin
 	conflicts = stably-orca-git
 	conflicts = orca-ide
@@ -54,7 +54,7 @@ pkgbase = stably-orca
 	noextract = pnpm-exe-linux-arm64-12.0.0.tgz
 	options = !strip
 	options = !debug
-	source = stably-orca-1.4.196.tar.gz::https://github.com/stablyai/orca/archive/refs/tags/v1.4.196.tar.gz
+	source = stably-orca-1.4.197.tar.gz::https://github.com/stablyai/orca/archive/refs/tags/v1.4.197.tar.gz
 	source = pnpm-12.0.0.tgz::https://registry.npmjs.org/pnpm/-/pnpm-12.0.0.tgz
 	source = stably-orca.sh
 	source = orca-ide.sh
@@ -65,7 +65,7 @@ pkgbase = stably-orca
 	source = stably-orca-kwin-display
 	source = stably-orca-serve.env.example
 	source = stably-orca-serve-kwin.conf.example
-	sha256sums = a82f4599948053557357ec14a94f42db20bce00ad6bd7053c3f42ccb18ba117c
+	sha256sums = 36836680a2f7fc2a5ca316c69a7f339416c0b672bdfcd2fcd6ccc1ffa10d0e05
 	sha256sums = 5ef12ab545a211627c23f05eb589a051e6c207a3f2c3382add8f0573400b871d
 	sha256sums = d76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d
 	sha256sums = 0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7
