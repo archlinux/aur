@@ -5,7 +5,7 @@ pkgname=bar-lobby-git
 _electronver=39 # should work too and its in the repos because building electron 37 is a unneded pain
 ### ↑↑↑ This sadly cant be done automatically
 pkgver=VERSION
-pkgrel=5
+pkgrel=6
 pkgdesc="The new - stil Work_In_Progres lobby, for the RTS game Beyond All Reason (Github version)."
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/bar-lobby/"
@@ -32,7 +32,7 @@ license=(
 provides=("${pkgname}")
 depends=("electron${_electronver}" 'devil' 'python-py7zr' )
 makedepends=('git' 'npm' 'nvm' 'sed' )
-optdepends=('recoil-engine-rc')
+optdepends=('recoil-engine' 'recoil-engine-rc')
 install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
         "${pkgname%-git}.sh"
