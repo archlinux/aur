@@ -1,6 +1,6 @@
 pkgbase = aio-coding-hub-bin
 	pkgdesc = 一个All In One的本地AI工具, 支持Win/Mac/Linux
-	pkgver = 0.60.17
+	pkgver = 0.60.18
 	pkgrel = 1
 	url = https://github.com/dyndynjyxa/aio-coding-hub
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = aio-coding-hub-bin
 	depends = hicolor-icon-theme
 	provides = aio-coding-hub
 	conflicts = aio-coding-hub
-	noextract = aio-coding-hub-0.60.17-linux-amd64.deb
+	noextract = aio-coding-hub-0.60.18-linux-amd64.deb
 	options = !strip
 	options = !debug
-	source = aio-coding-hub-0.60.17-linux-amd64.deb::https://github.com/dyndynjyxa/aio-coding-hub/releases/download/aio-coding-hub-v0.60.17/aio-coding-hub-linux-amd64.deb
+	source = aio-coding-hub-0.60.18-linux-amd64.deb::https://github.com/dyndynjyxa/aio-coding-hub/releases/download/aio-coding-hub-v0.60.18/aio-coding-hub-linux-amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/dyndynjyxa/aio-coding-hub/main/LICENSE
-	sha256sums = ca337f77e11cd18b79e5c3403be31606d4779d78b81ed67ee4bc860d2688b97a
+	sha256sums = 6ca12908ce70313b70986b6bf0f6cc362f5917a85af58aec7aba8600515036a2
 	sha256sums = 90da602b3e6d5f01c42a2bf635376f3d874abc524d10651f27cb278d9a04aa73
 
 pkgname = aio-coding-hub-bin
