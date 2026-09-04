@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonplus
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="A modern compatibility tools manager"
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ optdepends=(
   'scopebuddy'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e0ece0fa3388c9fd72b617cabc8bc9e64846ccaa1e025aa94d83c1a94ca8a8a0')
+sha256sums=('55871a36c18dc783ad3273d281be897e24db55268747104ee21697a871d0cebd')
 
 build() {
   arch-meson "ProtonPlus-$pkgver" build
