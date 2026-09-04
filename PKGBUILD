@@ -3,7 +3,7 @@
 # pushed version tag, resets pkgrel to 1, verifies the resulting source, and
 # builds it before push.
 pkgname=sway-title-animator
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Animated Unicode titlebars for Sway"
 arch=('x86_64' 'aarch64')
@@ -11,19 +11,19 @@ url="https://github.com/marang/sway-title-animator"
 license=('MIT')
 depends=('sway')
 optdepends=(
-  'libpulse: sound-reactive animation presets via parec'
-  'alacritty: persistent work-session windows'
-  'foot: optional typed terminal adapter for persistent work-session windows'
-  'herdr>=0.8.2: persistent terminal panes, history, and agent sessions'
-  'flatpak: restore explicitly registered Flatpak desktop applications'
-  'glib2: restore desktop-entry applications through gio'
-  'noto-fonts: recommended Noto Sans Mono glyph coverage for desktop-app indicators'
-  'apparmor: secure Codex resume boundary'
+  'libpulse: enable sound-reactive presets through parec'
+  'alacritty: default terminal adapter for sway-session'
+  'foot: alternative terminal adapter for sway-session'
+  'herdr>=0.8.2: enable persistent managed terminal sessions'
+  'flatpak: launch registered Flatpak applications'
+  'glib2: launch registered desktop applications through gio'
+  'apparmor: load the optional Codex boundary policy'
+  'python: run the optional Codex boundary verification'
 )
 makedepends=('go>=1.26.5')
 options=('!debug')
 source=("sway-title-animator-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7f7f1f869249a7ba802b6a95eae5dce97fe85fd76061ca81e5354910f3196b44')
+sha256sums=('b8fd0181899a917d246c0e7fe0bc978e1bed2148503ea9185bb5c4515473f31f')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
 _go_ldflags=(-s -w -buildid=)
