@@ -1,6 +1,6 @@
 pkgbase = python-mnextend
 	pkgdesc = Additional functionality for MNE-Python
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/cbrnr/mnextend
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-mnextend
 	depends = python-pybvrf
 	depends = python-pyxdf
 	depends = python-scipy
-	source = https://files.pythonhosted.org/packages/source/m/mnextend/mnextend-0.2.2.tar.gz
-	sha256sums = 1ff216a6f75ed486cbcbda0d91719c3052a171caa234afefe774af9193b53843
+	source = https://files.pythonhosted.org/packages/source/m/mnextend/mnextend-0.3.0.tar.gz
+	sha256sums = 0432a38b575c8787526f18d2d1eff437917963e08d5267b3fa522683f490f749
 
 pkgname = python-mnextend
