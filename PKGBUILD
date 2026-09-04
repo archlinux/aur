@@ -1,6 +1,6 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=copacetic-bin
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='CLI tool for directly patching container images'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('copacetic' 'copa')
 conflicts=('copacetic')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/copa_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/copa_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('756c6e0f287dc7839c0a72e91b4d4712b1d8cd86a7233c068c0208a28bcb9ede')
-sha256sums_aarch64=('a7595083940c7d89a579c3bd8db74acec9b9ee7281ef29037f2dd53b07fddc1a')
+sha256sums_x86_64=('cff3fe9320f3bd24bafcfd0ce877ef57e23acad0836da0ac6c253919f71c9cad')
+sha256sums_aarch64=('2444b6109c6164beef980641ec5f2813bc42b1703add6dd73591ace23051ca8f')
 
 package() {
     install -Dm755 copa "${pkgdir}/usr/bin/copa"
