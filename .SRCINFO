@@ -1,6 +1,6 @@
 pkgbase = reckless-git
 	pkgdesc = Competitive UCI chess engine written in Rust
-	pkgver = 0.10.0.dev.7300f044.r111.ga4e68fd
+pkgver = 0.10.0.dev.7300f044.r143.g91b56c2
 	pkgrel = 1
 	url = https://github.com/codedeliveryservice/Reckless
 	arch = x86_64
