@@ -1,7 +1,7 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait-git
 _pkgname=cfait
-pkgver=1727.7164b8cb.rolling
+pkgver=1964.d7ee531f.rolling
 pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local, git version)"
 arch=('x86_64')
@@ -51,6 +51,7 @@ build() {
   # Skip compiling the problematic fallback RNG.
   # Linux's native getrandom() is used instead.
   export AWS_LC_SYS_NO_JITTER_ENTROPY=1
+  export RUST_MIN_STACK=16777216
   cargo build --release --features gui
 }
 
