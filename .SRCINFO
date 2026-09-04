@@ -1,17 +1,17 @@
 pkgbase = dygmate-bin
 	pkgdesc = Dygma wireless keyboards battery indicator
-	pkgver = 0.1.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/dlnilsson/dygmate
 	install = dygmate-bin.install
 	arch = x86_64
 	license = GPL-2.0-only
-	provides = dygmate=0.1.5
+	provides = dygmate=1.0.0
 	conflicts = dygmate
 	conflicts = dygmate-git
 	replaces = dygmate-git
 	options = !strip
-	source = dygmate-0.1.5-x86_64.tar.gz::https://github.com/dlnilsson/dygmate/releases/download/v0.1.5/dygmate-0.1.5-x86_64.tar.gz
-	sha256sums = 1d1139419168d7a73c529703a2237e5ebc9553698cc71ef196540f4b197ce0d5
+	source = dygmate-1.0.0-x86_64.tar.gz::https://github.com/dlnilsson/dygmate/releases/download/v1.0.0/dygmate-1.0.0-x86_64.tar.gz
+	sha256sums = 5fa8d693dde422aa19cbf156cb70a13dc8a794b40912f2443525517a4919ce4f
 
 pkgname = dygmate-bin
