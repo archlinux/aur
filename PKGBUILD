@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ytubic
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Fast, responsive YouTube Music desktop client"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
 )
 source=("YTubic-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('6a46a1dc972b7c5fd00f931730bbdbcd35849716aca4bb08a022785faf4b52d6'
+sha256sums=('62dc1e040c403325b173bb5942fa4f82d0d9c7fea1ddc0cb148b5113c4220cb4'
             '70c6737b1daa8a7524a62934cf9067c976db12fb7a016226cd2debba440d4c4c')
 
 prepare() {
