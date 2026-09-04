@@ -3,14 +3,14 @@
 
 pkgname=mold-ai
 _binname=mold
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Local AI image generation CLI — FLUX, SD3.5, SD 1.5, SDXL, Z-Image, Flux.2, Qwen-Image, Wuerstchen, LTX Video, & LTX-2 diffusion models on your GPU (built from source, CUDA)"
 arch=('x86_64')
 url="https://github.com/utensils/mold"
 license=('MIT')
 
-depends=('cuda' 'gcc-libs' 'glibc')
+depends=('cuda' 'cudnn' 'gcc-libs' 'glibc')
 
 optdepends=(
   'nvidia-utils: NVIDIA GPU driver (required for any local GPU generation)'
@@ -27,6 +27,7 @@ makedepends=(
   'rust>=1.93'
   'cargo'
   'cuda'
+  'cudnn'
   'clang'
   'lld'
   'nasm'
@@ -44,7 +45,7 @@ conflicts=('mold-ai-bin' 'mold-ai-git' 'mold')
 options=(!lto)
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('88cf655feedd4804398e59a1eced7da2bc09fd58b00ca6fde0b5b1d5a11fa777')
+sha256sums=('c717000fb93294348ad607ed3174c5531407a87eb7cc37515eca82e122b4256d')
 
 prepare() {
   cd "mold-${pkgver}"
@@ -84,7 +85,7 @@ build() {
   [[ "${CUDA_COMPUTE_CAP}" == "89" ]] && gpu_feature="h3-cuda"
   cargo build --release --frozen --offline \
     -p mold-ai \
-    --features "${gpu_feature},preview,expand,tui,webp,mp4,metrics,mdns,pulid"
+    --features "${gpu_feature},cudnn,preview,expand,tui,webp,mp4,metrics,mdns,pulid"
 }
 
 check() {
