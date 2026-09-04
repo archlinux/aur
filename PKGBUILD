@@ -1,6 +1,6 @@
 # Maintainer: gonsolo@gmail.com
 pkgname=yowasp-yosys
-pkgver=0.60.0.0.post1055
+pkgver=0.68.0.0.post1208
 pkgrel=1
 pkgdesc="Yosys built for WebAssembly via YOWASP (installed from PyPI)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'wasmer')
 makedepends=('python-pip' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/py3/y/yowasp-yosys/yowasp_yosys-${pkgver}-py3-none-any.whl")
 noextract=("yowasp_yosys-${pkgver}-py3-none-any.whl")
-sha256sums=('90645bc9952a87096d913c2a64641426d1dd0699428f3bbb432fd16eb5075bbf')
+sha256sums=('0552936b1482415512e39915a1c0f3ed1135151293440e266064f3f75e90d4a2')
 
 package() {
   cd "${srcdir}"
