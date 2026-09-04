@@ -1,9 +1,9 @@
 # Maintainer: Florent Jardin <florent.jardin@dalibo.com>
 pkgname=pg-migrate-bin
 _pkgname=pg-migrate
-pkgver=1.0.0
+pkgver=1.0.0release
 pkgrel=1
-_pkgtag="v${pkgver/rc/-rc.}"
+_pkgtag="v1.0.0"
 pkgdesc="Move your databases to PostgreSQL"
 arch=('x86_64')
 url="https://gitlab.com/dalibo/pg_migrate"
