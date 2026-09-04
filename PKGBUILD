@@ -1,7 +1,7 @@
 # Maintainer: Niklas Schönberg <niklas@foonly.dev>
 
 pkgname=jman
-pkgver=5.42.1
+pkgver=5.43.0
 pkgrel=1
 pkgdesc="A command-line utility designed to manage WordPress sites hosted on SpinupWP."
 url="https://github.com/JCO-Digital/${pkgname}"
@@ -13,7 +13,7 @@ depends=("wp-cli")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=(!debug !lto)
-sha256sums=('5f2fe1dbcafad32ab732b58cf1208783aaff53e5e43b9044f9686eb002d4a691')
+sha256sums=('9a6996483d0b21f9acffaf177865d2b6ef8e41bf69c692d743a573320f4501a0')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
