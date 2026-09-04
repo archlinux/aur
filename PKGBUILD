@@ -4,9 +4,9 @@
 
 pkgname=odin-git
 _pkgname=odin
-pkgver=r18821.7a6f70ba3
+pkgver=r19205.c7201725d
 pkgrel=1
-pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
+pkgdesc="General-purpose C alternative built for high performance, modern systems, and data-oriented programming"
 arch=(x86_64)
 url="https://github.com/odin-lang/odin"
 license=(BSD)
