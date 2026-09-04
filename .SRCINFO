@@ -10,8 +10,8 @@ pkgbase = xremap-kde-bin
 	source = LICENSE
 	b2sums = 5caf7612d5d1e636a60ad68135f621413b3681e4cda0e2e5d5c76e05d3adf15bc7b5cc030c7b26270fa3dfef181456bfd07d1d3330008564f1e82921eef5d16a
 	source_x86_64 = https://github.com/xremap/xremap/releases/download/v0.15.12/xremap-linux-x86_64-kde.zip
-	b2sums_x86_64 = bd6bfd3e106ff9088add6f967239e4773c8af29f5a4484d83e4c7bfe193f991d228560908564ef5f90fb2a255c4063f33906d24000037359aabcf8e41fdc3134
+	b2sums_x86_64 = 3d51bf1528d8580fd7fd9d011be13507a187d151a0a211ef938d88cc25b65b2d67e2c513a0d917b9d367bf3fc71aafba314101aab0a004ffed8ddf16856c76c3
 	source_aarch64 = https://github.com/xremap/xremap/releases/download/v0.15.12/xremap-linux-aarch64-kde.zip
-	b2sums_aarch64 = b0e6121afdc92f26cd2ef2c4f2dfc55746a23a48fcca9c332c8f6f41b2395ecf0046fa315033c81ee3d7454b0e3aedb083aa6bb3062491b59788eb224dfa3293
+	b2sums_aarch64 = ac6aa45aab7c417cd210d011ad539467d91a5336fbec3673829c49156faca82a657ba0837a51bf1a020134d8826772d6a0fde7b046e4fa747f256290d86851ab
 
 pkgname = xremap-kde-bin
