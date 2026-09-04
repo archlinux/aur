@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer:
 # Contributor: Fabio 'Lolix' Loli
 # Contributor: Daurnimator <quae@daurnimator.com>
 # Contributor: Jens Staal <staal1978@gmail.com>
@@ -27,7 +27,7 @@ depends=(espeak-ng
          mesa
          libmupdf
          openal
-         sdl2
+         sdl2-compat
          sqlite
          tesseract
          wayland
@@ -37,7 +37,7 @@ depends=(espeak-ng
          file gcc-libs glibc libdrm libglvnd libusb libxcb)
 makedepends=(cmake git meson ruby wayland-protocols xcb-util)
 source=("https://codeberg.org/letoram/arcan/archive/$pkgver.tar.gz")
-b2sums=('7c721cb6f0eed3eba1844986a19eca6925651ae21c72dd635cef61bb1eda8b7efc91f1f5ece0a65c5f9a373630187c68a87a65e051ae6af9e85acc42e057e888')
+b2sums=('9584e9310aa9c16599cd80f538173b7d4d0d3ea255bb91893615682d12d3f2285be9fc2578ea13031b84333228f2ec68b3934870bba7490b889ad2116ea97f36')
 
 prepare() {
   cd $pkgname/external/git

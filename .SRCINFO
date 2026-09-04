@@ -26,7 +26,7 @@ pkgbase = arcan
 	depends = mesa
 	depends = libmupdf
 	depends = openal
-	depends = sdl2
+	depends = sdl2-compat
 	depends = sqlite
 	depends = tesseract
 	depends = wayland
@@ -39,6 +39,6 @@ pkgbase = arcan
 	depends = libusb
 	depends = libxcb
 	source = https://codeberg.org/letoram/arcan/archive/0.7.1.tar.gz
-	b2sums = 7c721cb6f0eed3eba1844986a19eca6925651ae21c72dd635cef61bb1eda8b7efc91f1f5ece0a65c5f9a373630187c68a87a65e051ae6af9e85acc42e057e888
+	b2sums = 9584e9310aa9c16599cd80f538173b7d4d0d3ea255bb91893615682d12d3f2285be9fc2578ea13031b84333228f2ec68b3934870bba7490b889ad2116ea97f36
 
 pkgname = arcan
