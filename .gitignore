@@ -1,0 +1,17 @@
+*.db
+*.files
+*.log
+*.pkg.tar.gz
+.asp/
+pkg/
+*.db.tar.gz
+*.files.tar.gz
+*.part
+*.pkg.tar.xz
+.makepkg/
+src/
+*.db.tar.xz
+*.files.tar.xz
+*.pkg.tar.*
+*.pkg.tar.zst
+chroot/
