@@ -1,6 +1,6 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator (CLI)
-	pkgver = 0.18.0.r29.g8ca1d49
+	pkgver = 0.18.0.r62.g22fb56d
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = aarch64
@@ -46,13 +46,13 @@ pkgbase = shadps4-git
 	optdepends = renderdoc: for graphics debugging
 	optdepends = shadps4-qtlauncher: for official Qt GUI
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.18.0.r29.g8ca1d49
+	provides = shadps4=0.18.0.r62.g22fb56d
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
 	source = shadps4-cpp-httplib::git+https://github.com/shadexternals/cpp-httplib.git
 	source = shadps4-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git
 	source = shadps4-hwinfo::git+https://github.com/shadps4-emu/ext-hwinfo.git
-	source = shadps4-imgui::git+https://github.com/shadps4-emu/ext-imgui.git
+	source = shadps4-imgui::git+https://github.com/shadexternals/imgui.git
 	source = shadps4-imguifiledialog::git+https://github.com/shadexternals/ImGuiFileDialog.git
 	source = shadps4-libatrac9::git+https://github.com/shadps4-emu/ext-LibAtrac9.git
 	source = shadps4-libusb::git+https://github.com/shadexternals/libusb.git
