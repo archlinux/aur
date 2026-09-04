@@ -6,7 +6,7 @@ pkgver=11.4.30
 pkgrel=3
 arch=('x86_64')
 license=('MIT')
-utl="https://github.com/ffxiv-teamcraft/ffxiv-teamcraft"
+url="https://github.com/ffxiv-teamcraft/ffxiv-teamcraft"
 source=(
     FFXIV-Teamcraft.AppImage::https://github.com/ffxiv-teamcraft/ffxiv-teamcraft/releases/download/v${pkgver}/FFXIV-Teamcraft.AppImage
     "FFXIV Teamcraft.desktop"
