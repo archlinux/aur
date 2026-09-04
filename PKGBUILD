@@ -19,20 +19,18 @@ makedepends=(
 
 source=(
     "https://github.com/terslang/kotki/archive/refs/tags/v${_pkgver}.tar.gz"
-    "use-system-kotki.patch" "remove-project-version-include.patch"
+    "fix-pykotki.patch"
 )
 
 sha256sums=(
     '6784f82cd5bd9be5a9de28a1a30a21881aa0cbc9ac2a0a744afd82fbff57a50c'
-    'b6480a9c40d6c554c0c9d83fd97054c85ed8432b455fa6f316eb105ca3e7c8ae'
-    '661b964eece2a988b8405f1773a716cc8966563703ab23afd8cdfa2b2eb9a1b4'
+    '014be1568fce652dd662f4cc4c1562fb83152f12e22d2bc0127dca4512d0c0ab'
 )
 
 prepare() {
     cd "${srcdir}/${pkgbase}-${_pkgver}"
 
-    patch -Np1 -i "${srcdir}/use-system-kotki.patch"
-    patch -Np1 -i "${srcdir}/remove-project-version-include.patch"
+    patch -Np1 -i "${srcdir}/fix-pykotki.patch"
 
     sed -i 's/-DRECONSTRUCT_GIT=ON//' setup.py
     sed -i 's/-DVENDORED_LIBS=ON/-DVENDORED_LIBS=OFF/' setup.py

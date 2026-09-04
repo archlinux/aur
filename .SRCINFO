@@ -16,11 +16,9 @@ pkgbase = kotki
 	makedepends = intgemm
 	makedepends = sentencepiece-browsermt
 	source = https://github.com/terslang/kotki/archive/refs/tags/v0.6.0-1.tar.gz
-	source = use-system-kotki.patch
-	source = remove-project-version-include.patch
+	source = fix-pykotki.patch
 	sha256sums = 6784f82cd5bd9be5a9de28a1a30a21881aa0cbc9ac2a0a744afd82fbff57a50c
-	sha256sums = b6480a9c40d6c554c0c9d83fd97054c85ed8432b455fa6f316eb105ca3e7c8ae
-	sha256sums = 661b964eece2a988b8405f1773a716cc8966563703ab23afd8cdfa2b2eb9a1b4
+	sha256sums = 014be1568fce652dd662f4cc4c1562fb83152f12e22d2bc0127dca4512d0c0ab
 
 pkgname = kotki
 	pkgdesc = High-performance language translations without using the cloud

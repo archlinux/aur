@@ -1,0 +1,30 @@
+--- a/python/kotki/kotki-py.h
++++ b/python/kotki/kotki-py.h
+@@ -3,7 +3,6 @@
+ 
+ #include <kotki/annotation.h>
+ #include <kotki/parser.h>
+-#include <kotki/project_version.h>
+ #include <kotki/response.h>
+ #include <kotki/response_options.h>
+ #include <kotki/kotki.h>
+--- a/python/kotki/CMakeLists.txt
++++ b/python/kotki/CMakeLists.txt
+@@ -4,9 +4,16 @@
+ 
+ find_package(pybind11 CONFIG)
+ 
++if(NOT VENDORED_LIBS)
++    find_package(kotki REQUIRED)
++    set(_KOTKI_LINK_TARGET kotki::kotki-lib-SHARED)
++else()
++    set(_KOTKI_LINK_TARGET kotki-lib)
++endif()
++
+ # pybind11 method:
+ pybind11_add_module(kotki SHARED kotki-py.cpp)
+-target_link_libraries(kotki PUBLIC pybind11::module kotki-lib)
++target_link_libraries(kotki PUBLIC pybind11::module ${_KOTKI_LINK_TARGET})
+ target_include_directories(kotki PRIVATE ${pybind11_INCLUDE_DIR})
+ target_include_directories(kotki PUBLIC
+         ${PROJECT_SOURCE_DIR}
