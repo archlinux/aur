@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Spirula Studio
+GenericName=3D Gaussian Splatting Studio
+Comment=End-to-end 3D Gaussian Splatting pipeline
+Exec=spirula %F
+Icon=spirula-studio
+Terminal=false
+Categories=Graphics;3DGraphics;Science;
+MimeType=model/gltf+json;model/gltf-binary;
+StartupNotify=true
