@@ -2,8 +2,8 @@
 # Maintainer: Wu Junyu (aka Tenshi65535) <wu.junyu.aur@outlook.com>
 # Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=libcint
-pkgver=6.1.2
-pkgrel=3
+pkgver=6.1.3
+pkgrel=1
 pkgdesc="General GTO integrals for quantum chemistry"
 arch=(i686 x86_64)
 url="https://github.com/sunqm/libcint"
@@ -13,7 +13,7 @@ checkdepends=('python' 'python-numpy')
 optdepends=('clisp: for common lisp scripts.')
 provides=($pkgname=$pkgver)
 source=($pkgname-$pkgver.tar.gz::https://github.com/sunqm/libcint/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('8287e1eaf2b8c8e19eb7a8ea92fd73898f0884023c503b84624610400adb25c4')
+sha256sums=('e4d977d4aeb4d5b87639ea57a2d2f1d5c1001f3f94e480b08c297a6cbc186f27')
 
 build() {
     cd "$pkgname-$pkgver"
