@@ -11,8 +11,8 @@
 # Contributor: Roman Pearah
 
 pkgname=netextender
-pkgver=10.3.5_36
-pkgrel=2
+pkgver=10.3.6_39
+pkgrel=1
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('aarch64' 'x86_64')
 url="https://www.sonicwall.com/en-us/products/remote-access/vpn-client"
@@ -46,7 +46,7 @@ source_x86_64=(
   "netextender.install"
 )
 sha256sums_aarch64=(
-  "94d594f2fb98ad8cea845c6d60d4de76a7dcf57a88f7f0ba59c2fd77380e59c1"
+  "4e9d35d4b28cc175260689661f0ed25b8068bfda27563a2f0ce04c16d38ef5d9"
   "SKIP"
   "1c591a89e1b13112b51fe1bb9f0c0b4969530a3b7fd4949df1650365c39350d1"
   "35722921dfc9eae9ba21dd250128cdfd2d55e70d028d228ed9c66f94bf7c4273"
@@ -54,7 +54,7 @@ sha256sums_aarch64=(
   "90fce12da46ab2983a527aca7369524882bba1cfff9684ca172bc459cdf1363c"
 )
 sha256sums_x86_64=(
-  "88582fa96fb1ddf287683bc366a7198a5e3e6ecdc4773df9136dfa3e493da386"
+  "c2cb58cc39402ec5e08a18b57a73ff10ca313017ace06ea7bf04d9388c1b8357"
   "SKIP"
   "1c591a89e1b13112b51fe1bb9f0c0b4969530a3b7fd4949df1650365c39350d1"
   "35722921dfc9eae9ba21dd250128cdfd2d55e70d028d228ed9c66f94bf7c4273"
