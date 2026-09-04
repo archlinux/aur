@@ -3,7 +3,7 @@
 pkgname=nym-vpnd-beta-bin
 _dlver=2026.12.4-beta.1
 pkgver=2026.12.4
-pkgrel=1
+pkgrel=2
 _release_tag="nym-vpn-v${_dlver}"
 pkgdesc="NymVPN daemon (Beta)"
 arch=("x86_64" "aarch64")
@@ -20,6 +20,7 @@ depends=(
 provides=("nym-vpnd" "nym-exclude" "nym-socks5-proxy")
 conflicts=("nym-vpnd")
 options=("!debug")
+install="${pkgname}.install"
 source_x86_64=(
   "nym-vpn-core-bin-x86_64.tar.gz::${url}/releases/download/${_release_tag}/nym-vpn-core-v${_dlver}_linux_x86_64.tar.gz"
   "nym-vpnd.service"

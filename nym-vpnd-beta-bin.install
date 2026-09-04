@@ -1,0 +1,21 @@
+post_install() {
+    if ! systemctl is-enabled --quiet nym-vpnd.service 2>/dev/null; then
+        systemctl enable --now nym-vpnd.service
+    fi
+}
+
+post_upgrade() {
+    if systemctl is-active --quiet nym-vpnd.service; then
+        systemctl restart nym-vpnd.service
+    fi
+}
+
+pre_remove() {
+    if systemctl is-active --quiet nym-vpnd.service; then
+        systemctl stop nym-vpnd.service
+    fi
+
+    if systemctl is-enabled --quiet nym-vpnd.service 2>/dev/null; then
+        systemctl disable nym-vpnd.service
+    fi
+}

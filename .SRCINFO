@@ -1,8 +1,9 @@
 pkgbase = nym-vpnd-beta-bin
 	pkgdesc = NymVPN daemon (Beta)
 	pkgver = 2026.12.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nymtech/nym-vpn-client
+	install = nym-vpnd-beta-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
