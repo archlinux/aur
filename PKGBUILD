@@ -2,7 +2,7 @@
 
 _pkgname=types-chevron
 pkgname=python-types-chevron
-pkgver=0.14.2.20250103
+pkgver=0.14.2.20260408
 pkgrel=1
 pkgdesc="Typing stubs for chevron"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('9dacdc9b01bdf717bcb7930f0602b9b74add054ebf3cf38d282b7e2b64c9d076')
+sha256sums=('5c433fb39f1f9f588ebcf0d99f40127859b4b5be96ada5fbfa4355af96ff3aac')
 
 build() {
   cd "${_pkgname//-/_}-$pkgver"
