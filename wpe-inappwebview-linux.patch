@@ -1,0 +1,252 @@
+diff -ruN clean/fushi/pubspec.yaml mod/fushi/pubspec.yaml
+--- clean/fushi/pubspec.yaml	2026-09-03 16:29:15.000000000 +0800
++++ mod/fushi/pubspec.yaml	2026-09-05 05:33:13.385504911 +0800
+@@ -64,7 +64,7 @@
+   flutter_markdown: ^0.6.18
+   flutter_exit_app: ^1.0.5
+   flutter_html: ^3.0.0
+-  flutter_inappwebview: ^6.1.5
++  flutter_inappwebview: ^6.2.0-beta.3
+   flutter_logs: ^2.1.11 
+   flutter_riverpod: ^2.3.6
+   flutter_staggered_grid_view: ^0.7.0
+diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_app_webview_controller.dart mod/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_app_webview_controller.dart
+--- clean/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_app_webview_controller.dart	2026-09-03 16:29:15.000000000 +0800
++++ mod/packages/flutter_inappwebview_windows/lib/src/in_app_webview/in_app_webview_controller.dart	2026-09-05 05:33:13.388567809 +0800
+@@ -190,7 +190,9 @@
+         } else {
+           // restore controller properties
+           _injectedScriptsFromURL = props.injectedScriptsFromURL;
+-          _javaScriptHandlersMap = props.javaScriptHandlersMap;
++          _javaScriptHandlersMap =
++              props.javaScriptHandlersMap
++                  .cast<String, JavaScriptHandlerCallback>();
+           _userScripts = props.userScripts;
+           _webMessageListenerObjNames = props.webMessageListenerObjNames;
+           _webMessageChannels =
+@@ -2002,11 +2004,10 @@
+ 
+   @override
+   void addJavaScriptHandler(
+-      {required String handlerName,
+-      required JavaScriptHandlerCallback callback}) {
++      {required String handlerName, required Function callback}) {
+     assert(!_JAVASCRIPT_HANDLER_FORBIDDEN_NAMES.contains(handlerName),
+         '"$handlerName" is a forbidden name!');
+-    this._javaScriptHandlersMap[handlerName] = (callback);
++    this._javaScriptHandlersMap[handlerName] = callback as JavaScriptHandlerCallback;
+   }
+ 
+   @override
+@@ -2468,8 +2469,8 @@
+   Future<String?> saveWebArchive(
+       {required String filePath, bool autoname = false}) async {
+     if (!autoname) {
+-      assert(
+-          filePath.endsWith("." + WebArchiveFormat.WEBARCHIVE.toNativeValue()));
++      assert(filePath.endsWith(
++          "." + WebArchiveFormat.WEBARCHIVE.toNativeValue()!));
+     }
+ 
+     Map<String, dynamic> args = <String, dynamic>{};
+diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/print_job/print_job_controller.dart mod/packages/flutter_inappwebview_windows/lib/src/print_job/print_job_controller.dart
+--- clean/packages/flutter_inappwebview_windows/lib/src/print_job/print_job_controller.dart	2026-09-03 16:29:15.000000000 +0800
++++ mod/packages/flutter_inappwebview_windows/lib/src/print_job/print_job_controller.dart	2026-09-05 05:33:13.392866325 +0800
+@@ -11,16 +11,14 @@
+ class WindowsPrintJobControllerCreationParams
+     extends PlatformPrintJobControllerCreationParams {
+   /// Creates a new [WindowsPrintJobControllerCreationParams] instance.
+-  const WindowsPrintJobControllerCreationParams(
+-      {required super.id, super.onComplete});
++  const WindowsPrintJobControllerCreationParams({required super.id});
+ 
+   /// Creates a [WindowsPrintJobControllerCreationParams] instance based on [PlatformPrintJobControllerCreationParams].
+   factory WindowsPrintJobControllerCreationParams.fromPlatformPrintJobControllerCreationParams(
+       // Recommended placeholder to prevent being broken by platform interface.
+       // ignore: avoid_unused_constructor_parameters
+       PlatformPrintJobControllerCreationParams params) {
+-    return WindowsPrintJobControllerCreationParams(
+-        id: params.id, onComplete: params.onComplete);
++    return WindowsPrintJobControllerCreationParams(id: params.id);
+   }
+ }
+ 
+@@ -35,7 +33,6 @@
+               : WindowsPrintJobControllerCreationParams
+                   .fromPlatformPrintJobControllerCreationParams(params),
+         ) {
+-    onComplete = params.onComplete;
+     channel = MethodChannel(
+         'com.pichillilorenzo/flutter_inappwebview_printjobcontroller_${params.id}');
+     handler = _handleMethod;
+diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_listener.dart mod/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_listener.dart
+--- clean/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_listener.dart	2026-09-03 16:29:15.000000000 +0800
++++ mod/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_listener.dart	2026-09-05 05:33:13.391781104 +0800
+@@ -95,7 +95,7 @@
+   }
+ 
+   @override
+-  Map<String, dynamic> toMap() {
++  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+     return {
+       "id": _id,
+       "jsObjectName": params.jsObjectName,
+diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_port.dart mod/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_port.dart
+--- clean/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_port.dart	2026-09-03 16:29:15.000000000 +0800
++++ mod/packages/flutter_inappwebview_windows/lib/src/web_message/web_message_port.dart	2026-09-05 05:33:13.390393673 +0800
+@@ -67,7 +67,7 @@
+   }
+ 
+   @override
+-  Map<String, dynamic> toMap() {
++  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+     return {
+       "index": params.index,
+       "webMessageChannelId": this._webMessageChannel.params.id
+diff -ruN clean/packages/flutter_inappwebview_windows/lib/src/web_storage/web_storage_manager.dart mod/packages/flutter_inappwebview_windows/lib/src/web_storage/web_storage_manager.dart
+--- clean/packages/flutter_inappwebview_windows/lib/src/web_storage/web_storage_manager.dart	2026-09-03 16:29:15.000000000 +0800
++++ mod/packages/flutter_inappwebview_windows/lib/src/web_storage/web_storage_manager.dart	2026-09-05 05:33:13.394028855 +0800
+@@ -64,7 +64,7 @@
+     List<WebsiteDataRecord> recordList = [];
+     List<String> dataTypesList = [];
+     for (var dataType in dataTypes) {
+-      dataTypesList.add(dataType.toNativeValue());
++      dataTypesList.add(dataType.toNativeValue()!);
+     }
+     Map<String, dynamic> args = <String, dynamic>{};
+     args.putIfAbsent("dataTypes", () => dataTypesList);
+@@ -93,7 +93,7 @@
+       required List<WebsiteDataRecord> dataRecords}) async {
+     List<String> dataTypesList = [];
+     for (var dataType in dataTypes) {
+-      dataTypesList.add(dataType.toNativeValue());
++      dataTypesList.add(dataType.toNativeValue()!);
+     }
+ 
+     List<Map<String, dynamic>> recordList = [];
+@@ -112,7 +112,7 @@
+       {required Set<WebsiteDataType> dataTypes, required DateTime date}) async {
+     List<String> dataTypesList = [];
+     for (var dataType in dataTypes) {
+-      dataTypesList.add(dataType.toNativeValue());
++      dataTypesList.add(dataType.toNativeValue()!);
+     }
+ 
+     var timestamp = date.millisecondsSinceEpoch;
+diff -ruN clean/packages/flutter_inappwebview_windows/pubspec.yaml mod/packages/flutter_inappwebview_windows/pubspec.yaml
+--- clean/packages/flutter_inappwebview_windows/pubspec.yaml	2026-09-03 16:29:15.000000000 +0800
++++ mod/packages/flutter_inappwebview_windows/pubspec.yaml	2026-09-05 05:33:13.387577812 +0800
+@@ -1,7 +1,7 @@
+ name: flutter_inappwebview_windows
+ resolution: workspace
+ description: Windows implementation of the flutter_inappwebview plugin.
+-version: 0.6.0
++version: 0.7.0-beta.3
+ homepage: https://inappwebview.dev/
+ repository: https://github.com/pichillilorenzo/flutter_inappwebview/tree/master/flutter_inappwebview_windows
+ issue_tracker: https://github.com/pichillilorenzo/flutter_inappwebview/issues
+diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview_controller.dart mod/third_party/flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview_controller.dart
+--- clean/third_party/flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview_controller.dart	2026-09-03 16:29:15.000000000 +0800
++++ mod/third_party/flutter_inappwebview_android/lib/src/in_app_webview/in_app_webview_controller.dart	2026-09-05 05:33:13.395535880 +0800
+@@ -186,7 +186,9 @@
+         } else {
+           // restore controller properties
+           _injectedScriptsFromURL = props.injectedScriptsFromURL;
+-          _javaScriptHandlersMap = props.javaScriptHandlersMap;
++          _javaScriptHandlersMap =
++              props.javaScriptHandlersMap
++                  .cast<String, JavaScriptHandlerCallback>();
+           _userScripts = props.userScripts;
+           _webMessageListenerObjNames = props.webMessageListenerObjNames;
+           _webMessageChannels =
+@@ -1986,11 +1988,10 @@
+ 
+   @override
+   void addJavaScriptHandler(
+-      {required String handlerName,
+-      required JavaScriptHandlerCallback callback}) {
++      {required String handlerName, required Function callback}) {
+     assert(!_JAVASCRIPT_HANDLER_FORBIDDEN_NAMES.contains(handlerName),
+         '"$handlerName" is a forbidden name!');
+-    this._javaScriptHandlersMap[handlerName] = (callback);
++    this._javaScriptHandlersMap[handlerName] = callback as JavaScriptHandlerCallback;
+   }
+ 
+   @override
+@@ -2501,7 +2502,8 @@
+   Future<String?> saveWebArchive(
+       {required String filePath, bool autoname = false}) async {
+     if (!autoname) {
+-      assert(filePath.endsWith("." + WebArchiveFormat.MHT.toNativeValue()));
++      assert(filePath.endsWith(
++          "." + WebArchiveFormat.MHT.toNativeValue()!));
+     }
+ 
+     Map<String, dynamic> args = <String, dynamic>{};
+diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/print_job/print_job_controller.dart mod/third_party/flutter_inappwebview_android/lib/src/print_job/print_job_controller.dart
+--- clean/third_party/flutter_inappwebview_android/lib/src/print_job/print_job_controller.dart	2026-09-03 16:29:15.000000000 +0800
++++ mod/third_party/flutter_inappwebview_android/lib/src/print_job/print_job_controller.dart	2026-09-05 05:33:13.399805177 +0800
+@@ -11,16 +11,14 @@
+ class AndroidPrintJobControllerCreationParams
+     extends PlatformPrintJobControllerCreationParams {
+   /// Creates a new [AndroidPrintJobControllerCreationParams] instance.
+-  const AndroidPrintJobControllerCreationParams(
+-      {required super.id, super.onComplete});
++  const AndroidPrintJobControllerCreationParams({required super.id});
+ 
+   /// Creates a [AndroidPrintJobControllerCreationParams] instance based on [PlatformPrintJobControllerCreationParams].
+   factory AndroidPrintJobControllerCreationParams.fromPlatformPrintJobControllerCreationParams(
+       // Recommended placeholder to prevent being broken by platform interface.
+       // ignore: avoid_unused_constructor_parameters
+       PlatformPrintJobControllerCreationParams params) {
+-    return AndroidPrintJobControllerCreationParams(
+-        id: params.id, onComplete: params.onComplete);
++    return AndroidPrintJobControllerCreationParams(id: params.id);
+   }
+ }
+ 
+diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_listener.dart mod/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_listener.dart
+--- clean/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_listener.dart	2026-09-03 16:29:15.000000000 +0800
++++ mod/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_listener.dart	2026-09-05 05:33:13.396694046 +0800
+@@ -95,7 +95,7 @@
+   }
+ 
+   @override
+-  Map<String, dynamic> toMap() {
++  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+     return {
+       "id": _id,
+       "jsObjectName": params.jsObjectName,
+diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_port.dart mod/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_port.dart
+--- clean/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_port.dart	2026-09-03 16:29:15.000000000 +0800
++++ mod/third_party/flutter_inappwebview_android/lib/src/web_message/web_message_port.dart	2026-09-05 05:33:13.397886219 +0800
+@@ -67,7 +67,7 @@
+   }
+ 
+   @override
+-  Map<String, dynamic> toMap() {
++  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+     return {
+       "index": params.index,
+       "webMessageChannelId": this._webMessageChannel.params.id
+diff -ruN clean/third_party/flutter_inappwebview_android/lib/src/webview_asset_loader.dart mod/third_party/flutter_inappwebview_android/lib/src/webview_asset_loader.dart
+--- clean/third_party/flutter_inappwebview_android/lib/src/webview_asset_loader.dart	2026-09-03 16:29:15.000000000 +0800
++++ mod/third_party/flutter_inappwebview_android/lib/src/webview_asset_loader.dart	2026-09-05 05:33:13.398981531 +0800
+@@ -54,7 +54,7 @@
+   }
+ 
+   @override
+-  Map<String, dynamic> toMap() {
++  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+     return {"path": path, "type": type, "id": _id};
+   }
+ 
+@@ -194,7 +194,7 @@
+   String get directory => _internalParams.directory;
+ 
+   @override
+-  Map<String, dynamic> toMap() {
++  Map<String, dynamic> toMap({EnumMethod? enumMethod}) {
+     return {...toMap(), 'directory': directory};
+   }
+ }
