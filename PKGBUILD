@@ -37,14 +37,14 @@ package() {
     chmod +x "$pkgdir/opt/abacusai/abacusai-desktop"
 
     # Create symlink in /usr/bin
-    ln -s "/opt/abacusai/abacusai-desktop" "$pkgdir/usr/bin/abacusai-app"
+    ln -s "/opt/abacusai/abacusai-desktop" "$pkgdir/usr/bin/abacusai-desktop"
 
     # Create desktop entry
     cat > "$pkgdir/usr/share/applications/abacusai.desktop" << EOF
 [Desktop Entry]
 Name=AbacusAI
 Comment=AI code editor that enhances developer productivity
-Exec=/opt/abacusai/abacusai-app %U
+Exec=/opt/abacusai/abacusai-desktop %U
 Terminal=false
 Type=Application
 Icon=abacusai
@@ -52,6 +52,7 @@ StartupWMClass=AbacusAI
 Categories=Development;IDE;
 MimeType=text/plain;inode/directory;
 EOF
+
 
     # Install icon (assuming there's an icon in the package)
     if [ -f "$pkgdir/opt/abacusai/resources/app/resources/linux/code.png" ]; then
