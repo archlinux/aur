@@ -1,6 +1,6 @@
 diff -uNrp nouveau-orig/dispnv50/disp.c nouveau-mod/dispnv50/disp.c
 --- nouveau-orig/dispnv50/disp.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/dispnv50/disp.c	2026-08-31 15:23:48.162721034 +0300
++++ nouveau-mod/dispnv50/disp.c	2026-09-04 21:09:25.878646235 +0300
 @@ -228,6 +228,10 @@ MODULE_PARM_DESC(kms_vram_pushbuf, "Plac
  static int nv50_dmac_vram_pushbuf = -1;
  module_param_named(kms_vram_pushbuf, nv50_dmac_vram_pushbuf, int, 0400);
@@ -33,7 +33,7 @@ diff -uNrp nouveau-orig/dispnv50/disp.c nouveau-mod/dispnv50/disp.c
  
 diff -uNrp nouveau-orig/nouveau_backlight.c nouveau-mod/nouveau_backlight.c
 --- nouveau-orig/nouveau_backlight.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/nouveau_backlight.c	2026-08-31 15:23:48.164856237 +0300
++++ nouveau-mod/nouveau_backlight.c	2026-09-04 21:09:25.879315770 +0300
 @@ -344,10 +344,7 @@ nouveau_backlight_init(struct drm_connec
  		goto fail_alloc;
  	}
@@ -48,7 +48,7 @@ diff -uNrp nouveau-orig/nouveau_backlight.c nouveau-mod/nouveau_backlight.c
  		NV_ERROR(drm, "Failed to retrieve a unique name for the backlight interface\n");
 diff -uNrp nouveau-orig/nvkm/subdev/clk/base.c nouveau-mod/nvkm/subdev/clk/base.c
 --- nouveau-orig/nvkm/subdev/clk/base.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/nvkm/subdev/clk/base.c	2026-08-31 15:23:48.165344978 +0300
++++ nouveau-mod/nvkm/subdev/clk/base.c	2026-09-04 21:09:25.957109827 +0300
 @@ -282,7 +282,8 @@ nvkm_pstate_prog(struct nvkm_clk *clk, i
  
  	nvkm_pcie_set_link(pci, pstate->pcie_speed, pstate->pcie_width);
@@ -68,10 +68,64 @@ diff -uNrp nouveau-orig/nvkm/subdev/clk/base.c nouveau-mod/nvkm/subdev/clk/base.
  	}
  
  	return nvkm_cstate_prog(clk, pstate, NVKM_CLK_CSTATE_HIGHEST);
+@@ -428,6 +431,8 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
+ 	pstate->pcie_width = perfE.pcie_width;
+ 	cstate = &pstate->base;
+ 	cstate->voltage = perfE.voltage;
++	if (pstate->pstate == 0x0f)
++		cstate->voltage = 0x67;
+ 	cstate->domain[nv_clk_src_core] = perfE.core;
+ 	cstate->domain[nv_clk_src_shader] = perfE.shader;
+ 	cstate->domain[nv_clk_src_mem] = perfE.memory;
+@@ -451,6 +456,9 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
+ 
+ 		cstate->domain[domain->name] = perfS.v40.freq;
+ 	}
++	/* shader = hot clock (2x core) if VBIOS omits it */
++	if (!cstate->domain[nv_clk_src_shader])
++		cstate->domain[nv_clk_src_shader] = cstate->domain[nv_clk_src_gpc];
+ 
+ 	data = nvbios_cstepEm(bios, pstate->pstate, &ver, &hdr, &cstepE);
+ 	if (data) {
+@@ -463,6 +471,25 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
+ 	nvkm_pstate_info(clk, pstate);
+ 	list_add_tail(&pstate->head, &clk->states);
+ 	clk->state_nr++;
++
++	/* Local OC pstate (5th, beyond BIOS max 0f) — gated by NvFermiOC */
++	if (pstate->pstate == 0x0f && nvkm_boolopt(clk->subdev.device->cfgopt, "NvFermiOC", false)) {
++		struct nvkm_pstate *oc = kzalloc(sizeof(*oc), GFP_KERNEL);
++		if (oc) {
++			INIT_LIST_HEAD(&oc->list);
++			oc->pstate = 0x10;
++			oc->fanspeed = pstate->fanspeed;
++			oc->pcie_speed = pstate->pcie_speed;
++			oc->pcie_width = pstate->pcie_width;
++			oc->base = pstate->base;
++			oc->base.domain[nv_clk_src_gpc] = 1400000;
++			oc->base.domain[nv_clk_src_shader] = 1400000;
++			nvkm_pstate_info(clk, oc);
++			list_add_tail(&oc->head, &clk->states);
++			clk->state_nr++;
++		}
++	}
++
+ 	return 0;
+ }
+ 
 diff -uNrp nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-mod/nvkm/subdev/clk/gf100.c
 --- nouveau-orig/nvkm/subdev/clk/gf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/nvkm/subdev/clk/gf100.c	2026-08-31 15:23:48.170390200 +0300
-@@ -329,9 +329,6 @@ gf100_clk_calc(struct nvkm_clk *base, st
++++ nouveau-mod/nvkm/subdev/clk/gf100.c	2026-09-04 21:09:25.956514569 +0300
+@@ -186,6 +186,8 @@ gf100_clk_read(struct nvkm_clk *base, en
+ 
+ 	case nv_clk_src_gpc:
+ 		return read_clk(clk, 0x00);
++	case nv_clk_src_shader:
++		return read_clk(clk, 0x00);
+ 	case nv_clk_src_rop:
+ 		return read_clk(clk, 0x01);
+ 	case nv_clk_src_hubk07:
+@@ -329,9 +331,6 @@ gf100_clk_calc(struct nvkm_clk *base, st
  
  	if ((ret = calc_clk(clk, cstate, 0x00, nv_clk_src_gpc)) ||
  	    (ret = calc_clk(clk, cstate, 0x01, nv_clk_src_rop)) ||
@@ -81,20 +135,21 @@ diff -uNrp nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-mod/nvkm/subdev/clk/gf10
  	    (ret = calc_clk(clk, cstate, 0x09, nv_clk_src_copy)) ||
  	    (ret = calc_clk(clk, cstate, 0x0c, nv_clk_src_pmu)) ||
  	    (ret = calc_clk(clk, cstate, 0x0e, nv_clk_src_vdec)))
-@@ -457,9 +454,10 @@ gf100_clk = {
+@@ -457,9 +456,11 @@ gf100_clk = {
  		{ nv_clk_src_hubk06 , 0x00 },
  		{ nv_clk_src_hubk01 , 0x01 },
  		{ nv_clk_src_copy   , 0x02 },
 -		{ nv_clk_src_gpc    , 0x03, NVKM_CLK_DOM_FLAG_VPSTATE, "core", 2000 },
 +		{ nv_clk_src_gpc    , 0x03, NVKM_CLK_DOM_FLAG_CORE |
 +					    NVKM_CLK_DOM_FLAG_VPSTATE, "core", 2000 },
++		{ nv_clk_src_shader , 0xff, 0, "shader", 1000 },
  		{ nv_clk_src_rop    , 0x04 },
 -		{ nv_clk_src_mem    , 0x05, 0, "memory", 1000 },
 +		{ nv_clk_src_mem    , 0x05, NVKM_CLK_DOM_FLAG_CORE, "memory", 1000 },
  		{ nv_clk_src_vdec   , 0x06 },
  		{ nv_clk_src_pmu    , 0x0a },
  		{ nv_clk_src_hubk07 , 0x0b },
-@@ -477,5 +475,5 @@ gf100_clk_new(struct nvkm_device *device
+@@ -477,5 +478,5 @@ gf100_clk_new(struct nvkm_device *device
  		return -ENOMEM;
  	*pclk = &clk->base;
  
@@ -103,7 +158,7 @@ diff -uNrp nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-mod/nvkm/subdev/clk/gf10
  }
 diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ramgf100.c
 --- nouveau-orig/nvkm/subdev/fb/ramgf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/nvkm/subdev/fb/ramgf100.c	2026-08-31 15:24:46.184038156 +0300
++++ nouveau-mod/nvkm/subdev/fb/ramgf100.c	2026-09-04 21:09:25.880251893 +0300
 @@ -58,6 +58,9 @@ struct gf100_ramfuc {
  	struct ramfuc_reg r_0x10f340;
  	struct ramfuc_reg r_0x10f344;
@@ -357,7 +412,7 @@ diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ram
  	ram_mask(fuc, 0x10f200, 0x00000800, 0x00000800);
 diff -uNrp nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-mod/nvkm/subdev/pmu/gt215.c
 --- nouveau-orig/nvkm/subdev/pmu/gt215.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/nvkm/subdev/pmu/gt215.c	2026-08-31 15:23:48.171519606 +0300
++++ nouveau-mod/nvkm/subdev/pmu/gt215.c	2026-09-04 21:09:25.880747355 +0300
 @@ -56,9 +56,11 @@ gt215_pmu_send(struct nvkm_pmu *pmu, u32
  	}
  
@@ -431,7 +486,7 @@ diff -uNrp nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-mod/nvkm/subdev/pmu/gt21
  	if (pmu->recv.process) {
 diff -uNrp nouveau-orig/nvkm/subdev/pmu/memx.c nouveau-mod/nvkm/subdev/pmu/memx.c
 --- nouveau-orig/nvkm/subdev/pmu/memx.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/nvkm/subdev/pmu/memx.c	2026-08-31 15:23:48.171915640 +0300
++++ nouveau-mod/nvkm/subdev/pmu/memx.c	2026-09-04 21:09:25.881003144 +0300
 @@ -61,9 +61,11 @@ nvkm_memx_init(struct nvkm_pmu *pmu, str
  	memx->size = reply[1];
  
