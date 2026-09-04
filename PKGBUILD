@@ -3,7 +3,7 @@
 pkgname=ffxiv-teamcraft
 pkgdesc="Collaborative crafting tool for Final Fantasy XIV"
 pkgver=11.4.30
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('MIT')
 utl="https://github.com/ffxiv-teamcraft/ffxiv-teamcraft"
