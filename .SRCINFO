@@ -1,0 +1,25 @@
+pkgbase = cc-mesh-bin
+	pkgdesc = Claude Code and Codex local Tauri proxy gateway with Anthropic/OpenAI protocol translation, model mapping, and endpoint rotation/failover
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/VkRainB/ccMesh
+	arch = x86_64
+	license = Apache-2.0
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libgcc
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = cc-mesh
+	conflicts = cc-mesh
+	noextract = ccMesh_0.2.6_amd64.deb
+	options = !debug
+	source_x86_64 = ccMesh_0.2.6_amd64.deb::https://github.com/VkRainB/ccMesh/releases/download/v0.2.6/ccMesh_0.2.6_amd64.deb
+	sha256sums_x86_64 = bfd00b24787dffb8614adeee1793c6abd159568bb0b8868c765f77fa433a9f4e
+
+pkgname = cc-mesh-bin
