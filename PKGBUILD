@@ -17,7 +17,7 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=6.3.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client, engine, server and artificial intelligence"
 url="https://hnefatafl.org"
@@ -30,7 +30,7 @@ source=(
     "https://codeberg.org/dcampbell/hnefatafl/media/branch/main/default_nn.onnx"
 )
 sha256sums=(
-    "ee2ae22acace6ca41d94935b52860be50207566b77591bf5c2344f0ede9b24b3"
+    "7f6e550d5ac4e80effcbc0457b8ea695a310ac4b4650e198e986601fe814d9f5"
     "99e76fcefb00c56e3c4ff9186f745347f6d1611808281b2c4b4374160ebeb4b8"
 )
 
@@ -53,23 +53,20 @@ build() {
 
     cd "hnefatafl"
 
-    cargo build --frozen --release --examples
     cargo build --frozen --release
 
-    ./target/release/examples/taflzero --man --username ""
+    ./target/release/taflzero --man --username ""
     ./target/release/hnefatafl-client --man
     ./target/release/hnefatafl-server --man
-    ./target/release/hnefatafl-server-full --man
     ./target/release/hnefatafl-text-protocol --man
 }
 
 package() {
     cd "hnefatafl"
 
-    install -Dm755 "target/release/examples/taflzero" -t "$pkgdir/usr/bin"
+    install -Dm755 "target/release/taflzero" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-client" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-server" -t "$pkgdir/usr/bin"
-    install -Dm755 "target/release/hnefatafl-server-full" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-text-protocol" -t "$pkgdir/usr/bin"
     install -Dm644 "packages/hnefatafl.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "packages/hnefatafl-ai-attacker.service" -t "$pkgdir/usr/lib/systemd/system"
@@ -79,7 +76,6 @@ package() {
     install -Dm644 "taflzero.1" "$pkgdir/usr/share/man/man1/hnefatafl-ai.1"
     install -Dm644 "hnefatafl-client.1" "$pkgdir/usr/share/man/man1/hnefatafl-client.1"
     install -Dm644 "hnefatafl-server.1" "$pkgdir/usr/share/man/man1/hnefatafl-server.1"
-    install -Dm644 "hnefatafl-server-full.1" "$pkgdir/usr/share/man/man1/hnefatafl-server-full.1"
     install -Dm644 "hnefatafl-text-protocol.1" "$pkgdir/usr/share/man/man1/hnefatafl-text-protocol.1"
     install -Dm644 "packages/hnefatafl-client.desktop" "$pkgdir/usr/share/applications/hnefatafl-client.desktop"
     install -Dm644 "default_nn.onnx" -t "$pkgdir/usr/share/taflzero"
