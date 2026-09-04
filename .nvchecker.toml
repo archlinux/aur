@@ -1,0 +1,5 @@
+[cjsh-bin]
+source = "github"
+github = "CadenFinley/CJsShell"
+use_latest_release = true
+prefix = "v"

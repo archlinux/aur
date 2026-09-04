@@ -1,0 +1,14 @@
+post_install() {
+  grep -qx /bin/cjsh /etc/shells || echo /bin/cjsh >> /etc/shells
+  grep -qx /usr/bin/cjsh /etc/shells || echo /usr/bin/cjsh >> /etc/shells
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  sed -i -r '/^(\/usr)?\/bin\/cjsh$/d' etc/shells
+}
+
+# vim:set ts=2 sw=2 et:
