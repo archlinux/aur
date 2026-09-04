@@ -1,6 +1,6 @@
 pkgbase = notesmd-cli
 	pkgdesc = Interact with Obsidian in the terminal. Open, search, create, update and move notes!
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/Yakitrak/notesmd-cli
 	install = notesmd-cli.install
@@ -9,7 +9,7 @@ pkgbase = notesmd-cli
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = notesmd-cli-0.3.6.tar.gz::https://github.com/Yakitrak/notesmd-cli/archive/v0.3.6.tar.gz
-	sha256sums = 6e0bb297027f1a37cea3ae923dc79eb92c652ecf5c839b1f9f2983e72e9f3259
+	source = notesmd-cli-0.3.7.tar.gz::https://github.com/Yakitrak/notesmd-cli/archive/v0.3.7.tar.gz
+	sha256sums = b6fac9be29870073b4c6bd3d28079bb377fc10b293839b824e0223294c78c2f0
 
 pkgname = notesmd-cli
