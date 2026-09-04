@@ -19,6 +19,7 @@ post_install() {
     chmod +x /opt/happ/bin/Happ 2>/dev/null || true
     chmod +x /opt/happ/bin/happ-tcping 2>/dev/null || true
     chmod +x /opt/happ/bin/happd 2>/dev/null || true
+    chmod +x /opt/happ/bin/happ-diag 2>/dev/null || true
     chmod +x /opt/happ/bin/core/xray 2>/dev/null || true
     chmod +x /opt/happ/bin/tun/sing-box 2>/dev/null || true
     chmod +x /opt/happ/bin/tun2/tun2proxy-bin 2>/dev/null || true
