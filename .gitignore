@@ -2,5 +2,7 @@ pkg
 src
 .*
 !.SRCINFO
+!.github
+!.github/**
 *.tar.gz
 *.zip
