@@ -1,6 +1,6 @@
 pkgbase = twintaillauncher
 	pkgdesc = Your anime games, one launcher
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/TwintailTeam/TwintailLauncher
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = twintaillauncher
 	conflicts = twintaillauncher-bin
 	options = !lto
 	options = !debug
-	source = twintaillauncher-2.4.0.tar.gz::https://github.com/TwintailTeam/TwintailLauncher/archive/refs/tags/ttl-v2.4.0.tar.gz
+	source = twintaillauncher-2.5.0.tar.gz::https://github.com/TwintailTeam/TwintailLauncher/archive/refs/tags/ttl-v2.5.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = twintaillauncher

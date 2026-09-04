@@ -1,5 +1,5 @@
 pkgname=twintaillauncher
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 _dirname="TwintailLauncher-ttl-v${pkgver}"
 pkgdesc='Your anime games, one launcher'
