@@ -1,4 +1,4 @@
-# Maintainer: taxin <unknownbrofrombd@duck.com>
+# Maintainer: taxin-404 <taxin404@duck.com>
 
 pkgname=bclone
 pkgver=1.75.2
