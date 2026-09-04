@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=stools
+Comment=A minimal, fast, Fuzzel-style application launcher with pinyin support
+Comment[zh_CN]=轻量极速的 Fuzzel 风格应用启动器（支持拼音检索）
+Exec=stools
+Icon=stools
+Terminal=false
+Categories=Utility;System;
+Keywords=launcher;fuzzel;rofi;dmenu;
+StartupWMClass=stools
