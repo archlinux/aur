@@ -10,8 +10,10 @@ depends=('python' 'pyside6' 'hicolor-icon-theme')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$url/-/archive/v0.6.3-RC1/MahoragaOS-v0.6.3-RC1.tar.gz"
         "mahoragaos.desktop"
-        "mahoragaos.svg")
+        "mahoragaos.svg"
+        "mahoragaos.fish")
 sha256sums=('48921d19843ca915997c69848d0c09a01b9269f2962f062193c50b8743c6ec46'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -38,5 +40,5 @@ package() {
   install -Dm644 "docs/man/mahoragaos-ui.1" "$pkgdir/usr/share/man/man1/mahoragaos-ui.1"
 
   # Install fish completion (from source repo)
-  install -Dm644 "$srcdir/../share/fish/completions/mahoragaos.fish" "$pkgdir/usr/share/fish/completions/mahoragaos.fish"
+  install -Dm644 "$srcdir/mahoragaos.fish" "$pkgdir/usr/share/fish/completions/mahoragaos.fish"
 }

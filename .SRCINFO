@@ -15,7 +15,9 @@ pkgbase = mahoragaos
 	source = https://gitlab.com/Bingusfan360/MahoragaOS/-/archive/v0.6.3-RC1/MahoragaOS-v0.6.3-RC1.tar.gz
 	source = mahoragaos.desktop
 	source = mahoragaos.svg
+	source = mahoragaos.fish
 	sha256sums = 48921d19843ca915997c69848d0c09a01b9269f2962f062193c50b8743c6ec46
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
