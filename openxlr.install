@@ -1,6 +1,5 @@
 post_install() {
   udevadm control --reload || true
-  sysctl -q -w net.ipv4.ip_local_reserved_ports=37890 || true
   cat <<'MSG'
 ==> OpenXLR: replug your interface once so the udev rule applies.
 ==> Start the daemon:  systemctl --user enable --now openxlr-daemon
@@ -11,7 +10,6 @@ MSG
 }
 post_upgrade() {
   udevadm control --reload || true
-  sysctl -q -w net.ipv4.ip_local_reserved_ports=37890 || true
   if (( $(vercmp "$2" 0.1.9) < 0 )); then
     cat <<'MSG'
 ==> OpenXLR: before 0.1.9, "Start daemon at login" in Options wrote a broken
