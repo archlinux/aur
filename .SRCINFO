@@ -1,7 +1,7 @@
 pkgbase = gamebreaker
 	pkgdesc = Simple graphics engine for C++
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/elpoeprod/GameBreaker
 	arch = x86_64
 	license = BSD-3
