@@ -1,0 +1,20 @@
+pkgbase = evidence-manager
+	pkgdesc = Cross-platform GUI application for managing and organizing evidence
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Aspenini/Evidence-Manager
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = gtk3
+	depends = libx11
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	source = evidence-manager::git+https://github.com/Aspenini/Evidence-Manager.git#tag=v1.2.0
+	b2sums = SKIP
+
+pkgname = evidence-manager
