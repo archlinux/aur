@@ -1,7 +1,7 @@
-# Maintainer: Martin Vlček <martin-vlcek@post.cz>
+# Maintainer: ZenithCrow <martin-vlcek@post.cz>
 
 pkgname=derg-clock-popup
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="An animated popup window telling the current time"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('zig') 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ZenithCrow/derg-clock-popup/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3aa3c9faa054d387d5e5d4400db83f8617c9857d20937922894fc624c44b3193')
+sha256sums=('3794165d424a0b5ec1bcfffd941dddf1793443f62456e013cf7f8442a63b563d')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
