@@ -1,21 +1,22 @@
-# Maintainer: Jiuyang Liu <liujiuyang1994@gmail.com>
+# Maintainer: Andreas Wendleder <gonsolo@gmail.com>
+# Contributor: Jiuyang Liu <liujiuyang1994@gmail.com>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Paulo Matos <paulo@matos-sorge.com>
 # Contributor: b4283 <unknown@unknowndomain.com>
 
 pkgname=spike-git
-pkgver=r3205.7438d1e6
+pkgver=r4235.4ffd6ba8
 pkgrel=1
 pkgdesc="Spike, a RISC-V ISA Simulator"
 arch=(x86_64)
-url="https://github.com/riscv/riscv-isa-sim"
+url="https://github.com/riscv-software-src/riscv-isa-sim"
 license=('BSD')
 groups=()
 depends=(dtc)
 makedepends=('git')
 replaces=(spike)
 conflicts=(spike)
-source=('git+https://github.com/riscv/riscv-isa-sim')
+source=('git+https://github.com/riscv-software-src/riscv-isa-sim')
 md5sums=('SKIP')
 noextract=()
 
