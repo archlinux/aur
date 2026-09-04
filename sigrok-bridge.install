@@ -1,0 +1,78 @@
+_info() {
+    cat <<'EOF'
+>>> sigrok-bridge -- Sipeed SLogic <-> ngscopeclient bridge
+
+1) USB access
+   Installed: /usr/lib/udev/rules.d/60-sigrok-slogic.rules
+   Replug the SLogic (or run the following) so the rule takes effect:
+       sudo udevadm control --reload && sudo udevadm trigger
+
+2) Start the bridge -- both units bind TCP 10101, enable only one:
+   digital (default; every channel is an independent digital line):
+       sudo systemctl enable --now sigrok-bridge.service
+   analog (8 digital lines -> one 8-bit ADC channel; needs the ADC module):
+       sudo systemctl enable --now sigrok-bridge-analog.service
+
+3) Connect from ngscopeclient
+   File -> Add -> Oscilloscope
+       Driver:    sigrok
+       Transport: twinlan
+       Path:      localhost:10101      (or <remote-ip>:10101)
+
+Notes
+   - Verbose logs: RUST_LOG=debug /usr/bin/sigrok-bridge
+   - The bridge exits when no SLogic is present; the service retries
+     automatically until the device shows up.
+   - SECURITY: the bridge offers no authentication or encryption and listens
+     on all interfaces. Only enable it on a trusted network.
+EOF
+}
+
+_firewall_info() {
+    cat <<'EOF'
+
+>>> Firewall: TWO ports are required
+
+   The twinlan transport uses a separate connection for the waveform stream.
+   When only the command port is reachable the symptom is misleading: the
+   instrument connects "successfully" but the channel list stays empty and no
+   waveform is ever drawn.
+
+       tcp/10101  command port   (what you put in Path)
+       tcp/10102  data port      = command port + 1
+
+   The data port is ALWAYS the command port + 1. If you run the bridge with a
+   custom port (e.g. --port 20101), open that port AND the next one (20102)
+   instead of 10101/10102. You can also pin both explicitly from the client by
+   using "host:cmdport:dataport", e.g. Path = localhost:10101:10102.
+
+   This only matters when the SLogic is attached to ANOTHER machine; a purely
+   local setup (localhost) needs no firewall change.
+
+   firewalld (a service definition is installed):
+       sudo firewall-cmd --permanent --add-service=sigrok-bridge
+       sudo firewall-cmd --reload
+
+   ufw (an application profile is installed):
+       sudo ufw allow sigrok-bridge
+
+   nftables:
+       sudo nft add rule inet filter input tcp dport '{ 10101, 10102 }' accept
+
+   iptables:
+       sudo iptables -A INPUT -p tcp -m multiport --dports 10101,10102 -j ACCEPT
+
+   To verify both ports are really listening while the bridge runs:
+       ss -tlnp | grep sigrok-bridge
+EOF
+}
+
+post_install() {
+    _info
+    _firewall_info
+}
+
+post_upgrade() {
+    _info
+    _firewall_info
+}

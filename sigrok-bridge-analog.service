@@ -1,0 +1,41 @@
+[Unit]
+Description=Sigrok bridge server for ngscopeclient (Sipeed SLogic, analog/ADC mode)
+Documentation=https://wiki.sipeed.com/hardware/zh/logic_analyzer/ngscopeclient/ngscopeclient.html
+After=network-online.target
+Wants=network-online.target
+# Both units bind the same command port (10101), so only one may run at a time.
+Conflicts=sigrok-bridge.service
+
+[Service]
+Type=simple
+# ADC mode: every 8 digital lines are grouped into one 8-bit analog channel
+# (A0, A1, ...). Requires the ADC module (SLogic16U3 / SLogic32U3).
+# The mode is fixed at startup and cannot be switched from the GUI -- to go
+# back to digital mode, stop this unit and start sigrok-bridge.service.
+ExecStart=/usr/bin/sigrok-bridge \
+    --driver sipeed-slogic-analyzer \
+    --port 10101 \
+    --adc-mode analog
+
+# The bridge logs through env_logger; raise to debug when reporting a problem.
+Environment=RUST_LOG=info
+
+# The bridge exits as soon as no SLogic device is present (for example before
+# the analyzer is plugged in), so retry instead of giving up for good.
+Restart=on-failure
+RestartSec=5
+
+# USB access is granted by /usr/lib/udev/rules.d/60-sigrok-slogic.rules,
+# so the service does not need a privileged account.
+DynamicUser=yes
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target

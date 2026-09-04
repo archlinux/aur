@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>sigrok-bridge</short>
+  <description>
+    Sigrok bridge server exposing Sipeed SLogic logic analyzers to
+    ngscopeclient. Two TCP ports are required: the command port that the
+    client connects to and a data port that carries the waveform stream.
+    The data port is always the command port + 1 (10101 -&gt; 10102 by
+    default); if the bridge is started with a custom --port, open that port
+    and the one above it instead.
+  </description>
+  <port protocol="tcp" port="10101"/>
+  <port protocol="tcp" port="10102"/>
+</service>
