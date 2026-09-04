@@ -1,6 +1,6 @@
 pkgbase = workbuddy
 	pkgdesc = 腾讯云代码助手推出的 AI Agent 办公工具
-	pkgver = 5.5.2.37672479_2b0177c3
+	pkgver = 5.5.3.37748631_104760a2
 	pkgrel = 1
 	url = https://www.workbuddy.cn/app
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = workbuddy
 	makedepends = asar
 	depends = electron
 	optdepends = nodejs-lts: frontend skills
-	optdepends = ripgrep
 	optdepends = gnome-shell-extension-appindicator
 	options = !strip
 	options = !debug
@@ -17,9 +16,9 @@ pkgbase = workbuddy
 	source = https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-13.0.3.tgz
 	sha256sums = SKIP
 	sha256sums = 77e0513dc1a469fb3bceec4c7fb5ad3f403109787eda05be047ec17fd56868cb
-	source_x86_64 = v5.5.2.37672479_2b0177c3-x86_64.deb::https://download.codebuddy.cn/workbuddy/saas/linux-x64-deb/WorkBuddy-linux-x64-deb-5.5.2.37672479-2b0177c3.deb
+	source_x86_64 = v5.5.3.37748631_104760a2-x86_64.deb::https://download.codebuddy.cn/workbuddy/saas/linux-x64-deb/WorkBuddy-linux-x64-deb-5.5.3.37748631-104760a2.deb
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = v5.5.2.37672479_2b0177c3-aarch64.deb::https://download.codebuddy.cn/workbuddy/saas/linux-arm64-deb/WorkBuddy-linux-arm64-deb-5.5.2.37672479-2b0177c3.deb
+	source_aarch64 = v5.5.3.37748631_104760a2-aarch64.deb::https://download.codebuddy.cn/workbuddy/saas/linux-arm64-deb/WorkBuddy-linux-arm64-deb-5.5.3.37748631-104760a2.deb
 	sha256sums_aarch64 = SKIP
 
 pkgname = workbuddy

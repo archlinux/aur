@@ -1,7 +1,7 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy
-pkgver=5.4.5.37398844_33ba13eb
+pkgver=5.5.3.37748631_104760a2
 pkgrel=1
 pkgdesc="腾讯云代码助手推出的 AI Agent 办公工具"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,6 @@ makedepends=('asar'
 checkdepends=()
 optdepends=(
 	'nodejs-lts: frontend skills'
-	'ripgrep'
 	'gnome-shell-extension-appindicator'
 )
 provides=()
