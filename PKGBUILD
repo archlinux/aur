@@ -81,12 +81,8 @@ optdepends=(
   'zoxide: launcher recent-directory search'
 )
 # END GENERATED OPTIONAL DEPENDENCIES
-# Two notification daemons cannot share org.freedesktop.Notifications: it is a
-# first-come, first-served session bus name, and a pre-installed daemon usually
-# wins it by D-Bus activation before VGS ever registers, leaving the shell's
-# notification center permanently empty. VGS is a notification daemon, so it
-# declares that the way pacman understands it. `vshell notifications takeover`
-# handles a daemon installed some other way.
+# Another notification daemon can acquire org.freedesktop.Notifications
+# before VGS. Declare the conflict so VGS can receive session notifications.
 provides=('vgs-shell' 'notification-daemon')
 conflicts=('vgs-shell' 'notification-daemon' 'mako' 'swaync')
 source=('git+https://github.com/vanillagreencom/vgs.git')
