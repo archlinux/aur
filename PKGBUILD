@@ -288,7 +288,7 @@ _getelectron_raw() (
     exit 1;
 )
 
-# Like _getelectron_raw, but cached and overwrittable via
+# Like _getelectron_raw, but cached and overwritable via
 # _WEBCORD_ELECTRON_MAJOR.
 _getelectron() {
     if [ -z "$_WEBCORD_ELECTRON_MAJOR" ] &&
