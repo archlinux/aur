@@ -1,7 +1,7 @@
 pkgbase = caddy-trojan
 	pkgdesc = Fast web server with automatic HTTPS and trojan proxy support
 	pkgver = 2.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caddyserver.com
 	arch = x86_64
 	arch = aarch64
@@ -27,3 +27,4 @@ pkgbase = caddy-trojan
 	sha256sums = SKIP
 
 pkgname = caddy-trojan
+
