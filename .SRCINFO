@@ -8,7 +8,6 @@ pkgbase = tautulli
 	license = GPL
 	makedepends = curl
 	makedepends = python-setuptools
-	depends = python-pkg_resources
 	optdepends = python-pyopenssl: creating self signed certificates
 	optdepends = python-pycryptodomex: encrypting notifications to iOS/Android Tautulli Remote app
 	source = tautulli-2.18.1.tar.gz::https://github.com/Tautulli/Tautulli/archive/v2.18.1.tar.gz
