@@ -1,0 +1,20 @@
+pkgbase = arm-linux-gnueabihf-gcc-bin
+	pkgdesc = Cross GCC for the arm-linux-gnueabihf target (precompiled, split from ARM's official GNU toolchain release)
+	pkgver = 15.2.rel1.20251217
+	pkgrel = 1
+	url = https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = LGPL-2.1-or-later
+	license = GCC-exception-3.1
+	depends = arm-linux-gnueabihf-binutils
+	depends = arm-linux-gnueabihf-glibc
+	depends = arm-linux-gnueabihf-glibc-headers
+	provides = arm-linux-gnueabihf-gcc
+	conflicts = arm-linux-gnueabihf-gcc
+	options = !debug
+	options = !strip
+	source = https://developer.arm.com/-/media/Files/downloads/gnu/15.2.rel1/binrel/arm-gnu-toolchain-15.2.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz
+	sha256sums = f0a6c95a9eda555c6cff02f4aa7ca0a7744526e85ff0000dc45e5599c59002f0
+
+pkgname = arm-linux-gnueabihf-gcc-bin
