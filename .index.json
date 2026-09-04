@@ -1,6 +1,6 @@
 {
   ".i": 6,
   "crate": "hickory-dns",
-  "version": "0.26.1",
+  "version": "0.26.2",
   "pkgrel": 1
 }
