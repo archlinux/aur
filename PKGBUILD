@@ -5,12 +5,12 @@
 
 pkgname=ladybird
 pkgver=20260901
-pkgrel=1
+pkgrel=2
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
 url='https://github.com/LadybirdBrowser/ladybird'
 license=(BSD-2-Clause)
-depends=(curl ffmpeg libgl qt6-base qt6-multimedia ttf-liberation)
+depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-positioning ttf-liberation)
 makedepends=(autoconf-archive automake cargo cmake git libtool make nasm ninja patch pkg-config tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
