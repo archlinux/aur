@@ -7,7 +7,7 @@
 pkgname=tmog-appimage
 _pkgname=tmog-task-manager
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="TMOG brings the depth of a serious systems console to a native, focused task manager for macOS, Windows, and Linux.."
 arch=('x86_64')
 url="https://www.tmog.org/"
@@ -55,8 +55,11 @@ sha256sums=('0baf064697d67732800d6315644697ec153b8e506a5173304c85f330b2dbe6d2'
 )
 
 prepare() {
+
+    cd "${srcdir}"
+
   # Rename the downloaded file to the clean name
-  mv "${_appimage_filename}?v=${pkgver}-free" "${_appimage_filename}"
+  mv TMOG-Task-Manager-Linux-x86_64.AppImage?v=0.1.1-free TMOG-Task-Manager-Linux-x86_64.AppImage
     
   # 1. Make the AppImage executable and extract it
   chmod +x "${_appimage_filename}"
