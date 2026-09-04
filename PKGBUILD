@@ -1,13 +1,13 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 _name='trufflehog'
 pkgname="$_name-git"
-pkgver=3.96.0.r21.gd31c04eaf
+pkgver=3.97.4.r0.g363923b90
 pkgrel=1
 pkgdesc="Secrets scanner for repositories"
 arch=('x86_64' 'aarch64')
 url="https://trufflesecurity.com/$_name"
 license=('AGPL-3.0-only')
-provides=("$_name")
+provides=("$_name=$pkgver")
 conflicts=("$_name")
 depends=(
   'glibc'
