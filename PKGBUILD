@@ -4,7 +4,7 @@
 pkgname=gamebreaker
 pkgdesc="Simple graphics engine for C++"
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url="https://codeberg.org/elpoeprod/GameBreaker"
 license=(BSD-3)
@@ -17,6 +17,7 @@ md5sums=('8df1d4dcefd0104bcec54e612303f9b2')
 build(){
 	rename "gamebreaker" "GameBreaker-${pkgver}" "${srcdir}/gamebreaker"
 	cd "${srcdir}/GameBreaker-${pkgver}"
+	mkdir "build"
 	make
 }
 
