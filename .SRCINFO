@@ -1,6 +1,6 @@
 pkgbase = nym-vpnd-beta-bin
 	pkgdesc = NymVPN daemon (Beta)
-	pkgver = 2026.12.3
+	pkgver = 2026.12.4
 	pkgrel = 1
 	url = https://github.com/nymtech/nym-vpn-client
 	arch = x86_64
@@ -17,13 +17,13 @@ pkgbase = nym-vpnd-beta-bin
 	provides = nym-socks5-proxy
 	conflicts = nym-vpnd
 	options = !debug
-	source_x86_64 = nym-vpn-core-bin-x86_64.tar.gz::https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.12.3/nym-vpn-core-v2026.12.3_linux_x86_64.tar.gz
+	source_x86_64 = nym-vpn-core-bin-x86_64.tar.gz::https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.12.4-beta.1/nym-vpn-core-v2026.12.4-beta.1_linux_x86_64.tar.gz
 	source_x86_64 = nym-vpnd.service
-	b2sums_x86_64 = a06d3ba77d3041ca2dcbc209305f5a808961034f737e490bb144e26bf7427056b60f754cd81f232adf241f324ea2c7352cc41d1727af4b4dbb14af882ad75aa4
+	b2sums_x86_64 = 6b3f2425ffc6d153340a25878a2d58b61bf0ae456e87bc97616d84ab4571a51eb5df1223418343e6976c702e6ac8e70cc16155742ceeb03b9dcd0a0f8923b8a0
 	b2sums_x86_64 = ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414
-	source_aarch64 = nym-vpn-core-bin-aarch64.tar.gz::https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.12.3/nym-vpn-core-v2026.12.3_linux_aarch64.tar.gz
+	source_aarch64 = nym-vpn-core-bin-aarch64.tar.gz::https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.12.4-beta.1/nym-vpn-core-v2026.12.4-beta.1_linux_aarch64.tar.gz
 	source_aarch64 = nym-vpnd.service
-	b2sums_aarch64 = d6c5140907c5d0954530d6d579ef9aaa3c5b8753c94e7b1f72578c8c77bdfe6f42f918649a9415169616c895be6af92c2b803f34c15b6f81080369fc0bea374a
+	b2sums_aarch64 = 497f37d67ded69324ccdea4e819db1168b037320503ec62b0f49caf9922cd7f3172555b4481ee9fa4a1c6c4d1870eacdc4952351dfedf7a272bae17ba453b720
 	b2sums_aarch64 = ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414
 
 pkgname = nym-vpnd-beta-bin
