@@ -3,7 +3,7 @@
 
 pkgname=binaryninja-free
 _pkgname=binaryninja
-pkgver=5.3.9757
+pkgver=6.0.10601
 pkgrel=1
 pkgdesc="An interactive decompiler, disassembler, debugger, and binary analysis platform."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 	"${pkgname}.png"
 	"${pkgname}.desktop"
 )
-sha256sums=('60aaf7a05d149bb0fbca82d7fce162c6e4170d9e926e90e61162156c23f1c252'
+sha256sums=('3e8b9c5861abe6e9b04c86b5f9c4ad2dc86cedea79b72d7b0aee1fdcf7ce91d6'
             '4f318001e7d39279ce063ef42077bae03e95c112aa203a4be3ea3d913c34327e'
             '5bb9303307372e946f0fe0fcd328ca475bd0c951013f3f85206410f34ed59636')
 
