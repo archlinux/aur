@@ -33,10 +33,10 @@ package() {
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # Install man pages
-  install -Dm644 "$srcdir/../docs/man/mahoragaos.1" "$pkgdir/usr/share/man/man1/mahoragaos.1"
-  install -Dm644 "$srcdir/../docs/man/mahoragaos-ui.1" "$pkgdir/usr/share/man/man1/mahoragaos-ui.1"
+  # Install man pages (from source tarball)
+  install -Dm644 "docs/man/mahoragaos.1" "$pkgdir/usr/share/man/man1/mahoragaos.1"
+  install -Dm644 "docs/man/mahoragaos-ui.1" "$pkgdir/usr/share/man/man1/mahoragaos-ui.1"
 
-  # Install fish completion
+  # Install fish completion (from source repo)
   install -Dm644 "$srcdir/../share/fish/completions/mahoragaos.fish" "$pkgdir/usr/share/fish/completions/mahoragaos.fish"
 }
