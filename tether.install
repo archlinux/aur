@@ -14,12 +14,6 @@ To see exactly what is left, and the commands to run:
 
     tether --bt-setup
 
-WiFi needs inbound 5134/tcp, and 5353/udp for mDNS discovery. Profiles for ufw
-and firewalld are installed but NOT applied, for the same reason:
-
-    sudo ufw allow Tether
-    sudo firewall-cmd --permanent --add-service=tether && sudo firewall-cmd --reload
-
 MSG
 }
 
