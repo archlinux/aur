@@ -1,0 +1,9 @@
+post_install() {
+	echo "==> To enable vinput-daemon as a user service:"
+	echo "    systemctl --user enable --now vinput-daemon.service"
+}
+
+post_upgrade() {
+	echo "==> vinput-daemon updated. Restart the service if running:"
+	echo "    systemctl --user restart vinput-daemon.service"
+}

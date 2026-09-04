@@ -1,0 +1,24 @@
+pkgbase = fcitx5-vinput-lite-bin
+	pkgdesc = Voice input addon for Fcitx5, built without local ASR (binary release)
+	pkgver = 2.3.12
+	pkgrel = 1
+	url = https://github.com/xifan2333/fcitx5-vinput
+	install = fcitx5-vinput-lite-bin.install
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = curl
+	depends = fcitx5
+	depends = libarchive
+	depends = openssl
+	depends = pipewire
+	depends = qt6-base
+	depends = systemd-libs
+	provides = fcitx5-vinput
+	provides = fcitx5-vinput-bin
+	conflicts = fcitx5-vinput
+	conflicts = fcitx5-vinput-bin
+	options = !strip
+	source_x86_64 = fcitx5-vinput-lite-2.3.12-1-x86_64.pkg.tar.zst::https://github.com/xifan2333/fcitx5-vinput/releases/download/v2.3.12/fcitx5-vinput-lite-2.3.12-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 2dda7958e90347aed7a73ac5e3fd5289d1d0d0fedbe284548e80bf2b506ea972
+
+pkgname = fcitx5-vinput-lite-bin
