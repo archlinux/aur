@@ -1,0 +1,21 @@
+pkgbase = lgtm-bin
+	pkgdesc = Read what your coding agent just wrote, and point at the lines when you reply
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kunkka19xx/lgtm
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = git
+	optdepends = tmux: send references to an agent pane
+	provides = lgtm
+	conflicts = lgtm
+	conflicts = lgtm-git
+	source = lgtm-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/kunkka19xx/lgtm/v0.1.0/LICENSE
+	sha256sums = 4ad78f314cb0ba16242173bcdc62c17d81644345ea41d90d1b0a68ab3dd9f841
+	source_x86_64 = lgtm-bin-0.1.0-x86_64.tar.gz::https://github.com/kunkka19xx/lgtm/releases/download/v0.1.0/lgtm-x86_64-linux.tar.gz
+	sha256sums_x86_64 = eb79d2c8e20650cc04ea05749250c160eb409c78643dad391f2f50b90a3f77f7
+	source_aarch64 = lgtm-bin-0.1.0-aarch64.tar.gz::https://github.com/kunkka19xx/lgtm/releases/download/v0.1.0/lgtm-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 0654e6da944daf7e11545af4995651acfa2511bcee51450c1cc11254d3a8018d
+
+pkgname = lgtm-bin
