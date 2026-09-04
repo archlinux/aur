@@ -1,0 +1,3 @@
+[xepub]
+source = "git"
+git = "https://github.com/xapp-project/xepub.git"

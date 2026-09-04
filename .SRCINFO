@@ -1,0 +1,21 @@
+pkgbase = xepub
+	pkgdesc = Secure, comfortable, paginated EPUB reader
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xapp-project/xepub
+	arch = any
+	license = LicenseRef-unknown
+	checkdepends = desktop-file-utils
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = libsoup3
+	depends = python-gobject
+	depends = python-setproctitle
+	depends = python-xapp
+	depends = webkit2gtk-4.1
+	depends = xapp
+	source = git+https://github.com/xapp-project/xepub.git#tag=1.0.0
+	sha256sums = 4d698774aa6b1f56da80ea1225492c7fed629b00313e7c3dca2a14eb36f985b3
+
+pkgname = xepub
