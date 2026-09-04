@@ -2,7 +2,7 @@
 pkgname=ez2lazer-git
 url='https://github.com/SK-la/Ez2Lazer'
 pkgrel=1
-pkgver=2026.830.1.ez2lazer.r22.gcb67093d67
+pkgver=2026.830.1.ez2lazer.r23.gb86f7ebade
 pkgdesc='Ez to Lazer(Pursue the Ez2Ac style in the lazer)做一个炫酷的客户端'
 arch=("x86_64")
 license=("MIT")
@@ -20,7 +20,7 @@ source=(
     'osu-ez2lazer'
     'osu-ez2lazer.desktop'
     'lazer.png')
-
+conflicts=(ez2lazer ez2lazer-bin)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
