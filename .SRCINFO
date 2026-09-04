@@ -11,7 +11,7 @@ pkgbase = qwt-multiaxes-updated-git
 	depends = qt5-svg
 	depends = glibc
 	depends = gcc-libs
-	optdepends = qt5-tools: For Designer plugin
+	provides = qwt-multiaxes-git
 	conflicts = qwt-multiaxes-git
 	source = git+https://github.com/cseci/qwt.git#branch=qwt-multiaxes-updated
 	b2sums = SKIP

@@ -10,15 +10,13 @@ qt5-svg
 glibc
 gcc-libs
 )
-optdepends=(
-'qt5-tools: For Designer plugin'
-)
 makedepends=(
 git
 qt5-tools
 )
 license=('custom:qwt')
 conflicts=(qwt-multiaxes-git)
+provides=(qwt-multiaxes-git)
 source=("git+https://github.com/cseci/qwt.git#branch=qwt-multiaxes-updated")
 b2sums=('SKIP')
 
@@ -50,5 +48,5 @@ package() {
   install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   install -d "${pkgdir}/usr/lib"
-  ln -s /opt/qwt-multiaxes/usr/lib/libqwt.so.6.4.0 "${pkgdir}/usr/lib/libqwt.so.6.4.0"
+  ln -s /opt/qwt-multiaxes-updated/usr/lib/libqwt.so.6.4.0 "${pkgdir}/usr/lib/libqwt.so.6.4.0"
 }
