@@ -1,7 +1,7 @@
 # Maintainer: thenomadcode <thenomadcodeinfo@gmail.com>
 
 pkgname=stably-orca-bin
-pkgver=1.4.196
+pkgver=1.4.197
 pkgrel=1
 pkgdesc="Stably AI Orca - Electron-based agentic coding IDE (prebuilt AppImage)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
   'stably-orca.sh'
   'stably-orca.desktop'
 )
-sha256sums=('9abb595010afba8922b4a9e92fab99827ee43e97c1e14acbf6a6c2738aa9e12e'
+sha256sums=('4bc8462d151ff010faa54c646bb16dcc5474bf664eed5ec5028182d79926416b'
             '99a4d39e313a217f68cae6eb5e5437f2522da037b99de989291e34524484795c'
             '05728d7dfad97b6b8d6b10dc3859fff566334500e480df4c5c8372491cf4f172')
 noextract=("${pkgname}-${pkgver}.AppImage")
