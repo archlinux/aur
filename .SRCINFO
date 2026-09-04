@@ -1,0 +1,12 @@
+pkgbase = cal_nongli
+	pkgdesc = Chinese lunar calendar CLI: inspect a day or a month with lunar days, ganzhi, solar terms and traditional festivals
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/fpg2012/cal_nongli
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/fpg2012/cal_nongli/archive/v0.1.1.tar.gz
+	sha256sums = b091b2afa4ca2dbdb08370bdbbb97d0d38e2b6b38f1a20204aaf0e5c22bbfb45
+
+pkgname = cal_nongli
