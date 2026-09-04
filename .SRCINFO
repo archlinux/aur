@@ -1,6 +1,6 @@
 pkgbase = loquivox
 	pkgdesc = Voice-Assistant & AI Companion for Linux (push-to-talk voice dictation)
-	pkgver = 1.4.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Xhelliom/loquivox
 	arch = x86_64
@@ -34,9 +34,9 @@ pkgbase = loquivox
 	optdepends = gtk-layer-shell: overlay positioning (Wayland)
 	optdepends = python-openai: OpenAI realtime streaming backend
 	optdepends = python-deepgram-sdk: Deepgram streaming backend
-	source = loquivox-1.4.0.tar.gz::https://github.com/Xhelliom/loquivox/archive/refs/tags/v1.4.0.tar.gz
+	source = loquivox-2.0.0.tar.gz::https://github.com/Xhelliom/loquivox/archive/refs/tags/v2.0.0.tar.gz
 	source = whisper.cpp-1.8.6.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v1.8.6.tar.gz
-	sha256sums = d1bb5c2873e79c47a7054908673271153ca81c37f3747fad706ef16e6ffad40a
+	sha256sums = 9411bc1b5f381d0dbe97b906ee4a58de31a33f362aa39082372d95cfdddca4d0
 	sha256sums = f8e632016ceae556f3132a16c7f704be1e7715595041f474fa81a2b64c1abf7c
 
 pkgname = loquivox
