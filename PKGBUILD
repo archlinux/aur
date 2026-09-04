@@ -1,6 +1,6 @@
 # Maintainer: Nevimmu <nevimmu@gmail.com>
 pkgname=hyprfloat
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 epoch=
 pkgdesc="Float the terminal in empty workspace"
