@@ -1,6 +1,6 @@
 pkgbase = powershell-git
 	pkgdesc = A cross-platform automation and configuration tool/framework (git version)
-	pkgver = 7.7.0.preview.3.r11499.3d8a5af
+	pkgver = 7.7.0.preview.4.r14.g6ca24ccf02
 	pkgrel = 1
 	url = https://github.com/powershell/powershell
 	install = powershell.install
@@ -17,7 +17,7 @@ pkgbase = powershell-git
 	depends = zlib
 	depends = icu
 	depends = openssl-1.0
-	provides = powershell
+	provides = powershell=7.7.0.preview.4.r14.g6ca24ccf02
 	conflicts = powershell
 	options = staticlibs
 	options = !strip

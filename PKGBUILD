@@ -3,7 +3,7 @@
 
 _name='powershell'
 pkgname="$_name-git"
-pkgver=7.7.0.preview.3.r11499.3d8a5af
+pkgver=7.7.0.preview.4.r14.g6ca24ccf02
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ depends=(
   'icu'
   'openssl-1.0' # AUR
 )
-provides=("$_name")
+provides=("$_name=$pkgver")
 conflicts=("$_name")
 source=(
   "git+$url"
@@ -47,8 +47,7 @@ options=(staticlibs !strip)
 
 pkgver() {
   cd "$_name"
-  _tag="$(git tag -l 'v*' | tail -1 | sed 's/^v//;s/-/./g')"
-  printf "%s.r%s.%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -66,8 +65,8 @@ prepare() {
 
   ## Install specified version of dotnet and restore
   dotnet-install --jsonfile global.json
-  for proj in "." "src/TypeCatalogGen" "src/ResGen" "src/Modules" "tools/wix"; do
-    dotnet restore "$proj" -r linux-x64 -p:SDKToUse=Microsoft.NET.Sdk
+  for _proj in "." "src/TypeCatalogGen" "src/ResGen" "src/Modules" "tools/wix"; do
+    dotnet restore "$_proj" -r linux-x64 -p:SDKToUse=Microsoft.NET.Sdk
   done
   
   ## Setup the build target to gather dependency information
@@ -118,8 +117,7 @@ build() {
     -p:SDKToUse=Microsoft.NET.Sdk \
     --sc \
     -c Linux \
-    -r linux-x64 \
-    -o bin
+    -r linux-x64
 }
 
 check() {
@@ -136,18 +134,17 @@ check() {
 package() {
   export NUGET_PACKAGES="$srcdir/.nuget"
   cd "$_name"
-  _major=${pkgver:0:1}
   _dn="$(jq -r .sdk.version global.json | awk -F. '{print $1 ".0"}')"
-  mkdir -p "$pkgdir/opt/microsoft/$_name/$_major"
+  install -dm0755 "$pkgdir/usr/lib/$_name"
 
   # Modules
   _deps="$(grep PackageReference src/Modules/PSGalleryModules.csproj | awk -F\" '{print $2 ":" $4}')"
   for _dep in $_deps; do
     IFS=: read -r _mod _ver <<< $_dep
-    cp -r "$NUGET_PACKAGES/${_mod,,}/$_ver" "src/$_name-unix/bin/Linux/net$_dn/linux-x64/Modules/$_mod"
+    cp -r "$NUGET_PACKAGES/${_mod,,}/$_ver" "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/Modules/$_mod"
   done
 
-  find "src/$_name-unix/bin/Linux/net$_dn/linux-x64/Modules" \( \
+  find "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/Modules" \( \
     -name "*.nupkg" \
     -o -name "*.nupkg.sha512" \
     -o -name "*.nupkg.metadata" \
@@ -155,13 +152,13 @@ package() {
     -o -name "System.Runtime.InteropServices.RuntimeInformation.dll" \
   \) -delete
 
-  cp -ar "src/$_name-unix/bin/Linux/net$_dn/linux-x64/"* "$pkgdir/opt/microsoft/$_name/$_major"
+  cp -ar "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/"* "$pkgdir/usr/lib/$_name"
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
   mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/microsoft/$_name/$_major/pwsh" "$pkgdir/usr/bin/pwsh"
+  ln -s "/usr/lib/$_name/pwsh" "$pkgdir/usr/bin/pwsh"
   for lib in libssl libcrypto; do
-    ln -s "/usr/lib/$lib.so.1.0.0" "$pkgdir/opt/microsoft/$_name/$_major/$lib.so.1.0.0"
+    ln -s "/usr/lib/$lib.so.1.0.0" "$pkgdir/usr/lib/$_name/$lib.so.1.0.0"
   done
 }
 
