@@ -1,6 +1,6 @@
 pkgbase = jcvi
 	pkgdesc = Python utility libraries on genome assembly, annotation and comparative genomics
-	pkgver = 1.6.6
+	pkgver = 1.6.7
 	pkgrel = 1
 	url = https://github.com/tanghaibao/jcvi
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = jcvi
 	options = !strip
 	options = !debug
 	options = !emptydirs
-	source = jcvi-1.6.6.tar.gz::https://github.com/tanghaibao/jcvi/archive/v1.6.6.tar.gz
-	sha256sums = 5d2c3b372c2086dde0c5cfc69b60a3a6a781d955e22de3a87d84d63e184a098e
+	source = jcvi-1.6.7.tar.gz::https://github.com/tanghaibao/jcvi/archive/v1.6.7.tar.gz
+	sha256sums = d09ba7c8a378a965eaad734564f5736c03a527f70c9d874b0d3099cc8202eaaf
 
 pkgname = jcvi

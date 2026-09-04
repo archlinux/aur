@@ -1,7 +1,7 @@
 # Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
 
 pkgname=jcvi
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="Python utility libraries on genome assembly, annotation and comparative genomics"
 arch=('x86_64')
@@ -36,7 +36,7 @@ makedepends=(
 )
 options=('!strip' '!debug' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5d2c3b372c2086dde0c5cfc69b60a3a6a781d955e22de3a87d84d63e184a098e')
+sha256sums=('d09ba7c8a378a965eaad734564f5736c03a527f70c9d874b0d3099cc8202eaaf')
 
 _venv="/opt/$pkgname"
 
