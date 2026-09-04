@@ -11,13 +11,13 @@ url="https://github.com/ixnewton/org.kde.plasma.quicklaunch"
 license=(GPL-2.0-only GPL-3.0-only LicenseRef-KDE-Accepted-GPL)
 depends=(qt6-base
          qt6-declarative
-         kf6-config
-         kf6-coreaddons
-         kf6-ki18n
-         kf6-kio
-         kf6-service
-         kf6-iconthemes
-         kf6-jobwidgets
+         kconfig
+         kcoreaddons
+         ki18n
+         kio
+         kservice
+         kiconthemes
+         kjobwidgets
          plasma-activities)
 makedepends=(extra-cmake-modules
              cmake
