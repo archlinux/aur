@@ -1,13 +1,13 @@
 pkgbase = crunchyroll-downloader-bin
 	pkgdesc = Downloads anime from Crunchyroll and outputs them in a MKV file (precompiled binary)
-	pkgver = 1.4.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/CuteTenshii/crunchyroll-downloader
 	arch = x86_64
 	license = MIT
 	provides = crunchyroll-downloader
 	conflicts = crunchyroll-downloader
-	source = crdl-1.4.0::https://github.com/CuteTenshii/crunchyroll-downloader/releases/download/1.4.0/crdl-linux
-	sha256sums = d4cfe611a3dfedc65ce0f7949eb6494767063b5cfbd8d12a87c4ffad255aaf39
+	source = crdl-1.5.1::https://github.com/CuteTenshii/crunchyroll-downloader/releases/download/1.5.1/crdl-linux
+	sha256sums = 95fe72246d95a3dbb8d2a386de3722e6d18290fd1fea05fa1b36aad8c62d1286
 
 pkgname = crunchyroll-downloader-bin
