@@ -8,7 +8,7 @@ url="https://gitlab.com/Bingusfan360/MahoragaOS"
 license=('AGPL-3.0-or-later')
 depends=('python' 'pyside6' 'hicolor-icon-theme')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("$url/-/archive/v0.6.3-rc1/MahoragaOS-v0.6.3-rc1.tar.gz"
+source=("$url/-/archive/v0.6.3-RC1/MahoragaOS-v0.6.3-RC1.tar.gz"
         "mahoragaos.desktop"
         "mahoragaos.svg")
 sha256sums=('b50624e0f53d1a1755fedf6e5c6eec6a716cc54ebde4c35a05d40a19b04db282'
@@ -16,12 +16,12 @@ sha256sums=('b50624e0f53d1a1755fedf6e5c6eec6a716cc54ebde4c35a05d40a19b04db282'
             'SKIP')
 
 build() {
-  cd MahoragaOS-v0.6.3-rc1
+  cd MahoragaOS-v0.6.3-RC1
   /usr/bin/python -m build --wheel
 }
 
 package() {
-  cd MahoragaOS-v0.6.3-rc1
+  cd MahoragaOS-v0.6.3-RC1
   /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Install desktop file
