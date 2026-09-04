@@ -4,7 +4,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r9850
+pkgver=r9875
 pkgrel=1
 pkgdesc="Digital DJ mixing software (latest development branch)."
 arch=('i686' 'x86_64' 'aarch64')
@@ -80,6 +80,7 @@ pkgver() {
 }
 
 build() {
+	local ccache_support=$(hash ccache 2>/dev/null && echo -n "ON" || echo -n "OFF")
 	local cmake_options=(
 		-B build
 		-D CMAKE_LINKER_TYPE=BFD
@@ -87,7 +88,7 @@ build() {
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D BUILD_BENCH=OFF
 		-D OPTIMIZE=native
-		-D CCACHE_SUPPORT=ON
+		-D CCACHE_SUPPORT="${ccache_support}"
 		-D CMAKE_C_FLAGS='-O2'
 		-D CMAKE_C_FLAGS_RELEASE='-DNDEBUG'
 		-D CMAKE_C_FLAGS_RELWITHDEBINFO='-g -DNDEBUG'
@@ -96,7 +97,7 @@ build() {
 		# TODO: I'd like to do this, but libshout-idjc in the AUR Is old?
 		# -D FETCHCONTENT_FULLY_DISCONNECTED=ON
 		-S mixxx
-		-W no-dev
+		-W no-author
 	)
 
 	export QT_NO_PRIVATE_MODULE_WARNING=ON
