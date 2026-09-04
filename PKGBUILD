@@ -2,7 +2,7 @@
 
 pkgname=elph-nova-bin
 _pkgname=elph-nova
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A corporate communications hub designed for effective collaboration with colleagues"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://archive.eltex-co.ru/repository/elph-services-raw/${_pkgname}/${pkgver}/linux/${_pkgname}-${pkgver}-linux-x64.deb")
-sha256sums=('25f8c93fb47031be752dada443b3839a27da9b4eeb68f4ba31e6928fe34df3fc')
+sha256sums=('b9b15e84dc3bdbd364546a90099845c212c7fb442e1693c7f77c1d3d570bdd6c')
 
 prepare() {
   tar -xvf data.tar.xz
