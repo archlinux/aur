@@ -1,7 +1,7 @@
 pkgbase = python-qsnctf
 	pkgdesc = 青少年 CTF 训练平台提供的 Python 软件包
 	pkgver = 0.0.10
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Moxin1044/qsnctf-python
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-qsnctf
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	depends = python-pyexecjs
+	depends = python-exejs
 	depends = python-base58
 	depends = python-requests
 	depends = python-beautifulsoup4

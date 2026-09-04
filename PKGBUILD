@@ -3,7 +3,7 @@
 pkgname=python-qsnctf
 _name=${pkgname#python-}
 pkgver=0.0.10
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="青少年 CTF 训练平台提供的 Python 软件包"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 groups=()
 depends=(
     python
-    python-pyexecjs
+    python-exejs
     python-base58
     python-requests
     python-beautifulsoup4
