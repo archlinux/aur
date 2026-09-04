@@ -1,0 +1,22 @@
+pkgbase = scanmem-rs-git
+	pkgdesc = Rust rewrite of scanmem/GameConqueror: process memory scanner and editor
+	pkgver = r49.ge3a3e39
+	pkgrel = 1
+	url = https://github.com/Gigas002/scanmem-rs
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	license = LGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = scanmem
+	provides = gameconqueror
+	provides = libscanmem
+	conflicts = scanmem
+	conflicts = gameconqueror
+	conflicts = libscanmem
+	source = scanmem-rs::git+https://github.com/Gigas002/scanmem-rs.git
+	sha256sums = SKIP
+
+pkgname = scanmem-rs-git
