@@ -1,7 +1,7 @@
 pkgbase = gaia-amd
 	pkgdesc = AI-powered inference engine for AMD hardware
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amd/gaia
 	arch = x86_64
 	license = MIT
@@ -52,7 +52,7 @@ pkgbase = gaia-amd
 	depends = python-faiss
 	depends = python-sentence-transformers
 	depends = python-transformers
-	depends = python-tokenizers<0.23
+	depends = python-tokenizers
 	depends = python-accelerate
 	depends = python-aiodns
 	depends = python-openai

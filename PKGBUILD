@@ -2,7 +2,7 @@
 
 pkgname=(gaia-amd gaia-amd-webui)
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered inference engine for AMD hardware"
 arch=(x86_64)
 url="https://github.com/amd/gaia"
@@ -50,7 +50,7 @@ depends=(
     python-faiss
     python-sentence-transformers
     python-transformers
-    'python-tokenizers<0.23'  # python-transformers fails to build against tokenizers 0.23+
+    python-tokenizers
     python-accelerate
     python-aiodns
     python-openai
