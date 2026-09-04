@@ -19,9 +19,11 @@ _gdrive_neonover="1bGV0IZgL57eW8bgaAotXArKKn_ETf6LU"    # NeonOver Addon.pk3
 
 latestver() {
     local _page
-    _page=$(curl -fsSL \
-        -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
-        "$url")
+    # Doomworld sits behind Cloudflare bot management and its verdict on a given
+    # User-Agent has already inverted once: bare curl was blocked in 2026-04, the
+    # spoofed Chrome UA was challenged in 2026-09. Try both rather than bet on either.
+    local _chrome_ua="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    _page=$(curl -fsSL "$url") || _page=$(curl -fsSL -A "$_chrome_ua" "$url") || return 1
     python3 -c 'import re, sys
 m = re.search(r"Updated ([0-9]{1,2})/([0-9]{1,2})/([0-9]{2})", sys.stdin.read())
 if not m:
