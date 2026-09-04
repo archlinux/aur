@@ -1,6 +1,6 @@
 pkgbase = shotdock
-	pkgdesc = Modern floating screenshot and screen recording toolbar for Wayland
-	pkgver = 0.1.1
+	pkgdesc = Modern floating screenshot and 4K screen recording dock for Wayland compositors
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/sirrryasir/shotdock
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = shotdock
 	optdepends = tesseract-data-eng: English language support for OCR
 	optdepends = wf-recorder: Screen and region video recording
 	optdepends = swappy: Screenshot annotation editor
-	source = shotdock-0.1.1.tar.gz::https://github.com/sirrryasir/shotdock/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = e683311ddcc67aebbb73db1ae502f0b9ee6fd8751eae82e129e1c80fd0697450
+	source = shotdock-0.1.2.tar.gz::https://github.com/sirrryasir/shotdock/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 6e76ebbce793c6fa400aeeced6cc23e4c364b7fb43c6f9ceac4255d2df6ea10c
 
 pkgname = shotdock
