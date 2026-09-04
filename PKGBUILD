@@ -8,7 +8,7 @@
 _pkgbase=wireshark
 pkgbase=wireshark-oqs
 pkgname=(wireshark-oqs-cli wireshark-oqs-qt)
-pkgver=4.7.2
+pkgver=4.7.3
 pkgrel=1
 _pkgver_oqs=0.11.0
 _commit_oqs_demos=29d4dccbd547a62e8ba77d3fef1af5d6f8625d60
@@ -76,7 +76,7 @@ source=(
   https://raw.githubusercontent.com/open-quantum-safe/oqs-demos/$_commit_oqs_demos/wireshark/generate_qsc_header.py
   wireshark.sysusers
 )
-b2sums=('8d1824d0e8ffefd953e6c2f762c4ffccf10994789deaba31f0b039127b393e422d315037dfe9b154b2bc40a68d6e56970c9d51bdb41f053bdad58b4c0f8bf5b5'
+b2sums=('b5fa585f3d7c122056282ff5d543d28eca5e6eff20c025d9bb35f4521b8204c6aa9f59f2bf8a8192040e89da24b3f19c751cad29dc6502c83d80a44844dfaa2c'
         'df5b81c3c4852de30878d4ea2fa0d9cec6d64a7527bd82523e1196d2df3952c05981d334f7472a369ab52f240f0321fb95130320de030d6c5846133fc49c76de'
         '8061cdb5ddce084be6566b57bf21f9281ff9cb7ffd986c1968d60e46624afb1a6e9aff02bf0cf065a89b868bc6ab5ceb5c222c1a7913d06db79ee778593a2997'
         '15e4cfa9626dc6f4b0dff7096f7610791ba9b186fa21855a5203bbeb03c27afbe86e876f3dd0a7f7b6f79cb221c896beec344de0701b6ecd86ad40f318bf9019'
