@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=24.0.0_r589763.bb17e718bc41
+pkgver=24.0.0_r595745.d4aa8a934cc8
 pkgrel=1
 pkgdesc="OpenCL C library used by rusticl and including downstream patches by mesa"
 arch=('any')
@@ -20,6 +20,7 @@ source=("git+https://github.com/llvm/llvm-project.git"
         "03-libclc:restore-old-fma-behavior.patch::$_fork/-/commit/f55c425b7277bc7178729a4c4335a5ec404d03dc.patch"
         "04-libclc:disable-fp16-version-of-atan2-and-atan2pi.patch::$_fork/-/commit/cd0452f7a695165706fe5df85073f86baa46abd4.patch"
         "05-libclc:Revert-libclc:-Update-hypot-implementation-PR185873.patch::$_fork/-/commit/931f02ef3281fa7bcf14362a7f90edec40825aaf.patch"
+        "06a-libclc:revert-Fix-remainder-calculation-in-clc_remquo-for-subnormals.patch::https://github.com/llvm/llvm-project/commit/71a85ef89fc1997205104b72447e0dc2c4ad83da.patch"
         "06-libclc:Revert-libclc:-Update-remquo-PR187998.patch::$_fork/-/commit/9b54a3b2c09228b3c3269c5c62ca2f3128ec6501.patch"
         "07-libclc:Partly-revert-libclc:-Update-trigpi-functions-PR187579.patch::$_fork/-/commit/1e379e04c3fc1457a80d47e0da2a6e242237094c.patch"
         "08-libclc:fix-tgamma-precision-issues-due-to-lack-of-fma.patch::$_fork/-/commit/298976d4ddad1c7e0472647bcb50e1336a1bfd1a.patch"
@@ -31,6 +32,7 @@ sha256sums=('SKIP'
             '7b54ce33e03634f1082d91fd998f807a1064f5bac479474ae91704acecc2c7ee'
             '98e68305aa73e62348d2510fe8c91350b75201e56b272f3cae99e9bc91302394'
             'e4487f8224a4f0fe5353135d6ddd3e2c904abfc160ae6b0e5e85982df6eaa8c2'
+            '11da0d3f6cb42e18a98327cbbc69729c757f22406fd279627847532dd7c19762'
             '299fe7d29f75a37703d85e75caf665349ed29bb971b6d59dbed32d96ee1612d4'
             'dfa49da934bf7f7cd65be8610d386c7ee47ff89377774e6f5fc4d9497646bd73'
             '8c42ab24d109a469d129e77cc2709c3099700f662061eb3e20faf6e66eb0ca07')
@@ -61,6 +63,7 @@ prepare() {
   patch -Np1 -i "$srcdir"/03-libclc:restore-old-fma-behavior.patch
   patch -Np1 -i "$srcdir"/04-libclc:disable-fp16-version-of-atan2-and-atan2pi.patch
   patch -Np1 -i "$srcdir"/05-libclc:Revert-libclc:-Update-hypot-implementation-PR185873.patch
+  patch -Rp2 -i "$srcdir"/06a-libclc:revert-Fix-remainder-calculation-in-clc_remquo-for-subnormals.patch
   patch -Np1 -i "$srcdir"/06-libclc:Revert-libclc:-Update-remquo-PR187998.patch
   patch -Np1 -i "$srcdir"/07-libclc:Partly-revert-libclc:-Update-trigpi-functions-PR187579.patch
   patch -Np1 -i "$srcdir"/08-libclc:fix-tgamma-precision-issues-due-to-lack-of-fma.patch
