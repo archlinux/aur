@@ -1,0 +1,49 @@
+pkgbase = ros2-jazzy-bond_core
+	pkgdesc = A bond allows two processes, A and B, to know when the other has terminated
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://index.ros.org/p/bond/
+	arch = x86_64
+	license = BSD-3-Clause
+	license = MPL-1.1
+	makedepends = cmake
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = ros2-jazzy
+	source = ros2-jazzy-bond_core-4.2.0.tar.gz::https://github.com/ros/bond_core/archive/refs/tags/4.2.0.tar.gz
+	sha256sums = 40eb58edb084fea0f1ecf191254c5062a406d667dfc9863b3c3491d7d4f115d5
+
+pkgname = ros2-jazzy-bond
+	pkgdesc = Message and service definitions for bond
+	license = BSD-3-Clause
+	depends = ros2-jazzy
+
+pkgname = ros2-jazzy-smclib
+	pkgdesc = The State Machine Compiler runtime library
+	license = MPL-1.1
+	depends = ros2-jazzy
+
+pkgname = ros2-jazzy-bondcpp
+	pkgdesc = C++ implementation of bond
+	license = BSD-3-Clause
+	depends = ros2-jazzy
+	depends = ros2-jazzy-bond
+	depends = ros2-jazzy-smclib
+
+pkgname = ros2-jazzy-bondpy
+	pkgdesc = Python implementation of bond
+	license = BSD-3-Clause
+	depends = ros2-jazzy
+	depends = ros2-jazzy-bond
+	depends = ros2-jazzy-smclib
+	depends = python
+
+pkgname = ros2-jazzy-bond_core
+	pkgdesc = Metapackage pulling in the full bond_core stack
+	license = BSD-3-Clause
+	depends = ros2-jazzy-bond
+	depends = ros2-jazzy-bondcpp
+	depends = ros2-jazzy-bondpy
+	depends = ros2-jazzy-smclib
