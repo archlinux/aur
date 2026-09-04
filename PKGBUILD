@@ -1,7 +1,7 @@
 # Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
 
 pkgname='docling'
-pkgver='2.124.0'
+pkgver='2.125.0'
 pkgrel=1
 pkgdesc='Document processing toolkit for converting diverse formats into structured data'
 url="https://github.com/docling-project/${pkgname}"
@@ -15,7 +15,7 @@ depends=(
 	'python-scipy>=1.6.0'
 	'python-pypdfium2>=4.30.2'
 	'python-docling-parse>=7.16.0'
-	'python-docling-ibm-models>=3.13.0'
+	'python-docling-ibm-models>=4.0.2'
 	'python-pytorch>=2.2.2'
 	'python-torchvision'
 	'python-transformers>=5.4.0'
@@ -31,7 +31,11 @@ makedepends=(
 	'python-hatchling'
 	'python-wheel'
 )
-checkdepends=('python-pytest')
+checkdepends=(
+	'python-pytest'
+	'python-httpx>=0.28'
+	'python-websockets>=14.0'
+)
 optdepends=(
 	'python-polyfactory>=2.22.2: document extraction support'
 	'python-docx>=1.2.0: DOCX input support'
@@ -64,8 +68,8 @@ source=(
 	'slim_meta_package.patch'
 )
 b2sums=(
-	'9b6c7073f0bc717912651b5470f250d66ff31c68959cb326ad99ffde5072d19807987e4bf9f350429edb770884806ff6f7f6473ebd58aae7dfbf2f4e4c10776f'
-	'e6c79790e889f4dd0c2cab096287a8b9feddf9eb39e935459f79e8ae35799957e4d9380ef7758d2d19ee9e91b82ed0b60d05f5edb62c9c4a42614fdba2210bfe'
+	'49084628f6f192ef7b8e3d917ca1dc1960f8626539befc80e06ce18643526f6f82b47e90bcdd1ec371fd6a0aba7135e13276692fd0f475dab0368456556cb6b1'
+	'9acf6469b52b7ba242d32171e0bcfdb26c4df91b9071b66c74b8891aa4a1e4faf5d7c3b49acd1e256a7c255cd75a72532ae3419e4bf0d551afb105f36a3ff8d4'
 )
 
 prepare() {
@@ -106,6 +110,8 @@ check() {
 			tests/test_cli.py::test_cli_invalid_ocr_mode_is_rejected \
 			tests/test_cli.py::test_cli_page_range_accepts_single_page \
 			tests/test_cli.py::test_cli_invalid_page_range_is_rejected \
+			tests/test_cli.py::test_cli_allow_external_plugins_reaches_asr_pipeline_options \
+			tests/test_cli.py::test_cli_asr_pipeline_options_default_to_false \
 			tests/test_cli_tools.py::test_tools_help_lists_models_subcommand \
 			tests/test_cli_tools.py::test_tools_without_arguments_shows_help \
 			tests/test_cli_tools.py::test_models_without_arguments_shows_help
