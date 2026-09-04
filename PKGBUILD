@@ -14,7 +14,8 @@ optdepends=('fuse3: for copying files from an RDP connection'
             'lsof'
             'org.freedesktop.secrets: secret storage backend'
             'xdotool: for executing typing macros'
-            'openal')
+            'openal'
+            'libfido2')
 options=(!strip)
 install=${pkgname}.install
 source=("RemoteDesktopManager_${pkgver}_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/${pkgver}/RemoteDesktopManager_${pkgver}_amd64.deb")

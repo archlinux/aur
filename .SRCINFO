@@ -17,6 +17,7 @@ pkgbase = remote-desktop-manager
 	optdepends = org.freedesktop.secrets: secret storage backend
 	optdepends = xdotool: for executing typing macros
 	optdepends = openal
+	optdepends = libfido2
 	options = !strip
 	source = RemoteDesktopManager_2026.2.2.2_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/2026.2.2.2/RemoteDesktopManager_2026.2.2.2_amd64.deb
 	sha256sums = 2A61BE1E0357B3FF96E19EF32EBE696249A7427DC570E8DA449CC52A5405CF4E
