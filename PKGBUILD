@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=lenovo-wwan-unlock
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="FCC and DPR unlock for Lenovo PCs"
 arch=(x86_64)
 url=https://github.com/lenovo/lenovo-wwan-unlock

@@ -1,7 +1,7 @@
 pkgbase = lenovo-wwan-unlock
 	pkgdesc = FCC and DPR unlock for Lenovo PCs
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lenovo/lenovo-wwan-unlock
 	install = lenovo-wwan-unlock.install
 	arch = x86_64
