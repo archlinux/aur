@@ -1,0 +1,38 @@
+pkgbase = libgourou
+	pkgdesc = Free implementation of Adobe's ADEPT protocol used to add DRM on ePub/PDF files
+	pkgver = 0.8.10
+	pkgrel = 1
+	url = https://forge.soutade.fr/soutade/libgourou
+	arch = any
+	license = LGPL-3.0-or-later AND BSD-3-Clause
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = updfparser
+	depends = pugixml
+	depends = curl
+	depends = openssl>=3
+	depends = libzip
+	depends = zlib
+	source = libgourou-0.8.10.tar.gz::https://forge.soutade.fr/soutade/libgourou/archive/v0.8.10.tar.gz
+	sha256sums = 4ea8d614b6731b9c3b5280196a4b94f8a588cb932f2ed7d27cf05c18c969f099
+
+pkgname = libgourou
+	license = LGPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = updfparser
+	depends = pugixml
+
+pkgname = libgourou-utils
+	license = BSD-3-Clause
+	depends = libgourou
+	depends = pugixml
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = curl
+	depends = openssl>=3
+	depends = libzip
+	depends = zlib
