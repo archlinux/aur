@@ -55,31 +55,33 @@ sha256sums=('0baf064697d67732800d6315644697ec153b8e506a5173304c85f330b2dbe6d2'
 )
 
 prepare() {
-
-  mv TMOG-Task-Manager-Linux-x86_64.AppImage?v=0.1.1-free TMOG-Task-Manager-Linux-x86_64.AppImage
+  # Rename the downloaded file to the clean name
+  mv "${_appimage_filename}?v=${pkgver}-free" "${_appimage_filename}"
     
-  # 1. Make the AppImage executable and extract it
+  # 1. Make it executable
   chmod +x "${_appimage_filename}"
-  ./"${_appimage_filename}" --appimage-extract
 
-  # 2. Setup directory structure inside squashfs-root for the build process
+  # 2. Extract WITHOUT FUSE using bsdtar (standard in Arch)
+  # This avoids the need for /dev/fuse which is unavailable in AUR builds
+  bsdtar -xf "${_appimage_filename}" --output "squashfs-root"
+
+  # 3. Setup directory structure
   mkdir -p "${srcdir}/squashfs-root/assets/icons/"
   mkdir -p "${srcdir}/squashfs-root/assets/launchers/"
 
-  # 3. Move the icon and desktop file to a known location for easy installation
-  # Note: We check if they exist to prevent build failure if names differ
-  if [ -f "${_icon_file}" ]; then
-    cp "${_icon_file}" "squashfs-root/assets/icons/${_icon_file}"
+  # 4. Move the icon (Note the added 'fi' and use of ${srcdir})
+  if [ -f "${srcdir}/${_icon_file}" ]; then
+    cp "${srcdir}/${_icon_file}" "${srcdir}/squashfs-root/assets/icons/${_icon_file}"
   fi
 
-  if [ -f "squashfs-root/${_desktop_file}" ]; then
-    cp "squashfs-root/${_desktop_file}" "squashfs-root/assets/launchers/${_desktop_file}"
-
-  # 4. CRITICAL: Rewrite the .desktop file to point to new path
-  #    This rewrites the 'Exec' line so it will execute the AppImage from /opt/appimages/
-  #    If the .desktop and svg files will be provided in the PKGBUILD directory, comment out the next two lines that start with "desktop-file-edit".
-    desktop-file-edit --set-key=Exec --set-value="${_install_path} %U" "squashfs-root/assets/launchers/${_desktop_file}"
-    desktop-file-edit --set-key=TryExec --set-value="${_install_path}" "squashfs-root/assets/launchers/${_desktop_file}"
+  # 5. Rewrite the .desktop file
+  if [ -f "${srcdir}/squashfs-root/${_desktop_file}" ]; then
+    cp "${srcdir}/squashfs-root/${_desktop_file}" "${srcdir}/squashfs-root/assets/launchers/${_desktop_file}"
+    
+    desktop-file-edit --set-key=Exec --set-value="${_install_path} %U" \
+      "${srcdir}/squashfs-root/assets/launchers/${_desktop_file}"
+    desktop-file-edit --set-key=TryExec --set-value="${_install_path}" \
+      "${srcdir}/squashfs-root/assets/launchers/${_desktop_file}"
   fi
 }
 
