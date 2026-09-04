@@ -1,5 +1,4 @@
 [zuban]
-source = "github"
-github = "zubanls/zuban"
-use_max_tag = true
+source = "git"
+git = "https://github.com/zubanls/zuban.git"
 prefix = "v"
