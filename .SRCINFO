@@ -1,7 +1,7 @@
 pkgbase = derg-clock-popup
 	pkgdesc = An animated popup window telling the current time
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZenithCrow/derg-clock-popup
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = derg-clock-popup
 	depends = sdl3_ttf
 	depends = sdl3_image
 	depends = glibc
-	source = derg-clock-popup-1.0.2.tar.gz::https://github.com/ZenithCrow/derg-clock-popup/archive/refs/tags/v1.0.4.tar.gz
+	source = derg-clock-popup-1.0.4.tar.gz::https://github.com/ZenithCrow/derg-clock-popup/archive/refs/tags/v1.0.4.tar.gz
 	sha256sums = 3794165d424a0b5ec1bcfffd941dddf1793443f62456e013cf7f8442a63b563d
 
 pkgname = derg-clock-popup
