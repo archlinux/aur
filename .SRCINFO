@@ -1,0 +1,16 @@
+pkgbase = numeron
+	pkgdesc = Resumable hardware-aware calculator for pi, e, RSA factoring, and more
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Aspenini/numeron
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	optdepends = nvidia-utils: NVIDIA GPU detection
+	source = numeron::git+https://github.com/Aspenini/numeron.git#tag=v0.2.0
+	b2sums = SKIP
+
+pkgname = numeron
