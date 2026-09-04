@@ -1,8 +1,8 @@
 # Maintainer: jmx4013 <jmx4013@proton.me>
 
 pkgname=fushi
-pkgver=2.1.1
-pkgrel=3
+pkgver=2.2.4
+pkgrel=1
 pkgdesc='Immersion language-learning suite: EPUB reader, video subtitle lookup, audiobook sync, and one-tap Anki mining'
 arch=('x86_64')
 url='https://github.com/hajisensai/Fushi'
@@ -10,18 +10,30 @@ license=('GPL-3.0-or-later')
 depends=('gtk3' 'libkeybinder3' 'mpv')
 makedepends=('clang' 'cmake' 'ninja' 'pkg-config' 'unzip')
 optdepends=('qbittorrent: fallback torrent engine when the bundled libtorrent is unavailable')
-source=("https://github.com/hajisensai/Fushi/archive/refs/tags/v${pkgver}.tar.gz#/fushi-${pkgver}.tar.gz"
+source=("https://github.com/hajisensai/Fushi/archive/refs/tags/v2.2.4.tar.gz#/fushi-2.2.4.tar.gz"
         'https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.44.0-stable.tar.xz'
         'fix-hoshidicts-includes.patch'
+        'gamepads-skip-virtual-mouse.patch'
         'fushi.desktop')
-sha256sums=('540e087ecdf33293a5cd8329049fcc7b05da5337429eb6db68ef650cbbaa4844'
+sha256sums=('de8ce41690c1af2dacf297ca98fc0c1cc0a3c3d9988d8738766758e90fd64947'
             'e1ec95e6c550458a34de93580cb85dac24da0e9bedb9bb42811f050ac5a0c7d5'
             'ebaa703fe2bf866265c01d47e2bb2bf1195b654fce98fe7ad3ced2dfd8c81038'
+            '415da7760cf9b9bb4212f99bd351aa60100dd75657a48fec21b88f27a0001b08'
             'd433c22716392af6845ad58ec5b243487c21076a7b1017d704ef84b14909afaf')
 
 prepare() {
   cd "${srcdir}/Fushi-${pkgver}"
   patch -p1 -i "${srcdir}/fix-hoshidicts-includes.patch"
+}
+
+# LOCAL-only: skip virtual-mouse js devices (Flix/libvirtualhid) so Fushi does
+# not treat them as a jammed gamepad stick. NOT pushed to AUR (machine-specific).
+patch_pub_cache_gamepads() {
+  local pkg="${srcdir}/pub-cache/hosted/pub.dev/gamepads_linux-0.1.2"
+  if grep -q 'Skipping non-gamepad' "${pkg}/linux/gamepad.cc"; then
+    return
+  fi
+  (cd "${pkg}" && patch -p1 -i "${srcdir}/gamepads-skip-virtual-mouse.patch")
 }
 
 # Project is locked to Flutter 3.44.0 (the AUR flutter package is a different,
@@ -36,13 +48,14 @@ prepare() {
 # to mirror the official desktop release: version=<pkgver>, build_number=9116
 # (the releaseSequence of v2.1.1's latest-stable.json, which the in-app updater
 # compares). Bump _release_seq together with pkgver when updating.
-_release_seq=9116
+_release_seq=13362
 build() {
   export FLUTTER_ROOT="${srcdir}/flutter"
   export PATH="${FLUTTER_ROOT}/bin:${PATH}"
   export PUB_CACHE="${srcdir}/pub-cache"
   cd "${srcdir}/Fushi-${pkgver}"
   bash tool/bootstrap.sh
+  patch_pub_cache_gamepads
   cd hibiki
   flutter build linux --release
 }
