@@ -2,7 +2,7 @@
 
 pkgname=vectorscan
 pkgver=5.4.13
-pkgrel=4
+pkgrel=5
 pkgdesc='Portable fork of hyperscan regular expression matching library'
 arch=(x86_64)
 url=https://github.com/VectorCamp/vectorscan
@@ -29,7 +29,7 @@ source=(
   "fix-makefile-for-documentation.patch"
 )
 b2sums=('7d229b100e99d1b4dae0d62d5449074f0a0b7166e2c183db0641adaec38fad4f216dea22b550802e203afc065175d0a4656c770d9405a03363a2586776da9ff8'
-        '7eb66ca01dd52a0375fed40cb215cc42fc4901e47eff09d19796e38e0caa9bfbe74d0c80aaeaa03cc6ba783e0d9687f38932542a1fbd3bf6e4b1212e887e688d')
+        'b9d0fb1559a050ca0d4210b9587618e469303dc0044c6ccf289c5bfecb8ab03b268de6d3b8005eb042ceaaab1335ed1dbe3b2434a4b8409b58782080193dd382')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
@@ -44,6 +44,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_DOCS=OFF \
     -Wno-author
   cmake --build build
 }
