@@ -2,7 +2,7 @@
 
 pkgbase=ruri-git
 pkgname=ruri-git
-pkgver=3.9.4.rc2.r94.g03fe9a0
+pkgver=3.9.5.r0.gc4e442d
 pkgrel=1
 pkgdesc="A zipped Linux container runtime that zips (Lightweight User-friendly Linux-container Implementation)"
 arch=($CARCH)
@@ -32,7 +32,7 @@ pkgver() {
     cd "${srcdir}/${pkgname}"
     (
         set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/-rc/+rc/g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
@@ -47,7 +47,7 @@ build() {
     cmake -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_C_FLAGS="-Wno-error=format-security -Wno-error=unused-result" \
-        -Wno-dev \
+        -Wno-author \
         -B build \
         -G Ninja
 
