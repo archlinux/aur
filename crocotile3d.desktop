@@ -5,6 +5,7 @@ Name=Crocotile 3D
 Name[en_US]=Crocotile 3D
 Comment=Tile-based 3D modeling application
 Comment[en_US]=Tile-based 3D modeling application
+MimeType=application/x-crocotile3d;
 Exec=crocotile3d
 Icon=crocotile3d
 Terminal=false
