@@ -1,19 +1,21 @@
 pkgbase = metadata
-	pkgdesc = Qt 6 metadata editor with Office and OpenDocument support
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgdesc = Qt 6 metadata editor with MP3, Office and OpenDocument support
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/yousefvand/metadata
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = pkgconf
 	depends = qt6-base
 	depends = libzip
+	depends = taglib
 	depends = perl-image-exiftool
 	depends = qpdf
 	depends = hicolor-icon-theme
 	optdepends = dolphin: Show metadata context-menu integration
-	source = metadata-0.3.0.tar.gz::https://github.com/yousefvand/metadata/archive/refs/tags/0.3.0.tar.gz
-	sha256sums = a64b4e02b514aa0fccd6e1cb0b61202b910278b2fb40934e3ab23914fb65faf9
+	source = metadata-0.4.0.tar.gz::https://github.com/yousefvand/metadata/archive/refs/tags/0.4.0.tar.gz
+	sha256sums = 5d3cac8e98ba6d7d3b2f3abce51af875644407200ae4ea77db65a6b56a6d579b
 
 pkgname = metadata

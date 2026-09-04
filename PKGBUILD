@@ -1,22 +1,22 @@
 # Maintainer: Remisa Phillips <remisa.yousefvand@gmail.com>
 pkgname=metadata
-pkgver=0.3.0
-pkgrel=2
-_tag='0.3.0'
-pkgdesc='Qt 6 metadata editor with Office and OpenDocument support'
+pkgver=0.4.0
+pkgrel=1
+_tag='0.4.0'
+pkgdesc='Qt 6 metadata editor with MP3, Office and OpenDocument support'
 arch=('x86_64')
 url='https://github.com/yousefvand/metadata'
 license=('MIT')
-depends=('qt6-base' 'libzip' 'perl-image-exiftool' 'qpdf' 'hicolor-icon-theme')
+depends=('qt6-base' 'libzip' 'taglib' 'perl-image-exiftool' 'qpdf' 'hicolor-icon-theme')
 optdepends=('dolphin: Show metadata context-menu integration')
-makedepends=('cmake' 'ninja')
+makedepends=('cmake' 'ninja' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('a64b4e02b514aa0fccd6e1cb0b61202b910278b2fb40934e3ab23914fb65faf9')
+sha256sums=('5d3cac8e98ba6d7d3b2f3abce51af875644407200ae4ea77db65a6b56a6d579b')
 
 prepare() {
     cd "metadata-${_tag}"
-    # Keep the published 0.3.0 tag immutable and correct the original generic
-    # Dolphin action icon at package-build time.
+    # Keep release sources immutable while ensuring the Dolphin action uses
+    # the application icon.
     sed -i 's/^Icon=document-properties$/Icon=io.github.yousefvand.metadata/' \
         integration/dolphin/metadata-show.desktop
 }
