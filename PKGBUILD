@@ -7,7 +7,7 @@
 ### PKGBUILD METADATA ###
 
 pkgname=webcord-git
-pkgver=4.13.0.r1048.69cf4c5
+pkgver=4.14.0.r1072.fb7dc49
 pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch)."
 arch=("any")
@@ -22,7 +22,7 @@ optdepends=(
   'pipewire: WebRTC screen sharing under Wayland'
   'org.freedesktop.secrets: Encryption using stored key in the secret service'
 )
-makedepends=('npm' 'git' 'imagemagick' 'typescript' 'asar')
+makedepends=('npm' 'git' 'imagemagick' 'typescript' 'asar' 'semver')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
@@ -158,7 +158,7 @@ package() {
 
   # Get supported electron version and add it to the dependencies.
   #  (`-n "$pkgdir"` check also prevents adding it to .SRCINFO)
-  [[ -n "$pkgdir" ]] && depends+=("electron$(_getdep electron)")
+  [[ -n "$pkgdir" ]] && depends+=("electron$(_getelectron)")
 
   # Add changelog file to the package if present
   if [[ -f "${_pkgbuilddir}/${pkgname%-git}.changelog" ]]; then
@@ -266,17 +266,36 @@ _compile() {
   _postcompile
 }
 
-# A function that returns the currently supported release of specific dependency.
-_getdep(){
-  local OLDPWD=$PWD TYPE;
-  if [[ "$2" =~ ^-?p ]]; then
-    TYPE="dependencies";
-  else
-    TYPE="devDependencies";
-  fi
-  cd "${srcdir:?}/${pkgname%-git}";
-  echo $(($(npm pkg get $TYPE."$1" | sed 's~"\([^"]*\)"~\1~g;s~\^\([0-9]*\).*~\1~g;s~.* <\([0-9]*\).*~\1-1~')));
-  cd "$OLDPWD";
+# A function that finds latest supported Electron version satisfying
+# semver requirements. It is a hack, as it depends on `pacman` database,
+# but it is more reasonable than relying on incomplete `sed` expression
+# that mimics SemVer parsing without actually caring about entirely
+# supporting every possible SemVer expression.
+_getelectron_raw() (
+    cd "${srcdir:?}/${pkgname%-git}"
+    # start from latest available in repos
+    vercheck="$(LC_ALL=C pacman -Si electron | grep Depends | sed 's/.*electron//')"
+    while pkginfo="$(LC_ALL=C pacman -Si electron"$vercheck" 2>/dev/null)"; do
+        fullver="$(echo "$pkginfo" | grep Version | sed 's/.*:\s*//;s/-.*$//')"
+        validrange="$(npm pkg get devDependencies.electron)"
+        if ! semver -r "$validrange" "$fullver"; then
+            vercheck="$(($vercheck-1))"
+            continue
+        fi
+        return 0;
+    done
+    echo "ERROR: No supported Electron found in Arch releases!" >&2
+    exit 1;
+)
+
+# Like _getelectron_raw, but cached and overwrittable via
+# _WEBCORD_ELECTRON_MAJOR.
+_getelectron() {
+    if [ -z "$_WEBCORD_ELECTRON_MAJOR" ] &&
+            ! _WEBCORD_ELECTRON_MAJOR="$(_getelectron_raw)"; then
+        exit 1
+    fi
+    echo "$_WEBCORD_ELECTRON_MAJOR"
 }
 
 # A function to convert the base icon into another sizes.
@@ -339,6 +358,9 @@ _postcompile() {
 # system-wide Electron binary.
 _script() {
   mkdir -p "$(dirname "$1")"
-  echo -ne "#!/bin/bash\nelectron$(_getdep electron) /usr/share/${pkgname%-git}/app.asar \"\$@\"\nexit \$?">"$1"
+  local _ver;
+  _ver="$(_getelectron)"
+  echo -ne "#!/bin/bash\nelectron${_ver} /usr/share/${pkgname%-git}/app.asar \"\$@\"\nexit \$?">"$1"
+  echo "err=$?" >&2
   chmod 755 "$1"
 }
