@@ -4,7 +4,7 @@ pkgname=arm-linux-gnueabihf-binutils-bin
 _toolchain_ver=15.2.rel1
 _toolchain_date=20251217
 pkgver=${_toolchain_ver}.${_toolchain_date}
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross binutils for the arm-linux-gnueabihf target (precompiled, split from ARM's official GNU toolchain release)"
 arch=('x86_64')
 url="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads"
@@ -40,10 +40,11 @@ package() {
     install -d "${pkgdir}/usr/arm-none-linux-gnueabihf/bin"
     cp -a arm-none-linux-gnueabihf/bin/. "${pkgdir}/usr/arm-none-linux-gnueabihf/bin/"
 
-    if [ -d lib/bfd-plugins ]; then
-        install -d "${pkgdir}/usr/lib/bfd-plugins"
-        cp -a lib/bfd-plugins/. "${pkgdir}/usr/lib/bfd-plugins/"
-    fi
+    # lib/bfd-plugins (libdep.so) is deliberately not installed here: it
+    # would land at /usr/lib/bfd-plugins/libdep.so, which the system's own
+    # native binutils package already owns - the real arm-linux-gnueabihf-
+    # binutils AUR package strips all of usr/lib for the same reason
+    # ("collides with system installation of binutils").
 
     install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

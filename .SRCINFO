@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-binutils-bin
 	pkgdesc = Cross binutils for the arm-linux-gnueabihf target (precompiled, split from ARM's official GNU toolchain release)
 	pkgver = 15.2.rel1.20251217
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
 	arch = x86_64
 	license = GPL-2.0-or-later
