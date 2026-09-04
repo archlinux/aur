@@ -1,15 +1,15 @@
 # Maintainer: Max Berggren <maxberggren@gmail.com>
 pkgname=jotite
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A lightweight, fun, distraction-free markdown note-taking app with live markdown rendering"
 arch=('any')
-url="https://github.com/maxberggren/omarchy-jotite"
+url="https://github.com/maxberggren/jotite"
 license=('MIT')
 depends=('gjs' 'gtk4' 'libadwaita' 'fontconfig')
 install=jotite.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('aba93e5f46483849b09900d27629dad6d382cdb7a67fcac57260cd19f0bc8ded')
+sha256sums=('5396985400eb01569700404b0543e48363fc2374d3e763566927f2d3ed997996')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -26,6 +26,7 @@ package() {
     cp -r settings "$pkgdir/usr/share/jotite/"
     cp -r theme "$pkgdir/usr/share/jotite/"
     cp -r ui "$pkgdir/usr/share/jotite/"
+    cp -r util "$pkgdir/usr/share/jotite/"
     
     # Create wrapper script in /usr/bin
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/jotite" <<'EOF'
