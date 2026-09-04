@@ -15,7 +15,7 @@ conflicts=('arm-linux-gnueabihf-glibc-headers')
 
 _tarball="arm-gnu-toolchain-${_toolchain_ver}-x86_64-arm-none-linux-gnueabihf"
 source=("https://developer.arm.com/-/media/Files/downloads/gnu/${_toolchain_ver}/binrel/${_tarball}.tar.xz")
-sha256sums=('1344c620bddc2542f3d83bf8f3655fee4b5d11334fdb0bcce7838ca4ec7f385b')
+sha256sums=('3c65d820a6b8f677f8f6fbfc749fe00a4f16dde12341436c9df5b7092a47c0fb')
 
 package() {
     cd "${srcdir}/${_tarball}"
