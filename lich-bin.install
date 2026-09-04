@@ -3,13 +3,19 @@
 # the browser stays an optdepends and this hook is the install-time check:
 # lich bundles no browser runtime (no Electron, no webview) and opens its
 # window in a Chromium-family browser already on the machine.
+# The list mirrors chromiumNames in internal/chromium/resolve.go.
 post_install() {
-  for b in chromium chromium-browser google-chrome-stable google-chrome helium-browser brave; do
+  for b in chromium chromium-browser google-chrome google-chrome-stable \
+           google-chrome-beta helium-browser brave brave-browser vivaldi \
+           vivaldi-stable microsoft-edge microsoft-edge-stable \
+           thorium-browser ungoogled-chromium chrome; do
     command -v "$b" >/dev/null 2>&1 && return 0
   done
   echo "==> lich opens its window in a Chromium-family browser installed on this"
-  echo "==> machine; none was found on PATH. Install one before launching lich:"
-  echo "==>   chromium, google-chrome, brave, or helium-browser"
+  echo "==> machine; none was found on PATH. Without one lich still runs, but it"
+  echo "==> opens in a plain browser tab instead of a window of its own."
+  echo "==> For the window, install one of: chromium, google-chrome, brave,"
+  echo "==> vivaldi, microsoft-edge or helium-browser."
 }
 
 post_upgrade() {
