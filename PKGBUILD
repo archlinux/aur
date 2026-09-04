@@ -1,15 +1,15 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=faas-cli
-pkgver=0.18.12
-pkgrel=3
+pkgver=0.18.13
+pkgrel=1
 pkgdesc="Official CLI for OpenFaaS"
 arch=('x86_64' 'aarch64')
 url="https://github.com/openfaas/faas-cli"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='c8191b71e7edf10be3b660ddcaee52c11de79238'
+_commit='47973103f5387798a92285ee0584aaf688dd9a54'
 source=("git+https://github.com/openfaas/faas-cli.git#commit=$_commit")
 sha256sums=('SKIP')
 
