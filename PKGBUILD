@@ -1,7 +1,7 @@
 # Maintainer: nugget <vincent@sshmoi.com>
 
 pkgname=kickoutchi-bin
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="TUI and CLI to see which process owns a local port and kill it safely (prebuilt)"
 arch=("x86_64" "aarch64")
@@ -16,8 +16,8 @@ _archive_x86_64="kickoutchi-x86_64-unknown-linux-gnu.tar.xz"
 _archive_aarch64="kickoutchi-aarch64-unknown-linux-gnu.tar.xz"
 source_x86_64=("${pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.xz::${url}/releases/download/v${pkgver}/${_archive_x86_64}")
 source_aarch64=("${pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.xz::${url}/releases/download/v${pkgver}/${_archive_aarch64}")
-sha256sums_x86_64=("55d4654eb9fbc126ed73f3bb32994a0ed2f7d6ecc28bf2709e1929100b4f57a4")
-sha256sums_aarch64=("5e98c7808ab601e9ec4175a341ab26385cfd2630707e13018e3e45d6b8a1b18d")
+sha256sums_x86_64=("143f07302884d7c8f9fec464da74ff8e7ed2e03109349f9e3b61bafbbddd53ca")
+sha256sums_aarch64=("d8e7bb9c1de8dd7e4da1b8ba36d23f2ae35cd4d0cc551dd882358019c230962c")
 
 _dist_target() {
   case "${CARCH}" in
