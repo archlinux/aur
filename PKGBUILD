@@ -1,8 +1,8 @@
 # Maintainer: OldJobobo
 pkgbase=splinterm
 pkgname=('splinterm' 'splinterm-mcp')
-pkgver=0.1.0rc.1
-_upstream_ver=0.1.0-rc.1
+pkgver=0.1.0rc.2
+_upstream_ver=0.1.0-rc.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/oldjobobo/splinterm'
@@ -28,7 +28,7 @@ source=(
   "https://github.com/OldJobobo/splinterm/releases/download/v$_upstream_ver/$pkgbase-$_upstream_ver.tar.gz"
 )
 sha256sums=(
-  '35fa21e889e43befb5dd0d72ae64b04b275d3718bc45379fdbb34a7052b82977'
+  '468136ce05f2a8ddde70c45cc5079fb7910b322b278a0f69c4f89485a6b8cbe2'
 )
 
 prepare() {
