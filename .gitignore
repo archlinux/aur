@@ -1,0 +1,9 @@
+/pkg/
+/src/
+/build/
+*.pkg.tar*
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.log
+/spirula-studio/

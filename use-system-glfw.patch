@@ -1,0 +1,28 @@
+--- a/cmake/SsApps.cmake
++++ b/cmake/SsApps.cmake
+@@ -139,23 +139,12 @@
+ if(SS_BUILD_GUI)
+     include(FetchContent)
+ 
+-    set(GLFW_BUILD_DOCS     OFF CACHE BOOL "" FORCE)
+-    set(GLFW_BUILD_TESTS    OFF CACHE BOOL "" FORCE)
+-    set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+-    set(GLFW_INSTALL        OFF CACHE BOOL "" FORCE)
+-    FetchContent_Declare(glfw
+-        GIT_REPOSITORY https://github.com/glfw/glfw.git
+-        GIT_TAG        3.4
+-        GIT_SHALLOW    TRUE)
++    find_package(glfw3 REQUIRED)
+     FetchContent_Declare(imgui
+         GIT_REPOSITORY https://github.com/ocornut/imgui.git
+         GIT_TAG        v1.92.8
+         GIT_SHALLOW    TRUE)
+-    FetchContent_MakeAvailable(glfw imgui)
+-    # glfw brings its own CMakeLists and CMAKE_BUILD_TYPE is empty, so its C
+-    # sources would build at -O0 like everything else that is not told.
+-    target_compile_options(glfw PRIVATE
+-        $<$<COMPILE_LANGUAGE:C>:${SPLAT_C_FLAGS}>)
++    FetchContent_MakeAvailable(imgui)
+ 
+     find_package(OpenGL REQUIRED)
+ 
