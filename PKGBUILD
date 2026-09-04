@@ -1,6 +1,6 @@
-# Maintainer: Emanuele Calo <me@lele.rip>
+# Maintainer: Emanuele Calo <emanuele.lele.calo@gmail.com>
 pkgname=riso
-pkgver=0.7.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Modular ricing framework: renders themes into the files a desktop reads"
 arch=('x86_64' 'aarch64')
