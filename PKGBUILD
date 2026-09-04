@@ -7,7 +7,7 @@
 pkgname=tmog-appimage
 _pkgname=tmog-task-manager
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="TMOG brings the depth of a serious systems console to a native, focused task manager for macOS, Windows, and Linux.."
 arch=('x86_64')
 url="https://www.tmog.org/"
@@ -58,12 +58,9 @@ prepare() {
   # Rename the downloaded file to the clean name
   mv "${_appimage_filename}?v=${pkgver}-free" "${_appimage_filename}"
     
-  # 1. Make it executable
+  # 1. Make the AppImage executable and extract it
   chmod +x "${_appimage_filename}"
-
-  # 2. Extract WITHOUT FUSE using bsdtar (standard in Arch)
-  # This avoids the need for /dev/fuse which is unavailable in AUR builds
-  bsdtar -xf "${_appimage_filename}" --output "squashfs-root"
+  ./"${_appimage_filename}" --appimage-extract
 
   # 3. Setup directory structure
   mkdir -p "${srcdir}/squashfs-root/assets/icons/"
