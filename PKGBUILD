@@ -1,6 +1,6 @@
 # Maintainer: Alia_Atreides <mmurphy four zero nine six at gmail dot com>
 pkgname=gen1recomp
-pkgver=0.2.25
+pkgver=0.2.55
 pkgrel=1
 pkgdesc="Native LÖVE2D recreation of Pokémon Red/Blue/Yellow (BYO ROM)"
 arch=('x86_64')
