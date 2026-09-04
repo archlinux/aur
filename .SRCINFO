@@ -1,6 +1,6 @@
 pkgbase = luadot
 	pkgdesc = A dotfiles manager configured in Lua
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/ItzTas/luadot
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = luadot
 	depends = glibc
 	options = !lto
 	options = !debug
-	source = luadot-0.3.0.tar.gz::https://gitlab.digitalventura.com.br/api/v4/projects/luadot%2Fluadot/packages/generic/luadot/0.3.0/luadot-0.3.0-src.tar.gz
-	sha256sums = d13285a94c018394220be7c4725cd57f02d1c65ba028c76aea0d4c7d6434bba0
+	source = luadot-0.3.1.tar.gz::https://gitlab.digitalventura.com.br/api/v4/projects/luadot%2Fluadot/packages/generic/luadot/0.3.1/luadot-0.3.1-src.tar.gz
+	sha256sums = 64aeaafd17ef0c39e511b4a97cd63af1371abc853c192b1edea5b64c77170fe7
 
 pkgname = luadot
