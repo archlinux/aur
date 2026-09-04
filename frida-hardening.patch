@@ -1,49 +1,24 @@
 --- a/releng/env_generic.py
 +++ b/releng/env_generic.py
-@@ -249,7 +249,7 @@
-             if machine.os != "windows":
-                 linker_flags += ["-Wl,-z,noexecstack"]
-             if machine.os not in {"windows", "none"}:
+@@ -252 +252 @@
 -                linker_flags += ["-Wl,-z,relro"]
 +                linker_flags += ["-Wl,-z,relro", "-Wl,-z,now"]
-             cxx_link_flags += ["-static-libstdc++"]
- 
-         if linker_flavor == "apple":
 --- a/subprojects/frida-core/src/compiler/build-backend.py
 +++ b/subprojects/frida-core/src/compiler/build-backend.py
-@@ -78,7 +78,9 @@
-             extra_go_args.append(f"-ldflags=-linkmode=external -extldflags=-Wl,-exported_symbols_list,{symbols_list}")
-         elif config["os_family"] != "windows":
-             version_script = priv_dir / "backend.version"
+@@ -81 +81,3 @@
 -            extra_go_args.append(f"-ldflags=-linkmode=external -extldflags=-Wl,--version-script={version_script}")
 +            extra_go_args.append(
 +                f"-ldflags=-linkmode=external -extldflags=-Wl,--version-script={version_script},-z,relro,-z,now"
 +            )
- 
-     run(
-         go,
-@@ -86,6 +88,7 @@
-         "-o",
-         backend_binary.name,
-         "-buildvcs=false",
+@@ -89,0 +92 @@
 +        "-trimpath",
-         *extra_go_args,
-         ".",
-     )
 --- a/subprojects/frida-gum/bindings/gumjs/meson.build
 +++ b/subprojects/frida-gum/bindings/gumjs/meson.build
-@@ -277,8 +277,14 @@
-   sqlite_dep,
- ]
- 
+@@ -279,0 +280,5 @@
 +gumjs_link_args = []
 +if host_os_family == 'linux'
 +  gumjs_link_args += ['-Wl,--exclude-libs,libquickjs.a:libtcc.a']
 +endif
 +
- gumjs = library('frida-gumjs-' + api_version, gumjs_sources,
-   c_args: frida_component_cflags,
+@@ -281,0 +287 @@
 +  link_args: gumjs_link_args,
-   override_options: [
-     'cpp_std=c++17',
-     'cpp_eh=none',

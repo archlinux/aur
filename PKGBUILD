@@ -8,7 +8,7 @@ pkgname=(
 	'python-frida'
 )
 pkgver=17.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers'
 arch=('x86_64')
 url='https://github.com/frida/frida'
@@ -250,7 +250,7 @@ b2sums=(
 	'626b745ad1e6e40d443c26712b791ae44af732cbaf97c6baef066d3c88d64811e3e923cd3f85375687af1c186092cbb971cf983b267bdea81858d786395adb7a'
 	'7d4c652d381f315c675fed49e81580c803479c90f131204709769d1e8ba94774b83d464ee832c3e2f560a2304f5ce2f72dd6740e987c89d7c241608151af98ae'
 	'242c94ad87f147fe337575e7639dae7c486e6b8a9c089dea2fd67fcd496e076165afaba3003652f2a9d4da4b49d47273852b7e6753d3e527bc65d56ebcf3dcd3'
-	'85da1f19171e0524a5c62fe049b81d21368f41e46e725514a62a3887d14de87a4dcaf99757aad9f6606088a87cd5cf4b0d9bb78830bd4447f72f380077993b22'
+	'b83ccfa39230231b4fddaf914eb20648f23352e137ed20e9978f9f3c4349431974cad63cfb30925b3e5fd9eadb631beb2b44ec2023ee1c02ce85f6616e17d893'
 	'7ba008b86fd730eacd9868b66ce4e132719ef3976b92f5c035a7e5308368724eb3fadac7b051c76ff67daca37a59a16cb22cb1752ba4048e2ecc5ee2870f180f'
 	'5a2fa0418c540d8082c622b9db8534d5878ed30fbe817f01979e5773abaa475740b3f8d2b5f1af3caf7c43701af9c41113e5e5da7080260a43608e8260def01f'
 	'd6f6dee0b4abce002222d6e406934d4d43b4c261a61ce1092d8435eba4509d693bd2e278e06f0a5d89cacd5d6a1f78cea7cab225b700c431a14676a00d3f0cec'
@@ -272,8 +272,8 @@ b2sums=(
 	'628914bf5b1f5eb74a71bf5e32838d81514e75bcca02b61da5278f7d233274535275b31294147f07a990c0cae0f8de5b2d5cdaa706c5b6c4914435dbc82c797b'
 	'c28644068415ec063cc0ea52e4cc8bb01db4eda5ea5305174f5b2a7b6deb5413f3356b44326ff4fcafd8a12fdb2db43f8afeb81db2dce2c22f64e91663529ec6'
 	'a45e9e27d6e5f4af676fd2cd385105c85dcd88f60f4c40e04926d4b31ec444aa74ad7d1a67c6fb8bd952de302a3984adc8f9e302b84a030b5a86e3cb62e03117'
-	'0506a63f43196804d9f25e83dd1b9cc38ae027bbb196206e971f49694b60939cadab72430975bd889e12750f0f537df3b62eeed4e6427d28d369bee3e7f3ce3e'
-	'fc247585bf7fbc3e3261a7d80904f26634d7f7e4ebcb3830b5e596531c9151db6f7a7cd7020f9fe421d3db1a08aed709f4b8b4e3c45e7daecf9a7ead8df29d4a'
+	'3325f7ccc9cc079507778bda8d9497929b0ecd94eec63fb48138c83f281532bd3c90d85851776cd097c4f641123db5d0a9e1b41db0db888143f2fcca2c809ac5'
+	'a652940b9ed3301f51096748de9cf2f5beefe50a8e18cce64d0e2d1b4f9645e2b42963f3aeeefd1c3a22766b1afd68243ba44767e62b344b46486799df4d047d'
 	'51e7b3e773b4cc7077045abc40c28e6f1468351af542ef4866515da2593c56cf2400b6599c95ad288f94d515958c0b4d2ec1ef3a575e8d0ba80ada1c396ff009'
 	'4a2bdaf9cc9e3da6e83ea6bdc1e5e1ad421eea9e326dcf44a9ed678cc967859a92982eb6346aa9190409eb923cd42ca271cadc541e5557b47d911e4b8bd98ea2'
 	'52c5d0779c64949bc4778a9ae6381e7e440968a3482389ed7ffef435aeb5e941af86021444fa89e41a23a782bd512c5da073d61bcd303a60e2b66e929dd84e05'
@@ -399,10 +399,12 @@ _build_compat32_recipe() {
 	local _nested_builddir
 	local _compat_cflags
 	local _compat_cxxflags
+	local _compat_ldflags
 
 	_nested_builddir="$(_compat32_builddir "${_name}")"
 	_compat_cflags="$(_compat32_flags "${CFLAGS:-}")"
 	_compat_cxxflags="$(_compat32_flags "${CXXFLAGS:-}")"
+	_compat_ldflags="${LDFLAGS:-} -L${_compat32_sysroot}/usr/lib32"
 
 	(
 		cd -- "${_recipe_dir}" || exit 1
@@ -411,11 +413,11 @@ _build_compat32_recipe() {
 		FRIDA_COMPAT_SYSROOT="${_compat32_sysroot}" \
 			PKG_CONFIG_PATH='' \
 			CPATH="${_compat32_sysroot}/usr/include${CPATH:+:${CPATH}}" \
-			LDFLAGS="${LDFLAGS:-} -L${_compat32_sysroot}/usr/lib32" \
 			makepkg -d --noextract --noprepare --nocheck --noarchive --force \
 				"BUILDDIR=${_nested_builddir}" \
 				"CFLAGS=${_compat_cflags}" \
-				"CXXFLAGS=${_compat_cxxflags}"
+				"CXXFLAGS=${_compat_cxxflags}" \
+				"LDFLAGS=${_compat_ldflags}"
 	) || return 1
 
 	_stage_compat32_recipe "${_name}" "${_compat32_sysroot}"
