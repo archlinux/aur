@@ -1,16 +1,16 @@
 # Maintainer: Mike Pento <mjpento@gmail.com>
 
 pkgname=objconv
-pkgver=2.56
+pkgver=2.57
 pkgrel=1
 pkgdesc='Object file converter and disassembler'
 arch=('i686' 'x86_64')
 url="http://www.agner.org/optimize/#objconv"
 license=('GPL-3.0-or-later')
 options+=('!debug')
-depends=('gcc-libs')
+depends=('glibc' 'libstdc++' 'libgcc')
 source=("$pkgname-$pkgver.zip::http://www.agner.org/optimize/objconv.zip")
-sha256sums=('301149c271ffaf7b11a14d7aff637ecd580f8591bb8992b8e399af7ed4779bf9')
+sha256sums=('0f604f93f97f689afd7615c86176eb15bc95001eadf8317f17ebd099c50c59e1')
 
 prepare() {
   mkdir build
