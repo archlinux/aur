@@ -1,7 +1,7 @@
 # Maintainer: Jonatan Jonasson <notes@madeingotland.com>
 
 pkgname=openai-codex-reasoning-bin
-pkgver=0.153.0
+pkgver=0.153.2
 pkgrel=1
 pkgdesc="Prebuilt OpenAI Codex CLI with raw reasoning traces enabled by default"
 arch=('x86_64')
@@ -27,11 +27,11 @@ conflicts=(
 )
 replaces=('openai-codex-reasoning')
 
-_asset_name="${pkgname}-0.153.0-1-x86_64.tar.zst"
+_asset_name="${pkgname}-0.153.2-1-x86_64.tar.zst"
 source=(
   "${_asset_name}::${url}/releases/download/v${pkgver}-${pkgrel}/${_asset_name}"
 )
-sha256sums=('5b534399c29f350fd49b4a53010b60acb2172e4bbc4ca293325aa2a32da7c794')
+sha256sums=('c19cab2e3c4831972d3e3d18b5342f9afda4418a6e830aeb19e9855e75176a4a')
 
 package() {
   bsdtar -xf "${srcdir}/${_asset_name}" -C "${pkgdir}"
