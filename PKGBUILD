@@ -34,10 +34,10 @@ package() {
     cp -r ./* "$pkgdir/opt/abacusai/"
 
     # Make the main executable... executable
-    chmod +x "$pkgdir/opt/abacusai/abacusai-app"
+    chmod +x "$pkgdir/opt/abacusai/abacusai-desktop"
 
     # Create symlink in /usr/bin
-    ln -s "/opt/abacusai/abacusai-app" "$pkgdir/usr/bin/abacusai-app"
+    ln -s "/opt/abacusai/abacusai-desktop" "$pkgdir/usr/bin/abacusai-app"
 
     # Create desktop entry
     cat > "$pkgdir/usr/share/applications/abacusai.desktop" << EOF
