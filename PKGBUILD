@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="All-in-one, batteries-included LLM CLI Tool"
 
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -35,10 +35,10 @@ source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/downlo
 sha256sums=('164ff98c54fd3842fa51ab014b23bbfbd20e426e0bfdc82a245144b283978c7d'
             '31d7be9837c323843c9ff9ed4a81ea18368f3dd89275887a923f5c16fd21f5eb'
             '8eea4eccb4e6a8a20b96c1b6c58960da93ca9a08f732fc4cfdb812fff86416fd'
-            '20b60f6c70fb31c43bd18483aa3d4a147c646d0e15592f08a061b0b836021713'
+            '9e5df042fcd8772063f9916ac2e3d534126945230a4b3be84b486daef2b76cf9'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
-sha256sums_x86_64=('20c1bd8b8e754f8fdc1ab8481cced9fe3b5b4ec63f9ce9b89c2178dd4b995b43')
-sha256sums_aarch64=('5428a19f0121a5874beaf2fea2c91925f117b5b6139389082c3d2bf2ac1c6075')
+sha256sums_x86_64=('2bb020184f3f5507708542745f582a2a29c7635de020e6d9590321408da63aaa')
+sha256sums_aarch64=('c6e130c33d7afb9d23fa16d69c4124e806ef7537c74db63a2e6496b5af379edd')
 
 prepare() {
 	cd "${srcdir}/" || exit
