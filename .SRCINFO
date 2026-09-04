@@ -1,6 +1,6 @@
 pkgbase = update-mirrors
 	pkgdesc = CLI to update the Arch Linux mirrorlist
-	pkgver = 1.25
+	pkgver = 1.26
 	pkgrel = 1
 	url = https://github.com/nellowint/update-mirrors
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = update-mirrors
 	makedepends = git
 	depends = bash-completion
 	depends = curl
-	source = git+https://github.com/nellowint/update-mirrors.git#tag=v1.25
-	sha256sums = 774503624700c445743325d81995910ca311129937bc452781dbd6b6fd1c008b
+	source = git+https://github.com/nellowint/update-mirrors.git#tag=v1.26
+	sha256sums = a39a2a59f8a916f1c29917bc5f54bde64caf7fd70ec7b4c7222a27f1b27c7c31
 
 pkgname = update-mirrors
