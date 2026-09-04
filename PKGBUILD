@@ -3,29 +3,36 @@
 pkgname=vectorscan-docs
 _name=${pkgname%%-docs}
 pkgver=5.4.13
-pkgrel=1
+pkgrel=2
 pkgdesc='API and developer documentation for vectorscan, a portable hyperscan fork'
 arch=('any')
 url='https://github.com/VectorCamp/vectorscan'
 license=('BSD-3-Clause')
 
-# depends=("$_name")
 makedepends=(
   'boost'
   'cmake'
   'doxygen'
   'ninja'
-  'python-sphinx'
+  'python'
   'python-breathe'
+  'python-sphinx'
   'ragel'
   'simde'
 )
 
 source=(
   "${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_name}/${pkgver}.tar.gz"
+  "fix-makefile-for-documentation.patch"
 )
+b2sums=('7d229b100e99d1b4dae0d62d5449074f0a0b7166e2c183db0641adaec38fad4f216dea22b550802e203afc065175d0a4656c770d9405a03363a2586776da9ff8'
+        'b9d0fb1559a050ca0d4210b9587618e469303dc0044c6ccf289c5bfecb8ab03b268de6d3b8005eb042ceaaab1335ed1dbe3b2434a4b8409b58782080193dd382')
 
-b2sums=('7d229b100e99d1b4dae0d62d5449074f0a0b7166e2c183db0641adaec38fad4f216dea22b550802e203afc065175d0a4656c770d9405a03363a2586776da9ff8')
+prepare() {
+  cd "${srcdir}/${_name}-${_name}-${pkgver}"
+  echo "Patching Makefile (see https://github.com/VectorCamp/vectorscan/issues/411)"
+  patch -p1 < ../fix-makefile-for-documentation.patch
+}
 
 build() {
   cd "${srcdir}/${_name}-${_name}-${pkgver}"
@@ -34,9 +41,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_DOCS=ON \
     -Wno-author
 
-  cmake --build build --target dev-reference dev-reference-man
+  cmake --build build --target dev-reference dev-reference-man 
 }
 
 package() {

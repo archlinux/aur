@@ -1,7 +1,7 @@
 pkgbase = vectorscan-docs
 	pkgdesc = API and developer documentation for vectorscan, a portable hyperscan fork
 	pkgver = 5.4.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VectorCamp/vectorscan
 	arch = any
 	license = BSD-3-Clause
@@ -9,11 +9,14 @@ pkgbase = vectorscan-docs
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = ninja
-	makedepends = python-sphinx
+	makedepends = python
 	makedepends = python-breathe
+	makedepends = python-sphinx
 	makedepends = ragel
 	makedepends = simde
 	source = vectorscan-5.4.13.tar.gz::https://github.com/VectorCamp/vectorscan/archive/refs/tags/vectorscan/5.4.13.tar.gz
+	source = fix-makefile-for-documentation.patch
 	b2sums = 7d229b100e99d1b4dae0d62d5449074f0a0b7166e2c183db0641adaec38fad4f216dea22b550802e203afc065175d0a4656c770d9405a03363a2586776da9ff8
+	b2sums = b9d0fb1559a050ca0d4210b9587618e469303dc0044c6ccf289c5bfecb8ab03b268de6d3b8005eb042ceaaab1335ed1dbe3b2434a4b8409b58782080193dd382
 
 pkgname = vectorscan-docs

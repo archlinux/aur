@@ -4,5 +4,6 @@
 # But not these files...
 !PKGBUILD
 !.SRCINFO
+!fix-makefile-for-documentation.patch
 
 !.gitignore
