@@ -22,6 +22,11 @@ prepare () {
   sed -i "s|march=native|march=nocona|g" GKlibSystem.cmake
   sed -i "s|Werror|Wall|g" GKlibSystem.cmake
   sed -i "s|VERSION 2.8|VERSION 3.5|g" CMakeLists.txt
+  # Fix TLS symbols not exported from DLL on Windows: __thread prevents
+  # gk_cur_jbufs/gk_jbufs from being exported, causing undefined references
+  # when linking shared metis against shared GKlib (mingw-w64-metis).
+  sed -i 's/extern __thread/extern/g' gk_externs.h
+  sed -i 's/__thread//g' error.c
 }
 
 build() {
