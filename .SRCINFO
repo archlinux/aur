@@ -15,6 +15,6 @@ pkgbase = arm-linux-gnueabihf-gcc-bin
 	options = !debug
 	options = !strip
 	source = https://developer.arm.com/-/media/Files/downloads/gnu/15.2.rel1/binrel/arm-gnu-toolchain-15.2.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz
-	sha256sums = 6bec7c633bc365f9cadd6e51aac1199063f58a129923bce0d985e6324146c7a7
+	sha256sums = 3c65d820a6b8f677f8f6fbfc749fe00a4f16dde12341436c9df5b7092a47c0fb
 
 pkgname = arm-linux-gnueabihf-gcc-bin
