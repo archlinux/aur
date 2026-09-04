@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=nourish-bin
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="Modern Wayland desktop with an infinite zoomable canvas"
 arch=('x86_64')
@@ -11,15 +11,14 @@ depends=(
   'dbus'
   'ffmpeg'
   'cairo'
-  'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
   'glibc'
   'gtk3'
+  'libgcc'
   'libinput'
   'libpulse'
   'libsoup3'
-  'libxcb'
   'libxkbcommon'
   'mesa'
   'pam'
@@ -27,8 +26,7 @@ depends=(
   'seatd'
   'systemd-libs'
   'webkit2gtk-4.1'
-  'xcb-util-cursor'
-  'xorg-xwayland'
+  'xwayland-satellite'
 )
 optdepends=(
   'vulkan-tools: Vulkan diagnostics'
@@ -41,10 +39,10 @@ conflicts=('nourish')
 options=('!debug' '!strip')
 install=nourish-bin.install
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/y5-snowies/nourish/releases/download/v${pkgver}/package.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/y5-snowies/nourish/releases/download/v${pkgver}/package-arch-${CARCH}.tar.gz"
   "LICENSE-MIT::https://raw.githubusercontent.com/y5-snowies/nourish/v${pkgver}/LICENSE-MIT"
 )
-sha256sums=('035263ec6beef98427e12f9dea2b5fba8832aa17160620a0dc2ca8035a653083'
+sha256sums=('3db3c8b47227510316508f407c414d53fc601a2ed93bb15979dd54b4264ceaa9'
             '8f9eb88eafea695df265da06eda1ca4374862b2033ad8f6649829be81884c8ba')
 
 latestver() {
@@ -57,7 +55,6 @@ package() {
   install -Dm755 y5-install/binaries/y5.compositor.dev "${pkgdir}/usr/bin/y5.compositor.dev"
   install -Dm755 y5-install/binaries/y5.compositor.settings "${pkgdir}/usr/bin/y5.compositor.settings"
   install -Dm755 y5-install/binaries/compositor-developer-tool "${pkgdir}/usr/bin/y5.compositor.monitor"
-  install -Dm755 y5-install/binaries/xwayland-satellite "${pkgdir}/usr/bin/xwayland-satellite"
   install -Dm755 y5-install/binaries/y5-polkit-agent "${pkgdir}/usr/bin/y5-polkit-agent"
   install -Dm755 y5-install/binaries/mx-gesture-daemon "${pkgdir}/usr/bin/mx-gesture-daemon"
 
@@ -91,7 +88,7 @@ After=graphical-session.target graphical-session-pre.target
 EOF
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/y5.compositor.desktop" <<'EOF'
-#!/bin/bash
+#!/bin/sh
 export RUST_LOG=info,smithay=info
 export MESA_DEBUG=1
 export XDG_CURRENT_DESKTOP=y5
