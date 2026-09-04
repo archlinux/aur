@@ -1,7 +1,7 @@
 # Maintainer: Ivan Kuznetsov <ivankuznetsov@users.noreply.github.com>
 
 pkgname=screenote-cli
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Command-line client for Screenote visual feedback workflows'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f3818d65f6c224f8e9775525f8f6bf692f675141de3a7ffc990b7b0092f9da51')
+sha256sums=('4fa2f1879fe448cb57388796c4e3a963d9b061c32e37953f0b16aa8d59f8ff65')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
