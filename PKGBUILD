@@ -10,26 +10,25 @@ pkgname='dmarc_report'
 pkgdesc='"Generate human readable DMARC and TLS reports from standard email reports.'
 _gitname='dmarc_report'
 
-pkgver="7.0.1"
+pkgver="7.1.1"
 pkgrel=1
 url="https://github.com/gene-git/dmarc_report"
 
 arch=(any)
 license=(GPL-2.0-or-later)
 depends=(
-    'python>=3.13' 
+    'python>=3.14' 
     'python-dateutil' 
     'python-lxml' 
-    'py-cidr>=2.7.0' 
+    'py-cidr>=5.0.0' 
     'python-tomli-w'
 )
 # To build docs uncommont sphinx/texlive
 makedepends=(
     'git'
-    'uv'
-    'python-uv-build'
+    'meson'
+    'meson-python'
     'rsync'
-    #'python-sphinx' 'texlive-latexextra'
 )
 _mkpkg_depends=(
     'python>minor'
@@ -51,20 +50,8 @@ changelog="Changelog"
 
 build() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
 
-    # To build Docs - uncomment these and sphinx makedepends above
-    # echo "Build docs"
-    # cd ./Docs
-    # make latexpdf >/dev/null 2>&1
-    # make latexpdf >/dev/null
-    # pdf='dmarc_report.pdf'
-    # /usr/bin/rm -f $pdf
-    # /usr/bin/cp _build/latex/$pdf .
-    # make html
-    # make html
-    # /usr/bin/rm -rf _build/doctrees _build/latex
+    ./scripts/do-build
 }
 
 package() {
