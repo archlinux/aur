@@ -4,7 +4,7 @@
 # - 捆绑 198 个库(含 webkit2gtk/GTK3),运行时依赖 fuse2
 # 打包采用 AUR 主流 AppImage 方式:本体装 /opt + /usr/bin wrapper(同 obsidian-appimage)
 pkgname=steamcommunity302
-pkgver=15.0.3
+pkgver=15.0.4
 pkgrel=1
 #epoch=
 pkgdesc="羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动"
@@ -30,8 +30,8 @@ source_x86_64=(
 source_aarch64=(
   "steamcommunity302-${pkgver}.AppImage::https://www.dogfight360.com/Usbeam/V15/Steamcommunity_302_${pkgver}_Linux_WebKit_arm64.AppImage"
 )
-md5sums_x86_64=('e6ea2e521811fc83bc682ce176006779')
-md5sums_aarch64=('e6ea2e521811fc83bc682ce176006779')
+md5sums_x86_64=('9224ec5639ad07276aeb6c4aef5a5b9e')
+md5sums_aarch64=('4c186a35b9c0e67630a9cf7b38588bbb')
 options=(!strip)
 install=steamcommunity302.install
 
@@ -43,12 +43,16 @@ prepare() {
   "${srcdir}/steamcommunity302-${pkgver}.AppImage" --appimage-extract >/dev/null 2>&1
   local _root="${srcdir}/squashfs-root"
 
-  # desktop:修正 Exec 指向系统 wrapper,Icon 用安装后的 png
-  [ -f "${_root}/com.dogfight360.steamcommunity302.desktop" ] || { msg2 "ERROR: 上游缺失 desktop"; return 1; }
+  # desktop:修正 Exec 指向系统 wrapper,Icon 用安装后的 png。
+  # 上游命名:15.0.3 为 com.dogfight360.steamcommunity302.desktop,
+  # 15.0.4 改为 Steamcommunity_302.desktop——用 glob 兼容两种
+  local _desktop
+  _desktop="$(find "${_root}" -maxdepth 1 -name '*.desktop' -print -quit)"
+  [ -n "$_desktop" ] || { msg2 "ERROR: 上游缺失 desktop"; return 1; }
   sed -E \
     -e 's|^[[:space:]]*Exec=.*|Exec=/usr/bin/s302|' \
     -e 's|^[[:space:]]*Icon=.*|Icon=steamcommunity302|' \
-    "${_root}/com.dogfight360.steamcommunity302.desktop" > "${srcdir}/steamcommunity302.desktop"
+    "$_desktop" > "${srcdir}/steamcommunity302.desktop"
 
   # 图标(png)
   [ -f "${_root}/com.dogfight360.steamcommunity302.png" ] || { msg2 "ERROR: 上游缺失图标"; return 1; }
