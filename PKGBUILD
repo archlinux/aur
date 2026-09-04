@@ -1,21 +1,23 @@
 # Maintainer: Yasir <https://github.com/sirrryasir>
 pkgname=shotdock
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
-pkgdesc="Modern floating screenshot and 4K screen recording dock for Wayland compositors"
+pkgdesc="Automated window framing, soft drop shadows, and studio screen capture for Wayland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sirrryasir/shotdock"
 license=('MIT')
 depends=('gtk4' 'gtk4-layer-shell' 'grim' 'slurp' 'imagemagick' 'wl-clipboard' 'libnotify')
 optdepends=(
+    'hyprpicker: Screen freeze during area selection'
     'tesseract: OCR text extraction'
     'tesseract-data-eng: English language support for OCR'
     'wf-recorder: Screen and region video recording'
-    'swappy: Screenshot annotation editor'
+    'satty: Screenshot annotation editor'
+    'swappy: Screenshot annotation editor fallback'
 )
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6e76ebbce793c6fa400aeeced6cc23e4c364b7fb43c6f9ceac4255d2df6ea10c')
+sha256sums=('c18659d37eba40c6b00fc3b5dc3e2312a10e974a0d1b519713edc40ce7ad0f87')
 
 prepare() {
     cd "$pkgname-$pkgver"
