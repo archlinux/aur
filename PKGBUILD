@@ -4,7 +4,7 @@
 
 _pkgname=stackablectl
 pkgname="${_pkgname}-git"
-pkgver=stackablectl.1.5.0.r0.ge457d67
+pkgver=stackablectl.1.5.1.r0.g6357a12
 pkgrel=1
 pkgdesc="Command line tool to interact with a Stackable Data Platform"
 arch=('x86_64')
