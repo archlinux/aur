@@ -1,6 +1,6 @@
 pkgbase = aurpush
 	pkgdesc = CLI for maintaining and publishing Arch Linux packages to the AUR
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Aspenini/aurpush
 	arch = x86_64
@@ -8,8 +8,10 @@ pkgbase = aurpush
 	makedepends = xmake
 	depends = git
 	depends = openssh
+	depends = pacman
+	depends = gcc-libs
 	options = !debug
-	source = aurpush-0.2.0.tar.gz::https://github.com/Aspenini/aurpush/archive/refs/tags/v0.2.0.tar.gz
+	source = aurpush-0.3.0.tar.gz::https://github.com/Aspenini/aurpush/archive/refs/tags/v0.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = aurpush
