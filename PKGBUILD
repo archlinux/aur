@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=arctis-sound-manager
-pkgver=1.4.18
+pkgver=1.4.19
 pkgrel=1
 pkgdesc="Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround"
 arch=('any')
@@ -43,9 +43,16 @@ optdepends=(
     # would abort on an unresolvable dependency (#175, and the #96 rule that this
     # must never be a Depends). It stays optional — the mic noise-cancel toggle
     # degrades gracefully when it's missing (and DeepFilterNet is an alternative
-    # engine). The signed pacman repo ships a build of it, so it's one
-    # `pacman -S noise-suppression-for-voice` away; on the AUR, paru offers it.
-    'noise-suppression-for-voice: RNNoise mic noise cancellation (ClearCast)'
+    # engine). The signed pacman repo ships a build of it under that exact name,
+    # so from there it is one `pacman -S noise-suppression-for-voice` away.
+    #
+    # Both names are listed on purpose (issue #229): on the AUR the only package
+    # that exists is the -git one, so naming just the plain package pointed users
+    # of this very PKGBUILD at something they could not install. Listing both is
+    # harmless, since pacman only ever suggests an optdepend and never resolves
+    # it — and either one provides the same LADSPA plugin.
+    'noise-suppression-for-voice: RNNoise mic noise cancellation (ClearCast), from the signed pacman repo'
+    'noise-suppression-for-voice-git: RNNoise mic noise cancellation (ClearCast), from the AUR'
     # ── Clips (opt-in) ───────────────────────────────────────────────────
     # Deliberately not in depends(), unlike swh-plugins above. Clips ships
     # off, and the toggle that turns it on (Settings → Clips) installs these
@@ -68,7 +75,7 @@ optdepends=(
 makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d504fc0d3ff5b3ee3c21f16c2b43b5db461a1c258206d2f751ea6e320d0130cb')
+sha256sums=('fcc6ceeee260fa21e1de09368c007993f13c7ca27f62d9155e50cf5bf847bce3')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
