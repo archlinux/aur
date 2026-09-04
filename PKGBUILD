@@ -7,21 +7,24 @@ pkgdesc='Immersion language-learning suite: EPUB reader, video subtitle lookup, 
 arch=('x86_64')
 url='https://github.com/hajisensai/Fushi'
 license=('GPL-3.0-or-later')
-depends=('gtk3' 'libkeybinder3' 'mpv')
-makedepends=('clang' 'cmake' 'ninja' 'pkg-config' 'unzip')
+depends=('gtk3' 'libkeybinder3' 'mpv' 'wpewebkit')
+makedepends=('clang' 'cmake' 'ninja' 'pkg-config' 'unzip' 'libwpe' 'wpebackend-fdo')
 optdepends=('qbittorrent: fallback torrent engine when the bundled libtorrent is unavailable')
 source=("https://github.com/hajisensai/Fushi/archive/refs/tags/v2.2.4.tar.gz#/fushi-2.2.4.tar.gz"
         'https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.44.0-stable.tar.xz'
         'fix-fushidicts-cstdint.patch'
+        'wpe-inappwebview-linux.patch'
         'fushi.desktop')
 sha256sums=('de8ce41690c1af2dacf297ca98fc0c1cc0a3c3d9988d8738766758e90fd64947'
             'e1ec95e6c550458a34de93580cb85dac24da0e9bedb9bb42811f050ac5a0c7d5'
             '8334fd0a75f8cfdfff0873b3c9ae9f0d19acfffdf59c07d4cb4d95b1e3ed2391'
+            '5d5398be837f9b6d108f62c93c98b6f0eaa6048c0da40e4dd7062b3ecdef5b3e'
             'd433c22716392af6845ad58ec5b243487c21076a7b1017d704ef84b14909afaf')
 
 prepare() {
   cd "${srcdir}/Fushi-${pkgver}"
   patch -p1 -i "${srcdir}/fix-fushidicts-cstdint.patch"
+  patch -p1 -i "${srcdir}/wpe-inappwebview-linux.patch"
 }
 
 # Project is locked to Flutter 3.44.0 (the AUR flutter package is a different,
