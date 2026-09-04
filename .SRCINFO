@@ -1,0 +1,23 @@
+pkgbase = crau-nbd
+	pkgdesc = Linux Network Block Device (NBD) daemon for ChromeOS/Android CrAU payload.bin
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/shadichy/crau-nbd
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = bzip2
+	depends = glibc
+	depends = polkit
+	depends = protobuf
+	depends = xz
+	optdepends = mount-zip: for mounting deflated ZIP archives on-the-fly
+	optdepends = zenity: GUI partition selector dialog
+	optdepends = libnotify: desktop notifications
+	source = crau-nbd-0.1.0.tar.gz::https://github.com/shadichy/crau-nbd/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 50515f15bae45ba5542ec4ac0c4c34f9d5e55d594e456613895ccd61aa588e2f
+
+pkgname = crau-nbd

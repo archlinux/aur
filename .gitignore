@@ -1,0 +1,9 @@
+# Ignore source tarballs
+*.tar.gz
+
+# Ignore build directories
+src/
+pkg/
+
+# Ignore build artifacts
+*.pkg.tar*
