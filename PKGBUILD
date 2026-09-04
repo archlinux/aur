@@ -1,16 +1,16 @@
 # Maintainer: Woro <woro@tanieddosy.pl>
 pkgname=simplevoice
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Simplevoice — fast speech-to-text transcription (Tauri)"
+pkgdesc="Simplevoice: fast speech-to-text transcription (Tauri)"
 arch=('x86_64')
 url="https://github.com/MaciejKolerski/simplevoice"
 license=('Apache-2.0')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3'
          'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1'
-         'alsa-lib' 'vulkan-icd-loader')
+         'alsa-lib' 'libayatana-appindicator' 'vulkan-icd-loader')
 makedepends=('git' 'rust' 'nodejs' 'pnpm' 'cmake' 'clang'
-             'librsvg' 'libayatana-appindicator'
+             'librsvg'
              'shaderc' 'vulkan-headers' 'vulkan-icd-loader')
 provides=('simplevoice')
 conflicts=('simplevoice-bin')
@@ -21,7 +21,7 @@ conflicts=('simplevoice-bin')
 options=('!lto')
 install=simplevoice.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('39ee1588ffec116fbec5625b6338ba2099bd5c829d4b70a65789abf512319226')
+sha256sums=('163c95efc2c23c9373e5fb9c9b05ad26df79315bedd13e72be2dedf6085d5943')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -30,9 +30,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  # The release config sets createUpdaterArtifacts, which makes tauri sign the
-  # bundle with the updater key (TAURI_SIGNING_PRIVATE_KEY) — only present in CI.
-  # AUR builds ship no updater artifacts (pacman handles upgrades), so turn it off.
+  # Pacman handles upgrades; AUR builds do not have the CI updater signing key.
   pnpm tauri build -b deb --config '{"bundle":{"createUpdaterArtifacts":false}}'
 }
 
