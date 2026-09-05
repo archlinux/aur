@@ -1,0 +1,12 @@
+pkgbase = paper-age
+	pkgdesc = Easy and secure paper backups of secrets via encrypted QR code
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/matiaskorhonen/paper-age
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = paper-age-1.5.0.tar.gz::https://codeload.github.com/matiaskorhonen/paper-age/tar.gz/refs/tags/v1.5.0
+	sha256sums = bc374b5c3fe18505102af903be3ce72c01c8d2f9a992fd7320a25fea163886e7
+
+pkgname = paper-age
