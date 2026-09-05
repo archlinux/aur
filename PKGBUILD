@@ -7,13 +7,13 @@ pkgname=(
     "ibus-openbangla-git"
     "fcitx5-openbangla-git"
 )
-pkgver=2.0.0.r121.g06d91e1
+pkgver=2.0.0.r128.g88f9532
 pkgrel=1
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
 url="https://openbangla.github.io"
 license=('GPL-3.0-or-later')
-makedepends=('cmake' 'rust' 'git' 'ibus' 'fcitx5' 'qt5-base')
+makedepends=('cmake' 'rust' 'git' 'ibus' 'fcitx5' 'qt5-base' 'qt5-svg')
 optdepends=('ttf-indic-otf: fonts for Bangla and other Indic scripts'
             'ttf-freebanglafont: miscellaneous fonts for Bangla script')
 source=(
