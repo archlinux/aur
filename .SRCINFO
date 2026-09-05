@@ -1,6 +1,6 @@
 pkgbase = lgtm-git
 	pkgdesc = Read what your coding agent just wrote, and point at the lines when you reply (git)
-	pkgver = 0.0.0.r0.0000000
+	pkgver = 0.1.1.r0.g396e514
 	pkgrel = 1
 	url = https://github.com/kunkka19xx/lgtm
 	arch = x86_64
