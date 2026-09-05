@@ -21,6 +21,8 @@ license=('MIT')
 provides=("${_appname}")
 
 makedepends=('cargo')
+depends=('glibc' 'libgcc')
+optdepends=('poppler' 'pandoc-cli' 'typst' 'chafa')
 
 options=('!strip' '!lto')
 
