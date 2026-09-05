@@ -1,0 +1,23 @@
+pkgbase = pdf-inspector-ocr
+	pkgdesc = Native CLI tools for PDF classification and Markdown extraction with OCR
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://github.com/firecrawl/pdf-inspector
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = BSD-3-Clause
+	makedepends = cargo
+	depends = ca-certificates
+	depends = gcc-libs
+	depends = glibc
+	depends = libpdfium
+	depends = onnxruntime>=1.27.0
+	provides = pdf-inspector=1.15.0
+	conflicts = pdf-inspector
+	options = !debug
+	options = !lto
+	source = pdf-inspector-1.15.0.tar.gz::https://github.com/firecrawl/pdf-inspector/archive/refs/tags/v1.15.0.tar.gz
+	sha256sums = 156fbfed4765a4a9e3974f8b402a4fd04420301d1d960c0ca2963a1b2ee8a29f
+
+pkgname = pdf-inspector-ocr
