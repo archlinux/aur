@@ -1,0 +1,17 @@
+pkgbase = ros2-jazzy-behaviortree_cpp
+	pkgdesc = Behavior Trees library for task planning and execution (v4, for ROS 2 Jazzy)
+	pkgver = 4.10.0
+	pkgrel = 1
+	url = https://index.ros.org/p/behaviortree_cpp/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = cppzmq
+	depends = ros2-jazzy
+	depends = sqlite
+	depends = zeromq
+	depends = tinyxml2
+	source = behaviortree_cpp-4.10.0.tar.gz::https://github.com/BehaviorTree/BehaviorTree.CPP/archive/refs/tags/4.10.0.tar.gz
+	sha256sums = c758fdedb3666f7ca4c9998a4c0b243251e0a5fb5d03c99e2ee63d615af7a71d
+
+pkgname = ros2-jazzy-behaviortree_cpp
