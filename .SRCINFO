@@ -1,0 +1,22 @@
+pkgbase = ros2-jazzy-slam_toolbox
+	pkgdesc = Slam Toolbox for lifelong mapping and localization in potentially massive maps with ROS 2 Jazzy
+	pkgver = 2.8.5
+	pkgrel = 1
+	url = https://github.com/SteveMacenski/slam_toolbox
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = cmake
+	makedepends = boost
+	depends = ros2-jazzy
+	depends = ros2-jazzy-bond
+	depends = ros2-jazzy-bondcpp
+	depends = ceres-solver
+	depends = suitesparse
+	depends = boost-libs
+	depends = onetbb
+	depends = qt5-base
+	depends = eigen
+	source = ros2-jazzy-slam_toolbox-2.8.5.tar.gz::https://github.com/SteveMacenski/slam_toolbox/archive/refs/tags/2.8.5.tar.gz
+	sha256sums = 657de32eb37b9e39da80882f356438df6aa8d8898a17acdb62f7a4d0fa8d3f70
+
+pkgname = ros2-jazzy-slam_toolbox
