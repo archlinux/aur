@@ -1,13 +1,24 @@
 pkgbase = devserial
 	pkgdesc = MCP server bridging serial hardware to LLMs via SQLite-backed buffer
-	pkgver = 0.1.4
+	pkgver = 0.1.7
 	pkgrel = 1
-	url = https://github.com/metaneutrons/devserial-mcp
+	url = https://github.com/metaneutrons/devserial
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-only
+	license = GPL-3.0-or-later
 	makedepends = cargo
-	source = devserial-0.1.4.tar.gz::https://github.com/metaneutrons/devserial-mcp/archive/refs/tags/v0.1.4.tar.gz
+	makedepends = git
+	makedepends = libxcb
+	depends = gcc-libs
+	depends = glibc
+	depends = libxkbcommon
+	depends = libx11
+	depends = wayland
+	depends = libgl
+	conflicts = devserial-bin
+	options = !lto
+	options = !debug
+	source = devserial::git+https://github.com/metaneutrons/devserial.git#tag=devserial-v0.1.7
 	sha256sums = SKIP
 
 pkgname = devserial
