@@ -7,7 +7,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=6.5.1.0
+pkgver=6.6.1.0
 pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
@@ -40,12 +40,12 @@ makedepends=(
     'cmake'
     'git'
     'qt5-tools')
-source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
+source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_OSX"
         'meganz-sdk'::'git+https://github.com/meganz/sdk.git'
         '010-megasync-sdk-fix-cmake-dependencies-detection.patch'
         '020-megasync-app-fix-cmake-dependencies-detection.patch'
         '030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch')
-sha256sums=('17d7beec0cb9560c7211db098a22b8daf81894dec110be27fd5303501f210b6b'
+sha256sums=('deb2bc2033bd02a92f5409c1ed89561a1b0ba8592d2c8162d0ae89fc9014964a'
             'SKIP'
             '5219537875385e9399b1a76a5775722053880cdfc0c33b5726504e020e11ad70'
             'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171'
@@ -81,7 +81,7 @@ build() {
         -DUSE_FFMPEG:BOOL='OFF' \
         -DUSE_FREEIMAGE:BOOL='OFF' \
         -DUSE_PDFIUM:BOOL='OFF' \
-        -Wno-dev
+        -Wno-author
     cmake --build build --target MEGAsync
 }
 
