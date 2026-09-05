@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=OpenClaw Linux companion
+Exec=openclaw-desktop
+StartupWMClass=openclaw-desktop
+Icon=openclaw-desktop
+Name=OpenClaw
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/openclaw;
