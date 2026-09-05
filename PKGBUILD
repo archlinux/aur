@@ -4,8 +4,8 @@ _pkgname=Equibop
 pkgname=equibop-bin
 _appname=equibop-desktop
 pkgver=3.3.0
-_electronversion=40
-pkgrel=2
+_electronversion=43
+pkgrel=3
 pkgdesc="A custom Discord desktop app with Equicord pre-installed (binary release)"
 arch=(
     'aarch64'
