@@ -1,7 +1,7 @@
 # Maintainer: stefonarch <standreas@riseup.net>
 _pkgname=niri-settings
 pkgname=$_pkgname-git
-pkgver=a396684
+pkgver=26.09.r0.g4069941
 pkgrel=1
 pkgdesc="GUI application for configuring niri in Qt"
 arch=('any')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/.r/;s/-/./"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

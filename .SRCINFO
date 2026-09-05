@@ -1,15 +1,16 @@
 pkgbase = niri-settings-git
 	pkgdesc = GUI application for configuring niri in Qt
-	pkgver = a396684
+	pkgver = 26.09.r0.g4069941
 	pkgrel = 1
 	url = https://github.com/stefonarch/niri-settings
 	arch = any
 	license = GPLv2.0
+	makedepends = git
 	depends = python
 	depends = python-pyqt6
 	depends = qt6-wayland
 	depends = niri
-	provides = niri-settings=a396684
+	provides = niri-settings=26.09.r0.g4069941
 	conflicts = niri-settings
 	source = git+https://github.com/stefonarch/niri-settings.git
 	md5sums = SKIP
