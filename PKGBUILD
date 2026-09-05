@@ -1,7 +1,7 @@
 # Maintainer: Donato Foglia <fogliadonato2@gmail.com>
 pkgname=nexus-aur-bin
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Un gestore di pacchetti grafico per Arch Linux e AUR scritto in Flutter"
 arch=('x86_64')
 url="https://github.com/IlNinjaDiBattipaglia/Nexus-AUR"
