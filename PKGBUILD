@@ -1,7 +1,7 @@
 # Maintainer: xifan <xifan2333@gmail.com>
 pkgname=fcitx5-vinput-lite-bin
 _pkgname=fcitx5-vinput-lite
-pkgver=2.3.13
+pkgver=2.3.14
 pkgrel=1
 pkgdesc="Voice input addon for Fcitx5, built without local ASR (binary release)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('fcitx5-vinput' 'fcitx5-vinput-bin')
 options=(!strip)
 install="${pkgname}.install"
 source_x86_64=("${_pkgname}-${pkgver}-1-x86_64.pkg.tar.zst::https://github.com/xifan2333/fcitx5-vinput/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('91818b3e6ba406f5cdf891e916ccedb7412d1fd154f640edfa4a59f5624be218')
+sha256sums_x86_64=('49e88b3ea0350f20c899ddf79437c02c12c19b3b87c4601d7a9150292ec42dab')
 
 package() {
 	cd "${srcdir}"
