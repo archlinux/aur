@@ -1,7 +1,7 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=spaceshot
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A batteries-included screenshot tool for wlroots-compatible Wayland compositors"
 arch=('x86_64' 'aarch64')
@@ -21,14 +21,12 @@ makedepends=(
     'meson'
     'python'
     'pkg-config'
-    'vala'
     'wayland-protocols'
-    'wlr-protocols'
 )
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('972d3385f835e57e86eca993736836ce761a41d34dfaba7552d8fd8cc65736c3aad64bbb80e6f8af48a5a47778094f4492a599817f4afba5609f49d1e4cc841e')
+sha512sums=('b399d1f64403dfb5bd1dc084a63471c1e19c7c5c14b868e0122bf44d9e788cf8200b0fe0b2e7d1a10f61c301a6d25b94d89bdfe841b0fa0a9fa60d780f7f3018')
 
 build() {
     export CFLAGS="$CFLAGS -fvisibility=hidden"
