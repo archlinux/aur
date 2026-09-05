@@ -1,7 +1,7 @@
 # Maintainer: GitanElyon gitanelyon@gmail.com
 
 pkgname=qst
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A Community Driven CLI Quick Script Tool"
 url="https://github.com/GitanElyon/qst"
@@ -11,7 +11,7 @@ arch=("x86_64")
 provides=("qst")
 conflicts=("qst")
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('e8cf165676957ba4ebe43e49d8c202630a360f535eafd77eab88b31e1a3379e0')
+sha256sums=('aa82898d828e3185d9f0c8b030afba324abf67a83e1d9c280f89fe95e1463e7b')
 
 
 prepare() {
