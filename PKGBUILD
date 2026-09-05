@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/vectorfruit/photomark"
 license=('GPL-3.0-or-later')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vectorfruit/photomark/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d2eee31891d769b94ac8b6c71da51cc5c093d5c985ee47e5fd56979f51b15f9d')
+sha256sums=('a7f12385b10a57d87730f5d5f5b2a68ef1cb20e3138d953c8d109a5fea0fa948')
 depends=(
   'cairo'
   'dbus'
