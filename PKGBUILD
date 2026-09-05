@@ -3,7 +3,7 @@
 _pyname="aardwolf"
 _pkgname="python-${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=0.2.13.r148.20250819.5d44d39
+pkgver=0.2.14+14.r168.20260816.115f1cc
 pkgrel=1
 pkgdesc="Asynchronous RDP protocol implementation for python."
 arch=(
