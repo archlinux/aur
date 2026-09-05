@@ -1,6 +1,6 @@
 pkgbase = qqmusic-tui-bin
 	pkgdesc = Linux terminal QQ Music player (.NET 10 Native AOT pre-built package)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Viemean/qqmusiclinux/tree/tui
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = qqmusic-tui-bin
 	optdepends = imagemagick: rounded corner cover rendering
 	provides = qqmusic-tui
 	conflicts = qqmusic-tui
-	source_x86_64 = qqmusic-tui-bin-0.1.1-1-x86_64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v0.1.1/qqmusic-tui-bin-0.1.1-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 8c31c3568d21303d85febc1ac0b402afa83c41fb5cbf6dd94f62c8199c3a987f
-	source_aarch64 = qqmusic-tui-bin-0.1.1-1-aarch64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v0.1.1/qqmusic-tui-bin-0.1.1-1-aarch64.pkg.tar.zst
-	sha256sums_aarch64 = 94708b43270a54f27e73383c4b1f5250a09c830d8e7cd4b0486fde68627ba2ca
+	source_x86_64 = qqmusic-tui-bin-0.1.2-1-x86_64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v0.1.2/qqmusic-tui-bin-0.1.2-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 26ac8230cf6b407d8a49a8f6937fdea752da6c2a2d36361b920f435e126ba705
+	source_aarch64 = qqmusic-tui-bin-0.1.2-1-aarch64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v0.1.2/qqmusic-tui-bin-0.1.2-1-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = b9ecab4c0db6da93d115e56596fb02c3ccedf6e0b4ca951d285982164ae2999b
 
 pkgname = qqmusic-tui-bin
