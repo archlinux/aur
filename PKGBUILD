@@ -2,7 +2,7 @@
 pkgname=aic8800-linux7-dkms
 pkgver=1.0.9
 pkgrel=1
-pkgdesc="BrosTrend / AIC8800 Wi-Fi driver (DKMS)"
+pkgdesc="AIC8800 (AX300) Wi-Fi driver with kernel 7.x.x support (DKMS)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/precomp666/aic8800-driver"
 license=('GPL')

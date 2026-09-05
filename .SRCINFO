@@ -1,5 +1,5 @@
 pkgbase = aic8800-linux7-dkms
-	pkgdesc = BrosTrend / AIC8800 Wi-Fi driver (DKMS)
+	pkgdesc = AIC8800 (AX300) Wi-Fi driver with kernel 7.x.x support (DKMS)
 	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/precomp666/aic8800-driver
