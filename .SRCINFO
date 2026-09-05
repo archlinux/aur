@@ -1,0 +1,30 @@
+pkgbase = ros2-jazzy-geographic_info
+	pkgdesc = ROS 2 geographic information messages and geodesy utilities
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/ros-geographic-info/geographic_info
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = ros2-jazzy-angles
+	makedepends = python-catkin_pkg
+	depends = ros2-jazzy
+	source = ros2-jazzy-geographic_info-1.0.6.tar.gz::https://github.com/ros-geographic-info/geographic_info/archive/refs/tags/1.0.6.tar.gz
+	sha256sums = 7ae385951816abde470463b0b7ed24ad5e4dce2d8c6a2f120e42e337b013ae18
+
+pkgname = ros2-jazzy-geographic_msgs
+	pkgdesc = ROS 2 messages for geographic information systems
+	depends = ros2-jazzy
+
+pkgname = ros2-jazzy-geodesy
+	pkgdesc = ROS 2 geodesy utilities for converting geographic coordinates
+	depends = ros2-jazzy
+	depends = ros2-jazzy-angles
+	depends = ros2-jazzy-geographic_msgs
+	depends = python-pyproj
+	depends = python-catkin_pkg
+
+pkgname = ros2-jazzy-geographic_info
+	pkgdesc = Metapackage for ROS 2 geographic information
+	depends = ros2-jazzy-geographic_msgs
+	depends = ros2-jazzy-geodesy
