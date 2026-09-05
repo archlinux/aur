@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=smooth-git
-pkgver=0.9.10.r49.g3bda449
+pkgver=0.9.10.r59.g65e9aee
 pkgrel=1
 pkgdesc="An object oriented C++ class library"
 arch=('x86_64')
@@ -40,5 +40,6 @@ build() {
 package() {
   cd "${pkgname%-git}"
   make DESTDIR="$pkgdir/" install
-  ln -s "/usr/lib/libsmooth-${pkgver%.*.r*}.so" "${pkgdir}/usr/lib/libsmooth.so"
+
+  ln -sv "/usr/lib/libsmooth-${pkgver%.*.r*}.so.0" "${pkgdir}/usr/lib/libsmooth.so"
 }
