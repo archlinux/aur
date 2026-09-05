@@ -1,7 +1,7 @@
 pkgbase = optimal-congress-git
 	pkgdesc = Command line tool to find an optimal, personal chedule for the Chaos Communication Congress (C3).
-	pkgver = 1.2.0+6.r133.20251230.c22c2d4
-	pkgrel = 2
+	pkgver = 1.2.0+35.r162.20260903.c7a3ca4
+	pkgrel = 1
 	url = https://github.com/top-on/optimal-congress
 	arch = any
 	license = MIT
@@ -19,8 +19,8 @@ pkgbase = optimal-congress-git
 	depends = python-pandera>=0.18.0
 	depends = python-requests
 	depends = python-rich
-	provides = optimal-congress=1.2.0+6.r133.20251230.c22c2d4
-	provides = python-optimal_congress=1.2.0+6.r133.20251230.c22c2d4
+	provides = optimal-congress=1.2.0+35.r162.20260903.c7a3ca4
+	provides = python-optimal_congress=1.2.0+35.r162.20260903.c7a3ca4
 	conflicts = optimal-congress
 	conflicts = python-optimal_congress
 	source = optimal-congress::git+https://github.com/top-on/optimal-congress.git
