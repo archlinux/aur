@@ -4,7 +4,7 @@
 pkgname=terragear-git
 _pkgname=terragear
 epoch=1
-pkgver=r1393.20250919.9a169113
+pkgver=r1418.20260809.eba49f26
 pkgrel=1
 pkgdesc="TerraGear is a collection of open-source tools and rendering libraries which can transform publically available GIS data in 3D representations (i.e. 3D models or 3D maps) of the earth for use in real time rendering projects."
 url="http://wiki.flightgear.org/TerraGear"
