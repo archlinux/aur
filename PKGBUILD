@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from DeepSeek V4 Flash.
+# Created with assistance from GLM 5.3 Flash.
 
 pkgname=zxc-full
-pkgver=0.13.3
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Asymmetric lossless compression library for ultra-fast decode (development: CLI + C library + headers + CMake — source build)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('cmake' 'gcc')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hellobertrand/zxc/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('46ff1c9f8c78c19cd891abbbf15b80025f6bbcedd515ddb6ce6c8d91175b5653')
+sha256sums=('dc33dfc9ab911f37d9e79f87c883955961f4b014fe07b3862dac028c077881b0')
 
 build() {
   cd "${srcdir}/zxc-${pkgver}"
