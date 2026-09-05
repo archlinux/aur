@@ -1,0 +1,12 @@
+pkgbase = clipy
+	pkgdesc = Manage clipboard history
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/szktkfm/clipy
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = clipy-0.2.0.tar.gz::https://codeload.github.com/szktkfm/clipy/tar.gz/refs/tags/v0.2.0
+	sha256sums = 2efe988a65463ac16545a2ee3a5ebdfbba80aabc68fa191c293744140870fadc
+
+pkgname = clipy
