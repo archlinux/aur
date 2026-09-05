@@ -1,0 +1,24 @@
+pkgbase = python-tuitorial
+	pkgdesc = A tutorial presentation tool using Textual, with syntax highlighting
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/basnijholt/tuitorial
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-versioningit
+	makedepends = git
+	depends = python
+	depends = python-chardet
+	depends = python-pyfiglet
+	depends = python-yaml
+	depends = python-rich
+	depends = python-textual
+	depends = python-watchfiles
+	source = tuitorial::git+https://github.com/basnijholt/tuitorial.git#tag=v0.16.0
+	sha256sums = a4db23840d3b1853b2b3914cb8b9f1a27da3151ca2c229ca6ffc08f7645259c5
+
+pkgname = python-tuitorial
