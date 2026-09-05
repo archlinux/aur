@@ -1,8 +1,8 @@
 # Maintainer: Albert Alvarez Estelles <114157589+kukapu@users.noreply.github.com>
 
 pkgname=wispr-flow-hyprland
-pkgver=1.6.447
-pkgrel=2
+pkgver=1.6.774
+pkgrel=1
 pkgdesc='Unofficial Wispr Flow desktop client packaged for Omarchy 4 (Hyprland Lua) on Arch'
 arch=('x86_64')
 url='https://github.com/kukapu/whsprflow-arch'
@@ -56,7 +56,7 @@ conflicts=('wispr-flow')
 options=('!strip' '!debug')
 install=wispr-flow-hyprland.install
 
-_support_commit='71ea2acdf0588b7aa58b69d459a3857e12ce3a7f'
+_support_commit='d092cfb3344715fcd794091feea9b1dd678df26b'
 _port_commit='6fb43cd809f8319a9e05da4b4e7a2d3264c126ab'
 _electron_version='42.3.0'
 _nupkg="WisprFlow-${pkgver}-full.nupkg"
@@ -74,9 +74,9 @@ source=(
 )
 noextract=("${_nupkg}" "${_electron_zip}")
 sha256sums=(
-  'c701c97a9bb2640dec3b93b58c042479a2d266d800a4f28425371e447ebbe4f1'
+  'e7433c7291a1828da4572cbfb1e93d7bbe754400bf17a90fbbd1385e599f545c'
   '365c68a8b3915a643a51634c298ac178cd0e441bd112707878f318cdef8dcac2'
-  'c5a6175c74028c30b11c9a96a295df1b47780929ceaf3753a96ffa855b591f03'
+  '36a33ee649c834d617cc5c90c06d618ffda4062287ce8c064e4837448e4bdddc'
   '487a667ca6a734b958c16cff1df74d9d44d2c18a6cccdb4dd51f6301a356c420'
   'c9bd0419f77efb3b5d3a691fda04e265f740ad8dc195f0b56003cdeac92e9a34'
   '3b65d10698a9c944c5494cfd9a5fa3f04dd7b5a02f8fce0ace9333b6f1646ba5'
