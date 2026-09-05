@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=SEPTABEE
+Comment=DAW with perfect parameter modulation and ridiculous levels of optimization
+Path=/opt/septabee
+Exec=septabee
+Terminal=false
+Categories=AudioVideo;Audio;
