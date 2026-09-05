@@ -1,0 +1,16 @@
+pkgbase = python-paragrep
+	pkgdesc = grep-like tool that searches for and displays entire paragraphs matching a pattern
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/bmc/paragrep
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = paragrep-3.3.0.tar.gz::https://codeload.github.com/bmc/paragrep/tar.gz/refs/tags/release-3.3.0
+	sha256sums = 86f7cfac16ee737546c6800871746b574427e1f1730a49d510fca825715bf961
+
+pkgname = python-paragrep
