@@ -9,7 +9,7 @@ pkgname=(
   "ttf-${pkgbase}"
   "woff-${pkgbase}"
 )
-pkgver=r68.20241213.5f56cf0
+pkgver=r77.20260312.a7d49ee
 pkgrel=1
 pkgdesc="A next-generation icon set for developers that extends octicons."
 arch=("any")
