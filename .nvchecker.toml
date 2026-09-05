@@ -1,0 +1,5 @@
+[ftlman]
+source = "github"
+github = "afishhh/ftlman"
+prefix = "v"
+use_latest_release = true
