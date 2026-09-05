@@ -1,0 +1,26 @@
+pkgbase = ros2-jazzy-control_toolbox
+	pkgdesc = Control modules useful across ROS 2 controllers, for Jazzy
+	pkgver = 4.11.1
+	pkgrel = 1
+	url = https://github.com/ros-controls/control_toolbox
+	arch = x86_64
+	license = Apache-2.0
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = ros2-jazzy-ros2_control_cmake
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-filters
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-realtime_tools
+	depends = ros2-jazzy-rsl
+	depends = ros2-jazzy-tcb_span
+	depends = ros2-jazzy-tl_expected
+	depends = tl-expected
+	depends = eigen
+	depends = fmt
+	source = ros2-jazzy-control_toolbox-4.11.1.tar.gz::https://github.com/ros-controls/control_toolbox/archive/refs/tags/4.11.1.tar.gz
+	sha256sums = a9cf0dc25f30cdab0b00e3c7e2579f3af4285bfa8c986a83c506fb1cebad228e
+
+pkgname = ros2-jazzy-control_toolbox
