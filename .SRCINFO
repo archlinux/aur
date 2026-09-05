@@ -1,0 +1,18 @@
+pkgbase = ros2-jazzy-realtime_tools
+	pkgdesc = Contains realtime-safe tools to share data between hard-realtime and other threads, for ROS 2 Jazzy
+	pkgver = 3.12.0
+	pkgrel = 1
+	url = https://github.com/ros-controls/realtime_tools
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = boost
+	makedepends = ros2-jazzy-ros2_control_cmake
+	depends = ros2-jazzy
+	depends = boost-libs
+	depends = libcap
+	depends = fmt
+	source = ros2-jazzy-realtime_tools-3.12.0.tar.gz::https://github.com/ros-controls/realtime_tools/archive/refs/tags/3.12.0.tar.gz
+	sha256sums = 2c0e60bf69b614bb98732fd042b142b82972799a68fef7e5e94e160bec386671
+
+pkgname = ros2-jazzy-realtime_tools
