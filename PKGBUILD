@@ -1,6 +1,6 @@
 # Maintainer: Kevin Budz <https://github.com/kevinbudz>
 pkgname=plasma6-applets-quickbar
-pkgver=0.2.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="Configurable Plasma 6 global menu panel widget (QuickBar)"
 arch=('x86_64' 'aarch64')
@@ -22,13 +22,14 @@ makedepends=(
     'extra-cmake-modules'
     'gcc'
     'kitemmodels'
+    'libx11'
     'libxtst'
 )
 optdepends=(
     'dolphin: Finder-style desktop menu (Dolphin menu bar on desktop)'
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('984e17d580aa6ad80abd32f313fb38d8a1458b7c3e7b63007f3b40f846d27962')
+sha256sums=('8cf58de913bd5b381d28ba2676e6c08cffb9b4ec7ecad7f2ebd04596b217684b')
 
 build() {
     cmake -B build -S "quickbar-$pkgver" \
