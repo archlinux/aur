@@ -1,15 +1,15 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=zeit
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Zeit, erfassen. A command line tool for tracking time. (https://codeberg.org/mrus/zeit)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mrusme/zeit"
 license=('unknown')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='3d685e5075d5516476a64f8fa41d3ecf6c3b7bc2'
+_commit='c1c43e8ee28a6ec4e3e625a31dc5f787ccf8ae69'
 source=("git+https://github.com/mrusme/zeit.git#commit=$_commit")
 sha256sums=('SKIP')
 

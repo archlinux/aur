@@ -1,7 +1,7 @@
 pkgbase = zeit
 	pkgdesc = Zeit, erfassen. A command line tool for tracking time. (https://codeberg.org/mrus/zeit)
-	pkgver = 1.0.2
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/mrusme/zeit
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = zeit
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/mrusme/zeit.git#commit=3d685e5075d5516476a64f8fa41d3ecf6c3b7bc2
+	source = git+https://github.com/mrusme/zeit.git#commit=c1c43e8ee28a6ec4e3e625a31dc5f787ccf8ae69
 	sha256sums = SKIP
 
 pkgname = zeit
