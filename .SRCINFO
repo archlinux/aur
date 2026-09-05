@@ -1,0 +1,22 @@
+pkgbase = aic8800-linux7-dkms
+	pkgdesc = BrosTrend / AIC8800 Wi-Fi driver (DKMS)
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://github.com/precomp666/aic8800-driver
+	install = aic8800-dkms.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL
+	makedepends = patch
+	depends = dkms
+	provides = aic8800
+	conflicts = aic8800
+	source = https://github.com/precomp666/aic8800-driver/archive/refs/heads/main.tar.gz
+	source = kernel-7.x.patch
+	source = dkms.conf
+	sha256sums = bd040773025cfebf6f252a24864b5e7797b92e023fb4e34e0035cbdc05987c82
+	sha256sums = 701ba39a185158b1e30b0ea48ff251d01b19d6c404ff5d5b77eca096482fab12
+	sha256sums = c6f0ed565247bfb04ba06898b0c41557684b2481410443d9d5b01ac2e37426dd
+
+pkgname = aic8800-linux7-dkms

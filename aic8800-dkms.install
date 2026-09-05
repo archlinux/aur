@@ -1,0 +1,11 @@
+pre_install() {
+    # Find and remove manually installed aic8800 modules
+    # across all installed kernels to prevent DKMS block
+    echo ">> Removing old manual driver installations for clean DKMS build..."
+    find /lib/modules/*/kernel/drivers/net/wireless/aic8800/ -type f -name "*.ko" -delete 2>/dev/null || true
+    rm -rf /lib/modules/*/kernel/drivers/net/wireless/aic8800/ 2>/dev/null || true
+}
+
+pre_upgrade() {
+    pre_install
+}
