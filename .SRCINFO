@@ -1,0 +1,20 @@
+pkgbase = moarchy-store-git
+	pkgdesc = Curated store of Linux phone apps that actually fit a small screen
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-store
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = polkit
+	depends = pacman
+	provides = moarchy-store
+	conflicts = moarchy-store
+	source = moarchy-store::git+https://github.com/SimonSchubert/moarchy-store.git
+	sha256sums = SKIP
+
+pkgname = moarchy-store-git
