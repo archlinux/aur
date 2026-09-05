@@ -1,0 +1,15 @@
+pkgbase = python-json-leaves
+	pkgdesc = Extract the leaves from a JSON file and show the paths to them
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/talwrii/json-leaves
+	arch = any
+	license = unknown
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = json-leaves-1.2.2.tar.gz::https://codeload.github.com/talwrii/json-leaves/tar.gz/refs/tags/1.2.2
+	sha256sums = b841079d509679455c26dd971cbdac33fa84e6f043f7cce21aeef1cc5d4488d4
+
+pkgname = python-json-leaves
