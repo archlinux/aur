@@ -1,6 +1,6 @@
 pkgbase = sonora
 	pkgdesc = A native music streaming client, built with Rust and GPUI
-	pkgver = 0.30.0
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://github.com/nolight132/sonora
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = sonora
 	optdepends = pipewire-alsa: audio output through PipeWire
 	optdepends = pulseaudio-alsa: audio output through PulseAudio
 	options = !lto
-	source = https://github.com/nolight132/sonora/archive/refs/tags/v0.30.0/sonora-0.30.0.tar.gz
-	sha256sums = 80f89ada3fa7936f52de9c026565cda8884541c18b4ac2832fecb0a0b7de9fee
+	source = https://github.com/nolight132/sonora/archive/refs/tags/v0.31.0/sonora-0.31.0.tar.gz
+	sha256sums = 804bc6b321cb874ea0ca04a91119b68c8dd5fceabb446e0cc3c72740376f3783
 
 pkgname = sonora
