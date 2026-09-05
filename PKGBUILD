@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=arctis-sound-manager
-pkgver=1.4.20
+pkgver=1.4.21
 pkgrel=1
 pkgdesc="Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround"
 arch=('any')
@@ -75,7 +75,7 @@ optdepends=(
 makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('1446dfddd9d56afd958610f07a12065b48cb7197f599abb5fa1607353010c440')
+sha256sums=('2e1b9c2185a37c286ed927de2af502d4cf1e0ab54f825833e46d0097daba897b')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
