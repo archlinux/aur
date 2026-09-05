@@ -14,7 +14,7 @@
 # (ssh://aur@aur.archlinux.org/movie-planner.git), pushed there by
 # the release job, not from here.
 pkgname=movie-planner
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="CLI that logs watched movies and syncs them to a CalDAV calendar"
 arch=('any')
@@ -39,7 +39,7 @@ makedepends=(
 _tag="movie-planner-v${pkgver}"
 _srcdir="movie-planner-${_tag}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alrayyes/movie-planner/archive/${_tag}.tar.gz")
-sha256sums=('a02f7684662a682c4e3a7c645dc835659b915b933622e7189277f0957f170b96')
+sha256sums=('eee1fb153fc0b3e719dc7e0112e8d4d6d095d75ec75ab8e77f0ecce4a31edea8')
 
 build() {
   cd "$_srcdir"
