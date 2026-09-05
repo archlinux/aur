@@ -2,7 +2,7 @@
 pkgname=boca
 _pkgname=BoCA
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A component library used by the fre:ac audio converter"
 arch=('x86_64')
@@ -37,4 +37,6 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
+
+  ln -sv "/usr/lib/libboca-$pkgver.so.3" "$pkgdir/usr/lib/libboca.so"
 }
