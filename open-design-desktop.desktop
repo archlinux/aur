@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Open Design
+GenericName=AI Design Studio
+Comment=Local-first design product: design engine and canvas for coding agents
+Exec=open-design-desktop %U
+Icon=open-design
+Terminal=false
+Categories=Development;GUIDesigner;
+StartupWMClass=Open Design
+MimeType=x-scheme-handler/od;
+Keywords=design;claude;deepseek;ai;figma;prototype;
