@@ -19,6 +19,10 @@ pkgname = lua-lsqlite3
 	depends = sqlite
 	depends = lua
 
+pkgname = lua54-lsqlite3
+	depends = sqlite
+	depends = lua53
+
 pkgname = lua53-lsqlite3
 	depends = sqlite
 	depends = lua53

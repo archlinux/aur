@@ -2,7 +2,7 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=lsqlite3
-pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua54-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.9.7
 _fossilver=v${pkgver//./}
 _rockrel=1
@@ -32,6 +32,11 @@ _package_helper() {
 
 package_lua-lsqlite3() {
 	depends+=(lua)
+	_package_helper 5.5
+}
+
+package_lua54-lsqlite3() {
+	depends+=(lua53)
 	_package_helper 5.4
 }
 
