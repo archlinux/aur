@@ -1,0 +1,20 @@
+pkgbase = hmcl-ce-bin
+	pkgdesc = Community Edition of Hello Minecraft! Launcher.社区驱动、跨平台且可扩展的 Minecraft 启动器。实例、模组、整合包与账户，在一个干净的工作台里各就各位。
+	pkgver = 26.8.2
+	pkgrel = 1
+	url = https://github.com/HMCL-Community/HMCL-CE
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0 License
+	depends = java-runtime-common
+	depends = java-environment-common
+	depends = jdk25-openjdk
+	options = !strip
+	options = !debug
+	options = !emptydirs
+	source_x86_64 = https://github.com/HMCL-Community/HMCL-CE/releases/download/v26.8-release.2/HMCL-CE-26.8-release.2.deb
+	sha256sums_x86_64 = 47da036354264f81b844b0e292b03c7dd6236ed52cff6c40af4bdb8d0185a570
+	source_aarch64 = https://github.com/HMCL-Community/HMCL-CE/releases/download/v26.8-release.2/HMCL-CE-26.8-release.2.deb
+	sha256sums_aarch64 = 47da036354264f81b844b0e292b03c7dd6236ed52cff6c40af4bdb8d0185a570
+
+pkgname = hmcl-ce-bin
