@@ -1,0 +1,11 @@
+pkgbase = zz-lang
+	pkgdesc = Temporary placeholder for zz-lang
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/zaidejjo/zz
+	arch = x86_64
+	license = MIT
+	source = https://github.com/zaidejjo/zz
+	sha256sums = SKIP
+
+pkgname = zz-lang
