@@ -1,7 +1,7 @@
 pkgbase = gir-to-d
 	pkgdesc = Create D bindings from GObject introspection files
 	pkgver = 0.23.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gtkd-developers/gir-to-d
 	arch = x86_64
 	license = LGPL-3.0-or-later
@@ -10,7 +10,9 @@ pkgbase = gir-to-d
 	depends = liblphobos
 	source = gir-to-d-0.23.4.tar.gz::https://github.com/gtkd-developers/gir-to-d/archive/refs/tags/0.23.4.tar.gz
 	source = add-main-context-pusher.patch::https://gitlab.alpinelinux.org/alpine/aports/-/raw/c461e10b77635f71803e52b3c681a5de91f9c78f/community/gir-to-d/add-main-context-pusher.patch
+	source = fix-inout-linkedhashmap.patch
 	sha512sums = 2f35445f3f59c24990c1c76fd4e7cebe1c7bdbf6596d48d316507423af7234bbfd6b61d163aec64f6ceea6d738a8eb7e71097abff8b40c072e4f9cee83a70716
 	sha512sums = 0df0def246e355099f05f34ac0efba205933c1db969ffd13098f89126ffea157a1fedbb67a94b23d19670ac409b1b53f93e4a8fdaf73d8316390c2542d0d5db4
+	sha512sums = d8d67894fc1bccde65b610786ac8a4dd785edd41d88502501f032c46a329e5a1f6428f54aa22ad1e47c22567d9c0f75564959680bb68cbfb8a3758c61cdecbeb
 
 pkgname = gir-to-d
