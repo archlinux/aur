@@ -6,7 +6,7 @@ _pyname="cpuset"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
 
-pkgver=1.6.2.r89.20231027.4f80263
+pkgver=1.6.2+1.r90.20260524.db68d6d
 pkgrel=1
 pkgdesc="Cpuset is a Python application to make using the cpusets facilities in the Linux kernel easier."
 arch=('any')
