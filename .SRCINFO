@@ -1,0 +1,26 @@
+pkgbase = python-orchat
+	pkgdesc = A powerful CLI for chatting with AI models through OpenRouter
+	pkgver = 1.4.6
+	pkgrel = 1
+	url = https://github.com/oop7/OrChat
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-tiktoken
+	depends = python-rich
+	depends = python-dotenv
+	depends = python-colorama
+	depends = python-packaging
+	depends = python-pyfzf
+	depends = python-cryptography
+	depends = python-prompt_toolkit
+	depends = python-beautifulsoup4
+	depends = python-html2text
+	source = orchat-1.4.6.tar.gz::https://codeload.github.com/oop7/OrChat/tar.gz/refs/tags/v1.4.6
+	sha256sums = fbe070754e2d66c3f724e496241975f0cd4e209c7c590cca395c38cabd3b65ae
+
+pkgname = python-orchat
