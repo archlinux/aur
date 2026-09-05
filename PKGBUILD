@@ -1,15 +1,15 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=wacli
-pkgver=0.17.1
-pkgrel=3
+pkgver=0.17.2
+pkgrel=1
 pkgdesc="WhatsApp CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/steipete/wacli"
 license=('unknown')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='97e14efdf91a7c9de1b68845321eb6355943b5f5'
+_commit='aba0f35c7558e5de3050f1d53483c1f3505c55f2'
 source=("git+https://github.com/steipete/wacli.git#commit=$_commit")
 sha256sums=('SKIP')
 
