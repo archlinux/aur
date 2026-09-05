@@ -1,7 +1,7 @@
 pkgname=nein
 _repo=Nein
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple nano like text editor written in Python"
 arch=('any')
 url="https://github.com/RangS-1/nein"
@@ -9,7 +9,6 @@ license=('MIT')
 
 depends=(
     'python'
-    'ncurses'
 )
 
 makedepends=(

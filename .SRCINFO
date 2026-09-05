@@ -1,7 +1,7 @@
 pkgbase = nein
 	pkgdesc = A simple nano like text editor written in Python
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RangS-1/nein
 	arch = any
 	license = MIT
@@ -10,8 +10,7 @@ pkgbase = nein
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = curses
 	source = nein-1.1.0.tar.gz::https://github.com/RangS-1/Nein/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 54bfc5e06f40a1a3b8191821c3e1fc129a714fc78eaa5dcc84259f898fa657ab
+	sha256sums = 39ff4eea06300f291413385a03c8c1b2cb2bd80360554c69ef2e7950e942c885
 
 pkgname = nein
