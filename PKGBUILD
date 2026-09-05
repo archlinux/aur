@@ -27,12 +27,7 @@ check() {
 
 prepare() {
     cd "$srcdir/${pkgname%-git}" || return
-    local file
-    while read -r file; do
-        sed -i "1s:#\!.*/env \(.*\)$:#\!/usr/bin/\1:" "$file" # use explicit shebang
-        sed -i "\:/usr/local/etc:s:/usr/local::g" "$file"     # use system etc
-        sed -i "\:/usr/local:s:/usr/local:/usr:g" "$file"     # use system prefix
-    done < <(git ls-files)
+    PREFIX=/usr ./scripts/prepare
 }
 
 build() {
