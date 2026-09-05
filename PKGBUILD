@@ -22,6 +22,9 @@ license=('MIT')
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
 
+depends=('glibc' 'libgcc')
+optdepends=('poppler' 'pandoc-cli' 'typst' 'chafa')
+
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[0]}.tar.gz")
