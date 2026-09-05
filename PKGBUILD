@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=wacli
 pkgver=0.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc="WhatsApp CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/steipete/wacli"
@@ -25,6 +25,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
   go build -buildmode=pie \
+    -tags sqlite_fts5 \
     -trimpath \
     -mod=readonly \
     -modcacherw \
