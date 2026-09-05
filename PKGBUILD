@@ -1,6 +1,6 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=vernier
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Cross-platform pixel-measurement overlay in Rust"
 arch=('x86_64' 'aarch64')
@@ -14,6 +14,7 @@ license=('MIT' 'Apache-2.0')
 # but AUR users see a confusing prompt instead — turn it off here.
 options=(!lto !debug)
 depends=(
+    'grim'
     'fontconfig'
     'freetype2'
     'libglvnd'
@@ -26,14 +27,13 @@ makedepends=(
     'pkgconf'
 )
 optdepends=(
-    'grim: capture held-rect regions via wlr-screencopy'
     'slurp: region selection for the external screenshot shortcut'
     'wl-clipboard: copy screenshots / measurements to the clipboard'
     'libnotify: post-capture notifications'
     'xdg-desktop-portal-hyprland: global hotkey via the GlobalShortcuts portal'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jondkinney/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e67b369c8c3d06e0bf4eaa7a90f64ea69fee587a096cef31b4bc622716344381')
+sha256sums=('2db6f11af031009e282fe0f0508594173242edb3f881ca131357eee5ba4c8d03')
 
 prepare() {
     cd "$pkgname-$pkgver"
