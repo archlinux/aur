@@ -4,6 +4,7 @@ pkgbase = rustypaint
 	pkgrel = 1
 	url = https://github.com/ItzELECTR0/RustyPaint
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git
