@@ -1,15 +1,15 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=brev-cli
-pkgver=0.6.334
-pkgrel=3
+pkgver=0.6.335
+pkgrel=1
 pkgdesc="Connect your laptop to cloud computers. Follow to stay updated about our product"
 arch=('x86_64' 'aarch64')
 url="https://github.com/brevdev/brev-cli"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='81eb373cd3f2b57b8a03a1d62ee09531c04e5ab3'
+_commit='e955eb979937624a2e80fcc513044d2cedf609a5'
 source=("git+https://github.com/brevdev/brev-cli.git#commit=$_commit")
 sha256sums=('SKIP')
 
