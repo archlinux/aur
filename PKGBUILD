@@ -1,6 +1,6 @@
 pkgname=cristalix-wl-fix
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper script to run Cristalix on Wayland/NVIDIA"
 arch=('any')
 url="https://codeberg.org/maseckt/cristalix-wl-fix"

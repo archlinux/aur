@@ -1,18 +1,18 @@
 pkgbase = cristalix-wl-fix
 	pkgdesc = Wrapper script to run Cristalix on Wayland/NVIDIA
-	pkgver = 1.0.2
-	pkgrel = 1
-	url = https://github.com/maseckt/cristalix-wl-fix
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = https://codeberg.org/maseckt/cristalix-wl-fix
 	arch = any
 	license = MIT
 	depends = java-runtime>=21
 	depends = curl
 	provides = cristalix
 	conflicts = cristalix
-	source = cristalix-wl-fix-1.0.2.tar.gz::https://github.com/maseckt/cristalix-wl-fix/releases/download/v1.0.2/cristalix-wl-fix-1.0.2.tar.gz
-	source = cristalix-wl-fix-1.0.2.tar.gz.sig::https://github.com/maseckt/cristalix-wl-fix/releases/download/v1.0.2/cristalix-wl-fix-1.0.2.tar.gz.sig
+	source = cristalix-wl-fix-1.0.3.tar.gz::https://codeberg.org/maseckt/cristalix-wl-fix/releases/download/v1.0.3/cristalix-wl-fix-1.0.3.tar.gz
+	source = cristalix-wl-fix-1.0.3.tar.gz.sig::https://codeberg.org/maseckt/cristalix-wl-fix/releases/download/v1.0.3/cristalix-wl-fix-1.0.3.tar.gz.sig
 	validpgpkeys = C6F9309AEEA733B868FF9049463FBD17A7D691B8
-	sha256sums = a8a3ed7edac1a8c7f3f1037d0dde293871cf942e44be706dd5acb61bf8afae8c
+	sha256sums = e68a3001313161d7e40a7e7db78fe71be8e45598a79ed560b9950ed9f81871e8
 	sha256sums = SKIP
 
 pkgname = cristalix-wl-fix
