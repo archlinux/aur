@@ -7,3 +7,4 @@
 !plplot-numpy-init.patch
 !plplot-signal.patch
 !plplot-swig.patch
+!plplot-swig-2.patch
