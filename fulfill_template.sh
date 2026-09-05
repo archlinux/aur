@@ -47,8 +47,9 @@ tab() {
 
 # Callback variables
 
-VID="$(_get_oem_field 'VID')"
-PIDS="$(_get_oem_field 'PIDS')"
+# Sysfs exposes USB IDs in lowercase and udev string matches are case-sensitive.
+VID="$(_get_oem_field 'VID' | tr '[:upper:]' '[:lower:]')"
+PIDS="$(_get_oem_field 'PIDS' | tr '[:upper:]' '[:lower:]')"
 
 
 # Other variables
@@ -67,4 +68,3 @@ rm "${_TMP_FILE_}"
 
 
 # EOF
-

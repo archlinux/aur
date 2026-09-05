@@ -1,24 +1,27 @@
-# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Maintainer: grufo <grossomalpelo AT gmail DOT com>
+# Contributor: Neurofibromin <tqwcafc9vgfuxwze6f AT tutanota DOT com>
 
 pkgname='hpuld'
 pkgver='1.00.39.12_00.15'
-pkgrel=3
+pkgrel=4
 pkgdesc='HP Unified Linux Driver'
 arch=('i686' 'x86_64')
 url='https://support.hp.com/'
-license=('custom')
-depends=('libcups' 'sane')
+license=('LicenseRef-HP')
+depends=('libcups' 'sane' 'libxml2-legacy' 'libusb')
 optdepends=('hal: hardware abstraction layer')
+conflicts=('samsung-unified-driver-printer' 'samsung-unified-driver-scanner')
+options=('!debug' '!strip')
 source=("https://ftp.hp.com/pub/softlib/software13/printers/MFP170/uld-hp_V${pkgver}.tar.gz"
 	"https://ftp.hp.com/pub/softlib/software13/printers/IPG/M433/uld-hp.tar.gz"
        'fulfill_template.sh')
 install="${pkgname}.install"
 md5sums=('b20c5f5273f8d18077fe553919c7e3e9'
          '5355df6678e547b4de1d9f7a4b660f10'
-         '056fbbf22b4e3b11c49fd33f88827304')
+         '7eb585631b18d8093128458268a8fff7')
 sha1sums=('51ed2e1265659cedf47fa5e7b9f8693a3d8cabaa'
           '030fe724635ad9d32cc5bc787b78f3a201707d26'
-          '7c43df7f4a024a8aab3a47d5620b41c252f6cbde')
+          '2390d3a2bff730988d379163694194fdc50eb502')
 
 # Extract only the most recent version of the `uld` package...
 noextract=("uld-hp.tar.gz")
@@ -90,8 +93,11 @@ package() {
 	# Follow the original `/opt/hp/scanner/.files`...
 
 	install -dm755 "${pkgdir}/etc/sane.d"
-	install -dm755 "${pkgdir}/etc/udev/rules.d"
+	install -dm755 "${pkgdir}/etc/sane.d/dll.d"
+	install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
 	install -dm755 "${pkgdir}/usr/share/hal/fdi/policy/10osvendor"
+
+	printf '%s\n' 'smfp' > "${pkgdir}/etc/sane.d/dll.d/hpuld"
 
 	install -Dm644 "${srcdir}/${_pkgcodename}/noarch/oem.conf" \
 		"${pkgdir}/opt/hp/scanner/share/oem.conf"
@@ -104,9 +110,9 @@ package() {
 
 	"${srcdir}/fulfill_template.sh" "${srcdir}/${_pkgcodename}/noarch/oem.conf" \
 		"${srcdir}/${_pkgcodename}/noarch/etc/smfp.rules.in" \
-		"${pkgdir}/etc/udev/rules.d/${_udev_rule_number}-smfp_${_vendor_lc}.rules"
+		"${pkgdir}/usr/lib/udev/rules.d/${_udev_rule_number}-smfp_${_vendor_lc}.rules"
 
-	chmod 644 "${pkgdir}/etc/udev/rules.d/${_udev_rule_number}-smfp_${_vendor_lc}.rules"
+	chmod 644 "${pkgdir}/usr/lib/udev/rules.d/${_udev_rule_number}-smfp_${_vendor_lc}.rules"
 
 	"${srcdir}/fulfill_template.sh" "${srcdir}/${_pkgcodename}/noarch/oem.conf" \
 		"${srcdir}/${_pkgcodename}/noarch/etc/smfp.fdi.in" \
@@ -251,4 +257,3 @@ package() {
 	touch "${pkgdir}/opt/smfp-common/mfp/uninstall/guiuninstall"
 
 }
-

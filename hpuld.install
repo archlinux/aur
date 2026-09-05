@@ -17,11 +17,5 @@ post_install() {
 	fi
 
 	echo
-	echo '----------------------------------------'
-	echo
-	echo 'If you want to use the scanner, make sure that the `smfp` backend is listed in'
-	echo '/etc/sane.d/dll.conf'
-	echo
 
 }
-
