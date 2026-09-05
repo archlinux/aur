@@ -1,0 +1,24 @@
+pkgbase = reagent
+	pkgdesc = Agentic retrosynthesis planner scoring routes on seven objectives with RDKit-grounded chemistry
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/rugbedbugg/ReAgent
+	install = reagent.install
+	arch = x86_64
+	license = Apache-2.0
+	depends = python311
+	depends = glibc
+	depends = gcc-libs
+	optdepends = ollama: score routes with a local model via --local
+	options = !strip
+	options = !debug
+	source = reagent-0.2.0.tar.gz::https://github.com/rugbedbugg/ReAgent/releases/download/v0.2.0/reagent-0.2.0.tar.gz
+	source = requirements.lock
+	source = reagent.sh
+	source = reagent-download-data.sh
+	sha256sums = 8105e34e4c594c175a9fbf5b2070da520358efc2efeeb9ac2dd47ebcf649c696
+	sha256sums = 77e6ec5e25d9255824884e5b360797bd0c69501230d525ada52d198384aa75c6
+	sha256sums = 583982a4cd3c6f918313a1520ad3fad40a87025be4ba76e40a24b57d6158598f
+	sha256sums = 86688a17f0a5c685a67dfc40fed579150d89845014e3af904518a0568273c6af
+
+pkgname = reagent

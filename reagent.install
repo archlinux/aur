@@ -1,0 +1,29 @@
+post_install() {
+    cat <<'MSG'
+ReAgent is installed at /opt/reagent (a self-contained venv on Python 3.11).
+
+Two one-time steps before the first plan:
+
+  reagent-download-data ~/.local/share/reagent
+  reagent build-stock-cache
+
+The first pulls the pretrained USPTO expansion policy, the filter policy and
+the ZINC stock, about 760 MB. The second hashes that stock so later runs need
+roughly 0.6 GB of memory instead of 4.9 GB.
+
+Then:
+
+  reagent plan "CC(=O)Oc1ccccc1C(=O)O"
+
+The agent layer is optional. It needs either a local Ollama server (--local)
+or ANTHROPIC_API_KEY (--assess). Planning, features and evaluation run without
+either.
+MSG
+}
+
+post_upgrade() {
+    cat <<'MSG'
+The venv under /opt/reagent was rebuilt. Downloaded model data and stock caches
+outside that directory are untouched.
+MSG
+}

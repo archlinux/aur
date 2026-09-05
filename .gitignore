@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/venv/
+/*.tar.gz
+/*.tar.zst
+/*.pkg.tar.zst
