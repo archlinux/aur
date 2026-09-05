@@ -2,28 +2,31 @@
 
 _pkgname=minidlna
 pkgname=minidlna-custom-icon
-pkgver=1.3.2
-pkgrel=3
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="A DLNA/UPnP-AV Media server (aka ReadyDLNA) with patch to set a custom icon"
 arch=('x86_64')
 url="https://sourceforge.net/projects/minidlna/"
 license=('GPL')
-depends=('libexif' 'libjpeg' 'libid3tag' 'flac' 'libvorbis' 'ffmpeg' 'sqlite')
+depends=('libexif' 'libjpeg-turbo' 'libid3tag' 'flac' 'libvorbis' 'ffmpeg' 'sqlite')
 makedepends=('git')
 provides=('minidlna')
 conflicts=('minidlna' 'readymedia-transcode-git')
 backup=('etc/minidlna.conf')
 source=("minidlna::git+https://git.code.sf.net/p/minidlna/git#tag=v${pkgver//./_}"
-	minidlna-custom-icon.patch
-	minidlna.service)
-sha512sums=('SKIP'
+        minidlna-custom-icon.patch
+        minidlna.service
+        ffmpeg7.patch)
+sha512sums=('7048a86a72d6ce23de2292120427a258993028d8ec7fef68a4879c2a41ab24c07d68526d92a477a5b20c21ee8cfa1a758e5d7ed34dd666d8325eb75be37cce93'
             'dbeee5950fa05dfc52ee7561d80bc34314165348aaec3e77386d25db56bd46931b3ad8f7017e6248fe96c498a2bb7d03fb514c71b0a7bb1ac8c8ade13a5aba60'
-            'fc5692adf537e203a0466a923d350498faba4f29a219bb6e1ad527fc267d6143403fe8b4c6f5d746805f451142b1ba3ed4e9bb57e445255f3769df8e037a8b66')
+            'fc5692adf537e203a0466a923d350498faba4f29a219bb6e1ad527fc267d6143403fe8b4c6f5d746805f451142b1ba3ed4e9bb57e445255f3769df8e037a8b66'
+            '0bff7af02ae2d6b0d6f1e4c0ee26cd18f156bfb99377a365c8ff2c3c5555a5e979c215423579a45f82e0cb1fce8628de2c1ca51a28fa07a1d336b9ecc561a7f3')
 
 prepare() {
   cd "$srcdir/$_pkgname"
   sed -i 's|-Werror||g' configure.ac
   sed -i 's|#user=.*|user=minidlna|g' minidlna.conf
+  patch -p1 -i ../ffmpeg7.patch # Fix build with ffmpeg 7
   patch -Np1 -i ../minidlna-custom-icon.patch
 }
 
