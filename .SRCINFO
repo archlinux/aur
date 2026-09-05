@@ -1,0 +1,22 @@
+pkgbase = ros2-jazzy-vision_msgs
+	pkgdesc = ROS 2 messages for common computer vision tasks
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://index.ros.org/p/vision_msgs/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = python-numpy
+	depends = ros2-jazzy
+	source = ros2-jazzy-vision_msgs-4.1.1.tar.gz::https://github.com/ros-perception/vision_msgs/archive/refs/tags/4.1.1.tar.gz
+	sha256sums = 1f54c590e5195dc3112e682eaf0abab47d244bc739e61102bdf183a8fe79f124
+
+pkgname = ros2-jazzy-vision_msgs
+	pkgdesc = ROS 2 messages for common computer vision tasks
+	depends = ros2-jazzy
+
+pkgname = ros2-jazzy-vision_msgs_rviz_plugins
+	pkgdesc = RViz plugins for visualizing vision_msgs
+	depends = ros2-jazzy
+	depends = ros2-jazzy-vision_msgs
+	depends = python-numpy
