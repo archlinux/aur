@@ -1,0 +1,12 @@
+pkgbase = tascli
+	pkgdesc = A simple, fast, local task and record manager in CLI
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/Aperocky/tascli
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = tascli-0.14.1.tar.gz::https://codeload.github.com/Aperocky/tascli/tar.gz/refs/tags/v0.14.1
+	sha256sums = e7ce1b10383724bac04ca8927895693945838e8bee5c43cf89c4ab458b65fb1d
+
+pkgname = tascli
