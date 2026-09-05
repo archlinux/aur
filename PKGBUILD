@@ -1,13 +1,14 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=qt5-quickcontrols-nemo
 pkgver=5.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="QML components for Nemomobile, based on QtQuickControls"
 arch=('x86_64')
 url="https://github.com/nemomobile-ux/qtquickcontrols-nemo"
 license=('LGPL' 'Apache')
-depends=('nemo-qml-plugin-configuration'
+depends=('qt5-nemo-qml-plugin-configuration'
          'nemo-theme-glacier' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-virtualkeyboard')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/nemomobile-ux/qtquickcontrols-nemo.git#tag=$pkgver")
