@@ -8,23 +8,7 @@ url="https://github.com/Bali10050/Darkly"
 license=('GPL-2.0-or-later')
 
 depends=(
-  'kdecoration'
-  'qt6-declarative'
-  'kcoreaddons'
-  'kcmutils'
-  'kcolorscheme'
-  'kconfig'
-  'kguiaddons'
-  'kiconthemes'
-  'kwindowsystem'
-  'qt5-declarative'
-  'qt5-x11extras'
-  'kcmutils5'
-  'frameworkintegration5'
-  'kconfigwidgets5'
-  'kiconthemes5'
-  'kirigami2'
-  'kwindowsystem5'
+  'plasma-workspace'
 )
 
 makedepends=(
