@@ -1,0 +1,12 @@
+pkgbase = ren-find
+	pkgdesc = Batch rename utility that takes find-formatted lines via stdin
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/robenkleene/ren-find
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = ren-find-0.0.4.tar.gz::https://codeload.github.com/robenkleene/ren-find/tar.gz/refs/tags/0.0.4
+	sha256sums = 9f1d7e20773985a3dbdd707a409585ea686d95949b0a02bffda2000207e21267
+
+pkgname = ren-find
