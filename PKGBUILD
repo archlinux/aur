@@ -6,7 +6,7 @@ _appname=${_gitname%code}
 pkgname=${_gitname}
 pkgdesc="A terminal IDE written in Rust"
 
-pkgver=0.18.0
+pkgver=0.22.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ makedepends=('cargo')
 options=('!strip' '!lto')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('b83b2ed5938a653129bbe3b44516285b4d18177bddd679f8d5cbea55239a48ce')
+sha256sums=('68e1954c3d39bcd90606ccb3edee9920c50593a8c613e7963fe00af10175e11f')
 
 
 prepare() {
