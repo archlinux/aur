@@ -2,7 +2,7 @@
 
 pkgname=hermes-one-bin
 _pkgname=hermes-desktop
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc="Hermes One — native desktop app for installing, configuring, and chatting with Hermes Agent"
 arch=('x86_64')
@@ -20,14 +20,15 @@ depends=(
   'libsecret'
 )
 provides=('hermes-one')
-conflicts=('hermes-one')
+conflicts=('hermes-one' 'hermes-agent-desktop-bin')
+replaces=('hermes-agent-desktop-bin')
 options=('!strip')
 source=(
   "$_pkgname-$pkgver.deb::https://github.com/fathah/hermes-desktop/releases/download/v$pkgver/hermes-desktop_${pkgver}_amd64.deb"
   "LICENSE::https://raw.githubusercontent.com/fathah/hermes-desktop/main/LICENSE"
 )
 sha256sums=(
-  '9bbc2e0a828b706a3e47f2bde5a4fec0c1d709f1df21a92a1ecf55bdfa6b6732'
+  '47f3cdef9b1903d7882f6e7162a75f736a05033815f740eb85d0f29a2a0f3d2d'
   '85d12b0f8894e7095f904a9a89fcfaea1b0d037cbfb4a12aba81daa87bcdbcd4'
 )
 noextract=("$_pkgname-$pkgver.deb")
