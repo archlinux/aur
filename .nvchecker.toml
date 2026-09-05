@@ -1,0 +1,5 @@
+[vinet-bin]
+source = "github"
+github = "alalfymansour/vinet"
+use_latest_release = true
+prefix = "v"

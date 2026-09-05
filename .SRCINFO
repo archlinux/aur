@@ -1,0 +1,27 @@
+pkgbase = vinet-bin
+	pkgdesc = Per-process network usage for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alalfymansour/vinet
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0
+	provides = vinet
+	conflicts = vinet
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/alalfymansour/vinet/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/alalfymansour/vinet/v0.1.0/LICENSE
+	source = vinet.sysusers
+	source = vinet.tmpfiles
+	source = vinet.service
+	sha256sums = 7f693709718a323274b1adb4755c5ca388c7f8fc16b5672c43e45f1dc0521207
+	sha256sums = edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6
+	sha256sums = 5d09a5d45b638cdb6c9ebdc051336e8fcb4d860c4c3d582c551ba0b3acd1481a
+	sha256sums = 9e66d565ed54f95a856c1ab203975e921d11a1b6281ee6715460a59df46c2a5b
+	sha256sums = 12f6708266bfc52bb1a44d6711aa3a7b1d0051b02378e7bb81a6be320bf0ab65
+	source_x86_64 = vinet-x86_64-0.1.0::https://github.com/alalfymansour/vinet/releases/download/v0.1.0/vinet-linux-amd64
+	sha256sums_x86_64 = 99186cb3e35f4d54a4780bbd2becb221f9cb5d1ac3383fd5f8e1b3309e480ccf
+	source_aarch64 = vinet-aarch64-0.1.0::https://github.com/alalfymansour/vinet/releases/download/v0.1.0/vinet-linux-arm64
+	sha256sums_aarch64 = 900b15a48f44413ef224e3e15cdcfe43d80f9b671105e6d9170a905f3faddee5
+
+pkgname = vinet-bin

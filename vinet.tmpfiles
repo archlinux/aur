@@ -1,0 +1,2 @@
+d /var/lib/vinet 0775 root wheel -
+d /var/log/vinet 0775 root wheel -

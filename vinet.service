@@ -1,0 +1,24 @@
+[Unit]
+Description=ViNet eBPF Network Tracker
+After=network.target
+
+[Service]
+User=vinet
+Group=wheel
+ExecStart=/usr/bin/vinet daemon
+Restart=on-failure
+Environment=VINET_DB=/var/lib/vinet/data.db
+UMask=0027
+LimitMEMLOCK=infinity
+CapabilityBoundingSet=CAP_SYS_ADMIN CAP_BPF CAP_SYS_PTRACE
+AmbientCapabilities=CAP_SYS_ADMIN CAP_BPF CAP_SYS_PTRACE
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/lib/vinet /var/log/vinet
+StandardOutput=append:/var/log/vinet/daemon.log
+StandardError=append:/var/log/vinet/daemon.log
+
+[Install]
+WantedBy=multi-user.target
