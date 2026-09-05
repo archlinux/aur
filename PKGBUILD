@@ -1,9 +1,9 @@
-# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 
 _pyname="aardwolfgui"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=0.0.8+3.r31.20250101.8741a77
+pkgver=0.0.8+4.r32.20260620.61b1da9
 pkgrel=1
 pkgdesc="Asynchronous RDP protocol implementation for python: GUI."
 arch=(
@@ -109,7 +109,7 @@ package() {
   done
   printf '%s\n' " --> installing license ..."
   for _licensefile in "${_licensefiles[@]}"; do
-    install -D -v -m644 "${_licensefile}" "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${_licensefile}")"
+    install -D -v -m644 "${_licensefile[@]}" "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${_licensefile}")"
     ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/$(basename "${_licensefile}")" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_licensefile}")"
   done
 }
