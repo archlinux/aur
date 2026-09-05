@@ -8,7 +8,7 @@ makedepends=('tar')
 depends=("glibc" "java-runtime")
 arch=('x86_64')
 license=('custom:"Super Micro Computer"')
-url="http://www.supermicro.com/products/nfo/ipmi.cfm"
+url="https://www.supermicro.com/en/support/resources/downloadcenter/smsdownload"
 
 backup=(
     "opt/${pkgname}/account.properties"
