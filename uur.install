@@ -1,0 +1,15 @@
+post_install() {
+    update-desktop-database -q /usr/share/applications 2>/dev/null || true
+    /usr/lib/uur/post-install-message 2>/dev/null || {
+        echo "Next: uur doctor; uur setup --accept-eula; uur run"
+    }
+}
+
+post_upgrade() {
+    update-desktop-database -q /usr/share/applications 2>/dev/null || true
+    /usr/lib/uur/post-install-message 2>/dev/null || true
+}
+
+post_remove() {
+    update-desktop-database -q /usr/share/applications 2>/dev/null || true
+}
