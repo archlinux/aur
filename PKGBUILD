@@ -1,7 +1,7 @@
 pkgname=python-wyoming
 _pkgname=wyoming
 pkgdesc="Peer-to-peer protocol for voice assistants"
-pkgver=1.9.0
+pkgver=1.10.2
 pkgrel=1
 arch=(any)
 url="https://github.com/OHF-Voice/wyoming"
@@ -15,7 +15,7 @@ optdepends=(
 	'python-swagger-ui-py: http'
 )
 source=("git+https://github.com/OHF-Voice/wyoming.git#tag=v${pkgver}")
-b2sums=('34f7600f17730d66f8d98a8f607f2441de24b743ccd2d1377c03e3978b69e665e03ffe109ca4fb06f95908e033128308a6e5791134d3b1fae2f592153309d6eb')
+b2sums=('462db93e731ba6ca5c34c5bf7c7a8cc75cf09a061730aacf13b4dc71ea4a0c0b0b1a41c5a0b93657d5e809b45e3e3fd66577090d19b8853f53afd81194c05e87')
 
 build() {
   cd $_pkgname
