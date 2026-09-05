@@ -56,7 +56,6 @@ depends=(
   ffmpeg4.4
   lapack
   ntsync-autoload
-  dmemcg-booster
 )
 depends_x86_64=(
   lib32-alsa-plugins
@@ -100,6 +99,11 @@ optdepends=(
   lutris
   heroic-games-launcher
   umu-launcher
+  dmemcg-booster
+  gamescope
+  plasma-foreground-booster
+  hyprland-focused-booster
+  niri-focused-booster
 )
 install=${pkgname}.install
 
