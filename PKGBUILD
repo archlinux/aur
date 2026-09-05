@@ -18,18 +18,18 @@ makedepends=("clang" "cmake" "patchelf")
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-bin")
 
-source=("$pkgname::git+https://github.com/xurei/shadertastic.git")
+source=("${pkgname}::git+https://github.com/xurei/shadertastic.git")
 sha256sums=('SKIP')
 
 options=(!debug)
 
 pkgver() {
-  cd "$pkgname" || exit
+  cd "${pkgname}" || exit
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$pkgname" || exit
+  cd "${pkgname}" || exit
 
   git submodule update --init --recursive
 }
@@ -37,7 +37,7 @@ prepare() {
 build() {
   cd ${pkgname} || exit
 
-  cmake -S . -B build -DBUILD_OUT_OF_TREE=On
+  cmake -S . -B build -DBUILD_OUT_OF_TREE=On -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
 
