@@ -1,5 +1,5 @@
 # Maintainer: Dany Thinnes <dany@projekt-hirnfrei.de>
-pkgname=hdmi-viewer
+pkgname=hdmiviewer
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Schlanker Qt6/C++ Live-Viewer für HDMI-Grabber (V4L2 + ALSA), Companion zu OBS Studio"
