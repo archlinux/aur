@@ -1,0 +1,18 @@
+pkgbase = retroart
+	pkgdesc = Convert photos into retro-style pixel art
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Raj-Jagadeesh-A-P/RetroArt
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-opencv
+	source = retroart-1.0.0.tar.gz::https://github.com/Raj-Jagadeesh-A-P/RetroArt/archive/v1.0.0.tar.gz
+	sha256sums = 6bb6149bbd15b865d097a89ade8fa77cda0c00ed1a866a5e45ceeff567f7a47a
+
+pkgname = retroart
