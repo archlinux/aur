@@ -1,0 +1,72 @@
+--- a/source/gtd/LinkedHasMap.d
++++ b/source/gtd/LinkedHasMap.d
+@@ -40,7 +40,7 @@
+ 	 * Looks up key, if it exsists returns the corresponding value
+ 	 * else evaluates and returns defaultValue.
+ 	 */
+-	inout(Value) get(Key key, lazy inout(Value) defaultValue = Value.init) inout pure @safe
++	Value get(Key key, lazy Value defaultValue = Value.init) pure @safe
+ 	{
+ 		if ( key !in data )
+ 			return defaultValue;
+@@ -117,7 +117,7 @@
+ 	/**
+ 	 * Indexing operators yield or modify the value at a specified index.
+ 	 */
+-	inout(Value) opIndex(Key key) inout pure @safe
++	Value opIndex(Key key) pure @safe
+ 	{
+ 		return data[key].val;
+ 	}
+@@ -172,10 +172,10 @@
+ 	/**
+ 	 * in operator. Check to see if the given element exists in the container.
+ 	 */
+-	inout(Value)* opBinaryRight(string op)(Key key) inout nothrow pure @safe
++	Value* opBinaryRight(string op)(Key key) nothrow pure @safe
+ 	if (op == "in")
+ 	{
+-		inout(Node*)* node = key in data;
++		Node** node = key in data;
+ 
+ 		if ( node is null )
+ 			return null;
+@@ -222,7 +222,7 @@
+ 	/**
+ 	 * Returns: true if this and that are equal.
+ 	 */
+-	bool opEquals(inout typeof(this) that) inout nothrow pure @safe
++	bool opEquals(typeof(this) that) nothrow pure @safe
+ 	{
+ 		return data == that.data;
+ 	}
+@@ -230,11 +230,11 @@
+ 	/**
+ 	 * Returns: An dynamic array, the elements of which are the keys in the LinkedHashmap.
+ 	 */
+-	@property inout(Key)[] keys() inout @safe
++	@property Key[] keys() @safe
+ 	{
+-		inout(Key)[] k;
++		Key[] k;
+ 
+-		inout(Node)* node = front;
++		Node* node = front;
+ 
+ 		while ( node !is null )
+ 		{
+@@ -248,11 +248,11 @@
+ 	/**
+ 	 * Returns: An dynamic array, the elements of which are the values in the LinkedHashmap.
+ 	 */
+-	@property inout(Value)[] values() inout @safe
++	@property Value[] values() @safe
+ 	{
+-		inout(Value)[] v;
++		Value[] v;
+ 
+-		inout(Node)* node = front;
++		Node* node = front;
+ 
+ 		while ( node !is null )
+ 		{
