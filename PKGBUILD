@@ -7,7 +7,7 @@
 # `conflicts` alone still let a `slack-desktop-wayland` upgrade take the slot.
 pkgname=slack-desktop-wayland-jetm
 _debname=slack-desktop
-pkgver=4.51.191
+pkgver=4.52.155
 pkgrel=1
 pkgdesc='Slack Desktop (Beta) for Linux, launched as a native Wayland client'
 arch=('x86_64')
@@ -45,7 +45,7 @@ options=('!strip')
 
 source=("https://downloads.slack-edge.com/desktop-releases/linux/x64/${pkgver}/${_debname}-${pkgver}-amd64.deb")
 noextract=("${_debname}-${pkgver}-amd64.deb")
-b2sums=('d06a3a0880f776ccf702481bd0009da0ec60d250811ded0c7cc654678b0bcfe97c2d8e75f9e2d54938ff1b4d04d741a7afb4f19714e885de06ed6dbb116d8dcf')
+b2sums=('91a9f799642cd910810a5778c03721d02d2bc98fb76988ae1adb5870ccca03761b37c14d7ba0a83942fb689e2f101d744eccb6292e941db77e8564b782a47e6b')
 
 package() {
   # Match data.tar.* rather than data.tar.xz: Debian tooling has been moving
