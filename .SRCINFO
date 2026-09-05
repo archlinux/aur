@@ -1,0 +1,27 @@
+pkgbase = paseo-cli-git
+	pkgdesc = Command-line interface for controlling Paseo AI coding agents (git - built from main)
+	pkgver = 0.7.2.r35.g78b285059
+	pkgrel = 1
+	url = https://github.com/getpaseo/paseo
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = npm
+	depends = nodejs>=22
+	depends = bash
+	depends = glibc
+	depends = gcc-libs
+	provides = paseo
+	provides = paseo-cli
+	conflicts = paseo
+	conflicts = paseo-bin
+	conflicts = paseo-cli
+	conflicts = paseo-cli-bun
+	conflicts = paseo-cli-beta
+	conflicts = paseo-cli-edge
+	options = !strip
+	source = paseo::git+https://github.com/getpaseo/paseo.git#branch=main
+	sha256sums = SKIP
+
+pkgname = paseo-cli-git
