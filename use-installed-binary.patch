@@ -3,7 +3,7 @@
 @@ -47,9 +47,22 @@
  # capabilities at need instead of carrying 91 schemas plus a long policy in every
  # turn. Naming the workflow, not the catalogue, is what keeps that promise.
- 
+
 +def _server_command() -> str:
 +    """Executable for the MCP server entry.
 +
@@ -23,7 +23,7 @@
 +    "command": _server_command(),
 +    "args": [],
  }
- 
+
  def _hook_invocation() -> str:
 @@ -477,7 +490,7 @@
          servers = {}

@@ -3,7 +3,7 @@
 
 pkgname=jcodemunch-mcp
 _pkgname=jcodemunch_mcp
-pkgver=1.108.316
+pkgver=1.108.317
 pkgrel=1
 pkgdesc="Token-efficient MCP server for source code exploration via tree-sitter AST parsing"
 arch=(any)
@@ -44,11 +44,16 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pkgname::1}/$pkgname/$_pkgname-$pkgver.tar.gz"
   use-installed-binary.patch
 )
-sha256sums=('ccb2c3a806a8684d1e2a0eefb45aa646eb9986fdb651c7a7d030a658a538c64e'
-            '2c9366c1b19aa5afd196a197e07bb7c54f57daedc13be7de1dada4c3261642bd')
+sha256sums=('80563ed16e473c1e4a29df81a6936b5794cf8a4fa7685a0cda3d107b9061ff93'
+            'e02de7f798b232c1e373066d83d8fa0c801c539bf25cc423b2b2383080f17e1c')
 
 prepare() {
   cd "$_pkgname-$pkgver"
+  # Normalize upstream source and patch so applying it is independent of the
+  # archive's line-ending style. Upstream has shipped both CRLF and LF here.
+  sed -i 's/\r$//' src/jcodemunch_mcp/cli/init.py
+  sed -i 's/\r$//' "$srcdir/use-installed-binary.patch"
+
   # `jcodemunch-mcp init` otherwise writes MCP/`claude mcp add` configs that
   # launch the server via `uvx jcodemunch-mcp`. uvx isn't a dependency (and may
   # be absent), and even when present it fetches a separate copy from PyPI
