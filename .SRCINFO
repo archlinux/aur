@@ -1,0 +1,20 @@
+pkgbase = python-securo-git
+	pkgdesc = Encrypt and decrypt files/folders with symmetric encryption
+	pkgver = r7.5920acb
+	pkgrel = 1
+	url = https://github.com/iunary/securo
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cryptography
+	provides = securo
+	conflicts = securo
+	source = securo::git+https://github.com/iunary/securo.git
+	sha256sums = SKIP
+
+pkgname = python-securo-git
