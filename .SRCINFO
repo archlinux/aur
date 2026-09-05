@@ -1,6 +1,6 @@
 pkgbase = obsidian
 	pkgver = 1.13.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obsidianmd/obsidian-releases
 	arch = x86_64
 	arch = aarch64

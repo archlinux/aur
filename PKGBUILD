@@ -3,7 +3,7 @@
 pkgbase=obsidian
 pkgname=(${pkgbase}-{bin,appimage})
 pkgver=1.13.7
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/obsidianmd/obsidian-releases"
 license=('custom')
@@ -46,7 +46,7 @@ package_obsidian-bin() {
     install="obsidian-bin.install"
 
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
-    sed -i "s|/opt/Obsidian/obsidian|obsidian|" "${pkgdir}/usr/share/applications/obsidian.desktop"
+    sed -i "s|/opt/Obsidian/obsidian|obsidian|" "${pkgdir}/usr/share/applications/md.obsidian.Obsidian.desktop"
     install -Dm755 "${srcdir}/obsidian-bin" "${pkgdir}/usr/bin/obsidian"
     install -Dm644 "${pkgdir}/opt/Obsidian/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
     install -Dm644 "${pkgdir}/opt/Obsidian/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
@@ -65,11 +65,11 @@ package_obsidian-appimage() {
     chmod +x "${srcdir}/${pkgbase}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgbase}-${pkgver}-${CARCH}.AppImage" --appimage-extract
 
-    sed -i "s|AppRun|obsidian|" "${srcdir}/squashfs-root/obsidian.desktop"
+    sed -i "s|AppRun|obsidian|" "${srcdir}/squashfs-root/md.obsidian.Obsidian.desktop"
 
     install -Dm755 "${srcdir}/${pkgbase}-${pkgver}-${CARCH}.AppImage" "${pkgdir}/opt/${pkgname}/obsidian.AppImage"
     install -Dm755 "${srcdir}/obsidian-appimage" "${pkgdir}/usr/bin/obsidian"
-    install -Dm644 "${srcdir}/squashfs-root/obsidian.desktop" "${pkgdir}/usr/share/applications/obsidian.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/md.obsidian.Obsidian.desktop" "${pkgdir}/usr/share/applications/md.obsidian.Obsidian.desktop"
     install -Dm644 "${srcdir}/squashfs-root/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
     install -Dm644 "${srcdir}/squashfs-root/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
     cp -rf "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
