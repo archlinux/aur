@@ -1,0 +1,21 @@
+pkgbase = python-lotc-git
+	pkgdesc = Video downloader, trimmer and merger for the terminal
+	pkgver = r57.bc236a2
+	pkgrel = 1
+	url = https://github.com/ranelpadon/lord-of-the-clips
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = yt-dlp
+	depends = python-moviepy
+	provides = lotc
+	conflicts = lotc
+	source = lotc::git+https://github.com/ranelpadon/lord-of-the-clips.git
+	sha256sums = SKIP
+
+pkgname = python-lotc-git
