@@ -6,12 +6,12 @@ _appname=${_gitname}
 pkgname=${_gitname}-rs-bin
 pkgdesc="Terminal-based force-directed graph visualizer for markdown wikilinks"
 
-pkgver=0.4.16
+pkgver=1.0.0
 pkgrel=1
 _gitversion=v${pkgver}
 
-arch=('x86_64')
-_barch=('x86_64')
+arch=('x86_64' 'aarch64')
+_barch=('x86_64-unknown-linux-gnu' 'aarch64-unknown-linux-gnu')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -25,14 +25,12 @@ conflicts=("${pkgname%%-bin}")
 depends=('glibc' 'libgcc')
 optdepends=("clin")
 
-options=(!strip)
+options=('!strip')
 
-source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
-        "README-${pkgver}.md::${_ghurlraw}/README.md")
-source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-rs-$(echo "${pkgver}" | awk -F. '{$NF++; print}' OFS=.)-${_barch[0]}.tar.gz")
-sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '26a5f10047204671ede536d81504fe90994880dfc6586962e912650b1881cc3e')
-sha256sums_x86_64=('a44cafd97bd041bffa175568bff244496ef7837704d48cb012bccd3011930aa5')
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
+source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
+sha256sums_x86_64=('544ae74302d094d6e699aae5e859d8d6baee59857b5ff0aa74b8246de9fac55c')
+sha256sums_aarch64=('9370417515b441759c2d666806374dac27b26ee839723b4568e45d128871a4c7')
 
 
 package() {
@@ -40,7 +38,7 @@ package() {
 
 	install -Dm755 "${_gitname}" "${pkgdir}/usr/bin/${_appname}"
 
-	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
