@@ -290,12 +290,36 @@ def cmd_watch(args):
     except KeyboardInterrupt:
         print("\nExiting monitor.")
 
+def cmd_help(args, parsers):
+    if hasattr(args, "topic") and args.topic:
+        if args.topic in parsers:
+            parsers[args.topic].print_help()
+            return
+        print(f"Unknown help topic '{args.topic}'. Available commands: status, set, daemon, watch, help", file=sys.stderr)
+        return
+    parsers["_root"].print_help()
+
 def main():
     p = argparse.ArgumentParser(
         prog="nouveau-ctrl",
-        description="Nouveau Fermi GPU Performance & Reclocking Management Utility"
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        description="""🎮 Nouveau Fermi GPU Performance & Reclocking Management Utility
+
+Commands:
+  status                   Show live GPU clocks, P-States, temperature, and active 3D clients
+  set <03|07|0f|10|auto>   Lock performance state or return to dynamic governor
+  daemon [action]          Manage the background governor (start|stop|status|restart)
+  watch [-i SECONDS]       Live monitoring dashboard (top-like view)
+  help [command]           Show this help message or details for a command
+
+Examples:
+  nouveau-ctrl status
+  nouveau-ctrl set 0f       # Lock to full 3D performance (590 MHz)
+  nouveau-ctrl set auto     # Return to dynamic frequency governor
+  nouveau-ctrl watch -i 0.5 # Fast refresh live monitor
+"""
     )
-    sub = p.add_subparsers(dest="cmd", required=True)
+    sub = p.add_subparsers(dest="cmd", help="Command to run")
 
     s = sub.add_parser("status", help="Show current GPU clocks, P-States, temperature, and 3D clients")
     s.set_defaults(func=cmd_status)
@@ -312,8 +336,21 @@ def main():
     s4.add_argument("-i", "--interval", type=float, default=1.0, help="Refresh interval in seconds (default: 1.0)")
     s4.set_defaults(func=cmd_watch)
 
+    parsers = {"_root": p, "status": s, "set": s2, "daemon": s3, "watch": s4}
+
+    s5 = sub.add_parser("help", help="Display help information")
+    s5.add_argument("topic", nargs="?", help="Specific command to get help for")
+    s5.set_defaults(func=lambda args: cmd_help(args, parsers))
+
+    if len(sys.argv) == 1:
+        p.print_help()
+        sys.exit(0)
+
     args = p.parse_args()
-    args.func(args)
+    if hasattr(args, "func"):
+        args.func(args)
+    else:
+        p.print_help()
 
 if __name__ == "__main__":
     main()
