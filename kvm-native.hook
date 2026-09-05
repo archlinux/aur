@@ -1,0 +1,16 @@
+# Warns when a kernel outside the DKMS tree's 7.2.x range is installed.
+#
+# Without this the failure is silent: DKMS skips the build, the stock modules
+# load, the guest boots normally, and the only symptom is three detections
+# coming back.
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Description = Checking that vfio-native-kvm-dkms can build for the new kernel...
+When = PostTransaction
+NeedsTargets
+Exec = /usr/bin/sh -c 'while read -r p; do k=${p#usr/lib/modules/}; k=${k%/vmlinuz}; case "$k" in 7.2.*) ;; *) echo ">>> vfio-native-kvm-dkms carries 7.2.3 sources and will not build for $k."; echo ">>> Stock KVM loads there and SVM_EXCEPTIONS, KVM_INTERCEPTION and DBVM come back.";; esac; done'

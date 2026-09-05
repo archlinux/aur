@@ -1,0 +1,26 @@
+pkgbase = vfio-native-kvm-dkms
+	pkgdesc = KVM modules patched to raise the exceptions the architecture specifies (DKMS, 7.2.x kernels)
+	pkgver = 7.2.3
+	pkgrel = 1
+	url = https://git.archworks.co/sandwich/vfio-native
+	install = vfio-native-kvm-dkms.install
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	optdepends = vfio-native: the setup and verification tooling
+	provides = vfio-native-kvm
+	conflicts = vfio-native-kvm
+	noextract = linux-7.2.3.tar.xz
+	source = git+https://git.archworks.co/sandwich/vfio-native.git#tag=v1.1.0
+	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz
+	source = dkms.conf
+	source = dkms-out-of-tree.patch
+	source = kvm-native.hook
+	sha256sums = SKIP
+	sha256sums = 8ba259e8e7b13ec6ef0941c8a39ad90b24bd4a4d6c0010ba6bafb794550ecd03
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vfio-native-kvm-dkms

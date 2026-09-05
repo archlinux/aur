@@ -1,0 +1,27 @@
+Build arch/x86/kvm as an external module: the include path and the shared
+virt/kvm makefile must come from the module tree, not from the headers.
+--- a/arch/x86/kvm/Makefile
++++ b/arch/x86/kvm/Makefile
+@@ -1,9 +1,9 @@
+ # SPDX-License-Identifier: GPL-2.0
+ 
+-ccflags-y += -I $(srctree)/arch/x86/kvm
++ccflags-y += -I $(src)
+ ccflags-$(CONFIG_KVM_WERROR) += -Werror
+ 
+-include $(srctree)/virt/kvm/Makefile.kvm
++include $(src)/../../../virt/kvm/Makefile.kvm
+ 
+ kvm-y			+= x86.o emulate.o irq.o lapic.o cpuid.o pmu.o mtrr.o \
+ 			   debugfs.o mmu/mmu.o mmu/page_track.o mmu/spte.o
+--- a/arch/x86/kvm/trace.h
++++ b/arch/x86/kvm/trace.h
+@@ -1968,7 +1968,7 @@
+ #endif /* _TRACE_KVM_H */
+ 
+ #undef TRACE_INCLUDE_PATH
+-#define TRACE_INCLUDE_PATH ../../arch/x86/kvm
++#define TRACE_INCLUDE_PATH .
+ #undef TRACE_INCLUDE_FILE
+ #define TRACE_INCLUDE_FILE trace
+ 
