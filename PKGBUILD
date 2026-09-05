@@ -3,7 +3,7 @@
 _gitname="plutovg"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
-pkgver=1.3.2.r287.20251118.5695a71
+pkgver=1.3.3+14.r313.20260716.f63f9b5
 pkgrel=1
 pkgdesc="A standalone 2D vector graphics library in C."
 arch=(
