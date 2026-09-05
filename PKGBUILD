@@ -3,7 +3,7 @@
 
 _pkgname=mullvad-udp-over-tcp
 pkgname="${_pkgname}-git"
-pkgver=0.4.0+35.r201.20250918.13e894a
+pkgver=0.4.0+45.r211.20260817.06e6438
 pkgrel=1
 pkgdesc="Proxy UDP traffic over a TCP stream (provides tcp2udp and udp2tcp binaries). Latest git checkout."
 url="https://github.com/mullvad/udp-over-tcp"
