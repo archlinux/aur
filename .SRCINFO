@@ -1,6 +1,6 @@
 pkgbase = win12-desktop-bin
 	pkgdesc = Desktop version for Win12, the web desktop experience with app ecosystem and AI Copilot.
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/win12-online/win12-desktop
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = win12-desktop-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/win12-online/win12-desktop/releases/download/v0.2.6/Win12_0.2.6_amd64.deb
-	sha256sums_x86_64 = 2c7004391909d927515611da72ec3c2e2e2b6a3c378529b1ddd231a3b9106862
+	source_x86_64 = https://github.com/win12-online/win12-desktop/releases/download/v0.2.7/Win12_0.2.7_amd64.deb
+	sha256sums_x86_64 = c3d2ff6d5472d5eadbe24b1ea2c41079523db1cf56aa9f971cc3ee7fef603d1a
 
 pkgname = win12-desktop-bin
