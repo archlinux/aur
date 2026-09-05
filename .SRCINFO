@@ -1,11 +1,12 @@
 pkgbase = nlarn
 	pkgdesc = A remake of the roguelike game Larn
-	pkgver = 0.7.9
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://nlarn.github.io
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gcc
+	makedepends = gettext
 	makedepends = make
 	depends = glib2
 	depends = glibc
@@ -13,7 +14,7 @@ pkgbase = nlarn
 	depends = ncurses
 	depends = zlib
 	options = !debug
-	source = nlarn-0.7.9.tar.gz::https://github.com/nlarn/nlarn/releases/download/NLarn-0.7.9/nlarn-0.7.9.tar.gz
-	sha256sums = 63a3341da5a8a00ab90c88d472a5e552d93754af2dc1d07f76c17f32cc9d8029
+	source = nlarn-0.8.0.tar.gz::https://github.com/nlarn/nlarn/releases/download/NLarn-0.8.0/nlarn-0.8.0.tar.gz
+	sha256sums = 8f265e30d22c2f366178b0e4133eea852acf697f5b1999e7fa0425026d4fc7cf
 
 pkgname = nlarn
