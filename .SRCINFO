@@ -1,0 +1,35 @@
+pkgbase = ros2-jazzy-gps_umd
+	pkgdesc = ROS 2 GPS drivers and message definitions
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/swri-robotics/gps_umd
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = gpsd
+	depends = ros2-jazzy
+	source = ros2-jazzy-gps_umd-3.1.1.tar.gz::https://github.com/swri-robotics/gps_umd/archive/refs/tags/3.1.1.tar.gz
+	sha256sums = fa5f550c141a1412b633c072b0b6ea352b977050383506e75dff50f9436ee9ec
+
+pkgname = ros2-jazzy-gps_msgs
+	pkgdesc = ROS 2 GPS message definitions
+	depends = ros2-jazzy
+
+pkgname = ros2-jazzy-gps_tools
+	pkgdesc = Python utilities for working with GPS data in ROS 2
+	depends = ros2-jazzy
+	depends = ros2-jazzy-gps_msgs
+	depends = python
+
+pkgname = ros2-jazzy-gpsd_client
+	pkgdesc = ROS 2 client node for the gpsd GPS daemon
+	depends = ros2-jazzy
+	depends = ros2-jazzy-gps_msgs
+	depends = gpsd
+
+pkgname = ros2-jazzy-gps_umd
+	pkgdesc = Metapackage pulling in the full gps_umd stack
+	depends = ros2-jazzy-gps_msgs
+	depends = ros2-jazzy-gps_tools
+	depends = ros2-jazzy-gpsd_client
