@@ -1,6 +1,6 @@
 pkgbase = julius-bin
 	pkgdesc = Simple LLM service identification - translate IP:Port to Ollama, vLLM, LiteLLM, or 60+ other AI services in seconds
-	pkgver = 1.4.14
+	pkgver = 1.4.16
 	pkgrel = 1
 	url = https://github.com/praetorian-inc/julius
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = julius-bin
 	provides = julius
 	conflicts = julius
 	options = !strip
-	source_x86_64 = julius-x86_64-1.4.14.tgz::https://github.com/praetorian-inc/julius/releases/download/v1.4.14/julius_1.4.14_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2f23bef76d21c7043ab3a2bf3ddddde3511943b6daede4beaa4423bde0897b91
-	source_aarch64 = julius-aarch64-1.4.14.tgz::https://github.com/praetorian-inc/julius/releases/download/v1.4.14/julius_1.4.14_linux_arm64.tar.gz
-	sha256sums_aarch64 = 655d4a0d5fa86abf6dfbee2f96eebe6320bad1bb5e916a3e2bc234df3fc84fbb
+	source_x86_64 = julius-x86_64-1.4.16.tgz::https://github.com/praetorian-inc/julius/releases/download/v1.4.16/julius_1.4.16_linux_amd64.tar.gz
+	sha256sums_x86_64 = fdeec1ae477e5eb44ab3683e929f2c3db8ffb311802bd67bb555b0f21db63744
+	source_aarch64 = julius-aarch64-1.4.16.tgz::https://github.com/praetorian-inc/julius/releases/download/v1.4.16/julius_1.4.16_linux_arm64.tar.gz
+	sha256sums_aarch64 = 60e415ae898378c1f463c9a5e374baf6db11dfacc6f3aa8ec4a89aa2f69dbdda
 
 pkgname = julius-bin
