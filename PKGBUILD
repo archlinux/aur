@@ -19,9 +19,9 @@ checkdepends=('python-pytest'
               'python-h5json'
               'python-requests-unixsocket') # pytz <- h5json
 #             'python-adal'
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+#source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
 #source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/${_commit}.tar.gz"
-#source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/refs/tags/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/bytesio.py"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_inotify_example.py"
 #        "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py"
