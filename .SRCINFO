@@ -1,0 +1,15 @@
+pkgbase = python-shellkit
+	pkgdesc = Unix-like educational terminal toolkit for learning CLI internals
+	pkgver = 0.2.0_beta3
+	pkgrel = 1
+	url = https://github.com/pokeyaro/shellkit
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = shellkit-0.2.0_beta3.tar.gz::https://codeload.github.com/pokeyaro/shellkit/tar.gz/refs/tags/v0.2.0-beta3
+	sha256sums = 1cfcb322df94c7d15cc372cac3f5cb0853f7ed5ba2cc58206b2d8eb79daeafa1
+
+pkgname = python-shellkit
