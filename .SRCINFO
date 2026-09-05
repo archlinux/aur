@@ -6,6 +6,7 @@ pkgbase = shellroute-cli-bin
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
+	depends = zsh
 	provides = shellroute
 	conflicts = shellroute-cli
 	options = !strip

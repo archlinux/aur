@@ -19,6 +19,8 @@ url=${_ghurl}
 
 license=('Apache-2.0')
 
+depends=('zsh')
+
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
 
