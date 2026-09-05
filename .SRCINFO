@@ -1,7 +1,7 @@
 pkgbase = openwincontrolscli-git
 	pkgdesc = Open source GPD WinControls replacement (command-line)
-	pkgver = 1.0.66ad59a
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 3
 	url = https://github.com/OpenWinControls/OpenWinControlsCLI
 	install = owc.install
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = openwincontrolscli-git
 	makedepends = git
 	makedepends = cmake
 	optdepends = openwincontrols-rules: rules to allow non-root access
-	provides = openwincontrolscli-git
-	conflicts = openwincontrolscli-git
+	provides = openwincontrolscli
+	conflicts = openwincontrolscli
 	source = git+https://github.com/OpenWinControls/OpenWinControlsCLI.git
 	sha256sums = SKIP
 

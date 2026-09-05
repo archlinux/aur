@@ -2,11 +2,10 @@
 pkgbase="openwincontrolscli-git"
 pkgname="$pkgbase"
 pkgdesc="Open source GPD WinControls replacement (command-line)"
-pkgver=1.0.66ad59a
-_version=1.0
-pkgrel=2
-provides=("$pkgbase")
-conflicts=("$pkgbase")
+pkgver=1.0
+pkgrel=3
+provides=("openwincontrolscli")
+conflicts=("openwincontrolscli")
 url="https://github.com/OpenWinControls/OpenWinControlsCLI"
 arch=("x86_64")
 license=("GPL-3.0-or-later")
@@ -18,7 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/OpenWinControlsCLI"
-  printf "%s.%s" "${_version}" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
 }
 
 build() {
