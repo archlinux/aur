@@ -4,6 +4,13 @@ _chatgpt_apparmor_abi='/etc/apparmor.d/abi/4.0'
 _chatgpt_apparmor_disable='/etc/apparmor.d/disable/chatgpt'
 _chatgpt_apparmor_profiles='/sys/kernel/security/apparmor/profiles'
 
+note() {
+  local blue=$'\033[1;34m' yellow=$'\033[1;33m'
+  local bold=$'\033[0;1m' all_off=$'\033[0m'
+
+  printf '%s==>%s NOTE:%s %s%s\n' "${blue}" "${yellow}" "${bold}" "$1" "${all_off}"
+}
+
 _chatgpt_apparmor_enabled() {
   command -v aa-enabled >/dev/null 2>&1 &&
     command -v apparmor_parser >/dev/null 2>&1 &&
@@ -72,10 +79,12 @@ _chatgpt_remove_apparmor_profile() {
 
 post_install() {
   _chatgpt_load_apparmor_profile
+  note 'Custom flags should be put directly in: ~/.config/chatgpt-flags.conf'
 }
 
 post_upgrade() {
   _chatgpt_load_apparmor_profile
+  note 'Custom flags should be put directly in: ~/.config/chatgpt-flags.conf'
 }
 
 pre_remove() {
