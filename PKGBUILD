@@ -1,9 +1,9 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname=rustfs
-pkgver=1.0.0_rc.3
+pkgver=1.0.0_rc.4
 _console_ver=0.1.23
-pkgrel=2
+pkgrel=1
 pkgdesc="High-performance distributed object storage for MinIO alternative."
 url='https://rustfs.com/en/'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
 	"console-${_console_ver}.tar.gz::https://github.com/rustfs/console/archive/refs/tags/v${_console_ver}.tar.gz"
 )
 sha256sums=(
-	'327b39ed38418d0ea424fb67e3ce4aaf9d92245a06eaaf228717ed0008538f8f'
+	'd27a2168991bcf09f8ce58053f10a1d186a140755271ac10080fffb16a23763c'
 	'5dbaf0e542dc5558ffb3103f584f6cd8a0ad4ba0cef9e15aa0006619ae470680'
 )
 
