@@ -4,7 +4,7 @@ pkgname=bettbox-compatible
 _pkgname=Bettbox
 pkgver=1.19.0
 _pkgver="${pkgver/pre/-pre}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
 arch=('x86_64')
 options=('!lto')
@@ -61,8 +61,11 @@ package () {
 	pushd "build/linux/x64/release"
 	install -Dm755 "bundle/${_pkgname}" -t "${pkgdir}/usr/lib/${pkgname%-compatible}/"
 	install -Dm755 "bundle/BettboxCore" -t "${pkgdir}/usr/lib/${pkgname%-compatible}/"
-	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib/${pkgname%-compatible}" .
-	cmake -P cmake_install.cmake
+	# Install lib/ and data/ from the bundle; `cmake -P` bakes $pkgdir into CMakeCache.txt, breaking `makepkg -f`.
+	install -dm755 "${pkgdir}/usr/lib/${pkgname%-compatible}/lib"
+	cp -a bundle/lib/. "${pkgdir}/usr/lib/${pkgname%-compatible}/lib/"
+	install -dm755 "${pkgdir}/usr/lib/${pkgname%-compatible}/data"
+	cp -a bundle/data/. "${pkgdir}/usr/lib/${pkgname%-compatible}/data/"
 	popd
 
 	# Reset RPATH
