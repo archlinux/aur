@@ -3,21 +3,21 @@
 
 pkgname=gtkradiant-git
 pkgver=r1464.270af88f
-pkgrel=1
+pkgrel=2
 pkgdesc="GtkRadiant is the official level design toolchain for games powered by id Tech engines."
 arch=('i686' 'x86_64')
 url="http://icculus.org/gtkradiant/"
 license=('GPLv2')
 
 makedepends=('git' 'svn' 'scons')
-depends=('gtkglext' 'libgl' 'gtk2' 'libjpeg' 'libpng' 'zlib' 'libxml2')
+depends=('gtkglext' 'libgl' 'gtk2' 'libjpeg-turbo' 'libpng' 'zlib' 'libxml2')
 
 source=(git+https://github.com/TTimo/GtkRadiant.git
 	fix-build.patch
 	gtkradiant.desktop
 	gtkradiant.png)
 sha256sums=('SKIP'
-	    'e949ba5e31a31269096d37d89c90d4108a33dc259047dcad729f7f8bc1afd179'
+	    '0cecd8e7ec998a9ef62d25baf11a622c1f027723641c7f47937e2efa51c4d460'
 	    'ef9f62afdb693a62976cdf5feb5fa2c9ccb1db23f781e3a5d47e196bed56a930'
 	    '76d137d3bd04e2edb1eb20e4e8a63782f642130f5bd02f0ca47337e7dee636cb')
 

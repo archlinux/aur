@@ -1,12 +1,14 @@
 diff --git a/config.py b/config.py
-index 47339cc8..261f65d1 100644
+index 47339cc8..c874c34a 100644
 --- a/config.py
 +++ b/config.py
-@@ -265,7 +265,7 @@ class Config:
+@@ -264,8 +264,8 @@ class Config:
+             if ( useZ ):
                  env.ParseConfig( 'pkg-config zlib --cflags --libs' )
  
-         env.Append( CCFLAGS = baseflags )
+-        env.Append( CCFLAGS = baseflags )
 -        env.Append( CXXFLAGS = baseflags + [ '-fpermissive', '-fvisibility-inlines-hidden' ] )
++        env.Append( CCFLAGS = baseflags + [ '-std=gnu99' ] )
 +        env.Append( CXXFLAGS = baseflags + [ '-fpermissive', '-fvisibility-inlines-hidden', '-std=c++14' ] )
          env.Append( CPPPATH = [ 'include', 'libs' ] )
          env.Append( CPPDEFINES = [ 'Q_NO_STLPORT' ] )
