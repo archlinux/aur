@@ -7,8 +7,6 @@ pkgbase = nekokolpa2
 	license = MIT
 	options = !debug
 	source = https://github.com/iebb/NekokoLPA2/releases/download/v2.2.4%2B586/ee.nekoko.nlpa2.linux-2.2.4-586-x64.tar.gz
-	source = https://github.com/iebb/NekokoLPA2/raw/refs/heads/master/assets/logo.png
 	sha256sums = c3e0a4be7d95858cb86f7124992d5863a6e24fc72a67e96daa55391550ee7388
-	sha256sums = 58daa2869bf2f9e8145b42e22a0342edafa9ac1e348612ad2c3388de741a177a
 
 pkgname = nekokolpa2
