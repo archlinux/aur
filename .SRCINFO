@@ -1,0 +1,15 @@
+pkgbase = plox-git
+	pkgdesc = Extract numeric values from log files and plot them over time
+	pkgver = r24.98b05cd
+	pkgrel = 1
+	url = https://github.com/michalkucharczyk/plox
+	arch = x86_64
+	license = unknown
+	makedepends = cargo
+	makedepends = git
+	provides = plox
+	conflicts = plox
+	source = plox::git+https://github.com/michalkucharczyk/plox.git
+	sha256sums = SKIP
+
+pkgname = plox-git
