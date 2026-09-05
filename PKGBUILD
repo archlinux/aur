@@ -10,7 +10,7 @@ _pkgname=lgtm
 # and the search index display until someone builds it. Carrying the last
 # released version rather than zeroes is the convention: a browser comparing
 # this against `lgtm-bin` should see two versions, not one and a placeholder.
-pkgver=0.1.1.r0.g396e514
+pkgver=0.1.2.r0.ga2d4ab6
 pkgrel=1
 pkgdesc="Read what your coding agent just wrote, and point at the lines when you reply (git)"
 arch=('x86_64' 'aarch64')
