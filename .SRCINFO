@@ -1,6 +1,6 @@
 pkgbase = gitmaster
 	pkgdesc = GUI git client written in Qt.
-	pkgver = 0.8.2
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/bokic/gitmaster
 	arch = x86_64
@@ -11,13 +11,14 @@ pkgbase = gitmaster
 	depends = qt6-base
 	depends = qt6-svg
 	depends = libgit2
+	depends = zlib
 	depends = hicolor-icon-theme
 	depends = libstdc++
 	depends = glibc
 	depends = libgcc
 	options = !debug
 	options = strip
-	source = gitmaster-0.8.2.tar.gz::https://github.com/bokic/gitmaster/archive/0.8.2.tar.gz
-	sha512sums = 9ba999e671c651a2d802e6645ada0ee6ac1f3faf159f4c95746ad2b2518e7e41ed1bd473887ea2cbf0d542771b07b1076cff5a40446fd166d3d48679ee7e93ba
+	source = gitmaster-0.9.0.tar.gz::https://github.com/bokic/gitmaster/archive/0.9.0.tar.gz
+	sha512sums = 562062e389b2f0189d24aeb3f079444211635b76eeeaf96abeef597fa380accbee7d018b2f6d080f5443bf45fa4645e68c3a751ddc3f5460d60fae7e6026a5e9
 
 pkgname = gitmaster
