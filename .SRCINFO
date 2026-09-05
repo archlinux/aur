@@ -1,0 +1,72 @@
+pkgbase = ros2-jazzy-ros_gz
+	pkgdesc = ROS 2 Jazzy integration with the Gazebo (Harmonic) simulator
+	pkgver = 1.0.24
+	pkgrel = 1
+	url = https://index.ros.org/p/ros_gz/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = cli11
+	makedepends = gflags
+	makedepends = pkgconf
+	makedepends = ros2-jazzy-gz-msgs-vendor
+	makedepends = ros2-jazzy-gz-transport-vendor
+	makedepends = ros2-jazzy-gz-sim-vendor
+	makedepends = ros2-jazzy-actuator_msgs
+	makedepends = ros2-jazzy-gps_msgs
+	makedepends = ros2-jazzy-marine_acoustic_msgs
+	makedepends = ros2-jazzy-vision_msgs
+	makedepends = ros2-jazzy-simulation_interfaces
+	depends = ros2-jazzy
+	source = ros2-jazzy-ros_gz-1.0.24.tar.gz::https://github.com/gazebosim/ros_gz/archive/refs/tags/1.0.24.tar.gz
+	sha256sums = d7596d2c9a45e4a21948eaacfd5b1161d5fba85b5bc196301e61a85765deab51
+
+pkgname = ros2-jazzy-ros_gz_interfaces
+	pkgdesc = Message and service definitions for interacting with Gazebo from ROS 2
+	depends = ros2-jazzy
+
+pkgname = ros2-jazzy-ros_gz_bridge
+	pkgdesc = Bridge that enables the exchange of messages between ROS 2 and Gazebo Transport
+	depends = ros2-jazzy
+	depends = ros2-jazzy-ros_gz_interfaces
+	depends = ros2-jazzy-gz-msgs-vendor
+	depends = ros2-jazzy-gz-transport-vendor
+	depends = ros2-jazzy-actuator_msgs
+	depends = ros2-jazzy-gps_msgs
+	depends = ros2-jazzy-marine_acoustic_msgs
+	depends = ros2-jazzy-vision_msgs
+
+pkgname = ros2-jazzy-ros_gz_image
+	pkgdesc = Utilities for using Gazebo Transport image messages with ROS 2 image_transport
+	depends = ros2-jazzy
+	depends = ros2-jazzy-ros_gz_bridge
+	depends = ros2-jazzy-gz-msgs-vendor
+	depends = ros2-jazzy-gz-transport-vendor
+
+pkgname = ros2-jazzy-ros_gz_sim
+	pkgdesc = Tools and launch files for running the Gazebo simulator from ROS 2
+	depends = ros2-jazzy
+	depends = ros2-jazzy-ros_gz_interfaces
+	depends = ros2-jazzy-gz-msgs-vendor
+	depends = ros2-jazzy-gz-transport-vendor
+	depends = ros2-jazzy-gz-sim-vendor
+	depends = ros2-jazzy-simulation_interfaces
+
+pkgname = ros2-jazzy-ros_gz_sim_demos
+	pkgdesc = Demos for using ROS 2 with the Gazebo simulator
+	depends = ros2-jazzy
+	depends = ros2-jazzy-ros_gz_bridge
+	depends = ros2-jazzy-ros_gz_image
+	depends = ros2-jazzy-ros_gz_sim
+	depends = ros2-jazzy-image_transport_plugins
+	depends = ros2-jazzy-rqt_image_view
+	depends = ros2-jazzy-sdformat_urdf
+	depends = ros2-jazzy-xacro
+	depends = ros2-jazzy-marine_acoustic_msgs
+
+pkgname = ros2-jazzy-ros_gz
+	pkgdesc = Metapackage pulling in the full ROS 2 / Gazebo integration stack
+	depends = ros2-jazzy-ros_gz_bridge
+	depends = ros2-jazzy-ros_gz_image
+	depends = ros2-jazzy-ros_gz_sim
+	depends = ros2-jazzy-ros_gz_sim_demos
