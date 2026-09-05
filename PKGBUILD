@@ -3,7 +3,7 @@
 pkgbase=python-h5pyd
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.23.0
+pkgver=1.0.0
 #_commit="094f0b2b7e2a777f6dc1a6f60851cc856067d9a2"
 pkgrel=1
 pkgdesc="h5py distributed - Python client library for HDF Rest API "
@@ -15,21 +15,21 @@ makedepends=('python-setuptools'
              'python-installer'
              'python-sphinx-furo')  # wheel required by new setuptools
 checkdepends=('python-pytest'
-              'python-numpy'
-              'python-pytz'
-              'python-requests-unixsocket')
+#             'python-pytest-xdist'
+              'python-h5json'
+              'python-requests-unixsocket') # pytz <- h5json
 #             'python-adal'
-#source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
 #source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/${_commit}.tar.gz"
-source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/refs/tags/v${pkgver}.tar.gz"
+#source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/refs/tags/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/bytesio.py"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_inotify_example.py"
-#       "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py"
-        'fix-h5type-test.patch')
-md5sums=('9106c5e43311c910df57f6a4e7a89453'
+#        "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py"
+#        'fix-h5type-test.patch'
+)
+md5sums=('05eb69303341114995d67b79706662c0'
          'SKIP'
-         'SKIP'
-         'fce3d7b92909be61507392ab33bfce0a')
+         'SKIP')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -41,7 +41,8 @@ prepare() {
 
     ln -rs ${srcdir}/*.py examples
     sed -i -e "/GH/s/GH/GH\%s/" -e "/PR/s/PR/PR\%s/" docs/conf.py
-    patch -Np1 -i "${srcdir}/fix-h5type-test.patch"
+#   patch -Np1 -i "${srcdir}/fix-h5type-test.patch"
+    sed -i -e 's:../../::' test/apps/test_hsinfo.py
 }
 
 build() {
@@ -64,13 +65,15 @@ check() {
 #   cd ${srcdir}/${_pyname}-${_commit}
 
     mkdir .test
-    H5PYD_TEST_FOLDER=${PWD}/.test pytest || warning "Tests failed" #${PWD}/test \ -vv -ra --color=yes -o console_output_style=count #
+    H5PYD_TEST_FOLDER=${PWD}/.test PYTHONPATH="${PWD}" pytest || warning "Tests failed" #${PWD}/test \ -vv -ra --color=yes -o console_output_style=count #
+#   H5PYD_TEST_FOLDER=${PWD}/.test PYTHONPATH="${PWD}" python testall.py # || warning "Tests failed" #${PWD}/test \ -vv -ra --color=yes -o console_output_style=count #
 #   PYTHONPATH="build/lib" pytest #|| warning "Tests failed" #${PWD}/test \
 #       --ignore=build/lib/h5pyd/_hl/h5type_test.py #|| warning "Tests failed"
 }
 
 package_python-h5pyd() {
     depends=('python-numpy>=2.0.0'
+             'python-h5json'
              'python-requests-unixsocket'
              'python-pytz'
              'python-packaging')
