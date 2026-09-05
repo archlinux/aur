@@ -2,7 +2,7 @@
 
 _pkgname="multiverse"
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r229.20260527.9f0471d52
+pkgver=0.1.0.r235.20260806.f1d30c118
 pkgrel=1
 pkgdesc="Debug-oriented console Matrix client, built on top of the Matrix Rust SDK, and reference client for Matrix Rust SDK."
 arch=(

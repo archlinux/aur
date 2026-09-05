@@ -1,6 +1,6 @@
 pkgbase = multiverse-git
 	pkgdesc = Debug-oriented console Matrix client, built on top of the Matrix Rust SDK, and reference client for Matrix Rust SDK.
-	pkgver = 0.1.0.r229.20260527.9f0471d52
+	pkgver = 0.1.0.r235.20260806.f1d30c118
 	pkgrel = 1
 	url = https://github.com/matrix-org/matrix-rust-sdk/blob/main/labs/README.md#current-experiments#:~:text=multiverse:
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = multiverse-git
 	depends = glibc
 	depends = libgcc
 	depends = libsqlite3.so
-	provides = multiverse=0.1.0.r229.20260527.9f0471d52
+	provides = multiverse=0.1.0.r235.20260806.f1d30c118
 	conflicts = multiverse
 	conflicts = multiverse-bin
 	options = !lto
