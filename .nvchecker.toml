@@ -1,6 +1,5 @@
 [standardnotes]
 source = "github"
 github = "standardnotes/app"
-use_max_tag = true
+use_latest_release = true
 prefix = "@standardnotes/desktop@"
-include_regex = '@standardnotes/desktop@([\d\.]+)'
