@@ -1,7 +1,7 @@
 pkgbase = quectel-cm-git
 	pkgdesc = Quectel Connect Manager tool. For Quectel WWAN modems.
-	pkgver = 1.6.0.24.r3_kmilo17pet.20210805.2c623ff
-	pkgrel = 2
+	pkgver = 1.6.0.24.r4_kmilo17pet.20260324.b0bd2aa
+	pkgrel = 1
 	url = http://github.com/kmilo17pet/quectel-cm
 	arch = aarch64
 	arch = armv6h
@@ -12,7 +12,7 @@ pkgbase = quectel-cm-git
 	makedepends = git
 	depends = glibc
 	depends = net-tools
-	provides = quectel-cm=1.6.0.24.r3_kmilo17pet.20210805.2c623ff
+	provides = quectel-cm=1.6.0.24.r4_kmilo17pet.20260324.b0bd2aa
 	conflicts = quectel-cm
 	source = quectel-cm::git+https://github.com/kmilo17pet/quectel-cm.git
 	source = COPYING.txt

@@ -3,8 +3,8 @@
 _projectname="quectel-cm"
 _pkgname="${_projectname}"
 pkgname="${_pkgname}-git"
-pkgver=1.6.0.24.r3_kmilo17pet.20210805.2c623ff
-pkgrel=2
+pkgver=1.6.0.24.r4_kmilo17pet.20260324.b0bd2aa
+pkgrel=1
 pkgdesc="Quectel Connect Manager tool. For Quectel WWAN modems."
 arch=(
   'aarch64'
@@ -55,7 +55,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  #_ver="$(git describe --tags | sed -E -e 's|^xasm-||' -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  #_ver="$(git describe --tags | sed -E -e 's|^quectel-CM-||' -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
   _ver="$(grep -iE '^[[:space:]]*\[V[0-9a-z\._-]*\]' ReleaseNote.txt | head -n1 | sed -E -e 's|^[[:space:]]*\[V([0-9a-z\._-]*)\].*$|\1|' | tr '-' '.')"
   _fork="${_gituser}"
   _rev="$(git rev-list --count HEAD)"
