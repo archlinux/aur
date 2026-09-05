@@ -10,25 +10,28 @@ pkgname='kea_config'
 pkgdesc='Manage kea dhcp4 configs from single source config'
 _gitname='kea_config'
 
-pkgver="6.4.0"
+pkgver="6.5.1"
 pkgrel=1
 url="https://github.com/gene-git/kea_config"
 
 arch=(any)
 license=(GPL-2.0-or-later)
 depends=(
-    'python>=3.13' 
-    'python-dnspython'
-    'python-ruamel-yaml'
+    'python>=3.14' 
+    python-dnspython
+    python-ruamel-yaml
 )
 
 # To build docs uncommont sphinx/texlive
 makedepends=(
-    'git'
-    'uv'
-    'python-uv-build'
-    'rsync'
-    #'python-sphinx' 'texlive-latexextra' # Docs
+    git
+    meson
+    meson-python
+    rsync
+)
+
+checkdepends=(
+    python-pytest
 )
 # See mkpkg https://github.com/gene-git/Arch-mkpkg
 _mkpkg_depends=(
@@ -51,26 +54,25 @@ sha512sums=('SKIP')
 
 build() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
+    echo "------------------"
+    echo "  building"
+    echo "------------------"
+    ./scripts/do-build
+}
 
-    #
-    # To build Docs - uncomment these and sphinx makedepends above
-    #
-    # echo "Build docs"
-    # cd ./Docs
-    # pdf='kea_config.pdf'
-    # /usr/bin/rm -f $pdf
-    # make latexpdf >/dev/null 2>&1
-    # make latexpdf
-    # /usr/bin/cp _build/latex/$pdf .
-    # make html
-    # make html
-    # /usr/bin/rm -rf _build/doctrees _build/latex
+check() {
+    cd "${_gitname}"
+    echo "------------------"
+    echo "  tests"
+    echo "------------------"
+    ./scripts/run-tests
 }
 
 package() {
     cd "${_gitname}"
+    echo "------------------"
+    echo "  packaging"
+    echo "------------------"
     ./scripts/do-install ${pkgdir}
 }
 # vim:set ts=4 sts=4 sw=4 et:

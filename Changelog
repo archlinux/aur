@@ -1,9 +1,18 @@
 -------------------------------------------------------
  Changelog    : kea_config
- Tags         : 5.2.1 ➙ 6.4.0
-              : 2026-01-04 ➙ 2026-08-07
+ Tags         : 5.2.2 ➙ HEAD
+              : 2026-01-06 ➙ 2026-09-05
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-09-05   : HEAD
+              - Add checkdepends on pytest to PKGBUILD
+
+ 2026-09-05   : 6.5.0, origin/master
+              - **6.5.0**
+            
+                * switch to meson/meson-python for build/package management
+                * add pytest checks.
 
  2026-08-07   : 6.4.0
               - **6.4.0**
@@ -67,8 +76,4 @@
  2026-01-06   : 5.2.2
               - PKGBUILD small change
  2026-01-04   ⋯
-              - update Docs/Changelog
-
- 2026-01-04   : 5.2.1
-              - Update arch PKGBUILD
               - update Docs/Changelog
