@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=subnetdesk-bin
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LAN-only remote desktop based on RustDesk"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zibo-chen/SubnetDesk"
