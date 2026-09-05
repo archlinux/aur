@@ -1,9 +1,9 @@
 # Maintainer: Piotr Krzemiński <pio dot krzeminski at gmail dot com>
-# Managed from krzemin/mpxcast packaging revision: 74aace0365664d27daf222da087d2ce75681427d
+# Managed from krzemin/mpxcast packaging revision: cc1ff62eefcf5afcb051bd961e7f52b96ea66f8c
 
 pkgname=mpxcast
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='FM radio streaming server for RTL-SDR USB receivers'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/krzemin/mpxcast'
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/krzemin/mpxcast/archive/ref
         'mpxcast.service'
         'mpxcast.conf'
         'mpxcast.sysusers')
-sha256sums=('4c02d5ce7009431c191acf4cb8a25b384ccf22a2e17b4ade60a0739f9cf98b18'
+sha256sums=('73471c99ae0aa5fdaa4e84040dde60d38efcd9cdd2e5bc925de0bd2c77b70445'
             'SKIP'
             'SKIP'
             'SKIP')
