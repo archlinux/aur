@@ -1,4 +1,4 @@
-pkgname=NekokoLPA2
+pkgname=nekokolpa2
 pkgver=2.2.4
 pkgrel=586
 pkgdesc='Cross-platform eSIM management app for working with local eUICCs, external readers, and remote reader endpoints'

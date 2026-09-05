@@ -1,4 +1,4 @@
-pkgbase = NekokoLPA2
+pkgbase = nekokolpa2
 	pkgdesc = Cross-platform eSIM management app for working with local eUICCs, external readers, and remote reader endpoints
 	pkgver = 2.2.4
 	pkgrel = 586
@@ -11,4 +11,4 @@ pkgbase = NekokoLPA2
 	sha256sums = c3e0a4be7d95858cb86f7124992d5863a6e24fc72a67e96daa55391550ee7388
 	sha256sums = 58daa2869bf2f9e8145b42e22a0342edafa9ac1e348612ad2c3388de741a177a
 
-pkgname = NekokoLPA2
+pkgname = nekokolpa2
