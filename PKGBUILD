@@ -2,24 +2,17 @@
 # Template for the AUR package. `make release-aur` fills in the
 # @PLACEHOLDER@ values and pushes the result to the AUR.
 pkgname=okuri
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Dead-simple file transfer for Omarchy & Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/monorkin/okuri"
 license=('MIT')
-depends=('qt6-base' 'qt6-declarative' 'gcc-libs' 'glibc')
-makedepends=('cargo' 'qt6-base' 'qt6-declarative')
-# The QML is compiled ahead of time against whichever Qt is installed when this is built, so an
-# install picks up the Qt of the day. Nothing rebuilds it later — the AUR has no build farm, and
-# a Qt minor bump leaves the soname alone, so checkrebuild will not spot it either. If a Qt
-# release ever does break the compiled QML, it takes a pkgrel bump here, same as the -bin one.
-#
-# !lto because makepkg's -flto=auto hands GCC-LTO objects to the C++ glue cxx-qt generates,
-# which the linker Rust drives cannot read.
-options=('!lto' '!debug')
+depends=('gtk4>=4.12' 'libadwaita>=1.5' 'gcc-libs' 'glibc')
+makedepends=('cargo' 'pkgconf')
+options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('68a4c8051cee8aadad2a2a771d07e9415bf7dbf6cbf1f53481809641d2c045de')
+sha256sums=('46657b462bd99e298e8079b6baa59c5c46893ce0f0cf15a5eaf764bed945b9b9')
 
 prepare() {
   cd "$pkgname-$pkgver"
