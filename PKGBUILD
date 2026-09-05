@@ -30,7 +30,7 @@ conflicts=('pavucontrol')
 provides=('pavucontrol' 'pavoldcontrol')
 checkdepends=(tidy)
 optdepends=("pulseaudio: Audio backend")
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}.git#branch=old-fork")
 b2sums=('SKIP')
 
 pkgver() {

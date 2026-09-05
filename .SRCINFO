@@ -23,8 +23,9 @@ pkgbase = pavoldcontrol-git
 	depends = libsigc++
 	optdepends = pulseaudio: Audio backend
 	provides = pavucontrol
+	provides = pavoldcontrol
 	conflicts = pavucontrol
-	source = pavoldcontrol-git::git+https://github.com/ItsZariep/pavoldcontrol.git
+	source = pavoldcontrol-git::git+https://github.com/ItsZariep/pavoldcontrol.git#branch=old-fork
 	b2sums = SKIP
 
 pkgname = pavoldcontrol-git
