@@ -5,7 +5,7 @@
 # 打包采用 AUR 主流 AppImage 方式:本体装 /opt + /usr/bin wrapper(同 obsidian-appimage)
 pkgname=steamcommunity302
 pkgver=15.0.4
-pkgrel=1
+pkgrel=2
 #epoch=
 pkgdesc="羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动"
 url="https://www.dogfight360.com/blog/18682/"
