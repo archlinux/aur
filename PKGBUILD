@@ -3,8 +3,8 @@
 _pkgname=marble-maps-tracestrack
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=r2.20250522.780a1a7
-pkgrel=3
+pkgver=r4.20260304.65d656c
+pkgrel=1
 pkgdesc="Maps served by Tracestrack Maps for KDE marble. API key required and asked for during build."
 url="https://codeberg.org/dreieck/marble-maps-tracestrack"
 arch=('any')

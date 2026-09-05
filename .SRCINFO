@@ -1,7 +1,7 @@
 pkgbase = marble-maps-tracestrack-git
 	pkgdesc = Maps served by Tracestrack Maps for KDE marble. API key required and asked for during build.
-	pkgver = r2.20250522.780a1a7
-	pkgrel = 3
+	pkgver = r4.20260304.65d656c
+	pkgrel = 1
 	epoch = 0
 	url = https://codeberg.org/dreieck/marble-maps-tracestrack
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = marble-maps-tracestrack-git
 	makedepends = bash
 	makedepends = git
 	depends = marble-common
-	provides = marble-maps-tracestrack=r2.20250522.780a1a7
+	provides = marble-maps-tracestrack=r4.20260304.65d656c
 	provides = marble-maps-tracestrack-base
 	provides = marble-maps-tracestrack-topo
 	conflicts = marble-maps-tracestrack
