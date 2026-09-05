@@ -1,0 +1,5 @@
+[nlarn]
+source = "github"
+github = "nlarn/nlarn"
+prefix = "NLarn-"
+use_latest_release = true
