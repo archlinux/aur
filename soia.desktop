@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Soia
+Comment=Media player based on libmpv
+Exec=soia %U
+Icon=soia
+Terminal=false
+Type=Application
+Categories=AudioVideo;Player;
+MimeType=video/mp4;video/x-matroska;audio/mpeg;audio/mp4;

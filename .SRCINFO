@@ -1,0 +1,27 @@
+pkgbase = soia-bin
+	pkgdesc = Media player based on libmpv, with DLNA, SMB and WebDAV support
+	pkgver = 0.2.11
+	pkgrel = 1
+	url = https://github.com/FengZeng/soia
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = libselinux
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = wayland
+	depends = libxkbcommon
+	depends = hicolor-icon-theme
+	optdepends = fuse2: run the AppImage through FUSE
+	provides = soia
+	conflicts = soia
+	options = !strip
+	options = !debug
+	source = Soia-v0.2.11-Linux-x64-wayland.AppImage::https://github.com/FengZeng/soia/releases/download/v0.2.11/Soia-v0.2.11-Linux-x64-wayland.AppImage
+	source = soia.desktop
+	source = soia.png::https://raw.githubusercontent.com/FengZeng/soia/v0.2.11/src-tauri/icons/128x128.png
+	sha256sums = 1aef71d080dee02e3dd6a8f6894db0a3314e31df5676f45504bde0d3d86c7113
+	sha256sums = aa486e81f520b1d02f62a55977218032a863b5f065e2bb086054e28d09b5428d
+	sha256sums = d5eb173344a8548a2cb290bb74b1dec85500a1eae35e07647451e3b54ed35fcd
+
+pkgname = soia-bin
