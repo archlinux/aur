@@ -1,0 +1,27 @@
+pkgbase = computer-use-linux
+	pkgdesc = Control a real Linux desktop from any MCP host (AT-SPI, portals, multi-compositor window targeting)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/agent-sh/computer-use-linux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = dbus
+	makedepends = cargo
+	depends = at-spi2-core
+	depends = gcc-libs
+	depends = glibc
+	optdepends = gnome-screenshot: screenshot fallback for background sessions
+	optdepends = hyprland: window targeting on Hyprland
+	optdepends = i3-wm: window targeting on i3
+	optdepends = sway: window targeting on Sway
+	optdepends = wmctrl: window management on generic X11/EWMH
+	optdepends = wtype: text input on wlroots compositors
+	optdepends = xdotool: keyboard input on X11 sessions
+	optdepends = xorg-xprop: window PID hydration on X11
+	optdepends = ydotool: input fallback when the RemoteDesktop portal is unavailable
+	conflicts = computer-use-linux-bin
+	source = computer-use-linux-0.5.0.tar.gz::https://github.com/agent-sh/computer-use-linux/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = d7f0be220a8e9e0d2ebc8bb64705b3b67ccdf7458c75bb3964173613b0d56a08
+
+pkgname = computer-use-linux
