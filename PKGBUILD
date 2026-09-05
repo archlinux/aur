@@ -2,9 +2,8 @@
 pkgbase="openwincontrols-git"
 _rulespkgbase="openwincontrols-rules"
 pkgname=("$pkgbase" "$_rulespkgbase")
-pkgver=1.0.46c2fb9
-_version=1.0
-pkgrel=2
+pkgver=1.0
+pkgrel=3
 url="https://github.com/OpenWinControls/OpenWinControls"
 arch=("x86_64")
 license=("GPL-3.0-or-later")
@@ -26,7 +25,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/OpenWinControls"
-  printf "%s.%s" "${_version}" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
 }
 
 build() {
@@ -38,8 +37,8 @@ build() {
 
 package_openwincontrols-git() {
   pkgdesc="Open source GPD WinControls replacement"
-  provides=("$pkgbase")
-  conflicts=("$pkgbase")
+  provides=("openwincontrols")
+  conflicts=("openwincontrols")
   depends+=("$_rulespkgbase")
 
   install -Dm755 "$srcdir/OpenWinControls/build/OpenWinControls" "$pkgdir/usr/bin/OpenWinControls"
