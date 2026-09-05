@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=()
 depends=(
   'quickshell'
-  'qt6-dbusqml>=0.8.0'
+  'qt6-dbusqml>=0.9.0'
   'qt6-pipewirespectrum'
   'qt6-xdgiconqml-git'
   'imagemagick'
