@@ -3,8 +3,8 @@
 _pkgname=qmp3gain
 pkgname="${_pkgname}-git"
 _gitname="${_pkgname}"
-pkgver=0.9.3.r123.20220727.95b2608
-pkgrel=5
+pkgver=0.9.5+36.r167.20260221.fd087e9
+pkgrel=1
 pkgdesc='User interface front end supporting famous MP3Gain engine which analyzes and losslessly adjusts MP3 files to a specified target volume.'
 url='https://sourceforge.net/projects/qmp3gain/ '
 _giturl="git://git.code.sf.net/p/${_pkgname}/code"
