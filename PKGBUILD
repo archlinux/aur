@@ -5,7 +5,7 @@
 # builds main instead, which is the package that catches breakage early.
 pkgname=lgtm-bin
 _pkgname=lgtm
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Read what your coding agent just wrote, and point at the lines when you reply"
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ source=("$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/kunkka19xx/
 sha256sums=('4ad78f314cb0ba16242173bcdc62c17d81644345ea41d90d1b0a68ab3dd9f841')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/lgtm-x86_64-linux.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/lgtm-aarch64-linux.tar.gz")
-sha256sums_x86_64=('eb79d2c8e20650cc04ea05749250c160eb409c78643dad391f2f50b90a3f77f7')
-sha256sums_aarch64=('0654e6da944daf7e11545af4995651acfa2511bcee51450c1cc11254d3a8018d')
+sha256sums_x86_64=('d3671f1a4722e3789f04c92a7410a338cca4720848841c36bedfed0c3edbb6ff')
+sha256sums_aarch64=('47e2f6938ed889365b15516ea03e5c192a01bb6078ada77489e432dd8ec608a6')
 
 package() {
   install -Dm755 "$srcdir/lgtm" "$pkgdir/usr/bin/lgtm"

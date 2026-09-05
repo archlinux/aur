@@ -1,6 +1,6 @@
 pkgbase = lgtm-bin
 	pkgdesc = Read what your coding agent just wrote, and point at the lines when you reply
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/kunkka19xx/lgtm
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = lgtm-bin
 	provides = lgtm
 	conflicts = lgtm
 	conflicts = lgtm-git
-	source = lgtm-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/kunkka19xx/lgtm/v0.1.0/LICENSE
+	source = lgtm-bin-0.1.1-LICENSE::https://raw.githubusercontent.com/kunkka19xx/lgtm/v0.1.1/LICENSE
 	sha256sums = 4ad78f314cb0ba16242173bcdc62c17d81644345ea41d90d1b0a68ab3dd9f841
-	source_x86_64 = lgtm-bin-0.1.0-x86_64.tar.gz::https://github.com/kunkka19xx/lgtm/releases/download/v0.1.0/lgtm-x86_64-linux.tar.gz
-	sha256sums_x86_64 = eb79d2c8e20650cc04ea05749250c160eb409c78643dad391f2f50b90a3f77f7
-	source_aarch64 = lgtm-bin-0.1.0-aarch64.tar.gz::https://github.com/kunkka19xx/lgtm/releases/download/v0.1.0/lgtm-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 0654e6da944daf7e11545af4995651acfa2511bcee51450c1cc11254d3a8018d
+	source_x86_64 = lgtm-bin-0.1.1-x86_64.tar.gz::https://github.com/kunkka19xx/lgtm/releases/download/v0.1.1/lgtm-x86_64-linux.tar.gz
+	sha256sums_x86_64 = d3671f1a4722e3789f04c92a7410a338cca4720848841c36bedfed0c3edbb6ff
+	source_aarch64 = lgtm-bin-0.1.1-aarch64.tar.gz::https://github.com/kunkka19xx/lgtm/releases/download/v0.1.1/lgtm-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 47e2f6938ed889365b15516ea03e5c192a01bb6078ada77489e432dd8ec608a6
 
 pkgname = lgtm-bin
