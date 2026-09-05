@@ -5,22 +5,24 @@
 
 _target=riscv64-unknown-elf
 pkgname=$_target-picolibc
-pkgver=1.8.11
+pkgver=1.8.12
 pkgrel=1
 pkgdesc='Fork of newlib with stdio bits from avrlibc'
 arch=('i686' 'x86_64')
 url='https://github.com/picolibc/picolibc'
 license=('BSD')
 makedepends=("$_target-gcc" 'meson')
-source=("picolibc-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('28e60a2d218da70c71278708887adc5ecb0843ed31579dcb691e82d7567c203f')
+source=("picolibc-$pkgver.tar.xz::$url/releases/download/$pkgver/picolibc-${pkgver}.tar.xz")
+sha256sums=('64e8c412e1c40fa6eb1a72d2b5cdbcbfe6ceca4cbea454edbad54557ffc747fa')
 options=(!strip !buildflags)
 
 build() {
   meson \
-    --prefix="/usr/$_target/picolibc" \
-    --buildtype=plain \
+    --prefix="/usr/$_target"/picolibc \
     --cross-file "picolibc-$pkgver/scripts/cross-${_target}.txt" \
+    -Dspecsdir="/usr/$_target/lib" \
+    -Dsystem-libc=false \
+    --buildtype=minsize \
     "picolibc-$pkgver" build
 
   meson compile -C build
@@ -32,3 +34,4 @@ package() {
 }
 
 # vim: set ts=2 sw=2 et:
+
