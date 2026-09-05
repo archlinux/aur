@@ -1,0 +1,13 @@
+--- a/src/prefs.c	2026-09-05 22:14:25.695485152 +0200
++++ b/src/prefs.c	2026-09-05 22:14:22.062166004 +0200
+@@ -1674,8 +1674,8 @@
+               /*  *((Boolean *)incoming); */
+             break;
+         case eSPLASHSCREEN:
+-            thePrefsStructP->RdataP->splashScreen =
+-                *((Boolean *)incoming);
++            thePrefsStructP->RdataP->splashScreen = bincoming;
++              /*  *((Boolean *)incoming); */
+             break;
+         case eINSTALL_COLORMAP:
+             thePrefsStructP->RdataP->instamap =

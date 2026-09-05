@@ -1,21 +1,25 @@
 pkgbase = mosaic-ck
 	pkgdesc = One of the first graphical web browsers (unsupported port)
 	pkgver = 2.7ck13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.floodgap.com/retrotech/machten/mosaic/
 	arch = x86_64
 	license = custom
 	depends = openmotif
 	depends = libjpeg-turbo
-	depends = libpng12
+	depends = libpng
 	depends = libxmu
 	depends = libxpm
 	depends = zlib
 	provides = mosaic
 	conflicts = ncsa-mosaic-git
 	source = http://www.floodgap.com/retrotech/machten/mosaic/mosaic27ck13.tar.gz
+	source = fix-prefs-bool.patch
+	source = mosaic-png-fix.patch
 	source = force-ansi.patch
 	sha256sums = e73857657f48d31b593a5b22ec51e19dea06707fb510a1bb6ba0b0282eaf4a3f
+	sha256sums = 17370e020c3041bd81de883755c0930f248b82c418449194ee9fc9f1ee3ac159
+	sha256sums = 18947f2a6d368d2902dd7b41faeaed8f1bf87f3b0d7da7a9d0dc7206d03df81e
 	sha256sums = 11813a985506adba6440960c34bc701fbc4da2157a30d2ea650d6e1df8f94558
 
 pkgname = mosaic-ck
