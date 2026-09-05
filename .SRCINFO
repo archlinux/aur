@@ -1,12 +1,12 @@
 pkgbase = siril-appimage
 	pkgdesc = Siril is an astronomical image processing tool
 	pkgver = 1.4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://siril.org
 	arch = x86_64
 	license = GPL3
 	optdepends = libpng: PNG import
-	optdepends = libjpeg: JPEG import and export
+	optdepends = libjpeg-turbo: JPEG import and export
 	optdepends = libtiff: TIFF import and export
 	optdepends = libraw: DSLR RAW images import
 	optdepends = ffms2: films native support as image sequences and import
