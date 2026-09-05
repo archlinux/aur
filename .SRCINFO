@@ -1,6 +1,6 @@
 pkgbase = minerva-fm
 	pkgdesc = Retro video game music radio for your terminal (SPC, VGM, NSF, MOD, and more)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/TheWhyteWolf/MiNERVA-FM-Term
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = minerva-fm
 	depends = libsidplayfp
 	options = !lto
 	options = !debug
-	source = minerva-fm-0.1.0.tar.gz::https://github.com/TheWhyteWolf/MiNERVA-FM-Term/archive/v0.1.0.tar.gz
-	sha256sums = b12eaf8c16288d06e71d54313cb5bea010b4d73d3bafc84844cad4d089d15ac8
+	source = minerva-fm-0.1.1.tar.gz::https://github.com/TheWhyteWolf/MiNERVA-FM-Term/archive/v0.1.1.tar.gz
+	sha256sums = f58c1c1593c4074cf306e25bfc47c35166eca325ca3615d388b4504594392d44
 
 pkgname = minerva-fm

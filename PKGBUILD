@@ -1,6 +1,6 @@
 # Maintainer: TheWhyteWolf <lordwhyte at gmail dot com>
 pkgname=minerva-fm
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Retro video game music radio for your terminal (SPC, VGM, NSF, MOD, and more)"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # Regenerate after tagging: updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('b12eaf8c16288d06e71d54313cb5bea010b4d73d3bafc84844cad4d089d15ac8')
+sha256sums=('f58c1c1593c4074cf306e25bfc47c35166eca325ca3615d388b4504594392d44')
 
 prepare() {
   cd "MiNERVA-FM-Term-$pkgver"
