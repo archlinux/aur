@@ -1,3 +1,10 @@
+# 10.1.6-1 / 2026-05-29
+
+* bump to new library version
+	* voice fixes
+	* slashcommand attachment filtering
+	* see library changelog for full list
+
 # 10.1.5-1 / 2026-27-05
 
 * bump to new library version
