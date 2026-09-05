@@ -1,6 +1,6 @@
 pkgbase = bups
 	pkgdesc = USB print server for Brother PT and QL label printers
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/metaneutrons/bups
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bups
 	makedepends = cargo
 	makedepends = systemd
 	depends = systemd-libs
-	source = bups-0.3.2.tar.gz::https://github.com/metaneutrons/bups/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = d96dc652bf6c4cc2189ba1f6dba5ae32f64c6e54963f92cf2ce989d4c858cf6d
+	source = bups-0.3.3.tar.gz::https://github.com/metaneutrons/bups/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = ddb622e671e5cb11f25a4e55ee326e84e7f354e806efa83a32aead50bdc586ed
 
 pkgname = bups
