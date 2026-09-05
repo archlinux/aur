@@ -1,0 +1,24 @@
+pkgbase = archman-bin
+	pkgdesc = All available pacman options combined into one interactive script
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ankur3-101106/pacman-utils
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0
+	depends = pacman
+	depends = pacman-contrib
+	optdepends = yay
+	optdepends = paru
+	optdepends = reflector
+	provides = archman
+	conflicts = archman
+	options = !strip
+	source = README-2.0.0.md::https://raw.githubusercontent.com/ankur3-101106/pacman-utils/v2.0.0/README.md
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/ankur3-101106/pacman-utils/v2.0.0/LICENSE
+	sha256sums = e2caefd82f83a5490e6aaaa8d652417a1f53afa545fc40d600e58633f06388a5
+	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
+	source_x86_64 = archman-x86_64-2.0.0::https://github.com/ankur3-101106/pacman-utils/releases/download/v2.0.0/archman
+	sha256sums_x86_64 = 065fdc344bca95036d1e8c636beab823884c69c80ee6e94eb08eb7da0d379366
+
+pkgname = archman-bin
