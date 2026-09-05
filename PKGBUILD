@@ -2,7 +2,7 @@
 
 _pkgname=lxqt-panel-profiles
 pkgname=$_pkgname
-pkgver=a70f347
+pkgver=v1.4.1.r0.g2fd18cc
 pkgrel=1
 pkgdesc="Backup, restore and switch configurations of lxqt-panel"
 arch=('any')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/.r/;s/-/./"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
