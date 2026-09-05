@@ -1,10 +1,12 @@
 pkgbase = purelive-bin
 	pkgdesc = 纯粹直播（Pure Live）基于 Flutter 的开源多平台直播聚合播放器
-	pkgver = 3.1.0
-	pkgrel = 1
+	pkgver = 3.1.2
+	pkgrel = 2
 	url = https://github.com/liuchuancong/pure_live
 	arch = x86_64
 	license = AGPL-3.0-or-later
+	makedepends = gcc
+	makedepends = patchelf
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = libayatana-indicator
@@ -12,16 +14,17 @@ pkgbase = purelive-bin
 	depends = alsa-lib
 	depends = gnutls
 	optdepends = mpv: external MPV player support as alternative decoder
-	optdepends = java-runtime: Dart JNI plugin support (for libdartjni.so)
 	optdepends = libva: VA-API hardware decoding interface (Intel/AMD)
 	optdepends = libvdpau: NVIDIA VDPAU hardware decoding acceleration
 	optdepends = libva-intel-driver: VA-API driver for Intel GPUs
 	optdepends = libva-mesa-driver: VA-API driver for AMD/Mesa GPUs
-	provides = purelive=3.1.0
+	provides = purelive=3.1.2
 	conflicts = purelive
 	options = !strip
 	options = !debug
-	source_x86_64 = purelive-bin-3.1.0.tar.gz::https://github.com/liuchuancong/pure_live/releases/download/v3.1.0/PureLive-3.0.10-4098-linux-x64.tar.gz
-	sha256sums_x86_64 = dd2250943699635df3680234d38c577d5610380ee379e4c3754eca7b3fb0d004
+	source = force-decor.c
+	sha256sums = 03c5ac24864086b7eb697855a6ad5df7f5ed3ef99585793dabd24853da6633f2
+	source_x86_64 = purelive-bin-3.1.2.tar.gz::https://github.com/liuchuancong/pure_live/releases/download/v3.1.2/PureLive-3.1.2-4100-linux-x64.tar.gz
+	sha256sums_x86_64 = db74854b53d414485e2d85a4dad32ed1fb5884d60faa606ad80cfa8464499910
 
 pkgname = purelive-bin
