@@ -1,0 +1,12 @@
+pkgbase = rfc_reader
+	pkgdesc = TUI to fetch, cache, and browse RFCs (Request for Comments)
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://github.com/ozan2003/rfc_reader
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = rfc_reader-0.11.2.tar.gz::https://codeload.github.com/ozan2003/rfc_reader/tar.gz/refs/tags/v0.11.2
+	sha256sums = e58ccf29dc272bcc199c7a9d9418cc6c8aaea78cc7e8680581a5653d17e38350
+
+pkgname = rfc_reader
