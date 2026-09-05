@@ -2,12 +2,12 @@
 
 _pkgname=lxqt-panel-tool
 pkgname=$_pkgname-git
-pkgver=4696b53
+pkgver=0.1.r0.ga0aa018
 pkgrel=1
 pkgdesc="Save and switch configurations of lxqt-panel"
 arch=('any')
 url="https://github.com/stefonarch/lxqt-panel-tool"
-license=(' GPL 2.0')
+license=(' GPL 2.0+')
 depends=('lxqt-panel' 'python-pyqt6' 'qt6-tools')
 makedepends=('git')
 provides=("${pkgname}=${pkgver}")
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/.r/;s/-/./"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
