@@ -10,7 +10,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 ### Tweak kernel options prior to a build via nconfig
-_makenconfig=1
+_makenconfig=
 
 ### Tweak kernel options prior to a build via menuconfig
 _makemenuconfig=
@@ -29,7 +29,7 @@ _makegconfig=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=1
+_localmodcfg=
 
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
@@ -43,7 +43,7 @@ _use_current=
 # 'bmq' - select 'BitMap Queue CPU scheduler'
 # 'pds' - select 'Priority and Deadline based Skip list multiple queue CPU scheduler'
 # 'none' - select 'Completely Fair Scheduler'
-_projectc='pds'
+_projectc='bmq'
 
 ### Enable htmldocs (increases compile time)
 _htmldocs_enable=
@@ -54,10 +54,10 @@ _htmldocs_enable=
 _major=7.2
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=4
+_lqxpatchrel=6
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqxcjk
-pkgver=7.2.3.lqx2
+pkgver=7.2.3.lqx4
 pkgrel=1
 pkgdesc='Linux Liquorix (with cjktty patch)'
 url='https://liquorix.net/'
@@ -108,7 +108,7 @@ validpgpkeys=(
 )
 sha512sums=('47e63679363261a864d271277340a6f2d45f544e1a056be4159df081f4f6537d0efa865c4af26611ab33a3079ee65db88ec2f6bc0e5fff43e0c043cde0cd91e1'
             'SKIP'
-            'a7d1236670c9616833f600b4858a0c387e1600ca51dd5bccdd9acad1b4d458187d7b3f22877058856198d45562f999f2b7b5220e73097ef7e35aa1aa6cef6312'
+            'c2b24adbbc62daf98b5d9c91f00feaedf5c9719f359d067c494817eb345b9bce2356d67506548cca211d49e506446bec43cb7c9f05df3a4b32366c16e94aeafc'
             '770b55f7a84455f2c1b61837c2e4fcda77808f0b5a9614f8621991d6f7884c67225a268fa88dd8ce9908e55a2c8f20e605f64c05b5074854a39ec130e7e8d59d'
             'c4a443b901030097623d191731a56c87cff2ba3422385d6d7b624387ffa4f659abde07c8360f07e099cd678f8c9b542d7199e3a05febc4c7deaba9e950012cb5')
 
