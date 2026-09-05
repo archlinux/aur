@@ -1,0 +1,12 @@
+pkgbase = hysp
+	pkgdesc = An independent, cross-platform package manager for CTF/hacking tools
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/pwnwriter/hysp
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = hysp-0.1.2.tar.gz::https://codeload.github.com/pwnwriter/hysp/tar.gz/refs/tags/v0.1.2
+	sha256sums = c26ce30bc296d07050e3fcacc21a7b52f8b6382b6c64b4af8f164338f0e22261
+
+pkgname = hysp
