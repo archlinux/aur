@@ -1,15 +1,16 @@
 pkgbase = openbitdo-bin
 	pkgdesc = Prebuilt beginner-first clean-room 8BitDo utility
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/bybrooklyn/openbitdo
 	arch = x86_64
 	arch = aarch64
-	license = BSD-3-Clause
-	depends = hidapi
-	source_x86_64 = openbitdo-v0.0.2-linux-x86_64.tar.gz::https://github.com/bybrooklyn/openbitdo/releases/download/v0.0.2/openbitdo-v0.0.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = fbf40f4798e83fb2d94e9555852c30d3359415da3c50930b2b4c474f82ec2d8f
-	source_aarch64 = openbitdo-v0.0.2-linux-aarch64.tar.gz::https://github.com/bybrooklyn/openbitdo/releases/download/v0.0.2/openbitdo-v0.0.2-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 533658243ec56920761e5dd5005de87b3f10fd58a7a6e096beebc85aee8db663
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = systemd-libs
+	source_x86_64 = openbitdo-v0.0.3-linux-x86_64.tar.gz::https://github.com/bybrooklyn/openbitdo/releases/download/v0.0.3/openbitdo-v0.0.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5fc11380db7a8ce84e6a2a359b2958c1da97695bb9ac8bdc6f2d2d71368761ec
+	source_aarch64 = openbitdo-v0.0.3-linux-aarch64.tar.gz::https://github.com/bybrooklyn/openbitdo/releases/download/v0.0.3/openbitdo-v0.0.3-linux-aarch64.tar.gz
+	sha256sums_aarch64 = b9fcf5f7d74ddc4a0c66e8769c2d05ba97c3d265a8cc7c1da7c5afef9c51d84d
 
 pkgname = openbitdo-bin
