@@ -1,0 +1,21 @@
+pkgbase = kino-tui
+	pkgdesc = Terminal client for browsing and playing Plex or Jellyfin media
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/mmcdole/kino
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.25.5
+	depends = glibc
+	depends = ca-certificates
+	optdepends = mpv: recommended media player
+	optdepends = vlc: alternative media player
+	optdepends = xdg-utils: fallback playback via the system URL handler
+	conflicts = kino
+	options = !lto
+	options = !debug
+	source = kino-0.6.0.tar.gz::https://github.com/mmcdole/kino/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 40f4fa8d1be118003c2146879b3a4760852e9e816158f869cbec6dc4457a0fb5
+
+pkgname = kino-tui
