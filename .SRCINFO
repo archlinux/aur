@@ -1,6 +1,6 @@
 pkgbase = blogtato
 	pkgdesc = A CLI RSS/Atom feed reader inspired by Taskwarrior
-	pkgver = 0.1.25
+	pkgver = 0.1.26
 	pkgrel = 1
 	url = https://github.com/kantord/blogtato
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = blogtato
 	depends = openssl
 	depends = jq
 	provides = blog
-	source = blogtato-0.1.25.crate::https://crates.io/api/v1/crates/blogtato/0.1.25/download
-	sha256sums = 9fab24fdc946f2a8a485e179c1554d8bb7da31827674fd55d1758f0cfa5344ba
+	source = blogtato-0.1.26.crate::https://crates.io/api/v1/crates/blogtato/0.1.26/download
+	sha256sums = 28fe5fd15715ee6d3cd17979aefa555f507eb1f18f78c08245c84ecded929d31
 
 pkgname = blogtato
