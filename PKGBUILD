@@ -6,7 +6,7 @@ _pkgvariant=nosystemd
 _pkgsource=git
 pkgname="${_pkgname}-${_pkgvariant}-${_pkgsource}"
 pkgver=3.2.1.58+r6072.20260903.55e5f4649
-pkgrel=1
+pkgrel=2
 pkgdesc="UPnP Media Server (Based on MediaTomb). Build without systemd dependencies."
 url="https://gerbera.io/"
 license=('GPL-2.0-or-later')
@@ -54,6 +54,8 @@ makedepends=(
   'libzip'
   'libzippp'
   'util-linux-libs'
+
+  'doxygen'
 )
 optdepends=(
   "${_pkgname}-openrc: For OpenRC startup script."
