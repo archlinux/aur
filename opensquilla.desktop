@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=OpenSquilla
+Comment=OpenSquilla desktop app
+Exec=opensquilla %U
+TryExec=opensquilla
+Icon=opensquilla
+Terminal=false
+Type=Application
+Categories=Development;
+MimeType=x-scheme-handler/opensquilla;
+StartupNotify=true
+StartupWMClass=OpenSquilla
