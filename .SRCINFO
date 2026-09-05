@@ -1,6 +1,6 @@
 pkgbase = rmpd-bin
 	pkgdesc = A flexible, powerful, server-side application for playing music
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/M0Rf30/rmpd
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = rmpd-bin
 	conflicts = rmpd-git
 	source = rmpd.service
 	sha256sums = f8068b7c7aa732a8b0649d795c50ff74d5da10069f103206366b051368c9c8fe
-	source_x86_64 = rmpd-0.6.1-x86_64.tar.gz::https://github.com/M0Rf30/rmpd/releases/download/0.6.1/rmpd-0.6.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = f6e82ad6e0667b6b865e73032882f54b36e8b77c23adfa2baf6b154a2cc36da0
-	source_aarch64 = rmpd-0.6.1-aarch64.tar.gz::https://github.com/M0Rf30/rmpd/releases/download/0.6.1/rmpd-0.6.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 34721d979f13b2fe4ba635d62bdd6c95bc5b75d460bc6328e2fb8fbbe82f546b
+	source_x86_64 = rmpd-0.7.0-x86_64.tar.gz::https://github.com/M0Rf30/rmpd/releases/download/0.7.0/rmpd-0.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 155ed0b14dcef937a7e6a0e604320c1a98c6ad3044fc7bcf8f55a33d63c441e0
+	source_aarch64 = rmpd-0.7.0-aarch64.tar.gz::https://github.com/M0Rf30/rmpd/releases/download/0.7.0/rmpd-0.7.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e2e3a5b8dca02cad9ef3cd441925d6769bef5b18988b2e9145c9de8da6d12e4e
 
 pkgname = rmpd-bin
