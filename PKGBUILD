@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=circuit-mesh
-pkgver=1.0.2
+pkgver=1.0.3
 _zigver=0.15.2
 pkgrel=1
 pkgdesc="Zero-Trust Network Engine"
@@ -14,7 +14,7 @@ makedepends=('zig' 'scdoc')
 backup=('etc/circuit-mesh/config.json')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tsukumoakito/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 validpgpkeys=('66B227EC5F67D7B4F8C6C1C7E98764DF6FCE8857')
-sha256sums=('5a3b83f01327bc86244743a4a7cd96d741a60d404c4730f89738362ce8c15b0e')
+sha256sums=('26d108714480a9821e645d5ba965abec792561acb55fca6ecaf4ad23ec2fea84')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -35,8 +35,8 @@ package() {
     install -Dm644 config.json "${pkgdir}/etc/circuit-mesh/config.json"
     install -Dm644 zig-out/share/man/man1/circuit-mesh.1 "${pkgdir}/usr/share/man/man1/circuit-mesh.1"
     install -Dm644 zig-out/share/man/ja/man1/circuit-mesh.1 "${pkgdir}/usr/share/man/ja/man1/circuit-mesh.1"
-    install -Dm644 doc/MANUAL.md "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.md"
-    install -Dm644 doc/MANUAL_ja.md "${pkgdir}/usr/share/doc/${pkgname}/MANUAL_ja.md"
+    install -Dm644 zig-out/doc/MANUAL.md "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.md"
+    install -Dm644 zig-out/doc/MANUAL_ja.md "${pkgdir}/usr/share/doc/${pkgname}/MANUAL_ja.md"
     install -Dm644 doc/COMMERCIAL.md "${pkgdir}/usr/share/doc/${pkgname}/COMMERCIAL.md"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 README_ja.md "${pkgdir}/usr/share/doc/${pkgname}/README_ja.md"

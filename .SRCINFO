@@ -1,6 +1,6 @@
 pkgbase = circuit-mesh
 	pkgdesc = Zero-Trust Network Engine
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://codeberg.org/tsukumoakito/circuit-mesh
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = circuit-mesh
 	depends = tor
 	depends = ipset
 	backup = etc/circuit-mesh/config.json
-	source = circuit-mesh-1.0.2.tar.gz::https://github.com/tsukumoakito/circuit-mesh/archive/refs/tags/v1.0.2.tar.gz
+	source = circuit-mesh-1.0.3.tar.gz::https://github.com/tsukumoakito/circuit-mesh/archive/refs/tags/v1.0.3.tar.gz
 	validpgpkeys = 66B227EC5F67D7B4F8C6C1C7E98764DF6FCE8857
-	sha256sums = 5a3b83f01327bc86244743a4a7cd96d741a60d404c4730f89738362ce8c15b0e
+	sha256sums = 26d108714480a9821e645d5ba965abec792561acb55fca6ecaf4ad23ec2fea84
 
 pkgname = circuit-mesh
