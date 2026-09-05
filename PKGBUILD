@@ -8,12 +8,13 @@ pkgrel=1
 pkgdesc="An editor-first, agent-ready terminal workspace for software development"
 
 arch=('x86_64')
-license=('GPL-3.0-or-later')
+license=('MPL-2.0')
 url="https://github.com/${pkgauthor}/${pkgname}"
 
 provides=("${pkgname}")
 
 makedepends=('cargo')
+depends=('glibc' 'libgcc')
 
 options=('!lto' '!strip')
 
@@ -45,8 +46,11 @@ package() {
 
 	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
+	install -Dm644 "config.example.yaml" "${pkgdir}/usr/share/doc/${pkgname}/config/config.example.yaml"
+
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 "docs/user-guide.md" "${pkgdir}/usr/share/doc/${pkgname}/USER-GUIDE.md"
 
+	install -Dm644 "NOTICE" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
