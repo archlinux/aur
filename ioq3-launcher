@@ -1,0 +1,5 @@
+#!/bin/sh
+# IQQUAKE3 launch Script
+
+cd /usr/share/games/ioq3 || exit 1
+exec ./ioquake3 "$@"
