@@ -1,5 +1,5 @@
 # Maintainer: grufo <grossomalpelo AT gmail DOT com>
-# Contributor: Neurofibromin <tqwcafc9vgfuxwze6f AT tutanota DOT com>
+# Contributor: <tqwcafc9vgfuxwze6f AT tutanota DOT com>
 
 pkgname='hpuld'
 pkgver='1.00.39.12_00.15'
