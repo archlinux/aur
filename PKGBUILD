@@ -7,7 +7,7 @@
 # Arch/Omarchy (Intel and NVIDIA).
 
 pkgname=audibleport-bin
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Download and convert Audible audiobooks locally"
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(
   "LICENSE"
 )
 sha256sums=(
-  'db0e40682f6065b0062b236729cb3b9b19db859aa000f148b982c4fd79117b1d'
+  '44f0ae1c10486ae1eaac621da0c7867365f4e30890c3fbc155a27d784afd68ef'
   'd7afd4229854d68a47e0cdadbbf4cd44a2cbef90b4104e30800557f6846cd3a0'
   'f306dfb5d537724f15d2af8c2bd81d8bf666c85c45e20aea6e8fb9cda2f4881e'
   'ab768f90de1bebd36122c52dce48305f9191660e017772cf7d852de9a6376594'
@@ -60,6 +60,9 @@ prepare() {
 package() {
   install -d "${pkgdir}/opt/audibleport"
   cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/audibleport/"
+
+  # AppImage payloads may carry writable schemas/docs or unreadable helpers.
+  chmod -R a+rX,go-w "${pkgdir}/opt/audibleport"
 
   # Keep the main binary and bundled resources (ffmpeg) executable.
   chmod 755 "${pkgdir}/opt/audibleport/usr/bin/audibleport"
