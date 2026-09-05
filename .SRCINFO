@@ -1,0 +1,24 @@
+pkgbase = python-shy-sh
+	pkgdesc = Shell copilot: an AI copilot for your shell (installs as 'shy')
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://github.com/mceck/shy-sh
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-typer
+	depends = python-langchain
+	depends = python-pyyaml
+	depends = python-pydantic-settings
+	depends = python-pyperclip
+	depends = python-questionary
+	depends = python-tzlocal
+	depends = python-tiktoken
+	source = shy-sh-1.3.4.tar.gz::https://codeload.github.com/mceck/shy-sh/tar.gz/refs/tags/v1.3.4
+	sha256sums = ccca37134b1c38f3841e2f6c9e9a78db3d259d228cf3aab57232460646e26a86
+
+pkgname = python-shy-sh
