@@ -1,0 +1,22 @@
+pkgbase = python-restbook-git
+	pkgdesc = Orchestrate complex API workflows using YAML playbooks
+	pkgver = r142.2a60861
+	pkgrel = 1
+	url = https://github.com/shalev007/restbook
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	depends = python-pyyaml
+	depends = python-jsonpath-ng
+	provides = restbook
+	conflicts = restbook
+	source = restbook::git+https://github.com/shalev007/restbook.git
+	sha256sums = SKIP
+
+pkgname = python-restbook-git
