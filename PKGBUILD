@@ -3,8 +3,8 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.21.0
-pkgrel=2
+pkgver=0.21.1
+pkgrel=1
 url='https://www.hunk.dev/'
 changelog=CHANGELOG.md
 arch=(aarch64 x86_64)
@@ -16,7 +16,7 @@ provides=('hunkdiff')
 options=(!strip !debug)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver/_/-}.tar.gz"
         'hunk-embed-envs.patch')
-b2sums=('600fc6114b677e6e854cf1190f987240a93e62d8d1b8cf83a4b044da51bb7cedc2b1a980fea1cc9fbf5b06bfbe9b3fbcb3f866418a7c9788a268d8f5b226d774'
+b2sums=('00c0207de02e2e6afbf76ad8e9afa37b0060aca3f2771eaa0ffb27295c28ce4d0d34667b3871233b8057a6acbcdf7051b8f22d7469af7c700df98c7d936ec3c4'
         '394ad2625af19b834d618b5987b30715fb30d9f5bf8d690f8e22e3186dc8eb6b7e863d65dc3f08d8e900777e93809575790aa33fb9571d2eacdcf1503169da1d')
 
 _install_dir=/usr/lib/hunkdiff
@@ -79,7 +79,7 @@ check() {
 
   echo -n 'UPDATE = '
   update=$(dist/hunk update || true)
-  grep -E pacman <<< "${update}"
+  grep -F pacman <<< "${update}"
 }
 
 package() {
