@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=scratchmark
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Organized markdown editor"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
   'meson'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sevonj/scratchmark/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ec6acd7f458391a672873599aea33e13bbc4a57f91c89526eecafb687fb4eacf')
+sha256sums=('e2a77909b45af141bf770cd51d8092559c0629d4a3db1b48bd487cd0778af88d')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -26,6 +26,7 @@ prepare() {
 }
 
 build() {
+  export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname-$pkgver" build --buildtype=release -Doffline=true
   meson compile -C build
