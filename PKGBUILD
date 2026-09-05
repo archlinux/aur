@@ -2,8 +2,8 @@
 
 _pkgname="gtfs-planner"
 pkgname="${_pkgname}-git"
-pkgver=1.0.0+13.r148.20260605.95f1c45
-pkgrel=2
+pkgver=1.0.0+39.r170.20260814.48ea248
+pkgrel=1
 pkgdesc='A desktop application for visualizing and planning trips using GTFS (General Transit Feed Specification) public transit data. Built with Go, React, and MapLibre GL.'
 arch=(
   "aarch64"
