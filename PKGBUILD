@@ -3,17 +3,17 @@
 pkgname=png2lvgl
 # Measured from the source archive, not assumed to be $pkgname-$pkgver:
 # GitHub names the directory after the tag, and a prerelease tag differs.
-_srcdir=png2lvgl-0.3.11
-pkgver=0.3.11
+_srcdir=png2lvgl-0.3.12
+pkgver=0.3.12
 pkgrel=1
 pkgdesc="Convert PNG images to LVGL C arrays"
 arch=('x86_64' 'aarch64')
 url="https://github.com/metaneutrons/png2lvgl"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/metaneutrons/png2lvgl/archive/refs/tags/v0.3.11.tar.gz")
-sha256sums=('d2508afaa83a21c1295e93ad9715854c88908a619bec695efd602555c1082d50')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/metaneutrons/png2lvgl/archive/refs/tags/v0.3.12.tar.gz")
+sha256sums=('9292d669e23c1665546f127847b254ceb7ef7f4190da0fb05b9353f193739fc1')
 
 prepare() {
     cd "$_srcdir"
