@@ -85,14 +85,10 @@ package() {
     -e 's|if \[ "$UID" -eq "$ROOT_UID" \]; then|if true; then|g' \
     install.sh
 
-  bash install.sh
+  bash install.sh -w opaque
 
   # delete useless magnifications
-  rm -rf \
-    "${pkgdir}"/usr/share/aurorae/themes/WhiteSur_x* \
-    "${pkgdir}"/usr/share/aurorae/themes/WhiteSur-dark_x* \
-    "${pkgdir}"/usr/share/aurorae/themes/WhiteSurLiquid_x* \
-    "${pkgdir}"/usr/share/aurorae/themes/WhiteSurLiquid-dark_x*
+  rm -rf "${pkgdir}"/usr/share/aurorae/themes/*_x*
 
   # Icon theme
   cd "${srcdir}/${_iconsname}"
