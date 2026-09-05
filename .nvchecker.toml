@@ -1,0 +1,5 @@
+[archman]
+source = "github"
+github = "ankur3-101106/pacman-utils"
+use_latest_release = true
+prefix = "v"
