@@ -1,7 +1,7 @@
 pkgbase = aeosd
 	pkgdesc = An OSD for changing screen brightness
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://git.sr.ht/~aeldit/aeosd
 	arch = any
 	license = GPL-2.0-only

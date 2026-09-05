@@ -2,7 +2,7 @@
 
 pkgname=aeosd
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An OSD for changing screen brightness"
 arch=("any")
 url="https://git.sr.ht/~aeldit/aeosd"
@@ -28,5 +28,5 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
-    install -vDm644 -t "$pkgdir/etc/udev/rules.d/" "90-aeosd.rules"
+    install -vDm644 -t "$pkgdir/usr/lib/udev/rules.d/" "90-aeosd.rules"
 }
