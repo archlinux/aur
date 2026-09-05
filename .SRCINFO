@@ -1,0 +1,56 @@
+pkgbase = ros2-jazzy-image_transport_plugins
+	pkgdesc = ROS 2 image_transport plugins (compressed, compressed-depth, theora, zstd)
+	pkgver = 4.0.7
+	pkgrel = 1
+	url = https://index.ros.org/p/image_transport_plugins/
+	arch = x86_64
+	license = BSD-3-Clause
+	license = MIT
+	makedepends = cmake
+	makedepends = ros2-jazzy-cv_bridge
+	makedepends = opencv4
+	makedepends = libogg
+	makedepends = libtheora
+	makedepends = pkgconf
+	makedepends = zlib
+	depends = ros2-jazzy
+	source = ros2-jazzy-image_transport_plugins-4.0.7.tar.gz::https://github.com/ros-perception/image_transport_plugins/archive/refs/tags/4.0.7.tar.gz
+	sha256sums = c28fdf269cb2cc146c35f3f40f2a1bf215eeec07b70287c1b5bbdd8565f0e583
+
+pkgname = ros2-jazzy-compressed_image_transport
+	pkgdesc = image_transport plugin for JPEG/PNG compressed images
+	license = BSD-3-Clause
+	depends = ros2-jazzy
+	depends = ros2-jazzy-cv_bridge
+	depends = opencv4
+
+pkgname = ros2-jazzy-compressed_depth_image_transport
+	pkgdesc = image_transport plugin for compressed depth images
+	license = BSD-3-Clause
+	license = MIT
+	depends = ros2-jazzy
+	depends = ros2-jazzy-cv_bridge
+	depends = opencv4
+
+pkgname = ros2-jazzy-theora_image_transport
+	pkgdesc = image_transport plugin for Theora video streaming
+	license = BSD-3-Clause
+	depends = ros2-jazzy
+	depends = ros2-jazzy-cv_bridge
+	depends = opencv4
+	depends = libogg
+	depends = libtheora
+
+pkgname = ros2-jazzy-zstd_image_transport
+	pkgdesc = image_transport plugin using zlib compression
+	license = BSD-3-Clause
+	depends = ros2-jazzy
+	depends = zlib
+
+pkgname = ros2-jazzy-image_transport_plugins
+	pkgdesc = Metapackage pulling in all image_transport plugins
+	license = BSD-3-Clause
+	depends = ros2-jazzy-compressed_image_transport
+	depends = ros2-jazzy-compressed_depth_image_transport
+	depends = ros2-jazzy-theora_image_transport
+	depends = ros2-jazzy-zstd_image_transport
