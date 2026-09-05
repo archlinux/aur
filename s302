@@ -2,6 +2,7 @@
 # s302 - Steamcommunity 302 控制命令
 # 无参数 / ui      : 打开图形界面(AppImage,需图形会话)
 # start/stop/...   : 管理后端 daemon(systemd s302-*.service)+ 配置
+# rule/dns 参考 ufw 风格:list/info/allow/deny/status
 # daemon 与引擎由 systemd 服务托管(AppImage 首次运行 GUI 时自动安装,
 # 或按 wiki 手动创建);数据目录 /var/lib/Steamcommunity_302/
 set -euo pipefail
@@ -9,8 +10,11 @@ set -euo pipefail
 APPIMAGE="/opt/steamcommunity302/steamcommunity302.AppImage"
 DATA_DIR="/var/lib/Steamcommunity_302"
 CFG="${DATA_DIR}/config.json"
+# 规则库(含全部规则的 section 与中文名;版本目录按 daemon 实际版本)
+RULES_INI="$(ls -d ${DATA_DIR}/app/versions/*/ 2>/dev/null | sort -V | tail -1)S302_rules.ini"
+[[ -f "$RULES_INI" ]] || RULES_INI="${DATA_DIR}/rules/active.ini"
 
-# 探测 systemd 服务名(按机器 UID 生成:s302-<uid>.service)
+# --- 探测 systemd 服务名(按机器 UID 生成:s302-<uid>.service) ---
 find_svc() {
     local svc
     svc="$(systemctl list-unit-files 2>/dev/null | awk '/^s302-[0-9]+\.service/ {print $1; exit}')"
@@ -28,32 +32,86 @@ need_svc() {
 }
 need_cfg() { [[ -f "$CFG" ]] || die "未找到 $CFG —— 服务未初始化,先运行 's302 ui'"; }
 
+# --- 规则数据访问(经 python,处理 ini/json) ---
+# 输出: 全部规则 <名称>\t<中文名>\t<Group>  (来自规则库,不含基础设施)
+# 名称合法性校验也走这里
+rules_db() {
+    python3 - "$RULES_INI" <<'PY'
+import configparser, sys
+p = sys.argv[1]
+c = configparser.ConfigParser()
+c.read(p)
+# 跳过基础设施(无 Title)与特殊段
+for s in c.sections():
+    if 'Title' not in c[s]:
+        continue
+    if s in ('Caddy_init', 'Caddy_end'):
+        continue
+    t = c[s].get('Title', s).strip()
+    g = c[s].get('Group', '').strip()
+    print(f'{s}\t{t}\t{g}')
+PY
+}
+
+# 当前启用的规则(config.json 权威源)
+rules_enabled() {
+    python3 - "$CFG" <<'PY'
+import json, sys
+d = json.load(open(sys.argv[1]))
+print('\n'.join(d['settings']['rules']['enabled']))
+PY
+}
+
+# 校验规则名存在
+rule_valid() {
+    local name="$1"
+    rules_db | awk -F'\t' -v n="$name" '$1==n {found=1} END {exit !found}'
+}
+
 usage() {
     cat <<'EOF'
 用法: s302 <命令> [参数]
 
-无参数 / ui           打开图形界面(完整配置;首次使用请先运行此命令)
-                       (headless: 提示无图形会话)
+界面:
+  (无参数) / ui         打开图形界面(完整配置;首次使用请先运行)
 
-管理命令(需 root;操作 s302 systemd 服务与引擎):
-  start               启动 daemon+引擎
-  stop                停止 daemon+引擎
-  restart             重启(修改配置后生效)
-  status              查看服务状态
-  enable              设置开机自启
-  disable             取消开机自启
-  log [行数]          查看引擎日志(默认最近 50 行)
+服务管理(需 root):
+  start|stop|restart    启动/停止/重启 daemon+引擎
+  status [verbose]      服务与配置状态(verbose: 含规则明细)
+  enable|disable        设置/取消开机自启
+  log [行数]            查看引擎日志(默认最近 50 行)
 
-配置命令(需 root;修改后自动重启生效):
-  rules               列出已启用的规则
-  rule <名称> on|off  启用/停用单条规则
-  dns on|off          开关 DNS 重定向
-  info                显示服务状态与关键配置(端口/DNS/规则)
+规则管理(ufw 风格,需 root):
+  rules list            列出全部可用规则(*=启用, 含中文名)
+  rules enable <名称>   启用规则(= allow)
+  rules disable <名称>  停用规则(= deny)
+  rules info <名称>     查看单条规则详情(名称/中文名/分组/状态)
+  rules on|off <名称>   on/off 别名(向后兼容)
+
+DNS 管理(需 root):
+  dns status            查看 DNS 重定向状态
+  dns on|off            启用/停用 DNS 重定向
 
 其他:
-  version             显示 AppImage 版本
-  help                显示本帮助
+  info                  服务与关键配置总览
+  version               显示版本
+  help                  显示本帮助
 EOF
+}
+
+apply_cfg() {
+    # $1 = python 代码, 操作 CFG 后重启服务
+    need_root "$*"
+    need_svc
+    python3 - "$CFG" <<PY
+import json, sys
+p = sys.argv[1]
+d = json.load(open(p))
+$1
+json.dump(d, open(p, 'w'), indent=2, ensure_ascii=False)
+PY
+    systemctl restart "$SVC"
+    echo "✓ 已应用并重启 $SVC"
 }
 
 # 无参数 => GUI(与 desktop Exec=/usr/bin/s302 兼容)
@@ -64,17 +122,33 @@ fi
 case "$1" in
     ui)
         if [[ -z "${WAYLAND_DISPLAY:-}${DISPLAY:-}" ]]; then
-            echo "当前无图形会话(headless)。管理请用: s302 start/stop/status/rules/rule/dns/info"
+            echo "当前无图形会话(headless)。管理请用: s302 start/stop/status/rules/dns/info"
             echo "初始化配置: 需图形会话运行 s302 ui(如本机/远程 X11 转发)"
             exit 0
         fi
         exec "$APPIMAGE"
         ;;
 
-    start|stop|restart|status|enable|disable)
+    start|stop|restart|enable|disable)
         need_root "$*"
         need_svc
         systemctl "$1" "$SVC"
+        ;;
+
+    status)
+        need_svc
+        systemctl status "$SVC" --no-pager
+        if [[ "${2:-}" == "verbose" ]]; then
+            echo
+            echo "--- 已启用规则 ---"
+            rules_enabled | sed 's/^/  /'
+            echo "--- DNS ---"
+            python3 -c "
+import json
+d = json.load(open('$CFG'))
+print('  DNS:', '开' if d['settings']['dns']['enabled'] else '关')
+"
+        fi
         ;;
 
     log)
@@ -83,55 +157,114 @@ case "$1" in
         journalctl -u "$SVC" -n "${2:-50}" --no-pager
         ;;
 
+    # ---------- 规则管理(ufw 风格) ----------
     rules)
         need_cfg
-        python3 -c "
+        sub="${2:-list}"
+        case "$sub" in
+            list)
+                # 状态标记: 启用加 *
+                en="$(rules_enabled)"
+                rules_db | awk -F'\t' -v en="$en" '
+                    function isen(n, a, i) { split(en, a, "\n"); for (i in a) if (a[i]==n) return 1; return 0 }
+                    { mark = isen($1) ? "*" : " "; printf "%s %-28s %-10s %s\n", mark, $1, $3, $2 }
+                '
+                echo "---"
+                echo "* = 启用 | 全部 $(rules_db | wc -l) 条, 已启用 $(rules_enabled | wc -l) 条"
+                ;;
+            enable|allow)
+                [[ $# -ge 3 ]] || die "用法: s302 rules $sub <名称>"
+                need_root "$*"
+                need_cfg
+                rule_valid "$3" || die "未知规则: $3 (s302 rules list 查看全部)"
+                apply_cfg "
+r = d['settings']['rules']['enabled']
+if '$3' not in r: r.append('$3')
+print('规则 $3 已启用')
+"
+                ;;
+            disable|deny)
+                [[ $# -ge 3 ]] || die "用法: s302 rules $sub <名称>"
+                need_root "$*"
+                need_cfg
+                apply_cfg "
+r = d['settings']['rules']['enabled']
+r[:] = [x for x in r if x != '$3']
+print('规则 $3 已停用')
+"
+                ;;
+            on|off)
+                # 向后兼容旧语法: s302 rules on <名称> / off
+                [[ $# -ge 3 ]] || die "用法: s302 rules $sub <名称>"
+                need_root "$*"
+                need_cfg
+                if [[ "$sub" == "on" ]]; then
+                    rule_valid "$3" || die "未知规则: $3"
+                    apply_cfg "
+r = d['settings']['rules']['enabled']
+if '$3' not in r: r.append('$3')
+print('规则 $3 已启用')
+"
+                else
+                    apply_cfg "
+r = d['settings']['rules']['enabled']
+r[:] = [x for x in r if x != '$3']
+print('规则 $3 已停用')
+"
+                fi
+                ;;
+            info)
+                [[ $# -ge 3 ]] || die "用法: s302 rules info <名称>"
+                need_cfg
+                rule_valid "$3" || die "未知规则: $3 (s302 rules list 查看全部)"
+                en="$(rules_enabled | grep -x "$3" >/dev/null && echo 启用 || echo 停用)"
+                rules_db | awk -F'\t' -v n="$3" -v st="$en" '
+                    $1==n { printf "名称  : %s\n中文  : %s\n分组  : %s\n状态  : %s\n", $1, $2, $3, st }
+                '
+                ;;
+            *)
+                die "未知 rules 子命令: $sub (s302 help)"
+                ;;
+        esac
+        ;;
+
+    # 向后兼容旧语法: s302 rule <名称> on|off
+    rule)
+        [[ $# -eq 3 ]] || die "用法: s302 rule <名称> on|off (或 s302 rules enable/disable <名称>)"
+        case "$3" in
+            on)  exec "$0" rules enable "$2" ;;
+            off) exec "$0" rules disable "$2" ;;
+            *)   die "参数 op 只能是 on|off" ;;
+        esac
+        ;;
+
+    # ---------- DNS ----------
+    dns)
+        need_cfg
+        sub="${2:-status}"
+        case "$sub" in
+            status)
+                python3 -c "
 import json
 d = json.load(open('$CFG'))
-print('\n'.join(d['settings']['rules']['enabled']))
+s = d['settings']['dns']
+print('DNS 重定向:', '开' if s['enabled'] else '关')
+print('模式      :', s.get('netfilterMode', '?'))
+print('上游      :', ', '.join(s['upstreams']))
+print('TTL       :', s.get('ttl', '?'))
 "
-        ;;
-
-    rule)
-        [[ $# -eq 3 ]] || die "用法: s302 rule <名称> on|off"
-        need_root "$*"
-        need_cfg
-        name="$2" op="$3"
-        [[ "$op" =~ ^(on|off)$ ]] || die "参数 op 只能是 on|off"
-        python3 - "$name" "$op" <<'PY'
-import json, sys
-p = '/var/lib/Steamcommunity_302/config.json'
-name, op = sys.argv[1], sys.argv[2]
-d = json.load(open(p))
-r = d['settings']['rules']['enabled']
-if op == 'on':
-    if name not in r:
-        r.append(name)
-else:
-    r[:] = [x for x in r if x != name]
-json.dump(d, open(p, 'w'), indent=2, ensure_ascii=False)
-print(f'规则 {name} {op}')
-PY
-        systemctl restart "$(find_svc)"
-        echo "✓ 已应用并重启服务"
-        ;;
-
-    dns)
-        [[ $# -eq 2 ]] || die "用法: s302 dns on|off"
-        need_root "$*"
-        need_cfg
-        [[ "$2" =~ ^(on|off)$ ]] || die "参数只能是 on|off"
-        python3 - "$2" <<'PY'
-import json, sys
-p = '/var/lib/Steamcommunity_302/config.json'
-op = sys.argv[1]
-d = json.load(open(p))
-d['settings']['dns']['enabled'] = (op == 'on')
-json.dump(d, open(p, 'w'), indent=2, ensure_ascii=False)
-print(f'DNS {op}')
-PY
-        systemctl restart "$(find_svc)"
-        echo "✓ 已应用并重启服务"
+                ;;
+            on|off)
+                need_root "$*"
+                apply_cfg "
+d['settings']['dns']['enabled'] = ('$sub' == 'on')
+print('DNS $sub')
+"
+                ;;
+            *)
+                die "未知 dns 子命令: $sub (on|off|status)"
+                ;;
+        esac
         ;;
 
     info)
