@@ -4,7 +4,7 @@ pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
 pkgname=($_pkgbase-git)
-pkgver=1.6.0.r1.g8a871aa
+pkgver=1.6.0.r20.g3797422
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -36,7 +36,7 @@ source=(
         "com.danklinux.dms.desktop"
         "com.danklinux.dms.notepad.desktop")
 sha256sums=('SKIP'
-            '0fae6605c45847b2c81da62d0cc98b936eb17c2643f6f269934198d66a18d347'
+            'd2a41218a83af3e921f05867d0065eed65074eff33b5bc1f8bb0469d2db41f28'
             '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
             '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
             '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
