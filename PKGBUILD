@@ -7,8 +7,8 @@
 _pkgbase='logisim-evolution'
 pkgbase="${_pkgbase}-git"
 pkgname="${_pkgbase}-git"
-pkgver=4.1.0+135.r6037.20260526.6dbb73b33
-pkgrel=2
+pkgver=4.1.0+919.r6821.20260905.0f5f26f24
+pkgrel=1
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
 pkgdesc='An educational tool for designing and simulating digital logic circuits.'
