@@ -1,6 +1,6 @@
 pkgbase = cow-wm-git
 	pkgdesc = cow is a stacking window manager using river as the compositor.
-	pkgver = 0.1.rc.r121.g55a2c30
+	pkgver = 0.2.r63.gc71eb81
 	pkgrel = 1
 	url = https://codeberg.org/thomasadam/cow/
 	arch = x86_64
