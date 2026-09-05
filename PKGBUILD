@@ -3,7 +3,7 @@
 _pkgname=marble-maps-scandinavia
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=r12.20260306.8463cb1
+pkgver=r13.20260306.4f136d7
 pkgrel=1
 pkgdesc="Maps for Denmark (incl. Greenland), Sweden and Norway (incl. Svalbard and Jan Mayen) for KDE marble. For some maps, credentials are required and asked for during build."
 url="https://codeberg.org/dreieck/marble-maps-scandinavia"

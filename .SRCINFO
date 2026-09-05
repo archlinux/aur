@@ -1,6 +1,6 @@
 pkgbase = marble-maps-scandinavia-git
 	pkgdesc = Maps for Denmark (incl. Greenland), Sweden and Norway (incl. Svalbard and Jan Mayen) for KDE marble. For some maps, credentials are required and asked for during build.
-	pkgver = r12.20260306.8463cb1
+	pkgver = r13.20260306.4f136d7
 	pkgrel = 1
 	epoch = 0
 	url = https://codeberg.org/dreieck/marble-maps-scandinavia
@@ -17,7 +17,7 @@ pkgbase = marble-maps-scandinavia-git
 	makedepends = sed
 	makedepends = xq
 	depends = marble-common
-	provides = marble-maps-scandinavia=r12.20260306.8463cb1
+	provides = marble-maps-scandinavia=r13.20260306.4f136d7
 	provides = marble-maps-denmark-topo
 	provides = marble-maps-denmark-ortofoto
 	provides = marble-maps-denmark-roads
