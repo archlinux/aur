@@ -2,8 +2,8 @@
 # from: git
 
 pkgname=smartdns-webui-git
-pkgver=r54.c0d2411
-pkgrel=3
+pkgver=1.0.0.r3.g1c06fee
+pkgrel=1
 pkgdesc="Dashboard UI plugin assets for smartdns"
 arch=('any')
 license=('MIT')
@@ -19,14 +19,14 @@ pkgver()
     cd "$srcdir/${pkgname%*-git}"
     (
         set -o pipefail
-        git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
 
 prepare() {
   cd smartdns-webui
-  npm install
+  npm ci --allow-remote all --ignore-scripts
 }
 
 build() {

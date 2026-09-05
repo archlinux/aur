@@ -1,7 +1,7 @@
 pkgbase = smartdns-webui-git
 	pkgdesc = Dashboard UI plugin assets for smartdns
-	pkgver = r54.c0d2411
-	pkgrel = 3
+	pkgver = 1.0.0.r3.g1c06fee
+	pkgrel = 1
 	url = https://github.com/pymumu/smartdns-webui
 	arch = any
 	license = MIT
