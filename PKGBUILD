@@ -2,7 +2,7 @@
 
 pkgname='zoi'
 _tag="Prod-Release-$pkgver"
-pkgver=1.26.1
+pkgver=1.27.0
 pkgrel=1
 pkgdesc="Advanced Package Manager & Environment Orchestrator"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url="https://gitlab.com/zillowe/zillwen/zusty/zoi"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-makedepends=('cargo' 'just')
+makedepends=('cargo' 'just' 'asciidoctor')
 depends=('git' 'gnupg')
 optdepends=(
   'bash-completion: for bash shell completion'
@@ -21,7 +21,7 @@ optdepends=(
 
 source=("$url/-/archive/$_tag/Zoi-Prod-Release-$pkgver.tar.gz"
   "LICENSE::$url/-/raw/main/LICENSE")
-sha512sums=('00858f4c614d7bc2986e0df5a266dde54c7743278dd2033cbb19f4c45740b1b02aea5c24bcd63e88167645f8b6d1dbf274718c21909e84dd999851cc1e123f40'
+sha512sums=('51196eb9d4ad1fdb0cd05496d7b23613ae2ee3aa4f889ba6f19bcd7babf5201368a9e78e4f663a872b9d15e5123b93c2d961b5c0f9782fe4b4053a51ec2348da'
   'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
 
 build() {
@@ -48,8 +48,11 @@ package() {
   install -d "$_fish_completion_dir"
   "$pkgdir/usr/bin/$pkgname" generate-completions fish >"$_fish_completion_dir/$pkgname.fish"
 
-  local _man_dir="$pkgdir/usr/share/man/man1"
-  install -d "$_man_dir"
-  "$pkgdir/usr/bin/$pkgname" generate-manual
-  install -Dm644 manuals/*.1 "$_man_dir"
+  local _man_tmp
+  _man_tmp="$(mktemp -d)"
+  asciidoctor -b manpage -D "$_man_tmp" man/zoi.adoc man/zoi-rs.adoc man/zoi-lua.adoc
+  install -Dm644 "$_man_tmp/zoi.1" "$pkgdir/usr/share/man/man1/zoi.1"
+  install -Dm644 "$_man_tmp/zoi-rs.3" "$pkgdir/usr/share/man/man3/zoi-rs.3"
+  install -Dm644 "$_man_tmp/zoi-lua.5" "$pkgdir/usr/share/man/man5/zoi-lua.5"
+  rm -rf "$_man_tmp"
 }
