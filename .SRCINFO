@@ -1,0 +1,12 @@
+pkgbase = octomind
+	pkgdesc = Session-based AI development assistant with conversational codebase interaction and multi-provider AI integration
+	pkgver = 0.36.0
+	pkgrel = 1
+	url = https://github.com/muvon/octomind
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	source = octomind-0.36.0.tar.gz::https://codeload.github.com/muvon/octomind/tar.gz/refs/tags/0.36.0
+	sha256sums = cb4ddc470d2534c271db2a4165214353070070f371fefce7e84dd3b6be0aeab2
+
+pkgname = octomind
