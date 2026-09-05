@@ -23,9 +23,10 @@ PKGVER=$(echo "${REALVER}" | sed 's/-R/\.r/g')
 sed -i "s/^_realver=.*/_realver=\"${REALVER}\"/" PKGBUILD
 sed -i "s/^pkgver=.*/pkgver=${PKGVER}/" PKGBUILD
 sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
-if [[ -f muse.sh ]]; then
+if [[ -f muse.sh && -f muse-session ]]; then
   SHA256_WRAPPER=$(sha256sum muse.sh | cut -d' ' -f1)
-  sed -i "s/^sha256sums=.*/sha256sums=('${SHA256_WRAPPER}')/" PKGBUILD
+  SHA256_SESSION=$(sha256sum muse-session | cut -d' ' -f1)
+  sed -i "s/^sha256sums=.*/sha256sums=('${SHA256_WRAPPER}' '${SHA256_SESSION}')/" PKGBUILD
 fi
 sed -i "s/^sha256sums_x86_64=.*/sha256sums_x86_64=('${SHA256_X86}')/" PKGBUILD
 sed -i "s/^sha256sums_aarch64=.*/sha256sums_aarch64=('${SHA256_ARM}')/" PKGBUILD

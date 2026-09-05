@@ -1,0 +1,341 @@
+#!/usr/bin/env python3
+"""
+muse-session: CLI extension for Muse Code to list, inspect, and delete sessions.
+"""
+
+import os
+import sys
+import glob
+import json
+import shutil
+import argparse
+import re
+from datetime import datetime, timedelta
+
+def get_sessions_dir():
+    xdg_data = os.environ.get("XDG_DATA_HOME") or os.path.expanduser("~/.local/share")
+    return os.path.join(xdg_data, "muse", "sessions")
+
+def check_lock(session_dir):
+    lock_file = os.path.join(session_dir, ".session.lock")
+    if not os.path.exists(lock_file):
+        return False, None
+    try:
+        with open(lock_file, "r") as f:
+            m = re.search(r"pid=(\d+)", f.read())
+            if m:
+                pid = int(m.group(1))
+                try:
+                    os.kill(pid, 0)
+                    return True, pid
+                except OSError:
+                    return False, None
+    except Exception:
+        pass
+    return False, None
+
+def get_session_info(session_dir):
+    uuid = os.path.basename(session_dir)
+    jsonl_path = os.path.join(session_dir, "session.jsonl")
+    workspace = "unknown"
+    first_prompt = None
+    created_at = None
+    model_id = None
+    is_locked, lock_pid = check_lock(session_dir)
+    events_count = 0
+
+    if os.path.exists(jsonl_path):
+        mtime = os.path.getmtime(jsonl_path)
+        created_at = datetime.fromtimestamp(mtime)
+        try:
+            with open(jsonl_path, "r", errors="ignore") as f:
+                for line in f:
+                    events_count += 1
+                    try:
+                        rec = json.loads(line)
+                        pt = rec.get("payload_type")
+                        if pt == "runtime.session.metadata":
+                            meta = rec.get("payload", {}).get("record", {})
+                            if "workspace_root" in meta:
+                                workspace = meta["workspace_root"]
+                        elif pt == "run.model.configured":
+                            model_id = rec.get("payload", {}).get("record", {}).get("model_id")
+                        elif pt == "runtime.user_intent.accepted" and not first_prompt:
+                            msgs = rec.get("payload", {}).get("model_messages", [])
+                            if msgs and "content" in msgs[0]:
+                                for c in msgs[0]["content"]:
+                                    if c.get("kind") == "text":
+                                        first_prompt = c.get("text").strip()
+                                        break
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+
+    if not created_at:
+        try:
+            created_at = datetime.fromtimestamp(os.path.getctime(session_dir))
+        except Exception:
+            created_at = datetime.now()
+
+    total_bytes = 0
+    try:
+        for root, _, files in os.walk(session_dir):
+            for file in files:
+                fp = os.path.join(root, file)
+                if not os.path.islink(fp):
+                    total_bytes += os.path.getsize(fp)
+    except Exception:
+        pass
+
+    return {
+        "uuid": uuid,
+        "path": session_dir,
+        "workspace": workspace,
+        "prompt": first_prompt or "(no prompt)",
+        "created_at": created_at,
+        "size_bytes": total_bytes,
+        "is_locked": is_locked,
+        "lock_pid": lock_pid,
+        "events_count": events_count,
+        "model_id": model_id or "default"
+    }
+
+def find_all_sessions():
+    base = get_sessions_dir()
+    if not os.path.exists(base):
+        return []
+    pattern = os.path.join(base, "*", "*", "*", "*")
+    session_dirs = []
+    for p in glob.glob(pattern):
+        if os.path.isdir(p) and not os.path.basename(p).startswith("."):
+            session_dirs.append(p)
+    return [get_session_info(d) for d in session_dirs]
+
+def format_size(bytes_val):
+    if bytes_val < 1024:
+        return f"{bytes_val} B"
+    elif bytes_val < 1024 * 1024:
+        return f"{bytes_val / 1024:.1f} KB"
+    else:
+        return f"{bytes_val / (1024 * 1024):.1f} MB"
+
+def cmd_list(args):
+    sessions = find_all_sessions()
+    sessions.sort(key=lambda s: s["created_at"], reverse=True)
+
+    if args.workspace:
+        ws_target = os.path.abspath(args.workspace)
+        sessions = [s for s in sessions if os.path.abspath(s["workspace"]) == ws_target]
+    elif args.cwd:
+        cwd = os.path.abspath(os.getcwd())
+        sessions = [s for s in sessions if os.path.abspath(s["workspace"]) == cwd]
+
+    if args.last:
+        sessions = sessions[:1]
+
+    if not sessions:
+        if not args.quiet:
+            print("No sessions found.")
+        return
+
+    if args.quiet:
+        for s in sessions:
+            print(s["uuid"])
+        return
+
+    # Table display
+    print(f"{'DATE & TIME':<17} {'SESSION UUID':<38} {'SIZE':<9} {'WORKSPACE / PROMPT'}")
+    print("-" * 90)
+    for s in sessions:
+        dt_str = s["created_at"].strftime("%Y-%m-%d %H:%M")
+        size_str = format_size(s["size_bytes"])
+        status = f" [LOCKED:PID {s['lock_pid']}]" if s["is_locked"] else ""
+        prompt_trunc = (s["prompt"][:50] + "...") if len(s["prompt"]) > 50 else s["prompt"]
+        print(f"{dt_str:<17} {s['uuid'] + status:<38} {size_str:<9} {s['workspace']}")
+        print(f"{'':<17} {'':<38} {'':<9} └─▶ \"{prompt_trunc}\"")
+
+def cmd_info(args):
+    sessions = find_all_sessions()
+    target = args.session_id.lower()
+    matches = [s for s in sessions if s["uuid"].lower().startswith(target)]
+
+    if not matches:
+        print(f"Error: No session matching '{args.session_id}' found.", file=sys.stderr)
+        sys.exit(1)
+    if len(matches) > 1:
+        print(f"Error: Ambiguous session ID '{args.session_id}'. Matches:", file=sys.stderr)
+        for m in matches:
+            print(f"  {m['uuid']}", file=sys.stderr)
+        sys.exit(1)
+
+    s = matches[0]
+    print(f"Session UUID:    {s['uuid']}")
+    print(f"Created/Active:  {s['created_at'].strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"Workspace:       {s['workspace']}")
+    print(f"Model ID:        {s['model_id']}")
+    print(f"Total Events:    {s['events_count']}")
+    print(f"Disk Size:       {format_size(s['size_bytes'])}")
+    status = f"YES (PID {s['lock_pid']})" if s["is_locked"] else "No (inactive)"
+    print(f"Active Lock:     {status}")
+    print(f"Path on disk:    {s['path']}")
+    print(f"Initial Prompt:  {s['prompt']}")
+
+def parse_older_than(val):
+    m = re.match(r"^(\d+)([dwmy]?)$", val.lower())
+    if not m:
+        raise ValueError(f"Invalid duration '{val}'. Format example: 7d, 2w, 1m")
+    num, unit = int(m.group(1)), m.group(2)
+    if unit in ('', 'd'):
+        return timedelta(days=num)
+    elif unit == 'w':
+        return timedelta(weeks=num)
+    elif unit == 'm':
+        return timedelta(days=num * 30)
+    elif unit == 'y':
+        return timedelta(days=num * 365)
+    return timedelta(days=num)
+
+def cmd_delete(args):
+    sessions = find_all_sessions()
+    to_delete = []
+
+    if args.all:
+        to_delete = sessions
+    elif args.last:
+        sessions.sort(key=lambda s: s["created_at"], reverse=True)
+        if sessions:
+            to_delete = [sessions[0]]
+    elif args.cwd:
+        cwd = os.path.abspath(os.getcwd())
+        to_delete = [s for s in sessions if os.path.abspath(s["workspace"]) == cwd]
+    elif args.workspace:
+        ws_target = os.path.abspath(args.workspace)
+        to_delete = [s for s in sessions if os.path.abspath(s["workspace"]) == ws_target]
+    elif args.older_than:
+        try:
+            delta = parse_older_than(args.older_than)
+            cutoff = datetime.now() - delta
+            to_delete = [s for s in sessions if s["created_at"] < cutoff]
+        except ValueError as e:
+            print(f"Error: {e}", file=sys.stderr)
+            sys.exit(1)
+    elif args.session_ids:
+        for sid in args.session_ids:
+            target = sid.lower()
+            matches = [s for s in sessions if s["uuid"].lower().startswith(target)]
+            if not matches:
+                print(f"Warning: No session found matching '{sid}'.", file=sys.stderr)
+            elif len(matches) > 1:
+                print(f"Error: Ambiguous session ID '{sid}'. Multiple matches found.", file=sys.stderr)
+                sys.exit(1)
+            else:
+                to_delete.append(matches[0])
+    else:
+        print("Error: Specify session UUID(s) or one of --all, --last, --cwd, --workspace, --older-than", file=sys.stderr)
+        sys.exit(1)
+
+    if not to_delete:
+        print("No matching sessions found to delete.")
+        return
+
+    # Check for active locks
+    locked = [s for s in to_delete if s["is_locked"]]
+    if locked:
+        print("Warning: The following sessions appear to be currently active (locked):", file=sys.stderr)
+        for s in locked:
+            print(f"  {s['uuid']}", file=sys.stderr)
+        if not args.force:
+            print("Aborting. Use -f / --force to delete locked sessions.", file=sys.stderr)
+            sys.exit(1)
+
+    # Show what will be deleted
+    print(f"The following {len(to_delete)} session(s) will be deleted:")
+    total_size = sum(s["size_bytes"] for s in to_delete)
+    for s in to_delete:
+        print(f"  • {s['uuid']} ({format_size(s['size_bytes'])}) - {s['workspace']}")
+        print(f"    Path: {s['path']}")
+    print(f"Total space to reclaim: {format_size(total_size)}")
+
+    if not args.yes:
+        try:
+            choice = input("\nAre you sure you want to delete these session(s)? [y/N]: ").strip().lower()
+        except (KeyboardInterrupt, EOFError):
+            print("\nAborted.")
+            sys.exit(1)
+        if choice not in ('y', 'yes'):
+            print("Aborted.")
+            return
+
+    base_dir = get_sessions_dir()
+    deleted_count = 0
+    for s in to_delete:
+        # Delete session directory
+        try:
+            shutil.rmtree(s["path"])
+            # Delete corresponding view cache in .msp-view-v1 if exists
+            view_cache = os.path.join(base_dir, ".msp-view-v1", s["uuid"])
+            if os.path.exists(view_cache):
+                shutil.rmtree(view_cache, ignore_errors=True)
+
+            # Clean up empty parent directories (DD, MM, YYYY)
+            parent = os.path.dirname(s["path"])
+            for _ in range(3):
+                if os.path.exists(parent) and not os.listdir(parent):
+                    os.rmdir(parent)
+                    parent = os.path.dirname(parent)
+                else:
+                    break
+
+            deleted_count += 1
+            print(f"Deleted: {s['uuid']}")
+        except Exception as e:
+            print(f"Error deleting {s['uuid']}: {e}", file=sys.stderr)
+
+    print(f"\nSuccessfully deleted {deleted_count} session(s). Reclaimed {format_size(total_size)}.")
+
+def main():
+    parser = argparse.ArgumentParser(
+        prog="muse session",
+        description="Manage, inspect, and delete Muse Code sessions."
+    )
+    subparsers = parser.add_subparsers(dest="command", help="Session commands")
+
+    # list / ls
+    p_list = subparsers.add_parser("list", aliases=["ls"], help="List stored sessions")
+    p_list.add_argument("--cwd", action="store_true", help="Filter by current working directory workspace")
+    p_list.add_argument("-w", "--workspace", help="Filter by workspace path")
+    p_list.add_argument("--last", action="store_true", help="Show only the most recent session")
+    p_list.add_argument("-q", "--quiet", action="store_true", help="Only output session UUIDs")
+
+    # info / show
+    p_info = subparsers.add_parser("info", aliases=["show"], help="Show details for a session")
+    p_info.add_argument("session_id", help="Session UUID or prefix")
+
+    # delete / rm
+    p_del = subparsers.add_parser("delete", aliases=["rm"], help="Delete one or more sessions")
+    p_del.add_argument("session_ids", nargs="*", help="Session UUID(s) or prefixes to delete")
+    p_del.add_argument("--all", action="store_true", help="Delete ALL sessions")
+    p_del.add_argument("--last", action="store_true", help="Delete the most recent session")
+    p_del.add_argument("--cwd", action="store_true", help="Delete all sessions in current working directory workspace")
+    p_del.add_argument("-w", "--workspace", help="Delete all sessions in specified workspace")
+    p_del.add_argument("--older-than", help="Delete sessions older than duration (e.g. 7d, 2w, 1m)")
+    p_del.add_argument("-y", "--yes", action="store_true", help="Skip confirmation prompt")
+    p_del.add_argument("-f", "--force", action="store_true", help="Force deletion even if active/locked")
+
+    args = parser.parse_args()
+    if not args.command or args.command in ("list", "ls"):
+        # Default to list if no subcommand or list was invoked
+        if not args.command:
+            args.cwd = False
+            args.workspace = None
+            args.last = False
+            args.quiet = False
+        cmd_list(args)
+    elif args.command in ("info", "show"):
+        cmd_info(args)
+    elif args.command in ("delete", "rm"):
+        cmd_delete(args)
+
+if __name__ == "__main__":
+    main()
