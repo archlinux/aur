@@ -2,8 +2,8 @@
 
 _pkgname="robrix"
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.alpha.1.r2741.20260605.7291b335
-pkgrel=2
+pkgver=1.0.0.alpha.2.r3014.20260905.0a9d97db
+pkgrel=1
 pkgdesc="Multi-Platform Matrix client. Written in Rust, built on top of Matrix Rust SDK, using the Makepad UI toolkit and the Robius app dev framework."
 arch=(
   "aarch64"
