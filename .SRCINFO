@@ -1,6 +1,6 @@
 pkgbase = cosmic-launcher-git
 	pkgdesc = Layer Shell frontend for Pop Launcher.
-	pkgver = 1.7.0.r2.g402103d
+	pkgver = 1.7.0.r6.g9d649e2
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-launcher
 	arch = x86_64
