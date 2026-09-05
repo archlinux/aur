@@ -1,0 +1,4 @@
+[talhelper]
+source = "git"
+git = "https://github.com/budimanjojo/talhelper.git"
+prefix = "v"
