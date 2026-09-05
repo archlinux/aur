@@ -5,35 +5,18 @@ pkgname=qqmusic-electron-patched
 _pkgname=qqmusic
 pkgver=1.1.8
 pkgrel=3
-pkgdesc="Tencent QQMusic"
+pkgdesc="Tencent QQMusic (Pre-built with hi-res & lossless patch)"
 arch=('any')
 url="https://github.com/Viemean/qqmusiclinux"
 license=('CC0-1.0')
 _electron=electron43
 depends=(${_electron})
-makedepends=('p7zip')
 provides=("${_pkgname}" "qqmusic-electron")
 conflicts=('qqmusic' 'qqmusic-electron' 'qqmusic-bin')
-source=(
-    "${_pkgname}-${pkgver}-patched.7z::https://github.com/Viemean/qqmusiclinux/releases/download/v${pkgver}/${_pkgname}-${pkgver}-patched.7z"
-    "${_pkgname}.desktop"
-    "${_pkgname}.sh"
-    "logo.png"
-)
-sha512sums=('e9c828f2a42b5675f5d44ac5954bd70c566d3b8308b52a4e201625526c9b8792ecdfc6b1001cf08728e4372941f510c9abe6e412a4dfacdbe74adb1ad11c1b9d'
-            'a872d410a02700b66ae9c55ee10a59bc6831caf403f3e62a96b7baa3ea39a8d239a1b829d2b13db4947b97daa9b9eb588deeea05ed125a6ac6892f43d6aa300f'
-            'fa8890e3a8fddfa0885891870d8a27e86ea29e7da2af90a146af7ce90443e304ff418d8e2c5de26a9ecd7f50314d2143224973ce347e27c864e029085a6f42cb'
-            '1f49450952fc7be0654a046c73cd55b738b940a910eb83d0de073f8c5077b550865f7b74e8171ea4b34dd160a7ffdc616ab9dab14d2227db6e4e5ef9ce54c700')
 
-prepare() {
-    cd "${srcdir}"
-    sed -i "s|__ELECTRON__|${_electron}|g" ${_pkgname}.sh
-}
+source=("${pkgname}-${pkgver}-${pkgrel}-any.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v${pkgver}/${pkgname}-${pkgver}-${pkgrel}-any.pkg.tar.zst")
+sha256sums=('SKIP')
 
 package() {
-    cd "${srcdir}"
-    install -Dm755 ${_pkgname}.sh "${pkgdir}/usr/bin/qqmusic"
-    install -Dm644 app.asar "${pkgdir}/usr/lib/qqmusic/app.asar"
-    install -Dm644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/qqmusic.desktop"
-    install -Dm644 logo.png "${pkgdir}/usr/share/pixmaps/qqmusic.png"
+    cp -a "${srcdir}/usr" "${pkgdir}/"
 }

@@ -16,3 +16,14 @@ static_wk_v17/
 src/app.asar
 src/logo.png
 src/qqmusic*
+
+# 忽略本地多余资源（已预打包进 zst）
+logo.png
+qqmusic.desktop
+qqmusic.sh
+.agents/
+*.md
+bin/
+obj/
+tui/
+qqmusic官方openapi文档/
