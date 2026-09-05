@@ -1,6 +1,6 @@
 pkgbase = vocalinux
 	pkgdesc = Free, offline voice dictation for Linux
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://github.com/VocaHQ/vocalinux
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = vocalinux
 	optdepends = wl-clipboard: Wayland clipboard (wl-copy/wl-paste) injection fallbacks
 	optdepends = wtype: Wayland keystroke injection fallback
 	conflicts = vocalinux-git
-	source = vocalinux-0.16.1.tar.gz::https://github.com/VocaHQ/vocalinux/archive/refs/tags/v0.16.1.tar.gz
-	sha256sums = 0db2f7d1b75d40dde07acee1bba45e45452c671c726bf9e985955b43ead97722
+	source = vocalinux-0.16.2.tar.gz::https://github.com/VocaHQ/vocalinux/archive/refs/tags/v0.16.2.tar.gz
+	sha256sums = 2aee0b6553e562754c327db2aa2fd90336c19e71dc2a34c218c95a08bfaab6f1
 
 pkgname = vocalinux
