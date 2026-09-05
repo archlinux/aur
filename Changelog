@@ -1,9 +1,18 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.10.0 ➙ 5.2.0
-              : 2025-06-26 ➙ 2026-01-24
+ Tags         : 4.10.1 ➙ 5.3.0
+              : 2025-06-26 ➙ 2026-09-05
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-09-05   : 5.3.0
+              - **5.3.0**
+            
+                * Use meson/meson-python for build and package management
+                * periodic code review and improvements
+                * directory re-org
+ 2026-01-24   ⋯
+              - update Docs/Changelog
 
  2026-01-24   : 5.2.0
               - Version 5.2.0
@@ -31,10 +40,4 @@
 
  2025-06-26   : 4.10.1
               - update arch PKGBUILD
-              - update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-06-26   : 4.10.0
-              - Use run_prog from pyconcurrent if available otherwise use local copy.
-                Sync local copy of run_prog from pyconcurrent
- 2025-06-22   ⋯
               - update Docs/Changelog Docs/${my_name}.pdf

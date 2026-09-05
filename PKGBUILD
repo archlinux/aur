@@ -10,14 +10,14 @@ pkgname='dns_tools'
 pkgdesc='DNS Tools for managing DNSSEC aka easy dnssec'
 _gitname='dns_tools'
 
-pkgver="5.2.0"
+pkgver="5.3.0"
 pkgrel=1
 url="https://github.com/gene-git/dns_tools"
 
 arch=(any)
 license=(GPL-2.0-or-later)
 depends=(
-    'python>=3.13' 
+    'python>=3.14' 
     'ldns' 
     'lockmgr'
     'pyconcurrent'
@@ -29,10 +29,9 @@ optdepends=(
 # To build docs uncommont sphinx/texlive
 makedepends=(
     'git'
-    'uv'
-    'python-uv-build'
+    'meson'
+    'meson-python'
     'rsync'
-    #'python-sphinx' 'texlive-latexextra' # Docs
 )
 checkdepends=(
     'python-pytest' 
@@ -58,24 +57,13 @@ sha512sums=('SKIP')
 
 build() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
 
-    # To build Docs - uncomment these and sphinx makedepends above
-#    echo "Build docs"
-#    cd ./Docs
-#    make latexpdf >/dev/null 2>&1
-#    make latexpdf
-#    pdf='dns_tools.pdf'
-#    /usr/bin/rm -f $pdf
-#    /usr/bin/cp _build/latex/$pdf .
-#    /usr/bin/rm -rf _build/doctrees _build/latex
-#    make html
+    ./scripts/do-build
 }
 
 check() {
-    cd "${_gitname}/tests"
-    PYTHONPATH=../src /usr/bin/pytest
+    cd "${_gitname}"
+    ./scripts/run-tests
 }
 
 package() {
