@@ -6,14 +6,14 @@
 # stable tag before pushing the result to the AUR.
 
 pkgname=encounty-bin
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Free, open-source auto shiny counter for Pokémon shiny hunting."
 arch=('x86_64' 'aarch64')
 url="https://github.com/ZSleyer/Encounty"
 # Covers everything the AppImage bundles, not just Encounty's own code. Filled
 # in from packaging/aur/licenses.spdx, which "make licenses" regenerates.
-license=('AGPL-3.0-only' 'Apache-2.0' 'BSD-2-Clause' 'BSD-3-Clause' 'BlueOak-1.0.0' 'GPL-3.0-only' 'ISC' 'MIT' 'Python-2.0')
+license=('AGPL-3.0-only' 'Apache-2.0' 'BSD-2-Clause' 'BSD-3-Clause' 'BlueOak-1.0.0' 'GPL-3.0-only' 'ISC' 'MIT' 'OFL-1.1' 'Python-2.0')
 # The AppImage bundles only its GL and ffmpeg libraries; the Electron runtime
 # links the rest against the system. fuse2 provides libfuse.so.2, which the
 # AppImage runtime dlopens on startup.
@@ -36,9 +36,9 @@ source_aarch64=("encounty-${pkgver}-aarch64.AppImage::${_release}/Encounty-arm64
 
 sha256sums=('91bc7bdf7bb85591c1618423208666d5e7892ae5a80270309a84f0d5b460628d'
             '2efee26e64e58be598aa54eee9165776fc89d9768581e2711a54f78319465158'
-            '4c27c82fb8da65594b434f6f41d2c099f77c23455050df7823aa993ab81c062a')
-sha256sums_x86_64=('1f42257906ca9c74795fddcc1ae3d2bb9052314c9390060de4d68ec998630660')
-sha256sums_aarch64=('07313ef788db812382f59aac65dcd0291bcf7808e772875b05f90080473a4fa8')
+            '789cc87334d450aee0515825cb63bdd1ba12567f250509a0a582e0b87ff07711')
+sha256sums_x86_64=('d402e6434a9d03f1011302e3d6a3226ef707f94a56115ce18f0b4a1242e53cb8')
+sha256sums_aarch64=('369a66ce88f6314ddc205bf19f3f564f6a0beff51c0e2aee719504194fc4a7dd')
 
 package() {
   # The AppImage is self-contained, so it lives in /opt and gets reached through
