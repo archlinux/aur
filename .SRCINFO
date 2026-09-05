@@ -1,0 +1,23 @@
+pkgbase = smooth-scroll-linux-kde-effect-git
+	pkgdesc = This KWin effect adds KDE Plasma integration for Smooth Scroll Linux. Use it when the Smooth Scroll daemon is already installed and running, and you want session-aware behavior in KDE Plasma.
+	pkgver = r89.0eecec4
+	pkgrel = 1
+	url = https://github.com/Wayne6530/smooth-scroll-linux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = vulkan-headers
+	depends = smooth-scroll-linux-git
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kcoreaddons
+	depends = kconfig
+	depends = kwindowsystem
+	depends = libdrm
+	depends = kwin
+	source = smooth-scroll-linux-kde-effect-git::git+https://github.com/Wayne6530/smooth-scroll-linux
+	md5sums = SKIP
+
+pkgname = smooth-scroll-linux-kde-effect-git
