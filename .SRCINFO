@@ -1,0 +1,68 @@
+pkgbase = ros2-jazzy-generate_parameter_library
+	pkgdesc = Generate C++ and Python parameter libraries for ROS 2 Jazzy
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/PickNikRobotics/generate_parameter_library
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = python-colcon-common-extensions
+	makedepends = python-jinja
+	makedepends = python-typeguard
+	makedepends = python-yaml
+	makedepends = ros2-jazzy-rsl
+	makedepends = ros2-jazzy-tcb_span
+	makedepends = ros2-jazzy-tl_expected
+	makedepends = ros2-jazzy-ros2_control_cmake
+	makedepends = tl-expected
+	makedepends = eigen
+	makedepends = fmt
+	depends = ros2-jazzy
+	source = ros2-jazzy-generate_parameter_library-0.7.6.tar.gz::https://github.com/PickNikRobotics/generate_parameter_library/archive/refs/tags/0.7.6.tar.gz
+	sha256sums = 2fed256eb49c3e01df8becfe6eb064ea9352ea6681b52bf120546cdf3665369e
+
+pkgname = ros2-jazzy-parameter_traits
+	arch = any
+	depends = ros2-jazzy
+	depends = ros2-jazzy-rsl
+	depends = ros2-jazzy-tcb_span
+	depends = ros2-jazzy-tl_expected
+	depends = fmt
+
+pkgname = ros2-jazzy-generate_parameter_library_py
+	arch = any
+	depends = python-jinja
+	depends = python-typeguard
+	depends = python-yaml
+
+pkgname = ros2-jazzy-generate_parameter_library
+	arch = any
+	depends = ros2-jazzy
+	depends = ros2-jazzy-generate_parameter_library_py
+	depends = ros2-jazzy-parameter_traits
+	depends = ros2-jazzy-rsl
+	depends = ros2-jazzy-tcb_span
+	depends = ros2-jazzy-tl_expected
+	depends = tl-expected
+	depends = fmt
+
+pkgname = ros2-jazzy-generate_parameter_library_example
+	depends = ros2-jazzy
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-ros2_control_cmake
+
+pkgname = ros2-jazzy-generate_parameter_module_example
+	arch = any
+	depends = ros2-jazzy
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-generate_parameter_library_py
+
+pkgname = ros2-jazzy-cmake_generate_parameter_module_example
+	arch = any
+	depends = ros2-jazzy
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-generate_parameter_library_example_external
+	depends = ros2-jazzy
+	depends = ros2-jazzy-generate_parameter_library_example
+	depends = ros2-jazzy-ros2_control_cmake
