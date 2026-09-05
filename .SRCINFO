@@ -1,0 +1,12 @@
+pkgbase = rustyforge
+	pkgdesc = Minimal build manager for C/C++ projects, automates compiling binaries and libraries
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/konni332/rustyforge
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = rustyforge-0.4.1.tar.gz::https://codeload.github.com/konni332/rustyforge/tar.gz/refs/tags/v0.4.1
+	sha256sums = 47b55ebd04e4a507850992ba9272b3ae8e34e6553b9ce227b26e8202e9c14a48
+
+pkgname = rustyforge
