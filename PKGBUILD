@@ -2,8 +2,8 @@
 
 pkgname=piliplus
 _srcname=PiliPlus
-pkgver=2.1.2.3
-pkgrel=2
+pkgver=2.1.3
+pkgrel=1
 pkgdesc="A third-party Bilibili client developed in Flutter"
 url="https://github.com/bggRGjQaUbCoE/${_srcname}"
 license=('GPL-3.0-or-later')
@@ -12,17 +12,13 @@ depends=('gtk3' 'mpv' 'libayatana-appindicator' 'webkit2gtk-4.1')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'patchelf')
 options=('!debug')
 source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('8c9352441f20278973606d31ef17b334b6f9fc2b32eecea40c25d755023244eb')
+sha256sums=('2214abe0de15c5549836312a1b88105ef83c6265998fa807f6cab742c1da44c1')
 
 prepare() {
 	cd "${_srcname}/"
 	fvm install
 	fvm flutter --disable-analytics
-	fvm flutter --no-version-check pub get
-}
 
-build() {
-	cd "${_srcname}/"
 	local _sdk _scripts
 	_sdk="$(readlink -f .fvm/flutter_sdk)"
 	_scripts="${PWD}/lib/scripts"
@@ -45,7 +41,7 @@ build() {
 	local _pubcache _material _mp
 	_pubcache="${PUB_CACHE:-${HOME}/.pub-cache}/hosted/pub.dev"
 	rm -rf "${_pubcache}"/material_ui-*
-	fvm flutter pub get
+	fvm flutter --no-version-check pub get
 	_material="$(ls -d "${_pubcache}"/material_ui-* 2>/dev/null | sort -V | tail -1)"
 	if [[ -z "${_material}" ]]; then
 		printf "警告: 未找到 material_ui, 跳过其补丁。\n"
@@ -58,8 +54,11 @@ build() {
 			git -C "${_material}" apply "${_mp}"
 		done
 	fi
+}
 
-	printf "补丁应用完成, 开始构建...\n"
+build() {
+	cd "${_srcname}/"
+
 	if fvm flutter build linux --no-pub --release \
 		--dart-define pili.name="$(grep -m1 '^version:' pubspec.yaml | sed -E 's/^version:[[:space:]]*([0-9.]+).*/\1/')" \
 		--dart-define pili.code="$(git rev-list --count HEAD)" \
