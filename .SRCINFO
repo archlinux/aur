@@ -1,6 +1,6 @@
 pkgbase = indielinks-git
 	pkgdesc = del.icio.us in the Fediverse (git version)
-	pkgver = r265.d63d4e8
+	pkgver = r283.68bca71
 	pkgrel = 1
 	url = https://github.com/sp1ff/indielinks
 	install = .INSTALL
@@ -21,7 +21,7 @@ pkgbase = indielinks-git
 	source = indielinks.toml
 	source = indielinks.service
 	sha256sums = SKIP
-	sha256sums = fed36250b1b9e0bc0beed5d18abd2c1860c54e5ab0f8df084ec117380605bb41
+	sha256sums = b7dd7ba57da5bc2a37c2e9d3c00643766b860279ea81930121cdbe75ecaf29e6
 	sha256sums = 4254ea7c35897861c280e540d2a467227ac66451c3b19730ef59efb512848493
 
 pkgname = indielinks-git
