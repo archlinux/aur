@@ -1,10 +1,10 @@
 # Maintainer: ELECTRO <electro@electris.net>
 
 pkgname=rustypaint-git
-pkgver=0.2.2.r6.gbfadec3
+pkgver=0.2.2.r14.gce01950
 pkgrel=1
 pkgdesc="Paint 3D's 2D editor, without the 3D (Git version)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/ItzELECTR0/RustyPaint'
 license=('GPL-3.0-only')
 depends=('fontconfig' 'libxkbcommon' 'vulkan-icd-loader')
