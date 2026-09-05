@@ -1,0 +1,38 @@
+pkgbase = ros2-jazzy-nav2_minimal_turtlebot_simulation
+	pkgdesc = Minimal TurtleBot simulation assets for Nav2 on ROS 2 Jazzy
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = python-colcon-common-extensions
+	makedepends = ros2-jazzy-xacro
+	depends = ros2-jazzy
+	source = ros2-jazzy-nav2_minimal_turtlebot_simulation-1.0.1.tar.gz::https://github.com/ros-navigation/nav2_minimal_turtlebot_simulation/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = 78d97bbd8208e165cafc13016704ce8fec880ab01b4a311c7eee706b1fc82ddf
+
+pkgname = ros2-jazzy-nav2_minimal_tb3_sim
+	pkgdesc = Minimal TurtleBot3 Gazebo simulation assets for Nav2 on ROS 2 Jazzy
+	depends = ros2-jazzy
+	depends = ros2-jazzy-xacro
+	depends = ros2-jazzy-ros_gz_bridge
+	depends = ros2-jazzy-ros_gz_image
+	depends = ros2-jazzy-ros_gz_interfaces
+	depends = ros2-jazzy-ros_gz_sim
+
+pkgname = ros2-jazzy-nav2_minimal_tb4_description
+	pkgdesc = Minimal TurtleBot4 URDF description for Nav2 on ROS 2 Jazzy
+	depends = ros2-jazzy
+	depends = ros2-jazzy-xacro
+	depends = ros2-jazzy-joint_state_publisher
+
+pkgname = ros2-jazzy-nav2_minimal_tb4_sim
+	pkgdesc = Minimal TurtleBot4 Gazebo simulation assets for Nav2 on ROS 2 Jazzy
+	depends = ros2-jazzy
+	depends = ros2-jazzy-nav2_minimal_tb4_description
+	depends = ros2-jazzy-xacro
+	depends = ros2-jazzy-ros_gz_bridge
+	depends = ros2-jazzy-ros_gz_image
+	depends = ros2-jazzy-ros_gz_interfaces
+	depends = ros2-jazzy-ros_gz_sim
