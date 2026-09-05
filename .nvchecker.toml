@@ -1,0 +1,5 @@
+[runyte-bin]
+source = "github"
+github = "runyte/runyte"
+use_latest_release = true
+prefix = "v"
