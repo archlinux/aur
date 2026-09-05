@@ -13,10 +13,17 @@ sha256sums=(
 	'SKIP'
 )
 makedepends=(git make)
+provides=('12to11')
+conflicts=('12to11')
 depends=(
 	wayland pixman libx11 libxi libxkbfile libglvnd
-	libxi libxrandr libxcb libdrm libxshmfence libxpresent
+	libxrandr libxcb libdrm libxshmfence libxpresent
 )
+
+pkgver() {
+	cd "$srcdir/12to11"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "$srcdir/12to11"
