@@ -2,12 +2,12 @@
 # Contributor: Konstantin Rannev <konstantin d0t rannev at gmail d0t com>
 
 pkgname=lsfg-vk-bin
-pkgver=1.0.0
-pkgrel=4
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Lossless Scaling Frame Generation on Linux"
 arch=("x86_64")
-url="https://github.com/PancakeTAS/lsfg-vk"
-license=('GPL-3.0-or-later')
+url="https://lsfg-vk.dev/"
+license=('CC-BY-NC-ND-4.0')
 depends=(
     'vulkan-icd-loader'
     'gcc-libs'
@@ -18,19 +18,20 @@ depends=(
 makedepends=()
 provides=("${pkgname%-bin}=$pkgver")
 conflicts=("${pkgname%-bin}")
-source=("https://github.com/PancakeTAS/lsfg-vk/releases/download/v${pkgver}/lsfg-vk-${pkgver}.$CARCH.tar.zst"
+source=("https://builds.lsfg-vk.dev/lsfg-vk-${pkgver}.tar.xz"
         "LICENSE")
-sha256sums=('7e31d6f39da271fbc50ae8a1b092cb874bc6664765d5b7359d38970057f5fcff'
-            'cc5470feed66192387f06ae93aed0bd4fefae5a5fd7c1e54a4acf4ea64f1028b')
+sha256sums=('d8378b45d378150ea9aba803a0ba855d8ce91ad9b3366ee0eb2036b06b08380c'
+            '38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea')
 install=lsfg-vk.install
-noextract=("lsfg-vk-${pkgver}.$CARCH.tar.zst")
+noextract=("lsfg-vk-${pkgver}.tar.xz")
 options=(!strip)
 
 package() {
     cd "$srcdir"
 
     # unpack the downloaded archive straight into pkgdir
-    tar -xpf "lsfg-vk-${pkgver}.$CARCH.tar.zst" --no-same-owner --exclude='.PKGINFO' -C "$pkgdir"
+    install -d "$pkgdir/usr"
+    tar -xpf "lsfg-vk-${pkgver}.tar.xz" --no-same-owner --exclude='.PKGINFO' -C "$pkgdir/usr"
 
     # license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
