@@ -1,0 +1,19 @@
+pkgbase = ros2-jazzy-qt_gui_cpp
+	pkgdesc = ROS 2 qt_gui_cpp - C++ bindings for the qt_gui plugin framework
+	pkgver = 2.7.6
+	pkgrel = 1
+	url = https://index.ros.org/p/qt_gui_cpp/
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = qt5-base
+	makedepends = sip4
+	makedepends = python-sip4
+	makedepends = python-pyqt5
+	depends = ros2-jazzy
+	depends = qt5-base
+	source = qt_gui_core-2.7.6.tar.gz::https://github.com/ros-visualization/qt_gui_core/archive/refs/tags/2.7.6.tar.gz
+	sha256sums = da49feedc9e48101bab48c7d4efe13879cee26db485df27b03fa00de9652c49b
+
+pkgname = ros2-jazzy-qt_gui_cpp
