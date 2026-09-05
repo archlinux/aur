@@ -5,7 +5,7 @@
 # but installs the prebuilt binary to /usr/bin instead of ~/.local/bin.
 
 pkgname=jaclang
-pkgver=0.30.9
+pkgver=0.37.4
 pkgrel=1
 pkgdesc="The Jac programming language"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_x86_64=("jac-${pkgver}-linux-x86_64::${url}/releases/download/v${pkgver}/
 source_aarch64=("jac-${pkgver}-linux-aarch64::${url}/releases/download/v${pkgver}/jac-${pkgver}-linux-aarch64")
 
 # sha256 from the release's .sha256 sidecars (https://.../<asset>.sha256)
-sha256sums_x86_64=('278ab4c4ee1a0967cda61db4bc5271e9b5ef0ea1aa5bcd7aac72e0f796b839c3')
-sha256sums_aarch64=('892ee74fcbc7c99efe7b8030d9854ed409d832620477780c38b206c58a3e192b')
+sha256sums_x86_64=('d5d9003ab19cf934686b604c02e78eb7fba2f6c3ce27582d9085a30966f1db02')
+sha256sums_aarch64=('5c154f0ca05b56bce31227c085b2f98a400fc4cba04dde105ce500c7451e212d')
 
 package() {
     # makepkg downloads exactly one architecture-specific asset; find it.
