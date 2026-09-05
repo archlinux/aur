@@ -1,4 +1,5 @@
 pkg/
+src/
 _unpacked_asar/
 target/
 Cargo.lock
