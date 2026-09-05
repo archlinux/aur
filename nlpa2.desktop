@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=NekokoLPA 2 Community
 Exec=nlpa2
-Icon=/usr/share/icons/nlpa2/logo.png
+Icon=/usr/share/nlpa2/data/flutter_assets/assets/logo.png
 StartupWMClass=ee.nekoko.nlpa2
 Type=Application
 Categories=Utility;
