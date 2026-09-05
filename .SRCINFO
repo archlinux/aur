@@ -1,0 +1,13 @@
+pkgbase = ros2-jazzy-ros2_control_cmake
+	pkgdesc = CMake macros used by the ros2_control framework, for ROS 2 Jazzy
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros2_control_cmake
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake
+	depends = ros2-jazzy
+	source = ros2-jazzy-ros2_control_cmake-0.4.0.tar.gz::https://github.com/ros-controls/ros2_control_cmake/archive/refs/tags/0.4.0.tar.gz
+	sha256sums = db384ae8e1490396ca9b4290b064c68a675bc07e4173cfbe28bcad93ada1c4ed
+
+pkgname = ros2-jazzy-ros2_control_cmake
