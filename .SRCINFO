@@ -1,6 +1,6 @@
 pkgbase = procsnap
 	pkgdesc = A lightweight Linux process profiler written in C
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/DankDown10256/procsnap
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = procsnap
 	makedepends = gcc
 	depends = glibc
 	provides = procsnap
-	source = procsnap-1.0.3.tgz::https://github.com/DankDown10256/procsnap/archive/v1.0.3.tar.gz
-	sha256sums = 26398d8a5cf0d54662a05e84038d59825a700c47cf409ba3a2a76f3723936381
+	source = procsnap-1.0.4.tgz::https://github.com/DankDown10256/procsnap/archive/v1.0.4.tar.gz
+	sha256sums = eb4137e516f537f65de1c1b700eca2ea51dbaa7c4ac53d289afd7e9255c3e019
 
 pkgname = procsnap
