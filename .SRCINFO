@@ -1,12 +1,13 @@
 pkgbase = minecraft-ttf-git
 	pkgdesc = Pixel-accurate and complete TrueType fonts from Minecraft: Java Edition, generated automatically from the latest version of the game
-	pkgver = 1.5.1
+	pkgver = 1.6.1.g1b1945b
 	pkgrel = 1
 	url = https://github.com/tryashtar/minecraft-ttf
 	arch = any
 	license = custom
 	makedepends = git
-	makedepends = uv
+	makedepends = cargo
+	options = !lto
 	source = git+https://github.com/tryashtar/minecraft-ttf.git
 	sha256sums = SKIP
 
