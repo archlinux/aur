@@ -1,7 +1,7 @@
 pkgbase = noctalia-greeter
 	pkgdesc = Minimal greetd login greeter with a bundled wlroots compositor
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noctalia-dev/noctalia-greeter
 	install = noctalia-greeter.install
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = noctalia-greeter
 	depends = librsvg
 	depends = libwebp
 	depends = libxkbcommon
+	depends = libxml2
 	depends = pango
 	depends = tomlplusplus
 	depends = wayland

@@ -3,7 +3,7 @@ _pkgname=noctalia-greeter
 _tagver=1.3.1
 pkgname=noctalia-greeter
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal greetd login greeter with a bundled wlroots compositor'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/noctalia-greeter'
@@ -22,6 +22,7 @@ depends=(
   'librsvg'
   'libwebp'
   'libxkbcommon'
+  'libxml2'
   'pango'
   'tomlplusplus'
   'wayland'
