@@ -17,7 +17,7 @@ pkgbase = photomark
 	depends = openssl
 	depends = pango
 	depends = webkit2gtk-4.1
-	source = photomark-1.5.1.tar.gz::https://github.com/vectorfruit/photomark/archive/refs/tags/v1.5.1.tar.gz
+	source = photomark-1.5.1-source.tar.gz::https://codeload.github.com/vectorfruit/photomark/tar.gz/refs/tags/v1.5.1
 	sha256sums = a7f12385b10a57d87730f5d5f5b2a68ef1cb20e3138d953c8d109a5fea0fa948
 
 pkgname = photomark

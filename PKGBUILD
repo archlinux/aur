@@ -7,7 +7,7 @@ pkgdesc="Photo EXIF watermark and frame studio"
 arch=('x86_64')
 url="https://github.com/vectorfruit/photomark"
 license=('GPL-3.0-or-later')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vectorfruit/photomark/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}-source.tar.gz::https://codeload.github.com/vectorfruit/photomark/tar.gz/refs/tags/v${pkgver}")
 sha256sums=('a7f12385b10a57d87730f5d5f5b2a68ef1cb20e3138d953c8d109a5fea0fa948')
 depends=(
   'cairo'
