@@ -1,0 +1,17 @@
+pkgbase = ros2-jazzy-sdformat_vendor
+	pkgdesc = ROS 2 Jazzy vendor wrapper for system sdformat14
+	pkgver = 0.0.14
+	pkgrel = 1
+	url = https://github.com/gazebo-release/sdformat_vendor
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = tinyxml2
+	makedepends = urdfdom
+	makedepends = pybind11
+	depends = ros2-jazzy
+	depends = sdformat14
+	source = sdformat_vendor-0.0.14.tar.gz::https://github.com/gazebo-release/sdformat_vendor/archive/refs/tags/0.0.14.tar.gz
+	sha256sums = 08aa5b3873763cd749a85143210f4fd09c2ccda62fa0577246d6d45b67fb5309
+
+pkgname = ros2-jazzy-sdformat_vendor
