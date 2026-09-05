@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=lzma_alone
-pkgver=26.02
+pkgver=26.03
 pkgrel=1
 pkgdesc='A tool used to perform lossless data compression'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
 source=("https://www.7-zip.org/a/lzma${pkgver/./}.7z"
         '010-lzma_alone-use-arch-flags.patch')
 noextract=("lzma${pkgver/./}.7z")
-sha256sums=('2878c85f5f43a4a4e0952b1fd4e5fe097c1c143997a8047c7e1e788892aa9357'
+sha256sums=('86c213f752520ab5325c310f50bef63ec344b56dd1c80b0246d06dc6cec953b2'
             '8c1905241ce2d517b019b3101bab5e4994ca6864fe00b6ce303470adec66ed85')
 
 prepare() {
