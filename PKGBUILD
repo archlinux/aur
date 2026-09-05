@@ -2,7 +2,7 @@
 
 pkgname=python-stitching
 _name=${pkgname#python-}
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A Python package for fast and robust Image Stitching"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 optdepends=()
 provides=('stitch')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c90df7456b6347616ea719a963396da3cede78a6ccbc060fe497fc431125c11f')
+sha256sums=('cc57b9484248806ab2bbbeaac86e33a6fb6a2d799a74b21899ab1faa51c187f0')
 
 build() {
     cd "$_name-$pkgver"
