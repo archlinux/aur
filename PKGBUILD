@@ -56,6 +56,7 @@ depends=(
   ffmpeg4.4
   lapack
   ntsync-autoload
+  dmemcg-booster
 )
 depends_x86_64=(
   lib32-alsa-plugins

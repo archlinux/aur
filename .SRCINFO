@@ -52,6 +52,7 @@ pkgbase = dwproton-bin
 	depends = ffmpeg4.4
 	depends = lapack
 	depends = ntsync-autoload
+	depends = dmemcg-booster
 	optdepends = steam
 	optdepends = lutris
 	optdepends = heroic-games-launcher
