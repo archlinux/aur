@@ -10,7 +10,7 @@ depends=('gtk3' 'glib2' 'util-linux' 'yay')
 provides=('nexus-aur')
 conflicts=('nexus-aur')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/IlNinjaDiBattipaglia/Nexus-AUR/releases/download/v$pkgver/nexus-aur-linux-x86_64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('92e131930fa671d2b6c92be38bcb89b5e91713b8452c82cbb559bb38822bc647')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
