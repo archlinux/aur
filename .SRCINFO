@@ -1,0 +1,22 @@
+pkgbase = python-sclack-git
+	pkgdesc = A Slack client for your terminal
+	pkgver = r301.da75272
+	pkgrel = 1
+	url = https://github.com/haskellcamargo/sclack
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-slackclient
+	depends = python-urwid
+	depends = python-websocket-client
+	provides = sclack
+	conflicts = sclack
+	source = sclack::git+https://github.com/haskellcamargo/sclack.git
+	sha256sums = SKIP
+
+pkgname = python-sclack-git
