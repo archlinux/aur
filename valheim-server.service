@@ -1,0 +1,44 @@
+[Unit]
+Description=Valheim Dedicated Server
+After=network.target
+
+[Service]
+Type=simple
+User=valheim
+Group=valheim
+Environment="LD_LIBRARY_PATH=./linux64:$LD_LIBRARY_PATH"
+Environment=STEAM_PLATFORM=linux64
+EnvironmentFile=/etc/valheim/server.conf
+WorkingDirectory=/var/opt/valheim
+
+ExecStartPre=/usr/bin/mkdir -p /var/opt/valheim/.config/unity3d/IronGate/Valheim
+ExecStartPre=/bin/bash -c 'tr " " "\n" <<< "$PERMITTED_STEAM_IDS" > /var/opt/valheim/.config/unity3d/IronGate/Valheim/permittedlist.txt'
+ExecStartPre=/bin/bash -c 'tr " " "\n" <<< "$BANNED_STEAM_IDS" > /var/opt/valheim/.config/unity3d/IronGate/Valheim/bannedlist.txt'
+ExecStartPre=/bin/bash -c 'tr " " "\n" <<< "$ADMIN_STEAM_IDS" > /var/opt/valheim/.config/unity3d/IronGate/Valheim/adminlist.txt'
+ExecStartPre=/usr/bin/steamcmd +login anonymous +force_install_dir /var/opt/valheim +app_update 896660 +quit
+
+ExecStart=/var/opt/valheim/valheim_server.x86_64 -name ${NAME} -password ${PASSWORD} -port ${PORT} -world ${WORLD} -public ${PUBLIC} -nographics -batchmode
+KillSignal=SIGINT
+
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+LockPersonality=true
+MemoryDenyWriteExecute=false
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+SystemCallFilter=@system-service
+SystemCallArchitectures=native x86
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+pkgbase = valheim-server-systemd
+	pkgdesc = Dedicated server for the Valheim PC game using systemd and steamcmd
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.valheimgame.com/
+	arch = x86_64
+	license = custom:IronGateLicense
+	depends = zlib
+	depends = gcc-libs
+	depends = lib32-glibc
+	depends = steamcmd
+	conflicts = valheim-server
+	backup = etc/valheim/server.conf
+	source = valheim-server.service
+	source = server.conf
+	source = valheim.sysusers
+	source = valheim.tmpfiles
+	sha512sums = 16270d27522c52ca3e434e72aa1a20a685316ff16943ab6123c5e22ecda6bc53293a2d52de84a4d684beb91381c6e238a300e06098ae66ef54eb770c0d6f91a2
+	sha512sums = 7c71e3d984ae4e43bdfb759a9d18755d232809cd9cd58c54f494f2a2e8357245a848f176a117f0764ef533884ea8da978de3b8cc54592c44a2a0b359d02e7416
+	sha512sums = 70b148c72fce74403acae88beb44d5487652851c870cf0659491250c735d29bffe2f356c26e513ebe279d043349a202e0b92d095c931fa11c64159b93482a7f6
+	sha512sums = b02a81f6ebbf393aeeb52735e9e84f778b958afcf18bb6f90fff81799b28666e086c988d75c59e66f7b5b53be667cc63034ab31898d85684292645fff293fabc
+
+pkgname = valheim-server-systemd
