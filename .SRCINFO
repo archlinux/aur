@@ -1,7 +1,7 @@
 pkgbase = python-aiowmi
 	pkgdesc = Python Windows Management Interface (WMI) queries connector using asyncio
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cesbit/aiowmi
 	arch = any
 	license = GPL-3.0-only
