@@ -3,7 +3,7 @@
 
 pkgname=mustache-d
 pkgver=0.1.5
-pkgrel=19
+pkgrel=20
 pkgdesc='Moustache template engine for D'
 arch=('x86_64')
 url='https://github.com/repeatedly/mustache-d'
@@ -25,8 +25,8 @@ build() {
 
   # Build with LDC
   export DC=ldc
-  # ldc does not have -flto=auto
-  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto=auto/-flto=full/')"
+  # ldc rejects GCC-style "-Wl," LDFLAGS outright -- see memory/mustache-d.md
+  unset LDFLAGS
   arch-meson ../$pkgname-$pkgver
 
   ninja
