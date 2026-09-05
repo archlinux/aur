@@ -1,0 +1,13 @@
+pkgbase = ros2-jazzy-simulation_interfaces
+	pkgdesc = ROS 2 simulation interfaces including messages, services and actions
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://index.ros.org/p/simulation_interfaces/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = ros2-jazzy
+	source = simulation_interfaces-1.5.1.tar.gz::https://github.com/ros-simulation/simulation_interfaces/archive/refs/tags/1.5.1.tar.gz
+	sha256sums = 01fa77266765c538338b7efc8058316fd4e4f0d0c9b504719d688b76394e332c
+
+pkgname = ros2-jazzy-simulation_interfaces
