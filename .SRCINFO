@@ -1,6 +1,6 @@
 pkgbase = piper-tts
 	pkgdesc = Fast and local neural text-to-speech engine
-	pkgver = 1.5.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/OHF-Voice/piper1-gpl
 	arch = x86_64
@@ -14,16 +14,18 @@ pkgbase = piper-tts
 	makedepends = cmake
 	makedepends = ninja
 	depends = glibc
+	depends = onnxruntime
 	depends = python-numpy
 	depends = python-onnxruntime
 	depends = python-pathvalidate
+	optdepends = espeak-ng: dictionaries
 	optdepends = python-flask: http server
 	optdepends = python-onnx: patch voice with alignment
 	optdepends = python-pytorch: train
 	provides = piper-tts
 	conflicts = piper-tts
 	conflicts = piper
-	source = git+https://github.com/OHF-Voice/piper1-gpl.git#tag=v1.5.0
-	sha256sums = 76bd746a236f27c56a6885d9d763c2db6fe12e530c7dfd30d9b2e061e2c1f988
+	source = git+https://github.com/OHF-Voice/piper1-gpl.git#tag=v1.8.0
+	sha256sums = 70d062c1e80b0967b311f53e6036d9c78e146a6065d7444f3cec4a2fe85d2ea5
 
 pkgname = piper-tts
