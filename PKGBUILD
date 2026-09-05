@@ -3,7 +3,7 @@
 _upstreamname="uniffi-rs"
 _pkgname="uniffi-bindgen"
 pkgname="${_pkgname}-git"
-pkgver=0.31.1+85.r2144.20260526.190fda27d
+pkgver=0.31.2+171.r2239.20260903.3a2d44a77
 pkgrel=1
 pkgdesc="A multi-language bindings generator for Rust."
 arch=(
