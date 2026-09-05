@@ -1,0 +1,12 @@
+pkgbase = sptui
+	pkgdesc = Spotify TUI player, written in Go
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/szktkfm/sptui
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = sptui-0.1.4.tar.gz::https://codeload.github.com/szktkfm/sptui/tar.gz/refs/tags/v0.1.4
+	sha256sums = 5be7dd66e64ee10cd6909f14e5366b0bbc0dba1033cf718d9d603b02ca87b771
+
+pkgname = sptui
