@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=boca-git
-pkgver=1.0.7.r58.gd98a487
+pkgver=1.0.7.r86.g8ffdb68
 pkgrel=1
 epoch=2
 pkgdesc="A component library used by the fre:ac audio converter"
@@ -39,4 +39,6 @@ build() {
 package() {
   cd BoCA
   make DESTDIR="$pkgdir/" install
+
+  ln -sv "/usr/lib/libboca-${pkgver%.*.r*}.so.3" "${pkgdir}/usr/lib/libboca.so"
 }
