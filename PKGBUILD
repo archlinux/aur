@@ -2,24 +2,24 @@
 # Maintainer:bilibili_xiaok <the_xiaok@qq.com>
 pkgname=bilibili-deb-bin
 _pkgname=io.github.msojocs.bilibili
-pkgver=1.17.9
-pkgrel=3
+pkgver=1.18.0
+pkgrel=1
 pkgdesc='基于哔哩哔哩官方客户端移植的Linux版本支持漫游(DEB构建相较bilibili-bin更快更新修复输入法问题) '
 options=('!strip' '!debug' '!emptydirs')
 arch=('x86_64' 'aarch64')
 url='https://github.com/msojocs/bilibili-linux/'
 license=('MIT License')
 depends=(electron ffmpeg libappindicator libinput)
-source_x86_64=(https://github.com/msojocs/bilibili-linux/releases/download/v1.17.9-2/${_pkgname}_${pkgver}-2_amd64.deb)
-source_aarch64=(https://github.com/msojocs/bilibili-linux/releases/download/v1.17.9-2/${_pkgname}_${pkgver}-2_arm64.deb)
-sha256sums_x86_64=('207f589cca0ed998093cc99b179b83b9ca45b3d0d061308170a66c832ce6d24f')
-sha256sums_aarch64=('8985e6b7f4908157e4b0ba535331088e3c0d72d3f55355f924a00cdb5967c235')
+source_x86_64=(https://github.com/msojocs/bilibili-linux/releases/download/v1.18.0-1/${_pkgname}_${pkgver}-1_amd64.deb)
+source_aarch64=(https://github.com/msojocs/bilibili-linux/releases/download/v1.18.0-1/${_pkgname}_${pkgver}-1_arm64.deb)
+sha256sums_x86_64=('10ad30dcfc1a36118984966e4d8063a6efaee80de96f857acca8e2d7965e4300')
+sha256sums_aarch64=('0d304bd758a445e0925df7568d577f9e85105aae0e28a5cff758d2652fd00b2a')
 package() {
     cd "$srcdir"
     if [[ $(uname -m) == "aarch64" ]]; then
-    ar x "${_pkgname}_${pkgver}-2_arm64.deb"
+    ar x "${_pkgname}_${pkgver}-1_arm64.deb"
     else
-    ar x "${_pkgname}_${pkgver}-2_amd64.deb"
+    ar x "${_pkgname}_${pkgver}-1_amd64.deb"
     fi
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
     cd "$pkgdir"
