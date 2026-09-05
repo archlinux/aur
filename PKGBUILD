@@ -2,7 +2,7 @@
 
 _name=eduvpn-common
 pkgname="python-${_name/-/_}"
-pkgver=5.0.1
+pkgver=5.0.3
 pkgrel=1
 pkgdesc='EduVPN common library for python clients'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'glibc')
 makedepends=('go' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$url/releases/download/$pkgver/$_name-$pkgver.tar".{xz,xz.asc})
-sha256sums=('5b97feaaf14456ee3eb30853c1c78c2b166de541d8f8ee1db7ea0d0ccfc812c3'
+sha256sums=('983d0b5a16150b334c14f5d078e815e60a3ead1261e16d28e3c0056892a509c5'
             'SKIP')
 validpgpkeys=('227FF3F8F829D9A9314D9EBA02BB8048BBFF222C')
 
