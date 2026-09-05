@@ -1,0 +1,12 @@
+pkgbase = frep
+	pkgdesc = Fast find-and-replace tool; search and replace in files or stdin
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/thomasschafer/frep
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = frep-0.1.4.tar.gz::https://codeload.github.com/thomasschafer/frep/tar.gz/refs/tags/v0.1.4
+	sha256sums = 45753c1e0d24fa206dff615f27993eaa796f0d9160d44ae7477916a58c6df6b1
+
+pkgname = frep
