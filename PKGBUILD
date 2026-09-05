@@ -2,7 +2,7 @@
 pkgname=dn-git
 _pkgname=dawn
 pkgver=r61.219393c
-pkgrel=5
+pkgrel=6
 pkgdesc="Colour-managed image browser"
 url="https://git.janouch.name/p/dawn"
 arch=('x86_64')
@@ -31,6 +31,7 @@ depends=(
 optdepends=(
   'gdk-pixbuf2: GdkPixbuf module support'
   'glycin: Glycin module support'
+  'jxrlib: JPEG XR'
   'libheif: HEIF images'
   'libjxl: JPEG XL'
   'libraw: raw photo images'

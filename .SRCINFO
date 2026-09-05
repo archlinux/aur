@@ -1,7 +1,7 @@
 pkgbase = dn-git
 	pkgdesc = Colour-managed image browser
 	pkgver = r61.219393c
-	pkgrel = 5
+	pkgrel = 6
 	url = https://git.janouch.name/p/dawn
 	install = dn.install
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = dn-git
 	depends = wayland-protocols
 	optdepends = gdk-pixbuf2: GdkPixbuf module support
 	optdepends = glycin: Glycin module support
+	optdepends = jxrlib: JPEG XR
 	optdepends = libheif: HEIF images
 	optdepends = libjxl: JPEG XL
 	optdepends = libraw: raw photo images
