@@ -1,6 +1,6 @@
 pkgbase = github-copilot-app-bin
 	pkgdesc = GitHub Copilot desktop application (Tauri)
-	pkgver = 1.1.14
+	pkgver = 1.1.15
 	pkgrel = 1
 	url = https://github.com/github/app
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = github-copilot-app-bin
 	depends = gtk3
 	optdepends = libayatana-appindicator: system tray icon support
 	optdepends = git: required for repository operations from the app
-	provides = github-copilot-app=1.1.14
+	provides = github-copilot-app=1.1.15
 	conflicts = github-copilot-app
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = github-copilot-app-bin-1.1.14-x64.deb::https://github.com/github/app/releases/download/v1.1.14/GitHub-Copilot-linux-x64.deb
-	sha256sums_x86_64 = d2ac25b55363278c7e4b50536676da827e33623123317dcc5e7e956f87e002d0
-	source_aarch64 = github-copilot-app-bin-1.1.14-arm64.deb::https://github.com/github/app/releases/download/v1.1.14/GitHub-Copilot-linux-arm64.deb
-	sha256sums_aarch64 = cd60c0ae414f1a3287f50c0f49e610ead7bfb549e74aa3db776d7ae78d8503ae
+	source_x86_64 = github-copilot-app-bin-1.1.15-x64.deb::https://github.com/github/app/releases/download/v1.1.15/GitHub-Copilot-linux-x64.deb
+	sha256sums_x86_64 = cf884fd0b9e5418285e82318c4fe712d74955f66982bae6a5d5c43aa1f44233e
+	source_aarch64 = github-copilot-app-bin-1.1.15-arm64.deb::https://github.com/github/app/releases/download/v1.1.15/GitHub-Copilot-linux-arm64.deb
+	sha256sums_aarch64 = 587445c4ad98917638204f6a66f15b1868b8795b317725cbed37fc635df07e10
 
 pkgname = github-copilot-app-bin
