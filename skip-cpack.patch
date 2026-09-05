@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -27,96 +27,7 @@ include(CTest)
+@@ -35,96 +35,7 @@ include(CTest)
  option(${PROJECT_NAME}_BUILD_JUCEPLUGIN "Build Juce plugin" on)
  option(${PROJECT_NAME}_BUILD_JUCEPLUGIN_CLAP "Build CLAP version of Juce plugin" on)
  

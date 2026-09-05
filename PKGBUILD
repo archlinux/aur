@@ -6,7 +6,7 @@ pkgname=(
   dsp56300-emulator-lv2
   dsp56300-emulator-vst3
 )
-pkgver=2.2.3
+pkgver=2.2.16
 pkgrel=1
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs'
 arch=(x86_64)
@@ -46,10 +46,12 @@ source=(
   'github.com-dsp56300-mc68k::git+https://github.com/dsp56300/mc68k'
   'github.com-dsp56300-RmlUi::git+https://github.com/dsp56300/RmlUi'
   'github.com-freetype-freetype::git+https://github.com/freetype/freetype'
+  'github.com-sammycage-lunasvg::git+https://github.com/sammycage/lunasvg'
+  'github.com-sammycage-plutovg::git+https://github.com/sammycage/plutovg'
   skip-cpack.patch
   skip-tests.patch
 )
-sha512sums=('a2f00c1220b7af1314b1c66c8e0b9d237fdea4acf2d313da682ddf5fdafa07ce3cf62d9720666abcbb1029d9b237b6c1ebe0bd0690a9792aa83151576c1e2321'
+sha512sums=('5ffdf3627dd321b25415882f82b15ef40b9a0357485a70da1f9021b8eea804bd71b3b9930aaaff3a98b5fcc7c48c14eb635ff575aa83fc40086f7cfcb6f44d60'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -59,9 +61,11 @@ sha512sums=('a2f00c1220b7af1314b1c66c8e0b9d237fdea4acf2d313da682ddf5fdafa07ce3cf
             'SKIP'
             'SKIP'
             'SKIP'
-            'f4d862a6a46a1eec9be00fb6a48f80875e9ece1ff1a3deb6bb21c4a7a297dee1db178276f456eac21f1ffdea15b591b1bb8030731cebe081d3086aa12a2ffe37'
-            '8107dbd04953146aac91f5cacae77837ec8e99bebde069e1672a18f171e71751fbfe3b8194620d7ba4926974fcc7fc36b6e0fd71544c7ee00dc103d1c06afedc')
-b2sums=('077e5ecadafcade1e66b6d4eab9a38bf01513437571eb34696d47a73d45137aac78b067b892875b65419c99788446488ac3bc45a4d15eed92c5c3b1e5f5defee'
+            'SKIP'
+            'SKIP'
+            'cffb28917c78574f5b019414003da6fe0e7dd0c2a7d273f6e5392f2cd4e2d727cf0837faaf45fd875e6f061cb919b1f32301f1e7a30b616dff60489b28ac6c18'
+            'a636fab23770e16ba5597dfae9331ad354234f4f1e2e419a7b43b2180e6928894ab505d606fa28e694632decf6651e79dd2e809600a2b328b64335e62cfae9ef')
+b2sums=('ec54824ed381b8bf210fc8d3217974bde4b80a00bec920f3a4bdbc3c94fc88684b12f70bb6bc5cc6a82689efaee24fc42e48a6630df65e559cdffe3751d8d377'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -71,31 +75,35 @@ b2sums=('077e5ecadafcade1e66b6d4eab9a38bf01513437571eb34696d47a73d45137aac78b067
         'SKIP'
         'SKIP'
         'SKIP'
-        '3481170c4f26ccda457a7cb8aa525924eb1f0c731412764d3f7b0dcec30ae661abd77a0c08f74794adba87edf96ecc9dae019ec57c209c1e394aceffd5f94a7b'
-        '00c0735be9248265576871085a757491a397ad20388aae91164e7fe444a20b3abd8d18a3bff1dff90f5ddced81fe499af9e649a820a0e86f82af269cd76c92c1')
+        'SKIP'
+        'SKIP'
+        '9c1900984ea3308b86e4ce6503f3e8f46c85d43eb83c4c4a13d37a357b92a1f3ccf3a0ddfbfa675d7b08c065104c325dbc9e2bc2440fec58049f6049784408f5'
+        'c6b9f758e6ddadf41bdf41874dc92e6f7123b84bb532cdc1c52dde81305404aa0f9f68b7eded082f59144e48f600e236f55114e9e1f6359a6cd38d59be2db7e3')
 
 prepare() {
   cd "$pkgbase"
 
   # prepare git submodules (skip cpp-terminal)
   git submodule init \
-    source/dsp56300 \
-    source/JUCE \
-    source/mc68k \
-    source/clap-juce-extensions \
+    source/cpu/dsp56300 \
+    source/3rdparty/JUCE \
+    source/cpu/mc68k \
+    source/3rdparty/clap-juce-extensions \
     source/3rdparty/RmlUi \
-    source/3rdparty/freetype
+    source/3rdparty/freetype \
+    source/3rdparty/lunasvg
 
-  git config submodule.source/dsp56300.url "$srcdir/github.com-dsp56300-dsp56300"
-  git config submodule.source/JUCE.url "$srcdir/github.com-dsp56300-JUCE"
-  git config submodule.source/clap-juce-extensions.url "$srcdir/github.com-free-audio-clap-juce-extensions"
-  git config submodule.source/mc68k.url "$srcdir/github.com-dsp56300-mc68k"
+  git config submodule.source/cpu/dsp56300.url "$srcdir/github.com-dsp56300-dsp56300"
+  git config submodule.source/3rdparty/JUCE.url "$srcdir/github.com-dsp56300-JUCE"
+  git config submodule.source/3rdparty/clap-juce-extensions.url "$srcdir/github.com-free-audio-clap-juce-extensions"
+  git config submodule.source/cpu/mc68k.url "$srcdir/github.com-dsp56300-mc68k"
   git config submodule.source/3rdparty/RmlUi.url "$srcdir/github.com-dsp56300-RmlUi"
   git config submodule.source/3rdparty/freetype.url "$srcdir/github.com-freetype-freetype"
+  git config submodule.source/3rdparty/lunasvg.url "$srcdir/github.com-sammycage-lunasvg"
   git -c protocol.file.allow=always submodule update
 
   # setup git submodules for clap-juce-extensions
-  pushd source/clap-juce-extensions
+  pushd source/3rdparty/clap-juce-extensions
   git submodule init
   git config submodule.clap-libs/clap.url "$srcdir/github.com-free-audio-clap"
   git config submodule.clap-libs/clap-helpers.url "$srcdir/github.com-free-audio-clap-helpers"
@@ -103,9 +111,16 @@ prepare() {
   popd
 
   # setup git submodules for dsp56300
-  pushd source/dsp56300
+  pushd source/cpu/dsp56300
   git submodule init
   git config submodule.source/asmjit.url "$srcdir/github.com-asmjit-asmjit"
+  git -c protocol.file.allow=always submodule update
+  popd
+
+  # setup git submodules for lunasvg
+  pushd source/3rdparty/lunasvg
+  git submodule init
+  git config submodule.plutovg.url "$srcdir/github.com-sammycage-plutovg"
   git -c protocol.file.allow=always submodule update
   popd
 
@@ -123,7 +138,7 @@ build() {
     -G Ninja
     -D CMAKE_INSTALL_PREFIX=/usr
     -D CMAKE_LINKER_TYPE=MOLD
-    -W no-dev
+    -W no-author
     -D gearmulator_BUILD_JUCEPLUGIN=ON
     -D gearmulator_BUILD_JUCEPLUGIN_VST2=OFF
     -D gearmulator_BUILD_JUCEPLUGIN_VST3=ON

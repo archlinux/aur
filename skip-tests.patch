@@ -1,59 +1,59 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -22,7 +22,6 @@ endif()
- project(gearmulator VERSION 2.1.0)
+@@ -30,7 +30,6 @@ endif()
+ project(gearmulator VERSION 2.2.16)
  
- include(base.cmake)
+ include(source/cmake/base.cmake)
 -include(CTest)
  
  option(${PROJECT_NAME}_BUILD_JUCEPLUGIN "Build Juce plugin" on)
  option(${PROJECT_NAME}_BUILD_JUCEPLUGIN_CLAP "Build CLAP version of Juce plugin" on)
 --- a/source/CMakeLists.txt
 +++ b/source/CMakeLists.txt
-@@ -85,9 +85,6 @@ add_subdirectory(wLib EXCLUDE_FROM_ALL)
- 
+@@ -105,9 +105,6 @@ add_subdirectory(waldi/common/wLib EXCLUDE_FROM_ALL)
  if(${CMAKE_PROJECT_NAME}_SYNTH_OSIRUS OR ${CMAKE_PROJECT_NAME}_SYNTH_OSTIRUS)
- 	add_subdirectory(virusLib EXCLUDE_FROM_ALL)
--	add_subdirectory(virusConsoleLib EXCLUDE_FROM_ALL)
--	add_subdirectory(virusTestConsole)
--	add_subdirectory(virusIntegrationTest)
+ 	add_subdirectory(axel/virusLib EXCLUDE_FROM_ALL)
+ 	add_subdirectory(axel/virusConsoleLib EXCLUDE_FROM_ALL)
+-	add_subdirectory(axel/virusTestConsole)
+-	add_subdirectory(axel/virusIntegrationTest)
+-	add_subdirectory(axel/virusRomHashTest)
  	if(${CMAKE_PROJECT_NAME}_BUILD_JUCEPLUGIN)
- 		add_subdirectory(virusJucePlugin EXCLUDE_FROM_ALL)
+ 		add_subdirectory(axel/virusJucePlugin EXCLUDE_FROM_ALL)
  		if(${CMAKE_PROJECT_NAME}_SYNTH_OSIRUS)
-@@ -104,23 +101,6 @@ endif()
+@@ -124,23 +121,6 @@ endif()
  if(${CMAKE_PROJECT_NAME}_SYNTH_VAVRA)
- 	add_subdirectory(mqLib EXCLUDE_FROM_ALL)
+ 	add_subdirectory(waldi/microq/mqLib EXCLUDE_FROM_ALL)
  
 -	# needed for test console
 -	set(CPPTERMINAL_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 -	set(CPPTERMINAL_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
 -	set(CPPTERMINAL_ENABLE_TESING OFF CACHE BOOL "" FORCE)
--	add_subdirectory(cpp-terminal EXCLUDE_FROM_ALL)
+-	add_subdirectory(3rdparty/cpp-terminal EXCLUDE_FROM_ALL)
 -
 -	if(NOT ANDROID)
--		add_subdirectory(portmidi EXCLUDE_FROM_ALL)
+-		add_subdirectory(3rdparty/portmidi EXCLUDE_FROM_ALL)
 -	endif()
 -
 -	set(PA_USE_ASIO OFF CACHE BOOL "" FORCE)
--	add_subdirectory(portaudio EXCLUDE_FROM_ALL)
+-	add_subdirectory(3rdparty/portaudio EXCLUDE_FROM_ALL)
 -
--	add_subdirectory(mqConsoleLib EXCLUDE_FROM_ALL)
--	add_subdirectory(mqTestConsole)
--	add_subdirectory(mqPerformanceTest)
+-	add_subdirectory(waldi/microq/mqConsoleLib EXCLUDE_FROM_ALL)
+-	add_subdirectory(waldi/microq/mqTestConsole)
+-	add_subdirectory(waldi/microq/mqPerformanceTest)
 -
  	if(${CMAKE_PROJECT_NAME}_BUILD_JUCEPLUGIN)
- 		add_subdirectory(mqJucePlugin)
+ 		add_subdirectory(waldi/microq/mqJucePlugin)
  	endif()
-@@ -130,7 +110,6 @@ endif()
+@@ -150,7 +130,6 @@ endif()
  
  if(${CMAKE_PROJECT_NAME}_SYNTH_XENIA)
- 	add_subdirectory(xtLib EXCLUDE_FROM_ALL)
--	add_subdirectory(xtTestConsole)
+ 	add_subdirectory(waldi/xt/xtLib EXCLUDE_FROM_ALL)
+-	add_subdirectory(waldi/xt/xtTestConsole)
  
  	if(${CMAKE_PROJECT_NAME}_BUILD_JUCEPLUGIN)
- 		add_subdirectory(xtJucePlugin)
---- a/source/nord/n2x/CMakeLists.txt
-+++ b/source/nord/n2x/CMakeLists.txt
+ 		add_subdirectory(waldi/xt/xtJucePlugin)
+--- a/source/claudia/n2x/CMakeLists.txt
++++ b/source/claudia/n2x/CMakeLists.txt
 @@ -1,7 +1,6 @@
  cmake_minimum_required(VERSION 3.15)
  
