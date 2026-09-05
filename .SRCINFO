@@ -1,0 +1,19 @@
+pkgbase = python-gtime
+	pkgdesc = Global time zone lookup, comparison, and management with fuzzy search
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/savitojs/gtime
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytz
+	depends = python-tzlocal
+	depends = python-fuzzywuzzy
+	depends = python-tabulate
+	source = gtime-0.8.4.tar.gz::https://codeload.github.com/savitojs/gtime/tar.gz/refs/tags/v0.8.4
+	sha256sums = 1ac56f7195c9a0de6a40a086427c1330325b6dec65265c73cbef1bbfb6b65da6
+
+pkgname = python-gtime
