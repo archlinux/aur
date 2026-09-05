@@ -1,0 +1,166 @@
+#!/bin/bash
+# s302 - Steamcommunity 302 控制命令
+# 无参数 / ui      : 打开图形界面(AppImage,需图形会话)
+# start/stop/...   : 管理后端 daemon(systemd s302-*.service)+ 配置
+# daemon 与引擎由 systemd 服务托管(AppImage 首次运行 GUI 时自动安装,
+# 或按 wiki 手动创建);数据目录 /var/lib/Steamcommunity_302/
+set -euo pipefail
+
+APPIMAGE="/opt/steamcommunity302/steamcommunity302.AppImage"
+DATA_DIR="/var/lib/Steamcommunity_302"
+CFG="${DATA_DIR}/config.json"
+
+# 探测 systemd 服务名(按机器 UID 生成:s302-<uid>.service)
+find_svc() {
+    local svc
+    svc="$(systemctl list-unit-files 2>/dev/null | awk '/^s302-[0-9]+\.service/ {print $1; exit}')"
+    if [[ -z "$svc" && -e /etc/systemd/system/s302-*.service ]]; then
+        svc="$(basename /etc/systemd/system/s302-*.service)"
+    fi
+    echo "$svc"
+}
+
+die() { echo "错误: $*" >&2; exit 1; }
+need_root() { [[ $EUID -eq 0 ]] || die "此操作需要 root;请用 root 执行或 sudo/pkexec: $0 $*"; }
+need_svc() {
+    SVC="$(find_svc)"
+    [[ -n "$SVC" ]] || die "未找到 s302 systemd 服务。先运行一次 's302 ui' 完成初始化(自动安装服务+证书),或在图形界面配置后使用 CLI 管理。"
+}
+need_cfg() { [[ -f "$CFG" ]] || die "未找到 $CFG —— 服务未初始化,先运行 's302 ui'"; }
+
+usage() {
+    cat <<'EOF'
+用法: s302 <命令> [参数]
+
+无参数 / ui           打开图形界面(完整配置;首次使用请先运行此命令)
+                       (headless: 提示无图形会话)
+
+管理命令(需 root;操作 s302 systemd 服务与引擎):
+  start               启动 daemon+引擎
+  stop                停止 daemon+引擎
+  restart             重启(修改配置后生效)
+  status              查看服务状态
+  enable              设置开机自启
+  disable             取消开机自启
+  log [行数]          查看引擎日志(默认最近 50 行)
+
+配置命令(需 root;修改后自动重启生效):
+  rules               列出已启用的规则
+  rule <名称> on|off  启用/停用单条规则
+  dns on|off          开关 DNS 重定向
+  info                显示服务状态与关键配置(端口/DNS/规则)
+
+其他:
+  version             显示 AppImage 版本
+  help                显示本帮助
+EOF
+}
+
+# 无参数 => GUI(与 desktop Exec=/usr/bin/s302 兼容)
+if [[ $# -eq 0 ]]; then
+    set -- ui
+fi
+
+case "$1" in
+    ui)
+        if [[ -z "${WAYLAND_DISPLAY:-}${DISPLAY:-}" ]]; then
+            echo "当前无图形会话(headless)。管理请用: s302 start/stop/status/rules/rule/dns/info"
+            echo "初始化配置: 需图形会话运行 s302 ui(如本机/远程 X11 转发)"
+            exit 0
+        fi
+        exec "$APPIMAGE"
+        ;;
+
+    start|stop|restart|status|enable|disable)
+        need_root "$*"
+        need_svc
+        systemctl "$1" "$SVC"
+        ;;
+
+    log)
+        need_root "$*"
+        need_svc
+        journalctl -u "$SVC" -n "${2:-50}" --no-pager
+        ;;
+
+    rules)
+        need_cfg
+        python3 -c "
+import json
+d = json.load(open('$CFG'))
+print('\n'.join(d['settings']['rules']['enabled']))
+"
+        ;;
+
+    rule)
+        [[ $# -eq 3 ]] || die "用法: s302 rule <名称> on|off"
+        need_root "$*"
+        need_cfg
+        name="$2" op="$3"
+        [[ "$op" =~ ^(on|off)$ ]] || die "参数 op 只能是 on|off"
+        python3 - "$name" "$op" <<'PY'
+import json, sys
+p = '/var/lib/Steamcommunity_302/config.json'
+name, op = sys.argv[1], sys.argv[2]
+d = json.load(open(p))
+r = d['settings']['rules']['enabled']
+if op == 'on':
+    if name not in r:
+        r.append(name)
+else:
+    r[:] = [x for x in r if x != name]
+json.dump(d, open(p, 'w'), indent=2, ensure_ascii=False)
+print(f'规则 {name} {op}')
+PY
+        systemctl restart "$(find_svc)"
+        echo "✓ 已应用并重启服务"
+        ;;
+
+    dns)
+        [[ $# -eq 2 ]] || die "用法: s302 dns on|off"
+        need_root "$*"
+        need_cfg
+        [[ "$2" =~ ^(on|off)$ ]] || die "参数只能是 on|off"
+        python3 - "$2" <<'PY'
+import json, sys
+p = '/var/lib/Steamcommunity_302/config.json'
+op = sys.argv[1]
+d = json.load(open(p))
+d['settings']['dns']['enabled'] = (op == 'on')
+json.dump(d, open(p, 'w'), indent=2, ensure_ascii=False)
+print(f'DNS {op}')
+PY
+        systemctl restart "$(find_svc)"
+        echo "✓ 已应用并重启服务"
+        ;;
+
+    info)
+        need_cfg
+        python3 -c "
+import json
+d = json.load(open('$CFG'))
+s = d['settings']
+print('数据目录 : $DATA_DIR')
+print('HTTP/HTTPS:', s['engine']['httpPort'], '/', s['engine']['httpsPort'])
+print('DNS      :', '开' if s['dns']['enabled'] else '关', f\"(upstream: {', '.join(s['dns']['upstreams'])})\")
+print('规则数   :', len(s['rules']['enabled']), '| hosts 自动改:', s['hosts']['autoModify'])
+"
+        if SVC="$(find_svc)"; [[ -n "$SVC" ]]; then
+            echo "服务状态 : $(systemctl is-active "$SVC" 2>/dev/null) ($SVC)"
+        else
+            echo "服务状态 : 未安装(运行 s302 ui 初始化)"
+        fi
+        ;;
+
+    version)
+        exec "$APPIMAGE" --appimage-version 2>/dev/null || echo "$("$APPIMAGE" --version 2>/dev/null || echo 'unknown')"
+        ;;
+
+    help|-h|--help)
+        usage
+        ;;
+
+    *)
+        die "未知命令: $1 (s302 help 查看用法)"
+        ;;
+esac

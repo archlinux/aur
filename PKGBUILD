@@ -24,12 +24,14 @@ optdepends=(
   'polkit: pkexec graphical privilege elevation'
   'sudo: CLI privilege elevation'
 )
+source=('s302')
 source_x86_64=(
   "steamcommunity302-${pkgver}.AppImage::https://www.dogfight360.com/Usbeam/V15/Steamcommunity_302_${pkgver}_Linux_WebKit_x64.AppImage"
 )
 source_aarch64=(
   "steamcommunity302-${pkgver}.AppImage::https://www.dogfight360.com/Usbeam/V15/Steamcommunity_302_${pkgver}_Linux_WebKit_arm64.AppImage"
 )
+md5sums=('SKIP')
 md5sums_x86_64=('9224ec5639ad07276aeb6c4aef5a5b9e')
 md5sums_aarch64=('9224ec5639ad07276aeb6c4aef5a5b9e')
 options=(!strip)
@@ -64,13 +66,8 @@ package() {
   install -Dm755 "${srcdir}/steamcommunity302-${pkgver}.AppImage" \
     "${pkgdir}${_install_dir}/steamcommunity302.AppImage"
 
-  # wrapper:exec AppImage(依赖 fuse2)
-  install -dm755 "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/s302" <<'EOF'
-#!/bin/bash
-exec /opt/steamcommunity302/steamcommunity302.AppImage "$@"
-EOF
-  chmod 755 "${pkgdir}/usr/bin/s302"
+  # s302 控制命令:无参/ui 开 GUI(exec AppImage),管理命令走 systemd+config
+  install -Dm755 "${srcdir}/s302" "${pkgdir}/usr/bin/s302"
 
   install -Dm644 "${srcdir}/steamcommunity302.desktop" \
     "${pkgdir}/usr/share/applications/steamcommunity302.desktop"
