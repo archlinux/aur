@@ -13,7 +13,7 @@ _nodeversion=25         # As of 2025-05-26, the minimum version of `nodejs` is 2
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-eol"
 pkgver=1.11.112.sc.0.test.0.r551.20260222.cd6a795
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience. End-of-Life: Latest upstream commit before deprecation/ archival."
 arch=(
   "x86_64"
