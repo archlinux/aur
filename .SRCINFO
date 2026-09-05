@@ -1,6 +1,6 @@
 pkgbase = chameleonultracli-git
 	pkgdesc = Command line interface for the Chameleon Ultra RFID cloning and emulation device.
-	pkgver = 2.0.0.r372.20260526.38689a8
+	pkgver = 2.0.0.r377.20260617.1f99ddd4
 	pkgrel = 1
 	url = https://github.com/RfidResearchGroup/ChameleonUltra
 	arch = i686
@@ -23,9 +23,9 @@ pkgbase = chameleonultracli-git
 	optdepends = python-pyqt5: For alternative graphing backend; use together with 'python-pyqtgraph'.
 	optdepends = python-pyqtgraph: For alternative graphing backend; use together with 'python-pyqt5'.
 	optdepends = python-tqdm
-	provides = chameleonultracli=2.0.0.r372.20260526.38689a8
-	provides = python-chameleon_ultra_cli=2.0.0.r372.20260526.38689a8
-	provides = python-chameleon_ultra_cli-git=2.0.0.r372.20260526.38689a8
+	provides = chameleonultracli=2.0.0.r377.20260617.1f99ddd4
+	provides = python-chameleon_ultra_cli=2.0.0.r377.20260617.1f99ddd4
+	provides = python-chameleon_ultra_cli-git=2.0.0.r377.20260617.1f99ddd4
 	conflicts = chameleonultracli
 	conflicts = python-chameleon_ultra_cli
 	source = chameleonultracli::git+https://github.com/RfidResearchGroup/ChameleonUltra.git

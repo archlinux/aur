@@ -3,7 +3,7 @@
 _pyname=chameleon_ultra_cli
 _pkgname=chameleonultracli
 pkgname="${_pkgname}-git"
-pkgver=2.0.0.r372.20260526.38689a8
+pkgver=2.0.0.r377.20260617.1f99ddd4
 pkgrel=1
 pkgdesc="Command line interface for the Chameleon Ultra RFID cloning and emulation device."
 arch=(
