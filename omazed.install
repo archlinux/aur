@@ -17,11 +17,6 @@ post_upgrade() {
     echo ""
     echo "==> Omazed updated to $(pacman -Q omazed | cut -d' ' -f2)"
     echo ""
-    echo "   Complete the update!"
-    echo ""
-    echo "   To complete this update, run:"
-    echo ""
-    echo "   omazed setup"
     echo ""
 }
 
