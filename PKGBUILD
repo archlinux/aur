@@ -1,0 +1,27 @@
+pkgname=NekokoLPA2
+pkgver=2.2.4
+pkgrel=586
+pkgdesc='Cross-platform eSIM management app for working with local eUICCs, external readers, and remote reader endpoints'
+arch=(any)
+url='https://github.com/iebb/NekokoLPA2'
+license=(MIT)
+depends=()
+options=(!debug)
+makedepends=()
+source=(
+    'https://github.com/iebb/NekokoLPA2/releases/download/v2.2.4%2B586/ee.nekoko.nlpa2.linux-2.2.4-586-x64.tar.gz'
+    'https://github.com/iebb/NekokoLPA2/raw/refs/heads/master/assets/logo.png'
+)
+sha256sums=(
+    'c3e0a4be7d95858cb86f7124992d5863a6e24fc72a67e96daa55391550ee7388'
+    '58daa2869bf2f9e8145b42e22a0342edafa9ac1e348612ad2c3388de741a177a'
+)
+
+package() {
+    install -Dm755 "${startdir}/nlpa2.sh" "${pkgdir}/usr/bin/nlpa2"
+    install -Dm644 "${startdir}/nlpa2.desktop" "${pkgdir}/usr/share/applications/nlpa2.desktop"
+    install -Dm755 "${srcdir}/nlpa2" "${pkgdir}/usr/share/nlpa2/nlpa2"
+
+    install -Dm644 "${startdir}/logo.png" "${pkgdir}/usr/share/icons/nlpa2/logo.png"
+    cp -rp "${srcdir}"/{data,lib} "${pkgdir}/usr/share/nlpa2/"
+}
