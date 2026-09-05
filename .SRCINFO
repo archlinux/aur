@@ -1,6 +1,6 @@
 pkgbase = slopengine
 	pkgdesc = First-person boomer shooter game engine (raylib/flecs/s7)
-	pkgver = 0.6.4
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/slopnode/engine
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = slopengine
 	depends = wayland
 	depends = libxkbcommon
 	options = !debug
-	source = slopengine::git+https://github.com/slopnode/engine.git#tag=v0.6.4
+	source = slopengine::git+https://github.com/slopnode/engine.git#tag=v0.7.0
 	source = steamaudio-4.8.1.zip::https://github.com/ValveSoftware/steam-audio/releases/download/v4.8.1/steamaudio_4.8.1.zip
 	sha256sums = SKIP
 	sha256sums = 4a0aa5ec1176f38f0b0993a37c2259d9e86f27e22d5e24f83ec4c3cb9a1d5449

@@ -1,6 +1,6 @@
 # Maintainer: Bryan
 pkgname=slopengine
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="First-person boomer shooter game engine (raylib/flecs/s7)"
 arch=('x86_64')
@@ -52,7 +52,7 @@ build() {
 
 package() {
     cd "$pkgname"
-    for bin in slopengine sloprepl slopbsp sloprad slopvis \
+    for bin in slopengine sloprepl slopcsg slopbsp sloprad slopvis slopnav \
                slopmap slopsprite slopthing sloplauncher slopicons; do
         install -Dm755 "build/$bin" "$pkgdir/usr/bin/$bin"
     done
