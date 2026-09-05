@@ -7,7 +7,7 @@ pkgdesc="Self-hosted Nightingale web server binary"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rzru/nightingale"
 license=('GPL-3.0-only')
-
+backup=('etc/nightingale-server/env')
 depends=(
   'glibc'
 )

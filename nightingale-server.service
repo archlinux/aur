@@ -12,7 +12,9 @@ Group=nightingale
 WorkingDirectory=/var/lib/nightingale
 StateDirectory=nightingale
 
-ExecStart=/usr/bin/nightingale-server server
+ExecStart=/usr/bin/nightingale-server
+
+EnvironmentFile=-/etc/nightingale-server/env
 
 Restart=on-failure
 RestartSec=5

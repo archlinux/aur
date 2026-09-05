@@ -13,6 +13,7 @@ pkgbase = nightingale-server-bin
 	optdepends = avahi: local network discovery
 	provides = nightingale-server
 	conflicts = nightingale-server
+	backup = etc/nightingale-server/env
 	source = nightingale-server.service
 	source = nightingale-server.sysusers
 	source = nightingale-server.tmpfiles
