@@ -1,5 +1,5 @@
 pkgname=gitnexus
-pkgver=1.6.10
+pkgver=1.6.11
 pkgrel=1
 pkgdesc='Zero-server code intelligence engine for exploring repositories as a knowledge graph'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ _upstream=GitNexus
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('48d80584cc411b6ac8c88f246d113ac545cfca9ba45b3648d60625a4e198e542')
+sha256sums=('e9cefe211ed4ca04b4effa63fa5e7c9774687b72be064b11064d05ad07869ff8')
 
 build() {
   local _root="${srcdir}/${_upstream}-${pkgver}"
@@ -70,7 +70,6 @@ package() {
     "$_src/scripts" \
     "$_src/skills" \
     "$_src/vendor" \
-    "$_src/web" \
     "$_src/node_modules" \
     "$_src/package.json" \
     "$_moddir/"
