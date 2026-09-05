@@ -1,6 +1,6 @@
 pkgbase = purivox-bin
 	pkgdesc = Reference-guided and neural vocal separation for stage and live recordings
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/ChouChiu/Purivox
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = purivox-bin
 	optdepends = hicolor-icon-theme: desktop entry icon
 	provides = purivox
 	conflicts = purivox
-	noextract = purivox-1.0.0.deb
+	noextract = purivox-1.0.1.deb
 	options = !strip
 	options = !debug
-	source = purivox-1.0.0.deb::https://github.com/ChouChiu/Purivox/releases/download/v1.0.0/purivox_1.0.0-1_amd64.deb
-	sha256sums = 23548df90b8a42a3a5150d584e8e581ae500070993af63dbc12861fe961111a4
+	source = purivox-1.0.1.deb::https://github.com/ChouChiu/Purivox/releases/download/v1.0.1/purivox_1.0.1-1_amd64.deb
+	sha256sums = bd47430a5d8ab82f63bca41229717b957d98bcccbe6c769bc02d86ee91215a06
 
 pkgname = purivox-bin
