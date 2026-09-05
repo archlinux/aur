@@ -2,13 +2,13 @@
 # Contributors: Slash (AUR), OttoA (AUR), hoschi (AUR), samlt (AUR), andreyv (AUR)
 
 pkgname=lilium-voyager-git
-pkgver=20210609.g0f4e16fc
-pkgrel=2
+pkgver=20260520.g0f7dcd89
+pkgrel=1
 pkgdesc="An ioquake3-based Voyager: Elite Force source port."
 url="https://clover.moe/lilium-voyager/"
 license=('GPL')
 arch=('i686' 'x86_64' 'aarch64')
-depends=('curl' 'freetype2' 'libjpeg' 'libmad' 'libvorbis' 'openal' 'opus' 'opusfile' 'sdl2' 'zlib')
+depends=('curl' 'freetype2' 'libjpeg-turbo' 'libmad' 'libvorbis' 'openal' 'opus' 'opusfile' 'sdl2' 'zlib')
 makedepends=('git')
 optdepends=('mumble: Mumble VoIP support' 'eliteforce-data-gog: data files from GOG')
 conflicts=('lilium-voyager' 'lilium-voyager-bin')
