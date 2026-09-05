@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=revolut-x-cli
-pkgver=1.0.48
+pkgver=1.0.49
 pkgrel=1
 pkgdesc="Command-line interface for Revolut X crypto exchange trading"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/revolut-engineering/revolut-x-api/v${pkgver}/LICENSE"
 )
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('6f2541e59f9c2fb6a4a728c5460f535b17f573df3c948f52b60791a21f3cd2f3'
+sha256sums=('554471f246e686f04fd0ac8e2d01bc46711f4f55dc34af1ebf79fb43e5f41f28'
             '72380798af61d6131287b0dd3c8dc5345535df641002fece3a02d7ef109c5f8e')
 
 latestver() {
