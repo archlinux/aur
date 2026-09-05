@@ -1,15 +1,15 @@
 pkgbase = revolut-x-mcp
 	pkgdesc = Read-only MCP server for the Revolut X crypto exchange
-	pkgver = 1.0.48
+	pkgver = 1.0.49
 	pkgrel = 1
 	url = https://github.com/revolut-engineering/revolut-x-api
 	arch = any
 	license = MIT
 	depends = nodejs>=20
-	noextract = revolut-x-mcp-1.0.48.mcpb
-	source = revolut-x-mcp-1.0.48.mcpb::https://github.com/revolut-engineering/revolut-x-api/releases/download/v1.0.48/revolutx-mcp.mcpb
+	noextract = revolut-x-mcp-1.0.49.mcpb
+	source = revolut-x-mcp-1.0.49.mcpb::https://github.com/revolut-engineering/revolut-x-api/releases/download/v1.0.49/revolutx-mcp.mcpb
 	source = revolut-x-mcp-wrapper
-	sha256sums = 1e86d6dc78804b8d59642319f48b42e5ec1ac89a1c21e2834244c72c89b53ecb
+	sha256sums = aa2052607d648b14f642abc27da96294238e526da37eed433ed9ff77ce55e3e4
 	sha256sums = 743d6fd897f4f5a9e21917c9793e4d137f95f4497cf761cb3fa94f0997189ef1
 
 pkgname = revolut-x-mcp
