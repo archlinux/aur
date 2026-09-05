@@ -1,0 +1,11 @@
+--- a/makefiles/Makefile.linux	2026-09-05 17:07:54.162184089 +0200
++++ b/makefiles/Makefile.linux	2026-09-05 17:07:46.668284375 +0200
+@@ -225,7 +225,7 @@
+ # ---------------------- END OF CUSTOMIZABLE OPTIONS -------------------------
+ 
+ # Silence warnings we don't care about because we need backwards compat.
+-CFLAGS = -g $(sysconfigflags) $(prereleaseflags) -Wno-implicit-function-declaration -Wno-implicit-int -include stdlib.h -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast
++CFLAGS = -g $(sysconfigflags) $(prereleaseflags) -Wno-implicit-function-declaration -Wno-implicit-int -include stdlib.h -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast -std=gnu90
+ 
+ # Add libcurl if it exists. Check both /lib and /lib64.
+ # NYI
