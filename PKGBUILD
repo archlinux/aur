@@ -3,7 +3,7 @@
 # Contributor: Paulo Matias <matias@ufscar.br>
 
 pkgname=bluespec-release
-pkgver=2025.07
+pkgver=2026.01
 pkgrel=1
 pkgdesc='Bluespec Compiler (BSC), stable release'
 arch=('x86_64')
@@ -15,13 +15,11 @@ optdepends=('tcl: bluesim and bluetcl')
 source=("https://github.com/B-Lang-org/bsc/archive/refs/tags/$pkgver.tar.gz"
 		"https://github.com/B-Lang-org/bsc/releases/download/$pkgver/yices-src-for-bsc-$pkgver.tar.gz"
 		"fool-git-detection.patch"
-		"fix-ldflags.patch"
 )
 noextract=("yices-src-for-bsc-$pkgver.tar.gz")
-sha256sums=('5019721717ac27bf80a549ccdd0fadf57ac7fe08cfbd75b0de98569fa36780f7'
-            'a7211d089be68303983cc644b70edaae8efab529ff63fd8670a4f20119888781'
-            '03b6c8b7fa05f37d0e9211c36764be88d624de63439b99b938eebd08be84cacd'
-            '8f551d0a67c1d3b092b1681a341c3d3a580f18a22af57421b487332450ca7d40')
+sha256sums=('f9204b7d6efd6ac2b2c1b42c80b01d179319ac33575d258719eaf73be44d4ec5'
+            'a5114c8f1e04a75a06598ac9763922f9186554b6f1326c1454b2e06deafd5575'
+            'ea2d646517bae39fb3a570e366580e93053a3ac1f19840ed14cb235e7a83ba81')
 conflict=('bluespec-git' 'bluespec-release-git' 'bsc')		
 provides=('bluespec-git' 'bsc')		
 _prefix="/opt/bluespec"
@@ -32,7 +30,6 @@ prepare() {
   cd "$srcdir/bsc"
   tar -xvf "$srcdir/yices-src-for-bsc-$pkgver.tar.gz"
   patch -p1 < "$srcdir/fool-git-detection.patch"
-  patch -p1 < "$srcdir/fix-ldflags.patch"
 }
 
 build(){
