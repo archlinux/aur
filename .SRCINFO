@@ -1,7 +1,7 @@
 pkgbase = nexus-aur-bin
 	pkgdesc = Un gestore di pacchetti grafico per Arch Linux e AUR scritto in Flutter
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IlNinjaDiBattipaglia/Nexus-AUR
 	arch = x86_64
 	license = MIT
