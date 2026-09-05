@@ -1,6 +1,6 @@
 pkgbase = cleecode
 	pkgdesc = A terminal IDE written in Rust
-	pkgver = 0.22.0
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/msavox/cleecode
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = cleecode
 	provides = clee
 	options = !strip
 	options = !lto
-	source = cleecode-0.22.0.tgz::https://github.com/msavox/cleecode/archive/v0.22.0.tar.gz
-	sha256sums = 68e1954c3d39bcd90606ccb3edee9920c50593a8c613e7963fe00af10175e11f
+	source = cleecode-0.23.0.tgz::https://github.com/msavox/cleecode/archive/v0.23.0.tar.gz
+	sha256sums = c932caaeaf94d77e78a10cc66be61c3c67363adb5ffd48d4df39c99a17bd4886
 
 pkgname = cleecode
