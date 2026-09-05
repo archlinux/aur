@@ -1,0 +1,8 @@
+# makepkg working dirs
+pkg/
+src/
+
+# Built packages and the upstream sdist — refetched from PyPI on every build and
+# pinned by sha256 in the PKGBUILD, so git gains nothing by storing them.
+*.pkg.tar.zst
+*.tar.gz

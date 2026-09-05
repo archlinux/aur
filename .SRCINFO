@@ -1,0 +1,18 @@
+pkgbase = python-expression
+	pkgdesc = Practical functional programming for Python 3.10+
+	pkgver = 5.7.0
+	pkgrel = 1
+	url = https://github.com/cognitedata/Expression
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python
+	depends = python-typing_extensions
+	optdepends = python-pydantic: pydantic integration (the "pydantic"/"all" extras)
+	source = https://files.pythonhosted.org/packages/source/e/expression/expression-5.7.0.tar.gz
+	sha256sums = 4c5ea4247f871b8724ad580911ad73c1550fc653bb669daf2d49e4b645cc4770
+
+pkgname = python-expression
