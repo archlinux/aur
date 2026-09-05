@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=circuit-mesh
-pkgver=1.0.3
+pkgver=1.0.4
 _zigver=0.15.2
 pkgrel=1
 pkgdesc="Zero-Trust Network Engine"
@@ -14,7 +14,7 @@ makedepends=('zig' 'scdoc')
 backup=('etc/circuit-mesh/config.json')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tsukumoakito/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 validpgpkeys=('66B227EC5F67D7B4F8C6C1C7E98764DF6FCE8857')
-sha256sums=('26d108714480a9821e645d5ba965abec792561acb55fca6ecaf4ad23ec2fea84')
+sha256sums=('2684c0206c9f6019a219180e245e435152ad2c0c255611deb7734afd3f5fb59f')
 
 build() {
     cd "${pkgname}-${pkgver}"
