@@ -1,7 +1,7 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=tone3000-plugin
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="TONE3000 — NAM & IR loader plugin (VST3/CLAP/LV2/Standalone) (Built from source)"
 arch=('x86_64')
 url="https://github.com/tone-3000/tone3000-plugin"
@@ -22,10 +22,13 @@ prepare() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_TOOLCHAIN_FILE=cmake/linux-toolchain.cmake \
 		-DBUILD_AAX=OFF
-	# Now build the UI (needs JUCE present)
+	# Now build the UI (needs JUCE present).
+	# TONE3000 publishable key (OAuth client_id). Not a secret per their API docs:
+	# https://www.tone3000.com/api — safe to embed in client-side code.
+	# Same key the upstream ships in their pre-built binaries.
 	cd ui
 	npm ci
-	npm run build
+	VITE_T3K_PUBLISHABLE_KEY='t3k_pub__B8V_QGmV50ov2YWJzjqOxQE0q1-wURs' npm run build
 	cd ..
 }
 
