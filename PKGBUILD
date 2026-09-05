@@ -6,7 +6,7 @@
 # pushes to the AUR. Edit depends / package() etc. here — never in the
 # AUR repo directly.
 pkgname=tensaku
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc='Modern screenshot annotation tool for Wayland'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=('rust')
 optdepends=('hyprland: window snapping and pin placement'
             'sway: window snapping and pin placement')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('08f61dce1a4b629a1229c0b2cead642e165319e4b61a6f605fc3568d9f6183ee')
+sha256sums=('31595a8b4600107a63c1e5889f50f40e1ef832e51cfc038c1a7750b987fd34d0')
 
 prepare() {
   cd "$pkgname-$pkgver"
