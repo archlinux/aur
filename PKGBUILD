@@ -40,7 +40,7 @@ package() {
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
-	install -Dm644 "CONFIG-${pkgver}.md" "${pkgdir}/usr/share/${_appname}/config.example.yaml"
+	install -Dm644 "CONFIG-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/config/config.example.yaml"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 "TECHNICAL-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/TECHNICAL.md"
