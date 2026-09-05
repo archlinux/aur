@@ -1,0 +1,20 @@
+pkgbase = circuit-mesh
+	pkgdesc = Zero-Trust Network Engine
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/tsukumoakito/circuit-mesh
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	license = custom:Commercial
+	makedepends = zig
+	makedepends = scdoc
+	depends = openssl
+	depends = tor
+	depends = ipset
+	backup = etc/circuit-mesh/config.json
+	source = circuit-mesh-1.0.1.tar.gz::https://github.com/tsukumoakito/circuit-mesh/archive/refs/tags/v1.0.1.tar.gz
+	validpgpkeys = 66B227EC5F67D7B4F8C6C1C7E98764DF6FCE8857
+	sha256sums = f0ac7be4119088c92714c5441443bbd5c1ca9b3630c5c46efbf7620c2f72c8ab
+
+pkgname = circuit-mesh
