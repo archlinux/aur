@@ -1,6 +1,6 @@
 pkgbase = thunderbolt
 	pkgdesc = Privacy-respecting AI chat client. AI You Control: Choose your models. Own your data. Eliminate vendor lock-in.
-	pkgver = 0.1.128
+	pkgver = 0.1.129
 	pkgrel = 1
 	url = https://github.com/thunderbird/thunderbolt
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = thunderbolt
 	conflicts = thunderbolt-git
 	options = !lto
 	options = !strip
-	source = thunderbolt-0.1.128.tar.gz::https://github.com/thunderbird/thunderbolt/archive/refs/tags/v0.1.128.tar.gz
-	sha256sums = d7806be9f244baac271fbd460a106ef0669b90030f34cc55ece4491acd6a1484
+	source = thunderbolt-0.1.129.tar.gz::https://github.com/thunderbird/thunderbolt/archive/refs/tags/v0.1.129.tar.gz
+	sha256sums = 09811be13682cb77f742a55ed8f34711fe8f3ff7204b3ca7fcfc2eac38b57246
 
 pkgname = thunderbolt
