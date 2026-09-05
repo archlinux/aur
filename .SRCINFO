@@ -1,6 +1,6 @@
 pkgbase = faugus-launcher-bin
 	pkgdesc = Simple and lightweight app for running Windows games using UMU-Launcher (upstream binary)
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/Faugus/faugus-launcher
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = faugus-launcher-bin
 	optdepends = gamemode: feral gamemode integration
 	provides = faugus-launcher
 	conflicts = faugus-launcher
-	noextract = faugus-launcher-bin-2.2.1.deb
-	source = faugus-launcher-bin-2.2.1.deb::https://github.com/Faugus/faugus-launcher/releases/download/2.2.1/faugus-launcher_2.2.1-1_all.deb
-	sha256sums = e5d4645f377e7794c85bfba2257dced0793a84464875364f56ff19c663720607
+	noextract = faugus-launcher-bin-2.2.2.deb
+	source = faugus-launcher-bin-2.2.2.deb::https://github.com/Faugus/faugus-launcher/releases/download/2.2.2/faugus-launcher_2.2.2-1_all.deb
+	sha256sums = 22c97873763152fa09069ba1c22a63be188985d7736961a97cf4f0b59529b76a
 
 pkgname = faugus-launcher-bin
