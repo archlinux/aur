@@ -1,6 +1,6 @@
 pkgbase = libenvpp-git
 	pkgdesc = Modern C++ Library for Handling Environment Variables.
-	pkgver = 1.5.2.r206.20251209.379195a
+	pkgver = 1.5.3.r210.20260618.3080670
 	pkgrel = 1
 	url = https://github.com/ph3at/libenvpp
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = libenvpp-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libfmt.so
-	provides = libenvpp=1.5.2.r206.20251209.379195a
+	provides = libenvpp=1.5.3.r210.20260618.3080670
 	provides = libenvpp.so
 	conflicts = libenvpp
 	conflicts = libenvpp.so

@@ -2,7 +2,7 @@
 
 _pkgname=libenvpp
 pkgname=${_pkgname}-git
-pkgver=1.5.2.r206.20251209.379195a
+pkgver=1.5.3.r210.20260618.3080670
 pkgrel=1
 pkgdesc='Modern C++ Library for Handling Environment Variables.'
 arch=(
