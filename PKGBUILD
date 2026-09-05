@@ -10,7 +10,7 @@ pkgname='iwinfo'
 pkgdesc='Provide wifi information about capabilities and network(s)'
 _gitname='iwinfo'
 
-pkgver="5.0.1"
+pkgver="5.1.1"
 pkgrel=1
 url="https://github.com/gene-git/iwinfo"
 
@@ -22,19 +22,19 @@ install='iwinfo.install'
 # To build docs uncomment sphinx/texlive
 # Note libcap_ng >= 0.6 provides python bindings
 depends=(
-    'python>=3.13' 
-    'libcap-ng>=0.6' 
-    'python-capng' 
+    'python>=3.14' 
+    'libcap-ng>=0.9' 
+    'pyconcurrent'
     'iwd'
     'glibc'
 )
 makedepends=(
     'git' 
-    'uv'
-    'python-uv-build'
+    'meson'
+    'meson-python'
     'rsync'
-    # 'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
 )
+
 _mkpkg_depends=(
     'python>minor' 
     'libcap-ng>minor'
@@ -53,36 +53,23 @@ validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
 
 #source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
 source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
+
 sha512sums=('SKIP')
 
 build() {
     cd "${_gitname}"
 
-    echo 'Building python'
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
+    echo "------------------"
+    echo "   building"
+    echo "------------------"
 
-    echo 'Building C'
-    cd src/ambient
-    make
-
-    # To build Docs
-    # uncomment below  and sphinx makedepends above
-    # -------------
-    # echo "Build docs"
-    # cd ./Docs
-    # make latexpdf >/dev/null 2>&1
-    # make latexpdf >/dev/null
-    # pdf='iwinfo.pdf'
-    # /usr/bin/rm -f $pdf
-    # /usr/bin/cp _build/latex/$pdf .
-    # make html
-    # make html
-    # /usr/bin/rm -rf _build/doctrees _build/latex
+    ./scripts/do-build
 }
 
 package() {
     cd "${_gitname}"
+    echo "------------------"
+    echo "   install"
+    echo "------------------"
     ./scripts/do-install ${pkgdir}
 }
-# vim:set ts=4 sts=4 sw=4 et:
