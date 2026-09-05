@@ -1,7 +1,7 @@
 pkgbase = dlss-updater
 	pkgdesc = DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games
 	pkgver = 4.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Recol/DLSS-Updater
 	arch = any
 	license = AGPL-3.0-only
@@ -17,6 +17,7 @@ pkgbase = dlss-updater
 	depends = python-aiosqlite
 	depends = python-anyio
 	depends = python-flet
+	depends = python-msgpack
 	depends = python-msgspec
 	depends = python-packaging
 	depends = python-pefile

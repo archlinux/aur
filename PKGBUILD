@@ -2,7 +2,7 @@
 pkgname=dlss-updater
 _app_id="io.github.recol.$pkgname"
 pkgver=4.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games"
 arch=('any')
 url="https://github.com/Recol/DLSS-Updater"
@@ -13,6 +13,7 @@ depends=(
   'python-aiosqlite'
   'python-anyio'
   'python-flet'
+  'python-msgpack'
   'python-msgspec'
   'python-packaging'
   'python-pefile'
