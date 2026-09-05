@@ -1,7 +1,7 @@
 pkgbase = abcde-poddmo-git
 	pkgdesc = Frontend command-line utility that grabs tracks off a CD, encodes them to ogg or mp3 format, and tags them, all in one go
 	pkgver = 2.12.2.r2.gd793fa5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/poddmo/abcde
 	arch = any
 	license = GPL
@@ -20,7 +20,7 @@ pkgbase = abcde-poddmo-git
 	optdepends = python-eyed3: ID3 tag support
 	optdepends = vorbisgain: Ogg Vorbis normalization support
 	provides = abcde
-	conflicts = ancde
+	conflicts = abcde
 	backup = etc/abcde.conf
 	source = abcde-poddmo::git+https://github.com/poddmo/abcde
 	source = hostname.patch

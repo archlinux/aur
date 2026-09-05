@@ -6,7 +6,7 @@
 
 pkgname=abcde-poddmo-git
 pkgver=2.12.2.r2.gd793fa5
-pkgrel=1
+pkgrel=2
 pkgdesc='Frontend command-line utility that grabs tracks off a CD, encodes them to ogg or mp3 format, and tags them, all in one go'
 arch=(any)
 url="https://github.com/poddmo/abcde"
@@ -31,7 +31,7 @@ optdepends=(
     )
 backup=("etc/abcde.conf")
 provides=(abcde)
-conflicts=(ancde)
+conflicts=(abcde)
 source=("abcde-poddmo::git+https://github.com/poddmo/abcde"
         hostname.patch)
 sha256sums=('SKIP'
