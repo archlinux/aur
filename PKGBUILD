@@ -7,7 +7,7 @@
 #   paru -Ui        (oder)   yay -Bi .
 pkgname=dream-voicetraining
 _repo=Dream-VoiceTraining          # das GitHub-Archiv entpackt unter diesem Namen
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Voice analysis for training your speaking voice: pitch, formants, resonance and voice quality"
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
 )
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c02ace0b68639dfbf3bff28ddb4ce08f17615211a7d5053d317ab12b6a63865d')
+sha256sums=('4b64952e3c94c0e10579186eeaf45c26f583cc057567e8a2ea16f1173e95064f')
 
 check() {
   cd "$srcdir/$_repo-$pkgver"
