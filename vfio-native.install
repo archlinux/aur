@@ -1,0 +1,83 @@
+post_install() {
+    cat <<'MSG'
+
+  vfio-native installed.
+
+  Three commands. You do not need to read anything else.
+
+    vm-native-setup            configure a libvirt domain
+    vm-native-verify           check it is actually working
+    vm-native-gpu              set up GPU passthrough
+
+  ---------------------------------------------------------------------------
+  Getting a corrected, tuned guest:
+
+  1. In the Windows guest, once - turn off its own hypervisor. This is the
+     single most valuable change and it makes the VM FASTER:
+
+       bcdedit /set hypervisorlaunchtype off
+       Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -NoRestart
+
+     Reboot twice. Uninstall the QEMU and SPICE guest agents.
+
+  2. Move the guest disk to emulated NVMe (bus='nvme'), and give it a <serial>.
+
+  3. On the host, once:
+
+       sudo cpupower frequency-set -g performance
+
+  4. Shut the domain down and run:
+
+       vm-native-setup
+
+     It detects your CPU layout - AMD CCDs or Intel P/E cores - and asks four
+     questions, all with sensible defaults. It pins vCPUs onto real SMT pairs,
+     keeps the emulator off the vCPU cores, and writes the corrected CPU and
+     firmware settings. It backs the domain up first and prints how to revert.
+
+  5. Start the guest, let it idle a minute, then:
+
+       vm-native-verify
+
+  ---------------------------------------------------------------------------
+  Fidelity levels, asked in step 4:
+
+    tuned     performance tuning only, no platform corrections
+    native    tuning + domain-level corrections. No patched binaries, no upkeep.
+    full      lowest score. Needs vfio-native-kvm and a patched QEMU, and a
+              module rebuild after each kernel update.
+
+  'native' is a good default if you would rather not maintain anything.
+
+  A udev rule (99-vfio-native-vnet-offload.rules) turns TX offloads off on every
+  libvirt tap as it appears. The emulated e1000e NIC corrupts integrity-checked
+  traffic with them on; SSH to the guest fails with "Corrupted MAC on input".
+  It applies to every VM on the host; the throughput cost on a host<->guest
+  link is not measurable.
+
+  A libvirt hook is installed at /etc/libvirt/hooks/qemu.d/10-cpu-isolation.sh.
+  It keeps host processes off the cores the guest is pinned to, automatically,
+  whenever the guest runs. Measured: stalls over 10us in a 10 second window fell
+  from ~100 to ~36. If your libvirt does not read qemu.d/, chain it from your
+  existing /etc/libvirt/hooks/qemu.
+
+  ---------------------------------------------------------------------------
+  Leave the host at least 4 physical cores. Windows calibrates the TSC once at
+  boot, and if the host cannot schedule the guest's vCPU threads cleanly while
+  that runs, Windows abandons the TSC and every QueryPerformanceCounter call
+  costs ~1300ns instead of ~15 for the rest of that boot. Software that polls
+  the clock in a tight loop makes that call thousands of times a second, so it
+  shows up as constant hitching in an interactive session. 24 of 32 threads is
+  reliable, 32 of 32 is not, and vm-native-setup warns you when you go under
+  the margin.
+
+  It is a race, so one slow reading proves nothing. If vm-native-verify shows
+  QPC over 1000ns, reboot and measure again before changing any setting.
+
+  Patches, grouped by the detection each one clears:
+      /usr/share/vfio-native/patches/README.md
+
+MSG
+}
+
+post_upgrade() { post_install; }

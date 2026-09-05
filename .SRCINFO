@@ -1,0 +1,23 @@
+pkgbase = vfio-native
+	pkgdesc = Present a libvirt guest as a self-consistent physical machine, and tune it
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://git.archworks.co/sandwich/vfio-native
+	install = vfio-native.install
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = libvirt
+	depends = qemu-base
+	depends = python
+	depends = openssh
+	depends = bash
+	depends = ethtool
+	optdepends = mingw-w64-gcc: build the in-guest benchmark and the TIMER probe
+	optdepends = cpupower: set the host CPU governor
+	optdepends = vfio-native-kvm-dkms: patched KVM modules for the full level
+	optdepends = vfio-native-qemu: patched QEMU for the full level
+	source = git+https://git.archworks.co/sandwich/vfio-native.git#tag=v1.1.0
+	sha256sums = SKIP
+
+pkgname = vfio-native
