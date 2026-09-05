@@ -55,6 +55,10 @@ package() {
   install -Dm644 data/org.moarchy.Store.desktop \
     "$pkgdir/usr/share/applications/org.moarchy.Store.desktop"
 
+  # Screenshots are NOT packaged: 2.7MB of PNGs against a ~40KB package, for
+  # something most people never scroll to. They are fetched from the repo on
+  # demand and cached under ~/.cache/moarchy-store.
+
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
