@@ -1,6 +1,6 @@
 pkgbase = chameleonultragui-bin-latest
 	pkgdesc = Flutter GUI for the Chameleon Ultra RFID card cloning and emulation device. Automatic upstream binary build from latest upstream git commit.
-	pkgver = r569.20260616.c5b19fc
+	pkgver = r613.20260830.bd9356b
 	pkgrel = 1
 	url = https://chameleon.run/
 	arch = x86_64
@@ -28,9 +28,9 @@ pkgbase = chameleonultragui-bin-latest
 	depends = libz.so
 	depends = zenity
 	provides = chameleonultragui
-	provides = chameleonultragui-git=r569.20260616.c5b19fc
+	provides = chameleonultragui-git=r613.20260830.bd9356b
 	provides = chameleonultragui-docs
-	provides = chameleonultragui-docs-git=r569.20260616.c5b19fc
+	provides = chameleonultragui-docs-git=r613.20260830.bd9356b
 	conflicts = chameleonultragui
 	conflicts = chameleonultragui-git
 	conflicts = chameleonultragui-docs
