@@ -1,0 +1,29 @@
+pkgbase = balun-git
+	pkgdesc = A lightweight cross-platform HDHomeRun live TV viewer (Git version)
+	pkgver = 0.1.0.r10.g92d14b5
+	pkgrel = 1
+	url = https://github.com/jm2/balun
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = perl
+	makedepends = git
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	depends = gtk4>=4.16
+	depends = libadwaita>=1.6
+	depends = gstreamer>=1.20
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gst-plugins-bad-libs
+	depends = gst-plugin-gtk4
+	depends = gst-libav
+	provides = balun=0.1.0.r10.g92d14b5
+	conflicts = balun
+	options = !lto
+	options = !debug
+	source = balun-git::git+https://github.com/jm2/balun.git
+	sha256sums = SKIP
+
+pkgname = balun-git
