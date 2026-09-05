@@ -1,8 +1,8 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from DeepSeek V4 Flash.
+# Created with assistance from GLM 5.3 Flash.
 
 pkgname=zxc-full-bin
-pkgver=0.13.3
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Asymmetric lossless compression library for ultra-fast decode (development: CLI + C library + headers + CMake — prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('zxc-full')
 options=('!debug' '!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v${pkgver}/zxc-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v${pkgver}/zxc-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('a80972be929002e15736d6fb5521ad949e837e62e08142826ed8c740f188e1c0')
-sha256sums_aarch64=('9450cf0fefcce8651a6931b9fe2471fcccfb54836e26f96da27e55a4b4e9a39c')
+sha256sums_x86_64=('a2abbc75068a700eee58d72f6368af9205681998634af272128b542dd80ef2e1')
+sha256sums_aarch64=('8bfa2a06632f1ec05372e406c825cd966f303f6e6322a9274ef333747e5bbec4')
 
 package() {
   local _arch="${CARCH}"
