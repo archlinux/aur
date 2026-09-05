@@ -1,0 +1,16 @@
+post_install() {
+    systemd-sysusers nightingale-server.conf
+    systemd-tmpfiles --create nightingale-server.conf
+
+    echo
+    echo "Enable Nightingale:"
+    echo "  systemctl enable --now nightingale-server"
+    echo
+    echo "Configure nginx to proxy to:"
+    echo "  http://127.0.0.1:8080"
+}
+
+post_upgrade() {
+    systemd-sysusers nightingale-server.conf
+    systemd-tmpfiles --create nightingale-server.conf
+}

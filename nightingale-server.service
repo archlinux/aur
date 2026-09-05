@@ -1,0 +1,28 @@
+[Unit]
+Description=Nightingale Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+User=nightingale
+Group=nightingale
+
+WorkingDirectory=/var/lib/nightingale
+StateDirectory=nightingale
+
+ExecStart=/usr/bin/nightingale-server server
+
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+#ProtectSystem=strict
+#ProtectHome=true
+
+ReadWritePaths=/var/lib/nightingale
+
+[Install]
+WantedBy=multi-user.target
