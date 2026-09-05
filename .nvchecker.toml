@@ -1,0 +1,5 @@
+[sicth-bin]
+source = "github"
+github = "reekta92/sicth"
+use_latest_release = true
+prefix = "v"

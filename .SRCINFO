@@ -1,0 +1,16 @@
+pkgbase = sicth-bin
+	pkgdesc = A minimal TUI file navigator
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/reekta92/sicth
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = sicth
+	conflicts = sicth
+	options = !strip
+	source_x86_64 = sicth-x86_64-1.1.1.txz::https://github.com/reekta92/sicth/releases/download/v1.1.1/sicth-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 2e73af2a00576697fc930878ee543ba58fadfa1a33ca6c702be75a9f1fefc079
+
+pkgname = sicth-bin
