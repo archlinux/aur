@@ -3,7 +3,7 @@
 # Contributor: Max Bruckner <max at maxbruckner dot de>
 pkgname=smooth
 pkgver=0.9.10
-pkgrel=2
+pkgrel=3
 pkgdesc="An object oriented C++ class library"
 arch=('x86_64')
 url="http://www.smooth-project.org/"
@@ -35,5 +35,6 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  ln -s "/usr/lib/libsmooth-${pkgver%.*}.so" "${pkgdir}/usr/lib/libsmooth.so"
+
+  ln -s "/usr/lib/libsmooth-${pkgver%.*}.so.0" "${pkgdir}/usr/lib/libsmooth.so"
 }
