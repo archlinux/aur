@@ -2,8 +2,8 @@
 # Contributor: <tqwcafc9vgfuxwze6f AT tutanota DOT com>
 
 pkgname='hpuld'
-pkgver='1.00.39.12_00.15'
-pkgrel=4
+pkgver='1.00.39.17_00.33'
+pkgrel=1
 pkgdesc='HP Unified Linux Driver'
 arch=('i686' 'x86_64')
 url='https://support.hp.com/'
@@ -12,19 +12,23 @@ depends=('libcups' 'sane' 'libxml2-legacy' 'libusb')
 optdepends=('hal: hardware abstraction layer')
 conflicts=('samsung-unified-driver-printer' 'samsung-unified-driver-scanner')
 options=('!debug' '!strip')
-source=("https://ftp.hp.com/pub/softlib/software13/printers/MFP170/uld-hp_V${pkgver}.tar.gz"
-	"https://ftp.hp.com/pub/softlib/software13/printers/IPG/M433/uld-hp.tar.gz"
-       'fulfill_template.sh')
+source=("https://ftp.hp.com/pub/softlib/software13/printers/laserMFP100/uld-hp_V${pkgver}.tar.gz"
+	'https://ftp.hp.com/pub/softlib/software13/printers/MFP170/uld-hp_V1.00.39.12_00.15.tar.gz'
+	'https://ftp.hp.com/pub/softlib/software13/printers/IPG/M433/uld-hp.tar.gz'
+	'fulfill_template.sh')
 install="${pkgname}.install"
-md5sums=('b20c5f5273f8d18077fe553919c7e3e9'
+md5sums=('8a0c22722beb37007766187b3ec23d00'
+         'b20c5f5273f8d18077fe553919c7e3e9'
          '5355df6678e547b4de1d9f7a4b660f10'
          '7eb585631b18d8093128458268a8fff7')
-sha1sums=('51ed2e1265659cedf47fa5e7b9f8693a3d8cabaa'
+sha1sums=('5cd14a0b9311def00228b1117a38ffc3381f83d6'
+          '51ed2e1265659cedf47fa5e7b9f8693a3d8cabaa'
           '030fe724635ad9d32cc5bc787b78f3a201707d26'
           '2390d3a2bff730988d379163694194fdc50eb502')
 
 # Extract only the most recent version of the `uld` package...
-noextract=("uld-hp.tar.gz")
+noextract=('uld-hp.tar.gz'
+           'uld-hp_V1.00.39.12_00.15.tar.gz')
 
 _pkgcodename='uld'
 _udev_rule_number=48
@@ -41,9 +45,12 @@ esac
 
 prepare() {
 
-	[ -d "${srcdir}/uld-alt" ] && rm -rf "${srcdir}/uld-alt"
-	mkdir "${srcdir}/uld-alt"
-	tar -xzf "${srcdir}/uld-hp.tar.gz" -C "${srcdir}/uld-alt"
+	[ -d "${srcdir}/hpuld-alt" ] && rm -rf "${srcdir}/hpuld-alt"
+	[ -d "${srcdir}/hpuld-1.00.39.12_00.15" ] && rm -rf "${srcdir}/hpuld-1.00.39.12_00.15"
+	mkdir "${srcdir}/hpuld-alt"
+	mkdir "${srcdir}/hpuld-1.00.39.12_00.15"
+	tar -xzf "${srcdir}/uld-hp.tar.gz" -C "${srcdir}/hpuld-alt"
+	tar -xzf "${srcdir}/uld-hp_V1.00.39.12_00.15.tar.gz" -C "${srcdir}/hpuld-1.00.39.12_00.15"
 
 }
 
@@ -66,18 +73,24 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/cups/model"
 	install -dm755 "${pkgdir}/usr/share/ppd"
 
+	# Integrate the .ppd files with the alternative `uld` packages
+	install -Dm644 "${srcdir}/hpuld-alt/${_pkgcodename}/noarch/share/ppd/"*.ppd \
+		"${pkgdir}/opt/hp/printer/share/ppd/"
+	install -Dm644 "${srcdir}/hpuld-1.00.39.12_00.15/${_pkgcodename}/noarch/share/ppd/"*.ppd \
+		"${pkgdir}/opt/hp/printer/share/ppd/"
+
+	# Install the default .ppd files
 	install -Dm644 "${srcdir}/${_pkgcodename}/noarch/share/ppd/"*.ppd \
 		"${pkgdir}/opt/hp/printer/share/ppd/"
 
-	# Integrate the .ppd files with the alternative `uld` package
-	install -Dm644 "${srcdir}/uld-alt/${_pkgcodename}/noarch/share/ppd/"*.ppd \
-		"${pkgdir}/opt/hp/printer/share/ppd/"
-
-	install -Dm644 "${srcdir}/${_pkgcodename}/noarch/share/ppd/cms/"*.cts \
+	# Integrate the .cts files with the alternative `uld` packages
+	install -Dm644 "${srcdir}/hpuld-alt/${_pkgcodename}/noarch/share/ppd/cms/"*.cts \
+		"${pkgdir}/opt/hp/printer/share/ppd/cms/"
+	install -Dm644 "${srcdir}/hpuld-1.00.39.12_00.15/${_pkgcodename}/noarch/share/ppd/cms/"*.cts \
 		"${pkgdir}/opt/hp/printer/share/ppd/cms/"
 
-	# Integrate the .cts files with the alternative `uld` package
-	install -Dm644 "${srcdir}/uld-alt/${_pkgcodename}/noarch/share/ppd/cms/"*.cts \
+	# Install the default .cts files
+	install -Dm644 "${srcdir}/${_pkgcodename}/noarch/share/ppd/cms/"*.cts \
 		"${pkgdir}/opt/hp/printer/share/ppd/cms/"
 
 	install -Dm644 "${srcdir}/${_pkgcodename}/noarch/.version-printer-script" \
@@ -206,7 +219,7 @@ package() {
 		"${pkgdir}/opt/smfp-common/scanner/lib/libsane-smfp.so.1.0.1"
 
 	# Use the alternative `uld` package for the locale files...
-	local _i18ndir="${srcdir}/uld-alt/${_pkgcodename}/noarch/share/locale"
+	local _i18ndir="${srcdir}/hpuld-alt/${_pkgcodename}/noarch/share/locale"
 
 	# Install all the languages present in `${_i18ndir}`
 	(cd "${_i18ndir}" && find * -maxdepth 0 -type d \
@@ -243,7 +256,6 @@ package() {
 
 	ln -s '/opt/smfp-common/scanner' \
 		"${pkgdir}/opt/smfp-common/security/.usedby/scanner"
-
 
 	# license
 
