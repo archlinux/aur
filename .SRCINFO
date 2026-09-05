@@ -1,6 +1,6 @@
 pkgbase = pdfrip-git
 	pkgdesc = A multi-threaded PDF password recovering/ cracking utility.
-	pkgver = 2.0.1+27.r85.20251113.66c71d4
+	pkgver = 3.0.0+2.r89.20260326.633932b
 	pkgrel = 1
 	url = https://github.com/mufeedvh/pdfrip
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = pdfrip-git
 	makedepends = rust
 	depends = gcc-libs
 	depends = glibc
-	provides = pdfrip=2.0.1+27.r85.20251113.66c71d4
+	provides = pdfrip=3.0.0+2.r89.20260326.633932b
 	conflicts = pdfrip
 	source = pdfrip::git+https://github.com/mufeedvh/pdfrip.git
 	sha256sums = SKIP
