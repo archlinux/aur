@@ -1,0 +1,25 @@
+pkgbase = webwallpaper-kde
+	pkgdesc = Live HTML/WebGL KDE Plasma 6 wallpapers (plugin) + theme store app
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ekoputrapratama/webwallpaper-kde
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = libarchive
+	options = !strip
+	options = !emptydirs
+	source = webwallpaper-plugin_0.1.0_amd64.deb::https://github.com/ekoputrapratama/webwallpaper-kde/releases/download/v0.1.0/webwallpaper-plugin_0.1.0_amd64.deb
+	source = webwallpaper-store_0.1.0_amd64.deb::https://github.com/ekoputrapratama/webwallpaper-kde/releases/download/v0.1.0/webwallpaper-store_0.1.0_amd64.deb
+	sha256sums = 778085b4d8ef5cff20daeab749b9175b0560d510bc5eb1944eaf7ac7797bb59c
+	sha256sums = 66bbb7be44f5f524af3f383bb045146498aa9d9aabf43100805529904162082f
+
+pkgname = webwallpaper-plugin
+	depends = qt6-declarative
+	depends = qt6-webengine
+	depends = qt6-wayland
+	depends = kwindowsystem
+	depends = kwayland
+	depends = libplasma
+
+pkgname = webwallpaper-store
+	depends = qt6-base
