@@ -1,0 +1,13 @@
+pkgbase = ros2-jazzy-actuator_msgs
+	pkgdesc = ROS 2 message interface for Actuators
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://index.ros.org/p/actuator_msgs/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = ros2-jazzy
+	source = actuator_msgs-0.0.1.tar.gz::https://github.com/rudislabs/actuator_msgs/archive/refs/tags/0.0.1.tar.gz
+	sha256sums = 82ae5b5a3f7c3359a7164c140dd6ad7768aeec1836c97f5e750beb3182ccd695
+
+pkgname = ros2-jazzy-actuator_msgs
