@@ -1,14 +1,14 @@
-pkgbase = nemo-qml-plugin-configuration
-	pkgdesc = Configuration plugin for Nemo Mobile
+pkgbase = qt5-nemo-qml-plugin-configuration
+	pkgdesc = Configuration plugin for Nemo Mobile (Qt5 version)
 	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/sailfishos/nemo-qml-plugin-configuration
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = git
-	depends = mlite
+	depends = qt5-mlite
 	depends = qt5-declarative
 	source = git+https://github.com/sailfishos/nemo-qml-plugin-configuration.git#tag=0.2.10
 	sha512sums = a485793282b8f50b284e347a02b0ffbab42210573bd1bb61b68d0146d7e7277447bd74b311835a2633d2e98a6f8ead823c7d8330eb5318837b2280840609fda3
 
-pkgname = nemo-qml-plugin-configuration
+pkgname = qt5-nemo-qml-plugin-configuration
