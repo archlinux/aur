@@ -1,0 +1,17 @@
+pkgbase = python-fastdiract-git
+	pkgdesc = Ultra-fast directory/action jumping for the shell, using fzf for context switching
+	pkgver = r7.0ed8f5c
+	pkgrel = 1
+	url = https://github.com/dp12/fastdiract
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = fzf
+	depends = python
+	provides = fastdiract
+	conflicts = fastdiract
+	source = fastdiract::git+https://github.com/dp12/fastdiract.git
+	sha256sums = SKIP
+
+pkgname = python-fastdiract-git
