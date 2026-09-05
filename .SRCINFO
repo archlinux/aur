@@ -1,0 +1,20 @@
+pkgbase = ros2-jazzy-cpp_polyfills
+	pkgdesc = C++ standard library polyfills for ROS 2 Jazzy
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/PickNikRobotics/cpp_polyfills
+	arch = any
+	makedepends = cmake
+	makedepends = ros2-jazzy
+	source = ros2-jazzy-cpp_polyfills-1.3.2.tar.gz::https://github.com/PickNikRobotics/cpp_polyfills/archive/refs/tags/1.3.2.tar.gz
+	sha256sums = 2914d24b9f0079436aaf8242ed030236adfa3e744e0d729df7adce3063cbf410
+
+pkgname = ros2-jazzy-tcb_span
+	pkgdesc = Implementation of C++20 std::span for ROS 2 Jazzy
+	license = BSL-1.0
+	depends = ros2-jazzy
+
+pkgname = ros2-jazzy-tl_expected
+	pkgdesc = C++11/14/17 std::expected implementation for ROS 2 Jazzy
+	license = CC0-1.0
+	depends = ros2-jazzy
