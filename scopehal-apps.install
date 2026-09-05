@@ -1,0 +1,72 @@
+_info() {
+    cat <<'EOF'
+>>> ngscopeclient requires a working Vulkan stack
+
+ngscopeclient renders through Vulkan (via GLFW), so it needs BOTH a Vulkan
+loader and a hardware driver. The loader (vulkan-icd-loader) is pulled in
+automatically, but the driver depends on your GPU and must be installed by
+you:
+
+    AMD    (Mesa RADV)   pacman -S vulkan-radeon
+    Intel  (Mesa ANV)    pacman -S vulkan-intel
+    NVIDIA (proprietary) pacman -S nvidia-utils
+    NVIDIA (Nouveau)     pacman -S vulkan-nouveau
+    VirtIO GPU (VM)      pacman -S vulkan-virtio
+    No GPU / software    pacman -S vulkan-swrast   (lavapipe, slow)
+
+Verify the stack before reporting a bug:
+
+    pacman -S vulkan-tools
+    vulkaninfo --summary        # must list a real device, not llvmpipe-only
+    ls /usr/share/vulkan/icd.d/ # should contain at least one *.json
+EOF
+}
+
+_troubleshooting() {
+    cat <<'EOF'
+
+>>> If startup fails with:
+>>>   ERROR: glfwGetRequiredInstanceExtensions failed, code 0 ((null))
+
+This almost always means the Vulkan loader found NO driver (ICD), so the
+instance extension list lacks VK_KHR_surface. Do NOT assume the package or
+your GPU driver is broken -- the usual cause is a stale override.
+
+1) Check for overriding environment variables:
+
+       env | grep -iE 'VK_|VULKAN'
+
+   VK_DRIVER_FILES / VK_ICD_FILENAMES REPLACE the loader's default search
+   path. If they point at files that do not exist (a common leftover from
+   copying AMD tuning snippets, e.g. radeon_icd.i686.json or
+   radeon_icd.x86_64.json -- Arch ships radeon_icd.json without the
+   architecture suffix), the loader finds nothing at all.
+
+2) Confirm with the loader's own diagnostics:
+
+       VK_LOADER_DEBUG=error,warn ngscopeclient
+
+   Lines like "Failed to open JSON file ..." name the offending path.
+
+3) Fix: unset/remove those variables (commonly in /etc/environment,
+   ~/.config/environment.d/*.conf or your shell rc). Logging out and back in
+   is required for /etc/environment and environment.d changes to apply.
+
+       # quick test without editing anything:
+       env -u VK_DRIVER_FILES -u VK_ICD_FILENAMES ngscopeclient
+
+   Letting the loader auto-discover /usr/share/vulkan/icd.d/*.json is the
+   most robust configuration -- it keeps working if you later switch between
+   RADV and AMDVLK.
+EOF
+}
+
+post_install() {
+    _info
+    _troubleshooting
+}
+
+post_upgrade() {
+    _info
+    _troubleshooting
+}
