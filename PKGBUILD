@@ -1,7 +1,7 @@
 # Maintainer: LightJunction <LIghtJUNction.me@gmail.com>
 
 pkgname=obscura-browser-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='The headless browser for AI agents and web scraping (binary release)'
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("obscura-${pkgver}-x86_64-linux.tar.gz::${url}/releases/download/v${pkgver}/obscura-x86_64-linux.tar.gz")
 source_aarch64=("obscura-${pkgver}-aarch64-linux.tar.gz::${url}/releases/download/v${pkgver}/obscura-aarch64-linux.tar.gz")
 sha256sums=('50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a')
-sha256sums_x86_64=('6a1a66b3f1ab118fa7d31330894a868617aea68c06d75436d851356c39df1ed3')
-sha256sums_aarch64=('0297c26d583f598f0126a7271cc40750598a9a9cbd86d1d6f79b2b99097d5244')
+sha256sums_x86_64=('9e5d9d081909ea983bc8c94999bb3d411fd6b74a9788504295b7e25f84310505')
+sha256sums_aarch64=('fd422a9bc0cb38047d270c2d0ee393df5c4d54fa9d0130d39917e858cd7020ae')
 
 package() {
   install -Dm755 obscura "${pkgdir}/usr/lib/obscura/obscura"
