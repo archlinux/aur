@@ -8,7 +8,7 @@ pkgbase = atmosphera-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = quickshell
-	depends = qt6-dbusqml>=0.8.0
+	depends = qt6-dbusqml>=0.9.0
 	depends = qt6-pipewirespectrum
 	depends = qt6-xdgiconqml-git
 	depends = imagemagick
