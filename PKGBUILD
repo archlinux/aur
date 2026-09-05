@@ -6,7 +6,7 @@ pkgname=(
   'cecli'
 )
 _gitpkgname=cecli
-pkgver=0.100.14
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='AI pair programming in your terminal - dwash96 fork of AIDER with TUI and MCP support'
 arch=('any')
@@ -92,7 +92,7 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('d6a1e76b37f5d4e4a42f427b9dcec08b858c3f3077985916d4b24b24e9d3bf9b276a89bb57f35552ca693cd636b1922abb3315bff7a8677c3755f6338216f7f4'
+sha512sums=('9d48d2b4b7830eeba98964d4cfb539eca3b7712019fbdd86110e61e55b5946c47058605f4c8576ee960245d00edee8d3cff3b5ef438168a748417c47df49d251'
             '5dee1bc48239fd1ba742eb6679fb25b388bae720f97421e587e0c0c13dda8a3f8f538645ba8a39e313f6a5e4a4ffc0cf23c1e98a42ed2146bf97b089d65987e5'
             '3bf2d225fbe8eecbb5312fbfa104e79284ebfb4da4a52d111537c7293e51b4cd87b5f34311f07528beda7015446a613abbd060f083bbdc563e184156877a20ba')
 
@@ -111,23 +111,23 @@ prepare() {
   # relevant to this package
   #
   # shellcheck disable=SC2016  # Not meant to expand
-  sed -i \
-    -e 's/"\([0-9]\)/">=\1/g' \
-    -e '$agem "jekyll-feed"' \
-    -e "s/\(^gem 'github-pages'.*\)/#\1/" \
-    -e 's/\(^gem "html-proofer".*\)/#\1/' \
-    cecli/website/Gemfile
+  #sed -i \
+  #  -e 's/"\([0-9]\)/">=\1/g' \
+  #  -e '$agem "jekyll-feed"' \
+  #  -e "s/\(^gem 'github-pages'.*\)/#\1/" \
+  #  -e 's/\(^gem "html-proofer".*\)/#\1/' \
+  #  cecli/website/Gemfile
 
   # Adjust base URL for documentation
-  sed -i \
-    -e 's|^\(url:\).*|\1 file:///usr/share/doc/'"${pkgbase}"'/html|' \
-    cecli/website/_config.yml
-  sed -i -E \
-    -e 's|="(https://aider.chat)?/|="file:///usr/share/doc/'"${pkgbase}"'/html/|' \
-    cecli/website/index.html
-  find cecli/website -name '*.md' -exec sed -i -E \
-    -e 's|]\((https://aider.chat)?/|](file:///usr/share/doc/'"${pkgbase}"'/html/|' \
-    '{}' +
+  #sed -i \
+  #  -e 's|^\(url:\).*|\1 file:///usr/share/doc/'"${pkgbase}"'/html|' \
+  #  cecli/website/_config.yml
+  #sed -i -E \
+  #  -e 's|="(https://aider.chat)?/|="file:///usr/share/doc/'"${pkgbase}"'/html/|' \
+  #  cecli/website/index.html
+  #find cecli/website -name '*.md' -exec sed -i -E \
+  #  -e 's|]\((https://aider.chat)?/|](file:///usr/share/doc/'"${pkgbase}"'/html/|' \
+  #  '{}' +
 
   # Include model-settings.yml in MANIFEST.in for wheel installation
   echo "include cecli/resources/model-settings.yml" >> MANIFEST.in
