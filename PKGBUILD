@@ -2,7 +2,7 @@
 
 pkgname=nightingale-server-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted Nightingale web server binary"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rzru/nightingale"

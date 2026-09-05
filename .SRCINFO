@@ -1,7 +1,7 @@
 pkgbase = nightingale-server-bin
 	pkgdesc = Self-hosted Nightingale web server binary
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rzru/nightingale
 	install = nightingale-server.install
 	arch = x86_64
