@@ -1,0 +1,27 @@
+pkgbase = ktile-git
+	pkgdesc = Custom window snap regions for KDE Plasma (KWin script + KCM) - git version
+	pkgver = 0.1.1.r109.3512368
+	pkgrel = 1
+	url = https://github.com/51n7/kTile
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = kconfig
+	makedepends = kcoreaddons
+	makedepends = ki18n
+	depends = kwin
+	depends = plasma-workspace
+	depends = kcmutils
+	depends = kirigami
+	depends = kdeclarative
+	provides = ktile
+	conflicts = ktile
+	options = !debug
+	source = ktile::git+https://github.com/51n7/kTile.git
+	sha256sums = SKIP
+
+pkgname = ktile-git
