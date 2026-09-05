@@ -10,7 +10,7 @@ _cratename=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Real-time ASCII camera for your terminal"
 
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('e823316e21950bca84ead9dafc2c78cd8315a949c9449bdbf732cefe0b186478')
+sha256sums=('2bb51c51aa043c6cab6a8eb0adf8d4c0a67ca73c60678fc97984fbdf5cf5b8ea')
 
 
 build() {

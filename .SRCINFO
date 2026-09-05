@@ -1,6 +1,6 @@
 pkgbase = ascii-cam
 	pkgdesc = Real-time ASCII camera for your terminal
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/cesarferreira/ascii-cam
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ascii-cam
 	depends = gcc-libs
 	provides = ascii-cam
 	conflicts = ascii-cam
-	source = ascii-cam-0.3.0.crate::https://crates.io/api/v1/crates/ascii-cam/0.3.0/download
-	sha256sums = e823316e21950bca84ead9dafc2c78cd8315a949c9449bdbf732cefe0b186478
+	source = ascii-cam-0.4.0.crate::https://crates.io/api/v1/crates/ascii-cam/0.4.0/download
+	sha256sums = 2bb51c51aa043c6cab6a8eb0adf8d4c0a67ca73c60678fc97984fbdf5cf5b8ea
 
 pkgname = ascii-cam
