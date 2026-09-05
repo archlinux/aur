@@ -3,7 +3,7 @@
 
 pkgname=socialstreamninja
 pkgver=0.4.18
-pkgrel=2
+pkgrel=3
 _release_tag=v0.4.18
 pkgdesc="Standalone version of Social Stream Ninja - Electron-based application for capturing social media streams"
 arch=('x86_64')
@@ -11,8 +11,8 @@ provides=('socialstreamninja')
 conflicts=('socialstreamninja-bin' 'socialstreamninja-git')
 url="https://github.com/steveseguin/ssn_app"
 license=('GPL3')
-depends=('fuse' 'zlib' 'glibc')
-optdepends=('gtk3: GTK integration' 'qt6-base: Qt6 framework intergration' 'wayland: A computer display server protocol' 'nss: Network security services' 'libxss: X11 screensaver extension' 'libnotify: Desktop notifications' 'libxtst: X11 testing')
+depends=('zlib' 'glibc' 'gtk3' 'nss' 'alsa-lib' 'libcups' 'mesa')
+optdepends=('noto-fonts: General-purpose font coverage' 'noto-fonts-emoji: Emoji icons' 'noto-fonts-cjk: Chinese, Japanese, and Korean text' 'qt6-base: Qt6 framework integration' 'wayland: A computer display server protocol' 'libxss: X11 screensaver extension' 'libnotify: Desktop notifications' 'libxtst: X11 testing')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/steveseguin/social_stream/releases/download/${_release_tag}/socialstreamninja_linux_v${pkgver}_x86_64.AppImage"
         "socialstreamninja.desktop")
 sha256sums=('1ed1406de5a75faae6bb3fc4572ac76bde44f78585c01f77c2eb888d98ff8c14'
