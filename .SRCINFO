@@ -1,0 +1,14 @@
+pkgbase = ros2-jazzy-backward_ros
+	pkgdesc = ROS 2 wrapper around backward-cpp for pretty stack traces on crashes
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/pal-robotics/backward_ros
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = ros2-jazzy
+	depends = elfutils
+	source = backward_ros-1.0.8.tar.gz::https://github.com/pal-robotics/backward_ros/archive/refs/tags/1.0.8.tar.gz
+	sha256sums = cfcfe150f2290cc5899b22463379c879c1c3eb0a09d3ad9b26f6b292d67b51a8
+
+pkgname = ros2-jazzy-backward_ros
