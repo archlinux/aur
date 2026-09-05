@@ -1,7 +1,7 @@
 pkgbase = whisparr-eros-develop
 	pkgdesc = Adult movie organizer/manager for usenet and torrent users (develop branch)
 	pkgver = 3.4.1.1571
-	pkgrel = 1
+	pkgrel = 2
 	url = https://whisparr.com
 	install = whisparr-eros.install
 	arch = x86_64
@@ -33,6 +33,8 @@ pkgbase = whisparr-eros-develop
 	optdepends = nzbhydra2: torznab and usenet indexer proxy
 	optdepends = prowlarr: torrent and usenet indexer proxy
 	optdepends = autobrr: irc, torrent and usenet indexer proxy
+	provides = whisparr-eros
+	conflicts = whisparr-eros
 	source = whisparr-eros-develop-3.4.1.1571.tar.gz::https://github.com/Whisparr/Whisparr-Eros/archive/refs/tags/v3.4.1-develop.1571.tar.gz
 	source = package_info
 	source = whisparr-eros.service

@@ -6,7 +6,7 @@ _pkgname=Whisparr
 __pkgname=Whisparr-Eros
 pkgver=3.4.1.1571
 _pkgver=${pkgver%.*}-develop.${pkgver##*.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Adult movie organizer/manager for usenet and torrent users (develop branch)'
 arch=(x86_64 aarch64 armv7h)
 url='https://whisparr.com'
@@ -38,6 +38,8 @@ optdepends=(
   'prowlarr: torrent and usenet indexer proxy'
   'autobrr: irc, torrent and usenet indexer proxy'
 )
+provides=(whisparr-eros)
+conflicts=(whisparr-eros)
 install=whisparr-eros.install
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/Whisparr/Whisparr-Eros/archive/refs/tags/v${_pkgver}.tar.gz"
