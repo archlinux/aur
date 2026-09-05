@@ -11,8 +11,9 @@ _WITH_NETWORKMANAGER=false
 _WITH_VALGRIND=true
 # _TOOLKIT='gtk2'
 _TOOLKIT='gtk3'
-_PROTECTEDHEADERSPATCHVARIANT=nopicturesplease # Use the patch from https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4426#c39, or a newer one sent e.g. manually via email.
+# _PROTECTEDHEADERSPATCHVARIANT=nopicturesplease # Use the patch from https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4426#c39, or a newer one sent e.g. manually via email.
 # _PROTECTEDHEADERSPATCHVARIANT=filippo          # Use the patch from https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4007#c4.
+_PROTECTEDHEADERSPATCHVARIANT=none             # Do not patch any protectedheaders patch. Used for debugging and workaround.
 
 _pkgname='claws-mail'
 case "${_TOOLKIT}" in
@@ -32,7 +33,7 @@ esac
 
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=4.3.1+206.r13691.20260203.450a0ac32
+pkgver=4.4.0+57.r13774.20260905.63a4906dd
 pkgrel=1
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
@@ -176,6 +177,9 @@ case "${_PROTECTEDHEADERSPATCHVARIANT}" in
     source+=("read_enc_subject.tar.gz::http://web.archive.org/web/20240721164805/https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2350")
     sha256sums+=('70b2595830dce73d85600190258389216b4aa613f88ebbedc6088a806c7b01f1')
   ;;
+  'none')
+    true
+  ;;
   *)
     error "Please edit the 'PKGBUILD' to specify a valid provider of the protected headers patch (variable '_PROTECTEDHEADERSPATCHVARIANT' at the beginning of the 'PKGBUILD')."
     exit 1
@@ -249,6 +253,9 @@ prepare() {
        printf '%s\n' "   > Applying patch '${_patch}' ..."
        patch -N -p1 --follow-symlinks -i "${_patch}"
      done
+   ;;
+   'none')
+     printf '%s\n' "   > Not applying any protectedheaders patch, since in the 'PKGBUILD' variable '_PROTECTEDHEADERSPATCHVARIANT' is set to '${_PROTECTEDHEADERSPATCHVARIANT}'."
    ;;
    *)
      error "Please edit the 'PKGBUILD' to specify a valid provider of the protected headers patch (variable '_PROTECTEDHEADERSPATCHVARIANT' at the beginning of the 'PKGBUILD')."
