@@ -1,6 +1,6 @@
 pkgbase = moraine
 	pkgdesc = Snapshot-based backup over SSH/rsync and rclone (CLI + GTK desktop app)
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/TheJonaz/moraine-backup
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = moraine
 	optdepends = gnupg: encrypted config export/import
 	optdepends = networkmanager: per-target VPN
 	options = !debug
-	source = moraine-0.2.2.tar.gz::https://github.com/TheJonaz/moraine-backup/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 4af5288f7c3d72e96f56e383018dcb23bb6ec29a4c53d58bdaffc3d43ad92c87
+	source = moraine-0.3.0.tar.gz::https://github.com/TheJonaz/moraine-backup/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 22cc3cc4469e3a9292379c16203a163354fe02d551e77e2af6bef0f0fe646890
 
 pkgname = moraine
