@@ -1,0 +1,28 @@
+pkgbase = fluxzy-bin
+	pkgdesc = Fully streamed MITM proxy to intercept, record and alter HTTP/1.1, H2, WebSocket and gRPC traffic (prebuilt)
+	pkgver = 1.39.47.8025
+	pkgrel = 1
+	url = https://github.com/haga-rak/fluxzy.core
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = gcc-libs
+	depends = glibc
+	depends = icu
+	depends = openssl
+	optdepends = libpcap: raw packet capture (-c/--include-dump, pcapng export)
+	optdepends = polkit: pkexec prompt used to elevate the fluxzynetcap capture helper
+	optdepends = libcap: getpcaps, used to detect already-granted capture capabilities
+	provides = fluxzy=1.39.47.8025
+	conflicts = fluxzy
+	noextract = fluxzy-bin-1.39.47.8025-x86_64.tar.gz
+	options = !debug
+	options = !strip
+	source = LICENSE-1.39.47.8025.md::https://raw.githubusercontent.com/haga-rak/fluxzy.core/v1.39.47.8025/src/Fluxzy/LICENSE.md
+	sha256sums = 7c1472911e95d77d49e02160933d8222fa187cac3599476f1c7d11983585445d
+	source_x86_64 = fluxzy-bin-1.39.47.8025-x86_64.tar.gz::https://github.com/haga-rak/fluxzy.core/releases/download/v1.39.47.8025/fluxzy-cli-1.39.47.8025-linux-x64.tar.gz
+	sha256sums_x86_64 = a5d7fcf5a40aaf46f111139c2601a559dd49023f664f35389d826acbed327e34
+	source_aarch64 = fluxzy-bin-1.39.47.8025-aarch64.tar.gz::https://github.com/haga-rak/fluxzy.core/releases/download/v1.39.47.8025/fluxzy-cli-1.39.47.8025-linux-arm64.tar.gz
+	sha256sums_aarch64 = c02774420aa67334de46a865d0cf5f726134455b14f67c919e9f0dc28e9c23f1
+
+pkgname = fluxzy-bin
