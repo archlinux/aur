@@ -1,13 +1,14 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
-pkgname=nemo-qml-plugin-configuration
+pkgname=qt5-nemo-qml-plugin-configuration
 pkgver=0.2.10
 pkgrel=1
-pkgdesc="Configuration plugin for Nemo Mobile"
+pkgdesc="Configuration plugin for Nemo Mobile (Qt5 version)"
 arch=('x86_64')
 url="https://github.com/sailfishos/nemo-qml-plugin-configuration"
 license=('BSD-3-Clause')
-depends=('mlite' 'qt5-declarative')
+depends=('qt5-mlite' 'qt5-declarative')
 makedepends=('git')
 source=("git+https://github.com/sailfishos/nemo-qml-plugin-configuration.git#tag=$pkgver")
 sha512sums=('a485793282b8f50b284e347a02b0ffbab42210573bd1bb61b68d0146d7e7277447bd74b311835a2633d2e98a6f8ead823c7d8330eb5318837b2280840609fda3')
