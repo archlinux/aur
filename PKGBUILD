@@ -3,7 +3,7 @@
 # VCS package: builds the tip of master. pkgver() derives the version from
 # git describe at build time; the value below only feeds the AUR web page.
 pkgname=actionlint-kjanat-git
-pkgver=1.14.0.r20.ga9f6ef7
+pkgver=1.14.0.r21.gde29823
 pkgrel=1
 pkgdesc='Static checker for GitHub Actions workflow files (kjanat fork, git master)'
 arch=('x86_64' 'aarch64' 'armv7h')
