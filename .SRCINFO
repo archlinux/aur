@@ -1,0 +1,16 @@
+pkgbase = ros2-jazzy-tf_transformations
+	pkgdesc = Reimplementation of the tf/transformations.py library for common Python spatial operations
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://index.ros.org/p/tf_transformations/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-colcon-common-extensions
+	makedepends = python-setuptools
+	depends = ros2-jazzy
+	depends = python-transforms3d
+	depends = python-numpy
+	source = tf_transformations-1.1.1.tar.gz::https://github.com/DLu/tf_transformations/archive/refs/tags/1.1.1.tar.gz
+	sha256sums = 1965cc33941e78a8f5469e8f243960d95264ca7e31ac4dd26577db7cfda3c427
+
+pkgname = ros2-jazzy-tf_transformations
