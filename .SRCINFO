@@ -1,0 +1,21 @@
+pkgbase = tauritavern-canary-bin
+	pkgdesc = A Tauri-based frontend for SillyTavern
+	pkgver = 20260904
+	pkgrel = 1
+	url = https://github.com/Darkatse/TauriTavern
+	arch = x86_64
+	license = AGPL-3.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = libsecret
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	provides = tauritavern
+	conflicts = tauritavern
+	options = !debug
+	source = https://github.com/Darkatse/TauriTavern/releases/download/Canary/TauriTavern-20260904-canary-linux-x64.deb
+	sha256sums = b52daafacb39d0a794bf809fdeccb3f4fefbcccda99ff6e72fdaa98558fc870f
+
+pkgname = tauritavern-canary-bin
