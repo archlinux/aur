@@ -1,0 +1,12 @@
+pkgbase = fstk
+	pkgdesc = Stack-based file & directory manager: modern cut/paste alternative to mv
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/archsyscall/fstk
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = fstk-0.2.3.tar.gz::https://codeload.github.com/archsyscall/fstk/tar.gz/refs/tags/v0.2.3
+	sha256sums = 93c2863dad02795c9b40af966ff28954465b86ec3f023f9c77e88529c1a84b46
+
+pkgname = fstk
