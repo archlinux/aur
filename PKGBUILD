@@ -4,10 +4,10 @@
 pkgname=circuit-mesh
 pkgver=1.0.1
 _zigver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Zero-Trust Network Engine"
 arch=('x86_64' 'aarch64')
-url="https://github.com/tsukumoakito/circuit-mesh"
+url="https://codeberg.org/tsukumoakito/circuit-mesh"
 license=('AGPL-3.0-only' 'custom:Commercial')
 depends=('openssl' 'tor' 'ipset')
 makedepends=('zig' 'scdoc')
