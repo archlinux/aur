@@ -1,0 +1,20 @@
+pkgbase = python-maestro-cli
+	pkgdesc = Play songs (or any audio) in the terminal, feature-full music player
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/PrajwalVandana/maestro-cli
+	arch = any
+	license = custom
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-mpv
+	depends = mpv
+	depends = python-mutagen
+	depends = python-requests
+	depends = youtube-dl
+	source = maestro-cli-2.0.5.tar.gz::https://codeload.github.com/PrajwalVandana/maestro-cli/tar.gz/refs/tags/2.0.5
+	sha256sums = a7a0952235dc21afb33f0d0da3623ac42f6d46dab4fbf08d1917f7ac51e70d36
+
+pkgname = python-maestro-cli
