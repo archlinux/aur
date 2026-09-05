@@ -3,17 +3,16 @@
 
 pkgname=lsfg-vk-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lossless Scaling Frame Generation on Linux"
 arch=("x86_64")
 url="https://lsfg-vk.dev/"
 license=('CC-BY-NC-ND-4.0')
 depends=(
-    'vulkan-icd-loader'
-    'gcc-libs'
-    'gtk4'
-    'libadwaita'
     'hicolor-icon-theme'
+    'qt6-base'
+    'qt6-declarative'
+    'vulkan-icd-loader'
 )
 makedepends=()
 provides=("${pkgname%-bin}=$pkgver")

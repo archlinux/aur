@@ -1,16 +1,15 @@
 pkgbase = lsfg-vk-bin
 	pkgdesc = Lossless Scaling Frame Generation on Linux
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lsfg-vk.dev/
 	install = lsfg-vk.install
 	arch = x86_64
 	license = CC-BY-NC-ND-4.0
-	depends = vulkan-icd-loader
-	depends = gcc-libs
-	depends = gtk4
-	depends = libadwaita
 	depends = hicolor-icon-theme
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = vulkan-icd-loader
 	provides = lsfg-vk=2.0.0
 	conflicts = lsfg-vk
 	noextract = lsfg-vk-2.0.0.tar.xz
