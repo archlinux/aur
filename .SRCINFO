@@ -1,0 +1,18 @@
+pkgbase = python-posce
+	pkgdesc = A note-taking toolkit for your command line
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/vdt/posce
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-pyperclip
+	depends = python-send2trash
+	source = posce-0.4.0.tar.gz::https://codeload.github.com/vdt/posce/tar.gz/refs/tags/0.4.0
+	sha256sums = d9744f698f70de4e0fbf13aaf84423fb5249f401b5cad1d5dddcce54fbefc4c9
+
+pkgname = python-posce
