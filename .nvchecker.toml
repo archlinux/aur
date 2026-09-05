@@ -1,0 +1,5 @@
+[shellroute-cli-bin]
+source = "github"
+github = "shellroute/shellroute-cli"
+use_latest_release = true
+prefix = "v"
