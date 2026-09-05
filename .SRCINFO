@@ -1,13 +1,13 @@
 pkgbase = moc-development
-	pkgdesc = Music On Console is an ncurses-based console audio player - latest version with patches to support PulseAudio, FluidSynth and newer FFmpeg
+	pkgdesc = Music On Console is an ncurses-based console audio player - latest version with patches that supports PulseAudio and FluidSynth, compiled against current FFmpeg
 	pkgver = 2.6_alpha3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://moc.daper.net/
 	install = moc-development.install
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = speex
-	makedepends = ffmpeg
+	makedepends = ffmpeg>=5.1
 	makedepends = taglib
 	makedepends = libmpcdec
 	makedepends = wavpack
@@ -24,7 +24,7 @@ pkgbase = moc-development
 	depends = fluidsynth
 	depends = libsmf
 	optdepends = speex: for using the speex plugin
-	optdepends = ffmpeg: for using the ffmpeg plugin
+	optdepends = ffmpeg>=5.1: for using the ffmpeg plugin
 	optdepends = taglib: for using the musepack plugin
 	optdepends = libmpcdec: for using the musepack plugin
 	optdepends = wavpack: for using the wavpack plugin
@@ -46,7 +46,7 @@ pkgbase = moc-development
 	sha256sums = 5585d541c6bc92103a71a044d096f16d872ac260a078d7d91b005f60939aefb4
 	sha256sums = 84cbc24e9c81f0ea699438bdb8827f1519c107fb963a8b59baf50e3a21f70252
 	sha256sums = 93e89cc4f4025f30a9b1b0c4c2603ca35950cf237dc0fc15f09759438232bc33
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 440fb84e22202fe4cee6f5cf5bf6485e59983d2c4b2003f9247fd987766130d3
+	sha256sums = 3657440c6c3ec48024ec7a3ef6a4d5e6cd08043a554acefba78ee7930c4a7927
 
 pkgname = moc-development

@@ -9,7 +9,19 @@
  *
  * Based on FFplay Copyright (c) 2003 Fabrice Bellard
  *
- * Updated for FFmpeg 5+ (works with FFmpeg 5.x through 9.x).
+ */
+
+/*
+ *		"The main problem is that external projects who want to
+ *		 support both FFmpeg and LibAV are just fucked, and this
+ *		 only because LibAV doesn't care a second about their users."
+ *
+ *		-- http://blog.pkh.me/p/13-the-ffmpeg-libav-situation.html
+ */
+
+/*
+ * The following code was updated for FFmpeg 5.1+
+ * (works with FFmpeg from 5.1 through 9.x, tested with FFmpeg 9.0.1).
  */
 
 #ifdef HAVE_CONFIG_H
@@ -334,9 +346,10 @@ static void ffmpeg_init ()
 	av_log_set_callback (ffmpeg_log_cb);
 #endif
 
-	/* Since FFmpeg 4.0/5.0 there is no need to register anything:
+	/* Removed calls to avcodec_register_all() and av_register_all(),
+	 * since from FFmpeg 5.0 there is no need to register anything:
 	 * codecs, formats and protocols are always available.  There is
-	 * also no lock manager to install any more. */
+	 * also no lock manager (av_lockmgr_register) to install any more. */
 
 	supported_extns = lists_strs_new (16);
 	load_audio_extns (supported_extns);
@@ -477,10 +490,10 @@ static bool is_seek_broken (struct ffmpeg_data *data)
 	return false;
 }
 
-/* Downmix multi-channel audio to stereo.  The old
- * AVCodecContext.request_channel_layout option is gone; its designated
+/* Downmix multi-channel audio to stereo.
+ * The old AVCodecContext.request_channel_layout option is gone; its designated
  * replacement is the "downmix" codec private option.  Decoders that do
- * not implement it simply ignore the request. */
+ * not implement it will simply ignore the request. */
 static void set_downmixing (struct ffmpeg_data *data)
 {
 	if (data->enc->ch_layout.nb_channels <= 2)
@@ -622,8 +635,8 @@ static void *ffmpeg_open_internal (struct ffmpeg_data *data)
 
 	data->stream = data->ic->streams[audio_ix];
 
-	/* Demuxers no longer embed a decoder context: build one from
-	 * the stream's codec parameters. */
+	/* Demuxers no longer embed a decoder context:
+	 * build one from the stream's codec parameters. */
 	data->enc = avcodec_alloc_context3 (NULL);
 	if (!data->enc)
 		fatal ("Can't allocate codec context!");
@@ -837,8 +850,8 @@ static int copy_or_buffer (struct ffmpeg_data *data, char *in, int in_len,
 	return out_len;
 }
 
-/* Convert a decoded frame to packed (interleaved) samples and hand
- * them over to copy_or_buffer(). */
+/* Convert a decoded frame to packed (interleaved) samples and
+ * hand them over to copy_or_buffer(). */
 static int move_frame_samples (struct ffmpeg_data *data, AVFrame *frame,
                                char *buf, int buf_len)
 {
@@ -875,7 +888,7 @@ static int move_frame_samples (struct ffmpeg_data *data, AVFrame *frame,
 
 /* Decode samples from packet data using the send/receive API.
  * The packet may be empty (data == NULL) to flush the decoder's
- * buffered samples at end of file. */
+ * buffered samples at the end of the file. */
 static int decode_packet (struct ffmpeg_data *data, AVPacket *pkt,
                           char *buf, int buf_len)
 {

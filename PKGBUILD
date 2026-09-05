@@ -4,20 +4,20 @@ pkgname='moc-development'
 _pkgname='moc'
 pkgver='2.6_alpha3'
 _pkgver='2.6-alpha3'
-pkgrel=2
-pkgdesc='Music On Console is an ncurses-based console audio player - latest version with patches to support PulseAudio, FluidSynth and newer FFmpeg'
+pkgrel=3
+pkgdesc='Music On Console is an ncurses-based console audio player - latest version with patches that supports PulseAudio and FluidSynth, compiled against current FFmpeg'
 arch=('x86_64')
 url="https://moc.daper.net/"
 license=('GPL-2.0-or-later')
 depends=('popt' 'libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file' 'sndio' 'fluidsynth' 'libsmf')
-makedepends=('speex' 'ffmpeg' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2')
-optdepends=('speex:      for using the speex plugin'
-	    'ffmpeg:     for using the ffmpeg plugin'
-	    'taglib:     for using the musepack plugin'
-	    'libmpcdec:  for using the musepack plugin'
-            'wavpack:    for using the wavpack plugin'
-            'faad2:      for using the aac plugin'
-	    'libmodplug: for using the modplug plugin')
+makedepends=('speex' 'ffmpeg>=5.1' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2')
+optdepends=('speex:       for using the speex plugin'
+	    'ffmpeg>=5.1: for using the ffmpeg plugin'
+	    'taglib:      for using the musepack plugin'
+	    'libmpcdec:   for using the musepack plugin'
+            'wavpack:     for using the wavpack plugin'
+            'faad2:       for using the aac plugin'
+	    'libmodplug:  for using the modplug plugin')
 provides=('moc')
 conflicts=('moc' 'moc-pulse' 'moc-git' 'moc-unstable' 'moc-fluidsynth-plugin')
 source=("https://ftp.daper.net/pub/soft/${_pkgname}/unstable/${_pkgname}-${_pkgver}.tar.xz"
@@ -30,13 +30,19 @@ sha256sums=('a27b8888984cf8dbcd758584961529ddf48c237caa9b40b67423fbfbb88323b1'
 	    '5585d541c6bc92103a71a044d096f16d872ac260a078d7d91b005f60939aefb4'
 	    '84cbc24e9c81f0ea699438bdb8827f1519c107fb963a8b59baf50e3a21f70252'
 	    '93e89cc4f4025f30a9b1b0c4c2603ca35950cf237dc0fc15f09759438232bc33'
-	    'SKIP'
-	    'SKIP')
+	    '440fb84e22202fe4cee6f5cf5bf6485e59983d2c4b2003f9247fd987766130d3'
+	    '3657440c6c3ec48024ec7a3ef6a4d5e6cd08043a554acefba78ee7930c4a7927')
 install="moc-development.install"
 
 prepare() {
     cd "${_pkgname}-${_pkgver}"
 
+    ### The rest of the build() section will be divided into several subsections:
+    ### necessary patches(1), PulseAudio support(2), FluidSynth plugin(3), patches for FFmpeg plugin compatibility with
+    ### FFmpeg versions>4.4 (4) and updating the configuration files (5).
+    ### Only steps 1 and 5 are necessary. If you don't want to do step (4), you will also need to specify correct ffmpeg version
+    ### among the dependencies above (ffmpeg 4.4) and ensure that pkg-config uses this older FFmpeg version in the build() phase
+    
     ## 1. Fix the compilation (fix all current errors):
     
     # first patch the FFmpeg 4.4 plugin in the file: 'decoder_plugins/ffmpeg/ffmpeg.c'
@@ -87,13 +93,16 @@ prepare() {
     sed -i '168a\fi' "$srcdir/${_pkgname}-${_pkgver}/configure.ac"
     sed -i '169a\' "$srcdir/${_pkgname}-${_pkgver}/configure.ac"
 
+    # last tiny detail: add "PULSEAUDIO" into the "SoundDriver" section in the example config file 'config.example.in'
+    sed -i '137 s/ALSA, JACK,/ALSA, JACK, PULSEAUDIO,/' "$srcdir/${_pkgname}-${_pkgver}/config.example.in"
+
 
     
     ## 3. Add the FluidSynth support (made by Joan Bruguera Micó)
     # Note: for some reason, it can't be included directly (can only be compiled separately as a shared library)
     #       ...probably because the moc-fulidsynth-plugin adds specific steps for compiling the libfluidsynth_decoder.so (as a standalone plugin)
     #       - that makes some of the following steps kind of redundant
-    #         (will needs to compile the libfluidsynth_decoder.so manually later - see the build() and package() sections)
+    #         (will needs to compile the libfluidsynth_decoder.so directly later - see the build() and package() sections)
 
     # copy the 'fluidsynth' decoder plugin from the moc-fluidsynth-plugin project:
     cp -r ../moc-fluidsynth-plugin-0.0.6/moc/decoder_plugins/fluidsynth "$srcdir/${_pkgname}-${_pkgver}/decoder_plugins"
@@ -128,20 +137,21 @@ prepare() {
 
     ## 4. Patch the FFmpeg decoder plugin so that its compatible with current version of FFmpeg:
 
-    # change the original file 'decoder_plugins/ffmpeg/ffmpeg.c' for the new one:
+    # change the original file 'decoder_plugins/ffmpeg/ffmpeg.c' for the new one - this is the core change
+    # it fixes the breaking API changes that happened between FFmpeg 4.4->5.1
     rm "$srcdir/${_pkgname}-${_pkgver}/decoder_plugins/ffmpeg/ffmpeg.c"
     cp ../ffmpeg.c "$srcdir/${_pkgname}-${_pkgver}/decoder_plugins/ffmpeg/"
 
-    # there are now several redundant probes in the file 'decoder_plugins/ffmpeg/ffmpeg.m4' (lines 47-53)
-    # but there is a much bigger problem too - we will need to ensure that MOC compiles against FFmpeg>=5.1
-    # (otherwise, it will fail to compile if FFmpeg4.4 is present).
-    # In short: change the file 'decoder_plugins/ffmpeg/ffmpeg.m4' for the new one:
+    # there are now several redundant probes in the makefile 'decoder_plugins/ffmpeg/ffmpeg.m4' (lines 47-53)
+    # but there is a bigger problem too - we will need to ensure that MOC compiles against FFmpeg version>=5.1
+    # (API-wise, this means libavcodec 59.24.100) - this essentially means rewrite of the whole file,
+    # so change the file 'decoder_plugins/ffmpeg/ffmpeg.c' for the new rewritten one:
     rm "$srcdir/${_pkgname}-${_pkgver}/decoder_plugins/ffmpeg/ffmpeg.m4"
     cp ../ffmpeg.m4 "$srcdir/${_pkgname}-${_pkgver}/decoder_plugins/ffmpeg/"
 
-
     
-    ## 5. final step - reconfigure the build system:
+    
+    ## 5. final step - reconfigure the configuration system:
     autoreconf -i -f
 }
 
