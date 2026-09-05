@@ -1,0 +1,21 @@
+pkgbase = ros2-jazzy-joint_state_publisher
+	pkgdesc = Package for publishing sensor_msgs/JointState messages for a robot described with URDF, for ROS 2 Jazzy
+	pkgver = 2.4.3
+	pkgrel = 1
+	url = https://github.com/ros/joint_state_publisher
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-colcon-common-extensions
+	depends = ros2-jazzy
+	source = ros2-jazzy-joint_state_publisher-2.4.3.tar.gz::https://github.com/ros/joint_state_publisher/archive/refs/tags/2.4.3.tar.gz
+	sha256sums = 7b13108c8b619371241d47b2e96d96d33609597a8df5a8041aa50716812a3e73
+
+pkgname = ros2-jazzy-joint_state_publisher
+	pkgdesc = Publishes sensor_msgs/JointState messages for a robot described with URDF, for ROS 2 Jazzy
+	depends = ros2-jazzy
+	depends = python-packaging
+
+pkgname = ros2-jazzy-joint_state_publisher_gui
+	pkgdesc = GUI for setting and publishing joint state values for a robot, for ROS 2 Jazzy
+	depends = ros2-jazzy
+	depends = ros2-jazzy-joint_state_publisher
