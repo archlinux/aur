@@ -8,8 +8,8 @@ pkgdesc="Standardized interfaces for processing data as a sequence of filters, f
 url="https://github.com/ros/filters"
 arch=('x86_64')
 license=('BSD-3-Clause')
-depends=('ros2-jazzy' 'boost-libs')
-makedepends=('cmake' 'boost')
+depends=('ros2-jazzy' 'boost')
+makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ros/filters/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('91f5d45f9f973103dcedecce13eea9a03c9e423ef60886250b37b8e45a2bbfc3')
 
