@@ -5,7 +5,7 @@ pkgname="${_pkgname}-git"
 # 2026-05-28: Seems to work with both OpenJDK 21 and OpenJDK 26. We do not enforce a specific Java version. But make sure that `archlinux-java` is set to a version where an SDK and not only a JRE is installed.
 #_jdkversion=21
 #_jdkversion=26
-pkgver=26.07.13+58.r2977.20260719.7eb2759e
+pkgver=26.08.08.1+187.r3261.20260905.985586da
 pkgrel=1
 pkgdesc="Matrix client for desktop written in Kotlin and using the Matrix Rust SDK, designed to be fully keyboard controllable, multi account, hirarchical spaces. Design in the tradition of SchildiChat clients."
 arch=(
@@ -127,7 +127,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' -e 's|-(sc)|.\1|' -e 's|-([0-9]+)$|+\1|')"
+  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' -e 's|-(sc)|.\1|' -e 's|-([0-9]+)$|+\1|' -e 's|-|.|g' )"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
