@@ -1,6 +1,6 @@
 pkgbase = python-pymodbus
 	pkgdesc = A fully featured modbus protocol stack in python
-	pkgver = 3.13.1
+	pkgver = 3.15.0
 	pkgrel = 1
 	url = https://github.com/pymodbus-dev/pymodbus
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-pymodbus
 	optdepends = python-click
 	optdepends = python-aiohttp
 	optdepends = python-typer
-	source = v3.13.1.tar.gz::https://github.com/pymodbus-dev/pymodbus/archive/refs/tags/v3.13.1.tar.gz
-	sha256sums = 3267a05bfe59924cf2eaa62e0b393c2e24a6d8128bfb1478ff7f7021a1d75b59
+	source = v3.15.0.tar.gz::https://github.com/pymodbus-dev/pymodbus/archive/refs/tags/v3.15.0.tar.gz
+	sha256sums = c9107fea58ea8ab8b9a29de3c34e0b4b2421a85bedc8a4900c91f1eed081bcc5
 
 pkgname = python-pymodbus
