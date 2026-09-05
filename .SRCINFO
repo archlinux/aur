@@ -1,0 +1,15 @@
+pkgbase = ros2-jazzy-xacro
+	pkgdesc = Xacro (XML Macros) - an XML macro language for ROS
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://index.ros.org/p/xacro/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = python-setuptools
+	depends = ros2-jazzy
+	depends = python-yaml
+	source = xacro-2.1.1.tar.gz::https://github.com/ros/xacro/archive/refs/tags/2.1.1.tar.gz
+	sha256sums = f9d94956574015427e59011d4ee113b206e9c10a27a0c01d4b08ee4268d76741
+
+pkgname = ros2-jazzy-xacro
