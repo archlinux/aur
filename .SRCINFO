@@ -1,0 +1,20 @@
+pkgbase = python-cysqlite
+	pkgdesc = Python SQLite driver
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/coleifer/cysqlite
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	depends = python
+	depends = cython
+	depends = sqlite
+	source = https://files.pythonhosted.org/packages/source/c/cysqlite/cysqlite-0.3.7.tar.gz
+	sha256sums = 90da285416ab66f43e76890a0311d5fbd99067baa9f5d2b61b30bc20059f94ae
+
+pkgname = python-cysqlite
