@@ -1,0 +1,14 @@
+pkgbase = obs-plugin-shadertastic-bin
+	pkgdesc = An OBS plugin to add amazing effects for your stream
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/xurei/shadertastic
+	arch = x86_64
+	license = GPL-2.0
+	depends = obs-studio
+	provides = obs-plugin-shadertastic=1.2.0
+	options = !debug
+	source = https://github.com/xurei/shadertastic/releases/download/1.2.0/shadertastic-1.2.0-x86_64-linux-gnu.deb
+	sha256sums = ee131d96294d5be3e37cc27bbbb7d2d42ff5b766144106dedf0d7085f547e850
+
+pkgname = obs-plugin-shadertastic-bin
