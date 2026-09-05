@@ -31,11 +31,11 @@ makedepends=(
 checkdepends=('appstream')
 optdepends=(
   'gamemode: Feral GameMode daemon (for the GameMode tweak)'
-  'vulkan-low-latency-layer: Korthos low latency layer'
   'lsfg-vk: Lossless Scaling'
   'protontricks: Proton prefix management'
   'vkbasalt: Vulkan post-processing effects'
   'vksumi: Alternative Vulkan post-processor with 15 tunable parameters'
+  'vulkan-low-latency-layer: Korthos low latency layer'
   'zenergy-dkms: Displays AMD CPU power metrics in MangoHud'
   'zenity: FGMod GUI'
 )
