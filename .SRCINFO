@@ -1,0 +1,12 @@
+pkgbase = vicut
+	pkgdesc = A CLI text processor that uses Vim commands to transform text and extract fields
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/km-clay/vicut
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = vicut-0.4.2.tar.gz::https://codeload.github.com/km-clay/vicut/tar.gz/refs/tags/v0.4.2
+	sha256sums = 8648e99839764ea769ecdf94f36b52b6b950da4ba131ad150090441c2b487e8c
+
+pkgname = vicut
