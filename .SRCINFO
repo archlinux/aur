@@ -1,6 +1,6 @@
 pkgbase = photomark
 	pkgdesc = Photo EXIF watermark and frame studio
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/vectorfruit/photomark
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = photomark
 	depends = openssl
 	depends = pango
 	depends = webkit2gtk-4.1
-	source = photomark-1.4.3.tar.gz::https://github.com/vectorfruit/photomark/archive/refs/tags/v1.4.3.tar.gz
-	sha256sums = 7da16ad1dc2b055fee98e87294ed4dcbbc3aa6232c776af8299473835510509b
+	source = photomark-1.5.0.tar.gz::https://github.com/vectorfruit/photomark/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = da32b8cb9fddf5833222edef8637f03e4a22554f50e6cbca661e07f52a051aa9
 
 pkgname = photomark
