@@ -1,7 +1,7 @@
 # Maintainer: Jon Kinney <jon@headway.io>
 pkgname=vernier-git
 _pkgname=vernier
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Cross-platform pixel-measurement overlay in Rust (latest main)"
 arch=('x86_64' 'aarch64')
@@ -14,6 +14,7 @@ license=('MIT' 'Apache-2.0')
 # (same UX reason as the source PKGBUILD).
 options=(!lto !debug)
 depends=(
+    'grim'
     'fontconfig'
     'freetype2'
     'libglvnd'
@@ -27,7 +28,6 @@ makedepends=(
     'git'
 )
 optdepends=(
-    'grim: capture held-rect regions via wlr-screencopy'
     'slurp: region selection for the external screenshot shortcut'
     'wl-clipboard: copy screenshots / measurements to the clipboard'
     'libnotify: post-capture notifications'
