@@ -1,46 +1,76 @@
-# Maintainer: Magnus Lång <magnus.lang@it.uu.se>
-pkgname=nidhugg-git
-pkgver=0.2.r152.ea22422
-pkgrel=2
-pkgdesc="A bug-finding tool for concurrency and weak-memory bugs in C and C++ programs"
-arch=('x86_64' 'i686')
-url="https://github.com/nidhugg/nidhugg"
-license=('GPL')
-depends=('python' 'clang')
-makedepends=('llvm'
-             'boost') # For check() only
-provides=("nidhugg=$pkgver")
-conflicts=('nidhugg')
-source=("git://github.com/nidhugg/nidhugg.git")
-sha256sums=('SKIP')
+# Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
+# Contributor: Magnus Lång <magnus.lang@it.uu.se>
+
+_pkgname='nidhugg'
+pkgname="${_pkgname}-git"
+pkgver=0.4.r118.ce12f523
+pkgrel=1
+pkgdesc='A bug-finding tool for concurrency and weak-memory bugs in C and C++ programs'
+arch=('x86_64')
+url="https://github.com/nidhugg/${_pkgname}"
+license=('GPL-3.0-or-later')
+depends=(
+	'clang19'
+	'hwloc'
+	'libffi'
+	'llvm19-libs'
+	'python'
+)
+makedepends=(
+	'boost'
+	'git'
+	'llvm19'
+)
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+source=(
+	"git+${url}.git"
+	'llvm19-command-line.patch'
+)
+b2sums=(
+	'SKIP'
+	'09ffb83cdcfba933ec5de7ff60529c6e12c8416d71e5c9e5d518d124f21dfa09bf0cf1215a9100bd94aad29836d4c50939fd8c356c50e14180a1c479f701860a'
+)
 
 pkgver() {
-  cd nidhugg
-  # Versions are tracked not with git, but by updating the configure.ac file.
-  _vercommit="$(git blame --porcelain configure.ac | head -1 | cut -d' ' -f1)"
-  printf "%s.r%s.%s" \
-         "$(head -1 configure.ac | sed 's/AC_INIT(\[Nidhugg\], \[\([^]]*\)\].*/\1/')" \
-         "$(git rev-list --count $_vercommit..HEAD)" \
-         "$(git rev-parse --short $_vercommit)"
+	cd -- "${_pkgname}" || return 1
+	local version_commit
+	local version
+
+	version_commit="$(git blame --porcelain configure.ac | sed -n '1s/ .*//p')"
+	[[ -n "${version_commit}" ]] || return 1
+	version="$(sed -n '1s/^AC_INIT(\[Nidhugg\], \[\([^]]*\)\].*/\1/p' configure.ac)"
+	[[ -n "${version}" ]] || return 1
+
+	printf '%s.r%s.%s' \
+		"${version}" \
+		"$(git rev-list --count "${version_commit}"..HEAD)" \
+		"$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd -- "${_pkgname}" || return 1
+	patch -Np1 -i "${srcdir}/llvm19-command-line.patch"
+	autoreconf -fi
 }
 
 build() {
-  cd nidhugg
-  autoreconf -fi
-  export CXXFLAGS="$CXXFLAGS -isystem /usr/lib/libffi-3.2.1/include/"
-  export CFLAGS="$CFLAGS -isystem /usr/lib/libffi-3.2.1/include/"
-  ./configure --prefix=/usr
-  make
+	cd -- "${_pkgname}" || return 1
+	./configure \
+		--prefix=/usr \
+		--disable-popcnt \
+		--with-llvm=/usr/lib/llvm19 \
+		--with-clang=/usr/lib/llvm19/bin/clang \
+		--with-clangxx=/usr/lib/llvm19/bin/clang++
+	make
 }
 
 check() {
-  cd "$srcdir/nidhugg"
-  make test
+	cd -- "${_pkgname}" || return 1
+	PATH="${PWD}/src:${PATH}" make test
 }
 
 package() {
-  cd "$srcdir/nidhugg"
-  make DESTDIR="$pkgdir/" install
+	cd -- "${_pkgname}" || return 1
+	make DESTDIR="${pkgdir}" install
 }
-
-# vim:set ts=2 sw=2 et:

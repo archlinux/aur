@@ -1,0 +1,27 @@
+--- a/src/Configuration.cpp
++++ b/src/Configuration.cpp
+@@ -33,8 +33,7 @@
+
+ llvm::cl::list<std::string>
+ cl_program_arguments(llvm::cl::desc("[-- <program arguments>...]"),
+-                     llvm::cl::Positional,
+-                     llvm::cl::ZeroOrMore);
++                     llvm::cl::ConsumeAfter);
+ llvm::cl::opt<std::string>
+ cl_transform("transform",llvm::cl::init(""),
+              llvm::cl::desc("Transform the input module and store it (as LLVM assembly) to OUTFILE."),
+--- a/src/nidhuggc.py
++++ b/src/nidhuggc.py
+@@ -250,7 +250,12 @@
+     return outputfname
+
+ def run_nidhugg(nidhuggcargs,nidhuggargs,irfname):
+-    cmd = [NIDHUGG,irfname]+nidhuggargs
++    if '--' in nidhuggargs:
++        program_args = nidhuggargs.index('--')
++        cmd = ([NIDHUGG] + nidhuggargs[:program_args] + [irfname]
++               + nidhuggargs[program_args:])
++    else:
++        cmd = [NIDHUGG]+nidhuggargs+[irfname]
+     if gdb: cmd = [GDB,'--args'] + cmd
+     return run(cmd)

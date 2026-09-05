@@ -1,19 +1,23 @@
 pkgbase = nidhugg-git
 	pkgdesc = A bug-finding tool for concurrency and weak-memory bugs in C and C++ programs
-	pkgver = 0.2.r152.ea22422
-	pkgrel = 2
+	pkgver = 0.4.r118.ce12f523
+	pkgrel = 1
 	url = https://github.com/nidhugg/nidhugg
 	arch = x86_64
-	arch = i686
-	license = GPL
-	makedepends = llvm
+	license = GPL-3.0-or-later
 	makedepends = boost
+	makedepends = git
+	makedepends = llvm19
+	depends = clang19
+	depends = hwloc
+	depends = libffi
+	depends = llvm19-libs
 	depends = python
-	depends = clang
-	provides = nidhugg=0.2.r152.ea22422
+	provides = nidhugg=0.4.r118.ce12f523
 	conflicts = nidhugg
-	source = git://github.com/nidhugg/nidhugg.git
-	sha256sums = SKIP
+	source = git+https://github.com/nidhugg/nidhugg.git
+	source = llvm19-command-line.patch
+	b2sums = SKIP
+	b2sums = 09ffb83cdcfba933ec5de7ff60529c6e12c8416d71e5c9e5d518d124f21dfa09bf0cf1215a9100bd94aad29836d4c50939fd8c356c50e14180a1c479f701860a
 
 pkgname = nidhugg-git
-
