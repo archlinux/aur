@@ -2,7 +2,7 @@
 
 pkgname=spaceshot
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A batteries-included screenshot tool for wlroots-compatible Wayland compositors"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mabi19/spaceshot"
@@ -15,6 +15,9 @@ depends=(
     'pango'
     'libxkbcommon'
     'wayland'
+    'egl-wayland'
+    'xxhash'
+    'libglvnd'
     'dbus'
 )
 makedepends=(
