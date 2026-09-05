@@ -1,6 +1,6 @@
 pkgbase = devserial-bin
 	pkgdesc = MCP server bridging serial hardware to LLMs via SQLite-backed buffer
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/metaneutrons/devserial
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = devserial-bin
 	provides = devserial
 	conflicts = devserial
 	options = !strip
-	source_x86_64 = https://github.com/metaneutrons/devserial/releases/download/devserial-v0.1.9/devserial-0.1.9-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 9c0c3dad4882ff2bd1076288008edf50a39d2cd5a1f007d54ea4887a19e5fb0d
-	source_aarch64 = https://github.com/metaneutrons/devserial/releases/download/devserial-v0.1.9/devserial-0.1.9-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = f82b9740719facb40458bc32c2d818f37fa03222490b820034b4feb1dda45523
+	source_x86_64 = https://github.com/metaneutrons/devserial/releases/download/devserial-v0.1.10/devserial-0.1.10-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9b638aeaa4bb88050d1603fd24dfef60e11f846b8cbcb2256401dcd2d0b9c857
+	source_aarch64 = https://github.com/metaneutrons/devserial/releases/download/devserial-v0.1.10/devserial-0.1.10-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b794cb3fd67db5256130eab4664a9e0ba2b267470494700ef0159cc8f3617265
 
 pkgname = devserial-bin
