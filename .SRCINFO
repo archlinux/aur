@@ -1,0 +1,18 @@
+pkgbase = python-shallow-backup
+	pkgdesc = Git-integrated backup tool for dotfiles, packages, and app configs
+	pkgver = 6.6
+	pkgrel = 1
+	url = https://github.com/alichtman/shallow-backup
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-rich
+	depends = python-inquirer
+	depends = python-pyyaml
+	source = shallow-backup-6.6.tar.gz::https://codeload.github.com/alichtman/shallow-backup/tar.gz/refs/tags/v6.6
+	sha256sums = b370011004d29230860c99b4c1d76320a4bdf1e39955ebf49857957c4214c3e1
+
+pkgname = python-shallow-backup
