@@ -2,7 +2,7 @@
 pkgname=python-python-crontab
 _name=python-crontab
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Crontab module for reading and writing crontab files and accessing the system cron automatically and simply using a direct API."
 arch=('any')
 url="https://gitlab.com/doctormo/python-crontab"
@@ -40,7 +40,7 @@ check() {
 
   # test_07_non_posix_shell - only for Windows
   # test_04_schedule_ten - broken test, scheduler returns 0 instead of expected 1-2
-  test-env/bin/python -I -m pytest -k "not test_07_non_posix_shell and not test_04_schedule_ten"
+  LANG=en_US.UTF-8 test-env/bin/python -I -m pytest -k "not test_07_non_posix_shell and not test_04_schedule_ten"
 }
 
 package() {
