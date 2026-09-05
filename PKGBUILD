@@ -1,5 +1,5 @@
 pkgname=orion-beta
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Orion Beta web browser using native Arch Linux libraries"
 arch=('x86_64')
