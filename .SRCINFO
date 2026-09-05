@@ -1,16 +1,19 @@
 pkgbase = blunderdb-bin
 	pkgdesc = Backgammon blunder analysis tool (precompiled, webkit2gtk-4.1)
-	pkgver = 0.35.0
+	pkgver = 0.36.0
 	pkgrel = 1
 	url = https://github.com/kevung/blunderDB
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	provides = blunderdb
 	conflicts = blunderdb
 	options = !strip
-	source = blunderdb-0.35.0.tar.gz::https://github.com/kevung/blunderDB/releases/download/0.35.0/blunderDB-linux-webkit2gtk-4.1-0.35.0.tar.gz
-	sha256sums = 90bc93ac5c28ac0a0f5b37dee7bbf537066a599249e35d68478b8ba2bd7522cd
+	source_x86_64 = blunderdb-0.36.0-x86_64.tar.gz::https://github.com/kevung/blunderDB/releases/download/0.36.0/blunderDB-linux-webkit2gtk-4.1-0.36.0.tar.gz
+	sha256sums_x86_64 = cad18d56f8e9f16589637b1a7cd3179f18c29638c5d96318d6443c845e661d71
+	source_aarch64 = blunderdb-0.36.0-aarch64.tar.gz::https://github.com/kevung/blunderDB/releases/download/0.36.0/blunderDB-linux-arm64-webkit2gtk-4.1-0.36.0.tar.gz
+	sha256sums_aarch64 = 6e0f7008f1ca1baa6947a749271286483453d6f86df16b36179dd22991ddde10
 
 pkgname = blunderdb-bin
