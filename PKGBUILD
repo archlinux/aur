@@ -20,7 +20,6 @@ url=${_ghurl}
 license=('GPL-2.0')
 
 provides=("${_appname}")
-conflicts=("${pkgname%-bin}")
 
 depends=('pacman' 'pacman-contrib')
 optdepends=('yay' 'paru' 'reflector')
