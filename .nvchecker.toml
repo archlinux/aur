@@ -1,0 +1,5 @@
+[ghost-cli]
+source = "github"
+github = "TryGhost/Ghost-CLI"
+use_latest_release = true
+prefix = "v"
