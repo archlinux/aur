@@ -1,4 +1,6 @@
 # Maintainer: falser <zjf_0731@163.com>
+# Co-Maintainer: rafaeloledo <rafaeloliveiraledo@gmail.com>
+
 pkgname=grok-bot-bin
 pkgver=0.43.0
 pkgrel=1
