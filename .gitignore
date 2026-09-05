@@ -1,0 +1,34 @@
+# Arch build artifacts
+pkg/
+src/
+*.pkg.tar.*
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# Build files
+*.log
+*.out
+
+# Downloaded sources
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.zip
+
+# makepkg
+*.sig
+*.BUILDINFO
+*.MTREE
+*.PKGINFO
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db

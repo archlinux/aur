@@ -1,7 +1,7 @@
 # Maintainer: eggy <d7chen@uwaterloo.ca>
 
 pkgname=nightingale-server-bin
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Self-hosted Nightingale web server binary"
 arch=('x86_64' 'aarch64')
@@ -52,7 +52,7 @@ sha256sums_aarch64=('SKIP')
 package() {
     # Binary
     install -Dm755 \
-        "${srcdir}/nightingale-server" \
+        "${srcdir}/nightingale" \
         "${pkgdir}/usr/bin/nightingale-server"
 
 
