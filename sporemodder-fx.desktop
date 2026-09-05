@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=SporeModder FX
+Comment=Spore data modding tool
+Exec=sporemodder-fx
+Icon=sporemodder-fx
+Terminal=false
+Categories=Development;
+StartupWMClass=sporemodder.MainApp
+Keywords=Spore;mod;modding;package;

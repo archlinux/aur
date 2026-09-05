@@ -1,0 +1,8 @@
+post_install() {
+    cat <<'EOF'
+SporeModder FX keeps its settings, mod bundles and default Projects folder in
+$XDG_DATA_HOME/sporemodder-fx (~/.local/share/sporemodder-fx by default).
+Decline the editor's own "update available" dialog: updates arrive through
+this package, and the launcher restores the packaged version on every start.
+EOF
+}

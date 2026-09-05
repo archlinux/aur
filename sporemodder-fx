@@ -1,0 +1,29 @@
+#!/bin/sh
+# SporeModder FX treats the directory holding its jar as its "program folder": it reads the
+# registries and styles from there and writes config.properties, ModBundles.txt,
+# ProjectLastActiveTimes.txt and the default Projects folder next to the jar. Java
+# canonicalizes the jar path, so a symlinked jar would resolve back to /usr/share. The jar
+# therefore runs from a per-user copy, with the read-only assets symlinked in beside it.
+# Runs the editor without arguments and the smfx command line otherwise.
+set -eu
+
+share=/usr/share/sporemodder-fx
+data="${XDG_DATA_HOME:-$HOME/.local/share}/sporemodder-fx"
+
+# Java falls back to a read-only system prefs dir under java.home unless this one exists
+mkdir -p "$data/.java/.systemPrefs"
+cmp -s "$share/SporeModderFX.jar" "$data/SporeModderFX.jar" ||
+    cp "$share/SporeModderFX.jar" "$data/SporeModderFX.jar"
+for asset in "$share"/*; do
+    name=${asset##*/}
+    case $name in
+        SporeModderFX.jar) continue ;;
+        # The editor saves its scratch effect project in place, so it needs a writable copy
+        "Effect Editor") [ -e "$data/$name" ] || cp -r "$asset" "$data/$name"; continue ;;
+    esac
+    ln -sfn "$asset" "$data/$name"
+done
+
+exec "${JAVA_HOME:+$JAVA_HOME/bin/}java" \
+    -Djava.util.prefs.systemRoot="$data/.java" \
+    -jar "$data/SporeModderFX.jar" "$@"

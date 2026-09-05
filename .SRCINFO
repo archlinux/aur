@@ -1,0 +1,34 @@
+pkgbase = sporemodder-fx-bin
+	pkgdesc = Spore data modding tool: unpack, edit and repack game packages with a JavaFX editor or the smfx CLI (prebuilt jar)
+	pkgver = 2.2.27
+	pkgrel = 1
+	url = https://github.com/Spore-Community/SporeModder-FX
+	install = sporemodder-fx-bin.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = zip
+	depends = java-runtime>=11
+	depends = gtk3
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = libx11
+	depends = libxtst
+	depends = libglvnd
+	depends = freetype2
+	depends = pango
+	optdepends = meld: compare a mod file against its original from the editor
+	optdepends = git: publish mod bundles to GitHub from the editor
+	provides = sporemodder-fx
+	conflicts = sporemodder-fx
+	options = !debug
+	source = sporemodder-fx-2.2.27.zip::https://github.com/Spore-Community/SporeModder-FX/releases/download/v2.2.27/SporeModder.FX.zip
+	source = sporemodder-fx
+	source = sporemodder-fx.desktop
+	source = winmerge-shim
+	sha256sums = bd7908996b8022cd7452edefbdb2d62dbbe626d1e22962e83fe30def215e6669
+	sha256sums = b02822a931fc84598f0f8152bce10250890e99a26a5a81a810230827a25e7415
+	sha256sums = d3d22def1761610a736a5fb7ffd5d85f2b17a95f810574bccce69b1eec55e107
+	sha256sums = 8d475e055bdef5b9eb18f13eab13b8ae498e284e00ec4f802aa0e8c32c281154
+
+pkgname = sporemodder-fx-bin

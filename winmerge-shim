@@ -1,0 +1,4 @@
+#!/bin/sh
+# The editor's "Compare" action runs <program folder>/WinMerge/WinMergeU.exe with the original
+# and the modified file. On Linux that path resolves to this shim, which opens a native diff tool.
+exec "${SPOREMODDER_FX_DIFF_TOOL:-meld}" "$@"
