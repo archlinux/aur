@@ -2,7 +2,7 @@
 
 pkgname=btrfs-snapshots-git
 pkgver=0.11.0.r0.2e828e1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
 url="https://github.com/jmcantrell/${pkgname%-git}"
