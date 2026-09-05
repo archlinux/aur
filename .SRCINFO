@@ -5,15 +5,15 @@ pkgbase = libgourou
 	url = https://forge.soutade.fr/soutade/libgourou
 	arch = any
 	license = LGPL-3.0-or-later AND BSD-3-Clause
-	depends = glibc
-	depends = libgcc
-	depends = libstdc++
-	depends = updfparser
-	depends = pugixml
-	depends = curl
-	depends = openssl>=3
-	depends = libzip
-	depends = zlib
+	makedepends = glibc
+	makedepends = libgcc
+	makedepends = libstdc++
+	makedepends = updfparser
+	makedepends = pugixml
+	makedepends = curl
+	makedepends = openssl>=3
+	makedepends = libzip
+	makedepends = zlib
 	source = libgourou-0.8.10.tar.gz::https://forge.soutade.fr/soutade/libgourou/archive/v0.8.10.tar.gz
 	sha256sums = 4ea8d614b6731b9c3b5280196a4b94f8a588cb932f2ed7d27cf05c18c969f099
 

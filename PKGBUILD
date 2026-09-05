@@ -8,7 +8,7 @@ pkgdesc="Free implementation of Adobe's ADEPT protocol used to add DRM on ePub/P
 arch=('any')
 url="https://forge.soutade.fr/soutade/libgourou"
 license=('LGPL-3.0-or-later AND BSD-3-Clause')
-depends=(
+makedepends=(
     'glibc'
     'libgcc'
     'libstdc++'
