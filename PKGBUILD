@@ -3,7 +3,7 @@
 _pyname="loudify"
 _pkgname="python-${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=1.0+9.r60.20251217.a1f8148
+pkgver=1.0+11.r62.20260403.11be80e
 pkgrel=1
 pkgdesc="LoRa cloudified. This is a python package to run a GNU Radio flow graph in a client <-> broker <-> worker context. The idea behind this project is to get a Centralized Radio Access Network (CRAN) for LoRa."
 arch=('any')
