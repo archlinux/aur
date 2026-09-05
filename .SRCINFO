@@ -1,0 +1,22 @@
+pkgbase = python-zev
+	pkgdesc = Look up shell commands using natural language (LLM-powered)
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/dtnewman/zev
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-openai
+	depends = python-platformdirs
+	depends = python-pydantic
+	depends = python-pyperclip
+	depends = python-dotenv
+	depends = python-questionary
+	depends = python-rich
+	source = zev-0.11.1.tar.gz::https://codeload.github.com/dtnewman/zev/tar.gz/refs/tags/v0.11.1
+	sha256sums = df65698442d5ed86e7a77914d046cc1b8ba3f202aa0499b39c7f9de81cea4cf5
+
+pkgname = python-zev
