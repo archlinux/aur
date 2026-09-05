@@ -3,7 +3,7 @@
 _gitname="meshcore-open"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
-pkgver=alpha7+134.r649.20260409.cac6abf
+pkgver=alpha9+217.r962.20260903.dbd7f2aa
 pkgrel=1
 pkgdesc="Open-source Flutter client for MeshCore LoRa mesh networking devices."
 groups=('meshcore')
@@ -38,16 +38,25 @@ depends=(
   libpangocairo-1.0.so
 )
 makedepends=(
+  # To retrieve the source:
   'git'
 
-  # the Flutter tool
-  'flutter-tool>=3.41'         # Recommended: Use 'arch4edu' repository (https://wiki.archlinux.org/title/Unofficial_user_repositories#arch4edu).
-  'dart>=3.11'                 # Recommended: Use 'extra/dart'.
-  'ninja'
-  # the Flutter linux files
-  'flutter-target-linux>=3.41' # Recommended: Use 'arch4edu' repository (https://wiki.archlinux.org/title/Unofficial_user_repositories#arch4edu).
-  # used for packaging
+  # Used for packaging
   'cmake'
+  'ninja'
+
+  ## Flutter and dart recommendations:
+  # 
+  #  Recommended in 2026-09:
+  #  Use aur/flutter-bin (https://aur.archlinux.org/packages/flutter-bin) or chaotic-aur/flutter-bin (https://aur.chaotic.cx/ | https://aur.chaotic.cx/stats/search?search=flutter-bin | https://builds.garudalinux.org/repos/chaotic-aur/x86_64/#:~:text=flutter-bin).
+  # 
+  #  Recommended in beginning of 2026:
+  #  Use 'arch4edu' repository (https://wiki.archlinux.org/title/Unofficial_user_repositories#arch4edu).
+  #  This later errored out with "Wrong full snapshot version, expected '0451907c2eaa8467e848c0067bfe8ed4' found '78da37fed6bf1489361a312568249f3f'" or so.
+  'flutter-tool'         # >=3.41. # Should be a versioned dependency, but not specifying now since `flutter-bin` does not has a versioned provides entry as of 2026-09-05, see https://aur.archlinux.org/packages/flutter-bin#comment-1084386.
+  'dart'                 # >=3.11. # Should be a versioned dependency, but not specifying now since `flutter-bin` does not has a versioned provides entry as of 2026-09-05, see https://aur.archlinux.org/packages/flutter-bin#comment-1084386.
+  # the Flutter linux files
+  'flutter-target-linux' # >=3.41. # Should be a versioned dependency, but not specifying now since `flutter-bin` does not has a versioned provides entry as of 2026-09-05, see https://aur.archlinux.org/packages/flutter-bin#comment-1084386.
 
   # dependency libraries
   'glib2'
