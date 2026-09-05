@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your_email@example.com>
 pkgname=phantimer
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A ghost timer window spawner for Hyprland"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'hyprland') # Hyprland is a runtime dependency
 optdepends=('foot: The default terminal emulator used')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7c0dfac53a162701fd5c830dc41a06d1e06117b7aef186c67c2f9659eec868aa')
+sha256sums=('0243932077eb1dec07fa3004047afb231f4ac092ec3206a360a5b226549562fa')
 
 prepare() {
   cd "$pkgname-$pkgver"
