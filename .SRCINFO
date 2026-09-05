@@ -1,0 +1,20 @@
+pkgbase = csope-git
+	pkgdesc = Fork of cscope (C source code browser), actively maintained
+	pkgver = r329.f2efe38
+	pkgrel = 1
+	url = https://github.com/agvxov/csope
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = flex
+	makedepends = pkgconf
+	depends = ncurses
+	depends = readline
+	provides = csope
+	conflicts = csope
+	source = csope::git+https://github.com/agvxov/csope.git
+	sha256sums = SKIP
+
+pkgname = csope-git
