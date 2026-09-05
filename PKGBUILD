@@ -1,6 +1,6 @@
 # Maintainer: nebiki <alexandriagustaf@gmail.com>
 pkgname=cbzview-git
-pkgver=r1.0000000
+pkgver=r10.265d71f
 pkgrel=1
 pkgdesc="A fast, local only  Linux CBZ comic & manga viewer with mmap, PBO streaming, and bicubic screentone anti-aliasing"
 arch=('x86_64' 'aarch64')
