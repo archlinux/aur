@@ -1,7 +1,7 @@
 pkgbase = dptf-git
 	pkgdesc = Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)
-	pkgver = 9.0.11402+1.build38022.r101.20250820.3adb335c
-	pkgrel = 2
+	pkgver = 9.0.11402+2.build38022.r102.20260831.46869954
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/dptf
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dptf-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libedit
-	provides = dptf=9.0.11402+1.build38022.r101.20250820.3adb335c
+	provides = dptf=9.0.11402+2.build38022.r102.20260831.46869954
 	conflicts = dptf
 	options = !lto
 	backup = etc/dptf/dsp.dv
