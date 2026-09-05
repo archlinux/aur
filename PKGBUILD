@@ -1,6 +1,6 @@
 # Maintainer: Yasir <https://github.com/sirrryasir>
 pkgname=shotdock
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Automated window framing, soft drop shadows, and studio screen capture for Wayland"
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,11 @@ optdepends=(
     'wf-recorder: Screen and region video recording'
     'satty: Screenshot annotation editor'
     'swappy: Screenshot annotation editor fallback'
+    'rofi: Interactive display and window recording menu'
 )
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c18659d37eba40c6b00fc3b5dc3e2312a10e974a0d1b519713edc40ce7ad0f87')
+sha256sums=('e755405e8453e9850074b41f53c68912632543315a71228155ef6c2d619cd5cf')
 
 prepare() {
     cd "$pkgname-$pkgver"
