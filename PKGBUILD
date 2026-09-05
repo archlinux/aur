@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="Reverse mode autodiff library, interior-point method, and NLP solver DSL"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' 'staticlibs')
 provides=('sleipnirgroup-sleipnir')
 conflicts=('sleipnirgroup-sleipnir')
 source=("git+https://github.com/SleipnirGroup/Sleipnir#tag=v${pkgver}")
-md5sums=('83e1bba39598441995a49d995f26fd99')
+md5sums=('d8fb2403b6918a2811d5c5d6376350ac')
 
 prepare() {
   cd "$srcdir"/Sleipnir
