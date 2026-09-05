@@ -1,4 +1,4 @@
-pkgbase = hdmi-viewer
+pkgbase = hdmiviewer
 	pkgdesc = Schlanker Qt6/C++ Live-Viewer für HDMI-Grabber (V4L2 + ALSA), Companion zu OBS Studio
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = hdmi-viewer
 	makedepends = cmake
 	depends = qt6-base
 	depends = alsa-lib
-	source = hdmi-viewer-1.0.0.tar.gz::https://git.projekt-hirnfrei.de/diabolus/hdmiviewer/archive/v1.0.0.tar.gz
+	source = hdmiviewer-1.0.0.tar.gz::https://git.projekt-hirnfrei.de/diabolus/hdmiviewer/archive/v1.0.0.tar.gz
 	sha256sums = e7248a957ad7bc6410adf6c67b4b2abcbca6066dfc042164904db5884b960d2e
 
-pkgname = hdmi-viewer
+pkgname = hdmiviewer
