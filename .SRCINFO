@@ -1,6 +1,6 @@
 pkgbase = notion-cli
 	pkgdesc = Official Notion CLI (beta) — access your Notion workspace from any terminal
-	pkgver = 0.22.1
+	pkgver = 0.23.2
 	pkgrel = 1
 	url = https://developers.notion.com
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = notion-cli
 	license = MIT
 	provides = ntn
 	options = !debug
-	source = https://registry.npmjs.org/ntn/-/ntn-0.22.1.tgz
-	sha256sums = 3a7a0a9d00db8462c39c0cc976e2696b6ba70f53409da5c2ee96d402880fbe97
+	source = https://registry.npmjs.org/ntn/-/ntn-0.23.2.tgz
+	sha256sums = 9007a6397f56b836e0195eb6f6ac5f9656f40c788ebe1860a18769ec67c1d61b
 
 pkgname = notion-cli
