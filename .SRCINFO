@@ -1,0 +1,15 @@
+pkgbase = ros2-jazzy-filters
+	pkgdesc = Standardized interfaces for processing data as a sequence of filters, for ROS 2 Jazzy
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/ros/filters
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = boost
+	depends = ros2-jazzy
+	depends = boost-libs
+	source = ros2-jazzy-filters-2.2.2.tar.gz::https://github.com/ros/filters/archive/refs/tags/2.2.2.tar.gz
+	sha256sums = 91f5d45f9f973103dcedecce13eea9a03c9e423ef60886250b37b8e45a2bbfc3
+
+pkgname = ros2-jazzy-filters
