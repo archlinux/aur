@@ -1,7 +1,7 @@
 # Maintainer: RubenKelevra <rubenkelevra@gmail.com>
 
 pkgname=tunnel-client
-pkgver=0.0.12
+pkgver=0.0.14
 pkgrel=1
 pkgdesc='Connect private MCP servers to OpenAI-hosted products through a secure tunnel'
 arch=(
@@ -18,7 +18,7 @@ depends=(
 	'ca-certificates'
 )
 makedepends=(
-	'go'
+	'go>=1.27.0'
 )
 optdepends=(
 	'cloudflared: supervise a Cloudflare Tunnel when configured'
@@ -29,7 +29,7 @@ source=(
 	"${pkgname}@.service"
 )
 b2sums=(
-	'3aab36fd95d5de7f45a06cbb627efc02ac4f806820e4fde33b3e49d91811fcd4d7beca5fa0b83d4058d2b8b417332cd8a1e620f1d6d21e5940500e5452fafbc2'
+	'de05bf34d8e796c988820a1eddb6d196580540d9161b1b39a17924064a0b8708c2a5fe529b61bca534baa779495f5f844ed3e0f762875b8f5dfc04e0b64d5312'
 	'c205139c8a247f7e6c2bf44e30bf2a8ddc93d9cfd053ce6dc1a65b0dc37d445f8d831bfdb927b6bee6122d748bbb77b3403c03da76e0dea1909d8cb560d5c66a'
 )
 
