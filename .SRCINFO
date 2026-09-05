@@ -1,6 +1,6 @@
 pkgbase = forkgram
 	pkgdesc = Fork of the Telegram Desktop messaging app
-	pkgver = 7.1.4
+	pkgver = 7.1.5
 	pkgrel = 1
 	url = https://github.com/Forkgram/tdesktop
 	arch = x86_64
@@ -50,10 +50,10 @@ pkgbase = forkgram
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
 	options = !lto
-	source = forkgram-7.1.4.tar.gz::https://github.com/Forkgram/tdesktop/releases/download/v7.1.4/frk-v7.1.4-full.tar.gz
+	source = forkgram-7.1.5.tar.gz::https://github.com/Forkgram/tdesktop/releases/download/v7.1.5/frk-v7.1.5-full.tar.gz
 	source = telegram-tdlib::git+https://github.com/tdlib/td.git
 	source = 0001-revert-cmake-patch.patch
-	sha256sums = 20c6e9199dab302a1798ec519d5dd5151ad2952cd6be44f827144d4056620de9
+	sha256sums = 0bf8bbf6f88793e0faf5e29ea375a2f93987177709945cb19b79449ea2ff9c1f
 	sha256sums = SKIP
 	sha256sums = cf669c8a03f8ffcfb0898534c394324f9d59909e0526b86d63190d662a3dd861
 
