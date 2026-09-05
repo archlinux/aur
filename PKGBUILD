@@ -1,9 +1,10 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
-pkgname=mlite
+pkgname=qt5-mlite
 pkgver=0.5.5
 pkgrel=1
-pkgdesc="Useful classes originating from MeeGo Touch"
+pkgdesc="Useful classes originating from MeeGo Touch (Qt5 version)"
 arch=('x86_64')
 url="https://github.com/sailfishos/mlite"
 license=('LGPL')
