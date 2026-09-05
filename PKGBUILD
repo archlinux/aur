@@ -2,20 +2,29 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=zind
-pkgver=1.0.6
+pkgver=1.0.7
+_zigver=0.16.0
 pkgrel=1
 pkgdesc="Dynamic structural API indexer for Zig"
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/tsukumoakito/zind"
 license=('MIT')
-depends=('zig>=0.16.0' 'zig<0.17.0')
-makedepends=('zig>=0.16.0' 'zig<0.17.0' 'scdoc')
+depends=('zig')
+makedepends=('zig' 'scdoc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tsukumoakito/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 validpgpkeys=('66B227EC5F67D7B4F8C6C1C7E98764DF6FCE8857')
-sha256sums=('cc276f7b55b9958a1a81692195b91b99cce11a37983ed6847a06774d789ab84c')
+sha256sums=('2d286c24631cde85fa79147c2cf503e46f3c476e30c0222d97f662405a0c0ef0')
 
 build() {
     cd "${pkgname}-${pkgver}"
+    local zig_ver
+    zig_ver=$(zig version)
+    if [[ ! "$zig_ver" =~ ^$_zigver ]]; then
+        echo "❌ Error: Current $pkgname version requires Zig $_zigver."
+        echo "Currently using: $zig_ver"
+        echo "Please run your zig package manager such as 'zvm use $_zigver' before building."
+        return 1
+    fi
     zig build -Doptimize=ReleaseSafe
 }
 
