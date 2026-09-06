@@ -1,6 +1,6 @@
 pkgbase = pdf-compressor
 	pkgdesc = Local-first desktop PDF compressor built with Vue, Tauri, and Rust (GUI + headless CLI)
-	pkgver = 0.5.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/cosct/pdf-compressor
 	arch = x86_64
@@ -13,8 +13,10 @@ pkgbase = pdf-compressor
 	depends = webkit2gtk-4.1
 	depends = hicolor-icon-theme
 	optdepends = libnotify: desktop notifications for the right-click quick-compress mode
+	provides = pdf-compressor
+	conflicts = pdf-compressor-bin
 	options = !lto
-	source = pdf-compressor-0.5.0.tar.gz::https://github.com/cosct/pdf-compressor/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 331a665018cb725874b718b03cd7204b65f75cb2f34e38dd92667e1c95459879
+	source = pdf-compressor-0.7.1.tar.gz::https://github.com/cosct/pdf-compressor/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = 324a1fa1047dbe49295ab6d8411834932ea757ec6f9bca2e915f7b16ebbed6bd
 
 pkgname = pdf-compressor

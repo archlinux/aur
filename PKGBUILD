@@ -1,7 +1,14 @@
 # Maintainer: cosct
+#
+# AUR source package (pdf-compressor): builds the GUI and headless CLI from
+# the tagged source tarball with cargo + pnpm. The release workflow fills in
+# pkgver + the tarball sha256 and pushes this file (with a regenerated
+# .SRCINFO) to the AUR after the release is published — see
+# .github/workflows/aur-publish.yml. The binary twin lives in pdf-compressor-bin
+# (packaging/archlinux/PKGBUILD); both provide/conflict on the same name.
 
 pkgname=pdf-compressor
-pkgver=0.5.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Local-first desktop PDF compressor built with Vue, Tauri, and Rust (GUI + headless CLI)'
 arch=('x86_64')
@@ -25,29 +32,36 @@ makedepends=(
   'pnpm'
   'pkgconf'
 )
+provides=('pdf-compressor')
+conflicts=('pdf-compressor-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('331a665018cb725874b718b03cd7204b65f75cb2f34e38dd92667e1c95459879')
+# Filled in by the release workflow with the sha256 of the tag tarball.
+sha256sums=('324a1fa1047dbe49295ab6d8411834932ea757ec6f9bca2e915f7b16ebbed6bd')
 
 build() {
   cd "${pkgname}-${pkgver}"
 
   pnpm install --frozen-lockfile
 
-  # Same pipeline as the deb/appimage bundles: `tauri build` runs the frontend
-  # build (beforeBuildCommand) and compiles the release binary with the
-  # custom-protocol feature (dist/ embedded) — the steps are not duplicated
-  # here, so the bundle targets and this package cannot drift apart.
-  pnpm exec tauri build --no-bundle
+  # Same pipeline as the deb/appimage bundles: `tauri build` runs the
+  # frontend build (beforeBuildCommand) and compiles the release binary with
+  # the custom-protocol feature (dist/ embedded) — the steps are not
+  # duplicated here, so the bundle targets and this package cannot drift
+  # apart. The jpx,cmyk-cms features pull in vendored OpenJPEG and lcms2 via
+  # the cc crate (statically linked, no system dependency), matching what
+  # the release workflow ships.
+  pnpm exec tauri build --no-bundle --features jpx,cmyk-cms
 
   # Headless CLI lives outside the Tauri shell.
-  cargo build --release --locked -p pdf-core --bin pdf-compressor-cli
+  cargo build --release --locked -p pdf-core --bin pdf-compressor-cli --features jpx,cmyk-cms
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
 
   # The cargo target dir may be redirected machine-wide (build.target-dir in
-  # ~/.cargo/config.toml) — resolve it via cargo metadata instead of assuming ./target.
+  # ~/.cargo/config.toml) — resolve it via cargo metadata instead of
+  # assuming ./target.
   local _target
   _target=$(cargo metadata --format-version 1 --no-deps | sed -n 's/.*"target_directory":"\([^"]*\)".*/\1/p')
   [[ -z "$_target" ]] && _target=target
@@ -66,7 +80,7 @@ package() {
   # GNOME Nautilus / Nemo "Scripts" menu entries. The Scripts folder is
   # per-user by design — copy these into ~/.local/share/nautilus/scripts/
   # (run packaging/nautilus/install.sh from a source checkout for the
-  # automatic variant).
+  # automatic variant). Same path the -bin package ships.
   install -dm755 "${pkgdir}/usr/share/${pkgname}/nautilus"
   for _script in packaging/nautilus/compress-*.sh; do
     install -m755 "${_script}" "${pkgdir}/usr/share/${pkgname}/nautilus/"
