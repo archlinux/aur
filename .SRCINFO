@@ -1,0 +1,26 @@
+pkgbase = python-openinference-instrumentation
+	pkgdesc = OpenInference Semantic Conventions.
+	pkgver = 0.1.61
+	pkgrel = 1
+	url = https://github.com/Arize-ai/openinference/tree/main/python/openinference-semantic-conventions
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-jsonschema
+	checkdepends = python-openai
+	checkdepends = python-pydantic
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-recording
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-sdk
+	depends = python-openinference-semantic-conventions
+	depends = python-wrapt
+	source = https://github.com/Arize-ai/openinference/archive/refs/tags/python-openinference-instrumentation-v0.1.61.tar.gz
+	sha256sums = 01aba5f1143ecc1b68c384424772ea81ef6c542cc6c47affa6c4b7656a47f0ce
+
+pkgname = python-openinference-instrumentation
