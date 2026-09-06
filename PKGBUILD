@@ -5,10 +5,10 @@ pkgdesc='Cross-platform eSIM management app for working with local eUICCs, exter
 arch=(x86_64)
 url='https://github.com/iebb/NekokoLPA2'
 license=(MIT)
-depends=()
+depends=(bubblewrap gtk3)
 options=(!debug)
 makedepends=()
-source=('https://github.com/iebb/NekokoLPA2/releases/download/v2.2.4%2B586/ee.nekoko.nlpa2.linux-2.2.4-586-x64.tar.gz')
+source=("https://github.com/iebb/NekokoLPA2/releases/download/v${pkgver}%2B${pkgrel}/ee.nekoko.nlpa2.linux-${pkgver}-${pkgrel}-x64.tar.gz")
 sha256sums=('c3e0a4be7d95858cb86f7124992d5863a6e24fc72a67e96daa55391550ee7388')
 
 package() {
