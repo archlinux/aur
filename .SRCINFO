@@ -49,6 +49,7 @@ pkgbase = vgs-shell
 	optdepends = pacman-contrib: repo update checks
 	optdepends = paru: AUR update checks
 	optdepends = polkit: privileged actions run from the shell (user management, some system settings)
+	optdepends = python-pillow: ICC colour profiles
 	optdepends = python-pywalfox: Firefox theming (AUR; pip elsewhere)
 	optdepends = qt5ct: Qt 5 application theming
 	optdepends = qt6ct: Qt 6 application theming

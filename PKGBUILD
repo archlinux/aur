@@ -59,6 +59,7 @@ optdepends=(
   'pacman-contrib: repo update checks'
   'paru: AUR update checks'
   'polkit: privileged actions run from the shell (user management, some system settings)'
+  'python-pillow: ICC colour profiles'
   'python-pywalfox: Firefox theming (AUR; pip elsewhere)'
   'qt5ct: Qt 5 application theming'
   'qt6ct: Qt 6 application theming'
