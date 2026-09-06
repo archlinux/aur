@@ -57,7 +57,7 @@
 #   (GL/VK takes over the toplevel surface, gamescope scales buffers itself),
 #   so -w/-h game resolution is honoured.
 pkgname=wine-gohryt-wayland-wow64
-pkgver=11.15
+pkgver=11.17
 pkgrel=2
 _monover=11.3.0   # must match MONO_VERSION in dlls/appwiz.cpl/addons.c
 _geckover=2.47.4  # must match GECKO_VERSION in dlls/appwiz.cpl/addons.c
@@ -108,6 +108,7 @@ optdepends=(
   'gst-plugins-base-libs: GStreamer media support'
   'gst-plugins-good: extra media codecs'
   'gst-plugins-ugly: extra media codecs'
+  'gst-libav: steam video player'
   'libpulse: PulseAudio/PipeWire audio driver'
   'sdl2: game controller support'
   'vulkan-icd-loader: Vulkan support'
