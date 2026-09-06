@@ -1,0 +1,30 @@
+pkgbase = cs9711-fingerprint-git
+	pkgdesc = Chipsailing CS9711 USB fingerprint scanner driver with 1500ms retry patch
+	pkgver = r1866.02b285c
+	pkgrel = 1
+	url = https://github.com/thankarezos/chipsailing-cs9711-fingerprint-linux
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pixman
+	makedepends = cairo
+	makedepends = openssl
+	makedepends = doctest
+	makedepends = gobject-introspection
+	makedepends = cmake
+	depends = glib2
+	depends = libgusb
+	depends = opencv
+	optdepends = fprintd: fingerprint enrollment and verification
+	provides = libfprint
+	provides = libfprint-2.so=2-64
+	conflicts = libfprint
+	conflicts = libfprint-cs9711-rebase-git
+	conflicts = cs9711-fingerprint
+	source = git+https://github.com/archeYR/libfprint-CS9711.git
+	sha256sums = SKIP
+
+pkgname = cs9711-fingerprint-git
