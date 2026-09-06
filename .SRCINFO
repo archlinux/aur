@@ -1,7 +1,7 @@
 pkgbase = scantailor-advanced-git
 	pkgdesc = Interactive post-processing tool for scanned pages that merges the features of the ScanTailor Featured and ScanTailor Enhanced versions, brings new ones and fixes.
-	pkgver = v1.0.18
-	pkgrel = 5
+	pkgver = v1.0.19
+	pkgrel = 1
 	url = https://github.com/ScanTailor-Advanced/scantailor-advanced
 	arch = x86_64
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = scantailor-advanced-git
 	conflicts = scantailor-advanced
 	conflicts = scantailor
 	options = !lto
-	source = scantailor-advanced-git::git+https://github.com/arch-noob/scantailor-advanced.git#branch=develop
+	source = scantailor-advanced-git::git+https://github.com/ScanTailor-Advanced/scantailor-advanced.git#tag=v1.0.19
 	sha256sums = SKIP
 
 pkgname = scantailor-advanced-git
