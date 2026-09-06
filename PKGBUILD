@@ -1,7 +1,7 @@
 # Maintainer: Zhou Qiankang <wszqkzqk@qq.com>
 
 pkgname='archlinux-lcpu-keyring'
-pkgver=20241126
+pkgver=20260906
 pkgrel=1
 pkgdesc="Arch Linux group of LCPU's PGP keyring"
 arch=('any')
