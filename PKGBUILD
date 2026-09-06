@@ -2,16 +2,17 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=lazylibrarian-git
-pkgver=r6050.8a9bc8e6
+pkgver=r7209.fd0ddab4
 pkgrel=1
 pkgdesc='Ebook, audiobook and magazine collection manager for newsgroup and torrent users'
-arch=(any)
+arch=(i686 x86_64)
 url='https://gitlab.com/LazyLibrarian/LazyLibrarian/'
 license=('GPL-3.0-or-later')
 depends=(
   apprise
   bash
   python
+  python-apscheduler
   python-beautifulsoup4
   python-certifi
   python-charset-normalizer
@@ -20,13 +21,16 @@ depends=(
   python-cryptography
   python-dateutil
   python-deluge-client
+  python-google_trans_new
   python-html5lib
   python-httpagentparser
   python-httplib2
   python-idna
   python-irc
+  python-iso639-lang
   python-jaraco.stream
   python-levenshtein
+  python-lxml
   python-magic
   python-mako
   python-markupsafe
@@ -34,15 +38,19 @@ depends=(
   python-portend
   python-pyopenssl
   python-pyparsing
-  python-pypdf3
+  python-pypdf
   python-rapidfuzz
   python-requests
   python-setuptools
   python-six
+  python-slskd-api
   python-soupsieve
+  python-standard-cgi
   python-thefuzz
+  python-tzdata
   python-urllib3
   python-webencodings
+  python-xmltodict
   python-yaml
   unrar
 )
@@ -62,28 +70,9 @@ sha256sums=('SKIP'
             '4bfc8d0836e328ed28ef28f366e8e367f7b39b85f472ae9d34012c8b749bf6fd'
             '6cddd4de91618e5ee62b15916bcb623b612dfdf1ddcef7b3aa74d3eb62587604')
 
-prepare() {
-  cd LazyLibrarian
-  sed -i -e 's/except (OSError, IOError), e:/except (OSError, IOError, e):/g' \
-    -e 's/except IOError, e:/except (IOError, e):/g' \
-    -e 's/except pywintypes.error, e:/except (pywintypes.error, e):/g' \
-    -e 's/except OSError, e:/except (OSError, e):/g' \
-    -e 's/except select.error, e:/except (select.error, e):/g' \
-    -e 's/print$/print()/g' \
-    -e 's/print "\(.*\)"/print("\1")/g' \
-    -e 's/print >>sys.stderr, "\(.*\)"\(.*\)/print("\1", file=sys.stderr\2)/g' \
-    -e 's/print \(.*\)/print(\1)/g' \
-    cherrypy/_cpcompat_subprocess.py
-  sed -i -e 's/except SSL.SysCallError, e:/except (SSL.SysCallError, e):/g' \
-    -e 's/except SSL.Error, e:/except (SSL.Error, e):/g' \
-    cherrypy/wsgiserver/ssl_pyopenssl.py
-  sed -i -e 's/except socket.error, e:/except (socket.error, e):/g' \
-    -e 's/except socket.error, serr:/except (socket.error, serr):/g' \
-    -e 's/raise exc_info\[0\], exc_info\[1\], exc_info\[2\]/raise error.with_traceback(exc_info\[2\])/' \
-    cherrypy/wsgiserver/wsgiserver2.py
-  sed -i 's/print "\(.*\)"/print("\1")/g' example_mega_link.py
-  sed -i 's/print "\(.*\)"/print("\1")/g' gsconvert.py
-}
+# prepare() {
+#   cd LazyLibrarian
+# }
 
 pkgver() {
   cd LazyLibrarian
