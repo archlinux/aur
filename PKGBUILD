@@ -1,9 +1,10 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Maintainer: Orion-zhen <https://github.com/Orion-zhen>
+# Contributor:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=lib32-libnsl-git
-pkgver=1.3.0
+pkgver=2.0.1.r6.gc2702fc
 pkgrel=1
 pkgdesc='Public client interface library for NIS(YP) and NIS+'
 arch=(x86_64)
@@ -14,29 +15,25 @@ depends=(
   libnsl
 )
 makedepends=(git)
-provides=(lib32-libnsl)
+provides=(lib32-libnsl libnsl.so)
 conflicts=(lib32-libnsl)
 source=(git+https://github.com/thkukuk/libnsl.git)
 sha256sums=(SKIP)
 
-_commit() {
-  # Convert HEAD into a shortened commit id:
-  git rev-parse --short HEAD
-}
-
 pkgver() {
   cd libnsl
 
-  # Suggestions for improvement welcome!
-  printf '%s.r%s.%s'         \
-  "$(_commit)"
-}
-
-prepare() {
-  cd libnsl
+  git describe --long --tags --abbrev=7 |
+    sed -E 's/^v//; s/([^-]*-g)/r\1/; s/-/./g'
 }
 
 build() {
+  local configure_options=(
+    --prefix=/usr
+    --libdir=/usr/lib32
+    --disable-static
+  )
+
   cd libnsl
 
   export CC='gcc -m32'
@@ -44,10 +41,7 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkg-config'
 
   ./autogen.sh
-  ./configure \
-    --prefix=/usr \
-    --libdir=/usr/lib32 \
-    --disable-static
+  ./configure "${configure_options[@]}"
   make
 }
 
