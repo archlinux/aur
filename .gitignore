@@ -1,0 +1,10 @@
+src/
+pkg/
+tabbed/
+*.pkg.tar.zst
+*.tar.gz
+*.tar.xz
+*.log
+*.bac
+AGENTS.md
+.AGENTS.md

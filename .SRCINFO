@@ -1,0 +1,17 @@
+pkgbase = sarbs-tabbed-git
+	pkgdesc = Sergi's Build von tabbed, dem Suckless-Tab-Frontend (Teil von SARBS)
+	pkgver = 2026.09.06.r10.g2730b5c
+	pkgrel = 1
+	url = https://codeberg.org/Sergius/tabbed
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = fontconfig
+	depends = libxft
+	provides = tabbed
+	conflicts = tabbed
+	source = git+https://codeberg.org/Sergius/tabbed
+	sha256sums = SKIP
+
+pkgname = sarbs-tabbed-git
