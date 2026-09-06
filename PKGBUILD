@@ -2,24 +2,29 @@
 
 pkgname=zig-completion-git
 _pkgname=shell-completions
-pkgver=gc5b387b
+pkgver=r18.c2983a7
 pkgrel=1
 pkgdesc="Shell completions for the Zig compiler."
-url="https://github.com/ziglang/shell-completions.git"
+url="https://codeberg.org/ziglang/shell-completions"
 license=("MIT")
-optdepends=('bash-completion: Bash completion support')
 arch=("any")
-source=("git+https://github.com/ziglang/${_pkgname}.git")
+makedepends=("git")
+optdepends=('bash-completion: Bash completion support'
+            'zsh: Zsh completion support')
+provides=("zig-completion")
+conflicts=("zig-completion")
+source=("git+https://codeberg.org/ziglang/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --all | sed 's/.*-//'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   cd "${_pkgname}"
 
-  install -Dm644 _zig         "${pkgdir}/usr/share/zsh/site-functions/_zig"
-  install -Dm644 _zig.bash    "${pkgdir}/usr/share/bash-completion/completions/_zig"
+  install -Dm644 _zig      "${pkgdir}/usr/share/zsh/site-functions/_zig"
+  install -Dm644 _zig.bash "${pkgdir}/usr/share/bash-completion/completions/zig"
+  install -Dm644 LICENSE   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
