@@ -1,16 +1,15 @@
 pkgbase = mrdocs-bin
 	pkgdesc = C++ documentation generator
-	pkgver = 0.8.0
+	pkgver = 2026.9.4
 	pkgrel = 1
 	url = https://www.mrdocs.com
 	arch = x86_64
 	license = Apache-2.0 WITH LLVM-exception
 	provides = mrdocs
 	conflicts = mrdocs
-	options = staticlibs
-	source = mrdocs-bin-0.8.0.tar.xz::https://github.com/cppalliance/mrdocs/releases/download/v0.8.0/MrDocs-0.8.0-Linux.tar.xz
-	source = LICENSE-0.8.0.txt::https://raw.githubusercontent.com/cppalliance/mrdocs/v0.8.0/LICENSE.txt
-	sha256sums = 75f5b703e2230d7574eecc1640d16de668bd6aeb11713296e748d3378bb509f2
+	source = mrdocs-bin-2026.9.4.tar.xz::https://github.com/cppalliance/mrdocs/releases/download/2026.9.4/MrDocs-2026.9.4-Linux.tar.xz
+	source = LICENSE-2026.9.4.txt::https://raw.githubusercontent.com/cppalliance/mrdocs/2026.9.4/LICENSE.txt
+	sha256sums = 1e0a455d3e68cb0bacc0884b10fbdf9865b260ae76ce46003c5542e2489af769
 	sha256sums = 8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee
 
 pkgname = mrdocs-bin
