@@ -3,7 +3,7 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.12.28.r80.g711672e7
+pkgver=2.26.6.r8.g3e55bd60
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('GPL-3.0-only')
@@ -38,7 +38,7 @@ package_icalingua++-git(){
     depends+=(
         # Electron depends
         "c-ares"  "gtk3"  "libevent"  "nss"  "wayland"  "fontconfig"
-        "woff2"  "aom"  "brotli"  "libjpeg"  "icu"  "dav1d"  "flac"
+        "woff2"  "aom"  "brotli"  "libjpeg-turbo"  "icu"  "dav1d"  "flac"
         "snappy" "libxml2"  "ffmpeg"  "libwebp"  "minizip"  "opus"
         "harfbuzz"  "jsoncpp"  "libxslt"  "libpng"  "freetype2"
     )

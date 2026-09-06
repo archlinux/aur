@@ -1,6 +1,6 @@
 pkgbase = icalingua++-git
 	pkgdesc = A Linux client for QQ and more(fork to upgrading)
-	pkgver = 2.12.28.r80.g711672e7
+	pkgver = 2.26.6.r8.g3e55bd60
 	pkgrel = 1
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
@@ -39,7 +39,7 @@ pkgname = icalingua++-git
 	depends = woff2
 	depends = aom
 	depends = brotli
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = icu
 	depends = dav1d
 	depends = flac
