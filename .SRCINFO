@@ -1,6 +1,6 @@
 pkgbase = aicommits
 	pkgdesc = A CLI that writes your git commit messages for you with AI
-	pkgver = 4.1.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://github.com/Nutlope/aicommits
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = aicommits
 	makedepends = npm
 	makedepends = pnpm
 	depends = nodejs
-	source = https://github.com/Nutlope/aicommits/archive/v4.1.1/aicommits-4.1.1.tar.gz
-	b2sums = 59dceebf684fc53e984116736a5bd98e8cad7b4d7c44a6d7e25dd878962ca4d467e5419904ad05067d8a518f68c4ee38d2c03ace4aa67d797891ffcefb020f65
+	source = https://github.com/Nutlope/aicommits/archive/v4.2.2/aicommits-4.2.2.tar.gz
+	b2sums = 8ac8acdbdf1514f7550ada05c7c7fb7aee205fb6c6cbd6ff56d3bc2a8a36eddf02a59ef4a30ee470dbcbf4629494f1c74c6760d619dd8e2283a98c25f382b4cd
 
 pkgname = aicommits
