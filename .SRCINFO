@@ -1,0 +1,103 @@
+pkgbase = ros2-jazzy-ros2_control
+	pkgdesc = Real-time control framework for ROS 2 Jazzy
+	pkgver = 4.48.0
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros2_control
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = python-colcon-common-extensions
+	makedepends = python-filelock
+	makedepends = python-yaml
+	makedepends = fmt
+	makedepends = tinyxml2
+	makedepends = ros2-jazzy-backward_ros
+	makedepends = ros2-jazzy-control_msgs
+	makedepends = ros2-jazzy-diagnostic_updater
+	makedepends = ros2-jazzy-generate_parameter_library
+	makedepends = ros2-jazzy-pal_statistics
+	makedepends = ros2-jazzy-realtime_tools
+	makedepends = ros2-jazzy-ros2_control_cmake
+	makedepends = ros2-jazzy-sdformat_urdf
+	depends = ros2-jazzy
+	source = ros2-jazzy-ros2_control-4.48.0.tar.gz::https://github.com/ros-controls/ros2_control/archive/refs/tags/4.48.0.tar.gz
+	sha256sums = 8f1681ccb2cb0a24e7d1322a4e4bc6419567e3ce225df1eeadb8198f9a67325b
+
+pkgname = ros2-jazzy-controller_manager_msgs
+	depends = ros2-jazzy
+
+pkgname = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-pal_statistics
+	depends = ros2-jazzy-realtime_tools
+	depends = ros2-jazzy-sdformat_urdf
+	depends = fmt
+	depends = tinyxml2
+
+pkgname = ros2-jazzy-joint_limits
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-realtime_tools
+	depends = fmt
+
+pkgname = ros2-jazzy-transmission_interface
+	depends = ros2-jazzy
+	depends = ros2-jazzy-hardware_interface
+	depends = fmt
+
+pkgname = ros2-jazzy-controller_interface
+	depends = ros2-jazzy
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-pal_statistics
+	depends = ros2-jazzy-realtime_tools
+	depends = fmt
+
+pkgname = ros2-jazzy-ros2_control_test_assets
+	arch = any
+	depends = ros2-jazzy
+
+pkgname = ros2-jazzy-hardware_interface_testing
+	depends = ros2-jazzy
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-ros2_control_test_assets
+	depends = fmt
+
+pkgname = ros2-jazzy-controller_manager
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-controller_manager_msgs
+	depends = ros2-jazzy-diagnostic_updater
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+	depends = python-filelock
+	depends = python-yaml
+	depends = fmt
+
+pkgname = ros2-jazzy-ros2controlcli
+	arch = any
+	depends = ros2-jazzy
+	depends = ros2-jazzy-controller_manager
+	depends = ros2-jazzy-controller_manager_msgs
+	depends = python-graphviz
+
+pkgname = ros2-jazzy-rqt_controller_manager
+	arch = any
+	depends = ros2-jazzy
+	depends = ros2-jazzy-controller_manager
+	depends = ros2-jazzy-controller_manager_msgs
+
+pkgname = ros2-jazzy-ros2_control
+	arch = any
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-controller_manager
+	depends = ros2-jazzy-controller_manager_msgs
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-joint_limits
+	depends = ros2-jazzy-ros2controlcli
+	depends = ros2-jazzy-ros2_control_test_assets
+	depends = ros2-jazzy-transmission_interface
