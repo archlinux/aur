@@ -1,6 +1,6 @@
 pkgbase = blocksd
 	pkgdesc = Linux daemon for ROLI Blocks devices: keepalive, LED control, topology management
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 2
 	url = https://github.com/hyperb1iss/blocksd
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = blocksd
 	depends = python-typer>=0.27.2
 	depends = python-rich>=15.0.0
 	depends = python-pydantic>=2.13.5
-	source = blocksd-0.5.0.tar.gz::https://github.com/hyperb1iss/blocksd/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 17f52d4ae291c738541a14a9046242acbfe25b3874f075896390d2f44081626d
+	source = blocksd-0.6.0.tar.gz::https://github.com/hyperb1iss/blocksd/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 7fb1686ae15777b2d26d0ded97705a893bc343e59639b9ce69f6ccd0ad214940
 
 pkgname = blocksd
