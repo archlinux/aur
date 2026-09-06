@@ -14,7 +14,7 @@
 # above the release it came after and says on sight what it is.
 
 pkgname=viewport-webkitgtk-git
-pkgver=0.1.7.r17.g7cc34c8
+pkgver=0.1.8.r167.gff59517
 pkgrel=1
 pkgdesc='Wayland compositor whose shell is a web page — WebKitGTK, out of process (git)'
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,6 @@ license=('GPL-3.0-or-later')
 depends=(
   'wayland'
   'libxkbcommon'
-  'pixman'
   'libdrm'
   'libinput'
   'seatd'
@@ -34,7 +33,6 @@ depends=(
   'vulkan-icd-loader'
   'pipewire'
   'libxcb'
-  'xcb-util-wm'
   'webkitgtk-6.0'
   'gtk4'
   # WebKit guesses the type of a file:// page from the shared MIME database.
