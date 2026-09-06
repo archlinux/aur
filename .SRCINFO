@@ -1,6 +1,6 @@
 pkgbase = yoo-bin
 	pkgdesc = Local CLI for project, Git, and development environment information
-	pkgver = 1.0.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/nihitdev/yo-cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = yoo-bin
 	optdepends = git: Git repository information
 	provides = yoo
 	conflicts = yoo
-	source = https://github.com/nihitdev/yo-cli/releases/download/v1.0.0/yoo-v1.0.0-linux-x86_64.tar.gz
-	sha256sums = d09d5f0a5f471f30d6516e68f53ed134520909654958d073c8c6cae96197715d
+	source = https://github.com/nihitdev/yo-cli/releases/download/v1.1.1/yoo-v1.1.1-linux-x86_64.tar.gz
+	sha256sums = 019af404472488d0616eb68af8259e55b6c7dea4260f89548bfe75963702ce17
 
 pkgname = yoo-bin
