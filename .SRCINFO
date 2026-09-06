@@ -1,0 +1,16 @@
+pkgbase = alsa-switch
+	pkgdesc = Rofi menu that rewrites ~/.asoundrc to set the default ALSA input/output device
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pakhromov/alsa-switch
+	arch = any
+	license = MIT
+	depends = bash
+	depends = alsa-utils
+	depends = rofi
+	depends = gawk
+	optdepends = ttf-nerd-fonts-symbols: icons in the menu
+	source = alsa-switch-1.0.0.tar.gz::https://github.com/pakhromov/alsa-switch/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = e0d798d93f7f0e5e0db75a3aabcc1e9cdd48df33b6539db1cfc3e530fbc8819d
+
+pkgname = alsa-switch
