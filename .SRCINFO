@@ -1,10 +1,10 @@
 pkgbase = r-rmarkdown
 	pkgdesc = Dynamic Documents for R
-	pkgver = 2.31
+	pkgver = 2.32
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rmarkdown
 	arch = any
-	license = GPL-3.0-only
+	license = MIT
 	checkdepends = r-curl
 	checkdepends = r-shiny
 	checkdepends = r-testthat
@@ -37,8 +37,8 @@ pkgbase = r-rmarkdown
 	optdepends = r-vctrs
 	optdepends = r-withr
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/rmarkdown_2.31.tar.gz
-	md5sums = 8f7a4eef6b62e7f2284550c3134f28c8
-	b2sums = 192039a79fab32789e2d1e0413444cdcbd80622cdf1956c90a61ec5d852d0f8ce5b1075bfdf7383195de47665347ae6ac58b813e36461e8c29356061c0820014
+	source = https://cran.r-project.org/src/contrib/rmarkdown_2.32.tar.gz
+	md5sums = 01b497e82b287a2269a965119ed59271
+	b2sums = ee574cdd3c3a1e0643740df56ff1815d630d041ae5b8714486957d5130d5fcd72c9e857245c31c4e558c6b5f7260e602e0d38a90426171d5d938417fdffd8c59
 
 pkgname = r-rmarkdown
