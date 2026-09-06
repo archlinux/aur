@@ -1,13 +1,12 @@
 pkgbase = viewport-wpe-bin
 	pkgdesc = Wayland compositor whose entire shell is a web page — WPE WebKit, in-process (binary release)
-	pkgver = 0.1.8
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/codebam/viewport
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = wayland
 	depends = libxkbcommon
-	depends = pixman
 	depends = libdrm
 	depends = libinput
 	depends = seatd
@@ -17,9 +16,7 @@ pkgbase = viewport-wpe-bin
 	depends = vulkan-icd-loader
 	depends = wpewebkit
 	depends = glib2
-	depends = json-glib
 	depends = libxcb
-	depends = xcb-util-wm
 	depends = pipewire
 	depends = shared-mime-info
 	optdepends = xorg-xwayland: X11 clients
@@ -32,15 +29,15 @@ pkgbase = viewport-wpe-bin
 	optdepends = libva-mesa-driver: hardware video decode on AMD and Intel, for zero-copy video
 	optdepends = ttf-firacode-nerd: the icons in the bar, and the font the shell names first
 	optdepends = ttf-nerd-fonts-symbols: the icons in the bar, without the patched monospace family
-	provides = viewport=0.1.8
-	provides = viewport-wpe=0.1.8
+	provides = viewport=0.2.0
+	provides = viewport-wpe=0.2.0
 	conflicts = viewport
 	conflicts = viewport-webkitgtk
 	conflicts = viewport-wpe
 	conflicts = viewport-chromium
 	options = !strip
 	options = !debug
-	source_x86_64 = viewport-wpe-bin-0.1.8.tar.zst::https://github.com/codebam/viewport/releases/download/v0.1.8/viewport-wpe-0.1.8-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 55399531f1e9768f59c6da8bfd6cf547c2619666fc4ea072a5c0b4439412bba3
+	source_x86_64 = viewport-wpe-bin-0.2.0.tar.zst::https://github.com/codebam/viewport/releases/download/v0.2.0/viewport-wpe-0.2.0-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 1766cd0b0639f38bfe87c3afd04b2144894074894618ceff40e83f1e3fc89f09
 
 pkgname = viewport-wpe-bin
