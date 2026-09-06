@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=linux-wifi-hotspot
-pkgver=4.7.2
-pkgrel=3
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="Feature-rich wifi hotspot creator"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lakinduakash/linux-wifi-hotspot"
@@ -12,31 +12,33 @@ depends=(
   'hostapd'
   'iproute2'
   'iw'
+  'libpng'
+  'polkit'
   'procps-ng'
   'qrencode'
+  'util-linux'
+  'which'
 )
+makdedepends=('desktop-file-utils')
 optdepends=(
   "dnsmasq: For 'NATed' or 'None' Internet sharing method"
   "iptables: For 'NATed' or 'None' Internet sharing method"
   'haveged: For random MAC generation'
-  'wireless_tools: if iw cannot recognize your adapter'
+  'wireless_tools: Use iwconfig if iw cannot recognize your adapter'
 )
-provides=('wihotspot' 'create_ap')
-conflicts=('wihotspot' 'create_ap')
+provides=('create_ap')
+conflicts=('create_ap')
 backup=('etc/create_ap.conf')
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        'gcc15.patch')
-sha256sums=('4c85d8c333454da6fd5f03abcf207bb5375387a95acb852b8d7629fcab65326c'
-            'e174dba185dbcea85cb56bddef59ed5c443833a848dc4c7eda3f8656b8698967')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('1c4310e30c2a28f5c9d48d0387e4ebd5287ac528e7fdb1dd4c3811498945733d')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  # Fix build with GCC 15
-  # https://github.com/lakinduakash/linux-wifi-hotspot/issues/468
-  # https://github.com/lakinduakash/linux-wifi-hotspot/pull/481
-  patch -Np1 -i ../gcc15.patch
+  # Set Exec to GUI binary
+  desktop-file-edit --set-key=Exec --set-value=wihotspot-gui \
+    src/desktop/wifihotspot.desktop
 }
 
 build() {
@@ -44,9 +46,17 @@ build() {
   make
 }
 
+check() {
+  cd "$pkgname-$pkgver"
+  desktop-file-validate src/desktop/wifihotspot.desktop
+}
+
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
+
+  # Remove useless shell script that only runs wihotspot-gui
+  rm -v "$pkgdir/usr/bin/wihotspot"
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
