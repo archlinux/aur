@@ -1,9 +1,18 @@
 -------------------------------------------------------
  Changelog    : pynotify
- Tags         : 1.6.0 ➙ 1.7.1
-              : 2025-05-21 ➙ 2026-01-06
+ Tags         : 1.6.1 ➙ 2.0.0
+              : 2025-11-01 ➙ 2026-09-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-09-06   : 2.0.0
+              - **2.0.0**
+            
+                * meson / meson-python for build / package management
+                * periodic code review
+                * code cleanups and improvements.
+ 2026-01-06   ⋯
+              - update Docs/Changelogs
 
  2026-01-06   : 1.7.1
               - PKGBUILD small change
@@ -24,8 +33,3 @@
               - License switch to GPL-2.0-or-later
  2025-05-21   ⋯
               - update Docs/Changelogs Docs/pynotify.pdf
-
- 2025-05-21   : 1.6.0
-              - Use builtin types where possible. e.g. typing.List -> list
- 2025-05-04   ⋯
-              - update Docs/Changelog Docs/pynotify.pdf

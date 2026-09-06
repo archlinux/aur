@@ -1,0 +1,4 @@
+[sd-boot]
+source = "git"
+git = "https://github.com/gene-git/pynotify"
+use_max_tag = true

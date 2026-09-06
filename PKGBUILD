@@ -10,7 +10,7 @@ pkgname='python-pynotify'
 pkgdesc='Python Inotify Class'
 _gitname='pynotify'
 
-pkgver="1.7.1"
+pkgver="2.0.0"
 pkgrel=1
 url="https://github.com/gene-git/pynotify"
 
@@ -19,14 +19,14 @@ license=(GPL-2.0-or-later)
 
 # To build docs uncommont sphinx/texlive
 depends=(
-    'python>=3.13'
+    'python>=3.14'
     'glibc'
 )
 makedepends=(
     'git'
+    'meson'
+    'meson-python'
     'rsync' 
-    'uv'
-    'python-uv-build'
     #'python-sphinx' 'texlive-latexextra' python-sphinx-autoapi'
 )
 _mkpkg_depends=(
@@ -48,26 +48,12 @@ sha512sums=('SKIP')
 
 build() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
 
-    # To build Docs 
-    # uncomment these and sphinx makedepends above
-    # --------------
-    # echo "Build docs"
-    # pdf='pynotify.pdf'
-    # cd ./Docs
-    # /usr/bin/rm -f $pdf
-    # make latexpdf >/dev/null 2>&1
-    # make latexpdf
-    # /usr/bin/cp _build/latex/$pdf .
-    # make html
-    # make html
-    # /usr/bin/rm -rf _build/doctrees _build/latex
+    ./scripts/do-build
 }
 
 package() {
     cd "${_gitname}"
-    ./scripts/do-install "${pkgdir}" "${pkgname}" 
+    ./scripts/do-install "${pkgdir}"
 }
 # vim:set ts=4 sts=4 sw=4 et:
