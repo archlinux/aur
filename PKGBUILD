@@ -4,7 +4,7 @@
 
 _pkgver=v0.32.2
 pkgver="${_pkgver#v}"
-pkgrel=1
+pkgrel=2
 
 _pkgname=cappa
 pkgname="python-${_pkgname}"
