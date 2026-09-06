@@ -13,7 +13,7 @@ _barch=('linux_amd64' 'linux_arm64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 
-license=('MIT')
+license=('GPL-3.0')
 
 provides=("${_pkgname}")
 conflicts=("${pkgname%-bin}")
