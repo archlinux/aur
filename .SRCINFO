@@ -1,7 +1,7 @@
 pkgbase = linux-wireless-reg-unlocked
 	pkgdesc = Research-only patched iwlwifi and cfg80211 modules with modified wireless regulatory behavior for Arch Linux
 	pkgver = 7.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TenkyuChimata/linux-wireless-reg-unlocked
 	install = linux-wireless-reg-unlocked.install
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = linux-wireless-reg-unlocked
 	makedepends = bc
 	makedepends = kmod
 	makedepends = patch
-	depends = linux=7.2.3.arch1-2
-	depends = linux-headers=7.2.3.arch1-2
+	depends = linux=7.2.3.arch1-3
+	depends = linux-headers=7.2.3.arch1-3
 	depends = zstd
 	optdepends = mkinitcpio: rebuild initramfs for mkinitcpio-based systems
 	optdepends = dracut: rebuild initramfs or UKI for dracut-based systems

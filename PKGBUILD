@@ -1,7 +1,7 @@
 pkgname=linux-wireless-reg-unlocked
 _pkgbase=linux
 
-_kernelpkgver=7.2.3.arch1-2
+_kernelpkgver=7.2.3.arch1-3
 
 _kernver="$(
   printf '%s\n' "${_kernelpkgver}" |
@@ -18,7 +18,7 @@ _kernelmajor="${_kernver%%.*}"
 _krel="${_kernver}-${_archrel}"
 
 pkgver="${_kernver}"
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Research-only patched iwlwifi and cfg80211 modules with modified wireless regulatory behavior for Arch Linux"
 arch=('x86_64')
