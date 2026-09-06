@@ -1,6 +1,6 @@
 pkgbase = dirgo
 	pkgdesc = Fast, local-first directory navigation
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/RudySource/Dirgo
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dirgo
 	depends = libgcc
 	provides = dgo
 	options = !strip
-	source = dirgo-0.8.0.tgz::https://github.com/RudySource/Dirgo/archive/v0.8.0.tar.gz
-	sha256sums = 7c56a227a6a0f69713f2009f9fbc0e9227e6719105918b7227c405232ab2baa9
+	source = dirgo-0.8.1.tgz::https://github.com/RudySource/Dirgo/archive/v0.8.1.tar.gz
+	sha256sums = 3c6ad731c04f5eaec4f8001142e2bf69dcf31d11dcb07d0350a82a9d4216b531
 
 pkgname = dirgo
