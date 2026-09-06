@@ -3,14 +3,14 @@
 
 pkgname=perl-uuid
 _dist=UUID
-pkgver=0.38
+pkgver=0.39
 pkgrel=1
 pkgdesc='Universally Unique Identifier library for Perl'
 license=(Artistic-2.0)
 
 url="https://metacpan.org/release/$_dist"
 source=("$pkgname-$pkgver.tar.gz::https://cpan.metacpan.org/authors/id/J/JR/JRM/$_dist-$pkgver.tar.gz")
-sha256sums=('8a627d15450aa51549e072b4ff80d5a3bb6189186e592bc18864291e70b34e3a')
+sha256sums=('fdeea2ef7c285228e0036a0b12c81911c7903ebfb3c51a278f47744db777ec60')
 
 arch=(i686 x86_64)
 depends=(perl glibc)
