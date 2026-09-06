@@ -2,8 +2,11 @@
 
 pkgname=hypr-keybind-manager
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure keybinding manager for Hyprland with conflict detection'
+# makepkg's lto option passes -flto=auto to the C compiler; the vendored Lua then
+# comes out as GCC LTO bytecode, which Rust's default linker (rust-lld) cannot read.
+options=('!lto')
 arch=('x86_64' 'aarch64')
 url='https://github.com/tidynest/hypr-keybind-manager'
 license=('Apache-2.0')

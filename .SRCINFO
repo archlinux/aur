@@ -1,7 +1,7 @@
 pkgbase = hypr-keybind-manager
 	pkgdesc = Secure keybinding manager for Hyprland with conflict detection
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tidynest/hypr-keybind-manager
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = hypr-keybind-manager
 	depends = gtk4
 	depends = gcc-libs
 	depends = glibc
+	options = !lto
 	source = git+https://github.com/tidynest/hypr-keybind-manager.git#tag=v1.4.0
 	sha256sums = SKIP
 
