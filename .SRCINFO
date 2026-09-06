@@ -1,6 +1,6 @@
 pkgbase = sarbs-dwm-git
-	pkgdesc = Sergi's build of dwm (part of SARBS)
-	pkgver = 6.6.r2002.470eefc
+	pkgdesc = Sergi's build of dwm (Teil von SARBS)
+	pkgver = 6.6.SARBS.r2013.b620988
 	pkgrel = 1
 	url = https://codeberg.org/Sergius/dwm
 	arch = x86_64
