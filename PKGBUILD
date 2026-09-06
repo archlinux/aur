@@ -6,7 +6,7 @@ _webui_cid='bafybeiciqeyipumpmhxzlxnbqdbbv6u5uij4hy4wax64dmj7kvrhusiq6y'
 
 pkgname='ipfs-desktop'
 pkgver='0.50.0'
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Desktop client for the InterPlanetary File System'
 arch=('x86_64')
@@ -26,6 +26,7 @@ source=(
 	"${pkgname}.desktop"
 	"${pkgname}-startup.sh"
 	"${pkgname}-system-kubo-autostart.patch"
+	"${pkgname}-startup-race.patch"
 )
 b2sums=(
 	'c5691c946de525abb185fa44ea66ff9c5fa15b936d3dd6e7d0c3a6da8b158e4b8c883b1d948c33e7333bf5e7def1fc6677c4c721a67956db56e817260db36cff'
@@ -33,6 +34,7 @@ b2sums=(
 	'849d57fd59653ed0c6eca01769ad12a01f37f6a5316f1a83c0bf7cae576074b978e3ca555d50a56114d177e5fe4817338106698716f054a3e18ae1c81d7a8785'
 	'353367dc9c554b8decbee724713faf627e4764f77c1522d3939069e5db4e6caffc847e20e75afccdee0e1d0e025c4bb6c16a80e9655bf8d76412dc37ef8eff64'
 	'5e6b97ee8aec2cbf4e125ae2ced3f23dd77c45b7291ea63f8ed7f5cee1eb7caaab27dad979f61deefe204539389b0c18d418fc6724cec58eddcea944a46d936e'
+	'cfe44691998e7c860dc7cb00cbd13688c8cb76a3da952a15f2df41de734f7e242dde18d8c6ee8a0c0c887091aec3198dbce898dd85862d5e4cb168bf05cd74d4'
 )
 
 _pkgsrc="${pkgname}-${pkgver}"
@@ -84,6 +86,7 @@ prepare() (
 
 	cd -- "${_pkgsrc}" || return 1
 	patch -Np1 -i "${srcdir}/${pkgname}-system-kubo-autostart.patch"
+	patch -Np1 -i "${srcdir}/${pkgname}-startup-race.patch"
 
 	_expected_webui_cid=$(
 		sed -nE \
