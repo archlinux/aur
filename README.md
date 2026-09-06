@@ -1,11 +1,11 @@
-# vkteams-bin
+# vk-workspace-bin
 
 Скрипты для сборки пакета VK WorkSpace для Arch Linux
 
 ## Установка
 
 1. Склонировать проект.
-2. `cd vkteams-bin`.
+2. `cd vk-workspace-bin`.
 3. `makepkg -si`.
 
 Если вы хотите просто собрать пакет без установки его в систему, то на 3 шаге выполните команду `makepkg` без аргументов.

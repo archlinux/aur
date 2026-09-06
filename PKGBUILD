@@ -1,15 +1,16 @@
 # Maintainer: sandboiii <archlinux at sandboiii dot xyz>
 # Contributor: VHSgunzo <vhsgunzo.github.io>
 
-pkgname='vkteams-bin'
+pkgname='vk-workspace-bin'
 pkgbasename='vkworkspace'
 pkgver=26.3.0.132272
 pkgrel=1
 pkgdesc='VK WorkSpace app for team collaboration'
 arch=("x86_64")
 url='https://workspace.vk.ru/'
-provides=("$pkgbasename")
-conflicts=("$pkgbasename")
+provides=("$pkgbasename" 'vkteams')
+conflicts=("$pkgbasename" 'vkteams')
+replaces=('vkteams-bin' 'vkteams')
 install=$pkgname.install
 source=("$pkgbasename-$pkgver.tar.xz::https://hb.bizmrg.com/vkteams-www/linux/x64/$pkgver/$pkgbasename.tar.xz"
         "$pkgbasename.sh")
