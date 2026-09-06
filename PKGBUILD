@@ -1,6 +1,6 @@
 # Maintainer: Origuchi <tobiichioriguchi@gmail.com>
 pkgname=ifreedomer-flix
-pkgver=2.2.3.123
+pkgver=2.3.0.125
 pkgrel=1
 pkgdesc='Flix - 像聊天一样传文件. 跨平台文件传输工具，支持局域网内设备间快速分享文件。'
 arch=('x86_64')
@@ -10,10 +10,10 @@ depends=('libkeybinder3' 'libappindicator' 'libnotify')
 conflicts=('flix-bin')
 replaces=('flix-bin')
 source=(
-  "Flix-Linux-${pkgver}.deb::https://github.com/Tobiichi-Origuchi/flix-pkg/releases/download/v2.2.3.123/Flix-Linux-2.2.3.123.deb"
+  "Flix-Linux-${pkgver}.deb::https://github.com/Tobiichi-Origuchi/flix-pkg/releases/download/v2.3.0.125/Flix-Linux-2.3.0.125.deb"
 )
 sha256sums=(
-  'ea493d3d5d1529e2769579a59d0063abaf137b1f4de8fe5c67155fe869a7d0f1'
+  '5f07ebca98e198bacb1a00378b584c44f99a87d675880f9bc3638760895533bf'
 )
 
 package() {
