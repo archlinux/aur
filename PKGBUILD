@@ -6,7 +6,7 @@
 # Contributor: Franco Tortoriello <franco.tortoriello@gmail.com>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
-pkgname=lib32-libtirpc
+pkgname=lib32-libtirpc-git
 pkgver=1.3.8.rc1
 pkgrel=1
 pkgdesc='Transport Independent RPC library (SunRPC replacement)'
