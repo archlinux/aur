@@ -3,7 +3,7 @@
 
 pkgname=fluorine-manager-bin
 pkgdesc='A native Linux mod manager for Bethesda and other games, built on MO2'
-pkgver=0.3.3 # renovate: datasource=github-tags depName=SulfurNitride/Fluorine-Manager versioning=semver
+pkgver=0.3.4 # renovate: datasource=github-tags depName=SulfurNitride/Fluorine-Manager versioning=semver
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/SulfurNitride/Fluorine-Manager'
@@ -14,32 +14,21 @@ depends=('mesa' 'gcc-libs' 'hicolor-icon-theme')
 optdepends=('steam: allows the usage of Proton')
 options=(!strip)
 
-_releaseArchive="fluorine-manager-$pkgver.tar.gz"
+_releaseArchive="Fluorine-Manager.zip"
 source=("${_releaseArchive}::https://github.com/SulfurNitride/Fluorine-Manager/releases/download/v${pkgver}/${_releaseArchive}"
-        "LICENSE::https://raw.githubusercontent.com/SulfurNitride/Fluorine-Manager/refs/tags/v${pkgver}/LICENSE.txt")
-sha256sums=('8a04af17e2a0c84b4589ed8acf18dae440d3b0177e50276ffb0af7c24a6a4497'
-            '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
+        "LICENSE::https://raw.githubusercontent.com/SulfurNitride/Fluorine-Manager/refs/tags/v${pkgver}/LICENSE.txt"
+        "disable-desktop-sync.patch")
+sha256sums=('5d5de073f10ebaa998db24694cb2fcd04ec40fa07f65651e8f712254306538b8'
+            '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903'
+            '4369d2dfe6d61cc2b907c6441fa120b58e84011246be18cb1c470458ea4209b9')
+noextract=("${_releaseArchive}")
 
-build() {
-  # patch the original launch wrapper script to disable the sync dance stuff.
-  # the sed command below will:
-  # - overwrite the install target to ensure the sync process will always be skipped
-  # - overwrite the desktop icon install target, so it will never be installed by fluorine-manager
-  # - hard code the desktop file check to false, so fluorine-manager never creates a separate installation in the user home
-  sed -i \
-    -e 's|^BIN_DST="${FLUORINE_DATA}/bin"|BIN_DST="/opt/fluorine-manager"|' \
-    -e 's|^ICON_DST="${HOME}/.local/share/icons/hicolor/256x256/apps/com.fluorine.manager.png"|ICON_DST="${ICON_SRC}"|' \
-    -e 's|^if \[ -f "${DESKTOP_SRC}" \]; then|if false; then|' \
-    ${srcdir}/fluorine-manager/fluorine-manager
+prepare() {
+  mkdir -p "${srcdir}/fluorine-manager"
+  bsdtar -xf "${_releaseArchive}" -C "${srcdir}/fluorine-manager"
 
-  # fluorine-manager ships its own fontconfig library and requires a patched configuration for it.
-  # this will patch the fontconfig fix in the wrapper script to be compatible with this package.
-  sed -i \
-    -e 's|mkdir -p "${RUN}/etc/fonts"|mkdir -p "${FLUORINE_DATA}/bin/etc/fonts"|' \
-    -e 's|cat > "${RUN}/etc/fonts/fonts.conf" <<EOF|cat > "${FLUORINE_DATA}/bin/etc/fonts/fonts.conf" <<EOF|' \
-    -e 's|export FONTCONFIG_FILE="${RUN}/etc/fonts/fonts.conf"|export FONTCONFIG_FILE="${FLUORINE_DATA}/bin/etc/fonts/fonts.conf"|' \
-    -e 's|export FONTCONFIG_PATH="${RUN}/etc/fonts"|export FONTCONFIG_PATH="${FLUORINE_DATA}/bin/etc/fonts"|' \
-    ${srcdir}/fluorine-manager/fluorine-manager
+  # remove the post-installation sync to the user home from the wrapper script
+  patch -d "${srcdir}/fluorine-manager" -tNp1 -i ../disable-desktop-sync.patch
 }
 
 package() {

@@ -1,0 +1,151 @@
+diff -ura package.orig/fluorine-manager package.new/fluorine-manager
+--- package.orig/fluorine-manager	2026-09-05 03:24:58.000000000 +0200
++++ package.new/fluorine-manager	2026-09-06 23:19:15.742000000 +0200
+@@ -26,124 +26,7 @@
+ # This gives instances a stable symlink target that won't break if the user
+ # moves or deletes the original tarball extraction directory.
+ FLUORINE_DATA="${HOME}/.local/share/fluorine"
+-BIN_DST="${FLUORINE_DATA}/bin"
+-
+-# Guard: if we ARE already running from the installed location, skip the sync.
+-# Without this, running the binary directly from BIN_DST would rm -rf itself.
+-HERE_REAL="$(readlink -f "${HERE}")"
+-DST_REAL="$(readlink -f "${BIN_DST}" 2>/dev/null || echo "")"
+-if [ "${HERE_REAL}" != "${DST_REAL}" ]; then
+-    # Manifest lists top-level entries that belong to Fluorine. Without it we
+-    # can't distinguish our files from whatever else the user parked next to
+-    # the launcher (e.g. extracted into ~/Downloads alongside their mods).
+-    MANIFEST="${HERE}/fluorine-manifest.txt"
+-    if [ ! -f "${MANIFEST}" ] || [ ! -f "${HERE}/ModOrganizer-core" ]; then
+-        echo "ERROR: Fluorine launcher can't find its bundle files in ${HERE}." >&2
+-        echo "Extract the release archive into its own directory and run the" >&2
+-        echo "launcher from there — not from a folder containing other files." >&2
+-        exit 1
+-    fi
+-
+-    # New bundles carry a content-derived identity covering every shipped
+-    # regular file. Hashing this tiny identity file keeps launches cheap while
+-    # still noticing DLL/helper/plugin-only updates. Retain the old core
+-    # size+mtime identity for bundles created before this file existed.
+-    BUNDLE_VERSION="${HERE}/fluorine-bundle-version.txt"
+-    if [ -f "${BUNDLE_VERSION}" ]; then
+-        CURRENT_VER="bundle:$(sha256sum "${BUNDLE_VERSION}" | cut -d' ' -f1)"
+-    else
+-        CURRENT_VER="core:$(stat -c '%s:%Y' "${HERE}/ModOrganizer-core" 2>/dev/null || echo "unknown")"
+-    fi
+-    MARKER="${BIN_DST}/.version"
+-
+-    if [ ! -f "${MARKER}" ] || [ "$(cat "${MARKER}" 2>/dev/null)" != "${CURRENT_VER}" ]; then
+-        if [ -d "${BIN_DST}" ]; then
+-            echo "Updating Fluorine in ${BIN_DST}..." >&2
+-        else
+-            echo "Installing Fluorine to ${BIN_DST} (this may take a minute on first launch)..." >&2
+-        fi
+-        mkdir -p "${BIN_DST}"
+-
+-        # Overlay update — preserves anything the user dropped into bin/
+-        # (custom plugins under plugins/, a portable instance with
+-        # ModOrganizer.ini, downloaded mods, etc.). The manifest is our
+-        # authoritative list of "ours"; everything else is left alone.
+-        #
+-        # Step 1: orphan removal. Top-level entries we shipped before but no
+-        # longer ship get removed. Top-level granularity is enough — when the
+-        # entry is still in both manifests (e.g. "plugins"), we don't touch
+-        # the directory itself, only overwrite our own files inside.
+-        OLD_MANIFEST="${BIN_DST}/fluorine-manifest.txt"
+-        if [ -f "${OLD_MANIFEST}" ]; then
+-            # comm -23 = lines unique to the OLD manifest. sort -u for comm.
+-            while IFS= read -r entry; do
+-                [ -z "${entry}" ] && continue
+-                # Refuse anything that could escape BIN_DST.
+-                case "${entry}" in /*|*..*|.|..) continue ;; esac
+-                rm -rf "${BIN_DST:?}/${entry}"
+-            done < <(comm -23 \
+-                <(sort -u "${OLD_MANIFEST}") \
+-                <(sort -u "${MANIFEST}"))
+-        fi
+-
+-        # Step 2: overlay copy. tar piped to tar streams the manifested entries
+-        # from HERE into BIN_DST. Existing directories stay; existing files we
+-        # ship get overwritten with the new version; user-added files inside
+-        # our directories (e.g. plugins/MyCustomPlugin.so) are preserved.
+-        if ! tar -C "${HERE}" -cf - --files-from="${MANIFEST}" 2>/dev/null \
+-             | tar -C "${BIN_DST}" --no-same-owner -xf - ; then
+-            echo "ERROR: Fluorine sync failed mid-copy. The install may be in a broken state." >&2
+-            echo "Re-extract the release archive and run the launcher again." >&2
+-            exit 1
+-        fi
+-
+-        # Do not retain stale bundled OpenSSL runtimes from older releases.
+-        # TLS should resolve against the host so certificate handling can be
+-        # updated by the OS instead of being pinned to our old package.
+-        rm -f "${BIN_DST}"/lib/libssl.so* "${BIN_DST}"/lib/libcrypto.so* 2>/dev/null || true
+-
+-        # Refresh the manifest at the destination so the next update has it.
+-        cp -af "${MANIFEST}" "${BIN_DST}/fluorine-manifest.txt"
+-        echo "${CURRENT_VER}" > "${MARKER}"
+-        echo "Sync complete." >&2
+-
+-        # Clean up the in-app updater's staging directory once the new bundle
+-        # is live. Untouched if the user didn't go through the in-app updater.
+-        STAGING_DIR="${FLUORINE_DATA}/update-staging"
+-        [ -d "${STAGING_DIR}" ] && rm -rf "${STAGING_DIR}" 2>/dev/null || true
+-    fi
+-fi
+-
+-# ── Install icon + desktop file for Wayland taskbar/decoration ──
+-ICON_SRC="${BIN_DST}/icons/com.fluorine.manager.png"
+-ICON_DST="${HOME}/.local/share/icons/hicolor/256x256/apps/com.fluorine.manager.png"
+-DESKTOP_SRC="${BIN_DST}/icons/com.fluorine.manager.desktop"
+-DESKTOP_DST="${HOME}/.local/share/applications/com.fluorine.manager.desktop"
+-if [ -f "${ICON_SRC}" ] && [ ! -f "${ICON_DST}" ]; then
+-    mkdir -p "$(dirname "${ICON_DST}")"
+-    cp -f "${ICON_SRC}" "${ICON_DST}"
+-fi
+-if [ -f "${DESKTOP_SRC}" ]; then
+-    mkdir -p "$(dirname "${DESKTOP_DST}")"
+-    # This file belongs to Fluorine, so refresh it on every launch. Older
+-    # releases advertised the main desktop entry as an NXM handler but did not
+-    # include %u; leaving that file in place causes portals to drop the URL and
+-    # launch a second argument-less process.
+-    BIN_DST_SED="$(printf '%s' "${BIN_DST}" | sed 's/[&|\\]/\\&/g')"
+-    DESKTOP_TMP="${DESKTOP_DST}.tmp.$$"
+-    if sed \
+-        -e "s|^Exec=fluorine-manager %u$|Exec=\"${BIN_DST_SED}/fluorine-manager\" %u|" \
+-        -e "s|^Exec=fluorine-manager |Exec=\"${BIN_DST_SED}/fluorine-manager\" |" \
+-        "${DESKTOP_SRC}" > "${DESKTOP_TMP}"; then
+-        chmod +x "${DESKTOP_TMP}"
+-        mv -f "${DESKTOP_TMP}" "${DESKTOP_DST}"
+-        command -v update-desktop-database >/dev/null 2>&1 && \
+-            update-desktop-database "$(dirname "${DESKTOP_DST}")" \
+-                >/dev/null 2>&1 || true
+-    else
+-        rm -f "${DESKTOP_TMP}"
+-    fi
+-fi
++BIN_DST="/opt/fluorine-manager"
+ 
+ # Run from the synced location.
+ RUN="${BIN_DST}"
+@@ -174,8 +57,8 @@
+ # like xsi:nil and newer generic families. Use a minimal compatible config for
+ # Fluorine itself; launched games/tools restore the user's original env.
+ if [ -z "${FLUORINE_DISABLE_FONTCONFIG_FIX:-}" ]; then
+-    mkdir -p "${RUN}/etc/fonts"
+-    cat > "${RUN}/etc/fonts/fonts.conf" <<EOF
++    mkdir -p "${FLUORINE_DATA}/bin/etc/fonts"
++    cat > "${FLUORINE_DATA}/bin/etc/fonts/fonts.conf" <<EOF
+ <?xml version="1.0"?>
+ <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+ <fontconfig>
+@@ -207,8 +90,8 @@
+   </alias>
+ </fontconfig>
+ EOF
+-    export FONTCONFIG_FILE="${RUN}/etc/fonts/fonts.conf"
+-    export FONTCONFIG_PATH="${RUN}/etc/fonts"
++    export FONTCONFIG_FILE="${FLUORINE_DATA}/bin/etc/fonts/fonts.conf"
++    export FONTCONFIG_PATH="${FLUORINE_DATA}/bin/etc/fonts"
+ else
+     unset FONTCONFIG_FILE FONTCONFIG_PATH
+ fi
