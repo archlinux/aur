@@ -1,7 +1,7 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=ccusage-statusline-rs-bin
 _pkgname=ccusage-statusline-rs
-pkgver=1.14.1
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Fast statusline for Claude Code w/usage tracking, billing blocks, burn rate monitoring"
 arch=('x86_64' 'aarch64')
@@ -18,11 +18,11 @@ source_x86_64=("$_pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/$_pkgn
                "$_pkgname-$pkgver-x86_64.asc::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.asc")
 source_aarch64=("$_pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64"
                 "$_pkgname-$pkgver-aarch64.asc::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.asc")
-sha256sums=('b558ef6c1bc8e51270a147980c755c498d4354ea3f058619cc949f4dc6605f16'
+sha256sums=('de77161b4b86eafd26e0f993427a3b373a5ea6a060b5ae1cb7e955a0a61dc80d'
             'SKIP')
-sha256sums_x86_64=('ef466467d47141587027a97d7d0078bd824ad3054660b428ac357396d92c2992'
+sha256sums_x86_64=('9ff0ba58894959319d6bfbebb8f09277f2cd316e107266381b02b8fbd73e87ab'
                    'SKIP')
-sha256sums_aarch64=('a7ac59802adfff22804c99ab73aff7d932d9c0a8cdc2c48ceac1a5fc10ab71d6'
+sha256sums_aarch64=('6d16ae298bf60f0ede4c66b680efea17d11a4bbd06e94fd2450c5f1c451225af'
                     'SKIP')
 
 package() {
