@@ -1,8 +1,8 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale
-pkgver=0.9.11
-pkgrel=2
+pkgver=0.9.12
+pkgrel=1
 pkgdesc="CodeWhale (formerly DeepSeek-TUI) - DeepSeek-first agentic terminal for open-source coding models"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Hmbown/CodeWhale"
@@ -11,12 +11,13 @@ depends=('glibc' 'gcc-libs' 'dbus')
 makedepends=('rust' 'cargo')
 provides=('codewhale-tui' 'deepseek' 'deepseek-tui')
 conflicts=('codewhale-bin' 'codewhale-tui' 'deepseek' 'deepseek-tui' 'deepseek-tui-bin')
-options=('!lto')
+# Upstream's release binaries have no debug symbols.
+options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ef934985fbb728c11aeb4b29f76f4249738d52fb2976ec6397fca788ee5d95f9')
+sha256sums=('a5422b6c7a8434b12d5cd50a30485da36689804785241b89e886cd433b7ec48e')
 
 prepare() {
-    cd "CodeWhale-${pkgver}"
+    cd "Codewhale-${pkgver}"
 
     # Keep cargo state inside $srcdir so the build is reproducible and
     # never touches ~/.cargo.
@@ -25,10 +26,15 @@ prepare() {
 }
 
 build() {
-    cd "CodeWhale-${pkgver}"
+    cd "Codewhale-${pkgver}"
 
     export CARGO_HOME="${srcdir}/.cargo"
     export RUSTUP_TOOLCHAIN=stable
+    # Do not retain the build workspace or Cargo cache in Rust panic paths or
+    # rquickjs-sys's compiled C source-location strings.
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/Codewhale-${pkgver}=/build/codewhale --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry"
+    export CFLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}=/build -fdebug-prefix-map=${srcdir}=/build"
+
 
     # crates/cli ships codewhale; crates/tui ships codewhale-tui.
     # Upstream removed the deepseek/deepseek-tui legacy shims in v0.8.54.
@@ -40,7 +46,7 @@ build() {
 }
 
 package() {
-    cd "CodeWhale-${pkgver}"
+    cd "Codewhale-${pkgver}"
 
     install -Dm755 "target/release/codewhale"     "${pkgdir}/usr/bin/codewhale"
     install -Dm755 "target/release/codewhale-tui" "${pkgdir}/usr/bin/codewhale-tui"
