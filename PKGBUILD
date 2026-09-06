@@ -1,6 +1,6 @@
 # Maintainer: ramisotti13-eng
 pkgname=basecamp-linux
-pkgver=2.1.0
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="Unofficial Linux companion app for Mountain peripherals (Everest Max/60 keyboards, Makalu 67/Max mouse, DisplayPad)"
 arch=('x86_64')
@@ -11,12 +11,13 @@ optdepends=('xdotool: keypress/text actions on X11'
             'ydotool: keypress/text actions on Wayland'
             'zenity: native file picker on GNOME and other non-KDE desktops'
             'kdialog: native file picker on KDE'
-            'playerctl: required by the Now Playing plugin (MPRIS media control)')
+            'playerctl: required by the Now Playing plugin (MPRIS media control)'
+            'libpulse: per-app volume and mute via pactl (Now Playing plugin)')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/ramisotti13-eng/BaseCamp-Linux/releases/download/v${pkgver}/BaseCamp-Linux-x86_64-fedora.AppImage"
         "99-mountain.rules::https://raw.githubusercontent.com/ramisotti13-eng/BaseCamp-Linux/v${pkgver}/99-mountain.rules"
         "app_icon_256.png::https://raw.githubusercontent.com/ramisotti13-eng/BaseCamp-Linux/v${pkgver}/resources/app_icon_256.png"
         "basecamp-linux.desktop")
-sha256sums=('6e463172abcc339a0462df8b862579dec236c89bb74837798d974d7336560d5d'
+sha256sums=('cb4e92a293f1b84551e9a10a1d52ae56c8ff9fc8d75df0f779ef9f8983708083'
             'SKIP'
             'SKIP'
             'SKIP')
