@@ -1,6 +1,6 @@
 # Maintainer: Renat Gorbushin <lis@lis314.ru>
 pkgname=kaeru-mcp
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Cross-agent cognitive engine for LLM agents"
 arch=('x86_64')
@@ -10,21 +10,27 @@ depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'clang' 'git')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "kaeru-mcp.service")
-sha256sums=('71cb73b73195a2e9f43ea5e592d08e7dbb42332e77150769e9b3316bd2fe7449'
+sha256sums=('40a0945df162a249f55faead4b64958221f63b079ab21dd97d5801e605d73e69'
             '7903bf86742dee200aaf362888a9446282aecd113dbbbb29768fd8ef5044c1ad')
 
 build() {
     cd "${srcdir}/${pkgname}"
 
     export MAKEFLAGS="--jobs=$(nproc)"
-    # GCC 16 no longer makes uint64_t/uint32_t available via 
-    # transitive includes — the bundled RocksDB in cozorocks-0.1.7 has 
-    # dozens of headers that rely on this.
-    # Also strips the srcdir from C++ debug info embedded by cozorocks/cxx bridge
-    export CXXFLAGS="$CXXFLAGS -march=native -include cstdint -ffile-prefix-map=$srcdir=/build"
-    export RUSTFLAGS="--remap-path-prefix=$srcdir=/build --remap-path-prefix=$HOME/.cargo=/cargo -C target-cpu=native"
-    
-    cargo build -p kaeru-mcp --release
+    # GCC 16 no longer makes uint64_t/uint32_t available via
+    # transitive includes — the bundled RocksDB in cozorocks-0.1.7 has
+    # dozens of headers that rely on this. This is a C++ (<cstdint>) header
+    # problem only — do NOT put -include cstdint in CFLAGS, it breaks
+    # ring's .S/.c sources (cc has no C++ include path for it).
+    # Also strips the srcdir from debug info embedded by cozorocks/cxx bridge.
+    # No -march=native / -C target-cpu=native: those tie the resulting
+    # binary to the exact CPU of whatever machine runs makepkg — not
+    # reproducible across machines.
+    export CFLAGS="$CFLAGS -ffile-prefix-map=$srcdir=/build"
+    export CXXFLAGS="$CXXFLAGS -include cstdint -ffile-prefix-map=$srcdir=/build"
+    export RUSTFLAGS="--remap-path-prefix=$srcdir=/build --remap-path-prefix=$HOME/.cargo=/cargo"
+
+    cargo build -p kaeru-mcp --release --locked
 }
 
 package() {
