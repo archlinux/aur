@@ -1,4 +1,11 @@
 post_install() {
     echo ">>    Приложение создаст файлы .desktop при первом запуске"
-    echo ">>    Запустите приложение с помощью команды vkteams"
+    echo ">>    Запустите приложение с помощью команды vkworkspace"
+}
+
+post_upgrade() {
+    echo ">>    ВНИМАНИЕ: приложение переименовано в VK WorkSpace"
+    echo ">>    Команда запуска изменилась: vkteams -> vkworkspace"
+    echo ">>    Каталог установки: /opt/vkteams -> /opt/vkworkspace"
+    echo ">>    Обновите ярлыки и .desktop, если создавали их вручную"
 }

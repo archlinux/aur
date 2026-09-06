@@ -1,18 +1,18 @@
 pkgbase = vkteams-bin
-	pkgdesc = VK Team app for team collaboration
-	pkgver = 26.1.10.79081
+	pkgdesc = VK WorkSpace app for team collaboration
+	pkgver = 26.3.0.132272
 	pkgrel = 1
-	url = https://teams.vk.com
+	url = https://workspace.vk.ru/
 	install = vkteams-bin.install
 	arch = x86_64
 	optdepends = hunspell: spell checker
 	optdepends = hunspell-ru: проверка орфографии
-	provides = vkteams
-	conflicts = vkteams
+	provides = vkworkspace
+	conflicts = vkworkspace
 	options = !strip
-	source = vkteams-26.1.10.79081.tar.xz::https://hb.bizmrg.com/vkteams-www/linux/x64/26.1.10.79081/vkworkspace.tar.xz
-	source = vkteams.sh
-	sha256sums = 2934ce988d3f814b649b6d259866380c227d9dc849a0683636499b72959782bf
-	sha256sums = 386d38d3b81531c478d65832816b604a5cf28b18b6c0b999933e0a7775ed84bf
+	source = vkworkspace-26.3.0.132272.tar.xz::https://hb.bizmrg.com/vkteams-www/linux/x64/26.3.0.132272/vkworkspace.tar.xz
+	source = vkworkspace.sh
+	sha256sums = 7a399ea8d124c800ead64434e28ed18c0d911154e30b19cbfb1dba39953b9f8a
+	sha256sums = 1682a949a32b87b322c5490ec0ca380421a8a4c45d13948bac097986e02905bb
 
 pkgname = vkteams-bin
