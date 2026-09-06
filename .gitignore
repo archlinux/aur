@@ -1,0 +1,32 @@
+# Allowlist: everything is ignored, only the files below are tracked.
+# Build output (src/, pkg/, downloaded sources, built packages, logs) is
+# covered by the catch-all and needs no rules of its own.
+*
+
+!.gitignore
+
+# Packaging
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!README.md
+!*.install
+!*.sysusers
+!*.tmpfiles
+!*.logrotate
+!*.pam
+!*.service
+!*.socket
+!*.timer
+!*.desktop
+!*.hook
+
+# Upstream signing keys
+!keys/
+!keys/**
+
+# Licensing (REUSE)
+!REUSE.toml
+!LICENSE
+!LICENSES/
+!LICENSES/*.txt
