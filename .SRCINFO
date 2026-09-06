@@ -14,7 +14,10 @@ pkgbase = python-rq
 	depends = python-setproctitle
 	depends = python-typing_extensions
 	depends = python-greenlet
-	source = https://github.com/rq/rq/archive/refs/tags/v2.12.tar.gz
+	provides = rq
+	provides = rqinfo
+	provides = rqworker
+	source = rq-2.12.tgz::https://github.com/rq/rq/archive/v2.12.tar.gz
 	sha256sums = 44909b860af739a185f58831f4a38bbf19d733ba13433b2614585fbc2d75f055
 
 pkgname = python-rq

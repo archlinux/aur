@@ -9,14 +9,15 @@ pkgver=2.12
 pkgrel=1
 pkgdesc="Simple job queues for Python"
 
-arch=(any)
+arch=('any')
 license=("BSD-2-Clause")
-url="https://github.com/${basename}/${basename}"
+url="https://github.com/rq/${basename}"
 
+provides=("${basename}"{,info,worker})
 makedepends=('python-hatch' 'python-installer')
 depends=('python' 'python-click' 'python-croniter' 'python-redis' 'python-setproctitle' 'python-typing_extensions' 'python-greenlet')
 
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${basename}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('44909b860af739a185f58831f4a38bbf19d733ba13433b2614585fbc2d75f055')
 
 build() {
