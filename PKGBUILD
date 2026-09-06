@@ -3,7 +3,7 @@
 _pkgauthor=hjson
 _pkgname=hjson-go
 pkgname=${_pkgname%-go}-cli-bin
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="Hjson in Go"
 arch=('x86_64' 'i686' 'aarch64')
@@ -23,9 +23,9 @@ source_i686=("${url}/releases/download/v${pkgver}/${_pkgname%-go}_v${pkgver}_lin
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname%-go}_v${pkgver}_linux_${_barch[2]}.tar.gz")
 sha256sums=('a3b3d309b774913dafd47225c1c6bbed1b23aa1780ca1cc89ea1bad0d82cf7b1'
             '1efa3b9ddaa20f92cc14028302b104bf90962656bd17b23cfe06cb5813433789')
-sha256sums_x86_64=('80eabd3bdcce2472ad497df1b59925ba6062e8d73c924584b218830a80cc0c61')
-sha256sums_i686=('59e6565b28fe5b0ecb77fffa4fba644a2290e14cc8927fba485f3519e0a2fa11')
-sha256sums_aarch64=('2d014138789099ff6d0103e984e058c60d05afa15ecfd58385ade8a7e1cfca5b')
+sha256sums_x86_64=('b00e9398a2ce719ade00afd508639fc426a1c42adcafb0c7681e68b0ce093a61')
+sha256sums_i686=('6b41564b72221d59d2c8e69e5803f35777051b797d856ac5da02d6775346b417')
+sha256sums_aarch64=('4689d1dc2aa4bccb3145972a0f80129b1259093c0093d48f740fe8d6c1d529de')
 
 
 package() {
