@@ -1,12 +1,13 @@
 # Maintainer: Alex3236 <me@alex3236.moe>
 
 pkgname=pineapple-notepad-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A Qt 6, KDE Framework and Scintilla-based Cross-Platform Notepad++ Alternative"
 arch=('x86_64')
 url="https://github.com/BLumia/pineapple-notepad"
-license=('custom:Pineapple Notepad EULA')
+license=('LicenseRef-Pineapple-Notepad-EULA')
+options=('!debug')
 depends=(
     'gcc-libs'
     'glibc'
@@ -22,6 +23,7 @@ depends=(
     'qt6-5compat'
     'syntax-highlighting'
     'qt6-base'
+    'hicolor-icon-theme'
 )
 makedepends=('patchelf')
 optdepends=('breeze: Breeze widget style for Qt (recommended for best experience)')
@@ -32,11 +34,9 @@ source=(
     "${pkgname}-${pkgver}-debian.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-debian-trixie-x86_64-${pkgver}.deb"
     "EULA::https://raw.githubusercontent.com/BLumia/pineapple-notepad/master/LICENSE"
 )
-sha256sums=(
-    'dd76e1f1e1893b47e57fe606aefc7ae61b64e092214825d67812587050c4e4ff'
-    '3fa76f7b7065028caa41a18687df79774defc041cb1552cc0d363a48dee63104'
-    'SKIP'
-)
+sha256sums=('82aa39cd5b8bd6f6189d0500477357e0eee728e31a4b783ba4423455bf217a83'
+            '978143f0fbc83884eb15faabfdd64010eefcbcf94e09a0b8fd2866e3b4b35823'
+            'f514b2154d0e975b6117368273d091e0b15833d09fc61cfd968c8dce130f639f')
 
 package() {
     cd "$srcdir"
