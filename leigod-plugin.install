@@ -23,7 +23,13 @@ restore_bind_state() {
 
 pre_install()  { save_bind_state; }
 pre_upgrade()  { save_bind_state; }
-pre_remove()   { save_bind_state; }
+pre_remove() {
+    save_bind_state
+    # pacman 删 unit 文件不会停掉运行中的服务, 不主动停会在卸载后留下幽灵
+    # 沙箱/进程, 守护进程持续重写 accelerator.ini 产生孤儿文件, 重装时报
+    # "文件系统中已存在" 冲突。`|| true` 容错: 服务未运行时 stop 返回非零。
+    systemctl stop leigod 2>/dev/null || true
+}
 
 post_install_msg() {
     echo ""
@@ -55,5 +61,6 @@ post_upgrade() { restore_bind_state; systemctl daemon-reload; }
 
 post_remove() {
     systemctl daemon-reload
-    echo "已卸载。残留自查: acc-gw.router 进程 / dummy wlan0 / mangle 规则"
+    echo "已卸载(leigod 服务已自动停止)。残留自查: dummy wlan0 / mangle 规则"
+    echo "  (均为运行期产物, 重启即消失; mangle 如需立即清理: iptables -t mangle -L OUTPUT -n)"
 }

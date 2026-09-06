@@ -1,7 +1,7 @@
 pkgbase = leigod-steamdeck-plugin
 	pkgdesc = Leigod accelerator SteamDeck plugin on generic Linux via bwrap SteamDeck emulation
 	pkgver = 1.2.2.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.leigod.com
 	install = leigod-plugin.install
 	arch = x86_64
