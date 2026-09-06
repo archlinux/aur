@@ -1,6 +1,6 @@
 pkgbase = tailport-bin
 	pkgdesc = TUI to expose local ports across your tailnet via tailscale serve (prebuilt binary)
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/gruen/tailport
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = tailport-bin
 	conflicts = tailport
 	options = !strip
 	options = !debug
-	source = LICENSE-0.2.4::https://raw.githubusercontent.com/gruen/tailport/v0.2.4/LICENSE
-	source = README-0.2.4.md::https://raw.githubusercontent.com/gruen/tailport/v0.2.4/README.md
+	source = LICENSE-0.2.5::https://raw.githubusercontent.com/gruen/tailport/v0.2.5/LICENSE
+	source = README-0.2.5.md::https://raw.githubusercontent.com/gruen/tailport/v0.2.5/README.md
 	sha256sums = 6ab5a1c9312683bea5942efc33876a1fcef67cfa065029f2939c14392ee9ed7a
 	sha256sums = 963654129b3db24d91daf1ea123ee7c2f305111951001c6dd52f9f8e9c1aeae2
-	source_x86_64 = tailport-0.2.4-x86_64::https://github.com/gruen/tailport/releases/download/v0.2.4/tailport-linux-amd64
-	sha256sums_x86_64 = d41985eb918dbf9ab25724d2173fd4e817f11d178a75d9b0869bf0837988afa6
-	source_aarch64 = tailport-0.2.4-aarch64::https://github.com/gruen/tailport/releases/download/v0.2.4/tailport-linux-arm64
-	sha256sums_aarch64 = 818176f5022e00c16acb16c4c47b2fc434cc1e3837ded98bb3cc376042fcae22
+	source_x86_64 = tailport-0.2.5-x86_64::https://github.com/gruen/tailport/releases/download/v0.2.5/tailport-linux-amd64
+	sha256sums_x86_64 = 0e2c20048bdaad45efe3e90f46554cf7c9f359c95f860c1b9752ef22328c5f1c
+	source_aarch64 = tailport-0.2.5-aarch64::https://github.com/gruen/tailport/releases/download/v0.2.5/tailport-linux-arm64
+	sha256sums_aarch64 = 84f7842f13be97bb6d35b655718b60836179733947d146b11f00e6736499bbb2
 
 pkgname = tailport-bin
