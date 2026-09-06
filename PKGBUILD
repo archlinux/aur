@@ -2,7 +2,7 @@
 
 pkgname=python-vondb
 _name=${pkgname#python-}
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 pkgdesc="VON: vEnhance's Olympiad Navigator"
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=(
   'texlive-latex: for LaTeX support'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('172ff075ccbfa86efa5f0d5c702a6a84d40bdbb6e4eed15dc8be0ea39b7e5803')
+sha256sums=('fc53d3b8dbb99aba0ccb17e35b21de535bcd3ab383723f302be8e7b1384fa6d2')
 
 build() {
   cd "$_name-$pkgver"
