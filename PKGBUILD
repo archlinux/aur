@@ -2,7 +2,7 @@
 # Contributor: Patryk Rozanski <rozanski.patryk@gmail.com>
 pkgname=neomacs-bin
 _pkgname=neomacs
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 pkgdesc="GPU powered Emacs written in Rust with a modern display engine (prebuilt binary)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
 provides=('neomacs')
 conflicts=('neomacs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eval-exec/neomacs/releases/download/v${pkgver}/neomacs-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('385d3485855cedfd77b57c2b3917e1fd4e624607901622679da3ce25c08ea112')
+sha256sums=('baaa9af9148d168422bb56b34ba2ad470cf0e76810a1a0cb9a6515b1fb6a1c73')
 
 package() {
   local _dir="neomacs-${pkgver}-x86_64-unknown-linux-gnu"

@@ -1,6 +1,6 @@
 pkgbase = neomacs-bin
 	pkgdesc = GPU powered Emacs written in Rust with a modern display engine (prebuilt binary)
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/eval-exec/neomacs
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = neomacs-bin
 	optdepends = gst-plugins-base-libs: for video playback plugins
 	provides = neomacs
 	conflicts = neomacs
-	source = neomacs-bin-0.0.16.tar.gz::https://github.com/eval-exec/neomacs/releases/download/v0.0.16/neomacs-0.0.16-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 385d3485855cedfd77b57c2b3917e1fd4e624607901622679da3ce25c08ea112
+	source = neomacs-bin-0.0.17.tar.gz::https://github.com/eval-exec/neomacs/releases/download/v0.0.17/neomacs-0.0.17-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = baaa9af9148d168422bb56b34ba2ad470cf0e76810a1a0cb9a6515b1fb6a1c73
 
 pkgname = neomacs-bin
