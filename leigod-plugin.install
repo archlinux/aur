@@ -50,14 +50,22 @@ post_install_msg() {
     echo "   门前过滤保证它只见到 WebSocket 连接。"
     echo ""
     echo " 日志: journalctl -xeu leigod"
-    echo "       tail -f /tmp/acc/log/steamdeck_acc_monitor.log"
+    echo "       tail -f /opt/leigod/log/steamdeck_acc_monitor.log"
     echo ""
     echo " 重要: 本包按设计与主机共享网络, 插件会以 root 修改主机路由表和 iptables 规则;"
     echo "       卸载本包不会清空 mangle 表, 如需清理请自查: iptables -t mangle -L OUTPUT -n"
 }
 
 post_install() { restore_bind_state; systemctl daemon-reload; post_install_msg; }
-post_upgrade() { restore_bind_state; systemctl daemon-reload; }
+post_upgrade() {
+    restore_bind_state
+    systemctl daemon-reload
+    # unit/沙箱配置可能随升级变化: 服务运行中则立即重启以应用新单元
+    # (if 语法保证服务未运行时整段以 0 退出, 否则 pacman 报安装脚本失败)
+    if systemctl is-active --quiet leigod; then
+        systemctl restart leigod
+    fi
+}
 
 post_remove() {
     systemctl daemon-reload

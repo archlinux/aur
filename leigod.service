@@ -1,17 +1,66 @@
-# leigod 加速器(SteamDeck 插件) bwrap 沙箱服务
-# 网络与主机共享: 插件会以 root 修改主机路由表与 iptables 规则, 此为预期行为
+# leigod 加速器(SteamDeck 插件)加固沙箱服务
+#
+# 挂载/能力/命名空间由 systemd 在 exec 前搭好; 网络与主机共享: 插件以 root
+# 修改宿主路由表/iptables/ipset, 属预期行为。
+# 设计与放宽见 README「安全与已知限制」, 排障见 TROUBLESHOOTING.md。
+
 [Unit]
-Description=Leigod accelerator plugin (bwrap SteamDeck sandbox, shared network)
+Description=Leigod accelerator plugin (systemd hardened SteamDeck sandbox, shared network)
 Wants=network-online.target
 After=network-online.target
 
 [Service]
 Type=simple
 ExecStartPre=/usr/lib/leigod/ensure-wlan0.sh
+# /var/run 由根 tmpfs 自建: 官方锁文件须随沙箱销毁, 不可 bind 宿主 /run(MIGRATION.md §5)。
+ExecStartPre=/usr/bin/mkdir -p /var/run
 ExecStart=/usr/lib/leigod/run.sh /home/deck/leigod/steamdeck_acc_monitor.sh release
 Restart=always
 RestartSec=3
 KillMode=control-group
+# monitor(ns pid 1)经构建期 TERM trap 响应停服; 本超时仅为其失效时的兜底。
+TimeoutStopSec=5
+
+# 私有 pid 命名空间(隐含 MountAPIVFS=yes), /proc 只含沙箱进程。
+PrivatePIDs=yes
+
+PrivateDevices=yes
+DevicePolicy=closed
+DeviceAllow=/dev/net/tun rw
+# 私有 /dev 不含 /dev/net, DeviceAllow 只放行 cgroup 不建节点, tun 须显式 bind。
+BindPaths=/dev/net/tun
+
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW
+NoNewPrivileges=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+RestrictNamespaces=yes
+LockPersonality=true
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+
+ProtectKernelTunables=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+
+# 根整体替换为空 tmpfs, 由下方 bind 白名单放回; 视图与宿主顶层布局无关(MIGRATION.md §8)。
+TemporaryFileSystem=/
+
+# bind 顺序敏感: 同路径后者覆盖前者, os-release 覆盖须在 /usr 之后。
+# /bin /lib /lib64 /sbin 为 usr-merged 链接路径, 根遮蔽后须显式 bind(shebang/ELF 解释器)。
+BindReadOnlyPaths=/usr /bin /lib /lib64 /sbin /etc/passwd /etc/group /etc/nsswitch.conf /etc/hosts /etc/resolv.conf /etc/machine-id /etc/localtime /etc/ld.so.cache /etc/ca-certificates /etc/ssl/certs /etc/leigod /opt/leigod/fake_os_release:/usr/lib/os-release /opt/leigod/fake_os_release:/etc/os-release /opt/leigod/fake_product_name:/sys/class/dmi/id/product_name
+
+# 可写 bind: 安装目录伪装(=/opt/leigod, 配置/绑定持久化)、日志落点(宿主
+# /opt/leigod/log)、/etc/version 版本伪装(升级程序回写)。
+BindPaths=/opt/leigod:/home/deck/leigod
+BindPaths=/opt/leigod/log:/tmp/acc/log
+BindPaths=/opt/leigod/fake_version:/etc/version
+
+WorkingDirectory=/home/deck/leigod
+Environment=HOME=/home/deck
+UMask=0077
 
 [Install]
 WantedBy=multi-user.target
