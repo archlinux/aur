@@ -20,11 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=1f6c1916c1deceae7ff688a048d6c5affa732646} # daily-1046
+: ${_runtime_commit:=41fb7de3adb7f33223ae5b24b969a93efa29a9aa} # daily-1070
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.17.1
+pkgver=12.17.2
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -120,14 +120,12 @@ source=(
   "$_pkgname-runtime-${_runtime_commit::7}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-Runtime/archive/$_runtime_commit.$_pkgext"
   "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
   "$_pkgname.desktop"
-  '0001-fix-rust-1.98-targets.patch'
 )
 sha256sums=(
-  '234cffe68dbe781023fa595c119b89bbe51b5be832e9756b5470f33e51db3766'
+  'fc45b232fa2a8f532f48478380dc7e41f473ec2770e9d73cb7c3a113da345cfa'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
-  '8e93bc3f7745bd4a6bcf952120b60a260ea867f0c8319ea8f6df18ed1281bc1f'
 )
 
 _deno() {
