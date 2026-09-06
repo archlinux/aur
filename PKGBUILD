@@ -3,7 +3,7 @@
 _pkgauthor=jpillora
 _pkgname=temo
 pkgname=${_pkgname}-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A terminal demoscene in pure Go, built entirely on Charm libraries'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -21,9 +21,9 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[2]}.tar.gz")
 
-sha256sums_x86_64=('c75cb6c34b5e5e6fcb21b1ed0fe10b4d2da7fcfe6faa450ad2a108308ebd2d6c')
-sha256sums_i686=('07998fd140042ad97546c75d47e618d4846907d662e13b2961f46e56694b5fc5')
-sha256sums_aarch64=('51b1fdb2ca6b1f810b85854b7be3529d7281e453ccfdcebcf1e0e2629ad45b98')
+sha256sums_x86_64=('560c2d2013453d679d10a21bb0293484831d57de81af26d12fc77998dc95f565')
+sha256sums_i686=('17231385b4ab6c36e3bb64b46b68b363da7038b14820789aa83a296b8b765aee')
+sha256sums_aarch64=('95f3dabaa3477c01185c578f37f4fe5f21779024f3313f9c83e5634e47be1703')
 
 
 package() {
