@@ -1,9 +1,9 @@
 pkgbase = python-type-lens
 	pkgdesc = Runtime type introspection utilities
 	pkgver = 0.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/litestar-org/type-lens
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-build

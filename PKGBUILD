@@ -4,13 +4,13 @@
 
 _pkgver=v0.2.6
 pkgver="${_pkgver#v}"
-pkgrel=3
+pkgrel=4
 
 _pkgname=type-lens
 pkgname="python-${_pkgname}"
 
 pkgdesc='Runtime type introspection utilities'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/litestar-org/type-lens'
 license=('MIT')
 
