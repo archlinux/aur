@@ -1,7 +1,7 @@
 pkgbase = valhalla
 	pkgdesc = Routing engine for OpenStreetMap.
 	pkgver = 3.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/valhalla/valhalla
 	arch = x86_64
 	arch = aarch64
@@ -29,6 +29,8 @@ pkgbase = valhalla
 	depends = lz4
 	depends = libgeotiff
 	source = valhalla-3.8.3::git+https://github.com/valhalla/valhalla#tag=3.8.3
+	source = no-python-stubgen.patch
 	sha256sums = SKIP
+	sha256sums = b3fa1ceb574753e78c66bc07859cb2a4ab26007b5a5d7d60c64172690841086f
 
 pkgname = valhalla

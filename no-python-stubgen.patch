@@ -1,0 +1,10 @@
+--- a/src/bindings/python/CMakeLists.txt
++++ b/src/bindings/python/CMakeLists.txt
+@@ -70,7 +70,6 @@
+               ${CMAKE_CURRENT_SOURCE_DIR}/scripts/prepend_pyi_header.py ${_pyi})
+   endfunction()
+ 
+-  valhalla_python_stub(_valhalla valhalla/_valhalla.pyi)
+ endif()
+ 
+ set(py_srcs
