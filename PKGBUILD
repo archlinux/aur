@@ -1,10 +1,10 @@
 # Maintainer: jtaw5649
 pkgname=hyprspaces-tools
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper CLI and config automation for the hyprspaces HyprPM plugin"
 arch=('any')
-url='https://gitlab.com/jtaw5649/hyprspaces'
+url='https://gitlab.com/jtaw5649/Hyprspaces'
 license=('BSD-3-Clause')
 depends=('bash' 'python' 'hyprland')
 conflicts=('hyprspaces<2.0.0')
