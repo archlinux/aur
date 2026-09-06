@@ -2,7 +2,7 @@
 # Contributor: djsigmann <aur+djsigmann@protonmail.com>
 pkgname=casual-pre-loader
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TF2 particle modifications via some wizardry."
 arch=('x86_64')
 url="https://cueki.github.io/casual-pre-loader/"
@@ -44,5 +44,6 @@ package() {
 	ln -s "/usr/lib/${pkgname}/gui/icons/cueki_icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm644 "$srcdir/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	rm "${pkgdir}/usr/lib/${pkgname}/core/quickprecache/studio/.git"
 	touch "${pkgdir}/usr/lib/${pkgname}/.noportable"
 }
