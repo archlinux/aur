@@ -24,7 +24,7 @@ url="http://sourceforge.net/projects/slim.berlios/"
 license=('GPL2')
 conflicts=('slim')
 provides=('slim')
-depends=('pam' 'libxmu' 'libpng' 'libjpeg' 'libxft' 'libxrandr' 'xorg-xauth'
+depends=('pam' 'libxmu' 'libpng' 'libjpeg-turbo' 'libxft' 'libxrandr' 'xorg-xauth'
          'ttf-font')
 makedepends=('cmake' 'freeglut')
 backup=('etc/slim.conf' 'etc/logrotate.d/slim' 'etc/pam.d/slim'
@@ -51,8 +51,7 @@ sha256sums=('21defeed175418c46d71af71fd493cd0cbffd693f9d43c2151529125859810df'
             '5bf44748b5003f2332d8b268060c400120b9100d033fa9d35468670d827f6def'
             'a6d021e52661c74914dc1c4a08ffbd7fce63da41005bfe006e252a74c57c9b70'
             '03149c9f5afb4679e9421d9965ecc126c0b159636212000aca98cb674b531ca7'
-            'b5ec2da4d3fa62b59efe14412347825f21ad471b6131cfd9b60aee7aff70c661'
-            )
+            'b5ec2da4d3fa62b59efe14412347825f21ad471b6131cfd9b60aee7aff70c661')
 
 prepare() {
   cd slim-$pkgver
@@ -73,6 +72,7 @@ build() {
   cd slim-$pkgver
 
   cmake \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
