@@ -1,0 +1,95 @@
+From e58566fd2d38f649974132132bc81f1570d27418 Mon Sep 17 00:00:00 2001
+From: Matthew Schwartz <matthew.schwartz@linux.dev>
+Date: Wed, 29 Jul 2026 13:13:16 -0700
+Subject: [PATCH 1/2] Support indexed thermal hwmon names
+
+Linux commit d6323469bcfb ("thermal: hwmon: Register a hwmon device
+for each thermal zone") in 7.2-rc changed thermal hwmon names from the
+thermal zone type to <type>_<zone-id>. It was also backported to Linux
+7.1.5 as commit 996957016bc1.
+
+Consequently, systems that previously exposed an ACPI thermal hwmon
+named "acpitz" may now expose "acpitz_0". The exact-name lookup fails
+in that case, preventing fan control from starting.
+
+Preserve the exact-name lookup for older kernels, then fall back to
+names with a numeric zone-ID suffix. If multiple indexed names exist,
+select the lowest zone ID to match the previous first-zone behavior.
+---
+ usr/share/jupiter-fan-control/fancontrol.py | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/usr/share/jupiter-fan-control/fancontrol.py b/usr/share/jupiter-fan-control/fancontrol.py
+index 595cd7e..557e0dc 100755
+--- a/usr/share/jupiter-fan-control/fancontrol.py
++++ b/usr/share/jupiter-fan-control/fancontrol.py
+@@ -388,15 +388,28 @@ class Sensor:
+ 
+ def get_full_path(base_path, name) -> str:
+     """helper function to find correct hwmon* path for a given device name"""
++    indexed_matches = []
++
+     for directory in os.listdir(base_path):
+-        full_path = base_path + directory + "/"
++        full_path = os.path.join(base_path, directory)
+         try:
+-            test_name = open(full_path + "name", encoding="utf8").read().strip()
++            with open(os.path.join(full_path, "name"), encoding="utf8") as name_file:
++                test_name = name_file.read().strip()
+             if test_name == name:
+-                return full_path
++                return full_path + "/"
++
++            prefix = name + "_"
++            if test_name.startswith(prefix):
++                suffix = test_name[len(prefix) :]
++                if suffix.isdecimal():
++                    indexed_matches.append((int(suffix), full_path))
+         except Exception:
+             pass
+ 
++    if indexed_matches:
++        _, full_path = min(indexed_matches)
++        return full_path + "/"
++
+     raise FileNotFoundError(f"failed to find device {name}")
+ 
+ 
+-- 
+2.43.0
+
+
+From 460e4593d42e826793ceab4abc9047cd7d2425ac Mon Sep 17 00:00:00 2001
+From: Matthew Schwartz <matthew.schwartz@linux.dev>
+Date: Wed, 29 Jul 2026 14:12:30 -0700
+Subject: [PATCH 2/2] Do not mask hwmon lookup failure during fan init
+
+initialize_fan() constructs the Fan in a finally block, which also runs
+when the fan_hwmon_name_alt fallback lookup raises. fan_path is unbound
+at that point, so the FileNotFoundError is replaced by an
+UnboundLocalError, which the retry loop in main() does not catch. A fan
+hwmon that is merely late to appear kills the service instead of being
+retried.
+
+Construct the Fan after the try/except so the error propagates.
+---
+ usr/share/jupiter-fan-control/fancontrol.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/usr/share/jupiter-fan-control/fancontrol.py b/usr/share/jupiter-fan-control/fancontrol.py
+index 557e0dc..95e7187 100755
+--- a/usr/share/jupiter-fan-control/fancontrol.py
++++ b/usr/share/jupiter-fan-control/fancontrol.py
+@@ -468,8 +468,8 @@ class FanController:
+             fan_path = get_full_path(
+                 self.base_hwmon_path, self.config["fan_hwmon_name_alt"]
+             )
+-        finally:
+-            self.fan = Fan(fan_path, self.config, dmi)
++
++        self.fan = Fan(fan_path, self.config, dmi)
+ 
+     def print_single(self, source_name):
+         """pretty print all device values, temp source, and output"""
+-- 
+2.43.0
