@@ -1,0 +1,137 @@
+diff --git a/Makefile b/Makefile
+index e684108..955085c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -29,7 +29,9 @@ PROTO_SRCS  := $(patsubst %,$(GEN)/%-protocol.c,$(PROTO_NAMES))
+ PROTO_OBJS  := $(PROTO_SRCS:.c=.o)
+ 
+ DEPS    := wayland-client xkbcommon freerdp3 freerdp-server3 winpr3 libpipewire-0.3
+-CFLAGS  += -std=c11 -Wall -Wextra -O2 -I$(GEN) -Isrc $(shell pkg-config --cflags $(DEPS))
++CFLAGS  ?= -O2
++CFLAGS  += -std=c11 -Wall -Wextra
++CPPFLAGS += -I$(GEN) -Isrc $(shell pkg-config --cflags $(DEPS))
+ LDLIBS  += $(shell pkg-config --libs $(DEPS))
+ 
+ .PHONY: all clean protocols
+@@ -41,16 +43,16 @@ protocols: $(PROTO_HDRS) $(PROTO_SRCS)
+ # has no way to know that from the .c alone.
+ $(BUILD)/%.o: src/%.c | $(PROTO_HDRS)
+ 	@mkdir -p $(@D)
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+ 
+ $(BUILD)/wayrdp-probe: $(BUILD)/probe.o $(BUILD)/wayland.o $(PROTO_OBJS)
+-	$(CC) $^ $(LDLIBS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
+ 
+ $(BUILD)/wayrdp: $(BUILD)/main.o $(BUILD)/rdp.o $(BUILD)/config.o $(BUILD)/audio.o $(BUILD)/wayland.o $(PROTO_OBJS)
+-	$(CC) $^ $(LDLIBS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
+ 
+ $(GEN)/%-protocol.o: $(GEN)/%-protocol.c
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+ 
+ define proto_rule
+ $(GEN)/$(1)-client-protocol.h: $(2)
+diff --git a/README.md b/README.md
+index 3f7f5d7..334373b 100644
+--- a/README.md
++++ b/README.md
+@@ -4,10 +4,9 @@
+ shares the desktop session that is already running: an RDP client sees the same
+ screen as the local user and can control it with a remote keyboard and pointer.
+ 
+-The project was originally written for wfkit, a Wayfire-based desktop, but the
+-server is not tied to Wayfire APIs. It uses standard Wayland and wlroots
+-protocols for capture and input, FreeRDP 3 for the RDP transport and RemoteFX
+-encoding, and PipeWire for bidirectional audio.
++The server uses standard Wayland and wlroots protocols for capture and input,
++FreeRDP 3 for the RDP transport and RemoteFX encoding, and PipeWire for
++bidirectional audio. It is not tied to a particular desktop shell.
+ 
+ > [!IMPORTANT]
+ > `wayrdp` is an early, working implementation rather than a security-audited
+@@ -60,7 +59,6 @@ The following are not implemented yet:
+ - concurrent clients;
+ - desktop scaling or a client-selected resolution;
+ - per-window capture;
+-- packaging and a systemd unit in this repository;
+ - an automated test suite.
+ 
+ The first `wl_output` announced by the compositor is served at its native
+@@ -174,6 +172,25 @@ Linux:
+ On another distribution, install equivalent development packages and adjust
+ `STAGING` and `WLR` in the Makefile if those files live elsewhere.
+ 
++## Arch Linux package
++
++An AUR package definition named `wayrdp` is available in the root
++[`PKGBUILD`](PKGBUILD). To build and install it locally from the project root:
++
++```bash
++sudo pacman -S --needed base-devel
++makepkg --syncdeps --install
++```
++
++It installs both `wayrdp` and `wayrdp-probe` under `/usr/bin`, a
++`wayrdp.service` user unit, and documentation and licenses under `/usr/share`.
++The package currently uses a fixed upstream commit and the supplied patch;
++additional local source edits are not included in this build. In the source
++checkout, `makepkg` uses `build/makepkg` to protect the project's `src/` directory.
++
++After installation, create the [per-user configuration](#configuration) and run
++`wayrdp --check` inside the Wayland session before starting the server.
++
+ ## Building on Arch Linux
+ 
+ Install the toolchain and dependencies:
+@@ -330,6 +347,23 @@ one long-lived compositor.
+ Stop the server with `Ctrl+C`, `SIGINT` or `SIGTERM`. After a client disconnects,
+ the listener remains available for the next client.
+ 
++The Arch package also includes a systemd user unit. After configuring the server,
++import the session environment and enable it from a terminal in that session:
++
++```bash
++systemctl --user import-environment WAYLAND_DISPLAY XDG_RUNTIME_DIR
++systemctl --user enable --now wayrdp.service
++```
++
++Autostart uses `graphical-session.target`. If the compositor does not activate
++that target, its session startup must import the display environment and start
++the enabled unit.
++
++An existing `~/.config/systemd/user/wayrdp.service` overrides the packaged unit.
++If it hardcodes `/usr/local/bin/wayrdp`, change it to `ExecStart=wayrdp` and run
++`systemctl --user daemon-reload`. Local installations under `/usr/local/bin`
++take precedence over the packaged binary under `/usr/bin`.
++
+ Connect with an RDP client to the host and configured port, supply the configured
+ username and password, and verify the self-signed certificate fingerprint on
+ the first connection. The client window is resized to the selected output's
+diff --git a/src/main.c b/src/main.c
+index 00a884a..5a2f81e 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -19,8 +19,7 @@ static void usage(const char *argv0) {
+     printf("usage: %s [--check]\n"
+            "\n"
+            "Serves the Wayland session it is started in over RDP. Port, username\n"
+-           "and password come from ~/.config/wayrdp/wayrdp.conf, which the wfkit\n"
+-           "panel writes.\n"
++           "and password come from ~/.config/wayrdp/wayrdp.conf.\n"
+            "\n"
+            "  --check   report whether this compositor and this configuration can\n"
+            "            serve, and exit without listening\n", argv0);
+@@ -74,8 +73,8 @@ int main(int argc, char **argv) {
+     // Refusing to start is the right answer to a half-filled form: a desktop
+     // listening with no password is worse than one that is not listening.
+     if (!usable) {
+-        fprintf(stderr, "wayrdp: not starting -- %s. Set it in the panel, "
+-                        "or in %s\n", why, config.path);
++        fprintf(stderr, "wayrdp: not starting -- %s. Set it in %s\n",
++                why, config.path);
+         wr_audio_close(audio);
+         wr_close(wayland);
+         return 1;

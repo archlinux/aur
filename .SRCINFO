@@ -1,0 +1,25 @@
+pkgbase = wayrdp
+	pkgdesc = Native RDP server for wlroots-based Wayland compositors
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/danilofalcao/wayrdp
+	arch = x86_64
+	license = MIT
+	license = HPND-sell-variant
+	makedepends = wayland-protocols
+	makedepends = wlr-protocols
+	depends = freerdp
+	depends = glibc
+	depends = libpipewire
+	depends = libxkbcommon
+	depends = openssl
+	depends = wayland
+	optdepends = pipewire: desktop audio and remote microphone support
+	source = wayrdp-1adcc4336013fc5d64fda5ca229c028b04b2b401.tar.gz::https://github.com/danilofalcao/wayrdp/archive/1adcc4336013fc5d64fda5ca229c028b04b2b401.tar.gz
+	source = upstream.patch
+	source = wayrdp.service
+	sha256sums = de7b499a8f92f4617043a2e82354598512d63df32ccc77753b6fd5672d7dcfc3
+	sha256sums = fc4f17163493bd4ca91a2f4d39d36e0af2b0e9ebd66f19dc779cd84fb1a9b577
+	sha256sums = 36a394cb040608660ee2a987610fc2d23d9c76d365b0490612129dd01706ca1e
+
+pkgname = wayrdp
