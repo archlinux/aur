@@ -1,0 +1,9 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9579b5df7..9d2ebc9e8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -94,0 +95 @@ find_package(libzip CONFIG REQUIRED)
++find_package(ZLIB REQUIRED)
+@@ -411 +412 @@ endif ()
+-target_link_libraries(RhythmGame_lib PUBLIC SDL2::SDL2 libremidi Qt6Keychain::Qt6Keychain Qt6::Quick Qt6::QuickControls2 Qt6::OpenGL Qt6::Concurrent Qt6::Multimedia Qt6::WebSockets Threads::Threads Boost::headers SQLiteCpp spdlog::spdlog_header_only foonathan::lexy magic_enum::magic_enum Iconv::Iconv libzip::zip $<IF:$<TARGET_EXISTS:zstd::libzstd_static>,zstd::libzstd_static,zstd::libzstd> LibXml2::LibXml2 zlib-ng::zlib)
++target_link_libraries(RhythmGame_lib PUBLIC SDL2::SDL2 libremidi Qt6Keychain::Qt6Keychain Qt6::Quick Qt6::QuickControls2 Qt6::OpenGL Qt6::Concurrent Qt6::Multimedia Qt6::WebSockets Threads::Threads Boost::headers SQLiteCpp spdlog::spdlog_header_only foonathan::lexy magic_enum::magic_enum Iconv::Iconv libzip::zip ZLIB::ZLIB $<IF:$<TARGET_EXISTS:zstd::libzstd_static>,zstd::libzstd_static,zstd::libzstd> LibXml2::LibXml2 zlib-ng::zlib)

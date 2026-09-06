@@ -1,8 +1,8 @@
 # Maintainer: Tomasz Kalisiak <tomasz.kalisiak@rhythmgame.eu>
 pkgname=rhythmgame-git
 _pkgname=RhythmGame
-pkgver=1.3.0.r28.gc873fa74
-pkgrel=3
+pkgver=1.3.17.r0.g794ab7c98
+pkgrel=1
 pkgdesc="A customizable BMS player for Windows and Linux – development git build"
 arch=(x86_64)
 url="https://github.com/Bobini1/RhythmGame"
@@ -13,6 +13,8 @@ depends=(
   qt6-multimedia
   qt6-svg
   qt6-shadertools
+  qt6-websockets
+  fmt
   spdlog
   boost
   mimalloc
@@ -27,8 +29,10 @@ depends=(
   miniaudio
   magic_enum
   sqlitecpp
+  zlib
   zlib-ng
   openimageio
+  libzip
 )
 makedepends=(
   git
@@ -36,6 +40,7 @@ makedepends=(
   ninja
   pkgconf
   autoconf-archive
+  qt6-tools
 )
 provides=(rhythmgame)
 conflicts=(rhythmgame)
@@ -43,8 +48,12 @@ source=(
   "${_pkgname}::git+https://github.com/Bobini1/RhythmGame.git"
   "vcpkg::git+https://github.com/microsoft/vcpkg.git"
   "vcpkg.json"
+  "link-system-zlib.patch"
 )
-sha256sums=('SKIP' 'SKIP' 'dacf65553b650c5d82f33f5dfde4f4eeabb0840b34d7914a60629659f9f41ae6')
+sha256sums=('SKIP'
+            'SKIP'
+            'dacf65553b650c5d82f33f5dfde4f4eeabb0840b34d7914a60629659f9f41ae6'
+            '94825be16b3aa1c46129924da6b1f5dd33ffac37998a3101ef78c63b5e8dd6f4')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -62,6 +71,7 @@ prepare() {
   ./bootstrap-vcpkg.sh -disableMetrics
   cd "$srcdir/$_pkgname"
   cp "$srcdir/vcpkg.json" .
+  patch -Np1 -i "$srcdir/link-system-zlib.patch"
 }
 
 build() {
