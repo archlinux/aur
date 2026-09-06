@@ -1,4 +1,4 @@
-# Maintainer: Angel Sulev <angel.sulev@gmail.com>
+# Maintainer: Angel Sulev <angel@ansulev.com>
 # Why this exists: aur/litellm 1.99.0-1 imports `expression` unconditionally in
 # litellm/proxy/_experimental/mcp_server/outbound_credentials/types.py but does not
 # declare it. No python-expression existed in core/extra/AUR as of 2026-09-05.
