@@ -8,7 +8,7 @@
 #   vfio-native-qemu       QEMU 11.1.1 with the platform-identity patches, in /opt
 
 pkgname=vfio-native
-pkgver=1.1.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Present a libvirt guest as a self-consistent physical machine, and tune it"
 arch=('any')
@@ -48,7 +48,7 @@ package() {
     # this coexists with whatever hook the host already has.
     install -Dm755 scripts/libvirt-hook-cpu-isolation.sh \
         "${pkgdir}/etc/libvirt/hooks/qemu.d/10-cpu-isolation.sh"
-    # e1000e offloads corrupt integrity-checked traffic on libvirt taps; host-wide by nature
+    # emulated NIC offloads corrupt integrity-checked traffic on libvirt taps; host-wide by nature
     install -Dm644 scripts/99-vfio-native-vnet-offload.rules \
         "${pkgdir}/usr/lib/udev/rules.d/99-vfio-native-vnet-offload.rules"
 }
