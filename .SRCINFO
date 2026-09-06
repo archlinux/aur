@@ -1,19 +1,19 @@
 pkgbase = podman-tui-bin
 	pkgdesc = Podman Terminal UI
-	pkgver = 1.11.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/containers/podman-tui
 	arch = x86_64
 	license = Apache-2.0
 	provides = podman-tui
 	conflicts = podman-tui
-	source = podman-tui-1.11.3.zip::https://github.com/containers/podman-tui/releases/download/v1.11.3/podman-tui-release-linux_amd64.zip
-	source = podman-tui-LICENSE::https://raw.githubusercontent.com/containers/podman-tui/refs/tags/v1.11.3/LICENSE
-	source = podman-tui-README::https://raw.githubusercontent.com/containers/podman-tui/refs/tags/v1.11.3/docs/README.md
-	source = podman-tui-install::https://raw.githubusercontent.com/containers/podman-tui/refs/tags/v1.11.3/docs/install.md
-	sha256sums = 7fc071e1086520ad9beb46349c0a7e92b0039679160592f6af54fc717c1231ec
+	source = podman-tui-2.0.0.zip::https://github.com/containers/podman-tui/releases/download/v2.0.0/podman-tui-release-linux_amd64.zip
+	source = podman-tui-LICENSE::https://raw.githubusercontent.com/containers/podman-tui/refs/tags/v2.0.0/LICENSE
+	source = podman-tui-README::https://raw.githubusercontent.com/containers/podman-tui/refs/tags/v2.0.0/docs/README.md
+	source = podman-tui-install::https://raw.githubusercontent.com/containers/podman-tui/refs/tags/v2.0.0/docs/install.md
+	sha256sums = de1de10344a8ab636c64c2f982bdaa4e05696b642e2dd4692872f56b3254442f
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	sha256sums = 7a76a87f2d275ec40c67eef6fc17e816d8852b3c625551b9885bd1f6d6491741
-	sha256sums = e58fffb942f83a19cd1fd93838caa3f27fcef3fae1a08b032a635a474e341c5e
+	sha256sums = 627ee488a88c803ae8c425c96ba6aac24b915c65e0c46f352932171b05a76553
+	sha256sums = 1b531b307080b91ab12d6fef3c3caf7fc2d44bca820267336e9b078d2e8cbf3a
 
 pkgname = podman-tui-bin
