@@ -1,0 +1,31 @@
+pkgbase = cartridges-rewrite-git
+	pkgdesc = A GTK4 + Libadwaita game launcher (rewrite branch)
+	pkgver = 49.0.r179.g419e833
+	pkgrel = 1
+	url = https://github.com/AdityaHebballe/cartridges
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = meson
+	depends = dconf
+	depends = gdk-pixbuf2
+	depends = gobject-introspection-runtime
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = python
+	depends = python-gobject
+	depends = python-pillow
+	optdepends = steam: Valve's digital software delivery system
+	optdepends = heroic-games-launcher-bin: Native GOG, Epic Games and Amazon Games launcher for Linux
+	optdepends = lutris: Open source gaming platform for Linux
+	optdepends = bottles: Easily manage wine and proton prefix
+	provides = cartridges
+	conflicts = cartridges
+	source = cartridges::git+https://github.com/AdityaHebballe/cartridges.git#branch=rewrite
+	b2sums = SKIP
+
+pkgname = cartridges-rewrite-git
