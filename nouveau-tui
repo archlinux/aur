@@ -211,7 +211,7 @@ class NouveauTUI:
             row1 = [
                 ("Space/Enter", "Lock State / Toggle Governor"),
                 ("a", "Auto Reclock"),
-                ("r", "Restart Daemon"),
+                ("r", "Refresh Data"),
             ]
             row2 = [
                 ("1..3", "Direct Tab"),
@@ -405,9 +405,8 @@ class NouveauTUI:
     def display_helpwin(self):
         doc = [
             ("j k   ↑ ↓",            "Navigate P-States or Governor"),
-            ("Space / Enter",        "Toggle governor or lock selected P-State"),
             ("a",                    "Enable auto dynamic reclocking (governor)"),
-            ("r",                    "Restart governor / refresh telemetry"),
+            ("r",                    "Refresh telemetry & hardware status"),
             ("1  2  3",              "Jump directly to mode tab"),
             ("← / →  Tab / S-Tab",   "Switch mode tabs"),
             ("Esc / q",              "Quit"),
@@ -497,10 +496,9 @@ class NouveauTUI:
                 self.refresh_data()
 
             elif ch == ord('r'):
-                run_cmd("sudo /usr/bin/systemctl restart nouveau-dynclockd.service")
-                self.status_msg = "Restarted governor & refreshed telemetry."
-                self.status_color = 1
                 self.refresh_data()
+                self.status_msg = "Refreshed telemetry & hardware sensors."
+                self.status_color = 1
 
     def execute_selection(self):
         if self.active_mode == 0:
