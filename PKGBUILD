@@ -3,7 +3,7 @@
 
 pkgname=ombi
 _pkgname=Ombi
-pkgver=4.53.5
+pkgver=4.53.10
 pkgrel=1
 pkgdesc='A media request tool that automatically syncs with your media servers'
 arch=(x86_64 aarch64 armv7h)
@@ -30,7 +30,7 @@ source=(
   ombi.tmpfiles
   ombi.install
 )
-sha256sums=('c3b5e0defabdd0dbea905243d83a6d27055594df7cef2f7d3724732dfdcaca65'
+sha256sums=('2b2b5833477a5451d5060c0838a52bde07db34370859bf90b2f826cc4903d8bd'
             '24f1dbe25589719e831d512624ceeb1289a7037002b74d9473719c8564a8950f'
             'd78dadc24ddb11e3ef07269a0a1c6dcf8ca8d32d39d152eaa9bffab6c32dba36'
             '71fe8ec1810d7ab91b30d8e07b9edc6f97827034935404124cc6e428bbc7c5bf'
@@ -49,6 +49,14 @@ _artifacts="${_output}/${_framework}/${_runtime}/publish"
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
+
+  # Remove upstream dotnet version
+  rm global.json
+
+  export DOTNET_CLI_TELEMETRY_OPTOUT=1
+  export DOTNET_NOLOGO=1
+  export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+  dotnet new globaljson --sdk-version 8.0.125 --roll-forward latestFeature
 
   # Install dotnet-setversion
   if [[ ! -f /tmp/dotnet-setversion/setversion ]]; then
