@@ -7,6 +7,7 @@ pkgver=1.202
 pkgrel=2
 url='http://www.thibault.org/fonts/isabella/'
 license=('OFL-1.1' 'LGPL-2.1')
+makedepends=('xorg-mkfontscale')
 source=("http://www.thibault.org/fonts/isabella/${_pkgname}-${pkgver}-src.tar.gz")
 md5sums=('f5c22b69e2673581587ce11d69f74556')
 sha1sums=('5cf6d74bee0baf789237782e4ffc83dc5e6b23e3')
