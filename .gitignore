@@ -1,0 +1,12 @@
+src/
+pkg/
+dotfiles/
+*.bac
+*.tar.gz
+*.tar.xz
+*.pkg.tar.zst
+*.log
+AGENTS.md
+!PKGBUILD
+!.SRCINFO
+!.gitignore

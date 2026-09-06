@@ -1,0 +1,12 @@
+## 2026-09-06  SARBS
+
+post_install() {
+  printf ':: sarbs-dotfiles-git: Die Dotfiles liegen in /usr/share/sarbs-dotfiles.\n'
+  printf ':: Bei Bedarf können sie mit dem Skript „dotfiles-sarbs" aufgespielt werden.\n'
+}
+
+post_upgrade() {
+  printf ':: sarbs-dotfiles-git: Die Dotfiles wurden aktualisiert.\n'
+  printf ':: Bei Bedarf als Nutzer „dotfiles-sarbs" ausführen, um die neuen\n'
+  printf ':: Dotfiles aufzuspielen.\n'
+}

@@ -1,0 +1,15 @@
+pkgbase = sarbs-dotfiles-git
+	pkgdesc = Sergi's Dotfiles (Teil von SARBS)
+	pkgver = 2026.08.31.r199.g4db1c1c
+	pkgrel = 1
+	url = https://codeberg.org/Sergius/dotfiles
+	install = sarbs-dotfiles-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = sarbs-dotfiles
+	conflicts = sarbs-dotfiles
+	source = git+https://codeberg.org/Sergius/dotfiles
+	sha256sums = SKIP
+
+pkgname = sarbs-dotfiles-git
