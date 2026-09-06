@@ -1,7 +1,7 @@
 # Maintainer: 5p00kyy <admin@5p00ky.dev>
 
 pkgname=openclaw-desktop
-pkgver=2026.9.1
+pkgver=2026.9.2
 pkgrel=1
 pkgdesc='OpenClaw Linux desktop companion'
 arch=('x86_64')
@@ -49,9 +49,9 @@ source=(
   'tests-first-run-remote.py'
 )
 sha256sums=(
-  'b8d9f64b5a8d7a36342bd3470ac9d7bba01a072f22916bfc12aeda677b850832'
+  '81c80f5c1e8512ac41149a0f3bc16364213cb34737d737debaa3937eace66ae6'
   '489f3cfab1d78498feba72e1ebaec6accc17ff9ba0591cde488df24ae5657473'
-  '56218d9707d602f56e0d995722d52b154b61ac149cf11e49f287b63776c130c2'
+  '32556a5dcd569e681e183856299b1a6b6a1c744c5d797e8f5667b7005db6b463'
 )
 
 prepare() {

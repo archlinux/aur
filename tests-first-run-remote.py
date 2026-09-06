@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Exercise remote first-run on the packaged release binary without connecting.
 
-Derived from upstream apps/linux/tests/first_run.py at OpenClaw v2026.9.1.
+Derived from upstream apps/linux/tests/first_run.py at OpenClaw v2026.9.2.
 Run as a non-root user inside xvfb-run and a private D-Bus session.
 """
 
