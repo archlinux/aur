@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=codebuff-bin
-pkgver=1.0.686
+pkgver=1.0.687
 pkgrel=1
 pkgdesc='AI coding agent for the terminal'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('codebuff')
 options=('!strip' '!debug')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://codebuff.com/api/releases/download/${pkgver}/codebuff-linux-x64.tar.gz")
-sha256sums_x86_64=('4aa4f2145f88385e8e24fd9beee6e21da27a60d48f2cdc624f3bc97139f0c565')
-sha256sums_aarch64=('56086bcb8c95295b463cd3f96fee8064685911662f5aa4610aa6098491f66d69')
+sha256sums_x86_64=('c400f8517c68a50a3881e5d0324f578b012f1cfe7d339ef2fb34ef3906a0d69f')
+sha256sums_aarch64=('ac38210b6e5406783ed2c85eec1ddf3cd1d43144bd05b6c481147cd7b3881808')
 
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://codebuff.com/api/releases/download/${pkgver}/codebuff-linux-arm64.tar.gz")
 

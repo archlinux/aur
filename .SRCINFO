@@ -1,6 +1,6 @@
 pkgbase = codebuff-bin
 	pkgdesc = AI coding agent for the terminal
-	pkgver = 1.0.686
+	pkgver = 1.0.687
 	pkgrel = 1
 	url = https://codebuff.com
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = codebuff-bin
 	conflicts = codebuff
 	options = !strip
 	options = !debug
-	source_x86_64 = codebuff-bin-1.0.686-x86_64.tar.gz::https://codebuff.com/api/releases/download/1.0.686/codebuff-linux-x64.tar.gz
-	sha256sums_x86_64 = 4aa4f2145f88385e8e24fd9beee6e21da27a60d48f2cdc624f3bc97139f0c565
-	source_aarch64 = codebuff-bin-1.0.686-aarch64.tar.gz::https://codebuff.com/api/releases/download/1.0.686/codebuff-linux-arm64.tar.gz
-	sha256sums_aarch64 = 56086bcb8c95295b463cd3f96fee8064685911662f5aa4610aa6098491f66d69
+	source_x86_64 = codebuff-bin-1.0.687-x86_64.tar.gz::https://codebuff.com/api/releases/download/1.0.687/codebuff-linux-x64.tar.gz
+	sha256sums_x86_64 = c400f8517c68a50a3881e5d0324f578b012f1cfe7d339ef2fb34ef3906a0d69f
+	source_aarch64 = codebuff-bin-1.0.687-aarch64.tar.gz::https://codebuff.com/api/releases/download/1.0.687/codebuff-linux-arm64.tar.gz
+	sha256sums_aarch64 = ac38210b6e5406783ed2c85eec1ddf3cd1d43144bd05b6c481147cd7b3881808
 
 pkgname = codebuff-bin
