@@ -1,6 +1,6 @@
 # Maintainer: Sergei Shadoy <shadoysv@gmail.com>
 pkgname=work-break
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Work and rest time balancer taking into account your current and today strain"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('dbus')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('f30acf4f4f90fdbb7bf8eb73afafb9a3ad73cc39a5e4908830c42abf6bde352a')
+sha256sums=('0723d2ed85caed0b8155c41f152d640be0aa6aa0e2b9bedd791403b6885e35bb')
 
 prepare() {
     cd "$pkgname-$pkgver"
