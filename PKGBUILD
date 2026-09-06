@@ -1,39 +1,55 @@
-# Maintainer: Pasqual Peñalver <public@paski.dev>
+# Maintainer: Paski <paski@paski.dev>
+#
+# Canonical copy. The AUR repository is a mirror of this directory — edit
+# here, never there. `pkgver` and the checksums are rewritten by
+# ../update.sh; the rest is hand-maintained.
+
 pkgname=gitorii
-pkgver=0.7.11
+pkgver=0.16.0
 pkgrel=1
-pkgdesc="A human-first Git client with multi-platform CI/CD control plane (GitLab + GitHub)"
+pkgdesc='Human-first Git client: simpler commands, a TUI, snapshots, multi-platform mirrors and a secret scanner'
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/paskidev/gitorii"
-license=('custom:TSAL-1.0')
-depends=('gcc-libs' 'openssl' 'zlib')
-makedepends=('cargo' 'git')
-provides=('torii')
-conflicts=('gitorii-experimental' 'gitorii-bin')
+url='https://gitorii.com'
+license=('MIT OR Apache-2.0')
+depends=('gcc-libs' 'glibc')
+makedepends=('cargo' 'cmake')
+checkdepends=('git')
+optdepends=('git: needed by torii grep, archive, notes, patch and subtree, which shell out to it')
+conflicts=('gitorii-bin')
+# The C dependencies (vendored libgit2, aws-lc) are built by cc/cmake from
+# the cargo build script. makepkg's global -flto does not reach them and
+# only confuses the link step; the release profile does its own thin LTO.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/paskidev/gitorii/-/archive/v$pkgver/gitorii-v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('00d9ccea3096d917ac40322a06d614e95a4ae8088bab5bedb70a2c49a55f7469')
+
+_srcdir="gitorii-v$pkgver"
 
 prepare() {
-  cd "$pkgname-v$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
 }
 
 build() {
-  cd "$pkgname-v$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  # russh 0.60.2 + aws-lc-sys 0.40 chain needs more stack than default
-  # during monomorphization of the generic-tree types.
-  export RUST_MIN_STACK=16777216
-  cargo build --frozen --release --bin torii
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
+}
+
+check() {
+	cd "$_srcdir"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo test --frozen --release
 }
 
 package() {
-  cd "$pkgname-v$pkgver"
-  install -Dm0755 "target/release/torii" "$pkgdir/usr/bin/torii"
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm0644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+	cd "$_srcdir"
+	install -Dm0755 target/release/torii "$pkgdir/usr/bin/torii"
+	install -Dm0644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+	install -Dm0644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+	install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm0644 COMMANDS.md "$pkgdir/usr/share/doc/$pkgname/COMMANDS.md"
 }
