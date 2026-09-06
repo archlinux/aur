@@ -1,10 +1,10 @@
 _pkgbase=rtl8852-eco4
 pkgname=rtl8852-eco4-dkms
 pkgver=7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bluetooth driver for RTL8852 ECO Version 4 (DKMS)"
 arch=('x86_64')
-url="https://www.example.org/"
+url="https://github.com/q234rty/rtl8852be-eco4-dkms"
 license=('GPL-2.0-only' 'LicenseRef-Lenovo')
 depends=('dkms')
 makedepends=('git' 'innoextract')

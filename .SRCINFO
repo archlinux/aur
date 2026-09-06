@@ -1,8 +1,8 @@
 pkgbase = rtl8852-eco4-dkms
 	pkgdesc = Bluetooth driver for RTL8852 ECO Version 4 (DKMS)
 	pkgver = 7.2
-	pkgrel = 1
-	url = https://www.example.org/
+	pkgrel = 2
+	url = https://github.com/q234rty/rtl8852be-eco4-dkms
 	arch = x86_64
 	license = GPL-2.0-only
 	license = LicenseRef-Lenovo
