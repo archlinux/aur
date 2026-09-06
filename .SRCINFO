@@ -9,6 +9,7 @@ pkgbase = deadband-git
 	depends = python
 	depends = pyside6
 	depends = python-hidapi
+	depends = libusb
 	provides = deadband
 	conflicts = deadband
 	conflicts = gamesir-cyclone2-git

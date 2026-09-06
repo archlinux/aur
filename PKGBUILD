@@ -18,7 +18,7 @@ license=('MIT')
 # NOTE: the Qt binding is packaged as `pyside6`, NOT `python-pyside6` (which does
 # not exist). A dev box with pyside6 already installed hides this -- it only shows
 # up on a clean `makepkg` dependency check, i.e. on every user's first install.
-depends=('python' 'pyside6' 'python-hidapi')
+depends=('python' 'pyside6' 'python-hidapi' 'libusb')
 makedepends=('git')
 provides=('deadband')
 # Supersede the pre-rename package so an upgrade replaces it instead of leaving a
