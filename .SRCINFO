@@ -1,6 +1,6 @@
 pkgbase = octa-bin
 	pkgdesc = Viewer, editor, CLI and MCP server for tabular data: 30+ formats, SQL, databases, cloud (pre-compiled)
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://github.com/thorstenfoltz/octa
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = octa-bin
 	provides = octa
 	conflicts = octa
 	options = !debug
-	source = octa-0.19.0-linux-x86_64.tar.gz::https://github.com/thorstenfoltz/octa/releases/download/0.19.0/octa-0.19.0-linux-x86_64.tar.gz
+	source = octa-0.19.1-linux-x86_64.tar.gz::https://github.com/thorstenfoltz/octa/releases/download/0.19.1/octa-0.19.1-linux-x86_64.tar.gz
 	sha256sums = ab4239451c62eb0ee8855606466b5cb7d684ac35eaa896fc1bce571eceab47c6
 
 pkgname = octa-bin
