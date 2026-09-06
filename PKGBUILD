@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastpotify
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=('fastpotify-bin' 'fastpotify-git')
 # objects in the archive, which lld then cannot resolve: the link fails on
 # undefined ring_core_* symbols.
 options=('!debug' '!lto')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('42311ed2bd46ff989be19c355f0da514b844e5160ba7e987784a13e1b25c7cf4')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/fastpotify-v${pkgver}-source.tar.gz")
+sha256sums=('e2b43de4d36ca266b7b424b346dd4b8bcce43af946e5e3d1ec4a14ff46056b7f')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
