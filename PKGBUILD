@@ -1,6 +1,6 @@
 # Maintainer: Origin Security <support@originhq.com>
 pkgname=praxis
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Praxis - Semantic Command & Control Framework for Agents'
 arch=('x86_64')
