@@ -76,7 +76,6 @@ EOF
 package_cataclysm-tlg-tiles-bin() {
 	pkgdesc="Cataclysm: The Last Generation, a post-apocalyptic roguelike (fork of DDA) (tiles)"
 	depends=('cataclysm-tlg-bin' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'libbacktrace' 'libgcc' 'libstdc++' 'zlib' 'glibc')
-	provides=('cataclysm-tlg')
 	cd "_tiles/$_tlgdir"
 
 	install -d "$pkgdir/usr/share/$_basename"
