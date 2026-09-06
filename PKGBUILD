@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Kalisiak <tomasz.kalisiak@rhythmgame.eu>
 pkgname=rhythmgame-git
 _pkgname=RhythmGame
-pkgver=1.3.17.r0.g794ab7c98
+pkgver=1.3.17.r1.g362d974fb
 pkgrel=1
 pkgdesc="A customizable BMS player for Windows and Linux – development git build"
 arch=(x86_64)
@@ -48,12 +48,10 @@ source=(
   "${_pkgname}::git+https://github.com/Bobini1/RhythmGame.git"
   "vcpkg::git+https://github.com/microsoft/vcpkg.git"
   "vcpkg.json"
-  "link-system-zlib.patch"
 )
 sha256sums=('SKIP'
             'SKIP'
-            'dacf65553b650c5d82f33f5dfde4f4eeabb0840b34d7914a60629659f9f41ae6'
-            '94825be16b3aa1c46129924da6b1f5dd33ffac37998a3101ef78c63b5e8dd6f4')
+            'dacf65553b650c5d82f33f5dfde4f4eeabb0840b34d7914a60629659f9f41ae6')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -71,7 +69,6 @@ prepare() {
   ./bootstrap-vcpkg.sh -disableMetrics
   cd "$srcdir/$_pkgname"
   cp "$srcdir/vcpkg.json" .
-  patch -Np1 -i "$srcdir/link-system-zlib.patch"
 }
 
 build() {
