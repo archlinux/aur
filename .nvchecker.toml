@@ -1,0 +1,5 @@
+[python-valve-parsers]
+source = 'git'
+git = 'https://github.com/cueki/valve-parsers.git'
+prefix = 'v'
+include_regex = 'v\d+.\d+.\d+'

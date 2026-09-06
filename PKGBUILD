@@ -4,7 +4,7 @@
 
 _pkgver=v1.2.2
 pkgver="${_pkgver#v}"
-pkgrel=1
+pkgrel=2
 
 _pkgname=valve-parsers
 pkgname="python-${_pkgname}"
