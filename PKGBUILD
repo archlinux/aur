@@ -1,11 +1,12 @@
 pkgname=lufux-git
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="Minimalist GUI tool to create bootable USB drives"
 arch=('any')
 url="https://github.com/Advnirr/lufux"
 license=('GPL3')
 depends=('python-gobject' 'gtk4' 'libadwaita' 'wimlib' 'rsync' 'parted' 'polkit' 'dosfstools' 'ntfs-3g')
+optdepends=('udisks2: read the Windows edition list out of an ISO')
 makedepends=('git')
 provides=('lufux')
 source=("git+${url}.git")
