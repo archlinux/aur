@@ -1,6 +1,6 @@
 pkgbase = python-docling-core
 	pkgdesc = A python library to define and validate data types in Docling.
-	pkgver = 2.94.1
+	pkgver = 2.95.0
 	pkgrel = 1
 	url = https://github.com/docling-project/docling-core
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = python-docling-core
 	optdepends = python-tree-sitter-typescript>=0.23.2: TypeScript code chunking
 	optdepends = python-transformers>=4.42.0: Hugging Face tokenization for chunking
 	optdepends = python-tiktoken>=0.9.0: OpenAI tokenization for chunking
-	source = docling-core-2.94.1.tar.gz::https://github.com/docling-project/docling-core/archive/refs/tags/v2.94.1.tar.gz
-	b2sums = c1574a6580ef8f1998c6c10156b9313c38a23ba8e833c39f7990c7b10daed4cebd96e1acca7ab928012d993e98acf4b556cea0d5e60535ab74710afa9ee7d20b
+	source = docling-core-2.95.0.tar.gz::https://github.com/docling-project/docling-core/archive/refs/tags/v2.95.0.tar.gz
+	b2sums = a21f5660d93ae935c43a4e7409e8dff899446e2844e8342a9dc983a4b8c2a81970f286993c69d51a2a8656e18732eef4e269a86347d4b6b6bd60c1c1a542d4fe
 
 pkgname = python-docling-core
