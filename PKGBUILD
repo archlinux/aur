@@ -1,8 +1,8 @@
 # Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
 
 pkgname='relacy-git'
-pkgver=r47.c063779
-pkgrel=2
+pkgver=r53.2c87447
+pkgrel=1
 pkgdesc='Meticulous synchronization algorithm verifier for relaxed memory models'
 arch=('any')
 url='https://github.com/dvyukov/relacy'
@@ -13,23 +13,12 @@ makedepends=(
 )
 provides=("relacy=${pkgver}")
 conflicts=('relacy')
-source=(
-	"git+${url}.git"
-	'wfmo-strict-aliasing.patch'
-)
-b2sums=(
-	'SKIP'
-	'085986c874852dc3d98ae4f89f0d4ef608ca4f32a970add5663be9ba2224ed6485fcb24e92fdc88c17a9d17f5de70a1ce6f8353a6074d67e2847d605a3fcaf45'
-)
+source=("git+${url}.git")
+b2sums=('SKIP')
 
 pkgver() {
 	cd -- "${srcdir}/relacy" || return 1
 	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-	cd -- "${srcdir}/relacy" || return 1
-	patch -Np1 -i "${srcdir}/wfmo-strict-aliasing.patch"
 }
 
 build() {

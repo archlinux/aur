@@ -1,17 +1,15 @@
 pkgbase = relacy-git
 	pkgdesc = Meticulous synchronization algorithm verifier for relaxed memory models
-	pkgver = r47.c063779
-	pkgrel = 2
+	pkgver = r53.2c87447
+	pkgrel = 1
 	url = https://github.com/dvyukov/relacy
 	arch = any
 	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = git
-	provides = relacy=r47.c063779
+	provides = relacy=r53.2c87447
 	conflicts = relacy
 	source = git+https://github.com/dvyukov/relacy.git
-	source = wfmo-strict-aliasing.patch
 	b2sums = SKIP
-	b2sums = 085986c874852dc3d98ae4f89f0d4ef608ca4f32a970add5663be9ba2224ed6485fcb24e92fdc88c17a9d17f5de70a1ce6f8353a6074d67e2847d605a3fcaf45
 
 pkgname = relacy-git
