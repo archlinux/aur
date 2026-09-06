@@ -1,14 +1,14 @@
 pkgname=iwlwifi-lar-patched
 _pkgbase=linux
 
-_kernelpkgver=7.2.3.arch1-2
+_kernelpkgver=7.2.3.arch1-3
 
 _kernver=$(printf '%s\n' "${_kernelpkgver}" | sed 's/\.arch[0-9].*//')
 _archrel=$(printf '%s\n' "${_kernelpkgver}" | sed -E "s/^${_kernver}\.(.*)$/\1/" | tr '.' '-')
 _krel="${_kernver}-${_archrel}"
 
 pkgver="${_kernver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched Intel iwlwifi family modules with lar_disable support for Arch Linux kernels"
 arch=('x86_64')
 url="https://github.com/TenkyuChimata/iwlwifi-lar-patched"

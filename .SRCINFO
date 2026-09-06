@@ -1,7 +1,7 @@
 pkgbase = iwlwifi-lar-patched
 	pkgdesc = Patched Intel iwlwifi family modules with lar_disable support for Arch Linux kernels
 	pkgver = 7.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TenkyuChimata/iwlwifi-lar-patched
 	install = iwlwifi-lar-patched.install
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = iwlwifi-lar-patched
 	makedepends = bc
 	makedepends = kmod
 	makedepends = patch
-	depends = linux=7.2.3.arch1-2
-	depends = linux-headers=7.2.3.arch1-2
+	depends = linux=7.2.3.arch1-3
+	depends = linux-headers=7.2.3.arch1-3
 	depends = zstd
 	optdepends = mkinitcpio: rebuild initramfs for mkinitcpio-based systems
 	optdepends = dracut: rebuild initramfs or UKI for dracut-based systems
