@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=circuit-mesh
-pkgver=1.0.7
+pkgver=1.0.8
 _zigver=0.15.2
 pkgrel=1
 pkgdesc="Zero-Trust Network Engine"
@@ -14,18 +14,38 @@ makedepends=('zig' 'scdoc')
 backup=('etc/circuit-mesh/config.json')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tsukumoakito/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 validpgpkeys=('66B227EC5F67D7B4F8C6C1C7E98764DF6FCE8857')
-sha256sums=('9cdae2e22b8c6b1e4123c7d76d5ae01beefd75235c81303d62f750f0fe5761a8')
+sha256sums=('f7d5584b55df65b9538aac96b40299757780fbdb506e341163b4115084b0d8f4')
 
 build() {
     cd "${pkgname}-${pkgver}"
+
     local zig_ver
-    zig_ver=$(zig version)
+    zig_ver=$(zig version 2>/dev/null || echo "none")
+
     if [[ ! "$zig_ver" =~ ^$_zigver ]]; then
-        echo "❌ Error: Current $pkgname version requires Zig $_zigver."
-        echo "Currently using: $zig_ver"
-        echo "Please run your zig package manager such as 'zvm use $_zigver' before building."
-        return 1
+        echo "⚠️  Zig version mismatch (Current: $zig_ver, Required: $_zigver)."
+
+        if command -v zvm >/dev/null 2>&1; then
+            echo "🔄 zvm detected. Attempting to switch to $_zigver..."
+
+            zvm use "$_zigver" >/dev/null 2>&1 || true
+
+            zig_ver=$(zig version 2>/dev/null || echo "none")
+            if [[ "$zig_ver" =~ ^$_zigver ]]; then
+                echo "✅ Successfully switched to Zig $zig_ver via zvm."
+            else
+                echo "❌ Error: zvm failed to switch to Zig $_zigver."
+                echo "Please ensure the version is installed ('zvm install $_zigver') or switch manually."
+                return 1
+            fi
+        else
+            echo "❌ Error: Current $pkgname version requires Zig $_zigver."
+            echo "Currently using: $zig_ver"
+            echo "zvm not found. Please run 'zvm use $_zigver' or install it manually before building."
+            return 1
+        fi
     fi
+
     zig build -Doptimize=ReleaseSafe
 }
 
