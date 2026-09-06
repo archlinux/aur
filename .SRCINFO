@@ -1,13 +1,15 @@
 pkgbase = firefox-extension-listen1
 	pkgdesc = One for all free music in China
-	pkgver = 2.32.0
+	pkgver = 2.33.0
 	pkgrel = 1
 	url = https://listen1.github.io/listen1
 	arch = any
 	license = MIT
 	makedepends = zip
 	depends = firefox
-	source = https://github.com/listen1/listen1_chrome_extension/archive/refs/tags/v2.32.0.tar.gz
-	sha256sums = e734d834f59f7138b7d3e8b6f4c4bcb2150c8b9ed70345e91e8801d5cc307f43
+	source = https://github.com/listen1/listen1_chrome_extension/archive/refs/tags/v2.33.0.tar.gz
+	source = fix-firefox.patch::https://github.com/listen1/listen1_chrome_extension/pull/1240.patch
+	sha256sums = e3e67e66475e80c539577561b71c78ef4314aaa622b73959c2b316c785068f1e
+	sha256sums = 4eb2388032e7220a18f3a22c9e28995fd91be91e3b303743dd4cbd7a9f914040
 
 pkgname = firefox-extension-listen1

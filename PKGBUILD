@@ -1,6 +1,6 @@
-# Maintainer: kumax <kumax2048@pm.me>
+# Maintainer: ZXY595 <zxy_595@qq.com>
 pkgname=firefox-extension-listen1
-pkgver=2.32.0
+pkgver=2.33.0
 pkgrel=1
 pkgdesc="One for all free music in China"
 arch=("any")
@@ -10,11 +10,15 @@ _name=${_githuburl##*/}
 license=('MIT')
 depends=("firefox")
 makedepends=("zip")
-source=("${_githuburl}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e734d834f59f7138b7d3e8b6f4c4bcb2150c8b9ed70345e91e8801d5cc307f43')
+source=("${_githuburl}/archive/refs/tags/v$pkgver.tar.gz"
+	"fix-firefox.patch::https://github.com/listen1/listen1_chrome_extension/pull/1240.patch")
+sha256sums=('e3e67e66475e80c539577561b71c78ef4314aaa622b73959c2b316c785068f1e'
+            '4eb2388032e7220a18f3a22c9e28995fd91be91e3b303743dd4cbd7a9f914040')
 
 prepare() {
     cd ${srcdir}/${_name}-${pkgver}
+	# see also https://github.com/listen1/listen1_chrome_extension/issues/1235
+	patch -Np1 -i "$srcdir/fix-firefox.patch"
     mv manifest_firefox.json manifest.json
 }
 
