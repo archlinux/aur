@@ -1,0 +1,17 @@
+pkgbase = hashline-bin
+	pkgdesc = Hash-anchored line editing for AI coding agents — O(1) line addressing via content-hashed anchors and drift-safe surgical patches
+	pkgver = 0.9.16
+	pkgrel = 1
+	url = https://github.com/quangdang46/hashline
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	provides = hashline=0.9.16
+	conflicts = hashline
+	options = !debug
+	source = hashline-0.9.16-x86_64.tar.gz::https://github.com/quangdang46/hashline/releases/download/v0.9.16/hashline-v0.9.16-linux-x86_64.tar.gz
+	source = LICENSE-0.9.16::https://raw.githubusercontent.com/quangdang46/hashline/v0.9.16/MIT
+	sha256sums = b5f079adac74fb78f2a353d330c57651a6db0aca3d8cf8a1cf483f512d4837e5
+	sha256sums = ebb5e71bc9cf9a2b324d71576d646d2f69d613672dc12fca3b7ecc0f040596d7
+
+pkgname = hashline-bin
