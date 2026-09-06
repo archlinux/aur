@@ -1,15 +1,18 @@
 pkgbase = vollminputd-git
 	pkgdesc = LLM-based voice input method for Linux Wayland
-	pkgver = 0.1.0.3.g9c81bba
-	pkgrel = 1
+	pkgver = 0.1.1.3.g9c81bba
+	pkgrel = 2
 	url = https://github.com/ad2248/vollminputd
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = rust
-	makedepends = cargo
+	makedepends = rust>=1:1.87
 	makedepends = git
+	makedepends = clang
 	depends = wl-clipboard
 	depends = openssl
+	depends = alsa-lib
+	depends = libpipewire
+	options = !lto
 	source = vollminputd::git+https://github.com/ad2248/vollminputd.git
 	sha256sums = SKIP
 

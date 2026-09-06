@@ -1,13 +1,15 @@
 # Maintainer: Sienna <i@kals.dev>
 pkgname=vollminputd-git
-pkgver=0.1.0.3.g9c81bba
-pkgrel=1
+pkgver=0.1.1.3.g9c81bba
+pkgrel=2
 pkgdesc="LLM-based voice input method for Linux Wayland"
 arch=('x86_64')
 url="https://github.com/ad2248/vollminputd"
 license=('Apache-2.0')
-depends=('wl-clipboard' 'openssl')
-makedepends=('rust' 'cargo' 'git')
+depends=('wl-clipboard' 'openssl' 'alsa-lib' 'libpipewire')
+makedepends=('rust>=1:1.87' 'git' 'clang')
+# GCC LTO objects in libspa's C shims cannot be linked by Rust's lld.
+options=('!lto')
 source=("vollminputd::git+https://github.com/ad2248/vollminputd.git")
 sha256sums=('SKIP')
 
@@ -18,9 +20,13 @@ pkgver() {
 
 build() {
     cd "${srcdir}/vollminputd"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    # Use the versioned distro dependency, not an older ~/.cargo/bin rustup shim.
+    RUSTC=/usr/bin/rustc CARGO_TARGET_DIR=target /usr/bin/cargo build --locked --release
+}
+
+check() {
+    cd "${srcdir}/vollminputd"
+    RUSTC=/usr/bin/rustc RUSTDOC=/usr/bin/rustdoc CARGO_TARGET_DIR=target /usr/bin/cargo test --locked
 }
 
 package() {
