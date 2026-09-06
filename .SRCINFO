@@ -5,9 +5,7 @@ pkgbase = doom3bfg-data-steam
 	url = http://store.steampowered.com/app/208200
 	arch = any
 	license = custom
+	makedepends = steamcmd
 	provides = doom3bfg-data
-	source = http://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
-	md5sums = SKIP
 
 pkgname = doom3bfg-data-steam
-
