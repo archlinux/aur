@@ -1,9 +1,9 @@
 # Maintainer: Moonlit Tune <moonlit underscore tune at protonmail dot com>
 
 pkgname=python-rns
-_name='rns'
+_name=${pkgname#python-}
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-configuring, encrypted and resilient mesh networking stack"
 arch=('any')
 depends=('python-cryptography' 'python-pyserial')
@@ -13,23 +13,27 @@ makedepends=('python-setuptools')
 provides=('rnodeconf' 'rnsh')
 conflicts=('rnodeconf' 'rnsh')
 url="https://reticulum.network/"
-license=('MIT')
-source=($pkgname-$pkgver::https://github.com/markqvist/Reticulum/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('2a4aad4a593c8eab28e3daa440f4d15369bf70c28610de85fca2b2fac9734703')
+license=('custom:reticulum')
+source=(
+    $pkgname-$pkgver::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz
+    https://raw.githubusercontent.com/markqvist/Reticulum/refs/heads/master/LICENSE
+)
+sha256sums=(
+    'a7f8f0d445312fee1c4ade41178f5224fe7af8bd790a79d148696659d81cc862'
+    '00d736d22a942ba144a5914d05877f0532288024dc189c1aadd1930ee9b4b295'
+)
 
 build() {
-  cd "$srcdir/Reticulum-$pkgver"
+  cd "$srcdir/$_name-$pkgver"
 
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/Reticulum-$pkgver"
+  cd "$srcdir/$_name-$pkgver"
 
   install -Dm 644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  find ./docs -type f -exec install -Dm 644 "{}" "$pkgdir/usr/share/doc/$pkgname/{}" \;
+  install -Dm 644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   python setup.py install --root="$pkgdir" --optimize=1
 }
