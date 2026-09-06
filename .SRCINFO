@@ -1,0 +1,19 @@
+pkgbase = yzf
+	pkgdesc = Interactive fzf front-end for yay that preserves yay's original formatting
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pakhromov/yzf
+	arch = any
+	license = MIT
+	depends = bash
+	depends = yay
+	depends = fzf
+	depends = expac
+	depends = gawk
+	depends = pacman-contrib
+	depends = ncurses
+	optdepends = xdg-utils: open package upstream URLs in a browser
+	source = yzf-1.0.0.tar.gz::https://github.com/pakhromov/yzf/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = b26348fa7ca0ebfd7e775f8eb5199a1b639f89dc0ffb0ad625410f0a59a9d146
+
+pkgname = yzf
