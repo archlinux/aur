@@ -1,7 +1,7 @@
 # Maintainer: koh11235813 <koh11235813@gmail.com>
 # Contributor: shinya-saita <>
 pkgname='bokuchi'
-pkgver='1.1.0'
+pkgver='1.1.2'
 pkgrel=1
 pkgdesc="A lightweight, cross-platform Markdown editor"
 arch=('x86_64')
@@ -11,10 +11,15 @@ options=('!lto' '!debug')
 depends=('webkit2gtk-4.1' 'gtk3' 'gdk-pixbuf2' 'cairo' 'glib2' 'dbus' 'libsoup3')
 makedepends=('jq' 'npm' 'rust' 'openssl' 'librsvg')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3d6c0935e17ba44b167b2a938bcf2d425ee56e154cea28f3a1611e99bf9cd147')
+sha256sums=('774172a2ece8e3ddbf1d1e1c494a7ad9b1652c3dda9e1d0a36f685851dd98e5a')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
+
+    # upstream lockfile resolves 3 deps via a proxy registry (npm.flatt.tech),
+    # which npm >= 12 refuses under allow-remote=none. Tarballs are byte-identical
+    # to npmjs (integrity hashes verified), so rewriting the host is safe.
+    sed -i 's|https://npm\.flatt\.tech/|https://registry.npmjs.org/|g' package-lock.json
 
     rm -rf src-tauri/target
 
