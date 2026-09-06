@@ -1,6 +1,6 @@
 pkgbase = amalthea-dmd
 	pkgdesc = Small general-purpose library for the D programming language
-	pkgver = 1.21.2
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://gitlab.com/os-18/amalthea
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = amalthea-dmd
 	depends = pkg-config
 	depends = glib2
 	depends = dmd
-	source = amalthea-dmd-1.21.2.tar.gz::https://gitlab.com/os-18/amalthea/-/archive/v1.21.2/amalthea-v1.21.2.tar.gz
-	sha256sums = a6265bc2f2532d0e0228853179574b610f6d21245228dec7a709e66a6f1527d1
+	source = amalthea-dmd-1.22.0.tar.gz::https://gitlab.com/os-18/amalthea/-/archive/v1.22.0/amalthea-v1.22.0.tar.gz
+	sha256sums = bb3af92ccaf5a49da5a36f00b5f1b13592c28063b3b147930d4785deec1fe33f
 
 pkgname = amalthea-dmd
