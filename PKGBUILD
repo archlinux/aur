@@ -25,8 +25,6 @@ prepare() {
     npm install --global \
         --prefix "$srcdir/npm-root/usr" \
         --cache "$srcdir/npm-cache" \
-        --omit=dev \
-        --omit=peer \
         --no-audit \
         --no-fund \
         --legacy-peer-deps \
