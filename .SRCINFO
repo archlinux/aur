@@ -1,7 +1,7 @@
 pkgbase = jupiter-fan-control
 	pkgdesc = Jupiter fan controller
-	pkgver = 20260422.2
-	pkgrel = 2
+	pkgver = 20260902.1
+	pkgrel = 1
 	url = https://github.com/evlav/jupiter-fan-control/-/tree/$_srctag
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = jupiter-fan-control
 	makedepends = rsync
 	depends = python-pyaml
 	depends = python>=3.10
-	source = git+https://github.com/evlav/jupiter-fan-control.git#commit=460e4593d42e826793ceab4abc9047cd7d2425ac
+	source = git+https://github.com/evlav/jupiter-fan-control.git#tag=20260902.1
 	sha512sums = SKIP
 
 pkgname = jupiter-fan-control
