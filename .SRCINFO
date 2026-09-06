@@ -1,6 +1,6 @@
 pkgbase = rustle
 	pkgdesc = A modern music player built with Rust and iced, supporting NetEase Cloud Music
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/Fei-xiangShi/Rustle
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rustle
 	optdepends = libpulse: PulseAudio support
 	optdepends = pipewire-pulse: PipeWire audio support
 	optdepends = vulkan-icd-loader: GPU acceleration
-	source = rustle-0.5.1.tar.gz::https://github.com/Fei-xiangShi/Rustle/archive/v0.5.1.tar.gz
+	source = rustle-0.5.2.tar.gz::https://github.com/Fei-xiangShi/Rustle/archive/v0.5.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = rustle
