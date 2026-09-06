@@ -1,0 +1,16 @@
+pkgbase = sarbs-ls_extended-git
+	pkgdesc = Minimalistischer ls-Ersatz mit Nerd-Font-Icons, Farben und Sortieroptionen (Fork, Teil von SARBS)
+	pkgver = 2026.09.06.r183.gb46388d
+	pkgrel = 1
+	url = https://codeberg.org/Sergius/ls_extended
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	depends = glibc
+	provides = ls_extended=2026.09.06.r183.gb46388d
+	conflicts = ls_extended
+	options = !debug
+	source = git+https://codeberg.org/Sergius/ls_extended
+	sha256sums = SKIP
+
+pkgname = sarbs-ls_extended-git
