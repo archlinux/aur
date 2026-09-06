@@ -14,7 +14,7 @@
 # byte for byte what the source package would have produced.
 
 pkgname=viewport-chromium-bin
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Wayland compositor whose shell is a web page — Chromium, driven as a child process (binary release)'
 arch=('x86_64')
@@ -29,7 +29,6 @@ _pkgrel=1
 depends=(
   'wayland'
   'libxkbcommon'
-  'pixman'
   'libdrm'
   'libinput'
   'seatd'
@@ -39,7 +38,6 @@ depends=(
   'vulkan-icd-loader'
   'pipewire'
   'libxcb'
-  'xcb-util-wm'
   'chromium'
 )
 
@@ -85,7 +83,7 @@ options=('!strip' '!debug')
 # Downloaded under a name that is not *.pkg.tar.*, so the artifact sitting in
 # the build directory is not mistaken for the package this recipe produced.
 source_x86_64=("$pkgname-$pkgver.tar.zst::$url/releases/download/v$pkgver/viewport-chromium-$pkgver-$_pkgrel-$CARCH.pkg.tar.zst")
-sha256sums_x86_64=('d2b4f6585cd74cf4b624b0420d2f53eb7db65a1fef7f57b703b956dd03ef6638')
+sha256sums_x86_64=('0deb12b0cd204f429c7133887bdf416aede0e17d220d20a90d73b70472f24de3')
 
 package() {
   # The source is an Arch package, so makepkg has already unpacked a $pkgdir
