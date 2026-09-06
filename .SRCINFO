@@ -1,7 +1,7 @@
 pkgbase = meshcore-open-git
 	pkgdesc = Open-source Flutter client for MeshCore LoRa mesh networking devices.
 	pkgver = alpha9+217.r962.20260903.dbd7f2aa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zjs81/meshcore-open
 	arch = i686
 	arch = x86_64
@@ -41,8 +41,10 @@ pkgbase = meshcore-open-git
 	provides = meshcore-open=alpha9+217.r962.20260903.dbd7f2aa
 	conflicts = meshcore-open
 	source = meshcore-open::git+https://github.com/zjs81/meshcore-open.git
+	source = flserial_once_flag_fix.patch::https://github.com/MeshEnvy/flserial/pull/1.patch
 	source = meshcore-open.desktop
 	sha256sums = SKIP
+	sha256sums = 0a870e4ca333c53457948cdc6cf31597f090a8291209314c9ac74660d8d8dc08
 	sha256sums = 693903df45168de884191be566334fad4c5bd829b36f7e6c33440cf2efa79c5a
 
 pkgname = meshcore-open-git

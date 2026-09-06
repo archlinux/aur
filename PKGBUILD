@@ -4,7 +4,7 @@ _gitname="meshcore-open"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=alpha9+217.r962.20260903.dbd7f2aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source Flutter client for MeshCore LoRa mesh networking devices."
 groups=('meshcore')
 arch=(
@@ -85,10 +85,12 @@ conflicts=(
 
 source=(
   "${_pkgname}::git+https://${_githost}/${_gituser}/${_gitname}.git"
+  "flserial_once_flag_fix.patch::https://github.com/MeshEnvy/flserial/pull/1.patch"
   "${_pkgname}.desktop"
 )
 sha256sums=(
   'SKIP'                                                              # Main 'meshcore-open' source.
+  '0a870e4ca333c53457948cdc6cf31597f090a8291209314c9ac74660d8d8dc08' # 'flserial_once_flag_fix.patch'
   '693903df45168de884191be566334fad4c5bd829b36f7e6c33440cf2efa79c5a'  # '.desktop' file.
 )
 
@@ -117,6 +119,11 @@ prepare() {
   printf '%s\n' " --> downloading flutter/ dart dependencies ..."
   flutter -v --disable-analytics
   flutter -v pub get # --enforce-lockfile
+
+  # Patch this after downloading flutter dependencies -- since it patches a dependency:
+  local _patch='flserial_once_flag_fix.patch'
+  printf '%s\n' " --> Applying patch '${_patch}' ..."
+  patch -Np1 --follow-symlinks -i "${srcdir}/${_patch}" -d "${PUB_CACHE}/git"/flserial-[0-9a-f]*
 
   #printf '%s\n' " --> size-optimising PNG images ..."
   #find -name '*.png' -type f | parallel -j "${_nproc}" zopflipng -m -y {} {}
