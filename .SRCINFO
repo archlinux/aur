@@ -1,0 +1,19 @@
+pkgbase = dns-stream
+	pkgdesc = Unified real-time DNS log stream and visualization engine
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://codeberg.org/tsukumoakito/dns-stream
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = zig
+	makedepends = scdoc
+	depends = libgcrypt
+	depends = gpgme
+	depends = libgpg-error
+	backup = etc/dns-stream/config.json
+	source = dns-stream-1.0.1.tar.gz::https://github.com/tsukumoakito/dns-stream/archive/refs/tags/v1.0.1.tar.gz
+	validpgpkeys = 66B227EC5F67D7B4F8C6C1C7E98764DF6FCE8857
+	sha256sums = 663ff2fbfac068a76f6c53a629f2fd79344944cc8a568d6a0b4e201707374f1b
+
+pkgname = dns-stream
