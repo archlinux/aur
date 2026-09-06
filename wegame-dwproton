@@ -7,6 +7,7 @@ set -euo pipefail
 
 readonly APP_ID='wegame-dwproton'
 readonly PACKAGE_VERSION='7.06.27.1446'
+readonly STEAM_APP_ID='3493550319'
 
 share_dir="${WEGAME_DWPROTON_SHARE_DIR:-/usr/share/${APP_ID}}"
 proton="${WEGAME_DWPROTON_PROTON:-}"
@@ -21,11 +22,14 @@ readonly compat_data="$data_dir/compatdata"
 readonly prefix="$compat_data/pfx"
 readonly steam_root="$data_dir/steam"
 readonly installer="$share_dir/WeGameMiniLoader.exe"
+readonly nested_x11_fix="$share_dir/wegame-nested-x11-fix"
+readonly twm_config="$share_dir/wegame-twmrc"
 readonly install_dir="$prefix/drive_c/Program Files (x86)/WeGame"
 readonly client="$install_dir/wegame.exe"
 readonly update_status="$install_dir/update.tmp"
 readonly update_payload="$install_dir/wegame_update"
 readonly backup_root="$state_dir/update-backups"
+readonly prefix_config_marker="$prefix/.wegame-dwproton-config-v1"
 
 log() {
     printf '%s: %s\n' "$APP_ID" "$*"
@@ -88,18 +92,82 @@ prefix_is_active() {
     return 1
 }
 
+is_benign_status_only() {
+    local line value
+    local saw_section=0 saw_perception=0 saw_guid=0
+    local saw_target_version=0 saw_old_version=0 saw_check_update_type=0
+    local saw_exit_op_source=0
+
+    [[ -f "$update_status" && ! -L "$update_status" ]] || return 1
+
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        line=${line%$'\r'}
+        case "$line" in
+            '[tgp]')
+                ((saw_section == 0 && saw_perception == 0 && saw_guid == 0 &&
+                  saw_target_version == 0 && saw_old_version == 0 &&
+                  saw_check_update_type == 0 && saw_exit_op_source == 0)) || return 1
+                saw_section=1
+                ;;
+            Perception=*)
+                ((saw_section == 1 && saw_perception == 0)) || return 1
+                [[ "$line" == 'Perception=true' || "$line" == 'Perception=false' ]] ||
+                    return 1
+                saw_perception=1
+                ;;
+            Guid=*)
+                ((saw_section == 1 && saw_guid == 0)) || return 1
+                value=${line#Guid=}
+                [[ "$value" =~ ^[[:xdigit:]]{8}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{12}$ ]] ||
+                    return 1
+                saw_guid=1
+                ;;
+            TargetVersion=*)
+                ((saw_section == 1 && saw_target_version == 0)) || return 1
+                [[ "$line" == 'TargetVersion=' ]] || return 1
+                saw_target_version=1
+                ;;
+            OldVersion=*)
+                ((saw_section == 1 && saw_old_version == 0)) || return 1
+                value=${line#OldVersion=}
+                [[ "$value" =~ ^[0-9]+(\.[0-9]+){1,3}$ ]] || return 1
+                saw_old_version=1
+                ;;
+            CheckUpdateType=*)
+                ((saw_section == 1 && saw_check_update_type == 0)) || return 1
+                [[ "$line" == 'CheckUpdateType=0' ]] || return 1
+                saw_check_update_type=1
+                ;;
+            ExitOpSource=*)
+                ((saw_section == 1 && saw_exit_op_source == 0)) || return 1
+                value=${line#ExitOpSource=}
+                [[ "$value" =~ ^[0-9]+$ ]] || return 1
+                saw_exit_op_source=1
+                ;;
+            *)
+                return 1
+                ;;
+        esac
+    done < "$update_status"
+
+    ((saw_section == 1 && saw_perception == 1 && saw_guid == 1 &&
+      saw_target_version == 1 && saw_old_version == 1 &&
+      saw_check_update_type == 1))
+}
+
 classify_update() {
     local line overwrite_status='' tick_move_file=''
 
-    if [[ ! -e "$update_status" && ! -e "$update_payload" ]]; then
-        return 1
+    if [[ ! -e "$update_payload" ]]; then
+        [[ ! -e "$update_status" ]] && return 1
+        is_benign_status_only && return 1
+        return 2
     fi
 
     if [[ ! -f "$update_status" || -L "$update_status" ||
           ! -d "$update_payload" || -L "$update_payload" ]]; then
         return 2
     fi
-
     while IFS= read -r line || [[ -n "$line" ]]; do
         line=${line%$'\r'}
         case "$line" in
@@ -310,9 +378,7 @@ resolve_proton() {
     die 'DWProton was not found. Reinstall wegame-dwproton or set WEGAME_DWPROTON_PROTON.'
 }
 
-run_proton() {
-    local target=$1
-    shift
+run_proton_command() {
     resolve_proton
 
     mkdir -p -- "$compat_data" "$steam_root" "$cache_dir/dxvk"
@@ -322,9 +388,309 @@ run_proton() {
         STEAM_COMPAT_CLIENT_INSTALL_PATH="$steam_root" \
         WINEPREFIX="$prefix" \
         DXVK_STATE_CACHE_PATH="$cache_dir/dxvk" \
-        SteamAppId=0 \
-        SteamGameId=0 \
-        "$proton" waitforexitandrun "$target" "$@"
+        SteamAppId="$STEAM_APP_ID" \
+        SteamGameId="$STEAM_APP_ID" \
+        "$proton" "$@"
+}
+
+configure_prefix() {
+    if [[ -e "$prefix_config_marker" || -L "$prefix_config_marker" ]]; then
+        [[ -f "$prefix_config_marker" && ! -L "$prefix_config_marker" ]] ||
+            die "Refusing an invalid prefix configuration marker at '$prefix_config_marker'."
+        return 0
+    fi
+
+    log 'Disabling the Wine fallback system tray.'
+    run_proton_command run reg.exe add \
+        'HKCU\Software\Wine\Explorer' \
+        /v ShowSystray /t REG_DWORD /d 0 /f
+    touch -- "$prefix_config_marker"
+}
+
+choose_nested_display() {
+    local number
+    for number in {100..199}; do
+        if [[ ! -e "/tmp/.X${number}-lock" &&
+              ! -S "/tmp/.X11-unix/X${number}" ]]; then
+            printf ':%s\n' "$number"
+            return
+        fi
+    done
+    die 'No free nested X11 display is available.'
+}
+
+
+stop_child() {
+    local pid=${1:-}
+    [[ -n "$pid" ]] || return 0
+    kill "$pid" >/dev/null 2>&1 || true
+    wait "$pid" >/dev/null 2>&1 || true
+}
+
+
+proton_wineserver() {
+    printf '%s/files/bin/wineserver\n' "${proton%/*}"
+}
+
+
+stop_prefix_for_transition() {
+    local wineserver
+    wineserver=$(proton_wineserver)
+    [[ -x "$wineserver" ]] ||
+        die "DWProton wineserver was not found at '$wineserver'."
+    WINEPREFIX="$prefix" "$wineserver" -k >/dev/null 2>&1 || true
+    WINEPREFIX="$prefix" "$wineserver" -w >/dev/null 2>&1 ||
+        die 'The previous Wine desktop did not stop during the display transition.'
+}
+
+
+run_proton_session() {
+    local display_name=$1 helper_pid=$2 transition_file=$3 target=$4
+    local proton_pid helper_status
+    shift 4
+
+    niri_transition=''
+    niri_exit_code=0
+    env \
+        DISPLAY="$display_name" \
+        STEAM_COMPAT_DATA_PATH="$compat_data" \
+        STEAM_COMPAT_CLIENT_INSTALL_PATH="$steam_root" \
+        WINEPREFIX="$prefix" \
+        DXVK_STATE_CACHE_PATH="$cache_dir/dxvk" \
+        SteamAppId="$STEAM_APP_ID" \
+        SteamGameId="$STEAM_APP_ID" \
+        "$proton" waitforexitandrun "$target" "$@" &
+    proton_pid=$!
+
+    while kill -0 "$proton_pid" >/dev/null 2>&1; do
+        if [[ -s "$transition_file" ]]; then
+            break
+        fi
+        if ! kill -0 "$helper_pid" >/dev/null 2>&1; then
+            if wait "$helper_pid"; then
+                helper_status=0
+            else
+                helper_status=$?
+            fi
+            ((helper_status == 0)) || niri_transition='helper-error'
+            [[ -n "$niri_transition" ]] || niri_transition='helper-exited'
+            break
+        fi
+        sleep 0.05
+    done
+
+    if [[ -s "$transition_file" ]]; then
+        IFS= read -r niri_transition < "$transition_file" || true
+    fi
+    case "$niri_transition" in
+        login|main|helper-error|helper-exited)
+            stop_prefix_for_transition
+            ;;
+        '')
+            ;;
+        *)
+            stop_prefix_for_transition
+            niri_transition='invalid'
+            ;;
+    esac
+
+    if wait "$proton_pid"; then
+        niri_exit_code=0
+    else
+        niri_exit_code=$?
+    fi
+    if [[ -n "$niri_transition" ]]; then
+        prefix_is_active &&
+            die 'The Wine prefix remained active during the display transition.'
+    fi
+}
+
+
+start_twm() {
+    local display_name=$1
+    DISPLAY="$display_name" twm -f "$twm_config" &
+    niri_twm_pid=$!
+    sleep 0.2
+    if ! kill -0 "$niri_twm_pid" >/dev/null 2>&1; then
+        stop_child "$niri_xserver_pid"
+        niri_twm_pid=''
+        niri_xserver_pid=''
+        die 'TWM could not manage the nested X11 display.'
+    fi
+}
+
+
+run_proton_in_rootful_xwayland() {
+    local transition_file=$1 target=$2
+    local nested_display output_name screen_width screen_height screen_size
+    shift 2
+
+    if ! read -r output_name screen_width screen_height \
+        < <("$nested_x11_fix" --print-focused-output); then
+        die 'Could not read the focused niri output geometry.'
+    fi
+    [[ -n "$output_name" && "$screen_width" =~ ^[0-9]+$ &&
+       "$screen_height" =~ ^[0-9]+$ ]] ||
+        die 'The focused niri output geometry is invalid.'
+    screen_size="${screen_width}x${screen_height}"
+    nested_display=$(choose_nested_display)
+
+    Xwayland "$nested_display" \
+        -geometry "$screen_size" -fullscreen -output "$output_name" \
+        -glamor gl -noreset -nolisten tcp -br &
+    niri_xserver_pid=$!
+    if ! DISPLAY="$nested_display" "$nested_x11_fix" \
+        --wait-only --screen-width "$screen_width" \
+        --screen-height "$screen_height" --timeout 10; then
+        stop_child "$niri_xserver_pid"
+        niri_xserver_pid=''
+        die 'The rootful Xwayland display did not become ready.'
+    fi
+
+    start_twm "$nested_display"
+    DISPLAY="$nested_display" "$nested_x11_fix" \
+        --app-id "steam_app_$STEAM_APP_ID" \
+        --prefix "$prefix" \
+        --parent-pid "$$" \
+        --mode rootful \
+        --transition-file "$transition_file" \
+        --login-delay "$rootful_login_delay" &
+    niri_fix_pid=$!
+
+    run_proton_session \
+        "$nested_display" "$niri_fix_pid" "$transition_file" "$target" "$@"
+    stop_child "$niri_fix_pid"
+    stop_child "$niri_twm_pid"
+    stop_child "$niri_xserver_pid"
+    niri_fix_pid=''
+    niri_twm_pid=''
+    niri_xserver_pid=''
+    return "$niri_exit_code"
+}
+
+
+run_proton_in_xephyr() {
+    local transition_file=$1 target=$2 nested_display
+    shift 2
+
+    nested_display=$(choose_nested_display)
+    Xephyr "$nested_display" \
+        -screen 960x540 -dpi 96 -noreset -nolisten tcp \
+        -name wegame-dwproton-nested -title WeGame -br \
+        -sw-cursor -no-host-grab &
+    niri_xserver_pid=$!
+    if ! DISPLAY="$nested_display" "$nested_x11_fix" \
+        --wait-only --screen-width 960 --screen-height 540 --timeout 10; then
+        stop_child "$niri_xserver_pid"
+        niri_xserver_pid=''
+        die 'The Xephyr login display did not become ready.'
+    fi
+
+    start_twm "$nested_display"
+    DISPLAY="$nested_display" "$nested_x11_fix" \
+        --app-id "steam_app_$STEAM_APP_ID" \
+        --prefix "$prefix" \
+        --parent-pid "$$" \
+        --mode xephyr \
+        --transition-file "$transition_file" &
+    niri_fix_pid=$!
+
+    run_proton_session \
+        "$nested_display" "$niri_fix_pid" "$transition_file" "$target" "$@"
+    stop_child "$niri_fix_pid"
+    stop_child "$niri_twm_pid"
+    stop_child "$niri_xserver_pid"
+    niri_fix_pid=''
+    niri_twm_pid=''
+    niri_xserver_pid=''
+    return "$niri_exit_code"
+}
+
+
+cleanup_niri_children() {
+    stop_child "${niri_fix_pid:-}"
+    stop_child "${niri_twm_pid:-}"
+    stop_child "${niri_xserver_pid:-}"
+}
+
+
+run_proton_in_niri() {
+    local target=$1 mode='rootful' transition_file exit_code
+    local rootful_login_delay='3.0'
+    shift
+
+    resolve_proton
+    mkdir -p -- "$compat_data" "$steam_root" "$cache_dir/dxvk"
+    command -v Xwayland >/dev/null 2>&1 ||
+        die 'Xwayland is required to run WeGame under niri.'
+    command -v Xephyr >/dev/null 2>&1 ||
+        die 'Xephyr is required to display the WeGame login under niri.'
+    command -v twm >/dev/null 2>&1 ||
+        die 'TWM is required to run WeGame under niri.'
+    [[ -x "$nested_x11_fix" ]] ||
+        die "The nested X11 helper is missing at '$nested_x11_fix'."
+    [[ -f "$twm_config" && ! -L "$twm_config" ]] ||
+        die "The TWM configuration is missing at '$twm_config'."
+
+    transition_file=$(mktemp --tmpdir="$state_dir" 'niri-transition.XXXXXXXX')
+    niri_xserver_pid=''
+    niri_twm_pid=''
+    niri_fix_pid=''
+    trap 'cleanup_niri_children; stop_prefix_for_transition; exit 143' INT TERM HUP
+
+    while true; do
+        : > "$transition_file"
+        if [[ "$mode" == 'rootful' ]]; then
+            if run_proton_in_rootful_xwayland \
+                "$transition_file" "$target" "$@"; then
+                exit_code=0
+            else
+                exit_code=$?
+            fi
+        else
+            if run_proton_in_xephyr "$transition_file" "$target" "$@"; then
+                exit_code=0
+            else
+                exit_code=$?
+            fi
+        fi
+
+        case "$niri_transition" in
+            login)
+                log 'Restarting WeGame in Xephyr for reliable login input.'
+                mode='xephyr'
+                rootful_login_delay='3.0'
+                ;;
+            main)
+                log 'Restarting WeGame in rootful Xwayland for game support.'
+                mode='rootful'
+                rootful_login_delay='30.0'
+                ;;
+            '')
+                rm -f -- "$transition_file"
+                trap - INT TERM HUP
+                return "$exit_code"
+                ;;
+            *)
+                rm -f -- "$transition_file"
+                trap - INT TERM HUP
+                die 'The nested X11 helper exited without a valid display transition.'
+                ;;
+        esac
+    done
+}
+
+
+run_proton() {
+    local target=$1
+    local desktop=${XDG_CURRENT_DESKTOP:-}
+    shift
+
+    if [[ "${desktop,,}" == *niri* ]]; then
+        run_proton_in_niri "$target" "$@"
+    else
+        run_proton_command waitforexitandrun "$target" "$@"
+    fi
 }
 
 install_wegame() {
@@ -333,6 +699,7 @@ install_wegame() {
 
     log 'Starting the official Tencent installer.'
     log "Use the default installation directory: C:\\Program Files (x86)\\WeGame"
+    configure_prefix
     run_proton "$installer"
 
     [[ -f "$client" ]] ||
@@ -381,6 +748,7 @@ launch_wegame() {
         ((state == 1)) || die "Refusing an unknown or incomplete update state in '$install_dir'."
     fi
 
+    configure_prefix
     if run_proton "$client"; then
         exit_code=0
     else

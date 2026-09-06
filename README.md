@@ -28,6 +28,8 @@ Start **Tencent WeGame (DWProton)** from the application menu or run:
 wegame-dwproton
 ```
 
+On a `niri` session, the launcher normally runs WeGame in a rootful Xwayland server sized to the focused output. This preserves DRI3/Present support required by games and applies a cursor only to the identified WeGame client and its TWM frame. If the login layer remains visible, the launcher fully stops that Wine desktop and restarts WeGame in a fixed `960x540` Xephyr display, where the split rendering and interaction layers share one coordinate space and the password caret and mask are visible. After login, it waits for the old Wine desktop to exit before restarting WeGame in rootful Xwayland. Other desktop sessions continue to use the host X11 display directly.
+
 The first launch opens Tencent's official installer. Keep the default installation directory:
 
 ```text
@@ -35,6 +37,8 @@ C:\Program Files (x86)\WeGame
 ```
 
 A custom installation directory is intentionally unsupported because update recovery must remain confined to a known, package-owned prefix path. Start `wegame-dwproton` again after the installer finishes.
+
+The Wine fallback system tray is disabled because rootless Wayland sessions without an XEmbed tray expose it as a small white window. WeGame therefore has no Wine fallback tray icon; use `wegame-dwproton --stop` when the client cannot be closed from its main window.
 
 ## Per-user data
 
@@ -82,14 +86,20 @@ Recovery is refused unless all of the following are true:
 
 Before applying files, the launcher moves the update payload and status into a timestamped state backup and copies every overwritten destination file there. Each replacement is staged in the destination directory and atomically renamed. An application failure triggers rollback and restores the pending update files. Unknown or incomplete update states fail closed and are never guessed.
 
+A strict status-only `update.tmp` produced by a normal WeGame exit is accepted only when it contains the observed `[tgp]` schema, unique expected fields, a valid GUID, and no update payload. Unknown keys, duplicate fields, malformed values, or partial states still fail closed.
+
 This operation copies Tencent's own downloaded update payload without modifying Tencent binaries. It remains an unsupported compatibility workaround.
 
 ## Development
 
-Run the behavior test without Wine:
+Run the behavior tests without Wine:
 
 ```bash
+tests/test-bundled-runtime.sh
+tests/test-launch-lifecycle.sh
 tests/test-update-recovery.sh
+tests/test-nested-x11-fix.sh
+tests/test-niri-x11-launch.sh
 ```
 
 Build the package:

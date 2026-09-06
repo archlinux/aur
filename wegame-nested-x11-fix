@@ -1,0 +1,488 @@
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2026 ParticleG
+# SPDX-License-Identifier: 0BSD
+
+import argparse
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import time
+from typing import Any, Iterator, NamedTuple
+
+from Xlib import X, Xatom, display, error
+from Xlib.ext import shape
+
+PASSWORD_HOLE = (410, 361, 140, 24)
+
+def parse_focused_output(payload: str) -> tuple[str, int, int]:
+    metadata = json.loads(payload)
+    name = metadata.get("name")
+    logical = metadata.get("logical")
+    if not isinstance(name, str) or not name or any(character.isspace() for character in name):
+        raise ValueError("invalid focused output name")
+    if not isinstance(logical, dict):
+        raise ValueError("focused output has no logical geometry")
+    width = logical.get("width")
+    height = logical.get("height")
+    if (
+        not isinstance(width, int)
+        or isinstance(width, bool)
+        or not isinstance(height, int)
+        or isinstance(height, bool)
+        or width < 960
+        or height < 540
+        or width > 32768
+        or height > 32768
+    ):
+        raise ValueError("invalid focused output geometry")
+    return name, width, height
+
+
+def focused_output() -> tuple[str, int, int]:
+    result = subprocess.run(
+        ["niri", "msg", "-j", "focused-output"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return parse_focused_output(result.stdout)
+
+
+
+class X11Layers(NamedTuple):
+    main: Any
+    overlay: Any
+
+
+def iter_windows(window: Any, depth: int = 0) -> Iterator[Any]:
+    if depth >= 3:
+        return
+    try:
+        children = window.query_tree().children
+    except error.XError:
+        return
+    for child in children:
+        yield child
+        yield from iter_windows(child, depth + 1)
+
+
+def read_name(window: Any, name_atom: int, utf8_atom: int) -> str:
+    value = window.get_full_property(name_atom, utf8_atom)
+    if value is not None:
+        raw = value.value
+        if isinstance(raw, bytes):
+            return raw.decode("utf-8", "replace")
+        if isinstance(raw, str):
+            return raw
+    name = window.get_wm_name()
+    return name if isinstance(name, str) else ""
+
+
+def read_pid(window: Any, pid_atom: int) -> int | None:
+    value = window.get_full_property(pid_atom, Xatom.CARDINAL)
+    if value is None or len(value.value) != 1:
+        return None
+    return int(value.value[0])
+
+
+def environment_matches_prefix(variables: list[bytes], prefix: Path) -> bool:
+    expected = {
+        b"WINEPREFIX": os.path.normpath(os.fsencode(prefix)),
+        b"STEAM_COMPAT_DATA_PATH": os.path.normpath(os.fsencode(prefix.parent)),
+    }
+    for variable in variables:
+        key, separator, value = variable.partition(b"=")
+        if separator and key in expected and value:
+            if os.path.normpath(value) == expected[key]:
+                return True
+    return False
+
+
+def process_matches_prefix(pid: int, prefix: Path) -> bool:
+    try:
+        variables = Path(f"/proc/{pid}/environ").read_bytes().split(b"\0")
+    except OSError:
+        return False
+    return environment_matches_prefix(variables, prefix)
+
+
+def find_layers(
+    connection: display.Display, app_id: str, prefix: Path
+) -> X11Layers | None:
+    pid_atom = connection.intern_atom("_NET_WM_PID")
+    name_atom = connection.intern_atom("_NET_WM_NAME")
+    utf8_atom = connection.intern_atom("UTF8_STRING")
+    groups: dict[int, dict[str, list[Any]]] = {}
+
+    for window in iter_windows(connection.screen().root):
+        try:
+            attributes = window.get_attributes()
+            if attributes.map_state != X.IsViewable:
+                continue
+            if app_id not in (window.get_wm_class() or ()):
+                continue
+            geometry = window.get_geometry()
+            if geometry.width < 300 or geometry.height < 200:
+                continue
+            pid = read_pid(window, pid_atom)
+            if pid is None:
+                continue
+            name = read_name(window, name_atom, utf8_atom)
+            group = groups.setdefault(pid, {"main": [], "overlay": []})
+            if name == "WeGame" and not attributes.override_redirect:
+                group["main"].append(window)
+            elif name == "" and attributes.override_redirect:
+                group["overlay"].append(window)
+        except error.XError:
+            continue
+
+    matches: list[X11Layers] = []
+    for pid, group in groups.items():
+        if (
+            len(group["main"]) == 1
+            and len(group["overlay"]) == 1
+            and process_matches_prefix(pid, prefix)
+        ):
+            matches.append(X11Layers(group["main"][0], group["overlay"][0]))
+    return matches[0] if len(matches) == 1 else None
+
+
+def find_main_window(
+    connection: display.Display, app_id: str, prefix: Path
+) -> Any | None:
+    pid_atom = connection.intern_atom("_NET_WM_PID")
+    name_atom = connection.intern_atom("_NET_WM_NAME")
+    utf8_atom = connection.intern_atom("UTF8_STRING")
+    matches = []
+
+    for window in iter_windows(connection.screen().root):
+        try:
+            attributes = window.get_attributes()
+            if attributes.map_state != X.IsViewable or attributes.override_redirect:
+                continue
+            if app_id not in (window.get_wm_class() or ()):
+                continue
+            geometry = window.get_geometry()
+            if geometry.width < 300 or geometry.height < 200:
+                continue
+            if read_name(window, name_atom, utf8_atom) != "WeGame":
+                continue
+            pid = read_pid(window, pid_atom)
+            if pid is not None and process_matches_prefix(pid, prefix):
+                matches.append(window)
+        except error.XError:
+            continue
+    return matches[0] if len(matches) == 1 else None
+
+
+def rectangle_values(rectangles: Any) -> list[tuple[int, int, int, int]]:
+    return [
+        (rectangle.x, rectangle.y, rectangle.width, rectangle.height)
+        for rectangle in rectangles
+    ]
+
+
+def read_pixel(window: Any, x: int, y: int) -> tuple[int, int, int] | None:
+    image = window.get_image(x, y, 1, 1, X.ZPixmap, 0xFFFFFFFF)
+    if image is None or len(image.data) < 3:
+        return None
+    return tuple(image.data[:3])
+
+
+def should_reveal_password(overlay: Any) -> bool:
+    login_button = read_pixel(overlay, 480, 450)
+    if login_button is None:
+        return False
+
+    blue, green, red = login_button
+    return red >= 200 and 80 <= green <= 190 and blue <= 80
+
+
+def configure_layers(
+    connection: display.Display, layers: X11Layers, focus_main: bool
+) -> bool:
+    geometry = layers.overlay.get_geometry()
+    frame = layers.main.query_tree().parent
+    frame_parent = frame.query_tree().parent
+    screen = connection.screen()
+    root = screen.root
+    hole_x, hole_y, hole_width, hole_height = PASSWORD_HOLE
+    if (
+        frame.id == root.id
+        or frame_parent.id != root.id
+        or geometry.width != 960
+        or geometry.height != 540
+        or geometry.width < hole_x + hole_width
+        or geometry.height < hole_y + hole_height
+        or screen.width_in_pixels < 960
+        or screen.height_in_pixels < 540
+    ):
+        return False
+
+    target_x = (screen.width_in_pixels - 960) // 2
+    target_y = (screen.height_in_pixels - 540) // 2
+    frame_geometry = frame.get_geometry()
+    if (
+        frame_geometry.x,
+        frame_geometry.y,
+        frame_geometry.width,
+        frame_geometry.height,
+    ) != (target_x, target_y, 960, 540):
+        frame.configure(x=target_x, y=target_y, width=960, height=540)
+
+    reveal_password = should_reveal_password(layers.overlay)
+    if reveal_password:
+        expected_bounding = [
+            (0, 0, 960, hole_y),
+            (0, hole_y, hole_x, hole_height),
+            (
+                hole_x + hole_width,
+                hole_y,
+                960 - hole_x - hole_width,
+                hole_height,
+            ),
+            (0, hole_y + hole_height, 960, 540 - hole_y - hole_height),
+        ]
+    else:
+        expected_bounding = [(0, 0, 960, 540)]
+
+    for kind in (shape.SK.Bounding, shape.SK.Input):
+        rectangles = layers.overlay.shape_get_rectangles(kind).rectangles
+        if rectangle_values(rectangles) == expected_bounding:
+            continue
+        layers.overlay.shape_rectangles(
+            shape.SO.Set,
+            kind,
+            X.Unsorted,
+            0,
+            0,
+            [(0, 0, 960, 540)],
+        )
+        if reveal_password:
+            layers.overlay.shape_rectangles(
+                shape.SO.Subtract,
+                kind,
+                X.Unsorted,
+                0,
+                0,
+                [PASSWORD_HOLE],
+            )
+
+    if geometry.x != target_x or geometry.y != target_y:
+        layers.overlay.configure(x=target_x, y=target_y)
+    stack = [window.id for window in root.query_tree().children]
+    if layers.overlay.id not in stack or frame.id not in stack:
+        return False
+    if stack.index(layers.overlay.id) <= stack.index(frame.id):
+        layers.overlay.configure(stack_mode=X.Above)
+
+    if focus_main:
+        layers.main.set_input_focus(X.RevertToParent, X.CurrentTime)
+    connection.sync()
+
+    frame_geometry = frame.get_geometry()
+    input_rectangles = layers.overlay.shape_get_rectangles(shape.SK.Input).rectangles
+    stack = [window.id for window in root.query_tree().children]
+    return (
+        frame_geometry.x == target_x
+        and frame_geometry.y == target_y
+        and frame_geometry.width == 960
+        and frame_geometry.height == 540
+        and rectangle_values(input_rectangles) == expected_bounding
+        and layers.overlay.id in stack
+        and frame.id in stack
+        and stack.index(layers.overlay.id) > stack.index(frame.id)
+    )
+
+
+def iter_descendants(window: Any, depth: int = 0) -> Iterator[Any]:
+    if depth >= 12:
+        return
+    try:
+        children = window.query_tree().children
+    except error.XError:
+        return
+    for child in children:
+        yield child
+        yield from iter_descendants(child, depth + 1)
+
+
+def configure_main_cursor(
+    connection: display.Display, main_window: Any, cursor: Any
+) -> bool:
+    root = connection.screen().root
+    windows = {main_window.id: main_window}
+    for child in iter_descendants(main_window):
+        windows[child.id] = child
+
+    parent = main_window
+    for _ in range(8):
+        parent = parent.query_tree().parent
+        if parent.id == root.id:
+            break
+        windows[parent.id] = parent
+    else:
+        return False
+
+    for window in windows.values():
+        window.change_attributes(cursor=cursor)
+    connection.sync()
+    return True
+
+
+def write_transition(path: Path, value: str) -> None:
+    flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    descriptor = os.open(path, flags, 0o600)
+    with os.fdopen(descriptor, "w", encoding="ascii") as stream:
+        stream.write(f"{value}\n")
+
+
+
+def connect(timeout: float) -> display.Display | None:
+    deadline = time.monotonic() + max(timeout, 0.0)
+    while time.monotonic() <= deadline:
+        try:
+            return display.Display()
+        except error.DisplayConnectionError:
+            time.sleep(0.05)
+    return None
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--wait-only", action="store_true")
+    parser.add_argument("--print-focused-output", action="store_true")
+    parser.add_argument("--screen-width", type=int, default=960)
+    parser.add_argument("--screen-height", type=int, default=540)
+    parser.add_argument("--app-id")
+    parser.add_argument("--prefix", type=Path)
+    parser.add_argument("--parent-pid", type=int, default=os.getppid())
+    parser.add_argument("--timeout", type=float, default=120.0)
+    parser.add_argument("--mode", choices=("rootful", "xephyr"))
+    parser.add_argument("--transition-file", type=Path)
+    parser.add_argument("--login-delay", type=float, default=3.0)
+    args = parser.parse_args()
+
+    if args.print_focused_output:
+        try:
+            name, width, height = focused_output()
+        except (OSError, subprocess.CalledProcessError, ValueError, json.JSONDecodeError) as exception:
+            print(
+                f"wegame-dwproton: could not read the focused niri output: {exception}",
+                file=sys.stderr,
+            )
+            return 1
+        print(name, width, height)
+        return 0
+
+    connection = connect(args.timeout)
+    if connection is None:
+        print("wegame-dwproton: nested X11 display did not become ready", file=sys.stderr)
+        return 1
+    if args.wait_only:
+        screen = connection.screen()
+        valid_size = (
+            screen.width_in_pixels == args.screen_width
+            and screen.height_in_pixels == args.screen_height
+        )
+        connection.close()
+        if not valid_size:
+            print("wegame-dwproton: nested X11 display has an invalid size", file=sys.stderr)
+            return 1
+        return 0
+    if (
+        args.app_id is None
+        or args.prefix is None
+        or args.mode is None
+        or args.transition_file is None
+    ):
+        parser.error(
+            "--app-id, --prefix, --mode, and --transition-file are required "
+            "unless a standalone mode is used"
+        )
+
+    cursor_font = None
+    cursor = None
+    if args.mode == "rootful":
+        cursor_font = connection.open_font("cursor")
+        cursor = cursor_font.create_glyph_cursor(
+            cursor_font,
+            68,
+            69,
+            (0, 0, 0),
+            (65535, 65535, 65535),
+        )
+
+    configured_ids: tuple[int, int] | None = None
+    saw_login = False
+    login_since: float | None = None
+    main_since: float | None = None
+    try:
+        while True:
+            if args.parent_pid > 1 and not Path(f"/proc/{args.parent_pid}").exists():
+                return 0
+            try:
+                layers = find_layers(connection, args.app_id, args.prefix)
+                if layers is not None:
+                    saw_login = True
+                    main_since = None
+                    if args.mode == "rootful":
+                        now = time.monotonic()
+                        if login_since is None:
+                            login_since = now
+                        elif now - login_since >= max(args.login_delay, 0.0):
+                            write_transition(args.transition_file, "login")
+                            return 0
+                        time.sleep(0.05)
+                        continue
+
+                    layer_ids = (layers.main.id, layers.overlay.id)
+                    if configure_layers(
+                        connection,
+                        layers,
+                        focus_main=layer_ids != configured_ids,
+                    ):
+                        configured_ids = layer_ids
+                else:
+                    login_since = None
+                    configured_ids = None
+                    main_window = find_main_window(
+                        connection,
+                        args.app_id,
+                        args.prefix,
+                    )
+                    if args.mode == "rootful":
+                        main_since = None
+                        if main_window is not None and cursor is not None:
+                            configure_main_cursor(connection, main_window, cursor)
+                    elif main_window is None:
+                        main_since = None
+                    else:
+                        now = time.monotonic()
+                        if main_since is None:
+                            main_since = now
+                        delay = 3.0 if saw_login else 10.0
+                        if now - main_since >= delay:
+                            write_transition(args.transition_file, "main")
+                            return 0
+                time.sleep(0.05)
+            except error.XError:
+                configured_ids = None
+                main_since = None
+                login_since = None
+                time.sleep(0.1)
+    finally:
+        if cursor is not None:
+            cursor.free()
+        if cursor_font is not None:
+            cursor_font.close()
+        connection.close()
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
