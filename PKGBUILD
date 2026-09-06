@@ -4,7 +4,7 @@ _appauthor="tqdm"
 _appname="envwrap"
 
 pkgname="python-${_appname}"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Override parameter defaults via environment variables & config files"
 
@@ -19,7 +19,7 @@ makedepends=('git' 'python-setuptools-scm' 'python-toml' 'python-build' 'python-
 depends=('python' 'python-toml' 'python-yaml' 'python-platformdirs')
 
 source=("$pkgname::git+${_url_github}#tag=v${pkgver}")
-sha256sums=('307201ac437ceaa03a49ddc7afeec5d51628ca58ac1652f3c854ebf4ad0236a7')
+sha256sums=('eac3342257c46025afc67d80b661642e7a8559f4f225053c6fef7d632c16b400')
 
 build() {
     cd "${pkgname}/"

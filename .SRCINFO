@@ -1,6 +1,6 @@
 pkgbase = python-envwrap
 	pkgdesc = Override parameter defaults via environment variables & config files
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/tqdm/envwrap
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-envwrap
 	depends = python-toml
 	depends = python-yaml
 	depends = python-platformdirs
-	source = python-envwrap::git+https://github.com/tqdm/envwrap#tag=v1.0.0
-	sha256sums = 307201ac437ceaa03a49ddc7afeec5d51628ca58ac1652f3c854ebf4ad0236a7
+	source = python-envwrap::git+https://github.com/tqdm/envwrap#tag=v1.1.0
+	sha256sums = eac3342257c46025afc67d80b661642e7a8559f4f225053c6fef7d632c16b400
 
 pkgname = python-envwrap
