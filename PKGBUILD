@@ -1,19 +1,20 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_pkgauthor=adrelanos
+pkgauthor=adrelanos
 pkgname=tor-ctrl
-pkgver=7.2
+pkgver=7.3
 pkgrel=1
 pkgdesc="Tor control port command line tool"
+
 arch=('x86_64')
-url="https://github.com/${_pkgauthor}/${pkgname}"
 license=('GPL-3.0-or-later')
+url="https://github.com/${pkgauthor}/${pkgname}"
 
 makedepends=('pandoc')
 depends=('bash' 'safe-rm')
 
-source=("https://github.com/${_pkgauthor}/${pkgname}/archive/${pkgver}-${pkgrel}.tar.gz")
-sha256sums=('505d0442ede2beb80dfe20a05a47abdd7d472cc1daa8d62a0922352a238b371b')
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/${pkgver}-${pkgrel}.tar.gz")
+sha256sums=('45c0542d79bfd5648249f7b8e5c944ef64dcfc29b61a54dfe894b24ccc0c4d98')
 
 
 package() {
