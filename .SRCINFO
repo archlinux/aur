@@ -1,15 +1,13 @@
 pkgbase = firefox-userchromejs
 	pkgdesc = Patching Firefox to enable JS injection (userchrome-js)
 	pkgver = 155
-	pkgrel = 1
-	url = https://github.com/onemen/TabMixPlus
+	pkgrel = 2
+	url = https://github.com/Izheil/Quantum-Nox-Firefox-Customizations
 	install = firefox-userchromejs.install
 	arch = any
 	license = MPL2
 	depends = firefox
-	source = https://github.com/onemen/TabMixPlus/releases/download/dev-build/fx-folder.zip
-	source = https://github.com/onemen/TabMixPlus/releases/download/dev-build/utils.zip
-	sha512sums = 2be133a5ab9d253370111ba7517e9e8442b014a3bf83313ddb84563dbf6c8493eaaff852a9a334200b17786b4a077c4369f981f0782886745849a07729553ded
-	sha512sums = 0c07b1ca43c3cee05a0b6a2b075f6b57ede3e0998bfcc877a5e96a2a3e560f60a87a554036b99e4fc2cf6016d14548ec1673f7d4fbca7535dc1722f2983e7232
+	source = https://github.com/Izheil/Quantum-Nox-Firefox-Customizations/archive/refs/tags/FF155.zip
+	sha256sums = 92b367f601f0bf506776657c8b3fcbe5ba79617676faaebcdf10a69f1f56add3
 
 pkgname = firefox-userchromejs
