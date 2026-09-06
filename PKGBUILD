@@ -6,7 +6,7 @@
 pkgname=mixxx-beta
 _mixxxver=2.6
 pkgver="${_mixxxver}.beta"
-pkgrel=7
+pkgrel=8
 pkgdesc="Digital DJ mixing software (beta branch)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
@@ -73,6 +73,7 @@ source=("mixxx-${_mixxxver}-beta.tar.gz::https://github.com/mixxxdj/mixxx/archiv
 sha256sums=('3683cf0570e2f9dbeb1d76a5d617f8c2bf2acb6d15fe9d2337b8f49a20887a38')
 
 build() {
+	local ccache_support=$(hash ccache 2>/dev/null && echo -n "ON" || echo -n "OFF")
 	local cmake_options=(
 		-B build
 		-D CMAKE_LINKER_TYPE=BFD
@@ -80,7 +81,7 @@ build() {
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D BUILD_BENCH=OFF
 		-D OPTIMIZE=native
-		-D CCACHE_SUPPORT=ON
+		-D CCACHE_SUPPORT="${ccache_support}"
 		-D CMAKE_C_FLAGS='-O2'
 		-D CMAKE_C_FLAGS_RELEASE='-DNDEBUG'
 		-D CMAKE_C_FLAGS_RELWITHDEBINFO='-g -DNDEBUG'
