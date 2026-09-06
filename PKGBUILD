@@ -110,6 +110,22 @@ case "${CARCH}" in
   ;;
 esac
 
+
+_patch_only_if_not_applied() {
+  # Tries to apply a patch and if it already has been applied also return zero exit code.
+  # Arguments:
+  #   $1: Patch file to apply.
+  #   $2...: Other options to patch.
+  local _patch="$1"
+  shift
+  if ! patch --dry-run -R -i "${_patch}" "$@"; then
+    printf '%s\n' '   `-> Patch not yet applied, applying ...'
+    patch -i "${_patch}" "$@"
+  else
+    printf '%s\n' '   `-> Patch already applied.'
+  fi
+}
+
 prepare() {
   cd "${srcdir}/${_pkgname}"
   export PUB_CACHE="${srcdir}/.pub_cache"
@@ -125,7 +141,7 @@ prepare() {
   local _flserialdir
   for _flserialdir in "${PUB_CACHE}/git"/flserial-[0-9a-f]*; do
     printf '%s\n' " --> Applying patch '${_patch}' to '${_flserialdir}' ..."
-    patch -Np1 --follow-symlinks -i "${srcdir}/${_patch}" -d "${_flserialdir}"
+    _patch_only_if_not_applied "${srcdir}/${_patch}" -Np1 --follow-symlinks -d "${_flserialdir}"
   done
 
   #printf '%s\n' " --> size-optimising PNG images ..."
