@@ -1,29 +1,26 @@
-# Maintainer: Jack Chen <redchenjs@live.com>
-
 pkgname=snander
-pkgver=v.1.7.9
+pkgver=1.7.9.3
 pkgrel=1
-pkgdesc="SNANDer - Serial Nor/nAND/Eeprom programmeR (based on CH341A)"
+pkgdesc="SNANDer - Serial NOR/NAND/EEPROM programmer based on CH341A"
 url="https://github.com/McMCCRU/SNANDer"
-arch=('any')
-license=('GPL2')
-source=("SNANDer-$pkgver.tar.gz::https://codeload.github.com/McMCCRU/SNANDer/tar.gz/refs/tags/$pkgver")
-sha512sums=('660b5188b7000f29e17767d7fb7cb49ca230a6c995c205131e8afd97f4f4474beab4945ccc79d70731901f28552fe4722428530a1498fa50838557a25e861672')
+arch=('x86_64')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
+
+source=("SNANDer-v.$pkgver.tar.gz::https://github.com/McMCCRU/SNANDer/archive/refs/tags/v.$pkgver.tar.gz")
+sha256sums=('a5715bbdb58c934644b4d29d7fdefd17b142a26c6100bfe4f2a54511d2efaf92')
 
 build() {
-  cd "${srcdir}/SNANDer-$pkgver/src"
-
-  # fix libusb build error
-  sed -i -r "s|^(SNANDer:).*$|\1 \$(OBJS)|g" Makefile
-
-  # build libusb for static linking
-  cd libusb-*
-  ./autogen.sh && ./configure --prefix="${srcdir}/SNANDer-$pkgver/src/lusb_build" --disable-udev
-  make && make install
-
-  cd ../ && make
+  cd "$srcdir/SNANDer-v.$pkgver/src"
+  env -u LDFLAGS make
 }
 
 package() {
-  install -D -m755 "${srcdir}/SNANDer-$pkgver/src/SNANDer" "${pkgdir}/usr/bin/snander"
+  cd "$srcdir/SNANDer-v.$pkgver"
+
+  install -Dm755 src/SNANDer "$pkgdir/usr/bin/snander"
+  install -Dm644 Linux/40-persistent-ch341a.rules \
+    "$pkgdir/usr/lib/udev/rules.d/40-persistent-ch341a.rules"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 src/libusb-1.0.27/COPYING \
+    "$pkgdir/usr/share/licenses/$pkgname/COPYING.libusb"
 }
