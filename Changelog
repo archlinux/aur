@@ -1,16 +1,19 @@
 -------------------------------------------------------
  Changelog    : lockmgr
- Tags         : 1.8.0 ➙ 1.9.2
+ Tags         : 1.8.1 ➙ 1.9.3
               : 2026-01-04 ➙ 2026-09-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-06   : 1.9.2
+ 2026-09-06   : 1.9.3
+              - Add missing makedepends on meson (per @TrialnError from aur - thank you!)
+
+ 2026-09-06   : 1.9.2, origin/master
               - **1.9.2**
             
                 * Typo in docs
 
- 2026-09-06   : 1.9.1, origin/master
+ 2026-09-06   : 1.9.1
               - **1.9.1**
             
                 * Use meson / meson-python for build and package management
@@ -41,12 +44,3 @@
  2026-01-04   : 1.8.1
               - fix license string in pyproject.toml
               - update Docs/Changelog
-
- 2026-01-04   : 1.8.0
-              - **1.8.0**
-            
-                * Switch packaging from hatch to uv
-                * Testing to confirm all working on python 3.14.2
-                * License GPL-2.0-or-later
- 2025-05-21   ⋯
-              - update Docs/Changelog.rst Docs/lockmgr.pdf
