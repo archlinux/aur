@@ -3,7 +3,7 @@
 
 pkgname=python-click-default-group
 pkgver=1.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Extends click.Group to invoke a command without explicit subcommand name"
 url="https://github.com/click-contrib/click-default-group"
 license=('BSD-3-Clause')
@@ -31,7 +31,8 @@ build() {
 
 check() {
   cd click-default-group-$pkgver
-  python -m pytest
+  # don't autoload host pytest plugins (e.g. pytest-qt) — unrelated broken plugins crash check()
+  PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest
 }
 
 package() {
