@@ -1,6 +1,6 @@
 pkgbase = python-isocodes
 	pkgdesc = Provides lists of various ISO standards (e.g. country, language, language scripts, and currency names) in one place
-	pkgver = 2025.8.25
+	pkgver = 2026.9.2
 	pkgrel = 1
 	url = https://github.com/Atem18/isocodes
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-isocodes
 	makedepends = python-wheel
 	depends = python
 	options = !debug
-	source = python-isocodes-2025.8.25.tar.gz::https://github.com/Atem18/isocodes/archive/refs/tags/2025.8.25.tar.gz
-	sha256sums = f88335ca770888dbd730d74e22163c427ad1744049c5c8027c3f532eb95ecfec
+	source = python-isocodes-2026.9.2.tar.gz::https://github.com/Atem18/isocodes/archive/refs/tags/2026.9.2.tar.gz
+	sha256sums = b05331432cf8fde703588eec242915a8189550f0c883cedc286d4441ac63de3d
 
 pkgname = python-isocodes

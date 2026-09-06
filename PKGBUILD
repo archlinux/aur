@@ -3,7 +3,7 @@
 
 pkgname=python-isocodes
 _pkgname=${pkgname#python-}
-pkgver=2025.8.25
+pkgver=2026.9.2
 pkgrel=1
 pkgdesc="Provides lists of various ISO standards (e.g. country, language, language scripts, and currency names) in one place"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
 )
 options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f88335ca770888dbd730d74e22163c427ad1744049c5c8027c3f532eb95ecfec')
+sha256sums=('b05331432cf8fde703588eec242915a8189550f0c883cedc286d4441ac63de3d')
 
 build() {
   cd "${_pkgname}-${pkgver}"
