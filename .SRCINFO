@@ -1,6 +1,6 @@
 pkgbase = allure-commandline
 	pkgdesc = A flexible, lightweight multi-language test reporting tool
-	pkgver = 2.46.0
+	pkgver = 2.46.1
 	pkgrel = 1
 	url = https://github.com/allure-framework/allure2
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = allure-commandline
 	license = Apache-2.0
 	depends = jdk17-openjdk
 	depends = bash
-	source = https://github.com/allure-framework/allure2/releases/download/2.46.0/allure-2.46.0.tgz
+	source = https://github.com/allure-framework/allure2/releases/download/2.46.1/allure-2.46.1.tgz
 	source = allure
-	sha512sums = 999bc3922b3f1817379812640961b3a426bdc3b950b67c7cdb0e37f115dc3e39608d67e5e1bde86c8bef0f284fe9fe3022e0689c0be743e328c7c01c0e951487
+	sha512sums = 80c36958be5e6ff675c299a5544d21e25a62a01a27a79d959e8f2e1c9a008fc9f39c46d6a95bea4bd70098de824e2cf48ae97834af79f63147360e820d191ea5
 	sha512sums = d1c50028f8ba9d791d113314cec71c5174a69e1e9136c1d22bfb58e844d20f7c15c1917184e827bbdfbd25ffd7a0fc5259004e57da331f54948f25e310927ad5
 
 pkgname = allure-commandline
