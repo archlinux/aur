@@ -30,6 +30,7 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export RUSTFLAGS="$RUSTFLAGS --remap-path-prefix=$srcdir=/"
     cargo build --frozen --release
 }
 
