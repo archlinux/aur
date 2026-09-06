@@ -11,7 +11,7 @@ pkgbase = qqmusic-electron-patched
 	conflicts = qqmusic
 	conflicts = qqmusic-electron
 	conflicts = qqmusic-bin
-	source = qqmusic-electron-patched-prebuilt-1.1.8-5.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v1.1.8/qqmusic-electron-patched-1.1.8-5-any.pkg.tar.zst
+	source = qqmusic-electron-patched-prebuilt-1.1.8-5.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v1.1.8-5/qqmusic-electron-patched-1.1.8-5-any.pkg.tar.zst
 	sha256sums = e78db8c0a8a9e4c9aac50b2448ca950fcb00b9905de16a4620aa90790033a9d8
 
 pkgname = qqmusic-electron-patched
