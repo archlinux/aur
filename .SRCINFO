@@ -1,13 +1,16 @@
 pkgbase = yoo-bin
-	pkgdesc = A tiny developer companion for better coding sessions
-	pkgver = 0.6.3
+	pkgdesc = Local CLI for project, Git, and development environment information
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/nihitdev/yo-cli
 	arch = x86_64
 	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	optdepends = git: Git repository information
 	provides = yoo
 	conflicts = yoo
-	source = https://github.com/nihitdev/yo-cli/releases/download/v0.6.3/yoo-v0.6.3-linux-x86_64.tar.gz
-	sha256sums = bfad4458e57946b3403f76f675f350e1dd0f27aa0c9c16de51104a2c04d606d1
+	source = https://github.com/nihitdev/yo-cli/releases/download/v1.0.0/yoo-v1.0.0-linux-x86_64.tar.gz
+	sha256sums = d09d5f0a5f471f30d6516e68f53ed134520909654958d073c8c6cae96197715d
 
 pkgname = yoo-bin
