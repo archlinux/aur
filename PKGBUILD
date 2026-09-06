@@ -14,7 +14,7 @@ makedepends=(git zip strip-nondeterminism)
 provides=('librewolf-extension-localcdn')
 conflicts=('librewolf-extension-localcdn')
 source=("git+https://codeberg.org/nobody/LocalCDN.git#commit=$_commit?signed")
-b2sums=('cdf94576eb2e775aaa8df36d4dfc4f55748ceda9eba9887b69ed0774fa652f40cb5579e8bb61f356a21e8c0fb1a04ae293f7b766f73c04ec1b1bcce0a6b11f02')
+b2sums=('bdb2df1b0beb6a8b0905f0964a20d395c157561aad219a8692dd6dab21d9c6d6ab43229ddfb2bdc1ca906ca22a35f5a42c593c320de068039903959e105d1bc6')
 validpgpkeys=(3F59043BE267E1B1177688AC8F6DE3D614FCFD7A) # nobody <nfo@localcdn.org>
 
 pkgver() {
