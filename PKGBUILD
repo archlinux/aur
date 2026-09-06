@@ -1,7 +1,7 @@
 # Maintainer: Gomasy <nyan@gomasy.jp>
 
 pkgname=rbfeeder
-pkgver=1.0.15+trixie
+pkgver=1.0.17+trixie
 pkgrel=1
 pkgdesc="Software for uploading ADS-B data to RadarBox24.com"
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -17,9 +17,9 @@ source_aarch64=("https://apt.rb24.com/pool/main/r/rbfeeder/rbfeeder_${pkgver}_ar
 sha256sums=(
             '3fb1dae902740e84254a2548c5d81fff18b18658ed408576a438968e43e51746'
             'd8d127259681d44b8d731c80c14658be5fcac44cf5329601dd6d89b1a4d7e82a')
-sha256sums_armv6h=('17e65df51c47f4144e480aa1651356cc585c5ace40dede9fb56d7868ba93452f')
-sha256sums_armv7h=('17e65df51c47f4144e480aa1651356cc585c5ace40dede9fb56d7868ba93452f')
-sha256sums_aarch64=('f4b1b12e82997de9ab28270e0fa6510fe18d25fee1f675a9caea49f2878f8b27')
+sha256sums_armv6h=('d039a7e5c51f6f58fe8dbb4dc1d58ca5babb6fdbf96e1effca67957c7452e00f')
+sha256sums_armv7h=('d039a7e5c51f6f58fe8dbb4dc1d58ca5babb6fdbf96e1effca67957c7452e00f')
+sha256sums_aarch64=('31864c38c9426e62ff3578bff5d9dd5722d3813fab70f212e3fe88a6b949190e')
 backup=('etc/rbfeeder.ini')
 
 package() {
