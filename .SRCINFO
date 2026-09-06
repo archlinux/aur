@@ -1,6 +1,6 @@
 pkgbase = ugos-cli-bin
 	pkgdesc = CLI and MCP server for UGREEN NAS (UGOS) management
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/metaneutrons/ugos-cli
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = ugos-cli-bin
 	conflicts = ugos-cli
 	options = !strip
 	options = !debug
-	source_x86_64 = ugos-cli-bin-0.14.0-x86_64.tar.gz::https://github.com/metaneutrons/ugos-cli/releases/download/v0.14.0/ugos-cli-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 2d6ca55f7280dc7be56c57d6ccf006be6179a26348c914c1c86e5e0db0c5ba70
-	source_aarch64 = ugos-cli-bin-0.14.0-aarch64.tar.gz::https://github.com/metaneutrons/ugos-cli/releases/download/v0.14.0/ugos-cli-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 1862f178e109591983b830414a05ba6f22a22a0dd046505ded9089b6d01b527e
+	source_x86_64 = ugos-cli-bin-0.14.1-x86_64.tar.gz::https://github.com/metaneutrons/ugos-cli/releases/download/v0.14.1/ugos-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 930ab7244ea988502d6f4f9ad771641b388ac6f70f8abb057b0ee7a9f6b471a2
+	source_aarch64 = ugos-cli-bin-0.14.1-aarch64.tar.gz::https://github.com/metaneutrons/ugos-cli/releases/download/v0.14.1/ugos-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 12b8d6889e34e48d0504d354d25a469f24878e04498eb3c04df49b51ae2c1f18
 
 pkgname = ugos-cli-bin
