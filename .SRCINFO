@@ -1,0 +1,21 @@
+pkgbase = sarbs-tomb-git
+	pkgdesc = Zsh-Skript zum Anlegen und Verwalten verschlüsselter LUKS-Container (Särge)
+	pkgver = 2025.12.16.r1248.g648b008
+	pkgrel = 1
+	url = https://github.com/dyne/Tomb
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = zsh
+	depends = cryptsetup
+	depends = file
+	depends = gnupg
+	depends = sudo
+	depends = pinentry
+	optdepends = gettext: Übersetzungen der Ausgaben
+	provides = tomb
+	conflicts = tomb
+	source = git+https://github.com/dyne/Tomb
+	sha256sums = SKIP
+
+pkgname = sarbs-tomb-git
