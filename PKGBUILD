@@ -14,7 +14,12 @@ arch=('x86_64' 'aarch64')
 license=('GPL-3.0-or-later')
 groups=('selinux')
 depends=('glibc' 'libselinux')
-makedepends=('git' 'wget' 'python')
+makedepends=(
+  git
+  gperf
+  python
+  wget
+)
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")

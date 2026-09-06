@@ -8,8 +8,9 @@ pkgbase = findutils-selinux
 	groups = selinux
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = wget
+	makedepends = gperf
 	makedepends = python
+	makedepends = wget
 	depends = glibc
 	depends = libselinux
 	provides = findutils=4.11.0-1
