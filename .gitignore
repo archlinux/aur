@@ -2,3 +2,4 @@
 /pkg/
 *.pkg.tar.zst
 *.log
+/neovibe-git/
