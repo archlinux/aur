@@ -1,15 +1,17 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 pkgname=cscs-key
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Command-line tool to manage SSH keys for the Swiss National Supercomputing Centre (CSCS)"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://docs.cscs.ch/access/ssh/"
-license=('LicenseRef-unknown')
-depends=('glibc' 'libgcc' 'openssl')
+license=('BSD-3-Clause')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
-source=('https://github.com/eth-cscs/cscs-key/archive/refs/tags/1.0.0.tar.gz')
-sha256sums=('d31d72e6355b0e98fc2a6376b188e6ae91d0988c0d292e6d9a13fe8c324d6391')
+source=("https://github.com/eth-cscs/cscs-key/archive/refs/tags/v${pkgver}.tar.gz"
+        'LICENSE')
+sha256sums=('f604d03a49e122712727864ff9fd903c18a9868bf7e280d71fd9d6b7c7728c16'
+            'f9b6367856a47fc17f611997484cee634ce407ad340822e3a1677487c5b7c6a5')
 
 # Use debug
 export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false
@@ -27,6 +29,9 @@ build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	# see https://github.com/briansmith/ring/issues/1444#issuecomment-5217008291
+	CFLAGS+=' -ffat-lto-objects'
+  CXXFLAGS+=' -ffat-lto-objects'
 	cargo build --frozen --release --all-features
 }
 
@@ -39,6 +44,5 @@ check() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-	install -d "$pkgdir/usr/share/licenses/cscs-key/"
-	echo "license unknown or not set" > "$pkgdir/usr/share/licenses/cscs-key/LICENSE"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/cscs-key/" '../LICENSE'
 }
