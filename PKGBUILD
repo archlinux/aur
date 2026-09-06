@@ -3,7 +3,7 @@
 pkgname=tyler-git
 pkgver=r29.cfa47ed
 pkgrel=1
-pkgdesc="A dwm-shaped Wayland compositor: tiling, tags, in-compositor bar and menu"
+pkgdesc="Tiling Wayland compositor on wlroots, with the bar and launcher built in"
 arch=('x86_64')
 url="https://github.com/thinkoid/tyler"
 license=('WTFPL')
