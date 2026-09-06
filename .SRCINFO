@@ -1,6 +1,6 @@
 pkgbase = oh-my-pi
 	pkgdesc = A coding agent with the IDE wired in
-	pkgver = 18.1.11
+	pkgver = 18.1.12
 	pkgrel = 1
 	url = https://omp.sh/
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = oh-my-pi
 	optdepends = xdg-desktop-portal-impl: compositor-specific backend for Wayland computer tool portals
 	options = !lto
 	options = !strip
-	source = oh-my-pi::git+https://github.com/can1357/oh-my-pi.git#tag=v18.1.11
+	source = oh-my-pi::git+https://github.com/can1357/oh-my-pi.git#tag=v18.1.12
 	source = use-system-opus.patch
 	source = skip-native-embed-for-aur.patch
 	sha256sums = SKIP
