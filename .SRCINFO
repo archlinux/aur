@@ -1,6 +1,6 @@
 pkgbase = yukigram-bin
 	pkgdesc = Unofficial patch-based Telegram Desktop fork — minus the bullshit, plus the features
-	pkgver = 7.1.3.0
+	pkgver = 7.1.5.0
 	pkgrel = 1
 	url = https://github.com/yukigram/yukigram
 	install = yukigram-bin.install
@@ -18,8 +18,8 @@ pkgbase = yukigram-bin
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = yukigram-desktop
 	conflicts = yukigram-desktop
-	noextract = yukigram-bin-7.1.3.0.tar.gz
-	source = yukigram-bin-7.1.3.0.tar.gz::https://github.com/yukigram/yukigram/releases/download/v7.1.3.0/binary-x86_64.tar.gz
-	sha256sums = 0a61109d6e716b9552bf9e3682511196a9db26fbdebbaa695f103bbad6af65a4
+	noextract = yukigram-bin-7.1.5.0.tar.gz
+	source = yukigram-bin-7.1.5.0.tar.gz::https://github.com/yukigram/yukigram/releases/download/v7.1.5.0/binary-x86_64.tar.gz
+	sha256sums = 643e04a5f2a22366ef89b50386a12f4856d014f394c9ab499c5d85e9188a6829
 
 pkgname = yukigram-bin
