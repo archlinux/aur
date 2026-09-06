@@ -1,0 +1,22 @@
+pkgbase = victoriatraces
+	pkgdesc = Fast and easy to use database for traces that can handle terabytes of trace spans.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://docs.victoriametrics.com/victoriatraces/
+	install = victoriatraces.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	provides = victoriatraces
+	conflicts = victoriatraces
+	backup = etc/default/victoriatraces
+	source = victoriatraces-0.11.0.tar.gz::https://github.com/VictoriaMetrics/VictoriaTraces/archive/refs/tags/v0.11.0.tar.gz
+	source = victoriatraces.service
+	source = victoriatraces.default
+	sha256sums = f1bba5c80f8253ddf5af0bae86671d19146c4802611c6ca7a72a2bbc6fc66486
+	sha256sums = b46538d2ac4c3a3c8f8df0c9041b0c5d33f735d33e04141aa88bf1bf0318999e
+	sha256sums = 0fc91310e2c3140bd90b2fad62f497d8e7432cf3a2a8ab3a034b45958e01012a
+
+pkgname = victoriatraces
