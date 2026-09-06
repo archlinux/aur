@@ -1,0 +1,23 @@
+pkgbase = mynaposter-bin
+	pkgdesc = A terminal social media manager. Log in, write, schedule and post to 25 networks from one TUI
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/profullstack/mynaposter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = myna
+	conflicts = mynaposter
+	options = !strip
+	source = PLUGINS-0.10.2.md::https://raw.githubusercontent.com/profullstack/mynaposter/v0.10.2/docs/plugins.md
+	source = README-0.10.2.md::https://raw.githubusercontent.com/profullstack/mynaposter/v0.10.2/README.md
+	source = LICENSE-0.10.2::https://raw.githubusercontent.com/profullstack/mynaposter/v0.10.2/LICENSE
+	sha256sums = 720ac00dba2225d90ab5203815084f3d251575f3d23386de06017b2411b62e2c
+	sha256sums = e8797a13717f033a05d8d45331c4eca20451bdaa50f62e8d9f3da2ff79313f71
+	sha256sums = de1b680e8cf8ebf3641646e14f5c0730f726da2d9d6d211d498032c20d0d9e2c
+	source_x86_64 = myna-x86_64-0.10.2::https://github.com/profullstack/mynaposter/releases/download/v0.10.2/myna-linux-x86_64
+	sha256sums_x86_64 = 2a536d6948377f6d0fdc3dd8e560cc00de93151c61225b1bd01cc7cf174269e6
+	source_aarch64 = myna-aarch64-0.10.2::https://github.com/profullstack/mynaposter/releases/download/v0.10.2/myna-linux-aarch64
+	sha256sums_aarch64 = 228788516b993b3320c2d477a6b50075295233b6c6872d336978d88d1c1607a1
+
+pkgname = mynaposter-bin
