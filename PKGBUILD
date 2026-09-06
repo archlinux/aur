@@ -1,7 +1,7 @@
 # Maintainer: Angelo Fallaria <ba.fallaria+aur@gmail.com>
 pkgname=victoriatraces-bin
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and easy to use database for traces that can handle terabytes of trace spans."
 arch=('x86_64' 'aarch64')
 url="https://docs.victoriametrics.com/victoriatraces/"
@@ -20,7 +20,7 @@ source_aarch64=(
 )
 source=("victoriatraces.service"
         "victoriatraces.default")
-sha256sums=('e6ff5cf2b202fc18cfcc127609765efd2255b8fbe32ef1732897fd8d72ad2fbc'
+sha256sums=('b46538d2ac4c3a3c8f8df0c9041b0c5d33f735d33e04141aa88bf1bf0318999e'
             '0fc91310e2c3140bd90b2fad62f497d8e7432cf3a2a8ab3a034b45958e01012a')
 sha256sums_x86_64=('3089ead89b9a95369e265a5321b1ad8e670c3c94afbc9a9faaa9a356346b5b95'
                    'e82969417291815ab3b29c9eaa33041c320f9e12893cee1098378f7ec495ba3d')

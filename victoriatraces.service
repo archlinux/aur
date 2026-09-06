@@ -22,7 +22,7 @@ MemoryDenyWriteExecute=true
 User=victoriatraces
 Group=victoriatraces
 EnvironmentFile=/etc/default/victoriatraces
-ExecStart=/usr/bin/victoria-traces -storageDataPath /var/lib/victoriatraces $ARGS
+ExecStart=/usr/bin/victoriatraces -storageDataPath /var/lib/victoriatraces $ARGS
 
 [Install]
 WantedBy=multi-user.target
