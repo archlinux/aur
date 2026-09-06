@@ -1,6 +1,6 @@
 pkgbase = usagestat-bin
 	pkgdesc = Scriptable CLI for local agent usage data
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Hashim-K/usagestat
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = usagestat-bin
 	depends = glibc
 	provides = usagestat
 	conflicts = usagestat
-	source_x86_64 = usagestat-1.0.2-linux-x86_64.tar.gz::https://github.com/Hashim-K/usagestat/releases/download/v1.0.2/usagestat-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 50aa23ee61a3a19e38ef63d253d1ac7228c511f615ca0f9197553bc3cfc0a530
+	source_x86_64 = usagestat-1.0.3-linux-x86_64.tar.gz::https://github.com/Hashim-K/usagestat/releases/download/v1.0.3/usagestat-linux-x86_64.tar.gz
+	sha256sums_x86_64 = ea74ddbad5a4b1aefc3612947c6e2c4506cd25c452ee245ee4b5fe7a1bb5a4b5
 
 pkgname = usagestat-bin
