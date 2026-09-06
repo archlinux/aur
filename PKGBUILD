@@ -1,5 +1,5 @@
 pkgname=rfetch
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Convenient and easy fetch tool written in Rust"
 arch=('x86_64')
@@ -8,8 +8,8 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('rust' 'git')
 
-source=("rfetch::git+https://github.com/skerrixx/rfetch.git#tag=v${pkgver}-kyon")
-sha256sums=('7e60b1c8795409a1b21fa737cdcc86a353a9a8d87ef7eeedc42744ead6858b89')
+source=("rfetch::git+https://github.com/skerrixx/rfetch.git#tag=v${pkgver}")
+sha256sums=('30ee05774b8a5f57a00f88a46c167ea5eb3e49d9198c34addfa2450049ffe74b')
 
 prepare() {
   cd "$(dirname "$(find "$srcdir" -name Cargo.toml -print -quit)")"
