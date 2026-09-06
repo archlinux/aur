@@ -2,7 +2,7 @@
 
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
@@ -10,7 +10,6 @@ url='https://github.com/ChrisDKN/Amethyst-Mod-Manager'
 license=('GPL-3.0-only')
 depends=(
     'python'
-    'sqlite'
 
     # UI
     'pyside6'
@@ -49,6 +48,7 @@ depends=(
     # Native amethyst_filegraph
     'glibc'
     'libgcc'
+    'sqlite'
 )
 optdepends=(
     'zenity: fallback native dialog (prefer to use XDG portal instead)'
@@ -59,7 +59,7 @@ makedepends=(
     'meson'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3d5c655dde0d3d534e718a5abbc8bcaa72aab9c37c2116f7bc22bad37cb5a6dd')
+sha256sums=('a177320a67c122d65d220f8215a4900eda06112aa474a322b48d1a8f82bed77d')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
