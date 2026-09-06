@@ -1,0 +1,2 @@
+d /etc/garm 0750 garm garm -
+d /var/lib/garm 0750 garm garm -

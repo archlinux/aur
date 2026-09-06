@@ -1,0 +1,13 @@
+post_install() {
+    echo ':: garm needs a configuration file before the service will start:'
+    echo '       /etc/garm/config.toml'
+    echo '   See the quickstart for a working example:'
+    echo '       https://github.com/cloudbase/garm/blob/main/doc/quickstart-systemd.md'
+    echo ':: Point the sqlite database at the state directory, e.g.:'
+    echo '       db_file = "/var/lib/garm/garm.db"'
+    echo ':: Install compute providers (lxd, incus, openstack, azure, ...) into:'
+    echo '       /opt/garm/providers.d/'
+    echo ':: Then enable the service and initialize the controller:'
+    echo '       systemctl enable --now garm'
+    echo '       garm-cli init --name my_garm --url http://<garm-host>'
+}
