@@ -1,0 +1,23 @@
+pkgbase = lunduke-paint-git
+	pkgdesc = Traditional Linux X11 paint program (GTK3/gtkmm), classic MS Paint + KolourPaint feel
+	pkgver = r52.0644594
+	pkgrel = 1
+	url = https://github.com/BryanLunduke/lunduke-paint
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = gtkmm3
+	depends = cairomm
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = libarchive
+	depends = pugixml
+	depends = pango
+	provides = lunduke-paint
+	conflicts = lunduke-paint
+	source = lunduke-paint-git::git+https://github.com/BryanLunduke/lunduke-paint.git
+	sha512sums = SKIP
+
+pkgname = lunduke-paint-git
