@@ -1,14 +1,14 @@
 pkgbase = python-tokenizers-bin
 	pkgdesc = Fast state-of-the-art tokenizers optimized for research and production (official wheel)
 	pkgver = 0.23.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/huggingface/tokenizers
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-installer
 	depends = python
-	depends = python-huggingface-hub
+	depends = python-huggingface-hub<1:2.0
 	provides = python-tokenizers=0.23.2
 	conflicts = python-tokenizers
 	noextract = tokenizers-0.23.2-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl

@@ -3,12 +3,14 @@
 pkgname=python-tokenizers-bin
 _pkgname=tokenizers
 pkgver=0.23.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast state-of-the-art tokenizers optimized for research and production (official wheel)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/huggingface/tokenizers"
 license=('Apache-2.0')
-depends=('python' 'python-huggingface-hub')
+# The wheel's METADATA requires huggingface-hub>=0.16.4,<2.0. Arch's package carries
+# epoch 1, so the bound must be written with it or pacman treats it as unsatisfied.
+depends=('python' 'python-huggingface-hub<1:2.0')
 makedepends=('python-installer')
 provides=("python-tokenizers=$pkgver")
 conflicts=('python-tokenizers')
