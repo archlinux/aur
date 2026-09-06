@@ -5,7 +5,7 @@
 pkgname=glibd
 _pkgname=GlibD
 pkgver=2.4.3
-pkgrel=6
+pkgrel=7
 pkgdesc='D bindings for the GLib C Utility Library'
 arch=('x86_64')
 url='https://github.com/gtkd-developers/GlibD'
@@ -46,6 +46,15 @@ build() {
   arch-meson ..
 
   ninja
+}
+
+check() {
+  cd $_pkgname-$pkgver/build
+
+  # tests/gobject/*.d (DClosureTest, ObjectGTest, ValueTest) -- real
+  # functional checks of the generated GObject/GLib bindings themselves,
+  # not just that they compile. Never wired in before this pkgrel.
+  meson test --print-errorlogs
 }
 
 package() {
