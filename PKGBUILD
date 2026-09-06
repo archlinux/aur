@@ -1,9 +1,9 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=agent-pwa-notifications
-pkgver=1.1.0
+pkgver=1.6.0
 pkgrel=1
-pkgdesc="CLI for a self-hosted Agent Notifications hub: connect an agent, mint a sign-in link, send updates and questions"
+pkgdesc="CLI for a self-hosted Agent PWA Notifications hub: connect an agent, mint a sign-in link, send updates and questions"
 arch=('any')
 url="https://github.com/Qu4tro/agent-pwa-notifications"
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('npm')
 provides=('agent-notify-pwa')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Qu4tro/agent-pwa-notifications/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aed8abfae9b423580e53bcf2bb5ce067d786af8f4bd9eb3fd5181ee548a7edb4')
+sha256sums=('d11aee71333ef9020ff0ae54a7ee04f2c9a1c721df2bdd76ef4854c06684cd57')
 
 # The tarball is the whole hub repository; only cli/ is packaged. The CLI has
 # one runtime dependency (qrcode-terminal) and no build step.
