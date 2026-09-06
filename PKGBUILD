@@ -1,5 +1,5 @@
 pkgname=miniss
-pkgver=0.0.2.r1.g7ad0621
+pkgver=0.0.3.r0.gfc197ca
 pkgrel=1
 pkgdesc='Displays a list of open listening sockets. It is a minimal alternative to ss or netstat.'
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ build() {
   cd $pkgname
 
   shards install --production
-  shards build --production --release --no-debug
+  shards build --production --release --no-debug $pkgname
 }
 
 package() {
