@@ -17,7 +17,7 @@
 # there and no WebKit is compiled here.
 
 pkgname=viewport-wpe-git
-pkgver=0.1.7.r17.g7cc34c8
+pkgver=0.1.8.r167.gff59517
 pkgrel=1
 pkgdesc='Wayland compositor whose entire shell is a web page — the Smithay rewrite (git)'
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,6 @@ license=('GPL-3.0-or-later')
 depends=(
   'wayland'
   'libxkbcommon'
-  'pixman'
   'libdrm'
   'libinput'
   'seatd'
@@ -37,9 +36,7 @@ depends=(
   'vulkan-icd-loader'
   'wpewebkit'
   'glib2'
-  'json-glib'
   'libxcb'
-  'xcb-util-wm'
   'pipewire'
   # WebKit guesses the type of a file:// page from the shared MIME database,
   # because nothing else tells it. Without this every local page is treated as

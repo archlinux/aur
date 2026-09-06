@@ -1,6 +1,6 @@
 pkgbase = viewport-wpe-git
 	pkgdesc = Wayland compositor whose entire shell is a web page — the Smithay rewrite (git)
-	pkgver = 0.1.7.r17.g7cc34c8
+	pkgver = 0.1.8.r167.gff59517
 	pkgrel = 1
 	url = https://github.com/codebam/viewport
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = viewport-wpe-git
 	makedepends = wayland-protocols
 	depends = wayland
 	depends = libxkbcommon
-	depends = pixman
 	depends = libdrm
 	depends = libinput
 	depends = seatd
@@ -24,9 +23,7 @@ pkgbase = viewport-wpe-git
 	depends = vulkan-icd-loader
 	depends = wpewebkit
 	depends = glib2
-	depends = json-glib
 	depends = libxcb
-	depends = xcb-util-wm
 	depends = pipewire
 	depends = shared-mime-info
 	optdepends = xorg-xwayland: X11 clients
@@ -39,8 +36,8 @@ pkgbase = viewport-wpe-git
 	optdepends = libva-mesa-driver: hardware video decode on AMD and Intel, for zero-copy video
 	optdepends = ttf-firacode-nerd: the icons in the bar, and the font the shell names first
 	optdepends = ttf-nerd-fonts-symbols: the icons in the bar, without the patched monospace family
-	provides = viewport=0.1.7.r17.g7cc34c8
-	provides = viewport-wpe=0.1.7.r17.g7cc34c8
+	provides = viewport=0.1.8.r167.gff59517
+	provides = viewport-wpe=0.1.8.r167.gff59517
 	conflicts = viewport
 	conflicts = viewport-webkitgtk
 	conflicts = viewport-wpe
