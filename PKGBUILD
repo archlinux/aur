@@ -1,4 +1,5 @@
 # Maintainer: Aaron Friesen <aaron@frie.dev>
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
 pkgname=nlarn
 pkgver=0.8.0
 pkgrel=1
