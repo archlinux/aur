@@ -3,7 +3,7 @@
 pkgname=qqmusic-tui-bin
 _pkgname=qqmusic-tui
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 _upstream_pkgrel=1
 pkgdesc="Linux terminal QQ Music player (.NET 10 Native AOT pre-built package)"
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ conflicts=('qqmusic-tui')
 
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_upstream_pkgrel}-x86_64.pkg.tar.zst")
 source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_upstream_pkgrel}-aarch64.pkg.tar.zst")
-sha256sums_x86_64=('e698baa3bbf7935f0871be12def0f3f1edcba68a4b00dc86480e7135a4787fe7')
-sha256sums_aarch64=('a0520f09ef77193c67d5f496aec6c7130fcfbc426ccc601e1e85102a0ed80bd8')
+sha256sums_x86_64=('8c97260c4f9ec1e375ef28628cda641deff4519d33b678a1c938cb4311f18910')
+sha256sums_aarch64=('4ee977dcdfa8d7a02936349c4efa724fabcdbf3fb015eed70e50c41ab2d8a1df')
 
 package() {
     cp -a "${srcdir}/usr" "${pkgdir}/"

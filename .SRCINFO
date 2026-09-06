@@ -1,7 +1,7 @@
 pkgbase = qqmusic-tui-bin
 	pkgdesc = Linux terminal QQ Music player (.NET 10 Native AOT pre-built package)
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Viemean/qqmusiclinux/tree/tui
 	arch = x86_64
 	arch = aarch64
@@ -16,9 +16,9 @@ pkgbase = qqmusic-tui-bin
 	optdepends = xclip: X11 clipboard support for copying song links
 	provides = qqmusic-tui
 	conflicts = qqmusic-tui
-	source_x86_64 = qqmusic-tui-bin-0.1.5-1-x86_64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v0.1.5/qqmusic-tui-bin-0.1.5-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = e698baa3bbf7935f0871be12def0f3f1edcba68a4b00dc86480e7135a4787fe7
-	source_aarch64 = qqmusic-tui-bin-0.1.5-1-aarch64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v0.1.5/qqmusic-tui-bin-0.1.5-1-aarch64.pkg.tar.zst
-	sha256sums_aarch64 = a0520f09ef77193c67d5f496aec6c7130fcfbc426ccc601e1e85102a0ed80bd8
+	source_x86_64 = qqmusic-tui-bin-0.1.5-2-x86_64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v0.1.5/qqmusic-tui-bin-0.1.5-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 8c97260c4f9ec1e375ef28628cda641deff4519d33b678a1c938cb4311f18910
+	source_aarch64 = qqmusic-tui-bin-0.1.5-2-aarch64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v0.1.5/qqmusic-tui-bin-0.1.5-1-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = 4ee977dcdfa8d7a02936349c4efa724fabcdbf3fb015eed70e50c41ab2d8a1df
 
 pkgname = qqmusic-tui-bin
