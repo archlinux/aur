@@ -1,0 +1,32 @@
+post_install() {
+	cat <<'FI'
+
+  El paquet només porta l'eina: el diccionari no s'hi inclou, perquè el
+  contingut és propietat de l'Institut d'Estudis Catalans i la informació
+  legal del DIEC en prohibeix la reproducció i la difusió.
+
+  Cada usuari se'l munta a casa seva amb una sola ordre, que triga uns
+  set minuts i el deixa a ~/.local/share/diec:
+
+      diec actualitza
+
+  I després, ja sense connexió:
+
+      diec cerca casa
+      diec cerca -l ca
+      diec cerca -t "peix de mar"
+
+FI
+}
+
+post_upgrade() {
+	cat <<'FI'
+
+  Si el format de la base de dades ha canviat, torna a passar:
+
+      diec construeix
+
+  No demana res al servidor: treballa sobre les dades que ja tens baixades.
+
+FI
+}

@@ -1,0 +1,19 @@
+pkgbase = diec-offline-git
+	pkgdesc = Consulta el DIEC2 sense connexió, amb cerca de text complet al terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/juxuanu/diec-offline
+	install = diec-offline-git.install
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = diec-offline
+	conflicts = diec-offline
+	options = !debug
+	options = !lto
+	source = diec-offline-git::git+https://gitlab.com/juxuanu/diec-offline.git
+	sha256sums = SKIP
+
+pkgname = diec-offline-git
