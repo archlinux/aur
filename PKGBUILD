@@ -2,13 +2,7 @@
 #
 # 雷神加速器 (Leigod) 官方 SteamDeck 插件在普通 x86_64 Linux 上的移植:
 # 将闭源官方二进制置于 bwrap 伪造的 SteamDeck 文件系统/进程视图中运行,
-# 网络与主机共享(非隔离), 插件会以 root 修改主机路由表与 iptables 规则,
-# 这是设计上的预期行为, 不是缺陷。
-#
-# 风险: 构建期经明文 HTTP(默认 http://119.3.40.126)下载官方文件, 以 pinned
-#       sha256 校验; 二进制闭源, 运行期访问雷神云端接口并上报流量统计。
-# 版权: acc-gw.router.amd64 与 ipdatacloud_country.xdb 版权归雷神(Leigod)所有,
-#       本包仅分发部署脚本, 不再分发二进制。
+# 网络与主机共享(非隔离), 插件会以 root 修改主机路由表与 iptables 规则。
 
 pkgname=leigod-steamdeck-plugin
 pkgver=1.2.2.15
@@ -17,7 +11,7 @@ pkgdesc="Leigod accelerator SteamDeck plugin on generic Linux via bwrap SteamDec
 arch=('x86_64')
 url="https://www.leigod.com"
 license=('custom:proprietary')
-depends=('bubblewrap' 'curl' 'iproute2' 'iptables-nft' 'ipset' 'sslh')
+depends=('bubblewrap' 'curl' 'iproute2' 'iptables' 'ipset' 'sslh')
 install='leigod-plugin.install'
 options=('!strip' '!debug')
 backup=('etc/leigod/bwrap.conf' 'etc/leigod/sslh-guard.cfg' 'etc/leigod/device.conf')
@@ -108,6 +102,6 @@ package() {
     install -Dm644 "$srcdir/leigod.service" "$pkgdir/usr/lib/systemd/system/leigod.service"
     install -Dm644 "$srcdir/mirror.conf.example" "$pkgdir/usr/share/leigod/mirror.conf.example"
 
-    # 说明: 官方安装脚本(plugin_install.sh/plugin_common.sh)在共享网络下会重置
-    # 系统行为, 本包刻意不携带、不执行; 配置由上述文件直接布放, 运行只调用官方守护脚本。
+    # 官方 plugin_uninstall.sh 会 `iptables -t mangle -F` 清空整张 mangle 表,
+    # 故不随包携带官方安装/卸载脚本; 配置由本AUR直接布放, 运行仅调用官方守护脚本。
 }
