@@ -1,20 +1,21 @@
 pkgbase = blocksd
-	pkgdesc = Linux daemon for ROLI Blocks devices — keepalive, LED control, topology management
-	pkgver = 0.4.0
-	pkgrel = 1
+	pkgdesc = Linux daemon for ROLI Blocks devices: keepalive, LED control, topology management
+	pkgver = 0.5.0
+	pkgrel = 2
 	url = https://github.com/hyperb1iss/blocksd
 	arch = any
 	license = ISC
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-hatchling
+	makedepends = python-hatchling>=1.32.0
+	makedepends = nodejs>=24.13.0
+	makedepends = pnpm>=12.3.4
 	depends = python>=3.13
-	depends = python-rtmidi
-	optdepends = python-typer: CLI interface
-	optdepends = python-rich: rich terminal output
-	optdepends = python-pydantic: configuration validation
-	backup = etc/blocksd/config.toml
-	source = blocksd-0.4.0.tar.gz::https://github.com/hyperb1iss/blocksd/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = a2203b166e1eefe0073bea6064883e4f31cb398e860cd505ee1b4a9fc3d9df52
+	depends = python-rtmidi>=1.5.8
+	depends = python-typer>=0.27.2
+	depends = python-rich>=15.0.0
+	depends = python-pydantic>=2.13.5
+	source = blocksd-0.5.0.tar.gz::https://github.com/hyperb1iss/blocksd/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 17f52d4ae291c738541a14a9046242acbfe25b3874f075896390d2f44081626d
 
 pkgname = blocksd

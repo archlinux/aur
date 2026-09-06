@@ -2,32 +2,37 @@
 # https://github.com/hyperb1iss/blocksd
 
 pkgname=blocksd
-pkgver=0.4.0
-pkgrel=1
-pkgdesc="Linux daemon for ROLI Blocks devices — keepalive, LED control, topology management"
+pkgver=0.5.0
+pkgrel=2
+pkgdesc="Linux daemon for ROLI Blocks devices: keepalive, LED control, topology management"
 arch=('any')
 url="https://github.com/hyperb1iss/blocksd"
 license=('ISC')
 depends=(
     'python>=3.13'
-    'python-rtmidi'
+    'python-rtmidi>=1.5.8'
+    'python-typer>=0.27.2'
+    'python-rich>=15.0.0'
+    'python-pydantic>=2.13.5'
 )
 makedepends=(
     'python-build'
     'python-installer'
-    'python-hatchling'
+    'python-hatchling>=1.32.0'
+    'nodejs>=24.13.0'
+    'pnpm>=12.3.4'
 )
-optdepends=(
-    'python-typer: CLI interface'
-    'python-rich: rich terminal output'
-    'python-pydantic: configuration validation'
-)
-backup=('etc/blocksd/config.toml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyperb1iss/blocksd/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a2203b166e1eefe0073bea6064883e4f31cb398e860cd505ee1b4a9fc3d9df52')
+sha256sums=('17f52d4ae291c738541a14a9046242acbfe25b3874f075896390d2f44081626d')
+
+prepare() {
+    cd "${pkgname}-${pkgver}/web"
+    pnpm install --frozen-lockfile
+}
 
 build() {
     cd "${pkgname}-${pkgver}"
+    pnpm --dir web build
     python -m build --wheel --no-isolation
 }
 
@@ -48,9 +53,4 @@ package() {
 
     # docs
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-}
-
-post_install() {
-    echo ":: Enable the user service with: systemctl --user enable --now blocksd"
-    echo ":: Reload udev rules with: sudo udevadm control --reload-rules"
 }
