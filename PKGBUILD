@@ -1,30 +1,36 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Jason van Gumster <fweeb@monsterjavaguns.com>
 
-pkgname=python-rq-scheduler
-pkgver=0.10.0
-pkgrel=2
+basename='rq-scheduler'
+pkgname=python-${basename}
+pkgver=0.14
+pkgrel=1
 pkgdesc="Small package that adds job scheduling capabilities to RQ"
+
+
 arch=('any')
-license=('MIT')
-url="https://github.com/rq/rq-scheduler"
+license=("BSD-2-Clause")
+url="https://github.com/rq/${basename}"
+
 makedepends=('python-setuptools')
-depends=('python-rq>=0.13' 'python-croniter>=0.3.9' 'python-dateutil')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('746a3496f4091df24fd749f2000d2aa0ba9b7ebd2652e5483c497faa82550d0f')
+depends=('python-rq' 'python-croniter' 'python-python-crontab' 'python-dateutil' 'python-redis' 'python-importlib-metadata')
+
+source=("${basename}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('71e8ac1d1e202f0f22f766fa3e3e0c593faa8aa09f85f440464a98d805b8bf77')
 
 build() {
-	cd "rq-scheduler-$pkgver"
-	python setup.py build
-}
+    cd "${srcdir}/${basename}-${pkgver}"
 
-check() {
-	cd "rq-scheduler-$pkgver"
-	python -m unittest run_tests.py
+    python setup.py build
 }
 
 package() {
-	cd "rq-scheduler-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+    cd "${srcdir}/${basename}-${pkgver}"
+
+    python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+
+    install -Dm644 "README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,0 +1,5 @@
+[python-rq-scheduler]
+source = "github"
+github = "rq/rq-scheduler"
+use_latest_release = true
+prefix = "v"
