@@ -1,6 +1,6 @@
 pkgbase = qtcurve
 	pkgdesc = A configurable set of widget styles for KDE and Gtk (Qt6 fork)
-	pkgver = 20240511
+	pkgver = 20260906
 	pkgrel = 1
 	url = https://invent.kde.org/system/qtcurve
 	arch = x86_64
@@ -11,13 +11,9 @@ pkgbase = qtcurve
 	makedepends = extra-cmake-modules
 	makedepends = kio
 	makedepends = kconfig
-	depends = qt5-base
-	depends = qt5-svg
-	depends = qt5-x11extras
 	depends = qt6-base
 	depends = qt6-svg
 	depends = libxcb
-	depends = gtk2
 	depends = libx11
 	depends = gcc-libs
 	depends = frameworkintegration
@@ -25,7 +21,7 @@ pkgbase = qtcurve
 	conflicts = qtcurve-kde
 	conflicts = qtcurve-qt5
 	conflicts = qtcurve-utils
-	source = git+https://invent.kde.org/system/qtcurve.git#commit=84f1ebe188fb0405c259d153c570daa4d3f48a67
+	source = git+https://invent.kde.org/system/qtcurve.git#commit=13343f1d5cfc25225594e9acc89030b7d8d556d2
 	md5sums = SKIP
 
 pkgname = qtcurve
