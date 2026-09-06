@@ -4,7 +4,7 @@ _pkgname='thunk_gen'
 _gitname='stsp'
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.8.r67.20251203.27b4a8e
+pkgver=1.11.r94.20260818.5c03a9b
 pkgrel=1
 pkgdesc="Thunk generator for C and assembler code."
 arch=(
@@ -55,7 +55,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(grep -E -e "^[[:space:]]*project[[:space:]]*\([[:space:]]*'thunk_gen'" meson.build | sed -E -e 's|^.*version:[[:space:]]*(.*)[[:space:],\)]|\1|' | tr -d \'\")"
+  _ver="$(grep -E -e "^[[:space:]]*project[[:space:]]*\([[:space:]]*'thunk_gen'" meson.build | sed -E -e 's|^.*version[[:space:]]*:[[:space:]]*(.*)[[:space:],\)]|\1|' | tr -d \'\")"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
