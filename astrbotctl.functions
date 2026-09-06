@@ -1,7 +1,6 @@
 #!/bin/bash
 # astrbotctl - shared functions library
 # shellcheck shell=bash
-# shellcheck source=astrbotctl
 # Source this file: . "$(dirname "$0")/astrbotctl.functions"
 
 # ─── Constants (can be overridden before sourcing) ────────────────────────────
@@ -72,6 +71,7 @@ require_instance() {
         echo "Usage: astrbotctl <command> <instance_name>" >&2
         exit 1
     fi
+    validate_instance_name "$instance" || exit 1
 }
 
 # Instance names are also used in fixed filesystem and systemd unit paths.
@@ -79,7 +79,7 @@ require_instance() {
 validate_instance_name() {
     local candidate="${1:-}"
 
-    if [[ ! "$candidate" =~ ^[[:alnum:]][[:alnum:]_-]*$ ]]; then
+    if [[ ! "$candidate" =~ ^[a-zA-Z0-9][a-zA-Z0-9_-]*$ ]]; then
         echo "❌ Error: Invalid instance name: ${candidate:-<empty>}" >&2
         return 1
     fi
@@ -87,66 +87,159 @@ validate_instance_name() {
 
 # ─── Config helpers ──────────────────────────────────────────────────────────
 
-# Upsert (insert or update) a key=value pair in a shell config file.
-# Quotes the value, escapes slashes and ampersands.
-upsert_conf_var() {
-    local conf_path="$1" key="$2" value="$3"
-    local escaped_value
-    escaped_value=$(printf '%s' "$value" | sed 's/[\/&]/\\&/g')
-
-    if grep -q "^${key}=" "$conf_path" 2>/dev/null; then
-        sed -i "s/^${key}=.*/${key}=\"${escaped_value}\"/" "$conf_path"
-    else
-        printf '%s="%s"\n' "$key" "$value" >>"$conf_path"
+# Write through a same-directory temporary file, never through the destination.
+# The writer receives the remaining arguments and emits the complete contents.
+# mode=preserve retains existing mode/ownership, defaulting to 0644 for new files.
+_atomic_replace_file() (
+    local destination="$1" mode="$2" owner="$3" temporary=""
+    shift 3
+    trap '[ -z "$temporary" ] || rm -f -- "$temporary"' EXIT
+    if [ -L "$destination" ] || { [ -e "$destination" ] && [ ! -f "$destination" ]; }; then
+        echo "Error: Refusing non-regular output path: $destination" >&2
+        exit 1
     fi
+    umask 077
+    temporary="$(mktemp -- "$(dirname "$destination")/.$(basename "$destination").XXXXXX")" || exit $?
+    "$@" >"$temporary" || exit $?
+    if [ "$mode" = preserve ] && [ -f "$destination" ]; then
+        chown --reference="$destination" -- "$temporary" || exit $?
+        chmod --reference="$destination" -- "$temporary" || exit $?
+    else
+        chmod "${mode/preserve/0644}" -- "$temporary" || exit $?
+    fi
+    [ -z "$owner" ] || chown "$owner" -- "$temporary" || exit $?
+    mv --no-copy -fT -- "$temporary" "$destination" || exit $?
+    temporary=""
+)
+
+# Double-quoted values shared by Bash source and systemd EnvironmentFile.
+_escape_conf_value() {
+    local value="$1"
+    value="${value//\\/\\\\}"
+    value="${value//\"/\\\"}"
+    value="${value//\$/\\\$}"
+    value="${value//\`/\\\`}"
+    printf '%s' "$value"
 }
 
-# Load instance config file, exporting all ASTRBOT_* variables.
-load_instance_config() {
-    local conf_file
-    conf_file="$(conf_file)"
-    ASTRBOT_ROOT="$(instance_root)"
-
-    if [ ! -f "$conf_file" ]; then
-        ASTRBOT_HOME="$ASTRBOT_ROOT"
-        return 0
+_write_upserted_conf() {
+    local path="$1" key="$2" escaped="$3" line found=0
+    if [ -f "$path" ]; then
+        while IFS= read -r line || [ -n "$line" ]; do
+            if [[ "$line" == "$key="* ]]; then
+                if [ "$found" -eq 0 ]; then
+                    printf '%s="%s"\n' "$key" "$escaped" || return $?
+                    found=1
+                fi
+            else
+                printf '%s\n' "$line" || return $?
+            fi
+        done <"$path" || return $?
     fi
-    set -a
-    # shellcheck disable=SC1090
-    . "$conf_file"
-    set +a
+    [ "$found" -eq 1 ] || printf '%s="%s"\n' "$key" "$escaped" || return $?
+    return 0
+}
 
-    # Keep the historical variable as an alias for callers that source this
-    # library, but never create a second runtime tree below `$ASTRBOT_ROOT`.
-    ASTRBOT_HOME="$ASTRBOT_ROOT"
+upsert_conf_var() {
+    local conf_path="$1" key="$2" value="$3" escaped
+    [[ "$key" =~ ^[a-zA-Z_][a-zA-Z0-9_]*$ ]] &&
+        [[ "$value" != *$'\n'* && "$value" != *$'\r'* ]] || {
+        echo 'Error: Expected a valid variable name and a single-line value.' >&2
+        return 2
+    }
+    escaped="$(_escape_conf_value "$value")" || return $?
+    _atomic_replace_file "$conf_path" preserve "" _write_upserted_conf "$conf_path" "$key" "$escaped"
+}
+
+# Snapshot supported defaults on the first load, not on library import. Restore
+# both set and unset values before each instance, including template/API defaults.
+_restore_instance_config_baseline() {
+    local key
+    local keys="INSTANCE_NAME ASTRBOT_ROOT ASTRBOT_LOG_LEVEL ASTRBOT_RELOAD
+        ASTRBOT_DISABLE_METRICS PYTHON DEMO_MODE TESTING ASTRBOT_DESKTOP_CLIENT
+        ASTRBOT_SYSTEMD ASTRBOT_DASHBOARD_ENABLE ASTRBOT_CORS_ALLOW_ORIGIN
+        ASTRBOT_HOST ASTRBOT_PORT ASTRBOT_SSL_ENABLE ASTRBOT_SSL_CERT
+        ASTRBOT_SSL_KEY ASTRBOT_SSL_CA_CERTS http_proxy https_proxy no_proxy
+        DASHSCOPE_API_KEY COZE_API_KEY COZE_BOT_ID TEST_MODE LOG_DIR
+        ASTRBOT_DASHBOARD_SSL_ENABLE ASTRBOT_CERTBOT_MANAGED
+        ASTRBOT_CERTBOT_CERT_NAME ASTRBOT_CERTBOT_DOMAINS ASTRBOT_CERTBOT_EMAIL"
+    if ! declare -p _ASTRBOT_CONFIG_BASELINE >/dev/null 2>&1; then
+        declare -gA _ASTRBOT_CONFIG_BASELINE=()
+        for key in $keys; do
+            if [[ -v "$key" ]]; then
+                _ASTRBOT_CONFIG_BASELINE["$key"]="${!key}"
+            fi
+        done
+    fi
+    for key in $keys; do
+        unset "$key" || return $?
+        if [[ ${_ASTRBOT_CONFIG_BASELINE[$key]+present} ]]; then
+            printf -v "$key" '%s' "${_ASTRBOT_CONFIG_BASELINE[$key]}" || return $?
+        fi
+    done
+    return 0
+}
+
+# Preserve the caller's allexport setting, including when source fails.
+load_instance_config() {
+    local config_path status=0 had_allexport=0
+    [[ $- != *a* ]] || had_allexport=1
+    config_path="$(conf_file)" || return $?
+    _restore_instance_config_baseline || return $?
+    ASTRBOT_ROOT="$(instance_root)" || return $?
+    export ASTRBOT_ROOT
+    if [ -f "$config_path" ]; then
+        set -a
+        # shellcheck disable=SC1090 # Trusted per-instance shell configuration.
+        if . "$config_path"; then :; else status=$?; fi
+    fi
+    if [ "$had_allexport" -eq 1 ]; then set -a; else set +a; fi
+    # Historical alias, not a second runtime directory.
+    export ASTRBOT_HOME="$ASTRBOT_ROOT"
+    return "$status"
 }
 
 # ─── Port allocation ─────────────────────────────────────────────────────────
 
 # Find a free port starting from $1 (default 3000).
 # Checks both assigned ports in config files and currently listening ports.
+_normalize_port() {
+    [[ "$1" =~ ^[0-9]{1,5}$ ]] || return 1
+    local number=$((10#$1))
+    ((number > 0 && number <= 65535)) || return 1
+    printf '%s\n' "$number"
+}
+
 find_free_port() {
-    local start_port="${1:-3000}" port_used
-
-    # Collect used ports from config files.  Using find avoids zsh glob issues.
-    local used_line
-    # shellcheck disable=SC2261
-    used_line=$(find "$CONFIG_DIR" -maxdepth 1 -name '*.conf' -type f \
-        -exec grep -h '^ASTRBOT_PORT=' {} + 2>/dev/null |
-        cut -d= -f2 | tr '\n' ' ')
-
-    # Collect currently listening ports.
-    local active_line
-    active_line=$(ss -lntH 2>/dev/null | awk '{print $4}' | grep -oE '[0-9]+$' | sort -u | tr '\n' ' ')
-
-    ASTRBOT_PORT=$start_port
-    while :; do
-        # Use awk for portable word-splitting and matching in both bash and zsh.
-        port_used=$(echo "$used_line $active_line" |
-            awk '{for(i=1;i<=NF;i++) if($i==p) found=1} END{print found?1:0}' p="$ASTRBOT_PORT")
-        [ "$port_used" -eq 0 ] && break
-        ASTRBOT_PORT=$((ASTRBOT_PORT + 1))
+    local port candidate path line value active endpoint
+    local -A used=()
+    local port_pattern="^[[:space:]]*ASTRBOT_PORT[[:space:]]*=[[:space:]]*(\"[0-9]+\"|'[0-9]+'|[0-9]+)[[:space:]]*(#.*)?$"
+    port="$(_normalize_port "${1:-3000}")" || return 2
+    for path in "$CONFIG_DIR"/*.conf; do
+        [ -f "$path" ] || continue
+        while IFS= read -r line || [ -n "$line" ]; do
+            [[ "$line" =~ $port_pattern ]] || continue
+            value="${BASH_REMATCH[1]}"
+            value="${value//\"/}"
+            value="${value//\'/}"
+            if candidate="$(_normalize_port "$value")"; then used["$candidate"]=1; fi
+        done <"$path"
     done
+    # Read ss completely. No grep -q/SIGPIPE interaction with caller pipefail.
+    if active="$(ss -lntH 2>/dev/null)"; then
+        while read -r _ _ _ endpoint _; do
+            if candidate="$(_normalize_port "${endpoint##*:}")"; then used["$candidate"]=1; fi
+        done <<<"$active"
+    fi
+    while ((port <= 65535)); do
+        if [[ ! ${used[$port]+present} ]]; then
+            export ASTRBOT_PORT="$port"
+            return 0
+        fi
+        port=$((port + 1))
+    done
+    echo 'Error: No free dashboard port is available.' >&2
+    return 1
 }
 
 # ─── Runtime environment ─────────────────────────────────────────────────────
@@ -196,7 +289,8 @@ migrate_legacy_home() {
 # Call this before running any astrbot command in a subprocess.
 setup_runtime_env() {
     export ASTRBOT_ROOT="${ASTRBOT_ROOT:-$(instance_root)}"
-    migrate_legacy_home "$ASTRBOT_ROOT"
+    migrate_legacy_home "$ASTRBOT_ROOT" || return $?
+    export ASTRBOT_HOME="$ASTRBOT_ROOT"
 
     # AstrBot resolves its application data relative to the working directory
     # (`data/`). Use the same instance root for HOME and the XDG tree so the
@@ -220,42 +314,51 @@ setup_runtime_env() {
     export ASTRBOT_SYSTEMD=1
     export ASTRBOT_DESKTOP_CLIENT=0
 
-    generate_env_file
+    generate_env_file || return $?
+    return 0
 }
 
-# Generate .env file for this instance.
-generate_env_file() {
-    local env_file="$ASTRBOT_ROOT/.env"
-    mkdir -p "$(dirname "$env_file")"
-
-    cat >"$env_file" <<EOF
-HOME=$HOME
-XDG_CACHE_HOME=$XDG_CACHE_HOME
-XDG_CONFIG_HOME=$XDG_CONFIG_HOME
-XDG_DATA_HOME=$XDG_DATA_HOME
-XDG_STATE_HOME=$XDG_STATE_HOME
-UV_PROJECT_ENVIRONMENT=$UV_PROJECT_ENVIRONMENT
-UV_PYTHON_INSTALL_DIR=$UV_PYTHON_INSTALL_DIR
-CARGO_HOME=$CARGO_HOME
-RUSTUP_HOME=$RUSTUP_HOME
-CARGO_TARGET_DIR=$CARGO_TARGET_DIR
-VIRTUAL_ENV=$UV_PROJECT_ENVIRONMENT
-PATH=$UV_PROJECT_ENVIRONMENT/bin:$PATH
-ASTRBOT_SYSTEMD=$ASTRBOT_SYSTEMD
-ASTRBOT_DESKTOP_CLIENT=$ASTRBOT_DESKTOP_CLIENT
-ASTRBOT_ROOT=$ASTRBOT_ROOT
-EOF
-
-    local opt_vars="ASTRBOT_HOST ASTRBOT_PORT ASTRBOT_DASHBOARD_ENABLE
+_write_runtime_env() {
+    local var
+    local vars="HOME XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_STATE_HOME
+        UV_PROJECT_ENVIRONMENT UV_PYTHON_INSTALL_DIR CARGO_HOME RUSTUP_HOME
+        CARGO_TARGET_DIR ASTRBOT_SYSTEMD ASTRBOT_DESKTOP_CLIENT ASTRBOT_ROOT
+        ASTRBOT_HOME ASTRBOT_HOST ASTRBOT_PORT ASTRBOT_DASHBOARD_ENABLE
         ASTRBOT_LOG_LEVEL ASTRBOT_RELOAD ASTRBOT_DISABLE_METRICS
         ASTRBOT_SSL_ENABLE ASTRBOT_SSL_CERT ASTRBOT_SSL_KEY ASTRBOT_SSL_CA_CERTS
         http_proxy https_proxy no_proxy"
-    for var in $opt_vars; do
-        local val
-        val=$(eval "printf '%s' \"\${$var:-}\"")
-        [ -n "$val" ] && echo "$var=$val"
-    done >>"$env_file"
+    for var in $vars; do
+        printf '%s=%q\n' "$var" "${!var-}" || return $?
+    done
+    printf 'VIRTUAL_ENV=%q\nPATH=%q\n' "$UV_PROJECT_ENVIRONMENT" "$UV_PROJECT_ENVIRONMENT/bin:$PATH" || return $?
+    return 0
 }
+
+# Instance directories are service-writable. Run both the reader/transformer
+# and atomic publisher without root privileges, including temporary-file opens.
+_replace_instance_file() {
+    local destination="$1"
+    shift
+    if [ "$(id -u)" -eq 0 ] && id astrbot >/dev/null 2>&1; then
+        runuser -u astrbot -- bash -c '
+            . "$1" || exit $?
+            shift
+            destination="$1"
+            shift
+            mkdir -p -- "$(dirname "$destination")" || exit $?
+            _atomic_replace_file "$destination" 0600 "" "$@"
+        ' bash "${BASH_SOURCE[0]}" "$destination" "$@"
+    else
+        mkdir -p -- "$(dirname "$destination")" || return $?
+        _atomic_replace_file "$destination" 0600 "" "$@"
+    fi
+}
+
+# This file is sourced by Bash, not parsed as a dotenv/EnvironmentFile document.
+generate_env_file() (
+    set -o pipefail
+    _write_runtime_env | _replace_instance_file "$ASTRBOT_ROOT/.env" cat
+)
 
 # Create all required runtime directories under ASTRBOT_ROOT.
 ensure_runtime_dirs() {
@@ -284,15 +387,18 @@ _runuser_with_env() {
     local env_file="$1" runtime_root="$2"
     shift 2
 
-    if [ "$(id -u)" -eq 0 ] && [ -z "$ASTRBOT_PRIVDROP_DONE" ] && id astrbot >/dev/null 2>&1; then
+    if [ "$(id -u)" -eq 0 ] && [ -z "${ASTRBOT_PRIVDROP_DONE:-}" ] && id astrbot >/dev/null 2>&1; then
         runuser -u astrbot -- env \
             ASTRBOT_PRIVDROP_DONE=1 \
-            sh -c 'set -a && . "$1" && . /usr/bin/astrbotctl.functions && set +a && ensure_runtime_dirs && cd "$2" && exec "${@:3}"' \
-            sh "$env_file" "$runtime_root" "$@"
+            bash -c 'set -a && . "$1" && . /usr/bin/astrbotctl.functions && set +a && ensure_runtime_dirs && cd "$2" && exec "${@:3}"' \
+            bash "$env_file" "$runtime_root" "$@"
     else
         (
-            set -a && . "$env_file" && set +a
-            ensure_runtime_dirs && cd "$runtime_root" || return
+            set -a
+            # shellcheck disable=SC1090 # Generated Bash assignments, not a library.
+            . "$env_file" || exit $?
+            set +a
+            ensure_runtime_dirs && cd "$runtime_root" || exit $?
             exec "$@"
         )
     fi
@@ -301,7 +407,7 @@ _runuser_with_env() {
 # Run an astrbot command (from the shared venv) with full runtime env.
 run_astrbot_env_cmd() {
     local command_cwd
-    setup_runtime_env
+    setup_runtime_env || return $?
     command_cwd="$runtime_root"
 
     if [ "${1:-}" = "--command-cwd" ]; then
@@ -324,7 +430,7 @@ ensure_instance_env_synced() {
         echo "❌ Error: Unknown ensure_instance_env_synced option." >&2
         return 2
     }
-    setup_runtime_env
+    setup_runtime_env || return $?
 
     # Self-heal app dir before syncing
     _ensure_app_dir || return 1
@@ -433,30 +539,50 @@ venv_is_valid() {
     [ -x "$venv_path/bin/python" ] && [ -x "$venv_path/bin/astrbot" ] || return 1
     [ -f "$venv_path/.astrbot-app-version" ] && [ ! -L "$venv_path/.astrbot-app-version" ] || return 1
     grep -Eq '^[^[:space:]]+$' "$venv_path/.astrbot-app-version" || return 1
+    if [ -e "$venv_path/.astrbot-rollback" ] || [ -L "$venv_path/.astrbot-rollback" ]; then
+        [ -f "$venv_path/.astrbot-rollback" ] && [ ! -L "$venv_path/.astrbot-rollback" ] || return 1
+    fi
     if id astrbot >/dev/null 2>&1; then
         owner="$(stat -c '%U:%G' "$venv_path")"
         [ "$owner" = 'astrbot:astrbot' ] || return 1
     fi
 }
 
+# O_EXCL also refuses special files created concurrently (unlike noclobber).
+_create_venv_maintenance_lock_file() {
+    python - "$1" <<'PY'
+import os
+import sys
+
+try:
+    fd = os.open(sys.argv[1], os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o644)
+except FileExistsError:
+    pass  # Another starter won; the caller validates and reuses its inode.
+else:
+    try:
+        os.fchmod(fd, 0o644)  # Shared service locks must remain readable.
+    finally:
+        os.close(fd)
+PY
+}
+
 ensure_venv_maintenance_lock_file() {
     local lock_file
-    lock_file="$(venv_maintenance_lock_file)"
-    if [ -e "$lock_file" ] || [ -L "$lock_file" ]; then
-        [ -f "$lock_file" ] && [ ! -L "$lock_file" ] || {
-            echo "❌ Error: Refusing non-regular maintenance lock path: $lock_file" >&2
-            return 1
-        }
-    else
-        install -m 0644 -o astrbot -g astrbot /dev/null "$lock_file" || return 1
+    lock_file="$(venv_maintenance_lock_file)" || return $?
+    if [ ! -e "$lock_file" ] && [ ! -L "$lock_file" ]; then
+        _create_venv_maintenance_lock_file "$lock_file" || return $?
     fi
+    [ -f "$lock_file" ] && [ ! -L "$lock_file" ] || {
+        echo "❌ Error: Refusing non-regular maintenance lock path: $lock_file" >&2
+        return 1
+    }
 }
 
 acquire_venv_maintenance_lock() {
     local lock_file
-    ensure_venv_maintenance_lock_file || return 1
+    ensure_venv_maintenance_lock_file || return $?
     lock_file="$(venv_maintenance_lock_file)"
-    exec {VENV_MAINTENANCE_LOCK_FD}>"$lock_file"
+    exec {VENV_MAINTENANCE_LOCK_FD}>>"$lock_file" || return $?
     if ! flock -n "$VENV_MAINTENANCE_LOCK_FD"; then
         exec {VENV_MAINTENANCE_LOCK_FD}>&-
         unset VENV_MAINTENANCE_LOCK_FD
@@ -494,18 +620,19 @@ create_venv_backup() {
     fi
 }
 
-write_venv_rollback_marker() {
+write_venv_rollback_marker() (
     local staged_venv="$1" reason="$2" marker version
     marker="$staged_venv/.astrbot-rollback"
-    version="$(cat "$staged_venv/.astrbot-app-version")"
+    [ ! -L "$marker" ] && { [ ! -e "$marker" ] || [ -f "$marker" ]; } || return 1
+    [ -f "$staged_venv/.astrbot-app-version" ] && [ ! -L "$staged_venv/.astrbot-app-version" ] || return 1
+    version="$(cat "$staged_venv/.astrbot-app-version")" || return $?
+    [[ "$version" =~ ^[^[:space:]]+$ ]] || return 1
     case "$reason" in
     sync_failure | update_failure | stability_failure) ;;
     *) return 1 ;;
     esac
-    umask 022
-    printf 'version=%s\nreason=%s\n' "$version" "$reason" >"$marker" || return 1
-    chown astrbot:astrbot "$marker" && chmod 0644 "$marker"
-}
+    _atomic_replace_file "$marker" 0644 astrbot:astrbot printf 'version=%s\nreason=%s\n' "$version" "$reason"
+)
 
 ATOMIC_RESTORE_CONTAINER=""
 ATOMIC_RESTORE_EXCHANGED_PATH=""
@@ -566,6 +693,7 @@ cleanup_atomic_restore_after_healthy() {
     [ -n "${ATOMIC_RESTORE_CONTAINER:-}" ] && rm -rf -- "$ATOMIC_RESTORE_CONTAINER"
     rm -rf -- "$backup_path"
     ATOMIC_RESTORE_CONTAINER=""
+    # shellcheck disable=SC2034 # Exposed recovery state, inspected by callers/tests.
     ATOMIC_RESTORE_EXCHANGED_PATH=""
 }
 
@@ -594,6 +722,10 @@ restart_restored_instance_healthy() {
 sync_cmd_config() {
     local cmd_config="${ASTRBOT_ROOT}/data/cmd_config.json"
 
+    if [ -L "$cmd_config" ] || { [ -e "$cmd_config" ] && [ ! -f "$cmd_config" ]; }; then
+        echo "❌ Error: Refusing non-regular dashboard config: $cmd_config" >&2
+        return 1
+    fi
     # If file does not exist or is empty, AstrBot will create it on first run;
     # nothing to sync yet — bail out to avoid spurious errors.
     if [ ! -f "$cmd_config" ]; then
@@ -604,69 +736,51 @@ sync_cmd_config() {
         return 0
     fi
 
-    # Use the already-loaded shell variable ASTRBOT_DASHBOARD_ENABLE (set by
-    # load_instance_config from the conf file). Fallback to true if not set.
-    local dashboard_enable="${ASTRBOT_DASHBOARD_ENABLE:-true}"
+    local port
+    port="$(_normalize_port "${ASTRBOT_PORT:-3000}")" || return 2
+    _replace_instance_file "$cmd_config" _write_dashboard_config "$cmd_config" \
+        "$port" "${ASTRBOT_HOST:-0.0.0.0}" "${ASTRBOT_SSL_ENABLE:-false}" \
+        "${ASTRBOT_SSL_CERT:-}" "${ASTRBOT_SSL_KEY:-}" "${ASTRBOT_LOG_LEVEL:-INFO}" \
+        "${ASTRBOT_DASHBOARD_ENABLE:-true}"
+}
 
-    # Use jq if available, otherwise use Python for reliable JSON editing.
-    # Prefer the venv's Python to avoid issues with system Python being a
-    # different (e.g. 3.14 on Arch) version than the venv (3.12).
-    local python_bin="${UV_PROJECT_ENVIRONMENT:-${VIRTUAL_ENV}}/bin/python"
-    [ ! -x "$python_bin" ] && python_bin="python3"
+# One implementation for all installations; never execute a service-owned
+# virtualenv Python as root or truncate cmd_config.json before parsing succeeds.
+_write_dashboard_config() {
+    python -I - "$@" <<'PY'
+import json
+import sys
 
-    if command -v jq >/dev/null 2>&1; then
-        jq \
-            --arg port "$ASTRBOT_PORT" \
-            --arg host "$ASTRBOT_HOST" \
-            --arg ssl_enable "$ASTRBOT_SSL_ENABLE" \
-            --arg cert_file "$ASTRBOT_SSL_CERT" \
-            --arg key_file "$ASTRBOT_SSL_KEY" \
-            --arg log_level "$ASTRBOT_LOG_LEVEL" \
-            --argjson dashboard_enable "$([[ "${dashboard_enable,,}" == @(true|1|yes) ]] && echo 'true' || echo 'false')" \
-            '.dashboard.port = ($port | tonumber)
-             | .dashboard.host = $host
-             | .dashboard.enable = $dashboard_enable
-             | .dashboard.ssl.enable = ($ssl_enable == "true")
-             | .dashboard.ssl.cert_file = $cert_file
-             | .dashboard.ssl.key_file = $key_file
-             | .log_level = $log_level' \
-            "$cmd_config" > "${cmd_config}.tmp" && \
-            mv "${cmd_config}.tmp" "$cmd_config"
-    else
-        # Use Python for reliable JSON manipulation (no extra deps needed)
-        "$python_bin" - "$cmd_config" "$ASTRBOT_PORT" "$ASTRBOT_HOST" \
-            "$ASTRBOT_SSL_ENABLE" "$ASTRBOT_SSL_CERT" "$ASTRBOT_SSL_KEY" \
-            "$ASTRBOT_LOG_LEVEL" "$dashboard_enable" <<'PYEOF'
-import json, sys
-path = sys.argv[1]
-port = int(sys.argv[2])
-host = sys.argv[3]
-ssl_enable = sys.argv[4].lower() in ('true', '1', 'yes')
-cert_file = sys.argv[5]
-key_file = sys.argv[6]
-log_level = sys.argv[7]
-dashboard_enable = sys.argv[8].lower() in ('true', '1', 'yes')
-with open(path, 'r', encoding='utf-8-sig') as f:
-    data = json.load(f)
-data.setdefault('dashboard', {})['port'] = port
-data['dashboard']['host'] = host
-data['dashboard']['enable'] = dashboard_enable
-data['dashboard'].setdefault('ssl', {})['enable'] = ssl_enable
-data['dashboard']['ssl']['cert_file'] = cert_file
-data['dashboard']['ssl']['key_file'] = key_file
-data['log_level'] = log_level
-with open(path, 'w', encoding='utf-8') as f:
-    json.dump(data, f, indent=2, ensure_ascii=False)
-PYEOF
-    fi
+path, port, host, ssl_enabled, cert, key, level, enabled = sys.argv[1:]
+with open(path, encoding="utf-8-sig") as config_file:
+    data = json.load(config_file)
+if not isinstance(data, dict):
+    raise ValueError("Dashboard configuration must be a JSON object")
+dashboard = data.setdefault("dashboard", {})
+ssl = dashboard.setdefault("ssl", {})
+dashboard.update(port=int(port), host=host, enable=enabled.lower() in ("true", "1", "yes"))
+ssl.update(enable=ssl_enabled.lower() in ("true", "1", "yes"), cert_file=cert, key_file=key)
+data["log_level"] = level
+json.dump(data, sys.stdout, indent=2, ensure_ascii=False)
+sys.stdout.write("\n")
+PY
 }
 
 # Render /etc/astrbot/tmpl.conf (or $SCRIPT_DIR/tmpl.conf) into an instance config.
 # Handles port auto-assignment automatically.
-render_config_from_template() {
+_render_template_content() {
+    local content
+    content="$(envsubst <"$1")" || return $?
+    bash -n <<<"$content" || return $?
+    # Do not publish a new shell configuration when runtime JSON sync fails.
+    sync_cmd_config >&2 || return $?
+    printf '%s\n' "$content"
+}
+
+render_config_from_template() (
     local tmpl_file conf_file
 
-    tmpl_file="/etc/astrbot/tmpl.conf"
+    tmpl_file="$CONFIG_DIR/tmpl.conf"
     if [ ! -f "$tmpl_file" ]; then
         # Try script-relative path (for dev/test environments)
         if [ -f "${SCRIPT_DIR:-}/tmpl.conf" ]; then
@@ -677,33 +791,24 @@ render_config_from_template() {
         fi
     fi
 
-    conf_file="$(conf_file)"
-    load_instance_config
+    conf_file="$(conf_file)" || return $?
+    load_instance_config || return $?
 
     INSTANCE_NAME="$instance"
     unset ASTRBOT_HOST ASTRBOT_PORT
     ASTRBOT_ROOT="${ASTRBOT_ROOT:-$SYSTEM_ROOT/$instance}"
     ASTRBOT_HOST="0.0.0.0"
-    find_free_port 3000
-
-    local tmp_conf
-    tmp_conf="$(mktemp /tmp/astrbot.conf.XXXXXX)"
-    trap 'rm -f "$tmp_conf"' EXIT
+    find_free_port 3000 || return $?
+    mkdir -p -- "$CONFIG_DIR" || return $?
 
     export INSTANCE_NAME ASTRBOT_HOST ASTRBOT_PORT ASTRBOT_ROOT \
         ASTRBOT_SSL_ENABLE ASTRBOT_SSL_CERT ASTRBOT_SSL_KEY ASTRBOT_SSL_CA_CERTS
-    envsubst <"$tmpl_file" >"$tmp_conf"
-
-    install -Dm644 "$tmp_conf" "$conf_file"
-    chmod 644 "$conf_file" 2>/dev/null || true
-
-    # Also sync dashboard settings to cmd_config.json so env vars take effect
-    sync_cmd_config
+    _atomic_replace_file "$conf_file" preserve "" _render_template_content "$tmpl_file" || return $?
 
     echo "✅ Config reset to template: $conf_file"
     echo "   (ASTRBOT_PORT=$ASTRBOT_PORT, ASTRBOT_HOST=$ASTRBOT_HOST)"
     return 0
-}
+)
 
 # ─── Instance discovery ──────────────────────────────────────────────────────
 
@@ -721,14 +826,49 @@ iter_instances() {
         sort -u
 }
 
+# Remove only idle virtualenvs while holding the same lock used by startup and
+# updates. Keep recovery snapshots and never follow an instance-root symlink.
+clean_instance_venvs() {
+    local root failed=0
+    for root in "$SYSTEM_ROOT"/*; do
+        [ -d "$root" ] && [ ! -L "$root" ] && [ -d "$root/.venv" ] || continue
+        if (
+            instance="${root##*/}"
+            validate_instance_name "$instance" || exit 1
+            ASTRBOT_ROOT="$root"
+            acquire_venv_maintenance_lock || exit $?
+            if systemctl is-active --quiet "astrbot@$instance" 2>/dev/null; then
+                release_venv_maintenance_lock
+                echo "⚠️  Keeping active instance virtualenv: $instance" >&2
+                exit 75
+            fi
+            if ! rm -rf -- "$root/.venv"; then
+                release_venv_maintenance_lock
+                exit 1
+            fi
+            release_venv_maintenance_lock
+        ); then
+            :
+        else
+            failed=1
+        fi
+    done
+    return "$failed"
+}
+
 # ─── Certbot helpers ─────────────────────────────────────────────────────────
+
+certbot_live_dir() {
+    printf '/etc/letsencrypt/live/%s\n' "$1"
+}
 
 # Sync /etc/letsencrypt/live/$cert_name/* → $CERTBOT_INSTANCE_CERTS_DIR/$instance/
 sync_certbot_cert_for_instance() {
     local cert_name="$1"
     # NOTE: inline the dest path to avoid zsh local-scope issues with
     # command substitutions that reference other local vars.
-    local live_dir="/etc/letsencrypt/live/$cert_name"
+    local live_dir
+    live_dir="$(certbot_live_dir "$cert_name")" || return $?
     local src_cert="$live_dir/fullchain.pem"
     local src_key="$live_dir/privkey.pem"
     local dest_dir="$CERTBOT_INSTANCE_CERTS_DIR/${instance}"
@@ -743,12 +883,12 @@ sync_certbot_cert_for_instance() {
     }
 
     # Determine group flag (skip if 'astrbot' group doesn't exist in this env)
-    local group_g=""
-    getent group astrbot >/dev/null 2>&1 && group_g="-g astrbot"
+    local -a group_args=()
+    if getent group astrbot >/dev/null 2>&1; then group_args=(-g astrbot); fi
 
-    install -d -m750 -o root "$group_g" "$dest_dir"
-    install -m640 -o root "$group_g" "$src_cert" "$dest_dir/fullchain.pem"
-    install -m640 -o root "$group_g" "$src_key" "$dest_dir/privkey.pem"
+    install -d -m750 -o root "${group_args[@]}" "$dest_dir" || return $?
+    install -m640 -o root "${group_args[@]}" "$src_cert" "$dest_dir/fullchain.pem" || return $?
+    install -m640 -o root "${group_args[@]}" "$src_key" "$dest_dir/privkey.pem"
 }
 
 # Write the certbot deploy hook that triggers __certbot-deploy on renewal.
@@ -756,10 +896,10 @@ install_certbot_deploy_hook() {
     local cert_name="$1"
     local hook_path
     hook_path="$(certbot_hook_path)"
-    local group_g=""
-    getent group astrbot >/dev/null 2>&1 && group_g="-g astrbot"
+    local -a group_args=()
+    if getent group astrbot >/dev/null 2>&1; then group_args=(-g astrbot); fi
 
-    install -d -m755 "$group_g" /etc/letsencrypt/renewal-hooks/deploy
+    install -d -m755 "${group_args[@]}" /etc/letsencrypt/renewal-hooks/deploy || return $?
     cat >"$hook_path" <<EOF
 #!/bin/sh
 set -e
@@ -828,7 +968,7 @@ PY
 # Sets up env, ensures venv exists, then execs into the Python process.
 # Called directly by systemd (__run_astrbot) or by 'astrbotctl run'.
 run_astrbot() {
-    setup_runtime_env
+    setup_runtime_env || return $?
 
     # Self-heal: try to restore /opt/astrbot if it's gone
     _ensure_app_dir || {
@@ -854,15 +994,15 @@ run_astrbot() {
     cd "$ASTRBOT_ROOT" || exit
 
     # Sync env vars from conf file to cmd_config.json so they take effect at runtime
-    sync_cmd_config
+    sync_cmd_config || return $?
 
     # If no arguments provided, default to running the server 'run' subcommand.
     # Otherwise, pass through the provided arguments as top-level astrbot subcommands.
     local _cmd
     if [ "$#" -eq 0 ]; then
-        _cmd=( "$venv_astrbot" "run" )
+        _cmd=("$venv_astrbot" "run")
     else
-        _cmd=( "$venv_astrbot" "$@" )
+        _cmd=("$venv_astrbot" "$@")
     fi
     exec env -i \
         HOME="$HOME" \

@@ -16,6 +16,8 @@ case "$cmd" in
 __certbot-deploy)
     instance="${1?}" && shift || exit 1
     cert_name="${1?}" && shift || exit 1
+    require_instance
+    validate_instance_name "$cert_name" || exit 1
     require_root
     sync_certbot_cert_for_instance "$cert_name"
     systemctl try-restart "astrbot@${instance}.service" >/dev/null 2>&1 || true
@@ -24,6 +26,7 @@ __certbot-deploy)
 # ── Internal: systemd service entry point ────────────────────────────────────
 __run_astrbot)
     instance="${1?}" && shift || exit 1
+    require_instance
     load_instance_config
     run_astrbot run "$@"
     ;;
@@ -73,21 +76,21 @@ init)
     conf_file="${CONFIG_DIR}/${instance}.conf"
     astrbot_root="${SYSTEM_ROOT}/${instance}"
 
-    [ -d "$astrbot_root" ] && {
-        echo "⚠️  Instance data directory already exists: $astrbot_root" >&2
+    [ -e "$astrbot_root" ] || [ -L "$astrbot_root" ] || [ -e "$conf_file" ] || [ -L "$conf_file" ] && {
+        echo "❌ Error: Instance data or configuration already exists for '$instance'." >&2
         exit 1
     }
 
     echo ">>> Initializing instance: $instance"
 
-    install -dm755 -o astrbot -g astrbot "$astrbot_root"
-    find_free_port 3000
-
-    tmpl_file="/etc/astrbot/tmpl.conf"
+    tmpl_file="$CONFIG_DIR/tmpl.conf"
     [ ! -f "$tmpl_file" ] && {
         echo "❌ Error: Config template not found at $tmpl_file" >&2
         exit 1
     }
+
+    find_free_port 3000
+    install -dm755 -o astrbot -g astrbot "$astrbot_root"
 
     export INSTANCE_NAME="$instance" ASTRBOT_HOST="0.0.0.0" ASTRBOT_PORT ASTRBOT_ROOT="$astrbot_root"
     envsubst <"$tmpl_file" >"$conf_file"
@@ -122,31 +125,41 @@ init)
 
 # ── cp ───────────────────────────────────────────────────────────────────────
 cp)
+    if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+        echo "Usage: sudo astrbotctl cp <source_instance> <dest_instance>"
+        exit 0
+    fi
+    [ "$#" -eq 2 ] || {
+        echo "Usage: sudo astrbotctl cp <source_instance> <dest_instance>" >&2
+        exit 2
+    }
+    src="$1"
+    dst="$2"
+    validate_instance_name "$src" && validate_instance_name "$dst" || exit 1
     require_root
-    src="${2?Usage: astrbotctl cp <source_instance> <dest_instance>}"
-    dst="${3?Usage: astrbotctl cp <source_instance> <dest_instance>}"
 
     src_root="${SYSTEM_ROOT}/${src}"
     dst_root="${SYSTEM_ROOT}/${dst}"
     dst_conf="${CONFIG_DIR}/${dst}.conf"
 
-    [ ! -d "$src_root" ] && {
+    [ ! -d "$src_root" ] || [ -L "$src_root" ] && {
         echo "❌ Error: Source instance '$src' does not exist." >&2
         exit 1
     }
-    [ -d "$dst_root" ] && {
+    [ -e "$dst_root" ] || [ -L "$dst_root" ] && {
         echo "❌ Error: Destination directory '$dst_root' already exists." >&2
         exit 1
     }
-    [ -f "$dst_conf" ] && {
+    [ -e "$dst_conf" ] || [ -L "$dst_conf" ] && {
         echo "❌ Error: Destination config '$dst_conf' already exists." >&2
         exit 1
     }
 
-    echo ">>> Copying instance: $src -> $dst"
-    echo "    Copying data directory..."
-    cp -r "$src_root" "$dst_root"
-    chown -R astrbot:astrbot "$dst_root"
+    tmpl_file="$CONFIG_DIR/tmpl.conf"
+    [ -f "$tmpl_file" ] || {
+        echo "❌ Error: Config template not found at $tmpl_file" >&2
+        exit 1
+    }
 
     # Reuse unified port allocation
     instance="$src"
@@ -154,12 +167,12 @@ cp)
     instance="$dst"
     find_free_port 3000
 
-    tmpl_file="/etc/astrbot/tmpl.conf"
-    [ ! -f "$tmpl_file" ] && {
-        echo "❌ Error: Config template not found at $tmpl_file" >&2
-        rm -rf "$dst_root"
-        exit 1
-    }
+    echo ">>> Copying instance: $src -> $dst"
+    echo "    Copying data directory..."
+    cp -a -- "$src_root" "$dst_root"
+    # Virtualenv entrypoints contain absolute paths and cannot be relocated.
+    rm -rf -- "$dst_root/.venv" "$dst_root/.venv-maintenance.lock"
+    chown -hR astrbot:astrbot "$dst_root"
 
     export INSTANCE_NAME="$dst" ASTRBOT_HOST="${ASTRBOT_HOST:-0.0.0.0}" \
         ASTRBOT_PORT ASTRBOT_ROOT="$dst_root"
@@ -183,7 +196,7 @@ rm)
     instance="${1:-}"
     require_root
     require_instance
-    validate_instance_name "$instance" || exit 1
+    certbot_managed="" certbot_cert_name=""
 
     conf_file="$(conf_file)"
     exact_root="${SYSTEM_ROOT}/${instance}"
@@ -312,10 +325,11 @@ certbot)
     }
     email="$e"
 
-    # Build -d arguments
-    domain_args=""
-    for domain in $domains; do
-        domain_args="$domain_args -d $domain"
+    # Preserve each domain as one argument; never expand globs or option strings.
+    read -r -a domain_list <<<"$domains"
+    domain_args=()
+    for domain in "${domain_list[@]}"; do
+        domain_args+=(-d "$domain")
     done
 
     ss -lntH "( sport = :80 )" 2>/dev/null | grep -q . && {
@@ -324,11 +338,10 @@ certbot)
     }
 
     echo ">>> Requesting Let's Encrypt certificate..."
-    # shellcheck disable=SC2086
     certbot certonly \
         --standalone --preferred-challenges http --http-01-port 80 \
         --agree-tos --non-interactive \
-        --email "$email" --cert-name "$cert_name" $domain_args
+        --email "$email" --cert-name "$cert_name" "${domain_args[@]}"
 
     sync_certbot_cert_for_instance "$cert_name"
 
@@ -502,7 +515,10 @@ clean)
     fi
 
     # Instance virtualenvs
-    total_venvs=$(find "$SYSTEM_ROOT" -mindepth 2 -maxdepth 2 -type d -name '.venv' 2>/dev/null | wc -l)
+    total_venvs=0
+    if [ -d "$SYSTEM_ROOT" ]; then
+        total_venvs=$(find "$SYSTEM_ROOT" -mindepth 2 -maxdepth 2 -type d -name '.venv' | wc -l)
+    fi
     if [ "$total_venvs" -gt 0 ]; then
         venv_total_size=$(find "$SYSTEM_ROOT" -mindepth 2 -maxdepth 2 -type d -name '.venv' -exec du -ch {} + 2>/dev/null | tail -1 | cut -f1)
         echo "  [4] Instance venvs: $SYSTEM_ROOT/*/.venv (total: ${venv_total_size:-unknown})"
@@ -538,15 +554,16 @@ clean)
             rm -rf /var/lib/astrbot/.rustup
             ;;
         4)
-            echo ">>> Removing all instance venvs..."
-            find "$SYSTEM_ROOT" -mindepth 2 -maxdepth 2 -type d -name '.venv' -exec rm -rf {} +
+            echo ">>> Removing idle instance venvs..."
+            clean_instance_venvs
             ;;
         5)
             echo ">>> Removing UV cache..."
             rm -rf "$CACHE_DIR/uv"
             ;;
         a)
-            echo ">>> Removing all caches..."
+            echo ">>> Removing idle instance venvs and all caches..."
+            clean_instance_venvs
             rm -rf "$CACHE_DIR/update-snapshots"
             mkdir -p "$CACHE_DIR/update-snapshots"
             rm -rf /var/lib/astrbot/.cargo
@@ -598,6 +615,10 @@ USAGE
         esac
     done
 
+    [ "$all" -eq 0 ] || [ -z "$instance" ] || {
+        echo "❌ Error: Choose an instance or --all, not both." >&2
+        exit 2
+    }
     require_root
 
     if [ "$all" -eq 1 ]; then
@@ -621,11 +642,12 @@ USAGE
         local inst="$1" was_active=0
         local venv_dir_path venv_backup_path had_backup=0 sync_status rollback_ok=0
         instance="$inst"
-        load_instance_config
+        validate_instance_name "$instance" || return 1
+        load_instance_config || return $?
 
-        if [ ! -d "$ASTRBOT_ROOT" ]; then
-            echo "⚠️  Instance $inst directory missing, skipping."
-            return 0
+        if [ ! -d "$ASTRBOT_ROOT" ] || [ -L "$ASTRBOT_ROOT" ]; then
+            echo "❌ Error: Instance $inst directory is missing or symlinked." >&2
+            return 1
         fi
 
         venv_dir_path="$(venv_dir)"
@@ -741,7 +763,11 @@ update)
             shift
             ;;
         --stability-secs)
-            stability_secs="${2:?}"
+            [ -n "${2:-}" ] || {
+                echo "❌ Error: Missing value after --stability-secs" >&2
+                exit 2
+            }
+            stability_secs="$2"
             shift 2
             ;;
         -h | --help)
@@ -773,6 +799,15 @@ USAGE
         esac
     done
 
+    [ "$all" -eq 0 ] || [ -z "$instance" ] || {
+        echo "❌ Error: Choose an instance or --all, not both." >&2
+        exit 2
+    }
+    [[ "$stability_secs" =~ ^[0-9]{1,6}$ ]] || {
+        echo "❌ Error: --stability-secs must be an integer from 0 to 999999." >&2
+        exit 2
+    }
+    stability_secs=$((10#$stability_secs))
     require_root
 
     if [ "$all" -eq 1 ]; then
@@ -794,10 +829,10 @@ USAGE
 
     echo ""
     echo "[1/3] Checking installed package..."
-    if [ -f /opt/astrbot/.version ]; then
-        echo ">>> Using packaged AstrBot version: $(cat /opt/astrbot/.version)"
+    if [ -f "$APP_DIR/.version" ]; then
+        echo ">>> Using packaged AstrBot version: $(cat "$APP_DIR/.version")"
     else
-        echo "⚠️  /opt/astrbot/.version not found. Sync will use the current /opt/astrbot contents."
+        echo "⚠️  $APP_DIR/.version not found. Sync will use the current $APP_DIR contents."
     fi
 
     echo ""
@@ -806,10 +841,11 @@ USAGE
         local inst="$1" was_active=0 update_status rollback_ok=0
         local venv_dir_path venv_backup_path had_backup=0
         instance="$inst"
-        load_instance_config
-        if [ ! -d "$ASTRBOT_ROOT" ]; then
-            echo "⚠️  Instance $inst directory missing, skipping."
-            return 0
+        validate_instance_name "$instance" || return 1
+        load_instance_config || return $?
+        if [ ! -d "$ASTRBOT_ROOT" ] || [ -L "$ASTRBOT_ROOT" ]; then
+            echo "❌ Error: Instance $inst directory is missing or symlinked." >&2
+            return 1
         fi
 
         venv_dir_path="$(venv_dir)"
@@ -847,11 +883,18 @@ USAGE
             had_backup=1
         fi
 
-        rm -rf "$venv_dir_path"
+        if ! rm -rf -- "$venv_dir_path"; then
+            release_venv_maintenance_lock
+            echo "❌ Error: Failed to remove the old venv for $inst; backup retained." >&2
+            return 1
+        fi
 
-        if [ -L "/opt/astrbot/astrbot/dashboard/dist" ] && [ ! -e "/opt/astrbot/astrbot/dashboard/dist" ]; then
-            rm -f "/opt/astrbot/astrbot/dashboard/dist"
-            mkdir -p "/opt/astrbot/astrbot/dashboard/dist"
+        if [ -L "$APP_DIR/astrbot/dashboard/dist" ] && [ ! -e "$APP_DIR/astrbot/dashboard/dist" ]; then
+            if ! rm -f -- "$APP_DIR/astrbot/dashboard/dist" || ! mkdir -p -- "$APP_DIR/astrbot/dashboard/dist"; then
+                release_venv_maintenance_lock
+                echo "❌ Error: Failed to repair dashboard assets for $inst; backup retained." >&2
+                return 1
+            fi
         fi
 
         if ensure_instance_env_synced --force 2>&1; then
@@ -888,7 +931,10 @@ USAGE
         else
             update_status=$?
             echo "⚠️  Failed to start $inst"
-            if acquire_venv_maintenance_lock && restore_venv_backup_atomically "$venv_dir_path" "$venv_backup_path" update_failure; then
+            # Cancel Restart=always before restoring, even when start failed.
+            if systemctl stop "astrbot@$inst" && acquire_venv_maintenance_lock &&
+                ! systemctl is-active --quiet "astrbot@$inst" 2>/dev/null &&
+                restore_venv_backup_atomically "$venv_dir_path" "$venv_backup_path" update_failure; then
                 rollback_ok=1
             fi
             release_venv_maintenance_lock
@@ -904,10 +950,19 @@ USAGE
     _rollback_after_stability_failure() {
         local inst="$1" venv_dir_path venv_backup_path
         instance="$inst"
-        load_instance_config
+        validate_instance_name "$instance" || return 1
+        load_instance_config || return $?
         venv_dir_path="$(venv_dir)"
         venv_backup_path="${UPDATE_SNAPSHOT_DIR}/${inst}-venv-backup"
+        # A failed service may have an automatic restart pending. Cancel it
+        # before acquiring the maintenance lock and exchanging its environment.
+        systemctl stop "astrbot@$inst" || return $?
         acquire_venv_maintenance_lock || return $?
+        if systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
+            release_venv_maintenance_lock
+            echo "❌ Error: Instance '$inst' is still active; rollback was not attempted." >&2
+            return 75
+        fi
         if ! restore_venv_backup_atomically "$venv_dir_path" "$venv_backup_path" stability_failure; then
             release_venv_maintenance_lock
             return 1
@@ -943,12 +998,12 @@ USAGE
 
     echo ""
     echo "[3/3] Monitoring stability..."
-    if [ "$stability_secs" -gt 0 ]; then
+    if [ "$stability_secs" -gt 0 ] && [ -n "$UPDATED_ACTIVE_INSTANCES" ]; then
         echo ">>> Waiting ${stability_secs}s to ensure instances stay active..."
-        for i in $(seq 1 "$stability_secs"); do
+        for ((i = 1; i <= stability_secs; i++)); do
             sleep 1
             for inst in $UPDATED_ACTIVE_INSTANCES; do
-                if echo "$FAILED_INSTANCES" | grep -qw "$inst"; then
+                if [[ " $FAILED_INSTANCES " == *" $inst "* ]]; then
                     continue
                 fi
                 if ! systemctl is-active --quiet "astrbot@$inst" 2>/dev/null; then
@@ -960,13 +1015,12 @@ USAGE
                     FAILED_INSTANCES="$FAILED_INSTANCES $inst"
                 fi
             done
-            [ -z "$FAILED_INSTANCES" ] || break
         done
     fi
 
     # A successfully monitored active instance has no remaining recovery use.
     for inst in $UPDATED_ACTIVE_INSTANCES; do
-        if ! echo "$FAILED_INSTANCES" | grep -qw "$inst"; then
+        if [[ " $FAILED_INSTANCES " != *" $inst "* ]]; then
             _cleanup_venv_backup "$inst"
         fi
     done

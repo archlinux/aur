@@ -4,7 +4,7 @@ pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
 pkgver=4.27.2.r26.ga9bb8a64c
-pkgrel=2
+pkgrel=3
 
 pkgver() {
     # shellcheck disable=SC2154 # makepkg provides srcdir.
@@ -25,7 +25,7 @@ arch=('any')
 url="https://github.com/AstrBotDevs/AstrBot"
 license=('AGPL-3.0-only')
 
-depends=('python>=3.12' 'uv' 'util-linux')
+depends=('python>=3.12' 'uv' 'util-linux' 'gettext')
 makedepends=('git')
 optdepends=('certbot: HTTPS certificate helper for astrbotctl certbot')
 
@@ -42,10 +42,10 @@ source=(
 )
 
 sha256sums=('SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
+    '51e1c989e1039c84f7b1c89d48e1baa68e71b9e732ea6001e86061ff2453f277'
+    'cddeed1472636290b18062b2f604a93a54592a91be810b0276460d14bf08d357'
+    '30d88bd2ade1ac0963e8c09721dbfc5c0fa72c0a1d6ec71ef04824dbe06a5372'
+    '3e957409c2386f1730a1c4aac174a5a2390bf430646f0af752a750199df19e5f'
     'd5081794e8b9bdf1330a4227c9b8aa492c15a88bef930afac4301006ed703663')
 
 install=astrbot-git.install
