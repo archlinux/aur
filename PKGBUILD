@@ -3,7 +3,7 @@
 _pkgauthor=wcampbell0x2a
 _pkgname=backhand
 pkgname=${_pkgname}-bin
-pkgver=0.25.1
+pkgver=0.25.3
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Read, create and modify SquashFS File Systems"
@@ -21,11 +21,11 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-APACHE-${pkgver}::${_urlraw}/LICENSE-APACHE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}-unknown-linux-musl.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}-unknown-linux-musl.tar.gz")
-sha256sums=('c9e6158a05fb2c33e08e8e184e6a261996fff6c20525531f3893c14d2e74dbdd'
+sha256sums=('2b7cadc5845c3f38dd5199b3cf225c8eae068f39e8e52be6a69b8836cbcbfc05'
             '23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3'
             'fd26644b0118c8ae84a8770bdbbe18f7db14387b5cc19d1de670ad2d98a7ad42')
-sha256sums_x86_64=('1de7617a568e341375d1be27adc337801fa2b6f51d724ba051a9ce9ef91b0243')
-sha256sums_aarch64=('359547f97c500e6643ea8318d1318a582327187cfe141ea14cfc1637a7a77147')
+sha256sums_x86_64=('7442d255c22c19a0c1ef501b85cbaa25f003f5a967d0ad312b1660c6af1f966e')
+sha256sums_aarch64=('4b617a85c07ee20fa7fefffe435288c960992e0e428369a3ebbccbaebe822f46')
 
 
 package() {
