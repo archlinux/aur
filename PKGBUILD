@@ -11,7 +11,7 @@ groups=('selinux')
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/SELinuxProject/selinux/wiki'
 license=('GPL2')
-makedepends=('python-pip' 'python-setuptools')
+makedepends=('python-build' 'python-pip' 'python-setuptools')
 depends=('python' 'python-audit' 'libsemanage>=3.11' 'setools>=4.4.0')
 conflicts=('sepolgen<2.7' 'policycoreutils<2.7')
 provides=("sepolgen=${pkgver}-${pkgrel}")

@@ -8,6 +8,7 @@ pkgbase = selinux-python
 	arch = aarch64
 	groups = selinux
 	license = GPL2
+	makedepends = python-build
 	makedepends = python-pip
 	makedepends = python-setuptools
 	depends = python
