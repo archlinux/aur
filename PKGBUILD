@@ -1,16 +1,16 @@
 # Maintainer: Twilight0 <https://github.com/Twilight0>
 pkgname=sixaxis-tools
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="User-mode Sony Sixaxis pairing tools (CLI, ncurses, GTK3/XApp), wrapping sixpair"
 arch=('x86_64')
 url="https://github.com/Twilight0/sixaxis-tools"
 license=('GPL-2.0-or-later')
 depends=('libusb-compat' 'ncurses' 'gtk3' 'xapp')
+optdepends=('bluez: list Bluetooth-connected controllers')
 makedepends=('pkgconf' 'gcc' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Twilight0/sixaxis-tools/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e52deaa8a04cd51803c88ce277a4920fca78a425ba8b73541e4ea0af56bbbabc')
-install=sixaxis-tools.install
+sha256sums=('6f71caad0767ead49990d24ad86912faa584bde4f460b52210721e6d68733e32')
 
 build() {
     cd "$pkgname-$pkgver"

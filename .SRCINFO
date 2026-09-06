@@ -1,9 +1,8 @@
 pkgbase = sixaxis-tools
 	pkgdesc = User-mode Sony Sixaxis pairing tools (CLI, ncurses, GTK3/XApp), wrapping sixpair
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Twilight0/sixaxis-tools
-	install = sixaxis-tools.install
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = pkgconf
@@ -13,7 +12,8 @@ pkgbase = sixaxis-tools
 	depends = ncurses
 	depends = gtk3
 	depends = xapp
-	source = sixaxis-tools-0.1.0.tar.gz::https://github.com/Twilight0/sixaxis-tools/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = e52deaa8a04cd51803c88ce277a4920fca78a425ba8b73541e4ea0af56bbbabc
+	optdepends = bluez: list Bluetooth-connected controllers
+	source = sixaxis-tools-0.2.0.tar.gz::https://github.com/Twilight0/sixaxis-tools/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 6f71caad0767ead49990d24ad86912faa584bde4f460b52210721e6d68733e32
 
 pkgname = sixaxis-tools
