@@ -1,10 +1,10 @@
 # Maintainer: ChouChiu <lshengevery@gmail.com>
 
 pkgname=purivox-bin
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 _iteration=1
-pkgdesc="Reference-guided and neural vocal separation for stage and live recordings"
+pkgdesc="Reference-guided vocal isolation for stage and live recordings"
 arch=('x86_64')
 url="https://github.com/ChouChiu/Purivox"
 license=('AGPL-3.0-or-later')
@@ -20,7 +20,7 @@ source=("purivox-${pkgver}.deb::${url}/releases/download/v${pkgver}/purivox_${pk
 # The package is the .deb's own tree, so makepkg does not need to unpack the
 # 122 MB archive a second time before package() reads it.
 noextract=("purivox-${pkgver}.deb")
-sha256sums=('bd47430a5d8ab82f63bca41229717b957d98bcccbe6c769bc02d86ee91215a06')
+sha256sums=('11250228f98831901a38689678d4101e5ecaebef8194fcead9ac8a41d7e57659')
 
 package() {
 	# The .deb already stages exactly what a desktop install needs, so the
