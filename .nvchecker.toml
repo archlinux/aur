@@ -4,7 +4,7 @@ github = "Cataclysm-TLG/Cataclysm-TLG"
 use_max_tag = true
 include_regex = "^cataclysm-tlg-.*"
 prefix = "cataclysm-tlg-"
-# 1.0-YYYY-MM-DD-HHMM
-from_pattern = "^(\\d+\\.\\d+)-(\\d{4})-(\\d{2})-(\\d{2})-(\\d{4})$"
-# 1.0.rYYYYMMDD.HHMM
-to_pattern = "\\1.r\\2\\3\\4.\\5"
+# X.Y(.Z)-YYYY-MM-DD-HHMM
+from_pattern = "^(\\d+\\.\\d+(\\.\\d+)?)-(\\d{4})-(\\d{2})-(\\d{2})-(\\d{4})$"
+# X.Y(.Z).rYYYYMMDD.HHMM
+to_pattern = "\\1.r\\3\\4\\5.\\6"
