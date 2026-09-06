@@ -1,4 +1,5 @@
 # Maintainer: Aaron Friesen <aaron@frie.dev>
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
 pkgname=ftlman
 pkgver=0.7.4
 pkgrel=1
