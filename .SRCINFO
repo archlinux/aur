@@ -1,7 +1,7 @@
 pkgbase = ferminal
 	pkgdesc = Custom Wrapper CLI to make your work faster
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RangS-1/ferminal
 	arch = any
 	license = MIT

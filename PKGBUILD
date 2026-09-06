@@ -2,7 +2,7 @@
 pkgname=ferminal
 _repo=Ferminal
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom Wrapper CLI to make your work faster"
 arch=('any')
 url="https://github.com/RangS-1/ferminal"
@@ -37,13 +37,11 @@ package() {
 
     python -m installer \
         --destdir="$pkgdir" \
+	--compile-bytecode=2 \
         dist/*.whl
 
     install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    sudo install -Dm644 docs/ferminal.1 \
-    /usr/share/man/man1/ferminal.1
-
-    sudo gzip /usr/share/man/man1/ferminal.1
+    install -Dm644 docs/ferminal.1 "$pkgdir/usr/share/man/man1/ferminal.1"
 }
