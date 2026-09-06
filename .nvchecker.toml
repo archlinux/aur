@@ -1,0 +1,5 @@
+[wacli-bin]
+source = "github"
+github = "openclaw/wacli"
+use_latest_release = true
+prefix = "v"
