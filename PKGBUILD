@@ -1,7 +1,7 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 
 pkgname=miyu-git
-pkgver=0.4.6.r712.gcfb622ec
+pkgver=0.5.0.r794.g8b88e3c5
 pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/SHORiN-KiWATA/Miyu'
 license=('MIT' 'OFL-1.1')
 options=('!lto' '!strip' '!debug')
 export LC_ALL=C.UTF-8
-depends=('alsa-lib' 'chafa' 'gcc-libs' 'glibc' 'ripgrep')
+depends=('alsa-lib' 'chafa' 'gcc-libs' 'glibc' 'onnxruntime' 'ripgrep')
 makedepends=('cargo' 'git' 'pkgconf')
 optdepends=(
   'git: update default Shorin Wiki knowledge base'
@@ -63,6 +63,13 @@ package() {
   install -Dm644 "assets/fonts/NotoSansCJK.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NotoSansCJK.LICENSE"
   install -Dm644 "assets/fonts/NotoColorEmoji.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NotoColorEmoji.LICENSE"
   install -Dm644 "assets/fonts/JetBrainsMono.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/JetBrainsMono.LICENSE"
+
+  # 内置本地 embedding 模型（语义检索辅助；运行库来自 onnxruntime-cpu）
+  while IFS= read -r -d '' file; do
+    local rel="${file#assets/models/}"
+    install -Dm644 "${file}" "${pkgdir}/usr/share/miyu/models/${rel}"
+  done < <(find assets/models -mindepth 2 -type f -print0 | sort -z)
+  install -Dm644 "assets/models/bge-small-zh-v1.5-int8/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/bge-small-zh-v1.5.LICENSE"
 
   if [[ -d src/memes ]]; then
     while IFS= read -r -d '' file; do
