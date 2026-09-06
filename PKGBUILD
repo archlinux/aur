@@ -18,7 +18,7 @@ conflicts=('electron-qq' 'icalingua')
 replaces=('electron-qq')
 source=("Icalingua::git+${url}#branch=develop")
 sha256sums=('SKIP')
-_electron=electron38
+_electron=electron39
 
 prepare() {
     cd "${srcdir}/Icalingua"
