@@ -1,6 +1,6 @@
 pkgbase = wl-wordlens-git
 	pkgdesc = Wayland screenshot translation tool using vision language models
-	pkgver = r4.g351dcb7
+	pkgver = r6.g9ca31b0
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/wl-wordlens
 	arch = any
