@@ -10,6 +10,14 @@ MSG
 }
 post_upgrade() {
   udevadm control --reload || true
+  if (( $(vercmp "$2" 0.1.25) < 0 )); then
+    cat <<'MSG'
+==> OpenXLR: this version raises pipewire-pulse's open-file limit with a
+==> drop-in under /usr/lib/systemd/user/pipewire-pulse.service.d. It applies
+==> at your next login, or now (the daemon rebuilds its graph by itself):
+==>   systemctl --user daemon-reload && systemctl --user restart pipewire-pulse
+MSG
+  fi
   if (( $(vercmp "$2" 0.1.9) < 0 )); then
     cat <<'MSG'
 ==> OpenXLR: before 0.1.9, "Start daemon at login" in Options wrote a broken

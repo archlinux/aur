@@ -1,7 +1,7 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.1.24
-pkgrel=2
+pkgver=0.1.25
+pkgrel=1
 pkgdesc="Control suite and PipeWire submixer for Elgato XLR interfaces, with an OpenDeck plugin"
 arch=('x86_64')
 url="https://github.com/emaspa/openxlr"
@@ -14,7 +14,7 @@ optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'opendeck: Stream Deck control through the bundled plugin')
 install=openxlr.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6a929a6c9a480ec43ec029677625d495833b159238c9c661e8f491a67e809273')
+sha256sums=('ba0356283230e71239cc821c3fc835bd28d4aa615a4af831d0513849ca2cc4ce')
 
 build() {
   cd "$pkgname-$pkgver/src"
@@ -50,6 +50,10 @@ WRAP
   # The reference unit points into a source checkout; the package runs the wrapper.
   sed 's|^ExecStart=.*|ExecStart=/usr/bin/openxlr-daemon|' packaging/openxlr-daemon.service |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/openxlr-daemon.service"
+  # The submixer's send faders are streams inside pipewire-pulse, which
+  # inherits systemd's 1024 open files; raise it for the PulseAudio server.
+  install -Dm644 packaging/pipewire-pulse-openxlr.conf \
+    "$pkgdir/usr/lib/systemd/user/pipewire-pulse.service.d/openxlr.conf"
 
   install -Dm644 packaging/openxlr.desktop "$pkgdir/usr/share/applications/openxlr.desktop"
   for size in 16 32 48 64 128 256; do
