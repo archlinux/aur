@@ -1,6 +1,6 @@
 pkgbase = rustle-bin
 	pkgdesc = A modern music player built with Rust and iced, supporting NetEase Cloud Music (prebuilt binary)
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/Fei-xiangShi/Rustle
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = rustle-bin
 	provides = rustle
 	conflicts = rustle
 	options = !strip
-	source = rustle-bin-0.5.1.AppImage::https://github.com/Fei-xiangShi/Rustle/releases/download/v0.5.1/rustle-linux-x86_64.AppImage
+	source = rustle-bin-0.5.2.AppImage::https://github.com/Fei-xiangShi/Rustle/releases/download/v0.5.2/rustle-linux-x86_64.AppImage
 	sha256sums = SKIP
 
 pkgname = rustle-bin
