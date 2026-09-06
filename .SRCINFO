@@ -9,9 +9,13 @@ pkgbase = undock-bin
 	provides = undock
 	conflicts = undock
 	options = !strip
-	source_x86_64 = https://github.com/crazy-max/undock/releases/download/v0.14.0/undock_0.14.0_linux_amd64.tar.gz
+	source = README-0.14.0.md::https://raw.githubusercontent.com/crazy-max/undock/v0.14.0/README.md
+	source = LICENSE-0.14.0::https://raw.githubusercontent.com/crazy-max/undock/v0.14.0/LICENSE
+	sha256sums = b45d480250159a6baa4c71f9b54d708c02421a3ada71475ec4417b421fc574db
+	sha256sums = fd1639a860063a0d9caff4ae03d967ad1852b634c89e26583ef48a64d8397b94
+	source_x86_64 = undock-x86_64-0.14.0.tgz::https://github.com/crazy-max/undock/releases/download/v0.14.0/undock_0.14.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = 25d99376c951c849cbba65a27cc186c03ae1a2792284040018cbb786e359edf6
-	source_aarch64 = https://github.com/crazy-max/undock/releases/download/v0.14.0/undock_0.14.0_linux_arm64.tar.gz
+	source_aarch64 = undock-aarch64-0.14.0.tgz::https://github.com/crazy-max/undock/releases/download/v0.14.0/undock_0.14.0_linux_arm64.tar.gz
 	sha256sums_aarch64 = 84a2d6db94169c2d9e903ae4b31d7e554a26ae0626534cba8419a747f239ccf8
 
 pkgname = undock-bin

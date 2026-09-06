@@ -1,0 +1,5 @@
+[undock-bin]
+source = "github"
+github = "crazy-max/undock"
+use_latest_release = true
+prefix = "v"
