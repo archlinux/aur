@@ -1,0 +1,6 @@
+[cataclysm-tlg-git]
+source = "github"
+github = "Cataclysm-TLG/Cataclysm-TLG"
+branch = "master"
+from_pattern = "^"
+to_pattern = "1.0.r"

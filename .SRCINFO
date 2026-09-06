@@ -1,0 +1,37 @@
+pkgbase = cataclysm-tlg-git
+	pkgdesc = Cataclysm: The Last Generation, a post-apocalyptic roguelike (fork of DDA)
+	pkgver = 1.0.r20260905.222725
+	pkgrel = 1
+	url = https://cataclysmtlg.com/
+	arch = x86_64
+	license = CC-BY-SA-3.0
+	makedepends = freetype2
+	makedepends = gettext
+	makedepends = hicolor-icon-theme
+	makedepends = sdl2
+	makedepends = sdl2_image
+	makedepends = sdl2_mixer
+	makedepends = sdl2_ttf
+	makedepends = curl
+	makedepends = jq
+	depends = ncurses
+	depends = libbacktrace
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	depends = glibc
+	source = cataclysm-tlg-git.zip::https://github.com/Cataclysm-TLG/Cataclysm-TLG/archive/master.zip
+	sha512sums = SKIP
+
+pkgname = cataclysm-tlg-git
+
+pkgname = cataclysm-tlg-tiles-git
+	pkgdesc = Cataclysm: The Last Generation, a post-apocalyptic roguelike (fork of DDA) (tiles)
+	depends = cataclysm-tlg-git
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = sdl2_mixer
+	depends = freetype2
+	depends = hicolor-icon-theme
+	depends = libbacktrace
