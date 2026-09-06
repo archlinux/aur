@@ -1,17 +1,17 @@
-# Maintainer: Sergius <sergius@codeberg.org>
+# Maintainer: Sergius <sergius AT sarbs DOT xyz>
 pkgname=sarbs-st-git
-pkgver=r14.422b45e
+pkgver=r19.dd97a93
 pkgrel=1
 pkgdesc="Sergi's build of st (Simple Terminal) teil von SARBS"
 arch=('x86_64')
 url="https://codeberg.org/Sergius/st"
 license=('MIT')
 depends=('libx11' 'libxft' 'fontconfig' 'libxrender')
-makedepends=('git' 'ncurses')
+makedepends=('git')
 provides=('st')
 conflicts=('st')
 source=("git+https://codeberg.org/Sergius/st.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "st"
@@ -36,9 +36,8 @@ package() {
   install -Dm644 st.1 "${pkgdir}/usr/share/man/man1/st.1"
   sed -i "s/VERSION/${pkgver}/g" "${pkgdir}/usr/share/man/man1/st.1"
 
-  # Terminfo - crucial for st to work correctly
-  mkdir -p "${pkgdir}/usr/share/terminfo"
-  tic -sx -o "${pkgdir}/usr/share/terminfo" st.info
+  # Terminfo: Die st-Einträge werden von ncurses mitgeliefert,
+  # daher kein eigener tic-Schritt (würde Dateikonflikte erzeugen).
 
   # License
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

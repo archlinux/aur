@@ -1,12 +1,11 @@
 pkgbase = sarbs-st-git
-	pkgdesc = Simple terminal implementation for X - Sergius' fork (st)
-	pkgver = r14.422b45e
+	pkgdesc = Sergi's build of st (Simple Terminal) teil von SARBS
+	pkgver = r18.6c9d40e
 	pkgrel = 1
 	url = https://codeberg.org/Sergius/st
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = ncurses
 	depends = libx11
 	depends = libxft
 	depends = fontconfig
@@ -14,6 +13,6 @@ pkgbase = sarbs-st-git
 	provides = st
 	conflicts = st
 	source = git+https://codeberg.org/Sergius/st.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = sarbs-st-git

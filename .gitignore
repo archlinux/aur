@@ -3,3 +3,4 @@ pkg/
 st/
 *.tar.zst
 AGENTS.md
+.AGENTS.md
