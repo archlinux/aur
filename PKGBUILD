@@ -1,5 +1,5 @@
 pkgname=smb-post
-pkgver=0.1.0.r0.a1e50d4
+pkgver=0.1.0.r5.147f86b
 pkgrel=1
 pkgdesc="Minimalistischer, tastaturgesteuerter Serienbrief-Verteiler für Unix-Systeme"
 url="https://codeberg.org/Sergius/smb-post"

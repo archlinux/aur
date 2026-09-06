@@ -1,5 +1,6 @@
 src/
 pkg/
-st/
+smb-post/
 *.tar.zst
 AGENTS.md
+.AGENTS.md
