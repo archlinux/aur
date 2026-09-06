@@ -1,6 +1,6 @@
 pkgbase = glide-browser-bin
 	pkgdesc = An extensible and keyboard-focused web browser built on Firefox
-	pkgver = 0.1.63a
+	pkgver = 0.1.64a
 	pkgrel = 1
 	url = https://github.com/glide-browser/glide
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = glide-browser-bin
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = libnotify: Notification integration
 	optdepends = pulse-native-provider: Audio support
-	provides = glide-browser-bin=0.1.63a
+	provides = glide-browser-bin=0.1.64a
 	conflicts = glide-browser-bin
 	options = !strip
-	source_x86_64 = glide.linux-x86_64-0.1.63a.tar.xz::https://github.com/glide-browser/glide/releases/download/0.1.63a/glide.linux-x86_64.tar.xz
-	sha256sums_x86_64 = 89d1c0ac06b9ec500376684223fe6f2b8ed211dd1d973d1d887e0344398a0e61
-	source_aarch64 = glide.linux-aarch64-0.1.63a.tar.xz::https://github.com/glide-browser/glide/releases/download/0.1.63a/glide.linux-aarch64.tar.xz
-	sha256sums_aarch64 = e93f0e54dc70eddc0f14c221bdf0face44f9e59d831955b9d43fead3090d9967
+	source_x86_64 = glide.linux-x86_64-0.1.64a.tar.xz::https://github.com/glide-browser/glide/releases/download/0.1.64a/glide.linux-x86_64.tar.xz
+	sha256sums_x86_64 = 1f97b0a3d19b59ba64145b00011774147c43f405d4f037386a5bcda9aea530fd
+	source_aarch64 = glide.linux-aarch64-0.1.64a.tar.xz::https://github.com/glide-browser/glide/releases/download/0.1.64a/glide.linux-aarch64.tar.xz
+	sha256sums_aarch64 = 588b2038f28ff0af4fddd512318da23519a38049557708a59c5ee167b4f159e6
 
 pkgname = glide-browser-bin
