@@ -1,0 +1,3 @@
+u! bindery - "Bindery Daemon" /var/lib/bindery
+g media  -
+m bindery media

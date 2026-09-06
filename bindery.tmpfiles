@@ -1,0 +1,3 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/bindery        0750 bindery media
+Z /var/lib/bindery        0750 bindery media

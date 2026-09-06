@@ -1,0 +1,54 @@
+[Unit]
+Description=Bindery Daemon
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=bindery
+Group=media
+UMask=002
+Environment=BINDERY_DATA_DIR=/var/lib/bindery
+Environment=BINDERY_DB_PATH=/var/lib/bindery/bindery.db
+#Environment=BINDERY_LIBRARY_DIR=
+#Environment=BINDERY_AUDIOBOOK_DIR=
+#Environment=BINDERY_DOWNLOAD_DIR=
+#Environment=BINDERY_AUDIOBOOK_DOWNLOAD_DIR=
+ExecStart=/usr/bin/bindery
+KillMode=process
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=20
+SyslogIdentifier=bindery
+StateDirectory=bindery
+WorkingDirectory=/var/lib/bindery
+
+# Hardening
+CapabilityBoundingSet=CAP_CHOWN CAP_FSETID CAP_SETGID
+LockPersonality=true
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=read-only
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=full
+RemoveIPC=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+RestrictNamespaces=true
+RestrictRealtime=true
+SocketBindAllow=ipv4:tcp
+SocketBindAllow=ipv6:tcp
+SocketBindDeny=any
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+
+[Install]
+WantedBy=multi-user.target
