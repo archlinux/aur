@@ -1,16 +1,15 @@
 pkgbase = python-valve-parsers
 	pkgdesc = Some parsers for Valve game files - written in python.
 	pkgver = 1.2.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/cueki/valve-parsers
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python>=3.8
-	source = git+https://github.com/cueki/valve-parsers#tag=v1.2.2
-	sha256sums = cf16e01219852879ba4de813c30f2a4c46feb455edb789d3cfc1a2f99d39bccf
+	source = valve-parsers-v1.2.2.tar.gz::https://github.com/cueki/valve-parsers/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = 1b69c1c564d4489419903dd1ebef971e08b4076645600b1051d020b4ebdba871
 
 pkgname = python-valve-parsers
