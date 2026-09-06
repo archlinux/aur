@@ -1,4 +1,5 @@
 # Maintainer: Aaron Friesen <aaron@frie.dev>
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
 pkgbase=cataclysm-tlg-git
 pkgname=(cataclysm-tlg-git cataclysm-tlg-tiles-git)
 pkgname=cataclysm-tlg-git
