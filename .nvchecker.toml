@@ -1,0 +1,8 @@
+[python-free-proxy]
+source = "github"
+github = "jundymek/free-proxy"
+use_max_tag = true
+
+
+prefix = "v"
+
