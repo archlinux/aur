@@ -1,6 +1,6 @@
 pkgbase = lufux-git
 	pkgdesc = Minimalist GUI tool to create bootable USB drives
-	pkgver = 1.3.0
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://github.com/Advnirr/lufux
 	arch = any

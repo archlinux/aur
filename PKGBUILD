@@ -1,5 +1,5 @@
 pkgname=lufux-git
-pkgver=1.3.0
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Minimalist GUI tool to create bootable USB drives"
 arch=('any')
@@ -25,6 +25,7 @@ package() {
   install -Dm644 "windows_logic.py" "${pkgdir}/usr/share/lufux/windows_logic.py"
   install -Dm644 "windows_togo_logic.py" "${pkgdir}/usr/share/lufux/windows_togo_logic.py"
   install -Dm644 "bcd_logic.py" "${pkgdir}/usr/share/lufux/bcd_logic.py"
+  install -Dm644 "speed_logic.py" "${pkgdir}/usr/share/lufux/speed_logic.py"
   install -Dm644 "universal_logic.py" "${pkgdir}/usr/share/lufux/universal_logic.py"
   install -Dm644 "deps_logic.py" "${pkgdir}/usr/share/lufux/deps_logic.py"
 
