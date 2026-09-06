@@ -7,7 +7,7 @@ pkgname=(
   tmtv-server
 )
 
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='Instant terminal sharing'
 arch=(x86_64 aarch64)
@@ -18,23 +18,16 @@ depends=(glibc msgpack-c ncurses libssh libevent)
 makedepends=(bison libutf8proc libutempter libbsd)
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/v$pkgver.tar.gz"
-  implicit-function-declaration.patch
   tmtv-server.env
   tmtv-server.service
   tmtv-server-genkeys.service
   tmtv-server.tmpfiles
 )
-sha256sums=('e297a3790ac156c3923f2373e7ed0fb50f68e428bbfced5647889772e7e85304'
-            'b965e959b76d5b30e444531a556c6d693da7266fa99b0d361582acccbc356ff1'
+sha256sums=('d5c1616357cab5338c0d877619811cb5637b2b734dbc8da44662197157f3f1f8'
             '0380456813c8962b0a226f1f44851fd6e8b81f2351c1b37120cfd43e9c3f40fc'
             '9150147914c9bed3b784a5fed53361c75f01bbb06bdd0007fc750b9ccb966736'
             'be45547cda2bf8c1928c0c78c6c1af413fc4da5f241112318330e0c6d55a02bc'
             '965e0f3049b7d92896b1d2638d2e05063f131942d38cb84b0be4c2296f117acb')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch --forward --strip=1 --input="${srcdir}/implicit-function-declaration.patch"
-}
 
 build() {
   cd "$pkgname-$pkgver"
