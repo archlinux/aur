@@ -16,9 +16,9 @@ pkgbase = qqmusic-tui-bin
 	optdepends = xclip: X11 clipboard support for copying song links
 	provides = qqmusic-tui
 	conflicts = qqmusic-tui
-	source_x86_64 = qqmusic-tui-bin-0.1.5-3-x86_64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v0.1.5/qqmusic-tui-bin-0.1.5-1-x86_64.pkg.tar.zst
+	source_x86_64 = qqmusic-tui-bin-upstream-0.1.5-1-x86_64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v0.1.5/qqmusic-tui-bin-0.1.5-1-x86_64.pkg.tar.zst
 	sha256sums_x86_64 = d29044b3261407ef2b302f071d38844457e89777bff9eedcecddb83d68415b60
-	source_aarch64 = qqmusic-tui-bin-0.1.5-3-aarch64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v0.1.5/qqmusic-tui-bin-0.1.5-1-aarch64.pkg.tar.zst
+	source_aarch64 = qqmusic-tui-bin-upstream-0.1.5-1-aarch64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v0.1.5/qqmusic-tui-bin-0.1.5-1-aarch64.pkg.tar.zst
 	sha256sums_aarch64 = 7f3bbe95326a366f44a397236a35c50e6167f4adcd56a90467b2f2a1073f044e
 
 pkgname = qqmusic-tui-bin
