@@ -1,16 +1,16 @@
 pkgbase = wolvenkit-cli-bin
 	pkgdesc = A modding tool for Cyberpunk 2077
-	pkgver = 8.20.0
-	pkgrel = 2
+	pkgver = 9.0.0
+	pkgrel = 1
 	url = https://github.com/WolvenKit/WolvenKit
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = dotnet-runtime
 	provides = wolvenkit-cli
 	conflicts = wolvenkit-cli
-	source = https://github.com/WolvenKit/WolvenKit/releases/download/8.20.0/WolvenKit.ConsoleLinux-8.20.0.zip
-	source = LICENSE::https://raw.githubusercontent.com/WolvenKit/WolvenKit/8.20.0/LICENSE
-	b2sums = 47508b23aefee15760a707071859f04400748045e49ab08677a72a34024949fbe3395b55898fe8e30264f2fb215f7627419c6af2567db2756b0778cec43b3278
+	source = https://github.com/WolvenKit/WolvenKit/releases/download/9.0.0/WolvenKit.ConsoleLinux-9.0.0.zip
+	source = LICENSE::https://raw.githubusercontent.com/WolvenKit/WolvenKit/9.0.0/LICENSE
+	b2sums = 506d7d0cc031c8347b9cb28c4302a480df40fa733e891f1d048e93f050f35c54a5666539346d74f6523dd1e30e54bb67c596b3629900351d52b3ea300d5abd7a
 	b2sums = 399283bc59e70998486f2ae7b0af9f2f241206dd660e50808be3cef500adef2a9e8d449304f506d93bd2281e6b0729b16145173591deeb105ef545b769453e10
 
 pkgname = wolvenkit-cli-bin
