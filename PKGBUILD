@@ -3,7 +3,7 @@
 pkgauthor="mthds-ai"
 pkgname="mthds"
 pkgdesc="CLI and SDK for methods — reusable workflows for AI coding agents"
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 arch=("x86_64")
 url="https://mthds.ai/"
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('81c1830c02e4b73e63153989399734aa58e27363d7df949124f677dfffa9d9d0c5fc94d1eb4007f98565fe426517d12b0a0a61912ff08498c79c2078be5d0590')
+b2sums=('b0bbe050f675951b8773d3febd8cd8f63b984a8ae4ac79436830c2049cffebf49c07ba3cebe29876d13537a0ec529229a82136af50517e5d2a709b9f1beb8e64')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
