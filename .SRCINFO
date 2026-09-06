@@ -1,7 +1,7 @@
 pkgbase = wine-gohryt-wayland-wow64
 	pkgdesc = Includes fixes for wayland + vulkan, gamepad, steam, unreal, unity, affinity.
 	pkgver = 11.17
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.winehq.org
 	install = wine.install
 	arch = x86_64
