@@ -1,0 +1,16 @@
+pkgbase = sarbs-dwmblocks-async-git
+	pkgdesc = Asynchrone, modulare Statusbar für dwm (Teil von SARBS)
+	pkgver = 2026.05.01.r84.g2e64357
+	pkgrel = 1
+	url = https://codeberg.org/Sergius/dwmblocks-async
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = pkgconf
+	depends = libxcb
+	provides = dwmblocks-async
+	conflicts = dwmblocks-async
+	source = git+https://codeberg.org/Sergius/dwmblocks-async
+	sha256sums = SKIP
+
+pkgname = sarbs-dwmblocks-async-git
