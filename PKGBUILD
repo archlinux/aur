@@ -1,6 +1,6 @@
 _pkgname=mc-vector
 _pkgver=0.0.5
-_commit=2db9497
+_commit=67a650b
 pkgrel=1
 pkgname=${_pkgname}-git
 pkgver=${_pkgver}.g${_commit}
