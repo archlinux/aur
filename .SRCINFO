@@ -1,7 +1,7 @@
 pkgbase = python-cappa
 	pkgdesc = Declarative CLI argument parser
 	pkgver = 0.32.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DanCardin/cappa
 	arch = x86_64
 	license = Apache-2.0
