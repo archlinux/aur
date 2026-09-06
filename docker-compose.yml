@@ -1,0 +1,5 @@
+services:
+  updater:
+    build: .
+    volumes:
+      - .:/aur
