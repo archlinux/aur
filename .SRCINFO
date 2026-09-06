@@ -1,6 +1,6 @@
 pkgbase = viewport-chromium
 	pkgdesc = Wayland compositor whose shell is a web page — Chromium, driven as a child process
-	pkgver = 0.1.8
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/codebam/viewport
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = viewport-chromium
 	makedepends = wayland-protocols
 	depends = wayland
 	depends = libxkbcommon
-	depends = pixman
 	depends = libdrm
 	depends = libinput
 	depends = seatd
@@ -24,7 +23,6 @@ pkgbase = viewport-chromium
 	depends = vulkan-icd-loader
 	depends = pipewire
 	depends = libxcb
-	depends = xcb-util-wm
 	depends = chromium
 	optdepends = xorg-xwayland: X11 clients
 	optdepends = xdg-desktop-portal-gtk: the portal interfaces the compositor does not answer itself
@@ -36,12 +34,12 @@ pkgbase = viewport-chromium
 	optdepends = libva-mesa-driver: hardware video decode, for zero-copy video
 	optdepends = ttf-firacode-nerd: the icons in the bar, and the font the shell names first
 	optdepends = ttf-nerd-fonts-symbols: the icons in the bar, without the patched monospace family
-	provides = viewport=0.1.8
+	provides = viewport=0.2.0
 	conflicts = viewport
 	conflicts = viewport-wpe
 	conflicts = viewport-webkitgtk
 	options = !lto
-	source = git+https://github.com/codebam/viewport.git#tag=v0.1.8
+	source = git+https://github.com/codebam/viewport.git#tag=v0.2.0
 	sha256sums = SKIP
 
 pkgname = viewport-chromium
