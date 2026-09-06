@@ -3,7 +3,7 @@
 pkgname=codepilot-bin
 _pkgname=codepilot
 _appname=CodePilot
-pkgver=0.67.13
+pkgver=0.67.15
 pkgrel=1
 pkgdesc='Multi-model AI agent desktop client (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -51,8 +51,8 @@ source_x86_64=("${_appname}-${pkgver}-amd64.deb::https://github.com/op7418/CodeP
 source_aarch64=("${_appname}-${pkgver}-arm64.deb::https://github.com/op7418/CodePilot/releases/download/v${pkgver}/${_appname}-${pkgver}-arm64.deb")
 noextract=("${_appname}-${pkgver}-amd64.deb" "${_appname}-${pkgver}-arm64.deb")
 sha256sums=('e77188ca224977d67c57d8c9cfe595b2bfb4146423cb2c016f8502dd15f8b6cf')
-sha256sums_x86_64=('1007c08dd5a96f2909b7eee0bf949dc25e1bb07dde12198321799c0e401f2544')
-sha256sums_aarch64=('2cd0c8b682ff2f6af8009f7b5a0451327bb273bd3b5fe9b9478a99334b2ad53b')
+sha256sums_x86_64=('1d85bf7d2ca2fa306abd99b1241567304aa9e00bf5ca67a98590db0cdd4b363c')
+sha256sums_aarch64=('289f8b333a8c16111bf8267dad9c59b41b96330fe9175ee311a3432dfebcb0da')
 
 package() {
   local deb_arch
