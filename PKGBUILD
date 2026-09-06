@@ -4,13 +4,13 @@
 
 _pkgver=v1.2.2
 pkgver="${_pkgver#v}"
-pkgrel=3
+pkgrel=4
 
 _pkgname=valve-parsers
 pkgname="python-${_pkgname}"
 
 pkgdesc='Some parsers for Valve game files - written in python.'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/cueki/valve-parsers'
 license=('MIT')
 
