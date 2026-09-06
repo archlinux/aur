@@ -1,6 +1,6 @@
 pkgbase = cfait-bin
 	pkgdesc = Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local)
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://git.disroot.org/trougnouf/cfait
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = cfait-bin
 	replaces = fairouille
 	options = !strip
 	options = !emptydirs
-	source = https://git.disroot.org/trougnouf/cfait/releases/download/v1.1.5/cfait-linux-v1.1.5.tar.xz
-	sha256sums = 4688bf1d47288f1df8fb07a099a53148de4ae7644c5cecf5c91998defb20830c
+	source = https://git.disroot.org/trougnouf/cfait/releases/download/v1.1.6/cfait-linux-v1.1.6.tar.xz
+	sha256sums = 10399de3123bbe9027914822c0ae261f36bffd5583f77170a8ca710e03fb05a0
 
 pkgname = cfait-bin
