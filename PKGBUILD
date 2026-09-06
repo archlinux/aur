@@ -8,7 +8,7 @@
 #   vfio-native-qemu       QEMU 11.1.1 with the platform-identity patches, in /opt
 
 pkgname=vfio-native
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Present a libvirt guest as a self-consistent physical machine, and tune it"
 arch=('any')
@@ -29,6 +29,7 @@ package() {
     install -Dm755 scripts/setup-vm.sh        "${pkgdir}/usr/bin/vm-native-setup"
     install -Dm755 scripts/verify-perf.sh     "${pkgdir}/usr/bin/vm-native-verify"
     install -Dm755 scripts/gpu-passthrough.sh "${pkgdir}/usr/bin/vm-native-gpu"
+    install -Dm755 scripts/cpuid-passthrough.sh "${pkgdir}/usr/bin/vm-native-cpuid"
 
     local share="${pkgdir}/usr/share/vfio-native"
     install -Dm644 bench/vmbench.c    "${share}/bench/vmbench.c"
@@ -36,6 +37,8 @@ package() {
     install -Dm755 scripts/install-modules.sh   "${share}/scripts/install-modules.sh"
     install -Dm755 scripts/restore-stock-kvm.sh "${share}/scripts/restore-stock-kvm.sh"
     install -Dm755 scripts/generate-tables.py   "${share}/scripts/generate-tables.py"
+    install -Dm755 scripts/libvirt-hook-cpuid-passthrough.sh "${share}/scripts/libvirt-hook-cpuid-passthrough.sh"
+    install -Dm755 scripts/cpuid-passthrough-watch          "${share}/scripts/cpuid-passthrough-watch"
     install -Dm644 -t "${share}/acpi" acpi/*.aml acpi/*.dsl
     install -dm755 "${share}/patches"
     cp -r patches/. "${share}/patches/"
