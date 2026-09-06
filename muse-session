@@ -378,7 +378,7 @@ def cmd_delete(args):
     print(green(f"\nSuccessfully deleted {deleted_count} session(s). Reclaimed {format_size(total_size)}."))
 
 # =========================================================================
-# Interactive TUI Picker (curses)
+# Interactive TUI Picker & Help Modal (curses)
 # =========================================================================
 
 def curses_readline(stdscr, y, x, prompt, max_len=60):
@@ -398,7 +398,7 @@ def curses_readline(stdscr, y, x, prompt, max_len=60):
 def show_info_modal(stdscr, session):
     h, w = stdscr.getmaxyx()
     box_h = min(16, h - 4)
-    box_w = min(80, w - 6)
+    box_w = min(82, w - 6)
     start_y = (h - box_h) // 2
     start_x = (w - box_w) // 2
 
@@ -427,16 +427,99 @@ def show_info_modal(stdscr, session):
     win.refresh()
     win.getch()
 
+def show_help_modal(stdscr):
+    help_sections = [
+        ("=== MUSE SESSION MANAGER — HELP MANUAL ===", ""),
+        ("NAVIGATION", ""),
+        ("  ↑ / k           ", "Move selection up one session"),
+        ("  ↓ / j           ", "Move selection down one session"),
+        ("  PgUp / PgDn     ", "Jump 10 sessions up / down"),
+        ("  Home / End      ", "Jump directly to the first / last session"),
+        ("", ""),
+        ("HOTKEY ACTIONS", ""),
+        ("  Enter           ", "Resume highlighted session immediately (muse resume <UUID>)"),
+        ("  F2 / r          ", "Rename session (stores custom label in .session.title)"),
+        ("  F4 / d / Del    ", "Delete session permanently (prompts for confirmation [y/N])"),
+        ("  i               ", "Inspect full metadata, prompt, model, and disk path"),
+        ("  w               ", "Toggle workspace filter (All Workspaces vs Current Working Directory)"),
+        ("  ? / h / F1      ", "Show this comprehensive help manual"),
+        ("  q / Esc         ", "Exit interactive session picker and return to shell"),
+        ("", ""),
+        ("STORAGE ARCHITECTURE", ""),
+        ("  Directory       ", "~/.local/share/muse/sessions/<YYYY>/<MM>/<DD>/<UUID>/"),
+        ("  session.jsonl   ", "JSON Lines log of all prompts, reasoning, tool calls, and outputs"),
+        ("  .session.title  ", "Local title override file created when renaming"),
+        ("  .session.lock   ", "Active lock file containing the PID of running agent processes"),
+        ("  .msp-view-v1/   ", "Cache directory used by Muse TUI for fast index loading"),
+        ("", ""),
+        ("DELETION & SAFETY BEHAVIOR", ""),
+        ("  • Interactive   ", "Requires explicit 'y' confirmation before removing files"),
+        ("  • Active Lock   ", "Warns if a session is currently running; requires force (-f) to delete"),
+        ("  • Clean Purge   ", "Deletes session directory, .msp-view-v1 cache, and empty parent date dirs")
+    ]
+
+    scroll_y = 0
+
+    while True:
+        h, w = stdscr.getmaxyx()
+        box_h = min(len(help_sections) + 4, h - 2)
+        box_w = min(96, w - 4)
+        start_y = max(0, (h - box_h) // 2)
+        start_x = max(0, (w - box_w) // 2)
+
+        win = curses.newwin(box_h, box_w, start_y, start_x)
+        win.box()
+        win.addstr(0, 2, " Help & Keyboard Reference ", curses.A_BOLD | curses.color_pair(2))
+
+        visible_height = box_h - 3
+        max_scroll = max(0, len(help_sections) - visible_height)
+        scroll_y = max(0, min(scroll_y, max_scroll))
+
+        for i in range(visible_height):
+            idx = scroll_y + i
+            if idx >= len(help_sections):
+                break
+            key_part, desc_part = help_sections[idx]
+            y_pos = 1 + i
+
+            if key_part.startswith("==="):
+                win.addstr(y_pos, 2, key_part[:box_w - 4], curses.A_BOLD | curses.color_pair(1))
+            elif key_part and not desc_part:
+                win.addstr(y_pos, 2, key_part[:box_w - 4], curses.A_BOLD | curses.color_pair(3))
+            elif key_part:
+                win.addstr(y_pos, 2, key_part[:box_w - 4], curses.A_BOLD | curses.color_pair(2))
+                win.addstr(y_pos, 20, desc_part[:box_w - 22])
+
+        scroll_indicator = f" [{scroll_y + 1}-{min(len(help_sections), scroll_y + visible_height)}/{len(help_sections)}] " if max_scroll > 0 else " "
+        footer_text = f"{scroll_indicator}Press ↑/↓ to scroll • q/Esc/Enter to close"
+        win.addstr(box_h - 1, max(2, box_w - len(footer_text) - 2), footer_text[:box_w - 4], curses.A_DIM)
+
+        win.refresh()
+        ch = win.getch()
+
+        if ch in (ord('q'), ord('Q'), 27, ord('\n'), ord('\r'), ord(' ')):
+            break
+        elif ch in (curses.KEY_UP, ord('k')):
+            if scroll_y > 0:
+                scroll_y -= 1
+        elif ch in (curses.KEY_DOWN, ord('j')):
+            if scroll_y < max_scroll:
+                scroll_y += 1
+        elif ch in (curses.KEY_PPAGE,):
+            scroll_y = max(0, scroll_y - 8)
+        elif ch in (curses.KEY_NPAGE,):
+            scroll_y = min(max_scroll, scroll_y + 8)
+
 def run_curses_tui(stdscr):
     # Setup curses environment
     curses.curs_set(0)
     curses.use_default_colors()
     if curses.has_colors():
-        curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLUE)   # Selection
-        curses.init_pair(2, curses.COLOR_CYAN, -1)                   # UUIDs
-        curses.init_pair(3, curses.COLOR_YELLOW, -1)                 # Alerts / Titles
-        curses.init_pair(4, curses.COLOR_GREEN, -1)                  # Size
-        curses.init_pair(5, curses.COLOR_RED, -1)                    # Warning
+        curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLUE)   # Selection / Headers
+        curses.init_pair(2, curses.COLOR_CYAN, -1)                   # UUIDs / Info
+        curses.init_pair(3, curses.COLOR_YELLOW, -1)                 # Alerts / Titles / Sections
+        curses.init_pair(4, curses.COLOR_GREEN, -1)                  # Size / Success
+        curses.init_pair(5, curses.COLOR_RED, -1)                    # Warning / Errors
 
     cwd_filter = False
     status_msg = ""
@@ -467,7 +550,7 @@ def run_curses_tui(stdscr):
         stdscr.addstr(0, 0, header[:w-1].ljust(w-1), curses.A_BOLD | curses.color_pair(1))
 
         # Footer
-        footer = " [Enter] Resume  [F2/r] Rename  [F4/d] Delete  [i] Info  [w] Filter  [q/Esc] Quit "
+        footer = " [Enter] Resume  [F2/r] Rename  [F4/d] Delete  [i] Info  [w] Filter  [?] Help  [q] Quit "
         stdscr.addstr(h - 1, 0, footer[:w-1].ljust(w-1), curses.A_REVERSE)
 
         # Status Message if any
@@ -484,6 +567,8 @@ def run_curses_tui(stdscr):
                 break
             elif key in (ord('w'), ord('W')):
                 cwd_filter = not cwd_filter
+            elif key in (ord('?'), ord('h'), ord('H'), curses.KEY_F1):
+                show_help_modal(stdscr)
             continue
 
         # Adjust selection bounds
@@ -506,7 +591,6 @@ def run_curses_tui(stdscr):
             sz_str = format_size(s["size_bytes"])
             title_text = s["custom_title"] if s["custom_title"] else s["prompt"]
             title_clean = title_text.replace("\n", " ").strip()
-            status_tag = " [LOCK]" if s["is_locked"] else ""
 
             line_str = f" {dt_str} | {s['uuid'][:8]} | {sz_str:>8} | {s['workspace']} : {title_clean}"
             if s["custom_title"]:
@@ -543,6 +627,10 @@ def run_curses_tui(stdscr):
         # Quit
         elif key in (ord('q'), ord('Q'), 27):
             break
+
+        # Help Modal (? or h or F1)
+        elif key in (ord('?'), ord('h'), ord('H'), curses.KEY_F1):
+            show_help_modal(stdscr)
 
         # Filter Workspace toggle
         elif key in (ord('w'), ord('W')):
@@ -609,8 +697,97 @@ def interactive_ui():
     resume_target = curses.wrapper(run_curses_tui)
     if resume_target:
         print(f"Resuming session {cyan(resume_target)}...")
-        # Dispatch to muse resume
         os.execvp("muse", ["muse", "resume", resume_target])
+
+# =========================================================================
+# Exhaustive CLI Help Page
+# =========================================================================
+
+def print_exhaustive_help():
+    title = bold("MUSE CODE SESSION MANAGER — COMPREHENSIVE MANUAL")
+    border = "=" * 78
+
+    help_content = f"""
+{border}
+{title}
+{border}
+
+{bold("OVERVIEW")}
+  Muse Code automatically persists every agent run into a session directory
+  containing raw event logs, tool calls, user messages, and local file changes.
+  
+  `muse session` (or `muse-session`) provides full lifecycle management:
+  • Browse sessions via an interactive full-screen TUI with instant resume
+  • Rename sessions with friendly tags and labels
+  • Inspect session metadata, token records, and disk usage
+  • Delete individual or batch sessions to reclaim disk space
+
+{bold("STORAGE ARCHITECTURE")}
+  Sessions are stored in your XDG data home:
+    {cyan("$XDG_DATA_HOME/muse/sessions/<YYYY>/<MM>/<DD>/<SESSION-UUID>/")}
+    (Defaults to: {cyan("~/.local/share/muse/sessions/")})
+
+  Directory Contents per Session:
+    • {bold("session.jsonl")}               Verbatim JSON Lines event log of all turns
+    • {bold(".session.title")}              Custom name/label set via rename
+    • {bold(".session.lock")}               Liveness lock containing PID of running agent
+    • {bold(".msp-view-v1/")}               Cache folder used by Muse for fast TUI resumes
+    • {bold("approval-review/")}            Recorded security/tool approval reviews
+
+{bold("INTERACTIVE TUI SELECTOR")}
+  Run without arguments (or with `{cyan("select")}` / `{cyan("ui")}`):
+    {green("muse session")}
+
+  Keyboard Shortcuts in TUI:
+    {yellow("↑ / k")}               Move selection up
+    {yellow("↓ / j")}               Move selection down
+    {yellow("PgUp / PgDn")}         Scroll 10 sessions up / down
+    {yellow("Home / End")}          Jump to first / last session
+    {yellow("Enter")}               {bold("Resume")} highlighted session ({dim("muse resume <UUID>")})
+    {yellow("F2 / r")}              {bold("Rename")} session (set custom title tag)
+    {yellow("F4 / d / Del")}        {bold("Delete")} session (prompts for confirmation [y/N])
+    {yellow("i")}                   {bold("Inspect")} full metadata in modal dialog
+    {yellow("w")}                   {bold("Filter")} toggle: All Workspaces vs Current Working Dir
+    {yellow("? / h / F1")}          Open interactive {bold("Help")} reference
+    {yellow("q / Esc")}             {bold("Quit")} back to your terminal shell
+
+{bold("CLI SUBCOMMANDS & EXAMPLES")}
+
+  {bold("1. Interactive Selector (Default):")}
+     $ {green("muse session")}
+     $ {green("muse session select")}
+
+  {bold("2. List Sessions:")}
+     $ {green("muse session list")}                    List all sessions with size & prompt
+     $ {green("muse session list --cwd")}              Filter to current directory workspace
+     $ {green("muse session list -w /path/to/repo")}   Filter to specific workspace
+     $ {green("muse session list --last")}             Show only the most recent session
+     $ {green("muse session list -q")}                 Print only session UUIDs (script-friendly)
+
+  {bold("3. Rename / Tag Sessions:")}
+     $ {green("muse session rename <UUID> \"Feature Auth\"")}     Set custom title label
+     $ {green("muse session rename <UUID> \"\"")}                 Clear custom title
+
+  {bold("4. Inspect Session Metadata:")}
+     $ {green("muse session info <UUID>")}             Show full path, model, size, lock PID
+
+  {bold("5. Delete Sessions:")}
+     $ {green("muse session delete <UUID>")}           Delete a session by UUID or prefix
+     $ {green("muse session delete --last")}           Delete the most recent session
+     $ {green("muse session delete --cwd")}            Delete all sessions for current workspace
+     $ {green("muse session delete --older-than 14d")} Delete sessions older than 14 days
+     $ {green("muse session delete --all")}            Delete all stored sessions
+     $ {green("muse session delete <UUID> -y")}        Skip interactive [y/N] confirmation prompt
+     $ {green("muse session delete <UUID> -f")}        Force delete even if active lock exists
+
+{bold("SAFETY & RETENTION")}
+  • Deletions purge the session folder, view cache, and clean up empty date dirs.
+  • Interactive confirmation is required by default; never deletes unprompted.
+  • Running processes (locked sessions) are detected via PID and protected from
+    accidental deletion unless forced with {yellow("-f / --force")}.
+{border}
+"""
+    print(help_content)
 
 # =========================================================================
 # Main CLI Entrypoint
@@ -619,7 +796,9 @@ def interactive_ui():
 def main():
     parser = argparse.ArgumentParser(
         prog="muse session",
-        description="Manage, inspect, rename, and delete Muse Code sessions."
+        description="Manage, inspect, rename, and delete Muse Code sessions.",
+        epilog="Run 'muse session help' or press '?' inside the interactive TUI for full documentation.",
+        formatter_class=argparse.RawDescriptionHelpFormatter
     )
     subparsers = parser.add_subparsers(dest="command", help="Session subcommands")
 
@@ -653,6 +832,9 @@ def main():
     p_del.add_argument("-y", "--yes", action="store_true", help="Skip confirmation prompt")
     p_del.add_argument("-f", "--force", action="store_true", help="Force deletion even if active/locked")
 
+    # help subcommand
+    p_help = subparsers.add_parser("help", aliases=["manual"], help="Show comprehensive manual and documentation")
+
     args = parser.parse_args()
 
     if not args.command:
@@ -665,6 +847,8 @@ def main():
             args.last = False
             args.quiet = False
             cmd_list(args)
+    elif args.command in ("help", "manual"):
+        print_exhaustive_help()
     elif args.command in ("select", "pick", "ui"):
         interactive_ui()
     elif args.command in ("list", "ls"):
