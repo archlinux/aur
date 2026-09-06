@@ -1,25 +1,24 @@
-# Contributor: Maxim Devaev <mdevaev@gmail.com>
-# Author: Maxim Devaev <mdevaev@gmail.com>
+# Maintainer: Maxim Devaev <mdevaev@gmail.com> [Software author]
 
 
 pkgname=ustreamer
 pkgver=6.65
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight and fast MJPEG-HTTP streamer"
 url="https://github.com/pikvm/ustreamer"
-license=(GPL)
+license=(GPL-3.0-or-later)
 arch=(i686 x86_64 armv6h armv7h aarch64)
 depends=(libjpeg-turbo libevent libbsd libgpiod systemd)
-makedepends=(gcc make pkgconf systemd)
-source=(${pkgname}::"git+https://github.com/pikvm/ustreamer#commit=v${pkgver}")
-md5sums=(SKIP)
+makedepends=(git)
+source=("git+https://github.com/pikvm/ustreamer#commit=v${pkgver}")
+sha256sums=('d8f8783282484a29bd8ca5af50e59b89bd7613b088b8b7bcf3b1b9b2f8f0041a')
 
 
 _options="WITH_GPIO=1 WITH_SYSTEMD=1"
 if [ -e /usr/bin/python3 ]; then
 	_options="$_options WITH_PYTHON=1"
 	depends+=("python>=3.14" "python<3.15")
-	makedepends+=(python-setuptools python-pip python-build python-wheel python-installer)
+	makedepends+=(python-setuptools python-build python-wheel python-installer)
 fi
 if [ -e /usr/include/janus/plugins/plugin.h ];then
 	depends+=(janus-gateway alsa-lib opus)
