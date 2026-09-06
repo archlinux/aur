@@ -1,6 +1,16 @@
+# Allowlist: ignore everything, then re-include what should be tracked.
 *
-!PKGBUILD
-!.SRCINFO
-!.gitignore
-!.nvchecker.toml
+
+# Directories must be re-included so git descends into them and the
+# rules below can match; their contents still fall under `*`.
+!*/
+
+# makepkg build output — never descend into these.
+pkg/
+src/
+
+!/.gitignore
+!/.SRCINFO
+!/.nvchecker.toml
+!/PKGBUILD
 !*.patch
