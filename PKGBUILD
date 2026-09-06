@@ -74,7 +74,7 @@ package_ros2-jazzy-controller_manager_msgs() {
 }
 
 package_ros2-jazzy-hardware_interface() {
-    depends=('ros2-jazzy' 'ros2-jazzy-backward_ros' 'ros2-jazzy-control_msgs' 'ros2-jazzy-pal_statistics' 'ros2-jazzy-realtime_tools' 'ros2-jazzy-sdformat_urdf' 'fmt' 'tinyxml2')
+    depends=('ros2-jazzy' 'ros2-jazzy-backward_ros' 'ros2-jazzy-control_msgs' 'ros2-jazzy-joint_limits' 'ros2-jazzy-pal_statistics' 'ros2-jazzy-realtime_tools' 'ros2-jazzy-sdformat_urdf' 'fmt' 'tinyxml2')
     _install_sub hardware_interface
 }
 

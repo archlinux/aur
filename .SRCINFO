@@ -30,6 +30,7 @@ pkgname = ros2-jazzy-hardware_interface
 	depends = ros2-jazzy
 	depends = ros2-jazzy-backward_ros
 	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-joint_limits
 	depends = ros2-jazzy-pal_statistics
 	depends = ros2-jazzy-realtime_tools
 	depends = ros2-jazzy-sdformat_urdf
