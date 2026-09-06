@@ -1,0 +1,650 @@
+diff --git a/drivers/gpu/drm/i915/display/icl_dsi.c b/drivers/gpu/drm/i915/display/icl_dsi.c
+index a549f1f..5976902 100644
+--- a/drivers/gpu/drm/i915/display/icl_dsi.c
++++ b/drivers/gpu/drm/i915/display/icl_dsi.c
+@@ -868,6 +868,27 @@ gen11_dsi_configure_transcoder(struct intel_encoder *encoder,
+ 		if (ret)
+ 			drm_err(display->drm, "DSI link not ready\n");
+ 	}
++
++	/*
++	 * Restore periodic frame update if the firmware was using it.
++	 *
++	 * gen11_dsi_deconfigure_trancoder() clears this bit on teardown but
++	 * nothing ever sets it, so once the driver has taken the transcoder
++	 * down the frames stop for good: icl_dsi_frame_update() only issues a
++	 * request at the end of a pipe update, and that pipe update waits for
++	 * a vblank which, in command mode, needs a frame to have been pushed.
++	 *
++	 * Keying this off what the firmware left behind leaves panels that
++	 * are driven from their own TE untouched.
++	 *
++	 * As the firmware does, enable it on DSI0 only, even for dual link.
++	 */
++	if (is_cmd_mode(intel_dsi) && intel_dsi->periodic_cmd_mode) {
++		port = (intel_dsi->ports & BIT(PORT_A)) ? PORT_A : PORT_B;
++
++		intel_de_rmw(display, DSI_CMD_FRMCTL(port), 0,
++			     DSI_PERIODIC_FRAME_UPDATE_ENABLE);
++	}
+ }
+ 
+ static void
+@@ -978,11 +999,43 @@ gen11_dsi_set_transcoder_timings(struct intel_encoder *encoder,
+ 				       TRANS_HSYNC(display, dsi_trans),
+ 				       HSYNC_START(hsync_start - 1) | HSYNC_END(hsync_end - 1));
+ 		}
++	} else if (intel_dsi->cmd_mode_timings.valid) {
++		/*
++		 * Not programmed at all in command mode, so after a
++		 * suspend/resume cycle these read back as zero.  Put the
++		 * firmware values back.
++		 */
++		for_each_dsi_port(port, intel_dsi->ports) {
++			dsi_trans = dsi_port_to_transcoder(port);
++			intel_de_write(display, TRANS_HSYNC(display, dsi_trans),
++				       intel_dsi->cmd_mode_timings.hsync);
++		}
+ 	}
+ 
+ 	/* program TRANS_VTOTAL register */
+ 	for_each_dsi_port(port, intel_dsi->ports) {
+ 		dsi_trans = dsi_port_to_transcoder(port);
++		/*
++		 * In command mode TRANS_VTOTAL is a DSI transfer parameter
++		 * rather than a video timing, and the computed value does
++		 * not match what this panel needs: the formula yields 2000
++		 * lines where the firmware programs 1666, and driving the
++		 * panel at the computed value tears the picture - a bar
++		 * sweeping up the screen at the beat frequency between the
++		 * two rates.
++		 *
++		 * There is no known derivation for the firmware's value, so
++		 * keep whatever it left in the register as long as it is
++		 * self-consistent, and only fall back to the computed value
++		 * when the register is cold.
++		 */
++		if (is_cmd_mode(intel_dsi) &&
++		    intel_dsi->cmd_mode_timings.valid) {
++			u32 fw = intel_dsi->cmd_mode_timings.vtotal;
++
++			vtotal = REG_FIELD_GET(VTOTAL_MASK, fw) + 1;
++		}
++
+ 		/*
+ 		 * FIXME: Programming this by assuming progressive mode, since
+ 		 * non-interlaced info from VBT is not saved inside
+@@ -1007,6 +1060,12 @@ gen11_dsi_set_transcoder_timings(struct intel_encoder *encoder,
+ 				       TRANS_VSYNC(display, dsi_trans),
+ 				       VSYNC_START(vsync_start - 1) | VSYNC_END(vsync_end - 1));
+ 		}
++	} else if (intel_dsi->cmd_mode_timings.valid) {
++		for_each_dsi_port(port, intel_dsi->ports) {
++			dsi_trans = dsi_port_to_transcoder(port);
++			intel_de_write(display, TRANS_VSYNC(display, dsi_trans),
++				       intel_dsi->cmd_mode_timings.vsync);
++		}
+ 	}
+ 
+ 	/*
+@@ -1107,6 +1166,67 @@ static void gen11_dsi_setup_timeouts(struct intel_encoder *encoder,
+ 	}
+ }
+ 
++/*
++ * Undocumented pin buffer control sitting between UTIL_PIN_CTL (0x48400) and
++ * AUD_PIN_BUF_CTL (0x48414); i915 has never known about it.
++ *
++ * util pin carries the TE of the master link, but on a dual link panel the TE
++ * that actually gates the transfer comes from the slave link over a separate
++ * GPIO, and this register enables that pin's buffer.  The firmware programs
++ * it, i915 never touches it, and it does not survive S3.  Once it reads zero
++ * the TE still pulses on the pin -- UTIL_PIN_CTL bit 16 keeps toggling at
++ * 59.7 Hz -- but it never reaches the DSI1_TE interrupt, so command mode
++ * never gets a vblank, every commit times out, and the picture is frozen with
++ * the panel happily self refreshing its last frame.
++ *
++ * Writing this one register by hand takes the panel from 0 to 59.7 frames per
++ * second with no modeset and without touching the panel at all, which is what
++ * pinned it down.
++ */
++#define DSI_PIN_BUF_CTL		_MMIO(0x48408)
++
++/*
++ * Remember whatever non-zero value is found here and put it back when it has
++ * been lost.  Sampling lazily rather than snapshotting at init avoids having
++ * to know when the register first becomes readable, and platforms where it
++ * always reads zero never get a write.
++ */
++static void gen11_dsi_restore_pin_buf_ctl(struct intel_encoder *encoder)
++{
++	struct intel_display *display = to_intel_display(encoder);
++	struct intel_dsi *intel_dsi = enc_to_intel_dsi(encoder);
++	u32 val;
++
++	/*
++	 * Only command mode is known to depend on this; a video mode panel
++	 * does not gate its transfer on TE at all, so leave it alone.
++	 */
++	if (!is_cmd_mode(intel_dsi))
++		return;
++
++	val = intel_de_read(display, DSI_PIN_BUF_CTL);
++
++	if (val) {
++		if (val != intel_dsi->pin_buf_ctl) {
++			drm_dbg_kms(display->drm,
++				    "[ENCODER:%d:%s] DSI_PIN_BUF_CTL is 0x%08x\n",
++				    encoder->base.base.id, encoder->base.name,
++				    val);
++			intel_dsi->pin_buf_ctl = val;
++		}
++		return;
++	}
++
++	if (!intel_dsi->pin_buf_ctl)
++		return;
++
++	drm_info(display->drm,
++		 "[ENCODER:%d:%s] restoring DSI_PIN_BUF_CTL 0x00000000 -> 0x%08x\n",
++		 encoder->base.base.id, encoder->base.name,
++		 intel_dsi->pin_buf_ctl);
++	intel_de_write(display, DSI_PIN_BUF_CTL, intel_dsi->pin_buf_ctl);
++}
++
+ static void gen11_dsi_config_util_pin(struct intel_encoder *encoder,
+ 				      bool enable)
+ {
+@@ -1119,8 +1239,36 @@ static void gen11_dsi_config_util_pin(struct intel_encoder *encoder,
+ 	 * for dual link/DSI1 TE is from slave DSI1
+ 	 * through GPIO.
+ 	 */
+-	if (is_vid_mode(intel_dsi) || (intel_dsi->ports & BIT(PORT_B)))
++	/*
++	 * The comment above says TE comes from the slave DSI1 over a GPIO for
++	 * dual link, so UTIL_PIN is not configured in that case.  On this
++	 * panel that leaves no TE input at all once the driver has taken the
++	 * transcoder down: the transfer is TE gated (CMD_MODE_TE_GATE), so
++	 * without TE the transcoder never pushes a frame, and after a
++	 * suspend/resume cycle the picture freezes.  Whatever the firmware
++	 * set up is gone by then.
++	 *
++	 * Configure it for command mode regardless of the port.
++	 *
++	 * The pin is shared, though: a BXT style backlight drives PWM through
++	 * it when the panel uses controller 1 (intel_backlight.c), and
++	 * assert_can_enable_dc6() warns when it is enabled in PWM mode.  The
++	 * mode field survives a disable, which only clears UTIL_PIN_ENABLE, so
++	 * it is a reliable marker of who owns the pin.  Leave it alone when
++	 * somebody else does.
++	 */
++	if (is_vid_mode(intel_dsi))
++		return;
++
++	if ((intel_de_read(display, UTIL_PIN_CTL) & UTIL_PIN_MODE_MASK) ==
++	    UTIL_PIN_MODE_PWM) {
++		drm_dbg_kms(display->drm,
++			    "utility pin is in PWM mode, not using it for TE\n");
+ 		return;
++	}
++
++	if (enable)
++		gen11_dsi_restore_pin_buf_ctl(encoder);
+ 
+ 	tmp = intel_de_read(display, UTIL_PIN_CTL);
+ 
+@@ -1137,6 +1285,8 @@ static void
+ gen11_dsi_enable_port_and_phy(struct intel_encoder *encoder,
+ 			      const struct intel_crtc_state *crtc_state)
+ {
++	struct intel_dsi *intel_dsi = enc_to_intel_dsi(encoder);
++
+ 	/* step 4a: power up all lanes of the DDI used by DSI */
+ 	gen11_dsi_power_up_lanes(encoder);
+ 
+@@ -1152,6 +1302,14 @@ gen11_dsi_enable_port_and_phy(struct intel_encoder *encoder,
+ 	/* enable DDI buffer */
+ 	gen11_dsi_enable_ddi_buffer(encoder);
+ 
++	/*
++	 * The lanes are now driven to LP-11 and the transcoder is not yet
++	 * configured, which is where the panel has to leave reset.  INIT_OTP
++	 * itself runs later, with this leading block skipped.
++	 */
++	if (is_cmd_mode(intel_dsi))
++		intel_dsi_vbt_exec_reset_block(intel_dsi);
++
+ 	gen11_dsi_gate_clocks(encoder);
+ 
+ 	gen11_dsi_setup_timings(encoder, crtc_state);
+@@ -1195,7 +1353,10 @@ static void gen11_dsi_powerup_panel(struct intel_encoder *encoder)
+ 				"error setting max return pkt size%d\n", tmp);
+ 	}
+ 
+-	intel_dsi_vbt_exec_sequence(intel_dsi, MIPI_SEQ_INIT_OTP);
++	if (is_cmd_mode(intel_dsi))
++		intel_dsi_vbt_exec_init_otp(intel_dsi);
++	else
++		intel_dsi_vbt_exec_sequence(intel_dsi, MIPI_SEQ_INIT_OTP);
+ 
+ 	/* ensure all panel commands dispatched before enabling transcoder */
+ 	wait_for_cmds_dispatched_to_panel(encoder);
+@@ -1304,6 +1465,40 @@ static void gen11_dsi_enable(struct intel_atomic_state *state,
+ 
+ 	intel_panel_prepare(crtc_state, conn_state);
+ 
++	/*
++	 * Kick off the first frame.  Periodic frame update is enabled by now,
++	 * but the transcoder only starts pushing once it has been asked for a
++	 * frame at least once, and the driver has no other way to get there:
++	 * icl_dsi_frame_update() runs at the end of a pipe update, and that
++	 * pipe update waits for a vblank which will not arrive until a frame
++	 * has been pushed.
++	 *
++	 * Taking over a panel the firmware left running hides this, since the
++	 * frames were already flowing.  It shows up after a suspend/resume
++	 * cycle, where the picture freezes and only advances by one frame
++	 * every flip_done timeout.
++	 */
++	if (is_cmd_mode(intel_dsi) && intel_dsi->periodic_cmd_mode) {
++		struct intel_display *d = to_intel_display(encoder);
++		enum port p = (intel_dsi->ports & BIT(PORT_A)) ? PORT_A : PORT_B;
++		u32 before = intel_de_read(d, DSI_CMD_FRMCTL(p));
++		int i;
++
++		intel_de_rmw(d, DSI_CMD_FRMCTL(p), 0, DSI_FRAME_UPDATE_REQUEST);
++
++		for (i = 0; i < 50; i++) {
++			if (!(intel_de_read(d, DSI_CMD_FRMCTL(p)) &
++			      DSI_FRAME_UPDATE_REQUEST))
++				break;
++			msleep(1);
++		}
++
++		drm_dbg_kms(d->drm,
++			    "cmd mode: kicked frame update on port %c after %d ms, DSI_CMD_FRMCTL 0x%08x -> 0x%08x\n",
++			    port_name(p), i, before,
++			    intel_de_read(d, DSI_CMD_FRMCTL(p)));
++	}
++
+ 	intel_crtc_vblank_on(crtc_state);
+ }
+ 
+@@ -1544,16 +1739,18 @@ static void gen11_dsi_get_timings(struct intel_encoder *encoder,
+ static bool gen11_dsi_is_periodic_cmd_mode(struct intel_dsi *intel_dsi)
+ {
+ 	struct intel_display *display = to_intel_display(&intel_dsi->base);
+-	enum transcoder dsi_trans;
++	enum port port;
+ 	u32 val;
+ 
+-	if (intel_dsi->ports == BIT(PORT_B))
+-		dsi_trans = TRANSCODER_DSI_1;
+-	else
+-		dsi_trans = TRANSCODER_DSI_0;
++	port = (intel_dsi->ports & BIT(PORT_A)) ? PORT_A : PORT_B;
+ 
+-	val = intel_de_read(display, DSI_TRANS_FUNC_CONF(dsi_trans));
+-	return (val & DSI_PERIODIC_FRAME_UPDATE_ENABLE);
++	/*
++	 * DSI_PERIODIC_FRAME_UPDATE_ENABLE lives in DSI_CMD_FRMCTL, not in
++	 * DSI_TRANS_FUNC_CONF; reading the latter made this always return
++	 * false.
++	 */
++	val = intel_de_read(display, DSI_CMD_FRMCTL(port));
++	return val & DSI_PERIODIC_FRAME_UPDATE_ENABLE;
+ }
+ 
+ static void gen11_dsi_get_cmd_mode_config(struct intel_dsi *intel_dsi,
+@@ -1588,8 +1785,50 @@ static void gen11_dsi_get_config(struct intel_encoder *encoder,
+ 	if (is_cmd_mode(intel_dsi))
+ 		gen11_dsi_get_cmd_mode_config(intel_dsi, pipe_config);
+ 
+-	if (gen11_dsi_is_periodic_cmd_mode(intel_dsi))
++	if (is_cmd_mode(intel_dsi) && !intel_dsi->cmd_mode_timings.valid) {
++		struct intel_display *display = to_intel_display(encoder);
++		enum transcoder dsi_trans =
++			dsi_port_to_transcoder(ffs(intel_dsi->ports) - 1);
++		u32 vtotal = intel_de_read(display,
++					   TRANS_VTOTAL(display, dsi_trans));
++
++		/*
++		 * Snapshot the transfer timings the firmware left behind, but
++		 * only while they are still there: this runs at takeover, and
++		 * after a suspend/resume cycle the registers have been through
++		 * the driver's own teardown and no longer hold them.
++		 */
++		if (REG_FIELD_GET(VACTIVE_MASK, vtotal) + 1 ==
++		    pipe_config->hw.adjusted_mode.crtc_vdisplay &&
++		    REG_FIELD_GET(VTOTAL_MASK, vtotal) + 1 >
++		    REG_FIELD_GET(VACTIVE_MASK, vtotal) + 1) {
++			intel_dsi->cmd_mode_timings.hsync =
++				intel_de_read(display,
++					      TRANS_HSYNC(display, dsi_trans));
++			intel_dsi->cmd_mode_timings.vsync =
++				intel_de_read(display,
++					      TRANS_VSYNC(display, dsi_trans));
++			intel_dsi->cmd_mode_timings.vtotal = vtotal;
++			intel_dsi->cmd_mode_timings.valid = true;
++
++			drm_dbg_kms(display->drm,
++				    "cmd mode: firmware timings HSYNC 0x%08x VSYNC 0x%08x VTOTAL 0x%08x\n",
++				    intel_dsi->cmd_mode_timings.hsync,
++				    intel_dsi->cmd_mode_timings.vsync,
++				    intel_dsi->cmd_mode_timings.vtotal);
++		}
++	}
++
++	if (gen11_dsi_is_periodic_cmd_mode(intel_dsi)) {
+ 		pipe_config->mode_flags |= I915_MODE_FLAG_DSI_PERIODIC_CMD_MODE;
++
++		/*
++		 * Remember that the firmware was using periodic frame update,
++		 * so gen11_dsi_configure_transcoder() can put it back after
++		 * the transcoder has been taken down.
++		 */
++		intel_dsi->periodic_cmd_mode = true;
++	}
+ }
+ 
+ static void gen11_dsi_sync_state(struct intel_encoder *encoder,
+@@ -1599,6 +1838,13 @@ static void gen11_dsi_sync_state(struct intel_encoder *encoder,
+ 	struct intel_crtc *intel_crtc;
+ 	enum pipe pipe;
+ 
++	/*
++	 * Before the crtc_state check: this runs after hardware readout on both
++	 * boot and resume, and unlike the encoder enable hooks it is reached
++	 * even when the resume turns into a fastset.
++	 */
++	gen11_dsi_restore_pin_buf_ctl(encoder);
++
+ 	if (!crtc_state)
+ 		return;
+ 
+diff --git a/drivers/gpu/drm/i915/display/intel_dsi.h b/drivers/gpu/drm/i915/display/intel_dsi.h
+index 9fcdabb..d19a94b 100644
+--- a/drivers/gpu/drm/i915/display/intel_dsi.h
++++ b/drivers/gpu/drm/i915/display/intel_dsi.h
+@@ -77,6 +77,31 @@ struct intel_dsi {
+ 	 */
+ 	enum mipi_dsi_pixel_format pixel_format;
+ 
++	/*
++	 * Set at hardware readout when the firmware had periodic frame update
++	 * enabled, so gen11_dsi_configure_transcoder() can restore it.
++	 */
++	bool periodic_cmd_mode;
++
++	/*
++	 * Last non-zero value seen in DSI_PIN_BUF_CTL, remembered so that it
++	 * can be put back after a suspend/resume cycle clears it.
++	 * See gen11_dsi_restore_pin_buf_ctl().
++	 */
++	u32 pin_buf_ctl;
++
++	/*
++	 * The command mode transfer timings the firmware programmed, taken at
++	 * hardware readout while they are still in the registers.  See
++	 * gen11_dsi_set_transcoder_timings().
++	 */
++	struct {
++		bool valid;
++		u32 hsync;
++		u32 vsync;
++		u32 vtotal;
++	} cmd_mode_timings;
++
+ 	/* NON_BURST_SYNC_PULSE, NON_BURST_SYNC_EVENTS, or BURST_MODE */
+ 	int video_mode;
+ 
+diff --git a/drivers/gpu/drm/i915/display/intel_dsi_vbt.c b/drivers/gpu/drm/i915/display/intel_dsi_vbt.c
+index fe12041..e6e6a86 100644
+--- a/drivers/gpu/drm/i915/display/intel_dsi_vbt.c
++++ b/drivers/gpu/drm/i915/display/intel_dsi_vbt.c
+@@ -615,11 +615,37 @@ static const char *sequence_name(enum mipi_seq seq_id)
+ 	return "(unknown)";
+ }
+ 
++/*
++ * The VBT of a command mode panel can put the reset pulse at the head of
++ * INIT_OTP, as a run of DELAY and GPIO elements before the first packet.
++ * i915 executes INIT_OTP from gen11_dsi_pre_enable(), by which point the
++ * port and the PHY are already up and the transcoder is configured - the
++ * panel comes out of reset into a link that is being driven and never
++ * syncs.
++ *
++ * MIPI requires the peripheral to leave reset with the lanes in LP-11, so
++ * the reset block has to run once the DDI buffer is enabled but before the
++ * transcoder is configured.  Split it out of the sequence so it can.
++ */
++enum mipi_seq_part {
++	MIPI_SEQ_PART_ALL = 0,
++	MIPI_SEQ_PART_RESET,	/* the leading DELAY/GPIO run only */
++	MIPI_SEQ_PART_REST,	/* everything after it */
++};
++
++static bool mipi_elem_is_reset_block(u8 operation_byte)
++{
++	return operation_byte == MIPI_SEQ_ELEM_DELAY ||
++	       operation_byte == MIPI_SEQ_ELEM_GPIO;
++}
++
+ static void intel_dsi_vbt_exec(struct intel_dsi *intel_dsi,
+-			       enum mipi_seq seq_id)
++			       enum mipi_seq seq_id,
++			       enum mipi_seq_part part)
+ {
+ 	struct intel_display *display = to_intel_display(&intel_dsi->base);
+ 	struct intel_connector *connector = intel_dsi->attached_connector;
++	bool in_reset_block = true;
+ 	const u8 *data;
+ 	fn_mipi_elem_exec mipi_elem_exec;
+ 
+@@ -633,8 +659,9 @@ static void intel_dsi_vbt_exec(struct intel_dsi *intel_dsi,
+ 
+ 	drm_WARN_ON(display->drm, *data != seq_id);
+ 
+-	drm_dbg_kms(display->drm, "Starting MIPI sequence %d - %s\n",
+-		    seq_id, sequence_name(seq_id));
++	if (part != MIPI_SEQ_PART_RESET)
++		drm_dbg_kms(display->drm, "Starting MIPI sequence %d - %s\n",
++			    seq_id, sequence_name(seq_id));
+ 
+ 	/* Skip Sequence Byte. */
+ 	data++;
+@@ -656,6 +683,22 @@ static void intel_dsi_vbt_exec(struct intel_dsi *intel_dsi,
+ 		if (connector->panel.vbt.dsi.seq_version >= 3)
+ 			operation_size = *data++;
+ 
++		/*
++		 * The reset block is the run of DELAY/GPIO elements at the
++		 * head of the sequence, up to the first element of any
++		 * other kind.
++		 */
++		if (in_reset_block && !mipi_elem_is_reset_block(operation_byte))
++			in_reset_block = false;
++
++		if (part == MIPI_SEQ_PART_RESET && !in_reset_block)
++			return;
++
++		if (part == MIPI_SEQ_PART_REST && in_reset_block) {
++			data += operation_size;
++			continue;
++		}
++
+ 		if (mipi_elem_exec) {
+ 			const u8 *next = data + operation_size;
+ 
+@@ -683,6 +726,66 @@ static void intel_dsi_vbt_exec(struct intel_dsi *intel_dsi,
+ 	}
+ }
+ 
++/*
++ * Splitting the sequence requires the per element size, which only exists
++ * from sequence block version 3 on. On older VBTs leave INIT_OTP alone:
++ * intel_dsi_vbt_exec_reset_block() does nothing and
++ * intel_dsi_vbt_exec_init_otp() runs the whole sequence in place, which is
++ * what the driver did before.
++ */
++static bool intel_dsi_vbt_can_split(struct intel_dsi *intel_dsi)
++{
++	struct intel_connector *connector = intel_dsi->attached_connector;
++	const u8 *data;
++
++	/* Splitting needs the per element size, added in version 3. */
++	if (connector->panel.vbt.dsi.seq_version < 3)
++		return false;
++
++	data = connector->panel.vbt.dsi.sequence[MIPI_SEQ_INIT_OTP];
++	if (!data)
++		return false;
++
++	data++;		/* sequence byte */
++	data += 4;	/* size of sequence */
++
++	/*
++	 * Only split when the leading run actually contains a GPIO element,
++	 * that is, when there is a panel reset in there to move.  A sequence
++	 * that merely starts with a delay is left exactly as it was.
++	 */
++	while (*data != MIPI_SEQ_ELEM_END) {
++		u8 operation_byte = *data++;
++		u8 operation_size = *data++;
++
++		if (operation_byte == MIPI_SEQ_ELEM_GPIO)
++			return true;
++		if (operation_byte != MIPI_SEQ_ELEM_DELAY)
++			return false;
++
++		data += operation_size;
++	}
++
++	return false;
++}
++
++/* Run only the leading DELAY/GPIO run of INIT_OTP - the panel reset. */
++void intel_dsi_vbt_exec_reset_block(struct intel_dsi *intel_dsi)
++{
++	if (!intel_dsi_vbt_can_split(intel_dsi))
++		return;
++
++	intel_dsi_vbt_exec(intel_dsi, MIPI_SEQ_INIT_OTP, MIPI_SEQ_PART_RESET);
++}
++
++/* Run INIT_OTP with that leading run skipped, if it was run separately. */
++void intel_dsi_vbt_exec_init_otp(struct intel_dsi *intel_dsi)
++{
++	intel_dsi_vbt_exec(intel_dsi, MIPI_SEQ_INIT_OTP,
++			   intel_dsi_vbt_can_split(intel_dsi) ?
++			   MIPI_SEQ_PART_REST : MIPI_SEQ_PART_ALL);
++}
++
+ void intel_dsi_vbt_exec_sequence(struct intel_dsi *intel_dsi,
+ 				 enum mipi_seq seq_id)
+ {
+@@ -691,7 +794,7 @@ void intel_dsi_vbt_exec_sequence(struct intel_dsi *intel_dsi,
+ 	if (seq_id == MIPI_SEQ_BACKLIGHT_ON && intel_dsi->gpio_backlight)
+ 		gpiod_set_value_cansleep(intel_dsi->gpio_backlight, 1);
+ 
+-	intel_dsi_vbt_exec(intel_dsi, seq_id);
++	intel_dsi_vbt_exec(intel_dsi, seq_id, MIPI_SEQ_PART_ALL);
+ 
+ 	if (seq_id == MIPI_SEQ_POWER_OFF && intel_dsi->gpio_panel)
+ 		gpiod_set_value_cansleep(intel_dsi->gpio_panel, 0);
+diff --git a/drivers/gpu/drm/i915/display/intel_dsi_vbt.h b/drivers/gpu/drm/i915/display/intel_dsi_vbt.h
+index 3462fcc..5adb979 100644
+--- a/drivers/gpu/drm/i915/display/intel_dsi_vbt.h
++++ b/drivers/gpu/drm/i915/display/intel_dsi_vbt.h
+@@ -15,6 +15,8 @@ bool intel_dsi_vbt_init(struct intel_dsi *intel_dsi, u16 panel_id);
+ void intel_dsi_vbt_gpio_init(struct intel_dsi *intel_dsi, bool panel_is_on);
+ void intel_dsi_vbt_exec_sequence(struct intel_dsi *intel_dsi,
+ 				 enum mipi_seq seq_id);
++void intel_dsi_vbt_exec_reset_block(struct intel_dsi *intel_dsi);
++void intel_dsi_vbt_exec_init_otp(struct intel_dsi *intel_dsi);
+ void intel_dsi_log_params(struct intel_dsi *intel_dsi);
+ 
+ #endif /* __INTEL_DSI_VBT_H__ */
+diff --git a/drivers/gpu/drm/i915/display/intel_vdsc.c b/drivers/gpu/drm/i915/display/intel_vdsc.c
+index 8f06c3a..dda3203 100644
+--- a/drivers/gpu/drm/i915/display/intel_vdsc.c
++++ b/drivers/gpu/drm/i915/display/intel_vdsc.c
+@@ -888,7 +888,16 @@ void intel_dsc_enable(const struct intel_crtc_state *crtc_state)
+ 	dss_ctl2_val |= VDSC0_ENABLE;
+ 	if (vdsc_instances_per_pipe > 1) {
+ 		dss_ctl2_val |= VDSC1_ENABLE;
+-		dss_ctl1_val |= JOINER_ENABLE;
++
++		/*
++		 * JOINER and SPLITTER are mutually exclusive. Dual link DSI
++		 * uses the splitter (one stream fanned out to two links),
++		 * which is not the same thing as the joiner (two pipes fed
++		 * into one stream), so two VDSC engines must not imply the
++		 * joiner here.
++		 */
++		if (!intel_crtc_has_type(crtc_state, INTEL_OUTPUT_DSI))
++			dss_ctl1_val |= JOINER_ENABLE;
+ 	}
+ 
+ 	if (vdsc_instances_per_pipe > 2) {
+@@ -908,8 +917,31 @@ void intel_dsc_enable(const struct intel_crtc_state *crtc_state)
+ 		if (intel_crtc_is_bigjoiner_primary(crtc_state))
+ 			dss_ctl1_val |= PRIMARY_BIG_JOINER_ENABLE;
+ 	}
+-	intel_de_write(display, dss_ctl1_reg(crtc, crtc_state->cpu_transcoder), dss_ctl1_val);
+-	intel_de_write(display, dss_ctl2_reg(crtc, crtc_state->cpu_transcoder), dss_ctl2_val);
++	/*
++	 * The splitter is programmed before this function runs, by
++	 * configure_dual_link_mode() for dual link DSI and by
++	 * intel_ddi_mso_configure() for eDP MSO, both from the encoder
++	 * pre_enable hook. Writing the whole register here would wipe that
++	 * out, so preserve those bits for the outputs that own them, and
++	 * keep clearing them for everyone else.
++	 */
++	if (intel_crtc_has_type(crtc_state, INTEL_OUTPUT_DSI) ||
++	    crtc_state->splitter.enable) {
++		intel_de_rmw(display,
++			     dss_ctl1_reg(crtc, crtc_state->cpu_transcoder),
++			     ~(u32)SPLITTER_STATE, dss_ctl1_val);
++		intel_de_rmw(display,
++			     dss_ctl2_reg(crtc, crtc_state->cpu_transcoder),
++			     ~(u32)RIGHT_DL_BUF_TARGET_DEPTH_MASK,
++			     dss_ctl2_val);
++	} else {
++		intel_de_write(display,
++			       dss_ctl1_reg(crtc, crtc_state->cpu_transcoder),
++			       dss_ctl1_val);
++		intel_de_write(display,
++			       dss_ctl2_reg(crtc, crtc_state->cpu_transcoder),
++			       dss_ctl2_val);
++	}
+ }
+ 
+ void intel_dsc_disable(const struct intel_crtc_state *old_crtc_state)
+diff --git a/drivers/gpu/drm/i915/display/intel_vdsc_regs.h b/drivers/gpu/drm/i915/display/intel_vdsc_regs.h
+index 2b2e3c1..34effaf 100644
+--- a/drivers/gpu/drm/i915/display/intel_vdsc_regs.h
++++ b/drivers/gpu/drm/i915/display/intel_vdsc_regs.h
+@@ -39,6 +39,22 @@
+ #define  SPLITTER_CONFIGURATION_MASK		REG_GENMASK(26, 25)
+ #define  SPLITTER_CONFIGURATION_2_SEGMENT	REG_FIELD_PREP(SPLITTER_CONFIGURATION_MASK, 0)
+ #define  SPLITTER_CONFIGURATION_4_SEGMENT	REG_FIELD_PREP(SPLITTER_CONFIGURATION_MASK, 1)
++/*
++ * The bits in dss_ctl1_reg() that belong to whoever programmed the
++ * splitter rather than to intel_dsc_enable(): configure_dual_link_mode()
++ * owns SPLITTER_ENABLE, DUAL_LINK_MODE_INTERLEAVE, OVERLAP_PIXELS and
++ * LEFT_DL_BUF_TARGET_DEPTH; intel_ddi_mso_configure() owns
++ * SPLITTER_ENABLE, SPLITTER_CONFIGURATION and OVERLAP_PIXELS.
++ *
++ * The first four are listed above under DSS_CTL1 and SPLITTER_CONFIGURATION
++ * under ICL_PIPE_DSS_CTL1; dss_ctl1_reg() picks one register or the other
++ * by display version and the layout of these bits is the same in both.
++ */
++#define  SPLITTER_STATE				(SPLITTER_ENABLE | \
++						 SPLITTER_CONFIGURATION_MASK | \
++						 DUAL_LINK_MODE_INTERLEAVE | \
++						 OVERLAP_PIXELS_MASK | \
++						 LEFT_DL_BUF_TARGET_DEPTH_MASK)
+ #define  ULTRA_JOINER_ENABLE			REG_BIT(23)
+ #define  PRIMARY_ULTRA_JOINER_ENABLE		REG_BIT(22)
+ #define  UNCOMPRESSED_JOINER_PRIMARY		(1 << 21)

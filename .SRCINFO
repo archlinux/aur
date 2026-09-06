@@ -1,0 +1,24 @@
+pkgbase = matebook-e-dsi-dkms
+	pkgdesc = i915 with the DSI fixes for the HUAWEI MateBook E 2023 (DRR-W56) dual link command mode panel
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bbs.archlinux.org/viewtopic.php?id=303555
+	install = matebook-e-dsi-dkms.install
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = libarchive
+	depends = dkms
+	optdepends = linux-headers: build against the stock kernel
+	noextract = linux-7.2.3.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.3.tar.xz
+	source = matebook-e-dsi.patch
+	source = dkms.conf
+	source = Makefile
+	source = zz-matebook-e-dsi-initramfs.hook
+	sha256sums = 8ba259e8e7b13ec6ef0941c8a39ad90b24bd4a4d6c0010ba6bafb794550ecd03
+	sha256sums = 882842e895d3c8f746d58e895a406519c666a06612d425b3f38cf4ca907e0b04
+	sha256sums = 9235910fe420c8a47588595ffaeba65cbfcf3c31e977c78177dc7b38c227d79b
+	sha256sums = 6ac1507b11f32ec557e27d81315dbc883ae58904cd00f789a7d2cdd13468a1b6
+	sha256sums = 6deef16bacc6bedb394b223d1fcadc35222143c5723fdbc9a251dedb3b50de9a
+
+pkgname = matebook-e-dsi-dkms

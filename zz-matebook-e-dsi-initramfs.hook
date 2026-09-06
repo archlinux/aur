@@ -1,0 +1,25 @@
+# 必须在 dkms-install.hook 之后运行, 故文件名以 zz- 开头。
+# 兼容 mkinitcpio / dracut, 都没有时只提示, 不让整个事务失败。
+#
+# Arch 自带的 90-mkinitcpio-install.hook 按字典序排在 dkms-install.hook 之前,
+# 所以内核升级时 initramfs 是在 DKMS 重建模块「之前」生成的 —— 里面装的会是
+# 未打补丁的 i915。而 mkinitcpio 的 kms hook 默认把 i915 打进 initramfs,
+# 直接开机时内核在约 1.4 秒就从那里加载它, 根文件系统都还没挂上。
+# 结果就是补丁看起来完全没生效, 且只有 i915.modeset=0 再 modprobe 才正常。
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = matebook-e-dsi-dkms
+
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Description = Rebuilding initramfs so it picks up the patched i915...
+When = PostTransaction
+Exec = /bin/sh -c 'if command -v mkinitcpio >/dev/null 2>&1; then exec mkinitcpio -P; elif command -v dracut-rebuild >/dev/null 2>&1; then exec dracut-rebuild; else echo "==> 未找到 mkinitcpio/dracut, 请手动重建 initramfs"; fi'

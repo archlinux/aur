@@ -1,0 +1,33 @@
+_notice() {
+	cat <<'EOF'
+
+==> matebook-e-dsi-dkms 已安装。
+
+    这个包用打了补丁的 i915 替换掉发行版自带的那个, 覆盖范围是整台机器的
+    Intel 显示驱动。所有改动都限定在 gen11+ 的命令模式 DSI 路径上, 其他
+    Intel 显卡上行为与原版一致。
+
+    重启后确认加载的确实是它:
+
+        cat /sys/module/i915/srcversion
+        modinfo -F srcversion i915
+
+    两者应当一致。若不一致, 说明 initramfs 里还是旧模块, 手动重建一次:
+
+        sudo mkinitcpio -P
+
+    本包已装有 pacman 钩子在 DKMS 重建之后自动做这件事, 正常情况下不需要
+    手动执行。
+
+    仅在 HUAWEI MateBook E 2023 (DRR-W56) 上实测通过冷启动 / S3 / S4。
+    其他机型的 VBT 序列与面板时序可能不同, 详见 /usr/share/doc 或项目 README。
+
+EOF
+}
+
+post_install() { _notice; }
+post_upgrade() { _notice; }
+
+pre_remove() {
+	echo "==> 移除后请重建 initramfs: sudo mkinitcpio -P"
+}
