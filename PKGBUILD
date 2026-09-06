@@ -1,7 +1,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=stump
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='A free and open source comics, manga and digital book server with OPDS support'
 arch=(x86_64)
@@ -10,6 +10,7 @@ license=('MIT')
 depends=(
   gcc-libs
   glibc
+  openssl
 )
 makedepends=(
   cargo
@@ -26,7 +27,7 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('522fa689b084bf21086585b879ac76f28bb1684b89f78d9a492a64f507ddfcca'
+sha256sums=('e463272de3d72d40b54ba854fdd754f6c99f8ebe4fbed55f8e1338e92482c917'
             '0acbaeaeec495b4ae9e55401edb4d1f395fb3b2edc68d8c41f0d9fffe925f0ea'
             'da29676564e82d6b642b433156e679055d776c790f61356b64a0a5d65be476ef'
             '366d457de40ce59aa50fe860a21b8db2db84a8fd48fc2a68f38b0eff2ec73dcc')
