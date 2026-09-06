@@ -1,6 +1,6 @@
 pkgbase = devserial
 	pkgdesc = MCP server bridging serial hardware to LLMs via SQLite-backed buffer
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/metaneutrons/devserial
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = devserial
 	conflicts = devserial-bin
 	options = !lto
 	options = !debug
-	source = devserial::git+https://github.com/metaneutrons/devserial.git#tag=devserial-v0.1.11
+	source = devserial::git+https://github.com/metaneutrons/devserial.git#tag=devserial-v0.1.12
 	sha256sums = SKIP
 
 pkgname = devserial
