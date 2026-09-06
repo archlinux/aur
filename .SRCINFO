@@ -1,0 +1,26 @@
+pkgbase = sarbs-rofi-pass-git
+	pkgdesc = Rofi-Oberfläche für den Passwortmanager pass (temporär Upstream, eigenes SARBS-Skript folgt)
+	pkgver = 2024.06.16.r555.g37c4c86
+	pkgrel = 1
+	url = https://github.com/carnager/rofi-pass
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = bash
+	depends = pass
+	depends = rofi
+	depends = xdotool
+	depends = xclip
+	depends = gawk
+	depends = pwgen
+	optdepends = pass-otp: OTP-Unterstützung
+	optdepends = wtype: Tastatureingaben unter Wayland
+	optdepends = wl-clipboard: Zwischenablage unter Wayland
+	optdepends = python: KeePass-Import- und CSV-Skripte
+	provides = rofi-pass
+	conflicts = rofi-pass
+	backup = etc/rofi-pass.conf
+	source = git+https://github.com/carnager/rofi-pass
+	sha256sums = SKIP
+
+pkgname = sarbs-rofi-pass-git
