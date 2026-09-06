@@ -48,7 +48,6 @@ package() {
     # this coexists with whatever hook the host already has.
     install -Dm755 scripts/libvirt-hook-cpu-isolation.sh \
         "${pkgdir}/etc/libvirt/hooks/qemu.d/10-cpu-isolation.sh"
-    # emulated NIC offloads corrupt integrity-checked traffic on libvirt taps; host-wide by nature
-    install -Dm644 scripts/99-vfio-native-vnet-offload.rules \
-        "${pkgdir}/usr/lib/udev/rules.d/99-vfio-native-vnet-offload.rules"
+    install -Dm755 scripts/libvirt-hook-vnet-offload.sh \
+        "${pkgdir}/etc/libvirt/hooks/qemu.d/20-vnet-offload.sh"
 }

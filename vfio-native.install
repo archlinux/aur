@@ -49,11 +49,11 @@ post_install() {
 
   'native' is a good default if you would rather not maintain anything.
 
-  A udev rule (99-vfio-native-vnet-offload.rules) turns TX offloads off on every
-  libvirt tap as it appears. The emulated e1000e NIC corrupts integrity-checked
-  traffic with them on; SSH to the guest fails with "Corrupted MAC on input".
-  It applies to every VM on the host; the throughput cost on a host<->guest
-  link is not measurable.
+  A hook at /etc/libvirt/hooks/qemu.d/20-vnet-offload.sh turns GSO and GRO on
+  for the guest's tap. With the interface's MTU 9000 that takes the inbound link
+  from 2.9 to 14 Gbit/s; neither does anything alone. The libvirt network needs
+  <mtu size='9000'/> too, and the guest needs Jumbo Packet 9014 with its
+  interface MTU at 9000.
 
   A libvirt hook is installed at /etc/libvirt/hooks/qemu.d/10-cpu-isolation.sh.
   It keeps host processes off the cores the guest is pinned to, automatically,
