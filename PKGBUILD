@@ -122,8 +122,11 @@ prepare() {
 
   # Patch this after downloading flutter dependencies -- since it patches a dependency:
   local _patch='flserial_once_flag_fix.patch'
-  printf '%s\n' " --> Applying patch '${_patch}' ..."
-  patch -Np1 --follow-symlinks -i "${srcdir}/${_patch}" -d "${PUB_CACHE}/git"/flserial-[0-9a-f]*
+  local _flserialdir
+  for _flserialdir in "${PUB_CACHE}/git"/flserial-[0-9a-f]*; do
+    printf '%s\n' " --> Applying patch '${_patch}' to '${_flserialdir}' ..."
+    patch -Np1 --follow-symlinks -i "${srcdir}/${_patch}" -d "${_flserialdir}"
+  done
 
   #printf '%s\n' " --> size-optimising PNG images ..."
   #find -name '*.png' -type f | parallel -j "${_nproc}" zopflipng -m -y {} {}
