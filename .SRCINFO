@@ -1,0 +1,13 @@
+pkgbase = calibre-plugin-crosspoint
+	pkgdesc = Calibre Plugin to Sync CrossPoint Devices with Library- Calibre Plugin
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/crosspoint-reader/calibre-plugins/
+	arch = any
+	license = MIT
+	depends = calibre>=2.0.0
+	noextract = crosspoint-0.2.7.zip
+	source = https://github.com/crosspoint-reader/calibre-plugins/releases/download/v0.2.7/crosspoint_reader-v0.2.7.zip
+	sha256sums = 466a2b5fc6496faec40c498c625105971038066a01271fa3e7a3ad5befa2adf2
+
+pkgname = calibre-plugin-crosspoint
