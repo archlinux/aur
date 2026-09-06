@@ -1,6 +1,6 @@
 # maintainer: bipin <kbipinkumar@pm.me>
 pkgname=libdivide
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="A header-only C/C++ library for optimizing integer division."
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSL-1.0')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ridiculousfish/libdivide/archive/refs/tags/v$pkgver.tar.gz"
         )
-sha256sums=('de3933bf2fd21300d99fcc6460a8a4a1343ae90b965d6893f044c350bac68c6e')
+sha256sums=('077e8ce6c783d1b4402aa6d77f643f88f37feb80e9896c30e19a62cc0a3f5576')
 
 build() {
   cd $pkgname-$pkgver
