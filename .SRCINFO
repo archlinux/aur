@@ -1,0 +1,33 @@
+pkgbase = ros2-jazzy-kinematics_interface
+	pkgdesc = Kinematics interface and plugins for ROS 2 Jazzy
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/ros-controls/kinematics_interface
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = boost
+	makedepends = ros2-jazzy-backward_ros
+	makedepends = ros2-jazzy-ros2_control_cmake
+	makedepends = pinocchio
+	makedepends = eigen
+	depends = ros2-jazzy
+	source = ros2-jazzy-kinematics_interface-1.7.1.tar.gz::https://github.com/ros-controls/kinematics_interface/archive/refs/tags/1.7.1.tar.gz
+	sha256sums = b36e9fc9ae55fb5a92e0eb5dcafd62de9be159dc251c9289bda3af8700c9b4ef
+
+pkgname = ros2-jazzy-kinematics_interface
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = eigen
+
+pkgname = ros2-jazzy-kinematics_interface_kdl
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-kinematics_interface
+	depends = eigen
+
+pkgname = ros2-jazzy-kinematics_interface_pinocchio
+	depends = ros2-jazzy
+	depends = ros2-jazzy-kinematics_interface
+	depends = pinocchio
+	depends = eigen
