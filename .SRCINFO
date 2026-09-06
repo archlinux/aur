@@ -1,6 +1,6 @@
 pkgbase = tyler-git
 	pkgdesc = A dwm-shaped Wayland compositor: tiling, tags, in-compositor bar and menu
-	pkgver = r25.b42f0e0
+	pkgver = r27.84565f9
 	pkgrel = 1
 	url = https://github.com/thinkoid/tyler
 	arch = x86_64

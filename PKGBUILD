@@ -1,7 +1,7 @@
 # Maintainer: Liviu Nicoara <lnicoara at thinkoid dot org>
 
 pkgname=tyler-git
-pkgver=r25.b42f0e0
+pkgver=r27.84565f9
 pkgrel=1
 pkgdesc="A dwm-shaped Wayland compositor: tiling, tags, in-compositor bar and menu"
 arch=('x86_64')
