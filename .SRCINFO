@@ -1,11 +1,12 @@
 pkgbase = libusrsctp
 	pkgdesc = A portable SCTP userland stack
 	pkgver = 0.9.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/sctplab/usrsctp
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = BSD-2-Clause
+	license = BSD-3-Clause
 	makedepends = automake
 	makedepends = autoconf
 	depends = glibc
