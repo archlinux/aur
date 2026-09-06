@@ -2,7 +2,7 @@
 
 pkgname=python-pyvhdlmodel
 pkgdesc='An abstract VHDL language model'
-pkgver=0.35.0
+pkgver=0.39.0
 pkgrel=1
 arch=('any')
 url='https://github.com/VHDL/pyVHDLModel'
@@ -23,12 +23,12 @@ checkdepends=(
   'python-pytest-cov'
 )
 
-_commit=6a832c3
+_commit=29c31e8
 source=(
   "git+https://github.com/VHDL/pyVHDLModel.git?signed#commit=$_commit"
 )
 sha256sums=(
-  '0fb573b998d4ad04dc35bf79c60cf8a4e285f0ddde62b9ce1017565b04e2c077'
+  '39f45a8912d640bca4c6bde70812d9338d68119f27da786c4209b2e1bb1d5e24'
 )
 validpgpkeys=(
   '968479A1AFF927E37D1A566BB5690EEEBB952194'  # GitHub signing key
@@ -36,7 +36,7 @@ validpgpkeys=(
 
 prepare() {
   cd pyVHDLModel
-  sed -i -e "s/pyTooling ~= 8.8/pyTooling/" pyproject.toml
+  sed -i -e "s/pyTooling ~= 8.19/pyTooling/" pyproject.toml
   sed -i -e "s/wheel ~= 0.45.0/wheel/" pyproject.toml
 }
 
