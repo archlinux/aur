@@ -51,6 +51,9 @@ package() {
         --destdir="$pkgdir" \
         dist/*.whl
 
+    install -d "$pkgdir/usr/bin"
+    ln -s whatisit "$pkgdir/usr/bin/wit"
+
     install -Dm644 \
         "$srcdir/whatisit-nl2sh/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
