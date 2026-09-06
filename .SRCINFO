@@ -1,0 +1,321 @@
+pkgbase = ros2-jazzy-ros2_controllers
+	pkgdesc = Controllers for the ROS 2 Jazzy control framework
+	pkgver = 4.42.1
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros2_controllers
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = python-colcon-common-extensions
+	makedepends = python-rospkg
+	makedepends = eigen
+	makedepends = tl-expected
+	makedepends = tinyxml2
+	makedepends = ros2-jazzy-ackermann_msgs
+	makedepends = ros2-jazzy-angles
+	makedepends = ros2-jazzy-backward_ros
+	makedepends = ros2-jazzy-control_msgs
+	makedepends = ros2-jazzy-control_toolbox
+	makedepends = ros2-jazzy-controller_interface
+	makedepends = ros2-jazzy-controller_manager_msgs
+	makedepends = ros2-jazzy-filters
+	makedepends = ros2-jazzy-generate_parameter_library
+	makedepends = ros2-jazzy-hardware_interface
+	makedepends = ros2-jazzy-kinematics_interface
+	makedepends = ros2-jazzy-realtime_tools
+	makedepends = ros2-jazzy-rsl
+	makedepends = ros2-jazzy-ros2_control_cmake
+	depends = ros2-jazzy
+	source = ros2-jazzy-ros2_controllers-4.42.1.tar.gz::https://github.com/ros-controls/ros2_controllers/archive/refs/tags/4.42.1.tar.gz
+	sha256sums = 66adde7cdaea72c173e7f09f6cd1971257c6397fd750f1df936a4b55561f8fc3
+
+pkgname = ros2-jazzy-ackermann_steering_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-steering_controllers_library
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-admittance_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-angles
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-control_toolbox
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-kinematics_interface
+	depends = ros2-jazzy-realtime_tools
+	depends = tinyxml2
+
+pkgname = ros2-jazzy-battery_state_broadcaster
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-bicycle_steering_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-steering_controllers_library
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-chained_filter_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-filters
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-diff_drive_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_toolbox
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-effort_controllers
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-forward_command_controller
+
+pkgname = ros2-jazzy-force_torque_sensor_broadcaster
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-filters
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-forward_command_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+
+pkgname = ros2-jazzy-gpio_controllers
+	depends = ros2-jazzy
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-realtime_tools
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-gps_sensor_broadcaster
+	depends = ros2-jazzy
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+
+pkgname = ros2-jazzy-gripper_controllers
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-control_toolbox
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+
+pkgname = ros2-jazzy-imu_sensor_broadcaster
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+
+pkgname = ros2-jazzy-joint_state_broadcaster
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-realtime_tools
+
+pkgname = ros2-jazzy-joint_trajectory_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-angles
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-control_toolbox
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-hardware_interface
+	depends = tl-expected
+	depends = ros2-jazzy-realtime_tools
+	depends = ros2-jazzy-rsl
+
+pkgname = ros2-jazzy-magnetometer_broadcaster
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-controller_interface
+	depends = eigen
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+
+pkgname = ros2-jazzy-mecanum_drive_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-control_toolbox
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-motion_primitives_controllers
+	depends = ros2-jazzy
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-omni_wheel_drive_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-controller_interface
+	depends = eigen
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+
+pkgname = ros2-jazzy-parallel_gripper_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-control_toolbox
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+
+pkgname = ros2-jazzy-pid_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-angles
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-control_toolbox
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-pose_broadcaster
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-realtime_tools
+
+pkgname = ros2-jazzy-position_controllers
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-forward_command_controller
+
+pkgname = ros2-jazzy-range_sensor_broadcaster
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+
+pkgname = ros2-jazzy-ros2_controllers
+	arch = any
+	depends = ros2-jazzy
+	depends = ros2-jazzy-ackermann_steering_controller
+	depends = ros2-jazzy-admittance_controller
+	depends = ros2-jazzy-battery_state_broadcaster
+	depends = ros2-jazzy-bicycle_steering_controller
+	depends = ros2-jazzy-chained_filter_controller
+	depends = ros2-jazzy-diff_drive_controller
+	depends = ros2-jazzy-effort_controllers
+	depends = ros2-jazzy-force_torque_sensor_broadcaster
+	depends = ros2-jazzy-forward_command_controller
+	depends = ros2-jazzy-gpio_controllers
+	depends = ros2-jazzy-gps_sensor_broadcaster
+	depends = ros2-jazzy-gripper_controllers
+	depends = ros2-jazzy-imu_sensor_broadcaster
+	depends = ros2-jazzy-joint_state_broadcaster
+	depends = ros2-jazzy-joint_trajectory_controller
+	depends = ros2-jazzy-magnetometer_broadcaster
+	depends = ros2-jazzy-mecanum_drive_controller
+	depends = ros2-jazzy-omni_wheel_drive_controller
+	depends = ros2-jazzy-parallel_gripper_controller
+	depends = ros2-jazzy-pid_controller
+	depends = ros2-jazzy-pose_broadcaster
+	depends = ros2-jazzy-position_controllers
+	depends = ros2-jazzy-range_sensor_broadcaster
+	depends = ros2-jazzy-state_interfaces_broadcaster
+	depends = ros2-jazzy-steering_controllers_library
+	depends = ros2-jazzy-tricycle_controller
+	depends = ros2-jazzy-tricycle_steering_controller
+	depends = ros2-jazzy-velocity_controllers
+
+pkgname = ros2-jazzy-ros2_controllers_test_nodes
+	arch = any
+	depends = ros2-jazzy
+
+pkgname = ros2-jazzy-rqt_joint_trajectory_controller
+	arch = any
+	depends = ros2-jazzy
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-controller_manager_msgs
+	depends = python-rospkg
+
+pkgname = ros2-jazzy-state_interfaces_broadcaster
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-realtime_tools
+
+pkgname = ros2-jazzy-steering_controllers_library
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-generate_parameter_library
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+
+pkgname = ros2-jazzy-tricycle_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-ackermann_msgs
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-realtime_tools
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-tricycle_steering_controller
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-control_msgs
+	depends = ros2-jazzy-controller_interface
+	depends = ros2-jazzy-hardware_interface
+	depends = ros2-jazzy-steering_controllers_library
+	depends = ros2-jazzy-generate_parameter_library
+
+pkgname = ros2-jazzy-velocity_controllers
+	depends = ros2-jazzy
+	depends = ros2-jazzy-backward_ros
+	depends = ros2-jazzy-forward_command_controller
