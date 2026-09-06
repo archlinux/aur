@@ -1,0 +1,27 @@
+pkgbase = gety-bin
+	pkgdesc = The local file search engine for you and your AI agents, made by Listary team
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://gety.ai/
+	arch = x86_64
+	license = LicenseRef-Gety-ToS
+	depends = bubblewrap
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = gety
+	conflicts = gety
+	conflicts = gety-appimage
+	options = !strip
+	source = gety-0.5.7.deb::https://dl.gety.ai/Gety-linux-x64-0.5.7-beta.deb
+	source = gety-license.txt
+	sha256sums = 4c74dd34fba3b0c275bf589b1b42a23b99a6cbb6e3fcd4120f2973bab749b355
+	sha256sums = fe5811b6741770c6dded6256176f4a71bdf2918541a1191767484984e810172e
+
+pkgname = gety-bin

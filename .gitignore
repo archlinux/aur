@@ -1,0 +1,7 @@
+# build artifacts
+src/
+pkg/
+*.pkg.tar.zst
+*.deb
+*.AppImage
+*.log
