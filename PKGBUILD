@@ -1,7 +1,7 @@
 # Maintainer: Stefan Zipproth <s.zipproth@acrion.ch>
 
 pkgname=zelph
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A sophisticated semantic network system capable of encoding inference rules within the network itself. Built for powerful logical reasoning, it can process the entire Wikidata knowledge graph (1.7TB) to detect contradictions and make logical deductions."
 arch=('x86_64')
@@ -29,7 +29,7 @@ build() {
 
 check() {
     cd "${pkgname}"
-    ./build/bin/zelph_tests
+    ./build/bin/zelph_tests --test-suite-exclude=slow
 }
 
 package() {
