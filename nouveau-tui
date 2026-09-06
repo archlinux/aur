@@ -433,7 +433,7 @@ class NouveauTUI:
 
         while True:
             ch = self.screen.getch()
-            if ch in (ord('q'), 27, curses.KEY_F1, ord('?'), 10, 13, ord(' ')):
+            if ch in (ord('q'), 27, curses.KEY_F1, ord('?'), 10, 13, ord(' '), curses.KEY_BACKSPACE, 127, 8):
                 break
 
     def run(self):
