@@ -1,5 +1,5 @@
 --- a/packages/docling/pyproject.toml
 +++ b/packages/docling/pyproject.toml
 @@ -54 +54 @@
--  'docling-slim[standard]==2.125.0',
-+  'docling-slim==2.125.0',
+-  'docling-slim[standard]==2.126.0',
++  'docling-slim==2.126.0',

@@ -1,6 +1,6 @@
 pkgbase = docling
 	pkgdesc = Document processing toolkit for converting diverse formats into structured data
-	pkgver = 2.125.0
+	pkgver = 2.126.0
 	pkgrel = 1
 	url = https://github.com/docling-project/docling
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = docling
 	makedepends = python-installer
 	makedepends = python-hatchling
 	makedepends = python-wheel
-	depends = python-docling=2.125.0
+	depends = python-docling=2.126.0
 	depends = python-numpy>=1.24.0
 	depends = python-pillow>=10.0.0
 	depends = python-rtree>=1.3.0
@@ -53,9 +53,9 @@ pkgbase = docling
 	optdepends = python-dotenv>=1.0: load CLI configuration from .env files
 	optdepends = python-openai-whisper>=20250625: audio transcription support
 	optdepends = python-numba>=0.63.0: audio transcription support
-	source = docling-2.125.0.tar.gz::https://github.com/docling-project/docling/archive/refs/tags/v2.125.0.tar.gz
+	source = docling-2.126.0.tar.gz::https://github.com/docling-project/docling/archive/refs/tags/v2.126.0.tar.gz
 	source = slim_meta_package.patch
-	b2sums = 49084628f6f192ef7b8e3d917ca1dc1960f8626539befc80e06ce18643526f6f82b47e90bcdd1ec371fd6a0aba7135e13276692fd0f475dab0368456556cb6b1
-	b2sums = 9acf6469b52b7ba242d32171e0bcfdb26c4df91b9071b66c74b8891aa4a1e4faf5d7c3b49acd1e256a7c255cd75a72532ae3419e4bf0d551afb105f36a3ff8d4
+	b2sums = 725266497a407ff5b5a7b05b1ec5c988fcb40c27b1a01dc68ea0fd158269339a80f5b67197f9efe851feb8befcb428bb5d4ed891f4bb3fc9f1c7cc37486e5895
+	b2sums = dbfecd410543a868a28bc9c7b3b22ac40620a3b8462657df1a400f62cc167947c25351b1d3d9205164fba4efb53d52640b78dc135a91951322ff41eac0e42185
 
 pkgname = docling

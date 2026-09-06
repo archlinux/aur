@@ -1,7 +1,7 @@
 # Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
 
 pkgname='docling'
-pkgver='2.125.0'
+pkgver='2.126.0'
 pkgrel=1
 pkgdesc='Document processing toolkit for converting diverse formats into structured data'
 url="https://github.com/docling-project/${pkgname}"
@@ -68,8 +68,8 @@ source=(
 	'slim_meta_package.patch'
 )
 b2sums=(
-	'49084628f6f192ef7b8e3d917ca1dc1960f8626539befc80e06ce18643526f6f82b47e90bcdd1ec371fd6a0aba7135e13276692fd0f475dab0368456556cb6b1'
-	'9acf6469b52b7ba242d32171e0bcfdb26c4df91b9071b66c74b8891aa4a1e4faf5d7c3b49acd1e256a7c255cd75a72532ae3419e4bf0d551afb105f36a3ff8d4'
+	'725266497a407ff5b5a7b05b1ec5c988fcb40c27b1a01dc68ea0fd158269339a80f5b67197f9efe851feb8befcb428bb5d4ed891f4bb3fc9f1c7cc37486e5895'
+	'dbfecd410543a868a28bc9c7b3b22ac40620a3b8462657df1a400f62cc167947c25351b1d3d9205164fba4efb53d52640b78dc135a91951322ff41eac0e42185'
 )
 
 prepare() {
@@ -112,6 +112,10 @@ check() {
 			tests/test_cli.py::test_cli_invalid_page_range_is_rejected \
 			tests/test_cli.py::test_cli_allow_external_plugins_reaches_asr_pipeline_options \
 			tests/test_cli.py::test_cli_asr_pipeline_options_default_to_false \
+			tests/test_cli.py::test_cli_native_pipeline_converts_pdf \
+			tests/test_cli.py::test_cli_native_pipeline_defaults_to_pdf_only \
+			tests/test_cli.py::test_cli_native_pipeline_rejects_invalid_input_or_backend \
+			tests/test_cli.py::test_cli_native_pipeline_parser_threads \
 			tests/test_cli_tools.py::test_tools_help_lists_models_subcommand \
 			tests/test_cli_tools.py::test_tools_without_arguments_shows_help \
 			tests/test_cli_tools.py::test_models_without_arguments_shows_help
