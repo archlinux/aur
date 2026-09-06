@@ -1,0 +1,39 @@
+[Unit]
+Description=Dynamic DNS updater
+Documentation=https://github.com/IceflowRE/xddns
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+User=xddns
+Group=xddns
+LoadCredential=xddns.yaml:/etc/xddns.yaml
+Environment=XDDNS_CONFIG=%d/xddns.yaml
+ExecStartPre=/usr/bin/xddns config validate
+ExecStart=/usr/bin/xddns
+Restart=on-failure
+RestartSec=10s
+NoNewPrivileges=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectClock=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+LockPersonality=true
+SystemCallArchitectures=native
+LogsDirectory=xddns
+LogsDirectoryMode=0700
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

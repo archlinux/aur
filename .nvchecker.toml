@@ -1,0 +1,5 @@
+[xddns]
+source = "github"
+github = "IceflowRE/xddns"
+use_latest_release = true
+prefix = "v"

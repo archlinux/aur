@@ -1,0 +1,12 @@
+post_install() {
+	echo ':: xddns installed.'
+	echo ':: 1) Create /etc/xddns.yaml (see https://github.com/IceflowRE/xddns#quick-start)'
+	echo ':: 2) chmod 600 /etc/xddns.yaml'
+	echo ':: 3) systemctl enable --now xddns.service'
+	echo ':: The xddns/xddns system user was created via sysusers.d; no manual useradd needed.'
+}
+
+post_upgrade() {
+	echo ':: If the config schema changed, check the release notes before restarting:'
+	echo ':: systemctl restart xddns.service'
+}

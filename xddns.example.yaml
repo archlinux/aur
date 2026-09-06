@@ -1,0 +1,8 @@
+# Example xddns configuration. Fill in a provider and an updater, then:
+#   sudo chmod 600 /etc/xddns.yaml
+#   sudo systemctl enable --now xddns.service
+#
+# Full reference: https://github.com/IceflowRE/xddns#quick-start
+
+# Configure updaters here. See the full reference for more details.
+updaters:
