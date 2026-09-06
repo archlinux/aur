@@ -1,11 +1,11 @@
 # Maintainer: swim <swim853279614@163.com>
 pkgname=plasma-lyrics-git
-pkgver=0.1.1.r0.gbcf5d35
+pkgver=0.2.1.r8.g7810680
 pkgrel=1
 pkgdesc='Native synchronized desktop lyrics widget for Plasma 6'
 arch=('x86_64')
 url='https://github.com/swim233/plasma-lyrics'
-license=('GPL-2.0-or-later')
+license=('GPL-2.0-only')
 # Arch ships the KF6 libraries without a kf6- prefix. libplasma and ksvg are
 # named explicitly rather than leaned on through plasma-workspace, because the
 # QML this widget imports comes from them directly. kdeclarative owns
