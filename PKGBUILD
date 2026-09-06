@@ -2,7 +2,7 @@
 # Contributor: missing-aur project <https://github.com/Cleboost/missing-aur>
 
 pkgname=codepilot-appimage
-pkgver=0.67.13
+pkgver=0.67.15
 pkgrel=1
 pkgdesc="A multi-model AI agent desktop client (AppImage)"
 url="https://github.com/op7418/CodePilot"
@@ -15,10 +15,10 @@ license=("LicenseRef-BSL-1.1")
 
 source_x86_64=("codepilot-appimage-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/CodePilot-${pkgver}-x86_64.AppImage" "codepilot.png::https://raw.githubusercontent.com/op7418/CodePilot/main/build/icon.png" "codepilot.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/codepilot/codepilot.desktop")
 source_aarch64=("codepilot-appimage-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/CodePilot-${pkgver}-arm64.AppImage" "codepilot.png::https://raw.githubusercontent.com/op7418/CodePilot/main/build/icon.png" "codepilot.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/codepilot/codepilot.desktop")
-sha256sums_x86_64=('b85bd7a75402208eab21107fae4845ef04d21f49879268bdf7d18e15f6f6d28a'
+sha256sums_x86_64=('54c9791202d1addb92e6da6908f237090b1e7584f7b398e8c7daeff2c88450ea'
                    '04c8c070b375f1f0761cb9f0795f09a98969c39201dc651ad46ef61331e66218'
                    '3f8447e95462a0b92e34e63c1b8b8ada7188a64dde9a9d04bf3799f8673aad4b')
-sha256sums_aarch64=('0b9a66b31a73376ab4e658ded13b7c83ff837aec30816dd550bdde9d2de7f121'
+sha256sums_aarch64=('407fe070200607650614960ad81020ed35b0ee472f3406486c06a600220f650d'
                     '04c8c070b375f1f0761cb9f0795f09a98969c39201dc651ad46ef61331e66218'
                     '3f8447e95462a0b92e34e63c1b8b8ada7188a64dde9a9d04bf3799f8673aad4b')
 
