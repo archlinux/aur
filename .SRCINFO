@@ -1,6 +1,6 @@
 pkgbase = elyprismlauncher-bin
 	pkgdesc = Prism Launcher fork with integrated support for Ely.by accounts (binary version)
-	pkgver = 11.0.3pre1
+	pkgver = 11.1.0
 	pkgrel = 1
 	url = https://github.com/ElyPrismLauncher/Launcher
 	arch = x86_64
@@ -29,8 +29,8 @@ pkgbase = elyprismlauncher-bin
 	optdepends = flite: minecraft voice narration
 	provides = elyprismlauncher
 	conflicts = elyprismlauncher
-	noextract = PineconeMC-ArchLinux-11.0.3-pre1.pkg.tar.zst
-	source = https://github.com/ElyPrismLauncher/Launcher/releases/download/11.0.3-pre1/PineconeMC-ArchLinux-11.0.3-pre1.pkg.tar.zst
+	noextract = PineconeMC-ArchLinux-11.1.0.pkg.tar.zst
+	source = https://github.com/ElyPrismLauncher/Launcher/releases/download/11.1.0/PineconeMC-ArchLinux-11.1.0.pkg.tar.zst
 	sha256sums = SKIP
 
 pkgname = elyprismlauncher-bin
