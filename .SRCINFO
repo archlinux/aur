@@ -1,0 +1,21 @@
+pkgbase = ros2-jazzy-pal_statistics
+	pkgdesc = Statistics messages and utilities for ROS 2 Jazzy
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = https://github.com/pal-robotics/pal_statistics
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = boost
+	depends = ros2-jazzy
+	source = ros2-jazzy-pal_statistics-2.8.2.tar.gz::https://github.com/pal-robotics/pal_statistics/archive/refs/tags/2.8.2.tar.gz
+	sha256sums = a05368e58e3fd8c428a165f238c7a7e11b9368a985717b8acb7c353c83677021
+
+pkgname = ros2-jazzy-pal_statistics_msgs
+	depends = ros2-jazzy
+
+pkgname = ros2-jazzy-pal_statistics
+	depends = ros2-jazzy
+	depends = ros2-jazzy-pal_statistics_msgs
+	depends = boost
+	depends = gcc-libs
