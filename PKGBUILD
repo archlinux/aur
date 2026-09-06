@@ -2,14 +2,16 @@
 pkgbase=cataclysm-tlg-git
 pkgname=(cataclysm-tlg-git cataclysm-tlg-tiles-git)
 pkgname=cataclysm-tlg-git
-pkgver=1.0.r20260905.222725
-pkgrel=1
-pkgdesc="Cataclysm: The Last Generation, a post-apocalyptic roguelike (fork of DDA)"
+pkgver=1.0.r20260905.2227
+pkgrel=2
+pkgdesc="Cataclysm: The Last Generation, a post-apocalyptic roguelike (fork of DDA) (curses)"
 url="https://cataclysmtlg.com/"
 arch=('x86_64')
 license=("CC-BY-SA-3.0")
 depends=('ncurses' 'libbacktrace' 'libgcc' 'libstdc++' 'zlib' 'glibc')
 makedepends=('freetype2' 'gettext' 'hicolor-icon-theme' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'curl' 'jq')
+provides=('cataclysm-tlg')
+conflicts=('cataclysm-tlg-bin')
 _gitbranch=master
 _ghrepo="Cataclysm-TLG/Cataclysm-TLG"
 # The git repo is ~10 GB so download a snapshot
@@ -20,7 +22,7 @@ pkgver() {
 	local _date _sha
 	_json="$(curl -sfL "https://api.github.com/repos/$_ghrepo/commits/$_gitbranch")"
 	_date="$(jq -r '.commit.committer.date' <<<"$_json")"
-	printf "1.0.r%s" "$(date -u -d "${_date/T/ }" +%Y%m%d.%H%M%S)"
+	printf "1.0.r%s" "$(date -u -d "${_date/T/ }" +%Y%m%d.%H%M)"
 }
 
 build() {

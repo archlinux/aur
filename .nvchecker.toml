@@ -2,5 +2,7 @@
 source = "github"
 github = "Cataclysm-TLG/Cataclysm-TLG"
 branch = "master"
-from_pattern = "^"
-to_pattern = "1.0.r"
+# YYYYMMDD.HHMMSS
+from_pattern = "^(.*)\\d{2}$"
+# 1.0.rYYYYMMDD.HHMM
+to_pattern = "1.0.r\\1"

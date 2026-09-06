@@ -1,6 +1,6 @@
 pkgbase = cataclysm-tlg-git
-	pkgdesc = Cataclysm: The Last Generation, a post-apocalyptic roguelike (fork of DDA)
-	pkgver = 1.0.r20260905.222725
+	pkgdesc = Cataclysm: The Last Generation, a post-apocalyptic roguelike (fork of DDA) (curses)
+	pkgver = 1.0.r20260905.2227
 	pkgrel = 1
 	url = https://cataclysmtlg.com/
 	arch = x86_64
@@ -20,6 +20,8 @@ pkgbase = cataclysm-tlg-git
 	depends = libstdc++
 	depends = zlib
 	depends = glibc
+	provides = cataclysm-tlg
+	conflicts = cataclysm-tlg-bin
 	source = cataclysm-tlg-git.zip::https://github.com/Cataclysm-TLG/Cataclysm-TLG/archive/master.zip
 	sha512sums = SKIP
 
