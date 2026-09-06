@@ -1,7 +1,7 @@
 # Maintainer: Haven Software <havensoftware@zohomail.com>
 pkgname=haven-desktop-git
 pkgver=0.8.5.r0.g8b44496ad3
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrix chat and social client, built on Element Web/Desktop (built from source)"
 arch=('x86_64')
 url="https://app.haven.software"

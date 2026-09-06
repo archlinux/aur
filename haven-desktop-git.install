@@ -2,9 +2,6 @@ post_install() {
     # Electron's own sandbox needs either unprivileged user namespaces or a SUID
     # chrome-sandbox binary - mirrors the logic in upstream's own fpm-generated
     # .INSTALL (the AppArmor bits there are Debian-only and dropped here).
-    # Mime/desktop-db/icon-cache refreshes are deliberately NOT done here - modern pacman
-    # already handles all three automatically via its own ALPM hooks (shipped by the
-    # relevant desktop-integration packages), so doing it again by hand would be redundant.
     if ! { [[ -L /proc/self/ns/user ]] && unshare --user true 2>/dev/null; }; then
         chmod 4755 '/opt/Haven/chrome-sandbox' || true
     else
@@ -12,6 +9,19 @@ post_install() {
     fi
 
     ln -sf '/opt/Haven/haven-desktop' '/usr/bin/haven-desktop'
+
+    # Confirmed live (a real AUR user's launcher never showed the icon after install):
+    # pacman's own icon-cache-refreshing hook only triggers on a package that adds/touches
+    # a top-level icon theme directory itself (its own Target pattern is literally
+    # "usr/share/icons/*/" with "usr/share/icons/*/?*" explicitly excluded) - this package
+    # only adds a file several levels *inside* the already-existing hicolor/ tree, which
+    # that hook's own trigger never matches. Namcap flags this call as "provided by hooks",
+    # but that's wrong for this exact file layout - the hook simply never fires for us, so
+    # this has to be done by hand. The equivalent *.desktop-file-refreshing hook does
+    # correctly match this package's one and only such file, and there's no MIME-type XML
+    # shipped here for that other hook to ever be relevant to at all - neither of those
+    # other two needs the same treatment.
+    hash gtk-update-icon-cache 2>/dev/null && gtk-update-icon-cache -tqf /usr/share/icons/hicolor
 }
 
 post_upgrade() {
