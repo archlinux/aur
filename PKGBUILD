@@ -2,7 +2,7 @@
 
 pkgname=pi-web
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Local browser UI for the pi coding agent'
 arch=('x86_64')
 url='https://github.com/agegr/pi-web'
@@ -55,6 +55,7 @@ package() {
     node_modules \
     public \
     next.config.ts \
+    server.mjs \
     package.json \
     "${pkgdir}/usr/lib/${pkgname}/"
 
