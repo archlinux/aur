@@ -1,6 +1,6 @@
 pkgbase = python-niquests
 	pkgdesc = Drop-in replacement for Requests. Automatic HTTP/1.1, HTTP/2, and HTTP/3. WebSocket, and SSE included.
-	pkgver = 3.21.0
+	pkgver = 3.21.1
 	pkgrel = 1
 	url = https://github.com/jawah/niquests
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-niquests
 	depends = python-wassima
 	optdepends = python-orjson: for speedups
 	options = !debug
-	source = python-niquests-3.21.0.tar.gz::https://github.com/jawah/niquests/archive/refs/tags/v3.21.0.tar.gz
-	sha256sums = 43140ae7d751628d4be94e95d57eabd8cee8869ad0870484f2ddc5014379b167
+	source = python-niquests-3.21.1.tar.gz::https://github.com/jawah/niquests/archive/refs/tags/v3.21.1.tar.gz
+	sha256sums = 85091ec50ec3445e67784caf543f02b2f69e01f8b7c8ef712faffc345862c60a
 
 pkgname = python-niquests
