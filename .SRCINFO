@@ -10,7 +10,10 @@ pkgbase = lib32-gpm
 	depends = gpm
 	options = !makeflags
 	source = git+https://github.com/telmich/gpm.git#commit=e82d1a653ca94aa4ed12441424da6ce780b1e530
-	sha1sums = SKIP
-	sha256sums = SKIP
+	source = https://www.linuxfromscratch.org/patches/blfs/13.0/gpm-1.20.7-gcc15_fixes-1.patch
+	md5sums = 92b67ec28ce0c2f0a42bc45a1511becc
+	md5sums = d9978705320563da2a8353cfbe6825c3
+	sha256sums = 7db4089030c128d9ee5fb1afb08251d328f8f8835e4716ff41c6c08c1a90bed2
+	sha256sums = ce5421d566d16105d042a9715aecfb70e6d5df669ec605ff4a6399cb31fc8d27
 
 pkgname = lib32-gpm
