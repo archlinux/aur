@@ -1,6 +1,6 @@
 # Maintainer: Assaf Sapir <assaf AT sapir.io>
 pkgname=tar1090-git
-pkgver=3.14.1818.r2373.g0895bdb
+pkgver=3.14.1820.r2377.g115e40e
 pkgrel=1
 pkgdesc="Web interface for readsb / dump1090-fa with track history, heatmap, range outline and aircraft database"
 arch=('any')
