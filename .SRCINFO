@@ -1,6 +1,6 @@
 pkgbase = opentubex
 	pkgdesc = A highly customizable, privacy-focused desktop YouTube client
-	pkgver = 0.33.0
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://opentubex.org
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = opentubex
 	depends = electron43
 	optdepends = ffmpeg: Use the system FFmpeg when installed before first launch; configurable later in Settings
 	optdepends = yt-dlp: Use the system yt-dlp when installed before first launch; configurable later in Settings
-	source = opentubex-0.33.0.tar.gz::https://github.com/OpenTubeX/OpenTubeX/archive/refs/tags/v0.33.0-beta.tar.gz
+	source = opentubex-0.34.0.tar.gz::https://github.com/OpenTubeX/OpenTubeX/archive/refs/tags/v0.34.0-beta.tar.gz
 	source = opentubex.desktop
 	source = opentubex.sh
-	sha256sums = b334afda4a2048739e0706a6cfe4eb63ad98c1f5c2adf5ad91c50540ddc4917e
+	sha256sums = 3de194c34e99ee607b84e8312778f4b9ff4249184250622779eac0e7d86eba56
 	sha256sums = 63154cb6dd377c8d70714bb858405f95d88a849815d86bf7cf1b6b344cc54b5d
 	sha256sums = ed9c3c54f5604389cac2e53df7f917ce6952a870abc409464e5b8ba590ca3d07
 
