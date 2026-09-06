@@ -1,0 +1,20 @@
+pkgbase = whatisit-git
+	pkgdesc = Local natural-language-to-shell command generator
+	pkgver = r180.gf9c3e79
+	pkgrel = 1
+	url = https://github.com/ThorOdinson246/whatisit-nl2sh
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	optdepends = llama-cpp: local LLM inference backend
+	provides = whatisit
+	conflicts = whatisit
+	source = git+https://github.com/ThorOdinson246/whatisit-nl2sh.git
+	sha256sums = SKIP
+
+pkgname = whatisit-git
