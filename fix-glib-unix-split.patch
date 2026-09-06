@@ -1,0 +1,35 @@
+--- a/src/APILookupGLib.txt
++++ b/src/APILookupGLib.txt
+@@ -23,6 +23,7 @@
+ wrap: glib
+ file: GLib-2.0.gir
+ file: GModule-2.0.gir
++file: GLibUnix-2.0.gir
+ 
+ addAliases: start
+ 	public alias uint uid_t;
+@@ -2092,15 +2093,15 @@
+ version 2.60: move: utf8_validate_len Unicode
+ 
+ version !Windows: start
+-	move: unix_error_quark UnixUtils error_quark
+-	move: unix_fd_add UnixUtils fd_add
+-	move: unix_fd_add_full UnixUtils fd_add_full
+-	move: unix_fd_source_new UnixUtils fd_source_new
+-	move: unix_open_pipe UnixUtils open_pipe
+-	move: unix_set_fd_nonblocking UnixUtils set_fd_nonblocking
+-	move: unix_signal_add UnixUtils signal_add
+-	move: unix_signal_add_full UnixUtils signal_add_full
+-	move: unix_signal_source_new UnixUtils signal_source_new
++	move: error_quark UnixUtils error_quark
++	move: fd_add UnixUtils fd_add
++	move: fd_add_full UnixUtils fd_add_full
++	move: fd_source_new UnixUtils fd_source_new
++	move: open_pipe UnixUtils open_pipe
++	move: set_fd_nonblocking UnixUtils set_fd_nonblocking
++	move: signal_add UnixUtils signal_add
++	move: signal_add_full UnixUtils signal_add_full
++	move: signal_source_new UnixUtils signal_source_new
+ version: end
+ 
+ move: filename_from_uri URI

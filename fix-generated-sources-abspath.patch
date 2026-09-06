@@ -1,0 +1,23 @@
+--- a/meson.build
++++ b/meson.build
+@@ -32,10 +32,19 @@
+ gir_d_intf_dir = join_paths(build_root, gen_dir)
+ 
+ message('Generating D interfaces from GIR...')
++# '--print-files full' (absolute paths), not 'relative,SOURCE_ROOT': this
++# meson version mishandles a bare *relative* build-tree path passed as a
++# source string (interpreter.py's source_strings_to_files() constructs the
++# File via from_built_file(subdir='', fname=<whole relative path>) instead
++# of splitting subdir/fname apart, so File.absolute_path() ends up joining
++# build_root with a path that ALREADY starts with "build/", doubling it to
++# a location that doesn't exist -- "missing and no known rule to make it").
++# An absolute path takes the other branch (from_built_relative(), which
++# does split subdir/fname correctly), sidestepping the bug entirely.
+ girtod_gen = run_command(gir_to_d_prog,
+                          '-i', gir_wrap_dir,
+                          '-o', gir_d_intf_dir,
+-                         '--print-files', 'relative,' + source_root,
++                         '--print-files', 'full',
+                          check: false)
+ if girtod_gen.returncode() != 0
+     error('Unable to build D intefaces from GIR:\n' + girtod_gen.stderr())
