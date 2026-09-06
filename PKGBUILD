@@ -4,7 +4,7 @@ _gitauthor=MyCode83
 _gitname=godirb
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Fast and easy-to-use directory brute-forcer written in Go"
+pkgdesc="Fast, modern directory, file, port and FUZZ brute-forcer written in Go"
 
 pkgver=1.5.6
 pkgrel=1
