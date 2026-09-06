@@ -1,6 +1,6 @@
 pkgbase = nexus-aur-bin
 	pkgdesc = Un gestore di pacchetti grafico per Arch Linux e AUR scritto in Flutter
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/IlNinjaDiBattipaglia/Nexus-AUR
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = nexus-aur-bin
 	provides = nexus-aur
 	conflicts = nexus-aur
 	source = nexus-aur-bin-1.0.1.tar.gz::https://github.com/IlNinjaDiBattipaglia/Nexus-AUR/releases/download/v1.0.1/nexus-aur-linux-x86_64.tar.gz
-	sha256sums = 3328c211f8bd0c82bb865fdb36856702ffbfe7778e15d7a6864575b063334bce
+	sha256sums = 8d60f7aa527a8b6c96c95dfbf0f3898ab2d5ed41717dcde0c4c2234ef9fbc2de
 
 pkgname = nexus-aur-bin
