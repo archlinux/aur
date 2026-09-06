@@ -1,6 +1,6 @@
 pkgbase = maly
 	pkgdesc = Local terminal music player (daemon + TUI + CLI) with mpv backend, gapless playback and MPRIS2
-	pkgver = 1.17.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/kitasael-burakku/Malody-Mallow
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = maly
 	optdepends = ffmpeg: postprocesado de maly get y duraciones (ffprobe) en el escaneo
 	optdepends = pipewire: visualizador de espectro (pw-record)
 	optdepends = pulseaudio: visualizador de espectro (parec), alternativa a pipewire
-	source = maly-1.17.0.tar.gz::https://github.com/kitasael-burakku/Malody-Mallow/archive/v1.17.0.tar.gz
+	source = maly-1.18.0.tar.gz::https://github.com/kitasael-burakku/Malody-Mallow/archive/v1.18.0.tar.gz
 	source = maly.service
-	sha256sums = 1ac18fbd8d6a6c7f87797475d5032fc0224a4d6af59c89707f6e6932ded8a4d2
+	sha256sums = 48632f075e26e48abdb87df6c0cb305e4e64267e01bc1a4a1fb16e72ecfc735f
 	sha256sums = cbcd9c2804135080db7d938ea839b985e41583e1849522fe5379b5b92b22c96a
 
 pkgname = maly
