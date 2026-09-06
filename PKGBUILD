@@ -1,7 +1,7 @@
 # Maintainer: Dino Morelli <dino@ui3.info>
 
 pkgname=hsinstall
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc='Deploy Haskell software for installation'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=()
 options=(!strip)
 source=("https://codeberg.org/dinofp/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-${arch}.AppImage")
 
-sha256sums=('3fa640525c176472d0bdc2558f526da169c541523f31deacdb353df23afd3556')
+sha256sums=('33646916827bbab1b7ccff08b27d4c5dcfb170ef73418d9cfcbc159a91fa35d8')
 
 
 # PKGBUILD functions

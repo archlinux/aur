@@ -1,13 +1,13 @@
 pkgbase = hsinstall
 	pkgdesc = Deploy Haskell software for installation
-	pkgver = 3.0
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://codeberg.org/dinofp/hsinstall
 	arch = x86_64
 	license = ISC
 	depends = fuse2
 	options = !strip
-	source = https://codeberg.org/dinofp/hsinstall/releases/download/3.0/hsinstall-3.0-x86_64.AppImage
-	sha256sums = 3fa640525c176472d0bdc2558f526da169c541523f31deacdb353df23afd3556
+	source = https://codeberg.org/dinofp/hsinstall/releases/download/3.1/hsinstall-3.1-x86_64.AppImage
+	sha256sums = 33646916827bbab1b7ccff08b27d4c5dcfb170ef73418d9cfcbc159a91fa35d8
 
 pkgname = hsinstall
