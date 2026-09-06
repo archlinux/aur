@@ -5,7 +5,7 @@ _binname=dms-greeter
 
 pkgname=greetd-dms-greeter-bin
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Greetd login screen with the Dank Material aesthetic (binary release)'
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
@@ -48,15 +48,6 @@ sha256sums=('0c4c01a73eb7d2d1286a7e60e580dd53b605636dc46a57c9c3318e8e23efc676'
             '984821e4e39552a94ab8ee5e2e44becc83658281e95f7b494d5ff1995d2afc24')
 sha256sums_x86_64=('950e8a3eefaef57a54cc6f12108438ad447a4de3da67ded2b809877727c2ef83')
 sha256sums_aarch64=('b11e3417bd0548bcf5cd74075c01281179264ec3faf4596503b35d9d26f5dca9')
-
-# makepkg's mime sniffing does not reliably detect a gzipped ELF, so decompress it ourselves
-noextract=("${_binname}-${arch[0]}-${pkgver}.gz" "${_binname}-${arch[1]}-${pkgver}.gz")
-
-prepare() {
-  cd "${srcdir}" || exit 1
-
-  gzip -dcf "${_binname}-${CARCH}-${pkgver}.gz" > "${_binname}-${CARCH}-${pkgver}"
-}
 
 package() {
   cd "${srcdir}" || exit 1

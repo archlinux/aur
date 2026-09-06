@@ -1,7 +1,7 @@
 pkgbase = greetd-dms-greeter-bin
 	pkgdesc = Greetd login screen with the Dank Material aesthetic (binary release)
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AvengeMedia/dank-greeter
 	install = greetd-dms-greeter.install
 	arch = x86_64
@@ -18,8 +18,6 @@ pkgbase = greetd-dms-greeter-bin
 	conflicts = greetd-dms-greeter
 	conflicts = greetd-dms-greeter-git
 	conflicts = dms-greeter
-	noextract = dms-greeter-x86_64-1.6.0.gz
-	noextract = dms-greeter-aarch64-1.6.0.gz
 	source = LICENSE-1.6.0::https://raw.githubusercontent.com/AvengeMedia/dank-greeter/v1.6.0/LICENSE
 	source = README-1.6.0.md::https://raw.githubusercontent.com/AvengeMedia/dank-greeter/v1.6.0/README.md
 	source = tmpfiles-dms-greeter-1.6.0.conf::https://raw.githubusercontent.com/AvengeMedia/dank-greeter/v1.6.0/assets/systemd/tmpfiles-dms-greeter.conf
