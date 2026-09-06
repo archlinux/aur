@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=nanoparquet
-_pkgver=0.3.1
+_pkgver=0.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Read and Write 'Parquet' Files"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -20,6 +20,7 @@ checkdepends=(
   python-pyarrow
   r-arrow
   r-bit64
+  r-blob
   r-duckdb
   r-hms
   r-mockery
@@ -29,6 +30,7 @@ checkdepends=(
 optdepends=(
   r-arrow
   r-bit64
+  r-blob
   r-dbi
   r-duckdb
   r-hms
@@ -39,13 +41,14 @@ optdepends=(
   r-spelling
   r-testthat
   r-withr
+  r-tzdb
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-libs.patch")
-md5sums=('7c28efad8ac44cf4224cab1819478571'
-         '142ce5b5fa0a8a2c6f3862920a3e670d')
-b2sums=('b75595ec44c122cf2e18192330970e3ccb45439afa1a87edb1c23655c198f875f78b62a5826c89ba1f2bf5e00c7bea53efd525749ecf0a63bd0d5501a1df4294'
-        '30ebb0ccb828ef0c40cbdd78cf07e9885f7a4240e076b220eb0c90c3609d449be9aef34ce99548869966cd446201bf1d3b9374e4184c93e4992f73bfa4906e15')
+md5sums=('b439a90ae836dbb571bd3c1050542e02'
+         'cf09d29ea2a40167da7e4563ef66beff')
+b2sums=('d852ac361ffe313bff4b1a001f3e0171b1a32c234823cf14c723a0b864fa86af884787ccb216780a8b22c0e51bd328e38676048d518af81ef1d3c4211961152a'
+        '4dc0680b02138f312b33efe03b30c2bcec289aed768dd2cb3b0e962056f4c107ef9e131eb582692f38b360d56dc49cd0d56bfaf280cea8ff5f732ed902e76268')
 
 prepare() {
   # use system libraries
@@ -59,7 +62,7 @@ build() {
 
 check() {
   cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+  R_LIBS="$srcdir/build" Rscript --vanilla testthat.R
 }
 
 package() {

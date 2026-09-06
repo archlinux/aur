@@ -1,16 +1,13 @@
-diff --git a/nanoparquet/src/Makevars b/nanoparquet/src/Makevars
-index 8ccbd10..abccbbd 100644
---- a/nanoparquet/src/Makevars
-+++ b/nanoparquet/src/Makevars
-@@ -5,26 +5,10 @@ OBJECTS= \
-   dictionary-encoding.o test.o \
-   lib/ParquetFile.o lib/ParquetOutFile.o lib/RleBpDecoder.o \
-   parquet/parquet_types.o \
+diff --git a/nanoparquet/src/Makevars.in b/nanoparquet/src/Makevars.in
+index e36ff34..08a8b15 100644
+--- a/nanoparquet/src/Makevars.in
++++ b/nanoparquet/src/Makevars.in
+@@ -8,2 +7,0 @@
 -  thrift/protocol/TProtocol.o thrift/transport/TTransportException.o \
 -  thrift/transport/TBufferTransports.o \
-   fastpforlib/bitpacking.o \
+@@ -11 +8,0 @@
 -  snappy/snappy.o snappy/snappy-sinksource.o \
--  miniz/miniz.o \
+@@ -13,13 +9,0 @@
 -  zstd/common/entropy_common.o zstd/common/error_private.o \
 -  zstd/common/fse_decompress.o zstd/common/xxhash.o \
 -  zstd/common/zstd_common.o zstd/decompress/huf_decompress.o \
@@ -24,85 +21,50 @@ index 8ccbd10..abccbbd 100644
 -  zstd/compress/zstd_double_fast.o zstd/compress/zstd_fast.o \
 -  zstd/compress/zstd_lazy.o zstd/compress/zstd_ldm.o \
 -  zstd/compress/zstd_opt.o
-+  miniz/miniz.o
- 
--PKG_CPPFLAGS = -Ithrift -I. -Izstd/include
-+PKG_CPPFLAGS = -I/usr/include/thrift -I.
- # PKG_CFLAGS = -DR_NO_REMAP
- 
- PKG_CXXFLAGS = -DR_NO_REMAP
-@@ -42,3 +26,4 @@ PKG_CXX29FLAGS = -DR_NO_REMAP
- PKG_CXX30FLAGS = -DR_NO_REMAP
- 
- # PKG_LIBS = -lws2_32
-+PKG_LIBS := -lsnappy -lthrift -lzstd
-diff --git a/nanoparquet/src/lib/ParquetFile.cpp b/nanoparquet/src/lib/ParquetFile.cpp
-index ae0d65e..6d2753c 100644
---- a/nanoparquet/src/lib/ParquetFile.cpp
-+++ b/nanoparquet/src/lib/ParquetFile.cpp
-@@ -1097,14 +1097,14 @@ void ParquetFile::scan_column(ScanState &state, ResultColumn &result_col) {
-       decompressed_buf.resize(cs.page_header.uncompressed_page_size + 1 + xdef);
-       memcpy(decompressed_buf.ptr, chunk_buf.ptr + xrep, xdef);
- 
--      size_t res = zstd::ZSTD_decompress(
-+      size_t res = ZSTD_decompress(
-         decompressed_buf.ptr + xdef,
-         cs.page_header.uncompressed_page_size - xrep - xdef,
-         chunk_buf.ptr + xrep + xdef,
-         cs.page_header.compressed_page_size - xrep - xdef
-       );
- 
--  		if (zstd::ZSTD_isError(res) ||
-+  		if (ZSTD_isError(res) ||
-           res != (size_t) cs.page_header.uncompressed_page_size - xrep -xdef) {
-         std::stringstream ss;
-         ss << "Zstd decompression failure, possibly corrupt Parquet file '"
+@@ -27 +11 @@
+-PKG_CPPFLAGS = -Ithrift -I. -Izstd/include @PKG_CPPFLAGS@
++PKG_CPPFLAGS = -I/usr/include/thrift -I. @PKG_CPPFLAGS@
+@@ -44 +28 @@
+-PKG_LIBS = @PKG_LIBS@
++PKG_LIBS = -lsnappy -lthrift -lzstd @PKG_LIBS@
 diff --git a/nanoparquet/src/lib/ParquetOutFile.cpp b/nanoparquet/src/lib/ParquetOutFile.cpp
-index e18d3f2..e8ab57d 100644
+index 38bb4e5..9e1c6fd 100644
 --- a/nanoparquet/src/lib/ParquetOutFile.cpp
 +++ b/nanoparquet/src/lib/ParquetOutFile.cpp
-@@ -395,16 +395,16 @@ size_t ParquetOutFile::compress(
-     mzs.Compress(src.ptr, src_size, tgt.ptr, &tgt_size);
-     return tgt_size;
-   } else if (codec == CompressionCodec::ZSTD) {
--    size_t tgt_size_est = zstd::ZSTD_compressBound(src_size);
-+    size_t tgt_size_est = ZSTD_compressBound(src_size);
-     tgt.reset(tgt_size_est);
+@@ -478 +478 @@ size_t ParquetOutFile::compress(
+-    size_t tgt_size_est = zstd::ZSTD_compressBound(src_size - skip);
++    size_t tgt_size_est = ZSTD_compressBound(src_size - skip);
+@@ -482,2 +482,2 @@ size_t ParquetOutFile::compress(
+-    int minlevel = zstd::ZSTD_minCLevel();
+-    int maxlevel = zstd::ZSTD_maxCLevel();
++    int minlevel = ZSTD_minCLevel();
++    int maxlevel = ZSTD_maxCLevel();
+@@ -491 +491 @@ size_t ParquetOutFile::compress(
 -    size_t tgt_size = zstd::ZSTD_compress(
 +    size_t tgt_size = ZSTD_compress(
-       tgt.ptr,
-       tgt_size_est,
-       src.ptr,
-       src_size,
-       ZSTD_CLEVEL_DEFAULT
-     );
+@@ -498 +498 @@ size_t ParquetOutFile::compress(
 -    if (zstd::ZSTD_isError(tgt_size)) {
 +    if (ZSTD_isError(tgt_size)) {
-         std::stringstream ss;
-         ss << "Zstd compression failure" << "' @ " << __FILE__ << ":"
-            << __LINE__;
+diff --git a/nanoparquet/src/lib/ParquetReader.cpp b/nanoparquet/src/lib/ParquetReader.cpp
+index 8354499..d85bd67 100644
+--- a/nanoparquet/src/lib/ParquetReader.cpp
++++ b/nanoparquet/src/lib/ParquetReader.cpp
+@@ -453 +453 @@ void extract_zstd(uint8_t* buf, int32_t len, ByteBuffer &bb,
+-  size_t res = zstd::ZSTD_decompress(
++  size_t res = ZSTD_decompress(
+@@ -459 +459 @@ void extract_zstd(uint8_t* buf, int32_t len, ByteBuffer &bb,
+-  if (zstd::ZSTD_isError(res) ||
++  if (ZSTD_isError(res) ||
 diff --git a/nanoparquet/src/snappy.cpp b/nanoparquet/src/snappy.cpp
-index 8f39d20..f20e370 100644
+index 8257f06..98a62c5 100644
 --- a/nanoparquet/src/snappy.cpp
 +++ b/nanoparquet/src/snappy.cpp
-@@ -69,9 +69,9 @@ SEXP gzip_uncompress_raw(SEXP x, SEXP ucl) {
- SEXP zstd_compress_raw(SEXP x) {
-   R_xlen_t data_size = Rf_xlength(x);
-   miniz::MiniZStream mzs;
+@@ -72 +72 @@ SEXP zstd_compress_raw(SEXP x) {
 -  size_t maxcsize = zstd::ZSTD_compressBound(data_size);
 +  size_t maxcsize = ZSTD_compressBound(data_size);
-   SEXP res = PROTECT(Rf_allocVector(RAWSXP, maxcsize));
+@@ -74 +74 @@ SEXP zstd_compress_raw(SEXP x) {
 -  size_t tgt_size = zstd::ZSTD_compress(
 +  size_t tgt_size = ZSTD_compress(
-     (char*) RAW(res),
-     maxcsize,
-     (const char*) RAW(x),
-@@ -87,7 +87,7 @@ SEXP zstd_uncompress_raw(SEXP x, SEXP ucl) {
-   R_xlen_t data_size = Rf_xlength(x);
-   size_t cusl = INTEGER(ucl)[0];
-   SEXP res = PROTECT(Rf_allocVector(RAWSXP, cusl));
+@@ -90 +90 @@ SEXP zstd_uncompress_raw(SEXP x, SEXP ucl) {
 -  zstd::ZSTD_decompress(RAW(res), cusl, RAW(x), data_size);
 +  ZSTD_decompress(RAW(res), cusl, RAW(x), data_size);
-   UNPROTECT(1);
-   return res;
- }
