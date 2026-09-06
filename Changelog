@@ -1,9 +1,32 @@
 -------------------------------------------------------
  Changelog    : lockmgr
- Tags         : 1.6.1 ➙ 1.8.2
-              : 2025-05-02 ➙ 2026-01-06
+ Tags         : 1.7.0 ➙ 1.9.1
+              : 2025-05-21 ➙ 2026-09-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-09-06   : 1.9.1
+              - **1.9.1**
+            
+                * Use meson / meson-python for build and package management
+                * Periodic review
+                * Small code adjustments.
+                * Add check to PKGBUILD
+                * please delete any /usr/lib/python3.14/site-packages/lockmgr/__pycache__ before installing.
+                  See important note below.
+            
+                ** IMPORTANT **
+            
+                Some older versions of this package did not include any byte compiled cache (__pycache__)
+                and python auto creates them at runtime at a later date. If this exists, please delete
+                the direcroty before installing this version since  it now includes the .pyc files.
+                This will avoid pacman error that a .pyc file exists. So before upgrade please do::
+            
+                    /usr/bin/rm -rf /usr/lib/python3.14/site-packages/lockmgr/__pycache__
+            
+                My apologies.
+ 2026-01-06   ⋯
+              - update Docs/Changelog
 
  2026-01-06   : 1.8.2
               - PKGBUILD small change
@@ -26,11 +49,4 @@
  2025-05-21   : 1.7.0
               - Small type hint change
  2025-05-02   ⋯
-              - update Docs/Changelog.rst Docs/lockmgr.pdf
-
- 2025-05-02   : 1.6.1
-              - Tidy ups: PEP-8, PEP-257, PEP-484 PEP-561
-                improve reference API doc.
-                Add py.typed so type checkers like mypy can be used with the module.
- 2025-02-26   ⋯
               - update Docs/Changelog.rst Docs/lockmgr.pdf

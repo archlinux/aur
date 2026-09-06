@@ -10,7 +10,7 @@ pkgname='lockmgr'
 pkgdesc='Python Lock Manager Class (gc)'
 _gitname='lockmgr'
 
-pkgver="1.8.2"
+pkgver="1.9.1"
 pkgrel=1
 url="https://github.com/gene-git/lockmgr"
 
@@ -50,27 +50,26 @@ sha512sums=('SKIP')
 
 build() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
 
-    # To build Docs 
-    # uncomment these and sphinx makedepends above
-    # --------------
-    # echo "Build docs"
-    # cd ./Docs
-    # pdf='lockmgr.pdf'
-    # /usr/bin/rm -f $pdf
-    # make latexpdf >/dev/null 2>&1
-    # make latexpdf >/dev/null
-    # make html
-    # make html
-    # /usr/bin/cp _build/latex/$pdf .
-    # /usr/bin/rm -rf _build/doctrees _build/latex
-    # /usr/bin/rm -rf autoapi
+    echo "------------------"
+    echo "  building"
+    echo "------------------"
+    ./scripts/do-build
+}
+
+check() {
+    cd "${_gitname}"
+    echo "------------------"
+    echo "  tests"
+    echo "------------------"
+    ./scripts/run-tests
 }
 
 package() {
     cd "${_gitname}"
+    echo "------------------"
+    echo "  packaging"
+    echo "------------------"
+
     ./scripts/do-install ${pkgdir}
 }
-# vim:set ts=4 sts=4 sw=4 et:
