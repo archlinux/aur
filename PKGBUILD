@@ -2,7 +2,7 @@
 
 pkgname=hyprwrc-git
 _pkgname=hyprwrc
-pkgver=0.1.0.r0.g0000000
+pkgver=0.1.0.r11.g671599c
 pkgrel=1
 pkgdesc="Build Hyprland window rules by clicking the window"
 arch=('any')
@@ -46,9 +46,13 @@ pkgver() {
   fi
 }
 
+# Every python call below is /usr/bin/python, spelled out. A user running mise,
+# pyenv or asdf has a shim ahead of it on PATH, and makepkg inherits that PATH;
+# the build then dies with "No module named build", because python-build was
+# installed for the system interpreter and not for the shim.
 build() {
   cd "$srcdir/$_pkgname"
-  python -m build --wheel --no-isolation
+  /usr/bin/python -m build --wheel --no-isolation
 }
 
 check() {
@@ -59,14 +63,14 @@ check() {
   for t in tests/test_emit.py tests/test_picker.py tests/test_scan.py \
            tests/test_settings.py tests/test_templates.py tests/test_branding.py \
            tests/test_merge.py; do
-    PYTHONPATH="$PWD" python "$t" || failed=1
+    PYTHONPATH="$PWD" /usr/bin/python "$t" || failed=1
   done
   return $failed
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 packaging/hyprwrc.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
