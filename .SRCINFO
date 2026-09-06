@@ -1,12 +1,13 @@
 pkgbase = hunk-bin
 	pkgdesc = Review-first terminal diff viewer for agentic coders
 	pkgver = 0.21.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/modem-dev/hunk
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = glibc
+	depends = sh
 	provides = hunk
 	conflicts = hunk
 	conflicts = hunk-git

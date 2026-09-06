@@ -3,12 +3,12 @@
 _pkgname=hunk
 pkgname=hunk-bin
 pkgver=0.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Review-first terminal diff viewer for agentic coders"
 arch=('x86_64' 'aarch64')
 url="https://github.com/modem-dev/hunk"
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'sh')
 provides=('hunk')
 conflicts=('hunk' 'hunk-git' 'hunkdiff')
 options=('!strip')
