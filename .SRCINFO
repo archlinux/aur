@@ -1,6 +1,6 @@
 pkgbase = sarbs-st-git
 	pkgdesc = Sergi's build of st (Simple Terminal) teil von SARBS
-	pkgver = r18.6c9d40e
+	pkgver = 2026.09.06.r19.gdd97a93
 	pkgrel = 1
 	url = https://codeberg.org/Sergius/st
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Sergius <sergius AT sarbs DOT xyz>
 pkgname=sarbs-st-git
-pkgver=r19.dd97a93
+pkgver=2026.09.06.r19.gdd97a93
 pkgrel=1
 pkgdesc="Sergi's build of st (Simple Terminal) teil von SARBS"
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "st"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.g%s" "$(git log -1 --format=%cd --date=format:'%Y.%m.%d')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
