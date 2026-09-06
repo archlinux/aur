@@ -6,7 +6,7 @@
 pkgname=mixxx-alpha
 _mixxxver=2.7
 pkgver="2.7.alpha"
-pkgrel=3
+pkgrel=4
 pkgdesc="Digital DJ mixing software (alpha version)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
@@ -73,6 +73,7 @@ source=("mixxx-${_mixxxver}-alpha.tar.gz::https://github.com/mixxxdj/mixxx/archi
 sha256sums=('aff5f9b1cb20ceff65ab4aee78dd27d859027865d62b781e1a0113fcb197a250')
 
 build() {
+	local ccache_support=$(hash ccache 2>/dev/null && echo -n "ON" || echo -n "OFF")
 	local cmake_options=(
 		-B build
 		-D CMAKE_LINKER_TYPE=BFD
@@ -80,7 +81,7 @@ build() {
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D BUILD_BENCH=OFF
 		-D OPTIMIZE=native
-		-D CCACHE_SUPPORT=ON
+		-D CCACHE_SUPPORT="${ccache_support}"
 		-D CMAKE_C_FLAGS='-O2'
 		-D CMAKE_C_FLAGS_RELEASE='-DNDEBUG'
 		-D CMAKE_C_FLAGS_RELWITHDEBINFO='-g -DNDEBUG'
