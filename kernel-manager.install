@@ -1,0 +1,22 @@
+# kernel-manager.install
+#
+# Polkit policy pickup hook, shared by both the stable (kernel-manager) and
+# rolling (kernel-manager-git) packages.
+#
+# The polkit daemon (polkit.service, Type=notify-reload) watches
+# /usr/share/polkit-1/actions via inotify and normally picks up this package's
+# policy (org.archlinux.kernel-manager.pkexec.policy) automatically when it is
+# (re)installed. The explicit `systemctl reload polkit` below is a defensive,
+# idempotent guarantee that the auth_admin action is active immediately after
+# the transaction, covering edge cases where the daemon's inotify watch might
+# miss the event.
+#
+# It runs in post_transaction() (after all new files are in place), only when
+# the polkit unit is active, and can never fail the pacman transaction.
+
+post_transaction() {
+  if command -v systemctl >/dev/null 2>&1 \
+     && systemctl is-active --quiet polkit 2>/dev/null; then
+    systemctl reload polkit 2>/dev/null || true
+  fi
+}
