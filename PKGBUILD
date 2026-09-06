@@ -31,23 +31,7 @@ prepare() {
 
 build() {
   cd ${pkgname}
-  # Replace specific version numbers with dev-main to pull latest versions
-  sed -i 's/"^[0-9]\+"/"dev-main"/g' composer.json
-  sed -i 's/"^[0-9]\+\.[0-9]\+"/"dev-main"/g' composer.json
-  sed -i 's/"^[0-9]\+\.[0-9]\+\.[0-9]\+"/"dev-main"/g' composer.json
-  sed -i 's/"[0-9]\+\.[0-9]\+\.x-dev"/"dev-main"/g' composer.json
-  # Some dependencies use dev-master instead of dev-main...
-  sed -i 's/core-command": "dev-main/core-command": "dev-master/g' composer.json
-  sed -i 's/cron-command": "dev-main/cron-command": "dev-master/g' composer.json
-  sed -i 's/db-command": "dev-main/db-command": "dev-master/g' composer.json
-  sed -i 's/entity-command": "dev-main/entity-command": "dev-master/g' composer.json
-  sed -i 's/export-command": "dev-main/export-command": "dev-master/g' composer.json
-  sed -i 's/extension-command": "dev-main/extension-command": "dev-master/g' composer.json
-  sed -i 's/import-command": "dev-main/import-command": "dev-master/g' composer.json
-  sed -i 's/media-command": "dev-main/media-command": "dev-master/g' composer.json
-  sed -i 's/scaffold-command": "dev-main/scaffold-command": "dev-master/g' composer.json
-  sed -i 's/search-replace-command": "dev-main/search-replace-command": "dev-master/g' composer.json
-  composer update --no-interaction --prefer-dist --no-scripts && composer dump
+  composer install --no-interaction --prefer-dist --no-scripts --ignore-platform-reqs
   echo -n "Building phar... "
   php -dphar.readonly=off utils/make-phar.php wp-cli.phar --quiet
   echo "Done!"
