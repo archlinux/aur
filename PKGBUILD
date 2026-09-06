@@ -14,8 +14,8 @@ depends=(${_electron})
 provides=("${_pkgname}" "qqmusic-electron")
 conflicts=('qqmusic' 'qqmusic-electron' 'qqmusic-bin')
 
-source=("${pkgname}-prebuilt-${pkgver}-${pkgrel}.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v${pkgver}/qqmusic-electron-patched-1.1.8-4-any.pkg.tar.zst")
-sha256sums=('e6d695e0e6b90ea3f7a2564485d4724a4c165e7467d198187733716312085770')
+source=("${pkgname}-prebuilt-${pkgver}-${pkgrel}.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v${pkgver}/qqmusic-electron-patched-1.1.8-5-any.pkg.tar.zst")
+sha256sums=('e78db8c0a8a9e4c9aac50b2448ca950fcb00b9905de16a4620aa90790033a9d8')
 
 package() {
     cp -a "${srcdir}/usr" "${pkgdir}/"
