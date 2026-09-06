@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=jam-cli-bin
-pkgver=1.17.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="CLI for reading and creating Jam bug reports (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ source=("jam-terms.html::https://jam.dev/legal/terms")
 # arch for both arrays during checksum generation) keep the two downloads separate.
 source_x86_64=("$pkgname-$pkgver-x86_64::https://native.jam.dev/download/linux/x64?version=$pkgver")
 source_aarch64=("$pkgname-$pkgver-aarch64::https://native.jam.dev/download/linux/arm64?version=$pkgver")
-sha256sums=('fe9f2f609a7c13ed544c0ff00e40e43678435a3dd74df424bd424ac5b8a00f3b')
-sha256sums_x86_64=('a888edd7178714dd6f1bd4c74b16a9376bd682c5f9c65d029852c5510bc7ebb0')
-sha256sums_aarch64=('591c759bfc2f60ef77a7e348be28e9548bdd65e9d74faa787395f99d9ff77844')
+sha256sums=('c95521fd1516058c380424ccd8a8c83b62a2a221acb71e18af7b719af0a006ac')
+sha256sums_x86_64=('4fec87df92b027cbd12bf5a83f8d48f25d4c7aaabf0d003bda139c01ac656476')
+sha256sums_aarch64=('9ed564358bcca9bc8b933b9250845668ef17b29787da15830a49835a94471523')
 
 package() {
   install -Dm755 "$pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/jam"
