@@ -1,0 +1,4 @@
+[spirula-studio]
+source = "git"
+git = "https://github.com/harry7557558/spirula-studio.git"
+prefix = "v"
