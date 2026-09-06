@@ -1,0 +1,18 @@
+pkgbase = neovibe-git
+	pkgdesc = Lightweight IDE embedding Neovide/Neovim in a GTK4 shell with an AI agent panel (pre-alpha, feasibility-validation stage)
+	pkgver = r5.855492d
+	pkgrel = 1
+	url = https://github.com/HunterGrey-cyber/neovibe
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gtk4
+	depends = webkitgtk-6.0
+	depends = neovim
+	provides = neovibe
+	conflicts = neovibe
+	source = neovibe-git::git+https://github.com/HunterGrey-cyber/neovibe.git
+	sha256sums = SKIP
+
+pkgname = neovibe-git
