@@ -1,7 +1,7 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=baru
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='A simple system monitor for WM statusbar'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('baru')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 #source=("$pkgname-$pkgver::git+file://${PWD}/../..")
-sha256sums=('14a23c290660efe202c92de9c23e0e1b7c673288f38be80772b058eef72c20fd')
+sha256sums=('97524146493d25b8c36f0985a769062eba623fdd19b822020fde8852660758dd')
 _pkgdir="$pkgname-$pkgver"
 
 build() {
