@@ -3,7 +3,7 @@
 _pkgname=lightning-matrix
 pkgname=${_pkgname}-appimage
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Native Qt 6 Matrix desktop client using the official Rust Matrix SDK (prebuilt AppImage)'
 arch=('x86_64')
 url='https://www.lightning-matrix.org/'
@@ -65,7 +65,7 @@ Type=Application
 Name=Lightning
 GenericName=Matrix Client
 Comment=Native Qt Matrix chat client
-Exec=lightning --backend=rust
+Exec=env LD_PRELOAD=/usr/lib/libwayland-client.so.0 /opt/lightning-matrix-appimage/Lightning.AppImage
 Icon=lightning
 Terminal=false
 Categories=Network;Chat;InstantMessaging;

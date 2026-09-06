@@ -1,7 +1,7 @@
 pkgbase = lightning-matrix-appimage
 	pkgdesc = Native Qt 6 Matrix desktop client using the official Rust Matrix SDK (prebuilt AppImage)
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lightning-matrix.org/
 	arch = x86_64
 	license = GPL-3.0-or-later
