@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=cymbal
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Language-agnostic code navigation CLI powered by tree-sitter"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/1broseidon/cymbal/archive/v$pkgver.tar.gz")
-sha256sums=('a8022e03623a7b4bda7497e4a6d20150dc0595c3ace66672b353b546b23f6f65')
+sha256sums=('093a6e49b1e66d65d396bbd3ce391e5e239f725047494b905af54daf60324a54')
 
 build() {
   cd "$pkgname-$pkgver"
