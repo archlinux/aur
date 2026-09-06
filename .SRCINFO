@@ -1,6 +1,6 @@
 pkgbase = haven-desktop-git
 	pkgdesc = Matrix chat and social client, built on Element Web/Desktop (built from source)
-	pkgver = 0.8.5.r3.g66febf05b9
+	pkgver = 0.8.5.r6.g91c37a26ca
 	pkgrel = 1
 	url = https://github.com/Haven-Organization/haven-desktop
 	install = haven-desktop-git.install
