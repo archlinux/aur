@@ -1,5 +1,5 @@
 pkgname=file-manager-bin
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc='Linux desktop file manager written in Rust and Iced'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
 provides=('file-manager')
 conflicts=('file-manager')
 source_x86_64=("https://github.com/nsjsv/File_Manager/releases/download/v${pkgver}/file-manager-v${pkgver}-x86_64.tar.gz")
-sha256sums_x86_64=('aa2efb807b87e52956377fe7dc0411ae15e4982ed871b33848c39ca1d00b9a93')
+sha256sums_x86_64=('e32d6ecd6980232f133809d40b5aab43f61e54306e4ff70fa666f90d1005ed84')
 
 package() {
     cp -a "${srcdir}/file-manager-v${pkgver}-x86_64/usr" "${pkgdir}/"
