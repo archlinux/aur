@@ -1,19 +1,20 @@
-# Maintainer: gaogaoqwq <gaogaoqwq at gmail dot com>
+# Maintainer: myuki <mioki dot cinnamon650 at 8shield dot net>
+# Contributors: gaogaoqwq <gaogaoqwq at gmail dot com>
 # Contributors: Ziqi Yang <mr.ziqiyang@gmail.com>
+
 pkgname='ttf-lxgw-neo-xihei-screen'
-pkgver=26.02.01
+pkgver=26.08.21
 pkgrel=1
 pkgdesc="霞鹜新晰黑屏幕阅读版。霞鹜新晰黑 的屏幕阅读版本，将原版 霞鹜新晰黑 加粗 6 个单位后，调整度量数据与 Android 默认字体 Roboto 相同。"
 arch=('any')
-url="https://github.com/lxgw/LxgwNeoXiHei-Screen"
-license=('custom:IPA')
+url="https://github.com/lxgw/LxgwNeoXiZhi-Screen"
+license=('IPA')
 source=("$pkgname-$pkgver-$pkgrel.ttf::$url/releases/download/$pkgver/LXGWNeoXiHeiScreen.ttf"
         LICENSE.md
         LICENSE_CHS.md)
-conflicts=('ttf-lxgw-neo-xihei-screen')
-sha256sums=('a210e2ad4d6ea64ef14020f4fa6edd8f91f45a7abb5f4fdef542adaa09af9256'
-            '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf'
-            'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1')
+b2sums=('1dd3b641b1e53c48ea9086c407da0c09caace493ad0b8cfe86c1c549a42b99e0b4a32f1e4bb2ad912f18583d95e253e5f7c94094d646d6c85857b0637cb70b78'
+        'b0a7e975e3e8e62b22fe799f49cda26056cd8e511adccaffd95a44918317ac7150cffbcb7a79e1c5c2011129ea91060141d5579e88143c3d7c55c03ef8e572a8'
+        '9f9dfa977aa72c33ab8173d092751b052554120b0b76c3349d1bbb89cfec03279e34e04372031b27ecc561d752a109a6022cd7a288c489efa43ecab55cb39d75')
 
 package() {
   install -Dm644 "$pkgname-$pkgver-$pkgrel.ttf" -T "$pkgdir/usr/share/fonts/TTF/$pkgname.ttf"
