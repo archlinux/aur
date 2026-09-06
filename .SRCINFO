@@ -1,6 +1,6 @@
 pkgbase = filebyte
 	pkgdesc = A CLI tool for analyzing files and directories with detailed metadata, permissions, and size information
-	pkgver = 3.2.4
+	pkgver = 3.2.5
 	pkgrel = 1
 	url = https://github.com/execRooted/filebyte
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = filebyte
 	depends = gcc-libs
 	makedepends = cargo
 	makedepends = git
-	source = https://github.com/execRooted/filebyte/archive/v3.2.4.tar.gz
+	source = https://github.com/execRooted/filebyte/archive/v3.2.5.tar.gz
 	source = install.sh
 	source = uninstall.sh
 	sha256sums = SKIP
