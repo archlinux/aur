@@ -2,7 +2,7 @@
 # AUR package — installs the official Release portable Linux zip under /opt.
 # pkgver is synced by version-bump.yml; CI publishes real sha256sums on Release.
 pkgname=querya-desktop
-pkgver=0.4.14
+pkgver=0.4.15
 pkgrel=1
 pkgdesc="Multi-database desktop client (PostgreSQL, MySQL, Redis, MongoDB, SQLite)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "querya_desktop.desktop"
   "querya_desktop.png"
 )
-sha256sums=('685896e9b1ac54f224de7bd26257eff514d791220b2f210ff572914b0cc8f88a' '429aa3f7d3daec3306b42bb562deb941d0ef6dd804e74f9c28f31694513e2ad8' '0a91c6c1bf242e54ee179e34629e9ef3e8a6d286c0fce01e302280a8be9277e6')
+sha256sums=('1e55939d051570e629d7035f7bfb9540ba358e4dc8ae211d18a13ac7d7755a22' '85b629e96451459c3df7c756e1765e85af13fcb9c556b0f921ff8b17bc85c6ba' '0a91c6c1bf242e54ee179e34629e9ef3e8a6d286c0fce01e302280a8be9277e6')
 
 prepare() {
   bsdtar -xf "$srcdir/Querya-Desktop-${pkgver}-linux.zip" -C "$srcdir"
