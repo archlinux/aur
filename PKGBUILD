@@ -9,7 +9,7 @@ url='https://galene.org'
 license=('MIT')
 install='galene.install'
 depends=('go')
-makedepends=('git' 'pandoc')
+makedepends=('git')
 optdepends=('galene-file-transfer: transfer large files without a browser'
             'galene-stt: real-time speech-to-text')
 source=("https://github.com/jech/$pkgname/archive/$pkgname-$pkgver.tar.gz"
@@ -61,10 +61,7 @@ package() {
 
   local doc="$pkgdir/usr/share/doc/galene"
   install -dm755 "$doc"
-  pandoc --from=markdown --to html --standalone --metadata title="Galène" README > "${doc}/README.html"
-  for file in README.API README.FRONTEND README.PROTOCOL; do
-    pandoc --from=markdown --to html --standalone --shift-heading-level-by=-1 "$file" > "${doc}/${file}.html"
-  done
+  install -Dm644 README README.API README.FRONTEND README.PROTOCOL "$doc"
 
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
 }
