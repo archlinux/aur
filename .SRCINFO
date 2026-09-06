@@ -1,0 +1,20 @@
+pkgbase = proton-drive-fs
+	pkgdesc = FUSE virtual filesystem for Proton Drive on Linux.
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/khaosdoctor/proton-drive-linux-fs
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	optdepends = zenity: About dialog
+	optdepends = libsecret: store the key password in the OS keyring
+	depends = fuse3
+	makedepends = go
+	makedepends = git
+	conflicts = proton-drive-fs-bin
+	provides = proton-drive-fs
+	
+	source = https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v0.17.0/proton-drive-linux-fs-0.17.0.tar.gz
+	sha256sums = 3109ccc420dd7d36066c7ccd910363865461fe0245d70c8031543e5e83c8c082
+	
+pkgname = proton-drive-fs
