@@ -1,6 +1,6 @@
 pkgbase = lnd
 	pkgdesc = The Lightning Network Daemon, for secure off-chain bitcoin transactions.
-	pkgver = 0.21.1_beta
+	pkgver = 0.21.3_beta
 	pkgrel = 1
 	url = https://github.com/lightningnetwork/lnd
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = lnd
 	provides = lnd
 	provides = lncli
 	conflicts = lnd-git
-	source = lnd-0.21.1_beta.tar.gz::https://github.com/lightningnetwork/lnd/archive/v0.21.1-beta.tar.gz
-	sha512sums = a7c33f58345a216b7133e9b32aa7658c2adcefdf6242d162e24ae07eeebfd8e835b84ee52fe50ed7bf1f65385fbed38f31ba73ea7870e92ede4b8665ee1c6e4b
+	source = lnd-0.21.3_beta.tar.gz::https://github.com/lightningnetwork/lnd/archive/v0.21.3-beta.tar.gz
+	sha512sums = 13244f58f182a00cb7c06dba7fe3edf5358b847dda62d1d5ad550185a676084f542b106f8ec3e68bcc2120708d0c992d0fb36e6ab8f930504547143acbc94dc9
 
 pkgname = lnd

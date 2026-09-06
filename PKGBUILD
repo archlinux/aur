@@ -2,7 +2,7 @@
 # Contributor: David Parrish <daveparrish@tutanota.com>
 
 pkgname='lnd'
-pkgver=0.21.1_beta
+pkgver=0.21.3_beta
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
@@ -14,7 +14,7 @@ makedepends=('go')
 provides=('lnd' 'lncli')
 conflicts=('lnd-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lightningnetwork/lnd/archive/v${_pkgver}.tar.gz")
-sha512sums=('a7c33f58345a216b7133e9b32aa7658c2adcefdf6242d162e24ae07eeebfd8e835b84ee52fe50ed7bf1f65385fbed38f31ba73ea7870e92ede4b8665ee1c6e4b')
+sha512sums=('13244f58f182a00cb7c06dba7fe3edf5358b847dda62d1d5ad550185a676084f542b106f8ec3e68bcc2120708d0c992d0fb36e6ab8f930504547143acbc94dc9')
 
 prepare() {
   cd "$pkgname-$_pkgver"
@@ -30,7 +30,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  GO111MODULE=on go install -v -tags experimental,autopilotrpc,signrpc,walletrpc,chainrpc,invoicesrpc,routerrpc,watchtowerrpc,monitoring,peersrpc,kvdb_postgres,kvdb_sqlite,kvdb_etcd ./...
+  GO111MODULE=on go install -v -tags experimental,autopilotrpc,signrpc,walletrpc,chainrpc,invoicesrpc,routerrpc,watchtowerrpc,neutrinorpc,monitoring,peersrpc,kvdb_postgres,kvdb_sqlite,kvdb_etcd ./...
   go build -o build ./cmd/...
 }
 
