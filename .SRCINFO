@@ -1,6 +1,6 @@
 pkgbase = octa
 	pkgdesc = Viewer, editor, CLI and MCP server for tabular data: 30+ formats, SQL, databases, cloud
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://github.com/thorstenfoltz/octa
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = octa
 	depends = mujs
 	conflicts = octa-bin
 	options = !lto
-	source = octa-0.19.0.tar.gz::https://github.com/thorstenfoltz/octa/archive/0.19.0.tar.gz
-	sha256sums = 62ac509f5c8bdfea9a0769190411e1bf118860868ce366e8398737801793d1bf
+	source = octa-0.19.1.tar.gz::https://github.com/thorstenfoltz/octa/archive/0.19.1.tar.gz
+	sha256sums = 150e306d5b58d531eb81b8eccdd8fcab34e8d9106ed512ffee2f42b3967770fe
 
 pkgname = octa
