@@ -27,7 +27,7 @@ depends=(
 )
 optdepends=(
   'python-xsdata: bonsaï'
-  'python-shapely: : bonsaï'
+  'python-shapely: bonsaï'
   'python-svgwrite: bonsaï'
   'python-isodate: bonsaï'
   'python-pystache: bonsaï'
@@ -76,8 +76,8 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
 sha256sums=('26102b5869ce9cb285d770add1bb439aeeadaec2fea1ca293bc7242114bfbdad'
             'SKIP'
             'c774454e31757796cf02078cc04d4f27b6180d718e1edab4148340879a6b64c5'
-            '13b11acbf62ba566addf2ad774c52d292c3f7032e7843e4eda36e8f785ae8c4f'
-            '40bb40efb4bd8e7d39efcfd64e6dad969b958840afd1d2abdae8e97d43008f86'
+            '3a586a19b121066f11c8129e8c2f95e439270c13ffc94d7c0c37f9ecf1259507'
+            'b2c33392da40e5af1167ce68781617c2905d719b603e3b86e343fb37d0ca8080'
             'c7ae9b4fc2c2edbba4d47b83f437fb75cb94d8f6857f7504d98ab8d9790f23a8'
             '32f28c4f31877a871ea1ce182e78e1e84e05030db2ab609b10dd9de48d34f7c7')
 options=("!lto")
@@ -171,7 +171,7 @@ package() {
 
   # provides blender extension
   install -d "${pkgdir}/usr/share/blender/${_blender_ver}/extensions/system"
-  ln -s /usr/lib/python${_python_ver}/site-packages/${_vername} "${pkgdir}/usr/share/blender/${_blender_ver}/extensions/system/${__vername}"
+  ln -s /usr/lib/python${_python_ver}/site-packages/${_vername} "${pkgdir}/usr/share/blender/${_blender_ver}/extensions/system/${_vername}"
 
   # replace the upstream "os-arch" manifest placeholder, mirroring upstream Makefile
   sed -i "s/os-arch/linux-x64/" "${pkgdir}/usr/lib/python${_python_ver}/site-packages/${_vername}/blender_manifest.toml"
