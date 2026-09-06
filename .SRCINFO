@@ -1,6 +1,6 @@
 pkgbase = mcmodm
 	pkgdesc = Minecraft Mod Manager written in C++
-	pkgver = 1.8.1
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/MidnightPavlaka635920/Minecraft-ModM
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mcmodm
 	makedepends = gcc
 	depends = curl
 	depends = nlohmann-json
-	source = git+https://github.com/MidnightPavlaka635920/Minecraft-ModM.git#tag=v1.8.1
+	source = git+https://github.com/MidnightPavlaka635920/Minecraft-ModM.git#tag=v2.0
 	sha256sums = SKIP
 
 pkgname = mcmodm
