@@ -19,7 +19,6 @@ sha256sums=('SKIP')
 prepare() {
 	cd "$srcdir/$pkgname"
 	go mod download
-	# test
 }
 
 pkgver() {
