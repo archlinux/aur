@@ -1,0 +1,23 @@
+pkgbase = scratch-notes
+	pkgdesc = Minimalist, offline-first markdown note-taking app
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/erictli/scratch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = npm
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	options = !lto
+	source = scratch-1.0.0.tar.gz::https://github.com/erictli/scratch/archive/refs/tags/v1.0.0.tar.gz
+	b2sums = 996dda6e36bca4a734ada0761a340d46d9afed38c020816310653b29bf070f9f89ac95b7ca72804c3ec5629d431a559f8ef6be4f107f8631fefe1db8066a055a
+
+pkgname = scratch-notes
