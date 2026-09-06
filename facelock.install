@@ -1,34 +1,84 @@
-post_install() {
-    systemd-sysusers
-    systemd-tmpfiles --create
-    chown root:facelock /var/lib/facelock 2>/dev/null || true
-    chmod 750 /var/lib/facelock 2>/dev/null || true
+# Modes for the current layout, mirroring dist/facelock.tmpfiles for hosts
+# where a bare `systemd-tmpfiles --create` did not run. Nothing here moves
+# or deletes existing data: directories are created, existing files are
+# re-chmod/chowned, and that is all. Every line is idempotent.
+_facelock_secure_paths() {
+    # State dir: traversable by everyone, listable by root only (ADR 010).
+    chown root:root /var/lib/facelock 2>/dev/null || true
+    chmod 711 /var/lib/facelock 2>/dev/null || true
+    # Models are public, SHA256-verified downloads.
     chown root:root /var/lib/facelock/models 2>/dev/null || true
     chmod 755 /var/lib/facelock/models 2>/dev/null || true
-    chown root:facelock /var/log/facelock 2>/dev/null || true
-    chmod 750 /var/log/facelock 2>/dev/null || true
-    chown root:facelock /var/log/facelock/snapshots 2>/dev/null || true
-    chmod 750 /var/log/facelock/snapshots 2>/dev/null || true
+    # `facelock is-enrolled` marker dir: traversable by all, listable by root only.
+    install -d -o root -g root -m 0711 /var/lib/facelock/enrolled 2>/dev/null || true
+    # PAM rollback state contains complete service files: root-only.
+    install -d -o root -g root -m 0700 /var/lib/facelock/pam-backups 2>/dev/null || true
+    # Database and sidecars: root-only. Tighten if present, never create.
+    for f in /var/lib/facelock/facelock.db /var/lib/facelock/facelock.db-wal /var/lib/facelock/facelock.db-shm; do
+        [ -f "$f" ] && chown root:root "$f" 2>/dev/null && chmod 600 "$f" 2>/dev/null
+    done
+    # Audit log (per-user auth history) and snapshots (raw face images):
+    # root-only.
+    chown root:root /var/log/facelock 2>/dev/null || true
+    chmod 700 /var/log/facelock 2>/dev/null || true
+    chown root:root /var/log/facelock/snapshots 2>/dev/null || true
+    chmod 700 /var/log/facelock/snapshots 2>/dev/null || true
+    [ -f /var/log/facelock/audit.jsonl ] && chown root:root /var/log/facelock/audit.jsonl 2>/dev/null && chmod 600 /var/log/facelock/audit.jsonl 2>/dev/null
+    # Runtime dir: tmpfiles recreates it root:root at boot; converge a live one.
+    [ -d /run/facelock ] && chown root:root /run/facelock 2>/dev/null || true
+    return 0
+}
+
+# ADR 010 retired the facelock group: nothing is group-owned any more, so
+# remove a group an older install created. Best-effort — a groupdel the system
+# refuses (a member still logged in, another package's group of the same name)
+# is not an install failure.
+_facelock_retire_group() {
+    if getent group facelock >/dev/null 2>&1; then
+        groupdel facelock 2>/dev/null || true
+    fi
+    return 0
+}
+
+# The bus policy may have changed (ADR 010). Ask the bus to re-read the
+# package-owned policy without overwriting any legacy /etc copy.
+_facelock_reload_bus_policy() {
+    # Both dbus-daemon and dbus-broker watch the policy directory, but a
+    # running lock screen may call Authenticate before they notice — ask
+    # explicitly.
+    dbus-send --system --type=method_call --dest=org.freedesktop.DBus \
+        /org/freedesktop/DBus org.freedesktop.DBus.ReloadConfig 2>/dev/null || true
+    return 0
+}
+
+post_install() {
+    systemd-tmpfiles --create
+    _facelock_secure_paths
+    _facelock_retire_group
+    _facelock_reload_bus_policy
 
     # Reload systemd for D-Bus activation
     systemctl daemon-reload 2>/dev/null || true
 
     echo ""
     echo "==> facelock installed. Run 'sudo facelock setup' to complete configuration."
-    echo "    (downloads models, configures PAM services, enrolls your face)"
+    echo "    (downloads models and offers face enrollment and PAM configuration)"
 }
 
 post_upgrade() {
-    systemd-sysusers
     systemd-tmpfiles --create
-    chown root:facelock /var/lib/facelock 2>/dev/null || true
-    chmod 750 /var/lib/facelock 2>/dev/null || true
-    chown root:root /var/lib/facelock/models 2>/dev/null || true
-    chmod 755 /var/lib/facelock/models 2>/dev/null || true
-    chown root:facelock /var/log/facelock 2>/dev/null || true
-    chmod 750 /var/log/facelock 2>/dev/null || true
-    chown root:facelock /var/log/facelock/snapshots 2>/dev/null || true
-    chmod 750 /var/log/facelock/snapshots 2>/dev/null || true
+    _facelock_secure_paths
+    _facelock_retire_group
+    _facelock_reload_bus_policy
+
+    # Pick up unit changes before the restart below, not after. Without this,
+    # `systemctl restart` re-runs the *cached* unit and every change the new
+    # package made to facelock-daemon.service — the CapabilityBoundingSet
+    # among them — waits for the next daemon-reload or reboot. post_install
+    # already reloads; the Debian postinst and the RPM
+    # %systemd_postun_with_restart macro both do too, so this is the one
+    # upgrade path that was missing it.
+    systemctl daemon-reload 2>/dev/null || true
 
     # Restart daemon if running
     if systemctl is-active --quiet facelock-daemon; then
@@ -45,27 +95,20 @@ pre_remove() {
     # Kill facelock polkit agent if running (lets the DE's agent take over)
     pkill -f facelock-polkit-agent 2>/dev/null || true
 
-    # Remove PAM lines (regex match — tolerates whitespace/option variations)
-    for PAM_FILE in /etc/pam.d/sudo /etc/pam.d/polkit-1 /etc/pam.d/hyprlock; do
-        if [ -f "$PAM_FILE" ] && grep -q 'pam_facelock\.so' "$PAM_FILE"; then
-            sed -i '/pam_facelock\.so/d' "$PAM_FILE"
-            echo "==> Removed face authentication from $PAM_FILE"
-        fi
-    done
-
-    # Remove PAM safety backups created by `facelock setup`
-    for backup in /etc/pam.d/sudo.facelock-backup /etc/pam.d/polkit-1.facelock-backup /etc/pam.d/hyprlock.facelock-backup; do
-        [ -f "$backup" ] && rm -f "$backup" && echo "==> Removed $backup"
-    done
+    # The PreTransaction libalpm hook runs this before pacman starts removing
+    # files and aborts the transaction on failure. Keep the scriptlet call as
+    # an idempotent belt-and-suspenders path for package tools that skip hooks.
+    facelock pam remove --all || return $?
 }
 
 post_remove() {
     echo ""
     echo "==> facelock uninstalled. User data preserved at:"
-    echo "==>   /etc/facelock/      (config.toml, encryption.key.sealed, setup markers)"
+    echo "==>   /etc/facelock/      (keys, setup state, and any package-manager-retained configuration)"
     echo "==>   /var/lib/facelock/  (face database, ONNX models)"
     echo "==>   /var/log/facelock/  (audit logs and snapshots)"
     echo "==>"
-    echo "==> To remove all face data, config, models, and logs:"
-    echo "==>   sudo rm -rf /etc/facelock /var/lib/facelock /var/log/facelock"
+    echo "==> Retained state cleanup is intentionally not automated."
+    echo "==> Cleanup must stay within the fixed roots above, leave configured external paths untouched, and refuse links or mount crossings."
+    echo "==> Filesystem deletion does not securely erase SSDs, snapshots, or backups."
 }
