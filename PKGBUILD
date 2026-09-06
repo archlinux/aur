@@ -5,7 +5,7 @@
 # 已随 release 资产一并打包，不再从上游单独拉取。
 
 pkgname=miyu
-pkgver=0.4.6
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
@@ -13,8 +13,9 @@ url='https://github.com/SHORiN-KiWATA/Miyu'
 license=('MIT' 'OFL-1.1')
 options=('!strip' '!debug')
 export LC_ALL=C.UTF-8
-depends=('chafa' 'gcc-libs' 'ripgrep' 'alsa-lib')
+depends=('chafa' 'gcc-libs' 'ripgrep' 'alsa-lib' 'onnxruntime')
 optdepends=(
+  'miyu-voice: voice wake word + speech recognition front end'
   'git: update default Shorin Wiki knowledge base'
   'fish: fish shell integration support'
   'bash: bash shell integration support'
@@ -29,7 +30,7 @@ source=(
   "${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.pkg.tar.zst"
 )
 sha256sums=(
-  '153d519975e02aec456de36a904cd0b571d1c13bf32a86fa5e92373852ce6b8a'
+  '6ff9ea2aefe3780a4d6896ca95d93edd77bb691009bec1c43428e5e236ac58fd'
 )
 
 package() {
