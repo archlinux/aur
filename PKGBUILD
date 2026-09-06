@@ -7,7 +7,7 @@
 #export CXXFLAGS+=" -march=$_cpu -O3"
 
 # Export the variable matching your GPU, then run makepkg:
-#   CUDA_ARCH=120 makepkg -si
+#   CUDA_ARCH=120 makepkg -s --nocheck
 #
 # Architecture      Compute Cap.  GPUs
 # ─────────────────────────────────────────────────────────────────────────────
@@ -31,9 +31,9 @@ _cuda_arch="${CUDA_ARCH:-75;86;89;120}"
 pkgname=voxtype-cuda
 _pkgname=voxtype
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure CUDA version of the push-to-talk voice-to-text tool"
-arch=(x86_64 aarch64)
+arch=(x86_64)
 url="https://voxtype.io"
 license=(MIT)
 provides=($_pkgname)
@@ -44,18 +44,16 @@ depends=(
     curl
     gcc-libs
     glibc
+    gtk4
+    gtk4-layer-shell
+    nvidia-utils
 )
 makedepends=(
     cargo
     clang
     cmake
-    cuda
     git
     pkgconf
-    gtk4
-    gtk4-layer-shell
-    onnxruntime-cuda
-    gtk4-layer-shell
 )
 optdepends=(
     'dotool: keyboard simulation with layout support (KDE/GNOME compatible)'
@@ -66,6 +64,8 @@ optdepends=(
     'pipewire: audio server (recommended)'
     'pipewire-alsa: ALSA compatibility for PipeWire (required if using PipeWire)'
     'pulseaudio: audio server (alternative to PipeWire)'
+    'quickshell: OSD frontend for [osd] frontend = "quickshell"'
+    'vulkan-icd-loader: required by the native (wgpu) OSD frontend'
     'wl-clipboard: clipboard support'
     'wtype: keyboard simulation for Wayland (recommended, best CJK support)'
     'ydotool: keyboard simulation fallback (X11/TTY support)'
@@ -83,11 +83,13 @@ sha256sums=('a4d0a256167f58ce90153077da82620794422f5172c918625d480ff9ffca625e'
 prepare() {
     cd "$_pkgname-$pkgver"
 
-    if [[ -z "$_cuda_arch" ]]; then
+    if [[ -z "${CUDA_ARCH:-}" ]]; then
       cat <<EOF
 
-ERROR: CUDA_ARCH is not set. You must specify your GPU architecture.
-       Set it before running makepkg, for example:
+NOTE: CUDA_ARCH is not set, so this builds for the default set: $_cuda_arch
+      That compiles kernels for GPUs you almost certainly do not own and
+      multiplies the nvcc time. To build for yours only, interrupt now and
+      set it, for example:
 
        CUDA_ARCH=120 makepkg -si
 
@@ -104,7 +106,6 @@ ERROR: CUDA_ARCH is not set. You must specify your GPU architecture.
 
   See: https://developer.nvidia.com/cuda-gpus
 EOF
-      return 1
     fi
 
     # Respect XDG Base Directory Specification
@@ -160,8 +161,11 @@ build() {
     export CXX=clang++
 
     export CUDAToolkit_ROOT=/opt/cuda
-    echo "set(CMAKE_CUDA_ARCHITECTURES ${_cuda_arch})" > /tmp/voxtype-cuda-arch.cmake
-    export CMAKE_TOOLCHAIN_FILE=/tmp/voxtype-cuda-arch.cmake
+    # whisper-rs-sys never sets CMAKE_CUDA_ARCHITECTURES, and ggml only picks
+    # its own default list when the variable is not already defined, so a
+    # toolchain file is enough to pin the arch. cmake-rs reads this env var.
+    echo "set(CMAKE_CUDA_ARCHITECTURES ${_cuda_arch})" > "$srcdir/cuda-arch.cmake"
+    export CMAKE_TOOLCHAIN_FILE="$srcdir/cuda-arch.cmake"
 
     # Build CUDA binary - Disable LTO to prevent linking hangs (Cargo.toml has lto=true)
     cargo clean
@@ -170,14 +174,20 @@ build() {
         --config 'profile.release.codegen-units=8'
     cp target/release/voxtype voxtype-cuda
 
-    export ORT_STRATEGY=system
+    # The *-cuda engine features enable the onnx-cuda-enabled marker, which is
+    # what src/transcribe/onnx_ep.rs gates CUDA EP registration on. Without
+    # them these engines run on CPU no matter which onnxruntime is installed.
+    # onnx-load-dynamic (ort/load-dynamic) makes ort dlopen the system
+    # libonnxruntime.so instead of linking it, and its ort-sys/disable-linking
+    # is also what stops ort-sys from downloading prebuilt binaries during the
+    # build (parakeet-rs pulls ort's default features, which include
+    # download-binaries).
     cargo clean
     cargo build --frozen --release \
-        --features parakeet-load-dynamic,moonshine,sensevoice,paraformer,dolphin,omnilingual,cohere \
+        --features onnx-load-dynamic,parakeet-load-dynamic,parakeet-cuda,moonshine-cuda,sensevoice-cuda,paraformer-cuda,dolphin-cuda,omnilingual-cuda,cohere-cuda \
         --config 'profile.release.lto=false' \
         --config 'profile.release.codegen-units=8'
     cp target/release/voxtype voxtype-onnx
-    unset ORT_STRATEGY
 
     # Build OSD binaries: the launcher (voxtype-osd) plus both frontends.
     # The launcher has no GUI deps; each frontend is gated on its feature
