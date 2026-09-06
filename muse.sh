@@ -3,7 +3,7 @@ set -euo pipefail
 
 REAL_BIN="/usr/lib/muse/muse"
 
-# Handle session management extension
+# Handle session/mcp management extensions
 if [[ "${1:-}" == "session" || "${1:-}" == "sessions" ]]; then
   shift
   SESSION_HELPER="/usr/lib/muse/muse-session"
@@ -16,6 +16,20 @@ if [[ "${1:-}" == "session" || "${1:-}" == "sessions" ]]; then
     fi
   fi
   exec "${SESSION_HELPER}" "$@"
+fi
+
+if [[ "${1:-}" == "mcp" ]]; then
+  shift
+  MCP_HELPER="/usr/lib/muse/muse-mcp"
+  if [[ ! -x "${MCP_HELPER}" ]]; then
+    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    if [[ -x "${SCRIPT_DIR}/../lib/muse/muse-mcp" ]]; then
+      MCP_HELPER="${SCRIPT_DIR}/../lib/muse/muse-mcp"
+    elif [[ -x "${SCRIPT_DIR}/muse-mcp" ]]; then
+      MCP_HELPER="${SCRIPT_DIR}/muse-mcp"
+    fi
+  fi
+  exec "${MCP_HELPER}" "$@"
 fi
 
 if [[ "$(uname -m)" == "x86_64" ]] && ! grep -q -m1 "avx2" /proc/cpuinfo 2>/dev/null; then

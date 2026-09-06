@@ -1,0 +1,689 @@
+#!/usr/bin/env python3
+"""
+muse-mcp: configure Muse Code MCP servers and import them from other agents.
+
+Reads MCP server definitions from opencode, Codex CLI, Claude Code and
+Antigravity (agy) configs and merges them into ~/.config/muse/settings.json
+under the `mcp_servers` key. Other settings.json keys are left untouched.
+
+Integrated with the muse wrapper: `muse mcp ...` dispatches here.
+"""
+
+import argparse
+import copy
+import json
+import os
+import shlex
+import shutil
+import sys
+import tempfile
+
+try:
+    import tomllib
+except ImportError:  # Python < 3.11, TOML sources unavailable
+    tomllib = None
+
+
+MUSE_SETTINGS = os.environ.get(
+    "MUSE_SETTINGS", os.path.expanduser("~/.config/muse/settings.json")
+)
+
+# ANSI color helpers for tty output
+USE_COLOR = sys.stdout.isatty() and os.environ.get("NO_COLOR") is None
+
+
+def color(text, code):
+    return f"\033[{code}m{text}\033[0m" if USE_COLOR else text
+
+
+def bold(text): return color(text, "1")
+def green(text): return color(text, "32")
+def red(text): return color(text, "31")
+def yellow(text): return color(text, "33")
+def dim(text): return color(text, "90")
+
+
+def die(msg, code=1):
+    print(f"{red('error:')} {msg}", file=sys.stderr)
+    sys.exit(code)
+
+
+def warn(msg):
+    print(f"{yellow('warning:')} {msg}", file=sys.stderr)
+
+
+# ---------------------------------------------------------------------------
+# muse settings.json handling
+# ---------------------------------------------------------------------------
+
+def load_settings():
+    if not os.path.exists(MUSE_SETTINGS):
+        return {}
+    try:
+        with open(MUSE_SETTINGS, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except (json.JSONDecodeError, OSError) as e:
+        die(f"cannot read {MUSE_SETTINGS}: {e}")
+    if not isinstance(data, dict):
+        die(f"{MUSE_SETTINGS} does not contain a JSON object")
+    return data
+
+
+def save_settings(data):
+    d = os.path.dirname(MUSE_SETTINGS)
+    if d:
+        os.makedirs(d, exist_ok=True)
+    if os.path.exists(MUSE_SETTINGS):
+        shutil.copy2(MUSE_SETTINGS, MUSE_SETTINGS + ".bak")
+    fd, tmp = tempfile.mkstemp(
+        dir=d or ".", prefix=".settings.", suffix=".tmp"
+    )
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+            f.write("\n")
+        os.replace(tmp, MUSE_SETTINGS)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+
+def muse_servers(data=None):
+    data = load_settings() if data is None else data
+    servers = data.get("mcp_servers", {})
+    return servers if isinstance(servers, dict) else {}
+
+
+def to_muse_entry(srv):
+    """Convert a normalized server dict to a muse mcp_servers entry."""
+    entry = {
+        "transport": "stdio" if srv["transport"] == "stdio" else "streamable_http",
+        "enabled": srv["enabled"],
+        "mode": "optional",
+    }
+    if srv["transport"] == "stdio":
+        entry["command"] = srv["command"]
+        entry["args"] = srv["args"]
+        if srv["env"]:
+            entry["env"] = srv["env"]
+    else:
+        entry["url"] = srv["url"]
+        if srv["headers"]:
+            entry["headers"] = srv["headers"]
+    # Keep stable key order: transport, command/args/env or url/headers, enabled, mode
+    ordered = {"transport": entry.pop("transport")}
+    ordered.update(entry)
+    return ordered
+
+
+# ---------------------------------------------------------------------------
+# Source readers: each returns a list of normalized server dicts:
+# {name, transport, command, args, env, url, headers, enabled}
+# ---------------------------------------------------------------------------
+
+def _norm_stdio(name, command, args=None, env=None, enabled=True):
+    if isinstance(command, (list, tuple)):
+        parts = list(command)
+        command, rest = parts[0], parts[1:]
+        args = list(rest) + list(args or [])
+    return {
+        "name": name,
+        "transport": "stdio",
+        "command": command,
+        "args": list(args or []),
+        "env": dict(env or {}),
+        "url": None,
+        "headers": {},
+        "enabled": bool(enabled),
+    }
+
+
+def _norm_remote(name, url, headers=None, enabled=True):
+    return {
+        "name": name,
+        "transport": "remote",
+        "command": None,
+        "args": [],
+        "env": {},
+        "url": url,
+        "headers": dict(headers or {}),
+        "enabled": bool(enabled),
+    }
+
+
+def strip_jsonc(text):
+    """Remove // and /* */ comments outside of strings."""
+    out = []
+    i, n = 0, len(text)
+    in_str = False
+    esc = False
+    while i < n:
+        c = text[i]
+        nxt = text[i + 1] if i + 1 < n else ""
+        if in_str:
+            out.append(c)
+            if esc:
+                esc = False
+            elif c == "\\":
+                esc = True
+            elif c == '"':
+                in_str = False
+            i += 1
+        elif c == '"':
+            in_str = True
+            out.append(c)
+            i += 1
+        elif c == "/" and nxt == "/":
+            while i < n and text[i] != "\n":
+                i += 1
+        elif c == "/" and nxt == "*":
+            i += 2
+            while i < n and not (text[i] == "*" and i + 1 < n and text[i + 1] == "/"):
+                i += 1
+            i += 2
+        else:
+            out.append(c)
+            i += 1
+    return "".join(out)
+
+
+def _load_json_file(path):
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            text = f.read()
+    except OSError as e:
+        return None, f"cannot read: {e}"
+    try:
+        return json.loads(text), None
+    except json.JSONDecodeError:
+        pass
+    try:
+        return json.loads(strip_jsonc(text)), None
+    except json.JSONDecodeError as e:
+        return None, f"invalid JSON: {e}"
+
+
+def read_opencode(path):
+    """opencode.json[c]: {mcp: {name: {type, command[], environment, url, headers, enabled}}}"""
+    data, err = _load_json_file(path)
+    if err:
+        return None, err
+    if not isinstance(data, dict) or not isinstance(data.get("mcp"), dict):
+        return [], None
+    servers = []
+    for name, cfg in data["mcp"].items():
+        if not isinstance(cfg, dict):
+            continue
+        enabled = cfg.get("enabled", True)
+        if cfg.get("type") == "remote" or (not cfg.get("command") and cfg.get("url")):
+            if not cfg.get("url"):
+                continue
+            servers.append(_norm_remote(name, cfg["url"], cfg.get("headers"), enabled))
+        else:
+            if not cfg.get("command"):
+                continue
+            servers.append(_norm_stdio(
+                name, cfg["command"], cfg.get("args", []),
+                cfg.get("environment", {}), enabled,
+            ))
+    return servers, None
+
+
+def read_codex(path):
+    """config.toml: [mcp_servers.name] with command/args/env or url."""
+    if tomllib is None:
+        return None, "tomllib unavailable (need Python 3.11+)"
+    try:
+        with open(path, "rb") as f:
+            data = tomllib.load(f)
+    except (OSError, tomllib.TOMLDecodeError) as e:
+        return None, f"cannot parse: {e}"
+    raw = data.get("mcp_servers", {})
+    if not isinstance(raw, dict):
+        return [], None
+    servers = []
+    for name, cfg in raw.items():
+        if not isinstance(cfg, dict):
+            continue
+        enabled = cfg.get("enabled", True)
+        if cfg.get("url"):
+            servers.append(_norm_remote(
+                name, cfg["url"], cfg.get("http_headers", {}), enabled
+            ))
+        elif cfg.get("command"):
+            servers.append(_norm_stdio(
+                name, cfg["command"], cfg.get("args", []),
+                cfg.get("env", {}), enabled,
+            ))
+    return servers, None
+
+
+def read_claude_style(path, key="mcpServers"):
+    """Claude Code / agy JSON: {mcpServers: {name: {command, args, env, disabled}}}
+    Remote entries carry type=url fields."""
+    data, err = _load_json_file(path)
+    if err:
+        return None, err
+    raw = data.get(key, {}) if isinstance(data, dict) else {}
+    if not isinstance(raw, dict):
+        return [], None
+    servers = []
+    for name, cfg in raw.items():
+        if not isinstance(cfg, dict):
+            continue
+        enabled = not cfg.get("disabled", False)
+        url = cfg.get("url")
+        ctype = str(cfg.get("type", "")).lower()
+        if url or ctype in ("http", "sse", "streamable-http"):
+            if not url:
+                continue
+            servers.append(_norm_remote(name, url, cfg.get("headers", {}), enabled))
+        elif cfg.get("command"):
+            servers.append(_norm_stdio(
+                name, cfg["command"], cfg.get("args", []),
+                cfg.get("env", {}), enabled,
+            ))
+    return servers, None
+
+
+HOME = os.path.expanduser("~")
+
+SOURCES = {
+    "opencode": {
+        "desc": "opencode (opencode.json[c] user + project config)",
+        "paths": [
+            os.path.join(HOME, ".config/opencode/opencode.json"),
+            os.path.join(HOME, ".config/opencode/opencode.jsonc"),
+            os.path.join(os.getcwd(), "opencode.json"),
+            os.path.join(os.getcwd(), "opencode.jsonc"),
+        ],
+        "read": read_opencode,
+    },
+    "codex": {
+        "desc": "Codex CLI (~/.codex/config.toml)",
+        "paths": [os.path.join(HOME, ".codex/config.toml")],
+        "read": read_codex,
+    },
+    "claude": {
+        "desc": "Claude Code (~/.claude.json user scope, ./.mcp.json project)",
+        "paths": [
+            os.path.join(HOME, ".claude.json"),
+            os.path.join(os.getcwd(), ".mcp.json"),
+        ],
+        "read": read_claude_style,
+    },
+    "agy": {
+        "desc": "Antigravity agy CLI (~/.gemini/config/mcp_config.json)",
+        "paths": [os.path.join(HOME, ".gemini/config/mcp_config.json")],
+        "read": read_claude_style,
+    },
+}
+
+
+def collect_source(name, custom_path=None):
+    """Read all candidate files for a source. Returns (servers, used_paths, errors)."""
+    spec = SOURCES[name]
+    paths = [custom_path] if custom_path else spec["paths"]
+    servers, used, errors = [], [], []
+    for p in paths:
+        if not os.path.exists(p):
+            continue
+        result, err = spec["read"](p)
+        if err:
+            errors.append(f"{p}: {err}")
+            continue
+        used.append(p)
+        for s in result:
+            s = copy.deepcopy(s)
+            s["source"] = name
+            s["origin"] = p
+            servers.append(s)
+    # Later files (project scope) override earlier ones on name clash.
+    merged = {}
+    for s in servers:
+        merged[s["name"]] = s
+    return list(merged.values()), used, errors
+
+
+# ---------------------------------------------------------------------------
+# Display helpers
+# ---------------------------------------------------------------------------
+
+def fmt_server(srv):
+    if srv["transport"] == "stdio":
+        cmd = " ".join(shlex.quote(p) for p in [srv["command"]] + srv["args"])
+        detail = cmd
+    else:
+        detail = srv["url"]
+    state = green("enabled") if srv["enabled"] else dim("disabled")
+    extra = dim(f" [{len(srv['env'])} env]") if srv.get("env") else ""
+    return f"  {bold(srv['name'])}  {dim(srv['transport'])}  {state}\n    {dim(detail)}{extra}"
+
+
+# ---------------------------------------------------------------------------
+# Subcommands
+# ---------------------------------------------------------------------------
+
+def cmd_list(args):
+    servers = muse_servers()
+    if args.json:
+        print(json.dumps(servers, indent=2))
+        return 0
+    if not servers:
+        print("No MCP servers configured in muse.")
+        print(f"({MUSE_SETTINGS})")
+        return 0
+    print(f"Muse MCP servers ({len(servers)}):")
+    for name in sorted(servers):
+        e = servers[name]
+        transport = e.get("transport", "?")
+        enabled = e.get("enabled", True)
+        state = green("enabled") if enabled else dim("disabled")
+        if transport == "stdio":
+            detail = " ".join(shlex.quote(p) for p in [e.get("command", "?")] + list(e.get("args", [])))
+        else:
+            detail = e.get("url", "?")
+        extra = dim(f" [{len(e.get('env', {}))} env]") if e.get("env") else ""
+        print(f"  {bold(name)}  {dim(transport)}  {state}\n    {dim(detail)}{extra}")
+    return 0
+
+def cmd_status(args):
+    print(f"muse: {MUSE_SETTINGS}")
+    existing = muse_servers()
+    print(f"  {len(existing)} server(s): "
+          + (", ".join(sorted(existing)) if existing else dim("none")))
+    print()
+    for name, spec in SOURCES.items():
+        found = [p for p in spec["paths"] if os.path.exists(p)]
+        if not found:
+            print(f"  {dim('○')} {bold(name)}: not found")
+            continue
+        total = 0
+        for p in found:
+            result, _ = spec["read"](p)
+            total += len(result) if result else 0
+        print(f"  {green('●')} {bold(name)}: {total} server(s) in "
+              + ", ".join(found))
+    return 0
+def cmd_import(args):
+    wanted = args.sources or ["auto"]
+    if wanted == ["auto"]:
+        wanted = [n for n, s in SOURCES.items()
+                  if any(os.path.exists(p) for p in s["paths"])]
+        if not wanted:
+            die("no known agent configs found (looked for opencode, codex, claude, agy)")
+    for w in wanted:
+        if w not in SOURCES:
+            die(f"unknown source '{w}' (choose from: {', '.join(SOURCES)})", code=2)
+
+    gathered = {}
+    for name in wanted:
+        servers, used, errors = collect_source(name, args.from_path)
+        for e in errors:
+            warn(e)
+        if args.from_path and not used:
+            die(f"no servers read from {args.from_path}")
+        for s in servers:
+            if args.names and s["name"] not in args.names:
+                continue
+            if s["name"] in gathered:
+                warn(f"'{s['name']}' also in {gathered[s['name']]['source']}; "
+                     f"{name} wins")
+            gathered[s["name"]] = s
+    if not gathered:
+        print("Nothing to import.")
+        return 0
+
+    if args.enable:
+        for s in gathered.values():
+            s["enabled"] = True
+    elif args.disable:
+        for s in gathered.values():
+            s["enabled"] = False
+
+    settings = load_settings()
+    servers = settings.setdefault("mcp_servers", {})
+    if not isinstance(servers, dict):
+        die("mcp_servers in settings.json is not an object")
+
+    remote_warn = False
+    added, skipped, overwritten = [], [], []
+    for s in gathered.values():
+        if s["transport"] == "remote":
+            remote_warn = True
+        if s["name"] in servers and not args.force:
+            skipped.append(s["name"])
+            continue
+        action = overwritten if s["name"] in servers else added
+        action.append(s["name"])
+        if not args.dry_run:
+            servers[s["name"]] = to_muse_entry(s)
+
+    if remote_warn:
+        warn("remote (http) servers are imported as transport "
+             "'streamable_http' (best effort) — verify in muse")
+
+    if args.dry_run:
+        print(dim("(dry run — settings.json unchanged)"))
+    elif added or overwritten:
+        save_settings(settings)
+        print(dim(f"backup: {MUSE_SETTINGS}.bak"))
+
+    for n in added:
+        print(f"  {green('added')} {n}")
+    for n in overwritten:
+        print(f"  {yellow('overwrote')} {n}")
+    for n in skipped:
+        print(f"  {dim('skipped (exists, use --force)')} {n}")
+    return 0
+
+
+def cmd_add(args):
+    settings = load_settings()
+    servers = settings.setdefault("mcp_servers", {})
+    if not isinstance(servers, dict):
+        die("mcp_servers in settings.json is not an object")
+    if args.name in servers and not args.force:
+        die(f"server '{args.name}' exists (use --force to replace)")
+    env = {}
+    for item in args.env or []:
+        if "=" not in item:
+            die(f"bad --env '{item}' (want KEY=value)", code=2)
+        k, v = item.split("=", 1)
+        env[k] = v
+    headers = {}
+    for item in args.header or []:
+        if ":" not in item:
+            die(f"bad --header '{item}' (want 'KEY: VALUE')", code=2)
+        k, v = item.split(":", 1)
+        headers[k.strip()] = v.strip()
+    if args.url:
+        srv = _norm_remote(args.name, args.url, headers, not args.disabled)
+    else:
+        if not args.command:
+            die("give a URL (--url) or a command to run", code=2)
+        srv = _norm_stdio(args.name, args.command[0], args.command[1:], env,
+                          not args.disabled)
+    servers[args.name] = to_muse_entry(srv)
+    save_settings(settings)
+    print(f"{green('added')} {args.name}")
+    return 0
+
+
+def _mutate(name, fn, label):
+    settings = load_settings()
+    servers = muse_servers(settings)
+    if name not in servers:
+        die(f"no muse server named '{name}'")
+    fn(servers[name])
+    settings["mcp_servers"] = servers
+    save_settings(settings)
+    print(f"{green(label)} {name}")
+    return 0
+
+
+def cmd_enable(args):
+    return _mutate(args.name, lambda e: e.__setitem__("enabled", True), "enabled")
+
+
+def cmd_disable(args):
+    return _mutate(args.name, lambda e: e.__setitem__("enabled", False), "disabled")
+
+
+def cmd_remove(args):
+    settings = load_settings()
+    servers = muse_servers(settings)
+    if args.name not in servers:
+        die(f"no muse server named '{args.name}'")
+    del servers[args.name]
+    settings["mcp_servers"] = servers
+    save_settings(settings)
+    print(f"{green('removed')} {args.name}")
+    return 0
+
+
+def cmd_export(args):
+    """Dump muse servers as portable Claude-style {"mcpServers": {...}} JSON."""
+    servers = muse_servers()
+    out = {"mcpServers": {}}
+    for name in sorted(servers):
+        e = servers[name]
+        if e.get("transport", "stdio") == "stdio":
+            entry = {"command": e.get("command"), "args": e.get("args", [])}
+            if e.get("env"):
+                entry["env"] = e["env"]
+            if not e.get("enabled", True):
+                entry["disabled"] = True
+        else:
+            entry = {"type": "http", "url": e.get("url")}
+            if e.get("headers"):
+                entry["headers"] = e["headers"]
+            if not e.get("enabled", True):
+                entry["disabled"] = True
+        out["mcpServers"][name] = entry
+    print(json.dumps(out, indent=2))
+    return 0
+
+
+MANUAL = """\
+muse-mcp manual
+===============
+
+Import MCP servers from other coding agents into Muse Code, and manage the
+muse `mcp_servers` block in ~/.config/muse/settings.json.
+
+SOURCES (auto-detected)
+  opencode  ~/.config/opencode/opencode.json[c], ./opencode.json[c]
+  codex     ~/.codex/config.toml  ([mcp_servers.*])
+  claude    ~/.claude.json (user scope), ./.mcp.json (project scope)
+  agy       ~/.gemini/config/mcp_config.json (Antigravity CLI)
+
+WORKFLOW
+  1. `muse mcp status`            see which agent configs exist here
+  2. `muse mcp import agy --dry-run`   preview what would be added
+  3. `muse mcp import agy`        merge into muse settings.json
+  4. `muse mcp list`              verify
+
+NOTES
+  * Existing muse servers are never overwritten unless --force is given.
+  * A backup (settings.json.bak) is written before every change.
+  * Remote (http/sse) servers import as transport 'streamable_http';
+    verify them in muse afterwards — that mapping is best effort.
+  * Env values (possibly secrets) are copied verbatim; only the count of
+    env vars is shown in listings, never the values.
+  * MUSE_SETTINGS env var overrides the settings.json path (for testing).
+"""
+
+
+def cmd_help(args):
+    print(MANUAL)
+    return 0
+
+
+# ---------------------------------------------------------------------------
+
+def build_parser():
+    p = argparse.ArgumentParser(
+        prog="muse mcp",
+        description="Configure Muse MCP servers; import from opencode, codex, claude, agy.",
+    )
+    sub = p.add_subparsers(dest="cmd")
+
+    s = sub.add_parser("list", help="list muse MCP servers")
+    s.add_argument("--json", action="store_true", help="raw JSON output")
+    s.set_defaults(func=cmd_list)
+
+    s = sub.add_parser("status", help="show detected agent configs + muse servers")
+    s.set_defaults(func=cmd_status)
+
+    s = sub.add_parser("import", help="import servers from other agents into muse")
+    s.add_argument("items", nargs="*", metavar="SOURCE",
+                   help="sources to import (opencode, codex, claude, agy; "
+                        "default: all found)")
+    s.add_argument("--name", action="append", metavar="NAME", dest="names",
+                   help="only import this server (repeatable)")
+    s.add_argument("--from", dest="from_path", metavar="PATH",
+                   help="read a single config file instead of auto-detected paths")
+    s.add_argument("--dry-run", action="store_true",
+                   help="preview without writing settings.json")
+    s.add_argument("--force", action="store_true",
+                   help="overwrite existing muse servers")
+    g = s.add_mutually_exclusive_group()
+    g.add_argument("--enable", action="store_true",
+                   help="enable all imported servers")
+    g.add_argument("--disable", action="store_true",
+                   help="import servers disabled")
+    s.set_defaults(func=cmd_import)
+
+    s = sub.add_parser("add", help="manually add a muse MCP server")
+    s.add_argument("name", help="server name")
+    s.add_argument("--url", help="remote server URL (else stdio)")
+    s.add_argument("--header", action="append", metavar="KEY: VALUE",
+                   help="http header for remote servers, e.g. 'Authorization: Bearer T' (repeatable)")
+    s.add_argument("--env", action="append", metavar="KEY=value",
+                   help="env var for stdio servers (repeatable)")
+    s.add_argument("--disabled", action="store_true")
+    s.add_argument("--force", action="store_true")
+    s.add_argument("command", nargs="*", help="command + args for stdio servers")
+    s.set_defaults(func=cmd_add)
+
+    s = sub.add_parser("enable", help="enable a muse MCP server")
+    s.add_argument("name")
+    s.set_defaults(func=cmd_enable)
+
+    s = sub.add_parser("disable", help="disable a muse MCP server")
+    s.add_argument("name")
+    s.set_defaults(func=cmd_disable)
+
+    s = sub.add_parser("remove", help="remove a muse MCP server")
+    s.add_argument("name")
+    s.set_defaults(func=cmd_remove)
+
+    s = sub.add_parser("export", help="dump muse servers as portable Claude-style JSON")
+    s.set_defaults(func=cmd_export)
+
+    s = sub.add_parser("help", help="show the full manual")
+    s.add_argument("topic", nargs="?")
+    s.set_defaults(func=cmd_help)
+    p.set_defaults(func=lambda a: cmd_status(a))
+    return p
+
+def main(argv=None):
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    if getattr(args, "cmd", None) == "import":
+        for tok in args.items:
+            if tok not in SOURCES:
+                parser.error(f"unknown source '{tok}' "
+                             f"(choose from: {', '.join(SOURCES)})")
+        args.sources = args.items
+        if args.names is None:
+            args.names = []
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

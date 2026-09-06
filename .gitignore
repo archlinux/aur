@@ -5,3 +5,5 @@ src/
 muse-code-bin-*
 pin-*.txt
 *.log
+__pycache__/
+*.pyc
