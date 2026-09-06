@@ -25,7 +25,7 @@ sha256sums=('1426cea7f5c4959cfcaec78b4974cde3071f51eb9fdf9beedf38efae0bc6b9ad'
             '98309d5c7bf9aeb6b3485504028c5e21aa83c9df83b4fe087fbe694fe0fc114d'
             '92911764e6fe601af3599a9e0fb95b48fe6109be6208d4150fa762f17c32c7fa'
             'a956b3de4e0eac70a64b743415038f84ebce615be5edddfb9fc3c06ddba58d9c'
-            '78067cc1e5e742c66133cfda03a990827dddccf77c98cd0e544e11758b33ca7d')
+            '855a4d7cca7b1671f0a1812ed69a6d6f900bc6aa4b683b144e2743dda0160a73')
 
 prepare() {
   msg2 "Applying Fermi reclocking and 120Hz display patches..."

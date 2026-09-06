@@ -22,6 +22,6 @@ pkgbase = nouveau-fermi-reclock-dkms
 	sha256sums = 98309d5c7bf9aeb6b3485504028c5e21aa83c9df83b4fe087fbe694fe0fc114d
 	sha256sums = 92911764e6fe601af3599a9e0fb95b48fe6109be6208d4150fa762f17c32c7fa
 	sha256sums = a956b3de4e0eac70a64b743415038f84ebce615be5edddfb9fc3c06ddba58d9c
-	sha256sums = 78067cc1e5e742c66133cfda03a990827dddccf77c98cd0e544e11758b33ca7d
+	sha256sums = 855a4d7cca7b1671f0a1812ed69a6d6f900bc6aa4b683b144e2743dda0160a73
 
 pkgname = nouveau-fermi-reclock-dkms

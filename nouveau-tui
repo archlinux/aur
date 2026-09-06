@@ -487,17 +487,17 @@ class NouveauTUI:
                     if self.clients:
                         self.focus_idx = (self.focus_idx + 1) % len(self.clients)
 
-            elif ch in (ord(' '), 10, 13):
+            elif ch in (ord(' '), 10, 13, curses.KEY_ENTER):
                 self.execute_selection()
 
             elif ch == ord('a'):
-                run_cmd("nouveau-ctrl set auto")
+                run_cmd("sudo /usr/bin/systemctl restart nouveau-dynclockd.service")
                 self.status_msg = "GPU set to dynamic governor (Auto reclocking)."
                 self.status_color = 1
                 self.refresh_data()
 
             elif ch == ord('r'):
-                run_cmd("nouveau-ctrl daemon restart")
+                run_cmd("sudo /usr/bin/systemctl restart nouveau-dynclockd.service")
                 self.status_msg = "Restarted governor & refreshed telemetry."
                 self.status_color = 1
                 self.refresh_data()
@@ -507,21 +507,21 @@ class NouveauTUI:
             if self.focus_idx == 0:
                 # Entry 0: Toggle Governor daemon
                 if self.telemetry.get("daemon"):
-                    run_cmd("nouveau-ctrl daemon stop")
+                    run_cmd("sudo /usr/bin/systemctl stop nouveau-dynclockd.service")
                     self.status_msg = "Stopped nouveau-dynclockd governor."
                 else:
-                    run_cmd("nouveau-ctrl daemon start")
+                    run_cmd("sudo /usr/bin/systemctl restart nouveau-dynclockd.service")
                     self.status_msg = "Started nouveau-dynclockd governor (Auto reclocking)."
             else:
-                # Entries 1+: Lock selected P-State
+                # Entries 1+: Lock selected P-State (always stop daemon to prevent auto reclock overwrite)
                 p_idx = self.focus_idx - 1
                 if 0 <= p_idx < len(self.pstates):
                     target = self.pstates[p_idx]["code"]
-                    run_cmd(f"nouveau-ctrl set {target}")
+                    run_cmd("sudo /usr/bin/systemctl stop nouveau-dynclockd.service")
+                    run_cmd(f"echo '{target}' | sudo tee /sys/kernel/debug/dri/0/pstate >/dev/null")
                     self.status_msg = f"Locked GPU to P-State [{target}] ({self.pstates[p_idx]['core']} MHz)."
             self.status_color = 1
             self.refresh_data()
-
 def main():
     curses.wrapper(lambda stdscr: NouveauTUI(stdscr).run())
 
