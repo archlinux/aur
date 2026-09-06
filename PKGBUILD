@@ -14,7 +14,7 @@
 # there and no WebKit is compiled here.
 
 pkgname=viewport-wpe
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Wayland compositor whose entire shell is a web page — the Smithay rewrite'
 arch=('x86_64' 'aarch64')
@@ -30,12 +30,11 @@ license=('GPL-3.0-or-later')
 # how many commits past it, and which one — because naming a stale tag would be
 # a lie about what was built. At a release the two say the same thing and the
 # tag is the one anybody can check.
-_tag=v0.1.8
+_tag=v0.2.0
 
 depends=(
   'wayland'
   'libxkbcommon'
-  'pixman'
   'libdrm'
   'libinput'
   'seatd'
@@ -45,9 +44,7 @@ depends=(
   'vulkan-icd-loader'
   'wpewebkit'
   'glib2'
-  'json-glib'
   'libxcb'
-  'xcb-util-wm'
   'pipewire'
   # WebKit guesses the type of a file:// page from the shared MIME database,
   # because nothing else tells it. Without this every local page is treated as
