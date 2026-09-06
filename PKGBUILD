@@ -1,5 +1,5 @@
 pkgname=filebyte
-pkgver=3.3.1
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="A CLI tool for analyzing files and directories with detailed metadata, permissions, and size information"
 url="https://github.com/execRooted/filebyte"
