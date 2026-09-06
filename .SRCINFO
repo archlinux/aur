@@ -1,9 +1,9 @@
 pkgbase = python-cappa
 	pkgdesc = Declarative CLI argument parser
 	pkgver = 0.32.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/DanCardin/cappa
-	arch = x86_64
+	arch = any
 	license = Apache-2.0
 	makedepends = git
 	makedepends = python-build

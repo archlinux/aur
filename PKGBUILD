@@ -4,13 +4,13 @@
 
 _pkgver=v0.32.2
 pkgver="${_pkgver#v}"
-pkgrel=3
+pkgrel=4
 
 _pkgname=cappa
 pkgname="python-${_pkgname}"
 
 pkgdesc='Declarative CLI argument parser '
-arch=('x86_64')
+arch=('any')
 url='https://github.com/DanCardin/cappa'
 license=('Apache-2.0')
 
