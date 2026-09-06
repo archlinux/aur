@@ -1,16 +1,16 @@
 # Maintainer: kabuspl <jakubs832 at gmail dot com>
 
 pkgname=trayplay
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Instant Replay (DVR) app for KDE using gpu-screen-recorder in the background"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kabuspl/trayplay"
 license=('GPL-3.0-only')
-depends=('gcc-libs' 'glibc' 'gpu-screen-recorder' 'xdg-desktop-portal-impl' 'kdialog' 'kirigami')
+depends=('gcc-libs' 'glibc' 'gpu-screen-recorder' 'xdg-desktop-portal-impl' 'kirigami' 'ki18n' 'kcoreaddons')
 makedepends=('cargo' 'qt6-tools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kabuspl/trayplay/archive/v${pkgver}.tar.gz")
-sha256sums=('6a364fb717a70f3664b3e33afc7d1e202bf41c6ac788170b7897b5d7127d06bc')
+sha256sums=('71378140147e106099b2f3e8b6a78602292e3e16cf0ba99013c92fd87244948a')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
@@ -33,6 +33,9 @@ package() {
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm0644 -t "$pkgdir/usr/share/trayplay" "dist/kwin_script.js"
-    install -Dm0644 -t "$pkgdir/usr/share/applications" "dist/ovh.kabus.trayplay.desktop"
+    install -Dm0644 -t "$pkgdir/usr/share/applications" "dist/ovh.kabus.TrayPlay.desktop"
+    install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps" "dist/ovh.kabus.TrayPlay.svg"
+    install -Dm0644 -t "$pkgdir/usr/share/metainfo" dist/ovh.kabus.TrayPlay.metainfo.xml
+    find locale -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/{}" \;
     install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
