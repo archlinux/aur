@@ -1,10 +1,10 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 # shellcheck disable=SC2034,SC2154,SC2164
 pkgname=galene
-pkgver=1.0
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A videoconferencing server"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='https://galene.org'
 license=('MIT')
 install='galene.install'
@@ -16,7 +16,7 @@ source=("https://github.com/jech/$pkgname/archive/$pkgname-$pkgver.tar.gz"
         'galene.service'
         'galene.sysusers'
         'galene.tmpfiles')
-sha256sums=('663639649ab417cddbb8d88b16cfc2f8a2391903f27a25b16e0239202ae2245e'
+sha256sums=('34de09188f0ff80228310ba7a62eab9afed79620ee96eeed0602d10ca5c0027b'
             'a4f1d12c230d305124da4045f85c8c496f12f5202d9d82a6b560b1cfe0355ca0'
             'a1b933ff4034cce2da2607e81df547acd7efa6f4236c18fec144047f50361f84'
             '85680da8ab202280b92b6dd32e920906570fb8070db06b2ef0275462d0f5a16d')
@@ -62,7 +62,9 @@ package() {
 
   local doc="$pkgdir/usr/share/doc/galene"
   install -dm755 "$doc"
-  install -Dm644 README README.API README.FRONTEND README.PROTOCOL "$doc"
+  install -Dm644 README.md galene-api.md galene-client.md galene-install.md \
+                 galene-protocol.md \
+                 "$doc"
 
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
 }
