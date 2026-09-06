@@ -1,26 +1,21 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=otf-churchslavonic
-pkgver=2.0
+pkgver=2.2.1
 pkgrel=1
-pkgdesc="Unicode-encoded OpenType fonts for Church Slavonic"
+pkgdesc='Unicode-encoded OpenType fonts for Church Slavonic'
 arch=('any')
-license=('SIL' 'GPL3')
-url="https://github.com/typiconman/fonts-cu/"
-install=otf.install
-source=("https://github.com/typiconman/fonts-cu/releases/download/v${pkgver}/fonts-churchslavonic.zip"
-        "https://github.com/typiconman/fonts-cu/releases/download/v${pkgver}/fonts-churchslavonic.pdf")
-md5sums=('51c16e225cf7b07ca0501a5cccfe4b02'
-         '6084b3fc544efc173a552ac1e3370538')
-sha1sums=('aea4f4b79527dd7d3d809f9ddba49b89728e69d9'
-          '4b02c9373f353a2463a1a1a1605a82e5d118104b')
-sha256sums=('0ede90e7344a8859a05fa2ec801d8819cd746f11612ccf0b2c9e5d4714e9892e'
-            'e87a30bc78c8c2610a99bc452a2c8f37f34ff9652cf3a0730b97362a2a33679d')
+license=('OFL-1.1' 'GPL-3.0')
+url='https://github.com/typiconman/fonts-cu'
+source=("$url/releases/download/v${pkgver}/fonts-churchslavonic.zip")
+md5sums=('a28aeb256044cbbdc820c94847e15ff3')
+sha1sums=('9bb25c0351b917b3c435dda0839a870e94df3cee')
+sha256sums=('6fd44c6fb4fecc01ecea8dda6efc18bf46646f2e5d997c7d60e0cbae3aa8ff2e')
+b2sums=('bdef8d5c13dc182f333248b1e2331bdd198a33461a2f07b6eeea29742026622b8ec4ffcbd797c58e0ff0ad2441ca3691a38b380f70867ff784a839ad37b26f28')
 
 package() {
-  cd "$srcdir"
-  mkdir -p $pkgdir/usr/share/{fonts/OTF,licenses/$pkgname}/
-  install -Dm644 *.otf $pkgdir/usr/share/fonts/OTF/
-  install -Dm644 fonts-churchslavonic.pdf $pkgdir/usr/share/doc/$pkgname/fonts-churchslavonic.pdf
-  install -Dm644 *.txt LICENSE $pkgdir/usr/share/licenses/$pkgname/
+	cd "$srcdir/fonts-${pkgname#otf-}"
+	mkdir -p $pkgdir/usr/share/fonts/OTF
+	install -D -m644 *.otf $pkgdir/usr/share/fonts/OTF/
+	cd docs/
+	install -D -m644 fonts-churchslavonic.pdf $pkgdir/usr/share/doc/$pkgname/fonts-churchslavonic.pdf
 }
-
