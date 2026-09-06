@@ -1,6 +1,6 @@
 pkgbase = lib32-libyuv
 	pkgdesc = Library for YUV scaling (32-bit)
-	pkgver = r2426+464c51a03
+	pkgver = r2921+644251f25
 	pkgrel = 1
 	url = https://chromium.googlesource.com/libyuv/libyuv
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = lib32-libyuv
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = lib32-libjpeg-turbo
-	depends = libyuv>=r2426+464c51a03
+	depends = libyuv>=r2921+644251f25
 	provides = libyuv.so
-	source = git+https://chromium.googlesource.com/libyuv/libyuv#commit=464c51a0353c71f08fe45f683d6a97a638d47833
-	sha512sums = 1a149818c4cddaef7963606cac5d6f1e2b6ccf700507ceca7e77f3206853c5f6818044c12af362d1f065c63e1aa9a8f3fde052e86841773417eb98f8ad2d8c69
+	source = git+https://chromium.googlesource.com/libyuv/libyuv#commit=644251f252a84bf8ce91ff0aca86a9b16b069ab8
+	sha512sums = 4dcf60738bb23c8c4581457dbd00a4ff7c86cf28cc66190544942079954c9ec90c353e1892ab3a684bfb2a4ca34cb91cd42a29d15e633e8c673d09708266705f
 
 pkgname = lib32-libyuv

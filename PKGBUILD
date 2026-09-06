@@ -2,8 +2,8 @@
 
 _name="libyuv"
 pkgname="lib32-${_name}"
-_commit="464c51a0353c71f08fe45f683d6a97a638d47833" # r2426
-pkgver="r2426+${_commit::9}"
+_commit="644251f252a84bf8ce91ff0aca86a9b16b069ab8" # r2921
+pkgver="r2921+${_commit::9}"
 pkgrel=1
 pkgdesc="Library for YUV scaling (32-bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('lib32-gcc-libs' 'lib32-glibc' 'lib32-libjpeg-turbo' "${_name}>=${pkgve
 makedepends=('cmake>=2.8.12' 'git') # 'lib32-gtest'
 provides=("${_name}.so")
 source=("git+${url}#commit=${_commit}")
-sha512sums=('1a149818c4cddaef7963606cac5d6f1e2b6ccf700507ceca7e77f3206853c5f6818044c12af362d1f065c63e1aa9a8f3fde052e86841773417eb98f8ad2d8c69')
+sha512sums=('4dcf60738bb23c8c4581457dbd00a4ff7c86cf28cc66190544942079954c9ec90c353e1892ab3a684bfb2a4ca34cb91cd42a29d15e633e8c673d09708266705f')
 
 pkgver() {
   cd "${srcdir}/${_name}"
@@ -47,7 +47,7 @@ build() {
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -DTEST:BOOL=OFF
   )
-  
+
   cd "${srcdir}"
   cmake "${cmake_options[@]}"
   cmake --build "${_name}/build"
@@ -61,7 +61,7 @@ build() {
 #     --parallel $(nproc)
 #     --exclude-regex "${excluded_tests}"
 #   )
-# 
+#
 #   cd "${srcdir}"
 #   ctest "${ctest_flags[@]}"
 # }
