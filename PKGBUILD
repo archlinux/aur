@@ -6,7 +6,7 @@
 
 pkgname=miyu
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
 url='https://github.com/SHORiN-KiWATA/Miyu'
@@ -25,12 +25,12 @@ optdepends=(
   'chromium: 网页检索脚本的浏览器(或改装 google-chrome)'
   'python-qrcode: 扫码登录时在终端里画二维码'
 )
-_release_pkgrel=1
+_release_pkgrel=2
 source=(
   "${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.pkg.tar.zst"
 )
 sha256sums=(
-  '6ff9ea2aefe3780a4d6896ca95d93edd77bb691009bec1c43428e5e236ac58fd'
+  '0943349a9cc70675fb1bf4a197dd822f165ed9792e263bcca134003c069beb88'
 )
 
 package() {

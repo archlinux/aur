@@ -1,7 +1,7 @@
 pkgbase = miyu
 	pkgdesc = 一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/Miyu
 	arch = x86_64
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = miyu
 	optdepends = python-qrcode: 扫码登录时在终端里画二维码
 	options = !strip
 	options = !debug
-	source = miyu-0.5.0-1-x86_64.release.pkg.tar.zst::https://github.com/SHORiN-KiWATA/Miyu/releases/download/v0.5.0/miyu-0.5.0-1-x86_64.pkg.tar.zst
-	sha256sums = 6ff9ea2aefe3780a4d6896ca95d93edd77bb691009bec1c43428e5e236ac58fd
+	source = miyu-0.5.0-2-x86_64.release.pkg.tar.zst::https://github.com/SHORiN-KiWATA/Miyu/releases/download/v0.5.0/miyu-0.5.0-2-x86_64.pkg.tar.zst
+	sha256sums = 0943349a9cc70675fb1bf4a197dd822f165ed9792e263bcca134003c069beb88
 
 pkgname = miyu
