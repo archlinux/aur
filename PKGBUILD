@@ -8,7 +8,7 @@
 #   vfio-native-qemu       QEMU 11.1.1 with the platform-identity patches, in /opt
 
 pkgname=vfio-native
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Present a libvirt guest as a self-consistent physical machine, and tune it"
 arch=('any')
