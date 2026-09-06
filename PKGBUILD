@@ -1,11 +1,12 @@
 # Maintainer: arosario513
 pkgname=oxipass-tui-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal-based password manager"
 arch=('x86_64' 'aarch64')
 url="https://github.com/arosario513/oxipass-tui"
 license=('MIT')
+depends=('glibc' 'gcc-libs')
 provides=('oxipass-tui')
 conflicts=('oxipass-tui')
 
