@@ -1,6 +1,6 @@
 pkgbase = oneclient-bin
 	pkgdesc = Next-generation open source Minecraft launcher (prebuilt)
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/Polyfrost/OneLauncher
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = oneclient-bin
 	provides = oneclient
 	conflicts = oneclient
 	options = !strip
-	source = OneClient_2.3.0_linux_x86_64.deb::https://github.com/Polyfrost/OneLauncher/releases/download/oneclient-2.3.0/OneClient_2.3.0_linux_x86_64.deb
-	sha256sums = 5abebc73282c6646961d7b8ae6958456fe640beaf5b39491d01c1084412910d4
+	source = OneClient_2.3.1_linux_x86_64.deb::https://github.com/Polyfrost/OneLauncher/releases/download/oneclient-2.3.1/OneClient_2.3.1_linux_x86_64.deb
+	sha256sums = 5e9047fb417753b5d0303e5798d010c49d1988a7af14f8b73d2d259cdf7bb315
 
 pkgname = oneclient-bin
