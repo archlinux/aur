@@ -1,0 +1,5 @@
+[p2pmux-bin]
+source = "github"
+github = "pelazas/p2pmux"
+use_latest_release = true
+prefix = "v"
