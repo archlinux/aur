@@ -1,6 +1,6 @@
 pkgbase = lockmgr
 	pkgdesc = Python Lock Manager Class (gc)
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://github.com/gene-git/lockmgr
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = lockmgr
 	makedepends = rsync
 	depends = python>3.10
 	depends = python-pynotify
-	source = git+https://github.com/gene-git/lockmgr#tag=1.9.1
+	source = git+https://github.com/gene-git/lockmgr#tag=1.9.2
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 
