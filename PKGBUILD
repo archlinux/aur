@@ -2,7 +2,7 @@
 pkgname=haven-desktop-git
 pkgver=0.8.5.r12.g21de4fc807
 pkgrel=1
-pkgdesc="Matrix chat and social client, built on Element Web/Desktop (built from source)"
+pkgdesc="Matrix chat and social client, built on Element Web/Desktop (built from source - see docs/building.md for build flags)"
 arch=('x86_64')
 url="https://github.com/Haven-Organization/haven-desktop"
 license=('AGPL-3.0-only')
