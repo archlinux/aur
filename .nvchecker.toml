@@ -1,3 +1,0 @@
-[litellm]
-source = "pypi"
-pypi = "litellm"

@@ -6,29 +6,47 @@
 
 pkgname=litellm
 pkgver=1.100.0
-pkgrel=1
-pkgdesc='Open Source AI Gateway for 100+ LLMs. Self-hosted. Enterprise-ready. Call any LLM in OpenAI format.'
-
-arch=(any)
-license=('MIT')
+pkgrel=2
+pkgdesc='Library to easily interface with LLM API providers.'
+arch=('any')
 url='https://github.com/BerriAI/litellm'
+license=('MIT')
 
-provides=("python-${pkgname}")
 
-makedepends=('python-uv-build'
+makedepends=('python-maturin'
              'python-build'
              'python-installer'
-             'python-wheel'
-             'python-maturin')
+             'python-wheel')
+
+depends=('python'
+         'python-fastuuid'
+         'python-httpx'
+         'python-openai'
+         'python-dotenv'
+         'python-tiktoken'
+         'python-importlib-metadata'
+         'python-tokenizers'
+         'python-click'
+         'python-jinja'
+         'python-aiohttp'
+         'python-pydantic'
+         'python-pydantic-settings'
+         'python-jsonschema'
+         'python-boto3'
+         'glibc'
+         'libgcc')
 
 optdepends=('gunicorn: proxy'
             'uvicorn: proxy'
+            'python-granian: proxy'
             'python-uvloop: proxy'
             'python-fastapi: proxy'
+            'python-starlette: proxy'
             'python-backoff: proxy'
             'python-pyyaml: proxy'
             'python-rq: proxy'
             'python-orjson: proxy'
+            'python-hiredis: proxy'
             'python-apscheduler: proxy'
             'python-fastapi-sso: proxy'
             'python-pyjwt: proxy'
@@ -44,10 +62,20 @@ optdepends=('gunicorn: proxy'
             'python-litellm-enterprise: proxy'
             'python-restrictedpython: proxy'
             'python-rich: proxy'
+            'python-inquirerpy: proxy'
             'python-polars: proxy'
             'python-soundfile: proxy'
             'python-pyroscope-io: proxy'
+            'python-expression: proxy'
+            
+            'python-rich: cli'
+            'python-pyyaml: cli'
+            'python-requests: cli'
+            'python-inquirerpy: cli'
+            'python-keyring: cli'
+            
             'python-prisma: extra_proxy'
+            'python-psycopg: extra_proxy'
             'python-azure-identity: extra_proxy'
             'python-azure-keyvault-secrets: extra_proxy'
             'python-google-cloud-kms: extra_proxy'
@@ -55,13 +83,32 @@ optdepends=('gunicorn: proxy'
             'python-resend: extra_proxy'
             'python-redisvl: extra_proxy'
             'python-a2a-sdk: extra_proxy'
+            
             'python-numpydoc: utils'
+            
             'python-diskcache: caching'
+
+            'python-mcp: mcp'
+
+            'python-pymongo: mongodb'
+
+            'python-saml: saml'
+            
             'python-semantic-router: semantic-router'
             'python-aurelio-sdk: semantic-router'
+            
             'python-mlflow: mlflow'
+            
             'python-grpcio: grpc'
+
+            'python-nvidia-riva-client: stt-nvidia-riva'
+            'python-soundfile: stt-nvidia-riva'
+            'python-audioread: stt-nvidia-riva'
+            'python-numpy: stt-nvidia-riva'
+            
             'python-google-cloud-aiplatform: google'
+            'python-aws-sdk-bedrock-runtime: bedrock-realtime'
+            
             'python-google-cloud-aiplatform: proxy-runtime'
             'python-google-genai: proxy-runtime'
             'python-anthropic: proxy-runtime'
@@ -82,19 +129,7 @@ optdepends=('gunicorn: proxy'
             'python-llm-sandbox: proxy-runtime'
             'python-detect-secrets: proxy-runtime')
 
-depends=('python'
-         'python-fastuuid'
-         'python-httpx'
-         'python-openai'
-         'python-dotenv'
-         'python-tiktoken'
-         'python-importlib-metadata'
-         'python-tokenizers'
-         'python-click'
-         'python-jinja'
-         'python-aiohttp'
-         'python-pydantic'
-         'python-jsonschema')
+provides=("python-${pkgname}")
 
 options=(!lto !strip)
 
