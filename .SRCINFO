@@ -1,0 +1,20 @@
+pkgbase = inklecate
+	pkgdesc = A command-line compiler for ink: inkle's narrative scripting language
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://www.inklestudios.com/ink/
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	conflicts = inklecate
+	conflicts = inklecate-bin
+	conflicts = inklecate-git
+	options = !debug
+	source = inklecate-1.2.1.tar.gz::https://github.com/inkle/ink/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = 7259d6c1ce735d330d7d01e105421787cbd43ad462f0bdbce5738989f0ae7c36
+
+pkgname = inklecate

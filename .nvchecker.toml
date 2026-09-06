@@ -1,0 +1,5 @@
+[inklecate]
+source = "github"
+github = "inkle/ink"
+prefix = "v"
+use_latest_release = true
