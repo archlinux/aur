@@ -1,6 +1,6 @@
 pkgbase = praxis-bin
 	pkgdesc = Praxis - Semantic Command & Control Framework for Agents (pre-built)
-	pkgver = 1.0.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/originsec/praxis
 	install = praxis.install
@@ -11,7 +11,7 @@ pkgbase = praxis-bin
 	depends = glibc
 	options = !lto
 	backup = etc/praxis/env
-	source = praxis-1.0.0-x86_64-linux.tar.gz::https://github.com/originsec/praxis/releases/download/v1.0.0/praxis-1.0.0-x86_64-linux.tar.gz
+	source = praxis-1.1.1-x86_64-linux.tar.gz::https://github.com/originsec/praxis/releases/download/v1.1.1/praxis-1.1.1-x86_64-linux.tar.gz
 	source = praxis-service.service
 	source = praxis-sysusers.conf
 	source = praxis-tmpfiles.conf
