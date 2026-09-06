@@ -1,6 +1,6 @@
 pkgbase = pkglint-bin
 	pkgdesc = Linter for Arch Linux PKGBUILDs
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/jmelahman/pkglint
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = pkglint-bin
 	license = GPL-3.0
 	provides = pkglint
 	conflicts = pkglint
-	source_x86_64 = https://github.com/jmelahman/pkglint/releases/download/v1.6.1/pkglint_1.6.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = ac626f06802333de4c1d156b9756dd88de098ab101ed12a0e8b2b91a2161699a
-	source_aarch64 = https://github.com/jmelahman/pkglint/releases/download/v1.6.1/pkglint_1.6.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2dcc46f46a0e7c6b70f1368510b777b30e086f1bdcff3896b1166692232b64ca
+	source_x86_64 = https://github.com/jmelahman/pkglint/releases/download/v1.6.2/pkglint_1.6.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4fcc899289421604246457fdc2d32baa9d0a2b1883c806324436a7c3203b19b1
+	source_aarch64 = https://github.com/jmelahman/pkglint/releases/download/v1.6.2/pkglint_1.6.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5efda7538ae4164ad33756193e6d9109c25e0e37307ccdcc079965e4b1cd8edf
 
 pkgname = pkglint-bin
