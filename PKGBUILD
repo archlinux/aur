@@ -1,26 +1,26 @@
 # Maintainer: Moonlit Tune <moonlit underscore tune at protonmail dot com>
 
 pkgname=python-lxmf
-_name='lxmf'
-pkgver=1.1.0
+_name=${pkgname#python-}
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Lightweight Extensible Message Format for Reticulum"
 arch=('any')
 depends=('python-rns')
 makedepends=('python-setuptools')
-url="https://github.com/markqvist/lxmf"
-license=('MIT')
-source=($pkgname-$pkgver::$url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('fd50aba5cba4802033bb79505b0eb7e5c8caa2a7f23d6f77f17da6e45f79de3d')
+url="https://reticulum.network/"
+license=('custom:reticulum')
+source=($pkgname-$pkgver::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
+sha256sums=('f2f7ea17d793fcc32cab826e81e8e9824404d025d1fc71b143be3242d45e6a5e')
 
 build() {
-  cd "$srcdir/LXMF-$pkgver"
+  cd "$srcdir/$_name-$pkgver"
 
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/LXMF-$pkgver"
+  cd "$srcdir/$_name-$pkgver"
 
   install -Dm 644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
