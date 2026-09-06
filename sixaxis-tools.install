@@ -1,0 +1,10 @@
+post_install() {
+    udevadm control --reload-rules 2>/dev/null
+    udevadm trigger --subsystem-match=usb --attr-match=idVendor=054c --action=add 2>/dev/null
+    echo "==> sixaxis-tools: re-plug your Sixaxis controller once so the new udev rule applies."
+    echo "    Afterwards sixaxis-ctrl, sixaxis-tui and sixaxis-gtk run as a regular user (no sudo)."
+}
+
+post_upgrade() {
+    post_install
+}
