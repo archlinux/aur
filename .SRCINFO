@@ -1,7 +1,7 @@
 pkgbase = fortune-mod-zh-gushici
 	pkgdesc = Chinese poems for fortune-mod。用于fortune的中文古詩詞，收錄傳世經典詩詞、辭賦、駢文與富有韻律的短篇散文
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/levinit/fortune-zh-gushici
 	install = fortune-mod-zh-gushici.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = fortune-mod-zh-gushici
 	depends = fortune-mod
 	source = fortune-mod-zh-gushici-1.0.0.tar.gz::https://github.com/levinit/fortune-zh-gushici/archive/refs/heads/main.tar.gz
 	source = fortune-mod-zh-gushici.install
-	sha256sums = 61ebf1a01d5e32734440bbb47af2709c4f0bf0befff9e3c84b14a7818c94fc1a
+	sha256sums = fe444fa227d09634d7b1ae7e770a40e9374db1081c8a9cc4d0c61d1df00c3701
 	sha256sums = e0ed51b55622d33ce608f5ef17d4908349fb744b38795ab8f31642c9e9b0f010
 
 pkgname = fortune-mod-zh-gushici
