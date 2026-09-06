@@ -1,6 +1,6 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Powerful, fast and elegant task / TODO manager. (GUI & TUI, CalDAV & local)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
 
 options=('!lto' '!strip' '!debug')
 source=("cfait-source-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/cfait-source-v${pkgver}.tar.gz")
-sha256sums=('6788f3a69ea46cf679f8a4b5ebc455bee33d1d2346ddf4659dd3c7d4f0bf5c66')
+sha256sums=('c25d318335258fbef7a18dfc2997a86d55b410ba71cf06dc28d59ecd96e0de7a')
 replaces=('rustycal' 'rustache' 'fairouille')
 provides=('cfait-tui' 'cfait-gui')
 
@@ -39,6 +39,7 @@ build() {
   # Skip compiling the problematic fallback RNG.
   # Linux's native getrandom() is used instead.
   export AWS_LC_SYS_NO_JITTER_ENTROPY=1
+  export RUST_MIN_STACK=16777216
 
   # Build both TUI and GUI
   cargo build --release --features gui
