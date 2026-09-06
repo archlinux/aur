@@ -1,0 +1,17 @@
+pkgbase = godirb-bin
+	pkgdesc = Fast and easy-to-use directory brute-forcer written in Go
+	pkgver = 1.5.6
+	pkgrel = 1
+	url = https://github.com/MyCode83/godirb
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = godirb
+	conflicts = godirb
+	options = !strip
+	source_x86_64 = godirb-x86_64-1.5.6.tgz::https://github.com/MyCode83/godirb/releases/download/v1.5.6/godirb_1.5.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3a420219abeae22924af2ae8c89f4798e7217dcf7cfe401d4c07110d1a34110d
+	source_aarch64 = godirb-aarch64-1.5.6.tgz::https://github.com/MyCode83/godirb/releases/download/v1.5.6/godirb_1.5.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = f8672d4f5847f80897e0a00512bf547f6b5df7689f02458f81b17e6dc1db03e9
+
+pkgname = godirb-bin

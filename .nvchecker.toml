@@ -1,0 +1,5 @@
+[godirb-bin]
+source = "github"
+github = "MyCode83/godirb"
+use_latest_release = true
+prefix = "v"
