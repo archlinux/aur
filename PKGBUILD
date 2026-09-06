@@ -1,7 +1,7 @@
 # Maintainer: Aditya Hebballe <adityahebballe@proton.me>
 
 pkgname=cartridges-rewrite-git
-pkgver=49.0.r182.g9c879bc
+pkgver=49.0.r183.g2531ea2
 pkgrel=1
 pkgdesc="A GTK4 + Libadwaita game launcher (rewrite branch)"
 arch=(any)
