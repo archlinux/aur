@@ -562,7 +562,7 @@ def run_curses_tui(stdscr):
                 break
 
         # Rename Session (F2 or r)
-        elif key in (curses.KEY_F2, curses.KEY_F(2), ord('r'), ord('R')):
+        elif key in (curses.KEY_F2, ord('r'), ord('R')):
             if sessions:
                 s = sessions[selected_idx]
                 prompt_label = f"Rename session {s['uuid'][:8]} (empty to clear): "
@@ -582,7 +582,7 @@ def run_curses_tui(stdscr):
                     status_color = curses.color_pair(3)
 
         # Delete Session (F4, Delete, d)
-        elif key in (curses.KEY_F4, curses.KEY_F(4), curses.KEY_DC, ord('d'), ord('D')):
+        elif key in (curses.KEY_F4, curses.KEY_DC, ord('d'), ord('D')):
             if sessions:
                 s = sessions[selected_idx]
                 confirm_prompt = f"Delete session {s['uuid'][:8]} ({format_size(s['size_bytes'])})? [y/N]: "
