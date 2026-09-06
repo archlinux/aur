@@ -1,7 +1,7 @@
 # Maintainer: Ian Emnace <igemnace@gmail.com>
 
 pkgname=degit
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="Straightforward project scaffolding"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs>=8')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('dae9e460409cd714be4a92ed1990ed9c8a34dcc8da94be35973c01524cb04c25')
+sha256sums=('23037621be538986c781a516c40ef38cd15e40dce399def282fecbde9b687b18')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
