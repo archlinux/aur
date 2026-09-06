@@ -2,7 +2,7 @@
 
 _pkgname=dwm
 pkgname=sarbs-dwm-git
-pkgver=6.6.SARBS.r2013.b620988
+pkgver=2026.09.06.r2013.gb620988
 pkgrel=1
 pkgdesc="Sergi's build of dwm (Teil von SARBS)"
 arch=('x86_64')
@@ -17,8 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  # Bindestriche sind in pkgver unzulässig (z. B. „6.6-SARBS" in config.mk)
-  printf "%s.r%s.%s" "$(awk '/^VERSION =/ {print $3}' config.mk | tr '-' '.')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.g%s" "$(git log -1 --format=%cd --date=format:'%Y.%m.%d')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
