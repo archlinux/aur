@@ -1,8 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=google-colab-cli
-_pkgname=google_colab_cli
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="CLI for interacting with Google Colab"
 arch=('any')
@@ -25,16 +24,19 @@ depends=('python'
          'python-typer'
          'python-typing_extensions'
          'python-websocket-client')
+optdepends=('openssh: colab ssh (SSH-over-WebSocket access to the runtime VM)')
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-hatch-vcs')
-source=("https://files.pythonhosted.org/packages/source/g/$pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('98adc2e200df421a0cdbb4d85bc705ed4e5d8c16892b584992ddfeac74625aca')
+# PyPI sdists lag the git tags (which nvchecker tracks), so build from the
+# tag tarball; hatch-vcs gets the version via SETUPTOOLS_SCM_PRETEND_VERSION.
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ab0035b2db23991133518bd18243c885efb15be95cbcac1e463912db0f496b18')
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
