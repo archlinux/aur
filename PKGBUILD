@@ -25,8 +25,8 @@ conflicts=('qqmusic-tui')
 
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v${pkgver}/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v${pkgver}/${pkgname}-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst")
-sha256sums_x86_64=('a512fb3e18f57eac0c5feddfd1f0dd368c51404a3c4d48ebf8ae31aa0a4f4982')
-sha256sums_aarch64=('e48df7d1305c7da872897ba0eb2f6f43d3d34a7c8a29a287bf21117b894bae02')
+sha256sums_x86_64=('52ee160ec090b5c4c634910b246662685add70d401b447c7711a91947683f216')
+sha256sums_aarch64=('1be0a9dbcaa2af1d81dc44533e9e292dc86fa916e9c5bdfba378f140d7251928')
 
 package() {
     cp -a "${srcdir}/usr" "${pkgdir}/"
