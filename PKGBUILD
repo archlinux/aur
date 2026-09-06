@@ -2,7 +2,7 @@
 
 _pkgname=passless
 pkgname="${_pkgname}"
-pkgver=0.19.1
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="Virtual FIDO2 device and client FIDO 2 utility. Passkeys made easy."
 arch=('x86_64' 'aarch64')
