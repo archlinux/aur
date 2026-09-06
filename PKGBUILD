@@ -6,14 +6,17 @@ pkgname=${_pkgname}-bin
 pkgver=0.6.0
 pkgrel=1
 pkgdesc="Check for broken symlinks"
+
 arch=('x86_64' 'aarch64')
 _barch=('linux_amd64' 'linux_arm64')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+
 license=('MIT')
 
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${pkgname%-bin}")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${_barch[0]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${_barch[1]}.tar.gz")
