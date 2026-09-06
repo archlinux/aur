@@ -1,7 +1,7 @@
 # Maintainer: x70b1
 pkgname=('hyprland-plugin-hy3')
 pkgver='0.56.2'
-pkgrel=1.1
+pkgrel=2.1
 pkgdesc='A Hyprland plugin for i3 like tiling'
 arch=('x86_64')
 url='https://github.com/outfoxxed/hy3'
