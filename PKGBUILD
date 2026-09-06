@@ -51,7 +51,7 @@ package() {
   esac
   
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
-  install -Dm644 -t "$pkgdir/etc/llama-swap" config.example.yaml
+  install -Dm644 -t "$pkgdir/etc/llama-swap" docs/config.example.yaml
   install -Dm644 -t "$pkgdir/usr/lib/systemd/system" ../llama-swap.service
   install -Dm755 "build/$_binary_name" "$pkgdir/usr/bin/llama-swap"
 }
