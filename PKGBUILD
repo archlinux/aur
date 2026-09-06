@@ -1,6 +1,6 @@
 # Maintainer: Donato Foglia <fogliadonato2@gmail.com>
 pkgname=nexus-aur-bin
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Un gestore di pacchetti grafico per Arch Linux e AUR scritto in Flutter"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'glib2' 'util-linux' 'yay')
 provides=('nexus-aur')
 conflicts=('nexus-aur')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/IlNinjaDiBattipaglia/Nexus-AUR/releases/download/v$pkgver/nexus-aur-linux-x86_64.tar.gz")
-sha256sums=('c9627d6debc60487f046ee321942b6728605f2f07f3b4989bf989b0c7c451a2e')
+sha256sums=('3328c211f8bd0c82bb865fdb36856702ffbfe7778e15d7a6864575b063334bce')
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
