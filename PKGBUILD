@@ -11,6 +11,6 @@ source=("https://github.com/crosspoint-reader/calibre-plugins/releases/download/
 noextract=("crosspoint-${pkgver}.zip")
 sha256sums=('466a2b5fc6496faec40c498c625105971038066a01271fa3e7a3ad5befa2adf2')
 package() {
-	install -m644 -D "${srcdir}/crosspoint-${pkgver}.zip" "${pkgdir}/usr/share/calibre/system-plugins/crosspoint-${pkgver}.zip"
+	install -m644 -D "${srcdir}/crosspoint_reader-v${pkgver}.zip" "${pkgdir}/usr/share/calibre/system-plugins/crosspoint-${pkgver}.zip"
 }
 
