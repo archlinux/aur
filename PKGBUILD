@@ -47,8 +47,8 @@ optdepends=(
 #   aarch64 -> Lumina.Terminal_<ver>_arm64.deb
 source_x86_64=("${pkgname}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/Lumina.Terminal_${pkgver}_amd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-arm64.deb::${url}/releases/download/v${pkgver}/Lumina.Terminal_${pkgver}_arm64.deb")
-sha256sums_x86_64=('d17d5dc7184249afe1f4005ec67e56f2326cca01230fb604d4869e3b67497930')
-sha256sums_aarch64=('63664c98d7bf21ed5d71f4da8c4faaf798943624a837bd120e6ddfa971d485fd')
+sha256sums_x86_64=('aa1ee34bfb464143bded8510a505bdc64eda0f2466544de18bcd389c78278a3a')
+sha256sums_aarch64=('65018d3a5c859758d2e2c6095f61a8080ae7ac4f7a6ea79edcc49068ac7e5aab')
 
 # No arch-independent sources — empty arrays keep makepkg's parser happy.
 source=()

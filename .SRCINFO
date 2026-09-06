@@ -15,8 +15,8 @@ pkgbase = lumina-terminal-bin
 	conflicts = lumina-terminal
 	noextract = lumina-terminal-bin-0.3.2-*.deb
 	source_x86_64 = lumina-terminal-bin-0.3.2-amd64.deb::https://github.com/iewnfod/lumina-terminal/releases/download/v0.3.2/Lumina.Terminal_0.3.2_amd64.deb
-	sha256sums_x86_64 = d17d5dc7184249afe1f4005ec67e56f2326cca01230fb604d4869e3b67497930
+	sha256sums_x86_64 = aa1ee34bfb464143bded8510a505bdc64eda0f2466544de18bcd389c78278a3a
 	source_aarch64 = lumina-terminal-bin-0.3.2-arm64.deb::https://github.com/iewnfod/lumina-terminal/releases/download/v0.3.2/Lumina.Terminal_0.3.2_arm64.deb
-	sha256sums_aarch64 = 63664c98d7bf21ed5d71f4da8c4faaf798943624a837bd120e6ddfa971d485fd
+	sha256sums_aarch64 = 65018d3a5c859758d2e2c6095f61a8080ae7ac4f7a6ea79edcc49068ac7e5aab
 
 pkgname = lumina-terminal-bin
