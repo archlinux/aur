@@ -2,7 +2,7 @@
 _pkgname=en-croissant
 
 pkgname="${_pkgname}"-bin
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="The Ultimate Chess Toolkit"
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=('hicolor-icon-theme' openssl-1.1
 )
 
 source_x86_64=("https://github.com/franciscoBSalgueiro/en-croissant/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums_x86_64=('e749402f1fcf8c3ab368afe22f82ebb3a3eabdcb374ca5ed99bb8eea3a557073')
+sha256sums_x86_64=('115a682daa910a5317379b6e739d9e9f7bf825f522a49fc12af11bd6fce8856a')
 
 package() {
 	bsdtar -xf data.tar.* -C $pkgdir
