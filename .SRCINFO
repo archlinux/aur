@@ -1,6 +1,6 @@
 pkgbase = python-wassima
 	pkgdesc = No more certifi! System trust store at hand. In Pure Python.
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://github.com/jawah/wassima
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-wassima
 	makedepends = python-wheel
 	depends = python
 	options = !debug
-	source = python-wassima-2.1.3.tar.gz::https://github.com/jawah/wassima/archive/refs/tags/2.1.3.tar.gz
-	sha256sums = 68bae16ee725138e1689b81dac51b514ced4c968aa6e305461aec2078dd3be84
+	source = python-wassima-2.1.4.tar.gz::https://github.com/jawah/wassima/archive/refs/tags/2.1.4.tar.gz
+	sha256sums = 934907cc325e793e05bfdf79226bc7c69eaf8ed5a149ee8a6413ab326aaa91c5
 
 pkgname = python-wassima
