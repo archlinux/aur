@@ -1,6 +1,6 @@
 pkgbase = create-egregore
 	pkgdesc = Set up Egregore shared cognition workspaces for Claude Code or Codex
-	pkgver = 0.20.2
+	pkgver = 0.20.3
 	pkgrel = 1
 	url = https://egregore.xyz/
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = create-egregore
 	optdepends = github-cli: first-party GitHub authentication path
 	optdepends = claude-code: Claude Code runtime
 	optdepends = openai-codex-bin: Codex runtime
-	noextract = create-egregore-0.20.2.tgz
-	source = https://registry.npmjs.org/create-egregore/-/create-egregore-0.20.2.tgz
+	noextract = create-egregore-0.20.3.tgz
+	source = https://registry.npmjs.org/create-egregore/-/create-egregore-0.20.3.tgz
 	source = LICENSE
-	sha256sums = cf23bf36d4971f27d3a1729e6285da172e386079b34f3bca91ceffaa062f5a2a
+	sha256sums = e619d0e3efc3fc1296884f0fd66d200addae60ff0189f63dc431cf044182addf
 	sha256sums = 209c1cd2733a2bc403232f439e185db49ff94b516190cd7b17c5a3d2c256dd80
 
 pkgname = create-egregore
