@@ -1,5 +1,5 @@
 pkgname=python-khidl
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A Simple CLI for downloading game soundtracks"
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=(
 source=(
 	"https://github.com/qwerinope/khidl/archive/refs/tags/v$pkgver.zip"
 )
-sha256sums=('8c70ca5353aa1c62a19c4bf4e80bf37aa616adec4db482a2ed01194021a0b3ca')
+sha256sums=('49940d2697b36aa6d7a6a4b9283166f07c90f0cf1550dfd63847f3aa312a7996')
 
 build() {
 	cd $srcdir/khidl-$pkgver
