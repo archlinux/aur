@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=patreon-dl-gui
+Comment=GUI for patreon-dl
+GenericName=patreon-dl-gui
+Exec=patreon-dl-gui %U
+Icon=patreon-dl-gui
+Type=Application
+StartupNotify=true
+Categories=GTK;Utility;

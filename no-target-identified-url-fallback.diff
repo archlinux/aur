@@ -1,0 +1,278 @@
+diff --git a/src/main/PatreonPageAnalyzer.ts b/src/main/PatreonPageAnalyzer.ts
+index 330b21a..a23832d 100644
+--- a/src/main/PatreonPageAnalyzer.ts
++++ b/src/main/PatreonPageAnalyzer.ts
+@@ -12,6 +12,12 @@ export interface AnalyzerRequestOptions {
+   } | null;
+   userAgent: string;
+   cookie: string;
++  /**
++   * URL of the page currently loaded in the browser view. Used as fallback
++   * for identifying the target when the page data returned by Patreon does
++   * not contain the information needed to do so.
++   */
++  currentURL?: string;
+ }
+ 
+ // "Custom domain" paths and rules not fully tested.
+@@ -60,6 +66,27 @@ const PAGE_PATHNAME_FORMATS = {
+   ]
+ };
+ 
++// First path segment of URLs that do not refer to a creator's vanity.
++const NON_VANITY_PATH_SEGMENTS = [
++  "posts",
++  "collection",
++  "user",
++  "home",
++  "search",
++  "explore",
++  "checkout",
++  "join",
++  "login",
++  "signup",
++  "settings",
++  "messages",
++  "notifications",
++  "api",
++  "oauth2",
++  "dashboard",
++  "creator-hub"
++];
++
+ const NEXTJS_PATHNAME_REGEX = {
+   postsByUser: [
+     /\/cw\/(?:.+)\/posts(?:\?(.+)?)?$/,
+@@ -158,10 +185,16 @@ export default class PatreonPageAnalyzer {
+       const _an = (an = this.#analyzePage(json));
+       tiers = this.#getTiers(json);
+       campaignId = _an?.campaignId ?? null;
++      if (!an) {
++        an = this.#analyzeURL(requestOptions.currentURL);
++      }
+     } else {
+       const isNextJSStreamingResponse = html.includes("self.__next_f.push");
+       if (isNextJSStreamingResponse) {
+-        an = this.#analyzeNextJSStreamingResponse(html);
++        an = this.#analyzeNextJSStreamingResponse(
++          html,
++          requestOptions.currentURL
++        );
+         try {
+           const ct = await this.#getCampaignIdAndTiersFromStreamingResponse(
+             html,
+@@ -259,24 +292,6 @@ export default class PatreonPageAnalyzer {
+       campaignId
+     );
+ 
+-    const __parseSlugId = (s: string) => {
+-      // Check if ID only - no slug
+-      if (!isNaN(Number(s))) {
+-        return {
+-          slug: null,
+-          id: s
+-        };
+-      }
+-      const match = /(.+)-(\d+)$/.exec(s);
+-      if (match?.length === 3) {
+-        return {
+-          slug: match[1],
+-          id: match[2]
+-        };
+-      }
+-      return { slug: null, id: null };
+-    };
+-
+     if (
+       PAGE_PATHNAME_FORMATS.postsByUser.includes(page) &&
+       typeof userId === "string"
+@@ -315,7 +330,7 @@ export default class PatreonPageAnalyzer {
+       PAGE_PATHNAME_FORMATS.post.includes(page) &&
+       typeof postId === "string"
+     ) {
+-      const { slug, id } = __parseSlugId(postId);
++      const { slug, id } = this.#parseSlugId(postId);
+       if (id) {
+         const an: URLAnalysis = {
+           type: "post",
+@@ -355,7 +370,7 @@ export default class PatreonPageAnalyzer {
+       typeof vanity === "string" &&
+       typeof productId === "string"
+     ) {
+-      const { slug, id } = __parseSlugId(productId);
++      const { slug, id } = this.#parseSlugId(productId);
+       if (slug && id) {
+         const an: URLAnalysis = {
+           type: "product",
+@@ -393,7 +408,10 @@ export default class PatreonPageAnalyzer {
+     return null;
+   }
+ 
+-  static #analyzeNextJSStreamingResponse(html: string): PageAnalysis | null {
++  static #analyzeNextJSStreamingResponse(
++    html: string,
++    currentURL?: string
++  ): PageAnalysis | null {
+     const vanityRegex =
+       /\\(?:\\?)"vanity\\(?:\\?)":\\(?:\\?)"(.+?)\\(?:\\?)"/gm;
+     const vanityMatch = vanityRegex.exec(html);
+@@ -411,7 +429,9 @@ export default class PatreonPageAnalyzer {
+       pathname
+     );
+     if (!pathname) {
+-      return null;
++      // Patreon no longer includes "pathname" in every streaming response.
++      // Fall back to the URL of the page loaded in the browser view.
++      return this.#analyzeURL(currentURL);
+     }
+ 
+     if (
+@@ -469,7 +489,133 @@ export default class PatreonPageAnalyzer {
+         }
+       };
+     }
+-    return null;
++    return this.#analyzeURL(currentURL);
++  }
++
++  /**
++   * Identifies the target from the URL of the page loaded in the browser view.
++   * This is a fallback for when the page data returned by Patreon does not
++   * contain the information needed to identify the target. It covers the same
++   * URL formats as `PAGE_PATHNAME_FORMATS`.
++   */
++  static #analyzeURL(currentURL?: string): PageAnalysis | null {
++    if (!currentURL) {
++      return null;
++    }
++    let url: URL;
++    try {
++      url = new URL(currentURL);
++    } catch (_error: unknown) {
++      console.warn(`PatreonPageAnalyzer: invalid URL "${currentURL}"`);
++      return null;
++    }
++    console.debug(`PatreonPageAnalyzer: analyzing URL "${currentURL}"`);
++
++    const segments = url.pathname
++      .split("/")
++      .filter((segment) => segment.length > 0)
++      .map((segment) => {
++        try {
++          return decodeURIComponent(segment);
++        } catch (_error: unknown) {
++          return segment;
++        }
++      });
++    // "/cw" and "/c" prefixes do not affect what the rest of the path refers to.
++    if (segments[0] === "cw" || segments[0] === "c") {
++      segments.shift();
++    }
++    const [first, second, third] = segments;
++
++    const __result = (
++      an: URLAnalysis,
++      normalizedURL: string
++    ): PageAnalysis => ({
++      normalizedURL,
++      target: {
++        ...an,
++        description: this.#getTargetDesc(an)
++      }
++    });
++
++    // /user/posts?u=[userId]
++    const userId = url.searchParams.get("u");
++    if (first === "user" && userId) {
++      return __result(
++        { type: "postsByUserId", userId },
++        `${PATREON_URL}/user/posts?u=${userId}`
++      );
++    }
++
++    // /posts/[postId]
++    if (first === "posts" && second) {
++      const { slug, id } = this.#parseSlugId(second);
++      if (id) {
++        return __result(
++          { type: "post", postId: id, slug: slug ?? undefined },
++          `${PATREON_URL}/posts/${second}`
++        );
++      }
++      return null;
++    }
++
++    // /collection/[collectionId]
++    if (first === "collection" && second) {
++      const { id } = this.#parseSlugId(second);
++      const collectionId = id || second;
++      return __result(
++        { type: "postsByCollection", collectionId },
++        `${PATREON_URL}/collection/${collectionId}`
++      );
++    }
++
++    if (!first || NON_VANITY_PATH_SEGMENTS.includes(first)) {
++      return null;
++    }
++
++    // /[vanity]/shop/[productId]
++    if (second === "shop" && third) {
++      const { slug, id } = this.#parseSlugId(third);
++      if (slug && id) {
++        return __result(
++          { type: "product", productId: id, slug },
++          `${PATREON_URL}/${first}/shop/${third}`
++        );
++      }
++      return null;
++    }
++
++    // /[vanity]/shop
++    if (second === "shop") {
++      return __result(
++        { type: "shop", vanity: first },
++        `${PATREON_URL}/${first}/shop`
++      );
++    }
++
++    // /[vanity]/[[...tab]]
++    return __result(
++      { type: "postsByUser", vanity: first },
++      `${PATREON_URL}/${first}/posts`
++    );
++  }
++
++  static #parseSlugId(s: string) {
++    // Check if ID only - no slug
++    if (!isNaN(Number(s))) {
++      return {
++        slug: null,
++        id: s
++      };
++    }
++    const match = /(.+)-(\d+)$/.exec(s);
++    if (match?.length === 3) {
++      return {
++        slug: match[1],
++        id: match[2]
++      };
++    }
++    return { slug: null, id: null };
+   }
+ 
+   static async #getCampaignIdAndTiersFromStreamingResponse(
+diff --git a/src/main/views/browser/WebBrowserView.ts b/src/main/views/browser/WebBrowserView.ts
+index 5a4906b..520fb17 100644
+--- a/src/main/views/browser/WebBrowserView.ts
++++ b/src/main/views/browser/WebBrowserView.ts
+@@ -445,7 +445,8 @@ export default class WebBrowserView extends WebContentsView {
+               const an = await PatreonPageAnalyzer.analyze(html, signal, {
+                 proxy: this.#proxy,
+                 userAgent: WebBrowserView.#userAgent,
+-                cookie
++                cookie,
++                currentURL: this.webContents.getURL()
+               });
+               if (an.status === "complete") {
+                 resolve(an);
