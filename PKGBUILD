@@ -2,7 +2,7 @@
 # Builds kache from the latest `main`. pkgver() derives the version from git,
 # so this tracks unreleased/dev code — rebuild to update.
 pkgname=kache-git
-pkgver=0.16.0.r606.ga21d020
+pkgver=0.17.0.r728.g76d2b18
 pkgrel=1
 pkgdesc='Content-addressed zero-copy build cache for Rust, C/C++ and more (latest git main)'
 arch=('x86_64' 'aarch64')
@@ -46,6 +46,13 @@ package() {
   install -Dm0644 kache.zsh    "$pkgdir/usr/share/zsh/site-functions/_kache"
   install -Dm0644 kache.fish   "$pkgdir/usr/share/fish/vendor_completions.d/kache.fish"
   install -Dm0644 kache.elvish "$pkgdir/usr/share/elvish/lib/kache.elv"
+
+  # Compiler-name farm (ccache's /usr/lib/ccache). Keep in sync with
+  # compiler::shim::SHIM_NAMES.
+  install -d "$pkgdir/usr/lib/kache"
+  for name in cc c++ gcc g++ clang clang++; do
+    ln -s /usr/bin/kache "$pkgdir/usr/lib/kache/$name"
+  done
 
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
