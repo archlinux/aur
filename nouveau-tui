@@ -1,24 +1,20 @@
 #!/usr/bin/env python3
 """
-qnouveauconfig - Curses-based GPU Performance & Reclocking Manager for Qtile (pulsemixer style)
-Designed to match the exact aesthetic, tabbed modes, and responsiveness of qpowerconfig / qblueconfig.
-Wraps nouveau-ctrl & debugfs:
- - Top mode bar (1 P-States, 2 Dynamic Governor, 3 DRM/3D Clients, 4 Telemetry)
- - Radio buttons ([●] / [○]) for selecting performance states (03, 07, 0f, 10)
- - Live GPU Core, Shader, Memory clock sliders & Temperature gauges
- - Dynamic governor toggle (start/stop/restart nouveau-dynclockd)
- - Interactive list of active DRM / GPU clients with PID and status
- - Navigation: j/k, Up/Down, Space/Enter to apply, Tab / 1..4 to switch modes
- - Help overlay (F1 / ?), Quit (Esc / q)
+nouveau-tui - Interactive GPU Performance & Reclocking Manager for Nouveau Fermi (GF100-GF119)
+Designed with a clean, focused 3-tab layout matching pulsemixer / qpowerconfig:
+ - Tab 1: P-States (Manual clock locking + Dynamic Governor auto-reclock toggle)
+ - Tab 2: 3D Clients (Live active DRM GPU clients & PIDs)
+ - Tab 3: Telemetry (Real-time clocks, temperature, voltage & hardware sensors)
 """
 
 import curses
-import subprocess
-import time
-import sys
+import glob
 import os
-import signal
 import re
+import signal
+import subprocess
+import sys
+import time
 
 PSTATE_PATH = "/sys/kernel/debug/dri/0/pstate"
 CLIENTS_PATH = "/sys/kernel/debug/dri/0/clients"
@@ -47,22 +43,20 @@ def read_debugfs_file(path):
     return run_cmd(f"sudo /bin/cat {path} 2>/dev/null")
 
 def get_pstates():
-    # Reads /sys/kernel/debug/dri/0/pstate
     pstates = []
     active_code = None
     content = read_debugfs_file(PSTATE_PATH)
+
     for line in content.splitlines():
         line = line.strip()
         if not line or line.startswith("AC:") or line.startswith("DC:"):
             continue
-        # Line format: '03: core 50 MHz shader 101 MHz memory 135 MHz AC DC *'
         parts = line.split(":")
         if len(parts) >= 2:
             code = parts[0].strip()
             rest = parts[1].strip()
             is_active = ("*" in rest)
             
-            # Extract clock frequencies
             core_m = re.search(r'core\s+(\d+)', rest)
             shader_m = re.search(r'shader\s+(\d+)', rest)
             mem_m = re.search(r'memory\s+(\d+)', rest)
@@ -86,11 +80,8 @@ def get_pstates():
     return pstates, active_code
 
 def get_telemetry():
-    # Read temperature and voltage via nouveau-ctrl status or sysfs
     temp_str = "N/A"
     volt_str = "N/A"
-    # Try hwmon directly for zero latency
-    import glob
     for hwmon in glob.glob("/sys/class/drm/card0/device/hwmon/hwmon*/"):
         try:
             t_val = int(open(os.path.join(hwmon, "temp1_input")).read().strip())
@@ -103,7 +94,6 @@ def get_telemetry():
         except Exception:
             pass
 
-    # Check governor daemon
     daemon_active = "active" in run_cmd("systemctl is-active nouveau-dynclockd 2>/dev/null")
 
     return {
@@ -113,7 +103,6 @@ def get_telemetry():
     }
 
 def get_clients():
-    # Parse active DRM clients
     clients = []
     content = read_debugfs_file(CLIENTS_PATH)
     lines = content.splitlines()
@@ -139,11 +128,11 @@ class Style:
     arrow_focused      = '▶'
 
 class NouveauTUI:
-    MODE_NAMES = ["1 P-States", "2 Governor", "3 3D Clients", "4 Telemetry"]
+    MODE_NAMES = ["1 P-States & Governor", "2 3D Clients", "3 Telemetry"]
 
     def __init__(self, stdscr):
         self.screen = stdscr
-        self.active_mode = 0  # 0: P-States, 1: Governor, 2: 3D Clients, 3: Telemetry
+        self.active_mode = 0  # 0: P-States & Governor, 1: 3D Clients, 2: Telemetry
         self.focus_idx = 0
         self.top_idx = 0
         self.status_msg = ""
@@ -171,7 +160,7 @@ class NouveauTUI:
             curses.start_color()
             curses.use_default_colors()
             curses.init_pair(1, curses.COLOR_GREEN, -1)   # Green / Active
-            curses.init_pair(2, curses.COLOR_YELLOW, -1)  # Yellow / P8
+            curses.init_pair(2, curses.COLOR_YELLOW, -1)  # Yellow / Standby
             curses.init_pair(3, curses.COLOR_RED, -1)     # Red / Hot / Inactive
             curses.init_pair(4, curses.COLOR_CYAN, -1)    # Cyan / Accent
             curses.init_pair(5, curses.COLOR_BLACK, curses.COLOR_CYAN) # Inverted active
@@ -220,33 +209,30 @@ class NouveauTUI:
     def draw_keybind_ribbon(self, start_y, cols):
         if self.active_mode == 0:
             row1 = [
-                ("Space/Enter", "Lock Performance State"),
-                ("0f", "Jump 3D Perf"),
-                ("07", "Jump 2D Desktop"),
-                ("03", "Jump Idle"),
+                ("Space/Enter", "Lock State / Toggle Governor"),
+                ("a", "Auto Reclock"),
+                ("r", "Restart Daemon"),
             ]
             row2 = [
-                ("1..4", "Direct Tab"),
+                ("1..3", "Direct Tab"),
                 ("← / →", "Switch Tabs"),
                 ("F1", "Help"),
                 ("Esc", "Quit"),
             ]
         elif self.active_mode == 1:
             row1 = [
-                ("Space/Enter", "Toggle Governor Daemon"),
-                ("r", "Restart Governor"),
-                ("a", "Set Auto Reclock"),
+                ("r", "Refresh Process List"),
+                ("1..3", "Direct Tab"),
+                ("← / →", "Switch Tabs"),
             ]
             row2 = [
-                ("1..4", "Direct Tab"),
-                ("← / →", "Switch Tabs"),
                 ("F1", "Help"),
                 ("Esc", "Quit"),
             ]
         else:
             row1 = [
-                ("r", "Refresh Telemetry"),
-                ("1..4", "Direct Tab"),
+                ("r", "Refresh Sensors"),
+                ("1..3", "Direct Tab"),
                 ("← / →", "Switch Tabs"),
             ]
             row2 = [
@@ -306,28 +292,47 @@ class NouveauTUI:
         y = 4
         bar_avail_width = max(10, cols - 32)
 
-        # TAB 1: Performance States (P-States)
+        # TAB 1: Performance States & Dynamic Governor
         if self.active_mode == 0:
-            entries = self.pstates
-            if not entries:
-                self.safe_addstr(lines // 2, max(2, (cols - 40) // 2), "No P-States found in /sys/kernel/debug/dri/0/pstate", curses.A_DIM)
-                self.screen.refresh()
-                return
+            # Build unified items: Governor Control Entry + Available P-States
+            daemon_active = self.telemetry.get("daemon", False)
+            total_items = 1 + len(self.pstates)
+            self.focus_idx = max(0, min(self.focus_idx, total_items - 1))
 
-            self.focus_idx = max(0, min(self.focus_idx, len(entries) - 1))
+            # Entry 0: Governor Daemon
+            is_gov_focus = (self.focus_idx == 0)
+            arrow = Style.arrow_focused if is_gov_focus else Style.arrow
+            self.safe_addstr(y, 2, f" {arrow} ", self.cyan | curses.A_BOLD if is_gov_focus else curses.A_NORMAL)
 
-            for i, p in enumerate(entries):
+            gov_title = "Dynamic Frequency Governor (nouveau-dynclockd)"
+            gov_badge = "[●] AUTO (RUNNING)" if daemon_active else "[○] MANUAL (INACTIVE)"
+            gov_badge_col = self.badge | curses.A_BOLD if daemon_active else self.yellow
+
+            self.safe_addstr(y, 6, gov_title[:cols - 35], self.green | curses.A_BOLD if daemon_active else (curses.A_BOLD if is_gov_focus else curses.A_NORMAL))
+            badge_x = max(20, cols - len(gov_badge) - 3)
+            self.safe_addstr(y, badge_x, gov_badge, gov_badge_col)
+
+            gov_hint = "Manages 07 ↔ 0f load-aware clocking  •  [Space/Enter] Toggle  •  [a] Enable Auto"
+            self.safe_addstr(y + 1, 6, gov_hint[:cols - 8], self.cyan if is_gov_focus else curses.A_DIM)
+            y += 3
+
+            # Divider between Governor and P-States
+            self.safe_addstr(y, 4, "Manual Performance State Locks (Selecting disables governor):", curses.A_DIM)
+            y += 2
+
+            # P-State Entries
+            for i, p in enumerate(self.pstates):
                 if y + 2 >= max_drawable_y:
                     break
 
-                is_focused = (i == self.focus_idx)
-                is_active = p["active"]
+                item_idx = i + 1
+                is_focused = (item_idx == self.focus_idx)
+                is_active = p["active"] and not daemon_active
                 arrow = Style.arrow_focused if is_focused else Style.arrow
 
                 self.safe_addstr(y, 2, f" {arrow} ", self.cyan | curses.A_BOLD if is_focused else curses.A_NORMAL)
 
-                # Radio indicator
-                radio = "[●] ACTIVE" if is_active else "[○] Standby"
+                radio = "[●] LOCKED" if is_active else "[○] Available"
                 radio_col = self.badge | curses.A_BOLD if is_active else self.yellow
 
                 title_str = f"P-State [{p['code']}]: {p['desc']}"
@@ -336,77 +341,18 @@ class NouveauTUI:
                 badge_x = max(20, cols - len(radio) - 3)
                 self.safe_addstr(y, badge_x, radio, radio_col)
 
-                # Frequency slider bar (Core clock proportional to 590MHz max)
                 y += 1
                 bar_content = self.render_bar(bar_avail_width, p["core"], 590)
                 self.safe_addstr(y, 6, f"{Style.bar_left_mono}{bar_content}{Style.bar_right_mono}", self.green if is_active else curses.A_NORMAL)
 
-                # Clock specs details on sub-line
                 y += 1
                 specs = f"Core: {p['core']} MHz  |  Shader: {p['shader']} MHz  |  Memory: {p['mem']} MHz"
                 self.safe_addstr(y, 6, specs[:cols - 8], self.cyan if is_focused else curses.A_DIM)
 
                 y += 2
 
-        # TAB 2: Dynamic Frequency Governor (nouveau-dynclockd)
+        # TAB 2: Active DRM / 3D Clients
         elif self.active_mode == 1:
-            is_active = self.telemetry.get("daemon", False)
-            gov_entries = [
-                {
-                    "name": "Dynamic GPU Clock Governor (nouveau-dynclockd)",
-                    "status": "[●] RUNNING" if is_active else "[○] INACTIVE",
-                    "action": "toggle_daemon",
-                    "hint": "[Space / Enter] Start / Stop background frequency governor"
-                },
-                {
-                    "name": "Set Governor Mode: Auto Reclocking",
-                    "status": "[ Enable Auto ]",
-                    "action": "set_auto",
-                    "hint": "[Enter] Switch GPU to dynamic load-aware reclocking"
-                },
-                {
-                    "name": "Lock GPU to Maximum 3D Clock (0f: 590 MHz)",
-                    "status": "[ Lock 0f ]",
-                    "action": "lock_0f",
-                    "hint": "[Enter] Max performance for gaming & WebGL (disables daemon)"
-                },
-                {
-                    "name": "Lock GPU to 2D Desktop Clock (07: 202 MHz)",
-                    "status": "[ Lock 07 ]",
-                    "action": "lock_07",
-                    "hint": "[Enter] Balanced cool operation (disables daemon)"
-                },
-                {
-                    "name": "Lock GPU to Low-Power Idle (03: 50 MHz)",
-                    "status": "[ Lock 03 ]",
-                    "action": "lock_03",
-                    "hint": "[Enter] Ultra low-power standby (disables daemon)"
-                },
-            ]
-
-            self.focus_idx = max(0, min(self.focus_idx, len(gov_entries) - 1))
-
-            for i, entry in enumerate(gov_entries):
-                if y + 2 >= max_drawable_y:
-                    break
-
-                is_focused = (i == self.focus_idx)
-                arrow = Style.arrow_focused if is_focused else Style.arrow
-
-                self.safe_addstr(y, 2, f" {arrow} ", self.cyan | curses.A_BOLD if is_focused else curses.A_NORMAL)
-                self.safe_addstr(y, 6, entry["name"][:cols - 35], curses.A_BOLD if is_focused else curses.A_NORMAL)
-
-                stat_lbl = entry["status"]
-                stat_col = self.badge | curses.A_BOLD if "RUNNING" in stat_lbl else self.yellow
-
-                badge_x = max(20, cols - len(stat_lbl) - 3)
-                self.safe_addstr(y, badge_x, stat_lbl, stat_col)
-
-                self.safe_addstr(y + 1, 8, entry["hint"][:cols - 10], curses.A_DIM)
-                y += 3
-
-        # TAB 3: Active DRM / 3D Clients
-        elif self.active_mode == 2:
             entries = self.clients
             if not entries:
                 self.safe_addstr(lines // 2, max(2, (cols - 40) // 2), "No active DRM / 3D clients detected.", curses.A_DIM)
@@ -431,7 +377,7 @@ class NouveauTUI:
                 self.safe_addstr(y, 6, line_str[:cols - 10], curses.A_BOLD if is_focused else curses.A_NORMAL)
                 y += 2
 
-        # TAB 4: Telemetry & Sensors
+        # TAB 3: Telemetry & Sensors
         else:
             self.safe_addstr(y, 4, "Hardware Monitoring & GPU Sensors:", self.cyan | curses.A_BOLD)
             y += 2
@@ -442,7 +388,7 @@ class NouveauTUI:
                 ("Active P-State", f"{self.active_pstate} ({PSTATE_DESCRIPTIONS.get(self.active_pstate, 'Unknown')})"),
                 ("Core Temperature", self.telemetry.get("temp", "N/A")),
                 ("Core Voltage", self.telemetry.get("volt", "N/A")),
-                ("Dynamic Daemon", "Active / Running" if self.telemetry.get("daemon") else "Inactive / Locked"),
+                ("Dynamic Daemon", "Active / Running (Auto)" if self.telemetry.get("daemon") else "Inactive / Locked (Manual)"),
                 ("Kernel Interface", PSTATE_PATH),
             ]
 
@@ -458,12 +404,11 @@ class NouveauTUI:
 
     def display_helpwin(self):
         doc = [
-            ("j k   ↑ ↓",            "Select option / P-State"),
-            ("Space / Enter",        "Lock selected P-State or toggle governor"),
-            ("0f / 07 / 03",         "Hotkeys to jump directly to specific P-State"),
-            ("a",                    "Set automatic dynamic reclocking (governor)"),
+            ("j k   ↑ ↓",            "Navigate P-States or Governor"),
+            ("Space / Enter",        "Toggle governor or lock selected P-State"),
+            ("a",                    "Enable auto dynamic reclocking (governor)"),
             ("r",                    "Restart governor / refresh telemetry"),
-            ("1  2  3  4",           "Jump to mode tab"),
+            ("1  2  3",              "Jump directly to mode tab"),
             ("← / →  Tab / S-Tab",   "Switch mode tabs"),
             ("Esc / q",              "Quit"),
         ]
@@ -478,7 +423,7 @@ class NouveauTUI:
         helpwin.erase()
         helpwin.border(0)
         helpwin.attron(curses.A_BOLD)
-        helpwin.addstr(0, 3, " QNouveauConfig Help ")
+        helpwin.addstr(0, 3, " Nouveau-TUI Help ")
         helpwin.attroff(curses.A_BOLD)
 
         for i, (keys, desc) in enumerate(doc):
@@ -521,71 +466,59 @@ class NouveauTUI:
                 self.focus_idx = 0
                 self.refresh_data()
 
-            elif ord('1') <= ch <= ord('4'):
+            elif ord('1') <= ch <= ord('3'):
                 self.active_mode = ch - ord('1')
                 self.focus_idx = 0
                 self.refresh_data()
 
             elif ch in (curses.KEY_UP, ord('k')):
-                if self.active_mode in (0, 1):
-                    count = len(self.pstates) if self.active_mode == 0 else 5
-                    self.focus_idx = (self.focus_idx - 1) % count
+                if self.active_mode == 0:
+                    total = 1 + len(self.pstates)
+                    self.focus_idx = (self.focus_idx - 1) % total
+                elif self.active_mode == 1:
+                    if self.clients:
+                        self.focus_idx = (self.focus_idx - 1) % len(self.clients)
 
             elif ch in (curses.KEY_DOWN, ord('j')):
-                if self.active_mode in (0, 1):
-                    count = len(self.pstates) if self.active_mode == 0 else 5
-                    self.focus_idx = (self.focus_idx + 1) % count
+                if self.active_mode == 0:
+                    total = 1 + len(self.pstates)
+                    self.focus_idx = (self.focus_idx + 1) % total
+                elif self.active_mode == 1:
+                    if self.clients:
+                        self.focus_idx = (self.focus_idx + 1) % len(self.clients)
 
             elif ch in (ord(' '), 10, 13):
                 self.execute_selection()
 
             elif ch == ord('a'):
-                # Set auto reclocking
                 run_cmd("nouveau-ctrl set auto")
                 self.status_msg = "GPU set to dynamic governor (Auto reclocking)."
                 self.status_color = 1
                 self.refresh_data()
 
             elif ch == ord('r'):
-                # Restart governor / refresh
                 run_cmd("nouveau-ctrl daemon restart")
-                self.status_msg = "Restarted nouveau-dynclockd governor."
+                self.status_msg = "Restarted governor & refreshed telemetry."
                 self.status_color = 1
                 self.refresh_data()
 
     def execute_selection(self):
         if self.active_mode == 0:
-            # Mode 1: Lock selected P-state
-            if 0 <= self.focus_idx < len(self.pstates):
-                target = self.pstates[self.focus_idx]["code"]
-                run_cmd(f"nouveau-ctrl set {target}")
-                self.status_msg = f"Locked GPU to P-State [{target}] ({self.pstates[self.focus_idx]['core']} MHz)."
-                self.status_color = 1
-                self.refresh_data()
-
-        elif self.active_mode == 1:
-            # Mode 2: Governor management
-            actions = ["toggle_daemon", "set_auto", "lock_0f", "lock_07", "lock_03"]
-            act = actions[self.focus_idx]
-            if act == "toggle_daemon":
+            if self.focus_idx == 0:
+                # Entry 0: Toggle Governor daemon
                 if self.telemetry.get("daemon"):
                     run_cmd("nouveau-ctrl daemon stop")
-                    self.status_msg = "Stopped nouveau-dynclockd daemon."
+                    self.status_msg = "Stopped nouveau-dynclockd governor."
                 else:
                     run_cmd("nouveau-ctrl daemon start")
-                    self.status_msg = "Started nouveau-dynclockd daemon."
-            elif act == "set_auto":
-                run_cmd("nouveau-ctrl set auto")
-                self.status_msg = "GPU set to auto reclocking governor."
-            elif act == "lock_0f":
-                run_cmd("nouveau-ctrl set 0f")
-                self.status_msg = "Locked GPU to 0f (Full 3D Performance: 590 MHz)."
-            elif act == "lock_07":
-                run_cmd("nouveau-ctrl set 07")
-                self.status_msg = "Locked GPU to 07 (Standard 2D Desktop: 202 MHz)."
-            elif act == "lock_03":
-                run_cmd("nouveau-ctrl set 03")
-                self.status_msg = "Locked GPU to 03 (Low-Power Idle: 50 MHz)."
+                    self.status_msg = "Started nouveau-dynclockd governor (Auto reclocking)."
+            else:
+                # Entries 1+: Lock selected P-State
+                p_idx = self.focus_idx - 1
+                if 0 <= p_idx < len(self.pstates):
+                    target = self.pstates[p_idx]["code"]
+                    run_cmd(f"nouveau-ctrl set {target}")
+                    self.status_msg = f"Locked GPU to P-State [{target}] ({self.pstates[p_idx]['core']} MHz)."
             self.status_color = 1
             self.refresh_data()
 
