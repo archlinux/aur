@@ -429,7 +429,7 @@ def show_info_modal(stdscr, session):
 
 def show_help_modal(stdscr):
     help_sections = [
-        ("=== MUSE SESSION MANAGER — HELP MANUAL ===", ""),
+        ("=== MUSE-SESSION MANAGER — HELP MANUAL ===", ""),
         ("NAVIGATION", ""),
         ("  ↑ / k           ", "Move selection up one session"),
         ("  ↓ / j           ", "Move selection down one session"),
@@ -704,7 +704,7 @@ def interactive_ui():
 # =========================================================================
 
 def print_exhaustive_help():
-    title = bold("MUSE CODE SESSION MANAGER — COMPREHENSIVE MANUAL")
+    title = bold("MUSE-SESSION MANAGER — COMPREHENSIVE MANUAL")
     border = "=" * 78
 
     help_content = f"""
@@ -716,7 +716,7 @@ def print_exhaustive_help():
   Muse Code automatically persists every agent run into a session directory
   containing raw event logs, tool calls, user messages, and local file changes.
   
-  `muse session` (or `muse-session`) provides full lifecycle management:
+  `muse-session` (also accessible as `muse session`) provides full lifecycle management:
   • Browse sessions via an interactive full-screen TUI with instant resume
   • Rename sessions with friendly tags and labels
   • Inspect session metadata, token records, and disk usage
@@ -736,7 +736,7 @@ def print_exhaustive_help():
 
 {bold("INTERACTIVE TUI SELECTOR")}
   Run without arguments (or with `{cyan("select")}` / `{cyan("ui")}`):
-    {green("muse session")}
+    {green("muse-session")}
 
   Keyboard Shortcuts in TUI:
     {yellow("↑ / k")}               Move selection up
@@ -754,31 +754,35 @@ def print_exhaustive_help():
 {bold("CLI SUBCOMMANDS & EXAMPLES")}
 
   {bold("1. Interactive Selector (Default):")}
-     $ {green("muse session")}
-     $ {green("muse session select")}
+     $ {green("muse-session")}
+     $ {green("muse-session select")}
 
   {bold("2. List Sessions:")}
-     $ {green("muse session list")}                    List all sessions with size & prompt
-     $ {green("muse session list --cwd")}              Filter to current directory workspace
-     $ {green("muse session list -w /path/to/repo")}   Filter to specific workspace
-     $ {green("muse session list --last")}             Show only the most recent session
-     $ {green("muse session list -q")}                 Print only session UUIDs (script-friendly)
+     $ {green("muse-session list")}                    List all sessions with size & prompt
+     $ {green("muse-session list --cwd")}              Filter to current directory workspace
+     $ {green("muse-session list -w /path/to/repo")}   Filter to specific workspace
+     $ {green("muse-session list --last")}             Show only the most recent session
+     $ {green("muse-session list -q")}                 Print only session UUIDs (script-friendly)
 
   {bold("3. Rename / Tag Sessions:")}
-     $ {green("muse session rename <UUID> \"Feature Auth\"")}     Set custom title label
-     $ {green("muse session rename <UUID> \"\"")}                 Clear custom title
+     $ {green("muse-session rename <UUID> \"Feature Auth\"")}     Set custom title label
+     $ {green("muse-session rename <UUID> \"\"")}                 Clear custom title
 
   {bold("4. Inspect Session Metadata:")}
-     $ {green("muse session info <UUID>")}             Show full path, model, size, lock PID
+     $ {green("muse-session info <UUID>")}             Show full path, model, size, lock PID
 
   {bold("5. Delete Sessions:")}
-     $ {green("muse session delete <UUID>")}           Delete a session by UUID or prefix
-     $ {green("muse session delete --last")}           Delete the most recent session
-     $ {green("muse session delete --cwd")}            Delete all sessions for current workspace
-     $ {green("muse session delete --older-than 14d")} Delete sessions older than 14 days
-     $ {green("muse session delete --all")}            Delete all stored sessions
-     $ {green("muse session delete <UUID> -y")}        Skip interactive [y/N] confirmation prompt
-     $ {green("muse session delete <UUID> -f")}        Force delete even if active lock exists
+     $ {green("muse-session delete <UUID>")}           Delete a session by UUID or prefix
+     $ {green("muse-session delete --last")}           Delete the most recent session
+     $ {green("muse-session delete --cwd")}            Delete all sessions for current workspace
+     $ {green("muse-session delete --older-than 14d")} Delete sessions older than 14 days
+     $ {green("muse-session delete --all")}            Delete all stored sessions
+     $ {green("muse-session delete <UUID> -y")}        Skip interactive [y/N] confirmation prompt
+     $ {green("muse-session delete <UUID> -f")}        Force delete even if active lock exists
+
+{bold("INVOCATION NOTE")}
+  All commands work identically whether you type:
+    {green("muse-session <cmd>")}    or    {green("muse session <cmd>")}
 
 {bold("SAFETY & RETENTION")}
   • Deletions purge the session folder, view cache, and clean up empty date dirs.
@@ -794,10 +798,11 @@ def print_exhaustive_help():
 # =========================================================================
 
 def main():
+    prog_name = "muse-session" if os.path.basename(sys.argv[0]) == "muse-session" else "muse session"
     parser = argparse.ArgumentParser(
-        prog="muse session",
+        prog=prog_name,
         description="Manage, inspect, rename, and delete Muse Code sessions.",
-        epilog="Run 'muse session help' or press '?' inside the interactive TUI for full documentation.",
+        epilog=f"Run '{prog_name} help' or press '?' inside the interactive TUI for full documentation.",
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
     subparsers = parser.add_subparsers(dest="command", help="Session subcommands")
