@@ -1,8 +1,8 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=diceware-eff
-pkgver=0.2.0.r0.7a74398
-pkgrel=1
+pkgver=0.2.0
+pkgrel=2
 pkgdesc="Generate passphrases from six-sided dice rolls"
 arch=('any')
 url="https://github.com/jmcantrell/$pkgname"
@@ -10,32 +10,25 @@ license=('MIT')
 depends=()
 makedepends=('scdoc')
 checkdepends=('parallel' 'diffutils')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("git+$url")
-md5sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/${pkgname%-git}" || return
-    printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
-}
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('40f659b3d207bdb10b215f3a9eed14c3d8489a1e917b145c0aa1a9df3b905088')
 
 check() {
-    cd "$srcdir/${pkgname%-git}" || return
+    cd "$srcdir/$pkgname-$pkgver" || return
     ./scripts/test
 }
 
 prepare() {
-    cd "$srcdir/${pkgname%-git}" || return
+    cd "$srcdir/$pkgname-$pkgver" || return
     PREFIX=/usr ./scripts/prepare
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}" || return
+    cd "$srcdir/$pkgname-$pkgver" || return
     ./scripts/build
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}" || return
+    cd "$srcdir/$pkgname-$pkgver" || return
     DESTDIR=$pkgdir PREFIX=/usr ./scripts/install
 }
