@@ -10,7 +10,7 @@ pkgdesc="Small package that adds job scheduling capabilities to RQ"
 
 
 arch=('any')
-license=("BSD-2-Clause")
+license=("MIT")
 url="https://github.com/rq/${basename}"
 
 makedepends=('python-setuptools')
