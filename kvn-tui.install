@@ -6,7 +6,7 @@ configure_sing_box_capabilities() {
 print_service_enable_notice() {
     echo
     echo "======================================================================"
-    echo "  ACTION REQUIRED: enable kvn-tui daemon autostart"
+    echo "  ACTION REQUIRED: enable kvn daemon autostart"
     echo "======================================================================"
     echo "Run as your regular user (without sudo):"
     echo
@@ -19,15 +19,15 @@ print_service_enable_notice() {
 print_upgrade_notice() {
     echo
     echo "======================================================================"
-    echo "  ACTION REQUIRED: migrate kvn-tui daemon autostart to systemd"
+    echo "  ACTION REQUIRED: migrate kvn daemon autostart to systemd"
     echo "======================================================================"
     echo "Run as your regular user (without sudo):"
     echo
     echo "  systemctl --user enable --now kvn-tui.service"
     echo
-    echo "If Omarchy previously started kvn-tui from Hyprland autostart, also run:"
+    echo "If Omarchy previously started kvn from Hyprland autostart, also run:"
     echo
-    echo "  kvn-tui setup --omarchy"
+    echo "  kvn setup --omarchy"
     echo
     echo "======================================================================"
     echo
