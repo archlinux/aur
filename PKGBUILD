@@ -6,17 +6,31 @@
 pkgname=randrctl
 pkgdesc="Lightweight profile based screen manager for X"
 pkgver=1.11.0
-pkgrel=5
+pkgrel=6
 arch=('any')
 url="http://github.com/koiuo/randrctl"
 license=('GPL3')
 makedepends=('git' 'python-build' 'python-installer' 'python-pbr' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
-depends=('python' 'python-argcomplete' 'python-yaml' 'python-pkg_resources' 'xorg-xrandr')
+depends=('python' 'python-argcomplete' 'python-yaml' 'xorg-xrandr')
 optdepends=('bash-completion: bash shell prompt auto-completions')
 install="randrctl.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/koiuo/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('733a93997c2592a917afcf91e16e70c41f2ef47c1531d220adbc1fc08c012277')
 
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  # setuptools removed pkg_resources in v81 (no AUR package provides it
+  # any more either); swap randrctl's two uses for stdlib importlib
+  # equivalents instead of depending on it.
+  sed -i \
+    -e "s/^import pkg_resources$/import importlib.metadata\nimport importlib.resources/" \
+    -e 's/pkg_resources\.get_distribution("randrctl")\.version/importlib.metadata.version("randrctl")/' \
+    -e "s#pkg_resources.resource_filename('randrctl', 'setup/config.yaml')#importlib.resources.files('randrctl').joinpath('setup/config.yaml')#" \
+    -e "s#pkg_resources.resource_filename('randrctl', 'setup/99-randrctl.rules')#importlib.resources.files('randrctl').joinpath('setup/99-randrctl.rules')#" \
+    -e 's/regex = f"/regex = rf"/' \
+    randrctl/cli.py
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
