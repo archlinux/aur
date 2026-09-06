@@ -2,7 +2,7 @@
 
 pkgname=ungoogled-chromium-ru-ca-bin
 pkgver=152.0.7977.75
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom binary build of ungoogled-chromium with support for TLS certificates issued by CA of Russian Ministry of Digital Development"
 keywords=('chromium' 'ungoogled-chromium' 'browser' 'russia' 'yandex' 'yandex-browser')
 arch=('x86_64')
@@ -54,8 +54,8 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'upower: Battery Status API support')
 provides=("chromium=$pkgver" "chromedriver=$pkgver")
 conflicts=('chromium' 'chromedriver' 'ungoogled-chromium')
-source=(https://github.com/giantplaceholder/ungoogled-chromium-archlinux/releases/download/152.0.7977.75-1-ru-ca/ungoogled-chromium-152.0.7977.75-1-x86_64.pkg.tar.zst)
-sha256sums=('458a7cad025e6c13066ee7e813e76190c85214e53460e29e508f8e983dbfc600')
+source=(https://github.com/giantplaceholder/ungoogled-chromium-archlinux/releases/download/152.0.7977.75-2-ru-ca/ungoogled-chromium-152.0.7977.75-1-x86_64.pkg.tar.zst)
+sha256sums=('0fd8a3f1d561a813afa177c6ef3fb78501ceb4731980e13431db263a82888440')
 
 declare -gA _system_libs=(
     [brotli]=brotli
