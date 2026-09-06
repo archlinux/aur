@@ -1,0 +1,13 @@
+#!/bin/bash
+
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+flags_file="$XDG_CONFIG_HOME/noteey-flags.conf"
+flags=()
+
+if [[ -r "$flags_file" ]]; then
+  while IFS= read -r line; do
+    [[ "$line" =~ ^[[:space:]]*(#|$) ]] || flags+=("$line")
+  done < "$flags_file"
+fi
+
+exec electron39 /usr/lib/noteey/app "${flags[@]}" "$@"

@@ -1,0 +1,22 @@
+pkgbase = noteey
+	pkgdesc = Visual note-taking app for organizing complex knowledge and ideas
+	pkgver = 1.62.0
+	pkgrel = 1
+	url = https://noteey.com/
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	makedepends = p7zip
+	depends = electron39
+	depends = hicolor-icon-theme
+	provides = noteey
+	conflicts = noteey
+	options = !strip
+	source = Noteey-Setup-1.62.0.exe::https://github.com/andyyoungm/muenzo/releases/download/v1.62.0/Noteey-Setup-1.62.0.exe
+	source = noteey
+	source = noteey.desktop
+	sha256sums = 970bd0c0ace8dba21335f88fc71841dee8e5ca748ea37ba3dfe3b8450d3b1546
+	sha256sums = 908962ed7ba279d99be249507b75b1afd7b4cf72b80b60313b4c1d139e425ca3
+	sha256sums = 13d71ff65bef1e87d0db3650d84292c5c9ec58e2d94723415717df602dff5975
+
+pkgname = noteey

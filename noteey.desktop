@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Noteey
+Comment=Organize complex knowledge and ideas visually
+Exec=noteey %U
+Icon=noteey
+Terminal=false
+Categories=Office;
+MimeType=x-scheme-handler/noteey;x-scheme-handler/muenzo;
+StartupWMClass=Noteey
