@@ -1,0 +1,11 @@
+--- a/src/openinference/instrumentation/litellm/__init__.py
++++ b/src/openinference/instrumentation/litellm/__init__.py
+@@ -966,7 +966,8 @@
+                 last = {"type": "thinking", "thinking": "", "signature": ""}
+                 accumulated.append(last)
+             if thinking := block.get("thinking"):
+-                last["thinking"] += thinking
++                if not (block.get("signature") and last["thinking"].endswith(thinking)):
++                    last["thinking"] += thinking
+             if signature := block.get("signature"):
+                 last["signature"] = signature
