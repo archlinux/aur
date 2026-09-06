@@ -1,7 +1,7 @@
 pkgbase = qqmusic-electron-patched
 	pkgdesc = Tencent QQMusic (Pre-built with hi-res & lossless patch)
 	pkgver = 1.1.8
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Viemean/qqmusiclinux
 	arch = any
 	license = CC0-1.0
@@ -11,7 +11,7 @@ pkgbase = qqmusic-electron-patched
 	conflicts = qqmusic
 	conflicts = qqmusic-electron
 	conflicts = qqmusic-bin
-	source = qqmusic-electron-patched-1.1.8-4-any.pkg.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v1.1.8/qqmusic-electron-patched-1.1.8-4-any.pkg.tar.zst
+	source = qqmusic-electron-patched-prebuilt-1.1.8-5.tar.zst::https://github.com/Viemean/qqmusiclinux/releases/download/v1.1.8/qqmusic-electron-patched-1.1.8-4-any.pkg.tar.zst
 	sha256sums = e6d695e0e6b90ea3f7a2564485d4724a4c165e7467d198187733716312085770
 
 pkgname = qqmusic-electron-patched
