@@ -1,7 +1,7 @@
 # Maintainer: Daniel Schopf <schopf.dan at gmail dot com>
 
 pkgname=plasma6-applets-qalculate
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Qalculate! applet for the KDE plasma desktop"
 url="https://github.com/dschopf/plasma-applet-qalculate"
@@ -11,7 +11,7 @@ depends=('libqalculate' 'plasma-workspace')
 makedepends=('cmake' 'extra-cmake-modules')
 arch=('i686' 'x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dschopf/plasma-applet-qalculate/archive/v$pkgver.tar.gz")
-sha256sums=('b8cc6520bb3e0e591b494b318fbecc0f08e5466beee71766e67c5eb0e071deec')
+sha256sums=('ad99f2e7ed8c94f1d4055d66041c40cbd437ee41832a25e2d09b1a82ec3dd42b')
 
 build() {
     mkdir build
