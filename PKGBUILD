@@ -1,6 +1,6 @@
 # Maintainer: Kairo contributors
 pkgname=kairo-git
-pkgver=0.1.0.r1.gunknown
+pkgver=0.1.0.r75.gbba1d3a
 pkgrel=1
 pkgdesc='Safe, interactive Arch workstation installer and curated Wayland dotfiles'
 arch=(any)

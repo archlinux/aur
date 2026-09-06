@@ -1,6 +1,6 @@
 pkgbase = kairo-git
 	pkgdesc = Safe, interactive Arch workstation installer and curated Wayland dotfiles
-	pkgver = 0.1.0.r1.gunknown
+	pkgver = 0.1.0.r75.gbba1d3a
 	pkgrel = 1
 	url = https://github.com/nihitdev/kairo
 	arch = any
