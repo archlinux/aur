@@ -2,7 +2,7 @@
 _base=K3D
 pkgname=python-${_base,,}
 pkgdesc="3D visualization library"
-pkgver=3.0.1
+pkgver=3.0.3
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}-tools/${_base}-jupyter"
@@ -13,7 +13,7 @@ makedepends=(python-build python-installer python-hatch-nodejs-version python-ha
 checkdepends=(python-pytest)
 optdepends=('jupyterlab: for notebook support')
 source=(${_base}-jupyter-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c8f592c6db6a39b96248c548d2ff8e0a74624eb898b6199af3843b8d76e13fe883e3c897ba18f2a6d98b82b920e20c46ad47edad46678f8f053181977739aa12')
+sha512sums=('c0e10751de525ffa117673728a080af32e5eed8996680462be0a924e0941bee30411470f954e47dc8f7230ebbf12adda6b44c6bbf5beffd3c92447a1a9f6eb43')
 
 build() {
   cd ${_base}-jupyter-${pkgver}
