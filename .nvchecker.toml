@@ -1,0 +1,5 @@
+[python-type-lens]
+source = 'git'
+git = 'https://github.com/litestar-org/type-lens.git'
+prefix = 'v'
+include_regex = 'v\d+.\d+.\d+'

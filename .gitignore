@@ -7,3 +7,4 @@
 !.SRCINFO
 !LICENSE
 !*.install
+!.nvchecker.toml
