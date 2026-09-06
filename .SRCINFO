@@ -1,0 +1,13 @@
+pkgbase = ros2-jazzy-ackermann_msgs
+	pkgdesc = Messages for Ackermann-steered vehicles, for ROS 2 Jazzy
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/ros-drivers/ackermann_msgs
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	depends = ros2-jazzy
+	source = ros2-jazzy-ackermann_msgs-2.0.2.tar.gz::https://github.com/ros-drivers/ackermann_msgs/archive/refs/tags/2.0.2.tar.gz
+	sha256sums = 26321df1bc2855adbcefac0a32091ce843271d93791fceff914a3f4c7b06d269
+
+pkgname = ros2-jazzy-ackermann_msgs
