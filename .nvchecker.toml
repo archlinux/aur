@@ -1,0 +1,4 @@
+[neovim-indent-blankline]
+source = "git"
+git = "https://github.com/lukas-reineke/indent-blankline.nvim.git"
+prefix = "v"
