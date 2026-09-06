@@ -17,9 +17,9 @@
 !*.timer,
 !*.desktop,
 !*.hook,
-!.nvchecker.toml
 !keys/
 !README.md
 !LICENSE
 !LICENSES/
 !REUSE.toml
+!.nvchecker.toml

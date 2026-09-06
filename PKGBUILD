@@ -4,7 +4,7 @@
 # shellcheck disable=SC2164
 
 pkgver=2.3.0.r1.ga470a63
-pkgrel=1
+pkgrel=2
 
 _pkgname=casual-pre-loader
 pkgname="${_pkgname}-git"
@@ -40,9 +40,9 @@ conflicts=("${_pkgname}")
 
 install="${_pkgname}.install"
 
-# TODO: Consider grabbing a tarball instead because cloning a repo is done with the `--mirror` flag.
-# This causes git to grab ALL refs, and cannot be disabled without monkey-patching `makepkg` shell functions.
-# Due to some poor past decisions, large zip files were put into the VCS, ballooning a mirror to around 500MB compared to 8.5 MB.
+# TODO: Consider grabbing tarballs of the head of the main branch and all ssubmodules instead because cloning a repo is done with the `--mirror` flag.
+# This causes git to grab ALL refs, and cannot be disabled without monkey-patching `makepkg`'s shell functions.
+# Due to some poor past decisions, large zip files were put into the VCS, and still remain in some PR refs, ballooning a mirror to around 500MB compared to 8.5 MB.
 source=(
 	"git+${url}"
 	'git+https://github.com/cueki/studiomdl'
@@ -57,7 +57,6 @@ pkgver() {
 }
 
 prepare() {
-	# generate desktop entry file
 	# NOTE: The `GameTool` category is not yet recognized by the latest release (0.28) of `desktop-file-utils` (added in 5fbfd9e),
 	# but is valid according to the XDG Menu spec version 1.1.
 	gendesk -n -f \
@@ -67,15 +66,13 @@ prepare() {
 
 	cd "${_pkgname}"
 
-	touch .noportable # notify the application that it cannot write to its own installation directory
+	touch .noportable # NOTE: notify the application that it cannot write to its own installation directory
 
 	git submodule init
 	git config submodule.studiomdl.url "${srcdir}/studiomdl"
-	git -c protocol.file.allow=always submodule update
+	git -c protocol.file.allow=always submodule update --init --recursive
 
-	git submodule update --init --recursive
-
-	# remove any VCS-related files from submodules after they've been initialized (./.git is NOT a directory in this case)
+	# NOTE: remove any VCS-related files from submodules after they've been initialized (./.git is NOT a directory in this case)
 	# must be sequential to avoid race condition when recursively interating over submodules
 	git submodule foreach --quiet --recursive 'printf "%s\0" "${sm_path}"' >../.submodules
 	xargs -0I{} sh -c -e '
@@ -87,29 +84,23 @@ prepare() {
 }
 
 package() {
-	install -Dm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/" # desktop entry file
+	install -Dm644 -t "${pkgdir}/usr/share/applications/" "${_pkgname}.desktop" 
 
 	cd "${_pkgname}"
 
-	# pre-create dirs that we don't `install -D` into
-	mkdir -p \
-		"${pkgdir}/usr/lib/${_pkgname}/" \
-		"${pkgdir}/usr/bin/" \
-		"${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-
-	# all other files and directories needed to run
-	cp -a \
-		main.py \
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}/" LICENSE
+	install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/"      README.md
+	install -Dm755 -t "${pkgdir}/usr/lib/${_pkgname}/"            main.py
+	cp -a -t "${pkgdir}/usr/lib/${_pkgname}/" \
 		backup/ \
 		core/ \
 		data/ \
 		gui/ \
-		.noportable \
-		"${pkgdir}/usr/lib/${_pkgname}/"
+		.noportable
 
-	ln -sr "${pkgdir}/usr/lib/${_pkgname}/main.py" "${pkgdir}/usr/bin/${_pkgname}"                                                    # symlink the main.py file into the PATH as "${_pkgname}"
-	ln -sr "${pkgdir}/usr/lib/${_pkgname}/gui/icons/cueki_icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg" # symlink the icon file into the correct location
-
-	install -Dm644 LICENSE   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE" # license
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"    # docs
+	install -d \
+		"${pkgdir}/usr/bin/" \
+		"${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+	ln -sr "${pkgdir}/usr/lib/${_pkgname}/main.py"                  "${pkgdir}/usr/bin/${_pkgname}"
+	ln -sr "${pkgdir}/usr/lib/${_pkgname}/gui/icons/cueki_icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 }
