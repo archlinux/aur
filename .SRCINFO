@@ -1,6 +1,6 @@
 pkgbase = firefox-userchromejs
 	pkgdesc = Patching Firefox to enable JS injection (userchrome-js)
-	pkgver = 150.0a1
+	pkgver = 155
 	pkgrel = 1
 	url = https://github.com/onemen/TabMixPlus
 	install = firefox-userchromejs.install

@@ -2,7 +2,7 @@
 
 pkgname=firefox-userchromejs
 #_pkgname=firefox-scripts
-pkgver=150.0a1
+pkgver=155
 #_pkgver=a898ac59fb0ca3886c0c46b184fdbc037c83c037
 pkgrel=1
 pkgdesc="Patching Firefox to enable JS injection (userchrome-js)"
@@ -50,7 +50,7 @@ package() {
   #cd "$srcdir/utils"
   cd "$srcdir"
   install -m 644 BootstrapLoader.js "$pkgdir/usr/share/$pkgname/base/chrome/utils/"
-  install -m 644 ChromeManifest.sys.mjs "$pkgdir/usr/share/$pkgname/base/chrome/utils/"
+  #install -m 644 ChromeManifest.sys.mjs "$pkgdir/usr/share/$pkgname/base/chrome/utils/"
   install -m 644 RDFDataSource.sys.mjs "$pkgdir/usr/share/$pkgname/base/chrome/utils/"
   install -m 644 RDFManifestConverter.sys.mjs "$pkgdir/usr/share/$pkgname/base/chrome/utils/"
   install -m 644 chrome.manifest "$pkgdir/usr/share/$pkgname/base/chrome/utils/"
@@ -58,6 +58,7 @@ package() {
   #install userChrome.jsm "$pkgdir/usr/share/$pkgname/base/chrome/utils/"
   install -m 644 userChrome.js "$pkgdir/usr/share/$pkgname/base/chrome/utils/"
   #install xPref.jsm "$pkgdir/usr/share/$pkgname/base/chrome/utils/"
+  #install -m 644 versionInfo.json "$pkgdir/usr/share/$pkgname/base/chrome/utils/"
   install -m 644 xPref.sys.mjs "$pkgdir/usr/share/$pkgname/base/chrome/utils/"
 
   #cd "$srcdir/$_pkgname-$_pkgver/"
