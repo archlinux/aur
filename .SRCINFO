@@ -1,11 +1,10 @@
 pkgbase = python-cappa
 	pkgdesc = Declarative CLI argument parser
 	pkgver = 0.32.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/DanCardin/cappa
 	arch = any
 	license = Apache-2.0
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -16,7 +15,7 @@ pkgbase = python-cappa
 	depends = python-typing_extensions>=4.8.0
 	depends = python-type-lens>=0.2.5
 	optdepends = python-docstring-parser
-	source = git+https://github.com/DanCardin/cappa#tag=v0.32.2
-	sha256sums = e660a57e3d7a06beacf7c21e07c6aeb40b36803ed4c17c922d9d556c467a536c
+	source = cappa-v0.32.2.tar.gz::https://github.com/DanCardin/cappa/archive/refs/tags/v0.32.2.tar.gz
+	sha256sums = 7c87af9c905b787691b5a8e53a1ca6d55ec775b964c24473896203e9f6e1df40
 
 pkgname = python-cappa

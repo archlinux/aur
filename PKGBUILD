@@ -4,7 +4,7 @@
 
 _pkgver=v0.32.2
 pkgver="${_pkgver#v}"
-pkgrel=4
+pkgrel=5
 
 _pkgname=cappa
 pkgname="python-${_pkgname}"
@@ -21,23 +21,19 @@ depends=(
 	'python-type-lens>=0.2.5'
 )
 
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-hatchling')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-hatchling')
 
 optdepends=('python-docstring-parser')
 
-source=("git+${url}#tag=${_pkgver}")
-sha256sums=('e660a57e3d7a06beacf7c21e07c6aeb40b36803ed4c17c922d9d556c467a536c')
-
-prepare() {
-	git -C "${_pkgname}" clean -dfx # Clean out old wheels etc.
-}
+source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
+sha256sums=('7c87af9c905b787691b5a8e53a1ca6d55ec775b964c24473896203e9f6e1df40')
 
 build() {
-	cd "${_pkgname}"
+	cd "${_pkgname}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${_pkgname}"
+	cd "${_pkgname}-${pkgver}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 }
