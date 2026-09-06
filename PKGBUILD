@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="An editor-first, agent-ready terminal workspace for software development"
 
-pkgver=0.1.11
+pkgver=0.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("USER-GUIDE-${pkgver}.md::${_ghurlraw}/docs/user-guide.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.xz")
-sha256sums=('7d78c6b0e4c02398166e0b82f5285ef1bb35722a86b55b0e362afdbbb86f004a')
-sha256sums_x86_64=('2cbb3ade96fbe67933762cbddaf05d73b59f90df8c3619ca529a1abf60ca98ce')
-sha256sums_aarch64=('25b23e5e5658198d1673991a26c9867df564ec0ea87da528679bcee7d4d5d6de')
+sha256sums=('c40ab30a0049b588d269be44d5b9c802a702810549581e3c99149c5ec90f308a')
+sha256sums_x86_64=('1f3bd723ed93b8d3b6a06e2330b13f543e4432a8ede6af6f26306a91325411ea')
+sha256sums_aarch64=('cacd7e8ec1c13cf4177a94e0ae3017d341f293c6a2e539bd331bd90ef4bcca16')
 
 
 case ${CARCH} in

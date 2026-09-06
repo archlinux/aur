@@ -1,6 +1,6 @@
 pkgbase = runyte-bin
 	pkgdesc = An editor-first, agent-ready terminal workspace for software development
-	pkgver = 0.1.11
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/runyte/runyte
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = runyte-bin
 	provides = runyte
 	conflicts = runyte
 	options = !strip
-	source = USER-GUIDE-0.1.11.md::https://raw.githubusercontent.com/runyte/runyte/v0.1.11/docs/user-guide.md
-	sha256sums = 7d78c6b0e4c02398166e0b82f5285ef1bb35722a86b55b0e362afdbbb86f004a
-	source_x86_64 = runyte-x86_64-0.1.11.txz::https://github.com/runyte/runyte/releases/download/v0.1.11/runyte-v0.1.11-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 2cbb3ade96fbe67933762cbddaf05d73b59f90df8c3619ca529a1abf60ca98ce
-	source_aarch64 = runyte-aarch64-0.1.11.txz::https://github.com/runyte/runyte/releases/download/v0.1.11/runyte-v0.1.11-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 25b23e5e5658198d1673991a26c9867df564ec0ea87da528679bcee7d4d5d6de
+	source = USER-GUIDE-0.2.0.md::https://raw.githubusercontent.com/runyte/runyte/v0.2.0/docs/user-guide.md
+	sha256sums = c40ab30a0049b588d269be44d5b9c802a702810549581e3c99149c5ec90f308a
+	source_x86_64 = runyte-x86_64-0.2.0.txz::https://github.com/runyte/runyte/releases/download/v0.2.0/runyte-v0.2.0-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 1f3bd723ed93b8d3b6a06e2330b13f543e4432a8ede6af6f26306a91325411ea
+	source_aarch64 = runyte-aarch64-0.2.0.txz::https://github.com/runyte/runyte/releases/download/v0.2.0/runyte-v0.2.0-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = cacd7e8ec1c13cf4177a94e0ae3017d341f293c6a2e539bd331bd90ef4bcca16
 
 pkgname = runyte-bin
