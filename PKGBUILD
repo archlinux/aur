@@ -5,14 +5,14 @@ pkgver=0.4.3
 pkgrel=2
 pkgdesc="A high-value, cross-platform music player based on Flutter"
 arch=('x86_64')
-url="https://github.com/GlowLED/BuSic"
+url="https://github.com/eon-ic/BuSic"
 license=('GPLv3')
 depends=('gtk3' 'alsa-lib' 'nss' 'nspr' 'libsecret')
 options=('!strip' '!libtool')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}-${pkgver}.deb::https://github.com/GlowLED/BuSic/releases/download/v${pkgver}/busic-linux-x64.deb")
-sha256sums=('955ef3d2539a7bbfc54ef49e6d54dabc88ae86916e0434c38183abb75bfad6a0')
+source=("${_pkgname}-${pkgver}.deb::https://github.com/eon-ic/BuSic/releases/download/release/busic_${pkgver}_amd64.deb")
+sha256sums=('c7286c6b85c36f7c6f7f93c7bb25549a6f7e337e378da0b144c72e3c8f0ebcc1')
 
 package() {
     # 1. 核心修复：手动解压 deb 内部的 data.tar 数据包到 srcdir
