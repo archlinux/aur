@@ -9,9 +9,8 @@ url=https://github.com/uutils/sed
 license=('MIT')
 depends=(gcc-libs)
 makedepends=(rust)
-#source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-source=("https://static.crates.io/crates/sed/sed-${pkgver}.crate")
-b2sums=('6e975e28b8b1689ca191167dbdd3a71200103f46ee31393504d95a556d0ff5cb2ae65a4e7e3150825a6ee595cdd7d2396db9bea938a8f32ab69090377501c728')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('4f264ffc87c433136a170484372f47a5ada0d44a8666381aed653eb18968e847ef92cd6d9910ca42f7a6f373d27254cd4b76b05f7ceae901df5f2991f60fd5bb')
 
 build(){
   cd sed-$pkgver
