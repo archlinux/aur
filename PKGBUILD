@@ -1,6 +1,6 @@
 # Maintainer: metaneutrons <https://github.com/metaneutrons>
 pkgname=bups
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="USB print server for Brother PT and QL label printers"
 arch=('x86_64' 'aarch64')
@@ -8,10 +8,10 @@ url="https://github.com/metaneutrons/bups"
 license=('GPL-3.0-or-later')
 depends=('systemd-libs')
 makedepends=('cargo' 'systemd')
-# Measured from the tar listing of v0.3.4, not derived from pkgver.
-_srcdir='bups-0.3.4'
-source=("$pkgname-$pkgver.tar.gz::https://github.com/metaneutrons/bups/archive/refs/tags/v0.3.4.tar.gz")
-sha256sums=('a3b2f155726aea8cb1d1f0f740c9df4741bd4044ae8403ba14b7e0afcf8ede79')
+# Measured from the tar listing of v0.3.5, not derived from pkgver.
+_srcdir='bups-0.3.5'
+source=("$pkgname-$pkgver.tar.gz::https://github.com/metaneutrons/bups/archive/refs/tags/v0.3.5.tar.gz")
+sha256sums=('7c0988c02f7cb8874c4b338130fd40947b15afd4adcd9c428a85c66853386e8a')
 
 prepare() {
     cd "$_srcdir"
