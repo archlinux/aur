@@ -1,0 +1,28 @@
+[Unit]
+Description=Fast and easy to use database for traces, which can efficiently handle terabytes of trace spans.
+Documentation=https://docs.victoriametrics.com/victoriatraces/
+After=network.target
+
+[Service]
+DynamicUser=true
+LogsDirectory=victoriatraces
+StateDirectory=victoriatraces
+
+AmbientCapabilities=
+CapabilityBoundingSet=
+LockPersonality=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectHome=true
+PrivateDevices=true
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
+
+User=victoriatraces
+Group=victoriatraces
+EnvironmentFile=/etc/default/victoriatraces
+ExecStart=/usr/bin/victoria-traces -storageDataPath /var/lib/victoriatraces $ARGS
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+post_install() {
+	echo ':: Warning! From time to time there are breaking changes in VictoriaTraces.'
+	echo ':: This package will not warn you about them, so please,'
+	echo ':: track it by yourself in the changelog and follow the upgrade guides.'
+    echo ':: See https://docs.victoriametrics.com/victoriatraces/#upgrading'
+	echo ':: Settings could be adjusted in /etc/default/victoriatraces'
+}
