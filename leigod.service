@@ -1,0 +1,17 @@
+# leigod 加速器(SteamDeck 插件) bwrap 沙箱服务
+# 网络与主机共享: 插件会以 root 修改主机路由表与 iptables 规则, 此为预期行为
+[Unit]
+Description=Leigod accelerator plugin (bwrap SteamDeck sandbox, shared network)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/lib/leigod/ensure-wlan0.sh
+ExecStart=/usr/lib/leigod/run.sh /home/deck/leigod/steamdeck_acc_monitor.sh release
+Restart=always
+RestartSec=3
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target

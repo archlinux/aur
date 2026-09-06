@@ -1,0 +1,10 @@
+# 雷神下载镜像源 —— 仅构建期生效(makepkg 时读取), 运行期升级走厂商域名, 与这里无关
+#
+# 两种配置方式(环境变量优先于本文件):
+#   1) sudo cp mirror.conf.example /etc/leigod/mirror.conf && 编辑该文件
+#   2) 构建时: LEIGOD_MIRROR=http://<镜像>/ makepkg
+#
+# 默认: http://119.3.40.126
+# 注意: 更换镜像后, PKGBUILD 中 sha256sums 前 3 项必须同步更新
+#       (acc-gw.router.amd64 / ipdatacloud_country.xdb / steamdeck_acc_monitor.sh)
+http://119.3.40.126

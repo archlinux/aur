@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# 绑定状态(token/user_id/once)由官方二进制持续写入
+# /opt/leigod/config/accelerator.ini。该文件由本包布放(官方模板), 不进 backup=
+# (二进制每几分钟重写一次, backup 会产生无穷 .pacnew), 因此升级/重装会覆盖它,
+# 手机 App 就要求重新绑定。以下钩子在覆盖前后保存并恢复整个文件。
+
+BIND_FILE=/opt/leigod/config/accelerator.ini
+BIND_SAVE=/tmp/leigod-bind-state.ini
+
+save_bind_state() {
+    if [ -f "$BIND_FILE" ] && grep -q '^token=..*' "$BIND_FILE"; then
+        cp -f "$BIND_FILE" "$BIND_SAVE"
+    fi
+}
+
+restore_bind_state() {
+    if [ -f "$BIND_SAVE" ]; then
+        cp -f "$BIND_SAVE" "$BIND_FILE" && rm -f "$BIND_SAVE"
+        echo "==> 已恢复加速绑定状态, 无需在 App 中重新绑定。"
+    fi
+}
+
+pre_install()  { save_bind_state; }
+pre_upgrade()  { save_bind_state; }
+pre_remove()   { save_bind_state; }
+
+post_install_msg() {
+    echo ""
+    echo "=============================================="
+    echo " 雷神加速器 (SteamDeck 插件) 已安装"
+    echo "=============================================="
+    echo " 1. 启动服务并设为开机自启:"
+    echo "      sudo systemctl enable --now leigod"
+    echo ""
+    echo " 2. 手机绑定(手机须与电脑在同一局域网; 无需按 App 提示"
+    echo "    在电脑上执行任何命令):"
+    echo "      雷神加速器 App → 硬件加速 → 选择 SteamDeck"
+    echo "      → 一路点到底部完成绑定"
+    echo ""
+    echo " 端口布局: 5588 = sslh 门前过滤(只放行 WebSocket 升级连接)"
+    echo "           5589 = 插件 web 进程(127.0.0.1, 由 sslh 转发)"
+    echo "   官方 web 进程收到裸 HTTP 会崩溃 (WebSocket++ invalid state),"
+    echo "   门前过滤保证它只见到 WebSocket 连接。"
+    echo ""
+    echo " 日志: journalctl -xeu leigod"
+    echo "       tail -f /tmp/acc/log/steamdeck_acc_monitor.log"
+    echo ""
+    echo " 重要: 本包按设计与主机共享网络, 插件会以 root 修改主机路由表和 iptables 规则;"
+    echo "       卸载本包不会清空 mangle 表, 如需清理请自查: iptables -t mangle -L OUTPUT -n"
+}
+
+post_install() { restore_bind_state; systemctl daemon-reload; post_install_msg; }
+post_upgrade() { restore_bind_state; systemctl daemon-reload; }
+
+post_remove() {
+    systemctl daemon-reload
+    echo "已卸载。残留自查: acc-gw.router 进程 / dummy wlan0 / mangle 规则"
+}

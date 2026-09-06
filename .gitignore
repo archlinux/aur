@@ -1,0 +1,7 @@
+src/
+pkg/
+*.pkg.tar.zst
+*.log
+acc-gw.router.amd64
+ipdatacloud_country.xdb
+steamdeck_acc_monitor.sh
