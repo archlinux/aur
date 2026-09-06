@@ -1,4 +1,4 @@
-pkgbase = whatisit-git
+pkgbase = whatisit-nl2sh-git
 	pkgdesc = Local natural-language-to-shell command generator
 	pkgver = r180.gf9c3e79
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = whatisit-git
 	source = git+https://github.com/ThorOdinson246/whatisit-nl2sh.git
 	sha256sums = SKIP
 
-pkgname = whatisit-git
+pkgname = whatisit-nl2sh-git

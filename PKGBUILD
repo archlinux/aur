@@ -1,6 +1,6 @@
 # Maintainer: SCDevel <root@scevel.net>
 
-pkgname=whatisit-git
+pkgname=whatisit-nl2sh-git
 pkgver=r180.gf9c3e79
 pkgrel=1
 pkgdesc="Local natural-language-to-shell command generator"
