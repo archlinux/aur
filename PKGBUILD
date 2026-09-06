@@ -2,12 +2,12 @@
 
 pkgname=cymbal
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Language-agnostic code navigation CLI powered by tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/1broseidon/cymbal"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/1broseidon/cymbal/archive/v$pkgver.tar.gz")
 sha256sums=('093a6e49b1e66d65d396bbd3ce391e5e239f725047494b905af54daf60324a54')
