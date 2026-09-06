@@ -1,0 +1,5 @@
+[pkglint-bin]
+source = "github"
+github = "jmelahman/pkglint"
+use_latest_release = true
+prefix = "v"
