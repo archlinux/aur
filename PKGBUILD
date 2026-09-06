@@ -4,7 +4,7 @@
 
 _pkgver=v0.2.6
 pkgver="${_pkgver#v}"
-pkgrel=4
+pkgrel=5
 
 _pkgname=type-lens
 pkgname="python-${_pkgname}"
@@ -18,22 +18,18 @@ depends=(
 	'python>=3.8' 'python<4.0'
 	'python-typing_extensions>=4.1.0'
 )
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-hatchling')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-hatchling')
 
-source=("git+${url}#tag=${_pkgver}")
-sha256sums=('5dc1b3f86bac7f23442b9dfb178f83ea2a7615288506118ce628be59501323b3')
-
-prepare() {
-	git -C "${_pkgname}" clean -dfx # Clean out old wheels etc.
-}
+source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
+sha256sums=('68a6f56d7f3cf776cc159354ff6ce67b40aeeefe494b44f54733b7b79f525321')
 
 build() {
-	cd "${_pkgname}"
+	cd "${_pkgname}-${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${_pkgname}"
+	cd "${_pkgname}-${pkgver}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

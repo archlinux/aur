@@ -1,11 +1,10 @@
 pkgbase = python-type-lens
 	pkgdesc = Runtime type introspection utilities
 	pkgver = 0.2.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/litestar-org/type-lens
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -13,7 +12,7 @@ pkgbase = python-type-lens
 	depends = python>=3.8
 	depends = python<4.0
 	depends = python-typing_extensions>=4.1.0
-	source = git+https://github.com/litestar-org/type-lens#tag=v0.2.6
-	sha256sums = 5dc1b3f86bac7f23442b9dfb178f83ea2a7615288506118ce628be59501323b3
+	source = type-lens-v0.2.6.tar.gz::https://github.com/litestar-org/type-lens/archive/refs/tags/v0.2.6.tar.gz
+	sha256sums = 68a6f56d7f3cf776cc159354ff6ce67b40aeeefe494b44f54733b7b79f525321
 
 pkgname = python-type-lens
