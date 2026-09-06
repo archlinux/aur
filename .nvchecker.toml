@@ -1,0 +1,3 @@
+[symbolicator]
+source = "git"
+git = "https://github.com/getsentry/symbolicator.git"
