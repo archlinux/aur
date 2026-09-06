@@ -2,13 +2,13 @@
 
 pkgname=openshell
 pkgver=0.0.116 # renovate: datasource=github-releases depName=NVIDIA/OpenShell
-pkgrel=1
+pkgrel=2
 pkgdesc="The safe, private runtime for autonomous AI agents."
 arch=('x86_64' 'aarch64')
 url='https://github.com/NVIDIA/OpenShell'
 license=('Apache-2.0')
 install=openshell.install
-depends=('z3' 'sqlite')
+depends=('z3' 'sqlite' 'git')
 makedepends=(
 	'cargo'
 	'clang'  # z3-sys (libclang for bindgen)
