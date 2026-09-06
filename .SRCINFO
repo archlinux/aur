@@ -1,6 +1,6 @@
 pkgbase = hyprwrc-git
 	pkgdesc = Build Hyprland window rules by clicking the window
-	pkgver = 0.1.0.r0.g0000000
+	pkgver = 0.1.0.r11.g671599c
 	pkgrel = 1
 	url = https://github.com/rdannenbring/HyprWindowRuleCreator
 	arch = any
