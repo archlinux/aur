@@ -1,0 +1,23 @@
+post_install() {
+    # Electron's own sandbox needs either unprivileged user namespaces or a SUID
+    # chrome-sandbox binary - mirrors the logic in upstream's own fpm-generated
+    # .INSTALL (the AppArmor bits there are Debian-only and dropped here).
+    # Mime/desktop-db/icon-cache refreshes are deliberately NOT done here - modern pacman
+    # already handles all three automatically via its own ALPM hooks (shipped by the
+    # relevant desktop-integration packages), so doing it again by hand would be redundant.
+    if ! { [[ -L /proc/self/ns/user ]] && unshare --user true 2>/dev/null; }; then
+        chmod 4755 '/opt/Haven/chrome-sandbox' || true
+    else
+        chmod 0755 '/opt/Haven/chrome-sandbox' || true
+    fi
+
+    ln -sf '/opt/Haven/haven-desktop' '/usr/bin/haven-desktop'
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    rm -f '/usr/bin/haven-desktop'
+}
