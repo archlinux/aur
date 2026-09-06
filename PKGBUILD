@@ -3,7 +3,7 @@
 
 pkgname=python-qh3
 _pkgname="${pkgname/python-/}"
-pkgver=1.9.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python'
 arch=('aarch64' 'x86_64')
@@ -16,10 +16,16 @@ makedepends=(
 )
 checkdepends=('python-cryptography' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' python-dnspython)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('70bce6856a378dbe1ecd7037b25d38c0449ec57946599bf509f34c1d74d60809')
+sha256sums=('020bab601ade61891386e6973712c9eb6984ad449be2508c76ab23756ad12a4e')
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+
+  sed -i 's/maturin>=1.2,<1.14/maturin>=1.2,<=1.15/' pyproject.toml
+}
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   # Note: (GCC +) mold or (Clang +) lld is required to build with LTO
   export RUSTFLAGS="${RUSTFLAGS} -Clink-arg=-fuse-ld=mold"
   # export CC=clang CXX=clang++ RUSTFLAGS="${RUSTFLAGS} -Clink-arg=-fuse-ld=lld"
@@ -27,7 +33,7 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   python -m installer -d tmp_install dist/*.whl
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
   export PYTHONPATH="${PWD}/tmp_install/usr/lib/python${python_version}/site-packages"
@@ -37,7 +43,7 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 }
