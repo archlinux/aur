@@ -2,15 +2,15 @@
 # Past Contributor: Marco Praher <marco.praher@gmx.at>
 pkgname=gnocky
 pkgver=0.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc='GTK written GUI frontend for gnokii'
 arch=('i686' 'x86_64')
-url='http://www.gnokii.org/'
+url='https://web.archive.org/web/20260215071737/http://www.gnokii.org/'
 license=('GPL')
 depends=('libglade' 'gnokii>=0.6.26' 'libical')
 makedepends=('make' 'gcc')
-source=("http://www.gnokii.org/download/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('607b25ee3bbfc0cee5664018c302d8e0')
+source=("http://download.samba.org/pub/gnokii/$pkgname/$pkgname-$pkgver.tar.bz2")
+sha256sums=('90dcf5c2e2e6fcf81802ddda9477ab7b1ddb15fbe476c40f93de739995d2c0a3')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
