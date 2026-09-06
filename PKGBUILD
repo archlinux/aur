@@ -3,9 +3,9 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 
 pkgname=floatlyrics
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
-pkgdesc='Floating synchronized lyrics for Spotify on Linux Wayland'
+pkgdesc='Floating synchronized lyrics for MPRIS players on Linux Wayland'
 arch=('x86_64')
 url='https://github.com/ChouChiu/FloatLyrics'
 license=('AGPL-3.0-only')
@@ -25,7 +25,7 @@ makedepends=('bun' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Replace SKIP with the v1.0.0 source archive checksum before publishing to AUR:
 #   updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('88c2283796c8f8e9c577d72ef9dc8a89d2d58bc2cd4f8fb47a18d7b60b850737')
+sha256sums=('a5385618a11e9b78f546d6860109f2c209d4825c1b27c6798695cbf245a0c677')
 
 prepare() {
     cd "FloatLyrics-$pkgver"
