@@ -1,10 +1,10 @@
 pkgname=kotsasmin-toolkit-git
-pkgver=r18.3e60fa3
+pkgver=r19.75397fc
 pkgrel=1
 pkgdesc="A collection of system optimization, security, and media scripts"
 arch=('any')
 url="https://github.com/Kotsasmin/toolkit"
-license=('custom')
+license=('MIT')
 depends=('bash')
 optdepends=(
     'yt-dlp: for media downloader'
@@ -37,5 +37,6 @@ package() {
     ln -s /usr/lib/toolkit/toolkit.sh "${pkgdir}/usr/bin/toolkit"
     ln -s /usr/lib/toolkit/toolkit.sh "${pkgdir}/usr/bin/kotsasmin-toolkit"
 
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
