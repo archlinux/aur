@@ -1,0 +1,8 @@
+[ketesa]
+source = "github"
+github = "etkecc/ketesa"
+use_max_tag = true
+
+
+prefix = "v"
+
