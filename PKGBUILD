@@ -1,30 +1,24 @@
 # Maintainer: Mike Krüger <mkrueger@posteo.de>
 pkgname=game-cheetah
-pkgver=0.5.1
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="High-performance memory scanner/editor and game trainer"
 arch=('x86_64')
 url="https://github.com/mkrueger/game_cheetah"
-license=('Apache')
+license=('Apache-2.0')
 depends=('gtk3' 'libxcb' 'libxkbcommon' 'wayland' 'libgl' 'fontconfig' 'freetype2')
 makedepends=('rust' 'cargo')
-options=('!strip') # Optional: keep debug symbols for better crash reports
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mkrueger/game_cheetah/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a08a19c7d37ca949bfad00faeba27c34dc3c2428744de0c4ef8d241d4a8cf4e3')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('200137e7820ed6018be73206f9974ddb1ae5c10c2169e981e654adc01c475c3b')
 
 prepare() {
     cd "$srcdir/game_cheetah-$pkgver"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "$srcdir/game_cheetah-$pkgver"
-    export RUSTFLAGS="-C target-cpu=x86-64-v2"
-    cargo build --release
-}
-
-check() {
-    cd "$srcdir/game_cheetah-$pkgver"
-    # cargo test --release
+    cargo build --release --frozen
 }
 
 package() {
