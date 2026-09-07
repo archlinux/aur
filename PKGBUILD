@@ -3,7 +3,7 @@
 _pkgauthor=0xjuanma
 _pkgname=golazo
 pkgname=${_pkgname}-bin
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Terminal app for keeping up with live football/soccer. Check scores, match events, and stats from major leagues without leaving your terminal"
@@ -24,11 +24,11 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}")
 sha256sums=('4dc0a5daa325b37f64f50f726db4dd94342dcfec49bd0fe80266a0ef59953bfa'
-            'e95267972caca184cd7372045efc6a91d61a3e874bc2673019e3a849310bda94'
+            '8bcf8e6b79f798019407da1f35d46bd04b452271558c3ac2a2080ee9b21c9d70'
             'e5f43b842f617dab500772337c78cbb95429d364a5bb8b70f6e7810f1786d67f'
-            '06fa00c0413173af0fdf7f39d9b4f1faf268363a394d389c83f20161e6f4aa57')
-sha256sums_x86_64=('f618bd7c757f944e66418c763ee94b2313628668b23cbbf521ef741a979f0b81')
-sha256sums_aarch64=('05db681e706843e2afacc11c54c4c838c39f127ff69e26d7ae9326c4591feb91')
+            'dab858f4b2d6e4b283524432d2b2a8834bb6e668a9c2333faacbc23e048b8c65')
+sha256sums_x86_64=('7da7303d5dc35c0bdd16a191cc914cb167dc669c4383766ba3f57a71c79c30a5')
+sha256sums_aarch64=('cb9705cd644aeee692b1788bd727f8db70ee04baa30aa3d5d2b83d00b28e8c23')
 
 
 package() {
