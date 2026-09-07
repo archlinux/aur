@@ -1,6 +1,6 @@
 # Maintainer: Jahroots <jahroots972@gmail.com>
 pkgname=hexkit
-pkgver=0.3.2
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Hex map editor for tabletop games"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     'hicolor-icon-theme'
 )
 source=("${pkgname}-${pkgver}.rpm::https://github.com/trinvh/hexkit/releases/download/v${pkgver}/Hexkit-${pkgver}-1.x86_64.rpm")
-sha256sums=('dc536eb074e57e77f7a9e4410addf9729ea8852a76e610e4d3ad42677a89589e')
+sha256sums=('217a55fe1e2fb74b9909e6c3a7a4b92c871830a3ec4b74937bcd8690f75b2557')
 
 prepare() {
     cd "$srcdir"
