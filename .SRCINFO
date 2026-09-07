@@ -1,0 +1,26 @@
+pkgbase = paseo-cli-git-bin
+	pkgdesc = Command-line interface for controlling Paseo AI coding agents (git-bin - prebuilt from main 2026-09-06 @b403dea)
+	pkgver = 0.7.2.r44.gb403dea32
+	pkgrel = 1
+	url = https://github.com/getpaseo/paseo/tree/main/packages/cli
+	arch = x86_64
+	license = Apache-2.0
+	depends = nodejs>=22
+	depends = bash
+	depends = glibc
+	depends = gcc-libs
+	provides = paseo
+	provides = paseo-cli
+	provides = paseo-cli-git
+	conflicts = paseo
+	conflicts = paseo-bin
+	conflicts = paseo-cli
+	conflicts = paseo-cli-bun
+	conflicts = paseo-cli-beta
+	conflicts = paseo-cli-edge
+	conflicts = paseo-cli-git
+	options = !strip
+	source = paseo-cli-git-standalone-0.7.2.r44.gb403dea32.tar.gz::https://github.com/xpufx/xpufx-pkgs/releases/download/arch-x86_64-current/paseo-cli-git-standalone-0.7.2.r44.gb403dea32.tar.gz
+	sha256sums = 9f4da6067efff9fdb18b2dbdf9937ff82df7d0786ff53ab255fa4ca33589a3d4
+
+pkgname = paseo-cli-git-bin
