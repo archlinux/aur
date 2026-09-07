@@ -6,7 +6,7 @@ pkgname=(
 pkgbase=lsfg-vk
 _app_id="gay.pancake.$pkgbase-ui"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lossless Scaling Frame Generation on Linux"
 arch=('x86_64')
 url="https://lsfg-vk.dev"
@@ -59,8 +59,9 @@ build() {
     -W no-author
     -D CMAKE_BUILD_TYPE='RelWithDebInfo'
     -D CMAKE_INSTALL_PREFIX='/usr'
+    -D CMAKE_INSTALL_LIBDIR='lib32'
     -D CMAKE_INTERPROCEDURAL_OPTIMIZATION='ON'
-    -D CMAKE_CXX_FLAGS=-m32
+    -D CMAKE_CXX_FLAGS='-m32'
     -D LSFGVK_LAYER_LIBRARY_PATH='liblsfg-vk-layer.x86.so'
     -D LSFGVK_LAYER_MULTILIB_X86='ON'
     -D LSFGVK_MANAGED='ON'
