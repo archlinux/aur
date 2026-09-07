@@ -1,0 +1,22 @@
+pkgbase = acer-sense-git
+	pkgdesc = Linux alternative for AcerSense (Fan control, Battery limit, Profiles)
+	pkgver = r2.486fa05
+	pkgrel = 1
+	url = https://github.com/MaksSuRitik/acer-sense
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python-pyqt6
+	depends = python-psutil
+	depends = polkit
+	depends = power-profiles-daemon
+	depends = alsa-tools
+	depends = smartmontools
+	optdepends = hyprsunset: for BluelightShield feature on Hyprland
+	optdepends = wlsunset: for BluelightShield feature on other Wayland compositors
+	provides = acer-sense
+	conflicts = acer-sense
+	source = git+https://github.com/MaksSuRitik/acer-sense.git
+	sha256sums = SKIP
+
+pkgname = acer-sense-git
