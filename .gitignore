@@ -1,0 +1,8 @@
+# makepkg-managed upstream Git source cache.
+/deepseek-harness/
+
+# Locally built Arch package archives.
+/*.pkg.tar.*
+
+# Source-package archives created by `makepkg --source`.
+/*.src.tar.*
