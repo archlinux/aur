@@ -1,21 +1,22 @@
 pkgbase = mopidy-mpd
 	pkgdesc = Mopidy extension for controlling playback from MPD clients
-	pkgver = 3.3.0
-	pkgrel = 3
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = http://www.mopidy.com
 	arch = any
 	license = Apache-2.0
-	makedepends = python3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = mopidy>=3.0
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = mopidy>=4.0
 	depends = glib2
 	depends = python
 	depends = python-gobject
 	depends = python-pykka
 	depends = python-setuptools
-	source = mopidy-mpd-3.3.0.tar.gz::https://github.com/mopidy/mopidy-mpd/archive/v3.3.0.tar.gz
-	source = fix-playid.patch
-	sha256sums = 69ac13e79d3f77452e49722fe3322e6e60cb39fe24556153a7b3a119a5b3a893
-	sha256sums = 7bf5c45e8eaed515712324ea7074b10b025151e74c50e9355647ca2071f88f07
+	source = mopidy-mpd-4.0.0.tar.gz::https://github.com/mopidy/mopidy-mpd/archive/v4.0.0.tar.gz
+	sha256sums = 56170e872ef41008c9e6e60e740e6eaf265ce7cb1aeef794f7d86bd4cb0d4a7e
 
 pkgname = mopidy-mpd
