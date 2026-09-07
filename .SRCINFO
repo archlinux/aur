@@ -1,0 +1,20 @@
+pkgbase = whisrs-bin
+	pkgdesc = Linux-first voice-to-text dictation tool, written in Rust (prebuilt binary)
+	pkgver = 0.1.27
+	pkgrel = 1
+	url = https://github.com/y0sif/whisrs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = libxkbcommon
+	provides = whisrs=0.1.27
+	conflicts = whisrs
+	conflicts = whisrs-git
+	source_x86_64 = whisrs-bin-0.1.27-x86_64.tar.gz::https://github.com/y0sif/whisrs/releases/download/v0.1.27/whisrs-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b6a08cb9babff70b32f6908d043029dda24ccda2eba989b83c687d86b28b263a
+	source_aarch64 = whisrs-bin-0.1.27-aarch64.tar.gz::https://github.com/y0sif/whisrs/releases/download/v0.1.27/whisrs-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 73e30b730e0214870673d27defc28ec3b30becc16398eed77d6a17d238bc8d0b
+
+pkgname = whisrs-bin
