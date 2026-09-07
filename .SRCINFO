@@ -1,6 +1,6 @@
 pkgbase = facelock
 	pkgdesc = Face authentication for Linux PAM
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/tyvsmith/facelock
 	install = facelock.install
@@ -24,7 +24,7 @@ pkgbase = facelock
 	optdepends = onnxruntime-opt-rocm: AMD GPU acceleration (replaces onnxruntime)
 	options = !lto
 	backup = etc/facelock/config.toml
-	source = facelock-0.2.0.tar.gz::https://github.com/tyvsmith/facelock/archive/v0.2.0.tar.gz
-	sha256sums = 06b0d6eea61c88bbdbd4a0830bf91a67aeb12565c6fc78fdb28a89f229bc3771
+	source = facelock-0.2.1.tar.gz::https://github.com/tyvsmith/facelock/archive/v0.2.1.tar.gz
+	sha256sums = b7f7cc8f65b9e26a22abd95b2c3a5e4b435e496590e4a03bddb0a670a47b267f
 
 pkgname = facelock

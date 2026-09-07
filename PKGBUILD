@@ -1,7 +1,7 @@
 # Maintainer: facelock contributors
 pkgname=facelock
-_tag=0.2.0
-pkgver=0.2.0
+_tag=0.2.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Face authentication for Linux PAM"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("$pkgname-$_tag.tar.gz::$url/archive/v$_tag.tar.gz")
 # Filled in by publish-aur.sh at release time, like PKGBUILD-bin's sums: the
 # tagged tree cannot carry its own tarball's digest. The placeholder fails
 # closed — makepkg refuses to build until a real digest replaces it.
-sha256sums=('06b0d6eea61c88bbdbd4a0830bf91a67aeb12565c6fc78fdb28a89f229bc3771')
+sha256sums=('b7f7cc8f65b9e26a22abd95b2c3a5e4b435e496590e4a03bddb0a670a47b267f')
 
 prepare() {
     cd "$pkgname-$_tag"
