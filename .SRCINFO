@@ -1,6 +1,6 @@
 pkgbase = kotsasmin-toolkit-git
 	pkgdesc = A collection of system optimization, security, and media scripts
-	pkgver = r1.abcdef1
+	pkgver = r18.3e60fa3
 	pkgrel = 1
 	url = https://github.com/Kotsasmin/toolkit
 	arch = any
@@ -17,6 +17,8 @@ pkgbase = kotsasmin-toolkit-git
 	conflicts = kotsasmin-toolkit
 	conflicts = toolkit
 	source = git+https://github.com/Kotsasmin/toolkit.git
+	source = toolkit.sh
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = kotsasmin-toolkit-git

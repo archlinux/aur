@@ -1,6 +1,5 @@
-# Maintainer: Kotsasmin <kotsasmin@gmail.com>
 pkgname=kotsasmin-toolkit-git
-pkgver=r15.64ca38e
+pkgver=r18.3e60fa3
 pkgrel=1
 pkgdesc="A collection of system optimization, security, and media scripts"
 arch=('any')
@@ -17,8 +16,10 @@ optdepends=(
 makedepends=('git')
 provides=('kotsasmin-toolkit' 'toolkit')
 conflicts=('kotsasmin-toolkit' 'toolkit')
-source=("git+https://github.com/Kotsasmin/toolkit.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/Kotsasmin/toolkit.git"
+        "toolkit.sh")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
     cd "${srcdir}/toolkit"
@@ -30,7 +31,7 @@ package() {
 
     install -dm755 "${pkgdir}/usr/lib/toolkit"
     cp -r media optimization ptero security "${pkgdir}/usr/lib/toolkit/"
-    install -Dm755 toolkit.sh "${pkgdir}/usr/lib/toolkit/toolkit.sh"
+    install -Dm755 "${srcdir}/toolkit.sh" "${pkgdir}/usr/lib/toolkit/toolkit.sh"
 
     install -dm755 "${pkgdir}/usr/bin"
     ln -s /usr/lib/toolkit/toolkit.sh "${pkgdir}/usr/bin/toolkit"
