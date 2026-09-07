@@ -1,0 +1,26 @@
+# Derive the sandboxed makechrootpkg from the devtools installed here.
+#
+# Not shipped pre-derived: makechrootpkg sources six files from
+# /usr/share/devtools/lib and /usr/share/makepkg/util at runtime, so a copy
+# taken against one devtools release would run against another's libraries.
+
+post_install() {
+    /usr/lib/aurcache/aurcache-patch-makechrootpkg
+    cat <<'MSG'
+
+AURCache worker installed. Before starting it:
+
+  1. Put the server URL and an enrollment token in /etc/aurcache/worker.env
+  2. systemctl enable --now aurcache-worker
+
+See https://github.com/Lukas-Heiligenbrunner/AURCache -> Setup -> Native.
+MSG
+}
+
+post_upgrade() {
+    /usr/lib/aurcache/aurcache-patch-makechrootpkg
+}
+
+post_remove() {
+    rm -rf /usr/lib/aurcache/bin
+}
