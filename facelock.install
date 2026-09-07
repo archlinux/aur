@@ -61,7 +61,7 @@ post_install() {
     systemctl daemon-reload 2>/dev/null || true
 
     echo ""
-    echo "==> facelock installed. Run 'sudo facelock setup' to complete configuration."
+    echo "==> facelock installed. Complete configuration as root: facelock setup"
     echo "    (downloads models and offers face enrollment and PAM configuration)"
 }
 
