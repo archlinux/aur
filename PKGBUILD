@@ -8,8 +8,8 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm" "${pkgbase}-xpu" "${pkgbase}-opt-xpu")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.13.0
-pkgrel=7
+pkgver=2.14.0
+pkgrel=1
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
 url="https://pytorch.org"
@@ -37,6 +37,7 @@ depends=(
   python-jinja
   python-networkx
   python-numpy
+  python-scikit-build-core
   python-sympy
   python-typing_extensions
   python-yaml
@@ -126,12 +127,11 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         use-system-libuv.patch
         glog-0.7.patch
         fix_cmake_prefix_path.patch
-        add_gpu_targets_rocm.patch
         aotriton_disable_install.patch
         pyproject.patch
         $pkgname-187006.patch::https://github.com/pytorch/pytorch/pull/187006.patch
         )
-b2sums=('604cf0f3bdea2bcf9a88c84958526cf0795ec822e125c8785e6442f99c5c5336c0153f118c81a4ef6f7dc53ad375d67dbce7ab1a1c232073f667363eecbe7ff7'
+b2sums=('6d4fde493619021b22e2f972b6a730c0a90975805b869d2e8bc4398419630af91a7cf0a67a172250c1511b27f91d29b98e614408eda78b7d921acb4e2878dd69'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -173,9 +173,8 @@ b2sums=('604cf0f3bdea2bcf9a88c84958526cf0795ec822e125c8785e6442f99c5c5336c0153f1
         'd87164726e398d201719d629889d6f460e6dc4911de6c10234b046a3e2ffd5d26892ac34a6518abb20bb3ff1dc9f1f01e0e78b789eec92cd13696a3fd8d484b7'
         'b9bb1ac1260a55db9126c7568f1cb4daea071c20609f0117e186c85caad163d41053e43ddda988e8969e074e2323d1de1bece9086bc3222396e8817a79bd0079'
         'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
-        '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
-        '6182624d66fc4fb5f8e5234b2577fc39edfea9097924789b1ca1c5110a426821a4dfac4eccfea88522d7907dd87b8981bea4409862947332e10b1cbf4a78a4fc'
+        '55bb148db8d61c90fd59257bd70fdf13577a9740f02c39d7fce786eea2c6b324c7ef913eba7c0a4d6c8894c072270bc79f1c83a8ccd269ac973cb6c00c014381'
         '8b7d8ee806613a5e3ce5ecf6be09b3f1bb31fed193b644dc17b1caad2212e2774e0f67452199bc00c5655fea6b6401ad00e4e99b4fd858fcb3749f1e1f4c9d04')
 options=('!lto' '!debug')
 
@@ -237,9 +236,6 @@ prepare() {
 
   # Fix building against glog 0.7
   patch -p1 -i "${srcdir}/glog-0.7.patch"
-
-  # ROCm 6.4.2+ requires architectures to appear as cmake arguments too
-  patch -p1 -i "${srcdir}/add_gpu_targets_rocm.patch"
 
   # If using prebuilt aotriton, pytorch attempts to copy /usr/lib and /user/include
   # into the torch folder. Disable this behavior.

@@ -1,39 +1,29 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index 5a8fd3252a6..3e88ddd5a74 100644
+index 695842c971ae..266c1dc206aa 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -2,9 +2,7 @@
- 
- [build-system]
- requires = [
--    "setuptools>=77.0.0,<82",  # 77.0 is the first release with PEP 639 license-files support
--    "cmake>=3.27",
--    "ninja",
-+    "setuptools",  # 77.0 is the first release with PEP 639 license-files support
-     "numpy",
-     "packaging>=24.2",  # required by setuptools>=77 to validate PEP 639 license expressions
-     "pyyaml",
-@@ -20,9 +18,7 @@ dev = [
-     # in PyTorch root until the project fully migrates to pyproject.toml
+@@ -312,10 +312,8 @@ dev = [
      # after which this can be removed as it is already specified in the
      # [build-system] section
+     "scikit-build-core>=1.0",
 -    "setuptools>=77.0.0,<82",  # 77.0 is the first release with PEP 639 license-files support
++    "setuptools",  # 77.0 is the first release with PEP 639 license-files support
+     "spin",
 -    "cmake>=3.27",
 -    "ninja",
-+    "setuptools",  # 77.0 is the first release with PEP 639 license-files support
      "numpy",
      "packaging>=24.2",  # required by setuptools>=77 to validate PEP 639 license expressions
      "pyyaml",
-diff --git a/setup.py b/setup.py
-index e95ca0c5660..7b8d80ea330 100644
---- a/setup.py
-+++ b/setup.py
-@@ -1165,7 +1165,7 @@ def main() -> None:
-     install_requires = [
-         "filelock",
-         "typing-extensions>=4.10.0",
--        "setuptools>=77.0.3",
-+        "setuptools",
-         "sympy>=1.13.3",
-         "networkx>=2.5.1",
-         "jinja2",
+diff --git a/tools/metadata/dependencies.py b/tools/metadata/dependencies.py
+index 0845141d729f..33b276bc8c22 100644
+--- a/tools/metadata/dependencies.py
++++ b/tools/metadata/dependencies.py
+@@ -27,7 +27,7 @@ __all__ = ["dynamic_metadata", "dynamic_wheel"]
+ BASE_DEPENDENCIES = [
+     "filelock",
+     "typing-extensions>=4.10.0",
+-    "setuptools>=77.0.3",
++    "setuptools",
+     "sympy>=1.13.3",
+     "networkx>=2.5.1",
+     "jinja2",
