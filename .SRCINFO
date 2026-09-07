@@ -1,6 +1,6 @@
 pkgbase = evillimiter-ng
 	pkgdesc = Evil Limiter Next Generation.
-	pkgver = 2.4.2.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/KevinCrrl/evillimiter-ng
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = evillimiter-ng
 	depends = python-scapy
 	depends = python-rich
 	depends = python-netaddr
-	depends = python-netifaces2
+	depends = python-psutil
 	depends = python-prompt_toolkit
-	depends = iptables
-	source = https://github.com/KevinCrrl/evillimiter-ng/archive/refs/tags/2.4.2.1/2.4.2.1.tar.gz
-	sha512sums = d6ff989f2ff28bdd8c98ecb9e0cfc4e580b3590133e551be4e088e8ca2fe07efad5f372100d66fed4eaf45f22b4312bf0a119c91b7cb286c58cf72ff8a14dec5
+	depends = nftables
+	source = https://github.com/KevinCrrl/evillimiter-ng/archive/refs/tags/3.0.0/3.0.0.tar.gz
+	sha512sums = a9d3802f58e9d1fdc57701fa26386e570b2c6c2f383026e4c3eacd255aa841f2730afd6ab5fe68f4f3bb26d9fc3cce0fc5b96d14e357ee21667db55d964804a9
 
 pkgname = evillimiter-ng
