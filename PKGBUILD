@@ -1,5 +1,5 @@
 pkgname=acer-sense-git
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="Linux alternative for AcerSense (Fan control, Battery limit, Profiles, Hyprland)"
 arch=('any')
