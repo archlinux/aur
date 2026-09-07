@@ -1,7 +1,7 @@
 # Maintainer: meanlint <meanlint@outlook.com>
 # Contributor: wasdxl <xiaotianjuewo@foxmail.com>
 pkgname=tauritavern-canary-bin
-pkgver=20260906
+pkgver=20260907
 pkgrel=1
 pkgdesc="A Tauri-based frontend for SillyTavern"
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('tauritavern')
 
 source=("https://github.com/Darkatse/TauriTavern/releases/download/Canary/TauriTavern-${pkgver}-canary-linux-x64.deb")
 
-sha256sums=('6c73dd3ceabe5df659836ebca8f938a31f38e1b1b66ce8c6355edd0147b6881e')
+sha256sums=('9ef13ad1e5909a29621cbb2366fe2a796b2d1ba83b642ebefe961712bdc1c8bd')
 
 package() {
     cd "${srcdir}"
