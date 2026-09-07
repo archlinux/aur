@@ -10,3 +10,4 @@
 !sysusers-mautrix-discord.conf
 
 !.gitignore
+!.nvchecker.toml

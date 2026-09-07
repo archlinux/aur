@@ -1,0 +1,8 @@
+[mautrix-discord-bin]
+source = "github"
+github = "mautrix/discord"
+use_max_tag = true
+
+
+prefix = "v"
+
