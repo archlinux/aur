@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dash-player-git
 _pkgname=DashPlayer
-pkgver=6.0.0.r0.g91f2928
-_electronversion=39
+pkgver=6.9.1.r6.gedf5544
+_electronversion=44
 _nodeversion=22
 pkgrel=1
-pkgdesc="A video player designed specifically for English learning.(Use system-wide electron)一款专为英语学习打造的视频播放器"
+pkgdesc="A video player designed specifically for English learning.一款专为英语学习打造的视频播放器"
 arch=('any')
 url="https://dash-player.solidspoon.xyz/"
 _ghurl="https://github.com/solidSpoon/DashPlayer"
@@ -66,6 +66,7 @@ _set_build_env() {
             export YARN_NETWORK_CONCURRENCY=32
         }
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
+        sed -i "s/\`https\:\/\/github\.com/\`https\:\/\/gh-proxy\.org\/https\:\/\/github\.com/g" scripts/download.mjs
     fi
 }
 _get_app_dir() {
@@ -114,7 +115,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/icons/${_icons}.png" \
