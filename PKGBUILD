@@ -1,12 +1,12 @@
 # Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
 # Contributor: Alex Henrie <alexhenrie24@gmail.com>
 
-_electron_pkg='electron42'
+_electron_pkg='electron43'
 _webui_cid='bafybeiciqeyipumpmhxzlxnbqdbbv6u5uij4hy4wax64dmj7kvrhusiq6y'
 
 pkgname='ipfs-desktop'
 pkgver='0.50.0'
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Desktop client for the InterPlanetary File System'
 arch=('x86_64')
@@ -32,8 +32,8 @@ b2sums=(
 	'c5691c946de525abb185fa44ea66ff9c5fa15b936d3dd6e7d0c3a6da8b158e4b8c883b1d948c33e7333bf5e7def1fc6677c4c721a67956db56e817260db36cff'
 	'49e1e7d4d55325d4ea05561a4ff4c64537988e5e841231a95d59328fc9f9b60f3098185bf757b70c42d2175f8a2b6394a0f2a9377df7d1603d69edbd4c3655ec'
 	'849d57fd59653ed0c6eca01769ad12a01f37f6a5316f1a83c0bf7cae576074b978e3ca555d50a56114d177e5fe4817338106698716f054a3e18ae1c81d7a8785'
-	'353367dc9c554b8decbee724713faf627e4764f77c1522d3939069e5db4e6caffc847e20e75afccdee0e1d0e025c4bb6c16a80e9655bf8d76412dc37ef8eff64'
-	'5e6b97ee8aec2cbf4e125ae2ced3f23dd77c45b7291ea63f8ed7f5cee1eb7caaab27dad979f61deefe204539389b0c18d418fc6724cec58eddcea944a46d936e'
+	'bb51f22c1cf58020bbb9d7f9dde2bfd6f838443130d89539c9ce2474f5a1987b332f63dd21b8a903880a77f96d58e8a868d0468e15d266357bdfe3409380eab2'
+	'c32bf5ac47328d78d72e0bd4d65bf21357d59208404a921e4cb9c5c78c48ece1fdedfef8e251c3e33613a37ee4cc6aa2fb0bc84e7aa57686664aa5f783b15ac5'
 	'cfe44691998e7c860dc7cb00cbd13688c8cb76a3da952a15f2df41de734f7e242dde18d8c6ee8a0c0c887091aec3198dbce898dd85862d5e4cb168bf05cd74d4'
 )
 

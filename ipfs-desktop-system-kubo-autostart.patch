@@ -1,20 +1,3 @@
-diff --git a/src/index.js b/src/index.js
---- a/src/index.js
-+++ b/src/index.js
-@@ -4,6 +4,13 @@ registerAppStartTime()
- require('v8-compile-cache')
- 
- const { app, dialog } = require('electron')
-+
-+if (!process.env.IPFS_GO_EXEC) {
-+  process.env.IPFS_GO_EXEC = '/usr/bin/ipfs'
-+}
-+if (!process.env.IPFS_DESKTOP_EXEC) {
-+  process.env.IPFS_DESKTOP_EXEC = '/usr/bin/ipfs-desktop'
-+}
- 
- if (process.env.NODE_ENV === 'test') {
-   const path = require('path')
 diff --git a/src/auto-launch.js b/src/auto-launch.js
 --- a/src/auto-launch.js
 +++ b/src/auto-launch.js
