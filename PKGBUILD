@@ -2,10 +2,10 @@
 _appname=jasper
 pkgname="${_appname}-km-bin"
 _pkgname=Jasper
-pkgver=1.1.23
-_electronversion=43
+pkgver=1.1.24
+_electronversion=44
 pkgrel=1
-pkgdesc="Desktop app for Jasper KM. Uses electron to wrap a docker compose config.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Desktop app for Jasper Knowledge Management."
 arch=('x86_64')
 url="https://github.com/cjmalloy/jasper-app"
 license=('MIT')
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/cjmalloy/jasper-app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d13457e87cabff03b5918ae8375c30bc9fdb44d9ab9cd17ff03233d8487b6342'
+sha256sums=('9922c5f610e13168769f9653487766f781e2a59993b787df7f9c7ee13a34ec77'
             'b841e587a43cbd61006192ad84d3af66c0344e51b882aa4e7efda427d2f30b73'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
