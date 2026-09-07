@@ -1,16 +1,15 @@
 pkgbase = orifude-bin
-	pkgdesc = A quiet, pseudonymous one-to-one letter exchange for the terminal
-	pkgver = 0.2.0
+	pkgdesc = A quiet, offline folding and ink puzzle game for the terminal
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://orifude.com
-	license = Apache-2.0
-	conflicts = orifude
-	provides = orifude
-	arch = aarch64
-	source_aarch64 = https://github.com/nuggocto/orifude/releases/download/v0.2.0/orifude_0.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 1ef37a506e9aead816a232c86b6fd29c91204ceed31ef32b7a1be8c001acff00
 	arch = x86_64
-	source_x86_64 = https://github.com/nuggocto/orifude/releases/download/v0.2.0/orifude_0.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 031d0745469418c3d3c8946e777e6456f52a95ee3e5afc5ff4bd906fc2490873
-	
+	arch = aarch64
+	license = Apache-2.0
+	options = !strip
+	source_x86_64 = https://github.com/nuggocto/orifude/releases/download/v1.0.0/orifude-1.0.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = c2e1fe770643160369c3427dffa46afaae6e147155d2177b18ebd0ab5a4537fc
+	source_aarch64 = https://github.com/nuggocto/orifude/releases/download/v1.0.0/orifude-1.0.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 3010a16d792c9a41e26a3954e07b9111448a5a7f71e3ae3557914384b375ddaf
+
 pkgname = orifude-bin
