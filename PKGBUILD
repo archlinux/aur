@@ -1,7 +1,7 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 pkgname='mkdocs-include-markdown-plugin'
-pkgver=7.2.2
+pkgver=7.3.0
 pkgrel=1
 pkgdesc='Mkdocs Markdown includer plugin.'
 url='https://github.com/mondeja/mkdocs-include-markdown-plugin'
@@ -10,7 +10,7 @@ arch=('any')
 depends=('mkdocs' 'python-wcmatch')
 makedepends=('python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('26b2d454415b0c8e76733005a89889d971d61c59541228d1a47e4423a86f76d8')
+sha256sums=('800fddd703d8ad98ba56c2d9166b93a34857e7682bc1c604d2e51999f64f64ca')
 
 build(){
     cd "${pkgname}-${pkgver}"
