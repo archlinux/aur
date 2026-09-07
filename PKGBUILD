@@ -1,5 +1,5 @@
 pkgname=md-viewer-git
-pkgver=0.1.17
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Fast, lightweight markdown viewer for Linux with tabs, file explorer, and live reload"
 arch=('x86_64')
