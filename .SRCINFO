@@ -1,6 +1,6 @@
 pkgbase = rime-llm-translator-git
 	pkgdesc = 给Rime输入法接入大模型进行拼音联想，支持TUI图形化配置
-	pkgver = r52.176250f
+	pkgver = r53.c2871bb
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/rime-llm-translator
 	install = rime-llm-translator-git.install
