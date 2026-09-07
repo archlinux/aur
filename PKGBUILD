@@ -2,7 +2,7 @@
 
 pkgname=hackman3d-control-deck
 pkgbase=hackman3d-control-deck
-pkgver=1.5.5-r7
+pkgver=1.5.5.r7
 pkgrel=1
 pkgdesc="HackMan3D Control Deck (HCD) is a family of programmable desktop controllers."
 arch=('x86_64')
