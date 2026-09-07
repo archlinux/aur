@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
 pkgname=yay-auto-review
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Review AUR package recipes with Codex before yay builds them'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools>=77' 'python-w
 checkdepends=('lua51')
 install=yay-auto-review.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('078747851971df3a6d48d890e8ee59cdf8fa2ef36d5e8e829f16abe971b0c7d9')
+sha256sums=('c4845bc7e2ba361fd79bf9d886f4211251ac94154cb2bbad5f8a215e529e6039')
 
 build() {
   cd "$pkgname-$pkgver"
