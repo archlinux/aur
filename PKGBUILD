@@ -1,15 +1,15 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=wacli
-pkgver=0.17.2
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 pkgdesc="WhatsApp CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/openclaw/wacli"
 license=('unknown')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='aba0f35c7558e5de3050f1d53483c1f3505c55f2'
+_commit='fffcef1eb00e89cf2d610a87060b37e7c173f40f'
 source=("git+https://github.com/openclaw/wacli.git#commit=$_commit")
 sha256sums=('SKIP')
 
