@@ -1,12 +1,11 @@
 pkgbase = uutils-coreutils-git
 	pkgdesc = Rust rewrite of coreutils
-	pkgver = 0.11.0.r35.g6feff61
+	pkgver = 0.11.0.r55.g7d844a7
 	pkgrel = 1
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = pkgconf
 	makedepends = rust
 	depends = glibc
 	depends = libgcc
@@ -16,8 +15,8 @@ pkgbase = uutils-coreutils-git
 	conflicts = uutils-coreutils
 	conflicts = coreutils
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
-	source = drop-onig.patch::https://github.com/wtcpython/coreutils/commit/a5b4f743ab166d4e28b337b14faa8fdb0ba1a3d5.patch
+	source = drop-onig.patch::https://github.com/wtcpython/coreutils/commit/9a478f8dac8a82a60da1c507e6d677098d27ec5a.patch
 	b2sums = SKIP
-	b2sums = 9bf86101e1b16c20fd61f2aafba390f64882bbf0b8318c72cf21242d36d1797e2011ae69541b5e610010a98f014f5857ee8c3da2d59ea703e8b36b87007fcfd8
+	b2sums = 9d8a60df423d80aa59dd10b327883fe43f70cc6f95fc05ac11c34bfb7ce26d5c71551e86fe6455ed0337e6e80c1aa4dc1532cf128ba5cd2a10e107f1f56f1e1e
 
 pkgname = uutils-coreutils-git
