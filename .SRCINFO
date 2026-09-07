@@ -1,6 +1,6 @@
 pkgbase = headson
 	pkgdesc = Budget‑constrained JSON preview renderer
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/kantord/headson
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = headson
 	depends = zlib
 	depends = jq
 	provides = hson
-	source = headson-0.17.0.crate::https://crates.io/api/v1/crates/headson/0.17.0/download
-	sha256sums = 66b4c69555ead9d88886861ce52aa1c15200c72999070d3bdc1b7a2772e0ea39
+	source = headson-0.17.1.crate::https://crates.io/api/v1/crates/headson/0.17.1/download
+	sha256sums = c2bbb26f40c8b3880f83b0ff9dd79c114d1eacf7e47d1d0ecbbc0a8c94f52346
 
 pkgname = headson

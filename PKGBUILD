@@ -8,7 +8,7 @@ _appname=hson
 pkgauthor=kantord
 pkgname=headson
 _cratename=${pkgname}
-pkgver=0.17.0
+pkgver=0.17.1
 _version=${pkgver}
 pkgrel=1
 pkgdesc="Budget‑constrained JSON preview renderer"
@@ -23,7 +23,7 @@ makedepends=('cargo')
 provides=("${_appname}")
 
 source=("${_cratename}-${_version}.crate::https://crates.io/api/v1/crates/${_cratename}/${_version}/download")
-sha256sums=('66b4c69555ead9d88886861ce52aa1c15200c72999070d3bdc1b7a2772e0ea39')
+sha256sums=('c2bbb26f40c8b3880f83b0ff9dd79c114d1eacf7e47d1d0ecbbc0a8c94f52346')
 
 prepare() {
 	cd "${_cratename}-${_version}"
