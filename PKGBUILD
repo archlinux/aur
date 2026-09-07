@@ -1,6 +1,6 @@
 # Maintainer: AugustLigh <https://github.com/AugustLigh>
 pkgname=llauncher-bin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Native Linux launcher for Arknights: Endfield"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('llauncher')
 conflicts=('llauncher')
 options=('!strip')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${pkgver}/LLauncher_${pkgver}_amd64.deb")
-sha256sums=('137160cfd5d4ca329c1bbbfdcb4c85771272603dfbf4333f4116cd6677143d00')
+sha256sums=('94da28eced41e634d182f3815ea90be4b6321551c07d15614a2ddaa568872304')
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
