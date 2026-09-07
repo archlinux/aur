@@ -1,6 +1,6 @@
 pkgbase = alice-vision
 	pkgdesc = Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms
-	pkgver = 3.3.5
+	pkgver = 3.3.7
 	pkgrel = 1
 	url = https://alicevision.org/
 	arch = x86_64
@@ -37,16 +37,17 @@ pkgbase = alice-vision
 	depends = openimageio
 	depends = usd
 	depends = flann
+	depends = python-numpy
 	optdepends = apriltag: Recognition of Apriltags
 	optdepends = libe57format: e57 3d imaging format I/O
 	optdepends = cuda: enables CUDA backend for depthMap computation
 	optdepends = adaptivecpp: enables SYCL backend for depthMap computation
 	options = !debug
-	source = git+https://github.com/alicevision/AliceVision.git#tag=v3.3.5
+	source = git+https://github.com/alicevision/AliceVision.git#tag=v3.3.7
 	source = MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop
 	source = fix-default-ocio-path.patch
 	source = alicevision.sh
-	sha256sums = 58bd6e880540e778cec285f472b11830a89c423161b7ca9f65522ca096159334
+	sha256sums = 66981859a7fe2ab79d5cf32312c1c0d960e03e4f2f605a4b496436504aebd84b
 	sha256sums = SKIP
 	sha256sums = 3f02c715f27498ac8982edee3e3af151b0cd2a9cb83da37fef3b7fec1e34b169
 	sha256sums = b474a12823b1fb0e1613bba0d7bd455f63124aa8c29b3d00df94f0a3c00ab900

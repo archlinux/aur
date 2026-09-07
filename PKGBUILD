@@ -3,7 +3,7 @@
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 
 pkgname='alice-vision'
-pkgver=3.3.5
+pkgver=3.3.7
 pkgrel=1
 options=('!debug') # debug package is kinda big -- needs investigation!
 pkgdesc="Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms"
@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://alicevision.org/"
 license=('MPL-2.0' 'MIT')
 depends=('boost-libs' 'geogram' 'coin-or-clp' 'coin-or-coinutils' 'coin-or-lemon' 'ceres-solver' 'openmesh' 'jemalloc' 'zlib'
-         'alembic' 'popsift' 'assimp' 'onnxruntime' 'openimageio' 'usd' 'flann')
+         'alembic' 'popsift' 'assimp' 'onnxruntime' 'openimageio' 'usd' 'flann' 'python-numpy')
 makedepends=('boost' 'eigen' 'freetype2' 'flann' 'cctag' 'onnx' 'swig' 'expat'
              'git' 'cmake' 'doxygen' 'python-sphinx' 'nanoflann' 'metis' 'libe57format')
 optdepends=('apriltag: Recognition of Apriltags'
@@ -23,7 +23,7 @@ source=("git+https://github.com/alicevision/AliceVision.git#tag=v${pkgver}"
         "fix-default-ocio-path.patch"
         "alicevision.sh")
 
-sha256sums=('58bd6e880540e778cec285f472b11830a89c423161b7ca9f65522ca096159334'
+sha256sums=('66981859a7fe2ab79d5cf32312c1c0d960e03e4f2f605a4b496436504aebd84b'
             'SKIP'
             '3f02c715f27498ac8982edee3e3af151b0cd2a9cb83da37fef3b7fec1e34b169'
             'b474a12823b1fb0e1613bba0d7bd455f63124aa8c29b3d00df94f0a3c00ab900')
@@ -57,8 +57,8 @@ prepare() {
   # eigen 5.x compat
   sed -i "s|Eigen3 3.3 REQUIRED|Eigen3 REQUIRED|g" src/CMakeLists.txt
 
-  # lto is broken for cuda objects
-  sed -e 's|\(${CUDA_NVCC_FLAGS};-std=c++20\)|\1;-Xcompiler=-fno-lto|g' -i src/CMakeLists.txt
+  # popsift compat
+  sed 's|PopSift 0.10|PopSift|g' -i src/cmake/AliceVisionConfig.cmake.in
 
   # fix default OCIO config path
   patch -p1 -i ../fix-default-ocio-path.patch
@@ -85,6 +85,12 @@ prepare() {
   sed 's|UsdZipFileWriter|SdfZipFileWriter|g' -i src/software/export/main_exportUSD.cpp
   sed '/usd/a usd_ms' -i src/software/export/CMakeLists.txt
   sed '/PUBLIC usd/a usd_ms' -i src/aliceVision/sfmDataIO/CMakeLists.txt
+
+  # patch build against newer nanoflann
+  sed 's|typename IndexType|typename _IndexType|g' -i src/aliceVision/fuseCut/Kdtree.hpp
+  sed  '/using DistanceType/a using IndexType = _IndexType;' -i src/aliceVision/fuseCut/Kdtree.hpp
+  sed 's|typename IndexType|typename _IndexType|g' -i src/software/convert/main_importE57.cpp
+  sed  '/using DistanceType/a using IndexType = _IndexType;' -i src/software/convert/main_importE57.cpp
 }
 
 build() {
@@ -97,13 +103,19 @@ build() {
    	-Bbuild \
     -DALICEVISION_BUILD_DEPENDENCIES=OFF \
     -DALICEVISION_INSTALL_MESHROOM_PLUGIN=ON \
-    -DALICEVISION_BUILD_SWIG_BINDINGS=ON \
+    -DALICEVISION_BUILD_SWIG_BINDING=ON \
     -DALICEVISION_USE_CUDA=AUTO \
     -DALICEVISION_USE_SYCL=AUTO \
     -DALICEVISION_BUILD_DOC=OFF \
+    -DACPP_USE_ACCELERATED_CPU=ON \
+    -DACPP_EXTRA_ARGS="-fno-lto" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SYSTEM_INCLUDE_PATH='/usr/include/python"${python_version}/' \
     -DCMAKE_SKIP_INSTALL_RPATH=ON
+
+  # enforce no lto for sycl, it is currently broken on arch
+  #sed 's|\-flto||g' -i build/src/aliceVision/depthMap_sycl/CMakeFiles/aliceVision_depthMap_sycl.dir/link.txt
+  sed 's|\-flto[=[:alnum:]]* ||g' -i build/src/aliceVision/depthMap_sycl/CMakeFiles/aliceVision_depthMap_sycl.dir/{flags.make,link.txt}
 
   make -C build
 }
@@ -114,10 +126,16 @@ package() {
   cd ${srcdir}/AliceVision
 
   DESTDIR="${pkgdir}" make -C build install/fast
-
+  
   install -Dm755 COPYING.md "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING.md
   install -Dm755 LICENSE-MPL2.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-MPL2.md
   install -Dm755 LICENSE-MIT-libmv.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-MIT-libmv.md
+
+  # python install location
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  mkdir -p ${pkgdir}${site_packages}
+  mv -T ${pkgdir}/usr/lib/python/pyalicevision ${pkgdir}${site_packages}/pyalicevision
+  rmdir ${pkgdir}/usr/lib/python
 }
 
 # vim:set ts=2 sw=2 et:
