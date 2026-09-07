@@ -1,0 +1,19 @@
+pkgbase = cc-cockpit
+	pkgdesc = Claude Code usage panel for GNOME: tray indicator, local dashboard and terminal summary
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/wallacemartinss/cc-cockpit
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = libayatana-appindicator
+	source = cc-cockpit-0.2.0.tar.gz::https://github.com/wallacemartinss/cc-cockpit/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = c84796d5cfe95f028c50a80da056f18ace5af04e55ff0506f1b3f8abef48a972
+
+pkgname = cc-cockpit
