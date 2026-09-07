@@ -1,6 +1,6 @@
 pkgbase = mopidy-mpd
 	pkgdesc = Mopidy extension for controlling playback from MPD clients
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = http://www.mopidy.com
 	arch = any
@@ -15,8 +15,7 @@ pkgbase = mopidy-mpd
 	depends = python
 	depends = python-gobject
 	depends = python-pykka
-	depends = python-setuptools
-	source = mopidy-mpd-4.0.0.tar.gz::https://github.com/mopidy/mopidy-mpd/archive/v4.0.0.tar.gz
-	sha256sums = 56170e872ef41008c9e6e60e740e6eaf265ce7cb1aeef794f7d86bd4cb0d4a7e
+	source = mopidy-mpd-4.0.1.tar.gz::https://github.com/mopidy/mopidy-mpd/archive/v4.0.1.tar.gz
+	sha256sums = 1e252ebd0757b2b0c7e84eb438de9ec56e386aa919ce4fe7c4cdf4c1b0c6b7d8
 
 pkgname = mopidy-mpd

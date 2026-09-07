@@ -1,10 +1,10 @@
-# Maintainer: Kannan Thambiah <pygospa at gmail dot com>
+# Maintainer: Kannan Thambiah <kannan.thambiah@mailbox.org>
 # Contributor: Johannes Wienke <languitar@semipol.de>
 # Contributor: bittin
 # Contributor: Kennan Hunter <kennanhunter5@gmail.com>
 
 pkgname=mopidy-mpd
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Mopidy extension for controlling playback from MPD clients"
 arch=('any')
@@ -16,11 +16,10 @@ depends=(
 	'python'
 	'python-gobject'
 	'python-pykka'
-	'python-setuptools'
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mopidy/mopidy-mpd/archive/v${pkgver}.tar.gz")
-sha256sums=('56170e872ef41008c9e6e60e740e6eaf265ce7cb1aeef794f7d86bd4cb0d4a7e')
+sha256sums=('1e252ebd0757b2b0c7e84eb438de9ec56e386aa919ce4fe7c4cdf4c1b0c6b7d8')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
