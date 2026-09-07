@@ -2,7 +2,7 @@
 
 pkgbase=motorbridge
 pkgname=(motorbridge libmotorbridge python-motorbridge)
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Unified CAN motor control stack with a vendor-agnostic Rust core, stable C ABI, and Python/C++ bindings'
 arch=($CARCH)
@@ -10,8 +10,8 @@ url='https://github.com/tianrking/motorbridge'
 license=('MIT')
 replaces=()
 depends=(
-  libgcc_s.so
-  libstdc++.so
+  libgcc
+  libstdc++
   python
 )
 makedepends=(
@@ -29,15 +29,15 @@ checkdepends=()
 optdepends=()
 options=(!strip !debug staticlibs !lto)
 source=("${pkgbase}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('83c4f14f8fb95235c09dbfcc72483117fb3abcd6fce20063eaa5339ab57da466')
+sha256sums=('1d25d6c235ebedea3e030e468c2cef5cbae9e902bb7f307ff5015b108a54ebf4')
 
 
 prepare() {
   git -C "${srcdir}/${pkgbase}" clean -dfx
   cd "${srcdir}/${pkgbase}"
   export RUSTUP_TOOLCHAIN=stable
+  cargo update -w
   cargo fetch --locked --target host-tuple
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
   ABI_LIB="${srcdir}/${pkgbase}/target/release/libmotor_abi.so"
@@ -52,10 +52,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  cargo build \
-      --offline \
-      --locked \
-      --release
+  cargo build --frozen --release --all-features
 
   cmake -S bindings/cpp \
     -DCMAKE_BUILD_TYPE=None \
@@ -63,7 +60,7 @@ build() {
     -DMOTORBRIDGE_ABI_LIBRARY=$ABI_LIB \
     -DMOTORBRIDGE_ABI_HEADER="motor_abi/include/motor_abi.h" \
     -DMOTORBRIDGE_CPP_BUILD_EXAMPLES=OFF \
-    -Wno-dev \
+    -Wno-author \
     -B bindings/cpp/build
 
   cmake --build bindings/cpp/build
@@ -87,8 +84,8 @@ package_motorbridge() {
     ${pkgname}
   )
   depends=(
-    libgcc_s.so
-    libstdc++.so
+    libgcc
+    libstdc++
     python
   )
   arch=($CARCH)
@@ -116,8 +113,8 @@ package_libmotorbridge() {
     ${pkgname}
   )
   depends=(
-    libgcc_s.so
-    libstdc++.so
+    libgcc
+    libstdc++
   )
   arch=($CARCH)
 
@@ -137,8 +134,8 @@ package_python-motorbridge() {
     ${pkgname}
   )
   depends=(
-    libgcc_s.so
-    libstdc++.so
+    libgcc
+    libstdc++
     python
   )
   arch=($CARCH)
