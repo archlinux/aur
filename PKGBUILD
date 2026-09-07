@@ -6,15 +6,15 @@ _SPELL_EN_DICT_SHA256='c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4
 
 _pkgname=fcitx5
 pkgname=${_pkgname}-shorin-patched-git
-pkgver=5.1.20.r4.g6e560311
-pkgrel=3
+pkgver=5.1.22.r5.g4146a2a7
+pkgrel=1
 options=(!debug)
-pkgdesc="Next generation of fcitx (with XIM leak, CapsLock, and preedit fixes)"
+pkgdesc="Next generation of fcitx (with XIM leak fix)"
 arch=('x86_64')
 url="https://github.com/SHORiN-KiWATA/fcitx5"
 license=('GPL')
-depends=('cairo' 'enchant' 'iso-codes' 'libgl' 'libxkbcommon-x11' 'pango' 'wayland'
-         'xcb-imdkit' 'xcb-util-wm' 'libxkbfile' 'fmt' 'gdk-pixbuf2')
+depends=('cairo' 'enchant' 'gdk-pixbuf2' 'iso-codes' 'libgl' 'librsvg' 'libxkbcommon-x11'
+         'libxkbfile' 'pango' 'wayland' 'xcb-imdkit' 'xcb-util-wm' 'yoga')
 makedepends=('extra-cmake-modules' 'git' 'ninja' 'wayland-protocols'
              'plasma-wayland-protocols' 'nlohmann-json')
 provides=("${_pkgname}" "${_pkgname}-git")
@@ -47,6 +47,7 @@ build(){
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+        -DUSE_SYSTEM_YOGA=ON \
         -DENABLE_SYSTEMD=OFF .
   ninja
 }
