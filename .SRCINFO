@@ -1,6 +1,6 @@
 pkgbase = slskdn
 	pkgdesc = slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening.
-	pkgver = 2026090321.slskdn.320
+	pkgver = 2026090620.slskdn.321
 	pkgrel = 7
 	url = https://github.com/snapetech/slskdn
 	install = slskd.install
@@ -24,7 +24,7 @@ pkgbase = slskdn
 	conflicts = slskd-bin
 	conflicts = slskdN-bin
 	backup = etc/slskd/slskd.yml
-	source = slskdn-2026090321.slskdn.320.tar.gz::https://github.com/snapetech/slskdn/archive/refs/tags/2026090321-slskdn.320.tar.gz
+	source = slskdn-2026090620.slskdn.321.tar.gz::https://github.com/snapetech/slskdn/archive/refs/tags/2026090620-slskdn.321.tar.gz
 	source = slskd.service
 	source = slskd.yml
 	source = slskd.sysusers
