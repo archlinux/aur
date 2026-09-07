@@ -2,7 +2,7 @@
 # Maintainer: caoticofanegas<>
 _pkgname=metube
 pkgname="${_pkgname}-git"
-pkgver=r725.e30a24f
+pkgver=r838.7938837
 pkgrel=1
 pkgdesc="Self-hosted YouTube downloader (web UI for youtube-dl / yt-dlp)"
 arch=("any")
@@ -34,6 +34,7 @@ pkgver() {
 
 build() {
     cd "${_pkgname}/ui"
+    npm install @fortawesome/angular-fontawesome@latest ngx-socket-io@latest
     npm install
     npm ci
     ./node_modules/.bin/ng build --configuration production
