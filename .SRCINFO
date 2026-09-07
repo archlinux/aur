@@ -1,17 +1,18 @@
 pkgbase = nautilus-custom-icon-name
 	pkgdesc = A Nautilus-python extension that enables setting custom folder icons using a theme-aware icon name
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://gitlab.com/benleppke/nautilus-custom-icon-name
 	arch = any
 	license = GPL-3.0-or-later
 	depends = gtk4
+	depends = libadwaita
 	depends = libnotify
 	depends = nautilus-python
-	optdepends = adwaita-icon-theme: fallback theme if Papirus is not installed
+	depends = python-gobject
 	optdepends = papirus-icon-theme: Papirus folder icons
 	optdepends = papirus-folder-icons: extra folder icons for the Papirus theme
-	source = https://gitlab.com/benleppke/nautilus-custom-icon-name/-/archive/v0.5.2/nautilus-custom-icon-name-v0.5.2.tar.gz
-	sha256sums = 9a9e9f6dd7c2e24e9eadf5c5187f23cd7bdd818e5b4a0b207debfd833a172d50
+	source = https://gitlab.com/benleppke/nautilus-custom-icon-name/-/archive/v0.5.3/nautilus-custom-icon-name-v0.5.3.tar.gz
+	sha256sums = 62a2b42bb79277fdf7926560aed7ab3c3ac45bdc40b9bb2440ff51f877a2b0c0
 
 pkgname = nautilus-custom-icon-name
