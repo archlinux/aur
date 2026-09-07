@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woocommerce-pos-bin
 _pkgname=WooCommerce-POS
-pkgver=1.10.7
+pkgver=1.10.8
 _electronversion=43
 pkgrel=1
-pkgdesc="Electron Desktop App for WooCommerce POS.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Electron Desktop App for WooCommerce POS."
 arch=('x86_64')
 url="https://github.com/wcpos/electron"
 license=('MIT')
@@ -15,10 +15,10 @@ depends=(
     'nodejs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('38f2a369160d0c78cf594dffbfc22c9e477ca0a9121d0474969b51a18cdaf069'
+sha256sums=('f00270b024923c2ce405f214c232a21b3cb734fdb1b5460a7c80e984d987b3ca'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
