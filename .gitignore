@@ -11,3 +11,4 @@
 !borgwarehouse_nodynuser_migration.install
 
 !.gitignore
+!.nvchecker.toml

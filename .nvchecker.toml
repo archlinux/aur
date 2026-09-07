@@ -1,0 +1,6 @@
+[borgwarehouse]
+source = "github"
+github = "Ravinou/borgwarehouse"
+use_latest_release = true
+prefix = "v"
+
