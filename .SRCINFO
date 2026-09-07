@@ -1,0 +1,17 @@
+pkgbase = bothy-bin
+	pkgdesc = A turn-key terminal workspace built from tools you already trust
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/bspeelm/bothy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = bothy
+	conflicts = bothy
+	options = !strip
+	source_x86_64 = bothy-x86_64-0.10.1.tgz::https://github.com/bspeelm/bothy/releases/download/v0.10.1/bothy_linux_amd64.tar.gz
+	sha256sums_x86_64 = c682f005ffd3e76275529aaf93cc0f4c5a07d8c359b8c1f5a52b1fa4fc20fac5
+	source_aarch64 = bothy-aarch64-0.10.1.tgz::https://github.com/bspeelm/bothy/releases/download/v0.10.1/bothy_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7e69d3900b41a955ab2e5b4b03d8131d7c9d3a2f887ce96a34e7532c92058ae5
+
+pkgname = bothy-bin

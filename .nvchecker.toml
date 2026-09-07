@@ -1,0 +1,5 @@
+[bothy-bin]
+source = "github"
+github = "bspeelm/bothy"
+use_latest_release = true
+prefix = "v"
