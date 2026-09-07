@@ -45,7 +45,7 @@ package() {
 
   cat >"$pkgdir/usr/bin/widic" <<'EOF'
 #!/bin/sh
-exec python /usr/share/widic/main.py "$@"
+exec /usr/bin/python /usr/share/widic/main.py "$@"
 EOF
 
   chmod 755 "$pkgdir/usr/bin/widic"
