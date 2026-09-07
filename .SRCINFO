@@ -1,9 +1,10 @@
 pkgbase = python-tree-sitter-groovy
 	pkgdesc = Groovy grammar for tree-sitter
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/amaanq/tree-sitter-groovy
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
