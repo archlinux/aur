@@ -1,6 +1,6 @@
 # Maintainer: metaneutrons <aur@metaneutrons.github.io>
 pkgname=pfs3-fuse
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="FUSE driver for PFS3 (Amiga) disk images"
 arch=('x86_64' 'aarch64')
@@ -11,9 +11,9 @@ makedepends=('cargo' 'pkgconf')
 # Measured from the real tar listing rather than assumed from the tag
 # or from $pkgver. A prerelease tag makes the two differ: the archive
 # root carries the full tag while pkgver carries the release core.
-_srcdir='pfs3-0.1.4'
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/metaneutrons/pfs3/archive/refs/tags/v0.1.4.tar.gz")
-sha256sums=('30f2513c6c72bb73edcb1ce6953c774211a5982fe63e9cad8dbac31fae841fdc')
+_srcdir='pfs3-0.1.5'
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/metaneutrons/pfs3/archive/refs/tags/v0.1.5.tar.gz")
+sha256sums=('c0e79bf2382bfc118aff936e875b35606d7aa94466e5fcda97b72c9bbc7bb3cb')
 
 prepare() {
   cd "$_srcdir"
