@@ -1,7 +1,7 @@
 pkgbase = flclash-bin
 	pkgdesc = A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free.
 	pkgver = 0.8.96
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chen08209/FlClash
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,6 +9,8 @@ pkgbase = flclash-bin
 	depends = ayatana-ido
 	depends = libdbusmenu-glib
 	depends = libkeybinder3
+	depends = libayatana-indicator
+	depends = libappindicator
 	provides = flclash=0.8.96
 	conflicts = flclash
 	source = flclash.sh

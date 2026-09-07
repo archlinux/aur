@@ -3,7 +3,7 @@
 pkgname=flclash-bin
 _pkgname=FlClash
 pkgver=0.8.96
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free."
 arch=(
     #'aarch64'
@@ -18,6 +18,8 @@ depends=(
     'ayatana-ido'
     'libdbusmenu-glib'
     'libkeybinder3'
+    'libayatana-indicator'
+    'libappindicator'
 )
 source=(
     "${pkgname%-bin}.sh"
