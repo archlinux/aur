@@ -1,0 +1,23 @@
+pkgbase = intelis-interfacing-git
+	pkgdesc = A standalone Electron application that receives test results from laboratory analyzers and stores them where a laboratory information system can pick them up.
+	pkgver = 4.3.0.r1.g3c71f4b
+	pkgrel = 1
+	url = https://deforay.github.io/intelis-interfacing/
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = curl
+	makedepends = jq
+	depends = electron44
+	depends = nodejs
+	provides = intelis-interfacing=4.3.0
+	conflicts = intelis-interfacing
+	source = intelis-interfacing.git::git+https://github.com/deforay/intelis-interfacing.git
+	source = intelis-interfacing.sh
+	sha256sums = SKIP
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = intelis-interfacing-git
