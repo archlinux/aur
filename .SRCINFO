@@ -1,0 +1,15 @@
+pkgbase = widic
+	pkgdesc = A Wiktionary viewer in your terminal.
+	pkgver = d80c70f
+	pkgrel = 1
+	url = https://github.com/matezoltanfarkas/widic
+	arch = any
+	license = GPL-3.0-only
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-textual
+	source = git+https://github.com/matezoltanfarkas/widic.git#branch=main
+	b2sums = SKIP
+
+pkgname = widic
