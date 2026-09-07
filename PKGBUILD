@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-pure
-pkgver=155.0
+pkgver=155.0.1
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.firefox.com"
@@ -81,15 +81,15 @@ source=(
   "firefox.desktop"
   "org.mozilla.firefox.metainfo.xml"
   "0001-Install-under-remoting-name.patch"
-  "https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-155-patches-01.tar.xz"
+  "https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-155-patches-05.tar.xz"
 )
 sha256sums=(
-  'c57fd59835f8c5b9c7f68bead2782238c11d8626b57509cc809915b0b4d70dfb'
+  '7548acd4788d4d0dce7ef9e14e62f7041df8746d9cfe4c05e923747954370d13'
   'cb00ea359d6daf37900102307be4f515f1b7ef9c98825c64cc55bb562449d0d8'
   '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
   '4e01a62e20026b67466943bad9dfba47874c5e1492375f8293aeb85ecedf2288'
   'a7364ddb3b6eab922873f35731ed5cfb61e8022a35d54edd2f80b95a4f5625ed'
-  'dec9c3044c672ac7cd2987cf4d5fc6257a889abc3e541b0a2da7f3f2ca3cd057'
+  '2900045a70ed374967828f705a18d859a22ee3d5708c8510ddbd6853392cfcb4'
 )
 
 prepare() {
@@ -102,7 +102,7 @@ prepare() {
   # Gentoo patches
   for patch in "${srcdir}/firefox-patches"/*.patch; do
     echo "Applying patch $patch..."
-    [[ "$patch" == */0015-bgo-940031-wasm-support.patch ]] && continue
+    [[ "$patch" == */0015-bgo-940031-wasm-support-firefox-155.patch ]] && continue
     patch -Np1 -i "${patch}"
   done
 
