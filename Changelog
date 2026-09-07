@@ -1,9 +1,19 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 2.12.0 ➙ 2.14.0
-              : 2026-01-03 ➙ 2026-03-01
+ Tags         : 2.13.0 ➙ HEAD
+              : 2026-01-04 ➙ 2026-09-07
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-09-07   : HEAD
+              - **3.0.0**
+            
+                * Move to meson/meson-python for build/packaging.
+                * No significance in the major version change, just minor number getting large :)
+                * periodic review and tidy up.
+
+ 2026-03-01   : 3.0.0, origin/master
+              - update Docs/Changelogs
 
  2026-03-01   : 2.14.0
               - timeout is now float or int. No reason for it to be limited to int.
@@ -25,8 +35,4 @@
             
                 * Add code check script
  2026-01-03   ⋯
-              - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2026-01-03   : 2.12.0
-              - Add some uv installer options to install script
               - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf

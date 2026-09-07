@@ -12,7 +12,7 @@ pkgname='pyconcurrent'
 pkgdesc='Python module to simplify asyncio/multiprocessing'
 _gitname='pyconcurrent'
 
-pkgver="2.14.0"
+pkgver="3.0.0"
 pkgrel=1
 url="https://github.com/gene-git/pyconcurrent"
 
@@ -26,10 +26,9 @@ depends=(
 )
 makedepends=(
     'git' 
-    'uv' 
-    'python-uv-build' 
+    'meson' 
+    'meson-python' 
     'rsync' 
-    #'python-sphinx' 'python-myst-parser' 'texlive-latexextra' 'python-sphinx-autoapi' 
 )
 checkdepends=(
     'python-pytest' 
@@ -52,32 +51,16 @@ sha512sums=('SKIP')
 
 build() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
 
-    # To build Docs 
-    # uncomment these and sphinx makedepends above
-    # --------------
-    #  echo "Build docs"
-    #  cd ./Docs
-    #  pdf='pyconcurrent.pdf'
-    #  /usr/bin/rm -f $pdf
-    #  make latexpdf >/dev/null 2>&1
-    #  make latexpdf >/dev/null
-    #  make html
-    #  make html
-    #  /usr/bin/cp _build/latex/$pdf .
-    #  /usr/bin/rm -rf _build/doctrees _build/latex autoapi
-
+    ./scripts/do-build
 }
 
 check() {
-    cd "${_gitname}/tests"
-    PYTHONPATH=../src /usr/bin/pytest
+    cd "${_gitname}"
+    ./scripts/run-tests
 }
 
 package() {
     cd "${_gitname}"
     ./scripts/do-install ${pkgdir}
 }
-# vim:set ts=4 sts=4 sw=4 et:
