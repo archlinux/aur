@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-git
 _pkgname=meru
-pkgver=3.54.0.r1.g74db91d
+pkgver=3.60.0.r5.g24afa36
 _electronversion=43
-_nodeversion=26
+_nodeversion=24
 pkgrel=1
 pkgdesc="📮 Nifty Gmail desktop app for macOS, Linux & Windows (previously Gmail Desktop).(Use system-wide electron)"
 arch=('any')
-url="https://github.com/zoidsh/meru"
+url="https://meru.so/"
+_ghurl="https://github.com/zoidsh/meru"
 license=('MIT')
 provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
@@ -23,7 +24,7 @@ makedepends=(
     'jq'
 )
 source=(
-    "${pkgname%-git}.git::git+${url}.git"
+    "${pkgname%-git}.git::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
@@ -92,7 +93,8 @@ build() {
     _set_build_env
     _ensure_local_nvm
     bun run build:js
-    bun x electron-builder --linux dir -c.electronDist="${electronDist}"
+    bun run build:clean-dist
+    bun x electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
