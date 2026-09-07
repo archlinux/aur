@@ -2,7 +2,7 @@
 # Co-Maintainer: Deon Spengler <deon@spengler.co.za>
 
 pkgname=pi-coding-agent
-pkgver=0.85.0
+pkgver=0.85.1
 pkgrel=1
 pkgdesc='Coding agent CLI with read, bash, edit, write tools and session management'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ provides=("pi=$pkgver")
 conflicts=('pi' 'pi-coding-agent-bin' 'pi-coding-agent-git')
 options=('!strip' '!debug')
 source=("pi-${pkgver}-source.tar.gz::${url}/releases/download/v${pkgver}/pi-${pkgver}-source.tar.gz")
-sha256sums=('b4dd5d4db4cd2832389da6445485bbca9db9c6d83bb7504d67975af5c5fe8307')
+sha256sums=('f7ec92ed4f7b75369198398a3421732eae405183971450bc74cb8544f42d02ca')
 
 prepare() {
   cd "pi-$pkgver"
