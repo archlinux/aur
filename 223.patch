@@ -1,0 +1,156 @@
+From 82d4a000870d3994c9e18b53187c25b4cb09386c Mon Sep 17 00:00:00 2001
+From: Nicola Fontana <ntd@entidi.it>
+Date: Mon, 7 Sep 2026 09:24:57 +0200
+Subject: [PATCH] Use strscpy instead of strncpy in kernel space
+
+Linux 7.2 dropped the long deprecated `strncpy` function. `strscpy`, its
+natural replacement, has been introduced in Linux 4.2 with the commit
+30035e45753b708e7d47a98398500ca005e02b86. Use `strscpy` in the codebase
+and provide a fallback for Linux < 4.2. Devices targetting a specific
+Linux version have not been touched as they are not affected.
+
+Closes #235
+---
+ devices/generic.c     | 7 ++++++-
+ examples/tty/serial.c | 2 +-
+ master/flag.c         | 2 +-
+ master/fsm_foe.c      | 2 +-
+ master/ioctl.c        | 4 ++--
+ master/master.c       | 2 +-
+ master/master.h       | 7 +++++++
+ master/slave_config.c | 2 +-
+ 8 files changed, 20 insertions(+), 8 deletions(-)
+
+diff --git a/devices/generic.c b/devices/generic.c
+index a08af54b..b00087cb 100644
+--- a/devices/generic.c
++++ b/devices/generic.c
+@@ -52,6 +52,11 @@
+ #  endif
+ #endif
+ 
++// Support old kernels by providing a fallback for `strscpy`
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 3, 0)
++#define strscpy strncpy
++#endif
++
+ /****************************************************************************/
+ 
+ int __init ec_gen_init_module(void);
+@@ -437,7 +442,7 @@ int __init ec_gen_init_module(void)
+             rcu_read_unlock();
+             goto out_err;
+         }
+-        strncpy(desc->name, netdev->name, IFNAMSIZ);
++        strscpy(desc->name, netdev->name, IFNAMSIZ);
+         desc->netdev = netdev;
+         desc->ifindex = netdev->ifindex;
+         memcpy(desc->dev_addr, netdev->dev_addr, ETH_ALEN);
+diff --git a/examples/tty/serial.c b/examples/tty/serial.c
+index e64d7440..d47c542d 100644
+--- a/examples/tty/serial.c
++++ b/examples/tty/serial.c
+@@ -382,7 +382,7 @@ static int el60xx_port_init(el60xx_port_t *port, ec_slave_config_t *sc,
+ {
+     int ret = 0;
+ 
+-    strncpy(port->name, name, EL6002_PORT_NAME_SIZE);
++    strscpy(port->name, name, EL6002_PORT_NAME_SIZE);
+ 
+     port->tty = ectty_create(&el60xx_tty_ops, port);
+     if (IS_ERR(port->tty)) {
+diff --git a/master/flag.c b/master/flag.c
+index 652d35b1..805517c4 100644
+--- a/master/flag.c
++++ b/master/flag.c
+@@ -47,7 +47,7 @@ int ec_flag_init(
+         return -ENOMEM;
+     }
+ 
+-    strcpy(flag->key, key); // no strncpy, buffer is alloc'ed with strlen
++    strcpy(flag->key, key); // no strscpy, buffer is alloc'ed with strlen
+     flag->value = value;
+     return 0;
+ }
+diff --git a/master/fsm_foe.c b/master/fsm_foe.c
+index 1d84e376..59598c1d 100644
+--- a/master/fsm_foe.c
++++ b/master/fsm_foe.c
+@@ -776,7 +776,7 @@ void ec_fsm_foe_state_data_read(
+                 fsm->request->error_code);
+         if (rec_size > 6) {
+             uint8_t text[256];
+-            strncpy(text, data + 6, min(rec_size - 6, sizeof(text)));
++            strscpy(text, data + 6, min(rec_size - 6, sizeof(text)));
+             EC_SLAVE_ERR(slave, "FoE Error Text: %s\n", text);
+         }
+         ec_foe_set_rx_error(fsm, FOE_OPCODE_ERROR);
+diff --git a/master/ioctl.c b/master/ioctl.c
+index c590d5d2..051e520f 100644
+--- a/master/ioctl.c
++++ b/master/ioctl.c
+@@ -84,7 +84,7 @@ static void ec_ioctl_strcpy(
+         )
+ {
+     if (source) {
+-        strncpy(target, source, EC_IOCTL_STRING_SIZE);
++        strscpy(target, source, EC_IOCTL_STRING_SIZE);
+         target[EC_IOCTL_STRING_SIZE - 1] = 0;
+     } else {
+         target[0] = 0;
+@@ -1641,7 +1641,7 @@ static ATTRIBUTES int ec_ioctl_config_ip(
+     ioctl->subnet_mask = req->subnet_mask;
+     ioctl->gateway = req->gateway;
+     ioctl->dns = req->dns;
+-    strncpy(ioctl->name, req->name, EC_MAX_HOSTNAME_SIZE);
++    strscpy(ioctl->name, req->name, EC_MAX_HOSTNAME_SIZE);
+ 
+     up(&master->master_sem);
+ 
+diff --git a/master/master.c b/master/master.c
+index 27158eb8..8d67a719 100644
+--- a/master/master.c
++++ b/master/master.c
+@@ -2730,7 +2730,7 @@ int ecrt_master_get_slave(ec_master_t *master, uint16_t slave_position,
+     slave_info->sync_count = slave->sii.sync_count;
+     slave_info->sdo_count = ec_slave_sdo_count(slave);
+     if (slave->sii.name) {
+-        strncpy(slave_info->name, slave->sii.name, EC_MAX_STRING_LENGTH);
++        strscpy(slave_info->name, slave->sii.name, EC_MAX_STRING_LENGTH);
+     } else {
+         slave_info->name[0] = 0;
+     }
+diff --git a/master/master.h b/master/master.h
+index a1125e85..cf850d98 100644
+--- a/master/master.h
++++ b/master/master.h
+@@ -180,6 +180,13 @@ typedef struct {
+ 
+ /****************************************************************************/
+ 
++// Support old kernels by providing a fallback for `strscpy`
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 3, 0)
++#define strscpy strncpy
++#endif
++
++/****************************************************************************/
++
+ /** EtherCAT master.
+  *
+  * Manages slaves, domains and IO.
+diff --git a/master/slave_config.c b/master/slave_config.c
+index 311e6147..262caea0 100644
+--- a/master/slave_config.c
++++ b/master/slave_config.c
+@@ -1541,7 +1541,7 @@ int ecrt_slave_config_eoe_dns_address(ec_slave_config_t *sc,
+ int ecrt_slave_config_eoe_hostname(ec_slave_config_t *sc,
+         const char *name)
+ {
+-    strncpy(sc->eoe_ip_param_request.name, name, EC_MAX_HOSTNAME_SIZE - 1);
++    strscpy(sc->eoe_ip_param_request.name, name, EC_MAX_HOSTNAME_SIZE - 1);
+     sc->eoe_ip_param_request.name_included = 1;
+     return 0;
+ }
+-- 
+GitLab
+
