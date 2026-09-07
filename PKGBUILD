@@ -1,7 +1,8 @@
+# Maintainer: mrakopes <dave+arch at mtfbwy dot cz>
 # Maintainer: kvaps <kvapss@gmail.com>
 
 pkgname=qbec
-pkgver=0.16.3
+pkgver=0.31.0
 pkgrel=0
 pkgdesc="Configure Kubernetes objects on multiple clusters using Jsonnet"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -13,7 +14,7 @@ optdepends=(
   'jsonnet-bundler-bin: jsonnet package manager'
 )
 source=("https://github.com/splunk/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('1dfdd8f4db74ba3115c56704e99b26d072ad72aa14f84d5af8e1c419126bb122')
+sha256sums=('28f5a7adfc5f5a409613bb2ec10aaf6bb78e49d83403ec8393b3c55d60d0cb46')
 
 build() {
   cd "$srcdir/qbec-$pkgver"
