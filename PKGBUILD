@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=zmate
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Instant terminal sharing using Zellij and SSH."
 arch=("i686" "x86_64" "aarch64")
@@ -10,7 +10,7 @@ makedepends=('go')
 options=("strip" "buildflags")
 depends=('glibc' 'zellij' 'openssh')
 source=("${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('bc125bc31fd1550a10b5d62c57a083a0f3fe7d6bc7c21975bf268bfe65a338c2')
+sha256sums=('53080085e9e08c3b2407e99db39358f42d0d44fd1f80997959c28f9d35283dd8')
     
 prepare(){
     cd "${pkgname}-${pkgver}"

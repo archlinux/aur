@@ -1,6 +1,6 @@
 pkgbase = zmate
 	pkgdesc = Instant terminal sharing using Zellij and SSH.
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/ziinaio/zmate
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = zmate
 	depends = openssh
 	options = strip
 	options = buildflags
-	source = https://github.com/ziinaio/zmate/archive/refs/tags/v0.3.1/zmate-0.3.1.tar.gz
-	sha256sums = bc125bc31fd1550a10b5d62c57a083a0f3fe7d6bc7c21975bf268bfe65a338c2
+	source = https://github.com/ziinaio/zmate/archive/refs/tags/v0.3.2/zmate-0.3.2.tar.gz
+	sha256sums = 53080085e9e08c3b2407e99db39358f42d0d44fd1f80997959c28f9d35283dd8
 
 pkgname = zmate
