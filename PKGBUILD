@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yet-another-electron-term
 _pkgname=YAET
-pkgver=7.2.3
+pkgver=7.3.0
 _electronversion=39
 _nodeversion=22
 pkgrel=1
-pkgdesc="A remote connection tool based on angular + electron supporting SSH Telnet WinRM, RDP VNC, SCP/SFTP FTP SAMBA.(Use system-wide electron)"
+pkgdesc="All-in-one remote connection manager. SSH/Telnet/WinRM/Serial terminals, SCP/FTP/SMB/WebDav/S3 file explorer, VNC/SPICE/RDP remote desktop."
 arch=('any')
 url="https://github.com/invince/YAET"
 license=('Apache-2.0')
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('6ebe7b898da494ac6a3abba0863cf9201df94aa321762ef0d655b2e3f69451da'
+sha256sums=('13308b2ee2a2eb99fc954115703c25735e7819e5feffae50de93278781676c4a'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
