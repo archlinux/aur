@@ -2,7 +2,7 @@
 
 pkgname=whisper-cpp-cuda-git
 _pkgsrc=whisper.cpp
-pkgver=1.9.2.r17.g592feef
+pkgver=1.9.3.r182.g52a939a
 pkgrel=1
 pkgdesc="High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model (leveraging NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
@@ -10,9 +10,9 @@ url=https://github.com/ggml-org/whisper.cpp
 license=(MIT)
 depends=(
   ffmpeg
-  ggml-cuda-git
   glibc
   gcc-libs
+  llama.cpp-cuda-git
   nvidia-utils
   sdl2-compat
 )
@@ -46,7 +46,7 @@ build() {
     -DWHISPER_BUILD_EXAMPLES=ON \
     -DWHISPER_BUILD_SERVER=ON \
     -DWHISPER_BUILD_TESTS=OFF \
-    -DWHISPER_USE_SYSTEM_GGML=ON \
+    -DWHISPER_USE_SYSTEM_LLAMA=ON \
     -Wno-dev
   cmake --build build
 }
