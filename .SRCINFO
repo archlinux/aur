@@ -1,7 +1,7 @@
 pkgbase = jkey
 	pkgdesc = Python library for password management and TOTP verification
-	pkgver = 0.3.2
-	pkgrel = 4
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/imjiaoyuan/jkey
 	arch = any
 	license = MIT
@@ -12,11 +12,11 @@ pkgbase = jkey
 	depends = python>=3.10
 	depends = python-portalocker
 	optdepends = python-opencv: QR code scanning for jkey 2fa add
-	provides = python-jkey=0.3.2
+	provides = python-jkey=0.4.0
 	conflicts = python-jkey
 	options = !strip
 	options = !debug
-	source = jkey-0.3.2.tar.gz::https://github.com/imjiaoyuan/jkey/archive/v0.3.2.tar.gz
-	sha256sums = 3b5af006ed4b8a6e6bab51569a4074eb5d58a23ab2ff4a129c051d080ba707da
+	source = jkey-0.4.0.tar.gz::https://github.com/imjiaoyuan/jkey/archive/v0.4.0.tar.gz
+	sha256sums = d340c9aa819e91d6f11e724959ac286c9112ba12d7844990d8fbf3b07d343bd9
 
 pkgname = jkey
