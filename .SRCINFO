@@ -1,21 +1,21 @@
 pkgbase = mustang-bin
 	pkgdesc = New full-featured desktop email, chat and video conference client.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.9.37
+	pkgver = 0.9.38
 	pkgrel = 1
 	url = https://mustang.im/
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-EUPL-1.2
 	depends = electron41
-	provides = mustang=0.9.37
+	provides = mustang=0.9.38
 	conflicts = mustang
-	source = LICENSE-0.9.37::https://raw.githubusercontent.com/mustang-im/mustang/v0.9.37/LICENSE
+	source = LICENSE-0.9.38::https://raw.githubusercontent.com/mustang-im/mustang/v0.9.38/LICENSE
 	source = mustang.sh
 	sha256sums = b235d2b5410c8a5f6d176a8dfbf3afaadb7165d27659285d1916fe7e0044aa89
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = mustang-0.9.37-aarch64.pacman::https://github.com/mustang-im/mustang/releases/download/v0.9.37/mustang-0.9.37-aarch64.pacman
-	sha256sums_aarch64 = 9d73331f4cb87b97515a0eb436b7f39736efd500e209a66c18e74123ab96d998
-	source_x86_64 = mustang-0.9.37-x86_64.pacman::https://github.com/mustang-im/mustang/releases/download/v0.9.37/mustang-0.9.37.pacman
-	sha256sums_x86_64 = 0724bf5f0f9c5359ad540b84d0f207570591fce27a40fd95b12cac0370f47542
+	source_aarch64 = mustang-0.9.38-aarch64.pacman::https://github.com/mustang-im/mustang/releases/download/v0.9.38/mustang-0.9.38-aarch64.pacman
+	sha256sums_aarch64 = fbffe79eee19550f76e35dbb905aced977d1bb0f20b170ad723c080b1f5e00ca
+	source_x86_64 = mustang-0.9.38-x86_64.pacman::https://github.com/mustang-im/mustang/releases/download/v0.9.38/mustang-0.9.38.pacman
+	sha256sums_x86_64 = f622a3baf1236a43c9c0b367aa34afcd198f61e7845fade6a38e770e8abd8d14
 
 pkgname = mustang-bin
