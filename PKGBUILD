@@ -1,7 +1,7 @@
 # Maintainer: Cyril <cyrwae[at]hotmail[dot]com>
 pkgname=python-odfdo
 _name=${pkgname#python-}
-pkgver=3.23.1
+pkgver=3.25.0
 pkgrel=1
 pkgdesc="Python3 library implementing the ISO/IEC 26300 OpenDocument Format standard."
 arch=('any')
@@ -10,12 +10,10 @@ license=('Apache-2.0')
 depends=(python-lxml)
 makedepends=(python-build python-installer python-wheel python-uv-build)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('e0e04f295e1945f5464cb96ff231d8a606e1013cd9c3bac8193d5af0bde969d53cf099b059bf29912d3095ad5b0bdbbb657d36fcfbce89f039859643a1a9a2da')
+sha512sums=('e553016b63489f1cfbf76c1eac3fffd24b73098085e72f1661f6804bf648321243afb13a38f7c6d01040b92180a32aa76a88087bd0e7500d4ff52ce960192bd2')
 
 build() {
     cd "$_name-$pkgver"
-    # relax uv_build version constraint for compatibility with system package
-    sed -i 's/uv_build>=0.9.0,<0.12.0/uv_build>=0.9.0/' pyproject.toml
     python -m build --wheel --no-isolation
 }
 
