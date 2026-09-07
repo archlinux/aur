@@ -1,0 +1,12 @@
+post_install() {
+	dkms add -m uniwill-laptop -v 1.0 || true
+	dkms install -m uniwill-laptop -v 1.0 || true
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	dkms remove -m uniwill-laptop -v 1.0 --all || true
+}
