@@ -5,8 +5,8 @@
 # shellcheck shell=bash
 
 pkgname=environment-modules
-pkgver=5.6.1
-pkgrel=6
+pkgver=5.6.2
+pkgrel=1
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
 url='https://envmodules.io/'
@@ -19,8 +19,8 @@ optdepends=('python: Support for environment modules in Python.'
 checkdepends=('dejagnu' 'bash' 'fish' 'zsh' 'dash' 'ksh' 'tcsh' 'ruby' 'cmake' 'python' 'perl' 'r' 'xorg-xrdb')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/releases/download/v${pkgver}/modules-${pkgver}.tar.gz"
   'domainname.patch')
-sha256sums=('b175e57860e62d87b6118a79cc2d76e857e5774a9ff78558d6726122760b0034'
-  'e4983c68225d8d5bdf5b952a8cb7ee14941b38d1e544e99ab55b883b6552edbc')
+sha256sums=('a06dd0001aef2722564bba3ec7ff62bc52fb560565af8522728ac8296f98fd69'
+            'e4983c68225d8d5bdf5b952a8cb7ee14941b38d1e544e99ab55b883b6552edbc')
 conflicts=('lmod')
 replaces=('env-modules')
 
