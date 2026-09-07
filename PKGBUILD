@@ -1,13 +1,15 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=rime-llm-translator-git
-pkgver=r58.b96f8af
+pkgver=r61.7188cb2
 pkgrel=1
 pkgdesc="给Rime输入法接入大模型进行拼音联想，支持TUI图形化配置"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/rime-llm-translator"
 license=('AGPL3') 
 depends=('python' 'fcitx5-rime' 'curl')
+optdepends=('miyu: 用 miyu: 前缀在输入法里直接跟 Miyu 对话'
+            'libnotify: 跟 Miyu 的长问答转后台后用桌面通知送达答案')
 makedepends=('git')
 provides=('rime-llm-translator')
 conflicts=('rime-llm-translator')

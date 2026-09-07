@@ -1,6 +1,6 @@
 pkgbase = rime-llm-translator-git
 	pkgdesc = 给Rime输入法接入大模型进行拼音联想，支持TUI图形化配置
-	pkgver = r58.b96f8af
+	pkgver = r61.7188cb2
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/rime-llm-translator
 	install = rime-llm-translator-git.install
@@ -10,6 +10,8 @@ pkgbase = rime-llm-translator-git
 	depends = python
 	depends = fcitx5-rime
 	depends = curl
+	optdepends = miyu: 用 miyu: 前缀在输入法里直接跟 Miyu 对话
+	optdepends = libnotify: 跟 Miyu 的长问答转后台后用桌面通知送达答案
 	provides = rime-llm-translator
 	conflicts = rime-llm-translator
 	source = git+https://github.com/SHORiN-KiWATA/rime-llm-translator.git
