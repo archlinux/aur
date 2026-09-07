@@ -7,3 +7,4 @@
 !reboot-guard-python3.patch
 
 !.gitignore
+!.nvchecker.toml

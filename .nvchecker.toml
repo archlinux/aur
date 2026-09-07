@@ -1,0 +1,8 @@
+[reboot-guard]
+source = "github"
+github = "ryran/reboot-guard"
+use_max_tag = true
+
+
+prefix = "v"
+
