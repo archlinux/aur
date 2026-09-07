@@ -1,0 +1,15 @@
+pkgbase = fooyin-plugin-midi-git
+	pkgdesc = A MIDI input plugin for fooyin
+	pkgver = r1.aef1c6c
+	pkgrel = 1
+	url = https://github.com/Vo1dTear/fooyin-plugin-midi
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = fooyin
+	depends = libspessasynth-git
+	source = fooyin-plugin-midi-git::git+https://github.com/Vo1dTear/fooyin-plugin-midi.git
+	sha256sums = SKIP
+
+pkgname = fooyin-plugin-midi-git
