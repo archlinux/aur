@@ -1,6 +1,6 @@
 pkgbase = writers-suite
 	pkgdesc = Writer's Suite desktop shell + helper + WASM UI
-	pkgver = 0.854
+	pkgver = 0.855
 	pkgrel = 1
 	url = http://softenough.com
 	arch = x86_64
@@ -34,6 +34,6 @@ pkgbase = writers-suite
 	optdepends = xdg-desktop-portal-kde: KDE portal backend
 	optdepends = xdg-desktop-portal-wlr: wlroots portal backend
 	source = WriterSuite-src.tar.gz::https://softenough.com/download/aur/src/WriterSuite-src.tar.gz
-	sha256sums = cdd276ff44eefa316b721384a21199672b989455ff8aa9ce59921f288b12d0af
+	sha256sums = c7950e827e658e05fd8ef1f1b2475a8c4f20a5d52144059489ae1555669050c5
 
 pkgname = writers-suite
