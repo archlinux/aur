@@ -1,0 +1,21 @@
+pkgbase = garm-provider-incus-bin
+	pkgdesc = Incus external compute provider for GARM (official binary release)
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/cloudbase/garm-provider-incus
+	install = garm-provider-incus-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	optdepends = garm: GitHub Actions Runner Manager that consumes this provider
+	optdepends = incus: local Incus daemon for the provider to talk to
+	provides = garm-provider-incus
+	conflicts = garm-provider-incus
+	options = !strip
+	options = !debug
+	source_x86_64 = garm-provider-incus-0.1.5-linux-amd64.tgz::https://github.com/cloudbase/garm-provider-incus/releases/download/v0.1.5/garm-provider-incus-linux-amd64.tgz
+	sha256sums_x86_64 = 1489b5f9b3f01528e338c604c13dabe8321ed6f1bc6de77c7344119d7731c43f
+	source_aarch64 = garm-provider-incus-0.1.5-linux-arm64.tgz::https://github.com/cloudbase/garm-provider-incus/releases/download/v0.1.5/garm-provider-incus-linux-arm64.tgz
+	sha256sums_aarch64 = 667bc66828758711be51e928457b712ea460294f195b310cf1e93ed609c1e9af
+
+pkgname = garm-provider-incus-bin

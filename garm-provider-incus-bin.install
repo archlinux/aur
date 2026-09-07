@@ -1,0 +1,13 @@
+post_install() {
+    echo ':: Register the provider in /etc/garm/config.toml:'
+    echo '       [[provider]]'
+    echo '         name = "incus"'
+    echo '         provider_type = "external"'
+    echo '         [provider.external]'
+    echo '           provider_executable = "/opt/garm/providers.d/garm-provider-incus"'
+    echo '           config_file = "/etc/garm/garm-provider-incus.toml"'
+    echo ':: Sample provider config:'
+    echo '       https://github.com/cloudbase/garm-provider-incus/blob/main/testdata/garm-provider-incus.toml'
+    echo ':: The user garm runs as needs access to the Incus socket, e.g.:'
+    echo '       echo "m garm incus-admin" > /etc/sysusers.d/garm-incus.conf && systemd-sysusers'
+}
