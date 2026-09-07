@@ -2,7 +2,7 @@
 
 pkgname=gui.for.singbox
 _name=GUI.for.SingBox
-pkgver=1.26.1
+pkgver=1.27.0
 pkgrel=1
 pkgdesc="GUI.for.SingBox A GUI program developed by vue3 + wails."
 arch=($CARCH)
@@ -14,7 +14,6 @@ conflicts=(${pkgname} ${pkgname//./-})
 depends=(
     gdk-pixbuf2
     glib2
-    glibc
     gtk3
     hicolor-icon-theme
     libsoup3
@@ -38,7 +37,7 @@ source=(
     "${pkgname}.sysusers"
     "${pkgname}.install"
 )
-sha256sums=('7bf229a06dbe53f3eed11cfff28a8de698aa3c16efc67111ebfb9b6f3c49b8eb'
+sha256sums=('98158e91e4161b9cdc88476896725739fd5426e5fbe5cf567a8f23445ad4e034'
             'c89a7b9740039857f57d6294d28a39854067ddd8469c7f1b5efc62b91cdf772a'
             '8d51fea0925c08e33150be47b4100d145dee7998f241b02f5de42770cf5dfbb2'
             'feb47230c930ff09fc2fdebdf07aa0f76692bda24eeab32727b2286a93516671')

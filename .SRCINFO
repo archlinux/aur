@@ -1,6 +1,6 @@
 pkgbase = gui.for.singbox
 	pkgdesc = GUI.for.SingBox A GUI program developed by vue3 + wails.
-	pkgver = 1.26.1
+	pkgver = 1.27.0
 	pkgrel = 1
 	url = https://github.com/GUI-for-Cores/GUI.for.SingBox
 	install = gui.for.singbox.install
@@ -12,7 +12,6 @@ pkgbase = gui.for.singbox
 	makedepends = wails
 	depends = gdk-pixbuf2
 	depends = glib2
-	depends = glibc
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libsoup3
@@ -26,11 +25,11 @@ pkgbase = gui.for.singbox
 	options = !strip
 	options = !lto
 	options = emptydirs
-	source = gui.for.singbox::git+https://github.com/GUI-for-Cores/GUI.for.SingBox.git#tag=v1.26.1
+	source = gui.for.singbox::git+https://github.com/GUI-for-Cores/GUI.for.SingBox.git#tag=v1.27.0
 	source = gui.for.singbox.tmpfiles
 	source = gui.for.singbox.sysusers
 	source = gui.for.singbox.install
-	sha256sums = 7bf229a06dbe53f3eed11cfff28a8de698aa3c16efc67111ebfb9b6f3c49b8eb
+	sha256sums = 98158e91e4161b9cdc88476896725739fd5426e5fbe5cf567a8f23445ad4e034
 	sha256sums = c89a7b9740039857f57d6294d28a39854067ddd8469c7f1b5efc62b91cdf772a
 	sha256sums = 8d51fea0925c08e33150be47b4100d145dee7998f241b02f5de42770cf5dfbb2
 	sha256sums = feb47230c930ff09fc2fdebdf07aa0f76692bda24eeab32727b2286a93516671
