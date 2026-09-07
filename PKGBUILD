@@ -4,7 +4,7 @@
 _pkgname='extract-msg'
 _repo='msg-extractor'
 pkgname="python-${_pkgname}"
-pkgver=0.56.0
+pkgver=0.56.1
 pkgrel=1
 pkgdesc="Extracts emails and attachments saved in Microsoft Outlook's .msg files"
 arch=('any')
@@ -13,18 +13,12 @@ license=('GPL-3.0-or-later')
 depends=(
 	'python>=3.8'
 	'python-beautifulsoup4>=4.11.1'
-	'python-beautifulsoup4<5'
 	'python-compressed-rtf>=1.0.6'
-	'python-compressed-rtf<2'
 	'python-ebcdic>=1.1.1'
-	'python-ebcdic<3'
 	'python-olefile=0.47'
 	'python-red-black-tree-mod>=1.20'
-	'python-red-black-tree-mod<=1.23'
 	'python-rtfde>=0.1.1'
-	'python-rtfde<0.2'
 	'python-tzlocal>=1:4.2'
-	'python-tzlocal<1:6'
 )
 makedepends=(
 	'python-build'
@@ -34,16 +28,13 @@ makedepends=(
 )
 checkdepends=(
 	'python-chardet>=3.0.0'
-	'python-chardet<7'
 	'python-magic>=1:0.4.27'
-	'python-magic<1:0.5'
 	'python-pillow>=9.5.0'
-	'python-pillow<13'
 )
 optdepends=(
-	'python-chardet<7: Guess encodings for MSG files without a usable codepage'
-	'python-magic<1:0.5: Detect MIME types'
-	'python-pillow<13: Parse and convert Outlook image attachments'
+	'python-chardet>=3.0.0: Guess encodings for MSG files without a usable codepage'
+	'python-magic>=1:0.4.27: Detect MIME types'
+	'python-pillow>=9.5.0: Parse and convert Outlook image attachments'
 	'wkhtmltopdf: Export message bodies as PDF'
 )
 source=(
@@ -52,18 +43,18 @@ source=(
 	'test-optional-dependencies.py'
 )
 b2sums=(
-	'190648020f31fde96b6290216fc53d7060dd9e7d79c3c9a57135435032546fe523e7d896b831e4c5bfe1e534ce48cd990cc30e62fd39ff8d57b956b55c8107ad'
-	'9968bd6eb9bbae66f61de8cf59fac3f716fe261b343d7c9549349fe70c3164b7bf9fbfa34c66fde0836b27112844c0f9b3274aba815e41a435ad1f26f921ad30'
+	'1ba0e83323e1c2b4d352ff704fdfdfc976cda02a7c729c1bc0404a2243290a25d3abe720580fd88bfb3f8b26238a0ac80c1e664b7b4d681aacaf6a38f406b9f1'
+	'b3952d757efcbadf03b87db8a19d7a085ad31a6d6b5f1ecf31e430b3ffb431d0412af07bcf819d9d0091aa61de49c2df8bf5589d3139009e328751d222763ee7'
 	'd2f05ce3b61b49e875414e496825da34f162c149aa516124f46af8fa3e3fe29104752de66e82f53a535c9c29e1472f4d057677b20bd9391dd5acb0c439091130'
 )
 
 prepare() {
 	cd -- "${_repo}-${pkgver}" || return 1
 
-	# Upstream caps Pillow at <10 and chardet at <6, while Arch ships Pillow 12
-	# and chardet 6. I tested the current Arch versions with upstream's test suite
-	# and the affected runtime paths, so the patch widens these bounds to <13 and
-	# <7. It also fixes upstream's setuptools config so the GitHub source builds.
+	# Keep upstream's meaningful minimum versions, but do not encode routine
+	# tested-range ceilings as hard Arch dependency bounds. Upstream's explicit
+	# olefile==0.47 pin remains intact. The patch also fixes setuptools config so
+	# the GitHub source builds correctly.
 	patch --fuzz=0 -Np1 -i "${srcdir}/fix-build-and-dependency-bounds.patch"
 }
 
