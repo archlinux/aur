@@ -7,7 +7,7 @@ pkgname=(
   "xrizer-common-git"
   "lib32-xrizer-git"
 )
-pkgver="0.5.r13.g0910a37"
+pkgver="0.5.r24.g0989a7f"
 pkgrel="1"
 pkgdesc="Reimplementation of OpenVR, translating calls to OpenXR"
 arch=("x86_64")
