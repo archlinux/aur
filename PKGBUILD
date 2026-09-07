@@ -1,5 +1,5 @@
 pkgname=deepseek-harness-git
-pkgver=0.1.0rc.7.r12404.g99f6f02
+pkgver=0.1.3.alpha.2.r15632.gb0a7d2c
 pkgrel=1
 pkgdesc='DeepSeek Harness CLI and agent harness (git)'
 arch=('x86_64')
@@ -33,8 +33,8 @@ build() {
   pnpm run build:official
 
   rm -rf dist/aur-dsh dist/aur-vendor
-  pnpm exec tsx scripts/release/pack.ts --family vendor --out dist/aur-vendor
-  pnpm exec tsx scripts/release/pack.ts --family dsh --out dist/aur-dsh
+  pnpm run release:pack --family vendor --out dist/aur-vendor
+  pnpm run release:pack --family dsh --out dist/aur-dsh
 
   node "$srcdir/aur-package.mjs" "$srcdir"
 
