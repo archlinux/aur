@@ -1,0 +1,19 @@
+pkgbase = pam-fprint-grosshack-fork-git
+	pkgdesc = Simultaneous fingerprint (fprintd) and password PAM authentication, rebased on fprintd HEAD
+	pkgver = r1.3c67a68
+	pkgrel = 1
+	url = https://github.com/LuvHakii/pam-fprint-grosshack
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = meson
+	depends = fprintd
+	depends = pam
+	depends = systemd-libs
+	provides = pam-fprint-grosshack
+	conflicts = pam-fprint-grosshack
+	conflicts = pam-fprint-grosshack-unlimited-timeout
+	source = pam-fprint-grosshack-fork-git::git+https://github.com/LuvHakii/pam-fprint-grosshack.git#branch=grosshack-1.94.x
+	sha256sums = SKIP
+
+pkgname = pam-fprint-grosshack-fork-git
