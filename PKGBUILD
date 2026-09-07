@@ -2,7 +2,7 @@
 
 pkgbase=buffybox
 pkgname=(buffyboard unl0kr)
-pkgver=3.5.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A suite of graphical applications for the terminal"
 url="https://gitlab.postmarketos.org/postmarketOS/buffybox/"
@@ -19,7 +19,7 @@ source=(
     "unl0kr-install"
     "unl0kr-hooks"
 )
-b2sums=('c697780785c6ad63a9820eb72219bf90febe6dddd8b171a52fcf82e8fef9da6e130ac4f0f66a2c7123d71cd56bc079ee09c0471a64c6ea27fd0ee6f38d170124'
+b2sums=('6ac253b5dc9abd468cebc75ed87d642868f20655d24a76b3414a72845ea279749ce8944ce9a0e9535597c41b312b6af0eeba245d956e744216c6dee10a95d166'
         '8aa93853b58f4ab589dde891136b2de4353353f663808b111ab8672fb5a4e55686ea90ff90ea041dae6f6198dc97ba6a1d72204080bb608787a818459bb1b46c'
         'SKIP'
         'SKIP'
