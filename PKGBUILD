@@ -1,5 +1,5 @@
 pkgname=lufux-git
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="Create bootable USB drives on Linux, including Windows To Go"
 arch=('any')
