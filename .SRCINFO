@@ -1,6 +1,6 @@
 pkgbase = editide
 	pkgdesc = Source-code editor with basic project support
-	pkgver = 4.0.4
+	pkgver = 4.0.5
 	pkgrel = 1
 	url = https://editide.frama.io
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = editide
 	optdepends = git: For the git extension
 	optdepends = libadwaita: For the Adwaita theme and recoloring
 	optdepends = libspelling: For the spellchecking extension
-	source = git+https://framagit.org/editide/releases.git#tag=4.0.4
+	source = git+https://framagit.org/editide/releases.git#tag=4.0.5
 	source = git+https://framagit.org/editide/editide.git
-	sha256sums = b7806625e2d4ba91f70f0666374b758a566934305a07108a8fba6edbd44c1c97
+	sha256sums = 2d65f7743d83194cc353ab9081661bf5d27d5d1ec3b8316cdef26409f40cdd8b
 	sha256sums = SKIP
 
 pkgname = editide
