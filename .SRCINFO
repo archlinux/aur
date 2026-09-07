@@ -1,6 +1,6 @@
 pkgbase = omarchy-prayer
 	pkgdesc = Muslim prayer-time notifier for Omarchy: notifications + adhan, Quickshell/waybar countdown widget, themed TUI, qibla, hijri, adhan catalog
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/mrCode/omarchy-prayer
 	install = omarchy-prayer.install
@@ -16,7 +16,7 @@ pkgbase = omarchy-prayer
 	optdepends = waybar: bar widget on Omarchy 3 and other Hyprland setups
 	optdepends = mako: notification daemon on Omarchy 3 and other Hyprland setups
 	optdepends = hyprland: reference window manager
-	source = omarchy-prayer-0.4.1.tar.gz::https://github.com/mrCode/omarchy-prayer/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = b9b3ebb07584cf476c896f11aef57a5fcc9bc5ab240e8f0ad778127465857f52
+	source = omarchy-prayer-0.4.2.tar.gz::https://github.com/mrCode/omarchy-prayer/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = 6938ede65d2fbafde63da28e3940ab08566ea95781cd09b04b2dd704fc82b322
 
 pkgname = omarchy-prayer
