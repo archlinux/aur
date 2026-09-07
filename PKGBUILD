@@ -3,8 +3,8 @@ pkgname=vidbee-bin
 _pkgname=VidBee
 pkgver=2.1.0
 _electronversion=43
-pkgrel=1
-pkgdesc="A free, open-source desktop app that turns video and audio into an organized, searchable library.(Prebuilt version.Use system-wide electron)"
+pkgrel=2
+pkgdesc="Download video and audio from YouTube , TikTok , Twitter , Instagram , Facebook , Twitch , Bilibili , and 1000+ sites—or import local media. Create searchable transcripts on your computer, then summarize, translate, or ask questions with your preferred AI provider."
 arch=('x86_64')
 url="https://vidbee.org/"
 _ghurl="https://github.com/nexmoe/VidBee"
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nexmoe/VidBee/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('61300209dddb751b6c55383151f1b979f1f54825c6107546957e0bfb35e4b323'
+sha256sums=('338b9389320de3c21d8a5774e3b6eb1d63c8568cff5b6be45845a61ee6fae5bc'
             '5cde322cd1fd10c409c8597eed127a08baa6c73b9430312de1aeb05f1dbb4953'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_app_dir() {
