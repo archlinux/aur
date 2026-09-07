@@ -1,6 +1,6 @@
 pkgbase = claude-conversation-search
 	pkgdesc = CLI + MCP tool for searching Claude Code conversation history with Tantivy/BM25
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/ticpu/claude-conversation-search-mcp
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = claude-conversation-search
 	license = GPL-3.0-only
 	makedepends = cargo
 	options = !lto
-	source = https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.6.0/claude-conversation-search-1.6.0.tar.xz
-	source = https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.6.0/claude-conversation-search-1.6.0.tar.xz.asc
+	source = https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.7.0/claude-conversation-search-1.7.0.tar.xz
+	source = https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.7.0/claude-conversation-search-1.7.0.tar.xz.asc
 	validpgpkeys = E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD
-	sha256sums = 940bfde144ad0d300fd042e9c1e1f2f85bc385e012bfc5fe65cf4e8cbf083a88
+	sha256sums = d9fd2bf3ddf0347f58da61526a7e953a252b6e00f42e9bb2750bca54108c978d
 	sha256sums = SKIP
 
 pkgname = claude-conversation-search
