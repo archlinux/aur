@@ -1,6 +1,6 @@
 pkgbase = python-contact
 	pkgdesc = A Console UI for Meshtastic
-	pkgver = 1.6.7
+	pkgver = 1.6.12
 	pkgrel = 1
 	url = https://github.com/pdxlocations/contact
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-contact
 	depends = python>=3.10
 	depends = meshtastic-python
 	depends = python-pyserial
-	source = https://github.com/pdxlocations/contact/releases/download/1.6.7/contact-1.6.7.tar.gz
-	sha256sums = 0c33347996fdb50ce456bfbb1930e53ea9a04e7fd1a2909c128f83a20e01a06b
+	source = https://github.com/pdxlocations/contact/releases/download/1.6.12/contact-1.6.12.tar.gz
+	sha256sums = c268059a0d0c3c3af2e6709ce1e547bad2238548f07dc6d298ef7c6047805cb7
 
 pkgname = python-contact
