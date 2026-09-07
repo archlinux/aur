@@ -2,13 +2,13 @@
 
 pkgname=fcitx5-vinput-git
 _pkgname=fcitx5-vinput
-pkgver=0.1.0.r127.888d88d
+pkgver=0.1.0.r135.2a7c83e
 pkgrel=1
 pkgdesc="Voice input addon for fcitx5: push-to-talk ASR via CapsLock"
 arch=('x86_64')
 url="https://github.com/xander-lin/vinput"
 license=('MIT')
-depends=('fcitx5' 'libebur128' 'libpulse' 'curl' 'speexdsp' 'libsoxr')
+depends=('fcitx5' 'libebur128' 'libpulse' 'curl' 'speexdsp' 'libsoxr' 'openssl')
 makedepends=('git' 'meson' 'ninja')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -20,7 +20,6 @@ backup=(
     'etc/vinput/advanced.json'
     'etc/vinput/audio.json'
     'etc/vinput/doubao.json'
-    'etc/vinput/output.json'
     'etc/vinput/qwen.json'
     'etc/vinput/vinput.json'
 )
