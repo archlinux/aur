@@ -1,6 +1,6 @@
 pkgbase = proton-drive-fs-bin
 	pkgdesc = FUSE virtual filesystem for Proton Drive on Linux.
-	pkgver = 0.19.1
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/khaosdoctor/proton-drive-linux-fs
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = proton-drive-fs-bin
 	conflicts = proton-drive-fs
 	provides = proton-drive-fs
 	arch = aarch64
-	source_aarch64 = https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v0.19.1/proton-drive-linux-fs_0.19.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = d8c22bcd58bb025249e9bc65b83b9b250a542fc507213fe71b0daa72b1f694b4
+	source_aarch64 = https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v0.20.0/proton-drive-linux-fs_0.20.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 914331bcd4d0ae5a6c4ad05709330f015d21068e785a339cfccd6c976d362001
 	arch = x86_64
-	source_x86_64 = https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v0.19.1/proton-drive-linux-fs_0.19.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 173d5c4078e7da04ca9627c50661c663c5c5352803ab3c75fc2c94bbe958a9af
+	source_x86_64 = https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v0.20.0/proton-drive-linux-fs_0.20.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7e51a5ffdeef93fd1d8899b3390ed1b72365428ca3e66bd7e19234349794d29f
 	
 pkgname = proton-drive-fs-bin
