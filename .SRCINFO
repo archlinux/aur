@@ -1,9 +1,10 @@
 pkgbase = yaabsa-bin
 	pkgdesc = Unofficial feature rich, responsive, modern client for Audiobookshelf
-	pkgver = 1.10.1
-	pkgrel = 2
+	pkgver = 1.11.0
+	pkgrel = 1
 	url = https://github.com/Vito0912/yaabsa
 	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-only
 	makedepends = tar
 	depends = libmpv.so
@@ -17,7 +18,9 @@ pkgbase = yaabsa-bin
 	options = !libtool
 	options = !staticlibs
 	options = !emptydirs
-	source = yaabsa-bin-1.10.1.deb::https://github.com/Vito0912/yaabsa/releases/download/v1.10.1/linux-deb-yaabsa_v1.10.1.deb
-	sha256sums = 405e9143b054c0ac6d2d4618dc62f5910c01d4df67d4bc107e5500466e896136
+	source_x86_64 = yaabsa-bin-1.11.0-x86_64.deb::https://github.com/Vito0912/yaabsa/releases/download/v1.11.0/linux-deb-x86_64-yaabsa_v1.11.0_amd64.deb
+	sha256sums_x86_64 = 9259c7544ddca027a01b0a2c8926dcf346039621df31a89e89c3f3d602f2a02b
+	source_aarch64 = yaabsa-bin-1.11.0-aarch64.deb::https://github.com/Vito0912/yaabsa/releases/download/v1.11.0/linux-deb-aarch64-yaabsa_v1.11.0_arm64.deb
+	sha256sums_aarch64 = e15509429bbce7e3f99cb4c7e8898b8ee6aa858b069ca7227542ce6bd45818ef
 
 pkgname = yaabsa-bin
