@@ -17,7 +17,7 @@ conflicts=('gaze-cinnamon-extension')
 backup=()
 # upstream package ships no install hooks
 source=("gaze-cinnamon-extension-0.3.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-cinnamon-extension-0.3.0-1-x86_64.pkg.tar.zst")
-sha256sums=('d8da3cd9ed675ce0adba82f3662626dfbf46ea2da97bfee9a4fc12f03960cf19')
+sha256sums=('c9cb147d73c8e0952a2e64a03a9df609140eb86a309f40643489e66a9481e175')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-cinnamon-extension-0.3.0-1-x86_64.pkg.tar.zst" -C "$pkgdir"
