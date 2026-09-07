@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requesto-bin
 _pkgname=Requesto
-pkgver=1.8.0
+pkgver=1.9.0
 _electronversion=44
 pkgrel=1
-pkgdesc="A modern, lightweight, self-hostable API client. No accounts, no cloud, no telemetry.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A modern, lightweight, self-hostable API client. No accounts, no cloud, no telemetry."
 arch=('x86_64')
 url="https://requesto.com.au/"
 _ghurl="https://github.com/t3rr11/Requesto"
@@ -18,6 +18,8 @@ provides=(
 depends=(
     "electron${_electronversion}"
     'nodejs'
+    'libappindicator'
+    'libayatana-appindicator'
 )
 options=(
     '!emptydirs'
@@ -28,7 +30,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/t3rr11/Requesto/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8bf37c7155e56f829ac76287cf7468a8a8b4b38bb64778b831c8c9d967463cf1'
+sha256sums=('d618c44893b13fd1dbd3824ea09ce46d8ce951c3a304ef1169414862a36cd693'
             'baa265fc2389eb1ac3a489bd8fdb9255614a801f0b1624faf107c5a0d0c1bd66'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
