@@ -1,7 +1,7 @@
 # Maintainer: Joschka Thurner <git@joschkathurner.de>
 pkgname=docker-sbx
-pkgver=0.39.0
-pkgrel=2
+pkgver=0.42.0
+pkgrel=1
 pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
 arch=('x86_64' 'aarch64')
 url="https://docs.docker.com/ai/sandboxes/"
@@ -17,9 +17,9 @@ provides=('sbx')
 conflicts=('sbx')
 options=('!debug')
 source_x86_64=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-amd64.tar.gz")
-sha256sums_x86_64=('2ec45bc7938c20c2f406fe8cc72294ad5a954bdc047601484b89bf1a108311d4')
+sha256sums_x86_64=('a88c56f02435974145a86d983beab4458b412c2133d5da0df7f12e117d8152e7')
 source_aarch64=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-arm64.tar.gz")
-sha256sums_aarch64=('39c470a5f5e0991b1c2358952e2ab32a7b0309bfa57ac62b6bbc64b466d02c17')
+sha256sums_aarch64=('5f16183d26f90dc98014c2abac83e4a1d13aa04390a9512b54867096ef87db89')
 
 package() {
     # sbx locates its helper binaries at runtime via a path relative to its
