@@ -8,3 +8,4 @@
 !rootpath_bug.patch
 
 !.gitignore
+!.nvchecker.toml

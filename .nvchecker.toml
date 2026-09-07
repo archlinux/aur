@@ -1,0 +1,8 @@
+[libmodsecurity2]
+source = "github"
+github = "owasp-modsecurity/ModSecurity"
+branch = "v2/master"
+use_latest_tag = true
+
+prefix = "v"
+
