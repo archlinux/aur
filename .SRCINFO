@@ -1,6 +1,6 @@
 pkgbase = yay-auto-review
 	pkgdesc = Review AUR package recipes with Codex before yay builds them
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/HCGStudio/yay-auto-review
 	install = yay-auto-review.install
@@ -15,7 +15,7 @@ pkgbase = yay-auto-review
 	depends = git
 	depends = yay
 	depends = openai-codex
-	source = yay-auto-review-0.3.1.tar.gz::https://github.com/HCGStudio/yay-auto-review/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 05529e5313c4d4026dc01f2c255d58e05949fc32d60763cecc86d6e4cf3065e7
+	source = yay-auto-review-0.3.2.tar.gz::https://github.com/HCGStudio/yay-auto-review/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 50cad0d40fa221acb6040dc788acc7bc2c739e7f66b6abd4772b1fe447f362e5
 
 pkgname = yay-auto-review
