@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tishare-desktop-bin
 _pkgname=tiShare
-pkgver=0.6.0
+pkgver=0.6.1
 _electronversion=41
 pkgrel=1
 pkgdesc="tiShare aims to send files or folders between devices easily, with cross-platform support.(Prebuilt version.Use system-wide electron)"
@@ -18,12 +18,12 @@ makedepends=(
     'asar'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname%}-v${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname%}-${pkgver}.AppImage"
     "index-${pkgver}.html::https://raw.githubusercontent.com/dlguswo333/tishare-desktop/v${pkgver}/src/front/index.html"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dlguswo333/tishare-desktop/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('073def0bc3e61c4ced3bc1dc4ca05e699875a44581decc66271035930d3b6a5d'
+sha256sums=('99a9bcf89eda50b1c84ef7d9060d7fe1e6a0037163f17462615e479ee21ccf09'
             'bbe39572795ac8a8afc77a79c60f9f356b5ce0bdd620a0783350a949fdbf144a'
             '5461c88ddb4ff9c0e56d75fdb18fe2719a5afe1c676513496a2e07b45ccebb99'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
