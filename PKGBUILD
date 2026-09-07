@@ -3,9 +3,9 @@
 _name=tree-sitter-zig
 pkgname=python-tree-sitter-zig
 pkgver=1.1.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Zig grammar for tree-sitter"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-zig"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
