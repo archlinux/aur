@@ -1,0 +1,19 @@
+pkgbase = polkit-aliveos
+	pkgdesc = Transparent Polkit authentication agent for AliveOS with explicit caller disclosure, UAC screen dimming, and Zenity-GTK3 styling
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Twilight0/polkit-aliveos
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = polkit
+	depends = libcanberra
+	provides = polkit-authentication-agent
+	conflicts = polkit-gnome
+	source = https://github.com/Twilight0/polkit-aliveos/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 2a8843e8aad623b0a029766ffcd593e3d887072cbf33728eb714a905004775d1
+
+pkgname = polkit-aliveos
