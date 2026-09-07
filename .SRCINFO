@@ -1,6 +1,6 @@
 pkgbase = xytz-bin
 	pkgdesc = a beautiful TUI YouTube Downloader/Player. Pre compiled.
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/xdagiz/xytz
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = xytz-bin
 	conflicts = xytz
 	provides = xytz
 	arch = aarch64
-	source_aarch64 = https://github.com/xdagiz/xytz/releases/download/v0.9.2/xytz-v0.9.2-linux-arm64.tar.gz
-	sha256sums_aarch64 = 058799df46e69f84c3506038280c03a63a690cdc3c8bd4def7162d70db3b37a2
+	source_aarch64 = https://github.com/xdagiz/xytz/releases/download/v0.9.3/xytz-v0.9.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = 370411e3c03846e27d628b0e32c0afd3385caacea9d2531772a5a94af2f4e806
 	arch = x86_64
-	source_x86_64 = https://github.com/xdagiz/xytz/releases/download/v0.9.2/xytz-v0.9.2-linux-amd64.tar.gz
-	sha256sums_x86_64 = 2d1a1ced7c2eac8c37d3c1359685e390d8646afd24b03c1b996135f8c113b02a
+	source_x86_64 = https://github.com/xdagiz/xytz/releases/download/v0.9.3/xytz-v0.9.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = 3bf644e077147eee4c4d91f45f7a70b55377ce061c7e999595188d23d2a972c3
 	
 pkgname = xytz-bin
