@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
 post_install() {
-  local language="${AUR_AUTO_REVIEW_LANG:-auto}"
+  local language="${YAY_AUTO_REVIEW_LANG:-auto}"
   if [[ ${language,,} == auto ]]; then
     language="${LC_ALL:-${LC_MESSAGES:-${LANG:-en}}}"
   fi
