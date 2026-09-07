@@ -1,8 +1,8 @@
 # Maintainer: WooParadog <guohaochuan@gmail.com>
 
 pkgname=toki-bin
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 pkgdesc='AI scheduling agent desktop application'
 arch=('x86_64' 'aarch64')
 url='https://toki.com/'
@@ -49,8 +49,8 @@ noextract=(
   "${pkgname}-${pkgver}-x86_64.deb"
   "${pkgname}-${pkgver}-aarch64.deb"
 )
-sha256sums_x86_64=('2f7110bf47abbc90f844c318aae5e63cfd8acda478fc4057a97df8a8bcaf0b10')
-sha256sums_aarch64=('e5a1a63e39f7f86458d5fa6660675c3b6a3ef49b633bd1a94ad79b3606f58a73')
+sha256sums_x86_64=('1f9f2570bb5e70067b4c714312bf53266d470da17e6a17d8e27dc40aa7d49602')
+sha256sums_aarch64=('91919f990649b878807500f6657756cd57882b81b37c366e0c7cfd0a4b9012a1')
 
 package() {
   bsdtar -xOf "${srcdir}/${pkgname}-${pkgver}-${CARCH}.deb" data.tar.xz |
