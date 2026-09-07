@@ -1,5 +1,5 @@
 pkgbase = colamd-bin
-	pkgdesc = A free, elegant Markdown editor for humans and AI agents — with real-time sync for AI-generated changes.(Prebuilt version.Use system-wide electron)
+	pkgdesc = A free, elegant Markdown editor for humans and AI agents — with real-time sync for AI-generated changes.
 	pkgver = 2.0.2
 	pkgrel = 1
 	url = http://colamd.com/
