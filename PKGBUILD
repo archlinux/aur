@@ -3,9 +3,9 @@
 _name=tree-sitter-objc
 pkgname=python-tree-sitter-objc
 pkgver=3.0.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Objc grammar for tree-sitter"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-objc"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
