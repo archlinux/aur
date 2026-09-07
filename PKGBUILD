@@ -2,12 +2,15 @@
 pkgname=stoat-desktop-git
 _pkgname=Stoat
 _debname="chat.stoat.${_pkgname}Desktop"
-pkgver=1.5.1.r1.g09f1bc0
+pkgver=1.5.3.r3.g68cfeb5
 _electronversion=43
 _nodeversion=24
 pkgrel=1
-pkgdesc="Stoat for Desktop.(Use system-wide electron)"
-arch=('any')
+pkgdesc="Stoat for Desktop."
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://stoat.chat/"
 _ghurl="https://github.com/stoatchat/for-desktop"
 license=('AGPL-3.0-only')
@@ -15,6 +18,7 @@ provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
+    'libpipewire'
 )
 makedepends=(
     'npm'
@@ -47,9 +51,11 @@ _get_app_dir() {
 }
 _set_build_env() {
     export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+    export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export HOME="${srcdir}/.electron-gyp"
+    export ELECTRON_ZIP_DIR="/usr/lib/electron${_electronversion}"
     {
         export PNPM_LINK_WORKSPACE_PACKAGES=true
         export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
@@ -91,14 +97,27 @@ prepare() {
     sed -i "s/Icon=${_debname}/Icon=${pkgname%-git}/g" "${_debname}.desktop"
     sed -i "s/Icon=${_debname}/Icon=${pkgname%-git}/g" "${_debname}.metainfo.xml"
     git -c submodule."assets".update=checkout submodule update --init assets
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\",\n    \"@electron\/packager\": \"*\"/g" package.json
     NODE_ENV=development    pnpm install --package-import-method=hardlink
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     _set_build_env
     _ensure_local_nvm
-    NODE_ENV=production     pnpm run package
+    NODE_ENV=production     pnpm exec electron-packager . --platform=linux --electron-dist-source=${ELECTRON_DIST} --no-prune --deref-symlinks=false --out=out
+    local _app_dir=$(_get_app_dir)
+    rm -rf \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/@electron-internal/extract-zip/"{*darwin*,*win32*} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/bufferutil/prebuilds/"{darwin-*,win32-*} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/utf-8-validate/prebuilds/"{darwin-*,win32-*}
+    case "${CARCH}" in
+        aarch64)
+            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@electron-internal/extract-zip/"*x64*
+            ;;
+        x86_64)
+            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@electron-internal/extract-zip/"*arm*
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
