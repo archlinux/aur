@@ -1,0 +1,8 @@
+[rompr]
+source = "github"
+github = "fatg3erman/RompR"
+use_max_tag = true
+
+
+prefix = "v"
+
