@@ -1,0 +1,45 @@
+# OpenShell package messages.
+# Portions adapted from https://github.com/chadsr/aur-packages/tree/main/openshell
+# Copyright (c) 2026 Ross
+# MIT license. See LICENSE.packaging.
+
+post_install() {
+	cat <<'EOF'
+
+To run the gateway locally:
+ systemctl --user enable --now openshell-gateway
+
+The gateway reads ~/.config/openshell/gateway.toml when present.
+An optional example is installed at:
+ /usr/share/openshell-gateway/gateway.toml.default
+
+To create a configuration, without replacing an existing file:
+ mkdir -p ~/.config/openshell
+ cp -n /usr/share/openshell-gateway/gateway.toml.default ~/.config/openshell/gateway.toml
+
+The example leaves compute driver selection automatic.
+EOF
+}
+
+post_upgrade() {
+	cat <<'EOF'
+
+OpenShell upgraded. Restart any running local gateway:
+ systemctl --user restart openshell-gateway
+
+Existing containers may still bind-mount /usr/bin/openshell-sandbox.
+This package continues to provide that executable.
+EOF
+}
+
+post_remove() {
+	cat <<'EOF'
+
+OpenShell configuration and state remain in:
+ ~/.config/openshell/
+ ~/.local/state/openshell/
+
+Remove them only if you no longer need their configuration, credentials,
+or gateway state.
+EOF
+}
