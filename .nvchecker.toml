@@ -1,0 +1,8 @@
+[cops-mikespub-org]
+source = "github"
+github = "mikespub-org/seblucas-cops"
+use_latest_release = true
+
+
+prefix = "v"
+
