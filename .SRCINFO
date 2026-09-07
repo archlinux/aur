@@ -23,7 +23,8 @@ pkgbase = xrizer
 pkgname = xrizer
 	depends = xrizer-common
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
+	depends = libstdc++
 	provides = xrizer
 	conflicts = xrizer
 

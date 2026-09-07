@@ -76,7 +76,8 @@ package_xrizer() {
   depends=(
     "xrizer-common"
     "glibc"
-    "gcc-libs"
+    "libgcc"
+    "libstdc++"
   )
   provides=("xrizer")
   conflicts=("xrizer")
