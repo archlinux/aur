@@ -1,19 +1,19 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=86box-git
-pkgver=6.0.r1596.ga3ffeaf23
+pkgver=6.0.r2239.g6996baeeb
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('x86_64' 'aarch64') # use 86box-5.1 for pentium4 and armv7h
 url='https://86box.net/'
 license=('GPL-2.0-or-later' 'CC-BY-4.0')
-depends=('fluidsynth' 'hicolor-icon-theme' 'libserialport' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2' # explicit
-'freetype2' 'glib2' 'glibc' 'libatomic' 'libevdev' 'libgcc' 'libglvnd' 'libpng' 'libsndfile' 'libstdc++' 'libx11' 'libxcb' 'libxext' 'libxi' 'libxkbcommon-x11' 'libxkbcommon' 'wayland' 'zlib') # implicit 
-makedepends=('git' 'cmake>=3.21' 'extra-cmake-modules' 'ninja' 'qt6-tools' 'vde2' 'vulkan-headers')
+depends=('fluidsynth' 'hicolor-icon-theme' 'libserialport' 'libslirp' 'openal' 'qt6-base' 'rtmidi' # explicit
+'freetype2' 'glib2' 'glibc' 'libatomic' 'libevdev' 'libgcc' 'libglvnd' 'libpng' 'libsndfile' 'libstdc++' 'libx11' 'libxcb' 'libxext' 'libxi' 'libxkbcommon-x11' 'libxkbcommon' 'sdl3' 'wayland' 'zlib' 'zstd') # implicit
+makedepends=('git' 'cmake>=3.21' 'ninja' 'qt6-tools' 'vde2' 'vulkan-headers')
 optdepends=(
-    '86box-roms-git: ROM files'
-    'discord-game-sdk: Discord Rich Presence'
-    'ghostscript: Printing with Generic PostScript Printer'
-    'libpcap: Networking not limited to TCP/IP'
+	'86box-roms-git: ROM files'
+	'discord-game-sdk: Discord Rich Presence'
+	'ghostscript: Printing with Generic PostScript Printer'
+	'libpcap: Networking not limited to TCP/IP'
 	'librashader>=0.11.2: Vulkan slang shaders'
 	'libretro-shaders-slang: Shaders for OpenGL and Vulkan'
 )
@@ -27,21 +27,21 @@ source=(
 sha512sums=('SKIP' 'SKIP')
 
 pkgver() {
-    cd $pkgname
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd $pkgname
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    LDFLAGS='-z now -z shstk' cmake -S$pkgname -Bbuild --preset regular -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DEMU_GIT_HASH="$(GIT_DIR=86box-git/.git git rev-parse --short HEAD)"
-    cmake --build build
+	LDFLAGS='-z now -z shstk' cmake -S$pkgname -Bbuild --preset regular -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DEMU_GIT_HASH="$(GIT_DIR=86box-git/.git git rev-parse --short HEAD)"
+	cmake --build build
 }
 
 package() {
-    DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
-    for i in 16x16 20x20 24x24 32x32 48x48 64x64 72x72 128x128 256x256; do
-        install -Dm644 "$srcdir/$pkgname/src/unix/assets/$i/net.86box.86Box.png" -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
-    done
-    install -Dm644 "$srcdir/$pkgname/src/unix/assets/net.86box.86Box.desktop" "$pkgdir/usr/share/applications/net.86box.86Box.desktop"
-    install -d "$pkgdir/usr/share/86Box/assets"
-    cp -a "$srcdir/${pkgname}-assets/sounds" "$pkgdir/usr/share/86Box/assets"
+	DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
+	for i in 16x16 20x20 24x24 32x32 48x48 64x64 72x72 128x128 256x256; do
+		install -Dm644 "$srcdir/$pkgname/src/unix/assets/$i/net.86box.86Box.png" -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
+	done
+	install -Dm644 "$srcdir/$pkgname/src/unix/assets/net.86box.86Box.desktop" "$pkgdir/usr/share/applications/net.86box.86Box.desktop"
+	install -d "$pkgdir/usr/share/86Box/assets"
+	cp -a "$srcdir/${pkgname}-assets/sounds" "$pkgdir/usr/share/86Box/assets"
 }
