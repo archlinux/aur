@@ -1,9 +1,10 @@
 pkgbase = python-tree-sitter-swift
 	pkgdesc = Swift grammar for tree-sitter
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alex-pinkus/tree-sitter-swift
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer

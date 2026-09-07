@@ -3,9 +3,9 @@
 _name=tree-sitter-swift
 pkgname=python-tree-sitter-swift
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Swift grammar for tree-sitter"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/alex-pinkus/tree-sitter-swift"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
