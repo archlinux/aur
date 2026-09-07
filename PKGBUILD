@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-desktop-git
-pkgver=0.7.2.r42.g38c22139b
+pkgver=0.7.2.r44.gb403dea32
 pkgrel=2
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents. (git - built from main)"
 arch=('x86_64')
@@ -26,7 +26,9 @@ pkgver() {
 build() {
 	cd "$srcdir/paseo"
 	npm ci
-	npm run build:desktop -- --publish never --linux dir --x64
+	# dir feeds package() (linux-unpacked); tar.gz + AppImage are standalone
+	# release assets uploaded as-is (--linux takes a target array).
+	npm run build:desktop -- --publish never --linux dir tar.gz AppImage --x64
 }
 
 package() {
