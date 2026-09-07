@@ -1,7 +1,7 @@
 pkgbase = pipewire-bluez5-lhdc-git
 	pkgdesc = PipeWire bluez5 SPA plugin overlay with upstream LHDC v5 codec support
 	pkgver = 1.7.0.r15692.g6972f21d6a96
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://gitlab.freedesktop.org/pipewire/pipewire
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = pipewire-bluez5-lhdc-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = glib2-devel
 	depends = pipewire-audio
 	depends = liblhdcv5
 	depends = bluez-libs
