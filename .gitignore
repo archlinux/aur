@@ -9,3 +9,4 @@
 !sysusers-mautrix-telegram.conf
 
 !.gitignore
+!.nvchecker.toml

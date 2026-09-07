@@ -1,0 +1,8 @@
+[mautrix-telegram-bin]
+source = "github"
+github = "mautrix/telegram"
+use_max_tag = true
+
+
+prefix = "v"
+
