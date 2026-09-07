@@ -6,12 +6,12 @@
 # edit the placeholders in-tree.
 
 pkgname=winpodx
-pkgver=0.10.4
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Windows app integration for Linux desktop (Podman/FreeRDP RemoteApp)"
 arch=('any')
 url="https://github.com/kernalix7/winpodx"
-license=('MIT' 'Apache-2.0')  # Apache-2.0: bundled rdprrap zip ports stascorp/rdpwrap
+license=('MIT' 'Apache-2.0' 'OFL-1.1')  # OFL-1.1: bundled unmodified Selawik font
 # Arch's `python` is rolling and already >= 3.13, so tomllib is stdlib and
 # the tomli fallback is a no-op here (marker-gated in pyproject.toml).
 depends=(
@@ -30,7 +30,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kernalix7/winpodx/archive/v$pkgver.tar.gz")
-sha256sums=('ba1307ba481708a3a59cebfb4a9598d96aee847d9f4598e9d95e3a72c34d503e')
+sha256sums=('566e0c218506f3cfe0622eee5477030f2e7aa008249cc045e20494631dfeee20')
 install=winpodx.install
 
 build() {
@@ -43,6 +43,8 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 THIRD_PARTY_LICENSES.md "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_LICENSES.md"
+  install -Dm644 src/winpodx/gui/fonts/LICENSE-Selawik.txt \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-Selawik.txt"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
   install -Dm644 data/winpodx.desktop \
