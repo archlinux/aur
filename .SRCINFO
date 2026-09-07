@@ -1,7 +1,7 @@
 pkgbase = purelive-bin
 	pkgdesc = 纯粹直播（Pure Live）基于 Flutter 的开源多平台直播聚合播放器
 	pkgver = 3.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/liuchuancong/pure_live
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -13,7 +13,7 @@ pkgbase = purelive-bin
 	depends = libpulse
 	depends = alsa-lib
 	depends = gnutls
-	optdepends = mpv: external MPV player support as alternative decoder
+	depends = mpv
 	optdepends = libva: VA-API hardware decoding interface (Intel/AMD)
 	optdepends = libvdpau: NVIDIA VDPAU hardware decoding acceleration
 	optdepends = libva-intel-driver: VA-API driver for Intel GPUs

@@ -2,18 +2,17 @@ pkgname=purelive-bin
 pkgver=3.1.2
 _filever=3.1.2
 _buildnum=4100
-pkgrel=2
+pkgrel=3
 pkgdesc="纯粹直播（Pure Live）基于 Flutter 的开源多平台直播聚合播放器"
 arch=('x86_64')
 url="https://github.com/liuchuancong/pure_live"
 license=('AGPL-3.0-or-later')
 depends=(
     'gtk3' 'libayatana-appindicator' 'libayatana-indicator' 'libpulse'
-    'alsa-lib' 'gnutls'
+    'alsa-lib' 'gnutls' 'mpv'
 )
 makedepends=('gcc' 'patchelf')
 optdepends=(
-    'mpv: external MPV player support as alternative decoder'
     'libva: VA-API hardware decoding interface (Intel/AMD)'
     'libvdpau: NVIDIA VDPAU hardware decoding acceleration'
     'libva-intel-driver: VA-API driver for Intel GPUs'
@@ -57,7 +56,7 @@ Name[zh_CN]=纯粹直播
 Comment=A third-party live stream aggregator
 Comment[zh_CN]=第三方多平台直播聚合播放器
 Exec=purelive %U
-Icon=purelive
+Icon=pure_live
 Terminal=false
 Type=Application
 Categories=AudioVideo;Network;
