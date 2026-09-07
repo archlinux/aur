@@ -1,15 +1,15 @@
 pkgbase = dockit-bin
-	pkgdesc = GUI clients for elasticsearch, opensearch and etc.(Prebuilt version)
-	pkgver = 1.4.3
+	pkgdesc = Open-source GUI client for Elasticsearch, OpenSearch, DynamoDB and MongoDB — one native desktop app for all your NoSQL databases.Privacy-first. Your data, your keys. Open source.
+	pkgver = 1.4.5
 	pkgrel = 1
-	url = https://dockit.geekfun.club/
+	url = https://www.geekfun.club/products/dockit/
 	arch = x86_64
 	license = Apache-2.0
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = dockit=1.4.3
+	provides = dockit=1.4.5
 	conflicts = dockit
-	source = dockit-1.4.3.rpm::https://github.com/geek-fun/dockit/releases/download/v1.4.3/DocKit-1.4.3-1.x86_64.rpm
-	sha256sums = 7c8183e1a67731c36e3d2a4d79052153501076f1c3d641430a95b22f753ea526
+	source = dockit-1.4.5.rpm::https://github.com/geek-fun/dockit/releases/download/v1.4.5/DocKit-1.4.5-1.x86_64.rpm
+	sha256sums = fb97abf433460e0da27e8942a0d32d7b29403e26f2bd7fad63a30c8485223418
 
 pkgname = dockit-bin

@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dockit-bin
 _pkgname=DocKit
-pkgver=1.4.3
+pkgver=1.4.5
 pkgrel=1
-pkgdesc="GUI clients for elasticsearch, opensearch and etc.(Prebuilt version)"
+pkgdesc="Open-source GUI client for Elasticsearch, OpenSearch, DynamoDB and MongoDB — one native desktop app for all your NoSQL databases.Privacy-first. Your data, your keys. Open source."
 arch=('x86_64')
-url="https://dockit.geekfun.club/"
+url="https://www.geekfun.club/products/dockit/"
 _ghurl="https://github.com/geek-fun/dockit"
 license=('Apache-2.0')
 conflicts=("${pkgname%-bin}")
@@ -15,7 +15,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('7c8183e1a67731c36e3d2a4d79052153501076f1c3d641430a95b22f753ea526')
+sha256sums=('fb97abf433460e0da27e8942a0d32d7b29403e26f2bd7fad63a30c8485223418')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
