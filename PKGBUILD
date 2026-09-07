@@ -16,8 +16,8 @@ source=(
     "triangles-qt.desktop"
 )
 sha256sums=(
-    'f32e76c0e70262cef70e61f33c17119ac15cef05f37710c2b5aa450a2b86a6c6'
-    '75948cf7415ba04ffd46ebcbf29135f7744fba45ec660be873468e8df437ae01'
+    '4dac96c1b8ec82f94a9caaa44816ee22b1bf55688b58a3672e209a9da224d0c4'
+    '6413e2ee16766475ac620301edcb5be283aa0d4a5a2137c30168fa55863b869b'
     'SKIP'
 )
 
