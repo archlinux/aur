@@ -1,0 +1,19 @@
+pkgbase = aurcache-sandbox
+	pkgdesc = Landlock sandbox used by AURCache to confine PKGBUILD execution
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/Lukas-Heiligenbrunner/AURCache
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	options = !strip
+	options = !lto
+	options = !debug
+	source = aurcache-sandbox-0.5.0.tar.gz::https://github.com/Lukas-Heiligenbrunner/AURCache/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = aurcache-sandbox
