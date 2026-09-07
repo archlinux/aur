@@ -5,7 +5,7 @@
 # how this is published to the AUR and how to bump it (scripts/aur/update.sh).
 
 pkgname=mcpp-bin
-pkgver=2026.9.6.6
+pkgver=2026.9.7.1
 pkgrel=1
 pkgdesc="Modern C++ build & package management tool (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ source_aarch64=("mcpp-${pkgver}-linux-aarch64.tar.gz::${_relbase}/mcpp-${pkgver}
 source=("mcpp.sh")
 
 sha256sums=('SKIP')
-sha256sums_x86_64=('180f9b02ab7800170b931491f97417257b19ae509f6b1eca4aa084fb84696892')
-sha256sums_aarch64=('bdd6c10b73ddeee7a3d5f53c0970d96f5c871b6c28dd52e06e331a1098f22690')
+sha256sums_x86_64=('61570729b86fbd9dd413218f4400d8f27582980ed033ed98025a13997c793b69')
+sha256sums_aarch64=('4b0fffa3f405ddf189217053e3985da624517bc33345a7ddcdd8ca1bbc236e16')
 
 package() {
     local _src="${srcdir}/mcpp-${pkgver}-linux-${CARCH}"
