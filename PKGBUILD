@@ -2,7 +2,7 @@
 
 pkgname=certora-cli
 _name=certora_cli
-pkgver=8.19.1
+pkgver=8.19.2
 pkgrel=1
 pkgdesc="Runner for the Certora Prover: formal verification of EVM, Solana and Stellar smart contracts"
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=('certora-prover-bin: run verification locally instead of on Certora'
             'solidity: solc compiler for building Solidity contracts'
             'graphviz: TAC reports')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('05a429ebd2463df1b6c5aae6ed65b3585dd13bee668f2160193e797e38d5f4d9')
+sha256sums=('d20f2968f2561c4456ccb41fb8fd55e123664739f3e23db456c11db5767b62f3')
 
 latestver() {
     curl -fsSL https://pypi.org/pypi/${pkgname}/json | jq -r '.info.version'
