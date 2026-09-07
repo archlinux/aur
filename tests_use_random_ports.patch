@@ -1,7 +1,7 @@
 --- jupyterhub/tests/mocking.py
 +++ jupyterhub/tests/mocking.py
 
-@@ -242,6 +242,8 @@
+@@ -289,6 +289,8 @@
          if 'internal_certs_location' in kwargs:
              cert_location = kwargs['internal_certs_location']
              kwargs['external_certs'] = ssl_setup(cert_location, 'hub-ca')

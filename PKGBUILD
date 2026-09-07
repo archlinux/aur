@@ -4,7 +4,7 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=5.5.1
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
@@ -13,6 +13,8 @@ license=('BSD-3-Clause')
 depends=(
   'ipython'
   'nodejs-configurable-http-proxy'
+  'python-aiodns'
+  'python-aiohttp'
   'python-alembic'
   'python-certipy'
   'python-dateutil'
@@ -54,8 +56,6 @@ optdepends=(
   'jupyter-notebook: standard notebook server'
   'jupyterlab: to use the JupyterLab interface'
   'python-cryptography: encrypt authentication state'
-  'python-pycurl: improved HTTP performance'
-  'python-statsd: send metrics to a StatsD server'
 )
 install=jupyterhub.install
 backup=(
@@ -66,19 +66,16 @@ source=(
   "git+https://github.com/jupyterhub/jupyterhub.git#tag=$pkgver"
   'jupyterhub.service'
   'tests_use_random_ports.patch'
-  'no_unsafe_perm.patch'
 )
 sha256sums=(
-  'bc52e5101310b5a32541a902bc5145f7f64115e4144f038078dbe2229d8d035b'
+  '0cfdbf29fc5f2f7c6b83a914cee0a5ff82b413f294e0efda4c439007ebb97ac9'
   'f851dac9e098afa1dfcf30169b23414e7384559984eb7090aaf3c4f9c1c84997'
-  'f5efb4d2e64fa9e98121b8ae0473a7366f8e727176addb0b92f568e3c6d5c66b'
-  'aa14808598dc85435527c024be3afd2c6ea66526cd5380bc0413a2bab2a93137'
+  'f02a888ba6835624cff17507f219ba708b8d7537ee776fc33f0fffcd19b4332e'
 )
 
 prepare() {
   cd "${srcdir}/jupyterhub"
   patch -p0 -i "${srcdir}/tests_use_random_ports.patch"
-  patch -p0 -i "${srcdir}/no_unsafe_perm.patch"
 }
 
 build() {
