@@ -1,0 +1,21 @@
+pkgbase = yay-auto-review
+	pkgdesc = Review AUR package recipes with Codex before yay builds them
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/HCGStudio/yay-auto-review
+	install = yay-auto-review.install
+	arch = any
+	license = GPL-3.0-only
+	checkdepends = lua51
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=77
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = git
+	depends = yay
+	depends = openai-codex
+	source = yay-auto-review-0.2.0.tar.gz::https://github.com/HCGStudio/yay-auto-review/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 6697eb996cce02eda70fa2f1482e646571ceaedc44aa72fb66f4c681ef1b4caa
+
+pkgname = yay-auto-review
