@@ -3,9 +3,9 @@
 _pkgname=nimf
 pkgname=nimf-libhangul-git
 pkgver=1.4.19.r0.gefe873d
-pkgrel=2
+pkgrel=3
 pkgdesc="Nimf is a lightweight, fast and extensible input method framework. (libhangul only)"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/hamonikr/nimf"
 license=('LGPL-3.0-or-later')
 depends=(
