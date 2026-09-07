@@ -12,7 +12,7 @@ provides=('awoolt')
 conflicts=('awoolt')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/awoolt/releases/download/v${pkgver}/awoolt-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('a31c0e802c5945d14744555f7ef945271cc4dbda06a8f1de5b1f7621e699bd4d')
+sha256sums_x86_64=('aa7ed4e6c22db7349876d041ab48956f00d59f52dadb35024e43d93d08794559')
 
 package() {
   # bin
