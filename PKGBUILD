@@ -2,11 +2,12 @@
 pkgname=lotti-bin
 _pkgname=Lotti
 _debname="com.matthiasn.${pkgname%-bin}"
-pkgver=1.0.25+4366
+pkgver=1.1.5+4380
 pkgrel=1
-pkgdesc="Achieve your goals and keep your data private with Lotti. This life tracking app is designed to help you stay motivated and on track, all while keeping your personal information safe and secure. Now with on-device speech recognition.(Prebuilt version)"
+pkgdesc="A private logbook with a staff of personal AI assistants. Agents read what you record and propose what to do next — you approve the changes. End-to-end encrypted sync between your own devices — servers only ever see ciphertext. Local AI optional."
 arch=('x86_64')
-url="https://github.com/matthiasn/lotti"
+url="https://matthiasn.github.io/lotti/"
+_ghurl="https://github.com/matthiasn/lotti"
 license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -26,11 +27,11 @@ depends=(
     'gst-plugins-base-libs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/${pkgver//_/+}/linux.x64.tar.gz"
+    "${pkgname%-bin}-${pkgver}.tar.gz::${_ghurl}/releases/download/${pkgver//_/+}/linux.x64.tar.gz"
     "${pkgname%-bin}.sh"
 )
 noextract=("${pkgname%-bin}-${pkgver}.tar.gz")
-sha256sums=('53a6c3fef75f4c51fca944e251afd582f9d6ce98107641d275ed7037b438aa7c'
+sha256sums=('e6531db61188909584dce949ed7871166986c494b820a9a3c998aac14dcda1b6'
             '6c653ecadf03d9566022c30e03185a6cbfc1ab8de1c9ddec899bac356c4d40d7')
 prepare() {
     sed -i -e "
