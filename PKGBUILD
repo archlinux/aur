@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=wechat
-pkgver=15
+pkgver=16
 pkgrel=1
 epoch=1
 pkgdesc="Fixes and optional sandbox for WeChat."
@@ -33,24 +33,24 @@ source=(
 
 
 md5sums=('6e5d2bd14439b5d1bd8c8e6e0fab7850'
-         'f32488c56b43ca5eb0ee77d77f0f8e52'
-         'e9b53733c1e01ee4916115f428100218')
+         '40fcc8aa752ea10a147582a63a14d8fb'
+         'fd9403b3b92dfb6a3c1a124272b45375')
 
 function package() {
 	install -Dm644 portable-config \
 		"${pkgdir}/usr/lib/portable/info/com.qq.weixin/config"
 	install -Dm644 config.toml \
-		"${pkgdir}/usr/lib/portable/info/com.qq.weixin/config.toml"
+		"${pkgdir}/usr/lib/portable/info/com.tencent.wechat/config.toml"
 	install -d "${pkgdir}/usr/bin"
 	echo '''#!/usr/bin/bash
 export _portableConfig="com.qq.weixin"
-export PORTABLE_CONF="com.qq.weixin"
-portable $@
+export PORTABLE_CONF="com.tencent.wechat"
+exec portable $@
 ''' >"${pkgdir}/usr/bin/wechat.sh"
 	chmod 755 "${pkgdir}/usr/bin/wechat.sh"
 	install -Dm644 \
 		"${srcdir}/wechat.desktop" \
-		"${pkgdir}/usr/share/applications/com.qq.weixin.desktop"
+		"${pkgdir}/usr/share/applications/com.tencent.wechat.desktop"
 	install -d "${pkgdir}/usr/share/libalpm/hooks"
 	
 	echo '''[Action]
@@ -65,7 +65,7 @@ Operation = Upgrade
 Type = Path
 Target = usr/bin/wechat
 Target = usr/share/applications/wechat.desktop
-Target = usr/share/applications/com.qq.weixin.desktop''' >"${pkgdir}/usr/share/libalpm/hooks/wechat.hook"
+Target = usr/share/applications/com.tencent.wechat.desktop''' >"${pkgdir}/usr/share/libalpm/hooks/wechat.hook"
 
 }
 
