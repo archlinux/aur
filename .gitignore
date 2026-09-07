@@ -1,3 +1,7 @@
-*
-!.SRCINFO
-!PKGBUILD
+src
+pkg
+*.tar.xz
+*.tar.gz
+*.tar.zst
+*.log
+
