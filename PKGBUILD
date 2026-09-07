@@ -266,7 +266,7 @@ END
   printf '\n:: Free RAM: %-5s Cores: %-5s Threads: %-5s Jobs: %-5s\n\n' "$((_mem / (1024 * 1024)))" "$_cores" "$_threads" "$_jobs"
 
   if [[ "$_jobs" =~ ^[0-9]+$ ]]; then
-    cat >> ../mozconfig << END
+    cat >> mozconfig << END
 mk_add_options MOZ_PARALLEL_BUILD=${_jobs}
 END
   fi
