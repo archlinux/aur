@@ -1,12 +1,12 @@
 pkgbase = rkdeveloptool-gui-appimage
 	pkgdesc = RKDevelopTool GUI is a graphical front-end for Rockchip's official rkdeveloptool
-	pkgver = 5.2.0
-	pkgrel = 2
+	pkgver = 5.3.0
+	pkgrel = 1
 	url = https://github.com/gahingwoo/RKDevelopTool-GUI
 	arch = x86_64
 	depends = fuse2
 	options = !strip
-	source = rkdeveloptool-gui-v5.2.0-x86_64.AppImage::https://github.com/a15355447898a/RKDevelopTool-GUI/releases/download/5.2.0-1/RKDevelopTool-GUI-main-x86_64.AppImage
+	source = rkdeveloptool-gui-v5.3.0-x86_64.AppImage::https://github.com/gahingwoo/RKDevelopTool-GUI/releases/download/5.3.0/RKDevelopTool-GUI-5.3.0-x86_64.AppImage
 	sha256sums = 858532a742c7a6e4cd6bc415e190e6baaa771cd8c1828367ab4e8746b7293b19
 
 pkgname = rkdeveloptool-gui-appimage
