@@ -1,9 +1,0 @@
-*.zip
-*.part
-*.pkg.tar.gz
-*.pkg.tar.zst
-pkg/
-src/
-*.tar.gz
-apifox-*
-.history/

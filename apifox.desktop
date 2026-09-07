@@ -1,11 +1,11 @@
 [Desktop Entry]
 Name=Apifox
-Exec=/opt/apifox/Apifox.AppImage %U
-Comment=API 文档、API 调试、API Mock、API 自动化测试
-Comment[zh_CN]=API 文档、API 调试、API Mock、API 自动化测试
-Terminal=false
+Comment=API documentation, debugging, mocking, and automated testing
+Exec=apifox %U
+TryExec=apifox
 Icon=apifox
+Terminal=false
 Type=Application
+Categories=Development;
 StartupNotify=true
 StartupWMClass=Apifox
-Categories=Network;Development;Utility;
