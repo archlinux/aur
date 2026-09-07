@@ -1,6 +1,6 @@
 # Maintainer: facelock contributors
 pkgname=facelock-git
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Face authentication for Linux PAM (development build)"
 arch=('x86_64')
