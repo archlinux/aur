@@ -2,7 +2,7 @@
 
 pkgname=pkger-bin
 pkgver=1.2.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Package manager for Arch Linux and Arch-based distributions'
 arch=('x86_64')
 url='https://github.com/almezali/pkger-g'
@@ -14,7 +14,7 @@ conflicts=('pkger')
 
 _source_url='https://gitlab.com/package-installer-gui/pkger/-/raw/main/pkger.tar.xz'
 source=("pkger.tar.xz::${_source_url}")
-sha256sums=('a03d35ad7299a36d7c58dc7b4ac5807a10ddd0f2731f929c19e4d05afcdac45c')
+sha256sums=('SKIP')
 
 prepare() {
     cd "$srcdir"
