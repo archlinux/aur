@@ -1,0 +1,30 @@
+post_install() {
+    # 1. Загрузка модуля ec_sys для записи в EC
+    modprobe ec_sys write_support=1 2>/dev/null || true
+
+    # 2. Активация службы управления вентиляторами
+    systemctl daemon-reload 2>/dev/null || true
+    systemctl enable --now acer-fans.service 2>/dev/null || true
+
+    # 3. Автоматическая настройка биндингов Hyprland для всех пользователей системы
+    for user_home in /home/*; do
+        if [ -d "$user_home/.config/hypr" ]; then
+            u=$(basename "$user_home")
+            if [ -x /usr/lib/acer-sense/scripts/hyprland-setup.sh ]; then
+                su - "$u" -c "/usr/lib/acer-sense/scripts/hyprland-setup.sh" 2>/dev/null || true
+            fi
+        fi
+    done
+
+    echo ":: [Acer Sense] Установка успешно завершена."
+    echo ":: [Acer Sense] Системная служба acer-fans.service активирована."
+    echo ":: [Acer Sense] Биндинги клавиш (Fn+F для питания и XF86Launch6 для микрофона) настроены."
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    systemctl disable --now acer-fans.service 2>/dev/null || true
+}
