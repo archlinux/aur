@@ -1,6 +1,6 @@
 # Maintainer: Byeonghoon Yoo <bh322yoo@gmail.com>
 pkgname=posthog-cli-bin
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="PostHog CLI tool for feature flags, experiments, and analytics"
 arch=('x86_64' 'aarch64')
@@ -8,15 +8,15 @@ url="https://github.com/PostHog/posthog"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'zlib')
 optdepends=('nodejs: required for the posthog-cli api command')
-provides=('posthog-cli')
+provides=("posthog-cli=${pkgver}")
 conflicts=('posthog-cli')
 
 _base_url="${url}/releases/download/posthog-cli/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_base_url}/posthog-cli-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_base_url}/posthog-cli-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('b6f6782120f9c0650bc5a7d5a857615d1fa5aced4f20e8a22b3563aea7ea2b2f')
-sha256sums_aarch64=('e8372b24c0ac47282c3ce43f3de53437f1d59f7cbabac890061c4047079e1a1a')
+sha256sums_x86_64=('ebd2753e39c20a93ef3458cbb9b49b3ce8585fa5f92235e364bc0785c5ed7c66')
+sha256sums_aarch64=('c18294a75d725b49802df417aa45e81c9511132f66c757510286ed0bac234273')
 
 package() {
     install -Dm755 "posthog-cli-${CARCH}-unknown-linux-gnu/posthog-cli" \
