@@ -1,8 +1,8 @@
 # Maintainer: Certilia <support@certilia.com>
 
 pkgname=certiliamiddleware
-pkgver=3.9.8
-pkgrel=1
+pkgver=3.9.10
+pkgrel=2
 pkgdesc="Certilia Middleware for AKD smart cards (Croatian eID, Certilia)"
 arch=("x86_64")
 url="https://www.certilia.com"
@@ -11,7 +11,7 @@ depends=("ca-certificates-utils" "ccid" "xcb-util-cursor" "xcb-util-keysyms" "xc
 source=("https://repo.certilia.com/repository/debian/pool/c/${pkgname}/${pkgname}_${pkgver}-${pkgrel}_amd64.deb")
 options=("!strip" "staticlibs")
 install="certiliamiddleware.install"
-sha512sums=("7c42e2c5a9b8ca6901c1d8612acdd8c39eff496ba629107b232f7551fd647175ee0f01332ee31d7836284e62cbabfd2426a1aec7b7e08be9624811493df08206")
+sha512sums=("d4197219e0e46746c19523422f4cc574afcb000ad42885c689a5536d85cbb6ba57f0e82f047b163c39a5bcfb36e3be5f6635e569bfe5b3a29110cfa8c0627603")
 
 package() {
   tar --no-same-owner --zstd -xvf data.tar.zst -C ${pkgdir}
