@@ -2,13 +2,17 @@
 
 pkgname="mixxxdb"
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for manipulating the Mixxx database."
 arch=(any)
 url="https://codeberg.org/SamWhited/mixxxdb"
 license=(BSD-2-Clause)
+depends=(
+  sqlite
+)
 makedepends=(
   go
+  sqlc
 )
 source=("${pkgname}-${pkgver}.zip::https://codeberg.org/SamWhited/${pkgname}/archive/v${pkgver}.zip")
 sha256sums=('c51cc881366789638a5d241decb290daf93cfde9becbaa57c896b7c742de5b7e')
