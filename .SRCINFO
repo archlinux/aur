@@ -1,6 +1,6 @@
 pkgbase = mustang
 	pkgdesc = New full-featured desktop email, chat and video conference client.(Use system-wide electron)
-	pkgver = 0.9.37
+	pkgver = 0.9.38
 	pkgrel = 1
 	url = https://mustang.im/
 	arch = any
