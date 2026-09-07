@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=picot-bin
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Local Codex-style desktop GUI for the Pi coding agent"
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ options=('!strip' '!debug')
 _relurl="${url}/releases/download/v${pkgver}"
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_relurl}/Picot_${pkgver}_amd64.deb")
-sha256sums_x86_64=('47f68ea576051f8d111067a4f17fb93d8d2ddf69e5aabc3d3dafa76ad025e738')
-sha256sums_aarch64=('47e8f98eed8640a14938362fa28086f6e1337c748ffaf35852a1ca3dc92dc66d')
+sha256sums_x86_64=('0c50fce89d033011ef1e46fa4c2389aee0981a934339d79ec56f86f95ddd94ae')
+sha256sums_aarch64=('c0a0a9575090f5f08a15e493b6143f370f5f576e16c68439387d365ab2b57ba3')
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_relurl}/Picot_${pkgver}_arm64.deb")
 
 prepare() {
