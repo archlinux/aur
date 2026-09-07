@@ -10,3 +10,4 @@
 !mautrix-signal.tmpfiles
 
 !.gitignore
+!.nvchecker.toml

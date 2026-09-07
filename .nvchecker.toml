@@ -1,0 +1,8 @@
+[mautrix-signal]
+source = "github"
+github = "mautrix/signal"
+use_max_tag = true
+
+
+prefix = "v"
+
