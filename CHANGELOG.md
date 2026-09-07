@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+> [!NOTE]
+> Update your Golazo app by running `golazo --update`; and check out: https://thegolazo.app
+
+### Added
+- **Leagues Cup** - Added support for the Leagues Cup, the annual MLS vs. Liga MX club tournament, to the Americas region.
+- **La Liga 2** - Added support for Spanish La Liga 2 (second division). (Thanks @Qv1ko!)
+
+### Changed
+- Config/cache directory resolution now uses `cli-toolkit/dirs` internally instead of hand-rolled logic; no change in behavior or config location.
+- **Reddit goal-link retrieval** — cooldown after a Reddit block now persists across app restarts and grows exponentially (with jitter) on repeated blocks, instead of resetting on restart and staying fixed at 10 minutes.
+- **Reddit goal-link retrieval** — goal searches get one retry with a relaxed query (scorer name dropped) when the first attempt finds no match.
+
+### Fixed
+
+## [0.32.0] - 2026-07-23
+
+> [!NOTE]
+> Update your Golazo app by running `golazo --update`; and check out: https://thegolazo.app
+
+### Added
+- **New US Leagues** - USL Championship (USA Men's Division 2), USL League One (USA Men's Division 3), and USL Gainsbridge Super League (USA Women's Division 1) (Thanks @naviabbot!)
+
+### Changed
+
+### Fixed
+
+## [0.31.0] - 2026-06-29
+
 ### Added
 - **World Cup Top Scorers** — Press `s` in the World Cup view to open a ranked top scorers table with live goal tallies for the 2026 World Cup.
 

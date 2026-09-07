@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=golazo
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="A minimalist TUI for following football / soccer matches in real-time"
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ makedepends=(go)
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         001-disable-update.patch)
-sha256sums=('dbb97b01853ae003b2e99d8e608d05f0c71bd65f18de38b41308ed4d2a47c33c'
+sha256sums=('6ccc10b8f2eb8449c2583e966e0e331bb7e748d3cc560e254ea404d5c7a9c926'
             '2b18a5064d3aef73e5992f4b1490346e2cbdf95eca3a7fa2f3f65d1bc514d86c')
 
 prepare() {
