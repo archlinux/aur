@@ -2,7 +2,7 @@
 # Maintainer: Kaj Kowalski <info at kajkowalski dot nl>
 
 pkgname='actionlint-kjanat-bin'
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='Static checker for GitHub Actions workflow files (kjanat fork, prebuilt binary)'
 url='https://actionlint.kjanat.dev'
@@ -13,13 +13,13 @@ conflicts=('actionlint' 'actionlint-bin' 'actionlint-git' 'actionlint-kjanat')
 optdepends=('shellcheck: check shell scripts in run steps' 'python-pyflakes: check Python scripts in run steps')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/kjanat/actionlint/releases/download/v${pkgver}/actionlint_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('47da14d07edd9d0a285c1e6b31e66d0af878c6fcf237600a644df18accbc8d15')
+sha256sums_aarch64=('53af2ead3ee9b0e9128a4e24ade757af51a1989aac418bb352d6313dd2cd6023')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/kjanat/actionlint/releases/download/v${pkgver}/actionlint_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('be1446f002b1794feee6df419d806a82db8419092614ba40d4ce79ae374a187b')
+sha256sums_i686=('fcec8a12c8963e82d4daf4edccd4100a503977d058fba21e5f6f59aee13188ca')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/kjanat/actionlint/releases/download/v${pkgver}/actionlint_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('003a4772e98194099e7cc31eee8d85991b0d380b7960cf91d5b6e7614c6f61d1')
+sha256sums_x86_64=('cf23bb0eb29c32ac61e9a096de1931db35edf15448dde890292ead15ad27c669')
 
 package() {
   install -Dm0755 actionlint "${pkgdir}/usr/bin/actionlint"
