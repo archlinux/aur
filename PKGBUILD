@@ -10,7 +10,7 @@ pkgname='python-pynotify'
 pkgdesc='Python Inotify Class'
 _gitname='pynotify'
 
-pkgver="2.0.0"
+pkgver="2.0.1"
 pkgrel=1
 url="https://github.com/gene-git/pynotify"
 

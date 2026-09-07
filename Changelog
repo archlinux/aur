@@ -1,11 +1,17 @@
 -------------------------------------------------------
  Changelog    : pynotify
- Tags         : 1.6.1 ➙ 2.0.0
-              : 2025-11-01 ➙ 2026-09-06
+ Tags         : 1.6.2 ➙ 2.0.1
+              : 2025-11-01 ➙ 2026-09-07
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-06   : 2.0.0
+ 2026-09-07   : 2.0.1
+              - **2.0.1**
+            
+                * Manual update
+                * add missing py.typed to install
+
+ 2026-09-06   : 2.0.0, origin/master
               - **2.0.0**
             
                 * meson / meson-python for build / package management
@@ -28,8 +34,3 @@
 
  2025-11-01   : 1.6.2
               - Doc build: use xelatex which candle unicode characters
-
- 2025-11-01   : 1.6.1
-              - License switch to GPL-2.0-or-later
- 2025-05-21   ⋯
-              - update Docs/Changelogs Docs/pynotify.pdf
