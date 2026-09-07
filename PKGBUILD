@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=pipeasio
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 # Upstream tags use semver prerelease hyphens (v1.0.0-rc1); pkgver maps '-' to '_'.
 _pkgtag="v${pkgver//_/-}"
@@ -18,7 +18,7 @@ makedepends=(cmake ninja)
 options=('!strip' '!debug' '!lto')
 _pkgsrc="${pkgname}-${_pkgtag#v}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${_pkgtag}.tar.gz")
-b2sums=('4e218979a6ce6ce40300c4fa96e7040f4816f0920ca73485bc92d6f943335fed07dfc3249ce5502074781c1d5cc9ccfda808081b3ba8fae6abbe5e9441357d9f')
+b2sums=('b8a320f6bd0a21a0b2cd2b248a0888f6bbc14400e913c8e43f7a4bcee1638a3f367c698825840c8b5c9d5759199d16ba74b13f9df574646f1d7a473cc75742b4')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
