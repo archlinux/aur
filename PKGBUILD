@@ -14,7 +14,7 @@ source=(
   "maryanne.png::https://github.com/${release_repo}/releases/download/v${pkgver}/maryanne.png"
 )
 sha256sums=(
-  '7cce6def3f527c217de7edf98cc1f7f95b3b651e17a8f80356dfc01a4268288e'
+  'b213feae698bc9286792e60edfa2c5c45d88209e2d4f1b87038c36cd87c4eac3'
   '8fcdd0bdfda339ee543d62c39d91580074212c681a1e477d7f717578fbf71c00'
   '93e729a1fb386fbdeb95f1d5ebc0bc03d2384abe3bf1f81152869ce6b07d30dd'
 )
