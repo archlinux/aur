@@ -17,7 +17,7 @@ conflicts=('gaze-gnome-extension')
 backup=('etc/dconf/db/gdm.d/00-gaze-defaults' 'etc/pam.d/gdm-face' )
 install='gaze-gnome-extension-bin.install'
 source=("gaze-gnome-extension-0.3.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gnome-extension-0.3.0-1-x86_64.pkg.tar.zst")
-sha256sums=('f09c5c3db2263962f471d29d91bbbc6ec73e499aab4660b9a48da370f1fc1663')
+sha256sums=('aea7f9a79af2425fa57eba48a97715d27bebb293b13281a4994b87e248b591d8')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-gnome-extension-0.3.0-1-x86_64.pkg.tar.zst" -C "$pkgdir"
