@@ -1,0 +1,16 @@
+pkgbase = rbedit-git
+	pkgdesc = Dependency-Free Bencode Editor
+	pkgver = 0.2.r7.gca227ff
+	pkgrel = 1
+	url = https://github.com/rakshasa/rbedit
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = rbedit
+	conflicts = rbedit
+	source = git+https://github.com/rakshasa/rbedit.git
+	sha256sums = SKIP
+
+pkgname = rbedit-git
