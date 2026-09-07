@@ -1,6 +1,6 @@
 pkgbase = statwrap-git
-	pkgdesc = A free and open-source assistive, non-invasive discovery and inventory tool to document research projects.(Use system-wide electron)
-	pkgver = 0.0.21.r0.gef8aaf3
+	pkgdesc = A free and open-source assistive, non-invasive discovery and inventory tool to document research projects.
+	pkgver = 0.0.21.r53.gc1fbf38
 	pkgrel = 1
 	url = https://sites.northwestern.edu/statwrap/
 	arch = any
