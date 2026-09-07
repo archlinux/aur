@@ -8,11 +8,7 @@ arch=('any')
 url="https://github.com/jmcantrell/$pkgname"
 license=('MIT')
 depends=('python')
-optdepends=()
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-uv-build')
-checkdepends=()
-provides=()
-conflicts=()
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz")
 md5sums=('6268dd19ceb536c6ff35337d7723cb44')
 
