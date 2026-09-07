@@ -1,0 +1,11 @@
+--- a/src/ops/linear_topk/q4_m64.cu
++++ b/src/ops/linear_topk/q4_m64.cu
+@@ -7,6 +7,8 @@
+ #include "ops/common/score_id_order.cuh"
+ #include "ops/linear_topk/linear_topk_workspace.h"
+ 
++#include <cuda_bf16.h>
++
+ #include <cub/warp/warp_merge_sort.cuh>
+ 
+ #include <cstdint>

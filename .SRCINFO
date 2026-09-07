@@ -1,6 +1,6 @@
 pkgbase = ninfer-git
 	pkgdesc = High-performance single-GPU inference engine for registered Qwen checkpoints (sm_120a only)
-	pkgver = 20260824.gfeaf4dd
+	pkgver = 20260907.ga16b644
 	pkgrel = 1
 	url = https://github.com/Neroued/ninfer
 	arch = x86_64
@@ -20,6 +20,8 @@ pkgbase = ninfer-git
 	depends = nvidia-utils
 	provides = ninfer
 	source = git+https://github.com/Neroued/ninfer.git
+	source = fix-q4_m64-missing-cuda_bf16-include.patch
 	sha256sums = SKIP
+	sha256sums = 64413552fa5ee681f015af731fb68b4a188cc7e210bda7523f15aea0b1abff64
 
 pkgname = ninfer-git
