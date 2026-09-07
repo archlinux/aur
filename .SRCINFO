@@ -1,6 +1,6 @@
 pkgbase = epic-lore-desktop-bin
 	pkgdesc = GUI client for next-generation open source version control system by Epic Games (Pre-compiled binary)
-	pkgver = 0.8.6
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/EpicGames/lore
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = epic-lore-desktop-bin
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: systray indicator support
 	provides = lore-desktop
-	noextract = lore-desktop_amd64.deb
+	noextract = epic-lore-desktop-bin-2026-09-07-18.amd64.deb
 	options = !strip
 	options = !debug
-	source = https://releases.lore.org/desktop/releases/stable/lore-desktop_amd64.deb
-	sha256sums = c9ac0237eddb795e6fadf8fd1583ac358ff9eeb10918d977632003ce37a8f3c5
+	source = epic-lore-desktop-bin-2026-09-07-18.amd64.deb::https://releases.lore.org/desktop/releases/stable/lore-desktop_amd64.deb
+	sha256sums = cdef516e010a46e72906c47f5dc741f5e3d9dd22bed73fa3e7af602de65bf252
 
 pkgname = epic-lore-desktop-bin

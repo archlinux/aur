@@ -1,7 +1,7 @@
 # Maintainer: Timofey Brukhanchik <asyncbtd@gmail.com>
 
 pkgname=epic-lore-desktop-bin
-pkgver=0.8.6
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="GUI client for next-generation open source version control system by Epic Games (Pre-compiled binary)"
 arch=('x86_64')
@@ -22,12 +22,19 @@ optdepends=(
 )
 provides=('lore-desktop')
 options=('!strip' '!debug')
-source=("https://releases.lore.org/desktop/releases/stable/lore-desktop_amd64.deb")
-sha256sums=('c9ac0237eddb795e6fadf8fd1583ac358ff9eeb10918d977632003ce37a8f3c5')
-noextract=("lore-desktop_amd64.deb")
+_deb="${pkgname}-$(date +%F-%H).amd64.deb"
+source=("${_deb}::https://releases.lore.org/desktop/releases/stable/lore-desktop_amd64.deb")
+sha256sums=('cdef516e010a46e72906c47f5dc741f5e3d9dd22bed73fa3e7af602de65bf252')
+noextract=("$_deb")
+
+pkgver() {
+  bsdtar -xf "$_deb" control.tar.gz
+  bsdtar -xf control.tar.gz control
+  sed -n 's/^Version: //p' control
+}
 
 package() {
-  bsdtar -O -xf "${srcdir}/lore-desktop_amd64.deb" data.tar.gz | bsdtar -C "${pkgdir}" -xzf -
+  bsdtar -O -xf "${srcdir}/${_deb}" data.tar.gz | bsdtar -C "${pkgdir}" -xzf -
 
   install -Dm644 "${pkgdir}/opt/Lore Desktop/resources/TERMS_OF_USE.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/TERMS_OF_USE.txt"
