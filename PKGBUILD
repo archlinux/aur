@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
-pkgver=r209.c821453
-pkgrel=2
+pkgver=r225.c4cc528
+pkgrel=1
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -45,7 +45,7 @@ optdepends=(
 makedepends=('git')
 
 source=(
-    "git+https://github.com/SHORiN-KiWATA/shorin-niri.git#branch=niri-shorin-fork"
+    "git+https://github.com/SHORiN-KiWATA/shorin-niri.git"
 )
 sha256sums=('SKIP')
 
@@ -85,7 +85,7 @@ package() {
         exit 1
     fi
 
-    if [[ -f "README-Niri.txt" ]]; then
-        install -Dm644 "README-Niri.txt" "$pkgdir/usr/share/doc/shorin-niri/README-Niri.txt"
+    if [[ -f "README-Niri.md" ]]; then
+        install -Dm644 "README-Niri.md" "$pkgdir/usr/share/doc/shorin-niri/README-Niri.md"
     fi
 }
