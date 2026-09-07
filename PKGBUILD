@@ -3,9 +3,9 @@
 _name=tree-sitter-elixir
 pkgname=python-tree-sitter-elixir
 pkgver=0.3.5
-pkgrel=8
+pkgrel=9
 pkgdesc="Elixir grammar for tree-sitter"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/elixir-lang/tree-sitter-elixir"
 license=('Apache-2.0')
 depends=('python' 'python-tree-sitter')
