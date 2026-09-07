@@ -1,5 +1,5 @@
 pkgname=acer-sense-git
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="Linux alternative for AcerSense (Fan control, Battery limit, Profiles, Hyprland)"
 arch=('any')
@@ -52,6 +52,7 @@ package() {
     ln -s /usr/lib/acer-sense/src/main.py "$pkgdir/usr/bin/acer-sense"
     ln -s /usr/lib/acer-sense/scripts/hyprland-setup.sh "$pkgdir/usr/bin/acer-sense-hyprland-setup"
     ln -s /usr/lib/acer-sense/scripts/power-cycle.sh "$pkgdir/usr/bin/acer-sense-power-cycle"
+    ln -s /usr/lib/acer-sense/scripts/acer-battery-monitor.sh "$pkgdir/usr/bin/acer-sense-battery-monitor"
 
     # Иконки
     install -Dm644 assets/icon.png "$pkgdir/usr/share/pixmaps/acer-sense.png"
@@ -62,6 +63,7 @@ package() {
     install -Dm644 data/org.acer.sense.policy "$pkgdir/usr/share/polkit-1/actions/"
     install -Dm644 data/hda-verb.policy "$pkgdir/usr/share/polkit-1/actions/"
     install -Dm644 data/acer-fans.service "$pkgdir/usr/lib/systemd/system/"
+    install -Dm644 data/acer-battery.service "$pkgdir/usr/lib/systemd/system/"
     install -Dm644 data/mic-sync.service "$pkgdir/usr/lib/systemd/user/"
     install -Dm644 data/ec_sys.conf "$pkgdir/etc/modprobe.d/"
 }

@@ -1,6 +1,6 @@
 pkgbase = acer-sense-git
 	pkgdesc = Linux alternative for AcerSense (Fan control, Battery limit, Profiles, Hyprland)
-	pkgver = 2.1
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/MaksSuRitik/acer-sense
 	install = acer-sense.install

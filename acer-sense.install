@@ -3,9 +3,10 @@ post_install() {
     modprobe -r ec_sys 2>/dev/null || true
     modprobe ec_sys write_support=1 2>/dev/null || true
 
-    # 2. Активация системной службы управления вентиляторами
+    # 2. Активация системных служб управления вентиляторами и порогом зарядки
     systemctl daemon-reload 2>/dev/null || true
     systemctl enable --now acer-fans.service 2>/dev/null || true
+    systemctl enable --now acer-battery.service 2>/dev/null || true
 
     # 3. Автоматическая настройка биндингов Hyprland для всех пользователей
     for user_home in /home/*; do
@@ -17,8 +18,8 @@ post_install() {
         fi
     done
 
-    echo ":: [Acer Sense] Установка успешно завершена."
-    echo ":: [Acer Sense] Системная служба acer-fans.service активирована."
+    echo ":: [Acer Sense] Установка успешно завершена (v2.4)."
+    echo ":: [Acer Sense] Системные службы acer-fans.service и acer-battery.service активированы."
     echo ":: [Acer Sense] Биндинги клавиш (Fn+F для питания и XF86Launch6 для микрофона) настроены."
 }
 
@@ -27,7 +28,9 @@ post_upgrade() {
 }
 
 pre_remove() {
-    # 1. Остановка и отключение системной службы
+    # 1. Остановка и отключение системных служб
+    systemctl stop acer-battery.service 2>/dev/null || true
+    systemctl disable acer-battery.service 2>/dev/null || true
     systemctl stop acer-fans.service 2>/dev/null || true
     systemctl disable acer-fans.service 2>/dev/null || true
 
@@ -50,6 +53,7 @@ post_remove() {
         rm -rf "$user_home/.config/acer-sense" "$user_home/.config/acer-sense.json" 2>/dev/null || true
         rm -f "$user_home/.config/systemd/user/mic-sync.service" 2>/dev/null || true
     done
+    rm -rf /etc/acer-sense 2>/dev/null || true
 
     echo ":: [Acer Sense] Приложение, службы, биндинги Hyprland и конфигурации полностью удалены."
 }
