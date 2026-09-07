@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r137.8fb8468
-pkgrel=1
+pkgrel=2
 pkgdesc="Shorin DMS Niri desktop environment (Core Configs & Installer)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -20,7 +20,6 @@ depends=(
 optdepends=(
     'satty: Screenshot editor' 'slurp: Region selector' 'imv: Image viewer' 'mpv: Video player' 'firefox: Web browser'
     'noto-fonts: Fonts' 'noto-fonts-cjk: CJK fonts' 'noto-fonts-emoji: Emoji fonts'
-    'niri-sidebar-git: Niri sidebar component'
     'ffmpegthumbnailer: Thumbnails' 'gvfs-smb: SMB support' 'nautilus-open-any-terminal: Nautilus extension'
     'icoextract: exe thumbnailer'
     'file-roller: Archive manager' 'gnome-keyring: Keyring service' 'gst-plugins-base: GStreamer'
@@ -32,13 +31,12 @@ optdepends=(
     'wf-recorder: Screen recorder' 'wl-screenrec-git: Screen recorder' 'ttf-jetbrains-maple-mono-nf-xx-xx: Custom font'
     'eza: ls replacement' 'zoxide: cd replacement' 'starship: Shell prompt' 'jq: JSON processor' 'fish: Shell'
     'timg: Image viewer in terminal' 'imagemagick: Image manipulation' 'shorin-contrib-git: Shorin tools'
-    'fastfetch: System info' 'gdu: Disk usage' 'btop: Resource monitor' 'opencode: Code opener'
-    'shorin-screenrec-menu-git: Screen record menu' 'flatpak: Package management' 'bazaar: Version control'
+    'fastfetch: System info' 'gdu: Disk usage' 'btop: Resource monitor'
+    'shorin-screenrec-menu-git: Screen record menu' 'flatpak: Package management' 'bazaar: Flatpak app store'
     'matugen: Material You colors' 'adw-gtk-theme: GTK theme' 'python-pywalfox: Firefox theme tool'
     'nwg-look: GTK settings' 'breeze-cursors: Cursor theme' 'fcitx5: Input method framework' 'rime-wanxiang-gram-zh-hans: better ime model'
     'fcitx5-configtool: Fcitx5 GUI' 'fcitx5-gtk: Fcitx5 GTK' 'fcitx5-qt: Fcitx5 QT' 'fcitx5-rime: Fcitx5 Rime'
     'rime-ice-git: Rime dict' 'rime-wubi: Rime Wubi'
-    'clipsync-git: x11 wayland clipboard sync'
 )
 
 makedepends=('git')
