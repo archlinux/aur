@@ -1,0 +1,22 @@
+pkgbase = kotsasmin-toolkit-git
+	pkgdesc = A collection of system optimization, security, and media scripts
+	pkgver = r1.abcdef1
+	pkgrel = 1
+	url = https://github.com/Kotsasmin/toolkit
+	arch = any
+	license = custom
+	makedepends = git
+	depends = bash
+	optdepends = yt-dlp: for media downloader
+	optdepends = ffmpeg: for media downloader
+	optdepends = docker: for security container audits
+	optdepends = npm: for node vulnerability audits
+	optdepends = screen: for running SCX P2DQ in background
+	provides = kotsasmin-toolkit
+	provides = toolkit
+	conflicts = kotsasmin-toolkit
+	conflicts = toolkit
+	source = git+https://github.com/Kotsasmin/toolkit.git
+	sha256sums = SKIP
+
+pkgname = kotsasmin-toolkit-git
