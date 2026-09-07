@@ -6,7 +6,7 @@ pkgbase = hmmer
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://eddylab.org/software/hmmer/hmmer-3.4.tar.gz
-	sha256sums = ca70d94fd0cf271bd7063423aabb116d42de533117343a9b27a65c17ff06fbf3
+	source = https://github.com/EddyRivasLab/hmmer/archive/refs/tags/hmmer-3.4.tar.gz
+	sha256sums = 298cbe76ccc516a86a85cbe2e91690074deed1d66b19d88ff6829a837befd85e
 
 pkgname = hmmer

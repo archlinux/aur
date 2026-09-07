@@ -9,8 +9,8 @@ pkgdesc="Profile hidden Markov models (HMMs) for database searching using consen
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://hmmer.org/"
-source=(http://eddylab.org/software/hmmer/hmmer-$pkgver.tar.gz)
-sha256sums=('ca70d94fd0cf271bd7063423aabb116d42de533117343a9b27a65c17ff06fbf3')
+source=(https://github.com/EddyRivasLab/hmmer/archive/refs/tags/hmmer-$pkgver.tar.gz)
+sha256sums=('298cbe76ccc516a86a85cbe2e91690074deed1d66b19d88ff6829a837befd85e')
 
 build() {
   cd "$pkgname-$pkgver"
