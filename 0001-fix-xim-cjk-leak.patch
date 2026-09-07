@@ -1,0 +1,41 @@
+From ab0c4b634576f03a9746e71e62d9822e3f8a90af Mon Sep 17 00:00:00 2001
+From: shorinkiwata <fcl709@outlook.com>
+Date: Thu, 25 Jun 2026 19:09:20 +0900
+Subject: [PATCH] fix: prevent XIM character leak in Xwayland apps under CJK
+ locale
+
+Don't forward key release events of regular printable characters
+while composing. Forwarding releases triggers a sync race in the XIM
+client's FABRICATED flag handling that can cause character leaks when
+COMPOUND_TEXT encoding is negotiated (which happens under CJK locales).
+---
+ src/frontend/xim/xim.cpp | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/src/frontend/xim/xim.cpp b/src/frontend/xim/xim.cpp
+index 614230d4..4aa939cc 100644
+--- a/src/frontend/xim/xim.cpp
++++ b/src/frontend/xim/xim.cpp
+@@ -660,7 +660,18 @@ void XIMServer::callback(xcb_im_client_t *client, xcb_im_input_context_t *xic,
+             result = ic->keyEvent(event);
+         }
+         if (!result) {
+-            xcb_im_forward_event(im(), xic, xevent);
++            // Don't forward key release of regular printable characters
++            // while composing. Forwarding releases triggers a sync race in
++            // the XIM client's FABRICATED flag handling that can cause
++            // character leaks under CJK locales with COMPOUND_TEXT encoding.
++            if (!(event.isRelease() &&
++                  !event.key().states().testAny(
++                      KeyStates{KeyState::Ctrl, KeyState::Alt,
++                                KeyState::Super, KeyState::Shift}) &&
++                  !ic->inputPanel().preedit().toString().empty() &&
++                  Key::keySymToUnicode(event.key().sym()) > 0x20)) {
++                xcb_im_forward_event(im(), xic, xevent);
++            }
+         }
+         break;
+     }
+-- 
+2.55.0
+
