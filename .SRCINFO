@@ -1,6 +1,6 @@
 pkgbase = actionlint-kjanat
 	pkgdesc = Static checker for GitHub Actions workflow files (kjanat fork)
-	pkgver = 1.15.0
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://actionlint.kjanat.dev
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = actionlint-kjanat
 	conflicts = actionlint-kjanat-bin
 	provides = actionlint
 	
-	source = https://github.com/kjanat/actionlint/releases/download/v1.15.0/actionlint-1.15.0.tar.gz
-	sha256sums = 9ad8053ca16bf4a56c4aa71a4b374f26f4813a5fee7b9050fdb814bbb38dc102
+	source = https://github.com/kjanat/actionlint/releases/download/v1.15.1/actionlint-1.15.1.tar.gz
+	sha256sums = 6204c921fb2f7f65418625ebdb79598ef036e4deea36392776fab3f25c321e41
 	
 pkgname = actionlint-kjanat
