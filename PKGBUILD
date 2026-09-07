@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=pgschema-bin
-pkgver=1.12.5
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Declarative schema migration CLI for Postgres (Terraform-style)'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('pgschema')
 conflicts=('pgschema')
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/pgschema-${pkgver}-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/pgschema-${pkgver}-linux-arm64")
-sha256sums_x86_64=('bcef715edb71321c6a27886fcc74a423f923c62d731852668314efcce1402698')
-sha256sums_aarch64=('a347cda5ce428109cd949ff2fcaccda380296016338722efa4488cd8e2f681ec')
+sha256sums_x86_64=('75785f3750bc441b1f27390c8432d495a555801d0a1d7e58b5de4160a099db5d')
+sha256sums_aarch64=('eb5dc9484c628b21f729d7740a2648e489de4ae0934b38a400e93a5c93cf46b2')
 
 package() {
     install -Dm755 "${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/pgschema"
