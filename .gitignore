@@ -10,3 +10,4 @@
 !sysusers-mautrix-meta.conf
 
 !.gitignore
+!.nvchecker.toml
