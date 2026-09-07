@@ -2,7 +2,7 @@
 # Maintainer: Bastien 'neitsab' Traverse <neitsab@archlinux.org>
 
 pkgname=incus-compose-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Bring the familiar Docker Compose workflow to Incus containers (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -17,10 +17,10 @@ provides=('incus-compose')
 conflicts=('incus-compose' 'incus-compose-git')
 
 source_x86_64=("https://github.com/lxc/incus-compose/releases/download/v$pkgver/incus-compose_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('672f9c711a7de7bcd3744f74726e967ae4f6a8871d9d2c9c4ca0ecea4b4936a3')
+sha256sums_x86_64=('9624f19675eb211fb537ee9f7e92408c40833dd51fc954eb06ea38a8e4060f93')
 
 source_aarch64=("https://github.com/lxc/incus-compose/releases/download/v$pkgver/incus-compose_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('ccd1fd8b2ae6a04c740e32dbae216add73fb29e2ba34c1ec858d190cb79ca33e')
+sha256sums_aarch64=('92e76c5f1a50b91a341c5318a78988e66b8f6c662226c0b0720a75c3bb1ca49d')
 
 package() {
   install -Dm755 "$srcdir/incus-compose" "$pkgdir/usr/bin/incus-compose"
