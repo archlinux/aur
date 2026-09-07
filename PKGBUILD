@@ -1,13 +1,13 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=rime-llm-translator-git
-pkgver=r54.122c106
+pkgver=r58.b96f8af
 pkgrel=1
 pkgdesc="给Rime输入法接入大模型进行拼音联想，支持TUI图形化配置"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/rime-llm-translator"
 license=('AGPL3') 
-depends=('python' 'fcitx5-rime')
+depends=('python' 'fcitx5-rime' 'curl')
 makedepends=('git')
 provides=('rime-llm-translator')
 conflicts=('rime-llm-translator')
