@@ -1,15 +1,9 @@
 # Maintainer:
 # Co-Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
-## options
-if [ -z "$_srcinfo" ] && [ -z "$_pkgver" ]; then
-  : ${_autoupdate:=true}
-fi
-
-## basic info
 _pkgname=thunderbird
 pkgname=thunderbird-beta
-pkgver=141.0b4
+pkgver=154.0b2
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 url="https://www.thunderbird.net/"
@@ -24,28 +18,38 @@ depends=(
   dbus
   ffmpeg
   gtk3
-  libpulse
   libxss
   libxt
   mime-types
-  nss
   ttf-font
+
+  icu
+  libffi.so          # libffi
+  libjpeg.so         # libjpeg-turbo
+  libpipewire-0.3.so # libpipewire
+  libpixman-1.so     # pixman
+  libvpx.so          # libvpx
+  libwebp.so         # libwebp
+  libwebpdemux.so    # libwebp
+  libz.so            # zlib
+  nspr
+  nss
 )
 makedepends=(
+  cargo
   cbindgen
   clang
   diffutils
   imake
   inetutils
   jack
-  libotr
   lld
   llvm
   mesa
   nasm
   nodejs
   python
-  rust
+  python-setuptools
   unzip
   wasi-compiler-rt
   wasi-libc
@@ -61,21 +65,29 @@ options=(
   !makeflags
 )
 
-_source_main() {
-  provides=("thunderbird=$_pkgver")
+provides=("thunderbird=$pkgver")
 
-  source=(
-    https://archive.mozilla.org/pub/thunderbird/releases/$_pkgver/source/thunderbird-$_pkgver.source.tar.xz{,.asc}
-    $pkgname.desktop
-    install-dir.patch
-    metainfo.patch
-  )
-sha256sums=('SKIP'
-            'SKIP'
-            'c620a080414b15e822073e22685c781a8b1789b93d5474aedcadbd8801945d97'
-            'c959c9f2b60a42dc937f744c018196906727d468d8f1d7402fb4f743484c414b'
-            '3390d127e5dd70a0ff60895bcb044ec4521dd528cd9d6efc27c4ba58df9cca5c')
-}
+source=(
+  https://archive.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
+  $pkgname.desktop
+  install-dir.patch
+  metainfo.patch
+  clang22-wasm32-wasip1.patch
+  mozpkix-x11-success-macro.patch
+  rnp-botan-3.13-rsa-padding.patch
+  rust-1.98-targets.patch
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'c620a080414b15e822073e22685c781a8b1789b93d5474aedcadbd8801945d97'
+  'c959c9f2b60a42dc937f744c018196906727d468d8f1d7402fb4f743484c414b'
+  'f6c5bfde2c597fb4461ef2eaf498cc8d5e2ce3b67c651eccb2e361a537721c5e'
+  'c55bfd97f181bfdaf232ba800fb012bd9be63ffb2d1499dcb925d7126b62a981'
+  'b230f34b4395d69a2917b7b0c187c74848d6d1fbe51d9ab8342b622e78b2682e'
+  'cfec91018d5af57b63668897aaf3aa4ce3793da88cc6c561c2304bb5e9b871d7'
+  '8e93bc3f7745bd4a6bcf952120b60a260ea867f0c8319ea8f6df18ed1281bc1f'
+)
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -96,7 +108,7 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
   mkdir -p mozbuild
-  cd "${_pkgname}-${_pkgver%b*}"
+  cd "${_pkgname}-${pkgver%b*}"
 
   local src
   for src in "${source[@]}"; do
@@ -142,20 +154,33 @@ ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 
 # System libraries
+# ac_add_options --with-system-av1
+# ac_add_options --with-system-libevent
+# ac_add_options --with-system-png
+ac_add_options --with-system-ffi
+ac_add_options --with-system-gbm
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libdrm
+ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-pipewire
+ac_add_options --with-system-pixman
+ac_add_options --with-system-webp
+ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
-ac_add_options --enable-crashreporter
+ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 END
 }
 
 build() {
-  cd "${_pkgname}-${_pkgver%b*}"
+  cd "${_pkgname}-${pkgver%b*}"
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -175,7 +200,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}-${_pkgver%b*}"
+  cd "${_pkgname}-${pkgver%b*}"
   DESTDIR="$pkgdir" ./mach install
 
   local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
@@ -222,9 +247,6 @@ END
   install -Dm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
 
-  install -Dm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
-    "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
-
   # Use system-provided dictionaries
   ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/$pkgname/dictionaries"
   ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/$pkgname/hyphenation"
@@ -235,9 +257,9 @@ END
 exec /usr/lib/$pkgname/$_pkgname "\$@"
 END
 
-  # Replace duplicate binary with wrapper
+  # Replace duplicate binary
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$pkgname/$_pkgname-bin"
+  ln -sfv "$pkgname" "$pkgdir/usr/lib/$pkgname/$_pkgname-bin"
 
   # Use system certificates
   local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
@@ -245,23 +267,3 @@ END
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 }
-
-_update_version() {
-  : ${_pkgver:=$pkgver}
-
-  if [[ "${_autoupdate::1}" != "t" ]]; then
-    return
-  fi
-
-  _pkgver=$(
-    curl -I --no-progress-meter "https://download.mozilla.org/?product=thunderbird-beta-latest&os=linux64&lang=en-US" \
-      | strings | grep -E '^Location: (.*)$' | sed -E 's&^.*/releases/([0-9][^/]+)/.*$&\1&'
-  )
-
-  pkgver() {
-    echo "${_pkgver:?}"
-  }
-}
-
-_update_version
-_source_main

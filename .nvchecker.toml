@@ -1,4 +1,4 @@
 [thunderbird-beta]
-source = "jq"
+source = "regex"
 url = "https://product-details.mozilla.org/1.0/thunderbird_versions.json"
-filter = ".LATEST_THUNDERBIRD_DEVEL_VERSION"
+regex = '"LATEST_THUNDERBIRD_DEVEL_VERSION":\s*"([^"]+)"'
