@@ -15,7 +15,6 @@ pkgbase = fcitx5-vinput-git
 	depends = curl
 	depends = speexdsp
 	depends = libsoxr
-	depends = openssl
 	provides = fcitx5-vinput
 	conflicts = fcitx5-vinput
 	backup = etc/vinput/advanced.json
