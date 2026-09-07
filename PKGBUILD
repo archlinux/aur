@@ -17,7 +17,7 @@ conflicts=('gaze-gui')
 backup=()
 # upstream package ships no install hooks
 source=("gaze-gui-0.3.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gui-0.3.0-1-x86_64.pkg.tar.zst")
-sha256sums=('5be101dda766a392ebe14106d2c592c5541a8c7311ddc7750410d1f5b8b259ea')
+sha256sums=('e582387be74117429c0fb4c749c18d72bb62fd9767555c6a361a96684d492408')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-gui-0.3.0-1-x86_64.pkg.tar.zst" -C "$pkgdir"
