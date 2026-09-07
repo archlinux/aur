@@ -1,15 +1,15 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=go-grip
-pkgver=0.9.2
-pkgrel=3
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="Preview Markdown files locally before committing them."
 arch=('x86_64' 'aarch64')
 url="https://github.com/chrishrb/go-grip"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='2d429423542eda5def9c8aca4d9dbc25d1c2bfd4'
+_commit='591f1ae607f4c915c5dbe717b28d3c9ac0c876d4'
 source=("git+https://github.com/chrishrb/go-grip.git#commit=$_commit")
 sha256sums=('SKIP')
 
