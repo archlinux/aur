@@ -1,0 +1,4 @@
+[granted]
+source = "git"
+git = "https://github.com/fwdcloudsec/granted.git"
+prefix = "v"

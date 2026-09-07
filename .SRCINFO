@@ -1,0 +1,15 @@
+pkgbase = granted
+	pkgdesc = CLI tool that simplifies access to cloud roles in your web browser
+	pkgver = 0.39.0
+	pkgrel = 1
+	url = https://github.com/fwdcloudsec/granted
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = granted-0.39.0.tar.gz::https://github.com/fwdcloudsec/granted/archive/v0.39.0.tar.gz
+	sha256sums = 6f9a4b38ffac2da32d7f6c5d225aca2f799d1f74aadd3783a873ff5d98b94144
+
+pkgname = granted
