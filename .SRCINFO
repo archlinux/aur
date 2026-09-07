@@ -1,6 +1,6 @@
 pkgbase = cartridges-rewrite-git
 	pkgdesc = A GTK4 + Libadwaita game launcher (rewrite branch)
-	pkgver = 49.0.r186.ge9a693e
+	pkgver = 49.0.r187.ge82903c
 	pkgrel = 1
 	url = https://github.com/AdityaHebballe/cartridges
 	arch = any
