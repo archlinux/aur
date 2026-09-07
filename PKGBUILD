@@ -1,7 +1,7 @@
 # Maintainer: David Hrabě <david.hrabe12@seznam.cz>
 pkgname="paths-bookmarks-git"
-pkgver=r126.8aa0f78
-pkgrel=2
+pkgver=r.8aa0f78
+pkgrel=1
 pkgdesc="Save often used directories like bookmarks"
 arch=("x86_64")
 url="https://github.com/sproott/pat.hs"
@@ -31,14 +31,10 @@ package() {
   cd "${srcdir}/${pkgname}"
 
   # Install binary and shell integration scripts
-  install -Dm755 "bin/paths" "${pkgdir}/usr/lib/paths/paths"
+  install -Dm755 "bin/paths" "${pkgdir}/usr/bin/_paths"
   install -Dm755 "bin/paths.sh" "${pkgdir}/usr/share/paths/paths.sh"
   install -Dm755 "bin/paths.fish" "${pkgdir}/usr/share/paths/paths.fish"
   install -Dm755 "bin/paths.zsh" "${pkgdir}/usr/share/paths/paths.zsh"
-  sed -i 's|/usr/share/paths|/usr/lib/paths|g' \
-    "${pkgdir}/usr/share/paths/paths.sh" \
-    "${pkgdir}/usr/share/paths/paths.fish" \
-    "${pkgdir}/usr/share/paths/paths.zsh"
 
   # Install shell completions
   install -Dm644 "bin/completions/bashcompletion.sh" "${pkgdir}/usr/share/bash-completion/completions/paths"
