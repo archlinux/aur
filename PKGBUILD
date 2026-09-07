@@ -1,6 +1,6 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=python-specklepy
-pkgver=2026.6.0
+pkgver=2026.8.1
 pkgrel=1
 pkgdesc="The Python SDK for Speckle"
 arch=('any')
@@ -10,7 +10,7 @@ depends=(python-appdirs python-attrs python-deprecated python-gql python-httpx p
 makedepends=(python-build python-installer python-wheel python-hatchling python-hatch-vcs)
 _name=${pkgname#python-}
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('77d90885db230478c26cfe45cb468773f27681835dad600b238c8990ee52ca2c')
+sha256sums=('d0d1c56b09b06b3f744879f7cf27b3495977cef010435f8850f4e1eb4d38263a')
 
 build() {
     cd $_name-$pkgver
