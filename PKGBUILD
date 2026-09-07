@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=prospect-mail
 _pkgname='Prospect Mail'
-pkgver=1.3.0
+pkgver=1.3.1
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -34,7 +34,7 @@ source=(
     "${pkgname}.git::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('d698d8b470c2dd89c734d2bb36a8f4030cfe4d1b9b9409194540c4cc204a7467'
+sha256sums=('fe617c9427e88337ec3208b90ee8989eeafc0703b9bd1774694e5c2f53b244b0'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
