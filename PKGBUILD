@@ -2,7 +2,7 @@
 
 pkgbase=rustrover
 pkgname=(rustrover rustrover-jre)
-pkgver=2026.2.1
+pkgver=2026.2.2
 pkgrel=1
 pkgdesc='JetBrains IDE for Rust Developers'
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 source=("https://download.jetbrains.com/${pkgbase}/RustRover-${pkgver}.tar.gz"
         jetbrains-rustrover.desktop
         LICENSE)
-b2sums=('166c7f0660875978fbbe07602cd79955cab1277de131ac464ce3925e674e589530615d6f70b2056d6e7e4653dfa8935910a13eba0f62d021060159cc62634022'
+b2sums=('2dd3587c6c12f5fb3db2ca8c5ea02ac240a99dc779b242a16109f9b18a94f2abab0649702c2218501be76be86c70ad113c904433f5657be6d8cdc431b169d146'
         '90abe1f33f60937648959e3a46c3d975ceeb09d0e7b2af535d310557c73ae865d8de29481d854e7503b913448ca54924a0fe07040e93216f0f368f2da827e70c'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
