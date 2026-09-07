@@ -1,6 +1,6 @@
 pkgbase = aocl-dlp
 	pkgdesc = AMD Optimizing CPU Libraries - Deep Learning Primitives
-	pkgver = 5.3
+	pkgver = 5.3.2
 	pkgrel = 1
 	url = https://github.com/amd/aocl-dlp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = aocl-dlp
 	makedepends = gcc
 	depends = gcc-libs
 	options = staticlibs
-	source = aocl-dlp-5.3.tar.gz::https://github.com/amd/aocl-dlp/archive/refs/tags/5.3.tar.gz
-	sha256sums = 103607ba75a84f623d8ad1a2164ea100a0ce925f75c9dfdb65933cf3982ecb29
+	source = aocl-dlp-5.3.2.tar.gz::https://github.com/amd/aocl-dlp/archive/refs/tags/5.3.2.tar.gz
+	sha256sums = 0b1237f160ce6d951a365788e8e30cad2f41d115d3af252938a3db922caafd23
 
 pkgname = aocl-dlp

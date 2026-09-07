@@ -1,7 +1,7 @@
 # Maintainer: Abhiram Shibu <abhiramshibu1998@gmail.com>
 
 pkgname=aocl-dlp
-pkgver=5.3
+pkgver=5.3.2
 pkgrel=1
 pkgdesc="AMD Optimizing CPU Libraries - Deep Learning Primitives"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('staticlibs')
 depends=('gcc-libs')
 makedepends=('cmake' 'ninja' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('103607ba75a84f623d8ad1a2164ea100a0ce925f75c9dfdb65933cf3982ecb29')
+sha256sums=('0b1237f160ce6d951a365788e8e30cad2f41d115d3af252938a3db922caafd23')
 
 build() {
     cmake -S "${pkgname}-${pkgver}" -B build \
