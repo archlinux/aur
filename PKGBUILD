@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.1.27
+pkgver=0.1.28
 pkgrel=1
 pkgdesc="Control suite and PipeWire submixer for Elgato XLR interfaces, with an OpenDeck plugin"
 arch=('x86_64')
@@ -8,18 +8,19 @@ url="https://github.com/emaspa/openxlr"
 license=('GPL-3.0-only')
 depends=('aspnet-runtime' 'pipewire' 'pipewire-pulse' 'wireplumber' 'libpulse' 'libusb' 'lilv'
          'fontconfig' 'libx11' 'libice' 'libsm')
-makedepends=('dotnet-sdk' 'dotnet-targeting-pack')
+makedepends=('dotnet-sdk' 'dotnet-targeting-pack' 'lv2' 'pkgconf')
 optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'lsp-plugins-lv2: a starter set of LV2 plugins for the inserts'
             'opendeck: Stream Deck control through the bundled plugin')
 install=openxlr.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dcc89ba8f59d2dbd3d87d1a2c4c461e30dd1a9cdc32da4611121c85f7c6c4630')
+sha256sums=('867f823d32323b3901443ad4470f228fbfc59cc6888101fd50069508cf45e7c7')
 
 build() {
   cd "$pkgname-$pkgver/src"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_NOLOGO=1
-  dotnet publish OpenXLR.Daemon -c Release -r linux-x64 --self-contained false -o "$srcdir/out/daemon"
+  dotnet publish OpenXLR.Daemon -c Release -r linux-x64 --self-contained false \
+    -p:EnableNativeLv2Host=true -o "$srcdir/out/daemon"
   dotnet publish OpenXLR.UI -c Release -r linux-x64 --self-contained false -o "$srcdir/out/ui"
 }
 
