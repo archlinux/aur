@@ -1,6 +1,6 @@
 # maintainer: revectane <revectane@proton.me> irc: Revectane (irc.libera.chat)
 pkgname=win11fonts-auto
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="replacement for broken ttf-ms-win10/11-fonts pkgs. saw this in a comment section of said pkgs and said why not make a pkgbuild."
 arch=(any)
@@ -11,8 +11,8 @@ depends=('7zip')
 
 package() {
 	7z e "26100.1742.240906-0331.ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso" sources/install.wim
-	7z e install.wim Windows/{Fonts/"*".{ttf,ttc},System32/Licenses/neutral/"*"/"*"/license.rtf} -ofonts/
+	7z e install.wim -aos Windows/{Fonts/"*".{ttf,ttc},System32/Licenses/neutral/"*"/"*"/license.rtf} -ofonts/
 
-	install -Dt "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 fonts/*.ttf fonts/*.ttc
-	install -Dm644 fonts/license.rtf -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 -t "$pkgdir/usr/share/fonts/${pkgname%-fonts}" fonts/*.tt[fc]
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" fonts/license.rtf
 }
