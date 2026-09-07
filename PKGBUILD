@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-cli-git
-pkgver=0.7.2.r42.g38c22139b
+pkgver=0.7.2.r44.gb403dea32
 pkgrel=2
 pkgdesc='Command-line interface for controlling Paseo AI coding agents (git - built from main)'
 arch=('x86_64' 'aarch64')
@@ -76,4 +76,8 @@ WRAPPER
 	chown -R root:root "${pkgdir}" 2>/dev/null || true
 
 	install -Dm644 "$srcdir/paseo/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	# Standalone tarball for direct download (same tree, no pacman needed).
+	# Lands at builddir root; pkg-build picks it up as an extra artifact.
+	tar -czf "$startdir/${pkgname}-standalone-${pkgver}.tar.gz" -C "${pkgdir}" usr
 }
