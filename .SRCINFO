@@ -1,0 +1,16 @@
+pkgbase = python-cadule
+	pkgdesc = Python library that provides decorators for converting regular modules into callable modules
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/cadule/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python>=3.8
+	source = https://files.pythonhosted.org/packages/source/c/cadule/cadule-0.0.1.tar.gz
+	sha256sums = 95aa7c467c67c19c392d091f0567a5a2d883cf35b69c64abfb668f4f77867b5e
+
+pkgname = python-cadule
