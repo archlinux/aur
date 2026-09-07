@@ -1,0 +1,14 @@
+pkgbase = gaze-cinnamon-extension-bin
+	pkgdesc = Cinnamon Spices extension for Gaze
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://gaze.gundulabs.com
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = cinnamon
+	provides = gaze-cinnamon-extension=0.3.0-1
+	conflicts = gaze-cinnamon-extension
+	source = gaze-cinnamon-extension-0.3.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-cinnamon-extension-0.3.0-1-x86_64.pkg.tar.zst
+	sha256sums = d8da3cd9ed675ce0adba82f3662626dfbf46ea2da97bfee9a4fc12f03960cf19
+
+pkgname = gaze-cinnamon-extension-bin
