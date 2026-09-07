@@ -1,6 +1,6 @@
 pkgbase = dedao-dl-bin
 	pkgdesc = Get app course download tool, you can view article content in terminal, generate PDF, audio file, markdown manuscript, download e-book from DeDao.com.(Written in GO.Prebuilt version)得到APP课程下载工具,可在终端查看文章内容,可生成PDF,音频文件,markdown文稿,可下载电子书。
-	pkgver = 1.2.32
+	pkgver = 1.2.33
 	pkgrel = 1
 	url = https://github.com/yann0917/dedao-dl
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = dedao-dl-bin
 	optdepends = wkhtmltopdf: Convert to PDF
 	optdepends = ffmpeg: Audio synthesis
 	optdepends = google-chrome: Generate PDF
-	provides = dedao-dl=1.2.32
+	provides = dedao-dl=1.2.33
 	conflicts = dedao-dl
-	noextract = dedao-dl-1.2.32-x86_64.tar.gz
+	noextract = dedao-dl-1.2.33-x86_64.tar.gz
 	options = !strip
-	source = LICENSE-1.2.32::https://raw.githubusercontent.com/yann0917/dedao-dl/v1.2.32/LICENSE
+	source = LICENSE-1.2.33::https://raw.githubusercontent.com/yann0917/dedao-dl/v1.2.33/LICENSE
 	sha256sums = 1ba8379d33340e518c32fe24046f7cb0530250ec193e7e3d0ea72fd558a1e926
-	source_aarch64 = dedao-dl-1.2.32-aarch64.tar.gz::https://github.com/yann0917/dedao-dl/releases/download/v1.2.32/dedao-dl-linux-arm64.tar.gz
-	sha256sums_aarch64 = 9e5d0ab45f27fa13599b2277d662447e34663b97db21f98d1292e2f65c300e26
-	source_x86_64 = dedao-dl-1.2.32-x86_64.tar.gz::https://github.com/yann0917/dedao-dl/releases/download/v1.2.32/dedao-dl-linux-amd64.tar.gz
-	sha256sums_x86_64 = eb413a19f432c3a18d0e6db62ad5af860167603306161e68aa8effca68d33f7e
+	source_aarch64 = dedao-dl-1.2.33-aarch64.tar.gz::https://github.com/yann0917/dedao-dl/releases/download/v1.2.33/dedao-dl-linux-arm64.tar.gz
+	sha256sums_aarch64 = 762ba52e353a272322fea506f0be92a12870ee7808b0d446bd59a0c270401bad
+	source_x86_64 = dedao-dl-1.2.33-x86_64.tar.gz::https://github.com/yann0917/dedao-dl/releases/download/v1.2.33/dedao-dl-linux-amd64.tar.gz
+	sha256sums_x86_64 = 5a4788b47b52632073f6b1f42433a6aaca88a449afa8f3fc76430ff63cbebbe5
 
 pkgname = dedao-dl-bin
