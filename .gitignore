@@ -1,0 +1,10 @@
+# makepkg build artifacts — never belong in the AUR repo
+pkg/
+src/
+publish/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.tar.gz
+# downloaded sources (source= entries land here at build time)
+LICENSE
+emutastic-logo.png

@@ -4,7 +4,7 @@
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=emutastic-bin
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Beautiful retro game library and emulation frontend (libretro)"
 arch=('x86_64')
 url="https://github.com/codingncaffeine/Emutastic-For-Linux"
@@ -27,14 +27,46 @@ source=("$url/releases/download/v$pkgver/Emutastic-$pkgver-linux-x64.tar.gz"
 sha256sums=('3b7e9651fec007171c240892196db11e22a12151fbdc22b2c2efb0ba986a6470'
             'SKIP'
             'SKIP')
+# The release tarball unpacks flat (top-level "./"), which would mix the publish
+# payload with the two loose sources above. Stage it in its own directory instead so
+# package() can copy the payload wholesale rather than by an allow-list of names.
+noextract=("Emutastic-$pkgver-linux-x64.tar.gz")
+
+prepare() {
+    rm -rf "$srcdir/publish"
+    mkdir -p "$srcdir/publish"
+    bsdtar -xf "$srcdir/Emutastic-$pkgver-linux-x64.tar.gz" -C "$srcdir/publish"
+}
 
 package() {
     install -dm755 "$pkgdir/usr/lib/emutastic" "$pkgdir/usr/bin" \
                    "$pkgdir/usr/share/applications" \
-                   "$pkgdir/usr/share/icons/hicolor/512x512/apps" \
-                   "$pkgdir/usr/share/metainfo"
-    cp -a "$srcdir"/{Emutastic,*.so,Assets,README.txt} "$pkgdir/usr/lib/emutastic/" 2>/dev/null || \
-        cp -a "$srcdir"/. "$pkgdir/usr/lib/emutastic/"
+                   "$pkgdir/usr/share/icons/hicolor/512x512/apps"
+
+    # Copy the entire publish output. Do NOT narrow this to a list of names: the app
+    # is a self-contained .NET publish whose payload is the apphost, ~218 managed
+    # assemblies, the native .so set, and the runtimeconfig/deps JSON — omitting any
+    # of it yields a package that installs cleanly and then dies at launch.
+    cp -a "$srcdir/publish/." "$pkgdir/usr/lib/emutastic/"
+
+    # Guard the above. 0.8.0-0.9.3-1 shipped without a single managed assembly and
+    # nothing in the build or install path noticed; only launching the app did.
+    local _dlls
+    _dlls=$(find "$pkgdir/usr/lib/emutastic" -maxdepth 1 -name '*.dll' | wc -l)
+    if [[ ! -f "$pkgdir/usr/lib/emutastic/Emutastic.dll" ]]; then
+        echo "==> ERROR: Emutastic.dll is missing from the package payload." >&2
+        return 1
+    fi
+    if (( _dlls < 150 )); then
+        echo "==> ERROR: only $_dlls managed assemblies packaged (expected ~218)." >&2
+        return 1
+    fi
+    for _f in Emutastic Emutastic.runtimeconfig.json Emutastic.deps.json libcoreclr.so libhostfxr.so; do
+        if [[ ! -f "$pkgdir/usr/lib/emutastic/$_f" ]]; then
+            echo "==> ERROR: $_f is missing from the package payload." >&2
+            return 1
+        fi
+    done
 
     cat > "$pkgdir/usr/bin/emutastic" <<'EOF'
 #!/bin/sh

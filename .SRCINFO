@@ -1,7 +1,7 @@
 pkgbase = emutastic-bin
 	pkgdesc = Beautiful retro game library and emulation frontend (libretro)
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/codingncaffeine/Emutastic-For-Linux
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,6 +14,7 @@ pkgbase = emutastic-bin
 	optdepends = vlc-plugins-video-output: hardware-accelerated snap previews on some setups
 	provides = emutastic
 	conflicts = emutastic
+	noextract = Emutastic-0.9.3-linux-x64.tar.gz
 	options = !strip
 	source = https://github.com/codingncaffeine/Emutastic-For-Linux/releases/download/v0.9.3/Emutastic-0.9.3-linux-x64.tar.gz
 	source = https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.9.3/LICENSE
