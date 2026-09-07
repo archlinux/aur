@@ -7,7 +7,7 @@ pkgname=('perlnavigator'
 pkgbase=perlnavigator
 _pkgname=PerlNavigator
 pkgver=0.8.20
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl language server that includes syntax checking, perl critic, and code navigation"
 arch=('any')
 url="https://github.com/bscan/PerlNavigator"
@@ -65,7 +65,7 @@ build() {
 
 package_perlnavigator() {
     pkgdesc="Perl language server that includes syntax checking, perl critic, and code navigation. Self-contained executable"
-    arch=('x86_64' 'aarch64')
+    arch=('any')
     depends=('glibc' 'gcc-libs')
     # Both provide /usr/bin/perlnavigator
     conflicts=('nodejs-perlnavigator-server')

@@ -1,19 +1,18 @@
 pkgbase = perlnavigator
 	pkgdesc = Perl language server that includes syntax checking, perl critic, and code navigation
 	pkgver = 0.8.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bscan/PerlNavigator
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = jq
 	source = perlnavigator-0.8.20.tar.gz::https://github.com/bscan/PerlNavigator/archive/refs/tags/v0.8.20.tar.gz
-  b2sums = 3ae6507d51f68816d6503cfcfde068fe5c5b9e787c93e6856acaa271cbd5fe21eb083aca748c62035eafb3871a458721bfb0b2b913ed72b3e44dab7d8ea7e140'
+	b2sums = 3ae6507d51f68816d6503cfcfde068fe5c5b9e787c93e6856acaa271cbd5fe21eb083aca748c62035eafb3871a458721bfb0b2b913ed72b3e44dab7d8ea7e140
 
 pkgname = perlnavigator
 	pkgdesc = Perl language server that includes syntax checking, perl critic, and code navigation. Self-contained executable
-	arch = x86_64
-	arch = aarch64
+	arch = any
 	depends = glibc
 	depends = gcc-libs
 	conflicts = nodejs-perlnavigator-server
