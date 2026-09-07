@@ -1,28 +1,28 @@
-# Maintainer: Kannan Thambiah <pygospa at gmail dot com>
+# Maintainer: Kannan Thambiah <kannan.thambiah@mailbox.org>
 
 pkgname=mopidy-listenbrainz
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Mopidy extension for scrobbling played tracks to listenbrainz"
 arch=("any")
 url="https://github.com/suaviloquence/mopidy-listenbrainz"
 license=("Apache-2.0")
 depends=(
-	"mopidy"
+	"mopidy>=4.0"
 	"python"
 	"python-musicbrainzngs"
-	"python-pykka"
-	"python-requests"
-	"python-setuptools"
+	"python-pykka>=4.4.2"
+	"python-httpx"
 )
 makedepends=(
 	"python-build"
 	"python-installer"
+	"python-setuptools"
 	"python-wheel"
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('df6695faff53ca359ccdb560284904f8d85c6761c4593cc320061f5ef880460c')
+sha256sums=('26ee657172a3b217487f62058dfbadfc1a9c3c09b0205737f68d2a05b3416502')
 
 build() {
 	cd "$pkgname-$pkgver"
