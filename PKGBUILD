@@ -1,7 +1,7 @@
 # Maintainer: Máté Zoltán Farkas <mail@example.com>
 
 pkgname=widic
-pkgver=d80c70f
+pkgver=0f34739
 pkgrel=1
 pkgdesc="A Wiktionary viewer in your terminal."
 arch=('any')
