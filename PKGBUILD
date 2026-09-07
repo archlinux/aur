@@ -4,7 +4,7 @@
 # Thanks to the meshroom-bin package for the desktop file
 
 pkgname=meshroom
-pkgver=2025.1.1
+pkgver=2025.1.8
 pkgrel=1
 pkgdesc="A free, open-source 3D Reconstruction Software based on the AliceVision framework"
 arch=('x86_64')
@@ -21,10 +21,10 @@ source=("${pkgname}::git+https://github.com/alicevision/meshroom.git#tag=v${pkgv
         "fix-qt-errors.patch"
         "meshroom.sh"
         "Meshroom.desktop")
-sha256sums=('8ff23c0caa024d9fa1760d928d9bd32790b19f0d947df2eddcbaa39f5da71283'
+sha256sums=('6f60de08ab02fe1754e4c0507a637b37c64c02cfc51037312dbb669086068d53'
             'SKIP'
-            'd0ffd1c69f8afd321c0676bf14b3d77eec417f9ff4fece73bc93590b2c735dc3'
-            '3fc0237907ace26474cfba9ff6ab7f1f2d96c1bd56ecdb1a6361812657f0b3de'
+            '306dee9b972d38b66e1328754591d43d0a83fde4d5040ab1f6ff2f0f40f3e44e'
+            '1c21a89d033b3855b1b76991dcf327ee90481eb227fda13aabf9e5134ed40b5b'
             '81665eb7a36e5b7ccd6fd4031c275c6e6aaf32a15c31d85a012e44236501c67b'
             '5b5c7c579e5e578c5b696df7097670df1f2c7f7247b4009e5f5a252fc63c9fe9')
 
@@ -70,5 +70,8 @@ package() {
 
   install -Dm644 meshroom/ui/img/meshroom.svg ${pkgdir}/usr/share/${pkgname}/meshroom.svg
   install -Dm755 ${srcdir}/Meshroom.desktop ${pkgdir}/usr/share/applications/Meshroom.desktop
+
+  # fix a Python issue
+  sed 's|#!/usr/bin/python|#!/usr/bin/env -S LD_PRELOAD=/usr/lib/libjemalloc.so /usr/bin/python|' -i ${pkgdir}/usr/bin/meshroom
 }
 # vim:set ts=2 sw=2 et:
