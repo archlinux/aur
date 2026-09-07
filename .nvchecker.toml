@@ -1,0 +1,8 @@
+[anki-sync-server]
+source = "github"
+github = "ankitects/anki"
+use_latest_release = true
+
+
+prefix = "v"
+
