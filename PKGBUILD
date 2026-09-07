@@ -2,15 +2,15 @@
 
 pkgname=ammo-git
 _pkgname=ammo
-pkgver=0.1.0.r546.3f3e3f1
+pkgver=0.1.0.r605.35fce7b
 _pkgver=0.1.0
-_commit=3f3e3f191173399e87d7980fbb7c23c0f992a243
+_commit=35fce7b804022fe34b41d5c0944a33f8517975de
 pkgrel=1
 pkgdesc="Almost Manual Mod Organizer - The Definitive CLI Mod Manager for Linux"
 url="https://github.com/cyberrumor/ammo"
 license=('GPL-2.0-only')
 arch=('any')
-depends=('python' '7zip')
+depends=('python' 'uv' 'python-installer' '7zip')
 provides=('ammo')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cov')
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  python setup.py build
+  uv build
 }
 
 check() {
@@ -34,6 +34,6 @@ check() {
 
 package() {
   cd "$_pkgname"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
