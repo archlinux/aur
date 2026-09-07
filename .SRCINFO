@@ -18,6 +18,7 @@ pkgbase = acer-sense-git
 	optdepends = wlsunset: BluelightShield на других Wayland-композиторах
 	optdepends = hyprland: интеграция горячих клавиш (XF86Launch6 → микрофон, Fn+F → профили)
 	optdepends = wireplumber: wpctl для управления громкостью и микрофоном
+	optdepends = nvidia-utils: nvidia-smi для считывания температуры дискретного GPU
 	provides = acer-sense
 	conflicts = acer-sense
 	source = git+https://github.com/MaksSuRitik/acer-sense.git

@@ -23,6 +23,7 @@ optdepends=(
     'wlsunset: BluelightShield на других Wayland-композиторах'
     'hyprland: интеграция горячих клавиш (XF86Launch6 → микрофон, Fn+F → профили)'
     'wireplumber: wpctl для управления громкостью и микрофоном'
+    'nvidia-utils: nvidia-smi для считывания температуры дискретного GPU'
 )
 source=("git+https://github.com/MaksSuRitik/acer-sense.git")
 sha256sums=('SKIP')
