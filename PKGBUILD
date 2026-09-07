@@ -1,7 +1,7 @@
 # Maintainer: Luke Taylor <luket@pm.me>
 
 pkgname=fooyin-git
-pkgver=0.12.4.r2.ga1e7128
+pkgver=0.12.6.r75.g05fca7c
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/fooyin/fooyin"
@@ -33,6 +33,8 @@ makedepends=(
     libgme
     libsndfile
     libarchive
+    libcdio
+    libcdio-paranoia
     libebur128
     libprojectm
     libsoxr
@@ -45,6 +47,8 @@ optdepends=(
     'libgme: For the GME audio input plugin'
     'libsndfile: For the GME audio input plugin'
     'libarchive: For the libarchive archive plugin'
+    'libcdio: For the cdda plugin'
+    'libcdio-paranoia: For the cdda plugin'
     'libebur128: For the ReplayGain scanner plugin'
     'libsoxr: For the SoX-based DSP plugin'
     'libprojectm: For the ProjectM visualisation plugin'
