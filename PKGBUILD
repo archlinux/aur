@@ -2,7 +2,7 @@
 _pkgname=linuxhammerlauncher
 pkgname=$_pkgname-bin
 pkgdesc="A launcher, installer and updater for Hammer++ & Tools++ (VBSP++, VVIS++, VRAD++) on Linux, for many different Source Engine games."
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 
 arch=(x86_64)
@@ -20,7 +20,7 @@ source=(
 	"$pkgname-$pkgver.zip::https://github.com/EnderCatCore/linuxhammerlauncher/releases/download/$pkgver/Linux.Hammer.Launcher.zip"
 	"$_pkgname.desktop"
 )
-sha256sums=('e7b873e4951bc477ba55af0caef61980f1a1e58009809eaa2a81969d1dbf7653'
+sha256sums=('5d60780da4d9993debd7e3b844c049bc549e8d1081c3830f3e1b8defdc60ed13'
             'b4f6fdcd177a6044ac2efe97f66303c2bce43f26dec3cd1096363e9d3f219824')
 
 package() {
