@@ -1,28 +1,9 @@
 # SPDX-License-Identifier: GPL-3.0-only
 
 post_install() {
-  local language="${YAY_AUTO_REVIEW_LANG:-auto}"
-  if [[ ${language,,} == auto ]]; then
-    language="${LC_ALL:-${LC_MESSAGES:-${LANG:-en}}}"
-  fi
-  language="${language%%.*}"
-  language="${language%%@*}"
-  language="${language//-/_}"
-  language="${language,,}"
-  case "$language" in
-    zh|zh_cn|zh_sg|zh_hans|zh_hans_*)
-      printf '%s\n' \
-        'yay-auto-review: 安装完成。请以普通用户运行：' \
-        '  codex login             # 如尚未登录' \
-        '  /usr/bin/yay-auto-review enable  # 为当前用户启用 yay 审查插件' \
-        '系统安装不会自动修改用户的 yay 配置。'
-      ;;
-    *)
-      printf '%s\n' \
-        'yay-auto-review: Installed. Run as your regular user:' \
-        '  codex login             # If not already signed in' \
-        '  /usr/bin/yay-auto-review enable  # Enable review in your yay configuration' \
-        'System installation does not modify per-user yay configuration.'
-      ;;
-  esac
+  printf '%s\n' \
+    'yay-auto-review: Installed. Run as your regular user:' \
+    '  codex login             # If not already signed in' \
+    '  /usr/bin/yay-auto-review enable  # Enable review in your yay configuration' \
+    'System installation does not modify per-user yay configuration.'
 }
