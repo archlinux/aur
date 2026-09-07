@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=2.0.10
+pkgver=2.0.12
 _electronversion=41
 pkgrel=1
 pkgdesc="🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
@@ -10,10 +10,10 @@ arch=(
     'aarch64'
     'x86_64'
 )
-url="https://cherry-ai.com/"
+url="https://cherryai.com/"
 _ghurl="https://github.com/CherryHQ/cherry-studio"
 license=(
-    'Apache-2.0'
+    'AGPL-3.0-or-later'
     'LicenseRef-custom'
 )
 provides=("${_appname}=${pkgver}")
@@ -43,8 +43,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-linux-x64.rpm")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('01aa2041e45a179dac364b604622adb9906be32a541c3863999134014b1cca3c')
-sha256sums_x86_64=('3018d666a1cda386e506cbdf9d2fef3052b3604e6abb8f5a6da434f188bea313')
+sha256sums_aarch64=('7376dbb314cbec3dd41d66a20e1cf4e22ae9cf786fdbab7e309f6c997e814caa')
+sha256sums_x86_64=('4276f12c9a51c13741dac56616fba78bff4d560c9b954e422503024ee2cb7ed2')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
