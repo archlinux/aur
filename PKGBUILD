@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk3' 'glib2' 'util-linux' 'yay')
 provides=('nexus-aur')
 conflicts=('nexus-aur')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/IlNinjaDiBattipaglia/Nexus-AUR/releases/download/v$pkgver/nexus-aur-linux-x86_64.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/IlNinjaDiBattipaglia/Nexus-AUR/releases/download/v$pkgver/nexus-aur-bin-$pkgver.tar.gz")
 sha256sums=('f3d73f14e8bfc84458c85f1a6a3391427b8fe4fc0b0064589bf0491cdf275f90')
 
 package() {

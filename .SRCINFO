@@ -11,7 +11,7 @@ pkgbase = nexus-aur-bin
 	depends = yay
 	provides = nexus-aur
 	conflicts = nexus-aur
-	source = nexus-aur-bin-1.0.1.tar.gz::https://github.com/IlNinjaDiBattipaglia/Nexus-AUR/releases/download/v1.0.1/nexus-aur-linux-x86_64.tar.gz
+	source = nexus-aur-bin-1.1.1.tar.gz::https://github.com/IlNinjaDiBattipaglia/Nexus-AUR/releases/download/v1.1.1/nexus-aur-bin-1.1.1.tar.gz
 	sha256sums = f3d73f14e8bfc84458c85f1a6a3391427b8fe4fc0b0064589bf0491cdf275f90
 
 pkgname = nexus-aur-bin
