@@ -1,5 +1,5 @@
 pkgname=writers-suite-bin
-pkgver=0.854
+pkgver=0.855
 pkgrel=1
 pkgdesc="Writer's Suite desktop shell + helper + WASM UI (prebuilt)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ conflicts=('writers-suite')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxcomposite' 'libxdamage' 'libxfixes' 'libxrandr' 'libxkbcommon' 'libdrm' 'libxcb' 'libxshmfence' 'libx11' 'libxi' 'libxcursor' 'libxinerama' 'libxext' 'libxrender' 'libsm' 'libice' 'fontconfig' 'freetype2' 'mesa' 'xdg-desktop-portal')
 optdepends=('xdg-desktop-portal-gtk: GTK portal backend' 'xdg-desktop-portal-kde: KDE portal backend' 'xdg-desktop-portal-wlr: wlroots portal backend')
 source=("WriterSuite-bin.tar.gz::https://softenough.com/download/aur/bin/WriterSuite-bin.tar.gz")
-sha256sums=('6ce92d053e8fdd5cd998868b51fff41a0bb4c1917f5f9752afedf64e274b7aef')
+sha256sums=('72d3a7dbf024409e7d0fcc4f7efb980e2ac9a317fb31e54d28e3bd0543af888f')
 
 package() {
   install -d "$pkgdir/opt/writers-suite"
