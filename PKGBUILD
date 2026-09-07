@@ -17,7 +17,7 @@ conflicts=('gaze')
 backup=('etc/dbus-1/system.d/com.gundulabs.Gaze.conf' 'etc/gaze/config.toml' )
 install='gaze-bin.install'
 source=("gaze-0.3.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-0.3.0-1-x86_64.pkg.tar.zst")
-sha256sums=('b5e6554279f324e782a92023a4798fcfd0dd462e1913e0090a8bcbcee088ebd4')
+sha256sums=('7691808a21288916d37bcce647f52b75aed0bb09f7ba8414856973053bf8b563')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-0.3.0-1-x86_64.pkg.tar.zst" -C "$pkgdir"
