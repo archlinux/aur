@@ -2,7 +2,7 @@
 # Contributor: Ryan Gonzalez <rymg19@gmail.com>
 
 pkgname=python-plac
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc='parsing the command line the easy way'
 arch=(any)
@@ -11,7 +11,7 @@ license=('BSD-2-Clause')
 depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('6cc8edb3cfc98fccd0820deaf4c40133ea36d85eeb08b25dbd34a4a83ddd4d51646a9da98cd965b69ff55d3dc7b592253503096197c27b7e88535987c743aa83')
+b2sums=('5228c5edb0d6a67baa2a006c5fd56ff6f15798b7959052a614fb7e3a75c8a8ea5a94bf4c40efd00704d042fb7542d9ce753877e61c0d23b6dc0dd0f1ae86357e')
 
 prepare() {
     # build_dist is deprecated
