@@ -1,0 +1,8 @@
+[python-matrix-synapse-shared-secret-auth]
+source = "github"
+github = "devture/matrix-synapse-shared-secret-auth"
+use_max_tag = true
+
+
+prefix = "v"
+
