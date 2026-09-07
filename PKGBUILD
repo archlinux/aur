@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=markflowy-bin
 _pkgname=MarkFlowy
-pkgver=0.90.0
+pkgver=0.100.1
 pkgrel=1
-pkgdesc="Modern markdown editor application, Build fast and efficient workflows.(Prebuilt version)"
+pkgdesc="AI-powered cross-platform editor for WYSIWYG Markdown and general-purpose text editing."
 arch=('x86_64')
-url="https://markflowy.vercel.app/"
+url="https://www.markflowy.cc/"
 _ghurl="https://github.com/drl990114/MarkFlowy"
 license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -17,7 +17,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('82dc350312c0b340def0d2b606a75a644e20ae1bad0d5c9f801ed2f781e562c1')
+sha256sums=('89243bc99182d6e6a7b178c50d6c6a074fd7c950108d8e4b98099e3d3bb269fb')
 prepare() {
     sed -i "s/Development/Utility/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
