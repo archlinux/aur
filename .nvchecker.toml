@@ -1,4 +1,4 @@
 [gnome-shell-extension-tiling-assistant]
 source = "git"
-git = "https://github.com/Leleat/Tiling-Assistant.git"
+git = "https://github.com/ubuntu/Tiling-Assistant.git"
 prefix = "v"

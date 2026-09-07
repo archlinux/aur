@@ -1,19 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Sebastian Wiesner <sebastian@swsnr.de>
-
 pkgname=gnome-shell-extension-tiling-assistant
 _uuid=tiling-assistant@leleat-on-github
 pkgver=54
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME Shell extension which adds a Windows-like snap assist to the GNOME desktop"
 arch=('any')
-url="https://github.com/Leleat/Tiling-Assistant"
+url="https://github.com/ubuntu/Tiling-Assistant"
 license=('GPL-2.0-or-later')
 depends=('gnome-shell')
 makedepends=('git')
 install='tiling-assistant.install'
-source=("git+https://github.com/Leleat/Tiling-Assistant.git#tag=v$pkgver")
+source=("git+https://github.com/ubuntu/Tiling-Assistant.git#tag=v$pkgver")
 sha256sums=('2bc37dfce343b6d96d1dd499151360794c3fd7266956f3bc0b27f1542dd8857e')
 
 build() {
