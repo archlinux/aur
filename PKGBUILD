@@ -1,15 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=2.0.5.r3.gd5c5110
+pkgver=2.0.9.r297.g6beb5e1
 _electronversion=41
 _nodeversion=24.11.1
 pkgrel=1
 pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('any')
-url="https://cherry-ai.com/"
+url="https://cherryai.com/"
 _ghurl="https://github.com/CherryHQ/cherry-studio"
-license=('LicenseRef-custom')
+license=(
+    'AGPL-3.0-or-later'
+    'LicenseRef-custom'
+)
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
@@ -101,12 +104,10 @@ prepare() {
         --pkgdesc="${pkgdesc}" \
         --categories="Utility" \
         --name="${_pkgname}" \
-        --exec="${pkgname%-git} %U"
-    
+        --exec="${pkgname%-git} %U"    
     _set_build_env
     _ensure_local_nvm
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json    
     # Update better-sqlite3 release.json to match system electron version
     sed -i "s/\"electronVersion\": \"[^\"]*\"/\"electronVersion\": \"${SYSTEM_ELECTRON_VERSION}\"/g" \
         scripts/linux-native/release.json
@@ -118,13 +119,11 @@ prepare() {
     sed -i '/const temporaryDir = /,/^}$/c\
   const verified = verifyReleaseArtifact({ artifactPaths, assets, expected })\
   return { ...verified, cached: true, ...artifactPaths }\
-}' scripts/linux-native/download.js
-    
+}' scripts/linux-native/download.js    
     # Patch before-pack.js to skip download-binaries.js (we use system binaries)
     sed -i '/Downloading bundled binaries/,+2c\
   console.log(`Using system binaries for ${platform}-${arch}...`);\
-  // Skip download - using system binaries via symlinks' scripts/before-pack.js
-    
+  // Skip download - using system binaries via symlinks' scripts/before-pack.js    
     # Create placeholder binaries (will be replaced with symlinks in package())
     local _arch_name
     case "${CARCH}" in
@@ -136,8 +135,7 @@ prepare() {
     # Create empty placeholder files (electron-builder needs these to exist during packaging)
     touch "${_binaries_dir}/"{mise,bun,uv,uvx,rg}    
     NODE_ENV=development pnpm install --ignore-scripts
-    NODE_ENV=development pnpm add -w -D node-abi
-    
+    NODE_ENV=development pnpm add -w -D node-abi    
     # Build better-sqlite3 from source and prepare cached artifact
     source "${srcdir}/build-better-sqlite3.sh"
     build_better_sqlite3 "${SYSTEM_ELECTRON_VERSION}" "${CARCH}" "${srcdir}"

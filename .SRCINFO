@@ -1,9 +1,10 @@
 pkgbase = cherry-studio-git
 	pkgdesc = 🍒 Cherry Studio is a desktop client that supports for multiple LLM providers.(Use system-wide electron)
-	pkgver = 2.0.5.r3.gd5c5110
+	pkgver = 2.0.9.r297.g6beb5e1
 	pkgrel = 1
-	url = https://cherry-ai.com/
+	url = https://cherryai.com/
 	arch = any
+	license = AGPL-3.0-or-later
 	license = LicenseRef-custom
 	makedepends = gendesk
 	makedepends = npm
@@ -21,7 +22,7 @@ pkgbase = cherry-studio-git
 	depends = ripgrep
 	depends = uv
 	depends = mise
-	provides = cherry-studio=2.0.5
+	provides = cherry-studio=2.0.9
 	conflicts = cherry-studio
 	source = cherry-studio.git::git+https://github.com/CherryHQ/cherry-studio
 	source = build-better-sqlite3.sh
