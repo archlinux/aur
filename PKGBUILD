@@ -1,31 +1,26 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=eagle-animation-bin
 _pkgname='Eagle Animation'
-pkgver=2.17.2
-_electronversion=43
+pkgver=2.18.3
+_electronversion=44
 pkgrel=1
 pkgdesc="An awesome, free and open-source animation software.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
-url="https://brickfilms.com/"
+url="https://eagle-animation.com/"
 _ghurl="https://github.com/brick-a-brack/eagle-animation"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'ffmpeg'
-    'libexif'
-    'nettle3'
-    'libxml2-legacy'
-    'libtool'
-    'libgphoto2'
     'nodejs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('65868856e7ea35e58279a73bee347cf908b9c913843e4728f7091ea9225be473'
+sha256sums=('6e6f36f2975f71fb35a3bccc1b0b96c9c8662ced701086c5c371d275190bc04d'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
