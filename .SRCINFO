@@ -1,12 +1,14 @@
 pkgbase = alias-tips-git
 	pkgdesc = An oh-my-zsh plugin to help remembering those aliases you defined once
 	pkgver = r121.41cb143
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/djui/alias-tips
 	arch = any
 	license = unknown
 	makedepends = git
 	depends = zsh
+	provides = alias-tips=r121.41cb143
+	conflicts = alias-tips
 	source = git+https://github.com/djui/alias-tips.git
 	sha512sums = SKIP
 
