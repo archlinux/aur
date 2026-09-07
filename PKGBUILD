@@ -2,7 +2,7 @@
 # Contributor: le0nxx <leonlawxx@outlook.sg>
 
 pkgname=motrix-next
-pkgver=3.9.7
+pkgver=3.9.8
 pkgrel=1
 pkgdesc="A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ makedepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5f7ddb6a83d4ce1201aaa9f0e68733a6c1410578a54036e722e320abdc047acd')
+sha256sums=('f54ab3c7c5f322c9c41671590644c7e5755b21f9580c69e91e6392c0d17517f4')
 
 
 prepare() {
@@ -37,6 +37,8 @@ prepare() {
     sed -i '/"createUpdaterArtifacts":/s/true/false/' src-tauri/tauri.conf.json
 
     pnpm install --frozen-lockfile
+    cd src-tauri
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
