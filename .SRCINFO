@@ -1,0 +1,21 @@
+pkgbase = aurcache-worker-docker
+	pkgdesc = Legacy Docker build executor for AURCache (deprecated)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/Lukas-Heiligenbrunner/AURCache
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	optdepends = docker: to run builds against a local daemon
+	optdepends = podman: likewise, via its Docker-compatible socket
+	options = !strip
+	options = !lto
+	options = !debug
+	source = aurcache-worker-docker-0.5.0.tar.gz::https://github.com/Lukas-Heiligenbrunner/AURCache/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = aurcache-worker-docker
