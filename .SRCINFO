@@ -1,0 +1,10 @@
+pkgbase = peazip-context-menu
+	pkgdesc = Dolphin service menu: Extract with PeaZip
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://peazip.github.io/
+	arch = any
+	license = LGPL-3.0-or-later
+	depends = peazip
+
+pkgname = peazip-context-menu
