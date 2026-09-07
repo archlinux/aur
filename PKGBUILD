@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=python-ouroboros-ai
 _name=${pkgname#python-}
-pkgver=0.53.0
+pkgver=0.54.0
 pkgrel=1
 pkgdesc="Specification-first workflow engine for AI coding agents"
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   'python-watchdog: Live skill hot-reload support'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('ee3550aa5444ae4711fa75e7a7a79cb46c060a173ba5ae170b4a7590f335a10d')
+sha256sums=('fbea369d0026d90d59b74f61a5ac53c069390dd6330a4a423fd2e659c439f6bb')
 install=${pkgname}.install
 
 build() {
@@ -62,7 +62,7 @@ package() {
   # Shell completions
   local _site_packages
   _site_packages=$(python -c 'import sysconfig; print(sysconfig.get_path("purelib", vars={"base": "/usr", "platbase": "/usr"}))')
-  export PYTHONPATH="$pkgdir$_site_packages"
+  export PYTHONPATH="$pkgdir$_site_packages${PYTHONPATH:+:$PYTHONPATH}"
   local _ouroboros="$pkgdir/usr/bin/ouroboros"
   _OUROBOROS_COMPLETE=source_bash python "$_ouroboros" > ouroboros.bash
   _OUROBOROS_COMPLETE=source_zsh python "$_ouroboros" > _ouroboros
