@@ -1,0 +1,24 @@
+pkgbase = actionlint-kjanat
+	pkgdesc = Static checker for GitHub Actions workflow files (kjanat fork)
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://actionlint.kjanat.dev
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	optdepends = shellcheck: check shell scripts in run steps
+	optdepends = python-pyflakes: check Python scripts in run steps
+	depends = glibc
+	makedepends = go
+	makedepends = git
+	conflicts = actionlint
+	conflicts = actionlint-bin
+	conflicts = actionlint-git
+	conflicts = actionlint-kjanat-bin
+	provides = actionlint
+	
+	source = https://github.com/kjanat/actionlint/releases/download/v1.15.0/actionlint-1.15.0.tar.gz
+	sha256sums = 9ad8053ca16bf4a56c4aa71a4b374f26f4813a5fee7b9050fdb814bbb38dc102
+	
+pkgname = actionlint-kjanat
