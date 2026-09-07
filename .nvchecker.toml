@@ -1,0 +1,7 @@
+[mautrix-whatsapp-bin]
+source = "github"
+github = "mautrix/whatsapp"
+use_max_tag = true
+
+prefix = "v"
+
