@@ -1,6 +1,9 @@
 # Maintainer: Gryt Chat <sivert@gryt.chat>
+#
+# publish-aur.yml copies this file into the AUR repo on every release and
+# rewrites pkgver, pkgrel and sha256sums, so those three are placeholders.
 pkgname=gryt-chat-bin
-pkgver=1.1.24
+pkgver=1.9.24
 pkgrel=1
 pkgdesc='Gryt Chat — real-time voice chat desktop client'
 arch=('x86_64')
@@ -15,20 +18,14 @@ provides=('gryt-chat')
 conflicts=('gryt-chat')
 options=('!strip' '!debug')
 source=("https://github.com/Gryt-chat/gryt/releases/download/v${pkgver}/Gryt-Chat-${pkgver}-linux-amd64.deb")
-# Update with: updpkgsums
-sha256sums=('SKIP')
+sha256sums=('b7fb0ed8ee0d8528fcdeace330236d0583017d134291984c9acb56848234f440')
 
 package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
 
-  # Fix permissions
   find "${pkgdir}" -type d -exec chmod 755 {} +
 
-  # Desktop file + icon use the correct app ID
-  install -Dm644 "${pkgdir}/usr/share/applications/gryt-chat.desktop" \
-    "${pkgdir}/usr/share/applications/gryt-chat.desktop"
-
-  # Symlink to /usr/bin if not already present
+  # The binary lives in a directory with a space in it, so /usr/bin gets a link.
   install -dm755 "${pkgdir}/usr/bin"
   ln -sf '/opt/Gryt Chat/gryt-chat' "${pkgdir}/usr/bin/gryt-chat"
 }
