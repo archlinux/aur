@@ -106,7 +106,6 @@ pkgbase = strongswan
 	backup = etc/strongswan.d/charon/vici.conf
 	backup = etc/strongswan.d/charon/x509.conf
 	backup = etc/strongswan.d/charon/xauth-eap.conf
-	backup = etc/strongswan.d/charon/xauth-generic.conf
 	backup = etc/strongswan.d/charon/xauth-noauth.conf
 	backup = etc/strongswan.d/charon/xauth-pam.conf
 	backup = etc/strongswan.d/charon/xcbc.conf
