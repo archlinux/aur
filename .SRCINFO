@@ -1,6 +1,6 @@
 pkgbase = dirgo-bin
 	pkgdesc = Fast, local-first directory navigation
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/RudySource/Dirgo
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dirgo-bin
 	provides = dgo
 	conflicts = dirgo
 	options = !strip
-	source_x86_64 = dgo-x86_64-0.8.1.tgz::https://github.com/RudySource/Dirgo/releases/download/v0.8.1/Dirgo-v0.8.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 8649d818bc252a80f11c5060ddb08a9d5bfb496ef8dde186787be7b84504cfb7
+	source_x86_64 = dgo-x86_64-0.8.2.tgz::https://github.com/RudySource/Dirgo/releases/download/v0.8.2/Dirgo-v0.8.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 59d9897f6f0a8a1b149ee28b5bca071c626ee75f3c57ecffedeaa1a7dad1d805
 
 pkgname = dirgo-bin
