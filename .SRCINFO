@@ -1,6 +1,6 @@
 pkgbase = python-torra
 	pkgdesc = Torrent client
-	pkgver = 1.0.42
+	pkgver = 1.0.43
 	pkgrel = 0
 	url = https://github.com/colin-i/tora
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-torra
 	depends = gtk4
 	depends = python-appdirs
 	depends = libtorrent-rasterbar
-	source = https://files.pythonhosted.org/packages/source/t/torra/torra-1.0.42.tar.gz
-	sha256sums = bf5fc84308423f48323c06ef34faf5d49055a571b337304329105034b469a2c0
+	source = https://files.pythonhosted.org/packages/source/t/torra/torra-1.0.43.tar.gz
+	sha256sums = d549c2d10eb5af6223eb14cd406a43750cb6daaa2685f6d75126765465c49618
 
 pkgname = python-torra
