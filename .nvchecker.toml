@@ -1,0 +1,8 @@
+[onionshare-cli]
+source = "github"
+github = "onionshare/onionshare"
+use_max_tag = true
+
+
+prefix = "v"
+
