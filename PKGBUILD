@@ -3,9 +3,9 @@
 _name=tree-sitter-go
 pkgname=python-tree-sitter-go
 pkgver=0.25.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Go grammar for tree-sitter"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter/tree-sitter-go"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
