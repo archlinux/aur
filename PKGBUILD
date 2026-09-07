@@ -11,15 +11,15 @@
 # Linting: shellcheck --shell=bash --exclude=SC2034,SC2148,SC2154 PKGBUILD
 
 pkgname=granola
-pkgver=7.522.2
+pkgver=7.529.3
 pkgrel=1
 pkgdesc="AI notepad for back-to-back meetings, repackaged from the official macOS build"
 arch=('x86_64')
 url="https://www.granola.ai"
 license=('LicenseRef-proprietary')
-_electron=electron42
+_electron=electron44
 # version of the installed $_electron package
-_elver=42.9.3
+_elver=44.2.0
 # version of Granola's bundled better-sqlite3-multiple-ciphers fork
 _bs3ver=12.9.0
 depends=(
@@ -47,9 +47,9 @@ noextract=(
   "granola-$pkgver.dmg"
   "node-v$_elver-headers.tar.gz"
 )
-sha256sums=('6c7c0de3c943babcae4f72897a186cd2a0571b6cf12535f668b04209fe998805'
+sha256sums=('9356b4f3ef261007f6228fc297f0feb61778a586478e5e8632d056ea290901b1'
             'ad8ceb2cfe687e0c106547fdd281f0d20b40688200d04f40bb163afd1f102609'
-            '899a19f5c6b69dc124a83ff473b18a39b6c8f8c703ca2810e3986adf9a69ec08'
+            '7af48d5cb31d906cd578b78c33c2f0a2447be8e1ca4e1cc694520b2addbd853e'
             '22b5217b929a1d184f1f73d5f55fbef6756d5fbcef207da64f188231d38c9c20')
 
 _res="Granola/Granola.app/Contents/Resources"
