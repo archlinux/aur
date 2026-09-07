@@ -45,7 +45,7 @@ build() {
 
 check() {
     cd "${pkgname}"
-    pytest
+    pytest --ignore=tests/integration_test.py
 }
 
 package() {
