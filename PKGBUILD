@@ -2,7 +2,7 @@ pkgname=purelive-bin
 pkgver=3.1.2
 _filever=3.1.2
 _buildnum=4100
-pkgrel=3
+pkgrel=4
 pkgdesc="纯粹直播（Pure Live）基于 Flutter 的开源多平台直播聚合播放器"
 arch=('x86_64')
 url="https://github.com/liuchuancong/pure_live"
@@ -56,11 +56,11 @@ Name[zh_CN]=纯粹直播
 Comment=A third-party live stream aggregator
 Comment[zh_CN]=第三方多平台直播聚合播放器
 Exec=purelive %U
-Icon=pure_live
+Icon=purelive
 Terminal=false
 Type=Application
 Categories=AudioVideo;Network;
-StartupWMClass=purelive
+StartupWMClass=pure_live
 EOF
     # 图标
     install -Dm644 "${srcdir}/data/flutter_assets/assets/icons/icon.png" \
