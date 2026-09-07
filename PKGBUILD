@@ -1,17 +1,21 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folia-major
 _pkgname=Folia
-pkgver=0.7.2
+pkgver=0.7.4
 _electronversion=43
 _nodeversion=24
 pkgrel=1
-pkgdesc="Lyrics Reimagine desktop app.(Use system-wide electron)"
+pkgdesc="Local music/navigation/third-party multi-platform online music player focusing on gorgeous lyrics animation effects."
 arch=('any')
 url="https://folia-site.cielaniska.top/"
 _ghurl="https://github.com/chthollyphile/folia-major"
 license=('AGPL-3.0-only')
 depends=(
     "electron${_electronversion}"
+    'python'
+    'python-numpy'
+    'python-psutil'
+    'ffmpeg'
 )
 makedepends=(
     'npm'
@@ -24,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('72735c6e38590d59d445a6d2bfcd2f3a4f3dfa72da4f9f0b353694a0e19a579d'
+sha256sums=('8cb98a827a9b023b84d3665dce1665764ed2f9dbabcaf0f3d55e687619109416'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -72,14 +76,14 @@ prepare() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     find electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     cp .env.example .env
-    NODE_ENV=development    npm install
+    #NODE_ENV=development    npm install
 }
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	_set_build_env
     _ensure_local_nvm
-    ELECTRON=true NODE_ENV=production     npm run build
-    ELECTRON=true NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
+    #ELECTRON=true NODE_ENV=production     npm run build
+    #ELECTRON=true NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
@@ -87,6 +91,7 @@ package() {
 	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
 	rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
+    ln -sf "/usr/bin/ffmpeg" "${pkgdir}/usr/lib/${pkgname}/ffmpeg/ffmpeg"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packaging/aur/${pkgname}-bin/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
