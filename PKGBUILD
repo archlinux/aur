@@ -2,7 +2,7 @@
 
 pkgbase=libtslitex-git
 pkgname=(libtslitex-git python-libtslitex-git)
-pkgver=0.1.0.r0.g7b0e065
+pkgver=0.1.0.r13.g9422df6
 pkgrel=1
 pkgdesc='This is a C library to interface with the LiteX Firmware on Thunderscope over PCIe'
 arch=($CARCH)
@@ -51,7 +51,7 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -Wno-dev \
+    -Wno-author \
     -B build 
 
   cmake --build build

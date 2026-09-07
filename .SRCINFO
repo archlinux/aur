@@ -1,6 +1,6 @@
 pkgbase = libtslitex-git
 	pkgdesc = This is a C library to interface with the LiteX Firmware on Thunderscope over PCIe
-	pkgver = 0.1.0.r0.g7b0e065
+	pkgver = 0.1.0.r13.g9422df6
 	pkgrel = 1
 	url = https://github.com/EEVengers/libtslitex
 	arch = x86_64
