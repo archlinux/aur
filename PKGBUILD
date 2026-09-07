@@ -4,7 +4,7 @@
 
 pkgname=dpp-git
 _pkgname=DPP
-pkgver=10.1.5.r1.e5eeb464
+pkgver=10.1.6.r6.786ceb2e
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library - git version"
 arch=('x86_64')
@@ -34,7 +34,7 @@ build() {
 	mkdir -p build
 	cd build
 	cmake -DDPP_BUILD_TEST=OFF -DRUN_LDCONFIG=OFF -DDPP_NO_VCPKG=ON -DDPP_USE_EXTERNAL_JSON=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MESSAGE=NEVER -Wno-dev ..
-	make -j
+	make
 }
 
 package() {
