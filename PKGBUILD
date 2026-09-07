@@ -1,7 +1,7 @@
 # Maintainer: Mario Oenning <mo-son at mailbox dot org>
 
 pkgname=pacseek
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('go')
 optdepends=('xdg-utils: open URL on click support'
             'fakeroot: display upgrades support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e42024861153cb8b219feaa75f42a0d7e8392ea7217f49c112e85b7a00e263d6')
+sha256sums=('e18c4af4d1a0f3208a3d5a0c954ad90153f7da2ab2f23b9e17ece660cb872f61')
 
 prepare(){
   cd "$pkgname-$pkgver"
