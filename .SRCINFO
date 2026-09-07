@@ -1,9 +1,10 @@
 pkgbase = python-tree-sitter-kotlin
 	pkgdesc = Kotlin grammar for tree-sitter
 	pkgver = 1.1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/tree-sitter-grammars/tree-sitter-kotlin
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer

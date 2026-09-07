@@ -3,8 +3,8 @@
 _name=tree-sitter-kotlin
 pkgname=python-tree-sitter-kotlin
 pkgver=1.1.0
-pkgrel=8
-arch=('x86_64')
+pkgrel=9
+arch=('x86_64' 'aarch64')
 pkgdesc="Kotlin grammar for tree-sitter"
 url="https://github.com/tree-sitter-grammars/tree-sitter-kotlin"
 license=('MIT')
