@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=kotonoha
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Wayland lyrics overlay for MPRIS-compatible media players"
 provides=(${pkgname})
@@ -41,7 +41,7 @@ makedepends=(
 optdepends=()
 license=('LGPL-2.1-or-later' 'MIT AND ISC')
 source=("${pkgname}::git+${url}.git#tag=v$pkgver")
-sha256sums=('faaac57171f75a045f8b7f4c30eeafa87ee6c4c0f41a23cb26c57094b341212a')
+sha256sums=('fa7471af161d98611eed632e80829cbc44b398b6ec28e4e76d080dacdbeadd85')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
