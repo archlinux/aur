@@ -1,6 +1,6 @@
 pkgbase = skwd-paper-plasma
 	pkgdesc = KDE Plasma wallpaper integration for Skwd Paper
-	pkgver = 1.0.0_beta.8
+	pkgver = 1.0.0_beta.9
 	pkgrel = 1
 	url = https://github.com/liixini/skwd-paper-plasma
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = skwd-paper-plasma
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-tools
-	depends = skwd-paper>=1.0.0_beta.8
+	depends = skwd-paper
 	options = !debug
 	options = !lto
-	source = skwd-paper-plasma-1.0.0~beta.8-1.fc44.src.rpm::https://download.copr.fedorainfracloud.org/results/piixini/skwd-wall-v2/srpm-builds/10952987/skwd-paper-plasma-1.0.0beta.8-1.fc44.src.rpm
-	sha256sums = 3c1faa1f4487c731ed8efec6696731f299e06fc928cc0104b9fd3db332a67701
+	source = skwd-paper-plasma-1.0.0~beta.9-1.fc44.src.rpm::https://download.copr.fedorainfracloud.org/results/piixini/skwd-wall-v2/srpm-builds/10955595/skwd-paper-plasma-1.0.0beta.9-1.fc44.src.rpm
+	sha256sums = 74702b1d2c9a73dec525548ea5bc8cce64fc6ecfeff68741d70f3bbc12b01c9b
 
 pkgname = skwd-paper-plasma
