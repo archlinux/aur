@@ -1,6 +1,6 @@
 pkgbase = widic
 	pkgdesc = A Wiktionary viewer in your terminal.
-	pkgver = 0f34739
+	pkgver = ff289be
 	pkgrel = 1
 	url = https://github.com/matezoltanfarkas/widic
 	arch = any
