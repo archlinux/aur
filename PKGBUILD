@@ -5,9 +5,9 @@
 # Replace these values with your specific application details.
 ###############################################################################
 pkgname=tmog-appimage
-_pkgname=tmog-task-manager
-pkgver=0.1.1
-pkgrel=4
+_pkgname=TaskManagerOG
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="TMOG brings the depth of a serious systems console to a native, focused task manager for macOS, Windows, and Linux.."
 arch=('x86_64')
 url="https://www.tmog.org/"
@@ -16,10 +16,10 @@ provides=('tmog-task-manager')
 conflicts=('tmog-bin')
 
 # The filename as it appears in the download URL (e.g., app-1.0.0-x86_64.AppImage)
-_appimage_filename="TMOG-Task-Manager-Linux-${arch}.AppImage"
+_appimage_filename="TaskManagerOG-${pkgver}-${arch}.AppImage"
 
 # The source URL to download AppImage
-_source_url="https://www.tmog.org/downloads/TMOG-Task-Manager-Linux-x86_64.AppImage?v=${pkgver}-free"
+_source_url="https://www.tmog.org/downloads/TaskManagerOG-${pkgver}-${arch}.AppImage"
 
 # Where the file will live in your system (Standard is /opt/appimages/)
 _install_dir="/opt/appimages"
@@ -50,7 +50,7 @@ options=(!strip)
 # All source files in root directory of PKGBUILD must be listed and with corresponding sha256/md5 sums
 source=("${_source_url}"
         "${_icon_file}")
-sha256sums=('0baf064697d67732800d6315644697ec153b8e506a5173304c85f330b2dbe6d2'
+sha256sums=('a8aa11f5e30a273250bcfb9247cc3117e830d6cffaf502961e93f12b3dd85827'
             '2ddcddba5bf94f076676b42ec6e576cb93c9aa6676e1b1e487b2d4531fc52941'
 )
 
@@ -58,8 +58,6 @@ prepare() {
 
     cd "${srcdir}"
 
-  # Rename the downloaded file to the clean name
-  mv TMOG-Task-Manager-Linux-x86_64.AppImage?v=0.1.1-free TMOG-Task-Manager-Linux-x86_64.AppImage
     
   # 1. Make the AppImage executable and extract it
   chmod +x "${_appimage_filename}"
