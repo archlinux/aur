@@ -1,7 +1,7 @@
 pkgbase = ammo-git
 	pkgdesc = Almost Manual Mod Organizer - The Definitive CLI Mod Manager for Linux
-	pkgver = 0.1.0.r546.3f3e3f1
-	pkgrel = 1
+	pkgver = 0.1.0.r605.35fce7b
+	pkgrel = 2
 	url = https://github.com/cyberrumor/ammo
 	arch = any
 	license = GPL-2.0-only
@@ -10,9 +10,11 @@ pkgbase = ammo-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
+	depends = uv
+	depends = python-installer
 	depends = 7zip
 	provides = ammo
-	source = git+https://github.com/cyberrumor/ammo.git#commit=3f3e3f191173399e87d7980fbb7c23c0f992a243
+	source = git+https://github.com/cyberrumor/ammo.git#commit=35fce7b804022fe34b41d5c0944a33f8517975de
 	sha512sums = SKIP
 
 pkgname = ammo-git
