@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=navop-bin
 _pkgname=Navop
-pkgver=0.15.2
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Navop combines Navigate and Operation—a unified workspace that helps developers navigate and operate databases, servers, terminals, and AI tools from one place. (Prebuilt version)"
 arch=(
@@ -22,8 +22,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tar.gz")
-sha256sums_aarch64=('8986758555a21f82ecb700922cc2fdd686f18a3c477ad61072059d0f53e8cccd')
-sha256sums_x86_64=('14b5b8e0f32d82a7877f93fcde85838abc0a92994b08c2a83fc4bf1ac96e519e')
+sha256sums_aarch64=('515c085db3f1701a6d6d0fbfa58321600bbc2690c557c962a7ffeba1b37e954f')
+sha256sums_x86_64=('c3671e87808d5c9095a11878c69f5a4414ef82ec3789a430c2e707b5db54f7c2')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
