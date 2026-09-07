@@ -1,6 +1,6 @@
 pkgbase = stasis
 	pkgdesc = A modern Wayland idle manager designed for simplicity and effectiveness
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/saltnpepper97/stasis
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = stasis
 	optdepends = pulseaudio: audio sink detection for media handling (alternative to pipewire-pulse)
 	conflicts = stasis-git
 	options = !debug
-	source = stasis-1.6.2.tar.gz::https://github.com/saltnpepper97/stasis/archive/refs/tags/v1.6.2.tar.gz
-	sha256sums = b219959dc15761bbbacc0c707554286cd6f3c5bbefee8ad3de8a2ffc39c46304
+	source = stasis-1.6.3.tar.gz::https://github.com/saltnpepper97/stasis/archive/refs/tags/v1.6.3.tar.gz
+	sha256sums = a12b72f5ad0d557fc1ecd475b0690957452b46b97d7378d7c926fad7bbd5674d
 
 pkgname = stasis
