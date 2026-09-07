@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawx
 _pkgname=ClawX
-pkgver=0.5.5
+pkgver=0.5.6
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -36,7 +36,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('05b8285aae1fa9edaee572943770cf4f2f60c733b86b3331c4e0d7856f1eab9c'
+sha256sums=('3ab7710a6f575ca9709294b0115a282da1b32f694f5712bb2e8f0e3121a0eb32'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
