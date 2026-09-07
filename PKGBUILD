@@ -5,10 +5,10 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=netron-bin
 _pkgname=Netron
-pkgver=9.2.4
+pkgver=9.2.6
 _electronversion=44
 pkgrel=1
-pkgdesc="Visualizer for neural network, deep learning and machine learning models.(Prebuilt version,use system-wide electron)"
+pkgdesc="Visualizer for neural network, deep learning and machine learning models."
 arch=('x86_64')
 url="https://netron.app/"
 _ghurl="https://github.com/lutzroeder/netron"
@@ -25,7 +25,7 @@ source=(
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
 sha256sums=('535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_x86_64=('8118ccd3070b6ce9091f16cd28601afe29aac7be51dd50971ba51b0f2cde9b33')
+sha256sums_x86_64=('e9156431c10cf2372e92b2fa108114365a834f42280307b1ccacec8b6b60eb17')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
