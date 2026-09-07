@@ -1,6 +1,6 @@
 pkgbase = kotsasmin-toolkit-git
 	pkgdesc = A collection of system optimization, security, and media scripts
-	pkgver = r19.75397fc
+	pkgver = r20.e3185c8
 	pkgrel = 1
 	url = https://github.com/Kotsasmin/toolkit
 	arch = any
