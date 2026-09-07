@@ -1,6 +1,6 @@
 pkgbase = skylendar
 	pkgdesc = Powerful and portable astrology program
-	pkgver = 5.1.1
+	pkgver = 5.1.0.1
 	pkgrel = 1
 	url = https://sourceforge.net/projects/skylendar
 	arch = i686
@@ -14,10 +14,11 @@ pkgbase = skylendar
 	depends = qt5-base
 	depends = qt5-svg
 	depends = libstdc++
-	depends = postgresql-libs
+	depends = postgresql
+	depends = hicolor-icon-theme
 	provides = skylendar
 	conflicts = skylendar-bin
-	source = https://sourceforge.net/projects/skylendar/files/skylendar-5.1.1pn.tar.xz
-	sha256sums = a4f58fc3d7b8dd10c7d02b1a2d08e66c6cbf0ddf9309549daa96f5e9b0abe244
+	source = https://sourceforge.net/projects/skylendar/files/skylendar-5.1.0.1pn.tar.xz
+	sha256sums = fa4a424b025f103ca0a1482a0877d7c149be4742cf89ffc82ebb2f6cfb3b2a2d
 
 pkgname = skylendar
