@@ -1,6 +1,6 @@
 # Maintainer: Nils Van Zuijlen <nils.van-zuijlen@mailo.com>
 pkgname=eqonomize-bin
-pkgver=1.5.12
+pkgver=1.5.13
 pkgrel=1
 arch=('x86_64' 'i386')
 pkgdesc="Cross-platform personal accounting software, with focus on efficiency and ease of use for the small household economy."
@@ -16,8 +16,8 @@ source=("eqonomize.desktop::https://raw.githubusercontent.com/Eqonomize/Eqonomiz
         "eqonomize.svg::https://github.com/Eqonomize/Eqonomize/raw/v${pkgver}/data/scalable/eqonomize.svg")
 sha256sums=('cd59b443b26ec8467da50d2cb3e9abf462d254c40404c0d318710d0758fc92ba'
             '0c036f8ac76d77f1493fe9984cc36c0b7760274d2cd4b532b48e6c1fa1b9f589')
-sha256sums_x86_64=('47d736fe86f5338a61b7a2908d69d476ef5d6cdf8582c36888fd0695db5fbbe8')
-sha256sums_i386=('503d2c22a5d8c298bc3341e39dcd61ea8d8d0f3db47839807f74f7072623cf33')
+sha256sums_x86_64=('f9f1483770db969ba8ae106d69d41438d4ae3012384fea5dba48216941851681')
+sha256sums_i386=('9edfffc54c76abbb8b55b4ce78fc9cc08fb1940bc1b5b3fef7acc58456189a5e')
 
 
 package() {
