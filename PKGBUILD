@@ -57,6 +57,7 @@ optdepends=(
 	'ttf-twemoji: An emoji font that will work with WeChat'
 	'libjack.so: libjack_plugin.so'
 	'at-spi2-core: Accessibility in the browser part'
+	'xdg-desktop-portal-impl: XDG Desktop Portal implementation for File Chooser and ScreenCast'
 )
 
 makedepends+=(

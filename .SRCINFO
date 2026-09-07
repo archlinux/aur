@@ -45,6 +45,7 @@ pkgbase = wechat-bin
 	optdepends = ttf-twemoji: An emoji font that will work with WeChat
 	optdepends = libjack.so: libjack_plugin.so
 	optdepends = at-spi2-core: Accessibility in the browser part
+	optdepends = xdg-desktop-portal-impl: XDG Desktop Portal implementation for File Chooser and ScreenCast
 	options = !debug
 	options = !strip
 	source_x86_64 = wechat-x86-4.1.13.9.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb
