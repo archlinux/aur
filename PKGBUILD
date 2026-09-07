@@ -1,12 +1,13 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=posthog-cli
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line interface for PostHog"
 arch=('x86_64' 'aarch64')
 url="https://github.com/PostHog/posthog"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'zlib')
+conflicts=('posthog-cli-bin')
 makedepends=('cargo' 'nodejs>=24' 'pnpm')
 optdepends=('nodejs: required for the posthog-cli api command')
 options=('!lto')
