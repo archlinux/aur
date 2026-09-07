@@ -1,7 +1,7 @@
 # Maintainer: jtaw5649
 pkgname=hyprspaces-tools
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Helper CLI and config automation for the hyprspaces HyprPM plugin"
 arch=('any')
 url='https://gitlab.com/jtaw5649/Hyprspaces'
@@ -14,7 +14,7 @@ optdepends=(
 )
 install=hyprspaces-tools.install
 source=("${url}/-/releases/v${pkgver}/downloads/hyprspaces-${pkgver}.tar.gz")
-sha256sums=('33c76b8010ff855c77553449ce75da4425c4d01b8a64928377329ebe46f3979c')
+sha256sums=('77bd43bddede273688776ec8db58e320c931ae8aa3820f3e0eb4eec15490e357')
 
 package() {
   cd "${srcdir}/hyprspaces"
@@ -43,11 +43,10 @@ package() {
   install -Dm644 scripts/hyprspaces-lib "${scriptdir}/hyprspaces-lib"
   install -Dm644 scripts/hyprspaces_doctor_omarchy.py "${scriptdir}/hyprspaces_doctor_omarchy.py"
 
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/hyprspaces" <<'EOF'
-#!/usr/bin/env bash
-set -euo pipefail
-exec /usr/lib/hyprspaces/scripts/hyprspaces "$@"
-EOF
+  sed -e 's|@HYPRSPACES_WRAPPER_TO_SCRIPT_DIR@|../lib/hyprspaces/scripts|' \
+      -e 's|@HYPRSPACES_WRAPPER_SCRIPT@|hyprspaces|' \
+      templates/hyprspaces-wrapper.sh.in |
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/hyprspaces"
 
   local config
   for config in \
