@@ -1,7 +1,7 @@
 # Contributor: Lex Black <autumn-wind@web.de>
 
 pkgname=python-gvm
-pkgver=27.7.0
+pkgver=27.8.0
 pkgrel=1
 pkgdesc='greenbone-vulnerability-manager tools'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-wheel python-hatchling)
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/greenbone/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha512sums=('f6ab037b7022003e9d2025d8e59c02e63fc2041322e7f9e5828431948a444f26f788c36fd29310e1c6b7a650c3fc10d9019676baa246296f6c42014f4a148933'
+sha512sums=('f373d64c47b14eb166b4a7ce6588785677c22877522946f9430675e196c616fca252213300b683e73c7f80613410f72478295dc4ac93f11a655956d062321b17'
             'SKIP')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # Greenbone Community Feed integrity key
 
