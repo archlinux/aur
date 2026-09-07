@@ -1,9 +1,10 @@
 pkgbase = python-tree-sitter-lua
 	pkgdesc = Lua grammar for tree-sitter
 	pkgver = 0.5.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/tree-sitter-grammars/tree-sitter-lua
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer

@@ -3,9 +3,9 @@
 _name=tree-sitter-lua
 pkgname=python-tree-sitter-lua
 pkgver=0.5.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Lua grammar for tree-sitter"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter-grammars/tree-sitter-lua"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
