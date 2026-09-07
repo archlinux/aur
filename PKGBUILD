@@ -2,7 +2,7 @@
 
 pkgname=edirstat-bin
 _pkgname=edirstat
-pkgver=2.0.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, deduplication, and an interactive treemap GUI. (Precompiled Version)"
 arch=('x86_64')
@@ -29,11 +29,9 @@ source=(
   "${_pkgname}-$pkgver-source.tar.gz::${github_url}/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '43d67703b4b6675b23798f7837db2d1561a7ee939c489b107f7412f6e1e17c1ba2ba024ab891ba93459c461c1366a5084d24543472fe26cebbe87d080d140778'
-  '5cbf9075b721335159eb3317cd3f787ac406fa7c398a2dea114870d362688f67809bbaaede155d8e1ad3a2830c35132ae37a02e24d9dabd60326b2b7e66a02b3'
-  '75c723ad7c0fba7f5c15f7ab89db1a03ce99a0d141637cc1e2c6ba6c481c39f0237423a843ba56a5103ada319c6b3ff83f9ccfa92edb3a83db45474a2e087f0b'
-)
+sha512sums=('3a7fa26c5744965f1c7f215b36a1ea65752bdf41f47a27b0e70bfd4ee361926abd76d981f990bd3d2b0247e2f79ea630a8166c1469c1ed17b8cf4f26decc489a'
+            '5cbf9075b721335159eb3317cd3f787ac406fa7c398a2dea114870d362688f67809bbaaede155d8e1ad3a2830c35132ae37a02e24d9dabd60326b2b7e66a02b3'
+            '2fcf3b1e513c3b22b30f30093e162107ae55b8c8509d94d0f35673151ee362cb9bcbf41f96bb22f122d0d87a2fcdec83f44405ddf7307bfaa0f0b14104ed56d0')
 
 package() {
   # 1. Install the bare binary and rename it to 'edirstat'
