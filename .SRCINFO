@@ -1,6 +1,6 @@
 pkgbase = plezy-bin
 	pkgdesc = Modern client for Plex, Jellyfin and Emby (upstream binary)
-	pkgver = 2.18.0
+	pkgver = 2.19.0
 	pkgrel = 1
 	url = https://plezy.app
 	arch = x86_64
@@ -20,15 +20,15 @@ pkgbase = plezy-bin
 	depends = libxext
 	depends = mesa
 	depends = wayland
-	provides = plezy=2.18.0
+	provides = plezy=2.19.0
 	conflicts = plezy
-	noextract = plezy-bin-2.18.0-x86_64.deb
-	noextract = plezy-bin-2.18.0-aarch64.deb
+	noextract = plezy-bin-2.19.0-x86_64.deb
+	noextract = plezy-bin-2.19.0-aarch64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = plezy-bin-2.18.0-x86_64.deb::https://github.com/edde746/plezy/releases/download/2.18.0/plezy-linux-x64.deb
-	sha256sums_x86_64 = 13145f5fb8637cbe20f33d79f698511c806a0c4454b276580286d0244a2b4b03
-	source_aarch64 = plezy-bin-2.18.0-aarch64.deb::https://github.com/edde746/plezy/releases/download/2.18.0/plezy-linux-arm64.deb
-	sha256sums_aarch64 = 7b91acebcb8b20cd6a7972ba33e2db40f206b4cb6d60eb72a6b75b9473979006
+	source_x86_64 = plezy-bin-2.19.0-x86_64.deb::https://github.com/edde746/plezy/releases/download/2.19.0/plezy-linux-x64.deb
+	sha256sums_x86_64 = 708d00c65689c39322b6023e2705bccac7627b1434bd5e877cf8bb9a07b12d21
+	source_aarch64 = plezy-bin-2.19.0-aarch64.deb::https://github.com/edde746/plezy/releases/download/2.19.0/plezy-linux-arm64.deb
+	sha256sums_aarch64 = a66460be2f1b342cb607a19b168e308df1158ea4bc765e70cbb89ab203dfd4dc
 
 pkgname = plezy-bin
