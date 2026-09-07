@@ -3,12 +3,13 @@
 _pkgname=linear-cli
 pkgname=linear-cli-finesssee
 pkgver=0.3.27
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful CLI for Linear.app built with Rust (by Finesssee)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Finesssee/linear-cli"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
+conflicts=('linear-cli-finesssee-bin')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Finesssee/linear-cli/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('a2714aaf85c18460ca006985984af77d7474dcfd9591569a9d8751a2e34e8f64')
