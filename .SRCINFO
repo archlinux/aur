@@ -15,6 +15,6 @@ pkgbase = seerrng-deb
 	options = !strip
 	options = !emptydirs
 	source = seerrng-deb-3.13.2.deb::https://github.com/snapetech/seerrng/releases/download/v3.13.2/seerrng_3.13.2_amd64.deb
-	sha256sums = ee7ce640098a0d75721ed9b281bf30e7ec9f44f9d056f4f9edfcf8c2585cf8d7
+	sha256sums = e7e926f208a386a5e24a651f98a2fca0dc6d4a0f3a3276375cb58578fb2e46b6
 
 pkgname = seerrng-deb
