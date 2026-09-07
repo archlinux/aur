@@ -6,7 +6,7 @@
 # Yayınlamadan önce: kaynak deposu anonim erişime açık olmalıdır.
 
 pkgname=confsync
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Backs up and restores Linux configuration files in a git repository, with a tray agent'
 arch=('x86_64')
