@@ -1,6 +1,6 @@
 pkgbase = switchhosts-bin
 	pkgdesc = Switch hosts quickly!(Prebuilt version)
-	pkgver = 5.0.1
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = https://switchhosts.app/
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = switchhosts-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = switchhosts=5.0.1
+	provides = switchhosts=5.0.2
 	conflicts = switchhosts
-	source_aarch64 = switchhosts-5.0.1-aarch64.rpm::https://github.com/oldj/SwitchHosts/releases/download/v5.0.1/SwitchHosts-5.0.1-linux-aarch64.rpm
-	sha256sums_aarch64 = 11cb16848d591fe6dfdacc1e386ee75801db6855f106c96ab33317dbd449a525
-	source_x86_64 = switchhosts-5.0.1-x86_64.rpm::https://github.com/oldj/SwitchHosts/releases/download/v5.0.1/SwitchHosts-5.0.1-linux-x86_64.rpm
-	sha256sums_x86_64 = a7a3aff9b003de21e566c05cea1d85ecb9b81e503c6c2a4a04588d282f914e2d
+	source_aarch64 = switchhosts-5.0.2-aarch64.rpm::https://github.com/oldj/SwitchHosts/releases/download/v5.0.2/SwitchHosts-5.0.2-linux-aarch64.rpm
+	sha256sums_aarch64 = 817bfa64932f42f8a376cd2a0c63fbc8e8b14a3b2cbe892371e1f64937f90498
+	source_x86_64 = switchhosts-5.0.2-x86_64.rpm::https://github.com/oldj/SwitchHosts/releases/download/v5.0.2/SwitchHosts-5.0.2-linux-x86_64.rpm
+	sha256sums_x86_64 = 4f4cd60d7dfa6165047ad1ceb7e5af1facc3ca181afeb15be4f96be207bb2846
 
 pkgname = switchhosts-bin

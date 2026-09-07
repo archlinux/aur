@@ -3,7 +3,7 @@
 # Contributor: Berturion@free.fr>
 pkgname=switchhosts-bin
 _pkgname=SwitchHosts
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc='Switch hosts quickly!(Prebuilt version)'
 arch=(
@@ -22,10 +22,10 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
-sha256sums_aarch64=('11cb16848d591fe6dfdacc1e386ee75801db6855f106c96ab33317dbd449a525')
-sha256sums_x86_64=('a7a3aff9b003de21e566c05cea1d85ecb9b81e503c6c2a4a04588d282f914e2d')
+sha256sums_aarch64=('817bfa64932f42f8a376cd2a0c63fbc8e8b14a3b2cbe892371e1f64937f90498')
+sha256sums_x86_64=('4f4cd60d7dfa6165047ad1ceb7e5af1facc3ca181afeb15be4f96be207bb2846')
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
