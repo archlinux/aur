@@ -1,8 +1,9 @@
 pkgbase = lagrange-bin
 	pkgdesc = A Beautiful Gemini Client.(Prebuilt version)
-	pkgver = 1.21.0
+	pkgver = 1.21.1
 	pkgrel = 1
 	url = https://gmi.skyjake.fi/lagrange/
+	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = BSD-3-Clause
@@ -10,17 +11,19 @@ pkgbase = lagrange-bin
 	depends = libdrm
 	depends = libgpg-error
 	depends = mesa
-	provides = lagrange=1.21.0
+	provides = lagrange=1.21.1
 	conflicts = lagrange
 	options = !strip
 	options = !emptydirs
-	source = LICENSE-1.21.0.md::https://raw.githubusercontent.com/skyjake/lagrange/v1.21.0/LICENSE.md
+	source = LICENSE-1.21.1.md::https://raw.githubusercontent.com/skyjake/lagrange/v1.21.1/LICENSE.md
 	source = lagrange.sh
 	sha256sums = d8dd2acc4ba121ca7da3c899c8c443484ab54526ed5933e34fffae2cedb28fbe
 	sha256sums = 574c9abedf1d4ff7d577a1e180faffeab850eb2aa4eaff000946025787185895
-	source_armv7h = lagrange-1.21.0-armv7h.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.21.0/Lagrange-1.21.0-armhf.AppImage
-	sha256sums_armv7h = dab204435f07ee0055827b873d55b910fe66cdcf5290afdd9c39f2d4d8b140b6
-	source_x86_64 = lagrange-1.21.0-x86_64.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.21.0/Lagrange-1.21.0-x86_64.AppImage
-	sha256sums_x86_64 = 68d0d0a73bd2b27d8f737eaffba7248b39bb7616040e8617e1bbf6a846e1d10f
+	source_aarch64 = lagrange-1.21.1-aarch64.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.21.1/Lagrange-1.21.1-aarch64.AppImage
+	sha256sums_aarch64 = 8181fcdd64a893bc8dda78e26ee932cc99c3dc7756796b5792f9dde52d944076
+	source_armv7h = lagrange-1.21.1-armv7h.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.21.1/Lagrange-1.21.1-armhf.AppImage
+	sha256sums_armv7h = f02a791b8ad64977940701ef06c9030b234a882515d9856181af91f6963d9dca
+	source_x86_64 = lagrange-1.21.1-x86_64.AppImage::https://github.com/skyjake/lagrange/releases/download/v1.21.1/Lagrange-1.21.1-x86_64.AppImage
+	sha256sums_x86_64 = 0ebd9055ef77d28b4be282fdbf952c3316240eeea2808a6427d3e39874b3021d
 
 pkgname = lagrange-bin
