@@ -1,6 +1,6 @@
 pkgbase = sorted-photography-git
-	pkgdesc = Rename images and videos to 'mmddyyyy_hhmm_originalfilename' format using exif data and moment-timezones. Working: jpg, png, heic, cr2, mov.(Use system-wide electron)
-	pkgver = 2.0.0.r0.g3a674f4
+	pkgdesc = Rename images and videos to 'mmddyyyy_hhmm_originalfilename' format using exif data and moment-timezones. Working: jpg, png, heic, cr2, mov.
+	pkgver = 2.1.0.r0.g9ffdb8f
 	pkgrel = 1
 	url = https://github.com/trumanjchan/sorted-photography
 	arch = any
@@ -10,14 +10,15 @@ pkgbase = sorted-photography-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
+	makedepends = jq
 	depends = electron36
-	provides = sorted-photography=2.0.0
+	provides = sorted-photography=2.1.0
 	conflicts = sorted-photography
 	source = sorted-photography.git::git+https://github.com/trumanjchan/sorted-photography.git
 	source = sorted-photography.png
 	source = sorted-photography.sh
 	sha256sums = SKIP
 	sha256sums = 428400f9ca36e62132dae382a5f99d467623ee2ed2d814131eb5373085da308b
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = sorted-photography-git
