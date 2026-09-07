@@ -1,6 +1,6 @@
 pkgbase = anidesk-git
 	pkgdesc = The unofficial desktop client side of Anixart's open source mobile app, providing a convenient way to browse anime and get published information.(Use system-wide electron)
-	pkgver = 0.0.1.beta.6.r0.g5d076a7
+	pkgver = 0.0.1.beta.7.r17.g917add3
 	pkgrel = 1
 	url = https://anidesk.ds1nc.ru/
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = anidesk-git
 	makedepends = gendesk
 	makedepends = jq
 	depends = electron39
-	provides = anidesk=0.0.1.beta.6
+	provides = anidesk=0.0.1.beta.7
 	conflicts = anidesk
 	source = anidesk.git::git+https://github.com/theDesConnet/AniDesk.git
 	source = anidesk.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = anidesk-git
