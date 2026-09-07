@@ -16,7 +16,7 @@ sha256sums=('SKIP' 'da872acd5c4c4a047bda1c95f021b9f744e619d8731ef7bd7615f219007e
 pkgver() {
   cd "$srcdir/deepseek-harness"
   local _ver
-  _ver=$(node -p "require('./apps/cli/package.json').version.replace('-rc.', 'rc.')")
+  _ver=$(node -p "require('./apps/cli/package.json').version.replace('-rc.', 'rc.').replace(/-/g, '.')")
   printf '%s.r%s.g%s' "$_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
