@@ -2,7 +2,7 @@
 
 pkgname=gui.for.clash
 _name=GUI.for.Clash
-pkgver=1.26.1
+pkgver=1.27.0
 pkgrel=1
 pkgdesc="GUI.for.Clash Modern A GUI program developed by vue3 + wails."
 arch=($CARCH)
@@ -14,7 +14,6 @@ conflicts=(${pkgname} ${pkgname//./-})
 depends=(
     gdk-pixbuf2
     glib2
-    glibc
     gtk3
     hicolor-icon-theme
     libsoup3
@@ -38,7 +37,7 @@ source=(
     "${pkgname}.sysusers"
     "${pkgname}.install"
 )
-sha256sums=('782a2b627a9fd59a210a0d334861a440ff1819e3bab33d9d8f88ad30db1c358e'
+sha256sums=('a01189e6afa996ea4caa87dc5786ade416e7031567c3336630707d45b5b7b0df'
             'e24b2134498ae4b46b297b637684a66669cb18ed7f0600f7183e4c6d955f785d'
             '9282f9ebf164e1f7f2c312eb2d7eb6f53bb2ce52765a51bfc1999d05846cccf0'
             'adcad01703f4359470a14d2817303ce242fb1cc7d729cdd3da04df642b1ed501')
