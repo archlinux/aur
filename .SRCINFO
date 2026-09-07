@@ -1,16 +1,24 @@
 pkgbase = python-ebcdic
 	pkgdesc = Additional EBCDIC codecs
-	pkgver = 1.1.1
+	pkgver = 2.0.1
 	pkgrel = 1
-	url = https://pypi.org/project/ebcdic
+	url = https://github.com/roskakori/CodecMapper
 	arch = any
-	license = BSD-2-Clause-first-lines
+	license = BSD-2-Clause
+	license = Python-2.0.1
+	checkdepends = python-pytest>=8.4.1
+	makedepends = ant>=1.8
+	makedepends = java-environment>=7
 	makedepends = python-build
+	makedepends = python-flit-core>=3.12
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python
-	source = ebcdic-1.1.1.tar.gz::https://github.com/roskakori/CodecMapper/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = 7a1a77fdc7e87924e42826087bd9c0c4b48b779156c10cabc94eec237739c818
+	depends = python>=3.9
+	source = ebcdic-2.0.1.tar.gz::https://github.com/roskakori/CodecMapper/archive/e125113c9bf056f9cebb622efbb42e1068c5f7d6.tar.gz
+	source = python-3.2.6-LICENSE::https://raw.githubusercontent.com/python/cpython/v3.2.6/LICENSE
+	source = offline-build.patch
+	b2sums = 95d344c34239b2106376298b8e27e760f58f669664c567dd51ba1865689d4347f0fff2aff4e00f8e31a997fe73a8b1a454eba9d38771023e7904c6098c11d94e
+	b2sums = f6b2c25ae67e78737a9f3ed10530d06c69c72b8986dbc47f1a71c067cc8ecf5859265cb2c1c930de051d4d1437a1f7de4568460207eaaed9a259684582a903fa
+	b2sums = f46df38342870d63098b50a9f55b24ce2d04df804ea5724edeb5701eb34c264b2278d37822aa19be27185b351f17cc46eed5cc0948c4d36766b645c7abf6f643
 
 pkgname = python-ebcdic

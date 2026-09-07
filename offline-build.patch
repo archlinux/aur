@@ -1,0 +1,47 @@
+Generate codecs with system Python, without uv or dependency downloads.
+
+Build the wheel separately, allow the compatible Flit 4 backend, and retain the Python license inherited by the generated codec implementation.
+
+--- a/build.xml
++++ b/build.xml
+@@ -91,8 +91,7 @@
+             <!-- <arg value="cp4971" /> --><!-- Unavailable: Greece -->
+             <!-- <arg value="cp9067" /> --><!-- Unavailable: Greece -->
+         </java>
+-        <exec executable="uv" dir="ebcdic/ebcdic" failonerror="true">
+-            <arg value="run"/>
++        <exec executable="python" dir="ebcdic/ebcdic" failonerror="true">
+             <arg value="${basedir}/tools/gencodec.py"/>
+             <arg value="temp"/>
+         </exec>
+@@ -100,12 +99,6 @@
+             <fileset dir="ebcdic/ebcdic" includes="*.mapping, temp"/>
+             <fileset dir="ebcdic/ebcdic/temp"/>
+         </delete>
+-        <exec executable="uv" dir="ebcdic" failonerror="true">
+-            <arg value="build"/>
+-            <arg value="--out-dir"/>
+-            <arg path="${dist}"/>
+-            <arg value="--sdist"/>
+-        </exec>
+     </target>
+ 
+     <target name="list" description="list available encodings" depends="dist">
+--- a/ebcdic/pyproject.toml
++++ b/ebcdic/pyproject.toml
+@@ -17,7 +17,7 @@
+     "Programming Language :: Python :: 3.13",
+     "Programming Language :: Python :: 3.14",
+ ]
+-license = "BSD-2-Clause"
++license = "BSD-2-Clause AND Python-2.0.1"
+ requires-python = ">=3.9"
+ dynamic = ["version"]
+ 
+@@ -40,5 +40,5 @@
+ ignore = ["E741"]
+ 
+ [build-system]
+-requires = ["flit_core>=3.11,<4"]
++requires = ["flit_core>=3.12"]
+ build-backend = "flit_core.buildapi"
