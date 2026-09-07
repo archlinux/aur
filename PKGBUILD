@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-bin
 pkgname=('shelly-bin' 'shelly-flatpak-backend-bin')
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
@@ -17,8 +17,8 @@ source=(
     'shelly-flatpak-integrate'
 )
 
-sha256sums=('8501bb9e7758efe505990f247004c9cb2c014fe625c911c55b7fca0ba8d8af9c'
-            'fa0cf740f0ff323fa30fb9028c7b283ade31e9b9587a0337b7c1694903d94496'
+sha256sums=('8f777209c841d79aafc9cfacd7f54a12fbb5626e4ee05628261b939233bb930c'
+            '1eea0b5b5119fce8ceb4f8fb37cfc5af58ed9dcbe1fae6b89d335a9ef0189410'
             '0aff9177498bd94e90c937076d15ac76116c628ec3504a7c1b8c9ea086336ca6'
             '2cdefd69e5e1a2ecaa9a787ef04137af16d55690361034420f4dfcbb575e8627'
             '05f39f65a0f0797ea8a45b10cb693a197908aec298b2a17422a6d942ad1dee36'
@@ -47,11 +47,11 @@ package_shelly-bin() {
       'json-glib'
   )
   optdepends=(
-      'arch-install-scripts: provision fresh roots for --isolated builds'
       'fish: Fish shell completions'
       'zsh: Zsh shell completions'
       'libstarfish: dependency viewer for arch packages'
       'shelly-flatpak-backend-bin: Flatpak package management support'
+      'util-linux: isolate fresh-root provisioning for --isolated builds'
       'fuse2: run AppImages that require FUSE 2'
   )
 
