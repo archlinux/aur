@@ -6,7 +6,7 @@
 _appname=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-bin"
-pkgver=4.17.1
+pkgver=4.19.0
 pkgrel=1
 pkgdesc='Maintain your Ledger devices'
 license=('MIT')
@@ -18,11 +18,10 @@ options=('!strip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _appimg="ledger-live-desktop-${pkgver}-linux-${arch[0]}.AppImage"
-_license_sha='a04d86c'
 source=("${_appimg}::https://download.live.ledger.com/${_appimg}"
-        "LICENSE-${_license_sha}::https://raw.githubusercontent.com/LedgerHQ/ledger-live/${_license_sha}/apps/ledger-live-desktop/LICENSE")
+        "LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live/refs/tags/%40ledgerhq/live-desktop%40${pkgver}/apps/ledger-live-desktop/LICENSE")
 # https://www.ledger.com/ledger-live/lld-signatures
-sha512sums=('90bea020ace6e787ec74772301c2aa82e95c663aba5ef169dcdc8ba9abb38d45e224281e0df0e47050d0156ed9f0e9385c51c876e90d5fed63766b811312496b'
+sha512sums=('a354f16d82d8d3674284cbbe2396dda90d8d97397950cd3ccf55cfcae74f10bd1d668c5e1a6f224fb13b82d3fb292ca8593c70a8f1cc936ee900444b148de232'
             '915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318')
 
 prepare() {
@@ -57,5 +56,5 @@ package() {
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
 
-  install -Dm644 "LICENSE-${_license_sha}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
