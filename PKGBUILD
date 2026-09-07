@@ -1,15 +1,15 @@
 # Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=looksyk-desktop
 _pkgnameshort=looksyk
-pkgver=1.41.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc="A markdown centric, fast and local personal knowledge platform"
 arch=("x86_64")
 url="https://sebastianrzk.codeberg.page/looksyk"
 license=('AGPL-3.0-or-later')
 groups=()
-depends=(electron glibc bash gcc-libs git fontconfig curl openssl)
-makedepends=(git nodejs-lts-jod npm cargo glibc bash gcc-libs pkgconf gettext)
+depends=(glibc bash gcc-libs git curl openssl glib2 gtk3 libsoup3 webkit2gtk-4.1)
+makedepends=(git nodejs-lts-jod npm cargo glibc bash gcc-libs pkgconf gettext glib2 gtk3 libsoup3 webkit2gtk-4.1)
 checkdepends=(cargo glibc gcc-libs)
 provides=(looksyk looksyk-backend)
 changelog=
@@ -17,49 +17,37 @@ source=("git+https://codeberg.org/sebastianrzk/looksyk#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
-	cd "$_pkgnameshort"
+	cd "$_pkgnameshort" || cd Looksyk
 	cd frontend/looksyk
 	npm install
 	cd ../..
-	cd application-wrapper/Looksyk
-	npm install --allow-git=all
-	cd ../..
+	cargo install tauri-cli --version "^2.0.0" --locked
 }
 
 build() {
-	cd "$_pkgnameshort"
-	cd backend/src-actix
-	CFLAGS+=' -ffat-lto-objects' cargo build --release
+	cd "$_pkgnameshort" || cd Looksyk
+	cd backend/src-tauri
+	CFLAGS+=' -ffat-lto-objects' cargo tauri build --bundles
 	cd ../..
-	cd frontend/looksyk
-	npm run build -- --configuration=production
-	cd ../..
-	cd application-wrapper/Looksyk
-	npm run package
-	cd ..
 }
 
 check() {
-	cd "$_pkgnameshort"
-	cd backend
-	CFLAGS+=' -ffat-lto-objects' cargo test --release
+	cd "$_pkgnameshort" || cd Looksyk
+	cd backend/core
+	CFLAGS+=' -ffat-lto-objects' cargo test --features web-backend
 }
 
 package() {
-	cd "$_pkgnameshort"
+	cd "$_pkgnameshort" || cd Looksyk
 	mkdir -p "${pkgdir}/usr/share/${_pkgnameshort}"
 	install -d "${pkgdir}/usr/share/" "${pkgdir}/usr/bin/" "${pkgdir}/usr/lib/"
 	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgnameshort}/LICENSE"
 
-	cp -r "frontend/looksyk/dist/looksyk/browser/" "${pkgdir}/usr/share/${_pkgnameshort}/static/"
-	install -D -m644 "application-wrapper/Looksyk/out/looksyk-linux-x64/resources/app.asar" "${pkgdir}/usr/share/${_pkgnameshort}/app.asar"
 	install -D -m644 "icon/Looksyk_256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/de.sebastianruziczka.looksyk.png"
 
 	install -D -m644 "application-wrapper/Looksyk.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-	install -D -m755 "backend/target/release/looksyk-backend-server" "${pkgdir}/usr/lib/${_pkgnameshort}/looksyk-backend"
-	install -D -m755 "application-wrapper/looksyk.sh" "${pkgdir}/usr/lib/${_pkgnameshort}/looksyk"
+	install -D -m755 "backend/target/release/src-tauri" "${pkgdir}/usr/lib/${_pkgnameshort}/looksyk"
 	
-	ln -s "/usr/lib/${_pkgnameshort}/looksyk-backend" "${pkgdir}/usr/bin/looksyk-backend"
-	ln -s "/usr/lib/${_pkgnameshort}/looksyk" "${pkgdir}/usr/bin/looksyk"
+	ln -s "/usr/lib/${_pkgnameshort}/looksyk-tauri" "${pkgdir}/usr/bin/looksyk"
 }
