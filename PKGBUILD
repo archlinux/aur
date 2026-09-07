@@ -1,18 +1,47 @@
-# Maintainer: Josh Holmer <jholmer.in@gmail.com>
+# Maintainer: TheFeelTrain <the@feeltra.in>
+# Contributor: Josh Holmer <jholmer.in@gmail.com>
 
-_plug=videotimestamps
-pkgname=python-${_plug}
-pkgver=0.2.1
+pkgname=python-videotimestamps
+_origpkgname=videotimestamps
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Python package: ${_plug}"
-arch=('any')
+pkgdesc="Get video timestamps."
+arch=("x86_64")
 url='https://github.com/moi15moi/VideoTimestamps/'
-license=('MIT')
-depends=('python')
-makedepends=('python-installer')
-source=("https://files.pythonhosted.org/packages/60/14/5036f6dc2457a18d61a8affeca607190167a97d71cf35ba89e06fc246475/videotimestamps-0.2.1-py3-none-any.whl")
-sha256sums=('40a092bbe7fa26e423097ec9743841e3afd6b94c5e7407043a3aedd6c1880015')
+license=("MIT")
+depends=(
+  "ffmpeg"
+  "ffms2-git"
+  "dav1d"
+  "python-xxhash"
+  "xxhash"
+)
+makedepends=(
+  "meson"
+  "meson-python"
+  "python-build"
+  "python-installer"
+  "python-wheel"
+  "python-setuptools"
+  "nanobind"
+  "robin-map"
+)
+source=("https://files.pythonhosted.org/packages/source/v/${_origpkgname}/${_origpkgname}-${pkgver}.tar.gz")
+sha256sums=('a8ace9dcb148656dd552b6fc8d9c817bc2bd5192b4985ff50a0384caf0b835cb')
+
+prepare() {
+  cd "${_origpkgname}-${pkgver}" || exit
+  # Strip the forced static and fallback flags from pyproject.toml
+  sed -i 's/--default-library=static/--default-library=shared/g' pyproject.toml
+  sed -i 's/--wrap-mode=forcefallback/--wrap-mode=default/g' pyproject.toml
+}
+
+build() {
+  cd "${_origpkgname}-${pkgver}" || exit
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  python -m installer --destdir="$pkgdir" "${_plug}-${pkgver}-py3-none-any.whl"
+  cd "${_origpkgname}-${pkgver}" || exit
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
