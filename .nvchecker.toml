@@ -1,0 +1,8 @@
+[vykar-server]
+source = "github"
+github = "borgbase/vykar"
+use_latest_release = true
+
+
+prefix = "v"
+
