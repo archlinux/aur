@@ -1,0 +1,19 @@
+pkgbase = oroboros
+	pkgdesc = Open source astrology software written in Python
+	pkgver = 20260906
+	pkgrel = 1
+	url = https://github.com/Uthopik/oroboros-astrology
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-pyqt5
+	depends = pyswisseph
+	depends = python-pytz
+	depends = python-docutils
+	optdepends = limnoria: IRC bot integration support
+	source = oroboros-20260906.tar.gz::https://github.com/Uthopik/oroboros-astrology/archive/refs/tags/v20260906.tar.gz
+	sha256sums = 09b258c9580f45cca1d71522005be131da9b0fe7caa48a7c381230c2eafe9bfc
+
+pkgname = oroboros
