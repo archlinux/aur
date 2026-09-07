@@ -1,6 +1,6 @@
 pkgbase = tabctl
 	pkgdesc = Command-line browser tab controller with rofi integration for multiple window managers
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/slastra/tabctl
 	install = tabctl.install
@@ -20,7 +20,7 @@ pkgbase = tabctl
 	optdepends = chromium: Chromium browser support
 	optdepends = google-chrome: Chrome browser support
 	options = !debug
-	source = tabctl-2.2.2.tar.gz::https://github.com/slastra/tabctl/archive/v2.2.2.tar.gz
-	sha256sums = 8ef902f8b3e6e65737ad71df3067317d38768f7180be4d82900ac2555ee471bc
+	source = tabctl-2.3.0.tar.gz::https://github.com/slastra/tabctl/archive/v2.3.0.tar.gz
+	sha256sums = 832394e65cbd5419640f6eae1dab159868303e94348436abbc94030449dffc71
 
 pkgname = tabctl
