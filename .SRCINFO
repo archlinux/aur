@@ -1,14 +1,15 @@
 pkgbase = elasticsearch-head-git
 	pkgdesc = A web front end for an elastic search cluster
 	pkgver = 5.0.0.r32.g2d51fec
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mobz/elasticsearch-head
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = npm
 	depends = nodejs
-	provides = elasticsearch-head
+	provides = elasticsearch-head=5.0.0.r32.g2d51fec
+	conflicts = elasticsearch-head
 	source = elasticsearch-head::git+https://github.com/mobz/elasticsearch-head
 	sha256sums = SKIP
 

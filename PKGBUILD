@@ -4,12 +4,13 @@ _pkgname=elasticsearch-head
 
 pkgname=${_pkgname}-git
 pkgver=5.0.0.r32.g2d51fec
-pkgrel=2
+pkgrel=3
 pkgdesc="A web front end for an elastic search cluster"
 arch=('any')
-provides=("elasticsearch-head")
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 url="https://github.com/mobz/${_pkgname}"
-license=('Apache')
+license=('Apache-2.0')
 depends=('nodejs')
 makedepends=('git' 'npm')
 source=("${_pkgname}::git+${url}")
