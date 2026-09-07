@@ -249,29 +249,53 @@ def enable_source_in_control_file(
     url_env: str,
     converter_type: str = "direct",
 ) -> None:
-    if converter_type not in ("direct", "subconverter"):
+    control = load_yaml(path)
+    configured = configure_source_document(
+        control,
+        source_id=source_id,
+        url_env=url_env,
+        converter_type=converter_type,
+    )
+    atomic_write(path, dump_yaml(configured), 0o600)
+
+
+def configure_source_document(
+    control: Any,
+    *,
+    source_id: str,
+    url_env: str,
+    converter_type: str | None = None,
+) -> dict[str, Any]:
+    """Return a control-file copy with one source enabled and safely configured."""
+    if converter_type is not None and converter_type not in (
+        "direct",
+        "subconverter",
+    ):
         raise SubscriptionError(f"不支持的 converter.type：{converter_type}")
 
-    control = load_yaml(path)
     if not isinstance(control, dict) or not isinstance(control.get("sources"), list):
-        raise SubscriptionError("订阅控制文件格式无效，无法启用来源")
+        raise SubscriptionError("订阅控制文件格式无效，无法修改来源")
 
-    for source in control["sources"]:
-        if isinstance(source, dict) and source.get("id") == source_id:
-            source["enabled"] = True
-            source["url_env"] = url_env
-            source.pop("url", None)
-            if converter_type == "subconverter":
-                source["converter"] = {
-                    "type": "subconverter",
-                    "endpoint": "http://127.0.0.1:25500/sub",
-                    "target": "clash",
-                    "allow_remote": False,
-                }
-            else:
-                source["converter"] = {"type": "direct"}
-            atomic_write(path, dump_yaml(control), 0o600)
-            return
+    configured = copy.deepcopy(control)
+    for source in configured["sources"]:
+        if not isinstance(source, dict) or source.get("id") != source_id:
+            continue
+
+        source["enabled"] = True
+        source["url_env"] = url_env
+        source.pop("url", None)
+
+        if converter_type == "subconverter":
+            source["converter"] = {
+                "type": "subconverter",
+                "endpoint": "http://127.0.0.1:25500/sub",
+                "target": "clash",
+                "allow_remote": False,
+            }
+        elif converter_type == "direct":
+            source["converter"] = {"type": "direct"}
+
+        return configured
 
     raise SubscriptionError(f"订阅控制文件中没有来源：{source_id}")
 
@@ -863,6 +887,183 @@ def command_update(args: argparse.Namespace) -> int:
         lock_handle.close()
 
 
+def command_subscription(args: argparse.Namespace) -> int:
+    """Replace the main subscription only after its provider validates successfully."""
+    lock_handle = acquire_lock()
+
+    try:
+        if args.secrets_file is None:
+            raise SubscriptionError("subscription 命令必须使用订阅密钥文件")
+
+        control = load_yaml(args.control_file)
+        if not isinstance(control, dict) or not isinstance(
+            control.get("sources"), list
+        ):
+            raise SubscriptionError("订阅控制文件格式无效，无法修改来源")
+
+        current_source = next(
+            (
+                source
+                for source in control["sources"]
+                if isinstance(source, dict) and source.get("id") == "main"
+            ),
+            None,
+        )
+        if current_source is None:
+            raise SubscriptionError("订阅控制文件中没有来源：main")
+
+        current_converter = current_source.get("converter") or {}
+        if not isinstance(current_converter, dict):
+            raise SubscriptionError("main 来源的 converter 必须是映射")
+        current_converter_type = str(current_converter.get("type", "direct"))
+        if current_converter_type not in ("direct", "subconverter"):
+            raise SubscriptionError(
+                f"main 来源使用了不支持的 converter.type：{current_converter_type}"
+            )
+
+        converter_type = args.converter or current_converter_type
+        subscription_url = args.subscription_url
+        if subscription_url is None:
+            if not sys.stdin.isatty():
+                raise SubscriptionError(
+                    "非交互环境必须使用 --subscription-url 提供新订阅 URL"
+                )
+            log(f"main 来源当前转换类型：{current_converter_type}（默认保持不变）")
+            subscription_url = getpass.getpass(
+                "新订阅 URL（输入不会回显，留空取消）："
+            )
+
+        subscription_url = subscription_url.strip()
+        if not subscription_url:
+            log("已取消，未修改任何文件")
+            return 0
+        if "\n" in subscription_url or "\r" in subscription_url:
+            raise SubscriptionError("订阅 URL 不能包含换行")
+
+        url_env = "MIHOMO_SUB_MAIN"
+        candidate_control = configure_source_document(
+            control,
+            source_id="main",
+            url_env=url_env,
+            converter_type=args.converter,
+        )
+        settings, sources = validate_control_file(candidate_control)
+
+        # 先从原密钥文件载入其他来源，再仅在当前进程中覆盖 main URL。
+        # 候选下载和 Mihomo 校验成功前，不触碰任何正式文件。
+        load_env_file(args.secrets_file)
+        previous_environment_url = os.environ.get(url_env)
+        os.environ[url_env] = subscription_url
+        try:
+            provider_bytes, cache_candidates, _ = build_candidate(
+                settings,
+                sources,
+                strict=True,
+            )
+            validate_with_mihomo(settings, provider_bytes)
+        finally:
+            if previous_environment_url is None:
+                os.environ.pop(url_env, None)
+            else:
+                os.environ[url_env] = previous_environment_url
+
+        if args.dry_run:
+            log(
+                "新订阅下载与配置校验成功；dry-run 模式未修改 URL、控制文件或 provider"
+            )
+            return 0
+
+        home_dir = Path(str(settings.get("home_dir", "/etc/mihomo")))
+        provider_relative = Path(
+            str(settings.get("provider_file", "providers/subscriptions.yaml"))
+        )
+        provider_file = ensure_inside(home_dir, home_dir / provider_relative)
+        state_dir = Path(
+            str(settings.get("state_dir", "/var/lib/mihomo-subscription"))
+        )
+        cache_dir = Path(str(settings.get("cache_dir", state_dir / "cache")))
+
+        original_secrets = (
+            args.secrets_file.read_bytes() if args.secrets_file.exists() else None
+        )
+        original_control = args.control_file.read_bytes()
+        original_provider = (
+            provider_file.read_bytes() if provider_file.exists() else None
+        )
+        original_caches = {
+            source_id: (
+                (cache_dir / f"{source_id}.yaml").read_bytes()
+                if (cache_dir / f"{source_id}.yaml").exists()
+                else None
+            )
+            for source_id in cache_candidates
+        }
+
+        try:
+            set_env_file_value(args.secrets_file, url_env, subscription_url)
+            atomic_write(args.control_file, dump_yaml(candidate_control), 0o600)
+            install_provider(
+                settings,
+                provider_bytes,
+                cache_candidates,
+                dry_run=False,
+            )
+            reload_mihomo(settings, no_reload=args.no_reload)
+        except Exception as exc:
+            log(f"订阅替换失败（{exc}），正在回滚……")
+            rollback_problems: list[str] = []
+
+            for path, original, mode in (
+                (args.secrets_file, original_secrets, 0o600),
+                (args.control_file, original_control, 0o600),
+                (provider_file, original_provider, 0o600),
+            ):
+                try:
+                    if original is None:
+                        path.unlink(missing_ok=True)
+                    else:
+                        atomic_write(path, original, mode)
+                except Exception as rollback_exc:
+                    rollback_problems.append(f"恢复 {path} 失败：{rollback_exc}")
+
+            if original_provider is not None and provider_file.exists():
+                try:
+                    apply_service_group(
+                        provider_file,
+                        str(settings.get("provider_group", "mihomo")),
+                        0o640,
+                    )
+                except Exception as rollback_exc:
+                    rollback_problems.append(
+                        f"恢复 {provider_file} 的权限失败：{rollback_exc}"
+                    )
+
+            for source_id, original in original_caches.items():
+                cache_file = cache_dir / f"{source_id}.yaml"
+                try:
+                    if original is None:
+                        cache_file.unlink(missing_ok=True)
+                    else:
+                        atomic_write(cache_file, original, 0o600)
+                except Exception as rollback_exc:
+                    rollback_problems.append(f"恢复 {cache_file} 失败：{rollback_exc}")
+
+            if rollback_problems:
+                raise SubscriptionError(
+                    "订阅替换失败且回滚不完整：" + "；".join(rollback_problems)
+                ) from exc
+            raise SubscriptionError(
+                "订阅替换失败，已恢复原 URL、控制文件、provider 与缓存；"
+                f"如 Mihomo 已停止请手工重启。原因：{exc}"
+            ) from exc
+
+        log(f"main 订阅已更新；转换类型：{converter_type}")
+        log(f"provider 文件：{provider_file}")
+        return 0
+    finally:
+        lock_handle.close()
+
+
 # reset 时从现有主配置保留的服务器参数白名单。
 # 白名单之外的 DNS、代理组、规则和 provider 定义一律按最新模板重建，
 # 避免把旧配置重新带入，同时自动获得模板新增的安全默认值。
@@ -1285,6 +1486,43 @@ def build_parser() -> argparse.ArgumentParser:
         help="更新成功后不重载 Mihomo",
     )
     update_parser.set_defaults(func=command_update)
+
+    subscription_parser = subparsers.add_parser(
+        "subscription",
+        help="安全修改 main 订阅 URL，校验成功后才替换现有 provider",
+    )
+    subscription_parser.add_argument(
+        "--control-file",
+        type=Path,
+        default=DEFAULT_CONTROL_FILE,
+    )
+    subscription_parser.add_argument(
+        "--secrets-file",
+        type=Path,
+        default=DEFAULT_SECRETS_FILE,
+        help="读取并更新 KEY=value 格式密钥文件",
+    )
+    subscription_parser.add_argument(
+        "--subscription-url",
+        help="新订阅 URL；省略时隐藏式交互输入，命令行传入可能被 shell 历史记录",
+    )
+    subscription_parser.add_argument(
+        "--converter",
+        choices=("direct", "subconverter"),
+        default=None,
+        help="同时修改订阅格式；省略时保留 main 来源当前设置",
+    )
+    subscription_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="只下载和校验新订阅，不修改任何文件",
+    )
+    subscription_parser.add_argument(
+        "--no-reload",
+        action="store_true",
+        help="替换成功后不重载 Mihomo",
+    )
+    subscription_parser.set_defaults(func=command_subscription)
 
     reset_parser = subparsers.add_parser(
         "reset",

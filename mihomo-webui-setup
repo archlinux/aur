@@ -21,6 +21,7 @@ show_help() {
   cat <<'EOF'
 用法：
   mihomo-webui-setup [setup] [mihomo-subscription init 参数]
+  mihomo-webui-setup subscription [mihomo-subscription subscription 参数]
   mihomo-webui-setup update [mihomo-subscription update 参数]
   mihomo-webui-setup reset [--yes] [--dry-run]
 
@@ -38,6 +39,11 @@ show_help() {
 日常手工更新：
   mihomo-webui-setup update
   mihomo-webui-setup update --strict
+
+安全修改 main 订阅（隐藏输入 URL，默认保留现有订阅格式）：
+  mihomo-webui-setup subscription
+  mihomo-webui-setup subscription --converter subconverter
+  mihomo-webui-setup subscription --dry-run
 
 软件包升级后按最新模板重置主配置：
   mihomo-webui-setup reset            # 显示保留与重置的项目并确认
@@ -190,11 +196,11 @@ main() {
   fi
 
   local command=setup
-  if [[ ${1-} == setup || ${1-} == update || ${1-} == reset ]]; then
+  if [[ ${1-} == setup || ${1-} == subscription || ${1-} == update || ${1-} == reset ]]; then
     command=$1
     shift
   elif [[ -n ${1-} && ${1-} != -* ]]; then
-    die "未知子命令：$1（支持 setup、update、reset）"
+    die "未知子命令：$1（支持 setup、subscription、update、reset）"
   fi
 
   if (( EUID != 0 )); then
@@ -202,6 +208,12 @@ main() {
   fi
 
   [[ -x "$SUBSCRIPTION_COMMAND" ]] || die "找不到 $SUBSCRIPTION_COMMAND"
+
+  if [[ $command == subscription ]]; then
+    log "安全修改 main 订阅"
+    "$SUBSCRIPTION_COMMAND" subscription "$@"
+    return 0
+  fi
 
   if [[ $command == update ]]; then
     log "更新订阅"
