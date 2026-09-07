@@ -1,7 +1,7 @@
 # Maintainer: Máté Zoltán Farkas <mail@example.com>
 
 pkgname=widic
-pkgver=ff289be
+pkgver=0.1
 pkgrel=1
 pkgdesc="A Wiktionary viewer in your terminal."
 arch=('any')
@@ -18,11 +18,11 @@ depends=(
 source=("git+https://github.com/matezoltanfarkas/widic.git#branch=main")
 b2sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/widic"
-  git describe --long --tags --always |
-    sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+# pkgver() {
+#   cd "$srcdir/widic"
+#   git describe --long --tags --always |
+#     sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+# }
 
 package() {
   cd "$srcdir/widic"
