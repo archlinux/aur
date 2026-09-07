@@ -1,6 +1,6 @@
 pkgbase = val
 	pkgdesc = an arbitrary precision calculator language
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/terror/val
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = val
 	depends = libgcc_s.so
 	depends = mpfr
 	depends = libmpfr.so
-	source = https://github.com/terror/val/archive/0.4.1/val-0.4.1.tar.gz
-	sha256sums = 35bf83f2b9095a12959a1b18aee2712a73bcd0079ba9592cd144b18d4ec38262
+	source = https://github.com/terror/val/archive/0.4.2/val-0.4.2.tar.gz
+	sha256sums = aebc39725080e445a694b594812c3a1d1c58f88ad8efefc83d72619abc3c33a2
 
 pkgname = val
