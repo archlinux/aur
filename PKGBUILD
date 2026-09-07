@@ -4,7 +4,7 @@
 pkgname=python-boltons
 pkgver=26.1.0
 _commit=1d525271754ed7aea7f2347ed16ddbcedb1097a3
-pkgrel=1
+pkgrel=2
 pkgdesc="Functionality that should be in the standard library. Like builtins, but Boltons."
 url="https://github.com/mahmoud/boltons"
 license=('BSD-3-Clause')
@@ -14,10 +14,6 @@ makedepends=('uv' 'git' 'python-installer')
 checkdepends=('python-pytest')
 source=("git+https://github.com/mahmoud/boltons.git#commit=$_commit")
 sha512sums=('SKIP')
-
-prepare() {
-  cd boltons
-}
 
 build() {
   cd boltons
