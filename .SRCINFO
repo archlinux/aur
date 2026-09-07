@@ -1,6 +1,6 @@
 pkgbase = pfs3
 	pkgdesc = PFS3 (Amiga Professional File System III) tools
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/metaneutrons/pfs3
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pfs3
 	license = LGPL-3.0-or-later
 	makedepends = cargo
 	makedepends = pkgconf
-	source = pfs3-0.1.5.tar.gz::https://github.com/metaneutrons/pfs3/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = c0e79bf2382bfc118aff936e875b35606d7aa94466e5fcda97b72c9bbc7bb3cb
+	source = pfs3-0.1.6.tar.gz::https://github.com/metaneutrons/pfs3/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = 28513a597a9bfb2b134419f13b14db1e3a50f69fb05f1604442a29d4c7e91737
 
 pkgname = pfs3
