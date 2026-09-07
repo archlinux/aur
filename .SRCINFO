@@ -1,6 +1,6 @@
 pkgbase = pipelab-bin
 	pkgdesc = A visual tool to create task automation workflows.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.42.2
+	pkgver = 1.42.3
 	pkgrel = 1
 	url = https://pipelab.app/
 	arch = x86_64
@@ -10,16 +10,15 @@ pkgbase = pipelab-bin
 	depends = python
 	depends = python-typing_extensions
 	depends = python-packaging
-	depends = python-pkg_resources
 	depends = nodejs
-	provides = pipelab=1.42.2
+	provides = pipelab=1.42.3
 	conflicts = pipelab
 	options = !emptydirs
 	options = !strip
-	source = pipelab-1.42.2-x86_64.zip::https://github.com/CynToolkit/pipelab/releases/download/v1.42.2/Pipelab-linux-x64-1.42.2.zip
-	source = LICENSE-1.42.2.md::https://raw.githubusercontent.com/CynToolkit/pipelab/v1.42.2/LICENSE.md
+	source = pipelab-1.42.3-x86_64.zip::https://github.com/CynToolkit/pipelab/releases/download/v1.42.3/Pipelab-linux-x64-1.42.3.zip
+	source = LICENSE-1.42.3.md::https://raw.githubusercontent.com/CynToolkit/pipelab/v1.42.3/LICENSE.md
 	source = pipelab.sh
-	sha256sums = 4722a0790398f7f54f4e8194ea70adef01b6d39f8377bf969ff027d87b7ca14e
+	sha256sums = e10440f248ab392043eb0a23c793660353292dfaf8d5714c911fb68a2c7b02e5
 	sha256sums = 92ddb84a1531980e4142c76f4936b1ff8ea132777df206d4bf6da123c094f8f4
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
