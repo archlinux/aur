@@ -1,6 +1,6 @@
 # Maintainer: Radu Macocian <radu@macocian.com>
 pkgname=omni-shell
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Quickshell status bar, notification center and control center for Hyprland, with weather, clipboard history and an integrated omni-launcher."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://git.macocian.com/radumaco/omni-shell"
 license=('GPL-3.0-or-later')
 depends=('quickshell' 'qt6-declarative' 'omni-launcher' 'bash' 'curl' 'python'
   'cliphist' 'wl-clipboard' 'libpulse' 'brightnessctl' 'bluez-utils'
-  'networkmanager' 'libnotify')
+  'networkmanager' 'libnotify' 'hyprlock')
 optdepends=('hyprland: workspaces module and layer rules'
   'satty: screenshot notification actions'
   'wifitui: TUI handoff for enterprise Wi-Fi networks'
@@ -18,7 +18,7 @@ optdepends=('hyprland: workspaces module and layer rules'
   'wf-recorder: screen recording indicator'
   'nvidia-utils: GPU usage and temperature on NVIDIA cards')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5ef3f76178eaf2b34fd67161b06c32626e55c42657d806597d0fc48885a86736')
+sha256sums=('bc0bec8c042d5bd12ce0db8b25df74c49c13a8aa76cdd0634e2ffd7c64fc65c3')
 
 package() {
   cd "$srcdir/$pkgname"
