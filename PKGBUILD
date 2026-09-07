@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rewaita
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="A tool for recoloring GTK4/LibAdwaita apps to popular color schemes."
 arch=('any')
@@ -22,7 +22,7 @@ depends=(
 makedepends=('meson')
 optdepends=('adw-gtk-theme: GTK3 support')
 source=("Rewaita-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8c7d69bf4e135513420a6e850fda7c704456e4a9186bc6464866de70aa27f160')
+sha256sums=('8b6a9a9c591c9f4cb74c5c4cd8fe3d731d22a707299b0857ac2e8e2a30153874')
 
 build() {
   arch-meson "Rewaita-$pkgver" build
