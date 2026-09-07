@@ -1,0 +1,45 @@
+#!/bin/sh
+# resolvconf shim for NEService 10.3.6+
+#
+# NEService gates all of its DNS registration on a probe in
+# service/pkg/netconf.resolver:
+#
+#     exec.Command("resolvconf", "--version")   // stdout+stderr captured
+#     -> hasResolvConf = strings.Contains(out, "openresolv")
+#
+# systemd-resolvconf's resolvconf is a compat alias for resolvectl and reports
+# "systemd NNN (...)", so the probe fails and NEService silently falls back to
+# writing /etc/resolv.conf inside a private mount namespace. The tunnel then
+# comes up with no DNS servers, no search domains and no default route on the
+# link, which is invisible to the rest of the system.
+#
+# The probe is the only thing that fails. Every call NEService actually makes
+# -- "resolvconf -a IFACE <FILE" and "resolvconf -d IFACE" -- is natively
+# supported by systemd-resolvconf. So this shim rewrites only the --version
+# banner and delegates everything else, unmodified, to the real binary.
+#
+# Real openresolv already satisfies the probe and is passed through untouched.
+
+set -eu
+
+real=/usr/bin/resolvconf
+
+if [ ! -x "$real" ]; then
+    echo "${0##*/}: $real is missing or not executable" >&2
+    exit 127
+fi
+
+if [ "${1-}" = "--version" ]; then
+    if ! out=$("$real" --version 2>&1); then
+        printf '%s\n' "$out" >&2
+        exit 1
+    fi
+    case $out in
+        *openresolv*) printf '%s\n' "$out" ;;
+        *) printf 'openresolv 3.16.1 (NetExtender compat shim over: %s)\n' \
+               "$(printf '%s\n' "$out" | head -n 1)" ;;
+    esac
+    exit 0
+fi
+
+exec "$real" "$@"

@@ -1,6 +1,6 @@
 --- netextender.old/NEService.service	2026-04-08 22:55:10.000000000 -0400
-+++ netextender.new/NEService.service	2026-06-18 16:36:11.700128650 -0400
-@@ -2,9 +2,9 @@
++++ netextender.new/NEService.service	2026-09-07 12:00:00.000000000 -0400
+@@ -2,9 +2,14 @@
  Description=SonicWall NetExtender Service
  
  [Service]
@@ -10,6 +10,11 @@
 +PIDFile=/run/NEService.pid
 +ExecStartPre=/bin/rm -f /run/NEService.pid
 +ExecStart=/opt/netextender/NEService
++# NEService 10.3.6+ only registers DNS with resolvconf when
++# "resolvconf --version" mentions openresolv; systemd-resolvconf reports
++# "systemd NNN" and is rejected. /opt/netextender/bin holds a shim that
++# corrects the banner and delegates everything else to the real binary.
++Environment=PATH=/opt/netextender/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
  Restart=on-failure
  KillMode=process
  

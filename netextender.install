@@ -11,4 +11,9 @@ post_upgrade() {
     echo
     echo "NetExtender no longer uses pppd. If you had run 'chmod u+s /usr/bin/pppd'"
     echo "for an earlier version, you may now revert it with 'chmod u-s /usr/bin/pppd'."
+    echo
+    echo "NEService.service now puts a resolvconf shim on PATH, working around a"
+    echo "10.3.6 probe that rejects systemd-resolvconf and left the tunnel with no"
+    echo "DNS servers, search domains or default route. Pick it up with:"
+    echo "    systemctl daemon-reload && systemctl try-restart NEService"
 }
