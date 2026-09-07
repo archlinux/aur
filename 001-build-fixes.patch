@@ -1,0 +1,284 @@
+diff --git a/IfcPlusPlus/CMakeLists.txt b/IfcPlusPlus/CMakeLists.txt
+index 5f2c41d5b..cf32fa842 100644
+--- a/IfcPlusPlus/CMakeLists.txt
++++ b/IfcPlusPlus/CMakeLists.txt
+@@ -79,7 +79,7 @@ if (MSVC)
+ 	set_source_files_properties(src/ifcpp/IFC4X3/TypeFactory.cpp PROPERTIES COMPILE_FLAGS /bigobj)
+ endif()
+ 
+-add_library(IfcPlusPlus STATIC ${IFCPP_SOURCE_FILES})
++add_library(IfcPlusPlus SHARED ${IFCPP_SOURCE_FILES})
+ 
+ TARGET_INCLUDE_DIRECTORIES(IfcPlusPlus
+     PRIVATE
+diff --git a/IfcPlusPlus/src/ifcpp/geometry/ConverterOSG.h b/IfcPlusPlus/src/ifcpp/geometry/ConverterOSG.h
+index 1e2000009..97037a744 100644
+--- a/IfcPlusPlus/src/ifcpp/geometry/ConverterOSG.h
++++ b/IfcPlusPlus/src/ifcpp/geometry/ConverterOSG.h
+@@ -649,7 +649,7 @@ public:
+ 
+ 				}
+ 				else {
+-					std::cout << __FUNCTION__ "UINT_MAX exceeded";
++					std::cout << __FUNCTION__ << " UINT_MAX exceeded";
+ 				}
+ 
+ 				
+diff --git a/examples/LoadFileExample/src/main.cpp b/examples/LoadFileExample/src/main.cpp
+index 2aa0c76e7..33459af74 100644
+--- a/examples/LoadFileExample/src/main.cpp
++++ b/examples/LoadFileExample/src/main.cpp
+@@ -242,7 +242,7 @@ int main()
+ 	std::cout << "Loading IFC model: ";
+ 	step_reader->loadModelFromFile( "example.ifc", ifc_model);
+ 	shared_ptr<GeometrySettings> geom_settings(new GeometrySettings());
+-	shared_ptr<GeometryConverter> geometry_converter(new GeometryConverter(ifc_model));
++	shared_ptr<GeometryConverter> geometry_converter(new GeometryConverter(ifc_model, geom_settings));
+     geometry_converter->getGeomSettings() = geom_settings;
+ 	geometry_converter->setMessageCallBack(std::bind(&MessageHandler::slotMessageWrapper, &mh, std::placeholders::_1));
+ 	
+@@ -262,7 +262,7 @@ int main()
+ 	geometry_converter->convertGeometry();
+ 
+ 	// 3: get a flat map of all loaded IFC entities with geometry:
+-	const std::map<std::string, shared_ptr<ProductShapeData> >& map_entities = geometry_converter->getShapeInputData();
++	const std::unordered_map<std::string, shared_ptr<ProductShapeData> >& map_entities = geometry_converter->getShapeInputData();
+ 	shared_ptr<ProductShapeData> shapeDataIfcProject;
+ 
+ 	for (auto it : map_entities)
+diff --git a/examples/SimpleViewerExampleQt/CMakeLists.txt b/examples/SimpleViewerExampleQt/CMakeLists.txt
+index c6671a8f8..5be5fd609 100644
+--- a/examples/SimpleViewerExampleQt/CMakeLists.txt
++++ b/examples/SimpleViewerExampleQt/CMakeLists.txt
+@@ -25,6 +25,7 @@ ENDIF()
+ FIND_PACKAGE(Qt6Core REQUIRED)
+ FIND_PACKAGE(Qt6Widgets REQUIRED)
+ FIND_PACKAGE(Qt6OpenGL REQUIRED)
++FIND_PACKAGE(Qt6OpenGLWidgets REQUIRED)
+ ADD_DEFINITIONS(-DUNICODE)
+ ADD_DEFINITIONS(-D_UNICODE)
+ ADD_DEFINITIONS(-DIFCQUERY_STATIC_LIB)
+@@ -52,6 +53,8 @@ SET(IFCPPVIEWER_SOURCE_FILES
+     src/viewer/GraphicsWindowQt.cpp
+     src/viewer/IntersectionHandler.cpp
+ 	src/viewer/Orbit3DManipulator.cpp
++    src/viewer/ViewController.cpp
++    src/viewer/ViewerUtil.cpp
+     src/viewer/ViewerWidget.cpp
+ )
+ 
+@@ -62,6 +65,7 @@ SET(IFCPPVIEWER_MOC_FILES
+     src/gui/MainWindow.h
+     src/gui/OpenFileWidget.h
+     src/gui/SettingsWidget.h
++    src/viewer/Orbit3DManipulator.h
+     src/viewer/ViewerWidget.h
+ )
+ 
+@@ -85,7 +89,8 @@ target_link_libraries(SimpleViewerExampleQt
+         Qt6::Core
+         Qt6::Gui
+         Qt6::Widgets
+-        Qt6::OpenGL)
++        Qt6::OpenGL
++        Qt6::OpenGLWidgets)
+ 		
+ If(UNIX)
+     # ON Debian Stretch with cmake 3.7.2 OPENTHREADS_LIBRARY_DEBUG is a not known variable
+@@ -138,6 +143,8 @@ TARGET_INCLUDE_DIRECTORIES(SimpleViewerExampleQt
+     ${OSGGA_INCLUDE_DIR}
+     ${OSGDB_INCLUDE_DIR}
+     ${OSGUTIL_INCLUDE_DIR}
++    ${OSGFX_INCLUDE_DIR}
++    ${OSGSIM_INCLUDE_DIR}
+     ${OSGANIMATION_INCLUDE_DIR}
+     ${OSGTEXT_INCLUDE_DIR}
+ 	${Qt6Core_INCLUDE_DIRS}
+diff --git a/examples/SimpleViewerExampleQt/src/IfcPlusPlusSystem.cpp b/examples/SimpleViewerExampleQt/src/IfcPlusPlusSystem.cpp
+index cc30c849c..05af0f355 100644
+--- a/examples/SimpleViewerExampleQt/src/IfcPlusPlusSystem.cpp
++++ b/examples/SimpleViewerExampleQt/src/IfcPlusPlusSystem.cpp
+@@ -198,7 +198,7 @@ void IfcPlusPlusSystem::setObjectSelected( shared_ptr<BuildingEntity> ifc_object
+ 
+ 			std::unordered_map<std::string, shared_ptr<BuildingEntity> > map_objects;
+ 			map_objects[guid] = ifc_object;
+-			emit( signalObjectsSelected( map_objects ) );
++			( signalObjectsSelected( map_objects ) );
+ 		}
+ 	}
+ 	else
+@@ -216,7 +216,7 @@ void IfcPlusPlusSystem::setObjectSelected( shared_ptr<BuildingEntity> ifc_object
+ 		}
+ 		std::unordered_map<std::string, shared_ptr<BuildingEntity> > map_objects;
+ 		map_objects[guid] = ifc_object;
+-		emit( signalObjectsUnselected( map_objects ) );
++		( signalObjectsUnselected( map_objects ) );
+ 	}
+ }
+ 
+@@ -233,20 +233,20 @@ void IfcPlusPlusSystem::clearSelection()
+ 
+ void IfcPlusPlusSystem::notifyModelCleared()
+ {
+-	emit( signalModelCleared() );
++	( signalModelCleared() );
+ }
+ 
+ void IfcPlusPlusSystem::notifyModelLoadingStart()
+ {
+-	emit( signalModelLoadingStart() );
++	( signalModelLoadingStart() );
+ }
+ 
+ void IfcPlusPlusSystem::notifyModelLoadingDone()
+ {
+-	emit( signalModelLoadingDone() );
++	( signalModelLoadingDone() );
+ }
+ 
+ void IfcPlusPlusSystem::notifyCursorCoordinates(double x, double y, double z)
+ {
+-	emit(signalCursorCoordinates(x, y, z));
++	(signalCursorCoordinates(x, y, z));
+ }
+diff --git a/examples/SimpleViewerExampleQt/src/gui/IfcTreeWidget.cpp b/examples/SimpleViewerExampleQt/src/gui/IfcTreeWidget.cpp
+index 75b2f27ec..c3b848afc 100644
+--- a/examples/SimpleViewerExampleQt/src/gui/IfcTreeWidget.cpp
++++ b/examples/SimpleViewerExampleQt/src/gui/IfcTreeWidget.cpp
+@@ -156,7 +156,7 @@ void IfcTreeWidget::slotTreeWidgetItemDoubleClick( QTreeWidgetItem* item, int co
+ 	}
+ 
+ 	m_block_selection_signals = true;
+-	emit( signalZoomToObject(it_find->second) );
++	( signalZoomToObject(it_find->second) );
+ 	m_block_selection_signals = false;
+ }
+ 
+diff --git a/examples/SimpleViewerExampleQt/src/gui/MainWindow.cpp b/examples/SimpleViewerExampleQt/src/gui/MainWindow.cpp
+index b8d9b93e2..646b6d965 100644
+--- a/examples/SimpleViewerExampleQt/src/gui/MainWindow.cpp
++++ b/examples/SimpleViewerExampleQt/src/gui/MainWindow.cpp
+@@ -210,7 +210,7 @@ void MainWindow::closeEvent( QCloseEvent *event )
+ 	m_openFileWidget->closeEvent( event );
+ 	QMainWindow::closeEvent( event );
+ 
+-	emit( signalMainWindowClosed() );
++	( signalMainWindowClosed() );
+ }
+ 
+ void MainWindow::resizeEvent(QResizeEvent* event)
+diff --git a/examples/SimpleViewerExampleQt/src/gui/OpenFileWidget.cpp b/examples/SimpleViewerExampleQt/src/gui/OpenFileWidget.cpp
+index d27fc65a4..e7d27325c 100644
+--- a/examples/SimpleViewerExampleQt/src/gui/OpenFileWidget.cpp
++++ b/examples/SimpleViewerExampleQt/src/gui/OpenFileWidget.cpp
+@@ -484,7 +484,7 @@ void OpenFileWidget::progressValue(double progress_value_in, const std::string&
+ 	{
+ 		return;
+ 	}
+-	emit(signalProgressValue(progress_value_in, progress_type));
++	(signalProgressValue(progress_value_in, progress_type));
+ }
+ 
+ void OpenFileWidget::clearTxtOut()
+@@ -516,7 +516,7 @@ void OpenFileWidget::slotLoadRecentIfcFileClicked()
+ 	QCoreApplication::removePostedEvents(this);
+ 	progressValue(1.0, "");
+ 	m_stopSignals = true;
+-	emit(signalClearSignalQueue());
++	(signalClearSignalQueue());
+ 
+ 	m_io_widget->setDisabled(false);
+ }
+diff --git a/examples/SimpleViewerExampleQt/src/gui/SettingsWidget.cpp b/examples/SimpleViewerExampleQt/src/gui/SettingsWidget.cpp
+index d614b2188..890f761e4 100644
+--- a/examples/SimpleViewerExampleQt/src/gui/SettingsWidget.cpp
++++ b/examples/SimpleViewerExampleQt/src/gui/SettingsWidget.cpp
+@@ -186,7 +186,7 @@ void SettingsWidget::paintEvent(QPaintEvent* event)
+ void SettingsWidget::slotAutoHideFileWidget(int state)
+ {
+ 	bool autoHide = state == Qt::Checked;
+-	emit(signalAutoHideFileWidget(autoHide));
++	(signalAutoHideFileWidget(autoHide));
+ 	QSettings settings(QSettings::UserScope, QLatin1String("IfcPlusPlus"));
+ 	settings.setValue("AutoHideFileWidget", autoHide);
+ }
+diff --git a/examples/SimpleViewerExampleQt/src/viewer/IntersectionHandler.cpp b/examples/SimpleViewerExampleQt/src/viewer/IntersectionHandler.cpp
+index cf0339580..3e2aa6319 100644
+--- a/examples/SimpleViewerExampleQt/src/viewer/IntersectionHandler.cpp
++++ b/examples/SimpleViewerExampleQt/src/viewer/IntersectionHandler.cpp
+@@ -27,7 +27,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OU
+ #include <osg/MatrixTransform>
+ #include <osg/Hint>
+ #include <osgViewer/View>
+-#include <osgFx/Scribe>
++#include <osgFX/Scribe>
+ #include <osgText/Text>
+ 
+ #include <ifcpp/model/BuildingModel.h>
+diff --git a/examples/SimpleViewerExampleQt/src/viewer/Orbit3DManipulator.cpp b/examples/SimpleViewerExampleQt/src/viewer/Orbit3DManipulator.cpp
+index 5df18b130..93702b665 100644
+--- a/examples/SimpleViewerExampleQt/src/viewer/Orbit3DManipulator.cpp
++++ b/examples/SimpleViewerExampleQt/src/viewer/Orbit3DManipulator.cpp
+@@ -26,7 +26,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OU
+ #include <osg/MatrixTransform>
+ #include <osg/Hint>
+ #include <osgViewer/View>
+-#include <osgFx/Scribe>
++#include <osgFX/Scribe>
+ #include <osgText/Text>
+ 
+ #include <ifcpp/model/BuildingModel.h>
+@@ -264,7 +264,7 @@ void Orbit3DManipulator::setTransformation( const osg::Vec3d& eye, const osg::Ve
+ 	m_eye.set( eye );
+ 	m_lookat.set( center );
+ 	m_up.set( up );
+-	emit( signalEyeLookatChanged() );
++	( signalEyeLookatChanged() );
+ }
+ 
+ void Orbit3DManipulator::getTransformation( osg::Vec3d& eye, osg::Vec3d& center, osg::Vec3d& up ) const
+@@ -278,7 +278,7 @@ void Orbit3DManipulator::setEyeLookat( const osg::Vec3d& eye, const osg::Vec3d&
+ {
+ 	m_eye.set( eye );
+ 	m_lookat.set( lookat );
+-	emit( signalEyeLookatChanged() );
++	( signalEyeLookatChanged() );
+ }
+ 
+ void Orbit3DManipulator::setRotateCenter( const osg::Vec3d& center )
+@@ -727,7 +727,7 @@ void Orbit3DManipulator::rotateCamera( float dx, float dy )
+ 		m_eye.set( m_rotate_center + center_eye_new );
+ 		m_lookat.set( m_rotate_center + center_lookat_new );
+ 
+-		emit( signalEyeLookatChanged() );
++		( signalEyeLookatChanged() );
+ 	}
+ };
+ 
+@@ -758,7 +758,7 @@ void Orbit3DManipulator::panCamera( const float dx, const float dy, const osgGA:
+ 	
+ 			m_pan_start = m_pan_end;
+ 		}
+-		emit( signalEyeLookatChanged() );
++		( signalEyeLookatChanged() );
+ 	}
+ }
+ 
+@@ -771,7 +771,7 @@ void Orbit3DManipulator::zoomCamera( const float dy )
+ 	m_eye += osg::Vec3d( zoom_direction.x, zoom_direction.y, zoom_direction.z );
+ 	m_lookat += osg::Vec3d( zoom_direction.x, zoom_direction.y, zoom_direction.z );
+ 
+-	emit( signalEyeLookatChanged() );
++	( signalEyeLookatChanged() );
+ }
+ 
+ ////////////////////////////////////////////////////// animation //////////////////////////////////////////////////////////////////
+@@ -795,7 +795,7 @@ void Orbit3DManipulator::applyAnimationStep( const double currentProgress, const
+ 	m_eye.set( new_eye );
+ 	m_lookat.set( new_lookat );
+ 	m_up.set( new_up );
+-	emit( signalEyeLookatChanged() );
++	( signalEyeLookatChanged() );
+ }
+ 
+ 
