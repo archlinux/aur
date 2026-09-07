@@ -1,0 +1,27 @@
+pkgbase = mactahoe-plasma-theme-git
+	pkgdesc = Mactahoe KDE theme by vinceliuice. This package includes plasma and gtk themes, icons and cursors.
+	pkgver = r29.cbf6a1f
+	pkgrel = 1
+	url = https://github.com/vinceliuice/MacTahoe-kde
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = sassc
+	depends = plasma-workspace
+	depends = kwin
+	depends = kvantum
+	provides = mactahoe-plasma-theme
+	conflicts = mactahoe-plasma-theme
+	conflicts = mactahoe-icon-theme
+	conflicts = mactahoe-cursor-theme
+	conflicts = mactahoe-gtk-theme
+	options = !strip
+	options = !debug
+	source = mactahoe-plasma-theme::git+https://github.com/vinceliuice/MacTahoe-kde.git
+	source = mactahoe-icon-theme::git+https://github.com/vinceliuice/MacTahoe-icon-theme.git
+	source = mactahoe-gtk-theme::git+https://github.com/vinceliuice/MacTahoe-gtk-theme.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mactahoe-plasma-theme-git
