@@ -1,0 +1,7 @@
+[make-lvm-snapshot]
+source= "gitlab"
+gitlab = "Marcool04/make-lvm-snapshot"
+use_max_tag = true
+
+prefix = "v"
+
