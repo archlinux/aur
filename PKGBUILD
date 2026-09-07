@@ -2,7 +2,7 @@
 
 pkgname=certora-prover-bin
 _prover_dir=/usr/share/certora-prover
-pkgver=8.19.1
+pkgver=8.19.2
 pkgrel=1
 pkgdesc="Certora Prover verification engine, run locally by certora-cli instead of Certora's cloud"
 arch=('any')
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-bin}")
 options=('!debug')
 noextract=("certora-prover-${pkgver}.jar")
 source=("certora-prover-${pkgver}.jar::https://github.com/Certora/CertoraProver/releases/download/${pkgver}/certora-prover-${pkgver}.jar")
-sha256sums=('d3bfc7ac3dc6bfab1fa760c65d8bce34c77a2809d5bc9604f709b57ef1e8a73f')
+sha256sums=('34c26358d2ed6783ffd1cd1242de92ce437d25446a4093dddddff569105d55f3')
 
 latestver() {
     gh api --paginate repos/Certora/CertoraProver/releases --jq \
