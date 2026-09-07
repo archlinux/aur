@@ -1,6 +1,6 @@
 pkgbase = commanderdog
 	pkgdesc = Multi-Tab Web & Desktop File Commander - By Woofson
-	pkgver = 0.7.8
+	pkgver = 0.7.9
 	pkgrel = 1
 	url = https://github.com/Woofson/commanderdog
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = commanderdog
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	options = !lto
-	source = commanderdog-0.7.8.tar.gz::https://github.com/Woofson/commanderdog/archive/refs/tags/v0.7.8.tar.gz
-	sha256sums = b3da4e396214c88a3130d292bd190304acd36c4a4c10787fd96c0e720d5c48e3
+	source = commanderdog-0.7.9.tar.gz::https://github.com/Woofson/commanderdog/archive/refs/tags/v0.7.9.tar.gz
+	sha256sums = 34cb68019b1686940801a61c312cf3452417441dcabfbe19e761d15233155aa5
 
 pkgname = commanderdog
