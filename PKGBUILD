@@ -3,9 +3,9 @@
 _name=tree-sitter-java
 pkgname=python-tree-sitter-java
 pkgver=0.23.5
-pkgrel=8
+pkgrel=9
 pkgdesc="Java grammar for tree-sitter"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter/tree-sitter-java"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
