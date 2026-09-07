@@ -1,6 +1,6 @@
 pkgbase = verifpal-bin
 	pkgdesc = Cryptographic protocol analysis for real-world protocols.
-	pkgver = 1.4.3
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://verifpal.com
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = verifpal-bin
 	license = custom:cc-by-nc-nd-4.0
 	provides = verifpal
 	conflicts = verifpal
-	source = https://github.com/symbolicsoft/verifpal/releases/download/v1.4.3/verifpal_1.4.3_linux_amd64.zip
-	source = verifpal-bin-1.4.3-manual.pdf::https://static.verifpal.com/manual.pdf
-	source = verifpal-bin-1.4.3-manual-license.txt::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt
-	sha256sums = 23ec5e28ba0ef5a5aef3ede37bebb31c82c9fcf802212265f5bbc08770989ee6
-	sha256sums = ee4ce91c1323be1077bb3f0c2680953996df09b37001105647959bca3a1820e1
+	source = https://github.com/symbolicsoft/verifpal/releases/download/v1.4.6/verifpal_1.4.6_linux_amd64.zip
+	source = verifpal-bin-1.4.6-manual.pdf::https://static.verifpal.com/manual.pdf
+	source = verifpal-bin-1.4.6-manual-license.txt::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt
+	sha256sums = d38e6ebaa0c3089b0c55b4d914dd8c3e9d3baff80c6ad547a9156aa24e2fa0b0
+	sha256sums = aca50e95ac9e649ef164b5178b7fbdb4a4ecbcf922a9afa8f89b630d7cbdff84
 	sha256sums = 38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea
 
 pkgname = verifpal-bin
