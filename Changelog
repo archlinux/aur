@@ -1,9 +1,12 @@
 -------------------------------------------------------
  Changelog    : netcheck
- Tags         : 1.9.1 ➙ 1.10.1
+ Tags         : 1.9.1 ➙ 1.11.0, origin/master
               : 2025-10-13 ➙ 2026-01-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-01-06   : 1.11.0, origin/master
+              - update Docs/Changelogs
 
  2026-01-06   : 1.10.1
               - PKGBUILD small change
