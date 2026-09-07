@@ -3,9 +3,9 @@
 _name=tree-sitter-fortran
 pkgname=python-tree-sitter-fortran
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fortran grammar for tree-sitter"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/stadelmanma/tree-sitter-fortran"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
