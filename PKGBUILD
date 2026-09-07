@@ -1,6 +1,6 @@
-# Maintainer: avscs <avscs@proton.me>
+# Maintainer: taxin-404 <taxin404@duck.com>
 pkgname=bclone-bin
-pkgver=1.73.3
+pkgver=1.75.2
 pkgrel=1
 pkgdesc="rclone with Alist, Alldebrid, iCloud Photos, Teldrive and Terabox support"
 arch=(x86_64 aarch64 armv7h)
@@ -15,9 +15,9 @@ source_aarch64=("${url}/releases/download/v${pkgver}/rclone-v${pkgver}-linux-arm
 source_armv7h=("${url}/releases/download/v${pkgver}/rclone-v${pkgver}-linux-arm-v7.zip")
 source_x86_64=("${url}/releases/download/v${pkgver}/rclone-v${pkgver}-linux-amd64.zip")
 sha256sums=("SKIP")
-sha256sums_aarch64=("ec74c86c78edb5f84d230e20d44ec353270b5ba2644ec97fe4c39b4fe1c97b9b")
-sha256sums_armv7h=("06b62f6fc68a00f146fafa2648e28770faa8e0dcc6ce554aa604c19b7ab4a385")
-sha256sums_x86_64=("0d23270f03e546c5e9f4e71304b1202f8a3e989490f619b2a7c514ea817c7cd2")
+sha256sums_aarch64=("d5e41aac1ac6a8906adc5da681e0435a6e106a964008185da316ba0bf200c9c8")
+sha256sums_armv7h=("40000b10f7703767f10508d35670b2c1f0a9d09774e483b2b9c557d43772f76f")
+sha256sums_x86_64=("52f426f6a2411291b9fdc9894e18bb01193762ead9fd20d55c05e2a691cbae32")
 
 prepare() {
 	cd $(find . -type d -regex ".*/rclone-v${pkgver}-linux-\(amd64\|arm64\|arm-v7\)")
