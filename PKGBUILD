@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgbase=xjtutoolbox
 pkgname=xjtutoolbox
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="仙交百宝箱：西安交通大学一站式校园服务工具（混合依赖模式：Official + AUR + Venv）"
 arch=('any')
@@ -30,7 +30,12 @@ depends=(
     'python-tqdm'
     'python-pytz'
     'python-markdown'
+    'python-pygments'
     'python-colorama'
+    'python-platformdirs'
+    'python-packaging'
+    'python-psutil'
+    'python-typing_extensions'
     'libnotify'
     'qt5-base'
     'qt5-svg'
@@ -38,13 +43,14 @@ depends=(
     'python-fake-useragent'
     'python-plyer'
     'python-darkdetect'
+    'python-xcffib'
 )
 
 makedepends=('git' 'python-pip')
 provides=("${pkgbase}")
 conflicts=("${pkgbase}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/yan-xiaoo/XJTUToolBox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a15dda40dfff0b314fe1b1398bc100e842fdeaebc58dd2b24e67e5f602619129')
+sha256sums=('23c48f0299ac119c3219ca79d659ca921abfd5f3441e653713f137444926b681')
 
 package() {
   cd "XJTUToolBox-${pkgver}"
