@@ -1,0 +1,17 @@
+pkgbase = masume-bin
+	pkgdesc = A database client for the terminal
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/turanmahmudov/masume
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = masume
+	conflicts = masume
+	options = !strip
+	source_x86_64 = masume-x86_64-0.0.1.tgz::https://github.com/turanmahmudov/masume/releases/download/v0.0.1/masume_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 52c6bb7902e289591bb15d30141fff894de849dc4ff191b332fc793ad8c8cade
+	source_aarch64 = masume-aarch64-0.0.1.tgz::https://github.com/turanmahmudov/masume/releases/download/v0.0.1/masume_0.0.1_linux_amd64.tar.gz
+	sha256sums_aarch64 = 52c6bb7902e289591bb15d30141fff894de849dc4ff191b332fc793ad8c8cade
+
+pkgname = masume-bin

@@ -1,0 +1,5 @@
+[masume-bin]
+source = "github"
+github = "turanmahmudov/masume"
+use_latest_release = true
+prefix = "v"
