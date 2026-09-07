@@ -1,6 +1,5 @@
 [eggdrop]
-source = "github"
-github = "eggheads/eggdrop"
-use_max_tag = true
+source = "git"
+git = "https://github.com/eggheads/eggdrop.git"
 prefix = "v"
 exclude_regex = ".*(rc).*"
