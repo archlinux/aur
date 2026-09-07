@@ -1,7 +1,8 @@
 # Maintainer: Amro Emad <korialo001 at gmail dot com>
 
 pkgname=p5.js
-pkgver=v2.3.2
+pkgver=v2.3.3
+_pkgver=${pkgver#v}
 pkgrel=1
 pkgdesc="p5.js is a client-side JS platform that empowers artists, designers, students, and anyone to learn to code and express themselves creatively on the web. It is based on the core principles of Processing. (Full library)"
 arch=("any")
@@ -10,23 +11,23 @@ license=("LGPL-2.1-only")
 makedepends=(
     "git"
     "npm")
-source=("git+https://github.com/processing/p5.js#tag=$pkgver")
-sha256sums=('15440184bb7ea782d81eb22b0635e1a119346b1240f2df0675c41ccaea56b5a6')
+source=("https://github.com/processing/p5.js/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('11a89f996bf4f5675e6c7b8401b38a78ef5f16d1bbff50a9557fdb40389098fc')
 
 prepare() {
-    cd "${pkgname}"
+    cd "${pkgname}-${_pkgver}"
   
     npm ci --cache "${srcdir}/npm-cache"
 }
 
 build() {
-    cd "${pkgname}"
+    cd "${pkgname}-${_pkgver}"
 
     npm run build
 }
 
 package() {
-    cd "${pkgname}"
+    cd "${pkgname}-${_pkgver}"
 
     install -Dm644 "license.txt" -t "${pkgdir}/usr/share/licenses/${pkgname%.*}"
     
