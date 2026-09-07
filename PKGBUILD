@@ -2,12 +2,12 @@
 pkgdesc="XDE .desktop entry helpers"
 pkgname=xde-helpers
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL')
 url="http://github.com/bbidulock/xde-helpers"
 groups=('xde')
-depends=('xde-icons' 'xdg-utils' 'gxmessage-gtk2' 'desktop-file-utils')
+depends=('xde-icons' 'xdg-utils' 'gxmessage' 'desktop-file-utils')
 install=${pkgname}.install
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.lz")
 md5sums=('2005f967612f50077c378941af1b3977')
