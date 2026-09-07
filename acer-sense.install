@@ -4,8 +4,11 @@ post_install() {
     modprobe ec_sys write_support=1 2>/dev/null || true
 
     # 2. Активация системных служб управления вентиляторами и порогом зарядки
+    rm -f /etc/systemd/system/acer-fans.service 2>/dev/null || true
     systemctl daemon-reload 2>/dev/null || true
+    systemctl reset-failed acer-fans.service 2>/dev/null || true
     systemctl enable --now acer-fans.service 2>/dev/null || true
+    systemctl restart acer-fans.service 2>/dev/null || true
     systemctl enable --now acer-battery.service 2>/dev/null || true
 
     # 3. Автоматическая настройка биндингов Hyprland для всех пользователей
@@ -18,7 +21,7 @@ post_install() {
         fi
     done
 
-    echo ":: [Acer Sense] Установка успешно завершена (v2.4)."
+    echo ":: [Acer Sense] Установка успешно завершена (v2.6)."
     echo ":: [Acer Sense] Системные службы acer-fans.service и acer-battery.service активированы."
     echo ":: [Acer Sense] Биндинги клавиш (Fn+F для питания и XF86Launch6 для микрофона) настроены."
 }
