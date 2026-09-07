@@ -2,7 +2,7 @@
 # Auto-updated by GitHub Actions (see .github/workflows/opencode2-bin.yml)
 
 pkgname=opencode2-bin
-pkgver=0.0.0_beta_19192
+pkgver=0.0.0_beta_19213
 pkgrel=1
 pkgdesc='The AI coding agent built for the terminal.'
 arch=('aarch64' 'x86_64')
@@ -22,9 +22,9 @@ _npmver="${pkgver//_/-}"
 # entries below (hex sha512, derived from the npm `dist.integrity` field).
 # Everything else here is static — do not hand-merge this file from a template.
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tgz::https://registry.npmjs.org/@opencode-ai/cli-linux-x64/-/cli-linux-x64-${_npmver}.tgz")
-sha512sums_x86_64=('e1e590ab80d19644cf0408e919d8c83a499d1559bbed36b17450fea531bda412dcbea3c4a30e7a04d8df11d3aa67c678fb77f7f4a8e5b7c952bdc20383af57a0')
+sha512sums_x86_64=('ef694cda4a28e98eeb25c64db9fdd11315b1afad4bbe70c6b575b628b71a6dbc10e16ce385ec6a28281a8ed32daa5c7ba80a53f2afa45873613e45ac50388c61')
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tgz::https://registry.npmjs.org/@opencode-ai/cli-linux-arm64/-/cli-linux-arm64-${_npmver}.tgz")
-sha512sums_aarch64=('17ef4c75b91efc31a630296f334be071969b029fca25ea135cefe856cdd26c240f74673e440a98c6b4c6553299b7db7b67f114056f2fa635677e342de5c1fc21')
+sha512sums_aarch64=('60630b95ccf5d219fcaaab89561d45d11fdf0b056175ad617b104f0c95e9c088be1d96608e2faa95a4a9b07b53c5a6e5a895d814eb93d93c5faf01791025f6d4')
 
 package() {
   install -Dm755 "$srcdir/package/bin/opencode2" "$pkgdir/usr/bin/opencode2"
