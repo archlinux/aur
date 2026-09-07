@@ -3,11 +3,11 @@
 _pkgname=nimf
 pkgname=nimf-libhangul-git
 pkgver=1.4.19.r0.gefe873d
-pkgrel=1
+pkgrel=2
 pkgdesc="Nimf is a lightweight, fast and extensible input method framework. (libhangul only)"
 arch=('any')
 url="https://github.com/hamonikr/nimf"
-license=('LGPL3')
+license=('LGPL-3.0-or-later')
 depends=(
 	'glib2'
 	'libxklavier'
@@ -17,7 +17,6 @@ depends=(
 )
 makedepends=(
 	'git'
-	'gcc'
 	'intltool'
 	'gtk-doc'
 	'gtk2'
