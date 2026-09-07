@@ -1,0 +1,11 @@
+[Unit]
+Description=Languagetool HTTP server
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/languagetool --http --allow-origin "*"
+DynamicUser=yes
+
+[Install]
+WantedBy=multi-user.target
