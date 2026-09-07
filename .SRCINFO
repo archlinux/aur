@@ -1,7 +1,7 @@
 pkgbase = shorin-dms-niri-git
 	pkgdesc = Shorin DMS Niri desktop environment (Core Configs & Installer)
 	pkgver = r4.0dabc1d
-	pkgrel = 22
+	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/shorin-dms-niri
 	arch = any
 	license = GPL

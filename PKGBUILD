@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-dms-niri-git
 pkgver=r4.0dabc1d
-pkgrel=22
+pkgrel=1
 pkgdesc="Shorin DMS Niri desktop environment (Core Configs & Installer)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-dms-niri"
@@ -78,7 +78,7 @@ package() {
         exit 1
     fi
 
-    if [[ -f "README-DMS.txt" ]]; then
-        install -Dm644 "README-DMS.txt" "$pkgdir/usr/share/doc/shorin-dms-niri/README-DMS.txt"
+    if [[ -f "README-DMS.md" ]]; then
+        install -Dm644 "README-DMS.md" "$pkgdir/usr/share/doc/shorin-dms-niri/README-DMS.md"
     fi
 }
