@@ -1,7 +1,7 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=apifox
-pkgver=2.8.45
+pkgver=2.8.46
 pkgrel=1
 pkgdesc='API documentation, debugging, mocking, and automated testing tool'
 arch=('x86_64')
@@ -51,7 +51,7 @@ source=(
   'apifox.desktop'
 )
 sha256sums=(
-  '150370746271beeb73a23c73100f2672053dec95f145f6a3a63eebc9f40c5e8c'
+  '2bb6b678596aa61a67fd6e05e6f8426f41e36aa0df16ff5bd3c0329523056c79'
   '86dbe67fed5b4159d14ed5c3cdf1415714f8a48033ad9f8f0debfae704de35ca'
 )
 
