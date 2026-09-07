@@ -3,9 +3,9 @@
 _name=tree-sitter-verilog
 pkgname=python-tree-sitter-verilog
 pkgver=1.0.3
-pkgrel=8
+pkgrel=9
 pkgdesc="Verilog grammar for tree-sitter"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter/tree-sitter-verilog"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
