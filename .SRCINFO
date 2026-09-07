@@ -1,0 +1,12 @@
+pkgbase = mixxxdb
+	pkgdesc = Tool for manipulating the Mixxx database.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://codeberg.org/SamWhited/mixxxdb
+	arch = any
+	license = BSD-2-Clause
+	makedepends = go
+	source = mixxxdb-0.0.1.zip::https://codeberg.org/SamWhited/mixxxdb/archive/v0.0.1.zip
+	sha256sums = 65fb30d744d51594315f9e3c291b2ced71d122ffe0add0bd1e25e2090605f721
+
+pkgname = mixxxdb
