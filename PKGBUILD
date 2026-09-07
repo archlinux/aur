@@ -1,10 +1,10 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=picot
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 # Keep in sync with scripts/pi-version.json; prepare() fails the build on drift.
-_pi_ver=0.84.4
+_pi_ver=0.85.1
 pkgdesc="Local Codex-style desktop GUI for the Pi coding agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shixin-guo/picot"
@@ -24,6 +24,7 @@ depends=(
 )
 makedepends=(
     'bun'
+    'nodejs'
     'rust'
     'cargo'
     'pkgconf'
@@ -38,9 +39,9 @@ options=('!lto' '!debug')
 _pi_relurl="https://github.com/earendil-works/pi-mono/releases/download/v${_pi_ver}"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bb136349913e8340c9a74b4e0740ed8001c18462504da77cf3fd1081b4a91af1')
-sha256sums_x86_64=('c2f3c3e6a1850bd87654cc3ca8811013272397c3d042a4e2a64c43ee1b423972')
-sha256sums_aarch64=('135580f6b942151646e67b8b866d987d28ce3cff5a497030775ddd29659f943d')
+sha256sums=('e38a158218bb73a0eafd21cd8d14783e0d17cbe8aad1544dfa54b9a1179c6d65')
+sha256sums_x86_64=('494e498f47d74d21f40b3386f6a5e921a3d49531a169cab55bbdaca0ea1fe25a')
+sha256sums_aarch64=('042d20ae885ee4f3b102815f3280b962c377b2e9fb44de4037908cc530eae4d4')
 source_x86_64=("pi-linux-x64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-x64.tar.gz")
 source_aarch64=("pi-linux-arm64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-arm64.tar.gz")
 
