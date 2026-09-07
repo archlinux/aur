@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lerxu-bin
 _pkgname=Lerxu
-pkgver=3.1.0_Beta8
+pkgver=3.1.0
 _electronversion=43
 pkgrel=1
 pkgdesc="A modern download manager powered by the XferCore engine."
@@ -21,15 +21,15 @@ makedepends=(
     'asar'
 )
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/MochengCK/Lerxu/v${pkgver//_/-}/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/MochengCK/Lerxu/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('20dacc67c2a2c4764adad4bcb3115b3a0420970cbb82d27bc71e3d2ce22bc1d2'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('ec30c0e3d94eabfc7f9578475e9a3ae8eb0b624662968145649f67271e603994')
-sha256sums_x86_64=('d1b4ef3fa7a9c87de3f4506f42eb7e2f3dd1febe9cc04c2486daf8037b2084a4')
+sha256sums_aarch64=('d81695129ff6a524884aa2b021196e8f712d3114f4915ece0a16172df8a263bd')
+sha256sums_x86_64=('2e02db1d282bface5876cd22a15da15cc2bc3434992e398e41face1c522971f9')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }

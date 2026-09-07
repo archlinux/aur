@@ -1,6 +1,6 @@
 pkgbase = lerxu-bin
 	pkgdesc = A modern download manager powered by the XferCore engine.
-	pkgver = 3.1.0_Beta8
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/MochengCK/Lerxu
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = lerxu-bin
 	makedepends = asar
 	depends = electron43
 	depends = ffmpeg
-	provides = lerxu=3.1.0_Beta8
+	provides = lerxu=3.1.0
 	conflicts = lerxu
-	source = LICENSE-3.1.0_Beta8::https://raw.githubusercontent.com/MochengCK/Lerxu/v3.1.0-Beta8/LICENSE
+	source = LICENSE-3.1.0::https://raw.githubusercontent.com/MochengCK/Lerxu/v3.1.0/LICENSE
 	source = lerxu.sh
 	sha256sums = 20dacc67c2a2c4764adad4bcb3115b3a0420970cbb82d27bc71e3d2ce22bc1d2
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = lerxu-3.1.0_Beta8-aarch64.deb::https://github.com/MochengCK/Lerxu/releases/download/v3.1.0-Beta8/lerxu_3.1.0-Beta8_arm64.deb
-	sha256sums_aarch64 = ec30c0e3d94eabfc7f9578475e9a3ae8eb0b624662968145649f67271e603994
-	source_x86_64 = lerxu-3.1.0_Beta8-x86_64.deb::https://github.com/MochengCK/Lerxu/releases/download/v3.1.0-Beta8/lerxu_3.1.0-Beta8_amd64.deb
-	sha256sums_x86_64 = d1b4ef3fa7a9c87de3f4506f42eb7e2f3dd1febe9cc04c2486daf8037b2084a4
+	source_aarch64 = lerxu-3.1.0-aarch64.deb::https://github.com/MochengCK/Lerxu/releases/download/v3.1.0/lerxu_3.1.0_arm64.deb
+	sha256sums_aarch64 = d81695129ff6a524884aa2b021196e8f712d3114f4915ece0a16172df8a263bd
+	source_x86_64 = lerxu-3.1.0-x86_64.deb::https://github.com/MochengCK/Lerxu/releases/download/v3.1.0/lerxu_3.1.0_amd64.deb
+	sha256sums_x86_64 = 2e02db1d282bface5876cd22a15da15cc2bc3434992e398e41face1c522971f9
 
 pkgname = lerxu-bin
