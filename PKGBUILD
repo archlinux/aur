@@ -1,7 +1,7 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname="mixxxdb"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Tool for manipulating the Mixxx database."
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=(
   go
 )
 source=("${pkgname}-${pkgver}.zip::https://codeberg.org/SamWhited/${pkgname}/archive/v${pkgver}.zip")
-sha256sums=('65fb30d744d51594315f9e3c291b2ced71d122ffe0add0bd1e25e2090605f721')
+sha256sums=('c51cc881366789638a5d241decb290daf93cfde9becbaa57c896b7c742de5b7e')
 
 prepare() {
   cd "${pkgname}"
