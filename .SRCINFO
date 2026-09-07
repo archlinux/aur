@@ -1,5 +1,5 @@
 pkgbase = database-kit-git
-	pkgdesc = A database management toolset, providing an intuitive graphical interface to manage database connections, execute commands, and edit configuration files.(Use system-wide electron)
+	pkgdesc = A database management toolset, providing an intuitive graphical interface to manage database connections, execute commands, and edit configuration files.
 	pkgver = 0.0.2.r2.g1411897
 	pkgrel = 1
 	url = https://github.com/zhuyongqi-master/database-kit
@@ -10,12 +10,13 @@ pkgbase = database-kit-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
+	makedepends = jq
 	depends = electron31
 	provides = database-kit=0.0.2
 	conflicts = database-kit
 	source = database-kit.git::git+https://github.com/zhuyongqi-master/database-kit.git
 	source = database-kit.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = database-kit-git
