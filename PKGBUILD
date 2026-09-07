@@ -17,10 +17,10 @@ sha256sums=('da72fc953d82e1f330b3d9a3108637cb205b04ea4da1a515d8c57f0f3e74d5f7')
 
 prepare() {
     unzip -o ${pkgname}-v${pkgver}.zip
-    cd "$srcdir/$pkgname-main/software"
+    cd "$srcdir/Hackman3D-Control-Deck-main/software"
     ./build_linux.sh
     cd "$srcdir/../"
-    cp "$srcdir/$pkgname-main/software/dist/HackMan3D-Control-Deck-Linux-x86_64-1.5.5-r7.AppImage" .
+    cp "$srcdir/Hackman3D-Control-Deck-main/software/dist/HackMan3D-Control-Deck-Linux-x86_64-1.5.5-r7.AppImage" .
     chmod +x HackMan3D-Control-Deck-Linux-x86_64-1.5.5-r7.AppImage
     ./HackMan3D-Control-Deck-Linux-x86_64-1.5.5-r7.AppImage --appimage-extract
 }
