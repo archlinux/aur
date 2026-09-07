@@ -1,5 +1,5 @@
 pkgbase = dash-player-bin
-	pkgdesc = A video player designed specifically for English learning.(Prebuilt version)一款专为英语学习打造的视频播放器
+	pkgdesc = A video player designed specifically for English learning.一款专为英语学习打造的视频播放器
 	pkgver = 6.9.1
 	pkgrel = 1
 	url = https://dash-player.solidspoon.xyz/
