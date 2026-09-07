@@ -2,24 +2,33 @@
 
 pkgbase=miassistanttool-git
 pkgname=miassistanttool-git
-pkgver=1.2.r4.g10bb8af
+pkgver=1.4.1.r0.g0324174
 pkgrel=1
-pkgdesc="MiAssistantTool"
-arch=($CARCH)
+pkgdesc="Cross-platform CLI for Xiaomi Mi Assistant mode: flash, wipe, reboot"
+arch=(any)
 url="https://github.com/offici5l/MiAssistantTool"
 license=('Apache-2.0')
 groups=()
 provides=(${pkgbase%-git})
 conflicts=(${pkgbase%-git})
 replaces=()
+_pydeps=(
+    pyaes
+    pyusb
+    requests
+    rich
+    rsa
+)
 depends=(
-    curl
-    libusb
-    openssl
-    tiny-json
+    python
+    "${_pydeps[@]/#/python-}"
 )
 makedepends=(
     git
+    python-build
+    python-installer
+    python-wheel
+    python-setuptools
 )
 checkdepends=()
 optdepends=(
@@ -44,12 +53,11 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    gcc -o ${pkgname%-git} *.c /usr/include/tiny-json/tiny-json.c \
-        -I/usr/include/openssl -lssl -lcrypto -lcurl -lusb-1.0
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
-    install -Dm755 ${pkgname%-git} ${pkgdir}/usr/bin/${pkgname%-git}
+    python -m installer --destdir="${pkgdir}" dist/*.whl
     install -vDm644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
