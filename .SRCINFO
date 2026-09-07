@@ -1,6 +1,6 @@
 pkgbase = dbeaver-le
 	pkgdesc = A universal database tool for developers and database administrators. Lite Edition
-	pkgver = 26.0.0
+	pkgver = 26.2.0
 	pkgrel = 1
 	url = http://dbeaver.com/
 	install = dbeaver-le.install
@@ -13,7 +13,7 @@ pkgbase = dbeaver-le
 	source = dbeaver-le.install
 	sha256sums = 9d985ebe0332caf09fdee3fbe1e97b4f29533fe84911df46556623dff457a4ee
 	sha256sums = 0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f
-	source_x86_64 = http://downloads.dbeaver.net/lite/26.0.0/dbeaver-le-26.0.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 67933e2bbba8405c3ae4fda9b8b268acfc8730465c9808abb166dc9cf1429d24
+	source_x86_64 = http://downloads.dbeaver.net/lite/26.2.0/dbeaver-le-26.2.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 8710dce0a03be1ed81a05fee7e28292c26f83c6f73082a3a0b71a22db1a31db1
 
 pkgname = dbeaver-le
