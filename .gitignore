@@ -10,3 +10,4 @@
 !sysusers-mautrix-instagram.conf
 
 !.gitignore
+!.nvchecker.toml

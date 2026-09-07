@@ -1,0 +1,7 @@
+[mautrix-instagram]
+source = "github"
+github = "mautrix/meta"
+use_max_tag = true
+
+prefix = "v"
+
