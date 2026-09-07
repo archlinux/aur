@@ -3,7 +3,7 @@
 
 pkgauthor=runyte
 pkgname=runyte
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="An editor-first, agent-ready terminal workspace for software development"
 
@@ -19,7 +19,7 @@ depends=('glibc' 'libgcc')
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('aa9f689c9aa2e19703ad9953e2bd7c4c503b9fb6f68544ea637ea9b5337c12e1')
+sha256sums=('851155184c6f3397f515d054fd4998d383d79cd28dad29ca0fa7d236e661d883')
 
 prepare() {
 	cd "${pkgname}-${pkgver}" || exit
