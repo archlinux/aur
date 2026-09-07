@@ -1,0 +1,8 @@
+[ddns-updater]
+source = "github"
+github = "qdm12/ddns-updater"
+use_max_tag = true
+
+
+prefix = "v"
+

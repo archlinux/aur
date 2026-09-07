@@ -10,3 +10,4 @@
 !ddns-updater\.tmpfiles
 
 !.gitignore
+!.nvchecker.toml
