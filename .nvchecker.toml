@@ -1,0 +1,8 @@
+[owasp-core-ruleset]
+source = "github"
+github = "coreruleset/coreruleset"
+use_max_tag = true
+
+
+prefix = "v"
+
