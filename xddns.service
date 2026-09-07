@@ -3,11 +3,11 @@ Description=Dynamic DNS updater
 Documentation=https://github.com/IceflowRE/xddns
 Wants=network-online.target
 After=network-online.target
+StartLimitBurst=2
 
 [Service]
 Type=exec
 User=xddns
-Group=xddns
 LoadCredential=xddns.yaml:/etc/xddns.yaml
 Environment=XDDNS_CONFIG=%d/xddns.yaml
 ExecStartPre=/usr/bin/xddns config validate

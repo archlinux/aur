@@ -1,7 +1,7 @@
 # Maintainer: Iceflower S <iceflower@iceflower.eu>
 
 pkgname=xddns
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Dynamic DNS updater"
 arch=("x86_64" "aarch64" "armv7h")
@@ -15,10 +15,10 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.example.yaml")
-sha256sums=('2cfa4ea186dcb562e6cac4888702bcfa51cb47fe0f8f76e62fe771a6ea72848c'
-            '3e8537e61d51dd4c47879444ab5275514d4da9ba172d57d7fdbba3d2e40f964f'
+sha256sums=('4f81c304f239cf8777aa16b006186d33a2572fef52c76bdb1ded425df7f96db4'
+            '4f7019d0f54ad2afed322900da27dad758f8cf88e78303ce587ba210772c72af'
             '39604d099204cf6318ede27df796b93c2f542a5e50b30670a22bbeaaf2e1c2e0'
-            'f4ae82d484fd94e54627e222096f974cd0b64943b717a374c295f91cf3965722')
+            'aea197172d4ba31207f19daa61f417f4ad9244415322f19df8481beebdc08ccf')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -52,6 +52,7 @@ package() {
 	install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+    install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 
 	install -Dm644 "${srcdir}/${pkgname}.service" \
 		"${pkgdir}/usr/lib/systemd/system/${pkgname}.service"

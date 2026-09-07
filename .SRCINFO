@@ -1,6 +1,6 @@
 pkgbase = xddns
 	pkgdesc = Dynamic DNS updater
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/IceflowRE/xddns
 	install = xddns.install
@@ -11,13 +11,13 @@ pkgbase = xddns
 	makedepends = go
 	options = !debug
 	backup = etc/xddns.yaml
-	source = xddns-0.1.0.tar.gz::https://github.com/IceflowRE/xddns/archive/refs/tags/v0.1.0.tar.gz
+	source = xddns-0.2.0.tar.gz::https://github.com/IceflowRE/xddns/archive/refs/tags/v0.2.0.tar.gz
 	source = xddns.service
 	source = xddns.sysusers
 	source = xddns.example.yaml
-	sha256sums = 2cfa4ea186dcb562e6cac4888702bcfa51cb47fe0f8f76e62fe771a6ea72848c
-	sha256sums = 3e8537e61d51dd4c47879444ab5275514d4da9ba172d57d7fdbba3d2e40f964f
+	sha256sums = 4f81c304f239cf8777aa16b006186d33a2572fef52c76bdb1ded425df7f96db4
+	sha256sums = 4f7019d0f54ad2afed322900da27dad758f8cf88e78303ce587ba210772c72af
 	sha256sums = 39604d099204cf6318ede27df796b93c2f542a5e50b30670a22bbeaaf2e1c2e0
-	sha256sums = f4ae82d484fd94e54627e222096f974cd0b64943b717a374c295f91cf3965722
+	sha256sums = aea197172d4ba31207f19daa61f417f4ad9244415322f19df8481beebdc08ccf
 
 pkgname = xddns
