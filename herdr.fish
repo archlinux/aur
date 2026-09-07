@@ -1,6 +1,6 @@
 # Print an optspec for argparse to handle cmd's options that are independent of any subcommand.
 function __fish_herdr_global_optspecs
-	string join \n h/help no-session session= remote= remote-keybindings= handoff default-config skill V/version
+	string join \n h/help session= remote= remote-keybindings= handoff default-config skill V/version
 end
 
 function __fish_herdr_needs_command
@@ -29,7 +29,6 @@ complete -c herdr -n "__fish_herdr_needs_command" -l remote -d 'Attach through S
 complete -c herdr -n "__fish_herdr_needs_command" -l remote-keybindings -d 'Choose local or server keybindings for remote attach' -r -f -a "local\t''
 server\t''"
 complete -c herdr -n "__fish_herdr_needs_command" -s h -l help -d 'Show help'
-complete -c herdr -n "__fish_herdr_needs_command" -l no-session -d 'Run monolithically without server/client session mode'
 complete -c herdr -n "__fish_herdr_needs_command" -l handoff -d 'Opt into live handoff for update or remote attach'
 complete -c herdr -n "__fish_herdr_needs_command" -l default-config -d 'Print default configuration and exit'
 complete -c herdr -n "__fish_herdr_needs_command" -l skill -d 'Print the agent skill file and exit'
@@ -40,6 +39,7 @@ complete -c herdr -n "__fish_herdr_needs_command" -f -a "update" -d 'Download an
 complete -c herdr -n "__fish_herdr_needs_command" -f -a "status" -d 'Show local client and running server status'
 complete -c herdr -n "__fish_herdr_needs_command" -f -a "config" -d 'Manage local configuration'
 complete -c herdr -n "__fish_herdr_needs_command" -f -a "channel" -d 'Manage stable and preview update channels'
+complete -c herdr -n "__fish_herdr_needs_command" -f -a "machine" -d 'Manage saved SSH machines'
 complete -c herdr -n "__fish_herdr_needs_command" -f -a "server" -d 'Run or control the headless server'
 complete -c herdr -n "__fish_herdr_needs_command" -f -a "api" -d 'Inspect socket API metadata and live runtime state'
 complete -c herdr -n "__fish_herdr_needs_command" -f -a "workspace" -d 'Manage workspaces over the socket API'
@@ -62,6 +62,16 @@ complete -c herdr -n "__fish_herdr_using_subcommand config; and not __fish_seen_
 complete -c herdr -n "__fish_herdr_using_subcommand config; and not __fish_seen_subcommand_from check reset-keys" -f -a "reset-keys" -d 'Reset custom keybindings'
 complete -c herdr -n "__fish_herdr_using_subcommand channel; and not __fish_seen_subcommand_from show set" -f -a "show" -d 'Print the configured update channel'
 complete -c herdr -n "__fish_herdr_using_subcommand channel; and not __fish_seen_subcommand_from show set" -f -a "set" -d 'Choose the update channel'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list add rename remove enable disable" -f -a "list" -d 'List saved SSH machines'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list add rename remove enable disable" -f -a "add" -d 'Prepare the remote Herdr server and save an SSH machine'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list add rename remove enable disable" -f -a "rename" -d 'Rename a saved SSH machine'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list add rename remove enable disable" -f -a "remove" -d 'Remove a saved SSH machine'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list add rename remove enable disable" -f -a "enable" -d 'Enable a saved SSH machine'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and not __fish_seen_subcommand_from list add rename remove enable disable" -f -a "disable" -d 'Disable a saved SSH machine'
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and __fish_seen_subcommand_from list" -l json
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and __fish_seen_subcommand_from add" -l label -d 'Set the machine label shown in the sidebar' -r
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and __fish_seen_subcommand_from add" -l remote-session -d 'Set the explicit Herdr session on the remote machine' -r
+complete -c herdr -n "__fish_herdr_using_subcommand machine; and __fish_seen_subcommand_from rename" -l label -d 'Set the machine label shown in the sidebar' -r
 complete -c herdr -n "__fish_herdr_using_subcommand server; and not __fish_seen_subcommand_from stop reload-config agent-manifests update-agent-manifests reload-agent-manifests" -f -a "stop" -d 'Stop the running server'
 complete -c herdr -n "__fish_herdr_using_subcommand server; and not __fish_seen_subcommand_from stop reload-config agent-manifests update-agent-manifests reload-agent-manifests" -f -a "reload-config" -d 'Reload config in the running server'
 complete -c herdr -n "__fish_herdr_using_subcommand server; and not __fish_seen_subcommand_from stop reload-config agent-manifests update-agent-manifests reload-agent-manifests" -f -a "agent-manifests" -d 'Show active agent detection manifests'
@@ -96,6 +106,7 @@ complete -c herdr -n "__fish_herdr_using_subcommand worktree; and not __fish_see
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and not __fish_seen_subcommand_from list create open remove" -f -a "remove" -d 'Remove a worktree checkout'
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from list" -l workspace -r
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from list" -l cwd -r -F
+complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from list" -l trust-repository
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from create" -l workspace -r
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from create" -l cwd -r -F
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from create" -l branch -r
@@ -104,6 +115,7 @@ complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_su
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from create" -l label -r
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from create" -l focus
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from create" -l no-focus
+complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from create" -l trust-repository
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from open" -l workspace -r
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from open" -l cwd -r -F
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from open" -l path -r -F
@@ -111,8 +123,10 @@ complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_su
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from open" -l label -r
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from open" -l focus
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from open" -l no-focus
+complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from open" -l trust-repository
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from remove" -l workspace -r
 complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from remove" -l force
+complete -c herdr -n "__fish_herdr_using_subcommand worktree; and __fish_seen_subcommand_from remove" -l trust-repository
 complete -c herdr -n "__fish_herdr_using_subcommand tab; and not __fish_seen_subcommand_from list create get focus rename close" -f -a "list" -d 'List tabs'
 complete -c herdr -n "__fish_herdr_using_subcommand tab; and not __fish_seen_subcommand_from list create get focus rename close" -f -a "create" -d 'Create a tab'
 complete -c herdr -n "__fish_herdr_using_subcommand tab; and not __fish_seen_subcommand_from list create get focus rename close" -f -a "get" -d 'Show a tab'
@@ -190,7 +204,8 @@ hermes\t''
 kilo\t''
 qodercli\t''
 qwen\t''
-maki\t''"
+maki\t''
+muse\t''"
 complete -c herdr -n "__fish_herdr_using_subcommand agent; and __fish_seen_subcommand_from start" -l pane -d 'Existing pane at an interactive shell prompt' -r
 complete -c herdr -n "__fish_herdr_using_subcommand agent; and __fish_seen_subcommand_from start" -l timeout -d 'Wait for interactive readiness (default: 30000; max: 300000)' -r
 complete -c herdr -n "__fish_herdr_using_subcommand agent; and __fish_seen_subcommand_from explain" -l file -r -F

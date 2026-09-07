@@ -20,7 +20,6 @@ _herdr() {
 '--remote-keybindings[Choose local or server keybindings for remote attach]:MODE:(local server)' \
 '-h[Show help]' \
 '--help[Show help]' \
-'--no-session[Run monolithically without server/client session mode]' \
 '--handoff[Opt into live handoff for update or remote attach]' \
 '--default-config[Print default configuration and exit]' \
 '--skill[Print the agent skill file and exit]' \
@@ -120,6 +119,55 @@ _arguments "${_arguments_options[@]}" : \
 (set)
 _arguments "${_arguments_options[@]}" : \
 ':channel:(stable preview)' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(machine)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__machine_commands" \
+"*::: :->machine" \
+&& ret=0
+
+    case $state in
+    (machine)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-machine-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--json[]' \
+&& ret=0
+;;
+(add)
+_arguments "${_arguments_options[@]}" : \
+'--label[Set the machine label shown in the sidebar]:LABEL:_default' \
+'--remote-session[Set the explicit Herdr session on the remote machine]:NAME:_default' \
+':ssh-target:_default' \
+&& ret=0
+;;
+(rename)
+_arguments "${_arguments_options[@]}" : \
+'--label[Set the machine label shown in the sidebar]:LABEL:_default' \
+':profile-id:_default' \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+':profile-id:_default' \
+&& ret=0
+;;
+(enable)
+_arguments "${_arguments_options[@]}" : \
+':profile-id:_default' \
+&& ret=0
+;;
+(disable)
+_arguments "${_arguments_options[@]}" : \
+':profile-id:_default' \
 && ret=0
 ;;
         esac
@@ -266,6 +314,7 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '--workspace[]:ID:_default' \
 '--cwd[]:PATH:_files' \
+'--trust-repository[]' \
 && ret=0
 ;;
 (create)
@@ -278,6 +327,7 @@ _arguments "${_arguments_options[@]}" : \
 '--label[]:TEXT:_default' \
 '--focus[]' \
 '--no-focus[]' \
+'--trust-repository[]' \
 && ret=0
 ;;
 (open)
@@ -289,12 +339,14 @@ _arguments "${_arguments_options[@]}" : \
 '--label[]:TEXT:_default' \
 '--focus[]' \
 '--no-focus[]' \
+'--trust-repository[]' \
 && ret=0
 ;;
 (remove)
 _arguments "${_arguments_options[@]}" : \
 '--workspace[]:ID:_default' \
 '--force[]' \
+'--trust-repository[]' \
 && ret=0
 ;;
         esac
@@ -449,7 +501,7 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (start)
 _arguments "${_arguments_options[@]}" : \
-'--kind[Supported agent kind and canonical executable]:KIND:(pi claude codex gemini cursor devin agy cline omp mastracode opencode copilot kimi kiro droid amp grok hermes kilo qodercli qwen maki)' \
+'--kind[Supported agent kind and canonical executable]:KIND:(pi claude codex gemini cursor devin agy cline omp mastracode opencode copilot kimi kiro droid amp grok hermes kilo qodercli qwen maki muse)' \
 '--pane[Existing pane at an interactive shell prompt]:ID:_default' \
 '--timeout[Wait for interactive readiness (default\: 30000; max\: 300000)]:MS:_default' \
 ':name:_default' \
@@ -1034,6 +1086,7 @@ _herdr_commands() {
 'status:Show local client and running server status' \
 'config:Manage local configuration' \
 'channel:Manage stable and preview update channels' \
+'machine:Manage saved SSH machines' \
 'server:Run or control the headless server' \
 'api:Inspect socket API metadata and live runtime state' \
 'workspace:Manage workspaces over the socket API' \
@@ -1203,6 +1256,48 @@ _herdr__subcmd__integration__subcmd__status_commands() {
 _herdr__subcmd__integration__subcmd__uninstall_commands() {
     local commands; commands=()
     _describe -t commands 'herdr integration uninstall commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__machine_commands] )) ||
+_herdr__subcmd__machine_commands() {
+    local commands; commands=(
+'list:List saved SSH machines' \
+'add:Prepare the remote Herdr server and save an SSH machine' \
+'rename:Rename a saved SSH machine' \
+'remove:Remove a saved SSH machine' \
+'enable:Enable a saved SSH machine' \
+'disable:Disable a saved SSH machine' \
+    )
+    _describe -t commands 'herdr machine commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__machine__subcmd__add_commands] )) ||
+_herdr__subcmd__machine__subcmd__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr machine add commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__machine__subcmd__disable_commands] )) ||
+_herdr__subcmd__machine__subcmd__disable_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr machine disable commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__machine__subcmd__enable_commands] )) ||
+_herdr__subcmd__machine__subcmd__enable_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr machine enable commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__machine__subcmd__list_commands] )) ||
+_herdr__subcmd__machine__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr machine list commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__machine__subcmd__remove_commands] )) ||
+_herdr__subcmd__machine__subcmd__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr machine remove commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__machine__subcmd__rename_commands] )) ||
+_herdr__subcmd__machine__subcmd__rename_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr machine rename commands' commands "$@"
 }
 (( $+functions[_herdr__subcmd__notification_commands] )) ||
 _herdr__subcmd__notification_commands() {

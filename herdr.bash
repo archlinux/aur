@@ -37,6 +37,9 @@ _herdr() {
             herdr,integration)
                 cmd="herdr__subcmd__integration"
                 ;;
+            herdr,machine)
+                cmd="herdr__subcmd__machine"
+                ;;
             herdr,notification)
                 cmd="herdr__subcmd__notification"
                 ;;
@@ -129,6 +132,24 @@ _herdr() {
                 ;;
             herdr__subcmd__integration,uninstall)
                 cmd="herdr__subcmd__integration__subcmd__uninstall"
+                ;;
+            herdr__subcmd__machine,add)
+                cmd="herdr__subcmd__machine__subcmd__add"
+                ;;
+            herdr__subcmd__machine,disable)
+                cmd="herdr__subcmd__machine__subcmd__disable"
+                ;;
+            herdr__subcmd__machine,enable)
+                cmd="herdr__subcmd__machine__subcmd__enable"
+                ;;
+            herdr__subcmd__machine,list)
+                cmd="herdr__subcmd__machine__subcmd__list"
+                ;;
+            herdr__subcmd__machine,remove)
+                cmd="herdr__subcmd__machine__subcmd__remove"
+                ;;
+            herdr__subcmd__machine,rename)
+                cmd="herdr__subcmd__machine__subcmd__rename"
                 ;;
             herdr__subcmd__notification,show)
                 cmd="herdr__subcmd__notification__subcmd__show"
@@ -374,7 +395,7 @@ _herdr() {
 
     case "${cmd}" in
         herdr)
-            opts="-h -V --help --no-session --session --remote --remote-keybindings --handoff --default-config --skill --version completion completions update status config channel server api workspace worktree tab notification agent pane terminal session integration plugin"
+            opts="-h -V --help --session --remote --remote-keybindings --handoff --default-config --skill --version completion completions update status config channel machine server api workspace worktree tab notification agent pane terminal session integration plugin"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -579,7 +600,7 @@ _herdr() {
             fi
             case "${prev}" in
                 --kind)
-                    COMPREPLY=($(compgen -W "pi claude codex gemini cursor devin agy cline omp mastracode opencode copilot kimi kiro droid amp grok hermes kilo qodercli qwen maki" -- "${cur}"))
+                    COMPREPLY=($(compgen -W "pi claude codex gemini cursor devin agy cline omp mastracode opencode copilot kimi kiro droid amp grok hermes kilo qodercli qwen maki muse" -- "${cur}"))
                     return 0
                     ;;
                 --pane)
@@ -812,6 +833,116 @@ _herdr() {
                 return 0
             fi
             case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        herdr__subcmd__machine)
+            opts="list add rename remove enable disable"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        herdr__subcmd__machine__subcmd__add)
+            opts="--label --remote-session <SSH_TARGET>"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                --label)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --remote-session)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        herdr__subcmd__machine__subcmd__disable)
+            opts="<PROFILE_ID>"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        herdr__subcmd__machine__subcmd__enable)
+            opts="<PROFILE_ID>"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        herdr__subcmd__machine__subcmd__list)
+            opts="--json"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        herdr__subcmd__machine__subcmd__remove)
+            opts="<PROFILE_ID>"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
+            COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+            return 0
+            ;;
+        herdr__subcmd__machine__subcmd__rename)
+            opts="--label <PROFILE_ID>"
+            if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
+                COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+                return 0
+            fi
+            case "${prev}" in
+                --label)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
                 *)
                     COMPREPLY=()
                     ;;
@@ -2410,7 +2541,7 @@ _herdr() {
             return 0
             ;;
         herdr__subcmd__worktree__subcmd__create)
-            opts="--workspace --cwd --branch --base --path --label --focus --no-focus"
+            opts="--workspace --cwd --branch --base --path --label --focus --no-focus --trust-repository"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -2448,7 +2579,7 @@ _herdr() {
             return 0
             ;;
         herdr__subcmd__worktree__subcmd__list)
-            opts="--workspace --cwd"
+            opts="--workspace --cwd --trust-repository"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -2470,7 +2601,7 @@ _herdr() {
             return 0
             ;;
         herdr__subcmd__worktree__subcmd__open)
-            opts="--workspace --cwd --path --branch --label --focus --no-focus"
+            opts="--workspace --cwd --path --branch --label --focus --no-focus --trust-repository"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -2504,7 +2635,7 @@ _herdr() {
             return 0
             ;;
         herdr__subcmd__worktree__subcmd__remove)
-            opts="--workspace --force"
+            opts="--workspace --force --trust-repository"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
