@@ -1,13 +1,13 @@
 pkgname=ifcplusplus-git
 pkgver=2.5.r28.g964fa6008
-pkgrel=1
+pkgrel=2
 pkgdesc="IFC++ is an open source C++ class model, as well as a reader and writer for IFC files in STEP format."
 url="http://www.ifcquery.com/"
 arch=('x86_64')
 license=('MIT')
 depends=('openscenegraph' 'boost-libs' 'qt6-base' 'onetbb')
 optdepends=()
-makedepends=('cmake' 'boost' 'chrpath' 'onetbb')
+makedepends=('cmake' 'boost' 'onetbb')
 provides=('IFC++')
 conflicts=()
 replaces=()
@@ -37,7 +37,8 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DBUILD_VIEWER_APPLICATION=ON \
       -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-      -DCMAKE_CXX_FLAGS=-DQT_NO_EMIT \
+      -DCMAKE_CXX_FLAGS="-DQT_NO_EMIT -ffile-prefix-map=${srcdir}=." \
+      -DCMAKE_SKIP_BUILD_RPATH=ON \
       -DCMAKE_EXE_LINKER_FLAGS=-ltbb \
       -DCMAKE_SHARED_LINKER_FLAGS=-ltbb
   make
@@ -46,7 +47,6 @@ build() {
 package() {
   cd "${srcdir}/${clonefolder}"
   install -Dm755 Release/SimpleViewerExampleQt "${pkgdir}"/usr/bin/SimpleIFCViewer
-  chrpath -d "${pkgdir}"/usr/bin/SimpleIFCViewer
   install -d "${pkgdir}/usr/lib"
   install -m755 -D Release/*.so "${pkgdir}/usr/lib"
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

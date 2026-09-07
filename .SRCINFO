@@ -1,13 +1,12 @@
 pkgbase = ifcplusplus-git
 	pkgdesc = IFC++ is an open source C++ class model, as well as a reader and writer for IFC files in STEP format.
 	pkgver = 2.5.r28.g964fa6008
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ifcquery.com/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = boost
-	makedepends = chrpath
 	makedepends = onetbb
 	depends = openscenegraph
 	depends = boost-libs
