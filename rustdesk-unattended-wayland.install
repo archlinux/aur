@@ -1,0 +1,15 @@
+post_install() {
+  cat <<EOF
+This build is meant for unattended access. To run the service at boot:
+
+    systemctl enable --now rustdesk
+
+On Wayland the service captures screens through PipeWire; unlock the
+session once with "rustdesk --service" if the compositor keeps asking
+for permission.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
