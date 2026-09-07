@@ -21,7 +21,7 @@ post_install() {
         fi
     done
 
-    echo ":: [Acer Sense] Установка успешно завершена (v2.6)."
+    echo ":: [Acer Sense] Установка успешно завершена (v2.7)."
     echo ":: [Acer Sense] Системные службы acer-fans.service и acer-battery.service активированы."
     echo ":: [Acer Sense] Биндинги клавиш (Fn+F для питания и XF86Launch6 для микрофона) настроены."
 }
