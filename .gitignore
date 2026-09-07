@@ -9,3 +9,4 @@
 !dependency_on_unit_never_type_fallback\.patch
 !vod2pod-rss\.env
 !vod2pod-rss\.service
+!.nvchecker.toml

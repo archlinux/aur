@@ -1,0 +1,8 @@
+[vod2pod-rss]
+source = "github"
+github = "madiele/vod2pod-rss"
+use_latest_release = true
+
+
+prefix = "v"
+
