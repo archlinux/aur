@@ -1,8 +1,8 @@
 # Maintainer: theorangeguo
 # Packaging Repo: https://github.com/theorangeguo/aur-packages/tree/main/packages/zellij-no-mouse-resize-bin
 pkgname=zellij-no-mouse-resize-bin
-pkgver=0.44.3.r1
-pkgrel=5
+pkgver=0.45.1.r1
+pkgrel=1
 pkgdesc=Zellij\ with\ advanced_mouse_actions\ also\ gating\ pane\ mouse\ resize
 arch=(x86_64 )
 url=https://zellij.dev
@@ -17,8 +17,8 @@ conflicts=(zellij zellij-bin zellij-git zellij-no-mouse-resize )
 validpgpkeys=()
 
 source=()
-sha256sums_x86_64=('f31aafa8645d96caf29dfebbbd8d54bbcae778de95fb06ebd311a5b7fcca4ee0')
-source_x86_64=(zellij-no-mouse-resize-bin-0.44.3.r1-x86_64.tar.gz::https://github.com/theorangeguo/aur-packages/releases/download/zellij-no-mouse-resize-bin-v0.44.3.r1/zellij-no-mouse-resize-bin-0.44.3.r1-x86_64-unknown-linux-gnu.tar.gz )
+sha256sums_x86_64=('c16f022c4982756a569bbc9860cc17756752bce733d99d6391d1ee120e4ee8ba')
+source_x86_64=(zellij-no-mouse-resize-bin-0.45.1.r1-x86_64.tar.gz::https://github.com/theorangeguo/aur-packages/releases/download/zellij-no-mouse-resize-bin-v0.45.1.r1/zellij-no-mouse-resize-bin-0.45.1.r1-x86_64-unknown-linux-gnu.tar.gz )
 
 _binary_source_path=zellij
 _install_bin_path=/usr/bin/zellij
