@@ -9,3 +9,4 @@
 !sysusers-mautrix-whatsapp.conf
 
 !.gitignore
+!.nvchecker.toml
