@@ -12,7 +12,7 @@ pkgname='ssl-mgr'
 pkgdesc='Manage (re)new certificates and handle DANE TLSA key rollover'
 _gitname='ssl-mgr'
 
-pkgver="7.8.1"
+pkgver="8.0.0"
 pkgrel=1
 url="https://github.com/gene-git/ssl-mgr"
 
@@ -20,9 +20,9 @@ arch=(any)
 license=(GPL-2.0-or-later)
 depends=(
     'python>=3.14' 
+    'python-cryptography' 
     'python-dnspython' 
     'python-tomli-w' 
-    'python-cryptography' 
     'python-dateutil' 
     'lockmgr' 
     'certbot'
@@ -35,11 +35,10 @@ optdepends=(
 
 # To build docs uncommont sphinx/texlive
 makedepends=(
-    'git'
-    'rsync'
-    'uv'
-    'python-uv-build'
-    #'python-sphinx' 'texlive-latexextra' # Docs
+    git
+    meson
+    meson-python
+    rsync
 )
 
 _mkpkg_depends=(
@@ -67,21 +66,7 @@ sha512sums=('SKIP')
 
 build() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
-
-    echo 'Building Docs'
-    #    pdf='ssl-mgr.pdf'
-    #    cd ./Docs
-    #    make latexpdf >/dev/null 2>&1
-    #    make latexpdf >/dev/null
-    #    /usr/bin/rm -f $pdf
-    #    /usr/bin/cp _build/latex/$pdf .
-    #    make html >/dev/null
-    #    make html >/dev/null
-    #    /usr/bin/rm -rf _build/doctrees _build/latex
-
-
+    ./scripts/do-build
 }
 
 package() {
