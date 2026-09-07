@@ -3,8 +3,8 @@
 post_install() {
     echo "========================================================================"
     echo " Installation successful!"
-    echo " Please read the GitHub README at:"
-    echo " https://github.com/cantosun99/llama.cpp-sycl"
+    echo " Please read the Codeberg README at:"
+    echo " https://codeberg.org/cantosun/llama.cpp-sycl"
     echo " The use of llama.cpp with the SYCL backend has some unique quirks."
     echo "========================================================================"
 }
