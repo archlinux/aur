@@ -11,7 +11,7 @@ User=xddns
 LoadCredential=xddns.yaml:/etc/xddns.yaml
 Environment=XDDNS_CONFIG=%d/xddns.yaml
 ExecStartPre=/usr/bin/xddns config validate
-ExecStart=/usr/bin/xddns
+ExecStart=/usr/bin/xddns daemon
 Restart=on-failure
 RestartSec=10s
 NoNewPrivileges=true

@@ -2,7 +2,7 @@
 
 pkgname=xddns
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic DNS updater"
 arch=("x86_64" "aarch64" "armv7h")
 url="https://github.com/IceflowRE/xddns"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.sysusers"
         "${pkgname}.example.yaml")
 sha256sums=('4f81c304f239cf8777aa16b006186d33a2572fef52c76bdb1ded425df7f96db4'
-            '4f7019d0f54ad2afed322900da27dad758f8cf88e78303ce587ba210772c72af'
+            'b99b90b2ae36c77ce0092df8b87c24298e70c51125e61ec729fecf1d4557d5dc'
             '39604d099204cf6318ede27df796b93c2f542a5e50b30670a22bbeaaf2e1c2e0'
             'aea197172d4ba31207f19daa61f417f4ad9244415322f19df8481beebdc08ccf')
 
