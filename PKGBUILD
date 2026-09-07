@@ -12,7 +12,7 @@ optdepends=(
   'cuda: NVidia PTX backend.'
   'emscripten: WebAssembly backend.'
   'libpng: PNG support in the Image IO Utility.'
-  'libjpeg: JPEG support in the Image IO Utility.')
+  'libjpeg-turbo: JPEG support in the Image IO Utility.')
 source=("https://github.com/halide/Halide/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('aa6b6f5e89709ca6bc754ce72b8b13b2abce0d6b001cb2516b1c6f518f910141')
 

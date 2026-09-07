@@ -13,7 +13,7 @@ pkgbase = halide
 	optdepends = cuda: NVidia PTX backend.
 	optdepends = emscripten: WebAssembly backend.
 	optdepends = libpng: PNG support in the Image IO Utility.
-	optdepends = libjpeg: JPEG support in the Image IO Utility.
+	optdepends = libjpeg-turbo: JPEG support in the Image IO Utility.
 	source = https://github.com/halide/Halide/archive/refs/tags/v21.0.0.tar.gz
 	sha256sums = aa6b6f5e89709ca6bc754ce72b8b13b2abce0d6b001cb2516b1c6f518f910141
 
