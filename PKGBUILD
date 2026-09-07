@@ -1,8 +1,8 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=rime-llm-translator-git
-pkgver=r16.903403e
-pkgrel=3
+pkgver=r52.176250f
+pkgrel=1
 pkgdesc="给Rime输入法接入大模型进行拼音联想，支持TUI图形化配置"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/rime-llm-translator"
