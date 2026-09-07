@@ -89,7 +89,7 @@ sha256sums=('424bf5ebe912156448a13c1f4153105d302fcb0a5577e9575af6007306da2670')
 _srcname="navigation2-$pkgver"
 
 prepare() {
-    sed -n '2,31p' "$_srcname/nav2_dwb_controller/dwb_core/include/dwb_core/exceptions.hpp" | \
+    sed -n '2,32p' "$_srcname/nav2_dwb_controller/dwb_core/include/dwb_core/exceptions.hpp" | \
         sed 's/^ *\* *//' > "$srcdir/LICENSE.BSD-3-Clause"
     sed -i '/  ~Circle();/a\
   using Polygon::updatePolygon;' \
