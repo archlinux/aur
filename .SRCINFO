@@ -1,7 +1,7 @@
 pkgbase = emutastic-bin
 	pkgdesc = Beautiful retro game library and emulation frontend (libretro)
-	pkgver = 0.9.3
-	pkgrel = 2
+	pkgver = 0.9.4
+	pkgrel = 1
 	url = https://github.com/codingncaffeine/Emutastic-For-Linux
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,12 +14,12 @@ pkgbase = emutastic-bin
 	optdepends = vlc-plugins-video-output: hardware-accelerated snap previews on some setups
 	provides = emutastic
 	conflicts = emutastic
-	noextract = Emutastic-0.9.3-linux-x64.tar.gz
+	noextract = Emutastic-0.9.4-linux-x64.tar.gz
 	options = !strip
-	source = https://github.com/codingncaffeine/Emutastic-For-Linux/releases/download/v0.9.3/Emutastic-0.9.3-linux-x64.tar.gz
-	source = https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.9.3/LICENSE
-	source = emutastic-logo.png::https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.9.3/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png
-	sha256sums = 3b7e9651fec007171c240892196db11e22a12151fbdc22b2c2efb0ba986a6470
+	source = https://github.com/codingncaffeine/Emutastic-For-Linux/releases/download/v0.9.4/Emutastic-0.9.4-linux-x64.tar.gz
+	source = https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.9.4/LICENSE
+	source = emutastic-logo.png::https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.9.4/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png
+	sha256sums = 3b0c2f4388e8725425ab900bcb640fcd8c89adb9467a029245fc82af4ba6b54b
 	sha256sums = SKIP
 	sha256sums = SKIP
 
