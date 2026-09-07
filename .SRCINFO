@@ -1,6 +1,6 @@
 pkgbase = win10fonts-auto
 	pkgdesc = replacement for broken ttf-ms-win10/11-fonts pkgs. saw this in a comment section of said pkgs and said why not make a pkgbuild.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	arch = any
 	license = custom
