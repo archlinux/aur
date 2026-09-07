@@ -35,6 +35,9 @@ build() {
 
 	# Adjust .desktop to have it point to the correct icon
 	sed -i -E 's/^Icon=.+/Icon=localsend/' "${srcdir}/usr/share/applications/${_pkgdesktop}"
+
+	# Add StartupWMClass so app can be pinned to taskbar
+	sed -i -E '/^Exec=localsend/a StartupWMClass=org.localsend.localsend_app' "${srcdir}/usr/share/applications/${_pkgdesktop}"
 }
 
 package() {
