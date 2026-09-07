@@ -3,9 +3,9 @@
 _name=tree-sitter-scala
 pkgname=python-tree-sitter-scala
 pkgver=0.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scala grammar for tree-sitter"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter/tree-sitter-scala"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
