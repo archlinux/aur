@@ -1,6 +1,6 @@
 pkgname=rkdeveloptool-gui-appimage
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RKDevelopTool GUI is a graphical front-end for Rockchip's official rkdeveloptool"
 arch=('x86_64')
 url='https://github.com/gahingwoo/RKDevelopTool-GUI'
@@ -8,9 +8,10 @@ license=()
 options=("!strip")
 depends=('fuse2')
 source=(
-  "rkdeveloptool-gui-v${pkgver}-x86_64.AppImage::https://github.com/gahingwoo/RKDevelopTool-GUI/releases/download/${pkgver}/RKDevelopTool-GUI-${pkgver}-x86_64.AppImage"
+  #"rkdeveloptool-gui-v${pkgver}-x86_64.AppImage::https://github.com/gahingwoo/RKDevelopTool-GUI/releases/download/${pkgver}/RKDevelopTool-GUI-${pkgver}-x86_64.AppImage"
+  "rkdeveloptool-gui-v${pkgver}-x86_64.AppImage::https://github.com/a15355447898a/RKDevelopTool-GUI/releases/download/${pkgver}-1/RKDevelopTool-GUI-main-x86_64.AppImage"
 )
-sha512sums=('f69ff14c1f4e234da8dfbeac7ca41b505b27070567a8242983af66694dda3070988d258cc30b94551d9f35622504a8a2c6c41406fd4f69ece072fe11a87ead01')
+sha256sums=('858532a742c7a6e4cd6bc415e190e6baaa771cd8c1828367ab4e8746b7293b19')
 
 _installdir=/opt/rkdeveloptool-gui
 
