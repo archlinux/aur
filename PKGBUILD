@@ -2,7 +2,7 @@
 pkgname=maryanne-bin
 pkgver=2.2.0
 pkgrel=1
-pkgdesc='Closed-source Flutter ebook reader with local text-to-speech'
+pkgdesc='Read ebook (EPUB) or PDF aloud to you with natural-sounding voices.'
 arch=('x86_64')
 url='https://maryanne.app'
 license=('custom')
