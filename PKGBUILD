@@ -1,6 +1,6 @@
 pkgbase=skwd-suite-bin
 pkgname=(skwd-wall-v2-bin skwd-deck-bin skwd-paper-bin skwd-lens-bin)
-pkgver=1.0.0_beta.9
+pkgver=1.0.0_beta.10
 pkgrel=1
 pkgdesc='Prebuilt native Skwd wallpaper suite packages'
 arch=(x86_64)
@@ -8,22 +8,22 @@ url='https://github.com/liixini/skwd-wall'
 license=(GPL-3.0-or-later)
 options=(!debug !strip)
 source_x86_64=(
-  'skwd-wall-v2-1.0.0_beta.9-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.9/skwd-wall-v2-1.0.0_beta.9-1-x86_64.pkg.tar.zst'
-  'skwd-deck-1.0.0_beta.9-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.9/skwd-deck-1.0.0_beta.9-1-x86_64.pkg.tar.zst'
-  'skwd-paper-1.0.0_beta.9-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.9/skwd-paper-1.0.0_beta.9-1-x86_64.pkg.tar.zst'
-  'skwd-lens-1.0.0_beta.9-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.9/skwd-lens-1.0.0_beta.9-1-x86_64.pkg.tar.zst'
+  'skwd-wall-v2-1.0.0_beta.10-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.10/skwd-wall-v2-1.0.0_beta.10-1-x86_64.pkg.tar.zst'
+  'skwd-deck-1.0.0_beta.10-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.10/skwd-deck-1.0.0_beta.10-1-x86_64.pkg.tar.zst'
+  'skwd-paper-1.0.0_beta.10-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.10/skwd-paper-1.0.0_beta.10-1-x86_64.pkg.tar.zst'
+  'skwd-lens-1.0.0_beta.10-1-x86_64.pkg.tar.zst::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.10/skwd-lens-1.0.0_beta.10-1-x86_64.pkg.tar.zst'
 )
 noextract=(
-  'skwd-wall-v2-1.0.0_beta.9-1-x86_64.pkg.tar.zst'
-  'skwd-deck-1.0.0_beta.9-1-x86_64.pkg.tar.zst'
-  'skwd-paper-1.0.0_beta.9-1-x86_64.pkg.tar.zst'
-  'skwd-lens-1.0.0_beta.9-1-x86_64.pkg.tar.zst'
+  'skwd-wall-v2-1.0.0_beta.10-1-x86_64.pkg.tar.zst'
+  'skwd-deck-1.0.0_beta.10-1-x86_64.pkg.tar.zst'
+  'skwd-paper-1.0.0_beta.10-1-x86_64.pkg.tar.zst'
+  'skwd-lens-1.0.0_beta.10-1-x86_64.pkg.tar.zst'
 )
 sha256sums_x86_64=(
-  '228e782a15d92feb96e9cc23310819db0022e1af63eebec6644b571480d93253'
-  'd6fca8392e4d4f3244180eddc4b7c8aaeab9bf1baaa62af8036a67a81a3767fb'
-  'bb1a9b7a66a26a28a48282a582dfe10e2ff28365cd73b1571947e0bddf7fe976'
-  '3e6a75fffce334093cd8ce65a3427b51b49a15442ce2a0e5b811d3d7c2f0ed3d'
+  '506f01979b8a34c8f0079e2cfb9389a4b393f0623f5270848d1bc456140e5e00'
+  '984eae04f76a9b829c748e54393ed2fe378b223a91201ec01239f39a241210bd'
+  '665f0054931c3eaff202681e983c5633e580e44aa7e2bdbda6d27b4db34d8eb8'
+  'c6ba116e635c4d687e5373dc78b0694d0365eb54001f58c0267380f8bf2f1925'
 )
 
 prepare() {
@@ -33,10 +33,10 @@ prepare() {
     bsdtar -xf "$srcdir/$archive" -C "$srcdir/$component" \
       --exclude .BUILDINFO --exclude .MTREE --exclude .PKGINFO
   done <<EOF
-wall skwd-wall-v2-1.0.0_beta.9-1-x86_64.pkg.tar.zst
-deck skwd-deck-1.0.0_beta.9-1-x86_64.pkg.tar.zst
-paper skwd-paper-1.0.0_beta.9-1-x86_64.pkg.tar.zst
-lens skwd-lens-1.0.0_beta.9-1-x86_64.pkg.tar.zst
+wall skwd-wall-v2-1.0.0_beta.10-1-x86_64.pkg.tar.zst
+deck skwd-deck-1.0.0_beta.10-1-x86_64.pkg.tar.zst
+paper skwd-paper-1.0.0_beta.10-1-x86_64.pkg.tar.zst
+lens skwd-lens-1.0.0_beta.10-1-x86_64.pkg.tar.zst
 EOF
 }
 
