@@ -1,5 +1,5 @@
 pkgbase = vidbee-bin
-	pkgdesc = Download video and audio from YouTube , TikTok , Twitter , Instagram , Facebook , Twitch , Bilibili , and 1000+ sites—or import local media. Create searchable transcripts on your computer, then summarize, translate, or ask questions with your preferred AI provider.
+	pkgdesc = A free, open-source desktop app that turns video and audio into an organized, searchable library. Download media from 1000+ supported sites or import local files.
 	pkgver = 2.1.0
 	pkgrel = 2
 	url = https://vidbee.org/
