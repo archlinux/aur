@@ -15,8 +15,6 @@ pkgbase = uutils-coreutils-git
 	conflicts = uutils-coreutils
 	conflicts = coreutils
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
-	source = drop-onig.patch::https://github.com/wtcpython/coreutils/commit/9a478f8dac8a82a60da1c507e6d677098d27ec5a.patch
 	b2sums = SKIP
-	b2sums = 9d8a60df423d80aa59dd10b327883fe43f70cc6f95fc05ac11c34bfb7ce26d5c71551e86fe6455ed0337e6e80c1aa4dc1532cf128ba5cd2a10e107f1f56f1e1e
 
 pkgname = uutils-coreutils-git
