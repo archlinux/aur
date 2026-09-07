@@ -1,0 +1,7 @@
+[passless-boot]
+source= "gitlab"
+gitlab = "Marcool04/passless-boot"
+use_max_tag = true
+
+prefix = "v"
+
