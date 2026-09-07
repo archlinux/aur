@@ -23,7 +23,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   mkdir -p "bin"
-  stack --local-bin-path "bin/" install
+  export STACK_ROOT="${STACK_ROOT:-${srcdir}/.stack}"
+  stack --no-terminal --local-bin-path "bin/" install
 }
 
 package() {
