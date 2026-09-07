@@ -1,6 +1,6 @@
 pkgbase = better-adb-sync-git
 	pkgdesc = Synchronize files between a PC and an Android device using ADB (Android Debug Bridge)
-	pkgver = r91.9a226dd
+	pkgver = 1.4.1.r100.g8ad077f
 	pkgrel = 1
 	url = https://github.com/jpstotz/better-adb-sync
 	arch = any

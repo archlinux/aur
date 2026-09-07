@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=better-adb-sync-git
-pkgver=r91.9a226dd
+pkgver=1.4.1.r100.g8ad077f
 pkgrel=1
 pkgdesc='Synchronize files between a PC and an Android device using ADB (Android Debug Bridge)'
 arch=(any)
@@ -17,7 +17,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  local version
+  version=$(sed -n 's/^version = "\(.*\)"/\1/p' pyproject.toml)
+  printf '%s.r%s.g%s' "$version" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
