@@ -2,13 +2,13 @@
 
 pkgname='aqsis-git'
 pkgdesc='A Pixar RenderMan-compliant REYES renderer'
-pkgver=20200513.883cc9e0
+pkgver=20250822.937ead9a
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL3')
 url='https://github.com/aqsis/aqsis'
 
-depends=('libtiff' 'flex' 'bison' 'zlib' 'libjpeg' 'openexr')
+depends=('libtiff' 'flex' 'bison' 'zlib' 'libjpeg-turbo' 'openexr')
 makedepends=('boost' 'git' 'cmake')
 source=('git+https://github.com/aqsis/aqsis.git')
 md5sums=('SKIP')
