@@ -7,7 +7,7 @@
 # pkgver 与 sha256sums 由发版工作流（.github/workflows/apply-release.yml 的
 # publish-aur 任务）在每次 apply-v* tag 发布时自动改写并推送到 AUR，不要手改。
 pkgname=mianling-apply-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="面灵网申助手 — 校招网申自动填表：一处填好档案，打开投递页自动填好重复字段，最后一步由你点"
 arch=('x86_64')
@@ -26,7 +26,7 @@ options=('!strip' '!debug')
 install="${pkgname}.install"
 source=("mianling-apply-${pkgver}-amd64.deb::https://storage2.maoertech.cn/job-apply/mianling-apply-${pkgver}-amd64.deb")
 noextract=("mianling-apply-${pkgver}-amd64.deb")
-sha256sums=('ceb70cc8052848fb2eee75951fce43d7bd2b8cba4100a983abf301e7665ff6ba')
+sha256sums=('e9c06d5d33cc8d2780d93b1dcd6e10e597e652442cca213db9f6457ba3e6cf54')
 
 package() {
   cd "$srcdir"
