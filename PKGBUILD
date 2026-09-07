@@ -7,7 +7,6 @@ pkgdesc="Generate passphrases from six-sided dice rolls"
 arch=('any')
 url="https://github.com/jmcantrell/${pkgname%-git}"
 license=('MIT')
-depends=()
 makedepends=('git' 'scdoc')
 checkdepends=('parallel' 'diffutils')
 provides=("${pkgname%-git}")
