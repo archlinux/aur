@@ -1,12 +1,13 @@
 # Maintainer: Fergal Moran <fergal.moran@gmail.com>
 pkgname=xtreamium-proxy
-pkgver=1.4.46
+pkgver=1.4.47
 pkgrel=1
-pkgdesc="Xtreamium Proxy Service - runs as user service"
+pkgdesc="Xtreamium Proxy Service - runs as a per-user systemd service"
 arch=('x86_64')
 url="https://github.com/xtreamium/xtreamium-proxy"
 license=('MIT')
-depends=('glibc' 'icu')
+depends=('glibc' 'icu' 'ffmpeg')
+optdepends=('mpv: default media player')
 provides=('xtreamium-proxy')
 conflicts=('xtreamium-proxy')
 install=xtreamium-proxy.install
@@ -15,19 +16,8 @@ sha256sums=('SKIP')
 options=('!strip')
 
 package() {
-    # Install all application files to /usr/share (will be copied to user directory on install)
-    install -dm755 "${pkgdir}/usr/share/xtreamium-proxy/app"
-    
-    # Copy all files from the tarball to the app directory
-    cp -r "${srcdir}"/* "${pkgdir}/usr/share/xtreamium-proxy/app/"
-    
-    # Make the binary executable
-    chmod +x "${pkgdir}/usr/share/xtreamium-proxy/app/xtreamium-proxy"
-    
-    # Install user systemd service (modified to use ~/.local/opt)
-    install -Dm644 "${srcdir}/xtreamium-proxy-user.service" "${pkgdir}/usr/lib/systemd/user/xtreamium-proxy.service"
-    
-    # Install documentation
+    install -Dm755 "${srcdir}/xtreamium-proxy" "${pkgdir}/usr/bin/xtreamium-proxy"
+    install -Dm644 "${srcdir}/appsettings.json" "${pkgdir}/usr/share/xtreamium-proxy/appsettings.json.example"
+    install -Dm644 "${srcdir}/xtreamium-proxy.service" "${pkgdir}/usr/lib/systemd/user/xtreamium-proxy.service"
     install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
-
