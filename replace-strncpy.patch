@@ -1,0 +1,20 @@
+--- a/motu.c
++++ b/motu.c
+@@ -912,7 +912,7 @@ static int motu_init_midi(struct motu *motu)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	strncpy(rmidi->name, motu->card->shortname, sizeof(rmidi->name));
++	snprintf(rmidi->name, sizeof(rmidi->name), motu->card->shortname);
+ 
+ 	rmidi->info_flags = SNDRV_RAWMIDI_INFO_DUPLEX;
+ 	rmidi->private_data = motu;
+@@ -1104,7 +1104,7 @@ static int motu_probe(struct usb_interface *interface,
+ 
+ 	snd_card_set_dev(card, &interface->dev);
+ 
+-	strncpy(card->driver, "snd-motu", sizeof(card->driver));
++	snprintf(card->driver, sizeof(card->driver), "snd-motu");
+ 	snprintf(card->shortname, sizeof(card->shortname), "MOTU %s", str);
+ 	usb_make_path(motu->dev, usb_path, sizeof(usb_path));
+ 	snprintf(motu->card->longname, sizeof(motu->card->longname),
