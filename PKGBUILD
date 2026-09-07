@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawd-on-desk-bin
 _pkgname='Clawd on Desk'
-pkgver=0.16.0
+pkgver=1.0.0
 _electronversion=41
 pkgrel=1
 pkgdesc="A desktop pet that reacts to your Claude Code sessions in real-time — thinking, typing, juggling, sleeping, and more.(Prebuilt version.Use system-wide electron)"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('783a8f3b518af33bd71ed8cf339d7a080670cc226a736a02e5887eed304189d8'
+sha256sums=('a6f6e017f095c64247359cb8dbcb297c759f5101193a8916453fee5e9c463439'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
