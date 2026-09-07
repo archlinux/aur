@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd "$srcdir/deepseek-harness"
-  pnpm run build
+  pnpm run build:official
 
   rm -rf dist/aur-dsh dist/aur-vendor
   pnpm exec tsx scripts/release/pack.ts --family vendor --out dist/aur-vendor
