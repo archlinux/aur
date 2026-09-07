@@ -3,10 +3,10 @@
 # Submit by pushing this (plus the generated .SRCINFO) to ssh://aur@aur.archlinux.org/mailbox-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=mailbox-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Desktop mail client with a ribbon, calendar peek and reading pane (POP3, IMAP, SMTP)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/codingncaffeine/Mailbox"
 license=('GPL-3.0-or-later')
 provides=('mailbox')
@@ -18,22 +18,32 @@ depends=('glibc' 'gcc-libs' 'bash'
          'fontconfig' 'libx11' 'libxext' 'libxi' 'libxrandr' 'libxcursor' 'libice' 'libsm'
          'libglvnd' 'wayland' 'libxkbcommon' 'mesa' 'glib2' 'libsoup3'
          'wpewebkit' 'libwpe' 'wpebackend-fdo' 'libsecret' 'libnotify')
-optdepends=('hunspell-en_us: spelling, against the desktop dictionaries'
+optdepends=('libldap: look people up in a company or university LDAP directory'
+            'hunspell-en_us: spelling, against the desktop dictionaries'
             'ttf-carlito: renders mail set in Calibri at the same metrics'
             'ttf-caladea: renders mail set in Cambria at the same metrics'
             'gtk3: file dialogs where no desktop portal answers'
             'xdg-desktop-portal: file dialogs through the desktop')
 options=('!strip')   # self-contained .NET bundle — stripping breaks it
-source=("$url/releases/download/v$pkgver/Mailbox-$pkgver-linux-x64.tar.gz")
-sha256sums=('b49bda0792fa493a8a17dbb844860e11b18f3e9cf3da380f74abdca2938c47f0')
+# One tarball per machine, each a self-contained publish for that architecture. The .NET names
+# differ from Arch's — linux-x64 and linux-arm64 against x86_64 and aarch64 — so the release
+# asset's name is not the array's suffix and the two cannot be folded into one line.
+source_x86_64=("$url/releases/download/v$pkgver/Mailbox-$pkgver-linux-x64.tar.gz")
+source_aarch64=("$url/releases/download/v$pkgver/Mailbox-$pkgver-linux-arm64.tar.gz")
+sha256sums_x86_64=('38473001d9be017778a4ad26f525502d476edab643fd70944ef7018884590485')
+# Filled from the release's own aarch64 tarball, the same step as the line above it. Until an
+# aarch64 asset is published there is nothing to hash, and a hash that is merely plausible is
+# worse than one makepkg refuses.
+sha256sums_aarch64=('SKIP')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/mailbox" "$pkgdir/usr/bin" "$pkgdir/usr/share/doc/mailbox"
     cp -a "$srcdir"/. "$pkgdir/usr/lib/mailbox/"
 
     # makepkg links every source file into srcdir, and the copy above would ship that link as
-    # a dangling symlink in every install.
-    rm -f "$pkgdir/usr/lib/mailbox/Mailbox-$pkgver-linux-x64.tar.gz"
+    # a dangling symlink in every install. Globbed over the architecture: srcdir holds whichever
+    # of the two tarballs this machine's build downloaded.
+    rm -f "$pkgdir/usr/lib/mailbox/Mailbox-$pkgver-linux-"*.tar.gz
 
     # The tarball carries the desktop files and licences for a reader who unpacks it by hand;
     # here they go where a package puts them.
