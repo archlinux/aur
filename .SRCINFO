@@ -1,13 +1,13 @@
 pkgbase = lucide-font
 	pkgdesc = Beautiful & consistent icon toolkit made by the community.
-	pkgver = 1.39.0
+	pkgver = 1.41.0
 	pkgrel = 1
 	url = https://lucide.dev
 	arch = any
 	license = ISC
-	source = lucide-font-1.39.0.zip::https://github.com/lucide-icons/lucide/releases/download/1.39.0/lucide-font-1.39.0.zip
-	source = LICENSE-1.39.0::https://raw.githubusercontent.com/lucide-icons/lucide/1.39.0/LICENSE
-	sha256sums = c8f6afe489de3785a746add40b1dc8a8bbfda659c31ef38d9d4e3c816871238d
+	source = lucide-font-1.41.0.zip::https://github.com/lucide-icons/lucide/releases/download/1.41.0/lucide-font-1.41.0.zip
+	source = LICENSE-1.41.0::https://raw.githubusercontent.com/lucide-icons/lucide/1.41.0/LICENSE
+	sha256sums = df17b2ca43256d0bd4eb695e42892164a1497a5a8c61510191c6290217cc4279
 	sha256sums = b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57
 
 pkgname = eot-lucide-font
