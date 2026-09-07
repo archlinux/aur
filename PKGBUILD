@@ -76,14 +76,14 @@ prepare() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     find electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     cp .env.example .env
-    #NODE_ENV=development    npm install
+    NODE_ENV=development    npm install
 }
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	_set_build_env
     _ensure_local_nvm
-    #ELECTRON=true NODE_ENV=production     npm run build
-    #ELECTRON=true NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
+    ELECTRON=true NODE_ENV=production     npm run build
+    ELECTRON=true NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
