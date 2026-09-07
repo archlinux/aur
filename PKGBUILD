@@ -1,7 +1,7 @@
 # Maintainer: guglovich <https://github.com/guglovich>
-# Created with assistance from Gemini 3.1 Pro.
+# Created with assistance from GLM 5.3 Flash.
 pkgname=transmission-remote-slint
-pkgver=0.6.3
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Lightweight Transmission BitTorrent GUI built with Slint (no GTK)"
 arch=('x86_64')
@@ -29,15 +29,14 @@ optdepends=(
 )
 provides=("$pkgname")
 conflicts=('transmission-remote-slint-bin')
-options=(!debug)
+options=(!debug !lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/guglovich/Transmission-Remote-Slint/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4335f78c1561eb4f71f320cfb3e0ce70e81dde8104b079b5d37c9c84930fd0af')
+sha256sums=('a642e8dc30cc15fa069e26791f6a4fe93362896a12e44615a74c571f21b03684')
 
 prepare() {
     cd "Transmission-Remote-Slint-${pkgver}"
     export CARGO_HOME="$srcdir/cargo-home"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-    sed -i 's/slint        = "1.7"/slint        = { version = "1.7", features = ["backend-winit"] }/' Cargo.toml
 }
 
 build() {
