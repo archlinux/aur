@@ -1,6 +1,6 @@
 pkgbase = xytz
 	pkgdesc = a beautiful TUI YouTube Downloader
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/xdagiz/xytz
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = xytz
 	conflicts = xytz-bin
 	provides = xytz
 	
-	source = https://github.com/xdagiz/xytz/releases/download/v0.9.2/xytz_0.9.2.tar.gz
-	sha256sums = 1179c764f0dc71783c0f019d55a1414aaf8ff018cf1a75232777ba23dc87e73e
+	source = https://github.com/xdagiz/xytz/releases/download/v0.9.3/xytz_0.9.3.tar.gz
+	sha256sums = 2afd673574ba21d62e9b2a25c813bc6d859f44aebcdbdbf8398f9f83ab16b257
 	
 pkgname = xytz
