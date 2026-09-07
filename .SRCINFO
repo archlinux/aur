@@ -1,6 +1,6 @@
 pkgbase = stoolap
 	pkgdesc = Modern Embedded SQL Database written in Rust
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/stoolap/stoolap
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = stoolap
 	makedepends = rust
 	provides = stoolap
 	options = !lto
-	source = stoolap-0.4.0.tar.gz::https://github.com/stoolap/stoolap/archive/refs/tags/v0.4.0.tar.gz
-	b2sums = 1301baed32346fe910e682ec83ae17b937a277d3a384f11d956c4155597abeed8713292f455d6f87f12f119a32eb8adb38c062b3361e903d7d488cd38a32524a
+	source = stoolap-0.4.1.tar.gz::https://github.com/stoolap/stoolap/archive/refs/tags/v0.4.1.tar.gz
+	b2sums = 2cbbf8c478810b6368aaecbaa4cbd594340fc9ca8b9aed5f73c897675c832a8b666d9363f09bedb8017a1af0445fab7bbc8f88427aefa0100b9f09904da11552
 
 pkgname = stoolap
