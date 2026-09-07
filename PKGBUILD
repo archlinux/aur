@@ -1,7 +1,7 @@
 # Maintainer: taxin-404 <taxin404@duck.com>
 
 pkgname=flea-git
-pkgver=0.1.3.r0.g979ad25
+pkgver=0.1.4.r0.g58a45fd
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy (git version)'
 arch=('x86_64')
