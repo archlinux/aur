@@ -1,10 +1,10 @@
 pkgbase = dbx
 	pkgdesc = Open-source database management tool (Tauri-based)
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/t8y2/dbx
 	arch = x86_64
-	license = AGPL-3.0-only
+	license = Apache-2.0
 	makedepends = rust
 	makedepends = cargo
 	makedepends = nodejs
@@ -21,7 +21,7 @@ pkgbase = dbx
 	conflicts = dbx-bin
 	options = !lto
 	options = !debug
-	source = dbx-0.6.5.tar.gz::https://github.com/t8y2/dbx/archive/refs/tags/v0.6.5.tar.gz
-	sha256sums = 18998a42bc70e2537d49747d95e38925bfed1f7075b74094df33c0ba2020cf1f
+	source = dbx-0.6.6.tar.gz::https://github.com/t8y2/dbx/archive/refs/tags/v0.6.6.tar.gz
+	sha256sums = ae856034e52033c7fe4fa622d622c8afc086dc471f5e5cdb3123b571cc6e3d36
 
 pkgname = dbx
