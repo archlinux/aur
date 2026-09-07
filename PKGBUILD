@@ -1,7 +1,7 @@
 pkgname=lufux-git
 pkgver=1.3.6
 pkgrel=1
-pkgdesc="Minimalist GUI tool to create bootable USB drives"
+pkgdesc="Create bootable USB drives on Linux, including Windows To Go"
 arch=('any')
 url="https://github.com/Advnirr/lufux"
 license=('GPL3')

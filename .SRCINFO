@@ -1,5 +1,5 @@
 pkgbase = lufux-git
-	pkgdesc = Minimalist GUI tool to create bootable USB drives
+	pkgdesc = Create bootable USB drives on Linux, including Windows To Go
 	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/Advnirr/lufux
