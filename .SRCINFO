@@ -1,6 +1,6 @@
 pkgbase = oxfmt-bin
 	pkgdesc = Oxfmt is a high-performance formatter for the JavaScript ecosystem
-	pkgver = 0.66.0
+	pkgver = 0.67.0
 	pkgrel = 1
 	url = https://oxc.rs
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = oxfmt-bin
 	optdepends = oxlint
 	provides = oxfmt
 	conflicts = oxfmt
-	source = README-0.66.0.md::https://raw.githubusercontent.com/oxc-project/oxc/apps_v1.81.0/README.md
-	source = LICENSE-0.66.0::https://raw.githubusercontent.com/oxc-project/oxc/apps_v1.81.0/LICENSE
+	source = README-0.67.0.md::https://raw.githubusercontent.com/oxc-project/oxc/apps_v1.82.0/README.md
+	source = LICENSE-0.67.0::https://raw.githubusercontent.com/oxc-project/oxc/apps_v1.82.0/LICENSE
 	sha256sums = 324ce0bf668dd2add5bed0ab6b46cf582c46292e1b88fccb9f82a0d42edd1a56
 	sha256sums = 95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3
-	source_x86_64 = oxfmt-x86_64-unknown-linux-gnu-0.66.0.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.81.0/oxfmt-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = c64538f889330f1ca27c588b38b3605fd9ff477fa2eeb5efddb92c7e9862a9c8
-	source_aarch64 = oxfmt-aarch64-unknown-linux-gnu-0.66.0.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.81.0/oxfmt-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a85df4acc7ffd378ea5990712b769e580f5c9cd7818bb66f2449b3e362f6bae1
+	source_x86_64 = oxfmt-x86_64-unknown-linux-gnu-0.67.0.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.82.0/oxfmt-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7fcda58499e25a261069022f3c6b9827da4bcc729a6181214c0645b3e30d1603
+	source_aarch64 = oxfmt-aarch64-unknown-linux-gnu-0.67.0.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.82.0/oxfmt-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b738733446781432fc6874b9e9328def0c5cd1c69335bcf258078e429e4887e1
 
 pkgname = oxfmt-bin
