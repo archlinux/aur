@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wallet-recovery-wizard-bin
 _pkgname=Wallet.Recovery.Wizard
-pkgver=5.11.0
+pkgver=5.13.0
 _electronversion=22
 pkgrel=1
-pkgdesc="Electron-based home for all BitGo recovery tools ⛓️🔮.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Electron-based home for all BitGo recovery tools ⛓️🔮."
 arch=('x86_64')
 url="https://github.com/BitGo/wallet-recovery-wizard"
 license=('Apache-2.0')
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8766bfbfed4d53860b2f3f8a2c3eef85f592f910d9cb2954a8341165c189adb2'
+sha256sums=('6296c821fbe33ffe0c39fd594ce244f90009f8ff009cd7fa7591c99b7e53b5b0'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
