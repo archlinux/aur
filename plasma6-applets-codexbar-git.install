@@ -1,0 +1,17 @@
+post_install() {
+  cat <<'MSG'
+
+==> CodexBar installed. Add it from the Plasma widget browser, then configure
+    the providers from the widget settings.
+
+MSG
+}
+
+post_upgrade() {
+  cat <<'MSG'
+
+==> Restart Plasma to reload an existing CodexBar widget:
+      systemctl --user restart plasma-plasmashell.service
+
+MSG
+}

@@ -1,0 +1,22 @@
+pkgbase = plasma6-applets-codexbar-git
+	pkgdesc = KDE Plasma 6 panel widget for AI coding-provider usage (development version)
+	pkgver = 0.3.1.r6.g7f619f5
+	pkgrel = 1
+	url = https://github.com/mirsella/codexbar-plasmoid
+	install = plasma6-applets-codexbar-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = libplasma
+	depends = plasma5support
+	depends = ksvg
+	depends = kcmutils
+	depends = kirigami
+	depends = qt6-declarative
+	depends = codexbar-cli
+	provides = plasma6-applets-codexbar
+	conflicts = plasma6-applets-codexbar
+	source = codexbar-plasmoid::git+https://github.com/mirsella/codexbar-plasmoid.git
+	sha256sums = SKIP
+
+pkgname = plasma6-applets-codexbar-git

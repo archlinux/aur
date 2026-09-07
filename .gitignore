@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!README.md
+!plasma6-applets-codexbar-git.install
