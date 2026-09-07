@@ -2,7 +2,7 @@
 # Contributor: springtwr <springtwr@outlook.com>
 
 pkgname=trae-cn
-pkgver=2.3.79946
+pkgver=2.3.81498
 pkgrel=1
 pkgdesc="AI-powered IDE by ByteDance (Chinese Domestic Version)"
 arch=('x86_64' 'aarch64')
@@ -17,12 +17,12 @@ optdepends=('libappindicator-gtk3: System tray support'
 options=('!strip' '!debug')
 install=${pkgname}.install
 source=("trae-cn.sh" "trae-cn.desktop")
-source_x86_64=("Trae_CN-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.79946/linux/TraeCode_CN-linux-x64.tar.gz")
-source_aarch64=("Trae_CN-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.79946/linux/TraeCode_CN-linux-arm64.tar.gz")
+source_x86_64=("Trae_CN-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.81498/linux/TraeCode_CN-linux-x64.tar.gz")
+source_aarch64=("Trae_CN-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.81498/linux/TraeCode_CN-linux-arm64.tar.gz")
 b2sums=('f7998b11d3f97f84895231ca1ca9a05bd3a97106f363744fc5f13402c15c419cc56d09e52c9366bfbd75c016b0aada69286bef8879df4925df0ef446212d7c45'
             '02d2c5d433e4d56a958bc7766563d977d79070f06c94bfa5829d2eb3c20c50111c3ff5174109bdb6f8f20cafdf4730f053f37c3a7a03e6b0f466446981dcc407')
-b2sums_x86_64=('c56b3c098b2e3e1e1a36d7c453fe6fa4f1bc1d00a9321fadfc40df81c4c8b00c3f6a4e240d0f667dd84c4947a60d7c535b196a0f5e765cbbb5037fdac804bbd9')
-b2sums_aarch64=('0c1a5fbee188cb88e3f68ba992caffab112eaa0e67ab66056d24ce28ce5a4c0ce44e79078e0f1251b8fffa069e3cf2361b569f148cae1860e751ccef09d95787')
+b2sums_x86_64=('52b3a5600a98b127dcb50047f2193aa09d072ad44dc8a01bd7dcf6f61b81804b1a0e2c0a6261d06f0b4802485662af8c7fc8b42522cfc58e7cb94bb90a4525c6')
+b2sums_aarch64=('3dd7d8065913a2ae66dd8af52b1211ee86f7fcdd820cc912bc60bcf6efa93e2804d81a3a4adbb1f70501bdb19a6c29da985ea21e167d0984eb37a5eb3f678623')
 
 package() {
     install -d "${pkgdir}/opt/trae-cn"
