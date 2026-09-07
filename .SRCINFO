@@ -1,0 +1,19 @@
+pkgbase = hackman3d-control-deck
+	pkgdesc = HackMan3D Control Deck (HCD) is a family of programmable desktop controllers. HCD-BASE and HCD Plus use an Arduino Pro Micro; HCD Pro uses an ESP32-S3 touchscreen. This repository contains the shared Windows/macOS/Linux configuration app, the branded interface and the firmware for all three models.
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = https://github.com/HackMan3D/Hackman3D-Control-Deck/tree/main
+	arch = x86_64
+	license = Creative Commons (4.0 International License)
+	depends = avrdude
+	depends = dpkg
+	depends = appimagetool-bin
+	provides = hackman3d-control-deck
+	conflicts = hackman3d-control-deck
+	options = !strip
+	options = !zipman
+	options = !debug
+	source = hackman3d-control-deck-v1.5.5.zip::https://github.com/HackMan3D/Hackman3D-Control-Deck/archive/refs/heads/main.zip
+	sha256sums = da72fc953d82e1f330b3d9a3108637cb205b04ea4da1a515d8c57f0f3e74d5f7
+
+pkgname = hackman3d-control-deck
