@@ -1,13 +1,13 @@
 pkgbase = awoolt-bin
-	pkgdesc = interactively browse vault/openbao in the terminal.
-	pkgver = 0.3.0
+	pkgdesc = A simple TUI for your openbao KV engines.
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/jon4hz/awoolt
 	license = MIT
 	conflicts = awoolt
 	provides = awoolt
 	arch = x86_64
-	source_x86_64 = https://github.com/jon4hz/awoolt/releases/download/v0.3.0/awoolt-v0.3.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 96e61f97e6862aca18c13a291ae6bb4746770ba9f85be4534e4aef3bdf159e08
+	source_x86_64 = https://github.com/jon4hz/awoolt/releases/download/v0.4.0/awoolt-v0.4.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = a31c0e802c5945d14744555f7ef945271cc4dbda06a8f1de5b1f7621e699bd4d
 	
 pkgname = awoolt-bin
