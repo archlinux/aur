@@ -3,9 +3,9 @@
 _name=tree-sitter-php
 pkgname=python-tree-sitter-php
 pkgver=0.24.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Php grammar for tree-sitter"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/tree-sitter/tree-sitter-php"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
