@@ -1,19 +1,19 @@
 pkgbase = redis-gui-bin
-	pkgdesc = Modern graphical user interface to peek into redis database (unofficial)(Prebuilt version.Use system-wide electron)
-	pkgver = 2.3.0
-	pkgrel = 7
+	pkgdesc = 🔬 Modern graphical user interface to peek into redis database.
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/ekvedaras/redis-gui
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
-	depends = electron19
-	provides = redis-gui=2.3.0
+	depends = electron44
+	provides = redis-gui=2.4.0
 	conflicts = redis-gui
-	source = redis-gui-2.3.0.AppImage::https://github.com/ekvedaras/redis-gui/releases/download/v2.3.0/redis-gui-2.3.0.AppImage
-	source = LICENSE-2.3.0::https://raw.githubusercontent.com/ekvedaras/redis-gui/v2.3.0/LICENSE
+	source = redis-gui-2.4.0-x86_64.AppImage::https://github.com/ekvedaras/redis-gui/releases/download/v2.4.0/redis-gui-2.4.0.AppImage
+	source = LICENSE-2.4.0::https://raw.githubusercontent.com/ekvedaras/redis-gui/v2.4.0/LICENSE
 	source = redis-gui.sh
-	sha256sums = a6867340661adc15b95b569c5bd0a82fb3dd61c9e76677d368f06367ce7d97ef
+	sha256sums = f15be4e9a9a73d684a9bbe38f779718b24ec6b9770ca157c2522620d0d85bcdf
 	sha256sums = ac76bfd52440815cb3e8ec5ea00f1f9b82c9b404219814f2f05c3fe44a9446c5
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = redis-gui-bin
