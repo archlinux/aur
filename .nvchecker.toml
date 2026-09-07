@@ -1,0 +1,8 @@
+[ntfysh-bin]
+source = "github"
+github = "binwiederhier/ntfy"
+use_latest_release = true
+
+
+prefix = "v"
+
