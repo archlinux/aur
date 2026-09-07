@@ -1,12 +1,13 @@
 post_install() {
-    # 1. Загрузка модуля ec_sys для записи в EC
+    # 1. Загрузка модуля ядра ec_sys с поддержкой записи
+    modprobe -r ec_sys 2>/dev/null || true
     modprobe ec_sys write_support=1 2>/dev/null || true
 
-    # 2. Активация службы управления вентиляторами
+    # 2. Активация системной службы управления вентиляторами
     systemctl daemon-reload 2>/dev/null || true
     systemctl enable --now acer-fans.service 2>/dev/null || true
 
-    # 3. Автоматическая настройка биндингов Hyprland для всех пользователей системы
+    # 3. Автоматическая настройка биндингов Hyprland для всех пользователей
     for user_home in /home/*; do
         if [ -d "$user_home/.config/hypr" ]; then
             u=$(basename "$user_home")
@@ -26,5 +27,29 @@ post_upgrade() {
 }
 
 pre_remove() {
-    systemctl disable --now acer-fans.service 2>/dev/null || true
+    # 1. Остановка и отключение системной службы
+    systemctl stop acer-fans.service 2>/dev/null || true
+    systemctl disable acer-fans.service 2>/dev/null || true
+
+    # 2. Автоматическая очистка биндингов Hyprland из конфигурационных файлов пользователей
+    for user_home in /home/*; do
+        if [ -d "$user_home/.config/hypr" ]; then
+            u=$(basename "$user_home")
+            if [ -x /usr/lib/acer-sense/scripts/hyprland-setup.sh ]; then
+                su - "$u" -c "/usr/lib/acer-sense/scripts/hyprland-setup.sh remove" 2>/dev/null || true
+            fi
+        fi
+    done
+}
+
+post_remove() {
+    systemctl daemon-reload 2>/dev/null || true
+
+    # 3. Полное удаление пользовательских конфигураций и кэша при -Rns
+    for user_home in /home/*; do
+        rm -rf "$user_home/.config/acer-sense" "$user_home/.config/acer-sense.json" 2>/dev/null || true
+        rm -f "$user_home/.config/systemd/user/mic-sync.service" 2>/dev/null || true
+    done
+
+    echo ":: [Acer Sense] Приложение, службы, биндинги Hyprland и конфигурации полностью удалены."
 }
