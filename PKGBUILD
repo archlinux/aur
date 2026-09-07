@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r225.c4cc528
-pkgrel=1
+pkgrel=2
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -28,14 +28,14 @@ optdepends=(
     'webp-pixbuf-loader: WebP support' 'libgsf: File format support' 'xdg-desktop-portal-gtk: GTK portal' 'xdg-desktop-portal-gnome: Gnome portal (legacy, not required for niri built-in screencast)'
     'gst-plugins-base: GStreamer' 'gst-plugins-good: GStreamer' 'gst-libav: GStreamer'
     'thunar-archive-plugin: Thunar plugin' 'thunar-volman: Thunar volume manager'
-    'bat: Cat clone' 'bazaar: Version control' 'bluetui: Bluetooth TUI' 'clipnotify: Clipboard notify'
+    'bat: Cat clone' 'bazaar: Flatpak app store' 'bluetui: Bluetooth TUI' 'clipnotify: Clipboard notify'
     'xclip: X11 clipboard' 'eza: ls replacement' 'fish: Shell' 'starship: Shell prompt' 'zoxide: cd replacement'
     'satty: Screenshot editor' 'wf-recorder: Screen recorder' 'wl-screenrec-git: Screen recorder'
     'chafa: Terminal image viewer' 'timg: Terminal image viewer' 'imv: Image viewer' 'imagemagick: Image tools'
     'waifu2x-ncnn-vulkan: Image upscaler' 'jq: JSON processor' 'nwg-look: GTK settings' 'pacman-contrib: Pacman tools'
     'wlsunset: Gamma adjustment' 'pavucontrol: Audio control' 'downgrade: Package downgrade'
     'strace: System call tracer' 'xdg-terminal-exec: XDG terminal' 'kitty: Terminal emulator' 'firefox: Web browser'
-    'fastfetch: System info' 'btop: Resource monitor' 'gdu: Disk usage' 'opencode: Code opener'
+    'fastfetch: System info' 'btop: Resource monitor' 'gdu: Disk usage'
     'shorin-contrib-git: Shorin tools' 'linuxqq-clipsync-git: Clipboard sync' 'ddcutil-service: DDC util'
     'python-pywalfox: Firefox theming' 'waypaper: Wallpaper setter' 
     'wl-longshot-git: Screenshot tool' 'shorin-screenrec-menu-git: Screen record menu' 'shorin-proton-wrapper-git: Proton wrapper for Windows executables'
