@@ -7,7 +7,7 @@ _pkgbase=kaomoji-collection
 pkgname=splatmoji-kaomojiya
 pkgdesc="Splatmoji-formatted version of the Kaomojiya kaomoji collection"
 pkgver=r1.2ca1b39
-pkgrel=1
+pkgrel=2
 
 arch=(x86_64)
 url="https://github.com/kaomojiya-collection/kaomoji-collection"
@@ -37,5 +37,5 @@ package(){
 	jq -r 'to_entries[] | .value[] as $kao | [$kao, .key] | @tsv' "$_pkgbase/kaomoji.json" > "$_tsv"
 	
 	install -dm700 "$pkgdir/$HOME"
-	install -Dm644 "$_tsv"  "$pkgdir/$HOME/.local/share/splatmoji/data/custom/$_tsv"
+	install -Dm644 "$_tsv"  "$pkgdir/$HOME/.local/share/splatmoji/data/aur/$_tsv"
 }
