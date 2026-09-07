@@ -1,7 +1,4 @@
-src
-pkg
-PrismLauncher
-libnbtplusplus
-
-*.tar.gz
-*.tar.zst
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
