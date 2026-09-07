@@ -1,13 +1,13 @@
 pkgbase = zmx
 	pkgdesc = Session persistence for terminal processes
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://zmx.sh/
 	arch = x86_64
 	license = MIT
 	makedepends = zig
 	conflicts = zmx-git
-	source = zmx-0.8.0.tar.gz::https://github.com/neurosnap/zmx/archive/refs/tags/v0.8.0.zip
-	sha512sums = 5e6cd690df3c01d5a2b1882a383e582c0836694c22430414ce2e07c9806c8935807d87c1a45e36a611efa3ed2b78e9810e6877681653e321c9d8ca4a1a76c95d
+	source = zmx-0.8.1.tar.gz::https://github.com/neurosnap/zmx/archive/refs/tags/v0.8.1.zip
+	sha512sums = bc654d3b273f01e63c6fd6e2229c6313ce36daae7a707a90409b7a6b58a8b5dd0c905988af4a6a0bc94d7de02269c02480b6c35e2c6749a44eec03b63e41c0bc
 
 pkgname = zmx
