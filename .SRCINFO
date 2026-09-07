@@ -1,9 +1,10 @@
 pkgbase = python-tree-sitter-powershell
 	pkgdesc = Powershell grammar for tree-sitter
 	pkgver = 0.26.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/airbus-cert/tree-sitter-powershell
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
