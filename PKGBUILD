@@ -4,12 +4,14 @@ _name='history-search-multi-word'
 
 pkgname="zsh-${_name}-git"
 pkgver=r320.55d8e06
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-word, syntax highlighted history searching for Zsh'
 arch=('any')
 license=('MIT')
 url='https://github.com/zdharma-continuum/history-search-multi-word'
 depends=('zsh>=5.0.0')
+provides=("zsh-${_name}=${pkgver}")
+conflicts=("zsh-${_name}")
 makedepends=('git')
 source=("${_name}::${url//https/git+https}.git")
 sha512sums=('SKIP')
