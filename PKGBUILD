@@ -11,7 +11,7 @@ depends=('gtk4' 'libadwaita' 'networkmanager' 'gcc-libs' 'glibc')
 makedepends=('cargo')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('db4ebfe03c5504b4d1f1be1c423883e03c864558f127108e0d7dcd7a4547978e9b8648fc9cb0fd948b3060ce33bde0ea7544b667cf730c2c5fdf7d1c4824086a')
+b2sums=('e91a470f01dbc8765bba982f6fed1d7f414d8d0eed213ce9f9cd14366eda996293a2721b7567245bcfffca9caf87998c20833a242eb2635f5bfbd35281e33fb0')
 
 prepare() {
   cd "$_gitname-$pkgver"
