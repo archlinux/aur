@@ -1,5 +1,5 @@
-# Maintainer: Shatur95 <genaloner@gmail.com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Shatur95 <genaloner@gmail.com>
 # Contributor: ful1e5 <kaizmandhu at gmail dot com>
 
 pkgname=bibata-cursor-theme
