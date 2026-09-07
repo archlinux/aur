@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="eBPF-based Ethernet traffic monitor using TC, XDP, kprobes and cgroups"
 
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ install="${_appname}.install"
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
-sha256sums_x86_64=('be84c6c2a01b240a9dc97c2e054f5b8498e8d67149de36d3533863b285b4d21c')
+sha256sums_x86_64=('c04a3dcdf701d0b9b4c838c2be942492380d54f1ffd1bc43c2bbc029213cce01')
 
 
 package() {
