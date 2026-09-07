@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 _pkgname=xjtutoolbox
 pkgname=xjtutoolbox-git
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="仙交百宝箱：西安交通大学一站式校园服务工具（Git 最新源码版）"
 arch=('any')
@@ -33,7 +33,12 @@ depends=(
     'python-tqdm'
     'python-pytz'
     'python-markdown'
+    'python-pygments'
     'python-colorama'
+    'python-platformdirs'
+    'python-packaging'
+    'python-psutil'
+    'python-typing_extensions'
     'libnotify'
     'qt5-base'
     'qt5-svg'
@@ -41,6 +46,7 @@ depends=(
     'python-fake-useragent'
     'python-plyer'
     'python-darkdetect'
+    'python-xcffib'
 )
 
 makedepends=('git' 'python-pip')
