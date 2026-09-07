@@ -1,6 +1,6 @@
 pkgbase = story-writer-bin
 	pkgdesc = A very excellent knowledge management software.小书匠是一款非常优秀的知识管理软件.
-	pkgver = 8.14.0
+	pkgver = 8.16.0
 	pkgrel = 1
 	url = http://soft.xiaoshujiang.com/
 	arch = i686
@@ -20,15 +20,15 @@ pkgbase = story-writer-bin
 	depends = mesa
 	depends = libxkbcommon
 	depends = libcups
-	provides = story-writer=8.14.0
+	provides = story-writer=8.16.0
 	conflicts = story-writer
-	noextract = story-writer-8.14.0-x86_64.zip
+	noextract = story-writer-8.16.0-x86_64.zip
 	options = !strip
 	source = story-writer.sh
 	sha256sums = 39a52bd55470c5bdbc9bcdb2d801d61aacb374093a77c0435a13dd8291ab3811
-	source_i686 = story-writer-8.14.0-i686.zip::https://github.com/suziwen/markdownxiaoshujiang/releases/download/v8.14.0/Story-writer-linux32.zip
-	sha256sums_i686 = 944633a2effed03ab859eb9a8d1aa3cf61bed9a7dddee0aad991fd5c6e72ffce
-	source_x86_64 = story-writer-8.14.0-x86_64.zip::https://github.com/suziwen/markdownxiaoshujiang/releases/download/v8.14.0/Story-writer-linux64.zip
-	sha256sums_x86_64 = dad2b952652e0e7d79d2726ebed5dbf7780a08f5315a6800aa76ac4a2801acf0
+	source_i686 = story-writer-8.16.0-i686.zip::https://github.com/suziwen/markdownxiaoshujiang/releases/download/v8.16.0/Story-writer-linux32.zip
+	sha256sums_i686 = 6698638f3e51dc352899fc97e05c8fc6924c011fabd6805bfa1f311f616dd716
+	source_x86_64 = story-writer-8.16.0-x86_64.zip::https://github.com/suziwen/markdownxiaoshujiang/releases/download/v8.16.0/Story-writer-linux64.zip
+	sha256sums_x86_64 = c43cc26b7683ccfb383759e75d4b8159019f10e83365023849259d7950857635
 
 pkgname = story-writer-bin
