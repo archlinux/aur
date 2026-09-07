@@ -1,6 +1,8 @@
+# Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
+
 pkgname=axiom
 pkgver=0.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful log analytics from the comfort of your command-line"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url="https://github.com/axiomhq/cli"
