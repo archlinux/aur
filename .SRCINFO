@@ -1,16 +1,17 @@
 pkgbase = python-aiolimiter
 	pkgdesc = An efficient implementation of a rate limiter for asyncio
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/mjpieters/aiolimiter
 	arch = any
 	license = MIT
 	makedepends = python-build
+	makedepends = python-hatchling
 	makedepends = python-installer
-	makedepends = python-poetry-core
+	makedepends = python-uv-dynamic-versioning
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/aiolimiter/aiolimiter-1.2.1.tar.gz
-	sha256sums = e02a37ea1a855d9e832252a105420ad4d15011505512a1a1d814647451b5cca9
+	source = https://files.pythonhosted.org/packages/source/a/aiolimiter/aiolimiter-1.3.0.tar.gz
+	sha256sums = 7343008c2228e89def7d4ce29ab98ee98822bf5db69018c09c90088929f7c104
 
 pkgname = python-aiolimiter
