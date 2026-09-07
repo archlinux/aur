@@ -1,0 +1,38 @@
+pkgbase = lightburn-on-linux-git
+	pkgdesc = Unofficial Wine compatibility wrapper for LightBurn; install LightBurn separately
+	pkgver = 0.r5.g2424aab
+	pkgrel = 1
+	url = https://github.com/jlucaso1/lightburn-on-linux
+	arch = x86_64
+	license = MIT
+	checkdepends = shellcheck
+	checkdepends = desktop-file-utils
+	makedepends = git
+	makedepends = mingw-w64-gcc
+	depends = bash
+	depends = coreutils
+	depends = wine
+	optdepends = xorg-server-xvfb: headless setup with xvfb-run and its xorg-xauth dependency
+	optdepends = xorg-xwayland: graphical launch on Wayland with DISPLAY
+	provides = lightburn-on-linux=0.r5.g2424aab
+	conflicts = lightburn-on-linux
+	options = !strip
+	options = !debug
+	source = upstream::git+https://github.com/jlucaso1/lightburn-on-linux.git#branch=main
+	source = lightburn-on-linux
+	source = lightburn-on-linux-setup
+	source = lightburn-on-linux-map-serial
+	source = lightburn-on-linux.desktop
+	source = check-wrappers.sh
+	source = mock-bash.sh
+	source = README.md
+	sha256sums = SKIP
+	sha256sums = 9de0d748fe486876e09418fedce5a4a25aaafdf28928795d28f842b3c84b42ca
+	sha256sums = 98cfce43faed522093313df81bcd7dad4beac52d82717dfcd5b034e73736e71f
+	sha256sums = 86c1a450a2f18a73378f597b05087a5ea783e2df885583ff022c6f39a06c8029
+	sha256sums = 31ea737b27595ead2c0975b1cba6cf2de53fb7cd24dc285c5d78b778cc541c87
+	sha256sums = ef953f3914551cb4149e6a63023f4737099536ed2edd43835188463905b000ad
+	sha256sums = c6db6763d055691a69a8940868fa7c9fd3f426e4183a9ba1a463c25155501664
+	sha256sums = b5403d7a11fb16e0b43ac4d5b6c89fd5311efd88f0f763508859e3ecf7bb7148
+
+pkgname = lightburn-on-linux-git

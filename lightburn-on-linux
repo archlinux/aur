@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+if (( EUID == 0 )); then
+    printf 'Run lightburn-on-linux as a regular user, not root.\n' >&2
+    exit 1
+fi
+exec bash /usr/share/lightburn-on-linux/scripts/run.sh "$@"

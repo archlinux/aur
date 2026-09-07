@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=LightBurn on Linux
+Comment=Unofficial Wine compatibility wrapper; install LightBurn separately
+Exec=lightburn-on-linux
+TryExec=lightburn-on-linux
+Icon=applications-graphics
+Terminal=false
+Categories=Graphics;
+Keywords=laser;engraving;Wine;

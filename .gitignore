@@ -1,0 +1,7 @@
+/.cache/
+/upstream/
+/src/
+/pkg/
+/*.log
+/*.pkg.tar.*
+/*.src.tar.*

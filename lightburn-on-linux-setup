@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+if (( EUID == 0 )); then
+    printf 'Run lightburn-on-linux-setup as a regular user, not root.\n' >&2
+    exit 1
+fi
+export WINRTCAMSTUB_DLL=/usr/lib/lightburn-on-linux/winrtcamstub.dll
+export LIGHTBURN_LAUNCHER_EXE=/usr/lib/lightburn-on-linux/start-lightburn.exe
+exec bash /usr/share/lightburn-on-linux/scripts/install.sh "$@"
