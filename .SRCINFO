@@ -1,6 +1,6 @@
 pkgbase = stagereview
 	pkgdesc = AI-powered code review tool that organizes local code changes into logical chapters
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/ReviewStage/stage-cli
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = stagereview
 	depends = xdg-utils
 	depends = bash
 	depends = sh
-	noextract = stagereview-0.1.6.tgz
-	source = https://registry.npmjs.org/stagereview/-/stagereview-0.1.6.tgz
+	noextract = stagereview-0.1.7.tgz
+	source = https://registry.npmjs.org/stagereview/-/stagereview-0.1.7.tgz
 	source = LICENSE::https://raw.githubusercontent.com/ReviewStage/stage-cli/main/LICENSE
-	sha256sums = 58f2c667d65aef2976e531b82c40dcdfb60dc5cdb3b17964c8d7173f403beb1d
+	sha256sums = 3b7bb6d63493a11328c312f728f852bd4ba98be96f9d47c73c4723f3d6b7240e
 	sha256sums = f3c40b30c0a39199c3da204c53ac2c27166bf976cf5e526edce2c0154ce780d7
 
 pkgname = stagereview
