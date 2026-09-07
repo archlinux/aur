@@ -2,7 +2,7 @@
 
 _pkgname=klassy
 pkgname=klassy-bin
-pkgver=6.7.1
+pkgver=6.7.2
 pkgrel=1
 pkgdesc="Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop."
 arch=('x86_64')
@@ -11,28 +11,20 @@ license=('GPL-2.0-only AND GPL-3.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-lat
 
 depends=(
 	frameworkintegration
-	frameworkintegration5
 	gcc-libs
 	glibc
 	hicolor-icon-theme
 	kcmutils
 	kcolorscheme
 	kconfig
-	kconfig5
-	kconfigwidgets5
 	kcoreaddons
 	kdecoration
 	kguiaddons
-	kguiaddons5
 	ki18n
 	kiconthemes
-	kiconthemes5
 	kirigami
 	kwidgetsaddons
 	kwindowsystem
-	kwindowsystem5
-	qt5-base
-	qt5-declarative
 	qt6-base
 	qt6-declarative
 	qt6-svg
