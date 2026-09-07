@@ -1,0 +1,21 @@
+pkgbase = youtuibe-bin
+	pkgdesc = Prebuilt youTUIbe: a Ratatui frontend for yt-dlp
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sambuaneesh/youTUIbe
+	arch = x86_64
+	license = MIT
+	depends = yt-dlp
+	depends = ffmpeg
+	optdepends = mpv: complete audio and video playback
+	optdepends = viu: full-terminal true-color artwork preview
+	optdepends = ffmpegthumbnailer: desktop thumbnails for source-quality Opus files
+	optdepends = aria2: optional accelerated downloading
+	optdepends = libnotify: desktop notifications
+	optdepends = xorg-xrandr: active display detection outside Hyprland
+	provides = youtuibe
+	conflicts = youtuibe
+	source = youtuibe-0.1.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/sambuaneesh/youTUIbe/releases/download/v0.1.0/youtuibe-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 1bc77d3fa8f50a4a038a0bc003e867884bd943287483c8581f0ca0000c19ba6d
+
+pkgname = youtuibe-bin
