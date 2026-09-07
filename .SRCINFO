@@ -1,0 +1,24 @@
+pkgbase = youtuibe
+	pkgdesc = A resilient, approachable Ratatui frontend for yt-dlp
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sambuaneesh/youTUIbe
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = yt-dlp
+	depends = ffmpeg
+	optdepends = mpv: complete audio and video playback
+	optdepends = viu: full-terminal true-color artwork preview
+	optdepends = ffmpegthumbnailer: desktop thumbnails for source-quality Opus files
+	optdepends = aria2: optional accelerated downloading
+	optdepends = libnotify: desktop notifications
+	optdepends = xorg-xrandr: active display detection outside Hyprland
+	provides = youtuibe
+	conflicts = youtuibe-bin
+	source = youtuibe-0.1.0.tar.gz::https://github.com/sambuaneesh/youTUIbe/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 1b3b8e30ec9e011990f47b8b67c29913baebd3961f14e150379cb1d0b4f16ef4
+
+pkgname = youtuibe
