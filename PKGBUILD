@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=uiua
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc='A stack-based array programming language'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -10,14 +10,17 @@ url='https://www.uiua.org/'
 license=('MIT')
 depends=('alsa-lib' 'gcc-libs' 'glibc' 'libffi')
 makedepends=('cargo' 'clang')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/uiua-lang/uiua/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('33a7dd4e3da688cf9f8f4a50550e7d1f52ddf8cd2b1838803e2d6143ae9eaef05f7a8dd5a12d54341fa81c56092e6e1f6c95ed70ec882691a0b80b5859defba6')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/uiua-lang/uiua/archive/refs/tags/${pkgver}.tar.gz"
+        'bump.patch')
+b2sums=('935f95721ec389e834f20a38be3e5b0f6d34ddc451938534be3574fe4c3909eb0df686f96f54bf19fa133deda765db3750e2c2a09fae2aa6541a19754a81c802'
+        '666935089486ec36b46a8a42a98245eee2e2663e739c517f7fef9311e554ef1b31ac5e0f89e0ac96d01599ef488a252ee3ce63afaa1adfab5ee5d87f2eaf3286')
 options=(!lto)
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
 
     cd "${pkgname}-${pkgver}"
+    patch -Np1 -i "${srcdir}/bump.patch"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
