@@ -1,7 +1,7 @@
 # Maintainer: guglovich <https://github.com/guglovich>
 # Created with assistance from GLM 5.3 Flash.
 pkgname=transmission-remote-slint-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Lightweight Transmission BitTorrent GUI built with Slint (no GTK) — prebuilt binary"
 arch=('x86_64')
@@ -30,10 +30,10 @@ provides=('transmission-remote-slint')
 conflicts=('transmission-remote-slint')
 options=(!debug)
 source=(
-    "transmission-remote-slint::https://github.com/guglovich/Transmission-Remote-Slint/releases/download/v${pkgver}/transmission-remote-slint"
+    "transmission-remote-slint-v${pkgver}-linux-x64::https://github.com/guglovich/Transmission-Remote-Slint/releases/download/v${pkgver}/transmission-remote-slint-v${pkgver}-linux-x64"
     "app-icon.png::https://github.com/guglovich/Transmission-Remote-Slint/raw/v${pkgver}/ui/app-icon.png"
 )
-sha256sums=('548eadb06e8d4e8e611700fafa42e219fc9fa9bd81ffdb7a85af3ca76dd2eb70'
+sha256sums=('a6fb27861dfa59720798ddcd16be23ce3f1de2542fcc93f307d79eafa0a39139'
             'af466bb0c3838f5dfa8151d73842a5ee8eb21bae4929fe374a90dd22e79ea2e1')
 
 build() {
@@ -52,7 +52,7 @@ PYEOF
 
 package() {
     # Бинарник
-    install -Dm755 transmission-remote-slint \
+    install -Dm755 "transmission-remote-slint-v${pkgver}-linux-x64" \
         "$pkgdir/usr/bin/transmission-remote-slint"
 
     # Иконки в hicolor
