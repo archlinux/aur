@@ -1,4 +1,5 @@
-- Add password entry listing support for Proton Pass
-- Fix various issues with the handling of the askpass executable for both SSH and git
-- Fix the new application themes breaking icon sizes after switching between them
+- Add support for portable KeePassXC installations
+- Fix local system proxy setting sometimes breaking xpipe daemon connectivity
+- Fix dev build setup not properly loading extensions
+- Fix custom icon repositories setting not persisting after restart
 - Fix various NullPointers
