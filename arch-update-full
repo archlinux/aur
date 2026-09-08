@@ -101,6 +101,8 @@ NOTIFICAR_SENTINELA() {
         # usuário fechou/ignorou manualmente antes dos 20min // user closed/ignored manually before 20min
         echo "[info] Notification closed or dismissed. No action taken."
     fi
+    if [ "$NOTIF_EXIT" -eq 124 ]; then
+        # timeout matou o not
 }
 
 FUNCTION_BOTAO() {
@@ -365,11 +367,79 @@ exec > >(tee -i "$LOG_ATUAL") 2>&1
 
 echo -e "${PINK_NEON}--- INICIANDO REGISTRO DE SESSÃO: $DATA_LOG ---${NC}"
 
+# --- VERIFICAÇÃO DE IDIOMA DO SISTEMA // SYSTEM LANGUAGE CHECK -----------------------------------------------------------------------------------<<<
+VERIFICAR_IDIOMA() {
+    # Captura a variável de locale do sistema (LC_ALL, LANG ou LC_MESSAGES)
+    local sys_locale="${LC_ALL:-${LANG:-$LC_MESSAGES}}"
+    
+    # Remove a codificação de caracteres se existir (ex: 'en_CA.UTF-8' vira 'en_CA')
+    local sys_lang="${sys_locale%%.*}"
+
+    # Variável global utilizada em todo o script para definir o idioma das mensagens
+    IDIOMA_SISTEMA=""
+
+    echo -e "${CYAN_NEON}[LANG CHECK] Detectando idioma do sistema operacional...${NC}"
+
+    case "$sys_lang" in
+        pt*)
+            IDIOMA_SISTEMA="PT_BR"
+            if [[ "$sys_lang" == "pt_BR" ]]; then
+                echo -e "${GREEN_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Padrão definido: PT-BR (Português Brasil)${NC}"
+            else
+                echo -e "${YELLOW_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Mapeado para: PT-BR (Português Brasil)${NC}"
+            fi
+            ;;
+
+        es*)
+            IDIOMA_SISTEMA="ES_ES"
+            if [[ "$sys_lang" == "es_ES" ]]; then
+                echo -e "${GREEN_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Padrão definido: ES-ES (Español España)${NC}"
+            else
+                echo -e "${YELLOW_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Mapeado para: ES-ES (Español España)${NC}"
+            fi
+            ;;
+
+        en*)
+            IDIOMA_SISTEMA="EN_US"
+            if [[ "$sys_lang" == "en_US" ]]; then
+                echo -e "${GREEN_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Padrão definido: EN-US (English United States)${NC}"
+            else
+                # Mapeia qualquer variação de inglês (en_CA, en_GB, en_AU, etc.) para EN-US
+                echo -e "${YELLOW_NEON}[LANG] Idioma detectado: '$sys_lang' ===> Mapeado para: EN-US (English United States)${NC}"
+            fi
+            ;;
+
+        *)
+            IDIOMA_SISTEMA="EN_US"
+            if [[ -n "$sys_lang" ]]; then
+                # Idioma não suportado diretamente (ex: ja_JP, fr_FR) caindo no Fallback EN-US
+                echo -e "${YELLOW_NEON}[LANG] Idioma não suportado: '$sys_lang' ===> Aplicando Fallback: EN-US (English United States)${NC}"
+            else
+                echo -e "${NEON_BLUE}[LANG] Nenhum locale definido no ambiente ===> Aplicando Padrão Global: EN-US${NC}"
+            fi
+            ;;
+    esac
+    echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
+    echo ""
+}
+
 
 # --- CABEÇALHO: ARCH UPDATE FULL BLOCK EDITION) -------------------------------------------------------------------------------------------<<<
 CABECALHO_MENU() {
-
 clear
+    echo ""
+
+    local lang_tag=""
+    case "$IDIOMA_SISTEMA" in
+        "PT_BR") lang_tag="PT-BR" ;;
+        "ES_ES") lang_tag="ES-ES" ;;
+        *)       lang_tag="EN-US" ;;
+    esac
+
+    # Exibe apenas a tag minimalista e neutra no topo
+    echo -e "${CYAN_NEON}[ LANG: ${YELLOW_NEON}${lang_tag}${CYAN_NEON} ]${NC}"
+    echo ""
+echo ""    
 echo -e "${NEON_BLUE}"
 echo "  █████╗ ██████╗  ██████╗██╗  ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗"
 echo "  ██╔══██╗██╔══██╗██╔════╝██║  ██║    ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝"
@@ -384,12 +454,12 @@ echo -e "                              ${NEON_BLUE}██╔══╝  ██║
 echo -e "                              ${NEON_BLUE}██║     ╚██████╔╝███████╗███████╗${NC}"
 echo -e "                              ${NEON_BLUE}╚═╝      ╚═════╝ ╚══════╝╚══════╝${NC}"
 echo ""
-echo -e "  ${PINK_NEON}──────────────────────────────── ${RED_NEON}-->VERSION 4.0-1 <--${PINK_NEON} ─────────────────────────────────${NC}"
+echo -e "  ${PINK_NEON}──────────────────────────────── ${RED_NEON}-->VERSION 4.0-2 <--${PINK_NEON} ─────────────────────────────────${NC}"
 echo -e "  ${PINK_NEON}───────────────────────>> UPDATING • AUTOMATING • SECURING <<───────────────────────${NC}"
 echo ""
 echo -e "  ${NEON_BLUE}─────────────>>[ MODULES: ROLLING_SYNC | AUR_INJECTION | INTEGRITY_AUDIT ]<<─────────────${NC}"
 echo -e "  ${NEON_BLUE}-----------------------------------------------------------------------------------------${NC}"
-echo -e "${RED_NEON}By: 𝕿𝖍𝖊 𝕾𝖊𝖛𝖊𝖓𝖙𝖍 ${NC}"
+echo -e "${RED_NEON}By: 𝕿𝖍𝖊 S𝖊𝖛𝖊𝖓𝖙𝖍 ${NC}"
 echo -e "${RED_NEON}-----------------${NC}"
 
 }
@@ -579,7 +649,7 @@ EXIBIR_NOTICIAS_ARCH() {
         echo -e "${WHITE_NEON}$NEWS_TITLE${NC}"
         
         echo ""
-        echo -e "${YELLOW_NEON}Link: ${WHITE_NEON}$NEWS_LINK${NC}"
+        echo -e "${YELLOW_NEON}Link:$NEWS_LINK"
         echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
         echo ""
 
@@ -621,50 +691,104 @@ EXIBIR_NOTICIAS_ARCH() {
 OTIMIZAR_ESPELHOS() {
     # Verifica primeiro se o reflector está instalado // First, check if reflector is installed
     if command -v reflector &> /dev/null; then
-        echo -e "${NEON_BLUE}(LANG: PT-BR) Gostaria de otimizar os espelhos de rede (Reflector)?${NC}"
-        echo -e "${NEON_BLUE}(LANG: EN-US) Would you like to optimize the network mirrors (Reflector)?${NC}" 
+        echo -e "${NEON_BLUE}[LANG: PT-BR] Gostaria de otimizar os espelhos de rede (Reflector)?${NC}"
+        echo -e "${NEON_BLUE}[LANG: EN-US] Would you like to optimize the network mirrors (Reflector)?${NC}" 
         echo ""
 
-        TEXTO_REFLECTOR=" OPTIMIZING NETWORK MIRRORS"
-        TAM_TEXTO=${#TEXTO_REFLECTOR}
-        ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+        local TEXTO_REFLECTOR=" OPTIMIZING NETWORK MIRRORS"
+        local TAM_TEXTO=${#TEXTO_REFLECTOR}
+        local ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
 
         echo -e "${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
         printf "${NEON_BLUE}║${NC}${PINK_NEON}%s%*s${NC}${NEON_BLUE}║${NC}\n" "$TEXTO_REFLECTOR" "$ESPACOS" ""
         echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
         
         echo ""
-        echo "(LANG: PT-BR): Busca os 7 espelhos mais rápidos. Pode demorar alguns segundos/minutos."
-        echo "(LANG: EN-US): Searches for the 7 fastest mirrors. May take a few seconds/minutes."
+        echo -e "${NEON_BLUE}[LANG: PT-BR] Busca os 7 espelhos mais rápidos. Pode demorar alguns segundos/minutos.${NC}"
+        echo -e "${NEON_BLUE}[LANG: EN-US] Searches for the 7 fastest mirrors. May take a few seconds/minutes.${NC}"
+        echo ""
+        
+        local OPCAO_REFLECTOR
+        echo -e "${YELLOW_NEON}[LANG: PT-BR] Iniciar otimização de rede? (S/N):${NC}"
+        read -rp "[LANG: EN-US] Start network optimization? (Y/N): " OPCAO_REFLECTOR
         echo ""
 
-        
-        echo "(LANG: PT-BR) Iniciar otimização de rede? (S/N):"
-        read -rp "(LANG: EN-US) Start network optimization? (Y/N):" OPCAO_REFLECTOR
-        echo ""
-
-        
         case "$OPCAO_REFLECTOR" in
             [SsYy]* )
-                echo -e "${YELLOW_NEON}(LANG: PT-BR): [BUSCANDO] Selecionando e salvando os 7 espelhos HTTPS mais rápidos...${NC}"
-                echo -e "${YELLOW_NEON}(LANG: EN-US): [SEARCHING] Selecting and saving the 7 fastest HTTPS mirrors...${NC}"
+                echo -e "${YELLOW_NEON}[LANG: PT-BR] [BUSCANDO] Selecionando e salvando os 7 espelhos HTTPS mais rápidos...${NC}"
+                echo -e "${YELLOW_NEON}[LANG: EN-US] [SEARCHING] Selecting and saving the 7 fastest HTTPS mirrors...${NC}"
                 echo ""
-                echo "(LANG: PT-BR): Isso pode levar alguns segundos/ minutos dependendo da sua conexão. Por favor, aguarde..."
-                echo "(LANG: EN-US): This may take a few seconds/minutes depending on your connection. Please wait..."
+                echo -e "${NEON_BLUE}[LANG: PT-BR] Isso pode levar alguns segundos/minutos dependendo da sua conexão. Por favor, aguarde...${NC}"
+                echo -e "${NEON_BLUE}[LANG: EN-US] This may take a few seconds/minutes depending on your connection. Please wait...${NC}"
                 echo ""
 
-                # Comando otimizado: Pega os 20 mais atualizados, testa e salva os 7 mais rápidos // Optimized command: Takes the 20 most updated, tests and saves the 7 fastest
-                sudo reflector --protocol https --latest 20 --fastest 7 --sort rate --save /etc/pacman.d/mirrorlist
-                
-                echo -e "${GREEN_NEON}(LANG: PT-BR): [OK] Otimização concluída com sucesso!${NC}"
-                echo -e "${GREEN_NEON}(LANG: EN-US): [OK] Optimization completed successfully!${NC}"
+                echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
+                # Comando otimizado: Pega os 20 mais atualizados, testa e salva os 7 mais rápidos // Optimized command: Gets the 20 most updated, tests and saves the 7 fastest
+                if sudo reflector --protocol https --latest 20 --fastest 7 --sort rate --save /etc/pacman.d/mirrorlist; then
+                    echo -e "${GREEN_NEON}[LANG: PT-BR] [OK] Otimização concluída com sucesso!${NC}"
+                    echo -e "${GREEN_NEON}[LANG: EN-US] [OK] Optimization completed successfully!${NC}"
+                    echo ""
+
+                    # --- NOVO BLOCO VISUAL COM PING (MS) ---
+                    echo -e "${CYAN_NEON}Lista de espelhos mais rápidos // List of fastest mirrors:${NC}"
+                    echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
+
+                    local rank=1
+                    local line
+                    local url
+                    local domain
+                    local ping_time
+                    local total_espelhos=0
+                    local espelhos_ok=0
+
+                    # Lê apenas as 7 primeiras linhas de Server no arquivo // Reads only the first 7 Server lines in the file
+                    while IFS= read -r line; do
+                        # Extrai apenas a URL (ex: https://mirror.ufpr.br/...) // Extracts only the URL
+                        url=$(echo "$line" | awk '{print $3}')
+
+                        # Extrai apenas o domínio para poder pingar (ex: mirror.ufpr.br) // Extracts only the domain to ping
+                        domain=$(echo "$url" | awk -F/ '{print $3}')
+
+                        # Dispara 1 único pacote de ping e pega a latência média (ms). Se falhar, retorna "N/A" // 1 ping packet, average latency; "N/A" on failure
+                        ping_time=$(ping -c 1 -W 1 "$domain" 2>/dev/null | awk -F'/' 'END{ print (/^rtt/ ? $5" ms" : "N/A") }')
+
+                        total_espelhos=$((total_espelhos + 1))
+                        if [[ "$ping_time" == "N/A" ]]; then
+                            printf "  ${YELLOW_NEON}[#%d]${NC} ${NEON_BLUE}%s${NC} ${RED_NEON}(sem resposta / no response)${NC}\n" "$rank" "$url"
+                        else
+                            printf "  ${YELLOW_NEON}[#%d]${NC} ${NEON_BLUE}%s${NC} ${PINK_NEON}(%s)${NC}\n" "$rank" "$url" "$ping_time"
+                            espelhos_ok=$((espelhos_ok + 1))
+                        fi
+
+                        ((rank++))
+                    done < <(grep '^Server' /etc/pacman.d/mirrorlist | head -n 7)
+
+                    echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
+                    echo ""
+                    # --- FIM DO BLOCO VISUAL ---
+
+                    if (( espelhos_ok < total_espelhos )); then
+                        echo -e "${YELLOW_NEON}[LANG: PT-BR] [AVISO] ${espelhos_ok} de ${total_espelhos} espelhos selecionados estão respondendo agora.${NC}"
+                        echo -e "${YELLOW_NEON}[LANG: PT-BR] Isso indica instabilidade em alguns espelhos no momento — não é um erro do script.${NC}"
+                        echo -e "${YELLOW_NEON}[LANG: EN-US] [NOTICE] ${espelhos_ok} of ${total_espelhos} selected mirrors are responding right now.${NC}"
+                        echo -e "${YELLOW_NEON}[LANG: EN-US] This indicates temporary instability in some mirrors — not a script error.${NC}"
+                        echo ""
+                    fi
+                else
+                    echo -e "${RED_NEON}[LANG: PT-BR] [ERRO] Não foi possível otimizar os espelhos.${NC}"
+                    echo -e "${RED_NEON}[LANG: PT-BR] Isso geralmente indica falha de conexão ou espelhos indisponíveis no momento — não é um erro do script.${NC}"
+                    echo -e "${RED_NEON}[LANG: EN-US] [ERROR] Could not optimize the mirrors.${NC}"
+                    echo -e "${RED_NEON}[LANG: EN-US] This usually indicates a connection issue or mirrors being unavailable right now — not a script error.${NC}"
+                    echo ""
+                fi
+
                 echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
                 echo ""
                 ;;
             
             [Nn]* | * )
-                echo -e "${YELLOW_NEON}(LANG: PT-BR): [SKIPPED] Otimização de rede pulada pelo usuário.${NC}"
-                echo -e "${YELLOW_NEON}(LANG: EN-US): [SKIPPED] Network optimization skipped by user.${NC}"
+                echo -e "${YELLOW_NEON}[LANG: PT-BR] [SKIPPED] Otimização de rede pulada pelo usuário.${NC}"
+                echo -e "${YELLOW_NEON}[LANG: EN-US] [SKIPPED] Network optimization skipped by user.${NC}"
                 echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
                 echo ""
                 ;;
@@ -672,24 +796,23 @@ OTIMIZAR_ESPELHOS() {
 
     else
         #Retorno visual caso a pessoa não tenha o reflector instalado // Visual return if the person does not have reflector installed
-        echo -e "${NEON_BLUE}(LANG: PT-BR) Otimização de espelhos de rede indisponível.${NC}"
+        echo -e "${NEON_BLUE}[LANG: PT-BR] Otimização de espelhos de rede indisponível.${NC}"
         
-        TEXTO_REFLECTOR=" NETWORK MIRROR OPTIMIZATION"
-        TAM_TEXTO=${#TEXTO_REFLECTOR}
-        ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
+        local TEXTO_REFLECTOR=" NETWORK MIRROR OPTIMIZATION"
+        local TAM_TEXTO=${#TEXTO_REFLECTOR}
+        local ESPACOS=$((LARGURA_BOX - TAM_TEXTO - 2))
 
         echo -e "${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC}"
         printf "${NEON_BLUE}║${NC}${PINK_NEON}%s%*s${NC}${NEON_BLUE}║${NC}\n" "$TEXTO_REFLECTOR" "$ESPACOS" ""
         echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
 
         echo ""
-        echo -e "${YELLOW_NEON}(LANG: PT-BR): [WARNING] Reflector não detectado. Pulando setor de otimização.${NC}"
-        echo -e "${YELLOW_NEON}(LANG: EN-US): [WARNING] Reflector not detected. Skipping network optimization sector.${NC}"
+        echo -e "${YELLOW_NEON}[LANG: PT-BR] [WARNING] Reflector não detectado. Pulando setor de otimização.${NC}"
+        echo -e "${YELLOW_NEON}[LANG: EN-US] [WARNING] Reflector not detected. Skipping network optimization sector.${NC}"
         echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
         echo ""
     fi
 }
-
 #REPOSITÓRIOS OFICIAIS (PACMAN) // OFFICIAL REPOSITORIES (PACMAN) -----------------------------------------------------------------------------<<<
 
 SINCRONIZAR_PACMAN() {
@@ -1091,8 +1214,8 @@ LIMPAR_CACHE() {
 #AUDITORIA DE INTEGRIDADE (OPCIONAL) // INTEGRITY AUDIT (OPTIONAL) -----------------------------------------------------------------------------<<<
 AUDITAR_INTEGRIDADE() {
 
-    echo -e "${NEON_BLUE}[LANG: PT-BR] Deseja auditar a integridade dos arquivos do sistema?${NC}"
-    echo -e "${NEON_BLUE}[LANG: EN-US] Do you want to audit system files integrity?${NC}"
+    echo -e "${NEON_BLUE}[LANG: PT-BR] Deseja auditar a integridade dos arquivos do sistema?(Isso pode Levar alguns minutos) ${NC}"
+    echo -e "${NEON_BLUE}[LANG: EN-US] Do you want to audit system files integrity?(This may take a few minutes) ${NC}"
     echo ""
 
     local TEXTO_AUDIT
@@ -1113,10 +1236,12 @@ AUDITAR_INTEGRIDADE() {
 
     echo ""
     if [[ "$escolha_auditoria" =~ ^[SsYy]$ ]]; then
-        status_msg "SYSTEM_INTEGRITY_CHECK"
+        echo -e "${NEON_BLUE}[LANG: PT-BR] [+] Iniciando auditoria de integridade do sistema...${NC}"
+        echo -e "${NEON_BLUE}[LANG: EN-US] [+] Starting system integrity audit...${NC}"
         echo ""
-        echo -e "${YELLOW_NEON}[LANG: EN-US] The Seventh is verifying Arch's fingerprints...${NC}"
+        sleep 0.5
         echo -e "${YELLOW_NEON}[LANG: PT-BR] The Seventh está verificando as digitais do Arch...${NC}"
+        echo -e "${YELLOW_NEON}[LANG: EN-US] The Seventh is verifying Arch's fingerprints...${NC}"
         echo ""
 
         local lista_real
@@ -1156,7 +1281,7 @@ FINALIZAR_SESSAO() {
     echo -e "${YELLOW_NEON}📂 $LOG_ATUAL${NC}"
     echo -e "${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
 
-    echo -e "      ${ASSINATURA_COR}© [2026] 𝑨𝑹𝑪𝑯 𝑼𝑷𝑫𝑨𝑻𝑬𝑹 𝑭𝑼𝑳𝑳 𝑷𝑹𝑶𝑻𝑶𝑪𝑶𝑳| 𝒃𝒚 𝑮𝒖𝒔𝒕𝒂𝒗𝒐 𝑮𝒊𝒂𝒏𝒆𝒍𝒊 (𝕿𝖍𝖊 𝕾𝖊𝖛𝖊𝖓𝖙𝖍)${NC}"
+    echo -e "      ${ASSINATURA_COR}© [2026] 𝑨𝑹𝑪𝑯 𝑼𝑷𝑫𝑨𝑻𝑬𝑹 𝑭𝑼𝑳𝑳 𝑷𝑹𝑶𝑻𝑶𝑪𝑶𝑳| 𝒃𝒚 𝑮𝒖𝒔𝒕𝒂𝒗𝒐 𝑮𝒊𝒂𝒏𝒆𝒍𝒊 (𝕿𝖍𝖊 S𝖊𝖛𝖊𝖓𝖙𝖍)${NC}"
 
     echo -e "${CYAN_NEON}--------------------------------------------------------------------------------------${NC}"
     echo -e "${MAGENTA_NEON}   >> STATUS: SEGURO  | O QUE DESEJA FAZER AGORA ? <<${NC}"
