@@ -1,6 +1,6 @@
 pkgbase = pcl-n-beta-bin
 	pkgdesc = 一个基于 PCL-CE 开发的 Minecraft 启动器
-	pkgver = 1.4.7
+	pkgver = 1.4.13
 	pkgrel = 1
 	url = https://github.com/PCL-N-Edition/PCL-N
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pcl-n-beta-bin
 	conflicts = pcl-n
 	conflicts = pcl-n-bin
 	options = !strip
-	source = https://github.com/PCL-N-Edition/PCL-N/releases/download/v1.4.7-beta/PCL_N_Beta_linux-x64_NoRuntime_installer.deb
-	sha256sums = 028845290581b821484e495f73f7a396b6c2682e88ff38d5bb0adf8d55c05301
+	source = pcl-n-beta-bin-1.4.13.deb::https://github.com/PCL-N-Edition/PCL-N/releases/download/v1.4.13/PCL_N_Release_linux-x64_NoRuntime_Installer.deb
+	sha256sums = 35955df7da39acee259cd5ed1688f208ded9607cefd3d47df734913deff81c6d
 
 pkgname = pcl-n-beta-bin
