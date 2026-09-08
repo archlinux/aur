@@ -10,6 +10,7 @@ pkgbase = rox-player
 	makedepends = curl
 	makedepends = gcc
 	makedepends = clang
+	makedepends = cmake
 	depends = alsa-lib
 	depends = glibc
 	depends = gcc-libs
