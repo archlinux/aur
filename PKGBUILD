@@ -3,7 +3,7 @@ _pkgname="vocage"
 pkgver=1.0.0.42.g86f9c6f
 pkgrel=1
 arch=('x86_64' 'i686')
-url="https://github.com/proycon/vocage"
+url="https://codeberg.com/proycon/vocage"
 pkgdesc="A minimalistic terminal-based vocabulary learner or flashcard tool, using a spaced repetition algorithm."
 license=('GPL-3.0+')
 depends=()
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo' 'git')
 checkdepends=()
 provides=('vocage')
 conflicts=('vocage')
-source=("$_pkgname::git+https://github.com/proycon/vocage.git")
+source=("$_pkgname::git+https://codeberg.com/proycon/vocage.git")
 sha256sums=('SKIP')
 
 pkgver() {
