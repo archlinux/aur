@@ -3,7 +3,7 @@
 pkgname='midnight-shell-git'
 _pkgname='midnight-shell'
 pkgver=r3087.bb7b565
-pkgrel=1
+pkgrel=2
 pkgdesc="DiM's fork of Caelestia-Shell"
 arch=('x86_64' 'aarch64')
 url='https://github.com/dim-ghub/midnight-shell.git'
