@@ -1,6 +1,6 @@
 # Maintainer: Henri Koski <henri.koski@bitbrewers.fi>
 pkgname=hcibridge
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Attach remote ESP32 Bluetooth bridges to the local Bluetooth stack"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -8,9 +8,9 @@ url="https://github.com/heppu/hcibridge"
 license=('MIT')
 depends=('bluez')
 makedepends=('zig')
-backup=('etc/hcibridge/config' 'etc/hcibridge/config.d/50-example.conf' 'etc/default/hcibridge')
+backup=('etc/hcibridge/hcibridge.conf' 'etc/hcibridge/hcibridge.conf.d/50-example.conf' 'etc/default/hcibridge')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/heppu/hcibridge/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2527453d78e37ab4a174086aea46bbc91ec68d34d5c0a15f09fb2c6d38e35f71')
+sha256sums=('c3a36a08b2812a6cb0b0853a20a09d07ee32e8b1f715c06e518258d49393917c')
 
 build() {
     cd "hcibridge-$pkgver"
@@ -33,7 +33,7 @@ package() {
     install -Dm644 host/systemd/hcibridge.service "$pkgdir/usr/lib/systemd/system/hcibridge.service"
     install -Dm644 host/systemd/hcibridge.env "$pkgdir/etc/default/hcibridge"
     install -Dm644 host/modules-load.conf "$pkgdir/usr/lib/modules-load.d/hci_vhci.conf"
-    install -Dm644 host/config/config "$pkgdir/etc/hcibridge/config"
-    install -Dm644 host/config/config.d/50-example.conf "$pkgdir/etc/hcibridge/config.d/50-example.conf"
+    install -Dm644 host/config/hcibridge.conf "$pkgdir/etc/hcibridge/hcibridge.conf"
+    install -Dm644 host/config/hcibridge.conf.d/50-example.conf "$pkgdir/etc/hcibridge/hcibridge.conf.d/50-example.conf"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
