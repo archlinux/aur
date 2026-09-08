@@ -1,16 +1,22 @@
 pkgbase = vite-plus-bin
 	pkgdesc = The Unified Toolchain for the Web
-	pkgver = 0.1.14
+	pkgver = 0.3.1
 	pkgrel = 1
-	url = https://github.com/voidzero-dev/vite-plus
+	url = https://viteplus.dev
 	arch = x86_64
 	license = MIT
-	depends = nodejs
-	source = https://registry.npmjs.org/@voidzero-dev/vite-plus-cli-linux-x64-gnu/-/vite-plus-cli-linux-x64-gnu-0.1.14.tgz
-	sha256sums = d1fbf589d3436f472c3fb53636d5b7dcd7393278093fa0e2e017539c5637f9e2
+	makedepends = npm
+	depends = glibc
+	depends = libgcc
+	provides = vite-plus=0.3.1
+	conflicts = vite-plus
+	options = !strip
+	options = !debug
+	source = package.json
+	source = package-lock.json
+	source = https://registry.npmjs.org/@voidzero-dev/vite-plus-cli-linux-x64-gnu/-/vite-plus-cli-linux-x64-gnu-0.3.1.tgz
+	sha256sums = 96ab26deeefcc9aed93f8a7bf10d3fa98ac36665374e63751ed9386b199c711a
+	sha256sums = 1ff3899c30681f599649a81a0c140e1f04b1241d202e248284cc95b657182f5a
+	sha256sums = 5e13716359487d987e3d437fcc0bef78a52f7db69ba128836135ace6be27e5f5
 
 pkgname = vite-plus-bin
-	pkgdesc = The Unified Toolchain for the Web
-	arch = x86_64
-	license = MIT
-	depends = nodejs
