@@ -1,0 +1,15 @@
+pkgbase = quantydb-bin
+	pkgdesc = One database that reshapes itself into whatever you need
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/QuantyRoot/QuantyDatabase
+	arch = x86_64
+	license = MIT
+	provides = quantydb
+	conflicts = quantydb
+	source = quantydb-0.4.0::https://github.com/QuantyRoot/QuantyDatabase/releases/download/v0.4.0/quantydb-linux-x86_64
+	sha256sums = e1ba7d283b8add76d1eb38bff47b1c3a48cbd42c3566884842496ddf8ed0c282
+	source = LICENSE-0.4.0::https://github.com/QuantyRoot/QuantyDatabase/raw/v0.4.0/LICENSE
+	sha256sums = SKIP
+
+pkgname = quantydb-bin
