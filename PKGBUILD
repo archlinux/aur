@@ -2,7 +2,7 @@
 
 pkgname=vercel-node
 _pkgname=vercel
-pkgver=59.11.7
+pkgver=59.12.0
 pkgrel=1
 _tarver=7.5.22
 pkgdesc='Command-line interface for Vercel'
@@ -15,12 +15,12 @@ license=('Apache-2.0')
 depends=('nodejs' 'glibc' 'gcc-libs')
 makedepends=('npm')
 optdepends=('python: local runtime emulation for @vercel/python and @vercel/fun')
-provides=('vercel')
+provides=("vercel=$pkgver")
 conflicts=('vercel')
-options=('!strip')
+options=('!strip' '!debug')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('34432b6f0ddd6501ab17140dcf6c5baa2e68fa1ce91eabcb2afef4fbf4db44eb')
+sha256sums=('ab22d674f49873c8475d0ec2dd5aeef6e3306abdbc1f9a296d89fec3a11d1b52')
 
 package() {
     local _stagedir="${srcdir}/${_pkgname}-${pkgver}-stage"
