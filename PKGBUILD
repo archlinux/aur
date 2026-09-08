@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-cli-git
-pkgver=desktop.windows.v0.8.0.beta.1.r0.g47171b419
+pkgver=0.8.0.beta.1.r2.g47171b41
 pkgrel=2
 pkgdesc='Command-line interface for controlling Paseo AI coding agents (git - built from main)'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,12 @@ options=('!strip')
 
 pkgver() {
 	cd "$srcdir/paseo"
-	if git describe --long --tags >/dev/null 2>&1; then
-		git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	# --match 'v[0-9]*': only mainline version tags. Upstream also tags
+	# per-platform releases (desktop-windows-*, android-*) at the same
+	# commits; without this, describe picks e.g. desktop-windows-v0.8.0
+	# and the pkgver comes out as desktop.windows....
+	if git describe --long --tags --match 'v[0-9]*' >/dev/null 2>&1; then
+		git describe --long --tags --match 'v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 	else
 		printf "0.7.2.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	fi
