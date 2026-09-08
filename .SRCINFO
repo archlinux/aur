@@ -1,7 +1,7 @@
 pkgbase = ekipyt
 	pkgdesc = Minimal ve güvenli yetki aracı, onepass ve custom PAM servisi ile
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://github.com/Hardcore-Team/yt-source
 	install = ekipyt.install
 	arch = x86_64

@@ -9,8 +9,8 @@
 
 # Maintainer: Yalçın Mete Kızılgün <kizilgunmete@gmail.com>
 pkgname=ekipyt
-pkgver=1.1
-pkgrel=2
+pkgver=1.3
+pkgrel=4
 pkgdesc="Minimal ve güvenli yetki aracı, onepass ve custom PAM servisi ile"
 arch=('x86_64')
 url="https://github.com/Hardcore-Team/yt-source" 

@@ -8,6 +8,11 @@
 // THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
 // EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+// fexecve() POSIX.1-2008'de tanımlı; glibc'nin unistd.h'de bunu
+// göstermesi için ilgili özellik makrosunu, başka hiçbir sistem başlığı
+// include edilmeden önce tanımlıyoruz.
+#define _POSIX_C_SOURCE 200809L
+
 #include <security/pam_appl.h>
 #include <security/pam_misc.h>
 #include <stdio.h>
@@ -18,10 +23,13 @@
 #include <grp.h>
 #include <locale.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 #include <errno.h>
 #include <termios.h>
 #include <ctype.h>
 #include <fcntl.h>
+
+extern char **environ;
 
 #define CONFIG_FILE "/etc/yt.cfg"
 #define ONEPASS_DIR "/tmp/yt_onepass"
@@ -77,6 +85,128 @@ static int onepass_dir_is_safe(void) {
     if (st.st_uid != 0) return 0;                // root'a ait değil
     if (st.st_mode & (S_IWGRP | S_IWOTH)) return 0; // grup/diğerleri yazabiliyor
     return 1;
+}
+
+// Kullanıcı belirtilen grubun üyesi mi? (config dosyasındaki "wheel:onepass"
+// gibi satırların grup adıyla da eşleşebilmesi için)
+static int user_in_group(const char *groupname, const char *username) {
+    struct group *gr = getgrnam(groupname);
+    if (!gr) return 0;
+    for (int i = 0; gr->gr_mem[i] != NULL; i++) {
+        if (strcmp(gr->gr_mem[i], username) == 0) return 1;
+    }
+    return 0;
+}
+
+// Mutlak yol dayatmasını korurken, çıplak bir komut adı (örn. "pacman")
+// verildiğinde bunu sıralı, sabit bir aday listesinde arar:
+//   1. /usr/bin        (root'a ait olmalı)
+//   2. /usr/local/bin   (root'a ait olmalı)
+//   3. <invoking_user_home>/.local/bin (çalıştıran kullanıcıya ait olmalı)
+//
+// Bu execvp'nin kullanıcının PATH ortam değişkenine göre arama yapmasından
+// farklıdır — adaylar burada açıkça, sabit dizinlerle sınırlı olarak
+// belirleniyor, PATH'e güvenilmiyor.
+//
+// Güvenlik: sadece "var mı" diye bakıp sonra ayrı bir execvp() çağrısı
+// yapmak, ikisi arasında bir TOCTOU penceresi bırakır (biri dosyayı bir
+// symlink'e çevirebilir). Bunu kapatmak için: her aday O_NOFOLLOW ile
+// açılır, aynı fd üzerinde fstat ile doğrulanır (gerçek dosya mı, doğru
+// sahipte mi, grup/diğerleri yazabiliyor mu), ve sonunda *tam olarak o
+// doğrulanmış fd* fexecve() ile çalıştırılır — yol yeniden aranmaz, o
+// yüzden doğrulama ile çalıştırma arasında dosyanın değiştirilmesi işe
+// yaramaz.
+//
+// ~/.local/bin, çalıştıran kullanıcının kendi yazabildiği bir dizindir.
+// Buradan bir ikili, kimlik doğrulamadan sonra root olarak çalıştırılacağı
+// için, sahiplik kontrolünü "root" değil "çalıştıran kullanıcı" olarak
+// uyguluyoruz — böylece başka bir kullanıcının (aynı ada sahip, örn. ortak
+// bir /home bağlı diskte) dosyası sessizce kabul edilmez.
+
+// Verilen path'i O_NOFOLLOW ile açar ve fd üzerinde doğrular:
+// - gerçek bir dosya olmalı (symlink/aygıt/FIFO değil)
+// - sahibi expected_uid olmalı
+// - grup/diğerleri tarafından yazılabilir olmamalı
+// - en azından bir çalıştırma bitine sahip olmalı
+// Başarılıysa açık fd'yi döner (çağıran kapatmalı); değilse -1 döner ve
+// açtığı fd'yi (varsa) kendisi kapatır.
+static int open_verified_candidate(const char *path, uid_t expected_uid) {
+    int fd = open(path, O_RDONLY | O_NOFOLLOW);
+    if (fd < 0) return -1;
+
+    struct stat st;
+    if (fstat(fd, &st) != 0) { close(fd); return -1; }
+    if (!S_ISREG(st.st_mode)) { close(fd); return -1; }
+    if (st.st_uid != expected_uid) { close(fd); return -1; }
+    if (st.st_mode & (S_IWGRP | S_IWOTH)) { close(fd); return -1; }
+    if (!(st.st_mode & (S_IXUSR | S_IXGRP | S_IXOTH))) { close(fd); return -1; }
+
+    return fd;
+}
+
+// ~/.local/bin dizininin kendisini, ONEPASS_DIR için yapılan kontrolle
+// aynı ruhta doğrular: gerçek bir dizin olmalı (symlink değil), çalıştıran
+// kullanıcıya ait olmalı, grup/diğerleri tarafından yazılabilir olmamalı.
+// Dizin hiç yoksa (en yaygın durum) sessizce "güvenli değil/kullanılamaz"
+// olarak dönülür; bu bir hata değildir, sadece 3. aday atlanır.
+static int local_bin_dir_is_safe(const char *dir, uid_t expected_uid) {
+    struct stat st;
+    if (lstat(dir, &st) != 0) return 0;
+    if (!S_ISDIR(st.st_mode)) return 0;
+    if (st.st_uid != expected_uid) return 0;
+    if (st.st_mode & (S_IWGRP | S_IWOTH)) return 0;
+    return 1;
+}
+
+// Çıplak bir komut adını sırayla aday dizinlerde arar ve ilk doğrulamayı
+// geçen adayın açık, doğrulanmış fd'sini döner (-1 = hiçbiri bulunamadı/
+// doğrulanamadı). `home`, çalıştıran kullanıcının ev dizinidir (NULL/boş
+// ise 3. aday atlanır). Reddedilen her aday için kısa bir uyarı basılır ki
+// "neden bulunamadı" belirsiz kalmasın.
+static int resolve_and_open_command(const char *name, const char *home, uid_t self_uid) {
+    char path[512];
+    int n;
+
+    n = snprintf(path, sizeof(path), "/usr/bin/%s", name);
+    if (n > 0 && n < (int)sizeof(path)) {
+        int fd = open_verified_candidate(path, 0);
+        if (fd >= 0) return fd;
+        if (errno != ENOENT) {
+            fprintf(stderr, "%s",
+                    MSG("Warning: /usr/bin candidate failed integrity checks, skipping\n",
+                        "Uyarı: /usr/bin adayı bütünlük kontrolünü geçemedi, atlanıyor\n"));
+        }
+    }
+
+    n = snprintf(path, sizeof(path), "/usr/local/bin/%s", name);
+    if (n > 0 && n < (int)sizeof(path)) {
+        int fd = open_verified_candidate(path, 0);
+        if (fd >= 0) return fd;
+        if (errno != ENOENT) {
+            fprintf(stderr, "%s",
+                    MSG("Warning: /usr/local/bin candidate failed integrity checks, skipping\n",
+                        "Uyarı: /usr/local/bin adayı bütünlük kontrolünü geçemedi, atlanıyor\n"));
+        }
+    }
+
+    if (home && home[0]) {
+        char local_bin_dir[512];
+        int nd = snprintf(local_bin_dir, sizeof(local_bin_dir), "%s/.local/bin", home);
+        if (nd > 0 && nd < (int)sizeof(local_bin_dir) && local_bin_dir_is_safe(local_bin_dir, self_uid)) {
+            n = snprintf(path, sizeof(path), "%s/%s", local_bin_dir, name);
+            if (n > 0 && n < (int)sizeof(path)) {
+                int fd = open_verified_candidate(path, self_uid);
+                if (fd >= 0) return fd;
+                if (errno != ENOENT) {
+                    fprintf(stderr, "%s",
+                            MSG("Warning: ~/.local/bin candidate failed integrity checks, skipping\n",
+                                "Uyarı: ~/.local/bin adayı bütünlük kontrolünü geçemedi, atlanıyor\n"));
+                }
+            }
+        }
+    }
+
+    return -1;
 }
 
 // Terminalde görünmez şifre okuma
@@ -147,18 +277,28 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Komut mutlak yol olmalı: aksi halde execvp, (sanitize edilmiş olsa da)
-    // PATH araması yapar ve kullanıcının bulunduğu dizine göre belirsizlik
-    // doğar. Belgelenen kullanım şekli zaten "tam yol" istiyor; bunu koda
-    // da uygula.
-    if (argv[1][0] != '/') {
-        fprintf(stderr, "%s", MSG("Error: command must be an absolute path\n",
-                                   "Hata: komut mutlak (tam) bir yol olmalı\n"));
-        return 1;
-    }
-
     struct passwd *pw = getpwuid(getuid());
     if (!pw) return 1;
+
+    // Komut ya mutlak bir yol olmalı, ya da sabit aday dizinlerinde
+    // (/usr/bin, /usr/local/bin, ~/.local/bin) aranıp bulunabilmeli.
+    // Çıplak bir ad execvp'ye PATH araması için bırakılmıyor (kullanıcının
+    // bulunduğu dizine göre belirsizlik doğurur); bunun yerine burada,
+    // sabit dizinlerle sınırlı ve sahiplik/izin doğrulamalı olarak açıkça
+    // çözümleniyor. Mutlak yol verilmişse (dokümante edilen asıl kullanım
+    // şekli) davranış değişmiyor: execvp ile doğrudan çalıştırılıyor, ek
+    // bir sahiplik kısıtlaması getirilmiyor.
+    int resolved_fd = -1;
+
+    if (argv[1][0] != '/') {
+        resolved_fd = resolve_and_open_command(argv[1], pw->pw_dir, pw->pw_uid);
+        if (resolved_fd < 0) {
+            fprintf(stderr, "%s",
+                    MSG("Error: command not found in /usr/bin, /usr/local/bin or ~/.local/bin\n",
+                        "Hata: komut /usr/bin, /usr/local/bin veya ~/.local/bin altında bulunamadı\n"));
+            return 1;
+        }
+    }
 
     int nopass = 0, onepass = 0;
     int config_found = 0;
@@ -177,7 +317,11 @@ int main(int argc, char *argv[]) {
             while (fgets(line, sizeof(line), file)) {
                 if (line[0] == '#' || line[0] == '\n') continue;
                 if (sscanf(line, " %63[^:]:%15s", user, mode) == 2) {
-                    if (strcmp(user, pw->pw_name) == 0) {
+                    // "user" alanı ya birebir kullanıcı adı ya da bir grup
+                    // adı olabilir (README ve yt.cfg'nin vaat ettiği gibi,
+                    // örn. varsayılan "wheel:onepass" satırı).
+                    if (strcmp(user, pw->pw_name) == 0 ||
+                        user_in_group(user, pw->pw_name)) {
                         config_found = 1;
                         if (strcmp(mode, "nopass") == 0) nopass = 1;
                         else if (strcmp(mode, "onepass") == 0) onepass = 1;
@@ -262,13 +406,24 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    if (execvp(argv[1], &argv[1]) == -1) {
-        perror(MSG("Error: Command execution failed",
-                   "Hata: Komut çalıştırılamadı"));
-        return 1;
+    // argv[0] olarak &argv[1] veriliyor: çalışan sürece kullanıcının
+    // yazdığı ad/yol görünür (ör. "pacman"), çözümlenen tam yol değil.
+    //
+    // Çözümlenmiş bir isimse (resolved_fd >= 0): fexecve() ile *doğrulama
+    // sırasında açılan fd* çalıştırılıyor — yol yeniden aranmıyor, bu
+    // yüzden doğrulama ile çalıştırma arasında dosyanın değiştirilmesi
+    // (symlink saldırısı vb.) işe yaramaz.
+    // Mutlak yol verilmişse (resolved_fd == -1): davranış eskisi gibi,
+    // doğrudan execvp.
+    if (resolved_fd >= 0) {
+        fexecve(resolved_fd, &argv[1], environ);
+    } else {
+        execvp(argv[1], &argv[1]);
     }
 
-    return 0;
+    perror(MSG("Error: Command execution failed",
+               "Hata: Komut çalıştırılamadı"));
+    return 1;
 
 pam_fail:
     fprintf(stderr, "\n[yt] %s %s\n", MSG("Error:", "Hata:"), pam_strerror(pamh, retval));
