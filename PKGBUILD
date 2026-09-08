@@ -13,7 +13,7 @@ conflicts=('seerrng' 'seerrng-git' 'seerrng-bin')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/seerrng_${pkgver}_amd64.deb")
-sha256sums=('e7e926f208a386a5e24a651f98a2fca0dc6d4a0f3a3276375cb58578fb2e46b6')
+sha256sums=('514fc0971998be02d129bd808b54686b75529cd59e233d6534151786b0551cb6')
 
 package(){
 
