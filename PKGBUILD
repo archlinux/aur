@@ -5,7 +5,7 @@
 _pkgname='input-overlay'
 pkgname=obs-plugin-${_pkgname}
 pkgver=5.1.0.r56.g673e594
-pkgrel=2
+pkgrel=3
 groups=('obs-plugins')
 pkgdesc='obs-studio plugin to show keyboard, gamepad and mouse input on stream.'
 arch=("x86_64")
@@ -16,9 +16,9 @@ makedepends=('git' 'cmake' 'extra-cmake-modules' 'wayland-protocols' 'patchelf')
 _commit='673e594cebc5e686a49c1012b9c7b572dee0c549'
 source=(
 	"git+https://github.com/univrsal/${_pkgname}.git#commit=${_commit}"
-	"$pkgname-libuiohook-TolikPylypchuk::git+https://github.com/TolikPylypchuk/libuiohook.git#commit=b6e8179a263718107e82fcd72278e804932e2aea")
+	"$pkgname-libuiohook-TolikPylypchuk::git+https://github.com/TolikPylypchuk/libuiohook.git#commit=a41658fb2bef7503a3bcb305ab8bf849755fe906")
 sha256sums=('7a3754edacca7f1623640dd91eae98bfaa0334d2e27ddb98cf10a5b95548b477'
-            '214c366e2b1e714cc83ee37a0d3426514497dbffb11c9b427dd38a630827f160')
+            'f2f7e88e01c480f34ac79f4161635105afccab22c8fb4388ca4b48ae62b01238')
 
 _srcdir="${_pkgname}"
 
@@ -43,8 +43,9 @@ prepare() {
 	sed -i \
 		-e '/<QJsonDocument>/a #include <bit>/' \
 		-e 's/obj\["mask"\] = e->mask/obj["mask"] = std::bit_cast<int>(e->mask)/g' \
+		-e 's/obj\["char"\] = QString::fromWCharArray(&e->data.keyboard.keychar, 1);/obj["char"] = QString::fromUtf16(reinterpret_cast<const char16_t *>(\&e->data.keyboard.keychar), 1);/g' \
 		'src/network/websocket_server.cpp'
-	sed -i '/{0xE063, VC_WAKE},/d' 'src/util/overlay.cpp'
+	sed -i -e '/{0xE063, VC_WAKE},/d' -e '/{0x0079, VC_KANJI},/d' 'src/util/overlay.cpp'
 
 	sed -i 's/set(CMAKE_CXX_STANDARD 17)/set(CMAKE_CXX_STANDARD 23)/' 'cmake/common/compiler_common.cmake'
 	sed -i 's/pkg_check_modules(Libinput/pkg_check_modules(LIBINPUT/' 'deps/libuiohook/CMakeLists.txt'
