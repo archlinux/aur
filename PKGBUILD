@@ -1,7 +1,7 @@
 # Maintainer: The_Seventh <gustavo.gianeli13@gmail.com>
 pkgname=arch-update-full
 pkgver=4.0
-pkgrel=2.1
+pkgrel=3
 pkgdesc="Sentinel Protocol: Update automation (Pacman/AUR/Flatpak/Snap) and auditing."
 arch=('any')
 url="https://github.com/GustavoGianeli/arch-update-full"
@@ -27,7 +27,7 @@ install=arch-update-full.install
 source=(
   "arch-update-full"
   "arch-update-full.desktop"
-  "novalogov40-1.png"
+  "novalogov41.png"
   "arch-update-full.install"
   "farol_azul_simbolo.png"
   "farol_amarelo_simbolo.png"
@@ -35,8 +35,8 @@ source=(
 )
 
 # Use 'updpkgsums' para preencher isso automaticamente // Use 'updpkgsums' to automatically fill this in.
-sha256sums=('f53adb529c7618c7f4995c00ced13710c6f52a77ce8bfee4bf85a1e3dd5be518'
-            '057c70b44bc6e8f3c82a5ed1f1c49e1fd2dbed8d7c523f4fc7bb54c12358024a'
+sha256sums=('2de77ab0c7b3a082145c3311c8f83331e66aa3f2702e39623f97f9e26e7ab296'
+            'ed65d6a29af497de6c52abe86b8141282cb2b3f11264cb76a57bbfdebb7c6dff'
             '5cfc6fd23427182f589c0406225147530cf25dac3b020ec10427590be7cba917'
             'c32ddd13aaace4abab054d1742aaa88cdae72a670b569aaea0f124a555f60a2d'
             'ebc439c303205e80b177683cc62086fbcc3abbe24ec5c47833c0ab0a6b7b4ee0'
@@ -51,7 +51,7 @@ package() {
   install -Dm644 "${srcdir}/arch-update-full.desktop" "${pkgdir}/usr/share/applications/arch-update-full.desktop"
 
   # 3. Instala o ícone no diretório global de imagens do sistema // Installs the icon in the system's global image directory.
-  install -Dm644 "${srcdir}/novalogov40-1.png" "${pkgdir}/usr/share/pixmaps/novalogov40-1.png"
+  install -Dm644 "${srcdir}/novalogov41.png" "${pkgdir}/usr/share/pixmaps/novalogov41.png"
   
   # 4. Ícones do Módulo Sentinela (Faróis de Notificação)
   install -Dm644 "${srcdir}/farol_azul_simbolo.png" "${pkgdir}/usr/share/arch-update-full/icons/farol_azul_simbolo.png"

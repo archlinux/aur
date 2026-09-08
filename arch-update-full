@@ -440,6 +440,7 @@ CABECALHO_MENU() {
     esac
 
     # Exibe apenas a tag minimalista e neutra no topo
+    echo "system is" 
     echo -e "${CYAN_NEON}[ LANG: ${YELLOW_NEON}${lang_tag}${CYAN_NEON} ]${NC}"
     echo ""
 echo ""    
@@ -457,7 +458,7 @@ echo -e "                              ${NEON_BLUE}██╔══╝  ██║
 echo -e "                              ${NEON_BLUE}██║     ╚██████╔╝███████╗███████╗${NC}"
 echo -e "                              ${NEON_BLUE}╚═╝      ╚═════╝ ╚══════╝╚══════╝${NC}"
 echo ""
-echo -e "  ${PINK_NEON}──────────────────────────────── ${RED_NEON}-->VERSION 4.0-2 <--${PINK_NEON} ─────────────────────────────────${NC}"
+echo -e "  ${PINK_NEON}──────────────────────────────── ${RED_NEON}-->VERSION 4.0-3 <--${PINK_NEON} ─────────────────────────────────${NC}"
 echo -e "  ${PINK_NEON}───────────────────────>> UPDATING • AUTOMATING • SECURING <<───────────────────────${NC}"
 echo ""
 echo -e "  ${NEON_BLUE}─────────────>>[ MODULES: ROLLING_SYNC | AUR_INJECTION | INTEGRITY_AUDIT ]<<─────────────${NC}"
