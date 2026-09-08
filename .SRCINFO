@@ -1,6 +1,6 @@
 pkgbase = tidemark-git
 	pkgdesc = Track AI provider quota limits: how much of each rate-limit window is burned, when it resets, and whether the current pace reaches it
-	pkgver = 0.4.1.r0.g90d4531
+	pkgver = 0.4.2.r0.g3e1a6a7
 	pkgrel = 1
 	url = https://github.com/zbndev/tidemark
 	install = tidemark.install
