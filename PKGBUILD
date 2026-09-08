@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=pitlane-mcp-bin
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Token-efficient code intelligence MCP server using tree-sitter AST parsing and BM25 search'
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source=("LICENSE-MIT-${pkgver}::${url}/raw/v${pkgver}/LICENSE-MIT")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_base_url}-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_base_url}-aarch64.tar.gz")
 sha256sums=('2687b21e02f35c787bf71a814a4da43b2f7d47578cb05b1b58bd9f3a74f75a6c')
-sha256sums_x86_64=('0e94858f04688938adfd45200a2a85df87d4627268f7335484a90a85ab4da015')
-sha256sums_aarch64=('61ff05206b2c704223a21daaea2bca8ac7c41b10235751f8201bd70057de3823')
+sha256sums_x86_64=('17786b4a8a14efb6268fc4685be3979c3b45039b1238e2b9e387464b2aa6e9bd')
+sha256sums_aarch64=('aa64ebcf9deaedcadae3bebfefcf38f2748c42fc86ed9f76bfed9e2fdd75b8d2')
 
 latestver() {
     gh api --paginate repos/eresende/pitlane-mcp/releases --jq \
