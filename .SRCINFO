@@ -1,12 +1,13 @@
 pkgbase = lib32-libnl-git
 	pkgdesc = Library for applications dealing with netlink sockets (32 bit)
 	pkgver = 3.12.0.r8.g655a638
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thom311/libnl/
 	arch = x86_64
 	license = LGPL-2.1-only
 	makedepends = git
 	makedepends = gcc-multilib
+	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = libnl
 	provides = lib32-libnl

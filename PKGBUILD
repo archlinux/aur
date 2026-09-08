@@ -7,7 +7,7 @@
 _pkgbase=libnl
 pkgname=lib32-${_pkgbase}-git
 pkgver=3.12.0.r8.g655a638
-pkgrel=1
+pkgrel=2
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 pkgdesc="Library for applications dealing with netlink sockets (32 bit)"
@@ -15,7 +15,7 @@ arch=('x86_64')
 url='https://github.com/thom311/libnl/'
 license=('LGPL-2.1-only')
 depends=('lib32-glibc' "${_pkgbase}")
-makedepends=('git' 'gcc-multilib')
+makedepends=('git' 'gcc-multilib' 'lib32-gcc-libs')
 source=("git+https://github.com/thom311/libnl.git")
 sha256sums=('SKIP')
 
