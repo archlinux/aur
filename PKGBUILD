@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Multi-repo Git dashboard for your terminal"
 
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('1dc769e7495057a09785a7483496f1f9754549a7a8bf7c2ba294e15bd2e40915')
-sha256sums_aarch64=('29079e444e9b91f43bc49d3044bc1de4a28e2cc043a5754c35eab598a797d2e3')
+sha256sums_x86_64=('a10c253e9cff660bb63e9df0aa31528e49cb35d9a692367d40d6970652526322')
+sha256sums_aarch64=('f6057125b27a1d9f4cb2510d1a6ed7b33d14ef1620a04300df8d2bd1cdf70504')
 
 
 package() {
