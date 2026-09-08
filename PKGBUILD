@@ -1,62 +1,82 @@
+# SPDX-License-Identifier: 0BSD
 # Maintainer: Andreas Björkman <akb95@disroot.org>
+# Contributor: Julio Campagnolo <juliocampagnolo@gmail.com>
+# Contributor: enkvadrat <vide dot jacobsson at gmail dot com>
 
-_pkgname='armortools'
-pkgname='armorpaint'
-pkgver=0.9
-pkgrel=2
+pkgrel=1
+pkgdesc="3D PBR Texture Painting software"
+arch=('x86_64')
+url="https://armorpaint.org"
+license=('Zlib')
+pkgname=('armorpaint')
+_pkgname='paint'
+pkgver=1.0
+pkgrel=1
 arch=('i686' 'x86_64')
-pkgdesc="Software for 3D PBR texture painting"
+pkgdesc="3D PBR Texture Painting software"
 url="https://armorpaint.org/"
 license=('Zlib')
-depends=('alsa-lib' 'opengl-driver' 'gtk3')
-makedepends=('binutils' 'git' 'clang' 'make' 'gcc' 'vulkan-headers' 'libxinerama' 'libxrandr' 'libxi')
-conflicts=('armorpaint-git')
-source=("git+https://github.com/armory3d/armortools#tag=23.08"
-        "armorpaint.sh"
-        "armorpaint.desktop"
-        "armorpaint.png"
-        "zui_ext.c.patch"
-        "zui_nodes.c.patch")
-md5sums=('da1fc6cb5f29938dc18113e690c0621f'
-         '74001d6c572fc79c96d0bee24427f7ba'
-         'efecf7e2db8570fe494f47703927d67d'
-         '67cf4a0cb08c66c4a68c677885e8ac99'
-         '4d78293d603442d3e4ccf3afe2db53a8'
-         '6d39eb7502da5c7bf4b74c4caa197630')
+options=('!debug')
 
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-    git submodule update --init --recursive
-}
+#https://github.com/armory3d/armortools/wiki/Linux-Dependencies
+#sudo pacman -S make clang vulkan-devel gtk3 openssl libxi libxrandr libxcursor
+
+# not sure if alsa and libxinerama is needed but the previus packagebuild had them
+# namcap flags them as unused, (maybe some sort of plugin uses them?)
+depends=('gtk3'
+     'vulkan-icd-loader'
+     'openssl'
+     'libx11'
+     'libxi'
+     'libxrandr'
+     'libxcursor'
+     'libxinerama'
+     'alsa-lib'
+     'glib2'
+     'hicolor-icon-theme'
+ )
+makedepends=('git' 'clang' 'make' 'vulkan-headers')
+
+provides=('armorpaint')
+conflicts=('armorpaint-git')
+
+source=("git+https://github.com/armory3d/armortools#tag=26.09"
+    "armorpaint.desktop"
+    "armorpaint.png"
+    "armorpaint-mime.xml"
+    "armorpaint.sh")
+
+sha256sums=('SKIP'
+            '3b9eff484bfd0a7ae2c7811529a705061a4913630debea18b815e1aa55a52416'
+            '24c0736b5409a54f2c26c185ce983df51e6e761c8accc9867c72483ada3591d1'
+            '2a17a25c3a3246930abcd1f2993915bc5f609ed43647748403371a943fdc2f5c'
+            '55e60274422ed0cfcf6292377597128253f84df8e7f2ef59d7597b099ed6dd37')
 
 build() {
-    cd "$srcdir/${_pkgname}"/armorcore/v8/libraries/linux/release
-    ar x libv8_monolith.a
+    cd "${srcdir}/armortools/${_pkgname}"
 
-    cd "$srcdir/"
-    cp zui_ext.c.patch "$srcdir/${_pkgname}"/armorcore/Sources/zui/zui_ext.c.patch
-    cp zui_nodes.c.patch "$srcdir/${_pkgname}"/armorcore/Sources/zui/zui_nodes.c.patch
+    export CC=clang
+    export CXX=clang++
 
-    cd "$srcdir/${_pkgname}"/armorcore/Sources/zui/
-    patch zui_nodes.c zui_nodes.c.patch
-    patch zui_ext.c zui_ext.c.patch
-
-    cd "$srcdir/${_pkgname}/${pkgname}"
-
-    ../armorcore/Kinc/make --from ../armorcore -g opengl --compiler clang --compile
-
-    strip ../armorcore/Deployment/ArmorPaint
+    # This will use Vulkan
+    ../base/make --release --compile
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    mkdir -p ${pkgdir}/usr/{bin,share,lib}
-    mkdir -p ${pkgdir}/usr/lib/armorpaint
-    install -Dm755 ${srcdir}/armorpaint.sh ${pkgdir}/usr/bin/armorpaint
-    install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    install -Dm755 armorcore/Deployment/ArmorPaint ${pkgdir}/usr/lib/armorpaint/
-    install -Dm644 ${srcdir}/armorpaint.desktop ${pkgdir}/usr/share/applications/armorpaint.desktop
-    mkdir -p ${pkgdir}/usr/share/armorpaint
-    cp -r "${srcdir}/${_pkgname}"/armorpaint/build/krom ${pkgdir}/usr/share/armorpaint/krom
-    install -Dm644 ${srcdir}/armorpaint.png ${pkgdir}/usr/share/icons/armorpaint.png
+    cd "${srcdir}/armortools/${_pkgname}/build/out"
+
+    # we keep the binary and the data dir together so the auto-lookup works
+    install -Dm755 "ArmorPaint" "${pkgdir}/usr/lib/armorpaint/ArmorPaint"
+    cp -dr --no-preserve=ownership data "${pkgdir}/usr/lib/armorpaint/"
+    # 755 for dirs, 644 for files
+    find "${pkgdir}/usr/lib/armorpaint/data" -exec chmod u=rwX,go=rX {} +
+
+    install -Dm755 "${srcdir}/armorpaint.sh" "${pkgdir}/usr/bin/armorpaint"
+    install -Dm644 "${srcdir}/armorpaint.desktop" "${pkgdir}/usr/share/applications/armorpaint.desktop"
+
+    install -Dm644 "${srcdir}/armorpaint.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/armorpaint.png"
+    install -Dm644 "${srcdir}/armorpaint.png" "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/application-x-armorpaint.png"
+    install -Dm644 "${srcdir}/armorpaint-mime.xml" "${pkgdir}/usr/share/mime/packages/armorpaint.xml"
+
+    install -Dm644 "../../../license.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
