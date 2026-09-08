@@ -1,8 +1,8 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.197
-pkgrel=2
+pkgver=1.4.198
+pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/stablyai/orca'
@@ -76,7 +76,7 @@ source_x86_64=(
 source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
-sha256sums=('36836680a2f7fc2a5ca316c69a7f339416c0b672bdfcd2fcd6ccc1ffa10d0e05'
+sha256sums=('b456dbdaf14dc3248da27033b7bc6181b815865b04555b3667ec0b5fb74964f5'
             '5ef12ab545a211627c23f05eb589a051e6c207a3f2c3382add8f0573400b871d'
             'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
             '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
@@ -134,9 +134,15 @@ import_line = (
     "const { verifyLinuxGlibcFloor } = "
     "require('./scripts/verify-linux-glibc-floor.cjs')\n"
 )
-check_block = """    // Prune optional native variants before checking the glibc/architecture
-    // floor; cross-builds intentionally install all optional packages.
+check_block = """    // Why: a Linux runner-image glibc bump silently shipped a node-pty pty.node
+    // requiring GLIBC_2.34, crashing the app on startup on Ubuntu 20.04 (#9902).
+    // Fail packaging if any bundled native binary exceeds the supported floor.
+    // Why after the prune: cross-builds intentionally install every optional
+    // native variant, so an arm64 slice still carries the x64 @parcel/watcher
+    // until prunePackagedRuntimeNodeModules drops it.
     if (context.electronPlatformName === 'linux') {
+      // Why the arch is passed: symbol-version checks pass happily on a wrong-architecture binary,
+      // so a cross-built slice could ship the host's pty.node and only fail at runtime.
       verifyLinuxGlibcFloor(context.appOutDir, {
         targetArch: { 1: 'x64', 3: 'arm64' }[context.arch]
       })
