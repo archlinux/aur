@@ -1,7 +1,7 @@
 pkgbase = vite-plus
 	pkgdesc = The Unified Toolchain for the Web
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/voidzero-dev/vite-plus
 	arch = x86_64
 	arch = aarch64
@@ -18,9 +18,9 @@ pkgbase = vite-plus
 	conflicts = vite-plus-git
 	options = !debug
 	options = !lto
-	source = vite-plus-0.3.0.tar.gz::https://github.com/voidzero-dev/vite-plus/archive/refs/tags/v0.3.0.tar.gz
-	source = vite-plus-js-0.3.0.tgz::https://registry.npmjs.org/vite-plus/-/vite-plus-0.3.0.tgz
-	sha256sums = dcea26d6d23e53a4884e6db65e4d53d9a0f25a23b9b28a7e7c8a2e3f3d2f5e61
-	sha256sums = b24b9598351848d64a2ead2201656c462812205c9c3b6fae35e162fb3a12017d
+	source = vite-plus-0.3.1.tar.gz::https://github.com/voidzero-dev/vite-plus/archive/refs/tags/v0.3.1.tar.gz
+	source = vite-plus-js-0.3.1.tgz::https://registry.npmjs.org/vite-plus/-/vite-plus-0.3.1.tgz
+	sha256sums = 0cc878005ec54ed43ed40332144afb091efeb2c4dfacfacca23cc2f51b3b5946
+	sha256sums = 2ed2d8bcb6761fa65ffedb5d1e931863d541fb3b242557f394d54a8dd600d497
 
 pkgname = vite-plus
