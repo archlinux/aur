@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=OpenHamClock
+GenericName=Amateur Radio Dashboard
+Comment=Modern web-based HamClock alternative for amateur radio operators
+Exec=openhamclock --browser
+Icon=openhamclock
+Terminal=false
+Type=Application
+Categories=HamRadio;Network;Astronomy;Science;Education;
+Keywords=ham;radio;amateur;dx;cluster;propagation;pota;sota;satellite;aprs;
+StartupNotify=true

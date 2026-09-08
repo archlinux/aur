@@ -1,0 +1,31 @@
+[Unit]
+Description=OpenHamClock Server (Amateur Radio Dashboard)
+Documentation=https://github.com/accius/openhamclock
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+User=openhamclock
+Group=openhamclock
+StateDirectory=openhamclock
+ConfigurationDirectory=openhamclock
+WorkingDirectory=/usr/lib/openhamclock
+EnvironmentFile=-/etc/openhamclock/openhamclock.env
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+SuccessExitStatus=75
+Environment=NODE_ENV=production
+Environment=PORT=3000
+
+# Hardening / Sandboxing
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/tmp
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

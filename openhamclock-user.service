@@ -1,0 +1,19 @@
+[Unit]
+Description=OpenHamClock Server (User Session)
+Documentation=https://github.com/accius/openhamclock
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/lib/openhamclock
+EnvironmentFile=-%h/.config/openhamclock/openhamclock.env
+EnvironmentFile=-/etc/openhamclock/openhamclock.env
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=5
+SuccessExitStatus=75
+Environment=NODE_ENV=production
+Environment=PORT=3000
+
+[Install]
+WantedBy=default.target

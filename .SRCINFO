@@ -1,0 +1,31 @@
+pkgbase = openhamclock-git
+	pkgdesc = Amateur Radio Dashboard - A modern web-based HamClock alternative (VCS / git version)
+	pkgver = 26.7.2.r0.ge1f5cef5
+	pkgrel = 1
+	url = https://github.com/accius/openhamclock
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs>=18
+	optdepends = hamlib: for transceiver and rotator control via rigctld/rotctld
+	optdepends = flrig: for transceiver CAT control via flrig
+	optdepends = xdg-utils: to open default web browser automatically in desktop mode
+	provides = openhamclock
+	conflicts = openhamclock
+	options = !strip
+	backup = etc/openhamclock/openhamclock.env
+	source = openhamclock::git+https://github.com/accius/openhamclock.git#branch=main
+	source = openhamclock.sh
+	source = openhamclock.service
+	source = openhamclock-user.service
+	source = openhamclock.desktop
+	source = openhamclock.env
+	sha256sums = SKIP
+	sha256sums = 981f3e44d16b979de8358d47f68eda74639d48c338840957a56ffa909d3a2c72
+	sha256sums = 25ef5af49ab9fc5737a7bcb6b25c2e476d0ba4e16a49ff9ca86b4bcd5275c7ba
+	sha256sums = 790b2098c340be12a3bbaf09c0a1990ead29a447fd788cc124b97677a69ad75b
+	sha256sums = e4e6e8a0b3bc70127997c13e71bd1f2fb8be034181a62dcae676fcf08a318a74
+	sha256sums = 1d7ed07d68c0475a325c04f1689c136f27c86adf0ccd541a9e1620184eb91688
+
+pkgname = openhamclock-git
