@@ -17,7 +17,7 @@ depends=(
   'libxkbcommon-x11'
   'vulkan-icd-loader'
 )
-makedepends=('cargo' 'patch' 'curl' 'gcc' 'clang' 'git')
+makedepends=('cargo' 'patch' 'curl' 'gcc' 'clang' 'git' 'cmake')
 optdepends=(
   'vulkan-intel: Vulkan support for Intel graphics'
   'vulkan-radeon: Vulkan support for AMD graphics'
@@ -39,6 +39,10 @@ prepare() {
   # Fetch and patch the GPUI crates for rox
   chmod +x scripts/vendor-gpui.sh
   ./scripts/vendor-gpui.sh
+
+  # Fetch the pinned libprojectM that rox-milkdrop-sys builds with cmake
+  chmod +x scripts/vendor-projectm.sh
+  ./scripts/vendor-projectm.sh
 
   # Download rust deps
   export CARGO_HOME="$srcdir/cargo-home"
