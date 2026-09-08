@@ -8,7 +8,6 @@ url="https://github.com/mangowm/mangobar"
 arch=("x86_64")
 license=("GPL-3.0")
 depends=(
-  alsa-lib
   cairo
   cjson
   tllist

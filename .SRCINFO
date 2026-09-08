@@ -9,7 +9,6 @@ pkgbase = mangobar-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = wayland-protocols>=1.41
-	depends = alsa-lib
 	depends = cairo
 	depends = cjson
 	depends = tllist
