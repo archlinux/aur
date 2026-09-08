@@ -4,25 +4,28 @@
 pkgname=adb-gui-kit-bin
 pkgver=2.0.0beta4
 pkgrel=1
-pkgdesc="A simple, modern GUI for ADB and Fastboot"
-arch=("$CARCH")
-url="https://github.com/Drenzzz/adb-gui-kit"
-license=("LicenseRef-adb-gui-kit")
-depends=('gtk3' 'glib2' 'cairo' 'gdk-pixbuf2' 'android-tools' 'hicolor-icon-theme')
+pkgdesc="A modern desktop toolkit for ADB, Fastboot, and scrcpy"
+arch=('x86_64')
+url="https://github.com/Drenzzz/ADBKit"
+license=('MIT')
+depends=('gtk4' 'webkitgtk-6.0' 'android-tools' 'scrcpy' 'hicolor-icon-theme')
 provides=('adb-gui-kit')
 conflicts=('adb-gui-kit')
 options=('!strip')
 
-source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/Drenzzz/adb-gui-kit/releases/download/v2.0.0-beta4/ADBKit-x86_64.AppImage"
-               "adb-gui-kit.desktop")
+_upstreamver=${pkgver/beta/-beta}
+source=("adb-gui-kit.desktop"
+        "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/Drenzzz/ADBKit/v${_upstreamver}/LICENSE")
+sha256sums=('dea69b0a76f5cfdf4d0dce7c9d0a8ce40e814d8dca257941114e987df4427cbf'
+            'de44595fa04a3dd2ed40f3177084d40f03d720996b0355e71cb449b84a804923')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::https://github.com/Drenzzz/ADBKit/releases/download/v${_upstreamver}/ADBKit-${_upstreamver}-linux-amd64-system.AppImage")
 
-sha256sums_x86_64=('13971ecca89771738b8c256220ee1ba2af3a911d685ba3e6cb4da265027130d1'
-                   'dea69b0a76f5cfdf4d0dce7c9d0a8ce40e814d8dca257941114e987df4427cbf')
+sha256sums_x86_64=('9836cfeb17fb5c739a39e12e7e77e6c40fbfff4f15b865e7390b184653a998ba')
 
 prepare() {
     cd "$srcdir"
-    chmod +x "${pkgname}-${pkgver}.AppImage"
-    ./"${pkgname}-${pkgver}.AppImage" --appimage-extract
+    chmod +x "${pkgname}-${pkgver}-${CARCH}.AppImage"
+    ./"${pkgname}-${pkgver}-${CARCH}.AppImage" --appimage-extract
 }
 
 package() {
@@ -32,27 +35,10 @@ package() {
     install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/usr/share/applications"
     install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-    install -d "${_install_path}/bin/linux"
+    install -d "${_install_path}"
 
     # Install main executable from usr/bin
     install -m755 "${_squashfs}/usr/bin/ADBKit" "${_install_path}/adb-gui-kit"
-
-    # Copy mke2fs.conf from AppImage
-    install -Dm644 "${_squashfs}/usr/bin/bin/linux/mke2fs.conf" "${_install_path}/bin/linux/mke2fs.conf"
-
-    local _bin_path="${_install_path}/bin/linux"
-
-    for tool in adb fastboot etc1tool hprof-conv sqlite3 mke2fs make_f2fs; do
-        if [ -e "/usr/bin/$tool" ]; then
-            ln -sf "/usr/bin/$tool" "${_bin_path}/$tool"
-        elif [ -e "${_squashfs}/usr/bin/bin/linux/$tool" ]; then
-            install -m755 "${_squashfs}/usr/bin/bin/linux/$tool" "${_bin_path}/$tool"
-        fi
-    done
-
-    if [ -e "${_bin_path}/make_f2fs" ]; then
-        ln -sf "${_bin_path}/make_f2fs" "${_bin_path}/make_f2fs_casefold"
-    fi
 
     # Create launcher script
     cat <<EOF > "${pkgdir}/usr/bin/adb-gui-kit"
@@ -65,6 +51,9 @@ EOF
     install -m644 "${srcdir}/adb-gui-kit.desktop" "${pkgdir}/usr/share/applications/"
 
     # Use icon from AppImage
-    install -m644 "${_squashfs}/usr/share/icons/hicolor/256x256/apps/adbkit.png" \
+    install -m644 "${_squashfs}/usr/share/icons/hicolor/256x256/apps/ADBKit.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/adb-gui-kit.png"
+
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}-LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
