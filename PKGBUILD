@@ -3,13 +3,14 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=clang-static-git
-pkgver=24.0.0.r594811.f7a44525d799
+pkgver=24.0.0.r595963.1afead778105
 pkgrel=1
 pkgdesc='Clang compiler and tools with libc++, runtimes, and statically linked LLVM components (git version)'
 arch=(x86_64)
 url=https://clang.llvm.org/
 license=('Apache-2.0 WITH LLVM-exception')
 depends=(
+  cmake
   gcc-libs
   glibc
   libedit
@@ -18,6 +19,7 @@ depends=(
   perl
   python
   python-yaml
+  xz
   zlib
   zstd
 )
@@ -26,6 +28,7 @@ makedepends=(
   cmake
   ninja
   python
+  swig
 )
 optdepends=(
   'openmp: OpenMP support in clang with -fopenmp'
@@ -39,6 +42,7 @@ provides=(
   clang-analyzer=$pkgver
   clangd=$pkgver
   lld=$pkgver
+  lldb=$pkgver
   llvm=$pkgver
   compiler-rt=$pkgver
   libc++=$pkgver
@@ -52,6 +56,7 @@ conflicts=(
   clang-analyzer
   clangd
   lld
+  lldb
   llvm
   compiler-rt
   libc++
@@ -83,10 +88,12 @@ _get_distribution_components() {
   ninja -C _build -t targets | grep -Po 'install-\K.*(?=-stripped:)' |
     while read -r target; do
       case $target in
-      clang-libraries | lld-libraries | distribution | LLVMgold | LTO | Remarks) continue ;;
+      clang-libraries | lld-libraries | lldb-libraries | distribution | LLVMgold | LTO | Remarks | lldb-test) continue ;;
       clang | clangd | clang-* | \
+        cir-* | \
         lld | lld-* | ld.lld | \
-        llvm-* | llc | opt | dsymutil | yaml2obj | obj2yaml | FileCheck | sancov | sanstats | \
+        lldb | lldb-* | liblldb | liblldb* | lldbIntelFeatures | \
+        llvm-* | llc | opt | dsymutil | yaml2obj | obj2yaml | yaml2macho-core | FileCheck | sancov | sanstats | \
         compiler-rt | compiler-rt-* | clang_rt* | \
         builtins | runtimes | scan-build | scan-build-py | scan-view | \
         opt-viewer | find-all-symbols | modularize | pp-trace | offload-arch | diagtool | \
@@ -106,7 +113,7 @@ build() {
     -D CMAKE_BUILD_TYPE=Release
     -D CMAKE_INSTALL_PREFIX=/usr
     -D CMAKE_INSTALL_DOCDIR=share/doc
-    -D LLVM_ENABLE_PROJECTS='clang;lld;clang-tools-extra'
+    -D LLVM_ENABLE_PROJECTS='clang;lld;lldb;clang-tools-extra;mlir'
     -D LLVM_ENABLE_RUNTIMES='compiler-rt;libcxx;libcxxabi;libunwind'
     -D LLVM_BINUTILS_INCDIR=/usr/include
     -D LLVM_BUILD_LLVM_DYLIB=OFF
@@ -114,6 +121,7 @@ build() {
     -D LLVM_INCLUDE_TESTS=ON
     -D LLVM_INCLUDE_BENCHMARKS=OFF
     -D CLANG_DEFAULT_PIE_ON_LINUX=ON
+    -D CLANG_ENABLE_CIR=ON
     -D LLVM_INSTALL_TOOLCHAIN_ONLY=ON
     -Wno-dev
   )
@@ -173,6 +181,12 @@ package() {
       "$pkgdir"/$_site_packages/ 2>/dev/null || true
 
     cp -a llvm-project/clang/bindings/python/clang "$pkgdir"/$_site_packages/
+  fi
+
+  # Byte-compile python scripts
+  if [[ -d "$pkgdir"/$_site_packages ]]; then
+    python -m compileall -q -f -d "$_site_packages" "$pkgdir/$_site_packages"
+    python -O -m compileall -q -f -d "$_site_packages" "$pkgdir/$_site_packages"
   fi
 
   # Move analyzer scripts out of /usr/libexec
