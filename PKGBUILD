@@ -1,6 +1,6 @@
 pkgname=ioruba-desktop-bin
-pkgver=1.8.4
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="Tactile audio mixer for Arduino-based Linux control (prebuilt AppImage)"
 arch=('x86_64')
 url="https://github.com/bernardopg/ioruba"
@@ -10,15 +10,15 @@ provides=('ioruba-desktop' 'ioruba')
 conflicts=('ioruba-desktop' 'ioruba')
 replaces=('ioruba')
 source=(
-  "Ioruba_1.8.4_amd64.AppImage::https://github.com/bernardopg/ioruba/releases/download/v${pkgver}/Ioruba_1.8.4_amd64.AppImage"
+  "Ioruba_1.9.0_amd64.AppImage::https://github.com/bernardopg/ioruba/releases/download/v${pkgver}/Ioruba_1.9.0_amd64.AppImage"
   "ioruba.png::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/apps/desktop/src-tauri/icons/128x128.png"
   "ioruba.svg::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/apps/desktop/src-tauri/icons/app-icon.svg"
   "run-appimage-compat.sh::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/scripts/run-appimage-compat.sh"
 )
-sha256sums=('d9e52da1d687e2d7019012bdcb0b4a55445a576b5a3bb53ff1333254fb478eef' '7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63' 'cf1b733eb5dbf61daab65b83e825387efdb1bec1bea5daf52864514ee8e4511a' '18703c7f9b4f15c5885fc38214060cdf8abeeea7cc84aef51d42376bc34a16f3')
+sha256sums=('18e17f577a70bf27bd2a8ba640b44c8187c6df49cbcf451a8a6ef68a81e0d834' '7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63' 'cf1b733eb5dbf61daab65b83e825387efdb1bec1bea5daf52864514ee8e4511a' '18703c7f9b4f15c5885fc38214060cdf8abeeea7cc84aef51d42376bc34a16f3')
 
 package() {
-  install -Dm755 "${srcdir}/Ioruba_1.8.4_amd64.AppImage" "${pkgdir}/opt/ioruba/ioruba.AppImage"
+  install -Dm755 "${srcdir}/Ioruba_1.9.0_amd64.AppImage" "${pkgdir}/opt/ioruba/ioruba.AppImage"
   install -Dm755 "${srcdir}/run-appimage-compat.sh" "${pkgdir}/opt/ioruba/run-appimage-compat.sh"
   install -Dm644 "${srcdir}/ioruba.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/ioruba.png"
   install -Dm644 "${srcdir}/ioruba.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ioruba.svg"
@@ -41,6 +41,9 @@ StartupNotify=true
 StartupWMClass=io.ioruba.desktop
 DESKTOP
 
+  # Os install -D acima criam apenas /opt/ioruba e /usr/share/...; o
+  # redirecionamento abaixo nao cria diretorio, entao /usr/bin precisa
+  # existir antes.
   install -dm755 "${pkgdir}/usr/bin"
   printf '%s\n'     '#!/usr/bin/env sh'     'exec /opt/ioruba/run-appimage-compat.sh /opt/ioruba/ioruba.AppImage "$@"'     > "${pkgdir}/usr/bin/ioruba-desktop"
   chmod 755 "${pkgdir}/usr/bin/ioruba-desktop"
