@@ -1,5 +1,5 @@
 pkgname=basedpyright
-pkgver=1.39.10
+pkgver=1.40.0
 pkgrel=1
 pkgdesc="pyright fork with various improvements and pylance features"
 arch=("any")
@@ -12,7 +12,7 @@ makedepends=(pnpm
              python
              tk)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DetachHead/basedpyright/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dd6cb558eeac3a1b6b4733ae17d0f0fcb7cbc905ceb86d83f5b37996baac0fa8')
+sha256sums=('0ba06d797453e24a108e781410d31f84491bb8e7ee5c7f7302a66a48cfb7e202')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -20,7 +20,7 @@ prepare() {
     rm -f .python-version
     # ./build/generateAllDocstubs.sh
     uv sync --only-group=docstubs --no-install-project
-    uv run --no-sync build/py3_8/generate_docstubs.py
+    uv run --no-sync build/py_old/generate_docstubs.py
     pnpm install
 }
 
