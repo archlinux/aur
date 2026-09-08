@@ -1,4 +1,5 @@
-# Maintainer: envolution
+# Maintainer: Ahmet Arda Kavakcı <ahmetardakavakci {at} gmail {dot} com>
+# Contributor: envolution
 # Contributor: Adam Goldsmith <contact@adamgoldsmith.name>
 # Contributor: Janosch Dobler <janosch.dobler [at} gmx [dot} de>
 # shellcheck shell=bash disable=SC2034,SC2154
@@ -44,7 +45,7 @@ build() {
   cd $pkgname/syncscribble
   DEBUG=0 make \
     CFLAGS+="$(pkg-config --cflags sdl2) -DPUGIXML_NO_XPATH -DPUGIXML_NO_EXCEPTIONS -I/usr/include -Wno-error -Wno-format-security -DNDEBUG" \
-    CXXFLAGS+="$(pkg-config --cflags sdl2) -DPUGIXML_NO_XPATH -DPUGIXML_NO_EXCEPTIONS -I/usr/include -Wno-error -Wno-format-security -DNDEBUG" \
+    CXXFLAGS+="$(pkg-config --cflags sdl2) -DPUGIXML_NO_XPATH -DPUGIXML_NO_EXCEPTIONS -I/usr/include -Wno-error -Wno-format-security -DNDEBUG -fno-char8_t" \
     LDFLAGS+="$(pkg-config --libs sdl2)" \
     USE_SYSTEM_SDL=1
 }
@@ -54,8 +55,13 @@ package() {
   install -Dm644 "$pkgname/scribbleres/fonts/"{DroidSansFallback.ttf,Roboto-Regular.ttf} "$pkgdir/usr/share/$pkgname/"
   install -Dm644 "$pkgname/scribbleres/Intro.svg" "$pkgdir/usr/share/$pkgname/"
 
-  install -dm755 "$pkgdir/usr/bin/"
-  ln -s /usr/share/$pkgname/Write "$pkgdir/usr/bin/write_stylus"
+  install -dm755 "$pkgdir/usr/bin"
+  cat <<'EOF' >"$pkgdir/usr/bin/write_stylus"
+#!/bin/sh
+export SDL_VIDEODRIVER=x11
+exec /usr/share/write_stylus/Write "$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/write_stylus"
 
   install -Dm644 "eula.docx" "$pkgdir/usr/share/licenses/$pkgname/eula.docx"
 

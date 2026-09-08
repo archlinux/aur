@@ -1,5 +1,8 @@
-/pkg/
-/src/
-/write*.tar.gz
-/eula.docx
-*.pkg.tar
+/*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.install
+!*.patch
+!*.diff
