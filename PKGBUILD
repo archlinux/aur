@@ -26,7 +26,7 @@ sha256sums=('b8d7fe6aba791461a66d27988beaeef8d6d9b072cdf8f884a3dcb5a2a39c71b8'
             'c96cbc90cca94c8e7d661003e65b9206ae6f060a29f409e509f1f5b6393dc3ec')
 
 prepare() {
-  cd "${srcdir}/Fushi-2.2.4-beta.13362"
+  cd "${srcdir}/Fushi-2.3.0-beta.1248"
   patch -p1 -i "${srcdir}/fix-fushidicts-cstdint.patch"
   patch -p1 -i "${srcdir}/wpe-inappwebview-linux.patch"
 }
@@ -35,21 +35,21 @@ build() {
   export FLUTTER_ROOT="${srcdir}/flutter"
   export PATH="${FLUTTER_ROOT}/bin:${PATH}"
   export PUB_CACHE="${srcdir}/pub-cache"
-  cd "${srcdir}/Fushi-2.2.4-beta.13362"
+  cd "${srcdir}/Fushi-2.3.0-beta.1248"
   bash tool/bootstrap.sh
   cd fushi
   flutter build linux --release
 }
 
 package() {
-  local srcdir_app="${srcdir}/Fushi-2.2.4-beta.13362"
+  local srcdir_app="${srcdir}/Fushi-2.3.0-beta.1248"
   local bundle="${srcdir_app}/fushi/build/linux/x64/release/bundle"
   local dest="${pkgdir}/usr/lib/fushi"
   install -dm755 "${dest}"
   cp -a "${bundle}/." "${dest}/"
   # Linux has no version pipeline: overwrite the pubspec-derived version.json
   # so PackageInfo (and thus the in-app updater) reports the beta release.
-  printf '{"app_name":"fushi","version":"2.3.0-beta.1248","build_number":"1248","package_name":"fushi"}' > "${dest}/data/flutter_assets/version.json"
+  printf '{"app_name":"fushi","version":"2.3.0-beta.1248","build_number":"13886","package_name":"fushi"}' > "${dest}/data/flutter_assets/version.json"
   install -Dm644 "${srcdir_app}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/fushi.desktop" "${pkgdir}/usr/share/applications/fushi.desktop"
   install -Dm644 "${srcdir_app}/fushi/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" \
