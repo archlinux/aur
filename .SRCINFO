@@ -1,6 +1,6 @@
 pkgbase = pipdeptree
 	pkgdesc = Command line utility to show dependency tree of Python packages
-	pkgver = 4.2.4
+	pkgver = 4.2.5
 	pkgrel = 1
 	url = https://github.com/tox-dev/pipdeptree
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = pipdeptree
 	depends = python-nab
 	depends = python-nab-index
 	depends = python-nab-project
-	source = pipdeptree-4.2.4.tar.gz::https://github.com/tox-dev/pipdeptree/archive/refs/tags/4.2.4.tar.gz
-	sha256sums = f5b96ef7e8a99cba54375ca5b6818b846353f5fdb967f06962273922d3494e92
+	source = pipdeptree-4.2.5.tar.gz::https://github.com/tox-dev/pipdeptree/archive/refs/tags/4.2.5.tar.gz
+	sha256sums = c3cbfb9928a3462f87f5cbaa8c0185508aebe8428836dbcddce3a6287621f340
 
 pkgname = pipdeptree
