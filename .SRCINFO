@@ -1,36 +1,32 @@
 pkgbase = certbot-isolated
 	pkgdesc = An ACME client - version with isolated dns-lexicon to avoid conflict with python-lexicon
 	pkgver = 5.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://certbot.eff.org
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
 	checkdepends = python-augeas
-	checkdepends = python-pyopenssl
 	checkdepends = python-pyparsing
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	depends = ca-certificates
 	depends = python
-	depends = python-acme-isolated=5.8.0
 	depends = python-configargparse
 	depends = python-configobj
 	depends = python-cryptography
 	depends = python-distro
+	depends = python-josepy
 	depends = python-parsedatetime
+	depends = python-pyopenssl
 	depends = python-pyrfc3339
+	depends = python-requests
 	depends = dns-lexicon-isolated
-	optdepends = certbot-apache: Apache plugin for Let’s Encrypt client
-	optdepends = certbot-nginx: Nginx plugin for Let’s Encrypt client
-	provides = certbot
-	conflicts = certbot
-	replaces = letsencrypt
 	source = github.com-certbot-certbot::git+https://github.com/certbot/certbot#tag=v5.8.0
 	source = tmpfiles.conf
 	source = certbot-renew.service
@@ -44,4 +40,41 @@ pkgbase = certbot-isolated
 	b2sums = 773be7c45aaf84b79b260053dd4555be1b913238f680cf2c816e20d585db21c11ff41c985915ab0804bb3bc78af2e1e09133ed3b04e276e6379f63e9522064c1
 	b2sums = a75e09a662be6ce1bc533c39bea8ecfd6c0feb3f0066db854de701c1af71534bca750ef5b50826446708823564945aac887649225d15a347efd864dd1e1a8e81
 
+pkgname = python-acme-isolated
+	pkgdesc = ACME protocol implementation in Python
+	url = https://github.com/certbot/certbot
+	depends = python
+	depends = python-cryptography
+	depends = python-josepy
+	depends = python-pyopenssl
+	depends = python-pyrfc3339
+	depends = python-requests
+	provides = python-acme
+	conflicts = python-acme
+
 pkgname = certbot-isolated
+	pkgdesc = An ACME client - version with isolated dns-lexicon to avoid conflict with python-lexicon
+	url = https://certbot.eff.org
+	depends = ca-certificates
+	depends = python
+	depends = python-acme-isolated=5.8.0-3
+	depends = python-configargparse
+	depends = python-configobj
+	depends = python-cryptography
+	depends = python-distro
+	depends = python-parsedatetime
+	depends = python-pyrfc3339
+	depends = dns-lexicon-isolated
+	optdepends = certbot-apache: Apache plugin for Let’s Encrypt client
+	optdepends = certbot-nginx: Nginx plugin for Let’s Encrypt client
+	provides = certbot
+	conflicts = certbot
+	replaces = letsencrypt
+
+pkgname = certbot-dns-ovh-isolated
+	pkgdesc = OVH DNS Authenticator plugin for Certbot - version with isolated dns-lexicon to avoid conflict with python-lexicon
+	url = https://pypi.python.org/pypi/certbot-dns-ovh
+	depends = certbot-isolated=5.8.0-3
+	depends = python-acme-isolated=5.8.0-3
+	provides = certbot-dns-ovh
+	conflicts = certbot-dns-ovh

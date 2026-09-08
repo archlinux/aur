@@ -3,32 +3,40 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
-pkgname=certbot-isolated
-_reponame="certbot"
+pkgbase=certbot-isolated
+pkgname=(
+  python-acme-isolated
+  certbot-isolated
+  certbot-dns-ovh-isolated
+)
 pkgver=5.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An ACME client - version with isolated dns-lexicon to avoid conflict with python-lexicon'
 arch=(any)
 license=(Apache-2.0)
 url='https://certbot.eff.org'
+# Union of the runtime deps: makepkg only resolves the global arrays at build
+# time, per-package overrides live in the package_*() functions below.
 depends=(
   ca-certificates
   python
-  "python-acme-isolated=$pkgver"
   python-configargparse
   python-configobj
   python-cryptography
   python-distro
+  python-josepy
   python-parsedatetime
+  python-pyopenssl
   python-pyrfc3339
+  python-requests
   dns-lexicon-isolated
 )
 makedepends=(
   git
   python-build
   python-installer
-  python-setuptools
   python-wheel
+  python-setuptools
   python-sphinx
   python-sphinx_rtd_theme
 )
@@ -37,17 +45,8 @@ checkdepends=(
   # dependencies for certbot[nginx,apache]
   # all code from certbot-{nginx,apache} moved into certbot as of v5.5.0
   python-augeas
-  python-pyopenssl
   python-pyparsing
 )
-optdepends=(
-  'certbot-apache: Apache plugin for Let’s Encrypt client'
-  'certbot-nginx: Nginx plugin for Let’s Encrypt client'
-)
-replaces=(letsencrypt)
-provides=(certbot)
-conflicts=(certbot)
-
 # git repository is used because certbot is a huge monorepo and it's easier to
 # share the entire repository across all certbot related packages than a few
 # hundred tarballs.
@@ -68,8 +67,9 @@ b2sums=('969d082dfd6543e6c62e8374d9cead8889b62c3956b95055a39361423aeaf4f33b879b7
         'a75e09a662be6ce1bc533c39bea8ecfd6c0feb3f0066db854de701c1af71534bca750ef5b50826446708823564945aac887649225d15a347efd864dd1e1a8e81')
 
 prepare() {
-  cd "$_repo/$_reponame"
+  cd "$_repo/certbot"
 
+  # use the isolated dns-lexicon module name
   find . -type f -name '*.py' -exec sed -i \
       -e 's/\bfrom lexicon\b/from dns_lexicon/g' \
       -e 's/\bimport lexicon\b/import dns_lexicon/g' \
@@ -77,36 +77,104 @@ prepare() {
 }
 
 build() {
-  cd "$_repo/$_reponame"
+  local _pkg
+  for _pkg in acme certbot certbot-dns-ovh; do
+    (
+      cd "$_repo/$_pkg"
+      python -m build --wheel --no-isolation
+    )
+  done
 
-  python -m build --wheel --no-isolation
-
-  # create man pages
-  make -C docs man
+  # man pages
+  make -C "$_repo/acme/docs" man
+  make -C "$_repo/certbot/docs" man
 }
 
 check() {
-  cd "$_repo/$_reponame"
-
-  # install to temporary directory
-  python -m installer --destdir="$PWD/tmp_install" dist/*.whl
+  # The three packages depend on each other but none of them is installed
+  # while building the split package, so stage all wheels in a temporary
+  # prefix and put it on PYTHONPATH.
+  local _tmp="$srcdir/tmp_install"
+  local _pkg
+  rm -rf "$_tmp"
+  for _pkg in acme certbot certbot-dns-ovh; do
+    python -m installer --destdir="$_tmp" "$_repo/$_pkg"/dist/*.whl
+  done
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  export PYTHONPATH="$PWD/tmp_install$site_packages"
+  export PYTHONPATH="$_tmp$site_packages"
 
-  # https://github.com/certbot/certbot/issues/9606
-  python \
-    -m pytest \
-    -W ignore::DeprecationWarning \
-    --import-mode=importlib \
-    src/certbot
+  (
+    cd "$_repo/acme"
+    python -m pytest -v
+  )
+
+  (
+    cd "$_repo/certbot"
+    # https://github.com/certbot/certbot/issues/9606
+    python \
+      -m pytest \
+      -W ignore::DeprecationWarning \
+      --import-mode=importlib \
+      src/certbot
+  )
+
+  (
+    cd "$_repo/certbot-dns-ovh"
+    # https://github.com/certbot/certbot/issues/9606
+    python -m pytest -v -W ignore::DeprecationWarning
+  )
 }
 
-package() {
+package_python-acme-isolated() {
+  pkgdesc='ACME protocol implementation in Python'
+  url='https://github.com/certbot/certbot'
+  depends=(
+    python
+    python-cryptography
+    python-josepy
+    python-pyopenssl
+    python-pyrfc3339
+    python-requests
+  )
+  provides=(python-acme)
+  conflicts=(python-acme)
+
+  cd "$_repo/acme"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # man pages
+  install -vDm644 -t "$pkgdir/usr/share/man/man1" docs/_build/man/*.1
+}
+
+package_certbot-isolated() {
+  pkgdesc='An ACME client - version with isolated dns-lexicon to avoid conflict with python-lexicon'
+  url='https://certbot.eff.org'
+  depends=(
+    ca-certificates
+    python
+    "python-acme-isolated=$pkgver-$pkgrel"
+    python-configargparse
+    python-configobj
+    python-cryptography
+    python-distro
+    python-parsedatetime
+    python-pyrfc3339
+    dns-lexicon-isolated
+  )
+  optdepends=(
+    'certbot-apache: Apache plugin for Let’s Encrypt client'
+    'certbot-nginx: Nginx plugin for Let’s Encrypt client'
+  )
+  replaces=(letsencrypt)
+  provides=(certbot)
+  conflicts=(certbot)
+
   # systemd integration
   install -vDm644 -t "$pkgdir/usr/lib/systemd/system" certbot-renew.*
-  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_reponame.conf"
+  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/certbot.conf"
 
-  cd "$_repo/$_reponame"
+  cd "$_repo/certbot"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
@@ -116,4 +184,19 @@ package() {
   # man pages
   install -vDm644 -t "$pkgdir/usr/share/man/man1" docs/_build/man/*.1
   install -vDm644 -t "$pkgdir/usr/share/man/man7" docs/_build/man/*.7
+}
+
+package_certbot-dns-ovh-isolated() {
+  pkgdesc='OVH DNS Authenticator plugin for Certbot - version with isolated dns-lexicon to avoid conflict with python-lexicon'
+  url='https://pypi.python.org/pypi/certbot-dns-ovh'
+  depends=(
+    "certbot-isolated=$pkgver-$pkgrel"
+    "python-acme-isolated=$pkgver-$pkgrel"
+  )
+  provides=(certbot-dns-ovh)
+  conflicts=(certbot-dns-ovh)
+
+  cd "$_repo/certbot-dns-ovh"
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
