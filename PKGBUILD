@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=python-flashinfer
 _pkgname=flashinfer
-pkgver=0.6.11.post3
+pkgver=0.6.18
 pkgrel=1
 pkgdesc='Kernel Library for LLM Serving'
 arch=('x86_64')
@@ -37,14 +37,14 @@ optdepends=(
 )
 options=('!strip')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('31be83e3ae6b1121483169ed897f829bb3668ca3f64d8c416e700976efbe4281')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  python -m build --wheel --no-isolation --skip-dependency-check
+  /usr/bin/python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  /usr/bin/python -m installer --destdir="${pkgdir}" dist/*.whl
 }
