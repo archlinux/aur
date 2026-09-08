@@ -1,6 +1,6 @@
 # Maintainer: Wallace Martins da Silva <wallacemartinss@gmail.com>
 pkgname=cc-cockpit
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Claude Code usage panel for Linux: tray indicator, local dashboard and terminal summary"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-gobject' 'python-cairo' 'libayatana-appindicator')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d93471fc010a004217c62cd0bcdcec165ac6e688a3531fd23b9c9d6533f3dd9d')
+sha256sums=('905429fee1476dbd09b76163e8d74abf793807218309bba5af1604bef8b4c937')
 
 build() {
   cd "$pkgname-$pkgver"
