@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=colamd-bin
 _pkgname=ColaMD
-pkgver=2.0.2
+pkgver=2.0.3
 _electronversion=34
 pkgrel=1
 pkgdesc="A free, elegant Markdown editor for humans and AI agents — with real-time sync for AI-generated changes."
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/marswaveai/ColaMD/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('873508fe0a349fefc245bcd2234cb7ba48c5f79194c6964d56eeb22b791ef04a'
+sha256sums=('3c723988740914af1676ca0c015da8786b9d7e1fa2e7a92700e4246d3b0e207f'
             'b458eb0211ec5df71f8c32cfde43027bd0471337d36f1637fe229b76369fcc45'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
