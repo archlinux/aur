@@ -2,13 +2,14 @@
 pkgname=(
   'python-nab'
   'python-nab-index'
+  'python-nab-markersets'
   'python-nab-project'
   'python-nab-provider'
   'python-nab-resolver'
 )
 pkgbase=python-nab
 _name=${pkgbase#python-}
-pkgver=0.0.15
+pkgver=0.0.17
 pkgrel=1
 pkgdesc="PubGrub-based dependency resolver for Python packages."
 arch=('any')
@@ -21,14 +22,21 @@ makedepends=(
   'python-wheel'
 )
 source=("${_name}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cb4d3d1e0368d161168f0d4925642195a58739c40981eff090fab2b7d59b92f9')
+sha256sums=('6932c9dab830d60adfa98f5cc4da4dee90db6bf31f1a8c0e7e2962163d6592ff')
 
 build() {
   cd "${_name}-$pkgver"
   python -m build --wheel --no-isolation
 
-  for _module in "${_name}-index" "${_name}-project" "${_name}-provider" "${_name}-resolver"; do
-    pushd ${_module}
+  _modules=(
+    "${_name}-index"
+    "${_name}-markersets"
+    "${_name}-project"
+    "${_name}-provider"
+    "${_name}-resolver"
+  )
+  for _module in ${_modules[*]}; do
+    pushd "${_module}"
     python -m build --wheel --no-isolation
     popd
   done
@@ -37,11 +45,12 @@ build() {
 package_python-nab() {
   depends=(
     'python-nab-index'
+    'python-nab-markersets'
     'python-nab-project'
     'python-nab-provider'
     'python-nab-resolver'
+    'python-tomli'
     'python-typing_extensions'
-    'python-tyro'
   )
 
   cd "${_name}-$pkgver"
@@ -67,14 +76,29 @@ package_python-nab-index() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
+package_python-nab-markersets() {
+  pkgdesc="PEP 508 marker algebra: markers as sets of environments"
+  depends=(
+    'python-packaging'
+    'python-typing_extensions'
+  )
+
+  cd "${_name}-$pkgver/${pkgname#python-}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
 package_python-nab-project() {
   pkgdesc="Index-backed provider, lockfile emitter, and downloader for nab"
   depends=(
     'python-build'
     'python-installer'
     'python-nab-index'
+    'python-nab-markersets'
     'python-nab-provider'
     'python-nab-resolver'
+    'python-packaging'
     'python-pyproject-hooks'
     'python-tomli'
     'python-tomli-w'
@@ -91,6 +115,7 @@ package_python-nab-project() {
 package_python-nab-provider() {
   pkgdesc="IO-free resolution core for nab"
   depends=(
+    'python-nab-markersets'
     'python-nab-resolver'
     'python-typing_extensions'
   )
@@ -104,7 +129,7 @@ package_python-nab-provider() {
 
 package_python-nab-resolver() {
   pkgdesc="Generic PubGrub dependency-resolver core"
-  depends=('python')
+  depends=('python-typing_extensions')
 
   cd "${_name}-$pkgver/${pkgname#python-}"
   python -m installer --destdir="$pkgdir" dist/*.whl

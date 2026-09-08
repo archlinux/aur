@@ -1,6 +1,6 @@
 pkgbase = python-nab
 	pkgdesc = PubGrub-based dependency resolver for Python packages.
-	pkgver = 0.0.15
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/notatallshaw/nab
 	arch = any
@@ -9,16 +9,17 @@ pkgbase = python-nab
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = nab-0.0.15.tar.gz::https://github.com/notatallshaw/nab/archive/refs/tags/v0.0.15.tar.gz
-	sha256sums = cb4d3d1e0368d161168f0d4925642195a58739c40981eff090fab2b7d59b92f9
+	source = nab-0.0.17.tar.gz::https://github.com/notatallshaw/nab/archive/refs/tags/v0.0.17.tar.gz
+	sha256sums = 6932c9dab830d60adfa98f5cc4da4dee90db6bf31f1a8c0e7e2962163d6592ff
 
 pkgname = python-nab
 	depends = python-nab-index
+	depends = python-nab-markersets
 	depends = python-nab-project
 	depends = python-nab-provider
 	depends = python-nab-resolver
+	depends = python-tomli
 	depends = python-typing_extensions
-	depends = python-tyro
 
 pkgname = python-nab-index
 	pkgdesc = PyPI Simple-API client and on-disk cache for nab
@@ -29,13 +30,20 @@ pkgname = python-nab-index
 	depends = python-urllib3
 	optdepends = python-httpx
 
+pkgname = python-nab-markersets
+	pkgdesc = PEP 508 marker algebra: markers as sets of environments
+	depends = python-packaging
+	depends = python-typing_extensions
+
 pkgname = python-nab-project
 	pkgdesc = Index-backed provider, lockfile emitter, and downloader for nab
 	depends = python-build
 	depends = python-installer
 	depends = python-nab-index
+	depends = python-nab-markersets
 	depends = python-nab-provider
 	depends = python-nab-resolver
+	depends = python-packaging
 	depends = python-pyproject-hooks
 	depends = python-tomli
 	depends = python-tomli-w
@@ -44,10 +52,11 @@ pkgname = python-nab-project
 
 pkgname = python-nab-provider
 	pkgdesc = IO-free resolution core for nab
+	depends = python-nab-markersets
 	depends = python-nab-resolver
 	depends = python-typing_extensions
 	conflicts = python-nab-python
 
 pkgname = python-nab-resolver
 	pkgdesc = Generic PubGrub dependency-resolver core
-	depends = python
+	depends = python-typing_extensions
