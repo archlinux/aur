@@ -2,7 +2,7 @@
 pkgname=woof-doom
 _pkgname=woof
 pkgver=15.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Woof! is a continuation of Lee Killough's Doom source port MBF targeted at modern systems"
 arch=(x86_64)
 url="https://github.com/fabiangreffrath/woof"
@@ -28,7 +28,7 @@ build() {
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_C_FLAGS="$CFLAGS -ffile-prefix-map=$PWD=" \
-        -Wno-dev
+        -Wno-author
     cmake --build build
 }
 
