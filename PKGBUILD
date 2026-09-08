@@ -3,13 +3,13 @@
 
 pkgname=uavs3d-llvm-git
 pkgver=1.2.r0.g0e20d2c
-pkgrel=2
-pkgdesc='An AVS3 decoder supporting AVS3-P2 baseline profile (git version) — built with Clang and LLVM lld'
+pkgrel=3
+pkgdesc='An AVS3 decoder supporting AVS3-P2 baseline profile (git version) — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/uavs3/uavs3d/'
 license=('BSD-3-Clause')
 depends=('glibc')
-makedepends=('clang' 'cmake' 'git' 'lld' 'llvm')
+makedepends=('clang' 'cmake' 'git' 'mold' 'llvm')
 provides=('uavs3d-git' 'uavs3d' 'uavs3d-llvm')
 conflicts=('uavs3d-git' 'uavs3d' 'uavs3d-llvm')
 source=('git+https://github.com/uavs3/uavs3d.git'
@@ -31,7 +31,7 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
@@ -39,7 +39,7 @@ build() {
     export STRIP=/usr/bin/llvm-strip
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     export CXXFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     
@@ -47,8 +47,8 @@ build() {
         '-GUnix Makefiles'
         '-DCMAKE_BUILD_TYPE:STRING=None'
         '-DCMAKE_INSTALL_PREFIX:PATH=/usr'
-        '-DCMAKE_EXE_LINKER_FLAGS:STRING=-fuse-ld=lld'
-        '-DCMAKE_SHARED_LINKER_FLAGS:STRING=-fuse-ld=lld'
+        '-DCMAKE_EXE_LINKER_FLAGS:STRING=-fuse-ld=mold'
+        '-DCMAKE_SHARED_LINKER_FLAGS:STRING=-fuse-ld=mold'
         '-DCMAKE_POLICY_VERSION_MINIMUM:STRING=3.5.0'
         '-DCMAKE_SKIP_RPATH:BOOL=YES'
         '-DBUILD_SHARED_LIBS:BOOL=ON'
