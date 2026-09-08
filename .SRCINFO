@@ -1,0 +1,16 @@
+pkgbase = codex-shwap
+	pkgdesc = Secure, keyboard-first TUI account switcher for Codex
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sambuaneesh/codex-shwap
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	provides = codex-shwap=0.1.0
+	conflicts = codex-shwap-bin
+	options = !debug
+	source = codex-shwap-0.1.0.tar.gz::https://github.com/sambuaneesh/codex-shwap/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 14ec5812a5c380b8b2489657977ff88c88d72f88873617893f444738f4bc094d
+
+pkgname = codex-shwap
