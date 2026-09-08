@@ -1,5 +1,5 @@
 pkgbase = septabee
-	pkgdesc = A DAW built around audio sample-level parameter modulation and a ridiculous amount of optimization.
+	pkgdesc = A DAW built around audio rate parameter modulation and a ridiculous amount of optimization.
 	pkgver = B_T5
 	pkgrel = 1
 	url = https://septabee.nekoweb.org
