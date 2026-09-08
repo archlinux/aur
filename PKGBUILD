@@ -5,8 +5,8 @@
 _pkgname=vvenc
 pkgname=vvenc-llvm
 pkgver=1.14.0
-pkgrel=3
-pkgdesc='A H.266/VVC (Versatile Video Coding) encoder — built with Clang and LLVM lld'
+pkgrel=4
+pkgdesc='A H.266/VVC (Versatile Video Coding) encoder — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/fraunhoferhhi/vvenc/'
 license=('BSD-3-Clause-Clear')
@@ -15,7 +15,7 @@ depends=(
     'glibc')
 makedepends=(
     'clang'
-    'lld'
+    'mold'
     'llvm'
     'cmake')
 provides=("${_pkgname}")
@@ -28,7 +28,7 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
@@ -36,7 +36,7 @@ build() {
     export STRIP=/usr/bin/llvm-strip
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     export CXXFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     
@@ -45,8 +45,8 @@ build() {
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=lld' \
-        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=lld' \
+        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=mold' \
+        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=mold' \
         -DCMAKE_INSTALL_RPATH:STRING='' \
         -DVVENC_INSTALL_FULLFEATURE_APP:BOOL='ON' \
         -Wno-dev
