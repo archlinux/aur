@@ -1,5 +1,5 @@
 pkgbase = plexamp-beta-appimage
-	pkgdesc = Modern music client for Plex BETA
+	pkgdesc = Modern music client for Plex BETA with new backend
 	pkgver = 4.50.6
 	pkgrel = 1
 	url = https://plexamp.com
