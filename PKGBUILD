@@ -9,7 +9,7 @@ _pkgverorg='7.2.3'
 pkgver='7.2.3'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (binary release).'
-arch=('x86_64' 'armv7l' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://$_pkgname.org"
 license=('Apache-2.0')
 depends=('electron43' 'hicolor-icon-theme')
@@ -32,7 +32,6 @@ source_x86_64=("$pkgname-$_pkgverorg-$pkgrel-amd64.zip::${_releaseurl}/Ferdium-l
 source_armv7l=("$pkgname-$_pkgverorg-$pkgrel-armv7l.zip::${_releaseurl}/Ferdium-linux-${_pkgverorg}-armv7l.deb")
 source_aarch64=("$pkgname-$_pkgverorg-$pkgrel-arm64.zip::${_releaseurl}/Ferdium-linux-${_pkgverorg}-arm64.deb")
 sha512sums_x86_64=('261cb5fab09329f6d114d31360d91b7279ef0d911f05cb27e4b3375ef49cecfcb18c8574053e3b8f94d8e3658e8cfb227c71c8cc1ef1f38d78096d95dc1fd29d')
-sha512sums_armv7l=('c030dbb25cc3c49b21a28be8c1afb46c3d3c0ab1267087e8bd7fea58855b0951909e953d956132fdf16dcdcd65be3b176dada9af4cdc585d0e49b46a3ea0f57b')
 sha512sums_aarch64=('d05245bce1bcd06a08627d5bf8d006db727e96f649487630e9a7ee598277d4b3139baa2b023a7cb81507d22a030801aa63952efc7fc4e5c29657d0ff5f3c8494')
 
 _sourcedirectory="$pkgname-$_pkgverorg-$pkgrel"
