@@ -1,17 +1,17 @@
 # Maintainer: Henri Koski <henri.koski@bitbrewers.fi>
 pkgname=hcibridge-bin
-pkgver=0.10.23
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Attach remote ESP32 Bluetooth bridges to the local Bluetooth stack (release binary)"
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/heppu/esp-hci-bridge"
+url="https://github.com/heppu/hcibridge"
 license=('MIT')
 depends=('bluez')
 provides=('hcibridge')
 conflicts=('hcibridge')
 backup=('etc/hcibridge/config' 'etc/hcibridge/config.d/50-example.conf' 'etc/default/hcibridge')
-_rel="https://github.com/heppu/esp-hci-bridge/releases/download/v$pkgver"
-source=("hcibridge-$pkgver.tar.gz::https://github.com/heppu/esp-hci-bridge/archive/refs/tags/v$pkgver.tar.gz"
+_rel="https://github.com/heppu/hcibridge/releases/download/v$pkgver"
+source=("hcibridge-$pkgver.tar.gz::https://github.com/heppu/hcibridge/archive/refs/tags/v$pkgver.tar.gz"
         "hcibridge.1-$pkgver::$_rel/hcibridge.1"
         "hcibridge.bash-$pkgver::$_rel/hcibridge.bash"
         "_hcibridge-$pkgver::$_rel/_hcibridge"
@@ -19,13 +19,13 @@ source=("hcibridge-$pkgver.tar.gz::https://github.com/heppu/esp-hci-bridge/archi
 source_x86_64=("hcibridge-$pkgver-x86_64::$_rel/hcibridge-x86_64-linux")
 source_aarch64=("hcibridge-$pkgver-aarch64::$_rel/hcibridge-aarch64-linux")
 source_armv7h=("hcibridge-$pkgver-armv7h::$_rel/hcibridge-armv7-linux")
-sha256sums=('d9e4806c3cc22f37a5c59bb0e90ab06898b639634dd860e8543df038f832fccf' '591f750e3672d23b44d860685658007cba7ff40dab85410ca29e201a995c12e6' '7de3988de9a4985767be7b5c362dc395570321e6e628f319b3ef31c3c65716fd' '5303882f927736c07944c53d25e52d00f957461fe597f0d5feb87378a3c3f0a5' '6ead0d149c08e820c1e37ce2207eca4aba9d5e7aae600f9caafde94f8f94e75b')
-sha256sums_x86_64=('0db841638301c0cb09e57087e8f44e8d2c17037bc876b4a895ce849db9dd96b5')
-sha256sums_aarch64=('b48d9be295f4e4e12ac16cee9e34b1832cf36c208f11fed6749ade04fb10ba6c')
-sha256sums_armv7h=('9ec0610cb83f32dfa913a4d8f680d41c1d3a1ef330ffc8f321e8100f6718d364')
+sha256sums=('240df0c053a8db080ac8ba34c8c8f4ef088840333d969059ed59bb22b505c1db' 'ae6e0e5a8144c42edecc0460921048ad4a9e54ba8eedcd44406bbd68419b0ab4' '7de3988de9a4985767be7b5c362dc395570321e6e628f319b3ef31c3c65716fd' '5303882f927736c07944c53d25e52d00f957461fe597f0d5feb87378a3c3f0a5' '6ead0d149c08e820c1e37ce2207eca4aba9d5e7aae600f9caafde94f8f94e75b')
+sha256sums_x86_64=('c3e0156a178b04120c3c4fb0d89a47ddb21992e453071c4d4ef10fb6e764da51')
+sha256sums_aarch64=('652f72023057205a3e2bd39de90e7a4d931930df66dc922c57620c86724cdf7b')
+sha256sums_armv7h=('3fc4e359dc2a0488076525bc97b14eb81752091ba59cb561afa0934d31cd8455')
 
 package() {
-    local src="esp-hci-bridge-$pkgver"
+    local src="hcibridge-$pkgver"
     install -Dm755 "hcibridge-$pkgver-$CARCH" "$pkgdir/usr/bin/hcibridge"
     install -Dm644 "hcibridge.1-$pkgver" "$pkgdir/usr/share/man/man1/hcibridge.1"
     install -Dm644 "hcibridge.bash-$pkgver" "$pkgdir/usr/share/bash-completion/completions/hcibridge"
