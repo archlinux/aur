@@ -9,7 +9,7 @@ pkgver='7.2.3'
 _apptag='v7.2.3'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release).'
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache-2.0')
 depends=('electron43' 'hicolor-icon-theme')
@@ -35,9 +35,6 @@ sha512sums=('bd0adbd09432e391ddccad88a1772d1120aaa6d39c233315ee017588c98d7a4ef81
 _sourcedirectory="$pkgname"
 
 case "$CARCH" in
-	armv7h)
-		_electronbuilderarch='armv7l'
-	;;
 	aarch64)
 		_electronbuilderarch='arm64'
 	;;
