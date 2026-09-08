@@ -1,6 +1,6 @@
 pkgbase = python-bithuman
 	pkgdesc = bitHuman Python SDK — libessence-backed avatar runtime.
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/bithuman-product/bithuman-sdk-public/tree/main/python
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = python-bithuman
 	depends = libstdc++
 	depends = glibc
 	depends = libgcc
-	noextract = bithuman-3.0.3-cp314-cp314-manylinux_2_28_x86_64.whl
-	noextract = bithuman-3.0.3-cp314-cp314-manylinux_2_28_aarch64.whl
-	source_x86_64 = https://files.pythonhosted.org/packages/cp314/b/bithuman/bithuman-3.0.3-cp314-cp314-manylinux_2_28_x86_64.whl
-	sha256sums_x86_64 = 5116055dfab4552069f60ec00dcd48e159e4f33cfbb283a265ca3b5588376db9
-	source_aarch64 = https://files.pythonhosted.org/packages/cp314/b/bithuman/bithuman-3.0.3-cp314-cp314-manylinux_2_28_aarch64.whl
-	sha256sums_aarch64 = dfc93191b220277712acbcdaa50047aa280afc9e02311876269a6fcbb889a76e
+	noextract = bithuman-3.0.4-cp314-cp314-manylinux_2_28_x86_64.whl
+	noextract = bithuman-3.0.4-cp314-cp314-manylinux_2_28_aarch64.whl
+	source_x86_64 = https://files.pythonhosted.org/packages/cp314/b/bithuman/bithuman-3.0.4-cp314-cp314-manylinux_2_28_x86_64.whl
+	sha256sums_x86_64 = 3e41e312c52d0c518638d540fe57cd1f21557db6bb4679aba0e1d4fdb900ecd0
+	source_aarch64 = https://files.pythonhosted.org/packages/cp314/b/bithuman/bithuman-3.0.4-cp314-cp314-manylinux_2_28_aarch64.whl
+	sha256sums_aarch64 = 231badd8929a8c92b5b6e47df41616a952ed95540f56fd68904d32f792a606b7
 
 pkgname = python-bithuman
