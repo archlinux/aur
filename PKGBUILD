@@ -1,6 +1,6 @@
 pkgname=clash-verge-rev-autobuild-bin
 _pkgname=clash-verge-rev
-pkgver=2.5.4+autobuild.0907.4ddd021
+pkgver=2.5.4+autobuild.0908.66d3e70
 pkgrel=1
 epoch=1
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
@@ -14,7 +14,7 @@ install=.install
 
 source_x86_64=("Clash.Verge_${pkgver}_amd64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}_amd64.deb")
 
-sha256sums_x86_64=('3d1c959f219a567cccd4c20ea49389b06a017a6bdfad429a8c618325f99e005f')
+sha256sums_x86_64=('a5cfc70d29f0d0280f7e011a9eecb51c32e4fd15e6a7e69c837b5e14ef75b238')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
