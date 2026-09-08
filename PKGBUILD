@@ -1,7 +1,7 @@
 # Maintainer: thynkon <thynkon at protonmail dot com>
 
 pkgname=joplin-appimage
-pkgver=3.6.15
+pkgver=3.7.16
 pkgrel=1
 pkgdesc="The latest stable AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
@@ -9,17 +9,17 @@ url="https://github.com/laurent22/joplin"
 license=('MIT')
 conflicts=('joplin-desktop')
 depends=('fuse2')
-options=(!strip)
+options=(!strip !debug)
 source=(
   ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
   ${url}/raw/v${pkgver}/LICENSE
 )
 sha512sums=(
-  1acf483b4d8cc1c56b277bf02c86b04fb2b466b776b458f5f086cce24031b3b7c4bdc696f9564b401dcc92c591ec0a4a2767b26ce798ff5d5323517e993feeec
+  4c8a1ffaf2082241f8d3bc99e72b5640df1dacdf04e1dc7022ca5fd6f884d52fa778476e513990daa236921100e817c8aa8b8ba3f099956a200f65713a7db0a4
   SKIP
 )
 _filename="Joplin-${pkgver}.AppImage"
-_squashfs_desktop_file="joplin.desktop"
+_squashfs_desktop_file="appimagekit-joplin.desktop"
 _squashfs_icon_file="joplin.png"
 _desktop_file="/usr/share/applications/joplin.desktop"
 _appimage_name=$(echo "${_filename}" | sed -E 's/-[0-9]*.[0-9]*.[0-9]*//')
