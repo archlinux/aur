@@ -73,7 +73,7 @@ conflicts=(
 	"cosmic-randr-git"
 )
 source=(
-	'git+https://github.com/skygrango/cosmic-comp.git#branch=hdr_6'
+	'git+https://github.com/skygrango/cosmic-comp.git#branch=hdr_v6'
 	'git+https://github.com/skygrango/cosmic-settings.git#branch=hdr_v1'
 	'git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v2'
 )

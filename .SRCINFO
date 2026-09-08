@@ -62,7 +62,7 @@ pkgbase = cosmic-comp-gaming
 	conflicts = cosmic-settings-git
 	conflicts = cosmic-randr
 	conflicts = cosmic-randr-git
-	source = git+https://github.com/skygrango/cosmic-comp.git#branch=hdr_6
+	source = git+https://github.com/skygrango/cosmic-comp.git#branch=hdr_v6
 	source = git+https://github.com/skygrango/cosmic-settings.git#branch=hdr_v1
 	source = git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v2
 	sha256sums = SKIP
