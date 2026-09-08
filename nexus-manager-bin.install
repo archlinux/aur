@@ -1,0 +1,19 @@
+# The udev rule grants the active local seat an ACL on the panel's hidraw node. It only
+# takes effect once udev has reloaded, and the device is normally already plugged in - so
+# trigger as well as reload, or the first run after installing still cannot open the panel.
+post_install() {
+    udevadm control --reload-rules >/dev/null 2>&1 || true
+    udevadm trigger --action=add --subsystem-match=hidraw >/dev/null 2>&1 || true
+    cat <<'MSG'
+  The udev rule is installed. If the panel was plugged in before this package was,
+  replug it or reboot so the ACL is applied.
+
+  Start the editor:            nexus-manager-editor
+  Keep the panel alive:        nexus-manager-editor --tray   (or enable the user service)
+  Music visualizers need parec: pacman -S libpulse
+MSG
+}
+
+post_upgrade() {
+    udevadm control --reload-rules >/dev/null 2>&1 || true
+}
