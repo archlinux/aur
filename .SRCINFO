@@ -1,6 +1,6 @@
 pkgbase = lume-bin
 	pkgdesc = Fast, lightweight, open-source terminal — a private, local alternative to Warp
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/hugomyb/Lume
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = lume-bin
 	provides = lume
 	conflicts = lume
 	options = !strip
-	source = Lume_1.1.1_amd64.deb::https://github.com/hugomyb/Lume/releases/download/v1.1.1/Lume_1.1.1_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/hugomyb/Lume/v1.1.1/LICENSE
-	sha256sums = 74b44422b6b19276848b34cfb23963b20ea395c52f7929a119d7e93db41ef2ac
+	source = Lume_1.1.2_amd64.deb::https://github.com/hugomyb/Lume/releases/download/v1.1.2/Lume_1.1.2_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/hugomyb/Lume/v1.1.2/LICENSE
+	sha256sums = ca835c92f21a9c36b43d10e7d7cc0bdf7f91f6d7f8c180d04342062662738a65
 	sha256sums = SKIP
 
 pkgname = lume-bin
