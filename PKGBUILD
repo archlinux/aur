@@ -1,15 +1,15 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=comigo
-pkgver=1.3.4
-pkgrel=3
+pkgver=1.3.5
+pkgrel=1
 pkgdesc="Comic & Manga Reader in Linux，Windows，MacOS。简单跨平台的漫画阅读器。わかりやすい漫画リーダー。"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yumenaka/comigo"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='71cc6be246c5c945be810a896f4d3fcadb790ba9'
+_commit='368ca7d87f6fb5ecac53561271572c8d4fbcc53e'
 source=("git+https://github.com/yumenaka/comigo.git#commit=$_commit")
 sha256sums=('SKIP')
 
