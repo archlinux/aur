@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qcalc-bin
 _pkgname=Q.Calc
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
-pkgdesc="A multi-purpose calculator for productivity and accessibility.(Prebuilt version)"
+pkgdesc="A modern, cross-platform calculator built for productivity."
 arch=('x86_64')
 url="https://github.com/from104/qcalc"
 license=('MIT')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname//./}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/from104/qcalc/v${pkgver}/LICENSE"
 )
-sha256sums=('72ecead47b759234c82da28e5bcd8d2541aedd9ee82055a4e2a6fa63396aede6'
+sha256sums=('823b38ead905b8a154d60adfad885a6c5e43a34a73d54d332d12b74feb5aa6fe'
             '3987b48fb3c79907511fb74614201dbf40f9bff0cc691d4f2dbcad754cba519b')
 prepare() {
     sed -i -e "
@@ -26,6 +26,7 @@ prepare() {
         s/StartupWMClass=app/StartupWMClass=${_pkgname}/g
         s/Icon=app/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname//./}.desktop"
+    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
