@@ -10,7 +10,7 @@
 pkgname=openhamclock-git
 _pkgname=openhamclock
 pkgver=26.7.2.r0.ge1f5cef5
-pkgrel=1
+pkgrel=2
 pkgdesc="Amateur Radio Dashboard - A modern web-based HamClock alternative (VCS / git version)"
 arch=('any')
 url="https://github.com/accius/openhamclock"
@@ -75,6 +75,7 @@ package() {
     cp package.json server.js "${appdir}/"
     [ -f config.example.json ] && cp config.example.json "${appdir}/"
     [ -f .env.example ] && cp .env.example "${appdir}/"
+    touch "${appdir}/.env"
 
     # Install CLI wrapper / launcher
     install -Dm755 "${srcdir}/openhamclock.sh" "${pkgdir}/usr/bin/${_pkgname}"

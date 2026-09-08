@@ -1,7 +1,7 @@
 pkgbase = openhamclock-git
 	pkgdesc = Amateur Radio Dashboard - A modern web-based HamClock alternative (VCS / git version)
 	pkgver = 26.7.2.r0.ge1f5cef5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/accius/openhamclock
 	arch = any
 	license = MIT
