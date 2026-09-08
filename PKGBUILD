@@ -3,9 +3,9 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 _pkgname=dsp-guitar
 pkgname="go-${_pkgname}-bin"
-pkgver=1.8.0
-pkgrel=6
-pkgdesc="A cross-platform multichannel multi-effects processor for electric guitars and other instruments.(Prebuilt version)"
+pkgver=1.8.1
+pkgrel=1
+pkgdesc="A cross-platform multichannel multi-effects processor for electric guitars and other instruments."
 arch=(
 	'aarch64'
 	'x86_64'
@@ -27,7 +27,7 @@ source=(
 	"${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}.tar.gz"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('a39993ba8ad40ce74234e908db276841df1fd517c19385d01436d160986c77b1'
+sha256sums=('60057519e27ea7384cb23b5f8352d506ab07bfde003f23794d388aebeec38fcd'
             '4d4d6d7600ec9260a0deae188b97774dc30771b26028d1a4127d7a58250e5b50')
 prepare() {
 	sed -i -e "
@@ -53,5 +53,5 @@ prepare() {
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
 	install -Dm755 -d "${pkgdir}/usr/lib"
-	cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
+	cp -a "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
 }
