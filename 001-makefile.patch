@@ -1,0 +1,21 @@
+diff --git a/makefile b/makefile
+index 17792b8..4f68d07 100644
+--- a/makefile
++++ b/makefile
+@@ -1,5 +1,5 @@
+-VERSION=$(shell git describe --exact-match --tags HEAD 2>/dev/null || echo bleeding)
+-GITHASH=$(shell git rev-parse --short=8 HEAD)
++VERSION?=$(shell git describe --exact-match --tags HEAD 2>/dev/null || echo bleeding)
++GITHASH?=$(shell git rev-parse --short=8 HEAD)
+ 
+ GO_TAGS    = sqlite_foreign_keys sqlite_json sqlite_fts5
+ GO_LDFLAGS = -s -w -X 'main.Version=$(VERSION)' -X 'main.GitHash=$(GITHASH)'
+@@ -84,7 +84,7 @@ serve: assets
+ 	go run $(GO_FLAGS_DEBUG) ./cmd/yarr -db "$(YARR_DB)"
+ 
+ test: assets
+-	go test $(GO_FLAGS) ./...
++	go test $(GO_FLAGS) -short ./...
+ 
+ .PHONY: \
+ 	assets \
