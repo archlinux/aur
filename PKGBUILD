@@ -3,7 +3,7 @@
 
 pkgname=kikitan-translator-git
 _appname=kikitan-translator
-pkgver=1.2.5.r98.ge64a97a
+pkgver=2.0.0.r0.ga07b4e8
 pkgrel=1
 pkgdesc="Kikitan Translator, a realtime VRChat Translator"
 arch=('x86_64')
@@ -41,7 +41,7 @@ provides=('kikitan-translator')
 conflicts=('kikitan-translator')
 options=('!strip')
 source=(
-    "${_appname}::git+${url}.git#branch=dotnet"
+    "${_appname}::git+${url}.git"
     "kikitan-translator.desktop"
     "kikitan"
 )
@@ -86,7 +86,7 @@ build() {
 package() {
     cd "${srcdir}/${_appname}"
 
-    _appimage="KikitanTranslator.Photino/bin/Release/net9.0/linux-x64/Release/com.github.yusufozmen01.kikitan-translator.AppImage"
+    _appimage="KikitanTranslator.Photino/bin/Release/net9.0/linux-x64/Release/KikitanTranslator.AppImage"
 
     chmod +x "${_appimage}"
     "${_appimage}" --appimage-extract
