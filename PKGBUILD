@@ -6,8 +6,8 @@ pkgname=(
     'airconnect-aircast-bin'
 )
 
-pkgver=1.10.1
-pkgrel=2
+pkgver=1.11.3
+pkgrel=1
 pkgdesc="AirPlay bridge for DLNA/UPnP and Chromecast devices"
 arch=( 'x86_64' 'aarch64')
 url="https://github.com/philippe44/AirConnect"
@@ -25,7 +25,7 @@ source=(
     aircast.service
 )
 
-sha256sums=('ea0fdad7a1aeb837ee99b2c21aad7e4c3ce84de03c2e86ac64bed804b87588b0'
+sha256sums=('acc95e4490ffd42b1ebc52ff3c276caec2bfe9972a86556183c23b725fc1952d'
             '67f9fe5c1e1af6d9ddc7627e72c2da2ce7e30481af738cea5a60a8db128fc2b6'
             '54d9d2e035dbb03addda55ad444fd55a619153180616b4c685547a7c5683401d')
 
