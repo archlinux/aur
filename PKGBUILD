@@ -18,9 +18,9 @@ source=(
     "https://dl.google.com/android/repository/platform-tools_r${pkgver}-linux.zip"
     "LICENSE"
 )
-sha256sums=(
-    "d230f13842f60f782a8645f9c813f8f845bf36089ea7289f28c48f17979313f1"
-    "1f8729233617b193fd619213792ae16a41b95d2bbbf525dfe66998252ba68b16"
+sha1sums=(
+    "477254aa5f903c15cf51001717bdf347fb6b53e0"
+    "efa68a6b3c661d18699d5c026771d5911cdc2f83"
 )
 
 package() {
