@@ -1,7 +1,7 @@
 # Maintainer: sandwichfarm <sandwich.farm@protonmail.com>
 
 pkgname=nsyte
-pkgver=0.27.1
+pkgver=0.28.1
 pkgrel=1
 pkgdesc="Publish your site to nostr and blossom servers"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('deno')
 conflicts=('nsyte-bin' 'nsite-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fbaf6813a4dbfd46373edd1bf9e202c86d14ee871b7e2b72aef3021b150be14c')
+sha256sums=('190710bc423f8293f51d30e1858951d180c528b65699e4523fc9b283df521914')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
