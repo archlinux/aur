@@ -1,6 +1,6 @@
 # Maintainer: Jesse Pinkman <M-Igashi@users.noreply.github.com>
 pkgname=mp3rgui
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='GUI application for mp3rgain - lossless MP3 volume adjustment'
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url='https://mp3rgain.tyna.ninja/'
 license=('MIT')
 depends=('gcc-libs' 'gtk3')
 makedepends=('rust' 'cargo')
-optdepends=('mp3rgain: CLI tool for batch processing')
+optdepends=('mp3rgain: CLI tool for batch processing' 'noto-fonts-cjk: display CJK characters in file names')
 source=("https://github.com/M-Igashi/mp3rgain/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
