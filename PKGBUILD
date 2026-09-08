@@ -3,7 +3,7 @@
 pkgname=riftbar
 pkgver=0.2.6
 pkgrel=1
-pkgdesc="Highly customizable GTK4 bar for Wayland written in Rust (git version)"
+pkgdesc="Highly customizable GTK4 bar for Wayland written in Rust"
 arch=('x86_64')
 url="https://codeberg.org/sorashii/riftbar"
 license=('GPL-3.0-only')
