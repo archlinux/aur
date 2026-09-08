@@ -1,0 +1,17 @@
+pkgbase = lib32-libspectre
+	pkgdesc = Small library for rendering Postscript documents
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/libspectre
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = libspectre
+	depends = lib32-ghostscript
+	depends = lib32-glibc
+	source = https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
+	source = https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz.sig
+	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
+	sha256sums = 55a7517cd3572bd2565df0cf450944a04d5273b279ebb369a895391957f0f960
+	sha256sums = SKIP
+
+pkgname = lib32-libspectre
