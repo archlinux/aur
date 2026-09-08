@@ -3,8 +3,8 @@
 # Maintainer: Benjamin von Polheim <hi at benvp dot co>
 
 pkgname=tana
-pkgver=1.523.0
-pkgrel=4
+pkgver=1.529.0
+pkgrel=1
 pkgdesc="The Everything OS. The all-in-one workspace"
 arch=('x86_64')
 url="https://tana.inc"
@@ -17,7 +17,7 @@ source_x86_64=(
 	"https://github.com/tanainc/tana-desktop-releases/releases/download/v${pkgver}/Tana.Outliner-linux-x64-${pkgver}.zip"
 	"tana.desktop"
 	"tana.png")
-sha512sums_x86_64=('06ff903c849b137fdf95dab7accefaa0ea5daaa6bf916daa4fa745a837070a5156c9909f74328423ecd0467469645f8578ad13b22e48b5ea6d79d0219818fc49'
+sha512sums_x86_64=('7d2711186b2423b7a577b6ab3a602f06a3504033dd6448fc6862ff0f2d51a540506c9c21ad6fe88beffa5a78e79871877abeba222637ed31e33d1af0e3839979'
                    'aba951628007b1c1fb004732e78295689b4d95d189b935f428a6195197a665776057a71358437fcb89af415bc39b2a8d332ab75569e0e5cc1ce6b5b0c4f95107'
                    'fd59c24253b0b7981524f50f8e3882aed59f4d3d9c1e8b99067cb706de5d7224a9f13407b1af1a90c91138cbe49484c553243793d7832f9d1ed3d78062a4d8e1')
 
