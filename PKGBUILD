@@ -2,68 +2,75 @@
 
 pkgname=anihot-app
 pkgver=6.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux client for AniHot anime streaming app"
 arch=('x86_64')
 url="https://github.com/MrGlany/AniHotAppPC"
 license=('custom')
+
 depends=('glibc' 'gtk3' 'bash' 'sqlite' 'mpv')
+
 install="${pkgname}.install"
 options=('!debug')
-source=("anihot-${pkgver}.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/${pkgver}r/${pkgver}-linux.zip"
-        "${pkgname}.install")
-sha256sums=('27287bd1ce55bf0707123f59567474d0c569ada68a2425ea0cd6cc9f90e8e41e'
-            '0e036796aa22e8b8c0f11112c454651edea24ab5e4aedcb81536cbde1540c763')
+
+source=(
+    "anihot-${pkgver}.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/${pkgver}r/${pkgver}-linux.zip"
+    "${pkgname}.install"
+)
+
+sha256sums=(
+    '27287bd1ce55bf0707123f59567474d0c569ada68a2425ea0cd6cc9f90e8e41e'
+    '0e036796aa22e8b8c0f11112c454651edea24ab5e4aedcb81536cbde1540c763'
+)
 
 package() {
     cd "$srcdir"
 
-    # Remove built-in updater
-    rm -f "$srcdir/anihot_updater"
+    # Do NOT install the built-in updater.
+    # The updater may become out of sync with the AUR package version.
 
-    # Create directory structure
+    # Application files
     install -d "$pkgdir/usr/lib/$pkgname"
-    install -d "$pkgdir/usr/bin"
-    install -d "$pkgdir/usr/share/applications"
-    install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
-    # Copy application files (lib and data only, share is handled separately)
-    cp -r lib data "$pkgdir/usr/lib/$pkgname/"
-    cp "AniHot App" "$pkgdir/usr/lib/$pkgname/anihot-app"
+    cp -r lib data "$pkgdir/usr/lib/$pkgname"
 
-    # Wrapper script for GUI app
-    cat > "$pkgdir/usr/bin/anihot" << 'EOF'
+    # Main application binary
+    install -Dm755 "AniHot App" \
+        "$pkgdir/usr/lib/$pkgname/anihot-app"
+
+    # CLI client
+    install -Dm755 "ahcli" \
+        "$pkgdir/usr/lib/$pkgname/ahcli"
+
+    # GUI launcher
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/anihot" << 'EOF'
 #!/bin/bash
 cd /usr/lib/anihot-app
-export LD_LIBRARY_PATH="/usr/lib/anihot-app/lib:${LD_LIBRARY_PATH}"
+export LD_LIBRARY_PATH="/usr/lib/anihot-app/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 exec ./anihot-app "$@"
 EOF
-    chmod 755 "$pkgdir/usr/bin/anihot"
 
-    # Install CLI client (ahcli) as a command
-    cp "$srcdir/ahcli" "$pkgdir/usr/lib/$pkgname/ahcli"
-    chmod 755 "$pkgdir/usr/lib/$pkgname/ahcli"
-
-    # Wrapper script for ahcli
-    cat > "$pkgdir/usr/bin/ahcli" << 'EOF'
+    # CLI launcher
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/ahcli" << 'EOF'
 #!/bin/bash
 cd /usr/lib/anihot-app
-export LD_LIBRARY_PATH="/usr/lib/anihot-app/lib:${LD_LIBRARY_PATH}"
+export LD_LIBRARY_PATH="/usr/lib/anihot-app/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 exec ./ahcli "$@"
 EOF
-    chmod 755 "$pkgdir/usr/bin/ahcli"
 
-    # Copy icon (exact path with fallback find)
-    if [ -f "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" ]; then
-        cp "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" \
-           "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.anihot.anihot.png"
-    else
-        find "$srcdir/share/icons/hicolor" -name "com.anihot.anihot.png" -exec cp {} "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" \;
-    fi
+    # Desktop entry
+    install -Dm644 \
+        "$srcdir/share/applications/com.anihot.anihot.desktop" \
+        "$pkgdir/usr/share/applications/com.anihot.anihot.desktop"
 
-    # Install license if present
-    if [ -f "$srcdir/LICENSE" ]; then
-        install -d "$pkgdir/usr/share/licenses/$pkgname"
-        cp "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+    # Application icon
+    install -Dm644 \
+        "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.anihot.anihot.png"
+
+    # License, if present in the archive
+    if [[ -f "$srcdir/LICENSE" ]]; then
+        install -Dm644 "$srcdir/LICENSE" \
+            "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
 }

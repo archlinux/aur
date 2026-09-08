@@ -1,7 +1,7 @@
 pkgbase = anihot-app
 	pkgdesc = Linux client for AniHot anime streaming app
 	pkgver = 6.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MrGlany/AniHotAppPC
 	install = anihot-app.install
 	arch = x86_64
