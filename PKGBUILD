@@ -2,7 +2,7 @@
 
 _pkgname=shadowsocks-go
 pkgname=$_pkgname-git
-pkgver=1.13.0.r85.g61e6078
+pkgver=1.15.0.r23.gd8f0815
 pkgrel=1
 pkgdesc="A versatile and efficient proxy platform for secure communications"
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,6 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath"
     go build -ldflags='-s -w -linkmode=external' ./cmd/$_pkgname
-    go build -ldflags='-s -w -linkmode=external' ./cmd/$_pkgname-domain-set-converter
 }
 
 package() {
@@ -50,5 +49,5 @@ package() {
     install -Dm644 docs/client.json "$pkgdir"/etc/$_pkgname/client.json
     install -Dm644 docs/upsks.json "$pkgdir"/etc/$_pkgname/upsks.json
     install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
-    install -Dm755 $_pkgname-domain-set-converter "$pkgdir"/usr/bin/$_pkgname-domain-set-converter
+    ln -rs "$pkgdir"/usr/bin/$_pkgname "$pkgdir"/usr/bin/$_pkgname-domain-set-converter
 }
