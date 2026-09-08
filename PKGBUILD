@@ -1,6 +1,6 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=wac
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="WebAssembly Composition (WAC) tooling"
 arch=("x86_64")
@@ -30,4 +30,4 @@ package() {
   install -Dm0755 $pkgname-$pkgver/target/$CARCH-unknown-linux-gnu/release/wac "$pkgdir"/usr/bin/wac
 }
 
-sha256sums=('a85a1eb163f48aa8cd90074d3b73dc4191f2b24d59e557144e3c2b7d6dd8bfb4')
+sha256sums=('8999e6c40d88eb5786424fa150df1c0e5f26ab29223b88bcc6fbd36a4a2f3c97')
