@@ -8,7 +8,7 @@ if test -n "$JAVA_HOME"; then
     java="$JAVA_HOME/bin/java"
 fi
 
-java_args="--add-modules javafx.swing,javafx.controls"
+java_args="--add-modules javafx.swing,javafx.controls --enable-native-access=javafx.graphics"
 if [ -f "/etc/profile.d/java-openjfx-profile.sh" ] ; then
     source "/etc/profile.d/java-openjfx-profile.sh"
     if test -n "$OPENJFX_MODULES_PATH"; then
