@@ -4,13 +4,13 @@
 _pkgname=openapv
 pkgname=openapv-llvm
 pkgver=0.2.1.3
-pkgrel=3
-pkgdesc='The reference implementation of the APV codec — built with Clang and LLVM lld'
+pkgrel=4
+pkgdesc='The reference implementation of the APV codec — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/AcademySoftwareFoundation/openapv/'
 license=('BSD-3-Clause')
 depends=('glibc')
-makedepends=('clang' 'cmake' 'lld' 'llvm')
+makedepends=('clang' 'cmake' 'mold' 'llvm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://github.com/AcademySoftwareFoundation/openapv/archive/v${pkgver}-fix/${_pkgname}-${pkgver}.tar.gz")
@@ -29,7 +29,7 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
@@ -37,7 +37,7 @@ build() {
     export STRIP=/usr/bin/llvm-strip
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     export CXXFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     CFLAGS+=' -ffat-lto-objects'
@@ -46,8 +46,8 @@ build() {
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=lld' \
-        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=lld' \
+        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=mold' \
+        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=mold' \
         -DOAPV_APP_STATIC_BUILD:BOOL='OFF' \
         -Wno-dev
     cmake --build build
