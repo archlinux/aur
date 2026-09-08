@@ -4,8 +4,8 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=fldigi
-pkgver=4.2.12
-pkgrel=2
+pkgver=4.2.13
+pkgrel=1
 pkgdesc="Digital Modem Program for Amateur Radio"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://w1hkj.org"
@@ -27,6 +27,12 @@ prepare () {
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
 
+# fldigi 4.2.13 is not compatible with _GLIBCXX_ASSERTIONS
+# when creating ComboBoxes.
+CFLAGS="${CFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}"
+CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}"
+export CFLAGS CXXFLAGS
+
 	./configure --prefix=/usr \
 		--enable-tls --with-flxmlrpc --without-asciidoc
 #		--enable-tls --without-flxmlrpc --without-asciidoc
@@ -45,7 +51,7 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('2138b4eff9cd51f7824b79e1b751da1c'
+md5sums=('bec4586a08983f53f01c9a722895c8a8'
          'c180f454288d495ecbc65b364818530d')
-sha256sums=('028bcb1c100cb790cad36324b8063c13594e160743f9378320ceabcf16dbc44a'
+sha256sums=('a1e8d990359ce9c0cce3ceb5116fd0cf72c95528969766898640ca6ca2dba8d4'
             '3bdbd3fe1b8d7864f46418606e1ab98ca45b48fecd2338a573074c4185dbf380')
