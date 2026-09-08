@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Maizo <maizogabriel@proton.me>
 
 pkgname=kio-rclone
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Browse rclone remotes from Dolphin and other KIO applications'
 url='https://undead34.github.io/kio-rclone/'
@@ -23,7 +23,7 @@ makedepends=(
 )
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Undead34/kio-rclone/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('08071b402a52d2f732083a01d9ae0bfaee5410b44708e504e46e5f53521a6a2a')
+sha256sums=('3ba6e50e30bd0d569702e10ed1242402b040df9d2b981d3c5627ed7f78bfd6b2')
 
 build() {
   cmake \
