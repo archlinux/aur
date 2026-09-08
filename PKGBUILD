@@ -3,7 +3,7 @@
 # Helpful URL: https://whisparr.servarr.com/v1/update/nightly?version=0.0.0.0&os=linux&runtime=netcore&arch=x64&includeMajorVersion=true
 
 pkgname=whisparr-nightly-bin
-pkgver=2.2.0.develop.334
+pkgver=2.2.0.develop.336
 _pkgver=${pkgver//.develop/-develop}
 pkgrel=1
 pkgdesc='Adult movie organizer/manager for usenet and torrent users (nightly builds)'
@@ -45,16 +45,16 @@ source=(
   whisparr.sysusers
   whisparr.tmpfiles
 )
-source_x86_64=("Whisparr.${pkgver}.linux-x64.tar.gz::https://github.com/Whisparr/Whisparr/releases/download/v2.2.0-develop.334/Whisparr.${_pkgver}.linux-x64.tar.gz")
-source_aarch64=("Whisparr.${pkgver}.linux-arm64.tar.gz::https://github.com/Whisparr/Whisparr/releases/download/v2.2.0-develop.334/Whisparr.${_pkgver}.linux-arm64.tar.gz")
-source_armv7h=("Whisparr.${pkgver}.linux-arm.tar.gz::https://github.com/Whisparr/Whisparr/releases/download/v2.2.0-develop.334/Whisparr.${_pkgver}.linux-arm.tar.gz")
+source_x86_64=("Whisparr.${pkgver}.linux-x64.tar.gz::https://github.com/Whisparr/Whisparr/releases/download/v${_pkgver}/Whisparr.${_pkgver}.linux-x64.tar.gz")
+source_aarch64=("Whisparr.${pkgver}.linux-arm64.tar.gz::https://github.com/Whisparr/Whisparr/releases/download/v${_pkgver}/Whisparr.${_pkgver}.linux-arm64.tar.gz")
+source_armv7h=("Whisparr.${pkgver}.linux-arm.tar.gz::https://github.com/Whisparr/Whisparr/releases/download/v${_pkgver}/Whisparr.${_pkgver}.linux-arm.tar.gz")
 sha256sums=('50da66b86fb42b6457a84c61fe02af5845599fd67f538c79457713795d96d8ed'
             'c8c0b16a154e8c7ed47fea616ff0f1bc9319993c0561e0866f0e20faad779de8'
             'dfe5d421bc8c8bd9cfd46ee0183e61b572c28d31c8114dded887998bc432d22b'
             '0b235aed73eb0155d77c485ccff415e82e520d27013ba498ac70574e7106a762')
-sha256sums_x86_64=('dbed39b2884f4da9f56be4c23ba0ef8aa643968b6733ca759eafcf3b30232c27')
-sha256sums_aarch64=('48bf6335ed54f5d3dd0f8bd07cbf4029c520a6c0357ac82a48f3f4e5dd0aa430')
-sha256sums_armv7h=('4f044588b178d98dae9064fef09c9cbd8665935bc9fe9667a0947685214bbdd1')
+sha256sums_x86_64=('edf9295c293d14a1614a721fb63d186b7b8c8dc0c2ba894dddbaadaaaea34497')
+sha256sums_aarch64=('05a25692017ef3e43d2f05803d881e76525be71efb4700d947906009599d36c0')
+sha256sums_armv7h=('cc1b745146790c3126724fca5ae06395069ab86db8028a2687e07fa79fd3607d')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/whisparr/bin"
