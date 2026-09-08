@@ -1,5 +1,5 @@
-# Maintainer: FloTheSysadmin <FloTheSysadmin@protonmail.com>
-#
+# Maintainer: Christian Hesse <arch@eworm.de>
+# Contributor: FloTheSysadmin <FloTheSysadmin@protonmail.com>
 
 pkgname=check_mk-agent
 pkgver=2.4.0p35
@@ -9,8 +9,8 @@ arch=(any)
 url='https://checkmk.com/'
 license=('GPLv2')
 makedepends=('git')
-source=("${pkgname}-check_mk_agent.linux-${pkgver}::https://raw.githubusercontent.com/tribe29/checkmk/v${pkgver}/agents/check_mk_agent.linux"
-        "${pkgname}-check_mk_caching_agent.linux-${pkgver}::https://raw.githubusercontent.com/tribe29/checkmk/v${pkgver}/agents/check_mk_caching_agent.linux"
+source=("${pkgname}-check_mk_agent.linux-${pkgver}::https://raw.githubusercontent.com/Checkmk/checkmk/v${pkgver}/agents/check_mk_agent.linux"
+        "${pkgname}-check_mk_caching_agent.linux-${pkgver}::https://raw.githubusercontent.com/Checkmk/checkmk/v${pkgver}/agents/check_mk_caching_agent.linux"
         'check_mk.socket'
         'check_mk@.service')
 sha256sums=('c82521fc555d08445ce16bc8ba7111032e76f2eb2166bd58fd5aa1bc7054decb'
