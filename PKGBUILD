@@ -3,16 +3,16 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-nightly"
-_electron='electron43'
-_electronpackage='electron43'
-pkgver='7.2.3.nightly.3'
-_apptag='v7.2.3-nightly.3'
+_electron='electron44'
+_electronpackage='electron44'
+pkgver='7.2.4.nightly.1'
+_apptag='v7.2.4-nightly.1'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest nightly release).'
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache-2.0')
-depends=('electron43' 'hicolor-icon-theme')
+depends=('electron44' 'hicolor-icon-theme')
 makedepends=('nvm' 'git' 'python' 'libxcrypt-compat' 'asar')
 options=(!strip !debug)
 provides=(
@@ -30,14 +30,11 @@ conflicts=(
 source=(
 	"$pkgname::git+https://github.com/ferdium/ferdium-app#tag=${_apptag}"
 )
-sha512sums=('9a0600b597369d5e966d90619da17cfcc8883a7d206caa4a43d5a67e3773d2e69d1ef0c2563518c80eaa9c22a4f7b049a3bfd738dac0ac43c2fb86c9324f03d2')
+sha512sums=('a90b0de4a051642fd1749074fd210f76d533417a295388b00b8791d1f37ef9f76ab0c2d0c0b1879db6d36ceab9d9833b70022a68c6a11fa9aef817449ab426b8')
 
 _sourcedirectory="$pkgname"
 
 case "$CARCH" in
-	armv7h)
-		_electronbuilderarch='armv7l'
-	;;
 	aarch64)
 		_electronbuilderarch='arm64'
 	;;
