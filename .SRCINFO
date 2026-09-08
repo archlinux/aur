@@ -1,6 +1,6 @@
 pkgbase = tinspec-bin
 	pkgdesc = Request-testing tool for backend developers — spec-driven endpoints, request chains, automated auth
-	pkgver = 0.1.0preview.7
+	pkgver = 0.1.0preview.8
 	pkgrel = 1
 	url = https://tinspec.dev
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = tinspec-bin
 	conflicts = tinspec
 	options = !strip
 	options = !debug
-	source = https://tinspec.dev/releases/Tinspec_0.1.0-preview.7_amd64.deb
-	sha256sums = a85f4540ed2131a2842fb79728dbc6c73ae08a4c6501c9ea6cfc330579f61353
+	source = https://tinspec.dev/releases/Tinspec_0.1.0-preview.8_amd64.deb
+	sha256sums = fec3c2684f124bd40da573d5544e13337718d81ffe5f2808588d8ce80cfff583
 
 pkgname = tinspec-bin

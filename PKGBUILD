@@ -5,7 +5,7 @@
 # GitLab CI and published to tinspec.dev); only the *latest* version's source URL resolves — the
 # site prunes older artifacts on publish.
 pkgname=tinspec-bin
-pkgver=0.1.0preview.7
+pkgver=0.1.0preview.8
 pkgrel=1
 pkgdesc="Request-testing tool for backend developers — spec-driven endpoints, request chains, automated auth"
 arch=('x86_64')
@@ -19,9 +19,9 @@ optdepends=('xdg-desktop-portal-gtk: native file/folder pickers'
 provides=('tinspec')
 conflicts=('tinspec')
 options=('!strip' '!debug')
-_upver=0.1.0-preview.7
+_upver=0.1.0-preview.8
 source=("https://tinspec.dev/releases/Tinspec_${_upver}_amd64.deb")
-sha256sums=('a85f4540ed2131a2842fb79728dbc6c73ae08a4c6501c9ea6cfc330579f61353')
+sha256sums=('fec3c2684f124bd40da573d5544e13337718d81ffe5f2808588d8ce80cfff583')
 
 package() {
   # The .deb is an ar archive whose payload is data.tar.{gz,xz,zst} — unpack it straight into
