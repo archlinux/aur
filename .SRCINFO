@@ -1,6 +1,6 @@
 pkgbase = cc-cockpit
 	pkgdesc = Claude Code usage panel for Linux: tray indicator, local dashboard and terminal summary
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/wallacemartinss/cc-cockpit
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = cc-cockpit
 	depends = python-gobject
 	depends = python-cairo
 	depends = libayatana-appindicator
-	source = cc-cockpit-0.5.1.tar.gz::https://github.com/wallacemartinss/cc-cockpit/archive/refs/tags/v0.5.1.tar.gz
-	sha256sums = 905429fee1476dbd09b76163e8d74abf793807218309bba5af1604bef8b4c937
+	source = cc-cockpit-0.5.2.tar.gz::https://github.com/wallacemartinss/cc-cockpit/archive/refs/tags/v0.5.2.tar.gz
+	sha256sums = 0b93705162bca919c0268dffdf60a3d4e2ecc566bb64f07d2922ed4042b22512
 
 pkgname = cc-cockpit
