@@ -3,7 +3,7 @@
 # Contributor: Asuka Minato <i at asukaminato dot eu dot org>
 
 pkgname=adspower-global
-pkgver=8.6.3
+pkgver=8.7.23
 pkgrel=1
 pkgdesc="AdsPower - Antidetect Browser for Multi-Account Management"
 arch=('x86_64')
@@ -46,7 +46,7 @@ source=(
     "AdsPower-Global-${pkgver}-x64.deb::https://version.adspower.net/software/linux-x64-global/${pkgver}/AdsPower-Global-${pkgver}-x64.deb"
 )
 noextract=("AdsPower-Global-${pkgver}-x64.deb")
-sha256sums=('1ad4ffb5720bca1f9cc9c60023bdf754c2fb0812ce6f1834f5897e3907be9c63')
+sha256sums=('7a16c3591a8b67d7a440666df523499c8680b7d25024806e76638ffb4ee31520')
 
 package() {
     cd "$srcdir"
