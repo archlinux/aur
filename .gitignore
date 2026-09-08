@@ -1,0 +1,8 @@
+# AUR repos track only the packaging files: ignore everything, then
+# re-include what belongs in the repo.
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!*.install
+!*.patch
