@@ -3,7 +3,7 @@
 terminateImmediately="true"
 
 # This is your Application ID, avoid conflict
-appID="com.qq.weixin"
+appID="com.tencent.wechat"
 
 # This is a friendly name of an application. It should only contain ASCII characters and not spaces.
 friendlyName="WeChat"

@@ -32,18 +32,18 @@ source=(
 )
 
 
-md5sums=('6e5d2bd14439b5d1bd8c8e6e0fab7850'
-         '40fcc8aa752ea10a147582a63a14d8fb'
+md5sums=('530b90bc05c2d6ca8eb2d06ca486d934'
+         'c802c85de14a1c521a36083aa46208bc'
          'fd9403b3b92dfb6a3c1a124272b45375')
 
 function package() {
 	install -Dm644 portable-config \
-		"${pkgdir}/usr/lib/portable/info/com.qq.weixin/config"
+		"${pkgdir}/usr/lib/portable/info/com.tencent.wechat/config"
 	install -Dm644 config.toml \
 		"${pkgdir}/usr/lib/portable/info/com.tencent.wechat/config.toml"
 	install -d "${pkgdir}/usr/bin"
 	echo '''#!/usr/bin/bash
-export _portableConfig="com.qq.weixin"
+export _portableConfig="com.tencent.wechat"
 export PORTABLE_CONF="com.tencent.wechat"
 exec portable $@
 ''' >"${pkgdir}/usr/bin/wechat.sh"
