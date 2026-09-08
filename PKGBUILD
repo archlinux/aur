@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=lib32-libvolt
-pkgver=2.1.1
-pkgrel=3
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="32-bit library for volt-gui"
 arch=('x86_64')
 url="https://github.com/pythonlover02/volt-gui"
@@ -14,14 +14,13 @@ depends=(
 )
 makedepends=('rustup')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9f8dbbcfa4d8da9fb1bec907377739b4da17146db24883457acfe69836018c80')
+sha256sums=('a2f0c3392ce63862711da6c8f4ed012fd16fc2c41541b7e6169e9ebcf7ffc781')
 
 prepare() {
   cd "volt-gui-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   rustup target add i686-unknown-linux-gnu
-  # cargo fetch --locked --target i686-unknown-linux-gnu
-  cargo fetch --target i686-unknown-linux-gnu
+  cargo fetch --locked --target i686-unknown-linux-gnu
 }
 
 build() {
@@ -32,8 +31,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   export LLVM_CONFIG="/usr/bin/llvm-config32"
-  # cargo build --frozen --release --lib --target i686-unknown-linux-gnu
-  cargo build --release --lib --target i686-unknown-linux-gnu
+  cargo build --frozen --release --lib --target i686-unknown-linux-gnu
 }
 
 package() {
