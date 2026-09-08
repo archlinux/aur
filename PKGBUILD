@@ -7,13 +7,13 @@
 _pkgname=davs2
 pkgname=${_pkgname}-llvm
 pkgver=1.7
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
-pkgdesc='Open-Source decoder of AVS2-P2/IEEE1857.4 video coding standard — built with Clang and LLVM lld'
+pkgdesc='Open-Source decoder of AVS2-P2/IEEE1857.4 video coding standard — built with Clang and mold'
 url='https://github.com/pkuvcl/davs2/'
 license=('GPL')
 depends=('glibc')
-makedepends=('nasm' 'clang' 'lld' 'llvm')
+makedepends=('nasm' 'clang' 'mold' 'llvm')
 provides=('davs2' 'libdavs2')
 conflicts=('davs2' 'libdavs2')
 replaces=('libdavs2')
@@ -38,7 +38,7 @@ build() {
     export OBJDUMP=/usr/bin/llvm-objdump
     export READELF=/usr/bin/llvm-readelf
     export STRIP=/usr/bin/llvm-strip
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     ./configure \
