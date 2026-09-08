@@ -1,7 +1,7 @@
 ## Maintainer: Adam <classygopher@gmail.com>
 pkgname=bolt-launcher
 pkgver=0.24.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free open-source third-party implementation of the Jagex Launcher"
 license=('AGPL3')
 url="https://bolt.adamcake.com/"
