@@ -1,7 +1,7 @@
 # Maintainer: Sentria <admin@sentrialabs.com>
 pkgname=maryanne-bin
 pkgver=2.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Read ebook (EPUB) or PDF aloud to you with natural-sounding voices.'
 arch=('x86_64')
 url='https://maryanne.app'
@@ -23,10 +23,11 @@ sha256sums=(
 package() {
   install -Dm755 "maryanne-${pkgver}.AppImage" \
     "${pkgdir}/opt/maryanne/Maryanne-x86_64.AppImage"
-  install -Dm644 maryanne.desktop \
-    "${pkgdir}/usr/share/applications/maryanne.desktop"
   install -Dm644 maryanne.png \
     "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/maryanne.png"
+  sed -e 's|^Icon=.*|Icon=/usr/share/icons/hicolor/1024x1024/apps/maryanne.png|' \
+    -e '/^Exec=/a TryExec=maryanne' \
+    maryanne.desktop > "${pkgdir}/usr/share/applications/maryanne.desktop"
 
   install -d "${pkgdir}/usr/bin"
   ln -s /opt/maryanne/Maryanne-x86_64.AppImage \
