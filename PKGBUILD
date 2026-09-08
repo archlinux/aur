@@ -2,12 +2,12 @@
 
 pkgname=quarkdown
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 _jdkver=21
 pkgdesc='a Markdown based typesetting system'
 arch=(any)
 url="https://github.com/iamgio/$pkgname"
-license=(Apache-2.0)
+license=(AGPL-3.0-only)
 depends=(bash
          "java-runtime-openjdk=$_jdkver")
 makedepends=(nodejs-lts-krypton

@@ -1,10 +1,10 @@
 pkgbase = quarkdown
 	pkgdesc = a Markdown based typesetting system
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iamgio/quarkdown
 	arch = any
-	license = Apache-2.0
+	license = AGPL-3.0-only
 	makedepends = nodejs-lts-krypton
 	makedepends = npm
 	makedepends = java-environment-openjdk=21
