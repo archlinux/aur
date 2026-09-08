@@ -3,8 +3,8 @@
 _pkgname="opencv4"
 pkgname="$_pkgname-llvm"
 pkgver=4.14.0
-pkgrel=2
-pkgdesc="Open Source Computer Vision Library (version 4.x) — built with Clang and LLVM lld"
+pkgrel=3
+pkgdesc="Open Source Computer Vision Library (version 4.x) — built with Clang and mold"
 url="https://github.com/opencv/opencv"
 license=('Apache-2.0')
 arch=('x86_64')
@@ -49,7 +49,7 @@ makedepends=(
   hdf5
   java-environment
   lapacke
-  lld
+  mold
   llvm
   mesa
   ninja
@@ -114,13 +114,13 @@ build() {
   export CXX=clang++
   export AR=/usr/bin/llvm-ar
   export RANLIB=/usr/bin/llvm-ranlib
-  export LD=/usr/bin/ld.lld
+  export LD=/usr/bin/mold
   export NM=/usr/bin/llvm-nm
   export OBJCOPY=/usr/bin/llvm-objcopy
   export OBJDUMP=/usr/bin/llvm-objdump
   export READELF=/usr/bin/llvm-readelf
   export STRIP=/usr/bin/llvm-strip
-  export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+  export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
   export CFLAGS="${CFLAGS:-} -O3 -march=native"
   export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
 
@@ -141,9 +141,9 @@ build() {
     -DCMAKE_READELF=/usr/bin/llvm-readelf
     -DCMAKE_STRIP=/usr/bin/llvm-strip
     -DCMAKE_CXX_STANDARD=17
-    -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=lld'
-    -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=lld'
-    -DCMAKE_MODULE_LINKER_FLAGS:STRING='-fuse-ld=lld'
+    -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=mold'
+    -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=mold'
+    -DCMAKE_MODULE_LINKER_FLAGS:STRING='-fuse-ld=mold'
     -Wno-author
 
     -DBUILD_EXAMPLES=OFF
