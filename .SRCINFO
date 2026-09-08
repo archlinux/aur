@@ -1,8 +1,8 @@
-pkgbase = macros
-	pkgdesc = A Tauri app to manage and run macros on Linux.
-	pkgver = 0.4.0
+pkgbase = blockwork
+	pkgdesc = A Tauri app to visually create and run macros on Windows, Linux, and macOS.
+	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://github.com/EthanRStokes/macros
+	url = https://github.com/EthanRStokes/Blockwork
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
@@ -18,7 +18,7 @@ pkgbase = macros
 	provides = macros
 	conflicts = macros
 	options = !lto
-	source = macros-0.4.0.tar.gz::https://github.com/EthanRStokes/macros/archive/refs/tags/0.4.0.tar.gz
-	sha256sums = 9a997c09f340eed31e36663039cd5d58d26a31e22da5e4c049ab644a5b9b0e91
+	source = blockwork-0.5.0.tar.gz::https://github.com/EthanRStokes/Blockwork/archive/refs/tags/0.5.0.tar.gz
+	sha256sums = 134026e0f56782461c6ab8f9146e7c1917a4738e01eb147df43583c84f4e016c
 
-pkgname = macros
+pkgname = blockwork
