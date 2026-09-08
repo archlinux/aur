@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-bin
 _pkgname=Qoder
-pkgver=1.24.2
-_electronversion=42
+pkgver=0.2.1
+_electronversion=43
 pkgrel=1
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -13,9 +13,11 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'libxkbfile'
+    'libsecret'
     'nodejs'
-    'python'
+)
+makedepends=(
+    'asar'
 )
 optdepends=(
     'bash'
@@ -26,18 +28,16 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::https://download.qoder.com/release/latest/${pkgname%-bin}_${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::https://download.qoder.com/qoder-app/releases/latest/${_pkgname}-linux-${CARCH}.rpm"
     "LICENSE.html"
-    "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('SKIP'
+sha256sums=('505b16066d1c0093b627b93658b81688906edd15ec769f5b70768508cd7657fa'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            '3e78d843645c4cc5709698e0717785acdef5f36e60e3e220801bdf3b8effd799'
-            '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 pkgver() {
-    cd "${srcdir}/usr/share/${pkgname%-bin}/resources/app"
-    grep '"version":' featureFlags.json | awk -F'"version": "' '{print $2}' | awk -F',' '{print $1}' | tr -d '"'
+    cd "${srcdir}/app.asar.unpacked"
+    grep '"version":' package.json | awk -F'"version": "' '{print $2}' | awk -F',' '{print $1}' | tr -d '"'
 }
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -57,35 +57,29 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app/g
+        s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/@ELECTRON@/electron${_electronversion}/g" "${srcdir}/${pkgname%-bin}.js"
-    sed -i -e "
-        s/\/usr\/share\/${pkgname%-bin}\///g
-        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " "${srcdir}/usr/share/applications/${pkgname%-bin}"*.desktop
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     local _app_dir=$(_get_app_dir)
-    find "${_app_dir}/resources/app" -name "win32-*" -name "*.node" -delete
-    rm -rf \
-        "${_app_dir}/resources/app/node_modules/windows-foreground-love" \
-        "${_app_dir}/resources/app/node_modules/native-is-elevated" \
-        "${_app_dir}/resources/app/extensions/ms-vscode.js-debug/src/win32-app-container-tokens."*".node"
+    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked" || true
+    rm -rf "${_app_dir}/resources/app.asar"
+    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/app/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}"* -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml" -t "${pkgdir}/usr/share/appdata"
-    install -Dm644 "${srcdir}/usr/share/mime/packages/${pkgname%-bin}-workspace.xml" -t "${pkgdir}/usr/share/mime/packages"
-    if [ -x "/usr/bin/zsh" ];then
-        install -Dm644 "${srcdir}/usr/share/bash-completion/completions/${pkgname%-bin}" -t "${pkgdir}/usr/share/bash-completion/completions"
-    fi
-    if [ -x "/usr/bin/zsh" ];then
-        install -Dm644 "${srcdir}/usr/share/zsh/site-functions/_${pkgname%-bin}" -t "${pkgdir}/usr/share/zsh/site-functions"
-    fi
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    ln -sf "/usr/lib/${pkgname%-bin}/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.17.3" \
+        "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libvips-cpp.so.8.17.3"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+		_extension="${_i##*.}"
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
