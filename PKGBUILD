@@ -3,7 +3,7 @@
 
 pkgname=elegoo-slicer-bin
 pkgver=1.5.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="ElegooSlicer is an open-source slicer compatible with most FDM printers"
 arch=('x86_64')
 url="https://github.com/ELEGOO-3D/ElegooSlicer"
@@ -21,15 +21,17 @@ prepare() {
 }
 
 package() {
+  cd "$srcdir/../"
   install -d ${pkgdir}/opt/${pkgname%-bin}/
-  cp -a squashfs-root/* ${pkgdir}/opt/${pkgname%-bin}/
-  rm -rf ${pkgdir}/opt/${pkgname%-bin}/{usr,com.orcaslicer.ElegooSlicer.desktop,ElegooSlicer.png}
+  cp -a ${srcdir}/squashfs-root/* ${pkgdir}/opt/${pkgname%-bin}/
+  rm -rf ${pkgdir}/opt/${pkgname%-bin}/{usr,com.orcaslicer.ElegooSlicer.desktop}
 
   install -d $pkgdir/usr/bin
   ln -s /opt/${pkgname%-bin}/AppRun ${pkgdir}/usr/bin/elegoo-slicer
 
-  mv squashfs-root/com.orcaslicer.ElegooSlicer.desktop squashfs-root/ElegooSlicer.desktop
-  install -Dm644 squashfs-root/ElegooSlicer.desktop -t ${pkgdir}/usr/share/applications/
+  mv ${srcdir}/squashfs-root/com.orcaslicer.ElegooSlicer.desktop ${srcdir}/squashfs-root/ElegooSlicer.desktop
+  install -Dm644 ${srcdir}/squashfs-root/ElegooSlicer.desktop -t ${pkgdir}/usr/share/applications/
   sed -i '/^Exec=/ c\Exec=/opt/elegoo-slicer/AppRun %U' ${pkgdir}/usr/share/applications/ElegooSlicer.desktop
+  sed -i 's|Icon=ElegooSlicer|Icon=/opt/elegoo-slicer/ElegooSlicer.png|g' ${pkgdir}/usr/share/applications/ElegooSlicer.desktop
   sed -i '/^MimeType=/ s|$|x-scheme-handler/orcaslicer;x-scheme-handler/bambustudio;|' ${pkgdir}/usr/share/applications/ElegooSlicer.desktop
 }
