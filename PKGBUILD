@@ -2,7 +2,7 @@
 
 _pkgname=wl-wordlens
 pkgname=wl-wordlens-git
-pkgver=r6.g9ca31b0
+pkgver=r7.gbd9e598
 pkgrel=1
 pkgdesc="Wayland screenshot translation tool using vision language models"
 arch=('any')
