@@ -6,7 +6,7 @@ _appname=dgo
 pkgname=${_gitname,,}
 pkgdesc="Fast, local-first directory navigation"
 
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc')
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8555e5cd90ff546a5c08e20d6600ce1329395bbb54ea8a293cee00f5edfe3c8e')
+sha256sums=('a8ec6bed1448f35d0b32587ed7bbc576d0c7cfce76054bb7f8f4bc5194bcc1e0')
 
 
 prepare() {
