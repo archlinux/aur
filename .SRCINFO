@@ -1,6 +1,6 @@
 pkgbase = tn93
 	pkgdesc = TN93 fast distance calculator
-	pkgver = 1.0.16
+	pkgver = 1.0.17
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/veg/tn93
@@ -11,7 +11,7 @@ pkgbase = tn93
 	makedepends = gcc
 	makedepends = git
 	depends = gcc-libs
-	source = git+https://github.com/veg/tn93.git#tag=v1.0.16
-	md5sums = a4ec2bbfc7430623f593413e96d50654
+	source = git+https://github.com/veg/tn93.git#tag=v1.0.17
+	md5sums = 7fda66e648bd7f7c0ec3823c3c781132
 
 pkgname = tn93
