@@ -7,13 +7,13 @@
 _pkgname=vo-amrwbenc
 pkgname=${_pkgname}-llvm
 pkgver=0.1.3
-pkgrel=2
-pkgdesc='Library for the VisualOn Adaptive Multi Rate Wideband (AMR-WB) audio encoder — built with Clang and LLVM lld'
+pkgrel=3
+pkgdesc='Library for the VisualOn Adaptive Multi Rate Wideband (AMR-WB) audio encoder — built with Clang and mold'
 arch=('x86_64')
 url='http://sourceforge.net/projects/opencore-amr/'
 license=('APACHE')
 depends=('glibc')
-makedepends=('clang' 'lld' 'llvm')
+makedepends=('clang' 'mold' 'llvm')
 provides=('vo-amrwbenc')
 conflicts=('vo-amrwbenc')
 source=("http://downloads.sourceforge.net/project/opencore-amr/vo-amrwbenc/${_pkgname}-${pkgver}.tar.gz")
@@ -25,13 +25,13 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
     export READELF=/usr/bin/llvm-readelf
     export STRIP=/usr/bin/llvm-strip
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     ./configure --prefix='/usr'
