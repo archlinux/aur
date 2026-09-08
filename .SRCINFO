@@ -1,34 +1,33 @@
 pkgbase = qbz
-	pkgdesc = Native Qobuz client for Linux with bit-perfect hi-res audio, DAC passthrough, Last.fm scrobbling, and Chromecast/DLNA casting
-	pkgver = 1.1.18
+	pkgdesc = Native hi-fi Qobuz desktop player for Linux
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/vicrodh/qbz
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = nodejs
-	makedepends = npm
 	makedepends = rust
-	makedepends = cargo
-	makedepends = pkgconf
 	makedepends = cmake
-	makedepends = gcc
-	makedepends = perl
-	depends = webkit2gtk-4.1
-	depends = gtk3
+	makedepends = nasm
+	makedepends = jack2
+	depends = qt6-base>=6.8
+	depends = qt6-declarative>=6.8
+	depends = qt6-svg>=6.8
+	depends = qt6-wayland
 	depends = alsa-lib
-	depends = libappindicator-gtk3
-	depends = libxkbcommon
-	depends = openssl
-	depends = sqlite
-	depends = dbus
-	optdepends = alsa-utils: Required for bit-perfect device detection and better ALSA device names
-	optdepends = pipewire-alsa: PipeWire audio support
-	optdepends = pipewire-pulse: PulseAudio compatibility
+	depends = xdg-utils
+	optdepends = alsa-utils: ALSA diagnostics and device inspection
+	optdepends = pipewire: PipeWire device discovery and sample-rate control
+	optdepends = libpulse: PulseAudio device discovery and routing through pactl
+	optdepends = jack2: JACK audio backend
 	provides = qbz
 	conflicts = qbz-bin
 	conflicts = qbz-git
-	source = qbz-1.1.18.tar.gz::https://github.com/vicrodh/qbz/archive/refs/tags/v1.1.18.tar.gz
+	options = !lto
+	options = !debug
+	source = qbz-2.1.0.tar.gz::https://github.com/vicrodh/qbz/archive/refs/tags/v2.1.0.tar.gz
+	source = qbz-2.1.0-cargo-vendor.tar.xz::https://github.com/vicrodh/qbz/releases/download/v2.1.0/qbz-2.1.0-cargo-vendor.tar.xz
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = qbz
