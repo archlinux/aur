@@ -6,8 +6,8 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=openrc
-pkgver=0.63
-pkgrel=2
+pkgver=0.63.3
+pkgrel=1
 pkgdesc='Dependency based init system that works with sysvinit and systemd or on its own.'
 arch=('i686' 'x86_64')
 url='https://github.com/OpenRC/openrc'
@@ -26,7 +26,7 @@ backup=(etc/openrc/inittab
         etc/openrc/conf.d/{killprocs,localmount,modules,netmount,network,staticroute,swap})
 source=("$url/archive/$pkgver.tar.gz"
         'openrc.logrotate')
-b2sums=('70800a0115966ca20ec2fb245e0039cff33696a5ae0fdc314b032f29fbd54c5b246e01890d752daaefd41d3ba08ce2f91adb02d327d595c3fcb3d71d59357ed5'
+b2sums=('d66bd09f1860a2f42a07283fe5082429934365b3ddf206e7437457cf70767b77aab8b0ab101b050cb5ff8910eff3c1717df06b4dc96e03b0850007ca5a456a02'
         'f283de20b5a07e3c5d21a28b9de72f0a71fd2cc1b70a5567db80373c7144aec0e6ac217eef77acbbb05eff2134c22ee6746b7f248abc4587042c456ed0a32a31')
 
 prepare() {
