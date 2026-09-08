@@ -7,9 +7,9 @@ pkgname=(
     'openvino-llvm-intel-npu-plugin'
     'python-openvino-llvm')
 pkgver=2026.2.1
-pkgrel=5
+pkgrel=6
 _commit=ede283a88e35465f0d680dabbf1f44080f8fc387
-pkgdesc='A toolkit for optimizing and deploying deep learning models - built with Clang and LLVM lld'
+pkgdesc='A toolkit for optimizing and deploying deep learning models - built with Clang and mold'
 arch=('x86_64')
 url='https://docs.openvino.ai/'
 license=('Apache-2.0' 'LicenseRef-custom')
@@ -20,7 +20,7 @@ makedepends=(
     'git'
     'git-lfs'
     'level-zero-headers'
-    'lld'
+    'mold'
     'llvm'
     'ocl-icd'
     'onetbb'
@@ -143,13 +143,13 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
     export READELF=/usr/bin/llvm-readelf
     export STRIP=/usr/bin/llvm-strip
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     # fix warning: "_FORTIFY_SOURCE" redefined
@@ -166,11 +166,11 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_AR:FILEPATH='/usr/bin/llvm-ar' \
         -DCMAKE_CXX_STANDARD:STRING='17' \
-        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=lld' \
+        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=mold' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_NM:FILEPATH='/usr/bin/llvm-nm' \
         -DCMAKE_RANLIB:FILEPATH='/usr/bin/llvm-ranlib' \
-        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=lld' \
+        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=mold' \
         -DCMAKE_SKIP_RPATH:BOOL='YES' \
         -DENABLE_SSE42:BOOL='OFF' \
         -DENABLE_AVX2:BOOL='OFF' \
