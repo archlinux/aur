@@ -1,7 +1,7 @@
 pkgbase = selenium-manager
 	pkgdesc = Automated driver and browser management for Selenium
-	pkgver = 0.4.40
-	pkgrel = 3
+	pkgver = 0.4.48
+	pkgrel = 1
 	url = https://www.selenium.dev
 	arch = x86_64
 	license = Apache-2.0
@@ -12,7 +12,7 @@ pkgbase = selenium-manager
 	depends = bzip2
 	depends = zlib
 	options = !lto
-	source = https://github.com/SeleniumHQ/selenium/archive/refs/tags/selenium-4.40.0.tar.gz
-	sha256sums = 58b4ed9bb4ee32af993e8e72fc29bf74ee5f3b67979d63b391b83b054d959f5e
+	source = https://github.com/SeleniumHQ/selenium/archive/refs/tags/selenium-4.48.0.tar.gz
+	sha256sums = 045c1ec054c94e3be6c10febc509aa513b4c05e9146d1a9cf3de5375ec6ca2a1
 
 pkgname = selenium-manager
