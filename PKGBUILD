@@ -1,6 +1,6 @@
 # Maintainer: Bolt J Woofson <bolt@boop.no>
 pkgname=commanderdog
-pkgver=0.7.9
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Multi-Tab Web & Desktop File Commander - By Woofson"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates' 'gtk3' 'webkit2g
 makedepends=('cargo' 'rust' 'pkgconf' 'gtk3' 'webkit2gtk-4.1')
 options=('!lto')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f2ff16f994b30877c8ee514eceea58b8cce08ee77d5d20e2c05ca05b14b3f09d')
+sha256sums=('fcdd28a1cc142af8319085f717cd41fe7f3948314e54505e4be7a1fd7afc06e2')
 
 prepare() {
     cd "$pkgname-$pkgver"
