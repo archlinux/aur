@@ -1,7 +1,7 @@
 # Maintainer: Firefly Labs <fireflylabss@users.noreply.github.com>
 
 pkgname=optionterm
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc='Sidebar-first GTK4 terminal with tiling splits and Adwaita preferences'
 arch=('x86_64')
@@ -32,8 +32,9 @@ makedepends=(
   'git'
   'gdk-pixbuf2'
 )
+checkdepends=('xorg-server-xvfb' 'xorg-xauth' 'dbus')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8baf818d5085e58623a1238bbf66b11d2627a9908dcc34f392d0ec4a44183905')
+sha256sums=('f459fc6cf5f1ac3c84be7b9c68c6d301f2c66e923e7c5d6711be46a0531edf1e')
 
 _srcdir="optionTerm-$pkgver"
 
@@ -57,7 +58,7 @@ check() {
   cd "$_srcdir"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo test --frozen --release
+  GTK_A11Y=none GTK_USE_PORTAL=0 GIO_USE_VFS=local xvfb-run -a cargo test --frozen --release
 }
 
 package() {
