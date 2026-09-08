@@ -2,7 +2,7 @@
 
 pkgname=python-outlines-core
 _pkgname=outlines_core
-pkgver=0.1.26
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="Structured Text Generation in Rust"
 arch=(x86_64)
@@ -10,28 +10,16 @@ url="https://github.com/dottxt-ai/outlines-core"
 license=(Apache-2.0)
 depends=(
   python
-  python-interegular
-  python-jsonschema
 )
 makedepends=(
-  python-build
   python-installer
-  python-setuptools
-  python-setuptools-scm
-  python-setuptools-rust
-  python-wheel
-  rust
 )
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('481c4301341e77cc8f1832d616784adb4d461b4fec65878e7c0d2cba7163a189')
-
-build() {
-  cd "${_pkgname}-${pkgver}"
-  export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
-  python -m build --wheel --no-isolation
-}
+_pytag="cp$(python -c 'import sys; print(f"{sys.version_info[0]}{sys.version_info[1]}")')"
+_wheel="${_pkgname}-${pkgver}-${_pytag}-${_pytag}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+source=("https://files.pythonhosted.org/packages/d5/63/dfa000239e46f17b47e6dc9bec3aab8a8136fe400312f1916320e02c8f38/${_wheel}")
+noextract=("${_wheel}")
+sha256sums=('d1776ae984574461f249fe590314a439992eb9b883f4091b8fa7fc56f29f3717')
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  python -m installer --destdir="${pkgdir}" "${_wheel}"
 }

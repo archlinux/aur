@@ -1,21 +1,14 @@
 pkgbase = python-outlines-core
 	pkgdesc = Structured Text Generation in Rust
-	pkgver = 0.1.26
+	pkgver = 0.2.14
 	pkgrel = 1
 	url = https://github.com/dottxt-ai/outlines-core
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-setuptools-scm
-	makedepends = python-setuptools-rust
-	makedepends = python-wheel
-	makedepends = rust
 	depends = python
-	depends = python-interegular
-	depends = python-jsonschema
-	source = https://files.pythonhosted.org/packages/source/o/outlines_core/outlines_core-0.1.26.tar.gz
-	sha256sums = 481c4301341e77cc8f1832d616784adb4d461b4fec65878e7c0d2cba7163a189
+	noextract = outlines_core-0.2.14-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	source = https://files.pythonhosted.org/packages/d5/63/dfa000239e46f17b47e6dc9bec3aab8a8136fe400312f1916320e02c8f38/outlines_core-0.2.14-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = d1776ae984574461f249fe590314a439992eb9b883f4091b8fa7fc56f29f3717
 
 pkgname = python-outlines-core
