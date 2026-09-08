@@ -1,15 +1,17 @@
 # Maintainer: Ethan Stokes <erstokes10@gmail.com>
 
 pkgname=blockwork-git
-pkgver=0.4.0.r233.01215d8
+pkgver=0.5.0.r280.0aef58e
 pkgrel=1
 pkgdesc='A Tauri app to visually create and run automation.'
 url='https://github.com/EthanRStokes/Blockwork'
 arch=('x86_64')
 license=('GPL-3.0-only')
-makedepends=('rust' 'git' 'gcc' 'glibc' 'pnpm')
+makedepends=('rust' 'git' 'gcc' 'glibc' 'pnpm' 'cmake' 'ninja' 'curl' 'pkgconf'
+             'gtk3' 'webkit2gtk-4.1' 'libsoup3' 'libappindicator' 'dbus')
 depends=(
-    'gtk3' 'nss' 'alsa-lib' 'hicolor-icon-theme' 'webkit2gtk-4.1'
+    'gtk3' 'nss' 'alsa-lib' 'hicolor-icon-theme' 'libxss' 'webkit2gtk-4.1'
+    'libsoup3' 'libappindicator'
     'libgcc' 'glibc'
 )
 conflicts=('blockwork')
