@@ -3,7 +3,7 @@
 # stable `fushi` package; installs into the same /usr/lib/fushi layout.
 
 pkgname=fushi-beta
-pkgver=2.2.4beta13362
+pkgver=2.3.0beta1248
 pkgrel=1
 pkgdesc='Immersion language-learning suite: EPUB reader, video subtitle lookup, audiobook sync, and one-tap Anki mining (beta)'
 arch=('x86_64')
@@ -14,12 +14,12 @@ conflicts=('fushi')
 provides=('fushi')
 makedepends=('clang' 'cmake' 'ninja' 'pkg-config' 'unzip' 'libwpe' 'wpebackend-fdo')
 optdepends=('qbittorrent: fallback torrent engine when the bundled libtorrent is unavailable')
-source=('https://github.com/hajisensai/Fushi/archive/refs/tags/v2.2.4-beta.13362.tar.gz#/fushi-2.2.4beta13362.tar.gz'
+source=('https://github.com/hajisensai/Fushi/archive/refs/tags/v2.3.0-beta.1248.tar.gz#/fushi-2.3.0beta1248.tar.gz'
         'https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.44.0-stable.tar.xz'
         'fix-fushidicts-cstdint.patch'
         'wpe-inappwebview-linux.patch'
         'fushi.desktop')
-sha256sums=('9099bcc52947bce282d4540822334f134375d5401ea81278abafaa282f3e7dbe'
+sha256sums=('b8d7fe6aba791461a66d27988beaeef8d6d9b072cdf8f884a3dcb5a2a39c71b8'
             'e1ec95e6c550458a34de93580cb85dac24da0e9bedb9bb42811f050ac5a0c7d5'
             '8334fd0a75f8cfdfff0873b3c9ae9f0d19acfffdf59c07d4cb4d95b1e3ed2391'
             '5d5398be837f9b6d108f62c93c98b6f0eaa6048c0da40e4dd7062b3ecdef5b3e'
@@ -49,7 +49,7 @@ package() {
   cp -a "${bundle}/." "${dest}/"
   # Linux has no version pipeline: overwrite the pubspec-derived version.json
   # so PackageInfo (and thus the in-app updater) reports the beta release.
-  printf '{"app_name":"fushi","version":"2.2.4-beta.13362","build_number":"13362","package_name":"fushi"}' > "${dest}/data/flutter_assets/version.json"
+  printf '{"app_name":"fushi","version":"2.3.0-beta.1248","build_number":"1248","package_name":"fushi"}' > "${dest}/data/flutter_assets/version.json"
   install -Dm644 "${srcdir_app}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/fushi.desktop" "${pkgdir}/usr/share/applications/fushi.desktop"
   install -Dm644 "${srcdir_app}/fushi/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" \
