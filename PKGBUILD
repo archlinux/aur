@@ -10,7 +10,7 @@ pkgname='nginx_passwd'
 pkgdesc='Basic Auth Password File Manager for nginx'
 _gitname='nginx_passwd'
 
-pkgver="3.3.2"
+pkgver="4.0.0"
 pkgrel=1
 url="https://github.com/gene-git/nginx_passwd"
 
@@ -18,7 +18,7 @@ arch=(any)
 license=(GPL-2.0-or-later)
 
 depends=(
-    'python>=3.13'
+    'python>=3.14'
     'python-passlib'
     'python-bcrypt'
     'python-argon2_cffi'
@@ -28,16 +28,17 @@ depends=(
 # To build docs uncommont sphinx/texlive
 makedepends=(
     'git'
-    'uv'
-    'python-uv-build'
+    'meson'
+    'meson-python'
     'rsync'
     'bash'
-    #'python-sphinx' 'texlive-latexextra' 
             )
 checkdepends=(
     'python-pytest' 
     'python-pytest-asyncio'
+    'pyconcurrent'
 )
+
 _mkpkg_depends=(
     'python>minor'
     'python-cryptography'
@@ -60,29 +61,18 @@ sha512sums=('SKIP')
 
 build() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
 
-    # To build Docs - uncomment these and sphinx makedepends above
-    # echo "Build docs"
-    # pdf='nginx_passwd.pdf'
-    # cd ./Docs
-    # make latexpdf >/dev/null 2>&1
-    # make latexpdf >/dev/null
-    #  /usr/bin/rm -f $pdf
-    #  /usr/bin/cp _build/latex/$pdf .
-    #  make html
-    #  make html
-    #  /usr/bin/rm -rf _build/doctrees _build/latex
+    ./scripts/do-build
 }
 
 check() {
-    cd "${_gitname}"/tests
-    PYTHONPATH="../src" /usr/bin/pytest
+    cd "${_gitname}"
+    
+    ./scripts/run-tests
 }
 
 package() {
     cd "${_gitname}"
+
     ./scripts/do-install ${pkgdir}
 }
-# vim:set ts=4 sts=4 sw=4 et:

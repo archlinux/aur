@@ -1,9 +1,19 @@
 -------------------------------------------------------
  Changelog    : nginx_passwd
- Tags         : 3.2.0 ➙ 3.3.2
-              : 2025-12-22 ➙ 2026-05-05
+ Tags         : 3.2.1 ➙ 4.0.0
+              : 2025-12-22 ➙ 2026-09-08
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-09-08   : 4.0.0
+              - **Version 4.0.0**
+            
+                * Default hash algo is argon2
+                * Use meson / meson python for build and package management
+                * Periodic code review
+                * tests use (and check depends) on pyconcurrent package.
+ 2026-05-05   ⋯
+              - update Docs/Changelogs
 
  2026-05-05   : 3.3.2
               - Fix goofy typo in installer - thanks to @solsticedhiver in the aur
@@ -26,6 +36,3 @@
  2025-12-22   : 3.2.1
               - Installer: use new path to license
               - update Docs/Changelogs Docs/${my_name}.pdf
-
- 2025-12-22   : 3.2.0
-              - * Little doc cleanups
