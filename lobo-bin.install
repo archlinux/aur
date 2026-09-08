@@ -1,0 +1,49 @@
+post_install() {
+    cat << EOF
+
+==> lobo is installed. Check the build it names:
+
+    lobo -v
+
+    A release build prints "lobo/0.1.0 (built with wolf <v>, pin <sha>)".
+    A "+dev" suffix means the binary was not built at its release tag.
+    Like nginx, lobo writes -v to STDERR -- redirect if you pipe it.
+
+lobo takes a prefix (\`-p\`) the way nginx does, and the stock config's
+paths are relative to it. /usr/share/lobo is a read-only template;
+make a working copy and run from it:
+
+    mkdir -p ~/lobo && cd ~/lobo
+    cp -R /usr/share/lobo/conf /usr/share/lobo/html .
+    mkdir -p logs
+    lobo -t -c conf/lobo.conf        # test the config: syntax AND routing
+    lobo -c conf/lobo.conf serve     # serve on 127.0.0.1:8080, foreground
+    curl -i http://127.0.0.1:8080/   # the page
+    lobo -s stop -c conf/lobo.conf   # stop; -s reload reloads
+
+\`serve\` is a VERB, not a flag. nginx's \`-g "daemon off;"\` is accepted
+by lobo's option parser but does NOT start the server -- you get the
+banner and a refused connection.
+
+There is no systemd unit and no /etc/lobo: 0.1.0 has a prefix, not a
+service layout, and inventing one here would put the config where the
+stock \`root html;\` cannot resolve.
+
+Documentation:
+--------------
+    /usr/share/doc/lobo-bin/GETTING-STARTED.md
+    /usr/share/doc/lobo-bin/docs/directives.md   every directive's status
+    /usr/share/doc/lobo-bin/BUILD                toolchain, commit, pins
+
+EOF
+}
+
+post_upgrade() {
+    cat << EOF
+
+==> lobo has been upgraded. Confirm the build (it prints to stderr):
+
+    lobo -v
+
+EOF
+}
