@@ -1,0 +1,39 @@
+post_install() {
+    cat << EOF
+
+==> wolf is installed. Check the build it names:
+
+    wolf --version
+
+    A release build prints the bare version and its pin —
+    "wolf 0.2.6 (wolfgang, pin <sha>)". A "+dev" suffix means the
+    binary was not built at its release tag (D57).
+
+First program:
+
+    printf 'fn main() {\n  print("hello, wolf")\n}\n' > hello.lu
+    wolf run hello.lu
+
+Native codegen (\`wolf build\` / \`wolf run\`) serves linux x86-64 today.
+On linux aarch64 the native tier refuses BY NAME and the checked tier
+still runs your program:
+
+    wolf test hello.lu
+
+Documentation:
+--------------
+    /usr/share/doc/wolf-lang-bin/README.md
+    https://github.com/wolffe-lang/wolf-lang/blob/v0.2.6/docs/platforms.md
+
+EOF
+}
+
+post_upgrade() {
+    cat << EOF
+
+==> wolf has been upgraded. Confirm the build:
+
+    wolf --version
+
+EOF
+}
