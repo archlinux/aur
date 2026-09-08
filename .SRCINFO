@@ -1,6 +1,6 @@
 pkgbase = synchrogit
 	pkgdesc = Daemon that keeps git repositories synced with their remotes
-	pkgver = 26.9.0
+	pkgver = 26.9.1
 	pkgrel = 1
 	url = https://github.com/partanskiy/synchrogit
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = synchrogit
 	depends = git
 	options = !lto
 	options = !debug
-	source = synchrogit-26.9.0.tar.gz::https://github.com/partanskiy/synchrogit/archive/refs/tags/v26.9.0.tar.gz
-	sha256sums = 5a227acf033baa2be9f4391aa81c5f1bfad7e9bdbf882216495927f2b191a2aa
+	source = synchrogit-26.9.1.tar.gz::https://github.com/partanskiy/synchrogit/archive/refs/tags/v26.9.1.tar.gz
+	sha256sums = 0c07849d0dcf005235dbb5c5a9c77685d5bfd38dacfe99fc0017aa9ae23c1a41
 
 pkgname = synchrogit
