@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [0.11.10] — 2026-06-14
+
+### Changed
+- Upgrade `pdfminer.six` from `20251230` to `20260107`. ([07a5ff6](https://github.com/jsvine/pdfplumber/commit/07a5ff6))
+- Update minimum version requirement for `Pillow` and `pypdfium2` and update versions in `requirements-dev.txt` (h/t @kjoetang). ([1e6de0b](https://github.com/jsvine/pdfplumber/commit/1e6de0b) + [#1374](https://github.com/jsvine/pdfplumber/issues/1374))
+
 ## 0.11.9 — 2026-01-05
 
 ### Changed
