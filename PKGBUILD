@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=vacask
 pkgname="${_pkgname}-git"
-pkgver=0.3.3.r302.g6eb96fc
+pkgver=0.3.3.r348.g0212881
 pkgrel=1
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
@@ -41,24 +41,45 @@ optdepends=(
 )
 conflicts=("${_pkgname}")
 options=()
-source=("${_pkgname}::git+${url}")
-b2sums=('SKIP')
+source=(
+    "${_pkgname}::git+${url}"
+    "0001-fix-cblas-include-arch.patch"
+)
+
+b2sums=('SKIP'
+        '05a3a144a511ecdf9be55901b6bf941f6d9676cba72a3e8c0254da189eb49494e569e0074fff0576436269f8e210e64a1520a6a0f50d6390e16579fe24647f51')
 
 pkgver() {
     cd "${_pkgname}"
     git describe --long --tags --abbrev=7 | sed 's/^_//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "${_pkgname}"
+
+    patch -Np1 < "../0001-fix-cblas-include-arch.patch"
+}
+
 build() {
     local cmake_options=(
-        -B build
-        -S "${_pkgname}"
         -W no-author
         -D CMAKE_BUILD_TYPE=None
         -D CMAKE_INSTALL_PREFIX=/usr
-        -D BLA_VENDOR="OpenBLAS"
+        # -D BLA_VENDOR="OpenBLAS"
     )
-    cmake "${cmake_options[@]}"
+
+    local vacask_options=(
+        -D TOMLPP_DIR=/usr
+        # TODO: Add superlu_mt support
+        # -D SuperluMT_DIR=/usr/include/superlu_mt/
+    )
+
+    cmake \
+        "${cmake_options[@]}" \
+        "${vacask_options[@]}" \
+        -B build \
+        -S "${_pkgname}"
+
     cmake --build build
 }
 
