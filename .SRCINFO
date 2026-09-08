@@ -27,6 +27,7 @@ pkgbase = rox-player-git
 	provides = rox
 	provides = rox-player
 	conflicts = rox-player
+	options = !lto
 	source = rox::git+https://github.com/zealsprince/rox.git
 	sha256sums = SKIP
 
