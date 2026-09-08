@@ -4,10 +4,10 @@
 
 pkgname=ffmpeg-full-llvm
 pkgver=9.0.1
-pkgrel=2
+pkgrel=3
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.2'
-pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and LLVM lld'
+pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and mold'
 arch=('x86_64')
 url='https://ffmpeg.org/'
 license=('LicenseRef-nonfree-and-unredistributable')
@@ -142,7 +142,7 @@ makedepends=(
     'clang'
     'cmake'
     'glslang'
-    'lld'
+    'mold'
     'llvm'
     'cuda'
     'decklink-sdk'
@@ -197,7 +197,7 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
 
-    # lld prunes these indirect flite1 dependencies under --as-needed, leaving
+    # Retain indirect flite1 dependencies under --as-needed to avoid leaving
     # the voice libraries with unresolved symbols such as usenglish_init.
     sed -i \
         's|^flite_extralibs=.*|flite_extralibs="-Wl,--push-state,--no-as-needed -lflite_cmu_time_awb -lflite_cmu_us_awb -lflite_cmu_us_kal -lflite_cmu_us_kal16 -lflite_cmu_us_rms -lflite_cmu_us_slt -lflite_usenglish -lflite_cmulex -lflite -Wl,--pop-state"|' \
@@ -209,13 +209,13 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
     export READELF=/usr/bin/llvm-readelf
     export STRIP=/usr/bin/llvm-strip
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
 
