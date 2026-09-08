@@ -2,7 +2,7 @@
 pkgname=forge-bin
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Format-aware version control CLI with semantic diff and merge for any file type"
+pkgdesc="Git-based version control CLI with semantic diff and merge for 3D models, game assets, and binary formats"
 arch=('x86_64' 'aarch64')
 url="https://github.com/forgehubproject/forge"
 license=('MIT')
