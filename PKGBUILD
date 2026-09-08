@@ -1,8 +1,8 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=dn-git
 _pkgname=dawn
-pkgver=r61.219393c
-pkgrel=6
+pkgver=r36.359a06b
+pkgrel=1
 pkgdesc="Colour-managed image browser"
 url="https://git.janouch.name/p/dawn"
 arch=('x86_64')
@@ -29,8 +29,6 @@ depends=(
   'wayland-protocols'
 )
 optdepends=(
-  'gdk-pixbuf2: GdkPixbuf module support'
-  'glycin: Glycin module support'
   'jxrlib: JPEG XR'
   'libheif: HEIF images'
   'libjxl: JPEG XL'
@@ -40,15 +38,13 @@ optdepends=(
   'libxcursor: X cursor images'
   'openjpeg2: JPEG2000'
   'perl-image-exiftool: file information'
+  'cargo: Rust image loaders'
 )
-install=dn.install
 source=(
   "git+https://git.janouch.name/p/$_pkgname.git"
-  update-dn-desktop-files.hook
 )
 sha256sums=(
   SKIP
-  baa1bcd3bc55eacd28ad54e78b64d1f872d3e40100bb98a1af43d7ba0d4743bd
 )
 
 pkgver() {
@@ -79,6 +75,4 @@ package() {
   make install DESTDIR="$pkgdir"
   install -Dm644 "$srcdir/$_pkgname/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 \
-	  "$srcdir/update-dn-desktop-files.hook"
 }
