@@ -1,7 +1,7 @@
 # Maintainer: KorespondentAda <0kononov0 at gmail dot com>
 _pkgname="boosty_downloader"
 pkgname="boosty-downloader"
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Download any type of content from boosty.to"
 arch=(any)
@@ -11,7 +11,6 @@ groups=()
 depends=(
 	# Listed in pyproject.toml
 	'python>=3.10'
-	#'asyncio>=3.4.3' Provided by `python` itself
 	'python-aiofiles>=24.1.0-2'
 	'python-aiohttp>=3.11.12-1'
 	'python-pydantic>=2.10.6-1'
@@ -40,7 +39,7 @@ conflicts=("${pkgname}" "${_pkgname}")
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/Glitchy-Sheep/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('aa02078fb4d6968e37509380e8fe82d196db0d6318aae4fe7dc72196664b0dbb')
+sha256sums=('e8652b7e5e7b70f4d4c76e071075ba1cde14dcc8b4d3a57475aa5b664f532b67')
 
 build() {
 	cd "$srcdir/${pkgname}-$pkgver"
