@@ -1,6 +1,6 @@
 # Maintainer: Henri Koski <henri.koski@bitbrewers.fi>
 pkgname=hcibridge-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Attach remote ESP32 Bluetooth bridges to the local Bluetooth stack (release binary)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bluez')
 provides=('hcibridge')
 conflicts=('hcibridge')
-backup=('etc/hcibridge/config' 'etc/hcibridge/config.d/50-example.conf' 'etc/default/hcibridge')
+backup=('etc/hcibridge/hcibridge.conf' 'etc/hcibridge/hcibridge.conf.d/50-example.conf' 'etc/default/hcibridge')
 _rel="https://github.com/heppu/hcibridge/releases/download/v$pkgver"
 source=("hcibridge-$pkgver.tar.gz::https://github.com/heppu/hcibridge/archive/refs/tags/v$pkgver.tar.gz"
         "hcibridge.1-$pkgver::$_rel/hcibridge.1"
@@ -19,10 +19,10 @@ source=("hcibridge-$pkgver.tar.gz::https://github.com/heppu/hcibridge/archive/re
 source_x86_64=("hcibridge-$pkgver-x86_64::$_rel/hcibridge-x86_64-linux")
 source_aarch64=("hcibridge-$pkgver-aarch64::$_rel/hcibridge-aarch64-linux")
 source_armv7h=("hcibridge-$pkgver-armv7h::$_rel/hcibridge-armv7-linux")
-sha256sums=('2527453d78e37ab4a174086aea46bbc91ec68d34d5c0a15f09fb2c6d38e35f71' '4df2b8ab70e6d643bf707de3168be7bdb8c68097e09cbc9818969f3072939dd3' '7de3988de9a4985767be7b5c362dc395570321e6e628f319b3ef31c3c65716fd' '5303882f927736c07944c53d25e52d00f957461fe597f0d5feb87378a3c3f0a5' '6ead0d149c08e820c1e37ce2207eca4aba9d5e7aae600f9caafde94f8f94e75b')
-sha256sums_x86_64=('dd2cd2f70a7b720dcd962aac728eef4cf40cf69a144ace9e05672562dfa74b38')
-sha256sums_aarch64=('6c1084f8d9c5a949645c973c867ea88eb9fba546b50d15f196d409be5a86c93f')
-sha256sums_armv7h=('8494560e2fede441d108458446a746b91b32c9bd79f52ca24bd8ee08aee4f999')
+sha256sums=('c3a36a08b2812a6cb0b0853a20a09d07ee32e8b1f715c06e518258d49393917c' '144fb641f281f75e42a8469b2a6b2ad65996592b5b2434836506be217fd614de' '7de3988de9a4985767be7b5c362dc395570321e6e628f319b3ef31c3c65716fd' 'fc0b041b0f0024bdec961222b4cd903142529d1a677e594b8e775c666924d24b' '0080e6f195bf0d1da41cebcc18c554580f4f0f038d40c757ce4f58a0bba9e53d')
+sha256sums_x86_64=('4a41d90bc6c2a5bbe4d23195e63894727666e0172e5167330f76e128696f73ef')
+sha256sums_aarch64=('de16cd6689a1228a9f855ac0509e9051cf877b354fe8e062ee56f4be2dec6345')
+sha256sums_armv7h=('493dbb61c651c698a4b69817ccc826db87d5db1835faeb2cb7547a211fe0a0be')
 
 package() {
     local src="hcibridge-$pkgver"
@@ -34,7 +34,7 @@ package() {
     install -Dm644 "$src/host/systemd/hcibridge.service" "$pkgdir/usr/lib/systemd/system/hcibridge.service"
     install -Dm644 "$src/host/systemd/hcibridge.env" "$pkgdir/etc/default/hcibridge"
     install -Dm644 "$src/host/modules-load.conf" "$pkgdir/usr/lib/modules-load.d/hci_vhci.conf"
-    install -Dm644 "$src/host/config/config" "$pkgdir/etc/hcibridge/config"
-    install -Dm644 "$src/host/config/config.d/50-example.conf" "$pkgdir/etc/hcibridge/config.d/50-example.conf"
+    install -Dm644 "$src/host/config/hcibridge.conf" "$pkgdir/etc/hcibridge/hcibridge.conf"
+    install -Dm644 "$src/host/config/hcibridge.conf.d/50-example.conf" "$pkgdir/etc/hcibridge/hcibridge.conf.d/50-example.conf"
     install -Dm644 "$src/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
