@@ -1,7 +1,7 @@
 pkgbase = jadx-ai-mcp-bin
 	pkgdesc = JADX AI MCP plugin JAR and Python MCP bridge server
-	pkgver = 6.1.0
-	pkgrel = 5
+	pkgver = 6.4.1
+	pkgrel = 1
 	url = https://github.com/zinja-coder/jadx-ai-mcp
 	install = jadx-ai-mcp-bin.install
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = jadx-ai-mcp-bin
 	depends = python-fastmcp
 	depends = python-httpx
 	optdepends = jadx: decompiler host application
-	noextract = jadx-ai-mcp-6.1.0.jar
-	source = jadx-ai-mcp-6.1.0.jar::https://github.com/zinja-coder/jadx-ai-mcp/releases/download/v6.1.0/jadx-ai-mcp-6.1.0.jar
-	source = jadx-mcp-server-v6.1.0.zip::https://github.com/zinja-coder/jadx-ai-mcp/releases/download/v6.1.0/jadx-mcp-server-v6.1.0.zip
+	noextract = jadx-ai-mcp-6.4.1.jar
+	source = jadx-ai-mcp-6.4.1.jar::https://github.com/zinja-coder/jadx-ai-mcp/releases/download/V6.4.1/jadx-ai-mcp-6.4.1.jar
+	source = jadx-mcp-server-6.4.1.zip::https://github.com/zinja-coder/jadx-ai-mcp/releases/download/V6.4.1/jadx-mcp-server-6.4.1.zip
 	source = jadx-ai-mcp-server
-	sha256sums = ba3a0f66e1aa253ab85faa5c22625d20936aac90543238c09e633f1970852c41
-	sha256sums = 572b814636eebfe5840c9cc5987e1e8c9f38269a118e9b73cccdd178a574e5ca
+	sha256sums = df7040ee4bc724c132635e8ad906b0961829db09a35da3365cbc46a761bed983
+	sha256sums = e7cf0fa756b817cde3d3a2b6c04a6a6eb8546298eaff6a957e711fb68e53b532
 	sha256sums = f4591632a93ec802fd0d03c3d61e25d87877127420d128a156915f3a8210ab69
 
 pkgname = jadx-ai-mcp-bin
