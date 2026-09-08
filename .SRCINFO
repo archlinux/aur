@@ -10,8 +10,6 @@ pkgbase = jstest-gtk-git
 	makedepends = cmake
 	depends = gtkmm3
 	source = git+https://github.com/Grumbel/jstest-gtk.git
-	source = jstest-gtk.desktop
 	sha256sums = SKIP
-	sha256sums = 8063bdd1426bd772396929bc044de933db40a9888663bc72556ffc62a255c0fc
 
 pkgname = jstest-gtk-git
