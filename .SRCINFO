@@ -1,8 +1,8 @@
 pkgbase = snippai-git
-	pkgdesc = AI-Powered Snipping Tool.(Use system-wide electron)
-	pkgver = 0.2.1.r5.gf9c082c
+	pkgdesc = A versatile and intelligent snipping tool powered by advanced AI algorithms.
+	pkgver = 0.3.0.r0.gf9c082c
 	pkgrel = 1
-	url = https://sn.lovable.app/
+	url = https://snippai.de/
 	arch = any
 	license = AGPL-3.0-only
 	makedepends = npm
@@ -11,8 +11,9 @@ pkgbase = snippai-git
 	makedepends = curl
 	makedepends = gendesk
 	makedepends = jq
+	makedepends = zip
 	depends = electron29
-	provides = snippai=0.2.1
+	provides = snippai=0.3.0
 	conflicts = snippai
 	source = snippai.git::git+https://github.com/xyTom/snippai.git
 	source = snippai.sh
