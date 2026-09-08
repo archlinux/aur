@@ -1,6 +1,6 @@
 pkgbase = nexus-manager-bin
 	pkgdesc = Sensor display and music visualizer for the Corsair iCUE NEXUS panel
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/Nexus-Manager
 	install = nexus-manager-bin.install
@@ -30,7 +30,7 @@ pkgbase = nexus-manager-bin
 	provides = nexus-manager
 	conflicts = nexus-manager
 	options = !strip
-	source = https://github.com/codingncaffeine/Nexus-Manager/releases/download/v0.0.4/nexus-manager-0.0.4-linux-x64.tar.gz
-	sha256sums = 0f79a8e34a95e30e9d10b1a473b1f8c4bb2b8e8dd296fbd910cac4e91142e178
+	source = https://github.com/codingncaffeine/Nexus-Manager/releases/download/v0.0.5/nexus-manager-0.0.5-linux-x64.tar.gz
+	sha256sums = e7a2c6d1afa5efc371a807b9467422c47fdccf7ed7da409fde8d91451000a494
 
 pkgname = nexus-manager-bin

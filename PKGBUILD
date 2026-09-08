@@ -4,7 +4,7 @@
 #   ssh://aur@aur.archlinux.org/nexus-manager-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=nexus-manager-bin
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Sensor display and music visualizer for the Corsair iCUE NEXUS panel"
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=('libpulse: music visualizers (provides parec)'
 options=('!strip')   # self-contained .NET bundle - stripping breaks it
 install=nexus-manager-bin.install
 source=("$url/releases/download/v$pkgver/nexus-manager-$pkgver-linux-x64.tar.gz")
-sha256sums=('0f79a8e34a95e30e9d10b1a473b1f8c4bb2b8e8dd296fbd910cac4e91142e178')
+sha256sums=('e7a2c6d1afa5efc371a807b9467422c47fdccf7ed7da409fde8d91451000a494')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/nexus-manager" "$pkgdir/usr/bin" \
