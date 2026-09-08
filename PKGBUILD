@@ -3,8 +3,8 @@
 
 pkgname=chromaprint-fftw-llvm
 pkgver=1.6.1
-pkgrel=2
-pkgdesc='Library for extracting fingerprints from any audio source (uses fftw for FFT calculations instead of ffmpeg) — built with Clang and LLVM lld'
+pkgrel=3
+pkgdesc='Library for extracting fingerprints from any audio source (uses fftw for FFT calculations instead of ffmpeg) — built with Clang and mold'
 arch=('x86_64')
 url='https://acoustid.org/chromaprint'
 license=('GPL-2.0-or-later')
@@ -16,7 +16,7 @@ depends=(
 makedepends=(
     'clang'
     'cmake'
-    'lld'
+    'mold'
     'llvm')
 provides=('chromaprint-fftw' 'chromaprint' 'libchromaprint.so')
 conflicts=('chromaprint-fftw' 'chromaprint')
@@ -28,7 +28,7 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
@@ -36,14 +36,14 @@ build() {
     export STRIP=/usr/bin/llvm-strip
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     
     cmake -B build -S "chromaprint-${pkgver}" \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=lld' \
-        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=lld' \
+        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=mold' \
+        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=mold' \
         -DBUILD_TESTS:BOOL='ON' \
         -DBUILD_TOOLS:BOOL='OFF' \
         -DFFT_LIB:STRING='fftw3' \
