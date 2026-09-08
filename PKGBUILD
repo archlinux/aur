@@ -10,7 +10,7 @@
 pkgname=openhamclock-git
 _pkgname=openhamclock
 pkgver=26.7.2.r0.ge1f5cef5
-pkgrel=2
+pkgrel=3
 pkgdesc="Amateur Radio Dashboard - A modern web-based HamClock alternative (VCS / git version)"
 arch=('any')
 url="https://github.com/accius/openhamclock"
@@ -24,6 +24,7 @@ optdepends=(
 )
 provides=('openhamclock')
 conflicts=('openhamclock')
+install=openhamclock.install
 backup=('etc/openhamclock/openhamclock.env')
 options=('!strip')
 source=(
@@ -39,7 +40,7 @@ sha256sums=(
     '649f85ee70b5e5e04be64a86388f9f5727011fad7acc77eeacb37954ce2f5a2f'
     '25ef5af49ab9fc5737a7bcb6b25c2e476d0ba4e16a49ff9ca86b4bcd5275c7ba'
     '790b2098c340be12a3bbaf09c0a1990ead29a447fd788cc124b97677a69ad75b'
-    'e4e6e8a0b3bc70127997c13e71bd1f2fb8be034181a62dcae676fcf08a318a74'
+    '6b8604443447fc55ed327eb651bcb42e60c689da690247d8fd18da0d23dda646'
     '1d7ed07d68c0475a325c04f1689c136f27c86adf0ccd541a9e1620184eb91688'
 )
 
