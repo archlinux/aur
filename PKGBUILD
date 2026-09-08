@@ -1,6 +1,6 @@
 # Maintainer: Isaac Arcia <iikz87ii@gmail.com>
 pkgname=yawns
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Your Adaptable Widget Notification System"
 arch=('any')
@@ -16,19 +16,19 @@ depends=(
     'python-gobject'
     'python-setproctitle'
 )
-# Note: This expects the release asset created by the packaging script
-source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('2ed26152260ed17afbec7c9239541d76cc2d557c987ba8d2d31c4c91158dc8c4')
+# changed this back to just using the source code instead of 
+# a redundant tar
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e32ad1d31a82f7dc3a02de70d1fe84ce67a8692dfe219fdc577be2f730ee1c7f')
 
 package() {
-    # 1. Enter the extracted directory
-    cd "$srcdir/$pkgname-v$pkgver"
+    # 1. Enter the extracted directory (GitHub tags extract to repo-version)
+    cd "$srcdir/$pkgname-$pkgver"
 
     # 2. Create the destination directory
     install -d "$pkgdir/usr/lib/$pkgname"
 
     # 3. Copy EVERYTHING from the source to the destination
-    # This ensures src/, assets/, config.ini, etc. are all there
     cp -r * "$pkgdir/usr/lib/$pkgname/"
 
     # 4. Create the wrapper script
@@ -42,7 +42,6 @@ if [ ! -d "\$HOME/.config/yawns" ]; then
     echo "Creating default config..."
     
     # Copy defaults from the installed library
-    # Note: adjusting path to match where they actually are in the repo
     if [ -f "/usr/lib/yawns/src/config.ini" ]; then
         cp "/usr/lib/yawns/src/config.ini" "\$HOME/.config/yawns/"
     elif [ -f "/usr/lib/yawns/config.ini" ]; then
