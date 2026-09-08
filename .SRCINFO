@@ -38,6 +38,8 @@ pkgbase = sunshine-bin
 	optdepends = xorg-server-xvfb: Virtual X server for headless testing
 	provides = sunshine
 	conflicts = sunshine
+	options = !strip
+	options = !debug
 	source = sunshine-2026.906.222525-1-x86_64.pkg.tar.zst::https://github.com/LizardByte/Sunshine/releases/download/v2026.906.222525/sunshine-2026.906.222525-1-x86_64.pkg.tar.zst
 	b2sums = b73ae29bf3e7763c5187b0ebfe2061a87764a79d699df9737ba7170a0a5954e961601afbccb7ccfb0140d561f60c3a7895049ec421c4f9f239267a46111e5b43
 

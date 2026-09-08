@@ -13,6 +13,7 @@ source=(
 )
 arch=('x86_64')
 license=('GPL-3.0-only')
+options=('!strip' '!debug')
 install=sunshine.install
 depends=(
     'avahi'
