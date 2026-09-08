@@ -1,11 +1,16 @@
 -------------------------------------------------------
  Changelog    : dmarc_report
- Tags         : 6.0.0 ➙ 7.1.1
-              : 2025-05-05 ➙ 2026-09-04
+ Tags         : 6.1.0 ➙ 7.1.2
+              : 2025-05-21 ➙ 2026-09-08
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-04   : 7.1.1
+ 2026-09-08   : 7.1.2
+              - **7.1.2**
+            
+                * Add link to manual at top level.
+
+ 2026-09-04   : 7.1.1, origin/master
               - **7.1.1**
             
                 * Package management is now meson/meson-python
@@ -27,11 +32,4 @@
  2025-05-21   : 6.1.0
               - Use builtin types where possible. e.g. typing.List -> list
  2025-05-05   ⋯
-              - update Changelog
-
- 2025-05-05   : 6.0.0
-              - Tidy ups: PEP-8, PEP-257, PEP-484 PEP-561
-                Reorganize code especially for PEP-561 (type hints)
- 2025-03-15   ⋯
-              - update Changelog
               - update Changelog
