@@ -8,8 +8,8 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'libcap' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.76.2
-pkgrel=2
+pkgver=2.77.1
+pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -19,11 +19,9 @@ options=('!strip' 'emptydirs' '!lto')
 install=snapd.install
 source=(
     "$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
-    "0001-tests-fix-json-error-assertions-for-Go-1.27-17472.patch"
 )
 
-sha256sums=('873fedb8525057c2b276003c2f90c2e5f7b541ec1bb409a6f489c51b5c72af2b'
-           '0a091ec38ffbe653db698a96ae3486233746711da138e2e5793cff97b523f3f2')
+sha256sums=('10c824694cd9c9954ba7a826d245458d8fa1006d49937fe480dc9f36b57b1efc')
 
 
 prepare() {
