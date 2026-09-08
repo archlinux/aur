@@ -1,4 +1,4 @@
-# Maintainer: SCDevel <root@scevel.net>
+# Maintainer: SCDevel <root@scdevel.net>
 
 pkgname=whatisit-nl2sh-git
 pkgver=r180.gf9c3e79
