@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=trilinos
 pkgname="${_pkgname}16"
-pkgver=16.2.0
+pkgver=16.2.2
 pkgrel=1
 pkgdesc="Algorithms and solutions of large-scale, complex multi-physics engineering and scientific problems - 16.X branch"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
     "0001-epextra-openmp-linkage-workaround.patch"
     "0002-fix-kokkos-cmake-use-install_includedir.patch"
 )
-b2sums=('391163cccdb10e7c20373e7b6bd7eb5ecb109fac56eb9c46c5940bca2e16145a416e8451588d098c439dc4bbefa72e93e346c0f22d19203a5f333b06516b65a8'
+b2sums=('6983395fcedffd6de4896512333c3f383aed2781b7db4ef6906bbffcad524bc2130c7e5837a026f6d3b6b1cbf55ade0e6dc13024513648d8f57c3ceffcbeef3d'
         '76bcd57791866166387af5bd4b2984b9344c766f0a838fd5d0f32ae7670d181a17470efc429aef774b7e6feca68d1d407211bfdee885eaf8536f751b304c76d2'
         '3a11a4ebaf068da3f84e43ec475c7befd6fe3dfcc8b4705c9414218673055f8d2f856eff9e113a8759ffa18c22468e30e86be9b0391a4b546ed1a6e2f746df47')
 
@@ -137,8 +137,7 @@ build() {
 	)
 
 	local cmake_options=(
-		-W no-dev
-		-W no-cpp
+		-W no-author
 		-D CMAKE_BUILD_TYPE=None
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D CMAKE_POSITION_INDEPENDENT_CODE=ON

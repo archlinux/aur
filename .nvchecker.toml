@@ -1,0 +1,8 @@
+[trilinos16]
+source = "git"
+git = "https://github.com/trilinos/Trilinos.git"
+use_max_tag = true
+prefix = "trilinos-release-"
+include_regex = 'trilinos-release-16.*'
+from_pattern = "-"
+to_pattern = "."
