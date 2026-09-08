@@ -10,6 +10,7 @@ pkgbase = yankbase-git
 	makedepends = scdoc
 	makedepends = gzip
 	depends = gitstore
+	depends = xdg-terminal-exec
 	provides = yankbase
 	source = git+https://codeberg.org/ValOm/yankbase
 	md5sums = SKIP

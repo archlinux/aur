@@ -8,7 +8,7 @@ pkgdesc="A git-based universal text snippet manager"
 url="https://codeberg.org/ValOm/yankbase"
 
 arch=("any")
-depends=("gitstore")
+depends=("gitstore" "xdg-terminal-exec")
 makedepends=("git" "make" "scdoc" "gzip")
 license=("BSD")
 
