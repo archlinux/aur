@@ -5,7 +5,7 @@ echo "Current PKGBUILD version:"
 echo $PKGBUILD_VERSION
 
 echo "Downloading latest update json"
-curl -O https://plexamp.plex.tv/desktop/tauri-update.json
+curl -O --silent https://plexamp.plex.tv/desktop/tauri-update.json
 
 VERSION=$(jq -r '.version' tauri-update.json)
 echo "Latest Plexamp Beta Linux version:"
