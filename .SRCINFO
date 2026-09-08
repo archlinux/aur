@@ -1,16 +1,15 @@
 pkgbase = python-compressed-rtf
-	pkgdesc = Compressed Rich Text Format (RTF) compression and decompression package
+	pkgdesc = Compressed Rich Text Format (RTF) compression and decompression
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/delimitry/compressed_rtf
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
+	makedepends = python-setuptools>=1:77.0.0
 	depends = python
-	source = compressed-rtf-1.0.7.tar.gz::https://files.pythonhosted.org/packages/source/c/compressed_rtf/compressed_rtf-1.0.7.tar.gz
-	sha256sums = 7c30859334839f3cdc7d10796af5b434bb326b9df7cb5a65e95a8eacb2951b0e
+	source = compressed_rtf-1.0.7.tar.gz::https://github.com/delimitry/compressed_rtf/archive/refs/tags/1.0.7.tar.gz
+	b2sums = 54e87a92047bd8b13b91326328701e3ab885f828d86babae6294c6e3a707e983900c87989f26b7982d7f4d643f5626c50cf831c77c9c03a08b1a5b1bc96d1324
 
 pkgname = python-compressed-rtf
