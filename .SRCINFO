@@ -1,0 +1,23 @@
+pkgbase = reiser4progs-git
+	pkgdesc = Утилиты для файловой системы Reiser4 (mkfs.reiser4, fsck.reiser4, debugfs.reiser4, measurefs.reiser4) — собрано из живого git апстрима, т.к. AUR-версия заброшена
+	pkgver = progs.pending.1.12420.g23e8ccb64
+	pkgrel = 1
+	url = https://github.com/edward6/reiser4progs
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkgconf
+	depends = libaal
+	depends = util-linux-libs
+	depends = readline
+	provides = reiser4progs
+	conflicts = reiser4progs
+	options = !strip
+	source = reiser4progs::git+https://github.com/edward6/reiser4progs.git
+	sha256sums = SKIP
+
+pkgname = reiser4progs-git
