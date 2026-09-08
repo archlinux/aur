@@ -31,9 +31,16 @@ CacheDirectory=uv
 BindReadOnlyPaths=-%E/uv
 PrivateTmp=yes
 DevicePolicy=closed
-DeviceAllow=/dev/dri/* rw
-DeviceAllow=/dev/kfd rw
-DeviceAllow=/dev/nvidia* rw
+# Devices in /dev/dri, for all GPU backends
+DeviceAllow=char-drm rw
+# /dev/kfd, for hip backend
+DeviceAllow=char-kfd rw
+# /dev/nvidia0, /dev/nvidia1, etc, for cuda backend
+DeviceAllow=char-nvidia rw
+# /dev/nvidiactl, for cuda backend
+DeviceAllow=char-nvidiactl rw
+# /dev/nvidia-uvm, for cuda backend
+DeviceAllow=char-nvidia-uvm rw
 PrivateIPC=yes
 PrivateUsers=self
 ProtectHostname=yes
