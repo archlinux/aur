@@ -5,8 +5,8 @@ provides=(zalo)
 conflicts=(zalo)
 pkgver=26.8.20
 _zadarkver=26.2.1
-_commithash=3fbb477
-pkgrel=1
+_commithash=87b0696
+pkgrel=2
 pkgdesc="Zalo for Linux"
 arch=('x86_64')
 url="https://github.com/doandat943/zalo-for-linux"
@@ -17,6 +17,7 @@ depends=(
     'zlib'
 )
 optdepends=(
+    # Clipboard & Screenshots
     'wl-clipboard: paste images from clipboard on Wayland'
     'xclip: paste images from clipboard on X11'
     'deepin-screen-recorder: Screenshot without/with Zalo window button'
@@ -26,6 +27,17 @@ optdepends=(
     'xfce4-screenshooter: Screenshot without/with Zalo window button'
     'mate-screenshot: Screenshot without/with Zalo window button'
     'scrot: Screenshot without/with Zalo window button'
+    
+    # Audio/Video Calling (ZCall Bridge)
+    'wine: Voice/Video call engine support (or download portable wine in-app)'
+    'v4l-utils: control camera formats (fix inverted/green camera)'
+    'V4L2LOOPBACK-MODULE: loopback camera support'
+    
+    # Wayland Screen Sharing Bridge
+    'xorg-server-xvfb: headless X server for Wayland screen-sharing bridge'
+    'xdotool: window resizing for screen bridge display'
+    'gst-plugins-base: 64-bit GStreamer plugins (ximagesink) for screen bridge'
+    'gst-plugins-bad: 64-bit GStreamer plugins (pipewiresrc) for screen bridge'
 )
 source=(
     "zalo.AppImage::https://github.com/doandat943/zalo-for-linux/releases/download/${pkgver}/Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}.AppImage"
@@ -34,7 +46,7 @@ source=(
 )
 options=(!strip !debug)
 sha256sums=(
-    'b20f7dee50b7d2e7e009826130dc6bed4824fd1236f85227fc81d0aef8a02a9f'
+    '716af7523f070fc08ba0413f54a8ec4d44c1b3e9797411d7e0e59934e54a5dbb'
     'b9478f6156fc65858971ca8fb0cc0b94d327ed34f704ce4c614b10e7510dbfe9'
     '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
 )
