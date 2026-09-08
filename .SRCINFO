@@ -1,0 +1,27 @@
+pkgbase = bspwm1-wl
+	pkgdesc = bspwm as a Wayland compositor (wlroots backend of bspwm1)
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/rotkonetworks/bspwm1
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = wlr-protocols
+	depends = bspwm1
+	depends = wlroots0.20
+	depends = wayland
+	depends = libxkbcommon
+	depends = pixman
+	depends = libdrm
+	depends = xorg-xwayland
+	optdepends = waybar: status bar
+	optdepends = rofi: launcher (has a native Wayland backend)
+	optdepends = dunst: notifications
+	optdepends = swaylock: screen locker
+	optdepends = swayidle: idle management
+	provides = bspwm-wl
+	source = git+https://github.com/rotkonetworks/bspwm1.git#tag=v1.6.0
+	sha256sums = SKIP
+
+pkgname = bspwm1-wl
