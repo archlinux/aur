@@ -4,8 +4,8 @@
 _pkgname=mpeghdec
 pkgname=mpeghdec-llvm
 pkgver=4.0.1
-pkgrel=2
-pkgdesc='Fraunhofer MPEG-H audio decoder — built with Clang and LLVM lld'
+pkgrel=3
+pkgdesc='Fraunhofer MPEG-H audio decoder — built with Clang and mold'
 arch=('x86_64')
 url='https://mpegh.com/'
 license=('LicenseRef-Custom')
@@ -17,7 +17,7 @@ makedepends=(
     'clang'
     'cmake'
     'git'
-    'lld'
+    'mold'
     'llvm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -29,7 +29,7 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
@@ -37,15 +37,15 @@ build() {
     export STRIP=/usr/bin/llvm-strip
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     
     cmake -B build -S "mpeghdec-r${pkgver}" \
         -G 'Unix Makefiles' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=lld' \
-        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=lld' \
+        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=mold' \
+        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=mold' \
         -DCMAKE_SKIP_RPATH:BOOL='YES' \
         -Wno-author
     cmake --build build
