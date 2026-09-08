@@ -4,7 +4,7 @@
 _pkgname="docfd"
 _pkgauthor="darrenldl"
 pkgname="${_pkgname}-bin"
-pkgver=13.1.0
+pkgver=13.1.1
 pkgrel=1
 pkgdesc='TUI multiline fuzzy document finder'
 arch=('x86_64' 'aarch64')
@@ -27,13 +27,13 @@ source_aarch64=(
   "$_pkgname-$pkgver-${arch[1]}.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver-$_flavour-arm.tar.gz"
   "${_docs[@]}"
 )
-sha256sums_x86_64=('6cf2ce4a10b62b01f4cfac94b79e56121cb6a01ed90006941e6fcb6e4f8c6cd5'
-                   '00bbc37fa1875ee7394feac2a34a8862de424a7bbccf318414dc443b1e806fe1'
-                   'd5692d8fd7373decf97822d15f166b75e9a90ce989e13ace98ee107b87517324'
+sha256sums_x86_64=('072ba098e2f37aa74a755de4d57e24502a4f0b56ba7f544588c817ceab156e85'
+                   '24a395cd80eae287f5374a2b33bd31498edef2768fa5f49009274903a7cdb6e7'
+                   '919d185a40c4ef1c37692fdfcd0be23f2b5554005918f0aeb75e597122bfc9b0'
                    '05b43717c1e0f368743f7544e68bc43a2d96a2cd4df4a16190f290cd6e6fb528')
-sha256sums_aarch64=('ffaec914712926faa0d6aad9d1fee7f51dbdca77365af4f781e9971e6ec1ea38'
-                    '00bbc37fa1875ee7394feac2a34a8862de424a7bbccf318414dc443b1e806fe1'
-                    'd5692d8fd7373decf97822d15f166b75e9a90ce989e13ace98ee107b87517324'
+sha256sums_aarch64=('7dc2fdd9acd9e14979e0443ee69e0dfd66b7f901a2ac1a7d3092cd221659ba5e'
+                    '24a395cd80eae287f5374a2b33bd31498edef2768fa5f49009274903a7cdb6e7'
+                    '919d185a40c4ef1c37692fdfcd0be23f2b5554005918f0aeb75e597122bfc9b0'
                     '05b43717c1e0f368743f7544e68bc43a2d96a2cd4df4a16190f290cd6e6fb528')
 
 changelog="$pkgname.changelog"
