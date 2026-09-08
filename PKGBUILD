@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=dedao
 pkgname="${_pkgname}-dl-bin"
-pkgver=1.2.33
+pkgver=1.2.34
 pkgrel=1
 pkgdesc="Get app course download tool, you can view article content in terminal, generate PDF, audio file, markdown manuscript, download e-book from DeDao.com.(Written in GO.Prebuilt version)得到APP课程下载工具,可在终端查看文章内容,可生成PDF,音频文件,markdown文稿,可下载电子书。"
 arch=(
@@ -25,8 +25,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/yann0917/dedao-dl/
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64.tar.gz")
 sha256sums=('1ba8379d33340e518c32fe24046f7cb0530250ec193e7e3d0ea72fd558a1e926')
-sha256sums_aarch64=('762ba52e353a272322fea506f0be92a12870ee7808b0d446bd59a0c270401bad')
-sha256sums_x86_64=('5a4788b47b52632073f6b1f42433a6aaca88a449afa8f3fc76430ff63cbebbe5')
+sha256sums_aarch64=('348b919a22c6c12d115b5bec9601b94ec03d8090be76e06d178d077234a2e565')
+sha256sums_x86_64=('f5f0f940038af02ef81cea86881665b9447408afe18e227a53019abe83b68b04')
 prepare() {
     cd "${srcdir}"
     bsdtar -xf "${pkgname%-bin}-${pkgver}-${CARCH}.tar.gz"
