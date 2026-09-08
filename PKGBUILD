@@ -1,7 +1,7 @@
 # Maintainer: David Hrabě <david.hrabe12@seznam.cz>
 pkgname="paths-bookmarks-git"
 pkgver=r.8aa0f78
-pkgrel=1
+pkgrel=2
 pkgdesc="Save often used directories like bookmarks"
 arch=("x86_64")
 url="https://github.com/sproott/pat.hs"
