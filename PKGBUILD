@@ -2,8 +2,8 @@
 
 pkgname=netassistant
 _pkgname=NetAssistant
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 epoch=
 pkgdesc="A network debugging assistant based on Qt GUI."
 arch=($CARCH)
@@ -12,6 +12,7 @@ license=('GPL-3.0-only')
 groups=()
 depends=(qt5-base)
 makedepends=(
+  git
   qt5-tools
 )
 checkdepends=()
@@ -23,21 +24,26 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${_pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('75b2397809fbde45dc6594073e7dcd2e9b00ea73a558f40b8912ca02e54b3dc4')
+sha256sums=('76d47cca62e4e27ae11459481bb2955570c67b30f6d82b32a8147a43b78c4c0b')
 #validpgpkeys=()
 
+prepare() {
+  git -C "${srcdir}/${_pkgname}" clean -dfx
+}
+
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   qmake
   make
 }
 
 package() {
-  install -Dm0755 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm0755 "${srcdir}/${_pkgname}-${pkgver}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm0644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${_pkgname}"
+  install -Dm0755 ${_pkgname} "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm0755 ${_pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/io.github.busyluo.netassistant.metainfo.xml" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
