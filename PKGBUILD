@@ -3,7 +3,7 @@
 
 pkgname=bilihud
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="B站弹幕阅读器 - 一个可以在游戏全屏时显示弹幕，且支持开播的Qt应用程序"
 arch=('x86_64')
 url="https://github.com/locez/bilihud"
@@ -37,7 +37,7 @@ makedepends=(
 )
 source=("git+$url.git#tag=v$pkgver"
         "git+https://github.com/xfgryujk/blivedm.git")
-sha256sums=('5592cccfc9dae8bd67c76069a609815e76899c993c9a380fbff87c2ccdf8bbd8'
+sha256sums=('fa57098568b067af2ee2af022d7ecab72950bed63d8b9c1d92beb8c5038b13e2'
             'SKIP')
 
 prepare() {
