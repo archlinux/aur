@@ -1,6 +1,6 @@
 pkgbase = lsfg-vk-git
 	pkgdesc = Lossless Scaling Frame Generation on Linux
-	pkgver = 2.0.0.rc1.r0.gf715073
+	pkgver = 2.0.0.r0.g2333707
 	pkgrel = 1
 	url = https://lsfg-vk.dev
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = lsfg-vk-git
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = hicolor-icon-theme
-	provides = lsfg-vk=2.0.0.rc1.r0.gf715073
+	provides = lsfg-vk=2.0.0.r0.g2333707
 	conflicts = lsfg-vk
 	source = git+https://git.lsfg-vk.dev/lsfg-vk.git#branch=master
 	sha256sums = SKIP
