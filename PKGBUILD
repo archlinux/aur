@@ -3,15 +3,15 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-_electron='electron43'
-_electronpackage='electron43'
-pkgver=7.2.3.nightly.1.r7241.cb17c9e25
+_electron='electron44'
+_electronpackage='electron44'
+pkgver=7.2.4.nightly.1.r7256.c22fbf47c
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest commit).'
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache-2.0')
-depends=('electron43' 'hicolor-icon-theme')
+depends=('electron44' 'hicolor-icon-theme')
 _appbranch='develop'
 makedepends=('nvm' 'git' 'python' 'libxcrypt-compat' 'asar')
 options=(!strip !debug)
@@ -35,9 +35,6 @@ sha512sums=('SKIP')
 _sourcedirectory="$pkgname"
 
 case "$CARCH" in
-	armv7h)
-		_electronbuilderarch='armv7l'
-	;;
 	aarch64)
 		_electronbuilderarch='arm64'
 	;;
