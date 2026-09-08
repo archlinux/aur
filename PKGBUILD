@@ -3,8 +3,8 @@
 
 pkgname=lcevcdec-llvm
 pkgver=4.2.1
-pkgrel=2
-pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) — built with Clang and LLVM lld'
+pkgrel=3
+pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
 license=('BSD-3-Clause-Clear')
@@ -16,7 +16,7 @@ makedepends=(
     'clang'
     'cmake'
     'git'
-    'lld'
+    'mold'
     'llvm'
     'python'
     'range-v3'
@@ -34,7 +34,7 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
@@ -42,15 +42,15 @@ build() {
     export STRIP=/usr/bin/llvm-strip
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
     export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects'
     
     cmake -B build -S LCEVCdec \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=lld' \
-        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=lld' \
+        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=mold' \
+        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=mold' \
         -DVN_SDK_EXECUTABLES:BOOL='OFF' \
         -DVN_SDK_SIMD:BOOL='OFF' \
         -DVN_SDK_UNIT_TESTS:BOOL='OFF' \
