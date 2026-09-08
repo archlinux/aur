@@ -1,6 +1,6 @@
 pkgbase = phpsysinfo
 	pkgdesc = PHP script that displays information about the host being accessed.
-	pkgver = 3.4.6
+	pkgver = 3.4.7
 	pkgrel = 1
 	url = http://rk4an.github.com/phpsysinfo/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = phpsysinfo
 	optdepends = lm_sensors: for providing temperature
 	backup = etc/webapps/phpsysinfo/phpsysinfo.ini
 	backup = etc/webapps/phpsysinfo/.htaccess
-	source = https://github.com/rk4an/phpsysinfo/archive/v3.4.6.tar.gz
-	sha512sums = b9fafa7c36498103f61272689c2b3f9744a914a9584dbd844fcc58d5fca834cec2215ad643f5b0319e93450eb700cbb8b27e4683d82ae132ec4bdd5d89c9cabd
+	source = https://github.com/rk4an/phpsysinfo/archive/v3.4.7.tar.gz
+	sha512sums = 33ad1d8b0c0645c521f07c93cde517e7e2faac583b61c3cbc373e5c7f2d9a2289b14ff7f3890843ebc647d595ae562717e5988aa089ccfe573170db6f9d66723
 
 pkgname = phpsysinfo
