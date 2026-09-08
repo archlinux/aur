@@ -78,7 +78,7 @@ source=(
 )
 noextract=("google-chrome-stable_${pkgver}-1_amd64.deb")
 sha256sums=('81f529216c5689e07ef9bb441ce47a154f808fd66fb11e5e1fc1368e380b6f6d'
-            'a0b7a64f768ffc0ff5ccc9260ad9ebb53fd16f7a131e2e36994da58b82d913df')
+  'a0b7a64f768ffc0ff5ccc9260ad9ebb53fd16f7a131e2e36994da58b82d913df')
 
 prepare() {
   mkdir -p "$srcdir/chrome_extract"
@@ -92,12 +92,12 @@ package() {
   chown root "$pkgdir/usr/lib/chromium/chrome-sandbox"
   chmod 4755 "$pkgdir/usr/lib/chromium/chrome-sandbox"
 
-  echo "Fixing license directory name..."
+  msg2 "Fixing license directory name..."
   mv "$pkgdir/usr/share/licenses/chromium" "$pkgdir/usr/share/licenses/$pkgname"
 
-  echo "Injecting WidevineCdm..."
-  mkdir -p "$pkgdir/usr/lib/chromium/"
+  msg2 "Injecting WidevineCdm..."
   cp -r "$srcdir/chrome_extract/opt/google/chrome/WidevineCdm" "$pkgdir/usr/lib/chromium/"
+  chmod 755 "$pkgdir/usr/lib/chromium/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so"
 }
 
 check() {
@@ -105,22 +105,22 @@ check() {
   local widevine_so="$widevine_dir/_platform_specific/linux_x64/libwidevinecdm.so"
   local manifest="$widevine_dir/manifest.json"
 
-  echo "Checking Widevine files exist..."
+  msg2 "Checking Widevine files exist..."
   if [[ ! -f "$widevine_so" ]]; then
-    echo "ERROR: libwidevinecdm.so not found!"
+    error "libwidevinecdm.so couldn't be found. Chrome extract may not have the Widevine library inside it"
     return 1
   fi
   if [[ ! -f "$manifest" ]]; then
-    echo "ERROR: manifest.json not found!"
+    error "manifest.json not found. Chrome extract may not have the manifest file inside it"
     return 1
   fi
 
-  echo "Checking system dependencies for libwidevinecdm.so..."
+  msg2 "Checking system dependencies for libwidevinecdm.so..."
   if ldd "$widevine_so" 2>/dev/null | grep -q "not found"; then
-    echo "ERROR: Missing dependencies for Widevine!"
+    error "Missing system dependencies for libwidevinecdm.so"
     ldd "$widevine_so" 2>/dev/null | grep "not found"
     return 1
   fi
 
-  echo "Widevine sanity checks passed."
+  msg2 "Widevine sanity checks passed."
 }
