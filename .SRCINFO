@@ -1,7 +1,7 @@
 pkgbase = textparser
 	pkgdesc = Flexible and eazy to integrate text parser library written in C.
 	pkgver = 1.0.13
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/bokic/textparser
 	arch = x86_64
 	arch = i686
