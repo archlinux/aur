@@ -2,7 +2,7 @@
 
 pkgname=python-airportsdata
 _pkgname=airportsdata
-pkgver=20260315
+pkgver=20260905
 pkgrel=1
 pkgdesc="Extensive database of location and timezone data for nearly every airport and landing strip in the world"
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=(
   python-wheel
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('eb67de3b8167bfe810020095188ebba043ed16e934cc52ba3930e2cbd1c2dcb6')
+sha256sums=('a7e17469458ca356a5ca9971f49864b934a559d43e1587e19219cb981d364c45')
 
 build() {
   cd "${_pkgname}-${pkgver}"
