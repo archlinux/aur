@@ -1,6 +1,6 @@
 pkgbase = rasdaemon-git
 	pkgdesc = A RAS (Reliability, Availability and Serviceability) logging tool using the EDAC tracing events
-	pkgver = 0.8.4.r34.ga4620eb
+	pkgver = 0.9.92.r14.g78f462c
 	pkgrel = 1
 	url = https://github.com/mchehab/rasdaemon
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = rasdaemon-git
 	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = git
+	makedepends = meson
 	depends = pciutils
 	depends = perl-dbd-sqlite
 	depends = hwdata
@@ -15,7 +16,7 @@ pkgbase = rasdaemon-git
 	depends = libtraceevent
 	provides = rasdaemon
 	conflicts = rasdaemon
-	backup = etc/conf.d/rasdaemon
+	backup = etc/sysconfig/rasdaemon
 	source = git+https://github.com/mchehab/rasdaemon.git
 	sha256sums = SKIP
 

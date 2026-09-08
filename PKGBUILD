@@ -2,17 +2,17 @@
 
 _pkgname=rasdaemon
 pkgname="${_pkgname}"-git
-pkgver=0.8.4.r34.ga4620eb
+pkgver=0.9.92.r14.g78f462c
 pkgrel=1
 pkgdesc="A RAS (Reliability, Availability and Serviceability) logging tool using the EDAC tracing events"
 arch=('x86_64' 'i686' 'aarch64')
 url=https://github.com/mchehab/rasdaemon
 license=('GPL-2.0-only')
 depends=('pciutils' 'perl-dbd-sqlite' 'hwdata' 'dmidecode' 'libtraceevent')
-makedepends=('git')
+makedepends=('git' 'meson')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-backup=('etc/conf.d/rasdaemon')
+backup=('etc/sysconfig/rasdaemon')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -21,20 +21,11 @@ pkgver() {
   git describe --long --tags | sed 's|^v||;s|-|.r|;s|-|.|'
 }
 
-prepare() {
-  cd $_pkgname
-  autoreconf -vfi
-}
-
 build() {
-  cd $_pkgname
-  ./configure --prefix=/usr --sbindir=/usr/bin --with-sysconfdefdir=/etc/conf.d --localstatedir=/var \
-              --enable-all
-  make
+  arch-meson ${_pkgname} build
+  meson compile -C build
 }
 
 package() {
-  cd $_pkgname
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 misc/{rasdaemon,ras-mc-ctl}.service -t "${pkgdir}"/usr/lib/systemd/system
+  meson install -C build --no-rebuild --destdir "${pkgdir}"
 }
