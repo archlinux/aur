@@ -1,6 +1,6 @@
 pkgbase = sharpemu-bin
 	pkgdesc = Experimental PlayStation 5 emulator (prebuilt)
-	pkgver = 0.0.3_release.3_patch.1
+	pkgver = 0.0.3_release.4
 	pkgrel = 1
 	url = https://github.com/sharpemu/sharpemu
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = sharpemu-bin
 	depends = wayland
 	provides = sharpemu
 	conflicts = sharpemu
-	noextract = sharpemu-0.0.3-release.3-patch.1-linux-x64.tar.gz
+	noextract = sharpemu-0.0.3-release.4-linux-x64.tar.gz
 	options = !strip
-	source_x86_64 = https://github.com/sharpemu/sharpemu/releases/download/v0.0.3-release.3-patch.1/sharpemu-0.0.3-release.3-patch.1-linux-x64.tar.gz
-	sha256sums_x86_64 = 1aca040ec70ecc4a85f43935bc69d2d042eff2a4752b48730088539bb79d1a85
+	source_x86_64 = https://github.com/sharpemu/sharpemu/releases/download/v0.0.3-release.4/sharpemu-0.0.3-release.4-linux-x64.tar.gz
+	sha256sums_x86_64 = 8fbbfb1fb2a0e7fca5df683bfb8e6149c0e4b2c3e2272c5324e2dee3f0f5e26d
 
 pkgname = sharpemu-bin
