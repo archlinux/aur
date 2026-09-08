@@ -8,7 +8,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=7.0.9.r1.g8e18cb7
+pkgver=7.2.7.r4.g365a9fc
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -16,6 +16,7 @@ license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
+  abseil-cpp
   ada
   ffmpeg
   hunspell
@@ -31,12 +32,12 @@ depends=(
   openal
   openh264
   opus
-  protobuf
   qt6-base
   qt6-imageformats
   qt6-svg
   qt6-wayland
   rnnoise
+  tlottie
   xxhash
 
   ## for libtg_owt
@@ -206,8 +207,10 @@ package() {
       'libavfilter.so'
       'libavformat.so'
       'libavutil.so'
+      'libcairo.so'
       'libcrypto.so'
       'libfido2.so'
+      'libfontconfig.so'
       'libgio-2.0.so'
       'libglib-2.0.so'
       'libgobject-2.0.so'
@@ -219,8 +222,10 @@ package() {
       'libopenal.so'
       'libopenh264.so'
       'libopus.so'
+      'libpango-1.0.so'
+      'libpangocairo-1.0.so'
+      'libpangoft2-1.0.so'
       'libpipewire-0.3.so'
-      'libprotobuf-lite.so'
       'libsrtp2.so'
       'libssl.so'
       'libswresample.so'
