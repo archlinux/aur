@@ -3,13 +3,13 @@
 
 pkgname=svt-jpeg-xs-llvm-git
 pkgver=0.9.0.r50.gc36f29a
-pkgrel=2
-pkgdesc='An implementation of the JPEG XS (ISO/IEC 21122) codec (git version) — built with Clang and LLVM lld'
+pkgrel=3
+pkgdesc='An implementation of the JPEG XS (ISO/IEC 21122) codec (git version) — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/OpenVisualCloud/SVT-JPEG-XS/'
 license=('BSD-2-Clause-Patent')
 depends=('glibc')
-makedepends=('clang' 'cmake' 'git' 'lld' 'llvm' 'yasm')
+makedepends=('clang' 'cmake' 'git' 'mold' 'llvm' 'yasm')
 provides=('svt-jpeg-xs-git' 'svt-jpeg-xs')
 conflicts=('svt-jpeg-xs-git' 'svt-jpeg-xs')
 source=('git+https://github.com/OpenVisualCloud/SVT-JPEG-XS.git'
@@ -30,7 +30,7 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
@@ -38,7 +38,7 @@ build() {
     export STRIP=/usr/bin/llvm-strip
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     export CXXFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     
@@ -52,8 +52,8 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
-        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=lld' \
-        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=lld' \
+        -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=mold' \
+        -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=mold' \
         -DNATIVE:BOOL='OFF' \
         -Wno-dev
     cmake --build build
