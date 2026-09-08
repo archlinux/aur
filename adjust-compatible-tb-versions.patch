@@ -1,0 +1,11 @@
+--- a/manifest.json	2026-09-08 18:06:09.529937082 +0200
++++ b/manifest.json	2026-09-09 00:06:41.902838105 +0200
+@@ -8,7 +8,7 @@
+ 		"gecko": {
+ 			"id": "cardbook@vigneau.philippe",
+ 			"strict_min_version": "128.0",
+-			"strict_max_version": "154.*"
++			"strict_max_version": "155.*"
+ 		}
+ 	},
+ 	"icons": {

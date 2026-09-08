@@ -1,0 +1,10 @@
+--- a/chrome/content/BG/utils/cardbookBGPreferences.mjs	2026-09-08 18:06:09.512597631 +0200
++++ b/chrome/content/BG/utils/cardbookBGPreferences.mjs	2026-09-09 00:12:38.419558665 +0200
+@@ -10,6 +10,7 @@
+ 	prefCardBookEmailsCollection: "emailsCollection.",
+ 	prefCardBookCustomTypes: "customTypes.",
+ 	changedPrefs: {
++		"QFBNodeDelay": 1400,
+ 	},
+ 	defaultPrefs: {
+ 		"thunderbird.addColumns": false,
