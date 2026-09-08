@@ -10,7 +10,7 @@
 pkgname=openhamclock-git
 _pkgname=openhamclock
 pkgver=26.7.2.r0.ge1f5cef5
-pkgrel=3
+pkgrel=4
 pkgdesc="Amateur Radio Dashboard - A modern web-based HamClock alternative (VCS / git version)"
 arch=('any')
 url="https://github.com/accius/openhamclock"
@@ -88,12 +88,16 @@ package() {
     # Install desktop entry
     install -Dm644 "${srcdir}/openhamclock.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    # Install application icons
+    # Install official application icons in hicolor theme and pixmaps
     if [ -f "public/icons/icon-512.png" ]; then
         install -Dm644 "public/icons/icon-512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+        install -Dm644 "public/icons/icon-512.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
     fi
     if [ -f "public/icons/icon-192.png" ]; then
         install -Dm644 "public/icons/icon-192.png" "${pkgdir}/usr/share/icons/hicolor/192x192/apps/${_pkgname}.png"
+    fi
+    if [ -f "public/favicon-32x32.png" ]; then
+        install -Dm644 "public/favicon-32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
     fi
     if [ -f "public/favicon.ico" ]; then
         install -Dm644 "public/favicon.ico" "${pkgdir}/usr/share/pixmaps/${_pkgname}.ico"
