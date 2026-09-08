@@ -16,19 +16,17 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 sha256sums=('59cbe6d03a7e7783e4922ea03fbbbe812701c50eb5f49f6a3c42d9480ebdd2ba'
             'c1f3851a79baf1eab7d5d40ee9aaffa53fef4a2938e5a293c542f73134e645da')
 
-_ghrepo="asciimoo/hister"
-
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     export GOPATH="$srcdir"
     export GOFLAGS="-modcacherw"
+
     go mod download -x
     go generate
 }
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-
     export CGO_ENABLED=1
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -36,6 +34,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOPATH="$srcdir"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
     go build -o hister -tags netgo,osusergo \
         -ldflags "-s -w -X main.version=$pkgver" .
 
