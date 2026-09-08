@@ -1,15 +1,15 @@
 pkgbase = oracle-instantclient-sdk
 	pkgdesc = Additional header files for developing Oracle applications with Instant Client
-	pkgver = 23.26.2.0.0
+	pkgver = 23.26.3.0.0
 	pkgrel = 1
 	url = https://www.oracle.com/at/database/technologies/instant-client/downloads.html
 	arch = x86_64
 	license = custom:OTN
-	depends = oracle-instantclient-basic=23.26.2.0.0
+	depends = oracle-instantclient-basic=23.26.3.0.0
 	replaces = instantclient-sdk
 	options = !strip
-	source = https://download.oracle.com/otn_software/linux/instantclient/2326200v2/instantclient-sdk-linux.x64-23.26.2.0.0.zip
-	md5sums = 1d898351f02ac26278887bd3808fe66c
-	sha256sums = 71c2c9ad3c5789804bb3d034d17ac82f284a807b87d312752c6e63d68974dc21
+	source = https://download.oracle.com/otn_software/linux/instantclient/2326300/instantclient-sdk-linux.x64-23.26.3.0.0.zip
+	md5sums = 8673eabe76f32d3034089abf5831b5cb
+	sha256sums = 7ac13587ba8a734ae7cc06cf42753bbfdbe69839daf87bd5935a49c83decccfd
 
 pkgname = oracle-instantclient-sdk
