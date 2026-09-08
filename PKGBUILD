@@ -1,25 +1,25 @@
 # Maintainer: Henri Koski <henri.koski@bitbrewers.fi>
 pkgname=hcibridge
-pkgver=0.10.23
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Attach remote ESP32 Bluetooth bridges to the local Bluetooth stack"
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/heppu/esp-hci-bridge"
+url="https://github.com/heppu/hcibridge"
 license=('MIT')
 depends=('bluez')
 makedepends=('zig')
 backup=('etc/hcibridge/config' 'etc/hcibridge/config.d/50-example.conf' 'etc/default/hcibridge')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/heppu/esp-hci-bridge/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d9e4806c3cc22f37a5c59bb0e90ab06898b639634dd860e8543df038f832fccf')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/heppu/hcibridge/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('240df0c053a8db080ac8ba34c8c8f4ef088840333d969059ed59bb22b505c1db')
 
 build() {
-    cd "esp-hci-bridge-$pkgver"
+    cd "hcibridge-$pkgver"
     zig build -Doptimize=ReleaseSafe "-Dversion=v$pkgver"
     zig build gen "-Dversion=v$pkgver"
 }
 
 package() {
-    cd "esp-hci-bridge-$pkgver"
+    cd "hcibridge-$pkgver"
     install -Dm755 zig-out/bin/hcibridge "$pkgdir/usr/bin/hcibridge"
     install -Dm644 zig-out/gen/hcibridge.1 "$pkgdir/usr/share/man/man1/hcibridge.1"
     install -Dm644 zig-out/gen/hcibridge.bash "$pkgdir/usr/share/bash-completion/completions/hcibridge"

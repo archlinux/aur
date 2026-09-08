@@ -1,8 +1,8 @@
 pkgbase = hcibridge
 	pkgdesc = Attach remote ESP32 Bluetooth bridges to the local Bluetooth stack
-	pkgver = 0.10.23
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/heppu/esp-hci-bridge
+	url = https://github.com/heppu/hcibridge
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
@@ -12,7 +12,7 @@ pkgbase = hcibridge
 	backup = etc/hcibridge/config
 	backup = etc/hcibridge/config.d/50-example.conf
 	backup = etc/default/hcibridge
-	source = hcibridge-0.10.23.tar.gz::https://github.com/heppu/esp-hci-bridge/archive/refs/tags/v0.10.23.tar.gz
-	sha256sums = d9e4806c3cc22f37a5c59bb0e90ab06898b639634dd860e8543df038f832fccf
+	source = hcibridge-1.0.0.tar.gz::https://github.com/heppu/hcibridge/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 240df0c053a8db080ac8ba34c8c8f4ef088840333d969059ed59bb22b505c1db
 
 pkgname = hcibridge
