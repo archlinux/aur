@@ -24,5 +24,5 @@ prepare() {
 package() {
   install -Dm755 "orcanote-linux-x86_64-${pkgver}.AppImage" "${pkgdir}/${_installdir}/orcanote.AppImage"
   install -Dm644 "squashfs-root/usr/share/icons/hicolor/512x512/apps/orca.png" "${pkgdir}/usr/share/icons/hicolor/apps/orcanote.png"
-  install -Dm644 "squashfs-root/orca.desktop" "${pkgdir}/usr/share/applications/orcanote.desktop"
+  install -Dm644 "squashfs-root/orca.desktop" "${pkgdir}/usr/share/applications/orca-note.desktop"
 }
