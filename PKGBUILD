@@ -2,7 +2,7 @@
 
 pkgname=rotki
 pkgver=1.44.0 # renovate: datasource=github-releases depName=rotki/rotki
-pkgrel=1
+pkgrel=2
 pkgdesc='A portfolio tracking, analytics, accounting and management application that protects your privacy'
 arch=('x86_64' 'aarch64')
 url='https://github.com/rotki/rotki'
@@ -49,7 +49,7 @@ prepare() {
 
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" \
-		--manifest-path ./colibri/Cargo.toml
+		--manifest-path ./Cargo.toml
 
 	uv sync --group packaging
 
@@ -67,16 +67,19 @@ build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	_ensure_local_nvm
 
-	# Build colibri rust binary
+	# Build colibri and starling rust binaries
 	export RUSTUP_TOOLCHAIN=stable
 	cargo build \
 		--frozen \
-		--target-dir build/colibri \
-		--manifest-path ./colibri/Cargo.toml \
-		--release
+		--target-dir build/rust \
+		--manifest-path ./Cargo.toml \
+		--release \
+		-p colibri \
+		-p starling
 
-	mkdir -p build/colibri/bin/
-	mv build/colibri/release/colibri build/colibri/bin/
+	mkdir -p build/colibri/bin build/starling/bin
+	mv build/rust/release/colibri build/colibri/bin/
+	mv build/rust/release/starling build/starling/bin/
 
 	# Create the Python backend onefile with PyInstaller from rotkehlchen.spec
 	export PYTHONOPTIMIZE=2
@@ -101,7 +104,7 @@ package() {
 	# App resources
 	install -d "$pkgdir/usr/lib/$pkgname"
 	install -Dm644 "$_resources/app.asar" "$pkgdir/usr/lib/$pkgname/app.asar"
-	cp -a "$_resources/backend" "$_resources/colibri" "$pkgdir/usr/lib/$pkgname/"
+	cp -a "$_resources/backend" "$_resources/colibri" "$_resources/starling" "$pkgdir/usr/lib/$pkgname/"
 
 	# Override process.resourcesPath for system electron
 	install -Dm644 "$srcdir/resources-path.cjs" "$pkgdir/usr/lib/$pkgname/resources-path.cjs"

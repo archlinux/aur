@@ -1,7 +1,7 @@
 pkgbase = rotki
 	pkgdesc = A portfolio tracking, analytics, accounting and management application that protects your privacy
 	pkgver = 1.44.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rotki/rotki
 	arch = x86_64
 	arch = aarch64
