@@ -1,0 +1,3 @@
+#!/bin/sh
+export MOEKA_FORCE_X11=1
+exec /usr/bin/moeka "$@"
