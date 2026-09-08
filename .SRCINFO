@@ -1,0 +1,26 @@
+pkgbase = lib32-libpcap-git
+	pkgdesc = A system-independent interface for user-level packet capture (32-bit)
+	pkgver = 1.10.7.r2149.g84f140f
+	pkgrel = 1
+	url = http://www.tcpdump.org/
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = bluez-libs
+	makedepends = git
+	makedepends = lib32-dbus
+	depends = lib32-glibc
+	depends = lib32-libnl
+	depends = libpcap
+	provides = lib32-libpcap
+	provides = libpcap.so
+	conflicts = lib32-libpcap
+	options = !staticlibs
+	source = libpcap::git+https://github.com/the-tcpdump-group/libpcap.git
+	sha512sums = SKIP
+
+pkgname = lib32-libpcap-git
+	depends = lib32-glibc
+	depends = lib32-libnl
+	depends = libpcap
+	depends = lib32-dbus
+	depends = libdbus-1.so
