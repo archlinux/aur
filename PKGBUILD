@@ -1,4 +1,5 @@
-# Maintainer: zeGolem <zegolem1383@outlook.fr>
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
+# Contributor: zeGolem <zegolem1383@outlook.fr>
 # Contributor: Ben Westover <kwestover.kw@gmail.com>
 pkgname=python-py-cord
 pkgver=2.8.1
