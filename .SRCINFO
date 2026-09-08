@@ -25,6 +25,7 @@ pkgbase = rox-player
 	optdepends = nvidia-utils: Vulkan support for Nvidia graphics
 	provides = rox
 	conflicts = rox-player-git
+	options = !lto
 	source = rox-player-1.24.0.tar.gz::https://github.com/zealsprince/rox/archive/refs/tags/v1.24.0.tar.gz
 	sha256sums = 0c9b09502c994cc9ddc4bffe4c1af44b67769119fe606340910e2a7a47e79e39
 

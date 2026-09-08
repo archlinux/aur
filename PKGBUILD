@@ -25,6 +25,10 @@ optdepends=(
 )
 provides=('rox')
 conflicts=('rox-player-git')
+# makepkg's default -flto=auto turns the libprojectM archive into GCC LTO
+# objects, and rustc links with lld, which can't read them: every projectm_*
+# symbol comes back undefined at the final link.
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0c9b09502c994cc9ddc4bffe4c1af44b67769119fe606340910e2a7a47e79e39')
 
