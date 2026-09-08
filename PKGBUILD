@@ -6,6 +6,7 @@ pkgdesc='Read ebook (EPUB) or PDF aloud to you with natural-sounding voices.'
 arch=('x86_64')
 url='https://maryanne.app'
 license=('custom')
+keywords=('ebook.audiobook' 'book' 'epub' 'pdf' 'tts' 'ai' 'read' 'productivity' 'self-improvement' 'growth' 'text to speech' 'listen')
 options=('!strip')
 depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'libsecret')
 release_repo='finnvyrn/maryanne-releases'
