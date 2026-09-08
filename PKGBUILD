@@ -1,26 +1,29 @@
 # Maintainer: WooParadog <guohaochuan@gmail.com>
 pkgname=moeka-bin
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Local-first Markdown editor (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
 url='https://moeka.app'
 license=('GPL-3.0-or-later')
 depends=(
+  # Font discovery reads the system fontconfig configuration.
   'fontconfig'
+  # These libraries are linked directly, including when using Wayland.
   'glibc'
   'libxcb'
   'libxkbcommon'
   'libxkbcommon-x11'
+  # Both display backends use Vulkan for rendering.
   'vulkan-icd-loader'
   'vulkan-driver'
-  'wayland'
 )
 optdepends=(
   'noto-fonts-cjk: Chinese, Japanese and Korean text support'
+  'wayland: native Wayland display support'
   'wl-clipboard: clipboard integration on Wayland'
   'xclip: clipboard integration on X11'
-  'xdg-desktop-portal: desktop integration and file dialogs (install a backend for your desktop)'
+  'xdg-desktop-portal: file dialogs (requires a backend for your desktop)'
   'xdg-utils: open links in the default browser'
 )
 provides=("moeka=${pkgver}")

@@ -1,7 +1,7 @@
 pkgbase = moeka-bin
 	pkgdesc = Local-first Markdown editor (prebuilt binaries)
 	pkgver = 0.1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moeka.app
 	arch = x86_64
 	arch = aarch64
@@ -13,11 +13,11 @@ pkgbase = moeka-bin
 	depends = libxkbcommon-x11
 	depends = vulkan-icd-loader
 	depends = vulkan-driver
-	depends = wayland
 	optdepends = noto-fonts-cjk: Chinese, Japanese and Korean text support
+	optdepends = wayland: native Wayland display support
 	optdepends = wl-clipboard: clipboard integration on Wayland
 	optdepends = xclip: clipboard integration on X11
-	optdepends = xdg-desktop-portal: desktop integration and file dialogs (install a backend for your desktop)
+	optdepends = xdg-desktop-portal: file dialogs (requires a backend for your desktop)
 	optdepends = xdg-utils: open links in the default browser
 	provides = moeka=0.1.13
 	conflicts = moeka
