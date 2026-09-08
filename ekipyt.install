@@ -1,12 +1,5 @@
 post_install() {
-    # yt ikili dosyasına SUID bitini ver (Root yetkisiyle çalışması için)
-    chmod 4755 /usr/bin/yt
-    
-    # Config dosyasını sadece root tarafından yazılabilir/okunabilir yap
-    chmod 600 /etc/yt.cfg
-    chown root:root /etc/yt.cfg
-
-    echo [yt] SUID biti ayarlandı"
+    bash yt-setup.sh
 }
 
 post_upgrade() {
