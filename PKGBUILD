@@ -3,13 +3,13 @@
 _pkgname=xavs
 pkgname=${_pkgname}-llvm
 pkgver=0.1.55
-pkgrel=1
-pkgdesc="XAVS is to implement high quality encoder and decoder of the Audio Video Standard of China (AVS) — built with Clang and LLVM lld."
+pkgrel=2
+pkgdesc="XAVS is to implement high quality encoder and decoder of the Audio Video Standard of China (AVS) — built with Clang and mold."
 arch=(i686 x86_64 arm)
 url="http://xavs.sourceforge.net/"
 license=(GPL)
 depends=()
-makedepends=(yasm clang lld llvm)
+makedepends=(yasm clang mold llvm)
 provides=('xavs')
 conflicts=('xavs')
 #options=(!strip)
@@ -45,13 +45,13 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
     export READELF=/usr/bin/llvm-readelf
     export STRIP=/usr/bin/llvm-strip
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     ./configure --enable-shared --disable-asm --prefix=/usr
