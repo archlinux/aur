@@ -1,12 +1,13 @@
 pkgbase = lib32-audit-git
 	pkgdesc = Userspace components of the audit framework
 	pkgver = 4.2.1.r13.g669bc32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-audit/audit-userspace
 	arch = x86_64
 	license = GPL-2.0-or-later
 	license = LGPL-2.0-or-later
 	makedepends = git
+	makedepends = lib32-gcc-libs
 	depends = audit
 	depends = lib32-glibc
 	provides = libaudit.so
