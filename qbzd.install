@@ -1,0 +1,11 @@
+post_install() {
+    printf '%s\n' \
+        'qbzd ships a systemd user unit but supports systemd, OpenRC, and runit.' \
+        'For the init running on this host, generate a definition as the target user:' \
+        '  qbzd service --user YOUR_USER --bin /usr/bin/qbzd' \
+        'The command detects the active init and prints exact install/enable instructions.'
+}
+
+post_upgrade() {
+    post_install
+}
