@@ -5,7 +5,7 @@ pkgname=python-miflash-git
 _name=${pkgname%-git}
 _name=${_name#python-}
 pkgver=1.0.0.r2.g73926c8
-pkgrel=1
+pkgrel=2
 pkgdesc="Flash Xiaomi fastboot ROMs on Termux, Linux, macOS, or Windows"
 arch=(any)
 url="https://github.com/MiForge/MiFlash"
@@ -18,6 +18,8 @@ _pydeps=(
     rich
 )
 depends=(
+    android-tools
+    android-udev
     python
     "${_pydeps[@]/#/python-}"
 )
@@ -57,5 +59,6 @@ build() {
 package() {
     cd "${srcdir}/${_name}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -vDm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -vDm644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

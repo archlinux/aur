@@ -1,7 +1,7 @@
 pkgbase = python-miflash-git
 	pkgdesc = Flash Xiaomi fastboot ROMs on Termux, Linux, macOS, or Windows
 	pkgver = 1.0.0.r2.g73926c8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MiForge/MiFlash
 	arch = any
 	license = MIT
@@ -10,6 +10,8 @@ pkgbase = python-miflash-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	depends = android-tools
+	depends = android-udev
 	depends = python
 	depends = python-rich
 	optdepends = miassistanttool: Cross-platform CLI for Xiaomi Mi Assistant mode: flash, wipe, reboot
