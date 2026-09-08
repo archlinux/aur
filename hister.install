@@ -1,12 +1,20 @@
 post_install() {
-    echo ":: To start hister, enable the user service:"
-    echo "   systemctl --user enable --now hister"
-    echo ""
-    echo ":: Generate a default config file:"
-    echo "   hister create-config ~/.config/hister/config.yml"
+	cat <<EOM
+:: To start hister, enable the system or user service:
+   systemctl enable --now hister # or...
+   systemctl --user enable --now hister
+
+:: Generate a default config file:
+   hister create-config ~/.config/hister/config.yml
+EOM
 }
 
 post_upgrade() {
-    echo ":: Restart the hister service if running:"
-    echo "   systemctl --user restart hister"
+	# Restart the system service if it is already running, to reload the binary.
+	/usr/bin/systemctl try-restart hister
+
+	cat <<EOM
+:: Restart the hister user service if running:
+   systemctl --user restart hister
+EOM
 }
