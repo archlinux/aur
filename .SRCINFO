@@ -1,6 +1,6 @@
 pkgbase = keeperfx-tux
 	pkgver = 1.4.0.5652
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ForkedInTime/keeperfx-linux-alpha
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -32,7 +32,7 @@ pkgbase = keeperfx-tux
 	options = !lto
 	source = keeperfx-tux::git+https://github.com/ForkedInTime/keeperfx-linux-alpha.git#tag=v1.4.0.5652
 	source = keeperfx-tux-1.4.0.5652-full.7z::https://github.com/ForkedInTime/keeperfx-linux-alpha/releases/download/v1.4.0.5652/keeperfx-linux-alpha-x86_64-full.7z
-	source = keeperfx-tux-launcher::git+https://github.com/ForkedInTime/keeperfx-launcher-qt-linux.git#commit=b27ddd5d267484351d6cd4d9ca45a9113f1d586c
+	source = keeperfx-tux-launcher::git+https://github.com/ForkedInTime/keeperfx-launcher-qt-linux.git#commit=10fb12a66c5f096938600937bd2dfe59182138a5
 	source = keeperfx-tux.sh
 	source = keeperfx-tux.desktop
 	source = keeperfx-tux-launcher.sh
@@ -80,8 +80,8 @@ pkgname = keeperfx-tux
 	depends = gcc-libs
 	depends = bash
 	depends = hicolor-icon-theme
-	depends = keeperfx-tux-data=1.4.0.5652-1
-	depends = keeperfx-tux-launcher=1.4.0.5652-1
+	depends = keeperfx-tux-data=1.4.0.5652-2
+	depends = keeperfx-tux-launcher=1.4.0.5652-2
 	provides = keeperfx-tux=1.4.0.5652
 	conflicts = keeperfx-linux-alpha
 	conflicts = keeperfx-linux-alpha-git

@@ -11,7 +11,7 @@
 # is published. pkgver is the tag without the leading "v" and the "-alpha" suffix.
 _tag=v1.4.0.5652
 # The launcher is a separate repository with no tags, so it is pinned by commit.
-_launcher_commit=b27ddd5d267484351d6cd4d9ca45a9113f1d586c
+_launcher_commit=10fb12a66c5f096938600937bd2dfe59182138a5
 pkgbase=keeperfx-tux
 pkgname=('keeperfx-tux' 'keeperfx-tux-data' 'keeperfx-tux-launcher')
 pkgver=1.4.0.5652
@@ -27,7 +27,11 @@ pkgver=1.4.0.5652
 # the breaking upgrade does not run for it. It has to already be installed.
 # Hence this: same engine tag, same pkgver, packaging only. Nothing here changes
 # the game; it puts the safety net in place before the fall.
-pkgrel=1
+# rel 2: pin the launcher to the commit the 1.4.0.5652 AppImage was built from.
+# rel 1 kept the previous stable's launcher pin, so it paired a month-newer
+# engine with a launcher lacking the RAR installer, the updater's engine stash
+# and the channel fixes.
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/ForkedInTime/keeperfx-linux-alpha"
 license=('GPL-2.0-or-later')
