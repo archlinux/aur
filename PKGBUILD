@@ -1,7 +1,7 @@
 # Maintainer: Lucas Balmès <lucagoc@pm.me>
 pkgname=python-pypixelcolor
 _name=pypixelcolor
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A Python library and CLI to control iPixel Color devices"
 arch=('any')
@@ -12,9 +12,10 @@ depends=(
     'python-bleak'
     'python-crccheck'
     'python-pillow'
-    'python-websockets'
 )
 optdepends=(
+    'python-rich: enhanced CLI output'
+    'python-websockets: WebSocket server bridge'
     'python-pillow-heif: HEIF/HEIC image format support'
 )
 makedepends=(
@@ -28,7 +29,7 @@ checkdepends=(
 )
 provides=('pypixelcolor')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('344becefe853067ab291efa5607ea572c21363636cb1f3824f326a4eb2566cc8')
+sha256sums=('7a4613898674d5aca9ea425b904b4b3561f6595539a29b3a6a4e6f19638c229e')
 
 build() {
     cd "$_name-$pkgver"

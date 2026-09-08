@@ -1,6 +1,6 @@
 pkgbase = python-pypixelcolor
 	pkgdesc = A Python library and CLI to control iPixel Color devices
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/lucagoc/pypixelcolor
 	arch = any
@@ -14,10 +14,11 @@ pkgbase = python-pypixelcolor
 	depends = python-bleak
 	depends = python-crccheck
 	depends = python-pillow
-	depends = python-websockets
+	optdepends = python-rich: enhanced CLI output
+	optdepends = python-websockets: WebSocket server bridge
 	optdepends = python-pillow-heif: HEIF/HEIC image format support
 	provides = pypixelcolor
-	source = https://github.com/lucagoc/pypixelcolor/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 344becefe853067ab291efa5607ea572c21363636cb1f3824f326a4eb2566cc8
+	source = https://github.com/lucagoc/pypixelcolor/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 7a4613898674d5aca9ea425b904b4b3561f6595539a29b3a6a4e6f19638c229e
 
 pkgname = python-pypixelcolor
