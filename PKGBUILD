@@ -1,7 +1,7 @@
 # Maintainer: Jon Schlipf <jschlipf@gmx.com>
 pkgname=python-kfactory
 _origpkgname=kfactory
-pkgver=2.2.0
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="KLayout API implementation of gdsfactory"
 arch=("x86_64")
@@ -27,8 +27,8 @@ makedepends=(
 	"python-hatchling"
 )
 checkdepends=(python-pytest)
-source=("https://files.pythonhosted.org/packages/0c/f5/c537a38158e3accaf43552cf1fc1a14f88174fc6013a7bbc8dc3685c3c99/kfactory-2.2.0.tar.gz")
-sha256sums=("8cf283ee9e25e46fa1b04e72072d06a219934cc2b3f0c3e381f32e800d0134dc")
+source=("https://files.pythonhosted.org/packages/6f/eb/d1407de9be7152e16d604ee98d468f08612374bd35ea524064f2caeb051c/kfactory-3.0.4.tar.gz")
+sha256sums=('40aab620d93cd389c74e76a96980aa4914249422ad1817b20b747abed65f566b')
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
