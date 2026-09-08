@@ -1,11 +1,11 @@
 # Maintainer: StuckUpCreations <onelove.nyahbingi@gmail.com>
 pkgname=gfie-bin
 pkgver=3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Greenfish Icon Editor Pro (GFIE Pro) is a powerful open source image editor, especially suitable for creating icons, cursors, animations and icon libraries."
 arch=("x86_64")
 url="http://greenfishsoftware.org/gfie.php"
-license=('GPL v3')
+license=('custom')
 depends=()
 makedepends=()
 optdepends=()
@@ -18,7 +18,7 @@ install=
 changelog=
 source=("http://greenfishsoftware.org/dl/gfie/gfie3.6_linux.zip")
 noextract=()
-md5sums=('SKIP')
+md5sums=('a667349fcc2b179e5c0b59acaa5f6c74')
 validpgpkeys=()
 
 package() {
@@ -34,9 +34,9 @@ package() {
 	touch ${pkgdir}/usr/share/applications/gfie.desktop
 	echo "[Desktop Entry]" >>${pkgdir}/usr/share/applications/gfie.desktop
 	echo "Type=Application" >>${pkgdir}/usr/share/applications/gfie.desktop
-	echo "Version=3.6" >>${pkgdir}/usr/share/applications/gfie.desktop
+	echo "Version=1.0" >>${pkgdir}/usr/share/applications/gfie.desktop
 	echo "Name=GreenFish Icon Editor Pro" >>${pkgdir}/usr/share/applications/gfie.desktop
-	echo "Greenfish Icon Editor Pro (GFIE Pro) is a powerful open source image editor, especially suitable for creating icons, cursors, animations and icon libraries." >>${pkgdir}/usr/share/applications/gfie.desktop
+	echo "Comment=Greenfish Icon Editor Pro (GFIE Pro) is a powerful open source image editor, especially suitable for creating icons, cursors, animations and icon libraries." >>${pkgdir}/usr/share/applications/gfie.desktop
 	echo "Path=/opt/" >>${pkgdir}/usr/share/applications/gfie.desktop
 	echo "Exec=/opt/gfie/gfie.sh" >>${pkgdir}/usr/share/applications/gfie.desktop
 	echo "Icon=/usr/share/icons/gfie_icon.png" >>${pkgdir}/usr/share/applications/gfie.desktop
