@@ -1,14 +1,17 @@
 pkgname=synchrogit
-pkgver=26.7.7
+pkgver=26.9.0
 pkgrel=1
 pkgdesc='Daemon that keeps git repositories synced with their remotes'
 arch=('x86_64' 'aarch64')
 url='https://github.com/partanskiy/synchrogit'
 license=('MIT')
 depends=('git')
-makedepends=('cargo' 'lowdown')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/partanskiy/synchrogit/archive/refs/tags/v26.7.7.tar.gz")
-sha256sums=('0c45aec367cdeb02cafda8917919a3c76484d1bc2cf71d6fa9fa0b6f088bc3b4')
+makedepends=('cargo' 'lowdown' 'perl')
+# Rust enables its own LTO. GCC LTO objects from vendored C libraries cannot
+# be linked by Rust's lld, so disable makepkg's additional cross-language LTO.
+options=('!lto' '!debug')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/partanskiy/synchrogit/archive/refs/tags/v26.9.0.tar.gz")
+sha256sums=('5a227acf033baa2be9f4391aa81c5f1bfad7e9bdbf882216495927f2b191a2aa')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -22,6 +25,7 @@ package() {
   install -Dm755 target/release/synchrogit "$pkgdir/usr/bin/synchrogit"
   install -Dm644 synchrogit.1 "$pkgdir/usr/share/man/man1/synchrogit.1"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 THIRD_PARTY_LICENSES.html "$pkgdir/usr/share/doc/$pkgname/THIRD_PARTY_LICENSES.html"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 packaging/systemd/synchrogit.service "$pkgdir/usr/lib/systemd/user/synchrogit.service"
   install -Dm644 packaging/systemd/synchrogit@.service "$pkgdir/usr/lib/systemd/system/synchrogit@.service"
