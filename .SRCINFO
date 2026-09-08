@@ -1,0 +1,27 @@
+pkgbase = python-mitool-git
+	pkgdesc = Cross-platform CLI for Xiaomi
+	pkgver = 1.6.0.r2.gb503246
+	pkgrel = 1
+	url = https://github.com/MiForge/MiTool
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = miassistanttool
+	depends = miunlocktool
+	depends = python
+	depends = python-rich
+	depends = python-miflash
+	depends = python-miapply
+	depends = python-fcetool
+	provides = mitool
+	provides = python-mitool
+	conflicts = mitool
+	conflicts = python-mitool
+	source = mitool::git+https://github.com/MiForge/MiTool.git
+	sha256sums = SKIP
+
+pkgname = python-mitool-git
