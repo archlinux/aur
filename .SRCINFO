@@ -1,6 +1,6 @@
 pkgbase = dotpak-bin
 	pkgdesc = Package installation manager cli for your dotfiles
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/isaacvarg/dotpak
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = dotpak-bin
 	conflicts = dotpak-git
 	provides = dotpak
 	arch = aarch64
-	source_aarch64 = https://github.com/isaacvarg/dotpak/releases/download/v0.1.1/dotpak_0.1.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 45f21e1b1e50557db77d81d042bfeb5d7b7d97c7068d79521149eb1affff669c
+	source_aarch64 = https://github.com/isaacvarg/dotpak/releases/download/v0.1.2/dotpak_0.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = b9fd7fc80e3dc7cc2d91274d862a34eccad34e6e10e7e08da7e3bbd3c37886d6
 	arch = x86_64
-	source_x86_64 = https://github.com/isaacvarg/dotpak/releases/download/v0.1.1/dotpak_0.1.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = bff9014dc72edde3bcc7b5ff8270ba1a08ce5b110387b2885221d9ca54ac892a
+	source_x86_64 = https://github.com/isaacvarg/dotpak/releases/download/v0.1.2/dotpak_0.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 108760d31c8f3cc0c21fdc882aa85f1f0f30a5e7b62040abd4b606e1fd86dd5a
 	
 pkgname = dotpak-bin
