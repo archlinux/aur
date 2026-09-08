@@ -1,11 +1,11 @@
 [Unit]
-Description=llama.cpp Server
+Description=ik_llama.cpp server (/opt)
 After=syslog.target network.target local-fs.target remote-fs.target nss-lookup.target
 
 [Service]
 Type=simple
 EnvironmentFile=/etc/conf.d/llama.cpp
-ExecStart=/usr/bin/llama-server $LLAMA_ARGS
+ExecStart=/opt/ik-llama.cpp/bin/llama-server $LLAMA_ARGS
 ExecReload=/bin/kill -s HUP $MAINPID
 Restart=on-failure
 
