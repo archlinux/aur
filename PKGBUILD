@@ -2,7 +2,7 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=2.10.1
+pkgver=2.16.0
 pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
@@ -12,9 +12,10 @@ options=(!lto)
 depends=('gcc-libs' 'openssl' 'curl')
 makedepends=('asciidoctor'
              'cargo')
-optdepends=('less: for mdless')
+optdepends=('less: for mdless'
+            'fzf: for mdpick')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('e3cc1cdd24e793b7bc7a1322467f935a48662ffd8a2aa5a65bdc0c6df5c9b970')
+sha256sums=('98d782402aa9dba6984e856351bb46ddb93cee7784776b0c7adf62c2f6a3b89d')
 
 prepare() {
   cd "${pkgname}-${pkgname}-${pkgver}"
@@ -39,11 +40,14 @@ package() {
   # Link binary as mdless. When invoked as mdless mdcat will paginate
   # output by default.
   ln -sf mdcat "$pkgdir/usr/bin/mdless"
+  # Link binary as mdpick. When invoked as mdpick mdcat fuzzy-finds a markdown
+  # file with fzf, then renders it as mdless would.
+  ln -sf mdcat "$pkgdir/usr/bin/mdpick"
 
   mkdir -p "$pkgdir/usr/share/bash-completion/completions" \
     "$pkgdir/usr/share/zsh/site-functions/" \
     "$pkgdir/usr/share/fish/vendor_completions.d/"
-  for binary in mdcat mdless; do
+  for binary in mdcat mdless mdpick; do
     "$pkgdir/usr/bin/$binary" --completions bash > "$pkgdir/usr/share/bash-completion/completions/$binary"
     "$pkgdir/usr/bin/$binary" --completions zsh > "$pkgdir/usr/share/zsh/site-functions/_$binary"
     "$pkgdir/usr/bin/$binary" --completions fish > "$pkgdir/usr/share/fish/vendor_completions.d/$binary.fish"
@@ -52,4 +56,5 @@ package() {
   gzip -n mdcat.1
   install -Dm644 mdcat.1.gz "$pkgdir/usr/share/man/man1/mdcat.1.gz"
   ln -sf mdcat.1.gz "$pkgdir/usr/share/man/man1/mdless.1.gz"
+  ln -sf mdcat.1.gz "$pkgdir/usr/share/man/man1/mdpick.1.gz"
 }
