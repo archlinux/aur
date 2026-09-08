@@ -24,7 +24,7 @@ sha1sums=(
 )
 
 package() {
-    install -Dm644 "${srcdir}/license.html" "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -d "${pkgdir}/opt/android-sdk"
     install -d "${pkgdir}/usr/bin"
     cp -a "${srcdir}/platform-tools" "${pkgdir}/opt/android-sdk/platform-tools"
