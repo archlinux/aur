@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=gossamer
-pkgver=0.58.15
+pkgver=0.59.1
 pkgrel=1
 pkgdesc="Gossamer language toolchain"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ options=(!strip)
 source_x86_64=("$pkgname-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/gos-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/gos-$pkgver-linux-aarch64.tar.gz")
 
-sha256sums_x86_64=('00ffcf21fc1561cd6b22bf25bbd34808f6cff9e441fb019cb62328aeb1a44631')
-sha256sums_aarch64=('64a678b6593c73f801d524373a48e343d058834a8ee12286ae42cf89392f5e7f')
+sha256sums_x86_64=('afe83a13a8063bd856400b5b2485c2f976f403bc82da2a408aa341b30acd702d')
+sha256sums_aarch64=('90053bfd3529fdb62b7b04caf4f60ee7b0690b2b8d495c71e2ea9b6a9a3baa12')
 
 package() {
   cd "$srcdir/gos-$pkgver-linux-$CARCH"
