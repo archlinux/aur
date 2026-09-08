@@ -1,6 +1,6 @@
 pkgbase = aurveto-bin
 	pkgdesc = Security gate for AUR updates: delay, whitelist, static scan and AI review of the PKGBUILD diff (precompiled binaries)
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/Xhelliom/aurveto
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = aurveto-bin
 	depends = glibc
 	provides = aurveto
 	conflicts = aurveto
-	source = aurveto-bin-0.6.0.tar.gz::https://github.com/Xhelliom/aurveto/releases/download/v0.6.0/aurveto-x86_64-linux.tar.gz
-	sha256sums = b2e9217a0d936e137670a62a80236e74262583a0008db950291dc250939778a2
+	source = aurveto-bin-0.7.0.tar.gz::https://github.com/Xhelliom/aurveto/releases/download/v0.7.0/aurveto-x86_64-linux.tar.gz
+	sha256sums = 6215a020e8c2ddb15f3ff135a00e12904e6584c9a42c913639baaa2499c3191e
 
 pkgname = aurveto-bin
