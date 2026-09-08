@@ -3,7 +3,7 @@
 
 pkgname=eternity-engine
 pkgver=4.06.00
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="https://eternity.youfailit.net/"
 arch=('x86_64')
@@ -26,7 +26,7 @@ build() {
   local cmake_options=(
     -B build
     -S eternity
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
   )
