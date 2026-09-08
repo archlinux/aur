@@ -1,6 +1,6 @@
 pkgbase = python-banks
 	pkgdesc = LLM prompt language based on Jinja
-	pkgver = 2.4.3
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/masci/banks
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-banks
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/b/banks/banks-2.4.3.tar.gz
-	sha256sums = 07ae40dd08577857830428ba77ead477fe62fbb13e26d567635b880c88f50e81
+	source = https://files.pythonhosted.org/packages/source/b/banks/banks-2.5.0.tar.gz
+	sha256sums = fdd4fd54b84dbe31cb51a1173c960697c73d683a52fb0b1d1957a557a8d6fcc8
 
 pkgname = python-banks
