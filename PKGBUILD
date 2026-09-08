@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-screenrec-menu-git
-pkgver=r3.190bd16
-pkgrel=2
+pkgver=r9.9138dc0
+pkgrel=1
 pkgdesc="Wayland screen recording menu with dmenu and overlay box"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/screenrec-menu"
@@ -17,6 +17,7 @@ optdepends=(
     'wf-recorder: Stream recording backend (Fallback)'
     'fuzzel: Lightweight Wayland native menu UI (or rofi/wofi)'
     'libnotify: For desktop notifications'
+    'gifsicle: Extra GIF re-compression after conversion (auto-detected)'
 )
 provides=('shorin-screenrec-menu')
 conflicts=('shorin-screenrec-menu')
