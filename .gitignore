@@ -1,0 +1,7 @@
+*
+
+!PKGBUILD
+!.SRCINFO
+!jstest-gtk.desktop
+!fix_datadir.patch
+!.gitignore
