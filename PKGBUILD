@@ -1,4 +1,5 @@
 # Maintainer: Sentria <admin@sentrialabs.com>
+# AUR metadata sync marker
 pkgname=maryanne-bin
 pkgver=2.2.1
 pkgrel=8
