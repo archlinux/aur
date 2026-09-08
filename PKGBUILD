@@ -6,7 +6,7 @@
 # The actual application is called "timetrack", and that's what the binary will be named.
 pkgname=dbe-timetrack-bin
 _pkgname=timetrack
-pkgver=5.18.0
+pkgver=5.18.1
 pkgrel=1
 pkgdesc="Simple, offline-first desktop application to track your time on different projects and tasks."
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('nss' 'at-spi2-core' 'libxss' 'gtk3' 'alsa-lib' 'libxtst')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://github.com/dont-be-evil-company/timetrack/releases/download/v${pkgver}/timetrack_amd64.deb")
-sha256sums=('cf01e7daa7c9cb5bb86cef983ce291a50979678b8f7ad314d6437fe6cedc4a43')
+sha256sums=('ee26910f36246b60ef8517cbfc9cd5d1b979a8c11c0730ef61b6c90326392654')
 
 package() {
   if [ -f "data.tar.xz" ]; then
