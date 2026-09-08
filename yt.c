@@ -285,9 +285,19 @@ int main(int argc, char *argv[]) {
     // Çıplak bir ad execvp'ye PATH araması için bırakılmıyor (kullanıcının
     // bulunduğu dizine göre belirsizlik doğurur); bunun yerine burada,
     // sabit dizinlerle sınırlı ve sahiplik/izin doğrulamalı olarak açıkça
-    // çözümleniyor. Mutlak yol verilmişse (dokümante edilen asıl kullanım
-    // şekli) davranış değişmiyor: execvp ile doğrudan çalıştırılıyor, ek
-    // bir sahiplik kısıtlaması getirilmiyor.
+    // çözümleniyor.
+    //
+    // Mutlak yol verildiğinde artık ayrıcalıklı bir "güvenilir" durum
+    // yok: eskiden bu durumda hiçbir sahiplik/izin kontrolü yapılmadan
+    // doğrudan execvp çağrılıyordu, bu da kullanıcının kendi yazabildiği
+    // (root sahipli olmayan) herhangi bir mutlak yolu SUID root ile
+    // çalıştırabilmesine izin veriyordu. Şimdi mutlak yol da tıpkı
+    // adaylar gibi open_verified_candidate() ile açılıp fd üzerinden
+    // doğrulanıyor: gerçek dosya olmalı (O_NOFOLLOW, symlink değil),
+    // sahibi root (uid 0) olmalı, grup/diğerleri tarafından yazılabilir
+    // olmamalı, en az bir çalıştırma bitine sahip olmalı. Doğrulama ile
+    // çalıştırma arasında da aynı fd kullanıldığından (fexecve) TOCTOU
+    // penceresi kalmıyor.
     int resolved_fd = -1;
 
     if (argv[1][0] != '/') {
@@ -296,6 +306,16 @@ int main(int argc, char *argv[]) {
             fprintf(stderr, "%s",
                     MSG("Error: command not found in /usr/bin, /usr/local/bin or ~/.local/bin\n",
                         "Hata: komut /usr/bin, /usr/local/bin veya ~/.local/bin altında bulunamadı\n"));
+            return 1;
+        }
+    } else {
+        resolved_fd = open_verified_candidate(argv[1], 0);
+        if (resolved_fd < 0) {
+            fprintf(stderr, "%s",
+                    MSG("Error: absolute path failed ownership/integrity checks "
+                        "(must be a regular, root-owned, non-group/other-writable, executable file)\n",
+                        "Hata: mutlak yol sahiplik/bütünlük kontrolünü geçemedi "
+                        "(root sahipli, grup/diğerleri tarafından yazılamayan, çalıştırılabilir, gerçek bir dosya olmalı)\n"));
             return 1;
         }
     }
@@ -409,17 +429,13 @@ int main(int argc, char *argv[]) {
     // argv[0] olarak &argv[1] veriliyor: çalışan sürece kullanıcının
     // yazdığı ad/yol görünür (ör. "pacman"), çözümlenen tam yol değil.
     //
-    // Çözümlenmiş bir isimse (resolved_fd >= 0): fexecve() ile *doğrulama
-    // sırasında açılan fd* çalıştırılıyor — yol yeniden aranmıyor, bu
-    // yüzden doğrulama ile çalıştırma arasında dosyanın değiştirilmesi
-    // (symlink saldırısı vb.) işe yaramaz.
-    // Mutlak yol verilmişse (resolved_fd == -1): davranış eskisi gibi,
-    // doğrudan execvp.
-    if (resolved_fd >= 0) {
-        fexecve(resolved_fd, &argv[1], environ);
-    } else {
-        execvp(argv[1], &argv[1]);
-    }
+    // Buraya gelindiğinde resolved_fd her zaman geçerli, doğrulanmış bir
+    // fd'dir (aksi durumlarda yukarıda zaten return 1 ile çıkılıyor).
+    // fexecve() ile *doğrulama sırasında açılan fd* çalıştırılıyor — yol
+    // yeniden aranmıyor, bu yüzden doğrulama ile çalıştırma arasında
+    // dosyanın değiştirilmesi (symlink saldırısı vb.) işe yaramaz. Artık
+    // hiçbir durumda yola güvenerek doğrudan execvp çağrılmıyor.
+    fexecve(resolved_fd, &argv[1], environ);
 
     perror(MSG("Error: Command execution failed",
                "Hata: Komut çalıştırılamadı"));
