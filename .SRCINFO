@@ -1,6 +1,6 @@
 pkgbase = python-tilelang
 	pkgdesc = Tile-level domain-specific language for high-performance GPU/CPU kernels (binary wheel)
-	pkgver = 0.1.11
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/tile-ai/tilelang
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = python-tilelang
 	depends = python-psutil
 	depends = python-tqdm
 	depends = cuda
-	noextract = tilelang-0.1.11-cp38-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+	noextract = tilelang-0.1.14-cp39-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
 	options = !strip
-	source = https://files.pythonhosted.org/packages/b5/0e/ed59fb66606b6e51349793d9db209d01a41487008bd6d4a984249d70eb4b/tilelang-0.1.11-cp38-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
-	sha256sums = 90d78f093d2bd46660633133982cd715cf9b7d0c379d463f136748efcfa55a9c
+	source = https://files.pythonhosted.org/packages/40/69/e69a18eaf239efaa1718922a26d0a4605a0525a2263d3224f506354c02ae/tilelang-0.1.14-cp39-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+	sha256sums = fcc5d47ac1baeb7a8555ff5384af9ce9f3efef46dd926bc23d2c1cd425f68600
 
 pkgname = python-tilelang
