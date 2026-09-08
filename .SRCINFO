@@ -1,6 +1,6 @@
 pkgbase = kikitan-translator-git
 	pkgdesc = Kikitan Translator, a realtime VRChat Translator
-	pkgver = 1.2.5.r98.ge64a97a
+	pkgver = 2.0.0.r0.ga07b4e8
 	pkgrel = 1
 	url = https://github.com/YusufOzmen01/kikitan-translator
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = kikitan-translator-git
 	provides = kikitan-translator
 	conflicts = kikitan-translator
 	options = !strip
-	source = kikitan-translator::git+https://github.com/YusufOzmen01/kikitan-translator.git#branch=dotnet
+	source = kikitan-translator::git+https://github.com/YusufOzmen01/kikitan-translator.git
 	source = kikitan-translator.desktop
 	source = kikitan
 	sha256sums = SKIP
