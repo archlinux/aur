@@ -1,6 +1,6 @@
 pkgbase = veloxdb-bin
 	pkgdesc = A fast, memory-efficient, developer-focused desktop SQL client
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://veloxdb.dev/
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = veloxdb-bin
 	provides = veloxdb
 	conflicts = veloxdb
 	options = !strip
-	source = README-0.3.1.md::https://raw.githubusercontent.com/veloxbase/veloxdb/v0.3.1/README.md
-	source = LICENSE-0.3.1::https://raw.githubusercontent.com/veloxbase/veloxdb/v0.3.1/LICENSE
-	sha256sums = 74de5bd34f54a52d6096461a8b96dcda74489bb07103ab39c0152fbaf8ab2a09
+	source = README-0.4.0.md::https://raw.githubusercontent.com/veloxbase/veloxdb/v0.4.0/README.md
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/veloxbase/veloxdb/v0.4.0/LICENSE
+	sha256sums = 5b27f44e3e8ea19eaf7f0cc4697659a7f614e243cf91be81c6af21f8535644a4
 	sha256sums = 51c7b772f15a83ac914c7c506fb6efa05b19ec0f340f9c1b5ef67fbaa4317e56
-	source_x86_64 = veloxdb-x86_64-0.3.1.deb::https://github.com/veloxbase/veloxdb/releases/download/v0.3.1/veloxdb_0.3.1_amd64.deb
-	sha256sums_x86_64 = cf57c945e3d99180d6b1e8e3ab62e342f87f9318e3eecc72c822952cdbd75a72
+	source_x86_64 = veloxdb-x86_64-0.4.0.deb::https://github.com/veloxbase/veloxdb/releases/download/v0.4.0/veloxdb_0.4.0_amd64.deb
+	sha256sums_x86_64 = 2640d48f6967b68f61f72f90ffb276d7630b2f0f08063dfbbc01125da0f51859
 
 pkgname = veloxdb-bin
