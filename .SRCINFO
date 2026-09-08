@@ -1,6 +1,6 @@
 pkgbase = mpf-check
-	pkgdesc = Media Preservation Frontend for Aaru and Redumper in C# (MPF.Check only - Rolling Release)
-	pkgver = r3117.512561e
+	pkgdesc = Media Preservation Frontend for Aaru and Redumper in C# (MPF.Check only)
+	pkgver = r3132.1449d5f
 	pkgrel = 1
 	url = https://github.com/SabreTools/MPF
 	arch = x86_64
