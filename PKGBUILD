@@ -3,7 +3,7 @@
 _pkgauthor=ralsina
 _pkgname=markterm
 pkgname=${_pkgname}-bin
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A terminal markdown renderer"
 arch=('x86_64' 'aarch64')
@@ -23,10 +23,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${_barch[0]}")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${_barch[1]}")
 sha256sums=('dbbffa23a676d422aa7460b468c731e4fe3a007414e14d787a3d3f3fb55b1713'
-            '9e0be76d50a822a22020f8ed872922994cb75a1950ef04dbafa08c0672bc3316'
-            '69b6826471c774b48bbf18099b5cc6da2a53e7c92673b942a6725ebfb7304d87')
-sha256sums_x86_64=('6d93ef0bc17d711d019459a1bb76bba55fc3287ce8987a7e10894e90c3858b9c')
-sha256sums_aarch64=('82b5f1b60c16ad51022a56e476b9e9e78000b35ee8c28deddd5b2fb571e4f3dd')
+            '79d44212c25ab49a64576f6bbf91205292c219130a29e5461493c0a9384c60d8'
+            '17084a063f7ce4e41884fd973b062d9c38289b98a2fbc862e3a025952b4323c4')
+sha256sums_x86_64=('b453901def4caf61f4584d8f617296d7ee41ddbfdf6dd19ba9cebc41159d5222')
+sha256sums_aarch64=('7b6961547454b6bb8a754d530a96ffad0e300411d40fa394583e78d426467252')
 
 
 package() {
