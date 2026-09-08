@@ -1,0 +1,7 @@
+post_install() {
+	sudo setcap cap_sys_nice=ep '/opt/septabee/septabee' cap_sys_nice=ep '/opt/septabee/septabee-sounds'
+}
+
+post_upgrade() {
+	sudo setcap cap_sys_nice=ep '/opt/septabee/septabee' cap_sys_nice=ep '/opt/septabee/septabee-sounds'
+}

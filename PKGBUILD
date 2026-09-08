@@ -1,15 +1,16 @@
 # Maintainer: Syntaxxor <syntaxxorhapsody@gmail.com>
 
 pkgname=septabee
-pkgver=B_T4
+pkgver=B_T5
 pkgrel=1
 pkgdesc='A DAW built around audio sample-level parameter modulation and a ridiculous amount of optimization.'
 arch=('x86_64')
 url='https://septabee.nekoweb.org'
 license=('LicenseRef-septabee')
 depends=('vulkan-driver' 'libpipewire' 'libx11' 'libstdc++')
+install=${pkgname}.install
 source=("https://septabee.nekoweb.org/important_stuff/SEPTABEE_DOWNLOADS/version_B/septabee_linux_${pkgver}.7z" 'septabee.desktop')
-sha256sums=('52ebb7835d5309ccce483c75e40a84253a2c3e43e304d6968c100f15ff2e370f'
+sha256sums=('74111d072f0f0a1ac0c624cb62821d3aa4e0efb52c4c6a2880a855d68e9e8809'
             'e3b414eb7a8fa5d0b565873cb4753b79dac456e7d0b4e9bc25f1305bcf036734')
 options=(!debug)
 

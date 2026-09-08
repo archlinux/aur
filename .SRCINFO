@@ -1,8 +1,9 @@
 pkgbase = septabee
 	pkgdesc = A DAW built around audio sample-level parameter modulation and a ridiculous amount of optimization.
-	pkgver = B_T4
+	pkgver = B_T5
 	pkgrel = 1
 	url = https://septabee.nekoweb.org
+	install = septabee.install
 	arch = x86_64
 	license = LicenseRef-septabee
 	depends = vulkan-driver
@@ -10,9 +11,9 @@ pkgbase = septabee
 	depends = libx11
 	depends = libstdc++
 	options = !debug
-	source = https://septabee.nekoweb.org/important_stuff/SEPTABEE_DOWNLOADS/version_B/septabee_linux_B_T4.7z
+	source = https://septabee.nekoweb.org/important_stuff/SEPTABEE_DOWNLOADS/version_B/septabee_linux_B_T5.7z
 	source = septabee.desktop
-	sha256sums = 52ebb7835d5309ccce483c75e40a84253a2c3e43e304d6968c100f15ff2e370f
+	sha256sums = 74111d072f0f0a1ac0c624cb62821d3aa4e0efb52c4c6a2880a855d68e9e8809
 	sha256sums = e3b414eb7a8fa5d0b565873cb4753b79dac456e7d0b4e9bc25f1305bcf036734
 
 pkgname = septabee
