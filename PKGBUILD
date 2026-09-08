@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Organizational asset discovery tool with 20+ plugins covering certificate transparency, passive DNS, and all 5 Regional Internet Registries"
 
-pkgver=1.3.11
+pkgver=1.3.12
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('9bfaa9bea6d28bb20fc0d193b98e9c74cca7a9c49343ce9733f6cfcf32ef05a0')
-sha256sums_aarch64=('636b49eca3e64b704fda6a9ab0cba290a9d994a167c19d17733e480809a0d73c')
+sha256sums_x86_64=('ca6b1edc1cdf3c4bacb1e62673d421f8496a0bace09fbb8ef459d631933f2845')
+sha256sums_aarch64=('6bd7f6cf000b1d093cd146059b1c1f5e2af227d29976a007569a2f88b9de12e4')
 
 
 package() {
