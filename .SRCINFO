@@ -1,13 +1,13 @@
 pkgbase = quirc-llvm
-	pkgdesc = QR decoder library — built with Clang and LLVM lld
+	pkgdesc = QR decoder library — built with Clang and mold
 	pkgver = 1.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/dlbeer/quirc
 	arch = i686
 	arch = x86_64
 	license = ISC
 	makedepends = clang
-	makedepends = lld
+	makedepends = mold
 	makedepends = llvm
 	depends = libjpeg-turbo
 	depends = sdl_gfx

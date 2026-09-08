@@ -4,8 +4,8 @@
 _pkgname="quirc"
 pkgname="$_pkgname-llvm"
 pkgver=1.2
-pkgrel=5
-pkgdesc="QR decoder library — built with Clang and LLVM lld"
+pkgrel=6
+pkgdesc="QR decoder library — built with Clang and mold"
 url="https://github.com/dlbeer/quirc"
 license=('ISC')
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=(
   'sdl_gfx'
   'sdl12-compat'
 )
-makedepends=('clang' 'lld' 'llvm')
+makedepends=('clang' 'mold' 'llvm')
 provides=('quirc')
 conflicts=('quirc')
 
@@ -42,7 +42,7 @@ build() {
   export OBJDUMP=/usr/bin/llvm-objdump
   export READELF=/usr/bin/llvm-readelf
   export STRIP=/usr/bin/llvm-strip
-  export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+  export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
   export CFLAGS="${CFLAGS:-} -O3 -march=native -fPIC"
   export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
   make CC=clang CXX=clang++ AR=llvm-ar RANLIB=llvm-ranlib LD=clang libquirc.so quirc-demo quirc-scanner
