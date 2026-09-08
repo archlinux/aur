@@ -7,13 +7,13 @@
 _pkgname=xavs2
 pkgname=${_pkgname}-llvm
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
-pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard — built with Clang and LLVM lld'
+pkgdesc='Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard — built with Clang and mold'
 url='https://github.com/pkuvcl/xavs2/'
 license=('GPL-2.0-or-later')
 depends=('glibc' 'liblsmash.so')
-makedepends=('nasm' 'l-smash' 'clang' 'lld' 'llvm')
+makedepends=('nasm' 'l-smash' 'clang' 'mold' 'llvm')
 provides=('xavs2' 'libxavs2')
 conflicts=('xavs2' 'libxavs2')
 replaces=('libxavs2')
@@ -38,7 +38,7 @@ build() {
     export OBJDUMP=/usr/bin/llvm-objdump
     export READELF=/usr/bin/llvm-readelf
     export STRIP=/usr/bin/llvm-strip
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS="${CFLAGS:-} -O3 -march=native -Wno-incompatible-pointer-types"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
 

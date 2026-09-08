@@ -1,14 +1,14 @@
 pkgbase = xavs2-llvm
-	pkgdesc = Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard — built with Clang and LLVM lld
+	pkgdesc = Open-Source encoder of AVS2-P2/IEEE1857.4 video coding standard — built with Clang and mold
 	pkgver = 1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pkuvcl/xavs2/
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = nasm
 	makedepends = l-smash
 	makedepends = clang
-	makedepends = lld
+	makedepends = mold
 	makedepends = llvm
 	depends = glibc
 	depends = liblsmash.so
