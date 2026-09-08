@@ -1,6 +1,6 @@
 pkgbase = linux-fsync-nobara-bin
 	pkgdesc = The Linux kernel and modules of Nobara Project - Prebuilt version
-	pkgver = 7.2.3
+	pkgver = 7.2.4
 	pkgrel = 1
 	url = https://nobaraproject.org
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = linux-fsync-nobara-bin
 	provides = KSMBD-MODULE
 	provides = NTFS3-MODULE
 	options = !strip
-	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/linux-nobara-mainline/fedora-44-x86_64/10944448-kernel/kernel-core-7.2.3-200.nobara.fc44.x86_64.rpm
-	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/linux-nobara-mainline/fedora-44-x86_64/10944448-kernel/kernel-modules-7.2.3-200.nobara.fc44.x86_64.rpm
-	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/linux-nobara-mainline/fedora-44-x86_64/10944448-kernel/kernel-devel-7.2.3-200.nobara.fc44.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/linux-nobara-mainline/fedora-44-x86_64/10961912-kernel/kernel-core-7.2.4-200.nobara.fc44.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/linux-nobara-mainline/fedora-44-x86_64/10961912-kernel/kernel-modules-7.2.4-200.nobara.fc44.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/linux-nobara-mainline/fedora-44-x86_64/10961912-kernel/kernel-devel-7.2.4-200.nobara.fc44.x86_64.rpm
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 6c286fc6a2d814f2510b8adae4451c7a48df47b67ba09536f60719808f6482e9
-	sha256sums = 0d6cdff119bd4ee7160b18c41bbc2a9a07fda95c30d522067db4af782c88b8c9
-	sha256sums = 563e85c5bf8760385ab723e3184879003a9bfa56757a943499538ad3b7025d93
+	sha256sums = 685514690dd0cbbd4eb5a3d9562fe3755d64794bc9f98d247055d0716c9b8114
+	sha256sums = 619acb4e0c23555ade94db5fbaff4af3b72263e38225750d9252f5a48907db91
+	sha256sums = ca1ace860e4a72b086a40b177d41ffcb48adce6bc1996c89667e99f8a94062cf
 
 pkgname = linux-fsync-nobara-bin
