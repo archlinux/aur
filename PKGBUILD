@@ -3,7 +3,7 @@
 pkgname=plexamp-beta-appimage
 pkgver=4.50.6
 pkgrel=1
-pkgdesc="Modern music client for Plex BETA"
+pkgdesc="Modern music client for Plex BETA with new backend"
 provides=('plexamp')
 conflicts=('plexamp' 'plexamp-appimage')
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('fuse2')
 url="https://plexamp.com"
 options=(!strip)
 _desktop_name=Plexamp.desktop
-_filename=Plexamp-${pkgver}-${arch}.AppImage
+_filename=Plexamp-${pkgver}-${CARCH}.AppImage
 source_x86_64=(
   https://plexamp.plex.tv/desktop/${_filename}
 )
