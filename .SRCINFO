@@ -1,7 +1,7 @@
 pkgbase = maryanne-bin
 	pkgdesc = Read ebook (EPUB) or PDF aloud to you with natural-sounding voices.
-	pkgver = 2.2.1
-	pkgrel = 10
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://maryanne.app
 	arch = x86_64
 	license = custom
@@ -10,10 +10,10 @@ pkgbase = maryanne-bin
 	depends = gst-plugins-base
 	depends = libsecret
 	options = !strip
-	source = maryanne-2.2.1.AppImage::https://github.com/finnvyrn/maryanne-releases/releases/download/v2.2.1/Maryanne-x86_64.AppImage
-	source = maryanne.desktop::https://github.com/finnvyrn/maryanne-releases/releases/download/v2.2.1/maryanne.desktop
-	source = maryanne.png::https://github.com/finnvyrn/maryanne-releases/releases/download/v2.2.1/maryanne.png
-	sha256sums = bef0c0aa0a4bdccef715cb480b59a9acbf96b28868498c9946da64183123026c
+	source = maryanne-2.3.0.AppImage::https://github.com/finnvyrn/maryanne-releases/releases/download/v2.3.0/Maryanne-x86_64.AppImage
+	source = maryanne.desktop::https://github.com/finnvyrn/maryanne-releases/releases/download/v2.3.0/maryanne.desktop
+	source = maryanne.png::https://github.com/finnvyrn/maryanne-releases/releases/download/v2.3.0/maryanne.png
+	sha256sums = b3a8f86dd6ef35b72c0a132498096deab131132a0d6de19dfe1b6fcea30ef499
 	sha256sums = 8fcdd0bdfda339ee543d62c39d91580074212c681a1e477d7f717578fbf71c00
 	sha256sums = 93e729a1fb386fbdeb95f1d5ebc0bc03d2384abe3bf1f81152869ce6b07d30dd
 
