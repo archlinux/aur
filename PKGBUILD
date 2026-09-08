@@ -5,14 +5,14 @@
 # (unversioned filename, content rolls — sha is bumped every cycle).
 
 pkgname=paseo-desktop-git-bin
-pkgver=0.8.0.beta.1.r4.g18aaec277
+pkgver=0.8.0.beta.1.r5.gda8c1b5c9
 pkgrel=1
-_commit='18aaec2772a5bd3d5ef1384022e5fa8d7650d5e4'
+_commit='da8c1b5c94e752b01d451645e5fa52aba2c1b2f0'
 _asset='Paseo-0.8.0-beta.1-x64.tar.gz'
-_bin_sha='ce6456dd2d765c0d622b0faa4641dadafeb52c9405d472390a17a938aa9b9194'
+_bin_sha='6fb61f1214ca1da295259953ce6f38f56ed8eac2d3fcaf55dece75c8d63d8021'
 _icon_sha='585d202ff6a6e41bcd5c7464a1c4889b78977cea000f7b88ba1f67f3d9fff0bd'
 _pkgdesc_base='One interface for all your Claude Code, Codex and OpenCode agents.'
-pkgdesc='One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-09-08 @18aaec2)'
+pkgdesc='One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-09-08 @da8c1b5)'
 arch=('x86_64')
 url="https://paseo.sh"
 license=("Apache-2.0")
