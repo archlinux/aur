@@ -5,13 +5,13 @@
 _pkgname=flite1
 pkgname=${_pkgname}-llvm
 pkgver=1.4
-pkgrel=8
-pkgdesc='A lighweight speech synthesis engine (version 1.x) — built with Clang and LLVM lld'
+pkgrel=9
+pkgdesc='A lighweight speech synthesis engine (version 1.x) — built with Clang and mold'
 arch=('x86_64')
 url='http://www.speech.cs.cmu.edu/flite/'
 license=('custom')
 depends=('glibc')
-makedepends=('texlive-plaingeneric' 'ed' 'clang' 'lld' 'llvm')
+makedepends=('texlive-plaingeneric' 'ed' 'clang' 'mold' 'llvm')
 provides=("flite=${pkgver}" 'flite1' 'flite1-patched')
 conflicts=('flite' 'flite1' 'flite1-patched')
 replaces=('flite1-patched')
@@ -54,13 +54,13 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
     export READELF=/usr/bin/llvm-readelf
     export STRIP=/usr/bin/llvm-strip
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS="${CFLAGS//-Wp,-D_FORTIFY_SOURCE=3/} -O3 -march=native -Wno-incompatible-pointer-types -U_FORTIFY_SOURCE"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     ./configure \

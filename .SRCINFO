@@ -1,14 +1,14 @@
 pkgbase = flite1-llvm
-	pkgdesc = A lighweight speech synthesis engine (version 1.x) — built with Clang and LLVM lld
+	pkgdesc = A lighweight speech synthesis engine (version 1.x) — built with Clang and mold
 	pkgver = 1.4
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.speech.cs.cmu.edu/flite/
 	arch = x86_64
 	license = custom
 	makedepends = texlive-plaingeneric
 	makedepends = ed
 	makedepends = clang
-	makedepends = lld
+	makedepends = mold
 	makedepends = llvm
 	depends = glibc
 	provides = flite=1.4
