@@ -1,7 +1,7 @@
 # Maintainer: Liviu Nicoara <lnicoara at thinkoid dot org>
 
 pkgname=tyler-git
-pkgver=r29.cfa47ed
+pkgver=r31.8d76c7e
 pkgrel=1
 pkgdesc="Tiling Wayland compositor on wlroots, with the bar and launcher built in"
 arch=('x86_64')
@@ -16,7 +16,8 @@ optdepends=('foot: default terminal (termcmd)'
             'libpulse: volume keys drive pactl'
             'light: brightness keys'
             'iw: wifi field in the bundled status feeder'
-            'ttf-iosevkaterm-nerd: the bar glyphs config.h names')
+            'ttf-iosevkaterm-nerd: the bar glyphs config.h names'
+            'xcursor-retrosmart: the pointer theme config.h names')
 provides=('tyler')
 conflicts=('tyler')
 source=("tyler::git+https://github.com/thinkoid/tyler.git")

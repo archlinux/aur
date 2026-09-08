@@ -1,6 +1,6 @@
 pkgbase = tyler-git
 	pkgdesc = Tiling Wayland compositor on wlroots, with the bar and launcher built in
-	pkgver = r29.cfa47ed
+	pkgver = r31.8d76c7e
 	pkgrel = 1
 	url = https://github.com/thinkoid/tyler
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = tyler-git
 	optdepends = light: brightness keys
 	optdepends = iw: wifi field in the bundled status feeder
 	optdepends = ttf-iosevkaterm-nerd: the bar glyphs config.h names
+	optdepends = xcursor-retrosmart: the pointer theme config.h names
 	provides = tyler
 	conflicts = tyler
 	source = tyler::git+https://github.com/thinkoid/tyler.git
