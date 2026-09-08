@@ -16,11 +16,11 @@ provides=("adb" "android-tools")
 conflicts=("adb" "android-tools")
 source=(
     "https://dl.google.com/android/repository/platform-tools_r${pkgver}-linux.zip"
-    "license.html"
+    "LICENSE"
 )
 sha256sums=(
     "d230f13842f60f782a8645f9c813f8f845bf36089ea7289f28c48f17979313f1"
-    "a7f3a259290ae6a5dc61bd34ecae36e2b7e2f644865ddc3c7fde5d248b8a7cef"
+    "1f8729233617b193fd619213792ae16a41b95d2bbbf525dfe66998252ba68b16"
 )
 
 package() {

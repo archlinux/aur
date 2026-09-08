@@ -12,8 +12,8 @@ pkgbase = android-sdk-platform-tools-bin
 	conflicts = adb
 	conflicts = android-tools
 	source = https://dl.google.com/android/repository/platform-tools_r37.0.1-linux.zip
-	source = license.html
+	source = LICENSE
 	sha256sums = d230f13842f60f782a8645f9c813f8f845bf36089ea7289f28c48f17979313f1
-	sha256sums = a7f3a259290ae6a5dc61bd34ecae36e2b7e2f644865ddc3c7fde5d248b8a7cef
+	sha256sums = 1f8729233617b193fd619213792ae16a41b95d2bbbf525dfe66998252ba68b16
 
 pkgname = android-sdk-platform-tools-bin
