@@ -1,7 +1,7 @@
 pkgname=harmless-audit-test-git
 pkgver=r1.2cd28cd
-pkgrel=1
-pkgdesc='This is a test for aur-audit.wtako.net and this should trigger at least a RED or BLACK FLAG. The package is useless and do NOT install (which cause harm whatsoever).'
+pkgrel=2
+pkgdesc='This is a test for aur-audit.wtako.net and this should trigger at least a RED or BLACK FLAG. The package is useless and do NOT install (which cause NO harm whatsoever).'
 arch=('any')
 license=('unknown')
 source=('git+https://github.com/Saren-Arterius/harmless-audit-test.git')

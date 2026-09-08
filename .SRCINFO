@@ -1,7 +1,7 @@
 pkgbase = harmless-audit-test-git
-	pkgdesc = This is a test for aur-audit.wtako.net and this should trigger at least a RED or BLACK FLAG. The package is useless and do NOT install (which cause harm whatsoever).
+	pkgdesc = This is a test for aur-audit.wtako.net and this should trigger at least a RED or BLACK FLAG. The package is useless and do NOT install (which cause NO harm whatsoever).
 	pkgver = r1.2cd28cd
-	pkgrel = 1
+	pkgrel = 2
 	install = harmless-audit-test.install
 	arch = any
 	license = unknown
