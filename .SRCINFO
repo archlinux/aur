@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-super-key
+	pkgdesc = Binds the Super key to a custom action
+	pkgver = 10
+	pkgrel = 1
+	url = https://github.com/Tommimon/super-key
+	arch = any
+	license = GPL-3.0-only
+	depends = gnome-shell
+	noextract = super-key@tommimon.github.com-v10.zip
+	source = super-key@tommimon.github.com-v10.zip::https://github.com/Tommimon/super-key/releases/download/v10/super-key@tommimon.github.com.v10.shell-extension.zip
+	sha256sums = 43ca3aa4182f7351fe2ce355113312f10740960ad03fad24698f72358d110b42
+
+pkgname = gnome-shell-extension-super-key
