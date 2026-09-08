@@ -1108,6 +1108,39 @@ diagnostic, record the exact ROCm/rocPRIM versions and the last loader log, and
 expect different peak-memory and first-prefill behavior. Do not silently keep
 the fallback and assume the SSD-PLE path is still equivalent.
 
+## Experimental alternative target: Q4_K_XL-DN4
+
+[`bitlamas/Qwen3.8-Flash-Next-Q4_K_XL-DN4`](https://huggingface.co/bitlamas/Qwen3.8-Flash-Next-Q4_K_XL-DN4/tree/374ee5752a4e5dd2b98ca76eafaec6e3b7af3105)
+is a community alternative, not an updated Unsloth IQ4_XS release. The
+September 8 review examined revision
+`374ee5752a4e5dd2b98ca76eafaec6e3b7af3105`. It requantizes 48 expert-down
+tensors from Unsloth's Q4_K_XL to IQ4_NL while retaining the other tensors,
+including the same PLE table. Its four shards total **102.47 GB / 95.43 GiB**,
+about **8.8 GB / 8.19 GiB more** than the recommended IQ4_XS target.
+
+The publisher reports Wikitext-2 perplexity of 2.9165, versus 2.998 for IQ4_XS
+and 2.9117 for Q4_K_XL, in a 24-chunk Windows/Vulkan comparison. Those numbers
+are promising but do not establish better coding/reasoning or HIP performance.
+It is a requantization of quantized weights, not a new BF16-derived calibration.
+The author has requested an official intermediate quant in
+[Unsloth discussion #67](https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF/discussions/67);
+there was no reply at this review.
+
+Treat this as an optional quality/memory A/B candidate. Keep IQ4_XS as the
+default for a non-dedicated 128 GB machine; SSD-backed PLE does not remove the
+extra non-PLE weight cost. The target itself uses existing tensor formats, so
+FR-Spec loader patches are unrelated to loading it. Compatibility and throughput
+with this package still need local testing; no DN4 payload was downloaded or
+audited here.
+
+If evaluating it, pin the revision above, keep all four shards together in a
+separate directory, and verify the publisher's hashes against Hugging Face
+metadata. Retain the current F16 projector and full-vocabulary drluoto Q8_0
+sidecar as the comparison configuration. Do not copy the model card's shared
+Q4_K_M sidecar command: it uses another fork's tensor-sharing loader, which
+this package does not carry. Hold prompt, cache types, MTP settings, context,
+and PLE policy constant, and measure output quality as well as speed and RAM.
+
 ## Using the preconverted Q8_0 sidecar
 
 The community sidecar is hosted at
@@ -1141,8 +1174,10 @@ Audited object facts:
 | Layout check | 32-byte-aligned, non-overlapping tensor ranges ending exactly at the declared file size |
 | Claimed source | Official `Qwen/Qwen3.8-Flash-Next` checkpoint |
 
-At the time of review, the repository contained only `.gitattributes`, a model
-card, and this GGUF; it contained no Python or custom model code. Hugging Face's
+At the pinned `67de759` revision, the repository contained only `.gitattributes`,
+a model card, and this GGUF; it contained no Python or custom model code. Newer
+revisions add BF16, Q4_K_M, and the experimental FR-Spec sidecar below; the
+original Q8_0 object remains unchanged. At its original audit, Hugging Face's
 security status for the large GGUF was still queued/unscanned. A GGUF is data,
 not a script, but any malformed binary format can exercise bugs in its parser.
 The exact hash proves which bytes were downloaded; it does not independently
@@ -1167,6 +1202,119 @@ object above remains the compatible default. Upstream draft
 [#28243](https://github.com/ggml-org/llama.cpp/pull/28243) now pursues a similar
 shared-tensor design, but new fitting, crash, acceptance, and output-identity
 reports keep it below this package's inclusion threshold.
+
+### Experimental FR-Spec 65K sidecar: not enabled in this package
+
+The same [drluoto repository](https://huggingface.co/drluoto/Qwen3.8-Flash-Next-MTP-GGUF/tree/922dc15f622e301c29abcbcd49c1eaf937ae5230)
+now publishes `mtp-Qwen3.8-Flash-Next-Q8_0-frspec-65k.gguf`, added September 6.
+It retains the MTP head but reduces its output projection from 248,320 tokens
+to 65,536 frequency-selected tokens. A `d2t` tensor maps each compact output
+row back to the target vocabulary. The proposed graph restores full-vocabulary
+logits, assigning negative infinity to omitted draft candidates. The target
+still verifies proposals over its full vocabulary; it is not vocabulary-pruned.
+Acceptance and performance remain workload-dependent, and this does not by
+itself guarantee identical generated text under every sampler or backend.
+
+| Artifact property | Value |
+| --- | --- |
+| Reviewed HF revision | `922dc15f622e301c29abcbcd49c1eaf937ae5230` |
+| File size | 3,639,245,152 bytes, 3.64 GB / 3.39 GiB |
+| SHA-256 / LFS object ID | `c9c505c1f68f008827a29733d5d2fe40a8170c324c676168831798b05217df4f` |
+| Saving versus the current full Q8_0 sidecar | 503,652,096 bytes, about 0.50 GB / 0.47 GiB |
+| Required fork | [`drluoto/llama.cpp:frspec-qwen4exp-strix`](https://github.com/drluoto/llama.cpp/tree/frspec-qwen4exp-strix), reviewed at `fb367b8cf2cf439326c8f77477ff65d01ba4816f` |
+
+There is an additional format difference beyond vocabulary trimming. Read-only
+HTTP-range inspection of the two pinned GGUF headers found:
+
+| MTP layout | Current full Q8_0 (`b988022…`) | Published FR-Spec (`c9c505c…`) |
+| --- | --- | --- |
+| Tensor count | 37 | 36 |
+| Input projection | Fused `blk.48.nextn.eh_proj.weight` | Separate `blk.48.nextn.fc_embd.weight` and `fc_hidden.weight` |
+| Head mixer | `blk.48.nextn.hc_head_*` plus model-level `output_hc_*` | `blk.48.nextn.hc_*`, without the model-level mixer |
+| Output projection | Q8_0, 248,320 rows of width 2,560 | Q8_0, 65,536 rows of width 2,560 |
+| Vocabulary map | None | I64 `d2t`, 65,536 entries |
+
+Our loader requires the fused projection and recognizes the current mixer
+names. **Adding only the vocabulary-map hunks would not load the published
+FR-Spec file.** A compatible trimmed copy generated from our pinned full
+sidecar would preserve its existing layout and have a different hash and size.
+The saving above compares the published artifacts, which also differ in layout.
+
+The downloaded `d2t` payload contains 65,536 distinct, ordered IDs within the
+248,320-token vocabulary. It matches the pinned producer's selection: 33,762
+frequency-ranked IDs followed by 31,774 additional low IDs. This checks the
+actual map, not just the model-card claim. Only metadata prefixes and the
+524,288-byte mapping were inspected; the whole 3.64 GB file was not downloaded,
+rehashed, executed, or subjected to a complete weight-content audit.
+
+The publisher's same-stack Strix Halo **Vulkan**, Q5_K-target comparison reports
+warm decode increasing from 27.4 to 29.9 t/s, cold decode changing from 29.3 to
+28.9 t/s, and acceptance from 0.78 to 0.81. The larger 33.1 t/s figure also
+includes other changes and is not the trimming-only gain. No matching HIP A/B
+was published. These are reported measurements, not local validation.
+
+**Do not substitute this file in the package's current commands.** The necessary
+Qwen4-Exp loader/graph support is not carried. A smaller download is not an
+automatic upgrade, and the author's multi-slot Vulkan command does not relax
+this package's mandatory `--np 1` rule. The full Q8_0 sidecar remains the
+compatible default; Unsloth's separate `*-shared-*` format is another feature
+and is not required for FR-Spec.
+
+#### Backport assessment: feasible, but not a straight cherry-pick
+
+There is no inherent ROCm API blocker. b10853 already has `LLM_TENSOR_D2T`,
+model storage for the mapping, and an analogous scatter in the EAGLE3 graph.
+The Qwen port uses ordinary F32 fill/reshape/`SET_ROWS` operations supported by
+the shared HIP backend, not `DeviceTopK` or a new custom kernel. Static review
+found no added runtime network/shell activity in the trimming changes.
+
+Reasons to adapt and validate the work before carrying it:
+
+1. **Preserve this package's MTP implementation.** The fork uses the alternate
+   split projection/mixer layout above. Its first trimming commit
+   [`7a3aa1d`](https://github.com/drluoto/llama.cpp/commit/7a3aa1dd59f904d8f624afb13460715169838b65)
+   does not apply cleanly to our prepared source. Its original scatter also
+   went into the target graph; follow-up
+   [`ebb3def`](https://github.com/drluoto/llama.cpp/commit/ebb3def772fe153b963f9be48cb81e0208a081f9)
+   moves it into `graph_mtp`. Our port must use the MTP graph's selected output
+   head while preserving `t_h_nextn`, mixed-F16 handling, and #28549 graph reuse.
+   Importing the whole fork would pull in unrelated Vulkan/allocator changes.
+2. **Validate the mapping at load time.** The fork primarily relies on shape
+   checks and assertions; it does not validate every mapping value or duplicate
+   destination before backend indexing. A packaged loader should check integer
+   type, dimensions, output-row agreement, bounded vocabulary size, and unique
+   in-range destination IDs, returning load errors rather than aborting. The
+   valid published map above does not make arbitrary future maps safe. Keep
+   this separate from RPC row-shape checks, which do not validate model maps.
+3. **Avoid the ambiguous extra format.** The fork also treats a `d2t` whose
+   length equals the full vocabulary as an inverse `t2d` gather map. That
+   length-based convention is unnecessary for the published I64 forward-map
+   file. A first backport can support only explicitly validated forward maps;
+   an inverse format needs an unambiguous discriminator and its own checks.
+4. **Separate the lifetime workaround.** Commit
+   [`ff14610`](https://github.com/drluoto/llama.cpp/commit/ff146108d95b63edd345d0fc20970188cc37ce72)
+   also marks MTP inputs as outputs to prevent allocator reuse. It affects
+   untrimmed heads too and can increase memory retention. Its comment asserts
+   HIP/Vulkan failures, but it is not independent evidence of the same failure
+   in our current graph/scheduler stack. Establish whether that change is needed
+   rather than bundle it as a mandatory part of vocabulary trimming.
+5. **Measure the actual HIP tradeoff.** The graph still fills and produces
+   full-vocabulary logits; only the expensive output projection is narrowed.
+   Scattering, allocation, and possible backend transfers can erode the gain.
+   Removing draft candidates also renormalizes their probabilities, so the same
+   `--spec-draft-p-min` is not an identical confidence cutoff. Test multilingual,
+   code, long-context, repeated-request, graph-on/off, and non-greedy workloads;
+   do not infer universal output identity from a small greedy Vulkan benchmark.
+
+The recommended next implementation is a **small opt-in forward-map backport
+plus a trimmed derivative of the existing fused-layout sidecar**, not adoption
+of the entire fork or an automatic switch to the published file. Preserve all
+non-output tensors byte-for-byte and verify them. The supplied trimming script
+also needs portable paths, input/type/count validation, and protection against
+overwriting its input; it is developer tooling, not a ready packaged converter.
+Then test valid graph reconstruction on CPU, retain unchanged behavior without
+`d2t`, build HIP, and measure on gfx1151 before recommending the new artifact.
+No runtime patch or provider change was made for this documentation/review.
 
 ### Start with pure MTP
 
@@ -1713,7 +1861,7 @@ the applicable open items on every base sync.
 | [#28473: cap drafts by remaining output budget](https://github.com/ggml-org/llama.cpp/pull/28473) | Avoids producing a full draft when only a few target tokens remain; an author test cuts eight draft decodes to one with identical output. | It is unreviewed and principally helps short final rounds. Author tests do not establish gfx1151 benefit or fix concurrent MTP state; keep the existing output-budget behavior until reviewed. |
 | [#28550: recurrent `no_alloc` sizing](https://github.com/ggml-org/llama.cpp/pull/28550) | Honors the no-allocation flag for recurrent memory during fitting/sizing, intended to avoid allocating real state in a sizing pass. | The small generic change lacks public regression tests and human review. Watch allocator correctness without treating a personal-fork OOM report as a validated gfx1151 fix. |
 | [#28498: serialize KV rotation dimensions](https://github.com/ggml-org/llama.cpp/pull/28498) | Saves exact K/V rotation dimensions and rejects incompatible restore settings; it is groundwork for #28267's staged F16-to-Q8 cache conversion. | It is unreviewed and changes saved-cache versions/compatibility. Require restore, mismatch, recurrent/MTP, and HIP tests; this is KV-cache format work, not SSD-backed PLE. |
-| [Issue #25187: trim the MTP draft vocabulary](https://github.com/ggml-org/llama.cpp/issues/25187) | Computes the draft output projection over a frequency-selected vocabulary while the target still verifies full-vocabulary tokens. A new Qwen4-Exp Strix Halo Vulkan port reports about +9% warm decode and a 0.5 GB smaller Q8_0 sidecar using 65K rows; 32K reduced acceptance on its Swedish/code workload. | This is research/fork work, not a reviewed upstream producer/loader format or HIP comparison. Correct index remapping is essential, and the optimal vocabulary depends on workload. Keep the pinned full-vocabulary sidecar until conversion, validation, and provenance are settled. |
+| [Issue #25187: trim the MTP draft vocabulary](https://github.com/ggml-org/llama.cpp/issues/25187) | Computes the draft output projection over a frequency-selected vocabulary while the target still verifies full-vocabulary tokens. A Qwen4-Exp Strix Halo Vulkan port reports about +9% warm decode; a 3.64 GB 65K sidecar is now published. | [The dedicated FR-Spec review](#experimental-fr-spec-65k-sidecar-not-enabled-in-this-package) confirms that the published file also changes the MTP tensor layout. Its forward map is valid, but loader validation and HIP evidence remain insufficient. Prefer a narrow hardened backport plus a trimmed copy of our compatible fused-layout sidecar; do not replace the current download or import the whole fork. |
 | [#28569: restore Qwen4-Exp tensor splitting](https://github.com/ggml-org/llama.cpp/pull/28569) | Expands the initial hyper-connection view before CPU PLE gather so the Meta backend can split it; a two-Strix Vulkan/RPC test reports identical 1,752-token greedy output. | It reverses an upstream compatibility restriction and has no human approval, MTP, or HIP result. The single-APU profile does not need tensor splitting. |
 | [#28571: cache RPC operation support](https://github.com/ggml-org/llama.cpp/pull/28571) | Replaces many short support-query connections with signature-based caching and a protocol update. A two-Strix Vulkan test reports a large load-time reduction and broad backend checks. | It changes RPC protocol, capability assumptions, and cache lifetime without human approval or HIP/MTP validation. Do not infer that faster loading makes RPC authenticated or fault tolerant. |
 | [#26724: return errors after RPC peer failure](https://github.com/ggml-org/llama.cpp/pull/26724) | A new independent CPU-loopback test reports avoiding client aborts after peer loss. | The same test reports an unverified anomalous token before graph failure and a process-lifetime failed-endpoint latch. No human approval resolves those state/output semantics. Watch availability improvements, but do not import a non-aborting path that can still return wrong output. |
@@ -2090,4 +2238,7 @@ dependencies/options, and increment `pkgrel`.
 - [Pinned Unsloth target GGUFs](https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF/commit/2c41bd2a0b3f51c503c11f1c7ed2e6bb34036beb)
 - [Pinned Unsloth F16 vision projector](https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF/blob/c8b5954a88c2775c546b92593eda40ea041d3176/mmproj-F16.gguf)
 - [Reviewed preconverted MTP sidecar](https://huggingface.co/drluoto/Qwen3.8-Flash-Next-MTP-GGUF)
+- [Pinned experimental FR-Spec sidecar and card](https://huggingface.co/drluoto/Qwen3.8-Flash-Next-MTP-GGUF/tree/922dc15f622e301c29abcbcd49c1eaf937ae5230)
+- [Pinned FR-Spec producer and frequency selection](https://github.com/drluoto/llama.cpp/tree/fb367b8cf2cf439326c8f77477ff65d01ba4816f/scripts/frspec)
+- [Pinned community Q4_K_XL-DN4 target](https://huggingface.co/bitlamas/Qwen3.8-Flash-Next-Q4_K_XL-DN4/tree/374ee5752a4e5dd2b98ca76eafaec6e3b7af3105)
 - [`shard-scalpel`](https://github.com/drluoto/shard-scalpel)
