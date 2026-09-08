@@ -1,8 +1,8 @@
 # Maintainer: profevine <lordehenry@gmail.com>
 pkgname=legendary-lyrics
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="Terminal music visualizer with album art, synced lyrics and bar animation"
+pkgdesc="Terminal music visualizer for MPRIS players: album art, karaoke lyrics, audio bars"
 arch=('any')
 url="https://github.com/profevine/legendary-lyrics"
 license=('MIT')
@@ -12,10 +12,14 @@ depends=(
     'python-httpx'
     'python-pillow'
     'playerctl'
+    'fontconfig'
 )
-optdepends=('cava: real audio bar visualization')
+optdepends=(
+    'cava: real audio bar visualization'
+    'ttf-font: large anti-aliased type for the title and karaoke lyrics'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d5616792bdaf8c59e0407933225335b19c309ba795510b7d966b4e5861349b5e')
+sha256sums=('958347fb366ced080d7cf5c247e988a12e4a9976a183dcf6ca05d995b793635f')
 
 package() {
     cd "$pkgname-$pkgver"

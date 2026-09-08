@@ -1,6 +1,6 @@
 pkgbase = legendary-lyrics
-	pkgdesc = Terminal music visualizer with album art, synced lyrics and bar animation
-	pkgver = 1.2.0
+	pkgdesc = Terminal music visualizer for MPRIS players: album art, karaoke lyrics, audio bars
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/profevine/legendary-lyrics
 	arch = any
@@ -10,8 +10,10 @@ pkgbase = legendary-lyrics
 	depends = python-httpx
 	depends = python-pillow
 	depends = playerctl
+	depends = fontconfig
 	optdepends = cava: real audio bar visualization
-	source = legendary-lyrics-1.2.0.tar.gz::https://github.com/profevine/legendary-lyrics/archive/v1.2.0.tar.gz
-	sha256sums = d5616792bdaf8c59e0407933225335b19c309ba795510b7d966b4e5861349b5e
+	optdepends = ttf-font: large anti-aliased type for the title and karaoke lyrics
+	source = legendary-lyrics-1.3.0.tar.gz::https://github.com/profevine/legendary-lyrics/archive/v1.3.0.tar.gz
+	sha256sums = 958347fb366ced080d7cf5c247e988a12e4a9976a183dcf6ca05d995b793635f
 
 pkgname = legendary-lyrics
