@@ -5,7 +5,7 @@
 _pkgname=okular
 pkgname=okular-no-phonon
 pkgver=26.08.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Document Viewer: applying patches from https://invent.kde.org/graphics/okular/-/merge_requests/1386'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
@@ -56,10 +56,10 @@ groups=(kde-applications
         kde-graphics)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz
         https://invent.kde.org/graphics/okular/-/commit/e322356c.patch
-        https://invent.kde.org/graphics/okular/-/merge_requests/1386.patch)
+        1386-$pkgver.patch::https://invent.kde.org/graphics/okular/-/merge_requests/1386.patch)
 sha256sums=('235e8e761f949b81953582e3ff6e45b8832d0d551b71bd1b5098c1ad663511e4'
             '8850f191cee5e5312fce2aa0d8415a7ab8b8ffabbd07176275bcd375087ca561'
-            'f768167d9744ac8a0a05d2210da5a9291193d98a35bca1c5cdb9e96d5a7576ea')
+            'b1d005f2b210a631973d1214d0fe742fb1a50e46b4f7216fffcab4e721eda642')
 # validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
@@ -71,7 +71,7 @@ conflicts=(okular)
 prepare() {
   patch -d $_pkgname-$pkgver -p1 < e322356c.patch # Fix crashes in kile
 
-  patch -d $_pkgname-$pkgver -p1 < 1386.patch # Fix crashes in kile
+  patch -d $_pkgname-$pkgver -p1 < 1386-$pkgver.patch
 }
 
 build() {
