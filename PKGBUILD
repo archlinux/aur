@@ -9,7 +9,7 @@ fi
 
 _pkgname="pcsx2"
 pkgname="$_pkgname-latest-bin"
-pkgver=2.7.461
+pkgver=2.9.34
 pkgrel=1
 pkgdesc="PlayStation 2 emulator"
 url="https://github.com/PCSX2/pcsx2"
@@ -23,6 +23,7 @@ depends=(
   'libgpg-error'
 )
 makedepends=(
+  '7zip'
   'patchelf'
 )
 
@@ -33,6 +34,7 @@ options=('!strip' '!debug')
 install="$_pkgname.install"
 
 _source_main() {
+  _pkgsrc="$_pkgname-$_pkgver"
   _appimage="pcsx2-v$_pkgver-linux-appimage-x64-Qt.AppImage"
   source=("$url/releases/download/v$_pkgver/$_appimage")
   sha256sums=('SKIP')
@@ -44,25 +46,24 @@ pkgver() {
 
 build() {
   # extract
-  chmod +x "$_appimage"
-  "./$_appimage" --appimage-extract
+  7z x -o"$_pkgsrc" "$_appimage"
 
   # icon
-  for i in squashfs-root/*.png; do
-    [ -f "$i" ] && install -Dm755 "$i" "$_pkgname.png" && break
+  for i in "$_pkgsrc"/*.png; do
+    [ -f "$i" ] && install -Dm644 "$i" "$_pkgname.png" && break
   done
 }
 
 package() {
   local _files=(
-    squashfs-root/usr/bin
-    squashfs-root/usr/lib
-    squashfs-root/usr/plugins
+    usr/bin
+    usr/lib
+    usr/plugins
   )
 
   mkdir -pm755 "$pkgdir/$_install_path/$_pkgname/usr"
-  for i in ${_files[@]}; do
-    cp -r "$i" "$pkgdir/$_install_path/$_pkgname/${i#squashfs-root/}"
+  for i in "${_files[@]}"; do
+    cp -r "$_pkgsrc/$i" "$pkgdir/$_install_path/$_pkgname/${i}"
   done
 
   # rpath
