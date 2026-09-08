@@ -1,7 +1,7 @@
 pkgbase = python-py-key-value-aio
 	pkgdesc = Async key-value store with pluggable backends
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chrisguidry/py-key-value-aio
 	arch = any
 	license = Apache
