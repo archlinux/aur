@@ -1,0 +1,39 @@
+pkgbase = fcitx5-wetypex
+	pkgdesc = Native Linux compatibility layer for WeType on Fcitx5
+	pkgver = 2.2.3.657
+	pkgrel = 1
+	url = https://github.com/panxuc/fcitx5-wetypex
+	install = fcitx5-wetypex.install
+	arch = x86_64
+	license = MIT
+	license = ISC
+	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = clang
+	makedepends = git
+	makedepends = boost
+	depends = fcitx5>=5.1.9
+	depends = fcitx5-qt
+	depends = libime>=1.1.15
+	depends = libc++
+	depends = json-c
+	depends = curl
+	depends = bubblewrap
+	depends = util-linux
+	depends = python
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-webengine
+	depends = wl-clipboard
+	depends = pipewire
+	depends = ffmpeg
+	depends = libnotify
+	depends = polkit
+	optdepends = fcitx5-configtool: manage input methods
+	options = !debug
+	source = fcitx5-wetypex-2.2.3.657.tar.gz::https://github.com/panxuc/fcitx5-wetypex/archive/refs/tags/v2.2.3.657.tar.gz
+	source = libkqueue::git+https://github.com/mheily/libkqueue.git#commit=46a3e130f88b0b0742575dcb01d77e336538024b
+	sha256sums = 95f9f629f2cfcc51af26b1e253fa14b44c8dc91bb1b772af766aae0de1503591
+	sha256sums = SKIP
+
+pkgname = fcitx5-wetypex
