@@ -1,0 +1,7 @@
+/src/
+/pkg/
+/course2md-upstream/
+/zed/
+/gpui-component/
+/*.pkg.tar.*
+/*.src.tar.*

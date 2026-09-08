@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=course2md
+Comment=Turn course videos into illustrated notes
+Exec=course2md-desktop
+Icon=course2md
+Terminal=false
+Categories=Education;AudioVideo;

@@ -1,0 +1,391 @@
+diff --git a/desktop/README.md b/desktop/README.md
+index 78f0420..4b12eb7 100644
+--- a/desktop/README.md
++++ b/desktop/README.md
+@@ -10,9 +10,11 @@
+ - Windows x64：完整解压 ZIP，运行 course2md-desktop.exe，保留同目录 course2md.exe。
+ - Linux x64：完整解压 tar.gz，在目录中运行 ./course2md-desktop，保留同目录 course2md。
+ 
+-GUI 已包含匹配的 CLI 引擎，但不添加终端命令。Homebrew、AUR 和 install.sh 安装的是独立 CLI。两者都需 ffmpeg/ffprobe，在线视频另需 yt-dlp；安装后重启应用。按首次设置向导选择目录和识别方式，并在「设置 → 运行环境」检查工具。升级时退出旧应用并替换整个包，保留配置、笔记和模型缓存。
++GUI 已包含匹配的 CLI 引擎，但不添加独立的 `course2md` 终端命令。Homebrew、`course2md` AUR 包和 install.sh 安装的是独立 CLI。两者都需 ffmpeg/ffprobe，在线视频另需 yt-dlp；安装后重启应用。按首次设置向导选择目录和识别方式，并在「设置 → 运行环境」检查工具。升级时退出旧应用并替换整个包，保留配置、笔记和模型缓存。
+ 
+-English: download a prebuilt GUI from Releases, extract the whole archive (or drag the macOS app to Applications), and keep the bundled CLI. Install ffmpeg/ffprobe and yt-dlp separately, restart the app, then follow first-run setup. Homebrew/AUR/install.sh install only the standalone CLI. Replace the complete app/package when upgrading; preserve your settings, notes and model caches.
++English: download a prebuilt GUI from Releases, extract the whole archive (or drag the macOS app to Applications), and keep the bundled CLI. Install ffmpeg/ffprobe and yt-dlp separately, restart the app, then follow first-run setup. Homebrew, the `course2md` AUR package, and install.sh install only the standalone CLI. Replace the complete app/package when upgrading; preserve your settings, notes and model caches.
++
++本补丁版的 Arch Linux 包为 `course2md-gui-slides`，包含 GUI 和配套 CLI 引擎。它与 `course2md-gui-bin` 冲突，不覆盖用户配置。
+ 
+ 完整的[双语安装与升级指南](../docs/releases/v1.7.0.md)包含下载选择、独立 CLI 安装和后端依赖。
+ 
+@@ -70,7 +72,10 @@ cargo test --manifest-path desktop/Cargo.toml
+ ## 界面与操作
+ 
+ - 首次打开自动显示设置引导，自动选择本机识别方式并选择笔记目录；完成或稍后设置后不再自动出现，可从「设置 → 通用」重新打开。缺少视频处理工具时直接进入安装帮助。
+-- 添加页粘贴在线链接或选择本地视频，确认封面后选择文件夹并生成；字幕策略、识别方式、导出格式与 AI 整理集中在可展开的转换选项中。
++- 添加页粘贴在线链接或选择本地视频，确认封面后选择文件夹并生成。字幕策略、识别方式、截图参数、导出格式与 AI 整理集中在可展开的转换选项中。
++  - 截图模式可选 `stable`（等待画面稳定）或 `first`（画面变化后立即取帧）。
++  - 截图参数包含相似度阈值、采样间隔、截图最短间隔和稳定等待。稳定等待仅对 `stable` 生效。
++  - 相似度须大于 0 且不超过 1，采样间隔须大于 0，其余时间参数允许为 0。无效参数会阻止任务启动。
+ - 生成、取消等操作固定在顶部工具栏；底栏仅在任务运行时显示真实进度，并可进入任务详情。
+ - 任务分别显示真实工作项、并行数量及下载/转写进度和 ETA；未知进度显示已用时间，日志默认收起。
+ - 任务在后台运行；完成时正在查看任务页会自动进入阅读，在其他页面时不会打断当前操作。
+diff --git a/desktop/src/library_ui.rs b/desktop/src/library_ui.rs
+index dc8f049..1751422 100644
+--- a/desktop/src/library_ui.rs
++++ b/desktop/src/library_ui.rs
+@@ -16,7 +16,7 @@ impl Desktop {
+         {
+             self.invalidate_source();
+             self.online = true;
+-            self.task_options = ConversionOptions::from_config(&self.config);
++            self.reset_task_options(ConversionOptions::from_config(&self.config));
+             self.show_options = false;
+             self.last_source_input.clear();
+             self.inputs[&Field::Source].update(cx, |state, cx| state.set_value("", window, cx));
+diff --git a/desktop/src/main.rs b/desktop/src/main.rs
+index 08be082..426663d 100644
+--- a/desktop/src/main.rs
++++ b/desktop/src/main.rs
+@@ -50,6 +50,10 @@ enum Field {
+     LlmUrl,
+     LlmKey,
+     LlmModel,
++    SampleInterval,
++    Cooldown,
++    Similarity,
++    StableSecs,
+ }
+ const PROVIDERS: [(&str, &str); 6] = [
+     ("", "自动"),
+@@ -73,6 +77,11 @@ struct ConversionOptions {
+     keep_video: bool,
+     resume: bool,
+     formats: [bool; 3],
++    slide_mode: course2md::config::SlideMode,
++    sample_interval: f64,
++    cooldown: f64,
++    similarity: f64,
++    stable_secs: f64,
+ }
+ 
+ impl ConversionOptions {
+@@ -115,6 +124,23 @@ impl ConversionOptions {
+             keep_video,
+             resume,
+             formats,
++            slide_mode: config.defaults.slide_mode.unwrap_or_default(),
++            sample_interval: config
++                .defaults
++                .sample_interval
++                .unwrap_or(course2md::config::DEFAULT_SAMPLE_INTERVAL),
++            cooldown: config
++                .defaults
++                .cooldown
++                .unwrap_or(course2md::config::DEFAULT_COOLDOWN),
++            similarity: config
++                .defaults
++                .similarity
++                .unwrap_or(course2md::config::DEFAULT_SIMILARITY),
++            stable_secs: config
++                .defaults
++                .stable_secs
++                .unwrap_or(course2md::config::DEFAULT_STABLE_SECS),
+         }
+     }
+ }
+@@ -157,6 +183,7 @@ struct Desktop {
+     config: course2md::settings::ConfigFile,
+     config_error: bool,
+     task_options: ConversionOptions,
++    task_slide_inputs_pending: bool,
+     settings_options: ConversionOptions,
+     job: Option<Job>,
+     kind: Kind,
+@@ -202,6 +229,69 @@ impl Desktop {
+         }
+     }
+ 
++    fn reset_task_options(&mut self, options: ConversionOptions) {
++        self.task_options = options;
++        self.task_slide_inputs_pending = true;
++    }
++
++    fn sync_task_slide_inputs(&mut self, window: &mut Window, cx: &mut Context<Self>) {
++        if !std::mem::take(&mut self.task_slide_inputs_pending) {
++            return;
++        }
++        for (field, value) in [
++            (Field::SampleInterval, self.task_options.sample_interval),
++            (Field::Cooldown, self.task_options.cooldown),
++            (Field::Similarity, self.task_options.similarity),
++            (Field::StableSecs, self.task_options.stable_secs),
++        ] {
++            self.inputs[&field].update(cx, |state, cx| {
++                state.set_value(value.to_string(), window, cx)
++            });
++        }
++    }
++
++    fn resolve_task_slide_options(
++        &self,
++        source: String,
++        cx: &App,
++    ) -> anyhow::Result<course2md::config::PipelineConfig> {
++        let parse = |field, label| {
++            self.value(field, cx)
++                .parse::<f64>()
++                .map_err(|_| anyhow::anyhow!("{label}不是有效数字，请重新输入。"))
++        };
++        let options = course2md::cli::RunOpts {
++            slide_mode: Some(self.task_options.slide_mode),
++            sample_interval: Some(parse(Field::SampleInterval, "采样间隔")?),
++            cooldown: Some(parse(Field::Cooldown, "截图冷却时间")?),
++            similarity: Some(parse(Field::Similarity, "相似度阈值")?),
++            // first does not use the hidden draft. Keep it for a later switch to stable.
++            stable_secs: Some(
++                if self.task_options.slide_mode == course2md::config::SlideMode::Stable {
++                    parse(Field::StableSecs, "稳定等待时间")?
++                } else {
++                    self.task_options.stable_secs
++                },
++            ),
++            formats: Some(
++                [
++                    course2md::config::OutputFormat::Md,
++                    course2md::config::OutputFormat::Html,
++                    course2md::config::OutputFormat::Json,
++                ]
++                .into_iter()
++                .zip(self.task_options.formats)
++                .filter(|(_, selected)| *selected)
++                .map(|(format, _)| format)
++                .collect(),
++            ),
++            ..Default::default()
++        };
++        let config = course2md::options::resolve(source, &options, &self.config)?;
++        config.validate()?;
++        Ok(config)
++    }
++
+     fn request_close(&mut self, cx: &mut Context<Self>) -> bool {
+         if self.settings_deadline.take().is_some() {
+             self.save_settings(cx);
+@@ -238,6 +328,7 @@ impl Desktop {
+             .clone()
+             .map(course2md::config::expand_tilde)
+             .unwrap_or_else(backend::default_output);
++        let options = ConversionOptions::from_config(&config);
+         let fields = [
+             (
+                 Field::Source,
+@@ -265,6 +356,26 @@ impl Desktop {
+             ),
+             (Field::LlmKey, "API Key", config.llm.api_key.clone()),
+             (Field::LlmModel, "模型名称", config.llm.model.clone()),
++            (
++                Field::SampleInterval,
++                "采样间隔（秒）",
++                options.sample_interval.to_string(),
++            ),
++            (
++                Field::Cooldown,
++                "截图冷却时间（秒）",
++                options.cooldown.to_string(),
++            ),
++            (
++                Field::Similarity,
++                "相似度阈值",
++                options.similarity.to_string(),
++            ),
++            (
++                Field::StableSecs,
++                "稳定等待时间（秒）",
++                options.stable_secs.to_string(),
++            ),
+         ];
+         let inputs: BTreeMap<_, _> = fields
+             .into_iter()
+@@ -323,7 +434,6 @@ impl Desktop {
+                 }
+             },
+         ));
+-        let options = ConversionOptions::from_config(&config);
+         let poll = cx.spawn_in(window, async |this, cx| {
+             let mut busy = false;
+             loop {
+@@ -388,6 +498,7 @@ impl Desktop {
+             config,
+             config_error,
+             task_options: options.clone(),
++            task_slide_inputs_pending: false,
+             settings_options: options,
+             job: None,
+             kind: Kind::Convert,
+@@ -618,6 +729,18 @@ impl Desktop {
+                     self.message = Some("至少选择一种输出格式。".into());
+                     return;
+                 }
++                let slide_config = match self.resolve_task_slide_options(source.clone(), cx) {
++                    Ok(config) => config,
++                    Err(error) => {
++                        self.show_options = true;
++                        self.message = Some(format!("{error:#}"));
++                        return;
++                    }
++                };
++                self.task_options.sample_interval = slide_config.sample_interval;
++                self.task_options.cooldown = slide_config.cooldown;
++                self.task_options.similarity = slide_config.similarity;
++                self.task_options.stable_secs = slide_config.stable_secs;
+                 let mut args = vec![
+                     source,
+                     "--json".into(),
+@@ -627,6 +750,11 @@ impl Desktop {
+                     SOURCES[self.task_options.source_mode].0.into(),
+                     "--formats".into(),
+                     formats.join(","),
++                    format!("--slide-mode={}", slide_config.slide_mode),
++                    format!("--sample-interval={}", slide_config.sample_interval),
++                    format!("--cooldown={}", slide_config.cooldown),
++                    format!("--similarity={}", slide_config.similarity),
++                    format!("--stable-secs={}", slide_config.stable_secs),
+                     if self.task_options.llm {
+                         "--llm"
+                     } else {
+@@ -1006,7 +1134,7 @@ impl Desktop {
+                 let library_changed = self.config.defaults.out != config.defaults.out;
+                 self.config = config;
+                 if self.source_preview.is_none() {
+-                    self.task_options = ConversionOptions::from_config(&self.config);
++                    self.reset_task_options(ConversionOptions::from_config(&self.config));
+                 }
+                 self.settings_snapshot = self.edited_settings(cx);
+                 cx.set_reduce_motion(self.desktop_settings.reduce_motion);
+@@ -1043,9 +1171,6 @@ impl Desktop {
+         {
+             self.settings_options.provider = choice.index;
+         }
+-        if self.source_preview.is_none() {
+-            self.task_options = self.settings_options.clone();
+-        }
+         let output = cfg
+             .defaults
+             .out
+@@ -1055,6 +1180,9 @@ impl Desktop {
+         self.inputs[&Field::Output].update(cx, |state, cx| {
+             state.set_value(output.display().to_string(), window, cx)
+         });
++        if self.source_preview.is_none() {
++            self.reset_task_options(self.settings_options.clone());
++        }
+     }
+ }
+ 
+diff --git a/desktop/src/views.rs b/desktop/src/views.rs
+index 996a8a4..c38861b 100644
+--- a/desktop/src/views.rs
++++ b/desktop/src/views.rs
+@@ -65,6 +65,68 @@ impl Desktop {
+                 ),
+         )
+     }
++    fn slide_options(&self, cx: &mut Context<Self>) -> Div {
++        use course2md::config::SlideMode;
++
++        v_flex()
++            .w_full()
++            .min_w_0()
++            .gap_3()
++            .child(section(
++                "截图",
++                "稳定画面适合课件；立即截图适合持续运动的视频，不等待画面稳定。",
++            ))
++            .child(
++                h_flex().gap_2().flex_wrap().children(
++                    [
++                        (SlideMode::Stable, "稳定画面 (stable)"),
++                        (SlideMode::First, "立即截图 (first)"),
++                    ]
++                    .into_iter()
++                    .enumerate()
++                    .map(|(index, (mode, label))| {
++                        choice(
++                            control(("slide-mode", index)).label(label),
++                            self.task_options.slide_mode == mode,
++                        )
++                        .on_click(cx.listener(move |this, _, _, cx| {
++                            this.task_options.slide_mode = mode;
++                            cx.notify();
++                        }))
++                    }),
++                ),
++            )
++            .child(
++                v_flex()
++                    .min_w_0()
++                    .gap_1()
++                    .child(self.input(Field::SampleInterval, "采样间隔（秒）", cx))
++                    .child(muted("采样频率不等于截图频率。实际采样间隔最低为 0.2 秒。")),
++            )
++            .child(
++                v_flex()
++                    .min_w_0()
++                    .gap_1()
++                    .child(self.input(Field::Cooldown, "截图最短间隔（秒）", cx))
++                    .child(muted("限制两次截图的最短间隔，不是固定定时截图。")),
++            )
++            .child(
++                v_flex()
++                    .min_w_0()
++                    .gap_1()
++                    .child(self.input(Field::Similarity, "相似度阈值", cx))
++                    .child(muted("大于 0 且不超过 1；越高越容易识别细微变化。")),
++            )
++            .when(self.task_options.slide_mode == SlideMode::Stable, |view| {
++                view.child(
++                    v_flex()
++                        .min_w_0()
++                        .gap_1()
++                        .child(self.input(Field::StableSecs, "稳定等待（秒）", cx))
++                        .child(muted("画面保持稳定后再截图。")),
++                )
++            })
++    }
+     fn new_page(&mut self, window: &mut Window, cx: &mut Context<Self>) -> AnyElement {
+         let mut view = v_flex().gap_4().child(self.source_card(cx));
+         if self.source_preview.is_some() {
+@@ -105,6 +167,7 @@ impl Desktop {
+                         .when(self.task_options.source_mode != 1, |v| {
+                             v.child(self.engine_panel(cx))
+                         })
++                        .child(self.slide_options(cx))
+                         .child(self.format_choices(cx))
+                         .child(crate::settings_ui::preference(
+                             "AI 整理",
+@@ -707,6 +770,7 @@ impl Desktop {
+ 
+ impl Render for Desktop {
+     fn render(&mut self, window: &mut Window, cx: &mut Context<Self>) -> impl IntoElement {
++        self.sync_task_slide_inputs(window, cx);
+         let hidden_fields: Vec<_> = self
+             .inputs
+             .keys()
+@@ -716,6 +780,18 @@ impl Render for Desktop {
+                     Field::Source => !self.setup_open && self.page == Page::New && self.online,
+                     Field::Search => !self.setup_open && self.page == Page::Library,
+                     Field::FolderName => !self.setup_open && self.folder_editor.is_some(),
++                    Field::SampleInterval
++                    | Field::Cooldown
++                    | Field::Similarity
++                    | Field::StableSecs => {
++                        !self.setup_open
++                            && self.page == Page::New
++                            && self.source_preview.is_some()
++                            && self.show_options
++                            && (*field != Field::StableSecs
++                                || self.task_options.slide_mode
++                                    == course2md::config::SlideMode::Stable)
++                    }
+                     Field::Output => {
+                         self.setup_open || (self.page == Page::Settings && self.settings_tab == 0)
+                     }

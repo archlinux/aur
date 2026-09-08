@@ -1,0 +1,46 @@
+pkgbase = course2md-gui-slides
+	pkgdesc = Native course video notes GUI with per-conversion screenshot controls
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/mizorewww/course2md
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = python
+	depends = alsa-lib
+	depends = ffmpeg
+	depends = fontconfig
+	depends = gcc-libs
+	depends = glibc
+	depends = libgit2
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = openssl
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = yt-dlp: online video downloads
+	optdepends = llama-cpp: local GPU and CPU speech recognition
+	provides = course2md-gui=1.7.0
+	conflicts = course2md-gui
+	conflicts = course2md-gui-bin
+	options = !debug
+	options = !lto
+	source = course2md-upstream::git+https://github.com/mizorewww/course2md.git#commit=6881a1bac0df0010d72c85367c09474791a5fb82
+	source = zed::git+https://github.com/zed-industries/zed.git#commit=5a9b9558db01a6b906cec2fb70a797affdc58cdd
+	source = gpui-component::git+https://github.com/longbridge/gpui-component.git#commit=5f5ba08d35c9fb6f42d81a7aff7edba61ba3bc6b
+	source = slide-controls.patch
+	source = course2md.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 317ea0fc21e6861de27a4360296d620cfd2aa6ec189d47e90e730a483dc7ac61
+	sha256sums = 8bed829e281c7a92378f39b5fd384adf8ca8fad56cce2eb701285843dede3e2c
+
+pkgname = course2md-gui-slides
