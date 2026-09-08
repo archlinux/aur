@@ -2,8 +2,8 @@
 
 pkgname=python-webdriver-manager
 _pkgname=webdriver_manager
-pkgver=4.0.2
-pkgrel=3
+pkgver=4.1.2
+pkgrel=1
 pkgdesc="Simplify management of binary drivers for different browsers in Selenium"
 arch=(any)
 url="https://github.com/SergeyPirogov/webdriver_manager"
@@ -18,17 +18,16 @@ makedepends=(
   python-build
   python-installer
   python-setuptools
-  python-wheel
 )
 checkdepends=(
-  google-chrome
   python-mock
   python-pybrowsers
   python-pytest
+  python-pytest-cov
   python-selenium
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e6014321aa966eb009d8a635f381f8615eddf56709de7a3f6d4e3be6ae51ce13')
+sha256sums=('50b423d57d6d72b0001f3bc3915f5059bf216ef640b3e371ac6b029b116ab651')
 
 build() {
   cd $_pkgname-$pkgver
