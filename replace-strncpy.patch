@@ -5,7 +5,7 @@
  		return ret;
  
 -	strncpy(rmidi->name, motu->card->shortname, sizeof(rmidi->name));
-+	snprintf(rmidi->name, sizeof(rmidi->name), motu->card->shortname);
++	strscpy(rmidi->name, motu->card->shortname, sizeof(rmidi->name));
  
  	rmidi->info_flags = SNDRV_RAWMIDI_INFO_DUPLEX;
  	rmidi->private_data = motu;
@@ -14,7 +14,7 @@
  	snd_card_set_dev(card, &interface->dev);
  
 -	strncpy(card->driver, "snd-motu", sizeof(card->driver));
-+	snprintf(card->driver, sizeof(card->driver), "snd-motu");
++	strscpy(card->driver, "snd-motu", sizeof(card->driver));
  	snprintf(card->shortname, sizeof(card->shortname), "MOTU %s", str);
  	usb_make_path(motu->dev, usb_path, sizeof(usb_path));
  	snprintf(motu->card->longname, sizeof(motu->card->longname),
