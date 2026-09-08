@@ -4,7 +4,7 @@
 # Contributor: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app-electron
-pkgver=7.32.0
+pkgver=7.32.1
 _bettersqlite3ver=12.9.0
 _bufferutilver=4.0.9
 _elecronver=145 # whenever update the bettersqlite, update this one by one to try the proper version.
@@ -35,7 +35,7 @@ source=(
 	notion.desktop
 	notion.png
 )
-sha256sums=('cc201fb16d93d683c6c8ef7a7c3b99d3ca2a94145b6af21605673daa4fbf8a3e'
+sha256sums=('36650c60918aabd4c0b856b91c924ecff4b541518d8c1bd1506db677a8e42d8a'
             '59d9e3beed32ff516fa79fc09bfb819a7abd84d077a77abfc68d85a6d79ac757'
             '2139aae79c5a4fd4d07467bd9b7872ea109483aa43b3dfd6c8d3725ccba009be'
             '916f75f612d353651d3d04a414c29d157521a06765683742a66279acac904744'
@@ -79,9 +79,6 @@ prepare() {
 	sg_patch \
 		'$S.setUserAgent(`${$S.getUserAgent()} WantsServiceWorker`)' \
 		'$S.setUserAgent(`${$S.getUserAgent().replace("Linux", "Windows")} WantsServiceWorker`)'
-	sg_patch \
-		'function $F(){const $$$P;if("darwin"===process.platform){$$$A}if("win32"===process.platform){$$$B}return!1}' \
-		'function $F(){return!0}'
 	sg_patch \
 		'if("darwin"===process.platform)$MAC;else if("win32"===process.platform){const $UNINSTALL=$ARGS=>$ARGS.find($ARG=>"--uninstall"===$ARG);$$$B}' \
 		'if("darwin"===process.platform)$MAC;else if("linux"===process.platform){const $UNINSTALL=$ARGS=>$ARGS.find($ARG=>"--uninstall"===$ARG);$$$B}'
