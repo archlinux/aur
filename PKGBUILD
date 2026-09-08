@@ -30,10 +30,10 @@ depends=(
 makedepends=('cmake' 'clang' 'git' 'boost')
 optdepends=('fcitx5-configtool: manage input methods')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
     'libkqueue::git+https://github.com/mheily/libkqueue.git#commit=46a3e130f88b0b0742575dcb01d77e336538024b'
 )
-sha256sums=("122cdece40c80a3628809932785ae2f69700c5c947590780cb1feba360c8d1ef" "SKIP")
+sha256sums=("79e89e5a9c2f879da9d9576d7809ed572be5a172938f5f47391a301837cffaf4" "SKIP")
 install=fcitx5-wetypex.install
 
 build() {

@@ -31,9 +31,9 @@ pkgbase = fcitx5-wetypex
 	depends = polkit
 	optdepends = fcitx5-configtool: manage input methods
 	options = !debug
-	source = fcitx5-wetypex-2.2.3.657.tar.gz::https://github.com/panxuc/fcitx5-wetypex/archive/refs/tags/v2.2.3.657.tar.gz
+	source = fcitx5-wetypex-2.2.3.657.tar.gz::https://github.com/panxuc/fcitx5-wetypex/releases/download/v2.2.3.657/fcitx5-wetypex-2.2.3.657.tar.gz
 	source = libkqueue::git+https://github.com/mheily/libkqueue.git#commit=46a3e130f88b0b0742575dcb01d77e336538024b
-	sha256sums = 122cdece40c80a3628809932785ae2f69700c5c947590780cb1feba360c8d1ef
+	sha256sums = 79e89e5a9c2f879da9d9576d7809ed572be5a172938f5f47391a301837cffaf4
 	sha256sums = SKIP
 
 pkgname = fcitx5-wetypex
