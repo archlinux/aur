@@ -1,7 +1,7 @@
 # Maintainer: Matheus Vilano <aur.negotiate177@passinbox.com>
 
 pkgname=unreal-engine-manager
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A Python-based Linux application for managing Unreal Engine installations."
 arch=('any')

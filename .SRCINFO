@@ -1,6 +1,6 @@
 pkgbase = unreal-engine-manager
 	pkgdesc = A Python-based Linux application for managing Unreal Engine installations.
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/matheusvilano/unreal-engine-manager/
 	install = package.install
