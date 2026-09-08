@@ -1,15 +1,19 @@
 pkgbase = lib32-libraw
 	pkgdesc = A library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others) (32-bit)
-	pkgver = 0.21.1
+	pkgver = 0.22.2
 	pkgrel = 1
 	url = https://www.libraw.org/
 	arch = x86_64
-	license = CDDL
-	license = LGPL
-	depends = lib32-lcms2
-	depends = lib32-jasper
+	license = CDDL-1.0
+	license = LGPL-2.1-only
+	makedepends = git
 	depends = libraw
-	source = https://www.libraw.org/data/LibRaw-0.21.1.tar.gz
-	sha256sums = 630a6bcf5e65d1b1b40cdb8608bdb922316759bfb981c65091fec8682d1543cd
+	depends = lib32-glibc
+	depends = lib32-lcms2
+	depends = lib32-gcc-libs
+	depends = lib32-libjpeg-turbo
+	depends = lib32-zlib
+	source = https://www.libraw.org/data/LibRaw-0.22.2.tar.gz
+	sha256sums = de86b035655accff8d4010f1a221fdf50d353cb7b1422ba26f14a0db92612cfa
 
 pkgname = lib32-libraw
