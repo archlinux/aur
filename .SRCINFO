@@ -1,0 +1,17 @@
+pkgbase = yankbase-git
+	pkgdesc = A git-based universal text snippet manager
+	pkgver = 0.1r0.g02d36e2
+	pkgrel = 1
+	url = https://codeberg.org/ValOm/yankbase
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = make
+	makedepends = scdoc
+	makedepends = gzip
+	depends = gitstore
+	provides = yankbase
+	source = git+https://codeberg.org/ValOm/yankbase
+	md5sums = SKIP
+
+pkgname = yankbase-git
