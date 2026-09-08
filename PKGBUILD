@@ -2,7 +2,7 @@
 
 pkgbase=td-system-tools
 pkgname=td-system-tools
-pkgver=2.7.13
+pkgver=2.7.14
 pkgrel=1
 groups=()
 pkgdesc="Tools for Basic System Management"
@@ -29,7 +29,7 @@ checkdepends=()
 optdepends=()
 options=('!debug')
 source=("${pkgname}::git+${url}.git#tag=${pkgname}-${pkgver}")
-sha256sums=('6d89809688a1378c3f3972ac2bcba3bf6f6572bb5635a0314c0cdea55c8061b9')
+sha256sums=('7abafd5e5089010600a736bb53a546ea749b8808def20bcee475df13a82091f9')
 
 prepare()
 {
