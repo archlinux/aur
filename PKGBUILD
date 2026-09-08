@@ -15,7 +15,7 @@
 
 pkgname=srelens-bin
 _pkgname=srelens
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Kubernetes IDE — an MCP-native desktop workspace for operating clusters"
 arch=('x86_64')
@@ -49,7 +49,7 @@ source=(
   "LICENSE-$pkgver::https://raw.githubusercontent.com/srelens/srelens/$_pkgname-v$pkgver/LICENSE"
 )
 # Replaced with real hashes by `updpkgsums` in CI on every release.
-sha256sums=('b2050f2169da61ec4927d19267584d2c21bd2c9b8489f26eec66e6ade43fb082'
+sha256sums=('ee5f62473826215edbb3a30df9cc5caaaa39241745ae71cec7943946fe67f98a'
             'be310626d05ec2f34b6ad0e0b533134d0ece9eba938d7af30e82480102481cf4')
 
 package() {
