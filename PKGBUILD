@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="WhatsApp CLI"
 
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('7a36399c44f02aaed643d309c294d0a4b0c8264748561d46525aa9c9abd0b3a6')
-sha256sums_aarch64=('6440be3544de84df1df3598320e891d06c160ec33b35ef350c353feddeeb8ed3')
+sha256sums_x86_64=('36e8c48065f224f58428db9802767e8c6d9e10c0e847bbb5d9072fac72c272cd')
+sha256sums_aarch64=('e41465ac95baea79586d43ea102adb501abd0aa84f371138a9a1bda625bfc01d')
 
 
 package() {
