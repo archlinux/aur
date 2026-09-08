@@ -2,7 +2,7 @@
 _pluginname=aitum-multistream
 _gitname=obs-${_pluginname}
 pkgname=obs-${_pluginname}-bin
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="OBS Studio plugin to multistream by aitum"
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('obs-studio>=30.0.0')
 provides=("obs-${_pluginname}")
 conflicts=("${_gitname}" "obs-plugin-${_pluginname}-git")
 source=("${url}/releases/download/${pkgver}/${_pluginname}-linux-gnu.deb")
-b2sums=('acb559d1f341ce0ee80652b77e8c57b3ebc72b3284020b90cc2207c5fed44dc2c6aeb875147a0af818dc7f4deb711ee0a2e1a22ba1d330ab17f02457074ed646')
-sha512sums=('e3648112d207f9a422fd9acd19ba574af75b23c348137ef17c39f4c96ecbff45f8424b95360577721180e8cf2992b4356d589e2b1c3f438fb5a4827f472f3d93')
+b2sums=('8041d759d7fac3e5530b27de3054949e6e71ebee673601a1414eb3bd4888304b7edd68c2a114a63add614e46b1f8b0357b44d782e0e8a36351787d41c45004e9')
+sha512sums=('38fab6b7d6f7bb05e6c9d86acbb6584fe34dd9affba8c5744987d39d93ff9862638f67919e8fb6180f2ce0be655ae2018a9b0b500c93a338b2b460b334f87c0a')
 
 package() {
     bsdtar -xvf data.tar.gz -C "$srcdir/"
