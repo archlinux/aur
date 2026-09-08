@@ -3,7 +3,7 @@
 # Contributor: skssmd <skssmd78475@gmail.com>
 
 pkgname='graft-bin'
-pkgver=2.5.7
+pkgver=2.5.9
 pkgrel=1
 pkgdesc='Agentless deployment tool extending Docker Compose to cloud via SSH'
 url='https://github.com/skssmd/graft'
@@ -13,10 +13,10 @@ provides=('Graft')
 conflicts=('Graft')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/The-Graft-Project/Graft/releases/download/v${pkgver}/Graft_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('f8759cd9a9920c5500008bc4d61d6b3c94c2b5f7d86411a3731397b99f51091a')
+sha256sums_aarch64=('17c0dd4d46f5763d9d9ce2d40cd22c0b3b9d5876d8565f34e1cc4d38b1feaae7')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/The-Graft-Project/Graft/releases/download/v${pkgver}/Graft_${pkgver}_Linux_amd64.tar.gz")
-sha256sums_x86_64=('e117c6038e04070c1be48e50bd18185b305ec7dbfd9fc4503df2dc4777de5530')
+sha256sums_x86_64=('dc90adcf30a2713b6fcc7818f02d61bcc416e57ea318e8b31d2fe2ec9a7035ed')
 
 package() {
   install -Dm755 "./graft" "${pkgdir}/usr/bin/graft"
