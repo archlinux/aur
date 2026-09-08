@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ImRAD
+Comment=Visual GUI designer for Dear ImGui
+Exec=imrad
+Icon=imrad
+Terminal=false
+Type=Application
+Categories=Development;IDE;

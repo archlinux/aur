@@ -1,0 +1,19 @@
+pkgbase = imrad-git
+	pkgdesc = GUI builder for Dear ImGui
+	pkgver = r560.gcc85b51
+	pkgrel = 1
+	url = https://github.com/tpecholt/imrad
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = gtk3
+	depends = openssl
+	depends = zlib
+	source = git+https://github.com/tpecholt/imrad.git
+	source = imrad.desktop
+	sha256sums = SKIP
+	sha256sums = 9a705251d5d6c2d8ddbd62e6b49ccb929d5db93a327dfc224413e30ea60607cb
+
+pkgname = imrad-git
