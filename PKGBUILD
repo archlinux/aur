@@ -1,6 +1,6 @@
 # Maintainer: Henri Koski <henri.koski@bitbrewers.fi>
 pkgname=hcibridge-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Attach remote ESP32 Bluetooth bridges to the local Bluetooth stack (release binary)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -19,10 +19,10 @@ source=("hcibridge-$pkgver.tar.gz::https://github.com/heppu/hcibridge/archive/re
 source_x86_64=("hcibridge-$pkgver-x86_64::$_rel/hcibridge-x86_64-linux")
 source_aarch64=("hcibridge-$pkgver-aarch64::$_rel/hcibridge-aarch64-linux")
 source_armv7h=("hcibridge-$pkgver-armv7h::$_rel/hcibridge-armv7-linux")
-sha256sums=('ce1214d57abbf9acbeaa260dc5fbd275c2fe7766bf8ab3da85fc162b2a81f56a' '783a162fc7ff97e7b2a1d26b08487918e8a6d5c5216568c2706cfc89dee13c15' '7de3988de9a4985767be7b5c362dc395570321e6e628f319b3ef31c3c65716fd' '5303882f927736c07944c53d25e52d00f957461fe597f0d5feb87378a3c3f0a5' '6ead0d149c08e820c1e37ce2207eca4aba9d5e7aae600f9caafde94f8f94e75b')
-sha256sums_x86_64=('24d93b96aa1ca612aa20eaefbba75440e025c7f87fb881c7db6a2bcd2fe88b01')
-sha256sums_aarch64=('73906317c88d1767248811504812ced74967b17fd1a086bbab52968e844ca49b')
-sha256sums_armv7h=('9950b9c2e059665c5c896bd96bdb56428debbc3a57fd266a46ed537580d88301')
+sha256sums=('2527453d78e37ab4a174086aea46bbc91ec68d34d5c0a15f09fb2c6d38e35f71' '4df2b8ab70e6d643bf707de3168be7bdb8c68097e09cbc9818969f3072939dd3' '7de3988de9a4985767be7b5c362dc395570321e6e628f319b3ef31c3c65716fd' '5303882f927736c07944c53d25e52d00f957461fe597f0d5feb87378a3c3f0a5' '6ead0d149c08e820c1e37ce2207eca4aba9d5e7aae600f9caafde94f8f94e75b')
+sha256sums_x86_64=('dd2cd2f70a7b720dcd962aac728eef4cf40cf69a144ace9e05672562dfa74b38')
+sha256sums_aarch64=('6c1084f8d9c5a949645c973c867ea88eb9fba546b50d15f196d409be5a86c93f')
+sha256sums_armv7h=('8494560e2fede441d108458446a746b91b32c9bd79f52ca24bd8ee08aee4f999')
 
 package() {
     local src="hcibridge-$pkgver"
