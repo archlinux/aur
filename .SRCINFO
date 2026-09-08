@@ -1,0 +1,24 @@
+pkgbase = lib32-libxmlrpc
+	pkgdesc = XML-RPC for C and C++ (32-bit)
+	pkgver = 1.64.03
+	pkgrel = 1
+	url = https://xmlrpc-c.sourceforge.net/
+	arch = x86_64
+	license = custom
+	makedepends = libtool
+	makedepends = setconf
+	depends = libxmlrpc
+	depends = lib32-curl
+	depends = perl
+	depends = lib32-libxml2
+	depends = lib32-glibc
+	depends = lib32-openssl
+	depends = lib32-gcc-libs
+	provides = lib32-xmlrpc-c
+	conflicts = lib32-xmlrpc-c
+	replaces = lib32-xmlrpc-c
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/project/xmlrpc-c/Xmlrpc-c%20Super%20Stable/1.64.03/xmlrpc-1.64.03.tgz
+	b2sums = 6da8a4872b8e6a6a9131e20be0c0953f0fad852152866e3e13ce713f1079b9d8d81105d0942b3892902414f972719a4b29dfaba958d1476cfc0eade7abdf7935
+
+pkgname = lib32-libxmlrpc
