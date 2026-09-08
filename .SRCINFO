@@ -1,0 +1,24 @@
+pkgbase = ripwire-bin
+	pkgdesc = C++23 CLI and MCP server providing ranked repository context, blast radius, tests-to-run and quality deltas for AI agents
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/redhat-et/ripwire
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = bash
+	optdepends = git: remote repository cloning and Git history features
+	optdepends = jq: optional agent hook integration
+	provides = ripwire=0.5.0
+	conflicts = ripwire
+	options = !strip
+	options = !debug
+	source_x86_64 = ripwire-0.5.0-linux-x64.tar.gz::https://github.com/redhat-et/ripwire/releases/download/v0.5.0/ripwire-0.5.0-linux-x64.tar.gz
+	sha256sums_x86_64 = f06e9d7e55032e8e5c397405ed72a19d6e70767d28c8c617a925de4401779f50
+	source_aarch64 = ripwire-0.5.0-linux-arm64.tar.gz::https://github.com/redhat-et/ripwire/releases/download/v0.5.0/ripwire-0.5.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = efe049b1645045e96751a51b1bc321b2d8653aa1f6ab5d7c2390eb3d49716bf0
+
+pkgname = ripwire-bin
