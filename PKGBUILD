@@ -33,7 +33,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     'libkqueue::git+https://github.com/mheily/libkqueue.git#commit=46a3e130f88b0b0742575dcb01d77e336538024b'
 )
-sha256sums=("95f9f629f2cfcc51af26b1e253fa14b44c8dc91bb1b772af766aae0de1503591" "SKIP")
+sha256sums=("4788fd5a77d2d531c77b080d599e1666a139424fb483cca2fd92340c1bccb9e4" "SKIP")
 install=fcitx5-wetypex.install
 
 build() {
