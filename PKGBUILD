@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=9.70
+pkgver=9.74
 pkgrel=2
 epoch=65
 pkgdesc="Segger JLink software & documentation pack for Linux"
@@ -11,8 +11,6 @@ license=('custom' 'GPLv2')
 groups=('jlink')
 depends=('glibc' 'libudev0-shim' 'patch')
 source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_x86_64.tgz")
-source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_i386.tgz")
-source_armv7h=("JLink_Linux_${pkgver/./}_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm.tgz")
 source_aarch64=("JLink_Linux_${pkgver/./}_arm64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm64.tgz")
 source=("99-jlink.rules.patch" "99-jlink-cmsis-dap.rules" "JLink.svg")
 desktops=(
@@ -36,10 +34,9 @@ desktops=(
         "JTAGLoadExe.desktop"
 )
 source+=(${desktops[@]})
-md5sums_x86_64=('5490891eacd110734ae0f291284a430e')
-md5sums_i686=('73d67809215e33dd5224c19a39d28e76')
-md5sums_aarch64=('04a65587096ab3e779308be360eb0044')
-md5sums_armv7h=('dff2ccd6e7da07bc5d436d20b95b6552')
+
+md5sums_x86_64=('5a6affbcaacc437a1c32ccf62d78b19e')
+md5sums_aarch64=('13e51f9f569918d674d8ea02323a40fb')
 
 md5sums=("a57d93b791581c1f36e4c672303bb85d"
          "02c4941650a2bd345b03dd958313d4c5"
@@ -73,14 +70,8 @@ options=(!strip)
 
 prepare() {
     # Change src path name
-    if [ ${CARCH} = "i686" ]; then
-        mv JLink_Linux_V${pkgver/./}_i386 JLink
-    fi
     if [ ${CARCH} = "x86_64" ]; then
         mv JLink_Linux_V${pkgver/./}_x86_64 JLink
-    fi
-    if [ ${CARCH} = "armv7h" ]; then
-        mv JLink_Linux_V${pkgver/./}_arm JLink
     fi
     if [ ${CARCH} = "aarch64" ]; then
        mv JLink_Linux_V${pkgver/./}_arm64 JLink
@@ -109,10 +100,7 @@ package(){
     cd "${srcdir}/JLink"
 
     # Bulk copy everything
-    if [ ${CARCH} = "armv7h" ]; then
-        cp --preserve=mode -r J* DDC* DevProExe Script README.txt GDBServer Firmwares lib* "${pkgdir}/opt/SEGGER/JLink"
-    else cp --preserve=mode -r J* Doc DDC* DevProExe Script Samples ETC README.txt Firmwares GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
-    fi
+    cp --preserve=mode -r J* Doc DDC* DevProExe Script Samples ETC README.txt Firmwares GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
     if [ ${CARCH} = "x86_64" ]; then
         cp --preserve=mode -r x86 "${pkgdir}/opt/SEGGER/JLink"
     fi
