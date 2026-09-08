@@ -1,7 +1,7 @@
 # Maintainer: louson - Louis Rannou
 
 pkgname=emacs-meson-mode-git
-pkgver=0.3.r9.g82220d1
+pkgver=0.4.r1.g0449c64
 pkgrel=1
 pkgdesc='Emacs meson-mode'
 arch=('any')

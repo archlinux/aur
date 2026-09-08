@@ -1,6 +1,6 @@
 pkgbase = emacs-meson-mode-git
 	pkgdesc = Emacs meson-mode
-	pkgver = 0.3.r9.g82220d1
+	pkgver = 0.4.r1.g0449c64
 	pkgrel = 1
 	url = https://github.com/wentasah/meson-mode
 	install = emacs-meson-mode-git.install
