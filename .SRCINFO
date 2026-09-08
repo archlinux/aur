@@ -1,14 +1,14 @@
 pkgbase = steghide
 	pkgdesc = Embeds a message in a file by replacing some of the least significant bits
 	pkgver = 0.5.1
-	pkgrel = 13
+	pkgrel = 14
 	url = http://steghide.sourceforge.net
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = libmcrypt
 	depends = gcc-libs
 	depends = mhash
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = zlib
 	source = steghide-0.5.1.tar.gz::https://sourceforge.net/projects/steghide/files/steghide/0.5.1/steghide-0.5.1.tar.gz/download
 	source = buildsystem.patch
