@@ -2,7 +2,7 @@
 
 _pkgname=nm-tray
 pkgname=$_pkgname-git
-pkgver=0.5.0.r8.gfa1e7a8
+pkgver=0.5.1.r16.g16ffa94
 pkgrel=1
 pkgdesc='Pure Qt NetworkManager front-end residing in panels'
 arch=('i686' 'x86_64' 'aarch64')
@@ -21,13 +21,10 @@ pkgver() {
 }
 
 build() {
-  mkdir -p build
-  cd build
-  cmake $srcdir/$_pkgname -DCMAKE_INSTALL_PREFIX=/usr -DNM_TRAY_XDG_AUTOSTART_DIR=/etc/xdg/autostart
-  make
+  cmake -B build -S ${_pkgname} -DCMAKE_INSTALL_PREFIX=/usr -DNM_TRAY_XDG_AUTOSTART_DIR=/etc/xdg/autostart
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
