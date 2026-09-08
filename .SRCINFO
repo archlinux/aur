@@ -1,5 +1,5 @@
-pkgbase = zfs-utils-staging-git
-	pkgdesc = Userspace utilities for the Zettabyte File System (release staging branch).
+pkgbase = zfs-utils-staging-compat-git
+	pkgdesc = Userspace utilities for the Zettabyte File System (release staging branch) with compatibility patches for zfs-dkms-staging-compat-git.
 	pkgver = 2.4.4.r0.g71a9f95786
 	pkgrel = 1
 	url = https://zfsonlinux.org/
@@ -18,11 +18,13 @@ pkgbase = zfs-utils-staging-git
 	source = zfs.initcpio.install
 	source = zfs.initcpio.hook
 	source = zfs.initcpio.zfsencryptssh.install
+	source = zoned_uid-additive-least-privilege-authorization.patch::https://github.com/darkbasic/zfs/commit/caf10661b301bf6d3b83bd33cf6c37500ddec0e3.patch?full_index=1
 	sha256sums = SKIP
 	sha256sums = 7ad45fd291aa582639725f14d88d7da5bd3d427012b25bddbe917ca6d1a07c1a
 	sha256sums = 2f09c742287f4738c7c09a9669f8055cd63d3b9474cd1f6d9447152d11a1b913
 	sha256sums = 15b5acea44225b4364ec6472a08d3d48666d241fe84c142e1171cd3b78a5584f
 	sha256sums = 93e6ac4e16f6b38b2fa397a63327bcf7001111e3a58eb5fb97c888098c932a51
+	sha256sums = 63c0327c7a8a312a1c7fd6db4c4218829edc3639ec1717e789e5145520705673
 
-pkgname = zfs-utils-staging-git
+pkgname = zfs-utils-staging-compat-git
 	provides = zfs-utils=2.4.4

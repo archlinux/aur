@@ -29,10 +29,10 @@ else
     _base_ver="2.4.4"
 fi
 
-pkgname=${_pkgname}-utils-staging-git
+pkgname=${_pkgname}-utils-staging-compat-git
 pkgver=2.4.4.r0.g71a9f95786
 pkgrel=1
-pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
+pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch) with compatibility patches for zfs-dkms-staging-compat-git."
 arch=("i686" "x86_64" "aarch64")
 url="https://zfsonlinux.org/"
 license=('CDDL-1.0')
@@ -45,12 +45,14 @@ source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "zfs.initcpio.install"
         "zfs.initcpio.hook"
         "zfs.initcpio.zfsencryptssh.install"
+        "zoned_uid-additive-least-privilege-authorization.patch::https://github.com/darkbasic/zfs/commit/caf10661b301bf6d3b83bd33cf6c37500ddec0e3.patch?full_index=1"
 )
 sha256sums=('SKIP'
             '7ad45fd291aa582639725f14d88d7da5bd3d427012b25bddbe917ca6d1a07c1a'
             '2f09c742287f4738c7c09a9669f8055cd63d3b9474cd1f6d9447152d11a1b913'
             '15b5acea44225b4364ec6472a08d3d48666d241fe84c142e1171cd3b78a5584f'
             '93e6ac4e16f6b38b2fa397a63327bcf7001111e3a58eb5fb97c888098c932a51'
+            '63c0327c7a8a312a1c7fd6db4c4218829edc3639ec1717e789e5145520705673'
 )
 backup=('etc/default/zfs'
         'etc/zfs/zed.d/zed.rc')
@@ -59,6 +61,21 @@ prepare() {
     cd "${srcdir}/${_pkgname}"
 
     msg2 "Staging branch set to ${_git_branch}"
+
+    # Keep shared properties and libzfs in sync with the companion DKMS package.
+    local patch
+    for patch in "${source[@]}"; do
+        patch=${patch%%::*}
+        patch=${patch##*/}
+        [[ $patch == *.patch ]] || continue
+
+        if patch -p1 -R -i "../$patch" --dry-run -sf >/dev/null; then
+            msg2 "Ignoring patch $patch..."
+        else
+            msg2 "Applying patch $patch..."
+            patch -p1 -N -i "../$patch" || return 1
+        fi
+    done
 
     # pyzfs is not built, but build system tries to check for python anyway
     ln -sf /bin/true python3-fake
