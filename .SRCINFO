@@ -33,7 +33,7 @@ pkgbase = fcitx5-wetypex
 	options = !debug
 	source = fcitx5-wetypex-2.2.3.657.tar.gz::https://github.com/panxuc/fcitx5-wetypex/archive/refs/tags/v2.2.3.657.tar.gz
 	source = libkqueue::git+https://github.com/mheily/libkqueue.git#commit=46a3e130f88b0b0742575dcb01d77e336538024b
-	sha256sums = 4788fd5a77d2d531c77b080d599e1666a139424fb483cca2fd92340c1bccb9e4
+	sha256sums = 122cdece40c80a3628809932785ae2f69700c5c947590780cb1feba360c8d1ef
 	sha256sums = SKIP
 
 pkgname = fcitx5-wetypex
