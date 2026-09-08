@@ -1,26 +1,25 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mgsub
-_pkgver=1.7.3
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=2
 pkgdesc="Safe, Multiple, Simultaneous String Substitution"
-arch=(any)
+arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
   r
 )
 optdepends=(
-  r-covr
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1e204bdcd5b82c12f9cc0ebdd9bc3621')
-b2sums=('f21476a3c30025f0c63270d041b78c4d891e009804cdbee674fbb6623065dd9c8d74069cce0997e6d355ce58361c732971a64f5c3c4e5b2024a368b722c98143')
+md5sums=('b641b7fe3bce793c8f4eda82ca653783')
+b2sums=('5fed958e0426498a81f1f2826f15da537031203fc3006ef71950ea8366ed188217da5ffb011f2d34142277f888362a95bc4b0518db2f7df1db7bd14ab9750208')
 
 build() {
   mkdir build
