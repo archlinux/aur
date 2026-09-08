@@ -2,12 +2,12 @@
 pkgname=woof-doom
 _pkgname=woof
 pkgver=15.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Woof! is a continuation of Lee Killough's Doom source port MBF targeted at modern systems"
 arch=(x86_64)
 url="https://github.com/fabiangreffrath/woof"
 license=('GPL-2.0-or-later')
-depends=(sdl2 sdl2_net openal libebur128 libsndfile)
+depends=(sdl2 sdl2_net openal alsa-lib libebur128 libsndfile)
 # Required for some ID24 lumps (https://doomwiki.org/wiki/ID24), you probably want it.
 depends+=(yyjson)
 # FluidSynth is optional, but can not be an optdepends since it gets linked to the built executable
