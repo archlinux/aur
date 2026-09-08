@@ -1,7 +1,7 @@
 # Maintainer: LargeModGames <LargeModGames@gmail.com>
 pkgname=spotatui
 pkgver=0.42.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Spotify client for the terminal written in Rust, powered by Ratatui"
 arch=('x86_64')
 url="https://github.com/LargeModGames/spotatui"
@@ -14,7 +14,11 @@ sha256sums=('563aa915f4bd47c9f9647e405885ccfb97f69a0e6422e3223a030a2f77dbec59')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  export RUSTUP_TOOLCHAIN=stable
+  # No --target: cargo before 1.95 (rust-lang/cargo#15399) reads every locked
+  # dependency when a bin target has required-features, and --frozen then fails
+  # on the macOS-only crates that a targeted fetch skipped.
+  cargo fetch --locked
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = spotatui
 	pkgdesc = A Spotify client for the terminal written in Rust, powered by Ratatui
 	pkgver = 0.42.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LargeModGames/spotatui
 	arch = x86_64
 	license = MIT
