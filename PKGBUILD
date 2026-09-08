@@ -1,14 +1,14 @@
 pkgname=iwlwifi-lar-patched
 _pkgbase=linux
 
-_kernelpkgver=7.2.3.arch1-3
+_kernelpkgver=7.2.4.arch1-2
 
 _kernver=$(printf '%s\n' "${_kernelpkgver}" | sed 's/\.arch[0-9].*//')
 _archrel=$(printf '%s\n' "${_kernelpkgver}" | sed -E "s/^${_kernver}\.(.*)$/\1/" | tr '.' '-')
 _krel="${_kernver}-${_archrel}"
 
 pkgver="${_kernver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Patched Intel iwlwifi family modules with lar_disable support for Arch Linux kernels"
 arch=('x86_64')
 url="https://github.com/TenkyuChimata/iwlwifi-lar-patched"
@@ -40,7 +40,7 @@ source=(
   'dracut-iwlwifi.conf'
 )
 
-sha256sums=('8ba259e8e7b13ec6ef0941c8a39ad90b24bd4a4d6c0010ba6bafb794550ecd03'
+sha256sums=('01710ee01737dac492f1bae52becd057e08d20d11589089aa06accff415c28dd'
             'da2ab52ccdef2b93088c9e0c56bc1c166bf748d021b529cb2af2ff6c5d9e85cc'
             'd0f468221c28f5f07a040f36df4dcf571d3931eef7ed273d4e57b631ef9540d3'
             '3758f059f40e24561f588829cb80384324d75b0745d5eba6f4b6313b5809e2d1')
