@@ -1,6 +1,6 @@
 pkgbase = ivar-bin
 	pkgdesc = Mount the repos a feature spans into one directory, on one branch, for one agent session (prebuilt binary)
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/mnzsss/ivar
 	arch = x86_64
@@ -10,17 +10,17 @@ pkgbase = ivar-bin
 	depends = glibc
 	depends = git
 	optdepends = github-cli: authentication and pull requests without exporting a token
-	provides = ivar=0.9.0
+	provides = ivar=0.9.1
 	conflicts = ivar
 	options = !strip
 	options = !debug
-	source = ivar-0.9.0-LICENSE::https://raw.githubusercontent.com/mnzsss/ivar/v0.9.0/LICENSE
-	source = ivar-0.9.0-NOTICE::https://raw.githubusercontent.com/mnzsss/ivar/v0.9.0/NOTICE
+	source = ivar-0.9.1-LICENSE::https://raw.githubusercontent.com/mnzsss/ivar/v0.9.1/LICENSE
+	source = ivar-0.9.1-NOTICE::https://raw.githubusercontent.com/mnzsss/ivar/v0.9.1/NOTICE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 	sha256sums = 6cc32604e854079c96ee075daabdb2eb779c35e743158eaa5a648f854d4a039c
-	source_x86_64 = ivar-0.9.0-x86_64::https://github.com/mnzsss/ivar/releases/download/v0.9.0/ivar-linux-x86_64
-	sha256sums_x86_64 = 9009d57745c35fbbd7287191973ed1a395ae23733adabd38f8a0c371ad4d4c1e
-	source_aarch64 = ivar-0.9.0-aarch64::https://github.com/mnzsss/ivar/releases/download/v0.9.0/ivar-linux-aarch64
-	sha256sums_aarch64 = 638105deb65fbc9a482d97c5c5d9b4317837f82fbb44bfc9726492479d80ba83
+	source_x86_64 = ivar-0.9.1-x86_64::https://github.com/mnzsss/ivar/releases/download/v0.9.1/ivar-linux-x86_64
+	sha256sums_x86_64 = 77871f25557777316a4ed7f23632b851e1b62caa13a5689e4c384b8f57103eca
+	source_aarch64 = ivar-0.9.1-aarch64::https://github.com/mnzsss/ivar/releases/download/v0.9.1/ivar-linux-aarch64
+	sha256sums_aarch64 = cea4c6aee04834c585d6987c95a387c5560346d8e4e7a1467d1e9ba737c76f97
 
 pkgname = ivar-bin
