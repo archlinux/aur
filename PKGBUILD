@@ -27,7 +27,7 @@ prepare() {
 	rm -rf squashfs-root
 	chmod +x $_filename
 	./$_filename --appimage-extract
-	sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /usr/bin/Plexamp.AppImage --disable-seccomp-filter-sandbox|" squashfs-root/${_desktop_name}
+	sed -i -e "s|Exec=.\+|Exec=env LD_PRELOAD=/usr/lib/libwayland-client.so APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /usr/bin/Plexamp.AppImage --disable-seccomp-filter-sandbox|" squashfs-root/${_desktop_name}
 }
 
 package() {
