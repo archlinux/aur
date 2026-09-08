@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=btrfs-snapshots
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('btrfs-progs')
 makedepends=('scdoc')
 checkdepends=('parallel' 'diffutils')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4926f1147aab0c46ef73a1b6a0cfd974b68bf63e4bfc1bfaa4eb536ef8bf6972')
+sha256sums=('0cb42ce34db2f17f49f1251f21f7f58d2e6fc62eddfb4c402d33f17f11d12563')
 
 check() {
     cd "$srcdir/$pkgname-$pkgver" || return
