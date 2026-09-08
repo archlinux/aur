@@ -6,7 +6,7 @@
 # Origin Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=pxview-git
-pkgver=1.5.8.r210.d8fb12c
+pkgver=1.6.1.r273.59263ff
 pkgrel=1
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
@@ -51,9 +51,9 @@ source=(
   "sigrok-firmware::git+https://github.com/sigrokproject/sigrok-firmware.git"
   "sigrok-firmware-fx2lafw::git+https://github.com/sigrokproject/sigrok-firmware-fx2lafw.git"
   "sigrok-util::git+https://github.com/sigrokproject/sigrok-util.git"
-  "libsigrok::git+https://github.com/haikumuse/libsigrok.git#branch=pxview-fork"
-  "libsigrokdecode::git+https://github.com/haikumuse/libsigrokdecode.git#branch=pxview-fork"
-  "libusb::git+https://github.com/haikumuse/libusb.git#branch=event-abstraction-v4"
+  "libsigrok::git+https://github.com/PXLogic/libsigrok.git"
+  "libsigrokdecode::git+https://github.com/PXLogic/libsigrokdecode.git"
+  "libusb::git+https://github.com/PXLogic/libusb.git"
   "mimalloc::git+https://github.com/microsoft/mimalloc.git"
 )
 sha256sums=('SKIP'
@@ -106,7 +106,7 @@ build() {
   # see：https://wiki.archlinux.org/title/CMake_package_guidelines
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -Wno-dev \
+    -Wno-author \
     -B build \
     -G Ninja
 

@@ -1,6 +1,6 @@
 pkgbase = pxview-git
 	pkgdesc = GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.
-	pkgver = 1.5.8.r210.d8fb12c
+	pkgver = 1.6.1.r273.59263ff
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/PXLogic/PXView
@@ -39,9 +39,9 @@ pkgbase = pxview-git
 	source = sigrok-firmware::git+https://github.com/sigrokproject/sigrok-firmware.git
 	source = sigrok-firmware-fx2lafw::git+https://github.com/sigrokproject/sigrok-firmware-fx2lafw.git
 	source = sigrok-util::git+https://github.com/sigrokproject/sigrok-util.git
-	source = libsigrok::git+https://github.com/haikumuse/libsigrok.git#branch=pxview-fork
-	source = libsigrokdecode::git+https://github.com/haikumuse/libsigrokdecode.git#branch=pxview-fork
-	source = libusb::git+https://github.com/haikumuse/libusb.git#branch=event-abstraction-v4
+	source = libsigrok::git+https://github.com/PXLogic/libsigrok.git
+	source = libsigrokdecode::git+https://github.com/PXLogic/libsigrokdecode.git
+	source = libusb::git+https://github.com/PXLogic/libusb.git
 	source = mimalloc::git+https://github.com/microsoft/mimalloc.git
 	sha256sums = SKIP
 	sha256sums = SKIP
