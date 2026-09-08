@@ -3,7 +3,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-gaming
 pkgver=1.20.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Compositor for the COSMIC desktop environment with gaming patches, experimental HDR and support fifo-v1, commit-timing-v1, fullscreen tearing, and VRR Target Rate feature"
 arch=('x86_64' 'aarch64')
@@ -73,7 +73,7 @@ conflicts=(
 	"cosmic-randr-git"
 )
 source=(
-	'git+https://github.com/skygrango/cosmic-comp.git#branch=hdr_v6'
+	'git+https://github.com/skygrango/cosmic-comp.git#branch=hdr_v7'
 	'git+https://github.com/skygrango/cosmic-settings.git#branch=hdr_v1'
 	'git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v2'
 )
