@@ -1,6 +1,6 @@
 # Maintainer: CoreCat <corecathx@proton.me>
 pkgname=whisker-shell-git
-pkgver=r47.7cd15a7
+pkgver=r162.3827d38
 pkgrel=1
 pkgdesc="Desktop shell built with Quickshell and follows Material 3 Design rules."
 arch=('x86_64')
@@ -33,6 +33,12 @@ build() {
     cd "$srcdir/whisker-cli"
     echo "  -> change directory: $PWD"
 
+    export WHISKER_VERSION="$pkgver"
+    export WHISKER_COMMIT="$(git rev-parse --short HEAD)"
+
+    echo "  -> Whisker version: $WHISKER_VERSION"
+    echo "  -> Whisker commit:  $WHISKER_COMMIT"
+    
     export HAXELIB_PATH="$srcdir/haxelib"
     echo "  -> set HAXELIB_PATH to $HAXELIB_PATH"
 
