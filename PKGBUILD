@@ -1,11 +1,11 @@
 # Maintainer: Paul Farrow <paulfarrow@github>
 pkgname=todoey-git
-pkgver=r68.ec5bc5e
+pkgver=r1.7b95ccc
 pkgrel=1
 pkgdesc="A terminal-based Todoist client built with Go and Bubble Tea"
 arch=('x86_64' 'aarch64')
 url="https://github.com/paulfarrow/todoey"
-license=('MIT')
+license=('GPL-3.0-or-later')
 makedepends=('go' 'git')
 provides=('todoey')
 conflicts=('todoey')
@@ -29,4 +29,5 @@ package() {
   cd "$pkgname"
   install -Dm755 todoey "$pkgdir/usr/bin/todoey"
   install -Dm644 README.md "$pkgdir/usr/share/doc/todoey/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/todoey/LICENSE"
 }
