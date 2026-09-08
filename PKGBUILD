@@ -1,12 +1,12 @@
 # Maintainer: Sentria <admin@sentrialabs.com>
 pkgname=maryanne-bin
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Read ebook (EPUB) or PDF aloud to you with natural-sounding voices.'
 arch=('x86_64')
 url='https://maryanne.app'
 license=('custom')
-depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'libsecret')
+depends=('fuse2' 'gtk3' 'gstreamer' 'gst-plugins-base' 'libsecret')
 release_repo='finnvyrn/maryanne-releases'
 source=(
   "maryanne-${pkgver}.AppImage::https://github.com/${release_repo}/releases/download/v${pkgver}/Maryanne-x86_64.AppImage"

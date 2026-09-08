@@ -1,10 +1,11 @@
 pkgbase = maryanne-bin
 	pkgdesc = Read ebook (EPUB) or PDF aloud to you with natural-sounding voices.
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://maryanne.app
 	arch = x86_64
 	license = custom
+	depends = fuse2
 	depends = gtk3
 	depends = gstreamer
 	depends = gst-plugins-base
