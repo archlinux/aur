@@ -1,7 +1,7 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
 pkgname=python-google-cloud-storage
-pkgver=3.13.1
+pkgver=3.14.1
 pkgrel=1
 pkgdesc='Google Cloud Storage API client library'
 arch=(any)
@@ -40,7 +40,7 @@ makedepends=(
 #  python-pyyaml
 #)
 source=(${pkgname}-${pkgver}.tar.gz::${url%/tree*}/archive/${_pkgname}-v${pkgver}.tar.gz)
-b2sums=('2558b4bd2c050d8cb9e856971cdac861457f3fafb6a552c84b4447a9abcc32d2ce75ce85f7f513c2c7df8418a33589307e9d1003e8ef4f72b970724e0a308fc3')
+b2sums=('70631f1d1fb3e1233e0d0b55d784fef8a4459d647d167b860b3179ae77e47e108ac67befe83f2bfbe5a58ea455e706f6423785d15c0a1fe507580cecdf6b1cf2')
 
 build() {
   cd ${_reponame}-${_pkgname}-v${pkgver}/packages/${_pkgname}
