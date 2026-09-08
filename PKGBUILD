@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=quarkdown
-pkgver=1.8.0
+pkgver=2.6.0
 pkgrel=1
 _jdkver=21
 pkgdesc='a Markdown based typesetting system'
@@ -10,30 +10,31 @@ url="https://github.com/iamgio/$pkgname"
 license=(Apache-2.0)
 depends=(bash
          "java-runtime-openjdk=$_jdkver")
-makedepends=(gradle
+makedepends=(nodejs-lts-krypton
+             npm
              "java-environment-openjdk=$_jdkver")
-optdepends=('puppeteer: generate PDF output')
+optdepends=('chromium: generate PDF output')
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('bb63369ad5380fac9729723c68388ac0cf9f6afc768f6c8314a9d0dcaba891d7')
+sha256sums=('67f12e2ef33d62daf80b74e20e634ded1c02c7d4d2a62ed7bdf5e89192f883e0')
 
 build() {
 	export JAVA_HOME="/usr/lib/jvm/java-$_jdkver-openjdk"
 	export PATH="/usr/lib/jvm/java-$_jdkver-openjdk/bin:$PATH"
 	cd "$_archive"
-	gradle --no-daemon shadowJar
+	npm install-scripts approve --all
+	./gradlew --no-daemon installDist
 }
 
 package() {
 	cd "$_archive"
 	local _sharedir="/usr/share/$pkgname"
-	install -Dm0644 -t "$pkgdir/$_sharedir/java/" "build/libs/$pkgname.jar"
-	install -Dm0644 -t "$pkgdir/$_sharedir/lib/qd/" quarkdown-libs/src/main/resources/*.qd
+	mkdir -p "$pkgdir/$_sharedir"
+	cp -a build/install/quarkdown/lib "$pkgdir/$_sharedir/"
 	cat <<- EOF | install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
 		#!/usr/bin/env bash
 		export JAVA_HOME='/usr/lib/jvm/java-$_jdkver-openjdk'
-		export NODE_PATH='/usr/lib/node_modules'
-		export QD_NPM_PREFIX='/usr/lib'
-		exec java -jar '$_sharedir/java/$pkgname.jar' "\$@"
+		export QD_CHROME_PATH='/usr/bin/chromium'
+		exec java -cp '$_sharedir/lib/*' com.quarkdown.cli.QuarkdownCliKt "\$@"
 	EOF
 }
