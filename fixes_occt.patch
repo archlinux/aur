@@ -1,0 +1,17 @@
+diff --git a/src/libslic3r/CMakeLists.txt b/src/libslic3r/CMakeLists.txt
+index 9b67d7a..48eaa15 100644
+--- a/src/libslic3r/CMakeLists.txt
++++ b/src/libslic3r/CMakeLists.txt
+@@ -546,11 +546,7 @@ find_package(JPEG REQUIRED)
+ find_package(draco REQUIRED)
+ 
+ set(OCCT_LIBS
+-    TKXDESTEP
+-    TKSTEP
+-    TKSTEP209
+-    TKSTEPAttr
+-    TKSTEPBase
++    TKDESTEP
+     TKXCAF
+     TKXSBase
+     TKVCAF

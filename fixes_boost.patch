@@ -1,0 +1,358 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e24e296..bd3be8a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -581,7 +581,7 @@ if(POLICY CMP0167)
+   cmake_policy(SET CMP0167 NEW)
+ endif()
+ set(Boost_NO_SYSTEM_PATHS TRUE)
+-find_package(Boost 1.83.0 REQUIRED COMPONENTS system filesystem thread log log_setup locale regex chrono atomic date_time iostreams program_options nowide)
++find_package(Boost 1.83.0 REQUIRED COMPONENTS filesystem thread log log_setup locale regex chrono atomic date_time iostreams program_options nowide)
+ 
+ # Find and configure Eigen3
+ find_package(Eigen3 5.0.1 REQUIRED)
+diff --git a/src/slic3r/GUI/PostProcessor.cpp b/src/slic3r/GUI/PostProcessor.cpp
+index 1e084cd..c69d0a0 100644
+--- a/src/slic3r/GUI/PostProcessor.cpp
++++ b/src/slic3r/GUI/PostProcessor.cpp
+@@ -168,5 +168,8 @@ static int run_script(const std::string &script, const std::string &gcode, std::
+ 
+ #include <cstdlib>   // getenv()
+-#include <boost/process.hpp>
++#define BOOST_PROCESS_VERSION 1
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
+ 
+ namespace process = boost::process;
+
+diff --git a/src/slic3r/GUI/ProcessRunner.cpp b/src/slic3r/GUI/ProcessRunner.cpp
+--- a/src/slic3r/GUI/ProcessRunner.cpp
++++ b/src/slic3r/GUI/ProcessRunner.cpp
+@@ -3,5 +3,5 @@
+-#include <boost/process/env.hpp>
+-#include <boost/process.hpp>
++#include <boost/process/v1/env.hpp>
++#include <boost/process/v1.hpp>
+ #ifdef _WIN32
+-#include <boost/process/windows.hpp>
++#include <boost/process/v1/windows.hpp>
+ #endif
+@@ -138,3 +138,3 @@
+     m_launch_thread = std::thread([this, command_line]() {
+-        namespace bp = boost::process;
++        namespace bp = boost::process::v1;
+
+         try {
+@@ -225,3 +225,3 @@
+     try {
+-        namespace bp = boost::process;
++        namespace bp = boost::process::v1;
+
+         bp::ipstream std_out;
+diff --git a/src/slic3r/GUI/ProcessRunner.hpp b/src/slic3r/GUI/ProcessRunner.hpp
+--- a/src/slic3r/GUI/ProcessRunner.hpp
++++ b/src/slic3r/GUI/ProcessRunner.hpp
+@@ -13,5 +13,9 @@
+ #include <functional>
+ 
+-#include <boost/process.hpp>
++#define BOOST_PROCESS_VERSION 1
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++#include <boost/process/v1/search_path.hpp>
+ 
+ namespace Slic3r { namespace GUI {
+diff --git a/src/slic3r/GUI/HttpServer.hpp b/src/slic3r/GUI/HttpServer.hpp
+index 4c0b929..0976092 100644
+--- a/src/slic3r/GUI/HttpServer.hpp
++++ b/src/slic3r/GUI/HttpServer.hpp
+@@ -130,7 +130,7 @@ private:
+     {
+     public:
+         HttpServer&                        server;
+-        boost::asio::io_service            io_service;
++        boost::asio::io_context            io_service;
+         boost::asio::ip::tcp::acceptor     acceptor;
+         std::set<std::shared_ptr<session>> sessions;
+ 
+diff --git a/src/slic3r/GUI/MediaPlayCtrl.cpp b/src/slic3r/GUI/MediaPlayCtrl.cpp
+index 5737484..a57dc50 100644
+--- a/src/slic3r/GUI/MediaPlayCtrl.cpp
++++ b/src/slic3r/GUI/MediaPlayCtrl.cpp
+@@ -15,7 +15,12 @@
+ #include <boost/nowide/cstdio.hpp>
+ #include <boost/nowide/utf8_codecvt.hpp>
+ #undef pid_t
+-#include <boost/process.hpp>
++#define BOOST_PROCESS_VERSION 1
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++#include <boost/process/v1/start_dir.hpp>
++#include <boost/process/v1/handles.hpp>
+ #ifdef __WIN32__
+ #include <boost/process/windows.hpp>
+ #else
+diff --git a/src/slic3r/GUI/RemovableDriveManager.cpp b/src/slic3r/GUI/RemovableDriveManager.cpp
+index 83ec469..724b841 100644
+--- a/src/slic3r/GUI/RemovableDriveManager.cpp
++++ b/src/slic3r/GUI/RemovableDriveManager.cpp
+@@ -22,7 +22,11 @@
+ #include <pwd.h>
+ #include <boost/filesystem.hpp>
+ #include <boost/system/error_code.hpp>
+-#include <boost/process.hpp>
++#define BOOST_PROCESS_VERSION 1
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++#include <boost/process/v1/search_path.hpp>
+ #endif
+ 
+ namespace Slic3r {
+diff --git a/src/slic3r/GUI/WebUserLoginDialog.cpp b/src/slic3r/GUI/WebUserLoginDialog.cpp
+index 4b8acc9..edc2fa4 100644
+--- a/src/slic3r/GUI/WebUserLoginDialog.cpp
++++ b/src/slic3r/GUI/WebUserLoginDialog.cpp
+@@ -48,7 +48,7 @@ namespace {
+ int reserve_loopback_port()
+ {
+     try {
+-        boost::asio::io_service       io_service;
++        boost::asio::io_context       io_service;
+         boost::asio::ip::tcp::acceptor acceptor(io_service, {boost::asio::ip::tcp::v4(), 0});
+         return static_cast<int>(acceptor.local_endpoint().port());
+     } catch (...) {
+diff --git a/src/slic3r/Utils/Bonjour.cpp b/src/slic3r/Utils/Bonjour.cpp
+index 0701695..84c0912 100644
+--- a/src/slic3r/Utils/Bonjour.cpp
++++ b/src/slic3r/Utils/Bonjour.cpp
+@@ -620,7 +620,7 @@ UdpSession::UdpSession(Bonjour::ReplyFn rfn) : replyfn(rfn)
+ 	buffer.resize(DnsMessage::MAX_SIZE);
+ }
+ 
+-UdpSocket::UdpSocket( Bonjour::ReplyFn replyfn, const asio::ip::address& multicast_address, const asio::ip::address& interface_address, std::shared_ptr< boost::asio::io_service > io_service)
++UdpSocket::UdpSocket( Bonjour::ReplyFn replyfn, const asio::ip::address& multicast_address, const asio::ip::address& interface_address, std::shared_ptr< boost::asio::io_context > io_service)
+ 	: replyfn(replyfn)
+ 	, multicast_address(multicast_address)
+ 	, socket(*io_service)
+@@ -654,7 +654,7 @@ UdpSocket::UdpSocket( Bonjour::ReplyFn replyfn, const asio::ip::address& multica
+ }
+ 
+ 
+-UdpSocket::UdpSocket( Bonjour::ReplyFn replyfn, const asio::ip::address& multicast_address, std::shared_ptr< boost::asio::io_service > io_service)
++UdpSocket::UdpSocket( Bonjour::ReplyFn replyfn, const asio::ip::address& multicast_address, std::shared_ptr< boost::asio::io_context > io_service)
+ 	: replyfn(replyfn)
+ 	, multicast_address(multicast_address)
+ 	, socket(*io_service)
+@@ -710,7 +710,7 @@ void UdpSocket::receive_handler(SharedSession session, const boost::system::erro
+ 	// let io_service to handle the datagram on session
+ 	// from boost documentation io_service::post:
+ 	// The io_service guarantees that the handler will only be called in a thread in which the run(), run_one(), poll() or poll_one() member functions is currently being invoked.
+-	io_service->post(boost::bind(&UdpSession::handle_receive, session, error, bytes));
++	boost::asio::post(io_service->get_executor(), boost::bind(&UdpSession::handle_receive, session, error, bytes));
+ 	// immediately accept new datagrams
+ 	async_receive();
+ }
+@@ -867,7 +867,7 @@ void Bonjour::priv::lookup_perform()
+ {
+ 	service_dn = (boost::format("_%1%._%2%.local") % service % protocol).str();
+ 
+-	std::shared_ptr< boost::asio::io_service > io_service(new boost::asio::io_service);
++	std::shared_ptr< boost::asio::io_context > io_service(new boost::asio::io_context);
+ 
+ 	std::vector<LookupSocket*> sockets;
+ 
+@@ -919,7 +919,7 @@ void Bonjour::priv::lookup_perform()
+ 			socket->send();
+ 
+ 		// timer settings
+-		asio::deadline_timer timer(*io_service);
++		boost::asio::steady_timer timer(*io_service);
+ 		retries--;
+ 		std::function<void(const error_code&)> timer_handler = [&](const error_code& error) {
+ 			// end 
+@@ -932,7 +932,7 @@ void Bonjour::priv::lookup_perform()
+ 			// restart timer
+ 			} else {
+ 				retries--;
+-				timer.expires_from_now(boost::posix_time::seconds(timeout));
++				timer.expires_after(std::chrono::seconds(timeout));
+ 				timer.async_wait(timer_handler);
+ 				// trigger another round of queries
+ 				for (auto * socket : sockets)
+@@ -940,7 +940,7 @@ void Bonjour::priv::lookup_perform()
+ 			}
+ 		};
+ 		// start timer
+-		timer.expires_from_now(boost::posix_time::seconds(timeout));
++		timer.expires_after(std::chrono::seconds(timeout));
+ 		timer.async_wait(timer_handler);
+ 		// start io_service, it will run until it has something to do - so in this case until stop is called in timer
+ 		io_service->run();
+@@ -962,7 +962,7 @@ void Bonjour::priv::resolve_perform()
+ 			rpls.push_back(reply);
+ 	};
+ 
+-	std::shared_ptr< boost::asio::io_service > io_service(new boost::asio::io_service);
++	std::shared_ptr< boost::asio::io_context > io_service(new boost::asio::io_context);
+ 	std::vector<ResolveSocket*> sockets;
+ 
+ 	// resolve interfaces - from PR#6646
+@@ -1012,7 +1012,7 @@ void Bonjour::priv::resolve_perform()
+ 			socket->send();
+ 
+ 		// timer settings
+-		asio::deadline_timer timer(*io_service);
++		boost::asio::steady_timer timer(*io_service);
+ 		retries--;
+ 		std::function<void(const error_code&)> timer_handler = [&](const error_code& error) {
+ 			int replies_count = replies.size();
+@@ -1026,7 +1026,7 @@ void Bonjour::priv::resolve_perform()
+ 			// restart timer
+ 			} else {
+ 				retries--;
+-				timer.expires_from_now(boost::posix_time::seconds(timeout));
++				timer.expires_after(std::chrono::seconds(timeout));
+ 				timer.async_wait(timer_handler);
+ 				// trigger another round of queries
+ 				for (auto * socket : sockets)
+@@ -1034,7 +1034,7 @@ void Bonjour::priv::resolve_perform()
+ 			}
+ 		};
+ 		// start timer
+-		timer.expires_from_now(boost::posix_time::seconds(timeout));
++		timer.expires_after(std::chrono::seconds(timeout));
+ 		timer.async_wait(timer_handler);
+ 		// start io_service, it will run until it has something to do - so in this case until stop is called in timer
+ 		io_service->run();
+diff --git a/src/slic3r/plugin/PluginLoader.cpp b/src/slic3r/plugin/PluginLoader.cpp
+--- a/src/slic3r/plugin/PluginLoader.cpp
++++ b/src/slic3r/plugin/PluginLoader.cpp
+@@ -12,5 +12,5 @@
+ #include <boost/log/trivial.hpp>
+-#include <boost/process.hpp>
++#include <boost/process/v1.hpp>
+ #ifdef _WIN32
+-#include <boost/process/windows.hpp>
++#include <boost/process/v1/windows.hpp>
+ #endif
+@@ -456,5 +456,5 @@
+                             << boost::algorithm::join(pkgs, ", ");
+
+     try {
+-        namespace process = boost::process;
++        namespace process = boost::process::v1;
+
+         process::ipstream std_err;
+diff --git a/src/slic3r/Utils/Bonjour.hpp b/src/slic3r/Utils/Bonjour.hpp
+index 50b7179..f77a7bb 100644
+--- a/src/slic3r/Utils/Bonjour.hpp
++++ b/src/slic3r/Utils/Bonjour.hpp
+@@ -151,11 +151,11 @@ public:
+ 	UdpSocket(Bonjour::ReplyFn replyfn
+ 		, const boost::asio::ip::address& multicast_address
+ 		, const boost::asio::ip::address& interface_address
+-		, std::shared_ptr< boost::asio::io_service > io_service);
++		, std::shared_ptr< boost::asio::io_context > io_service);
+ 
+ 	UdpSocket(Bonjour::ReplyFn replyfn
+ 		, const boost::asio::ip::address& multicast_address
+-		, std::shared_ptr< boost::asio::io_service > io_service);
++		, std::shared_ptr< boost::asio::io_context > io_service);
+ 
+ 	void send();
+ 	void async_receive();
+@@ -168,7 +168,7 @@ protected:
+ 	boost::asio::ip::address					    multicast_address;
+ 	boost::asio::ip::udp::socket					socket;
+ 	boost::asio::ip::udp::endpoint					mcast_endpoint;
+-	std::shared_ptr< boost::asio::io_service >	io_service;
++	std::shared_ptr< boost::asio::io_context >	io_service;
+ 	std::vector<BonjourRequest>						requests;
+ };
+ 
+@@ -182,7 +182,7 @@ public:
+ 		, Bonjour::ReplyFn replyfn
+ 		, const boost::asio::ip::address& multicast_address
+ 		, const boost::asio::ip::address& interface_address
+-		, std::shared_ptr< boost::asio::io_service > io_service)
++		, std::shared_ptr< boost::asio::io_context > io_service)
+ 		: UdpSocket(replyfn, multicast_address, interface_address, io_service)
+ 		, txt_keys(txt_keys)
+ 		, service(service)
+@@ -199,7 +199,7 @@ public:
+ 		, std::string protocol
+ 		, Bonjour::ReplyFn replyfn
+ 		, const boost::asio::ip::address& multicast_address
+-		, std::shared_ptr< boost::asio::io_service > io_service)
++		, std::shared_ptr< boost::asio::io_context > io_service)
+ 		: UdpSocket(replyfn, multicast_address, io_service)
+ 		, txt_keys(txt_keys)
+ 		, service(service)
+@@ -237,7 +237,7 @@ public:
+ 		, Bonjour::ReplyFn replyfn
+ 		, const boost::asio::ip::address& multicast_address
+ 		, const boost::asio::ip::address& interface_address
+-		, std::shared_ptr< boost::asio::io_service > io_service)
++		, std::shared_ptr< boost::asio::io_context > io_service)
+ 		: UdpSocket(replyfn, multicast_address, interface_address, io_service)
+ 		, hostname(hostname)
+ 
+@@ -249,7 +249,7 @@ public:
+ 	ResolveSocket(const std::string& hostname
+ 		, Bonjour::ReplyFn replyfn
+ 		, const boost::asio::ip::address& multicast_address
+-		, std::shared_ptr< boost::asio::io_service > io_service)
++		, std::shared_ptr< boost::asio::io_context > io_service)
+ 		: UdpSocket(replyfn, multicast_address, io_service)
+ 		, hostname(hostname)
+ 
+diff --git a/src/slic3r/Utils/Serial.cpp b/src/slic3r/Utils/Serial.cpp
+index 4db1acc..6bf2bb0 100644
+--- a/src/slic3r/Utils/Serial.cpp
++++ b/src/slic3r/Utils/Serial.cpp
+@@ -278,11 +278,11 @@ std::vector<std::string> scan_serial_ports()
+ namespace asio = boost::asio;
+ using boost::system::error_code;
+ 
+-Serial::Serial(asio::io_service& io_service) :
++Serial::Serial(asio::io_context& io_service) :
+ 	asio::serial_port(io_service)
+ {}
+ 
+-Serial::Serial(asio::io_service& io_service, const std::string &name, unsigned baud_rate) :
++Serial::Serial(asio::io_context& io_service, const std::string &name, unsigned baud_rate) :
+ 	asio::serial_port(io_service, name)
+ {
+ 	set_baud_rate(baud_rate);
+diff --git a/src/slic3r/Utils/Serial.hpp b/src/slic3r/Utils/Serial.hpp
+index 8bad75b..3eebc77 100644
+--- a/src/slic3r/Utils/Serial.hpp
++++ b/src/slic3r/Utils/Serial.hpp
+@@ -39,8 +39,8 @@ extern std::vector<SerialPortInfo> 	scan_serial_ports_extended();
+ class Serial : public boost::asio::serial_port
+ {
+ public:
+-	Serial(boost::asio::io_service &io_service);
+-	Serial(boost::asio::io_service &io_service, const std::string &name, unsigned baud_rate);
++	Serial(boost::asio::io_context &io_service);
++	Serial(boost::asio::io_context &io_service, const std::string &name, unsigned baud_rate);
+ 	Serial(const Serial &) = delete;
+ 	Serial &operator=(const Serial &) = delete;
+ 	~Serial();
+diff --git a/src/slic3r/Utils/TCPConsole.cpp b/src/slic3r/Utils/TCPConsole.cpp
+index 25802e3..63fd0a4 100644
+--- a/src/slic3r/Utils/TCPConsole.cpp
++++ b/src/slic3r/Utils/TCPConsole.cpp
+@@ -170,7 +170,7 @@ bool TCPConsole::run_queue()
+ 
+         auto endpoints = m_resolver.resolve(m_host_name, m_port_name);
+ 
+-        m_socket.async_connect(endpoints->endpoint(),
++        m_socket.async_connect(endpoints.begin()->endpoint(),
+             boost::bind(&TCPConsole::handle_connect, this, boost::placeholders::_1)
+         );
+ 

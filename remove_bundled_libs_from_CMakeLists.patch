@@ -1,0 +1,85 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1119,47 +1119,6 @@
+ endfunction()
+ 
+ function(orcaslicer_copy_sos target config postfix output_sos)
+-
+-    get_property(_is_multi GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+-    get_target_property(_alt_out_dir ${target} RUNTIME_OUTPUT_DIRECTORY)
+-
+-    if (_alt_out_dir)
+-        set(_out_dir "${_alt_out_dir}")
+-    elseif (_is_multi)
+-        set(_out_dir "${CMAKE_CURRENT_BINARY_DIR}/${config}")
+-    else ()
+-        set(_out_dir "${CMAKE_CURRENT_BINARY_DIR}")
+-    endif ()
+-
+-    file(COPY ${CMAKE_PREFIX_PATH}/lib/libavcodec.so
+-            ${CMAKE_PREFIX_PATH}/lib/libavcodec.so.61
+-            ${CMAKE_PREFIX_PATH}/lib/libavcodec.so.61.3.100
+-            ${CMAKE_PREFIX_PATH}/lib/libavutil.so
+-            ${CMAKE_PREFIX_PATH}/lib/libavutil.so.59
+-            ${CMAKE_PREFIX_PATH}/lib/libavutil.so.59.8.100
+-            ${CMAKE_PREFIX_PATH}/lib/libswscale.so
+-            ${CMAKE_PREFIX_PATH}/lib/libswscale.so.8
+-            ${CMAKE_PREFIX_PATH}/lib/libswscale.so.8.1.100
+-            ${CMAKE_PREFIX_PATH}/lib/libswresample.so
+-            ${CMAKE_PREFIX_PATH}/lib/libswresample.so.5
+-            ${CMAKE_PREFIX_PATH}/lib/libswresample.so.5.1.100
+-         DESTINATION ${_out_dir})
+-
+-    set(${output_sos}
+-        ${_out_dir}/libavcodec.so
+-        ${_out_dir}/libavcodec.so.61
+-        ${_out_dir}/libavcodec.so.61.3.100
+-        ${_out_dir}/libavutil.so
+-        ${_out_dir}/libavutil.so.59
+-        ${_out_dir}/libavutil.so.59.8.100
+-        ${_out_dir}/libswscale.so
+-        ${_out_dir}/libswscale.so.8
+-        ${_out_dir}/libswscale.so.8.1.100
+-        ${_out_dir}/libswresample.so
+-        ${_out_dir}/libswresample.so.5
+-        ${_out_dir}/libswresample.so.5.1.100
+-        PARENT_SCOPE
+-    )
+ endfunction()
+ 
+ # Bundled sources set their own warning flags, and a plain -Wall there means /Wall
+@@ -1239,7 +1198,6 @@
+ if (WIN32)
+     install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "./resources")
+     if(ORCA_BUNDLED_UV_EXECUTABLE)
+-        install(PROGRAMS "${ORCA_BUNDLED_UV_EXECUTABLE}" DESTINATION "./resources/tools/uv" RENAME "${ORCA_BUNDLED_UV_FILENAME}")
+     endif()
+     set(CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS_SKIP TRUE)
+     include(InstallRequiredSystemLibraries)
+@@ -1251,7 +1209,6 @@
+         PATTERN "*/udev" EXCLUDE
+     )
+     if(ORCA_BUNDLED_UV_EXECUTABLE)
+-        install(PROGRAMS "${ORCA_BUNDLED_UV_EXECUTABLE}" DESTINATION "${SLIC3R_FHS_RESOURCES}/tools/uv" RENAME "${ORCA_BUNDLED_UV_FILENAME}")
+     endif()
+     install(FILES src/dev-utils/platform/unix/com.orcaslicer.OrcaSlicer.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+     foreach(SIZE 32 128 192)
+@@ -1262,17 +1219,15 @@
+ elseif (CMAKE_MACOSX_BUNDLE)
+     # install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "${CMAKE_INSTALL_PREFIX}/OrcaSlicer.app/Contents/resources")
+     if(ORCA_BUNDLED_UV_EXECUTABLE)
+-        install(PROGRAMS "${ORCA_BUNDLED_UV_EXECUTABLE}" DESTINATION "${CMAKE_INSTALL_PREFIX}/OrcaSlicer.app/Contents/Resources/tools/uv" RENAME "${ORCA_BUNDLED_UV_FILENAME}")
+     endif()
+ else ()
+     install(FILES src/dev-utils/platform/unix/com.orcaslicer.OrcaSlicer.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/resources/applications)
+     install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "${CMAKE_INSTALL_PREFIX}/resources")
+     if(ORCA_BUNDLED_UV_EXECUTABLE)
+-        install(PROGRAMS "${ORCA_BUNDLED_UV_EXECUTABLE}" DESTINATION "${CMAKE_INSTALL_PREFIX}/resources/tools/uv" RENAME "${ORCA_BUNDLED_UV_FILENAME}")
+     endif()
+ endif ()
+ 
+-if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
++if (false)
+     set(LIBRARY_FILES
+     ${LIBDIR_BIN}/libavcodec.so.61
+     ${LIBDIR_BIN}/libavcodec.so.61.3.100

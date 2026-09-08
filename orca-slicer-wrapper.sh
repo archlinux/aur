@@ -1,6 +1,7 @@
 #!/bin/bash
 DIR="/usr/lib/OrcaSlicer"
 export LD_LIBRARY_PATH="$DIR/bin:$LD_LIBRARY_PATH"
+export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 
 # OrcaSlicer will segfault on systems where locale info is not as expected
 export LC_ALL=C
