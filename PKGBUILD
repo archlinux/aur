@@ -2,7 +2,7 @@
 
 pkgname=python-py-key-value-aio
 _name=py_key_value_aio
-pkgver=0.4.0
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Async key-value store with pluggable backends"
 arch=('any')
@@ -18,13 +18,8 @@ optdepends=(
   'python-redis: redis backend support'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-uv-build')
-source=("https://files.pythonhosted.org/packages/d5/42/4397b26c564a7428fbb424c353fc416c5954609c149b6d629255f65e6dc9/${_name}-${pkgver}.tar.gz")
-sha256sums=('55be4942bf5d5a40aa9d6eae443425096fe1bec6af7571502e54240ce3597189')
-
-prepare() {
-  cd "${_name}-${pkgver}"
-  sed -i 's/uv_build>=0.8.2,<0.9.0/uv_build>=0.8.2,<1.0.0/' pyproject.toml
-}
+source=("https://files.pythonhosted.org/packages/fb/e2/d689d922894a7ecde73b6daeaf9b13dab5aae06fe6aaaf7514722644d382/${_name}-${pkgver}.tar.gz")
+sha256sums=('c6563a2c6abe5da5e20f4f9e875c2a9b425a2244a54fadbf46cf140a9eea45d7')
 
 build() {
   cd "${_name}-${pkgver}"
