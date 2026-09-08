@@ -3,7 +3,7 @@
 pkgname=septabee
 pkgver=B_T5
 pkgrel=1
-pkgdesc='A DAW built around audio sample-level parameter modulation and a ridiculous amount of optimization.'
+pkgdesc='A DAW built around audio rate parameter modulation and a ridiculous amount of optimization.'
 arch=('x86_64')
 url='https://septabee.nekoweb.org'
 license=('LicenseRef-septabee')
