@@ -1,14 +1,14 @@
 # Maintainer: Yoann Laissus <yoann.laissus@gmail.com>
 _pkgname=musescore
 pkgname=musescore-bin
-pkgver=4.7.4
+pkgver=4.7.5
 pkgrel=2
 pkgdesc='Create, play and print beautiful sheet music / AppImage version'
 arch=(x86_64)
 url=https://musescore.org/
 license=(GPL)
 groups=(pro-audio)
-_appimage="MuseScore-Studio-${pkgver}.260706075-x86_64.AppImage"
+_appimage="MuseScore-Studio-${pkgver}.260831071-x86_64.AppImage"
 noextract=("${_appimage}")
 depends=(zlib fuse2)
 optdepends=('lame: MP3 export')
@@ -22,7 +22,7 @@ source=(
     "${_appimage}::https://github.com/musescore/MuseScore/releases/download/v${pkgver}/${_appimage}"
     "mscore.sh"
 )
-sha256sums=('9233ed1b87d3e6b45722278f3c286dcd41e83da778bd0f80a1dd04949696ad93'
+sha256sums=('a31b2da2dbcc2191bcc98beb7be5c15f2f517bedb3444def96fe3088b74d3a1e'
             'd9bb8cf15e9bea1533461ab094f29029ffbe21e820accd205f9552c3545057bc')
 appname="mscore"
 
