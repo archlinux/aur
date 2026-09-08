@@ -16,14 +16,20 @@ arch=('x86_64')
 url="https://github.com/Hardcore-Team/yt-source" 
 license=('MIT')
 depends=('pam' 'gcc')
-sha256sums=('6dc94b6e9f7d9170737df7d0ba65ee0308a263ecb8150c949047428371dee8a8'
+sha256sums=('e2e1ffc0c146ed5d6a08cf738ffa61398f04d7ffb4ae63fb1669a51d7a2b9073'
             '146e04aa05345680dd6c220630390432bf45009fcf94a347131d9c311875027e'
             'dc17b21c82ef63f4351cb66b8f1a3324843eef82404790773796c1f1ac6aefa3')
 source=("yt.c" "yt.cfg" "yt.pam")
 install=ekipyt.install
 
 build() {
-    gcc -Wall -O2 -o yt yt.c -lpam -lpam_misc
+    # -D_FORTIFY_SOURCE=2, -fstack-protector-strong: tampon taşması tespiti
+    # -z relro -z now: GOT'u salt-okunur yap, symbol'leri eager bind et
+    # -pie: adres uzayı rastgeleleştirmesinden (ASLR) tam yararlan
+    # Bunlar SUID-root bir binary için standart sertleştirme bayraklarıdır.
+    gcc -Wall -Wextra -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fPIE \
+        -Wl,-z,relro,-z,now -pie \
+        -o yt yt.c -lpam -lpam_misc
 }
 
 package() {
