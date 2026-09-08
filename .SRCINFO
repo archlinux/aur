@@ -1,5 +1,5 @@
 pkgbase = cuby-git
-	pkgdesc = A Rubik's cube app.(Use system-wide electron)
+	pkgdesc = A Rubik's cube app.
 	pkgver = release.r31.g945d47e
 	pkgrel = 1
 	url = https://github.com/Cuby-Project/Cuby-Client
@@ -10,12 +10,13 @@ pkgbase = cuby-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
+	makedepends = jq
 	depends = electron26
 	provides = cuby=release
 	conflicts = cuby
 	source = cuby.git::git+https://github.com/Cuby-Project/Cuby-Client.git
 	source = cuby.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = cuby-git
