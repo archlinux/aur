@@ -1,6 +1,6 @@
 pkgbase = basedpyright-bin
 	pkgdesc = pyright fork with various type checking improvement and pylance features
-	pkgver = 1.39.10
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://github.com/DetachHead/basedpyright
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = basedpyright-bin
 	depends = nodejs
 	provides = basedpyright
 	options = !strip
-	source = https://registry.npmjs.org/basedpyright/-/basedpyright-1.39.10.tgz
-	sha256sums = 11891e35fb3afcde55d5f358b147ec99be13ee1eb8ea5db893db430f51eb5b2b
+	source = https://registry.npmjs.org/basedpyright/-/basedpyright-1.40.0.tgz
+	sha256sums = c0b77ad073a62247fa9201403a2fcbaf4ee20afb400719052aa36079e5faf19e
 
 pkgname = basedpyright-bin
