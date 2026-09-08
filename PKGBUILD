@@ -3,7 +3,7 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 _base=pywavelets
 pkgname=python-${_base}
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Wavelet transform module"
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(python-build python-installer meson-python python-wheel cython)
 optdepends=('python-matplotlib: for plotting support'
   'python-scipy: for scipy.signal.cwt (FFT-based continuous wavelet transforms)')
 source=(${_base::3}t-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('141b60ee092a08ce174c6f796fdf8434b7b106110f9d59f5593161fcc5c95b2df4394a604f418bdd414907e5a4470ea7ce5f60ef4ce72033251bb00a14c710de')
+sha512sums=('83dcacb5a3cec89d339cb251c9fa017db214e5db475ba28f516dd46faee6ea3cd921d2cbae007e3d6ab10716fb1c7b796959f4c261910bbb427faa186e65b47e')
 
 build() {
   cd ${_base::3}t-${pkgver}
