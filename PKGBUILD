@@ -56,6 +56,7 @@ package() {
 
     install -Dm755 "$bin/tidemark" "$pkgdir/usr/bin/tidemark"
     install -Dm755 "$bin/tidemarkd" "$pkgdir/usr/bin/tidemarkd"
+    install -Dm755 "$bin/tidemarkctl" "$pkgdir/usr/bin/tidemarkctl"
 
     # The unit's ExecStart is /usr/bin/tidemarkd, which is where the line above puts it.
     install -Dm644 data/tidemarkd.service "$pkgdir/usr/lib/systemd/user/tidemarkd.service"
