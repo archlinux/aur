@@ -4,7 +4,7 @@
 
 pkgname=dehydrated-git
 _pkgname=dehydrated
-pkgver=0.7.1.r2.g5c4adf6
+pkgver=0.7.2.r21.g48866b0
 pkgrel=1
 pkgdesc="A Let's Encrypt (ACME) client implemented as a shell script"
 arch=(any)
