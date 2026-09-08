@@ -6,7 +6,7 @@ _appname=${_gitname%code}
 pkgname=${_gitname}-bin
 pkgdesc="A terminal IDE written in Rust"
 
-pkgver=0.25.0
+pkgver=0.26.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,8 +29,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('5543190dbd0bca6ef6f695a9a04894e6bac116033052ed507808981ea66dfb42')
-sha256sums_aarch64=('1589060425d94e5a77a731787db8b3fccdf455b0d732322c73b81b47b1fa153c')
+sha256sums_x86_64=('58bfb17c383b373343f7ce4d6d2f5930632d0c78a68941c60820ae044c48746a')
+sha256sums_aarch64=('e6aba40836c031a5e9f9e95fc9432889322a721928353e3a5a38a04d6cb03b49')
 
 
 case ${CARCH} in
