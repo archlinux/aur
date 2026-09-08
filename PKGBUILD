@@ -4,7 +4,7 @@
 
 pkgname=syncterm
 options=('!debug')
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="A BBS terminal program, supporting ANSI music and IBM charset."
 url="http://syncterm.bbsdev.net"
@@ -16,7 +16,7 @@ optdepends=('hicolor-icon-theme: for GUI icon support'
             'libx11: for X11 GUI support')
 arch=('i686' 'x86_64')
 source=("https://downloads.sourceforge.net/project/syncterm/syncterm/$pkgname-$pkgver/$pkgname-$pkgver-src.tgz")
-md5sums=('1b407a93a8d90ae60f260c2692632d8f')
+md5sums=('1c67c6fea725bf9443d7c839ad550094')
 
 build() {
 	cd "$pkgname-$pkgver/src/syncterm"
