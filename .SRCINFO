@@ -1,0 +1,14 @@
+pkgbase = mpv-twitch-chat-git
+	pkgdesc = Show Twitch chat messages as subtitles when watching Twitch VOD with mpv.
+	pkgver = r38.72d97a0
+	pkgrel = 1
+	url = https://github.com/CrendKing/mpv-twitch-chat
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/CrendKing/mpv-twitch-chat
+	sha256sums = SKIP
+
+pkgname = mpv-twitch-chat-git
+	depends = mpv
+	depends = curl
