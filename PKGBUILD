@@ -1,7 +1,7 @@
 # Maintainer: ZXY595 <zxy_595@qq.com>
 _pkgname=vtcode
 pkgname=$_pkgname-bin
-pkgver=0.158.2
+pkgver=0.159.0
 pkgrel=1
 pkgdesc="An open-source Rust terminal coding agent for interactive and long-running autonomous work."
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 )
 conflicts=("$_pkgname")
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-$arch-unknown-linux-gnu.tar.gz")
-sha256sums=('f388df4c6bff434fa276e0046273ce7363d8b3c9c5df58fe6d059752f6e723b8')
+sha256sums=('caf119f7fe2a1ff94a8aa1300a1ecdf8771209c955d99ffbbbb6b340421d87c6')
 
 package() {
   install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin"
