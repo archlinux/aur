@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal user interface (TUI) tool for viewing and analyzing X.509 certificate chains"
 
-pkgver=1.0.4
+pkgver=1.1.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('ae6a81a7271c78799df7d67149000a18f899756f94cfa97beb8c7e9a9f5ae2dc')
-sha256sums_aarch64=('4cf6416b63882f9c4301a336000c18e4ac86b24f92f70cb0271710e325577c2d')
+sha256sums_x86_64=('e9a550d0806ab011de1f6be36f530fc556fd3e371483b8e3eda3346e05785c63')
+sha256sums_aarch64=('718a421ae382fabc337d20b45e76bab7abcee41c37bb00dcd726afceb04df610')
 
 
 package() {
