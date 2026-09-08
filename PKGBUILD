@@ -1,7 +1,7 @@
 # Maintainer: sandwichfarm <sandwich.farm@protonmail.com>
 
 pkgname=nsite-git
-pkgver=0.27.1
+pkgver=0.28.1
 pkgrel=1
 pkgdesc="Publish your site to nostr and blossom servers from the latest git source"
 arch=('x86_64')
