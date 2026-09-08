@@ -17,7 +17,7 @@ depends=(
   'libxkbcommon-x11'
   'vulkan-icd-loader'
 )
-makedepends=('cargo' 'patch' 'curl' 'gcc' 'clang' 'git' 'cmake')
+makedepends=('cargo' 'patch' 'curl' 'gcc' 'clang' 'git' 'cmake' 'libx11')
 optdepends=(
   'vulkan-intel: Vulkan support for Intel graphics'
   'vulkan-radeon: Vulkan support for AMD graphics'
