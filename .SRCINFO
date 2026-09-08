@@ -1,7 +1,7 @@
 pkgbase = chiaki-ng
 	pkgdesc = Free and Open Source PlayStation Remote Play Client
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://streetpea.github.io/chiaki-ng/
 	arch = i686
 	arch = x86_64
@@ -14,15 +14,13 @@ pkgbase = chiaki-ng
 	depends = curl
 	depends = ffmpeg
 	depends = fftw
-	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = hidapi
 	depends = json-c
-	depends = libidn2
+	depends = libgcc
 	depends = libplacebo
-	depends = libpsl
-	depends = libssh2
+	depends = libstdc++
 	depends = miniupnpc
 	depends = openssl
 	depends = opus
@@ -32,7 +30,6 @@ pkgbase = chiaki-ng
 	depends = qt6-webengine
 	depends = sdl2
 	depends = speexdsp
-	depends = zlib
 	optdepends = intel-media-driver: vaapi backend for Intel GPUs [>= Broadwell]
 	optdepends = libva-intel-driver: vaapi backend for Intel GPUs [<= Haswell]
 	optdepends = libva-vdpau-driver: vaapi backend for Nvidia and AMD GPUs
@@ -41,8 +38,10 @@ pkgbase = chiaki-ng
 	conflicts = chiaki
 	source = git+https://github.com/streetpea/chiaki-ng.git?signed#commit=3f8fd712cbc0becd3a5ea588340d72bf451c12b5
 	source = Qt6GuiPrivate-fix.patch
+	source = https://github.com/streetpea/chiaki-ng/commit/0caf11cbdd665ec40d81d245aa4da215504ac459.patch
 	validpgpkeys = FCCF693D5A9081571B90DDA2B0050C45E5804C8D
 	sha256sums = 2e39dcb7cd97721e7425bb04d2bb4a1e0b7fd67ce2b87787b1dd020f00f1b354
 	sha256sums = 121199cce7692ac30d4353b36041004007665c92f9895175e6d0f09b86d60e0f
+	sha256sums = 476046bfc77c09569b6d05e46ae7ba673a500a51ee5f48795c410c3cd3215d04
 
 pkgname = chiaki-ng

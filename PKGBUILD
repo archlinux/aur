@@ -4,7 +4,7 @@ pkgname=chiaki-ng
 pkgver=1.10.0
 # commit IDs can be found at https://github.com/streetpea/chiaki-ng/releases
 _commit="3f8fd712cbc0becd3a5ea588340d72bf451c12b5"
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and Open Source PlayStation Remote Play Client"
 arch=(i686 x86_64)
 url="https://streetpea.github.io/chiaki-ng/"
@@ -13,15 +13,13 @@ depends=(
         'curl'
         'ffmpeg'
         'fftw'
-        'gcc-libs'
         'glibc'
         'hicolor-icon-theme'
         'hidapi'
         'json-c'
-        'libidn2'
+        'libgcc'
         'libplacebo'
-        'libpsl'
-        'libssh2'
+        'libstdc++'
         'miniupnpc'
         'openssl'
         'opus'
@@ -31,7 +29,6 @@ depends=(
         'qt6-webengine'
         'sdl2'
         'speexdsp'
-        'zlib'
 )
 makedepends=(
         'git'
@@ -52,9 +49,11 @@ conflicts=('chiaki')
 # curl -o - https://github.com/streetpea.gpg | gpg --import
 validpgpkeys=('FCCF693D5A9081571B90DDA2B0050C45E5804C8D')
 source=(git+"https://github.com/streetpea/${pkgname}.git?signed#commit=${_commit}"
-        Qt6GuiPrivate-fix.patch)
+        Qt6GuiPrivate-fix.patch
+        https://github.com/streetpea/chiaki-ng/commit/0caf11cbdd665ec40d81d245aa4da215504ac459.patch)
 sha256sums=('2e39dcb7cd97721e7425bb04d2bb4a1e0b7fd67ce2b87787b1dd020f00f1b354'
-            '121199cce7692ac30d4353b36041004007665c92f9895175e6d0f09b86d60e0f')
+            '121199cce7692ac30d4353b36041004007665c92f9895175e6d0f09b86d60e0f'
+            '476046bfc77c09569b6d05e46ae7ba673a500a51ee5f48795c410c3cd3215d04')
 
 prepare() {
   cd ${pkgname}
@@ -65,6 +64,8 @@ prepare() {
   sed -i 's:libcurl_shared:libcurl:' lib/CMakeLists.txt
   # Patch missing CMake module
   patch -Np1 -i "${srcdir}/Qt6GuiPrivate-fix.patch"
+  # Patch for ffmpeg9 support
+  patch -Np1 -i "${srcdir}/0caf11cbdd665ec40d81d245aa4da215504ac459.patch"
   # Initialize remaining submodules
   git submodule update --init
 }
