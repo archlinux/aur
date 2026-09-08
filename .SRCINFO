@@ -1,5 +1,5 @@
 pkgbase = ytm-player-git
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	pkgdesc = A full-featured YouTube Music TUI client with vim-style navigation
 	url = https://ytm-player.com
@@ -13,6 +13,7 @@ pkgbase = ytm-player-git
 	depends = python-mpv
 	depends = python-packaging
 	depends = python-pillow
+	depends = python-pycryptodomex
 	depends = python-textual>=7.0
 	depends = python-textual<9.0
 	depends = python-ytmusicapi
