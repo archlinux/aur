@@ -1,6 +1,6 @@
 pkgbase = jaclang
 	pkgdesc = The Jac programming language
-	pkgver = 0.37.7
+	pkgver = 0.37.8
 	pkgrel = 1
 	url = https://github.com/jaseci-labs/jaseci
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = jaclang
 	conflicts = jac
 	conflicts = jac-bin
 	options = !strip
-	source_x86_64 = jac-0.37.7-linux-x86_64::https://github.com/jaseci-labs/jaseci/releases/download/v0.37.7/jac-0.37.7-linux-x86_64
-	sha256sums_x86_64 = 92bc667256dc48210abe6e843b5df51f1a41e00ab62fd240f63f1f5ad79fb984
-	source_aarch64 = jac-0.37.7-linux-aarch64::https://github.com/jaseci-labs/jaseci/releases/download/v0.37.7/jac-0.37.7-linux-aarch64
-	sha256sums_aarch64 = 2d6b81d0bf3d1a63c83b604d61b40c61fde32016042d4969d241973c14f27dbb
+	source_x86_64 = jac-0.37.8-linux-x86_64::https://github.com/jaseci-labs/jaseci/releases/download/v0.37.8/jac-0.37.8-linux-x86_64
+	sha256sums_x86_64 = 30c362983117d0473b1d5bd68978384231e250361f6ff4b5bd50f24fa72c418f
+	source_aarch64 = jac-0.37.8-linux-aarch64::https://github.com/jaseci-labs/jaseci/releases/download/v0.37.8/jac-0.37.8-linux-aarch64
+	sha256sums_aarch64 = 6f761cb02ce1955cd0e3403955b6845930852f9056e35135a300550a52d9b4ca
 
 pkgname = jaclang
