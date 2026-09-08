@@ -1,6 +1,6 @@
 pkgbase = renode-bin
 	pkgdesc = A virtual development framework for multinode embedded networks
-	pkgver = 1.16.1
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://www.renode.io
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = renode-bin
 	depends = screen
 	provides = renode
 	provides = libllvm-disas.so
-	source = renode-bin-1.16.1-1.tar.xz::https://github.com/renode/renode/releases/download/v1.16.1/renode-1.16.1-1-x86_64.pkg.tar.xz
-	sha256sums = 72a73ebfbc0e04e398d72fda6249bba8ae12c755eef7382f0e941f63858e5cdb
+	source = renode-bin-1.17.0-1.tar.xz::https://github.com/renode/renode/releases/download/v1.17.0/renode-1.17.0-1-x86_64.pkg.tar.xz
+	sha256sums = 91bf4d6e3ca4c65cda71706fe6fa579a5142d1f435cac4dcbd254a28fec176f9
 
 pkgname = renode-bin
