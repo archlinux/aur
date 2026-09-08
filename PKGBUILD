@@ -8,13 +8,13 @@ pkgname="${_pkgname}-llvm"
 _commit_rel="97f188efc3dc90315b79a2af1f477c0c18d85e82" # 3.1.1
 _commit="ab5e3526b64af1a2eaa43aa6f441a7312e013519" # r59
 pkgver="3.1.1+r59+g${_commit::7}"
-pkgrel=2
-pkgdesc="Super fast fixed-point MP3 encoder — built with Clang and LLVM lld"
+pkgrel=3
+pkgdesc="Super fast fixed-point MP3 encoder — built with Clang and mold"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/savonet/${_pkgname}"
 license=('LGPL-2.0-only')
 depends=('glibc')
-makedepends=('clang' 'lld' 'llvm')
+makedepends=('clang' 'mold' 'llvm')
 provides=('shine' 'libshine.so')
 conflicts=('shine')
 _pkgsrc="${_pkgname}-${_commit}"
@@ -32,13 +32,13 @@ build() {
   export CXX=clang++
   export AR=/usr/bin/llvm-ar
   export RANLIB=/usr/bin/llvm-ranlib
-  export LD=/usr/bin/ld.lld
+  export LD=/usr/bin/mold
   export NM=/usr/bin/llvm-nm
   export OBJCOPY=/usr/bin/llvm-objcopy
   export OBJDUMP=/usr/bin/llvm-objdump
   export READELF=/usr/bin/llvm-readelf
   export STRIP=/usr/bin/llvm-strip
-  export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+  export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
   export CFLAGS="${CFLAGS:-} -O3 -march=native"
   export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
   # ./bootstrap
