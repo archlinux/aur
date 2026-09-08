@@ -2,18 +2,18 @@
 # Contributor: Aseem Athale <athaleaseem@gmail.com>
 
 pkgname=python-weaviate-client
-pkgver=4.23.0
+pkgver=4.23.1
 pkgrel=1
-_commit=c94b224
+_commit=09e35b01
 pkgdesc='A python native client for easy interaction with a Weaviate instance.'
 arch=(any)
 url='https://github.com/weaviate/weaviate-python-client'
 license=(BSD-3-Clause)
-depends=(python-httpx python-validators python-authlib python-pydantic python-grpcio python-protobuf python-deprecation)
+depends=(python python-httpx python-validators python-authlib python-pydantic python-grpcio python-protobuf python-deprecation)
 optdepends=(weaviate)
 makedepends=(git python-build python-installer python-setuptools python-wheel python-setuptools-scm)
 source=("$pkgname::git+$url#commit=${_commit}?signed")
-sha256sums=('5d720a8b01ac2d67d5f69e29cf557fa27d87aae57ad750f90063ceb86cf62c4c')
+sha256sums=('367d6c7bd4a979361773eb641d628ef0bdfc28e462299a4a1ebf9d1a9d8b3978')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 build() {
