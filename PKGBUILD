@@ -4,7 +4,7 @@
 _pkgname=mpeghdec
 pkgname=mpeghdec-llvm
 pkgver=4.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Fraunhofer MPEG-H audio decoder — built with Clang and mold'
 arch=('x86_64')
 url='https://mpegh.com/'
@@ -23,6 +23,10 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://github.com/Fraunhofer-IIS/mpeghdec/archive/r${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('e7842b46c8054367eea0537922b61180be7e7dc9747d872071854b08139c6016')
+
+# Full LTO with mold/LLVMgold leaves an undefined __cxx_global_var_init in
+# mpeghDecoder's bundled mmtisobmff code. Keep LTO enabled using ThinLTO.
+LTOFLAGS='-flto=thin'
 
 build() {
     export CC=clang
