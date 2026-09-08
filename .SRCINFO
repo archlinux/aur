@@ -17,6 +17,7 @@ pkgbase = ferrumpix-bin
 	depends = mpv
 	depends = libraw
 	optdepends = libheif: HEIC/HEIF/AVIF-Dateien lesen
+	optdepends = dnglab: RAW-Dateien in DNG umwandeln
 	provides = ferrumpix
 	conflicts = ferrumpix
 	noextract = FerrumPix-0.9.40-5-linux-x64-aur.zip
