@@ -6,7 +6,7 @@
 
 pkgname=write_stylus
 pkgver=jul.2025
-pkgrel=1
+pkgrel=2
 pkgdesc="Write(orignal name) - A word processor for handwriting"
 arch=(i686 x86_64)
 url="http://www.styluslabs.com/"
@@ -21,11 +21,11 @@ source=(
   git+https://github.com/styluslabs/usvg.git
   git+https://github.com/styluslabs/ugui.git)
 sha256sums=('f0749381323ba2794a22a227c10689a58d213a8b7da76232a03928cdfc1b8be4'
-            '637c47c1843860a16f1ca87e2df5d72b4396ff23cefacf6244de95cdac23de6e'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+  '637c47c1843860a16f1ca87e2df5d72b4396ff23cefacf6244de95cdac23de6e'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP')
 noextract=("eula.docx")
 
 prepare() {

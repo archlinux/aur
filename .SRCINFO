@@ -1,7 +1,7 @@
 pkgbase = write_stylus
 	pkgdesc = Write(orignal name) - A word processor for handwriting
 	pkgver = jul.2025
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.styluslabs.com/
 	arch = i686
 	arch = x86_64
