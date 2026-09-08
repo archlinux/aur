@@ -1,23 +1,23 @@
 pkgbase = mxcli-nightly-bin
 	pkgdesc = Unofficial nightly binary of the mxcli Mendix development CLI
-	pkgver = 20260905.41c55d09
+	pkgver = 20260907.e6a83b5d
 	pkgrel = 1
 	url = https://github.com/mendixlabs/mxcli
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	provides = mxcli=20260905.41c55d09
+	provides = mxcli=20260907.e6a83b5d
 	conflicts = mxcli
 	options = !debug
-	source = LICENSE-41c55d0985e10e752058bcdad9dee8e799c0f51c::https://github.com/mendixlabs/mxcli/raw/41c55d0985e10e752058bcdad9dee8e799c0f51c/LICENSE
-	source = README-41c55d0985e10e752058bcdad9dee8e799c0f51c.md::https://github.com/mendixlabs/mxcli/raw/41c55d0985e10e752058bcdad9dee8e799c0f51c/README.md
-	source = CHANGELOG-41c55d0985e10e752058bcdad9dee8e799c0f51c.md::https://github.com/mendixlabs/mxcli/raw/41c55d0985e10e752058bcdad9dee8e799c0f51c/CHANGELOG.md
+	source = LICENSE-e6a83b5d6e2bdb1c33d6e869e7307403b222bb9f::https://github.com/mendixlabs/mxcli/raw/e6a83b5d6e2bdb1c33d6e869e7307403b222bb9f/LICENSE
+	source = README-e6a83b5d6e2bdb1c33d6e869e7307403b222bb9f.md::https://github.com/mendixlabs/mxcli/raw/e6a83b5d6e2bdb1c33d6e869e7307403b222bb9f/README.md
+	source = CHANGELOG-e6a83b5d6e2bdb1c33d6e869e7307403b222bb9f.md::https://github.com/mendixlabs/mxcli/raw/e6a83b5d6e2bdb1c33d6e869e7307403b222bb9f/CHANGELOG.md
 	sha256sums = 50c1782657f9d425c58b6854d4976eeb25607a692d77e9ae3a75d5c059a08c53
 	sha256sums = 456c393880c987a682122484960e821ab2325c70d53ce769ecf76d95a0b11702
-	sha256sums = 4a60b3200feb0f8733c07e8733834cca2925ea205495160945bdd5ff6a581ccc
-	source_x86_64 = mxcli-nightly-bin-20260905.41c55d09-x86_64::https://github.com/GG-O-BP/mxcli/releases/download/nightly-20260905-41c55d09/mxcli-linux-amd64
-	sha256sums_x86_64 = 48b5dd9d0881fbfaee29f735e683f5cf3a0d8c8a35a8fd8003a0554bfc472d7d
-	source_aarch64 = mxcli-nightly-bin-20260905.41c55d09-aarch64::https://github.com/GG-O-BP/mxcli/releases/download/nightly-20260905-41c55d09/mxcli-linux-arm64
-	sha256sums_aarch64 = 848f54da45ac6c41e42b91e92af30d7a93ac2ebe3acc249fa8d1d2e4c8232b4d
+	sha256sums = 52dfce909321961fec9b29a1abc5596323a58816a4270d722b72d588b1491f3e
+	source_x86_64 = mxcli-nightly-bin-20260907.e6a83b5d-x86_64::https://github.com/GG-O-BP/mxcli/releases/download/nightly-20260907-e6a83b5d/mxcli-linux-amd64
+	sha256sums_x86_64 = 25610c9a69c0db8ffdf88e8508b9421e0fa5ab26510c4c3995164b2823f89e79
+	source_aarch64 = mxcli-nightly-bin-20260907.e6a83b5d-aarch64::https://github.com/GG-O-BP/mxcli/releases/download/nightly-20260907-e6a83b5d/mxcli-linux-arm64
+	sha256sums_aarch64 = d8373c0a0420cdbc4a5252fbe3efc673940c93e0fbf72d51630c419dd074c5db
 
 pkgname = mxcli-nightly-bin
