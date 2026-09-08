@@ -6,7 +6,7 @@
 
 pkgname=votrim-bin
 _pkgname=votrim
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Native video trimmer and encoder with a multi-segment timeline and live mpv preview"
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
-sha256sums=('f9991b4f9fdbf9fce403436f36520bc3880fb92a3213e2dc90bacb82f8807552')
+sha256sums=('386fb164fddf67fe5ffcca87ddeafa95e1f92311d1eedf6a96f5b1ff1a06e60b')
 
 package() {
 	cd "$_pkgname-$pkgver-x86_64"
