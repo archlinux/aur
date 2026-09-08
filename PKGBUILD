@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=readODS
-_pkgver=2.3.0
+_pkgver=2.3.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Read and Write ODS Files"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -15,24 +15,29 @@ depends=(
   r-stringi
   r-tibble
   r-vctrs
+  r-withr
   r-zip
 )
+makedepends=(
+  r-cpp11
+)
 checkdepends=(
+  r-knitr
   r-readr
   r-testthat
 )
 optdepends=(
   r-covr
+  r-desc
   r-knitr
   r-readr
   r-rmarkdown
   r-spelling
   r-testthat
-  r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f826780e384d9e21b200880d4296023a')
-b2sums=('8a25a216557533d0266fb0afd4dac536e64eb4870df2502765f0019284ebf9ed61e1f711cb3b74e95f47f56235b0ea68597c6081efc3a5cbdfaa175ed9a06c1f')
+md5sums=('a27f7cf07779c0f0861889519c0acbcb')
+b2sums=('f8bd46319f0daae10b358ed38986a847756383bee70e69795b0feb5fb8c5f68f09803b63adc7b5bb1f0b5badf0be00123c8aa8fb5eb10f5663e2e54b87593a28')
 
 build() {
   mkdir build

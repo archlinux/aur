@@ -1,27 +1,30 @@
 pkgbase = r-readods
 	pkgdesc = Read and Write ODS Files
-	pkgver = 2.3.0
-	pkgrel = 1
+	pkgver = 2.3.6
+	pkgrel = 3
 	url = https://cran.r-project.org/package=readODS
 	arch = x86_64
 	license = GPL-3.0-only
+	checkdepends = r-knitr
 	checkdepends = r-readr
 	checkdepends = r-testthat
+	makedepends = r-cpp11
 	depends = r-cellranger
 	depends = r-minty
 	depends = r-stringi
 	depends = r-tibble
 	depends = r-vctrs
+	depends = r-withr
 	depends = r-zip
 	optdepends = r-covr
+	optdepends = r-desc
 	optdepends = r-knitr
 	optdepends = r-readr
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/readODS_2.3.0.tar.gz
-	md5sums = f826780e384d9e21b200880d4296023a
-	b2sums = 8a25a216557533d0266fb0afd4dac536e64eb4870df2502765f0019284ebf9ed61e1f711cb3b74e95f47f56235b0ea68597c6081efc3a5cbdfaa175ed9a06c1f
+	source = https://cran.r-project.org/src/contrib/readODS_2.3.6.tar.gz
+	md5sums = a27f7cf07779c0f0861889519c0acbcb
+	b2sums = f8bd46319f0daae10b358ed38986a847756383bee70e69795b0feb5fb8c5f68f09803b63adc7b5bb1f0b5badf0be00123c8aa8fb5eb10f5663e2e54b87593a28
 
 pkgname = r-readods
