@@ -1,7 +1,7 @@
 # Maintainer: forvkusa <forvkusa+aur at csie dot ntu dot edu dot tw>
 
 pkgname=hackmd-cli
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='The HackMD Command Line Tool'
 arch=('any')
@@ -13,13 +13,28 @@ makedepends=('pnpm')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=(
-	'21b32e3bc1bf2ed839454f0cf14472da7284c91783422c27b62ac5963b4b29fe'
-)
+sha256sums=('ed74ff9732cb92a4b1b2e0e3376e0ebed6216d3282a1abc52e29c5a3ce144227')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	pnpm install --frozen-lockfile --ignore-scripts
+
+	# temporary fix: yargs@16.2.0 is erroneous so we copy yargs to yargs.cjs 
+	node <<'NODE'
+const fs = require('node:fs');
+const path = require('node:path');
+const {createRequire} = require('node:module');
+const fromMocha = createRequire(require.resolve('mocha/package.json'));
+const manifest = fromMocha.resolve('yargs/package.json');
+const pkg = JSON.parse(fs.readFileSync(manifest, 'utf8'));
+
+if (pkg.version === '16.2.0') {
+  const dir = path.dirname(manifest);
+  fs.copyFileSync(path.join(dir, 'yargs'), path.join(dir, 'yargs.cjs'));
+  pkg.exports['./yargs'] = './yargs.cjs';
+  fs.writeFileSync(manifest, JSON.stringify(pkg, null, 2) + '\n');
+}
+NODE
 }
 
 build() {
