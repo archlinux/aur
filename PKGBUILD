@@ -1,10 +1,10 @@
 # Maintainer: Ethan Stokes <erstokes10@gmail.com>
 
-pkgname=macros-git
+pkgname=blockwork-git
 pkgver=0.4.0.r233.01215d8
 pkgrel=1
-pkgdesc='A Tauri app to manage and run macros on Linux.'
-url='https://github.com/EthanRStokes/macros'
+pkgdesc='A Tauri app to visually create and run automation.'
+url='https://github.com/EthanRStokes/Blockwork'
 arch=('x86_64')
 license=('GPL-3.0-only')
 makedepends=('rust' 'git' 'gcc' 'glibc' 'pnpm')
@@ -12,19 +12,19 @@ depends=(
     'gtk3' 'nss' 'alsa-lib' 'hicolor-icon-theme' 'webkit2gtk-4.1'
     'libgcc' 'glibc'
 )
-conflicts=('macros')
-provides=('macros')
-source=("git+https://github.com/EthanRStokes/macros")
+conflicts=('blockwork')
+provides=('blockwork')
+source=("git+https://github.com/EthanRStokes/Blockwork")
 sha256sums=('SKIP')
 options=('!lto')
 
 pkgver() {
-	cd "$srcdir/macros"
+	cd "$srcdir/Blockwork"
 	printf "%s.r%s.%s" "$(git describe --tags --abbrev=0 | sed 's/^v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-    cd "$srcdir/macros"
+    cd "$srcdir/Blockwork"
     git reset --hard HEAD
     git_tag="$(git describe --tags --abbrev=0 | sed 's/^v//')"
 
@@ -33,20 +33,20 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/macros"
-    export MACROS_PNPM_OFFLINE=1
+    cd "$srcdir/Blockwork"
+    export BLOCKWORK_PNPM_OFFLINE=1
     cargo build --release --frozen
 }
 
 package() {
-    cd "$srcdir/macros"
+    cd "$srcdir/Blockwork"
 
-    local libdir="$pkgdir/usr/lib/macros"
+    local libdir="$pkgdir/usr/lib/blockwork"
 
     # Binary's RUNPATH is $ORIGIN, so the CEF runtime payload (libcef.so,
     # GL/Vulkan shims, *.pak, icudtl.dat, locales/, ...) has to live alongside
     # it in a private libdir, not /usr/bin.
-    install -Dm755 "target/release/macros"                     "$libdir/macros"
+    install -Dm755 "target/release/blockwork"                     "$libdir/blockwork"
     install -Dm755 "target/release/libcef.so"                  "$libdir/libcef.so"
     install -Dm755 "target/release/libEGL.so"                  "$libdir/libEGL.so"
     install -Dm755 "target/release/libGLESv2.so"                "$libdir/libGLESv2.so"
@@ -62,8 +62,8 @@ package() {
     cp -r "target/release/locales" "$libdir/locales"
 
     install -d "$pkgdir/usr/bin"
-    ln -sf /usr/lib/macros/macros "$pkgdir/usr/bin/macros"
+    ln -sf /usr/lib/blockwork/blockwork "$pkgdir/usr/bin/blockwork"
 
-    install -Dm644 "res/icons/macros.png" "$pkgdir"/usr/share/icons/hicolor/256x256/apps/macros.png
-    install -Dm644 "res/macros.desktop" "$pkgdir"/usr/share/applications/macros.desktop
+    install -Dm644 "res/icons/blockwork.png" "$pkgdir"/usr/share/icons/hicolor/256x256/apps/blockwork.png
+    install -Dm644 "res/blockwork.desktop" "$pkgdir"/usr/share/applications/blockwork.desktop
 }
