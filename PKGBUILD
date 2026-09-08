@@ -3,13 +3,13 @@
 _pkgname=libklvanc
 pkgname=${_pkgname}-llvm
 pkgver=1.6.0
-pkgrel=1
-pkgdesc='Library for parsing/generation of Vertical Ancillary Data (VANC) — built with Clang and LLVM lld'
+pkgrel=2
+pkgdesc='Library for parsing/generation of Vertical Ancillary Data (VANC) — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/stoth68000/libklvanc/'
 license=('LGPL')
 depends=('glibc')
-makedepends=('clang' 'lld' 'llvm')
+makedepends=('clang' 'mold' 'llvm')
 provides=('libklvanc')
 conflicts=('libklvanc')
 source=("https://github.com/stoth68000/libklvanc/archive/vid.obe.${pkgver}/${_pkgname}-${pkgver}.tar.gz")
@@ -26,13 +26,13 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
     export READELF=/usr/bin/llvm-readelf
     export STRIP=/usr/bin/llvm-strip
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     ./configure --prefix='/usr'
