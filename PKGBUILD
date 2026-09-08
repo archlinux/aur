@@ -9,12 +9,12 @@
 #
 # _tag and pkgver are bumped by .github/workflows/publish-aur.yml when a release
 # is published. pkgver is the tag without the leading "v" and the "-alpha" suffix.
-_tag=v1.4.0.5425
+_tag=v1.4.0.5652
 # The launcher is a separate repository with no tags, so it is pinned by commit.
 _launcher_commit=b27ddd5d267484351d6cd4d9ca45a9113f1d586c
 pkgbase=keeperfx-tux
 pkgname=('keeperfx-tux' 'keeperfx-tux-data' 'keeperfx-tux-launcher')
-pkgver=1.4.0.5425
+pkgver=1.4.0.5652
 # rel 4: ship the pacman hook that reports a library break the soname
 # dependencies below cannot catch, and pick up the launcher fix that stops a
 # crash report carrying a log the failing run never wrote.
@@ -27,7 +27,7 @@ pkgver=1.4.0.5425
 # the breaking upgrade does not run for it. It has to already be installed.
 # Hence this: same engine tag, same pkgver, packaging only. Nothing here changes
 # the game; it puts the safety net in place before the fall.
-pkgrel=5
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/ForkedInTime/keeperfx-linux-alpha"
 license=('GPL-2.0-or-later')
@@ -68,11 +68,11 @@ source=(
 noextract=("keeperfx-tux-${pkgver}-full.7z")
 sha256sums=(
   'SKIP'
-  'a31e803e60bea582424b438bbaa1f05b360ea4ea0621c2545723a688103cdb2f'
+  'fc88f7e37c2664b2b5e7fe74f03fd4d98dcf181c89330bf8d866540c9402eaa2'
   'SKIP'
-  '8b897f0e147061f14fb0618a2737faefec037f338a1cac40d559b558ac1eef0c'
+  '31a4488a90ea45828d4a4704c99b5b77e3295d519b6c0fee23c6654a2f8dcc3a'
   '72d72a8e7c1221208eed0622a6e323399ba8cb139ab8840d620ef2697623a1b4'
-  '1001a296fc71263c3a64d22f9bdfc398954119f80df89f49a4b42f2769e169a1'
+  '5ed02b357aee4712e5684f29c44642ddbf581280fb60ef01560da2feb5e66bba'
   'ee2fc0f5b3d81dd55efe7d2aef6c4d67d18baff794114e3d6e334171842601eb'
   '37e0fcb5b46aa0b178380ea8f36aa62485b75b5425c1932c7ada7f4101efc870'
   '8ec4213ccaf290f309ac6a4a0c9036531256b1db6239cb0f571062a1a2cf51e6'
@@ -103,6 +103,15 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgbase}"
+
+  # 7-Zip's full-format library, for the launcher's archive handling. Built from
+  # source by the same script the release workflows use, so the package and the
+  # AppImage cannot end up with libraries of different capability. Guarded so a
+  # stable tag predating the script still builds -- it simply ships without one,
+  # exactly as it does today.
+  if [ -x packaging/ci/build-7zip-lib.sh ]; then
+    packaging/ci/build-7zip-lib.sh "${srcdir}/${pkgbase}/deps/7zip"
+  fi
 
   # ver_defs.h is only regenerated when version.mk changes, so a stale build
   # number would otherwise be baked in -- and the launcher gates settings on it.
@@ -316,6 +325,22 @@ package_keeperfx-tux-launcher() {
   # therefore cannot live in /usr/bin and be linked in; the wrapper copies it.
   install -Dm755 build/keeperfx-launcher-qt "${pkgdir}/usr/lib/${pkgbase}/keeperfx-launcher-qt"
   install -Dm755 "${srcdir}/keeperfx-tux-launcher.sh" "${pkgdir}/usr/bin/keeperfx-tux-launcher"
+
+  # The launcher reads every archive through this 7-Zip library, loaded from
+  # beside its own binary. It was never packaged: installs only had one as a
+  # leftover from the AppImage era, so a genuinely fresh package install had no
+  # archive support at all. The copy the launcher repo commits also cannot
+  # decompress RAR, which is what broke installing RAR workshop items -- so
+  # build 7-Zip's full-format library from source, the same script the release
+  # workflows use, and let the wrapper stage it next to the launcher.
+  # Conditional to match the guard in build(): a stable tag predating the build
+  # script produces no library, and must still package.
+  if [ -f "${srcdir}/${pkgbase}/deps/7zip/7z.so" ]; then
+    install -Dm755 "${srcdir}/${pkgbase}/deps/7zip/7z.so" \
+      "${pkgdir}/usr/lib/${pkgbase}/7z.so"
+    install -Dm644 "${srcdir}/${pkgbase}/deps/7zip/7-zip-License.txt" \
+      "${pkgdir}/usr/share/licenses/${pkgname}/7-zip-License.txt"
+  fi
 
   install -Dm644 packaging/keeperfx-launcher-qt.png \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/keeperfx-tux-launcher.png"

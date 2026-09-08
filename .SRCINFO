@@ -1,6 +1,6 @@
 pkgbase = keeperfx-tux
-	pkgver = 1.4.0.5425
-	pkgrel = 5
+	pkgver = 1.4.0.5652
+	pkgrel = 1
 	url = https://github.com/ForkedInTime/keeperfx-linux-alpha
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -26,12 +26,12 @@ pkgbase = keeperfx-tux
 	makedepends = ninja
 	makedepends = qt6-base
 	makedepends = qt6-tools
-	noextract = keeperfx-tux-1.4.0.5425-full.7z
+	noextract = keeperfx-tux-1.4.0.5652-full.7z
 	options = !strip
 	options = !debug
 	options = !lto
-	source = keeperfx-tux::git+https://github.com/ForkedInTime/keeperfx-linux-alpha.git#tag=v1.4.0.5425
-	source = keeperfx-tux-1.4.0.5425-full.7z::https://github.com/ForkedInTime/keeperfx-linux-alpha/releases/download/v1.4.0.5425/keeperfx-linux-alpha-x86_64-full.7z
+	source = keeperfx-tux::git+https://github.com/ForkedInTime/keeperfx-linux-alpha.git#tag=v1.4.0.5652
+	source = keeperfx-tux-1.4.0.5652-full.7z::https://github.com/ForkedInTime/keeperfx-linux-alpha/releases/download/v1.4.0.5652/keeperfx-linux-alpha-x86_64-full.7z
 	source = keeperfx-tux-launcher::git+https://github.com/ForkedInTime/keeperfx-launcher-qt-linux.git#commit=b27ddd5d267484351d6cd4d9ca45a9113f1d586c
 	source = keeperfx-tux.sh
 	source = keeperfx-tux.desktop
@@ -43,11 +43,11 @@ pkgbase = keeperfx-tux
 	source = keeperfx-tux-unstash.hook
 	source = keeperfx-tux-previous.sh
 	sha256sums = SKIP
-	sha256sums = a31e803e60bea582424b438bbaa1f05b360ea4ea0621c2545723a688103cdb2f
+	sha256sums = fc88f7e37c2664b2b5e7fe74f03fd4d98dcf181c89330bf8d866540c9402eaa2
 	sha256sums = SKIP
-	sha256sums = 8b897f0e147061f14fb0618a2737faefec037f338a1cac40d559b558ac1eef0c
+	sha256sums = 31a4488a90ea45828d4a4704c99b5b77e3295d519b6c0fee23c6654a2f8dcc3a
 	sha256sums = 72d72a8e7c1221208eed0622a6e323399ba8cb139ab8840d620ef2697623a1b4
-	sha256sums = 1001a296fc71263c3a64d22f9bdfc398954119f80df89f49a4b42f2769e169a1
+	sha256sums = 5ed02b357aee4712e5684f29c44642ddbf581280fb60ef01560da2feb5e66bba
 	sha256sums = ee2fc0f5b3d81dd55efe7d2aef6c4d67d18baff794114e3d6e334171842601eb
 	sha256sums = 37e0fcb5b46aa0b178380ea8f36aa62485b75b5425c1932c7ada7f4101efc870
 	sha256sums = 8ec4213ccaf290f309ac6a4a0c9036531256b1db6239cb0f571062a1a2cf51e6
@@ -80,9 +80,9 @@ pkgname = keeperfx-tux
 	depends = gcc-libs
 	depends = bash
 	depends = hicolor-icon-theme
-	depends = keeperfx-tux-data=1.4.0.5425-5
-	depends = keeperfx-tux-launcher=1.4.0.5425-5
-	provides = keeperfx-tux=1.4.0.5425
+	depends = keeperfx-tux-data=1.4.0.5652-1
+	depends = keeperfx-tux-launcher=1.4.0.5652-1
+	provides = keeperfx-tux=1.4.0.5652
 	conflicts = keeperfx-linux-alpha
 	conflicts = keeperfx-linux-alpha-git
 

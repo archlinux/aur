@@ -31,6 +31,16 @@ RO_DIRS=(lang fxdata creatrs ldata multiplayer)
 MERGE_DIRS=(data sound campgns levels)
 # User-owned: seeded once, never clobbered afterwards.
 RW_DIRS=(mods music)
+# Packaged entries INSIDE a merged directory that the user is meant to write into,
+# so they must be real directories rather than symlinks to the read-only package.
+#
+# The merge above fixed this one level up -- linking campgns/ and levels/ whole made
+# them root-owned and add-on installs impossible -- but the same trap remained one
+# level down. levels/personal is where the launcher installs a standalone workshop
+# map, and its own readme calls it "your personal folder to do with as you see fit";
+# levels/legacy is the same kind of drop folder. Linked to /usr they are read-only,
+# so installing a single map failed on every package install.
+USER_DROP_DIRS=(levels/personal levels/legacy)
 
 # Files the user must supply from their own Dungeon Keeper installation.
 # Kept in step with docs/files_required_from_original_dk.txt.
@@ -72,7 +82,21 @@ for d in "${MERGE_DIRS[@]}"; do
     # them. A real file already in place always wins and is left untouched.
     for f in "$src"/*; do
         [ -e "$f" ] || continue
-        target="$GAMEDIR/$d/$(basename "$f")"
+        base=$(basename "$f")
+        target="$GAMEDIR/$d/$base"
+        # A drop folder must be the user's own directory, not a link into /usr, or
+        # nothing can ever be installed into it. Seed it with whatever the package
+        # ships (a readme) and never clobber what the user put there afterwards.
+        case " ${USER_DROP_DIRS[*]} " in
+            *" $d/$base "*)
+                if [ -L "$target" ]; then
+                    rm -f "$target"          # removing a link never touches /usr
+                fi
+                mkdir -p "$target"
+                cp -rn "$f/." "$target/" 2>/dev/null || true
+                continue
+                ;;
+        esac
         if [ -L "$target" ] || [ ! -e "$target" ]; then
             ln -sfn "$f" "$target"
         fi
