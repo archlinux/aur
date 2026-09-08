@@ -1,7 +1,7 @@
 # Maintainer: RouHim
 
 pkgname=binvec
-pkgver=1.20.27
+pkgver=1.20.28
 pkgrel=1
 pkgdesc="A simple application to convert raster graphics to vector graphics"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RouHim/binvec/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('372954ebf546eb8196e1c0d8a241847dd1c7a036d3198955f6e1380448656bb5')
+sha256sums=('eefd256be965e27794f3e3f2e237aa2a8ec34c7537ef7eab43192d2389199a91')
 
 build() {
   cd "$pkgname-$pkgver"
