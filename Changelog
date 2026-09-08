@@ -1,14 +1,22 @@
 -------------------------------------------------------
  Changelog    : process-mem
- Tags         : 1.3.0 ➙ 1.6.0
-              : 2024-12-31 ➙ 2026-02-07
+ Tags         : 1.4.1 ➙ 1.7.1,
+              : 2025-10-14 ➙ 2026-09-08
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-09-08   : 1.7.1,
+              - **1.7.0**
+            
+                * Use meson / meson python for build / package management.
+                * Periodic code review
+ 2026-02-07   ⋯
+              - update Changelog and man page
 
  2026-02-07   : 1.6.0
               - Add check for bad regex and issue warning
 
- 2026-01-04   : 1.5.0, origin/master
+ 2026-01-04   : 1.5.0
               - **1.5.0**
             
                 * Code Reorg
@@ -21,17 +29,4 @@
  2025-10-14   : 1.4.1
               - Drop unused pydantic dependency from Arch PKGBUILD
  2025-07-15   ⋯
-              - update Changelog and man page
-
- 2025-07-15   : 1.4.0
-              - Tidy code: complies with PEP-8, PEP-257 and PEP-484 style and type annotations
- 2024-12-31   ⋯
-              - update Changelog and man page
-
- 2024-12-31   : 1.3.0
-              - Git tags are now signed.
-                Update SPDX tags
-                Add git signing key to Arch Package
-                Bump python vers
- 2024-10-13   ⋯
               - update Changelog and man page

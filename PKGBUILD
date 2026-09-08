@@ -12,24 +12,23 @@ pkgname='process-mem'
 pkgdesc='Display Memory Used by Process(es)'
 _gitname='process-mem'
 
-pkgver="1.6.0"
+pkgver="1.7.1"
 pkgrel=1
 url="https://github.com/gene-git/process-mem"
 
 arch=(any)
 license=(GPL-2.0-or-later)
 
-# To build docs uncommont sphinx/texlive
 depends=(
-    'python>=3.13' 
+    'python>=3.14' 
     'python-psutil'
 )
+
 makedepends=(
     'git'
+    'meson'
+    'meson-python'
     'rsync' 
-    'uv'
-    'python-uv-build'
-    'python-docutils'
 )
 
 # Used by package : mkpkg
@@ -49,16 +48,12 @@ sha512sums=('SKIP')
 
 build() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
 
-    echo "Build man page"
-    cd ./Docs
-    make 
+    ./scripts/do-build
 }
 
 package() {
     cd "${_gitname}"
+
     ./scripts/do-install ${pkgdir}
 }
-# vim:set ts=4 sts=4 sw=4 et:
