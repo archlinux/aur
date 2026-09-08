@@ -1,7 +1,7 @@
 # Maintainer: Niels Desmet <parasait@proton.me>
 pkgname=awesomenes
 pkgver="0.9"
-pkgrel=1
+pkgrel=2
 pkgdesc="A NES emulator with ROM debugging and hacking toolchain written in C"
 arch=('x86_64')
 url='https://gitlab.com/ParaSait/awesomenes'
