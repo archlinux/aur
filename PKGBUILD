@@ -1,13 +1,11 @@
 # Maintainer: Sentria <admin@sentrialabs.com>
-# AUR metadata sync marker
 pkgname=maryanne-bin
 pkgver=2.2.1
-pkgrel=8
+pkgrel=9
 pkgdesc='Read ebook (EPUB) or PDF aloud to you with natural-sounding voices.'
 arch=('x86_64')
 url='https://maryanne.app'
 license=('custom')
-keywords=('ebook.audiobook' 'book' 'epub' 'pdf' 'tts' 'ai' 'read' 'productivity' 'self-improvement' 'growth' 'text to speech' 'listen')
 options=('!strip')
 depends=('gtk3' 'gstreamer' 'gst-plugins-base' 'libsecret')
 release_repo='finnvyrn/maryanne-releases'
@@ -27,6 +25,7 @@ package() {
     "${pkgdir}/opt/maryanne/Maryanne-x86_64.AppImage"
   install -Dm644 maryanne.png \
     "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/maryanne.png"
+  install -d "${pkgdir}/usr/share/applications"
   sed -e 's|^Icon=.*|Icon=/usr/share/icons/hicolor/1024x1024/apps/maryanne.png|' \
     -e '/^Exec=/a TryExec=maryanne' \
     maryanne.desktop > "${pkgdir}/usr/share/applications/maryanne.desktop"
