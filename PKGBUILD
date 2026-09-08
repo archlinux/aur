@@ -27,7 +27,7 @@ install=arch-update-full.install
 source=(
   "arch-update-full"
   "arch-update-full.desktop"
-  "novalogov40.png"
+  "novalogov40-1.png"
   "arch-update-full.install"
   "farol_azul_simbolo.png"
   "farol_amarelo_simbolo.png"
@@ -51,7 +51,7 @@ package() {
   install -Dm644 "${srcdir}/arch-update-full.desktop" "${pkgdir}/usr/share/applications/arch-update-full.desktop"
 
   # 3. Instala o ícone no diretório global de imagens do sistema // Installs the icon in the system's global image directory.
-  install -Dm644 "${srcdir}/novalogov40.png" "${pkgdir}/usr/share/pixmaps/novalogov40.png"
+  install -Dm644 "${srcdir}/novalogov40-1.png" "${pkgdir}/usr/share/pixmaps/novalogov40-1.png"
   
   # 4. Ícones do Módulo Sentinela (Faróis de Notificação)
   install -Dm644 "${srcdir}/farol_azul_simbolo.png" "${pkgdir}/usr/share/arch-update-full/icons/farol_azul_simbolo.png"
