@@ -1,6 +1,6 @@
 pkgbase = blockwork-git
 	pkgdesc = A Tauri app to visually create and run automation.
-	pkgver = 0.4.0.r233.01215d8
+	pkgver = 0.5.0.r280.0aef58e
 	pkgrel = 1
 	url = https://github.com/EthanRStokes/Blockwork
 	arch = x86_64
