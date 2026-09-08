@@ -5,7 +5,8 @@ pkgdesc="Terminal UI for downloading videos using yt-dlp"
 arch=('x86_64')
 url="https://github.com/milkyicedtea/mldy"
 license=('zlib')
-depends=('go' 'yt-dlp' 'ffmpeg')
+depends=('yt-dlp' 'ffmpeg')
+makedepends=('go')
 source=("https://github.com/milkyicedtea/mldy/archive/refs/tags/v$pkgver.tar.gz")
 
 build() {
@@ -18,4 +19,4 @@ package() {
   install -Dm755 mldy "$pkgdir/usr/bin/mldy"
 }
 
-sha256sums=('403d5e681f460635de8a347ff878f4a0ffaaab577c7d0cea1710c853cb0fccd7')
+sha256sums=('34ef161343b683fd0b011879d400ac1f901b5e338f0f2c84685b9f3aff0028b6')
