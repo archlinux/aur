@@ -1,7 +1,7 @@
 pkgbase = pkger-bin
 	pkgdesc = Package manager for Arch Linux and Arch-based distributions
 	pkgver = 1.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/almezali/pkger-g
 	arch = x86_64
 	license = MIT

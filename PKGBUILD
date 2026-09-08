@@ -2,7 +2,7 @@
 
 pkgname=pkger-bin
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Package manager for Arch Linux and Arch-based distributions'
 arch=('x86_64')
 url='https://github.com/almezali/pkger-g'
