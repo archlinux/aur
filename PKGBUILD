@@ -1,7 +1,7 @@
 # Maintainer: jtaw5649
 pkgname=hyprspaces-tools
-pkgver=2.3.1
-pkgrel=3
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="Helper CLI and config automation for the hyprspaces HyprPM plugin"
 arch=('any')
 url='https://gitlab.com/jtaw5649/Hyprspaces'
@@ -14,7 +14,7 @@ optdepends=(
 )
 install=hyprspaces-tools.install
 source=("${url}/-/releases/v${pkgver}/downloads/hyprspaces-${pkgver}.tar.gz")
-sha256sums=('77bd43bddede273688776ec8db58e320c931ae8aa3820f3e0eb4eec15490e357')
+sha256sums=('68d620f07e78d8371f19711c8d070cf71c43b4c4ae8801bafb01c71ec39f78cd')
 
 package() {
   cd "${srcdir}/hyprspaces"
