@@ -1,6 +1,6 @@
 # openstudioapplication AUR package
 
-This is a source package for OpenStudioApplication 1.11.0 on Arch Linux.
+This is a source package for OpenStudioApplication 1.11.1 on Arch Linux.
 
 It depends on the existing `openstudio-bin=3.11.0` SDK package and installs
 the private application bundle under `/usr/lib/openstudioapplication`, with launchers

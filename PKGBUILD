@@ -1,7 +1,7 @@
 # Maintainer: Gasoile <gasoile at gmail dot com>
 
 pkgname=openstudioapplication
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc='Graphical application for the OpenStudio energy modeling SDK'
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=(
   'arch-build-fixes.patch'
 )
 sha256sums=(
-  '3c2923991723ebe32e173ee940b6f4e33f7ef180dd5f8491a42cd07b2e168441'
+  '7c4a53f39c6b8d1b4eff30705dc53f09d5686a911aa6a191896ee8cdaccef03e'
   'SKIP'
   'e64edca8c2cf762212c36e41f86ecfffcdf206be2a020178b9899a69f664d5e8'
 )

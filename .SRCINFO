@@ -1,6 +1,6 @@
 pkgbase = openstudioapplication
 	pkgdesc = Graphical application for the OpenStudio energy modeling SDK
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/openstudiocoalition/OpenStudioApplication
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = openstudioapplication
 	depends = qt6-svg
 	depends = qt6-webengine
 	options = !lto
-	source = OpenStudioApplication-1.11.0.tar.gz::https://github.com/openstudiocoalition/OpenStudioApplication/archive/refs/tags/v1.11.0.tar.gz
+	source = OpenStudioApplication-1.11.1.tar.gz::https://github.com/openstudiocoalition/OpenStudioApplication/archive/refs/tags/v1.11.1.tar.gz
 	source = git+https://github.com/openstudiocoalition/openstudio-coalition-measures.git#commit=da6832b3eec8e3ecccaadd39142e7c3d9c2da10f
 	source = arch-build-fixes.patch
-	sha256sums = 3c2923991723ebe32e173ee940b6f4e33f7ef180dd5f8491a42cd07b2e168441
+	sha256sums = 7c4a53f39c6b8d1b4eff30705dc53f09d5686a911aa6a191896ee8cdaccef03e
 	sha256sums = SKIP
 	sha256sums = e64edca8c2cf762212c36e41f86ecfffcdf206be2a020178b9899a69f664d5e8
 
