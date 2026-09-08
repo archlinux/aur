@@ -1,13 +1,13 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=cloudflare-wrangler
 _npmname=wrangler
-pkgver=4.129.1
+pkgver=4.130.0
 pkgrel=1
 # Source-of-truth commit on cloudflare/workers-sdk for this npm publish,
 # extracted from the npm provenance (sigstore) attestation. Used to fetch
 # LICENSE files reproducibly because upstream `wrangler@<ver>` tags often
 # lag the npm publish by hours/days.
-_license_commit=87fd28ce586693e50aa17d410f121394c5fef24c
+_license_commit=570526276722ae57b250268a8af48fe0b1eaf774
 pkgdesc="Command-line interface for building and deploying Cloudflare Workers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler"
@@ -15,7 +15,7 @@ license=('MIT' 'Apache-2.0')
 depends=('nodejs>=22' 'glibc' 'gcc-libs')
 makedepends=('npm')
 optdepends=('git: required by `wrangler init` and template scaffolding')
-provides=('wrangler2')
+provides=("wrangler2=$pkgver")
 # Both packages would install /usr/bin/wrangler.
 # The legacy AUR `wrangler` is the Erlang Refactorer (unrelated software);
 # we still declare the file-level conflict so pacman warns the user.
@@ -26,12 +26,12 @@ source=("$_npmname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$_npmname
         "LICENSE-APACHE-$pkgver::https://raw.githubusercontent.com/cloudflare/workers-sdk/$_license_commit/LICENSE-APACHE"
         "LICENSE-MIT-$pkgver::https://raw.githubusercontent.com/cloudflare/workers-sdk/$_license_commit/LICENSE-MIT")
 noextract=("$_npmname-$pkgver.tgz")
-sha256sums=('654c0a5c0a69a77f8fb40701d8806e0273e967de52693932829705dd66387ade'
+sha256sums=('244a51bb7d8f6b0586dddd61e2468825a599863ff667a66a2d92034a792c9b6c'
             '62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a'
             '9bb3b077cc8628334bab25961223dd8207252c8a56aa054195be38f1c042aaf4')
 # wrangler bundles platform-specific native binaries (workerd, esbuild).
 # Disable stripping so the prebuilt binaries remain functional.
-options=('!strip')
+options=('!strip' '!debug')
 
 package() {
     # Install the npm tarball into $pkgdir with an isolated cache to avoid
