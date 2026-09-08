@@ -1,6 +1,6 @@
 pkgbase = whisker-shell-git
 	pkgdesc = Desktop shell built with Quickshell and follows Material 3 Design rules.
-	pkgver = r47.7cd15a7
+	pkgver = r162.3827d38
 	pkgrel = 1
 	url = https://github.com/corecathx/whisker
 	arch = x86_64
