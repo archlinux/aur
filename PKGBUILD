@@ -1,6 +1,6 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
 pkgname=cpak-bin
-pkgver=2.12.10
+pkgver=2.13.2
 pkgrel=1
 pkgdesc="A fast, decentralized, portable, powerful and low-memory footprint package format for Linux."
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/Containerpak/cpak"
 license=('LGPL-2.1-only')
 provides=('cpak')
 conflicts=('cpak')
-options=('!strip')
+options=('!strip' '!debug')
 
 depends=(
   'slirp4netns'
@@ -29,10 +29,10 @@ optdepends=(
 )
 
 source=("cpak-${pkgver}.tar.gz::https://github.com/Containerpak/cpak/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d3b236b845b0586ccb29ad937449e5955e5b172f7f5ccf85b05561571a5b58cb')
-sha256sums_x86_64=('ed8d43f249505b70216ebb878757c3f30a1589c08cc5e2604cde5ed4805abe6b'
+sha256sums=('d971770b1f6fbc201fa259bfa321f56b548e38deb4d2ee5f420c3afb3fe8b321')
+sha256sums_x86_64=('5c3a66a8e3671e0a08e44bb4b451c98193f639b3e8d152bf7da0ba4c117da196'
                    'cc5ddf5fba5cbc9612b50cdb5fb9d5cfded3cd5d13297f1e8602b874f944aa40')
-sha256sums_aarch64=('078d9f19c6ba1b8173fb85b5a2a79b467b5718daa995dcb908cc0340ef49f4ae'
+sha256sums_aarch64=('a2e6e2cfa69e6424872a8db3ecd311335b52b40371a897a60f5f1c38cdcca70d'
                     'f19bcb33e71a06328b13c00cb0ed56c45cea4e163b0427c76e609f6d6b6c5c59')
 
 source_x86_64=(
@@ -59,4 +59,12 @@ package() {
 
   install -Dm755 "${srcdir}/cpak-storaged-linux-${_suffix}" \
     "${pkgdir}/usr/lib/cpak/cpak-storaged"
+
+  chmod +x "${srcdir}/cpak-linux-${_suffix}"
+  "${srcdir}/cpak-linux-${_suffix}" completion bash > cpak.bash
+  "${srcdir}/cpak-linux-${_suffix}" completion zsh > _cpak
+  "${srcdir}/cpak-linux-${_suffix}" completion fish > cpak.fish
+  install -Dm644 cpak.bash "${pkgdir}/usr/share/bash-completion/completions/cpak"
+  install -Dm644 _cpak "${pkgdir}/usr/share/zsh/site-functions/_cpak"
+  install -Dm644 cpak.fish "${pkgdir}/usr/share/fish/vendor_completions.d/cpak.fish"
 }
