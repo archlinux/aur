@@ -5,8 +5,8 @@
 
 pkgname=openshell-bin
 pkgver=0.0.116
-pkgrel=1
-pkgdesc='The safe, sandboxed runtime for autonomous AI agents'
+pkgrel=2
+pkgdesc='The safe, private runtime for autonomous AI agents.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/NVIDIA/OpenShell'
 license=('Apache-2.0')
