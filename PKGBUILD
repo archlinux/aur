@@ -2,7 +2,7 @@
 pkgname=discord-history-tracker-bin
 _pkgname=DiscordHistoryTracker
 pkgver=47.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app & browser script that saves Discord chat history into a file, and an offline viewer that displays the file.(Prebuilt version)"
 arch=('x86_64')
 url="https://dht.chylex.com/"
@@ -16,6 +16,9 @@ depends=(
 )
 makedepends=(
     'gendesk'
+)
+options=(
+    '!strip'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/linux-x64.zip"
