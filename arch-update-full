@@ -36,7 +36,7 @@ LOG_COUNT=$(find "$LOG_SENTINEL_DIR" -maxdepth 1 -name "check_*.log" | wc -l)
 
 # MÓDULO SENTINELA: NOTIFICAÇÕES VISUAIS // SENTINEL VISUAL NOTIFICATIONS --------------------------
 
-NOTIFICAR_SENTINELA() {
+NOTIFICAR_SENTINELA(){
     local TOTAL_UPDATES="$1"
     local ICON_DIR="/usr/share/arch-update-full/icons"
     local ICON_AZUL="$ICON_DIR/farol_azul_simbolo.png"
@@ -101,8 +101,10 @@ NOTIFICAR_SENTINELA() {
         # usuário fechou/ignorou manualmente antes dos 20min // user closed/ignored manually before 20min
         echo "[info] Notification closed or dismissed. No action taken."
     fi
-    if [ "$NOTIF_EXIT" -eq 124 ]; then
-        # timeout matou o not
+if [ "$NOTIF_EXIT" -eq 124 ]; then
+    # timeout matou a notificação
+    echo "A notificação excedeu o tempo limite."
+fi
 }
 
 FUNCTION_BOTAO() {
@@ -426,7 +428,8 @@ VERIFICAR_IDIOMA() {
 
 # --- CABEÇALHO: ARCH UPDATE FULL BLOCK EDITION) -------------------------------------------------------------------------------------------<<<
 CABECALHO_MENU() {
-clear
+    VERIFICAR_IDIOMA
+    clear
     echo ""
 
     local lang_tag=""

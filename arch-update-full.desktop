@@ -1,13 +1,13 @@
 [Desktop Entry]
 Type=Application
-Version=1.5
+Version=1.7
 Name=Arch Update Full
 GenericName=System Updater
 Comment=Sentinel Protocol: Update automation (Pacman/AUR/Flatpak/Snap) and auditing.
 
 Exec=arch-update-full
 
-Icon=novalogoarchupdatefullv39
+Icon=novalogov40
 
 Terminal=true
 

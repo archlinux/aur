@@ -1,7 +1,7 @@
 # Maintainer: The_Seventh <gustavo.gianeli13@gmail.com>
 pkgname=arch-update-full
 pkgver=4.0
-pkgrel=2
+pkgrel=2.1
 pkgdesc="Sentinel Protocol: Update automation (Pacman/AUR/Flatpak/Snap) and auditing."
 arch=('any')
 url="https://github.com/GustavoGianeli/arch-update-full"
@@ -27,7 +27,7 @@ install=arch-update-full.install
 source=(
   "arch-update-full"
   "arch-update-full.desktop"
-  "novalogoarchupdatefullv39.png"
+  "novalogov40.png"
   "arch-update-full.install"
   "farol_azul_simbolo.png"
   "farol_amarelo_simbolo.png"
@@ -35,9 +35,9 @@ source=(
 )
 
 # Use 'updpkgsums' para preencher isso automaticamente // Use 'updpkgsums' to automatically fill this in.
-sha256sums=('0f6e4fc341fcfdf07f6c57270be3b8e1e95e9b247eeac1d8083351bb84f9b800'
-            'e2fe7931fbc9c2b40c33d24f1b320d5c140e4677ebf5ca0e0c8e02b5c993f1ed'
-            '68199b22bece3ede43eb6d7f90f8a44c4c2d5e11c5c053051b047907be154804'
+sha256sums=('f53adb529c7618c7f4995c00ced13710c6f52a77ce8bfee4bf85a1e3dd5be518'
+            '057c70b44bc6e8f3c82a5ed1f1c49e1fd2dbed8d7c523f4fc7bb54c12358024a'
+            '1faf6c361bb4ce7894f4b46bb704d04f00b632f5a08937394b5b0c3a74e18803'
             'c32ddd13aaace4abab054d1742aaa88cdae72a670b569aaea0f124a555f60a2d'
             'ebc439c303205e80b177683cc62086fbcc3abbe24ec5c47833c0ab0a6b7b4ee0'
             '9aaa2af5ddec871a8ec529839867994cf60aa2e65f7d86696a52c2bf2db464c8'
@@ -51,7 +51,7 @@ package() {
   install -Dm644 "${srcdir}/arch-update-full.desktop" "${pkgdir}/usr/share/applications/arch-update-full.desktop"
 
   # 3. Instala o ícone no diretório global de imagens do sistema // Installs the icon in the system's global image directory.
-  install -Dm644 "${srcdir}/novalogoarchupdatefullv39.png" "${pkgdir}/usr/share/pixmaps/novalogoarchupdatefullv39.png"
+  install -Dm644 "${srcdir}/novalogov40.png" "${pkgdir}/usr/share/pixmaps/novalogov40.png"
   
   # 4. Ícones do Módulo Sentinela (Faróis de Notificação)
   install -Dm644 "${srcdir}/farol_azul_simbolo.png" "${pkgdir}/usr/share/arch-update-full/icons/farol_azul_simbolo.png"
