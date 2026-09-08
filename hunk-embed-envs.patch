@@ -2,13 +2,13 @@ From: Tiago de Paula <tiagodepalves@gmail.com>
 Date: Wed, 2 Sep 2026 13:09:38 -0300
 Subject: Allow embedding envs in bun build
 ---
- src/core/install/installSource.ts |    4 ++--
+ packages/hunk/src/core/install/installSource.ts |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: b/src/core/install/installSource.ts
+Index: b/packages/hunk/src/core/install/installSource.ts
 ===================================================================
---- a/src/core/install/installSource.ts
-+++ b/src/core/install/installSource.ts
+--- a/packages/hunk/src/core/install/installSource.ts
++++ b/packages/hunk/src/core/install/installSource.ts
 @@ -127,5 +127,5 @@ function isHomebrewExecutablePath(execut
   */
  export function resolveDevInstallDir(env: NodeJS.ProcessEnv, homeDir: string | undefined) {

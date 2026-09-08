@@ -3,7 +3,7 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.21.1
+pkgver=0.22.0_beta.0
 pkgrel=1
 url='https://www.hunk.dev/'
 changelog=CHANGELOG.md
@@ -16,8 +16,8 @@ provides=('hunkdiff')
 options=(!strip !debug)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver/_/-}.tar.gz"
         'hunk-embed-envs.patch')
-b2sums=('00c0207de02e2e6afbf76ad8e9afa37b0060aca3f2771eaa0ffb27295c28ce4d0d34667b3871233b8057a6acbcdf7051b8f22d7469af7c700df98c7d936ec3c4'
-        '394ad2625af19b834d618b5987b30715fb30d9f5bf8d690f8e22e3186dc8eb6b7e863d65dc3f08d8e900777e93809575790aa33fb9571d2eacdcf1503169da1d')
+b2sums=('14593ef786079c37b66ed635b3ca26725e00a1c9c1021c2e44984c6867101343204eaaf3c751e9b4486c959bf2b51be5a22c2303aa61ae06162fb0dcbbf9f911'
+        '019c586f88e91dc67d37962142e425f6f5021826e70a02030ac8f212dc2a12006f001ccae658aa9eb937cbccc064ea804e29279d8645e96f15565ca17b2b4ce0')
 
 _install_dir=/usr/lib/hunkdiff
 _skills=(review extensions)
@@ -27,6 +27,7 @@ prepare() {
 
   patch -t -Np1 -i ../hunk-embed-envs.patch
 
+  cd packages/hunk
   bun install \
     --production \
     --frozen-lockfile \
@@ -35,6 +36,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver/_/-}"
+  cd packages/hunk
 
   export HUNK_INSTALL_DIR="${_install_dir}"
   export HUNK_INSTALL_SOURCE=pacman
@@ -57,33 +59,34 @@ check() {
   cd "${pkgname}-${pkgver/_/-}"
 
   export HUNK_RUN_TTY_SMOKE=1
-  export HUNK_TEST_EXECUTABLE=dist/hunk
+  export HUNK_TEST_EXECUTABLE=packages/hunk/dist/hunk
   bun test ./test/smoke
 
   # based on https://github.com/modem-dev/hunk/blob/v0.17.7/scripts/smoke-prebuilt-install.ts
   local help version skill skillPath update
 
   echo -n 'HELP = '
-  help=$(dist/hunk --help)
+  help=$("${HUNK_TEST_EXECUTABLE}" --help)
   grep -F 'Usage: hunk' <<< "${help}"
 
   echo -n 'VERSION = '
-  version=$(dist/hunk --version)
+  version=$("${HUNK_TEST_EXECUTABLE}" --version)
   grep -F "${pkgver/_/-}" <<< "${version}"
 
   for skill in "${_skills[@]}"; do
     echo -n 'SKILL = '
-    skillPath=$(dist/hunk skill path "${skill}")
+    skillPath=$("${HUNK_TEST_EXECUTABLE}" skill path "${skill}")
     grep -E 'skills/hunk-.*/SKILL\.md$' <<< "${skillPath}"
   done
 
   echo -n 'UPDATE = '
-  update=$(dist/hunk update || true)
+  update=$("${HUNK_TEST_EXECUTABLE}" update || true)
   grep -F pacman <<< "${update}"
 }
 
 package() {
   cd "${pkgname}-${pkgver/_/-}"
+  cd packages/hunk
 
   local hunk_install_dir="${pkgdir}${_install_dir}"
 
