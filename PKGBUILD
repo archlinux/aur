@@ -3,7 +3,7 @@
 _pkgname=insightface
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=1.0.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="InsightFace Python Library"
 arch=("i686" "x86_64" "aarch64" "armv7h")
@@ -16,7 +16,7 @@ optdepends=("pyside6: for GUI"
             "cython: for face3D"
             "python-albumentations: for face3D")
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('27af24891bbba470cb3573b366a0fcca8989fc8503c9f8f281e8cba6fd716075')
+sha256sums=('b8d9884f2358c51d297edb499e0a1fd15854ee89ff21740fffe339b0db0f3a9f')
 
 build() {
     cd "${_pipname}-${pkgver}"

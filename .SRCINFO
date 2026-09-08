@@ -1,6 +1,6 @@
 pkgbase = python-insightface
 	pkgdesc = InsightFace Python Library
-	pkgver = 1.0.1
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/deepinsight/insightface
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = python-insightface
 	optdepends = python-reportlab: for GUI
 	optdepends = cython: for face3D
 	optdepends = python-albumentations: for face3D
-	source = insightface-1.0.1.tar.gz::https://files.pythonhosted.org/packages/source/i/insightface/insightface-1.0.1.tar.gz
-	sha256sums = 27af24891bbba470cb3573b366a0fcca8989fc8503c9f8f281e8cba6fd716075
+	source = insightface-2.0.tar.gz::https://files.pythonhosted.org/packages/source/i/insightface/insightface-2.0.tar.gz
+	sha256sums = b8d9884f2358c51d297edb499e0a1fd15854ee89ff21740fffe339b0db0f3a9f
 
 pkgname = python-insightface
