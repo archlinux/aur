@@ -1,6 +1,6 @@
 pkgbase = zlist-bin
 	pkgdesc = A modern ls alternative written in Zig
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/here-Leslie-Lau/zlist
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = zlist-bin
 	provides = zl
 	conflicts = zlist
 	options = !strip
-	source = README-0.1.14.md::https://raw.githubusercontent.com/here-Leslie-Lau/zlist/v0.1.14/README.md
-	source = LICENSE-0.1.14::https://raw.githubusercontent.com/here-Leslie-Lau/zlist/v0.1.14/LICENSE
+	source = README-0.1.15.md::https://raw.githubusercontent.com/here-Leslie-Lau/zlist/v0.1.15/README.md
+	source = LICENSE-0.1.15::https://raw.githubusercontent.com/here-Leslie-Lau/zlist/v0.1.15/LICENSE
 	sha256sums = e25a65cd5229e2022d25f31f07c3ac5b51ff7ba59554cf1e63b0a00d7f8c4cac
 	sha256sums = 0cc8677757eeadbb8743f51a8a5302af7af538ea75c0b8e1b301d277d0280c08
-	source_x86_64 = zl-x86_64-0.1.14.tgz::https://github.com/here-Leslie-Lau/zlist/releases/download/v0.1.14/zl-x86_64-linux-gnu.tar.gz
-	sha256sums_x86_64 = edd7f6df264b2b7dec2546084292b271a5ba783434e2258261405797a080e897
-	source_aarch64 = zl-aarch64-0.1.14.tgz::https://github.com/here-Leslie-Lau/zlist/releases/download/v0.1.14/zl-aarch64-linux-gnu.tar.gz
-	sha256sums_aarch64 = 25b754cbb39ad240768b1ba5b09e5f381220ea9e9c29353019319b9c8d0fa3f9
+	source_x86_64 = zl-x86_64-0.1.15.tgz::https://github.com/here-Leslie-Lau/zlist/releases/download/v0.1.15/zl-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = 41b8592e987c20e74b2ac022a8c48b48f6796d4ee1b152d4ca7d9c07fb12d157
+	source_aarch64 = zl-aarch64-0.1.15.tgz::https://github.com/here-Leslie-Lau/zlist/releases/download/v0.1.15/zl-aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4d4c877a0b31de3a33b97cf6b1dfb424960748dd7d40d61f0118554b4664214f
 
 pkgname = zlist-bin
