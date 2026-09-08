@@ -4,16 +4,16 @@
 
 pkgname=python-msoffcrypto-tool
 _pkg="msoffcrypto_tool"
-pkgver=5.4.2
+pkgver=6.0.0
 pkgrel=1
 pkgdesc='A Python tool and library for decrypting encrypted MS Office files'
 arch=('any')
 url='https://github.com/nolze/msoffcrypto-tool'
 license=('MIT')
-depends=(python-olefile python-cryptography python-setuptools)
+depends=(python-olefile python-cryptography)
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('44b545adba0407564a0cc3d6dde6ca36b7c0fdf352b85bca51618fa1d4817370')
+sha256sums=('9a5ebc4c0096b42e5d7ebc2350afdc92dc511061e935ca188468094fdd032bbe')
 
 build() {
 	cd "$_pkg-$pkgver"
@@ -22,8 +22,6 @@ build() {
 
 package() {
 	cd "$_pkg-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/${_pkg/-/_}-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+	install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
