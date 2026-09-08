@@ -2,7 +2,7 @@
 
 pkgname=lib32-lsfg-vk-git
 _pkgname=lsfg-vk
-pkgver=2.0.0.rc1.r5.gfcd3e4b
+pkgver=2.0.0.r0.g2333707
 pkgrel=1
 pkgdesc="Lossless Scaling Frame Generation on Linux"
 arch=('i686' 'x86_64')
