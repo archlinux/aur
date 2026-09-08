@@ -1,6 +1,6 @@
 pkgbase = r-clusterr
 	pkgdesc = Gaussian Mixture Models, K-Means, Mini-Batch-Kmeans, K-Medoids and Affinity Propagation Clustering
-	pkgver = 1.3.6
+	pkgver = 1.3.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ClusterR
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-clusterr
 	optdepends = r-openimager
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/ClusterR_1.3.6.tar.gz
-	sha256sums = 4948a0f8d7a33326c21b5970329991d56ead04d4b141874dac3d8e29aa81f7df
+	source = https://cran.r-project.org/src/contrib/ClusterR_1.3.7.tar.gz
+	sha256sums = 87cc4c31db5a9c5435659e5ae06efc1894665291b814f66eb43c04aeb0bfd6fc
 
 pkgname = r-clusterr
