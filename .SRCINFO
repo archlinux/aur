@@ -1,6 +1,6 @@
 pkgbase = hyphenbox-bin
 	pkgdesc = Free large model API radar + local unified routing. Includes 103 free APIs to measure which ones are still alive; your Key only exists on your own computer, and a local interface is connected to Cursor/Cline/OpenCode.
-	pkgver = 0.4.63
+	pkgver = 0.4.67
 	pkgrel = 1
 	url = https://github.com/HackerChi-Hub/hyphenbox-release
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = hyphenbox-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = hyphenbox=0.4.63
+	provides = hyphenbox=0.4.67
 	conflicts = hyphenbox
-	source = hyphenbox-0.4.63.deb::https://github.com/HackerChi-Hub/hyphenbox-release/releases/download/v0.4.63/HyphenBox_0.4.63_amd64.deb
-	source = LICENSE-0.4.63::https://github.com/HackerChi-Hub/hyphenbox-release/blob/v0.4.63/LICENSE_PENDING.md
-	sha256sums = 4a4cf21cafaf68498c76b0b38aede96b0ddb93cdd387e7f6ef15d194782a53fa
+	source = hyphenbox-0.4.67.deb::https://github.com/HackerChi-Hub/hyphenbox-release/releases/download/v0.4.67/HyphenBox_0.4.67_amd64.deb
+	source = LICENSE-0.4.67.md::https://github.com/HackerChi-Hub/hyphenbox-release/blob/v0.4.67/LICENSE_PENDING.md
+	sha256sums = 81c39edb36518e407c821a6f2f0d24c943f193ffd5840422cf79f01daa14f724
 	sha256sums = 82b530250cbae59b5b835528bc3555561c546c2b8c2729772b9a5a4736d4b8d0
 
 pkgname = hyphenbox-bin

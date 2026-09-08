@@ -2,7 +2,7 @@
 pkgname=hyphenbox-bin
 _pkgname=HyphenBox
 _zhsname='黑粉盒子'
-pkgver=0.4.63
+pkgver=0.4.67
 pkgrel=1
 pkgdesc="Free large model API radar + local unified routing. Includes 103 free APIs to measure which ones are still alive; your Key only exists on your own computer, and a local interface is connected to Cursor/Cline/OpenCode."
 arch=('x86_64')
@@ -17,9 +17,9 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
-    "LICENSE-${pkgver}::${url}/blob/v${pkgver}/LICENSE_PENDING.md"
+    "LICENSE-${pkgver}.md::${url}/blob/v${pkgver}/LICENSE_PENDING.md"
 )
-sha256sums=('4a4cf21cafaf68498c76b0b38aede96b0ddb93cdd387e7f6ef15d194782a53fa'
+sha256sums=('81c39edb36518e407c821a6f2f0d24c943f193ffd5840422cf79f01daa14f724'
             '82b530250cbae59b5b835528bc3555561c546c2b8c2729772b9a5a4736d4b8d0')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
@@ -36,5 +36,5 @@ package() {
 		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
 	done
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
