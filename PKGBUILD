@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=recordly
 _pkgname=Recordly
-pkgver=1.3.3
+pkgver=1.4.0
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -9,9 +9,12 @@ pkgdesc="Open-source screen recorder and editor with auto-zoom, cursor effects, 
 arch=('any')
 url="https://recordly.dev/"
 _ghurl="https://github.com/webadderallorg/Recordly"
-license=('AGPL-3.0-or-later')
+license=('LicenseRef-custom')
 depends=(
     "electron${_electronversion}"
+    'nodejs'
+    'ffmpeg'
+    'libxt'
 )
 makedepends=(
     'npm'
@@ -25,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('a06141f547d644d5dd208fa26e826df3b063f727d2fd7dc884937611cf85a0c6'
+sha256sums=('19d07690bfc0b3ea5dd1e888807dd0a58c25ae279834e2490451f6f7db9addde'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -61,6 +64,7 @@ _get_electron_version() {
 }
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -78,6 +82,7 @@ prepare() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     NODE_ENV=development    npm add -D node-abi@latest
+    NODE_ENV=development    npm add @babel/runtime
     NODE_ENV=development    npm install --legacy-peer-deps
 }
 build() {
@@ -90,6 +95,12 @@ build() {
     NODE_ENV=production     npm run normalize:electron-main-cjs
     NODE_ENV=production     npm run smoke:electron-main-cjs
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
+    local _app_dir=$(_get_app_dir)
+    rm -rf \
+        "${_app_dir}/resources/app.asar.unpacked/electron/native/bin/"{darwin-*,win32-*} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/uiohook-napi/prebuilds/"{darwin-*,win32-*}
+    ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/app.asar.unpacked/node_modules/ffmpeg-static/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "${_app_dir}/resources/app.asar.unpacked/node_modules/ffprobe-static/ffprobe"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
