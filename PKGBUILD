@@ -6,7 +6,7 @@ _execname=cjsh
 pkgname=${_execname}-bin
 pkgdesc="POSIX shell scripting meets Modern Shell Features"
 
-pkgver=1.4.12
+pkgver=1.4.13
 pkgrel=1
 _appversion=v${pkgver}
 
@@ -37,16 +37,16 @@ source=("WHAT-TO-KNOW-${pkgver}.md::${_ghurlraw}/docs/getting-started/what-to-kn
         "LANGUAGE-COMPATIBILITY-${pkgver}.md::${_ghurlraw}/docs/reference/language-compatibility.md")
 source_x86_64=("${_execname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_appversion}/${_execname}-${_appversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_execname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_appversion}/${_execname}-${_appversion}-${_barch[1]}.tar.gz")
-sha256sums=('17d4dbbab4b777cc738a1cabd6808503e68b53e254fc98866e76d78dbc81bfbc'
+sha256sums=('1fe29b16df9b061a2c03c6ca8a6371f811b9d5e382b46e2a6f773ce126cf3686'
             '271ddb6d44b38c83cd2eb69739b74f18935a90638deb39a06ab299b265a93c88'
             'b80e45828e9355bbe931ab667d3126db730973f0aea76cf232424cdfbd1b2a0b'
             '010a5f51eb36c84154c9e3c192e679a378ab3bfac114cff6afe511e1ad8777d4'
-            '538ef8557566472c911cbb3402730683dec9ccddcc70a52b7b80d32dbe8c83c5'
+            '64dbec6a47cc56f4ab6a09d7c448314eedb34e08009dae2b6b93a832d2011f3b'
             '60a2377bd4917712d11a61addd67460fe4410dae562a701bc4921077de7451b8'
             '5bc433042212436482823d29c6d537068f7c4de7633745acb3777751d28a3f1a'
             '3889766b8eba4a461cc768c3f52000fe501b23adf99535c9f8fb1c8ccf8aebaf')
-sha256sums_x86_64=('34349c9380baff830c938038db0fda476e0cbf45cf2c571543c755a9dd312a5e')
-sha256sums_aarch64=('04bb01c92cbe89dce41f3041025040dfe8e00d23bb16232f36b04191c406eadd')
+sha256sums_x86_64=('5fe9a8f5184db3f4598f2c49174e59168ffdaa94a39a3840faa18458e5620992')
+sha256sums_aarch64=('a552d6611af73569e51ce097b063f6e3ba9694ae48058589bfe80cdeef3bc58a')
 
 
 case ${CARCH} in
