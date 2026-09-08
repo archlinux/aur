@@ -28,22 +28,20 @@ source=(
   'libfvalue::git+https://github.com/libyal/libfvalue.git'
   'libuna::git+https://github.com/libyal/libuna.git'
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -71,7 +69,7 @@ build() {
     --prefix=/usr \
     --enable-python \
     --enable-wide-character-type \
-    --enable-libbfio \
+    --with-libbfio=no
   make
 }
 
