@@ -1,0 +1,16 @@
+pkgbase = todoey-git
+	pkgdesc = A terminal-based Todoist client built with Go and Bubble Tea
+	pkgver = r68.ec5bc5e
+	pkgrel = 1
+	url = https://github.com/paulfarrow/todoey
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = todoey
+	conflicts = todoey
+	source = todoey-git::git+https://github.com/paulfarrow/todoey.git
+	sha256sums = SKIP
+
+pkgname = todoey-git
