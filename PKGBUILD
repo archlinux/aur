@@ -2,7 +2,7 @@
 pkgname="paseo-desktop-bin-edge"
 pkgver=0.8.0_beta.1
 _deb_sha='53406dca6127ea2e20978db4beed196510410a2ee4342e1a20881147d909d6fc'
-pkgrel=1
+pkgrel=2
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents. (edge - latest upstream release, beta or stable)"
 arch=("x86_64")
 url="https://paseo.sh"
@@ -23,4 +23,11 @@ package() {
         cd $srcdir
         cp -R usr ${pkgdir}
         cp -R opt ${pkgdir}
+        # /usr/bin/paseo symlink to the bundled CLI (the deb doesn't ship
+        # one; the -git packages provide it — keep parity). Guarded: only
+        # link when the target actually came with the deb.
+        if [ -f "${pkgdir}/opt/Paseo/resources/bin/paseo" ]; then
+                mkdir -p "${pkgdir}/usr/bin"
+                ln -sf /opt/Paseo/resources/bin/paseo "${pkgdir}/usr/bin/paseo"
+        fi
 }
