@@ -1,7 +1,7 @@
 pkgbase = xyce-shylu
 	pkgdesc = Open-Source, SPICE-compatible, high-performance analog circuit simulator - ShyLU/OpenMP/Parallel support
 	pkgver = 7.10.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Xyce/xyce
 	install = xyce.install
 	arch = x86_64

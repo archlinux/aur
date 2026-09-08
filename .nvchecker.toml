@@ -1,0 +1,4 @@
+[xyce-shylu]
+source = "git"
+git = "https://github.com/Xyce/xyce.git"
+prefix = "Release-"

@@ -3,7 +3,7 @@
 _pkgname=xyce
 pkgname="${_pkgname}-shylu"
 pkgver=7.10.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Open-Source, SPICE-compatible, high-performance analog circuit simulator - ShyLU/OpenMP/Parallel support"
 arch=("x86_64")
 url="https://github.com/Xyce/xyce"
@@ -88,8 +88,7 @@ build() {
     )
 
     local cmake_options=(
-        -W no-dev
-        -W no-cpp
+        -W no-author
         -D CMAKE_BUILD_TYPE=None
         -D CMAKE_POSITION_INDEPENDENT_CODE=ON
         -D CMAKE_INSTALL_PREFIX="/usr"
