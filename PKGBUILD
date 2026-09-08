@@ -16,7 +16,7 @@ arch=('x86_64')
 url="https://github.com/Hardcore-Team/yt-source" 
 license=('MIT')
 depends=('pam' 'gcc')
-sha256sums=('302e4be781d7647b41bebcf82ac0cf5c68000099a894ca5171fe66e36703e97a'
+sha256sums=('d1f02036b97a6efd5b2b2d707f415d2343f7453edf006d9ffe6c83bf23757857'
             '146e04aa05345680dd6c220630390432bf45009fcf94a347131d9c311875027e'
             'dc17b21c82ef63f4351cb66b8f1a3324843eef82404790773796c1f1ac6aefa3')
 source=("yt.c" "yt.cfg" "yt.pam")
