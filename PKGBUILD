@@ -2,7 +2,7 @@
 
 pkgname=apifox
 pkgver=2.8.46
-pkgrel=1
+pkgrel=2
 pkgdesc='API documentation, debugging, mocking, and automated testing tool'
 arch=('x86_64')
 url='https://apifox.com/'
@@ -49,10 +49,12 @@ _source_archive="Apifox-linux-manual-${pkgver}.tar.gz"
 source=(
   "${_source_archive}::https://file-assets-cdn.oss-cn-hangzhou.aliyuncs.com/download/Apifox-linux-manual-latest.tar.gz"
   'apifox.desktop'
+  'apifox.png'
 )
 sha256sums=(
   '2bb6b678596aa61a67fd6e05e6f8426f41e36aa0df16ff5bd3c0329523056c79'
-  '86dbe67fed5b4159d14ed5c3cdf1415714f8a48033ad9f8f0debfae704de35ca'
+  '4478f9ad5f70828608bde15a50fe700a6b8ff83d632dd065bac4bcbd3eedbe9e'
+  'b3d3b84f5a5f35ef8a85b0db3ddcb239fb982ee8a6d53a5fb81ed296021fb44a'
 )
 
 package() {
@@ -64,7 +66,6 @@ package() {
     "${upstream_dir}/chrome-sandbox" \
     "${upstream_dir}/resources/app.asar" \
     "${upstream_dir}/resources/app.asar.unpacked/package.json" \
-    "${upstream_dir}/resources/app.asar.unpacked/dist/assets/logo.png" \
     "${upstream_dir}/LICENSE.electron.txt" \
     "${upstream_dir}/LICENSES.chromium.html"; do
     [[ -e "${required_path}" ]] || {
@@ -84,9 +85,11 @@ package() {
 
   install -Dm644 "${srcdir}/apifox.desktop" \
     "${pkgdir}/usr/share/applications/apifox.desktop"
-  install -Dm644 \
-    "${upstream_dir}/resources/app.asar.unpacked/dist/assets/logo.png" \
-    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/apifox.png"
+  # Official app logo (upstream app.asar.unpacked/dist/assets/logo.png,
+  # resized to 512x512). Installed into 512x512 because hicolor's index.theme
+  # declares no 1024x1024 directory, so icons placed there are never found.
+  install -Dm644 "${srcdir}/apifox.png" \
+    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/apifox.png"
 
   install -Dm644 "${upstream_dir}/LICENSE.electron.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"

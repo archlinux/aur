@@ -1,7 +1,7 @@
 pkgbase = apifox
 	pkgdesc = API documentation, debugging, mocking, and automated testing tool
 	pkgver = 2.8.46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apifox.com/
 	arch = x86_64
 	license = LicenseRef-Proprietary
@@ -44,7 +44,9 @@ pkgbase = apifox
 	options = !lto
 	source = Apifox-linux-manual-2.8.46.tar.gz::https://file-assets-cdn.oss-cn-hangzhou.aliyuncs.com/download/Apifox-linux-manual-latest.tar.gz
 	source = apifox.desktop
+	source = apifox.png
 	sha256sums = 2bb6b678596aa61a67fd6e05e6f8426f41e36aa0df16ff5bd3c0329523056c79
-	sha256sums = 86dbe67fed5b4159d14ed5c3cdf1415714f8a48033ad9f8f0debfae704de35ca
+	sha256sums = 4478f9ad5f70828608bde15a50fe700a6b8ff83d632dd065bac4bcbd3eedbe9e
+	sha256sums = b3d3b84f5a5f35ef8a85b0db3ddcb239fb982ee8a6d53a5fb81ed296021fb44a
 
 pkgname = apifox
