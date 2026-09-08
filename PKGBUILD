@@ -2,7 +2,7 @@
 # PGP: 813CE099D6CE512BC29A15D841EE1853489958D6
 
 pkgname=bspwm1
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="tiling window manager based on binary space partitioning"
 arch=('x86_64')
