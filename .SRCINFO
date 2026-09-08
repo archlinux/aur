@@ -1,0 +1,14 @@
+pkgbase = lazy-luks
+	pkgdesc = A TUI wrapper for LUKS/dm-crypt, bringing the lazy-ecosystem philosophy to disk encryption
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Halespider396/lazy-luks
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = cryptsetup
+	depends = gcc-libs
+	source = lazy-luks-1.0.0.tar.gz::https://github.com/Halespider396/lazy-luks/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 791aded3e124cd052d7625c3a04ec25941030d89f1ef5e94443edb0b1965b8ee
+
+pkgname = lazy-luks
