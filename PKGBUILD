@@ -4,9 +4,9 @@
 _pkgname=rockchip-mpp
 pkgname=rockchip-mpp-llvm
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 epoch=1
-pkgdesc='Rockchip Media Process Platform (MPP) — built with Clang and LLVM lld'
+pkgdesc='Rockchip Media Process Platform (MPP) — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/rockchip-linux/mpp/'
 license=('Apache-2.0' 'MIT')
@@ -16,7 +16,7 @@ depends=(
 makedepends=(
     'clang'
     'cmake'
-    'lld'
+    'mold'
     'llvm')
 provides=('rockchip-mpp')
 conflicts=('rockchip-mpp')
@@ -37,13 +37,13 @@ build() {
     export CXX=clang++
     export AR=/usr/bin/llvm-ar
     export RANLIB=/usr/bin/llvm-ranlib
-    export LD=/usr/bin/ld.lld
+    export LD=/usr/bin/mold
     export NM=/usr/bin/llvm-nm
     export OBJCOPY=/usr/bin/llvm-objcopy
     export OBJDUMP=/usr/bin/llvm-objdump
     export READELF=/usr/bin/llvm-readelf
     export STRIP=/usr/bin/llvm-strip
-    export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
+    export LDFLAGS="${LDFLAGS:-} -fuse-ld=mold"
     export CFLAGS="${CFLAGS:-} -O3 -march=native"
     export CXXFLAGS="${CXXFLAGS:-} -O3 -march=native"
     export CFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
@@ -54,8 +54,8 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_STRIP:PATH='/usr/bin/strip' \
-        -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" \
-        -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" \
+        -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" \
+        -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=mold" \
         -DENABLE_VPROC_VDPP:BOOL='ON' \
         -Wno-author
     cmake --build build
