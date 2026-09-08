@@ -1,0 +1,27 @@
+pkgbase = wolf-lang
+	pkgdesc = The wolf systems language: the wolfgang compiler, its runtime and the C importer
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/wolffe-lang/wolf-lang
+	install = wolf-lang.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = sh
+	depends = gcc
+	depends = gcc-libs
+	depends = glibc
+	optdepends = lld: faster linking — wolf prefers ld.lld and says so when it is absent
+	optdepends = clang: for `import c` beyond the headers gcc ships
+	optdepends = lupin: the reference interpreter wolf is differentially tested against
+	provides = wolf-lang
+	conflicts = wolf-lang-bin
+	conflicts = wolf
+	options = !debug
+	source = git+https://github.com/wolffe-lang/wolf-lang.git#tag=v0.2.6
+	sha256sums = SKIP
+
+pkgname = wolf-lang
