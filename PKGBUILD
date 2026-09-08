@@ -4,8 +4,8 @@
 # dependency set. uv's relocatable mode keeps the packaged environment usable
 # after makepkg moves it under /opt.
 pkgname=hermes-agent
-pkgver=0.21.0
-_tagver=2026.8.31
+pkgver=0.21.1
+_tagver=2026.9.7
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('x86_64')
@@ -32,7 +32,7 @@ depends=(
 
 makedepends=('npm' 'rsync')
 source=("${pkgname}-${_tagver}.tar.gz::https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('78fb3ff707ec1d17044b875ecac8bef28aa39d44242824f6871ca40afe7bf217')
+sha256sums=('907c2a72db1c5dd637ea8eeae97f4cb5b32cef615c17258f6b190924ec5bf688')
 validpgpkeys=()
 
 build() {
@@ -53,7 +53,7 @@ build() {
     venv
   UV_PYTHON_DOWNLOADS=never \
     UV_PROJECT_ENVIRONMENT="$PWD/venv" \
-    uv sync --locked --no-dev --no-install-project --extra all
+    uv sync --locked --no-dev --no-install-project --extra all,messaging
 }
 
 check() {
