@@ -3,13 +3,13 @@
 
 APP_DIR="/usr/lib/openhamclock"
 
-# Load environment configuration if present
-if [ -f "$HOME/.config/openhamclock/openhamclock.env" ]; then
+# Load environment configuration if present and readable
+if [ -r "$HOME/.config/openhamclock/openhamclock.env" ]; then
     set -a
     # shellcheck source=/dev/null
     source "$HOME/.config/openhamclock/openhamclock.env"
     set +a
-elif [ -f "/etc/openhamclock/openhamclock.env" ]; then
+elif [ -r "/etc/openhamclock/openhamclock.env" ]; then
     set -a
     # shellcheck source=/dev/null
     source "/etc/openhamclock/openhamclock.env"

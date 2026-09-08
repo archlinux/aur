@@ -36,7 +36,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '981f3e44d16b979de8358d47f68eda74639d48c338840957a56ffa909d3a2c72'
+    '649f85ee70b5e5e04be64a86388f9f5727011fad7acc77eeacb37954ce2f5a2f'
     '25ef5af49ab9fc5737a7bcb6b25c2e476d0ba4e16a49ff9ca86b4bcd5275c7ba'
     '790b2098c340be12a3bbaf09c0a1990ead29a447fd788cc124b97677a69ad75b'
     'e4e6e8a0b3bc70127997c13e71bd1f2fb8be034181a62dcae676fcf08a318a74'
@@ -98,7 +98,7 @@ package() {
     fi
 
     # Install default configuration template in /etc
-    install -Dm640 "${srcdir}/openhamclock.env" "${pkgdir}/etc/${_pkgname}/${_pkgname}.env"
+    install -Dm644 "${srcdir}/openhamclock.env" "${pkgdir}/etc/${_pkgname}/${_pkgname}.env"
 
     # Install license and documentation
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
