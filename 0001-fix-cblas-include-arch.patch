@@ -1,28 +1,16 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e165c19..221647f 100644
+index e165c19..7f46e22 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -344,7 +344,9 @@ include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
- if (${SIM_PLATFORM} STREQUAL "Linux" OR ${SIM_PLATFORM} STREQUAL "Darwin")
-     # libplatform.cpp needs OpenBLAS (<cblas.h>, openblas_set_num_threads)
+@@ -346,6 +346,8 @@ if (${SIM_PLATFORM} STREQUAL "Linux" OR ${SIM_PLATFORM} STREQUAL "Darwin")
      set(BLA_VENDOR OpenBLAS)
--    find_package(BLAS REQUIRED)
-+    enable_language(Fortran)
-+    find_package(OpenMP REQUIRED COMPONENTS Fortran C)
-+    find_package(OpenBLAS REQUIRED)
+     find_package(BLAS REQUIRED)
      find_package(LAPACK REQUIRED)
++    # Find CBLAS; This populates 'OpenBLAS_INCLUDE_DIRS' which we use later
++    find_package(OpenBLAS CONFIG QUIET)
  endif()
  
-@@ -383,7 +385,8 @@ elseif (${SIM_PLATFORM} STREQUAL "Darwin")
- else()
-     set(SIM_EXE_LIBRARIES
-             dl m klu amd camd colamd ccolamd btf cholmod suitesparseconfig
--            ${LAPACK_LIBRARIES} ${BLAS_LIBRARIES}
-+            OpenBLAS::OpenBLAS
-+            ${LAPACK_LIBRARIES}
-             ${Boost_LIBRARIES}
-         CACHE STRING "External libraries for creating an executable."
-         FORCE
+ # What to link with the object files to produce an executable
 diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
 index c4491f6..34f135e 100644
 --- a/lib/CMakeLists.txt

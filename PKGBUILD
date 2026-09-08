@@ -2,7 +2,7 @@
 _pkgname=vacask
 pkgname="${_pkgname}-git"
 pkgver=0.3.3.r348.g0212881
-pkgrel=1
+pkgrel=2
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
     'x86_64'
@@ -34,9 +34,9 @@ checkdepends=(
     'python'
     'python-numpy'
     'python-scipy'
+    'python-matplotlib'
 )
 optdepends=(
-    'python-matplotlib: For plotting the individual tests'
     'python-scikit-rf: For postprocessing some of the tests'
 )
 conflicts=("${_pkgname}")
@@ -47,7 +47,7 @@ source=(
 )
 
 b2sums=('SKIP'
-        '05a3a144a511ecdf9be55901b6bf941f6d9676cba72a3e8c0254da189eb49494e569e0074fff0576436269f8e210e64a1520a6a0f50d6390e16579fe24647f51')
+        'b8a7490a5aa6ebd09b9883d24e4498df09599a77eed5c0a4016ad6deefc30d023d3f79838019b381fa0c14152f70378b904f7d8869851582c89aff132da640a4')
 
 pkgver() {
     cd "${_pkgname}"
