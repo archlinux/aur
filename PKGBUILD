@@ -1,4 +1,4 @@
-# Maintainer: BinaryHarbinger <halilefeesen@proton.me>
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 
 pkgname=riftbar
 pkgver=0.2.6
