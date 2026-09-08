@@ -1,15 +1,14 @@
 diff --git a/cli/commands/upgrade.ts b/cli/commands/upgrade.ts
 deleted file mode 100644
-index 279f073e..00000000
+index 911cad97..00000000
 --- a/cli/commands/upgrade.ts
 +++ /dev/null
-@@ -1,82 +0,0 @@
+@@ -1,88 +0,0 @@
 -import {
 -  Provider,
 -  UpgradeCommand,
--  UpgradeOptions,
--} from "https://deno.land/x/cliffy@v0.25.7/command/upgrade/mod.ts";
--import { Versions } from "https://deno.land/x/cliffy@v0.25.7/command/upgrade/provider.ts";
+-  type Versions,
+-} from "jsr:@cliffy/command@1.2.1/upgrade";
 -
 -const UPGRADE_URL = "https://fabricmc.net/cli";
 -const COMMAND_NAME = "fabric";
@@ -20,19 +19,26 @@ index 279f073e..00000000
 -  })
 -    .description("Upgrade Fabric CLI tools executable to latest version");
 -
--  command.removeOption("--version");
--  command.removeOption("--force");
--  command.removeOption("--list-versions");
+-  command.removeOption("version");
+-  command.removeOption("force");
+-  command.removeOption("list-versions");
 -  return command;
 -}
 -
 -class UpdateProvider extends Provider {
 -  name = COMMAND_NAME;
 -
+-  constructor() {
+-    super();
+-  }
+-
+-  override async hasRequiredPermissions(): Promise<boolean> {
+-    // This provider cannot check whether a newer version is available.
+-    return false;
+-  }
+-
 -  // Code edited from the default Provider
--  override async upgrade(
--    {}: UpgradeOptions,
--  ): Promise<void> {
+-  override async upgrade(): Promise<void> {
 -    const args = [
 -      "install",
 -      "--force",
@@ -87,22 +93,25 @@ index 279f073e..00000000
 -  }
 -}
 diff --git a/cli/main.ts b/cli/main.ts
-index be6e8dbd..b976ac00 100755
+index 7057ac67..b7de26b9 100755
 --- a/cli/main.ts
 +++ b/cli/main.ts
-@@ -7,7 +7,6 @@ import {
-   CompletionsCommand,
- } from "https://deno.land/x/cliffy@v0.25.7/command/mod.ts";
+@@ -6,7 +6,6 @@ import { exit } from "node:process";
+ import { Command } from "jsr:@cliffy/command@1.2.1";
+ import { CompletionsCommand } from "jsr:@cliffy/command@1.2.1/completions";
  import { initCommand } from "./commands/init.ts";
 -import { upgradeCommand } from "./commands/upgrade.ts";
  import { versionsCommand } from "./commands/versions.ts";
  
  // Replaced by esbuild.
-@@ -25,7 +24,6 @@ if (import.meta.main) {
-       Deno.exit(0);
+@@ -25,10 +24,6 @@ if (import.meta.main) {
      })
-     .command("init", initCommand())
--    .command("upgrade", upgradeCommand())
+     .command("init", initCommand());
+ 
+-  if (typeof Deno !== "undefined") {
+-    cmd.command("upgrade", upgradeCommand());
+-  }
+-
+   cmd
      .command("versions", versionsCommand())
      .command("completions", new CompletionsCommand());
- 

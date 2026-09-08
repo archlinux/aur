@@ -1,6 +1,6 @@
 # Maintainer: Celeste <celdaemon at voidgroup dot net>
 pkgname=fabricmc-cli-git
-pkgver=r211.3a37c0c0
+pkgver=r222.378fb788
 pkgrel=1
 pkgdesc="Fabric modding CLI utility"
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    'fc98b84174538e0062785bd227748a246d143b4ab535b6d6583c3ecca526bb5c'
+    '1e1eb6f3176f2c58c9ce3376ea9968f68b0a156098642a6740464a1c055e9aca'
 )
 
 pkgver() {
