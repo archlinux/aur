@@ -2,8 +2,8 @@
 
 pkgname=browser-use-cli
 _pyname=browser_use
-pkgver=0.13.8
-pkgrel=2
+pkgver=0.13.10
+pkgrel=1
 pkgdesc='CLI for browser automation with AI agents'
 arch=(any)
 url='https://github.com/browser-use/browser-use'
@@ -67,22 +67,25 @@ source=(
   "https://files.pythonhosted.org/packages/source/b/bubus/bubus-1.5.6.tar.gz"
   "https://files.pythonhosted.org/packages/source/c/cdp_use/cdp_use-1.4.5.tar.gz"
   "https://files.pythonhosted.org/packages/source/b/browser_use_sdk/browser_use_sdk-3.4.2.tar.gz"
-  "https://files.pythonhosted.org/packages/source/b/browser_harness/browser_harness-0.1.9.tar.gz"
+  "https://files.pythonhosted.org/packages/source/b/browser_harness/browser_harness-0.1.13.tar.gz"
   "https://files.pythonhosted.org/packages/source/f/fetch_use/fetch_use-0.4.0.tar.gz"
 )
-sha256sums=('2c868f099a66d8c33c0c346762d9b1c59e7254517bc900d3891e0b84767b977a'
+sha256sums=('f0e97fcad3319bc7a19ef7bb27eadf2e0824def0a916fd1988557dab9267cb17'
             '1a5456f0a576e86613a7bd66e819891b677778320b6e291094e339b0d9df2e0d'
             '0da3a32df46336a03ff5a22bc6bc442cd7d2f2d50a118fd4856f29d37f6d26a0'
             'be050bc803b31ec4e9f23dfd71d9dc5f1160d7dec0b962327915caf743a10208'
-            '4fa7bfa1f973ecf7f054375878868b79ee096ad6f29dea0783397c730327ac1c'
+            '284dc547a042c309feafd9a9f4a74b2a8651b7963ea3ac6cb2f2d64889f6a8f3'
             '9511987d4907ec6dac501e21d66946d10098f66b5d21bc2aba4189cd81ba189a')
 
+# Upstream pins exact versions of its build backends (hatchling, setuptools)
+# that rarely match the ones in the repositories. The pinned versions bring
+# nothing the packaged ones lack, so skip the check rather than fail on it.
 build() {
   local _src
   for _src in "${source[@]##*/}"; do
     [[ $_src == *.tar.gz ]] || continue
     cd "$srcdir/${_src%.tar.gz}"
-    python -m build --wheel --no-isolation
+    python -m build --wheel --skip-dependency-check --no-isolation
   done
 }
 
