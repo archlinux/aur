@@ -15,7 +15,7 @@ pkgbase = unreal-engine-manager
 	conflicts = unreal-engine-4
 	conflicts = unreal-engine-git
 	conflicts = unreal-engine-bin
-	source = git+https://github.com/matheusvilano/unreal-engine-manager.git#tag=f92800abb520da30c922c3055d3b585c33b3315c
+	source = git+https://github.com/matheusvilano/unreal-engine-manager.git#tag=b790ce7c03d10ead8c6f77849509a9543802d7a7
 	sha256sums = SKIP
 
 pkgname = unreal-engine-manager

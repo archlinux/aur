@@ -12,7 +12,7 @@ depends=('python' 'tk')
 optdepends=('android-ndk: Android build support'
             'jetbrains-toolbox: For CLion/Rider/PyCharm'
             'code: VS Code support')
-_tag='f92800abb520da30c922c3055d3b585c33b3315c'
+_tag='b790ce7c03d10ead8c6f77849509a9543802d7a7'
 source=("git+https://github.com/matheusvilano/unreal-engine-manager.git#tag=${_tag}")
 sha256sums=('SKIP')  # git source; using tag (from `git rev-parse`) for integrity instead.
 install='package.install'
