@@ -1,7 +1,8 @@
 # Maintainer: Shira
 # Contributor: Shira
 pkgname=seerrng-deb
-pkgver=3.13.2
+_srcver="v3.19.1"
+pkgver="${_srcver#v}"
 pkgrel=1
 pkgdesc="Seerr fork with music, books and audiobooks support. Installed from .deb"
 arch=('x86_64')
