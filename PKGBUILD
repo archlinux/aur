@@ -1,7 +1,7 @@
 # Maintainer: zeGolem <zegolem1383@outlook.fr>
 # Contributor: Ben Westover <kwestover.kw@gmail.com>
 pkgname=python-py-cord
-pkgver=2.6.1
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Pycord is a maintained fork of discord.py, a python wrapper for the Discord API"
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=('python-pynacl: Voice support'
 conflicts=('python-discord')
 provides=('python-discord' 'python-pycord')
 source=("pycord-${pkgver}.tar.gz::https://github.com/Pycord-Development/pycord/archive/v${pkgver}.tar.gz")
-sha256sums=('e388918459b29076f7d613ffebd7b6cc0a24bd1143caa05c82191fad5941f18a')
+sha256sums=('c43811f554705b5fe0663b78d6499ae127eff9e25bbd6974a861d08ac689d944')
 
 build() {
 	cd "$srcdir"/pycord-$pkgver
