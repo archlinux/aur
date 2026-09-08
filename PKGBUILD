@@ -12,9 +12,12 @@ makedepends=('go' 'npm')
 install=hister.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        "hister.service")
+        hister.override.service
+        hister.sysusers)
 sha256sums=('59cbe6d03a7e7783e4922ea03fbbbe812701c50eb5f49f6a3c42d9480ebdd2ba'
-            'c1f3851a79baf1eab7d5d40ee9aaffa53fef4a2938e5a293c542f73134e645da')
+            'f5713114859925e53bd9f99d26072bcf07946011545d1e69fbaf09a7623e7e23'
+            '5f4f3e82c42ba517d0caaa1deb4d3532c4f26cc60e42861bff1c5c6dacf34e9f')
+backup=(etc/hister/{hister.env,config.yml})
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -38,16 +41,25 @@ build() {
     go build -o hister -tags netgo,osusergo \
         -ldflags "-s -w -X main.version=$pkgver" .
 
-    ./hister completion bash > hister.bash
-    ./hister completion zsh > hister.zsh
-    ./hister completion fish > hister.fish
+	for _shell in bash zsh fish; do
+        ./hister completion $_shell > hister.$_shell
+    done
+
+    # We install in a location suitable for vendor installs.
+    sed -i 's,/usr/local/,/usr/,g' contrib/systemd/hister.service
+
+    ./hister create-config >config.yml
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 hister "$pkgdir/usr/bin/hister"
-    install -Dm644 "$srcdir/hister.service" "$pkgdir/usr/lib/systemd/user/hister.service"
+    install -Dsm755 hister "$pkgdir/usr/bin/hister"
+    install -Dm644 contrib/systemd/hister.service "$pkgdir/usr/lib/systemd/system/hister.service"
+    install -Dm644 "$srcdir/hister.override.service" "$pkgdir/usr/lib/systemd/system/hister.service.d/00-arch.conf"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	install -Dm644 /dev/null "$pkgdir/etc/hister/hister.env"
+    install -Dm644 config.yml "$pkgdir/etc/hister/config.yml"
 
     install -Dm644 hister.bash "$pkgdir/usr/share/bash-completion/completions/hister"
     install -Dm644 hister.zsh "$pkgdir/usr/share/zsh/site-functions/_hister"

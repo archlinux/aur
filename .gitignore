@@ -1,7 +1,8 @@
 *
 
-!.gitignore
-!.SRCINFO
-!PKGBUILD
-!hister.service
-!hister.install
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/hister.install
+!/*.service
+!/*.sysusers

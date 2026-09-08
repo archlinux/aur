@@ -11,9 +11,13 @@ pkgbase = hister
 	makedepends = npm
 	depends = sqlite
 	options = !lto
+	backup = etc/hister/hister.env
+	backup = etc/hister/config.yml
 	source = hister-0.19.0.tar.gz::https://github.com/asciimoo/hister/archive/refs/tags/v0.19.0.tar.gz
-	source = hister.service
+	source = hister.override.service
+	source = hister.sysusers
 	sha256sums = 59cbe6d03a7e7783e4922ea03fbbbe812701c50eb5f49f6a3c42d9480ebdd2ba
-	sha256sums = c1f3851a79baf1eab7d5d40ee9aaffa53fef4a2938e5a293c542f73134e645da
+	sha256sums = f5713114859925e53bd9f99d26072bcf07946011545d1e69fbaf09a7623e7e23
+	sha256sums = 5f4f3e82c42ba517d0caaa1deb4d3532c4f26cc60e42861bff1c5c6dacf34e9f
 
 pkgname = hister
