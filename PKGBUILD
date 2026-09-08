@@ -6,7 +6,7 @@ _appname=${_gitname%code}
 pkgname=${_gitname}
 pkgdesc="A terminal IDE written in Rust"
 
-pkgver=0.25.0
+pkgver=0.26.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ optdepends=('poppler' 'pandoc-cli' 'typst' 'chafa')
 options=('!strip' '!lto')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('e137dc928bbba4d1ed788d0463bd6e31580a314789e007fefb4b96a8da106e5c')
+sha256sums=('9b436ee05614ca55ddb21fac7eca472f60f28384b6224c9472db2af939e478d9')
 
 
 prepare() {
