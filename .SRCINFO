@@ -1,0 +1,25 @@
+pkgbase = ueransim-git
+	pkgdesc = Open source 5G UE and RAN (gNodeB) implementation (git version)
+	pkgver = 3.3.0.r0.gd5a3ba6
+	pkgrel = 1
+	url = https://github.com/aligungr/UERANSIM
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = lksctp-tools
+	depends = gcc-libs
+	depends = glibc
+	provides = ueransim=3.3.0.r0.gd5a3ba6
+	conflicts = ueransim
+	backup = etc/ueransim/custom-gnb.yaml
+	backup = etc/ueransim/custom-ue.yaml
+	backup = etc/ueransim/free5gc-gnb.yaml
+	backup = etc/ueransim/free5gc-ue.yaml
+	backup = etc/ueransim/open5gs-gnb.yaml
+	backup = etc/ueransim/open5gs-ue.yaml
+	source = ueransim::git+https://github.com/aligungr/UERANSIM.git
+	sha256sums = SKIP
+
+pkgname = ueransim-git
