@@ -1,0 +1,25 @@
+pkgbase = paperboy-git
+	pkgdesc = One new photograph a day, and the ones you kept
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jaehho/paperboy
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	optdepends = hyprpaper: setting the wallpaper under Hyprland
+	optdepends = libnotify: desktop notifications
+	optdepends = xdg-desktop-portal: opening source pages and signup pages
+	provides = paperboy
+	conflicts = paperboy
+	source = git+https://github.com/jaehho/paperboy.git
+	sha256sums = SKIP
+
+pkgname = paperboy-git
