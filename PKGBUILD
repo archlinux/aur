@@ -5,7 +5,7 @@
 _pkgname="wsjtx"
 pkgbase="$_pkgname-improved-qt6"
 pkgname=("$_pkgname-improved-qt6")
-pkgver=3.2.0+260818
+pkgver=3.2.0+260908
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB"
 url="https://sourceforge.net/projects/wsjt-x-improved/"
@@ -47,11 +47,9 @@ _file="$_pkgname-improved-qt6-$pkgver.tar.gz"
 noextract=("$_file")
 source=("$_file"::"$_dl_url_base/wsjtx-${pkgver%+*}_improved_PLUS_${pkgver#*+}_qt6.tgz")
 
-sha256sums=(
-  'adc573cbcaa41c2d414f0f858437ecf09208f3977e0707ddea5c6a11a9d71be3'
-  '5c77cce3a54579f7e251ea6106b0a4d2cd2244af7ce4e2f4264d27620db829e7'
-  'a4840c6ef0de0c4f80c19e79ee14361345bb5835662d99c6463259449d73fd04'
-)
+sha256sums=('12107d85421ce09a93ee2bf5e3cb00e408040b75202eaff2ed325215850b079f'
+  '1bed40669196a61a483871842539fe6b75e55faeb222e435ecb4ef6b3d97a530'
+  '5274956473bbe0179a475b63199bd771c65aae45541fa3372d80653d5af592a2')
 
 for i in ${_pkgs//:/ }; do
   _file="$_pkgname-improved-${i,,}-qt6-$pkgver.tar.gz"
