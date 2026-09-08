@@ -1,4 +1,4 @@
-From 3c0725493c431bb255490269ec4171478b26b7d3 Mon Sep 17 00:00:00 2001
+From b1411bd664bed678dffa031127f3c37b760dea3f Mon Sep 17 00:00:00 2001
 From: Yaroslav Bolyukin <iam@lach.pw>
 Date: Tue, 2 Dec 2025 12:02:12 +0100
 Subject: [PATCH 1/7] drm/edid: rename VESA block parsing functions to more
@@ -58,10 +58,10 @@ index 404208bf23a6..4267fcd5a727 100644
  out:
  	if (drm_edid_has_internal_quirk(connector, EDID_QUIRK_NON_DESKTOP)) {
 -- 
-2.54.0
+2.55.0
 
 
-From f2fb7b780d967389d5349510846b43c91f37becd Mon Sep 17 00:00:00 2001
+From 8342950d009101b9fdd860bc5705f5d7273c1a9b Mon Sep 17 00:00:00 2001
 From: Yaroslav Bolyukin <iam@lach.pw>
 Date: Tue, 2 Dec 2025 12:02:13 +0100
 Subject: [PATCH 2/7] drm/edid: prepare for VESA vendor-specific data block
@@ -129,10 +129,10 @@ index 4267fcd5a727..5502f3935455 100644
  
  static void drm_update_vesa_specific_block(struct drm_connector *connector,
 -- 
-2.54.0
+2.55.0
 
 
-From fc0a365a33d01b60e1c7d18fa4d59e9bf4f6833f Mon Sep 17 00:00:00 2001
+From 33ae91499937a712652f2f41602702dc2e63354c Mon Sep 17 00:00:00 2001
 From: Yaroslav Bolyukin <iam@lach.pw>
 Date: Tue, 2 Dec 2025 12:02:14 +0100
 Subject: [PATCH 3/7] drm/edid: MSO should only be used for non-eDP displays
@@ -223,10 +223,10 @@ index 5502f3935455..9948c69305cf 100644
  
  	if (info->mso_stream_count) {
 -- 
-2.54.0
+2.55.0
 
 
-From 5d4b59081a05d238cfc0cd1183ef7f82bb2018b2 Mon Sep 17 00:00:00 2001
+From 6671a666056efb1a6f53934286133b84f43190c2 Mon Sep 17 00:00:00 2001
 From: Yaroslav Bolyukin <iam@lach.pw>
 Date: Tue, 2 Dec 2025 12:02:15 +0100
 Subject: [PATCH 4/7] drm/edid: parse DSC DPP passthru support flag for mode
@@ -335,10 +335,10 @@ index b9bb92e4b029..312e5c03af9a 100644
  
  /**
 -- 
-2.54.0
+2.55.0
 
 
-From 89b3c7023273e23886848b06f6b6c94c1791626b Mon Sep 17 00:00:00 2001
+From 6a27d6f2c3b6683ec74b74b95e6a6170b8d3f61c Mon Sep 17 00:00:00 2001
 From: Yaroslav Bolyukin <iam@lach.pw>
 Date: Tue, 2 Dec 2025 12:02:16 +0100
 Subject: [PATCH 5/7] drm/edid: for consistency, use mask everywhere for block
@@ -381,10 +381,10 @@ index 81cf8afc2d2e..19a635c5d91e 100644
  	/* extended blocks are not supported yet */
  	if (timing_size != 6)
 -- 
-2.54.0
+2.55.0
 
 
-From ad85af4597502bdbb7074e645e22181c6fcf0a7b Mon Sep 17 00:00:00 2001
+From e30b6db7a2f0d111bd946b14324fb67f2071ef92 Mon Sep 17 00:00:00 2001
 From: Yaroslav Bolyukin <iam@lach.pw>
 Date: Tue, 2 Dec 2025 12:02:17 +0100
 Subject: [PATCH 6/7] drm/edid: parse DRM VESA dsc bpp target
@@ -488,10 +488,10 @@ index f83f28cae207..95d7490d266c 100644
  	 * @vics: Array of vics_len VICs. Internal to EDID parsing.
  	 */
 -- 
-2.54.0
+2.55.0
 
 
-From 1b08f2d4948d39f34c5d6a1b1180a2614fd7ba35 Mon Sep 17 00:00:00 2001
+From 5caf1e94bfa8d1b1a42d87a55059333e324cb7e8 Mon Sep 17 00:00:00 2001
 From: Yaroslav Bolyukin <iam@lach.pw>
 Date: Tue, 2 Dec 2025 12:02:18 +0100
 Subject: [PATCH 7/7] drm/amd: use fixed dsc bits-per-pixel from edid
@@ -507,7 +507,7 @@ Reviewed-by: Wayne Lin <Wayne.Lin@amd.com>
  1 file changed, 16 insertions(+)
 
 diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-index 5fc5d5608506..9e678b92bd5b 100644
+index f8c13bad4ac2..79607d7ad619 100644
 --- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
 +++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
 @@ -6880,6 +6880,11 @@ static void fill_stream_properties_from_drm_display_mode(
@@ -548,5 +548,5 @@ index 5fc5d5608506..9e678b92bd5b 100644
  		drm_mode_set_crtcinfo(&saved_mode, 0);
  
 -- 
-2.54.0
+2.55.0
 
