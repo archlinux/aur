@@ -1,0 +1,2 @@
+d /var/log/open5gs 0750 open5gs open5gs -
+Z /var/log/open5gs - open5gs open5gs -
