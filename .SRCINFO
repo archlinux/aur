@@ -1,6 +1,6 @@
 pkgbase = python-llama-index-core
 	pkgdesc = The core python package to the LlamaIndex library
-	pkgver = 0.14.22
+	pkgver = 0.14.24
 	pkgrel = 1
 	url = https://github.com/run-llama/llama_index
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-llama-index-core
 	depends = python-sqlalchemy
 	depends = python-llama-index-workflows
 	depends = python-llama-index-instrumentation
-	source = https://files.pythonhosted.org/packages/source/l/llama_index_core/llama_index_core-0.14.22.tar.gz
-	sha256sums = 1384410f89bdbd32349aab444ef4f5c828c338787bc65bd1ffd8e86dfb44ac41
+	source = https://files.pythonhosted.org/packages/source/l/llama_index_core/llama_index_core-0.14.24.tar.gz
+	sha256sums = 4b2eb3af98eecf3579707ef018be0346bd851be2c7660102d88fab0457b95b61
 
 pkgname = python-llama-index-core
