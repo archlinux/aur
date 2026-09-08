@@ -1,6 +1,6 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=markterm
-pkgver=0.11.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Terminal markdown renderer, plus a fast self-contained Markdown/HTML-to-PDF converter."
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archiv
         "litehtml-$_litehtml_rev.tar.gz::https://github.com/ralsina/litehtml/archive/$_litehtml_rev.tar.gz"
         "libharu-$_libharu_ver.tar.gz::https://github.com/libharu/libharu/archive/refs/tags/v$_libharu_ver.tar.gz")
 optdepends=("timg: image support")
-sha256sums=('1f21b6f30b542309d37641b7afaa63f7fca50715934f38696b17b94ab7b4e608'
+sha256sums=('d13a72d3c2a90148546ab0e4f15e4aecebdcd8501c2b99363bc3e3279c6847db'
             '1a673ac5e2062aae2b303b181ee4526ff239c4cad011dc998aff7ac9e6fce649'
             'ec8f327520d1d354ce58b5d2af75b64f380cddc522437c169463b39760921348')
 
