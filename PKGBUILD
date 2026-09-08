@@ -1,18 +1,19 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=ntsc-rs
-pkgver=0.9.4
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Free, open-source VHS effect. Standalone application."
 arch=('x86_64')
 url="https://github.com/ntsc-rs/ntsc-rs"
 license=('Apache-2.0 AND ISC AND MIT')
-depends=('glibc' 'gst-plugins-base-libs' 'libwebp' 'glib2' 'libgcc' 'gstreamer' 'hicolor-icon-theme')
+depends=('glibc' 'gst-plugins-base-libs' 'libwebp' 'glib2' 'libgcc' 'gstreamer' 'hicolor-icon-theme'
+	 'fontconfig' 'openssl')
 makedepends=('cargo' 'git' 'gendesk')
 provides=("${pkgname}-gui")
 conflicts=("${pkgname}-gui")
 source=("git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/AcademySoftwareFoundation/openfx.git")
-sha256sums=('48337ccbe5616d858c11431ac8fff85fce1bac7a9e5371f4fc1fbbec591615b2'
+sha256sums=('1371dbe544e8a8893288c9a88611cfd839d3f429221ec1fb5b759f8747d23fe0'
             'SKIP')
 
 prepare() {
