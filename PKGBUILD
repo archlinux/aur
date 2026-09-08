@@ -40,7 +40,7 @@ optdepends=(
     'gst-plugins-bad: 64-bit GStreamer plugins (pipewiresrc) for screen bridge'
 )
 source=(
-    "zalo.AppImage::https://github.com/doandat943/zalo-for-linux/releases/download/${pkgver}/Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}.AppImage"
+    "zalo.AppImage::https://github.com/doandat943/zalo-for-linux/releases/download/${pkgver}/Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}-ZaDark.AppImage"
     "zalo.desktop"
     "Zalo.png"
 )
