@@ -1,0 +1,4 @@
+#!/bin/sh
+# Force Qt to use XWayland so wmctrl can activate the existing window.
+export QT_QPA_PLATFORM=xcb
+exec /opt/wechat/wechat "$@"

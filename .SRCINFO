@@ -1,0 +1,18 @@
+pkgbase = wechat-xwayland
+	pkgdesc = Launch wechat-bin through Qt XWayland with a KDE activation command
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/wechat-bin
+	arch = any
+	license = custom
+	depends = wechat-bin
+	optdepends = xorg-server-xwayland: run the Qt application through XWayland
+	conflicts = wechat-bin-xwayland
+	source = wechat-xwayland
+	source = activate-wechat-xwayland::https://raw.githubusercontent.com/duanluan/shell-scripts/refs/heads/main/activate-wechat.sh
+	source = wechat-xwayland.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wechat-xwayland

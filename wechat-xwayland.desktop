@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=WeChat (XWayland)
+Name[zh_CN]=微信（XWayland）
+Comment=Launch WeChat through XWayland for reliable window activation
+Comment[zh_CN]=通过 XWayland 启动微信以支持可靠的窗口置前
+Exec=/usr/bin/wechat-xwayland %U
+Terminal=false
+Type=Application
+Icon=wechat
+Categories=Utility;
+StartupNotify=true
