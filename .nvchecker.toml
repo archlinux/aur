@@ -1,3 +1,4 @@
 [qt5-quickcontrols-nemo]
 source = "git"
 git = "https://github.com/nemomobile-ux/qtquickcontrols-nemo.git"
+include_regex = "5\\..*"
