@@ -18,4 +18,4 @@ package() {
   install -Dm755 mldy "$pkgdir/usr/bin/mldy"
 }
 
-sha256sums=('b80cbc1eff94f89577c6a0601cfa5827a8aa67b3bad7a4480ee10904a75864f6')
+sha256sums=('403d5e681f460635de8a347ff878f4a0ffaaab577c7d0cea1710c853cb0fccd7')
