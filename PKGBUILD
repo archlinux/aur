@@ -2,7 +2,7 @@
 # PGP: 813CE099D6CE512BC29A15D841EE1853489958D6
 
 pkgname=bspwm1-wl
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="bspwm as a Wayland compositor (wlroots backend of bspwm1)"
 arch=('x86_64')
