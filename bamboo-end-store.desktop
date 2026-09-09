@@ -7,4 +7,4 @@ Icon=bamboo-end-store
 StartupWMClass=bamboo-end-store
 Comment=Modern community store for EndeavourOS and Arch Linux
 Categories=System;Settings;
-MimeType=x-scheme-handler/bamboo-end-store;
+MimeType=x-scheme-handler/bamboo-end-store;x-scheme-handler/bamboo-store;
