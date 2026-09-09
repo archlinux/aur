@@ -1,10 +1,9 @@
 pkgbase = wpa_supplicant-wep2
 	pkgdesc = A utility providing key negotiation for WPA wireless networks (with WEP support)
-	pkgver = 2.11
+	pkgver = 2.12
 	pkgrel = 1
 	epoch = 2
 	url = https://w1.fi/wpa_supplicant/
-	install = wpa_supplicant.install
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = docbook-sgml
@@ -19,7 +18,7 @@ pkgbase = wpa_supplicant-wep2
 	depends = readline
 	provides = wpa_supplicant
 	conflicts = wpa_supplicant
-	source = git+https://w1.fi/hostap.git?signed#tag=hostap_2_11
+	source = git+https://git.w1.fi/hostap.git?signed#tag=hostap_2_12
 	source = wpa_supplicant_config
 	source = 0001-Enable-TLSv1.0-by-default.patch
 	source = 0002-Disable-Werror-for-eapol_test.patch
@@ -28,17 +27,17 @@ pkgbase = wpa_supplicant-wep2
 	source = 0005-Add-IgnoreOnIsolate-yes-to-keep-wpa-supplicant-runni.patch
 	source = 0006-Add-reload-support-to-the-systemd-unit-files.patch
 	source = 0007-nl80211-add-extra-ies-only-if-allowed-by-driver.patch
-	source = 0008-Send-CTRL-EVENT-SIGNAL-CHANGE-message-to-control-interfaces-only.patch
+	source = 0008-Revert-Mark-authorization-completed-on-driver-indica.patch
 	validpgpkeys = EC4AA0A991A5F2464582D52D2B6EF432EFC895FA
-	b2sums = 163d2e6644902f36b3b5f25e328221fa34495d745801e8d3dce874b05366c81370ef75c8f7e0198e206a3d04c5ea4bb501bf97693fa481e15cf5067d80ab0c1e
-	b2sums = a059f15a21a3bb22b8094f0501ea9b15f4259b53cd3613173b3a945398fef721ca50539f6709eb30ce47eadc717e0264a9c2d6e4957c971aa03bdef6115cdb60
-	b2sums = 96b82aaa5315e931424150d47e52f70186e2eea3928a5c97792473b69e8f92463863e8044e073bf940d597a3620f63381bd6996a594c85977785cdce4038f768
-	b2sums = bd00e0f6c04db9c2dc274763b97dace4d886fb105b0a605bb15877ee84e4a93a7b95ab9a0242b4937c748c8e7991e3dddb795ac4c2b0e99be0f5e48098041b70
-	b2sums = aaa7604faf1fede451582c8b981579cc86724a66c783d8368d1c122e0c381b75842d83bd85a982c1d4461d65bc74e62d34768762d15b4005a24a17e1392a109a
+	b2sums = 632b255467f1c7b52fccaf217ff471a89a59943b74bef3536f7b5eb6146527dc9e86c67e8c40162a3809f14a97dc94c3a339bc77d356c9ef16cfcf41fcd00208
+	b2sums = 3e6782a1d6817696b00542615c71a178c755de403d1f099b3c47ac83725957747a0c94acae3bbd9c9d4ad7caff183724097896772370cac9d55060fc151c9dab
+	b2sums = ec738735c4e820f87082b8bd86f07c458cf9c8137734f65b01cbc88ead66c90d7c362a88465cedaff1eacad3e6d43bc97d846e3d7c22132038b026c28c70a63a
+	b2sums = df0cebf38b8c9c03055db2d5a60d21b64b277165d7238173ef21e7bdbffca883795b9fa517bdfd4ab1eb9d288d1237f339d9e6bdb92d679e662eefe98843e42c
+	b2sums = 28ebf66b30a421830470ff191b0ff6ca10a91acc66d36024ccfce0e024f17cd05f136564982cc0fb6b99ec4d791d1e501b6dd7c4130f3cae10a5f8e7e6a350b1
 	b2sums = 7175e7aab682370aef1b3358eaa839dcb009e12940aa2b9949c8c3254406341433e84af09d09ad670bf41f5201d979af02095c87a368b76465a952b1be9de049
 	b2sums = 6472d571f18c3ee718315888b9c756c4579a4b411e8c6994002f9a79fb0a36fbebe8b3d419af0f9ea881dd1bc439d03dbe3c6d6661e670f16575197c31f0bd7a
 	b2sums = c1ce2e8d6f42cbc8181aeb2bdc19d4a22bff804c18f6e505d8315a294c67c936e90135046812ec37765be3d0f433e31554604deb1d7b160549d7e3284610a22b
-	b2sums = 28bf078147cc2f3395d3f907d6d900c7976dbd9948a9513f1d7ef32a40b89fee55e243c9302d24eda62dc1f813857fa09ae79e6faf52881e463a163acb437380
-	b2sums = 821949ae71cc50a0922b922c3dd41027fe32798aa2f2eb466d361dfb867a795126a3cbec7fb1584bf20e9dd55388e44b5f0908d8b2442644f20545b0580f59d4
+	b2sums = c70aa659f2e5e5cd59d7f5006eda115f780a6bdcb3e006505c9dde560c590d596da368795ee42991d4735b9c8e55eb9412a58dfc17239f518c5ecdb013347cce
+	b2sums = 72742bba49ea105419d510f64c3d728d672efa4a91612bfd7d22d5c46d98e0d496ae7713f971074442621f6e87d5623fa33675b6b329278422f50b3a4afdbf1b
 
 pkgname = wpa_supplicant-wep2

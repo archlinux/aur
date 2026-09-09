@@ -12,7 +12,7 @@ for Debian and its downstreams.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/wpa_supplicant/Makefile b/wpa_supplicant/Makefile
-index 743c8acd683f..04f6dd78b580 100644
+index 67f337df33da..36961ebe72f0 100644
 --- a/wpa_supplicant/Makefile
 +++ b/wpa_supplicant/Makefile
 @@ -187,7 +187,7 @@ CFLAGS += -DCONFIG_ELOOP_KQUEUE

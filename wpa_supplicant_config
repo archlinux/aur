@@ -101,6 +101,9 @@ CONFIG_EAP_MSCHAPV2=y
 
 # EAP-TLS
 CONFIG_EAP_TLS=y
+# Enable EAP-TLSv1.3 support by default (currently disabled unless explicitly
+# enabled in network configuration)
+#CONFIG_EAP_TLSV1_3=y
 
 # EAL-PEAP
 CONFIG_EAP_PEAP=y
@@ -203,8 +206,14 @@ CONFIG_HT_OVERRIDES=y
 # Support VHT overrides (disable VHT, mask MCS rates, etc.)
 CONFIG_VHT_OVERRIDES=y
 
+# Support HE overrides
+CONFIG_HE_OVERRIDES=y
+
 # Development testing
 CONFIG_EAPOL_TEST=y
+
+# Support IPv6
+CONFIG_IPV6=y
 
 # Select control interface backend for external programs, e.g, wpa_cli:
 # unix = UNIX domain sockets (default for Linux/*BSD)
@@ -247,6 +256,13 @@ CONFIG_READLINE=y
 
 # Simultaneous Authentication of Equals (SAE), WPA3-Personal
 CONFIG_SAE=y
+
+# SAE Public Key, WPA3-Personal
+CONFIG_SAE_PK=y
+
+# WPA3-Enterprise (SuiteB-192)
+CONFIG_SUITEB=y
+CONFIG_SUITEB192=y
 
 # Disable scan result processing (ap_scan=1) to save code size by about 1 kB.
 # This can be used if ap_scan=1 mode is never enabled.
@@ -389,6 +405,22 @@ CONFIG_CTRL_IFACE_DBUS_INTRO=y
 # amount of memory/flash.
 #CONFIG_DYNAMIC_EAP_METHODS=y
 
+# Dynamic library loading
+
+# Add the ability to configure libraries to load at compile time.
+# If set, these disable dynamic configuration.
+#CONFIG_PKCS11_ENGINE_PATH - pkcs11_engine library location.
+#CONFIG_PKCS11_MODULE_PATH - pkcs11_module library location.
+#CONFIG_OPENSC_ENGINE_PATH - opensc_engine library location.
+#
+# Prevent library loading at runtime
+#CONFIG_NO_PKCS11_ENGINE_PATH=y # prevents loading pkcs11_engine library.
+#CONFIG_NO_PKCS11_MODULE_PATH=y # prevents loading pkcs11_module library.
+# CONFIG_NO_OPENSC_ENGINE_PATH=y # prevents loading opensc_engine library.
+
+# Prevents loading EAP libraries at runtime
+#CONFIG_NO_LOAD_DYNAMIC_EAP=y
+
 # IEEE Std 802.11r-2008 (Fast BSS Transition) for station mode
 CONFIG_IEEE80211R=y
 
@@ -474,8 +506,14 @@ CONFIG_GETRANDOM=y
 # IEEE 802.11ac (Very High Throughput) support (mainly for AP mode)
 CONFIG_IEEE80211AC=y
 
+# IEEE 802.11ax HE support (mainly for AP mode)
+CONFIG_IEEE80211AX=y
+
+# IEEE 802.11be EHT support (mainly for AP mode)
+# CONFIG_IEEE80211AX is mandatory for setting CONFIG_IEEE80211BE.
+CONFIG_IEEE80211BE=y
+
 # Wireless Network Management (IEEE Std 802.11v-2011)
-# Note: This is experimental and not complete implementation.
 CONFIG_WNM=y
 
 # Interworking (IEEE 802.11u)
@@ -600,16 +638,14 @@ CONFIG_BGSCAN_SIMPLE=y
 CONFIG_BGSCAN_LEARN=y
 
 # Opportunistic Wireless Encryption (OWE)
-# Experimental implementation of draft-harkins-owe-07.txt
 CONFIG_OWE=y
 
 # Device Provisioning Protocol (DPP) (also known as Wi-Fi Easy Connect)
 CONFIG_DPP=y
 # DPP version 2 support
 CONFIG_DPP2=y
-# DPP version 3 support (experimental and still changing; do not enable for
-# production use)
-#CONFIG_DPP3=y
+# DPP version 3 support
+CONFIG_DPP3=y
 
 # Wired equivalent privacy (WEP)
 # WEP is an obsolete cryptographic data confidentiality algorithm that is not
@@ -629,21 +665,48 @@ CONFIG_WEP=y
 #CONFIG_NO_TKIP=y
 
 # Pre-Association Security Negotiation (PASN)
-# Experimental implementation based on IEEE P802.11z/D2.6 and the protocol
-# design is still subject to change. As such, this should not yet be enabled in
+CONFIG_PASN=y
+
+# Disable support for Radio Measurement (IEEE 802.11k) and supported operating
+# class indication. Removing these is not recommended since they can help the
+# AP manage the network and STA steering.
+#CONFIG_NO_RRM=y
+
+# Disable support for Robust AV streaming for consumer and enterprise Wi-Fi
+# applications; IEEE Std 802.11-2020, 4.3.24; SCS, MSCS, QoS Management
+#CONFIG_NO_ROBUST_AV=y
+
+# Disable support for WMM admission control
+#CONFIG_NO_WMM_AC=y
+
+# Wi-Fi Aware unsynchronized service discovery (NAN USD)
+CONFIG_NAN_USD=y
+
+# Wi-Fi Aware (NAN) support
+CONFIG_NAN=y
+
+# Proximity Ranging (PR) support
+CONFIG_PR=y
+
+# Enhanced Privacy Protection (IEEE P802.11bi)
+# Note: These features are experimental and still changing; do not enable for
 # production use.
-#CONFIG_PASN=y
+# Encrypted association frame support (needed for EPPKE and EAP in
+# Authentication frames)
+#CONFIG_ENC_ASSOC=y
+#
+# PMKSA caching privacy support
+#CONFIG_PMKSA_PRIVACY=y
+#
+# IEEE 802.1X (EAP) authentication in Authentication frames
+# IEEE P802.11bi/D4.0, 12.16.5 (IEEE 802.1X authentication utilizing
+# Authentication frames)
+#CONFIG_IEEE8021X_AUTH=y
 
-# WPA3-Enterprise (SuiteB-192)
-CONFIG_SUITEB=y
-
-CONFIG_SUITEB192=y
-
-# Driver support is also needed for IEEE 802.11w.
-CONFIG_IEEE80211W=y
-
-# IEEE 802.11n (High Throughput) support (mainly for AP mode)
-CONFIG_IEEE80211N=y
-
-# Used by eapol_test only, see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=985912
-CONFIG_IPV6=y
+# OpenSSL PKCS#11/OpenSC engine and module trusted-path validation
+# Validate PKCS#11 engine, PKCS#11 module, and OpenSC engine shared library
+# paths (root-owned, non-writable regular file under /usr/lib with root-owned
+# ancestor directories) before dlopen()ing them. Disabled by default to avoid
+# affecting deployments that run wpa_supplicant as a non-root user with shared
+# libraries in a custom directory owned by that user.
+#CONFIG_TLS_ENGINE_TRUSTED_PATH=y

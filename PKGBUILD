@@ -5,7 +5,7 @@
 # Contributor: loqs
 
 pkgname=wpa_supplicant-wep2
-pkgver=2.11
+pkgver=2.12
 pkgrel=1
 epoch=2
 pkgdesc='A utility providing key negotiation for WPA wireless networks (with WEP support)'
@@ -28,9 +28,8 @@ makedepends=(
 )
 provides=('wpa_supplicant')
 conflicts=('wpa_supplicant')
-install=wpa_supplicant.install
 source=(
-  "git+https://w1.fi/hostap.git?signed#tag=hostap_${pkgver//./_}"
+  "git+https://git.w1.fi/hostap.git?signed#tag=hostap_${pkgver//./_}"
   wpa_supplicant_config
 
   # More permissive TLS fallback
@@ -53,19 +52,19 @@ source=(
   # https://lists.infradead.org/pipermail/hostap/2022-January/040178.html
   0007-nl80211-add-extra-ies-only-if-allowed-by-driver.patch
 
-  # https://w1.fi/cgit/hostap/commit/?id=c330b5820eefa8e703dbce7278c2a62d9c69166a
-  0008-Send-CTRL-EVENT-SIGNAL-CHANGE-message-to-control-interfaces-only.patch
+  # Fix authentication regressions with Broadcom brcmfmac fullmac devices.
+  0008-Revert-Mark-authorization-completed-on-driver-indica.patch
 )
-b2sums=('163d2e6644902f36b3b5f25e328221fa34495d745801e8d3dce874b05366c81370ef75c8f7e0198e206a3d04c5ea4bb501bf97693fa481e15cf5067d80ab0c1e'
-        'a059f15a21a3bb22b8094f0501ea9b15f4259b53cd3613173b3a945398fef721ca50539f6709eb30ce47eadc717e0264a9c2d6e4957c971aa03bdef6115cdb60'
-        '96b82aaa5315e931424150d47e52f70186e2eea3928a5c97792473b69e8f92463863e8044e073bf940d597a3620f63381bd6996a594c85977785cdce4038f768'
-        'bd00e0f6c04db9c2dc274763b97dace4d886fb105b0a605bb15877ee84e4a93a7b95ab9a0242b4937c748c8e7991e3dddb795ac4c2b0e99be0f5e48098041b70'
-        'aaa7604faf1fede451582c8b981579cc86724a66c783d8368d1c122e0c381b75842d83bd85a982c1d4461d65bc74e62d34768762d15b4005a24a17e1392a109a'
+b2sums=('632b255467f1c7b52fccaf217ff471a89a59943b74bef3536f7b5eb6146527dc9e86c67e8c40162a3809f14a97dc94c3a339bc77d356c9ef16cfcf41fcd00208'
+        '3e6782a1d6817696b00542615c71a178c755de403d1f099b3c47ac83725957747a0c94acae3bbd9c9d4ad7caff183724097896772370cac9d55060fc151c9dab'
+        'ec738735c4e820f87082b8bd86f07c458cf9c8137734f65b01cbc88ead66c90d7c362a88465cedaff1eacad3e6d43bc97d846e3d7c22132038b026c28c70a63a'
+        'df0cebf38b8c9c03055db2d5a60d21b64b277165d7238173ef21e7bdbffca883795b9fa517bdfd4ab1eb9d288d1237f339d9e6bdb92d679e662eefe98843e42c'
+        '28ebf66b30a421830470ff191b0ff6ca10a91acc66d36024ccfce0e024f17cd05f136564982cc0fb6b99ec4d791d1e501b6dd7c4130f3cae10a5f8e7e6a350b1'
         '7175e7aab682370aef1b3358eaa839dcb009e12940aa2b9949c8c3254406341433e84af09d09ad670bf41f5201d979af02095c87a368b76465a952b1be9de049'
         '6472d571f18c3ee718315888b9c756c4579a4b411e8c6994002f9a79fb0a36fbebe8b3d419af0f9ea881dd1bc439d03dbe3c6d6661e670f16575197c31f0bd7a'
         'c1ce2e8d6f42cbc8181aeb2bdc19d4a22bff804c18f6e505d8315a294c67c936e90135046812ec37765be3d0f433e31554604deb1d7b160549d7e3284610a22b'
-        '28bf078147cc2f3395d3f907d6d900c7976dbd9948a9513f1d7ef32a40b89fee55e243c9302d24eda62dc1f813857fa09ae79e6faf52881e463a163acb437380'
-        '821949ae71cc50a0922b922c3dd41027fe32798aa2f2eb466d361dfb867a795126a3cbec7fb1584bf20e9dd55388e44b5f0908d8b2442644f20545b0580f59d4')
+        'c70aa659f2e5e5cd59d7f5006eda115f780a6bdcb3e006505c9dde560c590d596da368795ee42991d4735b9c8e55eb9412a58dfc17239f518c5ecdb013347cce'
+        '72742bba49ea105419d510f64c3d728d672efa4a91612bfd7d22d5c46d98e0d496ae7713f971074442621f6e87d5623fa33675b6b329278422f50b3a4afdbf1b')
 validpgpkeys=(
   EC4AA0A991A5F2464582D52D2B6EF432EFC895FA # Jouni Malinen <j@w1.fi>
 )
@@ -77,11 +76,8 @@ prepare() {
   for src in "${source[@]}"; do
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
-    patch -Np1 < "../$src"
+    git apply -3 < "../$src"
   done
-
-  # Cherry-pick a nullptr crash fix.
-  git cherry-pick -n 015f6a5a0cd1c8b0d40441b9fd9e4c8658bc9493
 
   cp ../wpa_supplicant_config wpa_supplicant/.config
 }

@@ -10,10 +10,10 @@ Some older networks may support for TLSv1.0 and less secure cyphers.
  1 file changed, 7 insertions(+)
 
 diff --git a/src/crypto/tls_openssl.c b/src/crypto/tls_openssl.c
-index 17283f99817a..b27c238ec864 100644
+index b14b1236031f..56c6fa057ebd 100644
 --- a/src/crypto/tls_openssl.c
 +++ b/src/crypto/tls_openssl.c
-@@ -1098,6 +1098,13 @@ void * tls_init(const struct tls_config *conf)
+@@ -1366,6 +1366,13 @@ void * tls_init(const struct tls_config *conf)
  		os_free(data);
  		return NULL;
  	}
