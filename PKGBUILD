@@ -6,7 +6,7 @@ pkgbase=qt5-doc
 pkgname=(qt5-doc qt5-examples)
 _basever=5.15.19
 pkgver=$_basever
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -26,8 +26,11 @@ prepare() {
   curl -fsSL -o "$_qt_tarball" "$_url"
   if [ "$(head -c5 "$_qt_tarball")" = '<?xml' ]; then
     _url=$(grep -oE '<url location="[^"]+" priority="[0-9]+">[^<]+</url>' "$_qt_tarball" | head -n1 | sed -E 's/^<url[^>]*>//; s@</url>$@@')
-    test -n "$_url"
-    curl -fsSL -o "$_qt_tarball" "$_url"
+    case "$_url" in
+      https://*) ;;
+      *) echo "prepare(): mirror URL '$_url' doesn't look like a real https URL" >&2; return 1 ;;
+    esac
+    curl -fsSL -o "$_qt_tarball" -- "$_url"
   fi
   echo "$_qt_sha256  $_qt_tarball" | sha256sum -c -
   bsdtar -xf "$_qt_tarball"
