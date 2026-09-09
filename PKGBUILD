@@ -4,7 +4,7 @@
 
 _name=proto-plus
 pkgname=python-$_name
-pkgver=1.28.3
+pkgver=1.28.4
 pkgrel=1
 pkgdesc="A wrapper around protocol buffers"
 arch=(any)
@@ -14,7 +14,7 @@ depends=(python python-protobuf)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # TODO switch to the source package on pypi because this now downloads 100M+
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${_name}-v${pkgver}.tar.gz")
-sha256sums=('914b16c9a8f27dc817d27b5b359b7c39366d0cffb36ee40fb041345e249c80a2')
+sha256sums=('1fa1be70ffccc0173ba335f75856265592716302333d5d45c384e87fa32e15a7')
 
 build() {
   cd google-cloud-python-${_name}-v${pkgver}/packages/${_name}
