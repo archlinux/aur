@@ -54,10 +54,10 @@ _htmldocs_enable=
 _major=7.2
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=6
+_lqxpatchrel=8
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqxcjk
-pkgver=7.2.3.lqx4
+pkgver=7.2.4.lqx2
 pkgrel=1
 pkgdesc='Linux Liquorix (with cjktty patch)'
 url='https://liquorix.net/'
@@ -97,18 +97,18 @@ options=(
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 
-source=("https://cdn.kernel.org/pub/linux/kernel/v7.x/${_srcname}.tar.xz"
-        "https://cdn.kernel.org/pub/linux/kernel/v7.x/${_srcname}.tar.sign"
+source=("https://mirrors.aliyun.com/linux-kernel/v7.x/${_srcname}.tar.xz"
+        "https://mirrors.aliyun.com/linux-kernel/v7.x/${_srcname}.tar.sign"
         "https://github.com/damentz/${_lqxpatchname}/archive/${_major}-${_lqxpatchrel}.tar.gz"
-        "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.2.patch"
-        "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch")
+        "0001-cjktty.patch::https://gh.jasonzeng.dev/https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.2.patch"
+        "0002-cjktty-32.patch::https://gh.jasonzeng.dev/https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 sha512sums=('47e63679363261a864d271277340a6f2d45f544e1a056be4159df081f4f6537d0efa865c4af26611ab33a3079ee65db88ec2f6bc0e5fff43e0c043cde0cd91e1'
             'SKIP'
-            'c2b24adbbc62daf98b5d9c91f00feaedf5c9719f359d067c494817eb345b9bce2356d67506548cca211d49e506446bec43cb7c9f05df3a4b32366c16e94aeafc'
+            '742ef7677a1241d6a4b69ec48b9e3429004bf7e18d943b5f4d2ae53aba13e98bea5515938a317320b1464249c420c9071ee246f8babd5894d9377e2cf4df7d5b'
             '770b55f7a84455f2c1b61837c2e4fcda77808f0b5a9614f8621991d6f7884c67225a268fa88dd8ce9908e55a2c8f20e605f64c05b5074854a39ec130e7e8d59d'
             'c4a443b901030097623d191731a56c87cff2ba3422385d6d7b624387ffa4f659abde07c8360f07e099cd678f8c9b542d7199e3a05febc4c7deaba9e950012cb5')
 
@@ -147,7 +147,7 @@ prepare() {
 
   ### Setting config
   echo "Setting config..."
-  cat ${srcdir}/${_lqxpatchver}/linux-liquorix/debian/config/kernelarch-x86/config-arch-64 >./.config
+  # cat ${srcdir}/${_lqxpatchver}/linux-liquorix/debian/config/kernelarch-x86/config-arch-64 >./.config
   make olddefconfig
   diff -u ${srcdir}/${_lqxpatchver}/linux-liquorix/debian/config/kernelarch-x86/config-arch-64 .config || :
 
