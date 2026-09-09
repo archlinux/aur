@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3
-_pkgver=0.23.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,11 +12,13 @@ license=('LGPL-3.0-only')
 depends=(
   r-backports
   r-checkmate
+  r-cli
   r-data.table
   r-evaluate
   r-future
   r-future.apply
   r-lgr
+  r-mirai
   r-mlbench
   r-mlr3measures
   r-mlr3misc
@@ -36,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3ef02ebc4d9dd82b7efd6165cf6537e4')
-b2sums=('2129356b3d7cf0a6a82592685bc06ab5bca286ca5c13acce8b8b53aa0bf050aa1f2c9526fb934f4e91f0fc31ac562f2ffc0cd0a87f67c2dd091cd0a0b2495bdb')
+md5sums=('5aefa2cb6bbbd8f7d749c2db2fa874b9')
+b2sums=('3fb3fd431d71e42c0f6fe119ac0f1039797039c9f866bf7d89f21efc821401c9a3435469e9b68a5a7b47b4414b58515cbf7bad831ed5b4098f861779d4513f6e')
 
 build() {
   mkdir build
