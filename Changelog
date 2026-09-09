@@ -1,16 +1,24 @@
 -------------------------------------------------------
  Changelog    : kea_config
- Tags         : 6.3.0 ➙ 6.6.0
-              : 2026-04-05 ➙ 2026-09-06
+ Tags         : 6.5.0 ➙ 6.6.2
+              : 2026-09-05 ➙ 2026-09-09
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-06   : 6.6.0
+ 2026-09-09   : 6.6.2
+              - **6.6.2**
+                * Remove unneeded sphinx tmp file from html docs
+
+ 2026-09-09   : 6.6.1
+              - **6.6.1**
+                * Use meson to run the tests
+
+ 2026-09-06   : 6.6.0, origin/master
               - **6.6.0**
             
                 * FIx copy /paste error in meson.build (/usr/share/...)
 
- 2026-09-05   : 6.5.1, origin/master
+ 2026-09-05   : 6.5.1
               - Add checkdepends on pytest to PKGBUILD
 
  2026-09-05   : 6.5.0
@@ -18,21 +26,3 @@
             
                 * switch to meson/meson-python for build/package management
                 * add pytest checks.
-
- 2026-08-07   : 6.4.0
-              - **6.4.0**
-            
-                * Update to track newer versions of *kea*
-            
-                  *control-socket* was changed to *control-sockets* and now holds a list.
-            
-                * Add .nvchecker.toml file
- 2026-04-05   ⋯
-              - update Docs/Changelog
-
- 2026-04-05   : 6.3.0
-              - Version 6.3.0
-                 - Default socket directory is now */run/kea*
-                   Update examples with socket_dir
- 2026-02-06   ⋯
-              - update Docs/Changelog
