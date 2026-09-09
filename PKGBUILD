@@ -1,8 +1,8 @@
 # Maintainer: omartelo <meopedevts@proton.me>
-# Rendered by .github/workflows/release.yml (0.47.1 -> tag, checksums via
+# Rendered by .github/workflows/release.yml (0.48.0 -> tag, checksums via
 # updpkgsums) and pushed to the AUR — edit this template, never the AUR copy.
 pkgname=lich-bin
-pkgver=0.47.1
+pkgver=0.48.0
 pkgrel=1
 pkgdesc="A personal harness for AI-assisted development"
 arch=('x86_64')
@@ -22,8 +22,8 @@ source=("lich-v${pkgver}-linux-amd64::${url}/releases/download/v${pkgver}/lich-v
         "lich-v${pkgver}-linux-amd64-shell.tar.zst::${url}/releases/download/v${pkgver}/lich-v${pkgver}-linux-amd64-shell.tar.zst"
         "lich-${pkgver}.desktop::https://raw.githubusercontent.com/omartelo/lich/v${pkgver}/build/linux/lich.desktop"
         "lich-${pkgver}.png::https://raw.githubusercontent.com/omartelo/lich/v${pkgver}/build/appicon.png")
-sha256sums=('321ab4b6343b205d8c99b76f2f8902bc3380513f41f181f99d190c26e4ed3a64'
-            '477a04200e776d0a540ea8e5ccd1e978c6e93430e5185331ddbe2675f87297f3'
+sha256sums=('c15df00d2855a2abe4a783a8f08fc802456c80f6532511f72b02934765daedeb'
+            'ee85b9bb817cd31b0d00fe2f6a5d4af9820365b4f0615c1bd937c047986bd1a9'
             'e39c9238b56be089973c254d031be152b3d990d3bc2735d866b044833a6c1a4d'
             '75aa775e531ad495d905a37f07e8e608f4d93e4b2ff1d4b145a764e71ac48b0a')
 
