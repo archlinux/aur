@@ -1,6 +1,6 @@
 pkgbase = sink-bin
 	pkgdesc = SteelSeries Sonar for Linux - per-app audio routing, mixing, and a processed virtual mic on PipeWire
-	pkgver = 0.1.31
+	pkgver = 0.1.32
 	pkgrel = 1
 	url = https://github.com/NC1107/sink
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = sink-bin
 	depends = libayatana-appindicator
 	provides = sink
 	conflicts = sink
-	noextract = sink_0.1.31_amd64.deb
+	noextract = sink_0.1.32_amd64.deb
 	options = !strip
 	options = !debug
-	source = https://github.com/NC1107/sink/releases/download/v0.1.31/sink_0.1.31_amd64.deb
-	sha256sums = d870d4282c8c214897e006057936128797be688a5b95bfb1cdc18401fe20f591
+	source = https://github.com/NC1107/sink/releases/download/v0.1.32/sink_0.1.32_amd64.deb
+	sha256sums = 54f91e7a56c6f706ab2d9e594544d625f0ef4fd52d29e8d2ae55ecb4f3025998
 
 pkgname = sink-bin
