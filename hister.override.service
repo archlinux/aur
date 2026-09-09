@@ -1,0 +1,15 @@
+[Service]
+# This is more robust.
+Type=exec
+
+# This has better sandboxing.
+DynamicUser=yes
+# ...thus we do not want to specify a particular user, to avoid conflicting with static users.
+# We do keep the group for access to the config file.
+User=
+
+# Make systemd aware of the config dir, and let Hister know where to search its config.
+# This is especially more interesting for a system service, since the default is
+# `/root/.config/hister/config.yml`, which is a little bogus.
+ConfigurationDirectory=hister::ro
+Environment=HISTER_CONFIG=%E/hister/config.yml

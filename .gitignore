@@ -1,0 +1,9 @@
+*
+
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/hister.install
+!/*.override.service
+!/*.sysusers
+!/*.patch
