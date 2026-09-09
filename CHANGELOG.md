@@ -9,6 +9,14 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 
 ## [Unreleased]
 
+## [2.22.1] - 2026-09-09
+
+### Added
+- Norwegian translation
+
+### Changed
+- french translation
+
 ## [2.22.0] - 2026-09-08
 
 ### Added
@@ -22,8 +30,14 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 - Translation integration
 
 ## [2.21.3] - 2026-08-30
+- burned version
+
 ## [2.21.2] - 2026-08-30
+- burned version
+
 ## [2.21.1] - 2026-08-30
+- burned version
+
 ## [2.21.0] - 2026-08-30
 
 ### Changed

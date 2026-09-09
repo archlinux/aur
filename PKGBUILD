@@ -2,7 +2,7 @@
 # Maintainer: Pierre-Luc Rigaux 
 # Contributor: Pierre-Luc Rigaux 
 pkgname=sysd-manager
-pkgver=2.22.0
+pkgver=2.22.1
 pkgrel=1
 pkgdesc="A systemd GUI to manage service, timer, socket and other units."
 arch=("x86_64" "aarch64")
@@ -11,10 +11,10 @@ license=("GPL-3.0-or-later")
 depends=("glib2" "gtk4" "libadwaita" "systemd-libs" "gtksourceview5" "gettext")
 makedepends=("glib2" "cargo" "git")
 changelog=CHANGELOG.md
-_commit=2dc0ac85f8bd75c8ce7b875e588204775c02523a
+_commit=f93fe5b8d363c7c1aced7e2b03b9bcf1fc444d4e
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plrigaux/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 _pkgsrcdir=$pkgname-$pkgver
-sha256sums=('852596f35070e20ad9c7ad1c9b7680fb2cf744e9a411c79f0c9dfd042a22fb33')
+sha256sums=('4f674f232d0fbe409ed9e6a1699a1ac9dbbc160ac36420d4b9a0fbcba6e792e7')
 install=$pkgname.install
 
 prepare() {
