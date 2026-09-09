@@ -2,7 +2,7 @@
 # Former maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister
 pkgver=0.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 url="https://github.com/asciimoo/hister"
@@ -41,7 +41,7 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	go generate
-    go build -o hister -tags netgo,osusergo \
+    go build -o hister -tags netgo,osusergo,libsqlite3 \
         -ldflags "-s -w -X main.version=$pkgver" .
 
 	for _shell in bash zsh fish; do
