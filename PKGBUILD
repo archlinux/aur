@@ -3,7 +3,7 @@
 # shellcheck disable=2034,2148,2154
 
 pkgname=comfykick
-pkgver=1.7.5
+pkgver=1.8
 pkgrel=1
 pkgdesc="The Official ComfyUI Launch Process SUCKs🤮, this is better."
 arch=(any)
@@ -26,9 +26,9 @@ source=(LICENSE
         override.conf)
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '1edee1463d0ce65145fe4383d28fa805ef3a76c57b6c3f813228e8912cfc4e49'
-            '835593856f8033041de9572920fe7a11c04bab5fea1c619a888418bba6bd3a97'
-            '6b26b19b2480cb1e3660d17b7cf250d064391453b25808d68f969bb69ac44a6f'
+            'ad42fef80e991b629a7c85e8ef30a61e123bd24b36e296b0f43f7731ee61f03c'
+            '5ec3ead84c96a44bf50753cc02f10251dc6f5a0893eab6007d60b51e37b21bd1'
+            'cb035086027f613bdfcb6db61888ce15abfba33ff98d7f128392c2bdf8b96da9'
             '4c993df4c0fa00334a9817adedcf2f2bcf8e60e071b378895b520cf0322782b2')
 
 package() {
