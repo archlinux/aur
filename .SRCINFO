@@ -1,7 +1,6 @@
 pkgbase = coolercontrol
-	pkgdesc = A program to monitor and control your cooling devices (official package)
-	pkgver = 4.3.1
-	pkgrel = 2
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,12 +8,27 @@ pkgbase = coolercontrol
 	checkdepends = desktop-file-utils
 	makedepends = cmake
 	makedepends = bubblewrap
-	depends = qt6-webengine
+	makedepends = rust
+	makedepends = cargo
+	makedepends = libdrm
+	makedepends = qt6-webengine
+	makedepends = hicolor-icon-theme
 	depends = gcc-libs
 	depends = glibc
-	depends = hicolor-icon-theme
-	depends = coolercontrold
-	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/4.3.1/downloads/packages/coolercontrol-4.3.1.tar.gz
-	sha256sums = 00ab5fd9a7a24bd003c2d1d34f78bf50487f46499c68a07d7f8d32e199643082
+	options = !lto
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/5.0.0/downloads/packages/coolercontrol-5.0.0.tar.gz
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/5.0.0/downloads/packages/coolercontrold-vendor-5.0.0.tar.gz
+	sha256sums = ebdc2e5aa4d4e380d71d10c3e3d22de3f93f3b49ef78255f3183a1d734801ffe
+	sha256sums = daf5fd9272531bfc15aa00b1aaccd6875573d7b71234f9361257593744ddde82
 
 pkgname = coolercontrol
+	pkgdesc = A program to monitor and control your cooling devices. This package contains the desktop application. (official package)
+	depends = qt6-webengine
+	depends = hicolor-icon-theme
+	depends = coolercontrold=5.0.0-1
+
+pkgname = coolercontrold
+	pkgdesc = A program to monitor and control your cooling devices. This package contains the service daemon. (official package)
+	depends = libdrm
+	optdepends = liquidctl: liquidctl driver support
+	optdepends = lm_sensors: kernel hwmon driver support
