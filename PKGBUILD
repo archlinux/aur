@@ -5,8 +5,8 @@
 
 pkgname=plover
 pkgdesc="Free and open source real-time stenography engine"
-pkgver=5.4.0
-_pkgver=5.4.0
+pkgver=5.4.1
+_pkgver=5.4.1
 pkgrel=1
 arch=(any)
 url="https://www.openstenoproject.org/plover/"
@@ -42,7 +42,7 @@ makedepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/openstenoproject/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
-b2sums=('39aeda4a6c8f43c41e887d3665560bfbbe9782a43c28671bdbbfa5a1900596e2cb5f0d006280aec1b39a28e6481740c4d111af1b4a5d2a62647a006d846df794')
+b2sums=('94fff4d5c049d0b2773dc78e10e74607adb33b2ac5f6b7e0787f1998fe9a74e40500a4a603d3593b2d6d756537cfd06930b7a32d9fac19935f8740a5fec6633f')
 
 prepare() {
 	# Create shims that call Qt6 host tools with Python generators.

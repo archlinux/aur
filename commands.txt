@@ -1,0 +1,11 @@
+# 1. Edit PKGBUILD version
+nvim PKGBUILD
+
+# 2. Update checksums & test build
+updpkgsums
+makepkg -sirc
+
+# 3. Update metadata & push
+makepkg --printsrcinfo > .SRCINFO
+git commit -am "Update to X.Y.Z"
+git push
