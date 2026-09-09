@@ -9,7 +9,7 @@
 # is declared and the heavy (~340 MB) download happens at runtime, per user.
 
 pkgname=kotlin-toolchain
-pkgver=0.11.1
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="JetBrains Kotlin Toolchain CLI (Amper) -- bootstrap wrapper that downloads its own JDK and toolchain distribution on first run"
 arch=('any')
@@ -21,7 +21,7 @@ source=("kotlin::https://packages.jetbrains.team/maven/p/amper/amper/org/jetbrai
         "LICENSE.txt::https://raw.githubusercontent.com/JetBrains/kotlin-toolchain/v${pkgver}/LICENSE.txt"
         "NOTICE.txt::https://raw.githubusercontent.com/JetBrains/kotlin-toolchain/v${pkgver}/NOTICE.txt")
 noextract=('kotlin')
-sha256sums=('6dbcdde0bcae41705c187aefb6c91c6c29ef9079c8072a473c2149151f8d7962'
+sha256sums=('1fb20f3195d3a635ced9ddf49d9b6aae40119622c5f995a842fddce5ff2764c2'
             'f9a85c61ba4fe8bacc300053b3384b5fc7d9f585a08dc7b9a465b7c0716c4f50'
             'c88ce978e9c66bd27e0b301a4950b5cb62919de395420c229077879420adbcf4')
 
