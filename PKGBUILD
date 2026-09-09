@@ -3,10 +3,10 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.126.04524
+pkgver=1.135.06055
 _electronversion=42
-pkgrel=2
-pkgdesc="VS Code without MS branding/telemetry/licensing.(Prebuilt and System-wide Electron edition)"
+pkgrel=1
+pkgdesc="Free/Libre Open Source Software Binaries of Visual Studio Code."
 arch=(
     'aarch64'
 #    'armv7h'
@@ -30,12 +30,10 @@ depends=(
     "electron${_electronversion}"
     'libx11'
     'libxkbfile'
-    'python'
-    'python-fonttools'
-    'perl'
     'libsecret'
     'webkit2gtk-4.1'
     'nodejs'
+    'ripgrep'
 )
 optdepends=(
 	'gvfs: For move to trash functionality'
@@ -49,11 +47,11 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/codium-${pkgver}-el8.aarch64.rpm")
 #source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/${pkgver}/codium-${pkgver}-el8.armv7hl.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/codium-${pkgver}-el8.x86_64.rpm")
-sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
+sha256sums=('2fa3f8948a0a17ea30b62845caf1ee8aae8b55b5417273920ca2df2642209e0e'
             '7222e3026ab0eda7d60698a036354a2bae4d0878b1d75fc893c91e30b60804bf'
             'c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f')
-sha256sums_aarch64=('06999713133dbe19b66b01ca49c863cb9ef8e60384884a7374bb69f4463399d8')
-sha256sums_x86_64=('be01b511e70941167a50b4d63bb016e080746b779eb979c0fa868bd0f96443c2')
+sha256sums_aarch64=('50766c9ebcf9bdc6937b0fe3e98d7d92c90a9b85b493cb3da3486770635123b0')
+sha256sums_x86_64=('ccae25ecb04fe6d3f2f94d578d7ce2990481ae3650633d05c08192fb5fdbea12')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -83,12 +81,17 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
     local _app_dir=$(_get_app_dir)
+    rm -rf "${_app_dir}/resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/"{darwin-*,win32-*,linux-arm,linux-ia32,linux-ppc64,linux-riscv64,linux-s390x}
     case "${CARCH}" in
         aarch64)
-            find "${_app_dir}/resources/app/node_modules" -type d -name "x64" -exec rm -rf {} +
+            find "${_app_dir}/resources/app/node_modules" -type d -name "*x64*" -exec rm -rf {} +
+            find "${_app_dir}/resources/app/node_modules.asar.unpacked" -type d -name "*x64*" -exec rm -rf {} +
+            ln -sf "/usr/bin/rg" "${_app_dir}/resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/linux-arm64/rg"
             ;;
         x86_64)
-            find "${_app_dir}/resources/app/node_modules" -type d -name "arm64" -exec rm -rf {} +
+            find "${_app_dir}/resources/app/node_modules" -type d -name "*arm64" -exec rm -rf {} +
+            find "${_app_dir}/resources/app/node_modules.asar.unpacked" -type d -name "*arm64" -exec rm -rf {} +
+            ln -sf "/usr/bin/rg" "${_app_dir}/resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/linux-x64/rg"
             ;;
     esac
 }
