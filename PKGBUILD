@@ -12,7 +12,7 @@ _appname=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Real-time network diagnostics TUI — like htop for your network"
 
-pkgver=0.30.3
+pkgver=0.30.4
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -33,7 +33,7 @@ install="${_appname}.install"
 options=('!lto' '!strip')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('77c6386210a2c2b56fb979d2812c247addb6f368c0f4cbee9d72010604fc6459')
+sha256sums=('6ce81aa14cff73b83ab8ceecfa9f2773029dea2b133a706f4ebc256f0d11b75f')
 
 prepare() {
   cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
