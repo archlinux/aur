@@ -1,55 +1,50 @@
 # Maintainer: Hewel <13846369+hewel@users.noreply.github.com>
 
 pkgname=jellypilot
-pkgver=1.4.2
+pkgver=2.1.0
 pkgrel=1
-pkgdesc='Jellyfin cast receiver that controls external MPV'
+pkgdesc='Jellyfin and Emby companion app: cast receiver and library browser driving external MPV'
 arch=('x86_64')
 url='https://github.com/hewel/jellypilot'
 license=('MIT')
+# makepkg's default LTOFLAGS (-flto=auto) compile aws-lc-sys's C objects into
+# GCC fat-LTO bitcode that rust-lld cannot link; keep the build non-LTO.
 options=('!lto')
 depends=(
-  'cairo'
-  'dbus'
-  'desktop-file-utils'
-  'gdk-pixbuf2'
-  'glib2'
-  'glibc'
   'gtk3'
-  'hicolor-icon-theme'
-  'libayatana-appindicator'
-  'libgcc'
-  'libsoup3'
   'mpv'
-  'webkit2gtk-4.1'
+  'libxkbcommon'
+  'wayland'
 )
 makedepends=(
+  'git'
+  'rust'
   'bun'
-  'cargo'
-  'librsvg'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d01601758a38b8a72c668ab4bd853185bb253ccec48c9f2a7d24f7746a67eee7')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  bun install --frozen-lockfile --ignore-scripts
-  cargo fetch --locked --manifest-path src-tauri/Cargo.toml
-}
+conflicts=('jellypilot-bin')
+source=(
+  "git+https://github.com/hewel/jellypilot.git#tag=v$pkgver"
+  'top.pigfun.jellypilot.desktop'
+)
+sha256sums=(
+  'SKIP'
+  '7236e1197fe9cd03f7df541f77a9710f4cf9a8c1f7de6df3a6f7def6e60d7651'
+)
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  CARGO_NET_OFFLINE=true bun tauri build --no-bundle --ci -- --frozen
+  cd "$srcdir/$pkgname"
+
+  bun install --frozen-lockfile
+  bun run task iced build --release
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 "src-tauri/target/release/jellypilot" \
-    "$pkgdir/usr/bin/jellypilot"
-  install -Dm644 "packaging/arch/top.pigfun.jellypilot.desktop" \
+  cd "$srcdir/$pkgname"
+
+  install -Dm755 "target/release/jellypilot" "$pkgdir/usr/bin/jellypilot"
+  install -Dm644 "$srcdir/top.pigfun.jellypilot.desktop" \
     "$pkgdir/usr/share/applications/top.pigfun.jellypilot.desktop"
-  install -Dm644 "src-tauri/icons/128x128.png" \
+  install -Dm644 "assets/icons/128x128.png" \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/top.pigfun.jellypilot.png"
-  install -Dm644 "LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

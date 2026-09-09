@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=JellyPilot
+Comment=Jellyfin cast receiver that controls external MPV
+Exec=jellypilot
+Icon=top.pigfun.jellypilot
+Categories=AudioVideo;Player;
+Terminal=false
