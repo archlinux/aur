@@ -3,7 +3,7 @@
 _pkgname=slippi-launcher
 pkgname=$_pkgname-bin
 pkgdesc="The way to play Slippi Online and watch replays (binary release, system Electron)"
-pkgver=2.11.10
+pkgver=2.15.1
 pkgrel=1
 url="https://github.com/project-slippi/slippi-launcher"
 license=('GPL-3.0-or-later')
@@ -16,7 +16,7 @@ conflicts=("$_pkgname")
 _appimage=Slippi-Launcher-$pkgver-x86_64.AppImage
 _desktop=$_pkgname.desktop
 source=("$url/releases/download/v$pkgver/$_appimage")
-sha256sums=('3ab59dd2356a7ba0b335b5513659b66a5b76359f2e05878788049a07be28b96e')
+sha256sums=('b18287fa1f29546f2ea3a0a0f66b461ab929fdf9306c194e81ce41799800bb1b')
 
 _fix_permissions() (
   target=$1
