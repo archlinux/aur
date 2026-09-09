@@ -34,6 +34,7 @@ depends=(
     'ttf-cascadia-code-nerd'
     'swappy'
     'libqalculate'
+    'qt6-m3shapes'
 )
 
 makedepends=(
@@ -47,8 +48,6 @@ provides=(
     "${_pkgname}=${pkgver}"
     "caelestia-shell=${pkgver}"
     "caelestia-shell-git=${pkgver}"
-    "qt6-m3shapes"
-    "qt6-m3shapes-git"
 )
 conflicts=(
     "${_pkgname}"
@@ -58,8 +57,6 @@ conflicts=(
     'noctalia-qs'
     'noctalia-qs-git'
     'dim-caelestia-shell-git-debug'
-    'qt6-m3shapes'
-    'qt6-m3shapes-git'
     'polkit-gnome'
 )
 replaces=('dim-caelestia-shell-git')
