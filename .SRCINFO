@@ -1,6 +1,6 @@
 pkgbase = lich-bin
 	pkgdesc = A personal harness for AI-assisted development
-	pkgver = 0.48.0
+	pkgver = 0.48.1
 	pkgrel = 1
 	url = https://github.com/omartelo/lich
 	install = lich-bin.install
@@ -31,12 +31,12 @@ pkgbase = lich-bin
 	optdepends = zenity: native folder picker
 	provides = lich
 	conflicts = lich
-	source = lich-v0.48.0-linux-amd64::https://github.com/omartelo/lich/releases/download/v0.48.0/lich-v0.48.0-linux-amd64
-	source = lich-v0.48.0-linux-amd64-shell.tar.zst::https://github.com/omartelo/lich/releases/download/v0.48.0/lich-v0.48.0-linux-amd64-shell.tar.zst
-	source = lich-0.48.0.desktop::https://raw.githubusercontent.com/omartelo/lich/v0.48.0/build/linux/lich.desktop
-	source = lich-0.48.0.png::https://raw.githubusercontent.com/omartelo/lich/v0.48.0/build/appicon.png
-	sha256sums = c15df00d2855a2abe4a783a8f08fc802456c80f6532511f72b02934765daedeb
-	sha256sums = ee85b9bb817cd31b0d00fe2f6a5d4af9820365b4f0615c1bd937c047986bd1a9
+	source = lich-v0.48.1-linux-amd64::https://github.com/omartelo/lich/releases/download/v0.48.1/lich-v0.48.1-linux-amd64
+	source = lich-v0.48.1-linux-amd64-shell.tar.zst::https://github.com/omartelo/lich/releases/download/v0.48.1/lich-v0.48.1-linux-amd64-shell.tar.zst
+	source = lich-0.48.1.desktop::https://raw.githubusercontent.com/omartelo/lich/v0.48.1/build/linux/lich.desktop
+	source = lich-0.48.1.png::https://raw.githubusercontent.com/omartelo/lich/v0.48.1/build/appicon.png
+	sha256sums = 0f0cffc9f51c7e93bc6df05d1fbdbec74ff647e8962331a848eafba2f3fd715c
+	sha256sums = b1a82ffe0a99df54958f0d797e55030f530876210b7a42b70453b7842b2dacdd
 	sha256sums = e39c9238b56be089973c254d031be152b3d990d3bc2735d866b044833a6c1a4d
 	sha256sums = 75aa775e531ad495d905a37f07e8e608f4d93e4b2ff1d4b145a764e71ac48b0a
 
