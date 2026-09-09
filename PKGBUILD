@@ -1,7 +1,7 @@
 pkgname=foxtelgo
 _pkgname=FoxtelGo
-pkgver=1.0.17
-pkgrel=2
+pkgver=1.0.18
+pkgrel=1
 pkgdesc="Unnofficial FoxtelGo desktop application"
 arch=('x86_64')
 url="https://gitlab.com/linuxbombay/foxtelgo"
@@ -16,13 +16,13 @@ package() {
     chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
     #LibElectron deps cleanup
-    #rm -rf "$srcdir/application-$pkgver/libsplash"
-    #rm -rf "$srcdir/application-$pkgver/libadblock"
-    #rm -rf "$srcdir/application-$pkgver/libuseragent"
+    rm -rf "$srcdir/application-$pkgver/libsplash"
+    rm -rf "$srcdir/application-$pkgver/libadblock"
+    rm -rf "$srcdir/application-$pkgver/libuseragent"
     #link libelectron deps
-    #ln -sf "/opt/libelectron/libsplash" "$srcdir/application-$pkgver/libsplash"
-    #ln -sf "/opt/libelectron/libadblock" "$srcdir/application-$pkgver/libadblock"
-    #ln -sf "/opt/libelectron/libuseragent" "$srcdir/application-$pkgver/libuseragent"
+    ln -sf "/opt/libelectron/libsplash" "$srcdir/application-$pkgver/libsplash"
+    ln -sf "/opt/libelectron/libadblock" "$srcdir/application-$pkgver/libadblock"
+    ln -sf "/opt/libelectron/libuseragent" "$srcdir/application-$pkgver/libuseragent"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
