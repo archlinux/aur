@@ -1,6 +1,6 @@
 pkgbase = python-openinference-instrumentation-dspy
 	pkgdesc = OpenInference DSPy Instrumentation.
-	pkgver = 0.1.43
+	pkgver = 0.1.44
 	pkgrel = 1
 	url = https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-dspy
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-openinference-instrumentation-dspy
 	depends = python-wrapt
 	depends = python-typing_extensions
 	optdepends = python-dspy: instruments
-	source = https://github.com/Arize-ai/openinference/archive/refs/tags/python-openinference-instrumentation-dspy-v0.1.43.tar.gz
-	sha256sums = 5cd51309ca0d81ec4f2c7bc6ad6e6702cd476c13b9347265de3c7fe605b26b3b
+	source = https://github.com/Arize-ai/openinference/archive/refs/tags/python-openinference-instrumentation-dspy-v0.1.44.tar.gz
+	sha256sums = a2153b575783853cf918d01a9119488be9bc3020dcebaf309f7e9f0e574458ba
 
 pkgname = python-openinference-instrumentation-dspy
