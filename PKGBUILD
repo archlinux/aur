@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=soulfire-bin
 _pkgname=SoulFire
-pkgver=2.10.0
+pkgver=2.10.1
 _electronversion=44
 pkgrel=1
-pkgdesc="A frontend for the SoulFire server , with Electron while still using the official SoulFire gRPC API.(Prebuilt version. Use system-wide electron)"
+pkgdesc="A frontend for the SoulFire server , with Electron while still using the official SoulFire gRPC API."
 arch=(
     'aarch64'
     'x86_64'
@@ -21,8 +21,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('4375457c60ec92df37b7be572cdab3a63be7fa3b2e6f545379540dbd97a618fe')
-sha256sums_x86_64=('63a16291468771138ac983ce6c33c26c35b96a5c1dc7f23259372c4e83008986')
+sha256sums_aarch64=('ce21a9e9340e58ed40895801ce676e954274b27b8b5673b4aa3d87c4754786b5')
+sha256sums_x86_64=('695aa0cf6214b054281f6ddf61fed0f64409340a505fb94404858bbcd1f4a67c')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
