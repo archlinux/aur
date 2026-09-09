@@ -1,0 +1,28 @@
+reload_deps() {
+  echo "Reloading UDEV Rules..."
+  if ! udevadm control --reload-rules; then
+    echo "UDEV reload failed"
+    exit 1
+  fi
+
+  echo "Trigerring UDEV Rules..."
+  if ! udevadm trigger; then
+    echo "UDEV trigger failed"
+    exit 1
+  fi
+}
+
+post_install() {
+  reload_deps
+  echo "Start and enable the razer-daeomon service: systemctl --user enable --now razercontrol.service"
+}
+
+post_upgrade() {
+  reload_deps 
+  echo "Restart the razer-daeomon service: systemctl --user restart razercontrol.service"
+}
+
+post_remove() {
+  reload_deps 
+  echo "Stop and disable the razer-daeomon service: systemctl --user stop razercontrol.service && systemctl --user disable razercontrol.service"
+}

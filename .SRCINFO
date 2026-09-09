@@ -1,0 +1,18 @@
+pkgbase = razer-control-revived-bin
+	pkgdesc = revived version of an old software to support 2025 Razer Blade 16 with newer UI etc... (Experiemental but works)
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/encomjp/razer-control-revived
+	install = razer-control-revived.install
+	arch = x86_64
+	license = GPL-2.0
+	depends = rust
+	depends = gtk4
+	depends = libadwaita
+	depends = hidapi
+	source = razer-control-revived-0.3.5.deb::https://github.com/encomjp/razer-control-revived/releases/download/v0.3.5/razercontrol-revived_0.3.5_amd64.deb
+	source = razer-control-revived.install
+	sha256sums = d4302b4f58b90d4bf6a7f976a69be380229b12cbce287e86f1ef515e22b85dc9
+	sha256sums = 36fa36453407cc44fd8ad1b86b3ddeae8ce87955dc89891e18ac5a8edebe2877
+
+pkgname = razer-control-revived-bin
