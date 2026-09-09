@@ -1,18 +1,18 @@
 pkgbase = awakened-poe-trade-bin
-	pkgdesc = Path of Exile trading app for price checking.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.29.107
+	pkgdesc = 💲 🔨 Path of Exile app for price checking.
+	pkgver = 3.29.108
 	pkgrel = 1
 	url = https://snosme.github.io/awakened-poe-trade/download
 	arch = x86_64
 	license = MIT
 	depends = electron40
 	depends = libxt
-	provides = awakened-poe-trade=3.29.107
+	provides = awakened-poe-trade=3.29.108
 	conflicts = awakened-poe-trade
-	source = awakened-poe-trade-3.29.107-x86_64.AppImage::https://github.com/SnosMe/awakened-poe-trade/releases/download/v3.29.107/Awakened-PoE-Trade-3.29.107.AppImage
-	source = LICENSE-3.29.107::https://raw.githubusercontent.com/SnosMe/awakened-poe-trade/v3.29.107/LICENSE
+	source = awakened-poe-trade-3.29.108-x86_64.AppImage::https://github.com/SnosMe/awakened-poe-trade/releases/download/v3.29.108/Awakened-PoE-Trade-3.29.108.AppImage
+	source = LICENSE-3.29.108::https://raw.githubusercontent.com/SnosMe/awakened-poe-trade/v3.29.108/LICENSE
 	source = awakened-poe-trade.sh
-	sha256sums = 6a65e0eeb2993971fe7e326be86ce4a424f0d05a051261f182f1e112023e004d
+	sha256sums = 0c892c57ad660b413664fced58af969cca91f4a5f02cc590a5cee16a36b29b21
 	sha256sums = 5c8de7f881b34dc31f872531a1eee1eabc79e10acd8fc91c026e10c5a8258c3f
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 

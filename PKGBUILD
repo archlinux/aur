@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=awakened-poe-trade-bin
 _pkgname=Awakened-PoE-Trade
-pkgver=3.29.107
+pkgver=3.29.108
 _electronversion=40
 pkgrel=1
-pkgdesc="Path of Exile trading app for price checking.(Prebuilt version.Use system-wide electron)"
+pkgdesc="💲 🔨 Path of Exile app for price checking."
 arch=('x86_64')
 url="https://snosme.github.io/awakened-poe-trade/download"
 _ghurl="https://github.com/SnosMe/awakened-poe-trade"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/SnosMe/awakened-poe-trade/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6a65e0eeb2993971fe7e326be86ce4a424f0d05a051261f182f1e112023e004d'
+sha256sums=('0c892c57ad660b413664fced58af969cca91f4a5f02cc590a5cee16a36b29b21'
             '5c8de7f881b34dc31f872531a1eee1eabc79e10acd8fc91c026e10c5a8258c3f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
@@ -51,21 +51,24 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    sed -i "s/AppRun --sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
+    local _app_dir=$(_get_app_dir)
+    sed -i "s/AppRun --sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
+    rm -rf \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/electron-overlay-window/prebuilds/"{darwin-*,win32-*} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/uiohook-napi/prebuilds/"{darwin-*,win32-*,linux-arm64,linux-loong64}
+    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
 		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
 		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
 	done
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_app_dir}//${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
