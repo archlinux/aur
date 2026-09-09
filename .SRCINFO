@@ -1,0 +1,14 @@
+pkgbase = usagestat-alpha-bin
+	pkgdesc = Scriptable CLI for local agent usage data
+	pkgver = 2.0.0alpha.1
+	pkgrel = 1
+	url = https://github.com/Hashim-K/usagestat
+	arch = x86_64
+	license = MIT
+	depends = glibc>=2.39
+	provides = usagestat
+	conflicts = usagestat
+	source_x86_64 = usagestat-2.0.0-alpha.1-linux-x86_64.tar.gz::https://github.com/Hashim-K/usagestat/releases/download/v2.0.0-alpha.1/usagestat-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f18b97f82d6448b79cb64f93ebfe1851daf0733bdfe3bc7f82563a899f7e5284
+
+pkgname = usagestat-alpha-bin
