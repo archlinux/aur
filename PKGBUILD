@@ -2,7 +2,7 @@
 # Contributor: Łukasz Mariański <lmarianski at protonmail dot com>
 
 pkgname=itch-bin
-pkgver=26.18.0
+pkgver=26.20.0
 pkgrel=1
 pkgdesc="🎮 The best way to play your itch.io games (binary release)"
 url="https://github.com/itchio/itch"
@@ -18,7 +18,7 @@ optdepends=('firejail: sandbox preference'
             'wine: Windows games')
 noextract=("itch-v$pkgver-linux-amd64.tar.gz")
 source=("$url/releases/download/v$pkgver/itch-v$pkgver-linux-amd64.tar.gz")
-sha256sums=('094cbfa64572a1d658d6529b0b9b34a48d117639771d557a2cd7b5b8cfecb883')
+sha256sums=('643c63edce009eb7496704fdf39a3ad2ac0fca8a043b6ea25da3caf41180adc8')
 
 prepare() {
 # Create the desktop file

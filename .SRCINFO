@@ -1,6 +1,6 @@
 pkgbase = itch-bin
 	pkgdesc = 🎮 The best way to play your itch.io games (binary release)
-	pkgver = 26.18.0
+	pkgver = 26.20.0
 	pkgrel = 1
 	url = https://github.com/itchio/itch
 	arch = x86_64
@@ -32,8 +32,8 @@ pkgbase = itch-bin
 	provides = itch
 	conflicts = itch
 	conflicts = itch-setup
-	noextract = itch-v26.18.0-linux-amd64.tar.gz
-	source = https://github.com/itchio/itch/releases/download/v26.18.0/itch-v26.18.0-linux-amd64.tar.gz
-	sha256sums = 094cbfa64572a1d658d6529b0b9b34a48d117639771d557a2cd7b5b8cfecb883
+	noextract = itch-v26.20.0-linux-amd64.tar.gz
+	source = https://github.com/itchio/itch/releases/download/v26.20.0/itch-v26.20.0-linux-amd64.tar.gz
+	sha256sums = 643c63edce009eb7496704fdf39a3ad2ac0fca8a043b6ea25da3caf41180adc8
 
 pkgname = itch-bin
