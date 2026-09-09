@@ -13,6 +13,7 @@ pkgbase = nah-git
 	provides = nah=1.5.0.r7.g55b2b34
 	conflicts = nah
 	options = !lto
+	options = !debug
 	source = nah::git+https://github.com/manuelschipper/nah.git
 	sha256sums = SKIP
 

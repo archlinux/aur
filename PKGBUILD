@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-options=('!lto')
+options=('!lto' '!debug')
 source=("$_pkgname::git+https://github.com/manuelschipper/nah.git")
 sha256sums=('SKIP')
 
