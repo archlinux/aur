@@ -2,7 +2,7 @@
 
 pkgname='midnight-shell-git'
 _pkgname='midnight-shell'
-pkgver=2.4.0.r3168.g61e5fab
+pkgver=2.4.0.r580.g61e5fab
 pkgrel=2
 pkgdesc="DiM's fork of Caelestia-Shell"
 arch=('x86_64' 'aarch64')
