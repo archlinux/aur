@@ -1,6 +1,6 @@
 pkgbase = comigo
 	pkgdesc = Comic & Manga Reader in Linux，Windows，MacOS。简单跨平台的漫画阅读器。わかりやすい漫画リーダー。
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/yumenaka/comigo
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = comigo
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/yumenaka/comigo.git#commit=368ca7d87f6fb5ecac53561271572c8d4fbcc53e
+	source = git+https://github.com/yumenaka/comigo.git#commit=bda5d71adc97f8a31bdcc64cf11c2dbd63be7d33
 	sha256sums = SKIP
 
 pkgname = comigo
