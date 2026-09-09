@@ -1,6 +1,6 @@
 pkgbase = mirador
 	pkgdesc = An opinionated personal dashboard for your terminal
-	pkgver = 1.10.0
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://github.com/jchultarsky/mirador
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mirador
 	provides = mirador
 	options = !lto
 	options = !strip
-	source = mirador-1.10.0.tgz::https://github.com/jchultarsky/mirador/archive/v1.10.0.tar.gz
-	sha256sums = 64f8c0b6eeb83ffe38b408c9bd43eb8a12c70bb45f9b340a3bc5f299fff203c9
+	source = mirador-1.10.1.tgz::https://github.com/jchultarsky/mirador/archive/v1.10.1.tar.gz
+	sha256sums = 3fc039543a653af296bf1c4c94f822a453e54c8bb9ca7d9cd5572a98d597fb8e
 
 pkgname = mirador
