@@ -25,6 +25,6 @@ pkgbase = hermes-agent-bin
 	conflicts = hermes-agent
 	options = !debug
 	source = https://github.com/jabla/hermes-agent-bin/releases/download/v0.21.0-1/hermes-agent-bin-0.21.0-1-x86_64.pkg.tar.zst
-	sha256sums = 363e088ac6cf3c364850010026bf80aaf0d625fe44c9dd58060d14531694c00d
+	sha256sums = 2d7f9d03a9e53b7e10c6a04c85c90c3318b054f2f26e53416c45e75c170c5a2b
 
 pkgname = hermes-agent-bin
