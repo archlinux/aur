@@ -1,6 +1,6 @@
 pkgbase = electron44-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 44.2.0
+	pkgver = 44.3.0
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -16,19 +16,19 @@ pkgbase = electron44-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron44=44.2.0
+	provides = electron44=44.3.0
 	conflicts = electron44
-	noextract = electron44-chromedriver-44.2.0-x86_64.zip
-	noextract = electron44-44.2.0-x86_64.zip
+	noextract = electron44-chromedriver-44.3.0-x86_64.zip
+	noextract = electron44-44.3.0-x86_64.zip
 	source = electron44.sh
 	sha256sums = ac1e26684ffbfc7ac0993c55b9299003f6b9efea25b755b1d260bea4db440157
-	source_aarch64 = electron44-chromedriver-44.2.0-aarch64.zip::https://github.com/electron/electron/releases/download/v44.2.0/chromedriver-v44.2.0-linux-arm64.zip
-	source_aarch64 = electron44-44.2.0-aarch64.zip::https://github.com/electron/electron/releases/download/v44.2.0/electron-v44.2.0-linux-arm64.zip
-	sha256sums_aarch64 = 8833ae3ff11aa792537fba12855391d6f62020dfa4df908b7e61c66b73ba88cd
-	sha256sums_aarch64 = 8693fd67332d417775dc2ffc470f4c05eda9d0ed1ac329e4866e108afaa4ddda
-	source_x86_64 = electron44-chromedriver-44.2.0-x86_64.zip::https://github.com/electron/electron/releases/download/v44.2.0/chromedriver-v44.2.0-linux-x64.zip
-	source_x86_64 = electron44-44.2.0-x86_64.zip::https://github.com/electron/electron/releases/download/v44.2.0/electron-v44.2.0-linux-x64.zip
-	sha256sums_x86_64 = 7c4a7728efa096f0133c9ddeea87549e6fce19be9ee530d6e0af4299b9ac2f85
-	sha256sums_x86_64 = 574f7d8cd2a82d77812849729a282b86639b050de120d58b138a126d16b48692
+	source_aarch64 = electron44-chromedriver-44.3.0-aarch64.zip::https://github.com/electron/electron/releases/download/v44.3.0/chromedriver-v44.3.0-linux-arm64.zip
+	source_aarch64 = electron44-44.3.0-aarch64.zip::https://github.com/electron/electron/releases/download/v44.3.0/electron-v44.3.0-linux-arm64.zip
+	sha256sums_aarch64 = cecf416116f2273461e10b0f14eaa2318e6b66e44b6bbe7439866ce1bf6bc4e7
+	sha256sums_aarch64 = c11fde221c08e9bffdb3336579f09bd934a009862f509af5033616876741be24
+	source_x86_64 = electron44-chromedriver-44.3.0-x86_64.zip::https://github.com/electron/electron/releases/download/v44.3.0/chromedriver-v44.3.0-linux-x64.zip
+	source_x86_64 = electron44-44.3.0-x86_64.zip::https://github.com/electron/electron/releases/download/v44.3.0/electron-v44.3.0-linux-x64.zip
+	sha256sums_x86_64 = 53167b1bdf4c7887b29b228c0b5f3f43704d9c8917859c42fe98da97cf03e444
+	sha256sums_x86_64 = 8b49b9efdd73c0f467edc3c1cd5678392c384ccf224f34ff54179f736e2f384b
 
 pkgname = electron44-bin
