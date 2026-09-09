@@ -66,7 +66,13 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+
+    # Version must start with the upstream release number so that versioned
+    # constraints from related packages (e.g. qt6-m3shapes' caelestia-shell<2.4.0)
+    # resolve correctly — a bare "r1234.sha" sorts below "2.4.0" in vercmp.
+    local base
+    base=$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')
+    printf "%s.r%s.%s" "${base:-2.4.0}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -75,7 +81,7 @@ build() {
     cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/ \
-        -DVERSION="$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')" \
+        -DVERSION="${pkgver}" \
         -DGIT_REVISION="$(git rev-parse --short HEAD)" \
         -DDISTRIBUTOR="AUR (package: $pkgname)"
     cmake --build build
