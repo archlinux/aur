@@ -1,0 +1,20 @@
+pkgbase = jellypilot-bin
+	pkgdesc = Jellyfin and Emby companion app: cast receiver and library browser driving external MPV (prebuilt binary)
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/hewel/jellypilot
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = mpv
+	depends = libxkbcommon
+	depends = wayland
+	provides = jellypilot
+	conflicts = jellypilot
+	noextract = jellypilot-bin-2.1.0.pkg.tar.zst
+	options = !strip
+	options = !debug
+	source = jellypilot-bin-2.1.0.pkg.tar.zst::https://github.com/hewel/jellypilot/releases/download/v2.1.0/jellypilot-2.1.0-1-x86_64.pkg.tar.zst
+	sha256sums = 0713160570114690dd493330430aca5667723cbfa18d0a1edc6711294b317c41
+
+pkgname = jellypilot-bin
