@@ -1,6 +1,6 @@
 pkgbase = fastpotify
 	pkgdesc = Native Spotify client
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/crmne/fastpotify
 	install = fastpotify.install
@@ -22,7 +22,7 @@ pkgbase = fastpotify
 	conflicts = fastpotify-git
 	options = !debug
 	options = !lto
-	source = fastpotify-0.7.0.tar.gz::https://github.com/crmne/fastpotify/releases/download/v0.7.0/fastpotify-v0.7.0-source.tar.gz
-	sha256sums = e2b43de4d36ca266b7b424b346dd4b8bcce43af946e5e3d1ec4a14ff46056b7f
+	source = fastpotify-0.7.1.tar.gz::https://github.com/crmne/fastpotify/releases/download/v0.7.1/fastpotify-v0.7.1-source.tar.gz
+	sha256sums = 8b5c54e514a27d8e06dcb3300418d7d9c01588d6f087715299e8b380582df60b
 
 pkgname = fastpotify
