@@ -521,14 +521,12 @@ def main():
         # ── 双向转发 + 心跳 + 假死检测 ──
         running = True
         session_start = time.time()
-        last_keepalive = time.time()
         last_rx = time.time()
         sock_lock = threading.Lock()
         reconnect = [False]
 
         def send_keepalive():
-            """每 KEEPALIVE_CHECK_INTERVAL 秒检查一次，距上次发包超过
-            KEEPALIVE_IDLE_TIMEOUT 秒则发送保活流量，防止网关踢连接。
+            """定期发送 DATA_CONNECT，防止网关因控制连接空闲而断开。
 
             ⚠ 2026-08-08 实测结论：
             - 空闲 ~34s 被网关踢（网关空闲超时）
@@ -536,25 +534,26 @@ def main():
             - ICMP ping / UDP DNS 保活效果有限
             - 持续真实流量（HTTP/DNS 查询）连接稳定
             - cmd=0x001A (DATA_CONNECT) 网关有回包（握手时 payload=11510000）
-            因此保活用 0x001A 帧：网关回包 → last_rx 更新 → 假死检测不触发。"""
-            nonlocal last_keepalive
+             因此保活固定发送 0x001A，不因 TUN 流量而跳过。"""
+            next_data_keepalive = time.monotonic()
             while running:
                 time.sleep(KEEPALIVE_CHECK_INTERVAL)
-                if time.time() - last_keepalive >= KEEPALIVE_IDLE_TIMEOUT:
-                    try:
-                        # 保活帧：DATA_CONNECT(0x001A)，握手阶段网关回包
-                        keepalive_frame = cnem_frame(CMD_DATA_CONNECT,
-                                                     payload=struct.pack(">I", 4),
-                                                     ctx1f4=ctx1f4)
-                        with sock_lock:
-                            sock.sendall(keepalive_frame)
-                        last_keepalive = time.time()
-                        logger.info("保活: DATA_CONNECT 0x001A 已发送")
-                    except Exception:
-                        break
+                if time.monotonic() < next_data_keepalive:
+                    continue
+                try:
+                    keepalive_frame = cnem_frame(CMD_DATA_CONNECT,
+                                                 payload=struct.pack(">I", 4),
+                                                 ctx1f4=ctx1f4)
+                    with sock_lock:
+                        sock.sendall(keepalive_frame)
+                    next_data_keepalive = time.monotonic() + KEEPALIVE_IDLE_TIMEOUT
+                    logger.info("保活: DATA_CONNECT 0x001A 已发送")
+                except Exception as e:
+                    logger.warning("DATA_CONNECT 保活发送失败: %s", e)
+                    reconnect[0] = True
+                    break
 
         def tun_to_tls():
-            nonlocal last_keepalive
             while running:
                 r, _, _ = select.select([tun_fd], [], [], 1)
                 if r:
@@ -563,7 +562,6 @@ def main():
                         if packet:
                             with sock_lock:
                                 sock.sendall(cnem_frame(CMD_DATA, packet, ctx1f4=ctx1f4))
-                            last_keepalive = time.time()
                     except OSError as e:
                         print(f"  [!] TUN读取错误: {e}")
                         reconnect[0] = True

@@ -1,6 +1,6 @@
 pkgbase = openunivpn
 	pkgdesc = H3C SecPath SSLVPN 开源替代客户端
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/tsaitang404/openunivpn
 	install = openunivpn.install
@@ -9,7 +9,7 @@ pkgbase = openunivpn
 	makedepends = git
 	depends = python>=3.8
 	depends = openresolv
-	source = git+https://github.com/tsaitang404/openunivpn.git#tag=v1.1.6
+	source = git+https://github.com/tsaitang404/openunivpn.git#tag=v1.1.7
 	sha256sums = SKIP
 
 pkgname = openunivpn
