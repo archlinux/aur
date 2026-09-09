@@ -2,7 +2,7 @@
 
 pkgname=grok-build-git
 _pkgname=grok-build
-pkgver=r40.bc7f02e
+pkgver=r43.75810042
 pkgrel=1
 pkgdesc="SpaceXAI's coding agent harness and TUI. Fullscreen, mouse interactive, extensible."
 arch=('x86_64' 'aarch64')
