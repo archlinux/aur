@@ -2,7 +2,7 @@
 
 pkgname=wolf-lang-bin
 _pkgname=wolf-lang
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc='The wolf systems language: the wolfgang compiler, its runtime and the C importer (release archive)'
 arch=('x86_64' 'aarch64')
@@ -33,8 +33,8 @@ options=('!strip' '!debug')
 # no `+dev` suffix, which a from-tarball rebuild could not manage.
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/wolf-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/wolf-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('4a75a0f4263fdb4c52b17d4e57de4c1a2a0084de966d94e157d25b76072097db')
-sha256sums_aarch64=('79eff7c44f2b7f0563ad99ddf64edfea7a2a5909350472e4661c60162d21a617')
+sha256sums_x86_64=('a34633f4ea9141843324467e66004a8fc854e39074ba022952d708e5755faa1a')
+sha256sums_aarch64=('ab8b3f1e8752139d1e847bacf962e53d7bee5f11e3429adf74a561b721f90868')
 
 package() {
     local _triple
