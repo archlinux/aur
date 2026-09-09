@@ -2,7 +2,7 @@
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 
 pkgname=clickhouse-lts
-pkgver=26.3.5.12
+pkgver=26.8.2.7
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time. LTS version'
 arch=('x86_64' 'aarch64')
@@ -22,16 +22,12 @@ source_aarch64=(
   "${_source_prefix}/clickhouse-common-static_${pkgver}_arm64.deb"
   "${_source_prefix}/clickhouse-server_${pkgver}_arm64.deb"
 )
-sha256sums_x86_64=(
-  c99aac4b8b747bec117c6e7b1fad691becb619b45829bcb45df9d3cb108c9e82
-  41971fd309d684b7475325cefe113cdc82574d43faa9443b3e11e2a59c1b6a32
-  bf01ab01d8d53cb7b603f896db8b2adf79d110f8fa24b36a96f96233dd4aa08e
-)
-sha256sums_aarch64=(
-  1668f6fd9f553217412e537b68098cd44e8f2c97d6869be7394f1c0b337f50d6
-  6a0a02e12f60f0ee227ce280c3be49fdbbcd50bdfe0e8e54324a1c6c9d9ba5d6
-  648d55830cc8b88554b2d33153355d4959966fce386b74138c9ed19c8c3dc808
-)
+sha256sums_x86_64=('0d4d9dbbde6c7c8e1b1216d720c27ae8a20171607478af1d16dcb7a3566f5fe2'
+                   '5c8a1308bd443d4755dee2a67495c86d35ec23205ead206802d0b3d265ad1444'
+                   '2320bce91a17953e007db06473871f215a081b4e8ede0c55120b5566141d2619')
+sha256sums_aarch64=('04d5194d608e0a2a299f44969afcf6d6c72f1c37bed92c0e172bef22cf6d2640'
+                    'f67ff96e44dc6252424bcf66cf2b4dac3297eb562f5e4315fd09c081c7cf358b'
+                    'ba346abe101d01891c145de0342087509e45f8cfa9e131cc1de7a34713268c39')
 _noextract_x86_64=(
   clickhouse-client_"${pkgver}"_amd64.deb
   clickhouse-common-static_"${pkgver}"_amd64.deb
@@ -55,18 +51,22 @@ backup=(
 provides=(clickhouse-client clickhouse-server clickhouse-keeper clickhouse-common-static)
 conflicts=(clickhouse-client clickhouse-server clickhouse-keeper clickhouse-common-static)
 
+check_version() {
+  local version
+  version=$(
+    curl -s https://raw.githubusercontent.com/ClickHouse/ClickHouse/refs/heads/master/utils/list-versions/version_date.tsv \
+    | awk -F'[-v]' '/-lts\t/ {print $2; exit}'
+  )
+  if ! grep -q "pkgver=$version" PKGBUILD; then
+    echo "Update pkgver=$version in PKGBUILD"
+    return 1
+  fi
+}
+
 get_sums() {
   # usage: bash -c 'source PKGBUILD && get_sums'
-  for CARCH in x86_64 aarch64; do
-    pkgver=$(grep '^pkgver=' PKGBUILD | cut -f2 -d=);
-    CARCH=$CARCH makepkg --verifysource --nobuild --noextract;
-  done
-  for CARCH in x86_64 aarch64; do
-    [ "$CARCH" == aarch64 ] && pkg_arch=arm64 || pkg_arch=amd64;
-    echo "sha256sums_${CARCH}=("
-    sha256sum clickhouse*"${pkgver}_${pkg_arch}.deb" | sed -r 's|(\w+).+|  \1|';
-    echo ')'
-  done
+  check_version || return 1
+  makepkg --geninteg
 }
 
 package() {
