@@ -4,11 +4,14 @@ pkgbase = ranwhen
 	pkgrel = 1
 	url = https://github.com/gustawdaniel/ranwhen
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	depends = gcc-libs
 	provides = ranwhen
 	conflicts = ranwhen-git
 	source_x86_64 = https://github.com/gustawdaniel/ranwhen/releases/download/v0.2.2/ranwhen-v0.2.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 5f9fc68052e55649e90477e0074a7d1694024cd98ec1922f6c042f9921ec0dc4
+	sha256sums_x86_64 = fa439a89300debe8e2de77bebf7b136809ad6fb7cfeb9fd3809f79ba52aa22a1
+	source_aarch64 = https://github.com/gustawdaniel/ranwhen/releases/download/v0.2.2/ranwhen-v0.2.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b4cec87b576760694f61eabd5289c8ed8eba061d3e798130da323c27f0f05e1b
 
 pkgname = ranwhen
