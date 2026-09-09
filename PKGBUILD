@@ -1,15 +1,15 @@
 pkgname=youtube
 _pkgname=Youtube
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Unnofficial Youtube desktop application"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/youtube-desktop"
 license=('GPL')
-depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron-electron-meta' 'libelectron>=2026.5' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('2d868a3b94fbea9fd2f4b0f0f72ce493e1c44081a67649c64becf876a629b910')
+sha256sums=('a5cf741fd5d46980ca46aedee1affc3e804a42395c28d39dcb8205c60390d1a4')
 
 package() {
     install -dm755 "$pkgdir/opt/$_pkgname"
@@ -18,7 +18,14 @@ package() {
 
     cd "$srcdir/application-$pkgver"
     chmod +x $pkgname
-    ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"  
+    ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
+    # Libsplash/LibAdblock lib cleanup to use LibElectron deps instead
+    rm -rf \
+        "$srcdir/application-$pkgver/libsplash" \
+        "$srcdir/application-$pkgver/libadblock"
+    # Link libelectron deps
+    ln -sf "/opt/libelectron/libsplash" "$srcdir/application-$pkgver/libsplash"
+    ln -sf "/opt/libelectron/libadblock" "$srcdir/application-$pkgver/libadblock"
     cp -r ./ "$pkgdir/opt/$_pkgname"
     cp -r "$pkgdir/opt/$_pkgname/youtubeapp.svg" "$pkgdir/usr/share/pixmaps"  
 
