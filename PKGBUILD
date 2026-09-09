@@ -43,7 +43,20 @@ package() {
   install -d "${_root}"
   # scripts/setup-shell.sh expects $ROOT/{completions,bin}; bin/ holds
   # upstream-downloaded argc+yq binaries which we do NOT ship (see depends).
-  cp -r completions scripts src utils docs Argcfile.sh "${_root}/"
+  # Never inherit modes from git: only scripts/*.sh are executable (run
+  # directly by users); everything else ships 644. Symlinks pass through.
+  local _dir
+  for _dir in completions scripts src utils docs; do
+    find "${_dir}" -type d -exec install -dm755 "${_root}/{}" \;
+    find "${_dir}" -type l -exec cp -P {} "${_root}/{}" \;
+    if [[ ${_dir} == scripts ]]; then
+      find "${_dir}" -type f -name '*.sh' -exec install -Dm755 {} "${_root}/{}" \;
+      find "${_dir}" -type f ! -name '*.sh' -exec install -Dm644 {} "${_root}/{}" \;
+    else
+      find "${_dir}" -type f -exec install -Dm644 {} "${_root}/{}" \;
+    fi
+  done
+  install -Dm644 Argcfile.sh "${_root}/Argcfile.sh"
   install -Dm644 README.md "${_root}/README.md"
   install -Dm644 MANIFEST.md "${_root}/MANIFEST.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
