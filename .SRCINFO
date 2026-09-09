@@ -1,0 +1,18 @@
+pkgbase = ocean-icons-git
+	pkgdesc = Icon theme by the KDE Visual Design Group
+	pkgver = r24.e1f17e7
+	pkgrel = 1
+	epoch = 1
+	url = https://invent.kde.org/abetts/ocean-design
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = git
+	depends = hicolor-icon-theme
+	provides = ocean-icons
+	conflicts = ocean-icons
+	options = !strip
+	options = !debug
+	source = git+https://invent.kde.org/abetts/ocean-design.git
+	sha256sums = SKIP
+
+pkgname = ocean-icons-git
