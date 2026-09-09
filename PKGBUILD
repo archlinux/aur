@@ -1,13 +1,12 @@
-# $Id$
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 pkgname=pcmciautils
 pkgver=018
-pkgrel=9
+pkgrel=10
 pkgdesc="Utilities for inserting and removing PCMCIA cards"
 arch=('i486' 'i686' 'pentium4' 'x86_64')
-url="http://kernel.org/pub/linux/utils/kernel/pcmcia/pcmcia.html"
+url="https://kernel.org/pub/linux/utils/kernel/pcmcia/"
 license=('GPL')
 groups=('base')
 depends=('systemd' 'sysfsutils')

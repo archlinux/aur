@@ -1,8 +1,8 @@
 pkgbase = pcmciautils
 	pkgdesc = Utilities for inserting and removing PCMCIA cards
 	pkgver = 018
-	pkgrel = 9
-	url = http://kernel.org/pub/linux/utils/kernel/pcmcia/pcmcia.html
+	pkgrel = 10
+	url = https://kernel.org/pub/linux/utils/kernel/pcmcia/
 	arch = i486
 	arch = i686
 	arch = pentium4
