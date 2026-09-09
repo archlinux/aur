@@ -2,14 +2,19 @@
 
 pkgname=superslicer-nightly-git
 pkgver=2.3.55.5.r11543.gf2c9dd0d8c
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.) — nightly dev_27_62 branch"
 arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
 options=(!emptydirs)
-depends=('boost-libs' 'cgal' 'glew' 'imath' 'libspnav' 'nanosvg' 'nlopt' 'openvdb' 'qhull' 'slicer-udev' 'wxwidgets-gtk3')
+# boost/glew are listed by soname so makepkg records versioned deps
+# (libboost_log.so=1.92.0-64, ...); a soname bump then fails at upgrade
+# time instead of silently breaking the installed binary at startup.
+depends=('cgal' 'imath' 'libGLEW.so' 'libboost_chrono.so' 'libboost_filesystem.so'
+         'libboost_locale.so' 'libboost_log.so' 'libboost_thread.so' 'libspnav'
+         'nanosvg' 'nlopt' 'openvdb' 'qhull' 'slicer-udev' 'wxwidgets-gtk3')
 makedepends=('boost' 'cereal' 'cmake' 'eigen' 'libigl' 'ninja' 'openvdb')
 optdepends=('superslicer-profiles: Predefined printer profiles')
 provides=("superslicer=$epoch:$pkgver")
