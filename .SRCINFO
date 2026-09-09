@@ -1,6 +1,6 @@
 pkgbase = srelens-bin
 	pkgdesc = Kubernetes IDE — an MCP-native desktop workspace for operating clusters
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/srelens/srelens
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = srelens-bin
 	options = !strip
 	options = !debug
 	options = !lto
-	source = srelens-0.10.0.deb::https://github.com/srelens/srelens/releases/download/srelens-v0.10.0/srelens_0.10.0_amd64.deb
-	source = LICENSE-0.10.0::https://raw.githubusercontent.com/srelens/srelens/srelens-v0.10.0/LICENSE
-	sha256sums = ee5f62473826215edbb3a30df9cc5caaaa39241745ae71cec7943946fe67f98a
+	source = srelens-0.11.0.deb::https://github.com/srelens/srelens/releases/download/srelens-v0.11.0/srelens_0.11.0_amd64.deb
+	source = LICENSE-0.11.0::https://raw.githubusercontent.com/srelens/srelens/srelens-v0.11.0/LICENSE
+	sha256sums = db2859bd9321c944dc785a2f5d5b5307fb68ddc57a062f086519cf1844e1c0d5
 	sha256sums = be310626d05ec2f34b6ad0e0b533134d0ece9eba938d7af30e82480102481cf4
 
 pkgname = srelens-bin
