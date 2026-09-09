@@ -13,6 +13,6 @@ pkgbase = selenium-manager
 	depends = zlib
 	options = !lto
 	source = https://github.com/SeleniumHQ/selenium/archive/refs/tags/selenium-4.48.0.tar.gz
-	sha256sums = 045c1ec054c94e3be6c10febc509aa513b4c05e9146d1a9cf3de5375ec6ca2a1
+	sha256sums = bd710afb49760e6d5c34dcc16a8f63099e3fc866950c56b9d3bee16b309453a3
 
 pkgname = selenium-manager
