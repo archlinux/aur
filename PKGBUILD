@@ -11,6 +11,7 @@ provides=('topf')
 conflicts=('topf')
 options=('!strip')
 depends=() # no dependencies, not a dynamic executable
+makedepends=()
 
 # map arch file name
 case "${CARCH}" in
