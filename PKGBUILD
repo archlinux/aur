@@ -1,13 +1,13 @@
 # Maintainer: gfrank227 [at] gmail [dot] com
 pkgname=nordvpn-gui
 pkgver=5.4.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='GUI for NordVPN'
 url='https://nordvpn.com'
 license=('GPL-3.0-only')
 depends=('nordvpn-bin' 'gtk3' 'hicolor-icon-theme')
-makedepends=('fvm')
+makedepends=('fvm' 'cmake' 'ninja' 'clang')
 options=('!debug')
 install=daemon_restart.install
 source=("https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/${pkgver}.tar.gz"
