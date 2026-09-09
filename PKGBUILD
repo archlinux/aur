@@ -14,11 +14,12 @@ arch=('any')
 
 _url_pypi="https://pypi.org/project/${pkgname}/"
 _url_github="https://github.com/${pkgauthor}/${pkgname}"
-url=${_url_github}
+url="${_url_github}"
 
 provides=("${_pypi_package}")
+
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'cargo')
-depends=('glibc' 'libgcc' 'python' 'python-rich' 'python-typer')
+depends=('glibc' 'libgcc' 'python' 'python-rich' 'python-typer' 'python-jinja')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
