@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=lupin
-pkgver=0.1.27
+pkgver=0.1.28
 pkgrel=1
 pkgdesc='The reference interpreter for the wolf language, and the compiler differential oracle'
 arch=('x86_64' 'aarch64')
