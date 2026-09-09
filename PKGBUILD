@@ -1,8 +1,8 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
 
 pkgname=cvmfs-config-eessi
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='CernVM-FS configuration for the EESSI project (European Environment for Scientific Software Installations)'
 arch=('any')
 url='https://github.com/EESSI/filesystem-layer'
@@ -11,7 +11,7 @@ depends=('cvmfs')
 install=cvmfs-config-eessi.install
 source=("https://github.com/EESSI/filesystem-layer/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar"
         "software.eessi.io.conf")
-sha256sums=('defd151b6bcd3b53e3b941853bb31ca869360e3d697f1ddbdceda34f1de42857'
+sha256sums=('a226bc24d984e611e5118a65e35ff283c2838576d778336c84f7a86b9b70e681'
             '9c213aa5af232f3884120a94181a4775606ffe252c52753cc88bdbb45ca5a055')
 backup=('etc/cvmfs/config.d/software.eessi.io.conf')
 

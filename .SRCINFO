@@ -1,16 +1,16 @@
 pkgbase = cvmfs-config-eessi
 	pkgdesc = CernVM-FS configuration for the EESSI project (European Environment for Scientific Software Installations)
-	pkgver = 0.5.0
-	pkgrel = 3
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/EESSI/filesystem-layer
 	install = cvmfs-config-eessi.install
 	arch = any
 	license = GPL-2.0-only
 	depends = cvmfs
 	backup = etc/cvmfs/config.d/software.eessi.io.conf
-	source = https://github.com/EESSI/filesystem-layer/releases/download/v0.5.0/cvmfs-config-eessi-0.5.0.tar
+	source = https://github.com/EESSI/filesystem-layer/releases/download/v0.6.0/cvmfs-config-eessi-0.6.0.tar
 	source = software.eessi.io.conf
-	sha256sums = defd151b6bcd3b53e3b941853bb31ca869360e3d697f1ddbdceda34f1de42857
+	sha256sums = a226bc24d984e611e5118a65e35ff283c2838576d778336c84f7a86b9b70e681
 	sha256sums = 9c213aa5af232f3884120a94181a4775606ffe252c52753cc88bdbb45ca5a055
 
 pkgname = cvmfs-config-eessi
