@@ -1,6 +1,6 @@
 pkgbase = jellypilot-bin
 	pkgdesc = Jellyfin and Emby companion app: cast receiver and library browser driving external MPV (prebuilt binary)
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/hewel/jellypilot
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = jellypilot-bin
 	depends = wayland
 	provides = jellypilot
 	conflicts = jellypilot
-	noextract = jellypilot-bin-2.1.0.pkg.tar.zst
+	noextract = jellypilot-bin-2.1.1.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = jellypilot-bin-2.1.0.pkg.tar.zst::https://github.com/hewel/jellypilot/releases/download/v2.1.0/jellypilot-2.1.0-1-x86_64.pkg.tar.zst
-	sha256sums = 0713160570114690dd493330430aca5667723cbfa18d0a1edc6711294b317c41
+	source = jellypilot-bin-2.1.1.pkg.tar.zst::https://github.com/hewel/jellypilot/releases/download/v2.1.1/jellypilot-2.1.1-1-x86_64.pkg.tar.zst
+	sha256sums = 07ab40c42d9341e96c0f0d7b26b16ae519d851bfa39c4736242ab2e6d9f969e2
 
 pkgname = jellypilot-bin
