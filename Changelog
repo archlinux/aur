@@ -1,11 +1,19 @@
 -------------------------------------------------------
  Changelog    : dns_tools
- Tags         : 4.10.1 ➙ 5.3.0
-              : 2025-06-26 ➙ 2026-09-05
+ Tags         : 5.1.0 ➙ 5.3.1
+              : 2026-01-04 ➙ 2026-09-09
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-05   : 5.3.0
+ 2026-09-09   : 5.3.1
+              - **5.3.1**
+            
+                * Change Arch package dependencies that have been renamed:
+            
+                  - pyconcurrent -> python-pyconcurrent
+                  - lockmgr -> python-lockmgr
+
+ 2026-09-05   : 5.3.0, origin/master
               - **5.3.0**
             
                 * Use meson/meson-python for build and package management
@@ -36,8 +44,4 @@
                 * Testing to confirm all working on python 3.14.2
                 * License GPL-2.0-or-later
  2025-06-26   ⋯
-              - update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-06-26   : 4.10.1
-              - update arch PKGBUILD
               - update Docs/Changelog Docs/${my_name}.pdf

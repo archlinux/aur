@@ -10,7 +10,7 @@ pkgname='dns_tools'
 pkgdesc='DNS Tools for managing DNSSEC aka easy dnssec'
 _gitname='dns_tools'
 
-pkgver="5.3.0"
+pkgver="5.3.1"
 pkgrel=1
 url="https://github.com/gene-git/dns_tools"
 
@@ -19,8 +19,8 @@ license=(GPL-2.0-or-later)
 depends=(
     'python>=3.14' 
     'ldns' 
-    'lockmgr'
-    'pyconcurrent'
+    'python-lockmgr'
+    'python-pyconcurrent'
     'bash'
 )
 optdepends=(
