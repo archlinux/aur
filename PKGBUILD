@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xpipe-bin
 _pkgname=XPipe
-pkgver=24.0.5
+pkgver=24.1.1
 pkgrel=1
-pkgdesc="Your entire server infrastructure at your fingertips.(Prebuilt version)"
+pkgdesc="Access your entire server infrastructure from your local desktop."
 arch=(
     'aarch64'
     'x86_64'
@@ -24,8 +24,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-installer-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-installer-linux-x86_64.rpm")
 sha256sums=('235061e14a5ba0983364e506bdf824ea11f6c987d9b116af7ce6ce8967ef5603')
-sha256sums_aarch64=('b26984d7aba7b5578888bad8f301ad32e4e5f2e8f34140deab26cf18e96de92f')
-sha256sums_x86_64=('17b35650cb29d8a14a91cec666302c91b8bdccf27c8d5a10c31c690952b2256f')
+sha256sums_aarch64=('09d2fa6e4f3f87ecb9b2943df77a4b2ececcb0d6ed93aba86cdee34be43d4423')
+sha256sums_x86_64=('94e4491d74f0d1aa2f6eae7e72bf4f6fb2cdc2bcf6f853a09b38ebf4b5f7fbe1')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -40,12 +40,13 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
-    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
-    done
+    cp -a "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+		_extension="${_i##*.}"
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     #install -Dm644 "${srcdir}/etc/bash_completion.d/${pkgname%-bin}" -t "${pkgdir}/usr/share/bash-completion/completions"
     #install -Dm644 "${srcdir}/usr/share/man/man1/"* -t "${pkgdir}/usr/share/man/man1"
