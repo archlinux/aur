@@ -8,7 +8,7 @@
 _name=elmerfem
 pkgname=elmerfem-base
 pkgver=26.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A finite element software for multiphysical problems (without GUI and Ice)"
 arch=('x86_64')
 url="https://www.elmerfem.org"
