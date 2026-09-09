@@ -5,7 +5,7 @@ _pkgname=migrate
 pkgname=${_pkgname}-bin
 pkgdesc="Database migration handling"
 
-pkgver=4.19.1
+pkgver=4.20.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,9 +23,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}.${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}.${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}.${_barch[2]}.tar.gz")
-sha256sums_x86_64=('2ac648fbd1b127b69ab5a7b33cf96212178f71e22379fc50573630c6f4c7ce18')
-sha256sums_i686=('2ac648fbd1b127b69ab5a7b33cf96212178f71e22379fc50573630c6f4c7ce18')
-sha256sums_aarch64=('2fea2455c0f3f07cc3f4b98471c951ad1a716059574b20b6416bd1e9058751c5')
+sha256sums_x86_64=('b1e13121d4178b7804a9fb29dca62d57b732390f7e5ae33f2cd65e9b192e1bd4')
+sha256sums_i686=('b1e13121d4178b7804a9fb29dca62d57b732390f7e5ae33f2cd65e9b192e1bd4')
+sha256sums_aarch64=('03ea70d9ba535b68fe03602120d1856a567cd0fa2fbca3748ba8070e9d4b8f60')
 
 
 package() {
