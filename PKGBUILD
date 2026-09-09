@@ -10,7 +10,7 @@ pkgname='lockmgr'
 pkgdesc='Python Lock Manager Class (gc)'
 _gitname='lockmgr'
 
-pkgver="1.9.6"
+pkgver="1.9.7"
 pkgrel=1
 url="https://github.com/gene-git/lockmgr"
 

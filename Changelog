@@ -1,11 +1,16 @@
 -------------------------------------------------------
  Changelog    : lockmgr
- Tags         : 1.9.2 ➙ 1.9.6
+ Tags         : 1.9.3 ➙ 1.9.7
               : 2026-09-06 ➙ 2026-09-09
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-09   : 1.9.6
+ 2026-09-09   : 1.9.7
+              - **1.9.7**
+            
+                * Test now runs several processs in parallel waiting to acquire lock
+
+ 2026-09-09   : 1.9.6, origin/master
               - **1.9.6**
             
                 * typo
@@ -17,7 +22,7 @@
                 * Clean html docs to avoid unneeded sphinx tmp files.
                 * Fix bug with tests using relative path as reported by @piater on AUR
 
- 2026-09-06   : 1.9.4, origin/master
+ 2026-09-06   : 1.9.4
               - **1.9.4**
             
                 * Fix missing makedepends and ensure build/install scripts fail on error
@@ -25,8 +30,3 @@
 
  2026-09-06   : 1.9.3
               - Add missing makedepends on meson (per @TrialnError from aur - thank you!)
-
- 2026-09-06   : 1.9.2
-              - **1.9.2**
-            
-                * Typo in docs
