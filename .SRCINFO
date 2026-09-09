@@ -1,5 +1,5 @@
 pkgbase = drawdb-client-git
-	pkgdesc = An unoffical client DrawDB by electron.(Use system-wide electron)
+	pkgdesc = An unoffical client DrawDB by electron.
 	pkgver = r5.be541e6
 	pkgrel = 1
 	url = https://github.com/1917NW/DrawDB-Client
@@ -10,6 +10,8 @@ pkgbase = drawdb-client-git
 	makedepends = git
 	makedepends = curl
 	makedepends = libicns
+	makedepends = jq
+	makedepends = zip
 	depends = electron35
 	provides = drawdb-client=r5.be541e6
 	conflicts = drawdb-client
@@ -18,6 +20,6 @@ pkgbase = drawdb-client-git
 	source = drawdb-client.sh
 	sha256sums = SKIP
 	sha256sums = d0496479f5e13e1e9eea98262f622440cf53fd02d2fc92871afd7fae77a42b4e
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = drawdb-client-git
