@@ -1,0 +1,17 @@
+pkgbase = remnix-bin
+	pkgdesc = Encrypted, server-free shell history manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dont-be-evil-company/remnix
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = remnix
+	source = LICENSE::https://raw.githubusercontent.com/dont-be-evil-company/remnix/v0.1.0/LICENSE
+	sha256sums = c4a588cdf2a4b8e3ac6df297670d66f61fdbdab6bbbf63fd1cf47c054a6e4092
+	source_x86_64 = remnix-bin-0.1.0::https://github.com/dont-be-evil-company/remnix/releases/download/v0.1.0/remnix-linux-amd64
+	sha256sums_x86_64 = 93a8e4ca76f35e1c299ce04bf63639a88d6fff77df41894c08910ae4dcacc21f
+	source_aarch64 = remnix-bin-0.1.0::https://github.com/dont-be-evil-company/remnix/releases/download/v0.1.0/remnix-linux-arm64
+	sha256sums_aarch64 = 93a8e4ca76f35e1c299ce04bf63639a88d6fff77df41894c08910ae4dcacc21f
+
+pkgname = remnix-bin
