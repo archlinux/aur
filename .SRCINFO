@@ -1,5 +1,5 @@
 pkgbase = simpleshell-git
-	pkgdesc = A Simple Terminal based on Electron & NodeJS.(Use system-wide electron)
+	pkgdesc = A modern, feature-rich SSH terminal application that combines the power of Electron's desktop capabilities with React's intuitive development experience. Designed for developers and system administrators who need efficient remote server management.
 	pkgver = 0.4.47.r1.g627f493
 	pkgrel = 1
 	url = https://github.com/funkpopo/simpleshell
