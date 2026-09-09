@@ -2,16 +2,17 @@
 # Maintainer: david4958606 <david.wang at sakisakura dot moe>
 _pkgname=mihomo-party
 pkgname=clash-party-bin
+_appname='Clash Party'
 pkgver=2.0.2
 _electronversion=43
-pkgrel=1
-pkgdesc=":electron: Another Mihomo GUI.(Prebuilt version.Use system-wide electron)"
+pkgrel=2
+pkgdesc=":electron: Another Mihomo GUI."
 arch=(
     'aarch64'
     'x86_64'
 )
-url="https://mihomo.party"
-_ghurl="https://github.com/mihomo-party-org/mihomo-party"
+url="https://clashparty.org/"
+_ghurl="https://github.com/mihomo-party-org/clash-party"
 license=('GPL-3.0-only')
 conflicts=(
     "${_pkgname}"
@@ -26,7 +27,8 @@ depends=(
     'mihomo'
 )
 optdepends=(
-    'libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).'
+    'libappindicator: Allow clash-party to extend a menu via Ayatana indicators in Unity, KDE or Systray'
+    'libayatana-appindicator'
 )
 makedepends=('asar')
 source=("${pkgname%-bin}.sh")
@@ -65,6 +67,11 @@ prepare() {
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${_app_dir}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    sed -i -e "
+        s/Name=${_pkgname}/Name=${_appname}/g
+        s/Exec=\${exePath()}/Exec=${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/app.asar.unpacked/out/main/index.js"
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
     ln -sf "/usr/bin/mihomo" "${_app_dir}/resources/sidecar/mihomo"
     rm -rf \
