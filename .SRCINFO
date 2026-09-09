@@ -1,14 +1,13 @@
 pkgbase = pulledpork
 	pkgdesc = Tool to automatically update rules for snort
 	pkgver = 3.0.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shirkdog/pulledpork3
 	install = pulledpork.install
 	arch = any
 	license = GPL
 	depends = perl
 	depends = perl-lwp-protocol-https
-	depends = perl-crypt-ssleay
 	depends = perl-archive-tar
 	depends = perl-switch
 	depends = perl-bytes-random-secure

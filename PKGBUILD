@@ -6,12 +6,12 @@ pkgname=pulledpork
 pkgver=3.0.0.5
 _pp2_pkgver=0.7.4
 _pp3_gitrev=7c4d1f8
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to automatically update rules for snort"
 arch=('any')
 url="https://github.com/${_user}/${pkgname}3"
 license=('GPL')
-depends=('perl' 'perl-lwp-protocol-https' 'perl-crypt-ssleay' 'perl-archive-tar' 'perl-switch' 'perl-bytes-random-secure'
+depends=('perl' 'perl-lwp-protocol-https' 'perl-archive-tar' 'perl-switch' 'perl-bytes-random-secure'
          'python' 'python-requests')
 optdepends=('snort')
 backup=('etc/pulledpork/pulledpork.conf'
