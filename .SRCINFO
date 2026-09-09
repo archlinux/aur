@@ -1,0 +1,33 @@
+pkgbase = psono-bin
+	pkgdesc = Password manager for securely storing and sharing sensitive data
+	pkgver = 3.3.3
+	pkgrel = 1
+	url = https://psono.com/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = patchelf
+	depends = at-spi2-core
+	depends = cairo
+	depends = fontconfig
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = harfbuzz
+	depends = libepoxy
+	depends = libgcc
+	depends = libsecret
+	depends = libsoup3
+	depends = libstdc++
+	depends = pango
+	depends = webkit2gtk-4.1
+	depends = which
+	depends = xdotool
+	provides = psono=3.3.3
+	conflicts = psono
+	noextract = psono-3.3.3-amd64.deb
+	options = !strip
+	source_x86_64 = psono-3.3.3-amd64.deb::https://package.psono.com/linux/deb/pool/stable/main/p/psono/psono_3.3.3_amd64.deb
+	b2sums_x86_64 = f47a0fb7f28752a6939d040c28a5aa31389806c390668b0180b256934ffe984f5d407973cb63222d102c926072715a2fa097d55ed25468b72684ad4cf2e0b690
+
+pkgname = psono-bin
