@@ -1,7 +1,7 @@
 pkgbase = splatmoji-kaomojiya
 	pkgdesc = Splatmoji-formatted version of the Kaomojiya kaomoji collection
 	pkgver = r1.2ca1b39
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kaomojiya-collection/kaomoji-collection
 	arch = x86_64
 	license = MIT
