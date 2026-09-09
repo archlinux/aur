@@ -2,7 +2,7 @@
 # Contributor: Chrys <chrys@linux-a11y.org>
 
 pkgname="fenrir"
-pkgver=2026.05.25
+pkgver=2026.09.09
 pkgrel=1
 epoch=1
 pkgdesc='A user space console screen reader written in python3'
@@ -13,6 +13,7 @@ depends=('gst-plugins-base' 'gst-plugins-good' 'gstreamer' 'python' 'python-gobj
 optdepends=('espeak-ng: Default speech synthesizer for the generic speech driver'
 'socat: Control running Fenrir screenreader'
   'sox: A sound driver'
+  'python-pyusb: DECtalk USB speech output'
   'python-xlib: X11 terminal mode with fenrir -x'
   'xclip: for copy to X session clipboard')
 makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
@@ -21,7 +22,7 @@ conflicts=('fenrir-git')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
 source=("git+https://git.stormux.org/storm/${pkgname}.git#tag=${pkgver}")
 install=fenrir.install
-sha512sums=('7caa5b649dc08d712eb0f981664d79311fa48f663a40163149ded56078826adcdbb3632a6528c4c6b9ade6bb9be95aedfacd6ac115fb764e9538971e329aeced')
+sha512sums=('f45a22ad4cd6f4cfe39b8f9a47945cee3d989f23e5d1f215a99e89bd83952cc1199fba47db214eea08228220a0392b84ba7b87835a4b4c0fa8180859967d926b')
 
 package() {
   cd "$srcdir/$pkgname"
