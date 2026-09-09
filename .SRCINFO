@@ -1,7 +1,7 @@
 pkgbase = splatmoji-ekohrt
 	pkgdesc = Splatmoji-formatted version of ekohrt's Kaomoji database
 	pkgver = r10.7d00fbb
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ekohrt/emoticon_kaomoji_dataset
 	arch = x86_64
 	license = unknown
