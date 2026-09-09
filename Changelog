@@ -1,17 +1,17 @@
 -------------------------------------------------------
  Changelog    : ssl-mgr
- Tags         : 7.6.0 ➙ 8.0.0
-              : 2026-07-13 ➙ 2026-09-06
+ Tags         : 7.7.0 ➙ 8.0.1,
+              : 2026-07-14 ➙ 2026-09-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-06   : 8.0.0
+ 2026-09-06   : 8.0.1,
               - **8.0.0**
             
                 * Use meson / meson-python for build and package management.
                 * Code review
 
- 2026-07-30   : 7.8.1, origin/master
+ 2026-07-30   : 7.8.1
               - 7.8.1 - update version in pyproject.toml
 
  2026-07-30   : 7.8.0
@@ -27,21 +27,3 @@
                   For example, given 45 certs renew with 10 days to expiry and 90 certs with 30 days,
                   a cert with expiration in between 45 and 90 would use a renew days target that
                   is linearly interpolated between 10 and 30 days.
-
- 2026-07-13   : 7.6.0
-              - **version 7.6.0**
-            
-                * Fixes an issue where a 45 day cert with original days to expiration less than 45, (e.g. 44.5)
-                  was renewing with 5 days remaining instead of 10 days remaining. This was happening as the
-                  code was using the renewal target for 10 certs instead of 45 day certs.
-            
-                * Self and Local signed certs: Remove outdated 90 floor on cert expiration.
-            
-                * Add type support for post quantum mldsa, mlkem to avoid type check warnings.
-                  Were not using this types, but they are supported by python cryptography.
-            
-                * Add .nvchecker.toml file (pkgctl version check)
-            
-                * Modify the check script for pycodestyle leading to couple small style changes in code.
- 2026-04-07   ⋯
-              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
