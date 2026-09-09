@@ -1,0 +1,5 @@
+imlib2
+/pkg/
+/src/
+*.pkg.tar.zst
+*.log

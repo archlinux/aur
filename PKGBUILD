@@ -17,7 +17,8 @@ license=('BSD')
 #  * lib32-libjxl
 #  * lib32-libspectre
 #  * lib32-openjpeg2
-makedepends=('git' 'lib32-libid3tag' 'lib32-librsvg' 'lib32-libwebp')
+makedepends=('git' 'lib32-libid3tag' 'lib32-librsvg' 'lib32-libwebp'
+             'lib32-libavif' 'lib32-openjpeg2' 'lib32-libraw' 'lib32-libspectre')
 depends=("${_pkgname}" 'lib32-bzip2' 'lib32-freetype2' 'lib32-giflib' 'lib32-libjpeg-turbo'
          'lib32-libpng' 'lib32-libtiff' 'lib32-libxext' 'lib32-xz')
 optdepends=('lib32-libid3tag: ID3 loader'
@@ -51,12 +52,12 @@ build() {
     --without-heif \
     --without-jxl
 
-  make
+  make -j$(nproc)
 }
 
 check() {
   cd "$_pkgname"
-  make check
+  make check -j$(nproc)
 }
 
 package() {
