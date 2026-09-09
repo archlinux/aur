@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=pipenet
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Expose your local server to the public internet instantly"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('bun')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/punkpeye/pipenet/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('488274c73c75698de06c5d5931a265cb587c148d0521fc4b3994e188ed48679f')
+sha256sums=('ae61d70bb1fb5ef5c71508aa7a9ce55efb468723e9733a5759ebcdecab8bd118')
 
 build() {
     cd "${pkgname}-${pkgver}"

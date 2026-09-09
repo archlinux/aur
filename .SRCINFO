@@ -1,13 +1,13 @@
 pkgbase = pipenet
 	pkgdesc = Expose your local server to the public internet instantly
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/punkpeye/pipenet
 	arch = x86_64
 	license = MIT
 	makedepends = bun
 	options = !strip
-	source = pipenet-1.4.2.tar.gz::https://github.com/punkpeye/pipenet/archive/refs/tags/v1.4.2.tar.gz
-	sha256sums = 488274c73c75698de06c5d5931a265cb587c148d0521fc4b3994e188ed48679f
+	source = pipenet-1.4.3.tar.gz::https://github.com/punkpeye/pipenet/archive/refs/tags/v1.4.3.tar.gz
+	sha256sums = ae61d70bb1fb5ef5c71508aa7a9ce55efb468723e9733a5759ebcdecab8bd118
 
 pkgname = pipenet
