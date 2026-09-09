@@ -1,6 +1,6 @@
 pkgbase = javinizer
 	pkgdesc = A metadata scraper and file organizer for JAV, with CLI, TUI, REST API, and a web UI
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/javinizer/javinizer-go
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = javinizer
 	makedepends = npm
 	provides = javinizer
 	conflicts = javinizer-bin
-	source = javinizer::git+https://github.com/javinizer/javinizer-go/?tag=v1.5.1
+	source = javinizer::git+https://github.com/javinizer/javinizer-go/?tag=v1.5.2
 	sha256sums = SKIP
 
 pkgname = javinizer
