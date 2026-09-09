@@ -1,0 +1,5 @@
+[guardit-bin]
+source = "github"
+github = "Rajaonarison-Andry-Misandratra-Fiderana/guardIT"
+use_latest_release = true
+prefix = "v"
