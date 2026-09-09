@@ -1,0 +1,18 @@
+pkgbase = argc-completions-git
+	pkgdesc = Shell completions for 1000+ commands, powered by argc (git)
+	pkgver = r613.a992215
+	pkgrel = 1
+	url = https://github.com/sigoden/argc-completions
+	install = argc-completions-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = argc
+	depends = bash
+	depends = gawk
+	optdepends = yq: dynamic completions for nix and some cargo plugins (or go-yq)
+	optdepends = go-yq: dynamic completions for nix and some cargo plugins (or yq)
+	source = git+https://github.com/sigoden/argc-completions.git
+	b2sums = SKIP
+
+pkgname = argc-completions-git

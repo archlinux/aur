@@ -1,0 +1,26 @@
+post_install() {
+  cat <<'EOF'
+argc-completions-git installed to /usr/share/argc-completions.
+
+User specs shadow system ones: generate with -o into an existing directory
+(first on the path below), e.g.
+  mkdir -p ~/.local/share/argc-completions/completions
+  ./scripts/generate.sh -o ~/.local/share/argc-completions/completions <cmd>
+
+Add to ~/.bashrc (bash) or ~/.zshrc (zsh); other shells: see scripts/setup-shell.sh upstream:
+  export ARGC_COMPLETIONS_ROOT="/usr/share/argc-completions"
+  export ARGC_COMPLETIONS_PATH="$HOME/.local/share/argc-completions/completions:$ARGC_COMPLETIONS_ROOT/completions/linux:$ARGC_COMPLETIONS_ROOT/completions"
+  # To add completions for only the specified command, modify next line e.g. argc_scripts=( cargo git )
+  argc_scripts=( $(ls -p -1 "$HOME/.local/share/argc-completions/completions" "$ARGC_COMPLETIONS_ROOT/completions/linux" "$ARGC_COMPLETIONS_ROOT/completions" 2>/dev/null | sed -n 's/\.sh$//p') )
+  if [ -n "${BASH_VERSION:-}" ]; then
+    source <(argc --argc-completions bash "${argc_scripts[@]}")
+  else
+    source <(argc --argc-completions zsh $argc_scripts)
+  fi
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
