@@ -17,12 +17,12 @@ package() {
     ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
     #LibElectron deps cleanup
     #rm -rf "$srcdir/application-$pkgver/libsplash"
-    rm -rf "$srcdir/application-$pkgver/libadblock"
-    rm -rf "$srcdir/application-$pkgver/libuseragent"
+    #rm -rf "$srcdir/application-$pkgver/libadblock"
+    #rm -rf "$srcdir/application-$pkgver/libuseragent"
     #link libelectron deps
     #ln -sf "/opt/libelectron/libsplash" "$srcdir/application-$pkgver/libsplash"
-    ln -sf "/opt/libelectron/libadblock" "$srcdir/application-$pkgver/libadblock"
-    ln -sf "/opt/libelectron/libuseragent" "$srcdir/application-$pkgver/libuseragent"
+    #ln -sf "/opt/libelectron/libadblock" "$srcdir/application-$pkgver/libadblock"
+    #ln -sf "/opt/libelectron/libuseragent" "$srcdir/application-$pkgver/libuseragent"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
