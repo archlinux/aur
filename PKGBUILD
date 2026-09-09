@@ -2,8 +2,8 @@
 
 pkgbase=k230-burning-tool
 pkgname=k230-burning-tool
-pkgver=2.2.4
-pkgrel=3
+pkgver=2.2.5
+pkgrel=1
 groups=()
 pkgdesc="Kendryte K230 Flash Tool Cpp GUI version"
 arch=($CARCH)
@@ -12,10 +12,9 @@ license=('GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT')
 provides=(${pkgname} ${pkgname}-avalon)
 conflicts=(${pkgname} ${pkgname}-avalon)
 depends=(
-    glibc
     hicolor-icon-theme
-    libgcc
-    libstdc++
+    libgcc_s.so
+    libstdc++.so
     libusb
     qt6-base
 )
@@ -40,7 +39,7 @@ source=(
     "git+https://github.com/kendryte747/libusb-cmake.git"
     "git+https://github.com/libusb/libusb.git"
 )
-sha256sums=('2f5cabf2fdf5f7a8b20250455adb10e50e79bb77b1fe15e4fec76338069ba5e7'
+sha256sums=('da819714c79acc559fa25f88cb0f17b5a3e709538571b5788832a1b846a2a6b4'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -72,7 +71,7 @@ build() {
         -DCMAKE_C_FLAGS="${CFLAGS} -Wno-error=calloc-transposed-args -Wno-error=discarded-qualifiers" \
         -B build \
         -G Ninja \
-        -Wno-dev
+        -Wno-author
 
     ninja -C build
 
@@ -82,7 +81,7 @@ build() {
     -DCMAKE_C_FLAGS="${CFLAGS} -Wno-error=calloc-transposed-args -Wno-error=discarded-qualifiers" \
     -B build_avalon \
     -G Ninja \
-    -Wno-dev
+    -Wno-author
 
     ninja -C build_avalon
 }

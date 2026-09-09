@@ -1,7 +1,7 @@
 pkgbase = k230-burning-tool
 	pkgdesc = Kendryte K230 Flash Tool Cpp GUI version
-	pkgver = 2.2.4
-	pkgrel = 3
+	pkgver = 2.2.5
+	pkgrel = 1
 	url = https://github.com/kendryte/k230_burning_tool
 	arch = x86_64
 	license = GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -15,21 +15,20 @@ pkgbase = k230-burning-tool
 	makedepends = pkgconf
 	makedepends = sed
 	makedepends = vulkan-headers
-	depends = glibc
 	depends = hicolor-icon-theme
-	depends = libgcc
-	depends = libstdc++
+	depends = libgcc_s.so
+	depends = libstdc++.so
 	depends = libusb
 	depends = qt6-base
 	provides = k230-burning-tool
 	provides = k230-burning-tool-avalon
 	conflicts = k230-burning-tool
 	conflicts = k230-burning-tool-avalon
-	source = k230-burning-tool::git+https://github.com/kendryte/k230_burning_tool.git#tag=v2.2.4
+	source = k230-burning-tool::git+https://github.com/kendryte/k230_burning_tool.git#tag=v2.2.5
 	source = git+https://github.com/arsenm/sanitizers-cmake.git
 	source = git+https://github.com/kendryte747/libusb-cmake.git
 	source = git+https://github.com/libusb/libusb.git
-	sha256sums = 2f5cabf2fdf5f7a8b20250455adb10e50e79bb77b1fe15e4fec76338069ba5e7
+	sha256sums = da819714c79acc559fa25f88cb0f17b5a3e709538571b5788832a1b846a2a6b4
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
