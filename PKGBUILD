@@ -4,7 +4,7 @@
 
 pkgname=forgit
 pkgver=26.09.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility tool powered by fzf for using git interactively"
 arch=('any')
 url="https://github.com/wfxr/forgit"
@@ -46,6 +46,9 @@ package() {
 	install -Dvm644 conf.d/forgit.plugin.fish -t "$pkgdir/usr/share/fish/vendor_conf.d/"
 	install -dv "$pkgdir/usr/share/fish/vendor_conf.d/bin/"
 	ln -sv /usr/bin/git-forgit "$pkgdir/usr/share/fish/vendor_conf.d/bin/"
+
+	# fish completions
+	install -Dvm644 completions/git-forgit.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
 
 	# docs
 	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
