@@ -2,7 +2,7 @@
 
 pkgname=sonora-bin
 _pkgname=sonora
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc='A native music streaming client, built with Rust and GPUI'
 arch=('x86_64' 'aarch64')
@@ -21,9 +21,9 @@ options=('!strip' '!debug')
 source=("${url}/archive/refs/tags/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-x86_64-unknown-linux-gnu")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-aarch64-unknown-linux-gnu")
-sha256sums=('2da4cb935684752445bfc0db3394e4557f9617f68c629b8d81e53138ca12a3b8')
-sha256sums_x86_64=('13395cd4e448fd4acc37f2a9a51fff63fea567c0a0198fdaa7447e3d71549c3e')
-sha256sums_aarch64=('ae81caac97c5e54f418e95af536716ab0bd760e1c3a90463525864dbd58556d0')
+sha256sums=('7ec0979a25af49c70811f545705176523c4acf469d6b26345be06d3437ad1f61')
+sha256sums_x86_64=('d9ae6b6c7e6627886598eecc31ce349769c5c88b87c1fc03f493e84fef592686')
+sha256sums_aarch64=('2fd3084a46e3dff092948ada99e87fcaa484f49fc2525fe1b990653c6f5e83a8')
 
 package() {
   cd "${_pkgname}-${pkgver}"
