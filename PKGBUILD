@@ -1,15 +1,16 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=paletteer
-_pkgver=1.6.0
+_pkgver=1.7.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="Comprehensive Collection of Color Palettes"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-only')
 depends=(
+  r-cli
   r-prismatic
   r-rematch2
   r-rlang
@@ -43,14 +44,8 @@ optdepends=(
   r-viridislite
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2149379a13391b97581b43dd87aa6fd0')
-b2sums=('aa265005b33047bb26c085ded2212bbd60d13bb5a4c9590c1e756226a23315e0e625564af420dc5606408bd0a585ecbf75f732f873a935ac34384f9d6d576f1d')
-
-prepare() {
-  # skip failing test
-  sed -i '/"colors show up correctly for scico"/a\ \ skip("fails")' \
-      "$_pkgname/tests/testthat/test-vdiffr_palette_check.R"
-}
+md5sums=('59f9ff864c7a4f38d7a79c1719403eb9')
+b2sums=('f2a4439d465f65da44f008d63f60bd34bf243b5f7cc31c5f40aff4e7b65a9698fe465c7ce27185104297c99446d76c65de1c6749ba6f07ae57d9f54229e60f40')
 
 build() {
   mkdir build
@@ -59,7 +54,8 @@ build() {
 
 check() {
   cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+  # Honor upstream's skip_on_ci() for the visual snapshot test file.
+  R_LIBS="$srcdir/build" CI=true NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
