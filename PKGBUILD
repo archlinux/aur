@@ -9,6 +9,7 @@ url="https://github.com/asciimoo/hister"
 license=('AGPL-3.0-or-later')
 depends=('sqlite')
 makedepends=('go' 'npm')
+optdepends=('postgresql: Alternate database backend')
 install=hister.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"

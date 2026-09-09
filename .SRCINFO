@@ -10,6 +10,7 @@ pkgbase = hister
 	makedepends = go
 	makedepends = npm
 	depends = sqlite
+	optdepends = postgresql: Alternate database backend
 	options = !lto
 	backup = etc/hister/hister.env
 	backup = etc/hister/config.yml
