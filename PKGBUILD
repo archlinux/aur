@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=dnglab
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Camera RAW to DNG file format converter"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(LGPL-2.1-only)
 depends=(glibc gcc-libs)
 makedepends=(cargo)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('c363a5ff8c058dd6d2ffe22a2ece986fa6ad146043f0211d9b77d789083901ce')
+sha256sums=('432b8ac8f553289e06c0d78b37ae6f9546e80b736ef879f2ee66b66345590c4d')
 
 prepare() {
   cd $pkgname-$pkgver
