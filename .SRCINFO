@@ -1,0 +1,17 @@
+pkgbase = jadart
+	pkgdesc = Decompiler for Flutter and Dart AOT snapshots. Recovers the class tree, method bodies, strings and const tables from a stripped libapp.so
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/IR0NBYTE/Jadart
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-capstone
+	source = jadart-1.1.0.tar.gz::https://github.com/IR0NBYTE/Jadart/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = cb83c063178413d2536b16d0a842454f6d7abc58ba5224dfc276e7502dee5c32
+
+pkgname = jadart
