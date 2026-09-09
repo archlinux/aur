@@ -1,6 +1,6 @@
 pkgbase = python-pymatting
 	pkgdesc = A Python library for alpha matting
-	pkgver = 1.1.15
+	pkgver = 1.1.16
 	pkgrel = 1
 	url = https://github.com/pymatting/pymatting
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-pymatting
 	depends = python-pillow
 	depends = python-numba
 	depends = python-scipy
-	source = https://pypi.io/packages/source/p/pymatting/pymatting-1.1.15.tar.gz
-	sha256sums = 67cbadd68d04696357461ad1861bcb3c2adc9ec5fcd38d524db606addabe745a
+	source = https://pypi.io/packages/source/p/pymatting/pymatting-1.1.16.tar.gz
+	sha256sums = 656e16f07c941b8792c8cd341b49791e74d1949ceae4d8c45fb4e10d3c6e7d77
 
 pkgname = python-pymatting

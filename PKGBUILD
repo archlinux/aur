@@ -1,7 +1,7 @@
 # Maintainer: Winux <winux@winux.it
 
 pkgname=python-pymatting
-pkgver=1.1.15
+pkgver=1.1.16
 _src_folder=${pkgname#python-}-$pkgver
 pkgrel=1
 pkgdesc="A Python library for alpha matting"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-numpy' 'python-pillow' 'python-numba' 'python-scipy')
 makedepends=('python-setuptools' 'python-build' 'python-installer')
 source=("https://pypi.io/packages/source/${_src_folder::1}/${pkgname#python-}/${_src_folder}.tar.gz")
-sha256sums=('67cbadd68d04696357461ad1861bcb3c2adc9ec5fcd38d524db606addabe745a')
+sha256sums=('656e16f07c941b8792c8cd341b49791e74d1949ceae4d8c45fb4e10d3c6e7d77')
 
 build() {
     cd "$srcdir/$_src_folder"
