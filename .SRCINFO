@@ -1,0 +1,21 @@
+pkgbase = hydrogen-music
+	pkgdesc = Arknights-style third-party NetEase Cloud Music player built with Electron and Vue 3.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/ldx123000/Hydrogen-Music
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = yarn
+	makedepends = jq
+	depends = electron38
+	depends = ffmpeg
+	source = hydrogen-music-0.6.3.tar.gz::https://github.com/ldx123000/Hydrogen-Music/archive/refs/tags/v0.6.3.tar.gz
+	source = hydrogen-music.sh
+	sha256sums = 61a97966def56f043536fd2875c55ffac0b303576fce7608ee69ed4a768376c3
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = hydrogen-music
