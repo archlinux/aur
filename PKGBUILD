@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mockery-bin
-pkgver=3.7.4
+pkgver=3.8.0
 pkgrel=1
-pkgdesc='A mock code autogenerator for golang.(Prebuilt version)'
+pkgdesc='A mock code autogenerator for golang.'
 arch=(
     'aarch64'
     'x86_64'
 )
-url='https://github.com/vektra/mockery'
+url="https://vektra.github.io/mockery/"
+_ghurl='https://github.com/vektra/mockery'
 license=('BSD-3-Clause')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
@@ -18,10 +19,10 @@ optdepends=(
     'zsh: for zsh completion'
     'fish: for fish completion'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_arm64.tar.gz")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_aarch64=('fe591f9ef5ada76c3dee4b8f451aad6748d002e9713fab4bad26b194ff826c4b')
-sha256sums_x86_64=('d5eef52e238a4262b78ab5a93811826a8bfcff7b0128133c6597e3bf2f0f7337')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_arm64.tar.gz")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_x86_64.tar.gz")
+sha256sums_aarch64=('db306d9d9cbcceb78b169e0730bcc7db26d85a03bd200be62cc70c932e4f536a')
+sha256sums_x86_64=('ba8697cf5cf7164756afca371c247088980e4be7ded133e50536d8ae5c893a9a')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     "${srcdir}/${pkgname%-bin}" completion bash > "${srcdir}/${pkgname%-bin}.bash"
