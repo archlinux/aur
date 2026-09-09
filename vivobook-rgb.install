@@ -1,0 +1,28 @@
+post_install() {
+    # Create the group that owns access to the HID LampArray controller
+    groupadd -f vrgb
+
+    cat <<'EOF'
+==> To use vrgb without sudo, add your user to the 'vrgb' group:
+      sudo usermod -aG vrgb <your-user>
+    (log out and back in for the change to take effect)
+
+==> If the keyboard was already plugged in, reload udev rules:
+      sudo udevadm control --reload-rules
+      sudo udevadm trigger
+
+==> Optional: set a default color on boot (edit /etc/vrgb.conf):
+      sudo systemctl enable --now vrgb-default.service
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # Remove the group only if it has no members left
+    if ! getent group vrgb | grep -q '[^:]*:[^:]*:[^:]*:.\+'; then
+        groupdel vrgb 2>/dev/null || true
+    fi
+}
