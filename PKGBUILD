@@ -1,6 +1,6 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 pkgname=yabsnap-git
-pkgver=r384.c62289a
+pkgver=r387.cb95819
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
@@ -39,6 +39,8 @@ package() {
     $(find -type f -not -name "*_test.py" \( -name "*.py" -o -name "*.conf" \)) |
     tar -xf - -C "$DEST"/ --no-same-owner
   pushd "$DEST"/
+  # Write version info for --version flag.
+  echo -n "${pkgver} (Arch ${pkgname})" > .version
   chmod -R u=rwX,go=rX .
   popd
   popd
