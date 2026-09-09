@@ -1,17 +1,23 @@
 # Maintainer: Hewel <13846369+hewel@users.noreply.github.com>
 
 pkgname=jellypilot-bin
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
-pkgdesc='Jellyfin and Emby companion app: cast receiver and library browser driving external MPV (prebuilt binary)'
+pkgdesc='Jellyfin and Emby companion app with embedded MPV from the pinned mpv fork (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/hewel/jellypilot'
 license=('MIT')
 depends=(
   'gtk3'
-  'mpv'
   'libxkbcommon'
   'wayland'
+  'ffmpeg'
+  'libplacebo'
+  'libass'
+  'vulkan-icd-loader'
+)
+optdepends=(
+  'mpv: External MPV Playback'
 )
 provides=('jellypilot')
 conflicts=('jellypilot')
@@ -22,7 +28,7 @@ source=(
 )
 noextract=("$pkgname-$pkgver.pkg.tar.zst")
 # Filled from the GitHub release SHA256SUMS when publishing to the AUR.
-sha256sums=('07ab40c42d9341e96c0f0d7b26b16ae519d851bfa39c4736242ab2e6d9f969e2')
+sha256sums=('70f400d8ca7b8aed01cd237ba4c82545c4ec5a19909b5ab420c3ce2f2cc3f478')
 
 package() {
   bsdtar -x \
