@@ -1,7 +1,7 @@
 pkgbase = soundalike
 	pkgdesc = Find duplicate audio files using acoustic fingerprints
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://codeberg.org/derat/soundalike
 	arch = x86_64
 	arch = armv7h
@@ -10,7 +10,7 @@ pkgbase = soundalike
 	makedepends = go
 	depends = glibc
 	depends = chromaprint
-	source = https://codeberg.org/derat/soundalike/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = eca2f6c6f1dc807a90fc2d54ab619b1073607da16e42e805a9dd0795ccedd047
+	source = https://codeberg.org/derat/soundalike/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = c79b89e11189df4be7504bf482d13c79c7e24485bdeffb54f21eadb0b81b2d86
 
 pkgname = soundalike
