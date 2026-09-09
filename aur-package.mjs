@@ -19,14 +19,17 @@ for (const dir of ['dist/aur-vendor', 'dist/aur-dsh']) {
   }
 }
 
-// Runtime closure of @deepseek-ai/dsh over the packed tarballs.
+// Runtime closure of @deepseek-ai/dsh over the packed tarballs. Optional
+// dependencies that have release tarballs are included too; registry optional
+// dependencies (notably node-addon-system's platform packages) are resolved by
+// npm according to the entry package's OS/CPU selectors.
 const seen = new Set()
 function visit(name) {
   if (seen.has(name)) return
   const entry = packages.get(name)
   if (entry === undefined) return
   seen.add(name)
-  for (const section of ['dependencies', 'peerDependencies']) {
+  for (const section of ['dependencies', 'optionalDependencies', 'peerDependencies']) {
     for (const dependency of Object.keys(entry.manifest[section] ?? {})) visit(dependency)
   }
 }
@@ -51,7 +54,8 @@ writeFileSync(resolve(npmRoot, 'package.json'), `${JSON.stringify({
   private: true,
   dependencies,
   allowScripts: {
-    [subprocessLocal]: true,
+    // npm resolves file tarballs to absolute paths before matching policy.
+    [resolve(npmRoot, subprocessLocal.slice('file:'.length))]: true,
     koffi: true,
     'node-pty': true,
     '@google/genai': false,
