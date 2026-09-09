@@ -1,6 +1,6 @@
 pkgbase = hyprlax
 	pkgdesc = Smooth parallax wallpaper animation for Hyprland and other Wayland compositors
-	pkgver = 2.2.4
+	pkgver = 2.2.6
 	pkgrel = 1
 	url = https://github.com/sandwichfarm/hyprlax
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = hyprlax
 	optdepends = sway: Sway/i3 IPC integration
 	optdepends = river: River tag-based workspaces
 	optdepends = niri: Niri scrollable workspaces
-	source = hyprlax-v2.2.4.tar.gz::https://github.com/sandwichfarm/hyprlax/archive/refs/tags/v2.2.4.tar.gz
-	sha256sums = 8e559bfcbbb39f5972c8110e73c77b3d3f75aaf95903b939d47dd0f7300b441e
+	source = hyprlax-v2.2.6.tar.gz::https://github.com/sandwichfarm/hyprlax/archive/refs/tags/v2.2.6.tar.gz
+	sha256sums = 559067ee974a06dde9da80d59a6cc33429ee255168277be74061857240cde8be
 
 pkgname = hyprlax
