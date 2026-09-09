@@ -2,7 +2,7 @@
 pkgname=python-kintree
 # _name=${pkgname#python-}
 _name=Ki-nTree
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=3
 pkgdesc="Fast part creation in KiCad and InvenTree"
 url="https://github.com/sparkmicro/Ki-nTree"
@@ -35,7 +35,7 @@ source=(
     "$_name-$pkgver.tar.gz::https://github.com/sparkmicro/Ki-nTree/archive/refs/tags/$pkgver.tar.gz"
     "kintree.png"
     "kintree.desktop")
-sha256sums=('c090e40792c451701a8adc00d3e8ccf24a54363270f54a71672da112a3784e5a'
+sha256sums=('4e5350ea960b7babf7ae888d1d0493a62d325f6253e4d06909446a56c4a9fe74'
             '46c5a724fab746f094e2ae73d5aa1f7d8b91446d6c841ec3a4f134f64c6277d8'
             '7e95214b781f866ebbbf64510eb956337907f824b0a18691ca0b37766ef817d4')
 
