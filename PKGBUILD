@@ -1,7 +1,7 @@
 # Maintainer: moyigeek <moyi@openatom.club>
 
 pkgname=atomgit-cli
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="AtomGit CLI (ag) - 基于 AtomGit API 的命令行工具，参考 GitHub CLI (gh) 开发"
 arch=('x86_64' 'aarch64' 'loong64')
@@ -14,7 +14,7 @@ conflicts=('ag' 'ag-bin' 'atomgit-cli-bin')
 source=("git+https://atomgit.com/hust-open-atom-club/atomgit-cli.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
-_commit=fd2d0c29349e2251732711e877a1a58fabbeec54
+_commit=6cfffd1f9ffc8e240baff316031f89835cb013e8
 _builddate="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
 build() {
