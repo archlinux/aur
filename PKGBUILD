@@ -2,7 +2,7 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='vhs-bin'
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A tool for recording terminal GIFs'
 url='https://charm.land/'
@@ -13,16 +13,16 @@ conflicts=('vhs')
 depends=('ffmpeg' 'ttyd')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v${pkgver}/vhs_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('af782cddbf844a377df6ea41c0e72339393fa021be3f6cb70a2f47d48675d92b')
+sha256sums_aarch64=('b72a5a6d89089b83abf87796047c4c0660d127231dbf040ac9f067a7bc68c44f')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v${pkgver}/vhs_${pkgver}_Linux_arm.tar.gz")
-sha256sums_armv7h=('3a7d3cc39d91d5e8add553502b59d3bc5e9a2a56a79a76ee6fe0fdff8962016b')
+sha256sums_armv7h=('5058597b07b485110a9f07d100b032b40c10997f7c1749bd4730cbcf2f88a858')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v${pkgver}/vhs_${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('7978d00a796fe3e9e1b58af407b3782e91ed0b6ff7b44e094f1f95d0e392cf5d')
+sha256sums_i686=('7d67f30dc0b5dce75d3a1f4d4e47d60c02c69b543fbf7f5b8488b6fb2d4d6f1b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v${pkgver}/vhs_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('99cb634587eaae0473c1ea377db80c3a048c27f99fe0a7febb1a1e8cb7ee5009')
+sha256sums_x86_64=('9f3dc4672af1ec4e83361f4efe996da95c82177b9d795b21d8bcbad814d26823')
 
 package() {
   cd "${srcdir}/vhs_${pkgver}_Linux_${CARCH}"
