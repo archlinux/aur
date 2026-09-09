@@ -1,7 +1,7 @@
 # Maintainer: Arthur <aur@arthurjb.com>
 pkgname=telmi-sync-bin
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform application to create and synchronize stories and audio with TelmiOS"
 arch=('x86_64')
 url="https://github.com/DantSu/Telmi-Sync"
@@ -19,12 +19,6 @@ sha256sums=(
     '3720701886cced6877ac7b512d466fe388c1486dfc34d1c7f78cc3b1f19a6d73'
     'SKIP'
 )
-
-pkgver() {
-    curl -s "https://api.github.com/repos/DantSu/Telmi-Sync/releases/latest" \
-        | grep '"tag_name"' \
-        | sed 's/.*"tag_name": "\(.*\)".*/\1/'
-}
 
 package() {
     # Install AppImage
