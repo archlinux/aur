@@ -10,8 +10,8 @@ makedepends=('git' 'npm')
 options=('!strip')
 provides=('deepseek-harness')
 conflicts=('deepseek-harness' 'deepseek-harness-bin')
-source=('git+https://github.com/deepseek-ai/deepseek-harness.git' 'aur-package.mjs')
-sha256sums=('SKIP' 'af8d0cc8d2b1b775f8b9d56561e4584a2dff342585e1a399454241023832cb20')
+source=('git+https://github.com/deepseek-ai/deepseek-harness.git' 'aur-package.mjs' 'check-runtime.mjs')
+sha256sums=('SKIP' 'af8d0cc8d2b1b775f8b9d56561e4584a2dff342585e1a399454241023832cb20' '7f61ea1ac00132dceb9caae922e4151313e8fb99745037eab972f18f1f088156')
 
 pkgver() {
   cd "$srcdir/deepseek-harness"
@@ -42,34 +42,11 @@ build() {
 
   cd "$srcdir/npm-root"
   npm install --include=optional --no-audit --no-fund --package-lock=false
+}
 
-  # Verify the assembled runtime through the Session persistence path.
-  # This exercises the native locking dependency used by JSONL persistence.
-  node --input-type=module <<'EOF'
-import { mkdtemp, rm } from 'node:fs/promises'
-import { tmpdir } from 'node:os'
-import { join } from 'node:path'
-import { Context } from '@deepseek-ai/cordis'
-import JsonlSessionPersistence from '@deepseek-ai/dsh-session-persistence-jsonl'
-import { SESSION_FORMAT_VERSION, SessionId } from '@deepseek-ai/dsh-session'
-const root = await mkdtemp(join(tmpdir(), 'dsh-session-'))
-try {
-  const ctx = new Context()
-  await ctx.plugin(JsonlSessionPersistence, { root, compression: 'none' })
-  const id = SessionId('aur-packaging-smoke')
-  const header = { version: SESSION_FORMAT_VERSION, id, createdAt: Date.now(), isSeeded: false, cwd: '/tmp' }
-  const created = await ctx.sessionPersistence.create(header)
-  await created.flush()
-  await created.close()
-  const reopened = await ctx.sessionPersistence.open(id, 'read')
-  const result = await reopened.read()
-  if (reopened.header.id !== id || result.events.length !== 0) throw new Error('session persistence round-trip failed')
-  await reopened.close()
-  console.log(`verified persisted Session ${id}`)
-} finally { await rm(root, { recursive: true, force: true }) }
-EOF
-
-  node node_modules/@deepseek-ai/dsh/lib/bin.js --version
+check() {
+  node "$srcdir/check-runtime.mjs" "$srcdir/npm-root"
+  node "$srcdir/npm-root/node_modules/@deepseek-ai/dsh/lib/bin.js" --version
 }
 
 package() {
