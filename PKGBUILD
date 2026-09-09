@@ -5,7 +5,7 @@ launcher_rel='launcher-releases/releases/download'
 lore_rel='lore-releases/releases/download'
 tome_rel='tome-releases/releases/download'
 
-launcherVer=1.9.2
+launcherVer=1.13.9
 loreVer=1.13.8
 tomeVer=1.13.8
 
@@ -22,35 +22,35 @@ provides=('amsel_suite' 'amsel_launcher' 'amsel_lore' 'amsel_tome')
 conflicts=("amsel_suite")
 
 source=(
-  "${amsel_repo}/${launcher_rel}/v${launcherVer}/Amsel.Suite-${launcherVer}-x64.AppImage"
+  "${amsel_repo}/${launcher_rel}/v${launcherVer}/AmselSuite-linux-x64.AppImage"
   "${amsel_repo}/${lore_rel}/v${loreVer}/Lore-linux-x64-${loreVer}.zip"
   "${amsel_repo}/${tome_rel}/v${tomeVer}/Tome-linux-x64-${tomeVer}.zip"
   "amsel-suite"
-  "Amsel Suite.desktop"
-  "amsel-suite.png"
 )
 
-sha256sums=('a57e69bc726864be834b4d17efd7b6d796022ff4a15d46b9ffe118a9ff0ccab1'
+sha256sums=('7e85f48ae9a2c4bfdfab707887a25a6d5be3f1eacbc9bbb034dc1a4511b1753b'
             '373ea42957088ce9dba3711d22f5097de41ea27226e76265433f3057435ca5e5'
             '6cb985995f97d69e9520e92f1891a0cf26998900b74b96e50ddf636302513edb'
-            '122c11f8213a170291184d011670c2ef6c2cc8375bc3fc4a7b933a9e46162978'
-            '7cf890499f561081990c13ad95e47541317009cbae1f17baded40df1e3c4cfac'
-            '62ed78846e3ce8269e4a6d1475b76b82c713d0db3d53b98b7b99cbf6386c3aaf')
+            'de91a5d9f51e1efa094cd32d8ef3b10ef156b053acce40f83042ef8f80262b7d')
 
 prepare() {
-	chmod u+x ${srcdir}/Amsel.Suite-${launcherVer}-x64.AppImage
-	${srcdir}/Amsel.Suite-${launcherVer}-x64.AppImage --appimage-extract
+  chmod u+x AmselSuite-linux-x64.AppImage
+  ${srcdir}/AmselSuite-linux-x64.AppImage --appimage-extract
+
+  sed -i '/\[Desktop Entry\]/a Version=1.5' squashfs-root/AmselSuite.desktop
+  sed -i 's#Exec=Amsel\\sSuite#Exec=/opt/amsel/amsel-suite %U#' squashfs-root/AmselSuite.desktop
 }
             
 package() {
   # install the custom files
   install -Dm755 amsel-suite ${pkgdir}/usr/bin/amsel-suite
   install -Dm755 amsel-suite ${pkgdir}/opt/amsel/amsel-suite
-  install -Dm644 Amsel\ Suite.desktop ${pkgdir}/usr/share/applications/Amsel\ Suite.desktop
-  install -Dm644 amsel-suite.png ${pkgdir}/usr/share/pixmaps/amsel-suite.png
 
+  install -Dm644 squashfs-root/AmselSuite.desktop ${pkgdir}/usr/share/applications/AmselSuite.desktop
+  install -Dm644 squashfs-root/AmselSuite.png ${pkgdir}/usr/share/pixmaps/AmselSuite.png
+  
   # copy the launcher
-  cp -r ${srcdir}/squashfs-root/usr/lib/launcher ${pkgdir}/opt/amsel
+  cp -r ${srcdir}/squashfs-root/usr/bin/ ${pkgdir}/opt/amsel/launcher
 
   # copy the utilities
   mv ${srcdir}/Lore-linux-x64 ${pkgdir}/opt/amsel/Lore
