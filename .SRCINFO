@@ -1,6 +1,6 @@
 pkgbase = viewport-chromium-bin
 	pkgdesc = Wayland compositor whose shell is a web page — Chromium, driven as a child process (binary release)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/codebam/viewport
 	arch = x86_64
@@ -27,15 +27,15 @@ pkgbase = viewport-chromium-bin
 	optdepends = libva-mesa-driver: hardware video decode, for zero-copy video
 	optdepends = ttf-firacode-nerd: the icons in the bar, and the font the shell names first
 	optdepends = ttf-nerd-fonts-symbols: the icons in the bar, without the patched monospace family
-	provides = viewport=0.2.0
-	provides = viewport-chromium=0.2.0
+	provides = viewport=0.3.0
+	provides = viewport-chromium=0.3.0
 	conflicts = viewport
 	conflicts = viewport-chromium
 	conflicts = viewport-webkitgtk
 	conflicts = viewport-wpe
 	options = !strip
 	options = !debug
-	source_x86_64 = viewport-chromium-bin-0.2.0.tar.zst::https://github.com/codebam/viewport/releases/download/v0.2.0/viewport-chromium-0.2.0-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 0deb12b0cd204f429c7133887bdf416aede0e17d220d20a90d73b70472f24de3
+	source_x86_64 = viewport-chromium-bin-0.3.0.tar.zst::https://github.com/codebam/viewport/releases/download/v0.3.0/viewport-chromium-0.3.0-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = bf4c6a96eb6fe82c79f3b7cbab6878976a13421c6ca9d1b9d67cca1fbf937489
 
 pkgname = viewport-chromium-bin
