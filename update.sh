@@ -19,11 +19,10 @@ if [ $PKGBUILD_VERSION != $VERSION ]; then
 	curl -O "$LATEST_PACKAGE_AARCH64"
 
 	sed -i "s/^pkgver=.*/pkgver=$VERSION/" PKGBUILD
-	makepkg
 	CHKSUM_X86_64="$(sha256sum Plexamp-$VERSION-x86_64.AppImage | cut -d' ' -f1)"
         sed -i "s/^sha256sums_x86_64=.*/sha256sums_x86_64=('$CHKSUM_X86_64')/;s/^pkgrel=.*/pkgrel=1/" PKGBUILD
 	CHKSUM_AARCH64="$(sha256sum Plexamp-$VERSION-aarch64.AppImage | cut -d' ' -f1)"
-        sed -i "s/^sha256sums_aarch64=.*/sha256sums_aarch64=('$CHKSUM_AARCH_64')/;s/^pkgrel=.*/pkgrel=1/" PKGBUILD
+        sed -i "s/^sha256sums_aarch64=.*/sha256sums_aarch64=('$CHKSUM_AARCH64')/;s/^pkgrel=.*/pkgrel=1/" PKGBUILD
         makepkg
 
 	echo "Press enter to continue"
