@@ -1,6 +1,6 @@
 pkgbase = rust-llm
 	pkgdesc = Terminal-first AI hub in Rust for prompting, chat, templates, embeddings and dev workflows
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/imjiaoyuan/llm
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = rust-llm
 	makedepends = gcc
 	depends = glibc
 	depends = gcc-libs
-	provides = llm=0.1.3
+	provides = llm=0.1.4
 	conflicts = llm
 	conflicts = llm-bin
 	conflicts = llm-git
 	conflicts = rust-llm-bin
-	source = llm-0.1.3.tar.gz::https://github.com/imjiaoyuan/llm/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = 1d9a1459d212b94047851f7be299e0fa278fc0e8a418715ddc4558fc7f79fd6a
+	source = llm-0.1.4.tar.gz::https://github.com/imjiaoyuan/llm/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 4ffaa3abeb6a7aaab4572c5281dceb8e3947d87555f1981d218391de15f2e5c4
 
 pkgname = rust-llm
