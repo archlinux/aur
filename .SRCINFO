@@ -1,7 +1,7 @@
 pkgbase = python-textual-fastdatatable
-	pkgdesc = A performance-focused reimplementation of Textual's DataTable widget, with a pluggable data storage backend
-	pkgver = 0.14.0
-	pkgrel = 2
+	pkgdesc = A performance-focused reimplementation of Textual's DataTable widget
+	pkgver = 0.19.2
+	pkgrel = 1
 	url = https://github.com/tconbeer/textual-fastdatatable
 	arch = any
 	license = MIT
@@ -11,11 +11,11 @@ pkgbase = python-textual-fastdatatable
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	depends = python-pandas-stubs
 	depends = python-pyarrow
 	depends = python-pytz
 	depends = python-textual
-	source = https://files.pythonhosted.org/packages/source/t/textual-fastdatatable/textual_fastdatatable-0.14.0.tar.gz
-	b2sums = e53423fbc7bffb76b2d2845e30bf0c55f4684ee1d92bd96a9b3a2f1e3e0f553c42804cbe8e35fa030ede577719758e4e6a0b84cf0cc43b0a8c2a7c19194a2a5e
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/source/t/textual-fastdatatable/textual_fastdatatable-0.19.2.tar.gz
+	sha256sums = 97a692d4d02551b8d311758b8a9fb6e755a445dc457ac37633c981f74baa1441
 
 pkgname = python-textual-fastdatatable
