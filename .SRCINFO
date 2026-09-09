@@ -1,6 +1,6 @@
 pkgbase = portablemc
 	pkgdesc = Cross platform command line utility for launching Minecraft quickly and reliably with included support for Mojang versions and popular mod loaders.
-	pkgver = 5.0.4
+	pkgver = 5.0.5
 	pkgrel = 1
 	url = https://github.com/theorzr/portablemc
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = portablemc
 	depends = openssl
 	options = !lto
 	options = !buildflags
-	source = portablemc-5.0.4.tar.gz::https://github.com/theorzr/portablemc/archive/refs/tags/v5.0.4.tar.gz
-	sha256sums = 53918e35ec79bb7581eae890595936b2e99a3691659e221824f0bb59486d89a4
+	source = portablemc-5.0.5.tar.gz::https://github.com/theorzr/portablemc/archive/refs/tags/v5.0.5.tar.gz
+	sha256sums = 193ac933d7c0b1cae3e2b7d07f2165860b3428d83ca00a2bc9308eb9754f391d
 
 pkgname = portablemc

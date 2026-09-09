@@ -1,7 +1,7 @@
 # Maintainer: Théo Rozier <contact@theorozier.fr>
 
 pkgname=portablemc
-pkgver=5.0.4
+pkgver=5.0.5
 pkgrel=1
 pkgdesc='Cross platform command line utility for launching Minecraft quickly and reliably with included support for Mojang versions and popular mod loaders.'
 arch=(x86_64 aarch64 i686)
@@ -20,7 +20,7 @@ makedepends=(
 options=('!lto' '!buildflags')
 
 source=("portablemc-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('53918e35ec79bb7581eae890595936b2e99a3691659e221824f0bb59486d89a4')
+sha256sums=('193ac933d7c0b1cae3e2b7d07f2165860b3428d83ca00a2bc9308eb9754f391d')
 
 _pmc_version_long="pkgbuild: ${pkgver}-${pkgrel}"
 
