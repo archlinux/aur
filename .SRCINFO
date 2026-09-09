@@ -1,6 +1,6 @@
 pkgbase = jsrc
 	pkgdesc = Python library for bioinformatics and scientific computing
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/imjiaoyuan/jsrc
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = jsrc
 	makedepends = python-wheel
 	makedepends = python-setuptools>=61.0
 	depends = python>=3.10
-	optdepends = python-matplotlib>=3.5: plotting (jsrc plot) module
-	provides = python-jsrc=0.4.0
+	depends = python-matplotlib>=3.5
+	provides = python-jsrc=0.4.1
 	conflicts = python-jsrc
-	source = jsrc-0.4.0.tar.gz::https://github.com/imjiaoyuan/jsrc/archive/v0.4.0.tar.gz
-	sha256sums = a221c3f8fe98822ae859cfc83c337467590597d78bf1436482159984e2d445ef
+	source = jsrc-0.4.1.tar.gz::https://github.com/imjiaoyuan/jsrc/archive/v0.4.1.tar.gz
+	sha256sums = 259e3ed3529a57becbd803d07937582ac74238b05c22c434c001af60cde7beb5
 
 pkgname = jsrc
