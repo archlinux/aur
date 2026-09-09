@@ -1,6 +1,6 @@
 pkgbase = powershell-git
 	pkgdesc = A cross-platform automation and configuration tool/framework (git version)
-	pkgver = 7.7.0.preview.4.r15.gb664c2e026
+	pkgver = 7.7.0.preview.4.r18.gd54afc0d5e
 	pkgrel = 1
 	url = https://github.com/powershell/powershell
 	install = powershell.install
@@ -18,7 +18,7 @@ pkgbase = powershell-git
 	depends = icu
 	depends = openssl-1.0
 	optdepends = gss-ntlmssp: for NTLM/Negotiate authentication
-	provides = powershell=7.7.0.preview.4.r15.gb664c2e026
+	provides = powershell=7.7.0.preview.4.r18.gd54afc0d5e
 	conflicts = powershell
 	options = staticlibs
 	options = !strip

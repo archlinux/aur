@@ -3,7 +3,7 @@
 
 _name='powershell'
 pkgname="$_name-git"
-pkgver=7.7.0.preview.4.r15.gb664c2e026
+pkgver=7.7.0.preview.4.r18.gd54afc0d5e
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
@@ -54,6 +54,7 @@ pkgver() {
 }
 
 prepare() {
+  local _proj
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
   export DOTNET_HOME="$srcdir/.dotnet"
   export NUGET_PACKAGES="$srcdir/.nuget"
@@ -135,6 +136,7 @@ check() {
 }
 
 package() {
+  local _dn _dep _deps _mod _ver _lib
   export NUGET_PACKAGES="$srcdir/.nuget"
   cd "$_name"
   _dn="$(jq -r .sdk.version global.json | awk -F. '{print $1 ".0"}')"
@@ -160,8 +162,8 @@ package() {
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/usr/lib/$_name/pwsh" "$pkgdir/usr/bin/pwsh"
-  for lib in libssl libcrypto; do
-    ln -s "/usr/lib/$lib.so.1.0.0" "$pkgdir/usr/lib/$_name/$lib.so.1.0.0"
+  for _lib in libssl libcrypto; do
+    ln -s "/usr/lib/$_lib.so.1.0.0" "$pkgdir/usr/lib/$_name/$_lib.so.1.0.0"
   done
 }
 
