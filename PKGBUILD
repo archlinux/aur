@@ -1,7 +1,7 @@
 # Maintainer: Panda <satodu@github.com>
 pkgname=bamboo-end-store-bin
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Modern community store for EndeavourOS and Arch Linux built with NativePHP"
 arch=('x86_64')
 url="https://github.com/satodu/bamboo-end-store"
@@ -12,7 +12,7 @@ conflicts=('bamboo-end-store')
 options=('!strip')
 
 source=(
-    "${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/releases/download/${pkgver}/linux-unpacked.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/linux-unpacked.tar.gz"
     "bamboo-end-store.desktop"
     "icon.png"
 )
