@@ -1,6 +1,6 @@
 pkgbase = archman-bin
 	pkgdesc = All available pacman options combined into one interactive script
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/ankur3-101106/pacman-utils
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = archman-bin
 	provides = archman
 	conflicts = archman
 	options = !strip
-	source = README-2.0.0.md::https://raw.githubusercontent.com/ankur3-101106/pacman-utils/v2.0.0/README.md
-	source = LICENSE-2.0.0::https://raw.githubusercontent.com/ankur3-101106/pacman-utils/v2.0.0/LICENSE
-	sha256sums = e2caefd82f83a5490e6aaaa8d652417a1f53afa545fc40d600e58633f06388a5
+	source = README-2.1.0.md::https://raw.githubusercontent.com/ankur3-101106/pacman-utils/v2.1.0/README.md
+	source = LICENSE-2.1.0::https://raw.githubusercontent.com/ankur3-101106/pacman-utils/v2.1.0/LICENSE
+	sha256sums = 44a4fb41070a4fc3c517f5b99eade84550cb4401905108fb96a938b17c020390
 	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
-	source_x86_64 = archman-x86_64-2.0.0::https://github.com/ankur3-101106/pacman-utils/releases/download/v2.0.0/archman
-	sha256sums_x86_64 = 065fdc344bca95036d1e8c636beab823884c69c80ee6e94eb08eb7da0d379366
+	source_x86_64 = archman-x86_64-2.1.0::https://github.com/ankur3-101106/pacman-utils/releases/download/v2.1.0/archman
+	sha256sums_x86_64 = 536ded87a33599d16beef187030b4beb215665bfe469a31ccb5d034b518567bf
 
 pkgname = archman-bin

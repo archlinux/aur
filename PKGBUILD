@@ -6,7 +6,7 @@ _appname=archman
 pkgname=${_appname}-bin
 pkgdesc="All available pacman options combined into one interactive script"
 
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,9 +30,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}")
-sha256sums=('e2caefd82f83a5490e6aaaa8d652417a1f53afa545fc40d600e58633f06388a5'
+sha256sums=('44a4fb41070a4fc3c517f5b99eade84550cb4401905108fb96a938b17c020390'
             '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643')
-sha256sums_x86_64=('065fdc344bca95036d1e8c636beab823884c69c80ee6e94eb08eb7da0d379366')
+sha256sums_x86_64=('536ded87a33599d16beef187030b4beb215665bfe469a31ccb5d034b518567bf')
 
 
 package() {
