@@ -7,12 +7,14 @@
 
 pkgname=pxview-git
 pkgver=1.6.1.r273.59263ff
-pkgrel=1
+pkgrel=3
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
 arch=($CARCH)
 url='https://github.com/PXLogic/PXView'
 license=(GPL-3.0-or-later)
+provides=(${pkgname%-git} libsigrok)
+conflicts=(${pkgname%-git} libsigrok)
 depends=(
   sh
   hicolor-icon-theme 
