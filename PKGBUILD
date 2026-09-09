@@ -11,7 +11,7 @@ options=('!strip')
 provides=('deepseek-harness')
 conflicts=('deepseek-harness' 'deepseek-harness-bin')
 source=('git+https://github.com/deepseek-ai/deepseek-harness.git' 'aur-package.mjs' 'check-runtime.mjs')
-sha256sums=('SKIP' 'af8d0cc8d2b1b775f8b9d56561e4584a2dff342585e1a399454241023832cb20' '7f61ea1ac00132dceb9caae922e4151313e8fb99745037eab972f18f1f088156')
+sha256sums=('SKIP' 'aad05717a929cce13e4dd944f682451c9a082089dd0ed5c22d7b144799ddc991' '618b13fc921853382140219303075a167df8a541602cbf81f3b411ca6e159cad')
 
 pkgver() {
   cd "$srcdir/deepseek-harness"

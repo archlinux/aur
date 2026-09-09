@@ -1,3 +1,24 @@
+/*
+ * Downstream runtime assembler for the Arch package.
+ *
+ * Upstream DSH owns its release artifacts and the definition of a runnable
+ * runtime profile. This adapter currently reconstructs that runtime from packed
+ * npm artifacts because upstream does not expose an authoritative
+ * runtime-assembly interface for downstream packagers.
+ *
+ * The manifest closure below is therefore a compatibility fallback, not the
+ * canonical definition of DSH runtime composition; configured plugins and
+ * other composition requirements may exist outside ordinary dependency
+ * closure.
+ *
+ * If upstream exposes authoritative runtime assembly, prefer consuming it and
+ * delete or shrink this logic. Arch metadata, filesystem layout, fakeroot
+ * handling, and validation of the final Arch artifact remain downstream.
+ *
+ * Registry optional dependencies are left to npm so OS/CPU selectors choose
+ * the appropriate native payload.
+ */
+
 import { execFileSync } from 'node:child_process'
 import { mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { relative, resolve } from 'node:path'
@@ -19,10 +40,10 @@ for (const dir of ['dist/aur-vendor', 'dist/aur-dsh']) {
   }
 }
 
-// Runtime closure of @deepseek-ai/dsh over the packed tarballs. Optional
-// dependencies that have release tarballs are included too; registry optional
-// dependencies (notably node-addon-system's platform packages) are resolved by
-// npm according to the entry package's OS/CPU selectors.
+// Downstream fallback for the absence of an upstream-owned runtime assembler;
+// dependency closure must not be treated as a complete model of DSH runtime
+// composition. Include packed optional dependencies here; leave registry
+// optionals to npm so OS/CPU selectors choose the native payload.
 const seen = new Set()
 function visit(name) {
   if (seen.has(name)) return
@@ -54,7 +75,9 @@ writeFileSync(resolve(npmRoot, 'package.json'), `${JSON.stringify({
   private: true,
   dependencies,
   allowScripts: {
-    // npm resolves file tarballs to absolute paths before matching policy.
+    // npm canonicalizes a local file tarball to its absolute path before
+    // matching allowScripts, so authorize the resolved identity rather than
+    // the file: spelling stored in the generated manifest.
     [resolve(npmRoot, subprocessLocal.slice('file:'.length))]: true,
     koffi: true,
     'node-pty': true,
