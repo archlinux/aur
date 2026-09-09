@@ -1,0 +1,13 @@
+shell_path=/usr/lib/boomerangz/boomerangz-shell
+
+post_install() {
+	grep -qxF "$shell_path" /etc/shells || printf '%s\n' "$shell_path" >>/etc/shells
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	sed -i "\\|^${shell_path}$|d" /etc/shells
+}

@@ -1,0 +1,20 @@
+pkgbase = boomerangz-bin
+	pkgdesc = Property-driven ZFS snapshot and replication manager (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pdf/boomerangz
+	install = boomerangz.install
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = zfs-utils
+	optdepends = openssh: SSH replication destinations
+	provides = boomerangz
+	conflicts = boomerangz
+	backup = etc/boomerangz/config.toml
+	source_aarch64 = boomerangz-bin_0.1.0_aarch64.tar.gz::https://github.com/pdf/boomerangz/releases/download/v0.1.0/boomerangz-v0.1.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 6b4c2499dbe54c049c20468afa08a70468ace1271354461420e5fbd65baa60d3
+	source_x86_64 = boomerangz-bin_0.1.0_x86_64.tar.gz::https://github.com/pdf/boomerangz/releases/download/v0.1.0/boomerangz-v0.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = ca3488db43a96838358ac1fee79b712309464221f32301429f2d1c45eefb852d
+
+pkgname = boomerangz-bin
