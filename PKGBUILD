@@ -81,7 +81,7 @@ build() {
     cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/ \
-        -DVERSION="${pkgver}" \
+        -DVERSION="${pkgver%%.r*}" \
         -DGIT_REVISION="$(git rev-parse --short HEAD)" \
         -DDISTRIBUTOR="AUR (package: $pkgname)"
     cmake --build build
