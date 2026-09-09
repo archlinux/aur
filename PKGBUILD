@@ -2,18 +2,18 @@
 
 _name=openinference-instrumentation
 pkgname=python-$_name
-pkgver=0.1.61
+pkgver=0.1.62
 pkgrel=1
-pkgdesc="OpenInference Semantic Conventions."
+pkgdesc="OpenInference instrumentation utilities."
 arch=('any')
 _repo="https://github.com/Arize-ai/openinference"
-url="$_repo/tree/main/python/openinference-semantic-conventions"
+url="$_repo/tree/main/python/${pkgname/-//}"
 license=('Apache-2.0')
 depends=('python' 'python-opentelemetry-api' 'python-opentelemetry-sdk' 'python-openinference-semantic-conventions' 'python-wrapt')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-jsonschema' 'python-openai' 'python-pydantic' 'python-pytest-asyncio' 'python-pytest-recording')
 source=("$_repo/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('01aba5f1143ecc1b68c384424772ea81ef6c542cc6c47affa6c4b7656a47f0ce')
+sha256sums=('8225b276522c68c87e410f5055eff7bbd0f99f73b08e69b8d11c0c2f5c768f04')
 
 build() {
   cd "$srcdir"/${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}
