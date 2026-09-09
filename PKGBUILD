@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folia-major
 _pkgname=Folia
-pkgver=0.7.4
+pkgver=0.7.6
 _electronversion=43
 _nodeversion=24
 pkgrel=1
-pkgdesc="Local music/navigation/third-party multi-platform online music player focusing on gorgeous lyrics animation effects."
+pkgdesc="Local music/navigation/third-party multi-platform online music player focusing on gorgeous lyrics animation effects.专注于绚丽的歌词动画效果的本地音乐/navidrome/第三方多平台在线音乐播放器."
 arch=('any')
 url="https://folia-site.cielaniska.top/"
 _ghurl="https://github.com/chthollyphile/folia-major"
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('8cb98a827a9b023b84d3665dce1665764ed2f9dbabcaf0f3d55e687619109416'
+sha256sums=('5bb0f1c7e12b39cae672b5da7eb93bf933bb171d506dc0e7d6c8ce4666c08e2c'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -84,6 +84,8 @@ build() {
     _ensure_local_nvm
     ELECTRON=true NODE_ENV=production     npm run build
     ELECTRON=true NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
+    local _app_dir=$(_get_app_dir)
+    ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/ffmpeg-audio/ffmpeg"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
@@ -91,7 +93,6 @@ package() {
 	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
 	rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
-    ln -sf "/usr/bin/ffmpeg" "${pkgdir}/usr/lib/${pkgname}/ffmpeg/ffmpeg"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packaging/aur/${pkgname}-bin/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
