@@ -1,16 +1,21 @@
 -------------------------------------------------------
  Changelog    : lockmgr
- Tags         : 1.9.6 ➙ 1.10.1
+ Tags         : 1.9.7 ➙ 1.10.2
               : 2026-09-09 ➙ 2026-09-09
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-09   : 1.10.1
+ 2026-09-09   : 1.10.2
+              - **1.10.2**
+            
+                * Use meson parallel test capability instead of bash script
+
+ 2026-09-09   : 1.10.1, origin/master
               - **1.10.1**
             
                 * Drop unused pytest from meson.build (thank you @piater)
 
- 2026-09-09   : 1.10.0, origin/master
+ 2026-09-09   : 1.10.0
               - **1.10.0**
             
                 * Bug in meson test runner with PYTHONPATH
@@ -25,8 +30,3 @@
               - **1.9.7**
             
                 * Test now runs several processs in parallel waiting to acquire lock
-
- 2026-09-09   : 1.9.6
-              - **1.9.6**
-            
-                * typo
