@@ -1,7 +1,7 @@
 # Maintainer: René 'r3j0' Jochum <r3j0@jochum.dev>
 
 pkgname=leafwiki-bin
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Lightweight self-hosted wiki with Markdown files on disk (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -16,14 +16,14 @@ source=(
 )
 sha256sums=(
   '782ab724cb38d2c97997712aacaea6cddde915fd2a0c1893e9f2c2971250cabf'
-  '142db63515c5bb33b5d7919ef6a46121caa65ea6b6e291dca951608b437f6d4d'
+  '27533db0466f1d30c6dee08fb986dc4f0f82985d1a1921bf4f1077809c11dfd3'
 )
 
 source_x86_64=("leafwiki-$pkgver-linux-amd64::https://github.com/perber/leafwiki/releases/download/v$pkgver/leafwiki-v$pkgver-linux-amd64")
-sha256sums_x86_64=('51001cdeb47966a67449e43ee7ffe603dbb169b3ccbed1de24ca842b1dbcae22')
+sha256sums_x86_64=('a7137fffa40a5ffd30cd0f319d071f3cd4c3d6e409e653d2e34768ab858036d1')
 
 source_aarch64=("leafwiki-$pkgver-linux-arm64::https://github.com/perber/leafwiki/releases/download/v$pkgver/leafwiki-v$pkgver-linux-arm64")
-sha256sums_aarch64=('b8eb1f650a0d08af69a5d5c1d1ac9d3960f992bfb107a2c5464eed9823449c8c')
+sha256sums_aarch64=('ca190ee8b1f269da339aa6792b7503415a3ac344ac94630e21122049621b0648')
 
 package() {
   case "$CARCH" in
