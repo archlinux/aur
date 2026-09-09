@@ -10,8 +10,7 @@
 _jdkname=liberica-jdk-full
 pkgname="${_jdkname}-bin"
 _java_ver=26
-_pkgver=${_java_ver}.0.2+13
-pkgver=${_pkgver/+/.u}
+pkgver=26.0.2.1+1
 pkgrel=1
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
@@ -51,27 +50,19 @@ backup=(etc/${_jdkname}/logging.properties
 
 source=(freedesktop-java.desktop.in
         freedesktop-jconsole.desktop.in
-        freedesktop-jshell.desktop.in
-        ${_jdkname}16.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon16.png
-        ${_jdkname}24.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
-        ${_jdkname}32.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
-        ${_jdkname}48.png::https://raw.githubusercontent.com/openjdk/jdk/master/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
-sha1sums=('fe1e43bf295862bb3bd206278f53ecd384dbe0ca'
-          'efbccfb524875d4968a3fbef56b9f14533279d3f'
-          '5c09312d636e85b09742a777d71729d901c4cdbd'
-          '36096a57cebd346e08efc68326fe77960d43726f'
-          'b8233f9ff931ce97a265827fac18ed90f4e248c6'
-          'a0da2952bc87a425182c3ac88e88649fbaa7cb65'
-          'eb36aa73a9be98164447774217865b91e79d503c')
-sha1sums_aarch64=('4f128c28216ba17f72ac3f20eac92c3ee218c9bd')
-sha1sums_armv7h=('9bc5d8aa34d2777b634db32f5d1279e0107ded61')
-sha1sums_armv8h=('9bc5d8aa34d2777b634db32f5d1279e0107ded61')
-sha1sums_x86_64=('393b810f8cfa3cd9fdb26c688fcf36f5610679c6')
-
-source_aarch64=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-aarch64-full.tar.gz)
-source_armv7h=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-arm32-vfp-hflt-full.tar.gz)
+        freedesktop-jshell.desktop.in)
+source_aarch64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-aarch64-full.tar.gz)
+source_armv7h=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-arm32-vfp-hflt-full.tar.gz)
 source_armv8h=(${source_armv7h[@]})
-source_x86_64=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-amd64-full.tar.gz)
+source_x86_64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-amd64-full.tar.gz)
+
+sha1sums=('ec278cbc0a5f7a188140703c63e3b9cdb3931c29'
+          '41cece227a4641fbb1e04d246c51ac2dac7f0012'
+          '13af0192b2ffe02efaf5ae6a592b3ea15d9f7194')
+sha1sums_aarch64=('b8c54a09b2d3b735cf491564ac0619c64d7f2c40')
+sha1sums_armv7h=('d867d1722cc5cc68901d87ac264d11208a481749')
+sha1sums_armv8h=('d867d1722cc5cc68901d87ac264d11208a481749')
+sha1sums_x86_64=('2fceb3573f9f85579a314a8f8d850acae036357c')
 
 # Skip debug package generation and stripping for prebuilt binaries
 options=(!debug !strip)
@@ -82,12 +73,12 @@ _jvmdir="/usr/lib/jvm/${_jdkname}"
 
 prepare() {
   for f in *.desktop.in; do
-    sed "s|@@VER@@|${pkgver/.*}|g" $f >> ${f/.in}
+    sed "s|@@VER@@|${pkgver/.*}|g; s|@@PATH@@|${_jvmdir}|g" $f >> ${f/.in}
   done
 }
 
 package() {
-  cd jdk-${_pkgver/+*}-full
+  cd jdk-${pkgver/+*}-full
 
   install -dm 755 "${pkgdir}/${_jvmdir}"
   cp -r . "${pkgdir}/${_jvmdir}/"
@@ -106,21 +97,11 @@ package() {
   rm -rf "${pkgdir}/${_jvmdir}/legal"
   ln -s "/usr/share/licenses/${_jdkname}" "${pkgdir}/${_jvmdir}/legal"
 
-  # Man pages
-  # for f in man/man1/*; do
-  #   install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-$_jdkname.1}"
-  # done
-  # rm -rf "${pkgdir}/${_jvmdir}/man"
-  # ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
-
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
 
-  # Icons and launchers
-  for s in 16 24 32 48; do
-    install -Dm644 "${srcdir}"/${_jdkname}${s}.png "${pkgdir}"/usr/share/icons/hicolor/${s}x${s}/apps/${_jdkname}.png
-  done
+  # Launchers
   for f in java jconsole jshell; do
     install -Dm644 "${srcdir}"/freedesktop-${f}.desktop "${pkgdir}"/usr/share/applications/${f}-${_jdkname}.desktop
   done
