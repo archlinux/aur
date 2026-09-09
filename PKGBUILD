@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-irc-client-bin
 _pkgname=Simple-Irc-Client
-pkgver=2.0.4
+pkgver=2.0.6
 pkgrel=1
-pkgdesc="💻 Desktop clients for Simple Irc Client.(Prebuilt version)"
+pkgdesc="An open source project that provides a minimalist IRC client for users who don't need all the bells and whistles of a full-featured IRC client."
 arch=('x86_64')
 url="https://simpleircclient.com/"
 _ghurl="https://github.com/Simple-Irc-Client/desktop"
@@ -14,6 +14,8 @@ depends=(
     'gtk3'
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
+    'libappindicator'
+    'libayatana-appindicator'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
 sha256sums=('fe3ec81d21af32d6bfb6c46fc152aa9305287cb69e45428dd47fb77d2846cd63')
