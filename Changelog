@@ -1,2 +1,4 @@
-2.47.4-1 [2026-09-04]
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 152.0.7977.83.
+2.48.0-1 [2026-09-09]
+- [BugFix][Desktop][Enterprise] Fixed fail-open issues in the upload policy and resolved a startup race condition affecting download access policy enforcement.
+- [Desktop][Security] Zoho Sign-in flow updated to OAuth standards.
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 153.0.8010.37.
