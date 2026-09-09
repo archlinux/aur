@@ -1,8 +1,8 @@
 # Maintainer: Máté Zoltán Farkas <mail@example.com>
 
 pkgname=widic
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.2
+pkgrel=1
 pkgdesc="A Wiktionary viewer in your terminal."
 arch=('any')
 url="https://github.com/matezoltanfarkas/widic"
