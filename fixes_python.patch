@@ -8,10 +8,14 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 +set(ORCA_BUNDLED_UV_EXECUTABLE "/usr/bin/uv" CACHE FILEPATH "Path to a uv executable to bundle for Python package installation. Leave empty to auto-download.")
  
  # Auto-download uv if not provided by the user.
-@@ -880,7 +880,7 @@
- set(_bundled_python_abi "312")
+@@ -879,8 +879,8 @@
+-set(_bundled_python_version "3.12.13")
++set(_bundled_python_version "3.14.7")
+-set(_bundled_python_abi "312")
++set(_bundled_python_abi "314")
  string(REGEX REPLACE "^([0-9]+\\.[0-9]+)\\..*$" "\\1" _bundled_python_version_short "${_bundled_python_version}")
- set(_bundled_python_root "${CMAKE_PREFIX_PATH}/libpython")
+-set(_bundled_python_root "${CMAKE_PREFIX_PATH}/libpython")
++set(_bundled_python_root "/usr/")
 -set(Python3_ROOT_DIR "${_bundled_python_root}" CACHE PATH "Root directory for bundled Python" FORCE)
 +# set(Python3_ROOT_DIR "${_bundled_python_root}" CACHE PATH "Root directory for bundled Python" FORCE)
  set(Python3_USE_STATIC_LIBS OFF)
@@ -64,3 +68,34 @@ diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
  endif ()
  
  # Slic3r binary install target. Default build type is release in case no CMAKE_BUILD_TYPE is provided.
+--- a/src/slic3r/plugin/PythonInterpreter.cpp
++++ b/src/slic3r/plugin/PythonInterpreter.cpp
+@@ -161,8 +161,8 @@
+ constexpr const char* PYTHON_DLL       = "python312.dll";
+ constexpr const char* PYTHON_DEBUG_DLL = "python312_d.dll";
+ #else
+-constexpr const char* PYTHON_STDLIB_DIR = "python3.12";
+-constexpr const char* PYTHON_EXECUTABLE = "python3.12";
++constexpr const char* PYTHON_STDLIB_DIR = "python3.14";
++constexpr const char* PYTHON_EXECUTABLE = "python3.14";
+ #endif
+ 
+ std::string executable_name(const char* base)
+@@ -527,7 +527,7 @@
+ 
+         // Log the exact paths being used for debugging
+         BOOST_LOG_TRIVIAL(info) << "Setting Python home to: " << python_home;
+-        BOOST_LOG_TRIVIAL(info) << "Python 3.12 stdlib path: " << python_lib.string();
++        BOOST_LOG_TRIVIAL(info) << "Python 3.14 stdlib path: " << python_lib.string();
+ 
+         // Verify encodings module exists
+         fs::path encodings_path = python_lib / "encodings";
+@@ -537,7 +537,7 @@
+             BOOST_LOG_TRIVIAL(warning) << "Encodings module NOT found at: " << encodings_path.string();
+         }
+ 
+-        BOOST_LOG_TRIVIAL(info) << "Using Python 3.12 PyConfig initialization API";
++        BOOST_LOG_TRIVIAL(info) << "Using Python 3.14 PyConfig initialization API";
+ 
+         // Set Python home - this is the prefix where Python libraries are located
+         PyConfig config;
