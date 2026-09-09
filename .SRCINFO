@@ -1,0 +1,14 @@
+pkgbase = slssh
+	pkgdesc = Simple SSH server manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Lecer69/LSSH
+	arch = x86_64
+	license = Unlicense
+	makedepends = cargo
+	depends = openssh
+	depends = sshpass
+	source = slssh-0.1.0.tar.gz::https://github.com/Lecer69/LSSH/archive/v0.1.0.tar.gz
+	sha256sums = aeb3a3df778e87400da67238c9d25119297531fa9ca71b3ba3d89911834ccabb
+
+pkgname = slssh
