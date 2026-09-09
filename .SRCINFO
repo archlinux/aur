@@ -1,6 +1,6 @@
 pkgbase = ranwhen
 	pkgdesc = Visualize when your system was running (written in Rust, with macOS and Linux support)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/gustawdaniel/ranwhen
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ranwhen
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = gcc-libs
-	source = ranwhen-0.2.0.tar.gz::https://github.com/gustawdaniel/ranwhen/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 7ca51a3e9c5538178a451d80f1886cbe3a9a753e1a3feef940c1aa4e9feb1312
+	source = ranwhen-0.2.1.tar.gz::https://github.com/gustawdaniel/ranwhen/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = ff09b46d0fcdd83a19eca2404d0c62f89203f81069a5955a552c22581690f895
 
 pkgname = ranwhen

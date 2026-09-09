@@ -1,6 +1,6 @@
 # Maintainer: Daniel Gustaw <gustaw.daniel@gmail.com>
 pkgname=ranwhen
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Visualize when your system was running (written in Rust, with macOS and Linux support)"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7ca51a3e9c5538178a451d80f1886cbe3a9a753e1a3feef940c1aa4e9feb1312')
+sha256sums=('ff09b46d0fcdd83a19eca2404d0c62f89203f81069a5955a552c22581690f895')
 
 build() {
   cd "$pkgname-$pkgver"
