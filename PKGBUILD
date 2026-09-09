@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=epinio-bin
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="Opinionated platform that runs on Kubernetes that takes you from App to URL in one step"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/epinio/epinio/re
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/epinio/epinio/releases/download/v${pkgver}/epinio-linux-arm64")
 noextract=("${pkgname}-${pkgver}-x86_64" "${pkgname}-${pkgver}-aarch64")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('60bb414a67303fc31031f8b8c3fe1c4b3c001d4bb0d285e0a008af3244bccda2')
-sha256sums_aarch64=('8e9aaff37b3caf5fb3a39e3ca0868be9b582052dc929407b40ecf7188ee0f608')
+sha256sums_x86_64=('27d1a8047d245b07cb0019fc170697ee134e2b54ef2401f171364568079353fb')
+sha256sums_aarch64=('e33d22de0d0066131939f08a02a8c1cf09692aa38dc7c740ce90fc69b1d2b040')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/epinio"
