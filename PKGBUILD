@@ -1,7 +1,7 @@
 # Maintainer: warmwaffles <warmwaffles@gmail.com>
 # Maintainer: Lezurex <lenny at familie-angst dot ch>
 pkgname="sleek"
-pkgver=2.0.27
+pkgver=2.0.28
 pkgrel=1
 pkgdesc="Todo manager based on the todo.txt syntax for Linux, free and open-source (FOSS)"
 arch=("x86_64" "aarch64")
@@ -12,7 +12,7 @@ makedepends=("nodejs" "npm" "unzip")
 depends=("electron" "nodejs")
 
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek")
-sha512sums=('a9c3072a3ad5bd3bd4cb732f3575b88a4051a6f98942e9da5ac54a74f4cadd1a52fa001ba1402ac890db99b67260a0a7be5924c989e86991ab8bc7e6dcc9f363'
+sha512sums=('057190cf5854ba1ed09a5b5bcbfde771b4298913ac2fa7c70695d131adb5c9f8adf0a0e9600fd30bf3786027420744abc8e7617db4da6d80bcc535e6887dd44e'
             'c3ebfc99947ba484d8ba8a3cd9b4c4d5a984a95e7cb24faac1ac59506f7f144d4e9c92ea9fcfa585f4d9fee779366d4eb9db0795c910fb221bb266e3c9d5be24'
             'ea1d322bd56c7944a9eae97f4968a6a2e937b510eb3c1c21266428450c5b2ddcd8576718d0b66b69fbce5694ba94e80a692d04bda1e8c2b24a8d814a5ed50963')
 
@@ -45,8 +45,8 @@ package() {
   install -Dm644 "../${pkgname}.desktop" -t "$pkgdir/usr/share/applications/"
 
   msg2 "Installing icons"
-  for size in 22 24 32 48 64 128 256 512; do
-    install -Dm644 "./build/${size}x${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+  for size in 16 32 128 256 512; do
+    install -Dm644 "./resources/icon.iconset/icon_${size}x${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
   done
-  install -Dm644 "./build/512x512.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
+  install -Dm644 "./resources/icon.iconset/icon_512x512.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
 }
