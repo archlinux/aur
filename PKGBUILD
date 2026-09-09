@@ -1,6 +1,6 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 pkgname=dbx
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="Open-source database management tool (Tauri-based)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ conflicts=("$pkgname-bin")
 # empty and gdb-add-index errors out. Skip the debug subpackage entirely.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('99714b464703a718a4b812458b71c40e2e50daa64d1da45e113b3df25195ea4d')
+sha256sums=('f0c1d0ebe8a1a8a037b2ec4f0f6c2df4329bb108852fa8d14d4e14fc3dde89b5')
 
 prepare() {
     cd "$pkgname-$pkgver"
