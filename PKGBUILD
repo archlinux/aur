@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pupu-git
 _pkgname=PuPu
-pkgver=0.1.8.r0.g327097b
+pkgver=0.1.10.r2.gb664b9f
 _electronversion=40
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
 pkgdesc="A simple and easy to use UI for the Ollama.(Use system-wide electron)"
 arch=('any')
@@ -13,13 +13,19 @@ provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
 depends=(
     "electron${_electronversion}"
-    'ollama'
-    'python'
-    'python-numpy'
-    'python-flask'
-    'python-httpx'
-    'python-werkzeug'
-    'python-openai'
+    'nodejs'
+    'uv'
+    'python-urllib3'
+    'python-typing_extensions'
+    'python-legacy-cgi'
+    'python-packaging'
+    'python-attrs'
+    'python-filelock'
+    'python-keyring'
+    'python-pip'
+    'python-cryptography'
+    'libxcrypt-compat'
+    'python-requests'
 )
 makedepends=(
     'npm'
@@ -28,7 +34,6 @@ makedepends=(
     'curl'
     'gendesk'
     'jq'
-    'python312'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -97,7 +102,9 @@ prepare() {
     sed -i "s/sys.version_info\[:2\] == (3, 12)/sys.version_info[0] == 3 and sys.version_info[1] >= 12/g" scripts/init_python312_venv.sh
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
+    # Fix broken progress package (lib directory is empty)
+    sed -i 's/"overrides": {/"overrides": {\n    "progress": "2.0.3",/' package.json
+    NODE_ENV=development    npm install --legacy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
