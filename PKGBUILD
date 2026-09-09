@@ -8,8 +8,6 @@ url="https://github.com/gustawdaniel/ranwhen"
 license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo')
-provides=('runwhen')
-conflicts=('runwhen')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('7ca51a3e9c5538178a451d80f1886cbe3a9a753e1a3feef940c1aa4e9feb1312')
 
@@ -26,6 +24,5 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/ranwhen" "$pkgdir/usr/bin/ranwhen"
-  ln -s /usr/bin/ranwhen "$pkgdir/usr/bin/runwhen"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
