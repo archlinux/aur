@@ -1,48 +1,32 @@
 -------------------------------------------------------
  Changelog    : lockmgr
- Tags         : 1.8.2 ➙ 1.9.4
-              : 2026-01-06 ➙ 2026-09-06
+ Tags         : 1.9.2 ➙ 1.9.6
+              : 2026-09-06 ➙ 2026-09-09
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-06   : 1.9.4
+ 2026-09-09   : 1.9.6
+              - **1.9.6**
+            
+                * typo
+
+ 2026-09-09   : 1.9.5
+              - **1.9.5**
+            
+                * meson now runs tests.
+                * Clean html docs to avoid unneeded sphinx tmp files.
+                * Fix bug with tests using relative path as reported by @piater on AUR
+
+ 2026-09-06   : 1.9.4, origin/master
               - **1.9.4**
             
                 * Fix missing makedepends and ensure build/install scripts fail on error
                   Thanks to @TrialnError on Arch AUR.
 
- 2026-09-06   : 1.9.3, origin/master
+ 2026-09-06   : 1.9.3
               - Add missing makedepends on meson (per @TrialnError from aur - thank you!)
 
  2026-09-06   : 1.9.2
               - **1.9.2**
             
                 * Typo in docs
-
- 2026-09-06   : 1.9.1
-              - **1.9.1**
-            
-                * Use meson / meson-python for build and package management
-                * Periodic review
-                * Small code adjustments.
-                * Add check to PKGBUILD
-                * please delete any /usr/lib/python3.14/site-packages/lockmgr/__pycache__ before installing.
-                  See important note below.
-            
-                ** IMPORTANT **
-            
-                Some older versions of this package did not include any byte compiled cache (__pycache__)
-                and python auto creates them at runtime at a later date. If this exists, please delete
-                the direcroty before installing this version since  it now includes the .pyc files.
-                This will avoid pacman error that a .pyc file exists. So before upgrade please do::
-            
-                    /usr/bin/rm -rf /usr/lib/python3.14/site-packages/lockmgr/__pycache__
-            
-                My apologies.
- 2026-01-06   ⋯
-              - update Docs/Changelog
-
- 2026-01-06   : 1.8.2
-              - PKGBUILD small change
- 2026-01-04   ⋯
-              - update Docs/Changelog
