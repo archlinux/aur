@@ -3,7 +3,7 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.22.0_beta.0
+pkgver=0.22.0_beta.1
 pkgrel=1
 url='https://www.hunk.dev/'
 changelog=CHANGELOG.md
@@ -16,7 +16,7 @@ provides=('hunkdiff')
 options=(!strip !debug)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver/_/-}.tar.gz"
         'hunk-embed-envs.patch')
-b2sums=('14593ef786079c37b66ed635b3ca26725e00a1c9c1021c2e44984c6867101343204eaaf3c751e9b4486c959bf2b51be5a22c2303aa61ae06162fb0dcbbf9f911'
+b2sums=('1d9a6b505abb24c1120e8a438f46d8956f90fc87a8eff7d3a9b99a0f88e449c8f40ced9d6949409807b63190c53a3e3288020f077d1ff85e2d4dc92b37b45f8f'
         '019c586f88e91dc67d37962142e425f6f5021826e70a02030ac8f212dc2a12006f001ccae658aa9eb937cbccc064ea804e29279d8645e96f15565ca17b2b4ce0')
 
 _install_dir=/usr/lib/hunkdiff
@@ -27,7 +27,6 @@ prepare() {
 
   patch -t -Np1 -i ../hunk-embed-envs.patch
 
-  cd packages/hunk
   bun install \
     --production \
     --frozen-lockfile \
@@ -36,7 +35,6 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver/_/-}"
-  cd packages/hunk
 
   export HUNK_INSTALL_DIR="${_install_dir}"
   export HUNK_INSTALL_SOURCE=pacman
@@ -45,14 +43,14 @@ build() {
     --compile \
     --target bun \
     --format esm \
-    --outfile dist/hunk \
+    --outfile packages/hunk/dist/hunk \
     --sourcemap \
     --bytecode \
     --minify \
     --no-compile-autoload-bunfig \
     --env 'HUNK_INSTALL_*' \
-    src/main.tsx \
-    src/highlightWorkerEntry.ts
+    packages/hunk/src/main.tsx \
+    packages/hunk/src/highlightWorkerEntry.ts
 }
 
 check() {
@@ -86,18 +84,17 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver/_/-}"
-  cd packages/hunk
 
   local hunk_install_dir="${pkgdir}${_install_dir}"
 
-  install -vD -t "${hunk_install_dir}/" -m755 dist/hunk
+  install -vD -t "${hunk_install_dir}/" -m755 packages/hunk/dist/hunk
   install -vd "${pkgdir}/usr/bin"
   ln -v -ft "${pkgdir}/usr/bin/" -sr "${hunk_install_dir}/hunk"
 
   local skill
   for skill in "${_skills[@]}"; do
     install -vD -t "${hunk_install_dir}/skills/hunk-${skill}/" \
-      -m644 "skills/hunk-${skill}/SKILL.md"
+      -m644 "packages/hunk/skills/hunk-${skill}/SKILL.md"
   done
 
   install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" -m644 LICENSE
