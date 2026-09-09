@@ -1,6 +1,6 @@
 pkgbase = datui-bin
 	pkgdesc = Data Exploration in the Terminal
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://derekwisong.github.io/datui
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = datui-bin
 	conflicts = datui
 	options = !strip
 	options = !debug
-	source = https://github.com/derekwisong/datui/releases/download/v0.3.0/datui-0.3.0-x86_64.tar.gz
-	sha256sums = 39f06230c5aeaa9678ab34462a374ffa00a76d4a5d19bdfdfb1f6449b698ecfe
+	source = https://github.com/derekwisong/datui/releases/download/v0.3.1/datui-0.3.1-x86_64.tar.gz
+	sha256sums = 3e175974747f932cacccef402486c092211e7530d16c86f64d107c81715acaa7
 
 pkgname = datui-bin
