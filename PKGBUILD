@@ -5,7 +5,7 @@
 
 pkgname=waterfox-bin
 epoch=1
-pkgver=6.7.1.1
+pkgver=6.7.2
 pkgrel=1
 pkgdesc="Current/modern generation of customizable privacy-conscious web browser."
 arch=('x86_64')
@@ -72,6 +72,6 @@ END
   ln -s /opt/waterfox/waterfox "${pkgdir}"/usr/bin/waterfox-g
 }
 
-sha512sums=('e50d899897f2f7ab38d0b1eb313d3d73df48b4f83018a0da9c52375da7dc81b092c1c364f4dc33bd68ac1e48dfdfba1ea0bb9c6c842909be9aee7a934a7e02e2'
+sha512sums=('1f4c8c9a25597576da6c3e32c7298fade0ca577c3c92e9b0edc8231dc12b9f856bb39780a922a9871198f66180db5de7c1c001b9cf3ccbb2d4de98687dc7e9d4'
             'd0237cffceb1f22bcef3479ee192360c069052534cbe6f452bf88e671ba26b7d8d04f6cdbb4f34647277b64136093d703b5f9ac8071fe0d3c80d70b1e1395a84')
 # vim:set ts=2 sw=2 et:
