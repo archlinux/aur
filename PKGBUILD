@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wubi-dict-editor
 _zhname='五笔码表助手'
-pkgver=1.3.12
+pkgver=1.3.13
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('c53f01a0d0994b8202c3d9e71a4ddd56c09c7261a46c337429b78a7148652b37'
+sha256sums=('94976f1cd1255a761b5cdcccaa73daba8dcd26e9b686a6e6b0ba0549e692b581'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
