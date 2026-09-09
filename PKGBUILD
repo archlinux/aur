@@ -2,7 +2,7 @@
 # Maintainer: Graphixa <https://github.com/Graphixa>
 
 pkgname='fontget'
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='A tiny, cross-platform CLI tool to install and manage fonts from the command line'
 url='https://github.com/Graphixa/FontGet'
@@ -13,13 +13,21 @@ conflicts=('fontget')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/Graphixa/FontGet/releases/download/v${pkgver}/fontget-${pkgver}.tar.gz")
-sha256sums=('4d4db781a63857d9f64f4205e4105fcafc9b1ec4da6ae3dfe5c2e73777932456')
+sha256sums=('59a0033f8c314c976a62db83cd54b7977dc3353f3b603360d14f92a5ebd37b12')
 prepare() {
-  cd "${pkgname}_${pkgver}"
+  cd "${srcdir}" || exit 1
+  if [ ! -f "go.mod" ]; then
+  echo "go.mod not found in ${PWD}"
+  exit 1
+  fi
   go mod download
 }
 build() {
-  cd "${pkgname}_${pkgver}"
+  cd "${srcdir}" || exit 1
+  if [ ! -f "go.mod" ]; then
+  echo "go.mod not found in ${PWD}"
+  exit 1
+  fi
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -28,6 +36,10 @@ build() {
   go build -ldflags="-w -s -buildid='' -linkmode=external -X fontget/internal/version.Version=${pkgver}" -o fontget .
 }
 package() {
-  cd "${pkgname}_${pkgver}"
+  cd "${srcdir}" || exit 1
+  if [ ! -f "go.mod" ]; then
+  echo "go.mod not found in ${PWD}"
+  exit 1
+  fi
   install -Dm755 ./fontget "${pkgdir}/usr/bin/fontget"
 }
