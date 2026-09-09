@@ -1,6 +1,6 @@
 # Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
 pkgname=neoarch-git
-pkgver=3.0.0.r0.g0000000
+pkgver=3.2.0.r0.g0000000
 pkgrel=1
 pkgdesc="NeoArch Package Manager for Arch Linux (Lynx Edition — development build, use 'neoarch' for stable)"
 arch=('any')
@@ -19,7 +19,7 @@ pkgver() {
   # .r<count> is monotonic so pacman vercmp always sees newer pushes as
   # upgrades; the hash suffix stays only for traceability.
   local tag rev hash
-  tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "3.0.0")
+  tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "3.2.0")
   rev=$(git rev-list --count HEAD 2>/dev/null || echo "0")
   hash=$(git rev-parse --short=7 HEAD 2>/dev/null || echo "0000000")
   printf "%s.r%s.g%s" "$(echo "$tag" | sed 's/^v//;s/-/./g')" "$rev" "$hash"
