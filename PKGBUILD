@@ -16,7 +16,7 @@ package() {
     chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
     #LibElectron deps cleanup
-    rm -rf "$srcdir/application-$pkgver/libsplash"
+    #rm -rf "$srcdir/application-$pkgver/libsplash"
     rm -rf "$srcdir/application-$pkgver/libadblock"
     rm -rf "$srcdir/application-$pkgver/libuseragent"
     #link libelectron deps
