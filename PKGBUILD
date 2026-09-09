@@ -2,7 +2,7 @@
 
 pkgname=widic
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Wiktionary viewer in your terminal."
 arch=('any')
 url="https://github.com/matezoltanfarkas/widic"

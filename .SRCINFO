@@ -1,7 +1,7 @@
 pkgbase = widic
 	pkgdesc = A Wiktionary viewer in your terminal.
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/matezoltanfarkas/widic
 	arch = any
 	license = GPL-3.0-only
