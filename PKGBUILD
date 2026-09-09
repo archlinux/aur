@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mujoco
-pkgver=3.12.0
+pkgver=3.13.0
 pkgrel=1
 pkgdesc="Multi-Joint dynamics with Contact. A general purpose physics simulator."
 arch=($CARCH)
@@ -23,7 +23,7 @@ makedepends=(
   'mold'
 )
 source=("${pkgname}::git+https://github.com/deepmind/mujoco.git#tag=$pkgver")
-sha256sums=('e1217149bf9129f4f0aef5f804ccabd49baf2d7e54ec9e53878a2ea00c67fb37')
+sha256sums=('c3d66cde54a9889b088ce86bf5ca763ad650a5faf6161a9ee47076852b7c0cae')
 
 build() {
   cd "${pkgname}"
@@ -34,7 +34,7 @@ build() {
     -DCMAKE_CXX_FLAGS="-Wno-error=discarded-qualifiers" \
     -B build \
     -G Ninja \
-    -Wno-dev
+    -Wno-author
 
   ninja -C build
 }
