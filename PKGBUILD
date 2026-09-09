@@ -81,7 +81,7 @@
 
 pkgname=pantum-universal-driver
 pkgver=1.1.186
-pkgrel=4
+pkgrel=5
 pkgdesc="Universal printer and scanner driver for Pantum devices"
 arch=('x86_64')
 url="https://global.pantum.com/support/"
@@ -97,10 +97,16 @@ depends=(
     'zlib'
     'libgcc'
     'libstdc++'
+    'glibc'
+    'avahi'
+    'systemd'
+    'usbutils'
 )
+optdepends=('ipp-usb: IPP-over-USB support using the Pantum-compatible fork')
 provides=("pantum-driver=${pkgver}")
 conflicts=('pantum-driver')
-options=('!strip')
+options=('!strip' '!debug')
+install=pantum-universal-driver.install
 
 # Auxiliary variables
 _zipver="${pkgver//./_}"
@@ -110,31 +116,8 @@ _foldername="Pantum Linux Driver V${pkgver}"
 _download_url='https://drivers.pantum.in/userfiles/files/download'
 _download_path='%E9%A9%B1%E5%8A%A8%E6%96%87%E4%BB%B6/4020/%E6%AC%A7%E6%B4%B2%E5%AD%90%E7%AB%99%E9%80%82%E9%85%8D%E8%8D%B7%E5%85%B0%E8%AF%AD20260520'
 
-backup=(
-    'etc/sane.d/pantum6500.conf'
-    'etc/sane.d/pantum_bm2400.conf'
-    'etc/sane.d/pantum_bm4200.conf'
-    'etc/sane.d/pantum_bm5200.conf'
-    'etc/sane.d/pantum_bm5230.conf'
-    'etc/sane.d/pantum_mfp.conf'
-    'etc/sane.d/dll.d/pantum6500'
-    'etc/sane.d/dll.d/pantum_bm2400'
-    'etc/sane.d/dll.d/pantum_bm4200'
-    'etc/sane.d/dll.d/pantum_bm5200'
-    'etc/sane.d/dll.d/pantum_bm5230'
-    'etc/sane.d/dll.d/pantum_mfp'
-)
-
-source=(
-    "${pkgname}-${pkgver}.zip::${_download_url}/${_download_path}/Pantum%20Linux%20Driver%20V${_zipver}.zip"
-    'pantum-ipp-usb.conf'
-    'fix-pantum-ppd.awk'
-)
-sha256sums=(
-    'ce28c1f42e3c6a642cd49af3d6827b63ad4f0484b2151f0594470a1746828a45'
-    'b24a64ae11b9e3b5eb1e5da608b38592b8131644be48e2e8d75d9491750aa6f5'
-    '262d88bd34188a401fae2599ed8ac255236cec3b7d86fd22618fcf0f46a11f4e'
-)
+source=("${pkgname}-${pkgver}.zip::${_download_url}/${_download_path}/Pantum%20Linux%20Driver%20V${_zipver}.zip")
+sha256sums=('ce28c1f42e3c6a642cd49af3d6827b63ad4f0484b2151f0594470a1746828a45')
 noextract=("${pkgname}-${pkgver}.zip")
 
 prepare() {
@@ -150,84 +133,21 @@ package() {
     bsdtar -xOf "${_debname}" data.tar.xz | \
         bsdtar --no-same-owner -xpf - -C "$pkgdir"
 
-    # Debian ships duplicate SANE files in /usr/local, which packages must not own.
-    rm -rf "$pkgdir/usr/local"
-
-    # Use Arch's native SANE library directory.
+    # Keep both vendor SANE trees intact. Arch's SANE loader only searches
+    # /usr/lib/sane, so expose the Debian multiarch tree there with symlinks.
     install -d "$pkgdir/usr/lib/sane"
-    mv "$pkgdir/usr/lib/x86_64-linux-gnu/sane/"* "$pkgdir/usr/lib/sane/"
-    rmdir "$pkgdir/usr/lib/x86_64-linux-gnu/sane" \
-        "$pkgdir/usr/lib/x86_64-linux-gnu"
-
-    # Vendor udev rules belong in /usr, not in the administrator-owned /etc.
-    install -d "$pkgdir/usr/lib/udev/rules.d"
-    mv "$pkgdir/etc/udev/rules.d/"*.rules "$pkgdir/usr/lib/udev/rules.d/"
-    rmdir "$pkgdir/etc/udev/rules.d" "$pkgdir/etc/udev"
-
-    # Do not make USB devices world-writable. Members of lp retain access, and
-    # libsane_matched lets Arch's 70-uaccess.rules grant an ACL to active users.
-    sed -i \
-        -e 's/MODE="0666", OWNER="root", GROUP="lp"/GROUP="lp", MODE="0664"/g' \
-        -e '/^LABEL="mud_rules_end"$/d' \
-        "$pkgdir/usr/lib/udev/rules.d/"*.rules
-
-    # The bundled ipp-usb fork conflicts with Arch's supported ipp-usb package.
-    rm -rf "$pkgdir/opt/pantum/ippfilter" "$pkgdir/opt/pantum/{lib}"
-    install -Dm644 "$srcdir/pantum-ipp-usb.conf" \
-        "$pkgdir/usr/share/ipp-usb/quirks/pantum.conf"
+    local backend
+    for backend in "$pkgdir/usr/lib/x86_64-linux-gnu/sane/"*; do
+        ln -s "../x86_64-linux-gnu/sane/${backend##*/}" \
+            "$pkgdir/usr/lib/sane/${backend##*/}"
+    done
 
     # V1.1.186 PPDs still reference these filters, omitted from the vendor DEB.
     ln -s rastertoPantum "$pkgdir/usr/lib/cups/filter/BM2400"
     ln -s rastertoPantum "$pkgdir/usr/lib/cups/filter/BP2400"
 
-    # Normalize invalid JCL UI blocks and let Pantum's PDF filters consume
-    # standard PDF directly, avoiding a failing bannertopdf/pdftopdf chain.
-    local ppd ppd_count=0 original_valid
-    while IFS= read -r -d '' ppd; do
-        ppd_count=$((ppd_count + 1))
-        original_valid=false
-        if cupstestppd -q -I filters -W none "$ppd"; then
-            original_valid=true
-        fi
-
-        awk -f "$srcdir/fix-pantum-ppd.awk" "$ppd" > "$ppd.fixed"
-
-        if $original_valid &&
-            ! cupstestppd -q -I filters -W none "$ppd.fixed"; then
-            printf 'PPD normalization broke a valid file: %s\n' \
-                "${ppd#$pkgdir/}" >&2
-            return 1
-        fi
-
-        awk -f "$srcdir/fix-pantum-ppd.awk" "$ppd.fixed" \
-            > "$ppd.checked"
-        if ! cmp -s "$ppd.fixed" "$ppd.checked"; then
-            printf 'PPD normalization is not idempotent: %s\n' \
-                "${ppd#$pkgdir/}" >&2
-            return 1
-        fi
-
-        rm "$ppd.checked"
-        mv "$ppd.fixed" "$ppd"
-    done < <(find "$pkgdir/usr/share/cups/model/Pantum" -type f \
-        -name '*.ppd' -print0)
-
-    if ((ppd_count == 0)); then
-        printf '%s\n' 'No Pantum PPD files found in the vendor package' >&2
-        return 1
-    fi
-
-    if grep -R -E '^\*cupsFilter:.*application/vnd\.cups-pdf.*(ptps|phase2filter)' \
-        "$pkgdir/usr/share/cups/model/Pantum" >/dev/null; then
-        printf '%s\n' 'Unnormalized Pantum PDF filter declarations remain' >&2
-        return 1
-    fi
-
     install -Dm644 EULA "$pkgdir/usr/share/licenses/$pkgname/EULA"
     install -Dm644 PRIVACY "$pkgdir/usr/share/licenses/$pkgname/PRIVACY"
     install -Dm644 "$pkgdir/usr/share/doc/pantum/copyright" \
         "$pkgdir/usr/share/licenses/$pkgname/copyright"
-    install -Dm644 "$pkgdir/usr/share/doc/pantum/changelog.gz" \
-        "$pkgdir/usr/share/doc/$pkgname/changelog.gz"
-    rm -rf "$pkgdir/usr/share/doc/pantum"
 }

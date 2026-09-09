@@ -1,0 +1,102 @@
+_pantum_rules_dir=/etc/udev/rules.d
+_pantum_systemd_dir=/usr/lib/systemd/system
+_pantum_ipp_dir=/opt/pantum/ippfilter
+_pantum_bin_dir=/opt/pantum/bin
+
+_pantum_has_ippusbxd() {
+    [[ -f /usr/lib/udev/rules.d/55-ippusbxd.rules &&
+       -f /usr/lib/systemd/system/ippusbxd@.service ]] &&
+        command -v ippusbxd >/dev/null 2>&1
+}
+
+_pantum_has_ipp_usb() {
+    [[ -f /usr/lib/udev/rules.d/71-ipp-usb.rules &&
+       -f /usr/lib/systemd/system/ipp-usb.service &&
+       -x /usr/bin/ipp-usb ]]
+}
+
+_pantum_reload_udev() {
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger --subsystem-match=usb 2>/dev/null || true
+}
+
+_pantum_install_ipp_overrides() {
+    if _pantum_has_ippusbxd; then
+        if systemctl is-active --quiet pt-ipp-usb.service; then
+            systemctl stop pt-ipp-usb.service || true
+        fi
+        rm -f "$_pantum_rules_dir/71-ipp-usb.rules" \
+            "$_pantum_systemd_dir/pt-ipp-usb.service" \
+            "$_pantum_bin_dir/ipp-usb"
+        install -Dm644 "$_pantum_ipp_dir/55-ippusbxd.rules" \
+            "$_pantum_rules_dir/55-ippusbxd.rules"
+
+        local bus_device service
+        while read -r bus_device; do
+            service="ippusbxd@${bus_device}.service"
+            if systemctl is-active --quiet "$service"; then
+                systemctl stop "$service" || true
+            fi
+        done < <(lsusb -d 232b: | awk -F '[ :]' '{print $2 ":" $4}')
+    elif _pantum_has_ipp_usb; then
+        rm -f "$_pantum_rules_dir/55-ippusbxd.rules"
+        install -Dm644 "$_pantum_ipp_dir/71-ipp-usb.rules" \
+            "$_pantum_rules_dir/71-ipp-usb.rules"
+        install -Dm644 "$_pantum_ipp_dir/pt-ipp-usb.service" \
+            "$_pantum_systemd_dir/pt-ipp-usb.service"
+        install -Dm755 "$_pantum_ipp_dir/ipp-usb" \
+            "$_pantum_bin_dir/ipp-usb"
+        systemctl daemon-reload || true
+
+        if systemctl is-active --quiet ipp-usb.service; then
+            systemctl stop ipp-usb.service || true
+            systemctl start pt-ipp-usb.service || true
+        fi
+    else
+        _pantum_remove_ipp_overrides
+        return
+    fi
+
+    _pantum_reload_udev
+}
+
+_pantum_remove_ipp_overrides() {
+    local restart_ipp_usb=false
+    if systemctl is-active --quiet pt-ipp-usb.service; then
+        restart_ipp_usb=true
+        systemctl stop pt-ipp-usb.service || true
+    fi
+
+    rm -f "$_pantum_rules_dir/55-ippusbxd.rules" \
+        "$_pantum_rules_dir/71-ipp-usb.rules" \
+        "$_pantum_systemd_dir/pt-ipp-usb.service" \
+        "$_pantum_bin_dir/ipp-usb"
+    systemctl daemon-reload || true
+
+    if [[ $restart_ipp_usb == true ]] && _pantum_has_ipp_usb; then
+        systemctl start ipp-usb.service || true
+    fi
+
+    _pantum_reload_udev
+}
+
+post_install() {
+    _pantum_install_ipp_overrides
+    printf 'Pantum %s installed\n' "$1"
+}
+
+post_upgrade() {
+    _pantum_install_ipp_overrides
+    printf 'Pantum upgraded to %s\n' "$1"
+}
+
+pre_upgrade() {
+    rm -f /etc/ld.so.conf.d/pantum.conf
+    ldconfig
+}
+
+pre_remove() {
+    rm -f /etc/ld.so.conf.d/pantum.conf
+    ldconfig
+    _pantum_remove_ipp_overrides
+}
