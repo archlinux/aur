@@ -15,7 +15,7 @@
 # package carries is /usr/bin/viewport itself.
 
 pkgname=viewport-wpe-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Wayland compositor whose entire shell is a web page — WPE WebKit, in-process (binary release)'
 arch=('x86_64')
@@ -98,7 +98,7 @@ options=('!strip' '!debug')
 # Downloaded under a name that is not *.pkg.tar.*, so the artifact sitting in
 # the build directory is not mistaken for the package this recipe produced.
 source_x86_64=("$pkgname-$pkgver.tar.zst::$url/releases/download/v$pkgver/viewport-wpe-$pkgver-$_pkgrel-$CARCH.pkg.tar.zst")
-sha256sums_x86_64=('1766cd0b0639f38bfe87c3afd04b2144894074894618ceff40e83f1e3fc89f09')
+sha256sums_x86_64=('76bde6cf8a3f9a51bbb0e6aa2e9b053fe41595bdcb4e288bea67ce14668b8dda')
 
 package() {
   # The source is an Arch package, so makepkg has already unpacked a $pkgdir
