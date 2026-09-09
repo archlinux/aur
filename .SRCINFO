@@ -1,6 +1,6 @@
 pkgbase = y509-bin
 	pkgdesc = A terminal user interface (TUI) tool for viewing and analyzing X.509 certificate chains
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/kanywst/y509
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = y509-bin
 	provides = y509
 	conflicts = y509
 	options = !strip
-	source_x86_64 = y509-x86_64-1.1.1.tgz::https://github.com/kanywst/y509/releases/download/v1.1.1/y509-1.1.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = e9a550d0806ab011de1f6be36f530fc556fd3e371483b8e3eda3346e05785c63
-	source_aarch64 = y509-aarch64-1.1.1.tgz::https://github.com/kanywst/y509/releases/download/v1.1.1/y509-1.1.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 718a421ae382fabc337d20b45e76bab7abcee41c37bb00dcd726afceb04df610
+	source_x86_64 = y509-x86_64-1.2.0.tgz::https://github.com/kanywst/y509/releases/download/v1.2.0/y509-1.2.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 85518cfa48611124d9b5fb99678d39fbebfa79f7c2881a3a3bf5bb2fb5c4d1b3
+	source_aarch64 = y509-aarch64-1.2.0.tgz::https://github.com/kanywst/y509/releases/download/v1.2.0/y509-1.2.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 02ede76403bf61d033f850ef2970dfcaf99caa0792ab355c3b9066faffb893d5
 
 pkgname = y509-bin
