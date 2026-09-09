@@ -1,13 +1,13 @@
 pkgbase = v2ray-domain-list-custom
 	pkgdesc = A list of domains to be used as geosites for routing purpose in Project V (Loyalsoldier's rules)
-	pkgver = 202609072354
+	pkgver = 202609082347
 	pkgrel = 1
 	url = https://github.com/Loyalsoldier/v2ray-rules-dat
 	arch = any
 	license = GPL3
 	provides = v2ray-domain-list-community
 	conflicts = v2ray-domain-list-community
-	source = geosite-202609072354.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202609072354/geosite.dat
-	sha256sums = 2064a1a4074e145d5022ac49f2c30341e7b7cb6c7948da4fdca973b3fa8411b2
+	source = geosite-202609082347.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202609082347/geosite.dat
+	sha256sums = 110be548fd2c2d84249310842667f996e01ab5c753d526717a0f434a5a08e5ea
 
 pkgname = v2ray-domain-list-custom
