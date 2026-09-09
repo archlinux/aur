@@ -1,19 +1,27 @@
 # shellcheck shell=bash
-_alert() {
+_notification_help() {
 cat << 'EOF'
-Barnard UI server list format changed. If you used barnard-ui before this update, remove the old server list before starting barnard-ui again:
-  rm -f ~/.config/barnard/servers.conf
-
-For alerts and sound options, install the sox package and add the following line to your ~/.barnard.toml:
-notifycommand = '/usr/share/barnard/barnard-sound.sh "%event" "%who" "%what"'
-Make sure to edit the sound script to use your preferred settings.
+Barnard uses /usr/share/barnard/barnard-sound.sh as its default notification
+command. To enable or customize notifications, copy that script to a
+user-writable location, edit its notify and sound settings, then point the
+notifycommand setting in ~/.barnard.toml to your copy.
 EOF
 }
 
 post_install() {
-    _alert
+    _notification_help
 }
 
 post_upgrade() {
-    _alert
+cat << 'EOF'
+Barnard UI server list format changed. If you used the old barnard-ui, remove
+its server list before starting the new UI:
+  rm -f ~/.config/barnard/servers.conf
+
+Barnard keybindings have changed. To adopt the new defaults, edit
+~/.barnard.toml and remove its keybinding entries. Leave them unchanged to
+retain your existing bindings.
+
+EOF
+    _notification_help
 }
