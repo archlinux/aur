@@ -11,7 +11,7 @@ EOM
 
 post_upgrade() {
 	# Restart the system service if it is already running, to reload the binary.
-	/usr/bin/systemctl try-restart hister
+	/usr/bin/systemctl set-property hister Markers=needs-restart
 
 	cat <<EOM
 :: Restart the hister user service if running:
