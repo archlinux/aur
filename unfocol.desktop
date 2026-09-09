@@ -2,7 +2,7 @@
 Name=Unfocol
 Comment=Unfocused Focus timer
 Exec=unfocol
-Terminal=true
+Terminal=false
 Type=Application
 Icon=unfocol
 Categories=Utility;
