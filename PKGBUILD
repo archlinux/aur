@@ -1,9 +1,9 @@
 # Maintainer: Hewel <13846369+hewel@users.noreply.github.com>
 
 pkgname=jellypilot
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
-pkgdesc='Jellyfin and Emby companion app: cast receiver and library browser driving external MPV'
+pkgdesc='Jellyfin and Emby companion app with embedded MPV from the pinned mpv fork'
 arch=('x86_64')
 url='https://github.com/hewel/jellypilot'
 license=('MIT')
@@ -12,14 +12,29 @@ license=('MIT')
 options=('!lto')
 depends=(
   'gtk3'
-  'mpv'
   'libxkbcommon'
   'wayland'
+  'ffmpeg'
+  'libplacebo'
+  'libass'
+  'vulkan-icd-loader'
+)
+optdepends=(
+  'mpv: External MPV Playback'
 )
 makedepends=(
   'git'
   'rust'
   'bun'
+  'meson'
+  'ninja'
+  'pkgconf'
+  'vulkan-headers'
+  'ffmpeg'
+  'libplacebo'
+  'libass'
+  'shaderc'
+  'lcms2'
 )
 conflicts=('jellypilot-bin')
 source=(
@@ -28,13 +43,14 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '7236e1197fe9cd03f7df541f77a9710f4cf9a8c1f7de6df3a6f7def6e60d7651'
+  '24b41b6713ba0b61c5b451dedd08b3ebb72b1eda4d49eadfadffe313d9dcc0be'
 )
 
 build() {
   cd "$srcdir/$pkgname"
 
   bun install --frozen-lockfile
+  bun run task mpv build
   bun run task iced build --release
 }
 
@@ -42,6 +58,10 @@ package() {
   cd "$srcdir/$pkgname"
 
   install -Dm755 "target/release/jellypilot" "$pkgdir/usr/bin/jellypilot"
+  install -Dm755 "target/embedded-mpv/lib/jellypilot/libmpv.so" \
+    "$pkgdir/usr/lib/jellypilot/libmpv.so"
+  install -Dm644 "target/embedded-mpv/share/jellypilot/mpv-baseline.conf" \
+    "$pkgdir/usr/share/jellypilot/mpv-baseline.conf"
   install -Dm644 "$srcdir/top.pigfun.jellypilot.desktop" \
     "$pkgdir/usr/share/applications/top.pigfun.jellypilot.desktop"
   install -Dm644 "assets/icons/128x128.png" \
