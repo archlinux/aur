@@ -12,6 +12,6 @@ pkgbase = foxtelgo
 	depends = libxss
 	depends = git
 	source = https://gitlab.com/linuxbombay/foxtelgo/application/-/archive/1.0.18/application-1.0.18.tar.bz2
-	sha256sums = a1d4dbe238a7805fc64b84e87fff8eaada22a59fd89e33f9df13cccc9826fcea
+	sha256sums = 7be73c281f8106d9c212d493b4c2a121adc69706ad77a4752f40b67a4ec53fec
 
 pkgname = foxtelgo
