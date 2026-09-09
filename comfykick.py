@@ -71,6 +71,9 @@ GITHUB_API_COMMIT = (
 GITHUB_API_LATEST = (
     f"https://api.github.com/repos/{COMFYUI_REPO}/releases/latest"
 )
+GITHUB_API_TAGS = (
+    f"https://api.github.com/repos/{COMFYUI_REPO}/tags"
+)
 
 _SYSTEM_CONFIG_FILE = Path(f"/etc/{PROJECT_NAME}.toml")
 _USER_CONFIG_FILE = (
@@ -370,17 +373,27 @@ def _resolve_version(
     update = config["update"]
     github_token = config["github_token"]
 
-    # TODO: Fetch the latest release version from both the comfy.org API
-    # (https://api.comfy.org/releases?project=comfyui&locale=zh)
-    # and the GitHub API, then race the two to decide the final version.
     if update:
         tag_name = None
-        if version_head[0] == "latest":
-            data = _api_request(
-                GITHUB_API_LATEST,
-                github_token=github_token,
-            )
-            tag_name = data["tag_name"]
+        if version_head[0] in ("latest", "latest-tag"):
+            if version_head[0] == "latest":
+                data = _api_request(
+                    GITHUB_API_LATEST,
+                    github_token=github_token,
+                )
+                tag_name = data["tag_name"]
+            else:
+                data = _api_request(
+                    GITHUB_API_TAGS,
+                    github_token=github_token,
+                )
+                if not data:
+                    die(
+                        "No tags found for %s; cannot resolve "
+                        "'latest-tag'.",
+                        COMFYUI_REPO,
+                    )
+                tag_name = data[0]["name"]
             version_head.append(tag_name)
 
         data = _api_request(
