@@ -6,8 +6,8 @@
 set -u
 pkgname='zoiper-bin'
 _pkgname='zoiper'
-pkgver='5.6.13'
-pkgrel='3'
+pkgver='5.6.15'
+pkgrel='1'
 pkgdesc='a SIP and IAX2 VoIP softphone'
 arch=('i686' 'x86_64')
 url='https://www.zoiper.com/'
