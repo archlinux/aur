@@ -1,0 +1,4 @@
+[sd-boot]
+source = "git"
+git = "https://github.com/gene-git/lockmgr"
+use_max_tag = true
