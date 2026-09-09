@@ -1,0 +1,4 @@
+[r8168-dkms]
+source = "github"
+github = "mtorromeo/r8168"
+use_max_tag = true
