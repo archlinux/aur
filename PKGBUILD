@@ -47,14 +47,14 @@ source=(
 )
 sha256sums=(
     '907c2a72db1c5dd637ea8eeae97f4cb5b32cef615c17258f6b190924ec5bf688'
-    '6b3357098d9e70eb33c95e2f7d12c2bdc016f6e7933b517d85f1399d50caea71'
+    'e315425a50267e22a6752ed8cfac4de4a377dbce6daa1997157637470dc876b9'
 )
 
 prepare() {
   cd "${srcdir}/hermes-agent-${tag}"
   # Relax upstream's exact build-system pin: `python -m build --no-isolation`
   # validates requires against the system env, and Arch ships newer setuptools.
-  sed -i 's/requires = \["setuptools==83.0.0"\]/requires = ["setuptools>=83.0.0"]/' pyproject.toml
+  sed -i 's/requires = \["setuptools==83.0.0"\(, *\)\?/requires = ["setuptools>=83.0.0", /' pyproject.toml
   # Python 3.14: ThreadPoolExecutor no longer has _initializer/_initargs
   patch -p1 < "${srcdir}/0001-fix-daemon-pool-py314-ThreadPoolExecutor-API.patch"
 }
