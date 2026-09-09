@@ -3,7 +3,7 @@
 
 pkgname=ab-download-manager-bin
 _pkgname=ABDownloadManager
-pkgver=1.10.2
+pkgver=1.10.4
 pkgrel=1
 pkgdesc="A Download Manager that speeds up your downloads"
 arch=(x86_64 aarch64)
@@ -15,8 +15,8 @@ conflicts=("abdownloadmanager" "ab-download-manager")
 options=(!debug)
 source_x86_64=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_x64.tar.gz")
 source_aarch64=("https://github.com/amir1376/${pkgname%-bin}/releases/download/v${pkgver}/ABDownloadManager_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=("c61c039ec426df00b5f3cfcfd07b64ec62a0c35c78becbc562d4600d5a5ea9c4")
-sha256sums_aarch64=("54c5484877b47b62cd8aab0d671fb37f89820b8c4ce6963d06f0672bfd901a31")
+sha256sums_x86_64=("5f93bba88e56b872af55bb8e1965d9028be4a888619b0c49b30428132b1fc169")
+sha256sums_aarch64=("c5b5ee771d4d9544c4afe44bbba961e87854dd363217044ef3fc9ed21fd81f0c")
 
 package() {
     install -d "${pkgdir}/usr/share/"{applications,pixmaps}
