@@ -2,7 +2,7 @@
 
 pkgname=pattn
 _name=PattN
-pkgver=7.25.0.P21
+pkgver=7.25.0.P22
 pkgrel=1
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=("git+${url}#tag=${pkgver//.P/-P}"
         "https://github.com/Chocolate4U/Iran-sing-box-rules/raw/rule-set/geoip-ir.srs"
         "https://github.com/Chocolate4U/Iran-sing-box-rules/raw/rule-set/geosite-ir.srs"
         "${pkgname}.sh")
-sha256sums=('d2eb8b16eb1dc837ed29279625e2f269bb94f4d9bbe32e6f9fb85ea764cf2450'
+sha256sums=('703e350ef2d2402baebe92723c43bf843787c4d2870a19162e6b1418d703b34e'
             'SKIP'
             'SKIP'
             'SKIP'
