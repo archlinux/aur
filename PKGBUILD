@@ -1,6 +1,6 @@
 # Maintainer: Jaeger <https://github.com/Jaeger0000>
 pkgname=casper-keyboard-rgb
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Casper Excalibur Klavye RGB LED Kontrol Aracı (GUI + CLI)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('896ace57d70f7e6c40cfdc8322f632241a1f16de537e8ce5d3a3f0a7f22d96ef')
+sha256sums=('de7574a5f54b99e135079ccc2481667908f8b0f9def49d7520eb331b1e7c5378')
 install="${pkgname}.install"
 
 _srcdir="casper_excalibur_keyboard_rgb_linux-${pkgver}"
