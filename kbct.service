@@ -3,6 +3,7 @@ Description=Keyboard keycode mapping daemon supporting layered configuration
 
 [Service]
 Type=simple
+ExecStartPre=modprobe uinput
 ExecStart=kbct remap --config /etc/kbct/config.yml
 Restart=always
 

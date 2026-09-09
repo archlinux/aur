@@ -1,11 +1,11 @@
 pkgname="kbct-git"
 _gitname=kbct
-pkgver=0.1.0.r48.e0e1139
+pkgver=0.1.0.r63.c0d96e4
 pkgrel=1
 pkgdesc="Keyboard keycode mapping utility for Linux supporting layered configuration"
 arch=('x86_64')
 url="https://github.com/samvel1024/kbct"
-license=('None')
+license=('MIT')
 depends=()
 makedepends=('git' 'cargo' 'rust')
 provides=('kbct')
