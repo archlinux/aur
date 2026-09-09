@@ -16,6 +16,7 @@ depends=(
   'cairo' 'alsa-lib' 'git' 'curl'
 )
 conflicts=('hermes-agent')
+provides=('hermes-agent')
 options=('!debug')
 source=("https://github.com/jabla/hermes-agent-bin/releases/download/v${pkgver}-${pkgrel}/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 sha256sums=('363e088ac6cf3c364850010026bf80aaf0d625fe44c9dd58060d14531694c00d')

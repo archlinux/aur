@@ -21,6 +21,7 @@ pkgbase = hermes-agent-bin
 	depends = alsa-lib
 	depends = git
 	depends = curl
+	provides = hermes-agent
 	conflicts = hermes-agent
 	options = !debug
 	source = https://github.com/jabla/hermes-agent-bin/releases/download/v0.21.0-1/hermes-agent-bin-0.21.0-1-x86_64.pkg.tar.zst
