@@ -28,6 +28,7 @@ build() {
 package() {
   cd "OpenModelica-v${pkgver}"
   DESTDIR="${pkgdir}" cmake --build build --target install
+  rm "${pkgdir}"/usr/include/omc/omsicpp/Core/Modelica.h.gch
   rm -r "${pkgdir}"/usr/share/zmq
   rm -r "${pkgdir}"/usr/share/cminpack
   rm -r "${pkgdir}"/usr/include/cminpack-1
