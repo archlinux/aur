@@ -1,7 +1,7 @@
 # Maintainer: Hewel <13846369+hewel@users.noreply.github.com>
 
 pkgname=jellypilot
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Jellyfin and Emby companion app: cast receiver and library browser driving external MPV'
 arch=('x86_64')
