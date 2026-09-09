@@ -1,7 +1,7 @@
 pkgname=foxtelgo
 _pkgname=FoxtelGo
 pkgver=1.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Unnofficial FoxtelGo desktop application"
 arch=('x86_64')
 url="https://gitlab.com/linuxbombay/foxtelgo"
@@ -20,7 +20,7 @@ package() {
     rm -rf "$srcdir/application-$pkgver/libadblock"
     rm -rf "$srcdir/application-$pkgver/libuseragent"
     #link libelectron deps
-    ln -sf "/opt/libelectron/libsplash" "$srcdir/application-$pkgver/libsplash"
+    #ln -sf "/opt/libelectron/libsplash" "$srcdir/application-$pkgver/libsplash"
     ln -sf "/opt/libelectron/libadblock" "$srcdir/application-$pkgver/libadblock"
     ln -sf "/opt/libelectron/libuseragent" "$srcdir/application-$pkgver/libuseragent"
     install -dm755 "$pkgdir/opt/$_pkgname"
