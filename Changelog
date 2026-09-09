@@ -1,18 +1,23 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 2.13.0 ➙ HEAD
-              : 2026-01-04 ➙ 2026-09-07
+ Tags         : 2.13.1 ➙ 3.0.1
+              : 2026-01-06 ➙ 2026-09-09
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-07   : HEAD
+ 2026-09-09   : 3.0.1
+              - **3.0.1**
+            
+                * Make pytest optional in meson.build.
+                * Remove unused sphinx tmp files from html docs
+
+ 2026-09-07   : 3.0.0, origin/master
               - **3.0.0**
             
                 * Move to meson/meson-python for build/packaging.
                 * No significance in the major version change, just minor number getting large :)
                 * periodic review and tidy up.
-
- 2026-03-01   : 3.0.0, origin/master
+ 2026-03-01   ⋯
               - update Docs/Changelogs
 
  2026-03-01   : 2.14.0
@@ -29,10 +34,3 @@
               - PKGBUILD small change
  2026-01-04   ⋯
               - update Docs/Changelogs
-
- 2026-01-04   : 2.13.0
-              - **2.13.0**
-            
-                * Add code check script
- 2026-01-03   ⋯
-              - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
