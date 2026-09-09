@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=cargo-packager-git
-pkgver=0.11.8.r10.gfc0d4dc
+pkgver=0.11.8.r54.g9adb8f9
 pkgrel=1
 pkgdesc="A cli tool and library to generate installers or app bundles for your executables"
 arch=($CARCH)
@@ -34,6 +34,7 @@ pkgver() {
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}/"
+    cargo update -w
     cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
