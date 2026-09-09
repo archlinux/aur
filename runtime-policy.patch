@@ -1,0 +1,217 @@
+--- a/hermes_cli/managed_uv.py
++++ b/hermes_cli/managed_uv.py
+@@ -1,4 +1,4 @@
+-"""Hermes-managed uv and Python runtime repair.
++"""System-first uv selection and private Python runtime repair.
+ 
+ The Python backing the install is shared by every Hermes profile because the checkout's ``venv``
+ is shared. Runtime repair therefore uses an install-scoped store under
+@@ -25,6 +25,7 @@
+ from typing import Callable, Optional
+ 
+ from hermes_constants import get_hermes_home
++from hermes_cli.update_contract import is_desktop_package_managed
+ from hermes_cli.sqlite_runtime import (
+     SQLiteRuntimeInfo, isolated_interpreter_env, probe_sqlite_runtime)
+ 
+@@ -46,7 +47,12 @@
+ 
+ 
+ def resolve_uv() -> Optional[str]:
+-    """Return the managed uv path if it exists, else ``None``."""
++    """Prefer uv on PATH, falling back to Hermes' private binary."""
++    if is_desktop_package_managed(_PROJECT_ROOT):
++        return shutil.which("uv", path="/usr/bin")
++    system_uv = shutil.which("uv")
++    if system_uv:
++        return system_uv
+     p = managed_uv_path()
+     return str(p) if p.is_file() and os.access(p, os.X_OK) else None
+ 
+@@ -165,10 +171,14 @@
+ 
+ def _ensure_uv_path(
+     *, repair_observer: Callable[[RuntimeRepairResult], None] | None = None) -> Optional[str]:
+-    """Resolve the managed uv path, installing it if necessary (plain ``str``/``None``)."""
++    """Resolve uv, bootstrapping a private copy only when neither source exists."""
+     existing = resolve_uv()
+     if existing:
+         return existing
++
++    if is_desktop_package_managed(_PROJECT_ROOT):
++        logger.error("System uv is missing; reinstall the uv package.")
++        return None
+     target = managed_uv_path()
+     target.parent.mkdir(parents=True, exist_ok=True)
+     print(f"  → Installing managed uv into {target.parent} ...")
+@@ -214,7 +224,7 @@
+ 
+ def ensure_uv(
+     *, repair_observer: Callable[[RuntimeRepairResult], None] | None = None):
+-    """Return the managed uv path, installing it first if necessary; falsy on failure, never raises.
++    """Return a uv path, bootstrapping a private copy if needed; falsy on failure.
+ 
+     On POSIX the result is a :class:`_UvResult` (``str`` subclass) usable as the path *and*
+     unpackable as ``(path, fresh_bootstrap)`` for older call sites.
+@@ -260,7 +270,7 @@
+ def update_managed_uv(
+     *, repair_observer: Callable[[RuntimeRepairResult], None] | None = None, force: bool = False
+ ) -> Optional[str]:
+-    """Run ``uv self update`` on the managed uv binary; returns its path, or ``None`` if absent.
++    """Resolve uv and update it only if Hermes owns the binary.
+ 
+     The network self-update is skipped when it succeeded within ``UV_SELF_UPDATE_INTERVAL_SECONDS``
+     unless ``force=True``; the vulnerable-runtime repair probe ALWAYS runs — CVE-driven repair is
+@@ -270,7 +280,9 @@
+     if not existing:
+         # Not installed yet — ensure_uv() will handle that elsewhere.
+         return None
+-    if force or not _uv_self_update_is_fresh():
++    managed = managed_uv_path()
++    owns_uv = Path(existing) == managed and not managed.is_symlink()
++    if owns_uv and (force or not _uv_self_update_is_fresh()):
+         try:
+             result = subprocess.run(
+                 [existing, "self", "update"], capture_output=True,
+@@ -790,6 +802,8 @@
+     with.
+     """
+     managed = managed_uv_path()
++    if managed.is_symlink():
++        return False
+     try:
+         if Path(uv_bin).resolve() != managed.resolve():
+             return False
+--- a/hermes_cli/update_contract.py
++++ b/hermes_cli/update_contract.py
+@@ -1,4 +1,4 @@
+-"""Image-managed install refusal contract.
++"""Image- and package-managed install refusal contract.
+ 
+ A refusal prints the real update command for the deployment kind, records a ``refused`` receipt (so
+ fleet tooling sees "this install cannot self-update, use <command>" instead of a silent non-update),
+@@ -8,6 +8,7 @@
+ from __future__ import annotations
+ 
+ import logging
++import os
+ from dataclasses import dataclass
+ from pathlib import Path
+ from typing import Callable, Optional
+@@ -19,9 +20,9 @@
+ class UpdateRefusal:
+     """Why an in-place update is refused, and what to run instead."""
+ 
+-    code: str              # image-marker | image-marker-invalid | docker | nix | apt
++    code: str              # image-marker | image-marker-invalid | package-managed | docker | nix | apt
+     message: str           # full user-facing text (multi-line ok)
+-    update_command: str    # the one-line remediation command
++    update_command: str    # the one-line update instruction
+ 
+ 
+ def _refusal(code: str, method: str, message: Optional[Callable[[str], str]] = None) -> UpdateRefusal:
+@@ -36,6 +37,14 @@
+     return UpdateRefusal(code=code, message=text, update_command=command)
+ 
+ 
++def is_desktop_package_managed(project_root: Path) -> bool:
++    """Recognize desktop children and CLI sessions using the same packaged checkout."""
++    return (
++        os.environ.get("HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME") == "1"
++        or (project_root / ".git" / "hermes-desktop-runtime.patch").is_file()
++    )
++
++
+ def evaluate_update_admission(project_root: Path) -> Optional[UpdateRefusal]:
+     """Return an :class:`UpdateRefusal` when in-place update must not run.
+ 
+@@ -61,6 +70,15 @@
+     except Exception as exc:
+         logger.debug("Image provenance check failed (using heuristics): %s", exc)
+ 
++    # The desktop package owns the backend version even though it is a writable checkout.
++    if is_desktop_package_managed(project_root):
++        command = "Update hermes-agent-desktop through your AUR helper."
++        return UpdateRefusal(
++            code="package-managed",
++            message=f"Self-update is disabled for this package-managed desktop runtime.\n{command}",
++            update_command=command,
++        )
++
+     # Layer 2: pre-existing filesystem heuristics, verbatim semantics.
+     try:
+         from hermes_cli.config import detect_install_method, is_nix_install_method
+--- a/hermes_cli/banner.py
++++ b/hermes_cli/banner.py
+@@ -335,6 +335,11 @@
+     If ``HERMES_REVISION`` is set (nix builds embed it), compare it to upstream main via
+     ``git ls-remote``; otherwise count commits behind ``origin/main`` in the local checkout.
+     """
++    from hermes_cli.update_contract import is_desktop_package_managed
++
++    if is_desktop_package_managed(Path(__file__).resolve().parent.parent):
++        return None
++
+     def _read_config_opt_out():
+         from hermes_cli.config import load_config
+         return load_config().get("updates", {}).get("check", True) is False
+--- a/hermes_cli/web_routers/actions.py
++++ b/hermes_cli/web_routers/actions.py
+@@ -272,7 +272,7 @@
+ 
+     Returns install_method ('apt'|'git'|'docker'|'nix'|'nixos'|'unknown'),
+     current_version, behind (commits behind, 0 = up to date, -1 = unknown count,
+-    null = check could not run), update_available, can_apply (git only — the
++    null = check could not run), update_available, can_apply (eligible git installs — the
+     dashboard button can apply in place), update_command, message (guidance for
+     non-applyable methods) and, for git installs that are behind, commits
+     [{sha, summary, author, at}] (additive; existing consumers ignore it).
+@@ -290,6 +290,14 @@
+         "update_available": False, "can_apply": install_method == "git",
+         "update_command": recommended_update_command_for_method(install_method), "message": None,
+     }
++    # A writable Git checkout may still be owned by a package or an image.
++    # Use the same marker-first admission decision as the update action.
++    from hermes_cli.update_contract import evaluate_update_admission
++
++    refusal = evaluate_update_admission(_server_path("PROJECT_ROOT"))
++    if refusal is not None and refusal.code in {"package-managed", "image-marker", "image-marker-invalid"}:
++        payload.update(can_apply=False, update_command=refusal.update_command, message=refusal.message)
++        return payload
+     non_applyable = _NON_APPLYABLE_MESSAGES.get(install_method)
+     if non_applyable is not None:
+         payload["message"] = non_applyable()
+--- a/tools/lazy_deps.py
++++ b/tools/lazy_deps.py
+@@ -469,7 +469,7 @@
+ 
+ 
+ def _uv_binary() -> Optional[str]:
+-    """Managed uv first ($HERMES_HOME/bin is never on PATH), then PATH. A lookup, not ensure_uv():
++    """System uv first, then the private fallback. A lookup, not ensure_uv():
+     downloading uv mid-turn is more than the caller asked for; pip covers no-uv."""
+     try:
+         from hermes_cli.managed_uv import resolve_uv
+--- a/hermes_cli/update_cmd_deps.py
++++ b/hermes_cli/update_cmd_deps.py
+@@ -412,11 +412,6 @@
+         return existing
+     if not _m()._is_termux_env():
+         return None
+-    # Termux-packaged uv is on PATH but not the managed bin dir, so resolve_uv() misses it;
+-    # prefer it over pip, which has no Android wheel and would source-build on a small device.
+-    system_uv = shutil.which("uv")
+-    if system_uv:
+-        return system_uv
+     with suppress(Exception):
+         print("  → Termux detected: trying to install uv for faster dependency updates...")
+         result = subprocess.run(
+@@ -983,7 +978,7 @@
+         "→ Python dependencies unchanged — skipping reinstall" if deps_current
+         else "→ Updating Python dependencies...")
+     from hermes_cli.managed_uv import ensure_uv, update_managed_uv
+-    # `uv self update` if we already have a managed uv.
++    # Update a private uv only when no system uv is selected.
+     update_managed_uv()
+     uv_bin = ensure_uv()
+     pip_cmd = [sys.executable, "-m", "pip"]

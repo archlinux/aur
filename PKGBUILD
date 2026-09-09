@@ -2,32 +2,52 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v2026.8.31
-_commit=29112bef099274229cadff79cdff7bf7b99c4b77
-pkgver=0.21.0
-pkgrel=2
+_pkgver_tag=v2026.9.7
+_commit=2237be355906fbe6065ce1815711eee52b2d646e
+pkgver=0.21.1
+pkgrel=4
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
 license=('MIT')
 depends=(
   'curl' 'electron42' 'git' 'hicolor-icon-theme' 'libnotify' 'libsecret'
-  'xdg-utils'
+  'nodejs>=22.22' 'npm' 'uv' 'xdg-utils'
 )
 optdepends=(
   'libayatana-appindicator: tray indicator support'
+  'google-chrome: local browser automation (or chromium)'
+  'chromium: local browser automation (or google-chrome)'
+  'ffmpeg: audio and video processing'
+  'ripgrep: fast file content search'
 )
-makedepends=('nodejs>=22.22' 'npm' 'python')
+makedepends=('python')
 conflicts=('hermes-agent-desktop-bin')
 options=('!debug')
 source=(
   "hermes-agent-${_pkgver_tag}.tar.gz::${url}/archive/refs/tags/${_pkgver_tag}.tar.gz"
   'system-electron-resources.patch'
   'pin-packaged-runtime.patch'
+  'fix-voice-prefs-storage-spy.patch'
+  'system-browser.patch'
+  'packaged-bootstrap.patch'
+  'runtime-policy.patch'
+  'hermes-desktop'
+  'launcher.test.cjs'
+  'runtime.test.cjs'
+  'runtime-policy.test.py'
 )
-sha256sums=('78fb3ff707ec1d17044b875ecac8bef28aa39d44242824f6871ca40afe7bf217'
+sha256sums=('907c2a72db1c5dd637ea8eeae97f4cb5b32cef615c17258f6b190924ec5bf688'
             'ee465a1aa2ad5789fa5c7b3a89993bbf0e68efddbf27c93109519b72a4cb90f7'
-            'a071a452caf08b4b5d7cfb93289b82051a4fa696adda826deaa4281c592fad21')
+            'a071a452caf08b4b5d7cfb93289b82051a4fa696adda826deaa4281c592fad21'
+            '7f8500e475a13466ecba2bb74e73fbbcba8dcb70bcbf4e789faf7a8f27df0cac'
+            'fa8933a96e58575e7d4f876a7eb380d6c1723233832b787a46fb158f79df7718'
+            'f102ff3e9cdfa1c717bf271d648b960bdc6865f34ba77865ffe9faae21f2ac18'
+            '2a6f5dbba9b7767b3fba5c0c4d39afee116ad6123cfdf258fb8e7ca30b953d56'
+            '700eaf971f8aeedf0268cd85954235d1770b786b19ca7e9d7905bf17aed86d44'
+            'dcb84ac7c5f5a7168d089ba082a8c8c77cf3955abc79775f530aee870a30d5df'
+            'a55499378bec44ae6a42e77dd7eed8e27dd604a7c6b5f87111444912092250a9'
+            'ade15751253ed09ab2927733d02edaf6b8788ee7f14ff7d71d0982e0d3aa669c')
 
 # NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
 # it inside the function scope of prepare()/build()/package(). Computing the
@@ -50,6 +70,10 @@ prepare() {
   _set_npm_env
   patch -Np1 -i "${srcdir}/system-electron-resources.patch"
   patch -Np1 -i "${srcdir}/pin-packaged-runtime.patch"
+  patch -Np1 -i "${srcdir}/fix-voice-prefs-storage-spy.patch"
+  patch -Np1 -i "${srcdir}/system-browser.patch"
+  patch -Np1 -i "${srcdir}/packaged-bootstrap.patch"
+  patch -Np1 -i "${srcdir}/runtime-policy.patch"
   # The release identifies Hermes Agent as ${pkgver}, but the desktop
   # package.json is not bumped — it still says 0.17.0. Patch it here so the
   # packaged desktop metadata matches the release.
@@ -112,6 +136,9 @@ check() {
   cd "$(_extract_dir)"
   _set_npm_env
   export npm_config_offline=true
+  node "${srcdir}/launcher.test.cjs"
+  node "${srcdir}/runtime.test.cjs" "$PWD/scripts/install.sh" "$PWD"
+  python -B "${srcdir}/runtime-policy.test.py" "$PWD"
   npm run typecheck --workspace apps/desktop
   npm run test --workspace apps/desktop
 
@@ -150,30 +177,12 @@ package() {
     "${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked"
   install -Dm644 "${resources}/install-stamp.json" \
     "${pkgdir}/usr/lib/${pkgname}/install-stamp.json"
-  # One Electron/Chromium argument per line. Blank lines and full-line comments
-  # are ignored; the file is data, never sourced or evaluated as shell code.
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<'EOF'
-#!/bin/bash
-
-flags_file="${XDG_CONFIG_HOME:-${HOME}/.config}/hermes-desktop-flags.conf"
-declare -a flags=()
-
-if [[ -r "${flags_file}" ]]; then
-  while IFS= read -r flag || [[ -n "${flag}" ]]; do
-    flag="${flag#"${flag%%[![:space:]]*}"}"
-    flag="${flag%"${flag##*[![:space:]]}"}"
-    [[ -z "${flag}" || "${flag}" == \#* ]] && continue
-    flags+=("${flag}")
-  done < "${flags_file}"
-fi
-
-export HERMES_DESKTOP_IS_PACKAGED=1
-export HERMES_DESKTOP_RESOURCES_PATH=/usr/lib/hermes-agent-desktop
-export HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME=1
-
-exec /usr/bin/electron42 "${flags[@]}" \
-  /usr/lib/hermes-agent-desktop/app.asar "$@"
-EOF
+  # Bootstrap uses the reviewed installer and patch from this exact package,
+  # not an unpatched installer downloaded separately from GitHub.
+  install -Dm644 scripts/install.sh "${pkgdir}/usr/lib/${pkgname}/runtime/install.sh"
+  install -Dm644 "${srcdir}/runtime-policy.patch" \
+    "${pkgdir}/usr/lib/${pkgname}/runtime/runtime-policy.patch"
+  install -Dm755 "${srcdir}/hermes-desktop" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" <<EOF
 [Desktop Entry]
 Name=Hermes

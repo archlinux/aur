@@ -1,0 +1,52 @@
+--- a/apps/desktop/electron/bootstrap-runner.ts
++++ b/apps/desktop/electron/bootstrap-runner.ts
+@@ -679,6 +679,11 @@
+ function buildPosixPinArgs({ installStamp, activeRoot, hermesHome, pinCommit = true }) {
+   const args = ['--dir', activeRoot, '--hermes-home', hermesHome]
+ 
++  // Arch packages reuse an optional system browser; setup must not download one.
++  if (process.env.HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME === '1') {
++    args.push('--skip-browser')
++  }
++
+   if (installStamp && installStamp.branch) {
+     args.push('--branch', installStamp.branch)
+   }
+--- a/apps/desktop/electron/bootstrap-runner.test.ts
++++ b/apps/desktop/electron/bootstrap-runner.test.ts
+@@ -3,7 +3,7 @@
+ import os from 'node:os'
+ import path from 'node:path'
+ 
+-import { test } from 'vitest'
++import { test, vi } from 'vitest'
+ 
+ import {
+   buildPinArgs,
+@@ -95,6 +95,26 @@
+   )
+ })
+ 
++test('package-managed bootstrap skips browser provisioning', () => {
++  vi.stubEnv('HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME', '1')
++  try {
++    const args = buildPosixPinArgs({ installStamp: null, activeRoot: '/tmp/agent', hermesHome: '/tmp/home' })
++    assert.ok(args.includes('--skip-browser'))
++  } finally {
++    vi.unstubAllEnvs()
++  }
++})
++
++test('ordinary bootstrap retains upstream browser provisioning', () => {
++  vi.stubEnv('HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME', undefined)
++  try {
++    const args = buildPosixPinArgs({ installStamp: null, activeRoot: '/tmp/agent', hermesHome: '/tmp/home' })
++    assert.ok(!args.includes('--skip-browser'))
++  } finally {
++    vi.unstubAllEnvs()
++  }
++})
++
+ test('existing-checkout bootstrap args keep branch but skip the packaged commit pin', () => {
+   const installStamp = { commit: 'a'.repeat(40), branch: 'main' }
+ 

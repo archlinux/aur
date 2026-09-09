@@ -1,0 +1,566 @@
+--- a/scripts/install.sh
++++ b/scripts/install.sh
+@@ -553,16 +553,29 @@
+ # ============================================================================
+ 
+ install_uv() {
++    if [ "${HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME:-}" = 1 ]; then
++        UV_CMD=/usr/bin/uv
++        if [ ! -x "$UV_CMD" ]; then
++            log_error "System uv is missing; reinstall the uv package."
++            return 1
++        fi
++        log_success "Using system uv ($("$UV_CMD" --version))"
++        return 0
++    fi
++
+     if [ "$DISTRO" = "termux" ]; then
+         log_info "Termux detected — using Python's stdlib venv + pip instead of uv"
+         UV_CMD=""
+         return 0
+     fi
+ 
+-    # Hermes owns its own uv at $HERMES_HOME/bin/uv.  Always install there —
+-    # no PATH probing, no conda guards, no multi-location resolution chains.
+-    # The runtime update path (hermes_cli/managed_uv.py) looks in the same
+-    # place, so install.sh and `hermes update` stay in sync.
++    local _system_uv
++    if _system_uv=$(type -P uv); then
++        UV_CMD="$_system_uv"
++        log_success "Using uv from PATH ($("$UV_CMD" --version))"
++        return 0
++    fi
++
+     local _managed_uv="$HERMES_HOME/bin/uv"
+ 
+     if [ -x "$_managed_uv" ]; then
+@@ -1469,7 +1482,77 @@
+ # Installation
+ # ============================================================================
+ 
++clone_packaged_repo() (
++    local package_patch="${BASH_SOURCE[0]%/*}/runtime-policy.patch"
++    if [[ ! "$INSTALL_COMMIT" =~ ^[0-9a-fA-F]{40}$ ]] || [ ! -r "$package_patch" ]; then
++        log_error "The desktop package requires a full commit pin and runtime-policy.patch."
++        return 1
++    fi
++    package_patch=$(realpath "$package_patch")
++    if [ ! -e "$INSTALL_DIR" ]; then
++        git init -q "$INSTALL_DIR" || return 1
++        git -C "$INSTALL_DIR" remote add origin "$REPO_URL_HTTPS" || return 1
++    fi
++    if [ ! -d "$INSTALL_DIR/.git" ]; then
++        log_error "Not a standalone Git checkout: $INSTALL_DIR. Nothing was overwritten."
++        return 1
++    fi
++    cd "$INSTALL_DIR" || return 1
++    local previous_commit old_patch_applied=false
++    local record="$PWD/.git/hermes-desktop-runtime.patch"
++    previous_commit=$(git rev-parse --verify HEAD 2>/dev/null) || previous_commit=""
++    if [ -f "$record" ]; then
++        if git apply --reverse --check "$record" 2>/dev/null; then
++            old_patch_applied=true
++        elif ! git diff --quiet; then
++            log_error "Local edits conflict with the previous desktop patch. Resolve them before retrying."
++            return 1
++        fi
++    fi
++    if [ "$previous_commit" = "$INSTALL_COMMIT" ] && [ "$old_patch_applied" = true ] && cmp -s "$record" "$package_patch"; then
++        return 0
++    fi
++    git diff --cached --quiet || { log_error "Staged changes found; leaving the checkout unchanged."; return 1; }
++    git cat-file -e "$INSTALL_COMMIT^{commit}" 2>/dev/null || git fetch --depth 1 "$REPO_URL_HTTPS" "$INSTALL_COMMIT" || return 1
++
++    # Validate both the user's work and the new patch in a temporary index.
++    # The real index and working files stay untouched until every check passes.
++    local temporary_index
++    temporary_index=$(mktemp "$PWD/.git/hermes-desktop-index.XXXXXX") || return 1
++    trap 'rm -f "$temporary_index" "$temporary_index.lock"' EXIT
++    if ! (
++        export GIT_INDEX_FILE="$temporary_index"
++        if [ -n "$previous_commit" ]; then
++            git read-tree "$previous_commit" && git add -u || exit 1
++            if [ "$old_patch_applied" = true ]; then git apply --cached --reverse "$record" || exit 1; fi
++            git diff --cached --quiet "$previous_commit" || exit 1
++        fi
++        git read-tree "$INSTALL_COMMIT" && git apply --cached "$package_patch"
++    ); then
++        log_error "Local edits or an incompatible desktop patch prevent this update. Nothing was overwritten."
++        return 1
++    fi
++    if [ "$old_patch_applied" = true ]; then git apply --reverse "$record" || return 1; fi
++    if ! git checkout --no-overwrite-ignore --detach "$INSTALL_COMMIT"; then
++        if [ "$old_patch_applied" = true ]; then git apply "$record"; fi
++        return 1
++    fi
++    if ! git apply "$package_patch"; then
++        if [ -n "$previous_commit" ] && git checkout --no-overwrite-ignore --detach "$previous_commit"; then
++            if [ "$old_patch_applied" = true ]; then git apply "$record"; fi
++        fi
++        return 1
++    fi
++    cp "$package_patch" "$record.tmp" && mv "$record.tmp" "$record" || return 1
++    log_success "Repository ready at the desktop package commit"
++)
++
+ clone_repo() {
++    if [ "${HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME:-}" = 1 ]; then
++        clone_packaged_repo || return 1
++        cd "$INSTALL_DIR"
++        return
++    fi
+     log_info "Installing to $INSTALL_DIR..."
+ 
+     # An interrupted previous clone leaves a .git with no initial commit, where
+@@ -1715,6 +1798,18 @@
+         return 0
+     fi
+ 
++    # Keep a compatible package runtime; the dependency stage still syncs it.
++    if [ "${HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME:-}" = 1 ] &&
++        [ -x venv/bin/python ] && venv/bin/python -c '
++import sys
++version = tuple(map(int, sys.argv[1].split(".")))
++sys.exit(sys.version_info[:len(version)] != version or sys.prefix == sys.base_prefix)
++' "$PYTHON_VERSION" 2>/dev/null; then
++        export UV_PYTHON="$INSTALL_DIR/venv/bin/python"
++        log_success "Reusing virtual environment (Python $PYTHON_VERSION)"
++        return 0
++    fi
++
+     if [ "$DISTRO" = "termux" ]; then
+         log_info "Creating virtual environment with Termux Python..."
+ 
+@@ -2590,6 +2685,11 @@
+ }
+ 
+ configure_browser_env_from_system_browser() {
++    # The package launcher detects browsers on each start. Do not persist that
++    # detection as a user override, which would outlive a removed browser.
++    if [ "${HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME:-}" = 1 ]; then
++        return 0
++    fi
+     local env_file="$HERMES_HOME/.env"
+     local browser_path="${DETECTED_BROWSER_EXECUTABLE:-}"
+ 
+@@ -2696,10 +2796,20 @@
+         # Other systems must install Chromium dependencies manually.
+         if [ "$SKIP_BROWSER" = true ]; then
+             log_info "Skipping Playwright/Chromium install (--skip-browser)"
+-            log_info "Browser tools will be unavailable until you run manually:"
+-            log_info "  cd $INSTALL_DIR && npx playwright install chromium"
+-            log_info "On apt-based systems, an admin also needs to run:"
+-            log_info "  sudo npx playwright install-deps chromium"
++            if [ "${HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME:-}" = 1 ]; then
++                local browser_path
++                browser_path="$(find_system_browser 2>/dev/null || true)"
++                if [ -n "$browser_path" ]; then
++                    log_info "Using local browser: $browser_path"
++                else
++                    log_info "Install Chrome or Chromium for browser tools, or configure AGENT_BROWSER_EXECUTABLE_PATH."
++                fi
++            else
++                log_info "Browser tools will be unavailable until you run manually:"
++                log_info "  cd $INSTALL_DIR && npx playwright install chromium"
++                log_info "On apt-based systems, an admin also needs to run:"
++                log_info "  sudo npx playwright install-deps chromium"
++            fi
+         else
+         log_info "Installing browser engine (Playwright Chromium)..."
+         strip_snap_browser_override
+@@ -2778,8 +2888,8 @@
+                     ;;
+             esac
+         fi
+-        fi
+         log_success "Browser engine setup complete"
++        fi
+     fi
+ 
+     # Install TUI dependencies
+@@ -3130,7 +3240,11 @@
+     echo -e "   ${GREEN}hermes config${NC}       View/edit configuration"
+     echo -e "   ${GREEN}hermes config edit${NC}  Open config in editor"
+     echo -e "   ${GREEN}hermes gateway install${NC} Install gateway service (messaging + cron)"
+-    echo -e "   ${GREEN}hermes update${NC}       Update to latest version"
++    if [ "${HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME:-}" = 1 ]; then
++        echo "   Update hermes-agent-desktop through your AUR helper."
++    else
++        echo -e "   ${GREEN}hermes update${NC}       Update to latest version"
++    fi
+     echo ""
+ 
+     echo -e "${CYAN}─────────────────────────────────────────────────────────${NC}"
+--- a/apps/desktop/electron/bootstrap-runner.ts
++++ b/apps/desktop/electron/bootstrap-runner.ts
+@@ -321,6 +321,16 @@
+   emit,
+   _download = downloadInstallScript
+ }) {
++  if (process.env.HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME === '1') {
++    const resources = process.env.HERMES_DESKTOP_RESOURCES_PATH
++    if (!resources) throw new Error('Package resources path is missing')
++    const script = path.join(resources, 'runtime', 'install.sh')
++    await fsp.access(script, fs.constants.R_OK)
++    await fsp.access(path.join(resources, 'runtime', 'runtime-policy.patch'), fs.constants.R_OK)
++    emit({ type: 'log', line: `[bootstrap] using packaged installer at ${script}` })
++    return { path: script, source: 'package', kind: 'posix' }
++  }
++
+   // 1. Dev shortcut: prefer a local checkout's installer so we can iterate
+   //    without pushing. SOURCE_REPO_ROOT comes from main.ts (path.resolve
+   //    of APP_ROOT/../..).
+@@ -658,9 +668,8 @@
+ // ---------------------------------------------------------------------------
+ 
+ // Build the installer branch/pin args from the install stamp. The commit pin
+-// is fresh-install only: once a managed checkout already exists, bootstrap is
+-// a repair/update path and must not let an old packaged app detach the checkout
+-// back to the commit baked into that app. All-zero fallback stamps are never
++// normally fresh-install only; distribution-managed runtimes also pin existing
++// checkouts because their package owns the backend version. All-zero fallback stamps are never
+ // passed as -Commit/--commit — only the branch is used (#50823 / #50864 review).
+ function buildPinArgs(installStamp, { pinCommit = true } = {}) {
+   const args = []
+@@ -871,6 +880,7 @@
+     onEvent,
+     abortSignal,
+     pinExistingCheckout = false,
++    policyOnly = false,
+     writeMarker // callback to write the bootstrap-complete marker; main.ts provides
+   } = opts
+ 
+@@ -947,9 +957,18 @@
+       pinCommit
+     })
+ 
++    // main.ts only requests this for a healthy, completed install. Recheck HEAD
++    // here so a checkout changed since that probe still gets the full setup.
++    const refreshPolicy = policyOnly && pinCommit && scriptInfo.source === 'package' &&
++      isPinnedCommit(installStamp?.commit) && resolveCheckoutHead(activeRoot) === installStamp.commit
++    const stages = refreshPolicy ? manifest.stages.filter(stage => stage.name === 'repository') : manifest.stages
++    if (refreshPolicy && stages.length !== 1) {
++      throw new Error('Package installer must provide one repository stage for policy refresh')
++    }
++
+     emit({
+       type: 'manifest',
+-      stages: manifest.stages,
++      stages,
+       protocolVersion: manifest.protocol_version || manifest.protocolVersion || null
+     })
+ 
+@@ -957,7 +976,7 @@
+     //    invoked -- install.ps1's own -NonInteractive handler in those stages
+     //    emits skipped=true. We trust the protocol rather than filtering
+     //    client-side.
+-    for (const stage of manifest.stages) {
++    for (const stage of stages) {
+       if (abortSignal && abortSignal.aborted) {
+         emit({ type: 'failed', error: 'bootstrap cancelled by user' })
+ 
+@@ -1025,6 +1044,21 @@
+   }
+ }
+ 
++function isPackagedRuntimePatched(activeRoot, resources = process.env.HERMES_DESKTOP_RESOURCES_PATH) {
++  if (!resources) return false
++  try {
++    const patch = path.join(resources, 'runtime', 'runtime-policy.patch')
++    const receipt = path.join(activeRoot, '.git', 'hermes-desktop-runtime.patch')
++    if (!fs.readFileSync(patch).equals(fs.readFileSync(receipt))) return false
++    execFileSync('git', ['apply', '--reverse', '--check', patch], {
++      cwd: activeRoot, stdio: 'ignore', timeout: 5000
++    })
++    return true
++  } catch {
++    return false
++  }
++}
++
+ export {
+   buildPinArgs,
+   buildPosixPinArgs,
+@@ -1033,6 +1067,7 @@
+   installedAgentInstallScript,
+   installRefForStamp,
+   isPinnedCommit,
++  isPackagedRuntimePatched,
+   // Exposed for testability
+   parseStageResult,
+   resolveCheckoutHead,
+--- a/apps/desktop/electron/bootstrap-runner.test.ts
++++ b/apps/desktop/electron/bootstrap-runner.test.ts
+@@ -1,4 +1,5 @@
+ import assert from 'node:assert/strict'
++import { execFileSync } from 'node:child_process'
+ import fs from 'node:fs'
+ import os from 'node:os'
+ import path from 'node:path'
+@@ -13,6 +14,7 @@
+   installedAgentInstallScript,
+   installRefForStamp,
+   isPinnedCommit,
++  isPackagedRuntimePatched,
+   resolveInstallScript,
+   resolveMarkerPinnedCommit,
+   runBootstrap
+@@ -21,10 +23,114 @@
+ const SCRIPT_NAME = process.platform === 'win32' ? 'install.ps1' : 'install.sh'
+ const ZERO_COMMIT = '0000000000000000000000000000000000000000'
+ 
++test('package bootstrap uses shipped scripts and never downloads a missing package file', async () => {
++  const home = mkTmpHome()
++  const runtime = path.join(home, 'runtime')
++  fs.mkdirSync(runtime)
++  const script = path.join(runtime, 'install.sh')
++  fs.writeFileSync(script, '#!/bin/sh\n')
++  fs.writeFileSync(path.join(runtime, 'runtime-policy.patch'), 'patch fixture')
++  vi.stubEnv('HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME', '1')
++  vi.stubEnv('HERMES_DESKTOP_RESOURCES_PATH', home)
++  try {
++    const opts = {
++      installStamp: { commit: 'a'.repeat(40), branch: 'main' }, sourceRepoRoot: null,
++      hermesHome: home, emit: () => {},
++      _download: async () => { throw new Error('unexpected download') }
++    }
++    assert.deepEqual(await resolveInstallScript(opts), { path: script, source: 'package', kind: 'posix' })
++    fs.unlinkSync(script)
++    await assert.rejects(resolveInstallScript(opts), /ENOENT/)
++  } finally {
++    vi.unstubAllEnvs()
++    fs.rmSync(home, { recursive: true, force: true })
++  }
++})
++
++test('package readiness checks the applied patch, not only a saved receipt', () => {
++  const home = mkTmpHome()
++  try {
++    const root = path.join(home, 'agent')
++    const runtime = path.join(home, 'runtime')
++    fs.mkdirSync(runtime)
++    execFileSync('git', ['init', '-q', root])
++    const patch = '--- a/policy.txt\n+++ b/policy.txt\n@@ -1 +1 @@\n-upstream\n+packaged\n'
++    fs.writeFileSync(path.join(runtime, 'runtime-policy.patch'), patch)
++    fs.writeFileSync(path.join(root, '.git', 'hermes-desktop-runtime.patch'), patch)
++    fs.writeFileSync(path.join(root, 'policy.txt'), 'upstream\n')
++    assert.equal(isPackagedRuntimePatched(root, home), false)
++    execFileSync('git', ['apply', path.join(runtime, 'runtime-policy.patch')], { cwd: root })
++    assert.equal(isPackagedRuntimePatched(root, home), true)
++    fs.writeFileSync(path.join(root, 'policy.txt'), 'user changes\n')
++    assert.equal(isPackagedRuntimePatched(root, home), false)
++    assert.equal(fs.readFileSync(path.join(root, 'policy.txt'), 'utf8'), 'user changes\n')
++  } finally {
++    fs.rmSync(home, { recursive: true, force: true })
++  }
++})
++
+ function mkTmpHome() {
+   return fs.mkdtempSync(path.join(os.tmpdir(), 'hermes-bootstrap-test-'))
+ }
+ 
++for (const mode of ['policy', 'full', 'changed-commit', 'repository-failure', 'missing-stage']) {
++  test(`runBootstrap stage boundary: ${mode}`, async () => {
++    const home = mkTmpHome()
++    const root = path.join(home, 'agent')
++    const runtime = path.join(home, 'runtime')
++    fs.mkdirSync(runtime)
++    execFileSync('git', ['init', '-q', root])
++    execFileSync('git', ['-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
++      'commit', '--allow-empty', '-qm', 'fixture'], { cwd: root })
++    const commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim()
++    fs.mkdirSync(path.join(root, 'venv'))
++    const keep = path.join(root, 'venv', 'keep')
++    fs.writeFileSync(keep, 'installed extension')
++    // Real child processes and protocol; dependency stages only record execution.
++    const stages = (mode === 'missing-stage' ? ['venv'] : ['repository', 'venv', 'python-deps'])
++      .map(name => ({ name }))
++    fs.writeFileSync(path.join(runtime, 'runtime-policy.patch'), 'fixture')
++    fs.writeFileSync(path.join(runtime, 'install.sh'), `#!/bin/bash
++if [ "$1" = --manifest ]; then
++  echo '${JSON.stringify({ protocol_version: 1, stages })}'
++else
++  echo "$2" >> "$HERMES_HOME/stages"
++  if [ "$2" = repository ] && [ '${mode}' = repository-failure ]; then
++    echo '{"stage":"repository","ok":false,"reason":"patch conflict"}'
++    exit 1
++  fi
++  printf '{"stage":"%s","ok":true}\\n' "$2"
++fi
++`)
++    vi.stubEnv('HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME', '1')
++    vi.stubEnv('HERMES_DESKTOP_RESOURCES_PATH', home)
++    const events = []
++    const writeMarker = vi.fn(payload => payload)
++    try {
++      const result = await runBootstrap({
++        installStamp: { commit: mode === 'changed-commit' ? 'b'.repeat(40) : commit, branch: 'main' },
++        activeRoot: root, sourceRepoRoot: null, hermesHome: home,
++        pinExistingCheckout: true, policyOnly: mode !== 'full',
++        onEvent: ev => events.push(ev), writeMarker
++      })
++      const failed = mode === 'repository-failure' || mode === 'missing-stage'
++      assert.equal(result.ok, !failed)
++      assert.equal(writeMarker.mock.calls.length, failed ? 0 : 1)
++      const ran = fs.existsSync(path.join(home, 'stages'))
++        ? fs.readFileSync(path.join(home, 'stages'), 'utf8').trim().split('\n') : []
++      assert.deepEqual(ran, mode === 'missing-stage' ? []
++        : mode === 'full' || mode === 'changed-commit' ? ['repository', 'venv', 'python-deps'] : ['repository'])
++      assert.equal(fs.readFileSync(keep, 'utf8'), 'installed extension')
++      if (mode === 'policy') {
++        assert.deepEqual(events.find(ev => ev.type === 'manifest').stages, [{ name: 'repository' }])
++      }
++    } finally {
++      vi.unstubAllEnvs()
++      fs.rmSync(home, { recursive: true, force: true })
++    }
++  })
++}
++
+ test('runBootstrap bails immediately when the signal is already aborted', async () => {
+   const controller = new AbortController()
+   controller.abort()
+--- a/apps/desktop/electron/active-runtime-state.ts
++++ b/apps/desktop/electron/active-runtime-state.ts
+@@ -6,12 +6,14 @@
+ export interface ActiveRuntimeState {
+   hasValidMarker: boolean
+   shouldUseActiveRuntime: boolean
+-  usabilityReason: 'commit-mismatch' | 'usable' | 'unusable'
++  usabilityReason: 'commit-mismatch' | 'package-patch-missing' | 'usable' | 'unusable'
++  policyOnly?: boolean
+ }
+ 
+ interface RuntimeCommitPolicy {
+   activeCommit?: unknown
+   expectedCommit?: unknown
++  packagePatchReady?: boolean
+ }
+ 
+ export function hasValidBootstrapMarker(
+@@ -48,6 +50,17 @@
+ ): ActiveRuntimeState {
+   const hasValidMarker = hasValidBootstrapMarker(marker, schemaVersion)
+ 
++  if (commitPolicy.packagePatchReady === false) {
++    return {
++      hasValidMarker, shouldUseActiveRuntime: false, usabilityReason: 'package-patch-missing',
++      policyOnly: runtimeUsable && hasValidMarker &&
++        typeof commitPolicy.expectedCommit === 'string' &&
++        /^(?!0+$)[0-9a-f]{40}$/i.test(commitPolicy.expectedCommit) &&
++        commitPolicy.activeCommit === commitPolicy.expectedCommit &&
++        marker?.pinnedCommit === commitPolicy.expectedCommit
++    }
++  }
++
+   if (!runtimeUsable) {
+     return {
+       hasValidMarker,
+--- a/apps/desktop/electron/active-runtime-state.test.ts
++++ b/apps/desktop/electron/active-runtime-state.test.ts
+@@ -71,6 +71,30 @@
+   })
+ })
+ 
++test('a matching checkout without the package policy still needs bootstrap', () => {
++  const state = classifyActiveRuntime(VALID_MARKER, 1, true, {
++    expectedCommit: 'a'.repeat(40), activeCommit: 'a'.repeat(40), packagePatchReady: false
++  })
++  assert.equal(state.shouldUseActiveRuntime, false)
++  assert.equal(state.usabilityReason, 'package-patch-missing')
++})
++
++test('only a healthy, fully bootstrapped runtime at the package pin qualifies for policy-only refresh', () => {
++  const commit = VALID_MARKER.pinnedCommit
++  const policy = { expectedCommit: commit, activeCommit: commit, packagePatchReady: false }
++  assert.equal(classifyActiveRuntime(VALID_MARKER, 1, true, policy).policyOnly, true)
++  for (const [marker, usable, overrides] of [
++    [null, true, {}],
++    [{ ...VALID_MARKER, schemaVersion: 0 }, true, {}],
++    [{ ...VALID_MARKER, pinnedCommit: 'b'.repeat(40) }, true, {}],
++    [VALID_MARKER, false, {}],
++    [VALID_MARKER, true, { activeCommit: 'b'.repeat(40) }],
++    [VALID_MARKER, true, { expectedCommit: '0'.repeat(40), activeCommit: '0'.repeat(40) }]
++  ] as const) {
++    assert.equal(classifyActiveRuntime(marker, 1, usable, { ...policy, ...overrides }).policyOnly, false)
++  }
++})
++
+ test('a fallback install stamp does not reject a healthy package-managed runtime', () => {
+   const state = classifyActiveRuntime(VALID_MARKER, 1, true, {
+     activeCommit: 'a'.repeat(40),
+--- a/apps/desktop/electron/main.ts
++++ b/apps/desktop/electron/main.ts
+@@ -80,7 +80,7 @@
+   resolveLinuxPasswordStore
+ } from './bootstrap-platform'
+ import { decideBootstrapRepair } from './bootstrap-repair-guard'
+-import { resolveCheckoutHead, runBootstrap } from './bootstrap-runner'
++import { isPackagedRuntimePatched, resolveCheckoutHead, runBootstrap } from './bootstrap-runner'
+ import {
+   BROWSER_WINDOW_HEIGHT,
+   BROWSER_WINDOW_MIN_HEIGHT,
+@@ -4707,7 +4707,8 @@
+ 
+   return classifyActiveRuntime(readBootstrapMarker(), BOOTSTRAP_MARKER_SCHEMA_VERSION, isActiveRuntimeUsable(), {
+     activeCommit: expectedCommit ? resolveCheckoutHead(ACTIVE_HERMES_ROOT) : null,
+-    expectedCommit
++    expectedCommit,
++    packagePatchReady: !PACKAGE_MANAGED_RUNTIME || isPackagedRuntimePatched(ACTIVE_HERMES_ROOT)
+   })
+ }
+ 
+@@ -4990,16 +4991,17 @@
+   }
+ }
+ 
+-function createBootstrapNeededBackend(backendArgs) {
++function createBootstrapNeededBackend(backendArgs, policyOnly = false) {
+   return {
+     kind: 'bootstrap-needed',
+-    label: 'Hermes Agent not installed yet; bootstrap required',
++    label: 'Hermes Agent runtime setup required',
+     command: null,
+     args: backendArgs,
+     bootstrap: true,
+     env: {},
+     shell: false,
+     activeRoot: ACTIVE_HERMES_ROOT,
++    policyOnly,
+     installStamp: INSTALL_STAMP,
+     isPackaged: IS_PACKAGED,
+     platform: process.platform
+@@ -5041,12 +5043,12 @@
+   //    bootstrap when the runtime itself is unusable.
+   const activeRuntime = activeRuntimeState()
+ 
+-  if (activeRuntime.usabilityReason === 'commit-mismatch') {
++  if (activeRuntime.usabilityReason === 'commit-mismatch' || activeRuntime.usabilityReason === 'package-patch-missing') {
+     rememberLog(
+-      `[bootstrap] Active Hermes runtime at ${ACTIVE_HERMES_ROOT} does not match packaged commit ${INSTALL_STAMP?.commit?.slice(0, 12)}; refreshing the package-managed runtime.`
++      `[bootstrap] Active Hermes runtime at ${ACTIVE_HERMES_ROOT} does not match the desktop package (${activeRuntime.usabilityReason}); refreshing the package-managed runtime.`
+     )
+ 
+-    return createBootstrapNeededBackend(backendArgs)
++    return createBootstrapNeededBackend(backendArgs, activeRuntime.policyOnly)
+   }
+ 
+   if (activeRuntime.shouldUseActiveRuntime && !bootstrapRepairRequested) {
+@@ -5195,7 +5197,8 @@
+   // will rewire startup to spawn the window first and route bootstrap events
+   // to a renderer-side install overlay.
+   if (backend.kind === 'bootstrap-needed') {
+-    rememberLog('[bootstrap] no Hermes install found; starting first-launch bootstrap')
++    const policyOnly = Boolean(backend.policyOnly) && !bootstrapRepairRequested
++    rememberLog(policyOnly ? '[bootstrap] refreshing package policy only' : '[bootstrap] starting runtime setup')
+ 
+     if (await handOffWindowsBootstrapRecovery('bootstrap-needed')) {
+       const handoffError: Error & { isBootstrapFailure?: boolean; bootstrapHandedOff?: boolean } = new Error(
+@@ -5239,6 +5242,7 @@
+       logRoot: path.join(HERMES_HOME, 'logs'),
+       abortSignal: bootstrapAbortController.signal,
+       pinExistingCheckout: PACKAGE_MANAGED_RUNTIME,
++      policyOnly,
+       onEvent: ev => {
+         // Tee every bootstrap event to (a) the desktop log for forensics
+         // and (b) the renderer for live progress UI. Either may be absent;

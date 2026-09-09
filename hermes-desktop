@@ -1,0 +1,34 @@
+#!/bin/bash
+
+flags_file="${XDG_CONFIG_HOME:-${HOME}/.config}/hermes-desktop-flags.conf"
+declare -a flags=()
+
+if [[ -r "${flags_file}" ]]; then
+  while IFS= read -r flag || [[ -n "${flag}" ]]; do
+    flag="${flag#"${flag%%[![:space:]]*}"}"
+    flag="${flag%"${flag##*[![:space:]]}"}"
+    [[ -z "${flag}" || "${flag}" == \#* ]] && continue
+    flags+=("${flag}")
+  done < "${flags_file}"
+fi
+
+export HERMES_DESKTOP_IS_PACKAGED=1
+export HERMES_DESKTOP_RESOURCES_PATH=/usr/lib/hermes-agent-desktop
+export HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME=1
+
+# Reuse a local browser for agent tools, not the user's browser profile.
+# Hermes' own .env loader still honors an explicitly configured browser path.
+if [[ -z "${AGENT_BROWSER_EXECUTABLE_PATH:-}" ]]; then
+  for browser in google-chrome-stable google-chrome chromium; do
+    if browser_path="$(type -P "${browser}")"; then
+      export AGENT_BROWSER_EXECUTABLE_PATH="${browser_path}"
+      break
+    fi
+  done
+fi
+if [[ -z "${AGENT_BROWSER_EXECUTABLE_PATH:-}" ]]; then
+  printf '%s\n' 'hermes-desktop: No Chrome/Chromium found on PATH. For browser tools, install chromium or configure AGENT_BROWSER_EXECUTABLE_PATH. Browser downloads during setup are disabled.' >&2
+fi
+
+exec /usr/bin/electron42 "${flags[@]}" \
+  /usr/lib/hermes-agent-desktop/app.asar "$@"
