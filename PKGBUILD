@@ -2,7 +2,7 @@
 
 pkgname='midnight-shell-git'
 _pkgname='midnight-shell'
-pkgver=2.4.0.r580.g61e5fab
+pkgver=r3087.bb7b565
 pkgrel=2
 pkgdesc="DiM's fork of Caelestia-Shell"
 arch=('x86_64' 'aarch64')
@@ -34,9 +34,7 @@ depends=(
     'ttf-cascadia-code-nerd'
     'swappy'
     'libqalculate'
-
-    # Qt modules
-    'qt6-m3shapes-git' # We use -git explicitly because midnight-shell provides the normal package
+    'qt6-m3shapes'
 )
 
 makedepends=(
@@ -48,8 +46,8 @@ makedepends=(
 
 provides=(
     "${_pkgname}=${pkgver}"
-    "caelestia-shell=${pkgver}"
-    "caelestia-shell-git=${pkgver}"
+    'caelestia-shell'
+    'caelestia-shell-git'
 )
 conflicts=(
     "${_pkgname}"
@@ -66,14 +64,9 @@ replaces=('dim-caelestia-shell-git')
 source=("${pkgname}::git+https://github.com/dim-ghub/midnight-shell.git")
 sha256sums=('SKIP')
 
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    git fetch --tags https://github.com/caelestia-dots/shell.git
-}
-
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -82,6 +75,8 @@ build() {
     cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/ \
+        -DVERSION="$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//')" \
+        -DGIT_REVISION="$(git rev-parse --short HEAD)" \
         -DDISTRIBUTOR="AUR (package: $pkgname)"
     cmake --build build
 }
