@@ -14,27 +14,14 @@ makedepends=('qt5-tools' 'python' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 
              'gperf' 'nss' 'clang' 'nodejs' 'ninja')
 groups=('qt5')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
-_qt_tarball="$_pkgfqn.tar.xz"
-_qt_sha256='173c2326dae138bbb0d98921e9d911e55c00163d93a6db29f294b5e19ff306ae'
-source=(no-qmake.patch
+source=("https://download.qt.io/archive/qt/${pkgver%.*}/${pkgver}/single/$_pkgfqn.tar.xz"
+         no-qmake.patch
          qt-everywhere-src-5.15.17-assimp.patch)
-sha256sums=('db90fa31381fa0814c9c8c803c9e2f9b36bdd6f52da753399e500c0692352498'
+sha256sums=('173c2326dae138bbb0d98921e9d911e55c00163d93a6db29f294b5e19ff306ae'
+            'db90fa31381fa0814c9c8c803c9e2f9b36bdd6f52da753399e500c0692352498'
             '9d54e70051adfeed818db437f266e3bba5ccd2f5f9e056515281ee2f7ff71bac')
 
 prepare() {
-  local _url="https://download.qt.io/archive/qt/${pkgver%.*}/${pkgver}/single/$_qt_tarball"
-  curl -fsSL -o "$_qt_tarball" "$_url"
-  if [ "$(head -c5 "$_qt_tarball")" = '<?xml' ]; then
-    _url=$(grep -oE '<url location="[^"]+" priority="[0-9]+">[^<]+</url>' "$_qt_tarball" | head -n1 | sed -E 's/^<url[^>]*>//; s@</url>$@@')
-    case "$_url" in
-      https://*) ;;
-      *) echo "prepare(): mirror URL '$_url' doesn't look like a real https URL" >&2; return 1 ;;
-    esac
-    curl -fsSL -o "$_qt_tarball" -- "$_url"
-  fi
-  echo "$_qt_sha256  $_qt_tarball" | sha256sum -c -
-  bsdtar -xf "$_qt_tarball"
-
   cd ${_pkgfqn/opensource-/}
 
   ln -s /usr/bin qttools/
