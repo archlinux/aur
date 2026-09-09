@@ -1,8 +1,8 @@
 # Maintainer: AUR package maintainer
 
 pkgname=kimi-bin
-pkgver=3.1.7
-pkgrel=1
+pkgver=3.2.5
+pkgrel=3
 pkgdesc='Kimi desktop client, repackaged for the system Electron runtime'
 arch=('x86_64')
 url='https://www.kimi.com/'
@@ -25,9 +25,9 @@ source_x86_64=(
 noextract=("kimi_${pkgver}.exe")
 sha256sums=('3d0ecc0dd3c31a9aaa58f4be041e10c9850e85505975642a40be1aea39ed9587'
             'a50cb2d9d215fa61a62daa55ba4f555a3b12330b1f35d70327855d11f1360544'
-            '256891c355a265625e641c637d611ad401d3714f0e46b063346caafd802949e7'
+            '01f7417e0c0b5a7ede1d10aa26fa64fa6e0983817bb013486bd5a8bf080ff5f8'
             '7d85bbea6f043c28474aaa6a33b5a9acb2c0ca3c5bdc1b74977cce9394579a50')
-sha256sums_x86_64=('74e3612ad6201f75ac4767ee16f0f1ec6972b5950cf7b0990e83a8d3a6205ccf'
+sha256sums_x86_64=('6dbdd35b9003c743633b8e3e776653e7550641014299dd7722fc374a8d7880bf'
                    '6a818b219018175261e1c0e9cd8f7de52d89ed9b4d2f97173e1b255b30a1db88')
 
 prepare() {
@@ -80,6 +80,12 @@ prepare() {
 package() {
   install -Dm644 "${srcdir}/kimi.asar" \
     "${pkgdir}/usr/lib/kimi/app.asar"
+  # 3.2.5 preflight expects a Node runtime at electron's resourcesRoot/runtime/node;
+  # point it at the system electron (the daimon launcher ignores the passed path
+  # and runs through electron41 anyway, matching the better-sqlite3 electron-v145 ABI).
+  install -d "${pkgdir}/usr/lib/electron41/resources/resources/runtime"
+  ln -s /usr/bin/electron41 \
+    "${pkgdir}/usr/lib/electron41/resources/resources/runtime/node"
   install -d "${pkgdir}/usr/lib/kimi/daimon-bundle"
   cp -a "${srcdir}/daimon-bundle/." \
     "${pkgdir}/usr/lib/kimi/daimon-bundle/"

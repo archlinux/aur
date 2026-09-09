@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Kimi
 Comment=AI assistant by Moonshot AI
-Exec=kimi %U
+Exec=/usr/bin/kimi %U
 Icon=kimi
 Terminal=false
 Type=Application
