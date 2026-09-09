@@ -85,6 +85,7 @@ sha512sums=('daa723ca219c228001edd5dc356cdf7ad8c0c64f7ea59f8928cd3d3f7bf618dbd92
             '12d3b77dbb2a7b7deaef0e173626b9d16acfbdde5b1df4bd58a70a7541a5d8032f25ecbc14604b0e47aa3d6d76704c56409d432717412c6046efebd0ab6180f1')
 
 build() {
+  cd "$srcdir"
   cmake -S td -B td/build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX="$PWD/td/install" \
@@ -104,5 +105,6 @@ build() {
 }
 
 package() {
+  cd "$srcdir"
   DESTDIR="$pkgdir" cmake --install build
 }
