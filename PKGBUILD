@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=r8127-dkms
 pkgver=11.016.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for Realtek 10GB Ethernet NICs"
 arch=(any)
 url="https://www.realtek.com/Download/List?cate_id=584"
@@ -25,6 +25,7 @@ package() {
 	cd "$srcdir/${pkgname::-5}-${pkgver/6/5}"
 	install -Dm755 "$srcdir/dkms.conf" "$pkgdir/usr/src/${pkgname::-5}-${pkgver}/dkms.conf"
 	cp -a --no-preserve=ownership src "$pkgdir/usr/src/${pkgname::-5}-${pkgver}/src"
+	find "${pkgdir}/usr/src/${pkgname::-5}-${pkgver}/src" -type f -exec chmod 644 {} \;
 	sed -i "s/@_PKGBASE@/${pkgname::-5}/g;s/@PKGVER@/${pkgver}/g;s/@_PKGBASE@/${pkgname::-5}/g" "$pkgdir/usr/src/${pkgname::-5}-${pkgver}/dkms.conf"
 
 	install -dm755 "$pkgdir/usr/lib/modprobe.d"
