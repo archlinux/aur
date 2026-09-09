@@ -2,7 +2,7 @@
 pkgname=hyphenbox-bin
 _pkgname=HyphenBox
 _zhsname='黑粉盒子'
-pkgver=0.4.67
+pkgver=0.4.68
 pkgrel=1
 pkgdesc="Free large model API radar + local unified routing. Includes 103 free APIs to measure which ones are still alive; your Key only exists on your own computer, and a local interface is connected to Cursor/Cline/OpenCode."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}.md::${url}/blob/v${pkgver}/LICENSE_PENDING.md"
 )
-sha256sums=('81c39edb36518e407c821a6f2f0d24c943f193ffd5840422cf79f01daa14f724'
+sha256sums=('52fef0fcc25d92ba8e315b6c358f3c5d283134aa1dfdb8e781e6e0f176922118'
             '82b530250cbae59b5b835528bc3555561c546c2b8c2729772b9a5a4736d4b8d0')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
