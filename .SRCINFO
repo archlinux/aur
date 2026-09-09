@@ -6,12 +6,12 @@ pkgbase = stoat-desktop-git
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
-	makedepends = npm
-	makedepends = pnpm
-	makedepends = nvm
 	makedepends = git
 	makedepends = curl
 	makedepends = jq
+	makedepends = zip
+	makedepends = pnpm
+	makedepends = nvm
 	depends = electron43
 	depends = libpipewire
 	provides = stoat-desktop=1.5.3
