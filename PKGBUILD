@@ -14,7 +14,7 @@
 # above the release it came after and says on sight what it is.
 
 pkgname=viewport-webkitgtk-git
-pkgver=0.1.8.r167.gff59517
+pkgver=0.2.0.r43.gb7b0dc5
 pkgrel=1
 pkgdesc='Wayland compositor whose shell is a web page — WebKitGTK, out of process (git)'
 arch=('x86_64' 'aarch64')
