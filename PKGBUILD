@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=navop-bin
 _pkgname=Navop
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Navop combines Navigate and Operation—a unified workspace that helps developers navigate and operate databases, servers, terminals, and AI tools from one place. (Prebuilt version)"
 arch=(
@@ -19,11 +19,13 @@ depends=(
     'systemd-libs'
     'gtk3'
     'webkit2gtk-4.1'
+    'libappindicator'
+    'libayatana-appindicator'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.tar.gz")
-sha256sums_aarch64=('515c085db3f1701a6d6d0fbfa58321600bbc2690c557c962a7ffeba1b37e954f')
-sha256sums_x86_64=('c3671e87808d5c9095a11878c69f5a4414ef82ec3789a430c2e707b5db54f7c2')
+sha256sums_aarch64=('53304bf21d90204957ba7868a07ed34912023be939a0e38e5d45e7191b4f74a8')
+sha256sums_x86_64=('4c6715cddc881232d56dc88f051d6e7f6a7e48d1198982c3feaffc5239dd4461')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"

@@ -1,6 +1,6 @@
 pkgbase = navop-bin
 	pkgdesc = Navop combines Navigate and Operation—a unified workspace that helps developers navigate and operate databases, servers, terminals, and AI tools from one place. (Prebuilt version)
-	pkgver = 0.16.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://navop.dev/
 	arch = aarch64
@@ -11,11 +11,13 @@ pkgbase = navop-bin
 	depends = systemd-libs
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = navop=0.16.1
+	depends = libappindicator
+	depends = libayatana-appindicator
+	provides = navop=0.17.0
 	conflicts = navop
-	source_aarch64 = navop-0.16.1-aarch64.tar.gz::https://github.com/feigeCode/navop/releases/download/v0.16.1/navop-0.16.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 515c085db3f1701a6d6d0fbfa58321600bbc2690c557c962a7ffeba1b37e954f
-	source_x86_64 = navop-0.16.1-x86_64.tar.gz::https://github.com/feigeCode/navop/releases/download/v0.16.1/navop-0.16.1-linux-x64.tar.gz
-	sha256sums_x86_64 = c3671e87808d5c9095a11878c69f5a4414ef82ec3789a430c2e707b5db54f7c2
+	source_aarch64 = navop-0.17.0-aarch64.tar.gz::https://github.com/feigeCode/navop/releases/download/v0.17.0/navop-0.17.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 53304bf21d90204957ba7868a07ed34912023be939a0e38e5d45e7191b4f74a8
+	source_x86_64 = navop-0.17.0-x86_64.tar.gz::https://github.com/feigeCode/navop/releases/download/v0.17.0/navop-0.17.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 4c6715cddc881232d56dc88f051d6e7f6a7e48d1198982c3feaffc5239dd4461
 
 pkgname = navop-bin
