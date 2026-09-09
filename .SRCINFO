@@ -1,6 +1,6 @@
 pkgbase = onedriveqt
 	pkgdesc = OneDrive Qt6 同步客户端
-	pkgver = 1.6.3
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/maoyaotang12/OneDriveQt
 	arch = x86_64
