@@ -1,7 +1,7 @@
 # Maintainer: GYFOOYA <gyfooya@antispam-gmail>
 
 pkgname=labelforge-bin
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="Free and open-source ZPL label designer"
 arch=('x86_64')
@@ -19,9 +19,7 @@ source=(
 "LabelForge-linux-x64.zip::https://github.com/dextsamu/labelforge/releases/download/v${pkgver}/LabelForge-linux-x64.zip"
 )
 
-sha256sums=(
-'25ad6ad8643c5bd9562ae1e6b53001e66dd4bbed511baf91d1696d81c3970735'
-)
+sha256sums=('0b06f3d41087fb094b06a2722f5c84a8741cb2ec28e81205e5547156fd67fcf3')
 
 options=('!strip')
 

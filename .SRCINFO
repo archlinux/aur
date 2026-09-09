@@ -1,6 +1,6 @@
 pkgbase = labelforge-bin
 	pkgdesc = Free and open-source ZPL label designer
-	pkgver = 1.16.0
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://github.com/dextsamu/labelforge
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = labelforge-bin
 	depends = libxss
 	depends = nss
 	options = !strip
-	source = LabelForge-linux-x64.zip::https://github.com/dextsamu/labelforge/releases/download/v1.16.0/LabelForge-linux-x64.zip
-	sha256sums = 25ad6ad8643c5bd9562ae1e6b53001e66dd4bbed511baf91d1696d81c3970735
+	source = LabelForge-linux-x64.zip::https://github.com/dextsamu/labelforge/releases/download/v1.16.1/LabelForge-linux-x64.zip
+	sha256sums = 0b06f3d41087fb094b06a2722f5c84a8741cb2ec28e81205e5547156fd67fcf3
 
 pkgname = labelforge-bin
