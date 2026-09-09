@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-wetypex
 pkgver=2.2.3.657
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Linux compatibility layer for WeType on Fcitx5"
 arch=('x86_64')
 url="https://github.com/panxuc/fcitx5-wetypex"
@@ -30,10 +30,10 @@ depends=(
 makedepends=('cmake' 'clang' 'git' 'boost')
 optdepends=('fcitx5-configtool: manage input methods')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}-${pkgrel}/${pkgname}-${pkgver}.tar.gz"
     'libkqueue::git+https://github.com/mheily/libkqueue.git#commit=46a3e130f88b0b0742575dcb01d77e336538024b'
 )
-sha256sums=("79e89e5a9c2f879da9d9576d7809ed572be5a172938f5f47391a301837cffaf4" "SKIP")
+sha256sums=("b334725a062146598b3b4044cdb245564ad6de63781db7fe1e27c7f43ff6c24f" "SKIP")
 install=fcitx5-wetypex.install
 
 build() {
