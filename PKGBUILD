@@ -1,15 +1,32 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+format_version() {
+    local input="$1"
+
+    # Counts how many dots are in the string
+    local dot_count="${input//[^.]/}"
+
+    # If there are 3 dots (a.b.c.d), apply the post transformation
+    if [ "${#dot_count}" -ge 3 ]; then
+        local prefix="${input%.*}"
+        local suffix="${input##*.}"
+        echo "${prefix}.post${suffix}"
+    else
+        # Otherwise (like a.b.c), return the input unchanged
+        echo "${input}"
+    fi
+}
+
 _appauthor="NSPC911"
 _appname="multiarchive"
 
 pkgname="python-${_appname}"
-pkgver=0.1.2
+pkgver=0.1.4.1
 pkgrel=1
 pkgdesc="A high level archive handler for Python"
 
 _pypi_package=${pkgname##python-}
-_pypi_version=${pkgver}
+_pypi_version=$(format_version "${pkgver}")
 
 license=('MIT')
 arch=('any')
@@ -23,7 +40,7 @@ depends=('python' 'python-rarfile')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz" "LICENSE")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz" "LICENSE")
-sha256sums=('f923c5c9d6cf6e01ec65416cdbbe617a66a7d4f9feaa0e07413d768d147e3e7f'
+sha256sums=('3c4315b7257fedba624e7ed993e934bfd294fefa86e7243e2878322c4179b32a'
             '4f0239fdf0572b5752c8efacf1ce6b1060181479b504b3a5e22e0aa7af6176f1')
 
 prepare() {
