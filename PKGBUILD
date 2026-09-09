@@ -16,7 +16,7 @@ source=("$_repo/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
 sha256sums=('0e4033ce1235c096715b320fcafbe14770edf3da1cb1efdd2ffd7a85ca2c378d')
 
 build() {
-  cd "$srcdir"/${_name//-semantic-conventions/}-$pkgname-v$pkgver/${pkgname/-//}
+  cd "$srcdir"/${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}
   python -m build --wheel --no-isolation
 }
 
@@ -25,11 +25,11 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/${_name//-semantic-conventions/}-$pkgname-v$pkgver/${pkgname/-//}
+  cd "$srcdir"/${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}
   PYTHONPATH=$PWD/src pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/${_name//-semantic-conventions/}-$pkgname-v$pkgver/${pkgname/-//}
+  cd "$srcdir"/${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//}
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
