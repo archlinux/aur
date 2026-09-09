@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box-git
 _pkgname=Pandora-Box
-pkgver=1.0.22.r0.g8ea7971
+pkgver=1.0.23.r4.g87e16ea
 _electronversion=41
 _nodeversion=26
 pkgrel=1
-pkgdesc="A Simple Mihomo GUI.(Use system-wide electron)"
+pkgdesc="A Simple Mihomo GUI. 一个简易的 Mihomo 桌面客户端"
 arch=(
     'aarch64'
     'x86_64'
@@ -26,6 +26,7 @@ makedepends=(
     'wget'
     'curl'
     'jq'
+    'zip'
 )
 source=(
     "${pkgname%-git}.git::git+${url}"
@@ -100,6 +101,12 @@ prepare() {
     find src-electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --legacy-peer-deps
+    local _v="${SYSTEM_ELECTRON_VERSION}"
+	local _zd="${srcdir}/electron-zips"
+	local _zf="${_zd}/electron-v${_v}-linux-x64.zip"
+	install -Dm755 -d "${_zd}"
+	( cd "${ELECTRON_DIST}" && zip -r -q -0 "${_zf}" . )
+	sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," forge.config.*
     cd "${srcdir}/${pkgname%-git}.git/src-go"
     go mod tidy
     wget -O internal/em/geoip.metadb "https://${_DLURL}/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb"
