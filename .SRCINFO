@@ -13,6 +13,8 @@ pkgbase = argc-completions-git
 	optdepends = yq: dynamic completions for nix and some cargo plugins (or go-yq)
 	optdepends = go-yq: dynamic completions for nix and some cargo plugins (or yq)
 	source = git+https://github.com/sigoden/argc-completions.git
+	source = fix-gawk-interval-space.patch
 	b2sums = SKIP
+	b2sums = 13d76849ca9f10d288641954b213dc7ef86e52a10bd39ad1e98ed44ff5100870e0bb7357fac9074a7451d9224b46840de3f05331eb0cf8dc8791ee964f7bdae3
 
 pkgname = argc-completions-git

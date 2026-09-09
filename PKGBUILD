@@ -18,14 +18,23 @@ optdepends=('yq: dynamic completions for nix and some cargo plugins (or go-yq)'
             'go-yq: dynamic completions for nix and some cargo plugins (or yq)')
 makedepends=('git')
 # No provides()/conflicts(): no stable arc-completions package exists.
-source=("git+https://github.com/${_repo}.git")
-b2sums=('SKIP')
+source=("git+https://github.com/${_repo}.git"
+        'fix-gawk-interval-space.patch')
+b2sums=('SKIP'
+        '13d76849ca9f10d288641954b213dc7ef86e52a10bd39ad1e98ed44ff5100870e0bb7357fac9074a7451d9224b46840de3f05331eb0cf8dc8791ee964f7bdae3')
 install="${pkgname}.install"
 
 pkgver() {
   cd "${_pkgname}"
   # No tags upstream; fall back to commit count + short sha.
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${_pkgname}"
+  # Upstream issue #74: drop the space from the {4, } interval, which gawk
+  # rejects ('invalid contents of {}'). Remove when fixed upstream.
+  patch -p1 < "${srcdir}/fix-gawk-interval-space.patch"
 }
 
 package() {
