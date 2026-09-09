@@ -2,7 +2,7 @@
 
 pkgname=g-tmce
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="PySide6 app for creating and extracting MKV files with TMDB metadata"
 arch=('any')
 url="https://github.com/G-grbz/G-TMCE"
@@ -18,7 +18,9 @@ optdepends=(
   'kdialog: KDE-native file dialogs'
   'zenity: GTK-native file dialogs'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+# Keep the cached source filename unique for each package revision. This avoids
+# checksum failures when an upstream tag is ever rebuilt.
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('c7a8ccf4201de6f0053932ccf7d82ac273683a43f42a08744b8eb972f4a7189a')
 
 package() {
