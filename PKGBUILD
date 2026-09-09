@@ -1,6 +1,6 @@
 # Maintainer: Radu Macocian <radu@macocian.com>
 pkgname=omni-launcher
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Application launcher overlay built on Quickshell, with calculator, unit/currency conversion, unicode search and Giphy search. Installable as a Quickshell QML module (OmniLauncher) for embedded use or standalone via omni-launcher."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('quickshell' 'qt6-declarative' 'wl-clipboard' 'curl' 'python' 'glib2' 'inotify-tools')
 optdepends=('hyprland: close-on-workspace-change and focus-grab integration')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1ddf30901df20bf084aaf29a9371b3ebbdf7440e2492ee62d2ff1cfd82f7a3a1')
+sha256sums=('ca88ce5cca16566659095bb607b62b60be1d7bbeba5d9fe880607c91f43e3763')
 
 package() {
   cd "$srcdir/$pkgname"
