@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm-cuda
 _pkgname=vllm
-pkgver=0.27.1
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
@@ -117,7 +117,7 @@ build() {
 
 package() {
   cd $_pkgname
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  python -m installer --destdir="${pkgdir}" "dist/${_pkgname}-${pkgver}"*.whl
 }
 
 # vim:set ts=2 sw=2 et:
