@@ -1,7 +1,7 @@
 # Maintainer: LandWarderer2772 <navaneethbinoy@gmail.com>
 # Maintainer: Amog-us at amogussugomus dot proton dot me
 pkgname=openclaude
-pkgver=0.28.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="OpenClaude is an open-source coding-agent CLI for cloud and local model providers."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('ripgrep: for faster file search within openclaude')
 makedepends=('bun' 'git')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4c6dfdf69abac2f4c361f4043a9cb1564a4f6092c77d2c655b35177295a35694')
+sha256sums=('24624a0d60caa1921b66fccf543524fe2f141b5c24decff997bc689f5bf95222')
 
 build() {
   cd "${pkgname}-${pkgver}"
