@@ -7,8 +7,8 @@
 
 _pkgname='sherlock'
 pkgname="${_pkgname}"
-pkgver=0.16.0
-pkgrel=5
+pkgver=0.16.2
+pkgrel=1
 pkgdesc='Hunt down social media accounts by username across social networks'
 arch=('any')
 url='https://github.com/sherlock-project/sherlock'
@@ -22,23 +22,21 @@ depends=('python'
         'python-requests'
         'python-requests-futures'
         'python-stem'
-        'python-torrequest')
-makedepends=('python-installer' 'python-build' 'python-poetry-core')
-optdepends=('tor: enables routing requests through tor')
+        'python-tomli')
+makedepends=('python-installer' 'python-build' 'python-poetry-core' 'python-setuptools')
 conflicts=('sherlock-git')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('997a7c22ed5c179438c91c27e8430b43e1d0fceb79d345e478a390d599a4016f')
+sha256sums=('5888c02c0fb79caf3e1612c8ee2deef59ca9797f6fffa8e597cf094af9e74b10')
 
 build() {
-    cd "$srcdir"/sherlock-0.16.0
+    cd "$srcdir"/sherlock-"$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"/sherlock-0.16.0
+  cd "$srcdir"/sherlock-"$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dvm644 'docs/removed-sites.md' 'docs/README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
-# vim: ts=2 sw=2 et:
