@@ -1,6 +1,6 @@
 pkgbase = youtube-music-for-desktop-bin
-	pkgdesc = Unofficial Youtube Music Desktop App, with LastFM support.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.7.6
+	pkgdesc = Beautiful Youtube Music desktop app with customizations for users and developers.
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://youtube-music.app/
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = youtube-music-for-desktop-bin
 	license = CC0-1.0
 	depends = electron43
 	depends = nodejs
-	provides = youtube-music-for-desktop=1.7.6
+	provides = youtube-music-for-desktop=1.8.1
 	conflicts = youtube-music-for-desktop
-	source = LICENSE-1.7.6::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v1.7.6/LICENSE
+	source = LICENSE-1.8.1::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v1.8.1/LICENSE
 	source = youtube-music-for-desktop.sh
 	sha256sums = 33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = youtube-music-for-desktop-1.7.6-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.7.6/YouTube-Music-for-Desktop-1.7.6-arm64.AppImage
-	sha256sums_aarch64 = 12cb8876fcdb6a09a3b3d231536ed91541842541862d2517a953e13d9190f26d
-	source_x86_64 = youtube-music-for-desktop-1.7.6-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.7.6/YouTube-Music-for-Desktop-1.7.6.AppImage
-	sha256sums_x86_64 = bb4e108a65d9fb2952cdc523bb45f6f49e2ef7e7861b955e06488daf019063bb
+	source_aarch64 = youtube-music-for-desktop-1.8.1-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.8.1/YouTube-Music-for-Desktop-1.8.1-arm64.AppImage
+	sha256sums_aarch64 = 5122030aede06ee0bdb7f4676b4d9dac28878537f64616d65c15d77a9dba95c0
+	source_x86_64 = youtube-music-for-desktop-1.8.1-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.8.1/YouTube-Music-for-Desktop-1.8.1.AppImage
+	sha256sums_x86_64 = 319c373c97422fae5ffefa97db6e6d2b078b9f85d07da09666d16ee6ef4e74ba
 
 pkgname = youtube-music-for-desktop-bin
