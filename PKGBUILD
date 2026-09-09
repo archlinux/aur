@@ -7,7 +7,7 @@
 #   paru -Ui        (oder)   yay -Bi .
 pkgname=dream-voicetraining
 _repo=Dream-VoiceTraining          # das GitHub-Archiv entpackt unter diesem Namen
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Voice analysis for training your speaking voice: pitch, formants, resonance and voice quality"
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
 )
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f7bde6e840dcf4646631479f498db3f3626d063d10ffd87e52254ef0d535c8ca')
+sha256sums=('1b95d4b460d0bb0987877ce502ea8aa8263f1e3eca2cadcd6ced8f2fc0c6bc4b')
 
 check() {
   cd "$srcdir/$_repo-$pkgver"
@@ -45,6 +45,10 @@ package() {
 
   install -dm755 "$pkgdir/usr/lib/$pkgname"
   install -Dm644 ./*.py -t "$pkgdir/usr/lib/$pkgname"
+
+  # Bildschirmfotos der Einfuehrung liegen neben den .py-Dateien, dort sucht
+  # paths.intro_shot() zuerst.
+  install -Dm644 assets/intro/* -t "$pkgdir/usr/lib/$pkgname/assets/intro"
 
   install -Dm755 packaging/dream-voicetraining.sh "$pkgdir/usr/bin/$pkgname"
   install -Dm644 packaging/dream-voicetraining.desktop \
@@ -59,6 +63,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 THIRD_PARTY_NOTICES.md \
     "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES.md"
+  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 README.de.md "$pkgdir/usr/share/doc/$pkgname/README.de.md"
 }
