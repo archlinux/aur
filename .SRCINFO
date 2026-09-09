@@ -1,6 +1,6 @@
 pkgbase = runyte
 	pkgdesc = An editor-first, agent-ready terminal workspace for software development
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/runyte/runyte
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = runyte
 	provides = runyte
 	options = !lto
 	options = !strip
-	source = runyte-0.2.1.tgz::https://github.com/runyte/runyte/archive/v0.2.1.tar.gz
-	sha256sums = 851155184c6f3397f515d054fd4998d383d79cd28dad29ca0fa7d236e661d883
+	source = runyte-0.2.2.tgz::https://github.com/runyte/runyte/archive/v0.2.2.tar.gz
+	sha256sums = 3c187727d7665c2419bdb561c47ec68eaac6f80d98596b12b7b9c4ec49f6cef3
 
 pkgname = runyte
