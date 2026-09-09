@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-core-info
 pkgname=$_pkgname-git
-pkgver=1.22.2.r3.gbd81a0b
+pkgver=1.22.2.r28.g2e8b29b
 pkgrel=1
 epoch=1
 pkgdesc="Libretro core info files"
