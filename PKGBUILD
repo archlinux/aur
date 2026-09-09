@@ -5,7 +5,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=clementine
-pkgver=1.4.1+79+g841f3251d
+pkgver=1.4.1+106+ga4b3599ec
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
@@ -56,8 +56,8 @@ optdepends=(
     )
 #options=(!lto)
 # NB commits are chosen corresponding a git tag https://github.com/clementine-player/Clementine/tags
-source=("git+https://github.com/clementine-player/Clementine.git#commit=841f3251de2f2a36f8f900037646ff302fa648ed")
-sha256sums=('4ab66570b1f7bcf8fba015c5d931c119f6c42eb445ebf835cc355852767eb501')
+source=("git+https://github.com/clementine-player/Clementine.git#commit=a4b3599ecd10662487bf22a1a14c4293467e2485")
+sha256sums=('5e449957e251f67eab6fd1764cbc78277f0c60db604cf65c0f8d0f21257739cc')
 
 pkgver() {
   cd Clementine
@@ -93,7 +93,7 @@ build() {
     -DUSE_SYSTEM_TAGLIB=ON
     )
 
-  cmake -B build -S Clementine -Wno-dev \
+  cmake -B build -S Clementine -Wno-author \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
