@@ -1,6 +1,6 @@
 pkgbase = washy-washy-cli-bin
 	pkgdesc = Turns a JSON chart of laundry piles into a phone PDF and a printable PDF
-	pkgver = 3.1.9
+	pkgver = 3.1.10
 	pkgrel = 1
 	url = https://github.com/alrayyes/washy-washy-cli
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = washy-washy-cli-bin
 	conflicts = washy-washy-cli
 	options = !strip
 	options = !debug
-	source_x86_64 = washy-washy-cli-3.1.9-x86_64::https://github.com/alrayyes/washy-washy-cli/releases/download/v3.1.9/washy-washy-cli-linux-x64
-	source_x86_64 = washy-washy-cli-3.1.9.1.gz::https://github.com/alrayyes/washy-washy-cli/releases/download/v3.1.9/washy-washy-cli.1.gz
+	source_x86_64 = washy-washy-cli-3.1.10-x86_64::https://github.com/alrayyes/washy-washy-cli/releases/download/v3.1.10/washy-washy-cli-linux-x64
+	source_x86_64 = washy-washy-cli-3.1.10.1.gz::https://github.com/alrayyes/washy-washy-cli/releases/download/v3.1.10/washy-washy-cli.1.gz
 	sha256sums_x86_64 = 5ca01699f4b08b3783530245679f64133b424eede4dedc33b2c28ed2d4a067df
-	sha256sums_x86_64 = e467be63247cfcf4c3929b79bf3aac67ff33fb951062423c769441c5e64295d4
-	source_aarch64 = washy-washy-cli-3.1.9-x86_64::https://github.com/alrayyes/washy-washy-cli/releases/download/v3.1.9/washy-washy-cli-linux-arm64
-	source_aarch64 = washy-washy-cli-3.1.9.1.gz::https://github.com/alrayyes/washy-washy-cli/releases/download/v3.1.9/washy-washy-cli.1.gz
+	sha256sums_x86_64 = 12d1de58ff7cba803d9b3eaa3b6d5ab8b7016058551554b5340c65d99ea6534b
+	source_aarch64 = washy-washy-cli-3.1.10-x86_64::https://github.com/alrayyes/washy-washy-cli/releases/download/v3.1.10/washy-washy-cli-linux-arm64
+	source_aarch64 = washy-washy-cli-3.1.10.1.gz::https://github.com/alrayyes/washy-washy-cli/releases/download/v3.1.10/washy-washy-cli.1.gz
 	sha256sums_aarch64 = 9d1302fde3078a3c75a864d587f6036642c0a06882ce390e118f264f6862fcfa
-	sha256sums_aarch64 = e467be63247cfcf4c3929b79bf3aac67ff33fb951062423c769441c5e64295d4
+	sha256sums_aarch64 = 12d1de58ff7cba803d9b3eaa3b6d5ab8b7016058551554b5340c65d99ea6534b
 
 pkgname = washy-washy-cli-bin
