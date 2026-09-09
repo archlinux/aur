@@ -9,6 +9,6 @@ pkgbase = rfetch
 	makedepends = git
 	depends = gcc-libs
 	source = rfetch::git+https://github.com/skerrixx/rfetch.git#tag=v1.0.0
-	sha256sums = 7e60b1c8795409a1b21fa737cdcc86a353a9a8d87ef7eeedc42744ead6858b89
+	sha256sums = 86840c76e6a3a078bb4f7f537bc916ab2702f8f96dbda38ac010455b0ab9521e
 
 pkgname = rfetch
