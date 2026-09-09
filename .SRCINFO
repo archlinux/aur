@@ -1,12 +1,11 @@
 pkgbase = devkitty
-	pkgdesc = Swiss army knife for developers.(Use system-wide electron)
-	pkgver = 4.2.11
+	pkgdesc = Swiss army knife for developers.All your repos. One calm window.
+	pkgver = 4.2.12
 	pkgrel = 1
 	url = https://devkitty.app/
 	arch = any
 	license = MIT
 	makedepends = gendesk
-	makedepends = npm
 	makedepends = pnpm
 	makedepends = nvm
 	makedepends = curl

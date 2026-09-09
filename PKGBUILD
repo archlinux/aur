@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=devkitty
 _pkgname=Devkitty
-pkgver=4.2.11
+pkgver=4.2.12
 _electronversion=41
 _nodeversion=25
 pkgrel=1
-pkgdesc="Swiss army knife for developers.(Use system-wide electron)"
+pkgdesc="Swiss army knife for developers.All your repos. One calm window."
 arch=('any')
 url="https://devkitty.app/"
 _ghurl="https://github.com/egor-xyz/devkitty"
@@ -16,7 +16,6 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'npm'
     'pnpm'
     'nvm'
     'curl'
@@ -107,6 +106,7 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
 	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
