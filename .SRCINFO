@@ -1,0 +1,17 @@
+pkgbase = aotopsy-bin
+	pkgdesc = Static analyzer for Flutter/Dart AOT snapshots — recovers function names, class hierarchies, call graphs, and behavioral signals from libapp.so
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/BroNils/aotopsy
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = aotopsy
+	conflicts = aotopsy
+	options = !debug
+	source_x86_64 = aotopsy-bin-1.6.0-linux-amd64.tar.gz::https://github.com/BroNils/aotopsy/releases/download/v1.6.0/aotopsy_v1.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a16d5c9f79f34a4cdff5565128f58d0d97d7b1de058b395358f77dfff817ba45
+	source_aarch64 = aotopsy-bin-1.6.0-linux-arm64.tar.gz::https://github.com/BroNils/aotopsy/releases/download/v1.6.0/aotopsy_v1.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 21e5f72f081ec68014a535675e1a2fe63b755f394a969341af3bddf7339c642d
+
+pkgname = aotopsy-bin
