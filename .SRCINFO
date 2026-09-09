@@ -1,12 +1,12 @@
 pkgbase = scrolex-bin
 	pkgdesc = A Horizontally Scrolled PDF Viewer
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/molecule-man/scrolex
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	depends = gtk4
-	source = scrolex-bin-0.12.0.tar.gz::https://github.com/molecule-man/scrolex/releases/download/0.12.0/scrolex-0.12.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = f1f03719b80b5bf1215874bbe74b633055ad304e80d32bf817f4ca81628362e0
+	source = scrolex-bin-0.12.1.tar.gz::https://github.com/molecule-man/scrolex/releases/download/0.12.1/scrolex-0.12.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 754d795fc7cb40462b479aeb180c382e350eb3086f440e78dc70d7c174208a61
 
 pkgname = scrolex-bin
