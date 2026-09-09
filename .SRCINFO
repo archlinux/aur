@@ -1,6 +1,6 @@
 pkgbase = cherry-studio-electron-bin
-	pkgdesc = 🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.0.12
+	pkgdesc = AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs
+	pkgver = 2.0.13
 	pkgrel = 1
 	url = https://cherryai.com/
 	arch = aarch64
@@ -18,15 +18,15 @@ pkgbase = cherry-studio-electron-bin
 	depends = uv
 	depends = mise
 	optdepends = ollama: Use your local LLM
-	provides = cherry-studio=2.0.12
+	provides = cherry-studio=2.0.13
 	conflicts = cherry-studio
-	source = LICENSE-2.0.12::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v2.0.12/LICENSE
+	source = LICENSE-2.0.13::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v2.0.13/LICENSE
 	source = cherry-studio-electron.sh
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = cherry-studio-electron-2.0.12-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.0.12/Cherry-Studio-2.0.12-linux-arm64.rpm
-	sha256sums_aarch64 = 7376dbb314cbec3dd41d66a20e1cf4e22ae9cf786fdbab7e309f6c997e814caa
-	source_x86_64 = cherry-studio-electron-2.0.12-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.0.12/Cherry-Studio-2.0.12-linux-x64.rpm
-	sha256sums_x86_64 = 4276f12c9a51c13741dac56616fba78bff4d560c9b954e422503024ee2cb7ed2
+	source_aarch64 = cherry-studio-electron-2.0.13-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.0.13/Cherry-Studio-2.0.13-linux-arm64.rpm
+	sha256sums_aarch64 = 2b5ba3c035de9dedb78b0ee144bcc5bc40332cac8df744a6cda31bbda9325b98
+	source_x86_64 = cherry-studio-electron-2.0.13-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.0.13/Cherry-Studio-2.0.13-linux-x64.rpm
+	sha256sums_x86_64 = 22791416f05d08eb55d8fa4e549546c380c2139dc45c45a3a788536856acd93f
 
 pkgname = cherry-studio-electron-bin
