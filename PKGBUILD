@@ -1,16 +1,16 @@
 # Maintainer: krant <aleksey.vasilenko@gmail.com>
 
 pkgname=oklch-color-picker
-pkgver=2.3.4
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="A standalone color picker application using the Oklch colorspace (based on Oklab)"
-url="https://oklch.eerolehtinen.fi/"
+url="https://github.com/eero-lehtinen/oklch-color-picker"
 license=('MIT')
 arch=('x86_64')
 depends=('libglvnd' 'libxkbcommon')
 makedepends=('rust')
-source=("https://github.com/eero-lehtinen/oklch-color-picker/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('1ef1709f763476ff4bd60c60866151f4b7be1fd34961a8b22fb6819c0565a2582ebfbbd5ebaac660d90630d9cd75cabcc31e6443ac5c7cb9b00777898018dc91')
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('0e6b5d9c2b2d9020085573a7b5d63b104418c01236ebd3c982fa7b2d94de79dee128f49b1727d2b2b25b6c9fd4f2861308bb8f7e83626a38da168255a0c8ee94')
 
 build() {
   cd "$pkgname-$pkgver"
