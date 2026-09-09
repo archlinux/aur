@@ -1,19 +1,19 @@
 # Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
 
 pkgname=jsrc
-pkgver=0.3.1
-pkgrel=5
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Python library for bioinformatics and scientific computing"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/imjiaoyuan/jsrc"
 license=('MIT')
-depends=('python>=3.10' 'python-numpy>=1.23' 'python-matplotlib>=3.5' 'python-opencv>=4.7')
+depends=('python>=3.10')
+optdepends=('python-matplotlib>=3.5: plotting (jsrc plot) module')
 provides=("python-jsrc=$pkgver")
 conflicts=('python-jsrc')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools>=61.0' 'uv')
-options=('!strip' '!debug')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools>=61.0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('138e4664221830ce5023340cfcf49edbc97d94235ef53a0e05dd3a3d459fb0ec')
+sha256sums=('a221c3f8fe98822ae859cfc83c337467590597d78bf1436482159984e2d445ef')
 
 build() {
     cd "jsrc-$pkgver"
@@ -23,11 +23,7 @@ build() {
 package() {
     cd "jsrc-$pkgver"
 
-    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-
     python -m installer --destdir="$pkgdir" dist/*.whl
-
-    uv pip install --python /usr/bin/python3 --target="$pkgdir$site_packages" --no-deps --no-binary biopython biopython>=1.80
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
