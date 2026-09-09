@@ -10,8 +10,8 @@
 
 _pkgname="pcsx2"
 pkgname="$_pkgname"
-pkgver=2.6.3
-pkgrel=3
+pkgver=2.8.2
+pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
@@ -28,6 +28,7 @@ depends=(
   libxrandr
   qt6-base
   qt6-svg
+  rapidyaml
   sdl3
   shaderc # dlopen
 )
@@ -68,13 +69,14 @@ fi
 
 install="$_pkgname.install"
 
-_pkgsrc="$_pkgname"
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
 source=(
-  "$_pkgsrc"::"git+$url.git#tag=v$pkgver"
+  "$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext"
   "pcsx2_patches"::"git+https://github.com/PCSX2/pcsx2_patches.git"
 )
 sha256sums=(
-  'be244f680a26c86a01ea01c4bfc906f0c82512be3823dc0b00d54adb67cf5650'
+  '8d1762d568c92198e61a284064d0e5c0d2c6ab1c5bac60ef1330dd0fe44d10a7'
   'SKIP'
 )
 
@@ -120,11 +122,6 @@ prepare() {
   if [[ "${_build_ffmpeg::1}" == "t" ]]; then
     sed -E -e '/find_package\(FFMPEG/d' -i cmake/SearchForStuff.cmake
   fi
-}
-
-pkgver() {
-  cd "$_pkgsrc"
-  git describe --tags | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() (
@@ -196,11 +193,13 @@ package() {
     eval "depends+=(
       libcurl.so
       libdbus-1.so
+      libfontconfig.so
       libfreetype.so
       libjpeg.so
       liblz4.so
       libpcap.so
       libpng16.so
+      libryml.so
       libudev.so
       libwebp.so
       libz.so
@@ -213,7 +212,7 @@ package() {
 
   install -Dm644 patches.zip -t "$pkgdir/usr/share/$_pkgname/resources/"
 
-  install -Dm644 pcsx2/bin/resources/icons/AppIconLarge.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
+  install -Dm644 "$_pkgsrc/bin/resources/icons/AppIconLarge.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
