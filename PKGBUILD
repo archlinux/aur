@@ -1,10 +1,10 @@
 pkgname=discbandit
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical audio CD ripper with metadata and artwork support'
 arch=('any')
 url='https://github.com/pacmanics/discbandit'
-license=('MIT')
+license=('GPL-3.0-or-later')
 
 depends=(
   'python'
