@@ -6,7 +6,7 @@ _execname=cjsh
 pkgname=${_execname}-bin
 pkgdesc="POSIX shell scripting meets Modern Shell Features"
 
-pkgver=1.4.15
+pkgver=1.5.0
 pkgrel=1
 _appversion=v${pkgver}
 
@@ -37,16 +37,16 @@ source=("WHAT-TO-KNOW-${pkgver}.md::${_ghurlraw}/docs/getting-started/what-to-kn
         "LANGUAGE-COMPATIBILITY-${pkgver}.md::${_ghurlraw}/docs/reference/language-compatibility.md")
 source_x86_64=("${_execname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_appversion}/${_execname}-${_appversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_execname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_appversion}/${_execname}-${_appversion}-${_barch[1]}.tar.gz")
-sha256sums=('1fe29b16df9b061a2c03c6ca8a6371f811b9d5e382b46e2a6f773ce126cf3686'
+sha256sums=('84b038b5206824c33602e290f76cceb8c29219177f97d179e42fbb67ad8d3dfd'
             '271ddb6d44b38c83cd2eb69739b74f18935a90638deb39a06ab299b265a93c88'
-            '38eb494f015aa6005db3f44166d0ef1a9506bcf40b02675c5aedce8895b582fa'
-            '0aeb9ed2295082dddd82ee8a194a6ceb2f78664aa8d01aff0faa836d0cce476e'
-            '64dbec6a47cc56f4ab6a09d7c448314eedb34e08009dae2b6b93a832d2011f3b'
-            '60a2377bd4917712d11a61addd67460fe4410dae562a701bc4921077de7451b8'
-            '5bc433042212436482823d29c6d537068f7c4de7633745acb3777751d28a3f1a'
+            '29ca988ac50d958f4c7c410e83a6bc2ed50326f8b5e7956aa5debb79f341afe4'
+            'e2df7864bb673689e52f4624d321f6a9cce989994c2043fa114cf6a138677ba3'
+            '70cebacf376afc786467528aa7d2c8cd6f284ebfb84afa1feb04b01e303ae81d'
+            '0647cfb3847b6be96ce6bdac89041b76aaf45d15ad58e73dd167f5d2951f1405'
+            'a44c280fb650ae4a29169a6be233264d7c175ae5243c65e372c85204cc0651bb'
             '3889766b8eba4a461cc768c3f52000fe501b23adf99535c9f8fb1c8ccf8aebaf')
-sha256sums_x86_64=('45900892c44d40c91527147708ae1f9db79ebb5e8f11a63674b5c280ff60769b')
-sha256sums_aarch64=('1ce757e8070f8e73361e159c754d27619dfe364e21fc9520e6f7bad7ec531059')
+sha256sums_x86_64=('00fe100b321991a5edf9eda6d0a2f727996418f6d38b52b26db40be0f54c6711')
+sha256sums_aarch64=('856e444380f1a7e05d05fb676c83a106e3045e9ade5272aa3c767994ac627eec')
 
 
 case ${CARCH} in
