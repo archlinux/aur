@@ -1,6 +1,6 @@
 pkgbase = r-nanonext
 	pkgdesc = Lightweight Toolkit for Messaging, Concurrency and the Web
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=nanonext
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-nanonext
 	depends = r
 	optdepends = r-later
 	optdepends = r-litedown
-	source = https://cran.r-project.org/src/contrib/nanonext_1.10.1.tar.gz
-	sha256sums = ea575a20d6aaac3191e16d4931d08b8d5aabeca02bebc927d027d1e5cef9ed9f
+	source = https://cran.r-project.org/src/contrib/nanonext_1.10.2.tar.gz
+	sha256sums = bcfe6bae45ced1cb3a9105f35addd5645b71a142096fc8870b0befc75d3b7856
 
 pkgname = r-nanonext
