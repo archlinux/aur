@@ -1,10 +1,14 @@
 # ComfyKick
 
-The [Official ComfyUI Launch Process](https://github.com/Comfy-Org/ComfyUI#installing) **SUCKs**🤮, this is better.
+The [Official ComfyUI Launch Process](https://github.com/Comfy-Org/ComfyUI#manual-install-windows-linux) **SUCKs**🤮, this is better.
 
 ## Why
 
-The [ComfyUI](https://github.com/Comfy-Org/ComfyUI) is designed to be run from a `git clone` checkout. In practice this forces users to maintain a working Git tree, manually upgrade dependencies, and keep custom-node installation procedures in sync with the core requirements. ComfyKick replaces that workflow with a deterministic launcher:
+The [ComfyUI](https://github.com/Comfy-Org/ComfyUI) is designed to be run from a `git clone` checkout: you must maintain a working Git tree, run `git pull` + `pip install -r requirements.txt` for every update, and keep custom-node installation procedures in sync with the core requirements by hand.
+
+Comfy team obviously [know these problems too](https://github.com/Comfy-Org/Comfy-Desktop/tree/3304521ab456966c7642505a90ad3eeed26cec20#comfy-desktop). So they went on to introduce [Comfy CLI](https://github.com/Comfy-Org/comfy-cli) and [Comfy Desktop](https://github.com/Comfy-Org/Comfy-Desktop). And those are even worse. The former only completes the cloning part for you; you still have to manage the venv by hand, and run those awful commands in a specific directory. The latter, is just a damn Electron wrapper. And they still haven't solved the huge security issue caused by ComfyUI's excessive vibe coding.
+
+In general, these messes can be resolved through proper containerized deployment. But you typically end up having to host a heavy CUDA container, and it will become the 137th copy of CUDA binfile on your disk. ComfyKick replaces all these horrors with a deterministic, sandboxed launcher:
 
 - Use a single editable configuration file ([`comfykick.toml`](comfykick.toml)) to configure everything.
 
@@ -14,7 +18,7 @@ The [ComfyUI](https://github.com/Comfy-Org/ComfyUI) is designed to be run from a
 
 - Drops the previous run directory on the next invocation; the on-disk ComfyUI source is never mutated by ComfyUI itself.
 
-- Kicks ComfyUI into [systemd sandbox](comfykick.service) instead of letting it runs on bare system. This can shrinks the attack surface, and also without hosting heavy CUDA containers.
+- Kicks ComfyUI into [systemd sandbox](comfykick.service) instead of letting it run on the bare system. This shrinks the attack surface without hosting heavy CUDA containers.
 
 ## Install & Uninstall
 
@@ -39,6 +43,12 @@ The [ComfyUI](https://github.com/Comfy-Org/ComfyUI) is designed to be run from a
 - [`comfykick.service`](comfykick.service) → `~/.config/systemd/user/comfykick.service` (or `$XDG_CONFIG_HOME/systemd/user/comfykick.service`)
 
 - [`comfykick.toml`](comfykick.toml) → `~/.config/comfykick/comfykick.toml` (or `$XDG_CONFIG_HOME/comfykick/comfykick.toml`)
+
+- Refresh the systemd user units:
+
+  ```shell
+  systemctl --user daemon-reload
+  ```
 
 #### Uninstall (Manual)
 
