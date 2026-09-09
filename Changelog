@@ -1,11 +1,17 @@
 -------------------------------------------------------
  Changelog    : nginx_passwd
- Tags         : 3.2.1 ➙ 4.0.0
-              : 2025-12-22 ➙ 2026-09-08
+ Tags         : 3.3.0 ➙ 4.0.1
+              : 2026-01-04 ➙ 2026-09-09
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-08   : 4.0.0
+ 2026-09-09   : 4.0.1
+              - **Version 4.0.1**
+            
+                * Remove sphinx tmp files from html docs
+                * Make pytest optional in meson.build
+
+ 2026-09-08   : 4.0.0, origin/master
               - **Version 4.0.0**
             
                 * Default hash algo is argon2
@@ -31,8 +37,4 @@
                     * Switch python packager from hatch to uv
                     * Confirm all working with python 3.14.2
  2025-12-22   ⋯
-              - update Docs/Changelogs Docs/${my_name}.pdf
-
- 2025-12-22   : 3.2.1
-              - Installer: use new path to license
               - update Docs/Changelogs Docs/${my_name}.pdf
