@@ -5,7 +5,7 @@ pkgver=1.0.23
 _electronversion=41
 _nodeversion=24
 pkgrel=1
-pkgdesc="A Simple Mihomo GUI.(Use system-wide electron)"
+pkgdesc="A Simple Mihomo GUI. 一个简易的 Mihomo 桌面客户端."
 arch=(
     'aarch64'
     'x86_64'
@@ -24,6 +24,7 @@ makedepends=(
     'wget'
     'curl'
     'jq'
+    'zip'
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
@@ -91,12 +92,16 @@ prepare() {
     _ensure_local_nvm
     sed -i "s|export default defineConfig({});|export default defineConfig({\n  build: {\n    rollupOptions: {\n      external: [/node_modules/],\n    },\n  },\n});|" vite.main.config.ts
     sed -i "s|    plugins: \[vue(),|    optimizeDeps: {\n        include: ['element-plus'],\n    },\n    plugins: [vue(),|" vite.config.ts
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    sed -i "s|extraResource,|extraResource,\n        electronZipDir: '${srcdir}/electron-zip',|" forge.config.ts
-    sed -i "s|\"vite\": \"7\.3\.1\"|\"vite\": \"^5.4.0\"|; s|\"@vitejs/plugin-vue\": \"6\.0\.1\"|\"@vitejs/plugin-vue\": \"^5.2.0\"|" package.json
+    #sed -i "s|\"vite\": \"7\.3\.1\"|\"vite\": \"^5.4.0\"|; s|\"@vitejs/plugin-vue\": \"6\.0\.1\"|\"@vitejs/plugin-vue\": \"^5.2.0\"|" package.json
     find src-electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install --legacy-peer-deps
+    local _v="${SYSTEM_ELECTRON_VERSION}"
+	local _zd="${srcdir}/electron-zips"
+	local _zf="${_zd}/electron-v${_v}-linux-x64.zip"
+	install -Dm755 -d "${_zd}"
+	( cd "${ELECTRON_DIST}" && zip -r -q -0 "${_zf}" . )
+	sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," forge.config.*
     cd "${srcdir}/${pkgname}-${pkgver}/src-go"
     go mod tidy
     wget -O internal/em/geoip.metadb "https://${_DLURL}/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb"
