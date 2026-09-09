@@ -1,7 +1,7 @@
 # Maintainer: Daniel Erat <dan-arch@erat.org>
 pkgname=soundalike
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Find duplicate audio files using acoustic fingerprints"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://codeberg.org/derat/soundalike"
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('glibc' 'chromaprint')
 makedepends=('go')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8cea8bd736e20522cf90a9f886aacfd5b85e7d20930ededf3e3cff221552181a')
+sha256sums=('eca2f6c6f1dc807a90fc2d54ab619b1073607da16e42e805a9dd0795ccedd047')
 
 prepare() {
 	cd "$pkgname"
