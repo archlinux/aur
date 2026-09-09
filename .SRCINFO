@@ -9,6 +9,7 @@ pkgbase = flea
 	depends = bubblewrap
 	depends = glib2
 	depends = omarchy
+	depends = python-gobject
 	depends = quickshell
 	depends = shared-mime-info
 	depends = util-linux
