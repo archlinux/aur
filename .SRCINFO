@@ -1,0 +1,17 @@
+pkgbase = steamcontrollertool-git
+	pkgdesc = Tool to flash firmware on the original 2015 Steam Controller
+	pkgver = r15.b73b4dd
+	pkgrel = 1
+	url = https://github.com/lilphil/SteamControllerTool
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = python
+	depends = python-hid
+	optdepends = steam-devices: udev rules for non-root access to the controller
+	provides = steamcontrollertool
+	conflicts = steamcontrollertool
+	source = steamcontrollertool::git+https://github.com/lilphil/SteamControllerTool.git
+	sha256sums = SKIP
+
+pkgname = steamcontrollertool-git
