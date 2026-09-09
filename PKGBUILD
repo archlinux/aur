@@ -1,7 +1,7 @@
 # Maintainer: Shira
 # Contributor: Shira
 pkgname=seerrng-deb
-_srcver="v3.19.1"
+_srcver="v3.19.2"
 pkgver="${_srcver#v}"
 pkgrel=1
 pkgdesc="Seerr fork with music, books and audiobooks support. Installed from .deb"
@@ -14,17 +14,17 @@ conflicts=('seerrng' 'seerrng-git' 'seerrng-bin')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/seerrng_${pkgver}_amd64.deb")
-sha256sums=('514fc0971998be02d129bd808b54686b75529cd59e233d6534151786b0551cb6')
+sha256sums=('91441ab4d3bacf4a35cef7208a3aa15e0819ded2c413f94f771882550aae0084')
 
 package(){
+
+	install -dm755 "${pkgdir}/etc/seerrng"
 
 	# Extract package data
 	tar -xI unzstd -f data.tar.zst -C "${pkgdir}"
 
 	# Fix directory structure differences
 	cd "${pkgdir}"
-
-	install -dm755 "${pkgdir}/etc/seerrng"
 
 	install -Dm644 "usr/lib/seerrng/node_modules/.pnpm/zwitch@2.0.4/node_modules/zwitch/license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "usr/share/doc/seerrng/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
