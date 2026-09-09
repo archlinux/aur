@@ -1,6 +1,6 @@
 pkgbase = hammer-editor-bin
 	pkgdesc = A simple tool for building stories (binary release)
-	pkgver = 3.8.2
+	pkgver = 3.9.7
 	pkgrel = 1
 	url = https://github.com/Wavesonics/hammer-editor
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hammer-editor-bin
 	depends = xdg-utils
 	provides = hammer-editor
 	conflicts = hammer-editor
-	source = hammer-editor-3.8.2.deb::https://github.com/Wavesonics/hammer-editor/releases/download/v3.8.2/hammer.deb
-	sha256sums = 36034efe3aa490e1be985d2ac072bf74f1fba4d4eab70f18109c8b8c9ec0875c
+	source = hammer-editor-3.9.7.deb::https://github.com/Wavesonics/hammer-editor/releases/download/v3.9.7+ios-app-store/hammer.deb
+	sha256sums = ac867c5eea35ce41bd36665d056d94a3343206efda9350d9b4ec22be28e685eb
 
 pkgname = hammer-editor-bin
