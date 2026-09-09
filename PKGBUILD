@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=tags
-pkgver=1.3
+pkgver=2.5
 pkgrel=1
 pkgdesc='A simple text tagger'
 url="https://github.com/phastmike/tags"
@@ -11,7 +11,7 @@ depends=('json-glib' 'libadwaita')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a218e40998964c1a57bd1755851c8c7d2c664e64777c25ef7e1cde3b3789c509')
+sha256sums=('06a260420a6fc6329c3a1a50107a61b3c9017cb2d02ff855c908c98367824407')
 
 build() {
   arch-meson tags-$pkgver build
