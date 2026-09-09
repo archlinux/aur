@@ -3,7 +3,7 @@
 
 _name='powershell'
 pkgname="$_name-git"
-pkgver=7.7.0.preview.4.r14.g6ca24ccf02
+pkgver=7.7.0.preview.4.r15.gb664c2e026
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
@@ -23,6 +23,9 @@ depends=(
   'zlib'
   'icu'
   'openssl-1.0' # AUR
+)
+optdepends=(
+  'gss-ntlmssp: for NTLM/Negotiate authentication'
 )
 provides=("$_name=$pkgver")
 conflicts=("$_name")
