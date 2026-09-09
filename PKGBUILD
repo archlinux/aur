@@ -1,7 +1,7 @@
 # Maintainer: Alexander Tarasov <a.tevg@ya.ru>
 pkgsubn=pwsp
 pkgname=pwsp
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=1
 pkgdesc="Lets you play audio files through your microphone"
 arch=('x86_64' 'aarch64')
