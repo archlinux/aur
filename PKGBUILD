@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=wolf-lang
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='The wolf systems language: the wolfgang compiler, its runtime and the C importer'
 arch=('x86_64' 'aarch64')
