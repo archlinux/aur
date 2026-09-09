@@ -1,6 +1,6 @@
 pkgbase = openclaw
 	pkgdesc = Multi-channel AI gateway with extensible messaging integrations
-	pkgver = 2026.9.2
+	pkgver = 2026.9.3
 	pkgrel = 1
 	url = https://github.com/openclaw/openclaw
 	install = openclaw.install
@@ -8,7 +8,7 @@ pkgbase = openclaw
 	arch = aarch64
 	license = MIT
 	makedepends = npm
-	depends = nodejs>=22
+	depends = nodejs>=24.16
 	optdepends = 1password-cli: 1password skill
 	optdepends = curl: weather, openai-whisper-api skills
 	optdepends = ffmpeg: video-frames skill
@@ -19,10 +19,10 @@ pkgbase = openclaw
 	optdepends = tmux: tmux skill
 	optdepends = uv: nano-pdf skill
 	optdepends = go: for installing skill tools not packaged for Arch
-	noextract = openclaw-2026.9.2.tgz
+	noextract = openclaw-2026.9.3.tgz
 	options = !debug
 	options = !strip
-	source = openclaw-2026.9.2.tgz::https://registry.npmjs.org/openclaw/-/openclaw-2026.9.2.tgz
-	sha256sums = 3431f4cd2d8dbd6b936def2694ac27e19fa0256295cf4ada0f652ecf1c9ee520
+	source = openclaw-2026.9.3.tgz::https://registry.npmjs.org/openclaw/-/openclaw-2026.9.3.tgz
+	sha256sums = d1c63366833f8ae4a6ab4f3b60b1aa84ca82d03dba13d3d3eba989aa159e2449
 
 pkgname = openclaw
