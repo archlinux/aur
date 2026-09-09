@@ -1,0 +1,18 @@
+pkgbase = quicknotes-git
+	pkgdesc = A git-based todo, notes, and journal util for vimmers
+	pkgver = 0.1r0.gd6c4226
+	pkgrel = 1
+	url = https://codeberg.org/ValOm/quicknotes
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = make
+	makedepends = scdoc
+	makedepends = gzip
+	depends = gitstore
+	depends = xdg-terminal-exec
+	provides = quicknotes
+	source = git+https://codeberg.org/ValOm/quicknotes
+	md5sums = SKIP
+
+pkgname = quicknotes-git
