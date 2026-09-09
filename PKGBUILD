@@ -1,8 +1,8 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=strumpack
 pkgname="${_pkgname}-git"
-pkgver=8.0.0.r26.geb0d41c
-pkgrel=2
+pkgver=8.0.0.r30.g037e0a9
+pkgrel=1
 pkgdesc="Library providing linear algebra routines and linear system solvers for spare and for dense rank-structured linear systems."
 arch=('x86_64')
 url="https://github.com/pghysels/STRUMPACK"
@@ -54,9 +54,6 @@ pkgver() {
 
 prepare() {
     cd "${_pkgname}"
-
-    # The headers haven't been updated in HODLR
-    sed -i 's/\(.\)C_BPACK_wrapper\.h/\1BPACK_wrapper.h/g' src/HODLR/HODLRWrapper.cpp
 
     # Make all of the header files respect CMAKE_INSTALL_INCLUDEDIR
     for f in $(find . -name CMakeLists.txt); do

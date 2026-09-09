@@ -1,7 +1,7 @@
 pkgbase = strumpack-git
 	pkgdesc = Library providing linear algebra routines and linear system solvers for spare and for dense rank-structured linear systems.
-	pkgver = 8.0.0.r26.geb0d41c
-	pkgrel = 2
+	pkgver = 8.0.0.r30.g037e0a9
+	pkgrel = 1
 	url = https://github.com/pghysels/STRUMPACK
 	arch = x86_64
 	license = LicenseRef-Custom
