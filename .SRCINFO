@@ -1,6 +1,6 @@
 pkgbase = deepseek-reasonix-tui-bin
 	pkgdesc = DeepSeek-Reasonix CLI - Reasonix TUI client for DeepSeek models (terminal UI)
-	pkgver = 1.38.2
+	pkgver = 1.38.3
 	pkgrel = 1
 	url = https://github.com/esengine/DeepSeek-Reasonix
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = deepseek-reasonix-tui-bin
 	conflicts = reasonix-tui
 	conflicts = reasonix
 	options = !strip
-	source_x86_64 = reasonix-1.38.2-linux-amd64.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/releases/download/v1.38.2/reasonix-linux-amd64.tar.gz
-	sha256sums_x86_64 = 870778dc5b681112a0a32974e8d279efd5d95b543de970c77aad1e405e760c29
-	source_aarch64 = reasonix-1.38.2-linux-arm64.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/releases/download/v1.38.2/reasonix-linux-arm64.tar.gz
-	sha256sums_aarch64 = bb2afff3c9debd868e6c1683b26c8e4b2abeca37cae116f00177d106a8a6bad8
+	source_x86_64 = reasonix-1.38.3-linux-amd64.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/releases/download/v1.38.3/reasonix-linux-amd64.tar.gz
+	sha256sums_x86_64 = 517ba19e315b8bcc31d5ebecafa6eb0aa56dd7455c20cd1aede0fa172b657d3c
+	source_aarch64 = reasonix-1.38.3-linux-arm64.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/releases/download/v1.38.3/reasonix-linux-arm64.tar.gz
+	sha256sums_aarch64 = 96e397ec4bf4d0072333fa40b7f30127f8ec1ddb04964d2569f21212409f03c8
 
 pkgname = deepseek-reasonix-tui-bin
