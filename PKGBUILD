@@ -27,7 +27,7 @@ prepare() {
     export GOFLAGS="-modcacherw"
 
     go mod download -x
-    go generate
+    npm install --workspaces --include=optional
 }
 
 build() {
@@ -40,6 +40,7 @@ build() {
     export GOPATH="$srcdir"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
+	go generate
     go build -o hister -tags netgo,osusergo \
         -ldflags "-s -w -X main.version=$pkgver" .
 
