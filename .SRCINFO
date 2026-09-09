@@ -1,6 +1,6 @@
 pkgbase = fabio-bin
-	pkgdesc = A fast, modern, zero-conf load balancing HTTP(S) and TCP router for deploying applications managed by consul.(Prebuilt version)
-	pkgver = 1.7.2
+	pkgdesc = A fast, modern, zero-conf load balancing HTTP(S) and TCP router for deploying applications managed by consul.
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://fabiolb.net
 	arch = aarch64
@@ -8,18 +8,18 @@ pkgbase = fabio-bin
 	arch = i686
 	arch = x86_64
 	license = MIT
-	provides = fabio=1.7.2
+	provides = fabio=1.8.0
 	conflicts = fabio
 	options = !strip
-	source = LICENSE-1.7.2::https://raw.githubusercontent.com/fabiolb/fabio/v1.7.2/LICENSE
+	source = LICENSE-1.8.0::https://raw.githubusercontent.com/fabiolb/fabio/v1.8.0/LICENSE
 	sha256sums = 1b96863084c41c1557336dad7193f7b0d4c03042481da83136b53940ea5a3083
-	source_aarch64 = fabio-1.7.2-aarch64::https://github.com/fabiolb/fabio/releases/download/v1.7.2/fabio-1.7.2-linux_arm64
-	sha256sums_aarch64 = 79bd82b2382eace1ff30b8c1a6d006d3736f915815e5822022be7dfa14862a26
-	source_armv7h = fabio-1.7.2-armv7h::https://github.com/fabiolb/fabio/releases/download/v1.7.2/fabio-1.7.2-linux_arm
-	sha256sums_armv7h = dc1e731d142b52af7637ef7b15f56515df9e604c883fdf9723589190036d6ac3
-	source_i686 = fabio-1.7.2-i686::https://github.com/fabiolb/fabio/releases/download/v1.7.2/fabio-1.7.2-linux_386
-	sha256sums_i686 = c4fb5b94a288b893c7d234fb71277d48de61d6bd0c1a11438b296ebbf1b42359
-	source_x86_64 = fabio-1.7.2-x86_64::https://github.com/fabiolb/fabio/releases/download/v1.7.2/fabio-1.7.2-linux_amd64
-	sha256sums_x86_64 = 4f3f51593a7e997b555c8d63dc50d110ec5b28b893f1de11be2910609e1932bc
+	source_aarch64 = fabio-1.8.0-aarch64::https://github.com/fabiolb/fabio/releases/download/v1.8.0/fabio-1.8.0-linux_arm64
+	sha256sums_aarch64 = 58b22bae9224191c9cbe3d778b79fcde856f57266d20cdb65b729343f65d3f42
+	source_armv7h = fabio-1.8.0-armv7h::https://github.com/fabiolb/fabio/releases/download/v1.8.0/fabio-1.8.0-linux_arm
+	sha256sums_armv7h = 12612c889d6f6868a94d9727155e61f03ffee2aaf6019ea738a2264abb915a3c
+	source_i686 = fabio-1.8.0-i686::https://github.com/fabiolb/fabio/releases/download/v1.8.0/fabio-1.8.0-linux_386
+	sha256sums_i686 = 2374a29b296f78831d6072abbf96f5b2ef140641afe489fb64e11bd2ec6923cb
+	source_x86_64 = fabio-1.8.0-x86_64::https://github.com/fabiolb/fabio/releases/download/v1.8.0/fabio-1.8.0-linux_amd64
+	sha256sums_x86_64 = ee4a8cff6ad13256249263926f186b6ce9c9678d13dcc1f4ecab73937c7db6f9
 
 pkgname = fabio-bin
