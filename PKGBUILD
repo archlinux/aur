@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=open-code-review
-pkgver=1.11.6
+pkgver=1.11.7
 pkgrel=1
 pkgdesc="AI-powered code review CLI (Alibaba)"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go>=1.25' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alibaba/open-code-review/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a010eba8532b2f152fca6b96f01df3fdc85c5ce6e824d7edda72d31a8adac262')
+sha256sums=('2b5f5f0fb03028a7bb00facf6111168db3aba6e86514d7dc928dcaaaf02337df')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
