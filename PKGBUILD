@@ -6,7 +6,7 @@ _binname=ytmdesktop2
 pkgver=1.8.1
 _electronversion=43
 pkgrel=1
-pkgdesc=" Beautiful Youtube Music desktop app with customizations for users and developers."
+pkgdesc="Beautiful Youtube Music desktop app with customizations for users and developers."
 arch=(
     'aarch64'
     'x86_64'
