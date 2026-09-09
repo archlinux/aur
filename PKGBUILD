@@ -1,10 +1,10 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r19965.9f9dd1e
+pkgver=r20307.de0da87
 pkgrel=1
-pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
-arch=('x86_64')
+pkgdesc="Sony PlayStation 2 core (hard fork of PCSX2)"
+arch=('aarch64' 'x86_64')
 url="https://github.com/libretro/ps2"
 license=('GPL-3.0-or-later')
 groups=('libretro')
