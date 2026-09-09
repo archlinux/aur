@@ -1,9 +1,10 @@
-# Maintainer: Goncalo Pereira <goncalo_pereira@outlook.pt>
+# Maintainer: taotieren <admin@taotieren.com>
+# Contributor: Goncalo Pereira <goncalo_pereira@outlook.pt>
+
 pkgname=python-kintree
-# _name=${pkgname#python-}
-_name=Ki-nTree
+_name=${pkgname#python-}
 pkgver=1.2.1
-pkgrel=3
+pkgrel=5
 pkgdesc="Fast part creation in KiCad and InvenTree"
 url="https://github.com/sparkmicro/Ki-nTree"
 depends=(
@@ -14,7 +15,7 @@ depends=(
     'python-inventree'
     'python-kiutils'
     'python-mouser'
-    'python-multiprocess'
+    'python-requests'
     'python-yaml'
     'python-validators'
     'python-wrapt-timeout-decorator'
@@ -22,6 +23,7 @@ depends=(
     'python-cloudscraper'
 )
 makedepends=(
+    git
     python-poetry
     python-build
     python-installer
@@ -31,21 +33,25 @@ makedepends=(
 license=('GPL-3.0-or-later')
 arch=('any')
 source=(
-    #     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-    "$_name-$pkgver.tar.gz::https://github.com/sparkmicro/Ki-nTree/archive/refs/tags/$pkgver.tar.gz"
+    "${_name}::git+${url}.git#tag=${pkgver}"
     "kintree.png"
-    "kintree.desktop")
-sha256sums=('4e5350ea960b7babf7ae888d1d0493a62d325f6253e4d06909446a56c4a9fe74'
+    "kintree.desktop"
+)
+sha256sums=('3245cf6d8d24c99d7def382f92680e8416668ee411ec723f368eb25fa796b167'
             '46c5a724fab746f094e2ae73d5aa1f7d8b91446d6c841ec3a4f134f64c6277d8'
             '7e95214b781f866ebbbf64510eb956337907f824b0a18691ca0b37766ef817d4')
 
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
+}
+
 build() {
-    cd "$srcdir/$_name-$pkgver"
+    cd "$srcdir/$_name"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_name-$pkgver"
+    cd "$srcdir/$_name"
     python -m installer --destdir="$pkgdir" dist/*.whl
     chmod 777 -R $pkgdir
 
