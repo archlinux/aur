@@ -2,11 +2,9 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Andrew Rabert <ar@nullsum.net>
 
-: ${_commit:=a7be45051b2c920d6dfec4d0c515c815883bdaff}
-
 _pkgname="xboxdrv"
 pkgname="$_pkgname"
-pkgver=0.8.14
+pkgver=0.8.15
 pkgrel=1
 pkgdesc="Userspace Xbox gamepad driver and input remapper"
 url="https://github.com/xiota/xboxdrv"
@@ -27,13 +25,11 @@ makedepends=(
   'ninja'
 )
 
-options=('!debug')
-
 backup=("etc/default/xboxdrv")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
+sha256sums=('4a2c6d523c52c455214b772dcbf9d03489168ebdb6fb540d3143abf6e881159a')
 
 build() {
   arch-meson build "$_pkgsrc"
