@@ -1,13 +1,10 @@
 pkgbase = optionterm
 	pkgdesc = Sidebar-first GTK4 terminal with tiling splits and Adwaita preferences
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/fireflylabss/optionTerm
 	arch = x86_64
 	license = Apache-2.0
-	checkdepends = xorg-server-xvfb
-	checkdepends = xorg-xauth
-	checkdepends = dbus
 	makedepends = cargo
 	makedepends = pkgconf
 	makedepends = meson
@@ -27,7 +24,7 @@ pkgbase = optionterm
 	provides = option-term
 	conflicts = option-term
 	replaces = option-term
-	source = optionterm-0.2.11.tar.gz::https://github.com/fireflylabss/optionTerm/archive/refs/tags/v0.2.11.tar.gz
-	sha256sums = f459fc6cf5f1ac3c84be7b9c68c6d301f2c66e923e7c5d6711be46a0531edf1e
+	source = optionterm-0.2.12.tar.gz::https://github.com/fireflylabss/optionTerm/archive/refs/tags/v0.2.12.tar.gz
+	sha256sums = 37fd80672716d7d9c467a3eeb6d2cab0862c27ae1bcbc32a0d923b067174e4cd
 
 pkgname = optionterm
