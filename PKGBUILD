@@ -2,7 +2,7 @@
 
 _pkgname=sidef
 pkgname=sidef-git
-pkgver=26.08.r0.g385a9e50
+pkgver=26.09.r0.g523dfc89
 pkgrel=1
 pkgdesc="A modern object-oriented programming language (-git version)."
 arch=('any')
