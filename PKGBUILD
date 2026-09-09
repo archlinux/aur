@@ -1,7 +1,7 @@
 pkgname=reiser4progs-git
-pkgver=progs.pending.1.12420.g23e8ccb64
+pkgver=1.2.2
 pkgrel=1
-pkgdesc="Утилиты для файловой системы Reiser4 (mkfs.reiser4, fsck.reiser4, debugfs.reiser4, measurefs.reiser4) — собрано из живого git апстрима, т.к. AUR-версия заброшена"
+pkgdesc="Reiser4 filesystem programs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/edward6/reiser4progs"
 license=('GPL2')
@@ -12,12 +12,6 @@ conflicts=('reiser4progs')
 options=('!strip')
 source=("reiser4progs::git+https://github.com/edward6/reiser4progs.git")
 sha256sums=('SKIP')
-
-pkgver() {
-    cd reiser4progs
-    git describe --long --tags 2>/dev/null | sed 's/^v//; s/-/./g' \
-        || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
     cd reiser4progs
