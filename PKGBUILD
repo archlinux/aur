@@ -2,9 +2,9 @@
 # Maintainer: Asterisk <me [at] asterisk [dot] lol>
 
 
-#152.0.7977.82-447128
+#153.0.8010.36-447235
 pkgname=trivalent-bin
-pkgver=152.0.7977.82
+pkgver=153.0.8010.36
 pkgrel=1
 pkgdesc="A hardened Chromium for desktop Linux inspired by Vanadium."
 arch=('x86_64')
@@ -22,8 +22,8 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma'
             'upower: Battery Status API support'
             'qt6-base: QT UI support')
-source=("https://repo.secureblue.dev/Packages/trivalent-152.0.7977.82-447128.x86_64.rpm" "https://repo.secureblue.dev/Packages/trivalent-qt6-ui-152.0.7977.82-447128.x86_64.rpm")
-sha256sums=('6dd32ff95990f09614004e3e6352379224ded8e39f7bc425b27b75f9b13faa7e' '7767ef4df5ee02b01559df1c0e8580e8c32904d81af1e858dbb2c1480c5eb8a6')
+source=("https://repo.secureblue.dev/Packages/trivalent-153.0.8010.36-447235.x86_64.rpm" "https://repo.secureblue.dev/Packages/trivalent-qt6-ui-153.0.8010.36-447235.x86_64.rpm")
+sha256sums=('8cfb3964417d491dfc575c6a89dcc980ff23c5bcaf135d641a8b05839fb56099' '2e65831b9f95be6640eed43698c497193881419e938c1596d86f76571c96344b')
 prepare() {
 	mv "${srcdir}/usr/lib64" "${srcdir}/usr/lib"
 	sed -i 's/\[0-9\].so/[0-9]-arch[0-9].[0-9].so/' "${srcdir}/etc/trivalent/trivalent.conf"
