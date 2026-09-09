@@ -1,0 +1,77 @@
+From 13c2eb8cefa3bb6c74db1344bde675170ef403ae Mon Sep 17 00:00:00 2001
+From: Maria Alexeeva <alxvmr@altlinux.org>
+Date: Fri, 1 Nov 2024 19:46:15 +0400
+Subject: [PATCH 01/12] applications: fixed disconnection When regenerating
+ plugins, the apps plugin was not being released from memory due to
+ un-disconnected connections.
+
+Co-authored-by: Ivan A. Melnikov <iv@altlinux.org>
+---
+ mate_menu/plugins/applications.py | 25 ++++++++++++++++++-------
+ 1 file changed, 18 insertions(+), 7 deletions(-)
+
+diff --git a/mate_menu/plugins/applications.py b/mate_menu/plugins/applications.py
+index b5d6b8f..f2d6108 100644
+--- a/mate_menu/plugins/applications.py
++++ b/mate_menu/plugins/applications.py
+@@ -198,6 +198,8 @@ class pluginclass( object ):
+     def __init__(self, mateMenuWin, toggleButton):
+         self.mateMenuWin = mateMenuWin
+ 
++        self.connections = []
++
+         self.mainMenus = [ ]
+ 
+         self.toggleButton = toggleButton
+@@ -309,7 +311,7 @@ class pluginclass( object ):
+ 
+         for mainitems in [ "mate-applications.menu", "mate-settings.menu" ]:
+             mymenu = Menu( mainitems )
+-            mymenu.tree.connect("changed", self.menuChanged, None)
++            self._connect(mymenu.tree, "changed", self.menuChanged)
+             self.menuFiles.append(mymenu)
+ 
+         self.suggestions = []
+@@ -317,10 +319,17 @@ class pluginclass( object ):
+         self.panel = "top"
+         self.panel_position = -1
+ 
+-        self.builder.get_object("searchButton").connect( "button-press-event", self.searchPopup )
++        self._connect(
++            self.builder.get_object("searchButton"),
++            "button-press-event",
++            self.searchPopup)
++
++        self.icon_theme = Gtk.IconTheme.get_default()
++        self._connect(self.icon_theme, "changed", self.on_icon_theme_changed)
+ 
+-        self.icon_theme = Gtk.IconTheme.get_default();
+-        self.icon_theme.connect("changed", self.on_icon_theme_changed)
++    def _connect(self, target, event, callback):
++        handlerId = target.connect(event, callback)
++        self.connections.append((target, handlerId))
+ 
+     def get_panel(self):
+         panelsettings = Gio.Settings.new("org.mate.panel")
+@@ -334,13 +343,15 @@ class pluginclass( object ):
+                     self.panel = object_schema.get_string("toplevel-id")
+                     self.panel_position = object_schema.get_int("position") + 1
+ 
+-    def __del__( self ):
+-        print(u"Applications plugin deleted")
+-
+     def wake (self) :
+         pass
+ 
+     def destroy( self ):
++        for target, handlerId in self.connections:
++            if GObject.signal_handler_is_connected(target, handlerId):
++                target.disconnect(handlerId)
++        del self.connections
++
+         self.content_holder.destroy()
+         self.searchEntry.destroy()
+         self.searchButton.destroy()
+-- 
+2.55.0
+

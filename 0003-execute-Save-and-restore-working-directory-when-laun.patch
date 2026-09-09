@@ -1,0 +1,62 @@
+From 3a453441af834747afe7873d7b24e1c5d4338fb2 Mon Sep 17 00:00:00 2001
+From: Victor Kareh <vkareh@redhat.com>
+Date: Fri, 27 Feb 2026 13:00:51 -0500
+Subject: [PATCH 03/12] execute: Save and restore working directory when
+ launching apps
+
+Desktop entries with Path directive should only change the working
+directory for the launched application, not for the entire mate-menu
+process. Save the current working directory before changing it, then
+restore it immediately after launching to prevent affecting subsequent
+application launches.
+
+Fixes #83
+---
+ mate_menu/execute.py | 28 ++++++++++++++++++----------
+ 1 file changed, 18 insertions(+), 10 deletions(-)
+
+diff --git a/mate_menu/execute.py b/mate_menu/execute.py
+index f30cb32..bc73c92 100644
+--- a/mate_menu/execute.py
++++ b/mate_menu/execute.py
+@@ -35,19 +35,27 @@ def RemoveArgs(Execline):
+ 
+ # Actually launch the application
+ def Launch(cmd, cwd=None):
+-	if cwd:
+-		os.chdir(cwd)
++	# Save the current working directory to restore it after launching
++	# This prevents the Path= directive from affecting the entire MATE session
++	saved_cwd = os.getcwd()
+ 
+-	app_info = Gio.AppInfo.create_from_commandline(cmd,
+-						       None,
+-						       Gio.AppInfoCreateFlags.SUPPORTS_STARTUP_NOTIFICATION)
++	try:
++		if cwd:
++			os.chdir(cwd)
++
++		app_info = Gio.AppInfo.create_from_commandline(cmd,
++							       None,
++							       Gio.AppInfoCreateFlags.SUPPORTS_STARTUP_NOTIFICATION)
+ 
+-	display = Gdk.Display.get_default()
+-	context = display.get_app_launch_context()
+-	context.set_desktop(-1) # use default screen & desktop
+-	context.set_timestamp(Gtk.get_current_event_time())
++		display = Gdk.Display.get_default()
++		context = display.get_app_launch_context()
++		context.set_desktop(-1) # use default screen & desktop
++		context.set_timestamp(Gtk.get_current_event_time())
+ 
+-	app_info.launch(None, context)
++		app_info.launch(None, context)
++	finally:
++		# Always restore the original working directory
++		os.chdir(saved_cwd)
+ 
+ def Execute(cmd , commandCwd=None):
+ 	if commandCwd:
+-- 
+2.55.0
+

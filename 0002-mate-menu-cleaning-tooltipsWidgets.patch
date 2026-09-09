@@ -1,0 +1,27 @@
+From 7c8738f5bcd358a9dcff71873d52e1958d29d995 Mon Sep 17 00:00:00 2001
+From: "Ivan A. Melnikov" <iv@altlinux.org>
+Date: Sat, 2 Nov 2024 11:02:48 +0400
+Subject: [PATCH 02/12] mate-menu: cleaning tooltipsWidgets Due to the presence
+ of elements, there were still references to objects in self.tooltipsWidgets.
+ This caused the objects not to be released from memory and caused a memory
+ leak.
+
+---
+ lib/mate-menu.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/mate-menu.py b/lib/mate-menu.py
+index 6cf7198..4e6db24 100755
+--- a/lib/mate-menu.py
++++ b/lib/mate-menu.py
+@@ -351,6 +351,7 @@ class MainWindow( object ):
+ 
+     def RegenPlugins( self, *args, **kargs ):
+         #print("Reloading Plugins...")
++        self.tooltipsWidgets = []
+         for item in self.paneholder:
+             item.destroy()
+ 
+-- 
+2.55.0
+
