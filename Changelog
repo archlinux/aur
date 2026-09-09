@@ -1,17 +1,22 @@
 -------------------------------------------------------
  Changelog    : lockmgr
- Tags         : 1.9.5 ➙ 1.10.0
+ Tags         : 1.9.6 ➙ 1.10.1
               : 2026-09-09 ➙ 2026-09-09
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-09   : 1.10.0
+ 2026-09-09   : 1.10.1
+              - **1.10.1**
+            
+                * Drop unused pytest from meson.build (thank you @piater)
+
+ 2026-09-09   : 1.10.0, origin/master
               - **1.10.0**
             
                 * Bug in meson test runner with PYTHONPATH
                   One of those mornings ...
 
- 2026-09-09   : 1.9.8, origin/master
+ 2026-09-09   : 1.9.8
               - **1.9.8**
             
                 * Bug in meson test runner with PYTHONPATH
@@ -25,10 +30,3 @@
               - **1.9.6**
             
                 * typo
-
- 2026-09-09   : 1.9.5
-              - **1.9.5**
-            
-                * meson now runs tests.
-                * Clean html docs to avoid unneeded sphinx tmp files.
-                * Fix bug with tests using relative path as reported by @piater on AUR
