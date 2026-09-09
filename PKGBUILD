@@ -1,6 +1,7 @@
-# Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
+# Maintainer: Eldred Habert <arch@(my first name).fr>
+# Former maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister-git
-pkgver=0.14.0.r137.g9173ffe
+pkgver=0.19.0.r34.g92120fb
 pkgrel=1
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites (git)"
 arch=('x86_64' 'aarch64')
@@ -8,14 +9,20 @@ url="https://github.com/asciimoo/hister"
 license=('AGPL-3.0-or-later')
 depends=('sqlite')
 makedepends=('go' 'npm' 'git')
+optdepends=('postgresql: Alternate database backend')
 provides=("hister=$pkgver")
 conflicts=('hister')
 install=hister.install
 options=(!lto)
 source=("$pkgname::git+https://github.com/asciimoo/hister.git"
-        "hister.service")
+        hister.override.service
+        systemd-user.patch
+        hister.sysusers)
 sha256sums=('SKIP'
-            'c1f3851a79baf1eab7d5d40ee9aaffa53fef4a2938e5a293c542f73134e645da')
+            'f5713114859925e53bd9f99d26072bcf07946011545d1e69fbaf09a7623e7e23'
+            'ef2a171ba6f78978aaafc06e41407ea6c80712a806f0f514c7c7e1215481bdf2'
+            '5f4f3e82c42ba517d0caaa1deb4d3532c4f26cc60e42861bff1c5c6dacf34e9f')
+backup=(etc/hister/{hister.env,config.yml})
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -29,13 +36,13 @@ prepare() {
     cd "$srcdir/$pkgname"
     export GOPATH="$srcdir"
     export GOFLAGS="-modcacherw"
-    go mod download
-    go generate
+
+    go mod download -x
+    npm install --workspaces --include=optional
 }
 
 build() {
     cd "$srcdir/$pkgname"
-
     export CGO_ENABLED=1
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -43,21 +50,38 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOPATH="$srcdir"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -o hister -tags netgo,osusergo \
+
+    go generate
+    go build -o hister -tags netgo,osusergo,libsqlite3 \
         -ldflags "-s -w -X main.version=$pkgver" .
 
-    ./hister completion bash > hister.bash
-    ./hister completion zsh > hister.zsh
-    ./hister completion fish > hister.fish
+    for _shell in bash zsh fish; do
+        ./hister completion $_shell > hister.$_shell
+    done
+
+    # We install in a location suitable for vendor installs.
+    sed -i 's,/usr/local/,/usr/,g' contrib/systemd/hister.service
+    # Create a separate user service file (taking in the above modification).
+    cp contrib/systemd/hister{,-user}.service
+    patch --force --forward -p1 <"$srcdir/systemd-user.patch"
+
+    ./hister create-config >config.yml
 }
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm755 hister "$pkgdir/usr/bin/hister"
-    install -Dm644 "$srcdir/hister.service" "$pkgdir/usr/lib/systemd/user/hister.service"
+    install -Dsm755 hister "$pkgdir/usr/bin/hister"
+    install -Dm644 contrib/systemd/hister.service    "$pkgdir/usr/lib/systemd/system/hister.service"
+    install -Dm644 "$srcdir/hister.override.service" "$pkgdir/usr/lib/systemd/system/hister.service.d/00-arch.conf"
+    install -Dm644 contrib/systemd/hister-user.service "$pkgdir/usr/lib/systemd/user/hister.service"
+    install -Dm644 "$srcdir/hister.override.service"   "$pkgdir/usr/lib/systemd/user/hister.service.d/00-arch.conf"
+    sed -i 's/DynamicUser=.*/DynamicUser=no/'          "$pkgdir/usr/lib/systemd/user/hister.service.d/00-arch.conf"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
+    install -Dm644 /dev/null  "$pkgdir/etc/hister/hister.env"
+    install -Dm644 config.yml "$pkgdir/etc/hister/config.yml"
+
     install -Dm644 hister.bash "$pkgdir/usr/share/bash-completion/completions/hister"
-    install -Dm644 hister.zsh "$pkgdir/usr/share/zsh/site-functions/_hister"
+    install -Dm644 hister.zsh  "$pkgdir/usr/share/zsh/site-functions/_hister"
     install -Dm644 hister.fish "$pkgdir/usr/share/fish/vendor_completions.d/hister.fish"
 }

@@ -1,0 +1,37 @@
+diff --git a/contrib/systemd/hister.service b/contrib/systemd/hister-user.service
+index 81d29a3..a8faa70 100644
+--- a/contrib/systemd/hister-user.service
++++ b/contrib/systemd/hister-user.service
+@@ -4,11 +4,9 @@ After=network.target
+
+ [Service]
+ Type=simple
+-User=hister
+-Group=hister
+ StateDirectory=hister
+-Environment=HISTER_DATA_DIR=/var/lib/hister
+-EnvironmentFile=-/etc/hister/hister.env
++Environment=HISTER_DATA_DIR=%S/hister
++EnvironmentFile=-%E/hister/hister.env
+ ExecStart=/usr/bin/hister listen
+ Restart=on-failure
+
+@@ -18,7 +16,6 @@ CapabilityBoundingSet=
+
+ NoNewPrivileges=true
+ ProtectSystem=strict
+-ProtectHome=true
+ PrivateTmp=true
+ PrivateDevices=true
+ ProtectKernelTunables=true
+@@ -35,9 +32,8 @@ RestrictRealtime=true
+ RestrictSUIDSGID=true
+ RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+ SystemCallArchitectures=native
+-SystemCallFilter=@system-service ~@privileged
+ MemoryDenyWriteExecute=true
+ UMask=0077
+
+ [Install]
+-WantedBy=multi-user.target
++WantedBy=default.target
