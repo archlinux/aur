@@ -23,12 +23,13 @@ prepare() {
 build() {
   cd "$srcdir/OpenModelica-v${pkgver}"
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_USE_SYSTEM_LIBFFI=ON -DOM_ENABLE_GUI_CLIENTS=OFF -B build .
-  make -C build
+  cmake --build build
 }
 
 package() {
   cd "$srcdir/OpenModelica-v${pkgver}"
-  make install -C build DESTDIR="${pkgdir}"
+  DESTDIR="${pkgdir}" cmake --build build --target install
+  rm "${pkgdir}"/usr/include/omc/omsicpp/Core/Modelica.h.gch
   rm -r "${pkgdir}"/usr/share/zmq
   rm -r "${pkgdir}"/usr/share/cminpack
   rm -r "${pkgdir}"/usr/include/cminpack-1
