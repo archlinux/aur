@@ -1,0 +1,17 @@
+pkgbase = fcvvdp-git
+	pkgdesc = A fast C implementation of the CVVDP metric
+	pkgver = 0.3.3.r2.40767a7
+	pkgrel = 1
+	url = https://github.com/halidecx/fcvvdp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = zig
+	provides = fcvvdp
+	conflicts = fcvvdp
+	options = staticlibs
+	source = fcvvdp::git+https://github.com/halidecx/fcvvdp.git
+	sha256sums = SKIP
+
+pkgname = fcvvdp-git
