@@ -1,7 +1,7 @@
 # Maintainer: Dániel Sipka <no1msd@users.noreply.github.com>
 pkgname=seance
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 pkgdesc='Scrolling terminal multiplexer for running multiple AI coding agents side by side'
 arch=('x86_64')
 url='https://github.com/no1msd/seance'
@@ -25,39 +25,31 @@ depends=(
     'oniguruma'
 )
 makedepends=(
+    'zig>=0.16.0'
+    'zig<0.17.0'
     'ncurses'
     'pkg-config'
 )
 
 options=(!debug)
 
-# Séance and its bundled ghostty submodule pin minimum_zig_version 0.15.2 and
-# do not build with Zig 0.16+. Arch's 'zig' package tracks the latest release,
-# so vendor the exact toolchain instead of depending on whatever is current.
-_zigver=0.15.2
-
 source=(
     "$pkgname-$pkgver-src.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-src.tar.gz"
-    "zig-$_zigver.tar.xz::https://ziglang.org/download/$_zigver/zig-x86_64-linux-$_zigver.tar.xz"
 )
 sha256sums=(
-    'e6286ae2e073dece24c505474506d59a10f763fd46f34433ce8b9650be38f739'
-    '02aa270f183da276e5b5920b1dac44a63f1a49e55050ebde3aecc9eb82f93239'
+    'ed37a03ccc8ceefe044c9c468a0e77592e5fd7041a362dfc8a80d2e67833ce8c'
 )
 
 prepare() {
     cd "$pkgname-$pkgver"
-    ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-cache" \
-        PATH="$srcdir/zig-x86_64-linux-$_zigver:$PATH" \
-        ./ghostty/nix/build-support/fetch-zig-cache.sh
+    zig build --fetch
 }
 
 build() {
     cd "$pkgname-$pkgver"
-    ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-cache" \
-        "$srcdir/zig-x86_64-linux-$_zigver/zig" build \
+    zig build \
         -p "$srcdir/out" \
-        --system "$srcdir/zig-cache/p" \
+        --system "$srcdir/$pkgname-$pkgver/zig-pkg" \
         -Doptimize=ReleaseSafe \
         -Dstrip=true
 }
