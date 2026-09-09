@@ -1,0 +1,474 @@
+diff -ruN -x obj -x bin btop-1.4.7.orig/CMakeLists.txt btop-1.4.7.p1/CMakeLists.txt
+--- btop-1.4.7.orig/CMakeLists.txt	2026-05-01 11:05:43.000000000 -0500
++++ btop-1.4.7.p1/CMakeLists.txt	2026-09-09 16:19:14.141645704 -0500
+@@ -75,7 +75,7 @@
+ elseif(CMAKE_SYSTEM_NAME STREQUAL "NetBSD")
+   target_sources(libbtop PRIVATE src/netbsd/btop_collect.cpp)
+ elseif(LINUX)
+-  target_sources(libbtop PRIVATE src/linux/btop_collect.cpp)
++  target_sources(libbtop PRIVATE src/linux/btop_collect.cpp src/linux/btop_xe.cpp)
+   if(BTOP_GPU)
+     add_subdirectory(src/linux/intel_gpu_top)
+   endif()
+diff -ruN -x obj -x bin btop-1.4.7.orig/src/btop.cpp btop-1.4.7.p1/src/btop.cpp
+--- btop-1.4.7.orig/src/btop.cpp	2026-05-01 11:05:43.000000000 -0500
++++ btop-1.4.7.p1/src/btop.cpp	2026-09-09 16:19:14.141094805 -0500
+@@ -231,6 +231,9 @@
+ #ifdef GPU_SUPPORT
+ 	Gpu::Nvml::shutdown();
+ 	Gpu::Rsmi::shutdown();
++	#if defined(__linux__)
++	Gpu::Xe::shutdown();
++	#endif
+ 	#ifdef __APPLE__
+ 	Gpu::AppleSilicon::shutdown();
+ 	#endif
+diff -ruN -x obj -x bin btop-1.4.7.orig/src/btop_shared.hpp btop-1.4.7.p1/src/btop_shared.hpp
+--- btop-1.4.7.orig/src/btop_shared.hpp	2026-05-01 11:05:43.000000000 -0500
++++ btop-1.4.7.p1/src/btop_shared.hpp	2026-09-09 16:19:14.140966903 -0500
+@@ -183,6 +183,14 @@
+ 	namespace Rsmi {
+ 		extern bool shutdown();
+ 	}
++	#if defined(__linux__)
++	namespace Xe {
++		extern uint32_t device_count;
++		bool init();
++		bool shutdown();
++		template <bool is_init> bool collect(gpu_info* gpus_slice);
++	}
++	#endif
+ 	#ifdef __APPLE__
+ 	namespace AppleSilicon {
+ 		extern bool shutdown();
+diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_collect.cpp btop-1.4.7.p1/src/linux/btop_collect.cpp
+--- btop-1.4.7.orig/src/linux/btop_collect.cpp	2026-05-01 11:05:43.000000000 -0500
++++ btop-1.4.7.p1/src/linux/btop_collect.cpp	2026-09-09 16:19:14.141363211 -0500
+@@ -379,6 +379,7 @@
+ 
+ 		if (shown_gpus.contains("intel")) {
+ 			Gpu::Intel::init();
++			Gpu::Xe::init();
+ 		}
+ 
+ 		if (not Gpu::gpu_names.empty()) {
+@@ -2007,6 +2008,7 @@
+ 		Nvml::collect<0>(gpus.data()); // raw pointer to vector data, size == Nvml::device_count
+ 		Rsmi::collect<0>(gpus.data() + Nvml::device_count); // size = Rsmi::device_count
+ 		Intel::collect<0>(gpus.data() + Nvml::device_count + Rsmi::device_count); // size = Intel::device_count
++		Xe::collect<0>(gpus.data() + Nvml::device_count + Rsmi::device_count + Intel::device_count);
+ 
+ 		//* Calculate average usage
+ 		long long avg = 0;
+diff -ruN -x obj -x bin btop-1.4.7.orig/src/linux/btop_xe.cpp btop-1.4.7.p1/src/linux/btop_xe.cpp
+--- btop-1.4.7.orig/src/linux/btop_xe.cpp	1969-12-31 18:00:00.000000000 -0600
++++ btop-1.4.7.p1/src/linux/btop_xe.cpp	2026-09-09 16:39:20.839842906 -0500
+@@ -0,0 +1,408 @@
++/* Copyright 2021 Aristocratos (jakob@qvantnet.com)
++
++   Licensed under the Apache License, Version 2.0 (the "License");
++   you may not use this file except in compliance with the License.
++   You may obtain a copy of the License at
++
++	   http://www.apache.org/licenses/LICENSE-2.0
++
++   Unless required by applicable law or agreed to in writing, software
++   distributed under the License is distributed on an "AS IS" BASIS,
++   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++   See the License for the specific language governing permissions and
++   limitations under the License.
++
++indent = tab
++tab-size = 4
++*/
++
++//? Intel GPU support for cards bound to the xe kernel driver
++
++#ifdef GPU_SUPPORT
++
++#include <algorithm>
++#include <charconv>
++#include <cmath>
++#include <cstring>
++#include <filesystem>
++#include <fstream>
++#include <string>
++#include <vector>
++
++#include <fcntl.h>
++#include <sys/ioctl.h>
++#include <sys/syscall.h>
++#include <unistd.h>
++#include <linux/perf_event.h>
++#include <drm/xe_drm.h>
++
++#include <fmt/format.h>
++
++#include "../btop_config.hpp"
++#include "../btop_log.hpp"
++#include "../btop_shared.hpp"
++#include "../btop_tools.hpp"
++
++extern "C" char *get_intel_device_name(const char *device_id);
++
++using std::clamp;
++using std::string;
++using std::vector;
++namespace fs = std::filesystem;
++using namespace Tools;
++
++namespace Gpu {
++	extern vector<gpu_info> gpus;
++
++	namespace Xe {
++		struct Engine {
++			uint16_t cls = 0, inst = 0, gt = 0;
++			int active_idx = -1, total_idx = -1;
++			uint64_t prev_active = 0, prev_total = 0;
++			double busy = 0;
++		};
++
++		struct Card {
++			string bdf;
++			fs::path sysdev, hwmon;
++			int drm_fd = -1, group_fd = -1, freq_fd = -1, energy_fd = -1, power_fd = -1, temp_fd = -1;
++			uint32_t pmu_type = 0, nr_counters = 0;
++			vector<int> fds;
++			vector<Engine> engines;
++			vector<uint64_t> buf;
++			uint64_t prev_energy = 0, prev_time = 0, prev_ts = 0;
++			bool have_pwr_cap = false, read_warned = false;
++		};
++
++		vector<Card> cards;
++		uint32_t device_count = 0;
++		bool initialized = false;
++
++		static bool read_ull(const fs::path& path, uint64_t& out) {
++			std::ifstream file(path);
++			if (not file.good()) return false;
++			file >> out;
++			return not file.fail();
++		}
++
++		static int open_sysfs(const fs::path& path) {
++			return open(path.c_str(), O_RDONLY | O_CLOEXEC);
++		}
++
++		static bool read_fd(int fd, uint64_t& out) {
++			char buf[32];
++			if (fd < 0) return false;
++			const ssize_t len = pread(fd, buf, sizeof(buf) - 1, 0);
++			if (len <= 0) return false;
++			return std::from_chars(buf, buf + len, out).ec == std::errc();
++		}
++
++		//? Parse "config:LO-HI" from a PMU format file
++		static bool parse_format(const fs::path& path, unsigned& shift) {
++			const string s = readfile(path);
++			const auto pos = s.find(':');
++			if (pos == string::npos) return false;
++			try {
++				shift = std::stoul(s.substr(pos + 1));
++			} catch (...) { return false; }
++			return true;
++		}
++
++		//? Parse "event=0x.." from a PMU event file
++		static bool parse_event(const fs::path& path, uint64_t& id) {
++			const string s = readfile(path);
++			const auto pos = s.find("event=");
++			if (pos == string::npos) return false;
++			try {
++				id = std::stoull(s.substr(pos + 6), nullptr, 0);
++			} catch (...) { return false; }
++			return true;
++		}
++
++		static int perf_open(uint32_t type, uint64_t config, int group, bool leader) {
++			struct perf_event_attr attr;
++			std::memset(&attr, 0, sizeof(attr));
++			attr.type = type;
++			attr.size = sizeof(attr);
++			attr.config = config;
++			attr.read_format = PERF_FORMAT_TOTAL_TIME_ENABLED | (leader ? PERF_FORMAT_GROUP : 0);
++			return (int)syscall(SYS_perf_event_open, &attr, -1, 0, group, 0);
++		}
++
++		static bool xe_query(int fd, uint32_t id, vector<uint8_t>& out) {
++			struct drm_xe_device_query q;
++			std::memset(&q, 0, sizeof(q));
++			q.query = id;
++			if (ioctl(fd, DRM_IOCTL_XE_DEVICE_QUERY, &q) != 0) return false;
++			if (q.size == 0 or q.size > (1 << 20)) return false;
++			out.assign(q.size, 0);
++			q.data = (uintptr_t)out.data();
++			return ioctl(fd, DRM_IOCTL_XE_DEVICE_QUERY, &q) == 0;
++		}
++
++		static void setup_pmu(Card& card, const fs::path& pmu_dir) {
++			if (card.pmu_type == 0 or card.drm_fd < 0) return;
++
++			uint64_t ev_active, ev_total;
++			unsigned sh_event, sh_inst, sh_class, sh_gt;
++			if (not parse_event(pmu_dir / "events/engine-active-ticks", ev_active)
++				or not parse_event(pmu_dir / "events/engine-total-ticks", ev_total)
++				or not parse_format(pmu_dir / "format/event", sh_event)
++				or not parse_format(pmu_dir / "format/engine_instance", sh_inst)
++				or not parse_format(pmu_dir / "format/engine_class", sh_class)
++				or not parse_format(pmu_dir / "format/gt", sh_gt)) {
++				Logger::debug("Xe: {} has no engine activity events", card.bdf);
++				return;
++			}
++
++			vector<uint8_t> raw;
++			if (not xe_query(card.drm_fd, DRM_XE_DEVICE_QUERY_ENGINES, raw) or raw.size() < sizeof(struct drm_xe_query_engines)) {
++				Logger::warning("Xe: {}: engine query failed", card.bdf);
++				return;
++			}
++			const auto* qe = (const struct drm_xe_query_engines*)raw.data();
++			const size_t n = std::min<size_t>(qe->num_engines, (raw.size() - sizeof(*qe)) / sizeof(struct drm_xe_engine));
++			for (size_t i = 0; i < n; i++) {
++				const auto& e = qe->engines[i].instance;
++				if (e.engine_class == DRM_XE_ENGINE_CLASS_VM_BIND) continue;
++				card.engines.push_back({e.engine_class, e.engine_instance, e.gt_id});
++			}
++
++			auto cfg = [&](uint64_t ev, const Engine& e) {
++				return (ev << sh_event) | ((uint64_t)e.inst << sh_inst) | ((uint64_t)e.cls << sh_class) | ((uint64_t)e.gt << sh_gt);
++			};
++
++			for (auto& e : card.engines) {
++				int fd = perf_open(card.pmu_type, cfg(ev_active, e), card.group_fd, card.group_fd < 0);
++				if (fd < 0) {
++					Logger::debug("Xe: {}: engine {}:{} gt{} busy counter: {}", card.bdf, e.cls, e.inst, e.gt, std::strerror(errno));
++					continue;
++				}
++				int fd2 = perf_open(card.pmu_type, cfg(ev_total, e), card.group_fd < 0 ? fd : card.group_fd, false);
++				if (fd2 < 0) {
++					close(fd);
++					continue;
++				}
++				if (card.group_fd < 0) card.group_fd = fd;
++				card.fds.push_back(fd);
++				card.fds.push_back(fd2);
++				e.active_idx = card.nr_counters++;
++				e.total_idx = card.nr_counters++;
++			}
++
++			if (card.group_fd < 0) {
++				Logger::warning("Xe: {}: no engine counters available (kernel or firmware lacks engine activity support?)", card.bdf);
++				return;
++			}
++			card.buf.assign(2 + card.nr_counters, 0);
++		}
++
++		static void sample_pmu(Card& card) {
++			if (card.group_fd < 0) return;
++			const ssize_t want = card.buf.size() * sizeof(uint64_t);
++			const ssize_t len = read(card.group_fd, card.buf.data(), want);
++			if (len != want or card.buf[0] != card.nr_counters) {
++				if (not card.read_warned) {
++					Logger::warning("Xe: {}: perf group read failed", card.bdf);
++					card.read_warned = true;
++				}
++				return;
++			}
++			if (card.buf[1] - card.prev_ts < 100'000'000) return;
++			card.prev_ts = card.buf[1];
++			for (auto& e : card.engines) {
++				if (e.active_idx < 0) continue;
++				const uint64_t a = card.buf[2 + e.active_idx];
++				const uint64_t t = card.buf[2 + e.total_idx];
++				const uint64_t da = a - e.prev_active;
++				const uint64_t dt = t - e.prev_total;
++				e.busy = dt > 0 ? std::min(100.0, 100.0 * (double)da / (double)dt) : 0.0;
++				e.prev_active = a;
++				e.prev_total = t;
++			}
++		}
++
++		static void sample_power(Card& card, gpu_info& gpu) {
++			uint64_t v = 0;
++			if (card.energy_fd >= 0) {
++				const uint64_t now = time_micros();
++				if (now - card.prev_time >= 500'000 and read_fd(card.energy_fd, v)) {
++					if (card.prev_time > 0 and v >= card.prev_energy)
++						gpu.pwr_usage = (long long)((v - card.prev_energy) * 1000 / (now - card.prev_time));
++					card.prev_energy = v;
++					card.prev_time = now;
++				}
++			}
++			else if (read_fd(card.power_fd, v)) {
++				gpu.pwr_usage = (long long)(v / 1000);
++			}
++			if (not card.have_pwr_cap and gpu.pwr_usage > gpu.pwr_max_usage)
++				gpu.pwr_max_usage = gpu.pwr_usage;
++			gpu.gpu_percent.at("gpu-pwr-totals").push_back(clamp((long long)round((double)gpu.pwr_usage * 100.0 / (double)gpu.pwr_max_usage), 0ll, 100ll));
++		}
++
++		static string find_first(const fs::path& dir, const string& prefix) {
++			vector<string> names;
++			std::error_code ec;
++			for (const auto& entry : fs::directory_iterator(dir, ec))
++				if (entry.path().filename().string().starts_with(prefix))
++					names.push_back(entry.path().filename().string());
++			if (names.empty()) return "";
++			std::sort(names.begin(), names.end());
++			return names.front();
++		}
++
++		bool init() {
++			if (initialized) return false;
++
++			vector<string> names;
++			std::error_code ec;
++			for (const auto& entry : fs::directory_iterator("/sys/class/drm", ec)) {
++				const string name = entry.path().filename().string();
++				if (not name.starts_with("card") or name.contains('-')) continue;
++				names.push_back(name);
++			}
++			std::sort(names.begin(), names.end());
++
++			vector<string> gpu_labels;
++			for (const auto& name : names) {
++				Card card;
++				card.sysdev = fs::path("/sys/class/drm") / name / "device";
++				if (fs::read_symlink(card.sysdev / "driver", ec).filename() != "xe") continue;
++
++				card.bdf = fs::read_symlink(card.sysdev, ec).filename().string();
++				if (not card.bdf.contains(':')) {
++					std::ifstream uevent(card.sysdev / "uevent");
++					for (string line; std::getline(uevent, line);)
++						if (line.starts_with("PCI_SLOT_NAME=")) card.bdf = line.substr(14);
++				}
++				string pmu_name = fmt::format("xe_{}", card.bdf);
++				std::replace(pmu_name.begin(), pmu_name.end(), ':', '_');
++				const fs::path pmu_dir = fs::path("/sys/bus/event_source/devices") / pmu_name;
++				uint64_t type = 0;
++				if (read_ull(pmu_dir / "type", type)) card.pmu_type = (uint32_t)type;
++				else Logger::debug("Xe: {}: no PMU at {}", card.bdf, pmu_dir.string());
++
++				string node = find_first(card.sysdev / "drm", "renderD");
++				if (node.empty()) node = name;
++				card.drm_fd = open(fmt::format("/dev/dri/{}", node).c_str(), O_RDWR | O_CLOEXEC);
++				if (card.drm_fd < 0)
++					Logger::warning("Xe: {}: cannot open /dev/dri/{}: {}", card.bdf, node, std::strerror(errno));
++
++				for (const auto& h : fs::directory_iterator(card.sysdev / "hwmon", ec))
++					if (readfile(h.path() / "name") == "xe") card.hwmon = h.path();
++				if (not card.hwmon.empty()) {
++					card.energy_fd = open_sysfs(card.hwmon / "energy1_input");
++					if (card.energy_fd < 0) card.power_fd = open_sysfs(card.hwmon / "power1_input");
++				}
++
++				const string gt = find_first(card.sysdev / "tile0", "gt");
++				if (not gt.empty()) card.freq_fd = open_sysfs(card.sysdev / "tile0" / gt / "freq0/act_freq");
++
++				string label = "Intel GPU (xe)";
++				const string dev_id = readfile(card.sysdev / "device");
++				if (char* n = dev_id.empty() ? nullptr : get_intel_device_name(dev_id.c_str()); n != nullptr) {
++					label = n;
++					free(n);
++				}
++
++				setup_pmu(card, pmu_dir);
++				sample_pmu(card);
++				if (card.energy_fd >= 0) {
++					read_fd(card.energy_fd, card.prev_energy);
++					card.prev_time = time_micros();
++				}
++
++				Logger::debug("Xe: {} ({}) {} engines, {} counters", card.bdf, label, card.engines.size(), card.nr_counters);
++				cards.push_back(std::move(card));
++				gpu_labels.push_back(label);
++			}
++
++			if (cards.empty()) {
++				Logger::debug("Xe: no xe devices found");
++				return false;
++			}
++
++			const size_t off = gpus.size();
++			device_count = cards.size();
++			gpus.resize(off + device_count);
++			gpu_names.resize(off + device_count);
++			for (size_t i = 0; i < device_count; i++)
++				gpu_names[off + i] = gpu_labels[i];
++
++			initialized = true;
++			collect<1>(gpus.data() + off);
++			return true;
++		}
++
++		bool shutdown() {
++			if (not initialized) return false;
++			for (auto& card : cards) {
++				for (int fd : card.fds) close(fd);
++				for (int fd : {card.drm_fd, card.freq_fd, card.energy_fd, card.power_fd, card.temp_fd})
++					if (fd >= 0) close(fd);
++			}
++			cards.clear();
++			device_count = 0;
++			initialized = false;
++			return true;
++		}
++
++		template <bool is_init> bool collect(gpu_info* gpus_slice) {
++			if (not initialized) return false;
++
++			for (size_t i = 0; i < cards.size(); i++) {
++				auto& card = cards[i];
++				auto& gpu = gpus_slice[i];
++
++				if constexpr(is_init) {
++					gpu.supported_functions = {
++						.gpu_utilization = card.group_fd >= 0,
++						.mem_utilization = false,
++						.gpu_clock = card.freq_fd >= 0,
++						.mem_clock = false,
++						.pwr_usage = card.energy_fd >= 0 or card.power_fd >= 0,
++						.pwr_state = false,
++						.temp_info = false,
++						.mem_total = false,
++						.mem_used = false,
++						.pcie_txrx = false,
++						.encoder_utilization = false,
++						.decoder_utilization = false
++					};
++
++					gpu.pwr_max_usage = 10'000;
++					uint64_t cap = 0;
++					if (not card.hwmon.empty() and read_ull(card.hwmon / "power1_cap", cap) and cap > 0) {
++						gpu.pwr_max_usage = (long long)(cap / 1000);
++						gpu_pwr_total_max += gpu.pwr_max_usage;
++						card.have_pwr_cap = true;
++					}
++				}
++
++				double max_util = 0;
++				if (gpu.supported_functions.gpu_utilization) {
++					sample_pmu(card);
++					for (const auto& e : card.engines)
++						max_util = std::max(max_util, e.busy);
++				}
++				gpu.gpu_percent.at("gpu-totals").push_back((long long)round(max_util));
++
++				if (gpu.supported_functions.gpu_clock) {
++					uint64_t mhz = 0;
++					if (read_fd(card.freq_fd, mhz)) gpu.gpu_clock_speed = (unsigned int)mhz;
++				}
++
++				if (gpu.supported_functions.pwr_usage)
++					sample_power(card, gpu);
++			}
++
++			return true;
++		}
++
++		template bool collect<true>(gpu_info* gpus_slice);
++		template bool collect<false>(gpu_info* gpus_slice);
++	}
++}
++
++#endif // GPU_SUPPORT

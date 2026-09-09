@@ -1,0 +1,36 @@
+diff -ruN -x obj -x bin btop-1.4.7.p3/src/linux/btop_xe.cpp btop-1.4.7/src/linux/btop_xe.cpp
+--- btop-1.4.7.p3/src/linux/btop_xe.cpp	2026-09-09 16:39:20.840123425 -0500
++++ btop-1.4.7/src/linux/btop_xe.cpp	2026-09-09 16:39:20.840238673 -0500
+@@ -415,6 +415,15 @@
+ 						.decoder_utilization = false
+ 					};
+ 
++					bool has_dec = false, has_enh = false;
++					for (const auto& e : card.engines) {
++						if (e.active_idx < 0) continue;
++						if (e.cls == DRM_XE_ENGINE_CLASS_VIDEO_DECODE) has_dec = true;
++						if (e.cls == DRM_XE_ENGINE_CLASS_VIDEO_ENHANCE) has_enh = true;
++					}
++					gpu.supported_functions.encoder_utilization = has_dec and has_enh;
++					gpu.supported_functions.decoder_utilization = has_dec and has_enh;
++
+ 					gpu.pwr_max_usage = 10'000;
+ 					uint64_t cap = 0;
+ 					if (not card.hwmon.empty() and read_ull(card.hwmon / "power1_cap", cap) and cap > 0) {
+@@ -440,6 +449,16 @@
+ 				}
+ 				gpu.gpu_percent.at("gpu-totals").push_back((long long)round(max_util));
+ 
++				if (gpu.supported_functions.decoder_utilization) {
++					double dec = 0, enh = 0;
++					for (const auto& e : card.engines) {
++						if (e.cls == DRM_XE_ENGINE_CLASS_VIDEO_DECODE) dec = std::max(dec, e.busy);
++						if (e.cls == DRM_XE_ENGINE_CLASS_VIDEO_ENHANCE) enh = std::max(enh, e.busy);
++					}
++					gpu.decoder_utilization = (long long)round(dec);
++					gpu.encoder_utilization = (long long)round(enh);
++				}
++
+ 				if (gpu.supported_functions.gpu_clock) {
+ 					uint64_t mhz = 0;
+ 					if (read_fd(card.freq_fd, mhz)) gpu.gpu_clock_speed = (unsigned int)mhz;

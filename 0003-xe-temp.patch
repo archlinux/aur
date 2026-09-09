@@ -1,0 +1,69 @@
+diff -ruN -x obj -x bin btop-1.4.7.p2/src/linux/btop_xe.cpp btop-1.4.7.p3/src/linux/btop_xe.cpp
+--- btop-1.4.7.p2/src/linux/btop_xe.cpp	2026-09-09 16:39:20.840017776 -0500
++++ btop-1.4.7.p3/src/linux/btop_xe.cpp	2026-09-09 16:39:20.840123425 -0500
+@@ -73,6 +73,7 @@
+ 			vector<uint8_t> mem_buf;
+ 			uint64_t prev_energy = 0, prev_time = 0, prev_ts = 0;
+ 			bool have_pwr_cap = false, read_warned = false;
++			long long temp_max = 0;
+ 		};
+ 
+ 		vector<Card> cards;
+@@ -318,6 +319,27 @@
+ 					if (card.energy_fd < 0) card.power_fd = open_sysfs(card.hwmon / "power1_input");
+ 				}
+ 
++				if (not card.hwmon.empty()) {
++					vector<string> temps;
++					for (const auto& t : fs::directory_iterator(card.hwmon, ec)) {
++						const string f = t.path().filename().string();
++						if (f.starts_with("temp") and f.ends_with("_input")) temps.push_back(f);
++					}
++					std::sort(temps.begin(), temps.end());
++					string temp_file;
++					for (const auto& f : temps) {
++						const string base = f.substr(0, f.size() - 6);
++						if (readfile(card.hwmon / (base + "_label")) == "pkg" or temp_file.empty())
++							temp_file = f;
++					}
++					if (not temp_file.empty()) {
++						card.temp_fd = open_sysfs(card.hwmon / temp_file);
++						uint64_t crit = 0;
++						if (read_ull(card.hwmon / (temp_file.substr(0, temp_file.size() - 6) + "_crit"), crit))
++							card.temp_max = (long long)(crit / 1000);
++					}
++				}
++
+ 				const string gt = find_first(card.sysdev / "tile0", "gt");
+ 				if (not gt.empty()) card.freq_fd = open_sysfs(card.sysdev / "tile0" / gt / "freq0/act_freq");
+ 
+@@ -385,7 +407,7 @@
+ 						.mem_clock = false,
+ 						.pwr_usage = card.energy_fd >= 0 or card.power_fd >= 0,
+ 						.pwr_state = false,
+-						.temp_info = false,
++						.temp_info = card.temp_fd >= 0,
+ 						.mem_total = false,
+ 						.mem_used = false,
+ 						.pcie_txrx = false,
+@@ -401,6 +423,8 @@
+ 						card.have_pwr_cap = true;
+ 					}
+ 
++					if (card.temp_max > 0) gpu.temp_max = card.temp_max;
++
+ 					uint64_t total = 0, used = 0;
+ 					if (query_mem(card, total, used) and total > 0) {
+ 						gpu.supported_functions.mem_total = true;
+@@ -424,6 +448,11 @@
+ 				if (gpu.supported_functions.pwr_usage)
+ 					sample_power(card, gpu);
+ 
++				if (gpu.supported_functions.temp_info and Config::getB("check_temp")) {
++					uint64_t mc = 0;
++					if (read_fd(card.temp_fd, mc)) gpu.temp.push_back((long long)(mc / 1000));
++				}
++
+ 				if (gpu.supported_functions.mem_total) {
+ 					uint64_t total = 0, used = 0;
+ 					if (query_mem(card, total, used) and total > 0) {

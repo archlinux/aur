@@ -1,0 +1,83 @@
+diff -ruN -x obj -x bin btop-1.4.7.p1/src/linux/btop_xe.cpp btop-1.4.7.p2/src/linux/btop_xe.cpp
+--- btop-1.4.7.p1/src/linux/btop_xe.cpp	2026-09-09 16:39:20.839842906 -0500
++++ btop-1.4.7.p2/src/linux/btop_xe.cpp	2026-09-09 16:39:20.840017776 -0500
+@@ -70,6 +70,7 @@
+ 			vector<int> fds;
+ 			vector<Engine> engines;
+ 			vector<uint64_t> buf;
++			vector<uint8_t> mem_buf;
+ 			uint64_t prev_energy = 0, prev_time = 0, prev_ts = 0;
+ 			bool have_pwr_cap = false, read_warned = false;
+ 		};
+@@ -133,9 +134,12 @@
+ 			struct drm_xe_device_query q;
+ 			std::memset(&q, 0, sizeof(q));
+ 			q.query = id;
+-			if (ioctl(fd, DRM_IOCTL_XE_DEVICE_QUERY, &q) != 0) return false;
+-			if (q.size == 0 or q.size > (1 << 20)) return false;
+-			out.assign(q.size, 0);
++			if (out.empty()) {
++				if (ioctl(fd, DRM_IOCTL_XE_DEVICE_QUERY, &q) != 0) return false;
++				if (q.size == 0 or q.size > (1 << 20)) return false;
++				out.assign(q.size, 0);
++			}
++			q.size = out.size();
+ 			q.data = (uintptr_t)out.data();
+ 			return ioctl(fd, DRM_IOCTL_XE_DEVICE_QUERY, &q) == 0;
+ 		}
+@@ -241,6 +245,24 @@
+ 			gpu.gpu_percent.at("gpu-pwr-totals").push_back(clamp((long long)round((double)gpu.pwr_usage * 100.0 / (double)gpu.pwr_max_usage), 0ll, 100ll));
+ 		}
+ 
++		static bool query_mem(Card& card, uint64_t& total, uint64_t& used) {
++			auto& raw = card.mem_buf;
++			if (card.drm_fd < 0 or not xe_query(card.drm_fd, DRM_XE_DEVICE_QUERY_MEM_REGIONS, raw) or raw.size() < sizeof(struct drm_xe_query_mem_regions)) {
++				raw.clear();
++				return false;
++			}
++			const auto* qm = (const struct drm_xe_query_mem_regions*)raw.data();
++			const size_t n = std::min<size_t>(qm->num_mem_regions, (raw.size() - sizeof(*qm)) / sizeof(struct drm_xe_mem_region));
++			for (size_t i = 0; i < n; i++) {
++				const auto& r = qm->mem_regions[i];
++				if (r.mem_class != DRM_XE_MEM_REGION_CLASS_VRAM) continue;
++				total = r.total_size;
++				used = r.used;
++				return true;
++			}
++			return false;
++		}
++
+ 		static string find_first(const fs::path& dir, const string& prefix) {
+ 			vector<string> names;
+ 			std::error_code ec;
+@@ -378,6 +400,12 @@
+ 						gpu_pwr_total_max += gpu.pwr_max_usage;
+ 						card.have_pwr_cap = true;
+ 					}
++
++					uint64_t total = 0, used = 0;
++					if (query_mem(card, total, used) and total > 0) {
++						gpu.supported_functions.mem_total = true;
++						gpu.supported_functions.mem_used = used > 0;
++					}
+ 				}
+ 
+ 				double max_util = 0;
+@@ -395,6 +423,17 @@
+ 
+ 				if (gpu.supported_functions.pwr_usage)
+ 					sample_power(card, gpu);
++
++				if (gpu.supported_functions.mem_total) {
++					uint64_t total = 0, used = 0;
++					if (query_mem(card, total, used) and total > 0) {
++						gpu.mem_total = (long long)total;
++						if (gpu.supported_functions.mem_used) {
++							gpu.mem_used = (long long)used;
++							gpu.gpu_percent.at("gpu-vram-totals").push_back((long long)round((double)used * 100.0 / (double)total));
++						}
++					}
++				}
+ 			}
+ 
+ 			return true;

@@ -1,0 +1,12 @@
+.*
+!.gitignore
+!.SRCINFO
+!.nvchecker.toml
+src/
+pkg/
+btop/
+arch-btop/
+reference/
+*.tar.gz
+*.pkg.tar*
+*.log
