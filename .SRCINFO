@@ -1,6 +1,6 @@
 pkgbase = graphify
 	pkgdesc = AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph
-	pkgver = 0.9.56
+	pkgver = 0.9.57
 	pkgrel = 1
 	url = https://github.com/Graphify-Labs/graphify
 	arch = any
@@ -68,7 +68,7 @@ pkgbase = graphify
 	optdepends = robotframework>=4.0: Robot Framework (.robot/.resource) extraction support
 	provides = graphifyy
 	conflicts = graphifyy
-	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.9.56.tar.gz
-	sha256sums = 33cffc752151ee9f68bac1e9e53c8bba073934d970fb62cad97839fad44b485c
+	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.9.57.tar.gz
+	sha256sums = ec5f93d89e3453dc096c98f64b7cf5cc2bd85895009630f8570f93d61a71d6a5
 
 pkgname = graphify
