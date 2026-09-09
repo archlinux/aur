@@ -29,6 +29,7 @@ ExecStartPre=+/usr/bin/mkdir -p %D/comfykick
 BindPaths=%D/comfykick
 CacheDirectory=uv
 BindReadOnlyPaths=-%E/uv
+BindReadOnlyPaths=-%D/uv
 PrivateTmp=yes
 DevicePolicy=closed
 # Devices in /dev/dri, for all GPU backends

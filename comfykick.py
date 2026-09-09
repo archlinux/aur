@@ -682,6 +682,8 @@ def install_dependencies(
     is no inter-user contention on ``venv_cache_dir`` either.
     """
     env = os.environ.copy()
+    env["UV_LINK_MODE"] = "copy"
+    env["UV_PYTHON_DOWNLOADS"] = "never"
     if config["pypi_list"]:
         env["UV_INDEX"] = " ".join(config["pypi_list"])
 
