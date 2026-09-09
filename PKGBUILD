@@ -2,13 +2,13 @@
 
 pkgname=unfocol-bin
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Peripheral-vision focus timer (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/MrOnijohn/unfocol"
 license=('MIT')
-provides=('unfocol')
-conflicts=('unfocol')
+provides=('unfocol' 'unfocol-debug')
+conflicts=('unfocol' 'unfocol-debug')
 depends=('libglvnd' 'libxkbcommon' 'libxkbcommon-x11' 'wayland'
          'libx11' 'libxcursor' 'libxi' 'libxrender' 'libxcb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MrOnijohn/unfocol/releases/download/v$pkgver/unfocol-v$pkgver-x86_64-unknown-linux-gnu.tar.gz"
