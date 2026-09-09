@@ -7,14 +7,14 @@
 
 pkgname=pxview-git
 pkgver=1.6.1.r273.59263ff
-pkgrel=3
+pkgrel=5
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
 arch=($CARCH)
 url='https://github.com/PXLogic/PXView'
 license=(GPL-3.0-or-later)
-provides=(${pkgname%-git} libsigrok)
-conflicts=(${pkgname%-git} libsigrok)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 depends=(
   sh
   hicolor-icon-theme 
@@ -125,6 +125,9 @@ package() {
   cd "${srcdir}"/${pkgname}/
 
   DESTDIR="${pkgdir}" ninja -C build install
+  cd ${pkgdir}/usr/lib/udev/rules.d/
+  mv 60-libsigrok.rules 60-libsigrok-pxview.rules
+  mv 61-libsigrok-uaccess.rules 61-libsigrok-pxview-uaccess.rules
 }
 
 # vim: set sw=2 ts=2 et:
