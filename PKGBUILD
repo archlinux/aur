@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=swarm-desktop
 _pkgname='Swarm Desktop'
-pkgver=0.55.2
+pkgver=0.56.0
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('ec05d10feb1d3e5e0516008daa9f239ecad44c5ccce7fb2bc3f52423f306b226'
+sha256sums=('dc57bc474b6f348e0a66aa5bd17d7622f9cc696933296d1c4c387e49ee9ebd5e'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -95,7 +95,15 @@ prepare() {
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/set this to true or false/true/g" pnpm-workspace.yaml
+    sed -i "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
+	{\\
+		name: \"@electron-forge/plugin-local-electron\",\\
+		config: {\\
+			electronPath: \'${ELECTRON_DIST}\',\\
+		},\\
+	}," forge.config.*
     NODE_ENV=development    pnpm install
+    NODE_ENV=development    pnpm add -D @electron-forge/plugin-local-electron
     cd "${srcdir}/${pkgname}-${pkgver}/ui"
     NODE_ENV=development    pnpm install
 }
