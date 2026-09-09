@@ -1,5 +1,5 @@
 pkgname=mrrss-appimage
-pkgver=1.3.32
+pkgver=1.3.33
 pkgrel=1
 pkgdesc='一个现代化、跨平台且免费的 AI RSS 阅读器.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('fuse2' 'hicolor-icon-theme' 'zlib' 'webkitgtk-6.0')
 source=(
   "https://github.com/WCY-dt/MrRSS/releases/download/v${pkgver}/MrRSS-${pkgver}-linux-amd64.AppImage"
 )
-sha512sums=('da5f7ac6d76b9e7b4b01036b6b9e1935dc7273bb52cb054c57bbda749cac828c802ca8e73a3d7d232928bbb01fd6b2fbfb30ea6a4686420369c54dde0a2fb851')
+sha512sums=('900851ff7f28cdb142366105536e1d9680a592e49dd7a79ea575b1dcd1987b39cfe13722836bcd82f1b15822afece0e6ae11886a8d172d6f82a11a540510d09e')
 
 _installdir=/opt/mrrss
 
