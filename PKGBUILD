@@ -1,7 +1,7 @@
 # Maintainer: Edmundo Sanchez <zomundo at gmail dot com>
 pkgname=terraform-bin
 pkgbase=terraform-bin
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=1.0
 pkgdesc='HashiCorp tool for building and updating infrastructure as code
     idempotently'
@@ -12,7 +12,7 @@ depends=()
 source=(
     "https://releases.hashicorp.com/terraform/${pkgver}/terraform_${pkgver}_linux_amd64.zip"
 )
-sha256sums=('745d33b4b02b7980c62a38ec1beea24ee084ea8caf3f503c200554bd9a0cbe49')
+sha256sums=('0d17011f0c4664539b164b044903d04e296c86c13cb9f28040076c65cfb3985a')
 replaces=('terraform')
 
 package() {
