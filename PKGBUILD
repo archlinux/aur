@@ -1,6 +1,6 @@
 # Maintainer: Ron <thefangeddeity>
 pkgname=hls-livecam-server
-pkgver=6.0.7
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
-sha256sums=('25bc30a987b739766a9f757f87de31ebcfff378e573cb8701e8a9afb7ca2c831'
+sha256sums=('b513b7a101a5e1bc5a9acc2919fbbe188f4d788a31fe1265f2e771f037b9bd0e'
             'SKIP')
 
 package() {
@@ -80,6 +80,15 @@ package() {
                    "$pkgdir/usr/share/hls-livecam-server/cv_scene_register.py"
     install -Dm644 pkg/usr/share/hls-livecam-server/index.html \
                    "$pkgdir/usr/share/hls-livecam-server/index.html"
+    # The viewer loads the HLS player from /vendor/hls.min.js, same-origin,
+    # deliberately not from cdnjs (a phone on a captive/filtered network got
+    # a blank viewer otherwise -- see index.html's own comment on the
+    # <script> tag). Missed when vendor/ was added: without this file a
+    # fresh Arch install left Chrome/Firefox viewers silently broken (no
+    # crash -- the page guards every Hls reference -- just no video),
+    # exactly the failure class the vendoring was meant to prevent.
+    install -Dm644 pkg/usr/share/hls-livecam-server/vendor/hls.min.js \
+                   "$pkgdir/usr/share/hls-livecam-server/vendor/hls.min.js"
     # VERSION and PRODUCT are read by broadcast-api at /api/info time. They
     # were never installed here, so an Arch node reported an empty version
     # tag in its header and fell back to the built-in product identity --
