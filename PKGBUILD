@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Wireguard VPN administration tool'
 _gitname='wg_tool'
 
-pkgver="10.3.0"
+pkgver="10.4.0"
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
@@ -75,7 +75,7 @@ build() {
     ./scripts/do-build
 }
 
-build() {
+check() {
     cd "${_gitname}"
     ./scripts/run-tests
 }
