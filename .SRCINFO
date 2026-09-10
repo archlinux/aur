@@ -1,6 +1,6 @@
 pkgbase = xtool
 	pkgdesc = Cross-platform Xcode replacement.
-	pkgver = 1.17.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://xtool.sh/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = xtool
 	depends = swift-bin
 	depends = zip
 	depends = xadi
-	source = xtool-1.17.0.tar.gz::https://github.com/xtool-org/xtool/archive/refs/tags/1.17.0.tar.gz
-	b2sums = eb8908e177d5db6527e0535e05354d3b918b31f06b576206e71979ce30450ce64de0eaa6119e03bf88851f7b18e9f696654b6316485bab1790ab361cf13574cb
+	source = xtool-1.19.0.tar.gz::https://github.com/xtool-org/xtool/archive/refs/tags/1.19.0.tar.gz
+	b2sums = fb9487d136b0135cc72b8a403e994cb5c26c87cbd414d6137f8ec7f4c159382d6f7cad47fa1370af41dc3a744284c9e187464d37b4703f7bb4dfb41b46b59f44
 
 pkgname = xtool
