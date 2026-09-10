@@ -1,7 +1,7 @@
 # Maintainer: pierspad <pierpaolospadafora@proton.me>
 pkgname=textmerger-bin
 _pkgname=textmerger
-pkgver=2.10.3
+pkgver=2.10.4
 pkgrel=1
 pkgdesc="A Rust/Tauri GTK3 application for merging text files"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!debug')
 source=("textmerger-${pkgver}.deb::https://github.com/pierspad/textmerger/releases/download/v${pkgver}/textmerger_${pkgver}_amd64.deb"
         "LICENSE::https://raw.githubusercontent.com/pierspad/textmerger/main/LICENSE")
 
-sha256sums=('d199813bdb462fcf70ffb239a999c6967f09e96cdb591f4772ce3964b6dc9280'
+sha256sums=('38d80ffc4a0630e97706bc87b35f7ec3a9083f0bb1ecf9d891fe8ce7e46d2427'
             'e0492c8870ed6ed7720ccdf98de84b894a5f778dd98ea916004af3e3623b70db')
 
 package() {
