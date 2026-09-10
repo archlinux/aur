@@ -1,6 +1,6 @@
 pkgbase = zoi
 	pkgdesc = Advanced Package Manager & Environment Orchestrator
-	pkgver = 1.27.1
+	pkgver = 1.27.2
 	pkgrel = 1
 	url = https://gitlab.com/zillowe/zillwen/zusty/zoi
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = zoi
 	optdepends = bubblewrap: for running contained apps
 	provides = zoi
 	conflicts = zoi
-	source = https://gitlab.com/zillowe/zillwen/zusty/zoi/-/archive/Prod-Release-/Zoi-Prod-Release-1.27.1.tar.gz
+	source = https://gitlab.com/zillowe/zillwen/zusty/zoi/-/archive/Prod-Release-/Zoi-Prod-Release-1.27.2.tar.gz
 	source = LICENSE::https://gitlab.com/zillowe/zillwen/zusty/zoi/-/raw/main/LICENSE
-	sha512sums = a509d3232dcc86eaaeada4007738da132a409c44247c2fa719abb35b70fcc424572983bf07f1ac7a6798a313e4caa1c5aac9d7ac13755bddc8192b5fb9a659a7
+	sha512sums = 0ac43c3e0569a918895d62796f55aa90e760067b2451c336d6411e5451665cffe7b41b2380e44b3cd55e42b87a4acbcecab992ff4cd794678d96ea46315be192
 	sha512sums = e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea
 
 pkgname = zoi
