@@ -2,7 +2,7 @@
 _pkgname=musescore
 pkgname=musescore-bin
 pkgver=4.7.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Create, play and print beautiful sheet music / AppImage version'
 arch=(x86_64)
 url=https://musescore.org/
@@ -10,8 +10,12 @@ license=(GPL)
 groups=(pro-audio)
 _appimage="MuseScore-Studio-${pkgver}.260831071-x86_64.AppImage"
 noextract=("${_appimage}")
-depends=(zlib fuse2)
-optdepends=('lame: MP3 export')
+depends=(zlib fuse2 ffmpeg4.4)
+optdepends=(
+    'lame: MP3 export'
+    # FFMPEG versions higher than 8 are not supported
+    'ffmpeg4: MP4 export'
+)
 provides=('musescore')
 conflicts=(
     'musescore'
