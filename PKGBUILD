@@ -1,7 +1,7 @@
 # Maintainer: jarbowski <jarbowski@laposte.net>
 pkgname=tape16-bin
 pkgver=0.9.380
-pkgrel=1
+pkgrel=2
 pkgdesc="Destructive tape-style DAW (X11-backed, XWayland on Wayland sessions)"
 arch=('x86_64')
 url="https://emrmusicgroup.com/tape16/"
@@ -83,6 +83,17 @@ case "${XDG_SESSION_TYPE:-}" in
 esac
 # shellcheck disable=SC1090
 [ -r "$_env" ] && . "$_env"
+
+export TAPE16_PACKAGE_PROFILE TAPE16_PACKAGE_PROFILE_LABEL
+export TAPE16_DISPLAY_PROFILE TAPE16_GRAPHICS_PROFILE TAPE16_REPAINT_PROFILE
+export TAPE16_EXPECT_SESSION TAPE16_REQUIRE_XWAYLAND
+export TAPE_LINUX_USE_VBLANK
+export TAPE_LINUX_DISABLE_WAYLAND_BLIT_RELIEF
+export TAPE_LINUX_ENABLE_STABLE_REEL_RESIDUAL
+export TAPE_LINUX_X11_REEL_PREWARM
+export TAPE16_PREFER_NATIVE_WAYLAND
+export TAPE16_SAMPLE_RATE
+export TAPE16_STABLE_BLOCK_SIZE TAPE16_LOWLATENCY_BLOCK_SIZE
 
 export TAPE16_AUDIO_AUTHORITY="${TAPE16_AUDIO_AUTHORITY:-tape16}"
 export TAPE16_REMOTE_LAN="${TAPE16_REMOTE_LAN:-1}"
