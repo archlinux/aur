@@ -3,7 +3,7 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.22.0_beta.1
+pkgver=0.22.0
 pkgrel=1
 url='https://www.hunk.dev/'
 changelog=CHANGELOG.md
@@ -16,7 +16,7 @@ provides=('hunkdiff')
 options=(!strip !debug)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver/_/-}.tar.gz"
         'hunk-embed-envs.patch')
-b2sums=('1d9a6b505abb24c1120e8a438f46d8956f90fc87a8eff7d3a9b99a0f88e449c8f40ced9d6949409807b63190c53a3e3288020f077d1ff85e2d4dc92b37b45f8f'
+b2sums=('d604150f221008634aae33e8f6f7546816a8b595a84b70734c039e20194b86121eb6fce26ba88414569a12859d2df698ba578cd90670bcb67a13e5b05a24ea26'
         '019c586f88e91dc67d37962142e425f6f5021826e70a02030ac8f212dc2a12006f001ccae658aa9eb937cbccc064ea804e29279d8645e96f15565ca17b2b4ce0')
 
 _install_dir=/usr/lib/hunkdiff
