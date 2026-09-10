@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
 _pkgname='Mogan STEM'
-pkgver=2026.3.1
+pkgver=2026.3.5
 pkgrel=1
-pkgdesc="A structured wysiwyg scientific text editor.(Prebuilt version)"
+pkgdesc="Mogan STEM Suite (based on GNU TeXmacs): Enjoy exploring science and technology!"
 arch=('x86_64')
 url="https://mogan.app/"
 _ghurl="https://github.com/XmacsLabs/mogan"
@@ -14,12 +14,14 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'gawk'
     'python-pillow'
+    'python-matplotlib'
     'freetype2'
     'python'
     'fontconfig'
     'libglvnd'
     'libx11'
     'qt6-base'
+    'qt6-declarative'
     'libxkbcommon'
     'fcitx5-qt'
 )
@@ -30,7 +32,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-stem-v${pkgver}-debian13-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e0434a0fdb626e12b36e5419c2f70c56a3f75ba8deb003db51a294457d759a10'
+sha256sums=('5de3dbd258af169d503aad47b00d00cb7b05e5c349afc1197d6d3d7c8039bc5c'
             'b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863')
 prepare() {
     sed -i -e "
