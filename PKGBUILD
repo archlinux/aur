@@ -3,7 +3,7 @@
 _pkgname=uavs3d
 pkgname=uavs3d-llvm
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc='An AVS3 decoder supporting AVS3-P2 baseline profile — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/uavs3/uavs3d/'
@@ -14,7 +14,7 @@ makedepends=(
     'clang'
     'cmake'
     'git'
-    'mold'
+    'mold-git'
     'llvm')
 provides=('uavs3d')
 conflicts=('uavs3d')

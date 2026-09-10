@@ -1,14 +1,14 @@
 pkgbase = uavs3d-llvm
 	pkgdesc = An AVS3 decoder supporting AVS3-P2 baseline profile — built with Clang and mold
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/uavs3/uavs3d/
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
-	makedepends = mold
+	makedepends = mold-git
 	makedepends = llvm
 	depends = glibc
 	provides = uavs3d
