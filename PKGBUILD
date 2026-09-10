@@ -21,7 +21,7 @@ depends=(
 
 makedepends=(
     'git' 'nodejs' 'npm' 'python' 'make'
-    'gcc' '7zip' 'rust'
+    'gcc' '7zip' 'rust' 'wget'   # wget: used by upstream scripts/download-dmg.js
     # zcall-bridge: build the Wine call engine, same as upstream ZaDark AppImage
     'mingw-w64-gcc'    # pipebridge.exe
     'gcc-multilib'     # streamproxy.so (32-bit)
