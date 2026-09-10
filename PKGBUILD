@@ -9,7 +9,7 @@ license=('MIT')
 depends=('java-runtime>=17')
 makedepends=('java-environment>=17')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kolonia333/JavaNya/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('00c361e1e7a23b76ecc5f3b5f547007460277ede5b1ea8d82cd25fc0df0413e2')
+sha256sums=('d7ac17f095330dfa869ff19a600ff1ec7d092f6d96b19ec4872e8232d4181ab4')
 
 build() {
     cd "JavaNya-$pkgver"
