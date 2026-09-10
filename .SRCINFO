@@ -1,18 +1,18 @@
 pkgbase = live-plus-plus-bin
-	pkgdesc = Lightweight live streaming client.轻量级的直播客户端
-	pkgver = 2.3.11
+	pkgdesc = Lightweight live streaming client.轻量级的直播客户端,支持 斗鱼、虎牙、哔哩哔哩 三大直播平台。
+	pkgver = 2.3.12
 	pkgrel = 1
 	url = https://github.com/dipelta/live-plus-plus
 	arch = x86_64
 	license = MIT
 	depends = electron42
-	provides = live-plus-plus=2.3.11
+	provides = live-plus-plus=2.3.12
 	conflicts = live-plus-plus
 	conflicts = live++
-	source = live-plus-plus-2.3.11-x86_64.AppImage::https://github.com/dipelta/live-plus-plus/releases/download/v2.3.11/live-plus-plus-2.3.11.AppImage
-	source = LICENSE-2.3.11::https://raw.githubusercontent.com/dipelta/live-plus-plus/v2.3.11/LICENSE
+	source = live-plus-plus-2.3.12-x86_64.AppImage::https://github.com/dipelta/live-plus-plus/releases/download/v2.3.12/live-plus-plus-2.3.12.AppImage
+	source = LICENSE-2.3.12::https://raw.githubusercontent.com/dipelta/live-plus-plus/v2.3.12/LICENSE
 	source = live-plus-plus.sh
-	sha256sums = eec3d6d321876b6700c4acc3110bbd7d2d390a3d46801d6d9201b0bdb00ba06f
+	sha256sums = a7a3bf8ec14f596d59ed742bd554e36f3184d5f186d7d6178d4e6ddf1cc3b103
 	sha256sums = 8c66ee49d3a6ff7eb085eb7d896bdea56da0cac5c97bd60735847901d006f748
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 

@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=live-plus-plus-bin
 _pkgname='live++'
-pkgver=2.3.11
+pkgver=2.3.12
 _electronversion=42
 pkgrel=1
-pkgdesc="Lightweight live streaming client.轻量级的直播客户端"
+pkgdesc="Lightweight live streaming client.轻量级的直播客户端,支持 斗鱼、虎牙、哔哩哔哩 三大直播平台。"
 arch=('x86_64')
 url="https://github.com/dipelta/live-plus-plus"
 license=('MIT')
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dipelta/live-plus-plus/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('eec3d6d321876b6700c4acc3110bbd7d2d390a3d46801d6d9201b0bdb00ba06f'
+sha256sums=('a7a3bf8ec14f596d59ed742bd554e36f3184d5f186d7d6178d4e6ddf1cc3b103'
             '8c66ee49d3a6ff7eb085eb7d896bdea56da0cac5c97bd60735847901d006f748'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
