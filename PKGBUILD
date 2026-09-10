@@ -5,7 +5,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=clementine
-pkgver=1.4.1+106+ga4b3599ec
+pkgver=1.4.1+131+g69ae62d68
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
@@ -32,8 +32,8 @@ depends=(
     libx11
     #projectm # now use bundled v4.x, Arch is at v3.x
     protobuf libprotobuf.so
-    qt5-base
-    qt5-x11extras
+    qt6-base
+    qt6-5compat
     sqlite
     taglib
     zlib
@@ -43,7 +43,7 @@ makedepends=(
     cmake
     git
     glu
-    qt5-tools
+    qt6-tools
     #sparsehash
     )
 optdepends=(
@@ -54,36 +54,34 @@ optdepends=(
     'gst-libav: FFmpeg plugin'
     'gvfs: Various devices support'
     )
-#options=(!lto)
 # NB commits are chosen corresponding a git tag https://github.com/clementine-player/Clementine/tags
-source=("git+https://github.com/clementine-player/Clementine.git#commit=a4b3599ecd10662487bf22a1a14c4293467e2485")
-sha256sums=('5e449957e251f67eab6fd1764cbc78277f0c60db604cf65c0f8d0f21257739cc')
+source=("git+https://github.com/clementine-player/Clementine.git#commit=69ae62d680788cfaad06408006bfe83946a9c41b")
+sha256sums=('3de49b04a803baafe838e21d077451072335c178a2c7d0a9b390ade25967eb2a')
 
 pkgver() {
   cd Clementine
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
-prepare() {
-  #sed -i 's/cmake_policy(SET CMP0053 OLD)/cmake_policy(SET CMP0026 NEW)/' Clementine/CMakeLists.txt
-  true
-}
-
 build() {
+  # Disable warning Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
+  export LANG=C.UTF-8
+  export LC_ALL=C.UTF-8
+
   # Disable all warnings
   export CFLAGS+=" -w"
   export CXXFLAGS+=" -w"
 
   #export CXXFLAGS+=" -Wno-error=cpp"
-  export CXXFLAGS+=" -Wno-unused-result"
-  export CXXFLAGS+=" -Wno-error=stringop-overflow"
+  #export CXXFLAGS+=" -Wno-unused-result"
+  #export CXXFLAGS+=" -Wno-error=stringop-overflow"
 
   local _flags=(
     -DENABLE_BOX=OFF
     -DENABLE_DROPBOX=OFF
     -DENABLE_GOOGLE_DRIVE=OFF
     -DENABLE_LIBGPOD=OFF
-    -DENABLE_LIBLASTFM=OFF
+    #-DENABLE_LIBLASTFM=OFF
     -DENABLE_LIBMTP=OFF
     -DENABLE_SEAFILE=OFF
     -DENABLE_SKYDRIVE=OFF

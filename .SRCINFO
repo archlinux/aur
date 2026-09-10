@@ -1,6 +1,6 @@
 pkgbase = clementine
 	pkgdesc = A modern music player and library organizer
-	pkgver = 1.4.1+106+ga4b3599ec
+	pkgver = 1.4.1+131+g69ae62d68
 	pkgrel = 1
 	url = https://github.com/clementine-player/Clementine
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = clementine
 	makedepends = cmake
 	makedepends = git
 	makedepends = glu
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	depends = abseil-cpp
 	depends = alsa-lib
 	depends = chromaprint
@@ -27,8 +27,8 @@ pkgbase = clementine
 	depends = libx11
 	depends = protobuf
 	depends = libprotobuf.so
-	depends = qt5-base
-	depends = qt5-x11extras
+	depends = qt6-base
+	depends = qt6-5compat
 	depends = sqlite
 	depends = taglib
 	depends = zlib
@@ -38,7 +38,7 @@ pkgbase = clementine
 	optdepends = gst-plugins-ugly: "Ugly" plugin libraries
 	optdepends = gst-libav: FFmpeg plugin
 	optdepends = gvfs: Various devices support
-	source = git+https://github.com/clementine-player/Clementine.git#commit=a4b3599ecd10662487bf22a1a14c4293467e2485
-	sha256sums = 5e449957e251f67eab6fd1764cbc78277f0c60db604cf65c0f8d0f21257739cc
+	source = git+https://github.com/clementine-player/Clementine.git#commit=69ae62d680788cfaad06408006bfe83946a9c41b
+	sha256sums = 3de49b04a803baafe838e21d077451072335c178a2c7d0a9b390ade25967eb2a
 
 pkgname = clementine
