@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=ptd-cli
-pkgver=0.1.0
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Command-line interface for the PT-Depiler browser extension"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -11,7 +11,7 @@ depends=("glibc" "libgcc")
 makedepends=("cargo")
 optdepends=("pt-depiler: A browser extension for managing PT sites")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8dbf588e0fe3b59c528f6ecfbd28e69abce61cd9ab47143d369112406bb708f4')
+sha256sums=('5020c6b6def0f7c537f7343826968d6802d4e69e2164e75408595a055f8ef99b')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

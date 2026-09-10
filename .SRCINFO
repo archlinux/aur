@@ -1,6 +1,6 @@
 pkgbase = ptd-cli
 	pkgdesc = Command-line interface for the PT-Depiler browser extension
-	pkgver = 0.1.0
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/pt-plugins/ptd-cli
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ptd-cli
 	depends = glibc
 	depends = libgcc
 	optdepends = pt-depiler: A browser extension for managing PT sites
-	source = ptd-cli-0.1.0.tar.gz::https://github.com/pt-plugins/ptd-cli/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 8dbf588e0fe3b59c528f6ecfbd28e69abce61cd9ab47143d369112406bb708f4
+	source = ptd-cli-0.1.4.tar.gz::https://github.com/pt-plugins/ptd-cli/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 5020c6b6def0f7c537f7343826968d6802d4e69e2164e75408595a055f8ef99b
 
 pkgname = ptd-cli
