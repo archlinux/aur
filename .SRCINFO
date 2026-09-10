@@ -1,8 +1,8 @@
 pkgbase = picgo-git
-	pkgdesc = A simple & beautiful tool for pictures uploading built by vue-cli-electron-builder.Use system-wide electron.
-	pkgver = 3.0.0.r2.g4056447
+	pkgdesc = 🚀 The Ultimate Image Uploader for Efficient Creators. Supports Obsidian, Typora, VS Code etc. and 60+ image hosting services (S3, GitHub, Cloudflare R2, Imgur, Aliyun OSS...). Paste, upload, done.
+	pkgver = 3.0.2.r6.gd554307
 	pkgrel = 1
-	url = https://molunerfinn.com/PicGo/
+	url = https://picgo.app/
 	arch = any
 	license = MIT
 	makedepends = npm

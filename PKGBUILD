@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=picgo-git
 _pkgname=PicGo
-pkgver=3.0.0.r2.g4056447
+pkgver=3.0.2.r6.gd554307
 _electronversion=38
 _nodeversion=22
 pkgrel=1
-pkgdesc="A simple & beautiful tool for pictures uploading built by vue-cli-electron-builder.Use system-wide electron."
+pkgdesc="🚀 The Ultimate Image Uploader for Efficient Creators. Supports Obsidian, Typora, VS Code etc. and 60+ image hosting services (S3, GitHub, Cloudflare R2, Imgur, Aliyun OSS...). Paste, upload, done."
 arch=('any')
-url="https://molunerfinn.com/PicGo/"
+url="https://picgo.app/"
 _ghurl="https://github.com/Molunerfinn/PicGo"
 license=('MIT')
 depends=(
@@ -44,30 +44,25 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-    export electronDist="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export pnpm_config_registry="https://registry.npmmirror.com"
-            export npm_config_registry="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-        }
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export HOME="${srcdir}/.electron-gyp"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export npm_config_cache="${srcdir}/.npm_cache"
+	export npm_config_devdir="${srcdir}/.node-gyp"
+	export npm_config_maxsockets=32
+	export npm_config_platform=linux
+	export npm_config_arch="${CARCH}"
+	export npm_config_audit=false
+	export npm_config_fund=false
+	export npm_config_progress=false
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export npm_config_node_options="--max-old-space-size=4096"
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -83,7 +78,6 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@//g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -f -n -q \
         --pkgname="${pkgname%-git}" \
@@ -94,22 +88,21 @@ prepare() {
     _set_build_env
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "s/set this to true or false/true/g" pnpm-workspace.yaml
-    sed -i "/vue-demi/a\  - msw" pnpm-workspace.yaml
-    NODE_ENV=development    pnpm install
+    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
+    NODE_ENV=development    npm install --legacy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     _set_build_env
     _ensure_local_nvm
     NODE_ENV=production     npm run build
-    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.config.ts"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.config.ts"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     install -Dm644 "${srcdir}/${pkgname//-/.}/public/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
