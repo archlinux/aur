@@ -1,14 +1,14 @@
 # Maintainer: Evgeniy Dombek <edombek@yandex.ru>
 
 pkgname=libindi-git
-pkgver=v2.0.8.12.g0905b87df
+pkgver=v2.2.4.2.34.gb5c448405
 pkgrel=1
 pkgdesc='A distributed control protocol designed to operate astronomical instrumentation'
 url='https://www.indilib.org/index.php?title=Main_Page'
 license=(GPL2)
 arch=(x86_64 aarch64)
-depends=(libnova cfitsio libjpeg gsl libtheora fftw libev rtl-sdr)
-makedepends=(cmake qt5-base)
+depends=(libnova cfitsio libjpeg.so gsl libtheora fftw libev rtl-sdr)
+makedepends=(cmake qt5-base libjpeg-turbo)
 provides=('libindi')
 conflicts=('libindi')
 source=('git+https://github.com/indilib/indi')

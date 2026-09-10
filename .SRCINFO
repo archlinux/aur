@@ -1,6 +1,6 @@
 pkgbase = libindi-git
 	pkgdesc = A distributed control protocol designed to operate astronomical instrumentation
-	pkgver = v2.0.8.12.g0905b87df
+	pkgver = v2.2.4.2.34.gb5c448405
 	pkgrel = 1
 	url = https://www.indilib.org/index.php?title=Main_Page
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = libindi-git
 	license = GPL2
 	makedepends = cmake
 	makedepends = qt5-base
+	makedepends = libjpeg-turbo
 	depends = libnova
 	depends = cfitsio
-	depends = libjpeg
+	depends = libjpeg.so
 	depends = gsl
 	depends = libtheora
 	depends = fftw
