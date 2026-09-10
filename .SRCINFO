@@ -1,0 +1,14 @@
+pkgbase = conky-manager-g-bin
+	pkgdesc = Conky theme manager with a modern UI.
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/almezali/conky-manager-g
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	provides = conky-manager-g
+	conflicts = conky-manager-g
+	source = conky-manager-g.tar.xz::https://gitlab.com/apps4linux/run.over.any/-/raw/main/conky-manager-g.tar.xz
+	sha256sums = SKIP
+
+pkgname = conky-manager-g-bin
