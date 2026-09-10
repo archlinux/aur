@@ -2,7 +2,7 @@
 
 _name=openinference-instrumentation-litellm
 pkgname=python-$_name
-pkgver=0.1.42
+pkgver=0.1.43
 pkgrel=1
 pkgdesc="OpenInference liteLLM Instrumentation."
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-litellm' 'python-fastapi' 'python-orjson' 'python-opentelemetry-sdk' 'python-opentelemetry-instrumentation-httpx' 'python-pytest-recording' 'python-tenacity')
 source=("$_repo/archive/refs/tags/$pkgname-v$pkgver.tar.gz"
         "fix-duplicated-thinking-text.patch")
-sha256sums=('9f4d9341d70ffde7a57dd5d341211943fb85e8b3ed4abf2a0ed1e48d7d9c3ba7'
+sha256sums=('f34f2cbec894696856f9442f509d6993ece6d171b2bdafa021b0193b037a8ba1'
             '40007b9e2e2557deae751e058df6d0a289aea0721eca29e64f97318beb635474')
 
 prepare() {
