@@ -1,0 +1,20 @@
+pkgbase = typora-community-plugin
+	pkgdesc = Typora 社区插件系统:插件市场、命令面板、多标签工作区
+	pkgver = 2.10.18
+	pkgrel = 1
+	url = https://github.com/typora-community-plugin/typora-community-plugin
+	install = typora-community-plugin.install
+	arch = any
+	license = MIT
+	depends = typora>=1.14.9
+	noextract = typora-community-plugin-2.10.18.zip
+	source = typora-community-plugin-2.10.18.zip::https://github.com/typora-community-plugin/typora-community-plugin/releases/download/2.10.18/typora-community-plugin.zip
+	source = LICENSE.md::https://raw.githubusercontent.com/typora-community-plugin/typora-community-plugin/2.10.18/LICENSE.md
+	source = typora-community-plugin.sh
+	source = typora-community-plugin.hook
+	sha256sums = 6a4ba75f59c265ac04a74a0ac5cab4b37fdc864f6c6b776710a3b0781f331c1a
+	sha256sums = 731f5be0037576f31f566458da9817c261db3e8b8c5fc4703841005d5ac53823
+	sha256sums = 09f62600fdc6c5866bad72d4c2a03ca219accef954fe4887051c318494793dea
+	sha256sums = 4a4cefac90a4fdf9ce3987ddd7819c00c28b5a99812a1997ff086bea5121d680
+
+pkgname = typora-community-plugin

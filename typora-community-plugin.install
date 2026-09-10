@@ -1,0 +1,20 @@
+post_install() {
+    # 插件市场要在该目录写入插件,属主需为使用 Typora 的用户(pacman 解包为 root)
+    /usr/bin/typora-community-plugin own
+    /usr/bin/typora-community-plugin patch
+
+    echo "==> typora-community-plugin 已安装"
+    echo "    重启 Typora 后生效:F1 打开命令面板,Ctrl+. 打开设置"
+    echo "    插件与设置存放在 ~/.config/Typora/plugins"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    /usr/bin/typora-community-plugin unpatch
+
+    echo "==> typora-community-plugin 已卸载,window.html 已还原"
+    echo "    用户数据(已装插件/设置)保留在 ~/.config/Typora/plugins,如需清理请手动删除"
+}

@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = typora
+
+[Action]
+Description = Re-injecting typora-community-plugin loader into Typora's window.html...
+When = PostTransaction
+Exec = /usr/bin/typora-community-plugin patch
