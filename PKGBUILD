@@ -3,13 +3,13 @@
 
 pkgname=uavs3d-llvm-git
 pkgver=1.2.r0.g0e20d2c
-pkgrel=3
+pkgrel=4
 pkgdesc='An AVS3 decoder supporting AVS3-P2 baseline profile (git version) — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/uavs3/uavs3d/'
 license=('BSD-3-Clause')
 depends=('glibc')
-makedepends=('clang' 'cmake' 'git' 'mold' 'llvm')
+makedepends=('clang' 'cmake' 'git' 'mold-git' 'llvm')
 provides=('uavs3d-git' 'uavs3d' 'uavs3d-llvm')
 conflicts=('uavs3d-git' 'uavs3d' 'uavs3d-llvm')
 source=('git+https://github.com/uavs3/uavs3d.git'
