@@ -1,6 +1,6 @@
 pkgname=luna-todo-git
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="luna-todo (git versiion)"
 arch=('x86_64')
 url="https://gitlab.com/materac-luna-project/luna-todo"
