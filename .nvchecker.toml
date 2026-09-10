@@ -1,0 +1,5 @@
+[zonetimeline-bin]
+source = "github"
+github = "findyourexit/zonetimeline-tui"
+use_latest_release = true
+prefix = "v"
