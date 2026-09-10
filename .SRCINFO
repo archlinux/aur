@@ -1,6 +1,6 @@
 pkgbase = tyler-git
 	pkgdesc = Tiling Wayland compositor on wlroots, with the bar and launcher built in
-	pkgver = r32.ab2997b
+	pkgver = r33.218f7b1
 	pkgrel = 1
 	url = https://github.com/thinkoid/tyler
 	arch = x86_64
