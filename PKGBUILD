@@ -7,13 +7,13 @@
 _pkgname=vo-amrwbenc
 pkgname=${_pkgname}-llvm
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Library for the VisualOn Adaptive Multi Rate Wideband (AMR-WB) audio encoder — built with Clang and mold'
 arch=('x86_64')
 url='http://sourceforge.net/projects/opencore-amr/'
 license=('APACHE')
 depends=('glibc')
-makedepends=('clang' 'mold' 'llvm')
+makedepends=('clang' 'mold-git' 'llvm')
 provides=('vo-amrwbenc')
 conflicts=('vo-amrwbenc')
 source=("http://downloads.sourceforge.net/project/opencore-amr/vo-amrwbenc/${_pkgname}-${pkgver}.tar.gz")
