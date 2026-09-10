@@ -5,10 +5,10 @@
 # Original maintainer: Marcin
 
 pkgname=spring-tools-for-eclipse
-pkgver=5.3.0
+pkgver=5.4.0
 _pkgver_release=$pkgver.RELEASE
-_eclipse_pkgver=e4.40.0
-_eclipse_pkgver_short=e4.40
+_eclipse_pkgver=e4.41.0
+_eclipse_pkgver_short=e4.41
 pkgrel=1
 pkgdesc="Spring Tools, aka Spring Tool Suite (STS), is the next generation of Spring tooling for Eclipse IDE."
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "${pkgname}.desktop"
     "spring-tools-for-eclipse.install"
 )
-sha256sums=('eb1497c45f1d0009472d614bed36e30c433768f0c4aa088ff1c4d372f806c2d3'
+sha256sums=('10d9ed3473132585dbe26da47b0f53a9e926eff929908cfd1200407c17bb55cc'
             '1e2e23447e1d616480a790f36807ee64630a4ad71345834633e4e8f6e9bba066'
             '99655c1631a60d8f3358488bf66b442dc8bb4abfae98681a49248399dfe10cd0')
 
