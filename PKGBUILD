@@ -1,7 +1,7 @@
 # Maintainer: Gaou Piou <i.am.piou@gmail.com>
 
 pkgname=moga-neon-cursor-theme
-pkgver=2026.05.11.063410
+pkgver=2026.09.08.061950
 pkgrel=1
 _pkgid=2302110
 pkgdesc="Neon cursor theme with multiple color variants (Blue, Cyan, Green, Magenta, Orange, Purple, Red, Rose, Sandy, Sky, Water, Yellow, Butter, Olieve)"

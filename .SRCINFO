@@ -1,6 +1,6 @@
 pkgbase = moga-neon-cursor-theme
 	pkgdesc = Neon cursor theme with multiple color variants (Blue, Cyan, Green, Magenta, Orange, Purple, Red, Rose, Sandy, Sky, Water, Yellow, Butter, Olieve)
-	pkgver = 2026.05.11.063410
+	pkgver = 2026.09.08.061950
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/2302110
 	install = moga-neon-cursor-theme.install
