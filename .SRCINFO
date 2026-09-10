@@ -1,7 +1,8 @@
 pkgbase = wifish-git
 	pkgdesc = ncurses Wi-Fi picker for raw wpa_supplicant, with insult swordfighting
-	pkgver = r6.41b8920
+	pkgver = r5.8977725
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/thinkoid/wifish
 	arch = x86_64
 	license = WTFPL
@@ -9,6 +10,7 @@ pkgbase = wifish-git
 	makedepends = meson
 	depends = ncurses
 	depends = wpa_supplicant
+	optdepends = hwdata: offline access-point vendor identification
 	provides = wifish
 	conflicts = wifish
 	source = wifish::git+https://github.com/thinkoid/wifish.git

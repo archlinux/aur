@@ -1,14 +1,17 @@
 # Maintainer: Liviu Nicoara <lnicoara at thinkoid dot org>
 
 pkgname=wifish-git
-pkgver=r6.41b8920
+pkgver=r5.8977725
 pkgrel=1
+# The upstream history was shortened after the original r6 package.
+epoch=1
 pkgdesc="ncurses Wi-Fi picker for raw wpa_supplicant, with insult swordfighting"
 arch=('x86_64')
 url="https://github.com/thinkoid/wifish"
 license=('WTFPL')
 depends=('ncurses' 'wpa_supplicant')
 makedepends=('git' 'meson')
+optdepends=('hwdata: offline access-point vendor identification')
 provides=('wifish')
 conflicts=('wifish')
 source=("wifish::git+https://github.com/thinkoid/wifish.git")
