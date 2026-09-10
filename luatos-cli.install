@@ -1,0 +1,25 @@
+post_install() {
+    cat <<'EOF'
+>>> luatos-cli — LuatOS 命令行工具集
+
+快速上手：
+    luatos-cli doctor                # 先诊断环境（串口 / 项目 / 固件 / 工具）
+    luatos-cli serial list           # 列出可用串口
+    luatos-cli flash script --help   # 仅烧录脚本分区（开发时最常用）
+    luatos-cli log view --help       # 实时查看日志
+
+串口权限：
+    烧录与抓日志都要访问 /dev/ttyUSB* 、/dev/ttyACM* ，Arch 下这些设备
+    属于 uucp 组。加组后刷新一下组即可生效，无需重新登录或重启：
+
+        sudo gpasswd -a $USER uucp    # 加组需要 root
+        newgrp uucp                   # 刷新当前 shell 的组
+
+    若仍无法访问，先用 luatos-cli doctor 定位；部分开发板（如 CH343）
+    还需额外安装驱动，可选依赖：ch343ser-dkms、libftdi。
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
