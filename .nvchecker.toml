@@ -1,0 +1,3 @@
+[alenia-fuse]
+source = "pypi"
+pypi = "alenia-fuse"

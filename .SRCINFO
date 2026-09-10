@@ -1,0 +1,21 @@
+pkgbase = alenia-fuse
+	pkgdesc = High-performance universal media optimizer for images, video, and audio. Built with Nuitka and Go, with auto-GPU acceleration and crash-safe fallback
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://github.com/Kaia-Alenia/alenia-fuse
+	arch = any
+	license = GPL-3.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-rich
+	depends = python-prompt_toolkit
+	depends = python-pillow
+	depends = python-fuse
+	provides = fuse
+	source = https://files.pythonhosted.org/packages/source/a/alenia_fuse/alenia_fuse-2.0.7.tar.gz
+	sha256sums = f7705d74ab8c8c5e0319eea8f873f1f8ae832821bce684e7bdce653a33bd5bca
+
+pkgname = alenia-fuse
