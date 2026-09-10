@@ -3,7 +3,7 @@
 _pkgbasename=dav1d
 pkgname=("lib32-$_pkgbasename")
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (32 bit)'
 url='https://code.videolan.org/videolan/dav1d/'
 arch=('x86_64')
@@ -76,7 +76,11 @@ package_lib32-dav1d(){
     'lib32-gcc-libs'
     'lib32-glibc'
   )
-  provides=('lib32-dav1d' 'libdav1d.so')
+  provides=(
+    'lib32-dav1d'
+    'lib32-libdav1d'
+    'libdav1d.so'
+    )
 
   cd ${_pkgbasename}-${pkgver}
 
