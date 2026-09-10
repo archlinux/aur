@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=masscode-git
 _pkgname=massCode
-pkgver=5.8.0.r0.g15f86fd
+pkgver=5.10.0.r15.gce3db7e
 _electronversion=34
 _nodeversion=24
 pkgrel=1
-pkgdesc="A free and open source code snippets manager for developers.(Use system-wide electron)"
+pkgdesc="A free, open-source developer workspace. Snippets, notes, HTTP requests, calculations, 和 dev tools in one local-first app."
 arch=('any')
 url="https://masscode.io/"
 _ghurl="https://github.com/massCodeIO/massCode"
@@ -38,30 +38,25 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export pnpm_config_registry="https://registry.npmmirror.com"
-            export npm_config_registry="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-        }
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export HOME="${srcdir}/.electron-gyp"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export npm_config_cache="${srcdir}/.npm_cache"
+	export npm_config_devdir="${srcdir}/.node-gyp"
+	export npm_config_maxsockets=32
+	export npm_config_platform=linux
+	export npm_config_arch="${CARCH}"
+	export npm_config_audit=false
+	export npm_config_fund=false
+	export npm_config_progress=false
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export npm_config_node_options="--max-old-space-size=4096"
 }
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -93,22 +88,23 @@ prepare() {
     _set_build_env
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    pnpm install
+    NODE_ENV=development    npm install --legacy-peer-deps
+    NODE_ENV=development    npm add markmap-common --legacy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     _set_build_env
     _ensure_local_nvm
-    NODE_ENV=production     pnpm run rebuild
-    NODE_ENV=production     pnpm -c vite build
-    NODE_ENV=production     pnpm run build:main
-    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json"
+    NODE_ENV=production     npm run rebuild
+    NODE_ENV=production     npx vite build
+    NODE_ENV=production     npm run build:main
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.json"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname//-/.}/build/icons/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
