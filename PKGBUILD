@@ -3,7 +3,7 @@
 
 pkgbase=cardwire
 pkgname=cardwire
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc='GPU manager for Linux using eBPF LSM hooks'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('hwdata' 'dbus' 'sqlite' 'systemd' 'upower')
 makedepends=('rust' 'rust-src' 'cargo-binstall' 'libxcb')
 source=("https://github.com/OpenGamingCollective/cardwire/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('eba92c952f002767abead1391d9d2d229e3637a756ac4786759a0012b7e96649')
+sha256sums=('3b96e8bba14c9bcd4e104954244a7403f7dda6e3b336bbf6f0a079d589d11ddb')
 
 prepare(){
   cd "${pkgbase}-${pkgver}"
