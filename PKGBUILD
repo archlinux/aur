@@ -1,9 +1,10 @@
 # Maintainer: myuki <mioki dot cinnamon650 at 8shield dot net>
+# Contributor: Dct Mei <dctxmei@yandex.com>
 
 pkgname=yacd-meta
 _pkgname=Yacd-meta
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Clash Dashboard (MetaCubeX fork of yacd)"
 arch=('any')
 url="https://github.com/MetaCubeX/Yacd-meta"
