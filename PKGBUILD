@@ -3,9 +3,9 @@
 
 pkgname=llama.cpp-hip-gfx1151
 _pkgname=llama.cpp
-pkgver=b10872
+pkgver=b10884
 pkgrel=1
-_upstream_commit=b31b71f3a076bfc4278daad442203a9c51c6e676
+_upstream_commit=434ddbbc0e30522e897670681e503b797c12b7c1
 _mtp_graph_base=dbeb37548e25abc6e54961c4c99e63f191367809
 _mtp_graph_commit=33ed43518d078174b895a5b459a8f7018e433916
 _mtp_commit=1d8de7c1b0c7d2febf8f983174d8e6a711e2b1af
@@ -18,6 +18,25 @@ _rpc_invalid_graph_node_commit=181b1999205fd0e7c3e0db2874856649a0612d3f
 _hipcub_base_commit=d7bd3bfcad3e29c7e49fd26f38c79ee3e9a3fd6b
 _hipcub_commit=861abb2b2e333744d565e07985de8f6f6feaff65
 _ple_row_prefetch_commit=c911e6bb5eb956a759e740fb14db8ca639b7d3e7
+_rdna35_mmq_commit=c6381ea95667b5b7a98a709ec6c1e47135928f5f
+_fattn_base_commit=91f6a6cf361385700bbe15981f0f39909df77498
+_fattn_commit=461f7c1ed1c579e7836f6190d4b3a7b2c5bea4c2
+
+# GitHub can regenerate diff headers without changing the pinned commits.
+# Include each checksum in its source alias so yay/paru/SRCDEST caches fetch
+# changed bytes instead of reusing an older file and failing verification.
+_mtp_graph_sha256=3a347bd98e80e581bcd687797e7f9d76e68e862b39125cdba982565a4a4b80d4
+_mtp_sha256=2589fda61cee19deba67d44ed8e4988cf12d3ba2efa2a4b6fe886d5bacc79602
+_mtp_mixer_export_sha256=e0e465911f38e86dc4719c6a4d927d59176813ee29a6bd321bc95cfc0a13c707
+_mtp_reset_sha256=f6751cb25e7b389e64811e7a1a8f69117f9af85a5c2cb791e3107aae285fb6e8
+_qwen4exp_no_indexer_v_sha256=468a5c9e66a03decc63b8b0000938e6fcd17934f0ec3fa68a6a9f5a9bab8663d
+_server_recurrent_rollback_sha256=5600f12e0aa4128884d2d83d22f4d06a1a71ed40b8fb092783f6bab2cf617647
+_ggml_nbytes_overflow_sha256=594912e3c8d471e8203c1c849bb0cb0ddad9639d85cf091f3c0ced4e89d59caf
+_rpc_invalid_graph_node_sha256=52b24b7daaeb64f0d3863544c41b2eabf45757c6fa574d8cd2eee492709dc54d
+_hipcub_sha256=cb7c9ce5a13cd6f72ebd056dbdba8b9fd908e627fef031e24059e79aec2bfb24
+_ple_row_prefetch_sha256=0f8c6be00fcc7d59c0c67ed205f3b71bba9a9e9ee7b3350fac4d234e92ede069
+_rdna35_mmq_sha256=9226be6cbdf00d7963321b395374dcc58a7386c7cba75db7a42aed3e60725834
+_fattn_sha256=c4cf0318528134318bc4f4a1abfeecd882a709576e285319e4815be4f85f5033
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm)"
 arch=(x86_64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -54,20 +73,22 @@ options=(lto !debug)
 backup=("etc/conf.d/llama.cpp")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
-  "mtp-graph-reuse-${_mtp_graph_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/${_mtp_graph_base}...${_mtp_graph_commit}.diff"
-  "qwen4exp-mtp-${_mtp_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/e70802a01f03f0ed31a26338a5664796f3824371...${_mtp_commit}.diff"
-  "qwen4exp-mtp-mixer-export-${_mtp_mixer_export_commit}.patch::https://github.com/rmonsurate/llama.cpp/commit/${_mtp_mixer_export_commit}.diff"
-  "qwen4exp-mtp-b10872.patch"
-  "qwen4exp-mtp-mixed-f16-b10872.patch"
-  "mtp-reset-sequence-${_mtp_reset_commit}.patch::https://github.com/ggml-org/llama.cpp/commit/${_mtp_reset_commit}.diff"
-  "qwen4exp-no-indexer-v-${_qwen4exp_no_indexer_v_commit}.patch::https://github.com/ggml-org/llama.cpp/commit/${_qwen4exp_no_indexer_v_commit}.diff"
-  "server-recurrent-rollback-${_server_recurrent_rollback_commit}.patch::https://github.com/ggml-org/llama.cpp/commit/${_server_recurrent_rollback_commit}.diff"
-  "ggml-nbytes-overflow-${_ggml_nbytes_overflow_commit}.patch::https://github.com/ggml-org/llama.cpp/commit/${_ggml_nbytes_overflow_commit}.diff"
-  "rpc-invalid-graph-node-${_rpc_invalid_graph_node_commit}.patch::https://github.com/ggml-org/llama.cpp/commit/${_rpc_invalid_graph_node_commit}.diff"
-  "rpc-graph-shape-validation-b10872.patch"
-  "hipcub-rocm-${_hipcub_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/${_hipcub_base_commit}...${_hipcub_commit}.diff"
-  "qwen4exp-ple-row-prefetch-${_ple_row_prefetch_commit}.patch::https://github.com/Aristo94/EngramHalo.cpp/commit/${_ple_row_prefetch_commit}.diff"
-  "qwen4exp-ple-row-prefetch-b10872.patch"
+  "mtp-graph-reuse-${_mtp_graph_commit}-${_mtp_graph_sha256}.patch::https://github.com/ggml-org/llama.cpp/compare/${_mtp_graph_base}...${_mtp_graph_commit}.diff"
+  "qwen4exp-mtp-${_mtp_commit}-${_mtp_sha256}.patch::https://github.com/ggml-org/llama.cpp/compare/e70802a01f03f0ed31a26338a5664796f3824371...${_mtp_commit}.diff"
+  "qwen4exp-mtp-mixer-export-${_mtp_mixer_export_commit}-${_mtp_mixer_export_sha256}.patch::https://github.com/rmonsurate/llama.cpp/commit/${_mtp_mixer_export_commit}.diff"
+  "qwen4exp-mtp-b10884.patch"
+  "qwen4exp-mtp-mixed-f16-b10884.patch"
+  "mtp-reset-sequence-${_mtp_reset_commit}-${_mtp_reset_sha256}.patch::https://github.com/ggml-org/llama.cpp/commit/${_mtp_reset_commit}.diff"
+  "qwen4exp-no-indexer-v-${_qwen4exp_no_indexer_v_commit}-${_qwen4exp_no_indexer_v_sha256}.patch::https://github.com/ggml-org/llama.cpp/commit/${_qwen4exp_no_indexer_v_commit}.diff"
+  "server-recurrent-rollback-${_server_recurrent_rollback_commit}-${_server_recurrent_rollback_sha256}.patch::https://github.com/ggml-org/llama.cpp/commit/${_server_recurrent_rollback_commit}.diff"
+  "ggml-nbytes-overflow-${_ggml_nbytes_overflow_commit}-${_ggml_nbytes_overflow_sha256}.patch::https://github.com/ggml-org/llama.cpp/commit/${_ggml_nbytes_overflow_commit}.diff"
+  "rpc-invalid-graph-node-${_rpc_invalid_graph_node_commit}-${_rpc_invalid_graph_node_sha256}.patch::https://github.com/ggml-org/llama.cpp/commit/${_rpc_invalid_graph_node_commit}.diff"
+  "rpc-graph-shape-validation-b10884.patch"
+  "hipcub-rocm-${_hipcub_commit}-${_hipcub_sha256}.patch::https://github.com/ggml-org/llama.cpp/compare/${_hipcub_base_commit}...${_hipcub_commit}.diff"
+  "rdna35-mmq-${_rdna35_mmq_commit}-${_rdna35_mmq_sha256}.patch::https://github.com/ggml-org/llama.cpp/commit/${_rdna35_mmq_commit}.diff"
+  "amd-fattn-${_fattn_commit}-${_fattn_sha256}.patch::https://github.com/ggml-org/llama.cpp/compare/${_fattn_base_commit}...${_fattn_commit}.diff"
+  "qwen4exp-ple-row-prefetch-${_ple_row_prefetch_commit}-${_ple_row_prefetch_sha256}.patch::https://github.com/Aristo94/EngramHalo.cpp/commit/${_ple_row_prefetch_commit}.diff"
+  "qwen4exp-ple-row-prefetch-b10884.patch"
   # 提升性能的妙妙工具
   # "llama-gfx1151.patch::https://gist.githubusercontent.com/pedapudi/0da060d2a3b49a51155dbf00db61fea0/raw/aaaee0a96656ec0fc49bdfa76acd2b4edbfcbfb9/gistfile1.txt"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
@@ -75,21 +96,23 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.sysusers"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.tmpfiles"
 )
-sha256sums=('f9e27559f1595286a5f1f7245b2206ea89f03da2248e5401a36f15b0767c9394'
-            '3a347bd98e80e581bcd687797e7f9d76e68e862b39125cdba982565a4a4b80d4'
-            '2589fda61cee19deba67d44ed8e4988cf12d3ba2efa2a4b6fe886d5bacc79602'
-            'e0e465911f38e86dc4719c6a4d927d59176813ee29a6bd321bc95cfc0a13c707'
-            'a1a83d28f4e7d7325356e382a024abcbfd900ecbdf5023224c1d775448bb72f7'
-            '40d51c6ddd95d38d1b1a36e10903be6dc932c3ff0aa5abfb951ead925ee1cd18'
-            'f6751cb25e7b389e64811e7a1a8f69117f9af85a5c2cb791e3107aae285fb6e8'
-            '468a5c9e66a03decc63b8b0000938e6fcd17934f0ec3fa68a6a9f5a9bab8663d'
-            '5600f12e0aa4128884d2d83d22f4d06a1a71ed40b8fb092783f6bab2cf617647'
-            '594912e3c8d471e8203c1c849bb0cb0ddad9639d85cf091f3c0ced4e89d59caf'
-            '52b24b7daaeb64f0d3863544c41b2eabf45757c6fa574d8cd2eee492709dc54d'
-            'c06ea6bb878b4806f7f814674b1fd678da520d0e48d3572bfa8bf78befaa9dff'
-            'cb7c9ce5a13cd6f72ebd056dbdba8b9fd908e627fef031e24059e79aec2bfb24'
-            '0f8c6be00fcc7d59c0c67ed205f3b71bba9a9e9ee7b3350fac4d234e92ede069'
-            '4ef097f97d411ed2d03454b79dc73514db593afb92a07826406811d1b373330a'
+sha256sums=('3c5b2c7e61ffbc64c31b53ce3bf25631008d4cb0137c30069d1f9a7db74991b0'
+            "${_mtp_graph_sha256}"
+            "${_mtp_sha256}"
+            "${_mtp_mixer_export_sha256}"
+            '0044ea70d09c92af15a215281c1434dfa924a896d323818a2db5db48888f1621'
+            '4d12f5aa7d84039ec2647fc4f3ccfce941510bbb864ef38ffab4e915f623d321'
+            "${_mtp_reset_sha256}"
+            "${_qwen4exp_no_indexer_v_sha256}"
+            "${_server_recurrent_rollback_sha256}"
+            "${_ggml_nbytes_overflow_sha256}"
+            "${_rpc_invalid_graph_node_sha256}"
+            'be3befd42db34fda8aaffd953b486e23ed9005f0944d9e649dc39676d8fe79a5'
+            "${_hipcub_sha256}"
+            "${_rdna35_mmq_sha256}"
+            "${_fattn_sha256}"
+            "${_ple_row_prefetch_sha256}"
+            '7b2f66b9e5d1bcbb50cb0a3b57df0f4c29188d57893a884147e3782b20d392dc'
             'b481dcaa07d8b912b32066da4ee48341cb521852eb16d76a6cf7a8216402e101'
             'bd43b307d55a74bc64b88d95e1f37d0b12ddd2935563fc893835a91e2b8c10b5'
             '8349878d7e61819fe3da6e8a25c46c7dd66592c9a5736a7f66eb475c7a51068c'
@@ -101,57 +124,57 @@ prepare() {
   # Keep MTP output and no-output batches in separate graph metadata arenas.
   # Carry the complete reviewed PR #28549 series, including its field rename.
   patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
-    -i "${srcdir}/mtp-graph-reuse-${_mtp_graph_commit}.patch"
+    -i "${srcdir}/mtp-graph-reuse-${_mtp_graph_commit}-${_mtp_graph_sha256}.patch"
 
-  # Qwen3.8-Flash-Next MTP. b10872 already contains merged PR #27941,
+  # Qwen3.8-Flash-Next MTP. b10884 already contains merged PR #27941,
   # whose loader hardening overlaps the old qwen4exp.cpp hunk. Apply the
   # unaffected upstream files, then the no-fuzz local rebase that combines
   # the PR's runtime graph with detached-head commit a82a58a.
   GIT_CEILING_DIRECTORIES="${srcdir}" git -C "${_pkgname}" apply --no-index \
     --exclude='src/models/qwen4exp.cpp' \
-    "${srcdir}/qwen4exp-mtp-${_mtp_commit}.patch"
-  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-mixer-export-${_mtp_mixer_export_commit}.patch"
+    "${srcdir}/qwen4exp-mtp-${_mtp_commit}-${_mtp_sha256}.patch"
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-mixer-export-${_mtp_mixer_export_commit}-${_mtp_mixer_export_sha256}.patch"
   patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
-    -i "${srcdir}/qwen4exp-mtp-b10872.patch"
+    -i "${srcdir}/qwen4exp-mtp-b10884.patch"
 
   # Keep valid F16 integrated-head gamma tensors from entering unsupported
   # F32 x F16 binary-op dispatch in the CPU or shared HIP/CUDA backend.
   GIT_CEILING_DIRECTORIES="${srcdir}" git -C "${_pkgname}" apply --no-index \
-    "${srcdir}/qwen4exp-mtp-mixed-f16-b10872.patch"
+    "${srcdir}/qwen4exp-mtp-mixed-f16-b10884.patch"
 
   # A fresh sequence must not inherit a prior request's pending MTP carrier.
   # This is the narrow reset from PR #28333; it does not relax --np 1.
   patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
-    -i "${srcdir}/mtp-reset-sequence-${_mtp_reset_commit}.patch"
+    -i "${srcdir}/mtp-reset-sequence-${_mtp_reset_commit}-${_mtp_reset_sha256}.patch"
 
   # Qwen4-Exp's indexer reads only its K cache. Avoid allocating the unused V
   # cache through the reviewed private-hparams adjustment from PR #28330.
   patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
-    -i "${srcdir}/qwen4exp-no-indexer-v-${_qwen4exp_no_indexer_v_commit}.patch"
+    -i "${srcdir}/qwen4exp-no-indexer-v-${_qwen4exp_no_indexer_v_commit}-${_qwen4exp_no_indexer_v_sha256}.patch"
 
   # Reprocess instead of aborting or retaining stale recurrent state when a
   # hybrid target or draft cannot roll back far enough.
   patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
-    -i "${srcdir}/server-recurrent-rollback-${_server_recurrent_rollback_commit}.patch"
+    -i "${srcdir}/server-recurrent-rollback-${_server_recurrent_rollback_commit}-${_server_recurrent_rollback_sha256}.patch"
 
   # Avoid a pre-division size wrap for malformed block-quantized tensors.
   patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
-    -i "${srcdir}/ggml-nbytes-overflow-${_ggml_nbytes_overflow_commit}.patch"
+    -i "${srcdir}/ggml-nbytes-overflow-${_ggml_nbytes_overflow_commit}-${_ggml_nbytes_overflow_sha256}.patch"
 
   # Reject malformed top-level RPC graph nodes instead of dereferencing null.
   patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
-    -i "${srcdir}/rpc-invalid-graph-node-${_rpc_invalid_graph_node_commit}.patch"
+    -i "${srcdir}/rpc-invalid-graph-node-${_rpc_invalid_graph_node_commit}-${_rpc_invalid_graph_node_sha256}.patch"
 
   # Extend PR #26933 after the preceding null-node guard without fuzzy patching.
   # Mirror the complete SET_ROWS/GET_ROWS constructor invariants before RPC
   # execution; the PR's original two checks had ASan-confirmed bypasses.
   patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
-    -i "${srcdir}/rpc-graph-shape-validation-b10872.patch"
+    -i "${srcdir}/rpc-graph-shape-validation-b10884.patch"
 
   # Upstream #28604 now disables direct host-buffer compute on HIP itself;
   # the former #25863 capability workaround is no longer needed.
 
-  # Prefer hipCUB with rocPRIM >= 4.4; older ROCm keeps b10872's upstream
+  # Prefer hipCUB with rocPRIM >= 4.4; older ROCm keeps b10884's upstream
   # native HIP radix fallback.
   # The extracted source is untracked inside an AUR Git clone. Stop Git at
   # $srcdir so its subdirectory prefix cannot silently skip every patch path.
@@ -159,17 +182,26 @@ prepare() {
     --exclude='.github/workflows/build-cuda-ubuntu.yml' \
     --exclude='.github/workflows/hip-quality-check.yml' \
     --exclude='tests/test-backend-ops.cpp' \
-    "${srcdir}/hipcub-rocm-${_hipcub_commit}.patch"
+    "${srcdir}/hipcub-rocm-${_hipcub_commit}-${_hipcub_sha256}.patch"
+
+  # Reviewed gfx1151 MMQ tile tuning (#28195); IQ4_XS entries are unchanged.
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
+    -i "${srcdir}/rdna35-mmq-${_rdna35_mmq_commit}-${_rdna35_mmq_sha256}.patch"
+
+  # Complete maintainer-reviewed AMD Flash Attention tuning series (#28102).
+  # Enables existing D=256 WMMA paths; gains depend on context and batch size.
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
+    -i "${srcdir}/amd-fattn-${_fattn_commit}-${_fattn_sha256}.patch"
 
   # Queue the sparse PLE rows before each graph and support its 160-wide IQ4_NL
   # rows in the HIP GET_ROWS kernel. The small second patch hooks that row
-  # prefetch into b10872's upstream lazy-tensor bookkeeping.
+  # prefetch into b10884's upstream lazy-tensor bookkeeping.
   GIT_CEILING_DIRECTORIES="${srcdir}" git -C "${_pkgname}" apply --no-index \
     --exclude='src/llama-model-loader.cpp' \
     --exclude='src/llama-model-loader.h' \
-    "${srcdir}/qwen4exp-ple-row-prefetch-${_ple_row_prefetch_commit}.patch"
+    "${srcdir}/qwen4exp-ple-row-prefetch-${_ple_row_prefetch_commit}-${_ple_row_prefetch_sha256}.patch"
   patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
-    -i "${srcdir}/qwen4exp-ple-row-prefetch-b10872.patch"
+    -i "${srcdir}/qwen4exp-ple-row-prefetch-b10884.patch"
 
   # Tailwind v4's oxide scanner walks up looking for the nearest .git to anchor
   # .gitignore lookup. In AUR helpers (yay/paru) the parent .git is the AUR
@@ -229,7 +261,7 @@ build() {
     # HIP-only variant
     -DGGML_VULKAN=OFF
 
-    -DGGML_CUDA_FA_ALL_QUANTS=ON
+    -DGGML_CUDA_FA_QUANTS=all
     -DLLAMA_BUILD_NUMBER="${pkgver#b}" # 修正版本号
     -DLLAMA_BUILD_COMMIT="${_upstream_commit:0:7}"
     -Wno-dev

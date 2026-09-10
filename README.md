@@ -3,37 +3,45 @@
 `llama.cpp-hip-gfx1151` is the HIP-only Strix Halo variant of
 [`llama.cpp-gfx1151`](https://aur.archlinux.org/packages/llama.cpp-gfx1151).
 It keeps the sibling package's build, service, and CPU/HIP tuning unless a
-difference is listed here. This revision pins upstream `b10872`; the live
-sibling is at `b10867` (2026-09-09 review).
+difference is listed here. This revision pins upstream `b10884` (`434ddbb`);
+the live sibling is at `b10883-1` (2026-09-10 review).
 
 The sibling update changes only version/archive-checksum metadata, not its
-dependencies, assets, or build configuration. This package is five upstream
-commits further; none warrants another experimental MTP backport.
-`b10872` was the latest tag when the 2026-09-09 review began. Later tags
+dependencies, assets, or build configuration. This package is one upstream
+commit further (a CI sanitizer change). `b10884` was the latest tag selected
+during the initial September 10 research. Later tags
 warrant another pass only if something materially relevant lands.
 
-Since the previous `b10853` package, the interesting changes are:
+Since the previous `b10872` package, the interesting changes are:
 
-- inherited [#28302](https://github.com/ggml-org/llama.cpp/pull/28302), which
-  preserves useful recurrent checkpoints in short conversations and can avoid
-  unnecessary prompt reprocessing; it does not establish a fix for concurrent MTP;
-- inherited [#28604](https://github.com/ggml-org/llama.cpp/pull/28604), disabling
-  unsafe direct host-buffer compute on HIP. The redundant #25863 patch is removed;
-- inherited [#28326](https://github.com/ggml-org/llama.cpp/pull/28326): lazy mode
-  `auto` now switches off when a selected device reports `mmap_support=false`,
-  including HIP on Strix Halo. **Keep explicit `--lazy-mode on` for SSD-backed PLE.** The
-  proposed `on`→`all` rename was withdrawn before merge;
-- inherited [#28390](https://github.com/ggml-org/llama.cpp/pull/28390)'s draft
-  device/Meta selection fix (the projector also follows explicit device
-  selection), specialized chat-parser refactoring, and a Jinja null-lookup
-  fix among 19 upstream commits;
-- new native gfx1151 MMVQ/SWAR candidates, progress on adaptive/probabilistic MTP,
-  and an approved MMQ successor that still excludes RDNA3.5. These remain on
-  the watchlist, along with SSD-PLE direct I/O awaiting post-refactor review.
+- newly carried [#28195](https://github.com/ggml-org/llama.cpp/pull/28195):
+  approved **gfx1151 MMQ tile tuning**, with independent Strix Halo measurements.
+  It changes selected Q4/Q5/Q6/Q8 entries, not IQ4_XS; gains are workload-dependent;
+- newly carried [#28102](https://github.com/ggml-org/llama.cpp/pull/28102):
+  maintainer-revised and approved **AMD Flash Attention tuning**, now with gfx1151
+  evidence. Its D=256/GQA dispatch affects Qwen3.8 prefill and MTP verification.
+  One independent Qwen3.5 large-prefill case gains 24%, but a small-batch case
+  loses about 10%; these are not measurements of this package's Qwen3.8 MTP;
+- inherited [#28601](https://github.com/ggml-org/llama.cpp/pull/28601): unique
+  video/frame IDs prevent unrelated video frames from sharing a prompt-cache
+  identity—a correctness and cross-request privacy fix;
+- inherited [#28334](https://github.com/ggml-org/llama.cpp/pull/28334): **legacy
+  `--no-mmap`, `--mmap`, `--mlock`, and `--direct-io` options are removed**.
+  Migrate `no-mmap = true` in `models.ini` to `load-mode = none`. For the
+  SSD-PLE model, keep the separate explicit `lazy-mode = on` override;
+- inherited [#28079](https://github.com/ggml-org/llama.cpp/pull/28079): explicit
+  Flash Attention K/V type-pair selection. The package switches to
+  `GGML_CUDA_FA_QUANTS=all`, preserving its previous 49-pair build coverage;
+- 12 upstream commits in total, also including the RDNA3/4-only #28552 MMQ
+  selector (not a gfx1151 speedup) and converter NumPy requirement updates;
+- source-cache-safe patch names: remote aliases now include the full expected
+  SHA-256, so changed diff bytes cause AUR helpers to fetch a new filename.
 
-No additional unmerged runtime patch is introduced in this revision. The
-retained MTP/PLE/hipCUB pins are functionally unchanged; freshly generated
-GitHub diff headers require checksum updates, not code changes.
+The existing MTP/PLE/hipCUB pins remain functionally unchanged. The EngramHalo
+prefetch rebase adds no behavior beyond our existing loader shim. SSD-PLE
+`on-direct`, FR-Spec, probabilistic MTP and the new vision/speculation fixes
+remain watched, not silently enabled. The detailed watchlist records new
+reviews, fixes, remaining objections and newly discovered proposals.
 
 The source versions are llama.cpp 0.4.0 / ggml 0.23.0. The validation and
 remaining security/runtime limits are documented below.
@@ -47,8 +55,8 @@ features, test them on your workload, and keep a non-speculative baseline.
 
 ## What differs from llama.cpp-gfx1151
 
-The comparison below is this package at `b10872` versus the live sibling at
-`b10867`.
+The comparison below is this package at `b10884` versus the live sibling at
+`b10883`.
 
 | Area | `llama.cpp-hip-gfx1151` | `llama.cpp-gfx1151` |
 | --- | --- | --- |
@@ -57,10 +65,12 @@ The comparison below is this package at `b10872` versus the live sibling at
 | Vulkan packages | Not required or provided | Depends on `vulkan-icd-loader`; builds with `shaderc`, `vulkan-headers`, and `spirv-headers`; provides Vulkan names |
 | HIP headers | Keeps `rocm-hip-sdk` and adds an explicit `hipcub` build dependency for the carried hipCUB patch | Relies on `rocm-hip-sdk` for those headers |
 | VMM policy | Explicit `GGML_HIP_NO_VMM=ON` | Does not override the upstream default; its `OFF` example is commented out |
-| Upstream tag | `b10872`, the latest tag when this review began | `b10867`; the package is five upstream commits ahead as described above |
-| Build identity | Pins the upstream `b10872` commit (`b31b71f`) and prevents CMake's Git probes from escaping the extracted source tree | Can report the enclosing AUR wrapper commit when built from a normal AUR Git clone |
+| Upstream tag | `b10884`, selected during initial research | `b10883`; the package is one upstream CI commit ahead |
+| Build identity | Pins the upstream `b10884` commit (`434ddbb`) and prevents CMake's Git probes from escaping the extracted source tree | Can report the enclosing AUR wrapper commit when built from a normal AUR Git clone |
+| Flash Attention build option | `GGML_CUDA_FA_QUANTS=all` | Deprecated `GGML_CUDA_FA_ALL_QUANTS=ON`; equivalent type-pair coverage |
 | Installed RUNPATH | Suppresses CMake-generated RPATHs so amdclang leaves only the absolute `/opt/rocm/lib` entry on the HIP DSO | Does not override CMake's RPATH policy |
-| Extra source changes | Ten remotely sourced functional patch files and four local, checksum-pinned adaptations, described below | No MTP/PLE/Strix safety patch stack |
+| Extra source changes | Twelve remotely sourced functional patch files and four local, checksum-pinned adaptations, described below | No MTP/PLE/Strix safety patch stack |
+| Source-cache identity | Remote patch aliases include both the commit and full content SHA-256; local adaptations use the current base-version filename | No active remote patch stack |
 | Package release | `pkgrel=1` | `pkgrel=1` at the time of comparison |
 
 The HIP package hard-codes `_pkgname=llama.cpp`; stripping only `-gfx1151`
@@ -98,23 +108,33 @@ On September 9, GitHub regenerated `index` headers from 11- to 12-character
 object IDs in nine retained remote diffs; #28549 is byte-identical. Comparing
 each fresh file with the previously verified copy after removing only those
 headers confirms identical patch bodies. Their immutable commits are unchanged.
-All 19 current sources are checksum-pinned. The four renamed local adaptations
-only change their first-line base-version comments.
+September 10 downloads match those previously verified files exactly. All
+**21 current sources** are checksum-pinned. Each remote patch alias now contains
+its complete expected SHA-256, and the same variable feeds `sha256sums` and
+`prepare()`. Updating a diff checksum therefore automatically updates its
+download/application filename, even if the commit has not changed. This also
+avoids stale pre-September-9 files in yay/paru/shared `SRCDEST` caches; users
+do not need to clear the entire helper cache. The four local adaptations are
+renamed for b10884 and only change their first-line base-version comments.
+If an asset's checksum changes in a future update, its alias and install
+reference must also change; the four service/config assets are unchanged here.
 
-| Patch | Purpose | Review state and practical risk as of 2026-09-09 |
+| Patch | Purpose | Review state and practical risk as of 2026-09-10 |
 | --- | --- | --- |
 | [Series ending at `33ed435`](https://github.com/ggml-org/llama.cpp/compare/dbeb37548e25abc6e54961c4c99e63f191367809...33ed43518d078174b895a5b459a8f7018e433916), from [#28549](https://github.com/ggml-org/llama.cpp/pull/28549) | Gives MTP's output-producing and no-output prefill/catch-up graphs separate persistent metadata arenas, avoiding repeated capture when their graph-cache keys collide. An active-arena pointer prevents reusing allocations from the wrong graph. | A maintainer approved the implementation; the final revision only makes the requested catch-up-to-prefill identifier rename, verified functionally equivalent. Both owned arenas are reset on scheduler/memory changes, and the non-owning pointer is cleared before rebuild/failure paths. HIP uses the same graph-cache mechanism. Extra graph metadata/cache retention is a memory tradeoff; the reported 4–5% Qwen3.6 gain is Windows/RTX 5090 only. No local gfx1151 speed or MTP-quality claim. |
-| [Series ending at `1d8de7c`](https://github.com/ggml-org/llama.cpp/compare/e70802a01f03f0ed31a26338a5664796f3824371...1d8de7c1b0c7d2febf8f983174d8e6a711e2b1af), from [llama.cpp PR #27836](https://github.com/ggml-org/llama.cpp/pull/27836), plus [`qwen4exp-mtp-b10872.patch`](./qwen4exp-mtp-b10872.patch) | Adds Qwen3.8-Flash-Next NextN/MTP tensor mappings, conversion, graph construction, recurrent state handling, `draft-mtp`, and detached-head loading. The remote series is applied to every non-overlapping file; the local exact-context patch rebases its `qwen4exp.cpp` changes plus detached-head commit [`a82a58a`](https://github.com/crusaderky/llama.cpp/commit/a82a58a57fc307e5cec0dc68db64d143339be4f2) onto the merged #27941 and generic NextN loaders. | #27836 remains a draft and `a82a58a` is explicitly unreviewed. The rebase preserves the merged PLE-row and tensor-array rules. It replaces the new generic `nextn > block_count` assertion with a catchable load error while retaining Qwen4-Exp's stricter `nextn >= block_count` and one-layer checks. This is still substantial model-specific code; experimental, with moderate correctness and maintenance risk. |
-| [`qwen4exp-mtp-mixed-f16-b10872.patch`](./qwen4exp-mtp-mixed-f16-b10872.patch), based on the [new #27836 mixed-type report](https://github.com/ggml-org/llama.cpp/pull/27836#issuecomment-5508708675) | Casts hyper-connection and MTP hidden-state gamma tensors to the activation type only when they differ. This prevents valid integrated heads with F16 norms from entering unsupported F32×F16 CPU dispatch or the shared HIP/CUDA path that otherwise treats F16 `src1` as `float`. | Two exact-context expressions in the model graph, with no extra node for same-type tensors. The published drluoto Q8_0 sidecar's relevant norms were independently verified as F32, so its normal graph is unchanged. The report reproduced the failure and fix on CPU/CUDA rather than HIP and has no owned upstream patch or review; low code-scope risk, but on-device HIP validation is still required. The package deliberately does not broaden generic binary-op dispatch. |
+| [Series ending at `1d8de7c`](https://github.com/ggml-org/llama.cpp/compare/e70802a01f03f0ed31a26338a5664796f3824371...1d8de7c1b0c7d2febf8f983174d8e6a711e2b1af), from [llama.cpp PR #27836](https://github.com/ggml-org/llama.cpp/pull/27836), plus [`qwen4exp-mtp-b10884.patch`](./qwen4exp-mtp-b10884.patch) | Adds Qwen3.8-Flash-Next NextN/MTP tensor mappings, conversion, graph construction, recurrent state handling, `draft-mtp`, and detached-head loading. The remote series is applied to every non-overlapping file; the local exact-context patch rebases its `qwen4exp.cpp` changes plus detached-head commit [`a82a58a`](https://github.com/crusaderky/llama.cpp/commit/a82a58a57fc307e5cec0dc68db64d143339be4f2) onto the merged #27941 and generic NextN loaders. | #27836 remains a draft and `a82a58a` is explicitly unreviewed. The rebase preserves the merged PLE-row and tensor-array rules. It replaces the new generic `nextn > block_count` assertion with a catchable load error while retaining Qwen4-Exp's stricter `nextn >= block_count` and one-layer checks. This is still substantial model-specific code; experimental, with moderate correctness and maintenance risk. |
+| [`qwen4exp-mtp-mixed-f16-b10884.patch`](./qwen4exp-mtp-mixed-f16-b10884.patch), based on the [new #27836 mixed-type report](https://github.com/ggml-org/llama.cpp/pull/27836#issuecomment-5508708675) | Casts hyper-connection and MTP hidden-state gamma tensors to the activation type only when they differ. This prevents valid integrated heads with F16 norms from entering unsupported F32×F16 CPU dispatch or the shared HIP/CUDA path that otherwise treats F16 `src1` as `float`. | Two exact-context expressions in the model graph, with no extra node for same-type tensors. The published drluoto Q8_0 sidecar's relevant norms were independently verified as F32, so its normal graph is unchanged. The report reproduced the failure and fix on CPU/CUDA rather than HIP and has no owned upstream patch or review; low code-scope risk, but on-device HIP validation is still required. The package deliberately does not broaden generic binary-op dispatch. |
 | [`7abbba2`](https://github.com/ggml-org/llama.cpp/commit/7abbba20a8ac5bf32477bfd7cd6fa6061067e590), from [llama.cpp PR #28333](https://github.com/ggml-org/llama.cpp/pull/28333) | Clears a slot's pending MTP carrier when a new sequence begins at position zero, so a completed earlier request cannot influence the first proposal of a fresh request. | Five lines in the MTP drafter. The author reproduced a deterministic `--np 1` first-response mismatch after a priming request and obtained matching hashes in five patched repetitions. It has no human review yet, but adds no allocation, I/O, or new indexing and fails toward a zero initial state. Low code-scope risk and direct correctness/confidentiality value. It does not resolve the simultaneous multi-slot contamination in #28286, so `--np 1` remains mandatory. |
 | [`b12a411`](https://github.com/ggml-org/llama.cpp/commit/b12a411b43aa1e2f7f5856c876817f7ae2d2a770), from [llama.cpp PR #28330](https://github.com/ggml-org/llama.cpp/pull/28330) | Prevents Qwen4-Exp's private indexer cache from allocating a V cache that the indexer never reads. The reported saving is about 48 MiB at 8K context and scales to roughly 1.5 GiB at 256K. | Four lines set MLA marker dimensions only on the private copied hparams. Current KV-cache construction uses that marker to omit V while retaining the already configured full K width. One reviewer approved the exact head while preferring a future explicit API flag; the requested code-owner review is still outstanding. Low risk; memory-capacity improvement rather than a throughput promise. |
 | [`57bb668`](https://github.com/rmonsurate/llama.cpp/commit/57bb668674d9fb0d382885e5b04911c6437f8e83), also proposed as [rmonsurate/llama.cpp PR #1](https://github.com/rmonsurate/llama.cpp/pull/1) | Keeps `model.hyper_connection_mixer.*` when `convert_hf_to_gguf.py --mtp` exports a detached sidecar. | One-line converter filter change. Low runtime risk; required for a valid standalone Qwen3.8 sidecar. |
 | [`13e4cfe`](https://github.com/ggml-org/llama.cpp/commit/13e4cfe53ff3dc2e786a9264ee552da53e0a41c4), from [llama.cpp PR #28007](https://github.com/ggml-org/llama.cpp/pull/28007) | When a hybrid target or draft cannot partially roll recurrent memory back far enough, clears both sequences and reprocesses the prompt instead of aborting or continuing with stale state. | One server file, one concrete Qwen hybrid+vision reproduction, and 136 reported server tests passed. It has no human approval yet and the expensive fallback is intentionally reachable only after rollback refusal. Low code-scope risk; moderate behavioral risk in complex prompt-cache/speculative flows. |
 | [`0a2e89a`](https://github.com/ggml-org/llama.cpp/commit/0a2e89adb99d86cf11d694327b942e9408a1b769), from [llama.cpp PR #27200](https://github.com/ggml-org/llama.cpp/pull/27200) | Divides block-quantized element counts before multiplying by block size, preventing the demonstrated pre-division size wrap that can turn a malicious GGUF into a heap out-of-bounds access. | Approved by a maintainer and only reorders two integer expressions; valid divisible shapes are unchanged. Low risk and useful defense-in-depth, but it is deliberately narrow: it does not add checked arithmetic to every later stride product or addition. |
 | [`181b199`](https://github.com/ggml-org/llama.cpp/commit/181b1999205fd0e7c3e0db2874856649a0612d3f), from [llama.cpp PR #25670](https://github.com/ggml-org/llama.cpp/pull/25670) | Rejects an invalid top-level RPC graph node before `ggml_hash_insert` and graph execution. Without it, an unauthenticated client can send a crafted `GRAPH_COMPUTE` request with node ID zero and crash `ggml-rpc-server` through a null dereference. | One fail-closed condition change, removal of a now-redundant null branch, and a loopback regression test that verifies both rejection and continued service. The crash was reproduced on current master and the normal multi-server test still passes. No human approval yet, but the scope is narrow and the package builds/installs RPC, so the denial-of-service reduction outweighs the low change risk. This does not make an Internet-exposed RPC server safe or authenticated. |
-| [`rpc-graph-shape-validation-b10872.patch`](./rpc-graph-shape-validation-b10872.patch), based on [llama.cpp PR #26933](https://github.com/ggml-org/llama.cpp/pull/26933) at `04542c9` | Rejects RPC `SET_ROWS` and `GET_ROWS` graphs whose attacker-controlled shapes violate the public constructors' invariants, before backend execution. The reported consequences are an out-of-bounds write/selected-victim-buffer overwrite for `SET_ROWS` and out-of-bounds read/data disclosure for `GET_ROWS`. | Testing found the PR's two original comparisons bypassable, so the local no-fuzz patch mirrors the complete structural per-op shape/type/contiguity contract—including the `SET_ROWS` view now allowed by inherited #27199—and adds regression coverage for the published cases and both ASan-confirmed bypasses. Valid constructor-built graphs still pass. It does not inspect the values inside a valid-shaped row-index tensor. The PR has no human review, and this does not validate every RPC op or authenticate RPC. Low code-scope risk; high value when RPC is enabled. |
+| [`rpc-graph-shape-validation-b10884.patch`](./rpc-graph-shape-validation-b10884.patch), based on [llama.cpp PR #26933](https://github.com/ggml-org/llama.cpp/pull/26933) at `04542c9` | Rejects RPC `SET_ROWS` and `GET_ROWS` graphs whose attacker-controlled shapes violate the public constructors' invariants, before backend execution. The reported consequences are an out-of-bounds write/selected-victim-buffer overwrite for `SET_ROWS` and out-of-bounds read/data disclosure for `GET_ROWS`. | Testing found the PR's two original comparisons bypassable, so the local no-fuzz patch mirrors the complete structural per-op shape/type/contiguity contract—including the `SET_ROWS` view now allowed by inherited #27199—and adds regression coverage for the published cases and both ASan-confirmed bypasses. Valid constructor-built graphs still pass. It does not inspect the values inside a valid-shaped row-index tensor. The PR has no human review, and this does not validate every RPC op or authenticate RPC. Low code-scope risk; high value when RPC is enabled. |
 | Series ending at [`861abb2`](https://github.com/ggml-org/llama.cpp/commit/861abb2b2e333744d565e07985de8f6f6feaff65), from [llama.cpp PR #26592](https://github.com/ggml-org/llama.cpp/pull/26592) | Enables CUB code paths on HIP through hipCUB for sorting, `TOP_K`, reductions, scans, and related operations. It enables them only with rocPRIM 4.4.0 or newer. | The current PR head `f969e23` only rebases the work: its nine production-file changes are byte-equivalent to this already-audited immutable pin. One approval remains alongside an older change request. rocPRIM 4.2 was proven unsafe; the version gate added in `527fcad` avoids that path. Moderate backend/runtime risk. |
-| [`c911e6b`](https://github.com/Aristo94/EngramHalo.cpp/commit/c911e6bb5eb956a759e740fb14db8ca639b7d3e7), plus [`qwen4exp-ple-row-prefetch-b10872.patch`](./qwen4exp-ple-row-prefetch-b10872.patch) | Tracks which tensors actually use b10872's lazy mapping, submits page-merged `WILLNEED` hints for selected PLE rows before graph execution, and adds a HIP/CUDA `GET_ROWS` path for 160-value IQ4_NL rows. | Fork-only and tested on one gfx1151 system. The small local shim has exact current context so preparation fails on drift. The fork's rewritten `e8e8f9d` is only a loader-API rebase of the same functional hunks, already represented by this immutable pin plus the local shim, so its hash is deliberately not chased. Lazy mode places the PLE on the CPU path; readahead failure is non-fatal. |
+| [#28195 at `c6381ea`](https://github.com/ggml-org/llama.cpp/pull/28195) | Retunes 30 RDNA3.5 MMQ entries to 128 threads / 64 rows for selected Q4_0/Q4_K/Q5_K/Q6_K/Q8_0 widths. IQ4_XS configurations are untouched. | [Approved by IMbackK](https://github.com/ggml-org/llama.cpp/pull/28195#pullrequestreview-5158353742), with [independent gfx1151 benchmarks](https://github.com/ggml-org/llama.cpp/pull/28195#issuecomment-5605569760). Existing configuration constants only; no arithmetic-kernel rewrite, I/O or ownership change. Qwen3.6-35B Q4_K_M prefill gains 0.44–3.11% in that test, with some small regressions elsewhere. Low code-scope risk, workload-dependent performance. |
+| [#28102 series ending at `461f7c1`](https://github.com/ggml-org/llama.cpp/compare/91f6a6cf361385700bbe15981f0f39909df77498...461f7c1ed1c579e7836f6190d4b3a7b2c5bea4c2) | Enables existing AMD WMMA attention through head dimension 256, improves GQA grouping and selects stream-K according to tile efficiency. Includes six evaluation and eight performance cases. Qwen3.8's D=256, 24 query / two KV heads are directly relevant: batches of five or more tokens can switch route, including ordinary MTP verification; single-token decode retains its previous route. | [JohannesGaessler revised and approved this head](https://github.com/ggml-org/llama.cpp/pull/28102#pullrequestreview-5160087812); a second reviewer's reapproval is still requested. [His gfx1151 Qwen3.5 measurements](https://github.com/ggml-org/llama.cpp/pull/28102#issuecomment-5609065368) show +24% prefill at 32K/ub512 but approximately −10% at ub16. Both F16 and Q8_0 KV apply via the existing F16 conversion scratch path; persistent cache representation is unchanged, but transient fixup buffers and reduction order can change. No new I/O or ownership. Moderate tuning/numerical risk; no measured Qwen3.8 MTP speedup or on-device validation from this builder. |
+| [`c911e6b`](https://github.com/Aristo94/EngramHalo.cpp/commit/c911e6bb5eb956a759e740fb14db8ca639b7d3e7), plus [`qwen4exp-ple-row-prefetch-b10884.patch`](./qwen4exp-ple-row-prefetch-b10884.patch) | Tracks which tensors actually use b10884's lazy mapping, submits page-merged `WILLNEED` hints for selected PLE rows before graph execution, and adds a HIP/CUDA `GET_ROWS` path for 160-value IQ4_NL rows. | Fork-only and tested on one gfx1151 system. The small local shim has exact current context so preparation fails on drift. The fork's rewritten `d338583` is only a loader-API rebase of the same functional hunks, already represented by this immutable pin plus the local shim, so its hash is deliberately not chased. Lazy mode places the PLE on the CPU path; readahead failure is non-fatal. |
 
 The upstream native radix path and carried hipCUB patch are deliberately both
 present:
@@ -124,7 +144,7 @@ present:
   lacks CCCL 3.2 `DeviceTopK`—including this rocPRIM 4.6 / hipCUB 4.7 nightly—uses
   bitonic argsort for small rows or hipCUB argsort for larger rows, then copies
   the first `k` indices;
-- with older rocPRIM, hipCUB is not enabled and b10872's native HIP radix kernel
+- with older rocPRIM, hipCUB is not enabled and b10884's native HIP radix kernel
   keeps wide QSA `TOP_K` on the GPU. New two-node gfx1151 testing on issue
   #27021 passed 500/500 CPU-reference comparisons and every formerly skipped
   row wider than 1024. The native radix implementation is dormant whenever
@@ -162,12 +182,12 @@ The CMake configure call uses the same Git ceiling and explicitly records the
 short commit for the pinned upstream tag. Without both measures, llama.cpp's
 build-info probe walks out of the source tarball into the enclosing AUR Git
 checkout, and `llama-cli --version` misleadingly reports the package wrapper's
-commit. The package records `build 10872, commit b31b71f`; ggml's separate
+commit. The package records `build 10884, commit 434ddbb`; ggml's separate
 source probe reports `unknown`, which is accurate for an extracted tarball.
 
 ### How the SSD-backed PLE patches fit together
 
-Upstream b10872 provides the important mixed-load behavior itself. A tensor
+Upstream b10884 provides the important mixed-load behavior itself. A tensor
 marked lazy overrides the global load mode, gets a dedicated CPU context, and
 is mapped even with `--load-mode none`. Dense tensors continue through their
 ordinary non-mmap upload path. The package adds row readahead to the
@@ -177,7 +197,7 @@ SSD-backed lazy path and an IQ4_NL `GET_ROWS` GPU kernel for resident placement:
 | --- | --- |
 | Mapping | The PLE remains an mmap alias of the GGUF on NVMe; it is not copied into a permanent 26.8 GiB RAM allocation. |
 | Dense-weight load | With `-lm none`, other tensors use pinned staging buffers and asynchronous upload to their HIP buffers; they are not forced through the mmap path merely because the PLE is lazy. |
-| PLE lookup | b10872 gathers a lazy tensor on the CPU. Before `GET_ROWS`, this package page-aligns and merges the selected row ranges and submits readahead hints so Linux can queue several NVMe reads in parallel. |
+| PLE lookup | b10884 gathers a lazy tensor on the CPU. Before `GET_ROWS`, this package page-aligns and merges the selected row ranges and submits readahead hints so Linux can queue several NVMe reads in parallel. |
 
 The PLE is still ordinary read-only model data. There is no background daemon,
 private cache format, write-back, or model mutation. "SSD-backed" also does not
@@ -186,7 +206,7 @@ available and can reclaim them under pressure. The resident amount therefore
 depends on workload locality and memory pressure; the reported 1-1.5 GiB is an
 observation, not a hard limit.
 
-b10872 suppresses whole-file prefetch when the global mode is `none`; the lazy
+b10884 suppresses whole-file prefetch when the global mode is `none`; the lazy
 ranges are brought in only on demand. It also excludes lazy ranges from bulk
 prefetch when the global mode is `mmap`. Clean mapped pages remain reclaimable
 under memory pressure.
@@ -209,7 +229,7 @@ with `--lazy-mode off` restoring about 406 t/s; a GB10 UMA/CUDA report describes
 a similar roughly 73% loss. Neither result proves that HIP has the same
 regression, but they make an on-device `on`/`off` A/B mandatory before calling
 this the fastest configuration. This package retains only EngramHalo's batched
-row readahead and the small b10872 bookkeeping hook.
+row readahead and the small b10884 bookkeeping hook.
 
 ### Why direct HIP host-buffer compute stays disabled
 
@@ -263,7 +283,7 @@ gfx1151 reproduction, disabling upstream multi-token fusion would retain a
 known MTP performance cost without an evidence-backed correctness benefit, so
 the local guard and its package source were removed. Output-coherence checks
 remain part of the benchmark procedure; upstream dispatch has been restored
-since this package's `b10796` revision and remains in `b10872`.
+since this package's `b10796` revision and remains in `b10884`.
 
 ### Why the Qwen3.8 correctness follow-up matters
 
@@ -275,7 +295,7 @@ collapsed into the wrong pooled block. The same patch converts model-controlled
 metadata assertions into load errors and reshapes the QSA selection launch so
 the pooled-block count does not overflow `gridDim.y` near a 256K cache.
 
-b10872 inherits the complete, reviewed, and merged #27941 series, including its
+b10884 inherits the complete, reviewed, and merged #27941 series, including its
 PLE-backed state round-trip tests, stricter loader checks, finite short-sequence
 spare-block bias, full saved M-RoPE coordinate restore, and the decision to
 disable unsupported tensor splitting for Qwen4-Exp. It is no longer a package
@@ -468,8 +488,8 @@ The shared Q4_K/Q5_K branchless unpack from #26705 can affect HIP, but its
 DGX Spark L2 prefetch does not. #28475's synchronization helper is a no-op on
 HIP; it must not be advertised as fixing the separate ROCm wrong-logit reports.
 #24546's routed-MoE tile tuning was merged and then reverted, so is not active.
-The #28552 successor remains under review and does not target RDNA3.5 in its
-current selection condition.
+The #28552 successor was subsequently merged and is inherited in b10884;
+its selection condition still does not target RDNA3.5.
 
 The earlier part of the update introduces llama.cpp 0.4.0 / ggml 0.23.0,
 generated ggml version headers, Gemma4 vision and HY4 Preview support, and Web
@@ -488,7 +508,118 @@ and [five commits beyond the sibling](https://github.com/ggml-org/llama.cpp/comp
 The reviewed `b10867` recipe's SHA-256 is
 `5bc23b0577766fb9d86e5421ecd3e90591253b323cc8192374210d111842f7ab`.
 
+The September 10 comparison uses the live **b10883-1** source recipe,
+SHA-256 `3db0779f2585b63cc26e423a633ad59764ec9cb6cd2feaca3018a20e098d9e57`.
+The existing package already contains its dependency, service and build-policy
+changes; this refresh adds the version/archive metadata and deliberately uses
+the [latest selected b10884](https://github.com/ggml-org/llama.cpp/compare/b10872...b10884).
+The one commit beyond the sibling is CI-only. In addition to the changes at
+the top of this README, the selected upstream delta has video IDs, Granite3
+MoE parameter accounting, an explicit-width sampler-count API, NumPy minimum
+2.2.6 for conversion, and unrelated Vulkan/Hexagon changes. The latter do
+not enable those backends in this HIP-only package.
+
 ### Safety scope of the patch review
+
+#### Current b10884 validation (September 10)
+
+The current audit covers **12 remote patches, four local adaptations**, the
+recipe/source-cache changes, and the 12-commit upstream delta. Two independent
+static passes found **no malware indicators**: no concealed binary/encoded
+payload, credential collection, unsolicited runtime network/process execution,
+or persistence in the patch stack. The intentional PLE page-advice calls and
+explicit loopback regression-test subprocesses are accounted for. This is not
+a guarantee that the native code is vulnerability-free.
+
+The new #28195 change only retunes existing RDNA3.5 numeric configurations.
+#28102 changes launch selection and existing WMMA configurations, not model
+files or persistent KV format. Existing eligibility/shape/padding checks remain;
+F16 scratch conversion is already shared by the old and new routes. Different
+transient fixup buffers and floating-point reduction order remain a runtime
+risk to test, particularly at small MTP verification widths. The reviewed
+upstream video identity change scopes frame IDs to their originating video;
+it does not prove isolation of every other prompt/speculative cache.
+
+Source integrity and preparation checks passed:
+
+- **21/21 SHA-256 checks**, with no fuzzy hunks or rejected applications.
+  The four local patch bodies are byte-identical to b10872 after excluding
+  only their first-line version comments; retained remote files are identical.
+- **41 changed text files**, 1,219 additions and 161 removals versus pristine
+  b10884. No source deletions, binary payloads, added symlinks or executable-bit
+  changes. Syntax-only parsing passed for 112 converter/GGUF/RPC Python files,
+  without importing or executing those files.
+- An independent prepare inside an AUR-style parent Git repository matches
+  **all 3,571 source files** in the actual makepkg-prepared tree. This checks
+  the Git-discovery boundary as well as the presence of the applied changes.
+- Comparing both b10872 and b10853 source inventories finds **zero reused
+  filenames with changed hashes**; the only reused aliases are the four
+  unchanged service/config assets. Simulated checksum changes for each of the
+  **12 remote patches** automatically change the corresponding alias.
+  `.SRCINFO` was regenerated from the tested recipe. `bash -n` and
+  `git diff --check` pass; ShellCheck's remaining findings are the inherited
+  makepkg conventions and intentional option splitting, not a new injection path.
+
+Fresh validation of the exact b10884 stack:
+
+- **64/64 ordinary CTests passed** in the CPU/shared/RPC build, including
+  recurrent state, model loading, chat/Jinja and normal multi-server RPC.
+  Verified vocabulary fixtures were reused. The two malformed-input RPC
+  regression scripts were syntax-checked, **not executed**.
+- **623/623 CPU ARGSORT/TOP_K cases** and **six valid loopback-RPC scheduler
+  cases** passed, with 31/64/128 inputs and two executions per graph.
+- Valid synthetic Qwen3.5 MTP again produced **2,304 identical finite logits**
+  with graph reuse enabled/disabled, nine versus zero reuses, and distinct
+  stable prefill/output metadata addresses across three clear/new-sequence
+  rounds. This is not a Qwen3.8 acceptance/quality measurement.
+- **28/28 targeted Flash Attention CPU-reference cases** passed: D256,
+  24 query/two KV heads, batches 1/2/4/5/6/7/8, KV lengths 512/4096, masked
+  strided F16/Q8_0 caches. **All six new #28102 evaluation cases** also passed.
+  These exercise valid shapes against CPU reference behavior; they do **not**
+  execute the new HIP WMMA dispatch.
+- A full **Arch `CI=1` HIP package and Web UI build passed** using the retained
+  September 7 `rocm-nightly-gfx1151-bin` payload detailed below. All **49 FA
+  type pairs** are enabled. Artifact inspection found **67 ELF files and 182
+  HIP bundles, all gfx1151**, resolved dependencies, no CUDA/Vulkan linkage
+  and no unsafe filesystem entries. The sole RUNPATH is the HIP module's
+  absolute `/opt/rocm/lib`.
+- Disposable-container installation passed: **127 files, zero altered** in
+  `pacman -Qkk`; CLI/server report `build 10884, commit 434ddbb`; the service
+  remains disabled. Installed help reflects the new loading arguments.
+  The embedded CSS expands to 543,230 bytes and all six checked Tailwind
+  utilities are present. The independent AUR-style prepare also preserves
+  the local `.git` scanner boundary; the package contains actual utility CSS.
+
+The test artifact is **25,573,803 bytes**, SHA-256
+`e36c4337bb7de6ff26980d90aa13eb6f905c73e26dbe3826753bd3fd09c27f5c`.
+This identifies this build, not a reproducible-build guarantee. Existing
+GCC/LTO warnings and diagnostic source-path strings remain. The actual
+preprocessor defines `GGML_CUDA_USE_CUB`, not `CUB_TOP_K_AVAILABLE`: TOP_K
+still uses bitonic/hipCUB argsort and truncation, not `DeviceTopK` or
+`rocprim::topk`. A newer nightly provider recipe was checked, but its September
+10 SDK was **not** installed or tested. There is no usable GPU in either
+builder; HIP numerical correctness, graph capture, SSD-PLE throughput, large
+model memory peaks and VMM reliability still require the real Strix Halo.
+
+**Known dependency/security exceptions:** the fresh September 10
+`npm audit --package-lock-only --ignore-scripts` still reports **19 affected
+packages: nine high, nine moderate, one low, zero critical** (22 distinct
+advisory URLs). The UI manifest,
+lockfile and installed lifecycle scripts are unchanged from b10872. No forced
+dependency rewrite was applied; the existing advisory discussion below remains
+applicable. A clean patch review is not a clean dependency audit.
+
+Inherited Web UI [issue #25790](https://github.com/ggml-org/llama.cpp/issues/25790)
+also remains unresolved despite automatic closure: `?q=` links auto-submit
+prompts. API-key authentication does not stop an authenticated browser from
+following a hostile link and invoking tools for which the user has already
+granted permission. Keep tools disabled or require per-call confirmation and
+least privilege; API-only deployments can use `--no-ui`. Other retained limits
+are unauthenticated/trusted-only RPC, incomplete row-index-value and
+hostile-model arithmetic validation, PLE readahead without a second local
+range guard, and mandatory single-slot `--np 1` MTP.
+
+#### Previous b10872 validation (September 9)
 
 The September 9 audit covers b10872's ten remote patches, four local
 adaptations, package/build changes, and the relevant upstream delta. No new
@@ -730,7 +861,7 @@ The important HIP options are:
 -DGGML_HIP_GRAPHS=ON
 -DGGML_HIP_NO_VMM=ON
 -DGGML_CUDA_FORCE_MMQ=ON
--DGGML_CUDA_FA_ALL_QUANTS=ON
+-DGGML_CUDA_FA_QUANTS=all
 -DHIP_PLATFORM=amd
 -DGGML_VULKAN=OFF
 -DCMAKE_SKIP_RPATH=ON
@@ -739,6 +870,47 @@ The important HIP options are:
 `GGML_CUDA_*` names are not typos. llama.cpp's CUDA-family backend sources are
 shared by CUDA and HIP, so several HIP controls retain their historical CUDA
 names.
+
+Inherited #28079 replaces the deprecated all-quants switch with
+`GGML_CUDA_FA_QUANTS`. `all` preserves all 49 combinations of the seven
+supported K/V types: F16, BF16, Q4_0, Q4_1, Q5_0, Q5_1 and Q8_0. Upstream's
+new default builds only four pairs; this package deliberately keeps the broader
+coverage. Custom builds may override it, for example
+`LLAMA_BUILD_EXTRA_ARGS='-DGGML_CUDA_FA_QUANTS=f16-f16,q8_0-q8_0'`, to reduce
+compile time and binary size. F16/F16 is always included. Do not assume an
+omitted pair has a working fast kernel. IQ4_NL is not a supported KV type;
+its prior apparent support silently used F16. This is separate from the
+IQ4_NL **model-weight/PLE** gather support carried here.
+
+### Migrating existing presets to b10884
+
+Inherited #28334 removes the legacy mmap/mlock/direct-I/O arguments, rather
+than merely deprecating them. In an existing `models.ini`, replace
+`no-mmap = true` with `load-mode = none`. Remove any other obsolete loading
+keys and express the intended policy with `load-mode`; the corresponding
+command-line option is `--load-mode` / `-lm`.
+
+```ini
+[*]
+# Replacement for the old global no-mmap = true
+load-mode = none
+
+[qwen3.8]
+# In addition to model, mmproj, sidecar and the other model-specific settings
+lazy-mode = on
+```
+
+Keep the rest of each existing preset, and use its actual section name.
+`load-mode = none` does **not** turn off the explicitly lazy PLE mapping.
+Do not leave the removed `no-mmap` key alongside the replacement. The
+`llama-server --models-preset ...` router command itself need not change.
+The packaged service/config assets contain no removed loading arguments.
+
+### HIP tuning and runtime environment
+
+The new #28102 tuning uses the existing AMD WMMA path in the shared backend.
+It does not require enabling the separate optional
+`GGML_HIP_ROCWMMA_FATTN` build switch; that setting remains unchanged.
 
 Keep the runtime environment variable `GGML_CUDA_ENABLE_UNIFIED_MEMORY`
 completely **unset** on Strix Halo—not even `GGML_CUDA_ENABLE_UNIFIED_MEMORY=0`.
@@ -751,7 +923,7 @@ physical memory and normal HIP offload continue to work without it. Check with
 `env | grep '^GGML_CUDA_ENABLE_UNIFIED_MEMORY='`; a successful check prints
 nothing.
 
-`GGML_HIP_MMQ_MFMA` remains effectively `ON`: that is b10872's upstream
+`GGML_HIP_MMQ_MFMA` remains effectively `ON`: that is b10884's upstream
 default, inherited by both packages. An earlier sync removed the redundant explicit
 flag so the PKGBUILD stays aligned with the sibling without changing the
 configured value.
@@ -797,7 +969,7 @@ APIs as beta in the
 [ROCm 7.2 documentation](https://rocm.docs.amd.com/projects/HIP/en/docs-7.2.0/doxygen/html/group___virtual.html),
 and Strix Halo users have reported allocator instability in some ROCm/package
 combinations. It is also the default in
-[llama.cpp `b10872`](https://github.com/ggml-org/llama.cpp/blob/b10872/ggml/CMakeLists.txt).
+[llama.cpp `b10884`](https://github.com/ggml-org/llama.cpp/blob/b10884/ggml/CMakeLists.txt).
 This package spells it out so an upstream default change cannot silently alter
 the allocator.
 
@@ -808,7 +980,7 @@ policy explicitly until an A/B test on the installed nightly shows a stable,
 repeatable benefit.
 
 The current validation uses the exact `10.1.0a20260907-1` nightly payload and
-the b10872 no-VMM configuration. A successful compile/link does **not** show
+the b10884 no-VMM configuration. A successful compile/link does **not** show
 that VMM is safe or faster: the test host exposes no `/dev/kfd`, so the
 allocator cannot be exercised. Do not flip the default solely because a
 nightly build passes.
@@ -849,7 +1021,7 @@ dependency. The monolithic nightly package advertises `hip-runtime-amd`,
 names through `provides`, so it already satisfies this package's generic
 runtime and build dependencies.
 
-The b10853 validation on September 8 and b10872 validation on September 9 use
+The b10853, b10872 and b10884 validations on September 8–10 use
 the same retained nightly
 `10.1.0a20260907-1`: HIP 7.16.26354, AMD Clang 24.0.0git at compiler commit
 `064f1a2`, rocPRIM 4.6.0, and hipCUB 4.7.0. Its
@@ -864,10 +1036,10 @@ exact payload, not the provider metadata itself. The provider's declared
 Nightlies are moving snapshots; this result does not automatically cover a
 later date-stamped build.
 
-The provider's live recipe is now `10.1.0a20260908-1`. Its declared dependency
+The provider's live recipe is now `10.1.0a20260910-1`. Its declared dependency
 provides remain compatible, but that newer SDK payload was not installed or
-compiled in this review. Do not interpret the September 9 package build as
-runtime validation of the September 8 nightly.
+compiled in this review. Do not interpret the September 10 package build as
+runtime validation of the September 10 nightly.
 
 Also inspect the nightly's shell profile: its unconditional `LD_LIBRARY_PATH`
 append can leave an empty entry, which means current-directory library lookup.
@@ -1116,7 +1288,7 @@ For conversations affected by the unresolved EOG/slot-state problems, disable
 
 Why these choices:
 
-- `-lm none -lzm on` is the essential pair for the SSD-backed mode on b10872.
+- `-lm none -lzm on` is the essential pair for the SSD-backed mode on b10884.
   It is not yet proven to be the fastest HIP mode because of issue #28160.
   `none` leaves dense
   weights on their normal asynchronous upload path, while explicit lazy mode
@@ -1153,21 +1325,21 @@ Why these choices:
 
 Avoid these combinations for the SSD-backed PLE profile:
 
-- `-lm mmap+mlock` or `--mlock`: mapped model ranges become pinned and the OS
+- `-lm mmap+mlock`: mapped model ranges become pinned and the OS
   cannot reclaim the intended memory saving;
 - `-lm dio`: lazy tensor reads require mmap, and reported Strix runs showed
   direct-I/O host RSS ballooning;
 - `-lm mmap` as the default: it still works, but it also chooses mmap for dense
   weights and can lose the asynchronous-upload advantage of `none`; keep it as
   an A/B comparison only;
-- a broad CPU tensor override for the PLE: b10872 already forces lazy tensors
+- a broad CPU tensor override for the PLE: b10884 already forces lazy tensors
   into their dedicated CPU context and deliberately ignores such overrides.
 
 `-lm none -lzm off` is the controlled resident-PLE comparison. The identical
 global load mode makes the lazy-mode toggle, rather than an unrelated dense
 loader change, the main difference.
 
-`--lazy-mode on-direct` is not present in this package. On September 8,
+`--lazy-mode on-direct` is not present in this package. On September 10,
 [PR #28136](https://github.com/ggml-org/llama.cpp/pull/28136) still has the same
 reader-refactor head and no post-refactor approval. Its cold-cache evidence has
 strengthened: earlier direct gfx1151 tests found +20–32% prefill, corrected
@@ -1690,6 +1862,17 @@ the same page-cache method to every row. Keep the machine plugged in, use the
 same power mode, and either hold competing memory pressure constant or record
 it as part of the production test.
 
+For the b10884 tuning additions, repeat both target-only and depth-6 MTP runs
+against your previous package using the **same ROCm payload and model files**.
+Include your normal `-ub 2048` prefill and a small-batch control such as
+`-ub 16`, at short and long context. #28102's published large-prefill gain
+coexists with a small-batch regression, and MTP verification naturally operates
+at small widths; record prefill speed, decode speed, accepted drafts, time to
+first token and peak memory separately. Test the actual Q8_0 target cache and
+an F16 control. A CPU-reference test or successful HIP compilation cannot
+establish an on-device MTP improvement. Do not attribute all before/after
+differences to a single patch: b10884 also updates the upstream baseline.
+
 For a fast developer A/B of #28040's context-scaling behavior, the roughly
 324 MB random-weight [`Lynxpda/micro-qwen4exp`](https://huggingface.co/Lynxpda/micro-qwen4exp)
 fixture discussed after #27977 is useful: it makes long-cache profiling and
@@ -1772,7 +1955,7 @@ actual tokenized prompt length.
 
 ### llama.cpp SPEED-Bench client
 
-The prepared `b10872` source includes a dedicated speculative-decoding client at
+The prepared `b10884` source includes a dedicated speculative-decoding client at
 `tools/server/bench/speed-bench`. Create a virtual environment and install its
 three requirements:
 
@@ -1883,31 +2066,43 @@ memory growth, and a repeatable speedup over run A.
 
 ## Upstream PR watchlist
 
-These proposals and issue reports were reviewed through 2026-09-09. They are
-not additional package patches: some remain open, while closed, superseded,
-or already-covered items are retained to explain earlier decisions. Revisit
-the applicable open items on every base sync.
+These proposals and issue reports were reviewed through 2026-09-10. Most are
+not additional package patches; newly carried, inherited, closed, and
+superseded items are retained to explain earlier decisions. Revisit the
+applicable open items on every base sync. Author benchmarks and automated
+reviews are distinguished from independent hardware evidence and human approval.
 
-| PR or issue | Why it matters | Why it is not carried yet |
+| PR or issue | Why it matters | Inclusion decision / remaining limits |
 | --- | --- | --- |
 | [#27530: failed state-restore cleanup](https://github.com/ggml-org/llama.cpp/pull/27530) | Cleans K/V and recurrent state after failed restores; the five-commit head is ready for review and its author requested workflow approval September 8. | No human approval or current gfx1151 failure-path validation. Relevant robustness work to watch alongside checkpoint persistence, but not a demonstrated MTP performance improvement. |
 | [#28613: gfx1151 MMVQ thresholds](https://github.com/ggml-org/llama.cpp/pull/28613) | A small RDNA3.5 dispatch change reports Qwen3.8-27B IQ4_XS batched-decode gains of about 6%, 10%, and 20% at parallelism 4, 6, and 8, with 1,288 backend cases passing. | No human review or Flash-Next single-slot MTP A/B. Batch-width gains might help verification, but that is an inference, not a measured result; they do not justify enabling concurrent MTP. High-priority hardware test candidate. |
 | [Draft #28616: HIP SWAR byte intrinsics](https://github.com/ggml-org/llama.cpp/pull/28616) | Replaces scalar byte-lane intrinsics with packed-integer operations. The author reports gfx1151 IQ4_XS gains of roughly 2–5% and larger IQ2_S gains on batched Qwen3.8-27B workloads, with 1,288 backend cases passing. | Unreviewed hot quantized arithmetic; subtraction changes from saturating to wrapping semantics. Require lane-boundary/type coverage and an isolated gfx1151 model comparison before importing. |
 | [#27311: scheduler UMA ring buffer](https://github.com/ggml-org/llama.cpp/pull/27311) | The September 8 discussion established direct-host input reuse as the race mechanism. Review reproduced catastrophic pipeline-parallel perplexity regression; new head `dced2ff` claims to fix rotation and preserve graph replay. | No post-fix independent approval. Upstream chose the narrow #28604 host-compute disable while the general scheduler solution is reviewed. Do not re-enable direct-host compute or add this broad lifetime/synchronization change yet. |
-| [#28601 / issue #28580: video frame cache IDs](https://github.com/ggml-org/llama.cpp/pull/28601) | A narrow maintainer-authored change propagates the video hash and frame number into bitmap IDs, so different videos with otherwise identical prompts do not reuse the first video's cached content. | Worth tracking as a correctness/privacy fix, but no human review or end-to-end video cache regression was available at the snapshot. Not needed for text/still-image MTP; await merge or isolated validation rather than add an untested multimodal path. |
-| [Issue #28608: HIP vision Flash Attention](https://github.com/ggml-org/llama.cpp/issues/28608) | Large images reportedly trigger an aperture violation in the D=72 CLIP attention tile on dual gfx1100 GPUs. Disabling projector FA locally avoids it. | The report uses an older b10454 build, not current gfx1151. No reviewed fix; a generic compile-time HIP guard in shared mtmd is not a validated backend-specific remedy. Keep a large-image regression and do not globally disable text FA from this report. |
+| [Merged #28601 / issue #28580: video frame cache IDs](https://github.com/ggml-org/llama.cpp/pull/28601) | Propagates the video hash and frame number into bitmap IDs, preventing different videos with otherwise identical prompts from reusing the first video's cached content. | Merged September 9 and inherited in b10884. This narrow correctness/privacy fix needs no separate package patch; it does not establish isolation of every speculative or multimodal state path. |
+| [Issue #28608](https://github.com/ggml-org/llama.cpp/issues/28608) / [#28664: HIP vision Flash Attention](https://github.com/ggml-org/llama.cpp/pull/28664) | Large images reportedly trigger an aperture violation in the D=72 CLIP attention tile on dual gfx1100 GPUs. The new proposal disables that projector FA path; the author reports images through 2560px working. | No human approval or gfx1151 reproduction. Its `GGML_USE_HIP` guard in shared mtmd is ineffective in this package's dynamic-backend build, where backend-use macros are not exported to mtmd. Await a runtime-backend-specific or kernel fix; do not globally disable text FA. |
 | [#28619: draft state missing from disk slot cache](https://github.com/ggml-org/llama.cpp/issues/28619) / [#26004: checkpoint persistence](https://github.com/ggml-org/llama.cpp/pull/26004) | Persistent target checkpoints do not automatically serialize or restore the MTP draft context; #26004 explicitly leaves draft-state persistence outside its scope. | Do not advertise disk-cache restore as a complete MTP warm restart. Require target/draft lifecycle tests and an owned fix; no new persistence patch is carried. |
 | [Draft #28623: chunked QSA/multi-GPU experiments](https://github.com/ggml-org/llama.cpp/pull/28623) | Attempts bounded prefill scratch and changes sparse attention/selection. The author explicitly calls it incomplete and retains experimental toggles and test hacks marked for removal. | Unreviewed broad graph/kernel changes, with documented corruption when batch width exceeds selected attention width. Changing QSA top-k can also change model behavior. Not suitable for the package or its default configuration. |
 | [Closed #28610: alternative Qwen4-Exp MTP](https://github.com/ggml-org/llama.cpp/pull/28610) | Another detached NextN loader/graph proposal appeared September 8 and was withdrawn September 9; the fork branch remains available. | Original-author permission/provenance concerns and no reviewed compatibility evidence with the carried sidecar layout. Do not replace #27836 or import a withdrawn aggregate patch. |
-| [#28630: MTP-only plain KV allocation](https://github.com/ggml-org/llama.cpp/pull/28630) | Restricts draft KV allocation to NextN layers for DeepSeek2, GLM4-MoE, and Cohere2-MoE. | Useful for those models, but Qwen4-Exp already filters its draft cache. No additional Flash-Next memory saving; await upstream review/merge. |
+| [#28630: MTP-only plain KV allocation](https://github.com/ggml-org/llama.cpp/pull/28630) | The new `2b7ac4a` head responds to human review with a generic gate that excludes adapter-routing/full-block NextN cases, plus a synthetic draft-KV depth-invariance test. | Still not approved. Qwen4-Exp already filters its draft cache, so this offers no additional Flash-Next memory saving. Watch the broader model/API contract and inherit when reviewed. |
+| [Issue #28652](https://github.com/ggml-org/llama.cpp/issues/28652) / [closed #28666: broader graph-cache identity](https://github.com/ggml-org/llama.cpp/pull/28666) | Alternating ordinary MoE graph shapes can still invalidate CUDA captures. The two-commit proposal keys captures by first-node identity and extents; author short-draft tests report 173.5 to 205.3 t/s, with a longer case neutral. | The author closed it unmerged shortly after opening; no human approval or HIP result. The carried #28549 separates MTP arenas but does not promise to fix every non-MTP graph-key collision or eliminate graph construction. Do not replace it with this withdrawn broader key scheme. |
+| [Issue #28587](https://github.com/ggml-org/llama.cpp/issues/28587) / [#24669: extended multimodal batches](https://github.com/ggml-org/llama.cpp/pull/24669) | A ROCm/gfx1030 DFlash image request crashes or slows subsequent requests. A separate [owned one-line position fix](https://github.com/jesdga95/llama.cpp/commit/0c5dff206cae014a49fbe5dd901ca9b6a0414ced) reports 11 to 20–26 t/s on a single-slot ROCm DFlash test by advancing draft state by positions rather than image-token count. | A promising narrow image/speculation candidate, not yet a validated Flash-Next MTP fix. The author says MTP/Eagle also need testing, and the maintainer prefers the broader `llama_batch_ext` API. Require image-plus-follow-up MTP, text regression, and gfx1151 coverage before backporting either approach. |
+| [#28668: Qwen XML enum grammar](https://github.com/ggml-org/llama.cpp/pull/28668) / [closed #28651: root schema alternatives](https://github.com/ggml-org/llama.cpp/pull/28651) | #28668 is a narrow string-enum enforcement change with new grammar tests. #28651's root `oneOf`/`anyOf` handling was closed in favor of client-side portable schemas. | No human approval yet for #28668; keep it as a small correctness candidate. Grammar output is not a tool authorization boundary: independently validate arguments and permissions before executing actions. Do not import the rejected schema adaptation. |
+| [#28682: automatic reasoning/tool parser](https://github.com/ggml-org/llama.cpp/pull/28682) | Adds handling for reasoning/tool terminators, trailing prose, and lenient UTF-8, principally for Ling/Bailing automatic parsing. | No human approval or demonstrated Qwen3.8 regression. Qwen's handwritten parser already handles part of the reported behavior; keep this separate from Unsloth #202's output-encoding fix and await parser regressions before carrying. |
+| [Issue #28299](https://github.com/ggml-org/llama.cpp/issues/28299) / [#28646: stop repeated forbidden tools polling](https://github.com/ggml-org/llama.cpp/pull/28646) | A three-file Web UI proposal remembers a `/tools` 403 response rather than retrying on each message and potentially triggering fail2ban. The author reports 649 UI tests plus end-to-end coverage. | Useful availability work but no human approval. Track the owned fix; it neither accelerates inference nor fixes the separate hostile-link auto-submission issue below. |
+| [#22575](https://github.com/ggml-org/llama.cpp/pull/22575) / [#27958: images in tool responses](https://github.com/ggml-org/llama.cpp/pull/27958) | Competing chat/Responses API implementations preserve image-bearing tool output. #22575 has two human approvals but still needs a write-access maintainer's review; #27958 reports a real Qwen3.8 CUDA image test succeeding instead of HTTP 400. | No agreed merged design or gfx1151 MTP validation. Do not stack overlapping implementations. [Issue #28672](https://github.com/ggml-org/llama.cpp/issues/28672) separately reports dropped MCP images; neither PR establishes that all MCP tool-image paths work. |
+| [Closed issue #25790: hostile Web UI `?q=` links](https://github.com/ggml-org/llama.cpp/issues/25790) | It closed automatically as stale, not after a fix. The b10884 chat route still submits the URL's `q` value automatically. With server tools explicitly enabled and execution allowed, a hostile link can cause tool actions through the user's authenticated session. | This is an inherited application risk, not evidence of package-patch malware. Keep tools disabled unless needed; require confirmation and minimal permissions when enabling them, and do not open untrusted chat links in an authenticated tool-enabled session. An API key alone does not stop this route. |
+| [Issue #25510: malformed replayed tool arguments](https://github.com/ggml-org/llama.cpp/issues/25510) / [#26207](https://github.com/ggml-org/llama.cpp/issues/26207) / [#28674: LoRA/cache state](https://github.com/ggml-org/llama.cpp/issues/28674) | New reports retain HTTP 500 on malformed historical tool JSON and describe adapter/cache contamination or ignored zero-scale selection on older CUDA builds. | No reviewed fixes or current gfx1151 reproduction. Silently replacing invalid arguments with `{}` changes conversation meaning and is not a sound generic fix; validate client history. If adding LoRA, isolate adapter-specific caches and verify scale changes. The documented no-LoRA profile does not need a speculative adapter patch. |
+| [Issue #28656: multimodal embedding batch variance](https://github.com/ggml-org/llama.cpp/issues/28656) / [#28676: mixed Windows GPUs](https://github.com/ggml-org/llama.cpp/issues/28676) | New reports concern CUDA unified-batch image embeddings and Windows multi-GPU corruption, respectively; CPU/single-slot or Linux/single-device controls did not reproduce their corresponding failures. | No owned reviewed HIP fix and no direct match to this single-APU Arch profile. Preserve the reports as regression leads, not proof that this package needs another kernel or scheduling override. |
 | [Reopened #28462: build identity](https://github.com/ggml-org/llama.cpp/pull/28462) | The generic build-version proposal is open again. | This package already pins the tag's commit and bounds Git discovery; no additional identity patch is needed. |
-| [Unsloth #201: checkpoint buffer pool](https://github.com/unslothai/llama.cpp/pull/201) | Reuses large host checkpoint buffers and trims during idle/cache eviction. | New fork-only allocation policy with no independent human approval. Host-RAM-based retention can exceed container budgets; on a shared 128 GiB machine retained pool memory is not free. Do not combine speculatively with inherited #28302. |
-| [Unsloth #187: pipeline contexts](https://github.com/unslothai/llama.cpp/pull/187) / [#194: exact concurrency](https://github.com/unslothai/llama.cpp/pull/194) | Explores parallel contexts and byte-identical outputs under neighboring requests; new commits address cache races, recurrent grouping, and capacity checks. | Broad, actively changing scheduler/KV/backend work without independent approval. Review still exposes fit-accounting and unified-KV capacity problems. Not a demonstrated fix for #28286 on this stack; keep single-slot MTP. |
-| [Unsloth #193](https://github.com/unslothai/llama.cpp/pull/193), [#196](https://github.com/unslothai/llama.cpp/pull/196), [#199](https://github.com/unslothai/llama.cpp/pull/199): RPC transport/upload work | Attempts to reduce RPC transfer overhead; new revisions address unsafe source-side dispatch, event reuse, host-buffer hooks, and RDMA registration/accounting. | No benefit to a local one-APU model. The broad transport/ABI and ownership changes need independent review, not merely automated approvals; do not enlarge the trusted RPC surface for speculative speed gains. |
-| [Unsloth #203: RPC shutdown](https://github.com/unslothai/llama.cpp/pull/203) / [#202: invalid UTF-8 output](https://github.com/unslothai/llama.cpp/pull/202) | Narrower robustness proposals avoid teardown aborts and sanitize malformed generated UTF-8 before parsing. | Interesting follow-ups, not current HIP/MTP acceleration. Neither has human approval; validate resource cleanup and streaming/parser/serializer agreement before backporting, especially after the inherited parser split. |
+| [Unsloth #201: checkpoint buffer pool](https://github.com/unslothai/llama.cpp/pull/201) | New draft head `00ce29b` fixes a latent static-destruction use-after-free; author CPU/ASan/TSan tests now cover OOM trimming, idle release, and ownership. | No independent human approval or gfx1151 comparison. Growing checkpoints can retain several GiB up to a host-RAM-based cap, potentially exceeding container budgets. On a shared 128 GiB machine retained pool memory is not free; do not add this allocator policy speculatively. |
+| [Unsloth #187: pipeline contexts](https://github.com/unslothai/llama.cpp/pull/187) / [#194: exact concurrency](https://github.com/unslothai/llama.cpp/pull/194) | Parallel contexts aim to keep multi-node layer splits busy. The latest two-Spark rerun reports 1.68x rather than the earlier 1.77x, with machine-state caveats. #194 is superseded by the newer preemption stack below. | Broad scheduler/KV/backend work without independent approval or a local one-APU gain. It is not a demonstrated fix for #28286 on this stack; keep single-slot MTP. |
+| [Unsloth #197](https://github.com/unslothai/llama.cpp/pull/197), [#210](https://github.com/unslothai/llama.cpp/pull/210), [#211](https://github.com/unslothai/llama.cpp/pull/211): preemption / exact concurrency | Consolidates parking, asynchronous state transfers, and CUDA exact-concurrency work. Preemption is now opt-in (`--preempt-ram 0` by default); #210 is the composed implementation pin and #211 its pin-list update. | Roughly 6,559 added lines, not a narrow HIP fix. Latest September 10 review still finds an Inkling bias/page-table dispatch collision and invariant-splitting gaps. Fork pinning and automated reviews do not establish gfx1151 safety or MTP slot isolation. |
+| [Unsloth #193](https://github.com/unslothai/llama.cpp/pull/193), [#196](https://github.com/unslothai/llama.cpp/pull/196), [#199](https://github.com/unslothai/llama.cpp/pull/199): RPC transport/upload work | New revisions fix multiple staging, protocol-capability, resource-lifetime, and upload-profiler issues. | Latest #193 review still finds deferred-SET reservation ordering and live-event recycling races; #196 retains failed-peer retry/cache concerns. No one-APU benefit, no independent approval, and CPU checks do not exercise the async GPU staging path. Keep out. |
+| [Unsloth #203: RPC shutdown](https://github.com/unslothai/llama.cpp/pull/203) / [#202: invalid UTF-8 output](https://github.com/unslothai/llama.cpp/pull/202) | New author fault tests strengthen teardown and UTF-8 correctness evidence; #202 also tests valid Unicode and real CPU model output. | Neither has human approval. #203 does not fix active-serving peer loss, no-response hangs, or every client's SIGPIPE behavior. #202 deliberately leaves incomplete final UTF-8 suffixes dropped in streaming while replacing them in non-streaming. These are useful but incomplete robustness proposals, not MTP acceleration. |
+| [Unsloth #200: response-queue rewrite](https://github.com/unslothai/llama.cpp/pull/200) / [#191: event tracing](https://github.com/unslothai/llama.cpp/pull/191) | Reduces high-concurrency host stalls and adds pipeline/RPC profiling. #200 has stronger author CPU lifecycle tests; #191 has corrected several false-pass and accounting bugs. | No independent approval or single-slot HIP benefit. #191's latest review still finds missing speculative/vision accounting, timeline/flush errors, and tracing under the RPC send lock. Do not ship it as a validated low-overhead benchmark facility. |
 | [#27977: closed Qwen3.8/QSA optimization umbrella](https://github.com/ggml-org/llama.cpp/pull/27977) | Its full five-change stack reported roughly +9% at 16K and +17% at 32K on gfx1151, and about +18% on one 24K MTP+n-gram file rewrite. Its random-weight [`micro-qwen4exp`](https://huggingface.co/Lynxpda/micro-qwen4exp) fixture remains useful for cheap context-scaling A/B work. | It closed after the author split the changes. The figures are for the combined stack, not every commit, and the fixture cannot measure language quality or MTP acceptance. Review split changes individually; #28040 is now inherited. |
 | [#27897: mixed external drafter plus MTP initialization](https://github.com/ggml-org/llama.cpp/pull/27897) | Fixes the draft-algorithm list when embedded `draft-mtp` is combined with `draft`, `draft-dflash`, or `draft-dspark` and `-md` selects an external drafter; its gfx1151 reproduction is fixed. | It is an unreviewed draft and does not affect the documented pure `draft-mtp` or `draft-mtp,ngram-mod` sidecar workflow. Carry it only if this package starts supporting a mixed external-drafter configuration. |
-| [#27694: probabilistic MTP/rejection sampling](https://github.com/ggml-org/llama.cpp/pull/27694) | The four-commit `b11dae7` head is now ready for review. New RTX 5090/DGX Spark measurements across temperatures report gains over greedy drafting, and a human reviewer has begun examining distribution correctness. | Not approved: review identifies RNG cloning, preserving proposal probabilities during replay, grammar renormalization, and correlated target/draft seeds. No gfx1151/Qwen4-Exp distribution or performance validation. Promising, but keep current sampling until those questions are resolved. |
+| [#27694: probabilistic MTP/rejection sampling](https://github.com/ggml-org/llama.cpp/pull/27694) | The six-commit `541f09c` head now copies rejection RNG state when cloning, renormalizes after grammar filtering, and preserves already accepted tokens during replay. Earlier RTX 5090/DGX Spark results reported gains over greedy drafting. | Still not approved: the latest human review demonstrates that explicit seeding couples the draft and rejection RNG streams, without a subsequent fix or author resolution. No gfx1151/Qwen4-Exp distribution or performance validation. Those concrete improvements do not yet establish distribution correctness. |
 | [#27692: speculative prefill](https://github.com/ggml-org/llama.cpp/pull/27692) | Uses a small drafter to discard apparently unimportant prompt chunks before the target prefill. Strix Halo Vulkan reports claim roughly 2–2.3x lower time-to-first-token at moderate thresholds. | The pruning is intentionally lossy, the PR is 21 commits and roughly 3,300 added lines, and a new report says output stopped around 80K while the GPU kept working. Its MTP compatibility question is unanswered, prior draft-state bugs make it high risk, and there is no HIP result or approval. |
 | [#27861: GPU-resident LRU MoE expert cache](https://github.com/ggml-org/llama.cpp/pull/27861) | Reports gains when experts otherwise run on a discrete GPU's host CPU. A dual-RX6950XT Vulkan experiment reached about 19 t/s versus 8.2; a separate small-batch extension reached 21–24 with MTP. New dual-RX7900 ROCm profiling finds high hit rates can still leave substantially more synchronization and transfer calls with MTP. | The extensions are not the PR. Earlier larger-batch corruption and duplicate-slot/table-lifetime problems remain unresolved, and high hit rate alone does not establish a net gain. The cache is still an unreviewed draft and can duplicate UMA RAM; require safe indexing/lifetime and gfx1151 end-to-end evidence. |
 | [#27825: internal HIP AllReduce](https://github.com/ggml-org/llama.cpp/pull/27825) | Can improve exactly-two-GPU HIP inference when RCCL is disabled. New dual-R9700 results report +17.45% prompt processing and +8.29% generation; dual RX 7700 reports +16.9% at 16K and +13.1% at 65K. | A single gfx1151 APU cannot benefit, and the approximate sleep-based synchronization remains unapproved. Revisit only if this package later targets two local AMD GPUs; RPC across Strix nodes is a different path. |
@@ -1915,7 +2110,7 @@ the applicable open items on every base sync.
 | [#28128: closed flat QSA position scan](https://github.com/ggml-org/llama.cpp/pull/28128) | Replaces ordered-set predecessor lookup with a flat scan; a dual-A6000 130K result rose from 17.0 to 19.7 t/s. | It closed unmerged and unreviewed, with no gfx1151 isolation. It is an alternative to inherited #28040, not an established additive change; retain it only as comparative profiling evidence. |
 | [#28130: sparse QSA gather](https://github.com/ggml-org/llama.cpp/pull/28130) / [Unsloth successor #165](https://github.com/unslothai/llama.cpp/pull/165) | Sparse gather was reported +41–45% at 129.6K on dual A6000 and about +75% when stacked with adjacent work. | Upstream #28130 was closed by a contributor-limit bot rather than technical review. The successor is broad, unreviewed, complex indexing code with no HIP/gfx1151 result or accepted provenance; a new user report says it no longer applies to the latest MTP branch and has no author answer. |
 | [#28055: remove Linux `MAP_POPULATE`](https://github.com/ggml-org/llama.cpp/pull/28055) | Could reduce blocking and unnecessary page-cache pressure during ordinary mmap loads. It supersedes the narrower, now-closed [#27928](https://github.com/ggml-org/llama.cpp/pull/27928). | It changes loader policy globally and lacks controlled model-level evidence for this mixed lazy/non-mmap profile. The current base already avoids whole-model mmap in the recommended configuration. Its latest force-push is a patch-identical rebase, not new evidence. |
-| [Merged #28326 / issue #28160: UMA lazy-buffer policy](https://github.com/ggml-org/llama.cpp/pull/28326) | Approved and inherited in b10872. The final patch only disables `auto` when a selected device reports `mmap_support=false`; the proposed `on`→`all` rename was withdrawn. | Strix Halo HIP now defaults to non-lazy loading. Keep explicit `-lm none -lzm on` for the documented SSD-PLE setup. New 128 GiB Strix reports of resident Q4-target OOMs make that distinction important; this policy change does not itself reduce PLE I/O latency or solve every loading-memory peak. |
+| [Merged #28326 / issue #28160: UMA lazy-buffer policy](https://github.com/ggml-org/llama.cpp/pull/28326) | Approved and inherited in b10872. The final patch only disables `auto` when a selected device reports `mmap_support=false`; the proposed `on`→`all` rename was withdrawn. | Strix Halo HIP now defaults to non-lazy loading. Keep explicit `-lm none -lzm on` for the documented SSD-PLE setup. New reports include whole-system OOM after disabling lazy loading; discussion of OS OOM policy adds no memory bound or loader fix. This change does not reduce PLE I/O latency or solve every loading-memory peak. |
 | [#28136: direct buffered-read PLE](https://github.com/ggml-org/llama.cpp/pull/28136) | Adds `--lazy-mode on-direct` with deduplicated/sorted rows and concurrent buffered reads. Earlier gfx1151 tests found cold prefill +20–32%, warm neutral. New 24K Linux/Blackwell testing reports 2.07x cold prefill; a Windows 25K real-prompt test reports +272% cold, −4% warm, and +40% for different rows. Its MTP comparison improves cold prefill but not warm decode. | The unchanged `c6a9e5c` head remains the highest-priority SSD-PLE experiment, not a universal win or an A/B against our prefetch. Its old approval predates the reader refactor, which recreates workers per gather and reopens pathnames without identity/size checks. Buffered `pread` still uses page cache. Await post-refactor review, descriptor/TOCTOU hardening, a persistent pool, and current gfx1151 HIP testing. |
 | [Closed issue #28256: pathological small PLE reads](https://github.com/ggml-org/llama.cpp/issues/28256) | A Qwen4-Exp model served from NFS over 10 GbE with NVMe FS-Cache fell below 1 prompt token/s because PLE lookup issued tiny reads, even at a 100% cache hit rate; fully warming the GGUF into RAM removed the slowdown. | It closed September 8 as expected lazy-mode behavior, not after a filesystem fix. Caching alone does not coalesce the access pattern. Keep models on fast local NVMe, measure actual disk latency, and continue watching #28136 rather than promising that every SSD-backed filesystem performs well. |
 | [Unsloth #169: lazy mode overrides load mode](https://github.com/unslothai/llama.cpp/pull/169) | A report-only PR describes lazy mapping overriding `none`, `mlock`, or `dio` in that fork; one rotating-storage run fell from about 22 to 5 t/s. | Not a code fix. In our newer base #28326 disables implicit `auto` on HIP, but explicit `on` still overrides the global load mode. Continue setting both options deliberately and use local NVMe. |
@@ -1923,7 +2118,7 @@ the applicable open items on every base sync.
 | [#28242: surface asynchronous initialization failures](https://github.com/ggml-org/llama.cpp/pull/28242) | Synchronizes after server context initialization so a deferred backend failure is reported during startup instead of after the server announces readiness and returns errors for every request. | It is a small generic robustness change, but unreviewed and manually tested only on Metal. Await HIP failure-path coverage and upstream review. |
 | [Issue #28286: MTP cross-slot content contamination](https://github.com/ggml-org/llama.cpp/issues/28286) | Four concurrent `draft-mtp` requests on gfx1151/ROCm-TheRock 10.1 produced plausible text belonging to other slots. The reporter ruled out the client harness and reproduced with HIP graphs disabled; the same workload did not fail at `--parallel 1`. | This is a correctness and confidentiality failure in the still-draft MTP path, not merely bad output. Until a reviewed fix lands, `--np 1` and client concurrency one are mandatory whenever `draft-mtp` is active. The approved host-buffer guard does not fix this separate reproduction. |
 | [Closed issue #28266: withdrawn multi-turn-collapse report](https://github.com/ggml-org/llama.cpp/issues/28266) | The earlier report described short-output collapse during streamed HIP/gfx1100 conversations. On September 4 the author deleted its body and closed the issue without a technical explanation or identified fix. | Preserve this as historical context, not a current reproducible bug or evidence that a fix landed. Multi-turn output-length and slot-reuse tests remain useful independently of this withdrawn report. |
-| [Issue #28280: recurrent checkpoint livelock](https://github.com/ggml-org/llama.cpp/issues/28280) / [merged #28302](https://github.com/ggml-org/llama.cpp/pull/28302) | #28302 is now approved and inherited: it retains useful short-prompt checkpoints until the list fills and replaces duplicate positions. Earlier hybrid-conversation reports showed less re-prefill. | This can retain more checkpoint memory (up to the configured cap, default 32; one earlier run observed 596 MiB). No direct regression proves that the separate two-slot gfx1151 Vulkan livelock is fixed. Do not confuse checkpoint retention with MTP slot isolation. |
+| [Issue #28280: recurrent checkpoint livelock](https://github.com/ggml-org/llama.cpp/issues/28280) / [merged #28302](https://github.com/ggml-org/llama.cpp/pull/28302) | Inherited checkpoint retention reduces some repeated prefill. A September 10 dual-RTX report still re-prefills on b10884 when the shared prefix ends before any retained checkpoint; that is outside this narrow fix. | This can retain more checkpoint memory (up to the configured cap, default 32; one earlier run observed 596 MiB). No direct regression proves that the separate two-slot gfx1151 Vulkan livelock is fixed. Do not confuse checkpoint retention with MTP slot isolation. |
 | [#28058: synchronize asynchronous graph inputs](https://github.com/ggml-org/llama.cpp/pull/28058) | Directly targets cross-request KV contamination on integrated GPUs; its first commit unconditionally synchronizes before graph-input mutation. A second commit rejects impossible mid-range recurrent erases and disables `--cache-reuse` for memories that cannot perform them. Independent gfx1150/ROCm 10 testing now confirms the synchronization diagnosis on another model family. | It remains a two-fix draft with no human review. Because the failure can cross request boundaries, it is security-relevant; keep the inherited #28604 host-compute exclusion until the commits are split or reviewed and HIP/gfx1151 concurrency, chunked-prompt, recurrent, and cache-reuse tests pass. |
 | [#28061: avoid speculative replay livelock](https://github.com/ggml-org/llama.cpp/pull/28061) / [issue #28060](https://github.com/ggml-org/llama.cpp/issues/28060) | Prevents replayed accepted draft tokens from being verified a second time after checkpoint restore, avoiding a batch-shape-dependent speculative loop. | The PR was closed for missing original-author permission and never merged. The issue was later closed as completed without an owned replacement or code landing, so the technical diagnosis remains unresolved. Its reproduction is Strix Halo Vulkan, not HIP; retain multi-round HIP validation rather than treating issue closure as a fix. |
 | [#28104: closed alternative Qwen4-Exp MTP port](https://github.com/ggml-org/llama.cpp/pull/28104) | Bundled replay handling, output gathering, and an on-device checkpoint experiment; one gfx1151 Vulkan 70K report claimed about +50%. | It closed without the required original-author permission or an authorized successor. Its checkpoint work is superseded by merged #28123, while the replay-livelock diagnosis remains tracked in issue #28060. |
@@ -1932,7 +2127,7 @@ the applicable open items on every base sync.
 | [Issue #28139: prompt-cache lookup bypass](https://github.com/ggml-org/llama.cpp/issues/28139) | An empty explicit slot can yield NaN similarity and skip a usable entry. New CUDA and independent CPU/disk-cache tests also show a highly retained but much shorter slot suppressing lookup of a better prefix; one report reduced 162 seconds to 3 with a changed lookup gate. | There is no owned reviewed fix. Suggested threshold changes still miss intermediate-similarity cases and can trigger unnecessary cache saves. Require separate save/load policy and tests for empty, explicit, automatic, longer-prefix, and branching-conversation selection. |
 | [Issue #28276: shorter restored slot hides a longer RAM-cache match](https://github.com/ggml-org/llama.cpp/issues/28276) | Restoring a shorter slot can take precedence over a longer in-memory prefix and force roughly 20K tokens to be prefetched again. | There is no patch yet. It primarily affects persistent or branching conversation latency, not steady-state single-slot arithmetic; include it in future checkpoint and disk-cache regression tests. |
 | [#28175: large-grid norm kernels](https://github.com/ggml-org/llama.cpp/pull/28175) | Broadens the oversized-grid work from #28039 across NORM, RMS_NORM, L2_NORM, and fused RoPE kernels. | It is substantial shared-kernel churn tested only on an RTX 5070, with no review or HIP result. Merged #27941 already avoids the Qwen-specific launch shape; await gfx1151 testing and review before changing every backend's norm dispatch. |
-| [#26004: persist recurrent checkpoints in slot files](https://github.com/ggml-org/llama.cpp/pull/26004) | Allows hybrid-recurrent state restored from disk to resume from a checkpoint. A gfx1151 Vulkan report reduced first restore from 181.9 to 4.7 seconds. | It is an unreviewed roughly 195-line state-format change with corrupt/mismatched-file, restart, MTP-sidecar, multi-slot, multimodal, and version-compatibility surface. Closed #28074 was a narrower duplicate. This affects restore, not steady-state decode. |
+| [#26004: persist recurrent checkpoints in slot files](https://github.com/ggml-org/llama.cpp/pull/26004) | Allows hybrid-recurrent state restored from disk to resume from a checkpoint. The unchanged `06d9d0f` head now has another Vulkan report on gfx1103: about 71 to 3 seconds for 4.5K tokens, alongside the earlier gfx1151 result of 181.9 to 4.7 seconds. | No human approval. The author explicitly acknowledges that MTP-owned state remains outside the saved KV/checkpoints; require acceptance comparisons against a resident session, not just faster target restore. Corrupt/mismatched-file, restart, multi-slot, multimodal, and compatibility tests remain necessary. Closed #28074 was a narrower duplicate. |
 | [#28092: persistent disk prompt cache](https://github.com/ggml-org/llama.cpp/pull/28092) | Adds `--cache-disk` so prompt state can survive RAM pressure and server restarts. | At roughly 1,599 new lines it is a large, unreviewed parser/file-format and state-lifetime security surface. A new ROCm warning notes that handing the same `MAP_SHARED` pages to state-save can reproduce the GPU-DMA/writeback livelock seen in #26408 around 22K tokens; a maintainer's different chained-hash design is only half-working. Require format limits, corruption/fuzz, atomicity, HIP DMA safety, compatibility, recurrent, MTP, and multi-slot review. |
 | [#28075: assign view-backed output ops to a compatible backend](https://github.com/ggml-org/llama.cpp/pull/28075) | Changes common scheduler placement when an op writes through a tensor view; the author says it lets Qwen4exp and three other previously skipped architectures pass `test-llama-archs` on WebGPU. | It is now ready for review rather than draft, but still has no focused HIP regression or gfx1151 result while changing shared scheduler behavior for every backend. Await review plus HIP multi-backend/RPC and view-backed-output tests. |
 | [#28097: alternate Unsloth MTP sidecar layout](https://github.com/ggml-org/llama.cpp/pull/28097) | Loads a different head-only layout without trunk or mixer tensors and includes a speculative-model path cleanup. A new four-V100 rebased test reports coherent long output, but is not HIP validation. | It remains an unreviewed draft, conflicts with the carried `a82a58a`/drluoto layout, and has no conversion/interoperability decision. The apparent path fix is not needed by current in-tree callers: both first convert base parameters to draft parameters. |
@@ -1948,7 +2143,8 @@ the applicable open items on every base sync.
 | [#26827: serialize multi-ubatch MTP decode](https://github.com/ggml-org/llama.cpp/pull/26827) / [issue #28252](https://github.com/ggml-org/llama.cpp/issues/28252) | Synchronizing when an MTP decode reaches its second internal ubatch stopped reported host hard-locks during 100K–184K catch-up on dual-3090 tensor split; the standalone issue now has an exact reproducer, causal isolation, and 3/3 successful 184K patched runs. | The stronger evidence is still multi-GPU CUDA-only, and single-GPU 3090 did not reproduce. The one-commit PR has no review; even narrowed synchronization may slow long catch-up on one gfx1151 device. Require a HIP reproduction or evidence that the affected overlap exists on a single APU. |
 | [#28178: HIP small-copy compute kernel](https://github.com/ggml-org/llama.cpp/pull/28178) | Replaces same-type HIP D2D SDMA copies up to 16 MiB with an in-queue compute kernel; one copy-heavy gfx1103 Mamba2 workload reports about 29–195% decode gains while dense work stayed neutral. A Qwen3.5 GDN run with only two qualifying copies gained roughly 1%. | It is now ready for review but unapproved, default-active across HIP, tested on one non-Strix Windows APU, and the threshold is untuned. Broad copy tests passed, but there is no gfx1151 or Qwen4-Exp MTP run. Benchmark it separately before inclusion. |
 | [#28303: gfx1151 F32 `CONCAT` transpose](https://github.com/ggml-org/llama.cpp/pull/28303) | Adds a narrow RDNA3.5 shared-memory transpose path for a prefill `CONCAT` shape. An actual 8060S/ROCm 7.1 run reports bit-identical output, 198/198 backend cases passing, +4.1–12.2% prompt processing, and neutral decode. | The one-commit, +132/-1 PR is new and unreviewed. A known small-channel shape regressed 4.25%, showing that its current width-only gate still needs refinement. Keep it as a high-priority isolated gfx1151 A/B rather than default package code. |
-| [#28195: gfx1151 RDNA3.5 MMQ tile tuning](https://github.com/ggml-org/llama.cpp/pull/28195) | Table-only tuning of Q4_0/Q8_0/Q4_K/Q5_K/Q6_K has author-reported kernel gains. On September 8 a HIP maintainer expressed no objection to the configurations but lacked test hardware; another user volunteered testing. | Not approval or an independent result. IQ4_XS is untouched and changed configurations have `J >= 48`, while small MTP batches generally use `J=16`. Await end-to-end gfx1151 A/B, especially prompt processing, before carrying. |
+| [Carried #28195: gfx1151 RDNA3.5 MMQ tile tuning](https://github.com/ggml-org/llama.cpp/pull/28195) | Independent gfx1151 testing now reports Qwen3.6-35B Q4_K_M prompt gains of roughly 0.44–3.11%; HIP maintainer IMbackK approved the unchanged `c6381ea` head on September 9. | Now carried: 30 numeric launch configurations change from 256-thread/128-row to 128-thread/64-row tiles for selected Q4_0/Q8_0/Q4_K/Q5_K/Q6_K shapes. IQ4_XS is untouched and small MTP batches generally use unchanged `J=16` configurations. This is a measured modest prefill optimization, not a universal or Flash-Next MTP speed claim. |
+| [Carried #28102: AMD WMMA Flash Attention dispatch](https://github.com/ggml-org/llama.cpp/pull/28102) | The new four-commit `461f7c1` series was revised and approved by JohannesGaessler, with independent gfx1151 results. It now targets Strix Halo as well as other AMD hardware; the earlier gfx1201-only assessment is obsolete. | Now carried. For Flash-Next D=256/GQA=12, effective grouping 4 makes batches of five or more tokens eligible for WMMA, including MTP verification; one-token dispatch is unchanged. Q8_0 KV uses the existing F16 conversion scratch, not a persistent-cache format change. Transient fixup buffers and reduction order can change. A Qwen3.5-27B 32K prefill test gained 24% at ubatch 512 but lost 10% at ubatch 16: do not extrapolate a universal or measured MTP gain. |
 | [#28213: Qwen4-Exp sparse QSA gather](https://github.com/ggml-org/llama.cpp/pull/28213) | Gathers selected K/V rows instead of scanning a dense long-context mask. The unchanged `beed2f7` head gates activation to deep single-token decode. New gfx1151 Vulkan isolation attributes much of a larger fork's gain to graph reuse, radix selection, and pooled keys; gather alone adds about 3% at 131K, while a two-Strix RPC comparison does not improve. | It remains unreviewed and excludes MTP verification batches; direct MTP and earlier Metal comparisons found no meaningful gain. F16 pooled-key experiments on other architectures can change selected indices, so adjacent optimizations are not automatically safe to combine. Require HIP/cache/multimodal checks and do not import the batched extension from comments. |
 | [Closed #28244 / #28349: sparse QSA alternatives](https://github.com/ggml-org/llama.cpp/pull/28244) | #28244 reused the mask; #28349 tried a one-line sparse-FA hint. A new M2 Ultra comparison of #28349 reports roughly +20% prefill at 128K but −2–4% decode, illustrating that the earlier M5 gains do not generalize. | Both remain closed unmerged. #28349 closed after a maintainer requested broader device testing, and HIP has no sparse-FA consumer for its hint. Retain these measurements as design evidence without importing either patch. |
 | [#28265: keep GDN output projection two-dimensional](https://github.com/ggml-org/llama.cpp/pull/28265) | Avoids flattening a GDN projection and reports exact-output ROCm gains of about 3.5–6.2% on Qwen3.8/Qwen3.6 when using four or eight slots. | Single-slot results are neutral to slightly negative, the PR is unreviewed, and MTP is restricted to `--np 1` because of #28286. It is therefore not useful for the supported MTP configuration; revisit only after the cross-slot correctness problem and separate #25992 race family are resolved. |
@@ -1960,19 +2156,20 @@ the applicable open items on every base sync.
 | [#28351: MTP importance-matrix conversion](https://github.com/ggml-org/llama.cpp/pull/28351) | Includes a teacher-forced study of 151K held-out tokens on Qwen3.8-27B: calibrating the MTP head improves draft/trunk agreement by about 0.0014–0.0017 at Q4, while Q6_K nearly matches BF16. It adds tooling to collect head statistics and compare draft agreement. | The six-commit draft remains unreviewed; its latest commit expands the notes, not Q8_0 evidence. The study did not measure Q8_0, Qwen4-Exp, live multi-step acceptance, or gfx1151 throughput, so it does not justify replacing the recommended sidecar. Revisit if lower-bit heads become a supported recommendation. |
 | [#28003: RDNA3 MMVQ single-token fast path](https://github.com/ggml-org/llama.cpp/pull/28003) | Reports about 9.1% lower Q4_K GEMV time on gfx1100/RX 7900. | It is an unreviewed draft demonstrated on gfx1100 and Q4_K, not gfx1151 with the recommended UD-IQ4_XS mix. Architecture-specific kernel changes need direct validation. |
 | [#28013: improve CUDA/HIP `IM2COL` access](https://github.com/ggml-org/llama.cpp/pull/28013) | Reads adjacent channels in one block and could speed the vision projector; its MI100 correctness run passed 92/92 cases and several gfx908/gfx1100 shapes improved. | The reported shape results are mixed, including regressions, and there is no gfx1151 or end-to-end Qwen3.8 vision result. Keep vision correctness more important than an unisolated micro-optimization. |
-| [Reverted #24546](https://github.com/ggml-org/llama.cpp/pull/24546) / [approved successor #28552](https://github.com/ggml-org/llama.cpp/pull/28552) | The successor fixes expert-width accounting and moves selection logic to the host. JohannesGaessler approved `f01a754` after new RX 9060 XT measurements on September 8. | Its new selection condition explicitly admits RDNA3.0 and RDNA4, not RDNA3.5. Thus approval does not make it a gfx1151 optimization. No carry; revisit if the dispatch condition and an actual Strix Halo result change. The base still contains the original revert. |
+| [Reverted #24546](https://github.com/ggml-org/llama.cpp/pull/24546) / [merged successor #28552](https://github.com/ggml-org/llama.cpp/pull/28552) | The reviewed successor fixes expert-width accounting and moves selection logic to the host. It is now merged and inherited in b10884. | The selection condition still explicitly admits RDNA3.0 and RDNA4, not RDNA3.5. This does not supply a gfx1151 speedup. No duplicate patch is needed; retain the original revert as history, not as evidence that the reviewed successor remains absent. |
 | [#27962: HIP IQ2/IQ3 SWAR intrinsics](https://github.com/ggml-org/llama.cpp/pull/27962) | Replaces the fallback `__vsub4` sequence with smaller SWAR code and reports Qwen3.8 IQ3_S decode rising from 27.11 to 32.97 t/s on gfx1201. | A HIP reviewer now approves and clarifies that saturating subtraction was not actually a correctness bug; the benefit is smaller generated code. These intrinsics serve IQ2/IQ3 only, so they do not affect the recommended UD-IQ4_XS target or Q8_0 draft, and there is no gfx1151 result. Revisit if IQ3 becomes a recommendation or it merges. |
 | [Closed #27936: narrower hipCUB SUM/MEAN path](https://github.com/ggml-org/llama.cpp/pull/27936) | Reports 8.8x and 10.4x gfx1151 reduction microbench gains and is a subset of the broad hipCUB work. It closed September 7 as a duplicate of #26592. | The package already carries equivalent reduction routing through #26592, so this adds no patch. Preserve the provenance; do not wait for a now-closed duplicate to merge or apply both implementations. |
 | [#28129: batch CCCL `DeviceTopK` calls](https://github.com/ggml-org/llama.cpp/pull/28129) | Routes prompt-sized batches to row-parallel argsort instead of serial per-row `DeviceTopK`; dual-A6000 Qwen3.8 prefill improved about 20–27% at 31K–130K. | The author self-closed it without technical review shortly after automated contribution-policy warnings; the same work remains bundled in [Unsloth #165](https://github.com/unslothai/llama.cpp/pull/165). The tested rocPRIM 4.6 / hipCUB 4.7 stack has no CCCL 3.2 `DeviceTopK`, so this package already compiles the argsort-and-copy branch and the patch is currently a no-op. Revisit an owned successor when a future ROCm stack exposes `DeviceTopK`. |
 | [#27196: speculative logprobs correctness](https://github.com/ggml-org/llama.cpp/pull/27196) | Aligns speculative-server logprobs with the actually accepted target tokens. | It matters only when clients consume logprobs, remains unmerged, and has no MTP/gfx1151 validation. Track it as API correctness work rather than a performance patch. |
 | [#28131: closed `gguf-py` array-count hardening](https://github.com/ggml-org/llama.cpp/pull/28131) | Bounds declared GGUF array counts by the minimum encoded element size, turning a demonstrated 5.2 MiB malicious-file CPU parse from roughly 17 seconds into sub-millisecond rejection. | It was closed unmerged for the project's AI-submission policy, not technically disproven. It affects Python conversion/inspection tooling rather than installed native inference; retain the threat model, treat untrusted GGUFs as hostile, and await an eligible upstream implementation. |
 | [#25557: symmetric Q8_0 conversion range](https://github.com/ggml-org/llama.cpp/pull/25557) | Changes Python/CPU Q8_0 creation from an asymmetric endpoint to `-128..127`; small-model tests report lower perplexity error while KLD is nearly unchanged. It could improve a future locally regenerated Q8_0 MTP sidecar. | The GGUF format and dequantization are unchanged, and the published drluoto sidecar bytes are unaffected. The functional commit remains unapproved and has no MTP acceptance measurement; the latest PR activity is only a master merge. Watch conversion quality rather than patching inference now. |
-| [#28223: honor explicit host placement under mmap](https://github.com/ggml-org/llama.cpp/pull/28223) | Lets an explicit CUDA-host tensor override win under mmap; dual-3090 PLE prefill reportedly rose from 166 to 330–379 t/s. | It is now ready for review but still unapproved and code-identical. The CUDA/discrete test paid 96-to-488-second load time and about 89.6 GiB pinned memory. It does not fix automatic UMA placement, and an analogous HIP-host compute choice would conflict with the inherited HIP host-compute exclusion. Keep it out pending HIP safety and memory-policy review. |
+| [Closed #28223: honor explicit host placement under mmap](https://github.com/ggml-org/llama.cpp/pull/28223) | Lets an explicit CUDA-host tensor override win under mmap; dual-3090 PLE prefill reportedly rose from 166 to 330–379 t/s. The second-commit load measurement is 168 seconds versus the 96-second baseline, improving the older 488-second result. | Closed unmerged to free the author's single-PR allowance for #28671, not technically rejected or approved. The test still pins about 89.6 GiB. An analogous HIP-host compute choice would conflict with the inherited HIP host-compute exclusion; no validated single-APU memory-policy improvement justifies importing it. |
 | [Issue #28158 / rejected #28206: out-of-range speculative token](https://github.com/ggml-org/llama.cpp/issues/28158) | A gfx1150 Vulkan Qwen3.8 run emitted token ID exactly equal to vocabulary size and returned HTTP 500. | The failure is real but not yet reproduced for Qwen4-Exp on HIP. [#28206](https://github.com/ggml-org/llama.cpp/pull/28206) was a prohibited automated submission, rewrote unrelated converter infrastructure, added a 2,726-line backup file, and was closed; it is not a credible fix. Track an owned minimal patch and add token-boundary stress tests. |
 | [#28389: CUB argsort key-aliasing fix](https://github.com/ggml-org/llama.cpp/pull/28389) | Separates input/output keys to address reported CUDA/old-CUB `TOP_K` corruption. This is relevant to the package's hipCUB argsort-and-copy route. | The unchanged `5b898c2` head is now ready for review but unapproved; an independent tester again cannot reproduce on mainline and requests a matching reproduction. rocPRIM 4.6's ordinary radix sort explicitly handles aliased keys; that does not prove every segmented path safe. Require matching HIP evidence before adding full-row scratch or claiming our current path is broken. |
 | [#28383: MMQ tail-read bounds hardening](https://github.com/ggml-org/llama.cpp/pull/28383) | Clamps activation/expert-ID tail reads and adjusts padding in shared CUDA/HIP quantized matrix kernels. The author reports previously crashing cases fixed and thousands of backend cases passing on RTX 4090/5090. | The four-commit head was rebased to `bb3c275` on September 7, without new approval or HIP results. It changes hot kernels and allocation padding; require an isolated gfx1151 correctness/performance comparison before carrying the aggregate change. |
-| [Closed #28366: radix TOP_K for older CUDA](https://github.com/ggml-org/llama.cpp/pull/28366) | Proposed native radix selection for CUDA without CCCL 3.2 while explicitly preserving HIP behavior. It closed unmerged September 8 and the source repository was deleted. | No additional HIP benefit. Retain the provenance but follow the independent #28313 native HIP rewrite, not this closed branch. |
-| [#28398: HIP Q1_0 unpack optimization](https://github.com/ggml-org/llama.cpp/pull/28398) | A gfx1201 Q1_0 workload reports decode rising from 29.4 to 61.7 t/s with arithmetic sign expansion and hardware byte permutation. | Reviewers are still refining the baseline and implementation. It has no approval or gfx1151 result and does not affect the recommended IQ4_XS target or Q8_0 draft. The headline gain is specific to Q1_0 on gfx1201. |
+| [Closed #28366](https://github.com/ggml-org/llama.cpp/pull/28366) / [#28671: radix TOP_K for older CUDA](https://github.com/ggml-org/llama.cpp/pull/28671) | The new owned `ff2b436` successor adds a measured native fallback for CUDA without CCCL 3.2, after #28366 closed unmerged and its source repository was deleted. | It explicitly leaves HIP unchanged. No additional package benefit; keep this provenance while following the separate #28313 native HIP rewrite. Neither proposal makes the existing HIP `TOP_K` operation depend on ROCm exposing `DeviceTopK`. |
+| [Draft #28398: HIP Q1_0 unpack optimization](https://github.com/ggml-org/llama.cpp/pull/28398) | A gfx1201 Q1_0 workload reports decode rising from 29.4 to 61.7 t/s with arithmetic sign expansion and hardware byte permutation. | The unchanged `d576c95` head remains draft, without approval or gfx1151 results. It does not affect the recommended IQ4_XS target or Q8_0 draft. The headline gain is specific to Q1_0 on gfx1201. |
+| [#25940: RDNA4 matrix multiplication](https://github.com/ggml-org/llama.cpp/pull/25940) / [draft #27641: real-model backend shapes](https://github.com/ggml-org/llama.cpp/pull/27641) | #25940 is now ready for review at `2ba97e5`; its small series includes shared unrolling and float-cast changes as well as RDNA4 dispatch. #27641 expands realistic backend test coverage. | No independent gfx1151 validation or approval for the tuning, so its title is not enough to dismiss shared-kernel risk or establish a Strix benefit. The test-only draft is useful validation material, not a runtime performance patch. |
 | [#28432: MoE fusion allocation dependencies](https://github.com/ggml-org/llama.cpp/pull/28432) | Adds lifetime dependencies so the shared CUDA/HIP top-k MoE fusion can match more graphs. | It is new and unreviewed, may increase compute-buffer allocation, and has no posted correctness or performance results. Require gfx1151 tests before changing fusion/lifetime behavior. The similarly named fusion is distinct from the generic QSA `TOP_K` operation. |
 | [Merged #28390: single-device draft Meta wrapper](https://github.com/ggml-org/llama.cpp/pull/28390) | Avoids an unnecessary Meta backend for a single-device drafter inheriting target tensor splitting; unspecified draft devices follow the target device selection. | Approved and inherited in b10872. No extra patch or profile change is needed for one Strix Halo GPU. |
 | [#28391: n-gram speculation enabled by default](https://github.com/ggml-org/llama.cpp/pull/28391) | Makes `ngram-mod` a default and changes `--spec-type` to add algorithms instead of replacing the list. | Maintainers raise hybrid rollback costs and cases where MTP alone wins. It would silently add n-gram work to documented pure `draft-mtp` commands. Keep explicit algorithm selection while the unreviewed draft is discussed. |
@@ -1998,10 +2195,10 @@ the applicable open items on every base sync.
 | [#28569: restore Qwen4-Exp tensor splitting](https://github.com/ggml-org/llama.cpp/pull/28569) | Expands the hyper-connection view before CPU PLE gather. New dual-RX 9060 XT and MI50 HIP results join the earlier two-Strix Vulkan/RPC test. | Still no human approval or isolated MTP regression. Auto-fit/tensor-split combinations can still OOM. The single-APU setup does not require tensor splitting, so retain upstream's restriction pending review. |
 | [#28571: cache RPC operation support](https://github.com/ggml-org/llama.cpp/pull/28571) | Replaces many short support-query connections with signature-based caching and a protocol update. A two-Strix Vulkan test reports a large load-time reduction and broad backend checks. | It changes RPC protocol, capability assumptions, and cache lifetime without human approval or HIP/MTP validation. Do not infer that faster loading makes RPC authenticated or fault tolerant. |
 | [#26724: return errors after RPC peer failure](https://github.com/ggml-org/llama.cpp/pull/26724) | A new independent CPU-loopback test reports avoiding client aborts after peer loss. | The same test reports an unverified anomalous token before graph failure and a process-lifetime failed-endpoint latch. No human approval resolves those state/output semantics. Watch availability improvements, but do not import a non-aborting path that can still return wrong output. |
-| [Issue #28580: video prefix-cache identity](https://github.com/ggml-org/llama.cpp/issues/28580) | Reports different videos with identical textual instructions reusing the first video's visual prefix because decoded frames have empty media identities. Unique text and still-image controls did not reproduce. | There is no owned reviewed fix; a patch in comments is only a proposal. Avoid video prefix reuse in affected workflows and check responses against the actual clip. Text-only slot resets and host-buffer guards do not establish video-cache isolation. |
+| [Issue #28580: video prefix-cache identity](https://github.com/ggml-org/llama.cpp/issues/28580) | Reports different videos with identical textual instructions reusing the first video's visual prefix because decoded frames have empty media identities. Unique text and still-image controls did not reproduce. | Fixed by merged #28601, inherited in b10884 as recorded above. Check responses against the actual clip when upgrading; this media-identity fix does not prove general MTP state isolation. |
 | [Issue #28497: CUDA QSA tied `TOP_K`](https://github.com/ggml-org/llama.cpp/issues/28497) | Reports CCCL `DeviceTopK` choosing different boundary cells among tied QSA scores across greedy requests; CUDA stable-radix comparisons restore repeatability. | This is a CUDA/CCCL path, not the tested HIP hipCUB argsort-and-copy implementation. No reviewed fix is available. Retain tie/order checks after library changes without adopting an unreviewed score perturbation or claiming current HIP output is affected. |
 | [Issue #28513: backend sampler capability probe](https://github.com/ggml-org/llama.cpp/issues/28513) | Reports that a very wide capability probe rejects a sampler whose actual post-`TOP_K` input is small, and that the public setter can report success after backend initialization fails. | There is no owned reviewed fix. Current hipCUB already provides the wide argsort route, so do not apply a hard-coded probe-size workaround. Track API result handling and actual-shape validation. |
-| [#28532: slot-linger scheduling](https://github.com/ggml-org/llama.cpp/pull/28532) | Defers prefills while active slots approach completion; Intel Arc synthetic tests report higher aggregate throughput. | New review flags FIFO inversion, starvation and sleep/wake queue behavior; the author accepts issues but the head remains unchanged. No approval or HIP result, and it does not benefit mandatory single-slot MTP. Keep out. |
+| [#28532: slot-linger scheduling](https://github.com/ggml-org/llama.cpp/pull/28532) | The new `acd94f3` revision replaces earlier logic with per-slot deadlines and prioritizes bound tasks, allowing tiny prompts to bypass the delay. It deliberately holds released slots for quick client follow-ups; earlier Intel Arc synthetic tests reported aggregate gains. | No human approval or HIP result; FIFO fairness/starvation still needs validation. It could affect a one-slot server with several queued clients, so single-slot mode is not categorically irrelevant. It has no demonstrated benefit for the documented single-client MTP profile. |
 | [Issue #25618 / draft #28488: batch invariance](https://github.com/ggml-org/llama.cpp/pull/28488) | Adds tests exposing Vulkan output differences across batch shapes; a separate CUDA greedy comparison differs only near equivalent token choices. | This is test work, not a runtime fix or HIP validation. Use it to guide batch/prefix-cache comparisons; divergence alone does not establish corruption without checking logits and output coherence. Related CUDA cache reports #28524/#28526/#28527 have no reviewed fix or demonstrated gfx1151 impact. |
 
 The carried-patch table is the source of truth for changes that crossed the
@@ -2012,9 +2209,10 @@ remote source. The same is now true of #28040, #28030, #28159 plus #28173,
 #28271's backend-search robustness. Approved #27200 remains a checksum-pinned
 patch. b10853 also inherits #27870's F16 Flash Attention barrier correction,
 #28387's scheduler input-limit removal, and #28068's GDN normalization fix;
-their separate package patches are removed. This sync newly carries approved
-#28549's separate MTP graph-cache identities, alongside #28330's indexer-cache
-saving and #28333's fresh-sequence MTP reset. The RPC
+their separate package patches are removed. This sync newly carries reviewed
+#28195's gfx1151 MMQ configurations and #28102's AMD WMMA FA dispatch.
+#28549's separate MTP graph-cache identities remain carried, alongside
+#28330's indexer-cache saving and #28333's fresh-sequence MTP reset. The RPC
 graph-shape guard is local hardening based on #26933, with its narrower
 security scope described in the carried-patch table.
 
@@ -2032,8 +2230,12 @@ lists. b10730 adds #28023, b10731 adds #28123, b10737 adds #27941, b10751 adds
 the later inherited work enumerated above, b10778 adds #27483, and b10796 adds
 #28323. b10819 added #28270 and #28271; b10853 adds #27870, #28387, and
 #28068. Those three removed carries have matching stable patch IDs against
-their merged equivalents. #24546 was merged and then reverted, so its MMQ
-tuning is not active in the selected base.
+their merged equivalents. #24546 was merged and then reverted; b10884 now
+inherits reviewed successor #28552, whose dispatch still excludes RDNA3.5.
+The current base also inherits #28079's rejection of unsupported IQ4_NL KV,
+#28601's video-cache identity fix, and #28334's removal of deprecated load-mode
+aliases. IQ4_NL previously appeared accepted while falling back to F16; the
+documented F16/Q8_0 cache choices remain unchanged.
 
 For historical clarity, [#27928](https://github.com/ggml-org/llama.cpp/pull/27928)
 closed in favor of #28055, and [#27974](https://github.com/ggml-org/llama.cpp/pull/27974)
@@ -2041,7 +2243,33 @@ and [#27874](https://github.com/ggml-org/llama.cpp/pull/27874) are narrower or
 closed hipCUB approaches already superseded by the broader
 [#26592](https://github.com/ggml-org/llama.cpp/pull/26592).
 
-The September 9 review selected `b10872`: 19 upstream commits, 62 changed files,
+The September 10 review selected `b10884`. The updated-issue search snapshot
+contained 151 upstream entries and 16 Unsloth entries since September 9 at
+07:00 UTC, overlapping the prior review. Changed tracked discussions were read
+through paginated public timelines, review bodies, and inline threads; new
+server, vision, loader, MTP, HIP, RPC, and fork proposals were screened.
+Hidden/deleted or sign-in-only moderated comments remain inaccessible. A new
+timestamp or automated review is not itself a source change or human approval.
+
+Two new reviewed carries met the inclusion threshold: #28195 and #28102,
+both with independent gfx1151 evidence and the workload limits recorded above.
+Existing MTP, hipCUB, and PLE functional pins do not gain new algorithm changes.
+EngramHalo's September 9 `b10884` rebase changes prefetch patch context rather
+than its implementation; a new hash alone is not a new performance improvement.
+Direct-read SSD-PLE #28136 still has no post-refactor approval or current
+gfx1151 HIP A/B against this package. Rejection-sampling #27694 has meaningful
+correctness fixes, but the latest independent RNG-correlation concern remains
+unresolved. The vocabulary-trimmed FR-Spec branch remains unchanged and is not
+enabled. None of the broad new Unsloth scheduler/RPC/preemption stacks meets
+the one-APU safety/evidence threshold. New Unsloth
+[#209](https://github.com/unslothai/llama.cpp/pull/209) and
+[#212](https://github.com/unslothai/llama.cpp/pull/212) refresh Inkling/GLM5-Next
+pins and compatibility; they do not add a native Qwen3.8 improvement. The
+reported 48-tool limit in [#28522](https://github.com/ggml-org/llama.cpp/issues/28522)
+was retracted after repairing the reporter's schema extraction, so it does not
+justify another parser patch.
+
+For historical context, the September 9 review selected `b10872`: 19 upstream commits, 62 changed files,
 3,565 additions and 2,582 removals since b10853. The public updated-issue search
 snapshot contained 214 entries since September 8; new candidates through #28631
 were screened, alongside 26 recently updated Unsloth entries. Changed tracked
@@ -2050,7 +2278,7 @@ threads, with an overlapping September 8 cutoff. Forks were checked separately;
 hidden/deleted or sign-in-only moderated comments remain inaccessible. Changes
 in a PR's timestamp alone are not treated as new code or approval.
 
-No new unmerged carry met the inclusion threshold. Existing #28549, #27836,
+In that September 9 review, no new unmerged carry met the inclusion threshold. Existing #28549, #27836,
 #28333, #28330 and the functional hipCUB/PLE pins remain unchanged. The worthwhile
 checkpoint, lazy-policy, host-compute and draft-device fixes are now inherited.
 Direct-read SSD-PLE #28136 still has no post-refactor approval; the September 9
@@ -2074,8 +2302,9 @@ or native `TOP_K` rewrite met the inclusion threshold. The reviewed graph
 change still has no measured local gfx1151 gain. Other backends and models
 were screened for relevance rather than imported indiscriminately.
 
-In particular, unfinished gfx1201-only rocWMMA #28102 does not target gfx1151;
-#28181 is ppc64le-only; #28227/#28228/#28235/#28236/#28240 are disabled-backend
+The previous assessment of #28102 as unfinished gfx1201-only work is obsolete:
+its revised, approved AMD WMMA path now applies to gfx1151 and is carried with
+the limits above. #28181 is ppc64le-only; #28227/#28228/#28235/#28236/#28240 are disabled-backend
 or cleanup work; and #28238 changes only Q4_1/Q5_1 conversion, not the Q8_0 MTP
 sidecar. #28229 improves benchmark error visibility but does not change
 inference. New #28218 reports a Windows/CUDA tensor-split speculative slowdown
@@ -2093,15 +2322,16 @@ SSD-backed PLE, and is excluded. Its author now plans the separately watched
 #28498 rotation-format prerequisite. Issue
 [#28299](https://github.com/ggml-org/llama.cpp/issues/28299) concerns Web UI
 `/tools` polling receiving 403 responses and potentially triggering fail2ban;
-it has no source fix and is operational watch material, not an inference patch.
+the new owned #28646 proposal is watched above, not yet carried.
 No current llama.cpp PR adapts this route to rocPRIM 4.6's native top-k API.
 The carried hipCUB integration compiles full GPU argsort plus truncation when
 CCCL 3.2 `DeviceTopK` is unavailable, as in the tested nightly; the graph's
 `TOP_K` operation does not require that library API. #28313 proposes specialized
-llama.cpp-owned HIP kernels, while #28366 changes only the older-CUDA fallback.
+llama.cpp-owned HIP kernels, while closed #28366 and new successor #28671
+change only the older-CUDA fallback.
 
 The same scan found that #28244 and its one-line sparse-FA successor #28349
-both closed unmerged; newly approved #28334 only removes deprecated load-mode
+both closed unmerged; now-inherited #28334 only removes deprecated load-mode
 aliases that this README no longer uses; and #28345 is resolved by inherited
 #28323. New #28576 targets CDNA/MI100 Flash Attention, #28447 targets RDNA4
 GDN, #27841 tunes GCN MMQ, and #28450 is SYCL-only: none supplies a gfx1151
@@ -2150,10 +2380,21 @@ of adding unsafe range-lifetime logic.
 
 ## Known limitations and rollback
 
-- All eleven remotely sourced functional patches are snapshots. Recheck their
+- Remotely sourced functional patches are snapshots. Recheck their
   upstream PRs and fork commits when updating the llama.cpp tag; remove a
-  package patch once an equivalent fix is upstream. Revalidate all four local
+  package patch once an equivalent fix is upstream. Revalidate all local
   adaptations against the exact new base rather than allowing fuzzy patching.
+- The reviewed #28195/#28102 tuning changes are not universal speedups or
+  proof of end-to-end Flash-Next MTP performance. Test actual verification
+  shapes and both F16/Q8_0 KV after ROCm upgrades; #28102 changes arithmetic
+  reduction order and can change transient scratch allocation.
+- Inherited Web UI issue [#25790](https://github.com/ggml-org/llama.cpp/issues/25790)
+  is still present despite automatic stale closure: `?q=` links submit prompts
+  automatically. An authenticated user with tools explicitly enabled and
+  execution permitted can trigger actions by opening a hostile link. Keep
+  tools disabled unless required, require confirmation/least privilege, and
+  avoid untrusted chat links. Stored API authentication does not prevent this
+  confused-deputy path; it is separate from auditing downloaded patches.
 - `draft-mtp` is restricted to `--np 1` and client concurrency one. Issue
   #28286 directly demonstrates cross-slot content contamination on gfx1151 at
   higher parallelism, including with HIP graphs disabled. The output can look
@@ -2322,11 +2563,16 @@ dependencies/options, and increment `pkgrel`.
 - [Merged NextN layer-count correction, llama.cpp PR #28173](https://github.com/ggml-org/llama.cpp/pull/28173)
 - [Merged Gemma4 Assistant follow-up, llama.cpp PR #28183](https://github.com/ggml-org/llama.cpp/pull/28183)
 - [Open partial NextN loader redesign, llama.cpp PR #28192](https://github.com/ggml-org/llama.cpp/pull/28192)
-- [Draft graph/allocation-error handling, llama.cpp PR #28149](https://github.com/ggml-org/llama.cpp/pull/28149)
+- [Open graph/allocation-error handling, llama.cpp PR #28149](https://github.com/ggml-org/llama.cpp/pull/28149)
 - [Open HIP small-copy compute kernel, llama.cpp PR #28178](https://github.com/ggml-org/llama.cpp/pull/28178)
-- [Draft adaptive MTP depth, llama.cpp PR #27210](https://github.com/ggml-org/llama.cpp/pull/27210)
+- [Open adaptive MTP depth, llama.cpp PR #27210](https://github.com/ggml-org/llama.cpp/pull/27210)
 - [Open multi-ubatch MTP serialization, llama.cpp PR #26827](https://github.com/ggml-org/llama.cpp/pull/26827)
-- [Ready-for-review gfx1151 RDNA3.5 MMQ tuning, llama.cpp PR #28195](https://github.com/ggml-org/llama.cpp/pull/28195)
+- [Carried gfx1151 RDNA3.5 MMQ tuning, llama.cpp PR #28195](https://github.com/ggml-org/llama.cpp/pull/28195)
+- [Independent gfx1151 MMQ measurements](https://github.com/ggml-org/llama.cpp/pull/28195#issuecomment-5605569760)
+- [IMbackK's approval of the MMQ tuning](https://github.com/ggml-org/llama.cpp/pull/28195#pullrequestreview-5158353742)
+- [Carried AMD WMMA Flash Attention dispatch, llama.cpp PR #28102](https://github.com/ggml-org/llama.cpp/pull/28102)
+- [JohannesGaessler's revised WMMA approval](https://github.com/ggml-org/llama.cpp/pull/28102#pullrequestreview-5160087812)
+- [Independent gfx1151 WMMA measurements and batch-dependent regressions](https://github.com/ggml-org/llama.cpp/pull/28102#issuecomment-5609065368)
 - [Open Qwen4-Exp sparse QSA gather, llama.cpp PR #28213](https://github.com/ggml-org/llama.cpp/pull/28213)
 - [Closed narrower Qwen4-Exp sparse QSA gather, llama.cpp PR #28244](https://github.com/ggml-org/llama.cpp/pull/28244)
 - [Upstream Qwen3.8 MTP successor, llama.cpp PR #28243](https://github.com/ggml-org/llama.cpp/pull/28243)
@@ -2341,14 +2587,14 @@ dependencies/options, and increment `pkgrel`.
 - [Open CUDA/HIP `IM2COL` access rewrite, llama.cpp PR #28013](https://github.com/ggml-org/llama.cpp/pull/28013)
 - [Inherited approved F16 Flash Attention barrier fix, llama.cpp PR #27870](https://github.com/ggml-org/llama.cpp/pull/27870)
 - [Reverted routed-MoE MMQ width selection, llama.cpp PR #24546](https://github.com/ggml-org/llama.cpp/pull/24546)
-- [Revised routed-MoE MMQ width selection, llama.cpp PR #28552](https://github.com/ggml-org/llama.cpp/pull/28552)
+- [Inherited routed-MoE MMQ width selection, llama.cpp PR #28552](https://github.com/ggml-org/llama.cpp/pull/28552)
 - [Open HIP IQ2/IQ3 SWAR intrinsics, llama.cpp PR #27962](https://github.com/ggml-org/llama.cpp/pull/27962)
 - [Closed duplicate hipCUB reductions, llama.cpp PR #27936](https://github.com/ggml-org/llama.cpp/pull/27936)
 - [Closed batched `DeviceTopK` dispatch, llama.cpp PR #28129](https://github.com/ggml-org/llama.cpp/pull/28129)
 - [Open speculative-logprobs correctness, llama.cpp PR #27196](https://github.com/ggml-org/llama.cpp/pull/27196)
 - [Closed `gguf-py` array-count hardening, llama.cpp PR #28131](https://github.com/ggml-org/llama.cpp/pull/28131)
 - [Open symmetric Q8_0 conversion range, llama.cpp PR #25557](https://github.com/ggml-org/llama.cpp/pull/25557)
-- [Open explicit host placement under mmap, llama.cpp PR #28223](https://github.com/ggml-org/llama.cpp/pull/28223)
+- [Closed explicit host placement under mmap, llama.cpp PR #28223](https://github.com/ggml-org/llama.cpp/pull/28223)
 - [Open mmproj fit-margin sleep/resume fix, llama.cpp PR #28233](https://github.com/ggml-org/llama.cpp/pull/28233)
 - [Open asynchronous initialization-error handling, llama.cpp PR #28242](https://github.com/ggml-org/llama.cpp/pull/28242)
 - [Out-of-range speculative-token report, llama.cpp issue #28158](https://github.com/ggml-org/llama.cpp/issues/28158)
@@ -2365,20 +2611,26 @@ dependencies/options, and increment `pkgrel`.
 - [Unsloth narrower tensor mapping](https://github.com/unslothai/llama.cpp/pull/152)
 - [Random-weight Qwen4-Exp profiling fixture](https://huggingface.co/Lynxpda/micro-qwen4exp)
 - [Audited and rejected UMA load-time page-cache drop-behind](https://github.com/Aristo94/EngramHalo.cpp/commit/5486559c0eb59ca0f8bbacf785c5f4a1ee4294c6)
-- [llama.cpp speculative decoding documentation](https://github.com/ggml-org/llama.cpp/blob/b10872/docs/speculative.md)
-- [llama.cpp SPEED-Bench documentation](https://github.com/ggml-org/llama.cpp/blob/b10872/tools/server/bench/speed-bench/README.md)
+- [llama.cpp speculative decoding documentation](https://github.com/ggml-org/llama.cpp/blob/b10884/docs/speculative.md)
+- [llama.cpp SPEED-Bench documentation](https://github.com/ggml-org/llama.cpp/blob/b10884/tools/server/bench/speed-bench/README.md)
 - [Draft-cache total-memory warning, llama.cpp PR #28378](https://github.com/ggml-org/llama.cpp/pull/28378)
 - [NumPy 1.x conversion-corruption report, llama.cpp issue #28438](https://github.com/ggml-org/llama.cpp/issues/28438)
 - [Independent-request HIP memory growth, llama.cpp issue #28436](https://github.com/ggml-org/llama.cpp/issues/28436)
 - [Speculative sub-batch retry proposal, Unsloth PR #182](https://github.com/unslothai/llama.cpp/pull/182)
 - [Approved separate MTP graph-cache identities, llama.cpp PR #28549](https://github.com/ggml-org/llama.cpp/pull/28549#pullrequestreview-5132614946)
 - [gfx1151 wrong-logits report on official unpatched builds](https://github.com/ggml-org/llama.cpp/issues/28537)
-- [Narrower duplicate of the carried host-buffer workaround](https://github.com/ggml-org/llama.cpp/pull/28574)
+- [Narrower duplicate of the inherited host-buffer exclusion](https://github.com/ggml-org/llama.cpp/pull/28574)
 - [Strix Vulkan QSA optimization isolation](https://github.com/ggml-org/llama.cpp/pull/28213#issuecomment-5570579330)
 - [Long-context shared-sidecar MTP performance comparison](https://github.com/ggml-org/llama.cpp/pull/28243#issuecomment-5560422253)
 - [Independent wrong-output report with host expert prefetch](https://github.com/ggml-org/llama.cpp/pull/28414#issuecomment-5575161425)
 - [Strix Vulkan draft-vocabulary trimming research](https://github.com/ggml-org/llama.cpp/issues/25187#issuecomment-5553502926)
 - [Video prefix-cache identity report](https://github.com/ggml-org/llama.cpp/issues/28580)
+- [Inherited video frame-cache identity fix, llama.cpp PR #28601](https://github.com/ggml-org/llama.cpp/pull/28601)
+- [Unresolved authenticated Web UI hostile-link report](https://github.com/ggml-org/llama.cpp/issues/25790)
+- [Qwen XML string-enum grammar proposal](https://github.com/ggml-org/llama.cpp/pull/28668)
+- [HIP CLIP Flash Attention proposal](https://github.com/ggml-org/llama.cpp/pull/28664)
+- [Image/speculation draft-position report](https://github.com/ggml-org/llama.cpp/issues/28587)
+- [Current rejection-sampling seed-correlation review](https://github.com/ggml-org/llama.cpp/pull/27694#discussion_r3971098855)
 - [CUDA QSA tied top-k selection report](https://github.com/ggml-org/llama.cpp/issues/28497)
 - [Tool grammar-name collision rejection proposal](https://github.com/ggml-org/llama.cpp/pull/28483)
 - [AMD HIP VMM API documentation for ROCm 7.2](https://rocm.docs.amd.com/projects/HIP/en/docs-7.2.0/doxygen/html/group___virtual.html)
