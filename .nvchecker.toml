@@ -1,0 +1,5 @@
+[monobox-bin]
+source = "github"
+github = "JoaoOliveira889/monobox"
+use_latest_release = true
+prefix = "v"

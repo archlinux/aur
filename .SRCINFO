@@ -1,0 +1,18 @@
+pkgbase = monobox-bin
+	pkgdesc = Terminal UI for Docker and Podman containers
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/JoaoOliveira889/monobox
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = docker
+	provides = monobox
+	conflicts = monobox
+	options = !strip
+	source_x86_64 = monobox-x86_64-0.0.7.tgz::https://github.com/JoaoOliveira889/monobox/releases/download/v0.0.7/monobox_0.0.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = eec449080983bd500980ab1f9cbac1eb10e4a94f0f489d1596edce57fff37ae4
+	source_aarch64 = monobox-aarch64-0.0.7.tgz::https://github.com/JoaoOliveira889/monobox/releases/download/v0.0.7/monobox_0.0.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = 44459e56eb01a6693f6bf834c3f629a1b97c98845f951dbad733f23c4ba8b875
+
+pkgname = monobox-bin
