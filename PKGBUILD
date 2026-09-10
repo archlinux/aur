@@ -89,7 +89,7 @@ arch=(x86_64)
 url="https://github.com/MadGoatHaz/kernel-manager"
 license=(GPL-3.0-or-later)
 
-conflicts=(cachyos-kernel-manager)
+conflicts=(cachyos-kernel-manager kernel-manager-bin)
 provides=(cachyos-kernel-manager)
 
 depends=(qt6-base pacman glib2 polkit)

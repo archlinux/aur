@@ -24,6 +24,7 @@ pkgbase = kernel-manager
 	optdepends = scx-manager: sched-ext (BPF) scheduler management
 	provides = cachyos-kernel-manager
 	conflicts = cachyos-kernel-manager
+	conflicts = kernel-manager-bin
 	source = https://github.com/MadGoatHaz/kernel-manager/archive/fed562c9a04cc84efb83abaf1f75bd7eba1fe840.tar.gz
 	sha256sums = f0a3396ae91e3e029057a37b51b4aa239f830ae1af166a59b9c4f7fd9e9f1bf5
 
