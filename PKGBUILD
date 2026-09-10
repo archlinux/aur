@@ -24,8 +24,7 @@ makedepends=(
     'gcc' '7zip' 'rust' 'wget'   # wget: used by upstream scripts/download-dmg.js
     # zcall-bridge: build the Wine call engine, same as upstream ZaDark AppImage
     'mingw-w64-gcc'    # pipebridge.exe
-    'gcc-multilib'     # streamproxy.so (32-bit)
-    'lib32-glibc' 'lib32-libx11' 'lib32-libxcb' 'lib32-libxext'
+    'lib32-gcc-libs' 'lib32-glibc' 'lib32-libx11' 'lib32-libxcb' 'lib32-libxext'
 )
 
 optdepends=(
