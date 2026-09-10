@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TreeTools
-_pkgver=2.4.0
+_pkgver=2.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,7 +13,6 @@ license=('GPL-3.0-or-later')
 depends=(
   r-ape
   r-bit64
-  r-fastmatch
   r-plottools
   r-rdpack
 )
@@ -27,6 +26,7 @@ checkdepends=(
   r-vdiffr
 )
 optdepends=(
+  r-fastmatch
   r-knitr
   r-phangorn
   r-rcpp
@@ -39,8 +39,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c8fea6a22e55ea1dcf45a740625a74fd')
-b2sums=('6f53bf14ce065857594f1d89607568c633c594a99f75df0536e3a7821ba6a29d5a3ab35caf9546248a45c069d9859133714473a84c2f7b3927e8c5d766a2dc82')
+md5sums=('13f119985fcecccc304ba707662db033')
+b2sums=('5e8fdec391f7d9caf89a3a4d9c5a8f657732927e8edaf81dd629b9ab526a8335290c1703c4ad9ecbd8799159d036c0290d7df27adedd5d4f5147c2f0a59174d3')
 
 prepare() {
   # skip failing tests
