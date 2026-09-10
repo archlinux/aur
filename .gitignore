@@ -1,0 +1,8 @@
+src/
+pkg/
+*.pkg.tar.zst
+*.log
+neovide-linux-x86_64.tar.gz
+neovide.desktop
+neovide.svg
+LICENSE
