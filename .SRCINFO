@@ -1,7 +1,7 @@
 pkgbase = pypy-yaml
 	pkgdesc = YAML parser and emitter for Python
 	pkgver = 6.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yaml/pyyaml
 	install = pypy-yaml.install
 	arch = i686
