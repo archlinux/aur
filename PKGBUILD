@@ -2,7 +2,7 @@
 # Maintainer: Isaac hello@isaacvargas.dev
 
 pkgname='dotpak-bin'
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Package installation manager cli for your dotfiles'
 url='https://github.com/isaacvarg/dotpak'
@@ -12,10 +12,10 @@ provides=('dotpak')
 conflicts=('dotpak' 'dotpak-git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/isaacvarg/dotpak/releases/download/v${pkgver}/dotpak_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('7196470fdcd3e643ec0fd8b716443fa8e66af0827ac629630fc4f02f095293a6')
+sha256sums_aarch64=('ce7c2e529456a87cf1c1ace4be7e563323b47ef0874f316f5bc0bb79f2872419')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/isaacvarg/dotpak/releases/download/v${pkgver}/dotpak_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('7feff7ab54ee092445e8f5bf4e7415350ae176478a361a1083e98271438018f9')
+sha256sums_x86_64=('0c64c80827d932e36282b71258c89128d7d21acb0e964b64103db22e28d2367f')
 
 package() {
   install -Dm755 "./dotpak" "${pkgdir}/usr/bin/dotpak"
