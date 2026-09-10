@@ -1,26 +1,15 @@
 # Maintainer: Dresden Wildey <dresden196@gmail.com>
+# Transitional package: the KDE window is now fubuki-qt.
 pkgname=fubuki-ui
-_base=fubuki
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="Bootable USB writer in the spirit of Rufus: the KDE window"
-arch=('x86_64')
+pkgdesc="Bootable USB writer in the spirit of Rufus: the KDE window (transitional, install fubuki-qt)"
+arch=('any')
 url="https://github.com/dresden196/fubuki"
 license=('GPL-3.0-or-later')
-depends=('fubuki' 'qt6-base' 'qt6-declarative' 'kirigami' 'ki18n' 'qqc2-desktop-style' 'polkit' 'systemd')
-makedepends=('cmake' 'extra-cmake-modules' 'qt6-tools' 'gettext')
-source=("$_base-$pkgver.tar.gz::https://github.com/dresden196/fubuki/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('40de60269ab4b610bd45362c45da11266eaf1583445f5803036cf5e8d8766370')
-
-build() {
-    cmake -S "$srcdir/$_base-$pkgver/fubuki-ui/app" -B "$srcdir/build" \
-        -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    cmake --build "$srcdir/build" --parallel
-}
+depends=('fubuki-qt')
 
 package() {
-    cd "$srcdir/$_base-$pkgver/fubuki-ui"
-    DESTDIR="$pkgdir" cmake --install "$srcdir/build"
-    install -Dm644 io.github.dresden196.fubuki.desktop \
-        "$pkgdir/usr/share/applications/io.github.dresden196.fubuki.desktop"
+    install -d "$pkgdir/usr/share/doc/fubuki-ui"
+    echo "fubuki-ui is now fubuki-qt." > "$pkgdir/usr/share/doc/fubuki-ui/README"
 }
