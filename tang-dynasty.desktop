@@ -1,10 +1,11 @@
 [Desktop Entry]
 Name=Tang Dynasty
-GenericName=FGPA IDE
+GenericName=FPGA IDE
 Comment=Tang Dynasty IDE for Anlogic FPGAs
 Type=Application
 Icon=tang-dynasty
 Exec=tang-dynasty -gui
+TryExec=tang-dynasty
 Terminal=false
 Categories=Development;IDE;
 StartupWMClass=td
