@@ -3,8 +3,10 @@
 pkgname='openscad-thread-profile-git'
 _gitname='IoP-satellite'
 pkgver=r19.a78b36f
-pkgrel=1
+pkgrel=2
 pkgdesc='thread_profile.scad for threads in OpenSCAD. Part of the IoP-satellite repo'
+provides=("openscad-thread-profile")
+conflicts=("openscad-thread-profile")
 url='https://github.com/MisterHW/IoP-satellite'
 license=(
  'unknown'
