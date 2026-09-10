@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woocommerce-pos-bin
 _pkgname=WooCommerce-POS
-pkgver=1.10.9
+pkgver=1.10.10
 _electronversion=43
 pkgrel=1
 pkgdesc="Electron Desktop App for WooCommerce POS."
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('22abe0b4bb26d0ae6e7aa1f9a23239c37ddb51544000bdaf0760e906f6d62777'
+sha256sums=('0af9a8269152661be06c27166ae3552a857196ea2f5b0df67bb57224e9e31e1a'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -45,6 +45,7 @@ prepare() {
     rm -rf \
         "${_app_dir}/resources/app/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,linux-arm*,win32-*} \
         "${_app_dir}/resources/app/node_modules/usb/prebuilds/"{android-*,darwin-*,linux-arm*,win32-*}
+    find "${_app_dir}/resources/app/.webpack" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
