@@ -1,0 +1,20 @@
+pkgbase = cargo-pretty-build-bin
+	pkgdesc = A cargo build wrapper with a live, animated status view
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/romancitodev/cargo-pretty-build
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	provides = cargo-pretty-build
+	conflicts = cargo-pretty-build
+	options = !strip
+	source = README-0.1.1.md::https://raw.githubusercontent.com/romancitodev/cargo-pretty-build/v0.1.1/README.md
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/romancitodev/cargo-pretty-build/v0.1.1/LICENSE
+	sha256sums = dc128fe7842851066ce5c4ea9f40436beb6b78f14854da20425dadc4cd1fab42
+	sha256sums = 4d105a9bb5753da6a00aea2fd5b691af2ac9cde446981d1a2d569c44ab3c0bb9
+	source_x86_64 = cargo-pretty-build-x86_64-0.1.1.tgz::https://github.com/romancitodev/cargo-pretty-build/releases/download/v0.1.1/cargo-pretty-build-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 558584f2d5bf2a56e60e5215a633f62bbc1e5d32a385cf4aa8c2c72d0c860474
+
+pkgname = cargo-pretty-build-bin

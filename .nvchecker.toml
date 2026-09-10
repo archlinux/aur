@@ -1,0 +1,5 @@
+[cargo-pretty-build-bin]
+source = "github"
+github = "romancitodev/cargo-pretty-build"
+use_latest_release = true
+prefix = "v"
