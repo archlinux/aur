@@ -1,0 +1,16 @@
+pkgbase = tcpchat
+	pkgdesc = A simple implementation of a TCP chat application using Python's socket and threading modules.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RangS-1/TCPChat
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = tcpchat-1.0.0.tar.gz::https://github.com/RangS-1/TCPChat/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 5b7c24eacbc4cef42ec85d215f5248e15050fa6985b630e47d80fefaafd40bdf
+
+pkgname = tcpchat
