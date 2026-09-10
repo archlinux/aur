@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=note-gen-bin
 _pkgname=NoteGen
-pkgver=0.36.0
+pkgver=0.37.0
 pkgrel=1
-pkgdesc="An AI notebook that focuses on recording and writing and is cross-platform.(Prebuilt version)一款专注于记录和写作的跨端AI笔记"
+pkgdesc="A local-first Markdown app that helps you collect scattered information and organize it into clear notes with AI.一款本地优先、以 Markdown 为核心，帮助你收集碎片信息，并借助 AI 将它们整理成清晰笔记的跨平台应用。"
 arch=('x86_64')
-url="https://codexu.github.io/note-gen-help"
+url="https://notegen.top/"
 _ghurl="https://github.com/codexu/note-gen"
-license=('MIT')
+license=('GPL-3.0-or-later')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -15,22 +15,19 @@ depends=(
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgname%-bin}-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/codexu/note-gen/${pkgname%-bin}-v${pkgver}/LICENSE"
-)
-sha256sums=('30535334579a8b09fe8231af84eac80af4feac3f3576cab8f6cfb08246b868d8'
-            'b55c98ae197475e699fccf634d9fff328b4552cc7143f9e7055f5bc71e55a949')
+source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgname%-bin}-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
+sha256sums=('0f29037ab505ef0e49d6a703d74203d290565b26279cd02c6629f71ab2741298')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
         s/Categories=/Categories=Utility;/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-    install -Dm755 -d "${pkgdir}/usr/lib/${_pkgname}"
-    cp -a "${srcdir}/usr/lib/${_pkgname}/icons" "${pkgdir}/usr/lib/${_pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -a "${srcdir}/usr/lib/${_pkgname}" "${pkgdir}/usr/lib"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
@@ -38,5 +35,4 @@ package() {
 		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
 	done
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
