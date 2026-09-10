@@ -147,7 +147,8 @@ prepare() {
 
   ### Setting config
   echo "Setting config..."
-  cat ${srcdir}/../.config >./.config
+  cat ${srcdir}/${_lqxpatchver}/linux-liquorix/debian/config/kernelarch-x86/config-arch-64 >./.config
+  # cat ${srcdir}/../.config >./.config
   make olddefconfig
   diff -u ${srcdir}/${_lqxpatchver}/linux-liquorix/debian/config/kernelarch-x86/config-arch-64 .config || :
 
