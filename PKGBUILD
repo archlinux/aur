@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-full-llvm
 pkgver=9.0.1
-pkgrel=3
+pkgrel=4
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and mold'
@@ -142,7 +142,7 @@ makedepends=(
     'clang'
     'cmake'
     'glslang'
-    'mold'
+    'mold-git'
     'llvm'
     'cuda'
     'decklink-sdk'

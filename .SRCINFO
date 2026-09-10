@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full-llvm
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and mold
 	pkgver = 9.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = LicenseRef-nonfree-and-unredistributable
@@ -9,7 +9,7 @@ pkgbase = ffmpeg-full-llvm
 	makedepends = clang
 	makedepends = cmake
 	makedepends = glslang
-	makedepends = mold
+	makedepends = mold-git
 	makedepends = llvm
 	makedepends = cuda
 	makedepends = decklink-sdk
