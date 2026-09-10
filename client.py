@@ -83,8 +83,15 @@ def parse_cnem(data):
     cmd = struct.unpack(">H", data[12:14])[0]
     plen_be = struct.unpack(">H", data[14:16])[0]
     plen_le = struct.unpack("<H", data[14:16])[0]
-    # 优先选能恰好覆盖缓冲的端序；两端序都不完整则返回 None 继续缓冲
-    for plen in sorted({plen_be, plen_le}):
+    preferred = plen_le if cmd == CMD_DATA else plen_be
+    fallback = plen_be if cmd == CMD_DATA else plen_le
+    candidates = [plen for plen in (preferred, fallback)
+                  if 16 + plen <= len(data)]
+    # 服务端 DATA 帧长度字段为小端；当 payload 恰好为 1024 等值时，
+    # 大小端两种解释都会落在缓冲区内，不能简单选择较小值。
+    # 若某个候选刚好覆盖当前缓冲区，它一定比另一个端序解释更可信。
+    exact = [plen for plen in candidates if 16 + plen == len(data)]
+    for plen in exact or candidates:
         if plen <= 65535 and 16 + plen <= len(data):
             return cmd, data[16:16 + plen], data[16 + plen:]
     return None, None, data

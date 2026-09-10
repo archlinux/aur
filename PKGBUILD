@@ -1,6 +1,6 @@
 # Maintainer: tsaitang404 <tsaitang.agent@gmail.com>
 pkgname=openunivpn
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="H3C SecPath SSLVPN 开源替代客户端"
 arch=('any')
