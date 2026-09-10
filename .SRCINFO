@@ -1,7 +1,7 @@
 pkgbase = luatos-cli
 	pkgdesc = LuatOS command-line toolset (pure Rust)-brushing, logging, project management, firmware resources and builds
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/wendal/luatos-cli
 	arch = x86_64
 	license = MIT
@@ -49,6 +49,6 @@ pkgname = luatos-log-ffi
 	install = luatos-log-ffi.install
 	depends = glibc
 	depends = libgcc_s.so
-	provides = luatos-log-ffi
-	conflicts = luatos-log-ffi
+	provides = libluatos_log_ffi.so
+	conflicts = libluatos_log_ffi.so
 	replaces = 
