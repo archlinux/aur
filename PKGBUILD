@@ -1,7 +1,7 @@
 # Maintainer: awaae001 <awaae001 at qq dot com>
 
 pkgname=fcitx5-input-counter
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Fcitx 5 addon that records character input statistics'
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
     'ninja'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6a34a249edf4aa2c2b5ca21e92761c427d8fd7b6c0a6b83502fcc3ac3aa51870')
+sha256sums=('986b27e5431086caa3c29788acdc86fbdc085f55388a7e5bc4e2fe58130c4404')
 
 build() {
     cmake \
