@@ -1,6 +1,6 @@
 pkgname=fygram-bin
-pkgver=0.6.0
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Desktop music player that indexes and plays audio from your Telegram channels"
 arch=('x86_64')
 url="https://github.com/amoyrlet-tg/fygram"
@@ -10,7 +10,7 @@ conflicts=('fygram')
 depends=('webkit2gtk-4.1' 'gtk3' 'alsa-lib' 'openssl' 'hicolor-icon-theme')
 options=('!strip' '!debug')
 source=("fygram-arch-installer-${pkgver}.tar.gz::https://github.com/amoyrlet-tg/fygram/releases/download/v${pkgver}/fygram-arch-installer.tar.gz")
-sha256sums=('c484e1ca113aecf43eeef11a2bbd2805ce3225dc5a069343504ceecb7e949a37')
+sha256sums=('6b1d34cf8bde174a48e57431c38ddab3b38360d1bd0a64c1cbc909682e124270')
 
 package() {
   cd "$srcdir/fygram-arch"
