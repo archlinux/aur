@@ -86,7 +86,7 @@ Recovery is refused unless all of the following are true:
 
 Before applying files, the launcher moves the update payload and status into a timestamped state backup and copies every overwritten destination file there. Each replacement is staged in the destination directory and atomically renamed. An application failure triggers rollback and restores the pending update files. Unknown or incomplete update states fail closed and are never guessed.
 
-A strict status-only `update.tmp` produced by a normal WeGame exit is accepted only when it contains the observed `[tgp]` schema, unique expected fields, a valid GUID, and no update payload. Unknown keys, duplicate fields, malformed values, or partial states still fail closed.
+A strict status-only `update.tmp` produced by a normal WeGame exit is accepted only when it contains the observed `[tgp]` schema, unique expected fields, `CheckUpdateType=0` or `CheckUpdateType=1`, a valid GUID, and no update payload. Unknown keys, duplicate fields, malformed values, unobserved update types, or partial states still fail closed.
 
 This operation copies Tencent's own downloaded update payload without modifying Tencent binaries. It remains an unsupported compatibility workaround.
 

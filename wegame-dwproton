@@ -135,7 +135,8 @@ is_benign_status_only() {
                 ;;
             CheckUpdateType=*)
                 ((saw_section == 1 && saw_check_update_type == 0)) || return 1
-                [[ "$line" == 'CheckUpdateType=0' ]] || return 1
+                [[ "$line" == 'CheckUpdateType=0' ||
+                   "$line" == 'CheckUpdateType=1' ]] || return 1
                 saw_check_update_type=1
                 ;;
             ExitOpSource=*)

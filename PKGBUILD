@@ -2,7 +2,7 @@
 
 pkgname=wegame-dwproton
 pkgver=7.06.27.1446
-pkgrel=4
+pkgrel=5
 pkgdesc='Unofficial bundled DWProton integration for Tencent WeGame'
 arch=('x86_64')
 url='https://github.com/ParticleG/wegame-dwproton'
@@ -37,7 +37,7 @@ _dwproton_version='11.0-12'
 _dwproton_dir="dwproton-${_dwproton_version}-${CARCH}"
 
 source=(
-  "$pkgname-${pkgver}.exe::https://dldir1.qq.com/tgc/wegame/miniloader/WeGameMiniLoader.std.${pkgver}.exe"
+  "$pkgname-${pkgver}.exe::https://dldir1v6.qq.com/tgc/wegame/miniloader/WeGameMiniLoader.std.${pkgver}.exe"
   "${_dwproton_dir}.tar.xz::https://dawn.wine/dawn-winery/dwproton/releases/download/dwproton-${_dwproton_version}/${_dwproton_dir}.tar.xz"
   'wegame-dwproton'
   'wegame-nested-x11-fix'
@@ -51,7 +51,7 @@ noextract=("$pkgname-${pkgver}.exe")
 sha256sums=(
   '0948beca682116a643629c93ff787d2602b599b4ca1c586d8b2c02a7f4ef6d26'
   'SKIP'
-  '975c48d6ad9492d186b2488117a9420935eb85a12f432826b990dc1b3e00faf9'
+  'd194292aaa66c2325be0ffeaee744470e2e2195f8c08bca460162e95dda807e2'
   'd00f636074418477c84b0f48f89860e2a40ddc02aedbb80a27f773b446ee203f'
   'e5226b324e862ac81ef975dc82b75e863eb3b1733e9683296ed13916d7e3012e'
   '0efdfb60c908ef0a75356d827e087e3afd4b66881ed895951bcc3e98360eac3a'
