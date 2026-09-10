@@ -1,6 +1,6 @@
 pkgbase = fluffychat
 	pkgdesc = The cutest instant messenger in the [matrix]
-	pkgver = 2.9.4
+	pkgver = 2.9.5
 	pkgrel = 1
 	url = https://github.com/krille-chan/fluffychat
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = fluffychat
 	options = !lto
 	options = !strip
 	options = !debug
-	source = fluffychat-2.9.4.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v2.9.4.tar.gz
+	source = fluffychat-2.9.5.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v2.9.5.tar.gz
 	source = 0000-fix-wayland-gtk-csd.patch
-	sha256sums = 2164dd6728f7e65835742e6bb413e1fbe224aff205e12061e7339dcc3febd6e3
+	sha256sums = d09fb5b37ea5e6c9427167d6ca139fb0b80a91c1cc7fdf28e8347fb0e07f30a4
 	sha256sums = 04a373c2c25a9be1617ab1ccb19da48ae379ff392bb59a3938bcdec00ab82230
 
 pkgname = fluffychat
