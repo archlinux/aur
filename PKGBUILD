@@ -1,4 +1,5 @@
 # Maintainer: luytan <luytan@khora.me>
+# Maintainer: thatayush <me@ayushm.com>
 
 pkgbase=cardwire
 pkgname=cardwire
