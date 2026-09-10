@@ -3,7 +3,7 @@
 
 pkgname=claudex-bin
 _pkgname=claudex
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Query, search, and analyze Claude Code sessions from the command line (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -42,8 +42,8 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown
 # Rewritten by scripts/aur/update-pkgbuild.sh on every release.
 # 'SKIP' is a placeholder for hand-applied dev work — CI should
 # never push a PKGBUILD with SKIP in these fields.
-sha256sums_x86_64=('f430528b4a87fbc2effe7931db0cea4c97e4e298e353f76d72a265f986a9c84c')
-sha256sums_aarch64=('852a7f482203f2545ec93e650e5164140e989e4edc0fb60aecd8915c63b616e7')
+sha256sums_x86_64=('211aaf1eacf24761218f1e555f28e9f2a68fd6d32604a4caa509fc9dcdf8660b')
+sha256sums_aarch64=('d6f35f66d6e12ee2cac5714755478761b08cbbdccd3d7a9f9054ab0fd70cfca8')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
