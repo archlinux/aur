@@ -2,7 +2,7 @@ pkgbase = cjsh
 	pkgdesc = POSIX shell scripting meets Modern Shell Features
 	pkgver = 1.5.3
 	pkgrel = 1
-	url = https://github.com/CadenFinley/CJsShell
+	url = https://github.com/CadenFinley/cjsh
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
@@ -11,7 +11,7 @@ pkgbase = cjsh
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
-	source = cjsh-v1.5.3.tar.gz::https://github.com/CadenFinley/CJsShell/archive/refs/tags/v1.5.3.tar.gz
+	source = cjsh-v1.5.3.tar.gz::https://github.com/CadenFinley/cjsh/archive/refs/tags/v1.5.3.tar.gz
 	sha256sums = facdbd9326fce1af15f173e4b44f4e4188dd40808afd07c12001936dd8dd4f8d
 
 pkgname = cjsh
