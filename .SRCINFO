@@ -1,0 +1,20 @@
+pkgbase = kernel-manager-bin
+	pkgdesc = Prebuilt x86_64 binary of kernel-manager (Qt6 GUI for kernel configuration, compilation, and sched-ext (BPF) scheduler management) — installs without building
+	pkgver = 1.30.1
+	pkgrel = 1
+	url = https://github.com/MadGoatHaz/kernel-manager
+	install = kernel-manager.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = qt6-base>=6.11.2
+	depends = pacman>=7.1.0
+	depends = glib2>=2.88.3
+	depends = polkit>=127
+	provides = cachyos-kernel-manager
+	conflicts = kernel-manager
+	conflicts = kernel-manager-git
+	conflicts = cachyos-kernel-manager
+	source = https://github.com/MadGoatHaz/kernel-manager/releases/download/v1.30.1/kernel-manager-1.30.1-x86_64.tar.zst
+	sha256sums = 39ebaad131e281f631fa84d82dd23b9ea3c26a973b8825d56974c0cd9c6fa840
+
+pkgname = kernel-manager-bin
