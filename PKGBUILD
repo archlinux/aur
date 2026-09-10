@@ -3,7 +3,7 @@
 # Maintainer: Vedran Miletic <vedran AT miletic DOT net>
 
 pkgname=gromacs
-pkgver=2026.1
+pkgver=2026.3
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -17,7 +17,7 @@ makedepends=('cmake' 'ninja' 'gcc14')
 options=()
 source=(https://gitlab.com/gromacs/gromacs/-/archive/v${pkgver}/gromacs-v${pkgver}.tar.gz)
 
-sha256sums=('736fc9a51c623c5b3d427f4aa1fdc654c5f573d6c2e4b6f42bad587bb37af910')
+sha256sums=('6e205f8fc072f0112dc72f6349b729c6921e1ddb7231928c03281f950a86d42f')
 
 # Build-time GPU toggle (OFF, CUDA, SYCL); override with: env _gpu=CUDA _cuda_sm=89 makepkg
 : "${_gpu:=OFF}"
