@@ -26,7 +26,7 @@
 #######################################################################
 
 pkgname=powershell
-pkgver=7.6.5
+pkgver=7.6.6
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
@@ -71,8 +71,8 @@ checkdepends=(
 install=powershell.install
 
 source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver")
-sha512sums=('015912c995c20158ac16557a4b9e8a7acfac26f8a256076f108e1dec8f5226eef0a642dd97b7f5d31cb398aaab5f83e58015e81bfeb23743878ab8858514573a')
-b2sums=('e74fbead4c4af08182aa808f166ce9edffca064be15676dad88af7d99714fc8cbfb359d38f44073cb442e10dae102475563ad753a1adbd0939bb11105ae8487d')
+sha512sums=('128daa700a0262096ca9e588e675a5fe0d8614387b40b4cee0d1f01e205bf50aceb325a570ef03619a011b67dbeec88340fa63e0f52df3958d74e293b3436231')
+b2sums=('bc437ab7d42131e2810202cef8be0face814b00fbe37e9d434260d7f0cd58ddfcb4a7dcddd50a397ccc8adc336da1fee4d4f1954f6c1887e16d8c0a61d251d8c')
 
 prepare() {
   cd PowerShell
@@ -132,7 +132,7 @@ prepare() {
   done < <(find . -type f -name "*.csproj")
 
   export NUGET_PACKAGES="$PWD/nuget"
-  dotnet new tool-manifest
+  dotnet new tool-manifest --force
   dotnet tool install dotnet-outdated-tool
   dotnet outdated --upgrade --exclude "JsonSchema.Net"
   dotnet outdated --upgrade --version-lock major --include "JsonSchema.Net"
@@ -385,7 +385,7 @@ check() {
 
   # shellcheck disable=SC2016
   pwsh -noprofile -command '
-    $build_mods = New-Item -Type Directory -Name build-modules 
+    $build_mods = New-Item -Type Directory -Name build-modules -Force
     $pester_save_cmd = (Get-Content ./build.psm1) -match "Save-Module -Name Pester"
     $pester_args = @{
       Name = "Pester"
