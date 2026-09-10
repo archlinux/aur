@@ -1,7 +1,7 @@
 # Maintainer: hotline1337 <denuvo at tuta dot io>
 
 pkgname=nym-vpnd-beta-bin
-_dlver=2026.12.4-beta.1
+_dlver=2026.12.4-beta.2
 pkgver=2026.12.4
 pkgrel=2
 _release_tag="nym-vpn-v${_dlver}"
@@ -29,9 +29,9 @@ source_aarch64=(
   "nym-vpn-core-bin-aarch64.tar.gz::${url}/releases/download/${_release_tag}/nym-vpn-core-v${_dlver}_linux_aarch64.tar.gz"
   "nym-vpnd.service"
 )
-b2sums_x86_64=('6b3f2425ffc6d153340a25878a2d58b61bf0ae456e87bc97616d84ab4571a51eb5df1223418343e6976c702e6ac8e70cc16155742ceeb03b9dcd0a0f8923b8a0'
+b2sums_x86_64=('a7d3977d1a4ff92e8e30759d5a025a7c08bf547f099ee0154e09fa80d23c9ca829d0a580e63c553f958631403b8e352d5838484dbff37473fbb36b6ed3484bbf'
                'ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414')
-b2sums_aarch64=('497f37d67ded69324ccdea4e819db1168b037320503ec62b0f49caf9922cd7f3172555b4481ee9fa4a1c6c4d1870eacdc4952351dfedf7a272bae17ba453b720'
+b2sums_aarch64=('ee8c459a8eef0421b580f8850ca48b12f5f06fb4cb13cf0c678733364e1dc48df54e956aaf4d1ff227db413eee1e686483f9b62330f3ffaf8721eba50f5717d1'
                 'ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414')
 
 package() {
