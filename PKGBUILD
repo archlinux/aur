@@ -3,7 +3,7 @@
 _pkgname="opencv4"
 pkgname="$_pkgname-llvm"
 pkgver=4.14.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Open Source Computer Vision Library (version 4.x) — built with Clang and mold"
 url="https://github.com/opencv/opencv"
 license=('Apache-2.0')
@@ -49,7 +49,7 @@ makedepends=(
   hdf5
   java-environment
   lapacke
-  mold
+  mold-git
   llvm
   mesa
   ninja
