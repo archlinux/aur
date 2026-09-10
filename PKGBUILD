@@ -5,8 +5,9 @@
 
 pkgname=python-biopython
 _pkgname=biopython
-pkgver=1.87
-pkgrel=1
+pkgver=1.88
+_pkgver="${pkgver//./}"
+pkgrel=3
 pkgdesc="Freely available Python tools for computational molecular biology"
 arch=('x86_64')
 url="http://www.biopython.org"
@@ -21,24 +22,24 @@ optdepends=('python-mysql-connector: for BioSQL module'
             'python-matplotlib: to plot phylogenetic trees.'
             'python-rdflib: CDAO parser under Bio.Phylo module'
            )
-source=("http://www.biopython.org/DIST/${_pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/biopython/biopython/archive/refs/tags/biopython-${_pkgver}.tar.gz"
        )
-sha512sums=('aed9131f85b28d1b6fb7b1878d6afe2b701eddae092514ec43c69b623c871e16dbf5aaed464709423031169c0c13709bfbc0055e4cdc89c766e4445b959ba7a5')
+sha512sums=('325e0663be4ffaa4b1dfb74cd6372780b7c4e625dec0e69207c08564863fbeb3c7f8fa69df5f1985909c2256e8324088bb20a095740fbec286e5fe292863dbe2')
 options=(!debug)
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/biopython-biopython-${_pkgver}"
   python -m build --wheel --no-isolation
 }
 
 check() {
   local pyver=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/biopython-biopython-${_pkgver}"
   PYTHONPATH="$PWD/build/lib.linux-${CARCH}-cpython-${pyver}" python Tests/run_tests.py --offline
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/biopython-biopython-${_pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 "LICENSE.rst" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
