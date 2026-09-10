@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r83613.a782581b281
+pkgver=r84425.ab07c74cc57
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -81,7 +81,7 @@ build() {
     -S ladybird \
     -DENABLE_RUST=YES \
     -DBUILD_SHARED_LIBS=OFF \
-    -DLADYBIRD_CACHE_DIR=Build/caches \
+    -DLADYBIRD_CACHE_DIR="${srcdir}/build/Build/caches" \
     -DCMAKE_BUILD_TYPE=Release \
     -DENABLE_LTO_FOR_RELEASE=OFF \
     -DCMAKE_INSTALL_PREFIX='/opt/ladybird/usr' \
