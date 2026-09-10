@@ -1,7 +1,7 @@
 pkgbase = ustreamer
 	pkgdesc = Lightweight and fast MJPEG-HTTP streamer
-	pkgver = 6.65
-	pkgrel = 2
+	pkgver = 6.66
+	pkgrel = 1
 	url = https://github.com/pikvm/ustreamer
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ustreamer
 	depends = systemd
 	depends = python>=3.14
 	depends = python<3.15
-	source = git+https://github.com/pikvm/ustreamer#commit=v6.65
-	sha256sums = d8f8783282484a29bd8ca5af50e59b89bd7613b088b8b7bcf3b1b9b2f8f0041a
+	source = git+https://github.com/pikvm/ustreamer#commit=v6.66
+	sha256sums = 04adb6cdb2bdaefa3cfc1678ed089c5d279ba93f39f6e5666e51f2b2a6f817d9
 
 pkgname = ustreamer
