@@ -8,7 +8,7 @@
 
 _name="libbluray"
 pkgname="lib32-${_name}"
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback (32-bit)"
 url="https://www.videolan.org/developers/libbluray.html"
@@ -37,8 +37,8 @@ _pkgsrc="${_name}-${pkgver}"
 source=(
   "https://download.videolan.org/pub/videolan/${_name}/${pkgver}/${_pkgsrc}.tar.xz"
 )
-sha256sums=('76b5dc40097f28dca4ebb009c98ed51321b2927453f75cc72cf74acd09b9f449')
-sha512sums=('76d686260b7cceb9e9e0272e4b9c4a815511925240dc4b69107c0816131728912f5cf3d08d5eab769024e024377f6591d1bbd51a459039a521639d569473cec6')
+sha256sums=('f676408e91a5d321abf8b8d4dfdae36205c297dab5c54c3ec519639025f474a2')
+sha512sums=('f35d89097ad0c263ffa2102aba0068e7fe9b85afe27b14cf3c34ed6eff5876d1528aa8a62c3941b767353be2e1de4ae765f1402bd44af4544d922ffb69cea354')
 
 build() {
   export CFLAGS+=" -m32"
@@ -46,6 +46,8 @@ build() {
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   local meson_options=(
+    "${_pkgsrc}"
+    "${_pkgsrc}/build"
     --cross-file lib32
     -D enable_docs=false
     -D enable_tools=false
@@ -53,8 +55,8 @@ build() {
   )
 
   cd "${srcdir}"
-  arch-meson "${_pkgsrc}" "${_pkgsrc}/build" "${meson_options[@]}" 
-  meson compile -C "${_pkgsrc}/build"
+  arch-meson "${meson_options[@]}" 
+  meson compile -C "${meson_options[1]}"
 }
 
 # check() {
