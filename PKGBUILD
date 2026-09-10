@@ -18,7 +18,7 @@ optdepends=('kicad: for use with PCB editor')
 source=("git+${url}.git#tag=v${pkgver}"
         "freerouting.sh"
         "freerouting.desktop")
-sha512sums=('SKIP'
+sha512sums=('469bbcbf7563ecae3806ccb6432115f5a5f5728071b2a8861c62b495090fab105b92e02b7aef190322915b07535b7f0a5f60e042dff2c2356ad7882810aacc72'
             '994102e3f526fe364920602dfa8f2160eeeeb512194172bdc82f1fb45c261c2da79b8baf58008da9ab56f33d1b047dfe1ccb2f7d4113215cdfc376319b4f9320'
             '1eeacc544cd6081a9cef03424e505177972c65dc13d1379989889c0ed7419ed1b76013d48d160d0b74932aec1170ca1535b103f4266024b7f35e9656a11281f5')
 
