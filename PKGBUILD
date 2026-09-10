@@ -3,18 +3,18 @@
 
 pkgname=banana-coding-style-checker-bin
 _pkgname=banana-coding-style-checker
-pkgver=20260803045128
+pkgver=20260908140840
 pkgrel=1
 pkgdesc="Epitech banana coding style checker (binary from Ubuntu PPA)"
 arch=('x86_64')
 url="https://launchpad.net/~epitech/+archive/ubuntu/ppa"
 license=('GPL2')
-depends=('clang20')
+depends=('clang21')
 makedepends=('binutils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-sha256sums=('7cdf3a8484b499e250d45ffb242545c68310d7df5e4ce960ff1090257ea3ca43')
+sha256sums=('fcd3a0d5e477d07b3dad4031544c442bdcb866b7e5c46bca952319e9affe8c0f')
 
 source=("${_pkgname}-${pkgver}.deb::https://ppa.launchpadcontent.net/epitech/ppa/ubuntu/pool/main/b/banana-coding-style-checker/banana-coding-style-checker_${pkgver}_amd64.deb")
 
