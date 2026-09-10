@@ -4,7 +4,7 @@
 # Contributor: Daniel Plank <tyrolyean@semi-professional.net>
 
 pkgname=freerouting
-pkgver=2.2.4
+pkgver=2.4.1
 _jrever=25
 _jdkver=25
 pkgrel=1
@@ -13,17 +13,17 @@ arch=('any')
 url="https://github.com/freerouting/freerouting"
 license=('GPL-3.0-only')
 depends=("java-runtime=${_jrever}")
-makedepends=("java-environment-openjdk=${_jdkver}")
+makedepends=("java-environment-openjdk=${_jdkver}" 'git')
 optdepends=('kicad: for use with PCB editor')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("git+${url}.git#tag=v${pkgver}"
         "freerouting.sh"
         "freerouting.desktop")
-sha512sums=('40f97186ba3e45d0b2d5bafe498d0064bb09bb1efcdc50d6558c29aab8615271c52188a1e410f42deed0f3251b529205bf92dec31a778213aa44e4aeca79e9d8'
+sha512sums=('SKIP'
             '994102e3f526fe364920602dfa8f2160eeeeb512194172bdc82f1fb45c261c2da79b8baf58008da9ab56f33d1b047dfe1ccb2f7d4113215cdfc376319b4f9320'
             '1eeacc544cd6081a9cef03424e505177972c65dc13d1379989889c0ed7419ed1b76013d48d160d0b74932aec1170ca1535b103f4266024b7f35e9656a11281f5')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   # disable default telemetry
   local _file="src/main/java/app/freerouting/settings/UserProfileSettings.java"
   grep -q 'public Boolean isTelemetryAllowed = true;' "$_file"
@@ -33,14 +33,14 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
   export PATH="/usr/lib/jvm/java-${_jdkver}-openjdk/bin:$PATH"
   ./gradlew dist
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
 
   install -Dm644 build/dist/freerouting-executable.jar "${pkgdir}/usr/lib/freerouting/freerouting-executable.jar"
 
