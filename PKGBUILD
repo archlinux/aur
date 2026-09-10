@@ -1,7 +1,7 @@
 # Maintainer: Vyrnexis
 
 pkgname=nimlaunch-bin
-pkgver=0.11.4
+pkgver=0.11.5
 pkgrel=1
 pkgdesc="NimLaunch in SDL3 for native X11 and Wayland (keyboard-first launcher) - Pre-built binary"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("nimlaunch")
 conflicts=("nimlaunch" "nimlaunch-git")
 source=("nimlaunch-${pkgver}::https://github.com/Vyrnexis/NimLaunch/releases/download/v${pkgver}/nimlaunch"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/Vyrnexis/NimLaunch/v${pkgver}/LICENSE")
-sha256sums=('d5e6e40c5fc68f00c96438ae206c6027863de50c54acb43e86da1c0950bb3e26'
+sha256sums=('ce25dbe7058c471e26683d06aebc769be20596f8649002435ca3a83c681b8a0a'
             'e034e1daf773989e34bacd11dc3a7014109b08d3c5b430089e7e4fa0c1ab12d2')
 
 package() {
