@@ -3,13 +3,13 @@
 _pkgname=libklvanc
 pkgname=${_pkgname}-llvm
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for parsing/generation of Vertical Ancillary Data (VANC) — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/stoth68000/libklvanc/'
 license=('LGPL')
 depends=('glibc')
-makedepends=('clang' 'mold' 'llvm')
+makedepends=('clang' 'mold-git' 'llvm')
 provides=('libklvanc')
 conflicts=('libklvanc')
 source=("https://github.com/stoth68000/libklvanc/archive/vid.obe.${pkgver}/${_pkgname}-${pkgver}.tar.gz")

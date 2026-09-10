@@ -1,12 +1,12 @@
 pkgbase = libklvanc-llvm
 	pkgdesc = Library for parsing/generation of Vertical Ancillary Data (VANC) — built with Clang and mold
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stoth68000/libklvanc/
 	arch = x86_64
 	license = LGPL
 	makedepends = clang
-	makedepends = mold
+	makedepends = mold-git
 	makedepends = llvm
 	depends = glibc
 	provides = libklvanc
