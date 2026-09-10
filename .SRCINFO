@@ -1,0 +1,19 @@
+pkgbase = excise-bin
+	pkgdesc = Surgical terminal storage navigator
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/findyourexit/excise
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = excise
+	conflicts = excise
+	options = !strip
+	source_x86_64 = excise-x86_64-1.2.3.tgz::https://github.com/findyourexit/excise/releases/download/v1.2.3/excise-x86_64-unknown-linux-gnu-v1.2.3.tar.gz
+	sha256sums_x86_64 = 5c0344b933e43a4fba1a3b0acc4eb42af6eff9a542d59dee3b406076222e5035
+	source_aarch64 = excise-aarch64-1.2.3.tgz::https://github.com/findyourexit/excise/releases/download/v1.2.3/excise-x86_64-unknown-linux-gnu-v1.2.3.tar.gz
+	sha256sums_aarch64 = 5c0344b933e43a4fba1a3b0acc4eb42af6eff9a542d59dee3b406076222e5035
+
+pkgname = excise-bin

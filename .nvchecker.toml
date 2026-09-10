@@ -1,0 +1,5 @@
+[excise-bin]
+source = "github"
+github = "findyourexit/excise"
+use_latest_release = true
+prefix = "v"
