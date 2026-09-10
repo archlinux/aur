@@ -1,6 +1,6 @@
 pkgbase = zat-bin
 	pkgdesc = Syntax highlighting cat like utility
-	pkgver = 1.8.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/neurocyte/zat
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = zat-bin
 	license = MIT
 	provides = zat
 	conflicts = zat
-	source = LICENSE-1.8.0::https://raw.githubusercontent.com/neurocyte/zat/v1.8.0/LICENSE
-	source = README-1.8.0.md::https://raw.githubusercontent.com/neurocyte/zat/v1.8.0/README.md
+	source = LICENSE-1.11.0::https://raw.githubusercontent.com/neurocyte/zat/v1.11.0/LICENSE
+	source = README-1.11.0.md::https://raw.githubusercontent.com/neurocyte/zat/v1.11.0/README.md
 	sha256sums = a94267d8368fada2db5e129000c201ec7c8f58793c79fb26e4872c50bf28e3f8
 	sha256sums = dad288859bc8b0a3ffc4d10d4eec9a5b06e3cec5eb67a44e3f6f27584148a649
-	source_x86_64 = https://github.com/neurocyte/zat/releases/download/v1.8.0/zat-v1.8.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 42eb9bbce8aaa42f64c1354c605c98a0f257de838929143e9d3419d6006ed8f8
-	source_aarch64 = https://github.com/neurocyte/zat/releases/download/v1.8.0/zat-v1.8.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 1e4652828b74015b4b98037e680165257b902228f7f609a284ad63564bc4c733
+	source_x86_64 = https://github.com/neurocyte/zat/releases/download/v1.11.0/zat-v1.11.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 126799251aaceadc8722c25037c56ca50df74e04668f8f8ac4e3dd1ee666088d
+	source_aarch64 = https://github.com/neurocyte/zat/releases/download/v1.11.0/zat-v1.11.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = f4bf953355d30575ab0570b142f3ef6661668f96f7bee63f6bf38ec744a753ef
 
 pkgname = zat-bin
