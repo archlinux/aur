@@ -1,9 +1,17 @@
 -------------------------------------------------------
  Changelog    : Arch-mkpkg
- Tags         : 7.7.2 ➙ 8.0.2
-              : 2025-10-14 ➙ 2026-01-06
+ Tags         : 7.8.0 ➙ 8.1.0
+              : 2025-11-13 ➙ 2026-09-10
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-09-10   : 8.1.0
+              - **8.1.0**
+            
+                * Use meson / meson-python for build and package management
+                * Use python-pyconcurrent - adds new dependency (drop local copy of run_prog).
+ 2026-01-06   ⋯
+              - update Docs/Changelogs Docs/mkpkg.pdf for 8.0.2
 
  2026-01-06   : 8.0.2
               - PKGBUILD small change
@@ -23,9 +31,3 @@
                   See new PKGBUILD variable, _dep_vers_prog, in docs
  2025-10-14   ⋯
               - update Docs/Changelogs Docs/mkpkg.pdf for 7.7.2
-
- 2025-10-14   : 7.7.2
-              - Switch doc build to xelatex which handles unicode characters
-              - Drop unused dependency on pydantic from Arch PKGBUILD
- 2025-06-26   ⋯
-              - update Docs/Changelogs Docs/mkpkg.pdf for 7.7.0

@@ -10,29 +10,26 @@ pkgname='mkpkg'
 pkgdesc='Tool to rebuild packages based on dependency triggers'
 _gitname='Arch-mkpkg'
 
-pkgver="8.0.2"
+pkgver="8.1.0"
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 
 arch=(any)
 license=(GPL-2.0-or-later)
 depends=(
-    'python>=3.13' 
-    'pyalpm' 
-    'python-tomli-w' 
-    'python-pyelftools'
-)
-optdepends=(
-    'pyconcurrent'
+    'python>=3.14' 
+    pyalpm
+    python-tomli-w
+    python-pyelftools
+    python-pyconcurrent
 )
 
-# To build docs uncommont sphinx/texlive
 makedepends=(
-    'git' 
-    'uv'
-    'python-uv-build'
-    'rsync'
-    #'python-sphinx' 'texlive-latexextra'
+    git
+    meson
+    meson-python
+    rsync
+    bash
 )
 _mkpkg_depends=(
     'python>minor'
@@ -52,22 +49,12 @@ sha512sums=('SKIP')
 
 build() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
 
-    # To build Docs - uncomment these and sphinx makedepends above
-    # make latexpdf >/dev/null 2>&1
-    # make latexpdf >/dev/null
-    # pdf='mkpkg.pdf'
-    # /usr/bin/rm -f $pdf
-    # /usr/bin/cp _build/latex/$pdf .
-    # make html
-    # make html
-    # /usr/bin/rm -rf _build/doctrees _build/latex
+    ./scripts/do-build
 }
 
 package() {
     cd "${_gitname}"
+
     ./scripts/do-install ${pkgdir}
 }
-# vim:set ts=4 sts=4 sw=4 et:
