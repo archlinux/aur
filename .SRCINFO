@@ -1,6 +1,6 @@
 pkgbase = docker-native-manager-bin
 	pkgdesc = Native Docker Desktop alternative for Linux
-	pkgver = 1.15.2
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/pedrofariasx/dockernativemanager
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = docker-native-manager-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !debug
-	source = Docker.Native.Manager_1.15.2_amd64.deb::https://github.com/pedrofariasx/dockernativemanager/releases/download/v1.15.2/Docker.Native.Manager_1.15.2_amd64.deb
+	source = Docker.Native.Manager_1.16.0_amd64.deb::https://github.com/pedrofariasx/dockernativemanager/releases/download/v1.16.0/Docker.Native.Manager_1.16.0_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/pedrofariasx/dockernativemanager/main/LICENSE
-	sha256sums = 3860c0bf3d7db59b6bd03e6c6242882a55ac337bd0330a7d69291dde8fee236d
+	sha256sums = 7a4c30e45c637a12d1e2af672fcb1610a7a2965b4260fb627bc290c6466d5a8f
 	sha256sums = SKIP
 
 pkgname = docker-native-manager-bin
