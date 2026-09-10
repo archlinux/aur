@@ -1,6 +1,6 @@
 pkgbase = hexopress-git
-	pkgdesc = A client software designed specifically for editing blog articles and managing blog content that supports Hexo!.(Use system-wide electron)
-	pkgver = 1.4.0.r0.g8f43f00
+	pkgdesc = A multi-platform client that offers a user-friendly article editing interface and content management system for Hexo-based blogs. 为基于 Hexo 的博客，提供友好易用的文章编辑界面和内容管理系统的，开源博客软件。
+	pkgver = 1.4.0.r3.g59e30f3
 	pkgrel = 1
 	url = http://blog.charlestang.org/HexoPress/
 	arch = any
@@ -11,12 +11,13 @@ pkgbase = hexopress-git
 	makedepends = nvm
 	makedepends = curl
 	makedepends = jq
-	depends = electron41
+	makedepends = zip
+	depends = electron42
 	provides = hexopress
 	conflicts = hexopress
 	source = hexopress.git::git+https://github.com/charlestang/HexoPress.git
 	source = hexopress.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = hexopress-git
