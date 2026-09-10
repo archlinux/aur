@@ -1,6 +1,6 @@
 # Maintainer: Kolonia333 <uiixexexe@gmail.com>
 pkgname=javanya
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Эзотерический язык программирования, транслирующийся в Java, с компилятором-кошкодевочкой"
 arch=('any')
