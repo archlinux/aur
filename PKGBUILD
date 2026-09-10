@@ -5,13 +5,13 @@
 
 pkgname=libsdrplay
 pkgver=3.15.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Modules for the SDRplay receiver"
 arch=('aarch64' 'x86_64')
 url="http://www.sdrplay.com"
-license=('custom:EULA')
+license=('LicenseRef-sdrplay')
 depends=('libusb>=1.0')
-source=("http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-${pkgver}.run"
+source=("SDRplay_RSP_API-Linux-${pkgver}.run::https://sdrplay.com/download/hardware-api-linux/?wpdmdl=1906"
 		"sdrplay.service"
 		"66-sdrplay.rules"
 		"20-sdrplay.hwdb")
