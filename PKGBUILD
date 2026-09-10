@@ -3,40 +3,23 @@
 
 pkgname=insync-dolphin
 epoch=1
-pkgver=r29.de53666
+pkgver=3.9.8.60034
 pkgrel=1
 pkgdesc="Insync context menus and overlay icons for Dolphin - Plasma 6"
 arch=('x86_64')
-url="https://github.com/felagund/dolphin-insync-plugin-plasma-6"
-license=('GPL-2.0-only')
+url="https://www.insynchq.com/downloads"
+license=('custom:insync')
 depends=(
     'insync'
     'dolphin'
 )
-makedepends=(
-    'cmake'
-    'extra-cmake-modules'
-    'qt6-base'
-    'git'
-    'kconfig'
-    'kcoreaddons'
-    'kio'
-)
-source=("${pkgname}::git+https://github.com/felagund/dolphin-insync-plugin-plasma-6.git#branch=master")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-    cd "${pkgname}"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -B build/
-    cmake --build build/
-}
+source=("https://cdn.insynchq.com/builds/linux/${pkgver}/insync-dolphin-kde6_${pkgver}_all.deb")
+sha256sums=('093601ddc71db5f105b06af3d9ee8463abca38103486cb3b62a95809cf64c18a')
 
 package() {
-    cd "${pkgname}"
-    DESTDIR="${pkgdir}" cmake --install build/
+    cd "${srcdir}"
+    bsdtar -xf data.tar.gz -C "${pkgdir}"
+
+    mv "${pkgdir}/usr/lib/x86_64-linux-gnu/qt6" "${pkgdir}/usr/lib/"
+    rmdir "${pkgdir}/usr/lib/x86_64-linux-gnu"
 }

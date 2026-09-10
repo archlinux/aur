@@ -1,21 +1,14 @@
 pkgbase = insync-dolphin
 	pkgdesc = Insync context menus and overlay icons for Dolphin - Plasma 6
-	pkgver = r29.de53666
+	pkgver = 3.9.8.60034
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/felagund/dolphin-insync-plugin-plasma-6
+	url = https://www.insynchq.com/downloads
 	arch = x86_64
-	license = GPL-2.0-only
-	makedepends = cmake
-	makedepends = extra-cmake-modules
-	makedepends = qt6-base
-	makedepends = git
-	makedepends = kconfig
-	makedepends = kcoreaddons
-	makedepends = kio
+	license = custom:insync
 	depends = insync
 	depends = dolphin
-	source = insync-dolphin::git+https://github.com/felagund/dolphin-insync-plugin-plasma-6.git#branch=master
-	sha256sums = SKIP
+	source = https://cdn.insynchq.com/builds/linux/3.9.8.60034/insync-dolphin-kde6_3.9.8.60034_all.deb
+	sha256sums = 093601ddc71db5f105b06af3d9ee8463abca38103486cb3b62a95809cf64c18a
 
 pkgname = insync-dolphin
