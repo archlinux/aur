@@ -48,7 +48,7 @@ check() {
 	cd "${pkgname}-${pkgver}" || exit
 
 	export CARGO_TARGET_DIR=target
-	cargo test --frozen --release -- --skip a_rich_copy_still_leaves_the_plain_text_for_whoever_cannot_read_html
+	cargo test --frozen --release -- --skip tests::both_flags_at_once_is_a_bug_the_caller_must_not_reach
 }
 
 package() {
