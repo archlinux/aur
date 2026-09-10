@@ -2,9 +2,9 @@
 # Co-maintainer: stickynotememo <samk26633@gmail.com>
 
 pkgname=python-boltons
-pkgver=26.1.0
-_commit=1d525271754ed7aea7f2347ed16ddbcedb1097a3
-pkgrel=2
+pkgver=26.2.0
+_commit=4332b35a278d694f30c99881faa61cde695c7a96
+pkgrel=1
 pkgdesc="Functionality that should be in the standard library. Like builtins, but Boltons."
 url="https://github.com/mahmoud/boltons"
 license=('BSD-3-Clause')
