@@ -2,7 +2,7 @@
 # Maintainer: Rafael Silva <perigoso@riseup.net>
 
 pkgname=kicad-nightly
-pkgver=10.99.0_3760_g35ad0cda41
+pkgver=10.99.0_3779_gfa463768ee
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 options=('!strip')
 source=(
-	"$pkgname::git+https://gitlab.com/kicad/code/kicad.git"#commit=35ad0cda41
+	"$pkgname::git+https://gitlab.com/kicad/code/kicad.git"#commit=fa463768ee
 	'kicad-nightly-wrapper.sh'
 	'fix-version-string.patch'
 )
