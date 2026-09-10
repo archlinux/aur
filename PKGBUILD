@@ -2,7 +2,7 @@
 
 pkgauthor="ashuttl"
 pkgname="linecast"
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Weather, sunlight, tides, radar, the moon, and maps, in your terminal"
 
@@ -24,7 +24,7 @@ depends=('python')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c4ee7d0218101165e15567786882b4483577c6bc26e824183e90f29c9e423105')
+sha256sums=('2ac40f5f25f7ef30b6b96591756eb2986f367c41e7a42a26341fd85bc0b074bb')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit

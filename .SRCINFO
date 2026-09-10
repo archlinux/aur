@@ -1,6 +1,6 @@
 pkgbase = linecast
 	pkgdesc = Weather, sunlight, tides, radar, the moon, and maps, in your terminal
-	pkgver = 2.3.3
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/ashuttl/linecast
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = linecast
 	depends = python
 	provides = linecast
 	conflicts = python-linecast
-	source = linecast-2.3.3.tar.gz::https://github.com/ashuttl/linecast/archive/refs/tags/v2.3.3.tar.gz
-	sha256sums = c4ee7d0218101165e15567786882b4483577c6bc26e824183e90f29c9e423105
+	source = linecast-2.4.0.tar.gz::https://github.com/ashuttl/linecast/archive/refs/tags/v2.4.0.tar.gz
+	sha256sums = 2ac40f5f25f7ef30b6b96591756eb2986f367c41e7a42a26341fd85bc0b074bb
 
 pkgname = linecast
