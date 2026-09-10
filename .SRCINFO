@@ -1,6 +1,6 @@
 pkgbase = azerothcore-wotlk-git
 	pkgdesc = AzerothCore - MMORPG Server - continuous build from master branch
-	pkgver = r19445.19ca6e1128
+	pkgver = r19465.c9a5efc491
 	pkgrel = 1
 	url = http://www.azerothcore.org
 	install = azerothcore-wotlk-git.install
