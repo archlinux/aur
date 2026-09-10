@@ -1,0 +1,189 @@
+--- a/src/Composer/Recipients.cpp	2026-09-10 16:54:13.805689574 +0200
++++ b/src/Composer/Recipients.cpp	2026-09-10 16:56:55.872154397 +0200
+@@ -361,7 +361,9 @@
+     // First of all, look for a full match of the sender among the addresses
+     for (int i = 0; i < identities.size(); ++i) {
+         auto it = std::find_if(addresses.constBegin(), addresses.constEnd(),
+-                               std::bind2nd(Imap::Message::MailAddressesEqualByMail(), identities[i]));
++                               [&identities, i](const Imap::Message::MailAddress &addr) {
++                                   return Imap::Message::MailAddressesEqualByMail()(addr, identities[i]);
++                               });
+         if (it != addresses.constEnd()) {
+             // Found an exact match of one of our identities in the recipients -> return that
+             row = i;
+@@ -372,7 +374,9 @@
+     // Then look for the matching domain
+     for (int i = 0; i < identities.size(); ++i) {
+         auto it = std::find_if(addresses.constBegin(), addresses.constEnd(),
+-                               std::bind2nd(Imap::Message::MailAddressesEqualByDomain(), identities[i]));
++                               [&identities, i](const Imap::Message::MailAddress &addr) {
++                                   return Imap::Message::MailAddressesEqualByDomain()(addr, identities[i]);
++                               });
+         if (it != addresses.constEnd()) {
+             // Found a match because the domain matches -> return that
+             row = i;
+@@ -383,7 +387,9 @@
+     // Check for situations where the identity's domain is the suffix of some address
+     for (int i = 0; i < identities.size(); ++i) {
+         auto it = std::find_if(addresses.constBegin(), addresses.constEnd(),
+-                               std::bind2nd(Imap::Message::MailAddressesEqualByDomainSuffix(), identities[i]));
++                               [&identities, i](const Imap::Message::MailAddress &addr) {
++                                   return Imap::Message::MailAddressesEqualByDomainSuffix()(addr, identities[i]);
++                               });
+         if (it != addresses.constEnd()) {
+             // Found a match because the domain suffix matches -> return that
+             row = i;
+--- a/src/Imap/Exceptions.cpp	2026-09-10 16:54:13.806841977 +0200
++++ b/src/Imap/Exceptions.cpp	2026-09-10 16:57:12.806769896 +0200
+@@ -27,7 +27,7 @@
+ namespace Imap
+ {
+ 
+-const char *ImapException::what() const throw()
++const char *ImapException::what() const noexcept
+ {
+     if (m_offset == -1)
+         return m_msg.c_str();
+--- a/src/Imap/Exceptions.h	2026-09-10 16:54:13.806848146 +0200
++++ b/src/Imap/Exceptions.h	2026-09-10 16:57:01.620535532 +0200
+@@ -61,8 +61,8 @@
+     ImapException(const std::string &msg) : m_msg(msg), m_offset(-1), m_exceptionClass("ImapException") {};
+     ImapException(const std::string &msg, const QByteArray &line, const int offset):
+         m_msg(msg), m_line(line), m_offset(offset), m_exceptionClass("ImapException") {};
+-    virtual const char *what() const throw();
+-    virtual ~ImapException() throw() {};
++    virtual const char *what() const noexcept;
++    virtual ~ImapException() {};
+     std::string msg() const { return m_msg; }
+     QByteArray line() const { return m_line; }
+     int offset() const { return m_offset; }
+@@ -116,8 +116,8 @@
+ public:
+     MailboxException(const char *const msg, const Imap::Responses::AbstractResponse &response);
+     explicit MailboxException(const char *const msg);
+-    virtual const char *what() const throw() { return m_msg.c_str(); }
+-    virtual ~MailboxException() throw() {}
++    virtual const char *what() const noexcept { return m_msg.c_str(); }
++    virtual ~MailboxException() {}
+ 
+ };
+ 
+--- a/src/Imap/Parser/MailAddress.cpp	2026-09-10 16:54:13.807711607 +0200
++++ b/src/Imap/Parser/MailAddress.cpp	2026-09-10 16:55:29.038373271 +0200
+@@ -315,20 +315,20 @@
+     return a.name == b.name && a.adl == b.adl && a.mailbox == b.mailbox && a.host == b.host;
+ }
+ 
+-MailAddressesEqualByMail::result_type MailAddressesEqualByMail::operator()(const MailAddress &a, const MailAddress &b) const
++bool MailAddressesEqualByMail::operator()(const MailAddress &a, const MailAddress &b) const
+ {
+     // FIXME: fancy stuff like the IDN?
+     return a.mailbox.toLower() == b.mailbox.toLower() && a.host.toLower() == b.host.toLower();
+ }
+ 
+-MailAddressesEqualByDomain::result_type MailAddressesEqualByDomain::operator()(const MailAddress &a, const MailAddress &b) const
++bool MailAddressesEqualByDomain::operator()(const MailAddress &a, const MailAddress &b) const
+ {
+     // FIXME: fancy stuff like the IDN?
+     return a.host.toLower() == b.host.toLower();
+ }
+ 
+ 
+-MailAddressesEqualByDomainSuffix::result_type MailAddressesEqualByDomainSuffix::operator()(const MailAddress &a, const MailAddress &b) const
++bool MailAddressesEqualByDomainSuffix::operator()(const MailAddress &a, const MailAddress &b) const
+ {
+     // FIXME: fancy stuff like the IDN?
+     auto aHost = a.host.toLower();
+--- a/src/Imap/Parser/MailAddress.h	2026-09-10 16:54:13.807720184 +0200
++++ b/src/Imap/Parser/MailAddress.h	2026-09-10 16:55:23.038388391 +0200
+@@ -105,32 +105,32 @@
+ 
+ /** Are the actual e-mail addresses (without any fancy details) equal?
+ 
+-These ugly functors are needed as long as we need support for pre-C++11 compilers.
++These ugly functors are needed for use with std::find_if.
+ */
+-class MailAddressesEqualByMail: public std::binary_function<MailAddress, MailAddress, bool>
++class MailAddressesEqualByMail
+ {
+ public:
+-    result_type operator()(const MailAddress &a, const MailAddress &b) const;
++    bool operator()(const MailAddress &a, const MailAddress &b) const;
+ };
+ 
+ /** Are the domains in the e-mail addresses equal?
+ 
+-These ugly functors are needed as long as we need support for pre-C++11 compilers.
++These ugly functors are needed for use with std::find_if.
+ */
+-class MailAddressesEqualByDomain: public std::binary_function<MailAddress, MailAddress, bool>
++class MailAddressesEqualByDomain
+ {
+ public:
+-    result_type operator()(const MailAddress &a, const MailAddress &b) const;
++    bool operator()(const MailAddress &a, const MailAddress &b) const;
+ };
+ 
+ /** @short Is the second domain a prefix of the first one?
+ 
+-Insert the usual complaint about lack of C++11 support here.
++These ugly functors are needed for use with std::find_if.
+ */
+-class MailAddressesEqualByDomainSuffix: public std::binary_function<MailAddress, MailAddress, bool>
++class MailAddressesEqualByDomainSuffix
+ {
+ public:
+-    result_type operator()(const MailAddress &a, const MailAddress &b) const;
++    bool operator()(const MailAddress &a, const MailAddress &b) const;
+ };
+ 
+ }
+--- a/src/Imap/Parser/Response.cpp	2026-09-10 16:54:13.807776240 +0200
++++ b/src/Imap/Parser/Response.cpp	2026-09-10 16:57:12.807615503 +0200
+@@ -188,7 +188,7 @@
+     return stream;
+ }
+ 
+-Kind kindFromString(QByteArray str) throw(UnrecognizedResponseKind)
++Kind kindFromString(QByteArray str)
+ {
+     str = str.toUpper();
+ 
+@@ -580,7 +580,7 @@
+     }
+ }
+ 
+-NumberResponse::NumberResponse(const Kind kind, const uint number) throw(UnexpectedHere):
++NumberResponse::NumberResponse(const Kind kind, const uint number):
+     kind(kind), number(number)
+ {
+     if (kind != EXISTS && kind != EXPUNGE && kind != RECENT)
+--- a/src/Imap/Parser/Response.h	2026-09-10 16:54:13.807800721 +0200
++++ b/src/Imap/Parser/Response.h	2026-09-10 16:57:12.809281832 +0200
+@@ -314,7 +314,7 @@
+     Kind kind;
+     /** @short Number that we're storing */
+     uint number;
+-    NumberResponse(const Kind kind, const uint number) throw(UnexpectedHere);
++    NumberResponse(const Kind kind, const uint number);
+     virtual QTextStream &dump(QTextStream &s) const;
+     virtual bool eq(const AbstractResponse &other) const;
+     virtual void plug(Imap::Parser *parser, Imap::Mailbox::Model *model) const;
+@@ -420,7 +420,7 @@
+ 
+     /** @short Compare identifiers of the ListData_t list */
+     template <typename T>
+-    class CompareListDataIdentifier: public std::unary_function<const typename T::value_type&, bool> {
++    class CompareListDataIdentifier {
+         QByteArray keyOne;
+         QByteArray keyTwo;
+         bool hasKeyTwo;
+@@ -714,7 +714,7 @@
+ }
+ 
+ /** @short Build Responses::Kind from textual value */
+-Kind kindFromString(QByteArray str) throw(UnrecognizedResponseKind);
++Kind kindFromString(QByteArray str);
+ 
+ }
+ 
