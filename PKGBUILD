@@ -2,26 +2,17 @@
 # Contributor: Nicholas Yam <nickyim05@gmail.com>
 
 pkgname=python-aliyun-python-sdk-core
-pkgver=2.15.1
-pkgrel=1
+pkgver=2.16.1
 pkgdesc="Alibaba Cloud SDK for Python"
 arch=('any')
 depends=('python-jmespath' 'python-cryptography')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 url="https://github.com/aliyun/aliyun-openapi-python-sdk"
 license=('Apache')
 options=(!emptydirs)
-source=(https://files.pythonhosted.org/packages/3a/e6/f579e8a5e26ef1066f6fb11074cedc9f668cb5f722c85cf7adc0f7e2e23e/aliyun-python-sdk-core-2.15.1.tar.gz)
-sha256sums=('518550d07f537cd3afac3b6c93b5c997ce3440e4d0c054e3acbdaa8261e90adf')
-
-build() {
-  cd "$srcdir/aliyun-python-sdk-core-$pkgver"
-
-  python setup.py build
-}
+source=(https://files.pythonhosted.org/packages/ea/38/eb3be49159d6442e68189f21a2205a199b51ca46cf42a3f874e695ff0ba9/aliyun_python_sdk_core-2.16.1-py3-none-any.whl)
+sha256sums=('0f25a6e8ec1ea29c76610278cff81cbff85149a6e692bf2398a6f9b77e5e7424')
 
 package() {
-  cd "$srcdir/aliyun-python-sdk-core-$pkgver"
-
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" aliyun_python_sdk_core-*.whl
 }
