@@ -1,11 +1,11 @@
 -------------------------------------------------------
  Changelog    : wg_tool
- Tags         : 10.0.0 ➙ 10.3.0,
+ Tags         : 10.0.1 ➙ 10.4.0,
               : 2026-08-25 ➙ 2026-09-02
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-02   : 10.3.0,
+ 2026-09-02   : 10.4.0,
               - fix wrong tag
 
  2026-09-02   : 10.1.10
@@ -37,21 +37,3 @@
  2026-08-25   : 10.0.1
               - Fix typo in PKGBUILD using sha256sums not sha512
               - update docs and Changelogs
-
- 2026-08-25   : 10.0.0
-              - **10.0.0**
-            
-                * Migrate to PyCidr from Cidr module.
-            
-                  Lots of network code simplication and it runs faster as well.
-                  This does add tow new package dependencies coming from new *py-cidr* package:
-            
-                  * cidrtools
-                  * cidrtools-cffi
-            
-                * Drop unused files
-                * Switch to meson/uv for package building
-                * Move examples to src/tests and add test runner to confirm the output
-                  wireguard configs match a baseline set.
- 2026-01-06   ⋯
-              - update Docs Changelogs
