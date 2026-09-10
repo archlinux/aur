@@ -1,0 +1,6 @@
+/pkg/
+/src/
+*.pkg.tar.zst
+# Downloaded sources.  A locally-provided archive or patch tarball has to be
+# force-added, since AUR requires everything needed to build to be committed.
+*.tar.gz
