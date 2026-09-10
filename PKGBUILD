@@ -1,7 +1,7 @@
 # Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 
 pkgname=vrcx-0
-pkgver=2.27.2
+pkgver=2.28.0
 pkgrel=1
 pkgdesc='Fast, lightweight VRCX implementation built with Tauri and Rust'
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=(
 source=(
   "VRCX-0-${pkgver}.tar.gz::https://github.com/Map1en/VRCX-0/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('8ba22c8d4690dcb37e78ecd17e41e3fc4c48a14c96602e511bf0dbaa8918e599')
+sha256sums=('381338c8adb94a79fdbec6b15a6e6209a31e6da3e46377a3c56de114441aacf4')
 prepare() {
   cd "VRCX-0-${pkgver}"
 
