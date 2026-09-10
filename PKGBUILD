@@ -6,7 +6,7 @@ _execname=cjsh
 pkgname=${_execname}-bin
 pkgdesc="POSIX shell scripting meets Modern Shell Features"
 
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 _appversion=v${pkgver}
 
@@ -42,11 +42,11 @@ sha256sums=('84b038b5206824c33602e290f76cceb8c29219177f97d179e42fbb67ad8d3dfd'
             '29ca988ac50d958f4c7c410e83a6bc2ed50326f8b5e7956aa5debb79f341afe4'
             'e2df7864bb673689e52f4624d321f6a9cce989994c2043fa114cf6a138677ba3'
             '70cebacf376afc786467528aa7d2c8cd6f284ebfb84afa1feb04b01e303ae81d'
-            'b031f603808d5eadc37ed3139656c0ab5688bd57ff7163301b0f0ec58b18ab4e'
+            'c6fe360a8b01da454451e5e8e60d8400013729f25a7034e903f397b90867d5d3'
             'a44c280fb650ae4a29169a6be233264d7c175ae5243c65e372c85204cc0651bb'
             '3889766b8eba4a461cc768c3f52000fe501b23adf99535c9f8fb1c8ccf8aebaf')
-sha256sums_x86_64=('291f47382c1082356ae55b7b2c06fa578370235208248df99321c110d2466cc3')
-sha256sums_aarch64=('ed8910ad70eefbb2108d440dd18bbfb1e4188016433f723759657a4aa4edcf78')
+sha256sums_x86_64=('67657a795fe856ce2ee9eca5fe32ba2d4a98adca8efc0e67247c5973d3d6a16f')
+sha256sums_aarch64=('794296b7b63bd571672c1cf78d8abd10386f80f1a28a82dfe4fe8bff05a35466')
 
 
 case ${CARCH} in
