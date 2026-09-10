@@ -3,7 +3,7 @@
 pkgname=gooeypi-bin
 _pkgname=gooeypi
 _appname=GooeyPi
-pkgver=1.1.16
+pkgver=1.1.17
 pkgrel=1
 pkgdesc='Desktop workspace for Pi, OMP, and Prime Agent (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -55,8 +55,8 @@ source_x86_64=("${_appname}-${pkgver}-linux-x64.pacman::https://github.com/am-wi
 source_aarch64=("${_appname}-${pkgver}-linux-aarch64.pacman::https://github.com/am-will/gooey-pi/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-aarch64.pacman")
 noextract=("${_appname}-${pkgver}-linux-x64.pacman" "${_appname}-${pkgver}-linux-aarch64.pacman")
 sha256sums=('8afbc591f620720580c00279b5d04d6d700398c4f4f53e54217a7c3eeb50689e')
-sha256sums_x86_64=('678ddb2abc3cae050799c8e0b244c24aa2ed430da5b08006496159325d905733')
-sha256sums_aarch64=('399b2d05d712467f42c144be11f7c9c26d162d3ba2bf5ad5ec66046b96941f95')
+sha256sums_x86_64=('cd0aa433d507567e91fb0d8f3c2f487e1ce219d7e1e01e679b3a58545ab11a7b')
+sha256sums_aarch64=('4d73d3310d0327fd29ddf5f2af9743756264cc3a0bea35caf51a62739dbd8e78')
 
 package() {
   local upstream_arch
