@@ -4,13 +4,13 @@
 _pkgname=openapv
 pkgname=openapv-llvm
 pkgver=0.2.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc='The reference implementation of the APV codec — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/AcademySoftwareFoundation/openapv/'
 license=('BSD-3-Clause')
 depends=('glibc')
-makedepends=('clang' 'cmake' 'mold' 'llvm')
+makedepends=('clang' 'cmake' 'mold-git' 'llvm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://github.com/AcademySoftwareFoundation/openapv/archive/v${pkgver}-fix/${_pkgname}-${pkgver}.tar.gz")
