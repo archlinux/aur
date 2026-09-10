@@ -1,14 +1,14 @@
 pkgbase = shine-llvm
 	pkgdesc = Super fast fixed-point MP3 encoder — built with Clang and mold
 	pkgver = 3.1.1+r59+gab5e352
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/savonet/shine
 	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = LGPL-2.0-only
 	makedepends = clang
-	makedepends = mold
+	makedepends = mold-git
 	makedepends = llvm
 	depends = glibc
 	provides = shine
