@@ -7,7 +7,7 @@ pkgname=(
     'openvino-llvm-intel-npu-plugin'
     'python-openvino-llvm')
 pkgver=2026.2.1
-pkgrel=6
+pkgrel=7
 _commit=ede283a88e35465f0d680dabbf1f44080f8fc387
 pkgdesc='A toolkit for optimizing and deploying deep learning models - built with Clang and mold'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
     'git'
     'git-lfs'
     'level-zero-headers'
-    'mold'
+    'mold-git'
     'llvm'
     'ocl-icd'
     'onetbb'
