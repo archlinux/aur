@@ -5,13 +5,13 @@
 # shellcheck disable=SC2154  # srcdir/pkgdir/startdir set by makepkg
 
 pkgname=superhuman
-pkgver=1041.0.45
+pkgver=1041.0.51
 pkgrel=1
 pkgdesc="The fastest email experience ever made (unofficial)"
 arch=('x86_64')
 url="https://superhuman.com"
 license=('custom:proprietary')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'libdrm' 'mesa' 'libnotify')
+depends=('gtk3' 'nss' 'alsa-lib' 'libcups' 'libxkbcommon' 'libdrm' 'mesa' 'libnotify')
 makedepends=('p7zip' 'nodejs' 'npm' 'wget' 'unzip')
 optdepends=(
     'libappindicator-gtk3: System tray support'
@@ -23,26 +23,16 @@ source=(
     "Superhuman-${pkgver}.exe::https://assets.mail.superhuman.com/webapp/download/Superhuman.exe"
     "linux_tray.js"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            '2ca108b624f8e444e3ad4a70f5d066342a85dc6d245ce63220a91e5c2b4cfd25')
 noextract=("Superhuman-${pkgver}.exe")
 
 _electron_version="41.6.1"
-_patch_failures=0
-
-# Automatically detect version from the downloaded exe
-# Uncomment pkgver() for -git style versioning
-# pkgver() {
-#     cd "$srcdir"
-#     if [ -f "VERSION" ]; then
-#         cat VERSION
-#     else
-#         echo "1.0.0"
-#     fi
-# }
+_failed_patches=()
 
 prepare() {
     cd "$srcdir" || return
-    _patch_failures=0
+    _failed_patches=()
 
     # Extract Windows installer
     msg2 "Extracting Windows installer..."
@@ -84,6 +74,7 @@ prepare() {
     fi
 
     # Apply Linux compatibility patches
+    _write_patch_tool
     _apply_patches
 
     # Repack app.asar
@@ -91,145 +82,132 @@ prepare() {
     npx @electron/asar pack asar-contents app.asar
 }
 
-# Graceful patch function - warns on failure instead of breaking build
-_safe_sed_patch() {
-    local desc="$1"
-    local file="$2"
-    local pattern="$3"
-    local replacement="$4"
-    local replace_all="${5:-false}"
+# The main process ships as a single webpack bundle, so every patch is an exact
+# literal replacement guarded by an expected match count. A drifted match string
+# fails loudly instead of silently clobbering an unrelated module.
+_write_patch_tool() {
+    cat > "$srcdir/apply_patch.js" << 'PATCHER'
+const fs = require('fs')
 
-    if [ ! -f "$file" ]; then
-        warning "PATCH FAILED: $desc"
-        warning "  File not found: $(basename "$file")"
-        warning "  >>> MAINTAINER: App structure changed, update needed <<<"
-        ((_patch_failures++)) || true
-        return 1
-    fi
+const [file, expected, find, replace] = process.argv.slice(2)
+const parts = fs.readFileSync(file, 'utf8').split(find)
+const found = parts.length - 1
 
-    if ! grep -q "$pattern" "$file" 2>/dev/null; then
-        warning "PATCH FAILED: $desc"
-        warning "  Pattern not found in: $(basename "$file")"
-        warning "  >>> MAINTAINER: App code changed, update needed <<<"
-        ((_patch_failures++)) || true
-        return 1
-    fi
-
-    if [ "$replace_all" = "true" ]; then
-        sed -i "s#$pattern#$replacement#g" "$file"
-    else
-        sed -i "s#$pattern#$replacement#" "$file"
-    fi
-
-    msg2 "Applied: $desc"
-    return 0
+if (found !== Number(expected)) {
+  process.stderr.write(`  expected ${expected} match(es), found ${found}\n`)
+  process.stderr.write(`  anchor: ${find.split('\n')[0].trim().slice(0, 100)}\n`)
+  process.exit(1)
 }
 
-_safe_insert_patch() {
+fs.writeFileSync(file, parts.join(replace))
+PATCHER
+}
+
+# _bundle_patch <description> required|optional <expected matches> <find> <replace>
+# A required patch aborts the build; an optional one is reported in the summary.
+_bundle_patch() {
     local desc="$1"
-    local file="$2"
-    local after_pattern="$3"
-    local text="$4"
+    local importance="$2"
+    local count="$3"
+    local find="$4"
+    local replace="$5"
 
-    if [ ! -f "$file" ]; then
-        warning "PATCH FAILED: $desc - File not found"
-        warning "  >>> MAINTAINER: App structure changed, update needed <<<"
-        ((_patch_failures++)) || true
+    if node "$srcdir/apply_patch.js" "$srcdir/asar-contents/dist/main.js" "$count" "$find" "$replace"; then
+        msg2 "Applied: $desc"
+        return 0
+    fi
+
+    if [ "$importance" = "required" ]; then
+        error "REQUIRED PATCH FAILED: $desc"
+        error ">>> MAINTAINER: Superhuman changed, patches need review <<<"
         return 1
     fi
 
-    if ! grep -q "$after_pattern" "$file" 2>/dev/null; then
-        warning "PATCH FAILED: $desc - Pattern not found"
-        warning "  >>> MAINTAINER: App code changed, update needed <<<"
-        ((_patch_failures++)) || true
-        return 1
-    fi
-
-    sed -i "/$after_pattern/a\\
-$text" "$file"
-    msg2 "Applied: $desc"
+    warning "OPTIONAL PATCH FAILED: $desc"
+    _failed_patches+=("$desc")
     return 0
 }
 
 _apply_patches() {
     msg2 "Applying Linux compatibility patches..."
-    local src_dir="$srcdir/asar-contents/src"
+    local dist_dir="$srcdir/asar-contents/dist"
 
-    # =========================================================================
-    # CORE PATCHES
-    # =========================================================================
-
-    _safe_sed_patch \
-        "Memory poller: Linux support" \
-        "${src_dir}/native_memory_poller.js" \
-        "if (process.platform === 'darwin') {" \
-        "if (process.platform === 'darwin' || process.platform === 'linux') {" \
-        true
-
-    _safe_sed_patch \
-        "Window: Ctrl shortcuts for Linux" \
-        "${src_dir}/window.js" \
-        "} else if (process.platform === 'win32') {" \
-        "} else if (process.platform === 'win32' || process.platform === 'linux') {" \
-        true
-
-    _safe_sed_patch \
-        "Window: Zoom control for Linux" \
-        "${src_dir}/window.js" \
-        "(process.platform === 'win32' && input.control)" \
-        "((process.platform === 'win32' || process.platform === 'linux') \\&\\& input.control)" \
-        true
-
-    _safe_sed_patch \
-        "Main: Linux argv URL handling" \
-        "${src_dir}/main.js" \
-        "} else if (process.platform === 'win32') {" \
-        "} else if (process.platform === 'win32' || process.platform === 'linux') {" \
-        true
-
-    _safe_sed_patch \
-        "Main: Fix async download handler" \
-        "${src_dir}/main.js" \
-        "await fs.promises.mkdir(downloadsLocation, { recursive: true })" \
-        "fs.mkdirSync(downloadsLocation, { recursive: true })"
-
-    # =========================================================================
-    # AUTO-UPDATER - Skip on Linux (use pacman)
-    # =========================================================================
-
-    if [ -f "${src_dir}/updater.js" ] && grep -q "if (appConfig.isDev) {" "${src_dir}/updater.js"; then
-        _safe_insert_patch \
-            "Updater: Skip on Linux" \
-            "${src_dir}/updater.js" \
-            "if (appConfig.isDev) {" \
-"\\    // Linux: Use system package manager for updates\\
-\\    if (process.platform === 'linux') {\\
-\\      console.log('[Superhuman Linux] Updates managed by pacman');\\
-\\      return;\\
-\\    }"
+    if [ ! -f "$dist_dir/main.js" ]; then
+        error "Superhuman bundle layout changed: dist/main.js not found"
+        return 1
     fi
 
-    # =========================================================================
-    # TRAY MODULE - Close to tray with account switcher
-    # =========================================================================
+    # Upstream already hides the last window instead of closing it, but gates
+    # that on macOS. Without this the window teardown runs on every close and
+    # destroys the tabs behind a still-visible window.
+    _bundle_patch \
+        "Window: Close to tray instead of quitting" \
+        required \
+        1 \
+        "        if (this.main.windows.length === 1 && isMac && !isForceQuitting) {" \
+        "        if (this.main.windows.length === 1 && (isMac || process.platform === 'linux') && !isForceQuitting) {"
 
-    cp "$srcdir/linux_tray.js" "${src_dir}/linux_tray.js"
+    _bundle_patch \
+        "Updater: Skip on Linux, updates come from pacman" \
+        required \
+        1 \
+        "  async _startUpdate() {" \
+        "  async _startUpdate() {
+    if (process.platform === 'linux') {
+      this.setStage(stages.SKIPPED)
+      return
+    }"
 
-    # Import and initialize tray - the module self-initializes via app events
+    _bundle_patch \
+        "Window: Ctrl shortcuts for Linux" \
+        optional \
+        1 \
+        "    _registerShortcuts(view) {" \
+        "    _registerShortcuts(view) {
+        if (process.platform === 'linux') {
+            this._registerWindowsShortcuts(view);
+            return;
+        }"
+
+    _bundle_patch \
+        "Window: Zoom control for Linux" \
+        optional \
+        1 \
+        "(process.platform === 'win32' && input.control)" \
+        "((process.platform === 'win32' || process.platform === 'linux') && input.control)"
+
+    _bundle_patch \
+        "Main: Linux argv URL handling" \
+        optional \
+        1 \
+        "    } else if (process.platform === 'win32') {
+      // the \`open-url\` event is Mac-only, so on Windows startup we check argv directly" \
+        "    } else if (process.platform === 'win32' || process.platform === 'linux') {
+      // the \`open-url\` event is Mac-only, so on Windows startup we check argv directly"
+
+    # wasOpenedAsHidden() is macOS-only, so the autostart entry's --hidden flag
+    # is otherwise ignored.
+    _bundle_patch \
+        "Main: Honor --hidden on Linux" \
+        optional \
+        1 \
+        "    let launchHidden = process.platform === 'win32' ? false : this._loginItem.wasOpenedAsHidden()" \
+        "    let launchHidden = process.argv.includes('--hidden') || (process.platform === 'win32' ? false : this._loginItem.wasOpenedAsHidden())"
+
+    # Tray module - close to tray with a show/hide and quit menu
+    cp "$srcdir/linux_tray.js" "$dist_dir/linux_tray.js"
     sed -i "1i\\
-if (process.platform === 'linux') { require('./linux_tray'); }" \
-        "${src_dir}/main.js"
-
+if (process.platform === 'linux') require('./linux_tray');" "$dist_dir/main.js"
     msg2 "Applied: Tray module (self-initializing)"
 
-    # =========================================================================
-    # PATCH SUMMARY
-    # =========================================================================
-
-    if [ $_patch_failures -gt 0 ]; then
+    if [ ${#_failed_patches[@]} -gt 0 ]; then
         warning "=========================================="
-        warning "$_patch_failures patch(es) failed!"
-        warning "The app may work but some features might be broken."
+        warning "${#_failed_patches[@]} optional patch(es) failed:"
+        local desc
+        for desc in "${_failed_patches[@]}"; do
+            warning "  - $desc"
+        done
+        warning "The app will run but these features are missing."
         warning ">>> MAINTAINER: Superhuman updated, patches need review <<<"
         warning "=========================================="
     fi
@@ -260,6 +238,10 @@ build() {
 #!/bin/bash
 SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 
+# Electron resolves the desktop entry from this when registering itself as the
+# mailto:/superhuman: handler via xdg-settings.
+export CHROME_DESKTOP="${CHROME_DESKTOP:-superhuman.desktop}"
+
 ARGS=()
 for arg in "$@"; do
     if [[ "$arg" == superhuman://login* ]]; then
@@ -269,7 +251,7 @@ for arg in "$@"; do
     fi
 done
 
-exec "${SCRIPT_DIR}/superhuman-bin" --no-sandbox "${ARGS[@]}"
+exec "${SCRIPT_DIR}/superhuman-bin" "${ARGS[@]}"
 WRAPPER
     chmod +x superhuman-linux/superhuman
 }
@@ -283,7 +265,9 @@ package() {
     chmod +x "$pkgdir/opt/superhuman/superhuman"
     chmod +x "$pkgdir/opt/superhuman/superhuman-bin"
     chmod +x "$pkgdir/opt/superhuman/chrome_crashpad_handler"
-    chmod 4755 "$pkgdir/opt/superhuman/chrome-sandbox" 2>/dev/null || true
+
+    # Fallback sandbox for kernels without unprivileged user namespaces
+    chmod 4755 "$pkgdir/opt/superhuman/chrome-sandbox"
 
     # Install icon (check both locations: assets/ for GitHub, root for AUR)
     local icon_src=""
@@ -296,6 +280,8 @@ package() {
         install -Dm644 "$icon_src" "$pkgdir/usr/share/icons/hicolor/256x256/apps/superhuman.png"
         cp "$icon_src" "$pkgdir/opt/superhuman/"
     fi
+
+    install -Dm644 superhuman-linux/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.electron"
 
     # Create bin symlinks
     install -dm755 "$pkgdir/usr/bin"
@@ -311,7 +297,7 @@ Icon=superhuman
 Type=Application
 Categories=Network;Email;
 MimeType=x-scheme-handler/mailto;x-scheme-handler/superhuman;
-StartupWMClass=Superhuman
+StartupWMClass=superhuman
 Terminal=false
 X-KDE-Protocols=mailto;superhuman;
 EOF
