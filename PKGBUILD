@@ -2,7 +2,7 @@
 # Maintainer: maki <maki@hotmilk.space>
 
 pkgname=czkawka-git
-pkgver=12.0.0.r0.ge56dc116
+pkgver=12.0.2.r0.gf9be31f5
 pkgrel=1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
@@ -132,4 +132,12 @@ package() {
 
   install -Dm755 "${CARGO_TARGET_DIR}/release/krokiet" \
         "${pkgdir}/usr/bin/krokiet"
+
+  install -Dm644 "${srcdir}/${pkgname}/data/io.github.qarmin.krokiet.desktop" \
+        "${pkgdir}/usr/share/applications/io.github.qarmin.krokiet.desktop"
+
+  install -Dm644 "${srcdir}/${pkgname}/data/icons/io.github.qarmin.krokiet.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.qarmin.krokiet.svg"
+  install -Dm644 "${srcdir}/${pkgname}/data/io.github.qarmin.krokiet.metainfo.xml" \
+        "${pkgdir}/usr/share/metainfo/io.github.qarmin.krokiet.metainfo.xml"
 }
