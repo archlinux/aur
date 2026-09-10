@@ -1,14 +1,14 @@
 # Maintainer: uberben <ben at benbergman dot ca>
 
 pkgname="orca-slicer-nightly-bin"
-pkgver=2026.08.20.091636Z
+pkgver=2026.09.09.233242Z
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (nightly builds)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL3')
 depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup3' 'webkit2gtk-4.1' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'gst-plugins-base' 'gst-libav')
-makedepends=('jq' 'curl')
+makedepends=('jq' 'curl' 'patchelf')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
 options=('!strip')
@@ -107,9 +107,12 @@ package() {
 	find squashfs-root/{resources,usr/share/icons}/ -type d -exec chmod 755 {} +
 
 	install -d "$pkgdir/opt/${pkgname%-bin}/"
-	cp -av squashfs-root/* "$pkgdir/opt/${pkgname%-bin}/"
+	cp -a squashfs-root/* "$pkgdir/opt/${pkgname%-bin}/"
 	rm -rf "$pkgdir/opt/${pkgname%-bin}/usr/"
 	rm "$pkgdir/opt/${pkgname%-bin}"/{com.orcaslicer.OrcaSlicer.desktop,AppRun,OrcaSlicer.png}
+
+	patchelf --add-rpath '$ORIGIN/../lib/orca-runtime' \
+		"$pkgdir/opt/${pkgname%-bin}/bin/orca-slicer"
 
 	install -d "$pkgdir/usr/bin"
 	ln -s "/opt/${pkgname%-bin}/bin/orca-slicer" "$pkgdir/usr/bin/"
