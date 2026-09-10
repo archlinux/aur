@@ -2,7 +2,7 @@
 
 pkgauthor="Kaia-Alenia"
 pkgname="alenia-nerve"
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="Ultra-fast local communication engine based on Unix Domain Sockets for sovereign creators"
 
@@ -23,7 +23,7 @@ depends=('python' 'python-cryptography' 'python-websockets' 'python-argon2-cffi'
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6e822ae47a151ec0d5179e5f2f93b102a61baa2b508375629db41cb04e407668')
+sha256sums=('f86cad771dfa0877139229c308fa6e64c3738545dd5f82e078a3c081d0bbdd90')
 
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/" || exit
