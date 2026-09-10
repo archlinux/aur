@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename")
 pkgver=9.0.1
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -76,7 +76,7 @@ depends=(
   'lib32-sndio'
   'lib32-speex'
   'lib32-srt'
-#  'lib32-svt-av1'
+  'lib32-svt-av1'
   'lib32-v4l-utils'
 #  'lib32-vapoursynth'
   'lib32-vid.stab'
@@ -203,6 +203,7 @@ build() {
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libsrt \
+    --enable-libsvtav1 \
     --enable-libtheora \
     --enable-libv4l2 \
     --enable-libvidstab \
@@ -233,7 +234,6 @@ build() {
 #    --enable-libjxl \
 #    --enable-librubberband \
 #    --enable-libssh \
-#    --enable-libsvtav1 \
 #    --enable-libuavs3d \
 #    --enable-libvpl \
 #    --enable-vapoursynth \
