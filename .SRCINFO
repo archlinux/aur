@@ -1,6 +1,6 @@
 pkgbase = yuzufox-git
 	pkgdesc = Hardened, zero-bloat Firefox for daily use.
-	pkgver = 155.0
+	pkgver = 155.0.r0.gc702c73
 	pkgrel = 1
 	url = https://github.com/KabosuNeko/YuzuFox
 	arch = any
