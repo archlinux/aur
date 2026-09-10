@@ -1,7 +1,7 @@
 # Maintainer: bannert <aur@bannert.dev>
 
 pkgname=sudoku-gtk4
-pkgver=1.5.0
+pkgver=1.5.0 # renovate: datasource=github-tags depName=sepehr-rs/Sudoku
 pkgrel=2
 pkgdesc="A modern Sudoku app built with Python, GTK4 and libadwaita"
 arch=('any')
