@@ -2,11 +2,11 @@
 pkgname=thorium-reader-git
 _pkgname='Thorium Reader'
 _appname="EDRLab.${_pkgname// /}"
-pkgver=3.5.1.r3.g65746dc
+pkgver=3.5.1.r13.g7004ea3
 _electronversion=41
 _nodeversion=24
 pkgrel=1
-pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit.(Use system-wide electron)"
+pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit."
 arch=('any')
 url="https://www.edrlab.org/software/thorium-reader/"
 _ghurl="https://github.com/edrlab/thorium-reader"
@@ -47,21 +47,22 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-    export NPM_CONFIG_MAXSOCKETS=32
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-        }
-        rm -f package-lock.json
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export HOME="${srcdir}/.electron-gyp"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export npm_config_cache="${srcdir}/.npm_cache"
+	export npm_config_maxsockets=32
+	export npm_config_audit=false
+	export npm_config_fund=false
+	export npm_config_progress=false
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export npm_config_node_options="--max-old-space-size=4096"
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
