@@ -12,7 +12,11 @@ print_session_information() {
     Aqueous also supports separate layout.toml, input.toml, and rules.toml
     files and hot-reloads valid changes without restarting the compositor.
 
+    Open the standalone Aqueous Settings application from the application
+    menu or run aqueous-settings to edit your compositor configuration.
+
     Useful commands:
+        aqueous-settings
         aqueousctl windows
         aqueousctl outputs
         aqueousctl layout --output <name> --json
@@ -20,24 +24,35 @@ print_session_information() {
     Session log:
         $XDG_RUNTIME_DIR/aqueous-wm.log
 
-    The optional noctalia-greeter is the recommended display-manager frontend.
+    Screen recording and sharing use the packaged Aqueous portal backend;
+    xdg-desktop-portal-wlr does not need to be installed separately.
+    The source picker uses the shell selected by your Aqueous package.
+    Existing user portal configs override the packaged chooser settings.
+
     SDDM and other Wayland-capable display managers also work.
 EOF
 
-    if [ -e /usr/lib/systemd/user/noctalia.service ]; then
+    if [ -e /usr/lib/systemd/user/graphical-session.target.wants/aqueous-dms.service ]; then
         cat <<'EOF'
 
-    Noctalia starts automatically with the Aqueous graphical session. The
-    packaged Aqueous Settings source is registered and enabled once per user;
-    add its widget from Noctalia's bar widget picker. An intentional later
-    disable is preserved.
+    DankMaterialShell (dms-shell) starts automatically with the Aqueous session.
+    Use DMS Settings for shell appearance. Aqueous Screen Sharing is a separate
+    plugin, enabled on first use; an intentional disable is preserved.
+    The optional greetd-dms-greeter-bin provides a display-manager frontend.
+
+    Existing user configuration is preserved. When switching shells, merge
+    the bindings from /usr/share/aqueous/wm.toml into ~/.config/aqueous/wm.toml:
+        launcher: dms ipc call spotlight toggle
+        screenshots (including direct bindings): dms screenshot region
+    Disable any manually enabled shell service or startup command so that
+    only the packaged aqueous-dms.service starts the shell.
 EOF
-    elif [ -e /usr/lib/systemd/user/aqueous-dms.service ]; then
+    elif [ -e /usr/lib/systemd/user/graphical-session.target.wants/noctalia.service ]; then
         cat <<'EOF'
 
-    DankMaterialShell starts automatically with the Aqueous graphical session.
-    The packaged default configuration uses DMS Spotlight for the launcher
-    action. No DMS user unit needs to be enabled manually.
+    Noctalia starts automatically with the Aqueous graphical session.
+    Existing custom Noctalia bar layouts are preserved.
+    The optional noctalia-greeter provides a display-manager frontend.
 EOF
     fi
 
@@ -60,9 +75,15 @@ post_upgrade() {
     cat <<'EOF'
 
     Restart the Aqueous session to load the new compositor, bundled wlroots,
-    environment, and user units. Existing files in ~/.config/aqueous are not
-    overwritten by the session launcher. Review any pacnew files created for
-    system-wide configuration before merging them.
+    Aqueous portal backend, environment, and user units. Existing files in
+    ~/.config/aqueous are not overwritten by the session launcher. Review any
+    pacnew files created for system-wide configuration before merging them.
+
+    The old DMS aqueousSettings and Noctalia aqueous/settings plugins are
+    replaced by the standalone aqueous-settings application. Remove their
+    widgets from custom bars and change old panel/IPC launch bindings to run
+    aqueous-settings. User settings and backups are kept.
+    The optional DMS aqueousSettingsAppearance typography bridge remains.
 
     If upgrading while logged in, refresh the user-unit cache first:
         systemctl --user daemon-reload
