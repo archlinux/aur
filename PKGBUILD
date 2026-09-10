@@ -13,8 +13,8 @@
 # webkit2gtk-4.1 headers at build time.
 
 pkgname=nuvio-linux-git
-pkgver=r2711.g5aca4f3f
-pkgrel=2
+pkgver=r2781.gc979d9c0
+pkgrel=1
 pkgdesc="Nuvio desktop media player — upstream source packaged for Arch Linux (git)"
 arch=('x86_64')
 url="https://github.com/NuvioMedia/NuvioDesktop"
@@ -28,12 +28,18 @@ options=('!strip')
 source=("git+https://github.com/NuvioMedia/NuvioDesktop.git#branch=Dev")
 sha256sums=('SKIP')
 
-# Supabase backend — public client config shared with the upstream app. These
-# are required at build time so nuvio-account sign-in works; they are
-# client-side (anon) credentials and are identical in every shipped binary.
+# Supabase backend + Trakt/Simkl OAuth — public client config shared with
+# the upstream app. These are required at build time so account sign-in
+# works; they are client-side (anon) credentials and are identical in every
+# shipped binary. (Trakt/Simkl IDs extracted from an upstream AppImage;
+# shipping "" for them breaks offline Trakt/Simkl sign-in — same lesson as
+# the main PKGBUILD's pkgrel 3.)
 NUVIO_SUPABASE_URL="https://api.nuvio.tv"
 NUVIO_SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzgxNTIxMzQ2LCJleHAiOjE5MzkyMDEzNDZ9.tmQaj682pwzehpqlgCDMnySOqiUvpgRbrE43T4VJpDI"
 NUVIO_SUPABASE_FALLBACK_URL="https://api-two.nuvioapp.space"
+TRAKT_CLIENT_ID="5783db7c46a5b22f072d4b224f9bd7dc2cbaba66dbe3515d1feb59e3ca72394c"
+TRAKT_CLIENT_SECRET="bf6e7561dafee902f5a2a67d2b31feac1563632f331f3958c978aff6389ea384"
+SIMKL_CLIENT_ID="dc20e0db975583b15096267cee79cd23b1f56d4bd301ce3c51e4a96a49c834a6"
 
 pkgver() {
   cd "$srcdir/NuvioDesktop"
@@ -54,6 +60,9 @@ build() {
 NUVIO_SUPABASE_URL=${NUVIO_SUPABASE_URL}
 NUVIO_SUPABASE_ANON_KEY=${NUVIO_SUPABASE_ANON_KEY}
 NUVIO_SUPABASE_FALLBACK_URL=${NUVIO_SUPABASE_FALLBACK_URL}
+TRAKT_CLIENT_ID=${TRAKT_CLIENT_ID}
+TRAKT_CLIENT_SECRET=${TRAKT_CLIENT_SECRET}
+SIMKL_CLIENT_ID=${SIMKL_CLIENT_ID}
 EOF
 
   echo "[nuvio-linux-git] building with JAVA_HOME=${JAVA_HOME}"
