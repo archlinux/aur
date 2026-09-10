@@ -2,7 +2,7 @@
 _pkgname=crankshaft
 pkgname="${_pkgname}-client-git"
 _appname=Crankshaft-Client
-pkgver=2.0.0.r0.gee43dee
+pkgver=2.0.1.r21.gc3a7030
 _electronversion=44
 _nodeversion=24
 pkgrel=1
@@ -21,6 +21,7 @@ makedepends=(
     'curl'
     'git'
     'jq'
+    'zip'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
@@ -37,30 +38,29 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export pnpm_config_registry="https://registry.npmmirror.com"
-            export npm_config_registry="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-        }
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+	export HOME="${srcdir}/.electron-gyp"
+	export PNPM_LINK_WORKSPACE_PACKAGES=true
+	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+	export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+	export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+	export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+	export PNPM_SHAMEFULLY_HOIST=true
+	export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+	export PNPM_NODE_LINKER=hoisted
+	export PNPM_NETWORK_CONCURRENCY=32
+	export npm_config_platform=linux
+	export npm_config_arch="${CARCH}"
+	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+		export pnpm_config_registry="https://registry.npmmirror.com"
+		export npm_config_registry="https://registry.npmmirror.com"
+		export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+		export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+		export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+	fi
 }
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -88,7 +88,19 @@ prepare() {
     " "${srcdir}/${pkgname%-git}.sh"
     _set_build_env
     _ensure_local_nvm
-    NODE_ENV=development    pnpm install
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    rm -f pnpm-lock.yaml
+    NODE_ENV=development    pnpm install --ignore-scripts
+    local _v="${SYSTEM_ELECTRON_VERSION}"
+	local _zd="${srcdir}/electron-zips"
+	case "${CARCH}" in
+		aarch64)	_arch=arm64	;;
+		x86_64)	_arch=x64	;;
+	esac
+	local _zf="${_zd}/electron-v${_v}-linux-${_arch}.zip"
+	install -Dm755 -d "${_zd}"
+	( cd "${ELECTRON_DIST}" && zip -r -q -0 "${_zf}" . )
+	sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," forge.config.*
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"

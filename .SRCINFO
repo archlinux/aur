@@ -1,6 +1,6 @@
 pkgbase = crankshaft-client-git
 	pkgdesc = A fast, feature-rich krunker client written in typescript.(Use syetem-wide electron)
-	pkgver = 2.0.0.r0.gee43dee
+	pkgver = 2.0.1.r21.gc3a7030
 	pkgrel = 1
 	url = https://github.com/KraXen72/crankshaft
 	arch = any
@@ -10,8 +10,9 @@ pkgbase = crankshaft-client-git
 	makedepends = curl
 	makedepends = git
 	makedepends = jq
+	makedepends = zip
 	depends = electron44
-	provides = crankshaft-client=2.0.0
+	provides = crankshaft-client=2.0.1
 	conflicts = crankshaft-client
 	source = crankshaft-client.git::git+https://github.com/KraXen72/crankshaft.git
 	source = crankshaft-client.desktop
