@@ -1,7 +1,7 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 
 pkgname=pdfalto
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='PDF to XML ALTO file converter'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libtiff' 'freetype2' 'icu' 'libpng14' 'libxml2' 'zlib' 'fontconfig' 'l
 makedepends=('cmake' 'gcc12' 'git')
 source=("pdfalto-${pkgver}.tar.gz::https://github.com/kermitt2/pdfalto/archive/refs/tags/v${pkgver}.tar.gz"
         "pdfalto-libpaper-from-system.patch")
-md5sums=('fedd74cba332d31f456cc28c9c47a61a'
+md5sums=('74eaf4236cbac1d19fbcfaf821ac9f85'
          'f5af9f957d51267405017f1b3be20877')
 
 prepare()
