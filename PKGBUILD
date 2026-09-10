@@ -1,6 +1,6 @@
 # Maintainer: Dresden Wildey <dresden196@gmail.com>
 pkgname=fubuki
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Bootable USB writer in the spirit of Rufus: the engine and command line"
 arch=('any')
@@ -11,10 +11,10 @@ depends=('python' 'python-pyudev' 'util-linux' 'dosfstools' 'ntfs-3g' 'exfatprog
 makedepends=('gettext')
 optdepends=('zstd: writing .zst compressed images'
             'python-gobject: the udisks2 backend (writing without root, used by the Flatpak and AppImage)'
-            'fubuki-ui: the KDE window'
+            'fubuki-qt: the KDE window'
             'fubuki-gtk: the GNOME window')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dresden196/fubuki/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('40de60269ab4b610bd45362c45da11266eaf1583445f5803036cf5e8d8766370')
+sha256sums=('c3169c08c23d007b766211231a0194b38fdaabc59faf8f99bd3c86c8ae582eb4')
 
 package() {
     cd "$srcdir/fubuki-$pkgver/fubuki"
