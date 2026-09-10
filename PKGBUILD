@@ -1,6 +1,6 @@
 # Maintainer: Johan Larsson <johan@jolars.co>
 pkgname=fatou-bin
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="A language server, formatter, and linter for Julia"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('fatou')
 options=(!strip)
 source_x86_64=("fatou-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/fatou-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("fatou-$pkgver-aarch64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/fatou-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('d03842c02b11d03a685744a30c81f3d0b7ef1bf7a591b01be7590d776d468418')
-sha256sums_aarch64=('8d61b4cacbd075e54abcc9ea96cffd1d0e0295933d4ec4c9585e3f6c6787622c')
+sha256sums_x86_64=('1e8414bb79582bb985ee565cf525dfb0c2197ed8994250feb723a8d18fb4e5ff')
+sha256sums_aarch64=('a4d9cd2f7290004959ff36b1e7f36e57cb5550d4216bf05e78326706c378a0e0')
 
 package() {
     install -Dm755 fatou "$pkgdir/usr/bin/fatou"
