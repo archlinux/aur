@@ -8,6 +8,7 @@ pkgbase = cargo-visualize-bin
 	license = GPL-3.0-or-later
 	depends = glibc
 	depends = libgcc
+	depends = cargo
 	provides = cargo-visualize
 	conflicts = cargo-visualize
 	options = !strip
