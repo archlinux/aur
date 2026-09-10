@@ -2,7 +2,7 @@
 
 pkgname=pilinara-bin
 _pkgname=pilinara
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 url="https://github.com/Starfallan/PiliNara"
 pkgdesc="PiliPlus 的第三方Fork版本，做了一些自用改动"
@@ -13,9 +13,9 @@ provides=('pilinara')
 conflicts=('pilinara' 'pilinara-git')
 options=('!debug' '!strip')
 
-source_x86_64=("https://github.com/Starfallan/PiliNara/releases/download/2.1.2/PiliNara_linux_2.1.2+5790_amd64.tar.gz"
+source_x86_64=("https://github.com/Starfallan/PiliNara/releases/download/2.1.3/PiliNara_linux_2.1.3+5859_amd64.tar.gz"
                "com.example.pilinara.desktop::https://raw.githubusercontent.com/Starfallan/PiliNara/main/assets/linux/com.example.pilinara.desktop")
-sha256sums_x86_64=('45a09c792683a159728da7a89668854d14dd0475b69dd53f662edd02a209236d'
+sha256sums_x86_64=('2393eb31f6868b7e758c3271589a1edc8a701e14538eb0ed10670782cffc6c96'
                    '457d3421b52aaa0646493ad49241b0af267821c7358d4d1f6aa9cb512ef29850')
 
 package() {
