@@ -1,0 +1,22 @@
+pkgbase = faf-bin
+	pkgdesc = Fast parallel filesystem search by filename
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/eof0/faf
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = faf
+	conflicts = faf
+	conflicts = fafind-bin
+	replaces = fafind-bin
+	options = !debug
+	options = strip
+	source = faf-LICENSE::https://raw.githubusercontent.com/eof0/faf/v3.0.0/LICENSE
+	sha256sums = f500e1e4b3d5c32caedbd5d5d6ff1a92b683cd0bc3a41053cfd4fa0b51a854c1
+	source_x86_64 = faf-x86_64-3.0.0.tar.gz::https://github.com/eof0/faf/releases/download/v3.0.0/faf-linux-x86_64-v3.0.0.tar.gz
+	sha256sums_x86_64 = 0179554cdcc2badb24c60c3d69d799d2a03a7cf73a8fd8b4c893acc2257f242c
+	source_aarch64 = faf-arm64-3.0.0.tar.gz::https://github.com/eof0/faf/releases/download/v3.0.0/faf-linux-arm64-v3.0.0.tar.gz
+	sha256sums_aarch64 = df9130af8e9da9398aa1c4deee37b87b71de6c5008cbd1f720cf83d55a9587ae
+
+pkgname = faf-bin
