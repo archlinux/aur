@@ -10,8 +10,11 @@ url="https://github.com/KyleBing/wubi-dict-editor"
 license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    'ibus-rime'
     "electron${_electronversion}"
+)
+optdepends=(
+    'ibus-rime: 使用默认的 ibus-rime 配置目录'
+    'fcitx5-rime: 使用 fcitx5-rime 配置目录（需手动指定）'
 )
 options=(
     '!emptydirs'
