@@ -1,7 +1,7 @@
 pkgbase = okular-no-phonon
 	pkgdesc = Document Viewer: applying patches from https://invent.kde.org/graphics/okular/-/merge_requests/1386
-	pkgver = 26.08.0
-	pkgrel = 4
+	pkgver = 26.08.1
+	pkgrel = 1
 	url = https://apps.kde.org/okular/
 	arch = x86_64
 	groups = kde-applications
@@ -53,10 +53,10 @@ pkgbase = okular-no-phonon
 	provides = okular
 	conflicts = okular
 	options = !zipman
-	source = https://download.kde.org/stable/release-service/26.08.0/src/okular-26.08.0.tar.xz
+	source = https://download.kde.org/stable/release-service/26.08.1/src/okular-26.08.1.tar.xz
 	source = https://invent.kde.org/graphics/okular/-/commit/e322356c.patch
-	source = 1386-26.08.0.patch::https://invent.kde.org/graphics/okular/-/merge_requests/1386.patch
-	sha256sums = 235e8e761f949b81953582e3ff6e45b8832d0d551b71bd1b5098c1ad663511e4
+	source = 1386-26.08.1.patch::https://invent.kde.org/graphics/okular/-/merge_requests/1386.patch
+	sha256sums = 7eb26c37ee42b6657526aeddd1bce71c5556e3865772a677f49b68deb46885d6
 	sha256sums = 8850f191cee5e5312fce2aa0d8415a7ab8b8ffabbd07176275bcd375087ca561
 	sha256sums = b1d005f2b210a631973d1214d0fe742fb1a50e46b4f7216fffcab4e721eda642
 

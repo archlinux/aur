@@ -4,8 +4,8 @@
 
 _pkgname=okular
 pkgname=okular-no-phonon
-pkgver=26.08.0
-pkgrel=4
+pkgver=26.08.1
+pkgrel=1
 pkgdesc='Document Viewer: applying patches from https://invent.kde.org/graphics/okular/-/merge_requests/1386'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
