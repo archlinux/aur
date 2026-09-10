@@ -2,7 +2,7 @@
 pkgname=bili-music
 _pkgname='Bili Music'
 _zhsname='午夜黑胶'
-pkgver=0.5.0
+pkgver=0.6.0
 _nodeversion=20
 pkgrel=1
 pkgdesc="A no login, no disk B station music player. Use Bilibili as your music library, listen to music without login, do not have to download.一个免登录、不落盘的 B 站音乐播放器。把哔哩哔哩当作你的曲库，听歌不必登录，不必下载。"
@@ -30,7 +30,7 @@ options=(
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('ad2688bd017719de76c0ac2ee3dc113603e344dcecdc5ac18f6479e1829d28a5')
+sha256sums=('f5dbc2eba06374c7461ba1568fb566c7202a2ade9d2799b2b624ba31e5928b1e')
 _set_build_env() {
     export HOME="${srcdir}"
     export CARGO_HOME="${srcdir}/.cargo"
