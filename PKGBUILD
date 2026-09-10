@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mineradio-vision-git
 _pkgname=Mineradio-Vision
-pkgver=3.0.1.r5.gfffe29d
+pkgver=3.0.1.r9.g4618ced
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -51,24 +51,25 @@ _get_electron_version() {
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_OVERRIDE_DIST_PATH="${electronDist}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    export CARGO_HOME="${srcdir}/.cargo"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export BUN_CONFIG_REGISTRY="https://registry.npmmirror.com"
-        export npm_config_registry="https://registry.npmmirror.com"
-        export BUN_INSTALL_DISABLE_DEFAULT_REGISTRY_FALLBACK=1
-        export npm_config_nodejs_org_mirror="https://npmmirror.com/mirrors/node"
-        export NVM_NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-        export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron"
-        export npm_config_electron_mirror="https://npmmirror.com/mirrors/electron/"
-        export BUN_BINARY_MIRROR_OVERRIDE="https://npmmirror.com/-/binary/"
-        export RUSTUP_DIST_SERVER="https://mirrors.aliyun.com/rustup"
-		export RUSTUP_UPDATE_ROOT="https://mirrors.aliyun.com/rustup/rustup"
-        rm -rf package-lock.json
-    fi
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export HOME="${srcdir}/.electron-gyp"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export npm_config_platform=linux
+	export npm_config_arch="${CARCH}"
+	export npm_config_cache="${srcdir}/.npm"
+	export BUN_INSTALL_CACHE_DIR="${srcdir}/.bun/cache"
+	export BUN_INSTALL_GLOBAL_DIR="${srcdir}/.bun/global"
+	export BUN_INSTALL_BIN="${srcdir}/.bun/bin"
+	export BUN_CONFIG_SKIP_SAVE_LOCKFILE=1
+	export BUN_JOBS="${MAKEFLAGS:--j$(nproc)}"
+	export BUN_DISABLE_DOTENV=1
+	export DO_NOT_TRACK=1
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
@@ -96,6 +97,8 @@ prepare() {
     # Fix Linux taskbar icon: use PNG instead of ICO, and set proper appUserModelId
     sed -i "s|const APP_ICON_ICO = path.join(__dirname, '..', 'build', 'icon.ico');|const APP_ICON_ICO = path.join(__dirname, '..', 'build', 'icon.png');|g" desktop/main.js
     sed -i "s/const APP_USER_MODEL_ID = _BETA_META.appUserModelId || 'com.mineradio.desktop';/const APP_USER_MODEL_ID = '${pkgname%-git}';/g" desktop/main.js
+    # Remove corrupted package-lock.json (references non-existent is-fullwidth-code-point@3.0.1)
+    rm -f package-lock.json
     bun install
 }
 build() {
