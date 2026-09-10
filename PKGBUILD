@@ -10,7 +10,7 @@ pkgname='iwinfo'
 pkgdesc='Provide wifi information about capabilities and network(s)'
 _gitname='iwinfo'
 
-pkgver="5.1.1"
+pkgver="5.1.2"
 pkgrel=1
 url="https://github.com/gene-git/iwinfo"
 
@@ -24,7 +24,7 @@ install='iwinfo.install'
 depends=(
     'python>=3.14' 
     'libcap-ng>=0.9' 
-    'pyconcurrent'
+    'python-pyconcurrent'
     'iwd'
     'glibc'
 )

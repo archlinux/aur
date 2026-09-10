@@ -1,14 +1,21 @@
 -------------------------------------------------------
  Changelog    : iwinfo
- Tags         : 4.8.0 ➙ 5.1.1
-              : 2025-11-25 ➙ 2026-09-04
+ Tags         : 5.0.0 ➙ 5.1.2
+              : 2025-11-25 ➙ 2026-09-09
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-04   : 5.1.1
+ 2026-09-09   : 5.1.2
+              - **5.1.2**
+            
+                * Change Arch package dependencies that have been renamed:
+            
+                  - pyconcurrent -> python-pyconcurrent
+
+ 2026-09-04   : 5.1.1, origin/master
               - Add meson files to repo
 
- 2026-09-04   : 5.1.0, origin/master
+ 2026-09-04   : 5.1.0
               - **5.1.0**
             
                 * Meson / meson-python for build and package management
@@ -33,10 +40,4 @@
                 * License GPL-2.0-or-later
 
  2025-11-25   : 5.0.0
-              - update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-11-25   : 4.8.0
-              - New option "-v" prints all frequencies supported by each phy
-                  mark any disabled channels, show if a channel is connect only using *no initiate radio*
-                  DFS channels may display *radar detected*
               - update Docs/Changelog Docs/${my_name}.pdf
