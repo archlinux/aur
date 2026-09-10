@@ -7,9 +7,9 @@
 
 pkgname=ddhx-git
 _pkgname=ddhx
-pkgver=0.11.0.r5.gcb1c02d
+pkgver=0.12.0.r6.gee06cc1
 pkgrel=1
-pkgdesc="Console hexadecimal file viewer"
+pkgdesc="Console hexadecimal file viewer (git version)"
 arch=('x86_64')
 url="https://github.com/dd86k/ddhx"
 license=('MIT')
