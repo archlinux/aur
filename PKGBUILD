@@ -3,7 +3,7 @@
 
 pkgname=lcevcdec-llvm
 pkgver=4.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
@@ -16,7 +16,7 @@ makedepends=(
     'clang'
     'cmake'
     'git'
-    'mold'
+    'mold-git'
     'llvm'
     'python'
     'range-v3'
