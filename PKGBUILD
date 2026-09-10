@@ -1,9 +1,9 @@
 
 _pkgname=noctalia-greeter
-_tagver=1.3.1
+_tagver=1.5.0
 pkgname=noctalia-greeter
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='Minimal greetd login greeter with a bundled wlroots compositor'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/noctalia-greeter'
@@ -42,7 +42,7 @@ optdepends=(
 provides=('noctalia-greeter')
 conflicts=('noctalia-greeter-git' 'noctalia-greeter-bin')
 source=("${_pkgname}-${_tagver}.tar.gz::${url}/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('c3a2fce1d15efcf9c87f22b149d03c7dd378f273290c1488190cf8445edbc14d')
+sha256sums=('268bf4e4c5a5d915cd7d9f75d725959222474043b63c671092fe0fda0908d018')
 
 build() {
   CXXFLAGS+=" -Wno-unused-result"
