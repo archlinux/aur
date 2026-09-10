@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sleek-bin
-pkgver=2.0.26
-_electronversion=43
+pkgver=2.0.28
+_electronversion=44
 pkgrel=1
-pkgdesc="todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS).(Prebuilt version.Use system-wide electron)"
+pkgdesc="An open-source (FOSS) todo manager based on the todo.txt syntax."
 arch=(
     'aarch64'
     'x86_64'
@@ -23,8 +23,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('0cbf66efd20da740b34fc36b0154d12185daca9af19d7c4363df6ec926da573c'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('717277a7917e21735375441ec949075db366707260cef7f05dcd83d73ac683fb')
-sha256sums_x86_64=('e8ffbe7f7ad7fb043704d2cea0c44c5139fdaab41b711c3c8829a9d5aa941a3a')
+sha256sums_aarch64=('2f8ca0a9cacc71baf3d780ef2231f11682837798cbfd773068fac1085e96518f')
+sha256sums_x86_64=('ab10167a2115a2a534bd5b13c6eb52f17aa8222635035d58d27d279aeef39003')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
