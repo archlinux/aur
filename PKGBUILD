@@ -1,6 +1,6 @@
 # Maintainer: 1000Hz <1000Hz radiowave + aur at gmail>
 pkgname=btrfs-file-restorer
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A GUI tool to recover files from damaged and unmountable btrfs filesystem"
 arch=('x86_64')
@@ -8,44 +8,35 @@ url="https://github.com/dsvi/Btrfs-File-Restorer"
 license=('zlib')
 
 depends=('hicolor-icon-theme' 'btrfs-progs')
-makedepends=('binutils')
 
-source=("https://github.com/dsvi/Btrfs-File-Restorer/releases/download/v${pkgver}/btrfs-file-restorer_${pkgver}-1_amd64.deb")
-sha256sums=('3edb1b85bc5986d86d317ee3f64b9a5f0a6f550004a62b4e297e3fc9621f1cf8')
+source=("https://github.com/dsvi/Btrfs-File-Restorer/releases/download/v${pkgver}/Btrfs-File-Restorer.AppImage")
+sha256sums=('1940cadd0db019454e04c4d0592f50411c21040611d0a6f973871ba7f2fefcea')
+
+build() {
+    # Extract the AppImage payload.
+    chmod +x "Btrfs-File-Restorer.AppImage"
+    ./Btrfs-File-Restorer.AppImage --appimage-extract
+}
 
 package() {
-    # 1. Extract the .deb archive
-    ar x "btrfs-file-restorer_${pkgver}-1_amd64.deb"
-    bsdtar -xf data.tar.* -C "${pkgdir}"
-    rm -f control.tar.* data.tar.* debian-binary
+    # 1. Install the app (jpackage layout: bin/ launcher + lib/ with app jars and bundled JRE)
+    install -d "${pkgdir}/usr/lib/${pkgname}"
+    cp -a "squashfs-root/bin" "squashfs-root/lib" "${pkgdir}/usr/lib/${pkgname}/"
 
-    # 2. Move the entire app from /opt to /usr/lib
-    install -d "${pkgdir}/usr/lib"
-    mv "${pkgdir}/opt/btrfs-file-restorer" "${pkgdir}/usr/lib/"
-    rmdir "${pkgdir}/opt"
-
-    # 3. Symlink the binary to /usr/bin
+    # 2. Symlink the launcher into /usr/bin
     install -d "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/btrfs-file-restorer/bin/btrfs-file-restorer" "${pkgdir}/usr/bin/btrfs-file-restorer"
+    ln -s "/usr/lib/${pkgname}/bin/btrfs-file-restorer" "${pkgdir}/usr/bin/btrfs-file-restorer"
 
-    # 4. Move the icon to the standard hicolor directory
-    install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-    mv "${pkgdir}/usr/lib/btrfs-file-restorer/lib/btrfs-file-restorer.png" \
-       "${pkgdir}/usr/share/icons/hicolor/256x256/apps/btrfs-file-restorer.png"
+    # 3. Install the icon into the standard hicolor directory (512x512)
+    install -d "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+    install -m 644 "squashfs-root/btrfs-file-restorer.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/btrfs-file-restorer.png"
 
-    # 5. Patch and install the desktop file
-    # (Note: We still use a quick 'find' for the .desktop file only, because
-    # jpackage inconsistently places it in either /opt/... or /usr/share/applications/)
+    # 4. Install the desktop file with clean, standard paths
     install -d "${pkgdir}/usr/share/applications"
-    local _desktop_file=$(find "${pkgdir}" -name "*.desktop" -type f | head -n 1)
-
-    if [ -n "${_desktop_file}" ]; then
-        # Overwrite Exec and Icon lines with clean, standard paths
-        sed -i "s|^Exec=.*|Exec=/usr/bin/btrfs-file-restorer|g" "${_desktop_file}"
-        sed -i "s|^Icon=.*|Icon=btrfs-file-restorer|g" "${_desktop_file}"
-
-        # Move to standard location and ensure it has the clean name
-        mv "${_desktop_file}" "${pkgdir}/usr/share/applications/btrfs-file-restorer.desktop"
-        chmod 644 "${pkgdir}/usr/share/applications/btrfs-file-restorer.desktop"
-    fi
+    sed -e "s|^Exec=.*|Exec=/usr/bin/btrfs-file-restorer|" \
+        -e "s|^Icon=.*|Icon=btrfs-file-restorer|" \
+        "squashfs-root/btrfs-file-restorer.desktop" \
+        > "${pkgdir}/usr/share/applications/btrfs-file-restorer.desktop"
+    chmod 644 "${pkgdir}/usr/share/applications/btrfs-file-restorer.desktop"
 }
