@@ -2,10 +2,10 @@
 pkgname=smartsub-bin
 _pkgname=SmartSub
 _zhsname='妙幕'
-pkgver=3.6.0
+pkgver=3.8.0
 _electronversion=30
 pkgrel=1
-pkgdesc="A cross-platform client side tool that can generate subtitle files for video or audio in batches, and supports subtitle translation. It supports Baidu, Volcano, OpenAI, Olama, DeepSeek and other translators.(Prebuilt version,use system-wide electron)"
+pkgdesc="A cross-platform client side tool that can generate subtitle files for video or audio in batches, and supports subtitle translation. It supports Baidu, Volcano, OpenAI, Olama, DeepSeek and other translators."
 arch=('x86_64')
 url="https://smartsub.lxd.one/"
 _ghurl="https://github.com/buxuku/SmartSub"
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    'python-openai-whisper'
+    #'python-openai-whisper'
     'ffmpeg'
     'nodejs'
 )
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/buxuku/SmartSub/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('91fc4473fac33dcd45d846b4dc585d3acc93ebf1d927e79a16df2f02355e4b0b'
+sha256sums=('4a1dc48b61e7956fbc3a227a917d77645ecefef9f1f64564e0512bc02509ab29'
             '324178aaf0ebe3ab663803d3a63439cd8cdf02c3a4a40609c9ac6f8af517faed'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
