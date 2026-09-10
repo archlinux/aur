@@ -1,0 +1,36 @@
+post_install() {
+    cat <<'EOF'
+>>> luatos-mcp — LuatOS MCP server（供 AI 助手调用）
+
+注意：这不是交互式命令行工具，而是 MCP (Model Context Protocol) 服务器，
+通过 stdio 与 AI 客户端通信。直接运行会阻塞等待握手：
+
+    luatos-mcp          # 等待 stdin 上的 MCP initialize 请求
+    luatos-mcp --help   # 无意义：会报 "connection closed: initialize request"
+
+配置到 AI 客户端（以 Claude Desktop 的 claude_desktop_config.json 为例）：
+
+    {
+      "mcpServers": {
+        "luatos": {
+          "command": "luatos-mcp"
+        }
+      }
+    }
+
+Cursor 及其他支持 MCP 的客户端同理，把 command 设为 luatos-mcp 即可。
+
+能力划分：
+    - 查询类（串口 / SOC / 项目 / 资源）走库直调，零延迟
+    - 刷机、日志等硬件操作会调用 luatos-cli 子进程
+      因此本包依赖同版本的 luatos-cli，已随依赖自动安装
+
+排查：若硬件操作失败，先确认 luatos-cli 本身可用：
+
+    luatos-cli doctor
+EOF
+}
+
+post_upgrade() {
+    post_install
+}

@@ -1,0 +1,29 @@
+post_install() {
+    cat <<'EOF'
+>>> luatos-log-ffi — SOC 二进制日志解码器（C ABI）
+
+头文件：/usr/include/luatos_log.h
+库文件：/usr/lib/libluatos_log_ffi.so
+
+导出的 C 函数：
+    int  luatos_soclog_analyze(...)  解码 Air1601 / Air1602 / CCM4211 日志帧
+    int  pySoclogAnalyze(...)        与上一函数等价的别名，可直接替换第三方 DLL
+    void luatos_soclog_version(uint32_t *major, uint32_t *minor, uint32_t *patch);
+
+用法一：pkg-config
+    cc demo.c -o demo \
+        $(pkgconf --cflags luatos-log-ffi) \
+        $(pkgconf --libs   luatos-log-ffi)
+
+用法二：CMake
+    find_package(luatos-log-ffi REQUIRED)
+    target_link_libraries(my_app PRIVATE luatos-log-ffi::luatos-log-ffi)
+
+提示：本包只提供动态库（上游 crate 为 cdylib + rlib，未生成 .a），
+      因此不支持静态链接。
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
