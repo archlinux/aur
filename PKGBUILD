@@ -2,7 +2,7 @@
 
 _name=openinference-instrumentation-dspy
 pkgname=python-$_name
-pkgver=0.1.44
+pkgver=0.1.45
 pkgrel=1
 pkgdesc="OpenInference DSPy Instrumentation."
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-dspy' 'python-opentelemetry-sdk' 'python-pytest-recording' 'python-litellm' 'python-urllib3' 'python-vcrpy')
 optdepends=('python-dspy: instruments')
 source=("$_repo/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('a2153b575783853cf918d01a9119488be9bc3020dcebaf309f7e9f0e574458ba')
+sha256sums=('50709b44ea22b907a1026753ab7d361232d31ae88934fff9c372a0de12d08909')
 
 build() {
   cd "$srcdir"/${_name%%-*}-$pkgname-v$pkgver/${pkgname/-//instrumentation/}
