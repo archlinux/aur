@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=senpi
-pkgver=2026.9.10
+pkgver=2026.9.10_2
 pkgrel=1
 _npmver=${pkgver//_/-}
 pkgdesc='Opinionated coding agent CLI based on pi'
@@ -30,7 +30,7 @@ source_aarch64=(
   "$pkgname-$_npmver-clipboard-arm64::https://registry.npmjs.org/@mariozechner/clipboard-linux-arm64-gnu/-/clipboard-linux-arm64-gnu-$_clipboard_ver.tgz"
 )
 noextract=("$pkgname-$_npmver.tgz")
-sha256sums=('adeff0a9095204da634f6aa1183c8bf1a3869e8912c767adbdbc3782953bc47a'
+sha256sums=('612142dc5451ad384ac560a56f68baeaffdb5d4ebd901ac962024c08b12c06c2'
             'b572487f123bf259487f7dab25923af16fecd08ed7a2c50964f393282dba883c')
 sha256sums_x86_64=('106b4f4a9218991056912937dfc6b7a2311d5ddf360c9692a765559656beb05e')
 sha256sums_aarch64=('652eb7575ab534099a3698cb08722aa4b985b681c84e6e13dc8bcb57db94d42d')
