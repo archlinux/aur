@@ -1,7 +1,7 @@
 # Maintainer: Hewel <13846369+hewel@users.noreply.github.com>
 
 pkgname=jellypilot
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Jellyfin and Emby companion app with embedded MPV from the pinned mpv fork'
 arch=('x86_64')
