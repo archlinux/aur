@@ -1,5 +1,5 @@
 pkgbase = factory-ai-droid-cli-rnoz-bin
-	pkgdesc = Factory.ai Droid CLI - Always fresh terminal AI assistant with zero-waste deterministic titling
+	pkgdesc = Factory.ai Droid CLI with zero-waste titling and cross-harness keybindings
 	pkgver = 0.216.0
 	pkgrel = 1
 	url = https://github.com/rNoz/factory-ai-droid-cli-rnoz
@@ -17,9 +17,11 @@ pkgbase = factory-ai-droid-cli-rnoz-bin
 	conflicts = factory-cli
 	conflicts = factory-cli-bin
 	options = !strip
-	source = patch-droid.py
+	source = patch-title.py
+	source = patch_keybindings.py
 	source = factory-ai-droid-cli-rnoz-bin.install
 	sha256sums = 6f8fc3992526e8c8b0a4af11f029a633498f7704e9c6a736e772788d18243d00
-	sha256sums = 7f443dc10fdafdcc197c287a2b6522ac1b8d45f8e2973d9405f1792a0f3eea95
+	sha256sums = 82a670bc07a21d67ec7e4026905739302cafb1bda893311c3a46e4ccc49fa278
+	sha256sums = a66b665fef55af8102ea6c84391a410ab9a9aefa1191a4650eae3c53c78bec08
 
 pkgname = factory-ai-droid-cli-rnoz-bin

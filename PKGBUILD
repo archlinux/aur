@@ -2,7 +2,7 @@
 pkgname=factory-ai-droid-cli-rnoz-bin
 pkgver=0.216.0
 pkgrel=1
-pkgdesc="Factory.ai Droid CLI - Always fresh terminal AI assistant with zero-waste deterministic titling"
+pkgdesc="Factory.ai Droid CLI with zero-waste titling and cross-harness keybindings"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rNoz/factory-ai-droid-cli-rnoz"
 license=('factory.ai')
@@ -17,12 +17,14 @@ options=('!strip')
 install=factory-ai-droid-cli-rnoz-bin.install
 
 source=(
-  "patch-droid.py"
+  "patch-title.py"
+  "patch_keybindings.py"
   "$install"
 )
 sha256sums=(
   '6f8fc3992526e8c8b0a4af11f029a633498f7704e9c6a736e772788d18243d00'
-  '7f443dc10fdafdcc197c287a2b6522ac1b8d45f8e2973d9405f1792a0f3eea95'
+  '82a670bc07a21d67ec7e4026905739302cafb1bda893311c3a46e4ccc49fa278'
+  'a66b665fef55af8102ea6c84391a410ab9a9aefa1191a4650eae3c53c78bec08'
 )
 
 package() {
@@ -89,11 +91,12 @@ package() {
     fi
     msg2 "Checksum verified for $arch_target"
 
-    msg2 "Applying zero-waste titling patch to $output_bin..."
+    msg2 "Applying deterministic titling and keybinding patches to $output_bin..."
     cp -f "$raw_file" "$output_bin"
     chmod +x "$output_bin"
 
-    python3 "$srcdir/patch-droid.py" "$output_bin" --test
+    python3 "$srcdir/patch-title.py" "$output_bin" --test
+    python3 "$srcdir/patch_keybindings.py" "$output_bin" --test
   }
 
   if [[ "$architecture" == "x64" ]]; then
@@ -168,7 +171,7 @@ package() {
   # Create launcher script in /usr/bin/droid
   cat > "$pkgdir/usr/bin/droid" <<'EOF'
 #!/bin/sh
-# Factory CLI launcher (Patched: zero title LLM token waste)
+# Factory CLI launcher (patched titling and cross-harness keybindings)
 export PATH="/usr/lib/factory:$PATH"
 exec /usr/lib/factory/droid "$@"
 EOF

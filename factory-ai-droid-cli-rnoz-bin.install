@@ -1,6 +1,6 @@
 post_install() {
   echo ""
-  echo "==> Factory CLI (Patched: zero title LLM token waste) installed!"
+  echo "==> Factory CLI (patched titling and keybindings) installed!"
   echo "==> Run 'droid' to get started."
   echo ""
   echo "    The 'droid' command is now available in your PATH."
@@ -12,7 +12,7 @@ post_install() {
 
 post_upgrade() {
   echo ""
-  echo "==> Factory CLI has been upgraded to version $2 (zero title LLM token waste)"
+  echo "==> Factory CLI has been upgraded to version $2 (patched titling and keybindings)"
   echo "==> Run 'droid' to continue using Factory CLI"
   echo ""
 }
