@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-vicinae
+	pkgdesc = Companion GNOME extension for Vicinae with clipboard monitoring and window management APIs
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://github.com/vicinaehq/gnome-extension
+	arch = any
+	license = MIT
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-vicinae-git
+	noextract = vicinae@dagimg-dot-1.7.2.zip
+	source = vicinae@dagimg-dot-1.7.2.zip::https://github.com/vicinaehq/gnome-extension/releases/download/v1.7.2/vicinae@dagimg-dot.shell-extension-v1.7.2.zip
+	sha256sums = d0d79c762c7cac44941d4f74617b156c3a27df255320b8c81a20a3fe1f17284a
+
+pkgname = gnome-shell-extension-vicinae
