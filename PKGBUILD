@@ -5,7 +5,7 @@ pkgver=0.5.0.r799.g3bfcabe7
 pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
-url='https://github.com/SHORiN-KiWATA/Miyu'
+url='https://github.com/SHORiN-KiWATA/miyu-agent'
 license=('MIT' 'OFL-1.1')
 options=('!lto' '!strip' '!debug')
 export LC_ALL=C.UTF-8
@@ -26,7 +26,7 @@ conflicts=('miyu')
 # 字体(Noto CJK / Noto Emoji / JetBrains Mono)自 0.4.4 起 vendor 在源码树
 # assets/fonts 下,不再从上游单独拉取。
 source=(
-  'miyu::git+https://github.com/SHORiN-KiWATA/Miyu.git'
+  'miyu::git+https://github.com/SHORiN-KiWATA/miyu-agent.git'
   'shorinwiki::git+https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide.git'
 )
 sha256sums=(
