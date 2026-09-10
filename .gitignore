@@ -1,0 +1,15 @@
+# AUR package repo: ignore everything, then whitelist the real sources.
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!README.md
+!LICENSE-NOTICE
+
+# Local source files listed in source=() in PKGBUILD
+!collect_backend.py
+!test_workspace.py
+!high-tide
+!dev.hightide.Launcher.desktop
+!dev.hightide.capture.policy

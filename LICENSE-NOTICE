@@ -1,0 +1,8 @@
+This local snapshot has no declared project-wide distribution license in the
+source repository. LicenseRef-Unknown records that fact; it does not grant a
+license or change ownership of High Tide, Nicotine Loader, or bundled components.
+
+The snapshot contains prebuilt native bridges and extraction support artifacts.
+It excludes the per-user Vape payload, account tokens, captures and Wine prefix.
+Licensing of the project and bundled components needs review before public
+distribution. This package has not been published to the AUR.

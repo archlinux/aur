@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=High Tide
+Comment=Vape launcher for Linux
+Exec=high-tide
+Icon=dev.hightide.Launcher
+Terminal=false
+Categories=Game;
+Keywords=THC;Vape;Minecraft;
+StartupNotify=true
+StartupWMClass=dev.hightide.Launcher

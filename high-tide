@@ -1,0 +1,82 @@
+#!/usr/bin/python3
+"""Start the packaged app with a writable, per-user backend workspace."""
+import fcntl
+import hashlib
+import json
+import os
+from pathlib import Path
+import shutil
+import sys
+import tempfile
+
+
+def provision(source, destination):
+    manifest = source / "backend-manifest.json"
+    revision = manifest.read_bytes()
+    destination.mkdir(parents=True, exist_ok=True, mode=0o700)
+    with (destination / ".package.lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        marker = destination / ".package-manifest.json"
+        if marker.exists() and marker.read_bytes() == revision:
+            return destination
+        previous = json.loads(marker.read_bytes()) if marker.exists() else {}
+        current = json.loads(revision)
+        # Only package-owned files are replaced. Captures, Wine, payloads, HWID,
+        # account settings and logs are never copied from or removed by a package.
+        for relative in current:
+            entry = Path(relative)
+            if entry.is_absolute() or ".." in entry.parts:
+                raise ValueError("Invalid backend manifest path")
+            original = source / "backend" / entry
+            target = destination / entry
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with tempfile.NamedTemporaryFile(dir=target.parent, delete=False) as temp:
+                temporary = Path(temp.name)
+            try:
+                shutil.copyfile(original, temporary)
+                temporary.chmod(original.stat().st_mode & 0o777)
+                temporary.replace(target)
+            finally:
+                temporary.unlink(missing_ok=True)
+        # Retire only files listed by the previous package. Keep edited copies
+        # outside the source tree so obsolete Java classes cannot enter a build.
+        for relative in previous.keys() - current.keys():
+            entry = Path(relative)
+            if entry.is_absolute() or ".." in entry.parts:
+                raise ValueError("Invalid previous backend manifest path")
+            target = destination / entry
+            if not target.is_file():
+                continue
+            digest = hashlib.sha256(target.read_bytes()).hexdigest()
+            if digest == previous[relative].get("sha256"):
+                target.unlink()
+            else:
+                backup = destination / ".retired-package-files" / digest / entry
+                backup.parent.mkdir(parents=True, exist_ok=True)
+                target.replace(backup)
+        # These generated entry points must rebuild against updated sources.
+        for relative in ("platform/loader/build/high-tide-loader.jar",
+                         "stage0/gat_capture/build/gat-capture-agent.jar"):
+            (destination / relative).unlink(missing_ok=True)
+        temporary = marker.with_suffix(".tmp")
+        temporary.write_bytes(revision)
+        temporary.replace(marker)
+    return destination
+
+
+def main():
+    # Also works in an extracted package tree for local smoke checks.
+    installed = Path(__file__).resolve().parent.parent / "lib/high-tide"
+    if "HIGH_TIDE_ROOT" not in os.environ:
+        data = Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local/share"))
+        if not data.is_absolute():
+            data = Path.home() / ".local/share"
+        root = provision(installed, data / "high-tide/workspace")
+        os.environ["HIGH_TIDE_ROOT"] = str(root)
+    os.environ["HIGH_TIDE_CAPTURE_HELPER"] = str(installed / "high-tide-capture-helper")
+    binary = str(installed / "high-tide")
+    os.execv(binary, [binary, *sys.argv[1:]])
+
+
+if __name__ == "__main__":
+    main()
