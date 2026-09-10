@@ -1,14 +1,14 @@
 pkgbase = svt-jpeg-xs-llvm-git
 	pkgdesc = An implementation of the JPEG XS (ISO/IEC 21122) codec (git version) — built with Clang and mold
 	pkgver = 0.9.0.r50.gc36f29a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/OpenVisualCloud/SVT-JPEG-XS/
 	arch = x86_64
 	license = BSD-2-Clause-Patent
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
-	makedepends = mold
+	makedepends = mold-git
 	makedepends = llvm
 	makedepends = yasm
 	depends = glibc

@@ -3,13 +3,13 @@
 
 pkgname=svt-jpeg-xs-llvm-git
 pkgver=0.9.0.r50.gc36f29a
-pkgrel=3
+pkgrel=4
 pkgdesc='An implementation of the JPEG XS (ISO/IEC 21122) codec (git version) — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/OpenVisualCloud/SVT-JPEG-XS/'
 license=('BSD-2-Clause-Patent')
 depends=('glibc')
-makedepends=('clang' 'cmake' 'git' 'mold' 'llvm' 'yasm')
+makedepends=('clang' 'cmake' 'git' 'mold-git' 'llvm' 'yasm')
 provides=('svt-jpeg-xs-git' 'svt-jpeg-xs')
 conflicts=('svt-jpeg-xs-git' 'svt-jpeg-xs')
 source=('git+https://github.com/OpenVisualCloud/SVT-JPEG-XS.git'
