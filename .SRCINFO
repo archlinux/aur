@@ -1,6 +1,6 @@
 pkgbase = r-mirt
 	pkgdesc = Multidimensional Item Response Theory
-	pkgver = 1.46.1
+	pkgver = 1.47
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mirt
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = r-mirt
 	optdepends = r-plink
 	optdepends = r-mirtCAT
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/mirt_1.46.1.tar.gz
-	sha256sums = d783f1b56ab3fafebe2c5108cc135cbb0adbcf51a6535503f59c95f65ade9e09
+	source = https://cran.r-project.org/src/contrib/mirt_1.47.tar.gz
+	sha256sums = f92727cdc00af8f0bf9d530480f80a88696682008ac36ff22829edf9d452472a
 
 pkgname = r-mirt
