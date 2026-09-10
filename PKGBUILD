@@ -2,7 +2,7 @@
 # Maintainer: Joshua Winkler <josh@bemoty.dev>
 
 pkgname='pomogoro-bin'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Simple Pomodoro timer'
 url='https://github.com/bemoty/pomogoro'
@@ -12,10 +12,10 @@ provides=('pomogoro')
 conflicts=('pomogoro')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bemoty/pomogoro/releases/download/v${pkgver}/pomogoro_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('4c09d30a8ccf529ab4f3aa3c0017bf8b42552c82d67137890ea5d3394764b6d5')
+sha256sums_aarch64=('14b511b9b07287148c15fd10f42ebe232a03468ee8a51b94fae0443c822ff1af')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bemoty/pomogoro/releases/download/v${pkgver}/pomogoro_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('3cbaf83a3cba2e3314b7cbfb226e7886d2b2997af8b623074d1ac15fc86763f5')
+sha256sums_x86_64=('829c3738782ae46b6c1ba2100dd40468a616847b5ccb9775042e38c7612f0854')
 
 package() {
   install -Dm755 "./pomogoro" "${pkgdir}/usr/bin/pomogoro"
