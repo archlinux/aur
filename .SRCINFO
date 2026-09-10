@@ -1,16 +1,15 @@
 pkgbase = yacd-meta
 	pkgdesc = Yet Another Clash Dashboard (MetaCubeX fork of yacd)
-	pkgver = 0.3.8
-	pkgrel = 3
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/MetaCubeX/Yacd-meta
 	install = yacd-meta.install
 	arch = any
 	license = MIT
-	makedepends = nodejs
-	makedepends = pnpm
+	makedepends = bun
 	optdepends = mihomo: Another Clash Kernel by MetaCubeX
 	provides = yacd-meta
-	source = yacd-meta-0.3.8.tar.gz::https://github.com/MetaCubeX/Yacd-meta/archive/refs/tags/v0.3.8.tar.gz
-	sha256sums = 0e7e72edb35b5da448d2d6a5c324e9d1d8ca354e1466692f93163208ea76a1a5
+	source = yacd-meta-0.4.0.tar.gz::https://github.com/MetaCubeX/Yacd-meta/archive/refs/tags/v0.4.0.tar.gz
+	b2sums = 2d75504cad5fce85a9403829660c82611a9dd89deb220035a18c7643640f2b84c95a0e38b697f89180f65b8da702131a720755e859806f14130661cc764c70b4
 
 pkgname = yacd-meta

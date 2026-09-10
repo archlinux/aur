@@ -2,37 +2,27 @@
 
 pkgname=yacd-meta
 _pkgname=Yacd-meta
-pkgver=0.3.8
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Yet Another Clash Dashboard (MetaCubeX fork of yacd)"
 arch=('any')
 url="https://github.com/MetaCubeX/Yacd-meta"
 license=('MIT')
 install=yacd-meta.install
-makedepends=('nodejs' 'pnpm')
+makedepends=('bun')
 optdepends=('mihomo: Another Clash Kernel by MetaCubeX')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0e7e72edb35b5da448d2d6a5c324e9d1d8ca354e1466692f93163208ea76a1a5')
-
-_pnpm_setup() {
-    export PNPM_HOME="${srcdir}/.pnpm-home"
-    export pnpm_config_store_dir="${srcdir}/.pnpm-store"
-    export pnpm_config_cache_dir="${srcdir}/.pnpm-cache"
-    export pnpm_config_state_dir="${srcdir}/.pnpm-state"
-}
+b2sums=('2d75504cad5fce85a9403829660c82611a9dd89deb220035a18c7643640f2b84c95a0e38b697f89180f65b8da702131a720755e859806f14130661cc764c70b4')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
-    _pnpm_setup
-    pnpm fetch --ignore-scripts
+    bun install --frozen-lockfile --ignore-scripts --cache-dir="${srcdir}/.bun-cache"
 }
 
 build() {
     cd "${_pkgname}-${pkgver}"
-    _pnpm_setup
-    pnpm install --offline --frozen-lockfile --ignore-scripts
-    pnpm build
+    bun run --no-install build
 }
 
 package() {
