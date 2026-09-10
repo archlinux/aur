@@ -1,0 +1,22 @@
+pkgbase = joy-client-git
+	pkgdesc = Cliente que consome API Xtream feita com Electron e React.
+	pkgver = 0.8.3.r39.gdb72fac
+	pkgrel = 1
+	url = https://github.com/emanoelhenrick/Joy
+	arch = any
+	license = Unlicense
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = jq
+	makedepends = zip
+	depends = electron30
+	provides = joy-client=0.8.3
+	conflicts = joy-client
+	source = joy-client.git::git+https://github.com/emanoelhenrick/Joy
+	source = joy-client.sh
+	sha256sums = SKIP
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = joy-client-git
