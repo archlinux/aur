@@ -1,15 +1,16 @@
 pkgbase = ni-wine
 	pkgdesc = Native Instruments software under Wine — setup, launch, and product management
-	pkgver = 2.1.3
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/selimbucher/native-instruments
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = mingw-w64-gcc
 	depends = python
 	depends = wine
 	depends = winetricks
@@ -18,16 +19,14 @@ pkgbase = ni-wine
 	depends = msitools
 	depends = procps-ng
 	depends = xorg-server-xvfb
-	depends = xdotool
 	depends = zenity
 	depends = xdg-utils
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	optdepends = wine-staging: recommended Wine build for Native Instruments
-	optdepends = firefox: automatic download-URL capture (any firefox- or chromium-family browser works)
-	optdepends = chromium: automatic download-URL capture (alternative to firefox)
+	optdepends = xdotool: repositions off-screen windows on X11 desktops
 	optdepends = yad: nicer-looking setup progress dialog
-	source = ni-wine::git+https://github.com/selimbucher/native-instruments.git#commit=8d11359a56527f80e8fd62a73148ba784b37f2b7
+	source = ni-wine::git+https://github.com/selimbucher/native-instruments.git#commit=b66d8152171f55692bad3cc98e4109c3ec87e73b
 	sha256sums = SKIP
 
 pkgname = ni-wine
