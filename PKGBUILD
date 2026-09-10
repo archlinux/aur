@@ -1,6 +1,6 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 pkgname=xmcl-electron-bin
-pkgver=0.68.1
+pkgver=0.69.0
 pkgrel=1
 pkgdesc="X Minecraft Launcher - An Open Source Minecraft Launcher with Modern UX. Provides a Disk Efficient way to manage all your Mods!"
 arch=('x86_64' 'aarch64')
@@ -31,9 +31,7 @@ sha256sums_aarch64=('SKIP')
 package() {
     install -d ${pkgdir}/usr/lib/xmcl
     asar e ${srcdir}/app-${pkgver}-${CARCH}.asar ${pkgdir}/usr/lib/xmcl/
-#   install -Dm 644 ${srcdir}/app-${pkgver}-${CARCH}.asar ${pkgdir}/usr/lib/xmcl/app.asar
     install -Dm 644 ${pkgdir}/usr/lib/xmcl/dark@256x256.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/xmcl.png
-#   install -Dm 644 ${srcdir}/dark_512x512x32.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/xmcl.png
     install -Dm 644 ${srcdir}/xmcl.desktop ${pkgdir}/usr/share/applications/xmcl.desktop
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/xmcl" <<EOF
 #!/usr/bin/bash
