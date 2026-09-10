@@ -2,7 +2,7 @@
 _base=felupe
 pkgname=python-${_base}
 pkgdesc="Finite Element Analysis"
-pkgver=10.1.0
+pkgver=11.0.0
 pkgrel=1
 arch=(any)
 url="https://github.com/adtzlr/${_base}"
@@ -20,7 +20,7 @@ optdepends=('python-einsumt: for parallel assembly'
   'python-jax: for automatic differentiation support'
   'python-tqdm: for showing progress bars during job evaluation')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('40d56bc9a851592565700e4bc59592a7b44ab679ec0b5f58d4e99f4506993ecd63b49e387115c94fedd5224995057e2b462c0eeb93efe40d2cdbc9a3ed71e95b')
+sha512sums=('352c3f5f8d71f934077f0e6310a0a46399b31595e7261900564a41ae3c194d0607ab0dd37383cda0e37405528083247d59ad9681330f33f9d08834ed219b4751')
 
 build() {
   cd ${_base}-${pkgver}

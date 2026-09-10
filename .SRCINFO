@@ -1,6 +1,6 @@
 pkgbase = python-felupe
 	pkgdesc = Finite Element Analysis
-	pkgver = 10.1.0
+	pkgver = 11.0.0
 	pkgrel = 1
 	url = https://github.com/adtzlr/felupe
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = python-felupe
 	optdepends = python-tensortrax: for automatic differentiation support
 	optdepends = python-jax: for automatic differentiation support
 	optdepends = python-tqdm: for showing progress bars during job evaluation
-	source = felupe-10.1.0.tar.gz::https://github.com/adtzlr/felupe/archive/v10.1.0.tar.gz
-	sha512sums = 40d56bc9a851592565700e4bc59592a7b44ab679ec0b5f58d4e99f4506993ecd63b49e387115c94fedd5224995057e2b462c0eeb93efe40d2cdbc9a3ed71e95b
+	source = felupe-11.0.0.tar.gz::https://github.com/adtzlr/felupe/archive/v11.0.0.tar.gz
+	sha512sums = 352c3f5f8d71f934077f0e6310a0a46399b31595e7261900564a41ae3c194d0607ab0dd37383cda0e37405528083247d59ad9681330f33f9d08834ed219b4751
 
 pkgname = python-felupe
