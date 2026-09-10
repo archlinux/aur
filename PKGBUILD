@@ -3,13 +3,13 @@
 _pkgname=xavs
 pkgname=${_pkgname}-llvm
 pkgver=0.1.55
-pkgrel=2
+pkgrel=3
 pkgdesc="XAVS is to implement high quality encoder and decoder of the Audio Video Standard of China (AVS) — built with Clang and mold."
 arch=(i686 x86_64 arm)
 url="http://xavs.sourceforge.net/"
 license=(GPL)
 depends=()
-makedepends=(yasm clang mold llvm)
+makedepends=(yasm clang mold-git llvm)
 provides=('xavs')
 conflicts=('xavs')
 #options=(!strip)
