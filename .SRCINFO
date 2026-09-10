@@ -1,0 +1,13 @@
+pkgbase = mdcon-bin
+	pkgdesc = Utility for generating Table of Contents from Markdown file.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Martan03/mdcon
+	arch = x86_64
+	license = GPL3
+	provides = mdcon
+	conflicts = mdcon
+	source = https://github.com/Martan03/mdcon/releases/download/v0.1.0/mdcon-v0.1.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 9343d4ac5def3098e83d4bfdc26a445c77d48f0246ace81abc0a24e9a11c3d45
+
+pkgname = mdcon-bin
