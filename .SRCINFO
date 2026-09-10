@@ -1,6 +1,6 @@
 pkgbase = kobe
 	pkgdesc = CLI for pools of pre-warmed Kubernetes virtual clusters
-	pkgver = 0.44.0
+	pkgver = 0.44.1
 	pkgrel = 1
 	url = https://github.com/kunobi-ninja/kobe
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kobe
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = kobe-0.44.0.tar.gz::https://github.com/kunobi-ninja/kobe/archive/v0.44.0.tar.gz
-	sha256sums = 50481b824634b9b1ef5f06c39f65e15f8eb7a70916c7a26cb0dc4177b70fb9eb
+	source = kobe-0.44.1.tar.gz::https://github.com/kunobi-ninja/kobe/archive/v0.44.1.tar.gz
+	sha256sums = e0d35ddda2bead75630e90641a6b85af7234f3d187572c1d409051524cd08db3
 
 pkgname = kobe
