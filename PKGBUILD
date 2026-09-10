@@ -1,7 +1,7 @@
 # Maintainer: Abubakar Omer <aur@aolabs.dev>
 
 pkgname=talanoa-bin
-pkgver=0.10.0
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="Talanoa is a modern email client that is designed to be fast, secure, and easy to use"
 arch=('x86_64')
@@ -32,3 +32,4 @@ sha224sums=('96d7e8f071de49af82630dfee7c49ef1e1a41e27be5b4fc47c183edf')
 sha224sums=('49c24c677b272c548de27517f90ece7466180bacbc27fba6e4b76fcc')
 sha224sums=('7f048bb933719a0cc18360c2aae991e51fdd0d85a22d657944019c64')
 sha224sums=('5d03272c061a7b778ed4cb091da680d96047b09b579c164cf2a01748')
+sha224sums=('85351b740e5a906f06a569ff2465de350e6e07f8969a838b5946d9fd')
