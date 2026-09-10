@@ -1,7 +1,7 @@
 # Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
 
 pkgname=iqtree-bin
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="Efficient phylogenomic software by maximum likelihood"
 _pkgname=iqtree3
@@ -13,7 +13,7 @@ provides=("iqtree=${pkgver}")
 conflicts=('iqtree')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}-Linux-intel.tar.gz::${url}/releases/download/v${pkgver}/iqtree-${pkgver}-Linux-intel.tar.gz")
-sha256sums=('ac87dee78d06b67a1be87fff4a325358d038b5ae947308e52b3cf23829521aa8')
+sha256sums=('d422cb2b8f04825faea753afda25c60de6611537d07ec8fcd0033e70cb042839')
 
 # Upstream ships a statically-linked binary (ldd: not a dynamic executable),
 # so there are no runtime shared-library deps and no build step.
