@@ -1,43 +1,27 @@
 # Maintainer: rikkichy
+# Use the prepared, vendored source archive from packaging/build-release.sh.
+# render-aur replaces only pkgver, source, sha256sums and _srcdir below.
 pkgname=openwave
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="Linux control application for the Elgato Wave XLR"
-arch=('any')
+pkgdesc="Linux control application for Elgato Wave hardware and PipeWire mixing"
+arch=('x86_64')
 url="https://github.com/rikkichy/openwave"
 license=('MIT')
-depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'libusb' 'pipewire')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rikkichy/openwave/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+depends=('gtk4>=4.14' 'libadwaita>=1.5' 'adwaita-icon-theme' 'libusb' 'pipewire' 'wireplumber' 'alsa-utils' 'libpulse' 'swh-plugins' 'polkit')
+makedepends=('make' 'pkgconf' 'rust>=1.98.1' 'clang')
+source=("https://github.com/rikkichy/openwave/releases/download/v1.1.1/openwave-1.1.1.tar.gz")
+sha256sums=('311a9339d84e05e5e5fe9d85669561746b259b60f446d42bd57d547bd564ed15')
+_srcdir="openwave-1.1.1"
+
+build() {
+    cd "$srcdir/$_srcdir"
+    export CARGO_NET_OFFLINE=true
+    make build CARGO_BUILD_FLAGS='--release --frozen --offline --workspace --bins'
+}
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    # Install Python package
-    local site=$(python3 -c "import site; print(site.getsitepackages()[0])")
-    install -dm755 "$pkgdir$site/wavexlr"
-    install -Dm644 wavexlr/*.py "$pkgdir$site/wavexlr/"
-    install -Dm644 wavexlr/style.css "$pkgdir$site/wavexlr/style.css"
-
-    # Launcher script
-    install -dm755 "$pkgdir/usr/bin"
-    printf '#!/bin/sh\nexec python3 -m wavexlr "$@"\n' > "$pkgdir/usr/bin/$pkgname"
-    chmod 755 "$pkgdir/usr/bin/$pkgname"
-
-    # Desktop entry
-    install -Dm644 wavexlr.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-    # License
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # Docs
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-
-    # WirePlumber rule (read by setup.py at first-run, copied to user config)
-    install -Dm644 wireplumber/51-openwave-wave-xlr.conf \
-        "$pkgdir/usr/share/openwave/wireplumber/51-openwave-wave-xlr.conf"
-
-    # PipeWire virtual mix sinks (Personal / Chat / Record)
-    install -Dm644 pipewire/52-openwave-mixes.conf \
-        "$pkgdir/usr/share/openwave/pipewire/52-openwave-mixes.conf"
+    cd "$srcdir/$_srcdir"
+    make install DESTDIR="$pkgdir" PREFIX=/usr INSTALL_METHOD=arch \
+        CARGO_BUILD_FLAGS='--release --frozen --offline --workspace --bins'
 }
