@@ -67,7 +67,12 @@ build() {
 check() {
   cd "$_pkgname-$pkgver"
   export CARGO_TARGET_DIR=target
-  cargo test --frozen --release
+
+  # The clipboard tests talk to a real X11 or Wayland display. Building a
+  # package must not reach into the session that started it -- it would race
+  # with whatever clipboard manager is already running there -- so hide the
+  # display and let those tests take the skip path they were written with.
+  env -u DISPLAY -u WAYLAND_DISPLAY cargo test --frozen --release
 }
 
 package() {
