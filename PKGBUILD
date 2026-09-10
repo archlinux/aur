@@ -1,10 +1,10 @@
 # Maintainer: Adrià Arrufat <swiftscythe@gmail.com>
 pkgname=lyn-git
 pkgver=1.5.1.r0.g624a211
-pkgrel=1
+pkgrel=2
 pkgdesc="Weather forecasting CLI powered by the Norwegian Meteorological Institute"
 arch=('x86_64' 'aarch64')
-url="https://sr.ht/~timharek/lyn/"
+url="https://src.timharek.no/tim/lyn"
 license=('GPL-3.0-only')
 depends=('glibc')
 makedepends=('git' 'go')
