@@ -1,17 +1,17 @@
 pkgbase = epiclang-bin
 	pkgdesc = Script to call clang with Epitech's C style checking extension
-	pkgver = 20260803220850
-	pkgrel = 2
+	pkgver = 20260908135112
+	pkgrel = 1
 	url = https://launchpad.net/~epitech/+archive/ubuntu/ppa
 	arch = x86_64
 	license = GPL2
 	makedepends = binutils
-	depends = clang20
+	depends = clang21
 	depends = python
 	depends = banana-coding-style-checker
 	provides = epiclang
 	conflicts = epiclang
-	source = epiclang-20260803220850.deb::https://ppa.launchpadcontent.net/epitech/ppa/ubuntu/pool/main/e/epiclang/epiclang_20260803220850_amd64.deb
-	sha256sums = 3471e0f02dde024881a22e4ed4948c3662966a344af9d11979eca8fe92a68bed
+	source = epiclang-20260908135112.deb::https://ppa.launchpadcontent.net/epitech/ppa/ubuntu/pool/main/e/epiclang/epiclang_20260908135112_amd64.deb
+	sha256sums = 743ae303b2cf4304fe7803906ffaa48ad93df1f9790df7f6ad2274a4543caa22
 
 pkgname = epiclang-bin
