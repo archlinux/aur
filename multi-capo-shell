@@ -6,9 +6,14 @@ set -o pipefail
 if [[ "${1:-}" == "--help" ]] || [[ "${1:-}" == "-h" ]]; then
   cat <<EOF
 Usage: multi-capo-shell [command...]
+       multi-capo-shell --direct <management-name> <namespace> <name> [command...]
 
 Interactively selects a CAPO cluster from all management clusters using
 fzf, then opens a capo-shell for the selected cluster.
+
+With --direct, skips fzf and opens a capo-shell directly for <namespace>/<name>
+on the named management cluster from the config file's management_clusters map,
+without needing fzf installed.
 
 Arguments:
   command      Command to pass through to capo-shell (default: \$SHELL or bash)
@@ -20,33 +25,58 @@ Environment variables (override/extend config file):
   MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION   yq expression for a custom cluster display name
 
 Config file: \${XDG_CONFIG_HOME:-\$HOME/.config}/capo-shell/config.yaml
-  management_clusters[].{kubeconfig,context}   cluster sources (merged with env vars above)
-  custom_fields.<name>                          jq expressions for fzf preview columns (used if no env columns set)
+  management_clusters.<name>.{kubeconfig,context}   cluster sources (merged with env vars above);
+                                                     <name> is required to address a cluster via --direct
+  custom_fields.<name>                              jq expressions for fzf preview columns (used if no env columns set)
 EOF
   exit 0
-fi
-
-if ! command -v fzf &>/dev/null; then
-  echo "fzf is required but not installed. Please install fzf to use this script." >&2
-  exit 1
 fi
 
 _capo_config="${XDG_CONFIG_HOME:-$HOME/.config}/capo-shell/config.yaml"
 declare -a _mgmt_kubeconfigs=()
 declare -a _mgmt_contexts=()
+declare -a _mgmt_names=()
 
 while IFS= read -r _kc; do
-  [[ -n "$_kc" ]] && _mgmt_kubeconfigs+=("$_kc") && _mgmt_contexts+=("")
+  [[ -n "$_kc" ]] && _mgmt_kubeconfigs+=("$_kc") && _mgmt_contexts+=("") && _mgmt_names+=("")
 done < <(
   [[ -v MANAGEMENT_KUBECONFIGS ]] && echo -e "${MANAGEMENT_KUBECONFIGS//;/\\n}"
   [[ -v KUBECONFIG ]] && echo -e "${KUBECONFIG//;/\\n}"
 )
 
 if [[ -f "$_capo_config" ]]; then
-  while IFS= read -r _kc && IFS= read -r _ctx; do
+  while IFS= read -r _name && IFS= read -r _kc && IFS= read -r _ctx; do
     _expanded="$(envsubst <<< "$_kc")"
-    [[ -n "$_expanded" ]] && _mgmt_kubeconfigs+=("$_expanded") && _mgmt_contexts+=("$_ctx")
-  done < <(yq -r '.management_clusters[] | (.kubeconfig, (.context // ""))' "$_capo_config")
+    if [[ -n "$_expanded" ]]; then
+      _mgmt_kubeconfigs+=("$_expanded")
+      _mgmt_contexts+=("$_ctx")
+      _mgmt_names+=("$_name")
+    fi
+  done < <(yq -r '(.management_clusters // {}) | to_entries[] | (.key, .value.kubeconfig, (.value.context // ""))' "$_capo_config")
+fi
+
+if [[ "${1:-}" == "--direct" ]]; then
+  shift
+  mgmt_name="${1?management cluster name required}"
+  namespace="${2?namespace required}"
+  name="${3?name required}"
+  shift 3
+  for _i in "${!_mgmt_names[@]}"; do
+    if [[ -n "${_mgmt_names[$_i]}" ]] && [[ "${_mgmt_names[$_i]}" == "$mgmt_name" ]]; then
+      if [[ -n "${_mgmt_contexts[$_i]}" ]]; then
+        exec env KUBECONFIG="${_mgmt_kubeconfigs[$_i]}" KUBECONFIG_CONTEXT="${_mgmt_contexts[$_i]}" capo-shell "$namespace" "$name" "${@}"
+      else
+        exec env KUBECONFIG="${_mgmt_kubeconfigs[$_i]}" capo-shell "$namespace" "$name" "${@}"
+      fi
+    fi
+  done
+  echo "Unknown management cluster: $mgmt_name" >&2
+  exit 1
+fi
+
+if ! command -v fzf &>/dev/null; then
+  echo "fzf is required but not installed. Please install fzf to use this script." >&2
+  exit 1
 fi
 
 declare -a custom_columns=()

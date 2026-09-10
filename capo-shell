@@ -29,8 +29,8 @@ Config file: \${XDG_CONFIG_HOME:-\$HOME/.config}/capo-shell/config.yaml
                                            user is renamed to the identity reported by
                                            "kubectl auth whoami", if available; if either rename
                                            happened, the context is renamed to "<user>|<cluster>"
-  sshuttle_host                          global SSH proxy host
-  management_clusters[].sshuttle_host    per-cluster SSH proxy host (matched by KUBECONFIG path)
+  sshuttle_host                            global SSH proxy host
+  management_clusters.<name>.sshuttle_host per-cluster SSH proxy host (matched by KUBECONFIG path)
 EOF
   exit 0
 fi
