@@ -1,6 +1,6 @@
 pkgbase = fubuki-ui
 	pkgdesc = Bootable USB writer in the spirit of Rufus: the KDE window (transitional, install fubuki-qt)
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/dresden196/fubuki
 	arch = any
