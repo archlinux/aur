@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Josef Vybihal <josef.vybihal@gmail.com>
 # Contributor: Your Name <you@example.com>
 pkgname=herdr-git
 _pkgname=${pkgname%-git}
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 _abbr=7
 
 _srcenv() {
- 	cd "$_pkgname"
+  cd "$_pkgname"
   export CARGO_HOME="$srcdir"
   export CARGO_PROFILE_RELEASE_DEBUG=2
   export CARGO_PROFILE_RELEASE_STRIP=false
@@ -69,7 +69,7 @@ package() {
   install -Dm755 target/release/$_pkgname "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
-	install -Dm0644 completions.bash "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-	install -Dm0644 completions.fish "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
-	install -Dm0644 completions.zsh "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+  install -Dm0644 completions.bash "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+  install -Dm0644 completions.fish "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
+  install -Dm0644 completions.zsh "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
