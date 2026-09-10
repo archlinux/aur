@@ -1,0 +1,23 @@
+pkgbase = proton-cachyos-rtsp-slr-bin
+	pkgdesc = CachyOS Proton with the Proton-RTSP patchset, for VRChat livestream (RTSP/VRCDN) playback. Package for steam with less dependencies
+	pkgver = 11.0.20260703
+	pkgrel = 1
+	url = https://github.com/wundervrc/proton-cachyos-rtsp
+	arch = x86_64
+	license = BSD
+	license = LGPL
+	license = zlib
+	license = MIT
+	license = MPL
+	license = custom
+	depends = tar
+	depends = sed
+	provides = proton
+	provides = proton-cachyos-rtsp
+	conflicts = proton-cachyos-rtsp
+	options = !strip
+	options = emptydirs
+	source = https://github.com/wundervrc/proton-cachyos-rtsp/releases/download/proton-cachyos-rtsp-11.0-20260703-1/proton-cachyos-rtsp-11.0-20260703-1.tar.xz
+	sha256sums = e5a314d3fa6cf058d7f5234fe7899891be4d04e955449cd6628d041aace9a431
+
+pkgname = proton-cachyos-rtsp-slr-bin

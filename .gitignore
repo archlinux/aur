@@ -1,0 +1,11 @@
+/*.pkg.tar.*
+/*.tar.xz
+/LICENSE
+/LICENSE-*
+/*.part
+/src/*
+/pkg/*
+/src/*
+.BUILDINFO
+.MTREE
+.PKGINFO
