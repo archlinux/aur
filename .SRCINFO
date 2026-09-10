@@ -1,6 +1,6 @@
 pkgbase = sysinternalsebpf
 	pkgdesc = Sysinternals EBPF
-	pkgver = 1.6.0
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/microsoft/SysinternalsEBPF
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = sysinternalsebpf
 	depends = json-glib
 	depends = libelf
 	depends = zstd
-	source = sysinternalsebpf-1.6.0-src.tar.gz::https://github.com/microsoft/SysinternalsEBPF/archive/refs/tags/1.6.0.tar.gz
-	sha256sums = f5a33a697d1a77a7f9205218f58c6c0eec8099f62d3ea9875f9f5ce2dd263070
+	source = sysinternalsebpf-2.2.2-src.tar.gz::https://github.com/microsoft/SysinternalsEBPF/archive/refs/tags/2.2.2.tar.gz
+	sha256sums = ba4ff8afccba126966366ad809d7975c215eacc40c2e42cc1fd14efc5cd04269
 
 pkgname = sysinternalsebpf
