@@ -10,7 +10,7 @@ pkgname='wg-client'
 pkgdesc='Linux Wireguard client (command line and gui)'
 _gitname='wg-client'
 
-pkgver="8.0.3"
+pkgver="8.0.4"
 pkgrel=1
 url="https://github.com/gene-git/wg-client"
 
@@ -24,7 +24,7 @@ depends=(
     'python>=3.14'
     python-psutil
     python-dateutil
-    pyconcurrent
+    python-pyconcurrent
     py-cidr
     libcap
     glibc
@@ -37,6 +37,7 @@ makedepends=(
     meson
     meson-python
     rsync
+    bash
 )
 # Used by package : mkpkg
 _mkpkg_depends=(
