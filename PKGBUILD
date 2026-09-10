@@ -25,22 +25,8 @@ sha256sums=(
   '7f443dc10fdafdcc197c287a2b6522ac1b8d45f8e2973d9405f1792a0f3eea95'
 )
 
-pkgver() {
-  # Query the official Factory CLI installation script to get the exact latest version
-  local upstream_script upstream_version
-  upstream_script=$(curl -fsSL --retry 3 --retry-delay 2 --retry-connrefused "https://app.factory.ai/cli" 2>/dev/null)
-  upstream_version=$(echo "$upstream_script" | grep -oP 'VER="\K[0-9]+\.[0-9]+\.[0-9]+' || true)
-
-  if [[ -n "$upstream_version" && "$upstream_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-    echo "$upstream_version"
-  else
-    # Fallback to current pkgver if upstream is unreachable during offline verification
-    echo "$pkgver"
-  fi
-}
-
 package() {
-  local actual_version="${pkgver:-0.215.1}"
+  local actual_version="${pkgver}"
   local platform="linux"
 
   # Detect architecture
