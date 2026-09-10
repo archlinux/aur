@@ -1,12 +1,12 @@
 pkgbase = vvenc-llvm
 	pkgdesc = A H.266/VVC (Versatile Video Coding) encoder — built with Clang and mold
 	pkgver = 1.14.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/fraunhoferhhi/vvenc/
 	arch = x86_64
 	license = BSD-3-Clause-Clear
 	makedepends = clang
-	makedepends = mold
+	makedepends = mold-git
 	makedepends = llvm
 	makedepends = cmake
 	depends = gcc-libs

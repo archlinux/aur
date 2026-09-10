@@ -5,7 +5,7 @@
 _pkgname=vvenc
 pkgname=vvenc-llvm
 pkgver=1.14.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A H.266/VVC (Versatile Video Coding) encoder — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/fraunhoferhhi/vvenc/'
@@ -15,7 +15,7 @@ depends=(
     'glibc')
 makedepends=(
     'clang'
-    'mold'
+    'mold-git'
     'llvm'
     'cmake')
 provides=("${_pkgname}")
