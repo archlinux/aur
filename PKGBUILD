@@ -2,7 +2,7 @@
 
 pkgbase=luatos-cli
 pkgname=(luatos-cli luatos-mcp luatos-log-ffi)
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="LuatOS command-line toolset (pure Rust)-brushing, logging, project management, firmware resources and builds"
 arch=($CARCH)
@@ -31,7 +31,7 @@ source=("${pkgbase}::git+${url}.git#tag=v${pkgver}"
         luatos-cli.install
         luatos-mcp.install
         luatos-log-ffi.install)
-sha256sums=('45a9f24256468fae51dd78194b443c8f0c5183fb2d8ee6cbf1ff30ee252a07d2'
+sha256sums=('f22892eddf7b976dc689ea18bae296c96b0955e9ce1932d56f5ec836972bb900'
             '028878803a8de1324da183486e04457b413417d6af7396f86deae87929232904'
             '62097f257e96bb89ba585211451b6df9d168f96842289d757a190c34465b9ac7'
             '6c38d27bc0d64be9576a0189ab750fb762205622886ed35725d177a4f6f4526d')
