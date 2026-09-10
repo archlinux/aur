@@ -3,7 +3,7 @@
 
 pkgname=dash-static
 _pkgbase=dash
-pkgver=0.5.13.4
+pkgver=0.5.13.5
 pkgrel=1
 pkgdesc="POSIX compliant shell that aims to be as small as possible. Statically compiled"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=("${_pkgbase}")
 makedepends=('gcc' 'make' 'gzip')
 source=("http://gondor.apana.org.au/~herbert/dash/files/dash-${pkgver}.tar.gz")
 # http://gondor.apana.org.au/~herbert/dash/files/dash-${pkgver}.tar.gz.sha512sum
-sha512sums=('383d0ea8316fea3ce523dc535173a94a22e58bfaec2dec3309d3496a864e5e67711965563db82e7e181f8d7b67a25033107b4c9453c3d6b3820c6586d1f99675')
+sha512sums=('ae326c110713a9da6b7afb977ca6fd931793b03011f0a7aa2c42e873f116ed09448deea9ef5ca4515fe3afe24e210e0aaa580f7de89934edda9cf31ee44c94dd')
 
 
 build () {
