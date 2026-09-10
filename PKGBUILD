@@ -1,12 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bdash-bin
 _pkgname=Bdash
-pkgver=1.35.1
+pkgver=1.35.2
 _electronversion=40
 pkgrel=1
-pkgdesc="Simple SQL Client for lightweight data analysis.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Simple SQL Client for lightweight data analysis."
 arch=('x86_64')
-url="https://github.com/bdash-app/bdash"
+url="https://bdash-app.github.io/"
+_ghurl="https://github.com/bdash-app/bdash"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -23,11 +24,11 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/bdash-app/bdash/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f1aa573012cc3a55f86ca313116b9269f94651ae815dcc5a1a5754d7df520b72'
+sha256sums=('f482a0ebea0d5b17d581e30b920f62fd668749c83f7347fe96c98b4c7aeaa7d9'
             '44e997a14d296ed01f24a68d2071280936534e98f4613fa8b875c9922e6b22d8'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
