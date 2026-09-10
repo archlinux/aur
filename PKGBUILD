@@ -2,12 +2,12 @@
 _appname=affine
 pkgname="${_appname}-canary-bin"
 _pkgname=AFFiNE-canary
-_pkgver=2026.8.22
-_subver=canary.906
+_pkgver=2026.9.10
+_subver=canary.909
 pkgver="${_pkgver}_${_subver}"
 _electronversion=39
 pkgrel=1
-pkgdesc="A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.(Test Version,use system-wide electron)"
+pkgdesc="A privacy-focused, local-first, open-source, and ready-to-use alternative for Notion & Miro.One hyper-fused platform for wildly creative minds. "
 arch=('x86_64')
 url="https://affine.pro/"
 _ghurl="https://github.com/toeverything/AFFiNE"
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${_pkgver}-${_subver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4caaf5fc8899c8a0713442e45bb413f411b07db347616fa62a9b1efa4e33608e'
+sha256sums=('5681456f9eaf4ae8d4f1df0a76ef92f149c04000b38095c836292349e4171701'
             '1cdeca52d4f740361f103926144eb8b3f265975b2337d4e27b3313f72465897f'
             'c107c8088fe42bce6def95d313cfe7b5984d3bb2c1608b67f855327da45f497b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
