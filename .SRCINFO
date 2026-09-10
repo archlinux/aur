@@ -1,0 +1,19 @@
+pkgbase = tagwerk-git
+	pkgdesc = Passive work-hours tracker for Hyprland, attributed per repo
+	pkgver = r20.4546213
+	pkgrel = 1
+	url = https://github.com/sripwoud/tagwerk
+	install = tagwerk-git.install
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = hyprland
+	depends = hypridle
+	optdepends = kitty: cwd of the focused terminal
+	provides = tagwerk
+	conflicts = tagwerk
+	source = git+https://github.com/sripwoud/tagwerk.git
+	sha256sums = SKIP
+
+pkgname = tagwerk-git

@@ -1,0 +1,8 @@
+post_install() {
+  cat <<'EOF'
+tagwerk: finish in your home directory
+  tagwerk init && $EDITOR ~/.config/tagwerk/config.toml
+  systemctl --user enable --now tagwerk-idle.service tagwerk-focus.service
+Agent hooks and verification: https://github.com/sripwoud/tagwerk#install
+EOF
+}
