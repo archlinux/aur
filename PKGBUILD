@@ -6,7 +6,7 @@
 
 pkgbase=nvidia-utils
 pkgname=('nvidia-utils' 'opencl-nvidia' 'nvidia-open-dkms')
-pkgver=610.57.04
+pkgver=615.71.09
 pkgrel=1
 arch=('aarch64' 'x86_64')
 url="https://www.nvidia.com/"
@@ -28,9 +28,9 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
             '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
             'a380e5faeb19293c90f613cd92bcd1cef7597ee52f79f03ffdffe5d37d2badc05b6bdb4c26a9d610868ae4c16eafd56e7d16f769e849dc0335d0d248c6235fe9'
-            '11adc9cf3805a06f3e6f3b0884d2fbd92cf51c7f9348fca884c90202be2291882c459c8b5436732168c9739e7afefb9510b9b8f1193a0935f45fa5fca560b258')
-sha512sums_aarch64=('cbb632182f4096e715cf28605ca93964e7ad329b7ac5eeffc1bd9d9338606f7ffaa4267ee3fa0e92cf00f4a50b177498bcb053686e869464db0e80ddbf7b4ecd')
-sha512sums_x86_64=('4c9566625716ba7257ed2203dbbabfbc7a2dfdfc8bcb16678212ec809dc7ff470d12973ad86ce5f925b271d04239425f43088e8e591cb4ed7f77ec0c8612ffc0')
+            '0b32c1aaa5ed261bdee7232d5e5d293e53c42ac9896f49c4be4e6b9b6bce1370cb69a7f7fde5531a7537d5e925d651c36bcb512a2f827c2d2cb26ede33f7c057')
+sha512sums_aarch64=('316f90d5e0ba74db3a79a91464955240aa2c14e986653067fe902c132c771898d2866afc4e6498069b33665596e17b1b5282980936e1e6e31cabb53787e70196')
+sha512sums_x86_64=('446091ef413d815ecc2de0253b1c0065cb12f623a219a3a5c38e48a0084aa73adbb7426c3c334a52f42520da8c6b2186b84f8fbf96a2260d13a320123f804bc0')
 
 _pkg=NVIDIA-Linux-${CARCH}-${pkgver}
 
@@ -154,6 +154,8 @@ package_nvidia-utils() {
     install -Dm755 "libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-encode.so.${pkgver}"
     install -Dm755 "libnvidia-cfg.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-cfg.so.${pkgver}"
     install -Dm755 "libnvidia-ml.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ml.so.${pkgver}"
+    install -Dm755 "libnvidia-fmdrv.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-fmdrv.so.${pkgver}"
+    install -Dm755 "libnvidia-imex.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-imex.so.${pkgver}"
     install -Dm755 "libnvidia-glvkspirv.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-glvkspirv.so.${pkgver}"
     install -Dm755 "libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-allocator.so.${pkgver}"
     install -Dm755 "libnvidia-gpucomp.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-gpucomp.so.${pkgver}"
