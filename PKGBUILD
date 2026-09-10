@@ -1,8 +1,8 @@
 # Maintainer: G-grbz <gkhn.gurbuz@hotmail.com>
 
 pkgname=g-tmce
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="PySide6 app for creating and extracting MKV files with TMDB metadata"
 arch=('any')
 url="https://github.com/G-grbz/G-TMCE"
@@ -21,7 +21,7 @@ optdepends=(
 # Keep the cached source filename unique for each package revision. This avoids
 # checksum failures when an upstream tag is ever rebuilt.
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c7a8ccf4201de6f0053932ccf7d82ac273683a43f42a08744b8eb972f4a7189a')
+sha256sums=('07285c35b58176ccd1aeb16c4d5b9990a1cee8e2acf4aa01610a122a5cdcdea5')
 
 package() {
   cd "G-TMCE-${pkgver}"
