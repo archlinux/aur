@@ -2,7 +2,7 @@
 
 pkgname="osiris"
 pkgver=2.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical toolkit for X11-based Linux and Unix platforms forked from Qt 2.3.2"
 arch=(
   'aarch64'
@@ -20,7 +20,7 @@ depends=(
   'libgcc'
   'libgl'
   # 'libice'
-  'libjpeg'
+  'libjpeg-turbo'
   # 'libmng'
   'libpng>=1.6'
   # 'libsm'
