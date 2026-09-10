@@ -2,7 +2,7 @@
 
 pkgname=rust-llm
 _pkgname=llm
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Terminal-first AI hub in Rust for prompting, chat, templates, embeddings and dev workflows'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ conflicts=('llm' 'llm-bin' 'llm-git' 'rust-llm-bin')
 source=(
     "llm-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('4ffaa3abeb6a7aaab4572c5281dceb8e3947d87555f1981d218391de15f2e5c4')
+sha256sums=('5ab8e5296bdfe353fe6b16830fa0278ccf9ebe345664c10eaf26fe59b63a249c')
 
 # Release profile already sets lto=thin and strip=true. crates.io is reached
 # during build() (small four-crate dependency set), matching the common
