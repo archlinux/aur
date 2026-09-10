@@ -5,13 +5,13 @@
 _pkgname=flite1
 pkgname=${_pkgname}-llvm
 pkgver=1.4
-pkgrel=9
+pkgrel=10
 pkgdesc='A lighweight speech synthesis engine (version 1.x) — built with Clang and mold'
 arch=('x86_64')
 url='http://www.speech.cs.cmu.edu/flite/'
 license=('custom')
 depends=('glibc')
-makedepends=('texlive-plaingeneric' 'ed' 'clang' 'mold' 'llvm')
+makedepends=('texlive-plaingeneric' 'ed' 'clang' 'mold-git' 'llvm')
 provides=("flite=${pkgver}" 'flite1' 'flite1-patched')
 conflicts=('flite' 'flite1' 'flite1-patched')
 replaces=('flite1-patched')
