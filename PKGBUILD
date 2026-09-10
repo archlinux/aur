@@ -6,8 +6,7 @@ _nodeversion=24
 pkgrel=1
 pkgdesc="A quick-access note right from your system tray."
 arch=('any')
-url="https://srilakshmikanthanp.github.io/quicknote/"
-_ghurl="https://github.com/srilakshmikanthanp/quicknote"
+url="https://github.com/srilakshmikanthanp/quicknote"
 license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
@@ -25,7 +24,7 @@ makedepends=(
     'zip'
 )
 source=(
-    "${pkgname//-/.}::git+${_ghurl}.git"
+    "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
