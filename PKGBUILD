@@ -1,11 +1,10 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 epoch=1
-#_tag="v${pkgver}"
-_tag="704a97bffffbc2f5cbedae9f91ba65abb5a26897" # Temporary workaround: v0.3.8 is referring to a wrong commit
+_tag="v${pkgver}"
 _srcdir="${pkgname}-${_tag#v}"
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64" "aarch64")
@@ -26,10 +25,9 @@ optdepends=(
 	"nodejs>=23.5.0: support for custom JS music source"
 )
 source=(
-	# "${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
-	"${pkgname}-${pkgver}.zip::$url/archive/${_tag}.zip"
+	"${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
 )
-sha512sums=('75b63172f96842692a2e2d0d23baca0d12b3e99ce1c9641a52ed96375dd1b1bf80d535346c130d7174301ba68823f09c11b21abe28b8928aa393e0a05e66b809')
+sha512sums=('5fba8ddce954cfb92ef2651321ca8212456ceaa8fd7195502a51b7186c286c45f6fc9f2cbed0c95633cd9669de5669674270645fd4800dba00c54a731ac079ed')
 
 prepare() {
 	cd "${_srcdir}"
