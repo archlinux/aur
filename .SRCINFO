@@ -1,6 +1,6 @@
 pkgbase = r-simdesign
 	pkgdesc = Structure for Organizing Monte Carlo Simulation Designs
-	pkgver = 2.25
+	pkgver = 2.27
 	pkgrel = 1
 	url = https://cran.r-project.org/package=SimDesign
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = r-simdesign
 	optdepends = r-shiny
 	optdepends = r-snow
 	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/SimDesign_2.25.tar.gz
-	sha256sums = 5d03e5e4e14f7f2576d79882ffbb487adfcf823f9e1f690dc7942b192246086f
+	source = https://cran.r-project.org/src/contrib/SimDesign_2.27.tar.gz
+	sha256sums = af706fadb23e43ae6ae14bde90b454743571cd3a01788e4f501bcf98ea9c8bdd
 
 pkgname = r-simdesign
