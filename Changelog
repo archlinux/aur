@@ -1,11 +1,16 @@
 -------------------------------------------------------
  Changelog    : wg_tool
- Tags         : 10.0.1 ➙ 10.4.0,
-              : 2026-08-25 ➙ 2026-09-02
+ Tags         : 10.1.10 ➙ 10.5.0
+              : 2026-09-02 ➙ 2026-09-10
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-02   : 10.4.0,
+ 2026-09-10   : 10.5.0
+              - **10.5.0**
+            
+                * Add missing checkdepends() to PKGBUILD
+
+ 2026-09-02   : 10.4.0, origin/master
               - fix wrong tag
 
  2026-09-02   : 10.1.10
@@ -32,8 +37,4 @@
             
                 * Disable color for --help as it looks bad on dark terminals.
  2026-08-25   ⋯
-              - update docs and Changelogs
-
- 2026-08-25   : 10.0.1
-              - Fix typo in PKGBUILD using sha256sums not sha512
               - update docs and Changelogs
