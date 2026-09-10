@@ -1,6 +1,6 @@
 pkgbase = python-pdf-inspector
 	pkgdesc = Python bindings for PDF classification and Markdown extraction with OCR
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/firecrawl/pdf-inspector
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = python-pdf-inspector
 	optdepends = onnxruntime>=1.27.0: CPU OCR inference
 	options = !debug
 	options = !lto
-	source = pdf-inspector-1.18.0.tar.gz::https://github.com/firecrawl/pdf-inspector/archive/refs/tags/v1.18.0.tar.gz
-	sha256sums = c90af30cfdb8fa0220b5b66bff4d2422847c33634e80bd046a9076bf409200b1
+	source = pdf-inspector-1.19.0.tar.gz::https://github.com/firecrawl/pdf-inspector/archive/refs/tags/v1.19.0.tar.gz
+	sha256sums = c39940101c86e64f52199102522beea5a6f846adbf5c98a185bc818b5c8cef9f
 
 pkgname = python-pdf-inspector
