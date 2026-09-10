@@ -1,6 +1,6 @@
 pkgbase = abpoa
 	pkgdesc = SIMD-based C library for fast partial order alignment. https://dx.doi.org/10.1093/bioinformatics/btaa963
-	pkgver = 1.5.6
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = https://github.com/yangao07/abPOA
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = abpoa
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = cython
-	source = abpoa-1.5.6.tar.gz::https://github.com/yangao07/abPOA/archive/refs/tags/v1.5.6.tar.gz
+	source = abpoa-1.5.7.tar.gz::https://github.com/yangao07/abPOA/archive/refs/tags/v1.5.7.tar.gz
 	source = simde.patch
-	b2sums = ba9b02f0758120f046c7cedd14a008bf275477d8aaa1eda4f8fc76ea56d0f8f84450025faed608e88d5081efbd7102fe401f44f1f5aee445862aa684cde8df77
-	b2sums = c1bfc21cdc6ba1b592879069cc883c4bd0d9408faec35710e982ba587f2e2f305ecda29ea565273853cdedfeec956069a561d0b9267b95f7aee8c0213a40e40c
+	b2sums = ec54ca4bd745a76676e18e3b2cc94500178d26519cb3de7fe78c0ae26ec34519ef1a6736f51bab92c106e3312d1e06d8285502df9d3e641eab33c0cd635a0f03
+	b2sums = d5fca320845fc1a7515d79a5b50398f8073f009a9a642e9941f5e3970529376ade2542d49dd66ec66ba3c15bf92be9d8dea0c89cafe6381d744588b531a0a993
 
 pkgname = abpoa
 	pkgdesc = SIMD-based C library for fast partial order alignment. https://dx.doi.org/10.1093/bioinformatics/btaa963
