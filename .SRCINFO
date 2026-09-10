@@ -1,0 +1,25 @@
+pkgbase = factory-ai-droid-cli-rnoz-bin
+	pkgdesc = Factory.ai Droid CLI - Always fresh terminal AI assistant with zero-waste deterministic titling
+	pkgver = 0.215.1
+	pkgrel = 1
+	url = https://app.factory.ai
+	install = factory-ai-droid-cli-rnoz-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = factory.ai
+	makedepends = python
+	depends = curl
+	optdepends = ripgrep: Use system ripgrep instead of bundled binary
+	provides = droid
+	provides = factory-cli
+	provides = factory-cli-bin
+	conflicts = droid
+	conflicts = factory-cli
+	conflicts = factory-cli-bin
+	options = !strip
+	source = patch-droid.py
+	source = factory-ai-droid-cli-rnoz-bin.install
+	sha256sums = 6f8fc3992526e8c8b0a4af11f029a633498f7704e9c6a736e772788d18243d00
+	sha256sums = 7f443dc10fdafdcc197c287a2b6522ac1b8d45f8e2973d9405f1792a0f3eea95
+
+pkgname = factory-ai-droid-cli-rnoz-bin
