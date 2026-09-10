@@ -1,6 +1,6 @@
 pkgbase = waywallen
 	pkgdesc = Wallpaper Manager for Linux.
-	pkgver = 0.3.8
+	pkgver = 0.3.9
 	pkgrel = 1
 	url = https://github.com/waywallen/waywallen
 	arch = x86_64
@@ -31,20 +31,20 @@ pkgbase = waywallen
 	depends = qmlmaterial
 	optdepends = waywallen-display: Required for layer-shell based compositors
 	options = !lto
-	source = git+https://github.com/waywallen/waywallen.git#tag=v0.3.8
-	source = git+https://github.com/litocpp/rstd.git#commit=456fec5cc2b87acdb56800e298b5712ea69cdd47
-	source = git+https://github.com/litocpp/luato.git#commit=aec1ad0e84de8f5060144896cc79b79dbb10605b
-	source = git+https://github.com/litocpp/vvk.git#commit=f53d60cc70938d0485802750deeb15d18ba033ea
-	source = git+https://github.com/hypengw/ncrequest.git#commit=fbf353f079ea7bc5bcf967c3cb04cbf3f6835139
-	source = git+https://github.com/hypengw/wavsen.git#commit=77dfd33d07112c05df4682e08b98e19153ebe3ab
-	source = git+https://github.com/hypengw/QExtra.git#commit=98cec17a8576c27fbc39e6d2788926cf676cf1b7
-	sha256sums = 045aabcc33afe138b68600ea342dd028018e440c1600db0ea1a9e6b9e44fad2e
-	sha256sums = 67e1315baa1ec31bc6d5da381b4367a08b768da623a25cc82bb84ac597647ead
-	sha256sums = 14f2584bf743549d54603e64587111b3a3d84683b7f3b18af98c2f493dff824a
-	sha256sums = 0abff36a8194edd20feb96e87abc772b13a2ac725c99df091ea8e08b57562f0f
-	sha256sums = 3a5d287be95af26b10fdaf39d5190f880438e09c562614f4daaf37fccf77e42d
-	sha256sums = 06c90e4fb0b996ecf07468322de9f634e35cd97b171a8c55e771da086da55ebd
-	sha256sums = ccdcf23bece3223281b9aec6b36457775ca31e535ce5c984f634436f207424df
+	source = git+https://github.com/waywallen/waywallen.git#tag=v0.3.9
+	source = git+https://github.com/litocpp/rstd.git#tag=v0.1.2
+	source = git+https://github.com/litocpp/luato.git#commit=9ad07ca2604022319c0178b7f5543220baf87050
+	source = git+https://github.com/litocpp/vvk.git#commit=14a99ea0e98d0580947abf426b4d04b5a201264c
+	source = git+https://github.com/hypengw/ncrequest.git#commit=cdaca8b5c523906fc0c9ed58cd5f2c7981b5a255
+	source = git+https://github.com/hypengw/wavsen.git#commit=5a0ddb98def3d1c146968810fe711fd2123802d0
+	source = git+https://github.com/hypengw/QExtra.git#commit=68f752fd38e3d7a923bf36d621f4a94be7b26fd8
+	sha256sums = 8e1c6e119033a9fbf36d98968784b2e566c744293d7413a11bfdd428e93aa38e
+	sha256sums = 9d7e6a4cbf1eb690e7d64af05dd7f9fc3730bf817b1152bbd99892f20101ce2d
+	sha256sums = 0e7de62fac442c248334e98434b478ab230dd1fe94692cb43ec6f7b6e2a7fe36
+	sha256sums = 4b1bdf273d52cd21524263e6f526b6fea848e2450f307fe00f1e5ff776d3fa89
+	sha256sums = e0b29a7179d1f35b76ca2582003c0a97c20b1a30b8e2e24cd95b025e7bfabfca
+	sha256sums = 8c5b03ca66cf4692bd13d0641882f7b741b3eb05e9cabee78ae5474ba0e3766a
+	sha256sums = 2b2d0a9f7031c88656fde765e7118960486db25aff5ceff43d71a1c3737643ac
 
 pkgname = waywallen
 	depends = libgcc
