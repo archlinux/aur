@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Zalo
+Comment=Zalo for Linux (ZaDark)
+Exec=/usr/bin/zalo
+Icon=zalo
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
+StartupWMClass=zalo
