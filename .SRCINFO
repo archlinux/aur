@@ -14,8 +14,9 @@ pkgbase = wubi-dict-editor
 	makedepends = git
 	makedepends = jq
 	makedepends = zip
-	depends = ibus-rime
 	depends = electron28
+	optdepends = ibus-rime: Rime input method framework for IBus
+	optdepends = fcitx5-rime: Rime input method framework for Fcitx5
 	conflicts = wubi-dict-editor
 	options = !emptydirs
 	source = wubi-dict-editor-1.3.16::git+https://github.com/KyleBing/wubi-dict-editor#tag=v1.3.16
