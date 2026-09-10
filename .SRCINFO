@@ -1,6 +1,6 @@
 pkgbase = tether-bin
 	pkgdesc = Bridge an iPhone to the Linux desktop: clipboard, files, messages, and notifications
-	pkgver = 0.2.28
+	pkgver = 0.2.29
 	pkgrel = 2
 	url = https://github.com/zackb/tether
 	install = tether.install
@@ -19,7 +19,7 @@ pkgbase = tether-bin
 	provides = tether
 	conflicts = tether
 	conflicts = tether-git
-	source = https://github.com/zackb/tether/releases/download/v0.2.28/tether-0.2.28.tar.gz
-	sha256sums = 6cda923a0fc41d050127ffa570d15b32079d5ab36837a8afe21970fb8aabc567
+	source = https://github.com/zackb/tether/releases/download/v0.2.29/tether-0.2.29.tar.gz
+	sha256sums = ed71d0549908ba21f9ccf2142f6bef3a39f7eacdeb2ae73d2f8b8cb88903a43c
 
 pkgname = tether-bin
