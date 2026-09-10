@@ -11,8 +11,8 @@
 
 pkgname=zz-beta-bin
 # The release tag's version; pkgver cannot carry a prerelease hyphen.
-_version=0.6.1
-pkgver=0.6.1
+_version=0.7.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Terminal, browser, and agent workspace'
 arch=('x86_64' 'aarch64')
@@ -55,8 +55,8 @@ conflicts=('zz' 'zz-bin')
 options=('!debug' '!strip')
 source_x86_64=("$url/releases/download/v$_version/zz-$_version-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$_version/zz-$_version-linux-aarch64.tar.gz")
-sha256sums_x86_64=('4e1254c5556411cb58c9259319f1a3b1883703a63f2665cb0a8e1423ace5b6ec')
-sha256sums_aarch64=('04561f88ad4aefe9087c43e111dbeacc11aa61c708b6db64d98bb565605de830')
+sha256sums_x86_64=('2d6a224530775b184ea7056f1f7518f2b68d9373ebe9fedf2883d882e732614a')
+sha256sums_aarch64=('0c9f59e87d0dcd22d7662bfa479d9ec817b22276d82701fab09315d31b07dd43')
 
 package() {
     install -d "$pkgdir/usr"
