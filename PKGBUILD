@@ -1,7 +1,7 @@
-# Maintainer: 9M2PJU <9m2pju@gmail.com>
+# Maintainer: 9M2PJU <9m2pju@hamradio.my>
 pkgname=hamclock-git
 _pkgname=hamclock
-pkgver=4.29.r8.gae6f8e4
+pkgver=4.32.r0.g0000000
 pkgrel=1
 pkgdesc="Space weather, VOACAP propagation, satellite tracker and telemetry dashboard for radio amateurs (OHB Edition)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/9M2PJU-HamClock-Installer"
   git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-  printf "4.29.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  printf "4.32.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {

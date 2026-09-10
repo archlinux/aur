@@ -1,6 +1,6 @@
 pkgbase = hamclock-git
 	pkgdesc = Space weather, VOACAP propagation, satellite tracker and telemetry dashboard for radio amateurs (OHB Edition)
-	pkgver = 4.29.r8.gae6f8e4
+	pkgver = 4.32.r0.g0000000
 	pkgrel = 1
 	url = https://hamclock.hamradio.my
 	arch = x86_64
