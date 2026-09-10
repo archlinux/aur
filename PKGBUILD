@@ -29,6 +29,8 @@ build(){
   cd "${pkgbase}-${pkgver}"
   export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   export RUSTC_BOOTSTRAP=1
+  export RUSTFLAGS="${RUSTFLAGS} -C linker=cc"
+  export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=cc
   export CARGO_TARGET_DIR=target
   export RUST_TOOLCHAIN=stable
   export PATH="${srcdir}/cardwire-tools/bin:$PATH"
