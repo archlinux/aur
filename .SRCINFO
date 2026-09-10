@@ -1,6 +1,6 @@
 pkgbase = r-easybgm
 	pkgdesc = Extracting and Visualizing Bayesian Graphical Models
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=easybgm
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-easybgm
 	depends = r-qgraph
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/easybgm_0.4.0.tar.gz
-	sha256sums = 39e194057dd9ddf6a897148212e5c8bf28d77b5fbaff0bea1a4fc8422b1c2c06
+	source = https://cran.r-project.org/src/contrib/easybgm_0.5.0.tar.gz
+	sha256sums = f8a555c844e9c4f79d80991ab0a173c31ea9972e61dfae0581d6e479536a1adb
 
 pkgname = r-easybgm
