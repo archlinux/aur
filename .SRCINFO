@@ -1,16 +1,16 @@
 pkgbase = mousr-git
-	pkgver = 0.1.7
-	pkgrel = 1
 	pkgdesc = Keyboard-driven mouse control for Wayland
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/toxdes/mousr
 	arch = x86_64
 	arch = aarch64
-	url = https://github.com/toxdes/mousr
 	license = MIT
-	depends = wayland
-	depends = libxkbcommon
 	makedepends = git
 	makedepends = rust
 	makedepends = pkgconf
+	depends = wayland
+	depends = libxkbcommon
 	source = git+https://github.com/toxdes/mousr.git
 	sha256sums = SKIP
 
