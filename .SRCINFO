@@ -1,0 +1,23 @@
+pkgbase = admoneo
+	pkgdesc = Local reminders with a natural-language REPL, deterministic CLI and TUI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ImJstNickDev/admoneo
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	depends = sqlite
+	depends = systemd
+	depends = dbus
+	optdepends = ca-certificates: system trust roots for HTTPS delivery
+	optdepends = openai-codex: natural-language REPL with Codex-managed ChatGPT authentication
+	optdepends = polkit: optional wake-from-suspend authorization
+	optdepends = xdg-utils: open stored reminder URLs
+	options = !lto
+	source = admoneo-1.0.0.tar.gz::https://github.com/ImJstNickDev/admoneo/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = f12a165ff45fffcbd53b7f24c3371429b2bc0eec3a9aa64eecea2908dd70b5b2
+
+pkgname = admoneo
