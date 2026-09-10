@@ -1,0 +1,64 @@
+post_install() {
+  cat << 'EOF'
+==> TAPE 16 has been installed.
+
+Main command:
+    tape16
+
+The official Linux build is X11-backed. On a Wayland session it runs
+through XWayland. The launcher sources:
+    /usr/share/tape16/profiles/wayland.env   (Wayland login)
+    /usr/share/tape16/profiles/x11.env       (X11 login)
+
+Command-line tools:
+    tape16-plugin-doctor
+        Internal plugin diagnostic helper.
+        Logs: ~/.config/TapeDAW/
+
+    tape16-reset-defaults
+        Reset UI/workflow preferences (timestamped backup).
+        Does not remove licenses, sessions, recordings or plugins.
+        Optional: tape16-reset-defaults --include-plugin-cache
+
+    In the app UI, similar actions are in Plugin Manager:
+        Deep Rescan, UNSCAN, Reset Plugin System
+
+Audio:
+    TAPE 16 talks JACK (libjack).
+    Recommended: PipeWire + pipewire-jack + wireplumber
+    Alternative: jack2
+    Set the device and buffer in TAPE 16 Audio Settings.
+    Optional: pacman -S realtime-privileges
+              sudo usermod -aG realtime $USER
+              then log out and back in
+
+Wayland sessions:
+    pacman -S xorg-xwayland
+    
+Optional launch flags:
+    TAPE16_SURGE_EDITOR_MODE=isolated tape16
+        Isolated Surge XT editor if the native window is blank.
+
+    TAPE16_PREFER_NATIVE_WAYLAND=1 tape16
+        Experimental. Not recommended by upstream.
+        
+Remote:
+    Enabled by default on the local network (TAPE16_REMOTE_LAN=1).
+    Disable with: TAPE16_REMOTE_LAN=0 tape16
+
+    The QR code encodes http://IP:PORT/remote/#token=...
+    If that IP is wrong (VPN, VM bridge, etc.), open the URL and
+    replace the IP with this machine's address on the same network
+    as your phone.
+
+    Do not enable this on public or untrusted Wi-Fi.
+    
+More info:
+    https://wiki.archlinux.org/title/PipeWire
+    https://wiki.archlinux.org/title/Realtime_process_management
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
