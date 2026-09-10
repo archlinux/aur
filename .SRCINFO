@@ -1,0 +1,17 @@
+pkgbase = yuzufox-git
+	pkgdesc = Hardened, zero-bloat Firefox for daily use.
+	pkgver = 155.0
+	pkgrel = 1
+	url = https://github.com/KabosuNeko/YuzuFox
+	arch = any
+	license = MIT
+	depends = firefox
+	depends = xdg-desktop-portal-impl
+	provides = firefox-settings
+	conflicts = firefox-settings
+	replaces = firefox-settings
+	backup = etc/firefox/policies/policies.json
+	source = git+https://github.com/KabosuNeko/YuzuFox.git
+	sha256sums = SKIP
+
+pkgname = yuzufox-git

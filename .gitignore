@@ -1,0 +1,4 @@
+pkg/
+src/
+YuzuFox/
+*.pkg.tar*
