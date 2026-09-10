@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=tty7-bin
-pkgver=26.9.1
+pkgver=26.9.2
 pkgrel=1
 pkgdesc="A terminal workbench in pure Rust: shells, persistent sessions, SSH, coding agents. GPU-rendered on Zed's gpui, VT core from Alacritty."
 arch=('x86_64')
@@ -32,7 +32,7 @@ conflicts=('tty7')
 source=("tty7-${pkgver}.svg::https://raw.githubusercontent.com/l0ng-ai/tty7/v${pkgver}/assets/app-icon.svg")
 source_x86_64=("tty7-${pkgver}-linux-x86_64.tar.gz::https://github.com/l0ng-ai/tty7/releases/download/v${pkgver}/tty7-${pkgver}-linux-x86_64.tar.gz")
 sha256sums=('50719dc40114a54a8d91ad7afef6851b7c03fc60e6188d5719536c751dfc3ad3')
-sha256sums_x86_64=('cc2c9f061a6bdd3366aaa97798254754cb25b86213e31a59b67756b8eace54db')
+sha256sums_x86_64=('99a1f6beed7a3b6278406846a531933e22a842f2ac3132262085b8ee589113f8')
 
 package() {
     local _release_dir="${srcdir}/tty7-${pkgver}-linux-x86_64"

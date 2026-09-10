@@ -1,6 +1,6 @@
 pkgbase = tty7-bin
 	pkgdesc = A terminal workbench in pure Rust: shells, persistent sessions, SSH, coding agents. GPU-rendered on Zed's gpui, VT core from Alacritty.
-	pkgver = 26.9.1
+	pkgver = 26.9.2
 	pkgrel = 1
 	url = https://github.com/l0ng-ai/tty7
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = tty7-bin
 	provides = tty7
 	conflicts = tty7
 	options = !debug
-	source = tty7-26.9.1.svg::https://raw.githubusercontent.com/l0ng-ai/tty7/v26.9.1/assets/app-icon.svg
+	source = tty7-26.9.2.svg::https://raw.githubusercontent.com/l0ng-ai/tty7/v26.9.2/assets/app-icon.svg
 	sha256sums = 50719dc40114a54a8d91ad7afef6851b7c03fc60e6188d5719536c751dfc3ad3
-	source_x86_64 = tty7-26.9.1-linux-x86_64.tar.gz::https://github.com/l0ng-ai/tty7/releases/download/v26.9.1/tty7-26.9.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = cc2c9f061a6bdd3366aaa97798254754cb25b86213e31a59b67756b8eace54db
+	source_x86_64 = tty7-26.9.2-linux-x86_64.tar.gz::https://github.com/l0ng-ai/tty7/releases/download/v26.9.2/tty7-26.9.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 99a1f6beed7a3b6278406846a531933e22a842f2ac3132262085b8ee589113f8
 
 pkgname = tty7-bin
