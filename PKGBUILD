@@ -4,7 +4,7 @@
 _pkgname="quirc"
 pkgname="$_pkgname-llvm"
 pkgver=1.2
-pkgrel=6
+pkgrel=7
 pkgdesc="QR decoder library — built with Clang and mold"
 url="https://github.com/dlbeer/quirc"
 license=('ISC')
@@ -15,7 +15,7 @@ depends=(
   'sdl_gfx'
   'sdl12-compat'
 )
-makedepends=('clang' 'mold' 'llvm')
+makedepends=('clang' 'mold-git' 'llvm')
 provides=('quirc')
 conflicts=('quirc')
 
