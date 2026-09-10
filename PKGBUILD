@@ -5,37 +5,14 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.100.0
-pkgrel=2
+pkgver=1.100.1
+pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('any')
 url='https://github.com/BerriAI/litellm'
 license=('MIT')
-
-
-makedepends=('python-maturin'
-             'python-build'
-             'python-installer'
-             'python-wheel')
-
-depends=('python'
-         'python-fastuuid'
-         'python-httpx'
-         'python-openai'
-         'python-dotenv'
-         'python-tiktoken'
-         'python-importlib-metadata'
-         'python-tokenizers'
-         'python-click'
-         'python-jinja'
-         'python-aiohttp'
-         'python-pydantic'
-         'python-pydantic-settings'
-         'python-jsonschema'
-         'python-boto3'
-         'glibc'
-         'libgcc')
-
+makedepends=('python-maturin' 'python-build' 'python-installer' 'python-wheel')
+depends=('python' 'python-fastuuid' 'python-httpx' 'python-openai' 'python-dotenv' 'python-tiktoken' 'python-importlib-metadata' 'python-tokenizers' 'python-click' 'python-jinja' 'python-aiohttp' 'python-pydantic' 'python-pydantic-settings' 'python-jsonschema' 'python-boto3' 'glibc' 'libgcc')
 optdepends=('gunicorn: proxy'
             'uvicorn: proxy'
             'python-granian: proxy'
@@ -128,36 +105,26 @@ optdepends=('gunicorn: proxy'
             'python-pypdf: proxy-runtime'
             'python-llm-sandbox: proxy-runtime'
             'python-detect-secrets: proxy-runtime')
-
 provides=("python-${pkgname}")
-
 options=(!lto !strip)
-
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ece94e817a453a5b3a9517c03547c428d501cea719edb728c1b260e53f78ea35')
-
+sha256sums=('d24b5fbdeb1f0b5c0a6f7f0caf7b6aa79b69c704b90daca57e3ce7d50a9d6bf4')
 
 prepare() {
   cd "${srcdir}"/${pkgname}-${pkgver}/
-
   sed -i 's/maturin==[0-9.]*/maturin/g' pyproject.toml
 }
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}/
-
   export PYO3_PYTHON=/usr/bin/python
   export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
-
   python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}"/${pkgname}-${pkgver}/
-
   python -m installer --destdir="${pkgdir}" dist/*.whl
-
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
