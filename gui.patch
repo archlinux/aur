@@ -64,10 +64,10 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
  }
 --- a/wx+/darkmode.h
 +++ b/wx+/darkmode.h
-@@ -11,12 +11,14 @@
+@@ -8,12 +8,14 @@
+ #include <zen/file_error.h>
  #include <wx/app.h>
- 
- 
+
 +#include <wx/settings.h>
 +enum class Appearance{System,Light,Dark};
  namespace zen
@@ -80,10 +80,10 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
  
  void colorThemeInit(wxApp& app, ColorTheme colTheme); //throw FileError
  void colorThemeCleanup();
-@@ -25,4 +27,23 @@ bool equalAppearance(ColorTheme colTheme1, ColorTheme colTheme2);
+@@ -21,3 +23,22 @@ void colorThemeCleanup();
+ bool equalAppearance(ColorTheme colTheme1, ColorTheme colTheme2);
  void changeColorTheme(ColorTheme colTheme); //throw FileError
  }
- 
 +struct wxColorHook
 +{
 +    virtual ~wxColorHook() {}
@@ -106,7 +106,7 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
  #endif //DARKMODE_H_754298057018
 --- a/FreeFilesync/Source/ui/main_dlg.cpp
 +++ b/FreeFileSync/Source/ui/main_dlg.cpp
-@@ -1278,9 +1278,10 @@ void MainDialog::setGlobalCfgOnInit(const GlobalConfig& globalCfg)
+@@ -1275,9 +1275,10 @@ void MainDialog::setGlobalCfgOnInit(const GlobalConfig& globalCfg)
      m_checkBoxMatchCase->SetValue(globalCfg_.mainDlg.textSearchRespectCase);
  
 +    wxAuiPaneInfoArray& paneArray = auiMgr_.GetAllPanes();
@@ -119,7 +119,7 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
  
      //compare progress dialog minimum sizes are layout-dependent + can't be changed by user => don't load stale values from config
      std::vector<std::tuple<wxAuiPaneInfo*, wxSize /*min size*/, wxSize /*best size*/>> paneConstraints;
-@@ -3146,6 +3147,7 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
+@@ -3143,6 +3144,7 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
      bool addedSeparator = false;
  
 -    for (wxAuiPaneInfo& paneInfo : auiMgr_.GetAllPanes())
@@ -128,8 +128,41 @@ diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source
          if (!paneInfo.IsShown() &&
              paneInfo.window != compareStatus_->getAsWindow() &&
              paneInfo.window != m_panelLog                    &&
-@@ -3166,3 +3168,4 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
+@@ -3163,3 +3165,4 @@ void MainDialog::onSetLayoutContext(wxMouseEvent& event)
  
 +    }
      menu.popup(*this);
  }
+--- a/zen/string_traits.h
++++ b/zen/string_traits.h
+@@ -45,6 +45,19 @@ enum class StringType
+ template <class S, StringType st>
+ class GetCharTypeImpl;
+ 
++//restore this from Freefilesync 14.11
++template <class S, class Char> //test if result of S::c_str() can convert to const Char*
++class HasConversion
++{
++    using Yes = char[1];
++    using No  = char[2];
++
++    static Yes& hasConversion(const Char*);
++    static  No& hasConversion(...);
++
++public:
++    static constexpr bool value = sizeof(hasConversion(std::declval<S>().c_str())) == sizeof(Yes);
++};
+ 
+ template <class S>
+ class GetCharTypeImpl<S, StringType::class_>
+@@ -57,7 +70,9 @@ class GetCharTypeImpl<S, StringType::class_>
+     static void    conversionType(...);
+ 
+ public:
+-    using Type = decltype(conversionType(std::declval<S>().c_str()));
++    //restore this from Freefilesync 14.11
++    using Type = std::conditional_t<HasConversion<S, wchar_t>::value, wchar_t,
++          /**/   std::conditional_t<HasConversion<S, char   >::value, char, void>>;
+     //using Type = typename S::value_type;
+     /*DON'T use S::value_type:
+         1. support Glib::ustring: value_type is "unsigned int" but c_str() returns "const char*"

@@ -6,7 +6,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=freefilesync
-pkgver=14.11
+pkgver=14.12
 pkgrel=1
 pkgdesc="Folder comparison and synchronization software"
 arch=(x86_64)
@@ -14,18 +14,18 @@ url="https://freefilesync.org"
 license=(custom)
 depends=(curl glibc hicolor-icon-theme wxwidgets-gtk3)
 
-# must ping the download page first because sometimes downloading Source.zip will return an html page instead
-# cf-cache-status: BYPASS
-# must ping download page first to bypass the rare cloudflare cache/challenge
-_="$(curl -s --out-null $url/download.php)"
+# must ping the download page first because sometimes downloading *Source.zip will return the download page instead
+# must ping the download page first to bypass the occasional cloudflare cache/challenge
+# check header: cf-cache-status: BYPASS
+_="$(curl -sL --out-null $url/download.php)"
 source=(
     "$url/download/FreeFileSync_${pkgver}_Source.zip"
     FreeFileSync.desktop RealTimeSync.desktop gui.patch
 )
-sha256sums=('7e7ea528ce90148b1343561ca6e35709af682bdea1531f210c98554a346619c3'
+sha256sums=('3df48f984233451257808233af0b0dd025c2004ebad945f86116b261114c3a4d'
             'f7fc56e3107a5ae4a7fc63246451f7d481f70c85e3190139c036c6bc6eb97500'
             '049b415078c5037c82ed8316aa0d22d4629dbdff2d2b1b4df3f3554218915f33'
-            '4e6e7a88d15153906bebd1c788b461736abb009aca9a69c3cbc06d9fdb91af11')
+            '3b22fd2d9aedfa321d50dbba3147c29047017fc3fa71ece510963197177cf9ff')
 
 prepare() {
     msg2 'patching wxwidgets 3.3isms'
@@ -36,11 +36,10 @@ prepare() {
 
     msg2 'patching other files'
     # undefine to use -Wfatal-errors 
-    echo '#undef wxUSE_EXCEPTIONS' >> zen/i18n.h
+    echo '#undef wxUSE_EXCEPTIONS' >> FreeFileSync/Source/localization.h
     # fix glib macro quirk
     sed -i 's|::g_free|g_free|' FreeFileSync/Source/{base/icon_loader.cpp,afs/ftp.cpp} zen/zstring.cpp
     # disable loading missing animal.dat file and override error
-    # -e'/DrawHighlighted/s|override|/d|'
     sed -i -e's|const override|const|' -e'/animalImg/s|^|//|' FreeFileSync/Source/ui/small_dlgs.cpp
     # disable automatic update check on startup
     sed -i '/Bind\(.*onStartupUpdateCheck\)/s|^|//|' FreeFileSync/Source/ui/main_dlg.cpp 
@@ -48,8 +47,8 @@ prepare() {
 
 build() {
     CXXFLAGS+=" -DMAX_SFTP_READ_SIZE=30000 -DMAX_SFTP_OUTGOING_SIZE=30000 \
-        -DwxInfoDC=wxClientDC -DwxReadOnlyDC=wxDC -DwxSYS_COLOUR_GRIDLINES=wxSYS_COLOUR_BTNFACE"
-#    CXXFLAGS+=" -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_54 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_54"
+        -DwxInfoDC=wxClientDC -DwxReadOnlyDC=wxDC -DwxSYS_COLOUR_GRIDLINES=wxSYS_COLOUR_BTNFACE \
+        -DLIBSSH2_ERROR_STORE_OVERFLOW=-55" # from https://github.com/libssh2/libssh2/blob/master/include/libssh2.h#L530
     LDFLAGS+=" `pkg-config --libs gtk+-3.0`"
     MAKEFLAGS+=" -s -j`nproc`"
 
