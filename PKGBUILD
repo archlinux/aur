@@ -7,7 +7,7 @@ pkgname=xfb
 # every machine that installed it. Raise it only if the version ever has to go
 # backwards again.
 epoch=1
-pkgver=3.1423
+pkgver=4.0
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -177,19 +177,26 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v3.1423:"
-    echo "  - Cover art for the downloads that never got any: XFB looks one up"
-    echo "    per track, shows you what it found, and writes in what you keep"
-    echo "  - The phone app is told, on every answer, what version this desk"
-    echo "    has -- so an update is offered while you sync, not only at pairing"
-    echo "  - Resuming a download can no longer graft a new tail onto an older"
-    echo "    copy and leave a corrupt file of exactly the right length"
-    echo "  - The phone can delete what it has downloaded, so a set can be"
-    echo "    pulled again once the desk has better copies of it"
-    echo "  - The media notification is readable again: a track with no cover"
-    echo "    was a near-white card with white text on it"
-    echo "  - Fedora has an RPM of its own now, so the .deb is not the only"
-    echo "    way onto a Linux desk"
+    echo "New in v4.0:"
+    echo "  - XFB asks who is at the desk: operator accounts with roles, and"
+    echo "    every menu entry behind a permission its role has to hold"
+    echo "  - A production computer works on the station's own files over the"
+    echo "    share, prepares the programme, and publishes it back"
+    echo "  - A watched folder files what lands in it by itself, and a folder"
+    echo "    named after a category files its songs under that category"
+    echo "  - The national music quota, marked on the library and counted off"
+    echo "    the as-run log"
+    echo "  - Time signals: the pips on the hour, and an ident that names it"
+    echo "  - What Is Scheduled shows what is booked to go on air -- including"
+    echo "    the weekly bookings that never aired in Portuguese or French"
+    echo "  - The icons can be drawn to match the theme, with two more themes"
+    echo "    to draw them for, and an Options window an operator can read"
+    echo "  - Download options are managed per role, and the tools a job needs"
+    echo "    arrive the first time it asks for them"
+    echo "  - The playhead can be dragged to seek in wave view, and the hour"
+    echo "    clock puts its floating items on air, not just the pinned ones"
+    echo "  - Portuguese and French for all of it, plus 33 plurals that had"
+    echo "    been shipping blank"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"
