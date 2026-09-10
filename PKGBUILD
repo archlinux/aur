@@ -2,7 +2,7 @@
 
 pkgname=alphai-tui-bin
 _pkgname=alphai-tui
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="Terminal stock dashboard with live charts, AI-scored news and SEC Form 4 trades"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("$_pkgname")
 options=('!debug')
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.xz::$url/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.xz::$url/releases/download/v$pkgver/$_pkgname-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('84fe08eef54e81501c4d883b6dba183a3e0addae48da81f29f5125adc5eddb31')
-sha256sums_aarch64=('938b3655be35fe9d1c298966b10d8a73d205c1694c72e2dbd269c8ada6dab0da')
+sha256sums_x86_64=('d21688697e76e91e27ccdb23d39288f51b72fa879beffe7cc947cd85cd17fbbc')
+sha256sums_aarch64=('915f965356e5a71e4123ddeef2547ba96009db771b66e70f9eb0b5bbdcb7dba1')
 
 package() {
 	local _dir="$_pkgname-$CARCH-unknown-linux-gnu"
