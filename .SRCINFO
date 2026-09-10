@@ -1,6 +1,6 @@
 pkgbase = fubuki-gtk
 	pkgdesc = Bootable USB writer in the spirit of Rufus: the GNOME window
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/dresden196/fubuki
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = fubuki-gtk
 	depends = gtk4
 	depends = libadwaita
 	depends = polkit
-	source = fubuki-0.2.1.tar.gz::https://github.com/dresden196/fubuki/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 40de60269ab4b610bd45362c45da11266eaf1583445f5803036cf5e8d8766370
+	source = fubuki-0.2.2.tar.gz::https://github.com/dresden196/fubuki/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = c3169c08c23d007b766211231a0194b38fdaabc59faf8f99bd3c86c8ae582eb4
 
 pkgname = fubuki-gtk
