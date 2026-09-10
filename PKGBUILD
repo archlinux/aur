@@ -4,13 +4,13 @@
 _pkgname=xeve
 pkgname=xeve-llvm
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc='MPEG-5 EVC (Essential Video Coding) encoder — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/mpeg5/xeve/'
 license=('BSD-3-Clause')
 depends=('glibc')
-makedepends=('clang' 'cmake' 'mold' 'llvm')
+makedepends=('clang' 'cmake' 'mold-git' 'llvm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
