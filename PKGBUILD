@@ -10,8 +10,8 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.4.1.r79.g841f3251d.0.g841f3251d
-pkgrel=1
+pkgver=1.4.1.r131.g69ae62d68.0.g69ae62d68
+pkgrel=2
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
 url="https://github.com/clementine-player/Clementine"
@@ -37,8 +37,8 @@ depends=(
     libx11
     #projectm # now use bundled v4.x, Arch is at v3.x
     protobuf libprotobuf.so
-    qt5-base
-    qt5-x11extras
+    qt6-base
+    qt6-5compat
     sqlite
     taglib
     zlib
@@ -48,8 +48,9 @@ makedepends=(
     cmake
     git
     glu
-    qt5-tools
+    qt6-tools
     #sparsehash
+    vulkan-headers
     )
 optdepends=(
     'gst-plugins-base: "Base" plugin libraries'
@@ -99,7 +100,7 @@ build() {
     -DUSE_SYSTEM_TAGLIB=ON
   )
 
-  cmake -B build -S Clementine -Wno-dev \
+  cmake -B build -S Clementine -Wno-author \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
