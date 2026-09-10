@@ -4,3 +4,5 @@
 !.gitignore
 !.nvchecker.toml
 !*.patch
+!keys/
+!keys/**

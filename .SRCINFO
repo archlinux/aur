@@ -14,7 +14,11 @@ pkgbase = lib32-libbluray
 	depends = lib32-libxml2
 	provides = libbluray.so
 	source = https://download.videolan.org/pub/videolan/libbluray/1.5.0/libbluray-1.5.0.tar.xz
+	source = https://download.videolan.org/pub/videolan/libbluray/1.5.0/libbluray-1.5.0.tar.xz.asc
+	validpgpkeys = 65F7C6B4206BD057A7EB73787180713BE58D1ADC
 	sha256sums = f676408e91a5d321abf8b8d4dfdae36205c297dab5c54c3ec519639025f474a2
+	sha256sums = SKIP
 	sha512sums = f35d89097ad0c263ffa2102aba0068e7fe9b85afe27b14cf3c34ed6eff5876d1528aa8a62c3941b767353be2e1de4ae765f1402bd44af4544d922ffb69cea354
+	sha512sums = SKIP
 
 pkgname = lib32-libbluray

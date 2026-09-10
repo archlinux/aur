@@ -36,9 +36,15 @@ provides=(
 _pkgsrc="${_name}-${pkgver}"
 source=(
   "https://download.videolan.org/pub/videolan/${_name}/${pkgver}/${_pkgsrc}.tar.xz"
+  "https://download.videolan.org/pub/videolan/${_name}/${pkgver}/${_pkgsrc}.tar.xz.asc"
 )
-sha256sums=('f676408e91a5d321abf8b8d4dfdae36205c297dab5c54c3ec519639025f474a2')
-sha512sums=('f35d89097ad0c263ffa2102aba0068e7fe9b85afe27b14cf3c34ed6eff5876d1528aa8a62c3941b767353be2e1de4ae765f1402bd44af4544d922ffb69cea354')
+sha256sums=('f676408e91a5d321abf8b8d4dfdae36205c297dab5c54c3ec519639025f474a2'
+            'SKIP')
+sha512sums=('f35d89097ad0c263ffa2102aba0068e7fe9b85afe27b14cf3c34ed6eff5876d1528aa8a62c3941b767353be2e1de4ae765f1402bd44af4544d922ffb69cea354'
+            'SKIP')
+validpgpkeys=(
+  '65F7C6B4206BD057A7EB73787180713BE58D1ADC' # VideoLAN Release Signing Key (2018)
+)
 
 build() {
   export CFLAGS+=" -m32"
