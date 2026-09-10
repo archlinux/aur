@@ -16,6 +16,7 @@ pkgbase = spotify-edge
 	depends = libcurl-gnutls
 	depends = libsm
 	depends = libayatana-appindicator
+	depends = libayatana-indicator
 	optdepends = ffmpeg4.4: Adds support for playback of local files
 	optdepends = zenity: Adds support for importing local files
 	optdepends = libnotify: Desktop notifications
