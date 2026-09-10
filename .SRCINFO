@@ -1,0 +1,23 @@
+pkgbase = python-pywebpush
+	pkgdesc = WebPush publication library
+	pkgver = 2.5.0
+	pkgrel = 3
+	url = https://pypi.org/project/pywebpush/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	makedepends = python-pytest
+	depends = python
+	depends = python-cryptography
+	depends = python-aiohttp
+	depends = python-vapid
+	depends = python-requests
+	depends = python-http-ece
+	source = https://files.pythonhosted.org/packages/source/p/pywebpush/pywebpush-2.5.0.tar.gz
+	sha256sums = 8260f8e42d70ed95a3bd00527ffcb43b5b3df8983a4a48b059fe29b06dc3d92c
+
+pkgname = python-pywebpush
