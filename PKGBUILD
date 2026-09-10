@@ -56,8 +56,7 @@ conflicts=(okular)
 replaces=(kdegraphics-okular)
 replaces=(okular)
 provides=(okular)
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
-        https://invent.kde.org/graphics/okular/-/commit/e322356c.patch)
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('7eb26c37ee42b6657526aeddd1bce71c5556e3865772a677f49b68deb46885d6'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
