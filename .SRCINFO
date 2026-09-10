@@ -1,7 +1,7 @@
 pkgbase = python-appstream-python
 	pkgdesc = A Python library for dealing with Freedesktop Appstream data
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/JakobDev/appstream-python
 	arch = any
 	license = BSD
@@ -13,7 +13,7 @@ pkgbase = python-appstream-python
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-furo
 	makedepends = make
 	depends = python
 	depends = python-requests

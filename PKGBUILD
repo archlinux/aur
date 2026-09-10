@@ -2,13 +2,13 @@
 
 pkgname=python-appstream-python
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for dealing with Freedesktop Appstream data"
 arch=("any")
 url="https://codeberg.org/JakobDev/appstream-python"
 license=("BSD")
 depends=("python" "python-requests" "python-lxml")
-makedepends=("python-setuptools" "python-build" "python-installer" "python-wheel" "python-sphinx" "python-sphinx_rtd_theme" "make")
+makedepends=("python-setuptools" "python-build" "python-installer" "python-wheel" "python-sphinx" "python-sphinx-furo" "make")
 checkdepends=("python-pytest" "python-pytest-cov" "python-requests-mock")
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/appstream-python/archive/${pkgver}.tar.gz")
 sha512sums=("5d62d9a652f07e9eb4100613fbff433ac6e8c1e58c68f407f87655e826ba0ed8a7e7f87904e6e391fe13f7bc7839d04b939e2f8d83e346f062b80e6b43f76519")
