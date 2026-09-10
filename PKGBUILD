@@ -1,7 +1,7 @@
 # Maintainer: ra1nb0w <rainbow@irh.it>
 
 pkgname=gtkterm
-pkgver=1.3.1
+pkgver=1.4
 pkgrel=1
 pkgdesc="A gtk+ based serial port communication program"
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'vte3' 'libgudev')
 makedepends=('meson' 'ninja')
 conflicts=('gtkterm')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('47e39011067ccaa5e965308225d8f80ea4e1793ca884d7f32600fa1fb9ae6628')
+sha256sums=('c8c832f1ff20054ece40e22148482243d9221d113e7e4387874742560af92899')
 install="${pkgname}.install"
 
 build()
