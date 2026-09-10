@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="Terminal reader for your personal daily news digest written in Rust"
 
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('623797a6997fba8b7dbd54572ec2f87fcd89616a8c20d2aa7280fd394e29fd28')
-sha256sums_x86_64=('7eb182e9c3bfc31bfeb701353901e426ba64222a09ad3aa05e8c770043aaaae6')
-sha256sums_aarch64=('fc29a288d17fa970b42566ad2995e7a915610407af779a1062e64d94563a08c7')
+sha256sums=('561a498c10d7be64a02c1b583f93e3ac3205dbad5cc23490c0cd1f6d7b3e485e')
+sha256sums_x86_64=('0aec504d2492df671f1f6e46af8f8bb61d6f52b05b7a7015c40dc11ebff1bb54')
+sha256sums_aarch64=('e4601db82e414207b0196dc52666bbb07c6956811d4df8a1fb8fa2a9f32a4a0b')
 
 
 package() {
