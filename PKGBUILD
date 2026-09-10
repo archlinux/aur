@@ -4,7 +4,7 @@
 _pkgname=rockchip-mpp
 pkgname=rockchip-mpp-llvm
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Rockchip Media Process Platform (MPP) — built with Clang and mold'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 makedepends=(
     'clang'
     'cmake'
-    'mold'
+    'mold-git'
     'llvm')
 provides=('rockchip-mpp')
 conflicts=('rockchip-mpp')
