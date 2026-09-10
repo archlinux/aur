@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=diceware-eff
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Generate passphrases from six-sided dice rolls"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('scdoc')
 checkdepends=('parallel' 'diffutils')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('db56f3d613dd8fcebb672b765bd391bdece5de4fa4c9297f4d249c102691a7ea')
+sha256sums=('33c5910f2696659e80e8632df65e1d004998cac599811f45c522be243d5c7e28')
 
 check() {
     cd "$srcdir/$pkgname-$pkgver" || return
