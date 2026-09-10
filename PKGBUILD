@@ -3,7 +3,7 @@
 _base=FMPy
 pkgname=python-${_base,,}
 _gitcommit=5823133022409b08e13d3164b06374a4e5e56af8
-pkgver=0.3.31
+pkgver=0.3.32
 pkgrel=1
 pkgdesc="Simulate Functional Mockup Units (FMUs) in Python"
 url="https://github.com/CATIA-Systems/${_base}"
