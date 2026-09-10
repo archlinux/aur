@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=r8127-dkms
 pkgver=11.016.00
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for Realtek 10GB Ethernet NICs"
 arch=(any)
 url="https://www.realtek.com/Download/List?cate_id=584"
@@ -13,7 +13,7 @@ source=("https://github.com/openwrt/rtl8127/releases/download/${pkgver/6/5}/${pk
 	"dkms.conf")
 sha256sums=('ab21bf69368fb9de7f591b2e81cf1a815988bbf086ecbf41af7de9787b10594b'
             '363a25d013ac0f607479efd7845bcb433b7333021fa6ba7dc6d34bd7519328d2'
-            'bb1a6e61f626ca6a8eca449aa9eff18db331c68a2b0c0f27d54f55b853aae181')
+            '6e854210a8a57bbfa19959da10243f5df1c81e688d00d12811519f45ce969d33')
 
 prepare() {
 	cd "$srcdir/${pkgname::-5}-${pkgver/6/5}/src/"
