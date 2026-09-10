@@ -7,7 +7,7 @@
 #   paru -Ui        (oder)   yay -Bi .
 pkgname=dream-voicetraining
 _repo=Dream-VoiceTraining          # das GitHub-Archiv entpackt unter diesem Namen
-pkgver=1.1.4
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Voice analysis for training your speaking voice: pitch, formants, resonance and voice quality"
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
 )
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1b95d4b460d0bb0987877ce502ea8aa8263f1e3eca2cadcd6ced8f2fc0c6bc4b')
+sha256sums=('aa2992fc839a9a61ce1fc2e0b20dcf89e5dcff39c2ccb0e44fbb0a2c6c982206')
 
 check() {
   cd "$srcdir/$_repo-$pkgver"
@@ -66,4 +66,6 @@ package() {
   install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 README.de.md "$pkgdir/usr/share/doc/$pkgname/README.de.md"
+  install -Dm644 docs/metrics.md -t "$pkgdir/usr/share/doc/$pkgname/docs"
+  install -Dm644 docs/metrics.de.md -t "$pkgdir/usr/share/doc/$pkgname/docs"
 }
