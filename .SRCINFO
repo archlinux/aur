@@ -1,6 +1,6 @@
 pkgbase = fubuki-ui
 	pkgdesc = Bootable USB writer in the spirit of Rufus: the KDE window
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/dresden196/fubuki
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = fubuki-ui
 	depends = qqc2-desktop-style
 	depends = polkit
 	depends = systemd
-	source = fubuki-0.1.1.tar.gz::https://github.com/dresden196/fubuki/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = a64af150cbf60a49d5e62bfff0cbbd76b80c6d2f6f99fa383c2c9bfee11398b5
+	source = fubuki-0.2.0.tar.gz::https://github.com/dresden196/fubuki/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = c87b588d9101888a28a66aa9ce8cf3f28ac080b1bb37d8e0da86b5ae828192b9
 
 pkgname = fubuki-ui
