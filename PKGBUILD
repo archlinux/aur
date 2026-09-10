@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=luatos-tools
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A CLI for building, flashing, and debugging LuatOS firmware on EC618 / EC7xx modules"
 arch=($CARCH)
@@ -28,7 +28,7 @@ backup=()
 options=('!lto')
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('c054fcfe9a5a38965aeb08cc65bb2b5afc605f7999911286f4ef956142b1e70c')
+sha256sums=('010b1496c539bee4d28ec8fef84f6896b1312a2c5e729a25c3a6b98363092da1')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -60,4 +60,10 @@ package() {
     install -Dm0644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -Dm0755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
+    install -vDm644 /dev/stdin ${pkgdir}/usr/lib/udev/rules.d/71-luatos-tools-eigencomm.rules <<EOF
+# This file should be copied to /etc/udev/rules.d on GNU/Linux OS and derived
+# Add permission to all user to have complete acces to eeprom programmers
+# EigenComm
+SUBSYSTEM=="usb", ATTRS{idVendor}=="17d1", ATTRS{idProduct}=="0001", TAG+="uaccess"
+EOF
 }
