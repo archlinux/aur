@@ -2,7 +2,7 @@
 
 _reponame=mdcz
 pkgname="${_reponame}-server"
-pkgver=0.12.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Media metadata scraper (server)"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("${_reponame}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.
         "${_reponame}.sysusers"
         "${_reponame}.tmpfiles"
         "${_reponame}u.service")
-sha256sums=('cd23405f4d1e54928e70483304ba2c962b7de8a60ff26db6949e32aa5810c928'
+sha256sums=('5705a03e77a9d9cb76ef99f2e3a50314a1a7cc214de0aae2fcb49a0976cebf52'
             'b238101b924496e6257593a82405e984e9373aac52a06cdbf236d30624972c99'
             'c80caf8e5dc0ec46f3aefd2b207a2ddf035685874102698196f050afe7719310'
             '5325bb75ca4acdadef92d12d159ea2ade7f80cc4cb57b48e08274a8a625d6d66'
@@ -29,7 +29,7 @@ prepare() {
     rm -rf "${pkgname}" &>/dev/null
     cd "${_reponame}-${pkgver}"
     sed -i "s|^MDCZ_WEB_DIST_DIR=web|MDCZ_WEB_DIST_DIR=/usr/lib/mdcz/server/web|" apps/server/.env.example
-    pnpm install
+    pnpm install --frozen-lockfile
 }
 
 build() {
@@ -40,7 +40,7 @@ build() {
     cd "../${pkgname}"
     npm install --omit=dev --no-audit --no-fund --no-package-lock
     npm install-scripts approve better-sqlite3 impit sharp
-    npm rebuild better-sqlite3 impit sharp
+    npm rebuild
     find . -type f -name "*.map" -delete
     grep -rl "${srcdir}/${pkgname}" . | xargs -I {} sed -i "s|${srcdir}/${pkgname}|/usr/lib/${_reponame}/server|g" {}
     perl -0777 -pe 's{
