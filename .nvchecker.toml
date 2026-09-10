@@ -1,5 +1,4 @@
 [crow]
-source = "github"
-github = "CrowCpp/Crow"
-use_max_tag = true
+source = "git"
+git = "https://github.com/CrowCpp/Crow.git"
 prefix = "v"
