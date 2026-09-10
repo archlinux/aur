@@ -1,13 +1,13 @@
 pkgbase = lazyverilog
 	pkgdesc = A fast, practical SystemVerilog LSP for RTL coding.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/lazyverilog/LazyVerilog
 	arch = any
 	license = MIT
 	makedepends = boost
 	makedepends = cmake
-	source = lazyverilog-2.0.0.tar.gz::https://github.com/lazyverilog/LazyVerilog/archive/v2.0.0.tar.gz
-	sha256sums = 4a1d0486c364c867792f599348ae0508ab4174cdf47cd936056f64c8231d3c0b
+	source = lazyverilog-2.0.1.tar.gz::https://github.com/lazyverilog/LazyVerilog/archive/v2.0.1.tar.gz
+	sha256sums = c35e4b0330a6c1a447577b07159d6b619924bd6a7bea22c73ac4a1275d8ddf71
 
 pkgname = lazyverilog
