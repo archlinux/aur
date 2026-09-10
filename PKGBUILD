@@ -2,8 +2,8 @@
 
 pkgname=python-qsnctf
 _name=${pkgname#python-}
-pkgver=0.0.10
-pkgrel=3
+pkgver=0.0.12
+pkgrel=1
 epoch=
 pkgdesc="青少年 CTF 训练平台提供的 Python 软件包"
 arch=('any')
@@ -37,7 +37,7 @@ install=
 changelog=
 source=("${_name}::git+${url}.git#tag=v$pkgver")
 noextract=()
-sha256sums=('42613966b2cf5ae704a7ee75690040543ed85ea1b6fed10e186357e3e4b7d6d2')
+sha256sums=('8e770f9909075781839901822e2d830ffbbc400b69e80001edbde121785b9235')
 #validpgpkeys=()
 
 prepare() {
@@ -52,7 +52,7 @@ build() {
 package() {
     cd "${srcdir}/${_name}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-    # install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -Dm0644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
-    cp -R docs "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm0644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    cp -rv docs "${pkgdir}/usr/share/doc/${pkgname}/"
 }
