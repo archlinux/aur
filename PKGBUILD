@@ -7,13 +7,13 @@
 _pkgname=davs2
 pkgname=${_pkgname}-llvm
 pkgver=1.7
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 pkgdesc='Open-Source decoder of AVS2-P2/IEEE1857.4 video coding standard — built with Clang and mold'
 url='https://github.com/pkuvcl/davs2/'
 license=('GPL')
 depends=('glibc')
-makedepends=('nasm' 'clang' 'mold' 'llvm')
+makedepends=('nasm' 'clang' 'mold-git' 'llvm')
 provides=('davs2' 'libdavs2')
 conflicts=('davs2' 'libdavs2')
 replaces=('libdavs2')
