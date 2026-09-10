@@ -2,7 +2,7 @@
 pkgname=voicestudio-bin
 _pkgname=VoiceStudio
 _debname=omnivoice-studio
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages."
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('43753aeb1f78e9318d8a4df97e45b76384cad5d88e6be423d696413f8329492c'
+sha256sums=('9481a253b3a426884ff3e7ea44cb6fe9ef367221f6594784d3be947fdc3e3a86'
             'c8da18372d51521dd3a75339f699c3432726b78eec814f15730dca05a2d05536')
 prepare() {
     sed -i -e "
