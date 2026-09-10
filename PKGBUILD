@@ -3,7 +3,7 @@
 
 pkgname=chromaprint-fftw-llvm
 pkgver=1.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Library for extracting fingerprints from any audio source (uses fftw for FFT calculations instead of ffmpeg) — built with Clang and mold'
 arch=('x86_64')
 url='https://acoustid.org/chromaprint'
@@ -16,7 +16,7 @@ depends=(
 makedepends=(
     'clang'
     'cmake'
-    'mold'
+    'mold-git'
     'llvm')
 provides=('chromaprint-fftw' 'chromaprint' 'libchromaprint.so')
 conflicts=('chromaprint-fftw' 'chromaprint')
