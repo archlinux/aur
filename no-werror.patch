@@ -1,0 +1,14 @@
+Drop -Werror so GCC 16 / Qt 6.11 warnings (sfinae-incomplete,
+unused-parameter, reorder) do not fail the AUR build.
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -13,7 +13,7 @@
+ else()
+   set(CMAKE_CXX_STANDARD 17)
+   set(CMAKE_CXX_STANDARD_REQUIRED ON)
+-  add_definitions("-pedantic -Wall -Wextra -Werror -Wno-deprecated-declarations")
++  add_definitions("-pedantic -Wall -Wextra -Wno-deprecated-declarations")
+   add_compile_options(-fstack-protector-strong -fcf-protection=full)
+   add_definitions(-D_FORTIFY_SOURCE=3)
+   set(CMAKE_POSITION_INDEPENDENT_CODE ON)

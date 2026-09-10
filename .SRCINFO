@@ -1,0 +1,23 @@
+pkgbase = rclone-browser-ng
+	pkgdesc = Qt6 GUI for rclone, community continuation of Rclone Browser
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/SysAdminDoc/RcloneBrowserNG
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = qt6-base
+	depends = rclone
+	optdepends = fuse3: mount remotes as local filesystems
+	optdepends = mpv: stream media files
+	optdepends = vlc: stream media files
+	provides = rclone-browser
+	conflicts = rclone-browser
+	conflicts = rclone-browser-git
+	conflicts = rclone-browser-qt6
+	source = rclone-browser-ng-2.0.2.tar.gz::https://github.com/SysAdminDoc/RcloneBrowserNG/archive/refs/tags/v2.0.2.tar.gz
+	source = no-werror.patch
+	sha256sums = 8630b6c7ceba1676fd17ff0210032c61675488620fca30fc28d75b5ce44c0713
+	sha256sums = e84af5afaa7bb408b61dbeb7c073ef24e63492a778e25283ff5f806082030657
+
+pkgname = rclone-browser-ng
