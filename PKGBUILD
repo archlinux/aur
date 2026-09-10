@@ -1,6 +1,6 @@
 # Maintainer: Jakob Munch Overgaard <jmo@tvipper.com>
 pkgname=remotepower-server
-pkgver=7.0.2
+pkgver=7.0.3
 pkgrel=1
 pkgdesc='Self-hosted fleet-management server for RemotePower (nginx + gunicorn/Flask): dashboards, CVE/drift/compliance, monitoring, AI'
 arch=('any')
@@ -30,7 +30,7 @@ source=(
   "remotepower-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/remotepower-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-  'd9d6e82de8bf8b3bf952e16883f27fe849bdc0dd8735253f127cef59170df417'
+  '0126455f0d33ee3dc576775adf49f528bf8aec0db6990840ca4ed8e5c60db847'
   'SKIP'
 )
 validpgpkeys=('E7B5AD456728B8462A8B54BFD488AF115D2CCDBF')  # Jakob Munch Overgaard <jmo@tvipper.com>
