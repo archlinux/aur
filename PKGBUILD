@@ -14,7 +14,7 @@ license=('GPL-3.0-or-later')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'libgcc')
+depends=('glibc' 'libgcc' 'cargo')
 
 options=('!strip')
 

@@ -7,6 +7,7 @@ pkgbase = cargo-pretty-build-bin
 	license = GPL-3.0-or-later
 	depends = glibc
 	depends = libgcc
+	depends = cargo
 	provides = cargo-pretty-build
 	conflicts = cargo-pretty-build
 	options = !strip
