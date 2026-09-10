@@ -1,6 +1,6 @@
 pkgbase = vivobook-rgb
 	pkgdesc = RGB keyboard control for ASUS Vivobook laptops via HID LampArray
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/matcraft94/vivobook-rgb
 	install = vivobook-rgb.install
@@ -9,7 +9,7 @@ pkgbase = vivobook-rgb
 	depends = python
 	optdepends = systemd: for vrgb-default.service support
 	backup = etc/vrgb.conf
-	source = vivobook-rgb-0.2.0.tar.gz::https://github.com/matcraft94/vivobook-rgb/archive/v0.2.0.tar.gz
-	sha256sums = f2791e510612c95572eac305f1553b89eb10741e5c09abd0fbb8140397839773
+	source = vivobook-rgb-0.3.0.tar.gz::https://github.com/matcraft94/vivobook-rgb/archive/v0.3.0.tar.gz
+	sha256sums = 1a602129a7fa40988290eb652cac48ab69aa87712abad4e70d78ae069c5d132c
 
 pkgname = vivobook-rgb

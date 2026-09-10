@@ -11,8 +11,14 @@ post_install() {
       sudo udevadm control --reload-rules
       sudo udevadm trigger
 
-==> Optional: set a default color on boot (edit /etc/vrgb.conf):
+==> Optional: set a default color on boot AND restore it after suspend
+     (the ITE5570 forgets the color on resume). Edit /etc/vrgb.conf, then:
       sudo systemctl enable --now vrgb-default.service
+
+==> Optional effects/daemon (v0.3.0+):
+      vrgb effect breathe 00ffff 5     # run in foreground, Ctrl+C stops
+      vrgb daemon &                    # background daemon
+      vrgb set cycle 10                # daemon applies it immediately
 EOF
 }
 
