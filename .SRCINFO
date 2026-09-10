@@ -10,7 +10,6 @@ pkgbase = proton-cachyos-rtsp-slr-bin
 	license = MIT
 	license = MPL
 	license = custom
-	depends = tar
 	depends = sed
 	provides = proton
 	provides = proton-cachyos-rtsp
