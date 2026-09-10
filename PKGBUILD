@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=tcut-bin
-pkgver=1.2.1
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Script terminal sessions in TypeScript, render reproducible MP4/GIF/SVG/HTML with Bun"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('tcut')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/AmanVarshney01/tcut/releases/download/v${pkgver}/tcut-${pkgver}-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/AmanVarshney01/tcut/releases/download/v${pkgver}/tcut-${pkgver}-linux-arm64")
-sha256sums_x86_64=('9c1c473c1f0e88c183a49b30c3f38fd55b005a725bd2df1159f3dde3449898f1')
-sha256sums_aarch64=('8a81a08d86b0d9b3a5dccc5017fe5fb2a807098322c5a09d3e06f9df0748461f')
+sha256sums_x86_64=('b29fd7747a5b47ca2cc5be51377830bb0a1e30191907d429dba6a977f0654c34')
+sha256sums_aarch64=('65b800720b11081c3801366a5548502770c5a10c7b65bc4a50c480709501d369')
 
 package() {
   case "$CARCH" in
