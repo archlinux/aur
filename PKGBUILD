@@ -5,12 +5,12 @@
 
 pkgname=neverball
 pkgver=1.6.0
-pkgrel=5
+pkgrel=6
 pkgdesc="3D game similar to Super Monkey Ball or Marble Madness"
 arch=('x86_64')
 url="http://neverball.org/"
 license=('GPL')
-depends=('sdl2_ttf' 'libgl' 'libpng' 'libjpeg' 'libvorbis' 'physfs' \
+depends=('sdl2_ttf' 'libgl' 'libpng' 'libjpeg-turbo' 'libvorbis' 'physfs' \
          'hicolor-icon-theme' 'xdg-utils')
 makedepends=('mesa')
 source=(http://neverball.org/${pkgname}-${pkgver}.tar.gz
