@@ -22,6 +22,9 @@ prepare() {
 
   # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
   patch -p1 -i "${srcdir}"/MR13293.patch
+
+  # flag to skip hw backends
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/13393.patch -p1
 }
 
 build() {
