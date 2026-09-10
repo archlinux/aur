@@ -1,6 +1,6 @@
 # Maintainer: musqz <gummy-fang-deputy@duck.com>
 pkgname=archcanary
-pkgver=0.1.33
+pkgver=0.1.34
 pkgrel=1
 pkgdesc="Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering"
 arch=('any')
@@ -21,7 +21,7 @@ backup=('etc/archcanary/dkms_allowlist.conf'
         'etc/archcanary/autostart_allowlist.conf')
 install=archcanary.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/musqz/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('9ffbfe84eb572afd69720a341bade5d988efc41a18bfec2f1793f39023ada424')
+sha256sums=('9af70610b8abf1f54bdb88512bf8e5881ce79066269bc8c29083235ca0d49205')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
