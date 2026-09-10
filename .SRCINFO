@@ -2,7 +2,7 @@ pkgbase = midnight-shell-git
 	pkgdesc = DiM's fork of Caelestia-Shell
 	pkgver = r3087.bb7b565
 	pkgrel = 2
-	url = https://github.com/dim-ghub/midnight-shell.git
+	url = https://github.com/deeadly137/midnight-shell.git
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
@@ -47,7 +47,7 @@ pkgbase = midnight-shell-git
 	conflicts = dim-caelestia-shell-git-debug
 	conflicts = polkit-gnome
 	replaces = dim-caelestia-shell-git
-	source = midnight-shell-git::git+https://github.com/dim-ghub/midnight-shell.git
+	source = midnight-shell-git::git+https://github.com/deeadly137/midnight-shell.git
 	sha256sums = SKIP
 
 pkgname = midnight-shell-git
