@@ -6,7 +6,7 @@ _execname=cjsh
 pkgname=${_execname}-bin
 pkgdesc="POSIX shell scripting meets Modern Shell Features"
 
-pkgver=1.5.2
+pkgver=1.5.4
 pkgrel=1
 _appversion=v${pkgver}
 
@@ -37,16 +37,16 @@ source=("WHAT-TO-KNOW-${pkgver}.md::${_ghurlraw}/docs/getting-started/what-to-kn
         "LANGUAGE-COMPATIBILITY-${pkgver}.md::${_ghurlraw}/docs/reference/language-compatibility.md")
 source_x86_64=("${_execname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_appversion}/${_execname}-${_appversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_execname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_appversion}/${_execname}-${_appversion}-${_barch[1]}.tar.gz")
-sha256sums=('84b038b5206824c33602e290f76cceb8c29219177f97d179e42fbb67ad8d3dfd'
+sha256sums=('b57592e2605f319ba200df6ee9b0d851ed7aaea0723a7d29e21a6b0ff03b6854'
             '271ddb6d44b38c83cd2eb69739b74f18935a90638deb39a06ab299b265a93c88'
-            '29ca988ac50d958f4c7c410e83a6bc2ed50326f8b5e7956aa5debb79f341afe4'
-            'e2df7864bb673689e52f4624d321f6a9cce989994c2043fa114cf6a138677ba3'
-            '70cebacf376afc786467528aa7d2c8cd6f284ebfb84afa1feb04b01e303ae81d'
+            'f900c38036227957e2075473fd25e14d0ef821075cb3f47b9049bfb938b5bc5a'
+            'fd565ad8840db0a34433ae7eb7f8db30b41b7c8621e3f335bc9aa6bf6f1ef013'
+            '47edbce22b6965969b6518d7417d19b3fe175c6d9eda976b995fb8bc4a257330'
             'c6fe360a8b01da454451e5e8e60d8400013729f25a7034e903f397b90867d5d3'
             'a44c280fb650ae4a29169a6be233264d7c175ae5243c65e372c85204cc0651bb'
-            '3889766b8eba4a461cc768c3f52000fe501b23adf99535c9f8fb1c8ccf8aebaf')
-sha256sums_x86_64=('67657a795fe856ce2ee9eca5fe32ba2d4a98adca8efc0e67247c5973d3d6a16f')
-sha256sums_aarch64=('794296b7b63bd571672c1cf78d8abd10386f80f1a28a82dfe4fe8bff05a35466')
+            '79b60b9d612285418c27bea23f09a5d0cd11620d791d34cc2aec8749c3dc681b')
+sha256sums_x86_64=('099236fde8eaa800376786da8df25cad2c7d3565d88e353ff6e8684d3b60481f')
+sha256sums_aarch64=('68de4681eaaeb9d135a0ddb58652bb40bcec21bb303870ae96001d6d5a03cb12')
 
 
 case ${CARCH} in
