@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dash-player-git
 _pkgname=DashPlayer
-pkgver=6.9.1.r6.gedf5544
+pkgver=6.10.0.r18.g167f203
 _electronversion=44
 _nodeversion=22
 pkgrel=1
@@ -25,6 +25,7 @@ makedepends=(
     'gendesk'
     'curl'
     'jq'
+    'zip'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -45,8 +46,12 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export NODE_OPTIONS="--max-old-space-size=4096"
+    # Force sharp to use system libvips instead of prebuilt/built-from-source
+    export SHARP_FORCE_GLOBAL_LIBVIPS=true
     export HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
@@ -66,7 +71,6 @@ _set_build_env() {
             export YARN_NETWORK_CONCURRENCY=32
         }
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
-        sed -i "s/\`https\:\/\/github\.com/\`https\:\/\/gh-proxy\.org\/https\:\/\/github\.com/g" scripts/download.mjs
     fi
 }
 _get_app_dir() {
@@ -95,7 +99,6 @@ prepare() {
         --exec="${pkgname%-git} %U"
     _set_build_env
     _ensure_local_nvm
-    sed -i "/^import MakerDMG/d;/new MakerDMG({/,/^        }),/d;/ULFO/d;/icon\.icns/d;25d" forge.config.ts
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     rm -rf lib
     mkdir lib
@@ -103,7 +106,24 @@ prepare() {
     ln -sf "/usr/bin/ffprobe" lib/ffprobe
     ln -sf "/usr/bin/yt-dlp" lib/yt-dlp
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    # Use ignore-scripts to skip sharp build
+    NODE_ENV=development yarn install --cache-folder "${srcdir}/.yarn_cache" --ignore-scripts
+    # Completely remove sharp's install script from package.json
+    cd node_modules/sharp
+    jq 'del(.scripts.install)' package.json > package.json.tmp && mv package.json.tmp package.json
+    # Verify the install script is removed
+    grep -q '"install"' package.json && echo "WARNING: install script still present" || echo "OK: install script removed"
+    cd "${srcdir}/${pkgname%-git}.git"
+    local _v="${SYSTEM_ELECTRON_VERSION}"
+	local _zd="${srcdir}/electron-zips"
+	case "${CARCH}" in
+		aarch64)	_arch=arm64	;;
+		x86_64)	_arch=x64	;;
+	esac
+	local _zf="${_zd}/electron-v${_v}-linux-${_arch}.zip"
+	install -Dm755 -d "${_zd}"
+	( cd "/usr/lib/electron${_electronversion}" && zip -r -q -0 "${_zf}" . )
+	sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," forge.config.*
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
