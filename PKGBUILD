@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Wireguard VPN administration tool'
 _gitname='wg_tool'
 
-pkgver="10.2.0"
+pkgver="10.3.0"
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
@@ -18,16 +18,16 @@ arch=(any)
 license=('GPL-2.0-or-later')
 depends=(
     'python>=3.14' 
-    'python-cryptography' 
-    'py-cidr'
-    'python-qrcode' 
-    'wireguard-tools' 
-    'nftables'
-    'pyconcurrent' 
-    'python-yaml'
-    'python-dnspython'
-    'python-tomli-w'
-    'bash'
+    python-cryptography
+    py-cidr
+    python-qrcode
+    wireguard-tools
+    nftables
+    python-pyconcurrent
+    python-yaml
+    python-dnspython
+    python-tomli-w
+    bash
 )
 
 optdepends=(
@@ -36,10 +36,10 @@ optdepends=(
 )
 
 makedepends=(
-    'git' 
-    'meson'
-    'meson-python'
-    'rsync'
+    git
+    meson
+    meson-python
+    rsync
 )
 
 _mkpkg_depends=(
@@ -73,6 +73,11 @@ changelog="Changelog.rst"
 build() {
     cd "${_gitname}"
     ./scripts/do-build
+}
+
+build() {
+    cd "${_gitname}"
+    ./scripts/run-tests
 }
 
 package() {
