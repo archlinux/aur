@@ -1,8 +1,8 @@
 pkgbase = mustang
-	pkgdesc = New full-featured desktop email, chat and video conference client.(Use system-wide electron)
-	pkgver = 0.9.38
+	pkgdesc = New full-featured desktop email, chat and video conference client.
+	pkgver = 0.9.39
 	pkgrel = 1
-	url = https://mustang.im/
+	url = https://parula.app/
 	arch = any
 	license = EUPL-1.2
 	makedepends = npm

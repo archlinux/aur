@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.9.38
+pkgver=0.9.39
 _electronversion=41
 _nodever=24
 pkgrel=1
-pkgdesc="New full-featured desktop email, chat and video conference client.(Use system-wide electron)"
+pkgdesc="New full-featured desktop email, chat and video conference client."
 arch=('any')
-url="https://mustang.im/"
+url="https://parula.app/"
 _ghurl="https://github.com/mustang-im/mustang"
 license=('EUPL-1.2')
 depends=(
