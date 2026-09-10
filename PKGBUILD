@@ -1,15 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=redis-viewer-bin
 _pkgname=RedisViewer
-_debname=io.github.redisviewer
-pkgver=3.2.4
+_debname=com.redisviewer.RedisViewer
+pkgver=3.3.0
 pkgrel=1
-pkgdesc="A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode.Prebuilt version"
+pkgdesc="A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode."
 arch=(
     'aarch64'
     'x86_64'
 )
-url="https://github.com/redisviewer/RedisViewer"
+url="https://redisviewer.com/"
+_ghurl="https://github.com/redisviewer/RedisViewer"
 license=('LicenseRef-unknown')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -21,10 +22,10 @@ depends=(
 options=(
     '!strip'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64_bin.tar.gz")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64_bin.tar.gz")
-sha256sums_aarch64=('eb97bd942e453000339625696d381c2196f4019e75a69f3eb6e3991823861938')
-sha256sums_x86_64=('9002e83fb9154e80ddb26277dc4c2236eec3730359f4343428d9200a73fdbef9')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64_bin.tar.gz")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64_bin.tar.gz")
+sha256sums_aarch64=('26270483a8d8620c60116d00c3df76081a62fc7647245dfe650aa95ee9874703')
+sha256sums_x86_64=('82ad1618eb852b1d508502e2bc2e31a1f29d9ea2c23b0df8751bb02d906d84f4')
 prepare() {
     sed -i "s/Icon=${_debname}/Icon=${pkgname%-bin}/g" "${srcdir}/${_debname}.desktop"
 }
