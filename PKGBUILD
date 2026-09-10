@@ -3,7 +3,7 @@
 # Maintainer: bannert <aur@bannert.dev>
 
 pkgname=karere
-pkgver=2.5.4 # renovate: datasource=github-tags depName=tobagin/karere
+pkgver=4.2.5 # renovate: datasource=github-tags depName=tobagin/karere
 pkgrel=1
 pkgdesc="A fast, native WhatsApp client for Linux with GTK4/LibAdwaita"
 arch=('x86_64')
