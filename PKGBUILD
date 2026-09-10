@@ -1,6 +1,6 @@
 # Maintainer: rNoz <8237539+rNoz@users.noreply.github.com>
 pkgname=factory-ai-droid-cli-rnoz-bin
-pkgver=0.215.1
+pkgver=0.216.0
 pkgrel=1
 pkgdesc="Factory.ai Droid CLI - Always fresh terminal AI assistant with zero-waste deterministic titling"
 arch=('x86_64' 'aarch64')
