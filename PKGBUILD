@@ -11,8 +11,8 @@ pkgname=qymcad-bin
 # THE VERSION IS WRITTEN TWICE ON PURPOSE. `pkgver` may not contain a hyphen (pacman reads a hyphen as the
 # boundary before pkgrel), while the release is named with one. `_relver` is the name the file really has
 # on the release page; a guard keeps the two from drifting.
-pkgver=0.1.0.dev.20260828
-_relver=0.1.0-dev.20260828
+pkgver=0.1.0.dev.20260910
+_relver=0.1.0-dev.20260910
 pkgrel=1
 pkgdesc="Parametric associative B-rep CAD/CAM"
 arch=('x86_64')
@@ -28,7 +28,7 @@ conflicts=('qymcad')
 options=('!strip' '!debug')
 source=("qymcad-${_relver}-${CARCH}.AppImage::${url}/releases/download/v${_relver}/qymcad-${_relver}-${CARCH}.AppImage")
 noextract=("qymcad-${_relver}-${CARCH}.AppImage")
-sha256sums=('c8609b56544940e22508a47263b87ab828a7ee807f9e626ed134679e57ddadab')
+sha256sums=('80c9f1e721f42dd87a7daea1ed88554da673e27c42b487bd35cb06221deb679e')
 
 prepare() {
     cd "$srcdir"

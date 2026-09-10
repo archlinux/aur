@@ -1,6 +1,6 @@
 pkgbase = qymcad-bin
 	pkgdesc = Parametric associative B-rep CAD/CAM
-	pkgver = 0.1.0.dev.20260828
+	pkgver = 0.1.0.dev.20260910
 	pkgrel = 1
 	url = https://github.com/QymIs-Tech/QymCAD
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = qymcad-bin
 	optdepends = vulkan-icd-loader: hardware acceleration through Vulkan
 	provides = qymcad
 	conflicts = qymcad
-	noextract = qymcad-0.1.0-dev.20260828-x86_64.AppImage
+	noextract = qymcad-0.1.0-dev.20260910-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source = qymcad-0.1.0-dev.20260828-x86_64.AppImage::https://github.com/QymIs-Tech/QymCAD/releases/download/v0.1.0-dev.20260828/qymcad-0.1.0-dev.20260828-x86_64.AppImage
-	sha256sums = c8609b56544940e22508a47263b87ab828a7ee807f9e626ed134679e57ddadab
+	source = qymcad-0.1.0-dev.20260910-x86_64.AppImage::https://github.com/QymIs-Tech/QymCAD/releases/download/v0.1.0-dev.20260910/qymcad-0.1.0-dev.20260910-x86_64.AppImage
+	sha256sums = 80c9f1e721f42dd87a7daea1ed88554da673e27c42b487bd35cb06221deb679e
 
 pkgname = qymcad-bin
