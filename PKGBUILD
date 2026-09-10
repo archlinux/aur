@@ -4,7 +4,7 @@ _repo=dank-greeter
 _binname=dms-greeter
 
 pkgname=greetd-dms-greeter-bin
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Greetd login screen with the Dank Material aesthetic (binary release)'
 arch=('x86_64' 'aarch64')
@@ -45,9 +45,9 @@ sha256sums=('0c4c01a73eb7d2d1286a7e60e580dd53b605636dc46a57c9c3318e8e23efc676'
             '0376981f71a7331e3a8e5fdf71628f8c0e3881328969011f31fc1da6d54036c0'
             'ae9e76c0a4af1390866e427de2eac9c9339115008790c06a6605022b0b82b89f'
             '1262f1c8d5e3a19c05d0e5863c54181c7f2c9fe404d69b7ef0629e2c758ffc16'
-            'f9ec4451ed4a3a526771d79693360dbf3a472d9503da1ef8968db7a5d6d79faf')
-sha256sums_x86_64=('b4a57d0e56a8ac48fdfb45e273fdc3bd138f2553881635ba56ec7230cfa59da9')
-sha256sums_aarch64=('55c8132675703a71efa9e8d6577726af6eb0d32bf2ae693d5242b2740cedc7b9')
+            'cc652f67d2c404a8bf987c7e624293c66d5aadcd2e8e18a784f12b0d1f2c8c61')
+sha256sums_x86_64=('74c2200f98c6e75ba92088c7e30dfea2b32758b6e5888f996a7e9a9688539a4d')
+sha256sums_aarch64=('29b6c010360d4df09e4dadf0224c0c6d43a52a9aa1bed74bb2184d6172f407e9')
 
 package() {
   cd "${srcdir}" || exit 1
