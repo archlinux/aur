@@ -4,7 +4,7 @@
 # Contributor: xantares
 
 pkgname=boost-stacktrace-backtrace
-pkgver=1.91.0
+pkgver=1.92.0
 _boostver=${pkgver//./_}
 pkgrel=1
 pkgdesc='Boost.stacktrace backtrace variant'
@@ -17,14 +17,14 @@ options=('staticlibs')
 provides=(libboost_stacktrace_backtrace.so)
 
 source=("https://archives.boost.io/release/$pkgver/source/boost_$_boostver.tar.gz")
-sha256sums=('5734305f40a76c30f951c9abd409a45a2a19fb546efe4162119250bbe4d3a463')
+sha256sums=('c4a3b310ddd2472416e091067166b0713be97c63f38c212c484ada022fd296ce')
 
 build() {
   cd boost_$_boostver
   ./bootstrap.sh --with-toolset=gcc
   ./b2 \
     variant=release \
-    debug-symbols=off \
+    debug-symbols=on \
     threading=multi \
     runtime-link=shared \
     link=shared,static \
