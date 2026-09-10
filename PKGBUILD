@@ -103,6 +103,10 @@ build() {
     node scripts/prepare-zadark.js
     node scripts/prepare-app.js
     node scripts/setup-zcall-bridge.js
+    test -f app/native/qt-call-and-cap/pipebridge.exe || {
+        echo 'ERROR: call engine missing (qt-call-and-cap/pipebridge.exe) — Windows installer download failed' >&2
+        return 1
+    }
     node "$srcdir/integrate-zadark.js"
 }
 
