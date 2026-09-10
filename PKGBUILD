@@ -1,5 +1,5 @@
 pkgname=ioruba-desktop-bin
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Tactile audio mixer for Arduino-based Linux control (prebuilt AppImage)"
 arch=('x86_64')
@@ -10,15 +10,19 @@ provides=('ioruba-desktop' 'ioruba')
 conflicts=('ioruba-desktop' 'ioruba')
 replaces=('ioruba')
 source=(
-  "Ioruba_1.9.0_amd64.AppImage::https://github.com/bernardopg/ioruba/releases/download/v${pkgver}/Ioruba_1.9.0_amd64.AppImage"
+  "Ioruba_1.9.1_amd64.AppImage::https://github.com/bernardopg/ioruba/releases/download/v${pkgver}/Ioruba_1.9.1_amd64.AppImage"
   "ioruba.png::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/apps/desktop/src-tauri/icons/128x128.png"
   "ioruba.svg::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/apps/desktop/src-tauri/icons/app-icon.svg"
   "run-appimage-compat.sh::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/scripts/run-appimage-compat.sh"
 )
-sha256sums=('18e17f577a70bf27bd2a8ba640b44c8187c6df49cbcf451a8a6ef68a81e0d834' '7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63' 'cf1b733eb5dbf61daab65b83e825387efdb1bec1bea5daf52864514ee8e4511a' '18703c7f9b4f15c5885fc38214060cdf8abeeea7cc84aef51d42376bc34a16f3')
+# makepkg reconhece o payload squashfs e tenta extrair AppImages por
+# padrao. Isso deixa no srcdir apenas o runtime ELF (~924 KiB), que o
+# package() copiava como se fosse o app completo.
+noextract=("Ioruba_1.9.1_amd64.AppImage")
+sha256sums=('13e15f23603ed51b91da9ec2467813c446a2a7d979b98ad854e82909f99ad970' '7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63' 'cf1b733eb5dbf61daab65b83e825387efdb1bec1bea5daf52864514ee8e4511a' '285bccc10c81a279df25e524d228f9b70305ca2f243d4ba17c0b000b8f7ee073')
 
 package() {
-  install -Dm755 "${srcdir}/Ioruba_1.9.0_amd64.AppImage" "${pkgdir}/opt/ioruba/ioruba.AppImage"
+  install -Dm755 "${srcdir}/Ioruba_1.9.1_amd64.AppImage" "${pkgdir}/opt/ioruba/ioruba.AppImage"
   install -Dm755 "${srcdir}/run-appimage-compat.sh" "${pkgdir}/opt/ioruba/run-appimage-compat.sh"
   install -Dm644 "${srcdir}/ioruba.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/ioruba.png"
   install -Dm644 "${srcdir}/ioruba.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ioruba.svg"
