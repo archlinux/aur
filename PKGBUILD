@@ -20,7 +20,6 @@ prepare() {
   echo "target_link_libraries(RemotingServerManager PRIVATE absl_log_internal_message)" >> Remoting/ServerManager/CMakeLists.txt
 
   # flag to skip hw backends
-  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/13393.patch -p1 -d VTK
   curl -L https://gitlab.kitware.com/paraview/paraview/-/merge_requests/7854.patch -p1
 }
 
