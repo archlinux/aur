@@ -1,6 +1,6 @@
 pkgbase = c3c-git
 	pkgdesc = Compiler for the C3 language
-	pkgver = r3411.ad02fad1
+	pkgver = r4765.acda47f79
 	pkgrel = 1
 	url = https://github.com/c3lang/c3c
 	arch = x86_64

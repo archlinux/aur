@@ -3,7 +3,7 @@
 
 pkgname=c3c-git
 _pkgname=c3c
-pkgver=r3411.ad02fad1
+pkgver=r4765.acda47f79
 pkgrel=1
 pkgdesc='Compiler for the C3 language'
 arch=(x86_64)
@@ -33,7 +33,7 @@ build() {
   CFLAGS="-Wno-error=maybe-uninitialized"
   cmake \
     -B build \
-    -D C3_LINK_DYNAMIC=ON \
+    -D C3_FETCH_LLVM=ON \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
     -D CMAKE_C_FLAGS_RELEASE="$CFLAGS" \
