@@ -34,7 +34,7 @@ optdepends=(
 	'libappindicator-gtk3: system tray support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d3c8f89b201841ec2e54cc4ab1369c0df3e1d4ede2392ad79c4cc876ed47d8ac')
+sha256sums=('29caf406780ba1450a68166b2bd3f653045f7510841f662d2e66fa475932e24d')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
