@@ -5,7 +5,7 @@ pkgver=1.4.0
 _electronversion=41
 _nodeversion=24
 pkgrel=1
-pkgdesc="A client software designed specifically for editing blog articles and managing blog content that supports Hexo!(Use system-wide electron)"
+pkgdesc="A multi-platform client that offers a user-friendly article editing interface and content management system for Hexo-based blogs. 为基于 Hexo 的博客，提供友好易用的文章编辑界面和内容管理系统的，开源博客软件。"
 arch=('any')
 url="http://blog.charlestang.org/HexoPress/"
 _ghurl="https://github.com/charlestang/HexoPress"
@@ -21,33 +21,67 @@ makedepends=(
     'nvm'
     'git'
     'jq'
+    'zip'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('17912aa4275149b9b8fba1a04b9685345d5747f42c0e26cc344ab32ba8158a0a'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums=('afbd058abebbf119760d8ed1bfce146e09ad30c5b32ddea757c2f34cdbfe4848'
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
-    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
-    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
+        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
+    [[ -z "${_elec_ver}" ]] && return 1
+    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+}
+_set_build_env() {
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+	export HOME="${srcdir}/.electron-gyp"
+	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+	export NPM_CONFIG_MAXSOCKETS=32
+	export npm_config_platform=linux
+	export npm_config_arch="${CARCH}"
+	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+		export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+		export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+		export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+		export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
+		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+	fi
+}
+_use_local_electron_for_forge() {
+	local _v="${SYSTEM_ELECTRON_VERSION}"
+	local _zd="${srcdir}/electron-zips"
+	case "${CARCH}" in
+		aarch64)	_arch=arm64	;;
+		x86_64)	_arch=x64	;;
+	esac
+	local _zf="${_zd}/electron-v${_v}-linux-${_arch}.zip"
+	install -Dm755 -d "${_zd}"
+	( cd "${ELECTRON_DIST}" && zip -r -q -0 "${_zf}" . )
+	sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," forge.config.*
 }
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
@@ -55,48 +89,24 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname} %U"
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    local HOME="${srcdir}/.electron-gyp"
-    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-    export NPM_CONFIG_MAXSOCKETS=32
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-        }
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-    fi
+    _set_build_env
     _ensure_local_nvm
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
-    NODE_ENV=development    npm add -D @electron-forge/plugin-local-electron
+    _use_local_electron_for_forge
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    _set_build_env
     _ensure_local_nvm
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    local electronDist="/usr/lib/electron${_electronversion}"
-    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
-    {\\
-        name: \"@electron-forge/plugin-local-electron\",\\
-        config: {\\
-            electronPath: \"${electronDist}\"\\
-        }\\
-    }," forge.config.*
     NODE_ENV=production npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-	find "${srcdir}/${pkgname}-${pkgver}/out/${_pkgname}-linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" {} +
-    if find "${srcdir}/${pkgname}-${pkgver}/out/${_pkgname}-linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/${pkgname}-${pkgver}/out/${_pkgname}-linux-"*"/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname}"
-            fi
-        done
-    fi
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/src/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
