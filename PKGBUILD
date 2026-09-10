@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=boson-git
-pkgver=0.6.1.r0.g4b4a6a2
+pkgver=0.7.0.r0.g6462fa7
 _electronversion=41
 _nodeversion=24
 pkgrel=1
-pkgdesc="SDSS observer graphical interface.(Use system-wide electron)"
+pkgdesc="SDSS observer graphical interface."
 arch=('any')
 url="https://albireox.github.io/boson/"
 _ghurl="https://github.com/albireox/boson"
@@ -22,6 +22,7 @@ makedepends=(
     'gendesk'
     'curl'
     'jq'
+    'zip'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -45,24 +46,62 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    export electronDist="/usr/lib/electron${_electronversion}"
-    mkdir -p "${srcdir}/.electron-gyp"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
-            export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
-            export YARN_NETWORK_CONCURRENCY=32
-            sed -i '/^npmRegistryServer:/d' .yarnrc.yml
-            echo 'npmRegistryServer: "https://registry.npmmirror.com"' >> .yarnrc.yml
-        }
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+	export HOME="${srcdir}/.electron-gyp"
+	export npm_config_platform=linux
+	export npm_config_arch="${CARCH}"
+	mkdir -p "${srcdir}/.electron-gyp"
+	export NODE_ENV=production
+	export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+	export YARN_NODE_LINKER=node-modules
+	local mirror_mode="${USE_CHINA_MIRROR:-auto}"
+	case "${mirror_mode}" in
+		1)
+			echo "==> USE_CHINA_MIRROR=1: Enforce npmmirror" >&2
+			_apply_china_mirror
+			;;
+		0)
+			echo "==> USE_CHINA_MIRROR=0: Enforce upstream registry" >&2
+			;;
+		auto)
+			echo "==> Auto checking registry.npmjs.org connectivity..." >&2
+			if ! timeout 3 bash -c 'exec 3<>/dev/tcp/registry.npmjs.org/443' 2>/dev/null; then
+				echo "==> Cannot connect upstream npm, switching to npmmirror" >&2
+				_apply_china_mirror
+			else
+				echo "==> Upstream npm reachable, keep original registry" >&2
+			fi
+			;;
+		*)
+			echo "==> Invalid USE_CHINA_MIRROR value, fallback to upstream" >&2
+			;;
+	esac
+}
+_apply_china_mirror() {
+	export YARN_NPM_REGISTRY_SERVER="https://registry.npmmirror.com"
+	export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+	export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+	export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+}
+_use_new_yarn() {
+	_yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
+	corepack enable
+	corepack prepare yarn@"${_yarnver}" --activate
+}
+_use_local_electron_for_forge() {
+	local _v="${SYSTEM_ELECTRON_VERSION}"
+	local _zd="${srcdir}/electron-zips"
+	case "${CARCH}" in
+		aarch64)	_arch=arm64	;;
+		x86_64)	_arch=x64	;;
+	esac
+	local _zf="${_zd}/electron-v${_v}-linux-${_arch}.zip"
+	install -Dm755 -d "${_zd}"
+	( cd "${ELECTRON_DIST}" && zip -r -q -0 "${_zf}" . )
+	sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," forge.config.*
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -88,25 +127,21 @@ prepare() {
     _set_build_env
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
-    corepack enable yarn
-    echo y | yarn version "${_yarnver}"
+    _use_new_yarn
     NODE_ENV=development    yarn install
-    NODE_ENV=development    yarn add -D @electron-forge/plugin-local-electron
+    _use_local_electron_for_forge
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     _set_build_env
     _ensure_local_nvm
-    sed -i -e "/^[[:space:]]*packagerConfig:[[:space:]]*{/a\\
-        electronDist: \"${electronDist}\"," forge.config.*
     NODE_ENV=production     yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname//-/.}/public/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/package.json" "${pkgdir}/usr/share/licenses/${pkgname}"
