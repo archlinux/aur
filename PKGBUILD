@@ -5,7 +5,7 @@
 _pkgname=okular
 pkgname=okular-no-phonon
 pkgver=26.08.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Document Viewer: applying patches from https://invent.kde.org/graphics/okular/-/merge_requests/1386'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
@@ -55,10 +55,8 @@ optdepends=('ebook-tools: mobi and epub support'
 groups=(kde-applications
         kde-graphics)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz
-        https://invent.kde.org/graphics/okular/-/commit/e322356c.patch
         1386-$pkgver.patch::https://invent.kde.org/graphics/okular/-/merge_requests/1386.patch)
-sha256sums=('235e8e761f949b81953582e3ff6e45b8832d0d551b71bd1b5098c1ad663511e4'
-            '8850f191cee5e5312fce2aa0d8415a7ab8b8ffabbd07176275bcd375087ca561'
+sha256sums=('7eb26c37ee42b6657526aeddd1bce71c5556e3865772a677f49b68deb46885d6'
             'b1d005f2b210a631973d1214d0fe742fb1a50e46b4f7216fffcab4e721eda642')
 # validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
 #               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
@@ -69,8 +67,6 @@ provides=(okular)
 conflicts=(okular)
 
 prepare() {
-  patch -d $_pkgname-$pkgver -p1 < e322356c.patch # Fix crashes in kile
-
   patch -d $_pkgname-$pkgver -p1 < 1386-$pkgver.patch
 }
 
