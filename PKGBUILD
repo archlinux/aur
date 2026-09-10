@@ -1,6 +1,6 @@
 # Maintainer: Dresden Wildey <dresden196@gmail.com>
 pkgname=fubuki
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Bootable USB writer in the spirit of Rufus: the engine and command line"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('zstd: writing .zst compressed images'
             'fubuki-ui: the KDE window'
             'fubuki-gtk: the GNOME window')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dresden196/fubuki/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c87b588d9101888a28a66aa9ce8cf3f28ac080b1bb37d8e0da86b5ae828192b9')
+sha256sums=('40de60269ab4b610bd45362c45da11266eaf1583445f5803036cf5e8d8766370')
 
 package() {
     cd "$srcdir/fubuki-$pkgver/fubuki"
