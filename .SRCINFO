@@ -1,16 +1,16 @@
 pkgbase = mousr-bin
-	pkgver = 0.1.7
-	pkgrel = 1
 	pkgdesc = Keyboard-driven mouse control for Wayland
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/toxdes/mousr
 	arch = x86_64
 	arch = aarch64
-	url = https://github.com/toxdes/mousr
 	license = MIT
 	depends = wayland
 	depends = libxkbcommon
-	source_x86_64 = mousr-${pkgver}-x86_64.tar.gz::https://packages.toxdes.com/releases/mousr_${pkgver}_amd64.tar.gz
-	sha256sums_x86_64 = 65c274f19a4d01eacf9c385af45da8363cc5846e7152b3d74caa07f6ae64c324
-	source_aarch64 = mousr-${pkgver}-aarch64.tar.gz::https://packages.toxdes.com/releases/mousr_${pkgver}_arm64.tar.gz
-	sha256sums_aarch64 = 541da79f385ddc9069924944db6ff9fb125b7bdf7eb08a9bf1a09e3acb82326a
+	source_x86_64 = mousr-0.1.8-x86_64.tar.gz::https://packages.toxdes.com/releases/mousr_0.1.8_amd64.tar.gz
+	sha256sums_x86_64 = d08cf477895675abd71c2c176d31d2b7dc175bb133ab9fd3bd8e73b7e6f9759f
+	source_aarch64 = mousr-0.1.8-aarch64.tar.gz::https://packages.toxdes.com/releases/mousr_0.1.8_arm64.tar.gz
+	sha256sums_aarch64 = 14d2d0810a0821e656879104731509140fc5158513c2249859cf757b093f8d7b
 
 pkgname = mousr-bin
