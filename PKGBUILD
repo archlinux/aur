@@ -1,8 +1,8 @@
 # Maintainer: Revincx <revincx233@gmail.com>
 
 pkgname=yurigram
-pkgver=7.1.5
-pkgrel=1
+pkgver=7.2.7
+pkgrel=2
 pkgdesc='Yet another unofficial tdesktop client'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Revincx/Yurigram"
@@ -49,6 +49,7 @@ depends=(
     'qt6-svg'
     'qt6-wayland'
     'rnnoise'
+    'tlottie'
     'xxhash'
     'zlib'
 )

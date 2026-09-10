@@ -1,7 +1,7 @@
 pkgbase = yurigram
 	pkgdesc = Yet another unofficial tdesktop client
-	pkgver = 7.1.5
-	pkgrel = 1
+	pkgver = 7.2.7
+	pkgrel = 2
 	url = https://github.com/Revincx/Yurigram
 	arch = x86_64
 	arch = aarch64
@@ -58,6 +58,7 @@ pkgbase = yurigram
 	depends = qt6-svg
 	depends = qt6-wayland
 	depends = rnnoise
+	depends = tlottie
 	depends = xxhash
 	depends = zlib
 	optdepends = crow-translate: translation provider
@@ -70,7 +71,7 @@ pkgbase = yurigram
 	conflicts = yukigram-rua-bin
 	replaces = yukigram-rua
 	replaces = yukigram-rua-bin
-	source = yurigram::git+https://github.com/Revincx/Yurigram.git#tag=7.1.5-1
+	source = yurigram::git+https://github.com/Revincx/Yurigram.git#tag=7.2.7-2
 	source = telegram-tdlib::git+https://github.com/tdlib/td.git
 	sha256sums = SKIP
 	sha256sums = SKIP
