@@ -11,7 +11,7 @@ depends=('python-sudoku-engine' 'python-gobject' 'libadwaita' 'gtk4' 'glib2')
 makedepends=('meson' 'ninja' 'blueprint-compiler')
 provides=('sudoku-gtk4')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/sepehr-rs/Sudoku/archive/v${pkgver}.tar.gz")
-sha256sums=('260e0ddddc561a832ef04504a1476478d9ff4a4bda27c4c7ca5b6d0783b7cc65')
+sha256sums=('8593e7deacfccade21f97403913a4f0b726fc2d62973bbf828d472a1123b6246')
 
 prepare() {
 	cd "${srcdir}/Sudoku-${pkgver}"
