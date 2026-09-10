@@ -2,9 +2,9 @@
 
 pkgname=nino
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal-based text editor inspired by Kilo"
-arch=("any")
+arch=("x86_64")
 url="https://evanlin96069.github.io/nino-editor/"
 license=("BSD-2-Clause")
 depends=("glibc")
