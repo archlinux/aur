@@ -1,6 +1,6 @@
 pkgbase = fubuki
 	pkgdesc = Bootable USB writer in the spirit of Rufus: the engine and command line
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/dresden196/fubuki
 	arch = any
@@ -13,16 +13,15 @@ pkgbase = fubuki
 	depends = ntfs-3g
 	depends = exfatprogs
 	depends = e2fsprogs
-	depends = syslinux
 	depends = grub
 	depends = wimlib
 	depends = hivex
-	depends = parted
 	depends = polkit
 	optdepends = zstd: writing .zst compressed images
+	optdepends = python-gobject: the udisks2 backend (writing without root, used by the Flatpak and AppImage)
 	optdepends = fubuki-ui: the KDE window
 	optdepends = fubuki-gtk: the GNOME window
-	source = fubuki-0.1.1.tar.gz::https://github.com/dresden196/fubuki/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = a64af150cbf60a49d5e62bfff0cbbd76b80c6d2f6f99fa383c2c9bfee11398b5
+	source = fubuki-0.2.0.tar.gz::https://github.com/dresden196/fubuki/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = c87b588d9101888a28a66aa9ce8cf3f28ac080b1bb37d8e0da86b5ae828192b9
 
 pkgname = fubuki
