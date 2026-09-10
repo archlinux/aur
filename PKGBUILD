@@ -2,7 +2,7 @@
 _pkgname=musescore
 pkgname=musescore-bin
 pkgver=4.7.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Create, play and print beautiful sheet music / AppImage version'
 arch=(x86_64)
 url=https://musescore.org/
@@ -23,7 +23,7 @@ source=(
     "mscore.sh"
 )
 sha256sums=('a31b2da2dbcc2191bcc98beb7be5c15f2f517bedb3444def96fe3088b74d3a1e'
-            'd9bb8cf15e9bea1533461ab094f29029ffbe21e820accd205f9552c3545057bc')
+            '9c6008b24bf15e0ef9d0af2feb2216125b6beeed04a555c8bff501d2cc630b48')
 appname="mscore"
 
 prepare() {
