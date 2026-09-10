@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=hyprfm-git
-pkgver=r454.gc0287fe
+pkgver=r469.g007029a
 pkgrel=1
 pkgdesc="A lightweight Qt6/QML file manager for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -29,6 +29,7 @@ optdepends=(
     'wl-clipboard: clipboard support via wl-copy and wl-paste'
     'fd: fast recursive search (falls back to a built-in walker)'
     'bat: syntax-highlighted text previews'
+    'md4c: rendered Markdown previews (via md2html)'
     'gvfs-smb: SMB/CIFS remote browsing support'
     'gvfs-mtp: Android phones (MTP) in the sidebar'
     'ffmpeg: video thumbnails and audio/video metadata (via ffprobe)'
