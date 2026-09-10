@@ -1,7 +1,7 @@
 # Maintainer: Dresden Wildey <dresden196@gmail.com>
 pkgname=fubuki-ui
 _base=fubuki
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Bootable USB writer in the spirit of Rufus: the KDE window"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('fubuki' 'qt6-base' 'qt6-declarative' 'kirigami' 'ki18n' 'qqc2-desktop-style' 'polkit' 'systemd')
 makedepends=('cmake' 'extra-cmake-modules' 'qt6-tools' 'gettext')
 source=("$_base-$pkgver.tar.gz::https://github.com/dresden196/fubuki/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c87b588d9101888a28a66aa9ce8cf3f28ac080b1bb37d8e0da86b5ae828192b9')
+sha256sums=('40de60269ab4b610bd45362c45da11266eaf1583445f5803036cf5e8d8766370')
 
 build() {
     cmake -S "$srcdir/$_base-$pkgver/fubuki-ui/app" -B "$srcdir/build" \
