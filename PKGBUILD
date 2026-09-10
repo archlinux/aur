@@ -3,7 +3,7 @@
 # CI workspace and pushes the result to aur.archlinux.org only. Edit this
 # file for packaging logic changes; never commit a real version here.
 pkgname=openwork
-pkgver=0.18.44
+pkgver=0.18.45
 pkgrel=1 # pkgrel should change when PKGBUILD does. Standard is to change back to 1 next time. Any interger is valid.
 pkgdesc="An Open source alternative to Claude Cowork"
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ options=(!strip)
 
 # Architecture-specific sources and checksums
 source_x86_64=("${pkgname}-${pkgver}-x64.tar.gz::${url}/releases/download/v${pkgver}/openwork-linux-x64-${pkgver}.tar.gz")
-sha256sums_x86_64=('2da1fc3632c47c48b4a61b573ebe6bb1120c47291e03a24fb64c647fba546af9')
+sha256sums_x86_64=('51e4cdf71d1b56d9e3e31dbcb74cfa77a7fbd256a850f603164bca5f5ca01745')
 
 source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::${url}/releases/download/v${pkgver}/openwork-linux-arm64-${pkgver}.tar.gz")
-sha256sums_aarch64=('78553a051a10c5aba2fd8b86d9a503313a643bef5039d62f63f73d5e0e860943')
+sha256sums_aarch64=('6ca951a569e82149a67a1b3c54482540bad5cb8417fe5d0b9c871d65b6e2ae48')
 
 package() {
   cd "${srcdir}"
@@ -40,7 +40,8 @@ package() {
   cp -a "${bundle_dir}/." "${pkgdir}/opt/openwork/"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s /opt/openwork/@openworkdesktop "${pkgdir}/usr/bin/openwork"
+  test -x "${pkgdir}/opt/openwork/openwork"
+  ln -s /opt/openwork/openwork "${pkgdir}/usr/bin/openwork"
 
   install -Dm644 "${pkgdir}/opt/openwork/resources/app-dist/openwork-logo-square.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/openwork.svg"
