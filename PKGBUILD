@@ -2,7 +2,7 @@
 
 pkgname=pi
 pkgver=0.85.1
-pkgrel=2
+pkgrel=3
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
 url="https://github.com/earendil-works/pi"
@@ -14,6 +14,7 @@ optdepends=(
   'fd: system-provided backend for the find tool'
   'ripgrep: system-provided backend for the grep tool'
 )
+options=('!strip' '!debug')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "pi-ai-${pkgver}.tgz::https://registry.npmjs.org/@earendil-works/pi-ai/-/pi-ai-${pkgver}.tgz")
