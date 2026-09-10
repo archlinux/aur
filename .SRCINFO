@@ -1,8 +1,8 @@
 pkgbase = luna-todo-git
 	pkgdesc = luna-todo (git versiion)
 	pkgver = 3.2.0
-	pkgrel = 1
-	url = https://gitlab.com/materac-luna-project/luna-todo
+	pkgrel = 2
+	url = https://gitlab.com/pingwin-x86_64-luna-project/luna-todo
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = luna-todo-git
 	makedepends = gcc
 	depends = glibc
 	depends = sqlite
-	source = git+https://gitlab.com/materac-luna-project/luna-todo.git
+	source = git+https://gitlab.com/pingwin-x86_64-luna-project/luna-todo.git
 	sha256sums = SKIP
 
 pkgname = luna-todo-git
