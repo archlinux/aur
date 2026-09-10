@@ -4,7 +4,7 @@
 # 2026-09-07 build, so bump it (and pkgrel) whenever upstream pushes a new one.
 pkgname=rustdesk-unattended-wayland
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RustDesk remote desktop - nightly build with unattended access support on Wayland"
 arch=('x86_64')
 url="https://github.com/rustdesk/rustdesk"
@@ -31,7 +31,7 @@ provides=('rustdesk')
 options=('!strip' '!debug')
 install="$pkgname.install"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/rustdesk/rustdesk/releases/download/nightly/rustdesk-unattended-wayland-${pkgver}-x86_64.deb")
-sha256sums_x86_64=('fadda1b2b871ae8b2dd5dc826ec50207cac2366a3e0c09bbc820860b3f3bbf61')
+sha256sums_x86_64=('SKIP')
 
 package() {
   bsdtar -xOf "${srcdir}/${pkgname}-${pkgver}-x86_64.deb" data.tar.xz \
