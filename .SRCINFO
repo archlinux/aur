@@ -1,8 +1,9 @@
 pkgbase = libsdrplay
 	pkgdesc = Modules for the SDRplay receiver
 	pkgver = 3.15.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.sdrplay.com
+	arch = armv7h
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-sdrplay

@@ -5,9 +5,9 @@
 
 pkgname=libsdrplay
 pkgver=3.15.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Modules for the SDRplay receiver"
-arch=('aarch64' 'x86_64')
+arch=('armv7h' 'aarch64' 'x86_64')
 url="http://www.sdrplay.com"
 license=('LicenseRef-sdrplay')
 depends=('libusb>=1.0')
@@ -32,8 +32,9 @@ package() {
 
 	CARCH_=$CARCH
     case ${CARCH} in
-     x86_64) CARCH_="amd64" ;;
-     aarch64)   CARCH_="arm64" ;;
+     armv7h)  CARCH_="armhf" ;;
+     x86_64)  CARCH_="amd64" ;;
+     aarch64) CARCH_="arm64" ;;
     esac
 	
 	msg2 "Getting API version..."
