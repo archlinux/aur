@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ectool-rs
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Reusable flashing and UniLog tools for EigenComm cellular chips"
 arch=($CARCH)
@@ -27,7 +27,7 @@ backup=()
 options=('!lto')
 install=
 source=("${pkgname%-rs}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('dbebefe3e65d8ff513843b24cbb9448c9104533bb70fe041eb24d396ebe04df2')
+sha256sums=('e0837e194221ac8b0f6d351f32be5cea364b9275faa0a2ce26ebc987445a3fe0')
 
 prepare() {
     git -C "${srcdir}/${pkgname%-rs}" clean -dfx
@@ -59,4 +59,10 @@ package() {
     install -Dm0644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -Dm0755 "target/release/${pkgname%-rs}" -t "${pkgdir}/usr/bin/"
+    install -vDm644 /dev/stdin ${pkgdir}/usr/lib/udev/rules.d/71-eigencomm.rules <<EOF
+# This file should be copied to /etc/udev/rules.d on GNU/Linux OS and derived
+# Add permission to all user to have complete acces to eeprom programmers
+# EigenComm
+SUBSYSTEM=="usb", ATTRS{idVendor}=="17d1", ATTRS{idProduct}=="0001", TAG+="uaccess"
+EOF
 }
