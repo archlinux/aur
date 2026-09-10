@@ -1,6 +1,6 @@
 # Maintainer: Bartosz Fenski <bartosz at fenski dot pl>
 pkgname=nasty-top-bin
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="A top-like TUI for bcachefs filesystems"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('nasty-top')
 optdepends=('bcachefs-tools: required for reconcile status view')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/nasty-top-x86_64-linux.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/nasty-top-aarch64-linux.tar.gz")
-sha256sums_x86_64=('71a00ddf74060147fc3edca86b05531e4e615aa764724b971e3dc8ea6eb8ab1f')
-sha256sums_aarch64=('2240947de85947aacd04c7fa5f7eb1beab5b769868cd20b1b80532cbf2dee369')
+sha256sums_x86_64=('d8bca92580126c8de513129dd45ded2ab5608b00d518e245b4f6e169d4d5a65d')
+sha256sums_aarch64=('bec3c4e8a2595a050068af3006df15f4cdb68612c52161d51aba395bcfc47cc9')
 
 package() {
   install -Dm755 "$srcdir/nasty-top" "$pkgdir/usr/bin/nasty-top"
