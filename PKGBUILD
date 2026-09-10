@@ -14,7 +14,7 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-    #'python-openai-whisper'
+    'python-openai-whisper'
     'ffmpeg'
     'nodejs'
 )

@@ -7,6 +7,7 @@ pkgbase = smartsub-bin
 	license = MIT
 	makedepends = dpkg
 	depends = electron30
+	depends = python-openai-whisper
 	depends = ffmpeg
 	depends = nodejs
 	provides = smartsub=3.8.0
