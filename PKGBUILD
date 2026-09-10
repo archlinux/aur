@@ -2,7 +2,7 @@
 
 pkgname=voicefox-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 epoch=1
 _tag="v${pkgver}"
@@ -30,7 +30,7 @@ source=(
 	"${_pkgname}-${pkgver}-1024.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${_tag}/icons/1024.png"
 	"${_pkgname}-${pkgver}-desktop::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/${_tag}/assets/voicefox.desktop"
 )
-sha512sums=('7af129b6553cdbb5700762833c612cafaefd1adf8be83ec03caa5396f1feaa692d88b05c8ab1ef2b4edcdcb8b21b0437893d235fbca09b2866f629252411fb7f'
+sha512sums=('76877f99f2112eeeeeaa57cdf31c71690da61d0bd6e8757f9d9c7e82edff839d5025d1fb02c8396caa769eeda8f98b3baaf6ba92ed32f05cba1cb8b10dd5545b'
             'e65d0d2522762bf43fa7c79e47c4b867dc7126e8402b8981ff6357b3d7e7968b34f9058d0426d24115a90bf4165bba86ce5414bd29f2df0355ebfa349e266814'
             '980a563b61ebd519a5346de26b67d6782830f6183ad2b4c42ac3e85d0ebd1b4341a1041976cb06c10d1eed346d9f4c009341753f560db63882a5df56e180471b'
             '4749d0f3d9cff9caec6c9dbd18f9ff571905e22d4669fb504e8c2b778dead770d2b5ddbbf0bdadc7b60ca9317f25579e97a016888f38c1b8ade6a476e09a3e6e'
