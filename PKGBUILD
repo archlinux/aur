@@ -1,7 +1,7 @@
 # Maintainer: Coraline Shuryn <coraline.shuryn@gmail.com>
 
 pkgname=spirula-studio
-pkgver=2026.9.2
+pkgver=2026.9.10
 pkgrel=1
 pkgdesc="End-to-end 3D Gaussian Splatting pipeline (Vulkan backend)"
 arch=('x86_64' 'aarch64')
@@ -46,12 +46,12 @@ source_aarch64=(
 noextract=(
   "slang-${_slangver}-linux-${CARCH}.tar.gz"
 )
-sha256sums=('4ab8437c38ffc45e80d71ae81a89b6f84fd77a4f11ebe1632d1c46ca59f8f48a'
+sha256sums=('7e5aaa265220c3838a431e2a62e6f689f74d7f4df006019f002a68cef9f04bf8'
             'fecb33d33930e12ff53a34064e9d3a06c8f7c3e04408f14cd36c80e3faac863b'
             'cf015b623bca66d6a55711bbf428b155d1cdd6c0656ef7c7d587ddf29f474de7'
             '9637abbeb17aa1fff2ba542ad17be4bd5d91b814008b620b2bedb950c2a7e0ca')
 sha256sums_x86_64=('bbd36968b5aefdf91c2ede0d2e131f8b552cba6ed2444da59f1a0bc0bfc6792d')
-sha256sums_aarch64=('8ad6a8449e18d183aa3b75cb3c8421fd5eb5396ee4b095eba69aec75c022f5d3')
+sha256sums_aarch64=('bbd36968b5aefdf91c2ede0d2e131f8b552cba6ed2444da59f1a0bc0bfc6792d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
