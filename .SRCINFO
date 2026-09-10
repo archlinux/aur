@@ -1,0 +1,22 @@
+pkgbase = luatos-tools
+	pkgdesc = A CLI for building, flashing, and debugging LuatOS firmware on EC618 / EC7xx modules
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/yuzhan-tech/luatos-tools
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc_s.so
+	depends = systemd-libs
+	optdepends = ch343ser-dkms
+	optdepends = libftdi: A library to talk to FTDI chips
+	provides = luatos-tools
+	conflicts = luatos-tools
+	options = !lto
+	source = luatos-tools::git+https://github.com/yuzhan-tech/luatos-tools.git#tag=v0.2.0
+	sha256sums = c054fcfe9a5a38965aeb08cc65bb2b5afc605f7999911286f4ef956142b1e70c
+
+pkgname = luatos-tools
