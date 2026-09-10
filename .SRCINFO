@@ -1,0 +1,21 @@
+pkgbase = ectool-rs
+	pkgdesc = Reusable flashing and UniLog tools for EigenComm cellular chips
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yuzhan-tech/ectool
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc_s.so
+	depends = systemd-libs
+	optdepends = luatos-tools: A CLI for building, flashing, and debugging LuatOS firmware on EC618 / EC7xx modules
+	provides = ectool
+	conflicts = ectool
+	options = !lto
+	source = ectool::git+https://github.com/yuzhan-tech/ectool.git#tag=v0.1.0
+	sha256sums = dbebefe3e65d8ff513843b24cbb9448c9104533bb70fe041eb24d396ebe04df2
+
+pkgname = ectool-rs
