@@ -1,7 +1,7 @@
 # Maintainer: rNoz <8237539+rNoz@users.noreply.github.com>
 pkgname=factory-ai-droid-cli-rnoz-bin
 pkgver=0.216.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Factory.ai Droid CLI with zero-waste titling and cross-harness keybindings"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rNoz/factory-ai-droid-cli-rnoz"
@@ -17,7 +17,7 @@ options=('!strip')
 install=factory-ai-droid-cli-rnoz-bin.install
 
 source=(
-  "patch-title.py"
+  "patch_title.py"
   "patch_keybindings.py"
   "$install"
 )
@@ -30,6 +30,21 @@ sha256sums=(
 package() {
   local actual_version="${pkgver}"
   local platform="linux"
+  local use_system_rg=0
+
+  apply_patch_if_requested() {
+    local label="$1"
+    local patcher="$2"
+    if [[ -t 0 && -t 1 ]]; then
+      local answer
+      read -r -p "Apply ${label} patch? [Y/n] " answer </dev/tty
+      if [[ "$answer" =~ ^[Nn]$ ]]; then
+        msg2 "Skipping ${label} patch (requested interactively)."
+        return 0
+      fi
+    fi
+    python3 "$patcher" "$output_bin" --test
+  }
 
   # Detect architecture
   local architecture rg_architecture
@@ -95,8 +110,8 @@ package() {
     cp -f "$raw_file" "$output_bin"
     chmod +x "$output_bin"
 
-    python3 "$srcdir/patch-title.py" "$output_bin" --test
-    python3 "$srcdir/patch_keybindings.py" "$output_bin" --test
+    apply_patch_if_requested "deterministic titling" "$srcdir/patch_title.py"
+    apply_patch_if_requested "cross-harness keybindings" "$srcdir/patch_keybindings.py"
   }
 
   if [[ "$architecture" == "x64" ]]; then
@@ -125,10 +140,13 @@ package() {
     download_and_patch_droid "arm64" "droid" || return 1
   fi
 
-  # Download ripgrep binary
+  # Prefer an existing system ripgrep; otherwise bundle and verify one.
   local raw_rg="rg"
   local sha_rg="rg.sha256"
-  if [[ ! -f "$raw_rg" ]]; then
+  if command -v rg >/dev/null 2>&1; then
+    use_system_rg=1
+    msg2 "Using system ripgrep; skipping bundled download."
+  elif [[ ! -f "$raw_rg" ]]; then
     msg2 "Downloading ripgrep for $platform-$rg_architecture..."
     curl -fsSL --retry 3 --retry-delay 2 --retry-connrefused -o "${raw_rg}.part" "$rg_url" || {
       rm -f "${raw_rg}.part"
@@ -138,27 +156,29 @@ package() {
     mv -f "${raw_rg}.part" "$raw_rg"
   fi
 
-  # Download and verify ripgrep checksum
-  msg2 "Verifying ripgrep checksum..."
-  curl -fsSL --retry 3 --retry-delay 2 --retry-connrefused -o "${sha_rg}.part" "$rg_sha_url" || {
-    rm -f "${sha_rg}.part"
-    error "Failed to download ripgrep checksum"
-    return 1
-  }
-  mv -f "${sha_rg}.part" "$sha_rg"
+  if (( ! use_system_rg )); then
+    # Download and verify ripgrep checksum.
+    msg2 "Verifying ripgrep checksum..."
+    curl -fsSL --retry 3 --retry-delay 2 --retry-connrefused -o "${sha_rg}.part" "$rg_sha_url" || {
+      rm -f "${sha_rg}.part"
+      error "Failed to download ripgrep checksum"
+      return 1
+    }
+    mv -f "${sha_rg}.part" "$sha_rg"
 
-  local expected_rg_sha actual_rg_sha
-  expected_rg_sha=$(awk 'NF { print $1; exit }' "$sha_rg")
-  actual_rg_sha=$(sha256sum "$raw_rg" | awk '{print $1}')
+    local expected_rg_sha actual_rg_sha
+    expected_rg_sha=$(awk 'NF { print $1; exit }' "$sha_rg")
+    actual_rg_sha=$(sha256sum "$raw_rg" | awk '{print $1}')
 
-  if [[ ! "$expected_rg_sha" =~ ^[[:xdigit:]]{64}$ || "$expected_rg_sha" != "$actual_rg_sha" ]]; then
-    rm -f "$raw_rg" "$sha_rg"
-    error "Ripgrep checksum verification failed!"
-    error "Expected: $expected_rg_sha"
-    error "Actual:   $actual_rg_sha"
-    return 1
+    if [[ ! "$expected_rg_sha" =~ ^[[:xdigit:]]{64}$ || "$expected_rg_sha" != "$actual_rg_sha" ]]; then
+      rm -f "$raw_rg" "$sha_rg"
+      error "Ripgrep checksum verification failed!"
+      error "Expected: $expected_rg_sha"
+      error "Actual:   $actual_rg_sha"
+      return 1
+    fi
+    msg2 "Ripgrep checksum verified successfully"
   fi
-  msg2 "Ripgrep checksum verified successfully"
 
   # Create installation directories
   install -dm755 "$pkgdir/usr/lib/factory"
@@ -166,13 +186,17 @@ package() {
 
   # Install single binary to /usr/lib/factory
   install -Dm755 "droid" "$pkgdir/usr/lib/factory/droid"
-  install -Dm755 "rg" "$pkgdir/usr/lib/factory/rg"
+  if (( ! use_system_rg )); then
+    install -Dm755 "rg" "$pkgdir/usr/lib/factory/rg"
+  fi
 
   # Create launcher script in /usr/bin/droid
   cat > "$pkgdir/usr/bin/droid" <<'EOF'
 #!/bin/sh
 # Factory CLI launcher (patched titling and cross-harness keybindings)
-export PATH="/usr/lib/factory:$PATH"
+if ! command -v rg >/dev/null 2>&1; then
+  export PATH="/usr/lib/factory:$PATH"
+fi
 exec /usr/lib/factory/droid "$@"
 EOF
 
