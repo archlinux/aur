@@ -12,7 +12,7 @@ depends=('dotnet-runtime-10.0' 'gcc-libs' 'glibc')
 makedepends=('dotnet-sdk-10.0')
 conflicts=('pupdate-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2a7732fda67c973b11e39fcccab8326cab5b896da1fc1c589456c2502f47402b')
+sha256sums=('b8ce30047a7954cde7ca5fdd2614a7365bf8b81d54c2bacfbb665123ee4dc9f3')
 
 _dotnet_env() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
