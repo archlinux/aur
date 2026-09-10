@@ -16,7 +16,7 @@
 
 pkgname=omniroute
 pkgver=3.8.50
-pkgrel=1
+pkgrel=2
 pkgdesc='Unified AI router with 160+ providers, RTK+Caveman compression, auto fallback, MCP/A2A, desktop, PWA, and OpenAI-compatible APIs.'
 arch=('x86_64')
 url='https://omniroute.online'
@@ -103,4 +103,20 @@ package() {
 
   # Clean npm's leftover config artifacts
   rm -rf "${pkgdir}/usr/etc" 2>/dev/null || true
+
+  # ---- Strip build-time residue (files upstream never ships in /usr) ----
+  # .env — created by scripts/dev/sync-env.mjs during build(): it embeds a
+  #   freshly generated JWT_SECRET / API_KEY_SECRET. Under /usr it would be
+  #   world-readable (root:root 644) and silently replaced by every pacman
+  #   upgrade. The runtime self-provisions both secrets into $DATA_DIR
+  #   (~/.omniroute) on first start ("JWT_SECRET auto-generated and
+  #   persisted"), so the file is pure leakage. See bin/omniroute.mjs env
+  #   loader: missing env paths are skipped via existsSync.
+  # package-lock.json / node_modules/.package-lock.json — state from the
+  #   build-time `npm install` in $srcdir; `npm install -g` from a tarball
+  #   never creates them (verified with a minimal tarball), they only got in
+  #   through the repacked bundle.
+  rm -f "${pkgdir}/usr/lib/node_modules/${pkgname}/.env" \
+        "${pkgdir}/usr/lib/node_modules/${pkgname}/package-lock.json" \
+        "${pkgdir}/usr/lib/node_modules/${pkgname}/node_modules/.package-lock.json"
 }

@@ -1,7 +1,7 @@
 pkgbase = omniroute
 	pkgdesc = Unified AI router with 160+ providers, RTK+Caveman compression, auto fallback, MCP/A2A, desktop, PWA, and OpenAI-compatible APIs.
 	pkgver = 3.8.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://omniroute.online
 	arch = x86_64
 	license = MIT
