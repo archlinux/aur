@@ -1,9 +1,9 @@
 # Maintainer: Xavier Pedraza <xpedraza542@gmail.com>
 _stable=892
-_build=980
+_build=983
 _base=chromapper
 pkgname="${_base}-dev-bin"
-pkgver=0.14.980
+pkgver="0.14.${_build}"
 pkgrel=1
 pkgdesc='Unity-based map editor for Beat Saber (binary, dev)'
 arch=(x86_64)
@@ -23,7 +23,7 @@ source=(
 )
 sha256sums=(
     "f4c4f2199a8b4fed4c5cd296105232b5f8ef013ab51a0f402421613352e5ae5c" 
-    "995ad0bb7b91e37dbc2b8140c72d2ef82039752baaa8f459952c3b2c6f8047f7"
+    "cb39f1be21bf9fd63cdc4c52597977c932be87e825e4dcac725a2d10165a29aa"
     "533bdae8c7e95a94a4941a01de5f0ee94684ac2119d7297e4f5abe950ec64e80"
     "SKIP"
 )

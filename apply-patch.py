@@ -4,6 +4,7 @@ import tarfile
 import os
 import tempfile
 import subprocess
+import sys
 from enum import Enum
 from dataclasses import dataclass
 
@@ -14,7 +15,7 @@ def apply_xdelta3(path: str, patch_path: str):
     proc = subprocess.run([ "xdelta3", "-d", "-s", source_path, patch_path, tmp_path ])
     if proc.returncode != 0:
         print(f"xdelta3 exited with status code {proc.returncode}")
-        exit(1)
+        sys.exit(1)
     if existed:
         os.remove(path)
     os.rename(tmp_path, path)
@@ -33,7 +34,7 @@ class PatchFile:
     def __init__(self, path: str):
         self.path = path
 
-    def __enter__(self) -> self:
+    def __enter__(self):
         self.tar = tarfile.open(self.path, "r:gz")
         return self
 
@@ -109,11 +110,11 @@ def find_patch_file(home: str) -> PatchFile:
             continue
         if not ret is None:
             print("multiple patch files found!")
-            exit(1)
+            sys.exit(1)
         ret = os.path.join(home, name)
     if ret is None:
         print("no patch files found!")
-        exit(1)
+        sys.exit(1)
     return PatchFile(ret)
 
 if __name__ == '__main__':
@@ -122,3 +123,4 @@ if __name__ == '__main__':
         for entry in patches:
             print(f"- {entry.name}")
             patches.apply_patch(entry, home)
+
