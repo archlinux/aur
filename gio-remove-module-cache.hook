@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Remove
+Target = glib2
+
+[Action]
+Description = Removing GIO module cache...
+When = PreTransaction
+Exec = /usr/bin/rm --force /usr/lib/gio/modules/giomodule.cache
