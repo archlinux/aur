@@ -1,13 +1,13 @@
 pkgbase = nginx_passwd
 	pkgdesc = Basic Auth Password File Manager for nginx
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://github.com/gene-git/nginx_passwd
 	arch = any
 	license = GPL-2.0-or-later
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
-	checkdepends = pyconcurrent
+	checkdepends = python-pyconcurrent
 	makedepends = git
 	makedepends = meson
 	makedepends = meson-python
@@ -18,7 +18,7 @@ pkgbase = nginx_passwd
 	depends = python-bcrypt
 	depends = python-argon2_cffi
 	depends = python-cryptography
-	source = git+https://github.com/gene-git/nginx_passwd#tag=4.0.1
+	source = git+https://github.com/gene-git/nginx_passwd#tag=4.0.2
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 

@@ -1,17 +1,24 @@
 -------------------------------------------------------
  Changelog    : nginx_passwd
- Tags         : 3.3.0 ➙ 4.0.1
-              : 2026-01-04 ➙ 2026-09-09
+ Tags         : 3.3.1 ➙ 4.0.2
+              : 2026-01-04 ➙ 2026-09-10
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-09   : 4.0.1
+ 2026-09-10   : 4.0.2
+              - **Version 4.0.2**
+            
+                * Change Arch package dependencies that have been renamed:
+            
+                  - pyconcurrent -> python-pyconcurrent
+
+ 2026-09-09   : 4.0.1, origin/master
               - **Version 4.0.1**
             
                 * Remove sphinx tmp files from html docs
                 * Make pytest optional in meson.build
 
- 2026-09-08   : 4.0.0, origin/master
+ 2026-09-08   : 4.0.0
               - **Version 4.0.0**
             
                 * Default hash algo is argon2
@@ -29,12 +36,3 @@
  2026-01-04   : 3.3.1
               - Small non-code tidy ups
               - update Docs/Changelogs
-
- 2026-01-04   : 3.3.0
-                  - **Version 3.3.0**
-            
-                    * Source code reorg
-                    * Switch python packager from hatch to uv
-                    * Confirm all working with python 3.14.2
- 2025-12-22   ⋯
-              - update Docs/Changelogs Docs/${my_name}.pdf

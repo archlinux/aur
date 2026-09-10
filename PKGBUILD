@@ -10,7 +10,7 @@ pkgname='nginx_passwd'
 pkgdesc='Basic Auth Password File Manager for nginx'
 _gitname='nginx_passwd'
 
-pkgver="4.0.1"
+pkgver="4.0.2"
 pkgrel=1
 url="https://github.com/gene-git/nginx_passwd"
 
@@ -36,7 +36,7 @@ makedepends=(
 checkdepends=(
     'python-pytest' 
     'python-pytest-asyncio'
-    'pyconcurrent'
+    'python-pyconcurrent'
 )
 
 _mkpkg_depends=(
