@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=devkitty
 _pkgname=Devkitty
-pkgver=4.3.3
+pkgver=4.3.4
 _electronversion=41
 _nodeversion=25
 pkgrel=1

@@ -1,6 +1,6 @@
 pkgbase = devkitty
 	pkgdesc = Swiss army knife for developers.All your repos. One calm window.
-	pkgver = 4.3.3
+	pkgver = 4.3.4
 	pkgrel = 1
 	url = https://devkitty.app/
 	arch = any
