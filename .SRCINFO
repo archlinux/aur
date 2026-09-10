@@ -1,7 +1,7 @@
 pkgbase = hunk-bin
 	pkgdesc = Review-first terminal diff viewer for agentic coders
-	pkgver = 0.21.1
-	pkgrel = 2
+	pkgver = 0.22.0
+	pkgrel = 1
 	url = https://github.com/modem-dev/hunk
 	arch = x86_64
 	arch = aarch64
@@ -13,11 +13,11 @@ pkgbase = hunk-bin
 	conflicts = hunk-git
 	conflicts = hunkdiff
 	options = !strip
-	source = LICENSE-0.21.1::https://github.com/modem-dev/hunk/raw/v0.21.1/LICENSE
+	source = LICENSE-0.22.0::https://github.com/modem-dev/hunk/raw/v0.22.0/LICENSE
 	sha256sums = 83fee01b5d874e1a0f57be868acdb90167b15963cebc2c9b9b75a27af063f3e6
-	source_x86_64 = hunkdiff-0.21.1-linux-x64.tar.gz::https://github.com/modem-dev/hunk/releases/download/v0.21.1/hunkdiff-linux-x64.tar.gz
-	sha256sums_x86_64 = c7d1e23ba4ffb6ca3330797e9f0c82dbada50e3cfe1b719f4194747f2cbca122
-	source_aarch64 = hunkdiff-0.21.1-linux-arm64.tar.gz::https://github.com/modem-dev/hunk/releases/download/v0.21.1/hunkdiff-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1d31dfc382b9a4df9c045eb239ec248f61c4161dd32ec7caaab8593d55a9eca6
+	source_x86_64 = hunkdiff-0.22.0-linux-x64.tar.gz::https://github.com/modem-dev/hunk/releases/download/v0.22.0/hunkdiff-linux-x64.tar.gz
+	sha256sums_x86_64 = 5f280374f2ab0fc4c48266a9909ee1b0e0c59d77dd99a340f1c26f2125d2229b
+	source_aarch64 = hunkdiff-0.22.0-linux-arm64.tar.gz::https://github.com/modem-dev/hunk/releases/download/v0.22.0/hunkdiff-linux-arm64.tar.gz
+	sha256sums_aarch64 = da9f156427bce9a08609de66b310ba58f111ea31d6638ca7cdb08cf4a69d9e16
 
 pkgname = hunk-bin
