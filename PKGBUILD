@@ -4,7 +4,7 @@
 
 pkgname=bsc
 pkgver=2026.01
-pkgrel=2
+pkgrel=3
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
 url='https://github.com/B-Lang-org/bsc'
@@ -14,33 +14,37 @@ depends=('haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split'
 makedepends=('git' 'gperf' 'ghc' 'tcl' 'texlive-latexextra' 'texlive-fontsextra')
 checkdepends=('dejagnu' 'iverilog' 'pkg-config' 'systemc' 'tcsh' 'time')
 optdepends=('tcl: bluesim and bluetcl')
-source=("bsc-${pkgver}::https://github.com/B-Lang-org/bsc/archive/refs/tags/${pkgver}.tar.gz"
-        "https://github.com/B-Lang-org/bsc/releases/download/${pkgver}/yices-src-for-bsc-${pkgver}.tar.gz")
-sha256sums=('f9204b7d6efd6ac2b2c1b42c80b01d179319ac33575d258719eaf73be44d4ec5'
-            'a5114c8f1e04a75a06598ac9763922f9186554b6f1326c1454b2e06deafd5575')
+source=("git+https://github.com/b-lang-org/bsc.git#tag=$pkgver"
+        "git+https://github.com/SRI-CSL/yices2.git#commit=f705557b7d33d866eb1b47b5471f97189eb31cc4")
+sha256sums=('37246732a6251fefc2e9a0d8ca63a9359dc9368a5fa0d41c008c47c206b63272'
+            '7b2e722085456721b8127606a9b209aa6c4ad6b67bd0558cd09cfeda12281971')
 _prefix="/opt/bsc"
 
 prepare() {
-  cp -r src/vendor/yices/v2.6/yices2 bsc-${pkgver}/src/vendor/yices/v2.6
+  cd "$srcdir/bsc"
+  git submodule init
+  git config submodule.externals/vendor/yices/v2.6/yices2.url "$srcdir/yices2"
+  git submodule update
 }
 
 build(){
   # prevent static lib mangling with LTO (pacman#150, bsc#704)
   CXXFLAGS+=" -ffat-lto-objects"
 
-  cd "$srcdir/bsc-${pkgver}"
+  cd "$srcdir/bsc"
   make GHC="ghc -dynamic" GHCJOBS=4 GHCRTSFLAGS='+RTS -A128m -RTS' install-src
   make install-doc
 }
 
 check() {
-  cd "$srcdir/bsc-${pkgver}"
+  cd "$srcdir/bsc"
   # Currently failing due to https://github.com/B-Lang-org/bsc/issues/949
+  # Requires https://gitlab.archlinux.org/archlinux/packaging/packages/systemc/-/merge_requests/1
   make check-suite-parallel || echo "Tests failed"
 }
 
 package() {
-  cd "$srcdir/bsc-${pkgver}"
+  cd "$srcdir/bsc"
   install -d "${pkgdir}${_prefix}"
   cp -dr --preserve=mode,timestamp ./inst/* "${pkgdir}${_prefix}"
 
