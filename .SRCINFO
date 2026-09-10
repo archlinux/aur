@@ -1,6 +1,6 @@
 pkgbase = xpipe-ptb
 	pkgdesc = XPipe Public Test Build releases
-	pkgver = 24.1
+	pkgver = 24.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/xpipe-io/xpipe-ptb
@@ -43,13 +43,13 @@ pkgbase = xpipe-ptb
 	sha256sums = ADFFF3878F4AC1857A7004F46715FD746BF8DACE2536F0DDCAAEECF441ABD235
 	sha256sums = 1687E388806A782CA790C3C87D94E51B4513E96AB77CBD1217A0A6D94D4C0E74
 	sha256sums = BCD42E2497807AE0069A4CCCAFEDC5B993EB24EB844C9BF0AE26ABABCEEAE348
-	source_x86_64 = xpipe-ptb-24.1-1-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/24.1-1/xpipe-portable-linux-x86_64.tar.gz
-	source_x86_64 = xpipe-ptb-24.1-1-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/24.1-1/xpipe-portable-linux-x86_64.tar.gz.asc
-	sha256sums_x86_64 = da18b3ca3404edaafd7c45821ae3e8c0affc0a6dfad639abda4ace763f182360
+	source_x86_64 = xpipe-ptb-24.2-1-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/24.2-1/xpipe-portable-linux-x86_64.tar.gz
+	source_x86_64 = xpipe-ptb-24.2-1-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/24.2-1/xpipe-portable-linux-x86_64.tar.gz.asc
+	sha256sums_x86_64 = 3826303f74b8dd058133110ca6189aeb80be9b143234ade1d0b89d20b97b51ed
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = xpipe-ptb-24.1-1-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/24.1-1/xpipe-portable-linux-arm64.tar.gz
-	source_aarch64 = xpipe-ptb-24.1-1-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/24.1-1/xpipe-portable-linux-arm64.tar.gz.asc
-	sha256sums_aarch64 = da18b3ca3404edaafd7c45821ae3e8c0affc0a6dfad639abda4ace763f182360
+	source_aarch64 = xpipe-ptb-24.2-1-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/24.2-1/xpipe-portable-linux-arm64.tar.gz
+	source_aarch64 = xpipe-ptb-24.2-1-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/24.2-1/xpipe-portable-linux-arm64.tar.gz.asc
+	sha256sums_aarch64 = 3826303f74b8dd058133110ca6189aeb80be9b143234ade1d0b89d20b97b51ed
 	sha256sums_aarch64 = SKIP
 
 pkgname = xpipe-ptb
