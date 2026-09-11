@@ -1,6 +1,21 @@
 # Maintainer: l1a <634380+l1a@users.noreply.github.com>
+#
+# THIS IS A TEMPLATE. It is not a valid PKGBUILD as it stands, and that is the point.
+#
+# `0.17.5` and `4a5acaf983bb680a59a42c002dbe2a2c420c7e8be71287e0b0d6a33177abc2f7` are filled in by `scripts/render_packaging.py` at publish
+# time, from the tag being released and the sha256 of the tarball that was actually
+# downloaded. `just aur-publish <version>` renders it, generates .SRCINFO from the result
+# with a real `makepkg --printsrcinfo`, and pushes both to the AUR.
+#
+# Nothing here records a released version, because recording it is what went wrong: this
+# file sat at pkgver=0.6.12 while the AUR served 0.6.23 -- eleven releases -- and the same
+# fact was written down in three other files that then had to be kept in step by a guard
+# each. A checksum cannot be computed before its tag exists, so recording it also forced a
+# post-tag commit and a version bump on every release. See scripts/render_packaging.py.
+#
+# makepkg rejects `@` in pkgver, so this template cannot be built or published by accident.
 pkgname=retch
-pkgver=0.17.3
+pkgver=0.17.5
 pkgrel=1
 pkgdesc="A fast, feature-rich system information fetcher written in Rust"
 arch=('x86_64' 'aarch64')
@@ -10,7 +25,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('77ccf85843d24ac3216ab31d2584ff4a95869266c59ddb8bc83819425cfc2033')
+sha256sums=('4a5acaf983bb680a59a42c002dbe2a2c420c7e8be71287e0b0d6a33177abc2f7')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -63,8 +78,11 @@ package() {
   "$pkgdir/usr/bin/retch" --completions zsh > "$pkgdir/usr/share/zsh/site-functions/_retch"
   "$pkgdir/usr/bin/retch" --completions fish > "$pkgdir/usr/share/fish/vendor_completions.d/retch.fish"
   
-  # Install license
+  # Install license and third-party notices. NOTICE carries the MIT attribution for the
+  # adapted Fastfetch logos, which MIT requires to travel with every copy -- it used to
+  # ride along inside LICENSE, which is why LICENSE was not a verbatim GPL text.
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "NOTICE" "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
   
   # Install documentation
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
