@@ -1,7 +1,7 @@
 # Maintainer: Misaka 19465 <19465@misakanet.team>
 
 pkgname=open-orpheus-git
-pkgver=r941.gda75ffd
+pkgver=r974.gb4508e9
 pkgrel=1
 pkgdesc="An open-source implementation of Netease Cloud Music's Orpheus browser host."
 arch=('x86_64')
@@ -22,7 +22,6 @@ depends=(
     'nss'
     'xdg-utils'
 )
-optdepends=('kde-cli-tools: enable trash integration')
 makedepends=(
     'git'
     'pnpm'
@@ -38,7 +37,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    'b707d4e2108965d8821d334e897f5ea11d3e0e3ba9e05bf3617139f52ac40df8'
+    '56dd949cd671722ae4fbdf71ecd45c1ddafae261068843dc04891735c93bd97a'
     '728c0ebb644d19ad2679689f2df4d1b11e8c89a22ee1606b0789ce78aca4bd18'
 )
 

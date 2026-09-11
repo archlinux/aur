@@ -1,8 +1,18 @@
 [Desktop Entry]
-Name=Open Orpheus
-Comment=Open-source Netease Cloud Music client
-Exec=open-orpheus %U
-Icon=open-orpheus
-Terminal=false
 Type=Application
-Categories=AudioVideo;Audio;Network;
+Icon=open-orpheus
+Name=Open Orpheus
+Exec=open-orpheus %U
+
+StartupNotify=true
+Categories=AudioVideo;Audio;Player;Network
+MimeType=audio/mpeg;audio/wav;audio/x-wav;audio/flac;audio/ogg;audio/x-m4a
+
+Comment=An open-source Netease Cloud Music client
+Comment[zh_CN]=一个开源的网易云音乐客户端
+
+GenericName=Music Player
+GenericName[zh_CN]=音乐播放器
+
+Keywords=Netease Cloud Music;Music;Player;Online Music
+Keywords[zh_CN]=网易云音乐;音乐;播放器;在线音乐
