@@ -1,6 +1,6 @@
 pkgbase = memoria-bin
 	pkgdesc = Keep a project's documented mental model connected to its code
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/viktordanov/rs-memoria
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = memoria-bin
 	depends = glibc>=2.39
 	depends = libgcc
 	depends = git
-	provides = memoria=0.4.0
+	provides = memoria=0.5.0
 	conflicts = memoria
 	options = !strip
 	options = !debug
-	source = https://github.com/viktordanov/rs-memoria/releases/download/v0.4.0/memoria-0.4.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 93693d0cec03b288ffdff0ee4ece6e60f8110b65b509bdff974aa87cce52ea9c
+	source = https://github.com/viktordanov/rs-memoria/releases/download/v0.5.0/memoria-0.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = dcb2052f977ff946b7251e7795a5acbea4ec6f9e0296335e43b89660d65fdcb8
 
 pkgname = memoria-bin
