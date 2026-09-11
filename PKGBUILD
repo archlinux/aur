@@ -2,7 +2,7 @@
 pkgname=factory-ai-droid-cli-rnoz-bin
 pkgver=0.217.0
 pkgrel=2
-pkgdesc="Factory.ai Droid CLI with zero-waste titling, optional keybindings, auto sync"
+pkgdesc="Factory.ai CLI (droid) with optional zero-waste titling and cross-harness keybindings (pkg auto-syncs daily)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rNoz/factory-ai-droid-cli-rnoz"
 license=('factory.ai')
