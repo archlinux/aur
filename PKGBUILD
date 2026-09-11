@@ -15,14 +15,14 @@ sha256sums=('SKIP'
             'SKIP')
 
 package() {
-    cd "${srcdir}/Sinergia-Reflector-Top-${pkgver}"
-    
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
     # Instalar el script principal como ejecutable en /usr/bin
     install -Dm755 sinergia-reflector-top.py "${pkgdir}/usr/bin/sinergia-reflector-top"
-    
+
     # Instalar el archivo .desktop en las aplicaciones del sistema
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    
+
     # Instalar el icono en los pixmaps del sistema
     install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
