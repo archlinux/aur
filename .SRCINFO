@@ -21,8 +21,8 @@ pkgbase = ferrumplay-bin
 	source = FerrumPlay-0.2.0-1-linux-x64-aur.zip::https://github.com/Bitpainter75/FerrumPlay/releases/download/0.2.0/FerrumPlay-0.2.0-1-linux-x64-aur.zip
 	source = io.github.Bitpainter75.FerrumPlay.desktop
 	source = io.github.Bitpainter75.FerrumPlay.png
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = c6d4151cfc08186b2ee211381c97bfa24d851802e4741dcbf758da7b1bf1e956
+	sha256sums = 6d59170c7e8756fa9bf310bb018a4df24bbd117895d003281dd98f86ca756ebd
+	sha256sums = c20d42ee7a0540237fc93744c125041f160b5e1235cbadd0ff47989c254f7783
 
 pkgname = ferrumplay-bin
