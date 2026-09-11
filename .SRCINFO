@@ -1,16 +1,18 @@
 pkgbase = clever-tools
-	pkgdesc = Command Line Interface for Clever Cloud.
-	pkgver = 4.11.0
+	pkgdesc = Command Line Interface for Clever Cloud. (Node.js)
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/CleverCloud/clever-tools
 	arch = any
 	license = Apache-2.0
-	makedepends = nodejs
 	makedepends = npm
-	provides = clever-tools=4.11.0
-	conflicts = clever-tools
+	depends = nodejs>=22
+	conflicts = clever-tools-bin
 	options = !strip
-	source = clever-tools-4.11.0.tar.gz::https://github.com/CleverCloud/clever-tools/archive/refs/tags/4.11.0.tar.gz
-	sha256sums = 5a450d3466d5a103c4af8fa1dbe0d0fa29a2901d06c102e2bee5140625da8890
+	options = !debug
+	source = clever-tools-5.0.0.tgz::https://registry.npmjs.org/clever-tools/-/clever-tools-5.0.0.tgz
+	source = clever-tools-5.0.0-package-lock.json::https://raw.githubusercontent.com/CleverCloud/clever-tools/5.0.0/package-lock.json
+	sha512sums = 2ad49fffb3335779b98b53c460fc9c2fe6e6c417614ba73ee9984dd3e987bb613c3ceaa6ec4d573178e1251ada983217da48508e89eb6b1d3ffcc2c86a69dced
+	sha512sums = a901387f5d51683d1f286c5d0218db2e0f72139ac7b64cbcc16d975dec99c0f3a4c5f6a15344dac4d1ec6a1d6c50c886bd2733513d5181116078e998c9c29783
 
 pkgname = clever-tools
