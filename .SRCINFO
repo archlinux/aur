@@ -1,6 +1,6 @@
 pkgbase = libtimidity
 	pkgdesc = a MIDI to WAVE converter library based on the TiMidity decoder from SDL_sound library
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://libtimidity.sourceforge.net/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = libtimidity
 	arch = aarch64
 	license = LGPL-2.0-only
 	depends = glibc
-	source = https://sourceforge.net/projects/libtimidity/files/libtimidity/0.2.7/libtimidity-0.2.7.tar.gz
-	sha256sums = 26447cbc049fb262e26b640e42c063e8694133aa92ff145e0d0b15a03a352e6a
+	source = https://sourceforge.net/projects/libtimidity/files/libtimidity/0.2.8/libtimidity-0.2.8.tar.gz
+	sha256sums = 4700e23b55f6eb012c98022bfdf4ccaf298215c96e988e729add9c9c8945852a
 
 pkgname = libtimidity

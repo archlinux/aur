@@ -1,17 +1,16 @@
 # Maintainer: PiterDeVries <https://aur.archlinux.org/account/PiterDeVries>
 
 pkgname=libtimidity
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="a MIDI to WAVE converter library based on the TiMidity decoder from SDL_sound library"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://libtimidity.sourceforge.net/"
 license=('LGPL-2.0-only')
 depends=('glibc')
-#makedepends=('git')
 #source=("${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 source=("https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('26447cbc049fb262e26b640e42c063e8694133aa92ff145e0d0b15a03a352e6a')
+sha256sums=('4700e23b55f6eb012c98022bfdf4ccaf298215c96e988e729add9c9c8945852a')
 
 build() {
    cd $srcdir/$pkgname-$pkgver
