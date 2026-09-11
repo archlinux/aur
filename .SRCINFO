@@ -1,6 +1,6 @@
 pkgbase = pithsim-bin
 	pkgdesc = Pith sim-racing dashboard: telemetry, profiles and device setup for the Pith DDU, handbrake and FFB pedals (prebuilt binary)
-	pkgver = 0.7.14
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/lemonxah/pithsim
 	install = pithsim-bin.install
@@ -14,16 +14,16 @@ pkgbase = pithsim-bin
 	depends = systemd-libs
 	optdepends = esptool: reflash a device from ROM download mode
 	optdepends = wine: run the in-prefix shared-memory shim for Proton games
-	provides = pithsim=0.7.14
-	provides = pithddu-dashboard=0.7.14
+	provides = pithsim=0.8.3
+	provides = pithddu-dashboard=0.8.3
 	provides = pith-dashboard
 	conflicts = pithsim
 	conflicts = pithddu-dashboard
 	conflicts = pithddu-dashboard-bin
 	replaces = pithddu-dashboard-bin
-	source = pithsim-bin-0.7.14.tar.gz::https://github.com/lemonxah/pithsim/releases/download/dashboard-v0.7.14/pith-dashboard-linux-x86_64.tar.gz
-	source = pithsim-bin-shm-0.7.14.zip::https://github.com/lemonxah/pithsim/releases/download/dashboard-v0.7.14/pith-shm-tools-win64.zip
-	sha256sums = 0caad6aebf827dc97bdbd58d7195074a9b919d6cb1f6cec40f25255e1b695979
-	sha256sums = 4785e87d59ab617df0ecf11f006aee7db1c13bb55ab3cb0a964a57ca3bc33438
+	source = pithsim-bin-0.8.3.tar.gz::https://github.com/lemonxah/pithsim/releases/download/dashboard-v0.8.3/pith-dashboard-linux-x86_64.tar.gz
+	source = pithsim-bin-shm-0.8.3.zip::https://github.com/lemonxah/pithsim/releases/download/dashboard-v0.8.3/pith-shm-tools-win64.zip
+	sha256sums = d5d8a9f541fb917302039c5bfe06cf090f62e8642ccd6f198056f6f0da594198
+	sha256sums = ddbecc0c998a5f6653ee852246cced562b6af1666ad56b3a4e681c178d046797
 
 pkgname = pithsim-bin

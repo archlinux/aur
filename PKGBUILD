@@ -3,7 +3,7 @@
 # (DDU dash, handbrake, active pedals + the DIY FFB pedals over serial), so the
 # package is named after the project, not the first device.
 pkgname=pithsim-bin
-pkgver=0.7.14
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Pith sim-racing dashboard: telemetry, profiles and device setup for the Pith DDU, handbrake and FFB pedals (prebuilt binary)"
 arch=('x86_64')
@@ -23,8 +23,8 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/releases/download/dashboard-v$pkgver/pith-dashboard-linux-x86_64.tar.gz"
   "$pkgname-shm-$pkgver.zip::$url/releases/download/dashboard-v$pkgver/pith-shm-tools-win64.zip"
 )
-sha256sums=('0caad6aebf827dc97bdbd58d7195074a9b919d6cb1f6cec40f25255e1b695979'
-            '4785e87d59ab617df0ecf11f006aee7db1c13bb55ab3cb0a964a57ca3bc33438')
+sha256sums=('d5d8a9f541fb917302039c5bfe06cf090f62e8642ccd6f198056f6f0da594198'
+            'ddbecc0c998a5f6653ee852246cced562b6af1666ad56b3a4e681c178d046797')
 
 package() {
   cd "$srcdir/pith-dashboard-linux-x86_64"
