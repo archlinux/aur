@@ -1,15 +1,17 @@
-# One timer per instance, daily by default; override per instance.
+# One timer per instance; override it per instance.
 
 [Unit]
-Description=Run rclone-sync@%i daily
+Description=Run rclone-sync@%i every 10 minutes
 Documentation=file:/usr/share/doc/rclone-sync-timer/README.md
 Documentation=man:rclone(1)
 
 [Timer]
-# Daily at 03:00 when the machine is on. Persistent=true runs the sync shortly
-# after the next login (or boot, with lingering enabled) when it was missed.
-OnCalendar=*-*-* 03:00:00
-RandomizedDelaySec=10m
+# Every 10 minutes while the machine is on, plus one run shortly after the user
+# manager starts (i.e. at login, or at boot with lingering enabled).
+OnCalendar=*:0/10
+RandomizedDelaySec=1m
+OnStartupSec=2min
+# Catch up a run missed while the machine was off at the next start.
 Persistent=true
 Unit=rclone-sync@%i.service
 

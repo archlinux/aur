@@ -4,6 +4,7 @@ post_install() {
     echo "  cp /usr/share/doc/rclone-sync-timer/example.conf ~/.config/rclone-sync/<remote>.conf"
     echo "  systemctl --user enable --now rclone-sync@<remote>.timer"
     echo "The units run as your user with your own rclone config, no root needed."
+    echo "It syncs every 10 minutes and after each login; RCLONE_MODE picks sync/copy/bisync."
     echo "To sync while logged out run: loginctl enable-linger <your-user>"
     echo "See /usr/share/doc/rclone-sync-timer/README.md."
 }

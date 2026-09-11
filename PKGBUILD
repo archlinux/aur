@@ -2,7 +2,7 @@
 
 pkgname=rclone-sync-timer
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="systemd user units to periodically sync rclone remotes to local directories"
 arch=('any')
 url="https://aur.archlinux.org/packages/rclone-sync-timer"

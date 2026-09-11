@@ -3,7 +3,7 @@
 #   systemctl --user enable --now rclone-sync@gdrive-docs.timer
 
 [Unit]
-Description=rclone sync for remote %i
+Description=rclone %i sync
 Documentation=file:/usr/share/doc/rclone-sync-timer/README.md
 Documentation=man:rclone(1)
 # At most 5 starts per hour, then the unit stays failed until the timer runs it again.
@@ -12,15 +12,20 @@ StartLimitBurst=5
 
 [Service]
 Type=oneshot
-# Must set RCLONE_SRC and RCLONE_DEST.
+# Must set RCLONE_SRC and RCLONE_DEST; may set RCLONE_MODE / RCLONE_FLAGS.
 EnvironmentFile=%h/.config/rclone-sync/%i.conf
 
 # Unconfigured remote: exit 1-254 skips the run instead of failing the unit.
 ExecCondition=/bin/sh -c '/usr/bin/rclone listremotes --quiet | grep -qxF "%i:"'
 
-# $RCLONE_FLAGS, not ${RCLONE_FLAGS}: $VAR splits on whitespace into separate
-# arguments and expands to nothing when unset, ${VAR} would be a single word.
-ExecStart=/usr/bin/rclone sync ${RCLONE_SRC} ${RCLONE_DEST} $RCLONE_FLAGS
+# Default mode, overridden by RCLONE_MODE= in the config file (EnvironmentFile
+# wins over Environment=). "sync" mirrors the remote and deletes extra files at
+# the destination; use "copy" to only add, "bisync" for two-way syncing.
+Environment=RCLONE_MODE=sync
+
+# $RCLONE_MODE and $RCLONE_FLAGS, not ${...}: $VAR splits on whitespace into
+# separate arguments and expands to nothing when unset, ${VAR} would be one word.
+ExecStart=/usr/bin/rclone $RCLONE_MODE ${RCLONE_SRC} ${RCLONE_DEST} $RCLONE_FLAGS
 
 # File system sandboxing (ProtectSystem=, PrivateTmp=, ...) has no effect in user
 # services and rclone needs no privileges beyond yours.
