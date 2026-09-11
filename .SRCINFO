@@ -1,0 +1,24 @@
+pkgbase = telegram-rs
+	pkgdesc = Feather-light Telegram desktop client in Rust - real-time push, GPU rendering
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/MrChausson/telegram-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = alsa-lib
+	optdepends = ffmpeg: voice-note playback (Opus -> WAV transcode)
+	optdepends = wl-clipboard: paste images from the clipboard on Wayland (Ctrl+V)
+	conflicts = telegram-rs-bin
+	options = !lto
+	source = telegram-rs-0.12.0.tar.gz::https://github.com/MrChausson/telegram-rs/archive/refs/tags/v0.12.0.tar.gz
+	source = telegram-rs.desktop
+	source = telegram-rs.svg
+	sha256sums = 8eeaf6c541adda6229f63ad359636f41d30b7c84dcf4b4b519483fdbb94913a6
+	sha256sums = ffa18dbe3094420d7feb0997bc43496100a43ae1277de38984a767c085b57d34
+	sha256sums = 29a54866c7f634ce95caffa7e76c95d69101dccb3f2fc3ffa7a1eecd0c9b2d04
+
+pkgname = telegram-rs

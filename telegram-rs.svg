@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- Telegram RS logo: accent disc + white send-plane. Geometry mirrors
+       app-iced/src/icons.rs Icon::Logo (24-unit Material send polygon at
+       62% of the icon size, nudged right 1%). -->
+  <circle cx="64" cy="64" r="64" fill="#3390ec"/>
+  <path transform="translate(25.6 24.32) scale(3.30667)"
+        d="M2 21 L23 12 L2 3 L2 10 L16 12 L2 17 Z" fill="#ffffff"/>
+</svg>
