@@ -1,10 +1,10 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname=("alacritty-use-theme-with-redshift-git" "alacritty-use-theme-with-gnome-darkmode-git")
 pkgbase=alacritty-use-theme-with-services-git
-pkgver=r68.6dfd60d
-pkgrel=2
+pkgver=r69.606dd50
+pkgrel=1
 pkgdesc="services to use alacritty-use-theme"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/alacritty-use-theme/alacritty-use-theme-with-services"
 license=('GPL-1.0-or-later')
 groups=('alacritty-use-theme' 'alacritty-use-theme-services')
