@@ -8,8 +8,9 @@ post_upgrade() {
 }
 
 post_remove() {
-  echo ":: Note: Copied media files, custom playlists, and settings config were left intact."
+  echo "Cleaning up Aurora Greeter config directory..."
+  rm -rf /var/lib/sddm/.config/AuroraGreeter
+  echo ":: Note: Copied media files and custom playlists were left intact."
   echo "   To completely remove all leftover directories, run:"
-  echo "     sudo rm -rf /var/lib/sddm/.config/AuroraGreeter"
   echo "     sudo rm -rf /usr/share/sddm/themes/aurora-greeter"
 }

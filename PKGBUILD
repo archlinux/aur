@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/Execorn/aurora-greeter"
 license=('MIT')
 depends=('sddm' 'qt6-5compat' 'qt6-declarative' 'qt6-multimedia' 'gst-plugins-good' 'gst-libav' 'python')
+optdepends=('gst-plugin-pipewire: for PipeWire audio backend compatibility')
 makedepends=('git')
 provides=("sddm-theme-aurora-greeter")
 conflicts=("sddm-theme-aurora-greeter")
@@ -17,7 +18,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./g' \
+    || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

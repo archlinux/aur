@@ -14,6 +14,7 @@ pkgbase = sddm-theme-aurora-greeter-git
 	depends = gst-plugins-good
 	depends = gst-libav
 	depends = python
+	optdepends = gst-plugin-pipewire: for PipeWire audio backend compatibility
 	provides = sddm-theme-aurora-greeter
 	conflicts = sddm-theme-aurora-greeter
 	source = git+https://github.com/Execorn/aurora-greeter.git
