@@ -1,56 +1,31 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=deepseek-reasonix-desktop-bin
-pkgver=1.38.3
+pkgver=1.38.6
 pkgrel=1
-# Reasonix Desktop is a Wails shell around WebKitGTK, not an Electron app —
-# upstream's own control file says so ("a Wails shell around the Go kernel")
-# and the binary links libwebkit2gtk-4.1 / libjavascriptcoregtk-4.1.
-pkgdesc="Reasonix Desktop - Wails/WebKitGTK desktop client for DeepSeek-Reasonix"
+pkgdesc="Reasonix Desktop - Electron desktop client for the DeepSeek-native AI coding agent"
 arch=('x86_64')
 url="https://github.com/esengine/DeepSeek-Reasonix"
 license=('MIT')
-# The direct DT_NEEDED set of reasonix-desktop, nothing more. The list this
-# replaces was written for an Electron app: it omitted webkit2gtk-4.1 (so the
-# package installed fine and then failed to start on hosts without it) while
-# carrying nss, nspr, libcups and alsa-lib, which the binary never links.
-# at-spi2-core / mesa / libx* are real but arrive transitively via gtk3.
-depends=(
-    'gdk-pixbuf2'
-    'glib2'
-    'glibc'
-    'gtk3'
-    'hicolor-icon-theme'
-    'libsoup3'
-    'webkit2gtk-4.1'
-    # The app is a shell around the reasonix kernel and needs it at runtime.
-    # Upstream installs the CLI next to the desktop binary, but that path is
-    # owned by deepseek-reasonix-tui-bin (which also declares
-    # conflicts=('reasonix')), so it can't be shipped from here — see
-    # package(). Depending on the virtual name instead resolves against either
-    # deepseek-reasonix-tui-bin or deepseek-reasonix-tui, both of which
-    # provide it.
-    'reasonix'
-)
+# The official app includes its pinned Electron runtime; no system electron
+# package is needed. These are its Linux shared-library/runtime dependencies.
+depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2'
+         'glibc' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libnotify' 'libx11'
+         'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes'
+         'libxkbcommon' 'libxrandr' 'libxss' 'mesa' 'nspr' 'nss' 'pango'
+         'systemd-libs' 'xdg-utils')
 provides=('deepseek-reasonix-desktop' 'reasonix-desktop')
 conflicts=('deepseek-reasonix-desktop' 'reasonix-desktop')
 options=('!strip' '!debug')
 
-_relurl="https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop-v${pkgver}"
-
-# Sourced from the .deb rather than Reasonix-linux-amd64.tar.gz: it carries
-# byte-identical reasonix-desktop / reasonix-launcher binaries (verified with
-# cmp against the tarball) plus upstream's desktop entry and pre-rendered icons
-# at 8 sizes and a scalable SVG. That is one 44 MB download instead of two, and
-# it drops the imagemagick resize step the old appicon.png handling needed.
-source=("${pkgname}-${pkgver}.deb::${_relurl}/Reasonix-linux-amd64.deb")
+_relurl="${url}/releases/download/desktop-v${pkgver}"
+source=("${pkgname}-${pkgver}.deb::${_relurl}/Reasonix-linux-amd64.deb"
+        "LICENSE-${pkgver}::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/desktop-v${pkgver}/LICENSE")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('ba0ad2b404db6011969ee820242ed6ff76858373211540bab7d6c8cb82af8d2c')
+sha256sums=('ddb93041b4128a998b35ae3718be46cf07f6ede857a10a624503769449f305ef'
+            'dc024237821ac82056c37f8d82e3be919bd51e39a4529ec12a8ab3e2a346dc4c')
 
 prepare() {
-    # .deb is an ar archive of {debian-binary, control.tar.*, data.tar.*};
-    # bsdtar (libarchive, always present) unpacks both layers.
-    rm -rf "${srcdir}/debroot"
     mkdir -p "${srcdir}/debroot"
     bsdtar -xOf "${srcdir}/${pkgname}-${pkgver}.deb" data.tar.gz \
         | bsdtar -xf - -C "${srcdir}/debroot"
@@ -58,56 +33,35 @@ prepare() {
 
 package() {
     cd "${srcdir}/debroot"
+    install -d "${pkgdir}/usr/lib/reasonix" "${pkgdir}/usr/bin"
+    cp -a --no-preserve=ownership usr/lib/reasonix/app "${pkgdir}/usr/lib/reasonix/"
 
-    # Both binaries are needed. reasonix-launcher is what upstream's .desktop
-    # actually executes: it resolves the app through a versioned current.json
-    # layout, so starting reasonix-desktop directly bypasses upstream's startup
-    # path. The previous revision installed only reasonix-desktop.
-    install -Dm755 usr/bin/reasonix-desktop "${pkgdir}/usr/bin/reasonix-desktop"
-    install -Dm755 usr/bin/reasonix-launcher "${pkgdir}/usr/bin/reasonix-launcher"
+    # Keep the matching service, CLI sidecar and launcher together. Upstream's
+    # launcher resolves its real location and finds the regular sibling service;
+    # that service resolves app/Reasonix and its CLI beside itself. The private
+    # CLI is required for remote uploads but must not own the TUI's /usr/bin/reasonix.
+    local _bin
+    for _bin in reasonix reasonix-desktop reasonix-launcher; do
+        install -Dm755 "usr/bin/${_bin}" "${pkgdir}/usr/lib/reasonix/${_bin}"
+    done
+    ln -s ../lib/reasonix/reasonix-desktop "${pkgdir}/usr/bin/reasonix-desktop"
+    ln -s ../lib/reasonix/reasonix-launcher "${pkgdir}/usr/bin/reasonix-launcher"
+    chmod 4755 "${pkgdir}/usr/lib/reasonix/app/chrome-sandbox"
 
-    # Deliberately not installed:
-    #   usr/bin/reasonix — the CLI kernel; deepseek-reasonix-tui-bin owns that
-    #     path, so shipping it here would put the two packages in file
-    #     conflict. It is pulled in through depends=('reasonix') instead.
-    #   usr/lib/reasonix/reasonix-update-helper + its polkit policy — they let
-    #     the app install a .deb over itself through pkexec, which is wrong on
-    #     Arch; upgrades go through pacman.
-    # The tarball additionally ships reasonix-guard, which this package must not
-    # install either: as a sibling of the launcher it sends it down a legacy
-    # migration path that always fails ("migrate: flat CLI binary reasonix-cli
-    # is required" — no release asset ships a reasonix-cli). The .deb omits it,
-    # which is why sourcing from the .deb avoids the problem by construction.
-
-    # Installed as Reasonix.desktop, not upstream's reasonix.desktop: the
-    # window's Wayland app_id is "Reasonix", and a compositor resolves a
-    # window's icon by loading <app_id>.desktop and reading its Icon= key.
-    # Under the lowercase name that lookup misses, so KWin falls back to
-    # QIcon::fromTheme("wayland") and the task switcher shows the generic
-    # Wayland icon (the panel's task manager still looked right, because it
-    # additionally matches on StartupWMClass). Verified on Plasma 6/Wayland.
+    # Do not install Debian's update-helper/polkit policy or the legacy guard;
+    # pacman owns upgrades. Do not disable Chromium's sandbox.
     install -Dm644 usr/share/applications/reasonix.desktop \
         "${pkgdir}/usr/share/applications/Reasonix.desktop"
-
-    # Upstream sets StartupWMClass=reasonix-desktop, which matches neither the
-    # app_id nor anything else the window reports; correct it to Reasonix so
-    # the StartupWMClass-based matchers agree with the filename above.
     sed -i 's/^StartupWMClass=.*/StartupWMClass=Reasonix/' \
         "${pkgdir}/usr/share/applications/Reasonix.desktop"
-    grep -q '^StartupWMClass=Reasonix$' \
-        "${pkgdir}/usr/share/applications/Reasonix.desktop" || {
-        printf 'ERROR: failed to rewrite StartupWMClass in Reasonix.desktop\n' >&2
-        return 1
-    }
-
-    # Upstream's pre-rendered icons, 16x16 through 512x512 plus scalable.
     local _icon _dir
     for _icon in usr/share/icons/hicolor/*/apps/reasonix-desktop.*; do
         _dir="$(basename "$(dirname "$(dirname "${_icon}")")")"
         install -Dm644 "${_icon}" \
             "${pkgdir}/usr/share/icons/hicolor/${_dir}/apps/$(basename "${_icon}")"
     done
-
     install -Dm644 usr/share/pixmaps/reasonix-desktop.png \
         "${pkgdir}/usr/share/pixmaps/reasonix-desktop.png"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
