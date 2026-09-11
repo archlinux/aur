@@ -1,6 +1,6 @@
 # Maintainer: Michael E. Gruen <contact@michaelgruen.com>
 pkgname=tailport
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="TUI to expose local ports across your tailnet via tailscale serve"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ depends=('glibc' 'tailscale' 'iproute2')
 # any current Arch `go` satisfies comfortably.
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gruen/tailport/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a3cc70fd366e24f59da79d3a3c48572179817f9bed0bfcdee874711918d305bf')
+sha256sums=('6174a3174b1c8ec5ee421cd4018acf45ea2a2fc416fe6c47bcce33a7291f75a6')
 
 build() {
   cd "$pkgname-$pkgver"
