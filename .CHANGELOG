@@ -1,6 +1,25 @@
 Version History
 ===============
 
+
+0.10.35
+-------
+
+2026-09-11
+
+New user option: When you rewind the previous assignment,
+to exactly which nearby tick should Lix rewind? Before, this was
+hardcoded as -1, i.e., you rewound to the tick before the assignment.
+Now, you can set it to, e.g., -2. When you rewind like that,
+then re-assign, you've tweaked the assignment to be 1 frame earlier.
+
+Replace library SDLang-D with sdlite. These libraries parse and generate
+SDLang, the file format of the trophy file and the user option file.
+Reason: sdlite is faster and smaller. This removes two dependencies
+(sdlang-d and unit-threaded) and adds one dependency (sdlite).
+
+
+
 0.10.34
 -------
 

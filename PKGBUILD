@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=lix
-pkgver=0.10.34
+pkgver=0.10.35
 pkgrel=1
 pkgdesc="An action-puzzle game inspired by Lemmings"
 url="https://www.lixgame.com/"
@@ -12,9 +12,10 @@ changelog=.CHANGELOG
 license=('custom:CC0')
 
 _gitname=LixD
-source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
+_pkgver=a06c2d1ae1be294409708af0d51b77d4ff36077d
+source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/$_pkgver.tar.gz"
         "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
-sha512sums=('f38e7e66276c737111fe30438ace499d73014f4c9976a418e6cc9b81a44e22acead79c485cabe23285f1b7bd4d35c4a9e52b613e82682d1d5602361544bbabd3'
+sha512sums=('cda4d62cb7f82423ff69c7d4c92844928b99a6a0a020be42a259d749afc241ce14773ae7d5f09b3b6856343c1b35afffe3e508b11ab689aac4604fc833c112d2'
             '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 
 arch=('i686' 'x86_64')
@@ -33,7 +34,7 @@ makedepends=(
 )
 
 prepare() {
-    cd "$_gitname-$pkgver" || exit 1
+    cd "$_gitname-$_pkgver" || exit 1
 
     # Iterate through the required packages and versions to fetch them in advance
     # Read from dub.selections.json and print them as "package@version"
@@ -65,17 +66,17 @@ _build() {
 }
 
 build() {
-    cd "$_gitname-$pkgver" || exit 1
+    cd "$_gitname-$_pkgver" || exit 1
     _build build
 }
 
 check() {
-    cd "$_gitname-$pkgver" || exit 1
+    cd "$_gitname-$_pkgver" || exit 1
     _build test
 }
 
 package() {
-    cd "$_gitname-$pkgver" || exit 1
+    cd "$_gitname-$_pkgver" || exit 1
 
     # install application entry
     install -Dm644 \
