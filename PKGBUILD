@@ -3,7 +3,7 @@
 
 pkgname=paperling
 pkgdesc="A minimal, distraction-free markdown editor"
-pkgver=1.0.49
+pkgver=1.0.50
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/Razee4315/Paperling"
@@ -12,9 +12,9 @@ depends=(glibc libgcc gtk3 dbus libsoup3 cairo gdk-pixbuf2 webkit2gtk-4.1 hicolo
 makedepends=(bun cargo cargo-tauri nodejs)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "001-fix-version.patch::$url/commit/cef567a3fa1bf24cb884bc058889bfbc1556a1ef.diff")
-sha256sums=('6651be9f5834aac5f331835ca468f9500ed27f4a1cc88a5ce85b0e99c67706d0'
-            'd4080f537ebefaa8548ae341e0386753a003937615d9b6510bf09fbc8006911d')
+        "001-fix-version.patch::$url/commit/fadeb629c0d8a86e1d2afd086867dd0438b2531c.diff")
+sha256sums=('0b86bc1ed98c5440fdd55b98c60b3adde0b0150706d416dbf23815a747e4b850'
+            '7ee45833657e1c6d28f15fb40c4bc488cba97b4db8b3538954b450289aab01f8')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
