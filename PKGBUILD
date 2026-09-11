@@ -3,7 +3,7 @@
 pkgname=speedynote
 pkgver=1.6.3
 _tagver=1.6.3
-pkgrel=1
+pkgrel=2
 _ortver=1.20.1     # Vendored ONNX Runtime (PaddleOCR backend)
 pkgdesc="Fast note-taking app with PDF annotation, export, and multi-platform sync"
 arch=('x86_64' 'aarch64')
@@ -11,19 +11,25 @@ url="https://github.com/alpha-liu-01/SpeedyNote"
 license=('GPL-3.0-or-later')
 
 # Runtime dependencies
+# libmupdf, not mupdf: Arch split the library out of the viewer package, so
+# `mupdf` is now just the viewer binary. MuPDF's own third-party libraries
+# (harfbuzz, freetype2, libjpeg-turbo, openjpeg2, jbig2dec, gumbo-parser,
+# brotli, zlib) are libmupdf's dependencies, and MuJS is bundled inside it.
+#
+# Bounds are hardcoded (not derived in package()) so `makepkg --printsrcinfo`
+# emits real constraints. A dynamic depends+= inside package() is expanded
+# with an empty $_minor and publishes `libmupdf<1.1` into .SRCINFO, which
+# would block every current Arch libmupdf. Bump _mupdfminor when Arch moves
+# to a new MuPDF minor series (1.29, 1.30, ...).
+_mupdfminor=28
 depends=(
     'qt6-base'
     'qt6-svg'
-    'mupdf'            # PDF rendering and export
-    'harfbuzz'
-    'freetype2'
-    'libjpeg-turbo'
-    'openjpeg2'
-    'jbig2dec'
-    'gumbo-parser'
-    'mujs'
-    'brotli'
-    'zlib'
+    "libmupdf>=1.${_mupdfminor}"
+    "libmupdf<1.$((_mupdfminor + 1))"
+    'gcc-libs'
+    'glibc'
+    'hicolor-icon-theme'
 )
 
 
@@ -32,7 +38,7 @@ makedepends=(
     'cmake'
     'pkgconf'
     'qt6-tools'        # For lrelease (translations)
-    'patchelf'         # Strip build-tree RPATH from the OCR-enabled binary
+    'patchelf'         # Rewrite RPATH and the libmupdf DT_NEEDED entry
 )
 
 # Package conflicts
@@ -152,4 +158,31 @@ package() {
     # Strip the build-tree absolute ONNX Runtime path baked into RUNPATH,
     # leaving the relocatable $ORIGIN/../lib (= /usr/lib at runtime).
     patchelf --set-rpath '$ORIGIN/../lib' "$pkgdir/usr/bin/speedynote"
+
+    # MuPDF stamps its SONAME with the patch version (Makerules:
+    # -Wl,-soname,libmupdf.so.$(VERSION_MINOR).$(VERSION_PATCH)), so every point
+    # release renames the library and an already-installed binary stops loading.
+    # libmupdf also ships a libmupdf.so.<minor> compatibility symlink, which is
+    # stable across the whole minor series. Retarget DT_NEEDED at that symlink
+    # so 1.28.0-built binaries keep loading after Arch ships 1.28.3. The
+    # `|| true` is needed because makepkg runs under `set -e`; it is a
+    # separate statement from `local` so the grep exit status is not masked.
+    local _need _stable _mujs
+    _need=$(patchelf --print-needed "$pkgdir/usr/bin/speedynote" \
+            | grep -m1 -E '^libmupdf\.so\.[0-9]+\.[0-9]+$') || true
+    if [[ -n $_need ]]; then
+        _stable=${_need%.*}            # libmupdf.so.28.3 -> libmupdf.so.28
+        if [[ -e /usr/lib/$_stable ]]; then
+            patchelf --replace-needed "$_need" "$_stable" "$pkgdir/usr/bin/speedynote"
+        fi
+    fi
+
+    # Release tarballs before the CMakeLists.txt change still link system
+    # libmujs.so. On Arch that library has no SONAME, so the linker records
+    # the absolute path. Shared libmupdf already carries its own JS
+    # dependency; drop the extra entry so the binary does not depend on mujs.
+    while read -r _mujs; do
+        [[ -n $_mujs ]] || continue
+        patchelf --remove-needed "$_mujs" "$pkgdir/usr/bin/speedynote"
+    done < <(patchelf --print-needed "$pkgdir/usr/bin/speedynote" | grep -E 'libmujs' || true)
 }
