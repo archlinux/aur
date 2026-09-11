@@ -1,119 +1,57 @@
 # Maintainer: Rashesh Padia
 pkgname=collabora-office
 pkgver=26.04.2.4
-pkgrel=1
+pkgrel=2
 _source_tag=cp-26.04.2-4
-# The branding tarball is published for some releases only, so it lags the
-# source tag. Take the version that qt/flatpak/com.collaboraoffice.Office.json
-# pins at this source tag.
-_brandver=26.04.2.1
-_source_dir=online.mirror-${_source_tag}
 pkgdesc='Collabora Office - Qt6 desktop document editor powered by Collabora Online'
 arch=('x86_64')
 url='https://collaboraoffice.com'
 license=('MPL-2.0')
+# Derived from the system-libraries.txt asset that the build publishes next to
+# the payload, which lists every library the payload loads from outside itself.
+# cups and dbus are loaded at run time rather than linked, and fontconfig is
+# here for /etc/fonts and fc-cache: the payload carries its own
+# libfontconfig-lo.
 depends=(
     'qt6-base'
-    'qt6-webengine'
     'qt6-declarative'
-    'qt6-websockets'
+    'qt6-positioning'
+    'qt6-webchannel'
+    'qt6-webengine'
+    'cups'
     'dbus'
+    'expat'
     'fontconfig'
-    'libcap'
+    'hicolor-icon-theme'
     'libpng'
     'nspr'
     'nss'
-    'openssl'
-    'pam'
-    'poco'
+    'util-linux-libs'
     'zlib'
     'zstd'
-    'hicolor-icon-theme'
-)
-makedepends=(
-    'git'
-    'autoconf'
-    'automake'
-    'libtool'
-    'pkgconf'
-    'qt6-tools'
-    'cppunit'
-    'python'
-    'python-lxml'
-    'python-polib'
-    'nodejs'
-    'npm'
-    'rsync'
 )
 optdepends=(
     'hunspell-en_us: English spell checking'
     'hyphen-en: English hyphenation'
+    'ttf-carlito: metric substitute for the sans-serif font OOXML documents ask for'
+    'ttf-caladea: metric substitute for the serif font OOXML documents ask for'
+    'ttf-liberation: metric substitutes for Arial, Courier New and Times New Roman'
     'noto-fonts: Noto font family'
     'noto-fonts-cjk: CJK font support'
-    'ttf-liberation: Liberation fonts for document compatibility'
     'ttf-dejavu: DejaVu fonts'
 )
 options=('!strip' '!debug')
-source=(
-    "online-${_source_tag}.tar.gz::https://github.com/CollaboraOnline/online.mirror/archive/refs/tags/${_source_tag}.tar.gz"
-    "https://github.com/Rash419/collabora-core-assets/releases/download/${_source_tag}/core-co-26.04-assets.tar.gz"
-    "https://www.collaboraoffice.com/downloads/collabora-office-brand/collabora-office-brand-${_brandver}.tar.gz"
-)
-sha256sums=('58c3f352d0868248257cc99491ba817befa02bf8a4b136fb5bdafa672fb317f5'
-            '0fbe0e3b0694a8a75be67262aa65cbee0c5ebe6490439a57b4e4761b89ac06d9'
-            '321112b8f29d338ca9530dc604448c9eb465c4f9308468722f16a95fc6f830a8')
-
-build() {
-    cd "$_source_dir"
-
-    ./autogen.sh
-
-    ./configure \
-        --prefix=/usr \
-        --enable-qtapp \
-        --disable-ssl \
-        --disable-werror \
-        --disable-tests \
-        --with-lokit-path="$srcdir/include" \
-        --with-lo-path=/usr/lib/collabora-office
-
-    # npm 12 dropped npm-shrinkwrap.json support for "npm ci" and now requires
-    # package-lock.json. configure generates browser/npm-shrinkwrap.json, so
-    # copy it to package-lock.json. This works on npm 12 and stays fine on
-    # older npm, which still reads either file.
-    cp browser/npm-shrinkwrap.json browser/package-lock.json
-
-    make
-}
+# Fully pre-built on GitHub Actions from one cp-26.04 monorepo tree: engine
+# runtime, online/Qt app and branding are built together in an Arch Linux
+# container and published as a single release asset. poco is linked
+# statically from the engine workdir, so it is not a dependency.
+# https://github.com/Rash419/collabora-core-assets
+source=("collabora-office-${_source_tag}-x86_64.tar.zst::https://github.com/Rash419/collabora-core-assets/releases/download/${_source_tag}/collabora-office-${_source_tag}-x86_64.tar.zst")
+# Fill in from the sha256sums line in the release notes for ${_source_tag},
+# once the desktop tarball for that tag has been built. This has to carry the
+# real checksum before the package is published.
+sha256sums=('SKIP')
 
 package() {
-    cd "$_source_dir"
-    make DESTDIR="$pkgdir" install
-
-    # Install pre-built Collabora Office engine runtime
-    install -d "$pkgdir/usr/lib/collabora-office"
-    cp -a "$srcdir/instdir"/* "$pkgdir/usr/lib/collabora-office/"
-
-    # License
-    install -Dm644 "$srcdir/$_source_dir/COPYING" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # Install Collabora Office branding (online/browser UI theme and assets)
-    local _brand="$srcdir/collabora-office-brand"
-    cp -a "$_brand/online-theme" \
-        "$pkgdir/usr/lib/collabora-office/share/theme_definitions/online/"
-    cp -a "$_brand"/branding* "$_brand"/images "$_brand"/welcome \
-        "$pkgdir/usr/share/coolwsd/browser/dist/"
-
-    # Remove bundled dictionaries; the app uses system hunspell dicts
-    rm -rf "$pkgdir/usr/lib/collabora-office/share/extensions"/dict-*
-
-    # Remove bundled fonts; the app uses system fonts via fontconfig
-    rm -rf "$pkgdir/usr/lib/collabora-office/share/fonts"
-
-    # Remove server-only binaries not needed for the desktop app
-    rm -f "$pkgdir/usr/bin/coolwsd" \
-          "$pkgdir/usr/bin/coolconfig" \
-          "$pkgdir/usr/bin/coolforkit" \
-          "$pkgdir/usr/bin/coolmount"
+    cp -a "$srcdir/usr" "$pkgdir/"
 }
