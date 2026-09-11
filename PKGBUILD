@@ -12,7 +12,7 @@ _cmakeargs=''
 pkgdesc="AzerothCore - MMORPG Server - continuous build from master branch"
 _pkgname='azerothcore-wotlk'
 pkgname=('azerothcore-wotlk-git')
-pkgver=r19465.c9a5efc491
+pkgver=r19467.65d564c848
 pkgrel=1
 arch=('x86_64')
 url="http://www.azerothcore.org"
@@ -27,7 +27,7 @@ source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master"
 sha512sums=('SKIP'
             'b71132ace8a0710b22038716258ed4ecaba81074c7a9c69951440049b955d95e3dd1f8ca81305832ec8f2bea32672f06a19a3b5a569ca3152eb9a4e7a1f7d72c'
             '40fa719a7fc331210eb12266717e8cd8789390462f3cdd026a6917b0f15f177708dbf6e524b26dc0523381fa51901d21000c49132c27643a48cb9a592856adca'
-            'e2507661acdc8eef4dc733dc945e4e6bac188694f103dff2c165e8812a61a1196038cc31f602c5f89df2723d70c9fddbef0f35b4af698b17c74cab2d5a86cba9'
+            '270e74790525c0c564968a34ae099c743d701ede4c5c425ce33366bad1c6a000349d1a32218fd0a63712eed089f1cdb4dda8d84fb57470dd932e73b3b0202923'
             'b284a274735c3d7217743753091a0fc2936b270bf80f9fd6909ccf6fe13d35329e13b768bd90b16ffd87a2cdd9c600b157593a6a7c117335fc0b945d8d7edce5'
             '36813d7ae1ab6ce2aefb7f18aa48bc764b2520bfbc515b75b519ff71f7bcd257eba69d78725df9752f761165c813d245fbbd65ebd90fd209ee9d03ec4f66148b')
 

@@ -27,27 +27,35 @@ echo ""
 # THE WARNING SUPPRESSION FIX: Create a temporary native options file
 # =======================================================================
 ACORE_CNF="/tmp/.acore_mysql_$$.cnf"
+MYSQL_FAIL_LOG="$(mktemp)"
 touch "$ACORE_CNF"
 chmod 600 "$ACORE_CNF" # Strictly lock file permissions so only root can read it
 
-cat << EOF > "$ACORE_CNF"
-[client]
-user=root
-password="${DB_PASS}"
-EOF
+# Write the config file safely without relying on a here-doc.
+printf '[client]\nuser=root\npassword=%s\n' "$DB_PASS" > "$ACORE_CNF"
 
 # Define the clean client execution command utilizing the options file wrapper
 export MYSQL_CMD="mysql --defaults-file=$ACORE_CNF"
 
 # Setup an automatic cleanup trap so the password file is deleted even if the script crashes midway
-trap 'rm -f "$ACORE_CNF"' EXIT
+trap 'rm -f "$ACORE_CNF" "$MYSQL_FAIL_LOG"' EXIT
 
-# Test the provided database credentials cleanly
-if ! $MYSQL_CMD -e "EXIT" >/dev/null 2>&1; then
-    echo "❌ Error: Could not connect to MySQL with those credentials."
-    exit 1
+# Test the provided database credentials cleanly. If the machine is using
+# OS socket authentication for the root user we fall back to that instead of
+# claiming the user typed a wrong password.
+if ! mysql --defaults-file="$ACORE_CNF" -e "SELECT 1;" >/dev/null 2>"$MYSQL_FAIL_LOG"; then
+    if mysql -u root -e "SELECT 1;" >/dev/null 2>&1; then
+        echo " -> Database credentials verified successfully via local socket fallback."
+        MYSQL_CMD="mysql -u root"
+    else
+        echo "❌ Error: Could not connect to MySQL with those credentials."
+        echo "MySQL client diagnostics:"
+        cat "$MYSQL_FAIL_LOG" >&2
+        exit 1
+    fi
 fi
 
+rm -f "$MYSQL_FAIL_LOG"
 echo " -> Database credentials verified successfully (Warnings suppressed)!"
 
 # =======================================================================
