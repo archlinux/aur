@@ -3,14 +3,17 @@
 _pkgauthor=kxxt
 _pkgname=cargo-visualize
 pkgname=${_pkgname}-bin
+pkgdesc="Know your dependencies via interactive cargo dependency graph visualization"
+
 pkgver=2.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
-pkgdesc="Know your dependencies via interactive cargo dependency graph visualization"
+
 arch=('x86_64' 'aarch64')
+license=('GPL-3.0-or-later')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
-license=('GPL-3.0-or-later')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
