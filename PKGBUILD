@@ -1,11 +1,12 @@
 # Maintainer: chen-shuhan <2502820816@qq.com>
 # Contributor: chen-shuhan <2502820816@qq.com>
+# 非官方社区打包 - 与上游无隶属关系
 
 _name=chinese-calendar
 pkgname=python-chinese-calendar
 pkgver=1.11.0
 pkgrel=1
-pkgdesc="Chinese calendar library for Python, 判断农历年是否有闰月、中国的法定节假日等"
+pkgdesc="Chinese calendar library for Python, 判断农历年是否有闰月、中国的法定节假日等 (非官方社区打包)"
 arch=('any')
 url="https://github.com/LKI/chinese-calendar"
 license=('MIT')
