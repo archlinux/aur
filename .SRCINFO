@@ -1,6 +1,6 @@
 pkgbase = parallel-code-bin
 	pkgdesc = Dispatch AI coding agents in parallel, each in its own git worktree (Claude Code, Codex, Gemini, ...)
-	pkgver = 1.15.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/johannesjo/parallel-code
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = parallel-code-bin
 	conflicts = parallel-code
 	options = !strip
 	options = !debug
-	source = https://github.com/johannesjo/parallel-code/releases/download/v1.15.0/parallel-code_1.15.0_amd64.deb
-	sha256sums = b2a38c2c0bc3fea5d00aa13ef766699bfe4bac05a261f0648bd97bc793b5fc82
+	source = https://github.com/johannesjo/parallel-code/releases/download/v2.0.0/parallel-code_2.0.0_amd64.deb
+	sha256sums = 3dacebcbc144f66018e4bfe922bfd575a84cf1d2e89da256f9384e038bda8dd0
 
 pkgname = parallel-code-bin

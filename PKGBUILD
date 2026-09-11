@@ -2,7 +2,7 @@
 
 pkgname=parallel-code-bin
 _pkgname='Parallel Code'
-pkgver=1.15.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Dispatch AI coding agents in parallel, each in its own git worktree (Claude Code, Codex, Gemini, ...)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('parallel-code')
 conflicts=('parallel-code')
 options=('!strip' '!debug')
 source=("https://github.com/johannesjo/parallel-code/releases/download/v${pkgver}/parallel-code_${pkgver}_amd64.deb")
-sha256sums=('b2a38c2c0bc3fea5d00aa13ef766699bfe4bac05a261f0648bd97bc793b5fc82')
+sha256sums=('3dacebcbc144f66018e4bfe922bfd575a84cf1d2e89da256f9384e038bda8dd0')
 
 package() {
     # The .deb is an `ar` archive containing data.tar.xz; unpack the payload
