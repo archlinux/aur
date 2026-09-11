@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=FerrumPlay
+GenericName=Music Player
+GenericName[de]=Musikspieler
+Comment=Desktop music player with album-grouped playlists, gapless playback and Audio CD support
+Comment[de]=Musikspieler fuer den Schreibtisch mit nach Alben geordneten Wiedergabelisten, lueckenloser Wiedergabe und Audio-CD-Unterstuetzung
+Keywords=music;audio;player;playlist;cd;cdda;mp3;flac;ogg;opus;
+Keywords[de]=Musik;Audio;Spieler;Wiedergabeliste;CD;Audio-CD;MP3;FLAC;OGG;Opus;
+Icon=io.github.Bitpainter75.FerrumPlay
+Exec=ferrumplay %U
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+MimeType=audio/mpeg;audio/flac;audio/x-flac;audio/ogg;audio/x-vorbis+ogg;audio/opus;audio/x-opus+ogg;audio/mp4;audio/x-m4a;audio/aac;audio/wav;audio/x-wav;audio/x-wavpack;audio/x-ape;audio/x-ms-wma;audio/x-musepack;audio/aiff;audio/x-aiff;audio/x-dsf;audio/mp2;inode/directory;
+StartupWMClass=FerrumPlay
