@@ -1,0 +1,14 @@
+pkgbase = vylk-git
+	pkgdesc = Lightweight, low-resource single-binary markdown notes editor
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/toxdes/vylk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/toxdes/vylk.git
+	sha256sums = SKIP
+
+pkgname = vylk-git
