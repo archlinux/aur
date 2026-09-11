@@ -14,6 +14,7 @@ arch=(x86_64)
 url="https://github.com/MadGoatHaz/scx-manager"
 license=(GPL-3.0-or-later)
 depends=(qt6-base polkit scx-tools)
+conflicts=(scx-manager-git scx-manager-bin)
 # Note: 'cargo' is provided by the 'rust' package on Arch (rust Provides: cargo),
 # so it is not listed separately. Corrosion + CPM are fetched at configure time
 # (git is required for CPM's GitHub fetches).

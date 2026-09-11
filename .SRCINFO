@@ -13,6 +13,8 @@ pkgbase = scx-manager
 	depends = polkit
 	depends = scx-tools
 	optdepends = sched-ext-kernel: kernel with CONFIG_SCHED_EXT enabled (required to run sched-ext schedulers)
+	conflicts = scx-manager-git
+	conflicts = scx-manager-bin
 	source = https://github.com/MadGoatHaz/scx-manager/releases/download/v1.15.12/scx-manager-1.15.12.tar.gz
 	sha256sums = c94d6b1f2d7038ea28ba525b9f165e001529c3b61bc672cb859c9582e3787294
 
