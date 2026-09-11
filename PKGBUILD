@@ -4,7 +4,7 @@
 # Edit the template, not the copy in the AUR repository.
 
 pkgname=maono
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Maono PD100W wireless microphone controller (TUI + CLI)"
 arch=("x86_64")
@@ -15,7 +15,7 @@ options=("!strip" "!debug")
 source=("maono-$pkgver::$url/releases/download/v$pkgver/maono"
         "LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE"
         "99-maono.rules-$pkgver::$url/raw/v$pkgver/99-maono.rules")
-sha256sums=("1f342da609d1e73f1d9051a47dbb34463bd6efd0d67e0adea4ba838369bb456b"
+sha256sums=("3bf635a0d094aae0dc572c6a8ba580499d3fd794682385b49359e2d720ebb1b7"
             "4268d08d81256cf62ddbc09f71a02f4087f0a7f4c1555b6a1f8d00006872f15d"
             "afaf978a31f80f6797eea61fd8f3b031fe255590aaa448a8bbe3138c5e62d263")
 
