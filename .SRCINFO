@@ -1,16 +1,22 @@
 pkgbase = netscli-gui-bin
-	pkgdesc = Network scanner desktop app (Tauri 2 + React) — discover hosts, scan ports, DNS, ARP
-	pkgver = 0.2.6
+	pkgdesc = NetsCLI desktop app for reviewing network scans, DNS, ARP, and local inventory
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://netscli.com
 	arch = x86_64
 	license = MIT
+	depends = gcc-libs
+	depends = glibc
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libayatana-appindicator
 	provides = netscli-gui
 	conflicts = netscli-gui
-	source_x86_64 = netscli-gui-bin-0.2.6.AppImage::https://github.com/fstubner/netscli/releases/download/v0.2.6/netscli-gui-linux-x86_64.AppImage
-	sha256sums_x86_64 = bfd48226a173ee5997530e5b6fd211fc39d2c5cd6b9b2d0c054185b054a85e60
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/fstubner/netscli/v0.3.1/LICENSE
+	source = netscli-gui.png::https://raw.githubusercontent.com/fstubner/netscli/v0.3.1/apps/netscli-gui/src-tauri/icons/128x128.png
+	sha256sums = 6f035a96b0da6e99589b2a1656f59bee8c6519686d8a94627301e074746041d3
+	sha256sums = 021f1d939fe496033ef90a47d29e7a1bd11ea83cfe0ffc445cb5b88418240882
+	source_x86_64 = netscli-gui-bin-0.3.1.AppImage::https://github.com/fstubner/netscli/releases/download/v0.3.1/netscli-gui-linux-x86_64.AppImage
+	sha256sums_x86_64 = f583839440358296bfe05949826c34c2a133e1df836101626c41fe39a6dddec2
 
 pkgname = netscli-gui-bin
