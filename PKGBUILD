@@ -1,6 +1,6 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-cmaes
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Lightweight Covariance Matrix Adaptation Evolution Strategy (CMA-ES) implementation for Python 3"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=("python-build" "python-wheel" "python-installer" "python-setuptools
 checkdepends=("python-hypothesis" "python-pytest")
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CyberAgent/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('8f84eb2e26e393a936d76484229616630213f95105d49e91e1b6fc9a83bebbf5')
+sha256sums=('ca6bffad9bf17ec006e2ddae008bc93d85aed4ff618ac406db0dfa7676a8d3e1')
 
 build() {
     cd $_name-$pkgver
