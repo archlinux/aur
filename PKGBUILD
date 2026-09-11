@@ -1,7 +1,7 @@
 # Maintainer: Crazybrain <crazybrain plus aur at tuta dot com>
 
 pkgname=ss14.launcher
-pkgver=0.39.1
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="Space Station 14 launcher"
 arch=('x86_64' 'aarch64')
@@ -14,9 +14,9 @@ makedepends=("dotnet-sdk-${_dotnetver}.0")
 optdepends=("soundfont-fluid: soundfont for in-game MIDI instuments needed for servers that don't provide their own")
 source=("${pkgname}.v${pkgver}.tar.gz::https://github.com/space-wizards/SS14.Launcher/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/space-wizards/Robust.LoaderApi/archive/${_RobustLoaderApiVer}.zip"
-        'spacestation14.svg'
+        'spacestation14.svg' # Logo by Kanze, licensed CC BY-SA 4.0
         'ss14.launcher.desktop')
-sha256sums=('9d0829c6b27a7c6063ac7986461b18ad9fa2061214625b8b16e9cf4412416116'
+sha256sums=('6877d67ea5284db9251d2af29e057a1dd0420f0c9d7287a93b3a8f3e875b1576'
             '363db87fc37a40affaf5eaba9f302d9d710cf5f1e5311503f060beb3b49e6c27'
             'd75d6d61398a34a3063a69354a645c369423ffe36a8e90a8fa7497b8212647f7'
             '53d7aa0900c8a68f7161a7865f10d09046ec33cb916dfd47659a27ed9864f049')
@@ -46,7 +46,7 @@ build() {
 }
 
 package() {
-    # make sure LICENCE.txt links to licence
+    # make sure LICENSE.txt links to licence
     install -Dm644 "$srcdir/SS14.Launcher-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     mkdir -p "$pkgdir/usr/lib/$pkgname/loader"
