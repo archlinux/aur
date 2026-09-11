@@ -1,0 +1,15 @@
+pkgbase = uutils-bsdutils
+	pkgdesc = Rust reimplementation of the bsdutils project
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/uutils/bsdutils
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = uutils-bsdutils-0.0.1-src.tar.gz::https://github.com/uutils/bsdutils/archive/refs/tags/0.0.1.tar.gz
+	sha256sums = 4a04eacee7d7d2539770122e41d673b6ade82f72aa19e5f9d51a03d07734fbce
+
+pkgname = uutils-bsdutils
