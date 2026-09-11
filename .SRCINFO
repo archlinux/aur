@@ -1,0 +1,23 @@
+pkgbase = vantage-browser-appimage
+	pkgdesc = Vantage 浏览器 - 基于 Firefox ESR (AppImage 封装)
+	pkgver = 153.2.0
+	pkgrel = 1
+	url = https://github.com/asystech-chen/Vantage
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	optdepends = ffmpeg: media playback
+	provides = vantage-browser
+	conflicts = vantage-browser
+	conflicts = vantage-browser-bin
+	noextract = vantage-153.2.0-1.x86_64.AppImage
+	noextract = vantage-153.2.0-1.aarch64.AppImage
+	source_x86_64 = https://github.com/asystech-chen/Vantage/releases/download/v153.2.0-1/vantage-153.2.0-1.x86_64.AppImage
+	sha256sums_x86_64 = da57eabd96f4fbb84f8467261c312d01469e5ddb8771346cf5567d46a829f9ca
+	source_aarch64 = https://github.com/asystech-chen/Vantage/releases/download/v153.2.0-1/vantage-153.2.0-1.aarch64.AppImage
+	sha256sums_aarch64 = 403f79e636069ea8ff137ec192493cd77b1d61123f12ea98b7170cfef52cf35a
+
+pkgname = vantage-browser-appimage
