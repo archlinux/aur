@@ -1,6 +1,6 @@
 pkgbase = solana-bin
 	pkgdesc = A fast, secure, and censorship resistant blockchain.
-	pkgver = 3.1.13
+	pkgver = 3.1.14
 	pkgrel = 1
 	url = https://solana.com
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = solana-bin
 	makedepends = libgcc
 	makedepends = systemd-libs
 	options = !strip
-	source = solana-3.1.13.tar.bz2::https://github.com/anza-xyz/agave/releases/download/v3.1.13/solana-release-x86_64-unknown-linux-gnu.tar.bz2
+	source = solana-3.1.14.tar.bz2::https://github.com/anza-xyz/agave/releases/download/v3.1.14/solana-release-x86_64-unknown-linux-gnu.tar.bz2
 	source = solana.sysusers
 	source = solana.tmpfiles
 	source = solana-bin.install
-	sha256sums = 88df00f7c23f84aa627f9181f8231d2aa10ada7caa9ff5a7f7287b7ef7d0bbe8
+	sha256sums = 06f97c065cc977cbec2f13ffc9bc9d3b92fef485431fcb370a269de69532ef51
 	sha256sums = bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0
 	sha256sums = a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b
 	sha256sums = e77902c49d76fb103b2e3b7c59925d6b43e3772204dc5e484c2375bffb421ac0
@@ -25,7 +25,7 @@ pkgname = solana-bin
 	depends = glibc
 	depends = libgcc
 	depends = systemd-libs
-	provides = solana=3.1.13
+	provides = solana=3.1.14
 	provides = spl-token
 	conflicts = solana
 
@@ -36,5 +36,5 @@ pkgname = solana-dev-bin
 	depends = libgcc
 	depends = libstdc++
 	optdepends = cargo: required for cargo-build-sbf and cargo-test-sbf
-	optdepends = solana-bin=3.1.13: CLI tools for interacting with clusters
+	optdepends = solana-bin=3.1.14: CLI tools for interacting with clusters
 	conflicts = solana
