@@ -1,0 +1,22 @@
+pkgbase = uutils-shadow-bin
+	pkgdesc = A memory-safe reimplementation of the Linux shadow-utils in Rust
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/uutils/shadow
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libxcrypt-compat
+	depends = pam
+	provides = uutils-shadow=0.5.0
+	conflicts = uutils-shadow
+	source = uutils-shadow-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/uutils/shadow/refs/heads/main/LICENSE
+	sha256sums = SKIP
+	source_aarch64 = uutils-shadow-bin-0.5.0-aarch64::https://github.com/uutils/shadow/releases/download/0.5.0/uu_shadow-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 97bdc077fa0f5964867c1e87d7e8d153c8d054c0b1e70ee107447ff08d7025f6
+	source_x86_64 = uutils-shadow-bin-0.5.0-x86_64::https://github.com/uutils/shadow/releases/download/0.5.0/uu_shadow-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1d9c5069e9849b084815b5d46ee112ca78240533f553a3aca438fd5ee4ab083d
+
+pkgname = uutils-shadow-bin
