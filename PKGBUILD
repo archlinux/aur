@@ -1,7 +1,7 @@
 # Maintainer: Christoph Brandau <c.brandau91@googlemail.com>
 
 pkgname=gitty-desktop-bin
-pkgver=2026.9.6
+pkgver=2026.9.7
 pkgrel=1
 pkgdesc="A lightweight, modern Git client built with Tauri (prebuilt Arch package)"
 arch=('x86_64')
@@ -12,11 +12,11 @@ provides=('gitty-desktop')
 conflicts=('gitty-desktop')
 options=('!strip')
 
-_package="gitty-desktop-2026.9.6-1-x86_64.pkg.tar.zst"
-_artifact_url="https://git.cbsk-tech.de/Christoph/GitLite/releases/download/2026.9.6/gitty-desktop-2026.9.6-1-x86_64.pkg.tar.zst"
+_package="gitty-desktop-2026.9.7-1-x86_64.pkg.tar.zst"
+_artifact_url="https://git.cbsk-tech.de/Christoph/GitLite/releases/download/2026.9.7/gitty-desktop-2026.9.7-1-x86_64.pkg.tar.zst"
 source=("${_package}::${_artifact_url}")
 noextract=("${_package}")
-sha256sums=('57c08ed14ebe62542053da75b5e22e5b92bf98f257fafafdbf0e5e7e3027fd8e')
+sha256sums=('203cd0130c21f7dfc8db2041cd5903145ae6d71b069fc832973a5e990f7323b3')
 
 package() {
   # Extract only the native package payload, without carrying its package
