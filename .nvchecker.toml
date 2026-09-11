@@ -1,0 +1,4 @@
+[android-sdk-platform-tools]
+source = "android_sdk"
+android_sdk = "platform-tools"
+repo = "package"
