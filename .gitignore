@@ -1,0 +1,6 @@
+# Ignore build & source artifacts
+*.tar.*
+*.pkg.tar.*
+*.zip
+src/
+pkg/
