@@ -1,0 +1,4 @@
+[botan2]
+source = 'regex'
+url = 'https://botan.randombit.net/releases/'
+regex = 'Botan-(2\.\d+\.\d+)\.tar'
