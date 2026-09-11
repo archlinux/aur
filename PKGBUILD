@@ -1,16 +1,18 @@
 # Maintainer: aarto <aarto@archlinux.org>
 pkgname=mtracker
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='cli movie tracker - keep track of watched movies and series'
 url='https://github.com/r-unruh/mtracker'
 license=('MIT')
 arch=('x86_64' 'armv7h' 'aarch64')
+options=(!lto)
+depends=(glibc libgcc)
 makedepends=(cargo)
 provides=('mtracker')
 conflicts=('mtracker')
-source=("https://github.com/r-unruh/mtracker/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('cfa106ff76fe92e1307b3ebd485cc9c248a5fb23cae978ef322f277009004e3358d1c62ea506e8ea03791ff45b7344fe438d590eb875d17fed1f16a18fcc0ff6')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/r-unruh/mtracker/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('79af9c24e33b7a4afa0e41982101c26c4e3d6ce4cbe82fc606f3c97f6c58a1fded83ffec87fba32f6c95163cf57e0f8793c63cc4b1efde9d8d877b31e20d372d')
 
 prepare() {
     cd "$pkgname-$pkgver"
