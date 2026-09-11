@@ -1,6 +1,6 @@
 pkgbase = argo-bin
 	pkgdesc = Argo Workflows: Get stuff done with Kubernetes
-	pkgver = 4.1.2
+	pkgver = 4.1.3
 	pkgrel = 1
 	url = https://github.com/argoproj/argo-workflows
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = argo-bin
 	provides = argo
 	conflicts = argo
 	options = !debug
-	source_x86_64 = argo_4.1.2_x86_64.gz::https://github.com/argoproj/argo-workflows/releases/download/v4.1.2/argo-linux-amd64.gz
-	sha256sums_x86_64 = 1edee3c25de0129e4d358a87591f04b89b522ceccb11975970d45217a3cd9cdd
-	source_aarch64 = argo_4.1.2_aarch64.gz::https://github.com/argoproj/argo-workflows/releases/download/v4.1.2/argo-linux-arm64.gz
-	sha256sums_aarch64 = 04e2e1e0fc6d738034ff356e5bc8b2b819f963bf007331df4606611b3fa967b6
+	source_x86_64 = argo_4.1.3_x86_64.gz::https://github.com/argoproj/argo-workflows/releases/download/v4.1.3/argo-linux-amd64.gz
+	sha256sums_x86_64 = f3cf6ae424e9d2b3139efd29f673e7efc47a68881352a26a4122f72c4fc0efd4
+	source_aarch64 = argo_4.1.3_aarch64.gz::https://github.com/argoproj/argo-workflows/releases/download/v4.1.3/argo-linux-arm64.gz
+	sha256sums_aarch64 = 0d10a03a490bcfb2f5acb2bb6236357b2132159f5b37aa2ea54d6febb2c5ff57
 
 pkgname = argo-bin
