@@ -1,7 +1,7 @@
 # Maintainer: xihale <i@xihale.top>
 # Contributor: xihale <i@xihale.top>
 pkgname=snirect
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Local HTTP/HTTPS proxy that rewrites TLS SNI by rules to bypass SNI-based censorship'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ provides=('snirect')
 conflicts=('snirect-bin')
 install=snirect.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xihale/snirect/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1286c1bc876e77e27a472175ef4a7e176cdc38ff85fbb8f92ebb4577e05978b')
+sha256sums=('a610282941c58c775e5162c950524749c960691551f73378f7a6e0d00dcde8c4')
 
 prepare() {
   # Keep the build hermetic: never let Go fetch a different toolchain.
