@@ -20,7 +20,7 @@ depends=('ffmpeg'
 provides=('youtube-to-mp3')
 conflicts=('youtube-to-mp3')
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.amd64.deb")
-sha256sums_x86_64=('2c6ae14e0e94bfee5a25ecc83f0b8c44adf8c885152d17c5d1fe262fbe0043d8')
+sha256sums_x86_64=('d475bdd8acfa55277a727adbd1fddb5b721e153b3e38d1de82ce9280ca7c83fc')
 
 pkgver() {
   bsdtar -xf control.tar.xz -C .
