@@ -23,8 +23,8 @@ pkgbase = qmtui-bin
 	replaces = qqmusic-tui
 	replaces = qqmusic-tui-bin
 	source_x86_64 = qmtui-bin-0.3.3-1-x86_64.pkg.tar.zst::https://github.com/Viemean/qmtui/releases/download/v0.3.3/qmtui-bin-0.3.3-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 1c529bf5b713f8bfe3da71eef015fc01c44f2434cf1d0c984386f6028564a7ea
+	sha256sums_x86_64 = b316c7f5b2ceff431162eaf9edc7c23981b06cc285e6e0fbf4f0f283b3a36ae5
 	source_aarch64 = qmtui-bin-0.3.3-1-aarch64.pkg.tar.zst::https://github.com/Viemean/qmtui/releases/download/v0.3.3/qmtui-bin-0.3.3-1-aarch64.pkg.tar.zst
-	sha256sums_aarch64 = a07667b93e49f1eb98c6e01a12d1f369e2293d7bdffa46d7c5011f3ca4321779
+	sha256sums_aarch64 = 44c2f9c19d23ebfe61774dc2eff85a9eb27fb83a8194a72cabbc86b135296795
 
 pkgname = qmtui-bin
