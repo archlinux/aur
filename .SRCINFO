@@ -1,6 +1,6 @@
 pkgbase = ggsql
 	pkgdesc = SQL extension for declarative data visualization
-	pkgver = 0.4.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/posit-dev/ggsql
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ggsql
 	conflicts = ggsql-bin
 	options = !lto
 	options = !debug
-	source = ggsql-0.4.1.tar.gz::https://github.com/posit-dev/ggsql/archive/v0.4.1.tar.gz
-	sha512sums = 88438a2b98a6c8bbcde885f47f4aac21c6dddcfe3e3a2b4ab732089542f2e7de61673f47c9ffa3e5413a8e3f9ab3aaaf52824debf60eab850010c20f6bcfacb8
+	source = ggsql-0.5.2.tar.gz::https://github.com/posit-dev/ggsql/archive/v0.5.2.tar.gz
+	sha512sums = 154e2e85cfe011234648201e18da1da306abe9336cd5f409a28d3edb3000b19b806e7f041e5d572e479f5123afde301fbc5dc8d6b191291b40f3b8b013fe4d85
 
 pkgname = ggsql
