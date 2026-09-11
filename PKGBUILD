@@ -1,9 +1,9 @@
 pkgname=1password
 
-_tarver=8.12.34
+_tarver=8.12.36
 _tar="1password-${_tarver}.x64.tar.gz"
 pkgver=${_tarver//-/_}
-pkgrel=34
+pkgrel=42
 conflicts=('1password-beta' '1password-beta-bin')
 pkgdesc="Password manager and secure wallet"
 arch=('x86_64')
@@ -12,8 +12,8 @@ license=('LicenseRef-1Password-Proprietary')
 options=(!strip)
 install="1password.install"
 source=(https://downloads.1password.com/linux/tar/stable/${CARCH}/${_tar}{,.sig})
-sha256sums=('297784aa66770b645607a7f04c9ba2c4aebed4f46d21202487f521ba572b7b13'
-            'ec085bef60de748895d3c51a8208301ba2ac8fb47db99334539ba4bd1d3260d7'
+sha256sums=('393c93c8025fee5dda76a4d0f1e478e98526cc946e58a22efe26f540ea2b5729'
+            '251177694bfdc63c431021e2bd2ed64f241b8a0247d5dd1c46d4d2dadffe7b97'
 )
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
@@ -31,7 +31,7 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${resolution}/apps/1password.png"
     done
     # Install desktop file
-    install -Dm0644 resources/1password.desktop -t "${pkgdir}"/usr/share/applications/
+    install -Dm0644 resources/com.onepassword.OnePassword.desktop -t "${pkgdir}"/usr/share/applications/
 
     # Fill in policy kit file with a list of (the first 10) human users of the system.
     export POLICY_OWNERS
@@ -54,7 +54,7 @@ EOF" > ./com.1password.1Password.policy
     # Cleanup un-needed files
     rm "${pkgdir}"/opt/1Password/com.1password.1Password.policy "${pkgdir}"/opt/1Password/com.1password.1Password.policy.tpl "${pkgdir}"/opt/1Password/install_biometrics_policy.sh
     rm -r "${pkgdir}"/opt/1Password/resources/icons/
-    rm "${pkgdir}"/opt/1Password/resources/1password.desktop "${pkgdir}"/opt/1Password/resources/custom_allowed_browsers
+    rm "${pkgdir}"/opt/1Password/resources/com.onepassword.OnePassword.desktop "${pkgdir}"/opt/1Password/resources/custom_allowed_browsers
 
     # Symlink /usr/bin executable to opt
     install -dm0755 "${pkgdir}"/usr/bin
