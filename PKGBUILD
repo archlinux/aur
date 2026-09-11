@@ -10,7 +10,7 @@
 # the builder's keyring for no benefit.
 
 pkgname=tidemark-git
-pkgver=0.5.0.r0.g88c3d08
+pkgver=0.5.2.r0.g12c27da
 pkgrel=1
 pkgdesc='Track AI provider quota limits: how much of each rate-limit window is burned, when it resets, and whether the current pace reaches it'
 arch=('x86_64')
