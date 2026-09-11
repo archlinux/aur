@@ -1,7 +1,7 @@
 pkgbase = libelectron
 	pkgdesc = A meta package for electron and electron dependencies.
 	pkgver = 2026.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/linuxbombay/libelectron
 	arch = x86_64
 	arch = aarch64
@@ -11,11 +11,11 @@ pkgbase = libelectron
 	depends = git
 	depends = icu
 	source = https://gitlab.com/linuxbombay/libelectron/libelectron/-/archive/2026.6/libelectron-2026.6.tar.bz2
-	source = https://gitlab.com/linuxbombay/libelectron/libsplash/-/archive/1.2.1/libsplash-1.2.1.tar.bz2
+	source = https://gitlab.com/linuxbombay/libelectron/libsplash/-/archive/1.2.2/libsplash-1.2.2.tar.bz2
 	source = https://gitlab.com/linuxbombay/libelectron/libadblock/libadblock/-/archive/1.6.2/libadblock-1.6.2.tar.bz2
 	source = https://gitlab.com/linuxbombay/libelectron/libuseragent/-/archive/1.2/libuseragent-1.2.tar.bz2
 	sha256sums = 38ac457e9b6245cc34c7502e41030c45bee13cfdf059bcaa5b432d2f28c5843a
-	sha256sums = 522a6a5c72c9a586847afc2c710c505bbafd031109ccd00b20643cc598f8c68d
+	sha256sums = 2617eb7a1523fb285931611bc48eceb593713d1730ca8864066e776c5674cf1c
 	sha256sums = a59ae9bc64f2d8e3d9d3392655d9bcfa1cc35fc0419aa911511aae611d59fd43
 	sha256sums = 9fc283a91a8048c78866677c8b099e06a91346b3d2973b85b3aafb5fc72f8a48
 
