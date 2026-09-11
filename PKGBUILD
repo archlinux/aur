@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 # Contributor: Mick Elliot <micke at sfu dot ca>
 pkgname=ncbi-toolkit
-pkgver=29.2.0
+pkgver=30.7.0
 pkgrel=1
 pkgdesc="Applications, scripts and C++ libraries for the analysis of biological data"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('blast+-bin')
 conflicts=('blast+-bin')
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/release/$pkgver.tar.gz
         LICENSE)
-sha256sums=('4bb2701b2cc8b4b29b5cde10088142d3c71c0ffd59e5f3402a1a6eec3d07db7e'
+sha256sums=('81bfb82c75f4fe0e0d3cb7414d837d34d6d01089b6a06989b429e4f5c0726906'
             '78bbf3f310ff43f1b5f711e7221d51da1e6f055831bd6c6941e0650bf1261df2')
 
 build() {
