@@ -1,8 +1,8 @@
 # Maintainer: Yu-Hsuan Tu <dobe0331 at gmail dot com>
 _pkgname=viewer
 pkgname=agisoft-${_pkgname}
-pkgver=2.3.1
-pkgrel=3
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="A free stand-alone software to visualize 3D data"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -15,7 +15,7 @@ install=${pkgname}.install
 source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
         "agisoft-viewer-icon-encoded.txt"
         "agisoft-3dv-mime-icon-encoded.txt")
-sha256sums=('b9ea72b05ed0ba183c7817a3b3261c31f8eb80b8db79db599c1b459ca92fe56b'
+sha256sums=('56abfa96832af95cf6213b89d052e66cf3525c6a8578f4242ba48ec18577ad2e'
             'a5e29a00393d55a9b589e1fb30acb57a96ef26756507d2793e7f3494d5778ae3'
             '047225857a8b30362bab61f916ab1ddb19c0906959bf57c4ab5e499b8a9c4fc8')
 
