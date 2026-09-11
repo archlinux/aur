@@ -2,7 +2,7 @@
 # Maintainer: Lucas Santos <hello@lsantos.dev>
 
 pkgname='proton-drive-fs'
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='FUSE virtual filesystem for Proton Drive on Linux.'
 url='https://github.com/khaosdoctor/proton-drive-linux-fs'
@@ -14,7 +14,7 @@ depends=('fuse3')
 makedepends=('go' 'git')
 optdepends=('zenity: About dialog' 'libsecret: store the key password in the OS keyring')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v${pkgver}/proton-drive-linux-fs-${pkgver}.tar.gz")
-sha256sums=('a727081e1e05955f4d80f6577d2db4de3d71f15ea50b1118689b81f4fd44a96c')
+sha256sums=('32e2fa553b38343a3f25ebbb913162c87b5c253917cfda1dfa8bd6508a0dd575')
 prepare() {
   go mod download
 }
@@ -33,4 +33,6 @@ package() {
   install -Dm644 "${srcdir}/proton-drive-fs.service" "${pkgdir}/usr/lib/systemd/user/proton-drive-fs.service"
   install -Dm644 "${srcdir}/proton-drive-fs-tray.service" "${pkgdir}/usr/lib/systemd/user/proton-drive-fs-tray.service"
   install -Dm644 "./contrib/io.github.khaosdoctor.proton_drive_fs.metainfo.xml" "${pkgdir}/usr/share/metainfo/io.github.khaosdoctor.proton_drive_fs.metainfo.xml"
+  install -Dm644 "./contrib/packaging/proton-drive-fs-upgrade.hook" "${pkgdir}/usr/share/libalpm/hooks/proton-drive-fs-upgrade.hook"
+  install -Dm755 "./contrib/packaging/proton-drive-fs-restart" "${pkgdir}/usr/share/libalpm/scripts/proton-drive-fs-restart"
 }
