@@ -5,15 +5,13 @@ arch=('x86_64')
 url="https://github.com/doandat943/zalo-for-linux"
 license=('MIT')
 pkgver=26.8.20+26.2.1.r99.87b0696
-pkgrel=1
+pkgrel=2
 provides=('zalo')
 conflicts=('zalo' 'zalo-for-linux-bin')
 
 depends=(
     'electron22-bin'
     'glibc'
-    'sqlite'
-    'zlib'
     'xz'
     'openssl'
     'hicolor-icon-theme'
@@ -21,9 +19,8 @@ depends=(
 
 makedepends=(
     'git' 'nodejs' 'npm' 'python' 'make'
-    'gcc' '7zip' 'rust' 'wget'   # wget: used by upstream scripts/download-dmg.js
-    # zcall-bridge: build the Wine call engine, same as upstream ZaDark AppImage
-    'mingw-w64-gcc'    # pipebridge.exe
+    'gcc' '7zip' 'rust' 'wget'
+    'mingw-w64-gcc'
     'lib32-gcc-libs' 'lib32-glibc' 'lib32-libx11' 'lib32-libxcb' 'lib32-libxext'
 )
 
@@ -42,6 +39,7 @@ optdepends=(
     'v4l2loopback-dkms: loopback camera support'
     'xorg-server-xvfb: headless X server for Wayland screen-sharing bridge'
     'python-dbus: required by the Wayland screen-sharing bridge (zcall-bridge/screenbridge.py)'
+    'python: required by the Wayland screen-sharing bridge (screenbridge.py)'
     'xdotool: window resizing for screen bridge display'
     'gst-plugins-base: 64-bit GStreamer plugins (ximagesink) for screen bridge'
     'gst-plugins-bad: 64-bit GStreamer plugins (pipewiresrc) for screen bridge'
@@ -51,7 +49,7 @@ optdepends=(
     'lib32-libxcb: 32-bit XCB for the Wayland screen-share shim (pulled in by wine)'
 )
 
-options=(!strip !debug)
+options=(!emptydirs !debug)
 
 source=(
     "$pkgname::git+https://github.com/doandat943/zalo-for-linux.git"
@@ -130,6 +128,8 @@ package() {
     find "$_lib/plugins/zadark" -type f \( -name '*.exe' -o -name '*.dylib' \
     -o -name '*.dll' \) -delete
     rm -rf "$_lib/plugins/zadark/node_modules"
+    # gulp in the zadark submodule leaves the o+w bit; packages must not be world-writable
+    chmod -R o-w "$_lib"
     
     install -Dm755 "$srcdir/zalo.sh" "$pkgdir/usr/bin/zalo"
     install -Dm644 "$srcdir/zalo.desktop" "$pkgdir/usr/share/applications/zalo.desktop"
