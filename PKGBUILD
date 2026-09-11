@@ -1,5 +1,5 @@
 pkgname=vgs-shell
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='VanillaGreen desktop shell for Hyprland and Niri'
 arch=('x86_64' 'aarch64')
@@ -83,17 +83,22 @@ optdepends=(
 # END GENERATED OPTIONAL DEPENDENCIES
 source_x86_64=("$url/releases/download/v$pkgver/vgs-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/vgs-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('41a692e85179fc8b82ed604ea6c2deb8ddfea547bd5842245b38f2ee455fc440')
-sha256sums_aarch64=('fb7fb462c44ded99bf6c75d9c5850656d2c7cb25d62bdffd0effbced16f3225f')
+sha256sums_x86_64=('3c716f942f33f4e2472d2a1758501a6ede193f3a8ed7c836e56a6545987e8209')
+sha256sums_aarch64=('eb0d4fdfe65fdd7d199c7ba9aa2a0ffac5271f285428b82d4767f84e6b9e6966')
 
 install='vgs-shell.install'
 # Another notification daemon can acquire org.freedesktop.Notifications
 # before VGS. Declare the conflict so VGS can receive session notifications.
 provides=('notification-daemon')
-conflicts=('notification-daemon' 'mako' 'swaync')
+# vgs-shell owns /usr/lib/vshell/config/vshell/icons now that the retired
+# vgs-shell-assets no longer ships them. pacman honours replaces only for
+# repository packages, so an AUR install needs conflicts as well to be
+# offered the removal instead of aborting on the icon files.
+replaces=('vgs-shell-assets')
+conflicts=('notification-daemon' 'mako' 'swaync' 'vgs-shell-assets')
 
 package() {
   cd "vgs-$pkgver-linux-$CARCH"
   sed -i 's|^#!/bin/env bash$|#!/usr/bin/env bash|' config/vshell/nvim/colorschemes/tokyonight.nvim/scripts/{build,docs}
-  DESTDIR="$pkgdir" VGS_THEME_BUNDLE=core VGS_BACKEND_BINARY="$PWD/bin/vshell-backend" packaging/install-system.sh
+  DESTDIR="$pkgdir" VGS_BACKEND_BINARY="$PWD/bin/vshell-backend" packaging/install-system.sh
 }
