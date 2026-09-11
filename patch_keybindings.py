@@ -4,14 +4,14 @@
 Rotates three interactive shortcuts without changing binary size:
   * open in editor:        Ctrl-P -> Ctrl-G
   * cycle model:           Ctrl-N -> Ctrl-P
-  * pull queued messages:  Ctrl-G -> Ctrl-Q
+  * pull queued messages:  Ctrl-G -> Ctrl-I
 
 The serialized keymap table, the guarded runtime dispatch statements, the
 model registry matcher, and every human-readable chord hint (``Ctrl+P``,
 ``Ctrl + P``, ``ctrl+N``, ... and the matching N/G variants across locales)
 are rotated together. Optional-callback availability guards travel with
 their action, so the editor stays unguarded on Ctrl-G while the queue pull
-keeps its guard on Ctrl-Q. Machine kebab-case keys (``ctrl-g``) and the
+keeps its guard on Ctrl-I. Machine kebab-case keys (``ctrl-g``) and the
 key-name registry are never rewritten. Minified identifier names may change
 between releases; unknown, ambiguous, or partially patched layouts fail
 closed.
@@ -31,13 +31,13 @@ class PatchError(RuntimeError):
 
 TABLE_RE = re.compile(
     rb"ctrl-g\x00.{0,128}?(?P<queue_action>[A-Za-z_$][A-Za-z0-9_$]{0,7})\x00"
-    rb".{0,2000}?(?P<editor_key>ctrl-p|ctrl-q)\x00.{0,128}?"
+    rb".{0,2000}?(?P<editor_key>ctrl-p|ctrl-i)\x00.{0,128}?"
     rb"(?P<editor_action>[A-Za-z_$][A-Za-z0-9_$]{0,7})\x00.{0,2000}?"
     rb"ctrl-slash\x00.{0,2000}?model-cycle\x00.{0,2000}?autonomy-cycle\x00",
     re.DOTALL,
 )
 DISPATCH_LOCAL_RE = re.compile(
-    rb'[A-Za-z_$][A-Za-z0-9_$]*\([^;]{0,100}?"(?P<key>ctrl-[gnpq])"\)'
+    rb'[A-Za-z_$][A-Za-z0-9_$]*\([^;]{0,100}?"(?P<key>ctrl-[gipq])"\)'
     rb"(?P<guard>&&[A-Za-z_$][A-Za-z0-9_$]{0,7})?"
     rb'[^;]{0,100}?return (?P<action>[A-Za-z_$][A-Za-z0-9_$]*)\(\),!0;'
 )
@@ -58,7 +58,7 @@ DISPLAY_REPLACEMENTS = (
     (b"Ctrl + G", b"Ctrl + Q"),
     (b"Ctrl+G", b"Ctrl+Q"),
     (b"ctrl+G", b"ctrl+Q"),
-    (b"Ctrl-G", b"Ctrl-Q"),
+    (b"Ctrl-G", b"Ctrl-I"),
 )
 DISPLAY_MAP = dict(DISPLAY_REPLACEMENTS)
 DISPLAY_RE = re.compile(b"|".join(re.escape(before) for before, _ in DISPLAY_REPLACEMENTS))
@@ -87,7 +87,7 @@ def _find_keymap(data: bytes) -> re.Match[bytes]:
             )
         else:
             valid = _dispatch_matches(data, b"ctrl-g", queue_action) and _dispatch_matches(
-                data, b"ctrl-q", editor_action
+                data, b"ctrl-i", editor_action
             )
         if valid:
             candidates.append(match)
@@ -133,20 +133,20 @@ def apply_patch_bytes(data: bytes) -> bytes:
     queue_action = keymap_match.group("queue_action")
     editor_key = keymap_match.group("editor_key")
     editor_action = keymap_match.group("editor_action")
-    if editor_key == b"ctrl-q":
+    if editor_key == b"ctrl-i":
         # Already-rotated table: normalize the names back to their actions.
         queue_action, editor_action = editor_action, queue_action
     if len(queue_action) != len(editor_action):
         raise PatchError("keybinding action names have different byte lengths")
     model_cycle = list(MODEL_CYCLE_RE.finditer(data))
 
-    if editor_key == b"ctrl-q":
+    if editor_key == b"ctrl-i":
         # Already-rotated (or partially rotated) layout: accept it only when it
         # is byte-for-byte the state this patcher produces.
         if len(model_cycle) != 1 or not model_cycle[0].group(0).endswith(b',"p")}'):
             raise PatchError("keymap is partially patched or has an unknown model registry")
         dispatch_g = _dispatch_matches(data, b"ctrl-g", editor_action)
-        dispatch_n = _dispatch_matches(data, b"ctrl-q", queue_action)
+        dispatch_n = _dispatch_matches(data, b"ctrl-i", queue_action)
         if (
             len(dispatch_g) == 1
             and dispatch_g[0][2].group("guard") is None
@@ -154,13 +154,13 @@ def apply_patch_bytes(data: bytes) -> bytes:
             and dispatch_n[0][2].group("guard") == b"&&" + queue_action
         ):
             return data
-        raise PatchError("keymap is partially patched or has an unknown Ctrl-G/Ctrl-Q layout")
+        raise PatchError("keymap is partially patched or has an unknown Ctrl-G/Ctrl-I layout")
 
     dispatch_g = _dispatch_matches(data, b"ctrl-g", queue_action)
     dispatch_p = _dispatch_matches(data, b"ctrl-p", editor_action)
     dispatch_g_any = _dispatch_matches(data, b"ctrl-g")
     dispatch_p_any = _dispatch_matches(data, b"ctrl-p")
-    dispatch_n_any = _dispatch_matches(data, b"ctrl-q")
+    dispatch_n_any = _dispatch_matches(data, b"ctrl-i")
     if (
         len(dispatch_g) != 1
         or len(dispatch_p) != 1
@@ -168,9 +168,9 @@ def apply_patch_bytes(data: bytes) -> bytes:
         or len(dispatch_p_any) != 1
         or len(model_cycle) != 1
     ):
-        raise PatchError("expected one unique Ctrl-G, Ctrl-P, and Ctrl-Q action")
+        raise PatchError("expected one unique Ctrl-G, Ctrl-P, and Ctrl-I action")
     if dispatch_n_any:
-        raise PatchError("upstream already binds Ctrl-Q inline; refusing to rotate")
+        raise PatchError("upstream already binds Ctrl-I inline; refusing to rotate")
 
     g_start, g_end, g_match = dispatch_g[0]
     p_start, p_end, p_match = dispatch_p[0]
@@ -194,7 +194,7 @@ def apply_patch_bytes(data: bytes) -> bytes:
     key_anchor = b'"ctrl-p")'
     insert_at = p_stmt.index(key_anchor) + len(key_anchor)
     new_p = p_stmt[:insert_at] + b"&&" + queue_action + p_stmt[insert_at:]
-    new_p = new_p.replace(b'"ctrl-p"', b'"ctrl-q"', 1)
+    new_p = new_p.replace(b'"ctrl-p"', b'"ctrl-i"', 1)
     new_p = new_p.replace(editor_action + b"()", queue_action + b"()", 1)
     dispatch_replacement = new_g + data[g_end:p_start] + new_p
     if len(dispatch_replacement) != p_end - g_start:
@@ -203,7 +203,7 @@ def apply_patch_bytes(data: bytes) -> bytes:
     model_replacement = model_cycle[0].group(0).replace(b'"n"', b'"p"', 1)
 
     # Rotate the serialized table: the editor action moves under ctrl-g and
-    # the editor entry itself becomes the queue entry on ctrl-q.
+    # the editor entry itself becomes the queue entry on ctrl-i.
     ctrl_g_entry = re.search(
         rb"ctrl-g\x00.{0,128}?" + re.escape(queue_action) + rb"\x00", keymap, re.DOTALL
     )
@@ -223,7 +223,7 @@ def apply_patch_bytes(data: bytes) -> bytes:
         raise PatchError("keymap entry for the editor key is missing or ambiguous")
     patched_keymap = (
         patched_keymap[: ctrl_p_entry.start()]
-        + ctrl_p_entry.group(0).replace(editor_key, b"ctrl-q").replace(
+        + ctrl_p_entry.group(0).replace(editor_key, b"ctrl-i").replace(
             editor_action + b"\x00", queue_action + b"\x00"
         )
         + patched_keymap[ctrl_p_entry.end() :]
