@@ -5,7 +5,7 @@ _pyname="${_origname}"
 _nodename="${_origname}"
 _pkgname="${_origname}-chiptunes-player"
 pkgname="${_pkgname}-git"
-pkgver=8.0.0+24.r1761.20260904.9d01a35
+pkgver=8.0.0+26.r1763.20260911.8aa7d61
 pkgrel=1
 pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugins for MOC, XMMS2 and VLC."
 arch=(
@@ -156,6 +156,10 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgname}"
+
+  export LANG=C
+  export LC_COLLATE=C
+  export LC_ALL=C
 
   printf '%s\n' " --> testing ..."
   printf '%s\n' '    `-> make test ...'
