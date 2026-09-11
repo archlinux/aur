@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=protonmail-bridge-free
 pkgname=(protonmail-bridge-free protonmail-bridge-free-core)
-pkgver=3.26.0
+pkgver=3.27.0
 pkgrel=1
 pkgdesc="Integrate ProtonMail account with any program that supports IMAP and SMTP"
 arch=(x86_64)
@@ -13,22 +13,22 @@ source=("$pkgbase::git+$url#tag=v$pkgver"
 	"remove-vcpkg-dependency.patch"
 	"fix-wayland-icon.patch"
 	# Patches from https://github.com/mnixry/proton-bridge. They make the app work for free users and only require the patches from this fork to work
-	"1.patch::https://github.com/mnixry/proton-bridge/commit/c9f2dd7383ad2b1c0d9ca97c7a0701124f475156.diff?full_index=1"
-	"2.patch::https://github.com/mnixry/proton-bridge/commit/3e18e82603030749fc1357b7d7e65444d45d9dd9.diff?full_index=1"
-	"3.patch::https://github.com/mnixry/proton-bridge/commit/0276c2eb378647ee035a677c169b41dec9991bab.diff?full_index=1"
-	"4.patch::https://github.com/mnixry/proton-bridge/commit/286c87f7e416e237927ffed7afec823996ce58d5.diff?full_index=1"
-	"5.patch::https://github.com/mnixry/proton-bridge/commit/e1f61f262548c50b2ca9bd88f9c2e54160bf5bc3.diff?full_index=1"
+	"1.patch::https://github.com/mnixry/proton-bridge/commit/c9f2dd7383ad2b1c0d9ca97c7a0701124f475156.patch"
+	"2.patch::https://github.com/mnixry/proton-bridge/commit/3e18e82603030749fc1357b7d7e65444d45d9dd9.patch"
+	"3.patch::https://github.com/mnixry/proton-bridge/commit/0276c2eb378647ee035a677c169b41dec9991bab.patch"
+	"4.patch::https://github.com/mnixry/proton-bridge/commit/286c87f7e416e237927ffed7afec823996ce58d5.patch"
+	"5.patch::https://github.com/mnixry/proton-bridge/commit/e1f61f262548c50b2ca9bd88f9c2e54160bf5bc3.patch"
 )
 noextract=()
-sha256sums=('47c97e35478e6233d1c24d0095a8b1506eece1e1077e6feb9ed8414b3ea7175b'
+sha256sums=('aebe2a33e65c5854aa54c21ae4b764a36d443eda266e745fa27ba18f7fc3fad4'
             '5d273f1245fec8549a3daa3fe76e22bb6c23957cf5bcb51c24f878e19c7a5692'
             '87c01adf8bfc3d3f4ee346d0bc83997a8b8e83104a7d5e53b91de58e3b13b3d7'
             '869bcdb550e2899de1fffec8288fffea8c5ce1949322982d6c22f744814aed9c'
-            '29f91cd9e25d2f9fbe44bcd0d814bdb742b99d9bf34074165c3f53736dac3a71'
-            'a9afbb9f2e5ff0467f2621b5e03b01855b94b1571f836373259f35921797c0b2'
-            '207d521bf97b5f2a4be8892ee2c5247e7408b35aa188a27d1c83964bd163594e'
-            '111fcd16cff730fdb81f0830d2f79197e4aec3053033f7da86130badaa5da72c'
-            '96b8b61c9bada9787757aa17f5cde747e89a1558f871363918f0808f5461e63a')
+            '82fd6ae3c03b9c5c23a933ebfa48272b0590a2c0385e1867b3075b4530e5b4b9'
+            'f5910692eff580dc28239283b233b57f56ede18c3989b360025d260b7e656c9c'
+            'b14eab75d97b0c1e73aab426a782b3d97ef9b2edacbaaa81d2831375ccbe50aa'
+            '15ed4d2b6a64f87dcda1fef16857e2f5d0347a578f5d1be424307142a45a469e'
+            '55ae933ca6eca4dde44cf16bf9a49e6d2cf1c21998d4bd89d302f6ba25deaac0')
 validpgpkeys=()
 
 prepare() {
@@ -68,6 +68,7 @@ build() {
 	local commit="$(git rev-parse HEAD)"
 
 	local ld_flags=" \
+	-compressdwarf=false \
 	-X 'github.com/ProtonMail/proton-bridge/v3/internal/constants.BuildEnv=Arch Linux' \
 	-X 'github.com/ProtonMail/proton-bridge/v3/internal/constants.FullAppName=Proton Mail Bridge' \
 	-X github.com/ProtonMail/proton-bridge/v3/internal/constants.BuildTime=NOTSET \
@@ -77,6 +78,7 @@ build() {
 	"
 	go build -v \
 	-ldflags "$ld_flags" \
+	-tags libsqlite3 \
 	-o bridge \
 	"$srcdir/$pkgbase/cmd/Desktop-Bridge"
 
