@@ -6,8 +6,10 @@ Documentation=file:/usr/share/doc/rclone-sync-timer/README.md
 Documentation=man:rclone(1)
 
 [Timer]
+# Daily at 03:00 when the machine is on. Persistent=true runs the sync shortly
+# after the next login (or boot, with lingering enabled) when it was missed.
 OnCalendar=*-*-* 03:00:00
-RandomizedDelaySec=30m
+RandomizedDelaySec=10m
 Persistent=true
 Unit=rclone-sync@%i.service
 

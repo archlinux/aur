@@ -1,13 +1,12 @@
 pkgbase = rclone-sync-timer
-	pkgdesc = systemd units to periodically sync rclone remotes to local directories
+	pkgdesc = systemd user units to periodically sync rclone remotes to local directories
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/rclone-sync-timer
 	install = rclone-sync-timer.install
 	arch = any
 	license = 0BSD
 	depends = rclone
-	backup = etc/rclone-sync/example.conf
 	source = rclone-sync@.service
 	source = rclone-sync@.timer
 	source = example.conf

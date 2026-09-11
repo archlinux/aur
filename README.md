@@ -1,32 +1,47 @@
 # rclone-sync-timer
 
-systemd template timer/service that periodically syncs rclone remotes into local
-directories, one instance per remote.
+Systemd user template timer/service that periodically syncs rclone remotes into
+local directories, one instance per remote. It runs as your user and uses your
+own rclone config, no root involved.
 
 ## Setup
 
-The service runs as root, so the remote must be configured in root's rclone
-config (the one `sudo rclone config` writes), and the instance name must match
-both the config file name and the remote name:
+```bash
+rclone config                                     # configure the remote to sync
+mkdir -p ~/.config/rclone-sync
+cp /usr/share/doc/rclone-sync-timer/example.conf ~/.config/rclone-sync/gdrive-docs.conf
+$EDITOR ~/.config/rclone-sync/gdrive-docs.conf    # set RCLONE_SRC / RCLONE_DEST
+systemctl --user enable --now rclone-sync@gdrive-docs.timer
+```
+
+The instance name must be the same in all three places: the unit instance, the
+config file `~/.config/rclone-sync/<name>.conf` and the rclone remote name.
+
+To sync while logged out, let your user manager start at boot:
 
 ```bash
-sudo rclone config
-sudo cp /etc/rclone-sync/example.conf /etc/rclone-sync/gdrive-docs.conf
-sudo vim /etc/rclone-sync/gdrive-docs.conf          # set RCLONE_SRC / RCLONE_DEST
-sudo systemctl enable --now rclone-sync@gdrive-docs.timer
+loginctl enable-linger $USER
 ```
 
 ## Commands
 
 ```bash
-sudo systemctl start rclone-sync@gdrive-docs.service   # run once now
-journalctl -eu rclone-sync@gdrive-docs                 # logs
-systemctl list-timers 'rclone-sync@*'                  # next runs
+systemctl --user start rclone-sync@gdrive-docs.service   # run once now
+journalctl --user -eu rclone-sync@gdrive-docs            # logs
+systemctl --user list-timers 'rclone-sync@*'             # next runs
 
-sudo systemctl edit rclone-sync@gdrive-docs.timer      # change the schedule
+systemctl --user edit rclone-sync@gdrive-docs.timer      # change the schedule
 #   [Timer]
 #   OnCalendar=Sat *-*-* 02:00:00
 ```
+
+## Schedule
+
+The default is daily at 03:00. `Persistent=true` covers a machine that is off at
+that time: the missed run happens shortly after the next start of the user
+manager, i.e. at your next login, or at boot with lingering enabled. Override
+the timer to pick another time or to run several times a day (repeat the
+`OnCalendar=` line).
 
 ## Behaviour
 
@@ -45,17 +60,6 @@ sudo systemctl edit rclone-sync@gdrive-docs.timer      # change the schedule
   empty for none.
 - Absolute paths only in the config: no shell is involved, so `~` and `$HOME`
   are not expanded.
-- Files are owned by root. To change that, override the unit with `User=` and
-  `Group=` plus a readable `RCLONE_CONFIG`, or append a `chown` `ExecStart=`
-  line (extra `ExecStart=` lines run after the first one).
-- Hardening: `ProtectSystem=full` makes `/usr`, `/boot`, `/efi` and `/etc`
-  read-only and leaves `/home`, `/srv`, ... writable. Path options expand `%`
-  specifiers but never variables, so `ReadWritePaths=` cannot take `RCLONE_DEST`;
-  put the literal path in an override when restricting further:
-
-```bash
-sudo systemctl edit rclone-sync@gdrive-docs.service
-#   [Service]
-#   ProtectHome=read-only
-#   ReadWritePaths=/home/you/backup/Documents
-```
+- The units run as your user, so backed-up files belong to you. File system
+  sandboxing (`ProtectSystem=`, `PrivateTmp=`, ...) has no effect in user
+  services, so the only hardening set is `NoNewPrivileges=yes`.

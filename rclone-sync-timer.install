@@ -1,8 +1,10 @@
 post_install() {
-    echo "Each remote needs its own config before its timer is enabled:"
-    echo "  sudo cp /etc/rclone-sync/example.conf /etc/rclone-sync/<remote>.conf"
-    echo "  sudo systemctl enable --now rclone-sync@<remote>.timer"
-    echo "The service runs as root, so configure the remote with 'sudo rclone config'."
+    echo "One config file per remote in ~/.config/rclone-sync/<remote>.conf:"
+    echo "  mkdir -p ~/.config/rclone-sync"
+    echo "  cp /usr/share/doc/rclone-sync-timer/example.conf ~/.config/rclone-sync/<remote>.conf"
+    echo "  systemctl --user enable --now rclone-sync@<remote>.timer"
+    echo "The units run as your user with your own rclone config, no root needed."
+    echo "To sync while logged out run: loginctl enable-linger <your-user>"
     echo "See /usr/share/doc/rclone-sync-timer/README.md."
 }
 
