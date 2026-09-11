@@ -2,8 +2,8 @@
 
 pkgname=python-rns
 _name=${pkgname#python-}
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.4
+pkgrel=1
 pkgdesc="Self-configuring, encrypted and resilient mesh networking stack"
 arch=('any')
 depends=('python-cryptography' 'python-pyserial')
@@ -18,10 +18,8 @@ source=(
     $pkgname-$pkgver::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz
     https://raw.githubusercontent.com/markqvist/Reticulum/refs/heads/master/LICENSE
 )
-sha256sums=(
-    'a7f8f0d445312fee1c4ade41178f5224fe7af8bd790a79d148696659d81cc862'
-    '00d736d22a942ba144a5914d05877f0532288024dc189c1aadd1930ee9b4b295'
-)
+sha256sums=('578508ef08dedf7c109f73a445065ca89c50a63c6a69ced7b147ed20391ceb15'
+            '00d736d22a942ba144a5914d05877f0532288024dc189c1aadd1930ee9b4b295')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
