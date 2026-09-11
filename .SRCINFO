@@ -1,6 +1,6 @@
 pkgbase = scx-manager-bin
 	pkgdesc = Prebuilt x86_64 binary of scx-manager (Qt6 GUI manager for sched-ext (SCX) schedulers) — installs without building
-	pkgver = 1.15.12
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/MadGoatHaz/scx-manager
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = scx-manager-bin
 	depends = scx-tools>=1.1.3
 	conflicts = scx-manager
 	conflicts = scx-manager-git
-	source = https://github.com/MadGoatHaz/scx-manager/releases/download/v1.15.12/scx-manager-1.15.12-x86_64.tar.zst
-	sha256sums = a73a26d0975e4e5bf9056b59c6656f0b7f2b4fd69508dfe3528f4edb863e9f95
+	source = https://github.com/MadGoatHaz/scx-manager/releases/download/v1.17.0/scx-manager-1.17.0-x86_64.tar.zst
+	sha256sums = 39ff6a629d5eaf20146617702e0651ffc7d160201550eaad7f30d9f1a71ab062
 
 pkgname = scx-manager-bin

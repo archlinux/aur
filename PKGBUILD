@@ -11,10 +11,10 @@
 #
 # DEPENDENCY AUTHORITY: names mirror the source PKGBUILD's depends=
 # (qt6-base polkit scx-tools). The >= floors below are the build
-# environment's actuals from the first release-bin run's audit
-# section (run 34546612569, 2026-09-11: qt6-base 6.11.2-3, polkit
-# 127-3, scx-tools 1.1.3-1) — re-captured from each release's audit
-# (the standing per-release re-capture, plans/PLAN.md §7).
+# environment's actuals from the release-bin run's audit section,
+# re-captured per release (v1.17.0: run 34580088225, 2026-09-11 —
+# qt6-base 6.11.2-3, polkit 127-3, scx-tools 1.1.3-1, unchanged vs
+# the first run 34546612569; standing re-capture, plans/PLAN.md §7).
 #
 # FILE COLLISION CONTRACT: this package installs the SAME file set as
 # `scx-manager` and `scx-manager-git` (usr/bin/scx-manager,
@@ -32,7 +32,7 @@
 # scx_loader/zbus bridge is statically linked into the app).
 
 pkgname=scx-manager-bin
-pkgver=1.15.12
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Prebuilt x86_64 binary of scx-manager (Qt6 GUI manager for sched-ext (SCX) schedulers) — installs without building"
 arch=(x86_64)
@@ -43,8 +43,8 @@ license=(GPL-3.0-or-later)
 # switch in either direction (see FILE COLLISION CONTRACT in the header).
 conflicts=(scx-manager scx-manager-git)
 # Floors = the release-bin build environment's actuals, captured by
-# the "Build audit" section appended to the v1.15.12 release notes
-# (run 34546612569, 2026-09-11: qt6-base 6.11.2-3, polkit 127-3,
+# the "Build audit" section appended to the v1.17.0 release notes
+# (run 34580088225, 2026-09-11: qt6-base 6.11.2-3, polkit 127-3,
 # scx-tools 1.1.3-1; glibc 2.44, GCC 16.2.1, cmake 4.4.3, rustc
 # 1.98.1 — archlinux:base-devel container). Names are final (mirror
 # the source depends=).
@@ -63,10 +63,10 @@ source=("https://github.com/MadGoatHaz/scx-manager/releases/download/v${pkgver}/
 
 # Verified via the standing double-fetch discipline (fetch twice, cmp
 # byte-identical, sha256sum both + the released SHA256SUMS) after the
-# first release-bin run — plans/PLAN.md §5.3-5.4.
-# v1.15.12: a73a26d0… (run 34546612569, 2026-09-11; 2,492,271 bytes;
+# release-bin run — plans/PLAN.md §6.
+# v1.17.0: 39ff6a62… (run 34580088225, 2026-09-11; 2,533,184 bytes;
 # released SHA256SUMS lists the identical hash).
-sha256sums=("a73a26d0975e4e5bf9056b59c6656f0b7f2b4fd69508dfe3528f4edb863e9f95")
+sha256sums=("39ff6a629d5eaf20146617702e0651ffc7d160201550eaad7f30d9f1a71ab062")
 
 package() {
   # The tarball's root is `usr/`, so a plain extraction into $pkgdir
