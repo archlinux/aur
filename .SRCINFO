@@ -1,6 +1,6 @@
 pkgbase = outport-bin
 	pkgdesc = Dev port manager for multi-project, multi-worktree development
-	pkgver = 0.43.1
+	pkgver = 0.44.0
 	pkgrel = 1
 	url = https://outport.dev
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = outport-bin
 	optdepends = cloudflared: tunnel support for outport share
 	provides = outport
 	conflicts = outport
-	source_x86_64 = https://github.com/steveclarke/outport/releases/download/v0.43.1/outport_0.43.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = e428a74462cfa475d8b9037fded1d7e57414cf13ec3e9b8b2472467ecde432c4
-	source_aarch64 = https://github.com/steveclarke/outport/releases/download/v0.43.1/outport_0.43.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 09ab5a53cc7d54a8862869dc07340fa773cea20bbb677919069a7909763a000f
+	source_x86_64 = https://github.com/steveclarke/outport/releases/download/v0.44.0/outport_0.44.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = aafd9a0a539021c8a12c44af3158f36ccf4a20a86eb9c4cff17d62d8d1f862d2
+	source_aarch64 = https://github.com/steveclarke/outport/releases/download/v0.44.0/outport_0.44.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 98ef8de7a0ac78e498b9c12b2a0c808fac9b5321b77c9350ba2851245c2cd101
 
 pkgname = outport-bin
