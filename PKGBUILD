@@ -5,7 +5,7 @@ _pkgname=klassy
 pkgbase="${_pkgname}-git"
 pkgname=("${_pkgname}-git"
          "${_pkgname}-qt5-git")
-pkgver=6.4.r3217.g61c1e969
+pkgver=6.7.2.r3350.g79feb2f5
 pkgrel=1
 pkgdesc='Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.'
 arch=(x86_64)
@@ -25,7 +25,6 @@ depends=(breeze-icons
          kguiaddons
          ki18n
          kiconthemes
-         kirigami
          kwidgetsaddons
          kwindowsystem
          qt6-base
@@ -38,7 +37,6 @@ makedepends=(git
              frameworkintegration5
              kconfigwidgets5
              kiconthemes5
-             kirigami2
              kwindowsystem5)
 source=("${_pkgname}::git+${url}.git#branch=master")
 sha256sums=('SKIP')
@@ -85,7 +83,6 @@ package_klassy-qt5-git() {
            kconfigwidgets5
            kguiaddons5
            kiconthemes5
-           kirigami2
            kwindowsystem5
            qt5-base
            qt5-declarative
