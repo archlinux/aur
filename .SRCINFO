@@ -1,0 +1,17 @@
+pkgbase = uutils-shadow
+	pkgdesc = A memory-safe reimplementation of the Linux shadow-utils in Rust
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/uutils/shadow
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	depends = libxcrypt
+	source = uutils-shadow-0.5.0-src.tar.gz::https://github.com/uutils/shadow/archive/refs/tags/0.5.0.tar.gz
+	sha256sums = 72eaa54a666c715fed9ef9f642552a8e7e5ae7b3a7d30bd76ec0bd31c4f65a17
+
+pkgname = uutils-shadow
