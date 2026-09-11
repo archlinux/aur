@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Aplicación gráfica en Python y Tkinter para optimizar los espejos de Arch Linux usando Reflector"
 arch=('any')
 url="https://github.com/Nacho-Telmo/Sinergia-Reflector-Top"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python' 'tk' 'reflector' 'polkit')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nacho-Telmo/Sinergia-Reflector-Top/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.png::https://github.com/Nacho-Telmo/Sinergia-Reflector-Top/raw/v${pkgver}/${pkgname}.png"
@@ -16,10 +16,14 @@ sha256sums=('SKIP'
 
 package() {
     cd "${srcdir}/Sinergia-Reflector-Top-${pkgver}"
-    install -Dm755 *.py "${pkgdir}/usr/bin/sinergia-reflector-top"
+
+    # Instalar el script principal de forma limpia en /usr/bin sin la extensión .py
+    install -Dm755 reflector_gui.py "${pkgdir}/usr/bin/sinergia-reflector-top"
+
+    # Recursos gráficos y de escritorio
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-    # Instalación formal de la licencia GPLv3 requerida por el AUR
+    # Licencia oficial requerida por las directrices del AUR
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
