@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=picot-bin
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Local Codex-style desktop GUI for the Pi coding agent"
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ options=('!strip' '!debug')
 _relurl="${url}/releases/download/v${pkgver}"
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_relurl}/Picot_${pkgver}_amd64.deb")
-sha256sums_x86_64=('0c50fce89d033011ef1e46fa4c2389aee0981a934339d79ec56f86f95ddd94ae')
-sha256sums_aarch64=('c0a0a9575090f5f08a15e493b6143f370f5f576e16c68439387d365ab2b57ba3')
+sha256sums_x86_64=('48cf4ef05854ca20b57e256df2820fc2d4a54d8927f7a584d1af50f2f94b0f87')
+sha256sums_aarch64=('570a32a10cfe4e56a1e7640f6a6f270d01e690eeaeb816e8e27e54684c9c4ede')
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_relurl}/Picot_${pkgver}_arm64.deb")
 
 prepare() {
@@ -47,7 +47,7 @@ package() {
     install -Dm755 usr/bin/picot "${pkgdir}/usr/bin/picot"
 
     install -d "${pkgdir}/usr/lib/Picot"
-    cp -a usr/lib/Picot/. "${pkgdir}/usr/lib/Picot/"
+    cp -a --no-preserve=ownership usr/lib/Picot/. "${pkgdir}/usr/lib/Picot/"
 
     install -Dm644 usr/share/icons/hicolor/32x32/apps/picot.png \
         "${pkgdir}/usr/share/icons/hicolor/32x32/apps/picot.png"
