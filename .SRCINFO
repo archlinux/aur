@@ -1,5 +1,5 @@
 pkgbase = lib32-libspectre
-	pkgdesc = Small library for rendering Postscript documents
+	pkgdesc = Small library for rendering Postscript documents (32-bit)
 	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/libspectre

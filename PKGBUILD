@@ -3,7 +3,7 @@
 pkgname=lib32-libspectre
 pkgver=0.2.12
 pkgrel=1
-pkgdesc='Small library for rendering Postscript documents'
+pkgdesc='Small library for rendering Postscript documents (32-bit)'
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 url='https://www.freedesktop.org/wiki/Software/libspectre'
