@@ -4,13 +4,13 @@
 # pkgver and source checksum are replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge
-pkgver=5.7.0
+pkgver=5.8.0
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'mise')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.7.0.tar.gz")
-sha256sums=('10af42773280c7ce08d6c01fc0ee8b25defdf5f24fa4874b66c87b83e9997547')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.8.0.tar.gz")
+sha256sums=('439acff263cdbf9a1e943bc669977242c9784af8ed5c66864973c765a7820744')
 conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
@@ -19,6 +19,7 @@ license=('Apache-2.0')
 keywords=('system-bridge' 'automation' 'home-assistant' 'api' 'websocket')
 depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11')
 optdepends=('pciutils: GPU model identification via lspci'
+            'zenity: tray and desktop confirmation prompts'
             'lm_sensors: broader temperature and fan sensor coverage'
             'nvidia-utils: NVIDIA GPU metrics via nvidia-smi')
 provides=('system-bridge')
