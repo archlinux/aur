@@ -45,8 +45,8 @@ options=('!strip' '!debug')
 # runtime, online/Qt app and branding are built together in an Arch Linux
 # container and published as a single release asset. poco is linked
 # statically from the engine workdir, so it is not a dependency.
-# https://github.com/Rash419/collabora-core-assets
-source=("collabora-office-${_source_tag}-x86_64.tar.zst::https://github.com/Rash419/collabora-core-assets/releases/download/${_source_tag}/collabora-office-${_source_tag}-x86_64.tar.zst")
+# https://github.com/Rash419/collabora-office-asset
+source=("collabora-office-${_source_tag}-x86_64.tar.zst::https://github.com/Rash419/collabora-office-asset/releases/download/${_source_tag}/collabora-office-${_source_tag}-x86_64.tar.zst")
 # Fill in from the sha256sums line in the release notes for ${_source_tag},
 # once the desktop tarball for that tag has been built. This has to carry the
 # real checksum before the package is published.

@@ -31,7 +31,7 @@ pkgbase = collabora-office
 	optdepends = ttf-dejavu: DejaVu fonts
 	options = !strip
 	options = !debug
-	source = collabora-office-cp-26.04.2-4-x86_64.tar.zst::https://github.com/Rash419/collabora-core-assets/releases/download/cp-26.04.2-4/collabora-office-cp-26.04.2-4-x86_64.tar.zst
+	source = collabora-office-cp-26.04.2-4-x86_64.tar.zst::https://github.com/Rash419/collabora-office-asset/releases/download/cp-26.04.2-4/collabora-office-cp-26.04.2-4-x86_64.tar.zst
 	sha256sums = SKIP
 
 pkgname = collabora-office
