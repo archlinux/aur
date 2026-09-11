@@ -1,17 +1,15 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 # Contributor: Aaron Keesing <agkphysics at gmail dot com>
 # Contributor: Siddhartha <dev@sdht.in>
-
-_name="zotero"
-pkgname="$_name-git"
-pkgver=11.0.r16727.77a3a88
+pkgname="zotero-git"
+pkgver=11.0.r16801.3c959e1
 pkgrel=1
 pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources"
 arch=('x86_64' 'i686')
 url="https://www.zotero.org"
 license=('AGPL-3.0-or-later')
-provides=("$_name")
-conflicts=("$_name")
+provides=("zotero=$pkgver")
+conflicts=("zotero")
 depends=(
   'dbus-glib'
   'gtk3'
@@ -74,7 +72,7 @@ sha256sums=(
 
 pkgver() {
   cd zotero-client
-  _tag="$(cat version | sed 's/.SOURCE//')"
+  local _tag="$(cat version | sed 's/.SOURCE//')"
   printf "%s.r%s.%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
@@ -128,7 +126,7 @@ prepare() {
 
 build() {
   cd zotero-client
-  _NODE_OPTIONS="--openssl-legacy-provider"
+  local _NODE_OPTIONS="--openssl-legacy-provider"
   if (( $(vercmp "$(node --version)" "25.2.0") >= 0 )); then
     _NODE_OPTIONS+=" --no-experimental-webstorage"
   fi
@@ -145,7 +143,7 @@ package() {
 
   # Copy zotero icons to a standard location
   for _s in 32 64 128; do
-    install -Dm0644 "$pkgdir/usr/lib/zotero/icons/icon$_s.png" "$pkgdir/usr/share/icons/hicolor/${_s}x${_s}/apps/zotero.png"
+    install -Dm0644 "$pkgdir/usr/lib/zotero/icons/icon$_s.png" "$pkgdir/usr/share/icons/hicolor/${_s}x$_s/apps/zotero.png"
   done
   install -Dm0644 "$pkgdir/usr/lib/zotero/icons/symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/zotero.svg"
 
