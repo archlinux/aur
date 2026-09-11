@@ -1,6 +1,7 @@
 post_install() {
   echo ""
-  echo "==> Factory CLI (patched titling and keybindings) installed!"
+  echo "==> Factory CLI installed."
+  echo "==> Titling and keybinding patches were applied according to your build choices."
   echo "==> Run 'droid' to get started."
   echo ""
   echo "    The 'droid' command is now available in your PATH."
@@ -12,7 +13,8 @@ post_install() {
 
 post_upgrade() {
   echo ""
-  echo "==> Factory CLI has been upgraded to version $2 (patched titling and keybindings)"
+  echo "==> Factory CLI has been upgraded to version $2."
+  echo "==> Titling and keybinding patches were applied according to your build choices."
   echo "==> Run 'droid' to continue using Factory CLI"
   echo ""
 }

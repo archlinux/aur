@@ -5,7 +5,7 @@ pkgrel=2
 pkgdesc="Factory.ai CLI (droid) with optional zero-waste titling and cross-harness keybindings (automatically tracks upstream releases)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rNoz/factory-ai-droid-cli-rnoz"
-license=('factory.ai')
+license=('custom:factory.ai')
 depends=('curl')
 optdepends=(
   'ripgrep: Use system ripgrep instead of bundled binary'
@@ -20,11 +20,13 @@ source=(
   "patch_title.py"
   "patch_keybindings.py"
   "$install"
+  "LICENSE"
 )
 sha256sums=(
   '6f8fc3992526e8c8b0a4af11f029a633498f7704e9c6a736e772788d18243d00'
   '5ae64524b92a49ed3895dd72e522d13838bb86be37e6505b9c728b99ca66724b'
-  'a66b665fef55af8102ea6c84391a410ab9a9aefa1191a4650eae3c53c78bec08'
+  '977389fbf874e0db18118a751b0b834a99a44d5533e14b32d16ec172864123ed'
+  '24d17bcf4f621c0d2bc1288e87596097f3489cd3d176deba1c03f468126c8004'
 )
 
 package() {
@@ -183,6 +185,7 @@ package() {
   # Create installation directories
   install -dm755 "$pkgdir/usr/lib/factory"
   install -dm755 "$pkgdir/usr/bin"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Install single binary to /usr/lib/factory
   install -Dm755 "droid" "$pkgdir/usr/lib/factory/droid"
