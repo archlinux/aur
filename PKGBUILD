@@ -16,8 +16,8 @@ conflicts=('yafst')
 _dl="$url/releases/download/$_tag"
 source_x86_64=("yafst-$_tag-linux-amd64.tar.gz::$_dl/yafst-$_tag-linux-amd64.tar.gz")
 source_aarch64=("yafst-$_tag-linux-arm64.tar.gz::$_dl/yafst-$_tag-linux-arm64.tar.gz")
-sha256sums_x86_64=('78a1a581b487467674adf93c254d371abcf0ce58b7757a9dfce9b2fad6412ec5')
-sha256sums_aarch64=('f5d5961a1a12e0e8b37070a345d3221bafd85402f545f78a68fb404fba6d848a')
+sha256sums_x86_64=('b64c56b740d32a70ec655e94a9582a5550412b0d093e864a5dbc7272a153f3ef')
+sha256sums_aarch64=('8119e9b7a01190cc904cfbe8f39a19ad452367c689797ba3104fc32ace1ed1df')
 
 package() {
     install -Dm755 yafst "$pkgdir/usr/bin/yafst"
