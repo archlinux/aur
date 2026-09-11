@@ -1,6 +1,6 @@
 # Maintainer: Wal33D <aquataze@yahoo.com>
 pkgname=itchio-downloader
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Download free games from itch.io programmatically - no API key or GUI"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nodejs>=20.19')
 optdepends=('chromium: browser fallback when direct HTTP cannot download a game')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('9eed462e40fed55813be60673e592c6cb3fc44e3a9ff9e6b1d5cef9343c5ffbb')
+sha256sums=('3bfa82671ad5334a1c389edcebb14d94e3707ffd0cb5ce0011a3d78c9b3a6d07')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
