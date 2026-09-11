@@ -1,0 +1,4 @@
+[android-emulator]
+source = "android_sdk"
+android_sdk = "emulator"
+repo = "package"
