@@ -1,18 +1,18 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 pkgname=pyrefly
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A fast type checker and IDE for Python"
 arch=("x86_64" "aarch64")
 url="https://github.com/facebook/pyrefly"
 license=("MIT")
 makedepends=(
-  "cargo-nightly"
+  "cargo"
   "git"
 )
 options=(!lto)
 source=("${pkgname}::git+https://github.com/facebook/pyrefly#tag=${pkgver}")
-b2sums=('05f030ef68f70385ba93f9b45d83fab48a70cefefeaca2d7a96a9d7886261874879839ad7f65946d516c95ebe0715c4835a6f5f5b684f3149321cadea0ff0336')
+b2sums=('5ace41105187eb19b377228c8e0df864942f5c87e513fff0a67eb213b07e5d7ddb59f550ad08da1bd4f7f5cdc3765cffc7384f571d3d97355caf1c6d7b3f78c4')
 
 prepare() {
   cd "${srcdir}/${pkgname}/pyrefly"
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}/pyrefly"
-  cargo +nightly build --release --frozen
+  cargo build --release --frozen
 }
 
 check() {
