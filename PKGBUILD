@@ -3,7 +3,7 @@
 pkgname=python-qsnctf
 _name=${pkgname#python-}
 pkgver=0.0.12
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="青少年 CTF 训练平台提供的 Python 软件包"
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
     python-requests
     python-beautifulsoup4
     python-sympy
+    python-pillow
     python-rarfile
 )
 makedepends=(
