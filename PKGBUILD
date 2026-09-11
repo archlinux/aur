@@ -2,16 +2,15 @@
 # Contributor: Parker Reed <parker.l.reed@gmail.com>
 
 pkgname=sc-controller-git
-pkgver=0.6.6.r13.6b8bca9d
+pkgver=1.0.0.r3.25c8209d
 pkgrel=1
 pkgdesc='User-mode driver, mapper and GTK3 based GUI for Steam Controller, DS4 and similar controllers'
 arch=('x86_64' 'aarch64')
 url='https://github.com/C0rn3j/sc-controller'
 license=('GPL-2.0-only')
 depends=(
-	'gtk3'
-	'gtk-layer-shell'
-	'libayatana-appindicator'
+	'gtk4'
+	'gtk4-layer-shell'
 	'python-cairo'
 	'python-evdev'
 	'python-gobject'
