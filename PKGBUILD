@@ -7,7 +7,7 @@
 _productVariant=Fotobuch
 # leave this unset to get a package name based on the application name
 pkgname=
-pkgrel=3
+pkgrel=4
 
 ## Begin shared code ##
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
@@ -24,6 +24,8 @@ _scriptTailMd5sums[8.0]=e53bd9e7beabb2eb1c6857bea61ccdde
 _scriptTailMd5sums[8.0a]=6efd0d054bdaf2ab91f1cd606cd98233
 _scriptTailMd5sums[8.1]=7fd862218f56b5382680a7d2f9006268
 _scriptTailMd5sums[8.1a]=d11ac711b0859d242fe9064c2c63deee
+# il y a quelque chose de pourri dans la République...
+[ $_productVariant == France ] && _scriptTailMd5sums[8.1a]=6efd0d054bdaf2ab91f1cd606cd98233
 
 # locale, key account, original name, latest tested version, (optional) replacement name
 # to generate parameters (and _scriptTailMd5sum) from a downloaded setup file, run:
