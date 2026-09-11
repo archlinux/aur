@@ -1,6 +1,6 @@
 # Maintainer: chen-shuhan <2502820816@qq.com>
 # Contributor: chen-shuhan <2502820816@qq.com>
-# 非官方社区打包 - 与上游无隶属关系
+# 非官方社区打包
 
 _name=chinese-calendar
 pkgname=python-chinese-calendar
