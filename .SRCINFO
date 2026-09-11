@@ -1,14 +1,14 @@
 pkgbase = r-crmn
 	pkgdesc = CCMN and Other Normalization Methods for Metabolomics Data
-	pkgver = 0.0.21
-	pkgrel = 4
+	pkgver = 0.0.22
+	pkgrel = 1
 	url = https://cran.r-project.org/package=crmn
 	arch = any
 	license = GPL
 	depends = r
 	depends = r-biobase
 	depends = r-pcamethods
-	source = https://cran.r-project.org/src/contrib/crmn_0.0.21.tar.gz
-	sha256sums = 659eb2ba41111ef7a17e1ffe75750735ec9cf2394e881eee4b05f9c3b54be972
+	source = https://cran.r-project.org/src/contrib/crmn_0.0.22.tar.gz
+	sha256sums = d652df8db8dae794e6dab9c5ef2ac3b67599e0259131db3e9379bc3f80d510be
 
 pkgname = r-crmn

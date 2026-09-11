@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=crmn
-_pkgver=0.0.21
+_pkgver=0.0.22
 pkgname=r-${_pkgname,,}
-pkgver=0.0.21
-pkgrel=4
+pkgver=0.0.22
+pkgrel=1
 pkgdesc='CCMN and Other Normalization Methods for Metabolomics Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,7 @@ depends=(
   r-pcamethods
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('659eb2ba41111ef7a17e1ffe75750735ec9cf2394e881eee4b05f9c3b54be972')
+sha256sums=('d652df8db8dae794e6dab9c5ef2ac3b67599e0259131db3e9379bc3f80d510be')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
