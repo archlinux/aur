@@ -4,7 +4,7 @@
 
 pkgname=feroxbuster-git
 _pkgname=${pkgname%-git}
-pkgver=2.13.1.r20.g378d759
+pkgver=2.13.1.r23.g1f595da
 pkgrel=1
 pkgdesc='A fast, simple, recursive content discovery tool written in Rust.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -15,6 +15,7 @@ makedepends=('git' 'cargo')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$_pkgname::git+$url.git")
+options=(!strip !lto)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -25,7 +26,13 @@ pkgver() {
 build() {
 	cd $_pkgname
 	export OPENSSL_NO_VENDOR=1
+	export AWS_LC_SYS_STATIC=1
 	cargo build --frozen --release
+}
+
+prepare() {
+  	cd $_pkgname
+  	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 package() {
@@ -33,6 +40,6 @@ package() {
 	install -Dm755 "$_pkgname/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
         # Shell completions
-        install -Dm644 "$_pkgname/shell_completions/$_pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
-        install -Dm644 "$_pkgname/shell_completions/_$_pkgname"     "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+	install -Dm644 "$_pkgname/shell_completions/$_pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
+	install -Dm644 "$_pkgname/shell_completions/_$_pkgname"     "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
