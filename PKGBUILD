@@ -1,11 +1,10 @@
-# Maintainer:
+# Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
-_pkgname="termite"
-pkgname="$_pkgname-git"
-pkgver=16.9.r2.gbd9945f
+pkgname="termite-git"
+pkgver=16.14.r0.gdb0960d
 pkgrel=1
 pkgdesc='A simple VTE-based terminal'
-url="https://github.com/aperezdc/termite"
+url="https://github.com/BarbUk/termite"
 license=('LGPL-2.0-or-later')
 arch=('x86_64')
 
@@ -22,35 +21,32 @@ makedepends=(
   'meson'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
-conflicts=("$_pkgname")
+provides=("${pkgname%-git}=${pkgver%%.r*}")
+conflicts=("${pkgname%-git}")
 
-_pkgsrc="$_pkgname"
 source=(
-  "$_pkgsrc"::"git+$url.git"
-  "aperezdc.vte"::"git+https://github.com/aperezdc/vte.git"
+  "$pkgname::git+$url.git"
+  "$pkgname.vte::git+"${url%/*}"/vte.git"
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('SKIP'
+            'SKIP')
 
 backup=(etc/xdg/termite/config)
 
 prepare() {
-  local _vte_hash=$(grep -Po '(?<=revision = )[a-f0-9]+$' "$_pkgsrc/subprojects/vte.wrap")
-  ln -s "$srcdir/aperezdc.vte" "$_pkgsrc/subprojects/vte"
-  git -c advice.detachedHead=false -C "aperezdc.vte" checkout -f "$_vte_hash"
+  local _vte_hash=$(grep -Po '(?<=revision = )[a-f0-9]+$' "$pkgname/subprojects/vte.wrap")
+  ln -s "$srcdir/$pkgname.vte" "$pkgname/subprojects/vte"
+  git -c advice.detachedHead=false -C "$pkgname.vte" checkout -f "$_vte_hash"
 }
 
 pkgver() {
-  cd "$_pkgsrc"
+  cd "$pkgname"
   git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson build "$_pkgsrc"
+  arch-meson --wrap-mode=forcefallback build "$pkgname"
   meson compile -C build
 }
 

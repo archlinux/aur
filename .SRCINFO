@@ -1,8 +1,8 @@
 pkgbase = termite-git
 	pkgdesc = A simple VTE-based terminal
-	pkgver = 16.9.r2.gbd9945f
+	pkgver = 16.14.r0.gdb0960d
 	pkgrel = 1
-	url = https://github.com/aperezdc/termite
+	url = https://github.com/BarbUk/termite
 	arch = x86_64
 	license = LGPL-2.0-or-later
 	makedepends = git
@@ -13,11 +13,11 @@ pkgbase = termite-git
 	depends = gtk3
 	depends = pcre2
 	depends = vte-common
-	provides = termite=16.9
+	provides = termite=16.14
 	conflicts = termite
 	backup = etc/xdg/termite/config
-	source = termite::git+https://github.com/aperezdc/termite.git
-	source = aperezdc.vte::git+https://github.com/aperezdc/vte.git
+	source = termite-git::git+https://github.com/BarbUk/termite.git
+	source = termite-git.vte::git+https://github.com/BarbUk/vte.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
