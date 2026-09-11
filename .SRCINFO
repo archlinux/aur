@@ -1,6 +1,6 @@
 pkgbase = mpv-music-bin
 	pkgdesc = Blazing-fast, terminal-native music player and library browser for mpv (prebuilt, static musl)
-	pkgver = 0.27.1
+	pkgver = 0.28.0
 	pkgrel = 1
 	url = https://github.com/FurqanHun/mpv-music
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = mpv-music-bin
 	optdepends = yt-dlp: for playing URLs
 	optdepends = deno: JS runtime for YouTube playback (recommended)
 	optdepends = nodejs: alternative JS runtime for YouTube playback
-	provides = mpv-music=0.27.1
+	provides = mpv-music=0.28.0
 	conflicts = mpv-music
 	options = !debug
-	source = LICENSE-0.27.1::https://raw.githubusercontent.com/FurqanHun/mpv-music/v0.27.1/LICENSE
+	source = LICENSE-0.28.0::https://raw.githubusercontent.com/FurqanHun/mpv-music/v0.28.0/LICENSE
 	sha256sums = a45fa2598cba03440691efa1ea743252a7651963808921e5627f7845696a0689
-	source_x86_64 = mpv-music-0.27.1-x86_64.tar.gz::https://github.com/FurqanHun/mpv-music/releases/download/v0.27.1/mpv-music-v0.27.1-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 7d1e32302ed61294d46b2e3ebbf2f4916a0ab353e9f7964c9f5f1e65266808f7
-	source_aarch64 = mpv-music-0.27.1-aarch64.tar.gz::https://github.com/FurqanHun/mpv-music/releases/download/v0.27.1/mpv-music-v0.27.1-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = ddf4082cbcfdc0b9d2fc7c20268e0f4a514a327c1833c8fcacee8ba35c07a072
+	source_x86_64 = mpv-music-0.28.0-x86_64.tar.gz::https://github.com/FurqanHun/mpv-music/releases/download/v0.28.0/mpv-music-v0.28.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 0a3f4372ae6d3eb4dee80d4a948a989a000d07a5b4e899f10ba8a04e9eafbace
+	source_aarch64 = mpv-music-0.28.0-aarch64.tar.gz::https://github.com/FurqanHun/mpv-music/releases/download/v0.28.0/mpv-music-v0.28.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 72da16339feb0f20697ec5b325f2435c7e1b631625dcf2f5bddc594c5986dc4c
 
 pkgname = mpv-music-bin
