@@ -1,11 +1,14 @@
 pkgbase = mayaflux-dev-bin
 	pkgdesc = MayaFlux development build - A modern C++ framework for real-time graphics and audio
 	pkgver = 0.5.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/MayaFlux/MayaFlux
 	arch = x86_64
 	arch = aarch64
-	license = GPLv3
+	license = GPL-3.0-or-later
+	license = Apache-2.0
+	license = BSD-3-Clause
+	license = MIT
 	makedepends = git
 	depends = llvm
 	depends = llvm-libs

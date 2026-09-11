@@ -4,11 +4,11 @@
 
 pkgname=mayaflux-dev-bin
 pkgver=0.5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="MayaFlux development build - A modern C++ framework for real-time graphics and audio"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MayaFlux/MayaFlux"
-license=('GPLv3')
+license=('GPL-3.0-or-later' 'Apache-2.0' 'BSD-3-Clause' 'MIT')
 depends=(
     'llvm'
     'llvm-libs'
