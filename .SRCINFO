@@ -1,6 +1,6 @@
 pkgbase = mailbox-bin
 	pkgdesc = Desktop mail client with a ribbon, calendar peek and reading pane (POP3, IMAP, SMTP)
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/Mailbox
 	arch = x86_64
@@ -34,12 +34,13 @@ pkgbase = mailbox-bin
 	optdepends = ttf-caladea: renders mail set in Cambria at the same metrics
 	optdepends = gtk3: file dialogs where no desktop portal answers
 	optdepends = xdg-desktop-portal: file dialogs through the desktop
+	optdepends = xorg-xwayland: the send/receive progress window on Wayland, shown without taking the keyboard
 	provides = mailbox
 	conflicts = mailbox
 	options = !strip
-	source_x86_64 = https://github.com/codingncaffeine/Mailbox/releases/download/v0.6.2/Mailbox-0.6.2-linux-x64.tar.gz
-	sha256sums_x86_64 = edd3bb10dece5a93338706fcf8f032d0ba52cc63068184a732833dd73128a65b
-	source_aarch64 = https://github.com/codingncaffeine/Mailbox/releases/download/v0.6.2/Mailbox-0.6.2-linux-arm64.tar.gz
+	source_x86_64 = https://github.com/codingncaffeine/Mailbox/releases/download/v0.6.3/Mailbox-0.6.3-linux-x64.tar.gz
+	sha256sums_x86_64 = 6ef232d66a2e2bc6cdbdf649251cc2fb703943763b47f6190acf1cfcf269b789
+	source_aarch64 = https://github.com/codingncaffeine/Mailbox/releases/download/v0.6.3/Mailbox-0.6.3-linux-arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = mailbox-bin
