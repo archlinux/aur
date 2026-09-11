@@ -1,0 +1,8 @@
+# Folders
+cargo-home/
+lupa-git/
+pkg/
+src/
+
+# Output packages
+*.pkg.tar.zst
