@@ -26,7 +26,6 @@ optdepends=('gtk2: GTK+ look and feel'
             'ncurses5-compat-libs: native debugger support'
             'vulkan-icd-loader: Vulkan acceleration for Gemini local models')
 options=('!strip')
-install="$pkgname.install"
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-$_vername-linux.tar.gz"
         "$pkgname.desktop"
         "license.html")
