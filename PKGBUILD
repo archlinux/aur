@@ -1,6 +1,6 @@
 # Maintainer: WgpArch <wgparch@riseup.net>
 pkgname=aur-security-dashboard
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A forensic-grade, local SIEM dashboard for Arch Linux to monitor system integrity, audit AUR packages, and hunt anomalies."
 arch=('any')
@@ -8,8 +8,7 @@ url="https://github.com/WgpArch/aur-security-dashboard"
 license=('GPL-3.0-only')
 depends=('python' 'python-gobject' 'gtk4')
 makedepends=('git')
-# Use local file:// protocol to bypass GitHub password prompt!
-source=("git+https://gitlab.com/WgpArch/aur-security-dashboard.git#tag=v${pkgver}")
+source=("git+https://github.com/WgpArch/aur-security-dashboard.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 package() {
