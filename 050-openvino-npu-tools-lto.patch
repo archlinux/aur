@@ -1,0 +1,15 @@
+diff --git a/src/plugins/intel_npu/tools/CMakeLists.txt b/src/plugins/intel_npu/tools/CMakeLists.txt
+--- a/src/plugins/intel_npu/tools/CMakeLists.txt
++++ b/src/plugins/intel_npu/tools/CMakeLists.txt
+@@ -3,6 +3,11 @@
+ # SPDX-License-Identifier: Apache 2.0
+ #
+ 
++# Match bundled gflags so compiler drivers enable LTO at the final link.
++if(ENABLE_LTO)
++    set(CMAKE_INTERPROCEDURAL_OPTIMIZATION_RELEASE ON)
++endif()
++
+ add_subdirectory(common)
+ add_subdirectory(compile_tool)
+ add_subdirectory(single-image-test)
