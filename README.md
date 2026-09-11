@@ -59,8 +59,8 @@ The package should be submitted as `aperture-router` in the AUR.
 
 ## Notes
 
-- The `sha256sums` in PKGBUILD is currently set to 'SKIP' for testing
-- Before submission, generate the actual checksums with `makepkg -g`
+- The `sha256sums` in PKGBUILD must be the real sha256 of the `vX.Y.Z-rN` tag tarball (never 'SKIP' — stable releases ship verified checksums)
+- Generate checksums with `makepkg -g` after the tag is pushed to GitHub
 - The `.SRCINFO` file should be regenerated after any PKGBUILD changes:
   ```bash
   makepkg --printsrcinfo > .SRCINFO

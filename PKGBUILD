@@ -1,7 +1,7 @@
 # Maintainer: Wayazi <https://github.com/Wayazi>
 pkgname=aperture-router
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Universal AI router for Tailscale Aperture with dynamic model discovery"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Wayazi/aperture-router"
@@ -11,11 +11,11 @@ depends=('gcc-libs')
 makedepends=('cargo' 'nasm')
 install="$pkgname.install"
 backup=('etc/sysconfig/aperture-router')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v0.3.3-r2.tar.gz")
-sha256sums=('3849dd555061c29fd3eecd7f909559c022490a2e5b2bfea874451eb03183af07')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v0.3.3-r4.tar.gz")
+sha256sums=('f119cad5fbbf1489ed7a5723bc0ae5a45f50221b8deaa48f4f8c4df771a5b593')
 
 _prepare_dir() {
-  cd "$srcdir/aperture-router-0.3.3-r2"
+  cd "$srcdir/aperture-router-0.3.3-r4"
 }
 
 prepare() {
