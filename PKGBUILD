@@ -1,7 +1,7 @@
 # Maintainer: ELECTRO <electro@electris.net>
 
 pkgname=rustypaint-git
-pkgver=0.2.2.r14.gce01950
+pkgver=0.2.3.r0.g2c68909
 pkgrel=1
 pkgdesc="Paint 3D's 2D editor, without the 3D (Git version)"
 arch=('x86_64' 'aarch64')
