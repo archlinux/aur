@@ -1,6 +1,7 @@
-# Maintainer: Good Vibes <good_vibes@fastmail.com>
+# Maintainer: Patrick Rogers <patrick at thewebzone.net>
+# Contributor (Previous Mantainer): Good Vibes <good_vibes@fastmail.com>
 pkgname=ch57x-keyboard-tool
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Command-line tool for programming ch57x and ch55x macro keyboards like ch552 or ch552g"
 arch=('x86_64' 'aarch64')
@@ -11,8 +12,7 @@ makedepends=('cargo')
 keywords=('keyboard' 'macro' 'keypad' 'ch57x' 'ch55x' 'ch552' 'ch552g' 'ch554' 'hotkey' 'aliexpress')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kriomant/ch57x-keyboard-tool/archive/refs/tags/v$pkgver.tar.gz"
         "50-ch57x-keyboard.rules")
-sha256sums=('bd8ba2b59987a29d4ad4afcdf90b79d54d200d3ab803711d28851222f81bbfb5'
-            '26de73e625f2ce8d3b1f753378a40f754c1c69e32e71900fd0e9298ee792075f')
+sha256sums=('00e423f944c9e961b97f2d637b8f08047de982418b8ea978f54bce9d080498e1' '26de73e625f2ce8d3b1f753378a40f754c1c69e32e71900fd0e9298ee792075f')
 
 prepare() {
     cd "$pkgname-$pkgver"
