@@ -1,7 +1,7 @@
 # Maintainer: Omansh Krishn omansh@duck.com
 
 pkgname=materialious-bin
-pkgver=1.17.15
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='Modern material design for Invidious'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ options=(!debug)
 
 source_x86_64=("materialious-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver}/Materialious-linux-amd64.deb")
 source_aarch64=("materialious-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/Materialious-linux-arm64.deb")
-sha256sums_x86_64=('a0338bd3f89f89e77bdd7ece677ae81b2a2e033becb3a53b7e19bc4b806970fd')
-sha256sums_aarch64=('7db7bd87bc7b2e910a919264ae0aa098f90674dd6a3593147f5088d6d5b4a8af')
+sha256sums_x86_64=('98f248db1d93a07d6bd33d2f50b5da3bbcd013c54798fbe7ad7d0ecf11ad0e9a')
+sha256sums_aarch64=('972be969be1e2afc5ab96cec6299590db57aaa3798c3fb15c7debcb86d26a29a')
 
 package() {
 
