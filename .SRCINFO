@@ -1,14 +1,14 @@
 pkgbase = ruby-rubyntlm
 	pkgdesc = Ruby/NTLM library.
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 2
 	url = https://github.com/winrb/rubyntlm
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = rubyntlm-0.6.5.gem
+	noextract = rubyntlm-0.6.6.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rubyntlm-0.6.5.gem
-	b2sums = 3b03d50d09ff70261301526a8727dffa49e510a8e94d75382160e0eb8634ba82066e57c35bb2511e859867a952d9d4b2eb466404e1f0174264ac4feb22e78260
+	source = https://rubygems.org/downloads/rubyntlm-0.6.6.gem
+	b2sums = 50dfdb85f5213cc85d0386819a978646dbdc3ce20096d5ac9388555ee29c5ddf657329c98f703b855e2b66dc85eac8640544a0c37cdd7e16abcdac2190fb6dfb
 
 pkgname = ruby-rubyntlm
