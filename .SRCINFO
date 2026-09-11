@@ -1,6 +1,6 @@
 pkgbase = lupin-bin
 	pkgdesc = The reference interpreter for the wolf language, and the compiler differential oracle (release archive)
-	pkgver = 0.1.33
+	pkgver = 0.1.34
 	pkgrel = 1
 	url = https://github.com/wolffe-lang/wolf-interp
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = lupin-bin
 	depends = gcc-libs
 	depends = glibc
 	optdepends = wolf-lang-bin: the compiler lupin is differentially tested against
-	provides = lupin=0.1.33
+	provides = lupin=0.1.34
 	conflicts = lupin
 	options = !strip
 	options = !debug
-	source_x86_64 = lupin-0.1.33-x86_64.tar.gz::https://github.com/wolffe-lang/wolf-interp/releases/download/v0.1.33/lupin-0.1.33-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 31c2075c248fa5264787cbb853cd458dd8e63e99957a28220abe2e2bd75e8ed1
-	source_aarch64 = lupin-0.1.33-aarch64.tar.gz::https://github.com/wolffe-lang/wolf-interp/releases/download/v0.1.33/lupin-0.1.33-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9786a9223e90a8f6e9865bb8986f17a51fe758d50b6fbde02119ce0c80164b23
+	source_x86_64 = lupin-0.1.34-x86_64.tar.gz::https://github.com/wolffe-lang/wolf-interp/releases/download/v0.1.34/lupin-0.1.34-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3c0bb152e5d11375612b9f2b13d85fcf143589fbb7995124396e97cc105ccdaf
+	source_aarch64 = lupin-0.1.34-aarch64.tar.gz::https://github.com/wolffe-lang/wolf-interp/releases/download/v0.1.34/lupin-0.1.34-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4ff1cbeab7c6350d124b275e18312789e107f92f028e1a84f89dcfb168085448
 
 pkgname = lupin-bin

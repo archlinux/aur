@@ -2,7 +2,7 @@
 
 pkgname=lupin-bin
 _pkgname=lupin
-pkgver=0.1.33
+pkgver=0.1.34
 pkgrel=1
 pkgdesc='The reference interpreter for the wolf language, and the compiler differential oracle (release archive)'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ conflicts=('lupin')
 # bare version with no `+dev` suffix.
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/lupin-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/lupin-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('31c2075c248fa5264787cbb853cd458dd8e63e99957a28220abe2e2bd75e8ed1')
-sha256sums_aarch64=('9786a9223e90a8f6e9865bb8986f17a51fe758d50b6fbde02119ce0c80164b23')
+sha256sums_x86_64=('3c0bb152e5d11375612b9f2b13d85fcf143589fbb7995124396e97cc105ccdaf')
+sha256sums_aarch64=('4ff1cbeab7c6350d124b275e18312789e107f92f028e1a84f89dcfb168085448')
 
 package() {
     local _triple
