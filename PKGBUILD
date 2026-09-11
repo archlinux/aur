@@ -2,7 +2,7 @@
 
 _pkgname=llama.cpp-cuda
 pkgname=${_pkgname}-aidock-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Prebuilt llama.cpp with CUDA 12.8 support (from ai-dock CI)'
 arch=(x86_64 aarch64)
@@ -17,8 +17,8 @@ options=('!strip' '!debug')
 # CUDA 12.8 runtime (cudart, cublas, nccl) is bundled from NVIDIA's
 # official redist server: Arch 'cuda' is 13.x and no longer provides
 # the .so.12 sonames these binaries were linked against.
-source=(LICENSE-ai-dock-$pkgver::https://raw.githubusercontent.com/ai-dock/llama.cpp-cuda/$pkgver/LICENSE
-        LICENSE-llama.cpp-$pkgver::https://raw.githubusercontent.com/ggml-org/llama.cpp/$pkgver/LICENSE)
+source=(LICENSE-ai-dock-$pkgver::https://raw.githubusercontent.com/ai-dock/llama.cpp-cuda/v$pkgver/LICENSE
+        LICENSE-llama.cpp-$pkgver::https://raw.githubusercontent.com/ggml-org/llama.cpp/v$pkgver/LICENSE)
 source_x86_64=(llama.cpp-$pkgver-cuda-12.8-amd64.tar.gz::https://github.com/ai-dock/llama.cpp-cuda/releases/download/$pkgver/llama.cpp-$pkgver-cuda-12.8-amd64.tar.gz
                cuda_cudart-linux-x86_64-12.8.90-archive.tar.xz::https://developer.download.nvidia.com/compute/cuda/redist/cuda_cudart/linux-x86_64/cuda_cudart-linux-x86_64-12.8.90-archive.tar.xz
                libcublas-linux-x86_64-12.8.4.1-archive.tar.xz::https://developer.download.nvidia.com/compute/cuda/redist/libcublas/linux-x86_64/libcublas-linux-x86_64-12.8.4.1-archive.tar.xz
