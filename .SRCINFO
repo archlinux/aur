@@ -11,7 +11,7 @@ pkgbase = sinergia-reflector-top
 	depends = polkit
 	source = sinergia-reflector-top-1.0.2.tar.gz::https://github.com/Nacho-Telmo/Sinergia-Reflector-Top/archive/refs/tags/v1.0.2.tar.gz
 	source = sinergia-reflector-top.png::https://github.com/Nacho-Telmo/Sinergia-Reflector-Top/raw/v1.0.2/sinergia-reflector-top.png
-	sha256sums = fc4ab0f0e63c438640f72cb5240b68d2a2103f85e500bdfa6843b5aa27617301
+	sha256sums = 37dbf8e5858eca3c723ef5aa74ec4cf8c37f0a22640c6b143b408e238a41972f
 	sha256sums = b5badd932d4527b3f11757cf56cd57ae0712c5ea6629d60cacd62e7b50d908b2
 
 pkgname = sinergia-reflector-top
