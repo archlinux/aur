@@ -1,15 +1,15 @@
 pkgname=tailscaledesktop
 _pkgname=TailscaleDesktop
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Unnofficial Tailscale desktop application"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/tailscaledesktop"
 license=('GPL')
-depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron-electron-meta' 'libelectron>=2026.3' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('0a22e90629e9e59ba147edc1c3471d6d63c1f2448d2a10c6b5d89f7271f41f9d')
+sha256sums=('f573e98e53b429712e2f80be7862f5e4d90213afbaa9b4dedc820ae4d2497954')
 
 package() {
     install -dm755 "$pkgdir/opt/$_pkgname"
@@ -19,7 +19,13 @@ package() {
     cd "$srcdir/application-$pkgver"
     chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
-       
+    # Libsplash/LibAdblock lib cleanup to use LibElectron deps instead
+    rm -rf \
+        "$srcdir/application-$pkgver/libsplash" \
+        "$srcdir/application-$pkgver/libadblock"
+    # Link libelectron deps
+    ln -sf "/opt/libelectron/libsplash" "$srcdir/application-$pkgver/libsplash"
+    ln -sf "/opt/libelectron/libadblock" "$srcdir/application-$pkgver/libadblock"
     cp -r ./ "$pkgdir/opt/$_pkgname"
     cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
 
