@@ -1,0 +1,327 @@
+diff --git a/plugins/tasklist/tasklist-widget.c b/plugins/tasklist/tasklist-widget.c
+index 9f94163..23a00a9 100644
+--- a/plugins/tasklist/tasklist-widget.c
++++ b/plugins/tasklist/tasklist-widget.c
+@@ -4984,3 +4984,198 @@ xfce_tasklist_update_monitor_geometry (XfceTasklist *tasklist)
+                                    tasklist, xfce_tasklist_update_monitor_geometry_idle_destroy);
+     }
+ }
++
++static XfceTasklistChild *
++xfce_tasklist_hotkey_get_child (XfceTasklist *tasklist,
++                                guint position)
++{
++  GList *li;
++
++  if (position == 0)
++    return NULL;
++
++  for (li = tasklist->windows; li != NULL; li = li->next)
++    {
++      XfceTasklistChild *child = li->data;
++
++      if (!gtk_widget_get_visible (child->button)
++          || (child->type != CHILD_TYPE_WINDOW
++              && child->type != CHILD_TYPE_GROUP))
++        continue;
++
++      if (--position == 0)
++        return child;
++    }
++
++  return NULL;
++}
++
++static XfceTasklistChild *
++xfce_tasklist_hotkey_get_group_window (XfceTasklistChild *group_child,
++                                       gboolean cycle)
++{
++  XfceTasklistChild *active = NULL;
++  XfceTasklistChild *last = NULL;
++  XfceTasklistChild *first = NULL;
++  GSList *li;
++
++  for (li = group_child->windows; li != NULL; li = li->next)
++    {
++      XfceTasklistChild *child = li->data;
++
++      if (!gtk_widget_get_visible (child->button)
++          || child->type != CHILD_TYPE_GROUP_MENU)
++        continue;
++
++      if (first == NULL)
++        first = child;
++      if (last == NULL || child->last_focused > last->last_focused)
++        last = child;
++      if (xfw_window_is_active (child->window))
++        active = child;
++    }
++
++  if (!cycle || active == NULL)
++    return last;
++
++  for (li = g_slist_find (group_child->windows, active); li != NULL; li = li->next)
++    {
++      XfceTasklistChild *child = li->data;
++
++      if (child != active
++          && gtk_widget_get_visible (child->button)
++          && child->type == CHILD_TYPE_GROUP_MENU)
++        return child;
++    }
++
++  return first;
++}
++
++static void
++xfce_tasklist_hotkey_popup_menu (XfceTasklistChild *child)
++{
++  XfcePanelPlugin *plugin = xfce_tasklist_get_panel_plugin (child->tasklist);
++  GtkWidget *menu;
++
++  if (child->type == CHILD_TYPE_GROUP)
++    {
++      menu = xfce_tasklist_group_button_menu (child, TRUE);
++      g_signal_connect (G_OBJECT (menu), "deactivate",
++                        G_CALLBACK (xfce_tasklist_group_button_menu_destroy), child);
++    }
++  else
++    {
++      menu = xfw_window_action_menu_new (child->window);
++      xfce_tasklist_button_add_launch_new_instance_item (child, menu, FALSE);
++      g_signal_connect (G_OBJECT (menu), "deactivate",
++                        G_CALLBACK (xfce_tasklist_button_menu_destroy), child);
++    }
++
++  gtk_menu_attach_to_widget (GTK_MENU (menu), child->button, xfce_tasklist_menu_deactivate);
++  xfce_panel_plugin_popup_menu (plugin, GTK_MENU (menu), child->button, NULL);
++  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (child->button), TRUE);
++}
++
++gboolean
++xfce_tasklist_hotkey_activate (XfceTasklist *tasklist,
++                               guint position,
++                               XfceTasklistHotkeyAction action)
++{
++  XfceTasklistChild *child;
++  XfceTasklistChild *window_child;
++
++  panel_return_val_if_fail (XFCE_IS_TASKLIST (tasklist), FALSE);
++
++  child = xfce_tasklist_hotkey_get_child (tasklist, position);
++  if (child == NULL)
++    return FALSE;
++
++  if (action == XFCE_TASKLIST_HOTKEY_MENU)
++    {
++      xfce_tasklist_hotkey_popup_menu (child);
++      return TRUE;
++    }
++
++  window_child = child->type == CHILD_TYPE_GROUP
++                   ? xfce_tasklist_hotkey_get_group_window (child,
++                                                            action == XFCE_TASKLIST_HOTKEY_ACTIVATE)
++                   : child;
++  if (window_child == NULL)
++    return FALSE;
++
++  if (action == XFCE_TASKLIST_HOTKEY_NEW_INSTANCE)
++    xfce_tasklist_button_start_new_instance_clicked (window_child->button, window_child);
++  else if (!xfw_window_is_active (window_child->window))
++    xfce_tasklist_button_activate (window_child, gtk_get_current_event_time ());
++  else if (action == XFCE_TASKLIST_HOTKEY_ACTIVATE)
++    xfw_window_set_minimized (window_child->window, TRUE, NULL);
++
++  return TRUE;
++}
++
++gboolean
++xfce_tasklist_hotkey_cycle (XfceTasklist *tasklist,
++                            gboolean backwards)
++{
++  XfwWindow *active_window;
++  XfceTasklistChild *child;
++  GPtrArray *children;
++  guint next = 0;
++  guint i;
++  GList *li;
++
++  panel_return_val_if_fail (XFCE_IS_TASKLIST (tasklist), FALSE);
++
++  children = g_ptr_array_new ();
++  active_window = xfw_screen_get_active_window (tasklist->screen);
++
++  for (li = tasklist->windows; li != NULL; li = li->next)
++    {
++      child = li->data;
++      if (gtk_widget_get_visible (child->button)
++          && (child->type == CHILD_TYPE_WINDOW || child->type == CHILD_TYPE_GROUP))
++        g_ptr_array_add (children, child);
++    }
++
++  if (children->len == 0)
++    {
++      g_ptr_array_free (children, TRUE);
++      return FALSE;
++    }
++
++  for (i = 0; i < children->len; i++)
++    {
++      gboolean active = FALSE;
++
++      child = g_ptr_array_index (children, i);
++      if (child->type == CHILD_TYPE_WINDOW)
++        active = child->window == active_window;
++      else
++        for (GSList *lp = child->windows; lp != NULL; lp = lp->next)
++          {
++            XfceTasklistChild *window_child = lp->data;
++            if (window_child->window == active_window)
++              {
++                active = TRUE;
++                break;
++              }
++          }
++
++      if (active)
++        {
++          next = backwards ? (i + children->len - 1) % children->len
++                           : (i + 1) % children->len;
++          break;
++        }
++    }
++
++  child = g_ptr_array_index (children, next);
++  if (child->type == CHILD_TYPE_GROUP)
++    child = xfce_tasklist_hotkey_get_group_window (child, FALSE);
++
++  if (child != NULL && !xfw_window_is_active (child->window))
++    xfce_tasklist_button_activate (child, gtk_get_current_event_time ());
++
++  g_ptr_array_free (children, TRUE);
++  return child != NULL;
++}
+diff --git a/plugins/tasklist/tasklist-widget.h b/plugins/tasklist/tasklist-widget.h
+index 0ed4f44..98cb677 100644
+--- a/plugins/tasklist/tasklist-widget.h
++++ b/plugins/tasklist/tasklist-widget.h
+@@ -28,6 +28,14 @@ G_BEGIN_DECLS
+ #define XFCE_TYPE_TASKLIST (xfce_tasklist_get_type ())
+ G_DECLARE_FINAL_TYPE (XfceTasklist, xfce_tasklist, XFCE, TASKLIST, GtkContainer)
+ 
++typedef enum
++{
++    XFCE_TASKLIST_HOTKEY_ACTIVATE,
++    XFCE_TASKLIST_HOTKEY_NEW_INSTANCE,
++    XFCE_TASKLIST_HOTKEY_ACTIVATE_LAST,
++    XFCE_TASKLIST_HOTKEY_MENU
++} XfceTasklistHotkeyAction;
++
+ void
+ xfce_tasklist_set_mode (XfceTasklist *tasklist,
+                         XfcePanelPluginMode mode);
+@@ -43,6 +51,15 @@ xfce_tasklist_set_nrows (XfceTasklist *tasklist,
+ void
+ xfce_tasklist_update_monitor_geometry (XfceTasklist *tasklist);
+ 
++gboolean
++xfce_tasklist_hotkey_activate (XfceTasklist *tasklist,
++                               guint position,
++                               XfceTasklistHotkeyAction action);
++
++gboolean
++xfce_tasklist_hotkey_cycle (XfceTasklist *tasklist,
++                            gboolean backwards);
++
+ G_END_DECLS
+ 
+ #endif /* !__XFCE_TASKLIST_H__ */
+diff --git a/plugins/tasklist/tasklist.c b/plugins/tasklist/tasklist.c
+index e0f2bbf..18ee666 100644
+--- a/plugins/tasklist/tasklist.c
++++ b/plugins/tasklist/tasklist.c
+@@ -61,6 +61,10 @@ tasklist_plugin_screen_position_changed (XfcePanelPlugin *panel_plugin,
+ static void
+ tasklist_plugin_configure_plugin (XfcePanelPlugin *panel_plugin);
+ static gboolean
++tasklist_plugin_remote_event (XfcePanelPlugin *panel_plugin,
++                              const gchar *name,
++                              const GValue *value);
++static gboolean
+ tasklist_plugin_handle_draw (GtkWidget *widget,
+                              cairo_t *cr,
+                              TasklistPlugin *plugin);
+@@ -84,6 +88,7 @@ tasklist_plugin_class_init (TasklistPluginClass *klass)
+   plugin_class->nrows_changed = tasklist_plugin_nrows_changed;
+   plugin_class->screen_position_changed = tasklist_plugin_screen_position_changed;
+   plugin_class->configure_plugin = tasklist_plugin_configure_plugin;
++  plugin_class->remote_event = tasklist_plugin_remote_event;
+ }
+ 
+ 
+@@ -269,6 +274,65 @@ tasklist_plugin_configure_plugin (XfcePanelPlugin *panel_plugin)
+   gtk_widget_show (GTK_WIDGET (dialog));
+ }
+ 
++static gboolean
++tasklist_plugin_remote_event (XfcePanelPlugin *panel_plugin,
++                              const gchar *name,
++                              const GValue *value)
++{
++  TasklistPlugin *plugin = TASKLIST_PLUGIN (panel_plugin);
++  XfceTasklistHotkeyAction action;
++  const gchar *separator;
++  gchar *event;
++  gint unique_id;
++
++  panel_return_val_if_fail (value == NULL || G_IS_VALUE (value), FALSE);
++
++  separator = strrchr (name, '-');
++  if (separator == NULL || separator == name)
++    return FALSE;
++
++  unique_id = g_ascii_strtoll (separator + 1, NULL, 10);
++  if (unique_id != xfce_panel_plugin_get_unique_id (panel_plugin))
++    return FALSE;
++
++  event = g_strndup (name, separator - name);
++
++  if (g_strcmp0 (event, "cycle") == 0
++      || g_strcmp0 (event, "cycle-backwards") == 0)
++    {
++      xfce_tasklist_hotkey_cycle (XFCE_TASKLIST (plugin->tasklist),
++                                  g_strcmp0 (event, "cycle-backwards") == 0);
++      g_free (event);
++      return TRUE;
++    }
++
++  if (value == NULL || !G_VALUE_HOLDS_UINT64 (value))
++    {
++      g_free (event);
++      return TRUE;
++    }
++
++  if (g_strcmp0 (event, "activate") == 0)
++    action = XFCE_TASKLIST_HOTKEY_ACTIVATE;
++  else if (g_strcmp0 (event, "new-instance") == 0)
++    action = XFCE_TASKLIST_HOTKEY_NEW_INSTANCE;
++  else if (g_strcmp0 (event, "activate-last") == 0)
++    action = XFCE_TASKLIST_HOTKEY_ACTIVATE_LAST;
++  else if (g_strcmp0 (event, "menu") == 0)
++    action = XFCE_TASKLIST_HOTKEY_MENU;
++  else
++    {
++      g_free (event);
++      return TRUE;
++    }
++
++  xfce_tasklist_hotkey_activate (XFCE_TASKLIST (plugin->tasklist),
++                                 g_value_get_uint64 (value), action);
++  g_free (event);
++
++  return TRUE;
++}
++
+ 
+ 
+ static gboolean

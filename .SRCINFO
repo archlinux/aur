@@ -1,0 +1,28 @@
+pkgbase = xfce4-panel-tasklist-hotkeys
+	pkgdesc = Panel for the Xfce desktop environment with Windows-like tasklist hotkeys
+	pkgver = 4.20.8
+	pkgrel = 1
+	url = https://docs.xfce.org/xfce/xfce4-panel/start
+	arch = x86_64
+	groups = xfce4
+	license = LGPL-2.1-only
+	makedepends = glib2-devel
+	makedepends = xfce4-dev-tools
+	depends = exo
+	depends = garcon
+	depends = gtk-layer-shell
+	depends = libxfce4ui
+	depends = xfconf
+	depends = libwnck3
+	depends = libdbusmenu-gtk3
+	depends = libxfce4windowing
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = xfce4-panel=4.20.8
+	conflicts = xfce4-panel
+	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.20/xfce4-panel-4.20.8.tar.bz2
+	source = 0001-window-buttons-windows-taskbar-hotkeys.patch
+	sha256sums = d69cb1f377953aeb1fb9bdbcef12c246bea66586e3f2868f3b758e0e8ce3d3fe
+	sha256sums = 41509e43a516f3a6409d90536ae14d5d9e61a90bc120e71519aa85ee141808d9
+
+pkgname = xfce4-panel-tasklist-hotkeys
