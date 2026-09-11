@@ -26,11 +26,15 @@ In general, these messes can be resolved through proper containerized deployment
 
 #### Install
 
-`yay -S comfykick`
+```shell
+yay -S comfykick
+```
 
 #### Uninstall
 
-`sudo pacman -Rsun comfykick`
+```shell
+sudo pacman -Rsun comfykick
+```
 
 ### Other OS
 
