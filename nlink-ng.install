@@ -1,0 +1,14 @@
+post_install() {
+  if [ -x /usr/bin/udevadm ]; then
+    udevadm control --reload-rules
+    udevadm trigger --subsystem-match=usb
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
