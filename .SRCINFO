@@ -1,5 +1,5 @@
 pkgbase = vantage-browser-appimage
-	pkgdesc = Vantage 浏览器 - 基于 Firefox ESR (AppImage 封装)
+	pkgdesc = Vantage 浏览器 - 基于 Firefox ESR (AppImage 封装) - 非官方社区打包
 	pkgver = 153.2.0
 	pkgrel = 1
 	url = https://github.com/asystech-chen/Vantage
