@@ -1,0 +1,16 @@
+_juggler_hint() {
+    printf '\033[31m%s\033[0m\n' \
+        "Hint: It is recommended to use headless mode with the browser instead of juggler-app."
+}
+
+# pacman dispatches by transaction kind: post_install only fires for a package
+# that was not installed before, post_upgrade for an upgrade *or a reinstall of
+# the same version* (`pacman -U` over an existing install). Bind both, or the
+# hint is silently skipped in the by-far-most-common case.
+post_install() {
+    _juggler_hint
+}
+
+post_upgrade() {
+    _juggler_hint
+}

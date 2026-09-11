@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Juggler
+GenericName=AI coding agent
+Comment=Editable session tree for an AI coding agent, with inspectable tool calls
+Exec=juggler-app
+Icon=juggler
+Terminal=false
+Categories=Development;
+Keywords=ai;agent;llm;coding;assistant;
+StartupNotify=true
+StartupWMClass=Juggler
