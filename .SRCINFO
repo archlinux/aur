@@ -1,6 +1,6 @@
 pkgbase = sonora
 	pkgdesc = A native music streaming client, built with Rust and GPUI
-	pkgver = 0.33.0
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://github.com/sonorahq/sonora
 	arch = x86_64
@@ -24,8 +24,9 @@ pkgbase = sonora
 	optdepends = nvidia-utils: Vulkan driver for NVIDIA GPUs
 	optdepends = pipewire-alsa: audio output through PipeWire
 	optdepends = pulseaudio-alsa: audio output through PulseAudio
+	optdepends = webkit2gtk-4.1: sign in to YouTube Music through a browser window
 	options = !lto
-	source = https://github.com/sonorahq/sonora/archive/refs/tags/v0.33.0/sonora-0.33.0.tar.gz
-	sha256sums = 7ec0979a25af49c70811f545705176523c4acf469d6b26345be06d3437ad1f61
+	source = https://github.com/sonorahq/sonora/archive/refs/tags/v0.34.0/sonora-0.34.0.tar.gz
+	sha256sums = bcae7d5048bd34ce4690e3e9a575c0535d194ed7ae231005e69885fab1962876
 
 pkgname = sonora
