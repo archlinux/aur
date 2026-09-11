@@ -1,6 +1,6 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit-server
-pkgver=2.6.1
+pkgver=2.6.5
 pkgrel=1
 pkgdesc="Headless web server for Cogpit — Claude Code session dashboard"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,8 @@ options=('!strip' '!debug')
 build() {
   cd cogpit
   bun install --frozen-lockfile
-  bun run build
+  # not `bun run build`: that also typechecks packages/* which this package neither installs deps for nor ships
+  bun run build:web
 }
 
 package() {
@@ -33,10 +34,11 @@ package() {
   # Copy built frontend
   cp -r dist "${pkgdir}/opt/${pkgname}/"
 
-  # Copy server + electron/server.ts (reused by standalone entry point)
+  # Copy server sources
   cp -r server "${pkgdir}/opt/${pkgname}/"
   cp -r electron "${pkgdir}/opt/${pkgname}/"
   cp -r src "${pkgdir}/opt/${pkgname}/"
+  cp -r shared "${pkgdir}/opt/${pkgname}/"
 
   cp package.json "${pkgdir}/opt/${pkgname}/"
   cp tsconfig.json "${pkgdir}/opt/${pkgname}/" 2>/dev/null || true
