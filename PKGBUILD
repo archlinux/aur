@@ -1,6 +1,6 @@
 pkgname=gephgui-wry-bin
 pkgver=5.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Geph desktop GUI"
 arch=('x86_64')
 url="https://github.com/geph-official/gephgui-wry"
@@ -14,6 +14,7 @@ depends=(
   'nftables'
   'iproute2'
   'libxdo3'
+  'libayatana-appindicator'
 )
 options=('!strip' '!debug')
 source=(

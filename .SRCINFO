@@ -1,7 +1,7 @@
 pkgbase = gephgui-wry-bin
 	pkgdesc = Geph desktop GUI
 	pkgver = 5.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/geph-official/gephgui-wry
 	arch = x86_64
 	license = MPL-2.0
@@ -11,6 +11,7 @@ pkgbase = gephgui-wry-bin
 	depends = nftables
 	depends = iproute2
 	depends = libxdo3
+	depends = libayatana-appindicator
 	provides = gephgui-wry
 	provides = geph5-client
 	provides = geph5
