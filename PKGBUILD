@@ -10,7 +10,7 @@ depends=('python' 'tk' 'reflector' 'polkit')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "sinergia-reflector-top.png::$url/raw/v$pkgver/sinergia-reflector-top.png")
 sha256sums=('fc4ab0f0e63c438640f72cb5240b68d2a2103f85e500bdfa6843b5aa27617301'
-            'SKIP')
+            'b5badd932d4527b3f11757cf56cd57ae0712c5ea6629d60cacd62e7b50d908b2')
 
 package() {
     cd "$srcdir"
