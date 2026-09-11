@@ -1,0 +1,25 @@
+pkgbase = python-pycxxfilt
+	pkgdesc = Demangle C++ symbols using LLVM's C++ ABI demangler
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tiran/pycxxfilt
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = meson-python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-vcs-versioning
+	makedepends = python-wheel
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	depends = libstdc++
+	depends = libstdc++.so
+	depends = python
+	source = python-pycxxfilt-1.0.0.tar.gz::https://github.com/tiran/pycxxfilt/archive/v1.0.0.tar.gz
+	sha256sums = f5bf59f87425931b91af8840417399f6bc5cbd3ce6edb49c680d0fed5957427d
+
+pkgname = python-pycxxfilt

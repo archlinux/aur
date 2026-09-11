@@ -1,0 +1,4 @@
+[python-pycxxfilt]
+source = "git"
+git = "https://github.com/tiran/pycxxfilt.git"
+prefix = "v"
