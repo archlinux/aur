@@ -1,7 +1,7 @@
 # Maintainer: Nacho <sinergia.comunidad.linuxera@gmail.com>
 pkgname=sinergia-reflector-top
 pkgver=1.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Aplicación gráfica en Python y Tkinter para optimizar los espejos de Arch Linux usando Reflector"
 arch=('any')
 url="https://github.com/Nacho-Telmo/Sinergia-Reflector-Top"
@@ -16,13 +16,7 @@ sha256sums=('SKIP'
 
 package() {
     cd "${srcdir}/Sinergia-Reflector-Top-${pkgver}"
-
-    # Instalar el script principal como ejecutable en /usr/bin
-    install -Dm755 sinergia-reflector-top.py "${pkgdir}/usr/bin/sinergia-reflector-top"
-
-    # Instalar el archivo .desktop en las aplicaciones del sistema
+    install -Dm755 *.py "${pkgdir}/usr/bin/sinergia-reflector-top"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-    # Instalar el icono en los pixmaps del sistema
     install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
