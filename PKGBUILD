@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r2226.3c351471
+pkgver=r2240.bdffb7a6
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -29,17 +29,17 @@ build() {
 	cd "${srcdir}/${_pkgname}"
 	# Get rid of any leftover build files (in case makepkg.conf changed).
 	rm -rf ./arch
+	# Obtain the number of CPU cores.
+	local -i cores=$(./bin/package host cpu)
 	if ! [[ ${_ksh_pgo} == 1 || ${_ksh_pgo} == yes || ${_ksh_pgo} == true ]] || [[ $CC == clang ]]; then
-		export CCFLAGS="${CFLAGS}"         # bin/package uses CCFLAGS rather than CFLAGS.
-		./bin/package make  # Build ksh (no -j flag because that's still experimental).
+		export CCFLAGS="${CFLAGS}"      # bin/package uses CCFLAGS rather than CFLAGS.
+		./bin/package make -j${cores}   # Build ksh
 	else
 		# Optional and experimental: Compile ksh with profile guided optimization (making
 		# use of the regression tests) if ${_ksh_pgo} is enabled.
 		# Only GCC has been successfully tested; Clang is completely unsupported.
 		local save_ccflags="${CFLAGS}"
 		local save_ldflags="${LDFLAGS}"
-		# Obtain the number of CPU cores.
-		local -i cores=$(bin/package host cpu)
 		# Create a temporary directory to use for PGO
 		local tmpdir=$(mktemp -d)
 		# Build with profiling flags set (-fno-unroll-loops increases overall
@@ -48,10 +48,10 @@ build() {
 		local use_flags="-fprofile-dir=\"${tmpdir}\" -fprofile-use=\"${tmpdir}\" -fprofile-correction -fno-unroll-loops -Wno-error=coverage-mismatch"
 		export CCFLAGS="${save_ccflags} ${generation_flags}"
 		export LDFLAGS="${save_ldflags} ${generation_flags}"
-		bin/package make -j${cores}
+		./bin/package make -j${cores}
 		# Run the regression tests to profile ksh
 		local -i status=0
-		./arch/*/bin/ksh bin/shtests -u || status=$?
+		./arch/*/bin/ksh ./bin/shtests -u || status=$?
 		# For any curious script readers, the only reason
 		# some test failures are tolerated is because ksh's
 		# test suite suffers from intermittent test failures
