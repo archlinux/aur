@@ -1,6 +1,6 @@
 pkgbase = rpx-bin
 	pkgdesc = A performant package manager for R
-	pkgver = 1.7.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/scalerail-solutions/rpx
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = rpx-bin
 	depends = zlib
 	conflicts = rpx
 	options = !debug
-	source_x86_64 = rpx-bin-1.7.0.tar.xz::https://github.com/scalerail-solutions/rpx/releases/download/v1.7.0/rpx-x86_64-unknown-linux-gnu.tar.xz
-	provides_x86_64 = rpx=1.7.0
-	sha256sums_x86_64 = 150f1b241d20980ea1a0858a2eed3257d5b1cc1e1b0a5ad50c8523a1ddb1bdcd
-	source_aarch64 = rpx-bin-1.7.0.tar.xz::https://github.com/scalerail-solutions/rpx/releases/download/v1.7.0/rpx-aarch64-unknown-linux-gnu.tar.xz
-	provides_aarch64 = rpx=1.7.0
-	sha256sums_aarch64 = b39045f655f81178770a2a42b01ba3c828622dbda4383904dafca0e6c809cdfa
+	source_x86_64 = rpx-bin-2.0.0.tar.xz::https://github.com/scalerail-solutions/rpx/releases/download/v2.0.0/rpx-x86_64-unknown-linux-gnu.tar.xz
+	provides_x86_64 = rpx=2.0.0
+	sha256sums_x86_64 = 67d7e66688777da135847ca38b0149ccdb3e4bb4e101a9aa52555dc3fd126d37
+	source_aarch64 = rpx-bin-2.0.0.tar.xz::https://github.com/scalerail-solutions/rpx/releases/download/v2.0.0/rpx-aarch64-unknown-linux-gnu.tar.xz
+	provides_aarch64 = rpx=2.0.0
+	sha256sums_aarch64 = 67d7e66688777da135847ca38b0149ccdb3e4bb4e101a9aa52555dc3fd126d37
 
 pkgname = rpx-bin
