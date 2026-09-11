@@ -1,0 +1,17 @@
+pkgbase = ai-flow-cli
+	pkgdesc = Ultra-fast streaming AI CLI & agent for Unix terminals
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/Codder13/ai-flow-cli
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-rich
+	depends = python-pylatexenc
+	source = ai-flow-cli-0.9.0.tar.gz::https://github.com/Codder13/ai-flow-cli/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 98ae19b221c66f9d72ebcaf0e9af16c46ef441974deca53304577fdce709807c
+
+pkgname = ai-flow-cli
