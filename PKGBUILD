@@ -2,8 +2,8 @@
 
 pkgname=qmtui-bin
 _pkgname=qmtui
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 _upstream_pkgrel=1
 pkgdesc="Linux terminal qqmusic player (.NET 10 Native AOT pre-built package)"
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,6 @@ depends=(
     'gst-plugins-good'
     'gst-plugins-bad'
     'libpulse'
-)
-depends_x86_64=(
-    'qemu-user'
 )
 
 optdepends=(
@@ -32,8 +29,8 @@ replaces=('qqmusic-tui' 'qqmusic-tui-bin')
 
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/Viemean/qmtui/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_upstream_pkgrel}-x86_64.pkg.tar.zst")
 source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.pkg.tar.zst::https://github.com/Viemean/qmtui/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_upstream_pkgrel}-aarch64.pkg.tar.zst")
-sha256sums_x86_64=('b0e8c1f1ae1fb660ac86c061afe3107c740d5ca7609d4087dbe90ff49956331a')
-sha256sums_aarch64=('b111f7db881c0a98275e3da3e29c6688985735b3222d92509baee08b2761f3b0')
+sha256sums_x86_64=('1c529bf5b713f8bfe3da71eef015fc01c44f2434cf1d0c984386f6028564a7ea')
+sha256sums_aarch64=('a07667b93e49f1eb98c6e01a12d1f369e2293d7bdffa46d7c5011f3ca4321779')
 
 package() {
     cp -a "${srcdir}/usr" "${pkgdir}/"
