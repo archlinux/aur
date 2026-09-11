@@ -3,7 +3,7 @@
 _pkgname="qdl"
 pkgname="${_pkgname}-bin"
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=(
   'aarch64'
@@ -17,7 +17,7 @@ depends=(
   'glibc'
   'libusb'
   'libxml2-legacy'
-  'libzip'
+  # 'libzip'
 )
 provides=(
   "${_pkgname}"
@@ -42,8 +42,20 @@ sha256sums_aarch64=('58b883cc2860643ddc2a059987c1e077737bb56d66230e4dfa9274a165d
 sha256sums_x86_64=('80e2fb22c093ce6641ee0102dd45f5851f4fc65803d0e8d359c4080699e5af6c')
 
 package() {
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
   cd "${srcdir}"
-  install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -vDm644 "${_pkgsrc}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+  # could have used patchelf too probably
+  cd "${source_artifact%-v${pkgver}.zip}"
+  # install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -vDm755 "${_pkgname}" -t "${pkgdir}/usr/lib/${pkgname}"
+  install -vDm644 "libzip.so.4" -t "${pkgdir}/usr/lib/${pkgname}"
+
+  install -vd "${pkgdir}/usr/bin"
+  ln -vsf "/usr/lib/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
