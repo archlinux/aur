@@ -1,6 +1,6 @@
 # Maintainer: DolbyDAX2 <dolbydax2@fatihdurdu.xyz>
 pkgname=llamatray-git
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="PyQt6 based Llama.cpp Tray Manager for Linux"
 arch=('any')
@@ -41,10 +41,16 @@ python -m LlamaTray.main "$@"
 EOF
     chmod +x "${pkgdir}/usr/bin/LlamaTray"
 
-    # İkon dosyasını yerleştir
+    # İkon dosyalarını yerleştir
     install -d "${pkgdir}/usr/share/pixmaps"
-    cp LlamaTray/assets/icon.png "${pkgdir}/usr/share/pixmaps/LlamaTray.png" 2>/dev/null || \
-    cp LlamaTray/icon.png "${pkgdir}/usr/share/pixmaps/LlamaTray.png" 2>/dev/null || true
+    install -Dm644 LlamaTray/assets/llamatray.png \
+        "${pkgdir}/usr/share/pixmaps/LlamaTray.png"
+    install -Dm644 "LlamaTray/assets/llamatray (on).png" \
+        "${pkgdir}/usr/share/pixmaps/LlamaTray-on.png"
+    install -Dm644 LlamaTray/assets/llamatray.ico \
+        "${pkgdir}/usr/share/pixmaps/LlamaTray.ico"
+    install -Dm644 "LlamaTray/assets/llamatray (on).ico" \
+        "${pkgdir}/usr/share/pixmaps/LlamaTray-on.ico"
 
     # Masaüstü kısayolu
     install -d "${pkgdir}/usr/share/applications"
