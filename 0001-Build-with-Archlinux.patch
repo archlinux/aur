@@ -1,8 +1,8 @@
 diff --git a/ebpf_prog/Makefile b/ebpf_prog/Makefile
-index 0e930de..54d61e9 100644
+index 4a472a85..d8b65b68 100644
 --- a/ebpf_prog/Makefile
 +++ b/ebpf_prog/Makefile
-@@ -29,6 +29,7 @@ endif
+@@ -69,6 +69,7 @@ $(info EXTRA_FLAGS    = $(EXTRA_FLAGS))
  SRC := $(wildcard *.c)
  BIN := $(SRC:.c=.o)
  CFLAGS = -I. \
@@ -10,13 +10,14 @@ index 0e930de..54d61e9 100644
  	-I$(KERNEL_HEADERS)/arch/$(ARCH)/include/generated/ \
  	-I$(KERNEL_HEADERS)/include \
  	-include $(KERNEL_DIR)/include/linux/kconfig.h \
-@@ -48,7 +49,8 @@ CFLAGS = -I. \
+@@ -88,7 +89,9 @@ CFLAGS = -I. \
  	-Wno-gnu-variable-sized-type-not-at-end \
  	-Wno-address-of-packed-member \
  	-Wno-tautological-compare \
 -	-Wno-unknown-warning-option  \
 +	-Wno-unknown-warning-option \
 +	-fcf-protection \
++	-DCC_USING_FENTRY \
  	-fno-stack-protector \
  	-g -O2 -emit-llvm
  
