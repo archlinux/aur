@@ -1,10 +1,10 @@
---- setup.py	2026-06-07 18:38:25.636875270 +0800
-+++ setup.py.new	2026-06-07 18:47:23.675665161 +0800
-@@ -245,5 +245,6 @@
+--- setup.py.orig	2026-09-11 16:13:37.913111826 +0800
++++ setup.py	2026-09-11 16:15:08.943251951 +0800
+@@ -290,6 +290,7 @@
              extra_compile_args["nvcc"] = [
                  "-O3",
--                "-std=c++17",
-+                "-std=c++20",
                  "-DWITH_CUDA",
 +                "-DGLOG_USE_GLOG_EXPORT",
              ]
+         debug_mode = os.getenv("DEBUG", "0") == "1"
+         if debug_mode:

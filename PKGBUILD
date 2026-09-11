@@ -2,7 +2,7 @@
 
 pkgbase=python-torchrl
 pkgname=(python-torchrl python-torchrl-cuda)
-pkgver=0.13.3
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A modular, primitive-first, python-first PyTorch library for Reinforcement Learning."
 url="https://github.com/pytorch/rl"
@@ -11,9 +11,9 @@ license=('MIT')
 depends=(python python-cloudpickle python-tensordict python-numpy python-packaging)
 makedepends=(python-build python-wheel python-installer python-setuptools gcc cuda python-pytorch ninja)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz" "setup.patch" "cuda-flags.patch")
-sha256sums=('e35535c884c3fe65c3cc52a8620d614b3d6919829dc18210ed50c5cca647da75'
+sha256sums=('ca04c15451f5a846772c0457ee9c12c2dab725d376b07dd6d0ece8f12cde706d'
             '3916428ad174568ea43162a133ac5588f135a6a242cfcd6e8e2c0eca7bfb80c3'
-            '21c2864cb9a7de0faaa600bf266ab05c1e6bd3d3e879c2ac5697f74e0732e0f5')
+            '3d833f0fdde5ab6b9f446683fbe5c812267e483d69d393e5dd1a592572248990')
 
 prepare() {
     cd "${srcdir}"
@@ -37,7 +37,6 @@ build() {
     cd "${srcdir}/rl-cuda-$pkgver"
     export CXXFLAGS="$CXXFLAGS -DGLOG_USE_GLOG_EXPORT"
     export CFLAGS="$CFLAGS -DGLOG_USE_GLOG_EXPORT"
-    export CUDAFLAGS="$CUDAFLAGS -DGLOG_USE_GLOG_EXPORT"
     export CUDA_HOME="/opt/cuda"
     export FORCE_CUDA=1
     python -m build --wheel --no-isolation --skip-dependency-check
