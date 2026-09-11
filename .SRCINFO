@@ -9,6 +9,7 @@ pkgbase = gdown
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = git
+	makedepends = python-hatchling
 	makedepends = python-hatch-vcs
 	makedepends = python-hatch-fancy-pypi-readme
 	depends = python
