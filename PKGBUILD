@@ -1,6 +1,6 @@
 # Maintainer: FatDawlf <zazaguichi@outlook.com>
 pkgname=lupa-git
-pkgver=r47.57ebd29
+pkgver=r48.0c2ff89
 pkgrel=1
 pkgdesc="A minimalist launcher built on gtk4-layer-shell."
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ prepare() {
 	cd "$pkgname"
 	export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
 	export CARGO_HOME="$SRCDEST/cargo-home"
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
