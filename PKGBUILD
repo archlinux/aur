@@ -1,7 +1,7 @@
 # Maintainer: Latte macchiato <contact@lattemacchiato.dev>
 pkgname=plezy-git
 _pkgname=plezy
-pkgver=2.18.0.r37.gaeb06c2
+pkgver=2.19.1.r21.g04b0cda
 pkgrel=1
 pkgdesc='A modern Plex client for desktop and mobile'
 arch=('x86_64')
@@ -18,6 +18,7 @@ depends=(
     'xdg-user-dirs'
     'curl'
     'hicolor-icon-theme'
+    'jre21-openjdk-headless'
 )
 makedepends=(
     'clang'
@@ -72,6 +73,12 @@ package() {
     # Replace Flutter build-time RUNPATHs with relocatable bundle-local paths.
     find "$pkgdir/opt/$_pkgname/lib" -type f -name '*.so' \
         -exec patchelf --set-rpath '$ORIGIN' {} +
+    # Dart JNI links libjvm directly. Use the matching declared Java runtime,
+    # not the build JDK or the user's changeable default Java symlink.
+    if [[ -f "$pkgdir/opt/$_pkgname/lib/libdartjni.so" ]]; then
+        patchelf --set-rpath '$ORIGIN:/usr/lib/jvm/java-21-openjdk/lib/server' \
+            "$pkgdir/opt/$_pkgname/lib/libdartjni.so"
+    fi
     if [[ -f "$pkgdir/opt/$_pkgname/lib/crashpad_handler" ]]; then
         patchelf --set-rpath '$ORIGIN' "$pkgdir/opt/$_pkgname/lib/crashpad_handler"
     fi
