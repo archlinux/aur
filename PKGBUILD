@@ -10,45 +10,44 @@
 # Maintainer: Kordian Bruck <k@bruck.me>
 
 pkgname=android-studio
-pkgver=2026.1.3.8
-_vername="quail3-patch1"
+pkgver=2026.1.4.7
+_vername="quail4"
 pkgrel=1
 pkgdesc="The official Android IDE (Stable branch)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://developer.android.com/"
-license=('APACHE')
-makedepends=()
-depends=('alsa-lib' 'freetype2' 'libxrender' 'libxtst' 'which')
+license=('Apache-2.0')
+depends=('alsa-lib' 'fontconfig' 'freetype2' 'libxrender' 'libxtst' 'which')
 optdepends=('gtk2: GTK+ look and feel'
+            'libbsd: emulator support'
             'libgl: emulator support'
-            'ncurses5-compat-libs: native debugger support')
+            'libxkbcommon: Wayland support for the bundled runtime'
+            'libxkbfile: emulator support'
+            'ncurses5-compat-libs: native debugger support'
+            'vulkan-icd-loader: Vulkan acceleration for Gemini local models')
 options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-$_vername-linux.tar.gz"
         "$pkgname.desktop"
         "license.html")
-sha256sums=('5bd5ee5d6e747b13f82fba3241380bd358cc2f4a847815c8e860757df13dc35f'
-            '73cd2dde1d0f99aaba5baad1e2b91c834edd5db3c817f6fb78868d102360d3c4'
-            '9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e')
-
-if [ "$CARCH" = "i686" ]; then
-    depends+=('java-environment')
-fi
+b2sums=('c4f0dfad8eff9b8d0d9f2040dc9f26f2c60f7330226060ec1c9254f3a2ee8a8296c6be9002c7ef8818b18730d34dbe67b516036c4ad0378c4f4f6ba857571e5a'
+        '0b978b7fdbcd277cf432080572b141a760ad169984c9cb09f11c6f3ca0be807483545685c86853329bc4622bf516c7a668148bd25ada906fa7289bb9a7c7ccf8'
+        '43b288fb81656cd72826a52620e41fbd0daa65d37246cb5b7dbff9c326022eabf18344513517b16134b557d6ae86535f44f863ebd06d6fe0410f92117c1a8c67')
 
 package() {
-  cd $srcdir/$pkgname
+  cd "$srcdir/$pkgname" || exit
 
   # Install the application
-  install -d $pkgdir/{opt/$pkgname,usr/bin}
-  cp -a bin lib jbr plugins license LICENSE.txt build.txt product-info.json $pkgdir/opt/$pkgname
-  ln -s /opt/android-studio/bin/studio $pkgdir/usr/bin/$pkgname
+  install -d "$pkgdir/opt/$pkgname" "$pkgdir/usr/bin"
+  cp -a bin lib jbr plugins license LICENSE.txt build.txt product-info.json "$pkgdir/opt/$pkgname"
+  ln -s /opt/android-studio/bin/studio "$pkgdir/usr/bin/$pkgname"
 
   # Copy licenses
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-  install -Dm644 $srcdir/license.html "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm644 "$srcdir/license.html" "$pkgdir/usr/share/licenses/$pkgname/license.html"
 
   # Add the icon and desktop file
-  install -Dm644 bin/studio.png $pkgdir/usr/share/pixmaps/$pkgname.png
-  install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+  install -Dm644 bin/studio.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-  chmod -R ugo+rX $pkgdir/opt
+  chmod -R ugo+rX "$pkgdir/opt"
 }

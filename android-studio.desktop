@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=Android Studio
-Exec=android-studio %f
+Exec=env "QT_QPA_PLATFORM=wayland;xcb" android-studio %f
 Icon=android-studio
 Comment=The official Android IDE
 Categories=Development;IDE;
