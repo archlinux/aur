@@ -1,8 +1,8 @@
 pkgbase = zfetch-rs
 	pkgdesc = A fast & pretty system fetch tool written in rust
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
-	url = https://github.com/zodium-project/zfetch-rs
+	url = https://github.com/ferret-linux/zfetch-rs
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = zfetch-rs
 	makedepends = cargo
 	provides = zfetch
 	conflicts = zfetch
-	source = zfetch-rs::git+https://github.com/zodium-project/zfetch-rs.git#branch=stable
+	source = zfetch-rs::git+https://github.com/ferret-linux/zfetch-rs.git#branch=stable
 	sha256sums = SKIP
 
 pkgname = zfetch-rs
