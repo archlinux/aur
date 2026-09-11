@@ -1,0 +1,15 @@
+pkgbase = e1547-bin
+	pkgdesc = A sophisticated e621 browser. Debian Package.
+	pkgver = 21.0.1+103
+	pkgrel = 1
+	url = https://github.com/clynamic/e1547
+	arch = x86_64
+	license = GPL3
+	provides = e1547
+	conflicts = e1547-git
+	options = !strip
+	options = !debug
+	source_x86_64 = e1547-bin-21.0.1+103.deb::https://github.com/clynamic/e1547/releases/download/21.0.1+103/e1547.deb
+	sha256sums_x86_64 = 7efe06cd06340f219faf0b6a60f88ec847bb72d2849b7e7467000f0777abe008
+
+pkgname = e1547-bin
