@@ -1,7 +1,7 @@
 # Maintainer: AChep <artemchep at gmail dot com>
 
 pkgname=keyguard-bin
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='Multi-client for the Bitwarden® platform and KeePass (KDBX), designed to provide the best user experience possible.'
 arch=('x86_64' 'aarch64')
@@ -11,11 +11,11 @@ depends=('hicolor-icon-theme')
 provides=('keyguard')
 conflicts=('keyguard')
 options=('!strip')
-_releaseTag='r20260905.2'
+_releaseTag='r20260911'
 source_x86_64=("https://github.com/AChep/keyguard-app/releases/download/${_releaseTag}/Keyguard-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("https://github.com/AChep/keyguard-app/releases/download/${_releaseTag}/Keyguard-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('210507a1c6ea75c53817c295b8cff734072b86d662809dff29f701794c045c1e')
-sha256sums_aarch64=('a7853620a3c849896e9db84a17c39a8d49f8348c1e7747614f937ce82e19ebdf')
+sha256sums_x86_64=('cce6ec5a2e83410016cf2f245853e744429f748cad8b1ec727d9df27c3efcf5f')
+sha256sums_aarch64=('3ec326a0aec1a753ce6f5f04256e7fdc00432c2abcbca67f071bea895f4be2ed')
 
 package() {
     cd Keyguard
