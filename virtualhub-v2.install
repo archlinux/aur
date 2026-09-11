@@ -1,0 +1,21 @@
+post_install() {
+  udevadm control --reload-rules 2>/dev/null || true
+  udevadm trigger 2>/dev/null || true
+  systemctl daemon-reload 2>/dev/null || true
+  cat <<'EOF'
+==> VirtualHub V2 installed.
+    Enable and start it now using:
+        systemctl enable --now yvirtualhub-v2.service
+    Wargning: the installed udev rule allows ALL users to access the Yoctopuce USB
+    modules.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  udevadm control --reload-rules 2>/dev/null || true
+  systemctl daemon-reload 2>/dev/null || true
+}

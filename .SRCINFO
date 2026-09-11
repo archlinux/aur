@@ -1,0 +1,17 @@
+pkgbase = virtualhub-v2
+	pkgdesc = Yoctopuce VirtualHub V2 - network gateway for Yoctopuce USB modules
+	pkgver = 2.1.15391
+	pkgrel = 1
+	url = https://www.yoctopuce.com/
+	install = virtualhub-v2.install
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	depends = glibc
+	options = !strip
+	source = VirtualHubV2.linux.75391.zip::https://www.yoctopuce.com/FR/downloads/VirtualHubV2.linux.75391.zip
+	sha256sums = SKIP
+
+pkgname = virtualhub-v2
