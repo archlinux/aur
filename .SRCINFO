@@ -1,0 +1,23 @@
+pkgbase = oxideclaw-bin
+	pkgdesc = Single-binary coding agent: zero-setup codebase index, cost-aware model routing, worktree agents, auto-fix loop, voice cloning. Claude, Ollama, OpenAI-compatible.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ForkedInTime/OxideClaw
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	optdepends = ollama: run local models offline
+	optdepends = bubblewrap: sandboxed shell execution
+	optdepends = firejail: alternative sandbox backend
+	provides = oxideclaw
+	conflicts = oxideclaw
+	noextract = oxideclaw-0.4.0-x86_64
+	noextract = oxideclaw-0.4.0-aarch64
+	options = !strip
+	options = !debug
+	source_x86_64 = oxideclaw-0.4.0-x86_64::https://github.com/ForkedInTime/OxideClaw/releases/download/v0.4.0/oxideclaw-linux-x64
+	sha256sums_x86_64 = b6cb388873f0b83ffa405cab7c14a36647c9488eb3009f8ab55e7ce346f87bd8
+	source_aarch64 = oxideclaw-0.4.0-aarch64::https://github.com/ForkedInTime/OxideClaw/releases/download/v0.4.0/oxideclaw-linux-arm64
+	sha256sums_aarch64 = c4f6d018c2f9c5244a0be6f70cf33a7027a29f4ca147adf8a4bd0fa0d2d65d1a
+
+pkgname = oxideclaw-bin
