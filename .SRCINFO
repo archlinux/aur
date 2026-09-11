@@ -1,5 +1,5 @@
-pkgbase = qqmusic-tui-bin
-	pkgdesc = Linux terminal QQ Music player (.NET 10 Native AOT pre-built package)
+pkgbase = qmtui-bin
+	pkgdesc = Linux terminal qqmusic player (.NET 10 Native AOT pre-built package)
 	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/Viemean/qmtui
@@ -16,12 +16,16 @@ pkgbase = qqmusic-tui-bin
 	optdepends = xclip: X11 clipboard support for copying song links
 	provides = qmtui
 	provides = qqmusic-tui
+	provides = qmtui-bin
 	conflicts = qmtui
 	conflicts = qqmusic-tui
-	source_x86_64 = qqmusic-tui-bin-upstream-0.3.2-1-x86_64.pkg.tar.zst::https://github.com/Viemean/qmtui/releases/download/v0.3.2/qmtui-bin-0.3.2-1-x86_64.pkg.tar.zst
+	conflicts = qqmusic-tui-bin
+	replaces = qqmusic-tui
+	replaces = qqmusic-tui-bin
+	source_x86_64 = qmtui-bin-0.3.2-1-x86_64.pkg.tar.zst::https://github.com/Viemean/qmtui/releases/download/v0.3.2/qmtui-bin-0.3.2-1-x86_64.pkg.tar.zst
 	depends_x86_64 = qemu-user
 	sha256sums_x86_64 = 89ecb6e94dae4fe0fd35c1641e503385f4b9918e6136415631a3fd89ddc0de73
-	source_aarch64 = qqmusic-tui-bin-upstream-0.3.2-1-aarch64.pkg.tar.zst::https://github.com/Viemean/qmtui/releases/download/v0.3.2/qmtui-bin-0.3.2-1-aarch64.pkg.tar.zst
+	source_aarch64 = qmtui-bin-0.3.2-1-aarch64.pkg.tar.zst::https://github.com/Viemean/qmtui/releases/download/v0.3.2/qmtui-bin-0.3.2-1-aarch64.pkg.tar.zst
 	sha256sums_aarch64 = e121155875511bc8571103bdbfccd185d005591cadb9b6336077c7073dc4aa2d
 
-pkgname = qqmusic-tui-bin
+pkgname = qmtui-bin
