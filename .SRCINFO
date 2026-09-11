@@ -1,6 +1,6 @@
 pkgbase = curfew
 	pkgdesc = Curfew - 电脑定时关机/睡眠工具，智能管理电脑使用时间
-	pkgver = 2.9.1
+	pkgver = 2.9.1.0
 	pkgrel = 1
 	url = https://github.com/aura-deak/Curfew
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = curfew
 	depends = python-plyer
 	provides = curfew
 	conflicts = curfew
-	source = curfew-2.9.1.tar.gz::https://github.com/aura-deak/Curfew/archive/refs/tags/v2.9.1.tar.gz
-	sha256sums = f5e301be6d44dc3408ba2e97c0d5c548b1e4a8d151d99f573fef286f3953be1f
+	source = curfew-2.9.1.0.tar.gz::https://github.com/aura-deak/Curfew/archive/refs/tags/v2.9.1.0.tar.gz
+	sha256sums = c1a28ea1c3bd041e08c2e541e8d0b961a5533a08260ff2e5a604f8582893f2e6
 
 pkgname = curfew
