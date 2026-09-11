@@ -1,7 +1,7 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-bin
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
@@ -24,15 +24,8 @@ conflicts=(moonshine)
 
 source=(
 	"https://github.com/hgaiser/moonshine/releases/download/v$pkgver/moonshine-v$pkgver-linux-amd64.tar.zst"
-	"https://raw.githubusercontent.com/hgaiser/moonshine/v$pkgver/dist/50-moonshine-inhibit-sleep.rules"
-	"https://raw.githubusercontent.com/hgaiser/moonshine/v$pkgver/dist/moonshine-sysusers.conf"
 )
-# TODO: Remove the two raw GitHub sources below once the next release
-# is published — they'll be included in the tarball (fixed in
-# moonshine/.github/workflows/release.yaml).
-sha256sums=('880e9b23fb9444ba911dbba0a396ba979f203ff27c54f841a9f3521cf881f9de'
-            '66465404a061b767524cbd9f2cd9ea3eda336d4d57a985b775db9fe59ea71612'
-            'a01ffbd68e9e78c2904db1b933898fa821875d33ff40fa77f5b24940fe287a4b')
+sha256sums=('fe7b83d0d85ceb864888c3c848cfbce75b51f3cc0f839649f6ec6956f61e148f')
 
 package() {
 	cd "$srcdir/moonshine"
@@ -46,6 +39,6 @@ package() {
 	install -Dm755 lib/moonshine/vulkan-layers/libmoonshine_wsi.so "$pkgdir/usr/lib/moonshine/vulkan-layers/libmoonshine_wsi.so"
 	install -Dm644 share/moonshine/moonshine-modules.conf "$pkgdir/usr/lib/modules-load.d/moonshine.conf"
 
-	install -Dm644 "$srcdir/50-moonshine-inhibit-sleep.rules" "$pkgdir/usr/share/polkit-1/rules.d/50-moonshine-inhibit-sleep.rules"
-	install -Dm644 "$srcdir/moonshine-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/moonshine.conf"
+	install -Dm644 share/moonshine/50-moonshine-inhibit-sleep.rules "$pkgdir/usr/share/polkit-1/rules.d/50-moonshine-inhibit-sleep.rules"
+	install -Dm644 share/moonshine/moonshine-sysusers.conf "$pkgdir/usr/lib/sysusers.d/moonshine.conf"
 }
