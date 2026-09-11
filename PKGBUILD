@@ -3,7 +3,7 @@
 
 pkgname=qcm-git
 _pkgname=${pkgname%-git}
-pkgver=1.3.2.r2.g0773e9f
+pkgver=1.3.4.r287.g8a3898f
 pkgrel=1
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
 	'qt6-declarative'
 	'qt6-shadertools'
 	'qt6-grpc'
+	'qt6-websockets'
 	'hicolor-icon-theme'
 	'curl'
 	'openssl'
@@ -21,15 +22,17 @@ depends=(
 	'ffmpeg'
 	'cubeb-git'
 	'kdsingleapplication'
-	'qcmbackend-git'
 	'qmlmaterial-git'
+	'sqlite'
 )
 makedepends=(
+	'corrosion'
 	'git'
 	'git-lfs'
 	'clang'
+	'lito'
 	'lld'
-	'cmake'
+	'llvm'
 	'ninja'
 	'asio'
 	'pegtl'
@@ -40,43 +43,45 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
 	"git+${url}.git"
-	"git+https://github.com/hypengw/rstd.git"
 	"git+https://github.com/hypengw/ncrequest.git"
-	"git+https://github.com/hypengw/kstore.git"
+	"git+https://github.com/hypengw/QExtra.git"
 	"git+https://github.com/ilqvya/random.git"
-	"fix-kdsingleapplication.patch"
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            '08a3aa14c098044dd4a129a292558df4ecfaf7bbeec0b295e5d8009c5939c422')
+            'SKIP')
 
 pkgver() {
 	git -C Qcm describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
-	patch -d Qcm -Np1 -i ../fix-kdsingleapplication.patch
+	cd Qcm
+	mkdir -p .lito
+	cat >.lito/config.toml <<END
+[patch."https://github.com/hypengw/ncrequest.git"]
+path = "../ncrequest"
+
+[patch."https://github.com/hypengw/QExtra.git"]
+path = "../QExtra"
+
+[patch."https://github.com/ilqvya/random.git"]
+path = "../random"
+END
+
+	lito fetch --all-features
 }
 
 build() {
-	cmake -B build \
-		-S Qcm \
-		-G Ninja \
-		-D CMAKE_BUILD_TYPE=None \
-		-D CMAKE_INSTALL_PREFIX=/usr \
-		-D FETCHCONTENT_FULLY_DISCONNECTED=ON \
-		-D FETCHCONTENT_SOURCE_DIR_RSTD="${srcdir}/rstd" \
-		-D FETCHCONTENT_SOURCE_DIR_NCREQUEST="${srcdir}/ncrequest" \
-		-D FETCHCONTENT_SOURCE_DIR_KSTORE="${srcdir}/kstore" \
-		-D FETCHCONTENT_SOURCE_DIR_RANDOM="${srcdir}/random" \
-		-D CMAKE_CXX_COMPILER=clang++ # Require clang 20+ to build
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+	CFLAGS+=" -ffat-lto-objects"
 
-	cmake --build build
+	# https://github.com/llvm/llvm-project/issues/121709
+	CXXFLAGS="${CXXFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}"
+	lito -C Qcm build --frozen --profile plain --use-env-flags
 }
 
 package() {
-	DESTDIR="${pkgdir}" cmake --install build
+	lito -C Qcm install --profile plain --prefix "${pkgdir}/usr" --no-build
 }
