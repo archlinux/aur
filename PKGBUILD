@@ -2,7 +2,7 @@
 # Co-Maintainer: 67mustard41
 
 pkgname=opera-gx
-pkgver=135.0.5973.126
+pkgver=135.0.5973.135
 pkgrel=1
 pkgdesc='Opera GX The Gaming Browser'
 arch=('x86_64')
@@ -86,7 +86,7 @@ noextract=(
     "nwjs-ffmpeg-${_ffmpeg_zip}"
 )
 
-sha256sums=('12bd28574dfc2892beead9b5eb41d95113b5792f4d79678e2c4893fe7d262053'
+sha256sums=('960bbce3c7a993d481568f0b3a32a70417b159f902b6083dcfa43b416ccab668'
             'baeb75b7d52f1f75ec46027b05f0df0f4a22d6c47ab5816562f6e183c3af4034'
             '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
             '3c48827275d36f2a38a9ac63ce81875211f11022d390d7ada302d26e475271ea'
