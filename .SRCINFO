@@ -1,6 +1,6 @@
 pkgbase = plexamp-beta-appimage
 	pkgdesc = Modern music client for Plex BETA with new backend
-	pkgver = 4.50.7
+	pkgver = 4.50.8
 	pkgrel = 1
 	url = https://plexamp.com
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = plexamp-beta-appimage
 	conflicts = plexamp
 	conflicts = plexamp-appimage
 	options = !strip
-	source_x86_64 = https://plexamp.plex.tv/desktop/Plexamp-4.50.7-x86_64.AppImage
-	sha256sums_x86_64 = 61064f5d5d7b2b89bfe0031b0f259a116eb1e5442c3052648cdabb80e495b026
-	source_aarch64 = https://plexamp.plex.tv/desktop/Plexamp-4.50.7-x86_64.AppImage
-	sha256sums_aarch64 = 64fe1a50134ea403d7770aa101be569f1f144602aa7824940c9924d7c0764922
+	source_x86_64 = https://plexamp.plex.tv/desktop/Plexamp-4.50.8-x86_64.AppImage
+	sha256sums_x86_64 = fde55ce6e0a00c8bc942f588de91ec0043e9cee62ff5ebd355a917f94aabac04
+	source_aarch64 = https://plexamp.plex.tv/desktop/Plexamp-4.50.8-x86_64.AppImage
+	sha256sums_aarch64 = 467a0f6c5e2f83715f34b34e0a85894bcf1ba73049a90fc57dcea59ea981682c
 
 pkgname = plexamp-beta-appimage
