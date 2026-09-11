@@ -1,7 +1,7 @@
 # Maintainer: Nacho <sinergia.comunidad.linuxera@gmail.com>
 pkgname=sinergia-reflector-top
 pkgver=1.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Aplicación gráfica en Python y Tkinter para optimizar los espejos de Arch Linux usando Reflector"
 arch=('any')
 url="https://github.com/Nacho-Telmo/Sinergia-Reflector-Top"

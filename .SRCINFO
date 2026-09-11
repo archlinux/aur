@@ -1,7 +1,7 @@
 pkgbase = sinergia-reflector-top
 	pkgdesc = Aplicación gráfica en Python y Tkinter para optimizar los espejos de Arch Linux usando Reflector
 	pkgver = 1.0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Nacho-Telmo/Sinergia-Reflector-Top
 	arch = any
 	license = GPL3
