@@ -1,6 +1,6 @@
 pkgbase = cpa-usage-keeper-bin
 	pkgdesc = Standalone CLIProxyAPI usage persistence and dashboard service
-	pkgver = 1.15.3
+	pkgver = 1.15.4
 	pkgrel = 1
 	url = https://github.com/Willxup/cpa-usage-keeper
 	install = cpa-usage-keeper-bin.install
@@ -16,9 +16,9 @@ pkgbase = cpa-usage-keeper-bin
 	source = cpa-usage-keeper.service
 	sha256sums = 484bf3aeb083742ecd5116d29d5c7aa73290da64c386ac46a530c7033ad68ac8
 	sha256sums = 181e37963e289946319ec014253d5cb9a4d6c540d0b0c2d8215e4695811e06c0
-	source_x86_64 = cpa-usage-keeper-bin-1.15.3-x86_64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.15.3/cpa-usage-keeper_v1.15.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 150e3217f4d50467ed46851a5fb6ceb003b430cce78254bef070c434eaf2d73b
-	source_aarch64 = cpa-usage-keeper-bin-1.15.3-aarch64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.15.3/cpa-usage-keeper_v1.15.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = cdaa16f39d8e1fb11786d3532c715067d9823479a937c66ba326dcc73a1e81db
+	source_x86_64 = cpa-usage-keeper-bin-1.15.4-x86_64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.15.4/cpa-usage-keeper_v1.15.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = f0170a40dacc63ef05a60479eca3b1898dacfb81ab44ba884a727b3ab95ec565
+	source_aarch64 = cpa-usage-keeper-bin-1.15.4-aarch64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.15.4/cpa-usage-keeper_v1.15.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 07c5b55bffba1a6afefab7b276ccbacb5ea305c7723e317f07b77c3bc3f38cc5
 
 pkgname = cpa-usage-keeper-bin
