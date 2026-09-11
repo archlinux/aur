@@ -1,0 +1,16 @@
+pkgbase = pdrive
+	pkgdesc = Proton Drive sync client with TUI for Linux (unofficial)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/YourDoritos/pDrive
+	install = pdrive.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go>=1.26
+	makedepends = git
+	depends = glibc
+	source = pdrive-0.1.0.tar.gz::https://github.com/YourDoritos/pDrive/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pdrive

@@ -1,0 +1,50 @@
+post_install() {
+  cat <<'MSG'
+
+pDrive installed.
+
+  1. Log in:           pdrive
+  2. Start syncing:    systemctl --user enable --now pdrived
+  3. Keep it running
+     when logged out:  loginctl enable-linger "$USER"
+
+Your files sync into ~/pdrive.
+
+Optional: `systemctl enable --now pdrive-gate` (root) makes directory
+listings wait until they are current, instead of relying on polling.
+It never denies access and is safe to stop at any time.
+
+pDrive is a third-party application, not affiliated with Proton AG.
+
+MSG
+}
+
+post_upgrade() {
+  cat <<'MSG'
+
+pDrive upgraded. Restart the daemon to pick it up:
+
+    systemctl --user restart pdrived
+
+MSG
+}
+
+pre_remove() {
+  systemctl --user stop pdrived 2>/dev/null || true
+  systemctl stop pdrive-gate 2>/dev/null || true
+}
+
+post_remove() {
+  cat <<'MSG'
+
+pDrive removed. Left in place on purpose:
+
+  ~/pdrive                       your synced files
+  ~/.config/pdrive/              settings
+  ~/.local/state/pdrive/         session and sync state
+  ~/.local/share/pdrive/trash/   recoverable deletions
+
+Your Proton Drive account is untouched.
+
+MSG
+}
