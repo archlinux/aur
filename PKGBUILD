@@ -1,6 +1,6 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname="gnome-shell-extension-night-shift-git"
-pkgver=r54.2fba934
+pkgver=r57.eed57ab
 pkgrel=1
 pkgdesc="::Rolling release:: Gnome-shell extension to automatically switch themes/modes/styles when the sun sets or sun rises"
 arch=('any')
