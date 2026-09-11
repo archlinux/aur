@@ -13,7 +13,7 @@
 
 pkgname=chipass-git
 _gitname=ChiPass
-pkgver=r4809.gbbd034c
+pkgver=r4852.g270a56e
 pkgrel=1
 pkgdesc="Modern, secure, and open-source password manager (fork of KeePassXC)"
 arch=('i686' 'x86_64')
