@@ -12,13 +12,7 @@ noextract=("cli-$pkgver.tgz")
 sha256sums=('SKIP')
 
 package() {
-  npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/cli-$pkgver.tgz"
+  npm install -g --allow-scripts=better-sqlite3 --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/cli-$pkgver.tgz"
 
-  # npm gives ownership of ALL FILES to build user
-  # https://bugs.archlinux.org/task/63396
-  chown -R root:root "$pkgdir"
-  
-  # Remove cache and empty etc if they exist
-  rm -rf "$pkgdir/usr/etc"
-  rm -rf "$pkgdir/usr/lib/node_modules/@actual-app/cli/node_modules"/.cache
+  rm -rf "$pkgdir/usr/lib/node_modules/@actual-app/cli/node_modules/.cache"
 }
