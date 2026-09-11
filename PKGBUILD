@@ -14,7 +14,7 @@ pkgdesc='Custom Proton build for VRChat livestream support (RTSP/media playback)
 _pkgname=proton-rtsp
 pkgname=${_pkgname}-bin
 pkgver=11.0_20260609
-pkgrel=3
+pkgrel=4
 epoch=4
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
@@ -73,7 +73,7 @@ source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgname}-${_pk
   'launcher.sh'
   'proton-rtsp-bin.conf'
   'pam_limits.conf')
-sha512sums=('a3fc8ed2da5f6a837f0242901f6b5dd24d923ff0b4a5483385aef0f16761e3dab1a7944704cfebfcf6e2d35339b6207cea52ef5fcfa95d6e496d3f5b656d6136'
+sha512sums=('0ce00a5fcc6109a1f1ac6210c80d3bb5c647a25aff8aa560c8de635295dc989a43831b71bf31803c2685a38738e742bcdb776422163fddd713a6a566a4da2138'
             'babe2a461118bef6a777656a10bb89abeee2c8c3ed4285eb1b99f5ba517b779f18372d1d93ed2cce63b0d8111cf0b08e14a0c92435680239f6936783c3e4cbc5'
             '78ede6d50f9c43407da511c8b37dcf60aae2ddbd461c0081f0d0ce3de08ace3a84dee86e9253acbac829b47c5818ef4e1a354ccb05feaa9853ce279dc3f903fd'
             'ac2bd634838ffe6b90f2637e229013f0993fc1013271dbeefd216dc262a8bb79e4a5ce15a75cbfcb0c3b521d32f4ebe1ed25a6b066b99cc327b60bd6d7212e6f'
