@@ -1,9 +1,9 @@
 pkgname=1password-beta
 
-_tarver=8.12.34-29.BETA
+_tarver=8.12.38-25.BETA
 _tar="1password-${_tarver}.x64.tar.gz"
 pkgver=${_tarver//-/_}
-pkgrel=29
+pkgrel=25
 conflicts=('1password' '1password-beta-bin')
 pkgdesc="Password manager and secure wallet"
 arch=('x86_64')
@@ -12,8 +12,8 @@ license=('LicenseRef-1Password-Proprietary')
 options=(!strip)
 install="1password.install"
 source=(https://downloads.1password.com/linux/tar/beta/${CARCH}/${_tar}{,.sig})
-sha256sums=('6894b283a534cf94b07903fb38966a0aab2e37f75ee3848ce340308819aadddb'
-            '8d4df4d0a80d2be7aad7d91ad964a750c8f32db5007261045003c191690c8246'
+sha256sums=('c6d302a2c7404a7ded34a3c4f1c401a43eafeed8b147d128dcb416284c2c2b71'
+            'cc0f00054749c32d77fba31a12a8dece812e409f4b9d81850d2f9b50fab55dca'
 )
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
@@ -31,7 +31,7 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${resolution}/apps/1password.png"
     done
     # Install desktop file
-    install -Dm0644 resources/1password.desktop -t "${pkgdir}"/usr/share/applications/
+    install -Dm0644 resources/com.onepassword.OnePassword.desktop -t "${pkgdir}"/usr/share/applications/
 
     # Fill in policy kit file with a list of (the first 10) human users of the system.
     export POLICY_OWNERS
@@ -54,8 +54,7 @@ EOF" > ./com.1password.1Password.policy
     # Cleanup un-needed files
     rm "${pkgdir}"/opt/1Password/com.1password.1Password.policy "${pkgdir}"/opt/1Password/com.1password.1Password.policy.tpl "${pkgdir}"/opt/1Password/install_biometrics_policy.sh
     rm -r "${pkgdir}"/opt/1Password/resources/icons/
-    rm "${pkgdir}"/opt/1Password/resources/1password.desktop "${pkgdir}"/opt/1Password/resources/custom_allowed_browsers
-
+    rm "${pkgdir}"/opt/1Password/resources/com.onepassword.OnePassword.desktop "${pkgdir}"/opt/1Password/resources/custom_allowed_browsers
     # Symlink /usr/bin executable to opt
     install -dm0755 "${pkgdir}"/usr/bin
     ln -s /opt/1Password/1password "${pkgdir}"/usr/bin/1password
