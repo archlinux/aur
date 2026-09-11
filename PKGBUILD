@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=onorca-bin
-pkgver=1.4.198
+pkgver=1.4.200
 pkgrel=1
 pkgdesc="Orca - next-gen IDE for working with a fleet of parallel coding agents"
 arch=('x86_64' 'aarch64')
@@ -23,6 +23,8 @@ depends=(
     'gtk3'
     'hicolor-icon-theme'
     'libcups'
+    'libnotify'
+    'libsecret'
     'libx11'
     'libxcb'
     'libxcomposite'
@@ -31,13 +33,17 @@ depends=(
     'libxfixes'
     'libxkbcommon'
     'libxrandr'
+    'libxss'
+    'libxtst'
     'mesa'
     'nspr'
     'nss'
     'pango'
     'python'
     'python-gobject'
+    'util-linux-libs'
     'xclip'
+    'xdg-utils'
     'xdotool'
     'xorg-server-xvfb'
 )
@@ -55,15 +61,15 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_relurl}/orca-ide_${pkgver}_a
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_relurl}/orca-ide_${pkgver}_arm64.deb")
 
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3')
-sha256sums_x86_64=('f0e54c3dbe4ebaa2991b94c7e0e9c5949efe31f46942bbf379075669f7382b6c')
-sha256sums_aarch64=('0cea17609a834c2b14f237b441b24657abfda505ec5eecd96f38ad607f3e86d8')
+sha256sums_x86_64=('511827d5bd9b6d5205abce1749861d698554ef21dd9c09255fa927578d0261e6')
+sha256sums_aarch64=('f65f8710bfe5e29b693e246010f36e3669a4a667e123f78104506445bb6eea9e')
 
 package() {
     cd "$srcdir"
     # .deb is an ar archive of {debian-binary, control.tar.*, data.tar.*};
     # bsdtar (libarchive, always present) unpacks both layers, no binutils needed.
-    bsdtar -xf "${pkgname}-${pkgver}-${CARCH}.deb"
-    bsdtar -xf data.tar.xz -C "$pkgdir"
+    bsdtar --no-same-owner -xf "${pkgname}-${pkgver}-${CARCH}.deb"
+    bsdtar --no-same-owner -xf data.tar.xz -C "$pkgdir"
 
     # Upstream postinst suid's the sandbox helper for hosts without unprivileged
     # user namespaces; match it.
