@@ -19,4 +19,7 @@ package() {
     install -Dm755 *.py "${pkgdir}/usr/bin/sinergia-reflector-top"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
+    # Instalación formal de la licencia GPLv3 requerida por el AUR
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
