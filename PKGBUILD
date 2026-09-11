@@ -11,7 +11,7 @@ depends=(glibc libgcc)
 makedepends=(cargo)
 provides=('mtracker')
 conflicts=('mtracker')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/r-unruh/mtracker/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/r-unruh/mtracker/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('79af9c24e33b7a4afa0e41982101c26c4e3d6ce4cbe82fc606f3c97f6c58a1fded83ffec87fba32f6c95163cf57e0f8793c63cc4b1efde9d8d877b31e20d372d')
 
 prepare() {
