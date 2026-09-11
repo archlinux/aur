@@ -4,11 +4,11 @@ pkgbase=librefang-git
 pkgname=("librefang-git" "librefang-desktop-git" "librefang-whatsapp-gateway-git")
 pkgver=2026.7.27.r13.g1b9518fd1
 pkgrel=1
-pkgdesc='LibreFang is an open-source Agent Operating System written in Rust. (GIT version with patches for local STT,TTS,IMAGE support) '
+pkgdesc='LibreFang is an open-source Agent Operating System written in Rust. (GIT version)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/librefang/librefang'
 license=('MIT' 'Apache-2.0')
-makedepends=('rust' 'cargo' 'git' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'nodejs' 'npm' 'pnpm' 'node-gyp' 'python' 'nodejs-addon-api' 'libvips')
+makedepends=('rust' 'cargo' 'git' 'webkit2gtk-4.1' 'gtk3' 'nodejs' 'npm' 'pnpm' 'node-gyp' 'libvips')
 source=(
     "${pkgbase}::git+https://github.com/librefang/librefang.git"
     "librefang.sysusers"
@@ -16,62 +16,34 @@ source=(
     "librefang.service"
     "librefang-desktop.desktop"
     "librefang-whatsapp-gateway.service"
-    "feature-local-stt.patch"
-    "feature-local-tts.patch"
-    "feature-local-image.patch"
-    "feature-local-inference.md"
 )
 sha256sums=('SKIP'
             '72663b7a008dcf86e799df777f52c56ba700849510d3fd0c8f4a9e839702dd6e'
             'eb06400136cd6f6e0a57f5ee802c273c3ea05b63946c60bd9e135d079d777f10'
             'cf026330b3d4c3c708bd079b15401731e1afef4f3e780c4ad286ad0d961a6d5c'
             'a640db0197d001c5ae9348d57cda8092e2c8170fa27ced98d5546557fadb6d17'
-            '1ddb18ffdd4c4131bf9a35debfb21a61aeda8ca1be90829e0e1b10d7bf19b975'
-            'aa2df1c379d02a52bf4072f3de2f6c3be0512fc3efcbb141320ba19d8fc3ca46'
-            'c4fccf730140e3cbe1c694b6f4f3b94c47b998ba76262ce50c63f578822d5918'
-            '20a074c148871c24c2e2beb4fdb89523b1bd92b65aaae3b44432674d27c4b267'
-            '3db506e6228f294f836ffe216241440c1d472fe61bb60bd8e9128167221ef0cf')
+            '1ddb18ffdd4c4131bf9a35debfb21a61aeda8ca1be90829e0e1b10d7bf19b975')
 
 pkgver() {
     cd "${pkgbase}"
-    git describe --long --tags --match 'v[0-9]*' | sed 's/^v//; s/-\(beta\|alpha\|rc\)/\1/g; s/\([^-]*-g\)/r\1/; s/-/./g'
+    git describe --long --tags --match 'v[0-9]*' 2>/dev/null | sed 's/^v//; s/-\(beta\|alpha\|rc\)/\1/g; s/\([^-]*-g\)/r\1/; s/-/./g' || echo "2026.7.27.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    # Ensure HOME is writable for any git operations triggered by cargo or npm
-    mkdir -p "${srcdir}/.home"
-    export HOME="${srcdir}/.home"
-
-    cd "${pkgbase}"
-
-    # Apply local patches
-    msg2 "Applying local STT, TTS and image support patches..."
-    patch -Np1 -i "${srcdir}/feature-local-stt.patch"
-    patch -Np1 -i "${srcdir}/feature-local-tts.patch"
-    patch -Np1 -i "${srcdir}/feature-local-image.patch"
-
     export RUSTUP_TOOLCHAIN=stable
+    cd "${pkgbase}"
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    # Ensure HOME is writable for any git operations triggered by cargo or npm
-    mkdir -p "${srcdir}/.home"
-    export HOME="${srcdir}/.home"
-
-    # Build React dashboard WebUI so it gets embedded in the API binary at compile-time
-    cd "${srcdir}/${pkgbase}/crates/librefang-api/dashboard"
-    pnpm install --frozen-lockfile
-    pnpm run build
-
-    # Build Rust binaries
+    # Build Rust binaries (dashboard assets are embedded at compile time via include_dir!)
     cd "${srcdir}/${pkgbase}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     # Remap source paths so binaries don't embed build-specific paths
     export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}=/build"
     export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${CARGO_HOME:-${HOME}/.cargo}=/vendor"
-    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${RUSTUP_HOME:-${HOME}/.rustup}=/rustup"
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${RUSTUP_HOME:-${HOME}.rustup}=/rustup"
     # Remove -flto flags due to sqlite3 GCC compatibility issues with rust-lld
     CFLAGS="${CFLAGS//-flto=auto/}"
     CFLAGS="${CFLAGS//-flto/}"
@@ -82,25 +54,16 @@ build() {
     cargo build --frozen --release --bin librefang --bin librefang-desktop
 
     # Build Node.js whatsapp-gateway.
-    # baileys depends on libsignal from git. npm >= 12 defaults allow-git to
-    # "none" and refuses to fetch it; --allow-git=root is not enough because
-    # libsignal is transitive, not in the gateway's own package.json. The
-    # lockfile also resolves it over ssh, which has no credentials here, so
-    # rewrite ssh to https (HOME is confined to ${srcdir}/.home above).
     local _gwdir="${srcdir}/${pkgbase}/packages/whatsapp-gateway"
     cd "${_gwdir}"
-    # makepkg pins GIT_CONFIG_GLOBAL to /dev/null, so redirect it at a writable
-    # path before configuring the rewrite.
     export GIT_CONFIG_GLOBAL="${srcdir}/.home/.gitconfig"
     git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
     npm install --ignore-scripts --omit=dev --legacy-peer-deps --allow-git=all
-    # Copy system node-addon-api for compiling sharp/better-sqlite3 if needed
     cp -r /usr/lib/node_modules/node-addon-api "${_gwdir}/node_modules/node-addon-api"
 
     # Compile better-sqlite3 native addon
     cd "${_gwdir}/node_modules/better-sqlite3"
     npx node-gyp rebuild
-
 }
 
 check() {
@@ -111,7 +74,7 @@ check() {
 
 package_librefang-git() {
     pkgdesc='terminal interface and daemon for the LibreFang Agent OS'
-    depends=('glibc' 'openssl' 'libgcc' 'python-librefang-sdk-git')
+    depends=('glibc' 'openssl' 'libgcc' 'python')
     optdepends=(
         'chromium: Browser Hand support'
         'yt-dlp: Clip Hand support'
@@ -126,7 +89,6 @@ package_librefang-git() {
     install -Dm755 "target/release/librefang" "${pkgdir}/usr/bin/librefang"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "${srcdir}/feature-local-inference.md" "${pkgdir}/usr/share/doc/${pkgname}/feature-local-inference.md"
 
     # systemd service
     install -Dm644 "${srcdir}/librefang.service" "${pkgdir}/usr/lib/systemd/system/librefang.service"
@@ -141,7 +103,7 @@ package_librefang-git() {
 
 package_librefang-desktop-git() {
     pkgdesc='Desktop application for the LibreFang Agent OS'
-    depends=('glibc' 'openssl' 'libgcc' 'webkit2gtk-4.1' 'gtk3' 'cairo' 'gdk-pixbuf2' 'glib2' 'libsoup3' 'hicolor-icon-theme' 'python-librefang-sdk-git')
+    depends=('glibc' 'openssl' 'libgcc' 'webkit2gtk-4.1' 'gtk3' 'glib2')
     optdepends=(
         'librefang-git: CLI companion tool'
         'chromium: Browser Hand support'
@@ -156,8 +118,6 @@ package_librefang-desktop-git() {
     install -Dm755 "target/release/librefang-desktop" "${pkgdir}/usr/bin/librefang-desktop"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "${srcdir}/feature-local-inference.md" \
-        "${pkgdir}/usr/share/doc/${pkgname}/feature-local-inference.md"
 
     # .desktop file
     install -Dm644 "${srcdir}/librefang-desktop.desktop" \
@@ -187,7 +147,7 @@ package_librefang-whatsapp-gateway-git() {
     install -dm755 "${_gatewaydir}"
     cp -r index.js package.json node_modules lib "${_gatewaydir}/"
 
-    # Remove intermediate build folders/artifacts from better-sqlite3 and sharp to keep packages small
+    # Remove intermediate build folders/artifacts from better-sqlite3 to keep packages small
     local _sqlitebuild="${_gatewaydir}/node_modules/better-sqlite3/build"
     local _sqlitebin
     _sqlitebin=$(find "${_sqlitebuild}/Release" -maxdepth 1 -name 'better_sqlite3.node' 2>/dev/null | head -1)
