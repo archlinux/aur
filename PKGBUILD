@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=aurascan
-pkgver=0.10.6
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="AI-assisted safety and recovery layer for Arch-family systems"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 install=aurascan.install
 depends=('python' 'hicolor-icon-theme')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'git')
 optdepends=(
   'clamav: AV signature scanning through clamscan'
   'arch-audit: official Arch Security Team vulnerability advisories'
@@ -45,7 +45,7 @@ optdepends=(
   'xfsprogs: read-only XFS recovery diagnostics'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0a73de292592d75dc4eb138d61bb9c369e9f8061d261276d4cfdc60821c346f2')
+sha256sums=('24e1f0197bfb43770467553ef5a327c5f6af8598581b94b5d9428a89ee3479a7')
 
 build() {
   cd "AuraScan-$pkgver"
