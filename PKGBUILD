@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=picot
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 # Keep in sync with scripts/pi-version.json; prepare() fails the build on drift.
 _pi_ver=0.85.1
@@ -39,7 +39,7 @@ options=('!lto' '!debug')
 _pi_relurl="https://github.com/earendil-works/pi-mono/releases/download/v${_pi_ver}"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e38a158218bb73a0eafd21cd8d14783e0d17cbe8aad1544dfa54b9a1179c6d65')
+sha256sums=('6dc685803510039ba9afd31fb314c2238912ca8dd5483dc8a05ed05721a78a33')
 sha256sums_x86_64=('494e498f47d74d21f40b3386f6a5e921a3d49531a169cab55bbdaca0ea1fe25a')
 sha256sums_aarch64=('042d20ae885ee4f3b102815f3280b962c377b2e9fb44de4037908cc530eae4d4')
 source_x86_64=("pi-linux-x64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-x64.tar.gz")
@@ -120,10 +120,10 @@ package() {
     # Frontend resources
     local _libdir="${pkgdir}/usr/lib/Picot"
     install -d "${_libdir}"
-    cp -a public "${_libdir}/public"
+    cp -a --no-preserve=ownership public "${_libdir}/public"
 
     # Bundled pi runtime
-    cp -a src-tauri/resources/pi "${_libdir}/pi"
+    cp -a --no-preserve=ownership src-tauri/resources/pi "${_libdir}/pi"
 
     # Bundled extensions
     install -d "${_libdir}/extensions"
