@@ -1,4 +1,7 @@
 # Maintainer: Shahriyar Alam <mdshahriyaralam552@gmail.com>
+#
+# Generated from packaging/PKGBUILD.in by .github/workflows/release.yml.
+# Edit the template, not the copy in the AUR repository.
 
 pkgname=maono
 pkgver=0.2.0
@@ -12,7 +15,7 @@ options=("!strip" "!debug")
 source=("maono-$pkgver::$url/releases/download/v$pkgver/maono"
         "LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE"
         "99-maono.rules-$pkgver::$url/raw/v$pkgver/99-maono.rules")
-sha256sums=("e3a43a2c11e540478587ca8f2fa84b62ef292b88efd622cbf68838dc3bc13f09"
+sha256sums=("1f342da609d1e73f1d9051a47dbb34463bd6efd0d67e0adea4ba838369bb456b"
             "4268d08d81256cf62ddbc09f71a02f4087f0a7f4c1555b6a1f8d00006872f15d"
             "afaf978a31f80f6797eea61fd8f3b031fe255590aaa448a8bbe3138c5e62d263")
 
