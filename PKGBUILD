@@ -2,13 +2,13 @@
 
 pkgname=diceware-eff-git
 pkgver=0.2.0.r0.7a74398
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate passphrases from six-sided dice rolls"
 arch=('any')
 url="https://github.com/jmcantrell/${pkgname%-git}"
 license=('MIT')
 makedepends=('git' 'scdoc')
-checkdepends=('parallel' 'diffutils')
+checkdepends=('bats-assert' 'bats-file')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url")
