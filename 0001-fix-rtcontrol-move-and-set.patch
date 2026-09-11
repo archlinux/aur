@@ -1,0 +1,45 @@
+From 007e8b3971cae021356323d924bb67dede9beaf1 Mon Sep 17 00:00:00 2001
+From: darkalchemy <darkalchemy@jbmatrix.net>
+Date: Sat, 24 May 2025 14:11:21 -0400
+Subject: [PATCH] fix: rtcontrol --move-and-set
+
+---
+ src/pyrosimple/scripts/rtcontrol.py | 5 ++++-
+ src/pyrosimple/torrent/rtorrent.py  | 3 ++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/pyrosimple/scripts/rtcontrol.py b/src/pyrosimple/scripts/rtcontrol.py
+index 465b3d60..2f67c55d 100644
+--- a/src/pyrosimple/scripts/rtcontrol.py
++++ b/src/pyrosimple/scripts/rtcontrol.py
+@@ -549,8 +549,11 @@ class RtorrentControl(ScriptBaseWithConfig):
+         if set_to_target:
+             was_started = item.is_active
+             item.stop()
+-        if move_type in ["copy", "move"]:
++        if move_type == "copy":
+             item.move(target, move_func=lambda _, s, d: shutil.copy2(s, d))
++        elif move_type =="move":
++            item.move(target, move_func=lambda _, s, d: shutil.move(s, d))
++
+         elif move_type == "hardlink":
+ 
+             def hardlink(_, s, d):
+diff --git a/src/pyrosimple/torrent/rtorrent.py b/src/pyrosimple/torrent/rtorrent.py
+index a5d951e2..f0dc5649 100644
+--- a/src/pyrosimple/torrent/rtorrent.py
++++ b/src/pyrosimple/torrent/rtorrent.py
+@@ -466,8 +466,9 @@ class RtorrentItem(engine.TorrentProxy):
+             for f in self._get_files():
+                 src = Path(self.datapath(), f.path)
+                 dest_file = Path(dest, f.path)
++                dest_parent = dest_file.parent.absolute()
+                 if src != dest_file:
+-                    dest_file.mkdir(parents=True, exist_ok=True)
++                    dest_parent.mkdir(parents=True, exist_ok=True)
+                     move_func(self, src, dest_file)
+         else:
+             dest.mkdir(parents=True, exist_ok=True)
+-- 
+2.55.0
+

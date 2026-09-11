@@ -1,0 +1,46 @@
+diff --git a/src/pyrosimple/scripts/base.py b/src/pyrosimple/scripts/base.py
+index ba4e810c..efe23193 100644
+--- a/src/pyrosimple/scripts/base.py
++++ b/src/pyrosimple/scripts/base.py
+@@ -51,9 +51,12 @@ class ScriptBase:
+         except ImportError:
+             import importlib_metadata  # pylint: disable=import-outside-toplevel
+ 
+-            version = importlib_metadata.version(  # pylint: disable=no-member
+-                "pyrosimple"
+-            )
++            try:
++                version = importlib_metadata.version(  # pylint: disable=no-member
++                    "pyrosimple"
++                )
++            except importlib_metadata.PackageNotFoundError:
++                version = "git"
+         implementation = sys.implementation.name
+         if implementation == "cpython":
+             implementation = "Python"
+diff --git a/src/pyrosimple/torrent/engine.py b/src/pyrosimple/torrent/engine.py
+index 7eeee799..02d7c8d8 100644
+--- a/src/pyrosimple/torrent/engine.py
++++ b/src/pyrosimple/torrent/engine.py
+@@ -35,6 +35,12 @@ def percent(floatval: float) -> float:
+     return floatval * 100.0
+ 
+ 
++def flatset(val: list) -> set:
++    if val and isinstance(val[0], list):
++        return set(y for x in val for y in x)
++    return set(val)
++
++
+ def _duration(start: Optional[float], end: Optional[float]) -> Optional[float]:
+     """Return time delta."""
+     if start is None:
+@@ -353,7 +359,7 @@ def core_fields():
+         prefilter_field="d.custom=tags",
+     )
+     yield DynamicField(
+-        set,
++        flatset,
+         "views",
+         "views this item is attached to",
+         matcher=matching.TaggedAsFilter,
