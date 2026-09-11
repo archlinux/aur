@@ -2,7 +2,7 @@
 
 pkgname=uutils-shadow-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A memory-safe reimplementation of the Linux shadow-utils in Rust"
 arch=('aarch64' 'x86_64')
 url="https://github.com/uutils/shadow"
@@ -19,6 +19,6 @@ sha256sums_x86_64=('1d9c5069e9849b084815b5d46ee112ca78240533f553a3aca438fd5ee4ab
 
 
 package() {
-  install -Dm755 "$srcdir/uu_shadow-$CARCH-unknown-linux-gnu/shadow-rs" -t "$pkgdir/usr/bin"
+  install -Dm6755 "$srcdir/uu_shadow-$CARCH-unknown-linux-gnu/shadow-rs" -t "$pkgdir/usr/bin"
   install -Dm644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/uutils-shadow/LICENSE"
 }

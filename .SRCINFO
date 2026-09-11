@@ -1,7 +1,7 @@
 pkgbase = uutils-shadow-bin
 	pkgdesc = A memory-safe reimplementation of the Linux shadow-utils in Rust
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uutils/shadow
 	arch = aarch64
 	arch = x86_64
