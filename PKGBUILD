@@ -2,8 +2,8 @@ _pkgname=joplin-server
 _image=joplin/server
 
 pkgname="$_pkgname-bin"
-pkgver=3.7.1
-pkgrel=2
+pkgver=3.7.2
+pkgrel=1
 pkgdesc='Joplin Server, via Docker image'
 arch=('any')
 url="https://hub.docker.com/r/$_image"
