@@ -1,7 +1,7 @@
 pkgbase = python-glom
 	pkgdesc = Python's nested data operator
-	pkgver = 24.11.0
-	pkgrel = 2
+	pkgver = 25.12.0
+	pkgrel = 1
 	url = https://github.com/mahmoud/glom
 	arch = any
 	license = BSD-3
@@ -9,7 +9,7 @@ pkgbase = python-glom
 	depends = python-boltons
 	depends = python-attrs
 	depends = python-face
-	source = https://github.com/mahmoud/glom/archive/refs/tags/v24.11.0.tar.gz
-	sha256sums = 4dddb8ccb3566e5cf8b2efa0276ab53cf651cc8998ac1453bac2440c52933f25
+	source = https://github.com/mahmoud/glom/archive/refs/tags/v25.12.0.tar.gz
+	sha256sums = 2dd3a6355cbbae8ca48014cd85e549b2c80e9cfc9ccc125fca484f967ac2b79e
 
 pkgname = python-glom

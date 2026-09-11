@@ -2,8 +2,8 @@
 
 pkgname=python-glom
 _name=glom
-pkgver=24.11.0
-pkgrel=2
+pkgver=25.12.0
+pkgrel=1
 pkgdesc="Python's nested data operator"
 arch=('any')
 url='https://github.com/mahmoud/glom'
@@ -14,9 +14,8 @@ source=(
   "https://github.com/mahmoud/glom/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '4dddb8ccb3566e5cf8b2efa0276ab53cf651cc8998ac1453bac2440c52933f25'
+  '2dd3a6355cbbae8ca48014cd85e549b2c80e9cfc9ccc125fca484f967ac2b79e'
 )
-
 
 build() {
   cd "$srcdir/$_name-$pkgver"
