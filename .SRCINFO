@@ -1,6 +1,6 @@
 pkgbase = tailport
 	pkgdesc = TUI to expose local ports across your tailnet via tailscale serve
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/gruen/tailport
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tailport
 	depends = glibc
 	depends = tailscale
 	depends = iproute2
-	source = tailport-0.2.6.tar.gz::https://github.com/gruen/tailport/archive/refs/tags/v0.2.6.tar.gz
-	sha256sums = 6174a3174b1c8ec5ee421cd4018acf45ea2a2fc416fe6c47bcce33a7291f75a6
+	source = tailport-0.2.7.tar.gz::https://github.com/gruen/tailport/archive/refs/tags/v0.2.7.tar.gz
+	sha256sums = 73d2e59d0d339f564d544b85a32d48636f6b2c0ff371a28b5792ad3608e3bbb6
 
 pkgname = tailport
