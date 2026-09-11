@@ -1,0 +1,18 @@
+pkgbase = platform-profile-daemon
+	pkgdesc = Minimal Power Profiles D-Bus for AMD Dynamic EPP via platform profiles
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://codeberg.org/nathawat/platform-profile-daemon
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = pkgconf
+	makedepends = zig
+	depends = dbus
+	depends = polkit
+	depends = systemd
+	provides = power-profiles-daemon
+	conflicts = power-profiles-daemon
+	source = platform-profile-daemon-1.1.0.tar.gz::https://codeberg.org/nathawat/platform-profile-daemon/archive/v1.1.0.tar.gz
+	b2sums = 39a021f0230d2390baf781880d12a9d8c54b3f72a9947e4d512cd90f07608e8242644cdb1e5b6d33f655f90037205c6f4652b927a535ff284040e12822e72a94
+
+pkgname = platform-profile-daemon
