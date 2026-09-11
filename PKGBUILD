@@ -2,7 +2,7 @@
 
 pkgname=musicrename
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="command line music library manager"
 arch=(x86_64)
 url=https://github.com/mfinelli/musicrename
@@ -21,10 +21,6 @@ sha256sums=('5bbf1cd0ad28840331b7a68e14778f0a18c763c78182ffbda70c53cc809a91ba')
 prepare() {
   cd $pkgname
   export GOPATH="${srcdir}/gopath"
-
-  # TODO: go 1.27.1 not in arch repos yet
-  sed -i 's/go 1.27.1/go 1.27.0/' go.mod
-
   go mod download
 }
 
