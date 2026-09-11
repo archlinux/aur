@@ -1,6 +1,6 @@
 pkgbase = grepai-bin
 	pkgdesc = Privacy-first CLI tool for semantic code search using vector embeddings
-	pkgver = 0.36.1
+	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://github.com/yoanbernabeu/grepai
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = grepai-bin
 	provides = grepai
 	conflicts = grepai
 	conflicts = grepai-git
-	source_x86_64 = grepai-bin-0.36.1.tar.gz::https://github.com/yoanbernabeu/grepai/releases/download/v0.36.1/grepai_0.36.1_linux_amd64.tar.gz
-	source_x86_64 = LICENSE::https://raw.githubusercontent.com/yoanbernabeu/grepai/v0.36.1/LICENSE
-	sha256sums_x86_64 = 320283da0ef4e5876ac900fa7c2bf2d99686ce5916a5e4b6fe6539c702329807
+	source_x86_64 = grepai-bin-0.37.0.tar.gz::https://github.com/yoanbernabeu/grepai/releases/download/v0.37.0/grepai_0.37.0_linux_amd64.tar.gz
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/yoanbernabeu/grepai/v0.37.0/LICENSE
+	sha256sums_x86_64 = f4862fb939d45f7ce1e1d3d97269d14ac5882e7c5614aecee16df3ae486466f8
 	sha256sums_x86_64 = 49966552514373129de9faea43a890bf6a8b04f158b2966876a57fdf915980e5
-	source_aarch64 = grepai-bin-0.36.1.tar.gz::https://github.com/yoanbernabeu/grepai/releases/download/v0.36.1/grepai_0.36.1_linux_arm64.tar.gz
-	source_aarch64 = LICENSE::https://raw.githubusercontent.com/yoanbernabeu/grepai/v0.36.1/LICENSE
-	sha256sums_aarch64 = 320283da0ef4e5876ac900fa7c2bf2d99686ce5916a5e4b6fe6539c702329807
+	source_aarch64 = grepai-bin-0.37.0.tar.gz::https://github.com/yoanbernabeu/grepai/releases/download/v0.37.0/grepai_0.37.0_linux_arm64.tar.gz
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/yoanbernabeu/grepai/v0.37.0/LICENSE
+	sha256sums_aarch64 = f4862fb939d45f7ce1e1d3d97269d14ac5882e7c5614aecee16df3ae486466f8
 	sha256sums_aarch64 = 49966552514373129de9faea43a890bf6a8b04f158b2966876a57fdf915980e5
 
 pkgname = grepai-bin
