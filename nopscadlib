@@ -1,5 +1,5 @@
 #!/bin/bash
-SDIR=/usr/share/openscad-nopscadlib-git/scripts
+SDIR=/usr/share/openscad-nopscadlib/scripts
 SCMD="$1"
 shift
 if test "$SCMD"; then

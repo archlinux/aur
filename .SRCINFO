@@ -1,7 +1,7 @@
 pkgbase = openscad-nopscadlib-git
 	pkgdesc = Library of parts modelled in OpenSCAD and a framework for making projects.
 	pkgver = 21.41.1.r3.gc9baa0e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nophead/NopSCADlib
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,9 +10,11 @@ pkgbase = openscad-nopscadlib-git
 	depends = python-colorama
 	depends = codespell
 	depends = python-markdown
+	provides = openscad-nopscadlib=21.41.1.r3.gc9baa0e
+	conflicts = openscad-nopscadlib
 	source = git+https://github.com/nophead/NopSCADlib.git
 	source = nopscadlib
 	sha256sums = SKIP
-	sha256sums = 5587f406b1d12fbf34c27664104e2f027c7afaed2585ae54b669fa7c13b869f9
+	sha256sums = 99cac07ac10c0dbe55f10c583ab122cd37ef00aeafa7c55eff79b41795e6a776
 
 pkgname = openscad-nopscadlib-git
