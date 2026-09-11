@@ -1,0 +1,5 @@
+[cargo-pretty]
+source = "github"
+github = "romancitodev/cargo-pretty"
+use_latest_release = true
+prefix = "v"
