@@ -1,13 +1,13 @@
 pkgbase = openvr-ignition-bin
 	pkgdesc = Allows you to run Windows-only SteamVR drivers on Linux, using Wine/Proton
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/BnuuySolutions/Ignition
 	arch = x86_64
 	license = MIT
 	provides = openvr-ignition
 	conflicts = openvr-ignition
-	source = ignition-1.0.0.zip::https://github.com/BnuuySolutions/Ignition/releases/download/v1.0.0/Ignition-Linux-Windows.zip
-	sha512sums = 2efc3c0a025df5738df49259152ba4c28b5ae025f7e40fd1000ad1fc68f97eaf130c9f237eaee2dc6374943267731ce4d2636a59b0ac46c6fc98267c59e876f0
+	source = ignition-1.1.0.zip::https://github.com/BnuuySolutions/Ignition/releases/download/v1.1.0/Ignition-Linux-Windows.zip
+	sha512sums = a28c92aadc8cabdc8daff029acb1d6cb89b363ba999d33641b69ec85cc9877947879f0fb4b0613002eb436f89ec985f1e8dd8d6bbfe6f595929873b3fc5c4935
 
 pkgname = openvr-ignition-bin

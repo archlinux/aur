@@ -1,8 +1,8 @@
 # Maintainer: Mr.Zero88 <huesmann.mats+aur@gmail.com>
 
 pkgname=openvr-ignition-bin
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Allows you to run Windows-only SteamVR drivers on Linux, using Wine/Proton"
 arch=('x86_64')
 url="https://github.com/BnuuySolutions/Ignition"
@@ -11,7 +11,7 @@ source=(
   "ignition-$pkgver.zip::https://github.com/BnuuySolutions/Ignition/releases/download/v$pkgver/Ignition-Linux-Windows.zip"
 )
 sha512sums=(
-  '2efc3c0a025df5738df49259152ba4c28b5ae025f7e40fd1000ad1fc68f97eaf130c9f237eaee2dc6374943267731ce4d2636a59b0ac46c6fc98267c59e876f0'
+  'a28c92aadc8cabdc8daff029acb1d6cb89b363ba999d33641b69ec85cc9877947879f0fb4b0613002eb436f89ec985f1e8dd8d6bbfe6f595929873b3fc5c4935'
 )
 provides=('openvr-ignition')
 conflicts=('openvr-ignition')
@@ -27,5 +27,5 @@ package() {
         ${srcdir}/launch_serverhelper.sh \
         ${srcdir}/libdriver_ignition.so \
         ${srcdir}/proton \
-        ${srcdir}/wine_psvr2_hidraw.reg
+        ${srcdir}/wine_hidraw.reg
 }
