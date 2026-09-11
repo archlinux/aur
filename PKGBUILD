@@ -15,7 +15,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/Sinergia-Reflector-Top-${pkgver}"
 
     # Instalar el script principal como ejecutable en /usr/bin
     install -Dm755 sinergia-reflector-top.py "${pkgdir}/usr/bin/sinergia-reflector-top"
