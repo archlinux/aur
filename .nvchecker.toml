@@ -1,0 +1,5 @@
+[cmd-wrapped-bin]
+source = "github"
+github = "YiNNx/cmd-wrapped"
+use_latest_release = true
+prefix = "v"
