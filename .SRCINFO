@@ -1,0 +1,15 @@
+pkgbase = talabulilm
+	pkgdesc = Watch Ceramah Ustaz (Islamic lectures) from the terminal, ani-cli style
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/numan89/talabulilm
+	arch = any
+	license = MIT
+	depends = bash
+	depends = fzf
+	depends = yt-dlp
+	depends = mpv
+	source = talabulilm-0.2.0.tar.gz::https://github.com/numan89/talabulilm/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 8bb7a780dfdf2afa498415f98a506d889066569ab7b4c906e7656cb501851e99
+
+pkgname = talabulilm
