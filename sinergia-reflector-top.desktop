@@ -2,6 +2,7 @@
 Name=Sinergia Reflector Top
 Comment=Optimiza tus espejos de Arch Linux de forma gráfica
 Exec=sinergia-reflector-top
+Icon=sinergia-reflector-top
 Terminal=false
 Type=Application
 Categories=System;Settings;
