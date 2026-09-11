@@ -1,6 +1,6 @@
 pkgbase = hyprspaces-tools
 	pkgdesc = Helper CLI and config automation for the hyprspaces HyprPM plugin
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://gitlab.com/jtaw5649/Hyprspaces
 	install = hyprspaces-tools.install
@@ -12,7 +12,7 @@ pkgbase = hyprspaces-tools
 	optdepends = quickshell: Quickshell workspace indicator assets
 	optdepends = sunshine: optional Sunshine virtual display helper
 	conflicts = hyprspaces<2.0.0
-	source = https://gitlab.com/jtaw5649/Hyprspaces/-/releases/v2.3.2/downloads/hyprspaces-2.3.2.tar.gz
-	sha256sums = 68d620f07e78d8371f19711c8d070cf71c43b4c4ae8801bafb01c71ec39f78cd
+	source = https://gitlab.com/jtaw5649/Hyprspaces/-/releases/v2.3.3/downloads/hyprspaces-2.3.3.tar.gz
+	sha256sums = 7fb36e10d8ddaa6e0079c8d076f20968fa677bd0d6aff693f14c63bb142f10ac
 
 pkgname = hyprspaces-tools

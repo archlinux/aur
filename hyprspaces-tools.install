@@ -9,6 +9,7 @@ post_install() {
 
 post_upgrade() {
 	echo "HyprPM owns plugin updates. Run 'hyprpm update' for plugin rebuilds."
+	echo "For stale headers or an ABI mismatch, run 'hyprpm update -f', then 'hyprpm reload'."
 	echo "Run 'hyprspaces install' to refresh helper-managed config if needed."
 	echo "Run 'hyprspaces doctor' for read-only validation."
 }
