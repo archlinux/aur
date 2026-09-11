@@ -2,7 +2,7 @@
 
 _name=tavily-python
 pkgname=python-$_name
-pkgver=0.8.1
+pkgver=0.8.2
 _commit=58ad657a99ed32e3d7b40972d984869b54dbd42f
 pkgrel=1
 pkgdesc="Python wrapper for the Tavily API."

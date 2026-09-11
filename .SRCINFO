@@ -1,6 +1,6 @@
 pkgbase = python-tavily-python
 	pkgdesc = Python wrapper for the Tavily API.
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/tavily-ai/tavily-python
 	arch = any
