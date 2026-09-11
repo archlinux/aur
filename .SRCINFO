@@ -1,6 +1,6 @@
 pkgbase = hypryou
 	pkgdesc = Dynamic and elegant desktop setup inspired by Material You, featuring auto-generated colors, fluid animations, and customizable user experience.
-	pkgver = 2.2.6
+	pkgver = 2.2.7
 	pkgrel = 2
 	url = https://github.com/koeqaife/hyprland-material-you
 	install = hypryou.install
@@ -49,7 +49,7 @@ pkgbase = hypryou
 	optdepends = tela-circle-icon-theme-nord: Default icons
 	optdepends = satty: Screenshot editor
 	conflicts = hypryou-git
-	source = hyprland-material-you::git+https://github.com/koeqaife/hyprland-material-you.git#tag=v2.2.6
-	sha256sums = 89d90ea347e0e3c86445013e9f6c835142ccc6a6c216993e5254009e14b298ce
+	source = hyprland-material-you::git+https://github.com/koeqaife/hyprland-material-you.git#tag=v2.2.7
+	sha256sums = 237dc9236befd6e60484609523bf7cb7ba63f1c9c1a5e7ba973e05abaf4b9e89
 
 pkgname = hypryou
