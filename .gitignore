@@ -1,0 +1,8 @@
+# Upstream payloads & build artifacts — never commit these
+*.dmg
+*.zip
+*.pkg.tar.zst
+*.pkg.tar.xz
+src/
+pkg/
+*.log

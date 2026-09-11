@@ -1,0 +1,23 @@
+DISCLAIMER
+
+This package is an UNOFFICIAL community Linux port of the WorkBuddy
+international-edition client (https://www.workbuddy.ai), produced by
+converting the official macOS build to run with a Linux Electron runtime.
+
+- WorkBuddy, WorkBuddy AI and CodeBuddy are products/trademarks of Tencent.
+  This project is not affiliated with, endorsed by, or supported by Tencent.
+- All application content is downloaded from Tencent's official servers and
+  is NOT redistributed by this package; conversion happens locally on the
+  user's machine. The upstream software is proprietary; use of it is governed
+  by Tencent's own Terms of Service and Privacy Policy.
+- Auto-update is non-functional on Linux (upstream publishes no Linux feed
+  for the international edition). Upgrade by rebuilding this package.
+- Known functional degradations versus the official macOS/Windows clients:
+  Tencent Docs deep-collaboration engine (native SDK is macOS-only; basic
+  document read/write via cloud API still works), and the AI code sandbox
+  (no Linux build; automated execution falls back to the real terminal).
+- Do NOT report issues with this port to Tencent's official support
+  channels. File issues with the community port project instead.
+
+The conversion toolchain scripts in this package (install.sh, lib-*.sh, lib-*.js) are
+MIT-licensed (see LICENSE.port-tool).
