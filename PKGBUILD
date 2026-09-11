@@ -2,7 +2,7 @@
 # Contributor: XSilverTH <XSilverTH@proton.me>
 
 pkgname=adb-gui-kit-bin
-pkgver=2.0.0beta4
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A modern desktop toolkit for ADB, Fastboot, and scrcpy"
 arch=('x86_64')
