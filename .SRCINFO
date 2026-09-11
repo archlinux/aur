@@ -1,14 +1,14 @@
 pkgbase = diceware-eff
 	pkgdesc = Generate passphrases from six-sided dice rolls
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/jmcantrell/diceware-eff
 	arch = any
 	license = MIT
-	checkdepends = parallel
-	checkdepends = diffutils
+	checkdepends = bats-assert
+	checkdepends = bats-file
 	makedepends = scdoc
-	source = https://github.com/jmcantrell/diceware-eff/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 33c5910f2696659e80e8632df65e1d004998cac599811f45c522be243d5c7e28
+	source = https://github.com/jmcantrell/diceware-eff/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 0cf61e4be3480865a1feedce9cd5f7473b5617e26e1a94b725bec61a1fa09245
 
 pkgname = diceware-eff
