@@ -2,7 +2,7 @@
 
 pkgname=conky-manager-g-bin
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Conky theme manager with a modern UI.'
 arch=('x86_64')
 url='https://github.com/almezali/conky-manager-g'
