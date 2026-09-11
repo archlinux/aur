@@ -1,6 +1,6 @@
 pkgbase = r-haplo.stats
 	pkgdesc = Statistical Analysis of Haplotypes with Traits and Covariates when Linkage Phase is Ambiguous
-	pkgver = 1.9.8.7
+	pkgver = 1.9.9.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=haplo.stats
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-haplo.stats
 	depends = r-rms
 	optdepends = r-r.rsp
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/haplo.stats_1.9.8.7.tar.gz
-	sha256sums = e187b3a38a3c9e20d94ddd04b180a53b158a7d05f0d59d4c4bd79cd37dd6603e
+	source = https://cran.r-project.org/src/contrib/haplo.stats_1.9.9.1.tar.gz
+	sha256sums = f5a624d7369415dd226326f0227da88a339ff7ae8827c33a52590abbe511487a
 
 pkgname = r-haplo.stats
