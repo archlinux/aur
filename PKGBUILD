@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=hdf5r
-_pkgver=1.3.15
+_pkgver=1.3.16
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0cecdfdc197e07ce158b26774dbfa000')
-b2sums=('73f12276d1dd4e1cab034f03a919aec59e9086b051c6d636e9212bd2858089e16699aac0b43e554362d7b281a1d6488beadd0837610759041631e2d14de5cd8a')
+md5sums=('f1d281882e87137f59a815c401d8d0d7')
+b2sums=('514a1684413426ba08c688bc439c0051b66567e8600ac7b7bd1e1b7c93bfb0a9a47f8421784339ebc2a0fda4023b310aff952a3e1296f89fd86815a3731c1565')
 
 build() {
   mkdir build
