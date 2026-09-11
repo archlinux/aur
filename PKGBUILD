@@ -1,9 +1,10 @@
 # Maintainer: chen-shuhan <2502820816@qq.com>
 # Maintainer: asystech-chen <https://github.com/asystech-chen/Vantage>
+# 非官方社区打包 - 与上游 ASYS 科技无隶属关系，仅供 Arch 社区使用
 pkgname=vantage-browser
 pkgver=153.2.0
 pkgrel=1
-pkgdesc="Vantage 浏览器 - 基于 Firefox ESR 的隐私/快速/易用定制版 (编译安装)"
+pkgdesc="Vantage 浏览器 - 基于 Firefox ESR 的隐私/快速/易用定制版 (编译安装) - 非官方社区打包"
 arch=('x86_64' 'aarch64')
 url="https://github.com/asystech-chen/Vantage"
 license=('MPL-2.0')
