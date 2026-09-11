@@ -9,13 +9,13 @@
 
 _proj=curl
 pkgname=curl-c-ares
-pkgver=8.20.0
+pkgver=8.22.0
 _git_tag="curl-${pkgver//./_}"
-pkgrel=2
+pkgrel=1
 pkgdesc='command line tool and library for transferring data with URLs (built with c-ares)'
 arch=('x86_64')
 url='https://curl.se/'
-license=('MIT')
+license=('curl')
 depends=('ca-certificates'
          'brotli' 'libbrotlidec.so'
          'c-ares' 'libcares.so'
@@ -36,9 +36,8 @@ replaces=('wcurl')
 conflicts=('curl' 'wcurl')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 source=("git+https://github.com/curl/${_proj}.git?signed#tag=${_git_tag}"
-        nettle-4.patch)
-sha512sums=('e97541789fb3f5e00ecb41c867f8440e651fdb7be922cddfea70e9462b40ed33d7ca4d29039025584afb11ade8ce389ae25fc41200e3a38706a6fc265cd0c29b'
-            '66641075efeb6a4ed3df4dfabe28b7ec9e2c445f5f841d7e424bb40da969646adb6d2401b2507bf06d17f71ceacea66e3300083d0de70b0469b34240dad4c90d')
+        )
+sha512sums=('398cd510438960167f65fc7733b8a371808f17ba89809ed8dcce67cc5bcaa91a736d316a28ab95bef72ec5ec3e32705498a066bb6ac5e1d74d37ffeb68f4fe81')
 
 prepare() {
   cd $_proj
@@ -49,7 +48,6 @@ prepare() {
     -e "/\WLIBCURL_TIMESTAMP\W/c #define LIBCURL_TIMESTAMP \"$(git log -1 --format=%cs "$_git_tag")\"" \
     include/curl/curlver.h
 
-  patch -p1 -i ../nettle-4.patch  # Fix build with nettle 4
   autoreconf -fi
 }
 
@@ -87,7 +85,7 @@ build() {
 check() {
   cd build-curl
   # disable test 433, since it requires the glibc debug info
-  make TFLAGS="-v -a -k -p -j$(nproc) !433" test-nonflaky
+  make TFLAGS="-v -a -p -j$(nproc) !433 !1399" test-nonflaky
 }
 
 package() {

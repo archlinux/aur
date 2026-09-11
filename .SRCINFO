@@ -1,10 +1,10 @@
 pkgbase = curl-c-ares
 	pkgdesc = command line tool and library for transferring data with URLs (built with c-ares)
-	pkgver = 8.20.0
-	pkgrel = 2
+	pkgver = 8.22.0
+	pkgrel = 1
 	url = https://curl.se/
 	arch = x86_64
-	license = MIT
+	license = curl
 	checkdepends = valgrind
 	makedepends = git
 	makedepends = nettle
@@ -39,10 +39,8 @@ pkgbase = curl-c-ares
 	conflicts = curl
 	conflicts = wcurl
 	replaces = wcurl
-	source = git+https://github.com/curl/curl.git?signed#tag=curl-8_20_0
-	source = nettle-4.patch
+	source = git+https://github.com/curl/curl.git?signed#tag=curl-8_22_0
 	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
-	sha512sums = e97541789fb3f5e00ecb41c867f8440e651fdb7be922cddfea70e9462b40ed33d7ca4d29039025584afb11ade8ce389ae25fc41200e3a38706a6fc265cd0c29b
-	sha512sums = 66641075efeb6a4ed3df4dfabe28b7ec9e2c445f5f841d7e424bb40da969646adb6d2401b2507bf06d17f71ceacea66e3300083d0de70b0469b34240dad4c90d
+	sha512sums = 398cd510438960167f65fc7733b8a371808f17ba89809ed8dcce67cc5bcaa91a736d316a28ab95bef72ec5ec3e32705498a066bb6ac5e1d74d37ffeb68f4fe81
 
 pkgname = curl-c-ares
