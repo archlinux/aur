@@ -1,7 +1,7 @@
 pkgbase = casual-pre-loader
 	pkgdesc = TF2 particle modifications via some wizardry.
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = https://cueki.github.io/casual-pre-loader/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -21,9 +21,9 @@ pkgbase = casual-pre-loader
 	depends = python-urllib3
 	depends = python-cappa
 	optdepends = wine: running studiomdl
-	source = git+https://github.com/cueki/casual-pre-loader.git#tag=v2.3.0
+	source = git+https://github.com/cueki/casual-pre-loader.git#tag=v2.3.1
 	source = git+https://github.com/cueki/studiomdl.git
-	sha256sums = 4406d14ca2fc3ad1d7fe6f650bebaea7e71f1950c0a1ef85d65a85d4966f6e9b
+	sha256sums = 69746ecccd9570dfb73171c17030d275b16fbf4a12ccb312af56611457bf4d03
 	sha256sums = SKIP
 
 pkgname = casual-pre-loader

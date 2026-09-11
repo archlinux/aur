@@ -1,8 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: djsigmann <aur+djsigmann@protonmail.com>
 pkgname=casual-pre-loader
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="TF2 particle modifications via some wizardry."
 arch=('x86_64')
 url="https://cueki.github.io/casual-pre-loader/"
@@ -17,7 +17,7 @@ makedepends=('gendesk' 'git')
 optdepends=('wine: running studiomdl')
 source=("git+https://github.com/cueki/${pkgname}.git#tag=v${pkgver}"
 	"git+https://github.com/cueki/studiomdl.git")
-sha256sums=('4406d14ca2fc3ad1d7fe6f650bebaea7e71f1950c0a1ef85d65a85d4966f6e9b'
+sha256sums=('69746ecccd9570dfb73171c17030d275b16fbf4a12ccb312af56611457bf4d03'
             'SKIP')
 
 prepare() {
