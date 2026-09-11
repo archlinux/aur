@@ -1,0 +1,17 @@
+pkgbase = keyring-aliveos
+	pkgdesc = Transparent GNOME Keyring / Secret Service prompter for AliveOS with Zenity-GTK3 styling, UAC screen dimming, and password reveal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Twilight0/keyring-aliveos
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = gcr
+	depends = libcanberra
+	source = https://github.com/Twilight0/keyring-aliveos/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = b3ef77242a659c0d39070adc0e52e3459690541bbe4c0f37b1bb16c77b957bac
+
+pkgname = keyring-aliveos
