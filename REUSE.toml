@@ -39,15 +39,12 @@ path = [
     "chromium-146-apply-upstream-libmuck-fix.patch",
     "chromium-150-revert-avx-flag-change.patch",
     "chromium-151-dont-depends-on-histograms.xml-if-it-is-not-git-checkout.patch",
-]
-SPDX-FileCopyrightText = "chromium contributors"
-SPDX-License-Identifier = "BSD-3-Clause"
-
-[[annotations]]
-path = [
     "cef-no-libxml-visibility-patch.patch",
     "cef-no-sysroot.patch",
-    "chromium-disable-font-tests.patch"
+    "chromium-disable-font-tests.patch",
+    "chromium-152-fix-gn-no-public_inputs.patch",
+    "chromium-152-unbundle-minizip-undo-unicode.patch",
+    "chromium-152-unbundle-opus-devtools.patch",
 ]
 SPDX-FileCopyrightText = "chromium contributors"
 SPDX-License-Identifier = "BSD-3-Clause"
@@ -84,13 +81,8 @@ SPDX-License-Identifier = "MIT"
 path = [
     "chromium-149-drop-unknown-clang-flag.patch",
     "chromium-149-use-of-undeclared-identifier-ERROR.patch",
+    "chromium-152-crubit.patch",
+    "chromium-152-dawn-llvm-22.patch",
 ]
 SPDX-FileCopyrightText = "2003-2026 Nixpkgs/NixOS contributors"
 SPDX-License-Identifier = "MIT"
-
-[[annotations]]
-path = [
-    "chromium-149-unbundle-minizip-undo-unicode.patch"
-]
-SPDX-FileCopyrightText = "LN Liberda <lauren@selfisekai.rocks>"
-SPDX-License-Identifier = "BSD-3-Clause"
