@@ -9,26 +9,25 @@
 
 _pkgname=ModusToolboxProgtools
 pkgname=modustoolbox-progtools
-_pkgver=1.7
-pkgver=${_pkgver}.0.1727
+_pkgver=1.9
+pkgver=${_pkgver}.0.2261
 pkgrel=1
 pkgdesc="Provides a cross-platform installation of several utilities that allow you to program flash on Infineon MCU and Kit devices."
 arch=('x86_64')
 license=("LicenseRef-${pkgname}")
 depends=('fontconfig' 'libglvnd' 'dbus' 'krb5' 'libxkbcommon' 'libxkbcommon-x11' 'pango' 'xcb-util-cursor' 'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util-renderutil' \
-    'openssl-1.1' 'gtk3' 'xcb-util-image' 'zstd' 'systemd-libs' 'glib2' 'gcc-libs' 'zlib' 'freetype2' 'libxcb' 'libx11' 'glibc')
+    'openssl-1.1' 'gtk3' 'xcb-util-image' 'zstd' 'systemd-libs' 'glib2' 'zlib' 'freetype2' 'libxcb' 'libx11' 'glibc')
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxprogtools"
 source=("file://${_pkgname}_${pkgver}.deb")
-sha256sums=('6f85e132f0dea53de4bce88a6a19f526f5460ed8e82d96aafd8f47e7aee72499')
+sha256sums=('42f48cec9f7b770dc966949a9274167ef96e9935c969f5b65fc6da2ffb0fa436')
 options=('!strip')
 install="${pkgname}.install"
 
 
 prepare() {
-    rm -rf "${srcdir}/opt" "${srcdir}/usr"
     cd ${srcdir}
-    bsdtar -xf data.tar.gz -C ./
-    rm data.tar.gz
+    bsdtar -xf data.tar.zst -C ./
+    rm data.tar.zst
     mv ./opt/Tools/${_pkgname}-${_pkgver} ./opt/
     # Remove the empty directory
     rm -r ./opt/Tools
