@@ -1,7 +1,9 @@
 # Maintainer: Lucas Gabriel <g at 11xx dot org>
 pkgname=muzaiten-git
 pkgver=0.0.0
-pkgrel=3
+pkgrel=4
+# Preserve upgrade ordering from the timestamp-based VCS package versions.
+epoch=1
 pkgdesc="Native music player for local libraries, with ratings and scrobbling"
 arch=('x86_64')
 url="https://github.com/11xx/muzaiten"
@@ -22,12 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    # UTC timestamp plus a commit count so successive -git builds always compare
-    # as newer, even when multiple commits land in the same second.
-    printf '%s.r%s.g%s' \
-        "$(TZ=UTC0 git show -s --format=%cd --date=format-local:%Y.%m.%d.%H%M%S HEAD)" \
-        "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short HEAD)"
+    python tools/version.py
 }
 
 build() {
