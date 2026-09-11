@@ -3,7 +3,7 @@
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=proto
-pkgver=0.62.0
+pkgver=0.62.2
 pkgrel=1
 pkgdesc='Pluggable multi-language version manager'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('gcc-libs' 'git' 'unzip' 'gzip' 'xz')
 optdepends=('rustup: support for Rust toolchains')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('436b1e11518e452ba0e6109f620cc574a143bb7e564c68636bc4213e3fc4fd6d')
+sha256sums=('5cd3baab58dc0ff8055fae009f820f7fb029112a4b083679ed33b4ccb4c01909')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
