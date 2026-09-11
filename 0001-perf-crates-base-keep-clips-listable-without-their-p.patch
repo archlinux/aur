@@ -1,0 +1,507 @@
+From 7ec9ce9568a09cbb5bfacc5c0d06f8acd74600f5 Mon Sep 17 00:00:00 2001
+From: claudecode <hockinglee@gmail.com>
+Date: Thu, 10 Sep 2026 18:01:25 +0800
+Subject: [PATCH 1/3] perf(crates/base): keep clips listable without their
+ pixels
+
+Two things made a large clip history expensive.
+
+`Entry::id` hashed the whole content on every call, and `list` calls it once
+per clip, so opening the menu hashed every image in history -- over a gigabyte
+of memory traffic for a few hundred screenshots. The identifier is now derived
+from the digest, once, when the entry is built; it is also stable across
+restarts.
+
+A clip held its image as decoded pixels, four bytes each, so history kept every
+image resident decoded and had to decode every one of them at start-up before
+the daemon would answer. Only the clip being pasted needs pixels. `Entry` now
+keeps the PNG encoding, and can stand for an image it does not hold at all:
+`Entry::deferred_image` builds one from the digest and size recorded in the
+history store, and `Entry::with_image` fills it in when the image is needed.
+Identifier, mime, size, timestamp and preview are all answerable either way, so
+listing history never reaches for an image.
+
+`Entry::as_ref` gives way to `to_clipboard_content`, which decodes on the way to
+the clipboard, and to `plaintext` for callers that only wanted the text.
+Equality and hashing move to the digest, which an unloaded image also has.
+
+PNG input is kept verbatim, only its header parsed, instead of being decoded and
+encoded again; the digest stays the hash of the stored encoding, so existing
+histories keep working unchanged.
+---
+ crates/base/src/entry.rs | 316 ++++++++++++++++++++++++++++++---------
+ 1 file changed, 245 insertions(+), 71 deletions(-)
+
+diff --git a/crates/base/src/entry.rs b/crates/base/src/entry.rs
+index 081e6cb..a05f2c2 100644
+--- a/crates/base/src/entry.rs
++++ b/crates/base/src/entry.rs
+@@ -4,6 +4,7 @@ use std::{
+     hash::{Hash, Hasher},
+ };
+ 
++use bytes::Bytes;
+ use image::ImageEncoder as _;
+ use sha2::{Digest, Sha256};
+ use snafu::{ResultExt, Snafu};
+@@ -11,14 +12,40 @@ use time::{OffsetDateTime, UtcOffset, format_description::well_known::Rfc3339};
+ 
+ use crate::{ClipboardContent, ClipboardKind};
+ 
++/// What an [`Entry`] holds.
++///
++/// Images are kept PNG-encoded rather than as decoded pixels. Decoded pixels
++/// are an order of magnitude larger, and only the clip that is being pasted
++/// needs them; keeping every clip in history decoded made the daemon's memory
++/// grow with the size of the image history.
++#[derive(Clone, Debug, Eq, PartialEq)]
++enum Content {
++    Plaintext(String),
++
++    Image {
++        /// Length of the PNG encoding. It is known even when the image itself
++        /// is not loaded, so that a clip can be listed without touching
++        /// the history store.
++        byte_length: usize,
++
++        /// `None` while the image lives only in the history store.
++        png: Option<Bytes>,
++    },
++}
++
+ #[derive(Clone, Debug, Eq)]
+ pub struct Entry {
+-    content: ClipboardContent,
++    content: Content,
+ 
+     clipboard_kind: ClipboardKind,
+ 
+     timestamp: OffsetDateTime,
+ 
++    /// Derived from `sha256_digest`, and cached: `Entry::id` is called for
++    /// every clip on every `list` request, and an unloaded image has no
++    /// content to derive it from.
++    id: u64,
++
+     sha256_digest: Vec<u8>,
+ }
+ 
+@@ -31,40 +58,51 @@ impl Entry {
+         clipboard_kind: ClipboardKind,
+         timestamp: Option<OffsetDateTime>,
+     ) -> Result<Self, Error> {
+-        let content = if mime.type_() == mime::TEXT {
+-            ClipboardContent::Plaintext(String::from_utf8_lossy(data).to_string())
+-        } else if mime.type_() == mime::IMAGE {
+-            let image_format = match mime.subtype() {
+-                mime::PNG => image::ImageFormat::Png,
+-                mime::JPEG => image::ImageFormat::Jpeg,
+-                mime::GIF => image::ImageFormat::Gif,
+-                mime::BMP => image::ImageFormat::Bmp,
+-                _ => return Err(Error::FormatNotAvailable),
+-            };
+-
+-            let cursor = std::io::Cursor::new(&data);
+-            let mut reader = image::ImageReader::new(cursor);
+-            reader.set_format(image_format);
+-            reader
+-                .decode()
+-                .map(|img| {
+-                    let image = img.into_rgba8();
+-                    let (w, h) = image.dimensions();
+-                    ClipboardContent::Image {
+-                        width: w as usize,
+-                        height: h as usize,
+-                        bytes: bytes::Bytes::from(image.into_raw()),
+-                    }
+-                })
+-                .context(ConvertImageSnafu {})?
+-        } else {
+-            return Err(Error::FormatNotAvailable);
+-        };
++        Ok(Self::build(encode_content(data, mime)?, clipboard_kind, timestamp))
++    }
+ 
+-        let sha256_digest = compute_sha256_digest(&content);
+-        let timestamp = timestamp.unwrap_or_else(OffsetDateTime::now_utc);
++    /// Creates an entry whose image is kept in the history store rather than in
++    /// memory.
++    ///
++    /// `sha256_digest` identifies the stored image, and `byte_length` is the
++    /// size of its PNG encoding. Call [`Entry::with_image`] to load it when
++    /// the image itself is needed.
++    #[inline]
++    #[must_use]
++    pub fn deferred_image(
++        byte_length: usize,
++        sha256_digest: Vec<u8>,
++        clipboard_kind: ClipboardKind,
++        timestamp: Option<OffsetDateTime>,
++    ) -> Self {
++        Self {
++            content: Content::Image { byte_length, png: None },
++            clipboard_kind,
++            timestamp: timestamp.unwrap_or_else(OffsetDateTime::now_utc),
++            id: derive_id(&sha256_digest),
++            sha256_digest,
++        }
++    }
+ 
+-        Ok(Self { content, clipboard_kind, timestamp, sha256_digest })
++    /// Loads the image of an entry created by [`Entry::deferred_image`].
++    ///
++    /// The history store addresses images by their digest, so `png` is assumed
++    /// to be the image this entry stands for. Entries that are not unloaded
++    /// images are returned unchanged.
++    #[inline]
++    #[must_use]
++    pub fn with_image<B>(mut self, png: B) -> Self
++    where
++        B: Into<Bytes>,
++    {
++        if let Content::Image { byte_length, png: slot } = &mut self.content
++            && slot.is_none()
++        {
++            let png = png.into();
++            *byte_length = png.len();
++            *slot = Some(png);
++        }
++        self
+     }
+ 
+     #[inline]
+@@ -74,13 +112,30 @@ impl Entry {
+     }
+ 
+     #[inline]
++    #[must_use]
+     pub fn from_clipboard_content(
+         content: ClipboardContent,
+         clipboard_kind: ClipboardKind,
+         timestamp: Option<OffsetDateTime>,
++    ) -> Self {
++        let content = match content {
++            ClipboardContent::Plaintext(text) => Content::Plaintext(text),
++            ClipboardContent::Image { width, height, bytes } => {
++                let png = encode_as_png(width, height, &bytes).unwrap_or_default();
++                Content::Image { byte_length: png.len(), png: Some(Bytes::from(png)) }
++            }
++        };
++        Self::build(content, clipboard_kind, timestamp)
++    }
++
++    fn build(
++        content: Content,
++        clipboard_kind: ClipboardKind,
++        timestamp: Option<OffsetDateTime>,
+     ) -> Self {
+         let sha256_digest = compute_sha256_digest(&content);
+         Self {
++            id: derive_id(&sha256_digest),
+             content,
+             clipboard_kind,
+             timestamp: timestamp.unwrap_or_else(OffsetDateTime::now_utc),
+@@ -90,7 +145,7 @@ impl Entry {
+ 
+     #[inline]
+     #[must_use]
+-    pub fn id(&self) -> u64 { self.content.id() }
++    pub const fn id(&self) -> u64 { self.id }
+ 
+     #[inline]
+     #[must_use]
+@@ -105,15 +160,36 @@ impl Entry {
+ 
+     #[inline]
+     #[must_use]
+-    pub const fn is_utf8_string(&self) -> bool { self.content.is_plaintext() }
++    pub const fn is_utf8_string(&self) -> bool { matches!(self.content, Content::Plaintext(_)) }
++
++    /// The text of a plaintext clip, or `None` for an image.
++    #[inline]
++    #[must_use]
++    pub fn plaintext(&self) -> Option<&str> {
++        match &self.content {
++            Content::Plaintext(text) => Some(text),
++            Content::Image { .. } => None,
++        }
++    }
++
++    #[inline]
++    #[must_use]
++    pub fn as_utf8_string(&self) -> String { self.plaintext().unwrap_or_default().to_owned() }
++
++    /// Whether this is an image whose pixels are not in memory.
++    #[inline]
++    #[must_use]
++    pub const fn is_image_deferred(&self) -> bool {
++        matches!(self.content, Content::Image { png: None, .. })
++    }
+ 
++    /// The dimensions of a loaded image, read from the PNG header.
+     #[inline]
+     #[must_use]
+-    pub fn as_utf8_string(&self) -> String {
+-        if let ClipboardContent::Plaintext(ref text) = self.content {
+-            text.clone()
+-        } else {
+-            String::new()
++    pub fn image_dimensions(&self) -> Option<(usize, usize)> {
++        match &self.content {
++            Content::Plaintext(_) | Content::Image { png: None, .. } => None,
++            Content::Image { png: Some(png), .. } => png_dimensions(png),
+         }
+     }
+ 
+@@ -124,8 +200,8 @@ impl Entry {
+             .to_offset(UtcOffset::current_local_offset().unwrap_or(UtcOffset::UTC))
+             .format(&Rfc3339)
+             .unwrap_or_default();
+-        let size = humansize::format_size(self.content.len(), humansize::BINARY);
+-        let content_type = self.content.mime();
++        let size = humansize::format_size(self.len(), humansize::BINARY);
++        let content_type = self.mime();
+         format!("[{content_type} {size} {timestamp}]")
+     }
+ 
+@@ -139,8 +215,8 @@ impl Entry {
+         }
+ 
+         let data = match &self.content {
+-            ClipboardContent::Plaintext(text) => text.clone(),
+-            ClipboardContent::Image { .. } => self.basic_information(),
++            Content::Plaintext(text) => text.clone(),
++            Content::Image { .. } => self.basic_information(),
+         };
+ 
+         let data = match line_length {
+@@ -174,35 +250,74 @@ impl Entry {
+ 
+     #[inline]
+     #[must_use]
+-    pub const fn is_empty(&self) -> bool { self.content.is_empty() }
++    pub const fn is_empty(&self) -> bool {
++        match &self.content {
++            Content::Plaintext(text) => text.is_empty(),
++            Content::Image { byte_length, .. } => *byte_length == 0,
++        }
++    }
+ 
+     #[inline]
+     #[must_use]
+-    pub const fn len(&self) -> usize { self.content.len() }
++    pub const fn len(&self) -> usize {
++        match &self.content {
++            Content::Plaintext(text) => text.len(),
++            Content::Image { byte_length, .. } => *byte_length,
++        }
++    }
+ 
+     #[inline]
+     #[must_use]
+     pub fn as_bytes(&self) -> &[u8] {
+         match &self.content {
+-            ClipboardContent::Plaintext(text) => text.as_bytes(),
+-            ClipboardContent::Image { bytes, .. } => bytes,
++            Content::Plaintext(text) => text.as_bytes(),
++            Content::Image { png, .. } => png.as_ref().map_or(&[][..], |png| png),
+         }
+     }
+ 
++    /// The clip as it is stored: the text itself, or the PNG encoding of the
++    /// image.
++    ///
+     /// # Errors
++    ///
++    /// Returns [`Error::ImageNotLoaded`] for an image that is still in the
++    /// history store.
+     #[inline]
+     pub fn encoded(&self) -> Result<Vec<u8>, Error> {
+         match &self.content {
+-            ClipboardContent::Plaintext(text) => Ok(text.as_bytes().to_vec()),
+-            ClipboardContent::Image { width, height, bytes } => {
+-                encode_as_png(*width, *height, bytes)
++            Content::Plaintext(text) => Ok(text.as_bytes().to_vec()),
++            Content::Image { png, .. } => {
++                png.as_ref().map(|png| png.to_vec()).ok_or(Error::ImageNotLoaded)
++            }
++        }
++    }
++
++    /// The clip in the form the clipboard takes it, decoding the image if there
++    /// is one.
++    ///
++    /// # Errors
++    ///
++    /// Returns [`Error::ImageNotLoaded`] for an image that is still in the
++    /// history store.
++    #[inline]
++    pub fn to_clipboard_content(&self) -> Result<ClipboardContent, Error> {
++        match &self.content {
++            Content::Plaintext(text) => Ok(ClipboardContent::Plaintext(text.clone())),
++            Content::Image { png, .. } => {
++                let png = png.as_ref().ok_or(Error::ImageNotLoaded)?;
++                decode_png(png)
+             }
+         }
+     }
+ 
+     #[inline]
+     #[must_use]
+-    pub const fn mime(&self) -> mime::Mime { self.content.mime() }
++    pub const fn mime(&self) -> mime::Mime {
++        match &self.content {
++            Content::Plaintext(_) => mime::TEXT_PLAIN_UTF_8,
++            Content::Image { .. } => mime::IMAGE_PNG,
++        }
++    }
+ 
+     #[inline]
+     pub fn metadata(&self, preview_length: Option<usize>) -> Metadata {
+@@ -215,24 +330,19 @@ impl Entry {
+         }
+     }
+ 
++    #[inline]
++    #[must_use]
+     pub fn sha256_digest(&self) -> &[u8] { &self.sha256_digest }
+ }
+ 
+ impl Default for Entry {
+     fn default() -> Self {
+-        let content = ClipboardContent::Plaintext(String::new());
+-        let sha256_digest = compute_sha256_digest(&content);
+-        Self {
+-            content,
+-            clipboard_kind: ClipboardKind::Clipboard,
+-            timestamp: OffsetDateTime::now_utc(),
+-            sha256_digest,
+-        }
++        Self::build(Content::Plaintext(String::new()), ClipboardKind::Clipboard, None)
+     }
+ }
+ 
+ impl PartialEq for Entry {
+-    fn eq(&self, other: &Self) -> bool { self.content == other.content }
++    fn eq(&self, other: &Self) -> bool { self.sha256_digest == other.sha256_digest }
+ }
+ 
+ impl PartialOrd for Entry {
+@@ -249,11 +359,7 @@ impl Ord for Entry {
+ }
+ 
+ impl Hash for Entry {
+-    fn hash<H: Hasher>(&self, state: &mut H) { self.content.hash(state); }
+-}
+-
+-impl AsRef<ClipboardContent> for Entry {
+-    fn as_ref(&self) -> &ClipboardContent { &self.content }
++    fn hash<H: Hasher>(&self, state: &mut H) { self.sha256_digest.hash(state); }
+ }
+ 
+ #[derive(Clone, Debug, Eq, PartialEq)]
+@@ -282,6 +388,64 @@ impl Ord for Metadata {
+     }
+ }
+ 
++/// Brings `data` into the form an [`Entry`] keeps: text as it is, images
++/// PNG-encoded.
++///
++/// PNG input is kept verbatim; only its header is parsed, to check that it is
++/// an image at all and to reject what could not be decoded later.
++fn encode_content(data: &[u8], mime: &mime::Mime) -> Result<Content, Error> {
++    if mime.type_() == mime::TEXT {
++        return Ok(Content::Plaintext(String::from_utf8_lossy(data).to_string()));
++    }
++
++    if mime.type_() != mime::IMAGE {
++        return Err(Error::FormatNotAvailable);
++    }
++
++    let image_format = match mime.subtype() {
++        mime::PNG => {
++            if png_dimensions(data).is_none() {
++                return Err(Error::FormatNotAvailable);
++            }
++            return Ok(Content::Image {
++                byte_length: data.len(),
++                png: Some(Bytes::copy_from_slice(data)),
++            });
++        }
++        mime::JPEG => image::ImageFormat::Jpeg,
++        mime::GIF => image::ImageFormat::Gif,
++        mime::BMP => image::ImageFormat::Bmp,
++        _ => return Err(Error::FormatNotAvailable),
++    };
++
++    let mut reader = image::ImageReader::new(std::io::Cursor::new(&data));
++    reader.set_format(image_format);
++    let image = reader.decode().context(ConvertImageSnafu {})?.into_rgba8();
++    let (width, height) = image.dimensions();
++    let png = encode_as_png(width as usize, height as usize, &image.into_raw())?;
++
++    Ok(Content::Image { byte_length: png.len(), png: Some(Bytes::from(png)) })
++}
++
++fn decode_png(png: &[u8]) -> Result<ClipboardContent, Error> {
++    let mut reader = image::ImageReader::new(std::io::Cursor::new(png));
++    reader.set_format(image::ImageFormat::Png);
++    let image = reader.decode().context(ConvertImageSnafu {})?.into_rgba8();
++    let (width, height) = image.dimensions();
++    Ok(ClipboardContent::Image {
++        width: width as usize,
++        height: height as usize,
++        bytes: Bytes::from(image.into_raw()),
++    })
++}
++
++/// Reads the dimensions out of a PNG header, without decoding the image.
++fn png_dimensions(png: &[u8]) -> Option<(usize, usize)> {
++    let mut reader = image::ImageReader::new(std::io::Cursor::new(png));
++    reader.set_format(image::ImageFormat::Png);
++    reader.into_dimensions().ok().map(|(width, height)| (width as usize, height as usize))
++}
++
+ fn encode_as_png(width: usize, height: usize, bytes: &[u8]) -> Result<Vec<u8>, Error> {
+     let (width, height) =
+         (u32::try_from(width).unwrap_or_default(), u32::try_from(height).unwrap_or_default());
+@@ -297,17 +461,24 @@ fn encode_as_png(width: usize, height: usize, bytes: &[u8]) -> Result<Vec<u8>, E
+     Ok(png_bytes)
+ }
+ 
+-fn compute_sha256_digest(content: &ClipboardContent) -> Vec<u8> {
++fn compute_sha256_digest(content: &Content) -> Vec<u8> {
+     let mut hasher = Sha256::new();
+     match content {
+-        ClipboardContent::Plaintext(text) => hasher.update(text.as_bytes()),
+-        ClipboardContent::Image { width, height, bytes } => {
+-            hasher.update(encode_as_png(*width, *height, bytes).unwrap_or_default());
+-        }
++        Content::Plaintext(text) => hasher.update(text.as_bytes()),
++        Content::Image { png, .. } => hasher.update(png.as_ref().map_or(&[][..], |png| png)),
+     }
+     hasher.finalize().to_vec()
+ }
+ 
++/// The identifier of a clip is the head of its digest, so that it can be told
++/// without the clip itself being at hand, and stays the same across restarts.
++fn derive_id(sha256_digest: &[u8]) -> u64 {
++    let mut head = [0u8; 8];
++    let len = head.len().min(sha256_digest.len());
++    head[..len].copy_from_slice(&sha256_digest[..len]);
++    u64::from_le_bytes(head)
++}
++
+ #[derive(Debug, Snafu)]
+ #[snafu(visibility(pub))]
+ pub enum Error {
+@@ -317,6 +488,9 @@ pub enum Error {
+     #[snafu(display("The image is empty"))]
+     EmptyImage,
+ 
++    #[snafu(display("The image is not loaded from the clip history"))]
++    ImageNotLoaded,
++
+     #[snafu(display("Error occurs while converting image, error: {source}"))]
+     ConvertImage { source: image::ImageError },
+ }

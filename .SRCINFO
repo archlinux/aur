@@ -1,0 +1,25 @@
+pkgbase = clipcat-perf
+	pkgdesc = A clipboard manager (patched for large clip histories)
+	pkgver = 0.26.0
+	pkgrel = 1
+	url = https://github.com/xrelkd/clipcat
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = protobuf
+	depends = gcc-libs
+	depends = glibc
+	provides = clipcat=0.26.0
+	conflicts = clipcat
+	options = !lto
+	options = !debug
+	source = clipcat-0.26.0.tar.gz::https://github.com/xrelkd/clipcat/archive/refs/tags/v0.26.0.tar.gz
+	source = 0001-perf-crates-base-keep-clips-listable-without-their-p.patch
+	source = 0002-perf-crates-server-load-only-the-clips-history-keeps.patch
+	source = 0003-build-drop-the-git2-dependency-from-build-metadata.patch
+	sha256sums = 3d20e3bbe7b5b7ac478e10e1892d3978a99f4573ed118574b4d441820cff3d7f
+	sha256sums = a9ac4502327cc3e422ea6a777929042f66b09a98d89b2b17f8697640697956f8
+	sha256sums = fabdc32e4c09d5950f9694d47e48dd87d55721f697a9ea55d957d71a5c8cfbe1
+	sha256sums = fad0d68e267e1f45ad2014c36b17db0bc48c54fa862fbf2d9d8c3e3c47a4af48
+
+pkgname = clipcat-perf

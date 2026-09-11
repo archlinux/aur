@@ -1,0 +1,1113 @@
+From e91f58f518c105f10fe48f50f621bcc0d61231a6 Mon Sep 17 00:00:00 2001
+From: claudecode <hockinglee@gmail.com>
+Date: Thu, 10 Sep 2026 18:01:25 +0800
+Subject: [PATCH 2/3] perf(crates/server): load only the clips history keeps,
+ and leave images on disk
+
+Starting the daemon read every record ever appended to the clips file and
+decoded every image in the store, then handed the lot to `ClipboardManager`,
+which dropped all but `max_history` of them. On a store of a few hundred images
+start-up spent seconds at full CPU before the "started" notification appeared.
+
+`Driver::load` now takes the capacity history is kept at and works in two steps:
+scan the records -- image records carry only a digest, so this stays cheap --
+and keep the newest `capacity` of them. Images are not read at all: a record
+becomes a deferred clip carrying the digest that names its file and the size of
+it, which is all that listing a clip needs. The scan reads through a `BufReader`
+rather than issuing a syscall per field.
+
+The pixels come back through the new `ImageStore` when a clip is actually pasted
+or fetched. It needs no lock, because images are addressed by the digest of
+their content and a stored image never changes. `ClipboardManager` holds one and
+fills a clip in on `get`, `get_current_clip` and `mark`, which leaves the gRPC
+and D-Bus services unchanged.
+
+The store is also compacted while loading, which is what keeps it from growing
+without bound: the clips file is rewritten to hold exactly the retained records,
+and image files nothing references any more are removed. Until now that happened
+only on a graceful shutdown, so a daemon that was killed left its history to
+accumulate. `shrink_to` shares the routine, and both stage the rewrite in a
+temporary file so an interrupted compaction cannot truncate the clips file.
+Storing an image that is already in the store now skips encoding and writing it.
+
+Note that history beyond `max_history` is discarded at start-up rather than at
+shutdown; lowering `max_history` and restarting now drops the excess right away.
+---
+ Cargo.lock                                 |   1 +
+ crates/server/Cargo.toml                   |   3 +
+ crates/server/src/dbus/manager.rs          |   6 +-
+ crates/server/src/grpc/manager.rs          |   2 +-
+ crates/server/src/history/driver/fs/mod.rs | 578 ++++++++++++++++-----
+ crates/server/src/history/driver/mod.rs    |   5 +-
+ crates/server/src/history/mod.rs           |  10 +-
+ crates/server/src/lib.rs                   |   3 +-
+ crates/server/src/manager/error.rs         |   3 +
+ crates/server/src/manager/mod.rs           | 149 ++++--
+ 10 files changed, 597 insertions(+), 163 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index eb936d7..05a5cd2 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -928,6 +928,7 @@ version = "0.26.0"
+ dependencies = [
+  "async-trait",
+  "bincode",
++ "bytes",
+  "clipcat-base",
+  "clipcat-clipboard",
+  "clipcat-dbus-variant",
+diff --git a/crates/server/Cargo.toml b/crates/server/Cargo.toml
+index e0f3aa8..010f40b 100644
+--- a/crates/server/Cargo.toml
++++ b/crates/server/Cargo.toml
+@@ -49,5 +49,8 @@ clipcat-dbus-variant = { workspace = true }
+ clipcat-metrics      = { workspace = true }
+ clipcat-proto        = { workspace = true }
+ 
++[dev-dependencies]
++bytes = { workspace = true }
++
+ [lints]
+ workspace = true
+diff --git a/crates/server/src/dbus/manager.rs b/crates/server/src/dbus/manager.rs
+index b555285..e309332 100644
+--- a/crates/server/src/dbus/manager.rs
++++ b/crates/server/src/dbus/manager.rs
+@@ -58,7 +58,7 @@ where
+         let manager = self.manager.lock().await;
+         manager
+             .get_current_clip(clipcat_base::ClipboardKind::Clipboard)
+-            .map(clipcat_base::ClipEntry::as_utf8_string)
++            .map(|clip| clip.as_utf8_string())
+             .unwrap_or_default()
+     }
+ 
+@@ -102,9 +102,7 @@ where
+         let _histogram_timer = metrics::dbus::REQUEST_DURATION_SECONDS.start_timer();
+ 
+         let manager = self.manager.lock().await;
+-        zvariant::Optional::from(
+-            manager.get_current_clip(kind.into()).map(|clip| clip.clone().into()),
+-        )
++        zvariant::Optional::from(manager.get_current_clip(kind.into()).map(Into::into))
+     }
+ 
+     async fn list(&self, preview_length: u64) -> Vec<dbus_variant::ClipEntryMetadata> {
+diff --git a/crates/server/src/grpc/manager.rs b/crates/server/src/grpc/manager.rs
+index 8abb5a5..7fc47fc 100644
+--- a/crates/server/src/grpc/manager.rs
++++ b/crates/server/src/grpc/manager.rs
+@@ -90,7 +90,7 @@ where
+         let data = {
+             let kind = request.into_inner().kind.into();
+             let manager = self.manager.lock().await;
+-            manager.get_current_clip(kind).map(|clip| clip.clone().into())
++            manager.get_current_clip(kind).map(Into::into)
+         };
+         Ok(Response::new(proto::GetCurrentClipResponse { data }))
+     }
+diff --git a/crates/server/src/history/driver/fs/mod.rs b/crates/server/src/history/driver/fs/mod.rs
+index eb54c66..ca307e0 100644
+--- a/crates/server/src/history/driver/fs/mod.rs
++++ b/crates/server/src/history/driver/fs/mod.rs
+@@ -2,7 +2,9 @@ mod migrate;
+ mod model;
+ 
+ use std::{
+-    collections::HashSet,
++    collections::{HashMap, HashSet, hash_map::DefaultHasher},
++    hash::{Hash, Hasher},
++    io::BufReader,
+     path::{Path, PathBuf},
+ };
+ 
+@@ -19,6 +21,10 @@ use crate::history::{Error, driver::Driver, error};
+ 
+ const CURRENT_SCHEMA: u64 = model::v2::FileHeader::SCHEMA_VERSION;
+ 
++// Reading the clips file goes through `bincode`, which issues one small read
++// per field; without buffering that is a syscall per field.
++const READ_BUFFER_SIZE: usize = 1 << 20;
++
+ pub struct FileSystemDriver {
+     file_path: PathBuf,
+     clips_file: File,
+@@ -117,22 +123,28 @@ impl FileSystemDriver {
+     async fn store_file_content(&mut self, clip: ClipEntry) -> Result<(), Error> {
+         let image_dir_path = self.image_dir_path();
+         if clip.mime().type_() == mime::IMAGE {
+-            let content = match clip.encoded() {
+-                Ok(content) => content,
+-                Err(err) => {
+-                    tracing::error!("Error occurs while encoding clip, error: {err}");
+-                    return Ok(());
+-                }
+-            };
+             let file_path = image_file_path_from_digest(image_dir_path, clip.sha256_digest());
+-            if let Some(parent) = file_path.parent() {
+-                tokio::fs::create_dir_all(parent)
++
++            // Image files are content addressed: a file that is already there
++            // holds exactly this image, so encoding and writing it
++            // again would only redo the work.
++            if !is_non_empty_file(&file_path).await {
++                let content = match clip.encoded() {
++                    Ok(content) => content,
++                    Err(err) => {
++                        tracing::error!("Error occurs while encoding clip, error: {err}");
++                        return Ok(());
++                    }
++                };
++                if let Some(parent) = file_path.parent() {
++                    tokio::fs::create_dir_all(parent)
++                        .await
++                        .context(error::CreateDirectorySnafu { file_path: parent.to_path_buf() })?;
++                }
++                tokio::fs::write(&file_path, content)
+                     .await
+-                    .context(error::CreateDirectorySnafu { file_path: parent.to_path_buf() })?;
++                    .context(error::WriteFileSnafu { file_path })?;
+             }
+-            tokio::fs::write(&file_path, content)
+-                .await
+-                .context(error::WriteFileSnafu { file_path })?;
+         }
+ 
+         let content = bincode::serialize(&model::v2::ClipboardValue::from(clip))
+@@ -143,6 +155,130 @@ impl FileSystemDriver {
+             .with_context(|_| error::WriteFileSnafu { file_path: self.clips_file_path() })
+     }
+ 
++    /// Reads every record of the clips file. Image records only carry a digest,
++    /// so this stays cheap even when the store holds hundreds of megabytes
++    /// of images.
++    async fn read_records(&self) -> Result<Vec<model::v2::ClipboardValue>, Error> {
++        let clips_file_path = self.clips_file_path();
++        let clips_file = OpenOptions::new()
++            .create(true)
++            .write(true)
++            .read(true)
++            .append(true)
++            .open(&clips_file_path)
++            .await
++            .with_context(|_| error::OpenFileSnafu { file_path: clips_file_path })?
++            .into_std()
++            .await;
++
++        tokio::task::spawn_blocking(move || {
++            let mut reader = BufReader::with_capacity(READ_BUFFER_SIZE, clips_file);
++            let mut records = Vec::new();
++            while let Ok(record) =
++                bincode::deserialize_from::<_, model::v2::ClipboardValue>(&mut reader)
++            {
++                records.push(record);
++            }
++            records
++        })
++        .await
++        .context(error::JoinTaskSnafu)
++    }
++
++    /// Rewrites the clips file so that it holds exactly `records`, then drops
++    /// every image file that is no longer referenced.
++    async fn compact(&mut self, records: &[model::v2::ClipboardValue]) -> Result<(), Error> {
++        let clips_file_path = self.clips_file_path();
++        let staging_file_path = clips_file_path.with_extension("compacting");
++
++        let mut buffer = Vec::new();
++        for record in records {
++            bincode::serialize_into(&mut buffer, record).context(error::SeriailizeClipSnafu)?;
++        }
++
++        // Stage and rename so that an interrupted compaction leaves the
++        // previous clips file intact instead of a truncated one.
++        tokio::fs::write(&staging_file_path, &buffer)
++            .await
++            .with_context(|_| error::WriteFileSnafu { file_path: staging_file_path.clone() })?;
++        tokio::fs::rename(&staging_file_path, &clips_file_path)
++            .await
++            .with_context(|_| error::WriteFileSnafu { file_path: clips_file_path.clone() })?;
++
++        self.clips_file = OpenOptions::new()
++            .create(true)
++            .write(true)
++            .read(true)
++            .append(true)
++            .open(&clips_file_path)
++            .await
++            .with_context(|_| error::OpenFileSnafu { file_path: clips_file_path })?;
++
++        let image_dir_path = self.image_dir_path();
++        let retained = records
++            .iter()
++            .filter(|record| record.mime.type_() == mime::IMAGE)
++            .map(|record| image_file_path_from_digest(&image_dir_path, &record.data))
++            .collect::<HashSet<_>>();
++        if let Ok(mut entries) = tokio::fs::read_dir(&image_dir_path).await {
++            while let Ok(Some(entry)) = entries.next_entry().await {
++                let file_path = entry.path();
++                if !retained.contains(&file_path) {
++                    tracing::debug!("Remove image file `{}`", file_path.display());
++                    drop(tokio::fs::remove_file(file_path).await);
++                }
++            }
++        }
++
++        self.update_header().await
++    }
++
++    /// Turns stored records back into [`ClipEntry`]s.
++    ///
++    /// Images are left in the store: the entry only carries the digest that
++    /// names the file and the size of it, and the pixels are read back through
++    /// [`ImageStore`] when a clip is actually pasted or fetched.
++    async fn restore(
++        &self,
++        records: Vec<model::v2::ClipboardValue>,
++    ) -> Result<Vec<ClipEntry>, Error> {
++        if records.is_empty() {
++            return Ok(Vec::new());
++        }
++
++        let image_dir_path = self.image_dir_path();
++        tokio::task::spawn_blocking(move || {
++            records
++                .into_iter()
++                .filter_map(|model::v2::ClipboardValue { timestamp, mime, data }| {
++                    if mime.type_() == mime::IMAGE {
++                        let file_path = image_file_path_from_digest(&image_dir_path, &data);
++                        let byte_length = match std::fs::metadata(&file_path) {
++                            Ok(metadata) => metadata.len(),
++                            Err(source) => {
++                                tracing::error!(
++                                    "Failed to read file {}, error: {source}",
++                                    file_path.display()
++                                );
++                                return None;
++                            }
++                        };
++                        Some(ClipEntry::deferred_image(
++                            usize::try_from(byte_length).unwrap_or(usize::MAX),
++                            data,
++                            ClipboardKind::Clipboard,
++                            Some(timestamp),
++                        ))
++                    } else {
++                        ClipEntry::new(&data, &mime, ClipboardKind::Clipboard, Some(timestamp)).ok()
++                    }
++                })
++                .collect()
++        })
++        .await
++        .context(error::JoinTaskSnafu)
++    }
++
+     pub fn header_file_path(&self) -> PathBuf { header_file_path(&self.file_path) }
+ 
+     pub fn clips_file_path(&self) -> PathBuf { clips_file_path(&self.file_path) }
+@@ -166,52 +302,23 @@ impl Driver for FileSystemDriver {
+         self.update_header().await
+     }
+ 
+-    async fn load(&mut self) -> Result<Vec<ClipEntry>, Error> {
+-        let clips_file_path = self.clips_file_path();
+-        let clips_file = OpenOptions::new()
+-            .create(true)
+-            .write(true)
+-            .read(true)
+-            .append(true)
+-            .open(&clips_file_path)
+-            .await
+-            .with_context(|_| error::OpenFileSnafu { file_path: clips_file_path })?
+-            .into_std()
+-            .await;
+-        let image_dir_path = self.image_dir_path();
+-
+-        tokio::task::spawn_blocking(move || {
+-            let mut clips = Vec::new();
+-
+-            while let Ok(clip) =
+-                bincode::deserialize_from::<_, model::v2::ClipboardValue>(&clips_file)
+-            {
+-                let model::v2::ClipboardValue { timestamp, mime, data } = clip;
+-                let data = if mime.type_() == mime::IMAGE {
+-                    let file_path = image_file_path_from_digest(&image_dir_path, &data);
+-                    let maybe_data = std::fs::read(&file_path)
+-                        .context(error::ReadFileSnafu { file_path: file_path.clone() });
+-                    match maybe_data {
+-                        Ok(data) => data,
+-                        Err(err) => {
+-                            tracing::error!("{err}");
+-                            continue;
+-                        }
+-                    }
+-                } else {
+-                    data
+-                };
++    async fn load(&mut self, capacity: usize) -> Result<Vec<ClipEntry>, Error> {
++        let records = self.read_records().await?;
++        let stored_count = records.len();
++
++        // Only `capacity` clips survive the import into `ClipboardManager`;
++        // materializing the rest would decode image files just to throw
++        // them away.
++        let records = select_latest(records, capacity);
++        if records.len() != stored_count {
++            tracing::info!(
++                "Compact clip history, {stored_count} record(s) stored, {retained} retained",
++                retained = records.len()
++            );
++            self.compact(&records).await?;
++        }
+ 
+-                if let Ok(clip) =
+-                    ClipEntry::new(&data, &mime, ClipboardKind::Clipboard, Some(timestamp))
+-                {
+-                    clips.push(clip);
+-                }
+-            }
+-            Ok(clips)
+-        })
+-        .await
+-        .context(error::JoinTaskSnafu)?
++        self.restore(records).await
+     }
+ 
+     async fn clear(&mut self) -> Result<(), Error> {
+@@ -234,79 +341,93 @@ impl Driver for FileSystemDriver {
+     async fn shrink_to(&mut self, min_capacity: usize) -> Result<(), Error> {
+         drop(self.clips_file.flush().await);
+ 
+-        let clips_file_path = self.clips_file_path();
+-        let clips_file = OpenOptions::new()
+-            .create(true)
+-            .append(true)
+-            .write(true)
+-            .read(true)
+-            .open(&clips_file_path)
+-            .await
+-            .with_context(|_| error::OpenFileSnafu { file_path: clips_file_path })?
+-            .into_std()
+-            .await;
++        let records = self.read_records().await?;
++        let records = select_latest(records, min_capacity);
++        self.compact(&records).await
++    }
++}
+ 
+-        let mut buffer_length = 1024;
+-        let mut clips = tokio::task::spawn_blocking(move || {
+-            let mut clips = Vec::new();
+-            while let Ok(clip) =
+-                bincode::deserialize_from::<_, model::v2::ClipboardValue>(&clips_file)
+-            {
+-                let serialized_size =
+-                    usize::try_from(bincode::serialized_size(&clip).unwrap_or_default())
+-                        .unwrap_or_default();
+-                buffer_length = buffer_length.max(serialized_size);
+-                clips.push(clip);
+-            }
+-            clips
+-        })
+-        .await
+-        .context(error::JoinTaskSnafu)?;
++/// Keeps the newest `capacity` clips, dropping records that duplicate a clip
++/// kept elsewhere.
++///
++/// The clips file is append-only, so re-copying the same clip leaves several
++/// records behind; they collapse into a single entry once imported, and keeping
++/// them would make `capacity` under-count the clips that actually survive.
++fn select_latest(
++    records: Vec<model::v2::ClipboardValue>,
++    capacity: usize,
++) -> Vec<model::v2::ClipboardValue> {
++    if capacity == 0 {
++        return Vec::new();
++    }
+ 
+-        clips.sort_unstable();
+-        clips.truncate(min_capacity);
++    let mut newest = HashMap::with_capacity(records.len());
++    for (index, record) in records.iter().enumerate() {
++        let key = record_key(record);
++        if newest.get(&key).is_none_or(|&other: &usize| records[other].timestamp < record.timestamp)
++        {
++            let _unused = newest.insert(key, index);
++        }
++    }
+ 
+-        let mut image_files = HashSet::new();
+-        let image_dir_path = self.image_dir_path();
++    let mut selected = newest.into_values().collect::<Vec<_>>();
++    selected.sort_unstable_by(|&lhs, &rhs| records[rhs].timestamp.cmp(&records[lhs].timestamp));
++    selected.truncate(capacity);
+ 
+-        self.clips_file
+-            .set_len(0)
+-            .await
+-            .with_context(|_| error::TruncateFileSnafu { file_path: self.clips_file_path() })?;
++    let selected = selected.into_iter().collect::<HashSet<_>>();
++    records
++        .into_iter()
++        .enumerate()
++        .filter_map(|(index, record)| selected.contains(&index).then_some(record))
++        .collect()
++}
+ 
+-        {
+-            let mut buffer = Vec::with_capacity(buffer_length);
+-            for clip in clips {
+-                buffer.clear();
+-                bincode::serialize_into(&mut buffer, &clip).context(error::SeriailizeClipSnafu)?;
+-
+-                self.clips_file.write_all(&buffer).await.with_context(|_| {
+-                    error::WriteFileSnafu { file_path: self.clips_file_path() }
+-                })?;
+-
+-                if clip.mime.type_() == mime::IMAGE {
+-                    let _ = image_files
+-                        .insert(image_file_path_from_digest(&image_dir_path, &clip.data));
+-                }
+-            }
+-        }
++fn record_key(record: &model::v2::ClipboardValue) -> u64 {
++    let mut hasher = DefaultHasher::new();
++    record.mime.essence_str().hash(&mut hasher);
++    record.data.hash(&mut hasher);
++    hasher.finish()
++}
+ 
+-        drop(self.clips_file.flush().await);
++/// Reads images back out of the history store.
++///
++/// Images are named after the digest of their content, so a stored image never
++/// changes and can be read without taking any lock on the history.
++#[derive(Clone, Debug)]
++pub struct ImageStore {
++    image_dir_path: PathBuf,
++}
+ 
+-        if let Ok(mut entries) = tokio::fs::read_dir(&image_dir_path).await {
+-            while let Ok(Some(entry)) = entries.next_entry().await {
+-                let file_path = entry.path();
+-                if !image_files.contains(&file_path) {
+-                    tracing::debug!("Remove image file `{}`", file_path.display());
+-                    drop(tokio::fs::remove_file(file_path).await);
+-                }
++impl ImageStore {
++    #[must_use]
++    pub fn new<P>(file_path: P) -> Self
++    where
++        P: AsRef<Path>,
++    {
++        Self { image_dir_path: image_dir_path(file_path) }
++    }
++
++    /// Reads the PNG encoding of the image with the given digest.
++    #[must_use]
++    pub fn load(&self, sha256_digest: &[u8]) -> Option<Vec<u8>> {
++        let file_path = image_file_path_from_digest(&self.image_dir_path, sha256_digest);
++        match std::fs::read(&file_path) {
++            Ok(content) => Some(content),
++            Err(source) => {
++                tracing::error!("Failed to read file {}, error: {source}", file_path.display());
++                None
+             }
+         }
+-
+-        self.update_header().await
+     }
+ }
+ 
++async fn is_non_empty_file<P>(file_path: P) -> bool
++where
++    P: AsRef<Path>,
++{
++    tokio::fs::metadata(file_path).await.is_ok_and(|metadata| metadata.len() > 0)
++}
++
+ fn header_file_path<P>(file_path: P) -> PathBuf
+ where
+     P: AsRef<Path>,
+@@ -340,3 +461,220 @@ where
+ fn image_file_name(digest: &[u8]) -> String {
+     format!("{digest}.png", digest = hex::encode(digest))
+ }
++
++#[cfg(test)]
++mod tests {
++    use clipcat_base::{ClipEntry, ClipboardContent, ClipboardKind};
++    use time::OffsetDateTime;
++
++    use crate::history::driver::{
++        Driver,
++        fs::{FileSystemDriver, ImageStore},
++    };
++
++    struct TestDir(std::path::PathBuf);
++
++    impl TestDir {
++        fn new(name: &str) -> Self {
++            let path =
++                std::env::temp_dir().join(format!("clipcat-history-{name}-{}", std::process::id()));
++            drop(std::fs::remove_dir_all(&path));
++            Self(path)
++        }
++
++        fn path(&self) -> &std::path::Path { &self.0 }
++
++        fn image_count(&self) -> usize {
++            std::fs::read_dir(self.0.join("images")).map_or(0, Iterator::count)
++        }
++
++        fn clips_len(&self) -> u64 {
++            std::fs::metadata(self.0.join("clips")).map_or(0, |metadata| metadata.len())
++        }
++    }
++
++    impl Drop for TestDir {
++        fn drop(&mut self) { drop(std::fs::remove_dir_all(&self.0)); }
++    }
++
++    fn image_clip(seed: u8, seconds_ago: i64) -> ClipEntry {
++        const SIZE: usize = 4;
++        let bytes = (0..SIZE * SIZE * 4)
++            .map(|i| seed.wrapping_add(u8::try_from(i % 251).unwrap_or_default()))
++            .collect::<Vec<_>>();
++        ClipEntry::from_clipboard_content(
++            ClipboardContent::Image { width: SIZE, height: SIZE, bytes: bytes::Bytes::from(bytes) },
++            ClipboardKind::Clipboard,
++            Some(OffsetDateTime::now_utc() - time::Duration::seconds(seconds_ago)),
++        )
++    }
++
++    fn text_clip(text: &str, seconds_ago: i64) -> ClipEntry {
++        ClipEntry::from_clipboard_content(
++            ClipboardContent::Plaintext(text.to_owned()),
++            ClipboardKind::Clipboard,
++            Some(OffsetDateTime::now_utc() - time::Duration::seconds(seconds_ago)),
++        )
++    }
++
++    #[tokio::test]
++    async fn test_load_keeps_the_newest_clips_up_to_capacity() {
++        let dir = TestDir::new("capacity");
++        let mut driver = FileSystemDriver::new(dir.path()).await.unwrap();
++        for i in 0..10i64 {
++            driver.put(&text_clip(&format!("clip-{i}"), 100 - i)).await.unwrap();
++        }
++
++        let clips = driver.load(3).await.unwrap();
++        assert_eq!(clips.len(), 3);
++
++        let mut previews = clips.iter().map(ClipEntry::as_utf8_string).collect::<Vec<_>>();
++        previews.sort();
++        assert_eq!(previews, vec!["clip-7", "clip-8", "clip-9"]);
++    }
++
++    #[tokio::test]
++    async fn test_load_zero_capacity_yields_nothing() {
++        let dir = TestDir::new("zero-capacity");
++        let mut driver = FileSystemDriver::new(dir.path()).await.unwrap();
++        driver.put(&text_clip("clip", 1)).await.unwrap();
++
++        assert!(driver.load(0).await.unwrap().is_empty());
++    }
++
++    #[tokio::test]
++    async fn test_loaded_images_stay_in_the_store_until_they_are_asked_for() {
++        let dir = TestDir::new("deferred-image");
++        let mut driver = FileSystemDriver::new(dir.path()).await.unwrap();
++        let clip = image_clip(7, 1);
++        driver.put(&clip).await.unwrap();
++
++        let clips = driver.load(10).await.unwrap();
++        assert_eq!(clips.len(), 1);
++
++        // Everything a clip is listed by is known without the image being read.
++        let loaded = &clips[0];
++        assert!(loaded.is_image_deferred());
++        assert_eq!(loaded.sha256_digest(), clip.sha256_digest());
++        assert_eq!(loaded.id(), clip.id());
++        assert_eq!(loaded.timestamp(), clip.timestamp());
++        assert_eq!(loaded.mime(), clip.mime());
++        assert_eq!(loaded.len(), clip.len());
++        assert!(loaded.to_clipboard_content().is_err());
++
++        // Reading the image back yields exactly the pixels that were stored.
++        let png = ImageStore::new(dir.path()).load(loaded.sha256_digest()).unwrap();
++        let loaded = loaded.clone().with_image(png);
++        assert!(!loaded.is_image_deferred());
++        assert_eq!(loaded.sha256_digest(), clip.sha256_digest());
++        assert_eq!(loaded.to_clipboard_content().unwrap(), clip.to_clipboard_content().unwrap());
++    }
++
++    #[tokio::test]
++    async fn test_image_store_reports_a_missing_image() {
++        let dir = TestDir::new("missing-image");
++        let _driver = FileSystemDriver::new(dir.path()).await.unwrap();
++
++        assert!(ImageStore::new(dir.path()).load(&[0xAB; 32]).is_none());
++    }
++
++    #[tokio::test]
++    async fn test_storing_the_same_image_twice_writes_one_file() {
++        let dir = TestDir::new("content-addressed");
++        let mut driver = FileSystemDriver::new(dir.path()).await.unwrap();
++        driver.put(&image_clip(3, 2)).await.unwrap();
++        driver.put(&image_clip(3, 1)).await.unwrap();
++
++        assert_eq!(dir.image_count(), 1);
++    }
++
++    #[tokio::test]
++    async fn test_load_compacts_the_store_and_drops_orphan_images() {
++        let dir = TestDir::new("compaction");
++        let mut driver = FileSystemDriver::new(dir.path()).await.unwrap();
++        for seed in 0..8u8 {
++            driver.put(&image_clip(seed, i64::from(100 - seed))).await.unwrap();
++        }
++        assert_eq!(dir.image_count(), 8);
++        let stored_len = dir.clips_len();
++
++        let clips = driver.load(3).await.unwrap();
++        assert_eq!(clips.len(), 3);
++        assert_eq!(dir.image_count(), 3, "images no longer referenced must be removed");
++        assert!(dir.clips_len() < stored_len, "the clips file must be rewritten");
++
++        // A second load of the compacted store returns the very same clips.
++        let mut reloaded = driver.load(3).await.unwrap();
++        reloaded.sort_unstable();
++        let mut clips = clips;
++        clips.sort_unstable();
++        assert_eq!(reloaded, clips);
++    }
++
++    #[tokio::test]
++    async fn test_save_restores_image_files_dropped_by_compaction() {
++        let dir = TestDir::new("save-after-compaction");
++        let mut driver = FileSystemDriver::new(dir.path()).await.unwrap();
++        let clips = (0..3u8).map(|seed| image_clip(seed, i64::from(10 - seed))).collect::<Vec<_>>();
++        for clip in &clips {
++            driver.put(clip).await.unwrap();
++        }
++
++        assert_eq!(driver.load(1).await.unwrap().len(), 1);
++        assert_eq!(dir.image_count(), 1, "compaction drops the images it no longer references");
++
++        // Saving clips whose image files are gone must write them out again.
++        driver.save(&clips).await.unwrap();
++        assert_eq!(dir.image_count(), 3);
++
++        let store = ImageStore::new(dir.path());
++        let mut reloaded = driver.load(3).await.unwrap();
++        reloaded.sort_unstable();
++        let mut clips = clips;
++        clips.sort_unstable();
++        assert_eq!(reloaded.len(), clips.len());
++        for (reloaded, clip) in reloaded.iter().zip(clips.iter()) {
++            assert_eq!(reloaded.sha256_digest(), clip.sha256_digest());
++            let reloaded =
++                reloaded.clone().with_image(store.load(reloaded.sha256_digest()).unwrap());
++            assert_eq!(
++                reloaded.to_clipboard_content().unwrap(),
++                clip.to_clipboard_content().unwrap()
++            );
++        }
++    }
++
++    #[tokio::test]
++    async fn test_duplicated_clips_collapse_into_one_entry() {
++        let dir = TestDir::new("duplicates");
++        let mut driver = FileSystemDriver::new(dir.path()).await.unwrap();
++        for seconds_ago in (1..=5i64).rev() {
++            driver.put(&text_clip("same", seconds_ago)).await.unwrap();
++        }
++
++        let clips = driver.load(5).await.unwrap();
++        assert_eq!(clips.len(), 1);
++        assert_eq!(clips[0].as_utf8_string(), "same");
++    }
++
++    #[tokio::test]
++    async fn test_shrink_to_keeps_the_newest_clips() {
++        let dir = TestDir::new("shrink");
++        let mut driver = FileSystemDriver::new(dir.path()).await.unwrap();
++        for i in 0..6i64 {
++            driver.put(&text_clip(&format!("clip-{i}"), 50 - i)).await.unwrap();
++        }
++
++        driver.shrink_to(2).await.unwrap();
++
++        let mut previews = driver
++            .load(10)
++            .await
++            .unwrap()
++            .iter()
++            .map(ClipEntry::as_utf8_string)
++            .collect::<Vec<_>>();
++        previews.sort();
++        assert_eq!(previews, vec!["clip-4", "clip-5"]);
++    }
++}
+diff --git a/crates/server/src/history/driver/mod.rs b/crates/server/src/history/driver/mod.rs
+index 233959f..507a6af 100644
+--- a/crates/server/src/history/driver/mod.rs
++++ b/crates/server/src/history/driver/mod.rs
+@@ -3,12 +3,13 @@ mod fs;
+ use async_trait::async_trait;
+ use clipcat_base::ClipEntry;
+ 
+-pub use self::fs::FileSystemDriver;
++pub use self::fs::{FileSystemDriver, ImageStore};
+ use crate::history::Error;
+ 
+ #[async_trait]
+ pub trait Driver: Send + Sync {
+-    async fn load(&mut self) -> Result<Vec<ClipEntry>, Error>;
++    /// Loads at most `capacity` clips, newest first.
++    async fn load(&mut self, capacity: usize) -> Result<Vec<ClipEntry>, Error>;
+ 
+     async fn save(&mut self, clip_entry: &[ClipEntry]) -> Result<(), Error>;
+ 
+diff --git a/crates/server/src/history/mod.rs b/crates/server/src/history/mod.rs
+index 44e4950..ad165e4 100644
+--- a/crates/server/src/history/mod.rs
++++ b/crates/server/src/history/mod.rs
+@@ -5,7 +5,7 @@ use std::path::{Path, PathBuf};
+ 
+ use clipcat_base::ClipEntry;
+ 
+-pub use self::error::Error;
++pub use self::{driver::ImageStore, error::Error};
+ 
+ pub struct HistoryManager {
+     file_path: PathBuf,
+@@ -27,6 +27,10 @@ impl HistoryManager {
+     #[inline]
+     pub fn path(&self) -> &Path { &self.file_path }
+ 
++    /// A handle for reading images back out of this history store.
++    #[inline]
++    pub fn image_store(&self) -> ImageStore { ImageStore::new(&self.file_path) }
++
+     #[inline]
+     pub async fn put(&mut self, data: &ClipEntry) -> Result<(), Error> {
+         self.driver.put(data).await
+@@ -36,7 +40,9 @@ impl HistoryManager {
+     pub async fn clear(&mut self) -> Result<(), Error> { self.driver.clear().await }
+ 
+     #[inline]
+-    pub async fn load(&mut self) -> Result<Vec<ClipEntry>, Error> { self.driver.load().await }
++    pub async fn load(&mut self, capacity: usize) -> Result<Vec<ClipEntry>, Error> {
++        self.driver.load(capacity).await
++    }
+ 
+     #[expect(dead_code, reason = "Kept for future save functionality")]
+     #[inline]
+diff --git a/crates/server/src/lib.rs b/crates/server/src/lib.rs
+index 7cc48bc..abb01fb 100644
+--- a/crates/server/src/lib.rs
++++ b/crates/server/src/lib.rs
+@@ -106,7 +106,7 @@ pub async fn serve_with_shutdown(
+         } else {
+             tracing::info!("Load history from `{path}`", path = history_manager.path().display());
+             history_manager
+-                .load()
++                .load(max_history)
+                 .await
+                 .map_err(|err| {
+                     tracing::error!(
+@@ -130,6 +130,7 @@ pub async fn serve_with_shutdown(
+         tracing::info!("Initialize ClipboardManager with capacity {max_history}");
+         let mut clipboard_manager = ClipboardManager::with_capacity(
+             clipboard_backend.clone(),
++            history_manager.image_store(),
+             max_history,
+             primary_threshold,
+             desktop_notification.clone(),
+diff --git a/crates/server/src/manager/error.rs b/crates/server/src/manager/error.rs
+index 2ed488a..784ea57 100644
+--- a/crates/server/src/manager/error.rs
++++ b/crates/server/src/manager/error.rs
+@@ -7,4 +7,7 @@ use crate::backend;
+ pub enum Error {
+     #[snafu(display("Error occurs while storing clipboard content, error: {source}"))]
+     StoreClipboardContent { source: backend::Error },
++
++    #[snafu(display("Error occurs while loading clip content, error: {source}"))]
++    LoadClipboardContent { source: clipcat_base::ClipEntryError },
+ }
+diff --git a/crates/server/src/manager/mod.rs b/crates/server/src/manager/mod.rs
+index 600dfde..91e1ce5 100644
+--- a/crates/server/src/manager/mod.rs
++++ b/crates/server/src/manager/mod.rs
+@@ -5,12 +5,12 @@ use std::{
+     sync::Arc,
+ };
+ 
+-use clipcat_base::{ClipEntry, ClipEntryMetadata, ClipboardContent, ClipboardKind};
++use clipcat_base::{ClipEntry, ClipEntryMetadata, ClipboardKind};
+ use snafu::ResultExt;
+ use time::OffsetDateTime;
+ 
+ pub use self::error::Error;
+-use crate::{backend::ClipboardBackend, notification};
++use crate::{backend::ClipboardBackend, history::ImageStore, notification};
+ 
+ #[cfg(test)]
+ const DEFAULT_CAPACITY: usize = 40;
+@@ -18,6 +18,9 @@ const DEFAULT_CAPACITY: usize = 40;
+ pub struct ClipboardManager<Notification> {
+     backend: Arc<dyn ClipboardBackend>,
+ 
++    // Clips hold images by digest only; the pixels are read from here when a clip is handed out.
++    image_store: ImageStore,
++
+     primary_threshold: time::Duration,
+ 
+     capacity: usize,
+@@ -42,12 +45,14 @@ where
+ {
+     pub fn with_capacity(
+         backend: Arc<dyn ClipboardBackend>,
++        image_store: ImageStore,
+         capacity: usize,
+         primary_threshold: time::Duration,
+         notification: Notification,
+     ) -> Self {
+         Self {
+             backend,
++            image_store,
+             primary_threshold,
+             capacity,
+             clips: HashMap::new(),
+@@ -63,6 +68,7 @@ where
+     pub fn new(backend: Arc<dyn ClipboardBackend>, notification: Notification) -> Self {
+         Self::with_capacity(
+             backend,
++            ImageStore::new(std::env::temp_dir().join("clipcat-test-history")),
+             DEFAULT_CAPACITY,
+             time::Duration::milliseconds(0),
+             notification,
+@@ -118,12 +124,29 @@ where
+     #[inline]
+     pub fn iter(&self) -> impl Iterator<Item = &ClipEntry> { self.clips.values() }
+ 
++    /// Returns the clip with `id`, reading its image back from the history
++    /// store if the clip is an image that is not in memory.
+     #[inline]
+-    pub fn get(&self, id: u64) -> Option<ClipEntry> { self.clips.get(&id).cloned() }
++    pub fn get(&self, id: u64) -> Option<ClipEntry> {
++        self.clips.get(&id).cloned().map(|clip| self.loaded(clip))
++    }
+ 
+     #[inline]
+-    pub fn get_current_clip(&self, kind: ClipboardKind) -> Option<&ClipEntry> {
+-        self.current_clips[usize::from(kind)].and_then(|id| self.clips.get(&id))
++    pub fn get_current_clip(&self, kind: ClipboardKind) -> Option<ClipEntry> {
++        self.current_clips[usize::from(kind)].and_then(|id| self.get(id))
++    }
++
++    /// Fills in the image of a clip that only carries its digest.
++    fn loaded(&self, clip: ClipEntry) -> ClipEntry {
++        if !clip.is_image_deferred() {
++            return clip;
++        }
++
++        let Some(png) = self.image_store.load(clip.sha256_digest()) else {
++            tracing::warn!("Image of clip (id: {id}) is missing from history", id = clip.id());
++            return clip;
++        };
++        clip.with_image(png)
+     }
+ 
+     #[inline]
+@@ -131,28 +154,26 @@ where
+ 
+     fn insert_inner(&mut self, entry: ClipEntry) -> u64 {
+         // emit notification
+-        match entry.as_ref() {
+-            ClipboardContent::Image { width, height, bytes } => {
+-                self.notification.on_image_fetched(bytes.len(), *width, *height);
+-            }
+-            ClipboardContent::Plaintext(text) => {
+-                self.notification.on_plaintext_fetched(text.chars().count());
+-
+-                if let Some(id) = self.current_clips[usize::from(entry.kind())]
+-                    && let Some(current_clip) = self.clips.get(&id)
+-                    && entry.timestamp() - current_clip.timestamp() < self.primary_threshold
+-                    && let ClipboardContent::Plaintext(current_text) = current_clip.as_ref()
++        if let Some(text) = entry.plaintext() {
++            self.notification.on_plaintext_fetched(text.chars().count());
++
++            if let Some(id) = self.current_clips[usize::from(entry.kind())]
++                && let Some(current_clip) = self.clips.get(&id)
++                && entry.timestamp() - current_clip.timestamp() < self.primary_threshold
++                && let Some(current_text) = current_clip.plaintext()
++            {
++                let text = text.as_bytes();
++                let current_text = current_text.as_bytes();
++                let len = text.len().min(current_text.len());
++                if text[..len] == current_text[..len]
++                    && let Some(clip) = self.clips.remove(&id)
+                 {
+-                    let text = text.as_bytes();
+-                    let current_text = current_text.as_bytes();
+-                    let len = text.len().min(current_text.len());
+-                    if text[..len] == current_text[..len]
+-                        && let Some(clip) = self.clips.remove(&id)
+-                    {
+-                        let _id = self.timestamp_to_id.remove(&clip.timestamp());
+-                    }
++                    let _id = self.timestamp_to_id.remove(&clip.timestamp());
+                 }
+             }
++        } else {
++            let (width, height) = entry.image_dimensions().unwrap_or_default();
++            self.notification.on_image_fetched(entry.len(), width, height);
+         }
+ 
+         let (id, timestamp) = (entry.id(), entry.timestamp());
+@@ -236,15 +257,13 @@ where
+     }
+ 
+     pub async fn mark(&mut self, id: u64, clipboard_kind: ClipboardKind) -> Result<(), Error> {
+-        if let Some(clip) = self.clips.get_mut(&id) {
+-            clip.mark(clipboard_kind);
+-            self.backend
+-                .store(clipboard_kind, clip.as_ref().clone())
+-                .await
+-                .context(error::StoreClipboardContentSnafu)?;
+-        }
++        let Some(clip) = self.clips.get_mut(&id) else { return Ok(()) };
++        clip.mark(clipboard_kind);
++        let clip = clip.clone();
+ 
+-        Ok(())
++        let content =
++            self.loaded(clip).to_clipboard_content().context(error::LoadClipboardContentSnafu)?;
++        self.backend.store(clipboard_kind, content).await.context(error::StoreClipboardContentSnafu)
+     }
+ 
+     #[inline]
+@@ -259,10 +278,14 @@ mod tests {
+ 
+     use crate::{
+         backend::LocalClipboardBackend,
++        history::ImageStore,
+         manager::{ClipboardManager, DEFAULT_CAPACITY},
+         notification::DummyNotification,
+     };
+ 
++    // The clips these tests use are plaintext, so nothing is ever read from it.
++    fn image_store() -> ImageStore { ImageStore::new(std::env::temp_dir().join("clipcat-tests")) }
++
+     fn create_clips(n: usize) -> Vec<ClipEntry> {
+         (0..n)
+             .map(|i| {
+@@ -289,6 +312,7 @@ mod tests {
+         let backend = Arc::new(LocalClipboardBackend::new());
+         let mgr = ClipboardManager::with_capacity(
+             backend,
++            image_store(),
+             cap,
+             time::Duration::milliseconds(0),
+             notification,
+@@ -307,6 +331,7 @@ mod tests {
+         let cap = 10;
+         let mut mgr = ClipboardManager::with_capacity(
+             backend,
++            image_store(),
+             cap,
+             time::Duration::milliseconds(0),
+             notification,
+@@ -350,7 +375,7 @@ mod tests {
+         }
+ 
+         assert!(mgr.get_current_clip(ClipboardKind::Primary).is_some());
+-        assert_eq!(mgr.get_current_clip(ClipboardKind::Primary), clips.last());
++        assert_eq!(mgr.get_current_clip(ClipboardKind::Primary).as_ref(), clips.last());
+         assert_eq!(mgr.len(), n);
+ 
+         let dumped = mgr.export(false).into_iter().collect::<HashSet<_>>();
+@@ -367,6 +392,7 @@ mod tests {
+         let notification = DummyNotification::default();
+         let mut mgr = ClipboardManager::with_capacity(
+             backend,
++            image_store(),
+             20,
+             time::Duration::milliseconds(0),
+             notification,
+@@ -434,6 +460,62 @@ mod tests {
+         assert!(!ok);
+     }
+ 
++    #[tokio::test]
++    async fn test_mark_reads_a_deferred_image_back_out_of_history() {
++        use clipcat_base::ClipboardContent;
++
++        use crate::{backend::ClipboardBackend as _, history::HistoryManager};
++
++        let dir = std::env::temp_dir().join(format!("clipcat-mark-{}", std::process::id()));
++        drop(std::fs::remove_dir_all(&dir));
++
++        let pixels = (0..4u32 * 4 * 4)
++            .map(|i| u8::try_from(i % 251).unwrap_or_default())
++            .collect::<Vec<_>>();
++        let clip = ClipEntry::from_clipboard_content(
++            ClipboardContent::Image {
++                width: 4,
++                height: 4,
++                bytes: bytes::Bytes::from(pixels.clone()),
++            },
++            ClipboardKind::Clipboard,
++            None,
++        );
++
++        // Write the image to history, then load it back the way the daemon does
++        // at start-up.
++        let mut history = HistoryManager::new(&dir).await.unwrap();
++        history.put(&clip).await.unwrap();
++        let restored = history.load(10).await.unwrap();
++        assert_eq!(restored.len(), 1);
++        assert!(restored[0].is_image_deferred(), "history must not decode images while loading");
++
++        let backend = Arc::new(LocalClipboardBackend::new());
++        let mut mgr = ClipboardManager::with_capacity(
++            backend.clone(),
++            history.image_store(),
++            10,
++            time::Duration::milliseconds(0),
++            DummyNotification::default(),
++        );
++        mgr.import(&restored);
++
++        // Pasting must put the very pixels that were copied back on the
++        // clipboard.
++        mgr.mark(clip.id(), ClipboardKind::Clipboard).await.unwrap();
++        let stored = backend.load(ClipboardKind::Clipboard, None).await.unwrap();
++        assert_eq!(
++            stored,
++            ClipboardContent::Image { width: 4, height: 4, bytes: bytes::Bytes::from(pixels) }
++        );
++
++        // `get` materializes the image too, which is what the gRPC and D-Bus
++        // services hand out.
++        assert!(!mgr.get(clip.id()).unwrap().is_image_deferred());
++
++        drop(std::fs::remove_dir_all(&dir));
++    }
++
+     #[test]
+     fn test_clear() {
+         let backend = Arc::new(LocalClipboardBackend::new());
+@@ -458,6 +540,7 @@ mod tests {
+         let cap = 0;
+         let mut mgr = ClipboardManager::with_capacity(
+             backend,
++            image_store(),
+             cap,
+             time::Duration::milliseconds(0),
+             notification,
