@@ -1,6 +1,6 @@
 # Maintainer: chen-shuhan <2502820816@qq.com>
 # Maintainer: asystech-chen <https://github.com/asystech-chen/Vantage>
-# 非官方社区打包 - 与上游 ASYS 科技无隶属关系，仅供 Arch 社区使用
+# 非官方社区打包
 pkgname=vantage-browser
 pkgver=153.2.0
 pkgrel=1
