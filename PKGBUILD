@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=5.1.6.r0.gae619e3
+pkgver=5.3.26.r50.g27fb979
 _electronversion=42
 _nodeversion=24
 pkgrel=1
-pkgdesc="Terminal/ssh/telnet/serialport/sftp client.(Use system-wide electron)"
+pkgdesc="📻Free and open-sourced terminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice client."
 arch=(
     'aarch64'
     'armv7h'
@@ -17,7 +17,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
-    'python'
+    'nodejs'
 )
 makedepends=(
     'npm'
@@ -51,21 +51,23 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-    export NPM_CONFIG_MAXSOCKETS=32
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-        }
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export WORKFLOW_NAME="local-build"
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export HOME="${srcdir}/.electron-gyp"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export npm_config_cache="${srcdir}/.npm_cache"
+	export npm_config_maxsockets=32
+	export npm_config_audit=false
+	export npm_config_fund=false
+	export npm_config_progress=false
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export npm_config_node_options="--max-old-space-size=4096"
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -name "package.json" -exec jq -r \
@@ -94,17 +96,25 @@ prepare() {
     _set_build_env
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
-    NODE_ENV=development    npm install --legacy-peer-deps
-    NODE_ENV=development    npm add -D node-gyp
+    export NODE_ENV=development
+    npm install --legacy-peer-deps
+    npm add -D node-gyp --legacy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
     _set_build_env
     _ensure_local_nvm
-    NODE_ENV=production     npm run clean
-    NODE_ENV=production     npm run compile
-    NODE_ENV=production     npm run prepare-file
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.json"
+    export NODE_ENV=production
+    npm run clean
+    npm run compile
+    npm run prepare-file
+    npx node build/bin/prepare-electron-build.js
+    npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.json"
+    local _app_dir=$(_get_app_dir)
+    rm -rf \
+        "${_app_dir}/resources/default_app.asar" \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,win32-*} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/font-list/libs/"{darwin,win32}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"

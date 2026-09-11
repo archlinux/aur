@@ -1,6 +1,6 @@
 pkgbase = electerm-git
-	pkgdesc = Terminal/ssh/telnet/serialport/sftp client.(Use system-wide electron)
-	pkgver = 5.1.6.r0.gae619e3
+	pkgdesc = 📻Free and open-sourced terminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice client.
+	pkgver = 5.3.26.r50.g27fb979
 	pkgrel = 1
 	url = https://electerm.html5beta.com/
 	arch = aarch64
@@ -16,8 +16,8 @@ pkgbase = electerm-git
 	makedepends = yarn
 	makedepends = jq
 	depends = electron42
-	depends = python
-	provides = electerm=5.1.6
+	depends = nodejs
+	provides = electerm=5.3.26
 	conflicts = electerm
 	source = electerm.git::git+https://github.com/electerm/electerm.git
 	source = electerm.sh
