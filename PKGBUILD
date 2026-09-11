@@ -5,7 +5,7 @@
 _pkgname=solana
 pkgbase="$_pkgname-bin"
 pkgname=(solana-bin solana-dev-bin)
-pkgver=4.2.0
+pkgver=4.2.2
 pkgrel=1
 pkgdesc='A fast, secure, and censorship resistant blockchain.'
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
   "$_pkgname.tmpfiles"
   "$pkgbase.install"
 )
-sha256sums=('1f5eb13bcf3694dbd3cf634602aee5edcf8eab519acac75778391c979c3002b0'
+sha256sums=('5fc8684f7430038105fde953d4308ed56addf627f658daa61709f345448247ee'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
             'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b'
             'e77902c49d76fb103b2e3b7c59925d6b43e3772204dc5e484c2375bffb421ac0')
