@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggformula
-_pkgver=1.0.1
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,8 +11,9 @@ arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
-  r-ggplot2
+  r-cli
   r-ggiraph
+  r-ggplot2
   r-ggridges
   r-labelled
   r-mosaiccore
@@ -25,8 +26,10 @@ optdepends=(
   r-broom
   r-covr
   r-dplyr
+  r-ggdist
   r-ggforce
   r-ggplot2movies
+  r-ggrepel
   r-ggthemes
   r-glue
   r-hexbin
@@ -39,8 +42,8 @@ optdepends=(
   r-palmerpenguins
   r-patchwork
   r-purrr
-  r-quarto
   r-quantreg
+  r-quarto
   r-rmarkdown
   r-sf
   r-testthat
@@ -48,8 +51,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f8277dffa86ef7b075145e369de189e4')
-b2sums=('4d15c60e6786ee132595a330ac7094dcbfc3664f69648cb693d212e46792cfc349e278461f0d3ee416f2c14e7e9e4b972d27e596b24bebe9b93648a6f1dca225')
+md5sums=('da2574e14020ac8b13402727e3d8e985')
+b2sums=('5b34800d4f774d61fca6ee7b4e35dddb0f9cee71abac41c7ecafa122371541debb497abc442883c961b100a6a0523139204ca8706fcbb4973eaf150ae1a22a4c')
 
 build() {
   mkdir build
