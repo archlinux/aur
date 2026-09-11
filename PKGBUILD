@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=ggsql-bin
-pkgver=0.4.1 # renovate: datasource=github-releases depName=posit-dev/ggsql
+pkgver=0.5.2 # renovate: datasource=github-releases depName=posit-dev/ggsql
 pkgrel=1
 pkgdesc="SQL extension for declarative data visualization"
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,9 @@ source_x86_64=("${pkgname}-${pkgver}_amd64.deb::https://github.com/posit-dev/ggs
 source_aarch64=("${pkgname}-${pkgver}_arm64.deb::https://github.com/posit-dev/ggsql/releases/download/v${pkgver}/ggsql_${pkgver}_arm64.deb"
                 "LICENSE::https://raw.githubusercontent.com/posit-dev/ggsql/refs/tags/v${pkgver}/LICENSE.md")
 
-sha256sums_x86_64=('da3bb776b4806e0629f475695ebe6fe32fe5e8ca8336857a09408a972585b069'
+sha256sums_x86_64=('04a6d6b709be00a93c2810062d95d7526da1cd1d9f2c9180107d6d8dba743e21'
                    'c4faf3235a2b77ac03e7c050c640b36a1873b7889d96cbe2951bf75fa4f8bd9d')
-sha256sums_aarch64=('aec0c1a4cbbf13f9effbfbe81fdd39d76db2a47b31a35022c4b06a19f142d472'
+sha256sums_aarch64=('58b4922b6a29439d044f761bed981f40b94fde0289396dc5e7711abdeaa571ec'
                     'c4faf3235a2b77ac03e7c050c640b36a1873b7889d96cbe2951bf75fa4f8bd9d')
 
 package() {
