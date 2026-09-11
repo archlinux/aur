@@ -1,6 +1,6 @@
 pkgbase = pitlane-mcp-bin
 	pkgdesc = Token-efficient code intelligence MCP server using tree-sitter AST parsing and BM25 search
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/eresende/pitlane-mcp
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = pitlane-mcp-bin
 	provides = pitlane-mcp
 	conflicts = pitlane-mcp
 	options = !debug
-	source = LICENSE-MIT-0.14.0::https://github.com/eresende/pitlane-mcp/raw/v0.14.0/LICENSE-MIT
+	source = LICENSE-MIT-0.15.0::https://github.com/eresende/pitlane-mcp/raw/v0.15.0/LICENSE-MIT
 	sha256sums = 2687b21e02f35c787bf71a814a4da43b2f7d47578cb05b1b58bd9f3a74f75a6c
-	source_x86_64 = pitlane-mcp-bin-0.14.0-x86_64.tar.gz::https://github.com/eresende/pitlane-mcp/releases/download/v0.14.0/pitlane-mcp-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 17786b4a8a14efb6268fc4685be3979c3b45039b1238e2b9e387464b2aa6e9bd
-	source_aarch64 = pitlane-mcp-bin-0.14.0-aarch64.tar.gz::https://github.com/eresende/pitlane-mcp/releases/download/v0.14.0/pitlane-mcp-linux-aarch64.tar.gz
-	sha256sums_aarch64 = aa64ebcf9deaedcadae3bebfefcf38f2748c42fc86ed9f76bfed9e2fdd75b8d2
+	source_x86_64 = pitlane-mcp-bin-0.15.0-x86_64.tar.gz::https://github.com/eresende/pitlane-mcp/releases/download/v0.15.0/pitlane-mcp-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 34b91a80dc841e09c58200537b3cba95779a8fad10133d375c3c0aa6827e2aa8
+	source_aarch64 = pitlane-mcp-bin-0.15.0-aarch64.tar.gz::https://github.com/eresende/pitlane-mcp/releases/download/v0.15.0/pitlane-mcp-linux-aarch64.tar.gz
+	sha256sums_aarch64 = a9c2b2e73f1929ae8e3c04e94538273f8380f4a964c7b74b678252d79a7d3c27
 
 pkgname = pitlane-mcp-bin
