@@ -10,12 +10,10 @@ depends=('gtk4>=4.12' 'glib2' 'glibc' 'libgcc' 'cairo' 'hicolor-icon-theme'
          'python' 'bash' 'jdk17-openjdk' 'java-runtime>=17'
          'unzip' 'coreutils' 'findutils' 'gawk' 'sed' 'grep' 'procps-ng'
          'util-linux' 'fontconfig' 'freetype2' 'libx11' 'libxtst' 'libxi'
-         'libxext' 'glu' 'libglvnd')
+         'libxext' 'glu' 'libglvnd' 'wine' 'wireshark-cli')
 makedepends=('git' 'cargo' 'pkgconf')
 checkdepends=('desktop-file-utils')
-optdepends=('wine: account sign-in and payload extraction'
-            'wireshark-cli: loopback capture and payload assembly'
-            'nftables: Wine login network workaround'
+optdepends=('nftables: Wine login network workaround'
             'polkit: desktop authentication for temporary capture access'
             'prismlauncher: launch Minecraft instances')
 provides=('high-tide' 'high-tide-launcher')

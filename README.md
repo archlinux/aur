@@ -52,8 +52,10 @@ recipe keeps its own copies of the pieces that are not built from source:
   rebuilt from the source in this repository. `namcap` reports them as unstripped
   and lacking full RELRO, which is expected.
 - The launcher binary targets baseline x86-64, not the build machine's CPU.
-- Wine, wireshark-cli, nftables and polkit are optional. They matter only for
-  account sign-in and payload extraction, not for running an existing payload.
+- Wine and wireshark-cli are hard dependencies: account sign-in and payload
+  extraction do not work without them, and that is the expected first-run path.
+- nftables and polkit remain optional. They matter only for the Wine login
+  network workaround and desktop capture authentication respectively.
 - `license=('LicenseRef-Unknown')` records that the project declares no
   distribution license. See `LICENSE-NOTICE`. Review that before publishing this
   recipe to the AUR.
