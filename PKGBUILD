@@ -1,6 +1,6 @@
 pkgname=emu80-qt
 _pkgname=emu80
-pkgver=4.0.559
+pkgver=4.0.571
 pkgrel=1
 pkgdesc="Emulator for bunch of Soviet PCs"
 arch=('x86_64')
@@ -9,7 +9,8 @@ license=("GPL-3.0-or-later")
 depends=("emu80-base>=${pkgver}" "qt6-base" "qt6-multimedia")
 makedepends=("base-devel")
 source=("https://github.com/vpyk/emu80v4/archive/refs/tags/v${pkgver}.tar.gz" "shortcut.desktop")
-sha256sums=("da1b34b55d65d3cdcddf8b6183b466178ba0ad02bb3f8b5e5cdf0f6c7f2a3315" "049f824a4049d5a7b5d678aab9558180506e43138e5065ec0a114465edbe6d0e")
+sha256sums=('9d0b632094af8af71bd84dafad8f76c97ee3752f3574dcefc3b9448c4e56bd91'
+            '049f824a4049d5a7b5d678aab9558180506e43138e5065ec0a114465edbe6d0e')
 
 build() {
 	cd "emu80v4-${pkgver}"
