@@ -1,0 +1,8 @@
+post_install() {
+  udevadm control --reload-rules 2>/dev/null || true
+  udevadm trigger --action=add --subsystem-match=hidraw --subsystem-match=tty --subsystem-match=usb 2>/dev/null || true
+  echo "pithsim: udev rules installed — re-plug your Pith devices / FFB pedals once."
+}
+post_upgrade() {
+  post_install
+}
