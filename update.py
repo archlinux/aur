@@ -54,7 +54,8 @@ DEPENDENCY_MAP = {
     "libgssapi-krb5-2": "krb5",
     "libharfbuzz0b": "harfbuzz",
     "liblzma5": "xz",
-    "libnettle8": "nettle",
+    # nettle 4.x ships libnettle.so.9; polymath needs libnettle.so.8
+    "libnettle8": "nettle3",
     "libpango-1.0-0": "pango",
     "libpangocairo-1.0-0": "pango",
     "libpng16-16": "libpng",
@@ -77,11 +78,19 @@ DEPENDENCY_MAP = {
     "libxext6": "libxext",
     "libxinerama1": "libxinerama",
     "libxkbcommon0": "libxkbcommon",
+    # libxml2 2.15 ships libxml2.so.16; polymath needs libxml2.so.2
+    "libxml2": "libxml2-legacy",
     "libxpresent1": "libxpresent",
     "libxrandr2": "libxrandr",
     "libxss1": "libxss",
     "libxv1": "libxv",
     "zlib1g": "zlib",
+}
+
+# Not declared by the .deb control, but needed by binaries it ships:
+# bin/rkdeveloptool_linux links against libusb-1.0.so.0 with no RPATH.
+EXTRA_DEPENDS = {
+    "libusb",
 }
 
 
@@ -186,8 +195,8 @@ def main() :
         depends_deb = parse_depends(tmpdir / "control")
 
     depends_deb_mapped = set([DEPENDENCY_MAP.get(dep, dep) for dep in depends_deb])
-    superflous_deps = depends_aur - depends_deb_mapped
-    missing_deps = depends_deb_mapped - depends_aur
+    superflous_deps = depends_aur - depends_deb_mapped - EXTRA_DEPENDS
+    missing_deps = (depends_deb_mapped | EXTRA_DEPENDS) - depends_aur
 
     print("==== RESULTS ====")
     if superflous_deps:
