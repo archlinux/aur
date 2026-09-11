@@ -1,7 +1,7 @@
 # Maintainer: jarbowski <jarbowski@laposte.net>
 pkgname=tape16-bin
 pkgver=0.9.380
-pkgrel=2
+pkgrel=3
 pkgdesc="Destructive tape-style DAW (X11-backed, XWayland on Wayland sessions)"
 arch=('x86_64')
 url="https://emrmusicgroup.com/tape16/"
@@ -94,7 +94,7 @@ export TAPE_LINUX_X11_REEL_PREWARM
 export TAPE16_PREFER_NATIVE_WAYLAND
 export TAPE16_SAMPLE_RATE
 export TAPE16_STABLE_BLOCK_SIZE TAPE16_LOWLATENCY_BLOCK_SIZE
-
+export TAPE16_FILE_CHOOSER="${TAPE16_FILE_CHOOSER:-internal}"
 export TAPE16_AUDIO_AUTHORITY="${TAPE16_AUDIO_AUTHORITY:-tape16}"
 export TAPE16_REMOTE_LAN="${TAPE16_REMOTE_LAN:-1}"
 export GDK_BACKEND="${GDK_BACKEND:-x11,wayland}"
