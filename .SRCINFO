@@ -1,6 +1,6 @@
 pkgbase = kanso-bin
 	pkgdesc = Modern media player focused on convenience, beauty, and performance
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/psychosomat/Kanso
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = kanso-bin
 	optdepends = ffmpeg: broader codec support from the system stack
 	provides = kanso
 	conflicts = kanso
-	source_x86_64 = kanso-0.1.8.tar.gz::https://github.com/psychosomat/Kanso/releases/download/v0.1.8/Kanso-0.1.8-linux-x64.tar.gz
-	source_x86_64 = logo512.png::https://raw.githubusercontent.com/psychosomat/Kanso/v0.1.8/public/logo512.png
-	sha256sums_x86_64 = ddbfca7690ff503f0f50aee74a87dc4ef118ce1974dcdb6dba1c40f9caa474b3
+	source_x86_64 = kanso-0.1.9.tar.gz::https://github.com/psychosomat/Kanso/releases/download/v0.1.9/Kanso-0.1.9-linux-x64.tar.gz
+	source_x86_64 = logo512.png::https://raw.githubusercontent.com/psychosomat/Kanso/v0.1.9/public/logo512.png
+	sha256sums_x86_64 = 43e49f85f49692a5f1ebf9e849e7eafff7dd918bf688cd3dba0358e78702454d
 	sha256sums_x86_64 = SKIP
 
 pkgname = kanso-bin
