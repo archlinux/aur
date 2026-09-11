@@ -1,6 +1,6 @@
 pkgbase = locally-uncensored-bin
 	pkgdesc = Plug-and-play local AI studio — uncensored chat, image & video generation, and a coding agent
-	pkgver = 2.6.7
+	pkgver = 2.6.9
 	pkgrel = 1
 	url = https://github.com/PurpleDoubleD/locally-uncensored
 	arch = x86_64
@@ -20,12 +20,12 @@ pkgbase = locally-uncensored-bin
 	depends = wayland
 	depends = webkit2gtk-4.1
 	optdepends = python: bundled whisper speech-to-text server
-	provides = locally-uncensored=2.6.7
+	provides = locally-uncensored=2.6.9
 	conflicts = locally-uncensored
 	options = !debug
-	source = locally-uncensored-bin-2.6.7.deb::https://github.com/PurpleDoubleD/locally-uncensored/releases/download/v2.6.7/Locally.Uncensored_2.6.7_amd64.deb
-	source = LICENSE-2.6.7::https://raw.githubusercontent.com/PurpleDoubleD/locally-uncensored/v2.6.7/LICENSE
-	sha256sums = 9a5e24a5838c65a39716f5843f55ee2f0536b9985ec8c712a4100afd0e901850
+	source = locally-uncensored-bin-2.6.9.deb::https://github.com/PurpleDoubleD/locally-uncensored/releases/download/v2.6.9/Locally.Uncensored_2.6.9_amd64.deb
+	source = LICENSE-2.6.9::https://raw.githubusercontent.com/PurpleDoubleD/locally-uncensored/v2.6.9/LICENSE
+	sha256sums = a81c8ff1df3d2a34d0454c5a370a099f8eb1997b964ef2ffdd9ad41d8136972e
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
 pkgname = locally-uncensored-bin
