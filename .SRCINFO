@@ -1,6 +1,6 @@
 pkgbase = wlr-utils
 	pkgdesc = Native screen tools for wlroots compositors: pick, switch, capture, inspect and annotate — one capture engine
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/sjourdois/wlr-utils
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = wlr-utils
 	optdepends = tesseract-data-fra: French OCR for `wlr-peek ocr`
 	optdepends = xdg-desktop-portal-wlr: screencast portal that drives wlr-chooser
 	options = !lto
-	source = wlr-utils-1.7.0.tar.gz::https://github.com/sjourdois/wlr-utils/archive/refs/tags/v1.7.0.tar.gz
-	sha256sums = 918e1e7cc9d398abe6c84884cbe07d2309d8e80a66c60c216aaa2465ef6dc7d7
+	source = wlr-utils-1.8.0.tar.gz::https://github.com/sjourdois/wlr-utils/archive/refs/tags/v1.8.0.tar.gz
+	sha256sums = 111032c33ae2f7e51703f15a65534809d0870d56455ec9b1e02aa22f84a6b45d
 
 pkgname = wlr-utils
