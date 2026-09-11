@@ -8,7 +8,7 @@ pkgdesc="Quake 2 engine. You need the retail .pak files to play."
 url="http://www.icculus.org/quake2/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('bash' 'libjpeg' 'sdl' 'libxxf86vm' 'libxxf86dga')
+depends=('bash' 'libjpeg.so' 'sdl' 'libxxf86vm' 'libxxf86dga')
 install="quake2.install"
 source=("http://www.icculus.org/quake2/files/quake2-${pkgver}.tar.gz"
     'http://www.gamers.org/pub/idgames/idstuff/quake2/source/xatrixsrc320.shar.Z'
