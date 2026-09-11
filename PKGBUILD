@@ -5,10 +5,13 @@
 # Contributor: Sauyon Lee <me at sjl dot re>
 
 pkgname=codeql
-pkgver=2.26.4
-pkgrel=2
+pkgver=2.27.0
+pkgrel=1
 pkgdesc="CLI tool for GitHub's CodeQL, including the standard query packs"
-arch=('x86_64')
+arch=(
+	'aarch64'
+	'x86_64'
+)
 url='https://github.com/github/codeql-cli-binaries'
 _bundle_url='https://github.com/github/codeql-action'
 license=(
@@ -30,6 +33,8 @@ license=(
 	'LicenseRef-Public-Domain'
 	'Zlib'
 )
+depends=('zlib')
+optdepends_x86_64=('lib32-glibc: tracing 32-bit x86 build processes')
 optdepends=(
 	'gradle: Java/Kotlin projects using Gradle without gradlew'
 	'java-environment: Java and Kotlin extraction'
@@ -41,19 +46,20 @@ optdepends=(
 conflicts=('codeql-cli-bin')
 replaces=('codeql-cli-bin')
 options=('!strip')
-source=("${pkgname}-bundle-${pkgver}.tar.zst::${_bundle_url}/releases/download/codeql-bundle-v${pkgver}/codeql-bundle-linux64.tar.zst")
-b2sums=('7f3705c3025a39fb94dde46531952286c9e8a355745623f80bba2eb64e72d4af207b7e2ce92dd97057825437cee65c8cdcd8b202431bf9543ae80c3174efcc40')
+source_aarch64=("${pkgname}-bundle-${pkgver}-aarch64.tar.zst::${_bundle_url}/releases/download/codeql-bundle-v${pkgver}/codeql-bundle-linux-arm64.tar.zst")
+sha256sums_aarch64=('33518e42e98aaa5865877e11529757fc660c15b8e3ac84d6ba85ffc9fa222f51')
+source_x86_64=("${pkgname}-bundle-${pkgver}-x86_64.tar.zst::${_bundle_url}/releases/download/codeql-bundle-v${pkgver}/codeql-bundle-linux64.tar.zst")
+sha256sums_x86_64=('5e0f04bcb92c0c0973b6f5597e55316269051fa98bda3f725d8af9a85016721a')
 
 check() {
 	local codeql="${srcdir}/codeql/codeql"
 	local suite
 	local suite_path
+	local resolved_queries
 	local suites=(
 		'cpp-code-scanning.qls'
 		'cpp-security-extended.qls'
 		'cpp-security-and-quality.qls'
-		'cpp-code-quality.qls'
-		'cpp-code-quality-extended.qls'
 	)
 
 	"${codeql}" version
@@ -65,7 +71,11 @@ check() {
 			return 1
 		}
 
-		"${codeql}" resolve queries --format=text -- "${suite_path}" >/dev/null
+		resolved_queries="$("${codeql}" resolve queries --format=text -- "${suite_path}")"
+		[[ -n "${resolved_queries}" ]] || {
+			printf 'CodeQL C++ query suite resolves to no queries: %s\n' "${suite}" >&2
+			return 1
+		}
 	done
 }
 
