@@ -1,5 +1,5 @@
 # Maintainer: chen-shuhan <2502820816@qq.com>
-# 非官方社区打包 - 与上游 ASYS 科技无隶属关系，仅供 Arch 社区使用
+# 非官方社区打包
 pkgname=vantage-browser-bin
 pkgver=153.2.0
 pkgrel=1
