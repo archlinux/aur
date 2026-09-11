@@ -1,6 +1,6 @@
 # Maintainer: archledger <archledger236@gmail.com>
 pkgname=irlume
-pkgver=0.11.3
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Windows Hello-style face login for Linux: IR cameras, consent-gated, photo-spoofing resistant, TPM-sealed, password always works"
 arch=('x86_64')
@@ -10,8 +10,9 @@ license=('GPL-3.0-or-later')
 # each Provides=onnxruntime. Depend on the virtual 'onnxruntime' so any variant
 # the user has satisfies it (no conflict); a fresh install prompts to pick one,
 # choose onnxruntime-cpu unless you want GPU execution providers.
-depends=('onnxruntime' 'tpm2-tss' 'pam')
+depends=('onnxruntime' 'tpm2-tss' 'pam' 'polkit' 'dbus')
 optdepends=('fprintd: fingerprint companion factor')
+backup=('etc/pam.d/irlume-retry-reset')
 # clang: v4l2-sys-mit generates its V4L2 bindings with bindgen, which needs
 # libclang at build time; without it makepkg fails on a clean system.
 makedepends=('rust' 'cargo' 'gcc' 'clang')
@@ -63,12 +64,16 @@ package() {
     cd "$srcdir/$pkgname"
     install -Dm0755 target/release/irlumed "$pkgdir/usr/bin/irlumed"
     install -Dm0755 target/release/irlume  "$pkgdir/usr/bin/irlume"
+    install -Dm0644 packaging/desktop/io.github.archledger.Irlume.desktop "$pkgdir/usr/share/applications/io.github.archledger.Irlume.desktop"
+    install -Dm0644 packaging/desktop/io.github.archledger.Irlume.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.archledger.Irlume.svg"
     install -Dm0644 target/release/libpam_irlume.so "$pkgdir/usr/lib/security/pam_irlume.so"
     # KDE wallet handoff helper. Not in /usr/bin: it is not a command a user
     # runs, it takes a secret on stdin, and it is only meaningful inside a PAM
     # transaction.
     install -Dm0755 target/release/irlume-kwallet-init "$pkgdir/usr/libexec/irlume/irlume-kwallet-init"
     install -Dm0755 target/release/irlume-gkr-unlock "$pkgdir/usr/libexec/irlume/irlume-gkr-unlock"
+    install -Dm0755 target/release/irlume-password-verify "$pkgdir/usr/libexec/irlume-password-verify"
+    install -Dm0644 packaging/pam/irlume-retry-reset "$pkgdir/etc/pam.d/irlume-retry-reset"
     # One line per model, deliberately not a loop over basenames. The loop that
     # used to be here was keyed on ".onnx", so the mesh model could not join it
     # and was simply forgotten: the unit pointed IRLUME_MESH_MODEL at a file
@@ -99,6 +104,8 @@ package() {
         "$pkgdir/usr/share/irlume/tflite/PROVENANCE"
     install -Dm0644 "$srcdir/$pkgname/packaging/licenses/THIRD-PARTY-NOTICES.tflite" \
         "$pkgdir/usr/share/irlume/tflite/THIRD-PARTY-NOTICES"
+    install -Dm0644 packaging/polkit/org.irlume.enroll.policy "$pkgdir/usr/share/polkit-1/actions/org.irlume.enroll.policy"
+    install -Dm0644 packaging/polkit/org.irlume.recovery-manage.policy "$pkgdir/usr/share/polkit-1/actions/org.irlume.recovery-manage.policy"
     install -Dm0644 packaging/systemd/irlumed.service "$pkgdir/usr/lib/systemd/system/irlumed.service"
     install -Dm0644 packaging/systemd/irlumed.socket "$pkgdir/usr/lib/systemd/system/irlumed.socket"
     # Self-heal: re-applies irlume's greeter PAM lines if a distro update strips

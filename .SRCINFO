@@ -1,6 +1,6 @@
 pkgbase = irlume
 	pkgdesc = Windows Hello-style face login for Linux: IR cameras, consent-gated, photo-spoofing resistant, TPM-sealed, password always works
-	pkgver = 0.11.3
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/archledger/irlume
 	install = irlume.install
@@ -13,8 +13,11 @@ pkgbase = irlume
 	depends = onnxruntime
 	depends = tpm2-tss
 	depends = pam
+	depends = polkit
+	depends = dbus
 	optdepends = fprintd: fingerprint companion factor
-	source = git+https://github.com/archledger/irlume.git#tag=v0.11.3
+	backup = etc/pam.d/irlume-retry-reset
+	source = git+https://github.com/archledger/irlume.git#tag=v0.12.0
 	source = glintr100.onnx::https://github.com/archledger/irlume/releases/download/models-v1/glintr100.onnx
 	source = face_detection_yunet_2023mar.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_detection_yunet_2023mar.onnx
 	source = face_landmark.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_landmark.onnx

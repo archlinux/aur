@@ -41,10 +41,17 @@ post_upgrade() {
     if command -v apparmor_parser >/dev/null 2>&1; then
         apparmor_parser -r /etc/apparmor.d/usr.bin.irlumed 2>/dev/null || true
     fi
-    # Upgrading from a version without the socket unit: enable it, but only
-    # if the admin has not deliberately disabled the service.
-    if systemctl is-enabled --quiet irlumed.service 2>/dev/null; then
-        systemctl enable --now irlumed.socket 2>/dev/null || true
+    # The socket first shipped in 0.8.1. Migrate older releases only: repeating
+    # this on modern upgrades would undo an administrator's socket disable/stop.
+    if [ "$(vercmp "$2" 0.8.1)" -lt 0 ] &&
+        systemctl is-enabled --quiet irlumed.service 2>/dev/null; then
+        # An enabled service can still be deliberately stopped. Preserve that
+        # runtime choice while enabling its new socket for the next boot.
+        if systemctl is-active --quiet irlumed.service 2>/dev/null; then
+            systemctl enable --now irlumed.socket 2>/dev/null || true
+        else
+            systemctl enable irlumed.socket 2>/dev/null || true
+        fi
     fi
     systemctl try-restart irlumed.service 2>/dev/null || true
     # Ensure the self-heal units are enabled and run one reconcile: adopts an
@@ -55,7 +62,9 @@ post_upgrade() {
     # The timer is NEW in 0.7.0; arm it once for upgraders too, recorded by a
     # marker so a later deliberate disable is respected.
     if [ ! -e /var/lib/irlume/.reconcile-timer-armed ]; then
-        mkdir -p /var/lib/irlume
+        # /var/lib is system-owned and already exists; only the leaf is ours.
+        # shellcheck disable=SC2174
+        mkdir -p -m 0700 /var/lib/irlume
         systemctl enable --now irlume-reconcile.timer 2>/dev/null || true
         : > /var/lib/irlume/.reconcile-timer-armed
     fi
