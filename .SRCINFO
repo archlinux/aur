@@ -1,6 +1,6 @@
 pkgbase = flea
 	pkgdesc = Fast, keyboard-first file manager for Omarchy
-	pkgver = 0.1.6
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/thisisgm/flea
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = flea
 	optdepends = imagemagick: image conversion
 	optdepends = tailscale: Taildrop sharing
 	options = !debug
-	source = flea-0.1.6.tar.gz::https://github.com/thisisgm/flea/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = 47bcdffb0f4f60f721654a57632e62a7e83aaa9c167a1fcc6ffd923f76317a88
+	source = flea-0.2.0.tar.gz::https://github.com/thisisgm/flea/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 5a772314daaba0de076693597e3572fdae2b2a3f76c451fb8fbd2b4a6c845b7b
 
 pkgname = flea
