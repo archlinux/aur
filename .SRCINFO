@@ -1,7 +1,7 @@
 pkgbase = scx-manager
 	pkgdesc = Distro-agnostic GUI manager for sched-ext (SCX) schedulers
-	pkgver = 1.15.12
-	pkgrel = 5
+	pkgver = 1.17.0
+	pkgrel = 1
 	url = https://github.com/MadGoatHaz/scx-manager
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,7 +15,7 @@ pkgbase = scx-manager
 	optdepends = sched-ext-kernel: kernel with CONFIG_SCHED_EXT enabled (required to run sched-ext schedulers)
 	conflicts = scx-manager-git
 	conflicts = scx-manager-bin
-	source = https://github.com/MadGoatHaz/scx-manager/releases/download/v1.15.12/scx-manager-1.15.12.tar.gz
-	sha256sums = c94d6b1f2d7038ea28ba525b9f165e001529c3b61bc672cb859c9582e3787294
+	source = https://github.com/MadGoatHaz/scx-manager/releases/download/v1.17.0/scx-manager-1.17.0.tar.gz
+	sha256sums = 08d28065a66fd9366bbeafaa1f685c13e51bb5bf5850d72d736279776dfb91a6
 
 pkgname = scx-manager

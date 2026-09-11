@@ -7,8 +7,8 @@
 # makedepends and pass -G Ninja to the cmake configure line below.
 
 pkgname=scx-manager
-pkgver=1.15.12
-pkgrel=5
+pkgver=1.17.0
+pkgrel=1
 pkgdesc="Distro-agnostic GUI manager for sched-ext (SCX) schedulers"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/scx-manager"
@@ -23,8 +23,8 @@ makedepends=(cmake git qt6-tools rust)
 # that a kernel with CONFIG_SCHED_EXT enabled is required to run sched-ext schedulers.
 # ('scx-scheds' dropped from optdepends: the scx-tools dependency already pulls it in.)
 optdepends=('sched-ext-kernel: kernel with CONFIG_SCHED_EXT enabled (required to run sched-ext schedulers)')
-source=("https://github.com/MadGoatHaz/scx-manager/releases/download/v1.15.12/scx-manager-1.15.12.tar.gz")
-sha256sums=('c94d6b1f2d7038ea28ba525b9f165e001529c3b61bc672cb859c9582e3787294')
+source=("https://github.com/MadGoatHaz/scx-manager/releases/download/v1.17.0/scx-manager-1.17.0.tar.gz")
+sha256sums=('08d28065a66fd9366bbeafaa1f685c13e51bb5bf5850d72d736279776dfb91a6')
 
 build() {
   # Fat LTO objects so makepkg can strip static archives; see
