@@ -1,0 +1,19 @@
+pkgbase = tytanic-bin
+	pkgdesc = A test runner for typst projects
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/typst-community/tytanic
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = mdbook
+	provides = tytanic
+	conflicts = tytanic
+	source = tytanic-bin-0.4.1.tar.gz::https://github.com/typst-community/tytanic/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 9acdf96fba301efb4b92cf5b67f6a2b454315aaf3aea79c0a68a13644b2881a8
+	source_x86_64 = https://github.com/typst-community/tytanic/releases/download/v0.4.1/tytanic-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = cf262206b2c89f4d74690b5c825d5ffce1f633eb2900948b50cc006dccebe32c
+	source_aarch64 = https://github.com/typst-community/tytanic/releases/download/v0.4.1/tytanic-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 5d3ccd7b58fe0d60717df50ce429fc39dc8be0abfc166817bdce1b2b7722190e
+
+pkgname = tytanic-bin

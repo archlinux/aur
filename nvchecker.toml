@@ -1,0 +1,4 @@
+[tytanic]
+source = "github"
+github = "typst-community/tytanic"
+use_latest_release = true
