@@ -1,6 +1,6 @@
 # Maintainer: Hein (Warky Devs) <hein@warky.dev>
 pkgname=pgtidy-bin
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="PostgreSQL SQL formatter and linter"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('pgtidy')
 conflicts=('pgtidy')
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/pgtidy_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/pgtidy_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('2f9cd1ae9c927e8ac62bf725ff9e6325180347dee194fc10655ccd5520a2e1bd')
-sha256sums_aarch64=('25d9819e652b8624719c8128fc51b723e0bc1f51c2a4ff1dcdb8e3c471cf4b54')
+sha256sums_x86_64=('5cd45139dcab76d29dbdf1cd382799f1e53087ea36bbfb5cf982afc2f35af0a2')
+sha256sums_aarch64=('2cff466442cc6699adbba789a49779ba106ec20bd36e6c89c487cf3105d60d63')
 
 package() {
     install -Dm755 "pgtidy" "$pkgdir/usr/bin/pgtidy"
