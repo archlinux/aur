@@ -3,7 +3,7 @@
 pkgname=wheelwizard
 _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
-pkgver=2.5.4
+pkgver=2.5.5
 _pkgver="v$pkgver"
 pkgrel=1
 pkgdesc="Mario Kart Mod Manager & Retro Rewind Auto Updater"
@@ -21,6 +21,7 @@ depends=("dotnet-sdk-${_dotnet_ver}"
          'libgcc'
          'libstdc++'
          'libx11'
+         'libxml2-legacy'
          'ttf-font')
 optdepends=('dolphin-emu: native Dolphin support'
             'flatpak: Flatpak Dolphin support')
@@ -28,7 +29,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 
 source=("${_name}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-b2sums=('e57873961be3d9ee357f18ed8d384b6169a2a22d565fdc6038e784de8a5d67ebd961bd86b50b2f84971a5697878755c0f96f8e2ee1fe3214993758578335493e')
+b2sums=('ac6afca86aa0c78647a2f8a66dee786026ec8d7e5ffc0ac40c562fe6520cd00f5232e681329395c60ff72ec6b62a77b760baf2abca8cf7a4e95a59932fa05dd0')
 
 _runtime() {
     if [ "${CARCH}" = 'aarch64' ]; then
