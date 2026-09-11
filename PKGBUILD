@@ -2,14 +2,15 @@
 # Thanks to the original maintainer zlicdt <xkicdt1@gmail.com>.
 
 pkgname=open-orpheus-bin
-pkgver=0.16.2
-pkgrel=2
+pkgver=0.17.0
+pkgrel=1
 _upstream_pkgname=open-orpheus
 pkgdesc="An open-source implementation of Netease Cloud Music's Orpheus browser host."
 arch=('x86_64')
 url="https://github.com/YUCLing/open-orpheus"
 license=('MIT')
 depends=(
+    'alsa-lib'
     'gtk3'
     'libnotify'
     'nss'
@@ -19,21 +20,20 @@ depends=(
     'mesa'
     'libxcb'
 )
-optdepends=('kde-cli-tools: enable trash integration')
 makedepends=('libarchive')
 provides=("${_upstream_pkgname}=${pkgver}")
 conflicts=("${_upstream_pkgname}")
 source=(
-    "${_upstream_pkgname}_${pkgver}_amd64.deb::https://github.com/YUCLing/open-orpheus/releases/download/v${pkgver}/${_upstream_pkgname}_${pkgver}_amd64.deb"
+    "${_upstream_pkgname}_${pkgver}-1_amd64.deb::https://github.com/YUCLing/open-orpheus/releases/download/v${pkgver}/${_upstream_pkgname}_${pkgver}-1_amd64.deb"
     "LICENSE"
 )
 sha256sums=(
-    'd91aa12916a86da1f6fa0d2f0a2c4a219c7dc9463591493b3d6c30a473fa15dd'
+    'af1a704bcbb3f1a5288b343d0120d5f512d1dc378723c7a6915743852efee69a'
     '4499595d653b7a9e65001bb09239e6fb5d33e650d1f9db808ce87905021e9ff8'
 )
 
 prepare() {
-    ar x "${srcdir}/${_upstream_pkgname}_${pkgver}_amd64.deb"
+    ar x "${srcdir}/${_upstream_pkgname}_${pkgver}-1_amd64.deb"
 }
 
 package() {
