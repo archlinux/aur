@@ -1,7 +1,7 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname="gnome-shell-extension-night-shift-git"
-pkgver=r48.bd29331
-pkgrel=3
+pkgver=r54.2fba934
+pkgrel=1
 pkgdesc="::Rolling release:: Gnome-shell extension to automatically switch themes/modes/styles when the sun sets or sun rises"
 arch=('any')
 url="https://github.com/christophermca/gnome-shell-extension-night-shift"
@@ -17,7 +17,7 @@ conflicts=('gnome-shell-extension-night-shift-git'
            'gnome-mode-shift-git'
            'alacritty-use-theme-with-redshift'
            'alacritty-use-theme-with-redshift-git')
-source=("$pkgname::git+https://github.com/christophermca/gnome-shell-extension-night-shift.git/")
+source=("$pkgname::git+https://github.com/christophermca/gnome-shell-extension-night-shift.git#branch=dev")
 sha256sums=('SKIP')
 depends=( 'gnome-shell' )
 
@@ -28,7 +28,6 @@ pkgver() {
 
 package() {
   cd "$srcdir/$pkgname"
-  echo $PWD
-  # options and directives that can be overridden
-  make install
+  echo "$PWD"
+  make DESTDIR="$HOME/.local/share/gnome-shell/extensions" install
 }
