@@ -4,22 +4,22 @@ pkgbase=python-ewah-bool-utils
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="EWAH Bool Array utils for yt"
 arch=('i686' 'x86_64')
 url="https://ewah-bool-utils.readthedocs.io"
 license=('BSD-3-Clause')
-makedepends=('python-setuptools'
+makedepends=('meson-python>=0.18.0'
              'cython>=3.1.1'
              'python-build'
              'python-installer'
-             'python-numpy'
-             'python-sphinx')  # wheel required by new setuptools
+             'python-numpy>=2.0.0'
+             'python-sphinx')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix-title-underline.patch')
-md5sums=('f9d607818db03ffa606377501cc5807c'
+md5sums=('2fff5928ab804cc97475089e4a15ce2a'
          '7c4351256659c6fe4d7d369e3ff57398')
 
 get_pyver() {
@@ -36,18 +36,21 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --skip-dependency-check --no-isolation
+    python -m build --wheel --no-isolation #--skip-dependency-check
 
     msg "Building Docs"
-    mv {,_}${_pyname}
-    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
+#   mv {,_}${_pyname}
+#   PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
+    mkdir -p dist/lib
+    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-cp$(get_pyver)-cp$(get_pyver)-linux_${CARCH}.whl -C dist/lib
+    PYTHONPATH="../dist/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
-    mv {_,}${_pyname}
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+#   mv {_,}${_pyname}
 }
 
 package_python-ewah-bool-utils() {
