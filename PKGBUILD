@@ -2,7 +2,7 @@
 
 pkgname=advancely
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly customizable and interactive tool to track Minecraft progress."
 arch=('x86_64')
 url="https://github.com/LNXSeus/Advancely"
