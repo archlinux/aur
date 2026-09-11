@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TreeDist
-_pkgver=2.14.1
+_pkgver=2.15.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,7 +12,6 @@ license=('GPL-3.0-or-later')
 depends=(
   r-ape
   r-cli
-  r-colorspace
   r-rdpack
   r-shiny
   r-shinyjs
@@ -48,8 +47,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('08d01211dfa0f2118c777600961d43f2')
-b2sums=('0f137e666813c38b2ad5514b3fef3725ed3e08505ba01d54b5b4b878653e98c85cdfbbb10356083c8c5e7fc4a8a1cdaed761394b61effb7003d9286ce8a4346b')
+md5sums=('5de535aa34625754546c3935381ef6c6')
+b2sums=('4dfde4c2e89da8cd68bed1b716ca2296a75ba6c99132744199fb3a92df2428d7872b15049db0d31c9ae1f3527615a3e95f30f7024d169cba4b3817835a0134ab')
 
 build() {
   mkdir build
