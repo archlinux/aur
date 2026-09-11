@@ -10,7 +10,7 @@
 # line is what publishes an AUR revision that helpers surface to users, while
 # pkgver() below still stamps each build with what it actually produced.
 pkgname=codex-desktop-git
-pkgver=26.903.71938.r2107.g7f0a4d99 # renovate: datasource=deb depName=codex-desktop packageName=chatgpt registryUrl=https://persistent.oaistatic.com/codex-app-prod/linux/deb?suite=stable&components=main&binaryArch=amd64
+pkgver=26.908.31748.r2112.g4ca4b17b # renovate: datasource=deb depName=codex-desktop packageName=chatgpt registryUrl=https://persistent.oaistatic.com/codex-app-prod/linux/deb?suite=stable&components=main&binaryArch=amd64
 pkgrel=1
 pkgdesc="Unofficial ChatGPT desktop repackaged from OpenAI's official Linux build (ilysenko/codex-desktop-linux)"
 arch=('x86_64')
