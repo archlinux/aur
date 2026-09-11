@@ -4,7 +4,7 @@ pkgver=3.8.3.r0.g8641553
 _electronversion=44
 _nodeversion=24
 pkgrel=1
-pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.(Use system-wide electron)"
+pkgdesc="An open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together 开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作"
 arch=('x86_64')
 url="https://b3log.org/siyuan"
 _ghurl="https://github.com/siyuan-note/siyuan"
@@ -50,36 +50,49 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    export CGO_ENABLED=1
-    export GO111MODULE=on
-    export GOOS=linux
-    export GOCACHE="${srcdir}/go-build"
-    export GOMODCACHE="${srcdir}/go/pkg/mod"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export pnpm_config_registry="https://registry.npmmirror.com"
-            export npm_config_registry="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export GOPROXY=https://goproxy.cn,direct
-        }
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export XDG_STATE_HOME="${srcdir}/.local/state"
+	export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+	export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+	export PNPM_GLOBAL_DIR="${srcdir}/.pnpm/global"
+	export PNPM_GLOBAL_BIN_DIR="${srcdir}/.pnpm/bin"
+	export PNPM_STATE_DIR="${srcdir}/.pnpm/state"
+	export PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
+	export PNPM_NODE_LINKER=hoisted
+	export PNPM_FETCH_RETRIES=3
+	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+	export PNPM_UPDATE_NOTIFIER=false
+	export PNPM_NO_COLOR=true
+	export PNPM_NO_PROGRESS=true
+	export pnpm_config_platform=linux
+	export pnpm_config_arch="${CARCH}"
+	export COREPACK_HOME="${srcdir}/.corepack"
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export npm_config_node_options="--max-old-space-size=4096"
+    export GOPATH="${srcdir}/go"
+	export GOMODCACHE="${GOPATH}/pkg/mod"
+	export GOBIN="${GOPATH}/bin"
+	export GOCACHE="${srcdir}/go-build"
+	export GOENV="${srcdir}/go/env"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export CGO_ENABLED=1
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOTOOLCHAIN=local
+	export GOWORK=off
+	mkdir -p "${GOMODCACHE}" "${GOBIN}" "${GOCACHE}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" "$(dirname "${GOENV}")"
+	: > "${GOENV}"
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -133,6 +146,10 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
 	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/app/appearance/boot/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
+    for _icons in "${icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${pkgname//-/.}/app/src/assets/icon/${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
+    done
     install -Dm644 "${srcdir}/${pkgname//-/.}/app/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
