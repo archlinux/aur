@@ -4,7 +4,7 @@
 #
 
 pkgname=postgrest-bin
-pkgver=14.16
+pkgver=16.3
 pkgrel=1
 epoch=
 pkgdesc="Serve a RESTful API from any Postgres database"
@@ -25,7 +25,7 @@ install=
 changelog=
 source=("https://github.com/PostgREST/postgrest/releases/download/v$pkgver/postgrest-v$pkgver-linux-static-x86-64.tar.xz")
 noextract=()
-sha512sums=('aa8f4d5e6c8ae3527bb56d085eb5e5d05267c65111ae822c1cabb429575d90ec0be6bb03961a0c984bb829233244b0449860994dc2600deb33c6cc1caf86116b')
+sha512sums=('d181ca8f3d41f147451b14f73aa14fa252c58fa24948d1220706e172f2850543fd8992dfd78791503609457f814a691fd583c6bb0eb4b14a20a6bd2a6b12e8aa')
 validpgpkeys=()
 
 package() {
