@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=nixfmt
-pkgver=1.4.0 # renovate: datasource=github-tags depName=NixOS/nixfmt
+pkgver=1.5.0 # renovate: datasource=github-tags depName=NixOS/nixfmt
 pkgrel=1
 pkgdesc="Official formatter for Nix code"
 url="https://github.com/NixOS/nixfmt"
@@ -10,10 +10,16 @@ arch=('x86_64')
 depends=('ghc-libs' 'haskell-cmdargs' 'haskell-megaparsec' 'haskell-parser-combinators' 'haskell-safe-exceptions' 'haskell-scientific' 'haskell-file-embed' 'haskell-pretty-simple')
 makedepends=('ghc' 'uusi')
 source=("https://github.com/NixOS/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('1f099c1adbd3514c6b4e079741035e152e3d9dbbe7ab1c2b724420408704bf90ac7b70869768c1f7158e5cc8efd9976095b3ce0573cdf509c8c624be1074e354')
+b2sums=('524b10c7ba2ec9d6701370100d123e917d68f27a05e8d802030cfb5d5a205ba9aa3a070aaed863a76d4af0342a4d1d74c0aa4bbdf4f6e09bd3ea4128bd08ecbc')
 
 prepare() {
-  uusi $pkgname-$pkgver/$pkgname.cabal
+  cd $pkgname-$pkgver
+
+  # GHC 9.6 supports GHC2024's extensions, but not the edition alias.
+  sed -Ei 's/(default-language:[[:space:]]*)GHC2024/\1GHC2021/' $pkgname.cabal
+  sed -i '/common warnings/a\  default-extensions: DataKinds DerivingStrategies DisambiguateRecordFields ExplicitNamespaces GADTs LambdaCase MonoLocalBinds RoleAnnotations' $pkgname.cabal
+
+  uusi $pkgname.cabal
 }
 
 build() {
