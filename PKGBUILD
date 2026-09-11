@@ -14,7 +14,7 @@
 #     curl -s 'https://aur.archlinux.org/rpc/v5/info?arg[]=ai-memory'
 #
 pkgname=ai-memory
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Local-first long-term memory MCP server for AI coding agents"
 arch=('x86_64' 'aarch64')
@@ -27,10 +27,10 @@ optdepends=(
 )
 backup=('etc/ai-memory/config.toml' 'etc/ai-memory/env')
 install=ai-memory.install
-options=('!debug')
+options=('!debug' '!lto')
 conflicts=('ai-memory-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e108c96eacda3ae166cc6c17817c542870000cd0a3cec9de98a290ac8a56f928')
+sha256sums=('55ab20cdde70d086e7d5b66efec292967ce1ac8e061b88798182d3c30be30b8b')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -51,6 +51,10 @@ check() {
     export RUSTUP_TOOLCHAIN=1.95
     export CARGO_TARGET_DIR=target
     export TAILWIND_SKIP=1
+    # Pin CARGO_HOME to the real registry (populated by build()) before the
+    # HOME override below points cargo at an empty ~/.cargo, or --frozen fails
+    # to resolve the vendored registry it already downloaded.
+    export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
     export HOME="$srcdir/test-home"
     mkdir -p "$HOME"
     cargo test --frozen --release -p ai-memory-cli --bin ai-memory
