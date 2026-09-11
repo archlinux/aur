@@ -1,6 +1,6 @@
 pkgbase = termide
 	pkgdesc = Cross-platform terminal IDE, file manager and virtual terminal
-	pkgver = 0.34.0
+	pkgver = 0.34.1
 	pkgrel = 1
 	url = https://github.com/termide/termide
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = termide
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = termide-0.34.0.tar.gz::https://github.com/termide/termide/archive/0.34.0.tar.gz
-	sha256sums = f01c824f372a03404bedaed0661c09ba0b8fc513b06d8301a75d112037a98dd7
+	source = termide-0.34.1.tar.gz::https://github.com/termide/termide/archive/0.34.1.tar.gz
+	sha256sums = f1ee561a345c04bccfd693093eaad6c6e092877868719030497f811eb5548683
 
 pkgname = termide
