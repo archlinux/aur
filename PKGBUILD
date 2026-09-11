@@ -2,7 +2,7 @@
 
 _pkgname=tinymist
 pkgname=tinymist-viewer-bin
-pkgver=0.15.2
+pkgver=0.15.8
 pkgrel=1
 pkgdesc="Standalone native preview client for Tinymist (Typst language server)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,9 +17,9 @@ source_x86_64=("tinymist-viewer-$pkgver-x86_64.tar.gz::https://github.com/Myriad
 source_aarch64=("tinymist-viewer-$pkgver-aarch64.tar.gz::https://github.com/Myriad-Dreamin/$_pkgname/releases/download/v$pkgver/tinymist-viewer-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("tinymist-viewer-$pkgver-armv7.tar.gz::https://github.com/Myriad-Dreamin/$_pkgname/releases/download/v$pkgver/tinymist-viewer-armv7-unknown-linux-gnueabihf.tar.gz")
 sha256sums=('a9f29769fd3a7ee2976e6e161a93e16461fa305c088c4806242e50ec8ef86bce')
-sha256sums_x86_64=('8f7b08c5df9d1bf399483cb6dba914cca67e40b75f3072a3c18f1bf95c651508')
-sha256sums_aarch64=('1f8613f748d56d85a284ae68e9006bb9929a1b0c5ebb01a891fc20787b97920a')
-sha256sums_armv7h=('9cf094717bfc23bc0784f5f19c3a5b9c6a6973c52350230d8d2cfbe5a12e3b96')
+sha256sums_x86_64=('a19561a5b498217763756c64c6d711cba64650e3a34dc57f1cc4a5cef52ed676')
+sha256sums_aarch64=('f799af97e1487e5f5797cfbca5a4e852e58843e12998da7698682bfadf14a3bb')
+sha256sums_armv7h=('28c806c61ae195d60cbd9f8028ba06c0e17013e10f4e1c284aa882b1b622646b')
 
 package() {
   cd "$srcdir"
