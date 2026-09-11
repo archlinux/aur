@@ -1,6 +1,6 @@
 pkgbase = hclient-cli
 	pkgdesc = 懒猫微服客户端 Lazy Cat microservice desktop client (cli version)
-	pkgver = 1.1.4
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://lazycat.cloud/download
 	install = hclient-cli.install
@@ -12,9 +12,9 @@ pkgbase = hclient-cli
 	options = emptydirs
 	source = hclient-cli.service
 	sha256sums = 7a80d01c8a86cbedf7fe0fe7adcc9a039dab719f83251d20e117e75c7deb3531
-	source_x86_64 = hclient-cli-linux-amd64::https://dl.lazycatmicroserver.com/hclient-cli/v1.1.4/hclient-cli-linux-amd64
-	sha256sums_x86_64 = 47519ae0378506b098634545ab2989861ae58a0c367d77481a23cb47495767cd
-	source_aarch64 = hclient-cli-linux-arm64::https://dl.lazycatmicroserver.com/hclient-cli/v1.1.4/hclient-cli-linux-arm64
-	sha256sums_aarch64 = e7bb81fd8f66d2b3ac9ea3810ca4d97d6ff5a53c7e375a893938d5f270e084f5
+	source_x86_64 = hclient-cli-linux-amd64::https://dl.lazycatmicroserver.com/hclient-cli/v1.5.1/hclient-cli-linux-amd64
+	sha256sums_x86_64 = a0cdebcb652bdae4ba26ff96827c558f368af0673ad910545b4499f9897cfa6c
+	source_aarch64 = hclient-cli-linux-arm64::https://dl.lazycatmicroserver.com/hclient-cli/v1.5.1/hclient-cli-linux-arm64
+	sha256sums_aarch64 = 348c55c87a4c345ea9c0591eba308e7b286b34096543b1e47e4e2457c5832ede
 
 pkgname = hclient-cli
