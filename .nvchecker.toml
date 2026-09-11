@@ -1,0 +1,5 @@
+[rusthound-ce]
+source = "github"
+github = "g0h4n/RustHound-CE"
+prefix = "v"
+use_max_release = true

@@ -1,0 +1,19 @@
+pkgbase = rusthound-ce
+	pkgdesc = BloodHound CE collector written in Rust
+	pkgver = 2.5.13
+	pkgrel = 1
+	url = https://github.com/g0h4n/rusthound-ce
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = clang
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = krb5
+	options = !lto
+	source = git+https://github.com/g0h4n/rusthound-ce#tag=v2.5.13
+	b2sums = dcb06b90d52cc8ca154d869fda68c2c25c543dda4833160b0114fbe29c5f67f937f2f98fd5009d0045c501917aa8d0340e7f20cbdc04c7c2f8e718baf1975e07
+
+pkgname = rusthound-ce
