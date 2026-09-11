@@ -1,0 +1,4 @@
+[android-sdk-cmdline-tools-latest]
+source = "android_sdk"
+android_sdk = "cmdline-tools;latest"
+repo = "package"
