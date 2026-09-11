@@ -1,7 +1,7 @@
 pkgbase = zish
 	pkgdesc = fast, familiar POSIX/bash shell in Zig with kernel-enforced (Landlock+seccomp) sandboxing
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rotkonetworks/zish
 	arch = x86_64
 	license = MIT

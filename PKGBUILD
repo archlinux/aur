@@ -6,7 +6,7 @@
 # actual GitHub tarball. Do not hand-edit pkgver/sha256sums here.
 pkgname=zish
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="fast, familiar POSIX/bash shell in Zig with kernel-enforced (Landlock+seccomp) sandboxing"
 arch=('x86_64')
 url="https://github.com/rotkonetworks/zish"
@@ -20,6 +20,13 @@ sha256sums=('8c2b1f72f1b677c30d67d8fbe0eccd301c6b7cce597cd177262bdddc6485fed7')
 build() {
     cd "$pkgname-$pkgver"
     zig build --release=safe
+
+    # Standard feats. The repo's own target decides which feats exist and which
+    # need libc (FEAT_NAMES/FEAT_LIBC), so there is no second list here to drift,
+    # and it stages exactly the registry layout the shell reads:
+    # <stage>/<name>/{feat.toml,bin/<name>}. Both stage dirs live in $srcdir so
+    # the build writes nothing outside the build tree.
+    make feats ZISH_FEAT_DIR="$srcdir/feats-standard" ZISH_RUBRIC_DIR="$srcdir/rubrics"
 }
 
 # No check(): `zig build test` builds the test exe in Debug (all modules +
@@ -33,4 +40,12 @@ package() {
     install -Dm755 "zig-out/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 zish.1 "$pkgdir/usr/share/man/man1/zish.1"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md" 2>/dev/null || true
+
+    # The standard feat set, at the path the shell derives from its own location
+    # (/proc/self/exe -> <prefix>/share/zish/feats). Without this a fresh install
+    # has an empty catalog, and it cannot bootstrap: `gf`, the feat that installs
+    # feats, is itself one of them. A feat the user installs into ~/.zish/feats
+    # shadows the shipped one — the search order already prefers the user root.
+    install -d "$pkgdir/usr/share/zish/feats/standard"
+    cp -a "$srcdir/feats-standard/." "$pkgdir/usr/share/zish/feats/standard/"
 }
