@@ -2,19 +2,19 @@
 
 pkgname=deepcode-cli-bin
 _pkgname=deepcode-cli
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Terminal AI coding assistant optimized for the deepseek-v4 model (deep thinking, agent skills, MCP)"
-arch=('any')
+# The 0.4.0 npm release keeps sharp external, including native platform addons.
+arch=('x86_64' 'aarch64')
 url="https://github.com/lessweb/deepcode-cli"
 license=('MIT')
-# engines.node is >=22; the published bundle keeps its runtime deps external
-# (ink/react/openai/undici/zod/...), so they are resolved into the package
-# tree at build time rather than depended on as Arch packages.
-depends=('nodejs>=22')
+# npm resolves sharp and its native libvips dependencies into the module tree.
+depends=('nodejs>=22' 'glibc' 'gcc-libs')
 makedepends=('npm')
 provides=('deepcode' "${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
+options=('!strip' '!debug')
 _scope='@vegamo'
 # Prebuilt official release artifact: the npm registry tarball (upstream
 # ships dist/cli.js bundled from TypeScript). Feed it to npm verbatim, so
@@ -29,7 +29,7 @@ _scope='@vegamo'
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_scope}/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/lessweb/deepcode-cli/v${pkgver}/LICENSE")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('8ef4c64c4bbcdc474f6498b9314c23442be8b5e589e26eb07ee12594fd2433ff'
+sha256sums=('efd49f49d4bb099ce17e2840fafa21008b9f9a9bfaf1420030e96f9828ecd23e'
             '7b1d5fa29a200220ca44b3355db5f1c7b91714fbbd76f42e7268104fa9efd380')
 
 package() {
