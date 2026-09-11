@@ -1,8 +1,8 @@
 # Maintainer: Richard Fakenberg (OK1BR) <rifak@protonmail.com>
 # AUR package for the tagged release.
 pkgname=skimmer-for-linux
-_pkgtag=0.4.0
-pkgver=0.4.0
+_pkgtag=0.4.1
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Native GTK4/libadwaita multi-channel CW/RTTY skimmer (TCI client, spots, telnet cluster feed)"
 arch=('x86_64')
@@ -14,8 +14,8 @@ depends=('gtk4' 'libadwaita' 'glib2' 'libwebsockets' 'fftw')
 makedepends=('meson' 'desktop-file-utils' 'gtk-update-icon-cache')
 source=("$pkgname-$_pkgtag.tar.gz::$url/archive/refs/tags/v$_pkgtag.tar.gz")
 # From the published tag tarball:
-#   curl -sL <url>/archive/refs/tags/v0.4.0.tar.gz | sha256sum
-sha256sums=('bbd35f4de98daf756fbe08dfc8b07b211d708a6e88e78f452fcda27c74cb1cfc')
+#   curl -sL <url>/archive/refs/tags/v0.4.1.tar.gz | sha256sum
+sha256sums=('4f7c705bda118c3ed2b470d9082205e2478695c17b94da0f1d274eb90e5ea378')
 
 build() {
   arch-meson "$pkgname-$_pkgtag" build
