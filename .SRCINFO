@@ -1,6 +1,6 @@
 pkgbase = typr
 	pkgdesc = A modern type system for R
-	pkgver = 0.5.9
+	pkgver = 0.5.11
 	pkgrel = 1
 	url = https://github.com/we-data-ch/typr
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = typr
 	conflicts = typr-bin
 	options = !lto
 	options = !debug
-	source = typr-0.5.9.tar.gz::https://github.com/we-data-ch/typr/archive/v0.5.9.tar.gz
-	sha512sums = 6f324740cc394f7dfb96899c85af29dc51e2d8958f04bc9c4b15f63e497e4cc75520fe984a3cc015fa648cfc36a74fb2895cb650d8dbae92620cbb4e1892ad83
+	source = typr-0.5.11.tar.gz::https://github.com/we-data-ch/typr/archive/v0.5.11.tar.gz
+	sha512sums = df93dd87e1d3d48389671a2a208bedf9661f9493b7fab99b088fdf7373deb1689de21b2df3544ae19719857abf51c792c2d1c9c0e6b6a5ecae0228693c8d11f0
 
 pkgname = typr
