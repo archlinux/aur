@@ -1,0 +1,18 @@
+pkgbase = yafst-bin
+	pkgdesc = Linux-first ranked stats tracker for THE FINALS
+	pkgver = 0.2.0beta.3
+	pkgrel = 1
+	url = https://forge.wolfhound.dev/wolfhound/yafst
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = hicolor-icon-theme
+	optdepends = xdg-utils: open the dashboard in your browser on start
+	provides = yafst
+	conflicts = yafst
+	source_x86_64 = yafst-v0.2.0-beta.3-linux-amd64.tar.gz::https://forge.wolfhound.dev/wolfhound/yafst/releases/download/v0.2.0-beta.3/yafst-v0.2.0-beta.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = 78a1a581b487467674adf93c254d371abcf0ce58b7757a9dfce9b2fad6412ec5
+	source_aarch64 = yafst-v0.2.0-beta.3-linux-arm64.tar.gz::https://forge.wolfhound.dev/wolfhound/yafst/releases/download/v0.2.0-beta.3/yafst-v0.2.0-beta.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = f5d5961a1a12e0e8b37070a345d3221bafd85402f545f78a68fb404fba6d848a
+
+pkgname = yafst-bin
