@@ -1,0 +1,24 @@
+From 3a8861623354aef713ca299bbbfd55b526fbf152 Mon Sep 17 00:00:00 2001
+From: Tillmann Severin <tillmann.zipperer@web.de>
+Date: Fri, 11 Sep 2026 19:36:12 +0200
+Subject: [PATCH] Remove FORTIFY_SOURCE=2 as arch uses FORTIFY_SOURCE=3
+
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1a06cb7..48943a8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -90,7 +90,6 @@ endif()
+ # somehow import that without copy/pasting?
+ add_compile_options(-Wall -Wextra -Werror -pedantic
+     -fstack-protector-strong
+-    -D_FORTIFY_SOURCE=2
+     -Wformat -Wformat-security -Werror=format-security
+     -O2
+     -g
+-- 
+2.55.0
+

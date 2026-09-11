@@ -1,0 +1,27 @@
+pkgbase = smolkit-git
+	pkgdesc = A low-footprint drop-in replacement for polkit
+	pkgver = r117.46bbfd5
+	pkgrel = 1
+	url = https://github.com/bmwcarit/smolkit
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = gtest
+	checkdepends = python-pytest
+	checkdepends = python-dbus
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = sdbus-cpp
+	depends = rapidjson
+	depends = glibc
+	depends = systemd-libs
+	depends = libstdc++
+	provides = smolkit
+	conflicts = smolkit
+	conflicts = polkit
+	source = git+https://github.com/bmwcarit/smolkit#commit=46bbfd5c922a8d03a534398ee129ded822dfcafe
+	source = 0001-Remove-FORTIFY_SOURCE-2-as-arch-uses-FORTIFY_SOURCE-.patch
+	sha256sums = SKIP
+	sha256sums = 1a4acc4f4037d8f730e53e45279f7466008f757434350adb689998f9845c4520
+
+pkgname = smolkit-git
