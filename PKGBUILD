@@ -2,7 +2,7 @@
 
 _reponame=mdcz
 pkgname="${_reponame}-server"
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Media metadata scraper (server)"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("${_reponame}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.
         "${_reponame}.sysusers"
         "${_reponame}.tmpfiles"
         "${_reponame}u.service")
-sha256sums=('5705a03e77a9d9cb76ef99f2e3a50314a1a7cc214de0aae2fcb49a0976cebf52'
+sha256sums=('2acb0efab3fe4acea9f49e695c21e57f8e13d05ae58f27aefaba62c5ab3e365d'
             'b238101b924496e6257593a82405e984e9373aac52a06cdbf236d30624972c99'
             'c80caf8e5dc0ec46f3aefd2b207a2ddf035685874102698196f050afe7719310'
             '5325bb75ca4acdadef92d12d159ea2ade7f80cc4cb57b48e08274a8a625d6d66'
