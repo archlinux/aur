@@ -1,6 +1,6 @@
 # Maintainer: captience <milkkjello@gmail.com>
 pkgname=tide
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A multi-source music player with two personalities"
 arch=('any')
@@ -33,7 +33,7 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # computed from the GitHub tag tarball at release time (updpkgsums once
 # v$pkgver is tagged and pushed); until then this is the previous release's.
-sha256sums=('9296619eb9340a2a3dfcbf4ac2ace1d2593efa4e6dc52e94710fc98598c7e44c')
+sha256sums=('4deae7a884d9ce1d66b4ae9a264edd7df8e6017522d0d747d87231350cd47f7d')
 
 build() {
   cd "$pkgname-$pkgver"
