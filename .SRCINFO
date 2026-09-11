@@ -1,6 +1,6 @@
 pkgbase = mcpc-bin
 	pkgdesc = MCP client CLI with daemon-held sessions (prebuilt binary)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/lloydzhou/mcpc
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = mcpc-bin
 	conflicts = mcpc
 	options = !strip
 	source_x86_64 = mcpc-linux-amd64::https://github.com/lloydzhou/mcpc/releases/download/v0.1.1/mcpc-linux-amd64
-	sha256sums_x86_64 = 9990695617b6ed5801ec610b52a5d21811c692a250f78ba659c0d042712d911b
+	sha256sums_x86_64 = 8b56d31a46bdc6b54c6d35c71afdae169bc0d4e89d4d90e0d856ef04e7433cbd
 	source_aarch64 = mcpc-linux-arm64::https://github.com/lloydzhou/mcpc/releases/download/v0.1.1/mcpc-linux-arm64
-	sha256sums_aarch64 = 9cd36f5db027d71722af99ecedde62abc24fcea70329f09aba8b7ebf09b64bbf
+	sha256sums_aarch64 = 5da82baa1c51951d9fe2f961a60128eb3fdf2cabf69f1d51bbe19464c04e8a2b
 
 pkgname = mcpc-bin
