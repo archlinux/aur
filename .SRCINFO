@@ -1,6 +1,6 @@
 pkgbase = hyprism-shell
 	pkgdesc = Hyprland and Quickshell desktop environment with dynamic theming
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/kristyancarvalho/hyprism
 	arch = any
@@ -32,6 +32,7 @@ pkgbase = hyprism-shell
 	depends = qt6ct
 	depends = quickshell
 	depends = sassc
+	depends = satty
 	depends = slurp
 	depends = thunar
 	depends = ttf-jetbrains-mono-nerd
@@ -60,7 +61,7 @@ pkgbase = hyprism-shell
 	optdepends = xdg-utils: default application integration
 	optdepends = zathura: generated document viewer theme
 	optdepends = zathura-pdf-mupdf: PDF support for Zathura
-	source = hyprism-0.1.9.tar.gz::https://github.com/kristyancarvalho/hyprism/archive/refs/tags/v0.1.9.tar.gz
-	sha256sums = 93bb927595f76bbc4676525b96534486dcbb57e644050a24b35ee7ad9d319693
+	source = hyprism-0.1.10.tar.gz::https://github.com/kristyancarvalho/hyprism/archive/refs/tags/v0.1.10.tar.gz
+	sha256sums = 98527abedcee1cef70c57a6dbdc9bc550c41bae5dc12603c259e16abf31c5385
 
 pkgname = hyprism-shell
