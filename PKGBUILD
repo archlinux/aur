@@ -1,6 +1,6 @@
 # Maintainer: swim <swim853279614@163.com>
 pkgname=plasma-lyrics-git
-pkgver=0.2.1.r8.g7810680
+pkgver=0.3.2.r0.gf5b5804
 pkgrel=1
 pkgdesc='Native synchronized desktop lyrics widget for Plasma 6'
 arch=('x86_64')
@@ -26,13 +26,14 @@ pkgver() {
   cd "$pkgname"
   # The describe and the sed have to stay apart: a pipeline reports the exit
   # status of its last command, so piping a failed describe into sed yields an
-  # empty version and a successful status, and the fallback never runs. Until
-  # the first tag exists, that is every build.
+  # empty version and a successful status, and the fallback never runs. The
+  # fallback only fires on a clone that carries no tags at all; its base is the
+  # last release, so such a build never sorts below the released package.
   local described
   if described=$(git describe --long --tags --abbrev=7 2>/dev/null); then
     printf '%s' "$described" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   else
-    printf '0.1.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf '0.3.2.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
 

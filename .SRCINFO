@@ -1,6 +1,6 @@
 pkgbase = plasma-lyrics-git
 	pkgdesc = Native synchronized desktop lyrics widget for Plasma 6
-	pkgver = 0.2.1.r8.g7810680
+	pkgver = 0.3.2.r0.gf5b5804
 	pkgrel = 1
 	url = https://github.com/swim233/plasma-lyrics
 	arch = x86_64
