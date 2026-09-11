@@ -1,0 +1,11 @@
+post_install() {
+    echo "Each remote needs its own config before its timer is enabled:"
+    echo "  sudo cp /etc/rclone-sync/example.conf /etc/rclone-sync/<remote>.conf"
+    echo "  sudo systemctl enable --now rclone-sync@<remote>.timer"
+    echo "The service runs as root, so configure the remote with 'sudo rclone config'."
+    echo "See /usr/share/doc/rclone-sync-timer/README.md."
+}
+
+post_upgrade() {
+    post_install
+}

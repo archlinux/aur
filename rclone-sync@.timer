@@ -1,0 +1,15 @@
+# One timer per instance, daily by default; override per instance.
+
+[Unit]
+Description=Run rclone-sync@%i daily
+Documentation=file:/usr/share/doc/rclone-sync-timer/README.md
+Documentation=man:rclone(1)
+
+[Timer]
+OnCalendar=*-*-* 03:00:00
+RandomizedDelaySec=30m
+Persistent=true
+Unit=rclone-sync@%i.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,37 @@
+# %i is the instance name, the /etc/rclone-sync/%i.conf file and the rclone
+# remote at once. The service runs as root, so the remote is configured with
+# `sudo rclone config`, e.g.
+#   systemctl enable --now rclone-sync@gdrive-docs.timer
+
+[Unit]
+Description=rclone sync for remote %i
+Documentation=file:/usr/share/doc/rclone-sync-timer/README.md
+Documentation=man:rclone(1)
+After=network-online.target
+Wants=network-online.target
+# At most 5 starts per hour, then the unit stays failed until the timer runs it again.
+StartLimitIntervalSec=1h
+StartLimitBurst=5
+
+[Service]
+Type=oneshot
+# Must set RCLONE_SRC and RCLONE_DEST.
+EnvironmentFile=/etc/rclone-sync/%i.conf
+
+# Unconfigured remote: exit 1-254 skips the run instead of failing the unit.
+ExecCondition=/bin/sh -c '/usr/bin/rclone listremotes --quiet | grep -qxF "%i:"'
+
+# $RCLONE_FLAGS, not ${RCLONE_FLAGS}: $VAR splits on whitespace into separate
+# arguments and expands to nothing when unset, ${VAR} would be a single word.
+ExecStart=/usr/bin/rclone sync ${RCLONE_SRC} ${RCLONE_DEST} $RCLONE_FLAGS
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+# ProtectSystem=full mounts /usr, /boot, /efi and /etc read-only but leaves /home and
+# /srv writable. Path settings never expand variables or EnvironmentFile= values,
+# so ReadWritePaths=${RCLONE_DEST} is silently ignored (not a valid path); add the
+# literal path in an override when restricting further.
+ProtectSystem=full
+
+Restart=on-failure
+RestartSec=60
