@@ -35,17 +35,24 @@ if [[ "${1:-}" == "session" || "${1:-}" == "sessions" ]]; then
 fi
 
 if [[ "${1:-}" == "mcp" ]]; then
-  shift
-  MCP_HELPER="${PREFIX}/lib/muse/muse-mcp"
-  if [[ ! -x "${MCP_HELPER}" ]]; then
-    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    if [[ -x "${SCRIPT_DIR}/../lib/muse/muse-mcp" ]]; then
-      MCP_HELPER="${SCRIPT_DIR}/../lib/muse/muse-mcp"
-    elif [[ -x "${SCRIPT_DIR}/muse-mcp" ]]; then
-      MCP_HELPER="${SCRIPT_DIR}/muse-mcp"
-    fi
-  fi
-  exec "${MCP_HELPER}" "$@"
+  # Only our helper subcommands are intercepted; anything else (e.g. the
+  # native `mcp login/logout` for OAuth) falls through to the real binary
+  # below, preserving "$@" (including the leading "mcp").
+  case "${2:-}" in
+    ""|list|status|import|add|enable|disable|remove|export|help)
+      shift
+      MCP_HELPER="${PREFIX}/lib/muse/muse-mcp"
+      if [[ ! -x "${MCP_HELPER}" ]]; then
+        SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+        if [[ -x "${SCRIPT_DIR}/../lib/muse/muse-mcp" ]]; then
+          MCP_HELPER="${SCRIPT_DIR}/../lib/muse/muse-mcp"
+        elif [[ -x "${SCRIPT_DIR}/muse-mcp" ]]; then
+          MCP_HELPER="${SCRIPT_DIR}/muse-mcp"
+        fi
+      fi
+      exec "${MCP_HELPER}" "$@"
+      ;;
+  esac
 fi
 
 # On Termux / Android, static Linux binaries (musl) trigger SIGSYS (signal 31)
