@@ -2,7 +2,7 @@
 # Contributor: Hein (Warky Devs) <hein@warky.dev>
 
 pkgname=pgtidy
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="PostgreSQL SQL formatter and linter"
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9c4039fb7a7d08027d2546a01e7781c627a2bb76d21746c4ac064574014dc276')
+sha256sums=('58fdba068d136d3ecdf1a8b8c35b342ca1905b0a34f732a5a8b3f7022b7176c1')
 
 prepare() {
     cd "$pkgname"

@@ -1,6 +1,6 @@
 pkgbase = pgtidy
 	pkgdesc = PostgreSQL SQL formatter and linter
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://git.warky.dev/wdevs/pgtidy
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pgtidy
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = pgtidy-0.0.7.tar.gz::https://git.warky.dev/wdevs/pgtidy/archive/v0.0.7.tar.gz
-	sha256sums = 9c4039fb7a7d08027d2546a01e7781c627a2bb76d21746c4ac064574014dc276
+	source = pgtidy-0.0.8.tar.gz::https://git.warky.dev/wdevs/pgtidy/archive/v0.0.8.tar.gz
+	sha256sums = 58fdba068d136d3ecdf1a8b8c35b342ca1905b0a34f732a5a8b3f7022b7176c1
 
 pkgname = pgtidy
