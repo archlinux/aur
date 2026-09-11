@@ -1,6 +1,6 @@
 pkgbase = opensnitch-ebpf-module-git
 	pkgdesc = eBPF process monitor module for opensnitch
-	pkgver = 1.6.3.r168.aea75179
+	pkgver = 1.8.0.r224.a1353848
 	pkgrel = 1
 	url = https://github.com/evilsocket/opensnitch
 	arch = i686
@@ -24,6 +24,6 @@ pkgbase = opensnitch-ebpf-module-git
 	source = git+https://github.com/evilsocket/opensnitch.git
 	source = 0001-Build-with-Archlinux.patch
 	sha256sums = SKIP
-	sha256sums = a107abce2cc78a44764cd30c57beed42b75ea68d36d2b9fef560f8ab34bbfc2c
+	sha256sums = 378aada09183a012dd8cedc36f7d1c84e9442e08a1ab645cfe6785e6a88b1aba
 
 pkgname = opensnitch-ebpf-module-git
