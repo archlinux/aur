@@ -1,0 +1,8 @@
+post_install() {
+  echo "Restart KRunner to pick up the new runner:"
+  echo "  kquitapp6 krunner && kstart6 krunner"
+}
+
+post_upgrade() {
+  post_install
+}
