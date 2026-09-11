@@ -1,6 +1,6 @@
 pkgbase = toki-bin
 	pkgdesc = AI scheduling agent desktop application
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://toki.com/
 	arch = x86_64
@@ -36,14 +36,14 @@ pkgbase = toki-bin
 	depends = util-linux-libs
 	depends = xdg-utils
 	optdepends = libappindicator: system tray support
-	provides = toki=0.1.9
+	provides = toki=0.2.0
 	conflicts = toki
-	noextract = toki-bin-0.1.9-x86_64.deb
-	noextract = toki-bin-0.1.9-aarch64.deb
+	noextract = toki-bin-0.2.0-x86_64.deb
+	noextract = toki-bin-0.2.0-aarch64.deb
 	options = !strip
-	source_x86_64 = toki-bin-0.1.9-x86_64.deb::https://downloads.toki.com/desktop/toki_0.1.9_amd64.deb
-	sha256sums_x86_64 = 88ba25994104df9acc35debca40af3b59ea1e17995b436f29e895664ff839831
-	source_aarch64 = toki-bin-0.1.9-aarch64.deb::https://downloads.toki.com/desktop/toki_0.1.9_arm64.deb
-	sha256sums_aarch64 = 87e5357e54722753c910d5e023b7a1764edd40802a24f202260eb028fd8ddca2
+	source_x86_64 = toki-bin-0.2.0-x86_64.deb::https://downloads.toki.com/desktop/toki_0.2.0_amd64.deb
+	sha256sums_x86_64 = 3270bf1b0b6ef8f438ae81a939c5937c02346dd812162849a9d52240b192842b
+	source_aarch64 = toki-bin-0.2.0-aarch64.deb::https://downloads.toki.com/desktop/toki_0.2.0_arm64.deb
+	sha256sums_aarch64 = e3110f8c470bb9c3c246b5b4229cff526dd3298a4ec42e505babfb187ff54774
 
 pkgname = toki-bin
