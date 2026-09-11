@@ -1,6 +1,6 @@
 pkgbase = cs-bin
 	pkgdesc = codespelunker - CLI code search tool that understands code structure and ranks results by relevance, with no indexing required
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/boyter/cs
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = cs-bin
 	license = MIT
 	provides = cs
 	conflicts = cs
-	source_x86_64 = cs-x86_64-3.1.0.tgz::https://github.com/boyter/cs/releases/download/v3.1.0/cs_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = e5bdebf266fec475803f3033de865f769873d61d5a47b20e0207683b0794cac6
-	source_i686 = cs-i686-3.1.0.tgz::https://github.com/boyter/cs/releases/download/v3.1.0/cs_Linux_i386.tar.gz
-	sha256sums_i686 = 3730d488b97b5c16b923922262af0d06bb9b8c49aa620ab4b40e14289a406bed
-	source_aarch64 = cs-aarch64-3.1.0.tgz::https://github.com/boyter/cs/releases/download/v3.1.0/cs_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 4290e9305006d3953987db67dd50d10b32b240dbfd2be3ef4722b5fce69453fa
+	source_x86_64 = cs-x86_64-3.2.0.tgz::https://github.com/boyter/cs/releases/download/v3.2.0/cs_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = fcb8ae293b5c1b8ae580089c7cdd7ba6fbfd959ea7922a40016bfe1ea76dbca6
+	source_i686 = cs-i686-3.2.0.tgz::https://github.com/boyter/cs/releases/download/v3.2.0/cs_Linux_i386.tar.gz
+	sha256sums_i686 = f26ccef9516890fd8937b0683dc248d5dcecb0d460063133832e1f9c8c9b5971
+	source_aarch64 = cs-aarch64-3.2.0.tgz::https://github.com/boyter/cs/releases/download/v3.2.0/cs_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 868b50deb75536805a5fc1a108b755786780addb84ebe5a8d8829680208807a8
 
 pkgname = cs-bin

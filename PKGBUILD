@@ -5,7 +5,7 @@ _pkgname=cs
 pkgname=${_pkgname}-bin
 pkgdesc="codespelunker - CLI code search tool that understands code structure and ranks results by relevance, with no indexing required"
 
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,9 +23,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('e5bdebf266fec475803f3033de865f769873d61d5a47b20e0207683b0794cac6')
-sha256sums_i686=('3730d488b97b5c16b923922262af0d06bb9b8c49aa620ab4b40e14289a406bed')
-sha256sums_aarch64=('4290e9305006d3953987db67dd50d10b32b240dbfd2be3ef4722b5fce69453fa')
+sha256sums_x86_64=('fcb8ae293b5c1b8ae580089c7cdd7ba6fbfd959ea7922a40016bfe1ea76dbca6')
+sha256sums_i686=('f26ccef9516890fd8937b0683dc248d5dcecb0d460063133832e1f9c8c9b5971')
+sha256sums_aarch64=('868b50deb75536805a5fc1a108b755786780addb84ebe5a8d8829680208807a8')
 
 
 package() {
