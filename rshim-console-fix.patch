@@ -1,0 +1,193 @@
+diff --git a/src/rshim.c b/src/rshim.c
+index fec469e..ff05154 100644
+--- a/src/rshim.c
++++ b/src/rshim.c
+@@ -1431,11 +1431,15 @@ ssize_t rshim_fifo_read(rshim_backend_t *bd, char *buffer, size_t count,
+       RSHIM_DBG("rshim%d(fifo_read) waiting for readable chan %d\n",
+                 bd->index, chan);
+       while (read_empty(bd, chan)) {
++        int wait_rc;
++
+         clock_gettime(CLOCK_REALTIME, &ts);
+         ts.tv_sec += 1;
+-        if (pthread_cond_timedwait(&bd->read_fifo[chan].operable,
+-            &bd->mutex, &ts)) {
+-          RSHIM_DBG("rshim%d(fifo_read) returning ERESTARTSYS\n", bd->index);
++        wait_rc = pthread_cond_timedwait(&bd->read_fifo[chan].operable,
++                                         &bd->mutex, &ts);
++        if (wait_rc && wait_rc != ETIMEDOUT) {
++          RSHIM_DBG("rshim%d(fifo_read) wait failed (%d)\n",
++                    bd->index, wait_rc);
+           pthread_mutex_unlock(&bd->mutex);
+           return -EINTR;
+         }
+@@ -1444,6 +1448,14 @@ ssize_t rshim_fifo_read(rshim_backend_t *bd, char *buffer, size_t count,
+           pthread_mutex_unlock(&bd->mutex);
+           return -EINTR;
+ 	}
++
++        /*
++         * On timeout, break out to the enclosing loop so that the has_tm /
++         * tmfifo_error checks are re-evaluated; a plain timeout on an idle
++         * channel is not an error and must not fail the read.
++         */
++        if (wait_rc == ETIMEDOUT)
++          break;
+       }
+ 
+       /*
+diff --git a/src/rshim_fuse.c b/src/rshim_fuse.c
+index 163257c..c0489b7 100644
+--- a/src/rshim_fuse.c
++++ b/src/rshim_fuse.c
+@@ -58,6 +58,68 @@ struct termio {
+ 
+ #include "rshim.h"
+ 
++#ifdef __linux__
++#include <sys/ioctl.h>
++
++/*
++ * glibc's tcgetattr()/tcsetattr() issue the TCGETS2/TCSETS2 family on Linux.
++ * struct termios2 lives in <asm/termbits.h>, which cannot be included next to
++ * <termios.h> without clashing, so mirror its layout here.  The kernel's
++ * TCGETS2 macros encode sizeof(struct termios2) in the command number, so
++ * redefine them against the local struct -- the layouts are identical (44
++ * bytes), giving byte-identical command values.
++ */
++#define RSHIM_NCCS2 19
++
++struct rshim_termios2 {
++  tcflag_t c_iflag;
++  tcflag_t c_oflag;
++  tcflag_t c_cflag;
++  tcflag_t c_lflag;
++  cc_t c_line;
++  cc_t c_cc[RSHIM_NCCS2];
++  speed_t c_ispeed;
++  speed_t c_ospeed;
++};
++
++#undef TCGETS2
++#undef TCSETS2
++#undef TCSETSW2
++#undef TCSETSF2
++#define TCGETS2  _IOR('T', 0x2A, struct rshim_termios2)
++#define TCSETS2  _IOW('T', 0x2B, struct rshim_termios2)
++#define TCSETSW2 _IOW('T', 0x2C, struct rshim_termios2)
++#define TCSETSF2 _IOW('T', 0x2D, struct rshim_termios2)
++
++static void rshim_termios_to_termios2(const struct termios *src,
++                                      struct rshim_termios2 *dst)
++{
++  memset(dst, 0, sizeof(*dst));
++  dst->c_iflag = src->c_iflag;
++  dst->c_oflag = src->c_oflag;
++  dst->c_cflag = src->c_cflag;
++  dst->c_lflag = src->c_lflag;
++  dst->c_line = src->c_line;
++  memcpy(dst->c_cc, src->c_cc, RSHIM_NCCS2);
++  dst->c_ispeed = cfgetispeed(src);
++  dst->c_ospeed = cfgetospeed(src);
++}
++
++static void rshim_termios2_to_termios(const struct rshim_termios2 *src,
++                                      struct termios *dst)
++{
++  memset(dst, 0, sizeof(*dst));
++  dst->c_iflag = src->c_iflag;
++  dst->c_oflag = src->c_oflag;
++  dst->c_cflag = src->c_cflag;
++  dst->c_lflag = src->c_lflag;
++  dst->c_line = src->c_line;
++  memcpy(dst->c_cc, src->c_cc, RSHIM_NCCS2);
++  cfsetispeed(dst, src->c_ispeed);
++  cfsetospeed(dst, src->c_ospeed);
++}
++#endif /* __linux__ */
++
+ /* Name of the sub-device types. */
+ char *rshim_dev_minor_names[RSH_DEV_TYPES] = {
+     [RSH_DEV_TYPE_RSHIM] = "rshim",
+@@ -416,11 +478,11 @@ static void rshim_fuse_console_ioctl(fuse_req_t req, int cmd, void *arg,
+   switch (cmd) {
+   case TCGETS:
+     if (!out_bufsz) {
+-      struct iovec iov = { arg, sizeof(struct termio) };
++      struct iovec iov = { arg, sizeof(bd->cons_termios) };
+ 
+       fuse_reply_ioctl_retry(req, NULL, 0, &iov, 1);
+     } else {
+-      fuse_reply_ioctl(req, 0, &bd->cons_termios, sizeof(struct termio));
++      fuse_reply_ioctl(req, 0, &bd->cons_termios, sizeof(bd->cons_termios));
+     }
+     break;
+ 
+@@ -437,6 +499,67 @@ static void rshim_fuse_console_ioctl(fuse_req_t req, int cmd, void *arg,
+     }
+     break;
+ 
++  case TIOCEXCL:
++  case TIOCNXCL:
++  case FIONBIO:
++  case FIOASYNC:
++    fuse_reply_ioctl(req, 0, NULL, 0);
++    break;
++
++  case TCGETS2:
++    if (!out_bufsz) {
++      struct iovec iov = { arg, sizeof(struct rshim_termios2) };
++
++      fuse_reply_ioctl_retry(req, NULL, 0, &iov, 1);
++    } else {
++      struct rshim_termios2 t2;
++
++      rshim_termios_to_termios2(&bd->cons_termios, &t2);
++      fuse_reply_ioctl(req, 0, &t2, sizeof(t2));
++    }
++    break;
++
++  case TCSETS2:
++  case TCSETSW2:
++  case TCSETSF2:
++    if (!in_bufsz) {
++      struct iovec iov = { arg, sizeof(struct rshim_termios2) };
++
++      fuse_reply_ioctl_retry(req, &iov, 1, NULL, 0);
++    } else {
++      rshim_termios2_to_termios((const struct rshim_termios2 *)in_buf,
++                                &bd->cons_termios);
++      fuse_reply_ioctl(req, 0, NULL, 0);
++    }
++    break;
++
++  case TIOCGWINSZ:
++    if (!out_bufsz) {
++      struct iovec iov = { arg, sizeof(struct winsize) };
++
++      fuse_reply_ioctl_retry(req, NULL, 0, &iov, 1);
++    } else {
++      struct winsize ws = { .ws_row = 24, .ws_col = 80 };
++
++      fuse_reply_ioctl(req, 0, &ws, sizeof(ws));
++    }
++    break;
++
++  case FIONREAD:
++    if (!out_bufsz) {
++      struct iovec iov = { arg, sizeof(int) };
++
++      fuse_reply_ioctl_retry(req, NULL, 0, &iov, 1);
++    } else {
++      int value;
++
++      pthread_mutex_lock(&bd->ringlock);
++      value = (int)rshim_fifo_size(bd, TMFIFO_CONS_CHAN, true);
++      pthread_mutex_unlock(&bd->ringlock);
++      fuse_reply_ioctl(req, 0, &value, sizeof(value));
++    }
++    break;
++
+   default:
+     fuse_reply_err(req, ENOSYS);
+     break;
