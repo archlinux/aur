@@ -1,6 +1,6 @@
 pkgbase = mpv-anime-build
 	pkgdesc = Advanced MPV configuration build optimized for anime and high-quality video playback
-	pkgver = 5.3
+	pkgver = 5.4
 	pkgrel = 1
 	url = https://github.com/Chinna95P/mpv-anime-build
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = mpv-anime-build
 	optdepends = svp: for SmoothVideo Project 4 (SVP4) motion interpolation
 	provides = mpv-anime-build
 	conflicts = mpv-anime-build
-	source = mpv-anime-build-5.3.zip::https://github.com/Chinna95P/mpv-anime-build/releases/download/v5.3/mpv-anime-build-v5.3.zip
+	source = mpv-anime-build-5.4.zip::https://github.com/Chinna95P/mpv-anime-build/releases/download/v5.4/mpv-anime-build-v5.4.zip
 	source = mpv-anime-build.sh
 	source = mpv-anime.desktop
-	sha256sums = 4889e2dedbb9f4267b925dfbea8d71989fa754529c86c7462203a65c4d4f66c4
+	sha256sums = 88246ce990e297c8ca7beb0a7199b7667caad4cd8025222f1a5afd940d3f8e3d
 	sha256sums = 285ae5fc1a95e3d1a6b9e3bf453599a5dc08bbdd2fe79355ce1cf6ff3aab1da3
 	sha256sums = 8eca1548263df62869af8aeaf229b4db2fbea9faa89ce6490204abcb62e3e3f9
 

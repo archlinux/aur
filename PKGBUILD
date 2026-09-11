@@ -3,7 +3,7 @@
 
 pkgname=mpv-anime-build
 _pkgname=mpv-anime-build
-pkgver=5.3
+pkgver=5.4
 pkgrel=1
 pkgdesc="Advanced MPV configuration build optimized for anime and high-quality video playback"
 arch=('any')
@@ -23,7 +23,7 @@ source=(
   "mpv-anime-build.sh"
   "mpv-anime.desktop"
 )
-sha256sums=('4889e2dedbb9f4267b925dfbea8d71989fa754529c86c7462203a65c4d4f66c4'
+sha256sums=('88246ce990e297c8ca7beb0a7199b7667caad4cd8025222f1a5afd940d3f8e3d'
             '285ae5fc1a95e3d1a6b9e3bf453599a5dc08bbdd2fe79355ce1cf6ff3aab1da3'
             '8eca1548263df62869af8aeaf229b4db2fbea9faa89ce6490204abcb62e3e3f9')
 
