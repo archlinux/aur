@@ -1,9 +1,9 @@
 # Maintainer: SpeedyNote Team <info@speedynote.org>
 
 pkgname=speedynote
-pkgver=1.6.3
-_tagver=1.6.3
-pkgrel=2
+pkgver=1.6.3.2
+_tagver=1.6.3-2
+pkgrel=1
 _ortver=1.20.1     # Vendored ONNX Runtime (PaddleOCR backend)
 pkgdesc="Fast note-taking app with PDF annotation, export, and multi-platform sync"
 arch=('x86_64' 'aarch64')
@@ -47,7 +47,7 @@ conflicts=('speedynote-bin' 'speedynote-git' 'speedynote-src')
 
 # Source from GitHub release
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('a26e5a4e18acaa8e37a82489fec3e0ca9f852e6859297cb0306e825bdeb9c019')
+sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
 
 # ONNX Runtime (PaddleOCR backend) + PP-OCRv5 recognition models.
 # Vendored, checksummed; laid out under linux/ in prepare() so CMake's
