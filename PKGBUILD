@@ -1,16 +1,16 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=axiom
-pkgver=0.19.1
-pkgrel=2
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="Powerful log analytics from the comfort of your command-line"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url="https://github.com/axiomhq/cli"
 license=('MIT')
 depends=('glibc')
-makedepends=('go>=1.27.0')
+makedepends=('go>=1.27.1')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/axiomhq/cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ef1fe48083fad4e84f7501f7c908ddf4746b9365484b714604b91a673eead49b')
+sha256sums=('e8085167b291305816e3f675c493825bbf39a9fe1d426800f9817bafb0899192')
 
 prepare() {
   cd "cli-$pkgver"
