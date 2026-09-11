@@ -1,0 +1,17 @@
+pkgbase = reconsage
+	pkgdesc = Advanced Network & Telemetry Reconnaissance Framework
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/moksh-codedeveloper/ReconSage_CLI
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	depends = openssl
+	options = !strip
+	source = reconsage-1.0.0.tar.gz::https://github.com/moksh-codedeveloper/ReconSage_CLI/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 2c108b800677df815a3d7c149068380f15a4d1843d3f0589c03b7a2deb0cb47c
+
+pkgname = reconsage
