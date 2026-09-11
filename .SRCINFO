@@ -1,6 +1,6 @@
 pkgbase = talabulilm
 	pkgdesc = Watch Ceramah Ustaz (Islamic lectures) from the terminal, a full-screen TUI
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/numan89/talabulilm
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = talabulilm
 	makedepends = cargo
 	depends = yt-dlp
 	depends = mpv
-	source = talabulilm-1.0.0.tar.gz::https://github.com/numan89/talabulilm/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 83e7b6cb5c78c78d0c79395067dd30f2bebf5321fa07caca7ed9fac9c1a75c96
+	source = talabulilm-1.0.1.tar.gz::https://github.com/numan89/talabulilm/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 0c156788ee9be2aca49e7725ddc1e253ca1e08caa5de614e96f4b3af7aedd79f
 
 pkgname = talabulilm
