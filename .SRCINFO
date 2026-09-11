@@ -1,6 +1,6 @@
 pkgbase = rshim-git
 	pkgdesc = User-space RSHIM driver for Mellanox BlueField SoC
-	pkgver = 2.8.2.r6.gd4158f5
+	pkgver = 2.8.2.r10.ga66ae2f
 	pkgrel = 1
 	url = https://github.com/Mellanox/rshim-user-space
 	arch = x86_64
@@ -19,6 +19,8 @@ pkgbase = rshim-git
 	conflicts = rshim
 	backup = etc/rshim.conf
 	source = git+https://github.com/Mellanox/rshim-user-space.git
+	source = fix-console-handling.patch::https://github.com/Mellanox/rshim-user-space/commit/28f4fb2781058fdc271986e91e0996fcce3aaaef.patch
 	sha256sums = SKIP
+	sha256sums = 189588932529e550f09934c7f4908b08f302ff180186488cd9aa092f727f0716
 
 pkgname = rshim-git
