@@ -1,6 +1,6 @@
 # Maintainer: AnabasaSoft <anabasasoft@gmail.com>
 pkgname=mantpro-bin
-pkgver=3.6.0
+pkgver=3.8.3
 pkgrel=1
 pkgdesc="Sistema Integral de Mantenimiento Industrial (Cliente de Escritorio)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source_x86_64=("https://github.com/AnabasaSoft/MantPro/releases/download/v${pkgv
                "https://raw.githubusercontent.com/AnabasaSoft/MantPro/main/icono.png")
 
 # Usamos SKIP para evitar errores de checksum antes de que GitHub compile la release
-sha256sums_x86_64=('ba46c19d0e46cd58b2cfc8d6e6fce2558a03a819844758ac3ba593ed9cbf6426'
+sha256sums_x86_64=('2c1289ab32966f690b28ef60a58189cdacb05dee8bb711df39a110d53a6deb63'
                    '2bf0349b288d8b77834fdfdd1a036e6fb2b5927b6aea89ca0606c6369694d5e3')
 
 package() {
@@ -33,7 +33,7 @@ package() {
     cat > "${pkgdir}/usr/share/applications/mantpro.desktop" <<EOF
 [Desktop Entry]
 Type=Application
-Version=3.6.0
+Version=3.8.3
 Name=MantPro
 GenericName=Gestión de Mantenimiento
 Comment=Mantenimiento preventivo
