@@ -1,6 +1,6 @@
 pkgbase = paseo-desktop-git
 	pkgdesc = One interface for all your Claude Code, Codex and OpenCode agents. (git - built from main)
-	pkgver = 0.8.0.r1.gd7c7044df
+	pkgver = 0.8.0.r8.gf22a37e61
 	pkgrel = 2
 	url = https://paseo.sh
 	arch = x86_64
@@ -35,8 +35,8 @@ pkgbase = paseo-desktop-git
 	depends = expat
 	depends = libstdc++
 	depends = libxfixes
-	provides = paseo=0.8.0.r1.gd7c7044df
-	provides = paseo-desktop=0.8.0.r1.gd7c7044df
+	provides = paseo=0.8.0.r8.gf22a37e61
+	provides = paseo-desktop=0.8.0.r8.gf22a37e61
 	provides = paseo-desktop-git
 	conflicts = paseo
 	conflicts = paseo-bin
