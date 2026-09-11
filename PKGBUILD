@@ -3,7 +3,7 @@
 _pkgname=locally-uncensored
 pkgname=locally-uncensored-bin
 pkgver=2.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Plug-and-play local AI studio — uncensored chat, image & video generation, and a coding agent"
 arch=('x86_64')
 url="https://github.com/PurpleDoubleD/locally-uncensored"
@@ -22,12 +22,6 @@ sha256sums=('a81c8ff1df3d2a34d0454c5a370a099f8eb1997b964ef2ffdd9ad41d8136972e'
 
 package() {
   bsdtar -xzf "$srcdir/data.tar.gz" -C "$pkgdir"
-
-  # Relocate the bundled llama-server sidecar out of /usr/bin into the app's
-  # resource dir to avoid a file-path collision with a system llama.cpp install.
-  # The app resolves the sidecar via resource_dir() (engine.rs:
-  # resolve_engine_binary), so it is still found and the built-in engine works.
-  mv "$pkgdir/usr/bin/llama-server" "$pkgdir/usr/lib/Locally Uncensored/llama-server"
 
   install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
