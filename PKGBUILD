@@ -1,7 +1,7 @@
 # Maintainer: goodroot <hyprwhspr@goodroot.ca>
 
 pkgname=hyprwhspr
-pkgver=1.43.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc="System-wide speech-to-text for Linux desktops"
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
   'python-pyperclip'
   'python-pyudev'
   'python-rich'
+  'python-jsonschema'
   'python-pulsectl'
   'wtype'
   'ydotool'
@@ -37,7 +38,7 @@ optdepends=(
 
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/goodroot/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('214c91f4b7e2b99bc44c764df5bc9a7a0719197250eb4a6a576d0be15115bd23')
+sha256sums=('9d198912e62cf32b73cf1bd179581f53caf476fc4ce8e640e2d284dd0d3c85c3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
