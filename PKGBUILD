@@ -2,7 +2,7 @@
 
 pkgname=sonora-bin
 _pkgname=sonora
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc='A native music streaming client, built with Rust and GPUI'
 arch=('x86_64' 'aarch64')
@@ -14,16 +14,17 @@ optdepends=('vulkan-radeon: Vulkan driver for AMD GPUs'
             'vulkan-intel: Vulkan driver for Intel GPUs'
             'nvidia-utils: Vulkan driver for NVIDIA GPUs'
             'pipewire-alsa: audio output through PipeWire'
-            'pulseaudio-alsa: audio output through PulseAudio')
+            'pulseaudio-alsa: audio output through PulseAudio'
+            'webkit2gtk-4.1: sign in to YouTube Music through a browser window')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 source=("${url}/archive/refs/tags/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-x86_64-unknown-linux-gnu")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-aarch64-unknown-linux-gnu")
-sha256sums=('7ec0979a25af49c70811f545705176523c4acf469d6b26345be06d3437ad1f61')
-sha256sums_x86_64=('d9ae6b6c7e6627886598eecc31ce349769c5c88b87c1fc03f493e84fef592686')
-sha256sums_aarch64=('2fd3084a46e3dff092948ada99e87fcaa484f49fc2525fe1b990653c6f5e83a8')
+sha256sums=('bcae7d5048bd34ce4690e3e9a575c0535d194ed7ae231005e69885fab1962876')
+sha256sums_x86_64=('43c7fec7ce051b3dac5f24dacf1b36b1bb4e9357ea8fa420ca610b629534f89a')
+sha256sums_aarch64=('3602ce1eb49b61b0486b5a5316eca622e8a3ab82c0f402f5b41d0b1c4cdc5534')
 
 package() {
   cd "${_pkgname}-${pkgver}"
