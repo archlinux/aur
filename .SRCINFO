@@ -1,6 +1,6 @@
 pkgbase = python-starlink-pyast
 	pkgdesc = Python interface to the Starlink AST library
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = http://starlink.eao.hawaii.edu/starlink/AST
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = python-starlink-pyast
 	makedepends = python-installer
 	makedepends = python-numpy
 	makedepends = libyaml
-	source = https://files.pythonhosted.org/packages/source/s/starlink_pyast/starlink_pyast-4.0.0.tar.gz
-	md5sums = 80796a9d0fb10b7f4618f60d55d17451
+	source = https://files.pythonhosted.org/packages/source/s/starlink_pyast/starlink_pyast-4.1.0.tar.gz
+	md5sums = fdf8fa85b91191f3abfe263bc40ccce0
 
 pkgname = python-starlink-pyast
 	depends = python-numpy
