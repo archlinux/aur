@@ -1,6 +1,6 @@
 pkgbase = svelte-language-server-git
 	pkgdesc = Svelte Language Server, git master build
-	pkgver = r1944.0bab63ae
+	pkgver = r1948.f03e5667
 	pkgrel = 1
 	url = https://github.com/sveltejs/language-tools
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = svelte-language-server-git
 	provides = svelte-language-server
 	conflicts = svelte-language-server
 	source = svelte-language-server-git::git+https://github.com/sveltejs/language-tools.git#branch=master
+	source = fix-config-crawl-dot-ancestor.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = svelte-language-server-git
