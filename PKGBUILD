@@ -3,8 +3,8 @@
 
 pkgname=p4
 _version=2026.1
-pkgver=2026.1.2972966
-pkgrel=3
+pkgver=2026.1.3062361
+pkgrel=1
 
 pkgdesc="Perforce's Helix command-line client"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(LICENSE
 
 
 b2sums=('17cc2778ca5c75b84b1dd210e5fdc06366e3019da86c9eb2039f285f807a4bf9dfeaa2d3d8040810e5eb0c8738caad1fa4af15985040b3e132f1d7f9a0fc0da6'
-        '805245e2d7861dcb31d34580c33ad6b1367d864abdf08d48003873e7b760723149d31b571c9c7d44b65330ea0b7035dde1fb55645cf459599f632801ddb740be')
+        '9afc3cb33ed59fde55d7dc49a3756b1fb143281333ad42a8ee4ac62172e9a765ee6b4e7fee69cbadc330dd6e51ebcd6a786ee9f7aeeb91d26f0a55e2837c92df')
 
 # Perforce Software (Package Signing) <support+packaging@perforce.com>
 validpgpkeys=('7123CB760FF18869'
