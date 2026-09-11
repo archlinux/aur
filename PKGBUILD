@@ -1,7 +1,8 @@
 # Maintainer: Sienna <i@kals.dev>
 pkgname=vollminputd-git
-pkgver=0.1.1.3.g9c81bba
-pkgrel=2
+pkgver=0.1.0.27.g77dc70e
+pkgrel=1
+epoch=1
 pkgdesc="LLM-based voice input method for Linux Wayland"
 arch=('x86_64')
 url="https://github.com/ad2248/vollminputd"
