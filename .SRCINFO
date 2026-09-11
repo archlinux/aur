@@ -1,7 +1,7 @@
 pkgbase = little-snitch-bin
 	pkgdesc = Little Snitch for Linux - monitors outgoing network connections and lets you decide which applications are allowed to connect to the internet
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obdev.at/products/littlesnitch
 	install = little-snitch-bin.install
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = little-snitch-bin
 	depends = pam
 	depends = sqlite
 	depends = gcc-libs
-	depends = libaudit
 	depends = libcap-ng
 	provides = littlesnitch
 	conflicts = littlesnitch

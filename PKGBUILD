@@ -1,12 +1,12 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=little-snitch-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Little Snitch for Linux - monitors outgoing network connections and lets you decide which applications are allowed to connect to the internet"
 arch=('x86_64' 'aarch64' 'ppc64le' 'riscv64')
 url="https://obdev.at/products/littlesnitch"
 license=('GPL-2.0-only' 'custom')
-depends=('pam' 'sqlite' 'gcc-libs' 'libaudit' 'libcap-ng')
+depends=('pam' 'sqlite' 'gcc-libs' 'libcap-ng')
 provides=('littlesnitch')
 conflicts=('littlesnitch')
 install=little-snitch-bin.install
