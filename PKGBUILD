@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer')
 _srcname=${_name//-/_}
-source=("https://files.pythonhosted.org/packages/a0/af/d5dd356a7d03d17325a2f3100e35d26300a405bc7d57d3325dd634f04cc2/${_srcname}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/a0/af/d5dd356a7d03d17325a2f3100e35d26300a405bc7d57d3325dd634f04cc2/chinese_calendar-1.11.0.tar.gz")
 sha256sums=('931d9187cbf7bb1dc09685dedb5013e74678bbe03a173d71d46b76afc37f2597')
 
 build() {
