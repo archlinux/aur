@@ -3,14 +3,17 @@
 _pkgauthor=romancitodev
 _pkgname=cargo-pretty
 pkgname=${_pkgname}-bin
+pkgdesc="A cargo build wrapper with a live, animated status view"
+
 pkgver=0.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
-pkgdesc="A cargo build wrapper with a live, animated status view"
+
 arch=('x86_64')
+license=('MIT')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
-license=('GPL-3.0-or-later')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
