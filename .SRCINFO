@@ -1,6 +1,6 @@
 pkgbase = kobe-bin
 	pkgdesc = CLI for pools of pre-warmed Kubernetes virtual clusters (prebuilt binary)
-	pkgver = 0.44.1
+	pkgver = 0.44.2
 	pkgrel = 1
 	url = https://github.com/kunobi-ninja/kobe
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = kobe-bin
 	license = Apache-2.0
 	provides = kobe
 	conflicts = kobe
-	source_x86_64 = kobe-0.44.1-x86_64.tar.gz::https://github.com/kunobi-ninja/kobe/releases/download/v0.44.1/kobe-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 193b35879e1683188e34d20192f83b5d2c3f441853c0ad7238ff51ae43284b0b
-	source_aarch64 = kobe-0.44.1-aarch64.tar.gz::https://github.com/kunobi-ninja/kobe/releases/download/v0.44.1/kobe-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 241e65413079b0b488dfb8918e7f6d5079c378ba0ae4eacd3033ad6024ed0383
+	source_x86_64 = kobe-0.44.2-x86_64.tar.gz::https://github.com/kunobi-ninja/kobe/releases/download/v0.44.2/kobe-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 62d8e8338bd2bdc3e9688ac34bd55b2be6474a78bf4f6a03da5340aaed869829
+	source_aarch64 = kobe-0.44.2-aarch64.tar.gz::https://github.com/kunobi-ninja/kobe/releases/download/v0.44.2/kobe-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 68f459f0053146051d965468527654834e57500d82a8cf2d9607ea303dbe93ba
 
 pkgname = kobe-bin
