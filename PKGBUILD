@@ -1,10 +1,10 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=simplermarkdown
-_pkgver=0.0.6
+_pkgver=0.1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple Engine for Generating Reports using R"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,8 +14,8 @@ depends=(
   pandoc
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a692f54b8cdb625a3472b8f82fe2bd42')
-b2sums=('e5a9b594f5f605fcfd8e9875269f7137464e022de43fb1e6ac50e9ba2e5b1addb9406a0a1146a57d8cc5388571c1d347eda2d2974d8657d39d10298b998811e7')
+md5sums=('f95ed768046aa0a602b6f7854b26ee4d')
+b2sums=('3fe4806efb90c6b59e17c26360188d9f3ace2ed1df1d2f5a0d986537310f67f58e6225302831aa5b382692ea29a3c78b74f6fd6d39492b095d95b495b54bd3a2')
 
 build() {
   mkdir build
