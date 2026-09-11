@@ -4,7 +4,7 @@
 # Contributor: Adam Hose <adis@blad.is>
 # Contributor: Ryan Steed <ryan.steed.usa@pm.me>
 pkgname=opensnitch-git
-pkgver=1.8.0.r215.5c79d419
+pkgver=1.8.0.r224.a1353848
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -148,6 +148,7 @@ package() {
   # popd
 
   install -d "$pkgdir/etc/${pkgname%-git}d/rules"
+  install -d "$pkgdir/etc/${pkgname%-git}d/tasks"
   install -Dm755 "daemon/${pkgname%-git}d" -t "$pkgdir/usr/bin"
   install -Dm644 "utils/packaging/daemon/deb/debian/${pkgname%-git}.service" \
     "$pkgdir/usr/lib/systemd/system/${pkgname%-git}d.service"
@@ -157,6 +158,7 @@ package() {
     # "$pkgdir/usr/lib/systemd/system"
   install -Dm644 daemon/data/default-config.json -t "$pkgdir/etc/${pkgname%-git}d"
   install -Dm644 daemon/data/system-fw.json -t "$pkgdir/etc/${pkgname%-git}d"
+  install -Dm644 daemon/data/network_aliases.json -t "$pkgdir/etc/${pkgname%-git}d"
   install -Dm644 "utils/packaging/daemon/deb/debian/${pkgname%-git}.logrotate" \
     "$pkgdir/etc/logrotate.d/${pkgname%-git}"
 
