@@ -1,0 +1,24 @@
+pkgbase = teacrush-bin
+	pkgdesc = Bubble Tea TUI for compressing videos down to a target size (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zeozeozeo/teacrush
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = ffmpeg
+	depends = glibc
+	optdepends = nvidia-utils: NVENC hardware encoding
+	optdepends = intel-media-driver: Intel QSV hardware encoding
+	optdepends = libva-mesa-driver: AMD VA-API hardware encoding
+	provides = teacrush
+	conflicts = teacrush
+	conflicts = teacrush-git
+	source = LICENSE-v0.1.0::https://raw.githubusercontent.com/zeozeozeo/teacrush/refs/tags/v0.1.0/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = teacrush-bin-0.1.0-x86_64.tar.gz::https://github.com/zeozeozeo/teacrush/releases/download/v0.1.0/teacrush-v0.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = teacrush-bin-0.1.0-aarch64.tar.gz::https://github.com/zeozeozeo/teacrush/releases/download/v0.1.0/teacrush-v0.1.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = teacrush-bin
