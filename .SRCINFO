@@ -1,18 +1,24 @@
 pkgbase = chopper
 	pkgdesc = Rust implementation of NanoFilt+NanoLyse intended for long read sequencing
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/wdecoster/chopper
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = rust
 	makedepends = cmake
-	depends = gcc-libs
-	depends = glibc
-	depends = zlib
 	options = !lto
 	source = chopper-0.14.0.tar.gz::https://github.com/wdecoster/chopper/archive/refs/tags/v0.14.0.tar.gz
 	b2sums = b309abcac6ac0472c53ab9fff0a695b50204c21a4d22c7de18e64a93c8f7a5a3474ed8c345175a89cd6173c1dac947dd1378e24d63ab3991300a3806f3866544
 
 pkgname = chopper
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	depends = xz
+	optdepends = chopper-docs: HTML documentation
+
+pkgname = chopper-docs
+	pkgdesc = Documentation for chopper
+	arch = any
