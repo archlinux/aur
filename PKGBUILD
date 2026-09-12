@@ -4,7 +4,7 @@
 pkgname=dash-static-musl
 _pkgbase=dash
 pkgver=0.5.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A POSIX compliant shell that aims to be as small as possible"
 arch=('x86_64' 'aarch64')
 url="http://gondor.apana.org.au/~herbert/dash/"
@@ -20,9 +20,7 @@ b2sums=('cef313ea867c45393b4739b71ff5320ca365cb15b3a7772c7c1a9cf2a2663a2c7b86cfe
 
 build() {
   cd "${_pkgbase}-${pkgver}"
-  export CC="gcc"
-  export CFLAGS="$CFLAGS -mmusl -Os -mno-outline-atomics"
-  export LDFLAGS="$LDFLAGS -fno-link-libatomic -fno-inline-atomics"
+  export CC="musl-gcc -fno-link-libatomic"
   ./configure \
     --enable-static \
     --prefix=/usr \
