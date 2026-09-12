@@ -1,6 +1,6 @@
 pkgbase = openrgb-plugin-http-hook-git
 	pkgdesc = HTTP Hook plugin for OpenRGB
-	pkgver = 0.9.24.g5b6ac57
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBHttpHookPlugin
 	arch = any

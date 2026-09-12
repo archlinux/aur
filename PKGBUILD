@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-http-hook-git
-pkgver=0.9.24.g5b6ac57
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="HTTP Hook plugin for OpenRGB"
 arch=('any')
