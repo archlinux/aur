@@ -1,0 +1,4 @@
+[python-python-iso639]
+source = "git"
+git = "https://github.com/jacksonllee/iso639.git"
+prefix = "v"
