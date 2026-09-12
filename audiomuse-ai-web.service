@@ -10,6 +10,8 @@ Group=audiomuse-web
 WorkingDirectory=/usr/lib/audiomuse-ai-web
 EnvironmentFile=/etc/audiomuse-ai/web.env
 
+LogsDirectory=audiomuse-ai-web
+LogsDirectoryMode=0750
 RuntimeDirectory=audiomuse-ai-web
 RuntimeDirectoryMode=0750
 
