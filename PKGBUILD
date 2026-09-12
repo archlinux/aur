@@ -1,7 +1,8 @@
 # Maintainer: Peter Jung <ptr1337@archlinux.org>
 # Contributor: Ali Molaei <ali dot molaei at protonmail dot com>
 
-pkgname=python-proton-keyring-linux-no-gnome
+_pkgbase=python-proton-keyring-linux
+pkgname="${_pkgbase}-no-gnome"
 pkgver=0.2.3
 pkgrel=1
 pkgdesc="The proton-keyring-linux component without GNOME Keyring as a dependency."
@@ -23,15 +24,15 @@ makedepends=(
 )
 provides=(python-proton-keyring-linux)
 conflicts=(python-proton-keyring-linux)
-source=("git+https://github.com/ProtonVPN/${pkgname}.git#tag=v${pkgver}")
+source=("git+https://github.com/ProtonVPN/${_pkgbase}.git#tag=v${pkgver}")
 sha256sums=('9d81b19c47e3da0363bfdf36e9e7312458538bcb4454dde3f6b5570f24052d93')
 
 build() {
-  cd "$pkgname"
+  cd "$_pkgbase"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_pkgbase"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }

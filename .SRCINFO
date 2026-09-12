@@ -16,7 +16,7 @@ pkgbase = python-proton-keyring-linux-no-gnome
 	depends = org.freedesktop.secrets
 	provides = python-proton-keyring-linux
 	conflicts = python-proton-keyring-linux
-	source = git+https://github.com/ProtonVPN/python-proton-keyring-linux-no-gnome.git#tag=v0.2.3
+	source = git+https://github.com/ProtonVPN/python-proton-keyring-linux.git#tag=v0.2.3
 	sha256sums = 9d81b19c47e3da0363bfdf36e9e7312458538bcb4454dde3f6b5570f24052d93
 
 pkgname = python-proton-keyring-linux-no-gnome
