@@ -1,11 +1,11 @@
 # lito.lock
 _spirv_reflect_commit=355785128c1b6ba808e3a7d0e344814fe6cff502
-_rstd_commit=456fec5cc2b87acdb56800e298b5712ea69cdd47
-_vvk_commit=f53d60cc70938d0485802750deeb15d18ba033ea
-_wavsen_commit=77dfd33d07112c05df4682e08b98e19153ebe3ab
+_rstd_version=0.1.2
+_vvk_commit=117626d9bfc6c1de0f2957f7fa42b47935bb6af8
+_wavsen_commit=294cf8156e5130122bdfca65e0401aee7a29e6d8
 
 pkgname=open-wallpaper-engine
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
@@ -17,16 +17,16 @@ makedepends=(lito "cmake>4.3.1" ninja git "clang>=22" lld llvm eigen vulkan-head
              waywallen-display vulkan-memory-allocator)
 source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver"
         "git+https://github.com/hypengw/SPIRV-Reflect.git#commit=$_spirv_reflect_commit"
-        "git+https://github.com/litocpp/rstd.git#commit=$_rstd_commit"
+        "git+https://github.com/litocpp/rstd.git#tag=v$_rstd_version"
         "git+https://github.com/litocpp/vvk.git#commit=$_vvk_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
         "0001-lito-Use-system-cef.patch")
-sha256sums=('19cc46690d40a7514bb601b0869e47344b28366588149db5ceca7fe727536727'
+sha256sums=('339321965b9f606a0aae4e7cd7dc34377ad74f35bda7eaa20563e75521d08278'
             'c033a38ac4e58e4a87ad43a84eb5e0fbe312c82b161a1fe5e38890751636f63f'
-            '67e1315baa1ec31bc6d5da381b4367a08b768da623a25cc82bb84ac597647ead'
-            '0abff36a8194edd20feb96e87abc772b13a2ac725c99df091ea8e08b57562f0f'
-            '06c90e4fb0b996ecf07468322de9f634e35cd97b171a8c55e771da086da55ebd'
-            'e9e3915ecdbb4d858cd1f610796c8d2e5b1f6a8e51e936fff7633d782d8337c7')
+            '9d7e6a4cbf1eb690e7d64af05dd7f9fc3730bf817b1152bbd99892f20101ce2d'
+            'f49079a367c7759207d56d49789f5f7c0bfa99b1a3d204566aeceddd9f097b67'
+            '3c737584b5e073ee85ad0f81203971d1bd1da1ad612fbaad724e063e1aa58aa4'
+            'b9ad138e621d6e5962e9f8bc701e947103ad36fd0f9889c53eb24f4abecc4d78')
 
 prepare() {
     cd "$srcdir/$pkgname"
