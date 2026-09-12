@@ -2,7 +2,7 @@
 
 pkgname=moneymanagerex-git
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest commit.'
 arch=('x86_64')
 url='http://www.moneymanagerex.org/'
@@ -17,8 +17,8 @@ source=('git+https://github.com/moneymanagerex/moneymanagerex.git'
               '8363.patch'
               '8534.patch::https://github.com/moneymanagerex/moneymanagerex/pull/8534.patch')
 sha512sums=('SKIP'
-                        '3860255020f9c39f3c80b9c9d5c9f6ee3cf5e1844a37a27031a135d07fe5b392dcf0a4ba38077d5ae20bf1d3c7c01fd10c77f86a79484a0620558fb5b6e412bf'
-                        '0d321c06f1f194eacd707adb7e339109e23ba901114a6945da81b2132f8f8ecb4756e58972dbf6d00609fffae97f98b856851154241a6e885378b83db369afc2')
+            '3860255020f9c39f3c80b9c9d5c9f6ee3cf5e1844a37a27031a135d07fe5b392dcf0a4ba38077d5ae20bf1d3c7c01fd10c77f86a79484a0620558fb5b6e412bf'
+            '778ff06fdc473d5e71da27cea9895953cc4187a00fe1ce2ae0b59a444fdf893f10d3440d83ed420123217b55dd03552d6c5b32b088b9f4de828b0a3def5ebecb')
 
 pkgver() {
   cd "${srcdir}/moneymanagerex"
