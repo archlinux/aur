@@ -1,6 +1,6 @@
 pkgbase = easy-conflict-bin
 	pkgdesc = Terminal-native Git mergetool with 3-pane IntelliJ-like conflict resolver
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/chojs23/ec
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = easy-conflict-bin
 	provides = easy-conflict
 	provides = ec
 	conflicts = easy-conflict
-	source = LICENSE-0.4.1::https://raw.githubusercontent.com/chojs23/ec/v0.4.1/LICENSE
-	source = README-0.4.1::https://raw.githubusercontent.com/chojs23/ec/v0.4.1/README.md
+	source = LICENSE-0.4.2::https://raw.githubusercontent.com/chojs23/ec/v0.4.2/LICENSE
+	source = README-0.4.2::https://raw.githubusercontent.com/chojs23/ec/v0.4.2/README.md
 	sha256sums = 2b9594f469f8c9681fc312d9afeea94461ca929e5e109edc08f3b7e90bc34e98
 	sha256sums = 5d9d68482d9f85317b3987ea6a823264b1a03d80480703a7cc1ad25d4a6b1c45
-	source_x86_64 = ec-0.4.1::https://github.com/chojs23/ec/releases/download/v0.4.1/ec-linux-amd64
-	sha256sums_x86_64 = 823b6ef8cdcf13fe0c4a762d88e924512377df80fe7e85ef28ee0295e97ad547
-	source_aarch64 = ec-0.4.1::https://github.com/chojs23/ec/releases/download/v0.4.1/ec-linux-arm64
-	sha256sums_aarch64 = 823b6ef8cdcf13fe0c4a762d88e924512377df80fe7e85ef28ee0295e97ad547
+	source_x86_64 = ec-0.4.2::https://github.com/chojs23/ec/releases/download/v0.4.2/ec-linux-amd64
+	sha256sums_x86_64 = a0ea271414404af5d0dc64ae95e56a476d4137b85855a9afa654fc8be98d0257
+	source_aarch64 = ec-0.4.2::https://github.com/chojs23/ec/releases/download/v0.4.2/ec-linux-arm64
+	sha256sums_aarch64 = a0ea271414404af5d0dc64ae95e56a476d4137b85855a9afa654fc8be98d0257
 
 pkgname = easy-conflict-bin
