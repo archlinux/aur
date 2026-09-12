@@ -24,7 +24,7 @@ depends=(
   'libxml2'
 )
 source=("lumoria-$pkgver-x86_64.tar.zst::https://builds.lumoria.dev/arch/lumoria-$pkgver-x86_64.tar.zst")
-sha256sums=('cb1beafde5201923a1ef881204fd05b6e53edf8752c95edfcf51feae9216fa89')
+sha256sums=('c71fba4123110efe211458d5ad341aada032e9f6fb89847e34fb816c3243bf56')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/"
