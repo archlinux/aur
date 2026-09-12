@@ -1,6 +1,6 @@
 pkgbase = appmeup
 	pkgdesc = Create and edit Chromium web apps from .desktop files
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/mikelexp/appmeup
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = appmeup
 	optdepends = vivaldi: Vivaldi browser
 	conflicts = appmeup-bin
 	replaces = appmeup-bin
-	source = appmeup-1.2.6.tar.gz::https://github.com/mikelexp/appmeup/archive/refs/tags/v1.2.6.tar.gz
-	sha256sums = c91fd88b6eee5a95a56bee44fbedadebdf68944413bd34d95b65401d1cc7185e
+	source = appmeup-1.2.7.tar.gz::https://github.com/mikelexp/appmeup/archive/refs/tags/v1.2.7.tar.gz
+	sha256sums = 3a790bc2ec226c5ec9458cbb223a3868f321e622a4a46df822adac4e58b1e916
 
 pkgname = appmeup

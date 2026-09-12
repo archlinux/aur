@@ -1,7 +1,7 @@
 # Maintainer: Mikele <mikele@gmail.com>
 
 pkgname=appmeup
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Create and edit Chromium web apps from .desktop files"
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   'vivaldi: Vivaldi browser'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c91fd88b6eee5a95a56bee44fbedadebdf68944413bd34d95b65401d1cc7185e')
+sha256sums=('3a790bc2ec226c5ec9458cbb223a3868f321e622a4a46df822adac4e58b1e916')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
