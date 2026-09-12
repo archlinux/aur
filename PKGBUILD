@@ -6,10 +6,11 @@ _pkgname=grafana-alloy
 _binaryname=alloy
 pkgdesc="OpenTelemetry Collector distribution with programmable pipelines."
 pkgver=1.19.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/grafana/alloy"
 license=('apache')
+options=('!strip' '!debug')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 
