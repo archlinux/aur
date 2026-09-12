@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="dupster"
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Fast duplicate file finder with interactive TUI"
 
@@ -17,7 +17,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python' 'python-rich' 'python-textual' 'python-typer')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d5d266f05cd3ad9a232aea5ea3fa6c4261240fc7147c9c2f113633b663945101')
+sha256sums=('5d5f4440a98923eb98b54588d8a2570d4f4717a5ccd05d8d87ea4f36e67a5044')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"

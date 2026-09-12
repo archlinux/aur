@@ -1,6 +1,6 @@
 pkgbase = dupster
 	pkgdesc = Fast duplicate file finder with interactive TUI
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/karimz1/dupster
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = dupster
 	depends = python-typer
 	provides = dupster
 	conflicts = python-dupster
-	source = dupster-0.0.7.tar.gz::https://github.com/karimz1/dupster/archive/refs/tags/v0.0.7.tar.gz
-	sha256sums = d5d266f05cd3ad9a232aea5ea3fa6c4261240fc7147c9c2f113633b663945101
+	source = dupster-0.0.8.tar.gz::https://github.com/karimz1/dupster/archive/refs/tags/v0.0.8.tar.gz
+	sha256sums = 5d5f4440a98923eb98b54588d8a2570d4f4717a5ccd05d8d87ea4f36e67a5044
 
 pkgname = dupster
