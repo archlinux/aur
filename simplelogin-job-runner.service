@@ -1,0 +1,30 @@
+[Unit]
+Description=SimpleLogin job runner
+Wants=network-online.target
+After=network-online.target postgresql.service
+
+[Service]
+Type=simple
+User=simplelogin
+Group=simplelogin
+WorkingDirectory=/usr/lib/simplelogin
+
+Environment=CONFIG=/etc/simplelogin/simplelogin.env
+Environment=PYTHONUNBUFFERED=1
+
+ExecStart=/usr/bin/python /usr/lib/simplelogin/job_runner.py
+
+Restart=on-failure
+RestartSec=5
+
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+StateDirectory=simplelogin
+StateDirectoryMode=0750
+ReadWritePaths=/var/lib/simplelogin
+
+[Install]
+WantedBy=multi-user.target

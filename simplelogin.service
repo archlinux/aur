@@ -1,0 +1,32 @@
+[Unit]
+Description=SimpleLogin web application
+Wants=network-online.target
+After=network-online.target postgresql.service
+
+[Service]
+Type=simple
+User=simplelogin
+Group=simplelogin
+WorkingDirectory=/usr/lib/simplelogin
+
+Environment=CONFIG=/etc/simplelogin/simplelogin.env
+Environment=SIMPLELOGIN_WEB_BIND=0.0.0.0:7777
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-/etc/simplelogin/service.env
+
+ExecStart=/usr/bin/gunicorn --bind ${SIMPLELOGIN_WEB_BIND} --workers 2 --timeout 15 wsgi:app
+
+Restart=on-failure
+RestartSec=5
+
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+StateDirectory=simplelogin
+StateDirectoryMode=0750
+ReadWritePaths=/var/lib/simplelogin
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,3 @@
+d /var/lib/simplelogin 0750 simplelogin simplelogin -
+d /var/lib/simplelogin/pgp 0700 simplelogin simplelogin -
+d /var/lib/simplelogin/upload 0750 simplelogin simplelogin -
