@@ -5,7 +5,7 @@
 # Contributor: hexchain <i@hexchain.org>
 
 pkgname=mercurygram-desktop
-pkgver=7.2.8.1
+pkgver=7.2.8.2
 _td_commit=bc9c263e2bfee06aaab41e82db51a103376030bc
 pkgrel=1
 pkgdesc='Privacy-focused Telegram Desktop fork'
@@ -81,7 +81,7 @@ source=(
   "https://github.com/Mercurygram/mdesktop/releases/download/v${pkgver}/Mercurygram-${pkgver}-source-full.tar.gz"
   "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
 )
-sha512sums=('8ce342d17b8bf06603b5e0b4a41d58c9a7ae607206270fb947ccb2bd7e38cf9234923d7d0d452f721937c228a418d7c3aa2d7756a5897f2595b0337cbabba1fe'
+sha512sums=('2716ed79d552f4d6e061a6830f870cf0500c1f7537925142f4bc332b2e699f86bce988a5efa2ee1cfe387ec36aace861faa88a8f730eaba530b700d2f9bc69af'
             '12d3b77dbb2a7b7deaef0e173626b9d16acfbdde5b1df4bd58a70a7541a5d8032f25ecbc14604b0e47aa3d6d76704c56409d432717412c6046efebd0ab6180f1')
 
 build() {
