@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-e131-receiver-git
-pkgver=0.9.26.gbab06ec
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="E1.31 Receiver plugin for OpenRGB"
 arch=('any')
