@@ -2,7 +2,7 @@
 
 pkgname=open-orpheus
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source implementation of Netease Cloud Music's Orpheus browser host"
 arch=('x86_64')
 url="https://github.com/YUCLing/open-orpheus"
@@ -38,7 +38,8 @@ depends=(
     'systemd-libs'
     'xdg-utils'
 )
-optdepends=('kde-cli-tools: move deleted files to the KDE trash')
+# Thanks @Misaka19465
+# optdepends=('kde-cli-tools: move deleted files to the KDE trash')
 makedepends=(
     'nodejs>=24'
     'pnpm'
