@@ -2,13 +2,13 @@
 
 pkgname=newman
 pkgver=6.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Newman is a command-line collection runner for Postman"
 arch=('any')
 url="https://github.com/postmanlabs/${pkgname}"
 license=('Apache')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 b2sums=('59ac1b08cc0c032ec14ddaba949cc381bac26cbb0bf8b7468d396653b55e31972ec890b1d5784f5e96c3dadac84ded05a436cb36f977b7c30ae07f4f3959bd09')
 noextract=("${pkgname}-${pkgver}.tgz")
