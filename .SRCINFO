@@ -1,6 +1,6 @@
 pkgbase = mailove-git
 	pkgdesc = The fast KDE-only email client
-	pkgver = 2.5.r0.g4dc126e
+	pkgver = 3.5.r2.gcacf998
 	pkgrel = 1
 	url = https://github.com/nekromoff/mailove
 	arch = any

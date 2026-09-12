@@ -1,5 +1,5 @@
 pkgname=mailove-git
-pkgver=2.5.r0.g4dc126e
+pkgver=3.5.r2.gcacf998
 pkgrel=1
 pkgdesc="The fast KDE-only email client"
 arch=('any')
@@ -28,6 +28,8 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname%-git}"
   svgo . -r --multipass
+  sed -i 's/KPim6Mime/KF6Mime/g' CMakeLists.txt
+  sed -i 's/KPim6::Mime/KF6::Mime/g' CMakeLists.txt
 }
 
 build() {
