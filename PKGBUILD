@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SingleR
-_pkgver=2.14.1
+_pkgver=2.14.2
 pkgname=r-${_pkgname,,}
-pkgver=2.14.1
+pkgver=2.14.2
 pkgrel=1
 pkgdesc='Reference-Based Single-Cell RNA-Seq Annotation'
 arch=('x86_64')
@@ -41,7 +41,7 @@ optdepends=(
   r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bdcd9a96d03f666259472c241460d06713834e0603eb7f8c9ebd31c6128aef56')
+sha256sums=('65fe7d6a72cfbaa131dea4bf45825994f31701c04f86cdd0e3b0a09c14dc06e4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
