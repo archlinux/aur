@@ -75,21 +75,20 @@ sha256sums=('SKIP')
 
 build() {
   cd Vantage
-  # 参考上游文档 手动编译（README.md#手动编译 / Makefile）
-  # 不使用 build.sh，改用官方文档的 MOZCONFIG + make 流程：
-  #   MOZCONFIG=$(pwd)/assets/mozconfig.new make build  (x86_64, 对应文档的 mozconfig.linux-x86_64)
-  #   MOZCONFIG=$(pwd)/assets/mozconfig.linux-arm64 make build  (aarch64)
-  #   MOZCONFIG=$(pwd)/assets/mozconfig.linux-loong64 make build  (loong64，见 docs/LOONG64-CROSS-COMPILE.md)
+  # 与上游 build.sh 等效的本地编译流程，默认仅编译当前架构
+  # 使用系统 mozconfig，自动选择 linux-x64 / linux-arm64
   if [ "$CARCH" = "aarch64" ]; then
+    _target="linux-arm64"
     _mozconfig="assets/mozconfig.linux-arm64"
   else
+    _target="linux-x64"
     _mozconfig="assets/mozconfig.new"
   fi
-  # 1. 准备源码：解压 Firefox 源码并应用 Vantage 补丁（Makefile:dir）
+  # 1. 拉取 Firefox 源码并打补丁
   make dir
-  # 2. 编译（约 1–3 小时，参考 README 手动编译章节）
+  # 2. 编译（需要较长时间，约 1-3 小时）
   MOZCONFIG="$PWD/$_mozconfig" make build
-  # 3. 打包（Makefile:package，生成 .tar.xz）
+  # 3. 打包
   make package
 }
 
