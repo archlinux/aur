@@ -1,7 +1,7 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=vscode-js-debug-bin
-pkgver=1.102.0
+pkgver=1.117.0
 pkgrel=1
 pkgdesc='A DAP-compatible JavaScript debugger'
 arch=(any)
@@ -11,7 +11,7 @@ depends=(nodejs)
 conflicts=(vscode-js-debug)
 provides=("vscode-js-debug=$pkgver")
 source=("$url/releases/download/v$pkgver/js-debug-dap-v${pkgver}.tar.gz")
-sha256sums=('6eb0f9c9d5acc124a0cb4ee4e778adf57fb71f113d60aa6c303fc0c1501acc78')
+sha256sums=('ad8d04ede9d4b75cc290fd5438a65047a06f786d04f604b6112485b36f090772')
 
 prepare() {
   chmod +x js-debug/src/dapDebugServer.js
