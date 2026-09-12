@@ -3,7 +3,7 @@
 pkgname=make-static
 _pkgname=make
 pkgver=4.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU make utility to maintain groups of programs"
 arch=(aarch64 'x86_64')
 url="https://www.gnu.org/software/make"
@@ -23,16 +23,14 @@ prepare() {
   patch -p1 <../*.patch
 }
 build() {
-  export CC=musl-gcc CFLAGS="$CFLAGS -Os" LDFLAGS="$LDFLAGS -static -fno-link-libatomic"
+  export CC="musl-gcc -fno-link-libatomic" LDFLAGS="$LDFLAGS -static"
 	cd "${_pkgname}-${pkgver}"
 	./configure --prefix=/usr --without-guile --disable-load
   ./build.sh
 }
-
 # check() {
 #   make -j $(nproc) -C "${_pkgname}-${pkgver}" -k check
 # }
-
 package() {
 	make -C "${_pkgname}-${pkgver}" DESTDIR="${pkgdir}" install
   strip $pkgdir/usr/bin/make
