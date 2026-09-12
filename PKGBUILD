@@ -3,14 +3,14 @@
 pkgname=seanime-denshi
 _pkgname=seanime-denshi
 pkgver=3.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted server that seamlessly integrates with your local anime collection with anilist integration. (Denshi AppImage variant)"
 arch=(x86_64)
 url="https://github.com/5rahim/seanime"
 license=('MIT')
 
 depends=('fuse2' 'hicolor-icon-theme')
-conflicts=('seanime' 'seanime-bin')
+conflicts=('seanime-denshi-git')
 makedepends=('gtk-update-icon-cache')
 
 options=('!strip')
