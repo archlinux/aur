@@ -1,25 +1,25 @@
 diff --git a/app.py b/app.py
 --- a/app.py
 +++ b/app.py
-@@
--# Swagger imports
+@@ -34,2 +34,2 @@
+ # Swagger imports
 -from flasgger import Swagger
--
++from swagger_compat import Swagger
+ 
 diff --git a/app_chat.py b/app_chat.py
 --- a/app_chat.py
 +++ b/app_chat.py
-@@
+@@ -23,3 +23,3 @@
+ 
+ from flask import Blueprint, render_template, request, jsonify, Response, stream_with_context
 -from flasgger import swag_from  # Import swag_from
-+def swag_from(*args, **kwargs):
-+    def decorator(func):
-+        return func
-+    return decorator
++from swagger_compat import swag_from
+ import json  # For JSON serialization of tool arguments
 diff --git a/app_sync.py b/app_sync.py
 --- a/app_sync.py
 +++ b/app_sync.py
-@@
+@@ -28,3 +28,3 @@
+ import psycopg2.extras
+ from flask import Blueprint, request, jsonify
 -from flasgger import swag_from
-+def swag_from(*args, **kwargs):
-+    def decorator(func):
-+        return func
-+    return decorator
++from swagger_compat import swag_from
