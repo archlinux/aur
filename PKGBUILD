@@ -2,7 +2,7 @@
 pkgname=stow-cm-nightly-bin
 conflicts=('stow-cm' 'stow-cm-bin')
 provides=('stow-cm')
-pkgver=0.25.0+nightly+20260814+7+g495ef101
+pkgver=0.27.0+nightly+20260912+0+g7dffc3b4
 pkgrel=1
 pkgdesc="Config manager (gnu-stow like) — nightly build"
 arch=('x86_64' 'aarch64')
