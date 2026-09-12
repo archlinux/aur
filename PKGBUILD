@@ -37,7 +37,7 @@ build() {
   cd "${srcdir}/moneymanagerex"
 
   # Disable all warnings when building by using Parameter '-w'
-  cmake -DCMAKE_BUILD_TYPE=None -Wno-dev -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -w" .
+  cmake -DCMAKE_BUILD_TYPE=None -Wno-author -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -w" .
 
   cmake --build .
 }
