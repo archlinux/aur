@@ -1,7 +1,7 @@
 pkgbase = locally-uncensored-bin
 	pkgdesc = Plug-and-play local AI studio — uncensored chat, image & video generation, and a coding agent
 	pkgver = 2.6.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PurpleDoubleD/locally-uncensored
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -19,7 +19,7 @@ pkgbase = locally-uncensored-bin
 	depends = vulkan-icd-loader
 	depends = wayland
 	depends = webkit2gtk-4.1
-	optdepends = python: bundled whisper speech-to-text server
+	optdepends = python312: ComfyUI / speech-to-text backends (LU needs Python 3.10-3.12; run "python3.12 -m ensurepip --user" once to give it pip)
 	provides = locally-uncensored=2.6.9
 	conflicts = locally-uncensored
 	options = !debug
