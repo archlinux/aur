@@ -3,7 +3,7 @@
 
 pkgname=pnpm-bin
 _pkgname=pnpm
-pkgver=12.3.4
+pkgver=12.4.1
 pkgrel=1
 pkgdesc="Fast, disk space efficient package manager (No dependency on nodejs)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ _app=${_pkgname}-${pkgver}-${CARCH}
 source_x86_64=(${_pkgname}-${pkgver}-x86_64::https://github.com/pnpm/pnpm/releases/download/v${pkgver}/pnpm-linux-x64.tar.gz)
 source_aarch64=(${_pkgname}-${pkgver}-aarch64::https://github.com/pnpm/pnpm/releases/download/v${pkgver}/pnpm-linux-arm64.tar.gz)
 
-sha256sums_x86_64=('9705e5704b4679fb503c963a18d1ac4f105e39aafafca8a2ed346facdf820cd0')
-sha256sums_aarch64=('95e71a2a30bbc0b77511f95cf096779068dcad6ffcbbfdf0cd4dde9de2b2b97c')
+sha256sums_x86_64=('66e9886299085dade56e203ae0e3586f35787f8801a68d33ec07ac17b0de2001')
+sha256sums_aarch64=('14f7a3e67d658d4ca8002c2aa0567f27dc5fe056a9f29f98ba7d2bfd6c81591b')
 
 package() {
 	install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/pnpm"
