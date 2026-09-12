@@ -1,6 +1,6 @@
 pkgbase = azahar-appimage
 	pkgdesc = Azahar is an open-source 3DS emulator project based on Citra. (already compiled)
-	pkgver = 2126.0
+	pkgver = 2126.1.1
 	pkgrel = 1
 	epoch = 1
 	url = https://azahar-emu.org
@@ -14,7 +14,7 @@ pkgbase = azahar-appimage
 	conflicts = azahar-git
 	conflicts = azahar-appimage-wayland
 	options = !strip
-	source = azahar_2126.0.AppImage::https://github.com/azahar-emu/azahar/releases/download/2126.0/azahar.AppImage
-	sha256sums = 3452d8c7d31eac60255578611cfdf697a69bf36d04772304a67f22c1458d427f
+	source = azahar_2126.1.1.AppImage::https://github.com/azahar-emu/azahar/releases/download/2126.1.1/azahar.AppImage
+	sha256sums = e445dabc18fe7665867e24a18a78e24e133261a9cc320fae6a4a45bd2e7c4783
 
 pkgname = azahar-appimage
