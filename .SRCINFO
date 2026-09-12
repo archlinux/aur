@@ -1,6 +1,6 @@
 pkgbase = weaviate-bin
 	pkgdesc = An open source vector database written in Go
-	pkgver = 1.39.3
+	pkgver = 1.39.4
 	pkgrel = 1
 	url = https://github.com/weaviate/weaviate
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = weaviate-bin
 	sha256sums = 1507f4003ed6d3d5230cc9570e6f69c3be6177b52496b976f10a93519626b86a
 	sha256sums = a644fc4eaa46e97381df09b5321e60a9ca1cfdac67277b8fe103fb4bd96d4fa0
 	sha256sums = 557f6c52ca3c4dc261a5ff11e4d998b9f66690c8ee2075450a2a225107b58f57
-	source_x86_64 = weaviate-bin-1.39.3-x86_64.tar.gz::https://github.com/weaviate/weaviate/releases/download/v1.39.3/weaviate-v1.39.3-linux-amd64.tar.gz
-	sha256sums_x86_64 = 5d8016935ab74dd9161a3165fddc640b60613e387abd4757546f5fd26b5317c8
-	source_aarch64 = weaviate-bin-1.39.3-aarch64.tar.gz::https://github.com/weaviate/weaviate/releases/download/v1.39.3/weaviate-v1.39.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = 9a16f4bbab0b460fb52c2d10c194fd25c9c6c6c39fec04d0618b525a444699bf
+	source_x86_64 = weaviate-bin-1.39.4-x86_64.tar.gz::https://github.com/weaviate/weaviate/releases/download/v1.39.4/weaviate-v1.39.4-linux-amd64.tar.gz
+	sha256sums_x86_64 = 1c1c5ed4b718fb2ec0b5e09039b6c9c912280ced16dea29593c8529a3fdb441f
+	source_aarch64 = weaviate-bin-1.39.4-aarch64.tar.gz::https://github.com/weaviate/weaviate/releases/download/v1.39.4/weaviate-v1.39.4-linux-arm64.tar.gz
+	sha256sums_aarch64 = bf20c66b5e4c11fbe01d8a327f6f18c6e8504b247c881f9cb3861d5f41c44332
 
 pkgname = weaviate-bin
