@@ -1,6 +1,6 @@
 pkgname=gitcrawl-bin
-_realver="0.9.5"
-pkgver="0.9.5"
+_realver="0.9.6"
+pkgver="0.9.6"
 pkgrel=1
 pkgdesc='Local-first GitHub issue and pull request crawler for maintainer triage'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ conflicts=('gitcrawl')
 source_x86_64=("gitcrawl-${_realver}-linux_amd64.tar.gz::https://github.com/openclaw/gitcrawl/releases/download/v${_realver}/gitcrawl_${_realver}_linux_amd64.tar.gz")
 source_aarch64=("gitcrawl-${_realver}-linux_arm64.tar.gz::https://github.com/openclaw/gitcrawl/releases/download/v${_realver}/gitcrawl_${_realver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('60b8d565a9d6e38bf02a4c819e0807598d33ecb9ed6d003ebccd753ca48410af')
-sha256sums_aarch64=('6afbff44fbe6b9ebf3c6ff550099e069e1920ee9b0a8bad66ae294656b537be7')
+sha256sums_x86_64=('7c8ddc1270a7cc755288d5e031ca845f1f2af2a2fda806466bc84f6bd5316cb2')
+sha256sums_aarch64=('c255a144db31c25a75f7951496154c0e842e3811705e6506c76a3d22da539873')
 
 package() {
   cd "${srcdir}"
