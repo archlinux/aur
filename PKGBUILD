@@ -1,7 +1,7 @@
 # Maintainer: nuggocto <aur@sshmoi.com>
 
 pkgname=suzumushi-bin
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='A calm, fully local terminal audio player for Linux'
 arch=('x86_64')
@@ -11,11 +11,11 @@ depends=('alsa-lib' 'dbus' 'glibc' 'libgcc' 'libpipewire')
 provides=("suzumushi=$pkgver")
 conflicts=('suzumushi')
 options=('!debug')
-_upstream_version='1.1.3'
+_upstream_version='1.1.4'
 _target="${CARCH}-unknown-linux-gnu"
 _archive="suzumushi-v${_upstream_version}-${_target}"
 source_x86_64=("${_archive}.tar.xz::https://github.com/nuggocto/suzumushi/releases/download/v${_upstream_version}/${_archive}.tar.xz")
-sha256sums_x86_64=('bb48a9ae46363a74a8e4527f218ed60b747e003beff045d9e1801cf40e5fb8a6')
+sha256sums_x86_64=('b38bd38c612ee9a07ee154158885b81dfa9c277f9f30dae48f633571573e5924')
 
 package() {
   install -Dm755 "${_archive}/suzumushi" "$pkgdir/usr/bin/suzumushi"
