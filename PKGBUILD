@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-visual-map-git
-pkgver=0.9.34.g84accb0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Visual Map plugin for OpenRGB"
 arch=('any')
