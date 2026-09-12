@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz(rot13)>
 _pkgname=mindustry
 pkgname="${_pkgname}-bin"
-pkgver=160.1
+pkgver=160.2
 pkgrel=1
 epoch=2
 pkgdesc="A sandbox tower defense game written in Java"
