@@ -44,6 +44,9 @@ check() {
 	cd ${srcdir}/${_pkgname}-${pkgver} || exit 1
 
 	./target/release/${_appname} --version
+
+	export CARGO_TARGET_DIR=target
+	cargo test --frozen --release
 }
 
 package() {
