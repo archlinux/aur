@@ -1,6 +1,6 @@
 pkgbase = wacli-bin
 	pkgdesc = WhatsApp CLI
-	pkgver = 0.18.1
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/openclaw/wacli
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = wacli-bin
 	provides = wacli
 	conflicts = wacli
 	options = !strip
-	source_x86_64 = wacli-x86_64-0.18.1.tgz::https://github.com/openclaw/wacli/releases/download/v0.18.1/wacli_0.18.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 36e8c48065f224f58428db9802767e8c6d9e10c0e847bbb5d9072fac72c272cd
-	source_aarch64 = wacli-aarch64-0.18.1.tgz::https://github.com/openclaw/wacli/releases/download/v0.18.1/wacli_0.18.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = e41465ac95baea79586d43ea102adb501abd0aa84f371138a9a1bda625bfc01d
+	source_x86_64 = wacli-x86_64-0.18.2.tgz::https://github.com/openclaw/wacli/releases/download/v0.18.2/wacli_0.18.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = d33e8cc4b01acbd4e1ba212e22ac9c6438221e0761112dd3e7a2cc30b3a5946f
+	source_aarch64 = wacli-aarch64-0.18.2.tgz::https://github.com/openclaw/wacli/releases/download/v0.18.2/wacli_0.18.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 83fd65e09ba2df2bd7f996f1b94a12ce3ad3ed2bc528ed602ffef5c273a414fc
 
 pkgname = wacli-bin
