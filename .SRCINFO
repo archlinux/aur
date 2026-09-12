@@ -1,6 +1,6 @@
 pkgbase = python-appium-python-client
 	pkgdesc = Python language bindings for Appium
-	pkgver = 6.0.5
+	pkgver = 6.0.6
 	pkgrel = 1
 	url = https://github.com/appium/python-client
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-appium-python-client
 	depends = python
 	depends = python-selenium
 	depends = python-typing_extensions
-	source = python-appium-python-client-6.0.5.tar.gz::https://github.com/appium/python-client/archive/v6.0.5.tar.gz
-	sha256sums = 6c614be193333fedfca83f3a91918e3b352dc5e33ff6c6df6ac4f6d271a2c2cc
+	source = python-appium-python-client-6.0.6.tar.gz::https://github.com/appium/python-client/archive/v6.0.6.tar.gz
+	sha256sums = da4d38f9348e542839f74d567ccf695545b422eb2b19aa38c909d7132cedb5a9
 
 pkgname = python-appium-python-client
