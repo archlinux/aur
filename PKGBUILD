@@ -10,7 +10,6 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/DanielOgorchock/joycond'
 license=('GPL3')
 depends=('libevdev')
-optdepends=('hid-nintendo-dkms: provides driver for pre-5.16 kernels')
 makedepends=('cmake' 'git')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
