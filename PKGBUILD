@@ -1,11 +1,11 @@
 # Maintainer: guglovich <guglovich164@gmail.com>
-# Created with assistance from Qwen 3.6 (Alibaba).
+# Created with assistance from GLM 5.3 Flash.
 
 options=('!debug')
 
 pkgname=xl-converter
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Easy-to-use image converter for modern formats (JPEG XL, AVIF, JPEGLI, WebP)"
 arch=('any')
 url="https://github.com/JacobDev1/xl-converter"
@@ -22,7 +22,7 @@ depends=(
     'perl-image-exiftool'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JacobDev1/xl-converter/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b9718b55f1a065a7b0894899334d5c517e4aca35cb7ad7c57db92adace19c7b3')
+sha256sums=('b04e14dcd4d53ba6c433a12c4095233b34370436341280acd5b4be8df3af8ca7')
 
 package() {
     cd "xl-converter-$pkgver"
