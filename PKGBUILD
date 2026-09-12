@@ -1,14 +1,14 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=senpi
-pkgver=2026.9.12_2
+pkgver=2026.9.12_3
 pkgrel=1
 _npmver=${pkgver//_/-}
 pkgdesc='Opinionated coding agent CLI based on pi'
 arch=('x86_64' 'aarch64')
 url='https://github.com/code-yeongyu/senpi'
 license=('MIT')
-depends=('nodejs>=24' 'glibc' 'gcc-libs')
+depends=('nodejs>=24' 'glibc' 'gcc-libs' 'libxcb')
 optdepends=(
   'git: repository-aware workflows and package installation'
   'ripgrep: faster in-repository text search'
@@ -18,43 +18,42 @@ optdepends=(
 conflicts=('senpi-bin' 'senpi-git')
 options=('!strip' '!debug')
 
-_clipboard_ver=0.3.9
+_esbuild_ver=0.28.2
 source=(
   "$pkgname-$_npmver.tgz::https://registry.npmjs.org/@code-yeongyu/senpi/-/senpi-$_npmver.tgz"
   "$pkgname-$_npmver-LICENSE::https://raw.githubusercontent.com/code-yeongyu/senpi/v$_npmver/LICENSE"
 )
 source_x86_64=(
-  "$pkgname-$_npmver-clipboard-x64::https://registry.npmjs.org/@mariozechner/clipboard-linux-x64-gnu/-/clipboard-linux-x64-gnu-$_clipboard_ver.tgz"
+  "$pkgname-$_npmver-esbuild-x64::https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-$_esbuild_ver.tgz"
 )
 source_aarch64=(
-  "$pkgname-$_npmver-clipboard-arm64::https://registry.npmjs.org/@mariozechner/clipboard-linux-arm64-gnu/-/clipboard-linux-arm64-gnu-$_clipboard_ver.tgz"
+  "$pkgname-$_npmver-esbuild-arm64::https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-$_esbuild_ver.tgz"
 )
 noextract=("$pkgname-$_npmver.tgz")
-sha256sums=('d55c39ba4699bc4af728d161aed9f6a8f396b42043be386eb3b0d21349b5ceb6'
+sha256sums=('2114a156724ced550ac7355accfe853af2a141a4e74665af4aac2757a39cc39b'
             'b572487f123bf259487f7dab25923af16fecd08ed7a2c50964f393282dba883c')
-sha256sums_x86_64=('106b4f4a9218991056912937dfc6b7a2311d5ddf360c9692a765559656beb05e')
-sha256sums_aarch64=('652eb7575ab534099a3698cb08722aa4b985b681c84e6e13dc8bcb57db94d42d')
+sha256sums_x86_64=('9573bb2233aab0f9ea7647d5cca9726113cc1768de61d66b17267f4db84488f6')
+sha256sums_aarch64=('a96dbfa41d3ef5dbd1ef22b1c10d5187be9267e86093a870f06402a7ec931596')
 
 package() {
   local _target="$pkgdir/usr/lib/node_modules/@code-yeongyu/$pkgname"
-  local _clipboard_arch=x64
+  local _native_arch=x64
 
   if [[ $CARCH == aarch64 ]]; then
-    _clipboard_arch=arm64
+    _native_arch=arm64
   fi
 
   install -d "$(dirname "$_target")"
   bsdtar -xf "$srcdir/$pkgname-$_npmver.tgz" -C "$(dirname "$_target")"
   mv "$(dirname "$_target")/package" "$_target"
 
-  # The npm bundle contains the publisher host's optional clipboard addon.
-  # Replace it with the matching Arch asset for this build.
-  rm -rf "$_target/node_modules/@mariozechner"/clipboard-linux-*
-  rm -f "$_target/node_modules/@mariozechner/clipboard"/clipboard.*.node
-  bsdtar -xf "$srcdir/$pkgname-$_npmver-clipboard-$_clipboard_arch" \
-    -C "$_target/node_modules/@mariozechner"
-  mv "$_target/node_modules/@mariozechner/package" \
-    "$_target/node_modules/@mariozechner/clipboard-linux-$_clipboard_arch-gnu"
+  # The npm bundle omits esbuild's optional platform package.
+  # Install the matching official binary package for this build.
+  install -d "$_target/node_modules/@esbuild"
+  bsdtar -xf "$srcdir/$pkgname-$_npmver-esbuild-$_native_arch" \
+    -C "$_target/node_modules/@esbuild"
+  mv "$_target/node_modules/@esbuild/package" \
+    "$_target/node_modules/@esbuild/linux-$_native_arch"
 
   # Keep only native helpers matching this Linux architecture.
   local _tui_native="$_target/node_modules/@earendil-works/pi-tui/native"
@@ -67,11 +66,11 @@ package() {
   done
   for _native_dir in "$_tui_native/linux/prebuilds"/*; do
     [[ -d $_native_dir ]] || continue
-    [[ ${_native_dir##*/} == linux-$_clipboard_arch ]] || rm -rf "$_native_dir"
+    [[ ${_native_dir##*/} == linux-$_native_arch ]] || rm -rf "$_native_dir"
   done
   for _native_dir in "$_pty_prebuilds"/*; do
     [[ -d $_native_dir ]] || continue
-    [[ ${_native_dir##*/} == linux-$_clipboard_arch ]] || rm -rf "$_native_dir"
+    [[ ${_native_dir##*/} == linux-$_native_arch ]] || rm -rf "$_native_dir"
   done
   rmdir --ignore-fail-on-non-empty "$_tui_native" "$_pty_prebuilds" 2>/dev/null || true
   rm -rf "$_target/node_modules/marked/man"
