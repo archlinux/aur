@@ -1,6 +1,6 @@
 pkgbase = livediff
 	pkgdesc = 👁️ Real-time file monitoring with beautiful, pulsing TUI diff visualization
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/SoCkEt7/Livediff
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = livediff
 	depends = glibc
 	depends = libgcc
 	provides = livediff
-	source = livediff-3.3.0.tgz::https://github.com/SoCkEt7/Livediff/archive/refs/tags/v3.3.0.tar.gz
-	sha256sums = ceef45db58ce0c28e792ebe5159e66745f5f0fc9aa4d2435eca5ebf5533e644a
+	source = livediff-3.4.0.tgz::https://github.com/SoCkEt7/Livediff/archive/refs/tags/v3.4.0.tar.gz
+	sha256sums = 41b3d22f646cd16beadd4ff72868f76badf561f93c9996329c30ef6a40d576d7
 
 pkgname = livediff

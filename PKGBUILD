@@ -6,7 +6,7 @@ _appname=${_pkgname,,}
 pkgname=${_appname}
 pkgdesc="👁️ Real-time file monitoring with beautiful, pulsing TUI diff visualization"
 
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,7 +22,7 @@ depends=('glibc' 'libgcc')
 provides=("${_appname}")
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_pkgvername}.tar.gz")
-sha256sums=('ceef45db58ce0c28e792ebe5159e66745f5f0fc9aa4d2435eca5ebf5533e644a')
+sha256sums=('41b3d22f646cd16beadd4ff72868f76badf561f93c9996329c30ef6a40d576d7')
 
 
 prepare() {
