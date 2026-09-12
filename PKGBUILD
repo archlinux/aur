@@ -9,15 +9,16 @@ _gitname=kde-ai-usage
 _plasmoid=org.muddyblack.aiUsageWidget
 
 pkgname=plasma6-applets-ai-usage
-pkgver=2.1.2
+pkgver=2.3.1
 pkgrel=1
-pkgdesc="KDE Plasma 6 panel widget tracking AI usage quotas across 11 AI providers"
+pkgdesc="KDE Plasma 6 panel widget tracking AI usage quotas across 14 AI providers"
 arch=('any')
 url="https://github.com/Muddyblack/kde-ai-usage"
 license=('MIT')
 # The backend is stdlib-only Python driven by bash launchers; the widget reaches
 # it through plasma5support's executable DataEngine.
 depends=('libplasma' 'plasma5support' 'python' 'hicolor-icon-theme')
+checkdepends=('jq')
 optdepends=(
     'claude-code: Claude subscription windows and local activity stats'
     'codex-bin: Codex/ChatGPT plan limits and account status for the OpenAI tab'
@@ -27,7 +28,7 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0242b06786aee0de6066f3cdc7846fcc56aeb65332d03d52b2cdefcf0213d6fc')
+sha256sums=('36bb0a21ee0aa89be5c4a557e555c811890b5d92d61cadc451a2d7beee38e5c4')
 
 check() {
     cd "${_gitname}-${pkgver}"
