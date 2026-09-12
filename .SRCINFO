@@ -1,6 +1,6 @@
 pkgbase = yafst-bin
 	pkgdesc = Linux-first ranked stats tracker for THE FINALS
-	pkgver = 0.2.0beta.7
+	pkgver = 0.2.0beta.8
 	pkgrel = 1
 	url = https://forge.wolfhound.dev/wolfhound/yafst
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = yafst-bin
 	optdepends = chromium: dashboard in its own app window (any Chromium-based browser works)
 	provides = yafst
 	conflicts = yafst
-	source_x86_64 = yafst-v0.2.0-beta.7-linux-amd64.tar.gz::https://forge.wolfhound.dev/wolfhound/yafst/releases/download/v0.2.0-beta.7/yafst-v0.2.0-beta.7-linux-amd64.tar.gz
-	sha256sums_x86_64 = b56fbff2df18636100743475291b92914319cfc9d4e86667fa30859afac13a32
-	source_aarch64 = yafst-v0.2.0-beta.7-linux-arm64.tar.gz::https://forge.wolfhound.dev/wolfhound/yafst/releases/download/v0.2.0-beta.7/yafst-v0.2.0-beta.7-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1b73fb4cce73e9395e7400eb8ee947f97f34a49af9a806bf5de92fd55c8de8ce
+	source_x86_64 = yafst-v0.2.0-beta.8-linux-amd64.tar.gz::https://forge.wolfhound.dev/wolfhound/yafst/releases/download/v0.2.0-beta.8/yafst-v0.2.0-beta.8-linux-amd64.tar.gz
+	sha256sums_x86_64 = 615201c44d15dced0f70b89913b7226cb58b9a6e9157ec5a97020f816ebb8c56
+	source_aarch64 = yafst-v0.2.0-beta.8-linux-arm64.tar.gz::https://forge.wolfhound.dev/wolfhound/yafst/releases/download/v0.2.0-beta.8/yafst-v0.2.0-beta.8-linux-arm64.tar.gz
+	sha256sums_aarch64 = cbd0f053f99ad07ea0d3e850f621edb76619ffe6298a928adecc95668bc7815d
 
 pkgname = yafst-bin
