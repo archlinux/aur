@@ -2,7 +2,7 @@
 
 _pkgname=shaderc
 pkgname=mingw-w64-${_pkgname}
-pkgver=2026.3
+pkgver=2026.4
 pkgrel=1
 pkgdesc='Collection of tools, libraries and tests for shader compilation (mingw-w64)'
 url="https://github.com/google/${_pkgname}"
@@ -12,7 +12,7 @@ depends=('mingw-w64-glslang')
 makedepends=('mingw-w64-cmake' 'mingw-w64-spirv-headers' 'mingw-w64-spirv-tools' 'python' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ee493ccf1b3038b4ef2fe024664c5eb2dc4bcc1f6b05b33e3909de0e19c81024')
+sha256sums=('f06ce5bcca94e5df7f34e115743597d0ad2e13c5fe9213c67dc8c76031241947')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
