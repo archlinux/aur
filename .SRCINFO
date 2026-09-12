@@ -1,6 +1,6 @@
 pkgbase = mrrss-appimage
 	pkgdesc = 一个现代化、跨平台且免费的 AI RSS 阅读器.
-	pkgver = 1.3.33
+	pkgver = 1.3.34
 	pkgrel = 1
 	url = https://github.com/WCY-dt/MrRSS
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mrrss-appimage
 	depends = zlib
 	depends = webkitgtk-6.0
 	options = !strip
-	source = https://github.com/WCY-dt/MrRSS/releases/download/v1.3.33/MrRSS-1.3.33-linux-amd64.AppImage
-	sha512sums = 900851ff7f28cdb142366105536e1d9680a592e49dd7a79ea575b1dcd1987b39cfe13722836bcd82f1b15822afece0e6ae11886a8d172d6f82a11a540510d09e
+	source = https://github.com/WCY-dt/MrRSS/releases/download/v1.3.34/MrRSS-1.3.34-linux-amd64.AppImage
+	sha512sums = 15ea679aac24a7a561d6de67b335f42afeda05222730cff9009d27201a2d431910d4b4878779bd4f77c214a300ae0f76e109bca1ab3aa54777f1a03d6647ccf6
 
 pkgname = mrrss-appimage
