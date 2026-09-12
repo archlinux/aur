@@ -1,6 +1,6 @@
 pkgbase = cargo-pretty-bin
 	pkgdesc = A cargo build wrapper with a live, animated status view
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/romancitodev/cargo-pretty
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = cargo-pretty-bin
 	provides = cargo-pretty
 	conflicts = cargo-pretty
 	options = !strip
-	source = README-0.2.1.md::https://raw.githubusercontent.com/romancitodev/cargo-pretty/v0.2.1/README.md
-	source = LICENSE-0.2.1::https://raw.githubusercontent.com/romancitodev/cargo-pretty/v0.2.1/LICENSE
-	sha256sums = f33f205420a12e7f49c5c84e1d35fe66f2f0a61373ad136f9ff15f400cb9064a
+	source = README-0.3.0.md::https://raw.githubusercontent.com/romancitodev/cargo-pretty/v0.3.0/README.md
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/romancitodev/cargo-pretty/v0.3.0/LICENSE
+	sha256sums = 9f1330329d142368b9736c6efbbe230becee8261faadaae1d03d7f0e538bcc2b
 	sha256sums = 4d105a9bb5753da6a00aea2fd5b691af2ac9cde446981d1a2d569c44ab3c0bb9
-	source_x86_64 = cargo-pretty-x86_64-0.2.1.tgz::https://github.com/romancitodev/cargo-pretty/releases/download/v0.2.1/cargo-pretty-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 906f77c03ee316cbac455e471e49bfde72ddaed7a62755a65dc346fd24536592
+	source_x86_64 = cargo-pretty-x86_64-0.3.0.tgz::https://github.com/romancitodev/cargo-pretty/releases/download/v0.3.0/cargo-pretty-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3bf31758f608b88f20d191883624d1a9aca490d4d25201b32b773de3514f3c60
 
 pkgname = cargo-pretty-bin
