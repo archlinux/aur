@@ -1,6 +1,6 @@
 pkgname=audiomuse-ai-worker
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='AudioMuse-AI analysis and task queue worker'
 arch=('x86_64')
 url='https://github.com/NeptuneHub/AudioMuse-AI'
@@ -29,7 +29,7 @@ depends=(
   'python-numba'
   'python-numpy'
   'python-onnx'
-  'python-onnxruntime-cpu'
+  'python-onnxruntime'
   'python-psutil'
   'python-psycopg2'
   'python-pyjwt'
@@ -55,6 +55,7 @@ optdepends=(
   'python-google-genai: Gemini AI provider'
   'python-mistralai: Mistral AI provider'
   'python-matplotlib: spectrum_analyzer plugin'
+  'python-onnxruntime-cuda: NVIDIA CUDA acceleration for ONNX inference'
 )
 
 install='audiomuse-ai-worker.install'
@@ -96,7 +97,7 @@ sha256sums=('e6d10aa26820a7589f6512123d8868c26be617b08b2bac4542e387ff5921e0f4'
             'ccbca1b577fbc2dba683e611152c6b2d995d43aaac91593fb2e3988815abce48'
             '1b6dac9d5528b4eeb16008bc5e988492a80b9d35ceb4640247bdb3331b1d191a'
             '7e036273d925175f889a972fe6c18120d4bdc57251090aa4022b120361ca302c'
-            'c7536abee7ab5af057177e634e4f92cc96f6910216436cfb9b7d99d77d0f04f5')
+            '09e6eb1f58a51a6daeca68ff8309c1dbee6e03e72101258100b81137da2256f6')
 
 backup=(
   'etc/audiomuse-ai/worker.env'
