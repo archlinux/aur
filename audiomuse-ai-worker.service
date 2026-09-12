@@ -1,0 +1,23 @@
+[Unit]
+Description=AudioMuse-AI Worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=audiomuse-worker
+Group=audiomuse-worker
+WorkingDirectory=/usr/lib/audiomuse-ai-worker
+EnvironmentFile=/etc/audiomuse-ai/worker.env
+
+RuntimeDirectory=audiomuse-ai-worker
+RuntimeDirectoryMode=0750
+
+ExecStart=/usr/bin/supervisord -n -c /etc/audiomuse-ai/worker-supervisord.conf
+ExecReload=/usr/bin/supervisorctl -c /etc/audiomuse-ai/worker-supervisord.conf restart all
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

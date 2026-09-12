@@ -1,0 +1,71 @@
+post_install() {
+  systemd-sysusers audiomuse-ai-worker.conf
+  systemd-tmpfiles --create audiomuse-ai-worker.conf
+
+  cat <<'EOF'
+
+AudioMuse-AI worker has been installed.
+
+Review the sample configuration at:
+
+  /etc/audiomuse-ai/worker.env
+
+before starting the service.
+
+Some model artifacts are intentionally not bundled because they are generic
+upstream models rather than AudioMuse-specific exports.
+
+Required for CLAP analysis:
+  roberta-base
+
+This can be downloaded with Hugging Face CLI, for example:
+
+  hf download roberta-base
+
+If the model is stored in a non-default Hugging Face cache, set HF_HOME in:
+
+  /etc/audiomuse-ai/worker.env
+
+Optional features:
+
+  Local lyrics transcription
+    Requires a compatible Whisper ONNX export.
+    A model such as openai/whisper-small can be exported with Optimum:
+
+      optimum-cli export onnx \
+        --model openai/whisper-small \
+        --task automatic-speech-recognition-with-past \
+        /path/to/whisper-small-onnx
+
+    Then set LYRICS_WHISPER_MODEL_DIR in:
+      /etc/audiomuse-ai/worker.env
+
+    The export tool is provided by:
+      python-optimum-onnx
+
+  Neural fingerprinting / Search by Recording
+    Requires:
+      audiomuse-ai-neural-fingerprint
+
+  Gemini AI provider
+    Requires:
+      python-google-genai
+
+  Mistral AI provider
+    Requires:
+      python-mistralai
+
+Documentation:
+  https://github.com/NeptuneHub/AudioMuse-AI
+
+Start the service with:
+
+  systemctl enable --now audiomuse-ai-worker.service
+
+EOF
+}
+
+post_upgrade() {
+  systemd-sysusers audiomuse-ai-worker.conf
+  systemd-tmpfiles --create audiomuse-ai-worker.conf
+}

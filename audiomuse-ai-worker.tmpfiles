@@ -1,0 +1,8 @@
+d /var/lib/audiomuse-ai-worker 0750 audiomuse-worker audiomuse-worker -
+d /var/lib/audiomuse-ai-worker/models 0750 audiomuse-worker audiomuse-worker -
+d /var/lib/audiomuse-ai-worker/plugins 0750 audiomuse-worker audiomuse-worker -
+d /var/cache/audiomuse-ai-worker 0750 audiomuse-worker audiomuse-worker -
+d /var/cache/audiomuse-ai-worker/numba 0750 audiomuse-worker audiomuse-worker -
+d /var/cache/audiomuse-ai-worker/clap 0750 audiomuse-worker audiomuse-worker -
+d /var/cache/audiomuse-ai-worker/lyrics 0750 audiomuse-worker audiomuse-worker -
+d /var/tmp/audiomuse-ai-worker 0750 audiomuse-worker audiomuse-worker -
