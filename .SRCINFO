@@ -1,0 +1,20 @@
+pkgbase = raven-bin
+	pkgdesc = Static analyzer for R — a language server in your editor, a checker in CI
+	pkgver = 0.20.2
+	pkgrel = 1
+	url = https://github.com/jbearak/raven
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libgcc
+	conflicts = raven
+	options = !debug
+	source_x86_64 = raven-bin-0.20.2.zip::https://github.com/jbearak/raven/releases/download/v0.20.2/raven-linux-x64.zip
+	provides_x86_64 = raven=0.20.2
+	sha256sums_x86_64 = 049c8edf37468f23df9fc7115b958dc4ceada8b9b2c59eb889840446ad22cdd7
+	source_aarch64 = raven-bin-0.20.2.zip::https://github.com/jbearak/raven/releases/download/v0.20.2/raven-linux-arm64.zip
+	provides_aarch64 = raven=0.20.2
+	sha256sums_aarch64 = 871599324f52e90dffb675fd7cedc989e68c691e19965785802077fadc0e284c
+
+pkgname = raven-bin
