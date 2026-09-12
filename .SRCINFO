@@ -1,7 +1,7 @@
 pkgbase = html2xhtml
 	pkgdesc = HTML to XHTML converter
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jfisteus/html2xhtml
 	arch = x86_64
 	arch = aarch64

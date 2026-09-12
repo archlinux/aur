@@ -2,7 +2,7 @@
 
 pkgname=html2xhtml
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='HTML to XHTML converter'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jfisteus/html2xhtml'
@@ -15,11 +15,8 @@ source=(https://github.com/jfisteus/${pkgname}/releases/download/${pkgname}-${pk
 b2sums=('7390ac030cf6bf7fac60e218e85033038ccb6fe586dc93c1940f274365c816cad2964d29f13132edf3da2308e95142b65b26f9a8262c74b824500763d756f7bd')
 build() {
   cd ${pkgname}-${pkgver}
-  CC=musl-gcc
-  CFLAGS="$CFLAGS -Os"
-  LDFLAGS="-no-pie -Wl,-static -Wl,--no-dynamic-linker"
-  PREFIX=/usr
-  export CC LDFLAGS CFLAGS PREFIX
+  export CC="musl-gcc -fno-link-libatomic" CFLAGS="$CFLAGS -Os" PREFIX=/usr
+  export LDFLAGS="-no-pie -Wl,-static -Wl,--no-dynamic-linker"
 
   ./configure \
     --prefix=$PREFIX \
