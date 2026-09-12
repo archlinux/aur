@@ -7,7 +7,7 @@
 pkgname=plasmazones
 # pkgver/pkgrel are placeholders; CI rewrites them against the release tag
 # before publishing. See packaging/arch/update-aur.sh.
-pkgver=3.4.17
+pkgver=3.4.18
 pkgrel=1
 pkgdesc='Window snapping, tiling and scrolling for KDE Plasma'
 arch=('x86_64')
@@ -57,7 +57,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # 'SKIP' so local `makepkg -p PKGBUILD` doesn't fail integrity-check
 # on the placeholder pkgver. release.yml templates a real sha256 when
 # publishing to AUR (see the awk rewrite in the publish-aur job).
-sha256sums=('b1ae4b39bc4b085110443a41aacc9a8f3c83f8ab03224f302d046202b8162593')
+sha256sums=('e65fd30ea24dffd56b819961dc62fb9f45db00c383a197589d201c09ac18e9df')
 install=plasmazones.install
 
 build() {
