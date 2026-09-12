@@ -1,0 +1,21 @@
+[Unit]
+Description=OpenWhispr voice-to-text dictation
+Documentation=https://github.com/OpenWhispr/openwhispr
+PartOf=graphical-session.target
+After=graphical-session.target pipewire.service pipewire-pulse.service
+Wants=ydotool.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/openwhispr --hidden
+# Electron/Chromium must tear down its own children. With the default
+# KillMode=control-group systemd SIGTERMs the zygote, GPU process, renderers
+# and the whisper-server sidecar alongside the browser process, and crashpad
+# turns that into a core dump. Signal only the main process and let it quit.
+KillMode=mixed
+# Sidecar shutdown has an 8s internal deadline; leave headroom before the
+# SIGKILL that mixed mode sends to whatever is still alive.
+TimeoutStopSec=20
+
+[Install]
+WantedBy=graphical-session.target
