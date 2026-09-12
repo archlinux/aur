@@ -6,7 +6,7 @@
 pkgname=pwgen-static
 _pkgname=pwgen
 pkgver=2.08
-pkgrel=1
+pkgrel=2
 pkgdesc='Create memorable passwords'
 arch=('x86_64' 'aarch64')
 url='https://sourceforge.net/projects/pwgen/'
@@ -24,7 +24,8 @@ sha256sums=('dab03dd30ad5a58e578c5581241a6e87e184a18eb2c3b2e0fffa8a9cf105c97b'
 # }
 build() {
   cd "$_pkgname-$pkgver"
-  export CC=musl-gcc CFLAGS="$CFLAGS -Os" LDFLAGS="$LDFLAGS -static"
+  export CC="musl-gcc -fno-link-libatomic" CFLAGS="$CFLAGS -Os"
+  export LDFLAGS="$LDFLAGS -static"
   ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
