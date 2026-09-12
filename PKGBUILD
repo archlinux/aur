@@ -1,8 +1,8 @@
 # Maintainer: Mahmoud Almezali
 
 pkgname=conky-manager-g-bin
-pkgver=0.7
-pkgrel=2
+pkgver=0.8
+pkgrel=1
 pkgdesc='Conky theme manager with a modern UI.'
 arch=('x86_64')
 url='https://github.com/almezali/conky-manager-g'
