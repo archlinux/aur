@@ -1,7 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=agent-deck
-pkgver=1.16.5
+pkgver=1.16.6
 pkgrel=1
 pkgdesc="Terminal session manager for AI coding agents. Built with Go + Bubble Tea."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/asheshgoplani/agent-deck"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='694fbcee841e639d1097d3be9921d70a0c7416bc'
+_commit='2c2ff1fef346b617c1413c9efc69fc5b9081c040'
 source=("git+https://github.com/asheshgoplani/agent-deck.git#commit=$_commit")
 sha256sums=('SKIP')
 
