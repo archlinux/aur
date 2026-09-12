@@ -44,6 +44,16 @@ verify() {
 	sha256sum -c --ignore-missing "checksums.txt"
 }
 
+prepare() {
+	cd "${srcdir}/" || exit
+
+	rm -rf git && git clone -n --depth=1 --filter=tree:0 "${_ghurl}" git
+
+	cd git && git sparse-checkout set --no-cone /examples && git checkout
+
+	cp -rfa examples "${srcdir}/" && cd .. && rm -rf git
+}
+
 build() {
 	cd "${srcdir}/" || exit
 
@@ -62,6 +72,9 @@ package() {
 	install -Dm644 "./completions/${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
 	install -Dm644 "./completions/${_appname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_appname}"
 	install -Dm644 "./completions/${_appname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_appname}.fish"
+
+	install -dm755 "${pkgdir}/usr/share/${_appname}/"
+	cp -rfa examples "${pkgdir}/usr/share/${_appname}/"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
