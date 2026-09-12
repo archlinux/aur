@@ -1,12 +1,12 @@
 
 pkgname=uutils-shadow-git
-pkgver=0.2.1.r6.ge374d7a
+pkgver=0.5.0.r1.gf2fca43
 pkgrel=1
 pkgdesc="Rust rewrite of shadow"
 url=https://github.com/uutils/shadow
 license=('MIT')
 arch=('x86_64')
-depends=(glibc libgcc libxcrypt)
+depends=(glibc libgcc libxcrypt pam)
 makedepends=(git pkgconf rust)
 source=("${pkgname%-git}::git+${url}.git")
 b2sums=('SKIP')
@@ -25,4 +25,10 @@ package(){
   find target/release -maxdepth 1 -executable -type f -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
   rename '' uu- "$pkgdir/usr/bin/"*
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
+  cd "$pkgdir/usr/bin"
+  chmod -v g+s uu-expiry
+  for _b in passwd chfn chsh newgrp gpasswd sg newuidmap newgidmap
+    do chmod -v u+s "uu-${_b}"
+  done
+
 }

@@ -1,6 +1,6 @@
 pkgbase = uutils-shadow-git
 	pkgdesc = Rust rewrite of shadow
-	pkgver = 0.2.1.r6.ge374d7a
+	pkgver = 0.5.0.r1.gf2fca43
 	pkgrel = 1
 	url = https://github.com/uutils/shadow
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = uutils-shadow-git
 	depends = glibc
 	depends = libgcc
 	depends = libxcrypt
+	depends = pam
 	source = uutils-shadow::git+https://github.com/uutils/shadow.git
 	b2sums = SKIP
 
