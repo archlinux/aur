@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=kudu-app-bin
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Free Windows, Mac and Linux cleaner, scanner, and more."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("kudu-${pkgver}-LICENSE::https://raw.githubusercontent.com/AdventDevInc/
 source_x86_64=("Kudu-${pkgver}-amd64.deb::https://github.com/AdventDevInc/kudu/releases/download/v${pkgver}/Kudu-${pkgver}-amd64.deb")
 noextract=("Kudu-${pkgver}-amd64.deb")
 sha256sums=('25ffd176698d9f5cdebe9d8376a35b91a41aaef4dbac75c18d42730a71739a01')
-sha256sums_x86_64=('8e20085499940d52702c676dcd3827e37a2858900972d56f47e21b0872b95b63')
+sha256sums_x86_64=('fe9c73a083987e1646d932e006e82b49bda2efa8b1704a69155430c22dcaa3b8')
 
 package() {
     local deb="${srcdir}/Kudu-${pkgver}-amd64.deb"
