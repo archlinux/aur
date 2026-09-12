@@ -8,7 +8,7 @@
 #      runs updpkgsums, and writes .SRCINFO.
 #   3. Commit & push.
 pkgname=pacrank-bin
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Pick the fastest Archlinux mirrors (prebuilt binary)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "LICENSE-MIT-$pkgver::$url/raw/v$pkgver/LICENSE-MIT"
     "LICENSE-APACHE-$pkgver::$url/raw/v$pkgver/LICENSE-APACHE"
 )
-sha256sums=('37e6f9588790aed0e93e857935f933f6817ab072a58112f4259340c79853f393'
+sha256sums=('574a561df5b0bb413d7d2b1b5add7afff381066b2be31f3de51a359023cbb698'
             '1f4501dd650e746acbfb3b11a4143ec4334751180817115a41b8583b60909548'
             '8e026767a7a93aa2d295f7a0b912d438aae888004d42a45c9510954a9efdb3d2')
 
