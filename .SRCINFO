@@ -1,0 +1,21 @@
+pkgbase = careervector
+	pkgdesc = CareerVector desktop workspace
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://careervector.corbet.ch
+	arch = x86_64
+	license = BUSL-1.1
+	depends = gcc-libs
+	depends = glib2
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = dbus
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/julian-corbet/careervector-releases/releases/download/desktop-v0.0.1/careervector-0.0.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 88b85252e406912a9c382ce6d245e46c669167d1547aa1bc8efea57aa8ad5cec
+	depends_x86_64 = glibc>=2.39
+
+pkgname = careervector
