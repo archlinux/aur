@@ -1,7 +1,7 @@
 # Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=drawio-desktop-bin
-pkgver=31.4.2
+pkgver=31.4.5
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/jgraph/drawi
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/jgraph/drawio-desktop/releases/download/v${pkgver}/drawio-arm64-${pkgver}.deb")
 
 sha256sums=('b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1')
-sha256sums_x86_64=('080cfbdb2a2663f7abf63cf096e7523e507d0b8155517373ff083b36919304ac')
-sha256sums_aarch64=('e7b83c5e0933d9cf40b224817e9afebda643baad99cdf1be5f31120c7ec48344')
+sha256sums_x86_64=('296729ee18f781dc82deb757de2b3399fbe04fe0ddad3093909013e707ee2ae4')
+sha256sums_aarch64=('b75aee5a4a24252acae14d62122ff4ab15f27199619a5a701bcbc01acd2b8127')
 
 prepare() {
     # extract deb archive
