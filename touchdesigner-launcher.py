@@ -21,6 +21,14 @@ WINE_PREFIX = os.path.expanduser("~/.local/share/touchdesigner-linux/prefix")
 DOSDEVICES = os.path.join(WINE_PREFIX, "dosdevices")
 INIT_FLAG = os.path.join(WINE_PREFIX, ".td_initialized")
 
+# TouchDesigner's default mono font is "Lucida Console", which corefonts does
+# not provide. See ensure_lucida_font().
+LUCIDA_SRC = f"{PREFIX}/lucon.ttf"
+LUCIDA_FONTS = os.path.join(WINE_PREFIX, "drive_c", "windows", "Fonts")
+LUCIDA_REG = (
+    "HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts"
+)
+
 os.environ["WINEDLLOVERRIDES"] = "mscoree="
 os.environ["WINEDEBUG"] = "fixme-all,warn-all"
 os.environ["PATH"] = f"{PREFIX}/wine/bin:{os.environ.get('PATH', '')}"
@@ -257,6 +265,44 @@ def apply_font_dpi():
         print(f"  LogPixels DPI set to {dpi_val} (from TD_DPI)")
 
 
+def ensure_lucida_font():
+    """Install the "Lucida Console" mono font into the prefix.
+
+    TouchDesigner uses "Lucida Console" as its default mono font (parameter
+    value fields, OP names, DAT tables). It is not part of corefonts, so a
+    prefix without it logs "Error Loading Default Mono Font" and renders mono
+    text blank. Bundled prefixes already ship it; this covers upgrades of an
+    existing user prefix that predates the fix. Idempotent.
+    """
+    if not os.path.isfile(LUCIDA_SRC) or not os.path.isdir(LUCIDA_FONTS):
+        return
+
+    target = os.path.join(LUCIDA_FONTS, "lucon.ttf")
+    if not os.path.isfile(target):
+        try:
+            shutil.copy2(LUCIDA_SRC, target)
+        except OSError:
+            return
+
+    rc, out, _ = wine_run([WINE, "reg", "query", LUCIDA_REG], timeout=15)
+    if rc == 0 and b"Lucida Console" in out:
+        return  # already registered
+    wine_run(
+        [
+            WINE,
+            "reg",
+            "add",
+            LUCIDA_REG,
+            "/v",
+            "Lucida Console (TrueType)",
+            "/d",
+            "lucon.ttf",
+            "/f",
+        ],
+        timeout=15,
+    )
+
+
 def _tree_fingerprint(root: str) -> str | None:
     """SHA-256 over relative paths + contents of a folder's DAT scripts.
     Only .text/.table files are hashed: they carry the fix's logic and
@@ -490,6 +536,7 @@ def main():
     had_license = backup_license()
     copy_programdata()
     ensure_wine_ready()
+    ensure_lucida_font()
     apply_font_dpi()
     if had_license:
         restore_license()

@@ -2,7 +2,7 @@
 # Contributor: Iswad
 
 pkgname=touchdesigner-linux
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Run TouchDesigner on Linux"
 arch=('x86_64')
@@ -70,6 +70,20 @@ build() {
     "${srcdir}/dxvk/setup_dxvk.sh" install >/dev/null 2>&1 || true
     "${srcdir}/winetricks" -q corefonts >/dev/null 2>&1 || true
     msg2 "Wine prefix ready."
+
+    msg2 "Installing Lucida Console mono font..."
+    LUCIDA_SRC="${srcdir}/TouchDesigner-Linux-${pkgver}/Assets/lucon.ttf"
+    if [ -f "$LUCIDA_SRC" ] && [ -d "${WINEPREFIX}/drive_c/windows/Fonts" ]; then
+        cp "$LUCIDA_SRC" "${WINEPREFIX}/drive_c/windows/Fonts/lucon.ttf"
+        wineserver -k >/dev/null 2>&1 || true
+        wine64 reg add \
+            "HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts" \
+            /v "Lucida Console (TrueType)" /d "lucon.ttf" /f >/dev/null 2>&1 || true
+        wineserver -k >/dev/null 2>&1 || true
+        msg2 "Lucida Console mono font installed."
+    else
+        msg2 "lucon.ttf not found in source; skipping Lucida Console install."
+    fi
 
     msg2 "Copying ProgramData into prefix template..."
     if [ -d "td-commonappdata" ]; then
@@ -160,6 +174,11 @@ package() {
     # ── Font fix ──
     if [ -f "${RD}/Assets/wine_ui_fixes.tox" ]; then
         install -Dm644 "${RD}/Assets/wine_ui_fixes.tox" "${pkgdir}${P}/wine_ui_fixes.tox"
+    fi
+
+    # ── Lucida Console mono font (fixes upgrades of existing user prefixes) ──
+    if [ -f "${RD}/Assets/lucon.ttf" ]; then
+        install -Dm644 "${RD}/Assets/lucon.ttf" "${pkgdir}${P}/lucon.ttf"
     fi
 
     # ── Backups dir ──
