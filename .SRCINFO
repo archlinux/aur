@@ -1,7 +1,7 @@
 pkgbase = teacrush
 	pkgdesc = Bubble Tea TUI for compressing videos down to a target size (ffmpeg frontend)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/zeozeozeo/teacrush
 	arch = x86_64
 	arch = aarch64

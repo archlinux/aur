@@ -2,7 +2,7 @@
 # Upstream: https://github.com/zeozeozeo/teacrush
 pkgname=teacrush
 pkgver=0.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Bubble Tea TUI for compressing videos down to a target size (ffmpeg frontend)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/zeozeozeo/teacrush'
