@@ -4,13 +4,20 @@ pkgbase=115-life-bin
 pkgname=115-life-bin
 _pkgname=115Life
 pkgver=37.3.0
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 options=(!strip !debug)
 depends=(
+    fontconfig
+    glibc
+    gtk3
     libgcc_s.so
     libstdc++.so
+    libva
     hicolor-icon-theme
+    openssl
+    webkit2gtk-4.1
+    wqy-microhei
     zlib
 )
 makedepends=(
@@ -18,6 +25,9 @@ makedepends=(
 )
 optdepends=(
     "115-browser: 115 Browser / 115 浏览器"
+    "noto-fonts-cjk"
+    "wqy-zenhei"
+    "adobe-source-han-sans-cn-fonts"
 )
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
