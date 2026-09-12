@@ -1,6 +1,6 @@
 pkgbase = padctl-bin
 	pkgdesc = HID gamepad daemon — declarative TOML device config, uinput output (prebuilt musl binary)
-	pkgver = 0.1.27
+	pkgver = 0.1.28
 	pkgrel = 1
 	url = https://github.com/BANANASJIM/padctl
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = padctl-bin
 	provides = padctl
 	conflicts = padctl
 	conflicts = padctl-git
-	source_x86_64 = padctl-v0.1.27-x86_64-linux-musl.tar.gz::https://github.com/BANANASJIM/padctl/releases/download/v0.1.27/padctl-v0.1.27-x86_64-linux-musl.tar.gz
-	sha256sums_x86_64 = 474a0397362b083790736722aa68f07f5185467ca0f864f2b5f4f51a57b9e386
-	source_aarch64 = padctl-v0.1.27-aarch64-linux-musl.tar.gz::https://github.com/BANANASJIM/padctl/releases/download/v0.1.27/padctl-v0.1.27-aarch64-linux-musl.tar.gz
-	sha256sums_aarch64 = 0b2aa19c473927eb43a110fd691ffdf8da61cc717cd508886cbe74bed241627b
+	source_x86_64 = padctl-v0.1.28-x86_64-linux-musl.tar.gz::https://github.com/BANANASJIM/padctl/releases/download/v0.1.28/padctl-v0.1.28-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = 2f51e4905cb9c337ed19582891c5ad9f99e563ddc23907303d28d2849baa5d08
+	source_aarch64 = padctl-v0.1.28-aarch64-linux-musl.tar.gz::https://github.com/BANANASJIM/padctl/releases/download/v0.1.28/padctl-v0.1.28-aarch64-linux-musl.tar.gz
+	sha256sums_aarch64 = 86c67cb06a5a4c1e91c81dd91877c39effe71057a1a39ab073af0b6bca6a4b18
 
 pkgname = padctl-bin
