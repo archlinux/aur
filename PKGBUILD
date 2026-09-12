@@ -1,7 +1,7 @@
 # Maintainer: Xuelin Yang <xuelin@adamanteye.cc>
 pkgname=zotero-mcp-server
 _srcname=zotero-mcp
-pkgver=0.4.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A Model Context Protocol server for Zotero"
 arch=('any')
@@ -11,19 +11,15 @@ depends=(
 	'python'
 	'python-bibtexparser'
 	'python-dotenv'
-	'python-jsonref'
-	'python-fastmcp'
-	'python-markitdown'
-	'python-mcp'
+	'python-fastmcp-slim>=2.14.0'
+	'python-fastmcp-slim<4'
+	'python-httpx'
+	'python-markdownify'
+	'python-pdf-inspector>=0.2.6'
 	'python-pydantic'
 	'python-pyzotero'
 	'python-requests'
 	'python-unidecode'
-	'python-py-key-value-aio'
-	'python-watchfiles'
-	'python-griffe'
-	'python-cyclopts'
-	'python-opentelemetry-api'
 )
 makedepends=(
 	'python-build'
@@ -42,7 +38,7 @@ optdepends=(
 	'python-ebooklib: EPUB annotation support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cc88ef75af89cf1048040565a75daa8e3184b81bf69b16154e99a06c501b1231')
+sha256sums=('e0c30850c023d4f978c54a17e0e82cc7b3f1fec54828892b19f82afc64bdc3dc')
 
 build() {
 	cd "$_srcname-$pkgver"

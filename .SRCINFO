@@ -1,6 +1,6 @@
 pkgbase = zotero-mcp-server
 	pkgdesc = A Model Context Protocol server for Zotero
-	pkgver = 0.4.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/54yyyu/zotero-mcp
 	arch = any
@@ -12,19 +12,15 @@ pkgbase = zotero-mcp-server
 	depends = python
 	depends = python-bibtexparser
 	depends = python-dotenv
-	depends = python-jsonref
-	depends = python-fastmcp
-	depends = python-markitdown
-	depends = python-mcp
+	depends = python-fastmcp-slim>=2.14.0
+	depends = python-fastmcp-slim<4
+	depends = python-httpx
+	depends = python-markdownify
+	depends = python-pdf-inspector>=0.2.6
 	depends = python-pydantic
 	depends = python-pyzotero
 	depends = python-requests
 	depends = python-unidecode
-	depends = python-py-key-value-aio
-	depends = python-watchfiles
-	depends = python-griffe
-	depends = python-cyclopts
-	depends = python-opentelemetry-api
 	optdepends = zotero: local Zotero desktop library access
 	optdepends = python-chromadb: semantic search vector database support
 	optdepends = python-sentence-transformers: local semantic embeddings
@@ -33,7 +29,7 @@ pkgbase = zotero-mcp-server
 	optdepends = python-tiktoken: semantic search token counting
 	optdepends = python-pymupdf: PDF outline extraction
 	optdepends = python-ebooklib: EPUB annotation support
-	source = zotero-mcp-server-0.4.1.tar.gz::https://github.com/54yyyu/zotero-mcp/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = cc88ef75af89cf1048040565a75daa8e3184b81bf69b16154e99a06c501b1231
+	source = zotero-mcp-server-0.11.0.tar.gz::https://github.com/54yyyu/zotero-mcp/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = e0c30850c023d4f978c54a17e0e82cc7b3f1fec54828892b19f82afc64bdc3dc
 
 pkgname = zotero-mcp-server
