@@ -7,7 +7,7 @@ pkgname=${_appname}-bin
 pkgdesc="End-to-end test runner for CLI tools"
 
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')

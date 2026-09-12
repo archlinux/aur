@@ -1,7 +1,7 @@
 pkgbase = atago-bin
 	pkgdesc = End-to-end test runner for CLI tools
 	pkgver = 0.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nao1215/atago
 	arch = x86_64
 	arch = aarch64
