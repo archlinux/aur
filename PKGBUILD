@@ -7,7 +7,7 @@ pkgdesc="Linux-native AD CS collector library for BloodHound CE"
 arch=(any)
 url="https://github.com/0x0Trace/$_name"
 license=('MIT')
-provides=("python-$_name")
+provides=("python-$_name=$pkgver")
 conflicts=("python-$_name")
 depends=(
   'python>=3.10'
