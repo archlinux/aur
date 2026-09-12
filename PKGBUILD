@@ -3,13 +3,13 @@
 # Contributor: Paul Davis <paul@dangersalad.com>
 pkgname=openrgb
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=("x86_64")
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'libgcc' 'libstdc++' 'qt5-base' 'libusb' 'hidapi' 'mbedtls3' 'hicolor-icon-theme')
-makedepends=('qt5-tools')
+depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base' 'libusb' 'hidapi' 'mbedtls3' 'hicolor-icon-theme')
+makedepends=('qt6-tools')
 optdepends=('i2c-tools: mainboard & RAM access')
 source=("https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_$pkgver/OpenRGB-release_${pkgver}.tar.gz"
         openrgb-modules-load.conf
@@ -25,7 +25,7 @@ build() {
   export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
   cd "$srcdir/OpenRGB-release_$pkgver"
-  qmake OpenRGB.pro
+  qmake6 OpenRGB.pro
   make
 }
 
