@@ -1,7 +1,7 @@
 pkgbase = audiomuse-ai-whisper-model
 	pkgdesc = Whisper-small ONNX model bundle for AudioMuse-AI lyrics transcription
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NeptuneHub/AudioMuse-AI
 	arch = any
 	license = MIT

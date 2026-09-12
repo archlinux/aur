@@ -1,6 +1,6 @@
 pkgname=audiomuse-ai-whisper-model
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Whisper-small ONNX model bundle for AudioMuse-AI lyrics transcription'
 arch=('any')
 url='https://github.com/NeptuneHub/AudioMuse-AI'
