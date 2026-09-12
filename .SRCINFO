@@ -1,7 +1,7 @@
 pkgbase = audiomuse-ai-web
 	pkgdesc = Web interface and API for AudioMuse-AI
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/NeptuneHub/AudioMuse-AI
 	install = audiomuse-ai-web.install
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = audiomuse-ai-web
 	depends = python-numba
 	depends = python-numpy
 	depends = python-onnx
-	depends = python-onnxruntime-cpu
+	depends = python-onnxruntime
 	depends = python-packaging
 	depends = python-protobuf
 	depends = python-psutil
