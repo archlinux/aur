@@ -1,0 +1,15 @@
+pkgbase = fastv
+	pkgdesc = Ultra-fast tool for identifying anomic microbes from sequencing data
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/OpenGene/fastv
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	options = !strip
+	options = !debug
+	source = fastv-0.10.0.tar.gz::https://github.com/OpenGene/fastv/archive/v0.10.0.tar.gz
+	sha256sums = 06acd1b57f1d3df0dbd344f7b47506b7a0b667481a36263a6ebbe3710f3d361f
+
+pkgname = fastv
