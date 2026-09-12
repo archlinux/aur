@@ -1,7 +1,7 @@
 # Maintainer: a821
 
 pkgname=litecoin-daemon
-pkgver=0.21.5.6
+pkgver=0.21.5.8
 pkgrel=1
 arch=('x86_64')
 url="https://www.litecoin.org/"
@@ -10,13 +10,14 @@ pkgdesc="Peer-to-peer digital currency (includes litecoind and litecoin-cli)"
 depends=('boost-libs' 'db4.8' 'fmt' 'libevent' 'miniupnpc' 'openssl' 'sqlite' 'zeromq')
 makedepends=('boost')
 conflicts=('litecoin-qt' 'litecoin-bin')
-source=("https://download.litecoin.org/litecoin-${pkgver}/src/litecoin-${pkgver}.tar.gz"
+source=("https://download.litecoin.org/litecoin-${pkgver}/src/litecoin-${pkgver}.tar.gz"{,.asc}
     0001-fix-boost-1.84-filesystem-deprecations.patch
     0001-upnp-add-compatibility-for-miniupnpc-2.2.8.patch
     0003-Fix-_FORTIFY_SOURCE-flag.patch
     0004-remove-boost-system.patch
 )
-sha256sums=('cebee52747bdd827d4716e6528a5ef76a57d4d73c4df78ecfb6a45eaf819972f'
+sha256sums=('5c38653b1d45fd2d3975634ce9d44161512ce7afa6586424f707bdead14a772b'
+            'SKIP'
             'f9de747281f6003739d9ac736684771b061e9d63f2ea90404c08187595e57619'
             '8f4354356b66f92b52a85d91c19d576e7cb637957380c052404794a70d9f8383'
             '0ca550e3967ee880f8e24b77fc58ff22451f2966d056b4554184104c3ca5dbb5'
