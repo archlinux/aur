@@ -1,6 +1,6 @@
 pkgname=audiomuse-ai-worker
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='AudioMuse-AI analysis and task queue worker'
 arch=('x86_64')
 url='https://github.com/NeptuneHub/AudioMuse-AI'
