@@ -1,0 +1,21 @@
+pkgbase = python-newrelic
+	pkgdesc = New Relic Python agent
+	pkgver = 13.5.0
+	pkgrel = 1
+	url = https://github.com/newrelic/newrelic-python-agent
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	optdepends = python-certifi: certificate bundle support
+	optdepends = python-grpcio: infinite tracing support
+	optdepends = python-protobuf: infinite tracing support
+	source = https://files.pythonhosted.org/packages/source/n/newrelic/newrelic-13.5.0.tar.gz
+	sha256sums = d48a1e29a51fe93ca3ac723bff564ce2c6abb319f884b815c069c3083db4ee6a
+
+pkgname = python-newrelic
