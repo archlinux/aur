@@ -1,13 +1,13 @@
 pkgbase = inviwo
 	pkgdesc = Software framework for rapid visualization prototyping
 	pkgver = 0.9.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.inviwo.org/
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = cmake
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libpng
 	depends = libtiff
 	depends = libtirpc
@@ -32,4 +32,3 @@ pkgbase = inviwo
 	sha256sums = 625eb81ec86636c28f02d373d3622a87512fc3791b3b61168d69694893ff2868
 
 pkgname = inviwo
-

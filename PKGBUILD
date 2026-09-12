@@ -1,13 +1,13 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=inviwo
 pkgver=0.9.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Software framework for rapid visualization prototyping"
 arch=('x86_64')
 url="http://www.inviwo.org/"
 license=('BSD')
 depends=(
-	'libjpeg'
+	'libjpeg-turbo'
 	'libpng'
 	'libtiff'
 	'libtirpc'
