@@ -1,7 +1,7 @@
 pkgbase = pv-static
 	pkgdesc = monitor progress of data through a pipeline
 	pkgver = 1.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ivarch.com/programs/pv.shtml
 	arch = x86_64
 	arch = aarch64

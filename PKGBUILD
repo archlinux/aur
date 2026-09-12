@@ -6,7 +6,7 @@
 
 pkgname=pv-static
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='monitor progress of data through a pipeline'
 arch=(x86_64 aarch64)
 url="https://www.ivarch.com/programs/pv.shtml"
@@ -29,8 +29,8 @@ sha256sums=('fc02c9fc2b82b20a92cc8d98f844be63f22abd98751a8e4abc875e1d803662eb')
               #4267B4F90F2678A112169BD61D1EF7581B45E9A0) # https://codeberg.org/a-j-wood.gpg
 build() {
 	cd "$_archive"
-  export CC=musl-gcc CFLAGS="$CFLAGS -Os"
-  export LDFLAGS="$LDFLAGS -static -fno-link-libatomic"
+  export CC="musl-gcc -fno-link-libatomic" CFLAGS="$CFLAGS -Os"
+  #export LDFLAGS="$LDFLAGS -static -fno-link-libatomic"
 	./configure --prefix=/usr --enable-static --enable-shared=no
 	make
 }
