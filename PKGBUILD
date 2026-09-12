@@ -4,7 +4,7 @@ _pkgname=dwproton
 pkgname=${_pkgname}-bin
 _srcver=11.0-12
 pkgver=${_srcver//-/_}
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS."
 arch=('x86_64')
@@ -81,7 +81,6 @@ depends_x86_64=(
   lib32-systemd
   lib32-vulkan-driver
   lib32-vulkan-icd-loader
-  lib32-libpcap
   lib32-libgudev
   lib32-libusb
   lib32-libpulse
@@ -104,6 +103,9 @@ optdepends=(
   plasma-foreground-booster
   hyprland-focused-booster
   niri-focused-booster
+)
+optdepends+=(
+  NTSYNC-MODULE
 )
 install=${pkgname}.install
 

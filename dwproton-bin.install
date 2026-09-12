@@ -1,8 +1,8 @@
-post_install() {
-    echo ""
+ post_install() {
     echo "Recommended to use UMU_USE_STEAM=1 when launching GI/ZZZ outside of Steam."
     echo ""
-    echo "This AUR package is not officially maintained by Dawn Winery."
+    echo -e "\033[1;31mThis AUR package is not officially maintained by Dawn Winery. \033[0mI made this package for personal use."
+    echo "Please report bugs to me instead of upstream when not necessary, i.e. problems specific to the PKGBUILD."
     echo "Consider getting more information from their official website: https://dawn.wine/dawn-winery/dwproton"
     echo ""
 }
