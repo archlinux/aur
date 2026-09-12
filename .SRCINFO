@@ -1,0 +1,16 @@
+pkgbase = vsys
+	pkgdesc = Terminal dashboard for Linux machines that run AI agents
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/vanillagreencom/vsys
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = vsys
+	conflicts = vsys-git
+	source_x86_64 = vsys-0.9.0-x86_64.tar.gz::https://github.com/vanillagreencom/vsys/releases/download/v0.9.0/vsys-v0.9.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c3501784cf9e16cda1ca562d39f009f174c3a356920473d1da5c0429f7a6acfa
+	source_aarch64 = vsys-0.9.0-aarch64.tar.gz::https://github.com/vanillagreencom/vsys/releases/download/v0.9.0/vsys-v0.9.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = a8f47f2c20063aabb6bff7784c0e347fcf0ff77f531318cc84fd18d28ee30967
+
+pkgname = vsys
