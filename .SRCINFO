@@ -1,0 +1,15 @@
+pkgbase = magmax
+	pkgdesc = Enhance genome recovery across metagenomic assemblies, from dereplication to enrichment
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/soedinglab/MAGmax
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	conflicts = magmax-bin
+	options = !strip
+	options = !debug
+	source = magmax-1.4.0.tar.gz::https://github.com/soedinglab/MAGmax/archive/v1.4.0.tar.gz
+	sha256sums = 53d4736c656c0570d27ce4dccee4dc6f76e00947c4a34327f9a098b39fa6ade8
+
+pkgname = magmax
