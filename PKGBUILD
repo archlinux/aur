@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=wiiudownloader-bin
-pkgver=2.104
+pkgver=2.105
 pkgrel=1
 pkgdesc="Download encrypted Wii U files from Nintendo's official servers (upstream AppImage)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('wiiudownloader')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/WiiUDownloader-Linux-x86_64.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums=('a1bb35fffd5f4b05028e707075cbab3aeeb84797a7d0a85f35929ffd4add5c44')
+sha256sums=('5e9b6fee20657fd1e3d7034a9f119ee77934b9b6613caf6a3cc8b012dfbc58a2')
 
 prepare() {
   chmod +x "$srcdir/${pkgname}-${pkgver}.AppImage"
