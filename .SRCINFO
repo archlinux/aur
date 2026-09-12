@@ -1,0 +1,12 @@
+pkgbase = audiomuse-ai-gte-model
+	pkgdesc = GTE multilingual INT8 ONNX model and tokenizer exported for AudioMuse-AI
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/NeptuneHub/AudioMuse-AI
+	arch = any
+	license = Apache-2.0
+	noextract = lyrics_model_gte_vnni-5.0.0.tar.gz
+	source = lyrics_model_gte_vnni-5.0.0.tar.gz::https://github.com/NeptuneHub/AudioMuse-AI/releases/download/v5.0.0-model/lyrics_model_gte_vnni.tar.gz
+	sha256sums = 5f8a49c873c762f01a8da790f41f99dbdaac6f1f20d4c0a2dba407ccc60cc7cc
+
+pkgname = audiomuse-ai-gte-model
