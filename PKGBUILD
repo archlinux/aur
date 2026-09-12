@@ -1,7 +1,7 @@
 # Maintainer: Damian Miller <rysas@mail.naimad.dev>
 pkgname=lumoria-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux installer and launcher for Final Fantasy XI"
 arch=('x86_64')
 url="https://github.com/Windower/Lumoria"
