@@ -3,7 +3,7 @@
 # D5 in .agents/plans/package-managers.md, RULED 2026-08-08 by the owner
 # directly. This is the first place this repository has ever published a
 # real email address attached to the owner's real name;
-# product/package.json's public author field remains the bare string
+# The published package's author field remains the bare string
 # "roethlar", unaffected.
 #
 # Repackages the upstream .deb, which is what electron-builder produces. Three
@@ -17,7 +17,7 @@
 #      4755 or the app refuses to start.
 
 pkgname=songr-bin
-pkgver=1.4.1
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Multi platform controller for your Roon Core. Linux, macOS, Windows, or browser, your library is at your fingertips."
 arch=('x86_64' 'aarch64')
@@ -32,8 +32,8 @@ conflicts=('songr')
 options=('!strip' '!debug' 'emptydirs')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/songr_${pkgver}_amd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/songr_${pkgver}_arm64.deb")
-sha256sums_x86_64=('1e952826b4622be30d57f6c2d0f0ab558bde1c767c9808b111fffaa97c26c6a0')
-sha256sums_aarch64=('450c39fb5c4c59ff6bd4509da646011769fccc8be29ed27fe5b6f5affd796abb')
+sha256sums_x86_64=('5d591807962df20e5332f949c605841699b9a844922d0084b5c78f9f2d346546')
+sha256sums_aarch64=('e245a6d216ec3eff6cb36552ca3148847a7f5a038c60aa741a46dc5e58a98099')
 
 package() {
   bsdtar -xpf "${srcdir}/data.tar.xz" -C "${pkgdir}"
