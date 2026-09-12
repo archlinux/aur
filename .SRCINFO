@@ -1,7 +1,7 @@
 pkgbase = deepseek-reasonix-desktop-bin
 	pkgdesc = Reasonix Desktop - Electron desktop client for the DeepSeek-native AI coding agent
 	pkgver = 1.38.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esengine/DeepSeek-Reasonix
 	arch = x86_64
 	license = MIT

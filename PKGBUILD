@@ -2,7 +2,7 @@
 
 pkgname=deepseek-reasonix-desktop-bin
 pkgver=1.38.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Reasonix Desktop - Electron desktop client for the DeepSeek-native AI coding agent"
 arch=('x86_64')
 url="https://github.com/esengine/DeepSeek-Reasonix"
@@ -35,6 +35,9 @@ package() {
     cd "${srcdir}/debroot"
     install -d "${pkgdir}/usr/lib/reasonix" "${pkgdir}/usr/bin"
     cp -a --no-preserve=ownership usr/lib/reasonix/app "${pkgdir}/usr/lib/reasonix/"
+    # The upstream bundle root is 0700; make the installed shell accessible
+    # to normal users without changing executable or sandbox permissions.
+    chmod 755 "${pkgdir}/usr/lib/reasonix/app"
 
     # Keep the matching service, CLI sidecar and launcher together. Upstream's
     # launcher resolves its real location and finds the regular sibling service;
