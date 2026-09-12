@@ -3,7 +3,7 @@
 pkgname=execline-static
 _pkgname=execline
 pkgver=2.9.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A (non-interactive) scripting language, like sh'
 arch=('aarch64' 'i686' 'x86_64')
 url="http://skarnet.org/software/${_pkgname}"
@@ -18,13 +18,12 @@ source=("${url}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('908ed4db3a6b3a23a205d8fd4cf2a71089156f2aeae0f54656045aafad2dee32')
 build() {
   cd "${_pkgname}-${pkgver}"
-  export CC="musl-gcc"
+  export CC="musl-gcc -fno-link-libatomic"
   ./configure \
     --prefix=/usr \
     --enable-static-libc \
     --enable-pedantic-posix \
     --enable-multicall \
-    --enable-static-libc \
     --with-include=/usr/include/skalibs-static \
     --with-lib=/usr/lib/skalibs-static \
     --with-sysdeps=/usr/lib/skalibs-static/sysdeps \
