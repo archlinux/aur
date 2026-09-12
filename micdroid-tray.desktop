@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Micdroid
+Comment=Use your Android phone's microphone as a PC microphone (tray app)
+Exec=micdroid-tray
+Icon=micdroid-tray
+Terminal=false
+Categories=AudioVideo;Audio;
+X-KDE-StartupNotify=false

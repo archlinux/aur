@@ -1,0 +1,21 @@
+post_install() {
+    cat <<EOF
+==> micdroid installed.
+
+Launch it from your application menu ("Micdroid"), or run: micdroid-tray
+
+The background service is NOT started or enabled at login automatically -
+the tray app starts it on demand the first time you actually use it, so it
+costs nothing while you're not using the feature. If you'd rather it also
+runs at login:
+    systemctl --user enable --now micdroid.service
+
+First-time device setup: on your phone, Settings > Developer options >
+Wireless debugging > "Pair device with pairing code", then use "Pair new
+device" in the app.
+EOF
+}
+
+post_upgrade() {
+    post_install
+}

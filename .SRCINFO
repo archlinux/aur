@@ -1,0 +1,32 @@
+pkgbase = micdroid-git
+	pkgdesc = Use an Android phone's microphone as a PC microphone (system tray app) - scrcpy/adb routed into a PipeWire virtual mic
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/GG2R10/micdroid-scrcpy
+	install = micdroid.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = imagemagick
+	depends = python
+	depends = pyside6
+	depends = python-dbus-next
+	depends = python-zeroconf
+	depends = scrcpy
+	depends = android-tools
+	depends = libpulse
+	depends = pipewire-audio
+	optdepends = avahi: mDNS fallback when a paired device changes wireless-debugging port
+	optdepends = libnotify: desktop notifications on connect/disconnect/mute
+	provides = micdroid=r1.0000000
+	conflicts = micdroid
+	source = micdroid-git::git+https://github.com/GG2R10/micdroid-scrcpy.git
+	source = micdroid-tray.desktop
+	sha256sums = SKIP
+	sha256sums = 3c0d218ac4a6d7e3f20c1a075645b227b5f211466e084e98f58b8d41fdd9ed78
+
+pkgname = micdroid-git
