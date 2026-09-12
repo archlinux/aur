@@ -1,6 +1,6 @@
 pkgbase = clickr-git
 	pkgdesc = Fast, lightweight autoclicker for Linux Wayland with TUI interface
-	pkgver = r1.64a09c7
+	pkgver = r3.92c2164
 	pkgrel = 1
 	url = https://github.com/Wavefire5201/clickr
 	arch = x86_64
