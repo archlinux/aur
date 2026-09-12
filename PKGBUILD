@@ -1,4 +1,4 @@
-# Maintainer: WunderWungiel
+# Maintainer: Wunder_Wungiel
 
 pkgname=dlssnr-bin
 _pkgname=dlssnr
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='DLSS5 Neural Rendering Vulkan layer and helper.'
 url="https://github.com/bmitch87/DLSS5VKLayer"
 arch=('x86_64')
-license=('Apache-2.0')
+license=('AGPL-3.0-only')
 depends=('bash' 'vulkan-icd-loader' 'qt6-base' 'pciutils')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
