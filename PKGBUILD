@@ -2,10 +2,10 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v2026.9.7
-_commit=2237be355906fbe6065ce1815711eee52b2d646e
-pkgver=0.21.1
-pkgrel=4
+_pkgver_tag=v2026.9.11
+_commit=939e45c91d751fadd94dcd1b873ac3cb44846213
+pkgver=0.21.2
+pkgrel=1
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
@@ -37,13 +37,13 @@ source=(
   'runtime.test.cjs'
   'runtime-policy.test.py'
 )
-sha256sums=('907c2a72db1c5dd637ea8eeae97f4cb5b32cef615c17258f6b190924ec5bf688'
+sha256sums=('bf45fc6c40ad770e30dfa7677ee6804a24be1a7eab768b283a0883c64662d76e'
             'ee465a1aa2ad5789fa5c7b3a89993bbf0e68efddbf27c93109519b72a4cb90f7'
-            'a071a452caf08b4b5d7cfb93289b82051a4fa696adda826deaa4281c592fad21'
+            '5c185a979974f7a9a476b32e5e8ac21dfcd907ed7d0e671cfb294ecf17d021b0'
             '7f8500e475a13466ecba2bb74e73fbbcba8dcb70bcbf4e789faf7a8f27df0cac'
             'fa8933a96e58575e7d4f876a7eb380d6c1723233832b787a46fb158f79df7718'
-            'f102ff3e9cdfa1c717bf271d648b960bdc6865f34ba77865ffe9faae21f2ac18'
-            '2a6f5dbba9b7767b3fba5c0c4d39afee116ad6123cfdf258fb8e7ca30b953d56'
+            '2f5595c0c85cf95c1b7af75e8553dd75d349e8b4e7015075d38fab826cee9d76'
+            '9fca70bad0c6db28e9499761a570e8bca83c9666e6bb8ec35401b8aef3424a8d'
             '700eaf971f8aeedf0268cd85954235d1770b786b19ca7e9d7905bf17aed86d44'
             'dcb84ac7c5f5a7168d089ba082a8c8c77cf3955abc79775f530aee870a30d5df'
             'a55499378bec44ae6a42e77dd7eed8e27dd604a7c6b5f87111444912092250a9'
@@ -74,9 +74,8 @@ prepare() {
   patch -Np1 -i "${srcdir}/system-browser.patch"
   patch -Np1 -i "${srcdir}/packaged-bootstrap.patch"
   patch -Np1 -i "${srcdir}/runtime-policy.patch"
-  # The release identifies Hermes Agent as ${pkgver}, but the desktop
-  # package.json is not bumped — it still says 0.17.0. Patch it here so the
-  # packaged desktop metadata matches the release.
+  # Keep desktop metadata aligned with the Agent release, not the separately
+  # versioned upstream desktop package.json.
   npm pkg set version=${pkgver} --prefix apps/desktop
   # The source archive has no .git directory. Pin the peeled release commit
   # locally so the bundled install stamp is reproducible and does not require

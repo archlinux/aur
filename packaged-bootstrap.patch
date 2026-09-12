@@ -230,9 +230,8 @@
      writeMarker // callback to write the bootstrap-complete marker; main.ts provides
    } = opts
  
-@@ -947,9 +957,18 @@
-       pinCommit
-     })
+@@ -947,8 +957,17 @@
+     abortSignal?.throwIfAborted()
  
 +    // main.ts only requests this for a healthy, completed install. Recheck HEAD
 +    // here so a checkout changed since that probe still gets the full setup.

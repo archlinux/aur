@@ -143,9 +143,9 @@
          from hermes_cli.config import detect_install_method, is_nix_install_method
 --- a/hermes_cli/banner.py
 +++ b/hermes_cli/banner.py
-@@ -335,6 +335,11 @@
-     If ``HERMES_REVISION`` is set (nix builds embed it), compare it to upstream main via
-     ``git ls-remote``; otherwise count commits behind ``origin/main`` in the local checkout.
+@@ -374,6 +374,11 @@
+     If ``HERMES_REVISION`` is set (nix builds embed it), compare it to upstream main; otherwise
+     compare the local checkout's HEAD. Both go through the GitHub API, never ``git fetch``.
      """
 +    from hermes_cli.update_contract import is_desktop_package_managed
 +

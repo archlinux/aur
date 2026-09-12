@@ -233,8 +233,8 @@ index 888377d..26d23a1 100644
 +  return createBootstrapNeededBackend(backendArgs)
  }
  
- async function ensureRuntime(backend) {
-@@ -4871,6 +4896,7 @@ async function ensureRuntime(backend) {
+ function ensureRuntime(backend: any): Promise<any> {
+@@ -4871,6 +4896,7 @@ async function runEnsureRuntime(backend: any): Promise<any> {
        hermesHome: HERMES_HOME,
        logRoot: path.join(HERMES_HOME, 'logs'),
        abortSignal: bootstrapAbortController.signal,
@@ -246,9 +246,9 @@ index 888377d..26d23a1 100644
  
  const disposeTerminalSession = terminalIpc.disposeTerminalSession
  
--ipcMain.handle('hermes:updates:check', async () =>
--  checkUpdates().catch(error => ({
-+ipcMain.handle('hermes:updates:check', async () => {
+-ipcMain.handle('hermes:updates:check', async (_event, opts) =>
+-  checkUpdates({ force: Boolean(opts?.force) }).catch(error => ({
++ipcMain.handle('hermes:updates:check', async (_event, opts) => {
 +  if (PACKAGE_MANAGED_RUNTIME) {
 +    return {
 +      supported: false,
@@ -258,7 +258,7 @@ index 888377d..26d23a1 100644
 +    }
 +  }
 +
-+  return checkUpdates().catch(error => ({
++  return checkUpdates({ force: Boolean(opts?.force) }).catch(error => ({
      supported: true,
      branch: readDesktopUpdateConfig().branch,
      error: 'check-failed',
