@@ -1,7 +1,7 @@
 # Maintainer: Damon Blais <damon.blais@gmail.com>
 
 pkgname=heft
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Read-only Linux TUI for application-weight process accounting"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ options=('!strip' '!debug')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dae9bd059d539b20d5aa0dd0b95b5f38cd8211291fe482ae59cea07afb9e3715')
+sha256sums=('0a8104d50bc6c678e4fee4dfecf55666110ac29ddee62825c2254fdf6c54d55f')
 
 prepare() {
   cd "$pkgname-$pkgver"
