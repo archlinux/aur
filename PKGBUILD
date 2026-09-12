@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal dashboard for GitHub"
 
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('b8201f54a2ed52e93a92256eb40cfe0054e9c0024820ba68e426fe8190d677c1')
-sha256sums_aarch64=('4224d51e3caba648c1680b91ef3a9d305d0aba8715e3ffd55806ab6909e2d50b')
+sha256sums_x86_64=('89935305a08c50b597860fd281ddaf1628d36bafe05ab622468070cb066e2ce8')
+sha256sums_aarch64=('858adefd11c4a42df593a423dc8a36ed016451eb3d40b0bfa865de0bde97d4de')
 
 
 package() {
