@@ -56,6 +56,8 @@ export CC=clang
 export CXX=clang++
 
 build() {
+    cd "$srcdir/$_pkgsrc"
+
   npm install
 # TODO: Clang linking not working completely - GCC still visible in .comment
 # Try RUSTFLAGS="-C linker=clang -C link-arg=-fuse-ld=lld"
