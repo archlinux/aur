@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-scheduler-git
-pkgver=0.9.28.g65087a3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Scheduler plugin for OpenRGB"
 arch=('any')
