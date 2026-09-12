@@ -1,6 +1,6 @@
-# Maintainer: Isaac Arcia <iikz87ii@gmail.com>
+# Maintainer: Isaac Arcia <[EMAIL]>
 pkgname=yawns
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Your Adaptable Widget Notification System"
 arch=('any')
@@ -16,14 +16,14 @@ depends=(
     'python-gobject'
     'python-setproctitle'
 )
-# changed this back to just using the source code instead of 
-# a redundant tar
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d45d0f7bc6489530630b7a11799a6620b75d27357d44907fcef73c8b9e07639f')
+# The 1.2.5 re-release lives under the v1.2.5-2 tag.
+_tag="v$pkgver-2"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
+sha256sums=('417e0609c5b93ca7ff2458a7a5c4ea223859c15f7d69cb0a0ef76bb82b1990b8')
 
 package() {
-    # 1. Enter the extracted directory (GitHub tags extract to repo-version)
-    cd "$srcdir/$pkgname-$pkgver"
+    # 1. Enter the extracted directory (GitHub tags extract to repo-<tag>)
+    cd "$srcdir/$pkgname-${_tag#v}"
 
     # 2. Create the destination directory
     install -d "$pkgdir/usr/lib/$pkgname"
@@ -31,7 +31,12 @@ package() {
     # 3. Copy EVERYTHING from the source to the destination
     cp -r * "$pkgdir/usr/lib/$pkgname/"
 
-    # 4. Create the wrapper script
+    # 4. Install assets where the application expects them
+    install -d "$pkgdir/usr/share/$pkgname/assets"
+    install -m644 assets/vinyl.png "$pkgdir/usr/share/$pkgname/assets/vinyl.png"
+    install -m644 assets/yawns-logo.png "$pkgdir/usr/share/$pkgname/assets/yawns-logo.png"
+
+    # 5. Create the wrapper script
     install -d "$pkgdir/usr/bin"
     
     cat > "$pkgdir/usr/bin/$pkgname" <<EOF
