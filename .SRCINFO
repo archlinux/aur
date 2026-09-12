@@ -1,0 +1,21 @@
+pkgbase = hop-marks-bin
+	pkgdesc = Single-key marks for directories, files, and shell commands
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/programmersd21/hop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = hop
+	conflicts = hop-marks
+	options = !strip
+	source = README-0.1.4.md::https://raw.githubusercontent.com/programmersd21/hop/v0.1.4/README.md
+	source = LICENSE-0.1.4::https://raw.githubusercontent.com/programmersd21/hop/v0.1.4/LICENSE
+	sha256sums = d25f447fb76ed52af4b2776da9e7b540d3d3615203c79c0ad01a86265d90683d
+	sha256sums = 350c36e396d9099066a6e3dce1aff68a93a520092e3f78e04bf36c341acdd773
+	source_x86_64 = hop-x86_64-0.1.4.tgz::https://github.com/programmersd21/hop/releases/download/v0.1.4/hop-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3a6ab613abd765b0ba20e5377f9bbefe5b5051565f011a927357c4190ebe614d
+	source_aarch64 = hop-aarch64-0.1.4.tgz::https://github.com/programmersd21/hop/releases/download/v0.1.4/hop-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0b5eba7ca3e52450c2972e0e1dee18d1ec5202426a98e9754675c10b8cbdf155
+
+pkgname = hop-marks-bin

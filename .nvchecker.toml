@@ -1,0 +1,5 @@
+[hop-marks-bin]
+source = "github"
+github = "programmersd21/hop"
+use_latest_release = true
+prefix = "v"
