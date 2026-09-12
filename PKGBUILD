@@ -52,7 +52,6 @@ optdepends=(
   'audiomuse-ai-whisper-model: tested Whisper-small ONNX export for lyrics transcription; alternatively configure LYRICS_WHISPER_MODEL_DIR to another compatible export'
   'audiomuse-ai-neural-fingerprint: neural fingerprints and Search by Recording'
   'postgresql: local PostgreSQL server; not required when using a remote database'
-  'python-optimum-onnx: export a local Whisper model for lyrics transcription'
   'python-google-genai: Gemini AI provider'
   'python-mistralai: Mistral AI provider'
 )
