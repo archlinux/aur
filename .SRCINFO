@@ -1,6 +1,6 @@
 pkgbase = sync-rs
 	pkgdesc = A CLI tool to sync files between directories
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/dest1n1s/sync-rs
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sync-rs
 	depends = gcc-libs
 	depends = rsync
 	depends = openssh
-	source = sync-rs-1.4.0.tar.gz::https://github.com/Dest1n1s/sync-rs/archive/v1.4.0.tar.gz
-	sha256sums = e6036aeabfdb6eb0299e3d0258fd13edaae3aa56c2bff0959e67a0f6248ca0d5
+	source = sync-rs-1.5.0.tar.gz::https://github.com/Dest1n1s/sync-rs/archive/v1.5.0.tar.gz
+	sha256sums = 56ae7f59e40d3041cc764bc4d304acc1375dc3a8af7f4aee6fc5b7ae9b82af0c
 
 pkgname = sync-rs
