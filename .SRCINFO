@@ -1,0 +1,21 @@
+pkgbase = simplebench
+	pkgdesc = A workspace for terminal-driven development
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MaciejKolerski/simplebench
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = librsvg
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = hicolor-icon-theme
+	optdepends = git: source control and repository history
+	provides = simplebench
+	conflicts = simplebench-bin
+	source = simplebench-0.1.0.tar.gz::https://github.com/MaciejKolerski/simplebench/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 765165978df92b6a3bed7e563671b6075ae1295b86140d2e182fa33f7cf9aa90
+
+pkgname = simplebench
