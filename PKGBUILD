@@ -2,7 +2,7 @@
 
 pkgname=bb-bin
 pkgver=0.42.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Agentic IDE that builds itself"
 arch=('x86_64')
 url='https://github.com/get-bb/bb'
@@ -17,7 +17,7 @@ source=(
 )
 noextract=("$pkgname-$pkgver.AppImage")
 sha256sums=('b29165f5cd2f06feeba51c36ca86b96006bfc6c48521903367c004ae63c86976'
-            '67d10f7a6daac6bfbd947bbc2af59bcc42589d5e37637a504ffce9c89074d173'
+            '97cff1674b48743008e9f7e1159174a5cb33a955ca9a545265ccf4a824787d32'
             'd10816aa30183af920bdd789a81b16847bcf3e287e1b3419dd7d85f6e3e8e7b0')
 
 prepare() {
