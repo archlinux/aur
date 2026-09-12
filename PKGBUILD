@@ -2,7 +2,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=core-lightning-git
-pkgver=26.06.6.r18367.c1551c557
+pkgver=26.06.7.r18389.a34b9758b
 pkgrel=1
 pkgdesc='A lightweight, highly customizable and standard-compliant implementation of the Lightning Network protocol.'
 arch=('x86_64')
