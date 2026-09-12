@@ -1,6 +1,6 @@
 pkgbase = flea-git
 	pkgdesc = Fast, keyboard-first file manager for Omarchy (git version)
-	pkgver = 0.2.0.r0.gb992e76
+	pkgver = 0.2.1.r0.gc6a0149
 	pkgrel = 1
 	url = https://github.com/thisisgm/flea
 	arch = x86_64
