@@ -1,6 +1,6 @@
 pkgbase = hermes-agent-desktop-bin
 	pkgdesc = Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime (prebuilt binary)
-	pkgver = 0.21.1
+	pkgver = 0.21.2
 	pkgrel = 1
 	url = https://github.com/NousResearch/hermes-agent
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = hermes-agent-desktop-bin
 	optdepends = libayatana-appindicator: tray indicator support
 	conflicts = hermes-agent-desktop
 	options = !debug
-	source = https://github.com/jabla/hermes-agent-desktop-bin/releases/download/v0.21.1-1/hermes-agent-desktop-bin-0.21.1-1-x86_64.pkg.tar.zst
-	sha256sums = 5c27e7a5027d2df34a9e34c1ed4fb54c6a8aceb29aee187daabaefb55f81b517
+	source = https://github.com/jabla/hermes-agent-desktop-bin/releases/download/v0.21.2-1/hermes-agent-desktop-bin-0.21.2-1-x86_64.pkg.tar.zst
+	sha256sums = 0255ec5556b79226b610123c5091257c4a3501e8f872f4cb9cc3d1b7f881036c
 
 pkgname = hermes-agent-desktop-bin
