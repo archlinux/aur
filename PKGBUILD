@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=aurascan
-pkgver=0.10.9
+pkgver=0.10.10
 pkgrel=1
 pkgdesc="AI-assisted safety and recovery layer for Arch-family systems"
 arch=('any')
@@ -11,11 +11,11 @@ license=('MIT')
 install=aurascan.install
 depends=('python' 'hicolor-icon-theme')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytest' 'git')
+checkdepends=('python-pytest' 'git' 'gnupg')
 optdepends=(
   'clamav: AV signature scanning through clamscan'
   'arch-audit: official Arch Security Team vulnerability advisories'
-  'gnupg: explicit deep-static signature verification'
+  'gnupg: deep-static and detection-data signature verification'
   'pacman: local package database, upgrade preflight, and vercmp support'
   'base-devel: makepkg wrapper workflows'
   'paru: AUR update context for aurascan upgrade'
@@ -23,6 +23,7 @@ optdepends=(
   'shelly: optional Shelly update handoff for aurascan upgrade'
   'python-pyqt6: AuraScan Updater tray applet'
   'pyside6: alternative Qt binding for the AuraScan Updater tray applet'
+  'polkit: desktop administrator authorization for detection data tray controls'
   'libnotify: desktop notifications for Agent Instruction Guard'
   'pacman-contrib: bounded package-cache cleanup for incident recovery'
   'pciutils: readable GPU model names in hardware-aware follow-up'
@@ -45,7 +46,7 @@ optdepends=(
   'xfsprogs: read-only XFS recovery diagnostics'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f6898f14a129ac5ac41daaecfe9af8ac0f126ef119e52e1d2401ca9282d52b13')
+sha256sums=('87e1570a2842b0d6c7e5bf280e31504c8377bd56302bbd5d049fb676308e5b5a')
 
 build() {
   cd "AuraScan-$pkgver"
@@ -77,6 +78,15 @@ package() {
   install -Dm644 aurascan/assets/aurascan-instruction-assistant.service "$pkgdir/usr/lib/systemd/user/aurascan-instruction-assistant.service"
   install -Dm644 aurascan/assets/aurascan-instruction-assistant.timer "$pkgdir/usr/lib/systemd/user/aurascan-instruction-assistant.timer"
   install -Dm644 aurascan/assets/aurascan-incidents.conf "$pkgdir/usr/lib/tmpfiles.d/aurascan-incidents.conf"
+  install -Dm644 aurascan/assets/aurascan-intelligence-fetch.service "$pkgdir/usr/lib/systemd/system/aurascan-intelligence-fetch.service"
+  install -Dm644 aurascan/assets/aurascan-intelligence-activate.service "$pkgdir/usr/lib/systemd/system/aurascan-intelligence-activate.service"
+  install -Dm644 aurascan/assets/aurascan-intelligence-import.service "$pkgdir/usr/lib/systemd/system/aurascan-intelligence-import.service"
+  install -Dm644 aurascan/assets/aurascan-intelligence-auto-enable.service "$pkgdir/usr/lib/systemd/system/aurascan-intelligence-auto-enable.service"
+  install -Dm644 aurascan/assets/aurascan-intelligence-auto-disable.service "$pkgdir/usr/lib/systemd/system/aurascan-intelligence-auto-disable.service"
+  install -Dm644 aurascan/assets/aurascan-intelligence-update.timer "$pkgdir/usr/lib/systemd/system/aurascan-intelligence-update.timer"
+  install -Dm644 aurascan/assets/aurascan-intelligence-sysusers.conf "$pkgdir/usr/lib/sysusers.d/aurascan-intelligence.conf"
+  install -Dm644 aurascan/assets/aurascan-intelligence-tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/aurascan-intelligence.conf"
+  install -Dm644 aurascan/assets/aurascan-intelligence.preset "$pkgdir/usr/lib/systemd/system-preset/60-aurascan-intelligence.preset"
   install -Dm644 aurascan/assets/aurascan-recovery.service "$pkgdir/usr/lib/systemd/system/aurascan-recovery.service"
   install -Dm644 aurascan/assets/aurascan-recovery-refresh.hook "$pkgdir/usr/share/libalpm/hooks/aurascan-recovery-refresh.hook"
   install -Dm644 aurascan/assets/aurascan-recovery-mkosi.conf "$pkgdir/usr/lib/aurascan/recovery/mkosi.conf"
