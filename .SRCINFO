@@ -1,0 +1,15 @@
+pkgbase = ctty
+	pkgdesc = Lightweight all-in-one TUI connection manager for SSH, serial, SFTP, telnet and FTP
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/zsuroy/ctty
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	conflicts = ctty-bin
+	options = !strip
+	options = !debug
+	source = ctty-0.7.2.tar.gz::https://github.com/zsuroy/ctty/archive/v0.7.2.tar.gz
+	sha256sums = 55b39739f28c3c11d1135b2205563e6f9b2959b29e64133c43ac7692a43934eb
+
+pkgname = ctty
