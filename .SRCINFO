@@ -1,6 +1,6 @@
 pkgbase = gickup-bin
 	pkgdesc = Backup tool for your cloud git repositories
-	pkgver = 0.10.45
+	pkgver = 0.10.46
 	pkgrel = 1
 	url = https://github.com/cooperspencer/gickup
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = gickup-bin
 	provides = gickup
 	conflicts = gickup
 	options = !strip
-	source_x86_64 = gickup-x86_64-0.10.45.tgz::https://github.com/cooperspencer/gickup/releases/download/v0.10.45/gickup_0.10.45_linux_amd64.tar.gz
-	sha256sums_x86_64 = 55cbc9aa8eb21fe2965ed9331aed85cdf1e681817cb1c2471f7df9ff3342d61c
-	source_386 = gickup-386-0.10.45.tgz::https://github.com/cooperspencer/gickup/releases/download/v0.10.45/gickup_0.10.45_linux_386.tar.gz
-	sha256sums_386 = 813f12523466c1c403ecd7a7111e5a3d1d224ae3f911f50d48be21562ae8e1dd
-	source_aarch64 = gickup-aarch64-0.10.45.tgz::https://github.com/cooperspencer/gickup/releases/download/v0.10.45/gickup_0.10.45_linux_arm64.tar.gz
-	sha256sums_aarch64 = c51a80df7a82ee008f9a91b9e56f69c1ba505e896e9c2789a1ad7266aeafab41
+	source_x86_64 = gickup-x86_64-0.10.46.tgz::https://github.com/cooperspencer/gickup/releases/download/v0.10.46/gickup_0.10.46_linux_amd64.tar.gz
+	sha256sums_x86_64 = c7d0d016bdada6788faf8d0b3410f3f3919e1746b62fbf67c4701b5c916f16e3
+	source_386 = gickup-386-0.10.46.tgz::https://github.com/cooperspencer/gickup/releases/download/v0.10.46/gickup_0.10.46_linux_386.tar.gz
+	sha256sums_386 = d110b130352af6ca91210928142dff0d3efc0c1707a0382130c9b0b0f75772d2
+	source_aarch64 = gickup-aarch64-0.10.46.tgz::https://github.com/cooperspencer/gickup/releases/download/v0.10.46/gickup_0.10.46_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3e7e7ee27067531ebdb7dc5b21e0031e174616f00a006ef37261aa69d8e9c7e2
 
 pkgname = gickup-bin
