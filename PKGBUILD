@@ -8,9 +8,9 @@
 
 pkgname=rxvt
 pkgver=2.7.10
-pkgrel=10
+pkgrel=11
 pkgdesc='A colour vt102 terminal emulator'
-arch=('i686' 'x86_64')
+arch=('x86_64' 'pentium4' 'i686' 'i486' 'armv6h' 'armv7h' 'aarch64')
 url='http://rxvt.sourceforge.net/'
 license=('GPL')
 depends=('glibc' 'libx11' 'libxau' 'libxcb' 'libxdmcp')
@@ -25,6 +25,14 @@ md5sums=('302c5c455e64047b02d1ef19ff749141'
 prepare() {
   cd $pkgname-$pkgver
   patch -Np1 -i "${srcdir}/rxvt-2.7.10-no-i-push.patch"
+
+  # Bundled config.guess/config.sub (in autoconf/, where configure's
+  # ac_aux_dir search finds them) are dated 2002-09-03, predating
+  # aarch64 -- configure can't identify the build platform there.
+  # Refresh from automake (base-devel, always present) for that arch.
+  if [ "$CARCH" = "aarch64" ]; then
+    cp /usr/share/automake-*/config.{guess,sub} autoconf/
+  fi
 }
 
 build() {
