@@ -1,0 +1,5 @@
+[xremap-kde-bin]
+source = "github"
+github = "xremap/xremap"
+use_latest_release = true
+prefix = "v"
