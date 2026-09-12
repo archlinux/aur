@@ -2,7 +2,7 @@
 
 pkgname=python-urllib3-future
 _pkgname="${pkgname/python-/}"
-pkgver=2.24.907
+pkgver=2.24.908
 pkgrel=1
 pkgdesc='Inplace replacement for urllib3 capable of async with automatic HTTP/1, HTTP/2 and HTTP/3 transport.'
 arch=('any')
@@ -31,7 +31,7 @@ makedepends=(
 )
 options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('78605ee1f8875ebfc2b05d44fe113870f8fb70a1164e321846c6a24168e71996')
+sha256sums=('df26ce8210103d4362d2096b99b0c153983c24027c21073ed7d821d9048ccc20')
 
 build() {
   cd "${_pkgname/-/.}-${pkgver}"
