@@ -11,19 +11,23 @@
 # Replace your regular `wine` command with the wrapper in
 # `/opt/wine-valve/wine-valve` to launch an application though `wine-valve`
 # from this package.
+#
+# Starting with 11.0.2-1, this is a WOW64 build without lib32 dependencies.
 
 pkgname=wine-valve
 epoch=5
-pkgver=11.0.1b5
-_pkgver='11.0-1-beta5'
-pkgrel=2
+pkgver=11.0.2
+_pkgver='11.0-2'
+pkgrel=1
 
 source=("https://github.com/ValveSoftware/wine/archive/proton-wine-${_pkgver}.tar.gz"
         '30-win32-aliases.conf'
-        'launch-wine-valve.sh')
-sha256sums=('dfb54bf898980f080ae1b01f8114241e22d2aabb600c2e3bd28a351290a8c160'
+        'launch-wine-valve.sh'
+        'launch-winetricks-valve.sh')
+sha256sums=('c02269323d484befe3bc7628f13b445d6e1c6f44df9c4b97bc96bd4f96101f3a'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
-            'e42c9a226fbaf10075048ab993a15753233ec4222877926b8ec6b6aa6ce14bab')
+            'e42c9a226fbaf10075048ab993a15753233ec4222877926b8ec6b6aa6ce14bab'
+            'c42a51f7a9869cacde97674438c3933b659c42d3d55a8719eb24a54bcc7ee29c')
 
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 url='https://github.com/ValveSoftware/wine.git'
@@ -47,13 +51,6 @@ depends=(
   libxkbcommon
   libxi
   libxrandr
-  lib32-fontconfig
-  lib32-freetype2
-  lib32-gettext
-  lib32-libpcap
-  lib32-libxcursor
-  lib32-libxi
-  lib32-libxrandr
   systemd-libs
   wayland
 )
@@ -69,16 +66,6 @@ makedepends=(
   libxinerama
   libxml-perl
   libxxf86vm
-  lib32-alsa-lib
-  lib32-gnutls
-  lib32-gst-plugins-base-libs
-  lib32-libpulse
-  lib32-libxcomposite
-  lib32-libxinerama
-  lib32-libxxf86vm
-  lib32-mesa
-  lib32-v4l-utils
-  lib32-vulkan-icd-loader
   mesa
   mingw-w64-gcc
   pcsclite
@@ -124,6 +111,7 @@ optdepends=(
   v4l-utils
   wine-gecko
   wine-mono
+  winetricks
 )
 
 makedepends=(${makedepends[@]} ${depends[@]})
@@ -150,7 +138,7 @@ prepare() {
 }
 
 build() {
-  msg2 "Building Wine-64..."
+  msg2 "Building Wine-WOW64..."
   mkdir -p "$pkgname-64-build"
   cd "$pkgname-64-build"
 
@@ -166,41 +154,15 @@ build() {
     --with-gstreamer \
     --without-opencl \
     --without-ffmpeg \
-    --enable-win64 \
-    --disable-tests
-
-  make
-
-  cd ..
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-
-  msg2 "Building Wine-32..."
-  mkdir -p "$pkgname-32-build"
-  cd "$pkgname-32-build"
-  ../$pkgname/configure \
-    --prefix=/opt/wine-valve \
-    --with-x \
-    --with-wayland \
-    --with-gstreamer \
-    --without-opencl \
-    --without-ffmpeg \
-    --libdir=/opt/wine-valve/lib \
-    --with-wine64=$srcdir/$pkgname-64-build \
+    --enable-archs=x86_64,i386 \
+    --enable-build-id \
     --disable-tests
 
   make
 }
 
 package() {
-  # (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
-  msg2 "Packaging Wine-32..."
-  cd "$srcdir/$pkgname-32-build"
-
-  make prefix="$pkgdir/opt/wine-valve" \
-    libdir="$pkgdir/opt/wine-valve/lib" \
-    dlldir="$pkgdir/opt/wine-valve/lib/wine" install
-
-  msg2 "Packaging Wine-64..."
+  msg2 "Packaging Wine-WOW64..."
   cd "$srcdir/$pkgname-64-build"
 
   make prefix="$pkgdir/opt/wine-valve" \
@@ -217,6 +179,7 @@ package() {
   x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/opt/wine-valve/lib/wine/x86_64-windows/*.dll
 
   install -m755 "${srcdir}/launch-wine-valve.sh" "${pkgdir}/opt/wine-valve/wine-valve"
+  install -m755 "${srcdir}/launch-winetricks-valve.sh" "${pkgdir}/opt/wine-valve/winetricks-valve"
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
