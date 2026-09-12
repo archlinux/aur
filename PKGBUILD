@@ -1,6 +1,6 @@
 pkgname=sparkle-electron-git
 _pkgname=${pkgname%-electron-git}
-pkgver=1.26.8.r7.gdc0455c
+pkgver=1.26.8.r8.g8cf7754
 pkgrel=1
 pkgdesc="Another Mihomo GUI"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=(
     "git+$url.git"
 )
 sha256sums=(
-    "b17d85f6d862285a53a24d0f8dedd08f1f3c852ba6a901fabc487177598803cc"
+    "9163b61e496487c06afa67318710c49fb755bded663520edbb89a934a8b25ee0"
     "ce855656fb0682d403685244c77dd2d90ec6efb207753fb7a6ddc1e9b6aa2c49"
     "SKIP"
 )
