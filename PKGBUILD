@@ -1,6 +1,6 @@
 pkgname=audiomuse-ai-worker
 pkgver=3.6.0
-pkgrel=5
+pkgrel=6
 pkgdesc='AudioMuse-AI analysis and task queue worker'
 arch=('x86_64')
 url='https://github.com/NeptuneHub/AudioMuse-AI'
@@ -59,7 +59,11 @@ optdepends=(
 )
 
 install='audiomuse-ai-worker.install'
-backup=('etc/audiomuse-ai/worker.env')
+
+backup=(
+  'etc/audiomuse-ai/worker.env'
+  'etc/audiomuse-ai/worker-supervisord.conf'
+)
 
 _model_tag='v5.0.0-model'
 _dclap_tag='v1'
@@ -78,6 +82,7 @@ source=(
   'remove-flasgger.patch'
   'plugin-system-python-deps.patch'
   'audiomuse-ai-worker.service'
+  'audiomuse-ai-worker-tmp.mount'
   'audiomuse-ai-worker.supervisord.conf'
   'audiomuse-ai-worker.sysusers'
   'audiomuse-ai-worker.tmpfiles'
@@ -93,16 +98,12 @@ sha256sums=('e6d10aa26820a7589f6512123d8868c26be617b08b2bac4542e387ff5921e0f4'
             '7aea2aeb6bec2e1a97b778c09190f787b7466a3b041306765b6812edef1817cd'
             '773c336c3fbdc1ed74ea1f7a23d7c518e8071517789a47d4e8dc7ff7ee543622'
             '31f18db3e5ad6729f990234ab9ba904c349c28db23ae1b6bf22411f425fba8fc'
-            '0deecb429604ba652a879b34996a56035969a8e2b611ecfa9c32dcebedb104a2'
+            '2c00bea3125ff5577c1f8d90806adc798489ed2fe54ee8e5bd78b39d00534400'
+            '24744c8f628b6aadaef63b928d57446db5e80f55ae0312e2aafc75fefaac0a36'
             'cc4b4f32e7b7f1f5a4fc7fa4b949ab603f7a863ec8183dc339aefa0272da9228'
             '1b6dac9d5528b4eeb16008bc5e988492a80b9d35ceb4640247bdb3331b1d191a'
             '7e036273d925175f889a972fe6c18120d4bdc57251090aa4022b120361ca302c'
             '09e6eb1f58a51a6daeca68ff8309c1dbee6e03e72101258100b81137da2256f6')
-
-backup=(
-  'etc/audiomuse-ai/worker.env'
-  'etc/audiomuse-ai/worker-supervisord.conf'
-)
 
 prepare() {
   cd "AudioMuse-AI-$pkgver"
@@ -168,4 +169,8 @@ package() {
 
   install -Dm644 "$srcdir/audiomuse-ai-worker.tmpfiles" \
     "$pkgdir/usr/lib/tmpfiles.d/audiomuse-ai-worker.conf"
+
+  install -Dm644 \
+    "${srcdir}/audiomuse-ai-worker-tmp.mount" \
+    "${pkgdir}/usr/lib/systemd/system/var-tmp-audiomuse\\x2dai\\x2dworker.mount"
 }

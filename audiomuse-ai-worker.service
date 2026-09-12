@@ -1,7 +1,8 @@
 [Unit]
 Description=AudioMuse-AI Worker
-After=network-online.target
+After=network-online.target var-tmp-audiomuse\x2dai\x2dworker.mount
 Wants=network-online.target
+Requires=var-tmp-audiomuse\x2dai\x2dworker.mount
 
 [Service]
 Type=simple

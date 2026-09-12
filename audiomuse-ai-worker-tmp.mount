@@ -1,0 +1,9 @@
+[Unit]
+Description=AudioMuse AI worker temporary analysis storage
+Before=audiomuse-ai-worker.service
+
+[Mount]
+What=tmpfs
+Where=/var/tmp/audiomuse-ai-worker
+Type=tmpfs
+Options=mode=0750,uid=audiomuse-worker,gid=audiomuse-worker,size=3G,nosuid,nodev,noexec
