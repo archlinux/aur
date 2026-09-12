@@ -1,7 +1,7 @@
 pkgbase = audiomuse-ai-web
 	pkgdesc = Web interface and API for AudioMuse-AI
 	pkgver = 3.6.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/NeptuneHub/AudioMuse-AI
 	install = audiomuse-ai-web.install
 	arch = x86_64

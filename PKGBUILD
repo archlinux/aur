@@ -1,6 +1,6 @@
 pkgname=audiomuse-ai-web
 pkgver=3.6.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Web interface and API for AudioMuse-AI'
 arch=('x86_64')
 url='https://github.com/NeptuneHub/AudioMuse-AI'
@@ -64,6 +64,7 @@ install='audiomuse-ai-web.install'
 
 backup=(
   'etc/audiomuse-ai/web.env'
+  'etc/audiomuse-ai/web-supervisord.conf'
 )
 
 _sae_tag='v1'
@@ -95,11 +96,6 @@ sha256sums=('e6d10aa26820a7589f6512123d8868c26be617b08b2bac4542e387ff5921e0f4'
             '9344589685639d833e4c405013172119f4e1929ed78d9a223886e55b3d96a676'
             'f2a4370ba7ced81b39a583a583684b8623e083eb0943f9b1b604a5913dc16f24'
             'd9fd871d1ee0582a0a347512bc701d570af5aa822329d6caeee20cc06980e78b')
-
-backup=(
-  'etc/audiomuse-ai/web.env'
-  'etc/audiomuse-ai/web-supervisord.conf'
-)
 
 prepare() {
   cd "AudioMuse-AI-$pkgver"
