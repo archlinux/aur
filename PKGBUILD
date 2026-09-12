@@ -1,7 +1,7 @@
 # Maintainer: jin <mail@nvimer.org>
 pkgname=deepseek-reasonix-desktop
 pkgver=1.38.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Reasonix desktop — an Electron shell around the DeepSeek-native AI coding agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/esengine/DeepSeek-Reasonix"
@@ -90,6 +90,9 @@ package() {
     case "$CARCH" in x86_64) _goarch=amd64 ;; aarch64) _goarch=arm64 ;; esac
     install -d "$pkgdir/usr/lib/reasonix" "$pkgdir/usr/bin"
     cp -a --no-preserve=ownership "desktop/build/electron/linux-$_goarch/app" "$pkgdir/usr/lib/reasonix/"
+    # Electron Packager leaves its temporary bundle root at 0700; cp -a
+    # preserves it, making the installed shell inaccessible to normal users.
+    chmod 755 "$pkgdir/usr/lib/reasonix/app"
     for _bin in reasonix reasonix-desktop reasonix-launcher; do
         install -Dm755 "desktop/build/bin/$_bin" "$pkgdir/usr/lib/reasonix/$_bin"
     done
