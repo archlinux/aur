@@ -4,7 +4,7 @@ pkgname='moc-development'
 _pkgname='moc'
 pkgver='2.6_alpha3'
 _pkgver='2.6-alpha3'
-pkgrel=3
+pkgrel=4
 pkgdesc='Music On Console is an ncurses-based console audio player - latest version with patches that supports PulseAudio and FluidSynth, compiled against current FFmpeg'
 arch=('x86_64')
 url="https://moc.daper.net/"
@@ -19,18 +19,18 @@ optdepends=('speex:       for using the speex plugin'
             'faad2:       for using the aac plugin'
 	    'libmodplug:  for using the modplug plugin')
 provides=('moc')
-conflicts=('moc' 'moc-pulse' 'moc-git' 'moc-unstable' 'moc-fluidsynth-plugin')
+conflicts=('moc' 'moc-stable-complete' 'moc-pulse' 'moc-git' 'moc-unstable' 'moc-fluidsynth-plugin')
 source=("https://ftp.daper.net/pub/soft/${_pkgname}/unstable/${_pkgname}-${_pkgver}.tar.xz"
 	"moc-fluidsynth-plugin-0.6.6.tar.gz::https://github.com/joanbm/moc-fluidsynth-plugin/archive/refs/tags/v0.0.6.tar.gz"
         "pulse.c"
         "pulse.h"
-	"ffmpeg.c"
+	"ffmpeg.c.patch"
 	"ffmpeg.m4")
 sha256sums=('a27b8888984cf8dbcd758584961529ddf48c237caa9b40b67423fbfbb88323b1'
 	    '5585d541c6bc92103a71a044d096f16d872ac260a078d7d91b005f60939aefb4'
 	    '84cbc24e9c81f0ea699438bdb8827f1519c107fb963a8b59baf50e3a21f70252'
 	    '93e89cc4f4025f30a9b1b0c4c2603ca35950cf237dc0fc15f09759438232bc33'
-	    '440fb84e22202fe4cee6f5cf5bf6485e59983d2c4b2003f9247fd987766130d3'
+	    'a62b34e6aad3d44c8c17574a7355971c6a24f18de0083753348c657bce718e66'
 	    '3657440c6c3ec48024ec7a3ef6a4d5e6cd08043a554acefba78ee7930c4a7927')
 install="moc-development.install"
 
@@ -45,12 +45,6 @@ prepare() {
     
     ## 1. Fix the compilation (fix all current errors):
     
-    # first patch the FFmpeg 4.4 plugin in the file: 'decoder_plugins/ffmpeg/ffmpeg.c'
-    sed -i '700 s/CODEC_CAP_EXPERIMENTAL/AV_CODEC_CAP_EXPERIMENTAL/' "$srcdir/${_pkgname}-${_pkgver}/decoder_plugins/ffmpeg/ffmpeg.c"
-    sed -i '708 s/CODEC_CAP_TRUNCATED/AV_CODEC_CAP_TRUNCATED/'       "$srcdir/${_pkgname}-${_pkgver}/decoder_plugins/ffmpeg/ffmpeg.c"
-    sed -i '709 s/CODEC_FLAG_TRUNCATED/AV_CODEC_FLAG_TRUNCATED/'     "$srcdir/${_pkgname}-${_pkgver}/decoder_plugins/ffmpeg/ffmpeg.c"
-    sed -i '728 s/CODEC_CAP_DELA/AV_CODEC_CAP_DELA/'                 "$srcdir/${_pkgname}-${_pkgver}/decoder_plugins/ffmpeg/ffmpeg.c"
-
     # fixing an error in the file: 'tags_cache.c'
     sed -i '129 s/db_strerror/bdb_strerror/' "$srcdir/${_pkgname}-${_pkgver}/tags_cache.c"
 
@@ -137,10 +131,9 @@ prepare() {
 
     ## 4. Patch the FFmpeg decoder plugin so that its compatible with current version of FFmpeg:
 
-    # change the original file 'decoder_plugins/ffmpeg/ffmpeg.c' for the new one - this is the core change
-    # it fixes the breaking API changes that happened between FFmpeg 4.4->5.1
-    rm "$srcdir/${_pkgname}-${_pkgver}/decoder_plugins/ffmpeg/ffmpeg.c"
-    cp ../ffmpeg.c "$srcdir/${_pkgname}-${_pkgver}/decoder_plugins/ffmpeg/"
+    # apply patch to the file 'decoder_plugins/ffmpeg/ffmpeg.c' - this is the core change,
+    # as it fixes the breaking API changes that happened between FFmpeg 4.4->5.1
+    patch < ../ffmpeg.c.patch "$srcdir/${_pkgname}-${_pkgver}/decoder_plugins/ffmpeg/ffmpeg.c"
 
     # there are now several redundant probes in the makefile 'decoder_plugins/ffmpeg/ffmpeg.m4' (lines 47-53)
     # but there is a bigger problem too - we will need to ensure that MOC compiles against FFmpeg version>=5.1
