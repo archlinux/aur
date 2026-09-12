@@ -1,6 +1,6 @@
 pkgbase = minke-bin
 	pkgdesc = Minke desktop agent powered by DeepSeek Harness
-	pkgver = 0.5.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/lencx/Minke
 	arch = x86_64
@@ -39,12 +39,12 @@ pkgbase = minke-bin
 	depends = wayland
 	depends = xdg-utils
 	optdepends = pulseaudio: audio playback (or pipewire)
-	provides = minke=0.5.0
+	provides = minke=0.6.1
 	conflicts = minke
-	noextract = Minke-linux-x64-0.5.0.deb
+	noextract = Minke-linux-x64-0.6.1.deb
 	options = !debug
 	options = !strip
-	source = Minke-linux-x64-0.5.0.deb::https://github.com/lencx/Minke/releases/download/v0.5.0/Minke-linux-x64.deb
-	sha256sums = aae3a678fde70212a523608777a917b91e45206ac5304dccfe03c13348271be1
+	source = Minke-linux-x64-0.6.1.deb::https://github.com/lencx/Minke/releases/download/v0.6.1/Minke-linux-x64.deb
+	sha256sums = 8314a82a3965a621f0b8794e83fa2dd844a8cb281a0806c8c184ede9fb51b90a
 
 pkgname = minke-bin
