@@ -1,14 +1,14 @@
 pkgname=mcpls
-pkgver=0.3.9
+pkgver=0.5.0
 pkgrel=1
 url="https://github.com/bug-ops/mcpls"
 pkgdesc="Universal MCP to LSP bridge - expose Language Server Protocol capabilities as MCP tools for AI agents"
 arch=(x86_64 aarch64)
 license=(Apache-2.0 MIT)
-: "${_fragment:=tag=v0.3.9}"
+: "${_fragment:=tag=v0.5.0}"
 source=("git+$url.git#$_fragment")
 makedepends=(git cargo)
-md5sums=('99970b5dda5180ce316143e4a9dd5aee')
+md5sums=('c30c41db492b084e98ce0a578e4c50c6')
 
 pkgver() {
 	cd "$pkgname"
