@@ -1,6 +1,6 @@
 pkgbase = hush-hush-cli-bin
 	pkgdesc = Client for the hush-hush secrets object store
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/alrayyes/hush-hush-cli
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = hush-hush-cli-bin
 	license = GPL-3.0-only
 	provides = hush-hush-cli
 	conflicts = hush-hush-cli
-	source_x86_64 = https://github.com/alrayyes/hush-hush-cli/releases/download/v1.5.1/hush-hush-cli_1.5.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = bfc54d1f8e72966ae98308be6ab82291eadeeaaffbe0719ffe6a93d1e745c2a1
-	source_aarch64 = https://github.com/alrayyes/hush-hush-cli/releases/download/v1.5.1/hush-hush-cli_1.5.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5f7dc76b0523f2a1c621bc0fa1cebfe21e6343f0e5e7a007cdf4efdef2afbf45
+	source_x86_64 = https://github.com/alrayyes/hush-hush-cli/releases/download/v1.5.2/hush-hush-cli_1.5.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2a16b4337b289a05a082ee2110836e4aeed266b934912dc0a3d7005d4019ded6
+	source_aarch64 = https://github.com/alrayyes/hush-hush-cli/releases/download/v1.5.2/hush-hush-cli_1.5.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 12c08206dfcc82cd0820f8905b2ba9ca2f292269249ca45cf551f0aedf1ff798
 
 pkgname = hush-hush-cli-bin
