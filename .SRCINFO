@@ -1,17 +1,17 @@
 pkgbase = gaze-gnome-extension-bin
 	pkgdesc = GNOME Shell extension for Gaze
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://gaze.gundulabs.com
 	install = gaze-gnome-extension-bin.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = gnome-shell
-	provides = gaze-gnome-extension=0.3.1-1
+	provides = gaze-gnome-extension=0.3.2-1
 	conflicts = gaze-gnome-extension
 	backup = etc/dconf/db/gdm.d/00-gaze-defaults
 	backup = etc/pam.d/gdm-face
-	source = gaze-gnome-extension-0.3.1-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gnome-extension-0.3.1-1-x86_64.pkg.tar.zst
-	sha256sums = 4b70ceb23ee60050c31e582c67299a56d8c1bee0535cb14c5dc66d89bd6734f9
+	source = gaze-gnome-extension-0.3.2-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gnome-extension-0.3.2-1-x86_64.pkg.tar.zst
+	sha256sums = 50f48ef43d40ea71e92047460b1f8add82ce1893c66e812db5a64dab54f2aabe
 
 pkgname = gaze-gnome-extension-bin
