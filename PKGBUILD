@@ -2,9 +2,9 @@
 
 _pkgbase=tkginstaller
 pkgname=${_pkgbase}-git
-pkgver=0.60.2.r397.ge9b67bf
+pkgver=0.60.3.r398.gfc304cc
 pkgrel=1
-_commit=e9b67bfdaff634bf899897d63fb7af1346ae80ea
+_commit=fc304cc7f27d3ea5962da57073afe1561e210dd8
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
 pkgdesc="bash wrapper to build & install Frogging-Family stuff with ease"
@@ -31,7 +31,7 @@ source=(
     "_${_pkgbase}::https://raw.githubusercontent.com/damachine/${_pkgbase}/${_commit}/completions/_${_pkgbase}"
 )
 sha256sums=(
-    '11d4846ad93ec4aba5bc26b80e2c0ddb0e2c807f44bd79b4581528f29dd699b8'
+    'ee93514b8a9b292505f426b8bba8aad1a5dba2dd0b8bf8e4ad346a0c15627e0e'
     '84d525b028fe9d84f66c3a4dd7595db6420163eb59016eca7ae07aa5e57a737a'
     '327433813ba8f6f40bfef9111a50e056e058a572bca06cfd5105c57719387cf3'
 )
