@@ -1,4 +1,6 @@
-/pkg/
-/src/
-*.tar.*
-icon.svg
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!vesktop.desktop
+!vesktop.sh
