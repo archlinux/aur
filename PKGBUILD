@@ -1,7 +1,7 @@
 # Maintainer: allanfreitas <allanfreitas at gmail>
 
 pkgname=antigravity-updated
-pkgver=2.12.2
+pkgver=2.13.0
 pkgrel=1
 pkgdesc='Google Antigravity 2.0 multi-agent orchestration platform'
 arch=(aarch64 x86_64)
@@ -36,13 +36,13 @@ options=(!strip !debug)
 source=(antigravity.desktop
         antigravity.png)
 # ---- Update these three variables on each new release ----
-_build=6298742303883264
+_build=6362815968182272
 source_x86_64=(Antigravity-$pkgver-x86_64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-hub/$pkgver-$_build/linux-x64/Antigravity.tar.gz)
 source_aarch64=(Antigravity-$pkgver-aarch64.tar.gz::https://storage.googleapis.com/antigravity-public/antigravity-hub/$pkgver-$_build/linux-arm/Antigravity.tar.gz)
 b2sums=('ec2c74f0e6f2458f2ef1c67b1321c058a3f7c422e364d8871a0a933220ec52ee5736e449cb797b6f135cff1f4adfe6f81e0fdbc76d3ec67c245aea002b8577d8'
         '772849ebf4574dccc7d2fc30751baed10b4a5d4091c524f3d69938192387693501c0c54ea5b43fa2ed382f70ecdff369a4c65ce3d0f778c68712fa0c2b5e84b8')
-b2sums_aarch64=('e846efbf5d169ac5be853f4e39358bb53f2d9a7af4b54ea7191f30ab921f6439afa477be4e25a42fa2ea8375db59ea15233b9f2452249b5a599823b7de8d2da4')
-b2sums_x86_64=('dc7b6beaac3eb44b96d048cedcc17dede7bb3ab6687e95acb2d14989cf65278642d0a9ce8440ffea2c189dcad794c1e5bc0e049a996af1337b702e19a9ec243f')
+b2sums_aarch64=('a83e260859bbd53a5eddf7bb268737946b9e3957ad793ebad24046055776ee4d1e75ba0ba33baf6c343392a3cec5ccaaff9aeae5a1c81c87d0f87457ddb29026')
+b2sums_x86_64=('c3201c068eaee99636576aaa1d3680aee82b2211ece8822b2f98a7e776d0da717b6f5c5097d3b27bb4a29d23a566021a086916303b1d820f0cd7648b6f1ff162')
 # ----------------------------------------------------------
 
 package() {
