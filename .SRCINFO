@@ -1,6 +1,6 @@
 pkgbase = biject
 	pkgdesc = Schema-aware data diff tool with a Rust CLI and Tauri desktop UI
-	pkgver = 0.9.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/vixinxiviir/biject
 	arch = x86_64
@@ -28,9 +28,9 @@ pkgbase = biject
 	conflicts = datadiff-gui
 	replaces = datadiff
 	replaces = datadiff-gui
-	source = biject-0.9.0.tar.gz::https://github.com/vixinxiviir/biject/archive/refs/tags/v0.9.0.tar.gz
-	source = biject-vendor-0.9.0.tar.zst::https://github.com/vixinxiviir/biject/releases/download/v0.9.0/biject-vendor-0.9.0.tar.zst
-	sha256sums = b9ba5f98e445c136da10ffcbacfcd52e9d9d448a1518bbf58fdf380612fcb22d
-	sha256sums = 48e353dac55fb08dbf90a20eb3c68585a6d5ab7eca5920d5a98569c726cb479c
+	source = biject-1.0.0.tar.gz::https://github.com/vixinxiviir/biject/archive/refs/tags/v1.0.0.tar.gz
+	source = biject-vendor-1.0.0.tar.zst::https://github.com/vixinxiviir/biject/releases/download/v1.0.0/biject-vendor-1.0.0.tar.zst
+	sha256sums = ee0944e4c9dc57dad9536637a29cffec1c25675e10107cdc74db1bc7cf148d85
+	sha256sums = 3be309a250c98b6c61bf3c9608c798e3943f3e5ad5057d70e43b04a6f56ca9e6
 
 pkgname = biject
