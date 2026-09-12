@@ -1,7 +1,7 @@
 # Maintainer: Hannes Hapke <hannes.hapke@gmail.com>
 pkgname=getyaak-bin
 _pkgname=yaak
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Translate natural language to bash commands using any OpenAI-compatible LLM (prebuilt binary)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('getyaak' 'yaak-cli')
 depends=('gcc-libs')
 source=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/hanneshapke/yaak/releases/download/v$pkgver/yaak-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 # Regenerate with `updpkgsums` after bumping pkgver.
-sha256sums=('a1ebfe41663d1ed5ba1d5fa5ddc804476e77ae1be19a10d4b28af8a8a1d0c68b')
+sha256sums=('30f3af237580161c1e4417a6fbfe2cfa80593d0ee21263c63748a7f12532a3a6')
 
 package() {
   cd "$srcdir/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu"
