@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=QQMusic
+Name[zh_CN]=QQ音乐
+Keywords=qqmusic
+Exec=/usr/bin/qqmusic %U
+Type=Application
+Icon=qqmusic
+StartupWMClass=qqmusic
+Comment=Tencent QQMusic
+Categories=AudioVideo;
