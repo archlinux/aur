@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=typr-bin
-pkgver=0.5.11 # renovate: datasource=github-tags depName=we-data-ch/typr
+pkgver=0.5.12 # renovate: datasource=github-tags depName=we-data-ch/typr
 pkgrel=1
 pkgdesc="A modern type system for R"
 arch=('x86_64')
@@ -22,5 +22,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums_x86_64=('29373a28a87b81541da4d46d87bd44fb5bdc3b543fd48a46d86fc5f4f5a1b843'
+sha256sums_x86_64=('fdf7cff81660575fdaa40a4a7a578a97a18e381d52075eaec4eef78fd0287acb'
                    'c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c')

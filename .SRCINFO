@@ -1,6 +1,6 @@
 pkgbase = typr-bin
 	pkgdesc = A modern type system for R
-	pkgver = 0.5.11
+	pkgver = 0.5.12
 	pkgrel = 1
 	url = https://github.com/we-data-ch/typr
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = typr-bin
 	depends = libgcc
 	conflicts = typr
 	options = !debug
-	source_x86_64 = typr-bin-0.5.11.tar.gz::https://github.com/we-data-ch/typr/releases/download/v0.5.11/typr-v0.5.11-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/we-data-ch/typr/refs/tags/v0.5.11/LICENSE
-	provides_x86_64 = typr=0.5.11
-	sha256sums_x86_64 = 29373a28a87b81541da4d46d87bd44fb5bdc3b543fd48a46d86fc5f4f5a1b843
+	source_x86_64 = typr-bin-0.5.12.tar.gz::https://github.com/we-data-ch/typr/releases/download/v0.5.12/typr-v0.5.12-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/we-data-ch/typr/refs/tags/v0.5.12/LICENSE
+	provides_x86_64 = typr=0.5.12
+	sha256sums_x86_64 = fdf7cff81660575fdaa40a4a7a578a97a18e381d52075eaec4eef78fd0287acb
 	sha256sums_x86_64 = c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c
 
 pkgname = typr-bin
