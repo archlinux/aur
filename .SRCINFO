@@ -1,7 +1,7 @@
 pkgbase = factory-ai-droid-cli-rnoz-bin
 	pkgdesc = Factory.ai CLI (droid) with optional zero-waste titling and cross-harness keybindings (automatically tracks upstream releases)
-	pkgver = 0.217.0
-	pkgrel = 2
+	pkgver = 0.218.0
+	pkgrel = 1
 	url = https://github.com/rNoz/factory-ai-droid-cli-rnoz
 	install = factory-ai-droid-cli-rnoz-bin.install
 	arch = x86_64
