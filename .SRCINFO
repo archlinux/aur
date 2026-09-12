@@ -1,0 +1,23 @@
+pkgbase = sony-device-center
+	pkgdesc = Open-source Sony headphone/earbud companion: GUI, sonyd daemon and sonyctl CLI over a reverse-engineered Bluetooth protocol
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/marconvcm/sony-device-center
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = glfw-x11
+	makedepends = libgl
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = bluez-libs
+	depends = dbus
+	source = https://github.com/marconvcm/sony-device-center/archive/refs/tags/v0.1.4.tar.gz
+	source = https://github.com/ocornut/imgui/archive/b62bfd6b06de958e4630b715225b7e8409bfd0f9.tar.gz
+	sha256sums = ae3719178370a723a4d8c496f313c316204e0bc83bea90c0abe143971cddda88
+	sha256sums = 27d396d30d18391f6b805d0633b633c8644cdb15cd069c2baabfaefb86702cac
+
+pkgname = sony-device-center
