@@ -1,0 +1,11 @@
+pkgbase = audiomuse-ai-clap-text-model
+	pkgdesc = CLAP text encoder ONNX model exported for AudioMuse-AI
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/NeptuneHub/AudioMuse-AI
+	arch = any
+	license = CC0-1.0
+	source = clap_text_model-5.0.0.onnx::https://github.com/NeptuneHub/AudioMuse-AI/releases/download/v5.0.0-model/clap_text_model.onnx
+	sha256sums = 200d48f3905ff1f272af5006dd9851f94071a7dde4eafd9c07bc09c5ac65a714
+
+pkgname = audiomuse-ai-clap-text-model
