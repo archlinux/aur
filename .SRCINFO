@@ -1,0 +1,21 @@
+pkgbase = python-flask-profiler
+	pkgdesc = API endpoint profiler for Flask applications
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/muatik/flask-profiler
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-flask
+	depends = python-flask-httpauth
+	depends = python-simplejson
+	optdepends = python-sqlalchemy: SQLAlchemy storage backend
+	optdepends = python-pymongo: MongoDB storage backend
+	source = https://files.pythonhosted.org/packages/source/f/flask_profiler/flask_profiler-1.8.1.tar.gz
+	sha256sums = fc9f2875a4f22223ddc04ffacd75792854162c4cdbef165598a51f898521ac51
+
+pkgname = python-flask-profiler
