@@ -2,8 +2,8 @@
 # Rendered by packaging/publish-aur.sh from packaging/aur/yafst-bin/PKGBUILD.in
 # on every tagged release. Edit the template in the yafst repo, not the AUR copy.
 pkgname=yafst-bin
-_tag=v0.2.0-beta.8
-pkgver=0.2.0beta.8
+_tag=v0.2.0-beta.9
+pkgver=0.2.0beta.9
 pkgrel=1
 pkgdesc="Linux-first ranked stats tracker for THE FINALS"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ conflicts=('yafst')
 _dl="$url/releases/download/$_tag"
 source_x86_64=("yafst-$_tag-linux-amd64.tar.gz::$_dl/yafst-$_tag-linux-amd64.tar.gz")
 source_aarch64=("yafst-$_tag-linux-arm64.tar.gz::$_dl/yafst-$_tag-linux-arm64.tar.gz")
-sha256sums_x86_64=('615201c44d15dced0f70b89913b7226cb58b9a6e9157ec5a97020f816ebb8c56')
-sha256sums_aarch64=('cbd0f053f99ad07ea0d3e850f621edb76619ffe6298a928adecc95668bc7815d')
+sha256sums_x86_64=('abdb43e791b51fca4d6dd5da10729239a889b024f8672f0caff0af0f418c46ec')
+sha256sums_aarch64=('7001e9cd82ca06f87451c8a784e6f5b425bf4bebf7837f5e69d9b042011432c3')
 
 package() {
     install -Dm755 yafst "$pkgdir/usr/bin/yafst"
