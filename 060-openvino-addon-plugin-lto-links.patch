@@ -1,0 +1,42 @@
+diff --git a/src/bindings/js/node/CMakeLists.txt b/src/bindings/js/node/CMakeLists.txt
+--- a/src/bindings/js/node/CMakeLists.txt
++++ b/src/bindings/js/node/CMakeLists.txt
+@@ -29,6 +29,10 @@ project(ov_node_addon)
+ set(CMAKE_CXX_STANDARD 17)
+ add_definitions(-DNAPI_VERSION=8)
+ 
++if(ENABLE_LTO)
++    set(CMAKE_INTERPROCEDURAL_OPTIMIZATION_RELEASE ON)
++endif()
++
+ include(FetchContent)
+ 
+ FetchContent_Declare(
+diff --git a/src/plugins/intel_npu/src/CMakeLists.txt b/src/plugins/intel_npu/src/CMakeLists.txt
+--- a/src/plugins/intel_npu/src/CMakeLists.txt
++++ b/src/plugins/intel_npu/src/CMakeLists.txt
+@@ -2,6 +2,9 @@
+ # SPDX-License-Identifier: Apache-2.0
+ #
+ 
++# Dependencies outside this directory still follow the parent LTO setting.
++set(NPU_DEPENDENCIES_USE_LTO ${ENABLE_LTO})
++
+ # Close LTO temporarily for add_symbol_to_partition_1 issue
+ set(ENABLE_LTO OFF)
+ 
+diff --git a/src/plugins/intel_npu/src/plugin/CMakeLists.txt b/src/plugins/intel_npu/src/plugin/CMakeLists.txt
+--- a/src/plugins/intel_npu/src/plugin/CMakeLists.txt
++++ b/src/plugins/intel_npu/src/plugin/CMakeLists.txt
+@@ -20,6 +20,11 @@ ov_add_plugin(NAME ${NPU_PLUGIN_TARGET}
+ )
+ 
+ set_target_properties(${TARGET_NAME} PROPERTIES INTERPROCEDURAL_OPTIMIZATION_RELEASE ${ENABLE_LTO})
++# Load LLVM's linker plugin for ThinLTO dependencies, keeping NPU objects native.
++if(NPU_DEPENDENCIES_USE_LTO)
++    target_link_options(${TARGET_NAME} PRIVATE "$<$<CONFIG:Release>:-flto=thin>")
++endif()
++
+ ov_add_clang_format_target(${TARGET_NAME}_clang FOR_TARGETS ${TARGET_NAME})
+ 
+ target_link_libraries(${TARGET_NAME}

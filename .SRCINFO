@@ -1,7 +1,7 @@
 pkgbase = openvino-llvm
 	pkgdesc = A toolkit for optimizing and deploying deep learning models - built with Clang and mold
 	pkgver = 2026.2.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://docs.openvino.ai/
 	arch = x86_64
 	license = Apache-2.0
@@ -56,6 +56,7 @@ pkgbase = openvino-llvm
 	source = 030-openvino-ignore-system-onnx.patch
 	source = 040-openvino-opencv5-fix.patch
 	source = 050-openvino-npu-tools-lto.patch
+	source = 060-openvino-addon-plugin-lto-links.patch
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
 	sha256sums = e5ef4309dc42382fbd70779e3db3f39dc18bab83cb42c061e9674dc9351a882c
 	sha256sums = SKIP
@@ -86,6 +87,7 @@ pkgbase = openvino-llvm
 	sha256sums = 30835fc8bc6cfcb5c140fe66f473865e56fec6e2842da542d69cf03f4b34f904
 	sha256sums = e9ca24f135bf85606be18d0fb52f8a0702dc4ed82c10dd5de122e18be47df3c0
 	sha256sums = d049dab53dec699a444f960bb5997348f5e0ed5fffcb301346c1d16a520f2a36
+	sha256sums = 0922f887aa53c7cfe9e2c287a4e1331cbd7f553d7f8b4c163db250f0f2582dcc
 
 pkgname = openvino-llvm
 	depends = glibc
