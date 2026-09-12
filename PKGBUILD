@@ -5,7 +5,7 @@ _pkgname=cargo-pretty
 pkgname=${_pkgname}-bin
 pkgdesc="A cargo build wrapper with a live, animated status view"
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,7 +26,7 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.gz")
 sha256sums=('f33f205420a12e7f49c5c84e1d35fe66f2f0a61373ad136f9ff15f400cb9064a'
             '4d105a9bb5753da6a00aea2fd5b691af2ac9cde446981d1a2d569c44ab3c0bb9')
-sha256sums_x86_64=('509273dd0989b4d89b3d09847f7b6b2bc5d22117b50746802ab9d0cc9a1242ec')
+sha256sums_x86_64=('906f77c03ee316cbac455e471e49bfde72ddaed7a62755a65dc346fd24536592')
 
 
 package() {
