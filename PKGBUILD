@@ -12,7 +12,7 @@ pkgdesc="Updated fork of Dave Plonka's patricia library and dual-tree Python mod
 
 _gitname='patricia26'
 
-pkgver="1.3.0"
+pkgver="1.4.0"
 pkgrel=1
 url="https://github.com/gene-git/patricia26"
 
@@ -98,7 +98,7 @@ check() {
     echo "Running test suite:"
     echo "***"
 
-    ./scripts/run-tests
+    /usr/bin/meson test -C build/release
 }
 
 package() {

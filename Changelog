@@ -1,11 +1,25 @@
 -------------------------------------------------------
  Changelog    : patricia26
- Tags         : 1.0.4 ➙ 1.3.0
-              : 2026-07-28 ➙ 2026-09-02
+ Tags         : 1.1.0 ➙ 1.4.0
+              : 2026-07-28 ➙ 2026-09-12
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-02   : 1.3.0
+ 2026-09-12   : 1.4.0
+              - **1.4.0**
+            
+                * Little tidy ups.
+            
+                  * modernize u_int ➛ uint32_t and u_short ➛ uint16_t.
+            
+                    The usage of u_short suggest the latter could also be uint8_t.
+            
+                  * more lint picking
+                  * meson to run all tests
+                  * tweak autodoc settings
+                  * remove sphinx-build tmp files from html docs
+
+ 2026-09-02   : 1.3.0, origin/master, origin/HEAD
               - **1.3.0**
             
                 * Build manager is meson/meson-python
@@ -13,7 +27,7 @@
                 * Switch to sphinx code headers and autodoc
                 * Small direcotory re-org.
 
- 2026-08-17   : 1.2.0, origin/master, origin/HEAD
+ 2026-08-17   : 1.2.0
               - **1.2.0**
             
                 * Cython - initialize variable
@@ -29,17 +43,3 @@
 
  2026-07-28   : 1.1.0
               - Actually use 1.1.0 as the release tag instead of 1.0.4
-
- 2026-07-28   : 1.0.4
-              - **1.1.0**
-            
-                * C-Code
-                  - network family now defined as posix sa_family_t
-                  - bitlen changed to uint8_t bitlen (holds ipv4/ipv6 prefix lengths <= 128)
-                  - prefix_toa2x(): ipv4 block now uses inet_ntop() same as ipv6.
-                    Seems to also be faster.
-                  - tidying
-            
-                * Python:
-                  - synchronize with library changes
-                  - tidying
