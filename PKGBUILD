@@ -29,7 +29,7 @@ source=(
     "io.github.wergosam.pachul-tray.desktop"
     "pachuli.py"
 )
-sha256sums=('94ae8bf46877eb1b228cb88ff879548e8810c556727b45aad5046f6a0b1bf8d0'
+sha256sums=('e34b2c381161665f1e51191a4fc29990a2da2d0d10a4f386b1f850f1c0cfef0e'
             '355adac78b4a3e16647e50ef819858b36de0831c47d6f874e4a08a7f1bb83da2'
             'eb148625bfb4ad11b897e2c2e80722ebac0d4f34d94e8bda0f95a1169e88b194'
             '4e5bba8ae4be5c91738decc3dde9137a1de6ef8715cd6142d1a535f674e9e93d')
@@ -70,6 +70,11 @@ package() {
     # Master-SVG-Icon liegt laut app.py direkt neben den Modulen
     install -m644 io.github.wergosam.pachul.svg "$pkgdir/usr/share/$pkgname/"
 
+    # Schwarz-weisses Tray-Icon (tray.py / backend.py's Notify- und
+    # Autostart-Icon-Pfade erwarten es direkt neben den Modulen, analog
+    # zum Master-Icon oben).
+    install -m644 io_github_wergosam_pachul_bw.svg "$pkgdir/usr/share/$pkgname/"
+
     # Launcher
     install -d "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/pachul" <<'EOF'
@@ -99,6 +104,8 @@ EOF
         "$pkgdir/usr/share/applications/io.github.wergosam.pachul.desktop"
     install -Dm644 io.github.wergosam.pachul.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.wergosam.pachul.svg"
+    install -Dm644 io_github_wergosam_pachul_bw.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/io_github_wergosam_pachul_bw.svg"
 
     # Autostart-Eintrag für das Tray-Icon (system-weit unter /etc/xdg/autostart,
     # wird von KDE Plasma, GNOME und XFCE gleichermassen erkannt; jeder Nutzer
