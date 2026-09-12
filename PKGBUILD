@@ -29,10 +29,10 @@ source=(
     "io.github.wergosam.pachul-tray.desktop"
     "pachuli.py"
 )
-sha256sums=('9314311c92f3ac56b2797035fe26f7772b4e1d5b4540d146ea596841eb6da13d'
+sha256sums=('94ae8bf46877eb1b228cb88ff879548e8810c556727b45aad5046f6a0b1bf8d0'
             '355adac78b4a3e16647e50ef819858b36de0831c47d6f874e4a08a7f1bb83da2'
             'eb148625bfb4ad11b897e2c2e80722ebac0d4f34d94e8bda0f95a1169e88b194'
-            'SKIP')
+            '4e5bba8ae4be5c91738decc3dde9137a1de6ef8715cd6142d1a535f674e9e93d')
 # pachuli.py is a local file, not fetched via URL — it must sit next to this
 # PKGBUILD in the AUR git repo (same as the two .desktop files above).
 # Checksum intentionally SKIP: unlike the tarball above (a remote download,
