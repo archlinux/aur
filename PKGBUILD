@@ -9,7 +9,7 @@
 # kept in sync with the frank-geary source PKGBUILD.
 
 pkgname=frank-geary-bin
-pkgver=46.0_frank.3
+pkgver=46.0_frank.4
 pkgrel=1
 pkgdesc='GNOME Geary email client with FrankGeary workflow improvements, prebuilt binary'
 arch=('x86_64')
@@ -58,7 +58,7 @@ _tag="v${pkgver/_/-}"
 _asset="frank-geary-${pkgver}-x86_64.tar.zst"
 source=("${_asset}::${url}/releases/download/${_tag}/${_asset}")
 noextract=("${_asset}")
-sha256sums=('31845ea78901c476db963e569a6d76b2f8b8d5cc43a567d5d1a74b6f2f5bcee5')
+sha256sums=('470e9ad16ea1ff4c33217bf16bb9e7bdf923d9fad9b63ad9d09423f85b5bebda')
 
 package() {
   bsdtar -xpf "${srcdir}/${_asset}" -C "${pkgdir}"
