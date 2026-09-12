@@ -1,32 +1,40 @@
 # Maintainer: Dae Euhwa <daedaevibin@naver.com>
 pkgname=meshiji
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, flutter-based file explorer"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/meshiji"
 license=('OSL-3.0')
 depends=('gtk3' 'libx11' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxtst' 'xz')
-makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'clang' 'fvm')
+makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'clang')
+# Flutter must be installed manually (~/flutter/bin added to PATH)
+# Download: curl -L ... | tar -xf - -C ~/flutter
 source=("git+https://github.com/Veridian-Zenith/meshiji.git#tag=v${pkgver}-beta")
 sha256sums=('0a3e67cb7b5a346412f354ffb139db5fb9295e1d039393b86439d194e34eea4c')
 
 prepare() {
   cd "$srcdir/meshiji"
 
-  # Install FVM and set up Flutter
-  fvm install stable
-  fvm global stable
+  # Check for manual Flutter install; skip if found
+  for dir in ~/flutter ~/develop; do
+    if [ -x "$dir/bin/flutter" ]; then
+      echo "Flutter found at $dir/bin/flutter, skipping install"
+      break
+    else
+      echo "Flutter NOT found at $dir/bin/flutter; install manually with curl"
+      # Example: curl -L https://...flutter_linux_...tar.xz | tar -xf - -C ~/flutter --strip-components=1
+    fi
+  done
 
-  # Install Flutter dependencies
-  fvm flutter pub get
+
 }
 
 build() {
   cd "$srcdir/meshiji"
 
-  # Build release bundle
-  fvm flutter build linux --release
+  # Build release bundle using direct binary
+  ~/flutter/bin/flutter build linux --release || ~/develop/bin/flutter build linux --release
 }
 
 package() {
