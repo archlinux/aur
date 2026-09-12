@@ -1,0 +1,13 @@
+pkgbase = audiomuse-ai-neural-fingerprint
+	pkgdesc = Neural fingerprint model and matching AudioMuse-AI product-quantization codebook
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/NeptuneHub/AudioMuse-AI
+	arch = any
+	license = AGPL-3.0-only
+	source = neural_fingerprint-5.0.0.onnx::https://github.com/NeptuneHub/AudioMuse-AI/releases/download/v5.0.0-model/neural_fingerprint.onnx
+	source = neural_fingerprint_pq-5.0.0.npz::https://github.com/NeptuneHub/AudioMuse-AI/releases/download/v5.0.0-model/neural_fingerprint_pq.npz
+	sha256sums = b65814daa7da7d7c3de894250936db6e4363f78bd41e310f4597ddc9b46f295b
+	sha256sums = 88b1a66fde39a416874c5181e8e484235f621a5dc6370f05595910e0a333ec3a
+
+pkgname = audiomuse-ai-neural-fingerprint
