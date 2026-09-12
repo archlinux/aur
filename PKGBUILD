@@ -7,7 +7,7 @@ pkgname=vesktop-bin
 _pkgname=vesktop
 _appname=vencord-desktop
 pkgver=1.6.7
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed."
 arch=(
     'aarch64'
@@ -36,13 +36,13 @@ source_x86_64=("${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar
 source=(
     "${_pkgname}.sh"
     "${_pkgname}.desktop"
-    "https://raw.githubusercontent.com/Vencord/Vesktop/refs/heads/main/build/icon.svg"
+    "${_ghurl}/raw/refs/tags/v${pkgver}/build/icon.svg"
 )
 noextract=("${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('db901fa9af0ce812f48ecba9c338162bd5b12f6586fefca2bc6b6509430ea351'
             '455c00b862aa0a7e18ca8e23d65d5c5ee4506cdfb15f1bf6f622cce39827de46'
             '7d0f9dbdb3c86f800577d7fb26a22defeb7025d10c405f634d3c2b939a75be7f')
-sha256sums_aarch64=('152786c72cf97f510b3a527829568083dd5c79b723cf459c13d430b6ca385b66')
+sha256sums_aarch64=('23841d3348aa4addd7ca7301172d927feb1ad6e62b1bf288871004d65d154f7f')
 sha256sums_x86_64=('152786c72cf97f510b3a527829568083dd5c79b723cf459c13d430b6ca385b66')
 
 prepare() {
