@@ -135,3 +135,182 @@ index 00a884a..5a2f81e 100644
          wr_audio_close(audio);
          wr_close(wayland);
          return 1;
+diff --git a/src/rdp.c b/src/rdp.c
+index 6604691..ea0e6c7 100644
+--- a/src/rdp.c
++++ b/src/rdp.c
+@@ -268,6 +268,9 @@ static bool send_frame(struct wr_server *s, const struct wr_frame *f, bool full)
+         s->mirror_width = f->width;
+         s->mirror_height = f->height;
+         full = true;    // a resized mirror holds nothing the client has seen
++        // The encoder is sized to the same resolution: a changed output needs a
++        // fresh context or rfx_compose_message refuses the frame.
++        if (!rfx_context_reset(s->rfx, f->width, f->height)) return false;
+     }
+ 
+     RFX_RECT rects[WR_MAX_DAMAGE];
+diff --git a/src/wayland.c b/src/wayland.c
+index 083d907..fc56231 100644
+--- a/src/wayland.c
++++ b/src/wayland.c
+@@ -31,6 +31,7 @@ struct wr_wayland {
+     struct wl_shm *shm;
+     struct wl_seat *seat;
+     struct wl_output *output;
++    uint32_t output_name;            // registry name, to notice its removal
+ 
+     struct ext_output_image_capture_source_manager_v1 *sources;
+     struct ext_image_copy_capture_manager_v1 *capture_manager;
+@@ -39,6 +40,7 @@ struct wr_wayland {
+     struct zwp_virtual_keyboard_manager_v1 *keyboard_manager;
+ 
+     struct ext_image_copy_capture_session_v1 *session;
++    struct ext_image_capture_source_v1 *source;
+     struct zwlr_virtual_pointer_v1 *pointer;
+     struct zwp_virtual_keyboard_v1 *keyboard;
+ 
+@@ -222,8 +224,10 @@ static void on_global(void *data, struct wl_registry *registry, uint32_t name,
+         w->shm = wl_registry_bind(registry, name, &wl_shm_interface, 1);
+     else if (!strcmp(interface, wl_seat_interface.name) && !w->seat)
+         w->seat = wl_registry_bind(registry, name, &wl_seat_interface, 1);
+-    else if (!strcmp(interface, wl_output_interface.name) && !w->output)
++    else if (!strcmp(interface, wl_output_interface.name) && !w->output) {
+         w->output = wl_registry_bind(registry, name, &wl_output_interface, 1);
++        w->output_name = name;
++    }
+     else if (!strcmp(interface, ext_output_image_capture_source_manager_v1_interface.name))
+         w->sources = wl_registry_bind(registry, name,
+             &ext_output_image_capture_source_manager_v1_interface, 1);
+@@ -241,8 +245,22 @@ static void on_global(void *data, struct wl_registry *registry, uint32_t name,
+             &zwp_virtual_keyboard_manager_v1_interface, 1);
+ }
+ 
+-static void on_global_remove(void *d, struct wl_registry *r, uint32_t n) {
+-    (void)d; (void)r; (void)n;
++// Defined with the capture code below; the registry callbacks need it first.
++static void capture_teardown(struct wr_wayland *w);
++
++static void on_global_remove(void *data, struct wl_registry *registry, uint32_t name) {
++    struct wr_wayland *w = data;
++    (void)registry;
++    if (!w->output || name != w->output_name) return;
++
++    // The output the capture was built on is gone. Drop the source, the session
++    // and the buffer, then let the next announced output rebuild them: keeping
++    // the dead object would make every later capture answer nothing while the
++    // server still looked healthy.
++    capture_teardown(w);
++    wl_output_destroy(w->output);
++    w->output = NULL;
++    w->output_name = 0;
+ }
+ 
+ static const struct wl_registry_listener registry_listener = {
+@@ -328,7 +346,7 @@ fail:
+ 
+ void wr_close(struct wr_wayland *w) {
+     if (!w) return;
+-    if (w->pixels) munmap(w->pixels, w->size);
++    capture_teardown(w);
+     if (w->display) wl_display_disconnect(w->display);
+     free(w);
+ }
+@@ -344,18 +362,43 @@ uint32_t wr_height(const struct wr_wayland *w) { return w->height; }
+ 
+ // --- capture ---------------------------------------------------------------
+ 
+-bool wr_capture_open(struct wr_wayland *w, const char **error) {
++// Release everything a capture owns. Safe to call when nothing was opened, and
++// used both on a normal close and when the compositor drops the output.
++static void capture_teardown(struct wr_wayland *w) {
++    if (w->pixels) { munmap(w->pixels, w->size); w->pixels = NULL; }
++    if (w->buffer) { wl_buffer_destroy(w->buffer); w->buffer = NULL; }
++    if (w->session) {
++        ext_image_copy_capture_session_v1_destroy(w->session);
++        w->session = NULL;
++    }
++    if (w->source) {
++        ext_image_capture_source_v1_destroy(w->source);
++        w->source = NULL;
++    }
++    w->size = 0;
++    w->have_size = w->have_format = false;
++    w->session_done = w->session_stopped = false;
++    w->frame.pixels = NULL;
++}
++
++// Build a capture session on the current output and negotiate size and format.
++static bool start_capture_session(struct wr_wayland *w, const char **error) {
+     if (!w->sources || !w->capture_manager) {
+         *error = "compositor does not offer ext-image-copy-capture "
+                  "(on Wayfire, add copy-capture to core/plugins)";
+         return false;
+     }
++    if (!w->output) {
++        *error = "no output to capture";
++        return false;
++    }
+ 
+-    struct ext_image_capture_source_v1 *source =
+-        ext_output_image_capture_source_manager_v1_create_source(w->sources, w->output);
++    w->have_size = w->have_format = false;
++    w->session_done = w->session_stopped = false;
+ 
++    w->source = ext_output_image_capture_source_manager_v1_create_source(w->sources, w->output);
+     w->session = ext_image_copy_capture_manager_v1_create_session(
+-        w->capture_manager, source, 0);
++        w->capture_manager, w->source, 0);
+     ext_image_copy_capture_session_v1_add_listener(w->session, &session_listener, w);
+ 
+     if (!pump(w, &w->session_done, &w->session_stopped, 5000)) {
+@@ -374,7 +417,7 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
+     if (fd < 0) { *error = "could not allocate shared memory"; return false; }
+ 
+     w->pixels = mmap(NULL, w->size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+-    if (w->pixels == MAP_FAILED) { close(fd); *error = "could not map the frame buffer"; return false; }
++    if (w->pixels == MAP_FAILED) { close(fd); w->pixels = NULL; *error = "could not map the frame buffer"; return false; }
+ 
+     struct wl_shm_pool *pool = wl_shm_create_pool(w->shm, fd, (int32_t)w->size);
+     w->buffer = wl_shm_pool_create_buffer(pool, 0, (int32_t)w->width, (int32_t)w->height,
+@@ -391,7 +434,32 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
+     return true;
+ }
+ 
++bool wr_capture_open(struct wr_wayland *w, const char **error) {
++    return start_capture_session(w, error);
++}
++
++// Rebuild a capture session that the compositor stopped or whose output was
++// replaced. Called from the streaming path, so a lock or an output change costs
++// one rebuild instead of a permanently blank screen.
++static bool capture_reopen(struct wr_wayland *w) {
++    const char *error = NULL;
++    capture_teardown(w);
++    if (!start_capture_session(w, &error)) {
++        capture_teardown(w);
++        fprintf(stderr, "wayrdp: capture session not restarted: %s\n", error);
++        return false;
++    }
++    fprintf(stderr, "wayrdp: capture session restarted, %ux%u\n", w->width, w->height);
++    return true;
++}
++
+ const struct wr_frame *wr_capture_frame(struct wr_wayland *w, int timeout_ms) {
++    // A stopped session or a replaced output leaves the old capture dead. Rebuild
++    // it here instead of polling a session that will never answer again.
++    if (!w->session || w->session_stopped) {
++        if (!capture_reopen(w)) return NULL;
++    }
++
+     w->frame_ready = w->frame_failed = false;
+     w->frame.damage_count = 0;
+     w->frame.damage_overflowed = false;
+@@ -460,7 +528,7 @@ static const struct zwlr_screencopy_frame_v1_listener now_listener = {
+ };
+ 
+ const struct wr_frame *wr_capture_now(struct wr_wayland *w, int timeout_ms) {
+-    if (!w->screencopy) return NULL;
++    if (!w->screencopy || !w->output) return NULL;
+ 
+     w->now_ready = w->now_failed = w->now_described = false;
+ 
