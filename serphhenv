@@ -1,0 +1,628 @@
+#!/bin/bash
+#
+# SerphhEnv - a dialog-based TUI for managing Python virtualenvs.
+#
+# Features:
+#   - Activate / deactivate an environment in your real shell
+#   - Create, delete, rename/move environments
+#   - Show environment details (python version, disk usage, installed packages)
+#   - Install packages from a requirements*.txt file
+#   - Export installed packages to a requirements file
+#   - Detect and clean up broken environments (missing interpreter)
+#   - Change the target Python used for new environments
+#   - Install older Python versions via an AUR helper (Arch-based systems)
+#   - View a logbook of everything this tool has done
+#
+# ACTIVATION NOTE:
+# A script run as a child process can never change your interactive shell's
+# environment (that's just how process environments work in bash/zsh). So
+# this script itself can only ever *write down* which venv to activate (or
+# that you want to deactivate).
+#
+# To get real activation, install the wrapper function once:
+#
+#   echo 'eval "$(/path/to/serphhenv.sh --init)"' >> ~/.bashrc   # or ~/.zshrc
+#   source ~/.bashrc
+#
+# Then just run:  serphhenv
+#
+# --init prints a shell function (not a subshell script) that runs this file,
+# then sources the resulting activate path (or runs `deactivate`) in your
+# *current* shell.
+
+set -u
+
+# ---------------------------------------------------------------------------
+# --init mode: print the wrapper function and exit. No dialog needed here.
+# ---------------------------------------------------------------------------
+if [ "${1:-}" = "--init" ]; then
+    SELF_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
+    cat <<EOF
+serphhenv() {
+    local script_path="$SELF_PATH"
+    local action_file="/tmp/serphhenv_action_\$\$"
+
+    SERPHHENV_ACTION_FILE="\$action_file" bash "\$script_path" "\$@"
+    local serphhenv_ret=\$?
+
+    if [ -f "\$action_file" ]; then
+        local action_payload
+        action_payload=\$(cat "\$action_file")
+        rm -f "\$action_file"
+
+        if [ "\$action_payload" = "__DEACTIVATE__" ]; then
+            if type deactivate >/dev/null 2>&1; then
+                deactivate
+                echo "Deactivated."
+            else
+                echo "No active environment to deactivate in this shell."
+            fi
+        elif [ -n "\$action_payload" ] && [ -f "\$action_payload" ]; then
+            # shellcheck disable=SC1090
+            source "\$action_payload"
+            echo "Activated: \${VIRTUAL_ENV:-\$action_payload}"
+        fi
+    fi
+    return \$serphhenv_ret
+}
+EOF
+    exit 0
+fi
+# ---------------------------------------------------------------------------
+# --setup mode: automatically inject the init hook into the user's shell rc
+# ---------------------------------------------------------------------------
+if [ "${1:-}" = "--setup" ]; then
+    user_shell=$(basename "$SHELL")
+    rc_file=""
+
+    case "$user_shell" in
+        bash) rc_file="$HOME/.bashrc" ;;
+        zsh) rc_file="$HOME/.zshrc" ;;
+        *)
+            echo "Error: --setup currently only supports bash and zsh."
+            echo "You are using: $user_shell"
+            exit 1
+            ;;
+    esac
+
+    init_cmd='eval "$(/usr/bin/serphhenv --init)"'
+
+    # Check if it's already there to prevent duplicates
+    if grep -q "serphhenv --init" "$rc_file" 2>/dev/null; then
+        echo -e "\e[1;33mSerphhEnv is already configured in $rc_file\e[0m"
+    else
+        echo -e "\n# SerphhEnv Initialization\n$init_cmd" >> "$rc_file"
+        echo -e "\e[1;32mSuccessfully added SerphhEnv to $rc_file!\e[0m"
+        echo -e "Please restart your terminal or run: \e[1;36msource $rc_file\e[0m"
+    fi
+    exit 0
+fi
+
+if ! command -v dialog &> /dev/null; then
+    echo "Error: 'dialog' is not installed." >&2
+    exit 1
+fi
+
+LOG_FILE="$HOME/.serphhenv_logs"
+# Allow the wrapper function to hand us a private per-invocation action file
+# so concurrent runs never race on the same /tmp path.
+ACTION_FILE="${SERPHHENV_ACTION_FILE:-/tmp/serphhenv_action_$$}"
+touch "$LOG_FILE" 2>/dev/null
+rm -f "$ACTION_FILE"
+
+# Clean up and restore the terminal on Ctrl+C / kill, instead of leaving
+# dialog's screen state behind or a stale action file.
+cleanup_and_exit() {
+    clear
+    rm -f "$ACTION_FILE"
+    exit 130
+}
+trap cleanup_and_exit INT TERM
+
+SELECTED_PYTHON="python3"
+BACKTITLE=""
+
+# Only match real virtualenv dirs (has pyvenv.cfg); dotglob picks up hidden
+# ones like .venv. nullglob means an empty match list expands to nothing
+# instead of a literal unmatched pattern.
+shopt -s nullglob dotglob
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+get_py_ver() {
+    "$1" -c 'import sys; print(".".join(map(str, sys.version_info[:3])))' 2>/dev/null
+}
+
+is_valid_env_name() {
+    local name="$1"
+    if [ -z "$name" ]; then return 1; fi
+    if [[ "$name" == */* ]]; then return 1; fi        # no path separators
+    if [[ "$name" == .. ]] || [[ "$name" == . ]]; then return 1; fi
+    if [[ "$name" == -* ]]; then return 1; fi          # not read as a flag
+    return 0
+}
+
+# Prints the env's python interpreter path, or nothing if none found.
+env_python_bin() {
+    local envdir="$1"
+    if [ -x "$envdir/bin/python" ]; then
+        echo "$envdir/bin/python"
+    elif [ -x "$envdir/bin/python3" ]; then
+        echo "$envdir/bin/python3"
+    fi
+}
+
+# Scans $PWD for virtualenvs. Sets globals: existing_envs (display string),
+# ENV_OPTIONS (tag/description pairs for dialog --menu / --checklist).
+scan_envs() {
+    existing_envs=""
+    ENV_OPTIONS=()
+    local d env_py_ver
+    for d in */; do
+        if [ "$d" = "./" ] || [ "$d" = "../" ]; then continue; fi
+        if [ -f "${d}pyvenv.cfg" ]; then
+            env_py_ver=$(grep -E "^version( )?=" "${d}pyvenv.cfg" | cut -d'=' -f2 | xargs)
+            if [ -z "$env_py_ver" ]; then
+                env_py_ver=$(grep -E "^version_info( )?=" "${d}pyvenv.cfg" | cut -d'=' -f2 | xargs)
+            fi
+            existing_envs="${existing_envs}[${d%/}] (v${env_py_ver})  "
+            ENV_OPTIONS+=("${d%/}" "Python ${env_py_ver}")
+        fi
+    done
+    if [ -z "$existing_envs" ]; then
+        existing_envs="None detected"
+    fi
+}
+
+refresh_backtitle() {
+    local curr_ver
+    curr_ver=$(get_py_ver "$SELECTED_PYTHON")
+    BACKTITLE="Target: $SELECTED_PYTHON (v${curr_ver:-Unknown})  |  Envs in $(pwd): $existing_envs"
+}
+
+# Presents a menu of detected envs. On success sets global PICKED_ENV and
+# returns 0; on cancel/no-envs, clears PICKED_ENV and returns 1.
+# IMPORTANT: never call this via $(...) - it uses the classic dialog
+# fd-redirection trick internally, which breaks if nested inside another
+# command substitution (the inner "exec 3>&1" would capture the capture
+# pipe instead of the real terminal).
+pick_env() {
+    local title="$1"
+    PICKED_ENV=""
+    scan_envs
+    refresh_backtitle
+    if [ ${#ENV_OPTIONS[@]} -eq 0 ]; then
+        dialog --backtitle "$BACKTITLE" --title " Error " --msgbox "No virtual environments found in this directory." 6 50
+        return 1
+    fi
+    exec 3>&1
+    PICKED_ENV=$(dialog --clear --backtitle "$BACKTITLE" --title " $title " \
+        --menu "Select an environment:" 15 55 6 "${ENV_OPTIONS[@]}" 2>&1 1>&3)
+    local st=$?
+    exec 3>&-
+    if [ $st -ne 0 ] || [ -z "$PICKED_ENV" ]; then
+        PICKED_ENV=""
+        return 1
+    fi
+    return 0
+}
+
+# Literal (non-regex) find/replace of $1 -> $2 across all text files under
+# directory $3. Used to fix absolute paths baked into activate scripts and
+# shebang lines after a rename/move.
+fixup_venv_paths() {
+    local old="$1" new="$2" dir="$3" f content
+    while IFS= read -r -d '' f; do
+        if grep -Iq . "$f" 2>/dev/null; then
+            content=$(<"$f")
+            if [[ "$content" == *"$old"* ]]; then
+                content="${content//$old/$new}"
+                printf '%s' "$content" > "$f"
+            fi
+        fi
+    done < <(find "$dir" -type f -print0 2>/dev/null)
+}
+
+# ---------------------------------------------------------------------------
+# Environment management actions (Delete / Rename / Info / Packages / etc.)
+# ---------------------------------------------------------------------------
+
+delete_env_action() {
+    pick_env "Delete Environment" || return
+    local sel="$PICKED_ENV"
+    local target="$PWD/$sel"
+
+    if [ -n "${VIRTUAL_ENV:-}" ] && [ "$VIRTUAL_ENV" = "$target" ]; then
+        dialog --backtitle "$BACKTITLE" --title " Cannot Delete " \
+            --msgbox "'$sel' is currently active in your shell.\n\nDeactivate it first, then try again." 8 55
+        return
+    fi
+
+    dialog --backtitle "$BACKTITLE" --title " Confirm Delete " \
+        --yesno "Permanently delete '$sel'?\n\nThis cannot be undone." 8 50
+    if [ $? -eq 0 ]; then
+        rm -rf "./$sel"
+        echo "$(date '+%Y-%m-%d %H:%M:%S') | $target | DELETED" >> "$LOG_FILE"
+        dialog --backtitle "$BACKTITLE" --title " Deleted " --msgbox "Environment '$sel' deleted." 6 40
+    fi
+}
+
+rename_env_action() {
+    pick_env "Rename / Move Environment" || return
+    local sel="$PICKED_ENV"
+
+    exec 3>&1
+    local newname
+    newname=$(dialog --clear --backtitle "$BACKTITLE" --title " Rename Environment " \
+        --inputbox "New name for '$sel':" 8 50 "$sel" 2>&1 1>&3)
+    local st=$?
+    exec 3>&-
+    if [ $st -ne 0 ] || [ -z "$newname" ] || [ "$newname" = "$sel" ]; then return; fi
+
+    if ! is_valid_env_name "$newname"; then
+        dialog --backtitle "$BACKTITLE" --title " Invalid Name " \
+            --msgbox "Name can't contain '/', be '.' or '..', or start with '-'." 7 55
+        return
+    fi
+    if [ -e "./$newname" ]; then
+        dialog --backtitle "$BACKTITLE" --title " Error " --msgbox "'$newname' already exists." 6 40
+        return
+    fi
+
+    local old_abs="$PWD/$sel"
+    local new_abs="$PWD/$newname"
+
+    if [ -n "${VIRTUAL_ENV:-}" ] && [ "$VIRTUAL_ENV" = "$old_abs" ]; then
+        dialog --backtitle "$BACKTITLE" --title " Cannot Rename " \
+            --msgbox "'$sel' is currently active in your shell.\n\nDeactivate it first, then try again." 8 55
+        return
+    fi
+
+    mv "./$sel" "./$newname"
+    # venv activation scripts and shebang lines bake in the absolute path;
+    # fix them up so the moved env still works.
+    fixup_venv_paths "$old_abs" "$new_abs" "./$newname"
+
+    echo "$(date '+%Y-%m-%d %H:%M:%S') | $old_abs -> $new_abs | RENAMED" >> "$LOG_FILE"
+    dialog --backtitle "$BACKTITLE" --title " Renamed " \
+        --msgbox "Renamed '$sel' to '$newname' and fixed internal paths." 7 55
+}
+
+show_env_details_action() {
+    pick_env "Show Environment Details" || return
+    local sel="$PICKED_ENV"
+    local envdir="$PWD/$sel"
+    local pybin
+    pybin=$(env_python_bin "$envdir")
+
+    local tmpfile
+    tmpfile=$(mktemp) || return
+    {
+        echo "Environment : $sel"
+        echo "Location    : $envdir"
+        if [ -f "$envdir/pyvenv.cfg" ]; then
+            echo "Python ver  : $(grep -E '^version' "$envdir/pyvenv.cfg" | head -1 | cut -d'=' -f2 | xargs)"
+        fi
+        echo "Disk usage  : $(du -sh "$envdir" 2>/dev/null | cut -f1)"
+        if [ -n "${VIRTUAL_ENV:-}" ] && [ "$VIRTUAL_ENV" = "$envdir" ]; then
+            echo "Status      : ACTIVE in this shell"
+        fi
+        echo
+        if [ -n "$pybin" ]; then
+            echo "Installed packages:"
+            echo "-------------------"
+            "$pybin" -m pip list --format=freeze 2>/dev/null
+        else
+            echo "WARNING: no python interpreter found in this environment (it may be broken)."
+        fi
+    } > "$tmpfile"
+    dialog --clear --backtitle "$BACKTITLE" --title " Details: $sel " --textbox "$tmpfile" 24 75
+    rm -f "$tmpfile"
+}
+
+install_requirements_action() {
+    pick_env "Install Requirements Into" || return
+    local sel="$PICKED_ENV"
+    local envdir="$PWD/$sel"
+    local pybin
+    pybin=$(env_python_bin "$envdir")
+    if [ -z "$pybin" ]; then
+        dialog --backtitle "$BACKTITLE" --title " Error " --msgbox "No usable python interpreter found in '$sel'." 6 55
+        return
+    fi
+
+    local req_files=()
+    local f
+    for f in *requirements*.txt; do
+        req_files+=("$f")
+    done
+
+    local req_choice
+    if [ ${#req_files[@]} -eq 0 ]; then
+        dialog --backtitle "$BACKTITLE" --title " Not Found " --msgbox "No requirements*.txt file found in $(pwd)." 6 55
+        return
+    elif [ ${#req_files[@]} -eq 1 ]; then
+        req_choice="${req_files[0]}"
+    else
+        local rf_options=()
+        for f in "${req_files[@]}"; do rf_options+=("$f" ""); done
+        exec 3>&1
+        req_choice=$(dialog --clear --backtitle "$BACKTITLE" --title " Select Requirements File " \
+            --menu "Multiple files found:" 15 55 6 "${rf_options[@]}" 2>&1 1>&3)
+        local st=$?
+        exec 3>&-
+        if [ $st -ne 0 ] || [ -z "$req_choice" ]; then return; fi
+    fi
+
+    clear
+    echo -e "\e[1;36mInstalling from $req_choice into $sel...\e[0m\n"
+    "$pybin" -m pip install -r "$req_choice"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') | $envdir | INSTALLED from $req_choice" >> "$LOG_FILE"
+    echo -e "\n\e[1;33mPress Enter to return...\e[0m"
+    read -r
+}
+
+export_requirements_action() {
+    pick_env "Export Packages From" || return
+    local sel="$PICKED_ENV"
+    local envdir="$PWD/$sel"
+    local pybin
+    pybin=$(env_python_bin "$envdir")
+    if [ -z "$pybin" ]; then
+        dialog --backtitle "$BACKTITLE" --title " Error " --msgbox "No usable python interpreter found in '$sel'." 6 55
+        return
+    fi
+
+    exec 3>&1
+    local outname
+    outname=$(dialog --clear --backtitle "$BACKTITLE" --title " Export Requirements " \
+        --inputbox "Save as:" 8 50 "requirements.txt" 2>&1 1>&3)
+    local st=$?
+    exec 3>&-
+    if [ $st -ne 0 ] || [ -z "$outname" ]; then return; fi
+
+    "$pybin" -m pip freeze > "$outname" 2>/dev/null
+    echo "$(date '+%Y-%m-%d %H:%M:%S') | $envdir | EXPORTED to $outname" >> "$LOG_FILE"
+    dialog --backtitle "$BACKTITLE" --title " Exported " --msgbox "Package list saved to '$outname'." 6 50
+}
+
+detect_broken_envs_action() {
+    scan_envs
+    refresh_backtitle
+    if [ ${#ENV_OPTIONS[@]} -eq 0 ]; then
+        dialog --backtitle "$BACKTITLE" --title " Info " --msgbox "No environments found." 6 40
+        return
+    fi
+
+    local broken=() i=0 name envdir pybin
+    while [ $i -lt ${#ENV_OPTIONS[@]} ]; do
+        name="${ENV_OPTIONS[$i]}"
+        envdir="$PWD/$name"
+        pybin=$(env_python_bin "$envdir")
+        if [ -z "$pybin" ]; then
+            broken+=("$name" "missing/broken python interpreter" "off")
+        fi
+        i=$((i + 2))
+    done
+
+    if [ ${#broken[@]} -eq 0 ]; then
+        dialog --backtitle "$BACKTITLE" --title " All Good " --msgbox "No broken environments detected." 6 45
+        return
+    fi
+
+    exec 3>&1
+    local selected
+    selected=$(dialog --clear --backtitle "$BACKTITLE" --title " Broken Environments " \
+        --checklist "Select environments to delete:" 15 60 6 "${broken[@]}" 2>&1 1>&3)
+    local st=$?
+    exec 3>&-
+    if [ $st -ne 0 ] || [ -z "$selected" ]; then return; fi
+
+    dialog --backtitle "$BACKTITLE" --title " Confirm " \
+        --yesno "Delete the selected broken environment(s)?\n\nThis cannot be undone." 7 55
+    if [ $? -eq 0 ]; then
+        local selected_arr
+        eval "selected_arr=($selected)"
+        local n
+        for n in "${selected_arr[@]}"; do
+            rm -rf "./$n"
+            echo "$(date '+%Y-%m-%d %H:%M:%S') | $PWD/$n | DELETED (broken)" >> "$LOG_FILE"
+        done
+        dialog --backtitle "$BACKTITLE" --title " Done " --msgbox "Broken environment(s) removed." 6 40
+    fi
+}
+
+manage_environments_menu() {
+    while true; do
+        scan_envs
+        refresh_backtitle
+        exec 3>&1
+        MCHOICE=$(dialog --clear --backtitle "$BACKTITLE" --title " Manage Environments " --cancel-label "Back" \
+            --menu "Select an action:" 18 65 6 \
+            "1" "Delete an environment" \
+            "2" "Rename / Move an environment" \
+            "3" "Show details & installed packages" \
+            "4" "Install packages from requirements.txt" \
+            "5" "Export installed packages to a file" \
+            "6" "Detect & clean broken environments" 2>&1 1>&3)
+        st=$?
+        exec 3>&-
+        if [ $st -ne 0 ]; then return; fi
+        case $MCHOICE in
+            1) delete_env_action ;;
+            2) rename_env_action ;;
+            3) show_env_details_action ;;
+            4) install_requirements_action ;;
+            5) export_requirements_action ;;
+            6) detect_broken_envs_action ;;
+        esac
+    done
+}
+
+# ---------------------------------------------------------------------------
+# Main menu
+# ---------------------------------------------------------------------------
+
+while true; do
+    scan_envs
+    refresh_backtitle
+
+    MENU_OPTIONS=(
+        "1" "Activate an existing environment here"
+        "2" "Create or Re-create environment"
+        "3" "Manage environments (delete, rename, info, packages)"
+        "4" "Change target Python version"
+        "5" "Install older Python from AUR"
+        "6" "View logbook history"
+    )
+    if [ -n "${VIRTUAL_ENV:-}" ]; then
+        MENU_OPTIONS+=("7" "Deactivate current environment ($(basename "$VIRTUAL_ENV"))")
+    fi
+
+    exec 3>&1
+    CHOICE=$(dialog --clear --backtitle "$BACKTITLE" \
+        --title " SerphhEnv - VENV Manager " \
+        --cancel-label "Exit" \
+        --menu "Select an action:" 18 70 7 \
+        "${MENU_OPTIONS[@]}" 2>&1 1>&3)
+    exit_status=$?
+    exec 3>&-
+
+    if [ $exit_status -ne 0 ]; then
+        clear
+        break
+    fi
+
+    case $CHOICE in
+        1)
+            pick_env "Select Environment to Activate" || continue
+            dialog --clear --backtitle "$BACKTITLE" --title " Confirm Activation " \
+                --yesno "Activate the environment '$PICKED_ENV'?\n\nChoose Yes to confirm and exit, or No to go back." 8 50
+            if [ $? -eq 0 ]; then
+                echo "$PWD/$PICKED_ENV/bin/activate" > "$ACTION_FILE"
+                clear
+                break
+            fi
+            ;;
+        2)
+            exec 3>&1
+            ENV_NAME=$(dialog --clear --backtitle "$BACKTITLE" \
+                --title " Create Environment " \
+                --inputbox "Enter environment name:" 8 45 ".venv" 2>&1 1>&3)
+            exit_status=$?
+            exec 3>&-
+
+            if [ $exit_status -eq 0 ] && [ -n "$ENV_NAME" ]; then
+                if ! is_valid_env_name "$ENV_NAME"; then
+                    dialog --backtitle "$BACKTITLE" --title " Invalid Name " \
+                        --msgbox "Environment name can't contain '/', be '.' or '..', or start with '-'." 7 55
+                    continue
+                fi
+
+                if [ -d "$ENV_NAME" ]; then
+                    dialog --clear --backtitle "$BACKTITLE" --title " Directory Exists " \
+                        --yesno "Directory '$ENV_NAME' already exists.\n\nDo you want to DELETE and re-create it with $SELECTED_PYTHON?" 8 55
+                    if [ $? -eq 0 ]; then
+                        rm -rf "./$ENV_NAME"
+                    else
+                        continue
+                    fi
+                fi
+
+                dialog --backtitle "$BACKTITLE" --infobox "Creating environment '$ENV_NAME' using $SELECTED_PYTHON...\n\nPlease wait." 5 50
+                if "$SELECTED_PYTHON" -m venv "./$ENV_NAME" > /dev/null 2>&1; then
+                    echo "$(date '+%Y-%m-%d %H:%M:%S') | $PWD/$ENV_NAME | $("$SELECTED_PYTHON" --version 2>&1)" >> "$LOG_FILE"
+
+                    dialog --clear --backtitle "$BACKTITLE" --title " Success & Activate " \
+                        --yesno "Environment '$ENV_NAME' created successfully!\n\nDo you want to activate this environment now?" 8 55
+                    if [ $? -eq 0 ]; then
+                        echo "$PWD/$ENV_NAME/bin/activate" > "$ACTION_FILE"
+                        clear
+                        break
+                    else
+                        continue
+                    fi
+                else
+                    dialog --backtitle "$BACKTITLE" --title " Error " --msgbox "Failed to create environment." 6 40
+                fi
+            fi
+            ;;
+        3)
+            manage_environments_menu
+            ;;
+        4)
+            declare -A seen_py_paths=()
+            py_options=()
+            py_options+=("python3" "System Default (v$(get_py_ver 'python3'))")
+            seen_py_paths["$(command -v python3 2>/dev/null)"]=1
+
+            for py in /usr/bin/python3.[0-9]*; do
+                [ -x "$py" ] || continue
+                # skip duplicates (e.g. python3.12 that's just a symlink to python3)
+                resolved="$(readlink -f "$py" 2>/dev/null || echo "$py")"
+                if [ -n "${seen_py_paths[$resolved]:-}" ]; then continue; fi
+                seen_py_paths[$resolved]=1
+                py_options+=("$py" "v$(get_py_ver "$py")")
+            done
+
+            exec 3>&1
+            NEW_PY=$(dialog --clear --backtitle "$BACKTITLE" \
+                --title " Select Target Python " \
+                --menu "Choose the Python version to use for new envs:" 15 60 8 \
+                "${py_options[@]}" 2>&1 1>&3)
+            exit_status=$?
+            exec 3>&-
+
+            if [ $exit_status -eq 0 ] && [ -n "$NEW_PY" ]; then
+                SELECTED_PYTHON="$NEW_PY"
+            fi
+            unset seen_py_paths
+            ;;
+        5)
+            exec 3>&1
+            AUR_TARGET=$(dialog --clear --backtitle "$BACKTITLE" \
+                --title " Install from AUR " \
+                --menu "Select Python version to install:" 12 50 3 \
+                "python310" "Python 3.10" \
+                "python311" "Python 3.11" \
+                "python312" "Python 3.12" 2>&1 1>&3)
+            exit_status=$?
+            exec 3>&-
+
+            if [ $exit_status -eq 0 ] && [ -n "$AUR_TARGET" ]; then
+                if command -v yay &>/dev/null; then
+                    aur_helper="yay"
+                elif command -v paru &>/dev/null; then
+                    aur_helper="paru"
+                else
+                    dialog --title " Error " --msgbox "No AUR helper (yay or paru) found. (This option is Arch-only.)" 6 55
+                    continue
+                fi
+
+                clear
+                echo -e "\e[1;36mInstalling $AUR_TARGET using $aur_helper...\e[0m\n"
+                "$aur_helper" -S "$AUR_TARGET"
+
+                echo -e "\n\e[1;33mPress Enter to return...\e[0m"
+                read -r
+            fi
+            ;;
+        6)
+            if [ -s "$LOG_FILE" ]; then
+                dialog --clear --backtitle "$BACKTITLE" --title " SerphhEnv Logbook " --textbox "$LOG_FILE" 20 75
+            else
+                dialog --clear --backtitle "$BACKTITLE" --title " Logbook " --msgbox "No environments have been created yet." 6 45
+            fi
+            ;;
+        7)
+            if [ -n "${VIRTUAL_ENV:-}" ]; then
+                echo "__DEACTIVATE__" > "$ACTION_FILE"
+                clear
+                break
+            fi
+            ;;
+    esac
+done
+clear

@@ -1,0 +1,15 @@
+pkgbase = serphhenv
+	pkgdesc = A powerful dialog-based TUI for managing Python virtualenvs
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/theserphh/serphhenv
+	install = serphhenv.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = python
+	depends = dialog
+	source = serphhenv
+	sha256sums = SKIP
+
+pkgname = serphhenv
