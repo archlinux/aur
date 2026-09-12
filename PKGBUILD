@@ -1,7 +1,7 @@
 # Maintainer: chiconcota <git@github.com:chiconcota>
 pkgname=fcitx5-lilypad-git
 _pkgname=fcitx5-lilypad
-pkgver=2.3.1.r0.gc41892e
+pkgver=2.3.6.r0.gc41892e
 pkgrel=1
 pkgdesc="Modern, hyper-fast Vietnamese Telex/VNI Input Method for Fcitx5 (Wayland/X11)"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ pkgver() {
   if git describe --long --tags >/dev/null 2>&1; then
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   else
-    printf "2.3.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "2.3.6.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   fi
 }
 
