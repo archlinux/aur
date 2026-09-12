@@ -1,15 +1,20 @@
 # Maintainer: Simon Schubert <simon@librem.one>
 pkgname=moarchy-habits
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Habit tracking for a Linux phone, kept on the device"
 arch=('any')
 url="https://github.com/SimonSchubert/moarchy-apps"
 license=('MIT')
 # Pure Python, so arch=any. The GUI stack is all runtime, nothing is compiled.
-depends=('python' 'python-gobject' 'gtk4' 'libadwaita')
+# python-cairo is for the today-ring, which is drawn rather than laid out.
+# It is already on the phone image, so it adds nothing there -- but an
+# undeclared dependency does not fail, it just silently draws nothing, which
+# is how the ring came to be missing from every screenshot taken in a
+# container that did not have it.
+depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'python-cairo')
 source=("$url/releases/download/habits-v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e0604fc8285f4910a51e6f314519e0b6ae4972b0c0de6e5a2c15d30bd65fbb57')
+sha256sums=('52d2a8ae1ef4595330262ce6fd84a45dc130caf68aa7c755b4edfc4dc525f7e4')
 
 # The source tarball is assembled by packaging/release.sh from two subtrees of
 # one tag -- apps/habits and shared -- so it holds this app and the shared code
