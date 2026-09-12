@@ -6,3 +6,4 @@ d /var/cache/audiomuse-ai-worker/numba 0750 audiomuse-worker audiomuse-worker -
 d /var/cache/audiomuse-ai-worker/clap 0750 audiomuse-worker audiomuse-worker -
 d /var/cache/audiomuse-ai-worker/lyrics 0750 audiomuse-worker audiomuse-worker -
 d /var/tmp/audiomuse-ai-worker 0750 audiomuse-worker audiomuse-worker -
+d /var/log/audiomuse-ai-worker 0750 audiomuse-worker audiomuse-worker -
