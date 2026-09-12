@@ -9,7 +9,7 @@ _curlver=8.22.0
 _sslver=3.6.4
 _brotliver=1.2.0
 _zlibver=1.3.2
-_xzver=5.8.3
+_xzver=5.8.4
 _bzipver=1.0.8
 _zstdver=1.5.7
 _libarchive_ver=3.8.9
@@ -17,12 +17,12 @@ _gpgerrorver=1.61
 _libassuanver=3.0.0
 _gpgmever=2.2.0
 _libseccompver=2.6.0
-pkgrel=18
+pkgrel=19
 # use annotated tag and patch level commit from release branch (can be empty for no patches)
 _git_tag=7.1.0
 _git_patch_level_commit=54d94116164b0b2202c6061c4a59c6f3e70820d8
 pkgdesc="Statically-compiled pacman (to fix or install systems without libc)"
-arch=('i486' 'i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL-2.0-or-later')
 depends=('pacman')
@@ -187,7 +187,7 @@ prepare() {
     cd "${srcdir}"/openssl-${_sslver}
     patch -Np1 -i "${srcdir}/ca-dir.patch"
     case ${CARCH} in
-        arm|armv6h|armv7h)
+        armv6h|armv7h)
             # special patch to omit -latomic when installing pkgconfig files
             msg2 "Applying openssl patch openssl-3.0.7-no-atomic.patch..."
             patch -Np1 -i "${srcdir}/openssl-3.0.7-no-atomic.patch"
@@ -253,7 +253,7 @@ build() {
             openssltarget='linux-elf'
             optflags='386 no-threads'
             ;;
-        arm|armv6h|armv7h)
+        armv6h|armv7h)
             openssltarget='linux-armv4'
             optflags=''
             ;;
