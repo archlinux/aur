@@ -15,7 +15,7 @@ source=(
 )
 sha256sums=(
     SKIP
-    adaf7ce12ccead24b2321d4343a638f4e9cdc82060e64f17c816278a474bf4b0
+    e2a1f92be32c26c2fac0d04ed8ff9968adeb2badcd53f85af47940edbe91aeb6
     193c74c29454f4412be2bdb4e86115029d378d88537104bb94843fbc189c69fe
 )
 
@@ -42,6 +42,9 @@ build() {
 package() {
     # Install binary
     install -Dm0755 -t "$pkgdir/usr/bin" "$srcdir/linuxmix/target/release/linuxmix"
+
+    # Install controller
+    install -Dm0755 -t "$pkgdir/usr/bin" "$srcdir/linuxmix/target/release/linuxmixctl"
 
     # Install service
     install -Dm0755 -t "$pkgdir/usr/lib/systemd/user/" "$srcdir/linuxmix.service"

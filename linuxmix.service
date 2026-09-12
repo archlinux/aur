@@ -4,6 +4,7 @@ ConditionUser=!root
 
 [Service]
 ExecStart=/usr/bin/linuxmix
+ExecStop=/usr/bin/linuxmixctl -d
 Restart=always
 
 [Install]
