@@ -478,7 +478,7 @@ package() {
   mkdir -p "${pkgdir}/${UE_INSTALL_DIR}/Engine/Binaries/Android/"
   
   # Launch script to initialize missing user folders for Unreal Engine
-  install -Dm755 ../unreal-engine.sh "${pkgdir}/usr/bin/unreal-engine"
+  install -Dm755 "${srcdir}/unreal-engine.sh" "${pkgdir}/usr/bin/unreal-engine"
   chmod +x "${pkgdir}/usr/bin/unreal-engine"
   ln -s "${pkgdir}/usr/bin/unreal-engine" "${pkgdir}/usr/bin/ue5"
   ln -s "${pkgdir}/usr/bin/unreal-engine" "${pkgdir}/usr/bin/UE5"
