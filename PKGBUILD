@@ -11,7 +11,7 @@ pkgname=uniclipboard-git
 _pkgname=uniclipboard
 # pkgver 是 AUR web 上展示用的 snapshot；makepkg 实际编译时调用下方 pkgver() 重算。
 # CI 在 push 前会用 git describe 的当前值 sed 替换，保持 web 视图不过期。
-pkgver=0.14.0.alpha.4.r66.gb2202de
+pkgver=1.0.0.alpha.10.r4.g3ba5276
 pkgrel=1
 pkgdesc="Real-time clipboard sync across macOS, Windows and Linux — local-first, peer-to-peer, and end-to-end encrypted"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ license=('AGPL-3.0-only')
 # Tauri 2 + webkit2gtk-4.1 运行链 + 系统托盘需要的 appindicator + 桌面通知。
 # tauri.conf.json 的 .deb depends 只列了 appindicator，是因为 .deb 工具会自动
 # 从 ELF 反查共享库依赖；PKGBUILD 不会，所以必须显式列全。
-depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'libnotify')
+depends=('webkit2gtk-4.1' 'gtk3' 'gtk-layer-shell' 'libayatana-appindicator' 'libnotify')
 # bun 在 Arch [extra]；rust 也在 [extra]（不要写 rustup，那是 AUR 包且需要再装 toolchain）。
 makedepends=('git' 'rust' 'nodejs' 'bun' 'pkgconf')
 provides=("$_pkgname" "$_pkgname=$pkgver")
