@@ -1,6 +1,6 @@
 # Maintainer: Anna Rose Wiggins <annabunches at gmail dot com>
 pkgname=joyful
-pkgver=0.1.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Joystick remapper"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('go>=1.24')
 checkdepends=('go>=1.24')
 options=(!debug)
 source=("$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('fded3458cb4dd9be7adfdfc7f14b1752b00f4c80167a15ccf20383c9166d9e1f')
+sha256sums=('9f1e91ed5394b8d7c563bf9b0337388ef8ad0e6bf5cebe95aef50036b5d05590')
 
 build() {
     cd "$pkgname"
