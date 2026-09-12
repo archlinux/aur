@@ -1,6 +1,9 @@
 --- a/tasks/clap_analyzer.py
 +++ b/tasks/clap_analyzer.py
-@@ -250,8 +250,24 @@ def _load_tokenizer():
+@@ -251,11 +251,27 @@
+ 
+ 
+ def _load_tokenizer():
 -    from transformers import AutoTokenizer
 +    from huggingface_hub import hf_hub_download
 +    from transformers import PreTrainedTokenizerFast
