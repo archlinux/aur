@@ -1,7 +1,7 @@
 pkgbase = mongosh-git
 	pkgdesc = The MongoDB Shell.
 	pkgver = 5.2.4.r1.gf5a5b10e7
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/mongodb-js/mongosh
 	arch = x86_64
 	arch = aarch64
