@@ -1,0 +1,33 @@
+pkgbase = python-aerospike
+	pkgdesc = Aerospike Client Library for Python
+	pkgver = 19.2.1
+	pkgrel = 1
+	url = https://github.com/aerospike/aerospike-client-python
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-versioningit
+	makedepends = python-parver
+	depends = glibc
+	depends = libyaml
+	depends = openssl
+	depends = zlib
+	depends = python
+	provides = python-aerospike
+	conflicts = python-aerospike
+	source = aerospike::git+https://github.com/aerospike/aerospike-client-python.git#tag=19.2.1
+	source = aerospike-client-c::git+https://github.com/aerospike/aerospike-client-c.git
+	source = common::git+https://github.com/aerospike/aerospike-common.git
+	source = mod-lua::git+https://github.com/aerospike/aerospike-mod-lua.git
+	source = lua::git+https://github.com/aerospike/lua.git
+	sha256sums = b6f06a236d96601b074c31eb168b864859884a27ccd34ed50802c5f5eb51464a
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = python-aerospike
