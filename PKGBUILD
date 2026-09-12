@@ -2,13 +2,13 @@
 # Contributor: Iswad
 
 pkgname=touchdesigner-linux
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Run TouchDesigner on Linux"
 arch=('x86_64')
 url="https://github.com/ismail-bahloul/TouchDesigner-Linux"
 license=('custom:custom')
-_td_ver=2025.33070
+_td_ver=2025.33230
 
 depends=(
     'python' 'git' 'curl' 'wget' 'tar' 'xz'
