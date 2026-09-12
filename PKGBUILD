@@ -1,20 +1,19 @@
 # Maintainer: stormix <hello@stormix.co>
 pkgname=deadlock-modmanager
 pkgdesc='A mod manager for the Valve game Deadlock'
-_pkgver=1.0.0
+_pkgver=1.1.0
 pkgver=${_pkgver}
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/deadlock-mod-manager/deadlock-mod-manager'
 license=('GPL-3.0-only')
-makedepends=('cargo' 'cargo-tauri' 'pnpm' 'lld' 'gcc')
+makedepends=('cargo' 'cargo-tauri' 'pnpm' 'protobuf')
 depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2'
          'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme'
-         'gst-plugins-good')
+         'gst-plugins-good' 'glibc' 'libgcc' 'libstdc++' 'dbus')
 conflicts=('deadlock-modmanager-bin' 'deadlock-modmanager-git')
-options=('!lto')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/deadlock-mod-manager/deadlock-mod-manager/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('51b3025c34ccbdd6841e320fe344bf23ee0e6cc8f0e384f0b9113b83dec1b94d')
+sha256sums=('d37f382cc3708ed6cd2de12e43fc92f0f00eb96bcbd711659e773118c10a31b1')
 
 prepare() {
     cd "${srcdir}/deadlock-mod-manager-${_pkgver}/apps/desktop"
@@ -25,9 +24,10 @@ prepare() {
 }
 
 build() {
-    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=lld"
     export CC=gcc
     export CXX=g++
+    export CFLAGS+=" -ffat-lto-objects"
+    export CXXFLAGS+=" -ffat-lto-objects"
     export CARGO_TARGET_DIR=target
     export VITE_API_URL="https://api.deadlockmods.app"
     export VITE_WEB_URL="https://deadlockmods.app"
