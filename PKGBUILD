@@ -2,7 +2,7 @@
 # Upstream: https://github.com/zeozeozeo/teacrush
 pkgname=teacrush-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Bubble Tea TUI for compressing videos down to a target size (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/zeozeozeo/teacrush'
