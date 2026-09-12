@@ -1,7 +1,7 @@
 # Maintainer: jin <mail@nvimer.org>
 pkgname=deepseek-reasonix-desktop
 pkgver=1.38.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Reasonix desktop — an Electron shell around the DeepSeek-native AI coding agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/esengine/DeepSeek-Reasonix"
@@ -101,10 +101,11 @@ package() {
     ln -s ../lib/reasonix/reasonix-desktop "$pkgdir/usr/bin/reasonix-desktop"
     ln -s ../lib/reasonix/reasonix-launcher "$pkgdir/usr/bin/reasonix-launcher"
     chmod 4755 "$pkgdir/usr/lib/reasonix/app/chrome-sandbox"
+    # Native Wayland windows identify as "reasonix"; desktop IDs are case-sensitive.
     install -Dm644 desktop/build/linux/reasonix.desktop \
-        "$pkgdir/usr/share/applications/Reasonix.desktop"
+        "$pkgdir/usr/share/applications/reasonix.desktop"
     sed -i 's/^StartupWMClass=.*/StartupWMClass=Reasonix/' \
-        "$pkgdir/usr/share/applications/Reasonix.desktop"
+        "$pkgdir/usr/share/applications/reasonix.desktop"
     for _icon in desktop/build/linux/icons/hicolor/*/apps/reasonix-desktop.*; do
         _dir="$(basename "$(dirname "$(dirname "$_icon")")")"
         install -Dm644 "$_icon" "$pkgdir/usr/share/icons/hicolor/$_dir/apps/$(basename "$_icon")"
