@@ -4,10 +4,10 @@
 #
 
 export CONFIG_KSU := m
+export CONFIG_KSU_X86_PATCH_SYSCALL_DISPATCHER := y
 export CONFIG_KSU_NON_ANDROID := y
 export CONFIG_KSU_SELINUX := n
 export CONFIG_KSU_DEBUG := n
-export CONFIG_KSU_HANDLE_INPUT_EVENTS := n
 
 KDIR ?= /lib/modules/$(KVERSION)/build
 

@@ -3,17 +3,17 @@
 
 _pkg=kernelsu
 pkgname=${_pkg}-dkms
-pkgver=3.1.0+80+g489cb029
+pkgver=3.3.0+7+gfde078c9
 _ver=$pkgver
 pkgrel=1
-_branch=waydroid
+_branch=waydroid-experimental
 pkgdesc="A Kernel based root solution for Android. DKMS module for Container-based solutions such as Waydroid."
 arch=('any')
 url="https://github.com/supechicken/KernelSU"
 _upstream="https://github.com/tiann/$_pkg.git"
 license=('GPL-2.0-only')
-depends=('modloader' 'dkms')
-makedepends=('git')
+depends=('dkms')
+makedepends=('git' 'rust' 'cargo')
 options=('!strip' '!emptydirs')
 
 # Using custom download agent to shallow clone the repo
@@ -119,67 +119,69 @@ chmod +x DLAGENTS
 export DLAGENTS="shallowclone::$(realpath "./DLAGENTS") %u %o"
 
 source=(
-  "${_pkg}::git+${url}#branch=waydroid"
-  'Makefile'
-  'dkms.conf'
-  '00-kernelsu.conf'
-  'load-kernelsu.in'
+	"${_pkg}::git+${url}#branch=${_branch}"
+	'Makefile'
+	'dkms.conf'
+	'00-kernelsu.conf'
 )
 
 sha256sums=(
-  'SKIP'
-  '2fcfe32b430eaef04dfe406ff89bec9580cf499d387d730b933f46195c68f28d'
-  '3eaeaf5a2a5442204ae0cad3c4c25855a90e4e683da56579cc7eb2bada42ccb9'
-  '05feaafbbac794a68c7eeea8c0a4c5616fc9f6ef7e4b7540baf3f5d43fad5fb0'
-  'f01d10fbcfba1b83134746ccfdc7ef4ceb61fa43593b94f039eac3469637429c'
+	'SKIP'
+	'd71e7580f548e48f234c403ba9a06baa5504473901b65f54a6cbea3b0219c5ca'
+	'3eaeaf5a2a5442204ae0cad3c4c25855a90e4e683da56579cc7eb2bada42ccb9'
+	'05feaafbbac794a68c7eeea8c0a4c5616fc9f6ef7e4b7540baf3f5d43fad5fb0'
 )
 
 pkgver() {
-  cd "$srcdir/$_pkg"
-  
-  {
-    if ! git remote add upstream "${_upstream}" 2>/dev/null; then
-      git remote set-url upstream "${_upstream}"
-    fi
-    git fetch --tags upstream v${_ver%%'+'*}
-    git fetch --unshallow --no-tags origin "$_branch" || :
-  } >/dev/null 2>&1
+	cd "$srcdir/$_pkg"
 
-  git describe --long --tags | sed 's#v##;s#-RC#.rc#;s#-#+#g'
+	{
+		if ! git remote add upstream "${_upstream}" 2>/dev/null; then
+			git remote set-url upstream "${_upstream}"
+		fi
+		git fetch --tags upstream v${_ver%%'+'*}
+		git fetch --unshallow --no-tags origin "$_branch" || :
+	} >/dev/null 2>&1
+
+	git describe --long --tags | sed 's#v##;s#-RC#.rc#;s#-#+#g'
+}
+
+build() {
+	cd "$srcdir/$_pkg/userspace/ksuinit"
+	cargo build --release --target-dir .
 }
 
 package() {
-  local dest="$pkgdir/usr/src/kernelsu-${pkgver}"
-  mkdir -p "$dest"
+	local dest="$pkgdir/usr/src/kernelsu-${pkgver}"
+	mkdir -p "$dest"
 
-  cd "$srcdir"
-  cp -rpt "$dest" "${_pkg}/kernel/."
+	cd "$srcdir"
+	cp -rpt "$dest" "${_pkg}/kernel/."
 
-  cd "$_pkg"
+	cd "$_pkg"
 
-  local _major _count _realver
-  _major=${pkgver%%.*}
-  _count=$(git rev-list --count HEAD 2>/dev/null)
-  _realver=$((_major * 10000 + _count))
+	local _major _count _realver
+	_major=${pkgver%%.*}
+	_count=$(git rev-list --count HEAD 2>/dev/null)
+	_realver=$((_major * 10000 + _count))
 
-  local buildfile=kernel/Kbuild
-  if [ ! -f "$buildfile" ]; then
-    buildfile=kernel/Makefile
-  fi
+	local buildfile=kernel/Kbuild
+	if [ ! -f "$buildfile" ]; then
+		buildfile=kernel/Makefile
+	fi
 
+	cd "$srcdir"
 
-  cd "$srcdir"
+	sed "s|@PKGVER@|${pkgver}|g;\
+    s|@KSU_GIT_VERSION@|${_count}|g;" "$(readlink -f dkms.conf)" >"$dest/dkms.conf"
 
-  sed "s|@PKGVER@|${pkgver}|g;\
-    s|@KSU_GIT_VERSION@|${_count}|g;" "$(readlink -f dkms.conf)" > "$dest/dkms.conf"
+	install -Dm644 "$(readlink -f Makefile)" "$dest/Makefile"
 
-  install -Dm644 "$(readlink -f Makefile)" "$dest/Makefile"
+	# Install module config
+	mkdir -p "$pkgdir/etc/modprobe.d"
+	install -Dm644 "$(readlink -f 00-kernelsu.conf)" "$pkgdir/etc/modprobe.d/"
 
-  # Install module config
-  mkdir -p "$pkgdir/etc/modprobe.d"
-  install -Dm644 "$(readlink -f 00-kernelsu.conf)" "$pkgdir/etc/modprobe.d/"
-
-  # Install load script
-  mkdir -p "$pkgdir/usr/bin"
-  install -Dm755 "$(readlink -f load-kernelsu.in)" "$pkgdir/usr/bin/load-kernelsu"
+	# Install loader
+	cd "$srcdir/$_pkg/userspace/ksuinit"
+  install -Dm755 release/ksuinit "$pkgdir/usr/bin/kernelsu-loader"
 }
