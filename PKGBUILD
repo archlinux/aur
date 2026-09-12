@@ -1,7 +1,7 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 
 pkgname=g0v0
-pkgver=2026.910.2
+pkgver=2026.912.0
 pkgrel=1
 pkgdesc="g0v0! -- free and open rhythm experience! (a community project based on osu!lazer codebase)"
 arch=(x86_64 aarch64)
@@ -19,7 +19,7 @@ conflicts=(g0v0-bin g0v0-git)
 options=(!strip !debug)
 source=(
   "g0v0-2026.910.2.tar.gz::https://github.com/GooGuTeam/g0v0/archive/refs/tags/v2026.910.2-g0v0.tar.gz"
-  "g0v0-resources-47bf4b5984703ccf59febe5e01775e341593d5c8.tar.gz::https://github.com/GooGuTeam/g0v0-resources/archive/47bf4b5984703ccf59febe5e01775e341593d5c8.tar.gz"
+  "g0v0-resources-1fc65866aedc8bff6f0d12732aaef55749d8aca5.tar.gz::https://github.com/GooGuTeam/g0v0-resources/archive/1fc65866aedc8bff6f0d12732aaef55749d8aca5.tar.gz"
   "icon.png"
   "https://raw.githubusercontent.com/GooGuTeam/g0v0-resources/master/LICENCE.md"
   "g0v0.desktop"
@@ -27,7 +27,7 @@ source=(
   "g0v0"
 )
 sha256sums=('3107f363c0851c6773b2a25192dc2008a857c5aa49a2d37f40af3b3d972bbc63'
-            '711111564369abc5e5b05ccad4cd8ddd2783c2d9a32fa38ab48def679fea16da'
+            '5c278b2533197b4abd07f536b9fd7992ff9d43b68bc0e5503ee89d58d671bc9b'
             'c93f6981c6c528e717d5215eeed775cf4926fe61476d95163b3ecd5770f40dda'
             '96276add86bd921e64255ce7e5487599dbe13e6e48e96a6af1a58cc99c187648'
             'b1d3d8ad2b05ff2f461d15ff8fd73ce6ffbb75568dae2bd123b0599292259c53'
