@@ -1,0 +1,24 @@
+pkgbase = irys-bin
+	pkgdesc = Quiet 30-30-30 eye-break reminder that lives in the system tray
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/the-khiem7/IRYS-desktop
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	optdepends = waybar: StatusNotifier tray host for Hyprland and other wlroots compositors
+	optdepends = gnome-shell-extension-appindicator: tray icon support under GNOME Shell
+	provides = irys=0.1.3
+	conflicts = irys
+	noextract = IRYS_0.1.3_amd64.deb
+	options = !strip
+	options = !debug
+	source = LICENSE-0.1.3::https://github.com/the-khiem7/IRYS-desktop/raw/v0.1.3/LICENSE
+	sha256sums = e6f45c852b887823997f4438bf52f989d02ec6060d8dd2185473ec76764f83c8
+	source_x86_64 = IRYS_0.1.3_amd64.deb::https://github.com/the-khiem7/IRYS-desktop/releases/download/v0.1.3/IRYS_0.1.3_amd64.deb
+	sha256sums_x86_64 = 76f5fcae5c37e71f2058ebf5204179e2b754a3911aa15ca488eeb446807b34e7
+
+pkgname = irys-bin
