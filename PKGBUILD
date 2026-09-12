@@ -71,13 +71,13 @@ source=(
   "model_epoch_36.onnx::https://github.com/NeptuneHub/AudioMuse-AI-DCLAP/releases/download/$_dclap_tag/model_epoch_36.onnx"
   "model_epoch_36.onnx.data::https://github.com/NeptuneHub/AudioMuse-AI-DCLAP/releases/download/$_dclap_tag/model_epoch_36.onnx.data"
 
+  'swagger-compat.py'
+  'remove-flasgger.patch'
   'audiomuse-ai-worker.service'
   'audiomuse-ai-worker.supervisord.conf'
   'audiomuse-ai-worker.sysusers'
   'audiomuse-ai-worker.tmpfiles'
   'worker.env'
-
-  'remove-flasgger.patch'
 )
 
 sha256sums=('e6d10aa26820a7589f6512123d8868c26be617b08b2bac4542e387ff5921e0f4'
@@ -85,21 +85,23 @@ sha256sums=('e6d10aa26820a7589f6512123d8868c26be617b08b2bac4542e387ff5921e0f4'
             '0d4e78dd43c610aec88c099e41f4a8969797da5ac2612ea6ca21faa9e1a428f3'
             '17860403f8fc90aff8ac0632a0741eb5e58d8c0b0ad2fce5ced967274b0ea971'
             '2a735b23c2aad7b12d9ffc85334cebcc659c07696d2ff60e2e378da28b6df657'
+            'eefb4cee2ece6c81b0b37969462929156b035a66071faaafc1fcf9626dcc4b21'
+            '3f3aa168c927dc579f1bfe46408efa0ab3964ed714f65db749a117f623fde245'
             'b44bd336aa9e0d251f84feafb7335adb0d9a14909bf1fd2640d426a9570547f6'
             'c8b6cc972f182964e730365aed29fca9db1df4590ba0c674caca84daf430226d'
             '1b6dac9d5528b4eeb16008bc5e988492a80b9d35ceb4640247bdb3331b1d191a'
             '7e036273d925175f889a972fe6c18120d4bdc57251090aa4022b120361ca302c'
-            'ba4c6083ee62181cd56b016c4d041a421a99aa96b352b7113aeef25c84467b4a'
-            '80d132ea1d2591b932bd496634ad35143676c125930cd0297fd9f7dc599115fe')
+            'ba4c6083ee62181cd56b016c4d041a421a99aa96b352b7113aeef25c84467b4a')
 
 prepare() {
   cd "AudioMuse-AI-$pkgver"
 
   patch -Np1 -i "$srcdir/remove-flasgger.patch"
 
-  sed -i \
-    "/^# --- Swagger Setup ---$/,/^swagger = Swagger(app)$/d" \
-    app.py
+  rm -f \
+    app.py.orig \
+    app_chat.py.orig \
+    app_sync.py.orig
 }
 
 package() {
@@ -121,6 +123,9 @@ package() {
     "$_app/Dockerfile" \
     "$_app/Dockerfile-noavx2" \
     "$_app/docker-compose.yml"
+
+  install -m644 "$srcdir/swagger-compat.py" \
+    "$_app/swagger_compat.py"
 
   install -d "$_models"
 

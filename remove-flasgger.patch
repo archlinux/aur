@@ -5,12 +5,12 @@ diff --git a/app.py b/app.py
  # Swagger imports
 -from flasgger import Swagger
 +from swagger_compat import Swagger
- 
+
 diff --git a/app_chat.py b/app_chat.py
 --- a/app_chat.py
 +++ b/app_chat.py
 @@ -23,3 +23,3 @@
- 
+
  from flask import Blueprint, render_template, request, jsonify, Response, stream_with_context
 -from flasgger import swag_from  # Import swag_from
 +from swagger_compat import swag_from
