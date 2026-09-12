@@ -1,6 +1,6 @@
 # Maintainer: smiley <smiley@aur.archlinux.org>
 pkgname=rquickshare-x-bin
-pkgver=0.11.8
+pkgver=0.11.9
 _glibcver=2.39
 pkgrel=1
 pkgdesc="Rust implementation of NearbyShare/QuickShare from Android for Linux - fork with Windows support, dark mode, theme selection, and transfer speed meter"
@@ -16,7 +16,7 @@ depends=(
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-main_v${pkgver}_glibc-${_glibcver}_amd64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-main_v${pkgver}_glibc-${_glibcver}_amd64.deb")
-b2sums=('f88030af00c25f216d7df9b645f1e0648077f72c07d85a07497fa7f2d9f5e7d54379fb1d2f6ee65027e28210e5f12b12f275f41f7fc20f5c664b2d280e3007c7')
+b2sums=('4538a6ee22f4244bc4572f085bf17d7457502c4bc3844ccdd70541b908fc071efc482cacca034f1427f605fe3a780e7d5552e0b605354715ac5f53f4feb1857c')
 
 package() {
   bsdtar -xf data.tar.gz -C "$pkgdir/"

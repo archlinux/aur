@@ -1,6 +1,6 @@
 pkgbase = rquickshare-x-bin
 	pkgdesc = Rust implementation of NearbyShare/QuickShare from Android for Linux - fork with Windows support, dark mode, theme selection, and transfer speed meter
-	pkgver = 0.11.8
+	pkgver = 0.11.9
 	pkgrel = 1
 	url = https://github.com/oop7/rquickshare-x
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = rquickshare-x-bin
 	depends = webkit2gtk-4.1
 	provides = rquickshare-x
 	conflicts = rquickshare-x
-	source = rquickshare-x-main_v0.11.8_glibc-2.39_amd64.deb::https://github.com/oop7/rquickshare-x/releases/download/v0.11.8/rquickshare-x-main_v0.11.8_glibc-2.39_amd64.deb
-	b2sums = f88030af00c25f216d7df9b645f1e0648077f72c07d85a07497fa7f2d9f5e7d54379fb1d2f6ee65027e28210e5f12b12f275f41f7fc20f5c664b2d280e3007c7
+	source = rquickshare-x-main_v0.11.9_glibc-2.39_amd64.deb::https://github.com/oop7/rquickshare-x/releases/download/v0.11.9/rquickshare-x-main_v0.11.9_glibc-2.39_amd64.deb
+	b2sums = 4538a6ee22f4244bc4572f085bf17d7457502c4bc3844ccdd70541b908fc071efc482cacca034f1427f605fe3a780e7d5552e0b605354715ac5f53f4feb1857c
 
 pkgname = rquickshare-x-bin
