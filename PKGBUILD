@@ -6,7 +6,7 @@ pkgname=(
 	lib32-wivrn-server
 	wivrn-dashboard
 )
-pkgver=26.6.2
+pkgver=26.9
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -86,14 +86,13 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8b2012a74eb753cbf5a695e5be32e7e3d595cf2f4c6cec2b88eb7d853517686f')
+sha256sums=('89f63bc6c89943f3571055381ee2f1aa744d3d11372c56188b21e39c8d8ef733')
 
 build() {
 	cd "WiVRn-$pkgver"
 	cmake -B build-server . \
 	-G Ninja \
-	-DGIT_DESC=v${pkgver} \
-	-DGIT_COMMIT=v${pkgver} \
+	-DGIT_TAG=v${pkgver} \
 	-DWIVRN_BUILD_SERVER=ON \
 	-DWIVRN_BUILD_WIVRNCTL=ON \
 	-DWIVRN_BUILD_CLIENT=OFF \
@@ -112,8 +111,7 @@ build() {
 	# 32-bit build
 	PKG_CONFIG_PATH="/usr/lib32/pkgconfig" cmake -B build-server-32 -S . \
 	-G Ninja \
-	-DGIT_DESC=v${pkgver} \
-	-DGIT_COMMIT=v${pkgver} \
+	-DGIT_TAG=v${pkgver} \
 	-DCMAKE_C_FLAGS="-m32" \
 	-DCMAKE_CXX_FLAGS="-m32" \
 	-DWIVRN_BUILD_CLIENT=OFF \
@@ -132,8 +130,7 @@ build() {
 
 	cmake -B build-dashboard . \
 	-G Ninja \
-	-DGIT_DESC=v${pkgver} \
-	-DGIT_COMMIT=v${pkgver} \
+	-DGIT_TAG=v${pkgver} \
 	-DWIVRN_BUILD_CLIENT=OFF \
 	-DWIVRN_BUILD_SERVER=OFF \
 	-DWIVRN_BUILD_WIVRNCTL=OFF \
