@@ -1,6 +1,6 @@
 pkgbase = gallery-dl
 	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites
-	pkgver = 1.32.11
+	pkgver = 1.32.12
 	pkgrel = 1
 	url = https://codeberg.org/mikf/gallery-dl
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = gallery-dl
 	optdepends = python-psycopg: PostgreSQL support
 	optdepends = python-truststore: Support using system certificates
 	optdepends = python-jinja: Jinja template support
-	source = git+https://codeberg.org/mikf/gallery-dl.git#tag=v1.32.11?signed
+	source = git+https://codeberg.org/mikf/gallery-dl.git#tag=v1.32.12?signed
 	validpgpkeys = 3E09F5908333DD83DBDCE7375680CA389D365A88
-	sha512sums = a059683666fa577f2caf475fc387cce2559dc03d0a5fe4fa81df2560e039a4af319fd7ae5ffab8b3e940ee581805a49e961d48d2f1c98d2981bd42004910b7a1
+	sha512sums = 6f3714f7d13cf1718a81b8749db602e87ab80fc381b47446fefa7372addd4395da5876ad444f4008e4be55c54e0e37da356a0fead54984b3f0b4b078f48653c3
 
 pkgname = gallery-dl
