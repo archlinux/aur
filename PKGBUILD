@@ -1,5 +1,5 @@
 pkgname=intellij-idea-community-edition-bin
-pkgver=2026.2.1
+pkgver=2026.2.2
 pkgrel=1
 pkgdesc="IntelliJ IDEA Community Edition – JetBrains IDE for JVM development"
 arch=('x86_64')
@@ -10,8 +10,8 @@ optdepends=('git: version control integration' 'svgo: svg optimization' 'oxipng:
 provides=('intellij-idea-community')
 conflicts=('intellij-idea-community')
 
-source=("idea-$pkgver.tar.gz::https://github.com/JetBrains/intellij-community/releases/download/idea%2F${pkgver}-preview/idea-2026.2.0.1.tar.gz")
-sha256sums=('1a95024d3e6fa9cb015dab168500fe57a891d1bc20854c8b3ed58ed53d2827a6')
+source=("idea-$pkgver.tar.gz::https://github.com/JetBrains/intellij-community/releases/download/idea%2F$pkgver/idea-$pkgver.tar.gz")
+sha256sums=('6612d47ac536fc38683cd0714babf14b660ab157a4fe1af1e9bf9683f635cbed')
 
 package() {
     local srcdir_idea
