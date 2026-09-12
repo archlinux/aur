@@ -21,15 +21,19 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd teacrush
-  # e.g. 0.1.0.r12.gabcdef1 (or 0.1.0 if exactly on a tag)
-  git describe --long --tags | sed 's/^v//;s/-/./g'
+  # e.g. 0.1.0.r12.gabcdef1 (or 0.1.0 if exactly on a tag).
+  # --match limits describe to stable v* tags so the floating
+  # nightly tag never hijacks versioning.
+  git describe --long --tags --match 'v*' | sed 's/^v//;s/-/./g'
 }
 
 build() {
   cd teacrush
-  export CGO_ENABLED=0
+  export CGO_ENABLED=1
   export GOFLAGS='-trimpath -mod=readonly'
-  go build -ldflags='-s -w' -o teacrush .
+  # -buildmode=pie + external linking honors makepkg LDFLAGS (RELRO/PIE).
+  # shellcheck disable=SC2154
+  go build -buildmode=pie -ldflags="-s -w -linkmode=external -extldflags \"$LDFLAGS\"" -o teacrush .
 }
 
 package() {
