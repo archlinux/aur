@@ -59,21 +59,6 @@ build() {
     cd "$srcdir/$_pkgsrc"
 
   npm install
-# TODO: Clang linking not working completely - GCC still visible in .comment
-# Try RUSTFLAGS="-C linker=clang -C link-arg=-fuse-ld=lld"
-# But readelf still shows GCC references from system startup files
-# Help with getting clean Clang linking appreciated!
-# rustflags is spec in  src-tauri/.cargo/config.toml to, but i still pick gcc
-       export CC=clang
-       export CXX=clang++
-       export RUSTFLAGS="-C linker=clang \
-                    -C link-arg=-fuse-ld=lld \
-                    -C link-arg=--rtlib=compiler-rt \
-                    -C link-arg=--unwindlib=libunwind \
-                    -C link-arg=-nostdlib++ \
-                    -C link-arg=-lc++"
-       export LD=clang
-       export AR=llvm-ar
   cargo tauri build --no-bundle
 }
 
