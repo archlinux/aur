@@ -1,6 +1,6 @@
 pkgbase = freebasic-ng
 	pkgdesc = FreeBASIC-NG compiler
-	pkgver = 1.22.2
+	pkgver = 1.22.3
 	pkgrel = 1
 	url = https://github.com/metaneutrons/freebasic-ng
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = freebasic-ng
 	conflicts = freebasic-ng-bin
 	options = !lto
 	options = staticlibs
-	source = freebasic-ng-1.22.2.tar.gz::https://github.com/metaneutrons/freebasic-ng/releases/download/v1.22.2/freebasic-ng-1.22.2-source.tar.gz
-	sha256sums = 5e244a93ab14ac4bc8a9989d383991788d61fbd58a8e5ab789bf585d1c304fff
+	source = freebasic-ng-1.22.3.tar.gz::https://github.com/metaneutrons/freebasic-ng/releases/download/v1.22.3/freebasic-ng-1.22.3-source.tar.gz
+	sha256sums = f1eb7c89f9dac130b99ab5748ca5094ad5b8b7951988fcf6b03243e6e56c25d9
 
 pkgname = freebasic-ng
