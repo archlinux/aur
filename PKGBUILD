@@ -127,7 +127,7 @@ source=(
 
 sha256sums=(
 	'SKIP'
-	'd71e7580f548e48f234c403ba9a06baa5504473901b65f54a6cbea3b0219c5ca'
+	'32f4fb56b09afcd12ae651fa302cb8457070b6238391a664892c914408005d7f'
 	'3eaeaf5a2a5442204ae0cad3c4c25855a90e4e683da56579cc7eb2bada42ccb9'
 	'05feaafbbac794a68c7eeea8c0a4c5616fc9f6ef7e4b7540baf3f5d43fad5fb0'
 )
@@ -156,7 +156,7 @@ package() {
 	mkdir -p "$dest"
 
 	cd "$srcdir"
-	cp -rpt "$dest" "${_pkg}/kernel/."
+	cp -rpRLt "$dest" "${_pkg}/kernel/."
 
 	cd "$_pkg"
 
