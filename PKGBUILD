@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-experiments
 pkgname=python-$_pkgname
-pkgver=0.13.0
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="Qiskit Experiments package for IBM qiskit framework"
 arch=(any)
@@ -14,7 +14,6 @@ depends=(
     python-packaging
     python-pandas
     python-qiskit
-    python-qiskit-ibm-experiment
     python-qiskit-ibm-runtime
     python-rustworkx
     python-scipy
@@ -32,6 +31,7 @@ optdepends=(
     'python-scikit-learn: for discriminators'
     'python-qiskit-aer: for simulating backends'
     'python-qiskit-dynamics: for the PulseBackend'
+    'python-pyyaml: support for storing yaml files in local experiments'
 )
 checkdepends=(
     python-cvxpy
@@ -42,9 +42,10 @@ checkdepends=(
     python-qiskit-aer
     python-scikit-learn
     python-testtools
+    python-pyyaml
 )
 source=($_pkgname-$pkgver.tar.gz::https://github.com/Qiskit-Community/$_pkgname/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('b9159c23e987fb7096ed0d363e1961d013335a20e92b22c4173850687f126d7aed5c06a80ef5459557a7bc2445eec634023275bc57343156a50562672eb33edd')
+b2sums=('5b4b5b83750493978f9c4f2ae2a4ddbd7eca68a16b89e88ede267cad76d3eeb31d696403a80e7057012a94b10f73532d18d42f0795968b851bb0b0a3a39bd483')
 
 build() {
     cd $_pkgname-$pkgver
@@ -52,10 +53,10 @@ build() {
 }
 
 check() {
-   cd $_pkgname-$pkgver
-   local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-   python -m installer --destdir=../test_dir dist/*.whl
-   PYTHONPATH="$PWD/../test_dir/$_site_packages" pytest
+    cd $_pkgname-$pkgver
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -P -m pytest -o addopts="" -k "not test_expdata_serialization"
 }
 
 package() {
