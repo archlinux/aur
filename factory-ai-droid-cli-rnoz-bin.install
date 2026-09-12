@@ -13,7 +13,7 @@ post_install() {
 
 post_upgrade() {
   echo ""
-  echo "==> Factory CLI has been upgraded to version $2."
+  echo "==> Factory CLI has been upgraded to version $1."
   echo "==> Titling and keybinding patches were applied according to your build choices."
   echo "==> Run 'droid' to continue using Factory CLI"
   echo ""

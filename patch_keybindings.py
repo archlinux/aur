@@ -273,6 +273,9 @@ def apply_patch(
         if dest_path and dest_path != src_path:
             shutil.copy2(src_path, dest_path)
     else:
+        print("Found keybinding rotation targets:")
+        print("  Old: editor=Ctrl-P, model=Ctrl-N, queue=Ctrl-G")
+        print("  New: editor=Ctrl-G, model=Ctrl-P, queue=Ctrl-I")
         tmp_path = target.with_suffix(".tmp_keybindings")
         tmp_path.write_bytes(patched)
         tmp_path.chmod(0o755)
