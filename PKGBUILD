@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=zux
-pkgver=1.13.2
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="mDNS-SD Visualizer - A cross platform mDNS browsing visualizer written in Rust using tauri and svelte"
 arch=('x86_64')
@@ -12,11 +12,11 @@ conflicts=('zux-bin')
 makedepends=('cargo' 'cargo-edit' 'git' 'file' 'nodejs' 'pnpm' 'base-devel' 'rust' 'librsvg' 'patchelf')
 options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('05689e46aac9017936c3de3da21d3474b26ed738640ee14b4f31fb85e2f08dc2')
+sha256sums=('d2f7818b180d93f224efb2589d06193386dba6082b2ae4609e5c39ead13f0bb3')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
-    jq '.version = "1.13.2"' src-tauri/tauri.conf.json > tmp.json
+    jq '.version = "1.14.0"' src-tauri/tauri.conf.json > tmp.json
     mv tmp.json src-tauri/tauri.conf.json
     pnpm install --frozen-lockfile
     cd src-tauri
