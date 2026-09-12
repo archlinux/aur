@@ -1,0 +1,13 @@
+pkgbase = nanopb-bin
+	pkgdesc = Protocol Buffers implementation for embedded systems - prebuilt generator
+	pkgver = 0.4.9.2
+	pkgrel = 1
+	url = https://github.com/nanopb/nanopb
+	arch = x86_64
+	license = Zlib
+	provides = nanopb=0.4.9.2
+	conflicts = nanopb
+	source = nanopb-bin-0.4.9.2::https://github.com/nanopb/nanopb/releases/download/nanopb-0.4.9.2/nanopb-0.4.9.2-linux-x86.tar.gz
+	sha256sums = 7e05f5908f0dff5d91cb90d11ca487876de8ec274695887959b3903e4b307887
+
+pkgname = nanopb-bin
