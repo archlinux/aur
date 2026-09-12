@@ -1,0 +1,16 @@
+pkgbase = cardwire-bin
+	pkgdesc = GPU manager for Linux using eBPF LSM hooks
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://github.com/OpenGamingCollective/cardwire
+	arch = x86_64
+	license = GPL3
+	depends = hwdata
+	depends = dbus
+	depends = sqlite
+	depends = systemd
+	depends = upower
+	source = https://github.com/OpenGamingCollective/cardwire/releases/download/v0.12.2/cardwire-0.12.2-1-x86_64.pkg.tar.zst
+	sha256sums = bbcf4f58d2844adfc9ffc9920e31adae6227b595a9ddd6f1a2e7729ce316e9cd
+
+pkgname = cardwire-bin
