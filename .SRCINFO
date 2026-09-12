@@ -1,6 +1,6 @@
 pkgbase = authelia-bin
 	pkgdesc = The Cloud ready multi-factor authentication portal for your Apps. Pre-compiled.
-	pkgver = 4.39.25
+	pkgver = 4.39.26
 	pkgrel = 1
 	url = https://github.com/authelia/authelia
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = authelia-bin
 	conflicts = authelia
 	conflicts = authelia-git
 	backup = etc/authelia/configuration.yml
-	source_x86_64 = https://github.com/authelia/authelia/releases/download/v4.39.25/authelia-v4.39.25-linux-amd64.tar.gz
-	sha256sums_x86_64 = 7be84c9807186487aa7e579ba76f1674e33119e52d77a1f256165d0f346aac49
-	source_aarch64 = https://github.com/authelia/authelia/releases/download/v4.39.25/authelia-v4.39.25-linux-arm64.tar.gz
-	sha256sums_aarch64 = cf90291f3eb4ced84624c1fd571135e6283c3390ef18359ad5a27122d08cdb83
-	source_armv7h = https://github.com/authelia/authelia/releases/download/v4.39.25/authelia-v4.39.25-linux-arm.tar.gz
-	sha256sums_armv7h = b4fc9819600506c63f745e7422a5ca60f6b9a867964959ee954fd4df8212e73b
+	source_x86_64 = https://github.com/authelia/authelia/releases/download/v4.39.26/authelia-v4.39.26-linux-amd64.tar.gz
+	sha256sums_x86_64 = 65e5982d7dfec112f6f676c544c4d000780c37b3b18faf28dde7ef11c5c863ec
+	source_aarch64 = https://github.com/authelia/authelia/releases/download/v4.39.26/authelia-v4.39.26-linux-arm64.tar.gz
+	sha256sums_aarch64 = e753eee8ae6f11e276ba8c052244de45d41c5bf3037d864e0e22ee6429375185
+	source_armv7h = https://github.com/authelia/authelia/releases/download/v4.39.26/authelia-v4.39.26-linux-arm.tar.gz
+	sha256sums_armv7h = 859bf5cfad726426586b457118f9e8ef672e724a1602dba82665744567eb6b99
 
 pkgname = authelia-bin
