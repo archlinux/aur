@@ -1,6 +1,6 @@
 # Maintainer: lingbopro <lingbopro [at] outlook [dot] com>
 pkgname=win12-desktop-bin
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Desktop version for Win12, the web desktop experience with app ecosystem and AI Copilot."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('EPL-2.0')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!debug')
 source_x86_64=("${url}/releases/download/v${pkgver}/Win12_${pkgver}_amd64.deb")
-sha256sums_x86_64=('c3d2ff6d5472d5eadbe24b1ea2c41079523db1cf56aa9f971cc3ee7fef603d1a')
+sha256sums_x86_64=('e5e1598b2936c7d8d8b4378506e220e0f25d5049676db4dcc7cbeaed7917f462')
 package() {
   # Extract package data
   tar -xf data.tar.gz -C "${pkgdir}"
