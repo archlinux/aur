@@ -1,59 +1,25 @@
 diff --git a/app.py b/app.py
 --- a/app.py
 +++ b/app.py
-@@ -31,9 +31,6 @@
- 
- from tasks.setup_manager import setup_manager
- 
+@@
 -# Swagger imports
 -from flasgger import Swagger
 -
- # Import configuration
- from config import TEMP_DIR, APP_VERSION, ENABLE_PROXY_FIX, JWT_SECRET
- 
-@@ -145,10 +142,6 @@
-     app.wsgi_app = ProxyFix(
-         StripDuplicatedScriptName(app.wsgi_app), x_for=1, x_proto=1, x_host=1, x_prefix=1
-     )
- 
--# --- Swagger Setup ---
--app.config['SWAGGER'] = {'title': 'AudioMuse-AI API', 'uiversion': 3, 'openapi': '3.0.0'}
--swagger = Swagger(app)
--
- 
- @app.teardown_appcontext
- def teardown_db(exception):
 diff --git a/app_chat.py b/app_chat.py
 --- a/app_chat.py
 +++ b/app_chat.py
-@@ -19,7 +19,12 @@
- """
- 
- from flask import Blueprint, render_template, request, jsonify, Response, stream_with_context
+@@
 -from flasgger import swag_from  # Import swag_from
-+
 +def swag_from(*args, **kwargs):
 +    def decorator(func):
 +        return func
 +    return decorator
-+
- import json  # For JSON serialization of tool arguments
- import logging
- import re
 diff --git a/app_sync.py b/app_sync.py
 --- a/app_sync.py
 +++ b/app_sync.py
-@@ -25,7 +25,12 @@
- 
- import psycopg2.extras
- from flask import Blueprint, request, jsonify
+@@
 -from flasgger import swag_from
-+
 +def swag_from(*args, **kwargs):
 +    def decorator(func):
 +        return func
 +    return decorator
-+
- 
- import config
- from database import get_db, load_map_projection

@@ -90,11 +90,16 @@ sha256sums=('e6d10aa26820a7589f6512123d8868c26be617b08b2bac4542e387ff5921e0f4'
             '1b6dac9d5528b4eeb16008bc5e988492a80b9d35ceb4640247bdb3331b1d191a'
             '7e036273d925175f889a972fe6c18120d4bdc57251090aa4022b120361ca302c'
             'ba4c6083ee62181cd56b016c4d041a421a99aa96b352b7113aeef25c84467b4a'
-            '0ae5ae939ca933a663533a5880b9d8fb220f86d9dc9ab0b6656b67a991480cdf')
+            'b74317010e3046a31c5d2415c1e9ddb9a479a9d505733345bd5e7b808112f2e3')
 
 prepare() {
-  cd "$srcdir/AudioMuse-AI-$pkgver"
+  cd "AudioMuse-AI-$pkgver"
+
   patch -Np1 -i "$srcdir/remove-flasgger.patch"
+
+  sed -i \
+    "/^# --- Swagger Setup ---$/,/^swagger = Swagger(app)$/d" \
+    app.py
 }
 
 package() {
