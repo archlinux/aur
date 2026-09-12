@@ -1,7 +1,7 @@
 
   pkgname=ferrumpix-bin
   pkgver=0.9.43
-  pkgrel=3
+  pkgrel=4
   pkgdesc='Desktop Photo/RAW-Editor, Viewer, Gallery, Immich and Nextcloud Client in one App'
   arch=('x86_64')
   url='https://github.com/Bitpainter75/FerrumPix'
@@ -18,7 +18,7 @@
           "io.github.Bitpainter75.FerrumPix.desktop"
           "io.github.Bitpainter75.FerrumPix.png")
   noextract=("FerrumPix-${pkgver}-${pkgrel}-linux-x64-aur.zip")
-sha256sums=('fe2e52ead3c7a193b2dc55e741653f08da65bd2a67288a903ebe7f83f3e65e66'
+sha256sums=('d23369d2eec1d0081dc0bfcb00072c1a69896102b479a68a388e491e956a7bbb'
             'baab02ecaff9a6db980340f351bbc2507a000cb0d29fd0ee1584499092fdcc92'
             'd757e74c2b4aa5d8bfa760d443c4ed8c9ff978e0504602ced5e5c5c5c316b15f')
 
