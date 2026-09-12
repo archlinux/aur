@@ -4,7 +4,7 @@
 # Edit the template, not the copy in the AUR repository.
 
 pkgname=maono
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Maono PD100W wireless microphone controller (TUI + CLI)"
 arch=("x86_64")
@@ -17,11 +17,11 @@ source=("maono-$pkgver::$url/releases/download/v$pkgver/maono"
         "99-maono.rules-$pkgver::$url/raw/v$pkgver/99-maono.rules"
         "manifest.json-$pkgver::$url/raw/v$pkgver/shell/manifest.json"
         "Panel.qml-$pkgver::$url/raw/v$pkgver/shell/Panel.qml")
-sha256sums=("5d936c1c6e4db66871f961c4c2992e46f11eccfdfa315da053961a9b0d9f0479"
+sha256sums=("ce305400fc561b1cb962e4324ef328bc007463b7f788f48b03209d89157e8000"
             "4268d08d81256cf62ddbc09f71a02f4087f0a7f4c1555b6a1f8d00006872f15d"
             "caa1d5fd4ba176776d442004936bfa52598b9528a9ef9fcb52b92526b5b5f955"
-            "4dc20b590bd28af00a5ac45ea625f12a2bd317dbb0ce620a42daa722ecfea578"
-            "b2008dac59f44b7fd0563ddb38f21a69b0e97a4e033191a984eef1688ee3c0a7")
+            "86f5df8210196e37d62e8e02d2a87ac5af98366835b98ba922ae0a9d1435bf84"
+            "ac1c192d4d39ea6922d3f4bf7b1709693ce8801c03638fa798d0fae408af032e")
 
 package() {
   install -Dm755 "$srcdir/maono-$pkgver" "$pkgdir/usr/bin/maono"
