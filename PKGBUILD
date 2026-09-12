@@ -472,9 +472,14 @@ package() {
     rm -r "${srcdir}/${pkgname}/LocalBuilds"
   fi
 
-  # Ensure InstalledBuild.txt is present so UBT treats this as an installed engine,
-  # preventing the "unique build environment" error when building projects.
-  printf '%s' "${pkgver}" | install -Dm644 /dev/stdin "${pkgdir}/${UE_INSTALL_DIR}/Engine/Build/InstalledBuild.txt"
+  # BuildGraph's FinalizeInstalledBuild stages this file, carrying the identifier the engine registers
+  # itself under in ~/.config/Epic/UnrealEngine/Install.ini and that the editor stamps into every project
+  # it creates as "EngineAssociation". Its absence makes UBT fall back to a unique build environment and
+  # refuse to build projects against the engine.
+  if [[ ! -f "${pkgdir}/${UE_INSTALL_DIR}/Engine/Build/InstalledBuild.txt" ]]; then
+    error "BuildGraph did not stage Engine/Build/InstalledBuild.txt; the engine would not register as installed."
+    exit 1
+  fi
 
   # Copy the rest of it to pkg... Should we be overwriting LocalBuilds?
   rsync -a --exclude='Intermediate/' "${srcdir}/${pkgname}/" "${pkgdir}/${UE_INSTALL_DIR}/"
