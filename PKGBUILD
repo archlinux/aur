@@ -5,7 +5,7 @@ _pkgname=cargo-pretty
 pkgname=${_pkgname}
 pkgdesc="A cargo build wrapper with a live, animated status view"
 
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -21,7 +21,7 @@ depends=('glibc' 'libgcc' 'cargo')
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_pkgvername}.tar.gz")
-sha256sums=('c6a19b0d7a32ec6d0ec8594c576b05ea82b94dcf21a22d4a771b38809c2d8d37')
+sha256sums=('bb8a4d104d213dcf327d9f79098b07f46c30f5a3dea007b8f8d48b9be1af140b')
 
 
 prepare() {
