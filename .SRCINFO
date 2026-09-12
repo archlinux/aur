@@ -1,0 +1,18 @@
+pkgbase = fastplong
+	pkgdesc = Ultra-fast preprocessing and quality control for long-read sequencing data
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/OpenGene/fastplong
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	depends = highway
+	depends = isa-l
+	depends = libdeflate
+	options = !strip
+	options = !debug
+	source = fastplong-0.7.1.tar.gz::https://github.com/OpenGene/fastplong/archive/v0.7.1.tar.gz
+	sha256sums = 29cd6545d0db00e4a53989088dcdb7b0f0dcbc4442574fb1b5f67b594df7cb5b
+
+pkgname = fastplong
