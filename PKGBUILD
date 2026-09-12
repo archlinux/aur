@@ -12,7 +12,7 @@ conflicts=('appmeup')
 replaces=('appmeup')
 depends=(
   'python'
-  'python-pyside6'
+  'pyside6'
   'python-pyxdg'
   'glibc'
   'libxcb'
