@@ -1,6 +1,6 @@
 # Maintainer: FatDawlf <zazaguichi@outlook.com>
 pkgname=lupa-git
-pkgver=r48.0c2ff89
+pkgver=r49.ef611c9
 pkgrel=1
 pkgdesc="A minimalist launcher built on gtk4-layer-shell."
 arch=('x86_64' 'aarch64')
