@@ -1,0 +1,16 @@
+pkgbase = gencore
+	pkgdesc = Generate duplex/single consensus reads to reduce sequencing noise
+	pkgver = 0.17.2
+	pkgrel = 1
+	url = https://github.com/OpenGene/gencore
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	depends = htslib
+	options = !strip
+	options = !debug
+	source = gencore-0.17.2.tar.gz::https://github.com/OpenGene/gencore/archive/v0.17.2.tar.gz
+	sha256sums = f39f12c38670d93683a5f3f27306c56459a4fd19abcb1a9e3c732b229333aa51
+
+pkgname = gencore
