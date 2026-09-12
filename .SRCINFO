@@ -1,7 +1,7 @@
 pkgbase = rune-ide-bin
 	pkgdesc = Fast, GPU-rendered, keyboard-driven IDE for power users
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unstablebuild/rune
 	arch = x86_64
 	arch = aarch64
@@ -16,6 +16,8 @@ pkgbase = rune-ide-bin
 	depends = libxrender
 	depends = libxxf86vm
 	depends = libglvnd
+	options = !strip
+	options = !debug
 	source = LICENSE-1.2.1::https://github.com/unstablebuild/rune/raw/v1.2.1/LICENSE
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	source_x86_64 = rune-ide-bin-1.2.1-linux-amd64.tar.gz::https://github.com/unstablebuild/rune/releases/download/v1.2.1/rune-v1.2.1-linux-amd64.tar.gz
