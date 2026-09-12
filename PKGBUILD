@@ -54,6 +54,7 @@ optdepends=(
   'postgresql: local PostgreSQL server; not required when using a remote database'
   'python-google-genai: Gemini AI provider'
   'python-mistralai: Mistral AI provider'
+  'python-matplotlib: spectrum_analyzer plugin'
 )
 
 install='audiomuse-ai-worker.install'
