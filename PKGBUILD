@@ -6,7 +6,7 @@ pkgname=('litecoin-daemon-git' 'litecoin-cli-git' 'litecoin-qt-git' 'litecoin-tx
 
 : "${_fragment=branch=master}"
 
-pkgver=0.21.5.5
+pkgver=0.21.5.8
 pkgrel=1
 arch=('x86_64')
 url="http://www.litecoin.org/"
