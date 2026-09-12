@@ -1,7 +1,7 @@
 # Maintainer: jin <mail@nvimer.org>
 pkgname=deepseek-reasonix-desktop
-pkgver=1.38.6
-pkgrel=3
+pkgver=1.38.7
+pkgrel=1
 pkgdesc="Reasonix desktop — an Electron shell around the DeepSeek-native AI coding agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/esengine/DeepSeek-Reasonix"
@@ -18,13 +18,13 @@ options=('!strip' '!debug')
 # Application UI, Electron shell, service, CLI and launcher are built from source.
 # Only the upstream-pinned Chromium/Electron runtime is a prebuilt dependency.
 _electron_ver=44.2.0
-_commit=e2145b031deef603d9ec1acc9d30f9a1e1ac9325
+_commit=036c7c50c5c154f747419aee6b75667f9044c8fa
 _electron_url="https://github.com/electron/electron/releases/download/v${_electron_ver}"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/desktop-v$pkgver.tar.gz")
 source_x86_64=("${_electron_url}/electron-v${_electron_ver}-linux-x64.zip")
 source_aarch64=("${_electron_url}/electron-v${_electron_ver}-linux-arm64.zip")
 noextract=("electron-v${_electron_ver}-linux-x64.zip" "electron-v${_electron_ver}-linux-arm64.zip")
-sha256sums=('467bd5a0c753ee7878edb989d34a8857e67cee252c213686c08248a335316341')
+sha256sums=('5a0633bb29ed23be0a08b9e08e3a8997620e6abc7a11227e7d1126426296955d')
 sha256sums_x86_64=('574f7d8cd2a82d77812849729a282b86639b050de120d58b138a126d16b48692')
 sha256sums_aarch64=('8693fd67332d417775dc2ffc470f4c05eda9d0ed1ac329e4866e108afaa4ddda')
 
