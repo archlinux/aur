@@ -1,0 +1,108 @@
+Build fixes for GCC 15 / Boost >= 1.85 on the dev_27_64 branch, which
+upstream mostly builds with MSVC:
+
+- slic3r_orchestrator.h: `= {0}` is valid C but not C++ when the first
+  member is an enum; initialize it with the enumerator instead.
+- ExtrusionViews.hpp: front()/back()/middle() declare an ExtrusionEntity
+  by value inside the ExtrusionEntityReadApi template body, before that
+  class is complete; GCC 15 rejects this (-Wtemplate-body). Use auto so
+  the type is only needed at instantiation, as the other callers do.
+- ConfigDef.hpp: FLT_MAX needs <cfloat>.
+- Preset.hpp: lower_bound_by_predicate() lives in ContainerUtils.hpp.
+- PluginUpdateDialog.cpp: GUI::format() needs slic3r/GUI/format.hpp.
+- RepositoryPackageCache.cpp: boost::filesystem::copy_option was
+  removed in Boost 1.85; use copy_options::overwrite_existing.
+
+diff --git a/src/libslic3r/Api/plugin/c/slic3r_orchestrator.h b/src/libslic3r/Api/plugin/c/slic3r_orchestrator.h
+index 2d465984cb..a4aaa4bf7b 100644
+--- a/src/libslic3r/Api/plugin/c/slic3r_orchestrator.h
++++ b/src/libslic3r/Api/plugin/c/slic3r_orchestrator.h
+@@ -400,7 +400,7 @@ typedef struct raw_gui_rule {
+ 
+ static inline raw_gui_rule raw_gui_rule_init()
+ {
+-    raw_gui_rule rule = {0};
++    raw_gui_rule rule = {RAW_GUI_RULE_ACTION_NONE};
+     rule.target_index = RAW_GUI_RULE_INDEX_ALL;
+     rule.condition_index = RAW_GUI_RULE_INDEX_ALL;
+     return rule;
+diff --git a/src/libslic3r/Api/plugin/cpp/ExtrusionViews.hpp b/src/libslic3r/Api/plugin/cpp/ExtrusionViews.hpp
+index 5a959b1d07..9b88a2547e 100644
+--- a/src/libslic3r/Api/plugin/cpp/ExtrusionViews.hpp
++++ b/src/libslic3r/Api/plugin/cpp/ExtrusionViews.hpp
+@@ -691,7 +691,7 @@ public:
+         if (self().point_count() > 0)
+             return self().local_front();
+         for (uint32_t idx = 0; idx < child_count(); ++idx) {
+-            ExtrusionEntity candidate = child(idx);
++            const auto candidate = child(idx);
+             if (!candidate.empty())
+                 return candidate.front();
+         }
+@@ -704,7 +704,7 @@ public:
+         if (self().point_count() > 0)
+             return self().local_back();
+         for (uint32_t idx = child_count(); idx > 0; --idx) {
+-            ExtrusionEntity candidate = child(idx - 1);
++            const auto candidate = child(idx - 1);
+             if (!candidate.empty())
+                 return candidate.back();
+         }
+@@ -722,7 +722,7 @@ public:
+         if (self().point_count() > 0)
+             return self().local_middle();
+         for (uint32_t idx = child_count() / 2; idx < child_count(); ++idx) {
+-            ExtrusionEntity candidate = child(idx);
++            const auto candidate = child(idx);
+             if (!candidate.empty())
+                 return candidate.middle();
+         }
+diff --git a/src/libslic3r/Config/ConfigDef.hpp b/src/libslic3r/Config/ConfigDef.hpp
+index a97c2f124b..2411117e5d 100644
+--- a/src/libslic3r/Config/ConfigDef.hpp
++++ b/src/libslic3r/Config/ConfigDef.hpp
+@@ -24,6 +24,7 @@
+ #ifndef slic3r_ConfigDef_hpp_
+ #define slic3r_ConfigDef_hpp_
+ 
++#include <cfloat>
+ #include <cstdint>
+ #include <functional>
+ #include <initializer_list>
+diff --git a/src/libslic3r/Config/Preset.hpp b/src/libslic3r/Config/Preset.hpp
+index 9f44a6a061..c425206bc9 100644
+--- a/src/libslic3r/Config/Preset.hpp
++++ b/src/libslic3r/Config/Preset.hpp
+@@ -16,6 +16,7 @@
+ #include <boost/property_tree/ptree_fwd.hpp>
+ 
+ #include "PrintConfig.hpp"
++#include "libslic3r/ContainerUtils.hpp"
+ #include "libslic3r/Semver.hpp"
+ 
+ namespace Slic3r {
+diff --git a/src/libslic3r/Updater/RepositoryPackageCache.cpp b/src/libslic3r/Updater/RepositoryPackageCache.cpp
+index 7485498091..d0187b713c 100644
+--- a/src/libslic3r/Updater/RepositoryPackageCache.cpp
++++ b/src/libslic3r/Updater/RepositoryPackageCache.cpp
+@@ -329,7 +329,7 @@ bool copy_directory_tree(const boost::filesystem::path &source,
+                 boost::filesystem::create_directories(output);
+             else if (boost::filesystem::is_regular_file(it->path())) {
+                 boost::filesystem::create_directories(output.parent_path());
+-                boost::filesystem::copy_file(it->path(), output, boost::filesystem::copy_option::overwrite_if_exists);
++                boost::filesystem::copy_file(it->path(), output, boost::filesystem::copy_options::overwrite_existing);
+             }
+         }
+         return true;
+diff --git a/src/slic3r/GUI/PluginUpdateDialog.cpp b/src/slic3r/GUI/PluginUpdateDialog.cpp
+index 825eb61506..84c3e047f8 100644
+--- a/src/slic3r/GUI/PluginUpdateDialog.cpp
++++ b/src/slic3r/GUI/PluginUpdateDialog.cpp
+@@ -42,6 +42,7 @@
+ #include "libslic3r/Utils.hpp"
+ 
+ #include "I18N.hpp"
++#include "format.hpp"
+ #include "GUI.hpp"
+ #include "GUI_App.hpp"
+ #include "MainFrame.hpp"

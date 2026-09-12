@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 34fe44a2ef..375ae8e48c 100644
+index 55cffb78d4..83cba91601 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -384,7 +384,7 @@ endif()
+@@ -393,7 +393,7 @@ endif()
  # boost::process was introduced first in version 1.64.0,
  # boost::beast::detail::base64 was introduced first in version 1.66.0
  set(MINIMUM_BOOST_VERSION "1.66.0")
@@ -11,7 +11,7 @@ index 34fe44a2ef..375ae8e48c 100644
  find_package(Boost ${MINIMUM_BOOST_VERSION} REQUIRED COMPONENTS ${_boost_components})
  # boost compile only in release & debug. We have to force the release version for RELWITHDEBINFO compilation
  if (MSVC)
-@@ -485,13 +485,15 @@ include_directories(BEFORE SYSTEM ${EIGEN3_INCLUDE_DIR})
+@@ -494,13 +494,15 @@ include_directories(BEFORE SYSTEM ${EIGEN3_INCLUDE_DIR})
  # no matter what.
  find_package(EXPAT REQUIRED)
  
@@ -33,7 +33,7 @@ index 34fe44a2ef..375ae8e48c 100644
  
  find_package(PNG REQUIRED)
  
-@@ -595,7 +597,7 @@ endif ()
+@@ -604,7 +606,7 @@ endif ()
  
  find_package(OpenVDB 5.0 COMPONENTS openvdb)
  if(OpenVDB_FOUND)
@@ -106,10 +106,10 @@ index bcc8745709..cf1e0a4387 100644
    list(APPEND _OPENVDB_DEFINITIONS "-DOPENVDB_TOOLS_RAYTRACER_USE_EXR")
  endif()
 diff --git a/src/libslic3r/CutSurface.cpp b/src/libslic3r/CutSurface.cpp
-index c229ff246b..e50804625d 100644
+index a9df29c760..bb7a62061f 100644
 --- a/src/libslic3r/CutSurface.cpp
 +++ b/src/libslic3r/CutSurface.cpp
-@@ -1429,8 +1429,8 @@ priv::CutAOIs priv::cut_from_model(CutMesh                &cgal_model,
+@@ -1431,8 +1431,8 @@ priv::CutAOIs priv::cut_from_model(CutMesh                &cgal_model,
      // detect anomalities in visitor.
      bool is_valid = true;
      // NOTE: map are created when convert shapes to cgal model
@@ -120,7 +120,7 @@ index c229ff246b..e50804625d 100644
      Visitor visitor{cgal_model, cgal_shape, edge_shape_map, face_shape_map, vert_shape_map, &is_valid};
  
      // a property map containing the constrained-or-not status of each edge
-@@ -1579,8 +1579,8 @@ void priv::collect_surface_data(std::queue<FI>  &process,
+@@ -1581,8 +1581,8 @@ void priv::collect_surface_data(std::queue<FI>  &process,
  
  void priv::create_reduce_map(ReductionMap &reduction_map, const CutMesh &mesh)
  {
@@ -131,7 +131,7 @@ index c229ff246b..e50804625d 100644
  
      // check if vertex was made by edge_2 which is diagonal of quad
      auto is_reducible_vertex = [&vert_shape_map](VI reduction_from) -> bool {
-@@ -1764,11 +1764,11 @@ priv::VDistances priv::calc_distances(const SurfacePatches &patches,
+@@ -1766,11 +1766,11 @@ priv::VDistances priv::calc_distances(const SurfacePatches &patches,
      priv::VDistances result(count_shapes_points);
      for (const SurfacePatch &patch : patches) {
          // map is created during intersection by corefine visitor
@@ -146,7 +146,7 @@ index c229ff246b..e50804625d 100644
          // for each point on outline
          for (const Loop &loop : patch.loops) 
          for (const VI &vi_patch : loop) {
-@@ -2775,7 +2775,7 @@ using BBS = std::vector<BoundingBoxf3>;
+@@ -2776,7 +2776,7 @@ using BBS = std::vector<BoundingBoxf3>;
  BBS create_bbs(const VCutAOIs &cuts, const CutMeshes &cut_models);
  
  using Primitive = CGAL::AABB_face_graph_triangle_primitive<CutMesh>;
@@ -155,7 +155,7 @@ index c229ff246b..e50804625d 100644
  using Ray       = EpicKernel::Ray_3;
  using Tree      = CGAL::AABB_tree<Traits>;
  using Trees     = std::vector<Tree>;
-@@ -2929,7 +2929,7 @@ bool priv::is_patch_inside_of_model(const SurfacePatch &patch,
+@@ -2930,7 +2930,7 @@ bool priv::is_patch_inside_of_model(const SurfacePatch &patch,
  uint32_t priv::get_shape_point_index(const CutAOI &cut, const CutMesh &model)
  {
      // map is created during intersection by corefine visitor
@@ -164,7 +164,7 @@ index c229ff246b..e50804625d 100644
      // for each half edge of outline
      for (HI hi : cut.second) {
          VI vi = model.source(hi);
-@@ -2954,7 +2954,7 @@ priv::SurfacePatch priv::separate_patch(const std::vector<FI>& fis,
+@@ -2955,7 +2955,7 @@ priv::SurfacePatch priv::separate_patch(const std::vector<FI>& fis,
      patch_new.model_id     = patch.model_id;
      patch_new.shape_id     = patch.shape_id;
      // fix cvt
@@ -173,7 +173,7 @@ index c229ff246b..e50804625d 100644
      for (VI &vi : cvt) {
          if (!vi.is_valid()) continue;
          vi = cvt_from[vi];
-@@ -2974,7 +2974,7 @@ void priv::divide_patch(size_t i, SurfacePatchesEx &patches)
+@@ -2975,7 +2975,7 @@ void priv::divide_patch(size_t i, SurfacePatchesEx &patches)
      std::string patch_number_name = "f:patch_number";
      CutMesh::Property_map<FI,bool> is_processed = access_pmap(cm.add_property_map<FI, bool>(patch_number_name, false));
      
@@ -182,7 +182,7 @@ index c229ff246b..e50804625d 100644
  
      std::vector<FI> fis;
      fis.reserve(cm.faces().size());
-@@ -3161,7 +3161,7 @@ bool priv::is_over_whole_expoly(const CutAOI    &cutAOI,
+@@ -3162,7 +3162,7 @@ bool priv::is_over_whole_expoly(const CutAOI    &cutAOI,
                                  const CutMesh   &mesh)
  {
      // NonInterupted contour is without other point and contain all from shape    
@@ -192,10 +192,10 @@ index c229ff246b..e50804625d 100644
          const IntersectingElement *ie_s = vert_shape_map[mesh.source(hi)];
          const IntersectingElement *ie_t = vert_shape_map[mesh.target(hi)];
 diff --git a/src/libslic3r/GCode/PostProcessor.cpp b/src/libslic3r/GCode/PostProcessor.cpp
-index 8e0304ae95..3666b51fed 100644
+index 844201ba9a..453d581d45 100644
 --- a/src/libslic3r/GCode/PostProcessor.cpp
 +++ b/src/libslic3r/GCode/PostProcessor.cpp
-@@ -28,7 +28,7 @@
+@@ -33,7 +33,7 @@
  #else
  // POSIX
  #include <sstream>
@@ -205,10 +205,10 @@ index 8e0304ae95..3666b51fed 100644
  #endif
  
 diff --git a/src/libslic3r/utils.cpp b/src/libslic3r/utils.cpp
-index cb134e20a0..c365b6690f 100644
+index 0e1fe0686a..83b27e8bf2 100644
 --- a/src/libslic3r/utils.cpp
 +++ b/src/libslic3r/utils.cpp
-@@ -89,7 +89,7 @@
+@@ -92,7 +92,7 @@
  #else
  	// POSIX
  #include <sstream>
@@ -218,10 +218,10 @@ index cb134e20a0..c365b6690f 100644
  #endif
  
 diff --git a/src/slic3r/GUI/FreeCADDialog.cpp b/src/slic3r/GUI/FreeCADDialog.cpp
-index 9f212cd7ae..0062b3128b 100644
+index fd9313e2a9..8854c828dd 100644
 --- a/src/slic3r/GUI/FreeCADDialog.cpp
 +++ b/src/slic3r/GUI/FreeCADDialog.cpp
-@@ -44,7 +44,7 @@
+@@ -50,7 +50,7 @@
  // and so boost/process has a line 'typedef int int'instead of 'typedef int pid_t' that makes it crash
  // note: don't put it in a header, as it can create problems. Here it's safe enough to be used, as it's just applied for the process.hpp file and this source code.
  #define pid_t pid_t
@@ -230,11 +230,30 @@ index 9f212cd7ae..0062b3128b 100644
  
  #include <cstdlib>   // getenv()
  
+diff --git a/src/slic3r/GUI/OpenGLManager.cpp b/src/slic3r/GUI/OpenGLManager.cpp
+index dc285a764d..18468c7363 100644
+--- a/src/slic3r/GUI/OpenGLManager.cpp
++++ b/src/slic3r/GUI/OpenGLManager.cpp
+@@ -363,9 +363,13 @@ bool OpenGLManager::init_gl()
+     if (!m_gl_initialized) {
+ #if ENABLE_GL_CORE_PROFILE || ENABLE_OPENGL_ES
+         glewExperimental = true;
++#else
++        glewExperimental = true;
+ #endif // ENABLE_GL_CORE_PROFILE || ENABLE_OPENGL_ES
+         GLenum err = glewInit();
+-        if (err != GLEW_OK) {
++        // GLEW_ERROR_NO_GLX_DISPLAY occurs when GTK3 uses EGL (Wayland/XWayland).
++        // OpenGL core still works; only GLX extensions are unavailable.
++        if (err != GLEW_OK && err != GLEW_ERROR_NO_GLX_DISPLAY) {
+             BOOST_LOG_TRIVIAL(error) << "Unable to init glew library: " << glewGetErrorString(err);
+             return false;
+         }
 diff --git a/src/slic3r/GUI/RemovableDriveManager.cpp b/src/slic3r/GUI/RemovableDriveManager.cpp
-index dfbd7c9faa..210b355c4f 100644
+index dfee446890..c48fce4fab 100644
 --- a/src/slic3r/GUI/RemovableDriveManager.cpp
 +++ b/src/slic3r/GUI/RemovableDriveManager.cpp
-@@ -35,7 +35,7 @@
+@@ -38,7 +38,7 @@
  #include <pwd.h>
  #include <boost/filesystem.hpp>
  #include <boost/system/error_code.hpp>
@@ -244,22 +263,22 @@ index dfbd7c9faa..210b355c4f 100644
  
  namespace Slic3r {
 diff --git a/src/slic3r/Utils/Bonjour.cpp b/src/slic3r/Utils/Bonjour.cpp
-index 0867c22b33..6c12aac5bc 100644
+index ad7049f57c..8877591531 100644
 --- a/src/slic3r/Utils/Bonjour.cpp
 +++ b/src/slic3r/Utils/Bonjour.cpp
-@@ -13,6 +13,7 @@
+@@ -15,6 +15,7 @@
  #include <thread>
- #include <boost/endian/conversion.hpp>
- #include <boost/date_time/posix_time/posix_time_duration.hpp>
+ #include <vector>
+ 
 +#include <boost/asio/deadline_timer.hpp>
- #include <boost/format.hpp>
- #include <boost/log/trivial.hpp>
  #include <boost/bind/bind.hpp>
+ #include <boost/date_time/posix_time/posix_time_duration.hpp>
+ #include <boost/endian/conversion.hpp>
 diff --git a/src/slic3r/Utils/Process.cpp b/src/slic3r/Utils/Process.cpp
-index cc37f478ea..fbff9e8331 100644
+index 8c6bc74926..138f6f2dc5 100644
 --- a/src/slic3r/Utils/Process.cpp
 +++ b/src/slic3r/Utils/Process.cpp
-@@ -22,8 +22,8 @@
+@@ -25,8 +25,8 @@
  // For starting another PrusaSlicer instance on OSX.
  // Fails to compile on Windows on the build server.
  #ifdef __APPLE__
@@ -270,23 +289,3 @@ index cc37f478ea..fbff9e8331 100644
  #endif
  
  #include <wx/stdpaths.h>
-diff --git a/src/slic3r/GUI/OpenGLManager.cpp b/src/slic3r/GUI/OpenGLManager.cpp
---- a/src/slic3r/GUI/OpenGLManager.cpp
-+++ b/src/slic3r/GUI/OpenGLManager.cpp
-@@ -342,5 +342,7 @@ bool OpenGLManager::init_gl()
-     if (!m_gl_initialized) {
- #if ENABLE_GL_CORE_PROFILE || ENABLE_OPENGL_ES
-         glewExperimental = true;
-+#else
-+        glewExperimental = true;
- #endif // ENABLE_GL_CORE_PROFILE || ENABLE_OPENGL_ES
-         GLenum err = glewInit();
-@@ -346,5 +348,7 @@ bool OpenGLManager::init_gl()
-         GLenum err = glewInit();
--        if (err != GLEW_OK) {
-+        // GLEW_ERROR_NO_GLX_DISPLAY occurs when GTK3 uses EGL (Wayland/XWayland).
-+        // OpenGL core still works; only GLX extensions are unavailable.
-+        if (err != GLEW_OK && err != GLEW_ERROR_NO_GLX_DISPLAY) {
-             BOOST_LOG_TRIVIAL(error) << "Unable to init glew library: " << glewGetErrorString(err);
-             return false;
-         }

@@ -1,10 +1,10 @@
 # Maintainer: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=superslicer-nightly-git
-pkgver=2.3.55.5.r11543.gf2c9dd0d8c
-pkgrel=4
+pkgver=2.3.55.5.r12055.g4772f4ea66
+pkgrel=1
 epoch=1
-pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.) — nightly dev_27_62 branch"
+pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.) — nightly dev_27_64 branch"
 arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
@@ -14,21 +14,21 @@ options=(!emptydirs)
 # time instead of silently breaking the installed binary at startup.
 depends=('cgal' 'imath' 'libGLEW.so' 'libboost_chrono.so' 'libboost_filesystem.so'
          'libboost_locale.so' 'libboost_log.so' 'libboost_thread.so' 'libspnav'
-         'nanosvg' 'nlopt' 'openvdb' 'qhull' 'slicer-udev' 'wxwidgets-gtk3')
+         'nanosvg' 'nlopt' 'opencascade' 'openvdb' 'python' 'qhull' 'slicer-udev' 'wxwidgets-gtk3')
 makedepends=('boost' 'cereal' 'cmake' 'eigen' 'libigl' 'ninja' 'openvdb')
 optdepends=('superslicer-profiles: Predefined printer profiles')
 provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-prerelease' 'superslicer-git')
-source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git#branch=dev_27_62"
+source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git#branch=dev_27_64"
         "heatshrink-0.4.1.zip::https://github.com/atomicobject/heatshrink/archive/refs/tags/v0.4.1.zip"
         "libbgcode-source.zip::https://github.com/prusa3d/libbgcode/archive/6f43cb004ef3d3bda37dde49f6235e24d2717629.zip"
         '0005-modern-deps.patch'
-        '0006-reset-vendorsync-best.patch')
+        '0006-gcc-boost-build-fixes.patch')
 sha512sums=('SKIP'
             '910d1195536e41681dddf7468ad59f2343b530bed7b90cfb625a5b1c65c4e00cbf2c7ae28e9ef6a1e2895efe0a21fa2102017a773d238e86a8698b3cce1ffb96'
             'ace75273fee17a0d5cee6f6b6ae51861f0c323c3365b9ced711e9c21c1dc64e391ee29709dbe54922600ef8d1d6e1d963276f3bf32d6a77f8a66972f9e03b54e'
-            '33c4f39ea36276b72a3402b45529800ebf611185abcac8733ffc0149f517b532efcffff0433d8d7c3b52da227a08ea04c4909dd5ad6e315483a4087d5db582c7'
-            '7011caab129b7c5f560bd07e7a328b4df3a62ab2177a1c364b1cce103f5d4c1b6bc81a52384b4cff2b8aeecf6a220264477504e9001ed7646dbb0b8bd837377e')
+            'dae9395df49187998b705bbb457c0eac7a3815a93d27eee480d7d5347886503c73ccb7676135a8fc8f347d7f6b1d9aafab5c162642dc62b5da6043cf5b82039b'
+            'd4f69b7476269277f70da4c4ab175246b9c32e4ea1b339e22de0f327791699c91d5663f9aca4e0b26c58778b2eeb33a9647c26d7f223f7f8d86d02b5632eb719')
 
 pkgver()
 {
@@ -44,6 +44,7 @@ prepare()
 
   # disabling tests is not enough, we need to remove them explicitly
   sed -i 's,add_subdirectory(test),,g' src/CMakeLists.txt
+  sed -i 's,add_subdirectory(test-utils),,g' src/CMakeLists.txt
 
   # set correct app name/key/cmd
   sed -i 's/set(SLIC3R_APP_NAME .*/set(SLIC3R_APP_NAME "SuperSlicer")/' version.inc
@@ -65,25 +66,31 @@ prepare()
 
   # apply patches
   patch -Np1 -i "$srcdir/0005-modern-deps.patch"
-  patch -Np1 -i "$srcdir/0006-reset-vendorsync-best.patch"
+  patch -Np1 -i "$srcdir/0006-gcc-boost-build-fixes.patch"
 
-  # build heatshrink (bundled, not in Arch repos)
+  # build heatshrink/libbgcode statically at the versions upstream pins in
+  # deps/ (the AUR packages track libbgcode master, not upstream's pin);
+  # PIC because the bundled C++ plugins link them into shared objects
+  #
+  # build heatshrink
   local _heatshrink_src="$srcdir/heatshrink-0.4.1"
   local _deps_prefix="$srcdir/deps-install"
   cp "$srcdir/SuperSlicer/deps/+heatshrink/CMakeLists.txt" "$_heatshrink_src/"
   cp "$srcdir/SuperSlicer/deps/+heatshrink/Config.cmake.in" "$_heatshrink_src/"
   cmake -B "$srcdir/heatshrink-build" -S "$_heatshrink_src" \
-    -G Ninja \
+    -G Ninja -Wno-author -Wno-policy -Wno-deprecated \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
     -DCMAKE_INSTALL_PREFIX="$_deps_prefix"
   ninja -C "$srcdir/heatshrink-build"
   DESTDIR="" ninja -C "$srcdir/heatshrink-build" install
 
-  # build libbgcode (bundled, not in Arch repos)
+  # build libbgcode
   local _libbgcode_src="$srcdir/libbgcode-6f43cb004ef3d3bda37dde49f6235e24d2717629"
   cmake -B "$srcdir/libbgcode-build" -S "$_libbgcode_src" \
-    -G Ninja \
+    -G Ninja -Wno-author -Wno-policy -Wno-deprecated \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
     -DCMAKE_INSTALL_PREFIX="$_deps_prefix" \
     -DCMAKE_PREFIX_PATH="$_deps_prefix" \
     -DLibBGCode_BUILD_TESTS=OFF \
@@ -96,13 +103,20 @@ build()
 {
   cd "$srcdir/SuperSlicer/build"
 
+  # -Wno-changes-meaning: the plugin API headers (Api/plugin/cpp) trip a
+  # GCC permerror that MSVC doesn't diagnose
+  # PIC: the bundled C++ plugins (polyholes, dense infill, ...) are shared
+  # objects that link the static libslic3r, which uses thread_local
   cmake .. \
-    -G Ninja \
+    -G Ninja -Wno-author -Wno-policy -Wno-deprecated \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-ignored-optimization-argument -ffat-lto-objects -DBOOST_FILESYSTEM_DEPRECATED -DBOOST_PROCESS_VERSION=1 -ffile-prefix-map=$srcdir=." \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-ignored-optimization-argument -ffat-lto-objects -DBOOST_FILESYSTEM_DEPRECATED -DBOOST_PROCESS_VERSION=1 -Wno-changes-meaning -ffile-prefix-map=$srcdir=." \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_PREFIX_PATH="$srcdir/deps-install" \
     -DOpenGL_GL_PREFERENCE=GLVND \
+    -DPython3_EXECUTABLE=/usr/bin/python \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+    -DAS_DISABLE_INSTALL=ON \
     -DSLIC3R_FHS=ON \
     -DSLIC3R_STATIC=OFF \
     -DSLIC3R_WX_STABLE=ON \
