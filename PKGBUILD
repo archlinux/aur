@@ -1,6 +1,6 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=niri-display-settings-git
-pkgver=r9.ec607d5
+pkgver=r11.5f76b3f
 pkgrel=1
 pkgdesc="A GTK4/libadwaita GUI to configure monitors for the niri compositor"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = niri-display-settings-git
 	pkgdesc = A GTK4/libadwaita GUI to configure monitors for the niri compositor
-	pkgver = r9.ec607d5
+	pkgver = r11.5f76b3f
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/niri-display-settings
 	arch = any
