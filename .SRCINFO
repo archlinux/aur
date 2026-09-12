@@ -1,14 +1,14 @@
 pkgbase = python-whenever
 	pkgdesc = Modern datetime library for Python
-	pkgver = 0.10.0
+	pkgver = 0.10.5
 	pkgrel = 1
 	url = https://github.com/ariebovenberg/whenever
 	arch = any
 	license = MIT
 	makedepends = python-installer
 	depends = python
-	noextract = whenever-0.10.0-py3-none-any.whl
-	source = whenever-0.10.0-py3-none-any.whl::https://files.pythonhosted.org/packages/py3/w/whenever/whenever-0.10.0-py3-none-any.whl
-	sha256sums = 70feda454af6b2c231abd428b9430cd75492a000ca1d1edc42976d6fea265eec
+	noextract = whenever-0.10.5-py3-none-any.whl
+	source = whenever-0.10.5-py3-none-any.whl::https://files.pythonhosted.org/packages/py3/w/whenever/whenever-0.10.5-py3-none-any.whl
+	sha256sums = 193091633fc1dece4c86e7303cbd4039320b4f45c69dc5ae69b8f711bca82603
 
 pkgname = python-whenever

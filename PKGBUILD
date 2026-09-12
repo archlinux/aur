@@ -1,7 +1,7 @@
 # Maintainer: Xuelin Yang <xuelin@adamantyee.cc>
 pkgname='python-whenever'
 pkgdesc='Modern datetime library for Python'
-pkgver=0.10.0
+pkgver=0.10.5
 pkgrel=1
 _srcname="${pkgname/python-/}"
 _wheel="$_srcname-$pkgver-py3-none-any.whl"
@@ -16,7 +16,7 @@ depends=(
 )
 source=("$_wheel::https://files.pythonhosted.org/packages/py3/w/$_srcname/$_wheel")
 noextract=("$_wheel")
-sha256sums=('70feda454af6b2c231abd428b9430cd75492a000ca1d1edc42976d6fea265eec')
+sha256sums=('193091633fc1dece4c86e7303cbd4039320b4f45c69dc5ae69b8f711bca82603')
 
 package() {
 	python -m installer --destdir="$pkgdir" "$srcdir/$_wheel"
