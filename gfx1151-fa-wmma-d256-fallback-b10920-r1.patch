@@ -1,0 +1,30 @@
+From: llama.cpp-hip-gfx1151 maintainers
+Subject: [PATCH] hip: keep gfx1151 D=256 attention on the established dispatch path
+
+Precautionary local fallback for the new RDNA WMMA dispatch inherited from
+upstream #28102. A downstream Strix Halo report associates multi-image
+Flash-Next corruption and zero MTP acceptance with this optimization:
+https://github.com/Patt92/llama.cpp/commit/3294199a72d72fbc3061429c0bcc3050b065ed6e
+
+That fork contains other graph/kernel changes and the report does not
+establish an isolated cause or a successful matched post-revert rerun.
+This is risk containment, not a verified fix. Limit it to gfx1151 D=256:
+retain smaller-head WMMA tuning, other GPUs, MMQ, and FlashAttention itself.
+The common selector is used by both allocation sizing and execution.
+Remove after controlled multi-image/MTP correctness testing or an upstream
+fix validates this path on gfx1151. Prefill/verification throughput may fall.
+
+diff --git a/ggml/src/ggml-cuda/fattn.cu b/ggml/src/ggml-cuda/fattn.cu
+--- a/ggml/src/ggml-cuda/fattn.cu
++++ b/ggml/src/ggml-cuda/fattn.cu
+@@ -667,5 +667,9 @@ static best_fattn_kernel ggml_cuda_get_best_fattn_kernel(int device, const ggml_tensor * dst) {
++    // Keep gfx1151 D=256 on the established tile/vector path pending validation
++    // of the reported multi-image regression after the RDNA WMMA retuning.
++    const bool avoid_gfx1151_wmma_256 = cc == GGML_CUDA_CC_OFFSET_AMD + 0x1151 && Q->ne[0] == 256;
++
+     // AMD WMMA is faster than the tile kernel if the wide tiles with high arithmetic intensity can be utilized.
+-    if ((amd_wmma_available(cc) && gqa_opt_applies && Q->ne[0] <= 256) && Q->ne[0] != 40 && Q->ne[0] != 72 &&
++    if (!avoid_gfx1151_wmma_256 && (amd_wmma_available(cc) && gqa_opt_applies && Q->ne[0] <= 256) && Q->ne[0] != 40 && Q->ne[0] != 72 &&
+             Q->ne[1] * gqa_ratio_eff > (Q->ne[0] <= 128 ? 8 : 16)) {
+         return BEST_FATTN_KERNEL_MMA_F16;
+     }
