@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 
 pkgname=opera-developer
-pkgver=137.0.6010.1
+pkgver=137.0.6015.0
 pkgrel=1
 pkgdesc='Fast, secure, easy-to-use web browser (Developer Stream)'
 arch=('x86_64')
@@ -71,7 +71,7 @@ source=(
     "nwjs-ffmpeg-${_ffmpeg_zip}::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/${_nwjs_ffmpeg_version}/${_ffmpeg_zip}"
 )
 
-sha256sums=('06739eac180d730f67c715fb6c1b575c29c0cede04dbae47c1865414733fd6f0'
+sha256sums=('238ea996dc3ed283ffbd390022dd22c840aa1e0a871b172bc94f55f78e6b026f'
             '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
             '589fc1fa3f9905fe336990a2c8e16a9107c1aabdb42031b69eaf812331e5fb4a')
