@@ -1,0 +1,4 @@
+d /var/lib/audiomuse-ai-web 0750 audiomuse-web audiomuse-web -
+d /var/lib/audiomuse-ai-web/plugins 0750 audiomuse-web audiomuse-web -
+d /var/cache/audiomuse-ai-web 0750 audiomuse-web audiomuse-web -
+d /var/tmp/audiomuse-ai-web 0750 audiomuse-web audiomuse-web -

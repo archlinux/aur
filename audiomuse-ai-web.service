@@ -1,0 +1,23 @@
+[Unit]
+Description=AudioMuse-AI Web Interface
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=audiomuse-web
+Group=audiomuse-web
+WorkingDirectory=/usr/lib/audiomuse-ai-web
+EnvironmentFile=/etc/audiomuse-ai/web.env
+
+RuntimeDirectory=audiomuse-ai-web
+RuntimeDirectoryMode=0750
+
+ExecStart=/usr/bin/supervisord -n -c /etc/audiomuse-ai/web-supervisord.conf
+ExecReload=/usr/bin/supervisorctl -c /etc/audiomuse-ai/web-supervisord.conf restart all
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

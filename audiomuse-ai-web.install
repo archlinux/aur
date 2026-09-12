@@ -1,0 +1,56 @@
+post_install() {
+  systemd-sysusers audiomuse-ai-web.conf
+  systemd-tmpfiles --create audiomuse-ai-web.conf
+
+  cat <<'EOF'
+
+AudioMuse-AI web has been installed.
+
+Review the sample configuration at:
+
+  /etc/audiomuse-ai/web.env
+
+before starting the service.
+
+Some model artifacts are intentionally not bundled because they are generic
+upstream models rather than AudioMuse-specific exports.
+
+Required for CLAP text features:
+  roberta-base
+
+This can be downloaded with the Hugging Face CLI:
+
+  hf download roberta-base
+
+If the model is stored in a non-default Hugging Face cache, set HF_HOME in:
+
+  /etc/audiomuse-ai/web.env
+
+Optional features:
+
+  Neural fingerprinting / Search by Recording
+    Requires:
+      audiomuse-ai-neural-fingerprint
+
+  Gemini AI provider
+    Requires:
+      python-google-genai
+
+  Mistral AI provider
+    Requires:
+      python-mistralai
+
+Documentation:
+  https://github.com/NeptuneHub/AudioMuse-AI
+
+Start the service with:
+
+  systemctl enable --now audiomuse-ai-web.service
+
+EOF
+}
+
+post_upgrade() {
+  systemd-sysusers audiomuse-ai-web.conf
+  systemd-tmpfiles --create audiomuse-ai-web.conf
+}
