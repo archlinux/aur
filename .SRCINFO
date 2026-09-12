@@ -1,6 +1,6 @@
 pkgbase = open-orpheus
 	pkgdesc = An open-source implementation of Netease Cloud Music's Orpheus browser host
-	pkgver = 0.16.2
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/YUCLing/open-orpheus
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = open-orpheus
 	optdepends = kde-cli-tools: move deleted files to the KDE trash
 	options = !debug
 	options = !strip
-	source = open-orpheus-0.16.2.tar.gz::https://github.com/YUCLing/open-orpheus/archive/refs/tags/v0.16.2.tar.gz
+	source = open-orpheus-0.17.0.tar.gz::https://github.com/YUCLing/open-orpheus/archive/refs/tags/v0.17.0.tar.gz
 	source = wasm-bindgen-0.2.123.tar.gz::https://github.com/wasm-bindgen/wasm-bindgen/releases/download/0.2.123/wasm-bindgen-0.2.123-x86_64-unknown-linux-musl.tar.gz
 	source = open-orpheus.desktop
 	sha256sums = b79d1d98f8bac00cc4a23d43e120d1e46711194db53fc8a00159e9e1f3a51ebb
