@@ -1,7 +1,7 @@
 pkgbase = md-viewer-git
 	pkgdesc = Fast, lightweight markdown viewer for Linux with tabs, file explorer, and live reload
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aydiler/md-viewer
 	arch = x86_64
 	license = MIT
@@ -21,6 +21,7 @@ pkgbase = md-viewer-git
 	optdepends = xdg-desktop-portal-gtk: GTK portal backend
 	provides = md-viewer
 	conflicts = md-viewer
+	options = !lto
 	source = md-viewer-git::git+https://github.com/aydiler/md-viewer.git
 	sha256sums = SKIP
 

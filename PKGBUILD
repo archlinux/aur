@@ -1,6 +1,6 @@
 pkgname=md-viewer-git
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, lightweight markdown viewer for Linux with tabs, file explorer, and live reload"
 arch=('x86_64')
 url="https://github.com/aydiler/md-viewer"
@@ -27,6 +27,12 @@ optdepends=(
 )
 provides=('md-viewer')
 conflicts=('md-viewer')
+# Disable makepkg's LTO flags. Rust is unaffected — cargo still applies
+# `lto = true` from [profile.release]. But makepkg appends -flto=auto to
+# CFLAGS, which the cc crate applies to C dependencies (libmimalloc-sys),
+# producing GCC LTO objects that rustc's linker cannot resolve:
+# "undefined symbol" errors at link time (AUR comment, djboris).
+options=('!lto')
 source=("${pkgname}::git+https://github.com/aydiler/md-viewer.git")
 sha256sums=('SKIP')
 
