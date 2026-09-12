@@ -2,7 +2,7 @@
 
 pkgname=voix-bin
 _pkgname=voix
-pkgver=4.12.1
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication (pre-built)"
 arch=('x86_64' 'aarch64')
