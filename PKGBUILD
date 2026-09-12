@@ -4,12 +4,12 @@ pkgname=pigz-replace-gzip-static
 _pkgname=pigz
 gzip_ver=1.14
 pkgver=2.8
-pkgrel=1
+pkgrel=3
 pkgdesc='Parallel gzip compressor, replaces gzip'
 arch=('aarch64' 'x86_64')
 url='https://www.zlib.net/pigz'
 license=('custom')
-makedepends=('zlib' 'musl' 'gcc' 'make' 'gzip')
+makedepends=('zlib-ng-compat-static' 'musl' 'gcc' 'make' 'gzip')
 optdepends=('diffutils: zdiff/zcmp support'
   'grep: zegrep/zfgrep/zforce/zgrep support'
   'less: zless support'
@@ -22,13 +22,14 @@ source=(https://www.zlib.net/$_pkgname/$_pkgname-$pkgver.tar.gz
   makefile.patch)
 sha256sums=('eb872b4f0e1f0ebe59c9f7bd8c506c4204893ba6a8492de31df416f0d5170fd0'
             '613d6ea44f1248d7370c7ccdeee0dd0017a09e6c39de894b3c6f03f981191c6b'
-            'fd1d169755fe351de29461bff3063956bbecded4855c7ebed08e63a9c3ae1eb5')
+            'ce30449bea773f266e07ce1d2ca5e790646307f49965b5fff2a526f0fc65b4ab')
 prepare() {
   cd $_pkgname-$pkgver
   patch -p1 <../makefile.patch
-  ln -s /usr/include/zconf.h
-  ln -s /usr/include/zlib.h
-  ln -s /usr/lib/libz.a
+  ln -s /usr/include/zlib-ng-compat-static/zconf.h
+  ln -s /usr/include/zlib-ng-compat-static/zlib.h
+  ln -s /usr/include/zlib-ng-compat-static/zlib_name_mangling.h
+  ln -s /usr/lib/zlib-ng-compat-static/libz.a
 }
 build() {
   make -C $_pkgname-$pkgver CFL="$CFLAGS" LDF="$LDFLAGS" -j $(nproc) pigz

@@ -1,1 +1,4 @@
 *.gz
+pkg/
+src/
+*.lz4
