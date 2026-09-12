@@ -4,7 +4,7 @@
 pkgbase=logitech-trueforce-dkms
 pkgname=('logitech-trueforce-dkms' 'logi-wheel' 'logi-wheel-gui')
 _dkmsname=logitech-trueforce
-pkgver=0.40.3
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="DKMS kernel driver for Logitech racing wheels (RS50, G PRO, G923): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 arch=('x86_64')
@@ -27,7 +27,7 @@ options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v0.18.0 release tarball. On the next version bump, regenerate:
 #   updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('47b53c2770e95f978cdcf54f284865e8fee8f361de34fe1213937f10d3c739cb')
+sha256sums=('106876d7c50ae5d84104a59f8ec7c57fbc0d687c1e5a66b289f66e1cd9d8efc8')
 
 _src() {
 	echo "$srcdir/logitech-trueforce-linux-driver-$pkgver"
@@ -114,6 +114,27 @@ package_logitech-trueforce-dkms() {
 	# be installed without it.
 	install -Dm755 "$_src/tools/xbox-modeswitch.sh" \
 		"$pkgdir/usr/bin/logi-wheel-modeswitch"
+
+	# Lists hid-logitech-dd for mkinitcpio and regenerates the image, so the
+	# module registers before the in-tree driver can claim a G923 at boot
+	# (#90). The hook runs it after the dkms hook (71) has built the module;
+	# kernel updates then regenerate through mkinitcpio's own hook (90) with
+	# the conf.d line already in place.
+	install -Dm755 "$_src/tools/initramfs-refresh.sh" \
+		"$pkgdir/usr/bin/logi-wheel-initramfs"
+	install -dm755 "$pkgdir/usr/share/libalpm/hooks"
+	printf '%s\n' \
+		'[Trigger]' \
+		'Operation = Install' \
+		'Operation = Upgrade' \
+		'Type = Package' \
+		'Target = logitech-trueforce-dkms' \
+		'' \
+		'[Action]' \
+		'Description = Adding hid-logitech-dd to the initramfs...' \
+		'When = PostTransaction' \
+		'Exec = /usr/bin/logi-wheel-initramfs' \
+		> "$pkgdir/usr/share/libalpm/hooks/75-logitech-trueforce-initramfs.hook"
 
 	# softdep ordering hint for the G923 PIDs, plus a narrow blacklist of
 	# the standalone new-lg4ff DKMS fork (see the file for why that one
