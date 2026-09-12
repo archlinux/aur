@@ -1,7 +1,7 @@
 # Maintainer: Cyril <cyrwae[at]hotmail[dot]com>
 pkgname=python-materialsdb
 _name=python-materialsdb
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A library to work with materialsdb.org open standard for building materials"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
     python-wheel
 )
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
-sha256sums=('3d0d82ca6cf7d61efe950556927ab7536435370396b0006d3ebd2a5a9ca66209')
+sha256sums=('eb5fa6ca3b884714b10ad2c149bb36121484be14456aaed377939bbd8ecdd3f7')
 build() {
     cd "${_name//-/_}-$pkgver"
     python -m build --wheel --no-isolation
