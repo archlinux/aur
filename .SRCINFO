@@ -1,6 +1,6 @@
 pkgbase = photoslop-git
 	pkgdesc = Photoslop – a simple image editor written in Python (git version)
-	pkgver = 0.1.0.r187.g8a7ad18
+	pkgver = 0.1.0.r261.gc6a70da
 	pkgrel = 1
 	url = https://github.com/CryptoJones/Photoslop
 	arch = any

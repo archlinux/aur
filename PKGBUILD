@@ -1,5 +1,5 @@
 pkgname=photoslop-git
-pkgver=0.1.0.r187.g8a7ad18
+pkgver=0.1.0.r261.gc6a70da
 pkgrel=1
 pkgdesc="Photoslop – a simple image editor written in Python (git version)"
 arch=('any')
