@@ -1,5 +1,5 @@
 pkgname=tether-bin
-pkgver=0.2.29
+pkgver=0.2.30
 pkgrel=2
 pkgdesc="Bridge an iPhone to the Linux desktop: clipboard, files, messages, and notifications"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('tether')
 conflicts=('tether' 'tether-git')
 install=tether.install
 source=("${url}/releases/download/v${pkgver}/tether-${pkgver}.tar.gz")
-sha256sums=('ed71d0549908ba21f9ccf2142f6bef3a39f7eacdeb2ae73d2f8b8cb88903a43c')
+sha256sums=('449a0768004b36b8f485ec3506d7b4fa6df57bb02f598a8c19cb6012390253c5')
 
 package() {
     cd "tether-${pkgver}"
