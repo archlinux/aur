@@ -1,7 +1,7 @@
 # Maintainer: Xuelin Yang <xuelin@adamantyee.cc>
 pkgname=arxiv-mcp-server
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 pkgdesc='A flexible arXiv search and analysis service with MCP protocol support'
 arch=('any')
 url='https://github.com/blazickjp/arxiv-mcp-server'
@@ -12,11 +12,9 @@ depends=(
 	'python-aiohttp>=3.9.1'
 	'python-anyio>=4.2.0'
 	'python-arxiv>=2.1.0'
-	'python-black>=25.1.0'
 	'python-httpx>=0.24.0'
 	'python-mcp>=1.27.0'
-	'python-pymupdf-layout>=1.26.6'
-	'python-pymupdf4llm>=0.0.17'
+	'python-mcp<2.0.0'
 	'python-pydantic>=2.8.0'
 	'python-pydantic-settings>=2.1.0'
 	'python-dateutil>=2.8.2'
@@ -39,12 +37,14 @@ checkdepends=(
 	'python-pytest-mock>=3.10.0'
 )
 optdepends=(
-	'python-numpy: semantic search support'
-	'python-sentence-transformers: semantic search support'
+	'python-pymupdf4llm: PDF processing support'
+	'python-pymupdf-layout: PDF layout analysis support'
+	'python-numpy: pro semantic search support'
+	'python-sentence-transformers: pro semantic search support'
 )
 _pypiname=arxiv_mcp_server
 source=("https://files.pythonhosted.org/packages/source/a/${pkgname}/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=('bf1acacaafae3a0558b56aef8a470889d2eb6ba9f4185945bdf2b3b6b73b187f')
+sha256sums=('024c8122112617af9eea9d913a6c46ec5cf1d6b5fbcbac43c8ba0615bfe9d65c')
 
 build() {
 	cd "${_pypiname}-${pkgver}"
