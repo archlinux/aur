@@ -8,7 +8,7 @@ _pkgname=bcachefs-tools
 # Keep epoch=1 to preserve upgrade ordering from the previous date-based
 # VCS pkgver scheme used in AUR history.
 epoch=1
-pkgver=1.38.6.r38.g7f64e89
+pkgver=1.39.6.r0.g66d3b1b
 pkgrel=1
 pkgdesc="Bcachefs userspace tools (Git version)"
 arch=('x86_64')
