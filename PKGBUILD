@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=meshurl
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='A Meshtastic channel configuration URL encoder and decoder written in Rust'
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('libgcc')
 makedepends=('git' 'rust')
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-b2sums=('868ffd6ac19ddcab9c5d6a4579e878230de4e832d2d3586aa422a4b6fe360c2e798d34c3b6bf545e3868b3e6dd00a7baa82ad01eb41ee33f2c24aee8ead8e38c')
+b2sums=('f76a2e0d625676e75db50600f0a6f6e444fa08cfa10a6c4fe4460b6ce2d2a708efe3092a862f2fea5d16b60204cbb08e79c29e7c3ab4dcee238de0c3686e03af')
 
 prepare() {
   cd "${pkgname}"
