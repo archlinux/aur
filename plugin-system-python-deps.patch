@@ -1,0 +1,20 @@
+--- a/plugin/manager.py
++++ b/plugin/manager.py
+@@ -246,16 +246,14 @@ class PluginManager:
+             sys.path.append(lib_dir)
+ 
+     def _installed_dist_versions(self):
+-        lib_dir = os.path.join(config.PLUGINS_DIR, '_lib')
+-        if not os.path.isdir(lib_dir):
+-            return {}
+         versions = {}
+         try:
+-            for dist in importlib.metadata.distributions(path=[lib_dir]):
++            for dist in importlib.metadata.distributions():
+                 name = dist.metadata['Name'] if dist.metadata else None
+                 if name:
+                     versions[canonicalize_name(name)] = dist.version
+         except Exception:
+-            logger.exception('Could not read installed plugin dependencies from _lib')
++            logger.exception('Could not read installed plugin dependencies')
+         return versions

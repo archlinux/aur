@@ -74,6 +74,7 @@ source=(
   'swagger-compat.py'
   'roberta-tokenizer-compat.patch'
   'remove-flasgger.patch'
+  'plugin-system-python-deps.patch'
   'audiomuse-ai-worker.service'
   'audiomuse-ai-worker.supervisord.conf'
   'audiomuse-ai-worker.sysusers'
@@ -89,17 +90,24 @@ sha256sums=('e6d10aa26820a7589f6512123d8868c26be617b08b2bac4542e387ff5921e0f4'
             'eefb4cee2ece6c81b0b37969462929156b035a66071faaafc1fcf9626dcc4b21'
             '7aea2aeb6bec2e1a97b778c09190f787b7466a3b041306765b6812edef1817cd'
             '773c336c3fbdc1ed74ea1f7a23d7c518e8071517789a47d4e8dc7ff7ee543622'
+            '9849ab379631593bf21a7a5192165c45b2d24d3cb541450a2f2e13ad1937ef6d'
             'b44bd336aa9e0d251f84feafb7335adb0d9a14909bf1fd2640d426a9570547f6'
             'ccbca1b577fbc2dba683e611152c6b2d995d43aaac91593fb2e3988815abce48'
             '1b6dac9d5528b4eeb16008bc5e988492a80b9d35ceb4640247bdb3331b1d191a'
             '7e036273d925175f889a972fe6c18120d4bdc57251090aa4022b120361ca302c'
-            'b27b69fd3d0fe6bbb9039a30439a4ebb464364cae4792c3feac9ca18ce40f705')
+            'c7536abee7ab5af057177e634e4f92cc96f6910216436cfb9b7d99d77d0f04f5')
+
+backup=(
+  'etc/audiomuse-ai/worker.env'
+  'etc/audiomuse-ai/worker-supervisord.conf'
+)
 
 prepare() {
   cd "AudioMuse-AI-$pkgver"
 
   patch -Np1 -i "$srcdir/roberta-tokenizer-compat.patch"
   patch -Np1 -i "$srcdir/remove-flasgger.patch"
+  patch -Np1 -i "$srcdir/plugin-system-python-deps.patch"
 
   rm -f \
     app.py.orig \
