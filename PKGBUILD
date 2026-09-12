@@ -4,7 +4,7 @@
 _pkgbase=python-proton-keyring-linux
 pkgname="${_pkgbase}-no-gnome"
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The proton-keyring-linux component without GNOME Keyring as a dependency."
 arch=(any)
 url="https://github.com/ProtonVPN/python-proton-keyring-linux"
