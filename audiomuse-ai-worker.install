@@ -2,7 +2,7 @@ post_install() {
   systemd-sysusers audiomuse-ai-worker.conf
   systemd-tmpfiles --create audiomuse-ai-worker.conf
 
-  cat <<'EOF'
+    cat <<'EOF'
 
 AudioMuse-AI worker has been installed.
 
@@ -15,33 +15,38 @@ before starting the service.
 Some model artifacts are intentionally not bundled because they are generic
 upstream models rather than AudioMuse-specific exports.
 
-Required for CLAP analysis:
-  roberta-base
+CLAP text features require the roberta-base tokenizer to be available
+in the Hugging Face cache. Model weights are not required.
 
-This can be downloaded with Hugging Face CLI, for example:
+This can be downloaded with the Hugging Face CLI:
 
-  hf download roberta-base
+  hf download roberta-base \
+    config.json \
+    tokenizer.json \
+    tokenizer_config.json \
+    vocab.json \
+    merges.txt
 
-If the model is stored in a non-default Hugging Face cache, set HF_HOME in:
+If the tokenizer is stored in a non-default Hugging Face hub cache, set
+HF_HUB_CACHE in:
 
   /etc/audiomuse-ai/worker.env
 
 Optional features:
 
   Local lyrics transcription
-    Requires a compatible Whisper ONNX export.
-    A model such as openai/whisper-small can be exported with Optimum:
+    Requires a compatible Whisper-small ONNX export.
 
-      optimum-cli export onnx \
-        --model openai/whisper-small \
-        --task automatic-speech-recognition-with-past \
-        /path/to/whisper-small-onnx
+    The simplest supported setup is:
 
-    Then set LYRICS_WHISPER_MODEL_DIR in:
+      audiomuse-ai-whisper-model
+
+    which installs the tested Whisper ONNX export published by AudioMuse-AI.
+
+    Alternatively, another compatible Whisper ONNX export may be used by
+    setting LYRICS_WHISPER_MODEL_DIR in:
+
       /etc/audiomuse-ai/worker.env
-
-    The export tool is provided by:
-      python-optimum-onnx
 
   Neural fingerprinting / Search by Recording
     Requires:
