@@ -1,0 +1,6 @@
+rune-ide-bin-*.zip
+rune-ide-bin-*.pkg.tar.zst
+rune-ide-bin-*.deb
+rune-ide-bin-*.tar.gz
+pkg/
+src/
