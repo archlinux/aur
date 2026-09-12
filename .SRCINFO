@@ -1,0 +1,13 @@
+pkgbase = cnake
+	pkgdesc = Another Linux larping program which is a snake game but it plays automatically
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Merfilek/cnake
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	depends = glibc
+	source = git+https://github.com/Merfilek/cnake.git
+	sha256sums = SKIP
+
+pkgname = cnake
