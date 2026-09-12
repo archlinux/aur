@@ -17,13 +17,15 @@ optdepends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zeozeozeo/teacrush/archive/refs/tags/v$pkgver.tar.gz")
 # NOTE: CI (.github/workflows/aur.yml) refreshes this on every stable release.
 # After tagging locally, refresh with: updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('SKIP')
+sha256sums=('63a425675788d9c0963f140b9909c2e256a23cb357bfaedc87b251647106d147')
 
 build() {
   cd "$pkgname-$pkgver"
-  export CGO_ENABLED=0
+  export CGO_ENABLED=1
   export GOFLAGS='-trimpath -mod=readonly'
-  go build -ldflags='-s -w' -o teacrush .
+  # -buildmode=pie + external linking honors makepkg LDFLAGS (RELRO/PIE).
+  # shellcheck disable=SC2154
+  go build -buildmode=pie -ldflags="-s -w -linkmode=external -extldflags \"$LDFLAGS\"" -o teacrush .
 }
 
 package() {

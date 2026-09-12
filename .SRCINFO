@@ -13,6 +13,6 @@ pkgbase = teacrush
 	optdepends = intel-media-driver: Intel QSV hardware encoding
 	optdepends = libva-mesa-driver: AMD VA-API hardware encoding
 	source = teacrush-0.1.0.tar.gz::https://github.com/zeozeozeo/teacrush/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 63a425675788d9c0963f140b9909c2e256a23cb357bfaedc87b251647106d147
 
 pkgname = teacrush
