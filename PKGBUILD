@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=marimo
-pkgver=0.24.0
+pkgver=0.24.2
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -48,7 +48,8 @@ optdepends=(
     'python-lsp-ruff: LSP server'
 
     # Sandbox (marimo edit --sandbox DIRECTORY)
-    'uv: Sandbox management'
+    'uv: Sandbox management and local html-wasm exports'
+    'python-pyzmq: IPC communication for sandbox kernels'
 
     # SQL
     'python-duckdb: SQL cells support'
@@ -56,8 +57,8 @@ optdepends=(
     'python-sqlglot: SQL cells parsing'
 
     # MCP
-    'python-mcp<2.0.0: MCP support'
-    'python-pydantic: MCP support'
+    'python-mcp: MCP support'
+    'python-httpx2: MCP support'
 
     # OpenTelemetry
     'python-opentelemetry-api: For tracing debugging'
@@ -79,7 +80,7 @@ optdepends=(
 
 # PyPI source release
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-b2sums=('9a4a7ca31ccd350df7b7586d4ea75cc11b4ab6fc150fca4c33eb67cb2fcde6ba82fc4508a7232e9982a69a9e860029dd3b054a7e29d3ca7c68791a63649fed86')
+b2sums=('e3053955cdaf709e80c209a76fd3241c950f14acef342e9acc0f5340646847ddf8d7be6eacc7cd2a65d953fdf1ee285c16b20115e4a93af1e21efbde0eaa7c56')
 
 build() {
     cd $pkgname-$pkgver
