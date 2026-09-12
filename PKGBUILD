@@ -1,16 +1,17 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-smda
-pkgver=4.4.7
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Recursive diassembler optimized for CFG recovery from memory dumps"
 arch=(any)
 url="https://github.com/danielplohmann/smda"
 license=(BSD-2-Clause)
-depends=(python python-capstone python-dncil python-dnfile lief)
+depends=(python python-capstone python-dncil python-dnfile python-purepdb python-pycxxfilt lief)
 makedepends=(python-setuptools python-build python-installer python-wheel)
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/smda/smda-$pkgver.tar.gz")
-sha256sums=('e4369270cac2bd6029d72fdc7fce2c9d33073077698eebeff325acdc49a38b9f')
+checkdepends=(python-hypothesis python-pytest python-tqdm)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('c42bc6010407c00885c21b9047f2dbe5273332c7dfe5f19e8e2e76db8f7b570d')
 
 prepare() {
     cd "smda-$pkgver"
@@ -22,10 +23,12 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-## check()
-# Upstream does not provide test data in their wheel packages. The only way
-# to get them is to grab it from GitHub, but they don't provide releases
-# there either.
+check() {
+    cd "smda-$pkgver"
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -P -m pytest -x
+}
 
 package() {
     cd "smda-$pkgver"
