@@ -1,0 +1,25 @@
+pkgbase = mdr-bin
+	pkgdesc = A standalone Markdown renderer for the terminal.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/MichaelMure/mdr
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = mdr
+	conflicts = mdr
+	options = !strip
+	source = README-0.2.5.md::https://raw.githubusercontent.com/MichaelMure/mdr/v0.2.5/Readme.md
+	source = LICENSE-0.2.5::https://raw.githubusercontent.com/MichaelMure/mdr/v0.2.5/LICENSE
+	sha256sums = 69fede02af22f36456868a664e1f3046ddf6927a56ddf524226656f60328cebd
+	sha256sums = 2d284c3a12c6712c91d8a52d7b5b2895419936c9618c9249ec8dabab7ec6d682
+	source_x86_64 = mdr-x86_64-0.2.5::https://github.com/MichaelMure/mdr/releases/download/v0.2.5/mdr_linux_amd64
+	sha256sums_x86_64 = 9aa66a9c09672c721fc2dc0710f74370c2dca271a4bd5618bf2717f153fb1dbe
+	source_i686 = mdr-i686-0.2.5::https://github.com/MichaelMure/mdr/releases/download/v0.2.5/mdr_linux_386
+	sha256sums_i686 = f27d64538d82d938da681b515f611081c97175653b5efe336988010bbadfc74f
+	source_aarch64 = mdr-aarch64-0.2.5::https://github.com/MichaelMure/mdr/releases/download/v0.2.5/mdr_linux_arm
+	sha256sums_aarch64 = 3d43a8f1adbd5bcb15b752afe94634dd241dfcaae2b089c18bfcadef1e2557aa
+
+pkgname = mdr-bin

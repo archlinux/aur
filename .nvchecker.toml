@@ -1,0 +1,5 @@
+[mdr-bin]
+source = "github"
+github = "MichaelMure/mdr"
+use_latest_release = true
+prefix = "v"
