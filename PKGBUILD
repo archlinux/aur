@@ -1,19 +1,27 @@
-# Maintainer: jswagner <jason-at-jason;s.wagner*dot,com>
+# Previous Maintainer: jswagner <jason-at-jason;s.wagner*dot,com>
+# Maintainer: jessienab <git at nabein dot me>
+
 _prgname=redumper
 pkgname=redumper-bin
 url="https://github.com/superg/redumper"
 arch=('x86_64')
-conflicts=('redumper')
+
+# redumper-gui is pre-packaged with a supported and recommended version of redumper, therefore this package and the GUI cannot co-exist. Generally the version of redumper in redumper-gui follows redumper releases.
+conflicts=(
+    "redumper-gui-bin"
+    "redumper-bin"
+    "redumper"
+)
+
 pkgdesc="Low level CD dumper utility"
 provides=('redumper')
-pkgver=b732
+pkgver=b750
 pkgrel=1
-_pkgfilename="redumper-b732-linux-x64" # deviation from release tag, inclusion of date makes archive name nondeterministic :(
 license=('GPL3')
-source=('https://github.com/superg/redumper/releases/download/b732/redumper-b732-linux-x64.zip'
+source=("https://github.com/superg/redumper/releases/download/$pkgver/redumper-$pkgver-linux-x64.zip"
 'https://raw.githubusercontent.com/superg/redumper/main/README.md'
 'https://raw.githubusercontent.com/superg/redumper/main/LICENSE')
-sha256sums=('687a6ddef45092397aab6243ea854742033de722e28064896f651487a77ba1ee'
+sha256sums=('9c8260b9727800e3af6037efda272022497ea41b98b02cac623c45a17c592ac4'
 'SKIP'
 'SKIP')
 
