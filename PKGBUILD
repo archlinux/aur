@@ -5,13 +5,13 @@
 _base=vispy
 pkgname=python-${_base}
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive visualization in Python"
 arch=(any)
 url="https://${_base}.org"
 license=(BSD-3-Clause)
 depends=(python-numpy python-freetype-py python-hsluv python-kiwisolver python-packaging mesa-utils)
-makedepends=(python-build python-installer python-setuptools-scm python-wheel cython npm fontconfig)
+makedepends=(python-build python-installer python-hatch-vcs python-hatch-cython npm fontconfig)
 optdepends=('ipython: ipython-static'
   'python-pyglet: pyglet'
   'python-pyqt5: pyqt5'
