@@ -10,6 +10,8 @@ Group=audiomuse-worker
 WorkingDirectory=/usr/lib/audiomuse-ai-worker
 EnvironmentFile=/etc/audiomuse-ai/worker.env
 
+LogsDirectory=audiomuse-ai-worker
+LogsDirectoryMode=0750
 RuntimeDirectory=audiomuse-ai-worker
 RuntimeDirectoryMode=0750
 
