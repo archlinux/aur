@@ -1,7 +1,7 @@
 pkgbase = lumoria-bin
 	pkgdesc = A Linux installer and launcher for Final Fantasy XI
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Windower/Lumoria
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -20,7 +20,7 @@ pkgbase = lumoria-bin
 	depends = libxml2
 	provides = lumoria
 	conflicts = lumoria
-	source = lumoria-0.2.0-x86_64.tar.zst::https://builds.lumoria.dev/arch/lumoria-0.2.0-x86_64.tar.zst
+	source = lumoria-0.2.0-3-x86_64.tar.zst::https://builds.lumoria.dev/arch/lumoria-0.2.0-3-x86_64.tar.zst
 	sha256sums = c71fba4123110efe211458d5ad341aada032e9f6fb89847e34fb816c3243bf56
 
 pkgname = lumoria-bin
