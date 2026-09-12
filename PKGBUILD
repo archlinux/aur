@@ -1,6 +1,6 @@
 pkgname=simplelogin-server
 pkgver=4.81.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted SimpleLogin email alias server'
 arch=('x86_64')
 url='https://github.com/simple-login/app'
@@ -19,6 +19,7 @@ depends=(
   'python-bcrypt'
   'python-blinker'
   'python-boto3'
+  'python-cachetools'
   'python-click'
   'python-coloredlogs'
   'python-cryptography'
@@ -93,6 +94,9 @@ conflicts=('simplelogin-server')
 source=(
   "simplelogin-${pkgver}.tar.gz::https://github.com/simple-login/app/archive/refs/tags/v${pkgver}.tar.gz"
   "sl_pgp-${_slpgpver}-cp310-abi3-manylinux_2_31_x86_64.whl::https://github.com/simple-login/sl-pgp-rs/releases/download/${_slpgpver}/sl_pgp-${_slpgpver}-cp310-abi3-manylinux_2_31_x86_64.whl"
+  'sqlalchemy2-legacy-annotations.patch'
+  'wtforms3-emailfield.patch'
+  'redis-unix-socket.patch'
   'simplelogin.service'
   'simplelogin-email.service'
   'simplelogin-job-runner.service'
@@ -100,15 +104,24 @@ source=(
   'simplelogin.tmpfiles'
 )
 
-sha256sums=(
-  'SKIP'
-  '1cda5d1953388d25641e0383f6dc0630a42f22256aa1da9eafb9979909b71d17'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+sha256sums=('f52b57dbc5feebe2b5a5244c88fac197638e89b447338cdc173675a6b5eddca2'
+            '1cda5d1953388d25641e0383f6dc0630a42f22256aa1da9eafb9979909b71d17'
+            '48a08be4941bb4724d35225cb613a9873eac2cccd2c6e1c39e179c231705bffa'
+            '330babfb2c1c0c8e067d4aa26f8090480ca96401707807696d1ed827ab6e5902'
+            'd312fa138aa573195864d32988fcf74e0a6d52e6197ca42969b2de2c829f0b31'
+            '8e5f5fe52d6c72eda036bbc195ccc71140efb7829df7bae11e7667bf772b0061'
+            'e2be17ad57507aeee11f963bce2384cdb377fd98dc3d23718940b05b2e8b40bb'
+            '37a6a6569c1709c01cfc9026c275c5e468ccb812c12c2877174e365f06e2caa6'
+            '5c42c5338fadb4a8be7fe6bf233332831074b27b331681ec95fed2f294d94792'
+            '99732b7040b0aae127b0ac12b6b54f9603f59d8bb96130a437b2e93c3a1450a9')
+
+prepare() {
+  cd "$srcdir/app-${pkgver}"
+
+  patch -Np1 -i "$srcdir/sqlalchemy2-legacy-annotations.patch"
+  patch -Np1 -i "$srcdir/wtforms3-emailfield.patch"
+  patch -Np1 -i "$srcdir/redis-unix-socket.patch"
+}
 
 build() {
   cd "$srcdir/app-${pkgver}/static"

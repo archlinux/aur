@@ -1,0 +1,15 @@
+--- a/app/models.py
++++ b/app/models.py
+@@ -53,7 +53,10 @@
+     sanitize_email,
+ )
+ 
+-Base = declarative_base()
++class DeclarativeBase:
++    __allow_unmapped__ = True
++
++Base = declarative_base(cls=DeclarativeBase)
+ 
+ PADDLE_SUBSCRIPTION_GRACE_DAYS = 14
+ _PARTNER_SUBSCRIPTION_GRACE_DAYS = 14
+ 

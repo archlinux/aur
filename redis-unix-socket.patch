@@ -1,0 +1,16 @@
+--- a/app/redis_services.py
++++ b/app/redis_services.py
+@@ -7,7 +7,11 @@
+ 
+ 
+ def initialize_redis_services(app: flask.Flask, redis_url: str):
+-    if redis_url.startswith("redis://") or redis_url.startswith("rediss://"):
++    if (
++        redis_url.startswith("redis://")
++        or redis_url.startswith("rediss://")
++        or redis_url.startswith("redis+unix://")
++    ):
+         storage = limits.storage.RedisStorage(redis_url)
+         app.session_interface = RedisSessionStore(storage.storage, storage.storage, app)
+         set_redis_concurrent_lock(storage)
+         
