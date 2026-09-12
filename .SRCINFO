@@ -1,7 +1,7 @@
 pkgbase = ipfs-desktop-electron-bin
 	pkgdesc = Desktop client for the InterPlanetary File System (prebuilt, system Electron and Kubo)
 	pkgver = 0.50.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ipfs/ipfs-desktop
 	arch = any
 	license = 0BSD
@@ -15,7 +15,7 @@ pkgbase = ipfs-desktop-electron-bin
 	license = Python-2.0
 	makedepends = asar
 	depends = bash
-	depends = electron42
+	depends = electron43
 	depends = kubo>=0.43.0
 	provides = ipfs-desktop=1:0.50.0
 	conflicts = ipfs-desktop

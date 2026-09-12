@@ -3,12 +3,12 @@
 # Contributor: alice_aierlanta <aliceaierlanta@gmail.com>
 
 _pkgname='ipfs-desktop'
-# Match ipfs-desktop's Electron 42 workaround for the Wayland tray regression.
-_electron_pkg='electron42'
+# Electron 43.5.0 fixed the Wayland tray regression.
+_electron_pkg='electron43'
 
 pkgname="${_pkgname}-electron-bin"
 pkgver='0.50.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop client for the InterPlanetary File System (prebuilt, system Electron and Kubo)'
 # Only portable application assets remain after removing the bundled runtimes.
 arch=('any')
