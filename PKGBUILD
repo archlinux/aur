@@ -1,7 +1,7 @@
 # Maintainer: T4toh <https://github.com/T4toh>
 pkgname=twriter-bin
 _pkgname=tWriter
-pkgver=0.9.3
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Editor de novelas en ES/EN con conversor RAE de diálogos, gramática vía LanguageTool, export EPUB"
 arch=('x86_64')
@@ -16,13 +16,20 @@ depends=(
 optdepends=(
     'pandoc: importar archivos .docx/.odt'
     'docker: correr LanguageTool local'
+    'epubcheck: validar el EPUB al exportarlo'
 )
 provides=('twriter')
 conflicts=('twriter')
 options=('!strip' '!debug')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.deb::https://github.com/T4toh/tWriter/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('f29e7ebfbfffdf9a97717cb657b183e18b4888faff306886b1b380a2b6ac9902')
+# El hash es del .deb del release, que no existe hasta que el workflow publica.
+# O sea que después de cada bump este valor queda viejo y `yay -S twriter-bin`
+# falla por integridad. El paso que falta es, con el release ya publicado:
+#   cd packaging/aur && updpkgsums   # pacman-contrib
+# y commitear el PKGBUILD antes de subirlo al AUR. `bump-version.sh` lo
+# recuerda al final.
+sha256sums=('f063e56bafb8f2a81c27669c38331db1679c10b6c17ecf25ba566668d7115cd9')
 
 package() {
     cd "${srcdir}"
