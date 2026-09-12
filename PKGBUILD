@@ -1,7 +1,7 @@
 # Maintainer: Xuelin Yang <xuelin@adamantyee.cc>
 pkgname=python-pymupdf4llm
 _pypiname=pymupdf4llm
-pkgver=1.28.0
+pkgver=1.28.2
 pkgrel=1
 pkgdesc='PyMuPDF utilities for LLM/RAG'
 arch=('any')
@@ -10,6 +10,7 @@ license=('AGPL-3.0-only')
 depends=(
 	"python-pymupdf=${pkgver}"
 	"python-pymupdf-layout=${pkgver}"
+	'python-psutil'
 	'python-tabulate'
 )
 makedepends=(
@@ -19,7 +20,7 @@ makedepends=(
 	'python-pipcl'
 )
 source=("https://files.pythonhosted.org/packages/source/p/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=('713595be867f7cb52893e57aa1b058d5721d017b2ba7b6a3d185a05e15978852')
+sha256sums=('02681698ef67bda9a2acd5d9e1115d4e88be0eb9c5d68926e5e3cd98cd351874')
 
 prepare() {
 	cd "${_pypiname}-${pkgver}"
