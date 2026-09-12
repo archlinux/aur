@@ -24,7 +24,7 @@ license=('Apache-2.0')
 
 provides=("${_pkgname}" "${_pkgalias}")
 
-makedepends=('cargo')
+makedepends=('clang' 'cargo')
 depends=('glibc' 'libgcc')
 
 options=('!strip' '!lto')
