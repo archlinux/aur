@@ -1,0 +1,18 @@
+pkgbase = jzero-bin
+	pkgdesc = A command-line JSON viewer that can handle gigabytes of JSON data
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/omgtehlion/jzero
+	arch = x86_64
+	license = MIT
+	provides = jzero
+	conflicts = jzero
+	options = !strip
+	source = README-0.1.md::https://raw.githubusercontent.com/omgtehlion/jzero/v0.1/README.md
+	source = LICENSE-0.1::https://raw.githubusercontent.com/omgtehlion/jzero/v0.1/LICENSE
+	sha256sums = cccb5ab6fbf787f6d2a671dd13407ec131110ddda0a868b4e26b0384c3b6d064
+	sha256sums = 53e42b58a80e9c14ccad2ac394952827ff2b08849688e09ea2dbdb506377ee67
+	source_x86_64 = jzero-x86_64-0.1::https://github.com/omgtehlion/jzero/releases/download/v0.1/jzero-x64-linux
+	sha256sums_x86_64 = a827ebd86f74647273f5565594e47645e71a66953e3e0939e97c3504cd5d181b
+
+pkgname = jzero-bin
