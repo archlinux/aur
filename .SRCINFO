@@ -1,0 +1,22 @@
+pkgbase = lilt-bin
+	pkgdesc = Lilt desktop application (stable release)
+	pkgver = 0.0.0.0
+	pkgrel = 1
+	url = https://github.com/tiouoo/lilt
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = fuse2
+	depends = hicolor-icon-theme
+	provides = lilt
+	conflicts = lilt
+	conflicts = lilt-commit-bin
+	conflicts = lilt-nightly-bin
+	options = !strip
+	options = !emptydirs
+	noextract = Lilt.AppImage
+	source_x86_64 = Lilt.AppImage::https://github.com/tiouoo/lilt/releases/latest/download/Lilt.linux.x64.AppImage
+	source_x86_64 = lilt.png::https://raw.githubusercontent.com/tiouoo/lilt/main/assets/Icon-Pattern.png
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+
+pkgname = lilt-bin
