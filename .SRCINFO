@@ -1,0 +1,24 @@
+pkgbase = carrier-cli-bin
+	pkgdesc = A module manager for {box} modules
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/joshuamarie/carrier
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	conflicts = carrier-cli
+	options = !debug
+	source_x86_64 = carrier-cli-bin-0.2.2.tar.gz::https://github.com/joshuamarie/carrier/releases/download/v0.2.2/carrier-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/joshuamarie/carrier/refs/tags/v0.2.2/LICENSE.md
+	provides_x86_64 = carrier-cli=0.2.2
+	sha256sums_x86_64 = 97349d21b1b8e65bbfac878c1b047f70aa566b1446e20e34daaaec066c1f8963
+	sha256sums_x86_64 = ec04d5f03c96b3c4bd5afec05f4f73536ae26765323747e5969a0760809cdc93
+	source_aarch64 = carrier-cli-bin-0.2.2.tar.gz::https://github.com/joshuamarie/carrier/releases/download/v0.2.2/carrier-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/joshuamarie/carrier/refs/tags/v0.2.2/LICENSE.md
+	provides_aarch64 = carrier-cli=0.2.2
+	sha256sums_aarch64 = a9b8c964166380a9d30523a769eb20d2a3c8fe80cb6f9268258012475df4defb
+	sha256sums_aarch64 = ec04d5f03c96b3c4bd5afec05f4f73536ae26765323747e5969a0760809cdc93
+
+pkgname = carrier-cli-bin
