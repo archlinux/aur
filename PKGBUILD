@@ -10,7 +10,7 @@ depends=('python' 'python-bitarray')
 provides=('mmlang')
 conflicts=('mmlang-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aura-deak/MMLang/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('80aa484cca5b4dfb606f7ba449d607235997d3dda2b680ec4370403478d3e55d')
+sha256sums=('e40d2da5dfc56d8089c4bf0a81f4655108e4a0b2c4a3f8167bd34246ff8ba1d7')
 
 package() {
   cd "MMLang-$pkgver"
