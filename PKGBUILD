@@ -12,7 +12,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Command-line program to download image-galleries and collections from several image hosting sites"
 
-pkgver=1.32.11
+pkgver=1.32.12
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -38,9 +38,9 @@ source=("README-${pkgver}.md::${_cburlraw}/README.rst"
 		"LICENSE-${pkgver}::${_cburlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.bin::${_cburl}/releases/download/${_gitversion}/${_appname}.bin"
                "${_appname}-${arch[0]}-${pkgver}.bin.sig::${_cburl}/releases/download/${_gitversion}/${_appname}.bin.sig")
-sha256sums=('0cc2ce55f968ee19e1e4e217d8ac2928e101f3d02f6ff59d56617362ebe81b2c'
+sha256sums=('505e4b827b557f6599fd26ace153176f38240589d845733cfb27540506e360cd'
             '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643')
-sha256sums_x86_64=('6b96a9d2a30923703995237384b56e1c496ffa951014feebd8f0569b869198ca'
+sha256sums_x86_64=('fc1566e27100a3f1fa9e9c1d2c44860d0a96be236b290f72cac0e6f5be395bfb'
                    'SKIP')
 
 
