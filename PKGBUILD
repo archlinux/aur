@@ -2,7 +2,7 @@
 # Contributor: David Wu <daichuan at dwu21 dot net>
 
 pkgname=lexbor
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='A set of fast, standards-compliant tools for working with modern web technologies — HTML parsing, CSS processing, URL handling, and more.'
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=(
   cmake
 )
 source=("git+https://github.com/lexbor/lexbor.git#tag=v${pkgver}")
-sha256sums=('b738cffc343868268d59109be5a1378dc854bfc06ddd5564954060398d3016e6')
+sha256sums=('738e394ff5baeabf859ee26c64a91c19e3ceafd0b0d95f3ae9543da4c5737c0b')
 
 build() {
   cmake -S "${pkgname}" -B build \
