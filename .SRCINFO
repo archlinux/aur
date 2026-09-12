@@ -1,7 +1,7 @@
 pkgbase = skalibs-static
 	pkgdesc = A set of general-purpose C programming libraries
 	pkgver = 2.15.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.skarnet.org/software/skalibs
 	arch = aarch64
 	arch = i686

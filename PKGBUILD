@@ -2,7 +2,7 @@
 
 pkgname=skalibs-static
 pkgver=2.15.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A set of general-purpose C programming libraries"
 arch=('aarch64' 'i686' 'x86_64')
 url="http://www.skarnet.org/software/skalibs"
@@ -15,9 +15,10 @@ source=(${url}/skalibs-$pkgver.tar.gz)
 sha256sums=('f9c905e74935c6fe911c7e344e3e89d5fbd2014c1a04650b524b15ce9b5635d1')
 build() {
   cd skalibs-$pkgver
-  export CC="musl-gcc"
+  export CC="musl-gcc -fno-link-libatomic"
   ./configure \
     --prefix=/usr \
+    --enable-static \
     --disable-shared \
     --includedir=/usr/include/${pkgname} \
     --libdir=/usr/lib/${pkgname} \
