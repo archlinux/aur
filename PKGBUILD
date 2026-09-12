@@ -1,18 +1,17 @@
 # Maintainer: stormix <hello@stormix.co>
 pkgname=deadlock-modmanager-git
-pkgver=0.15.0.r39.g45c90ca
-pkgrel=1
+pkgver=1.0.0.r16.g2868189
+pkgrel=2
 pkgdesc='A mod manager for the Valve game Deadlock (git)'
 arch=('x86_64')
 url='https://github.com/deadlock-mod-manager/deadlock-mod-manager'
 license=('GPL-3.0-only')
-makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm' 'lld' 'gcc')
+makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm' 'protobuf')
 depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2'
          'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme'
-         'gst-plugins-good')
+         'gst-plugins-good' 'glibc' 'libgcc' 'libstdc++' 'dbus')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
-options=('!lto')
 source=("${pkgname}::git+https://github.com/deadlock-mod-manager/deadlock-mod-manager.git")
 sha256sums=('SKIP')
 
@@ -31,10 +30,11 @@ prepare() {
 }
 
 build() {
-    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=lld"
     export CC=gcc
     export CXX=g++
-    export CARGO_TARGET_DIR=target
+    export CFLAGS+=" -ffat-lto-objects"
+    export CXXFLAGS+=" -ffat-lto-objects"
+    export CARGO_TARGET_DIR="${srcdir}/${pkgname}/apps/desktop/target"
     export VITE_API_URL="https://api.deadlockmods.app"
     export VITE_WEB_URL="https://deadlockmods.app"
     export VITE_AUTH_URL="https://auth.deadlockmods.app"
@@ -46,11 +46,12 @@ build() {
 package() {
     local _srcroot="${srcdir}/${pkgname}"
     local _tauri="${_srcroot}/apps/desktop/src-tauri"
+    local _target="${_srcroot}/apps/desktop/target"
 
     install -Dm644 "${_srcroot}/distribution/aur/deadlock-modmanager.desktop" \
         "${pkgdir}/usr/share/applications/deadlock-modmanager.desktop"
 
-    install -Dm755 "${_tauri}/target/release/deadlock-mod-manager" \
+    install -Dm755 "${_target}/release/deadlock-mod-manager" \
         "${pkgdir}/usr/bin/deadlock-modmanager"
     install -Dm644 "${_tauri}/icons/32x32.png" \
         "${pkgdir}/usr/share/icons/hicolor/32x32/apps/deadlock-modmanager.png"
