@@ -1,7 +1,7 @@
 # Maintainer: Keiran <root@keirn.net>
 
 pkgname=dorion-appimage-bin
-pkgver=6.13.0
+pkgver=6.13.1
 pkgrel=1
 pkgdesc="Tiny alternative Discord client with a smaller footprint, snappier startup, themes, plugins and more!"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('dorion')
 conflicts=('dorion')
 options=('!strip' '!debug')
 source=("Dorion-${pkgver}.AppImage::https://github.com/SpikeHD/Dorion/releases/download/v${pkgver}/Dorion_${pkgver}_amd64.AppImage")
-sha256sums=('df97c76b5f0ac4b3769ad490982645dc565ab86b3d92682c149402ac1f38a834')
+sha256sums=('85807426084ec90f004f8b0a3a9bd287c28e3bc93f01dc0f105eb9b7f8adf4d8')
 
 prepare() {
     cd "$srcdir"
