@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=sleep-inhibitor
 _pkgname="${pkgname/-/_}"
-pkgver=1.25
+pkgver=1.26
 pkgrel=1
 pkgdesc="Program to run plugins to inhibit system sleep/suspend"
 url="https://github.com/bulletmark/$pkgname"
@@ -12,7 +12,7 @@ depends=("python>=3.7" "python-ruamel-yaml")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('69de8c9fc42c40be29d545eff1e190c47e9164b7')
+sha1sums=('4fd5cf949d8d81e06e694cd805ff1f5ee8a70931')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
