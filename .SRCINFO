@@ -1,0 +1,24 @@
+pkgbase = mpv-sidebarsubtitles
+	pkgdesc = Show subtitle lines in a sidebar for mpv, with uosc integration
+	pkgver = 1.0.8
+	pkgrel = 4
+	url = https://github.com/magnumpv/sidebarsubtitles
+	install = mpv-sidebarsubtitles.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mpv
+	depends = mpv-uosc
+	depends = ffmpeg
+	source = git+https://github.com/magnumpv/sidebarsubtitles.git#commit=248a5459207795b2375fe4da56e86663481c7382
+	source = uosc-sidebarsubtitles.patch
+	source = linux-compat.patch
+	source = apply-patch.sh
+	source = mpv-sidebarsubtitles.hook
+	sha256sums = SKIP
+	sha256sums = 372e7cd9a3318e5816bed8a0ac9ead3ee8514f23c3d526188de22db69ed72a9c
+	sha256sums = b809be6eacb80e354d26c7e88dad0dbb93d02efc9e71cdb05a1427d708f3826e
+	sha256sums = 1d3a78fe44cc0a25417f754e575f92f2ed3a5348aa882c37b02563def38818a9
+	sha256sums = 05349ff8913aa6d61334fb8c4c4e2e43a3d31bc6672e7c6129363de3c53bfa16
+
+pkgname = mpv-sidebarsubtitles

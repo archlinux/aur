@@ -1,0 +1,25 @@
+--- a/sidebarsubtitles/main.lua
++++ b/sidebarsubtitles/main.lua
+@@ -204,7 +204,7 @@
+ 
+     local fullPath
+     local isWindows = package.config:sub(1, 1) ~= '/'
+-    local seperator = isWindows and "//" or "\\"
++    local seperator = isWindows and "\\" or "/"
+     local paths = {
+ 
+         hash        = nil,
+@@ -826,7 +826,12 @@
+ 
+     if not os.rename(tempPath, tempPath) then
+ 
+-        runCommand({"powershell", "-NoProfile", "-Command", "mkdir", tempPath})
++        local isWindows = package.config:sub(1, 1) ~= '/'
++        if isWindows then
++            runCommand({"powershell", "-NoProfile", "-Command", "mkdir", tempPath})
++        else
++            runCommand({"mkdir", "-p", tempPath})
++        end
+     end
+ 
+     local ok

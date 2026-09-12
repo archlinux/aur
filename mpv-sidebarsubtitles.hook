@@ -1,0 +1,13 @@
+# Re-apply the sidebarsubtitles integration patch whenever mpv-uosc is
+# installed or upgraded, since uosc's upgrade overwrites main.lua and removes
+# the patch that mpv-sidebarsubtitles injected.
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = mpv-uosc
+
+[Action]
+Description = Re-applying sidebarsubtitles integration patch to uosc...
+When = PostTransaction
+Exec = /usr/share/mpv-sidebarsubtitles/apply-patch.sh apply

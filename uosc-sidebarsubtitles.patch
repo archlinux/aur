@@ -1,0 +1,32 @@
+--- a/usr/share/mpv/scripts/uosc/main.lua
++++ b/usr/share/mpv/scripts/uosc/main.lua
+@@ -453,6 +453,8 @@ function update_display_dimensions()
+ 	state.radius = round(options.border_radius * state.scale)
+ 	local real_width, real_height = mp.get_osd_size()
+ 	if real_width <= 0 then return end
++	local temp_width = real_width
++	if sidebarsubtitles_width and sidebarsubtitles_width > 0 then real_width = sidebarsubtitles_width end
+ 	display.bx, display.width, display.by, display.height = real_width, real_width, real_height, real_height
+ 	display.initialized = true
+ 
+@@ -462,6 +464,9 @@ function update_display_dimensions()
+ 	-- Some elements probably changed their rectangles as a reaction to `display`
+ 	Elements:update_proximities()
+ 	request_render()
++	if sidebarsubtitles_width and sidebarsubtitles_width > 0 then
++		display.width, display.bx = temp_width, temp_width
++	end
+ end
+ 
+ function update_fullormaxed()
+@@ -1082,6 +1087,10 @@ bind_command('update', function()
+ end)
+ 
+ --[[ MESSAGE HANDLERS ]]
++
++mp.register_script_message("sidebarsubtitles", function(value)
++	sidebarsubtitles_width = tonumber(value)
++end)
+ 
+ mp.register_script_message('show-submenu', function(id) toggle_menu_with_items({submenu = id}) end)
+ mp.register_script_message('show-submenu-blurred', function(id)

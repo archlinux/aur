@@ -1,0 +1,11 @@
+post_install() {
+    /usr/share/mpv-sidebarsubtitles/apply-patch.sh apply
+}
+
+post_upgrade() {
+    /usr/share/mpv-sidebarsubtitles/apply-patch.sh apply
+}
+
+pre_remove() {
+    /usr/share/mpv-sidebarsubtitles/apply-patch.sh revert
+}
