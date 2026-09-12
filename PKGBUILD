@@ -72,6 +72,7 @@ source=(
   "dclap-sae-encoder-$pkgver.onnx::https://github.com/NeptuneHub/AudioMuse-AI-SAE/releases/download/$_sae_tag/dclap_sae_k20_d1024_best_encoder.onnx"
   "dclap-sae-decoder-$pkgver.onnx::https://github.com/NeptuneHub/AudioMuse-AI-SAE/releases/download/$_sae_tag/dclap_sae_k20_d1024_best_decoder.onnx"
   'swagger-compat.py'
+  'roberta-tokenizer-compat.patch'
   'no-flasgger.patch'
   'audiomuse-ai-web.service'
   'audiomuse-ai-web.supervisord.conf'
@@ -84,6 +85,7 @@ sha256sums=('e6d10aa26820a7589f6512123d8868c26be617b08b2bac4542e387ff5921e0f4'
             'd81723cc7d14566057e8b199f2bc4ea3ea1e2ca7a79529a40f3fcd5399f976f6'
             '7b16ee06c79810664aea026e2b6d29b65db68d756d87bee88a855a1e2cffcbf6'
             'eefb4cee2ece6c81b0b37969462929156b035a66071faaafc1fcf9626dcc4b21'
+            'c973734302a5d185b900b90b95a05d2d728819d405ab8d6f7bf7bc3814d47c2b'
             'a303790466768dd31acef4e092a672b4bcaa7e6a39fe85a3f998895f0cca5db2'
             '0a75a10f48565b85dc95b265a341fb44b9b0106021007af39528c944510ff337'
             'c7ca4c08c80555074074c2e53f5fc8fd9d530c5fe34d6739564e8e4dcf7579b1'
@@ -93,6 +95,7 @@ sha256sums=('e6d10aa26820a7589f6512123d8868c26be617b08b2bac4542e387ff5921e0f4'
 
 prepare() {
   cd "AudioMuse-AI-$pkgver"
+  patch -Np1 -i "$srcdir/roberta-tokenizer-compat.patch"
   patch -Np1 -i "$srcdir/no-flasgger.patch"
 }
 

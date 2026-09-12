@@ -1,0 +1,29 @@
+--- a/tasks/clap_analyzer.py
++++ b/tasks/clap_analyzer.py
+@@ -250,11 +250,25 @@ def _load_tokenizer():
+-    from transformers import AutoTokenizer
++    from huggingface_hub import hf_hub_download
++    from transformers import PreTrainedTokenizerFast
+ 
+     logger.info("Loading RoBERTa tokenizer...")
+ 
+-    tokenizer = AutoTokenizer.from_pretrained("roberta-base", local_files_only=True)
++    tokenizer_file = hf_hub_download(
++        repo_id="roberta-base",
++        filename="tokenizer.json",
++        local_files_only=True,
++    )
++
++    tokenizer = PreTrainedTokenizerFast(
++        tokenizer_file=tokenizer_file,
++        bos_token="<s>",
++        eos_token="</s>",
++        sep_token="</s>",
++        cls_token="<s>",
++        unk_token="<unk>",
++        pad_token="<pad>",
++        mask_token="<mask>",
++    )
+ 
+     logger.info("OK Tokenizer loaded successfully")
+     return tokenizer

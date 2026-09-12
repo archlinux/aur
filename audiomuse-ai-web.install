@@ -15,14 +15,20 @@ before starting the service.
 Some model artifacts are intentionally not bundled because they are generic
 upstream models rather than AudioMuse-specific exports.
 
-Required for CLAP text features:
-  roberta-base
+CLAP text features require the roberta-base tokenizer to be available
+in the Hugging Face cache. Model weights are not required.
 
 This can be downloaded with the Hugging Face CLI:
 
-  hf download roberta-base
+  hf download roberta-base \
+    config.json \
+    tokenizer.json \
+    tokenizer_config.json \
+    vocab.json \
+    merges.txt
 
-If the model is stored in a non-default Hugging Face cache, set HF_HOME in:
+If the tokenizer is stored in a non-default Hugging Face hub cache, set
+HF_HUB_CACHE in:
 
   /etc/audiomuse-ai/web.env
 
