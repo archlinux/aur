@@ -1,0 +1,18 @@
+pkgbase = okr
+	pkgdesc = Reproducible R source context for coding agents
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/nanxstats/okr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = libgcc
+	depends = glibc
+	conflicts = okr-bin
+	options = !lto
+	options = !debug
+	source = okr-0.1.9.tar.gz::https://github.com/nanxstats/okr/archive/v0.1.9.tar.gz
+	sha512sums = afea569795f9d3bea3653596bea69de359152f12298bdf2d46700efd7cdb9be259ea38948739e6a14a44ebed28c5e99551d6ff3306938dcfc9aef3b65f58839c
+
+pkgname = okr
