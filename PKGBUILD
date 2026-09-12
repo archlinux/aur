@@ -3,7 +3,7 @@
 pkgname=wheelwizard
 _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
-pkgver=2.5.5
+pkgver=2.5.6
 _pkgver="v$pkgver"
 pkgrel=1
 pkgdesc="Mario Kart Mod Manager & Retro Rewind Auto Updater"
@@ -12,7 +12,7 @@ url="https://github.com/Team${_name}/${_name}"
 license=('GPL-3.0-only')
 _dotnet_ver=10.0
 _dotnet_configuration=Release
-_default_res=256
+_default_res=512
 options=(!strip)
 depends=("dotnet-sdk-${_dotnet_ver}"
          'fontconfig'
@@ -29,7 +29,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 
 source=("${_name}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-b2sums=('ac6afca86aa0c78647a2f8a66dee786026ec8d7e5ffc0ac40c562fe6520cd00f5232e681329395c60ff72ec6b62a77b760baf2abca8cf7a4e95a59932fa05dd0')
+b2sums=('371afeac94c2212eb0a4fc15237f5834f2e503013cd28a94815fb4821ad4347dca752f40b58bc15ca59277d757310f1c7cd74e005541a921a2780fa1b12a100e')
 
 _runtime() {
     if [ "${CARCH}" = 'aarch64' ]; then
@@ -84,6 +84,8 @@ package() {
         "${pkgdir}/usr/share/applications/${_name}.desktop"
     install -D -m0644 "Flatpak/${_app_id}-url-handler.desktop" \
         "${pkgdir}/usr/share/applications/${_name}-url-handler.desktop"
+    install -D -m0644 "Flatpak/${_app_id}.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_name}.svg"
     install -D -m0644 "Flatpak/${_app_id}.png" \
         "${pkgdir}/usr/share/icons/hicolor/${_default_res}x${_default_res}/apps/${_name}.png"
     popd
