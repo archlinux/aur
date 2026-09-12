@@ -7,31 +7,31 @@ _cuda_arch=
 
 pkgname=openwhispr-cuda
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Voice-to-text dictation app with local Whisper/Parakeet and cloud models (NVIDIA CUDA GPU acceleration)"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/OpenWhispr/openwhispr"
-license=('MIT')
-provides=('openwhispr')
-conflicts=('openwhispr' 'openwhispr-bin' 'openwhispr-appimage' 'openwhispr-vulkan')
+license=(MIT)
+provides=(openwhispr)
+conflicts=(openwhispr openwhispr-bin openwhispr-appimage openwhispr-vulkan)
 depends=(
-  'alsa-lib'
-  'at-spi2-core'
-  'cuda'
-  'gcc-libs'
-  'gtk3'
-  'libnotify'
-  'libsecret'
-  'libx11'
-  'libxss'
-  'libxtst'
-  'nss'
-  'nvidia-utils'
-  'xdg-utils'
+  alsa-lib
+  at-spi2-core
+  cuda
+  gcc-libs
+  gtk3
+  libnotify
+  libsecret
+  libx11
+  libxss
+  libxtst
+  nss
+  nvidia-utils
+  xdg-utils
 )
 makedepends=(
-  'cmake'
-  'cuda'
+  cmake
+  cuda
 )
 optdepends=(
   'wl-clipboard: Clipboard support on Wayland'
@@ -47,9 +47,11 @@ _whisper_cpp_ver=0.0.10
 source=(
   "https://github.com/OpenWhispr/openwhispr/releases/download/v${pkgver}/OpenWhispr-${pkgver}-linux-x64.tar.gz"
   "whisper.cpp-${_whisper_cpp_ver}.tar.gz::https://github.com/OpenWhispr/whisper.cpp/archive/refs/tags/${_whisper_cpp_ver}.tar.gz"
+  openwhispr.service
 )
 sha256sums=('5bb5106da480bde6d867c671209ba47d3df94e97bc43115b8bdb4592e42a2a4b'
-            '9e57833a53fe706c6dca2c43417c786851f8a1af6dbe298224b2f84856b80c92')
+            '9e57833a53fe706c6dca2c43417c786851f8a1af6dbe298224b2f84856b80c92'
+            'afdee79b60ad4e7184b3f5b34d7c49a332cbfecf83336d918cb801554585f447')
 
 build() {
   cd "${srcdir}/whisper.cpp-${_whisper_cpp_ver}"
@@ -131,10 +133,11 @@ StartupWMClass=open-whispr
 MimeType=x-scheme-handler/openwhispr;
 EOF
 
-  # Icon
+  install -Dm644 "${srcdir}/openwhispr.service" \
+    "${pkgdir}/usr/lib/systemd/user/openwhispr.service"
+
   install -Dm644 "${src}/resources/src/assets/icon.png" "${pkgdir}/usr/share/pixmaps/openwhispr.png"
 
-  # License
   install -dm755 "${license_dir}"
   cp -r "${src}"/LICENSE* "${src}"/LICENSES* "${license_dir}/" 2>/dev/null || true
 }
