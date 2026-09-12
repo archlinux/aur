@@ -1,6 +1,6 @@
 pkgbase = openwhispr-bin
 	pkgdesc = Voice-to-text dictation app with local Whisper/Parakeet and cloud models
-	pkgver = 1.9.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/OpenWhispr/openwhispr
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = openwhispr-bin
 	conflicts = openwhispr-appimage
 	options = !strip
 	options = !debug
-	source = https://github.com/OpenWhispr/openwhispr/releases/download/v1.9.2/OpenWhispr-1.9.2-linux-x64.tar.gz
-	sha256sums = af97777bc5857e14947aedf08d353dd27fc5d2f10e27a22a3f05f2f5a0f041cd
+	source = https://github.com/OpenWhispr/openwhispr/releases/download/v1.10.0/OpenWhispr-1.10.0-linux-x64.tar.gz
+	sha256sums = 5bb5106da480bde6d867c671209ba47d3df94e97bc43115b8bdb4592e42a2a4b
 
 pkgname = openwhispr-bin
