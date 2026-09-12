@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=2.0.11
+pkgver=2.0.14
 _electron=electron41
 pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
@@ -37,7 +37,7 @@ source=(
     "${pkgname}.sh"
     "${pkgname}-${_arch_patch}.patch::https://github.com/sukanka/cherry-studio/commit/${_arch_patch}.patch"
 )
-sha256sums=('d1cdf0c23fb975cfc1f8b442ff36c3c64ff51276bc0e46beb4046177a8027435'
+sha256sums=('00799df478d5b3b547c5aa6f9155036cbe2a14731cea8c74cc03c781b1626cb1'
             '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463'
             '242710d37f88e41ecbd58ea2aa4d5a5216bdcb7a0134af3639b6ccd8aacafc97')
 
