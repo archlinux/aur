@@ -2,7 +2,7 @@
 
 pkgname=voix-bin
 _pkgname=voix
-pkgver=4.13.0
+pkgver=4.13.1
 pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication (pre-built)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ install="${pkgname}.install"
 
 # Per-architecture source arrays — AUR selects the matching one automatically
 source_x86_64=("voix-x86_64-bin.tar.gz::https://github.com/Veridian-Zenith/Voix/releases/download/v${pkgver}/voix-x86_64-bin.tar.gz")
-sha256sums_x86_64=('6e61eee807d26ee6657c75f158d752576af73cb63e545ee31755013b6331e59a')
-sha256sums_aarch64=('6d22b279a35913f534988e7115122e8a2b91f5c89781a14f811c5e9d5a77392a')
+sha256sums_x86_64=('15d796d23ff0b426144d2b6b3577767e7087f8c7591fecc9491d61c75739b9e1')
+sha256sums_aarch64=('e66a320603041bcadc1822d31ddbc80cf37072f602ab42c0bf3a29326d36cdb2')
 
 source_aarch64=("voix-aarch64-bin.tar.gz::https://github.com/Veridian-Zenith/Voix/releases/download/v${pkgver}/voix-aarch64-bin.tar.gz")
 
