@@ -1,0 +1,18 @@
+pkgbase = python-aiospamc
+	pkgdesc = Asyncio-based client for SpamAssassin's SPAMD service
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/mjcaley/aiospamc
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	depends = python
+	depends = python-certifi
+	depends = python-loguru
+	depends = python-typer
+	source = https://files.pythonhosted.org/packages/source/a/aiospamc/aiospamc-1.2.0.tar.gz
+	sha256sums = 3933d5529ef54e48a183d7cdf2e63ca947e53d63645911ed29ece5e19d627183
+
+pkgname = python-aiospamc
