@@ -51,6 +51,7 @@ pkgbase = audiomuse-ai-web
 	optdepends = python-google-genai: Gemini AI provider
 	optdepends = python-mistralai: Mistral AI provider
 	optdepends = python-numkong: accelerate quantized IVF distance scans; NumPy fallback is used otherwise
+	optdepends = python-matplotlib: spectrum_analyzer plugin
 	backup = etc/audiomuse-ai/web.env
 	backup = etc/audiomuse-ai/web-supervisord.conf
 	source = audiomuse-ai-web-3.6.0.tar.gz::https://github.com/NeptuneHub/AudioMuse-AI/archive/refs/tags/v3.6.0.tar.gz

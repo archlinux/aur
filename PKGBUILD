@@ -57,6 +57,7 @@ optdepends=(
   'python-google-genai: Gemini AI provider'
   'python-mistralai: Mistral AI provider'
   'python-numkong: accelerate quantized IVF distance scans; NumPy fallback is used otherwise'
+  'python-matplotlib: spectrum_analyzer plugin'
 )
 
 install='audiomuse-ai-web.install'
