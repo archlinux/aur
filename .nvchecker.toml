@@ -1,0 +1,3 @@
+[dripfetch]
+source = "pypi"
+pypi = "dripfetch"
