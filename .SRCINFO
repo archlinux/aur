@@ -1,6 +1,6 @@
 pkgbase = cleecode-bin
 	pkgdesc = A terminal IDE written in Rust
-	pkgver = 0.26.2
+	pkgver = 0.26.3
 	pkgrel = 1
 	url = https://github.com/msavox/cleecode
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = cleecode-bin
 	provides = clee
 	conflicts = cleecode
 	options = !strip
-	source_x86_64 = clee-x86_64-0.26.2.tgz::https://github.com/msavox/cleecode/releases/download/v0.26.2/clee-v0.26.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 7a1ec2b0072b6eac6e76af53d2862d33de4770792416f47dabf3bfa533a6d781
-	source_aarch64 = clee-aarch64-0.26.2.tgz::https://github.com/msavox/cleecode/releases/download/v0.26.2/clee-v0.26.2-linux-arm64.tar.gz
-	sha256sums_aarch64 = d49357b057f7b7788cf779de80ab0e5dec93fc8d4da0be44d2e558ae5040325e
+	source_x86_64 = clee-x86_64-0.26.3.tgz::https://github.com/msavox/cleecode/releases/download/v0.26.3/clee-v0.26.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 511a0c35389c3d8b6f3828eaff48f8893c55b8a30135a4971e5d35f5cd837a33
+	source_aarch64 = clee-aarch64-0.26.3.tgz::https://github.com/msavox/cleecode/releases/download/v0.26.3/clee-v0.26.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = ca0d432da05f24318e8a2c76e2c51d5d2a4988359d57f9b074f94263d4e7038d
 
 pkgname = cleecode-bin
