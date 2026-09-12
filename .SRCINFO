@@ -1,12 +1,13 @@
 pkgbase = emacs-lucid
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
-	pkgver = 30.2
-	pkgrel = 2
+	pkgver = 31.1
+	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/emacs.html
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = acl
 	depends = alsa-lib
+	depends = attr
 	depends = cairo
 	depends = dbus
 	depends = fontconfig
@@ -48,22 +49,18 @@ pkgbase = emacs-lucid
 	depends = systemd-libs
 	depends = tree-sitter
 	depends = xaw3d
-	depends = xcb-util
 	depends = zlib
 	optdepends = lldb: For debugging with LLDB instead of GDB
-	provides = emacs=30
+	provides = emacs=31
 	conflicts = emacs
 	replaces = emacs-lucid-nativecomp
 	options = !strip
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-30.2.tar.xz
-	source = ftp://ftp.gnu.org/gnu/emacs/emacs-30.2.tar.xz.sig
-	source = 01_all_treesit-0.26.patch
-	source = 02_all_ts-query-pred.patch
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-31.1.tar.xz
+	source = ftp://ftp.gnu.org/gnu/emacs/emacs-31.1.tar.xz.sig
 	validpgpkeys = 17E90D521672C04631B1183EE78DAE0F3115E06B
 	validpgpkeys = CEA1DE21AB108493CC9C65742E82323B8F4353EE
-	b2sums = 9163ba6bfab1010a156c669ac085ad363545d73e3ffac21c710b14b618df61a4c6a80a50fd3fa81d852c2ccace5080e614b679606fa584e28509f99ad6196784
+	validpgpkeys = 8DC2487E51ABDD90B5C4753F0F56D0553B6D411B
+	b2sums = c9f8cf37553c0e2913eb12d7e069735c23baca3b725332f17b4b4784d1e4987c9ae098dae669e65e49fa01d8b9a63e518b210640892216e0a9ae02e51f3d0581
 	b2sums = SKIP
-	b2sums = 6a4a556ff6e47234c34e6d9b47fd7b51b47f0b66a4a1e6672b604555d48275de7c06afd105b9c4abf9a34eb1fc2148178e97434b9ae92b0345137dc849d5895c
-	b2sums = 6f54ca35f5703a248a3db3b39d9666ee28424cdb7240bd0c7a612f387e1cedf9142b6f5b54d00f11b63b97f28d18d763c47b664c36be00e7b07e17cb741712b1
 
 pkgname = emacs-lucid
