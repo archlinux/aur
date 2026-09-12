@@ -1,6 +1,6 @@
 pkgbase = kova-bin
 	pkgdesc = Markdown presentation authoring tool (pre-built binary)
-	pkgver = 0.7.10
+	pkgver = 0.7.11
 	pkgrel = 1
 	url = https://github.com/KovaMD/Kova
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = kova-bin
 	depends = libayatana-appindicator
 	provides = kova
 	conflicts = kova
-	source = kova-bin-0.7.10.tar.gz::https://github.com/KovaMD/Kova/releases/download/v0.7.10/Kova_0.7.10_x86_64.tar.gz
-	source = kova-bin-0.7.10.tar.gz.sig::https://github.com/KovaMD/Kova/releases/download/v0.7.10/Kova_0.7.10_x86_64.tar.gz.sig
+	source = kova-bin-0.7.11.tar.gz::https://github.com/KovaMD/Kova/releases/download/v0.7.11/Kova_0.7.11_x86_64.tar.gz
+	source = kova-bin-0.7.11.tar.gz.sig::https://github.com/KovaMD/Kova/releases/download/v0.7.11/Kova_0.7.11_x86_64.tar.gz.sig
 	validpgpkeys = F5FE856033771D0CBCFB6CE7F0360B67BD16F99A
-	sha256sums = d69f2ec1cb2b15fcd612881c118bc45698701bd7d69c26f22f0dfebd0c57a049
+	sha256sums = 5f69d9c030b5bf48092a86b5d5f97796dad52715c44b620ddb3514132febf0c9
 	sha256sums = SKIP
 
 pkgname = kova-bin
