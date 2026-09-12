@@ -1,6 +1,6 @@
 # Maintainer: Isaac Arcia <iikz87ii@gmail.com>
 pkgname=yawns
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Your Adaptable Widget Notification System"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 # changed this back to just using the source code instead of 
 # a redundant tar
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e32ad1d31a82f7dc3a02de70d1fe84ce67a8692dfe219fdc577be2f730ee1c7f')
+sha256sums=('d45d0f7bc6489530630b7a11799a6620b75d27357d44907fcef73c8b9e07639f')
 
 package() {
     # 1. Enter the extracted directory (GitHub tags extract to repo-version)
