@@ -2,7 +2,7 @@
 
 pkgname=deepseek-reasonix-desktop-bin
 pkgver=1.38.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Reasonix Desktop - Electron desktop client for the DeepSeek-native AI coding agent"
 arch=('x86_64')
 url="https://github.com/esengine/DeepSeek-Reasonix"
@@ -53,10 +53,11 @@ package() {
 
     # Do not install Debian's update-helper/polkit policy or the legacy guard;
     # pacman owns upgrades. Do not disable Chromium's sandbox.
+    # Native Wayland windows identify as "reasonix"; desktop IDs are case-sensitive.
     install -Dm644 usr/share/applications/reasonix.desktop \
-        "${pkgdir}/usr/share/applications/Reasonix.desktop"
+        "${pkgdir}/usr/share/applications/reasonix.desktop"
     sed -i 's/^StartupWMClass=.*/StartupWMClass=Reasonix/' \
-        "${pkgdir}/usr/share/applications/Reasonix.desktop"
+        "${pkgdir}/usr/share/applications/reasonix.desktop"
     local _icon _dir
     for _icon in usr/share/icons/hicolor/*/apps/reasonix-desktop.*; do
         _dir="$(basename "$(dirname "$(dirname "${_icon}")")")"
