@@ -2,7 +2,7 @@
 
 pkgname=linwood-butterfly-git
 pkgbase=linwood-butterfly-git
-pkgver=2.6.0_beta.6_194_git9c63c4c9de
+pkgver=2.6.0_rc.1_196_gitae815029c6
 pkgrel=1
 pkgdesc="Development build of Linwood Butterfly, a Flutter-based endless canvas note-taking app"
 arch=('x86_64')
