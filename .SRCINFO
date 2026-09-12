@@ -1,12 +1,12 @@
 pkgbase = grace-openmotif
 	pkgdesc = 2D plotting tool
 	pkgver = 5.1.25
-	pkgrel = 4
+	pkgrel = 5
 	url = http://plasma-gate.weizmann.ac.il/Grace/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libpng
 	depends = openmotif
 	depends = t1lib

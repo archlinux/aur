@@ -8,11 +8,11 @@
 
 pkgname=grace-openmotif
 pkgver=5.1.25
-pkgrel=4
+pkgrel=5
 pkgdesc="2D plotting tool"
 arch=(i686 x86_64)
 url="http://plasma-gate.weizmann.ac.il/Grace/"
-depends=('libjpeg' 'libpng' 'openmotif' 't1lib' 'zlib' 'netcdf' 'xbae' 'pdflib-lite' 'xdg-utils')
+depends=('libjpeg-turbo' 'libpng' 'openmotif' 't1lib' 'zlib' 'netcdf' 'xbae' 'pdflib-lite' 'xdg-utils')
 replaces=('grace')
 conflicts=('grace')
 provides=('grace')
