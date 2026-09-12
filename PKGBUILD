@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="Linux TUI based firewall"
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('430374bb2c6bd8136e40678e02d21e8da8d185488f8e0ca1f2f0ab81f87e32cf'
+sha256sums=('437f7d62403950d0bb7d40a0f9c29a903d689ae40f630456256b44f8fc6af36b'
             'c89386163d662ba1d7b9333f2ece657f900958e733cf5fca7a2ab5b3aebc28a8')
-sha256sums_x86_64=('69bc31105e51c6c066ad1b638d7e98312abbae667e9ba0cbab96e887e05881d4')
+sha256sums_x86_64=('6353647613f5fa0e0c92527446bdf588857fd5d294e48fa12f55278bce79fbba')
 
 
 prepare() {

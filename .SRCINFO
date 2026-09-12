@@ -1,6 +1,6 @@
 pkgbase = guardit-bin
 	pkgdesc = Linux TUI based firewall
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Rajaonarison-Andry-Misandratra-Fiderana/guardIT
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = guardit-bin
 	provides = guardit
 	conflicts = guardit
 	options = !strip
-	source = README-0.2.0.md::https://raw.githubusercontent.com/Rajaonarison-Andry-Misandratra-Fiderana/guardIT/v0.2.0/README.md
-	source = LICENSE-0.2.0::https://raw.githubusercontent.com/Rajaonarison-Andry-Misandratra-Fiderana/guardIT/v0.2.0/LICENSE
-	sha256sums = 430374bb2c6bd8136e40678e02d21e8da8d185488f8e0ca1f2f0ab81f87e32cf
+	source = README-0.3.0.md::https://raw.githubusercontent.com/Rajaonarison-Andry-Misandratra-Fiderana/guardIT/v0.3.0/README.md
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/Rajaonarison-Andry-Misandratra-Fiderana/guardIT/v0.3.0/LICENSE
+	sha256sums = 437f7d62403950d0bb7d40a0f9c29a903d689ae40f630456256b44f8fc6af36b
 	sha256sums = c89386163d662ba1d7b9333f2ece657f900958e733cf5fca7a2ab5b3aebc28a8
-	source_x86_64 = guardit-x86_64-0.2.0.tgz::https://github.com/Rajaonarison-Andry-Misandratra-Fiderana/guardIT/releases/download/v0.2.0/guardit-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 69bc31105e51c6c066ad1b638d7e98312abbae667e9ba0cbab96e887e05881d4
+	source_x86_64 = guardit-x86_64-0.3.0.tgz::https://github.com/Rajaonarison-Andry-Misandratra-Fiderana/guardIT/releases/download/v0.3.0/guardit-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 6353647613f5fa0e0c92527446bdf588857fd5d294e48fa12f55278bce79fbba
 
 pkgname = guardit-bin
