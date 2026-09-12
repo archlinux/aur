@@ -2,7 +2,7 @@
 
 pkgname=redumper-gui
 epoch=
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='A cross-platform digital fidget spinner and GUI for redumper. Package built from tagged release source.'
 arch=(x86_64)
@@ -26,13 +26,13 @@ makedepends=(
 
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Deterous/Redumper-GUI/archive/refs/tags/v$pkgver.tar.gz"
-    "https://github.com/superg/redumper/releases/download/b739/redumper-b739-linux-x64.zip"
+    "https://github.com/superg/redumper/releases/download/b750/redumper-b750-linux-x64.zip"
     "https://raw.githubusercontent.com/Deterous/Redumper-GUI/refs/heads/main/LICENSE"
     "https://raw.githubusercontent.com/Deterous/Redumper-GUI/refs/heads/main/README.md"
 )
 
-sha256sums=('a27d353953c3e60d92f46345555723de7a099507ff5e5a43f816689a7b49c513'
-'2b0579ab83105e12a9c494dbfbbe6176cf000e0eeca6d4451debefc7187c4164'
+sha256sums=('b27a92d0171b92884382391da25eaab998209d6f72c7dadfd9b9331c34d1412a'
+'9c8260b9727800e3af6037efda272022497ea41b98b02cac623c45a17c592ac4'
 'SKIP'
 'SKIP')
 
