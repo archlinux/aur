@@ -4,7 +4,7 @@ _gitauthor=profullstack
 _gitname=mynaposter
 _appname=myna
 pkgname=${_gitname}-bin
-pkgdesc="A terminal social media manager. Log in, write, schedule and post to 25 networks from one TUI"
+pkgdesc="A terminal social media manager. Log in, write, schedule and post to 25 networks from one TUI."
 
 pkgver=0.19.0
 pkgrel=1
