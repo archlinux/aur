@@ -3,8 +3,8 @@
 pkgname='moc-stable-complete'
 _pkgname='moc'
 pkgver='2.5.2'
-pkgrel=1
-pkgdesc='Music On Console is an ncurses-based console audio player - stable version with patches that supports PulseAudio and FluidSynth, compiled against current FFmpeg'
+pkgrel=2
+pkgdesc='Music On Console is an ncurses-based console audio player - stable version with patches that support PulseAudio and FluidSynth, compiled against current FFmpeg'
 arch=('x86_64')
 url="https://moc.daper.net/"
 license=('GPL-2.0-or-later')
@@ -124,10 +124,8 @@ prepare() {
 
     ## 4. Patch the FFmpeg decoder plugin so that its compatible with current version of FFmpeg:
 
-    # change the original file 'decoder_plugins/ffmpeg/ffmpeg.c' for the new one - this is the core change
-    # it fixes the breaking API changes that happened between FFmpeg 4.4->5.1
-    # rm "$srcdir/${_pkgname}-${pkgver}/decoder_plugins/ffmpeg/ffmpeg.c"
-    # cp ../ffmpeg.c "$srcdir/${_pkgname}-${pkgver}/decoder_plugins/ffmpeg/"
+    # apply patch to the file 'decoder_plugins/ffmpeg/ffmpeg.c' - this is the core change,
+    # as it fixes the breaking API changes that happened between FFmpeg 4.4->5.1
     patch < ../ffmpeg.c.patch "$srcdir/${_pkgname}-${pkgver}/decoder_plugins/ffmpeg/ffmpeg.c"
 
     # modify the FFmpeg plugin's makefile 'decoder_plugins/ffmpeg/ffmpeg.m4' - ensure that MOC compiles
