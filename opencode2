@@ -1,0 +1,3 @@
+#!/bin/sh
+echo 'opencode2 is now just opencode. run opencode'
+exit 1
