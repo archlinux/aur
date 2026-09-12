@@ -1,7 +1,7 @@
 pkgbase = fzy-static
 	pkgdesc = A better fuzzy finder
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jhawthorn/fzy
 	arch = aarch64
 	arch = x86_64
