@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A minimal, distraction-free markdown editor"
 
-pkgver=1.0.49
+pkgver=1.0.50
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[0]}.deb")
-sha256sums=('dbab8691db8b39987d1d2b2e003191ec1a46f755855ecdf70a9cc5e8c67b53b0'
+sha256sums=('7490d3e95432d66ccfa252b501093e30334620582df4d1daa153d77b5fbff059'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('ed9180795b4ab8404b04fc6cc1f33b90ad1a18111125726a1bb809cd9c636aa8')
+sha256sums_x86_64=('32b3f53006b986d40258f8fce18fb5f889fb16562dc43b51eb724a108eb0cc04')
 
 
 package() {
