@@ -7,4 +7,4 @@ export ELECTRON_OZONE_PLATFORM_HINT="${ELECTRON_OZONE_PLATFORM_HINT:-auto}"
 # reads package.json next to it, so app.getVersion() reports the real version
 # instead of "0.0" — which the daemon manager would treat as a version
 # mismatch and restart the user's daemon on every launch.
-exec electron41 /usr/lib/paseo/packages/desktop "$@"
+exec @ELECTRON@ /usr/lib/paseo/packages/desktop "$@"

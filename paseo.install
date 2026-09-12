@@ -21,10 +21,6 @@ post_install() {
     [Install] section on purpose, and binding it to a login target races
     gnome-shell. `loginctl enable-linger` is not needed — the daemon is tied to
     your graphical session.
-
-==> Note: this source build skips the prebuilt sherpa-onnx/onnxruntime
-    speech binaries (same as upstream's nix package); local voice
-    features degrade gracefully when unavailable.
 EOF
 }
 

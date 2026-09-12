@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=paseo
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)"
 arch=('x86_64')
@@ -9,10 +9,10 @@ url="https://paseo.sh"
 _github_url="https://github.com/getpaseo/paseo"
 # Keep in sync with packages/desktop/package.json devDependencies.electron —
 # prepare() fails the build when the majors drift apart.
-_electron_pkg=electron41
-license=('AGPL-3.0-or-later')
-depends=("${_electron_pkg}" 'gcc-libs' 'glibc' 'hicolor-icon-theme')
-makedepends=('nodejs' 'npm' 'python' 'git')
+_electron_pkg=electron44
+license=('Apache-2.0')
+depends=("${_electron_pkg}" 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'nodejs>=22')
+makedepends=('npm' 'python' 'git')
 optdepends=('git: agent worktree management')
 conflicts=('paseo-bin' 'paseo-desktop-bin' 'paseo-appimage')
 options=('!debug')
@@ -26,13 +26,13 @@ source=(
     'trace-desktop.mjs'
     'system-electron-paths.patch'
 )
-sha256sums=('8ff41592068771394cbcd9276d89ac7c1d8332f9f2660515dd62bd0d2130279f'
-            '5f744a24a3605f78ee30348e1d705f47d803f915e58e076ea6e11f151d678407'
+sha256sums=('8b57de8635834de7fc2de15cdc49df9387f438a6ccff14c358150ef5995feb3d'
+            'f9e194a879a87d87021ad06f489a9e4197ded629055a38e2da3557a423785de4'
             '6ae9c520668f639a22f17df7814548056ee46aa99a2886639405297a7b1ef212'
             'df0d01b98ac405c5c25edbb91d61bb9e05355a57e0e652e00823d6331618d686'
             '0bd531415e7504c4bbff0ce137a5541a4ba7d0c29281139b29d94ee537fde307'
             '9c76df40b274123e128228dc841f44f018e4ffd8473a97f0a6b7a9c8a4c2e4fa'
-            '94bd85443217eb476eeac64a35e2cd2ccd2c192643fe35ad12078b15f4768c06')
+            'a30964e6b5767a12af0ccaa1a67b325a54990ebd386fef8a8326847cc54b955d')
 
 # Repo-relative path of the installed node-pty. npm hoists it to the root
 # node_modules in some releases and nests it under packages/server in others
@@ -183,7 +183,7 @@ package() {
 
     # Launcher tracks _electron_pkg so an Electron bump is a one-line change.
     install -d "${pkgdir}/usr/bin"
-    sed "s/electron41/${_electron_pkg}/g" "${srcdir}/paseo.sh" > "${pkgdir}/usr/bin/paseo"
+    sed "s/@ELECTRON@/${_electron_pkg}/g" "${srcdir}/paseo.sh" > "${pkgdir}/usr/bin/paseo"
     chmod 755 "${pkgdir}/usr/bin/paseo"
 
     install -Dm644 "${srcdir}/paseo.desktop" \

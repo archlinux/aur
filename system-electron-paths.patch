@@ -32,7 +32,7 @@ diff --git a/packages/desktop/src/features/auto-updater.ts b/packages/desktop/sr
 index 92ad1b2..17c1fe6 100644
 --- a/packages/desktop/src/features/auto-updater.ts
 +++ b/packages/desktop/src/features/auto-updater.ts
-@@ -131,7 +131,8 @@ class ElectronAppUpdateRuntime implements AppUpdateRuntime {
+@@ -224,7 +224,8 @@ class ElectronAppUpdateRuntime implements AppUpdateRuntime {
  
  const appUpdateService = createAppUpdateService({
    runtime: new ElectronAppUpdateRuntime(),
@@ -42,20 +42,19 @@ index 92ad1b2..17c1fe6 100644
    now: () => Date.now(),
    bucket: async () => bucketFromStagingUserId(await getStagingUserId()),
    reportCheckError: (error) => {
-diff --git a/packages/desktop/src/integrations/cli-install/install.ts b/packages/desktop/src/integrations/cli-install/install.ts
-index cc113da..605bc15 100644
---- a/packages/desktop/src/integrations/cli-install/install.ts
-+++ b/packages/desktop/src/integrations/cli-install/install.ts
-@@ -24,7 +24,8 @@ export async function installCli(): Promise<InstallStatus> {
-   const installSourcePath = resolveCliInstallSourcePath({
-     platform: process.platform,
-     isPackaged: app.isPackaged,
--    executablePath: app.getPath("exe"),
-+    // Distro package: the launcher in PATH, not the raw Electron binary.
-+    executablePath: "/usr/bin/paseo",
-     shimPath,
-     appImagePath: process.env.APPIMAGE,
-   });
+diff --git a/packages/desktop/src/integrations/cli-install/paths.ts b/packages/desktop/src/integrations/cli-install/paths.ts
+--- a/packages/desktop/src/integrations/cli-install/paths.ts
++++ b/packages/desktop/src/integrations/cli-install/paths.ts
+@@ -25,7 +25,6 @@ export function getBundledCliShimPath(): string {
+     return path.join(path.dirname(electronExePath), "resources", "bin", cliShimFilename);
+   }
+ 
+-  // Linux
+-  const electronExePath = app.getPath("exe");
+-  return path.join(path.dirname(electronExePath), "resources", "bin", cliShimFilename);
++  // Distro package: the launcher in PATH, not an electron-builder shim.
++  return "/usr/bin/paseo";
+ }
 diff --git a/packages/desktop/src/features/editor-targets/runtime.ts b/packages/desktop/src/features/editor-targets/runtime.ts
 --- a/packages/desktop/src/features/editor-targets/runtime.ts
 +++ b/packages/desktop/src/features/editor-targets/runtime.ts
@@ -72,7 +71,7 @@ diff --git a/packages/desktop/src/main.ts b/packages/desktop/src/main.ts
 index 4f4cded..4529449 100644
 --- a/packages/desktop/src/main.ts
 +++ b/packages/desktop/src/main.ts
-@@ -324,7 +324,7 @@ function getPreloadPath(): string {
+@@ -571,7 +571,7 @@ function getBrowserKeyboardPreloadPath(): string {
  
  function getAppDistDir(): string {
    if (app.isPackaged) {
@@ -81,7 +80,7 @@ index 4f4cded..4529449 100644
    }
  
    return path.resolve(__dirname, "../../app/dist");
-@@ -338,7 +338,7 @@ function getWindowIconCandidates(): string[] {
+@@ -585,7 +585,7 @@ function getWindowIconCandidates(): string[] {
          path.join(process.resourcesPath, "icon.png"),
        ];
      }
