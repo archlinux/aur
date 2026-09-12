@@ -1,0 +1,58 @@
+From b6776f5b4467f3cf31ed670dd4253c53609605f1 Mon Sep 17 00:00:00 2001
+From: Guus Sliepen <guus@tinc-vpn.org>
+Date: Sun, 9 Nov 2025 22:08:04 +0100
+Subject: [PATCH] Handle libminiupnpc API versions between 17 and 21
+
+---
+ src/upnp.c | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/src/upnp.c b/src/upnp.c
+index 8223b2df2..4b0dee7f3 100644
+--- a/src/upnp.c
++++ b/src/upnp.c
+@@ -61,7 +61,7 @@ static struct UPNPDev *upnp_discover(int delay, int *error) {
+ 
+ #else
+ 
+-#if MINIUPNPC_API_VERSION > 17
++#if MINIUPNPC_API_VERSION > 21
+ #warning "The version of libminiupnpc you're building against seems to be too recent. Expect trouble."
+ #endif
+ 
+@@ -121,9 +121,14 @@ static void upnp_refresh(void) {
+ 
+ 	struct IGDdatas data;
+ 
+-	char myaddr[64];
++	char lanaddr[64];
+ 
+-	int result = UPNP_GetValidIGD(devices, &urls, &data, myaddr, sizeof(myaddr));
++#if MINIUPNPC_API_VERSION <= 17
++	int result = UPNP_GetValidIGD(devices, &urls, &data, lanaddr, sizeof(lanaddr));
++#else
++	char wanaddr[64];
++	int result = UPNP_GetValidIGD(devices, &urls, &data, lanaddr, sizeof(lanaddr), wanaddr, sizeof(wanaddr));
++#endif
+ 
+ 	if(result <= 0) {
+ 		logger(DEBUG_PROTOCOL, LOG_WARNING, "[upnp] No IGD found");
+@@ -131,15 +136,15 @@ static void upnp_refresh(void) {
+ 		return;
+ 	}
+ 
+-	logger(DEBUG_PROTOCOL, LOG_INFO, "[upnp] IGD found: [%d] %s (local address: %s, service type: %s)", result, urls.controlURL, myaddr, data.first.servicetype);
++	logger(DEBUG_PROTOCOL, LOG_INFO, "[upnp] IGD found: [%d] %s (local address: %s, service type: %s)", result, urls.controlURL, lanaddr, data.first.servicetype);
+ 
+ 	for(int i = 0; i < listen_sockets; i++) {
+ 		if(upnp_tcp) {
+-			upnp_add_mapping(&urls, &data, myaddr, listen_socket[i].tcp.fd, "TCP");
++			upnp_add_mapping(&urls, &data, lanaddr, listen_socket[i].tcp.fd, "TCP");
+ 		}
+ 
+ 		if(upnp_udp) {
+-			upnp_add_mapping(&urls, &data, myaddr, listen_socket[i].udp.fd, "UDP");
++			upnp_add_mapping(&urls, &data, lanaddr, listen_socket[i].udp.fd, "UDP");
+ 		}
+ 	}
+ 
