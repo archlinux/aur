@@ -1,0 +1,17 @@
+pkgbase = unikmer-bin
+	pkgdesc = Versatile toolkit for nucleotide k-mers with taxonomic information
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/shenwei356/unikmer
+	arch = x86_64
+	license = MIT
+	provides = unikmer=0.20.0
+	conflicts = unikmer
+	options = !strip
+	options = !debug
+	source = https://github.com/shenwei356/unikmer/releases/download/v0.20.0/unikmer_linux_amd64.tar.gz
+	source = https://raw.githubusercontent.com/shenwei356/unikmer/v0.20.0/LICENSE
+	sha256sums = f6558c7f01c6c3458e52ada9a0fde276f4d4b1a32458f0fdc80760d39928022d
+	sha256sums = 4d549b7a703dfb10d5aaaf80843f741842c13a57b24e5b22488910d5799382d1
+
+pkgname = unikmer-bin
