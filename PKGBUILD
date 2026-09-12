@@ -249,6 +249,24 @@ esac
 # Causes a SEGV during derived data cache build if not set
 export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
 
+# The Roslyn compiler server coordinates its startup through named mutexes, which .NET backs with
+# lock files under ${TMPDIR}/.dotnet/shm on Linux.
+#
+# Concurrent MSBuild nodes racing on those files intermittently make ReleaseMutex throw, surfacing
+# as
+# 
+#    MSB3883: Unexpected exception: ReleaseMutex failed. WaitOne Id: <n> Release Id: <n>
+#
+# on whichever C# projects happened to compile at that moment.
+#
+# Compiling in-process sidesteps the server entirely; the engine builds few enough C# assemblies
+# for the lost process reuse not to matter. MSBuild reads this as a global property, so it also
+# covers the compilations BuildGraph and UAT spawn.
+export UseSharedCompilation=false
+
+# Leftover reuse nodes outlive makepkg and carry stale state into the next build
+export MSBUILDDISABLENODEREUSE=1
+
 prepare() {
   if [[ "${UE_WITH_ANDROID}" == "yes" ]]; then
     if ! pacman -Q android-studio >/dev/null 2>&1; then
