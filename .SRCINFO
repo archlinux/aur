@@ -1,6 +1,6 @@
 pkgbase = grok-build
 	pkgdesc = Grok CLI - command line interface for xAI's Grok
-	pkgver = 1.0.25
+	pkgver = 1.0.30
 	pkgrel = 1
 	url = https://x.ai/cli
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = grok-build
 	provides = grok
 	conflicts = grok
 	options = !strip
-	source_x86_64 = grok-1.0.25-x86_64::https://x.ai/cli/grok-1.0.25-linux-x86_64
-	sha512sums_x86_64 = 2e0e0d5de0b07d1210815971bbf5098f34af0553896f924bfd81c113d7075ed35db787a2e1570074ee7aaf915661206232942d38386f3745dd0bb43d95cc7f49
-	source_aarch64 = grok-1.0.25-aarch64::https://x.ai/cli/grok-1.0.25-linux-aarch64
-	sha512sums_aarch64 = ecf7588a54d6332bea3a00a30af6d87e5596efa1e952193113da55d858a8fda71f2a05e458b95cac656b973a68b29403f9cfc8fb982a5d68a24e0a2f54aa87f9
+	source_x86_64 = grok-1.0.30-x86_64::https://x.ai/cli/grok-1.0.30-linux-x86_64
+	sha512sums_x86_64 = 752ece36a1b24639a1b5c2cd209c1fbf06c912486c54a15dcbce14c037a6b70a037540c4d15da238ed24e51fe2a1d97f2e7f0f91c5b8b729f5541291db66b00f
+	source_aarch64 = grok-1.0.30-aarch64::https://x.ai/cli/grok-1.0.30-linux-aarch64
+	sha512sums_aarch64 = 26b69c3dcec5c703fce8e9a4c17b45fabb8e9c90b538ec6fdc59e89cb1c52bcba0a6c3f76413d499cd146c9441a407e73f18eb459c6d7ef148005d8920e642c8
 
 pkgname = grok-build
