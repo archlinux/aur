@@ -1,6 +1,6 @@
 --- a/plugin/manager.py
 +++ b/plugin/manager.py
-@@ -246,16 +246,14 @@ class PluginManager:
+@@ -418,17 +418,14 @@
              sys.path.append(lib_dir)
  
      def _installed_dist_versions(self):
@@ -18,3 +18,5 @@
 -            logger.exception('Could not read installed plugin dependencies from _lib')
 +            logger.exception('Could not read installed plugin dependencies')
          return versions
+ 
+     def _missing_specs(self, specs, have=None):
