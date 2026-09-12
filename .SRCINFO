@@ -1,7 +1,7 @@
 pkgbase = audiomuse-ai-worker
 	pkgdesc = AudioMuse-AI analysis and task queue worker
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NeptuneHub/AudioMuse-AI
 	install = audiomuse-ai-worker.install
 	arch = x86_64
