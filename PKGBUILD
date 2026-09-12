@@ -1,6 +1,6 @@
 # Maintainer: Simon Schubert <simon@librem.one>
 pkgname=moarchy-habits
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Habit tracking for a Linux phone, kept on the device"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 # Pure Python, so arch=any. The GUI stack is all runtime, nothing is compiled.
 depends=('python' 'python-gobject' 'gtk4' 'libadwaita')
 source=("$url/releases/download/habits-v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ed01eab6b72b112cd8b3061e1d1d31a7e548042af6a040a6d93205343d96cc1a')
+sha256sums=('e0604fc8285f4910a51e6f314519e0b6ae4972b0c0de6e5a2c15d30bd65fbb57')
 
 # The source tarball is assembled by packaging/release.sh from two subtrees of
 # one tag -- apps/habits and shared -- so it holds this app and the shared code
