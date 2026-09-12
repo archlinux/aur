@@ -1,0 +1,25 @@
+pkgbase = omafil-git
+	pkgdesc = File manager that follows your Omarchy theme
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dawitlabs/omafil
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = bun-bin
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = poppler
+	depends = udisks2
+	depends = xdg-utils
+	depends = libnotify
+	optdepends = omarchy: theme and editor integration
+	provides = omafil
+	conflicts = omafil
+	options = !debug
+	options = !lto
+	source = git+https://github.com/dawitlabs/omafil.git
+	sha256sums = SKIP
+
+pkgname = omafil-git
