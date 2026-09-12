@@ -1,0 +1,27 @@
+pkgbase = hypercolor-bin
+	pkgdesc = Open-source RGB lighting orchestration engine for Linux
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/hyperb1iss/hypercolor
+	install = hypercolor.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = dbus
+	depends = systemd
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = libayatana-appindicator
+	optdepends = libusb: USB device support
+	optdepends = i2c-tools: SMBus/I2C RGB memory module support
+	provides = hypercolor
+	conflicts = hypercolor
+	source_x86_64 = https://github.com/hyperb1iss/hypercolor/releases/download/v0.5.1/hypercolor-0.5.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 5f4102f3ea07d2cd96d019bd431fbddd7d8155ebbee1cb623ae2bbfe010cfd75
+	source_aarch64 = https://github.com/hyperb1iss/hypercolor/releases/download/v0.5.1/hypercolor-0.5.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 29f71b267e118e4d43f42952427f135159c86b0f6b954fdb6444840c0c143e2f
+
+pkgname = hypercolor-bin

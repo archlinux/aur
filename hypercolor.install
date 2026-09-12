@@ -1,0 +1,42 @@
+post_install() {
+  echo ":: Reloading udev rules..."
+  udevadm control --reload-rules 2>/dev/null || true
+  udevadm trigger --action=add --subsystem-match=hidraw 2>/dev/null || true
+  udevadm trigger --action=add --subsystem-match=usb 2>/dev/null || true
+
+  echo ":: Loading i2c-dev kernel module..."
+  modprobe i2c-dev 2>/dev/null || true
+
+  echo ":: Updating icon cache..."
+  gtk-update-icon-cache -f -t /usr/share/icons/hicolor 2>/dev/null || true
+
+  echo ""
+  echo "  To start Hypercolor as a user service:"
+  echo "    systemctl --user enable --now hypercolor.service"
+  echo ""
+  echo "  To open the web UI:"
+  echo "    hypercolor-open"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  echo ":: Stopping Hypercolor service (if running)..."
+  # Stop for all users who may have it enabled
+  if systemctl --user is-active hypercolor.service &>/dev/null; then
+    systemctl --user stop hypercolor.service 2>/dev/null || true
+  fi
+}
+
+post_remove() {
+  udevadm control --reload-rules 2>/dev/null || true
+  gtk-update-icon-cache -f -t /usr/share/icons/hicolor 2>/dev/null || true
+
+  echo ""
+  echo "  User config preserved at ~/.config/hypercolor/"
+  echo "  Remove manually if no longer needed."
+  echo ""
+}
