@@ -1,10 +1,11 @@
 pkgname=simplelogin-server
 pkgver=4.81.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Self-hosted SimpleLogin email alias server'
 arch=('x86_64')
 url='https://github.com/simple-login/app'
 license=('AGPL-3.0-only')
+install='simplelogin-server.install'
 
 _slpgpver=0.1.1
 
@@ -81,15 +82,12 @@ optdepends=(
   'postfix: local MTA for inbound and outbound SimpleLogin mail'
   'postfix-pgsql: PostgreSQL-backed Postfix lookup maps'
   'nginx: reverse proxy for the web application'
-  'valkey: Redis-compatible session and rate-limit backend when MEM_STORE_URI is configured'
+  'valkey: Redis-compatible session and rate-limit backend'
   'spamassassin: optional spamd backend'
   'ipython: interactive SimpleLogin shell helper'
   'python-flask-debugtoolbar: optional Flask debug toolbar'
   'python-facebook-sdk: optional Facebook authentication support'
 )
-
-provides=('simplelogin-server')
-conflicts=('simplelogin-server')
 
 source=(
   "simplelogin-${pkgver}.tar.gz::https://github.com/simple-login/app/archive/refs/tags/v${pkgver}.tar.gz"
@@ -102,6 +100,7 @@ source=(
   'simplelogin-job-runner.service'
   'simplelogin.sysusers'
   'simplelogin.tmpfiles'
+  'simplelogin.env.example'
 )
 
 sha256sums=('f52b57dbc5feebe2b5a5244c88fac197638e89b447338cdc173675a6b5eddca2'
@@ -113,7 +112,8 @@ sha256sums=('f52b57dbc5feebe2b5a5244c88fac197638e89b447338cdc173675a6b5eddca2'
             'e2be17ad57507aeee11f963bce2384cdb377fd98dc3d23718940b05b2e8b40bb'
             '37a6a6569c1709c01cfc9026c275c5e468ccb812c12c2877174e365f06e2caa6'
             '5c42c5338fadb4a8be7fe6bf233332831074b27b331681ec95fed2f294d94792'
-            '99732b7040b0aae127b0ac12b6b54f9603f59d8bb96130a437b2e93c3a1450a9')
+            '99732b7040b0aae127b0ac12b6b54f9603f59d8bb96130a437b2e93c3a1450a9'
+            '73b6f460c478e88197d2c1caa7ca8361afa03a0fcf6118435e644b8360d71aac')
 
 prepare() {
   cd "$srcdir/app-${pkgver}"
@@ -125,7 +125,12 @@ prepare() {
 
 build() {
   cd "$srcdir/app-${pkgver}/static"
-  npm install --ignore-scripts --no-audit --no-fund --package-lock=false
+
+  npm install \
+    --ignore-scripts \
+    --no-audit \
+    --no-fund \
+    --package-lock=false
 }
 
 package() {
@@ -148,7 +153,8 @@ package() {
     "$pkgdir/usr/lib/simplelogin/uv.lock"
 
   rm -rf "$pkgdir/usr/lib/simplelogin/static/upload"
-  ln -s /var/lib/simplelogin/upload "$pkgdir/usr/lib/simplelogin/static/upload"
+  ln -s /var/lib/simplelogin/upload \
+    "$pkgdir/usr/lib/simplelogin/static/upload"
 
   python -m installer \
     --destdir="$pkgdir" \
@@ -163,7 +169,7 @@ package() {
   install -Dm644 example.env \
     "$pkgdir/usr/share/doc/$pkgname/example.env"
 
-  install -Dm644 example.env \
+  install -Dm640 "$srcdir/simplelogin.env.example" \
     "$pkgdir/etc/simplelogin/simplelogin.env.example"
 
   install -Dm644 "$srcdir/simplelogin.service" \

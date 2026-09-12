@@ -1,0 +1,81 @@
+post_install() {
+  cat <<'MSG'
+
+SimpleLogin has been installed.
+
+Configuration:
+  /etc/simplelogin/simplelogin.env.example
+
+Persistent state:
+  /var/lib/simplelogin/pgp
+  /var/lib/simplelogin/upload
+
+For a new installation, copy and edit the example configuration before
+starting the services.
+
+Migrating an existing Docker installation
+-----------------------------------------
+
+Typical Docker paths map as follows:
+
+  SimpleLogin .env
+    -> /etc/simplelogin/simplelogin.env
+
+  /sl/pgp
+    -> /var/lib/simplelogin/pgp
+
+  /code/static/upload
+    -> /var/lib/simplelogin/upload
+
+  DKIM private/public keys
+    -> /etc/simplelogin/dkim.key
+    -> /etc/simplelogin/dkim.pub.key
+
+Recommended native settings include:
+
+  DB_URI=postgresql://simplelogin@/simplelogin?host=/run/postgresql
+  GNUPGHOME=/var/lib/simplelogin/pgp
+  DKIM_PRIVATE_KEY_PATH=/etc/simplelogin/dkim.key
+  DKIM_PUBLIC_KEY_PATH=/etc/simplelogin/dkim.pub.key
+  POSTFIX_SERVER=localhost
+
+Optional Valkey over a Unix socket:
+
+  MEM_STORE_URI=redis+unix:///run/valkey/valkey.sock
+
+If using peer PostgreSQL authentication, the Unix service account and
+PostgreSQL role should both be named "simplelogin".
+
+When migrating an existing installation, stop the old containers before
+the final state copy, then run the database migrations from:
+
+  cd /usr/lib/simplelogin
+  sudo -u simplelogin env CONFIG=/etc/simplelogin/simplelogin.env flask db upgrade
+
+Do not run init_app.py against an existing SimpleLogin database.
+
+Services:
+  simplelogin.service
+  simplelogin-email.service
+  simplelogin-job-runner.service
+
+They are not enabled automatically.
+
+MSG
+}
+
+post_upgrade() {
+  cat <<'MSG'
+
+SimpleLogin upgraded.
+
+If this release contains database migrations, run:
+
+  cd /usr/lib/simplelogin
+  sudo -u simplelogin env CONFIG=/etc/simplelogin/simplelogin.env flask db upgrade
+
+Review /usr/share/doc/simplelogin-server/example.env for new upstream
+configuration options when upgrading between SimpleLogin releases.
+
+MSG
+}
