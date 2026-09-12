@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: Alexander Fetting <deeznuts420692@proton.me>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Ashley Whetter <(firstname) @ awhetter.co.uk>
@@ -8,7 +8,7 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=flightgear
-pkgver=2024.1.6
+pkgver=2024.1.7
 pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
@@ -36,7 +36,7 @@ depends=('dbus'
 makedepends=('boost' 'cmake' 'plib' 'qt6-svg' 'qt6-tools')
 optdepends=('flightgear-data: Base data package')
 source=("https://gitlab.com/flightgear/flightgear/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9b1993cb6d8933a2f5b7376fe26b18e7c15de31b853a7aa39df49648869445f8')
+sha256sums=('b1e6d621c93e00a9374dcaca0260006f80731191c3195f3077de7f80a5e65b96')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

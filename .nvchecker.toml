@@ -3,3 +3,4 @@ source = "gitlab"
 gitlab = "flightgear/flightgear"
 use_max_tag = true
 prefix = "v"
+exclude_regex = ".*(rc).*"
