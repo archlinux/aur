@@ -1,13 +1,13 @@
 pkgbase = pantagruel
 	pkgdesc = A language for writing and checking precise descriptions of things.
-	pkgver = 0.20.0
+	pkgver = 0.24.1
 	pkgrel = 1
 	url = https://github.com/subsetpark/pantagruel
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = opam
 	makedepends = ocaml>=4.14
-	source = https://github.com/subsetpark/pantagruel/archive/refs/tags/v0.20.0.tar.gz
-	sha256sums = 512c41563e9b1c944fb7cbd4ec550f4d3a18e8d1875807587a60261f0c9b4dea
+	source = https://github.com/subsetpark/pantagruel/archive/refs/tags/v0.24.1.tar.gz
+	sha256sums = e43654f5782223f840895f17fcf280fb1989349c089f0f9d77c2a79cfe34d122
 
 pkgname = pantagruel

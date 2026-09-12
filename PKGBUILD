@@ -1,6 +1,6 @@
 # Maintainer: Z. D. Smith <zd at zdsmith dot com>
 pkgname=pantagruel
-pkgver=0.20.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc='A language for writing and checking precise descriptions of things.'
 arch=('x86_64')
@@ -10,15 +10,22 @@ license=('BSD-3-Clause')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('512c41563e9b1c944fb7cbd4ec550f4d3a18e8d1875807587a60261f0c9b4dea')
+sha256sums=('e43654f5782223f840895f17fcf280fb1989349c089f0f9d77c2a79cfe34d122')
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+	# Release archives do not contain the Git metadata used to stamp the version.
+	sed -i "s/git describe --tags --always/printf v${pkgver}/" bin/dune
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	export OPAMROOT="$srcdir/opam"
 	opam init --bare --no-setup --disable-sandboxing
-	opam switch create . --deps-only --locked=false -y
-	eval $(opam env)
-	dune build
+	opam switch create . --no-install -y
+	opam install ./pantagruel.opam --deps-only -y
+	eval "$(opam env)"
+	dune build -p pantagruel bin/main.exe
 }
 
 package() {
