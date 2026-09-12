@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=picot
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 # Keep in sync with scripts/pi-version.json; prepare() fails the build on drift.
 _pi_ver=0.85.1
@@ -34,12 +34,14 @@ makedepends=(
 provides=('pi-studio')
 replaces=('pi-studio')
 conflicts=('pi-studio' 'picot-bin')
-options=('!lto' '!debug')
+# The bundled Pi executable is a Bun standalone binary: strip removes its
+# embedded application payload and leaves only the Bun runtime.
+options=('!strip' '!lto' '!debug')
 
 _pi_relurl="https://github.com/earendil-works/pi-mono/releases/download/v${_pi_ver}"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6dc685803510039ba9afd31fb314c2238912ca8dd5483dc8a05ed05721a78a33')
+sha256sums=('71b05a8ad07d2c59bcb6ffb53aaeeb048506acb12fb513b74c45b0c5ac157e4a')
 sha256sums_x86_64=('494e498f47d74d21f40b3386f6a5e921a3d49531a169cab55bbdaca0ea1fe25a')
 sha256sums_aarch64=('042d20ae885ee4f3b102815f3280b962c377b2e9fb44de4037908cc530eae4d4')
 source_x86_64=("pi-linux-x64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-x64.tar.gz")
