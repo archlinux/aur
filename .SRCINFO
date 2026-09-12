@@ -1,0 +1,26 @@
+pkgbase = python-flanker
+	pkgdesc = Mailgun MIME and email parsing library
+	pkgver = 0.9.16
+	pkgrel = 1
+	url = https://github.com/mailgun/flanker
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-attrs
+	depends = python-chardet
+	depends = python-cryptography
+	depends = python-idna
+	depends = python-ply
+	depends = python-regex
+	depends = python-six
+	depends = python-standard-imghdr
+	depends = python-tld
+	depends = python-webob
+	source = https://github.com/mailgun/flanker/archive/refs/tags/v0.9.16.tar.gz
+	sha256sums = df9df81eada6035a857ff49f3a131c372b3519baa40f57949ef6f377936f7be4
+
+pkgname = python-flanker
