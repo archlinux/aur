@@ -1,5 +1,5 @@
-pkgbase = python-proton-keyring-linux
-	pkgdesc = The proton-keyring-linux component.
+pkgbase = python-proton-keyring-linux-no-gnome
+	pkgdesc = The proton-keyring-linux component without GNOME Keyring as a dependency.
 	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/ProtonVPN/python-proton-keyring-linux
@@ -14,8 +14,9 @@ pkgbase = python-proton-keyring-linux
 	depends = python-keyring
 	depends = python-proton-core
 	depends = org.freedesktop.secrets
-	depends = gnome-keyring
-	source = git+https://github.com/ProtonVPN/python-proton-keyring-linux.git#tag=v0.2.3
+	provides = python-proton-keyring-linux
+	conflicts = python-proton-keyring-linux
+	source = git+https://github.com/ProtonVPN/python-proton-keyring-linux-no-gnome.git#tag=v0.2.3
 	sha256sums = 9d81b19c47e3da0363bfdf36e9e7312458538bcb4454dde3f6b5570f24052d93
 
-pkgname = python-proton-keyring-linux
+pkgname = python-proton-keyring-linux-no-gnome
