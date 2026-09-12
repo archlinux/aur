@@ -5,7 +5,7 @@
 
 pkgname=mongosh-git
 pkgver=5.2.4.r1.gf5a5b10e7
-pkgrel=2
+pkgrel=4
 pkgdesc="The MongoDB Shell."
 arch=("x86_64" "aarch64")
 depends=("nodejs" "krb5")
