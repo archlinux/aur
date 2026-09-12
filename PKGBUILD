@@ -1,6 +1,6 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 pkgname=dbx
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 pkgdesc="Open-source database management tool (Tauri-based)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ conflicts=("$pkgname-bin")
 # empty and gdb-add-index errors out. Skip the debug subpackage entirely.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('beede7b213eedc2463713fd383c875cbfa14afdbe9daefe78dde26190fcbdbcc')
+sha256sums=('fad67cafbb79618a2f13799c5571577b67225fc69e30c3278065c310d170a8c0')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -41,17 +41,9 @@ prepare() {
     export npm_config_cache="$srcdir/.npm"
     pnpm config --location project set store-dir "$srcdir/.pnpm-store"
 
-    # pnpm v10 blocks postinstall scripts unless the package is listed in
-    # package.json#pnpm.onlyBuiltDependencies. Upstream allows esbuild only;
-    # vue-demi also needs its postinstall to pick the right Vue 2/3 shim.
-    node -e '
-      const fs = require("fs");
-      const p = JSON.parse(fs.readFileSync("package.json", "utf8"));
-      p.pnpm = p.pnpm || {};
-      const cur = p.pnpm.onlyBuiltDependencies || [];
-      p.pnpm.onlyBuiltDependencies = [...new Set([...cur, "vue-demi"])];
-      fs.writeFileSync("package.json", JSON.stringify(p, null, 2) + "\n");
-    '
+    # Enable vue-demi's postinstall in upstream's pnpm build-script policy
+    # so it can select the correct Vue 2/3 shim.
+    sed -i 's/vue-demi: false/vue-demi: true/' pnpm-workspace.yaml
     # Upstream opts into openssl's vendored feature. Use the declared system
     # dependency instead: vendoring embeds its temporary $srcdir install path
     # in the final binary.
