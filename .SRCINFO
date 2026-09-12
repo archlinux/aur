@@ -1,0 +1,17 @@
+pkgbase = python-facebook-sdk
+	pkgdesc = Python SDK for Facebook's Graph API
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/mobolic/facebook-sdk
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/f/facebook-sdk/facebook-sdk-3.1.0.tar.gz
+	sha256sums = cabcd2e69ea3d9f042919c99b353df7aa1e2be86d040121f6e9f5e63c1cf0f8d
+
+pkgname = python-facebook-sdk
