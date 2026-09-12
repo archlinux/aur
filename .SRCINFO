@@ -7,7 +7,6 @@ pkgbase = raven-bin
 	arch = aarch64
 	license = GPL-3.0-only
 	depends = glibc
-	depends = libgcc
 	conflicts = raven
 	options = !debug
 	source_x86_64 = raven-bin-0.20.2.zip::https://github.com/jbearak/raven/releases/download/v0.20.2/raven-linux-x64.zip
