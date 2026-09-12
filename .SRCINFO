@@ -1,0 +1,20 @@
+pkgbase = heft-git
+	pkgdesc = Read-only Linux TUI for application-weight process accounting (git)
+	pkgver = 0.6.0.r0.g6f21906
+	pkgrel = 1
+	url = https://github.com/Rethunk-Tech/heft
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = heft=0.6.0.r0.g6f21906
+	conflicts = heft
+	options = !strip
+	options = !debug
+	source = heft-git::git+https://github.com/Rethunk-Tech/heft.git
+	sha256sums = SKIP
+
+pkgname = heft-git
