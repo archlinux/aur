@@ -22,7 +22,7 @@ source=('https://github.com/hajisensai/Fushi/archive/refs/tags/v2.5.0-beta.14675
 sha256sums=('f0e8d7abc1032186feaa513b96ced2a13c23c26e2085a6091f3bb9fac146a484'
             'e1ec95e6c550458a34de93580cb85dac24da0e9bedb9bb42811f050ac5a0c7d5'
             '8334fd0a75f8cfdfff0873b3c9ae9f0d19acfffdf59c07d4cb4d95b1e3ed2391'
-            '5d5398be837f9b6d108f62c93c98b6f0eaa6048c0da40e4dd7062b3ecdef5b3e'
+            '12157c9050b3d984803b59e2d4e1b344af4be4218b36a8c168b862d802ca1556'
             'c96cbc90cca94c8e7d661003e65b9206ae6f060a29f409e509f1f5b6393dc3ec')
 
 prepare() {
