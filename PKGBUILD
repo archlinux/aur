@@ -2,7 +2,7 @@
 
 pkgname=graphify
 _name=graphifyy
-pkgver=0.9.59
+pkgver=0.9.61
 pkgrel=1
 pkgdesc="AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph"
 arch=('any')
@@ -48,15 +48,15 @@ optdepends=(
     'uvicorn: Streamable HTTP MCP server support'
     'python-neo4j: Neo4j export support'
     'python-falkordb: FalkorDB export support'
-    'python-pypdf: PDF extraction support'
+    'python-pypdf>=6.16.1: PDF extraction support'
     'python-markdownify: PDF/HTML extraction support'
     'python-watchdog: File watching support'
     'python-matplotlib: SVG output support'
-    'python-graspologic: Leiden community detection support (Python < 3.13)'
+    'python-graspologic-native>=1.3.1: Leiden community detection support'
     'python-docx: Office document (.docx) support'
     'python-openpyxl: Office spreadsheet (.xlsx) support'
     'python-faster-whisper: Video transcription support'
-    'yt-dlp: Video download support'
+    'yt-dlp>=2026.7.4: Video download support'
     'python-openai: OpenAI-compatible LLM backends (Kimi/Ollama/Gemini/OpenAI)'
     'python-tiktoken: Token counting for Kimi/Gemini/OpenAI backends'
     'python-anthropic: Claude direct extraction backend'
@@ -64,7 +64,6 @@ optdepends=(
     'python-tree-sitter-sql: SQL indexing support'
     'python-tree-sitter-hcl: Terraform/HCL indexing support'
     'python-tree-sitter-pascal: Pascal/Delphi indexing support'
-    'python-jieba: Chinese text segmentation for the MCP search server'
     'python-psycopg: PostgreSQL schema introspection backend'
     'python-yaml: APM manifest parsing support'
     'python-tree-sitter-dm: DM language indexing support'
@@ -75,14 +74,14 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
-    'python-setuptools'
+    'python-setuptools>=83'
 )
 
 provides=("${_name}")
 conflicts=("${_name}")
 
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3b88fef061e1c971e343aacd0f65d8d229d03948a0e3a1bbd054f5e646948522')
+sha256sums=('8058174c5f2a9bcdbb3a90d19f67ef32ca0504f7814b699322a48a785b91eafd')
 
 build() {
     cd "${_name}-${pkgver}"

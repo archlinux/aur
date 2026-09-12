@@ -1,6 +1,6 @@
 pkgbase = graphify
 	pkgdesc = AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph
-	pkgver = 0.9.59
+	pkgver = 0.9.61
 	pkgrel = 1
 	url = https://github.com/Graphify-Labs/graphify
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = graphify
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
+	makedepends = python-setuptools>=83
 	depends = python
 	depends = python-networkx
 	depends = python-numpy
@@ -45,15 +45,15 @@ pkgbase = graphify
 	optdepends = uvicorn: Streamable HTTP MCP server support
 	optdepends = python-neo4j: Neo4j export support
 	optdepends = python-falkordb: FalkorDB export support
-	optdepends = python-pypdf: PDF extraction support
+	optdepends = python-pypdf>=6.16.1: PDF extraction support
 	optdepends = python-markdownify: PDF/HTML extraction support
 	optdepends = python-watchdog: File watching support
 	optdepends = python-matplotlib: SVG output support
-	optdepends = python-graspologic: Leiden community detection support (Python < 3.13)
+	optdepends = python-graspologic-native>=1.3.1: Leiden community detection support
 	optdepends = python-docx: Office document (.docx) support
 	optdepends = python-openpyxl: Office spreadsheet (.xlsx) support
 	optdepends = python-faster-whisper: Video transcription support
-	optdepends = yt-dlp: Video download support
+	optdepends = yt-dlp>=2026.7.4: Video download support
 	optdepends = python-openai: OpenAI-compatible LLM backends (Kimi/Ollama/Gemini/OpenAI)
 	optdepends = python-tiktoken: Token counting for Kimi/Gemini/OpenAI backends
 	optdepends = python-anthropic: Claude direct extraction backend
@@ -61,14 +61,13 @@ pkgbase = graphify
 	optdepends = python-tree-sitter-sql: SQL indexing support
 	optdepends = python-tree-sitter-hcl: Terraform/HCL indexing support
 	optdepends = python-tree-sitter-pascal: Pascal/Delphi indexing support
-	optdepends = python-jieba: Chinese text segmentation for the MCP search server
 	optdepends = python-psycopg: PostgreSQL schema introspection backend
 	optdepends = python-yaml: APM manifest parsing support
 	optdepends = python-tree-sitter-dm: DM language indexing support
 	optdepends = robotframework>=4.0: Robot Framework (.robot/.resource) extraction support
 	provides = graphifyy
 	conflicts = graphifyy
-	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.9.59.tar.gz
-	sha256sums = 3b88fef061e1c971e343aacd0f65d8d229d03948a0e3a1bbd054f5e646948522
+	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.9.61.tar.gz
+	sha256sums = 8058174c5f2a9bcdbb3a90d19f67ef32ca0504f7814b699322a48a785b91eafd
 
 pkgname = graphify
