@@ -1,7 +1,7 @@
 # Maintainer: Naxels <naxels at gmail dot com>
 
 pkgname=plexamp-beta-appimage
-pkgver=4.50.8
+pkgver=4.50.9
 pkgrel=1
 pkgdesc="Modern music client for Plex BETA with new backend"
 provides=('plexamp')
@@ -18,8 +18,8 @@ source_x86_64=(
 source_aarch64=(
   https://plexamp.plex.tv/desktop/${_filename}
 )
-sha256sums_x86_64=('fde55ce6e0a00c8bc942f588de91ec0043e9cee62ff5ebd355a917f94aabac04')
-sha256sums_aarch64=('467a0f6c5e2f83715f34b34e0a85894bcf1ba73049a90fc57dcea59ea981682c')
+sha256sums_x86_64=('8dd1440b666a0b5ca1c6f8458b27b9e7445c45e4ff83cd33c663caaa1186bc37')
+sha256sums_aarch64=('61c98f23fa5d164e75e701495326a8523f46ac74deb79cea2def1d81ef73d0ca')
 
 
 prepare() {
