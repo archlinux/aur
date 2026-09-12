@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = things3-cloud
+
+[Action]
+Description = Restart a running things3-server.service
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/systemd-hook restart things3-server.service
