@@ -2,7 +2,7 @@
 # Contributor: Teteros <teteros at teknik dot io>
 
 pkgname=radium-bin
-pkgver=7.5.78
+pkgver=8.0.54
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker. (Demo Version)'
 arch=(x86_64)
@@ -27,15 +27,15 @@ optdepends=(
   'vst-plugins: more plugins'
 )
 options=(!strip)
-source=("https://users.notam02.no/~kjetism/radium/demos/linux/radium_64bit_linux-$pkgver-demo.tar.xz")
-sha256sums=('e336039a5ba049dcbc9e7439d12dda37eda4673a66352fc8fcc826019d8b3219')
+source=("https://users.notam02.no/~kjetism/radium/demos/linux/radium_64bit_linux-$pkgver-demo.tar.gz")
+sha256sums=('059ee4c599c9bb5e7ad47366a38883ea1128d6ffeb75649dfcf3b895836e4434')
 
 package() {
   cd radium_64bit_linux-$pkgver-demo
 
   # Copy radium files to a self-contained /opt prefix
   mkdir -p "$pkgdir/opt/radium"
-  cp -a bin lib "$pkgdir/opt/radium"
+  cp -a ./* "$pkgdir/opt/radium"
 
   # Recreate run_radium.sh to point to /opt rather than relative paths
   echo '#!/usr/bin/env bash' > "$pkgdir/opt/radium/run_radium.sh"
