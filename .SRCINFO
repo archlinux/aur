@@ -1,7 +1,7 @@
 pkgbase = webdump-static
 	pkgdesc = HTML to plain-text converter tool
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codemadness.org/webdump.html
 	arch = x86_64
 	arch = aarch64
