@@ -1,6 +1,6 @@
 pkgbase = gitte
 	pkgdesc = A GTK4/libadwaita Git client for the GNOME desktop
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://codeberg.org/ckruse/Gitte
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = gitte
 	depends = pango
 	depends = xz
 	depends = zlib
-	source = git+https://codeberg.org/ckruse/Gitte.git#tag=0.10.0
-	sha256sums = 93e2f1abde6f85e028295cf2c55375b888dbf0aa6eff79bba74b07845ac61a0e
+	source = git+https://codeberg.org/ckruse/Gitte.git#tag=0.10.1
+	sha256sums = bbcd2db7c26e957e95c86411614fc3b73214d214cc5e4eeaa53e46211ceacfc0
 
 pkgname = gitte
