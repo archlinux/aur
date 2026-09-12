@@ -1,8 +1,8 @@
 # Maintainer: guglovich <jinseoyeon@archlinux>
-# Created with assistance from Claude (Anthropic)
+# Created with assistance from GLM 5.3 Flash.
 
 pkgname=xdat-editor-next-bin
-pkgver=1.6.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="XDAT Editor - edit interface.xdat Lineage 2 client file, modern fork with Java 21+ (prebuilt)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "xdat-editor-${pkgver}.zip::https://github.com/nascimentolh/XDAT_NEW/releases/download/v${pkgver}/xdat-editor-${pkgver}.zip"
 )
 b2sums=(
-    '39cb55ef4493c786d884bb193bcc99e5e8a4d8d4e7e6ec25574aa45a40300fcf6640016f603176b9e6543b898833f70bc26ac010efee50e094f1ecf0391da3dc'
+    'c139e2c41248518a766e26b24329dfc2e041699878889f4f48f5146f0c832f1314e2fed316d1560747bdc750539897e0706e5ed677e48721e638f341e735af01'
 )
 
 package() {
