@@ -1,0 +1,11 @@
+pkgbase = silero-vad-onnx-model
+	pkgdesc = Silero Voice Activity Detector ONNX model
+	pkgver = 6.2.1
+	pkgrel = 1
+	url = https://github.com/snakers4/silero-vad
+	arch = any
+	license = MIT
+	source = https://files.pythonhosted.org/packages/source/s/silero-vad/silero_vad-6.2.1.tar.gz
+	sha256sums = b23062b0e39fad17b1266fc23c1e7b4290219dbe82ce08510889e32f681f4b3b
+
+pkgname = silero-vad-onnx-model
