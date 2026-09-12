@@ -1,4 +1,4 @@
-# Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
+# Maintainer: Evan Purkhiser <resyctl.aur@evanpurkhiser.com>
 
 pkgname=resyctl
 pkgver=0.2.3
