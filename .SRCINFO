@@ -1,0 +1,23 @@
+pkgbase = careervector-tui-bin
+	pkgdesc = CareerVector terminal workspace with its controlled terminal
+	pkgver = 0.1.0alpha.10
+	pkgrel = 1
+	url = https://careervector.corbet.ch
+	provides = careervector-tui=0.1.0alpha.10
+	conflicts = careervector-tui
+	arch = x86_64
+	license = BUSL-1.1
+	depends = gcc-libs
+	depends = gtk4
+	depends = libadwaita
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = wayland
+	depends = openssl
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/julian-corbet/careervector-releases/releases/download/tui-v0.1.0-alpha.10/careervector-0.1.0-alpha.10-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 530c116b294840c090e03cc803e57200c3ef9385230d48d03936c770d3d0c74a
+	depends_x86_64 = glibc>=2.39
+
+pkgname = careervector-tui-bin
