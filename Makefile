@@ -1,19 +1,24 @@
-# Update commands
-# * `pkgrel=y pkgver=x.x.x make test-install-and-remove`
-# * `pkgrel=y pkgver=x.x.x make update-srcinfo`
-# * `pkgrel=y pkgver=x.x.x make push`
-# * `pkgrel=y pkgver=x.x.x make clean`
+# Update workflow (3 steps, run in order):
+# * `pkgrel=y pkgver=x.x.x make update-sources`              # pull, bump version, refresh checksums, regenerate .SRCINFO
+# * `make test-install-and-remove`                          # build, install, smoke-test, remove
+# * `make commit-push-clean`                                # commit, push to the AUR, clean the workspace
 
 MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail -c
-.DEFAULT_GOAL := push
+.DEFAULT_GOAL := help
 .ONESHELL:
 
 # Simple ANSI colours
 CC_YELLOW=\033[0;33m
 CC_WHITE=\033[1;37m
 CC_END=\033[0m
+
+# Optional CLI overrides (pkgname=x pkgver=x pkgrel=x binaryname=x make ...)
+pkgname ?=
+pkgver ?=
+pkgrel ?=
+binaryname ?=
 
 # Get the version information
 current_pkgname=$(shell cat PKGBUILD | awk -F = '/^pkgname/ { print $$2 }')
@@ -64,30 +69,34 @@ update-pkgbuild: update-version ## Update the checksums in the PKGBUILD
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Update the checksums in PKGBUILD${CC_END}"
 	updpkgsums
 
-.PHONY: build
-build: update-pkgbuild ## Build the package (as a test)
-	@echo -e "${CC_YELLOW}==>${CC_WHITE} Build the package${CC_END}"
-	makepkg -s
-
 .PHONY: install
-install: update-pkgbuild ## Install the package (as a test)
+install: ## Build and install the package
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Install the package${CC_END}"
 	makepkg -si
 
+.PHONY: remove
+remove: ## Remove the installed package
+	@echo -e "${CC_YELLOW}==>${CC_WHITE} Removing the package${CC_END}"
+	sudo pacman -R $(use_pkgname)
+
 .PHONY: test-install-and-remove
-test-install-and-remove: install ## Using the package (as a test)
+test-install-and-remove: install ## Install, test the binary, then remove the package
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Using the binary ${CC_END}"
 	${use_binaryname} --version
 	${use_binaryname} --help
-	sudo pacman -R grafana-alloy-bin
+	@echo -e "${CC_YELLOW}==>${CC_WHITE} Removing the package${CC_END}"
+	sudo pacman -R $(use_pkgname)
 
 .PHONY: update-srcinfo
-update-srcinfo: build ## Update the .SRCINFO file
+update-srcinfo: ## Update the .SRCINFO file from the current PKGBUILD
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Update the .SRCINFO file${CC_END}"
 	makepkg --printsrcinfo > .SRCINFO
 
+.PHONY: update-sources
+update-sources: update-pkgbuild update-srcinfo ## Update PKGBUILD (pull/version/checksums) and regenerate .SRCINFO
+
 .PHONY: commit
-commit: update-pkgbuild update-srcinfo ## Commit the changes to the repository
+commit: ## Commit the current PKGBUILD/.SRCINFO to the repository
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Commit the PKGBUILD and .SRCINFO files${CC_END}"
 	git add PKGBUILD .SRCINFO Makefile alloy-sysusers.conf alloy-tmpfiles.conf
 	git commit -m "Bump package to $$(
@@ -99,6 +108,9 @@ commit: update-pkgbuild update-srcinfo ## Commit the changes to the repository
 	)"
 
 .PHONY: push
-push: commit ## Push the changes back to up the AUR
+push: ## Push the current commits up to the AUR
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Push the changes up to the AUR${CC_END}"
 	git push
+
+.PHONY: commit-push-clean
+commit-push-clean: commit push clean ## Commit, push to the AUR, and clean the workspace
