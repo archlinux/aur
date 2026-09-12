@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=MeshCore Open
+GenericName=LoRa Mesh Messenger
+Comment=Chat over MeshCore LoRa mesh devices via BLE, USB or TCP
+Exec=meshcore-open %U
+Icon=meshcore-open
+Terminal=false
+Categories=Network;InstantMessaging;
+Keywords=LoRa;mesh;MeshCore;BLE;radio;messaging;
+StartupWMClass=meshcore-open

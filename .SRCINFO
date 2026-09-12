@@ -1,0 +1,25 @@
+pkgbase = meshcore-open-bin
+	pkgdesc = Open-source Flutter client for MeshCore LoRa mesh networking devices
+	pkgver = 9.5.1
+	pkgrel = 1
+	url = https://github.com/zjs81/meshcore-open
+	arch = x86_64
+	license = MIT
+	makedepends = patchelf
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = xdg-user-dirs
+	depends = zlib
+	optdepends = vulkan-icd-loader: GPU acceleration for on-device message translation
+	provides = meshcore-open
+	conflicts = meshcore-open
+	options = !strip
+	source = meshcore-open-bin-9.5.1.zip::https://github.com/zjs81/meshcore-open/releases/download/PRE-BETA-9.5.1/meshcore-linux-release.zip
+	source = LICENSE::https://raw.githubusercontent.com/zjs81/meshcore-open/PRE-BETA-9.5.1/LICENSE
+	source = meshcore-open.desktop
+	sha256sums = 5a34e87885722d523383395dcef3098d0c92bc04856404f3c47f726e846f012c
+	sha256sums = 00fb1faaf18628b7be50522b3ae5c42af771ac3bb1e7907dd35338f39fb000fa
+	sha256sums = 42ab4bb9a565b5caa26d77cca02d7cdc044b7b2703275e500ef579b699c62d36
+
+pkgname = meshcore-open-bin
