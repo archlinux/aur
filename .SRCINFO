@@ -1,0 +1,26 @@
+pkgbase = freebasic-ng
+	pkgdesc = FreeBASIC-NG compiler
+	pkgver = 1.22.2
+	pkgrel = 1
+	url = https://github.com/metaneutrons/freebasic-ng
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	makedepends = libx11
+	makedepends = gpm
+	makedepends = libffi
+	depends = gcc
+	depends = binutils
+	depends = ncurses
+	conflicts = freebasic
+	conflicts = freebasic-ng-bin
+	options = !lto
+	options = staticlibs
+	source = freebasic-ng-1.22.2.tar.gz::https://github.com/metaneutrons/freebasic-ng/releases/download/v1.22.2/freebasic-ng-1.22.2-source.tar.gz
+	sha256sums = 5e244a93ab14ac4bc8a9989d383991788d61fbd58a8e5ab789bf585d1c304fff
+
+pkgname = freebasic-ng
