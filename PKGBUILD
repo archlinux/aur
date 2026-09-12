@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="End-to-end test runner for CLI tools"
 
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ _pkgsrc="${_appname}-${pkgver}"
 source=("${_pkgsrc}-checksums.txt::${_ghurl}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
-sha256sums=('77475906b07b0295186bb30edff3f347681ba42ce7e80bfa4b26d4c86167ce8d')
-sha256sums_x86_64=('d0b2fdeb459eca833e2ddf47fe9d49127cb320c35b1011edfcf98ca2b8b92edd')
-sha256sums_aarch64=('b71b6c13e4a8b8c76fe3cf16f183f0a305f4f9a33593e8665289d091bb926e0f')
+sha256sums=('75e4b3b7269be3913c12d6a24cd7465723680bd4666b75f58b069610d3a3765a')
+sha256sums_x86_64=('e90b5a87ab56719749df054b0186bcc318910e4d842250b3e041835377c14d00')
+sha256sums_aarch64=('e2e792588b5c72f6119fc37db436b9f87d6053f3e4e46b012dc0ce2d5be0525f')
 
 
 verify() {
