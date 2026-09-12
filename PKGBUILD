@@ -3,7 +3,7 @@
 _pkgauthor=unhappychoice
 _pkgname=splashboard
 pkgname=${_pkgname}-bin
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A customizable terminal splash screen with plugin-based data sources"
@@ -41,8 +41,8 @@ sha256sums=('16e5a239e6cb767747480dfd5707228219403b7ee0b02b9ea1b1f39f8819b1d7'
             'c4cda8d6a15ccfde4bcc8c852590eff6ef056dc29d94795b7fcc89446f289444'
             'e7966b37e08daa82ac8a128b032e13e1c5ce958e97d4dae54c9eec5640654434'
             'dde9f13f7d3e34437432a888e8ba5b330e8f88a47c03fd2e30130703aef92504')
-sha256sums_x86_64=('9d118bd3d072926706a9091a5c9803cecf8961a58c1801486d62f293e6867ae4')
-sha256sums_aarch64=('513881df2bac40356d01aa327f8a3371066fe152992210b3803970226d9363f4')
+sha256sums_x86_64=('d00fcf7c74e0f12f453eab5702e5d91957ed081154a5dc489bec9036e661bec7')
+sha256sums_aarch64=('3c56dac4ac01c714c2af4ddb5ccaf65d38c1dfa3196a87a31ca1ddb6d8031e31')
 
 
 package() {
