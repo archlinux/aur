@@ -1,4 +1,4 @@
-# Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
+# Maintainer: Evan Purkhiser <tmux-ai-titles.aur@evanpurkhiser.com>
 
 pkgname=tmux-ai-titles
 pkgver=0.3.1
