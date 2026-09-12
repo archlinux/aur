@@ -1,0 +1,23 @@
+pkgbase = zlib-ng-static
+	pkgdesc = zlib replacement with optimizations for next generation systems
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://github.com/zlib-ng/zlib-ng
+	arch = aarch64
+	arch = x86_64
+	license = Zlib
+	makedepends = musl
+	makedepends = gcc
+	makedepends = make
+	makedepends = gzip
+	options = staticlibs
+	source = https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.3.3/zlib-ng-2.3.3.tar.gz
+	sha256sums = f9c65aa9c852eb8255b636fd9f07ce1c406f061ec19a2e7d508b318ca0c907d1
+	b2sums = 36fed55807a98bb17edbb53b5b9456c3023dcf5aea9208b453d1cd187c56bba56a6818c3a14a39bf271a7f6bcee5203cc1e4f7e8d1961e965661a232afd0778f
+
+pkgname = zlib-ng-static
+	provides = zlib-ng-static
+
+pkgname = zlib-ng-compat-static
+	pkgdesc = zlib replacement with optimizations for next generation systems (zlib compat)
+	provides = zlib-static
