@@ -5,7 +5,7 @@
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 
 pkgname=ffdec-git
-pkgver=26.2.1.r9104.b0002c6
+pkgver=26.2.1.r9116.d065f9f
 pkgrel=1
 pkgdesc="Open Source Flash SWF decompiler and editor, git version"
 arch=('any')
@@ -33,7 +33,7 @@ b2sums=(
 
 pkgver() {
   cd ffdec
-  _tag="$(git tag --list 'version*' | sort -V | tail -1 | sed 's/^version//')"
+  local _tag="$(git tag --list 'version*' | sort -V | tail -1 | sed 's/^version//')"
   printf "%s.r%s.%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
@@ -54,6 +54,7 @@ check() {
 
 package() {
   cd ffdec
+  local _f
 
   install -Dm0644 "dist/ffdec.jar" -t "$pkgdir/usr/share/java/$pkgname"
   for _f in lib/*.jar; do
