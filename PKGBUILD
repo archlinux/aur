@@ -122,7 +122,7 @@ optdepends=(
   # APK works just as well and neither one comes from this package.
   'sober: a Roblox build for Cordial to run (Cordial ships none)'
 )
-conflicts=('cordial-git')
+conflicts=('cordial-git' 'cordial-bin')
 install="$pkgname.install"
 options=('!lto')
 source=(
