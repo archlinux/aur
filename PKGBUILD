@@ -1,7 +1,7 @@
 # Maintainer: Justin Kim <justin.joy.9to5@gmail.com>
 
 pkgname=wirelog
-pkgver=0.60.0
+pkgver=0.62.0
 pkgrel=1
 pkgdesc='Embedded-to-Enterprise Datalog Engine'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "arrow-nanoarrow-$_nanoarrow_commit.tar.gz::https://github.com/apache/arrow-nanoarrow/archive/$_nanoarrow_commit.tar.gz"
 )
 sha256sums=(
-    '0fee455e7eec03b1cab4bdab0e2ed0fa31056c63cf8e27bb855590a198e17321'
+    '5198abc52814e7ea1b0e2edadc257ce99c4cf95a7221911cd0720bf5c7e25a43'
     'ec0354e1bf231269b7ce58f958a7869088f4d502985042c1fa4dc4401b5f6c45'
 )
 
