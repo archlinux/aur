@@ -3,7 +3,7 @@
 pkgname=widic
 pkgver=0.2.2
 pkgrel=1
-pkgdesc="A Wiktionary viewer in your terminal. Definitions, Etymology Pronunciation and more."
+pkgdesc="A Wiktionary viewer in your terminal. Definitions, Etymology, Pronunciation and more."
 arch=('any')
 url="https://github.com/matezoltanfarkas/widic"
 license=('GPL-3.0-only')
