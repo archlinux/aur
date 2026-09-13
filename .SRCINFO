@@ -1,6 +1,6 @@
 pkgbase = nahimic-linux
 	pkgdesc = Nahimic speaker effects and equalizer for supported Linux laptops
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/wearzdk/nahimic-linux
 	install = nahimic-linux.install
@@ -16,6 +16,7 @@ pkgbase = nahimic-linux
 	depends = wine
 	depends = pipewire
 	depends = pipewire-pulse
+	depends = wireplumber>=0.5
 	depends = libpulse
 	depends = systemd
 	depends = hicolor-icon-theme
@@ -25,7 +26,7 @@ pkgbase = nahimic-linux
 	noextract = nahimic-runtime-settings.exe
 	options = !strip
 	options = !debug
-	source = nahimic-linux::git+https://github.com/wearzdk/nahimic-linux#tag=v0.2.0
+	source = nahimic-linux::git+https://github.com/wearzdk/nahimic-linux#tag=v0.3.0
 	source = nahimic-apo4-4.14.cab::https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2025/06/5038101c-bafc-45b6-b338-d086f6877059_8ba41f8fd185d004f674891c937eb6b815acb443.cab
 	source = nahimic-runtime-settings.exe::https://nahimic.helprace.com/resources/SdHjE1CwBkqCwL1qTng83XvmSgyUM3WU8bA3F21ZCfca-wMam1lcLqCrQgAIHtE1DyfpwdnFPjQ5DuRdOgpXLg%7E%7E/GenericNahimicRestoreTool.exe
 	source = nahimic-linux.install

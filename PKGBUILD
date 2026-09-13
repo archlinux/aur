@@ -1,12 +1,12 @@
 # Maintainer: wearzdk <hi@wearzdk.me>
 pkgname=nahimic-linux
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Nahimic speaker effects and equalizer for supported Linux laptops'
 arch=('x86_64')
 url='https://github.com/wearzdk/nahimic-linux'
 license=('MIT' 'LicenseRef-Nahimic')
-depends=('python' 'pyside6' 'wine' 'pipewire' 'pipewire-pulse' 'libpulse' 'systemd' 'hicolor-icon-theme' 'bash' 'glibc')
+depends=('python' 'pyside6' 'wine' 'pipewire' 'pipewire-pulse' 'wireplumber>=0.5' 'libpulse' 'systemd' 'hicolor-icon-theme' 'bash' 'glibc')
 makedepends=('mingw-w64-gcc' 'pkgconf' 'cabextract' 'git')
 install=nahimic-linux.install
 options=('!strip' '!debug')
