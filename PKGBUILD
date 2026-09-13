@@ -1,15 +1,16 @@
 # Maintainer: HttpAnimations
 pkgname=devinorium-server-git
 _pkgname=devinorium
-pkgver=0.72.1.r3.gc369ae0
+pkgver=0.73.0.r1.gbdea4d6
 pkgrel=1
 pkgdesc="Self-hosted web UI for AI coding agents - server (git build)"
 arch=('x86_64')
 url="https://gitlab.com/HttpAnimations/devinorium"
 license=('AGPL-3.0-only')
 options=('!lto')
-depends=('glibc' 'gcc-libs')
-makedepends=('git' 'cargo' 'clang' 'cmake' 'ninja' 'pkgconf')
+depends=('glibc' 'gcc-libs' 'git')
+makedepends=('cargo' 'git' 'unzip' 'zip' 'curl')
+optdepends=('openssh: clone repositories over SSH')
 provides=('devinorium-server')
 conflicts=('devinorium-server')
 backup=('etc/devinorium/devinorium.env')
@@ -27,8 +28,13 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+  local ver
+  ver=$(git describe --long --tags 2>/dev/null || true)
+  if [ -n "$ver" ]; then
+    printf '%s' "$ver" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  else
     printf '0.0.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
 }
 
 build() {
