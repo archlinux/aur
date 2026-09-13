@@ -1,115 +1,3 @@
-diff --git a/Makefile b/Makefile
-index e684108..955085c 100644
---- a/Makefile
-+++ b/Makefile
-@@ -29,7 +29,9 @@ PROTO_SRCS  := $(patsubst %,$(GEN)/%-protocol.c,$(PROTO_NAMES))
- PROTO_OBJS  := $(PROTO_SRCS:.c=.o)
- 
- DEPS    := wayland-client xkbcommon freerdp3 freerdp-server3 winpr3 libpipewire-0.3
--CFLAGS  += -std=c11 -Wall -Wextra -O2 -I$(GEN) -Isrc $(shell pkg-config --cflags $(DEPS))
-+CFLAGS  ?= -O2
-+CFLAGS  += -std=c11 -Wall -Wextra
-+CPPFLAGS += -I$(GEN) -Isrc $(shell pkg-config --cflags $(DEPS))
- LDLIBS  += $(shell pkg-config --libs $(DEPS))
- 
- .PHONY: all clean protocols
-@@ -41,16 +43,16 @@ protocols: $(PROTO_HDRS) $(PROTO_SRCS)
- # has no way to know that from the .c alone.
- $(BUILD)/%.o: src/%.c | $(PROTO_HDRS)
- 	@mkdir -p $(@D)
--	$(CC) $(CFLAGS) -c $< -o $@
-+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
- 
- $(BUILD)/wayrdp-probe: $(BUILD)/probe.o $(BUILD)/wayland.o $(PROTO_OBJS)
--	$(CC) $^ $(LDLIBS) -o $@
-+	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
- 
- $(BUILD)/wayrdp: $(BUILD)/main.o $(BUILD)/rdp.o $(BUILD)/config.o $(BUILD)/audio.o $(BUILD)/wayland.o $(PROTO_OBJS)
--	$(CC) $^ $(LDLIBS) -o $@
-+	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
- 
- $(GEN)/%-protocol.o: $(GEN)/%-protocol.c
--	$(CC) $(CFLAGS) -c $< -o $@
-+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
- 
- define proto_rule
- $(GEN)/$(1)-client-protocol.h: $(2)
-diff --git a/README.md b/README.md
-index 3f7f5d7..334373b 100644
---- a/README.md
-+++ b/README.md
-@@ -4,10 +4,9 @@
- shares the desktop session that is already running: an RDP client sees the same
- screen as the local user and can control it with a remote keyboard and pointer.
- 
--The project was originally written for wfkit, a Wayfire-based desktop, but the
--server is not tied to Wayfire APIs. It uses standard Wayland and wlroots
--protocols for capture and input, FreeRDP 3 for the RDP transport and RemoteFX
--encoding, and PipeWire for bidirectional audio.
-+The server uses standard Wayland and wlroots protocols for capture and input,
-+FreeRDP 3 for the RDP transport and RemoteFX encoding, and PipeWire for
-+bidirectional audio. It is not tied to a particular desktop shell.
- 
- > [!IMPORTANT]
- > `wayrdp` is an early, working implementation rather than a security-audited
-@@ -60,7 +59,6 @@ The following are not implemented yet:
- - concurrent clients;
- - desktop scaling or a client-selected resolution;
- - per-window capture;
--- packaging and a systemd unit in this repository;
- - an automated test suite.
- 
- The first `wl_output` announced by the compositor is served at its native
-@@ -174,6 +172,25 @@ Linux:
- On another distribution, install equivalent development packages and adjust
- `STAGING` and `WLR` in the Makefile if those files live elsewhere.
- 
-+## Arch Linux package
-+
-+An AUR package definition named `wayrdp` is available in the root
-+[`PKGBUILD`](PKGBUILD). To build and install it locally from the project root:
-+
-+```bash
-+sudo pacman -S --needed base-devel
-+makepkg --syncdeps --install
-+```
-+
-+It installs both `wayrdp` and `wayrdp-probe` under `/usr/bin`, a
-+`wayrdp.service` user unit, and documentation and licenses under `/usr/share`.
-+The package currently uses a fixed upstream commit and the supplied patch;
-+additional local source edits are not included in this build. In the source
-+checkout, `makepkg` uses `build/makepkg` to protect the project's `src/` directory.
-+
-+After installation, create the [per-user configuration](#configuration) and run
-+`wayrdp --check` inside the Wayland session before starting the server.
-+
- ## Building on Arch Linux
- 
- Install the toolchain and dependencies:
-@@ -330,6 +347,23 @@ one long-lived compositor.
- Stop the server with `Ctrl+C`, `SIGINT` or `SIGTERM`. After a client disconnects,
- the listener remains available for the next client.
- 
-+The Arch package also includes a systemd user unit. After configuring the server,
-+import the session environment and enable it from a terminal in that session:
-+
-+```bash
-+systemctl --user import-environment WAYLAND_DISPLAY XDG_RUNTIME_DIR
-+systemctl --user enable --now wayrdp.service
-+```
-+
-+Autostart uses `graphical-session.target`. If the compositor does not activate
-+that target, its session startup must import the display environment and start
-+the enabled unit.
-+
-+An existing `~/.config/systemd/user/wayrdp.service` overrides the packaged unit.
-+If it hardcodes `/usr/local/bin/wayrdp`, change it to `ExecStart=wayrdp` and run
-+`systemctl --user daemon-reload`. Local installations under `/usr/local/bin`
-+take precedence over the packaged binary under `/usr/bin`.
-+
- Connect with an RDP client to the host and configured port, supply the configured
- username and password, and verify the self-signed certificate fingerprint on
- the first connection. The client window is resized to the selected output's
 diff --git a/src/main.c b/src/main.c
 index 00a884a..5a2f81e 100644
 --- a/src/main.c
@@ -136,7 +24,7 @@ index 00a884a..5a2f81e 100644
          wr_close(wayland);
          return 1;
 diff --git a/src/rdp.c b/src/rdp.c
-index 6604691..ea0e6c7 100644
+index 6604691..0fa7590 100644
 --- a/src/rdp.c
 +++ b/src/rdp.c
 @@ -268,6 +268,9 @@ static bool send_frame(struct wr_server *s, const struct wr_frame *f, bool full)
@@ -149,8 +37,30 @@ index 6604691..ea0e6c7 100644
      }
  
      RFX_RECT rects[WR_MAX_DAMAGE];
+@@ -915,7 +918,11 @@ bool wr_server_run(struct wr_server *s, const volatile bool *running) {
+                           s->vcm, s->peer_activated))
+             drop_peer(s);
+ 
+-        wr_dispatch_pending(s->wayland);
++        // A dispatch error means the compositor connection is gone. Stop here so
++        // systemd restarts the unit against the current compositor, instead of
++        // polling a dead socket forever while clients see a blank screen.
++        if (!wr_dispatch_pending(s->wayland))
++            return false;
+ 
+         if (s->peer_activated) {
+             open_microphone(s);
+@@ -925,6 +932,8 @@ bool wr_server_run(struct wr_server *s, const volatile bool *running) {
+             const struct wr_frame *f = wr_capture_frame(s->wayland, 16);
+             if (f && !send_frame(s, f, false))
+                 drop_peer(s);
++            if (wr_fatal(s->wayland))
++                return false;
+         }
+     }
+     return true;
 diff --git a/src/wayland.c b/src/wayland.c
-index 083d907..fc56231 100644
+index 083d907..84b169c 100644
 --- a/src/wayland.c
 +++ b/src/wayland.c
 @@ -31,6 +31,7 @@ struct wr_wayland {
@@ -169,7 +79,33 @@ index 083d907..fc56231 100644
      struct zwlr_virtual_pointer_v1 *pointer;
      struct zwp_virtual_keyboard_v1 *keyboard;
  
-@@ -222,8 +224,10 @@ static void on_global(void *data, struct wl_registry *registry, uint32_t name,
+@@ -47,6 +49,11 @@ struct wr_wayland {
+     int bpp;
+     bool have_size, have_format, session_done, session_stopped;
+ 
++    // Earliest monotonic time a failed capture rebuild may be attempted again.
++    // Without it the frame loop retries every call, which is a busy loop when
++    // the compositor has gone away rather than merely stopped the session.
++    int64_t reopen_retry_at_ms;
++
+     // The capture buffer is allocated once and reused: a new wl_buffer per
+     // frame would mean a new pool and an mmap per frame at 60Hz.
+     struct wl_buffer *buffer;
+@@ -101,10 +108,11 @@ void wr_read_rgb(const uint8_t *p, uint32_t format, uint8_t out[3]) {
+     }
+ }
+ 
+-static uint32_t now_ms(void) {
++// Monotonic milliseconds; only differences are meaningful.
++static int64_t now_ms(void) {
+     struct timespec ts;
+     clock_gettime(CLOCK_MONOTONIC, &ts);
+-    return (uint32_t)(ts.tv_sec * 1000 + ts.tv_nsec / 1000000);
++    return (int64_t)ts.tv_sec * 1000 + ts.tv_nsec / 1000000;
+ }
+ 
+ static int anonymous_shm(size_t size) {
+@@ -222,8 +230,10 @@ static void on_global(void *data, struct wl_registry *registry, uint32_t name,
          w->shm = wl_registry_bind(registry, name, &wl_shm_interface, 1);
      else if (!strcmp(interface, wl_seat_interface.name) && !w->seat)
          w->seat = wl_registry_bind(registry, name, &wl_seat_interface, 1);
@@ -181,7 +117,7 @@ index 083d907..fc56231 100644
      else if (!strcmp(interface, ext_output_image_capture_source_manager_v1_interface.name))
          w->sources = wl_registry_bind(registry, name,
              &ext_output_image_capture_source_manager_v1_interface, 1);
-@@ -241,8 +245,22 @@ static void on_global(void *data, struct wl_registry *registry, uint32_t name,
+@@ -241,8 +251,22 @@ static void on_global(void *data, struct wl_registry *registry, uint32_t name,
              &zwp_virtual_keyboard_manager_v1_interface, 1);
  }
  
@@ -206,7 +142,7 @@ index 083d907..fc56231 100644
  }
  
  static const struct wl_registry_listener registry_listener = {
-@@ -328,7 +346,7 @@ fail:
+@@ -328,7 +352,7 @@ fail:
  
  void wr_close(struct wr_wayland *w) {
      if (!w) return;
@@ -215,7 +151,20 @@ index 083d907..fc56231 100644
      if (w->display) wl_display_disconnect(w->display);
      free(w);
  }
-@@ -344,18 +362,43 @@ uint32_t wr_height(const struct wr_wayland *w) { return w->height; }
+@@ -339,23 +363,56 @@ bool wr_dispatch_pending(struct wr_wayland *w) {
+     return wl_display_dispatch_pending(w->display) >= 0;
+ }
+ 
++// True once the Wayland connection is broken for good. A dead socket cannot be
++// recovered on this display object, so the caller should stop and let its
++// supervisor start a fresh process that reconnects to whatever compositor is
++// current -- the alternative is a process that keeps serving nothing.
++bool wr_fatal(const struct wr_wayland *w) {
++    return wl_display_get_error(w->display) != 0;
++}
++
+ uint32_t wr_width(const struct wr_wayland *w)  { return w->width; }
+ uint32_t wr_height(const struct wr_wayland *w) { return w->height; }
  
  // --- capture ---------------------------------------------------------------
  
@@ -263,7 +212,7 @@ index 083d907..fc56231 100644
      ext_image_copy_capture_session_v1_add_listener(w->session, &session_listener, w);
  
      if (!pump(w, &w->session_done, &w->session_stopped, 5000)) {
-@@ -374,7 +417,7 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
+@@ -374,7 +431,7 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
      if (fd < 0) { *error = "could not allocate shared memory"; return false; }
  
      w->pixels = mmap(NULL, w->size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
@@ -272,7 +221,7 @@ index 083d907..fc56231 100644
  
      struct wl_shm_pool *pool = wl_shm_create_pool(w->shm, fd, (int32_t)w->size);
      w->buffer = wl_shm_pool_create_buffer(pool, 0, (int32_t)w->width, (int32_t)w->height,
-@@ -391,7 +434,32 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
+@@ -391,7 +448,39 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
      return true;
  }
  
@@ -288,24 +237,31 @@ index 083d907..fc56231 100644
 +    capture_teardown(w);
 +    if (!start_capture_session(w, &error)) {
 +        capture_teardown(w);
++        // A rebuild can fail for a moment (a locked session, an output being
++        // reconfigured). Wait before the next attempt so the frame loop does
++        // not spin, and report once per attempt rather than once per frame.
++        w->reopen_retry_at_ms = now_ms() + 500;
 +        fprintf(stderr, "wayrdp: capture session not restarted: %s\n", error);
 +        return false;
 +    }
++    w->reopen_retry_at_ms = 0;
 +    fprintf(stderr, "wayrdp: capture session restarted, %ux%u\n", w->width, w->height);
 +    return true;
 +}
 +
  const struct wr_frame *wr_capture_frame(struct wr_wayland *w, int timeout_ms) {
 +    // A stopped session or a replaced output leaves the old capture dead. Rebuild
-+    // it here instead of polling a session that will never answer again.
++    // it here instead of polling a session that will never answer again. A failed
++    // rebuild sets a short cooldown so the next frame call cannot hot-loop.
 +    if (!w->session || w->session_stopped) {
++        if (now_ms() < w->reopen_retry_at_ms) return NULL;
 +        if (!capture_reopen(w)) return NULL;
 +    }
 +
      w->frame_ready = w->frame_failed = false;
      w->frame.damage_count = 0;
      w->frame.damage_overflowed = false;
-@@ -460,7 +528,7 @@ static const struct zwlr_screencopy_frame_v1_listener now_listener = {
+@@ -460,7 +549,7 @@ static const struct zwlr_screencopy_frame_v1_listener now_listener = {
  };
  
  const struct wr_frame *wr_capture_now(struct wr_wayland *w, int timeout_ms) {
@@ -314,3 +270,17 @@ index 083d907..fc56231 100644
  
      w->now_ready = w->now_failed = w->now_described = false;
  
+diff --git a/src/wayland.h b/src/wayland.h
+index 1f1b383..97586fc 100644
+--- a/src/wayland.h
++++ b/src/wayland.h
+@@ -48,6 +48,9 @@ int wr_fd(const struct wr_wayland *w);
+ bool wr_flush(struct wr_wayland *w);
+ bool wr_dispatch_pending(struct wr_wayland *w);
+ 
++// The Wayland connection is broken beyond recovery; stop and reconnect.
++bool wr_fatal(const struct wr_wayland *w);
++
+ // --- capture ---------------------------------------------------------------
+ 
+ // Negotiates size and format. Fails if the compositor offers no format this
