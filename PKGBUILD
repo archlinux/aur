@@ -32,8 +32,8 @@ pkgname=(
 # fast-optimized to official gcc. Add it again when it's available.
   # libhwasan-fast-optimized
 
-pkgver=16.1.0
-pkgrel=2
+pkgver=16.2.0
+pkgrel=1
 pkgdesc='The GNU Compiler Collection optimized with -O3 and local cpu tuning'
 arch=(x86_64)
 license=(
@@ -75,8 +75,8 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62 # Jakub Jelinek <jakub@redhat.com>
 )
 
-sha256sums=('50efb4d94c3397aff3b0d61a5abd748b4dd31d9d3f2ab7be05b171d36a510f79'
-	    '33a851c045ea2ef6f580d82b2abfb1dc75d8b270727800028ca5f40c3b4a4246'
+sha256sums=('e6738e29597f733270731aa90600f37ffdc045079dfc27ec7e8192cc81085c3e'
+	    '43d73202dcede15d31001c6ba0d28723014ef57e4dc815631772daadbe23bcd2'
             '7b09ec947f90b98315397af675369a1e3dfc527fa70013062e6e85c4be0275ab'
             '44ea973558842f3f4bd666bdaf6e810fd7b7c7bd36b5cc4c69f93d2cd0124fc7'
 )
