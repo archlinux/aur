@@ -2,7 +2,7 @@
 pkgname=audacity4-nocloud-git
 _pkgname=audacity
 pkgver=r0
-pkgrel=2
+pkgrel=3
 pkgdesc="Audacity 4, the next generation of the popular multi-track audio editor (no cloud integration)"
 arch=('x86_64')
 url="https://github.com/audacity/audacity"
@@ -23,6 +23,14 @@ depends=(
 	wavpack
 	libsndfile
 	portaudio
+	sqlite
+	twolame
+	libsoxr
+	soundtouch
+	libsbsms
+	lilv
+	suil
+	zix
 	wxwidgets-common
 	zlib
 	libpng
@@ -42,6 +50,9 @@ makedepends=(
 	qt6-shadertools
 	utf8cpp
 	vulkan-headers
+	vst3sdk
+	rapidjson
+	lv2
 )
 provides=('audacity4')
 conflicts=('audacity4')
@@ -74,6 +85,7 @@ build() {
 		-D CMAKE_BUILD_TYPE=Release \
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D EXTDEPS_OVERRIDE_ALL=SYSTEM \
+		-D WX_CONFIG=/usr/bin/wx-config-base \
 		-D MUSE_APP_INSTALL_SUFFIX=4 \
 		-D MUSE_ENABLE_UNIT_TESTS=OFF \
 		-D MUSE_MODULE_DIAGNOSTICS_CRASHPAD_CLIENT=OFF \
