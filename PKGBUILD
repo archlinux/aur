@@ -3,7 +3,7 @@
 _gitauthor=nao1215
 _gitname=onionscan
 _appname=${_gitname}
-pkgname=${_appname}-bin
+pkgname=${_gitname}-bin
 pkgdesc="Tool to scan onion services"
 
 pkgver=0.2.3
@@ -20,11 +20,11 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${pkgname%-bin}")
 
 options=('!strip')
 
-_pkgsrc="${_appname}-${pkgver}"
+_pkgsrc="${_gitname}-${pkgver}"
 
 source=("${_pkgsrc}-checksums.txt::${_ghurl}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
