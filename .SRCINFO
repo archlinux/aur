@@ -8,6 +8,7 @@ pkgbase = jobman-bin
 	arch = aarch64
 	license = MIT
 	optdepends = jobman-diagnose
+	optdepends = jobman-control
 	provides = jobman
 	provides = jobman-agent
 	conflicts = jobman

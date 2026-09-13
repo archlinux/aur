@@ -22,7 +22,7 @@ license=('MIT')
 provides=("${_appname}" "${_appname}-agent")
 conflicts=("${pkgname%-bin}")
 
-optdepends=('jobman-diagnose')
+optdepends=('jobman-diagnose' 'jobman-control')
 
 options=('!strip')
 
@@ -55,6 +55,8 @@ package() {
 	for man in docs/manpage/*.1; do
 		install -Dm644 ${man} "${pkgdir}/usr/share/man/man1/$(basename ${man})"
 	done
+
+	install -Dm644 assets/*svg -t "${pkgdir}/usr/share/${_appname}/"
 
 	install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -Dm644 docs/*.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
