@@ -5,9 +5,9 @@
 # Contributor: DilithiumNitrate
 
 pkgname="srb2-legacy"
-pkgver=2.1.29R1
+pkgver=2.1.30
 _dataver=2.1.25
-pkgrel=2
+pkgrel=1
 pkgdesc='Updated fork of Sonic Robo Blast 2 2.1.25'
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL-2.0-or-later')
@@ -18,13 +18,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=(!strip !debug)
 source=("https://github.com/srb2-preservation/srb2-legacy/archive/SRB2_release_${pkgver}.zip")
-sha256sums=('8d432fe47df3c7f11feabaa82f6bbd65aea4655265f686513d7adff0f87030a1')
-
-prepare() {
-  # Update to 2.1.30's default WAD directory
-  cd srb2-legacy-SRB2_release_$pkgver
-  sed -i 's/SRB2legacy/srb2-legacy/g' src/sdl/i_system.c
-}
+sha256sums=('fb25a7bf2956210eab1c63c843a6eb5af6fa90ee6bb19f3409a04ab412218c43')
 
 build() {
   cd srb2-legacy-SRB2_release_$pkgver/src
