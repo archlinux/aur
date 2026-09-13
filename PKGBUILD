@@ -10,7 +10,7 @@
 # "unused"/"unassigned" heuristics don't apply to a PKGBUILD.
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=agent-glovebox
-pkgver=0.60.0
+pkgver=0.61.0
 pkgrel=1
 pkgdesc="Hardware-isolated, allowlist-firewalled sandbox for running Claude Code"
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
 
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5a39abc5351671ae6fc5b9b97d3422071176074d20bb691eb9cb14c3906d5377')
+sha256sums=('7003d37c03dfcf491d75ea3eca88a52b05646b7655c7af81248069c47c86076b')
 
 # Owner this release was cut from. Synced from config/packaging.json by
 # scripts/gen-packaging.mjs (shared with the Homebrew formula and nFPM manifest)
