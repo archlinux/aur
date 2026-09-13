@@ -1,5 +1,5 @@
 pkgbase = shelly-cli
-	pkgver = 3.1.3
+	pkgver = 3.1.4
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgname = shelly-cli
 	depends = diffutils
 	depends = git
 	depends = glibc
+	depends = gnupg
 	depends = libarchive
 	depends = pacman
 	depends = sudo
@@ -41,9 +42,9 @@ pkgname = shelly-cli
 
 pkgname = shelly-cli-flatpak-backend
 	pkgdesc = Optional native Flatpak backend for the Shelly CLI beta
-	depends = shelly-cli=3.1.3-1
+	depends = shelly-cli=3.1.4-1
 	depends = flatpak
-	provides = shelly-flatpak-backend=3.1.3
+	provides = shelly-flatpak-backend=3.1.4
 	conflicts = shelly-flatpak-backend
 	conflicts = shelly-flatpak-backend-git
 	conflicts = shelly-flatpak-backend-bin
