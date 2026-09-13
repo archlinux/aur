@@ -1,0 +1,11 @@
+post_install() {
+  post_upgrade "$@"
+}
+
+post_upgrade() {
+  printf "\n"
+  printf "\e[1;33m==>\e[0m \e[1mNotice regarding hyprpm:\e[0m\n"
+  printf "    \e[1;36mhyprpm\e[0m has been split out of \e[1mhyprland-git\e[0m and moved into its own package.\n"
+  printf "    If you use Hyprland plugins, please install \e[1;32mhyprpm-git\e[0m separately:\n"
+  printf "\n"
+}
