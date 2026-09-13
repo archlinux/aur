@@ -10,7 +10,7 @@ pkgbase = ganjoorand
 	depends = gtk4
 	depends = libadwaita
 	depends = python-gobject
-	source = ganjoorand::git+https://framagit.org/RZHSSNZDH/gganjoorand.git#tag=0.0.6
+	source = ganjoorand::git+https://framagit.org/RZHSSNZDH/gganjoorand.git
 	sha256sums = SKIP
 
 pkgname = ganjoorand
