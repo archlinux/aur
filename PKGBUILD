@@ -5,7 +5,7 @@ _pkgname=seristack
 pkgname=${_pkgname}-bin
 pkgdesc="A lightweight automation engine designed to bridge the gap between local task execution and remote triggers"
 
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('433b51e983d2bba090c8acbd97561d3de08bd6fad4eced7197cd6b3f47ac335d')
-sha256sums_aarch64=('8cd64a33e4a6ff1e171622e476a6eba998250693716647875ac346e9de5fdb8b')
+sha256sums_x86_64=('f993b3d006fe660deef186fe134efd27e4819ad04287efc9987d8a4b9f5952fd')
+sha256sums_aarch64=('849ed1df2b242cd2afe89f3e609f73d91d960a64a82da099268ac00aa66ab40f')
 
 
 package() {
