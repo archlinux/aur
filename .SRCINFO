@@ -1,6 +1,6 @@
 pkgbase = python-pex
 	pkgdesc = Generates executable Python environments
-	pkgver = 2.101.6
+	pkgver = 2.102.0
 	pkgrel = 1
 	url = https://docs.pex-tool.org/
 	changelog = CHANGES.md
@@ -15,8 +15,8 @@ pkgbase = python-pex
 	depends = python
 	provides = pex
 	replaces = pex
-	source = python-pex::git+https://github.com/pex-tool/pex#tag=v2.101.6?signed
+	source = python-pex::git+https://github.com/pex-tool/pex#tag=v2.102.0?signed
 	validpgpkeys = A1FE765B15233EAD18FA6ABB93E55CB567B5C626
-	sha256sums = 83d2877a898573a52131c3dc50c199008d707f61d82eaea65960ba94d37cdb2f
+	sha256sums = 89cdb5019470dde6d20ff56be76aee0af85fb66dcec9624056f634ac39297fe9
 
 pkgname = python-pex
