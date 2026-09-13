@@ -9,7 +9,7 @@ _pkgname='semchunk'
 _commit='dccb2f7fc2248e6266d6cbb1c0d986a3f192c3fe'
 pkgname="python-${_pkgname}"
 pkgver=4.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Python library for splitting text into semantically meaningful chunks'
 arch=('any')
 url="https://github.com/isaacus-dev/${_pkgname}"
@@ -57,6 +57,6 @@ check() {
 
 package() {
 	cd -- "${_srcdir}" || return 1
-	python -m installer --destdir="${pkgdir}" --compile-bytecode=2 dist/*.whl
+	python -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode=2 dist/*.whl
 	install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
 }
