@@ -1,6 +1,6 @@
 pkgbase = ganjoorand
 	pkgdesc = A GTK 4 client for a random poem from Ganjoor
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://framagit.org/RZHSSNZDH/gganjoorand
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ganjoorand
 	depends = gtk4
 	depends = libadwaita
 	depends = python-gobject
-	source = ganjoorand::git+https://framagit.org/RZHSSNZDH/gganjoorand.git#tag=0.0.5
+	source = ganjoorand::git+https://framagit.org/RZHSSNZDH/gganjoorand.git#tag=0.0.6
 	sha256sums = SKIP
 
 pkgname = ganjoorand

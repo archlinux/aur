@@ -1,6 +1,6 @@
 # Maintainer: رضا حسین‌زاده <rezahosseinzadeh@riseup.net>
 pkgname=ganjoorand
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="A GTK 4 client for a random poem from Ganjoor"
 arch=('any')
