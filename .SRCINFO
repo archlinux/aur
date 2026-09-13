@@ -1,7 +1,7 @@
 pkgbase = python-extract-msg
 	pkgdesc = Extracts emails and attachments saved in Microsoft Outlook's .msg files
 	pkgver = 0.56.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TeamMsgExtractor/msg-extractor
 	arch = any
 	license = GPL-3.0-or-later

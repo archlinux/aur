@@ -5,7 +5,7 @@ _pkgname='extract-msg'
 _repo='msg-extractor'
 pkgname="python-${_pkgname}"
 pkgver=0.56.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extracts emails and attachments saved in Microsoft Outlook's .msg files"
 arch=('any')
 url="https://github.com/TeamMsgExtractor/${_repo}"
@@ -71,6 +71,6 @@ check() {
 
 package() {
 	cd -- "${_repo}-${pkgver}" || return 1
-	python -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
+	python -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode 2 dist/*.whl
 	install -Dm644 -- LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
