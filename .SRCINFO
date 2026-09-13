@@ -1,6 +1,6 @@
 pkgbase = cassis-git
 	pkgdesc = Fast and powerful music player with a Rust core and thin frontends (git version)
-	pkgver = 39.5501d1e.rolling
+	pkgver = 41.b06a04c.0.1.1
 	pkgrel = 1
 	url = https://git.disroot.org/trougnouf/cassis
 	arch = x86_64

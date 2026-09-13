@@ -1,7 +1,7 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@disroot.org>
 pkgname=cassis-git
 _pkgname=cassis
-pkgver=39.5501d1e.rolling
+pkgver=41.b06a04c.0.1.1
 pkgrel=1
 pkgdesc="Fast and powerful music player with a Rust core and thin frontends (git version)"
 arch=('x86_64')
@@ -26,7 +26,12 @@ pkgver() {
   local commit_hash=$(git rev-parse --short HEAD)
   local commit_count=$(git rev-list --count HEAD)
   local latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "rolling")
-  echo "$commit_count.$commit_hash.${latest_tag#v}"
+  # Strip leading package-name prefixes (e.g. cassis-core-v0.1.1 -> 0.1.1)
+  # and sanitize characters that makepkg forbids in pkgver.
+  latest_tag="${latest_tag##*-v}"
+  latest_tag="${latest_tag#v}"
+  latest_tag="${latest_tag//[-\/]/.}"
+  echo "$commit_count.$commit_hash.$latest_tag"
 }
 
 build() {
