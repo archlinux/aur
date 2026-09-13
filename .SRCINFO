@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-mawaqit-prayer-times
 	pkgdesc = Plasma 6 widget showing prayer times from your mosque on mawaqit.net
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/medaminezghal/plasma6-applets-mawaqit-prayer-times
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = plasma6-applets-mawaqit-prayer-times
 	depends = plasma-workspace
 	optdepends = qt6-positioning: GPS-accurate location detection via GeoClue
 	optdepends = geoclue: location service backend for qt6-positioning
-	source = https://github.com/medaminezghal/plasma6-applets-mawaqit-prayer-times/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = f7ba14f56a1029eac2f2d7cc39d6ff90eee5b88ccde3516452eb2d39e253e81e
+	source = https://github.com/medaminezghal/plasma6-applets-mawaqit-prayer-times/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 9dc323c07315628bded08c3880985cb1eb34f976d0fd097921347c2391679e47
 
 pkgname = plasma6-applets-mawaqit-prayer-times
