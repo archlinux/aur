@@ -1,0 +1,31 @@
+post_install() {
+    # Initialize existing desktop sessions; future sessions use XDG autostart.
+    local bus uid user
+    for bus in /run/user/[0-9]*/bus; do
+        [[ -S "$bus" ]] || continue
+        uid=${bus#/run/user/}; uid=${uid%/bus}
+        (( uid >= 1000 )) || continue
+        user=$(getent passwd "$uid" | cut -d: -f1)
+        [[ -n "$user" ]] || continue
+        runuser -u "$user" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+            DBUS_SESSION_BUS_ADDRESS="unix:path=$bus" \
+            /usr/bin/nahimic --activate || \
+            echo "Nahimic: open the application to see the setup error."
+    done
+}
+post_upgrade() {
+    post_install
+}
+pre_remove() {
+    local bus uid user
+    for bus in /run/user/[0-9]*/bus; do
+        [[ -S "$bus" ]] || continue
+        uid=${bus#/run/user/}; uid=${uid%/bus}
+        (( uid >= 1000 )) || continue
+        user=$(getent passwd "$uid" | cut -d: -f1)
+        [[ -n "$user" ]] || continue
+        runuser -u "$user" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+            DBUS_SESSION_BUS_ADDRESS="unix:path=$bus" \
+            systemctl --user disable --now nahimic.service
+    done
+}

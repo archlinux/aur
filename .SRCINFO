@@ -1,0 +1,37 @@
+pkgbase = nahimic-linux
+	pkgdesc = Nahimic speaker effects and equalizer for supported Linux laptops
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wearzdk/nahimic-linux
+	install = nahimic-linux.install
+	arch = x86_64
+	license = MIT
+	license = LicenseRef-Nahimic
+	makedepends = mingw-w64-gcc
+	makedepends = pkgconf
+	makedepends = cabextract
+	makedepends = git
+	depends = python
+	depends = pyside6
+	depends = wine
+	depends = pipewire
+	depends = pipewire-pulse
+	depends = libpulse
+	depends = systemd
+	depends = hicolor-icon-theme
+	depends = bash
+	depends = glibc
+	noextract = nahimic-apo4-4.14.cab
+	noextract = nahimic-runtime-settings.exe
+	options = !strip
+	options = !debug
+	source = nahimic-linux::git+https://github.com/wearzdk/nahimic-linux#tag=v0.1.0
+	source = nahimic-apo4-4.14.cab::https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2025/06/5038101c-bafc-45b6-b338-d086f6877059_8ba41f8fd185d004f674891c937eb6b815acb443.cab
+	source = nahimic-runtime-settings.exe::https://nahimic.helprace.com/resources/SdHjE1CwBkqCwL1qTng83XvmSgyUM3WU8bA3F21ZCfca-wMam1lcLqCrQgAIHtE1DyfpwdnFPjQ5DuRdOgpXLg%7E%7E/GenericNahimicRestoreTool.exe
+	source = nahimic-linux.install
+	sha256sums = SKIP
+	sha256sums = f3b1aae44826f85045cff8e085367dd8b48ffb3510e074adf552cc8eafbf8bde
+	sha256sums = 5f9c4d9eda54b7f946e331740354f01c043f25408d7053b4c23327c1b5b0a74a
+	sha256sums = f8206f52fd53c647e8ab1707545d5d977a2dd1495ba76b1f24abdb4faf35ce6e
+
+pkgname = nahimic-linux
