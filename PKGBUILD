@@ -2,7 +2,7 @@
 
 pkgname=rockboxd-bin
 _pkgname=rockboxd
-pkgver=2026.09.10
+pkgver=2026.09.13
 pkgrel=1
 pkgdesc="A modern, network-enabled music player platform built on Rockbox technology (prebuilt binaries)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ replaces=('rockbox-zig-bin')
 options=('!strip' '!debug')
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/rockbox_${pkgver}_amd64-linux.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/$pkgver/rockbox_${pkgver}_aarch64-linux.tar.gz")
-sha256sums_x86_64=('d4c7231da00e98680dd8f1ae5e1fe359dc19839124f5c658669a1b576760f274')
-sha256sums_aarch64=('946858a8d84b8bf74c175b4810c95ad9ecc5a3c8c320189d52d2509b5a1290d7')
+sha256sums_x86_64=('22052e98906c63acd045c853a9304c9ca5dccdd37aa7627369766cff2473597d')
+sha256sums_aarch64=('6b3c7a48593219e7fc25a1d7deeb9cac2540b998d1febe17d3ec9b732b7e9c22')
 
 prepare() {
   # Upstream ships rockboxd with a leftover build-tree RUNPATH (../target/release)
