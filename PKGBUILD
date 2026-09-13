@@ -4,8 +4,8 @@ pkgname=snapdog-client
 # prerelease identifier, e.g. "0.27.5-test1"); it names the GitHub release
 # assets. pkgver must never carry that suffix or its hyphen (Arch policy), so
 # it always holds just the release core.
-_tag=0.27.6
-pkgver=0.27.6
+_tag=0.27.8
+pkgver=0.27.8
 pkgrel=1
 pkgdesc="SnapDog multiroom audio client with F32+LZ4 codec, parametric EQ, and encryption"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source=(
 sha256sums=('2230284816739ff4bc27ec66b18992e5fdc3e805347c14b6fbf9d370f713f6f6' 'e7f1d97793d9c67c1c019a89661dc87a539c6c5ae30fb46f5f5828beb53749e6')
 source_x86_64=("snapdog-v${_tag}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/SnapDogRocks/snapdog/releases/download/v${_tag}/snapdog-v${_tag}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("snapdog-v${_tag}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/SnapDogRocks/snapdog/releases/download/v${_tag}/snapdog-v${_tag}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('9e528337a92672851e3e4ea6d60dc1b4c8c362c6a75d26dff0c8dba931b0c263')
-sha256sums_aarch64=('ccfa87f8c76127fc85c12f11dd2cee6e267738cd23c3a87e313478585b60778e')
+sha256sums_x86_64=('a24c913338b6c91056d8217f4179607ba52867039365b032a242081b31cdbe60')
+sha256sums_aarch64=('2e596b33316b4be0687b6d96729e6ca2a82e1d5f7199c4a2b10778c598e67b00')
 
 package() {
   cd "snapdog-v${_tag}-${CARCH}-unknown-linux-gnu"
