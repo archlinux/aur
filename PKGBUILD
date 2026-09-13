@@ -8,7 +8,7 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler-git
-pkgver=2026.28rc1.r2.g401b7f8
+pkgver=2026.38rc1.r0.g0b38f7d
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) compiler (git version)'
 arch=('x86_64')
@@ -105,9 +105,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '6aea796acf3bbd3091dfeecbebfdbed1bd6023d343f49834c1d83fbb4a1d3eb8'
-            'c543abbee16c972e9f72158ac220484b4c82bdc22ad4a97edc893c8d3702e68c'
-            '548f9bc92d942279873d807e3b49f823c657496e2d35cdcffb29365921901de7'
+            '8d8f4b46ab469fe5a3a19fd35b4467c690ea7e1dc2941b179420b89eef893a0a'
+            '6b3e210a55f403bff07d7aa43dd38f5825a4606e9ff916f87b92d63bc2a53850'
+            '12a1c77e7b2de84072b657662dce7950d51c5904c3b0cd552c6567c15cd99a53'
             'e4734603808ad0402819eb36578f1eabb80524f4f82aed45f31736c5d184b2ef'
             '1c99b8accd3bb685395f612fc84a1f546baf5e7027c49f16f739951adbd655c8'
             '855d2a7e2fca1ba742205ea666ec518e0f0b3852d7d8bd869692af9af9a05040'
@@ -215,9 +215,9 @@ build() {
         -DENABLE_SYSTEM_TBB:BOOL='ON' \
         -Wno-author
     cmake --build build --target  \
-        npu_interpreter_runtime \
         openvino_intel_npu_compiler \
         openvino_intel_npu_compiler_loader \
+        openvino_intel_npu_vm_runtime \
         compilerTest \
         loaderTest \
         profilingTest \
