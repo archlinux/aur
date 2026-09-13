@@ -1,6 +1,6 @@
 pkgbase = spectrust
 	pkgdesc = Terminal audio spectrum analyzer
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://project.uhhm.no/bl/spectrust
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = spectrust
 	conflicts = spectrust-git
 	conflicts = spectrust-bin
 	options = !strip
-	source_x86_64 = spectrust-v0.2.8-x86_64.tar.gz::https://project.uhhm.no/bl/spectrust/releases/download/v0.2.8/spectrust-v0.2.8-x86_64.tar.gz
-	sha256sums_x86_64 = f2f0e7b34ebf54134f713d426b9b06a387c4cefb8b7bf2548ad78fbe02b856e1
-	source_aarch64 = spectrust-v0.2.8-aarch64.tar.gz::https://project.uhhm.no/bl/spectrust/releases/download/v0.2.8/spectrust-v0.2.8-aarch64.tar.gz
-	sha256sums_aarch64 = 4459d731d1791adde9bb956ebc5d3ac5fbbd74106529e480f6d0f91631604ecb
+	source_x86_64 = spectrust-v0.2.9-x86_64.tar.gz::https://project.uhhm.no/bl/spectrust/releases/download/v0.2.9/spectrust-v0.2.9-x86_64.tar.gz
+	sha256sums_x86_64 = f1254163443d1b53e516db75b84ccd64565a25cdbff6392c2b5913890aead4b1
+	source_aarch64 = spectrust-v0.2.9-aarch64.tar.gz::https://project.uhhm.no/bl/spectrust/releases/download/v0.2.9/spectrust-v0.2.9-aarch64.tar.gz
+	sha256sums_aarch64 = 728097cb12d6dd39e7f578084847346e0a54783112e6f6051fbe4e83e378b8e3
 
 pkgname = spectrust
