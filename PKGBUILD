@@ -1,13 +1,14 @@
 pkgname=gephgui-wry-bin
-pkgver=5.8.3
-pkgrel=2
+pkgver=5.9.0
+pkgrel=1
 pkgdesc="Geph desktop GUI"
 arch=('x86_64')
 url="https://github.com/geph-official/gephgui-wry"
-download_url="https://github.com/geph-official/gephgui-pkg/releases/download"
 license=('MPL-2.0' 'BSD-3-Clause')
+install=gephgui-wry-bin.install
 provides=('gephgui-wry' 'geph5-client' 'geph5')
 conflicts=('gephgui-wry' 'geph5-client' 'geph5-client-git' 'geph5-app-git')
+makedepends=('ostree')
 depends=(
   'webkit2gtk-4.1'
   'polkit'
@@ -18,19 +19,30 @@ depends=(
 )
 options=('!strip' '!debug')
 source=(
-  "gephgui-wry-bin-$pkgver.deb::$download_url/v$pkgver/geph-linux-${pkgver}.deb"
-  "geph.png::https://raw.githubusercontent.com/geph-official/gephgui-pkg/refs/heads/master/flatpak/icons/256x256/apps/io.geph.GephGui.png"
+  "Geph-x86_64.flatpak::https://f001.backblazeb2.com/file/geph4-dl/geph-releases/linux-stable/5.9.0/Geph-x86_64.flatpak"
 )
-sha256sums=('e6da3c446458238011847b9da406f97d9600dc44ccb34319ad640cac15db1b94'
-            '6b1ee5653cdc69a4e92125950cca5f2bd8114cd786a9a686aa31692b9fcc287a')
+sha256sums=('69eeb74fab8279c180082c27c6e1ab6892f9f7dfb471429f27b47e27e8eb996a')
+
+prepare() {
+  rm -rf geph-repo geph-app
+  mkdir geph-repo
+  ostree init --repo=geph-repo --mode=bare-user
+  ostree static-delta apply-offline --repo=geph-repo Geph-x86_64.flatpak
+  local commit
+  commit=$(find geph-repo/objects -name '*.commit' | sed 's|.*/\([0-9a-f]\{2\}\)/\([0-9a-f]*\)\.commit|\1\2|')
+  ostree checkout --repo=geph-repo --user-mode "$commit" geph-app
+}
 
 package() {
-  bsdtar -xf "${srcdir}/data.tar.zst" -C "$pkgdir"
+  install -Dm755 "${srcdir}/geph-app/files/bin/geph5" "$pkgdir/usr/bin/geph5"
+  install -Dm755 "${srcdir}/geph-app/files/bin/geph5-client" "$pkgdir/usr/bin/geph5-client"
+  install -Dm755 "${srcdir}/geph-app/files/bin/gephgui-wry" "$pkgdir/usr/bin/gephgui-wry"
 
-  install -Dm644 "${srcdir}/geph.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/geph.png"
+  install -Dm644 "${srcdir}/geph-app/export/share/applications/io.geph.GephGui.desktop" \
+    "$pkgdir/usr/share/applications/io.geph.GephGui.desktop"
 
-  find "$pkgdir" -type d -exec chmod 755 {} +
-  find "$pkgdir" -type f -exec chmod 644 {} +
-  find "$pkgdir/usr/bin" -type f -exec chmod 755 {} + 2>/dev/null || true
-  find "$pkgdir/usr/lib" -type f -exec chmod 755 {} + 2>/dev/null || true
+  for size in 16 32 64 128 256; do
+    install -Dm644 "${srcdir}/geph-app/export/share/icons/hicolor/${size}x${size}/apps/io.geph.GephGui.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/io.geph.GephGui.png"
+  done
 }

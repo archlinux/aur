@@ -1,11 +1,13 @@
 pkgbase = gephgui-wry-bin
 	pkgdesc = Geph desktop GUI
-	pkgver = 5.8.3
-	pkgrel = 2
+	pkgver = 5.9.0
+	pkgrel = 1
 	url = https://github.com/geph-official/gephgui-wry
+	install = gephgui-wry-bin.install
 	arch = x86_64
 	license = MPL-2.0
 	license = BSD-3-Clause
+	makedepends = ostree
 	depends = webkit2gtk-4.1
 	depends = polkit
 	depends = nftables
@@ -21,9 +23,7 @@ pkgbase = gephgui-wry-bin
 	conflicts = geph5-app-git
 	options = !strip
 	options = !debug
-	source = gephgui-wry-bin-5.8.3.deb::https://github.com/geph-official/gephgui-pkg/releases/download/v5.8.3/geph-linux-5.8.3.deb
-	source = geph.png::https://raw.githubusercontent.com/geph-official/gephgui-pkg/refs/heads/master/flatpak/icons/256x256/apps/io.geph.GephGui.png
-	sha256sums = e6da3c446458238011847b9da406f97d9600dc44ccb34319ad640cac15db1b94
-	sha256sums = 6b1ee5653cdc69a4e92125950cca5f2bd8114cd786a9a686aa31692b9fcc287a
+	source = Geph-x86_64.flatpak::https://f001.backblazeb2.com/file/geph4-dl/geph-releases/linux-stable/5.9.0/Geph-x86_64.flatpak
+	sha256sums = 69eeb74fab8279c180082c27c6e1ab6892f9f7dfb471429f27b47e27e8eb996a
 
 pkgname = gephgui-wry-bin

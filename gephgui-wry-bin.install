@@ -1,0 +1,9 @@
+post_install() {
+  if [ -d /run/systemd/system ]; then
+    /usr/bin/geph5 register-manager 2>/dev/null || echo "geph5 register-manager failed; the GUI will retry on launch"
+  fi
+}
+
+pre_remove() {
+  /usr/bin/geph5 unregister-manager
+}
