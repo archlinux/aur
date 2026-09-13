@@ -4,8 +4,8 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=8.0.0.r0.g2a3986ca4
-pkgrel=2
+pkgver=8.2.9.r64.g9b89da035
+pkgrel=1
 pkgdesc='Audio Effects for PipeWire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/easyeffects'
@@ -45,7 +45,7 @@ optdepends=(
   'libdeep_filter_ladspa: deep noise remover'
 )
 conflicts=("${pkgname%%-git}")
-provides=("${pkgname%%-git}=${pkgver%%.r*}")
+provides=("${pkgname%%-git}")
 source=("${pkgname%%-git}::git+${url}")
 sha512sums=('SKIP')
 
