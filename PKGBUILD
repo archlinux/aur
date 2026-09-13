@@ -1,6 +1,6 @@
 # Maintainer: Jotalea <main@jotalea.com.ar>
 pkgname=jotawm-git
-pkgver=2026.09.13.r117.b3d4c40
+pkgver=2026.09.13.r118.cb1aafd
 pkgrel=1
 pkgdesc="A minimal tiling window manager for X11"
 arch=('x86_64' 'aarch64' 'armv7h')
