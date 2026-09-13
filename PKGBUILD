@@ -1,6 +1,6 @@
 # Maintainer: Ángel Guzmán Maeso <angel@guzmanmaeso.com>
 pkgname=whatly-bin
-pkgver=7.6.3
+pkgver=7.6.4
 pkgrel=1
 pkgdesc="Feature-rich WhatsApp Web desktop client based on Qt WebEngine (prebuilt)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('whatly')
 conflicts=('whatly' 'whatly-git')
 options=('!strip')
 source=("Whatly-$pkgver-x86_64.AppImage::https://github.com/shakaran/whatly/releases/download/v$pkgver/Whatly-$pkgver-x86_64.AppImage")
-sha256sums=('d8880bebb188b80764765169013c5c011d9aa88b8231d6ca3ff01703982b8cf8')
+sha256sums=('87d6654925ae0eb89acc3d88fcd605b993b7dda404f58a88c0cb3c12b0582f76')
 
 package() {
   cd "$srcdir"
