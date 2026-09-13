@@ -1,0 +1,15 @@
+diff --git a/tests/test_causal_conv1d.py b/tests/test_causal_conv1d.py
+index fe5d3eb..a10fd3f 100644
+--- a/tests/test_causal_conv1d.py
++++ b/tests/test_causal_conv1d.py
+@@ -12,6 +12,11 @@ from causal_conv1d.causal_conv1d_interface import causal_conv1d_update, causal_c
+ from causal_conv1d.causal_conv1d_varlen import causal_conv1d_varlen_states, causal_conv1d_varlen_states_ref
+ 
+ 
++pytestmark = pytest.mark.skipif(
++    not torch.cuda.is_available(), reason="causal-conv1d kernel suite requires a CUDA GPU"
++)
++
++
+ def _max_abs_diff(a: torch.Tensor, b: torch.Tensor) -> float:
+     return (a.float() - b.float()).abs().max().item()
