@@ -1,6 +1,6 @@
 pkgbase = jinja-lsp-plus-bin
 	pkgdesc = Language server for Jinja templates — diagnostics, navigation, completions, hover, and formatting
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/alex-oleshkevich/jinja-lsp
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = jinja-lsp-plus-bin
 	conflicts = jinja-lsp
 	options = !lto
 	options = !strip
-	source_x86_64 = jinja-lsp-v0.4.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/alex-oleshkevich/jinja-lsp/releases/download/v0.4.1/jinja-lsp-v0.4.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = fb37f75a8ac416e685605a57073804a1ec7add921b23c7c3cc8e6ddc6dee5fec
-	source_aarch64 = jinja-lsp-v0.4.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/alex-oleshkevich/jinja-lsp/releases/download/v0.4.1/jinja-lsp-v0.4.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 8f275b591ce7a860cae32852b6a6306774102a6a906dda0b6486107792d4b1d1
+	source_x86_64 = jinja-lsp-v0.4.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/alex-oleshkevich/jinja-lsp/releases/download/v0.4.2/jinja-lsp-v0.4.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 87e0371a29103ceafd8321d83d67a06bf1852a9b89d8d1bf4e4e8f6afacb1181
+	source_aarch64 = jinja-lsp-v0.4.2-aarch64-unknown-linux-gnu.tar.gz::https://github.com/alex-oleshkevich/jinja-lsp/releases/download/v0.4.2/jinja-lsp-v0.4.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = fa2223be884a6b7bdfb8c8e93282046d0221a3de0a318eab52236dbe6612a4d7
 
 pkgname = jinja-lsp-plus-bin
