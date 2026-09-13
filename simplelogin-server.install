@@ -50,7 +50,7 @@ When migrating an existing installation, stop the old containers before
 the final state copy, then run the database migrations from:
 
   cd /usr/lib/simplelogin
-  sudo -u simplelogin env CONFIG=/etc/simplelogin/simplelogin.env flask db upgrade
+  sudo -u simplelogin env CONFIG=/etc/simplelogin/simplelogin.env /usr/bin/alembic upgrade head
 
 Do not run init_app.py against an existing SimpleLogin database.
 
@@ -72,7 +72,7 @@ SimpleLogin upgraded.
 If this release contains database migrations, run:
 
   cd /usr/lib/simplelogin
-  sudo -u simplelogin env CONFIG=/etc/simplelogin/simplelogin.env flask db upgrade
+  sudo -u simplelogin env CONFIG=/etc/simplelogin/simplelogin.env /usr/bin/alembic upgrade head
 
 Review /usr/share/doc/simplelogin-server/example.env for new upstream
 configuration options when upgrading between SimpleLogin releases.

@@ -1,0 +1,11 @@
+--- a/simplelogin_app.py
++++ b/simplelogin_app.py
+@@ -438,7 +438,7 @@
+         app.config["SESSION_COOKIE_SECURE"] = True
+     app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
+     if config.MEM_STORE_URI:
+-        app.config[flask_limiter.extension.C.STORAGE_URL] = config.MEM_STORE_URI
++        app.config["RATELIMIT_STORAGE_URI"] = config.MEM_STORE_URI
+         initialize_redis_services(app, config.MEM_STORE_URI)
+ 
+     limiter.init_app(app)

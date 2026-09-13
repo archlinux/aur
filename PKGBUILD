@@ -1,6 +1,6 @@
 pkgname=simplelogin-server
 pkgver=4.81.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Self-hosted SimpleLogin email alias server'
 arch=('x86_64')
 url='https://github.com/simple-login/app'
@@ -95,6 +95,13 @@ source=(
   'sqlalchemy2-legacy-annotations.patch'
   'wtforms3-emailfield.patch'
   'redis-unix-socket.patch'
+  'flask3-compat.patch'
+  'flask-limiter4-compat.patch'
+  'flask-admin2-compat.patch'
+  'arrow-api-compat.patch'
+  're2-compat.patch'
+  'sqlalchemy2-api-compat.patch'
+  'email-handler-listen-address.patch'
   'simplelogin.service'
   'simplelogin-email.service'
   'simplelogin-job-runner.service'
@@ -108,8 +115,15 @@ sha256sums=('f52b57dbc5feebe2b5a5244c88fac197638e89b447338cdc173675a6b5eddca2'
             '48a08be4941bb4724d35225cb613a9873eac2cccd2c6e1c39e179c231705bffa'
             '330babfb2c1c0c8e067d4aa26f8090480ca96401707807696d1ed827ab6e5902'
             'd312fa138aa573195864d32988fcf74e0a6d52e6197ca42969b2de2c829f0b31'
+            '6195ca49459edf9139dcce6a1fbdaf641f19f95b83333e7b306523beac8edae2'
+            '69ff575ea30b697b57f5c04a9aa56eca799bacb9e3264fa4ef1cc1c67aadbd66'
+            '96672deb7e5edfa5b818558849a13adad713406c89eb13cd25dddd17160e0c94'
+            'ae22f695223a30f64b9a6a4c20f766a7d6513364d8f6677d6bf59dec91696cdc'
+            'a8aae51b90f7f6ae524f02e33529ebd3e20bac770e78883ffe57893881d5a9c1'
+            '97fc58d3175621ca79d4946e6bba9898b15a71cc9493c7c8652c06a56c883712'
+            'b9926a77b258b2e2574ed1e707dbc78eb8b4b4735e21726f4a56f25ed32a1c54'
             '8e5f5fe52d6c72eda036bbc195ccc71140efb7829df7bae11e7667bf772b0061'
-            'e2be17ad57507aeee11f963bce2384cdb377fd98dc3d23718940b05b2e8b40bb'
+            'e6e594c7ca5d46fae0bfec33551741b1e3efe1515c444d7e33395d73bafae65e'
             '37a6a6569c1709c01cfc9026c275c5e468ccb812c12c2877174e365f06e2caa6'
             '5c42c5338fadb4a8be7fe6bf233332831074b27b331681ec95fed2f294d94792'
             '99732b7040b0aae127b0ac12b6b54f9603f59d8bb96130a437b2e93c3a1450a9'
@@ -121,6 +135,13 @@ prepare() {
   patch -Np1 -i "$srcdir/sqlalchemy2-legacy-annotations.patch"
   patch -Np1 -i "$srcdir/wtforms3-emailfield.patch"
   patch -Np1 -i "$srcdir/redis-unix-socket.patch"
+  patch -Np1 -i "$srcdir/flask3-compat.patch"
+  patch -Np1 -i "$srcdir/flask-limiter4-compat.patch"
+  patch -Np1 -i "$srcdir/flask-admin2-compat.patch"
+  patch -Np1 -i "$srcdir/arrow-api-compat.patch"
+  patch -Np1 -i "$srcdir/re2-compat.patch"
+  patch -Np1 -i "$srcdir/sqlalchemy2-api-compat.patch"
+  patch -Np1 -i "$srcdir/email-handler-listen-address.patch"
 }
 
 build() {

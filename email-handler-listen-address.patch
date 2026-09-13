@@ -1,0 +1,32 @@
+--- a/email_handler.py
++++ b/email_handler.py
+@@ -2474,11 +2474,11 @@
+                 return return_status
+ 
+ 
+-def main(port: int):
++def main(host: str, port: int):
+     """Use aiosmtpd Controller"""
+     controller = Controller(
+         MailHandler(),
+-        hostname="0.0.0.0",
++        hostname=host,
+         port=port,
+         data_size_limit=config.SMTP_SIZE_LIMIT,
+     )
+@@ -2497,10 +2497,13 @@
+ 
+ if __name__ == "__main__":
+     parser = argparse.ArgumentParser()
++    parser.add_argument(
++        "--host", help="SMTP address to listen on", default="0.0.0.0"
++    )
+     parser.add_argument(
+         "-p", "--port", help="SMTP port to listen for", type=int, default=20381
+     )
+     args = parser.parse_args()
+ 
+-    LOG.i("Listen for port %s", args.port)
+-    main(port=args.port)
++    LOG.i("Listen on %s:%s", args.host, args.port)
++    main(host=args.host, port=args.port)

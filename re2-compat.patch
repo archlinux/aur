@@ -1,0 +1,9 @@
+--- a/app/spamassassin_utils.py
++++ b/app/spamassassin_utils.py
+@@ -11,7 +11,7 @@
+ 
+ from app.log import LOG
+ 
+-divider_pattern = re.compile(rb"^(.*?)\r?\n(.*?)\r?\n\r?\n", re.DOTALL)
++divider_pattern = re.compile(rb"(?s)^(.*?)\r?\n(.*?)\r?\n\r?\n")
+ first_line_pattern = re.compile(rb"^SPAMD/[^ ]+ 0 EX_OK$")

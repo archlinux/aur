@@ -10,9 +10,12 @@ Group=simplelogin
 WorkingDirectory=/usr/lib/simplelogin
 
 Environment=CONFIG=/etc/simplelogin/simplelogin.env
+Environment=SIMPLELOGIN_EMAIL_HOST=127.0.0.1
+Environment=SIMPLELOGIN_EMAIL_PORT=20381
 Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-/etc/simplelogin/service.env
 
-ExecStart=/usr/bin/python /usr/lib/simplelogin/email_handler.py
+ExecStart=/usr/bin/python /usr/lib/simplelogin/email_handler.py --host ${SIMPLELOGIN_EMAIL_HOST} --port ${SIMPLELOGIN_EMAIL_PORT}
 
 Restart=on-failure
 RestartSec=5

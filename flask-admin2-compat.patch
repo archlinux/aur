@@ -1,0 +1,34 @@
+--- a/app/admin/index.py
++++ b/app/admin/index.py
+@@ -1,5 +1,6 @@
+ from flask import Flask
+ from flask_admin import Admin
++from flask_admin.theme import Bootstrap4Theme
+ 
+ from app.db import Session
+ from app.models import (
+@@ -38,19 +39,19 @@
+ 
+ 
+ def init_admin(app: Flask):
+-    admin = Admin(name="SimpleLogin", template_mode="bootstrap4")
++    admin = Admin(name="SimpleLogin", theme=Bootstrap4Theme())
+ 
+     admin.init_app(app, index_view=SLAdminIndexView())
+-    admin.add_view(EmailSearchAdmin(name="Email Search", endpoint="admin.email_search"))
++    admin.add_view(EmailSearchAdmin(name="Email Search", endpoint="email_search"))
+     admin.add_view(
+         CustomDomainSearchAdmin(
+-            name="Custom domain search", endpoint="admin.custom_domain_search"
++            name="Custom domain search", endpoint="custom_domain_search"
+         )
+     )
+     admin.add_view(
+-        AbuserLookupAdmin(name="Abuser Lookup", endpoint="admin.abuser_lookup")
++        AbuserLookupAdmin(name="Abuser Lookup", endpoint="abuser_lookup")
+     )
+-    admin.add_view(DomainCheckAdmin(name="Domain Check", endpoint="admin.domain_check"))
++    admin.add_view(DomainCheckAdmin(name="Domain Check", endpoint="domain_check"))
+     admin.add_view(UserAdmin(User, Session))
+     admin.add_view(AliasAdmin(Alias, Session))
+     admin.add_view(MailboxAdmin(Mailbox, Session))

@@ -1,0 +1,33 @@
+--- a/app/models.py
++++ b/app/models.py
+@@ -1856,7 +1856,7 @@
+             email=new_alias.email,
+             note=new_alias.note,
+             enabled=True,
+-            created_at=int(new_alias.created_at.timestamp),
++            created_at=int(new_alias.created_at.timestamp()),
+         )
+         EventDispatcher.send_event(user, EventContent(alias_created=event))
+         emit_alias_audit_log(
+--- a/templates/base.html
++++ b/templates/base.html
+@@ -86,7 +86,7 @@
+   </head>
+   <body>
+     <div class="page">
+-      {% if NOW.timestamp < 1701475201 and current_user.is_authenticated and current_user.should_show_upgrade_button() %}
++      {% if NOW.timestamp() < 1701475201 and current_user.is_authenticated and current_user.should_show_upgrade_button() %}
+ 
+         <div class="alert alert-success text-center mb-0" role="alert">
+           Black Friday: $20 for the first year instead of $30. Available until December 1st.
+--- a/templates/dashboard/pricing.html
++++ b/templates/dashboard/pricing.html
+@@ -57,7 +57,7 @@
+ {% endblock %}
+ {% block default_content %}
+ 
+-  {% if NOW.timestamp < 1733184000 %}
++  {% if NOW.timestamp() < 1733184000 %}
+ 
+     <div class="alert alert-primary">
+       Lifetime deal for SimpleLogin Premium and Proton Pass Plus for $199

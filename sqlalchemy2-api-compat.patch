@@ -1,0 +1,157 @@
+--- a/app/models.py
++++ b/app/models.py
+@@ -61,6 +61,7 @@
+ 
+ class TSVector(sa.types.TypeDecorator):
+     impl = TSVECTOR
++    cache_ok = True
+ 
+ 
+ class ModelMixin(object):
+@@ -299,10 +300,11 @@
+ 
+ class IntEnumType(sa.types.TypeDecorator):
+     impl = sa.Integer
++    cache_ok = True
+ 
+     def __init__(self, enumtype, *args, **kwargs):
+         super().__init__(*args, **kwargs)
+-        self._enum_type = enumtype
++        self.enumtype = enumtype
+ 
+     def process_bind_param(self, enum_obj, dialect):
+         if enum_obj is None:
+@@ -312,7 +314,7 @@
+     def process_result_value(self, enum_value, dialect):
+         if enum_value is None:
+             return None
+-        return self._enum_type(enum_value)
++        return self.enumtype(enum_value)
+ 
+ 
+ @dataclasses.dataclass
+@@ -1783,7 +1785,7 @@
+         last_email_log_id UPDATE.
+         """
+         Session.execute(
+-            "SELECT id FROM alias WHERE id = :alias_id FOR UPDATE",
++            text("SELECT id FROM alias WHERE id = :alias_id FOR UPDATE"),
+             {"alias_id": alias_id},
+         )
+ 
+@@ -2360,7 +2362,7 @@
+         if "alias_id" in kwargs:
+             sql = "UPDATE alias SET last_email_log_id = :el_id WHERE id = :alias_id"
+             Session.execute(
+-                sql, {"el_id": email_log.id, "alias_id": kwargs["alias_id"]}
++                text(sql), {"el_id": email_log.id, "alias_id": kwargs["alias_id"]}
+             )
+         if commit:
+             Session.commit()
+@@ -4133,7 +4135,7 @@
+                 args["taken_older_than"] = allow_taken_older_than.datetime
+             sql_taken_condition = "({})".format(" OR ".join(taken_condition))
+             sql = f"UPDATE sync_event SET taken_time = :taken_time WHERE id = :sync_event_id AND {sql_taken_condition}"
+-            res = Session.execute(sql, args)
++            res = Session.execute(text(sql), args)
+             Session.commit()
+         except ObjectDeletedError:
+             return False
+--- a/app/api/serializer.py
++++ b/app/api/serializer.py
+@@ -334,24 +334,22 @@
+     alias_activity_subquery = (
+         Session.query(
+             Alias.id,
+-            func.sum(case([(EmailLog.is_reply, 1)], else_=0)).label("nb_reply"),
++            func.sum(case((EmailLog.is_reply, 1), else_=0)).label("nb_reply"),
+             func.sum(
+                 case(
+-                    [(and_(EmailLog.is_reply.is_(False), EmailLog.blocked), 1)],
++                    (and_(EmailLog.is_reply.is_(False), EmailLog.blocked), 1),
+                     else_=0,
+                 )
+             ).label("nb_blocked"),
+             func.sum(
+                 case(
+-                    [
+-                        (
+-                            and_(
+-                                EmailLog.is_reply.is_(False),
+-                                EmailLog.blocked.is_(False),
+-                            ),
+-                            1,
+-                        )
+-                    ],
++                    (
++                        and_(
++                            EmailLog.is_reply.is_(False),
++                            EmailLog.blocked.is_(False),
++                        ),
++                        1,
++                    ),
+                     else_=0,
+                 )
+             ).label("nb_forward"),
+--- a/app/dashboard/views/alias_contact_manager.py
++++ b/app/dashboard/views/alias_contact_manager.py
+@@ -104,18 +104,16 @@
+     sub = (
+         Session.query(
+             Contact.id,
+-            func.sum(case([(EmailLog.is_reply, 1)], else_=0)).label("nb_reply"),
++            func.sum(case((EmailLog.is_reply, 1), else_=0)).label("nb_reply"),
+             func.sum(
+                 case(
+-                    [
+-                        (
+-                            and_(
+-                                EmailLog.is_reply.is_(False),
+-                                EmailLog.blocked.is_(False),
+-                            ),
+-                            1,
+-                        )
+-                    ],
++                    (
++                        and_(
++                            EmailLog.is_reply.is_(False),
++                            EmailLog.blocked.is_(False),
++                        ),
++                        1,
++                    ),
+                     else_=0,
+                 )
+             ).label("nb_forward"),
+@@ -166,10 +164,8 @@
+         q = q.filter(Contact.id == contact_id)
+ 
+     latest_activity = case(
+-        [
+-            (EmailLog.created_at > Contact.created_at, EmailLog.created_at),
+-            (EmailLog.created_at < Contact.created_at, Contact.created_at),
+-        ],
++        (EmailLog.created_at > Contact.created_at, EmailLog.created_at),
++        (EmailLog.created_at < Contact.created_at, Contact.created_at),
+         else_=Contact.created_at,
+     )
+     q = (
+--- a/job_runner.py
++++ b/job_runner.py
+@@ -11,7 +11,7 @@
+ from sqlalchemy.exc import IntegrityError
+ from sqlalchemy.orm import Query
+ from sqlalchemy.orm.exc import ObjectDeletedError
+-from sqlalchemy.sql.expression import or_, and_
++from sqlalchemy.sql.expression import or_, and_, text
+ 
+ from app import config
+ from app.constants import JobType
+@@ -360,7 +360,7 @@
+         "taken_before_time": taken_before_time.datetime,
+     }
+     try:
+-        res = Session.execute(sql, args)
++        res = Session.execute(text(sql), args)
+         Session.commit()
+     except ObjectDeletedError:
+         return False
