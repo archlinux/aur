@@ -1,6 +1,6 @@
 # Maintainer: Bendik Aagaard Lynghaug <bendik.lynghaug@gmail.com>
 pkgname=galdr
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Terminal grid synthesizer: signal flows through single-glyph unit generators, MIDI in, low-latency PipeWire out"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('galdr')
 conflicts=('galdr-git' 'galdr-bin')
 source_x86_64=("galdr-v${pkgver}-x86_64.tar.gz::https://project.uhhm.no/bl/galdr/releases/download/v${pkgver}/galdr-v${pkgver}-x86_64.tar.gz")
 source_aarch64=("galdr-v${pkgver}-aarch64.tar.gz::https://project.uhhm.no/bl/galdr/releases/download/v${pkgver}/galdr-v${pkgver}-aarch64.tar.gz")
-sha256sums_x86_64=('e005591c6e21673e4e01b9d04cb13e72812b5a7d94ed9835151cdba1e0de6976')
-sha256sums_aarch64=('54bcee4c3dcf429d2032b6259a88d5ef13693a281b748d9591319d5d6c2b67c8')
+sha256sums_x86_64=('f7483b4e6b6ee2a2b2e8d9954a96662d3a4316e12f220bce5d57fa3de5f9678a')
+sha256sums_aarch64=('2965372aab7d96ef6fb47d252c952812140c6f2ac34e34239483a52c5875f4ef')
 
 package() {
     install -Dm755 galdr "$pkgdir/usr/bin/galdr"
