@@ -11,7 +11,7 @@ provides=('chronicler')
 conflicts=()
 url="https://github.com/mak-kirkland/${pkgname%-*}"
 source=(
-    "https://github.com/mak-kirkland/${pkgname%-*}/releases/download/v${pkgver//_/-}/Chronicler_${pkgver%_*}_amd64.deb"
+    "${pkgname}_${pkgver}_amd64.deb::https://github.com/mak-kirkland/${pkgname%-*}/releases/download/v${pkgver//_/-}/Chronicler_${pkgver%_*}_amd64.deb"
     "LICENSE-${pkgname}_${pkgver}::https://raw.githubusercontent.com/mak-kirkland/${pkgname%-*}/v${pkgver//_/-}/LICENSE"
 )
 sha256sums=('7a9cd27ab6aea3b09c0f3649358c440cb1a6229c725450fa296995741001c861'
@@ -19,7 +19,7 @@ sha256sums=('7a9cd27ab6aea3b09c0f3649358c440cb1a6229c725450fa296995741001c861'
 
 
 prepare() {
-    ar x Chronicler_${pkgver%_*}_amd64.deb
+    ar x ${pkgname}_${pkgver}_amd64.deb
 }
 
 package() {
