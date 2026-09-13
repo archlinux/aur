@@ -2,6 +2,7 @@ pkgbase = fcitx5-lotus-git
 	pkgdesc = Vietnamese input method for fcitx5
 	pkgver = 3.5.2.r884.g80688dd
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
 	arch = x86_64
 	license = GPL-3.0-or-later
