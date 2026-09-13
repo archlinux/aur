@@ -1,5 +1,5 @@
 pkgbase = libfprint-egis0575
-	pkgdesc = libfprint with the experimental EgisTec EH575 (1c7a:0575) fingerprint driver (press-snapshot + NCC matcher)
+	pkgdesc = libfprint with the experimental EgisTec EH575 (1c7a:0575) fingerprint driver (press-snapshot + Windows-engine matcher port)
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/cosct/libfprint-egis0575
@@ -8,17 +8,20 @@ pkgbase = libfprint-egis0575
 	makedepends = meson
 	makedepends = ninja
 	makedepends = gobject-introspection
+	makedepends = gtk-doc
 	depends = libusb
 	depends = libgusb
-	depends = nss
+	depends = openssl
 	depends = pixman
 	depends = glib2
-	provides = libfprint
-	provides = libfprint-2.so
+	depends = libgudev
+	provides = libfprint=1.94.100
+	provides = libfprint-2.so=2-64
 	conflicts = libfprint
 	conflicts = libfprint-egis-0575
 	conflicts = libfprint-egis0575-experimental
 	replaces = libfprint-egis-0575
+	options = !debug
 	source = libfprint-egis0575-0.2.0.tar.gz::https://github.com/cosct/libfprint-egis0575/archive/refs/tags/egis0575-v0.2.0.tar.gz
 	sha256sums = 806c0f11bf883532f506c773eb7afabc5e4e1eeffbe2b6808fc4dff4d9933505
 
