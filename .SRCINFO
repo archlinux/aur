@@ -1,28 +1,35 @@
 pkgbase = python-prance
-	pkgdesc = Resolving Swagger/OpenAPI 2.0 and 3.0 Parser
-	pkgver = 0.22.11.04.0
-	pkgrel = 5
-	url = https://github.com/jfinkhaeuser/prance
+	pkgdesc = Resolving parser for Swagger/OpenAPI 2.0 and 3.x specifications
+	pkgver = 26.07.19.0
+	pkgrel = 1
+	url = https://github.com/RonnyPfannschmidt/prance
 	arch = any
 	license = MITNFA
-	checkdepends = python-pytest
-	checkdepends = python-click
-	checkdepends = python-pyicu
-	checkdepends = python-openapi-spec-validator
-	makedepends = python-setuptools
-	depends = python-chardet
-	depends = python-ruamel-yaml
-	depends = python-requests
-	depends = python-six
-	depends = python-semver
-	depends = python-packaging
-	optdepends = python-flex
-	optdepends = python-click
-	optdepends = python-pyicu
-	optdepends = python-openapi-spec-validator
-	source = https://github.com/jfinkhaeuser/prance/archive/v0.22.11.04.0/python-prance-0.22.11.04.0.tar.gz
-	source = https://github.com/OAI/OpenAPI-Specification/archive/0f9d3ec7c033fef184ec54e1ffc201b2d61ce023/OpenAPI-Specification-0f9d3ec7c033fef184ec54e1ffc201b2d61ce023.tar.gz
-	sha512sums = ad2d65ec732ffe5275dd6a0e8d9bd04a6ee7c7d6d46f4cbf680be344c6593334ea98436b0a99bc773b6705d948f331930a921d1704cdab59cf07ee5da2cfe48c
-	sha512sums = c75ff7410c75ce23fd736ccb4294175438b66a954687d380124c0e37237112b043fa0c289269a8d792e8385264c923b0be09d6bf63112a106e4579d9d7a9808f
+	checkdepends = python-click>=8.3.0
+	checkdepends = python-openapi-spec-validator>=0.7.1
+	checkdepends = python-pyicu>=2.14
+	checkdepends = python-pytest>=9.0.1
+	checkdepends = python-pytest-cov>=7.0.0
+	checkdepends = python-swagger-spec-validator>=3.0.4
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>80
+	makedepends = python-setuptools-scm>9
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-chardet>=5.2
+	depends = python-packaging>=25.0
+	depends = python-requests>=2.32.5
+	depends = python-ruamel-yaml>=0.18.16
+	optdepends = python-click>=8.3.0: command-line interface
+	optdepends = python-flex>=6.14.1: Flex validation backend
+	optdepends = python-openapi-spec-validator>=0.7.1: OpenAPI 3 validation backend
+	optdepends = python-orjson>=3.9: faster JSON parsing
+	optdepends = python-pyicu>=2.14: ICU encoding detection
+	optdepends = python-swagger-spec-validator>=3.0.4: Swagger/OpenAPI 2 validation backend
+	source = python-prance-26.07.19.0.tar.gz::https://github.com/RonnyPfannschmidt/prance/archive/refs/tags/v26.07.19.0.tar.gz
+	source = OpenAPI-Specification-902e5058da8b618e5773cf86def29dd08cd18540.tar.gz::https://github.com/OAI/OpenAPI-Specification/archive/902e5058da8b618e5773cf86def29dd08cd18540.tar.gz
+	sha256sums = ccd939d07ef5a0198ea67b684bebc71aa70ddea135583d25fc4d21d0a5436bfe
+	sha256sums = 4833f976d039f125266c80fa7611c0254a78053204d3fdba47c823c6ec89c400
 
 pkgname = python-prance
