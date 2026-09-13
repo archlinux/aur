@@ -1,0 +1,17 @@
+pkgbase = archbeg
+	pkgdesc = Software to use AUR (Arch User Repository) outside AUR.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/caskstrength/archbeg
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = curl
+	depends = libundr
+	depends = libarchive
+	provides = archbeg
+	conflicts = archbeg
+	source = archbeg::git+https://codeberg.org/caskstrength/archbeg.git#tag=0.1.0
+	sha512sums = 2080ac69ebd448e1786d36f0447b32a5223e2822199ee55731c9b4400511fe21f387cabc236bba9b99d62f744c6b0eb658ad313ec5178a46b680a494689bd52d
+
+pkgname = archbeg
