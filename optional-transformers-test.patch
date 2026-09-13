@@ -1,0 +1,10 @@
+--- a/python/python/tests/docs/test_embeddings_optional.py
++++ b/python/python/tests/docs/test_embeddings_optional.py
+@@ -63,6 +63,7 @@ def test_embeddings_secret():
+         import torch
+     except ImportError:
+         pytest.skip("torch not installed")
++    pytest.importorskip("transformers", reason="optional Hugging Face backend")
+ 
+     # --8<-- [start:register_device]
+     import torch

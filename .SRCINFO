@@ -1,10 +1,21 @@
 pkgbase = python-lancedb
 	pkgdesc = Serverless, low-latency vector database for AI applications
-	pkgver = 0.33.0
+	pkgver = 0.38.0
 	pkgrel = 1
 	url = https://github.com/lancedb/lancedb
 	arch = x86_64
 	license = Apache-2.0
+	checkdepends = python-datasets
+	checkdepends = python-duckdb
+	checkdepends = python-pandas
+	checkdepends = python-pillow
+	checkdepends = python-polars
+	checkdepends = python-pylance>=8
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-socket
+	checkdepends = python-pytorch
+	makedepends = lz4
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -13,21 +24,54 @@ pkgbase = python-lancedb
 	makedepends = cmake
 	makedepends = protobuf
 	makedepends = pkgconf
-	makedepends = openssl
+	depends = glibc
+	depends = libgcc
 	depends = python
-	depends = python-deprecation
-	depends = python-numpy
-	depends = python-packaging
-	depends = python-pyarrow
-	depends = python-pydantic
-	depends = python-tqdm
-	depends = python-lance-namespace
+	depends = python-deprecation>=2.1.0
+	depends = python-numpy>=1.24.0
+	depends = python-packaging>=23.0
+	depends = python-pyarrow>=16
+	depends = python-pydantic>=2.7.4
+	depends = python-pydantic<3
+	depends = python-tqdm>=4.27.0
+	depends = python-typing_extensions>=4.0.0
+	depends = python-lance-namespace>=0.12
+	depends = python-lance-namespace<0.13
+	depends = python-lance-namespace-urllib3-client>=0.12
+	depends = python-lance-namespace-urllib3-client<0.13
 	depends = zstd
-	depends = lz4
-	depends = bzip2
-	depends = xz
-	optdepends = python-pylance: for to_lance() method to access underlying Lance dataset
-	source = python-lancedb-0.33.0.tar.gz::https://github.com/lancedb/lancedb/archive/refs/tags/python-v0.33.0.tar.gz
-	sha256sums = 09eb1157f589b142d15da6bda462bb2c401cbd7f1a8347f4055d76e091b969dd
+	optdepends = python-pylance>=8: expose tables as Lance datasets and DataFusion providers
+	optdepends = python-datasets: Hugging Face Dataset and DatasetDict input
+	optdepends = python-pandas>=1.4: pandas DataFrame input and output
+	optdepends = python-polars>=0.19: Polars DataFrame input and output
+	optdepends = python-duckdb>=0.9.0: DuckDB interoperability
+	optdepends = python-pytorch>=2: tensor conversion and model-backed embeddings
+	optdepends = python-pillow>=12.1.1: image embeddings
+	optdepends = python-openai>=1.6.1: OpenAI embeddings and reranking
+	optdepends = python-sentence-transformers>=2.2.0: Sentence Transformers embeddings and reranking
+	optdepends = python-transformers>=4.41.0: Transformers, SigLIP, and ColPali embeddings
+	optdepends = python-sentencepiece>=0.1.99: tokenizer support for selected embedding models
+	optdepends = python-open-clip-torch>=2.20.0: OpenCLIP embeddings
+	optdepends = python-cohere>=4: Cohere embeddings and reranking
+	optdepends = python-huggingface-hub>=0.19.0: Hugging Face model downloads
+	optdepends = python-google-genai>=1.0.0: Gemini embeddings
+	optdepends = python-boto3>=1.28.57: Amazon Bedrock embeddings
+	optdepends = aws-cli>=1.44.38: AWS authentication helpers for Bedrock
+	optdepends = python-ollama>=0.3.0: Ollama embeddings
+	optdepends = python-requests>=2.31.0: HTTP-backed embedding integrations
+	options = !debug
+	options = !lto
+	source = python-lancedb-0.38.0.tar.gz::https://github.com/lancedb/lancedb/archive/refs/tags/v0.38.0.tar.gz
+	source = typing-extensions-runtime.patch
+	source = lance-namespace-0.9.patch
+	source = offline-image-test.patch
+	source = polars-1.x-tests.patch
+	source = optional-transformers-test.patch
+	sha256sums = 1d3671e9391a897c8955ac44f0781d27bd2b67168cb03c3a64be787dfc8d1723
+	sha256sums = 2e8dbb4391f60927e81a3e3bbb94b0a8bdb84c1ebf9afb31965bcac338d46d03
+	sha256sums = 7a99c9c4d594c6626145a94f01db0fb2e8132a9b1b6b362a4e98afb11e1656f3
+	sha256sums = ccf35839209d9560ac49075b9a901e8c5eb5ae0c44c6307638699bfd4a38ad50
+	sha256sums = e1bc2daf56514eaf19604d51cd7fce0b664a4f1834906f637430e3413ed20219
+	sha256sums = 6c7e206e537187776529d69a4b5ac2aeabc80e9750e9eec6a4cbbc1ddc0b5807
 
 pkgname = python-lancedb

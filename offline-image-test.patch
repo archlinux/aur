@@ -1,0 +1,46 @@
+--- a/python/python/tests/test_embeddings.py
++++ b/python/python/tests/test_embeddings.py
+@@ -612,7 +612,7 @@
+     assert "_ollama_client" not in restored.__dict__
+ 
+ 
+-def test_url_retrieve_downloads_image():
++def test_url_retrieve_downloads_image(tmp_path):
+     """
+     Embedding functions like open-clip, siglip, and jinaai use url_retrieve()
+     to download images from HTTP URLs. For example, open_clip._to_pil() calls:
+@@ -627,10 +627,31 @@
+     Image = pytest.importorskip("PIL.Image")
+     from lancedb.embeddings.utils import url_retrieve
+ 
+-    image_url = "http://farm1.staticflickr.com/53/167798175_7c7845bbbd_z.jpg"
+-    image_bytes = url_retrieve(image_url)
++    from functools import partial
++    from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
++    from threading import Thread
++
++    image_path = tmp_path / "test.png"
++    Image.new("RGB", (2, 2), color=(40, 80, 120)).save(image_path)
++
++    class QuietHandler(SimpleHTTPRequestHandler):
++        def log_message(self, format, *args):
++            pass
++
++    handler = partial(QuietHandler, directory=tmp_path)
++    server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
++    thread = Thread(target=server.serve_forever, daemon=True)
++    thread.start()
++    try:
++        host, port = server.server_address
++        image_bytes = url_retrieve(f"http://{host}:{port}/{image_path.name}")
++    finally:
++        server.shutdown()
++        server.server_close()
++        thread.join()
++
+     img = Image.open(io.BytesIO(image_bytes))
+-    assert img.size[0] > 0 and img.size[1] > 0
++    assert img.size == (2, 2)
+ 
+ 
+ def test_jina_generate_image_input_dict_local_path(tmp_path):
