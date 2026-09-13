@@ -26,7 +26,7 @@ source=(
 )
 
 sha256sums=(
-    'd01223e674cd31c182db5c2af105cc723c90875ab55fcd1e839a790bfad00d14'
+    '07a25736c59b3fcaa9f3916b798e58573745fdd60445dedad48c340a5a12d8a0'
     'SKIP'
 )
 
