@@ -6,3 +6,4 @@ src/
 .SRCINFO.gen
 .PKGBUILD.pre-build
 .SRCINFO.pre-build
+*_ver.json

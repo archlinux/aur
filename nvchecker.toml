@@ -1,0 +1,9 @@
+[__config__]
+oldver = "old_ver.json"
+newver = "new_ver.json"
+
+[terraform-mcp-server]
+source = "github"
+github = "hashicorp/terraform-mcp-server"
+use_max_release = true
+prefix = "v"

@@ -33,7 +33,7 @@ check: ## Compare local pkgver against latest upstream release
 	fi
 
 nvcheck: ## Check for upstream updates via nvchecker
-	@nvchecker -c .nvchecker.toml && nvcmp -c .nvchecker.toml
+	@nvchecker -c nvchecker.toml && nvcmp -c nvchecker.toml
 
 bump: ## Update PKGBUILD to latest upstream + regenerate .SRCINFO
 	$(check-vars)
