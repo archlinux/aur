@@ -1,6 +1,6 @@
 --- a/utils.mk
 +++ b/utils.mk
-@@ -109,15 +109,15 @@ MKDIR                 ?= mkdir -p
+@@ -106,15 +106,15 @@ MKDIR                 ?= mkdir -p
  RM                    ?= rm -f
  TOUCH                 ?= touch
  HARDLINK              ?= ln -f
