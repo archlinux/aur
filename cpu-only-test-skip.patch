@@ -1,0 +1,17 @@
+diff --git a/tests/test_flash_attn.py b/tests/test_flash_attn.py
+index 231e3a04..31a8dc51 100644
+--- a/tests/test_flash_attn.py
++++ b/tests/test_flash_attn.py
+@@ -14,6 +14,12 @@ from flash_attn import (
+ )
+ from flash_attn.bert_padding import pad_input, unpad_input
+ from flash_attn.flash_attn_interface import _get_block_size_n
++
++if not torch.cuda.is_available():
++    pytest.skip(
++        "FlashAttention kernel tests require a CUDA GPU", allow_module_level=True
++    )
++
+ from flash_attn.layers.rotary import apply_rotary_emb
+ 
+ MAX_HEADDIM_SM8x = 192
