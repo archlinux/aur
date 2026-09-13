@@ -4,8 +4,8 @@
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=usql-bin
-pkgver=0.21.4
-pkgrel=3
+pkgver=0.21.5
+pkgrel=1
 pkgdesc='A universal command-line interface for SQL databases'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xo/usql"
@@ -19,11 +19,11 @@ source_armv6h=("$url/releases/download/v$pkgver/usql-$pkgver-linux-arm.tar.bz2")
 source_armv7h=("$url/releases/download/v$pkgver/usql-$pkgver-linux-arm.tar.bz2")
 source_aarch64=("$url/releases/download/v$pkgver/usql-$pkgver-linux-arm64.tar.bz2")
 
-sha256sums=('aa6b75df1c4acc895646dfba859d93df9d5dbfec94eccbeae513ef93665d5780')
-sha256sums_x86_64=('78bd9b221e223d7a954d41f51e9eca98bdd94b401618367ba0f3887abebd44fc')
-sha256sums_armv6h=('d9359d9688dfa0e7111802acc9b9b5cadd42fed48c382c5c8191417f561e9108')
-sha256sums_armv7h=('d9359d9688dfa0e7111802acc9b9b5cadd42fed48c382c5c8191417f561e9108')
-sha256sums_aarch64=('ccad89d6f4c67a9bf595df0aa8a550e0a9e3d6a6f9356356ba1e164e311335e4')
+sha256sums=('38d64dd364ce4098818b92b5746e2bab1fd6630bca9981923791860ff9eaa8dd')
+sha256sums_x86_64=('033823cce96e2f5f658cbe7120e375fce19430218d0a128c1f55c2d755b65edb')
+sha256sums_armv6h=('04a6523fd95d91afca41a09f41db0f77ab9ffdaebddbf87bf2155dcabd660c73')
+sha256sums_armv7h=('04a6523fd95d91afca41a09f41db0f77ab9ffdaebddbf87bf2155dcabd660c73')
+sha256sums_aarch64=('b3b0f1a4b3788a573858b279588481e6c38ecd8a7137f38841becc3e4e3b7782')
 
 check() {
     ./usql --version
