@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034
 pkgname=gam-git
 _pkgname=${pkgname%-git}
-pkgver=7.43.04.r8.g523bd45
+pkgver=7.48.07.r1.ge9f6e38
 pkgrel=1
 pkgdesc="command line management for Google Workspace"
 arch=('any')
@@ -14,8 +14,27 @@ license=('Apache-2.0')
 replaces=('gamadv-xtd3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-depends=('python>=3.10')
+depends=(
+    python-arrow
+    python-dateutil
+    python-distro
+    python-chardet
+    python-cryptography
+    python-dnspython
+    python-filelock
+    python-google-api-python-client
+    python-google-auth-httplib2
+    python-google-auth-oauthlib
+    python-google-auth
+    python-httplib2
+    python-lxml
+    python-passlib
+    python-pathvalidate
+    python-pysocks
+)
+optdepends=('yubikey-manager: For Yubikey support')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling' 'git')
+depends+=('python>=3.10')
 _branch=main
 
 source=(
@@ -29,6 +48,11 @@ sha256sums=('SKIP'
 pkgver() {
   cd "$pkgname"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$pkgname"
+    sed -i 's/hatchling<1.30.0/hatchling/g' pyproject.toml
 }
 
 build() {
