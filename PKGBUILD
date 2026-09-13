@@ -5,7 +5,7 @@
 _pkgname='mail-parser'
 pkgname="python-${_pkgname}"
 pkgver=4.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Email parsing library for extracting structured data from raw messages'
 arch=('any')
 url="https://github.com/SpamScope/${_pkgname}"
@@ -45,6 +45,6 @@ check() {
 
 package() {
 	cd -- "${_pkgname}-${pkgver}" || return 1
-	python -m installer --destdir="${pkgdir}" --compile-bytecode=2 dist/*.whl
+	python -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode=2 dist/*.whl
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt NOTICE.txt
 }

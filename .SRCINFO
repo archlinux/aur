@@ -1,7 +1,7 @@
 pkgbase = python-mail-parser
 	pkgdesc = Email parsing library for extracting structured data from raw messages
 	pkgver = 4.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpamScope/mail-parser
 	arch = any
 	license = Apache-2.0
