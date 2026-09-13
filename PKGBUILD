@@ -1,6 +1,6 @@
 pkgname=discbandit
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphical audio CD ripper with metadata and artwork support'
 arch=('any')
 url='https://github.com/pacmanics/discbandit'
@@ -31,7 +31,7 @@ source=(
 )
 
 sha256sums=(
-  'f1f8b46a116e391da9eafa9f92b6f783c1a468c1d74e151487294e4a4e4ac012'
+  'e06c645a5b02f9de771aa4c75fa8c6b0443696df3b60bc26bb45c2e9bd17482d'
 )
 
 build() {

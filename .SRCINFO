@@ -1,7 +1,7 @@
 pkgbase = discbandit
 	pkgdesc = Graphical audio CD ripper with metadata and artwork support
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pacmanics/discbandit
 	arch = any
 	license = GPL-3.0-or-later
@@ -20,6 +20,6 @@ pkgbase = discbandit
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	source = discbandit-1.0.tar.gz::https://github.com/pacmanics/discbandit/archive/refs/tags/v1.0.tar.gz
-	sha256sums = f1f8b46a116e391da9eafa9f92b6f783c1a468c1d74e151487294e4a4e4ac012
+	sha256sums = e06c645a5b02f9de771aa4c75fa8c6b0443696df3b60bc26bb45c2e9bd17482d
 
 pkgname = discbandit
