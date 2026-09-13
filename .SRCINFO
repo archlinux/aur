@@ -1,7 +1,7 @@
 pkgbase = artemis-manual
 	pkgdesc = Radio Signals Recognition Manual
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AresValley/Artemis
 	arch = any
 	license = GPL-3.0-only
@@ -13,6 +13,7 @@ pkgbase = artemis-manual
 	depends = pyside6
 	depends = python
 	depends = python-packaging
+	depends = python-peewee
 	depends = python-requests
 	depends = qt6-multimedia
 	source = artemis-manual-4.2.0.tar.gz::https://github.com/AresValley/Artemis/archive/v4.2.0.tar.gz

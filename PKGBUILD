@@ -3,7 +3,7 @@
 _pkgname="artemis-manual"
 pkgname="$_pkgname"
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Radio Signals Recognition Manual"
 url="https://github.com/AresValley/Artemis"
 license=('GPL-3.0-only')
@@ -14,6 +14,7 @@ depends=(
   'pyside6'
   'python'
   'python-packaging'
+  'python-peewee'
   'python-requests'
   'qt6-multimedia'
 )
