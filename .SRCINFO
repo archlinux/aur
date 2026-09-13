@@ -1,6 +1,6 @@
 pkgbase = baaz
 	pkgdesc = Falcon-fast segmented download manager - Chrome interception and Omarchy bar widget
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/shahriyardx/baaz
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = baaz
 	optdepends = libnotify: desktop notifications
 	optdepends = yt-dlp: media-site downloads (YouTube, TikTok, ...)
 	optdepends = omarchy: status bar widget (baaz install-bar)
-	source = baaz-0.1.1.tar.gz::https://github.com/shahriyardx/baaz/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 3c71f28ccf00dbf8eaca4e2da974dd5bc1f8eaca999fd3642635d9bc3ff811a4
+	source = baaz-0.1.2.tar.gz::https://github.com/shahriyardx/baaz/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 2793e9397528740abed1c7830ad49a976a4b72b50eb3b0a9424f1710f12fd4ef
 
 pkgname = baaz
