@@ -1,0 +1,16 @@
+pkgbase = dankview-git
+	pkgdesc = Image viewer for DankMaterialShell, inspired by GNOME Loupe.
+	pkgver = r99.05840ee
+	pkgrel = 1
+	url = https://github.com/hthienloc/dankapps
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	depends = quickshell
+	conflicts = dankview
+	source = dankview-git::git+https://github.com/hthienloc/dankapps.git
+	sha256sums = SKIP
+
+pkgname = dankview-git
