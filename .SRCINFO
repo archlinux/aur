@@ -1,0 +1,19 @@
+pkgbase = djdeck
+	pkgdesc = Terminal DJ deck: multi-deck player with beat-sync, pitch/tempo stretch and effects, low-latency to PipeWire
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://project.uhhm.no/bl/djdeck
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = libpipewire
+	provides = djdeck
+	conflicts = djdeck-git
+	conflicts = djdeck-bin
+	options = !strip
+	source_x86_64 = djdeck-v0.1.0-x86_64.tar.gz::https://project.uhhm.no/bl/djdeck/releases/download/v0.1.0/djdeck-v0.1.0-x86_64.tar.gz
+	sha256sums_x86_64 = 95951e00898bccefbd38da043ec262d8d469fb58b54ea763a585c5ef0fe86aba
+	source_aarch64 = djdeck-v0.1.0-aarch64.tar.gz::https://project.uhhm.no/bl/djdeck/releases/download/v0.1.0/djdeck-v0.1.0-aarch64.tar.gz
+	sha256sums_aarch64 = b4be59e69b58012fbabac329e55e51aa576dc3bbaf9d6d793cf508079e03702e
+
+pkgname = djdeck
