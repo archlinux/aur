@@ -1,0 +1,39 @@
+diff --git a/python/tvm/base.py b/python/tvm/base.py
+index d5861dd98..fb1009b6e 100644
+--- a/python/tvm/base.py
++++ b/python/tvm/base.py
+@@ -48,6 +48,17 @@ if not _RUNTIME_ONLY:
+         # deps / linker issues) — fall back to runtime-only mode.
+         _RUNTIME_ONLY = True
+ 
++# Runtime extensions such as Disco live in a separately built sibling DSO.
++# Loading it runs the static FFI registrations before tvm.runtime imports the
++# corresponding Python modules.  Keep it optional for runtime-only builds that
++# deliberately do not ship the extra library.
++try:
++    _LOADED_LIBS["tvm_runtime_extra"] = load_lib_ctypes(
++        "tvm", "tvm_runtime_extra", "RTLD_LOCAL", extra_lib_paths=libinfo.package_lib_paths()
++    )
++except (RuntimeError, OSError):
++    pass
++
+ if _RUNTIME_ONLY:
+     from tvm_ffi import registry as _tvm_ffi_registry
+ 
+diff --git a/src/support/socket.h b/src/support/socket.h
+index cfcf4b3ca..523e4290a 100644
+--- a/src/support/socket.h
++++ b/src/support/socket.h
+@@ -132,6 +132,12 @@ struct SockAddr {
+    * \param port the port of address
+    */
+   void Set(const char* host, int port) {
++    // TCPSocket::Create() defaults to PF_INET.  Match the existing tracker
++    // address constructor and keep localhost on IPv4 instead of accepting an
++    // IPv6 result that the socket cannot bind or connect to.
++    if (std::string(host) == "localhost") {
++      host = "127.0.0.1";
++    }
+     addrinfo hints;
+     memset(&hints, 0, sizeof(hints));
+     hints.ai_family = PF_UNSPEC;

@@ -1,0 +1,55 @@
+diff --git a/src/runtime/extra/disco/distributed/socket_session.cc b/src/runtime/extra/disco/distributed/socket_session.cc
+index 6a19f066f..399633fb3 100644
+--- a/src/runtime/extra/disco/distributed/socket_session.cc
++++ b/src/runtime/extra/disco/distributed/socket_session.cc
+@@ -20,7 +20,9 @@
+ #include <tvm/ffi/reflection/registry.h>
+ #include <tvm/runtime/logging.h>
+ 
++#include <chrono>
+ #include <numeric>
++#include <thread>
+ 
+ #include "../../../../support/socket.h"
+ #include "../bcast_session.h"
+@@ -213,13 +215,34 @@ class RemoteSocketSession {
+  public:
+   explicit RemoteSocketSession(const ffi::String& server_host, int server_port,
+                                int num_local_workers) {
+-    socket_.Create();
+-    socket_.SetKeepAlive(true);
+-    SockAddr server_addr{server_host.c_str(), server_port};
+     Socket::Startup();
+-    if (!socket_.Connect(server_addr)) {
+-      TVM_FFI_THROW(InternalError) << "Failed to connect to server " << server_addr.AsString()
+-                                   << ", errno = " << Socket::GetLastErrorCode();
++    SockAddr server_addr{server_host.c_str(), server_port};
++
++    // The controller binds and listens in a separate thread/process.  A remote
++    // worker can therefore reach connect() just before listen() is ready.
++    // Retry only connection-refused failures for a short, bounded interval.
++    constexpr int kMaxConnectAttempts = 100;
++    for (int attempt = 0; attempt < kMaxConnectAttempts; ++attempt) {
++      socket_.Create(server_addr.ss_family());
++      socket_.SetKeepAlive(true);
++      if (socket_.Connect(server_addr)) {
++        break;
++      }
++
++      int error_code = Socket::GetLastErrorCode();
++      socket_.Close();
++#ifdef _WIN32
++      bool retryable = error_code == WSAECONNREFUSED;
++#else
++      bool retryable = error_code == ECONNREFUSED;
++#endif
++      if (!retryable || attempt + 1 == kMaxConnectAttempts) {
++        Socket::Finalize();
++        TVM_FFI_THROW(InternalError)
++            << "Failed to connect to server " << server_addr.AsString()
++            << ", errno = " << error_code;
++      }
++      std::this_thread::sleep_for(std::chrono::milliseconds(20));
+     }
+     channel_ = std::make_unique<DiscoSocketChannel>(socket_);
+     ffi::PackedArgs metadata = channel_->Recv();

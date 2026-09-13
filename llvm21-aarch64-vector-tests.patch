@@ -1,0 +1,174 @@
+--- a/tests/python/codegen/test_target_codegen_aarch64.py
++++ b/tests/python/codegen/test_target_codegen_aarch64.py
+@@ -227,16 +227,35 @@
+ 
+     assembly = f.inspect_source("asm")
+     loads = re.findall("ld1[whdb]	{ z", assembly)
++    neon_loads = re.findall(r"ld[rp][ \t]+q[0-9]+", assembly)
+     compare = re.findall(
+         r"cmgt\tp[0-9].[shdb],( p[0-9]/[zm],)? z[0-9].[shdb], z[0-9].[shdb]", assembly
+     )
+     select = re.findall("sel\tz[0-9].[shdb], p[0-9], z[0-9].[shdb], z[0-9].[shdb]", assembly)
+     max_instr = re.findall(
+-        r"max\tz[0-9].[shdb],( p[0-9]/[zm],)? z[0-9].[shdb], z[0-9].[shdb]", assembly
++        r"(?:f|s|u)?max(?:nm)?[ \t]+z[0-9]+\.[shdb],(?:[ \t]+p[0-9]+/[zm],)?[ \t]+z[0-9]+\.[shdb],[ \t]+z[0-9]+\.[shdb]",
++        assembly,
++    )
++    neon_max_instr = re.findall(
++        r"fmax(?:nm)?[ \t]+v[0-9]+\.[0-9]+[hs],[ \t]+v[0-9]+\.[0-9]+[hs],[ \t]+v[0-9]+\.[0-9]+[hs]",
++        assembly,
+     )
++    neon_compare = re.findall(
++        r"fcmgt[ \t]+v[0-9]+\.[0-9]+[hs],[ \t]+v[0-9]+\.[0-9]+[hs],[ \t]+v[0-9]+\.[0-9]+[hs]",
++        assembly,
++    )
++    neon_select = re.findall(
++        r"(?:bit|bif|bsl)[ \t]+v[0-9]+\.[0-9]+b",
++        assembly,
++    )
+ 
+-    assert len(loads) > 1
+-    assert (len(compare) > 1 and len(select) == len(compare)) or len(max_instr) > 1
++    assert len(loads) > 1 or len(neon_loads) > 0, assembly
++    assert (
++        (len(compare) > 1 and len(select) == len(compare))
++        or len(max_instr) > 1
++        or len(neon_max_instr) > 0
++        or (len(neon_compare) > 0 and len(neon_select) > 0)
++    ), assembly
+ 
+ 
+ @pytest.mark.skipif(
+@@ -270,16 +289,35 @@
+ 
+     assembly = f.inspect_source("asm")
+     loads = re.findall("ld1[whdb]	{ z", assembly)
++    neon_loads = re.findall(r"ld[rp][ \t]+q[0-9]+", assembly)
+     compare = re.findall(
+         r"cmgt\tp[0-9].[shdb],( p[0-9]/[zm],)? z[0-9].[shdb], z[0-9].[shdb]", assembly
+     )
+     select = re.findall("sel\tz[0-9].[shdb], p[0-9], z[0-9].[shdb], z[0-9].[shdb]", assembly)
+     min_instr = re.findall(
+-        r"min\tz[0-9].[shdb],( p[0-9]/[zm],)? z[0-9].[shdb], z[0-9].[shdb]", assembly
++        r"(?:f|s|u)?min(?:nm)?[ \t]+z[0-9]+\.[shdb],(?:[ \t]+p[0-9]+/[zm],)?[ \t]+z[0-9]+\.[shdb],[ \t]+z[0-9]+\.[shdb]",
++        assembly,
++    )
++    neon_min_instr = re.findall(
++        r"fmin(?:nm)?[ \t]+v[0-9]+\.[0-9]+[hs],[ \t]+v[0-9]+\.[0-9]+[hs],[ \t]+v[0-9]+\.[0-9]+[hs]",
++        assembly,
+     )
++    neon_compare = re.findall(
++        r"fcmgt[ \t]+v[0-9]+\.[0-9]+[hs],[ \t]+v[0-9]+\.[0-9]+[hs],[ \t]+v[0-9]+\.[0-9]+[hs]",
++        assembly,
++    )
++    neon_select = re.findall(
++        r"(?:bit|bif|bsl)[ \t]+v[0-9]+\.[0-9]+b",
++        assembly,
++    )
+ 
+-    assert len(loads) > 1
+-    assert (len(compare) > 1 and len(select) == len(compare)) or len(min_instr) > 1
++    assert len(loads) > 1 or len(neon_loads) > 0, assembly
++    assert (
++        (len(compare) > 1 and len(select) == len(compare))
++        or len(min_instr) > 1
++        or len(neon_min_instr) > 0
++        or (len(neon_compare) > 0 and len(neon_select) > 0)
++    ), assembly
+ 
+ 
+ @pytest.mark.skipif(
+@@ -390,15 +428,19 @@
+ 
+     assembly = f.inspect_source("asm")
+     loads = re.findall("ld1[whdb]	{ z", assembly)
++    neon_loads = re.findall(r"ld[rp][ \t]+q[0-9]+", assembly)
+     matches = re.findall(
+         r"cm(p)?eq\tp[0-9].[shdb],( p[0-9]/[zm],)? z[0-9].[shdb], z[0-9].[shdb]", assembly
+     )
++    neon_matches = re.findall(
++        r"(?:f)?cmeq[ \t]+v[0-9]+\.[0-9]+[hsdb],[ \t]+v[0-9]+\.[0-9]+[hsdb],[ \t]+v[0-9]+\.[0-9]+[hsdb]",
++        assembly,
++    )
+ 
+-    assert len(loads) > 1
+-    # The number of SVE compares depends on the LLVM cost model: LLVM <= 17
+-    # interleaves the scalable loop by two, while LLVM 20 emits a fixed-width
+-    # NEON main loop with a single predicated SVE epilogue.
+-    assert len(matches) > 0
++    # LLVM's cost model may select either an SVE loop or a fixed-width NEON
++    # loop.  Require both a vector load and a vector comparison in either form.
++    assert len(loads) > 1 or len(neon_loads) > 0, assembly
++    assert len(matches) > 0 or len(neon_matches) > 0, assembly
+ 
+ 
+ @pytest.mark.skipif(
+@@ -432,15 +474,35 @@
+ 
+     assembly = f.inspect_source("asm")
+     loads = re.findall("ld1[whdb]	{ z", assembly)
++    neon_loads = re.findall(r"ld[rp][ \t]+q[0-9]+", assembly)
+     matches = re.findall(
+         r"cm(p)?(gt|ne)\tp[0-9].[shdb],( p[0-9]/[zm],)? z[0-9].[shdb], z[0-9].[shdb]", assembly
+     )
+-
+-    assert len(loads) > 1
+-    # The number of SVE compares depends on the LLVM cost model: LLVM <= 17
+-    # interleaves the scalable loop by two, while LLVM 20 emits a fixed-width
+-    # NEON main loop with a single predicated SVE epilogue.
+-    assert len(matches) > 0
++    neon_compares = re.findall(
++        r"fcmgt[ \t]+v[0-9]+\.[0-9]+[hs],[ \t]+v[0-9]+\.[0-9]+[hs],[ \t]+v[0-9]+\.[0-9]+[hs]",
++        assembly,
++    )
++    neon_combines = re.findall(
++        r"orr[ \t]+v[0-9]+\.[0-9]+b,[ \t]+v[0-9]+\.[0-9]+b,[ \t]+v[0-9]+\.[0-9]+b",
++        assembly,
++    )
++    sve_equal = re.findall(
++        r"(?:f)?cmeq[ \t]+p[0-9]+\.[shdb],[ \t]+p[0-9]+/[zm],[ \t]+z[0-9]+\.[shdb],[ \t]+z[0-9]+\.[shdb]",
++        assembly,
++    )
++    sve_inverts = re.findall(
++        r"(?:not|eor)[ \t]+p[0-9]+\.[bhsd],[ \t]+p[0-9]+/[zm],[ \t]+p[0-9]+\.[bhsd]",
++        assembly,
++    )
++
++    # LLVM 21 implements floating-point != as ordered greater-than in both
++    # directions followed by a vector OR.
++    assert len(loads) > 1 or len(neon_loads) > 0, assembly
++    assert (
++        len(matches) > 0
++        or (len(neon_compares) > 1 and len(neon_combines) > 0)
++        or (len(sve_equal) > 0 and len(sve_inverts) > 0)
++    ), assembly
+ 
+ 
+ @pytest.mark.skipif(
+@@ -548,12 +610,24 @@
+ 
+     assembly = f.inspect_source("asm")
+     loads = re.findall("ld1[whdb]	{ z", assembly)
++    neon_loads = re.findall(r"ld[rp][ \t]+(?:q|z)[0-9]+", assembly)
+     matches = re.findall(
+         r"eor\tz[0-9].[shdb],( p[0-9]/[zm],)? z[0-9].[shdb], z[0-9].[shdb]", assembly
+     )
++    neon_matches = re.findall(
++        r"(?:mvn|not)[ \t]+v[0-9]+\.[0-9]+[hsdb],[ \t]+v[0-9]+\.[0-9]+[hsdb]",
++        assembly,
++    )
++    sve_not = re.findall(
++        r"(?:not|mvn)[ \t]+z[0-9]+\.[shdb],[ \t]+p[0-9]+/[zm],[ \t]+z[0-9]+\.[shdb]",
++        assembly,
++    )
+ 
+-    assert len(loads) > 1
+-    assert len(matches) > 1
++    # LLVM 21 can choose a single non-interleaved SVE loop or a fixed-width
++    # NEON loop.  In both cases retain a positive vector load/invert check.
++    assert (len(loads) > 0 or len(neon_loads) > 0) and (
++        len(matches) > 0 or len(sve_not) > 0 or len(neon_matches) > 0
++    ), assembly
+ 
+ 
+ @pytest.mark.skipif(

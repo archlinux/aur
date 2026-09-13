@@ -1,0 +1,31 @@
+diff --git a/python/tvm/script/parser/core/utils.py b/python/tvm/script/parser/core/utils.py
+--- a/python/tvm/script/parser/core/utils.py
++++ b/python/tvm/script/parser/core/utils.py
+@@ -45,6 +45,13 @@ def get_func_nonlocals(func):
+                 # cell_contents may raise ValueError if the cell is empty.
+                 if "empty" not in str(err):
+                     raise
++
++    # Since Python 3.14 (PEP 649), names used only in annotations are
++    # captured by the generated annotation function rather than by the
++    # decorated function itself.
++    annotate = getattr(func, "__annotate__", None)
++    if inspect.isfunction(annotate):
++        nonlocal_vars.update(get_func_nonlocals(annotate))
+     return nonlocal_vars
+ 
+ 
+diff --git a/python/tvm/relax/script/parser/entry.py b/python/tvm/relax/script/parser/entry.py
+--- a/python/tvm/relax/script/parser/entry.py
++++ b/python/tvm/relax/script/parser/entry.py
+@@ -65,7 +65,9 @@ def function(
+             raise TypeError(f"Expect a function, but got: {f}")
+         if utils.is_defined_in_class(orig_stack, f):
+             return f
+-        return parse(f, utils.inspect_function_capture(f), check_well_formed=check_well_formed)
++        extra_vars = utils.inspect_function_capture(f)
++        utils.resolve_closure_vars(f, extra_vars, orig_stack)
++        return parse(f, extra_vars, check_well_formed=check_well_formed)
+ 
+     if f is not None:
+         # if there are no optional args given, this will directly invoke the wrapper

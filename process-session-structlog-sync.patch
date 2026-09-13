@@ -1,0 +1,21 @@
+diff --git a/python/tvm/runtime/disco/session.py b/python/tvm/runtime/disco/session.py
+index 0a8125090..d8ec959fb 100644
+--- a/python/tvm/runtime/disco/session.py
++++ b/python/tvm/runtime/disco/session.py
+@@ -593,7 +593,15 @@ class ProcessSession(Session):
+ 
+         config = pickle.dumps(full_config)
+         func = self.get_global_func("runtime.disco._configure_structlog")
+-        func(config, os.getpid())
++        result = func(config, os.getpid())
++
++        # Release both remote registers while the session is still alive,
++        # then wait until every worker has processed their deallocation.
++        # Otherwise ProcessSession teardown may close a control pipe while a
++        # worker is still consuming the Structlog configuration call.
++        del result
++        del func
++        self._sync_all()
+ 
+ 
+ @register_global_func("runtime.disco.create_socket_session_local_workers")

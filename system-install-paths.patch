@@ -1,0 +1,20 @@
+diff --git a/python/tvm/libinfo.py b/python/tvm/libinfo.py
+index 16b38f917..8237b1074 100644
+--- a/python/tvm/libinfo.py
++++ b/python/tvm/libinfo.py
+@@ -45,6 +45,7 @@ def package_lib_paths() -> list[Path]:
+         pkg / "lib",  # wheel layout
+         _dev_top_directory() / "build" / "lib",  # dev: <worktree>/build/lib
+         _dev_top_directory() / "lib",  # dev: <worktree>/lib
++        Path("/usr/lib"),  # system-package layout
+     ]
+     return paths
+ 
+@@ -83,6 +84,7 @@ def find_include_path() -> str:
+         paths=[
+             _rel_top_directory() / "include",
+             _dev_top_directory() / "include",
++            Path("/usr/include"),
+         ],
+         cond=lambda p: (p / "tvm" / "runtime").is_dir(),
+     ):

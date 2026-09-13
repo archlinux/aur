@@ -1,0 +1,45 @@
+--- a/python/tvm/relax/frontend/torch/exported_program_translator.py
++++ b/python/tvm/relax/frontend/torch/exported_program_translator.py
+@@ -1793,6 +1793,9 @@ class ExportedProgramImporter(BaseFXGraphImporter):
+             "_assert_tensor_metadata.default": lambda node: self.env[
+                 node.args[0]
+             ],  # metadata assertion: no-op
++            # PyTorch 2.13 emits this side-effect-only guard for one_hot.
++            # It has no result and mirrors the existing scalar-assert no-op.
++            "_assert_async.msg": lambda node: None,
+             "empty.default": self._empty,
+             "empty.memory_format": self._empty,
+             "empty_permuted.default": self._empty,  # Similar to empty with permuted layout
+@@ -2083,6 +2086,16 @@ class ExportedProgramImporter(BaseFXGraphImporter):
+ 
+         mod = self.block_builder.get()
+         mod = relax.transform.BindParams("main", binding)(mod)
++
++        # _assert_async.msg itself has no Relax result, but PyTorch's
++        # decomposed guard predicate is otherwise left as a chain of unused
++        # pure bindings. Remove that chain so importing a model is invariant
++        # to the validation guards inserted by the installed PyTorch version.
++        if any(
++            node.op == "call_function" and node.target.__name__ == "_assert_async.msg"
++            for node in nodes
++        ):
++            mod = relax.transform.DeadCodeElimination(["main"])(mod)
+ 
+         if keep_params_as_input:
+             parameters = dict(exported_program.named_parameters())
+--- a/tests/python/relax/test_frontend_from_exported_program.py
++++ b/tests/python/relax/test_frontend_from_exported_program.py
+@@ -6779,10 +6779,10 @@ def test_one_hot():
+         ) -> R.Tuple(R.Tensor((5, 10), dtype="int64")):
+             with R.dataflow():
+-                lv: R.Tensor((10,), dtype="int64") = R.arange(
++                lv: R.Tensor((5, 1), dtype="int64") = R.expand_dims(indices, axis=[-1])
++                lv1: R.Tensor((10,), dtype="int64") = R.arange(
+                     R.prim_value(0), R.prim_value(10), R.prim_value(1), dtype="int64"
+                 )
+-                lv1: R.Tensor((5, 1), dtype="int64") = R.expand_dims(indices, axis=[-1])
+-                lv2: R.Tensor((5, 10), dtype="bool") = R.equal(lv1, lv)
++                lv2: R.Tensor((5, 10), dtype="bool") = R.equal(lv, lv1)
+                 lv3: R.Tensor((5, 10), dtype="int64") = R.astype(lv2, dtype="int64")
+                 gv: R.Tuple(R.Tensor((5, 10), dtype="int64")) = (lv3,)
+                 R.output(gv)
