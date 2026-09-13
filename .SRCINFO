@@ -12,7 +12,7 @@ pkgbase = uniconvertor
 	depends = python2-cairo
 	depends = python2-pillow
 	depends = python2-reportlab
-	source = https://downloads.sk1project.net/uc2/uniconvertor-2.0rc5.tar.gz
+	source = https://sourceforge.net/projects/fabiololix-os-archive/files/src/uniconvertor-2.0rc5.tar.gz
 	sha256sums = 55660b0757ee90b04c532252f98b5d95f5c6060e8bd8e1448ae50951894a3d3d
 
 pkgname = uniconvertor

@@ -10,9 +10,12 @@ pkgdesc="Universal vector graphics translator using sK1 engine."
 arch=(x86_64)
 url="https://sk1project.net/uc2/"
 license=(GPL3)
-depends=(lcms2 cairo imagemagick pango python2-cairo 
+depends=(lcms2 cairo imagemagick pango python2-cairo
          python2-pillow python2-reportlab)
-source=("https://downloads.sk1project.net/uc2/uniconvertor-$pkgver.tar.gz")
+source=(
+    #"https://downloads.sk1project.net/uc2/uniconvertor-${pkgver}.tar.gz"
+    https://sourceforge.net/projects/fabiololix-os-archive/files/src/uniconvertor-${pkgver}.tar.gz
+    )
 sha256sums=('55660b0757ee90b04c532252f98b5d95f5c6060e8bd8e1448ae50951894a3d3d')
 
 build() {
