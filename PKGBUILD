@@ -1,7 +1,7 @@
 pkgname=moroder-bin
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="Terminal client for YouTube Music with album art, MPRIS and Discord rich presence"
+pkgdesc="TUI client for YouTube Music with album art, MPRIS, Discord rich presence and minimal dependencies"
 arch=('x86_64')
 url="https://github.com/orrnithogalum/moroder"
 license=('AGPL-3.0-or-later' 'LicenseRef-discord-social-sdk')
