@@ -1,10 +1,15 @@
 pkgbase = python-qdrant-client
 	pkgdesc = Client library for the Qdrant vector search engine
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/qdrant/qdrant-client
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-autoflake
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-mock
+	checkdepends = ruff
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
@@ -19,8 +24,7 @@ pkgbase = python-qdrant-client
 	depends = python-pydantic
 	depends = python-urllib3
 	optdepends = python-fastembed: local embedding generation (fastembed extra)
-	optdepends = python-fastembed-gpu: GPU-accelerated local embedding generation (fastembed-gpu extra)
-	source = qdrant_client-1.18.0.tar.gz::https://files.pythonhosted.org/packages/source/q/qdrant-client/qdrant_client-1.18.0.tar.gz
-	sha256sums = 52e8ece1a7d40519801bf0b70713bfa0f6b7ae28c7275bbe0b0286fbed7f6db4
+	source = python-qdrant-client-1.19.0.tar.gz::https://github.com/qdrant/qdrant-client/archive/refs/tags/v1.19.0.tar.gz
+	sha256sums = d388bce332f2a28b253a229c4f6b58f2da0ff919267826ba51334f3809f0d2ca
 
 pkgname = python-qdrant-client
