@@ -1,0 +1,3 @@
+root ALL=(ALL:ALL) ALL
+# %wheel ALL=(ALL:ALL) ALL
+@includedir /etc/sudoers.d

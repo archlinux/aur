@@ -1,0 +1,18 @@
+pkgbase = sudo-is-sudo-rs
+	pkgdesc = Metapackage to replace standard sudo binaries with sudo-rs
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = https://github.com/trifectatechfoundation/sudo-rs
+	arch = any
+	license = GPL-3.0-or-later
+	depends = sudo-rs
+	provides = sudo
+	conflicts = sudo
+	backup = etc/pam.d/sudo
+	backup = etc/sudoers
+	source = sudo.pam
+	source = sudoers
+	sha256sums = 962deaf1a161721b3aeb0509bb7742c4d3fe89807d54b311775a9e45c3d6c3c0
+	sha256sums = 37dfee73bdc06c35d7b0b6bc072cd2e5ecb80b9937b4b6f76dae2a8056edfc45
+
+pkgname = sudo-is-sudo-rs
