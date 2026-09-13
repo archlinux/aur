@@ -2,9 +2,9 @@
 # Maintainer: rubiin <roobin.bhandari@gmail.com>
 
 pkgname='projecto-bin'
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="A fast, Go rewrite of [phoney badger's pokemon-colorscripts](https://gitlab.com/phoneybadger/pokemon-colorscripts) that prints Pokémon sprites in color directly in your terminal."
+pkgdesc='Launch your project folders directly in your editor of choice from a single command.'
 url='https://github.com/rubiin/projecto'
 arch=('aarch64' 'i686' 'x86_64')
 license=('GPL-3.0-only')
@@ -12,17 +12,21 @@ provides=('projecto')
 conflicts=('projecto' 'projecto-git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rubiin/projecto/releases/download/v${pkgver}/projecto_Linux_arm64.tar.gz")
-sha256sums_aarch64=('2de9eed19f6b52d3ca5e31402d44472aed23f14c1446e9fbf92b61c487290399')
+sha256sums_aarch64=('ae493efd09296754c4391060f0632f412c21cd08bdc8d1ff2150fc5c9f15816a')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rubiin/projecto/releases/download/v${pkgver}/projecto_Linux_i386.tar.gz")
-sha256sums_i686=('48d6dc36421b336dd4a4129aa36064d06993415de001bba41aeb8faad40115c6')
+sha256sums_i686=('460e677ead40f85183d46ba9f1edb24e64f9a878a11e3d5aa7bfda2d820a24cb')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rubiin/projecto/releases/download/v${pkgver}/projecto_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('877bb2f08219bcf57a492a5d6707fda93813dba1d635a71bd552f7c34282a194')
+sha256sums_x86_64=('2984c95e07c179a939450384f777fc0a48630634ec90a935562e546348226f7a')
 
 package() {
   # bin
   install -Dm755 "./projecto" "${pkgdir}/usr/bin/projecto"
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/projecto/LICENSE"
+  # shell completions
+  install -Dm644 "./completions/projecto.bash" "${pkgdir}/usr/share/bash-completion/completions/projecto"
+  install -Dm644 "./completions/_projecto" "${pkgdir}/usr/share/zsh/site-functions/_projecto"
+  install -Dm644 "./completions/projecto.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/projecto.fish"
 }
