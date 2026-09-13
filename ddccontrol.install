@@ -1,10 +1,8 @@
 post_install() {
   cat <<EOF
-For some of nvidia proprietary driver users will be necessary to add this:
-  >>  Option "RegistryDwords" "RMUseSwI2c=0x01; RMI2cSpeed=100"
-to "Device" section in:
-  >>  /etc/X11/xorg.conf.d/20-nvidia.conf
-or similar place.
+If DDC/CI is not working over DisplayPort/HDMI with the NVIDIA proprietary
+driver, copy the shipped Xorg snippet to enable software I2C and restart X:
+  >>  sudo cp /usr/share/ddccontrol/90-nvidia-i2c.conf /etc/X11/xorg.conf.d/
 EOF
 }
 post_install
