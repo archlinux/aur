@@ -5,17 +5,17 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=610.57.04
+pkgver=615.71.09
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
-license=('LicenseRef-custom')
+license=('LicenseRef-NVIDIA-Driver-License-Agreement')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
-        'nvidia-sleep.conf'
+        'nvidia-utils.conf'
         'nvidia-utils.sysusers'
         'nvidia.rules'
         'systemd-homed-override.conf'
@@ -23,11 +23,11 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         '10-gsk.conf'
         'gsk-renderer.sh'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('b2e935c66b83bb00c0c857bc8e0ee0fd52de9286b40c9cc1eec29a7ce7eb116d'
+sha256sums=('cdceed22bbeb61248d1a6deabc2596673e3a6501698ee71ac8d2fdc28f3b70fe'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
-            '19800e91ab96a8be828af1383cbbadeda9f65f709e52f1217b54d5f3f1282318'
+            '8ed91802c2a2d5b46c0692c624caf01dcde62a885dc617dda6694f4666de4c8e'
             'f77a5247a3ba63e9fad3a3b2822d0fcfa51e0f79b5a90bd79bf08ea34b64ab07'
-            '0e54249a7754b668b436f0f7aa7e95fff68edbb12a93dbee4660e09a8c695f84'
+            'e30714f9b473d810c28763d067e0b85c75f86f23618d968b49b9d1fced9a1dd6'
             'c5aa7b8abe69e72bfdc6b9ee8afbfd350bcc557e894558f2e6e4087fa9aa0dd8'
             '1d053c5078387021338cfc3a732bed61be1a20a549775573788e9134775c8149'
             '05af96f86b7b3b40b93160fdcb702572401579f8756c0831b5de5f8e9afebeba'
@@ -172,6 +172,8 @@ package_nvidia-utils-beta() {
     install -D -m755 "libnvidia-encode.so.${pkgver}"    -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-cfg.so.${pkgver}"       -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-ml.so.${pkgver}"        -t "${pkgdir}/usr/lib"
+    install -D -m755 "libnvidia-fmdrv.so.${pkgver}"     -t "${pkgdir}/usr/lib"
+    install -D -m755 "libnvidia-imex.so.${pkgver}"      -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-glvkspirv.so.${pkgver}" -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-allocator.so.${pkgver}" -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-gpucomp.so.${pkgver}"   -t "${pkgdir}/usr/lib"
@@ -283,11 +285,10 @@ package_nvidia-utils-beta() {
     install -D -m644 "${srcdir}/nvidia-utils.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -D -m644 "${srcdir}/nvidia.rules" "${pkgdir}/usr/lib/udev/rules.d/60-nvidia.rules"
     
-    install -D -m644 <(printf '%s\n%s\n%s\n' 'blacklist nouveau' 'blacklist nova_core' 'blacklist nova_drm') "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
     install -D -m644 <(printf '%s\n' 'nvidia-uvm') "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
     
     # enable NVreg_UseKernelSuspendNotifiers and TemporaryFilePath
-    install -D -m644 "${srcdir}/nvidia-sleep.conf" -t "${pkgdir}/usr/lib/modprobe.d"
+    install -D -m644 "${srcdir}/nvidia-utils.conf" -t "${pkgdir}/usr/lib/modprobe.d"
     
     # Vulkan GTK renderer crash fix
     # https://forums.developer.nvidia.com/t/580-65-06-gtk-4-apps-hang-when-attempting-to-exit-close/341308/5?u=ptr1337
