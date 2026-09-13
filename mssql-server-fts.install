@@ -1,4 +1,41 @@
-post_install()
-{
-  echo "Restart your mssql-server instance: systemctl restart mssql-server"
+_hint() {
+	if systemctl is-active --quiet mssql-server 2>/dev/null; then
+		cat <<'MSG'
+
+  Full-text search files are in place, but the running engine still has the
+  previous sqlservr.fts.sfp open. This package does not restart services;
+  load the new module when it suits you:
+
+      sudo systemctl restart mssql-server
+
+MSG
+	else
+		cat <<'MSG'
+
+  Full-text search files are in place. They are loaded the next time the
+  engine starts:
+
+      sudo systemctl start mssql-server
+
+MSG
+	fi
+}
+
+post_install() {
+	_hint
+}
+
+post_upgrade() {
+	_hint
+}
+
+post_remove() {
+	cat <<'MSG'
+
+  Full-text search files removed. The running engine keeps the old module
+  open until it is restarted:
+
+      sudo systemctl restart mssql-server
+
+MSG
 }

@@ -1,1 +1,8 @@
-*.rpm
+#Ignore everything
+*
+
+#But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!mssql-server-fts.install
