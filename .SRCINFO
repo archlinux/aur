@@ -1,6 +1,6 @@
 pkgbase = winegui-bin
 	pkgdesc = A user-friendly WINE graphical interface
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://gitlab.melroy.org/melroy/winegui
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = winegui-bin
 	depends = python
 	provides = winegui
 	conflicts = winegui
-	source = winegui-bin-4.3.0.tar.gz::https://winegui.melroy.org/downloads/WineGUI-v4.3.0.tar.gz
-	md5sums = 1b4496006358607bd3aa1fd15cafe284
+	source = winegui-bin-4.4.0.tar.gz::https://winegui.melroy.org/downloads/WineGUI-v4.4.0.tar.gz
+	md5sums = 5a02780bbfcfcfc6cc39ab06b6eab6d8
 
 pkgname = winegui-bin
