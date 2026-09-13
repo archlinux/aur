@@ -5,7 +5,7 @@
 
 pkgname=usql-bin
 pkgver=0.21.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A universal command-line interface for SQL databases'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xo/usql"
