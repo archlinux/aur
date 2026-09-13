@@ -10,8 +10,8 @@ url="https://github.com/jschneier/django-storages"
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/d/${_module}/${_module}-${pkgver}.tar.gz")
-sha256sums=('69aca94d26e6714d14ad63f33d13619e697508ee33ede184e462ed766dc2a73f')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('80fa01c2e8f10276dbea5cbd9f8a6dc2c17a5fa603d8f23e9c7cbbf3070a0d2f')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
