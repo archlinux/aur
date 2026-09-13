@@ -1,0 +1,19 @@
+pkgbase = crona-bin
+	pkgdesc = Local-first work tracking for people who live in the terminal
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/webxsid/crona
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = crona
+	provides = crona-tui
+	provides = crona-daemon
+	conflicts = crona
+	options = !strip
+	source_x86_64 = crona-x86_64-1.9.0.zip::https://github.com/webxsid/crona/releases/download/v1.9.0/crona-bundle-1.9.0-linux-amd64.zip
+	sha256sums_x86_64 = 2a85a9055c216017663a1c996344c27b8e1fd84649e99c1233122745246daf5e
+	source_aarch64 = crona-aarch64-1.9.0.zip::https://github.com/webxsid/crona/releases/download/v1.9.0/crona-bundle-1.9.0-linux-arm64.zip
+	sha256sums_aarch64 = 831ff46587ec27940c72d17c4bdf6f56849e8cce81008c55d5f2cfadeac0bb28
+
+pkgname = crona-bin

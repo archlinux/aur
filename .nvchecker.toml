@@ -1,0 +1,5 @@
+[crona-bin]
+source = "github"
+github = "webxsid/crona"
+use_latest_release = true
+prefix = "v"
