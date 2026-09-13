@@ -1,7 +1,7 @@
 pkgbase = python-tree-sitter-markdown
 	pkgdesc = Python Bindings for tree-sitter-markdown
 	pkgver = 0.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tree-sitter-grammars/tree-sitter-markdown
 	arch = x86_64
 	arch = aarch64
