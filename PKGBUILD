@@ -3,12 +3,15 @@ groups=('modified')
 
 pkgname=media-downloader
 pkgver=5.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt/C++ front end to yt-dlp, youtube-dl, gallery-dl, lux, you-get, svtplay-dl, aria2c, wget and safari books."
 arch=('x86_64')
 url="https://github.com/mhogomchungu/media-downloader"
 license=('GPL-2.0-only OR GPL-3.0-or-later')
-depends=('qt6-base')
+depends=(
+  'qt6-base'
+  'python-mutagen'
+)
 makedepends=('cmake')
 optdepends=(
   'aria2: aria2c backend'

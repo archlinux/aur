@@ -1,13 +1,14 @@
 pkgbase = media-downloader
 	pkgdesc = A Qt/C++ front end to yt-dlp, youtube-dl, gallery-dl, lux, you-get, svtplay-dl, aria2c, wget and safari books.
 	pkgver = 5.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mhogomchungu/media-downloader
 	arch = x86_64
 	groups = modified
 	license = GPL-2.0-only OR GPL-3.0-or-later
 	makedepends = cmake
 	depends = qt6-base
+	depends = python-mutagen
 	optdepends = aria2: aria2c backend
 	optdepends = ffmpeg: video post-processing
 	optdepends = python-lxml: required for Safari books plugin
