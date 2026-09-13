@@ -1,0 +1,16 @@
+pkgbase = xfkey-wonkey-bin
+	pkgdesc = Configure your XFKEY One Key Max on Linux.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/wimpysworld/WonKey
+	license = BlueOak-1.0.0
+	conflicts = wonkey
+	provides = wonkey
+	arch = aarch64
+	source_aarch64 = https://github.com/wimpysworld/WonKey/releases/download/v0.1.1/WonKey_0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = d82d024d519a59eea39f7849c3e964932fc7f0e2615100eebeea1eca57079f65
+	arch = x86_64
+	source_x86_64 = https://github.com/wimpysworld/WonKey/releases/download/v0.1.1/WonKey_0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6431d1a078cc6d401ba04d00835de026dcad2584c61f8f016ea4bccdce65663f
+	
+pkgname = xfkey-wonkey-bin
