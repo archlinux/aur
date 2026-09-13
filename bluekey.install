@@ -1,0 +1,8 @@
+post_install() {
+	useradd -r -s /bin/nologin -M -G input bluekey
+	echo "Enable bluekeyd.service to activate bluekey."
+}
+
+post_remove() {
+	userdel bluekey	
+}
