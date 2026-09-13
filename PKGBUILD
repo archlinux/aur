@@ -7,7 +7,7 @@
 
 pkgname=freefilesync
 pkgver=14.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder comparison and synchronization software"
 arch=(x86_64)
 url="https://freefilesync.org"
@@ -48,6 +48,7 @@ prepare() {
 build() {
     CXXFLAGS+=" -DMAX_SFTP_READ_SIZE=30000 -DMAX_SFTP_OUTGOING_SIZE=30000 \
         -DwxInfoDC=wxClientDC -DwxReadOnlyDC=wxDC -DwxSYS_COLOUR_GRIDLINES=wxSYS_COLOUR_BTNFACE \
+        -DwxNO_IMPLICIT_WXSTRING_ENCODING \
         -DLIBSSH2_ERROR_STORE_OVERFLOW=-55" # from https://github.com/libssh2/libssh2/blob/master/include/libssh2.h#L530
     LDFLAGS+=" `pkg-config --libs gtk+-3.0`"
     MAKEFLAGS+=" -s -j`nproc`"
