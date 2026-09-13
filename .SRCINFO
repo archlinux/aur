@@ -9,6 +9,7 @@ pkgbase = opengrep
 	makedepends = dune
 	makedepends = git
 	makedepends = ocaml
+	makedepends = ocamlbuild
 	makedepends = opam
 	makedepends = pkgconf
 	makedepends = python-build

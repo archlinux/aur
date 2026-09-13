@@ -43,7 +43,7 @@ _ocaml_tree_sitter_core_commit=1392efc21e60d5acde72d0d1c6586f5692fedace
 _pcre2_ocaml_commit=51cde0d79f8d72562b4d4ebfb07d4bbe719249c6
 _testo_commit=634c978b8c03f02f8f172820fed4554aff721313
 _semgrep_rules_commit=40b8c63f75dc7c22c8a77482d73bfb864b146f7e
-_opam_switch_stamp=3
+_opam_switch_stamp=4
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep"
 arch=('x86_64' 'aarch64')
 url="https://github.com/opengrep/opengrep"
@@ -76,6 +76,7 @@ makedepends=(
   'dune'
   'git'
   'ocaml'
+  'ocamlbuild'
   'opam'
   'pkgconf'
   'python-build'
@@ -201,6 +202,10 @@ build() {
   fi
 
   export OCAMLPATH="${OPAMROOT}/${pkgname}/lib"
+
+  if ! opam list --switch="${pkgname}" --installed --short ocamlbuild | grep -Fxq ocamlbuild; then
+    opam install --switch="${pkgname}" --fake ocamlbuild
+  fi
 
   opam pin --switch="${pkgname}" add -n -k path \
     memprof-limits.dev "${srcdir}/memprof-limits"
