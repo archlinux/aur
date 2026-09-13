@@ -1,7 +1,7 @@
 pkgbase = gam
 	pkgdesc = command line management for Google Workspace
 	pkgver = 7.48.07
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GAM-team/GAM
 	arch = any
 	license = Apache-2.0
@@ -26,6 +26,7 @@ pkgbase = gam
 	depends = python-passlib
 	depends = python-pathvalidate
 	depends = python-pysocks
+	optdepends = yubikey-manager: For Yubikey support
 	conflicts = gam-git
 	replaces = gamadv-xtd3
 	source = GAM-7.48.07.tar.gz::https://github.com/GAM-team/GAM/archive/refs/tags/v7.48.07.tar.gz

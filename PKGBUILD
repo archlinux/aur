@@ -6,7 +6,7 @@
 
 pkgname=gam
 pkgver=7.48.07
-pkgrel=1
+pkgrel=2
 pkgdesc="command line management for Google Workspace"
 arch=('any')
 url="https://github.com/GAM-team/GAM"
@@ -32,6 +32,7 @@ depends=(
     'python-pathvalidate'
     'python-pysocks'
 )
+optdepends=('yubikey-manager: For Yubikey support')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 
 source=(
