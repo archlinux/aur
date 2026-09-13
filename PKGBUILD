@@ -10,10 +10,10 @@ depends=('alsa-lib' 'libpulse' 'pipewire')
 optdepends=('pipewire-pulse: PulseAudio compatibility via PipeWire')
 source=('.managed_by_aur')
 sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
-source_x86_64=("CastSound-${pkgver}-linux-x86_64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-${pkgver}-linux-x86_64.tar.gz")
-source_aarch64=("CastSound-${pkgver}-linux-aarch64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('956bf3f06c599a310fc865f831f314c62d43898f863202ee1ca9f7811491d980')
-sha256sums_aarch64=('52126bef968598024172dab95e8e553e0a2c911662ea325fc1931a783492ec7b')
+source_x86_64=("CastSound-0.1.0-linux-x86_64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-0.1.0-linux-x86_64.tar.gz")
+source_aarch64=("CastSound-0.1.0-linux-aarch64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v${pkgver}/CastSound-0.1.0-linux-aarch64.tar.gz")
+sha256sums_x86_64=('43a701615f291bf46c1837e839a2dbf666d72cdf2d6107d0943ca76e58adefc2')
+sha256sums_aarch64=('153dd7c50217c80757efd4935cf3d589e051a917b8cd68bb3b777607982c9016')
 
 package() {
   cd "${srcdir}"
