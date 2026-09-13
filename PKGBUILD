@@ -3,15 +3,14 @@
 
 pkgname=bgutil-ytdlp-pot-provider
 pkgver=0.8.1
-pkgrel=7
+pkgrel=8
 pkgdesc='High-performance YouTube POT token provider for yt-dlp (Rust implementation)'
 arch=('x86_64')
 url='https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs'
 license=('GPL-3.0-or-later')
-depends=('glibc' 'libgcc' 'openssl')
+depends=('glibc' 'libgcc' 'openssl' 'python')
 optdepends=('yt-dlp>=2025.05.22: video downloading (for POT plugin integration)')
 provides=("bgutil-pot=$pkgver")
-install="$pkgname.install"
 source=(
     "bgutil-ytdlp-pot-provider-rs-$pkgver.zip::$url/releases/download/v$pkgver/bgutil-ytdlp-pot-provider-rs.zip"
     "upstream-LICENSE-$pkgver::$url/raw/v$pkgver/LICENSE"
@@ -39,7 +38,9 @@ package() {
         "$pkgdir/usr/lib/libbgutil_ytdlp_pot_provider.so"
 
     # yt-dlp plugins
-    local plugindir="$pkgdir/usr/share/yt-dlp-plugins/$pkgname"
+    local site_packages plugindir
+    site_packages="$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')"
+    plugindir="$pkgdir$site_packages"
     install -dm755 "$plugindir/yt_dlp_plugins/extractor"
     bsdtar --no-same-owner -xf "bgutil-ytdlp-pot-provider-rs-$pkgver.zip" \
         -C "$plugindir"

@@ -1,14 +1,14 @@
 pkgbase = bgutil-ytdlp-pot-provider
 	pkgdesc = High-performance YouTube POT token provider for yt-dlp (Rust implementation)
 	pkgver = 0.8.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs
-	install = bgutil-ytdlp-pot-provider.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = glibc
 	depends = libgcc
 	depends = openssl
+	depends = python
 	optdepends = yt-dlp>=2025.05.22: video downloading (for POT plugin integration)
 	provides = bgutil-pot=0.8.1
 	source = bgutil-ytdlp-pot-provider-rs-0.8.1.zip::https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/releases/download/v0.8.1/bgutil-ytdlp-pot-provider-rs.zip
