@@ -1,0 +1,4 @@
+src/
+pkg/
+steno/
+*.pkg.tar.zst

@@ -1,0 +1,37 @@
+pkgbase = steno-git
+	pkgdesc = Listens to your meetings and turns them into notes and todos
+	pkgver = 0.11.0.r0.g52f998c
+	pkgrel = 1
+	url = https://github.com/jaehho/steno
+	install = steno.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = glib2
+	depends = pango
+	depends = gtk4
+	depends = libadwaita>=1:1.6
+	depends = libdbusmenu-glib
+	depends = hicolor-icon-theme
+	depends = python-websockets
+	depends = python-httpx
+	depends = python-dotenv
+	depends = libpulse
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	optdepends = claude-code: summaries and questions (or its native install on PATH)
+	optdepends = libnotify: desktop notifications when a summary is ready
+	optdepends = python-numpy: `steno clean-echo`, for meetings recorded on speakers
+	provides = steno
+	conflicts = steno
+	source = git+https://github.com/jaehho/steno.git
+	sha256sums = SKIP
+
+pkgname = steno-git

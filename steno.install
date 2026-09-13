@@ -1,0 +1,12 @@
+post_install() {
+  echo "Steno listens for meetings only while it is running. To start it at"
+  echo "login, turn on \"Start at login\" in its window menu (or: steno autostart on)."
+}
+
+post_upgrade() {
+  # Before 0.11 the package started the listener for every user at login.
+  if [ "$(vercmp "$2" 0.11)" -lt 0 ]; then
+    echo "Steno no longer starts at login for every user. Turn on \"Start at"
+    echo "login\" in its window menu (or: steno autostart on) where you want it."
+  fi
+}
