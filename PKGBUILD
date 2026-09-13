@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 pkgname=dbx
 pkgver=0.6.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source database management tool (Tauri-based)"
 arch=('x86_64')
 url="https://github.com/t8y2/dbx"
@@ -15,6 +15,7 @@ depends=(
     'hicolor-icon-theme'
 )
 makedepends=(
+    # Check rustc >= 1.94.1 below; a versioned dependency excludes rustup.
     'rust'
     'cargo'
     'nodejs'
@@ -33,11 +34,25 @@ options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('fad67cafbb79618a2f13799c5571577b67225fc69e30c3278065c310d170a8c0')
 
+# rustup provides an unversioned "rust" package, so check the actual toolchain.
+_check_rust_version() {
+    local rust_version minimum=1.94.1
+    rust_version=$(rustc --version) || return 1
+    rust_version=${rust_version#rustc }
+    rust_version=${rust_version%% *}
+    if (( $(vercmp "$rust_version" "$minimum") < 0 )); then
+        error "DBX requires rustc >= $minimum; the selected toolchain is $rust_version."
+        error "Upgrade system Rust with 'sudo pacman -Syu', or run 'rustup update stable' and select it with RUSTUP_TOOLCHAIN=stable."
+        return 1
+    fi
+}
+
 prepare() {
     cd "$pkgname-$pkgver"
 
     # Keep all build state inside $srcdir, never touch user $HOME
     export CARGO_HOME="$srcdir/.cargo"
+    _check_rust_version || return 1
     export npm_config_cache="$srcdir/.npm"
     pnpm config --location project set store-dir "$srcdir/.pnpm-store"
 
@@ -65,7 +80,7 @@ build() {
     cd "$pkgname-$pkgver"
 
     export CARGO_HOME="$srcdir/.cargo"
-    export RUSTUP_TOOLCHAIN=stable
+    _check_rust_version || return 1
     # Disable LTO. With lto="thin" (set in workspace Cargo.toml) plus rust-lld,
     # native static libs from build scripts (aws-lc-sys, ring, etc.) end up
     # with undefined symbols at final link. Disabling LTO restores normal

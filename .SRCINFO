@@ -1,7 +1,7 @@
 pkgbase = dbx
 	pkgdesc = Open-source database management tool (Tauri-based)
 	pkgver = 0.6.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/t8y2/dbx
 	arch = x86_64
 	license = Apache-2.0
