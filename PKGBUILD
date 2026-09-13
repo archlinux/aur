@@ -22,7 +22,6 @@ build() {
     --prefix=/usr \
     --sbindir='${exec_prefix}/bin' \
     --sysconfdir=/etc \
-    --disable-rmt \
     --disable-selinux
   make
 }
@@ -35,6 +34,8 @@ package() {
   #mv -v "$pkgdir"/usr/bin/restore{,.dump}
   #mv -v "$pkgdir"/usr/share/man/man8/restore{,.dump}.8
   #ln -vnsf restore.dump "$pkgdir"/usr/bin/rrestore
+  # This does conflict with tar, although only in manpage, not binary (tar puts it in lib):
+  mv -v "$pkgdir"/usr/share/man/man8/rmt{,.dump}.8
 }
 
 # vim:set ts=2 sw=2 et:
