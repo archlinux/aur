@@ -1,7 +1,7 @@
 pkgbase = lmm-api-web-bin
 	pkgdesc = LMM API production web frontend (prebuilt)
 	pkgver = 0.1.71
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TokenNotIncluded/api.lmm.best
 	install = lmm-api-web.install
 	arch = any
