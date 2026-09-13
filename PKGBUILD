@@ -2,7 +2,7 @@
 pkgname=netease-cloud-music-gtk4-git
 _pkgname=netease-cloud-music-gtk
 pkgver=r258.25bb95c
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux 平台下基于 Rust + GTK4 开发的网易云音乐播放器"
 arch=('x86_64')
 url="https://github.com/gmg137/netease-cloud-music-gtk"
@@ -11,9 +11,9 @@ depends=(
 	'libadwaita'
 	'gst-plugins-base'
 	'gst-plugins-good'
+	'gst-plugins-bad'
 )
 optdepends=(
-	'gst-plugins-bad: extra media codecs'
 	'gst-plugins-ugly: extra media codecs'
  )
 makedepends=('cargo' 'meson' 'git')
