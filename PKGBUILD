@@ -4,7 +4,7 @@
 
 _extname=event
 pkgname=php-${_extname}
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc='Provides interface to libevent library for PHP'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('PHP-3.01')
 depends=('php>=5.4' 'libevent' 'openssl')
 source=("${pkgname}-${pkgver}.zip::https://bitbucket.org/osmanov/pecl-${_extname}/get/${pkgver}.zip")
 noextract=("${pkgname}-${pkgver}.zip")
-sha256sums=('6f35a1622893c3642eed656ec83935907c1673eefaad93b81590c8a4f25036b3')
+sha256sums=('9bfbb7cbc170a21162939033c0d3a8aca506be3160e91ed97fb93d1dc0efd7c6')
 
 prepare() {
   if ! php -m | grep -q '^sockets$'; then
