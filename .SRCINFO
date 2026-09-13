@@ -1,7 +1,7 @@
 pkgbase = intel-llm
 	pkgdesc = One entry point for fast local LLMs on Intel laptops (Arc GPU via official llama-cpp + ggml-sycl, NPU via OpenVINO GenAI)
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/corbet-labs/intel-llm
 	arch = any
 	license = MIT

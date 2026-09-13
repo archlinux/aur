@@ -11,7 +11,29 @@
 #
 # All layers offload to the GPU by default (-ngl 999); pass your own
 # -ngl / --n-gpu-layers to override.
-set -euo pipefail
+#
+# NB: `ggml-sycl` links MKL/DNNL from /opt/intel/oneapi, which is NOT on the
+# default loader path (the toolkit's ld.conf only covers the compiler). Source
+# oneAPI here so the SYCL backend actually loads — without this, llama.cpp sees
+# zero devices and model load stalls. `set -u` is dropped: oneAPI's vars script
+# references unset variables and would abort under `-u`.
+set -eo pipefail
+
+_sourced=
+for _vars in /opt/intel/oneapi/*/oneapi-vars.sh /opt/intel/oneapi/setvars.sh; do
+  if [[ -r $_vars ]]; then
+    # shellcheck disable=SC1090
+    source "$_vars" >/dev/null 2>&1 || true
+    _sourced=1
+    break
+  fi
+done
+if [[ -z $_sourced ]]; then
+  echo "intel-gpu: Intel oneAPI not found under /opt/intel/oneapi." >&2
+  echo "            Install 'ggml-sycl' (pulls 'intel-oneapi-toolkit') for the SYCL backend." >&2
+  exit 1
+fi
+set -u
 
 # Allow `intel-gpu llama-server ...` as well as `intel-gpu server ...`.
 if [[ ${1:-} == llama-* && -x "/usr/bin/$1" ]]; then

@@ -9,7 +9,7 @@
 
 pkgname=intel-llm
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="One entry point for fast local LLMs on Intel laptops (Arc GPU via official llama-cpp + ggml-sycl, NPU via OpenVINO GenAI)"
 arch=('any')
 url='https://github.com/corbet-labs/intel-llm'

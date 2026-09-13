@@ -19,8 +19,14 @@ case "$cmd" in
   npu) exec intel-npu "$@" ;;
   devices)
     echo "Arc GPU (SYCL / llama.cpp):"
-    if [[ -x /usr/bin/llama-server && -e /usr/lib/ggml/libggml-sycl.so ]]; then
-      echo "  available (llama-cpp + ggml-sycl present)"
+    if [[ -x /usr/bin/llama-cli && -e /usr/lib/ggml/libggml-sycl.so ]]; then
+      # Prove the backend loads (oneAPI MKL/DNNL must resolve): file presence
+      # alone is not enough, a broken loader path shows zero devices.
+      if bash -c 'source /opt/intel/oneapi/setvars.sh >/dev/null 2>&1; exec llama-cli --list-devices 2>/dev/null' | grep -q SYCL; then
+        bash -c 'source /opt/intel/oneapi/setvars.sh >/dev/null 2>&1; exec llama-cli --list-devices 2>/dev/null' | sed 's/^/  /'
+      else
+        echo "  backend present but no SYCL device visible — reinstall 'ggml-sycl' / 'intel-oneapi-toolkit'"
+      fi
     elif [[ -x /usr/bin/llama-server ]]; then
       echo "  binary present, but install 'ggml-sycl' for the SYCL backend"
     else echo "  not installed (pacman -S llama-cpp ggml-sycl)"; fi
