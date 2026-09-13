@@ -5,35 +5,55 @@
 # shellcheck disable=SC2034
 
 pkgname=gam
-pkgver=7.44.01
+pkgver=7.48.07
 pkgrel=1
 pkgdesc="command line management for Google Workspace"
 arch=('any')
 url="https://github.com/GAM-team/GAM"
 license=('Apache-2.0')
 replaces=('gamadv-xtd3')
+conflicts=('gam-git')
+depends=(
+    'python>=3.10'
+    'python-arrow'
+    'python-dateutil'
+    'python-distro'
+    'python-chardet'
+    'python-cryptography'
+    'python-dnspython'
+    'python-filelock'
+    'python-google-api-python-client'
+    'python-google-auth-httplib2'
+    'python-google-auth-oauthlib'
+    'python-google-auth'
+    'python-httplib2'
+    'python-lxml'
+    'python-passlib'
+    'python-pathvalidate'
+    'python-pysocks'
+)
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-depends=('python>=3.10')
 
 source=(
   "${pkgname^^}-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
   "gam.sh"
 )
 
-sha256sums=('d13101e6d5e02470fefeaa4a2001d9463f5a3e0445b9f72e026f513601ca59ea'
+sha256sums=('1f375e491e8adf6486c2da72bc308a142fb9849630c57b10ddb610e5ccaf2817'
             'f8613546b8d4a51f05342d3680553c20a2e0995c3be90e469f1da3bb83ca172e')
 
 prepare() {
-  mv "${pkgname^^}-$pkgver" "$pkgname-$pkgver"
+  cd "${pkgname^^}-$pkgver"
+  sed -i 's/hatchling<1.30.0/hatchling/g' pyproject.toml
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname^^}-$pkgver"
   /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname^^}-$pkgver"
 
   install -d -m 0755 "$pkgdir/usr/share/$pkgname"
   install -d -m 0755 "$pkgdir/usr/share/doc/$pkgname"
