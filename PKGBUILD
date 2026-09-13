@@ -3,9 +3,9 @@
 pkgname=eclipse-dsl-bin
 _pkgname=${pkgname%-bin}
 epoch=2
-pkgver=4.40
+pkgver=4.41
 pkgrel=1
-_release=2026-06/R
+_release=2026-09/R
 pkgdesc="Highly extensible IDE (Java and DSL version)"
 arch=('x86_64' 'aarch64')
 url="https://www.eclipse.org/"
@@ -22,8 +22,8 @@ source_x86_64=("$_srcfilename_x86_64::https://www.eclipse.org/downloads/download
 source_aarch64=("$_srcfilename_aarch64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_aarch64&r=1")
 
 sha512sums=('542a20e13e7f486c55bfc8e22a9da6f4100125809de6b0a2ecdd95e2ca6a242d4dd02d0eeec328c3a7a96bb4a31d2c0e2c7a8cbdfae7f606c46b8029523f8da2')
-sha512sums_x86_64=('e28af0299c813f2b811a59597a034522e6953a3868238204c5f199453b5fa2f6a98176e4e9bff0d56c660287ab34e2b90587e8c76e1e9cd60de950ab6d425261')
-sha512sums_aarch64=('9ad5dd6b8b900ac4a69cc16038bcdd667957b1c1cb83d86a3c2f368dc26e5992d1c18e47613ba65b62a928112c7940eab93356a9845f2d90ea832ffbe1c527ef')
+sha512sums_x86_64=('9c770531c50f51db1a20d21905ffe4c06062031bb5f6a67c03f51b4752c57a8a41495b8d85140497679eb0f537316f11e3510aaaa531ecd5f2eaa27d183c5c1d')
+sha512sums_aarch64=('8b463d13fb4417b6c43517662986e730960caef1863df89e6f9d874549fbd3c6e5e79ad3ea13a0babf36377ace14a911f8b2ebdfc51ec640b912dfd9bf7121f6')
 
 source=("eclipse.desktop")
 
