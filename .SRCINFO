@@ -10,8 +10,8 @@ pkgbase = virtualgamepad-bin
 	options = !strip
 	source = virtualgamepad.desktop
 	source = virtualgamepad.png
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = c2d383bab2c5045d24cfe7a2463a35e19e827f14cfa79372ec28125514ccfcd2
+	sha256sums = f1edbb027cef46a41c00024efac1053c257cc4f44089c30f6f1ed2a753151be3
 	source_x86_64 = https://github.com/kitswas/VirtualGamePad-PC/releases/download/v0.4.1/Virtual-Gamepad-Ubuntu.zip
 	sha256sums_x86_64 = 69500c41c174838b4b7ce3288a28c0d2d453501cddfd74c593d454776e24bb46
 
