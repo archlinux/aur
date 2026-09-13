@@ -7,7 +7,7 @@
 
 pkgname=freefilesync
 pkgver=14.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Folder comparison and synchronization software"
 arch=(x86_64)
 url="https://freefilesync.org"
@@ -25,7 +25,7 @@ source=(
 sha256sums=('3df48f984233451257808233af0b0dd025c2004ebad945f86116b261114c3a4d'
             'f7fc56e3107a5ae4a7fc63246451f7d481f70c85e3190139c036c6bc6eb97500'
             '049b415078c5037c82ed8316aa0d22d4629dbdff2d2b1b4df3f3554218915f33'
-            '3b22fd2d9aedfa321d50dbba3147c29047017fc3fa71ece510963197177cf9ff')
+            'ee076ab0db22127a623c90d487161eff6bc329a8e41f2d91193aa471265e714a')
 
 prepare() {
     msg2 'patching wxwidgets 3.3isms'
