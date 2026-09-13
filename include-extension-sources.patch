@@ -1,0 +1,31 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -42,5 +42,16 @@
+ where = ["."]
+ include = ["optimum*"]
+ 
++[tool.setuptools.package-data]
++"optimum.quanto" = [
++    "library/extensions/cpp/*",
++    "library/extensions/cuda/*",
++    "library/extensions/cuda/awq/*",
++    "library/extensions/cuda/awq/v2/*",
++    "library/extensions/cuda/marlin/*",
++    "library/extensions/hip/*",
++    "library/extensions/mps/*",
++]
++
+ [tool.setuptools.dynamic]
+ version = {attr = 'optimum.quanto.__version__'}
+--- a/optimum/quanto/library/extensions/cpp/__init__.py
++++ b/optimum/quanto/library/extensions/cpp/__init__.py
+@@ -25,7 +25,7 @@ ext = Extension(
+     "quanto_cpp",
+     root_dir=os.path.dirname(__file__),
+     sources=["unpack.cpp", "pybind_module.cpp"],
+-    extra_cflags=["-O3"],
++    extra_cflags=["-O3", "-DGLOG_USE_GLOG_EXPORT"],
+ )
+ register_extension(ext)
+ 
+ 
