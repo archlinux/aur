@@ -1,0 +1,16 @@
+pkgbase = moarchy-breakout
+	pkgdesc = Breakout for a Linux phone, with a bat that follows your thumb
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-cairo
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/breakout-v0.1.0/moarchy-breakout-0.1.0.tar.gz
+	sha256sums = e82cef60ed6acd37c67dd8c4ac115965e44be4d520c806117311d9f04ef75984
+
+pkgname = moarchy-breakout
