@@ -1,6 +1,6 @@
 pkgbase = conan
 	pkgdesc = A distributed, open source, C/C++ package manager.
-	pkgver = 2.28.1
+	pkgver = 2.32.0
 	pkgrel = 1
 	url = https://conan.io
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = conan
 	depends = python-jinja>=3.0
 	depends = python-dateutil>=2.8.0
 	conflicts = conan1
-	source = conan-2.28.1.tar.gz::https://github.com/conan-io/conan/archive/2.28.1.tar.gz
-	sha256sums = 27e920b16e87631f64a7b30c63e2e75479955171a1a6a481be64fa8a3cda8e7c
+	source = conan-2.32.0.tar.gz::https://files.pythonhosted.org/packages/source/c/conan/conan-2.32.0.tar.gz
+	sha256sums = 668f46788b4435da222bf076e95f5d4d0b4733c6c28350bba2697df8dfee60fd
 
 pkgname = conan

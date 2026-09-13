@@ -1,7 +1,9 @@
-# Maintainer: John Luebs
+# Maintainer: Daniele Basso
+# Contributor: John Luebs
 
 pkgname=('conan')
-pkgver=2.28.1
+_name='conan'
+pkgver=2.32.0
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -19,8 +21,8 @@ depends=('python-requests>=2.25'
   'python-dateutil>=2.8.0')
 conflicts=('conan1')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/conan-io/conan/archive/${pkgver}.tar.gz")
-sha256sums=('27e920b16e87631f64a7b30c63e2e75479955171a1a6a481be64fa8a3cda8e7c')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('668f46788b4435da222bf076e95f5d4d0b4733c6c28350bba2697df8dfee60fd')
 
 prepare() {
   cd $pkgname-$pkgver
