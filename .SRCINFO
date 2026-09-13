@@ -1,6 +1,6 @@
 pkgbase = nconvert-bin
 	pkgdesc = Command line batch image processor and converter from XnSoft.
-	pkgver = 7.221
+	pkgver = 7.300
 	pkgrel = 1
 	url = https://www.xnview.com/en/nconvert/
 	arch = i686
@@ -14,6 +14,6 @@ pkgbase = nconvert-bin
 	source_i686 = https://download.xnview.com/NConvert-linux.tgz
 	sha256sums_i686 = 5e8364bdc1fe61d2c37871e0591ddc2048ccf0cd8041846b433ef04f10280cba
 	source_x86_64 = https://download.xnview.com/NConvert-linux64.tgz
-	sha256sums_x86_64 = 227e5568d09066c5955165d57ac7f0036b50848c40d1f21203ab984ce3b75612
+	sha256sums_x86_64 = e54276c9f5cdde8836d2732eae14d35e536b6315887ed71494f65f1e4a2f7c14
 
 pkgname = nconvert-bin
