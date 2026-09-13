@@ -1,6 +1,6 @@
 pkgbase = python-pillow-avif-plugin
 	pkgdesc = A pillow plugin that adds avif support via libavif
-	pkgver = 1.5.5
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/fdintino/pillow-avif-plugin
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = python-pillow-avif-plugin
 	depends = python
 	depends = python-pillow
 	depends = libavif
-	source = python-pillow-avif-plugin-1.5.5.tar.gz::https://github.com/fdintino/pillow-avif-plugin/archive/refs/tags/v1.5.5.tar.gz
-	sha256sums = 717656ed7a357df8e1ff73fdc5054a0b89c51bc3029615fa01c7491e83b00270
+	source = python-pillow-avif-plugin-1.6.0.tar.gz::https://github.com/fdintino/pillow-avif-plugin/archive/refs/tags/v1.6.0.tar.gz
+	source = aom-3.14-test.patch
+	sha256sums = 266eff6e8e6eae1ae976a5986b461e122d4fdc046fbc3fbe97c81817bad03c16
+	sha256sums = af823f1665fc5a4218885f9af15212e379b17029994f6775880c710cae6d36a2
 
 pkgname = python-pillow-avif-plugin

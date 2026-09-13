@@ -1,0 +1,16 @@
+diff --git a/tests/test_file_avif.py b/tests/test_file_avif.py
+index 4d9ca64..c9ab50f 100644
+--- a/tests/test_file_avif.py
++++ b/tests/test_file_avif.py
+@@ -522,9 +522,9 @@ class TestFileAvif:
+         "advanced",
+         [
+-            {"tune": "psnr"},
+-            (("tune", "psnr"),),
+-            [("tune", "psnr")],
++            {"tune": "ssim"},
++            (("tune", "ssim"),),
++            [("tune", "ssim")],
+         ],
+     )
+     def test_encoder_advanced_codec_options(self, advanced):
