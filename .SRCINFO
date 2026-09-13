@@ -1,6 +1,6 @@
 pkgbase = optionmusic
 	pkgdesc = Minimal black and white CLI music player powered by MPV
-	pkgver = 0.2.15
+	pkgver = 0.2.16
 	pkgrel = 1
 	url = https://github.com/fireflylabss/optionMusic
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = optionmusic
 	depends = glibc
 	optdepends = cava: optional spectrum bars
 	options = !lto
-	source = optionmusic-0.2.15-stable.tar.gz::https://github.com/fireflylabss/optionMusic/archive/refs/tags/v0.2.15-stable.tar.gz
-	sha256sums = de82e7ac0415febda561c484c8a23b9735a9578bbfebbaea852aa488d74c1c91
+	source = optionmusic-0.2.16-beta.tar.gz::https://github.com/fireflylabss/optionMusic/archive/refs/tags/v0.2.16-beta.tar.gz
+	sha256sums = 08bc3a786a180f77f689caaaabe6df25fd505a05d6b8ddb778faad56461bcc11
 
 pkgname = optionmusic
