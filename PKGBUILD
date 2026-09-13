@@ -3,7 +3,7 @@
 pkgname=wowup-cf-bin
 _pkgname=wowup-cf
 _desktopname=WowUpCf
-pkgver=2.23.0
+pkgver=2.23.1
 pkgrel=1
 epoch=1
 pkgdesc="WowUp the World of Warcraft addon updater (with CurseForge support)"
@@ -25,7 +25,7 @@ source=(
   "${_pkgname}"
 )
 noextract=("WowUp-CF-${pkgver}.AppImage")
-sha256sums=('e7dea3fa2d934dbce919f756c33ce840aa41e800f6aea4f486f1789ef6c3df60'
+sha256sums=('8d74c8fd24af4904dfd47b608ea6f4c55d578fd9dd70ad176b81f7edf139c7d9'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '55f16d4a88caa1ba3cce8c5732b6767556257d7ca9d07605b1cae502b4493247'
             '8baa237bd7dbd69a1a6533faba6b46bf64b4a67448464181d14655fcb65b5952')
@@ -47,7 +47,7 @@ package() {
 
   install -Dm755 -t "$pkgdir/usr/bin" $_pkgname
 
-  for _size in 16 32 512; do
+  for _size in 16 32 48 128 256; do
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png" \
       "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png"
   done
