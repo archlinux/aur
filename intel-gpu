@@ -1,11 +1,41 @@
 #!/usr/bin/env bash
-# Run an LLM on the Intel Arc GPU (llama.cpp SYCL) — the fast GPU path.
+# Run an LLM on the Intel Arc GPU (official llama-cpp + ggml-sycl) — the fast GPU path.
 #
-# Thin wrapper over `llama-sycl` (from llama.cpp-sycl-bin). Default subcommand is
+# Thin wrapper over the official `llama-*` binaries. Default subcommand is
 # `server`; pass a llama-* tool name as the first arg. GGUF models can be
 # auto-downloaded by llama.cpp with `-hf <user/repo>`.
 #
 #   intel-gpu -m model.gguf                       # server
 #   intel-gpu cli -hf ggml-org/Qwen2.5-1.5B-Instruct-Q4_K_M-GGUF -p "hi"
 #   intel-gpu bench -m model.gguf
-exec /usr/bin/llama-sycl "$@"
+#
+# All layers offload to the GPU by default (-ngl 999); pass your own
+# -ngl / --n-gpu-layers to override.
+set -euo pipefail
+
+# Allow `intel-gpu llama-server ...` as well as `intel-gpu server ...`.
+if [[ ${1:-} == llama-* && -x "/usr/bin/$1" ]]; then
+  exec "/usr/bin/$1" "${@:2}"
+fi
+
+tool=server
+if [[ $# -gt 0 && -x "/usr/bin/llama-$1" ]]; then
+  tool=$1; shift
+fi
+
+bin="/usr/bin/llama-$tool"
+[[ -x $bin ]] || { echo "intel-gpu: $bin not found (install 'llama-cpp')" >&2; exit 1; }
+[[ -e /usr/lib/ggml/libggml-sycl.so ]] || {
+  echo "intel-gpu: SYCL backend missing (install 'ggml-sycl')" >&2; exit 1; }
+
+# Offload all layers unless the user already set a layer count.
+has_ngl=0
+for a in "$@"; do
+  [[ $a == -ngl || $a == --n-gpu-layers || $a == -ngl* ]] && { has_ngl=1; break; }
+done
+
+if [[ $has_ngl -eq 0 ]]; then
+  exec "$bin" -ngl 999 "$@"
+else
+  exec "$bin" "$@"
+fi

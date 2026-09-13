@@ -1,24 +1,26 @@
 # Maintainer: richc <admin+aur@sys.corbet.ch>
 #
 # intel-llm — one install, fast local LLMs on Intel laptops:
-#   * Arc GPU via llama.cpp SYCL   (llama.cpp-sycl-bin)
+#   * Arc GPU via official llama-cpp + ggml-sycl
+#     (llama.cpp-sycl-bin was retired after PRQ#86548 — extra now ships the
+#     SYCL backend natively, and AUR forbids duplicating official repos)
 #   * NPU/GPU/CPU via OpenVINO GenAI (openvino-genai-bin)
 # Ships one entry point (`intel-llm`) plus `intel-gpu` / `intel-npu` runners.
 
 pkgname=intel-llm
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="One entry point for fast local LLMs on Intel laptops (Arc GPU via SYCL + NPU via OpenVINO GenAI)"
+pkgdesc="One entry point for fast local LLMs on Intel laptops (Arc GPU via official llama-cpp + ggml-sycl, NPU via OpenVINO GenAI)"
 arch=('any')
-url='https://github.com/julian-corbet/intel-llm'
+url='https://github.com/corbet-labs/intel-llm'
 license=('MIT')
 depends=(
-  'llama.cpp-sycl-bin'
+  'llama-cpp'
+  'ggml-sycl'
   'openvino-genai-bin'
   'python-huggingface-hub'
 )
 optdepends=(
-  'intel-oneapi-basekit: SYCL runtime for the Arc GPU path'
   'intel-npu-driver: Intel NPU (AI Boost) for the fast NPU path'
   'intel-llm-convert: convert your own HF models to NPU INT4 IR'
 )

@@ -19,10 +19,11 @@ case "$cmd" in
   npu) exec intel-npu "$@" ;;
   devices)
     echo "Arc GPU (SYCL / llama.cpp):"
-    if [[ -x /usr/bin/llama-sycl ]]; then
-      if [[ -e /opt/intel/oneapi ]]; then echo "  available (intel-oneapi-basekit present)"
-      else echo "  binary present, but install 'intel-oneapi-basekit' for the SYCL runtime"; fi
-    else echo "  not installed (pacman -S llama.cpp-sycl-bin)"; fi
+    if [[ -x /usr/bin/llama-server && -e /usr/lib/ggml/libggml-sycl.so ]]; then
+      echo "  available (llama-cpp + ggml-sycl present)"
+    elif [[ -x /usr/bin/llama-server ]]; then
+      echo "  binary present, but install 'ggml-sycl' for the SYCL backend"
+    else echo "  not installed (pacman -S llama-cpp ggml-sycl)"; fi
     echo "NPU + GPU/CPU (OpenVINO GenAI):"
     if /usr/bin/python -c 'import openvino_genai' 2>/dev/null; then
       /usr/bin/python -c 'import openvino; print("  OpenVINO sees:", openvino.Core().available_devices)'
