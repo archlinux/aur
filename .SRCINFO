@@ -1,6 +1,6 @@
 pkgbase = pdf-compressor-bin
 	pkgdesc = Local-first desktop PDF compressor built with Vue, Tauri, and Rust (GUI + headless CLI)
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/cosct/pdf-compressor
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = pdf-compressor-bin
 	provides = pdf-compressor
 	conflicts = pdf-compressor
 	options = !strip
-	source = pdf-compressor-bin-0.8.0.zst::https://github.com/cosct/pdf-compressor/releases/download/v0.8.0/pdf-compressor_0.8.0_amd64.pkg.tar.zst
-	sha256sums = 61481835c21b057edf33fc87299295a7a7e89bb656a9ec587108c6bfc3b67649
+	source = pdf-compressor-bin-0.9.0.zst::https://github.com/cosct/pdf-compressor/releases/download/v0.9.0/pdf-compressor_0.9.0_amd64.pkg.tar.zst
+	sha256sums = ed00bb15567ce8f18ed4d7096433ca5a00a111bc4911e1c5885876fc63b15d88
 
 pkgname = pdf-compressor-bin
