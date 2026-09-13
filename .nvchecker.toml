@@ -1,0 +1,4 @@
+[gdscript-formatter]
+source = "github"
+github = "GDQuest/GDScript-formatter"
+use_latest_release = true
