@@ -1,6 +1,6 @@
 pkgbase = typeshi-bin
 	pkgdesc = A typing application (prebuilt binary)
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://git.safallama.com.np/safalski/typeShi
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = typeshi-bin
 	depends = qt6-shadertools
 	provides = typeshi
 	conflicts = typeshi
-	source = typeshi-bin-0.1.13.tar.gz::https://git.safallama.com.np/safalski/typeShi/releases/download/v0.1.13/typeshi-bin-0.1.13-x86_64.tar.gz
-	sha256sums = d9958a529da7266733bbc8b3cf75a1398f11789388c8c767d98c3aeab65a6960
+	source = typeshi-bin-0.1.14.tar.gz::https://git.safallama.com.np/safalski/typeShi/releases/download/v0.1.14/typeshi-bin-0.1.14-x86_64.tar.gz
+	sha256sums = c6a6c2f9c18a3d4182fd534ac9bd663e9e2cf9f9c80d0b9d4645ee9fecf4c428
 
 pkgname = typeshi-bin
