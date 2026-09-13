@@ -1,5 +1,5 @@
 pkgbase = moroder-bin
-	pkgdesc = TUI client for YouTube Music with album art, MPRIS, Discord rich presence and minimal dependencies
+	pkgdesc = YouTube Music TUI with album art, MPRIS, Discord rich presence and minimal dependencies
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/orrnithogalum/moroder
