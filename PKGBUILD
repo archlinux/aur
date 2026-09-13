@@ -41,8 +41,19 @@ build() {
     # Reset makepkg flags — they interfere with Rust cc crate
     # compiling bundled SQLite and Ring assembly
     unset CFLAGS CXXFLAGS LDFLAGS
-    npm install
-    npx tauri build --no-bundle
+
+    # `npm ci --ignore-scripts`, never `npm install` — this mirrors
+    # .github/workflows/release.yml. `install` re-resolves inside the caret
+    # ranges, so a compromised patch release could reach a user's build
+    # without ever appearing in the reviewed lockfile, and postinstall
+    # scripts run as the building user. This package builds on the user's
+    # own machine, so that gap is theirs, not CI's.
+    npm ci --ignore-scripts
+
+    # `-- --locked` forwards to cargo (the Tauri CLI passes trailing args
+    # through). Cargo's equivalent of `npm ci`: refuse to re-resolve, fail
+    # instead of silently building a lockfile nobody reviewed.
+    npx tauri build --no-bundle -- --locked
 }
 
 package() {
