@@ -1,0 +1,16 @@
+pkgbase = moarchy-reversi
+	pkgdesc = Reversi for a Linux phone, with an opponent that thinks on a clock
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-cairo
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/reversi-v0.1.0/moarchy-reversi-0.1.0.tar.gz
+	sha256sums = b334c92279ec3761e2b19eb23ef3cc476d8154fca26d94431992d1a60e7f14e0
+
+pkgname = moarchy-reversi
