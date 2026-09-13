@@ -1,0 +1,15 @@
+pkgbase = bluekey
+	pkgdesc = Use your PC as a Bluetooth keyboard
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/olbyolby/bluekey
+	install = bluekey.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = bluez
+	source = git+https://github.com/olbyolby/bluekey.git#tag=v0.2.0
+	sha256sums = f2c44e309b269d1f8e0a599ce729aa3e1a376b01bc0c62b578a5717ccab245ad
+
+pkgname = bluekey
