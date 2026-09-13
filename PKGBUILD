@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=atoms
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily manage Linux Chroot(s) and Containers"
 arch=('x86_64')
 url="https://github.com/AtomsDevs/Atoms"
@@ -14,7 +14,7 @@ depends=(
   'libadwaita'
   'libgee'
   'libpeas-2'
-  # 'libsingularity'  ## TODO
+  'libsingularity'
   'libsoup3'
   'vte4'
 )
@@ -30,12 +30,10 @@ provides=(
   'atoms-core'
   'atoms-provider-cpak'
   'libatoms-core-2.so=2'
-  'libsingularity.so=0'
 )
 conflicts=(
   'atoms-cli'
   'atoms-core'
-  'libsingularity'
 )
 source=("git+https://github.com/AtomsDevs/Atoms.git#tag=v$pkgver"
         'git+https://github.com/AtomsDevs/atoms-cli.git'
@@ -53,9 +51,6 @@ prepare() {
   git config submodule.atoms-core.url "$srcdir/atoms-core"
   git config submodule.atoms-provider-cpak.url "$srcdir/atoms-provider-cpak"
   git -c protocol.file.allow=always submodule update
-
-  # Use libsingularity subproject until libsingularity-git AUR package can be used
-  meson subprojects download
 }
 
 build() {

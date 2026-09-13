@@ -1,7 +1,7 @@
 pkgbase = atoms
 	pkgdesc = Easily manage Linux Chroot(s) and Containers
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AtomsDevs/Atoms
 	arch = x86_64
 	license = GPL-3.0-only
@@ -17,16 +17,15 @@ pkgbase = atoms
 	depends = libadwaita
 	depends = libgee
 	depends = libpeas-2
+	depends = libsingularity
 	depends = libsoup3
 	depends = vte4
 	provides = atoms-cli
 	provides = atoms-core
 	provides = atoms-provider-cpak
 	provides = libatoms-core-2.so=2
-	provides = libsingularity.so=0
 	conflicts = atoms-cli
 	conflicts = atoms-core
-	conflicts = libsingularity
 	source = git+https://github.com/AtomsDevs/Atoms.git#tag=v2.0.2
 	source = git+https://github.com/AtomsDevs/atoms-cli.git
 	source = git+https://github.com/AtomsDevs/atoms-core.git
