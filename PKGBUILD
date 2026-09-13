@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-camera
-pkgver=1.3.4
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="Camera application for the COSMIC™ desktop environment"
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,7 @@ conflicts=(
   'klikka'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1269e251b9965a9d6eac79a9572b63281cc113bc9eb6c804da7b7d983f49efa1')
+sha256sums=('aa5f16fb006e04e42e070b876cd780ee03bd2009b5c77ba64b3fc8c72e38227c')
 
 prepare() {
   cd "$pkgname-$pkgver"
