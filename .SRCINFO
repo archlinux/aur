@@ -1,6 +1,6 @@
 pkgbase = asf
 	pkgver = 6.3.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	install = asf.install
 	changelog = changelog

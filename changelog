@@ -1,3 +1,6 @@
+2026-09-13 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.3.9.6-2:
+    Disable telemetry, debugging and logo for all setup by default
 2026-08-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.3.9.6-1:
     Added support for different formatting methods in our Monitoring plugin. Since this has a potential to be a breaking change, we recommend our users to read up updated docs about this feature (@JustArchi #3607).

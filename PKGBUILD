@@ -10,7 +10,7 @@ pkgname=('asf-plugin-steamtokendumper'
          'asf-plugin-signinwithsteam'
          'asf')
 pkgver="6.3.9.6"
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache-2.0')
@@ -30,6 +30,10 @@ sha256sums=('5c5ab7abe524dcafe48d1ef5124fa3b0df293fad2e3af07f247f5c0a58412f12'
             '3f84136fda8fb2def850f2aca1fd4535f85488273dd8b0737e60fd6febb41b00')
 
 prepare() {
+    cd asf
+    # Disable telemetry, debugging and logo for all setups by default
+    # https://github.com/JustArchiNET/ArchiSteamFarm/commit/e704c6890c631ca7b3a53f58f7f704e586639e2a
+    git cherry-pick --no-commit e704c6890c631ca7b3a53f58f7f704e586639e2a
     cd ${srcdir}/asf/ArchiSteamFarm/overlay/variant-base/linux
     patch --forward --input="${srcdir}/service.patch"
 }
@@ -40,6 +44,7 @@ build() {
     # disable dotnet telemetry
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
     export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+    export DOTNET_EnableDiagnostics=0
     export DOTNET_NOLOGO=1
 
     [[ "$CARCH" == "x86_64" ]] && architecture="x64"
@@ -58,6 +63,11 @@ build() {
 
 check() {
     cd asf
+    # disable dotnet telemetry
+    export DOTNET_CLI_TELEMETRY_OPTOUT=1
+    export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+    export DOTNET_EnableDiagnostics=0
+    export DOTNET_NOLOGO=1
     dotnet test ArchiSteamFarm.Tests --filter TestCategory!=Manual $DOTNET_FLAGS
 }
 
