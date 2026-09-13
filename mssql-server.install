@@ -42,7 +42,6 @@ pre_upgrade() {
 	# effect of "pacman -Syu".
 	if systemctl is-active --quiet mssql-server 2>/dev/null; then
 		systemctl stop mssql-server || true
-		touch /var/opt/mssql/.arch-upgrade-stopped 2>/dev/null || true
 	fi
 }
 
