@@ -1,0 +1,22 @@
+pkgbase = moroder-bin
+	pkgdesc = Terminal client for YouTube Music with album art, MPRIS and Discord rich presence
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/orrnithogalum/moroder
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	license = LicenseRef-discord-social-sdk
+	depends = glibc
+	depends = gcc-libs
+	depends = mpv
+	depends = curl
+	depends = systemd-libs
+	depends = libx11
+	depends = yt-dlp
+	provides = moroder
+	conflicts = moroder
+	options = !strip
+	source = moroder-1.0.1-linux-x86_64.tar.gz::https://github.com/orrnithogalum/moroder/releases/download/v1.0.1/moroder-1.0.1-linux-x86_64.tar.gz
+	md5sums = 639085820a0131a69d6291f35986bf9a
+
+pkgname = moroder-bin
