@@ -4,7 +4,7 @@
 
 pkgname=omnictl-bin
 pkgver=1.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI for Omni - SaaS-simple Kubernetes management platform by Sidero Labs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/siderolabs/omni"
@@ -21,7 +21,8 @@ sha256sums_x86_64=('681d36e2e7efc5c014204164cb1c92332bbbdb05e2134c416bbbf89f5f6b
 sha256sums_aarch64=('681d36e2e7efc5c014204164cb1c92332bbbdb05e2134c416bbbf89f5f6b57fc')
 
 check() {
-  ./omnictl --version
+  chmod +x "omnictl-${pkgver}"
+  "./omnictl-${pkgver}" --version
 }
 
 package() {
