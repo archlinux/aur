@@ -35,13 +35,16 @@ build() {
 
   # tauri.conf.json's beforeBuildCommand only runs under the tauri CLI, so the
   # frontend is built above and this is a plain cargo release build.
+  # tauri/custom-protocol is what `cargo tauri build` passes to embed
+  # frontendDist; without it the binary is a dev build that loads devUrl
+  # (http://localhost:5173) and shows "Could not connect to localhost".
   cd "${srcdir}/omafil/src-tauri"
-  cargo build --release --locked
+  cargo build --release --locked --features tauri/custom-protocol
 }
 
 check() {
   cd "${srcdir}/omafil/src-tauri"
-  cargo test --release --locked
+  cargo test --release --locked --features tauri/custom-protocol
 }
 
 package() {
