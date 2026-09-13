@@ -1,7 +1,7 @@
 pkgbase = python-tree-sitter-c
 	pkgdesc = Python Bindings for tree-sitter-c
 	pkgver = 0.24.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tree-sitter/tree-sitter-c
 	arch = x86_64
 	arch = aarch64
