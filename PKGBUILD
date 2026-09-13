@@ -1,14 +1,18 @@
-pkgname="gourou"
+# Maintainer: Radon Rosborough <radon@radian.codes>
+# Maintainer: Ketchup901 <ketchup901@riseup.net>
+
+pkgname="libgourou"
 pkgver=0.8.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files"
-arch=('x86_64')
+arch=('any')
 license=('LGPL-3.0-or-later' 'BSD-3-Clause')
 url="https://forge.soutade.fr/soutade/libgourou"
-depends=(updfparser glibc libgcc libstdc++ zlib libzip openssl pugixml curl)
+depends=('updfparser' 'glibc' 'libgcc' 'libstdc++' 'zlib' 'libzip' 'openssl' 'pugixml' 'curl')
 makedepends=()
-conflicts=(gourou-git gourou-bin gourou-appimage)
-provides=("gourou=${pkgver}" "libgourou=${pkgver}")
+conflicts=('gourou-git' 'gourou-bin' 'gourou-appimage')
+provides=("gourou=${pkgver}")
+replaces=('gourou')
 options=(strip)
 source=("libgourou-$pkgver.tar.gz::https://forge.soutade.fr/soutade/libgourou/archive/v$pkgver.tar.gz")
 sha512sums=('bf9c4341f45b1fe77a9c95b5844da7ac5cc96b0edf7ef39caf11b980e82765f6a7c5932aaee998df002b965215cd7fbae2606dbbb86da12f88eafa830e7c5c14')
