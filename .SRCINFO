@@ -1,10 +1,17 @@
 pkgbase = python-tritonclient
 	pkgdesc = Python client libraries for NVIDIA Triton Inference Server (HTTP/gRPC)
-	pkgver = 2.68.0
+	pkgver = 2.72.0
 	pkgrel = 1
 	url = https://github.com/triton-inference-server/client
 	arch = any
 	license = BSD-3-Clause
+	checkdepends = python-aiohttp
+	checkdepends = python-geventhttpclient
+	checkdepends = python-greenlet
+	checkdepends = python-grpcio
+	checkdepends = python-protobuf
+	checkdepends = python-packaging
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -12,18 +19,21 @@ pkgbase = python-tritonclient
 	makedepends = python-grpcio-tools
 	makedepends = git
 	depends = python
-	depends = python-numpy
-	depends = python-rapidjson
-	depends = python-urllib3
-	depends = python-ml-dtypes
-	optdepends = python-aiohttp: HTTP client (async)
-	optdepends = python-geventhttpclient: HTTP client
-	optdepends = python-greenlet: HTTP client
-	optdepends = python-grpcio: gRPC client
+	depends = python-numpy>=1.19.1
+	depends = python-rapidjson>=0.9.1
+	depends = python-urllib3>=2.0.7
+	depends = python-ml-dtypes<0.7
+	optdepends = python-aiohttp: asynchronous HTTP client (upstream supports versions below 4)
+	optdepends = python-geventhttpclient: synchronous HTTP client (version 2.3.3 or newer)
+	optdepends = python-greenlet: synchronous HTTP client
+	optdepends = python-grpcio: gRPC client (version 1.81.1 or newer)
 	optdepends = python-protobuf: gRPC client
 	optdepends = python-packaging: gRPC client
 	optdepends = python-cuda: CUDA shared-memory utilities
-	source = git+https://github.com/triton-inference-server/client.git#commit=8951d7a19788782f2349c2c49d8dc873e0487704
+	optdepends = python-setuptools: CUDA shared-memory utilities
+	source = git+https://github.com/triton-inference-server/client.git#commit=77e666d5235234d9ed61fa82165adbaf216dc0d8
+	source = tritonclient-workflow.py
 	sha256sums = SKIP
+	sha256sums = d3fa1c1c07c8319ed87d4fc5cb95d33f351244e40f0dfa3227b75102efd55ad1
 
 pkgname = python-tritonclient
