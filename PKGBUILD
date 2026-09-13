@@ -2,7 +2,7 @@
 
 _name=fasta2a
 pkgname=python-$_name
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Convert an AI Agent into a A2A server! ✨"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'p
 checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-dirty-equals' 'python-httpx' 'python-inline-snapshot' 'python-pytest')
 optdepends=('python-logfire: logfire' 'python-pydantic-ai-slim: pydantic-ai')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f54938f3dda4f10b3237eb7edd09be294f94582c03111c0d2fa277ebd565aa01')
+sha256sums=('f044485ddb7d8904a58b3de2ae924ff9d227be142f79c489e54c95acc2a660c9')
 
 build() {
     cd "$srcdir"/$_name-$pkgver
