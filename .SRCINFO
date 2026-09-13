@@ -1,6 +1,6 @@
 pkgbase = python-crawl4ai
 	pkgdesc = Open-source LLM Friendly Web Crawler & scraper
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/unclecode/crawl4ai
 	arch = any
@@ -41,7 +41,7 @@ pkgbase = python-crawl4ai
 	depends = python-snowballstemmer
 	depends = litellm
 	depends = python-xxhash
-	source = https://files.pythonhosted.org/packages/source/c/crawl4ai/crawl4ai-0.9.2.tar.gz
-	sha256sums = 58dbfa05a82c1cfa667a20383a1d0f7a42187304da5e4d0661a6f59b0ed6a406
+	source = https://files.pythonhosted.org/packages/source/c/crawl4ai/crawl4ai-0.9.3.tar.gz
+	sha256sums = 4dbefe52cecb48318154d6a187bba9ff9e70ff71c430f04b7f1e20fa42304370
 
 pkgname = python-crawl4ai

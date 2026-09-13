@@ -2,7 +2,7 @@
 
 pkgname=python-crawl4ai
 _name=crawl4ai
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Open-source LLM Friendly Web Crawler & scraper"
 arch=('any')
@@ -49,7 +49,7 @@ makedepends=(
   'python-wheel'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('58dbfa05a82c1cfa667a20383a1d0f7a42187304da5e4d0661a6f59b0ed6a406')
+sha256sums=('4dbefe52cecb48318154d6a187bba9ff9e70ff71c430f04b7f1e20fa42304370')
 
 build() {
   cd "$_name-$pkgver"
