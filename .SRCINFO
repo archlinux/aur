@@ -1,6 +1,6 @@
 pkgbase = fenriz-bin
 	pkgdesc = A fast, stable tiling Wayland compositor (Binary Release)
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/zackb/fenriz
 	arch = x86_64
@@ -15,10 +15,11 @@ pkgbase = fenriz-bin
 	depends = xcb-util-wm
 	optdepends = xorg-xwayland: X11 application support
 	optdepends = fenriz-desktop: wallpaper, launcher, lock screen, notifications and OSDs
+	optdepends = fenriz-bar: status bar
 	provides = fenriz
 	conflicts = fenriz
 	conflicts = fenriz-git
-	source = https://github.com/zackb/fenriz/releases/download/v0.1.14/fenriz-0.1.14.tar.gz
-	sha256sums = 3878d828c396d0e7006169520c03b4058d364bf03e1951db34856d13ab528213
+	source = https://github.com/zackb/fenriz/releases/download/v0.1.15/fenriz-0.1.15.tar.gz
+	sha256sums = 21f153a15359ab6c878b6867fc7a8c8579de5fbb54011a846fceb68878324412
 
 pkgname = fenriz-bin
