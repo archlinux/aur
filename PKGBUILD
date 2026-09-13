@@ -1,10 +1,10 @@
 # Maintainer: Vincent Meadows <giantvince1@protonmail.com>
 pkgname=debounced
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace keyboard debounce daemon with FlashTap support"
 arch=('x86_64' 'aarch64' 'riscv64')
-url="https://codeberg.com/Giantvince1/key-debouncer"
+url="https://codeberg.org/Giantvince1/key-debouncer"
 license=('GPL3')
 depends=('libevdev' 'systemd')
 makedepends=('gcc' 'make')

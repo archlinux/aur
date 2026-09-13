@@ -1,8 +1,8 @@
 pkgbase = debounced
 	pkgdesc = Userspace keyboard debounce daemon with FlashTap support
 	pkgver = 2.2
-	pkgrel = 1
-	url = https://codeberg.com/Giantvince1/key-debouncer
+	pkgrel = 2
+	url = https://codeberg.org/Giantvince1/key-debouncer
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
@@ -11,7 +11,7 @@ pkgbase = debounced
 	makedepends = make
 	depends = libevdev
 	depends = systemd
-	source = debounced-2.2.tar.gz::https://codeberg.com/Giantvince1/key-debouncer/archive/v2.2.tar.gz
+	source = debounced-2.2.tar.gz::https://codeberg.org/Giantvince1/key-debouncer/archive/v2.2.tar.gz
 	sha256sums = 6b627cf51d04dccb164d5a338fac9d1455a039897def9dcb2c5905d4ef693384
 
 pkgname = debounced
