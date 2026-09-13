@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=tsduck-bin
-_pkgver=3.44-4676
+_pkgver=3.45-4798
 pkgver="${_pkgver%-*}"
 pkgrel=1
 pkgdesc="MPEG Transport Stream Toolkit"
@@ -26,17 +26,17 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 options=(!debug !strip)
 source_x86_64=(
-  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc43.x86_64.rpm"
-  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc43.x86_64.rpm"
+  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc44.x86_64.rpm"
+  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc44.x86_64.rpm"
 )
 source_aarch64=(
-  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc43.aarch64.rpm"
-  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc43.aarch64.rpm"
+  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-${_pkgver}.fc44.aarch64.rpm"
+  "https://github.com/tsduck/tsduck/releases/download/v${_pkgver}/tsduck-devel-${_pkgver}.fc44.aarch64.rpm"
 )
-sha256sums_x86_64=('6191bddaf90256eda51a140ca3daa360452f4b5bf417fcc73c13136235ca54b0'
-                   '2a14988d6876172975a222c7a575ab197129e968487f64a77ec6330b047ed3a7')
-sha256sums_aarch64=('e5b00e781be0c1089afb34166685f2dd3810ee569954c0a103da76f0d1eead99'
-                    '8709fb46a5a0161260e273bc5609453a866a77235a1f122bebe5dcd94e3a23d5')
+sha256sums_x86_64=('4c9fc820fe26c8210d7967529b74df67941a1c89ad5dc6ecb6c719d008579b10'
+                   '6fd860ea753b5d2283a4f2e82a07948696f1f4761fb4b1ad4c547b8edfa4654b')
+sha256sums_aarch64=('04c38f90f8f5dc1352652ff2b349ca32f17079f53933cb0647e6a9f2b30d4400'
+                    '27b00b171f47ddaacf0eef1313eb6061cf02ca55a3a11c24ad6eb846f9cea8d5')
 
 prepare() {
   # Move all libs to /usr/lib
