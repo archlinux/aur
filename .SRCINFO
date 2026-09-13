@@ -1,0 +1,23 @@
+pkgbase = kernwatch
+	pkgdesc = Linux kernel observability in your terminal
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/matthart1983/kernwatch
+	install = kernwatch.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nasm
+	depends = glibc
+	depends = libgcc
+	depends = libpcap
+	depends = traceroute
+	provides = kernwatch
+	options = !lto
+	options = !strip
+	source = kernwatch-0.4.1.crate::https://crates.io/api/v1/crates/kernwatch/0.4.1/download
+	sha256sums = df1cf4e14bf7070aa3c7fb351ed739dd35938e38a51778687ad1b6156dfd8306
+
+pkgname = kernwatch
