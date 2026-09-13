@@ -1,0 +1,22 @@
+pkgbase = dosierskanilo-git
+	pkgdesc = Development version of the DosierSkanilo scanner
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/cschlote/DosierSkanilo
+	arch = x86_64
+	license = custom:CC-BY-NC-SA-4.0
+	makedepends = ldc
+	makedepends = dub
+	makedepends = git
+	depends = mediainfo
+	depends = file
+	depends = unzip
+	depends = tar
+	depends = unrar
+	depends = p7zip
+	provides = dosierskanilo
+	conflicts = dosierskanilo
+	source = git+https://github.com/cschlote/DosierSkanilo.git
+	sha256sums = SKIP
+
+pkgname = dosierskanilo-git
