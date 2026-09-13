@@ -1,0 +1,20 @@
+pkgbase = projecto-bin
+	pkgdesc = A fast, Go rewrite of [phoney badger's pokemon-colorscripts](https://gitlab.com/phoneybadger/pokemon-colorscripts) that prints Pokémon sprites in color directly in your terminal.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/rubiin/projecto
+	license = GPL-3.0-only
+	conflicts = projecto
+	conflicts = projecto-git
+	provides = projecto
+	arch = aarch64
+	source_aarch64 = https://github.com/rubiin/projecto/releases/download/v1.1.0/projecto_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 2de9eed19f6b52d3ca5e31402d44472aed23f14c1446e9fbf92b61c487290399
+	arch = i686
+	source_i686 = https://github.com/rubiin/projecto/releases/download/v1.1.0/projecto_Linux_i386.tar.gz
+	sha256sums_i686 = 48d6dc36421b336dd4a4129aa36064d06993415de001bba41aeb8faad40115c6
+	arch = x86_64
+	source_x86_64 = https://github.com/rubiin/projecto/releases/download/v1.1.0/projecto_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 877bb2f08219bcf57a492a5d6707fda93813dba1d635a71bd552f7c34282a194
+	
+pkgname = projecto-bin
