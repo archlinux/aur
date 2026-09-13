@@ -1,6 +1,6 @@
 pkgbase = ardali
 	pkgdesc = ArDali Browser native binary package
-	pkgver = 7.1.0
+	pkgver = 7.1.2
 	pkgrel = 1
 	url = https://github.com/Muhammed-Dali/ArDali-Browser
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = ardali
 	conflicts = aurivo-bin
 	replaces = ardali-bin
 	replaces = ardali-webmedia
-	source = ardali-browser-7.1.0-linux-x86_64.tar.zst::https://github.com/Muhammed-Dali/ArDali-Browser/releases/download/v7.1.0/ardali-browser-7.1.0-linux-x86_64.tar.zst
-	sha256sums = 20be856b358bc9e50f3fedd51f6f2de5a05a4d55b220ffd17d914ba220f74279
+	source = ardali-browser-7.1.2-linux-x86_64.tar.zst::https://github.com/Muhammed-Dali/ArDali-Browser/releases/download/v7.1.2/ardali-browser-7.1.2-linux-x86_64.tar.zst
+	sha256sums = 8e279b73bd8b5891b557b80dc84d85b01cd46ccbceec9cf9da9dfa4de8e63bc2
 
 pkgname = ardali
