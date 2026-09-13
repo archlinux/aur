@@ -1,7 +1,7 @@
 pkgbase = python-aiogithubapi
 	pkgdesc = Asynchronous Python client for the GitHub API
 	pkgver = 26.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ludeeus/aiogithubapi
 	arch = any
 	license = MIT

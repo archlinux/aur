@@ -3,7 +3,7 @@
 pkgname='python-aiogithubapi'
 _module=${pkgname#python-}
 pkgver='26.0.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="Asynchronous Python client for the GitHub API"
 url="https://github.com/ludeeus/aiogithubapi"
 depends=(
@@ -26,5 +26,5 @@ build() {
 package() {
 	cd "${srcdir}/${_module}-${pkgver}"
 	install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/python-aiogithubapi/LICENSE.md"
-	python -m installer --compile-bytecode=2 --destdir="${pkgdir}" dist/*.whl
+	python -m installer --compile-bytecode 0 --compile-bytecode=2 --destdir="${pkgdir}" dist/*.whl
 }
