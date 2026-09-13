@@ -1,5 +1,5 @@
 pkgbase = systemd-remove-birthdate
-	pkgver = 261.2
+	pkgver = 261.3
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -55,7 +55,7 @@ pkgbase = systemd-remove-birthdate
 	makedepends = python-pefile
 	makedepends = linux-headers
 	conflicts = mkinitcpio<38-1
-	source = git+https://github.com/systemd/systemd#tag=v261.2?signed
+	source = git+https://github.com/systemd/systemd#tag=v261.3?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = 0002-Remove-Birthdate-man-folders.patch
 	source = 0003-Remove-Birthdate-src-folders.patch
@@ -80,7 +80,7 @@ pkgbase = systemd-remove-birthdate
 	validpgpkeys = A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E
 	validpgpkeys = 9A774DB5DB996C154EBBFBFDA0099A18E29326E1
 	validpgpkeys = 5C251B5FC54EB2F80F407AAAC54CA336CFEB557E
-	sha512sums = 1c2a3aed0b7c613040722ef1bd063a1f35d2f3993e0f678701ef5e4d42d31628804df477158e5fa2bb47e523a9969d01cfb7622762cf32ff44e0367e5f432368
+	sha512sums = d0cb1518becf7f105c2ce60f794bcddf4f8330174f56fcdfbd6b5f5e65fa94acb4098631ffe9d60a8b4e3c04b878f32c222b42dd827b5ff052bd460f4a30652a
 	sha512sums = ddb9401e47d0bf01874f255803a4b2167ec631484189d29d03694101fd9c77724e735f16d99c5f4ffd8061ae78839b2826ff0e0a925a6f0dbca25f2cfb271a82
 	sha512sums = 1fa81fdfd50129955cdeb028473b99695b182c9e98da1594bd2db30705c712aadbe9deb31b2ce14f4baea945732f443a9862e226325facc4d5262d2118340f01
 	sha512sums = 5e759d59ab97714d19c71d60360f524d27e06076a02bf1c0276f503b3b46c0db3aed912da96cf50ac29a5ce627bd68d4385ec22d13974d661006f9f7ed249b0f
@@ -109,7 +109,7 @@ pkgname = systemd-remove-birthdate
 	license = CC0-1.0
 	license = GPL-2.0-or-later
 	license = MIT-0
-	depends = systemd-remove-birthdate-libs=261.2
+	depends = systemd-remove-birthdate-libs=261.3
 	depends = acl
 	depends = bash
 	depends = cryptsetup
@@ -150,9 +150,9 @@ pkgname = systemd-remove-birthdate
 	optdepends = systemd-ukify: combine kernel and initrd into a signed Unified Kernel Image
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=261.2
-	provides = udev=261.2
-	provides = systemd=261.2
+	provides = systemd-tools=261.3
+	provides = udev=261.3
+	provides = systemd=261.3
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -194,7 +194,7 @@ pkgname = systemd-remove-birthdate-libs
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=261.2
+	provides = systemd-libs=261.3
 	conflicts = libsystemd
 	conflicts = systemd-libs-git
 	conflicts = systemd-liberated-libs-git
@@ -202,10 +202,10 @@ pkgname = systemd-remove-birthdate-libs
 
 pkgname = systemd-remove-birthdate-resolvconf
 	pkgdesc = systemd resolvconf replacement with birthdate functions removed (for use with systemd-resolved)
-	depends = systemd-remove-birthdate=261.2
+	depends = systemd-remove-birthdate=261.3
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=261.2
+	provides = systemd-resolvconf=261.3
 	conflicts = resolvconf
 	conflicts = systemd-resolvconf-git
 	conflicts = systemd-liberated-resolvconf-git
@@ -213,8 +213,8 @@ pkgname = systemd-remove-birthdate-resolvconf
 
 pkgname = systemd-remove-birthdate-sysvcompat
 	pkgdesc = sysvinit compat for systemd with birthdate functions removed
-	depends = systemd-remove-birthdate=261.2
-	provides = systemd-sysvcompat=261.2
+	depends = systemd-remove-birthdate=261.3
+	provides = systemd-sysvcompat=261.3
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = systemd-sysvcompat-git
@@ -231,16 +231,16 @@ pkgname = systemd-remove-birthdate-tests
 	depends = python-pexpect
 	depends = python-pytest
 	depends = python-psutil
-	depends = systemd-remove-birthdate=261.2-1
-	depends = systemd-remove-birthdate-libs=261.2-1
-	provides = systemd-tests=261.2
+	depends = systemd-remove-birthdate=261.3-1
+	depends = systemd-remove-birthdate-libs=261.3-1
+	provides = systemd-tests=261.3
 	conflicts = systemd-tests
 	conflicts = systemd-tests-git
 	conflicts = systemd-liberated-tests-git
 
 pkgname = systemd-remove-birthdate-ukify
 	pkgdesc = Combine kernel and initrd into a signed Unified Kernel Image
-	depends = systemd-remove-birthdate=261.2
+	depends = systemd-remove-birthdate=261.3
 	depends = binutils
 	depends = python
 	depends = python-cryptography
@@ -248,7 +248,7 @@ pkgname = systemd-remove-birthdate-ukify
 	optdepends = python-pillow: Show the size of splash image
 	optdepends = sbsigntools: Sign the embedded kernel
 	provides = ukify
-	provides = systemd-ukify=261.2
+	provides = systemd-ukify=261.3
 	conflicts = systemd-ukify
 	conflicts = systemd-ukify-git
 	conflicts = systemd-liberated-ukify-git

@@ -11,7 +11,7 @@ pkgname=('systemd-remove-birthdate'
 # Upstream versioning is incompatible with pacman's version comparisons, one
 # way or another. We use proper version for pacman here (no dash for rc
 # release!), and change in source array below.
-pkgver=261.2
+pkgver=261.3
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -57,7 +57,7 @@ source=("git+https://github.com/systemd/systemd#tag=v${pkgver/rc/-rc}?signed"
         '35-systemd-udev-reload.hook'
         '35-systemd-update.hook'
         '36-systemd-modules-load.hook')
-sha512sums=('1c2a3aed0b7c613040722ef1bd063a1f35d2f3993e0f678701ef5e4d42d31628804df477158e5fa2bb47e523a9969d01cfb7622762cf32ff44e0367e5f432368'
+sha512sums=('d0cb1518becf7f105c2ce60f794bcddf4f8330174f56fcdfbd6b5f5e65fa94acb4098631ffe9d60a8b4e3c04b878f32c222b42dd827b5ff052bd460f4a30652a'
             'ddb9401e47d0bf01874f255803a4b2167ec631484189d29d03694101fd9c77724e735f16d99c5f4ffd8061ae78839b2826ff0e0a925a6f0dbca25f2cfb271a82'
             '1fa81fdfd50129955cdeb028473b99695b182c9e98da1594bd2db30705c712aadbe9deb31b2ce14f4baea945732f443a9862e226325facc4d5262d2118340f01'
             '5e759d59ab97714d19c71d60360f524d27e06076a02bf1c0276f503b3b46c0db3aed912da96cf50ac29a5ce627bd68d4385ec22d13974d661006f9f7ed249b0f'
