@@ -1,0 +1,20 @@
+pkgbase = dosierskanilo
+	pkgdesc = Blob-centric media and archive file scanner
+	pkgver = 26.9.2
+	pkgrel = 1
+	url = https://github.com/cschlote/DosierSkanilo
+	arch = x86_64
+	license = custom:CC-BY-NC-SA-4.0
+	makedepends = ldc
+	makedepends = dub
+	makedepends = git
+	depends = mediainfo
+	depends = file
+	depends = unzip
+	depends = tar
+	depends = unrar
+	depends = p7zip
+	source = dosierskanilo-26.9.2.tar.gz::https://github.com/cschlote/DosierSkanilo/archive/refs/tags/v26.9.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = dosierskanilo
