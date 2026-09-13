@@ -1,6 +1,6 @@
 pkgbase = meka
 	pkgdesc = A general-purpose AI agent harness
-	pkgver = 0.52.0
+	pkgver = 0.54.0
 	pkgrel = 1
 	url = https://docs.meka.so
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = meka
 	optdepends = bubblewrap: sandbox support
 	provides = agsh
 	replaces = agsh
-	source = meka-0.52.0.tar.gz::https://github.com/k4yt3x/meka/archive/0.52.0.tar.gz
-	sha256sums = 1b963e98fa7c4b7f4b21751d97ad033620f2d7c8ce49bd1c10f974a8c1e51733
+	source = meka-0.54.0.tar.gz::https://github.com/k4yt3x/meka/archive/0.54.0.tar.gz
+	sha256sums = 4aa9cbb2f737c4334ef194c64d170c7b2960517f34098424b247b8576daf3924
 
 pkgname = meka
