@@ -7,7 +7,7 @@ pkgdesc="a modern web frontend making aria2 easier to use."
 arch=("any")
 url="https://github.com/mayswind/AriaNg"
 license=("MIT")
-makedepends=("git" "npm" "gulp" "openssh")
+makedepends=("git" "npm" "gulp")
 optdepends=(
     "aria2: if you use ariang locally"
     "apache: for web server"
