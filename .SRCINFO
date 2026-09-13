@@ -1,5 +1,5 @@
 pkgbase = widic
-	pkgdesc = A Wiktionary viewer in your terminal.
+	pkgdesc = A Wiktionary viewer in your terminal. Definitions, Etymology Pronunciation and more.
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/matezoltanfarkas/widic
