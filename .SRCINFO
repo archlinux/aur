@@ -17,6 +17,7 @@ pkgbase = lupa-git
 	depends = libadwaita
 	depends = xdg-utils
 	depends = localsearch
+	optdepends = lua: Provider plugins
 	provides = lupa=r52.fb3d547
 	conflicts = lupa
 	options = !debug

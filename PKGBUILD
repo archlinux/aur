@@ -18,6 +18,8 @@ depends=(
 	'xdg-utils' 'localsearch'
 )
 
+optdepends=('lua: Provider plugins')
+
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
