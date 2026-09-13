@@ -1,6 +1,6 @@
 pkgbase = yummy
 	pkgdesc = Keyboard-first TUI for browsing YummyAnime and downloading episodes
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gitlab.com/cmpdchtr/yummy
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = yummy
 	depends = yt-dlp
 	options = !debug
 	options = !lto
-	source = yummy-0.1.1.tar.gz::https://gitlab.com/cmpdchtr/yummy/-/archive/v0.1.1/yummy-v0.1.1.tar.gz
-	b2sums = 24f23a575e0ba0e3473e2ee363b98ed36e67dfd79e944e89a3751610fd9c2401e3776018d3aaf7a20f61665ecc9b546f112dd1530f8f5620292eb7a690bcca12
+	source = yummy-0.1.2.tar.gz::https://gitlab.com/cmpdchtr/yummy/-/archive/v0.1.2/yummy-v0.1.2.tar.gz
+	b2sums = ba224d9f5a8425e99b67897c8ad8e803a853be4915f7dc9af035df719e3994c024473354be76a6e2bd3de84261989ed3e5a4b9aaa354a7b576ee6cd6244efa76
 
 pkgname = yummy

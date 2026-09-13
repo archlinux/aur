@@ -1,7 +1,7 @@
 # Maintainer: cmpdchtr <cmpdchtr@gmail.com>
 
 pkgname=yummy
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Keyboard-first TUI for browsing YummyAnime and downloading episodes'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('ffmpeg' 'gcc-libs' 'glibc' 'yt-dlp')
 makedepends=('cargo')
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-b2sums=('24f23a575e0ba0e3473e2ee363b98ed36e67dfd79e944e89a3751610fd9c2401e3776018d3aaf7a20f61665ecc9b546f112dd1530f8f5620292eb7a690bcca12')
+b2sums=('ba224d9f5a8425e99b67897c8ad8e803a853be4915f7dc9af035df719e3994c024473354be76a6e2bd3de84261989ed3e5a4b9aaa354a7b576ee6cd6244efa76')
 
 prepare() {
   cd "$pkgname-v$pkgver"
