@@ -1,0 +1,10 @@
+post_install() {
+    echo "Setting CAP_BPF & CAP_PERFMON capabilities on /usr/bin/syswatch..."
+    setcap 'cap_bpf,cap_perfmon+eip' usr/bin/syswatch
+}
+
+post_upgrade() {
+    post_install "$1"
+}
+
+# vim:set ts=2 sw=2 et:
