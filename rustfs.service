@@ -3,6 +3,7 @@ Description=RustFS Object Storage Server
 Documentation=https://rustfs.com/docs/
 After=network-online.target
 Wants=network-online.target
+
 [Service]
 Type=notify
 NotifyAccess=main
@@ -29,5 +30,6 @@ ProtectKernelModules=true
 ProtectControlGroups=true
 RestrictSUIDSGID=true
 RestrictRealtime=true
+
 [Install]
 WantedBy=multi-user.target
