@@ -15,10 +15,8 @@ Restart=on-failure
 RestartSec=5
 
 NoNewPrivileges=true
-ProtectSystem=strict
-ProtectHome=true
+ProtectSystem=full
 PrivateTmp=true
-ReadWritePaths=/var/lib/devinorium
 
 [Install]
 WantedBy=multi-user.target
