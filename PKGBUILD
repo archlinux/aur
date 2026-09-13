@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Backup tool for your cloud git repositories"
 
-pkgver=0.10.46
+pkgver=0.10.47
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_386=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('c7d0d016bdada6788faf8d0b3410f3f3919e1746b62fbf67c4701b5c916f16e3')
-sha256sums_386=('d110b130352af6ca91210928142dff0d3efc0c1707a0382130c9b0b0f75772d2')
-sha256sums_aarch64=('3e7e7ee27067531ebdb7dc5b21e0031e174616f00a006ef37261aa69d8e9c7e2')
+sha256sums_x86_64=('728a5ede0903633ecce3d9b9ee9f9ec0ab5207e0787fe854acd2dc6a1f3034f5')
+sha256sums_386=('8aaea8b5518266491e4b58ef45c84a13af236d90a58fefa86059e7811b90734a')
+sha256sums_aarch64=('0ed64a5471df9d757cc80f3491266b2a5ff4912d583130d38b205ece6bd9b49d')
 
 
 package() {
