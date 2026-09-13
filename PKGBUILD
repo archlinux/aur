@@ -1,8 +1,8 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=emeditor-wine
-pkgver=26.1.1
-pkgrel=6
+pkgver=26.2.7
+pkgrel=1
 pkgdesc='EmEditor text editor running through Wine'
 arch=('x86_64')
 url='https://github.com/duanluan/emeditor-linux'
@@ -23,7 +23,7 @@ optdepends=(
   'winetricks: optional Wine prefix tuning'
 )
 options=('!strip')
-_commit='3b24fedf63951c3aa8557b0212e6f9c08cc0fc8a'
+_commit='e6e5e6224939c1d98d8199398dd4eaa029239cf4'
 _upstream="emeditor-linux-${_commit}"
 _msi="emed64_${pkgver}.msi"
 source=(
@@ -31,8 +31,8 @@ source=(
   "${_msi}::https://download.emeditor.com/${_msi}"
 )
 sha256sums=(
-  '271b05fbfae55372d7a4df1ac2a966c6bc19d38c99cc14fdf4e8f2bad1f84621'
-  'bc54ae3700a657c159f176b8f5ad646a4cfef3090d8097ff8dfa99067340f5b5'
+  '00d09924fbdbec122ec48e51f9ef49b5bce76c53fe258c21d233a4fd443d1265'
+  '8999dc0c78a199f15c1b1e6b49b5b5322dc43a36df5b60b09b8f5ce86c4a8f74'
 )
 
 package() {
