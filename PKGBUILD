@@ -5,7 +5,7 @@ _pkgname='rtfde'
 _srcname='RTFDE'
 pkgname="python-${_pkgname}"
 pkgver=0.1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='RTF de-encapsulator for extracting HTML and plain text from encapsulated RTF bodies'
 arch=('any')
 url="https://github.com/seamustuohy/${_srcname}"
@@ -52,5 +52,5 @@ check() {
 
 package() {
 	cd -- "${_srcname}-${pkgver}" || return 1
-	python -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
+	python -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode 2 dist/*.whl
 }
