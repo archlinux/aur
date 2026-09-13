@@ -2,7 +2,7 @@
 
 pkgname=python-lm-eval
 _pkgname=lm_eval
-pkgver=0.4.12
+pkgver=0.4.13
 pkgrel=1
 pkgdesc="A framework for few-shot evaluation of language models (EleutherAI lm-evaluation-harness)"
 arch=('any')
@@ -22,8 +22,10 @@ depends=(
     'python-dill'
     'python-word2number'
     'python-more-itertools'
+    'python-requests'
     'python-typing_extensions'
     'python-tqdm'
+    'python-yaml'
 )
 makedepends=(
     'python-build'
@@ -31,8 +33,12 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
+checkdepends=(
+    'python-pytest'
+    'python-pytorch'
+    'python-transformers'
+)
 optdepends=(
-    'python-requests: for API model backends'
     'python-aiohttp: for API model backends'
     'python-tenacity: for API model backends'
     'python-tiktoken: for API model backends'
@@ -52,22 +58,74 @@ optdepends=(
     'python-scipy: for the ruler task'
     'python-wandb: for Weights & Biases logging'
     'python-pandas: for Weights & Biases / zeno logging'
+    'python-pytest: for the run_task_tests validation helper'
 )
-source=("$_pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('45938d7c8024d5eee5c8a0da36abe7cc09c252413c577cf81666f0fcd28b4345')
+_archive="lm-evaluation-harness-$pkgver"
+source=(
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    'lm-eval-workflow.py'
+)
+sha256sums=(
+    'f1903f0c1346aed93bb38fda97318f1144cbafb07441913bd8428f11b0e33957'
+    '7314e82a9e876ef0d6ed7c7e796b68b44014cf1b1f55cb09e60357ef48cdc163'
+)
 
 build() {
-    cd "$_pkgname-$pkgver"
+    cd "$_archive"
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "$_pkgname-$pkgver"
-    PYTHONPATH="$PWD:$PYTHONPATH" python -c "import lm_eval; print(lm_eval.__version__)"
+    cd "$_archive"
+
+    local _check="$srcdir/_check"
+    local _site
+    rm -rf "$_check" "$srcdir/_suite" "$srcdir/_test-home"
+    mkdir -p "$srcdir/_suite" "$srcdir/_test-home"
+    python -m installer --destdir="$_check" dist/*.whl
+    _site="$_check$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')"
+    cp -a tests "$srcdir/_suite/"
+    # New BBH filter regressions load task files by repository-relative path.
+    # Point that path to the installed wheel, never to the source package.
+    ln -s "$_site/lm_eval" "$srcdir/_suite/lm_eval"
+
+    # Run the complete framework-neutral suite against the installed wheel.
+    # The excluded upstream jobs require optional model backends or remote
+    # models/datasets. Keep the TaskManager and prompt modules, removing only
+    # their nodes that instantiate MMLU/AI2 ARC datasets from the Hub.
+    cd "$srcdir/_suite"
+    env \
+        DATASETS_OFFLINE=1 \
+        HF_DATASETS_OFFLINE=1 \
+        HF_HUB_OFFLINE=1 \
+        HOME="$srcdir/_test-home" \
+        HTTP_PROXY='http://127.0.0.1:9' \
+        HTTPS_PROXY='http://127.0.0.1:9' \
+        NO_PROXY='' \
+        PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+        PYTHONPATH="$_site:$srcdir/_suite" \
+        python -P -m pytest -ra tests \
+            --ignore=tests/models \
+            --ignore=tests/scripts \
+            --ignore=tests/test_evaluator.py \
+            --ignore=tests/test_requests_caching.py \
+            --ignore=tests/test_tasks.py \
+            --deselect=tests/test_prompt.py::test_mmlu_prompt_rendering \
+            --deselect=tests/test_task_manager.py::TestTaskManagerIntegration::test_load_tag_by_name \
+            --deselect=tests/test_task_manager.py::TestTaskManagerIntegration::test_include_path_precedence \
+            --deselect=tests/test_task_manager.py::TestTaskManagerLoad::test_load_tag_by_name \
+            --deselect=tests/test_task_manager.py::TestTaskManagerLoad::test_include_path_precedence \
+            --deselect=tests/test_task_manager.py::test_python_task_inclusion
+
+    # Execute the installed evaluator end-to-end with an in-memory task and
+    # model: build requests, run generation, aggregate exact-match, and log
+    # samples without downloading a checkpoint or dataset.
+    env HF_HUB_OFFLINE=1 HOME="$srcdir/_test-home" PYTHONPATH="$_site" \
+        python -P "$srcdir/lm-eval-workflow.py"
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
+    cd "$_archive"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
