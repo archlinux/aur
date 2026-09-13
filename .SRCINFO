@@ -1,6 +1,6 @@
 pkgbase = galdr
 	pkgdesc = Terminal grid synthesizer: signal flows through single-glyph unit generators, MIDI in, low-latency PipeWire out
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://project.uhhm.no/bl/galdr
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = galdr
 	conflicts = galdr-git
 	conflicts = galdr-bin
 	options = !strip
-	source_x86_64 = galdr-v0.1.0-x86_64.tar.gz::https://project.uhhm.no/bl/galdr/releases/download/v0.1.0/galdr-v0.1.0-x86_64.tar.gz
-	sha256sums_x86_64 = 75302b073172f135154c1e450a1c2211d627e7ab6ea3153388c7014865a10a04
-	source_aarch64 = galdr-v0.1.0-aarch64.tar.gz::https://project.uhhm.no/bl/galdr/releases/download/v0.1.0/galdr-v0.1.0-aarch64.tar.gz
-	sha256sums_aarch64 = 5f9e9ff0f5a68dce3e644c8b64931bbef897f37e48beb2c4ec378cffc38a4083
+	source_x86_64 = galdr-v0.2.0-x86_64.tar.gz::https://project.uhhm.no/bl/galdr/releases/download/v0.2.0/galdr-v0.2.0-x86_64.tar.gz
+	sha256sums_x86_64 = e005591c6e21673e4e01b9d04cb13e72812b5a7d94ed9835151cdba1e0de6976
+	source_aarch64 = galdr-v0.2.0-aarch64.tar.gz::https://project.uhhm.no/bl/galdr/releases/download/v0.2.0/galdr-v0.2.0-aarch64.tar.gz
+	sha256sums_aarch64 = 54bcee4c3dcf429d2032b6259a88d5ef13693a281b748d9591319d5d6c2b67c8
 
 pkgname = galdr
