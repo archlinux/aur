@@ -1,0 +1,16 @@
+pkgbase = vol3-suite
+	pkgdesc = Unified Memory Forensics, eBPF Rootkit Detection, and AI-Driven Incident Triage Suite
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/zyekhabdul/volatility3-cyber-suite
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = vol3-suite-2.0.0.tar.gz::https://github.com/zyekhabdul/volatility3-cyber-suite/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = bc39ea0116c6f9e5ceb06131a27f13d4cfc664cee30f6c191e0a35c91989b8e2
+
+pkgname = vol3-suite
