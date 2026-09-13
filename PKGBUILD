@@ -1,6 +1,6 @@
 # Maintainer: swim <swim853279614@163.com>
 pkgname=plasma-lyrics-git
-pkgver=0.3.2.r0.gf5b5804
+pkgver=0.4.1.r3.gc6ff660
 pkgrel=1
 pkgdesc='Native synchronized desktop lyrics widget for Plasma 6'
 arch=('x86_64')
@@ -13,8 +13,11 @@ license=('GPL-2.0-only')
 # it breaks only the config dialog, so the widget itself still looks fine.
 # glibc, libgcc and libstdc++ are what the binaries actually link against; every
 # other entry only satisfies them by accident, which is what namcap reports.
+# zlib is linked directly by the QQ provider (QRC payloads are a zlib stream
+# under the cipher), so it is a real linkage rather than one satisfied by
+# accident through Qt.
 depends=('plasma-workspace' 'libplasma' 'kirigami' 'ksvg' 'ki18n' 'kdeclarative'
-         'qt6-base' 'qt6-declarative' 'glibc' 'libgcc' 'libstdc++')
+         'qt6-base' 'qt6-declarative' 'zlib' 'glibc' 'libgcc' 'libstdc++')
 # gettext supplies msgfmt, which builds the translation catalogues.
 makedepends=('git' 'cmake' 'ninja' 'extra-cmake-modules' 'gettext')
 provides=("${pkgname%-git}")
