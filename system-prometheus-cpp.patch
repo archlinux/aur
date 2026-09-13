@@ -1,0 +1,40 @@
+diff --git a/src/plugins/telemetry/prometheus/meson.build b/src/plugins/telemetry/prometheus/meson.build
+index 1af818d..00ce93a 100644
+--- a/src/plugins/telemetry/prometheus/meson.build
++++ b/src/plugins/telemetry/prometheus/meson.build
+@@ -17,7 +17,13 @@
+ cmake = import('cmake')
+ prometheus_found = false
+ 
+-# Try to get prometheus-cpp as a CMake subproject
++# Prefer the distro's prometheus-cpp. Its installed pkg-config files expose
++# the same core and pull libraries used by the bundled CMake fallback.
++prometheus_core_dep = dependency('prometheus-cpp-core', required: false)
++prometheus_pull_dep = dependency('prometheus-cpp-pull', required: false)
++prometheus_found = prometheus_core_dep.found() and prometheus_pull_dep.found()
++
++# Fall back to the upstream CMake subproject when no system package is present.
+ # Pass CMake options directly to ensure they're applied
+ cmake_opts = cmake.subproject_options()
+ cmake_opts.add_cmake_defines({
+@@ -33,12 +39,14 @@ cmake_opts.add_cmake_defines({
+     'CMAKE_CXX_FLAGS': '-Wno-unused-but-set-variable'
+ })
+ 
+-prometheus_sub = cmake.subproject('prometheus-cpp', required: false, options: cmake_opts)
+-if prometheus_sub.found()
+-    # Get the CMake targets
+-    prometheus_core_dep = prometheus_sub.dependency('core')
+-    prometheus_pull_dep = prometheus_sub.dependency('pull')
+-    prometheus_found = true
++if not prometheus_found
++    prometheus_sub = cmake.subproject('prometheus-cpp', required: false, options: cmake_opts)
++    if prometheus_sub.found()
++        # Get the CMake targets
++        prometheus_core_dep = prometheus_sub.dependency('core')
++        prometheus_pull_dep = prometheus_sub.dependency('pull')
++        prometheus_found = true
++    endif
+ endif
+ 
+ if prometheus_found

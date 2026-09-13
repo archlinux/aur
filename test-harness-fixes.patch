@@ -1,0 +1,27 @@
+diff --git a/test/gtest/meson.build b/test/gtest/meson.build
+index 8a0c79a..6933dfb 100644
+--- a/test/gtest/meson.build
++++ b/test/gtest/meson.build
+@@ -128,6 +128,7 @@ endif
+     gtest_args += '--gtest_filter=-MetadataExchangeTestFixture.*'
+ endif
+-test('gtest', test_exe, args: gtest_args, env: sanitizer_env, suite: 'sanitizer')
++test('gtest', test_exe, args: gtest_args, env: sanitizer_env,
++     suite: 'sanitizer', timeout: 300)
+ 
+ # Telemetry hot-path microbenchmark (NVBug 5876558). The cases are DISABLED_ so
+ # they never run in the normal 'gtest' suite; this dedicated entry opts them in.
+diff --git a/test/gtest/metadata_exchange.cpp b/test/gtest/metadata_exchange.cpp
+index 9a94f64..608c9a9 100644
+--- a/test/gtest/metadata_exchange.cpp
++++ b/test/gtest/metadata_exchange.cpp
+@@ -136,6 +136,9 @@ protected:
+ 
+     void TearDown() override
+     {
++        const gtest::LogIgnoreGuard no_etcd(
++            "invalidateLocalMD: ETCD is not supported and socket information was not provided "
++            "either");
+         for (auto &agent : agents_) {
+             if (agent.agent) {
+                 agent.agent->invalidateLocalMD(nullptr);

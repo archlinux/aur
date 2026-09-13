@@ -1,0 +1,12 @@
+diff --git a/test/gtest/configuration.cpp b/test/gtest/configuration.cpp
+index 55906ad..248e291 100644
+--- a/test/gtest/configuration.cpp
++++ b/test/gtest/configuration.cpp
+@@ -19,6 +19,7 @@
+ #include "gtest/gtest.h"
+ #include "common.h"
+ 
++#include <fstream>
+ #include <limits>
+ #include <stdlib.h>
+ #include <string>

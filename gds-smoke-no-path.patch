@@ -1,0 +1,32 @@
+diff --git a/test/unit/plugins/cuda_gds/nixl_gds_test.cpp b/test/unit/plugins/cuda_gds/nixl_gds_test.cpp
+index bdd71d7..1de3578 100644
+--- a/test/unit/plugins/cuda_gds/nixl_gds_test.cpp
++++ b/test/unit/plugins/cuda_gds/nixl_gds_test.cpp
+@@ -326,6 +326,11 @@ int main(int argc, char *argv[])
+             return rc;
+         }
+     }
++
++    // Meson registers this executable as a path-mode smoke test without a
++    // directory argument. Once that smoke has passed (or skipped because GDS
++    // is unavailable), there is no benchmark workload left to run.
++    if (optind >= argc && run_path_mode_smoke) return 0;
+ 
+     // Check if directory path is provided
+     if (optind >= argc) {
+diff --git a/test/unit/plugins/gds_mt/nixl_gds_mt_test.cpp b/test/unit/plugins/gds_mt/nixl_gds_mt_test.cpp
+index 8cae77b..25581ac 100644
+--- a/test/unit/plugins/gds_mt/nixl_gds_mt_test.cpp
++++ b/test/unit/plugins/gds_mt/nixl_gds_mt_test.cpp
+@@ -345,6 +345,11 @@ main (int argc, char *argv[]) {
+             return rc;
+         }
+     }
++
++    // Meson registers this executable as a path-mode smoke test without a
++    // directory argument. Once that smoke has passed (or skipped because GDS_MT
++    // is unavailable), there is no benchmark workload left to run.
++    if (optind >= argc && run_path_mode_smoke) return 0;
+ 
+     // Check if directory path is provided
+     if (optind >= argc) {
