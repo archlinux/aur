@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ORFik
-_pkgver=1.28.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,6 +31,7 @@ depends=(
   r-httr
   r-iranges
   r-jsonlite
+  r-qs2
   r-r.utils
   r-rcpp
   r-rsamtools
@@ -45,13 +46,14 @@ depends=(
 optdepends=(
   r-biocstyle
   r-bsgenome.hsapiens.ucsc.hg19
+  r-genomeinfodbdata
   r-knitr
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a6d84a239a77233f88eff4608cb55b02')
-b2sums=('2c6ac1b6b6b93143e39efeb7d93fb94e1e94a810c00ed6fc632e6fbea72937afda591db9bd14198922c83f11c9c2f61941ad200976a8ac1b8bb9932338eb1f77')
+md5sums=('0041f5dff4429c64f68039c8920032e1')
+b2sums=('70ea4e55f535bd6c87bb7debfbcd13b8d8e2341e97fd43fcbe4cc948e3b9d7981c10e6ff2f7c4aafbde9c96310c54f6b83daeaca8fa665f7558862c82ec23d44')
 
 build() {
   mkdir build
