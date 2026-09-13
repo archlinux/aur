@@ -7,7 +7,7 @@
 # ssh://aur@aur.archlinux.org/libfprint-egis0575.git on every
 # egis0575-v* tag (pkgver + sha256sums updated automatically).
 pkgname=libfprint-egis0575
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="libfprint with the experimental EgisTec EH575 (1c7a:0575) fingerprint driver (press-snapshot + Windows-engine matcher port)"
 arch=(x86_64)
@@ -25,8 +25,10 @@ replaces=(libfprint-egis-0575 libfprint-egis0575-experimental)
 # tag tarballs come from the libfprint-egis0575 repository; the meson
 # source tree is the libfprint/ subtree inside it
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cosct/libfprint-egis0575/archive/refs/tags/egis0575-v$pkgver.tar.gz")
-# refreshed by the release CI (updpkgsums) when the tag is cut
-sha256sums=('b5d1994bed676bea3a98241f7943c8ce0e7c6aa1f5c3f08ba01e18c9dd04adbb')
+# the hash below pins the pkgver tarball so a direct build from this repo
+# copy verifies its download; the release CI (updpkgsums) refreshes it for
+# each new tag, where the tarball — and therefore the hash — changes
+sha256sums=('016fe30cfca358deb0c375caa711113fe873b927e4136a3128288305789e9ba1')
 
 build() {
   # align with the deb/rpm builds: no docs, introspection or installed tests.

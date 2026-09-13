@@ -1,6 +1,6 @@
 pkgbase = libfprint-egis0575
 	pkgdesc = libfprint with the experimental EgisTec EH575 (1c7a:0575) fingerprint driver (press-snapshot + Windows-engine matcher port)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/cosct/libfprint-egis0575
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = libfprint-egis0575
 	replaces = libfprint-egis-0575
 	replaces = libfprint-egis0575-experimental
 	options = !debug
-	source = libfprint-egis0575-0.2.1.tar.gz::https://github.com/cosct/libfprint-egis0575/archive/refs/tags/egis0575-v0.2.1.tar.gz
-	sha256sums = b5d1994bed676bea3a98241f7943c8ce0e7c6aa1f5c3f08ba01e18c9dd04adbb
+	source = libfprint-egis0575-0.2.2.tar.gz::https://github.com/cosct/libfprint-egis0575/archive/refs/tags/egis0575-v0.2.2.tar.gz
+	sha256sums = 016fe30cfca358deb0c375caa711113fe873b927e4136a3128288305789e9ba1
 
 pkgname = libfprint-egis0575
