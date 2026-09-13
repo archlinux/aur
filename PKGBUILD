@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=zux
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="mDNS-SD Visualizer - A cross platform mDNS browsing visualizer written in Rust using tauri and svelte"
 arch=('x86_64')
@@ -9,18 +9,15 @@ url="https://github.com/hrzlgnm/zux"
 license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1')
 conflicts=('zux-bin')
-makedepends=('cargo' 'cargo-edit' 'git' 'file' 'nodejs' 'pnpm' 'base-devel' 'rust' 'librsvg' 'patchelf')
+makedepends=('cargo' 'git' 'file' 'nodejs' 'pnpm' 'base-devel' 'rust' 'librsvg' 'patchelf')
 options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a9684d57fff4771a2c067298cc0dcc1630fbb19aac6a3583d0cb295a9413b1ac')
+sha256sums=('dec9e30104ba3fe52fe10925f77895e02290231cd1aa8b0b3fdf84c9a887d381')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
-    jq '.version = "1.15.0"' src-tauri/tauri.conf.json > tmp.json
-    mv tmp.json src-tauri/tauri.conf.json
     pnpm install --frozen-lockfile
     cd src-tauri
-    cargo set-version "$pkgver"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 build() {
