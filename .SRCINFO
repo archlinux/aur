@@ -10,7 +10,6 @@ pkgbase = fcitx5-lotus-git
 	makedepends = extra-cmake-modules
 	makedepends = gcc
 	makedepends = git
-	makedepends = libx11
 	makedepends = python
 	makedepends = librsvg
 	source = git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev

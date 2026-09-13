@@ -7,7 +7,7 @@ pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
-makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'libx11' 'python' 'librsvg')
+makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'python' 'librsvg')
 source=(
     'git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev'
     'git+https://github.com/LotusInputMethod/bamboo-core.git'
