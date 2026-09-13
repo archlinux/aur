@@ -1,7 +1,7 @@
 # Maintainer: Deon Spengler <deon@spengler.co.za>
 
 pkgname=python-akp02
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Driver library for the Ajazz AKP02 USB secondary display"
 arch=('any')
@@ -22,7 +22,7 @@ checkdepends=(
     'python-pytest'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/deonspengler/akp02/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('168265253416a298fbd6f870fbafd3ca5512f621261504d847db6e9e8ad62e0f')
+sha256sums=('b1d69d798446081e13ebb2950a7e2376086b78798a7377a35e2385d66bcacf44')
 
 build() {
     cd "akp02-$pkgver"
