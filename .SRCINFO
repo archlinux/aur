@@ -1,7 +1,7 @@
 pkgbase = python-beartype
 	pkgdesc = Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python
 	pkgver = 0.22.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/beartype/beartype
 	arch = any
 	license = MIT

@@ -7,7 +7,7 @@
 _pkgname='beartype'
 pkgname="python-${_pkgname}"
 pkgver=0.22.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python'
 arch=('any')
 url="https://github.com/beartype/${_pkgname}"
@@ -70,6 +70,6 @@ check() {
 
 package() {
 	cd -- "${srcdir}/${_pkgname}-${pkgver}" || return 1
-	python -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
+	python -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode 2 dist/*.whl
 	install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
