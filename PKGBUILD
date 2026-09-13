@@ -3,7 +3,7 @@
 # Contributor: Matthew McGinn <mamcgi@gmail.com>
 
 pkgname=proxysql
-pkgver=3.0.9
+pkgver=3.0.11
 pkgrel=1
 pkgdesc='High-performance MySQL proxy with query routing, caching, and load balancing (built from source)'
 arch=('x86_64')
@@ -20,11 +20,11 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sysown/proxysql/archive
         "fix-mariadb-zlib-cmake-version.patch"
         "fix-clickhouse-cpp-cmake-version.patch"
         "fix-postgresql-bool-c23.patch")
-sha256sums=('1660ab9869cee85fdf5fd35eeb6259eaff9b54ec67eb82cf7f605927afe0c650'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('7710c1ab9a6080a4505e319ae7f6370c52223a71271d293dd07d3454fb635c90'
+            '65265d694a42f44c01c0da7378f767bebce871e8ab9e9207119fe4a60397c8a9'
+            '72d4a077d90a939927ce0d62757683b020373209bf5d0c519b79e8f77ffe4ee9'
+            '582f28e7a9dd6ded1100841bb1c9dff1b1783b7622f04365e81bf23e85f5072c'
+            '828237545d513e5493d7be67153a73897238e8eccaca03a5845d2402ab035799')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
