@@ -4,7 +4,7 @@
 pkgname=python-tree-sitter-rust
 _gitpkgname=tree-sitter-rust
 pkgver=0.24.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Python Bindings for tree-sitter-rust'
 arch=(
       'x86_64'
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-	python -I -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
+	python -I -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode 2 dist/*.whl
 	install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 	install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
