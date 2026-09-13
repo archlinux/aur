@@ -1,0 +1,13 @@
+Use the Arch-installed swig package instead of the version from PyPI.
+
+diff --git a/pyproject.toml b/pyproject.toml
+index a3d3430..e17c793 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["scikit-build-core>=0.12", "swig"]
++requires = ["scikit-build-core>=0.12"]
+ build-backend = "scikit_build_core.build"
+ 
+ [project]
