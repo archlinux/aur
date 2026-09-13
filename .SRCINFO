@@ -1,7 +1,7 @@
 pkgbase = python-pptx
 	pkgdesc = A Python library for creating and updating PowerPoint (.pptx) files
 	pkgver = 1.0.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/scanny/python-pptx
 	arch = any
 	license = MIT
