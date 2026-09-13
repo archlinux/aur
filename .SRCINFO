@@ -8,7 +8,6 @@ pkgbase = sorting-algorithm-visualizer
 	depends = bash
 	depends = java-runtime-common
 	provides = sorting-algorithm-visualizer
-	conflicts = sorting-algorithm-visualizer
 	noextract = sorting-algorithm-visualizer-2.0.4.jar
 	options = !strip
 	source = README-2.0.4.md::https://raw.githubusercontent.com/66-m/sorting-visualizer/v2.0.4/README.md

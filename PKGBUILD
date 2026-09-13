@@ -19,7 +19,6 @@ url=${_ghurl}
 license=('GPL-3.0-only')
 
 provides=("${_appname}")
-conflicts=("${pkgname%-bin}")
 depends=('bash' 'java-runtime-common')
 
 options=('!strip')
