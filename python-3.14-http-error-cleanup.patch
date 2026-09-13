@@ -1,0 +1,28 @@
+diff --git a/core/pystac/stac_io.py b/core/pystac/stac_io.py
+index 05ff206..894c4f5 100644
+--- a/core/pystac/stac_io.py
++++ b/core/pystac/stac_io.py
+@@ -309,7 +309,7 @@ class DefaultStacIO(StacIO):
+                         preload_content=False,  # type: ignore
+                     ) as f:
+                         if f.status >= 400:
+-                            raise HTTPError(href, f.status, f.reason, f.headers, None)
++                            raise Exception(f"Could not read uri {href}")
+                         href_contents = f.read().decode("utf-8")
+                 else:
+                     req = Request(
+@@ -467,13 +467,7 @@ if HAS_URLLIB3:
+                         retries=self.retry,  # type: ignore
+                     )
+                     if response.status >= 400:
+-                        raise HTTPError(
+-                            href,
+-                            response.status,
+-                            response.reason,
+-                            response.headers,
+-                            None,
+-                        )
++                        raise Exception(f"Could not read uri {href}")
+                     return cast(str, response.data.decode("utf-8"))
+                 except HTTPError as e:
+                     raise Exception(f"Could not read uri {href}") from e

@@ -1,33 +1,79 @@
 pkgbase = python-pystac
 	pkgdesc = Python library for working with SpatioTemporal Asset Catalogs (STAC)
-	pkgver = 1.14.3
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://github.com/stac-utils/pystac
 	arch = any
 	license = Apache-2.0
-	checkdepends = python-pytest
-	checkdepends = python-pytest-recording
-	checkdepends = python-pytest-mock
-	checkdepends = python-requests-mock
+	checkdepends = python-html5lib
 	checkdepends = python-jsonschema
-	checkdepends = python-referencing
 	checkdepends = python-orjson
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-recording
+	checkdepends = python-referencing
+	checkdepends = python-requests-mock
 	checkdepends = python-urllib3
 	checkdepends = python-jinja
-	checkdepends = python-html5lib
 	makedepends = python-build
+	makedepends = python-hatchling
 	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-setuptools
 	depends = python
-	depends = python-dateutil
-	optdepends = python-orjson: faster JSON (de)serialization
-	optdepends = python-jsonschema: STAC object validation
+	depends = python-dateutil>=2.7
+	optdepends = python-jinja<1:4: HTML rendering of STAC objects
+	optdepends = python-jsonschema>=4.18: STAC object validation
+	optdepends = python-orjson>=3.5: faster JSON (de)serialization
 	optdepends = python-referencing: local JSON-schema validation
-	optdepends = python-urllib3: reading STAC objects from remote URLs
-	optdepends = python-requests: alternative remote-URL reader
-	optdepends = python-jinja: HTML rendering of STAC objects
-	source = pystac-1.14.3.tar.gz::https://github.com/stac-utils/pystac/archive/refs/tags/v1.14.3.tar.gz
-	sha256sums = 60a523096c010eb935b35b088c4539c316350509a3f05fd04520802b5d9d4e0b
+	optdepends = python-urllib3>=2.6.3: reading STAC objects from remote URLs
+	provides = python-pystac-core=1.15.2
+	provides = python-pystac-ext-classification=2.0.0
+	provides = python-pystac-ext-datacube=2.2.0
+	provides = python-pystac-ext-eo=1.1.0
+	provides = python-pystac-ext-file=2.1.0
+	provides = python-pystac-ext-grid=1.1.0
+	provides = python-pystac-ext-item-assets=1.0.0
+	provides = python-pystac-ext-label=1.0.1
+	provides = python-pystac-ext-mgrs=1.0.0
+	provides = python-pystac-ext-mlm=1.4.0
+	provides = python-pystac-ext-pointcloud=1.0.0
+	provides = python-pystac-ext-projection=2.0.0
+	provides = python-pystac-ext-raster=1.1.0
+	provides = python-pystac-ext-render=2.0.0
+	provides = python-pystac-ext-sar=1.0.0
+	provides = python-pystac-ext-sat=1.0.0
+	provides = python-pystac-ext-scientific=1.0.0
+	provides = python-pystac-ext-storage=2.0.0
+	provides = python-pystac-ext-table=1.2.0
+	provides = python-pystac-ext-timestamps=1.1.0
+	provides = python-pystac-ext-version=1.2.0
+	provides = python-pystac-ext-view=1.0.0
+	provides = python-pystac-ext-xarray-assets=1.0.0
+	conflicts = python-pystac-core
+	conflicts = python-pystac-ext-classification
+	conflicts = python-pystac-ext-datacube
+	conflicts = python-pystac-ext-eo
+	conflicts = python-pystac-ext-file
+	conflicts = python-pystac-ext-grid
+	conflicts = python-pystac-ext-item-assets
+	conflicts = python-pystac-ext-label
+	conflicts = python-pystac-ext-mgrs
+	conflicts = python-pystac-ext-mlm
+	conflicts = python-pystac-ext-pointcloud
+	conflicts = python-pystac-ext-projection
+	conflicts = python-pystac-ext-raster
+	conflicts = python-pystac-ext-render
+	conflicts = python-pystac-ext-sar
+	conflicts = python-pystac-ext-sat
+	conflicts = python-pystac-ext-scientific
+	conflicts = python-pystac-ext-storage
+	conflicts = python-pystac-ext-table
+	conflicts = python-pystac-ext-timestamps
+	conflicts = python-pystac-ext-version
+	conflicts = python-pystac-ext-view
+	conflicts = python-pystac-ext-xarray-assets
+	source = pystac-1.15.2.tar.gz::https://github.com/stac-utils/pystac/archive/refs/tags/v1.15.2.tar.gz
+	source = python-3.14-http-error-cleanup.patch
+	sha256sums = ea0538dc34356d3f3538a7d4114f9692017a688ed0b0cab3e1b43dc39c6908c7
+	sha256sums = b82504d06f1992b00b60cca645072c32ed33503b7f67fb42961baa855c5982b7
 
 pkgname = python-pystac
