@@ -1,7 +1,7 @@
 # Maintainer: Nick Nizovtsev <nizovtsevnv@gmail.com>
 
 pkgname=termide
-pkgver=0.34.1
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="Cross-platform terminal IDE, file manager and virtual terminal"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/termide/termide/archive/$pkgver.tar.gz")
-sha256sums=('f1ee561a345c04bccfd693093eaad6c6e092877868719030497f811eb5548683')
+sha256sums=('7f5603bf2315ae8d7418c081c3cdccbc564ff6df0836239ec796b0d553370274')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -39,4 +39,9 @@ package() {
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Install shell completions
+    install -Dm644 completions/termide.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+    install -Dm644 completions/_termide "$pkgdir/usr/share/zsh/site-functions/_termide"
+    install -Dm644 completions/termide.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
 }
