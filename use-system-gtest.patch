@@ -1,0 +1,30 @@
+diff --git a/cmake/Utils/AddGoogleTest.cmake b/cmake/Utils/AddGoogleTest.cmake
+index cd8d093..c8d58ce 100644
+--- a/cmake/Utils/AddGoogleTest.cmake
++++ b/cmake/Utils/AddGoogleTest.cmake
+@@ -15,6 +15,7 @@
+ # specific language governing permissions and limitations
+ # under the License.
+ 
++if (FALSE)
+ include(FetchContent)
+ set(gtest_force_shared_crt # cmake-lint: disable=C0103
+     ON
+@@ -73,6 +74,17 @@ if (NOT googletest_POPULATED)
+     gtest_hide_internal_symbols
+   )
+ endif ()
++endif ()
++
++find_package(GTest REQUIRED)
++include(GoogleTest)
++
++# Keep the target names used by upstream's test definitions while linking to
++# Arch's packaged GoogleTest instead of downloading it during check().
++add_library(gtest_main ALIAS GTest::gtest_main)
++add_library(gtest ALIAS GTest::gtest)
++add_library(gmock_main ALIAS GTest::gmock_main)
++add_library(gmock ALIAS GTest::gmock)
+ 
+ # ~~~
+ # TVM_FFI_ADD_GTEST(target_name)

@@ -1,28 +1,41 @@
 pkgbase = python-apache-tvm-ffi
 	pkgdesc = TVM Foreign Function Interface - core bindings for Apache TVM
-	pkgver = 0.1.11
+	pkgver = 0.1.13.post3
 	pkgrel = 1
 	url = https://github.com/apache/tvm-ffi
 	arch = x86_64
 	license = Apache-2.0
-	checkdepends = python-pytest
+	checkdepends = gtest
+	checkdepends = python-ml-dtypes
 	checkdepends = python-numpy
+	checkdepends = python-packaging
+	checkdepends = python-pytest
+	checkdepends = python-pytest-xdist
+	checkdepends = python-pytorch
+	checkdepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-scikit-build-core
 	makedepends = python-setuptools-scm
-	makedepends = cython
+	makedepends = cython>=3.2.8
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
 	depends = python
 	depends = python-typing_extensions
-	source = tvm-ffi-0.1.11.tar.gz::https://github.com/apache/tvm-ffi/archive/refs/tags/v0.1.11.tar.gz
-	source = dlpack::git+https://github.com/dmlc/dlpack
-	source = libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace
-	sha256sums = 5f226210d0a243d1869f32bd1f0a89ab21d082edc1ff152d96b926d6fc27bdba
+	optdepends = ninja: build C++ extensions with tvm_ffi.cpp
+	optdepends = python-cuda-bindings: NVRTC compilation and CUDA driver integration
+	optdepends = python-ml-dtypes: extended machine-learning dtype interoperability
+	optdepends = python-numpy: NumPy tensor and DLPack interoperability
+	optdepends = python-pytest: tvm_ffi.testing helpers
+	optdepends = python-pytorch: PyTorch tensor and stream interoperability
+	source = tvm-ffi-0.1.13.post3.tar.gz::https://github.com/apache/tvm-ffi/archive/refs/tags/v0.1.13-post3.tar.gz
+	source = dlpack::git+https://github.com/dmlc/dlpack.git#commit=84d107bf416c6bab9ae68ad285876600d230490d
+	source = libbacktrace::git+https://github.com/ianlancetaylor/libbacktrace.git#commit=793921876c981ce49759114d7bb89bb89b2d3a2d
+	source = use-system-gtest.patch
+	sha256sums = cfd76d9e9ddda8eb194dca1d97c96cfc90bd11fb7133ff7860e78b40051e6fb5
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 382afb7a81168c122b4ae869d99a139d93919aa020dfb74ebc56f11c1bba1059
 
 pkgname = python-apache-tvm-ffi
