@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=OmniDB
+Comment=Database management tool with strong support for PostgreSQL
+Exec=omnidb
+Icon=omnidb
+Categories=Development;Database;
+Terminal=false
+StartupWMClass=OmniDB
