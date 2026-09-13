@@ -15,10 +15,8 @@ options=(!debug !lto)
 
 depends=(
 	'gtk4' 'gtk4-layer-shell' 'libadwaita'
-	'xdg-utils' 'localsearch'
+	'xdg-utils' 'localsearch' 'lua'
 )
-
-optdepends=('lua: Provider plugins')
 
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
