@@ -1,6 +1,6 @@
 pkgbase = fx-agent-bin
 	pkgdesc = Unix like coding agent
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/vercel-labs/fx
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = fx-agent-bin
 	conflicts = fx-agent
 	conflicts = fx
 	options = !debug
-	source_aarch64 = fx-agent-0.0.8-aarch64.tar.gz::https://github.com/vercel-labs/fx/releases/download/v0.0.8/fx-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 8b2ee30fdaad4f6c716aef514d629cba1a0ccff352e55891bd31e7ab870d15ca
-	source_x86_64 = fx-agent-0.0.8-x86_64.tar.gz::https://github.com/vercel-labs/fx/releases/download/v0.0.8/fx-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 5a2a5e188381c7f63d4d9b705bc5968e9d5cb94e1fad696dcae988474e00d124
+	source_aarch64 = fx-agent-0.0.9-aarch64.tar.gz::https://github.com/vercel-labs/fx/releases/download/v0.0.9/fx-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 741eb64e832d168309025fb9e84a0ccb1b842043d796f18898ed06c65d83a498
+	source_x86_64 = fx-agent-0.0.9-x86_64.tar.gz::https://github.com/vercel-labs/fx/releases/download/v0.0.9/fx-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 710069648015f37f68123adc6f9f6137d7075681fb7a0881e251c1b9fe860a85
 
 pkgname = fx-agent-bin
