@@ -6,7 +6,7 @@ _pyabi='cp314'
 _pyver='3.14'
 pkgver='12.10.0'
 _wheelbase="${_pkgname}-${pkgver}-${_pyabi}-${_pyabi}-manylinux_2_24"
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Python bindings for SaxonC-HE 12.x XSLT, XQuery and XPath processor series. Considered as 'most stable and reliable release', compared to 13.x"
 url='https://www.saxonica.com/html/saxon-c/index.html'
 license=('MPL-2.0 AND Apache-2.0 AND BSD-3-Clause AND X11 AND W3C-20150513')
@@ -59,7 +59,7 @@ package() {
 		return 1
 	}
 
-	python -m installer --destdir="${pkgdir}" --compile-bytecode 2 "${srcdir}/${_wheel}"
+	python -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode 2 "${srcdir}/${_wheel}"
 
 	# Upstream's wheel includes Cython/C++ build sources as importable namespace
 	# directories. They are not used by the extension at runtime.
