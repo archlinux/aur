@@ -1,6 +1,6 @@
 pkgbase = ossfs-bin
 	pkgdesc = FUSE-based file system backed by Alibaba Cloud OSS
-	pkgver = 1.91.11
+	pkgver = 1.91.12
 	pkgrel = 1
 	url = https://github.com/aliyun/ossfs
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ossfs-bin
 	provides = ossfs
 	conflicts = ossfs
 	conflicts = ossfs-git
-	source = ossfs_1.91.11_rockylinux9_x86_64.rpm::https://gosspublic.alicdn.com/ossfs/ossfs_1.91.11_rockylinux9_x86_64.rpm
-	sha256sums = bfb522b95f06c7d3863d45dafdb02be61a2573e74dd7d90c8ad9ea9c872cda89
+	source = ossfs_1.91.12_rockylinux9_x86_64.rpm::https://gosspublic.alicdn.com/ossfs/ossfs_1.91.12_rockylinux9_x86_64.rpm
+	sha256sums = bfb7a2a4a2f7543781e0356b0a076a977365854ba5387b9285f91910a35e552a
 
 pkgname = ossfs-bin
