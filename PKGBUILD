@@ -18,7 +18,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 
 license=('MIT')
 
-depends=('llama.cpp')
+depends=('llama-cpp')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
