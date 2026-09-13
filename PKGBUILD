@@ -1,7 +1,7 @@
 # Maintainer: Nate Sheibley <n.sheibley@gmail.com>
 
 pkgname=riftlauncher-bin
-pkgver=1.7.0_beta.9
+pkgver=1.7.0_beta.10
 pkgrel=1
 pkgdesc="Vintage Story launcher by the Stratum Server Devs"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
 )
 
 sha256sums=(
-    'b51aa0cc10efd90a965af91f79a7c366c47fd27f2eeb0efc387c410af69b6b6b'
+    'cdceb708daf8d59682064835aa0f53fd0a66c6ba92e02f06aba21ac64cd3dc7d'
     '5a2ee6564e40040332174f7faf48810a1a0815fceb203d33d140da6497d68115'
 )
 
