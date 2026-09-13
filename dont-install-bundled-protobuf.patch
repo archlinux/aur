@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 00b1849c..f4bcc963 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -208,7 +208,7 @@ IF(MNN_BUILD_CONVERTER)
+       message(FATAL_ERROR "When MNN_BUILD_CONVERTER=ON and MNN_BUILD_SHARED_LIBS=OFF, MNN_WIN_RUNTIME_MT must be ON. Because protobuf not support the config(static /MD)")
+     ENDIF()
+   ENDIF()
+-  add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/3rd_party/protobuf/cmake)
++  add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/3rd_party/protobuf/cmake EXCLUDE_FROM_ALL)
+ ENDIF()
+ ENDIF()
+ 
