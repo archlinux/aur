@@ -9,7 +9,6 @@ pkgbase = sorting-visualizer
 	depends = java-runtime-common
 	depends = java-openjfx
 	provides = sorting-visualizer
-	conflicts = sorting-visualizer
 	noextract = sorting-visualizer-0.0.1.jar
 	options = !strip
 	source = README-0.0.1.md::https://raw.githubusercontent.com/KrishnaSSH/sorting-visualizer/v0.0.1/README.md
