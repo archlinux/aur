@@ -1,0 +1,20 @@
+pkgbase = imageglass-bin
+	pkgdesc = A Fast, Seamless Photo Viewer
+	pkgver = 10.0.6.906
+	pkgrel = 1
+	url = https://imageglass.org
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = fontconfig
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgomp
+	provides = imageglass
+	conflicts = imageglass
+	options = !debug
+	source = https://github.com/d2phap/ImageGlass/releases/download/10.0.6.906/ImageGlass_10.0.6.906_linux-x64.tar.gz
+	source = imageglass.desktop
+	sha256sums = d9a2871ea94cf2c5e5a8bc347759aabfa0dc4fede087eef242dad5cc30de2d42
+	sha256sums = c470aeb84bcd7b41b9c33404febaa7401903555b7d77d3edebf68084771f3926
+
+pkgname = imageglass-bin
