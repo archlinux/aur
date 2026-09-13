@@ -1,7 +1,7 @@
 pkgbase = python-saxonche
 	pkgdesc = Python bindings for libsaxonc (SaxonC-HE)
 	pkgver = 12.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Saxonica/Saxon-HE
 	arch = x86_64
 	arch = aarch64
