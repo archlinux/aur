@@ -2,8 +2,8 @@
 pkgname=optionmusic
 # pkgver must not contain hyphens (makepkg rule); the full tag (with channel,
 # e.g. 0.2.14-beta) lives in _tag and feeds the source URL / extracted dir.
-pkgver=0.2.14
-_tag=0.2.14-beta
+pkgver=0.2.15
+_tag=0.2.15-stable
 pkgrel=1
 pkgdesc='Minimal black and white CLI music player powered by MPV'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('cargo')
 optdepends=('cava: optional spectrum bars')
 options=('!lto')
 source=("$pkgname-$_tag.tar.gz::$url/archive/refs/tags/v$_tag.tar.gz")
-sha256sums=('f232336759d3657c855a8aff6e3cb7d14d9e8f7b85551476009fbb5bd6fb8fa5')
+sha256sums=('de82e7ac0415febda561c484c8a23b9735a9578bbfebbaea852aa488d74c1c91')
 
 prepare() {
   cd "optionMusic-$_tag"
