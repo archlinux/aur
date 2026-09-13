@@ -2,7 +2,7 @@
 
 pkgname=hackman3d-control-deck
 pkgbase=hackman3d-control-deck
-pkgver=1.5.6.r7
+pkgver=1.5.7.r7
 pkgrel=1
 pkgdesc="HackMan3D Control Deck (HCD) is a family of programmable desktop controllers."
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('Creative Commons (4.0 International License)')
 provides=("hackman3d-control-deck")
 conflicts=("hackman3d-control-deck")
 options=(!strip !zipman !debug)
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/HackMan3D/Hackman3D-Control-Deck/releases/download/v1.5.6/HackMan3D-Control-Deck-Linux-x86_64-1.5.6-r7.AppImage")
-sha256sums=('7be05d74a89bc92be0f0ffc5c7a5d6f494876522018f9156d47bf19b6d5d3ef7')
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/HackMan3D/Hackman3D-Control-Deck/releases/download/v1.5.7/HackMan3D-Control-Deck-Linux-x86_64-1.5.7-r7.AppImage")
+sha256sums=('c3d7caf828431cc3de1c0827725e84ed8a6ef8c0f51c2cfcf1e2c3d9c6818f6e')
 
 prepare() {
     chmod +x ${pkgname}-${pkgver}.AppImage
