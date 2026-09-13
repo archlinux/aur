@@ -2,12 +2,12 @@
 pkgbase=fcitx5-lotus
 pkgname=('fcitx5-lotus' 'fcitx5-lotus-openrc' 'fcitx5-lotus-runit')
 pkgver=3.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
-makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'libx11' 'python' 'librsvg')
+makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'python' 'librsvg')
 source=(
     "git+https://github.com/LotusInputMethod/fcitx5-lotus.git#tag=v$pkgver"
     'git+https://github.com/LotusInputMethod/bamboo-core.git'
