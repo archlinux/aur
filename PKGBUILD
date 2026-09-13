@@ -1,22 +1,23 @@
 # Maintainer: HttpAnimations
 pkgname=devinorium
-pkgver=0.73.0
+pkgver=0.72.1
 pkgrel=1
 pkgdesc="Self-hosted web UI for AI coding agents - desktop client"
 arch=('x86_64')
 url="https://gitlab.com/HttpAnimations/devinorium"
 license=('AGPL-3.0-only')
 options=('!lto')
-depends=('gtk3' 'glibc' 'gcc-libs')
-makedepends=('cargo' 'clang' 'cmake' 'ninja' 'pkgconf')
-optdepends=('xdg-utils: open URLs from the app'
+depends=('gtk3' 'glibc' 'gcc-libs' 'git')
+makedepends=('cargo' 'git' 'clang' 'cmake' 'ninja' 'pkgconf' 'unzip' 'zip' 'curl')
+optdepends=('openssh: clone repositories over SSH'
+            'xdg-utils: open URLs from the app'
             'zenity: native file dialogs')
 _flutterver=3.44.9
-source=("devinorium-v$pkgver.tar.gz::https://gitlab.com/HttpAnimations/devinorium/-/archive/v$pkgver/devinorium-v$pkgver.tar.gz"
+source=("devinorium-v$pkgver.tar.gz::https://github.com/justacalico/devinorium/releases/download/v$pkgver/devinorium-v$pkgver-source.tar.gz"
         "flutter_linux_${_flutterver}-stable.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutterver}-stable.tar.xz"
         "devinorium.desktop"
         "devinorium.svg")
-sha256sums=('7b5fec0d8da47b5b5b0a32cdad180bff1313d67900212d8ddb6e3163eead0e1f'
+sha256sums=('094c86afa70c2efc8169a99c953f306c2527c0e789f50ad6d1741dc689dac266'
             'a9120fa4a01048bdef438ddc3a2d4b7389662ea98a95db86eeaf10382bc4efcb'
             'SKIP'
             'SKIP')
@@ -28,7 +29,7 @@ build() {
   flutter config --no-analytics >/dev/null 2>&1 || true
   flutter precache --linux >/dev/null
 
-  cd "$pkgname-v$pkgver"
+  cd "$pkgname-$pkgver"
   cargo build --release --locked
 
   cd flutter
@@ -38,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-v$pkgver"
+  cd "$pkgname-$pkgver"
   install -d "$pkgdir/opt/devinorium"
   cp -a flutter/build/linux/x64/release/bundle/. "$pkgdir/opt/devinorium/"
 
