@@ -1,7 +1,7 @@
 # Maintainer: ZhangHua <zhanghuadedn at gmail dot com> 
 
 pkgname=("ariang-native-git" "ariang-native-electron-git")
-pkgver=1.3.14.r1.g7c4e4b5
+pkgver=1.3.14.r3.g64faec7
 pkgrel=1
 pkgdesc="A better aria2 desktop frontend than AriaNg."
 license=("MIT")
@@ -26,6 +26,7 @@ pkgver(){
 }
 build(){
     cd "${srcdir}/AriaNg-Native"
+    export npm_config_allow_git=all
     npm install
     main_depends=$(jq -r .mainDependencies[] package.json) && \
         npm install --save=false ${main_depends[@]}
