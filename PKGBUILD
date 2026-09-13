@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname="udpx-git"
-pkgver=1.0.7.r19.gd612eb2
+pkgver=1.0.8.r98.gd612eb2
 pkgrel=1
 pkgdesc="Single-packet UDP scanner written in Go"
 arch=('x86_64')
@@ -15,10 +15,17 @@ makedepends=(
 )
 source=("git+$url")
 b2sums=('SKIP')
+provides=("udpx=$pkgver")
+conflicts=('udpx')
 
 pkgver() {
   cd udpx
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  local _maj _min _patch _tag
+  _maj="$(grep '^\s*MajorVersion' pkg/version/version.go | awk '{print $3}')"
+  _min="$(grep '^\s*MinorVersion' pkg/version/version.go | awk '{print $3}')"
+  _patch="$(grep '^\s*PatchVersion' pkg/version/version.go | awk '{print $3}')"
+  _tag="$_maj.$_min.$_patch"
+  printf "%s.r%s.g%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = udpx-git
 	pkgdesc = Single-packet UDP scanner written in Go
-	pkgver = 1.0.7.r19.gd612eb2
+	pkgver = 1.0.8.r98.gd612eb2
 	pkgrel = 1
 	url = https://github.com/nullt3r/udpx
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = udpx-git
 	makedepends = go>=1.17
 	makedepends = git
 	depends = glibc
+	provides = udpx=1.0.8.r98.gd612eb2
+	conflicts = udpx
 	source = git+https://github.com/nullt3r/udpx
 	b2sums = SKIP
 
