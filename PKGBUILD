@@ -1,6 +1,6 @@
 # Maintainer: William Varmus <0@willvar.tw>
 pkgname=php-opentelemetry
-pkgver=1.3.1
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='OpenTelemetry auto-instrumentation support extension for PHP'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/open-telemetry/opentelemetry-php-instrumentation'
 license=('Apache-2.0')
 depends=('php')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-telemetry/opentelemetry-php-instrumentation/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c0edcc02fa25ba7a12be7b079ad6228abe714cdc7d78a8bf48053a64e415a6c9')
+sha256sums=('13e310b776b202da09e27679813c1766697e4ac7ba7065694e1072b92c03a654')
 
 prepare() {
   cd "${srcdir}/opentelemetry-php-instrumentation-${pkgver}/ext"
