@@ -1,0 +1,23 @@
+pkgbase = hyprpm-git
+	pkgdesc = Plugin manager for Hyprland
+	pkgver = 0.56.2.r164.g1b85c7a
+	pkgrel = 1
+	url = https://github.com/hyprwm/Hyprland
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = xorgproto
+	depends = cmake
+	depends = cpio
+	depends = glaze
+	depends = hyprland-git
+	depends = hyprland-protocols-git
+	depends = hyprwayland-scanner-git
+	depends = meson
+	provides = hyprpm=0.56.2
+	conflicts = hyprpm
+	source = hyprpm::git+https://github.com/hyprwm/Hyprland.git
+	sha256sums = SKIP
+
+pkgname = hyprpm-git
