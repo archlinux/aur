@@ -1,0 +1,4 @@
+[sipvicious]
+source = "git"
+git = "https://github.com/EnableSecurity/sipvicious.git"
+prefix = "v"
