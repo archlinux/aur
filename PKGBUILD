@@ -2,7 +2,7 @@
 
 pkgname=rust-llm-bin
 _pkgname=llm
-pkgver=0.1.10
+pkgver=0.1.12
 pkgrel=1
 pkgdesc='Terminal-first AI hub in Rust for prompting, chat, templates, embeddings and dev workflows'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_aarch64=(
     "llm-aarch64.tar.gz::${url}/releases/download/v${pkgver}/llm-aarch64-unknown-linux-musl.tar.gz"
 )
 sha256sums=('b0adbc31ae0c3ab64ae21504359ba5e70f29886a559c99a79fb5cba762de670c')
-sha256sums_x86_64=('5faca119abbc0e863431d7d22881a1c1366d1cb17fde21b13ccef511aa12dcb6')
-sha256sums_aarch64=('3d9c776172241d3fae054f87d5b14cc19a2c46d4c1ec86f75be12d0d8b831877')
+sha256sums_x86_64=('7980f0104f75bf2fd265b1a0caea64887795345f641b1e7d5847d75ccc1f08a2')
+sha256sums_aarch64=('197fcd81bce3a66717f94237e02fb3851def76d78886b5d8844c465ede7c8010')
 
 # Upstream ships a static-pie (musl) single binary, so there are no runtime
 # shared-library dependencies and no build step. The release tarball contains
