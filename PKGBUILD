@@ -1,8 +1,8 @@
 # Maintainer: John Kinell <johnkinell@gmail.com>
 
 pkgname=unfocol-bin
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Peripheral-vision focus timer (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/MrOnijohn/unfocol"
@@ -22,7 +22,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/MrOnijohn/unfocol/releases/
         "icon-128x128.png"
         "icon-256x256.png"
         "icon-512x512.png")
-sha256sums=('ff17237bd23f0d4565ba3b1d3e748b67bee555fe576d6346ff40ed3cc61b895d'
+sha256sums=('d98b6ba22bf23ad726c7d002baea96a7c6702b8728854ba85b88d7d9d0d0598c'
             '470a60dd47b96965a1fee6e7f3436e858d1a5fe3cc930a745be7efef28d9cdaa'
             '51f41edab10fd1e23c6fa4d8b80775be79d2da0b7d5b2d385b084c9ee4fd47b8'
             'd5dab52326d02ebc5a318106908c7457dd8c0dcab0c17885723295b66226f092'
