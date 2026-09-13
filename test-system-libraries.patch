@@ -1,0 +1,24 @@
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -7,6 +7,11 @@
+ set(CMAKE_CXX_STANDARD 20)
+ 
+ project(TokenizersTests)
++find_package(re2 CONFIG REQUIRED)
++find_package(absl CONFIG REQUIRED)
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(SENTENCEPIECE REQUIRED IMPORTED_TARGET sentencepiece)
++
+ 
+ # Include ExternalProject module
+ include(FindPackageHandleStandardArgs)
+@@ -63,7 +68,7 @@
+ target_link_libraries(
+   regex_lookahead_link_test
+-  PRIVATE gtest_main $<TARGET_FILE:tokenizers> $<TARGET_FILE:regex_lookahead>
+-          pcre2-8-static re2::re2 sentencepiece-static
++  PRIVATE GTest::gtest_main $<TARGET_FILE:tokenizers> $<TARGET_FILE:regex_lookahead>
++          pcre2-8-static re2::re2 PkgConfig::SENTENCEPIECE absl::status absl::strings
+ )
+ add_dependencies(regex_lookahead_link_test tokenizers regex_lookahead)
+ add_test(regex_lookahead_link_test regex_lookahead_link_test)

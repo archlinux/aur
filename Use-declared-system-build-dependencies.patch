@@ -1,0 +1,44 @@
+From: Smoolak <smoolak@gmail.com>
+Subject: [PATCH] Use declared system build dependencies
+
+The Arch build environment provides CMake, pytest, pybind11 and the PEP 517
+frontend explicitly. Do not ask setuptools to obtain pip or a Python CMake
+distribution, and keep build-only/optional modules out of wheel requirements.
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 0f85394..8c1799d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,11 +1,7 @@
+ [build-system]
+ requires = [
+-  "cmake", # For building binary targets in the wheel.
+-  "pip>=23",  # For building the pip package.
+   "setuptools>=63",  # For building the pip package contents.
+   "wheel",  # For building the pip package archive.
+-  "pytest",  # For running tests.
+-  "pybind11",  # For building the pybind11 C++ extension.
+ ]
+ build-backend = "setuptools.build_meta"
+ 
+diff --git a/setup.py b/setup.py
+index 29af914..615982b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -174,16 +174,10 @@ setup(
+     zip_safe=False,
+     python_requires=">=3.10",
+     install_requires=[
+-        "pybind11>=2.6.0",
+         "sentencepiece",
+-        "mistral-common",
+         "tokenizers",
+         "tiktoken",
+     ],
+-    setup_requires=[
+-        "pybind11>=2.6.0",
+-        "cmake>=3.18",
+-    ],
+     classifiers=[
+         "Development Status :: 4 - Beta",
+         "Intended Audience :: Developers",

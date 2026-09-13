@@ -1,0 +1,77 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2e699de..02e95c2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -54,19 +54,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third-party/abseil-cpp)
+-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third-party/re2)
+ 
+-if(NOT DEFINED SPM_BUILD_TEST)
+-  set(SPM_BUILD_TEST OFF CACHE BOOL "")
+-endif()
+-
+-if(NOT DEFINED SPM_ENABLE_SHARED)
+-  set(SPM_ENABLE_SHARED OFF CACHE BOOL "")
+-endif()
+-
+-add_subdirectory(
+-  ${CMAKE_CURRENT_SOURCE_DIR}/third-party/sentencepiece
+-  ${CMAKE_CURRENT_BINARY_DIR}/sp-build
+-  EXCLUDE_FROM_ALL
+-)
++find_package(absl CONFIG REQUIRED)
++find_package(re2 CONFIG REQUIRED)
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(SENTENCEPIECE REQUIRED IMPORTED_TARGET sentencepiece)
+ 
+ set(CMAKE_POSITION_INDEPENDENT_CODE ${_pic_flag})
+ 
+@@ -98,13 +87,12 @@ target_include_directories(
+   PUBLIC
+     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/pytorch/tokenizers>
+-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/third-party/sentencepiece>
+-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/third-party/sentencepiece/src>
+-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/third-party/re2>
+     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/third-party/json/single_include>
+     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/third-party/llama.cpp-unicode/include>
+ )
+-target_link_libraries(tokenizers PUBLIC sentencepiece-static re2::re2)
++target_link_libraries(
++  tokenizers PUBLIC PkgConfig::SENTENCEPIECE re2::re2 absl::status absl::strings
++)
+ 
+ # Enable logging
+ if(TOKENIZERS_ENABLE_LOGGING)
+@@ -182,7 +170,7 @@ include(GNUInstallDirs)
+ if(NOT TOKENIZERS_BUILD_PYTHON)
+   # Install the library and its dependencies
+   install(
+-    TARGETS tokenizers re2 sentencepiece-static
++    TARGETS tokenizers
+     EXPORT tokenizers-targets
+     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+@@ -197,12 +185,6 @@ install(
+   PATTERN "*.h"
+ )
+ 
+-install(
+-  DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/third-party/sentencepiece/src/
+-  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pytorch/tokenizers
+-  FILES_MATCHING
+-  PATTERN "sentencepiece_processor.h"
+-)
+ install(
+   DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/third-party/json/single_include/
+   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+diff --git a/src/sentencepiece.cpp b/src/sentencepiece.cpp
+index c6df82f..7bc4c3d 100644
+--- a/src/sentencepiece.cpp
++++ b/src/sentencepiece.cpp
+@@ -14 +14 @@
+-#include "third_party/absl/strings/str_replace.h"
++#include <absl/strings/str_replace.h>
+@@ -46 +46 @@ Error SPTokenizer::load(const std::string& tokenizer_path) {
+-        status.error_message());
++        std::string(status.message()).c_str());
