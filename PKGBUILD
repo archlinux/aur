@@ -1,7 +1,7 @@
 # Maintainer: cosct <cosct@outlook.com>
 # EgisTec EH575 (1c7a:0575) experimental driver on current libfprint.
 # Research project (single repo, libfprint subtree included):
-#   https://github.com/cosct/libfprint-eh575
+#   https://github.com/cosct/libfprint-egis0575
 #
 # Canonical copy of the AUR package; release CI syncs it to
 # ssh://aur@aur.archlinux.org/libfprint-egis0575.git on every
@@ -11,7 +11,7 @@ pkgver=0.2.1
 pkgrel=1
 pkgdesc="libfprint with the experimental EgisTec EH575 (1c7a:0575) fingerprint driver (press-snapshot + Windows-engine matcher port)"
 arch=(x86_64)
-url="https://github.com/cosct/libfprint-eh575"
+url="https://github.com/cosct/libfprint-egis0575"
 license=(LGPL-2.1-or-later)
 options=(!debug)
 # vendored libfprint builds all drivers by default: uru4000 needs openssl
@@ -22,18 +22,18 @@ makedepends=(meson ninja glib2-devel)
 provides=(libfprint=1.94.100 libfprint-2.so=2-64)
 conflicts=(libfprint libfprint-egis-0575 libfprint-egis0575-experimental)
 replaces=(libfprint-egis-0575 libfprint-egis0575-experimental)
-# tag tarballs come from the libfprint-eh575 repository; the meson
+# tag tarballs come from the libfprint-egis0575 repository; the meson
 # source tree is the libfprint/ subtree inside it
-source=("$pkgname-$pkgver.tar.gz::https://github.com/cosct/libfprint-eh575/archive/refs/tags/egis0575-v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/cosct/libfprint-egis0575/archive/refs/tags/egis0575-v$pkgver.tar.gz")
 # refreshed by the release CI (updpkgsums) when the tag is cut
-sha256sums=('a0b6b017de3bad35d3ca5726f3538bd74ae9e5d6b1c133ddfeecbae38f871106')
+sha256sums=('b5d1994bed676bea3a98241f7943c8ce0e7c6aa1f5c3f08ba01e18c9dd04adbb')
 
 build() {
   # align with the deb/rpm builds: no docs, introspection or installed tests.
   # udev_hwdb=enabled: meson's auto mode skips the autosuspend hwdb when
   # systemd >= 248 ships one, but systemd's list lacks the out-of-tree
   # EH575 — install ours (intentional duplicate, meson warns).
-  arch-meson "libfprint-eh575-egis0575-v$pkgver/libfprint" build \
+  arch-meson "libfprint-egis0575-egis0575-v$pkgver/libfprint" build \
     -D introspection=false -D doc=false -D installed-tests=false \
     -D gtk-examples=false \
     -D udev_rules_dir=/usr/lib/udev/rules.d \
