@@ -1,11 +1,5 @@
-/*.tar.xz
-/*.tar.gz
-/*.tar.zst
-
-*.log
-
-/pkg
-/src
-
-/iv
-/iv-cli
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO

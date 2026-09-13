@@ -2,13 +2,14 @@
 
 pkgname=iv-cli
 pkgver=0.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line image viewer using terminal graphics (Sixel, iTerm, Kitty)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kenshaw/iv"
 license=('MIT')
-depends=('ffmpeg' 'graphicsmagick' 'imagemagick' 'lcms2' 'libexif' 'libheif' 'libjpeg-turbo' 'libjxl' 'libvips' 'openjpeg2' 'poppler-glib')
-optdepends=('libreoffice')
+depends=('ffmpeg' 'fontconfig' 'gcc-libs' 'glib2' 'glibc' 'imagemagick' 'libheif' 'libjxl' 'libvips' 'poppler-glib')
+optdepends=('libreoffice-fresh: preview office documents'
+            'openslide: whole-slide image support')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('c3f0747f9eee7c0c9a754aca9260787ff9c701d8ad2c85aeae51f0249a3a6986')
@@ -23,13 +24,17 @@ build() {
 
     go build \
         -trimpath \
-        -buildmode=pie \
         -mod=readonly \
         -modcacherw \
         -ldflags="-linkmode=external
                   -X main.name=iv
                   -X main.version=$pkgver" \
         -o iv
+}
+
+check() {
+    cd iv-$pkgver
+    ./iv --version
 }
 
 package() {
