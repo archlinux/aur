@@ -5,7 +5,7 @@
 _pkgname='tesserocr'
 pkgname="python-${_pkgname}"
 pkgver='2.11.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, Pillow-friendly, Python wrapper around tesseract-ocr API using Cython'
 arch=('x86_64')
 url="https://github.com/sirfz/${_pkgname}"
@@ -45,6 +45,6 @@ build() {
 
 package() {
 	cd -- "${_pkgname}-${pkgver}" || return 1
-	python -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
+	python -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode 2 dist/*.whl
 	install -D -m644 -- LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
