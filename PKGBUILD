@@ -1,6 +1,7 @@
-# Maintainer: Sebastian Frysztak <sebastian at frysztak dot dev>
-pkgname=libbgcode
-pkgver=r228.5041c09
+# Maintainer: Sebastian Frysztak <dev dot aur at frysztak dot fastmail dot com>
+_pkgname=libbgcode
+pkgname=libbgcode-git
+pkgver=r234.d4da907
 pkgrel=1
 pkgdesc="Prusa Block & Binary G-code reader / writer / converter"
 url="https://github.com/prusa3d/libbgcode"
@@ -9,14 +10,17 @@ arch=('x86_64')
 makedepends=('git')
 source=('git+https://github.com/prusa3d/libbgcode.git')
 sha256sums=('SKIP')
+provides=("libbgcode")
+conflicts=("libbgcode")
+replaces=("libbgcode<=r234")
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd "$pkgname"
+  cd "$_pkgname"
 
   CMAKE_POLICY_VERSION_MINIMUM=3.5 \
   cmake --preset default \
@@ -28,7 +32,7 @@ build() {
 }
 
 package() {
-    DESTDIR="${pkgdir}" cmake --install "${pkgname}/build-default"
+    DESTDIR="${pkgdir}" cmake --install "${_pkgname}/build-default"
 }
 
 

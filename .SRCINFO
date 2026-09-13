@@ -1,12 +1,15 @@
-pkgbase = libbgcode
+pkgbase = libbgcode-git
 	pkgdesc = Prusa Block & Binary G-code reader / writer / converter
-	pkgver = r228.5041c09
+	pkgver = r234.d4da907
 	pkgrel = 1
 	url = https://github.com/prusa3d/libbgcode
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
+	provides = libbgcode
+	conflicts = libbgcode
+	replaces = libbgcode<=r234
 	source = git+https://github.com/prusa3d/libbgcode.git
 	sha256sums = SKIP
 
-pkgname = libbgcode
+pkgname = libbgcode-git
