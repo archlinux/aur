@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Devinorium
+Comment=Self-hosted web UI for AI coding agents
+Exec=devinorium
+Icon=devinorium
+Terminal=false
+Categories=Development;Utility;
+Keywords=devin;ai;agent;coding;

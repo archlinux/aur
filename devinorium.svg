@@ -1,0 +1,57 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg_grad" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E293B"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    
+    <!-- Primary Branding Gradient -->
+    <linearGradient id="icon_grad" x1="128" y1="128" x2="384" y2="384" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#818CF8"/>
+    </linearGradient>
+
+    <!-- Glow Effect for AI Core -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Background (Rounded Square) -->
+  <rect width="512" height="512" rx="112" fill="url(#bg_grad)"/>
+
+  <!-- Left Bracket (Stylized H vertical) -->
+  <path d="M160 140V372M160 140H210M160 372H210" 
+        stroke="url(#icon_grad)" 
+        stroke-width="36" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+
+  <!-- Right Bracket (Stylized H vertical) -->
+  <path d="M352 140V372M352 140H302M352 372H302" 
+        stroke="url(#icon_grad)" 
+        stroke-width="36" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+
+  <!-- The "Hitch" (Connecting Bridge) -->
+  <path d="M196 256H316" 
+        stroke="white" 
+        stroke-width="20" 
+        stroke-linecap="round" 
+        stroke-dasharray="2 40"
+        opacity="0.4"/>
+
+  <!-- Central AI Core Node -->
+  <g filter="url(#glow)">
+    <circle cx="256" cy="256" r="54" fill="url(#icon_grad)" fill-opacity="0.3"/>
+    <circle cx="256" cy="256" r="32" fill="url(#icon_grad)"/>
+    <circle cx="256" cy="256" r="12" fill="white"/>
+  </g>
+
+  <!-- Neural Connection Points -->
+  <circle cx="256" cy="170" r="10" fill="#22D3EE" opacity="0.8"/>
+  <circle cx="256" cy="342" r="10" fill="#818CF8" opacity="0.8"/>
+</svg>
