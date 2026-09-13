@@ -1,19 +1,28 @@
 pkgbase = python-fla-core
 	pkgdesc = Core operations for flash-linear-attention
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/fla-org/flash-linear-attention
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = python-pytorch
 	depends = python-einops
+	depends = python-numpy
+	depends = python-packaging
+	depends = python-pytorch
+	depends = python-transformers>=4.45
 	depends = python-triton
-	source = https://files.pythonhosted.org/packages/source/f/fla_core/fla_core-0.5.0.tar.gz
-	sha256sums = 476dd94711702af81cc4827010d9209f6053d8cdceac8e43d3c8497071f07a81
+	optdepends = python-causal-conv1d: optimized CUDA short-convolution backend
+	optdepends = python-flash-attn: FlashAttention backend for MoBA
+	optdepends = python-tilelang: TileLang kernels
+	source = flash-linear-attention-0.5.2.tar.gz::https://github.com/fla-org/flash-linear-attention/archive/refs/tags/v0.5.2.tar.gz
+	source = no-pip-split-validation.py
+	sha256sums = 7c3132c3d5999aea1888931417fa4525c1c1fbd6243a9d4ea71a125dd3e7a962
+	sha256sums = 296692f71b0d9c2085cd214aedb9f0754fd45416aed682390c00bae27336b5c0
 
 pkgname = python-fla-core
