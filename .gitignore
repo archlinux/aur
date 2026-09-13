@@ -1,7 +1,5 @@
-pkg/
-src/
-*.zst
-*.tar.gz
-*.log
-omni-*
-omnictl-*
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO

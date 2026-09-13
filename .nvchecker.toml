@@ -1,0 +1,5 @@
+[omnictl-bin]
+source = "github"
+github = "siderolabs/omni"
+use_latest_release = true
+prefix = "v"
