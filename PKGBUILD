@@ -3,9 +3,9 @@
 pkgname=eclipse-php-bin
 _pkgname=${pkgname%-bin}
 epoch=2
-pkgver=4.40
+pkgver=4.41
 pkgrel=1
-_release=2026-06/R
+_release=2026-09/R
 pkgdesc="Highly extensible IDE (PHP version)"
 arch=('x86_64' 'aarch64')
 url="https://www.eclipse.org/"
@@ -23,8 +23,8 @@ source_x86_64=("$_srcfilename_x86_64::https://www.eclipse.org/downloads/download
 source_aarch64=("$_srcfilename_aarch64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_aarch64&r=1")
 
 sha512sums=('910d235d1b170b850d91598af1949db5109671236d76f62ea51f9505a285b4b10fcdacae0bc60dc209ab57fbb44d98223fb4b584b31e220253396a933bc98a78')
-sha512sums_x86_64=('5b3b4e56b79690f76c152d560a11e0b949987757344b441f390832b20e8bd8c78ba1ade6627e9f3c3388003dc9b9b74b3619a3e9c2d45abf61e37eca2cb9fab4')
-sha512sums_aarch64=('f3bf83bd1756c0823a22ec0d6acf4baac8e181210e4db9d3bf87b37236bf9c376006d73766bbabb84761cc1e1bb5c7cd8e8ab817c9f48115837fa53f3484b9f1')
+sha512sums_x86_64=('66b8676739f4162bf0638144d2daa8361d125843df716b3a6f692e9b58f81c14983f4422255f996dce3421e4daba071fef290a64073859ecd1df24b0ea16e01b')
+sha512sums_aarch64=('d6ba02bb9bbdffa39086ca58793997dabbc3b863a8905876352383b5d9c8317268d86614c3036b36c8d249f6f8902afed1cc6fa1094097baab7a8ecf99864977')
 
 source=("eclipse.desktop")
 
