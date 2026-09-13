@@ -3,7 +3,7 @@
 # Source builds are available in the acreetionos-mediawriter-git package.
 
 pkgname=acreetionos-mediawriter-bin
-pkgver=5.3.1
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="AcreetionOS USB Flasher — Write AcreetionOS images to USB drives (binary)"
 arch=('x86_64')
