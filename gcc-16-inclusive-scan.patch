@@ -1,0 +1,33 @@
+diff --git a/taskflow/algorithm/scan.hpp b/taskflow/algorithm/scan.hpp
+index d5d6abba..cc18e3fc 100644
+--- a/taskflow/algorithm/scan.hpp
++++ b/taskflow/algorithm/scan.hpp
+@@ -184,7 +184,14 @@ auto make_inclusive_scan_task(B first, E last, D d_first, BOP bop) {
+ 
+     // only myself - no need to spawn another graph
+     if(W <= 1 || N <= 2) {
+-      std::inclusive_scan(s_beg, s_end, d_beg, bop);
++      value_type sum = *s_beg;
++      *d_beg++ = sum;
++
++      while(++s_beg != s_end) {
++        sum = bop(sum, *s_beg);
++        *d_beg++ = sum;
++      }
++
+       return;
+     }
+ 
+diff --git a/unittests/test_scan.cpp b/unittests/test_scan.cpp
+index b89163af..4a44bbae 100644
+--- a/unittests/test_scan.cpp
++++ b/unittests/test_scan.cpp
+@@ -33,7 +33,7 @@ void test_inclusive_scan(unsigned W) {
+     }
+ 
+     std::inclusive_scan(
+-      input.begin(), input.end(), golden.begin(), B()
++      input.cbegin(), input.cend(), golden.begin(), B()
+     );
+     
+     // out-of-place
