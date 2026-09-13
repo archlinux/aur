@@ -2,7 +2,7 @@
 
 _pkgname='noita_proxy'
 pkgname="${_pkgname}-bin"
-pkgver=1.6.4
+pkgver=1.6.6
 pkgrel=1
 pkgdesc='Noita Entangled Worlds mod'
 url='https://github.com/IntQuant/noita_entangled_worlds'
