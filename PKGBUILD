@@ -30,7 +30,7 @@
 # Toolchain: zig >= 0.16.0 (the version pinned in jac/build.zig.zon).
 
 pkgname=jaclang-git
-pkgver=0.37.13.r0.g9fb4ceca76
+pkgver=0.37.14.r0.g3e23d07f0c
 pkgrel=1
 pkgdesc="Jac programming language - self-contained native 'jac' binary built from git (Python-like syntax; compiles to Python bytecode, JavaScript, and native machine code; bundles its own CPython runtime)"
 arch=('x86_64' 'aarch64')
