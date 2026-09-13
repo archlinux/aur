@@ -11,7 +11,7 @@
 
 _pkgname="qtile"
 pkgname="$_pkgname-git"
-pkgver=0.36.0.r10.ga62caf9
+pkgver=0.37.0.r23.g9ffd76b
 pkgrel=1
 pkgdesc="A full-featured, pure-Python tiling window manager"
 url="https://github.com/qtile/qtile"
@@ -139,6 +139,5 @@ package() {
   install -Dm644 CHANGELOG README.rst libqtile/resources/default_config.py \
     -t "${pkgdir}/usr/share/doc/$pkgname/"
   install -Dm644 resources/qtile.desktop -t "$pkgdir/usr/share/xsessions/"
-  install -Dm644 resources/qtile-session.target -t "$pkgdir/usr/lib/systemd/user/"
-  install -Dm644 resources/qtile.service -t "$pkgdir/usr/lib/systemd/user/"
+  install -Dm644 resources/qtile-wayland.desktop -t "$pkgdir/usr/share/wayland-sessions/"
 }
