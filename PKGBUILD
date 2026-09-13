@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Foltz <thorsten.foltz@live.com>
 pkgname=octa-bin
-pkgver=0.19.2
+pkgver=0.19.3
 pkgrel=1
 pkgdesc="Viewer, editor, CLI and MCP server for tabular data: 30+ formats, SQL, databases, cloud (pre-compiled)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('octa')
 conflicts=('octa')
 options=(!debug)
 source=("octa-$pkgver-linux-x86_64.tar.gz::$url/releases/download/$pkgver/octa-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('98d282852c2299b8ccd4119b1f467cc0b7213e4924af4cad3d2017c05f456199')
+sha256sums=('1f90f553dab1c81b9a7a0caf9d015a6f91b76f5bc6abc702d2ce4217beafe795')
 
 package() {
     cd "octa-$pkgver-linux-x86_64"
