@@ -1,0 +1,10 @@
+--- a/python/python/tests/test_log.py
++++ b/python/python/tests/test_log.py
+@@ -182,2 +182,5 @@
+-def test_lance_log_file_invalid_path():
+-    invalid_path = "/invalid/path/that/cannot/be/created/lance.log"
++def test_lance_log_file_invalid_path(tmp_path):
++    # ENOTDIR is guaranteed even when an unprivileged container user owns /.
++    parent = tmp_path / "not-a-directory"
++    parent.write_text("file, not directory")
++    invalid_path = str(parent / "lance.log")

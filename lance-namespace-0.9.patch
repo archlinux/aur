@@ -1,0 +1,379 @@
+diff --git a/python/pyproject.toml b/python/pyproject.toml
+index d2efab23..114c0d05 100644
+--- a/python/pyproject.toml
++++ b/python/pyproject.toml
+@@ -1,7 +1,7 @@
+ [project]
+ name = "pylance"
+ dynamic = ["version"]
+-dependencies = ["pyarrow>=14", "numpy>=1.22", "lance-namespace>=0.8.5,<0.9"]
++dependencies = ["pyarrow>=14", "numpy>=1.22", "lance-namespace>=0.12,<0.13"]
+ description = "python wrapper for Lance columnar format"
+ authors = [{ name = "Lance Devs", email = "dev@lance.org" }]
+ license = { file = "LICENSE" }
+diff --git a/python/python/lance/namespace.py b/python/python/lance/namespace.py
+index fec3a1cf..dd03f0dd 100644
+--- a/python/python/lance/namespace.py
++++ b/python/python/lance/namespace.py
+@@ -28,6 +28,7 @@ from lance_namespace import (
+     AlterTransactionResponse,
+     AnalyzeTableQueryPlanRequest,
+     CountTableRowsRequest,
++    CountTableRowsResponse,
+     CreateMaterializedViewRequest,
+     CreateMaterializedViewResponse,
+     CreateNamespaceRequest,
+@@ -87,6 +88,8 @@ from lance_namespace import (
+     MergeInsertIntoTableRequest,
+     MergeInsertIntoTableResponse,
+     NamespaceExistsRequest,
++    NamespaceExistsResponse,
++    QueryTableResponse,
+     RefreshMaterializedViewRequest,
+     RefreshMaterializedViewResponse,
+     RegisterTableRequest,
+@@ -96,6 +99,7 @@ from lance_namespace import (
+     RestoreTableRequest,
+     RestoreTableResponse,
+     TableExistsRequest,
++    TableExistsResponse,
+     UpdateTableRequest,
+     UpdateTableResponse,
+     UpdateTableSchemaMetadataRequest,
+@@ -412,8 +416,11 @@ class DirectoryNamespace(LanceNamespace):
+         response_dict = self._inner.drop_namespace(request.model_dump())
+         return DropNamespaceResponse.from_dict(response_dict)
+ 
+-    def namespace_exists(self, request: NamespaceExistsRequest) -> None:
++    def namespace_exists(
++        self, request: NamespaceExistsRequest
++    ) -> NamespaceExistsResponse:
+         self._inner.namespace_exists(request.model_dump())
++        return NamespaceExistsResponse()
+ 
+     # Table operations
+ 
+@@ -429,8 +436,9 @@ class DirectoryNamespace(LanceNamespace):
+         response_dict = self._inner.register_table(request.model_dump())
+         return RegisterTableResponse.from_dict(response_dict)
+ 
+-    def table_exists(self, request: TableExistsRequest) -> None:
++    def table_exists(self, request: TableExistsRequest) -> TableExistsResponse:
+         self._inner.table_exists(request.model_dump())
++        return TableExistsResponse()
+ 
+     def drop_table(self, request: DropTableRequest) -> DropTableResponse:
+         response_dict = self._inner.drop_table(request.model_dump())
+@@ -522,7 +530,9 @@ class DirectoryNamespace(LanceNamespace):
+ 
+     # Data manipulation operations
+ 
+-    def count_table_rows(self, request: CountTableRowsRequest) -> int:
++    def count_table_rows(
++        self, request: CountTableRowsRequest
++    ) -> CountTableRowsResponse:
+         """Count the number of rows in a table, optionally filtered by a predicate.
+ 
+         Parameters
+@@ -532,10 +542,11 @@ class DirectoryNamespace(LanceNamespace):
+ 
+         Returns
+         -------
+-        int
+-            The number of rows matching the criteria
++        CountTableRowsResponse
++            Response containing the number of rows matching the criteria
+         """
+-        return self._inner.count_table_rows(request.model_dump())
++        count = self._inner.count_table_rows(request.model_dump())
++        return CountTableRowsResponse(count=count)
+ 
+     def insert_into_table(
+         self, request: InsertIntoTableRequest, request_data: bytes
+@@ -615,7 +626,7 @@ class DirectoryNamespace(LanceNamespace):
+         response_dict = self._inner.delete_from_table(request.model_dump())
+         return DeleteFromTableResponse.from_dict(response_dict)
+ 
+-    def query_table(self, request) -> bytes:
++    def query_table(self, request) -> QueryTableResponse:
+         """Query a table and return results as Arrow IPC.
+ 
+         Parameters
+@@ -626,12 +637,13 @@ class DirectoryNamespace(LanceNamespace):
+ 
+         Returns
+         -------
+-        bytes
+-            Arrow IPC file format containing the query results
++        QueryTableResponse
++            Response containing Arrow IPC file format query results
+         """
+         if hasattr(request, "model_dump"):
+             request = request.model_dump()
+-        return self._inner.query_table(request)
++        data = self._inner.query_table(request)
++        return QueryTableResponse(data=data)
+ 
+     # Index operations
+ 
+@@ -1003,8 +1015,11 @@ class RestNamespace(LanceNamespace):
+         response_dict = self._inner.drop_namespace(request.model_dump())
+         return DropNamespaceResponse.from_dict(response_dict)
+ 
+-    def namespace_exists(self, request: NamespaceExistsRequest) -> None:
++    def namespace_exists(
++        self, request: NamespaceExistsRequest
++    ) -> NamespaceExistsResponse:
+         self._inner.namespace_exists(request.model_dump())
++        return NamespaceExistsResponse()
+ 
+     # Table operations
+ 
+@@ -1020,8 +1035,9 @@ class RestNamespace(LanceNamespace):
+         response_dict = self._inner.register_table(request.model_dump())
+         return RegisterTableResponse.from_dict(response_dict)
+ 
+-    def table_exists(self, request: TableExistsRequest) -> None:
++    def table_exists(self, request: TableExistsRequest) -> TableExistsResponse:
+         self._inner.table_exists(request.model_dump())
++        return TableExistsResponse()
+ 
+     def drop_table(self, request: DropTableRequest) -> DropTableResponse:
+         response_dict = self._inner.drop_table(request.model_dump())
+@@ -1113,7 +1129,9 @@ class RestNamespace(LanceNamespace):
+ 
+     # Data manipulation operations
+ 
+-    def count_table_rows(self, request: CountTableRowsRequest) -> int:
++    def count_table_rows(
++        self, request: CountTableRowsRequest
++    ) -> CountTableRowsResponse:
+         """Count the number of rows in a table, optionally filtered by a predicate.
+ 
+         Parameters
+@@ -1123,10 +1141,11 @@ class RestNamespace(LanceNamespace):
+ 
+         Returns
+         -------
+-        int
+-            The number of rows matching the criteria
++        CountTableRowsResponse
++            Response containing the number of rows matching the criteria
+         """
+-        return self._inner.count_table_rows(request.model_dump())
++        count = self._inner.count_table_rows(request.model_dump())
++        return CountTableRowsResponse(count=count)
+ 
+     def insert_into_table(
+         self, request: InsertIntoTableRequest, request_data: bytes
+@@ -1206,7 +1225,7 @@ class RestNamespace(LanceNamespace):
+         response_dict = self._inner.delete_from_table(request.model_dump())
+         return DeleteFromTableResponse.from_dict(response_dict)
+ 
+-    def query_table(self, request) -> bytes:
++    def query_table(self, request) -> QueryTableResponse:
+         """Query a table and return results as Arrow IPC.
+ 
+         Parameters
+@@ -1217,12 +1236,13 @@ class RestNamespace(LanceNamespace):
+ 
+         Returns
+         -------
+-        bytes
+-            Arrow IPC file format containing the query results
++        QueryTableResponse
++            Response containing Arrow IPC file format query results
+         """
+         if hasattr(request, "model_dump"):
+             request = request.model_dump()
+-        return self._inner.query_table(request)
++        data = self._inner.query_table(request)
++        return QueryTableResponse(data=data)
+ 
+     # Index operations
+ 
+diff --git a/python/python/tests/test_namespace_dir.py b/python/python/tests/test_namespace_dir.py
+index fa1bc93b..7c8480e8 100644
+--- a/python/python/tests/test_namespace_dir.py
++++ b/python/python/tests/test_namespace_dir.py
+@@ -27,6 +27,7 @@ import pytest
+ from lance.namespace import LanceNamespace
+ from lance_namespace import (
+     CountTableRowsRequest,
++    CountTableRowsResponse,
+     CreateNamespaceRequest,
+     CreateNamespaceResponse,
+     CreateTableBranchRequest,
+@@ -67,10 +68,13 @@ from lance_namespace import (
+     ListTableVersionsRequest,
+     ListTableVersionsResponse,
+     NamespaceExistsRequest,
++    NamespaceExistsResponse,
+     QueryTableRequest,
++    QueryTableResponse,
+     RegisterTableRequest,
+     RegisterTableResponse,
+     TableExistsRequest,
++    TableExistsResponse,
+     connect,
+ )
+ from lance_namespace.errors import (
+@@ -107,7 +111,9 @@ class CustomNamespace(LanceNamespace):
+     ) -> DescribeNamespaceResponse:
+         return self._inner.describe_namespace(request)
+ 
+-    def namespace_exists(self, request: NamespaceExistsRequest) -> None:
++    def namespace_exists(
++        self, request: NamespaceExistsRequest
++    ) -> NamespaceExistsResponse:
+         return self._inner.namespace_exists(request)
+ 
+     def drop_namespace(self, request: DropNamespaceRequest) -> DropNamespaceResponse:
+@@ -127,7 +133,7 @@ class CustomNamespace(LanceNamespace):
+     def describe_table(self, request: DescribeTableRequest) -> DescribeTableResponse:
+         return self._inner.describe_table(request)
+ 
+-    def table_exists(self, request: TableExistsRequest) -> None:
++    def table_exists(self, request: TableExistsRequest) -> TableExistsResponse:
+         return self._inner.table_exists(request)
+ 
+     def drop_table(self, request: DropTableRequest) -> DropTableResponse:
+@@ -184,7 +190,9 @@ class CustomNamespace(LanceNamespace):
+     ) -> ListTableIndicesResponse:
+         return self._inner.list_table_indices(request)
+ 
+-    def count_table_rows(self, request: CountTableRowsRequest) -> int:
++    def count_table_rows(
++        self, request: CountTableRowsRequest
++    ) -> CountTableRowsResponse:
+         return self._inner.count_table_rows(request)
+ 
+     def insert_into_table(
+@@ -192,7 +200,7 @@ class CustomNamespace(LanceNamespace):
+     ) -> InsertIntoTableResponse:
+         return self._inner.insert_into_table(request, request_data)
+ 
+-    def query_table(self, request) -> bytes:
++    def query_table(self, request) -> QueryTableResponse:
+         # Accept both QueryTableRequest and dict, like DirectoryNamespace does
+         if hasattr(request, "model_dump"):
+             request = request.model_dump()
+@@ -428,7 +436,8 @@ class TestTableOperations:
+ 
+         # Check it exists (should not raise)
+         exists_req = TableExistsRequest(id=["workspace", "test_table"])
+-        memory_ns_client.table_exists(exists_req)
++        response = memory_ns_client.table_exists(exists_req)
++        assert isinstance(response, TableExistsResponse)
+ 
+     def test_table_not_exists(self, memory_ns_client):
+         """Test checking if a non-existent table exists raises TableNotFoundError."""
+@@ -899,7 +908,8 @@ class TestBasicNamespaceOperations:
+ 
+         # Check it exists (should not raise)
+         exists_req = NamespaceExistsRequest(id=["workspace"])
+-        memory_ns_client.namespace_exists(exists_req)
++        response = memory_ns_client.namespace_exists(exists_req)
++        assert isinstance(response, NamespaceExistsResponse)
+ 
+     def test_namespace_not_exists(self, memory_ns_client):
+         """Test that a non-existent namespace raises NamespaceNotFoundError."""
+@@ -1416,8 +1426,9 @@ class TestDataManipulation:
+ 
+         # Count rows
+         count_req = CountTableRowsRequest(id=["workspace", "test_table"])
+-        count = temp_ns_client.count_table_rows(count_req)
+-        assert count == 3
++        response = temp_ns_client.count_table_rows(count_req)
++        assert isinstance(response, CountTableRowsResponse)
++        assert response.count == 3
+ 
+     def test_count_table_rows_with_filter(self, temp_ns_client):
+         """Test counting rows with a filter predicate."""
+@@ -1434,8 +1445,8 @@ class TestDataManipulation:
+         count_req = CountTableRowsRequest(
+             id=["workspace", "test_table"], predicate="age > 28"
+         )
+-        count = temp_ns_client.count_table_rows(count_req)
+-        assert count == 2  # Alice (30) and Charlie (35)
++        response = temp_ns_client.count_table_rows(count_req)
++        assert response.count == 2  # Alice (30) and Charlie (35)
+ 
+     def test_insert_into_table(self, temp_ns_client):
+         """Test inserting data into a table."""
+@@ -1464,8 +1475,8 @@ class TestDataManipulation:
+ 
+         # Verify row count increased
+         count_req = CountTableRowsRequest(id=["workspace", "test_table"])
+-        count = temp_ns_client.count_table_rows(count_req)
+-        assert count == 5
++        response = temp_ns_client.count_table_rows(count_req)
++        assert response.count == 5
+ 
+     def test_query_table(self, temp_ns_client):
+         """Test querying a table."""
+@@ -1480,12 +1491,13 @@ class TestDataManipulation:
+ 
+         # Query table with empty vector (for non-vector queries)
+         query_req = QueryTableRequest(id=["workspace", "test_table"], k=10, vector={})
+-        result_bytes = temp_ns_client.query_table(query_req)
+-        assert result_bytes is not None
+-        assert len(result_bytes) > 0
++        response = temp_ns_client.query_table(query_req)
++        assert isinstance(response, QueryTableResponse)
++        assert response.data is not None
++        assert len(response.data) > 0
+ 
+         # Parse the result
+-        reader = pa.ipc.open_file(pa.BufferReader(result_bytes))
++        reader = pa.ipc.open_file(pa.BufferReader(response.data))
+         result_table = reader.read_all()
+         assert result_table.num_rows == 3
+         assert "id" in result_table.column_names
+@@ -1506,8 +1518,8 @@ class TestDataManipulation:
+         query_req = QueryTableRequest(
+             id=["workspace", "test_table"], filter="age >= 30", k=10, vector={}
+         )
+-        result_bytes = temp_ns_client.query_table(query_req)
+-        reader = pa.ipc.open_file(pa.BufferReader(result_bytes))
++        response = temp_ns_client.query_table(query_req)
++        reader = pa.ipc.open_file(pa.BufferReader(response.data))
+         result_table = reader.read_all()
+         assert result_table.num_rows == 2  # Alice and Charlie
+ 
+diff --git a/python/python/tests/test_namespace_integration.py b/python/python/tests/test_namespace_integration.py
+index fc08370d..ea2c8f08 100644
+--- a/python/python/tests/test_namespace_integration.py
++++ b/python/python/tests/test_namespace_integration.py
+@@ -56,9 +56,11 @@ from lance_namespace import (
+     ListTableVersionsRequest,
+     ListTableVersionsResponse,
+     NamespaceExistsRequest,
++    NamespaceExistsResponse,
+     RegisterTableRequest,
+     RegisterTableResponse,
+     TableExistsRequest,
++    TableExistsResponse,
+ )
+ 
+ 
+@@ -86,7 +88,9 @@ class CustomNamespace(LanceNamespace):
+     ) -> DescribeNamespaceResponse:
+         return self._inner.describe_namespace(request)
+ 
+-    def namespace_exists(self, request: NamespaceExistsRequest) -> None:
++    def namespace_exists(
++        self, request: NamespaceExistsRequest
++    ) -> NamespaceExistsResponse:
+         return self._inner.namespace_exists(request)
+ 
+     def drop_namespace(self, request: DropNamespaceRequest) -> DropNamespaceResponse:
+@@ -106,7 +110,7 @@ class CustomNamespace(LanceNamespace):
+     def describe_table(self, request: DescribeTableRequest) -> DescribeTableResponse:
+         return self._inner.describe_table(request)
+ 
+-    def table_exists(self, request: TableExistsRequest) -> None:
++    def table_exists(self, request: TableExistsRequest) -> TableExistsResponse:
+         return self._inner.table_exists(request)
+ 
+     def drop_table(self, request: DropTableRequest) -> DropTableResponse:
