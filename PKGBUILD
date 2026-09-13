@@ -55,7 +55,8 @@ source=("git+https://github.com/systemd/systemd#tag=v${pkgver/rc/-rc}?signed"
         '30-systemd-daemon-reload-user.hook'
         '35-systemd-enqueue-marked.hook'
         '35-systemd-udev-reload.hook'
-        '35-systemd-update.hook')
+        '35-systemd-update.hook'
+        '36-systemd-modules-load.hook')
 sha512sums=('1c2a3aed0b7c613040722ef1bd063a1f35d2f3993e0f678701ef5e4d42d31628804df477158e5fa2bb47e523a9969d01cfb7622762cf32ff44e0367e5f432368'
             'ddb9401e47d0bf01874f255803a4b2167ec631484189d29d03694101fd9c77724e735f16d99c5f4ffd8061ae78839b2826ff0e0a925a6f0dbca25f2cfb271a82'
             '1fa81fdfd50129955cdeb028473b99695b182c9e98da1594bd2db30705c712aadbe9deb31b2ce14f4baea945732f443a9862e226325facc4d5262d2118340f01'
@@ -75,7 +76,8 @@ sha512sums=('1c2a3aed0b7c613040722ef1bd063a1f35d2f3993e0f678701ef5e4d42d31628804
             '190112e38d5a5c0ca91b89cd58f95595262a551530a16546e1d84700fc9644aa2ca677953ffff655261e8a7bff6e6af4e431424df5f13c00bc90b77c421bc32d'
             '51ebf20a1c93c2a86e8ced0d68e91f4a2bf6a537a2d674e05da69961d5861213159e28f228ffdc897bed721abd61ff133f49aeb0a9ebbbe76020c5b847c2a2df'
             'a50d202a9c2e91a4450b45c227b295e1840cc99a5e545715d69c8af789ea3dd95a03a30f050d52855cabdc9183d4688c1b534eaa755ebe93616f9d192a855ee3'
-            '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
+            '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97'
+            '717d93fb29034398394b68510f53da8d599cb68accf1cb92baee158fca1fde3fa5a1f698d35f81661b22c7acec6da34422b852e29dbc731b296a0884ffb6fcb0')
 
 _meson_version="${pkgver}-${pkgrel}"
 _systemd_src_dir="systemd"
@@ -206,9 +208,9 @@ package_systemd-remove-birthdate() {
   depends=(
     "systemd-remove-birthdate-libs=${pkgver}"
     'acl' 'bash' 'cryptsetup' 'dbus'
-    'dbus-units' 'kbd' 'kmod' 'hwdata'
+    'dbus-units' 'glibc' 'kbd' 'kmod' 'hwdata'
     'libgcrypt' 'libxcrypt' 'libidn2' 'lz4' 'pam'
-    'libelf' 'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit'
+    'libelf' 'libgcc' 'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit'
     'openssl')
   provides=('nss-myhostname' "systemd-tools=${pkgver}" "udev=${pkgver}")
   provides+=("systemd=${pkgver}")
@@ -389,7 +391,18 @@ package_systemd-remove-birthdate-tests() {
   pkgdesc='systemd tests with birthdate functions removed'
   conflicts=('systemd-tests' 'systemd-tests-git' 'systemd-liberated-tests-git')
   provides=("systemd-tests=${pkgver}")
-  depends=("systemd-remove-birthdate=${pkgver}")
+  depends=(
+    'bash'
+    'glibc'
+    'libgcc'
+    'python'
+    'python-packaging'
+    'python-colorama'
+    'python-pexpect'
+    'python-pytest'
+    'python-psutil'
+    "systemd-remove-birthdate=${pkgver}-${pkgrel}"
+    "systemd-remove-birthdate-libs=${pkgver}-${pkgrel}")
 
   install -d -m0755 "$pkgdir"/usr/lib/systemd
   mv systemd-tests/tests "$pkgdir"/usr/lib/systemd/tests
@@ -402,7 +415,7 @@ package_systemd-remove-birthdate-ukify() {
   
   provides=('ukify')
   provides+=("systemd-ukify=$pkgver")
-  depends=("systemd-remove-birthdate=${pkgver}" 'binutils' 'python-cryptography' 'python-pefile')
+  depends=("systemd-remove-birthdate=${pkgver}" 'binutils' 'python' 'python-cryptography' 'python-pefile')
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 

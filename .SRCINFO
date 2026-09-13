@@ -75,6 +75,7 @@ pkgbase = systemd-remove-birthdate
 	source = 35-systemd-enqueue-marked.hook
 	source = 35-systemd-udev-reload.hook
 	source = 35-systemd-update.hook
+	source = 36-systemd-modules-load.hook
 	validpgpkeys = 63CDA1E5D3FC22B998D20DD6327F26951A015CC4
 	validpgpkeys = A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E
 	validpgpkeys = 9A774DB5DB996C154EBBFBFDA0099A18E29326E1
@@ -99,6 +100,7 @@ pkgbase = systemd-remove-birthdate
 	sha512sums = 51ebf20a1c93c2a86e8ced0d68e91f4a2bf6a537a2d674e05da69961d5861213159e28f228ffdc897bed721abd61ff133f49aeb0a9ebbbe76020c5b847c2a2df
 	sha512sums = a50d202a9c2e91a4450b45c227b295e1840cc99a5e545715d69c8af789ea3dd95a03a30f050d52855cabdc9183d4688c1b534eaa755ebe93616f9d192a855ee3
 	sha512sums = 825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97
+	sha512sums = 717d93fb29034398394b68510f53da8d599cb68accf1cb92baee158fca1fde3fa5a1f698d35f81661b22c7acec6da34422b852e29dbc731b296a0884ffb6fcb0
 
 pkgname = systemd-remove-birthdate
 	pkgdesc = system and service manager with birthdate functions removed
@@ -113,6 +115,7 @@ pkgname = systemd-remove-birthdate
 	depends = cryptsetup
 	depends = dbus
 	depends = dbus-units
+	depends = glibc
 	depends = kbd
 	depends = kmod
 	depends = hwdata
@@ -122,6 +125,7 @@ pkgname = systemd-remove-birthdate
 	depends = lz4
 	depends = pam
 	depends = libelf
+	depends = libgcc
 	depends = libseccomp
 	depends = util-linux
 	depends = xz
@@ -218,7 +222,17 @@ pkgname = systemd-remove-birthdate-sysvcompat
 
 pkgname = systemd-remove-birthdate-tests
 	pkgdesc = systemd tests with birthdate functions removed
-	depends = systemd-remove-birthdate=261.2
+	depends = bash
+	depends = glibc
+	depends = libgcc
+	depends = python
+	depends = python-packaging
+	depends = python-colorama
+	depends = python-pexpect
+	depends = python-pytest
+	depends = python-psutil
+	depends = systemd-remove-birthdate=261.2-1
+	depends = systemd-remove-birthdate-libs=261.2-1
 	provides = systemd-tests=261.2
 	conflicts = systemd-tests
 	conflicts = systemd-tests-git
@@ -228,6 +242,7 @@ pkgname = systemd-remove-birthdate-ukify
 	pkgdesc = Combine kernel and initrd into a signed Unified Kernel Image
 	depends = systemd-remove-birthdate=261.2
 	depends = binutils
+	depends = python
 	depends = python-cryptography
 	depends = python-pefile
 	optdepends = python-pillow: Show the size of splash image
