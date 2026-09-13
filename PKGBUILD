@@ -1,4 +1,4 @@
-# Maintainer: luohoa97 <luohoa97@users.noreply.github.com>
+# Maintainer: taxin-404 <taxin404@duck.com>
 #
 # Cordial vendors no Roblox code. The engine is Roblox's official Android
 # x86-64 build; Cordial fetches it on first run from a third-party mirror and
@@ -32,7 +32,7 @@
 # submittable package, not a simulation of one.
 
 pkgname=cordial
-pkgver=0.13.2
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Roblox's official Android build, run natively on Linux -- Cordial ships no Roblox code and fetches a signature-verified one"
 arch=('x86_64')
