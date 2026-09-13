@@ -1,0 +1,9 @@
+[__config__]
+oldver = "old_ver.json"
+newver = "new_ver.json"
+
+[waybar-niri-focused-workspaces]
+source = "github"
+github = "pentago/waybar-niri-focused-workspaces-module"
+use_max_release = true
+prefix = "v"
