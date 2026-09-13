@@ -1,8 +1,8 @@
 pkgbase = orca-rs
 	pkgdesc = Orca live coding environment, ported to Rust (terminal UI with MIDI/OSC/UDP output)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
-	url = https://prosjekt.klingenbergbygg.no/bl/orca-rs
+	url = https://project.uhhm.no/bl/orca-rs
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -11,9 +11,10 @@ pkgbase = orca-rs
 	provides = orca-rs
 	conflicts = orca-rs-git
 	conflicts = orca-rs-bin
-	source_x86_64 = orca-rs-v0.1.1-x86_64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/orca-rs/releases/download/v0.1.1/orca-rs-v0.1.1-x86_64.tar.gz
-	sha256sums_x86_64 = 9aa5ce206fb30a99cf694b800baed6384f44d876f668dbb2edb2e568e99c058a
-	source_aarch64 = orca-rs-v0.1.1-aarch64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/orca-rs/releases/download/v0.1.1/orca-rs-v0.1.1-aarch64.tar.gz
-	sha256sums_aarch64 = 2370f39bf748dd9b34d8b786942d11542d47c95b1fac3256343401296ea288f7
+	options = !strip
+	source_x86_64 = orca-rs-v0.1.2-x86_64.tar.gz::https://project.uhhm.no/bl/orca-rs/releases/download/v0.1.2/orca-rs-v0.1.2-x86_64.tar.gz
+	sha256sums_x86_64 = 78e354ab7b0fcd6b3b358856f1a5e3d9f825f33c500f312f89ee8f9626cd5f03
+	source_aarch64 = orca-rs-v0.1.2-aarch64.tar.gz::https://project.uhhm.no/bl/orca-rs/releases/download/v0.1.2/orca-rs-v0.1.2-aarch64.tar.gz
+	sha256sums_aarch64 = 39d707f13a3bc43ccaa9ebfae36694128ebfb9701a13e1a7d8dd23f05185be28
 
 pkgname = orca-rs
