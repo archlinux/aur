@@ -2,7 +2,7 @@
 # Contributor: zerfithel <hazetlab@proton.me>
 
 pkgname=wordle-solver-git
-pkgver=1.2.11
+pkgver=1.3
 pkgrel=1
 pkgdesc="A fast wordle solver written in C99"
 arch=('x86_64')
