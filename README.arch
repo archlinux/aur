@@ -1,0 +1,75 @@
+MECHREVO OSD for Arch Linux
+==========================
+
+当前适配：MECHREVO WUJIE Series-T142-HPT-R。
+支持 Linux 6.18 LTS 和 7.2 系列内核。
+上游：https://github.com/wearzdk/mechrevo-osd-linux
+
+安装与你的内核对应的头文件包。pacman 的 DKMS 钩子会编译驱动。
+例如 linux 对应 linux-headers；其他内核请安装其对应的头文件。
+Secure Boot 用户需要按发行版文档完成模块签名信任配置。
+
+首次启动
+--------
+
+    sudo systemctl enable --now mechrevo-osd-binding.service
+    mechrevo-osd --check --check-display
+    mechrevo-osd
+
+图形进程以桌面用户运行。默认自动选择显示方式。
+Wayland 悬浮图标需要 qt6-wayland、wayland-utils 和 layer-shell-qt。
+系统通知方式需要桌面提供通知服务，可用 --backend notifications 选择。
+
+登录启动（以下两种方式选一种）
+----------------------------
+
+XDG Autostart：
+
+    mkdir -p ~/.config/autostart
+    cp /usr/share/applications/mechrevo-osd.desktop ~/.config/autostart/
+
+支持 graphical-session.target 的桌面也可使用用户服务：
+
+    systemctl --user enable --now mechrevo-osd.service
+
+自行配置的窗口管理器可在会话启动配置中加入 /usr/bin/mechrevo-osd。
+
+从手动安装版本迁移
+------------------
+
+先按上游 README 停止旧进程并卸载手动安装的版本，再安装 AUR 包。
+旧的 /usr/local/bin/mechrevo-osd 和自定义 systemd 单元会优先于包内文件，
+需要在迁移前处理。仓库源码目录可以保留。
+
+更新
+----
+
+更新包后重启电脑，或先停止图形进程，再执行：
+
+    sudo systemctl stop mechrevo-osd-binding.service
+    sudo modprobe -r mechrevo_osd_wmi
+    sudo systemctl start mechrevo-osd-binding.service
+
+然后重新启动图形进程。使用用户服务时执行：
+
+    systemctl --user restart mechrevo-osd.service
+
+卸载
+----
+
+先关闭图形进程并移除启用的登录启动项：
+
+    rm -f ~/.config/autostart/mechrevo-osd.desktop
+    systemctl --user disable --now mechrevo-osd.service
+    sudo systemctl disable --now mechrevo-osd-binding.service
+    sudo pacman -Rns mechrevo-osd-linux mechrevo-osd-dkms
+
+卸载 DKMS 包时会自动移除模块。
+
+排查
+----
+
+    dkms status
+    mechrevo-osd --check --check-display
+    journalctl -u mechrevo-osd-binding.service -b
+    journalctl --user -u mechrevo-osd.service -b

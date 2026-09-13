@@ -1,0 +1,35 @@
+pkgbase = mechrevo-osd-linux
+	pkgdesc = On-screen keyboard and firmware status for MECHREVO laptops
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/wearzdk/mechrevo-osd-linux
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = dkms
+	makedepends = pyside6
+	makedepends = python
+	makedepends = python-dbus
+	makedepends = systemd
+	source = https://github.com/wearzdk/mechrevo-osd-linux/releases/download/v0.1.1/mechrevo-osd-linux-0.1.1.tar.gz
+	source = README.arch
+	sha256sums = 4d95854c71d0557b2bf3f23ac00c130e7b64fcca593fae9509311db8907b37a2
+	sha256sums = 6f85b5d9e3415a860303fd2a8403934395a59e5ba5fc49d132fd5bc7da12fbf9
+
+pkgname = mechrevo-osd-linux
+	arch = any
+	license = GPL-2.0-or-later
+	license = LicenseRef-OEM
+	depends = mechrevo-osd-dkms=0.1.1
+	depends = python
+	depends = pyside6
+	depends = python-dbus
+	optdepends = qt6-wayland: Wayland display support
+	optdepends = wayland-utils: automatic detection of Wayland layer-shell
+	optdepends = layer-shell-qt: native overlay on layer-shell compositors
+
+pkgname = mechrevo-osd-dkms
+	pkgdesc = MECHREVO WUJIE T142-HPT-R firmware event driver (DKMS)
+	install = mechrevo-osd-dkms.install
+	depends = dkms
+	depends = python
+	depends = systemd

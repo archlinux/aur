@@ -1,0 +1,5 @@
+pre_remove() {
+    if [[ -d /run/systemd/system ]] && systemctl is-active --quiet mechrevo-osd-binding.service; then
+        systemctl stop mechrevo-osd-binding.service
+    fi
+}
