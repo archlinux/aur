@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly
 pkgname=('shelly' 'shelly-flatpak-backend')
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALP
         'com.shellyorg.shelly-notifications.desktop'
         'shelly-flatpak-integrate')
 
-sha256sums=('b6f4ddc10e3d7496036e8b2bc27611418c75b9be4ca5e1eda46a31f3b608b2f4'
+sha256sums=('40d6eb8019d1ccff58a48768f5141d4e97aca8a73f30c380838ba12255027c21'
             '0aff9177498bd94e90c937076d15ac76116c628ec3504a7c1b8c9ea086336ca6'
             '2cdefd69e5e1a2ecaa9a787ef04137af16d55690361034420f4dfcbb575e8627'
             '05f39f65a0f0797ea8a45b10cb693a197908aec298b2a17422a6d942ad1dee36'
