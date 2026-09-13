@@ -1,7 +1,7 @@
 # Maintainer: Álvaro De Quinta <blackcherry at danwin1210 dot de>
 # Contributor: Sapphire <imsapphire0 at gmail dot com>
 pkgname=wivrn-server-only
-pkgver=26.6.2
+pkgver=26.9
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets. For those who only wants to compile the server"
 arch=(x86_64)
@@ -57,14 +57,13 @@ provides=(
 )
 conflicts=("wivrn-server")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8b2012a74eb753cbf5a695e5be32e7e3d595cf2f4c6cec2b88eb7d853517686f')
+sha256sums=('89f63bc6c89943f3571055381ee2f1aa744d3d11372c56188b21e39c8d8ef733')
 
 build() {
   cd "WiVRn-$pkgver"
   cmake -B build-server . \
     -G Ninja \
-    -DGIT_DESC=v${pkgver} \
-    -DGIT_COMMIT=v${pkgver} \
+    -DGIT_TAG=v${pkgver} \
     -DWIVRN_BUILD_SERVER=ON \
     -DWIVRN_BUILD_WIVRNCTL=ON \
     -DWIVRN_BUILD_CLIENT=OFF \
