@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=kdotool
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A xdotool clone for KDE Wayland'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
 makedepends=(
     'cargo')
 source=("https://github.com/jinliu/kdotool/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b2d16d8776b65b6dc37b5a51d7afdef6303c88d76337cf8c217c4edf1754d5a0')
+sha256sums=('78e969941b1861aad849cad9bff7c34d34268912bf8042d5b3e9fbebcbb96f6d')
 
 prepare() {
     export RUSTUP_TOOLCHAIN='stable'
@@ -35,4 +35,5 @@ check() {
 
 package() {
     find target/release -maxdepth 1 -type f -executable ! -name 'lib*' -exec install -D -m755 -t "${pkgdir}/usr/bin" {} +
+    install -D -m644 "${pkgname}-${pkgver}/completions/kdotool.bash" "${pkgdir}/usr/share/bash-completion/completions/kdotool"
 }
