@@ -2,7 +2,7 @@
 
 pkgname=python-desec-dns
 _name=desec_dns
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A simple deSEC.io API client"
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=(
   python-wheel
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('6f1f3140f9f7a1df1ad96e822f274e26eaf98d32cfe0098d6b53c5201098435358a9a7ef842becc5b249fb2249e2640eacfe80b4e7684f2c10508459d9b96060')
+b2sums=('e05fc9d7f25d3fbaf8ebbb4d66201a022d760d2696d91f17d296b00913a7ef34ba82db6f719b8f9158769abdc1f8e21e491cc50cda680e5638baa1432c2309cd')
 
 build() {
   cd "$_name-$pkgver"
