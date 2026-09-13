@@ -1,7 +1,7 @@
 pkgbase = python-desec-dns
-	pkgdesc = A simple deSEC.io API client
+	pkgdesc = command-line and Python client for the deSEC.io DNS API
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/s-hamann/desec-dns
 	arch = any
 	license = MIT

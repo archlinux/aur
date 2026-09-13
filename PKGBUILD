@@ -3,8 +3,8 @@
 pkgname=python-desec-dns
 _name=desec_dns
 pkgver=1.5.0
-pkgrel=1
-pkgdesc="A simple deSEC.io API client"
+pkgrel=2
+pkgdesc="command-line and Python client for the deSEC.io DNS API"
 arch=(any)
 url="https://github.com/s-hamann/desec-dns"
 license=('MIT')
@@ -36,4 +36,9 @@ package() {
   install -d "$pkgdir"/usr/share/licenses/$pkgname
   ln -s "$site_packages"/$_name-$pkgver.dist-info/licenses/LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  install -Dm644 man/desec.1 "$pkgdir/usr/share/man/man1/desec.1"
+
+  install -Dm644 completions/desec.bash "$pkgdir/usr/share/bash-completion/completions/desec-dns"
+  install -Dm644 completions/_desec "$pkgdir/usr/share/zsh/site-functions/_desec-dns"
 }
