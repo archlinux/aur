@@ -3,7 +3,7 @@
 _gitauthor=nao1215
 _gitname=omokage
 _appname=${_gitname}
-pkgname=${_appname}-bin
+pkgname=${_gitname}-bin
 pkgdesc="Measure how closely writing matches a learned author's style. Japanese & English, local-first CLI for LLMs and humans"
 
 pkgver=0.6.1
@@ -20,11 +20,11 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${pkgname%-bin}")
 
 options=('!strip')
 
-_pkgsrc="${_appname}-${pkgver}"
+_pkgsrc="${_gitname}-${pkgver}"
 
 source=("${_pkgsrc}-checksums.txt::${url}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${url}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
