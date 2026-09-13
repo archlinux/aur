@@ -1,0 +1,5 @@
+[errand-bin]
+source = "github"
+github = "lydakis/errand"
+use_latest_release = true
+prefix = "v"
