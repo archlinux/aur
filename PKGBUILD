@@ -5,7 +5,7 @@
 
 pkgname=usql-bin
 pkgver=0.21.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A universal command-line interface for SQL databases'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xo/usql"
@@ -24,6 +24,10 @@ sha256sums_x86_64=('78bd9b221e223d7a954d41f51e9eca98bdd94b401618367ba0f3887abebd
 sha256sums_armv6h=('d9359d9688dfa0e7111802acc9b9b5cadd42fed48c382c5c8191417f561e9108')
 sha256sums_armv7h=('d9359d9688dfa0e7111802acc9b9b5cadd42fed48c382c5c8191417f561e9108')
 sha256sums_aarch64=('ccad89d6f4c67a9bf595df0aa8a550e0a9e3d6a6f9356356ba1e164e311335e4')
+
+check() {
+    ./usql --version
+}
 
 package() {
     install -Dm755 usql -t "$pkgdir/usr/bin"
