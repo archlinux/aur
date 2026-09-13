@@ -1,3 +1,4 @@
 [gnome-shell-extension-background-logo]
 source = "git"
-git = "https://pagure.io/background-logo-extension.git"
+git = "https://forge.fedoraproject.org/workstation/background-logo-extension.git"
+exclude_regex = ".*(alpha|beta|rc).*"
