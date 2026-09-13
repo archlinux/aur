@@ -1,28 +1,35 @@
 pkgbase = python-compressed-tensors
 	pkgdesc = versatile and efficient way to store and manage compressed tensor data
-	pkgver = 0.12.2
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/neuralmagic/compressed-tensors
 	arch = any
 	license = Apache-2.0
 	checkdepends = jupyter-nbconvert
 	checkdepends = jupyter-nbformat
-	checkdepends = python-frozendict
-	checkdepends = python-transformers
-	checkdepends = python-loguru
+	checkdepends = python-accelerate
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
+	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python
-	depends = python-pytorch
-	depends = python-safetensors
-	depends = python-pydantic
-	depends = python-accelerate
+	depends = python-huggingface-hub
+	depends = python-loguru
 	depends = python-numpy
+	depends = python-psutil
+	depends = python-pydantic
+	depends = python-pytorch>=2.10
+	depends = python-safetensors
 	depends = python-tqdm
-	depends = python-transformers
-	source = python-compressed-tensors-0.12.2.tar.gz::https://github.com/neuralmagic/compressed-tensors/archive/refs/tags/0.12.2.tar.gz
-	sha256sums = fa163decc91818095c72233f679a24665bd93b1cd391f8331db44b6879844bee
+	depends = python-transformers>=4.45
+	optdepends = python-accelerate: interoperability with Accelerate model offloading
+	source = python-compressed-tensors-0.18.0.tar.gz::https://github.com/neuralmagic/compressed-tensors/archive/refs/tags/0.18.0.tar.gz
+	source = cpu-only-test-suite.patch
+	source = initialize-qparams-deterministically.patch
+	sha256sums = c12f758ecabfb5f5311882534e8741fbbfd5c1aceb17d988f66daf131ce6cfe1
+	sha256sums = d1da8acf16a9eb8ef6dbaf04ff9ad5d9c9538ae5f2bad0a9bbadd58a248185a7
+	sha256sums = ea707e9f5fec80bc51d9ef6706c29103993d0089f88995c86d6f25acd6b04bb3
 
 pkgname = python-compressed-tensors

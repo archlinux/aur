@@ -1,0 +1,68 @@
+diff --git a/tests/test_offload/conftest.py b/tests/test_offload/conftest.py
+index e4cfcc9..61a7573 100644
+--- a/tests/test_offload/conftest.py
++++ b/tests/test_offload/conftest.py
+@@ -14,6 +14,8 @@ from compressed_tensors.offload.utils import send_tensors
+ 
+ 
+-accelerator_device = torch.accelerator.current_accelerator()
++# CPU-only builders legitimately have no accelerator.  Keep the local CPU
++# tests collectable while the existing requires_gpu markers skip GPU cases.
++accelerator_device = torch.accelerator.current_accelerator() or torch.device("cpu")
+ 
+ skip_if_mps_device = pytest.mark.skipif(
+     accelerator_device.type == "mps",
+@@ -33,7 +35,9 @@ def assert_device_equal(
+     if device_b == "disk":
+         device_b = torch.device("meta")
+ 
+-    cur_index = torch.accelerator.current_device_index()
++    cur_index = (
++        0 if accelerator_device.type == "cpu" else torch.accelerator.current_device_index()
++    )
+     a_index = cur_index if device_a.index is None else device_a.index
+     b_index = cur_index if device_b.index is None else device_b.index
+ 
+@@ -41,7 +45,7 @@ def assert_device_equal(
+     # on "xpu" actually live on the real accelerator, so their .device reports
+     # the real type. Normalize device types: if one matches the fake type and
+     # the other matches the real type, treat them as equal.
+-    accel = torch.accelerator.current_accelerator()
++    accel = torch.accelerator.current_accelerator() or torch.device("cpu")
+     fake_type = accel.type
+     real_type = getattr(accel, "_real_type", None)
+ 
+@@ -161,7 +165,7 @@ def torchrun(
+ 
+ @pytest.fixture()
+ def accel_device():
+-    accel_type = torch.accelerator.current_accelerator().type
++    accel_type = (torch.accelerator.current_accelerator() or torch.device("cpu")).type
+     return (
+         torch.device(accel_type)
+         if "TORCHELASTIC_RUN_ID" in os.environ
+diff --git a/tests/test_offload/test_load.py b/tests/test_offload/test_load.py
+index c2ee07d..665a910 100644
+--- a/tests/test_offload/test_load.py
++++ b/tests/test_offload/test_load.py
+@@ -25,7 +25,7 @@ from transformers import AutoModelForCausalLM
+ acclerate = pytest.importorskip("accelerate")
+ 
+ 
+-accelerator_device = torch.accelerator.current_accelerator()
++accelerator_device = torch.accelerator.current_accelerator() or torch.device("cpu")
+ TEST_PARAMETERS = [
+     (
+         "auto",
+diff --git a/tests/test_offload/test_module.py b/tests/test_offload/test_module.py
+index edb3925..4e73522 100644
+--- a/tests/test_offload/test_module.py
++++ b/tests/test_offload/test_module.py
+@@ -14,6 +14,6 @@ from tests.testing_utils import requires_gpu
+ 
+ 
+-ONLOAD_DEVICE = torch.accelerator.current_accelerator()
++ONLOAD_DEVICE = torch.accelerator.current_accelerator() or torch.device("cpu")
+ OFFLOAD_DEVICE = torch.device("cpu")
+ 
+ 

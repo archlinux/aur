@@ -1,0 +1,22 @@
+diff --git a/src/compressed_tensors/quantization/lifecycle/initialize.py b/src/compressed_tensors/quantization/lifecycle/initialize.py
+index c619bc4..41967ce 100644
+--- a/src/compressed_tensors/quantization/lifecycle/initialize.py
++++ b/src/compressed_tensors/quantization/lifecycle/initialize.py
+@@ -163,7 +163,7 @@ def initialize_qparams(
+     # 0. Create global scale for tensor-group quantization
+     if strategy == QuantizationStrategy.TENSOR_GROUP:
+         init_global_scale = Parameter(
+-            torch.empty(1, dtype=torch.float32, device=device),
++            torch.ones(1, dtype=torch.float32, device=device),
+             requires_grad=False,
+         )
+         module.register_parameter(f"{base_name}_global_scale", init_global_scale)
+@@ -239,7 +239,7 @@ def initialize_qparams(
+ 
+     # 3. Initializes scale/zp for the module
+     init_scale = Parameter(
+-        torch.empty(expected_shape, dtype=scale_dtype, device=device),
++        torch.ones(expected_shape, dtype=scale_dtype, device=device),
+         requires_grad=False,
+     )
+     module.register_parameter(f"{base_name}_scale", init_scale)
