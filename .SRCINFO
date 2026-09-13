@@ -1,0 +1,18 @@
+pkgbase = colibri-bin
+	pkgdesc = Tiny local inference engine for large MoE models (prebuilt)
+	pkgver = 1.10.2
+	pkgrel = 1
+	url = https://github.com/JustVugg/colibri
+	arch = x86_64
+	license = Apache-2.0
+	depends = python
+	depends = gcc-libs
+	optdepends = python-numpy: image/audio features and converters
+	optdepends = python-pillow: multimodal image input
+	optdepends = python-huggingface-hub: model download helpers for convert
+	provides = colibri
+	conflicts = colibri
+	source = https://github.com/JustVugg/colibri/releases/download/v1.10.2/colibri-v1.10.2-linux-x86_64.tar.gz
+	sha256sums = f9d21a99eb4c02f0f75c2ecddb735faf2043d2c6caa229e5ee62f50763cdfdec
+
+pkgname = colibri-bin
