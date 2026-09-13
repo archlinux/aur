@@ -3,7 +3,7 @@
 pkgbase='offlinemsmtp'
 pkgname=('offlinemsmtp')
 _module='offlinemsmtp'
-pkgver='0.5.1'
+pkgver='0.5.2'
 pkgrel=1
 pkgdesc='Use msmtp offline by queuing email until you have an internet connection.'
 url='https://github.com/bbbart/offlinemsmtp'
@@ -16,13 +16,13 @@ makedepends=('python-build' 'python-hatchling' 'python-installer')
 license=('GPL3')
 arch=('any')
 source=(
-    'https://github.com/bbbart/offlinemsmtp/archive/refs/tags/v0.5.1.tar.gz'
+    'https://github.com/bbbart/offlinemsmtp/archive/refs/tags/v0.5.2.tar.gz'
     'https://raw.githubusercontent.com/bbbart/offlinemsmtp/master/systemd/offlinemsmtp.service'
 )
 noextract=(
     'offlinemsmtp.service'
 )
-sha256sums=('31db4cce5c86586bcf34322c6d35426e7dee133ba852c4b0e0594fdaddc11136'
+sha256sums=('c9545dfb8ad8559f3f004397b31c5fdb58f3e9b63c79ddd1453d780439c6bcf1'
             '4c104ec682190c5459a89d6fc09bdd4a33f80302bd1888d01b7264dfcbdff9a9')
 replaces=('python-offlinemsmtp')
 
