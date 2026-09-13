@@ -1,0 +1,13 @@
+pkgbase = userfetch
+	pkgdesc = Simple bash userfetch utility
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = chafa
+	depends = coreutils
+	source = userfetch
+	sha256sums = 01013545c58adbdaacf6746885e7175a6398071a395587718c213a0353b935ae
+
+pkgname = userfetch

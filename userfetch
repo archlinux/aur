@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+
+USER_NAME="$(whoami)"
+HOST_NAME="$(hostname)"
+USER_UID="$(id -u)"
+FULL_NAME="$(getent passwd "$USER_NAME" | cut -d: -f5 | cut -d, -f1)"
+[ -z "$FULL_NAME" ] && FULL_NAME="N/A"
+
+EMAIL="$(git config --get user.email 2>/dev/null)"
+[ -z "$EMAIL" ] && EMAIL="N/A"
+
+GROUPS_LIST="$(id -Gn | tr ' ' ', ')"
+
+if [ "$USER_UID" -eq 0 ]; then
+    RIGHTS="Root / Administrator"
+elif id -Gn | grep -E -q "\b(sudo|wheel)\b"; then
+    RIGHTS="Sudoer (Admin Access)"
+else
+    RIGHTS="Standard User"
+fi
+
+# --- Расчет аптайма сессии пользователя ---
+LOGIN_TIME=$(who | grep "^$USER_NAME " | head -n1 | awk '{print $3" "$4}')
+if [ -n "$LOGIN_TIME" ]; then
+    LOGIN_SEC=$(date -d "$LOGIN_TIME" +%s 2>/dev/null)
+    NOW_SEC=$(date +%s)
+    if [ -n "$LOGIN_SEC" ]; then
+        DIFF=$((NOW_SEC - LOGIN_SEC))
+        DAYS=$((DIFF / 86400))
+        HOURS=$(((DIFF % 86400) / 3600))
+        MINS=$(((DIFF % 3600) / 60))
+
+        USER_UPTIME=""
+        [ $DAYS -gt 0 ] && USER_UPTIME="${DAYS}d "
+        [ $HOURS -gt 0 ] && USER_UPTIME="${USER_UPTIME}${HOURS}h "
+        USER_UPTIME="${USER_UPTIME}${MINS}m"
+    else
+        USER_UPTIME="N/A"
+    fi
+else
+    USER_UPTIME="N/A"
+fi
+
+# 1. Поиск пути к аватарке
+AVATAR=""
+if [ -f "/var/lib/AccountsService/icons/$USER_NAME" ]; then
+    AVATAR="/var/lib/AccountsService/icons/$USER_NAME"
+elif [ -f "$HOME/.face" ]; then
+    AVATAR="$HOME/.face"
+elif [ -f "$HOME/.face.icon" ]; then
+    AVATAR="$HOME/.face.icon"
+fi
+
+# 2. Выровненная текстовая информация
+INFO_LINES=(
+    "\e[1;34m$USER_NAME\e[0m@\e[1;34m$HOST_NAME\e[0m"
+    "\e[1;33m----------------------------------------\e[0m"
+    "\e[1;32mFull Name:\e[0m $FULL_NAME"
+    "\e[1;32mUID:\e[0m $USER_UID"
+    "\e[1;32mEmail:\e[0m $EMAIL"
+    "\e[1;32mPrivileges:\e[0m $RIGHTS"
+    "\e[1;32mUser Uptime:\e[0m $USER_UPTIME"
+    "\e[1;32mGroups:\e[0m $GROUPS_LIST"
+)
+
+# 3. Вывод картинки и текста бок о бок
+if [ -n "$AVATAR" ] && [ -f "$AVATAR" ] && command -v chafa &>/dev/null; then
+    IMG_COLS=22    # Ширина картинки
+    IMG_ROWS=10    # Высота картинки
+    LEFT_PAD=2     # Отступ аватарки слева (в символах)
+    
+    OFFSET=$((IMG_COLS + LEFT_PAD + 3))
+
+    # Отступ сверху на 1 строку
+    echo ""
+
+    # Отступ слева перед картинкой
+    echo -en "\e[${LEFT_PAD}C"
+
+    # Выводим картинку через Kitty protocol
+    chafa --format=kitty --size="${IMG_COLS}x${IMG_ROWS}" "$AVATAR"
+
+    # Возвращаем курсор наверх к первой строке картинки
+    echo -en "\e[${IMG_ROWS}A"
+
+    # Выводим каждую строку текста с одинаковым отступом вправо
+    LINE_COUNT=0
+    for line in "${INFO_LINES[@]}"; do
+        echo -e "\e[${OFFSET}C$line"
+        ((LINE_COUNT++))
+    done
+
+    # Если строк текста меньше высоты картинки, опускаем курсор вниз
+    if [ $LINE_COUNT -lt $IMG_ROWS ]; then
+        REST=$((IMG_ROWS - LINE_COUNT))
+        echo -en "\e[${REST}B"
+    fi
+else
+    for line in "${INFO_LINES[@]}"; do
+        echo -e "$line"
+    done
+fi
