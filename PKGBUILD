@@ -1,6 +1,6 @@
 # Maintainer: Fovty <38868829+Fovty@users.noreply.github.com>
 pkgname=hushmic
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Real-time microphone noise suppression as a virtual mic (DPDFNet via PipeWire)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT OR Apache-2.0')
 depends=('pipewire' 'pipewire-pulse' 'wireplumber' 'onnxruntime')
 makedepends=('rust' 'cargo' 'python' 'curl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c4afed6eb3dcebf93267deadeb4b0ec3fd5d3207b2c5786c31d4899dabc0d869')
+sha256sums=('21d74d3cb73a2f0b88b0e9740545e2b519ddbdffeaac9608acd19635c59f71ca')
 # GitHub archive dirs use the CANONICAL repo name (Fovty/HushMic), so the
 # tarball extracts to HushMic-<ver>/ regardless of the URL's casing.
 _srcname="HushMic-$pkgver"
@@ -52,6 +52,7 @@ package() {
   install -Dm644 assets/models/dpdfnet8_48khz_hr.onnx "$pkgdir/usr/share/hushmic/models/dpdfnet8_48khz_hr.onnx"
   install -Dm644 assets/models/dpdfnet2_48khz_hr.onnx "$pkgdir/usr/share/hushmic/models/dpdfnet2_48khz_hr.onnx"
   install -Dm644 packaging/hushmic.desktop "$pkgdir/usr/share/applications/hushmic.desktop"
+  install -Dm644 packaging/systemd/hushmic.service "$pkgdir/usr/lib/systemd/user/hushmic.service"
   install -Dm644 packaging/hushmic-256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/hushmic.png"
   # Tray status-icon ladder (three SNI names x eight sizes); explicit installs
   # so a missing size or state fails packaging instead of shipping incomplete.
