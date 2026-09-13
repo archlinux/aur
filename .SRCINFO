@@ -1,0 +1,17 @@
+pkgbase = dosierskanilo-gui
+	pkgdesc = GTK desktop frontend for DosierSkanilo JSON data
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://gitlab.vahanus.net/dlang/dosierskanilo-gui
+	arch = x86_64
+	license = custom:CC-BY-NC-SA-4.0
+	makedepends = ldc
+	makedepends = dub
+	makedepends = git
+	depends = gtk3
+	depends = gstreamer
+	depends = dosierskanilo
+	source = dosierskanilo-gui-0.6.0.tar.gz::https://gitlab.vahanus.net/dlang/dosierskanilo-gui/-/archive/v0.6.0/dosierskanilo-gui-v0.6.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = dosierskanilo-gui
