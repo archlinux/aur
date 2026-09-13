@@ -1,7 +1,7 @@
 pkgbase = python-compressed-rtf
 	pkgdesc = Compressed Rich Text Format (RTF) compression and decompression
 	pkgver = 1.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/delimitry/compressed_rtf
 	arch = any
 	license = MIT

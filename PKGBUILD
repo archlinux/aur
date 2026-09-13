@@ -4,7 +4,7 @@
 _pkgname='compressed_rtf'
 pkgname="python-${_pkgname//_/-}"
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Compressed Rich Text Format (RTF) compression and decompression'
 arch=('any')
 url="https://github.com/delimitry/${_pkgname}"
@@ -31,6 +31,6 @@ check() {
 
 package() {
 	cd -- "${srcdir}/${_pkgname}-${pkgver}" || return 1
-	python -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
+	python -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode 2 dist/*.whl
 	install -Dm644 -- 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
