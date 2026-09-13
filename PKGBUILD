@@ -4,7 +4,7 @@
 pkgname=python-tree-sitter-cpp
 _gitpkgname=tree-sitter-cpp
 pkgver=0.23.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Python Bindings for tree-sitter-cpp'
 arch=(
       'x86_64'
@@ -49,7 +49,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${_gitpkgname}-${pkgver}"
-	python -I -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
+	python -I -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode 2 dist/*.whl
 	install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 	install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
