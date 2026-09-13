@@ -2,14 +2,14 @@ pkgbase = zfs-openrc
 	pkgdesc = OpenRC zfs init script
 	pkgver = 20260913
 	pkgrel = 1
-	url = https://gitlab.com/aur3675443/zfs-openrc.git
+	url = https://codeberg.org/sarahmeow86/zfs-openrc.git
 	arch = any
 	groups = openrc-system
 	license = GPLV3
 	depends = openrc
 	depends = zfs-utils
 	provides = init-zfs
-	source = git+https://gitlab.com/aur3675443/zfs-openrc.git
+	source = git+https://codeberg.org/sarahmeow86/zfs-openrc.git
 	md5sums = SKIP
 
 pkgname = zfs-openrc
