@@ -2,9 +2,9 @@
 pkgname=junixsocket
 pkgver=2.11.1
 _java=25
-pkgrel=3
+pkgrel=4
 pkgdesc='Unix Domain Sockets for all Java versions 7 and newer (AF_UNIX), AF_TIPC, AF_VSOCK, and more'
-arch=(any)
+arch=(x86_64 aarch64)
 url="https://github.com/kohlschutter/$pkgname"
 license=('Apache')
 depends=('java-runtime-headless>=8')
