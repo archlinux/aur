@@ -1,7 +1,7 @@
 pkgbase = python-saxonche-bin
 	pkgdesc = Official Python bindings for the SaxonC-HE XSLT, XQuery and XPath processor
 	pkgver = 13.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.saxonica.com/html/saxon-c/index.html
 	arch = x86_64
 	arch = aarch64
