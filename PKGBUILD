@@ -8,7 +8,7 @@ _appname=blog
 pkgauthor=kantord
 pkgname=blogtato
 _cratename=${pkgname}
-pkgver=0.1.26
+pkgver=0.1.27
 _version=${pkgver}
 pkgrel=1
 pkgdesc="A CLI RSS/Atom feed reader inspired by Taskwarrior"
@@ -23,7 +23,7 @@ makedepends=('cargo')
 provides=("${_appname}")
 
 source=("${_cratename}-${_version}.crate::https://crates.io/api/v1/crates/${_cratename}/${_version}/download")
-sha256sums=('28fe5fd15715ee6d3cd17979aefa555f507eb1f18f78c08245c84ecded929d31')
+sha256sums=('cf9619073e0cd50d648b95df2cd6cfd9e6452812783cdc6db05ea21d152e3bd4')
 
 prepare() {
 	cd "${_cratename}-${_version}"
