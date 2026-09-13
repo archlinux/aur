@@ -1,6 +1,6 @@
 pkgbase = honkers-launcher-bin
 	pkgdesc = A launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = 1.14.0
+	pkgver = 1.14.1
 	pkgrel = 1
 	url = https://github.com/an-anime-team/honkers-launcher
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = honkers-launcher-bin
 	optdepends = gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance
 	provides = honkers-launcher
 	conflicts = honkers-launcher
-	source = honkers-launcher_1.14.0::https://github.com/an-anime-team/honkers-launcher/releases/download/1.14.0/honkers-launcher
+	source = honkers-launcher_1.14.1::https://github.com/an-anime-team/honkers-launcher/releases/download/1.14.1/honkers-launcher
 	source = icon.png
 	source = honkers-launcher.desktop
-	md5sums = 05691ea475f2a529a22c0e1ed4115c8e
+	md5sums = 448d52efbdf9dbfa40f6a7145b2e6eba
 	md5sums = 26b637e96d0f4382c8b132656a9ce3a5
 	md5sums = 739854fbecc047beb55d738dbdfe85d9
 
