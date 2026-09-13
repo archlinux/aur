@@ -2,12 +2,12 @@
 # Maintainer: Jaron Kent-Dobias <jaron@kent-dobias.com>
 pkgname=pubs
 pkgver=0.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Your bibliography on the command line"
 arch=(any)
 url="https://github.com/pubs/pubs"
 license=('LGPL-3.0')
-depends=("python" "python-configobj" "python-bibtexparser" "python-beautifulsoup4" "python-yaml" "python-feedparser" "python-dateutil" "python-requests")
+depends=("python" "python-configobj" "python-bibtexparser" "python-beautifulsoup4" "python-yaml" "python-feedparser" "python-dateutil" "python-requests" "python-pylatexenc")
 makedepends=("git" "python-setuptools" "python-build" "python-installer" "python-wheel")
 provides=("pubs")
 source=("https://github.com/pubs/pubs/archive/v$pkgver.tar.gz"

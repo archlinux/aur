@@ -1,7 +1,7 @@
 pkgbase = pubs
 	pkgdesc = Your bibliography on the command line
 	pkgver = 0.9.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pubs/pubs
 	arch = any
 	license = LGPL-3.0
@@ -18,6 +18,7 @@ pkgbase = pubs
 	depends = python-feedparser
 	depends = python-dateutil
 	depends = python-requests
+	depends = python-pylatexenc
 	provides = pubs
 	source = https://github.com/pubs/pubs/archive/v0.9.0.tar.gz
 	source = replace-pipes-with-shlex.patch
