@@ -6,7 +6,7 @@ _appname=${_gitname%-cli}
 pkgname=${_gitname}-bin
 pkgdesc="CLI tool for saving a faithful copy of a complete web page in a single HTML file"
 
-pkgver=2.11.2
+pkgver=2.12.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('945fdb6f4af165dc2a1b3926600e764132e022bf7d45693cad46cac6e9299cc6'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
-sha256sums_x86_64=('dc2276f3dfe84e0bb097dff254e7c3903cf5545f3e157e467ec0f334fd2e37c7')
-sha256sums_aarch64=('1e20f758fba13705724dfca4e3607da44648daa946cf7e08d48eb98a7fa0948e')
+sha256sums_x86_64=('4601962d9ff8eecc484770b0025c15a678a4db54c92f3c5ec07c37814047cef4')
+sha256sums_aarch64=('71d5c640cbb25f62758080d60922b27eb1a7919d6dbfa77afe3913261b2baf7d')
 
 
 package() {
