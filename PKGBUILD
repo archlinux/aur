@@ -2,7 +2,7 @@
 
 pkgname=ganjoorand
 pkgver=0.0.6
-pkgrel=1
+pkgrel=3
 pkgdesc="A GTK 4 client for a random poem from Ganjoor"
 arch=('any')
 url="https://framagit.org/RZHSSNZDH/gganjoorand"
