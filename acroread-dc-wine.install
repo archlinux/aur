@@ -10,8 +10,6 @@ post_install() {
     echo "  nl_NL, pt_BR, fi_FI, da_DK, nb_NO, sv_SE"
     echo ""
 
-    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
-    update-desktop-database -q /usr/share/applications 2>/dev/null || true
 }
 
 post_upgrade() {
@@ -24,6 +22,4 @@ post_remove() {
     echo "To remove: rm -rf ~/.local/share/acroread-dc-wine"
     echo ""
 
-    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
-    update-desktop-database -q /usr/share/applications 2>/dev/null || true
 }

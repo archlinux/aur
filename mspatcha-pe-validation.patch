@@ -1,0 +1,41 @@
+From: Smoolak <smoolak@gmail.com>
+Subject: [PATCH] mspatcha: validate relocation entries and NUL-padded .reloc
+
+PE section names shorter than eight bytes are NUL-padded.  Comparing
+against a space-padded string prevents the PA19 transform path from
+extending the relocation directory to the section's raw size and drops
+valid relocation entries.
+
+Also reject a relocation entry whose two-byte value falls outside the
+mapped file.  Besides avoiding an out-of-bounds read, this preserves the
+PE-format error required by NormalizeFileForPatchSignature.
+
+diff --git a/dlls/mspatcha/pa19.c b/dlls/mspatcha/pa19.c
+index 2f3e86d6f7..46473d871a 100644
+--- a/dlls/mspatcha/pa19.c
++++ b/dlls/mspatcha/pa19.c
+@@ -893,8 +893,9 @@ static BOOL rebase_image(
+             reloc = (USHORT_UNALIGNED *)((PUCHAR)reloc_block + sizeof(IMAGE_BASE_RELOCATION));
+             reloc_count = (reloc_block->SizeOfBlock - sizeof(IMAGE_BASE_RELOCATION)) / sizeof(USHORT);
+             while (reloc_count--) {
+-                if ((PUCHAR)reloc > mapped_image_end) {
+-                    break;
++                if ((PUCHAR)reloc > (mapped_image_end - sizeof(*reloc))) {
++                    SetLastError(PE_FMT_ERROR_CODE);
++                    return FALSE;
+                 }
+ 
+                 reloc_fixup = (PUCHAR)reloc_block_base + (*reloc & 0x0FFF);
+@@ -1493,8 +1494,8 @@ static int patch_transform_PE_relocations(
+             goto cleanup;
+         }
+ 
+-        /* check for ".reloc  " */
+-        if (strnicmp((char *)section_table[i].Name, ".reloc  ", IMAGE_SIZEOF_SHORT_NAME) == 0) {
++        /* Section names shorter than eight bytes are NUL-padded in PE files. */
++        if (memcmp(section_table[i].Name, ".reloc", sizeof(".reloc") - 1) == 0) {
+             if (reloc_dir_offset >= section_table[i].PointerToRawData
+                 && reloc_dir_offset < (section_table[i].PointerToRawData +
+                                         section_table[i].SizeOfRawData)) {
+-- 
+2.50.1

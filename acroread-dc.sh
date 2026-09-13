@@ -9,29 +9,54 @@ WINEPREFIX="${HOME}/.local/share/acroread-dc-wine"
 export WINEPREFIX
 export WINEDEBUG="-all"
 
-# Find Adobe Reader executable (wow64 installs to "Program Files (x86)")
-READER_EXE="$WINEPREFIX/drive_c/Program Files (x86)/Adobe/Acrobat Reader DC/Reader/AcroRd32.exe"
-if [[ ! -f "$READER_EXE" ]]; then
-    READER_EXE="$WINEPREFIX/drive_c/Program Files/Adobe/Acrobat Reader DC/Reader/AcroRd32.exe"
+find_reader() {
+    local candidate
+    for candidate in \
+        "$WINEPREFIX/drive_c/Program Files/Adobe/Acrobat DC/Acrobat/Acrobat.exe" \
+        "$WINEPREFIX/drive_c/Program Files (x86)/Adobe/Acrobat Reader DC/Reader/AcroRd32.exe" \
+        "$WINEPREFIX/drive_c/Program Files/Adobe/Acrobat Reader DC/Reader/AcroRd32.exe"; do
+        if [[ -f "$candidate" ]]; then
+            printf '%s\n' "$candidate"
+            return 0
+        fi
+    done
+    return 1
+}
+
+INSTALLER="$(find "$APPDIR" -maxdepth 1 -type f -name 'AcroRdrDCx64*.exe' -print -quit)"
+if [[ -z "$INSTALLER" ]]; then
+    echo "Adobe Acrobat Reader installer is missing from $APPDIR." >&2
+    exit 1
 fi
 
-# Run setup if Reader is not installed
-if [[ ! -f "$READER_EXE" ]]; then
-    echo "Adobe Acrobat Reader DC is not installed."
+INSTALLER_ID="${INSTALLER##*/}"
+STATE_FILE="$WINEPREFIX/.acroread-dc-wine-installer"
+INSTALLED_ID=""
+if [[ -r "$STATE_FILE" ]]; then
+    read -r INSTALLED_ID < "$STATE_FILE"
+fi
+
+READER_EXE="$(find_reader || true)"
+
+# Run setup when Reader is missing or the packaged installer changed.
+if [[ -z "$READER_EXE" || "$INSTALLED_ID" != "$INSTALLER_ID" ]]; then
+    if [[ -z "$READER_EXE" ]]; then
+        echo "Adobe Acrobat Reader DC is not installed."
+    else
+        echo "A newer Adobe Acrobat Reader DC package is available."
+    fi
     echo "Running setup..."
     "$APPDIR/acroread-dc-setup.sh"
 
-    # Re-check paths after install
-    READER_EXE="$WINEPREFIX/drive_c/Program Files (x86)/Adobe/Acrobat Reader DC/Reader/AcroRd32.exe"
-    if [[ ! -f "$READER_EXE" ]]; then
-        READER_EXE="$WINEPREFIX/drive_c/Program Files/Adobe/Acrobat Reader DC/Reader/AcroRd32.exe"
-    fi
+    READER_EXE="$(find_reader || true)"
 
-    if [[ ! -f "$READER_EXE" ]]; then
+    if [[ -z "$READER_EXE" ]]; then
         echo "Installation failed or was cancelled."
         exit 1
     fi
 fi
+
+export WINEDLLOVERRIDES="mspatcha=n,b"
 
 # Convert file arguments to Windows paths
 args=()
@@ -39,7 +64,8 @@ for arg in "$@"; do
     if [[ -e "$arg" ]]; then
         abs_path=$(realpath "$arg")
         # Use forward slashes (Wine accepts both, but backslashes can cause shell issues)
-        win_path=$(wine winepath -w "$abs_path" 2>/dev/null | tr '\\' '/')
+        win_path=$(winepath -w "$abs_path" 2>/dev/null)
+        win_path="${win_path//\\/\/}"
         args+=("$win_path")
     else
         args+=("$arg")

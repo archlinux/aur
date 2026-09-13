@@ -9,4 +9,4 @@ Type=Application
 Categories=Office;Viewer;
 MimeType=application/pdf;application/vnd.fdf;application/vnd.adobe.xfdf;application/vnd.adobe.pdx;application/vnd.adobe.xdp+xml;
 StartupNotify=true
-StartupWMClass=AcroRd32.exe
+StartupWMClass=Acrobat.exe
