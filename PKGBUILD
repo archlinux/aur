@@ -2,7 +2,7 @@
 # ============================================================================
 #  MoonlightWeb — AUR package (TEMPLATE, not a valid PKGBUILD as it stands).
 #
-#  0.2.3 / d7f4304156058a1c76d4e5ed3f71e7daf37eb7eded0ae59bc8e11cff3699f6cc are substituted by the `aur` job in
+#  0.3.0 / c896b19a8dd69867998a3814bb5b902f23da2ebd18eae5bbcdedd11b85afdff0 are substituted by the `aur` job in
 #  .github/workflows/release.yml, which pushes the result — together with the
 #  matching .SRCINFO, rendered from the same values — to
 #  ssh://aur@aur.archlinux.org/moonlightweb-bin.git. Edit this file, not the
@@ -20,7 +20,7 @@
 #  single extraction and the app appears in KDE Discover like any other.
 # ============================================================================
 pkgname=moonlightweb-bin
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Stream your Sunshine games to any device with a browser"
 arch=('x86_64')
@@ -29,19 +29,24 @@ license=('GPL-3.0-only')
 
 # Qt and OpenSSL are bundled inside /opt/moonlightweb (linuxdeploy rewrote the
 # rpaths to $ORIGIN), so only what linuxdeploy deliberately leaves to the system
-# is listed here — the libraries any graphical session already provides.
+# is listed here — the libraries any graphical session already provides, plus
+# the driver-coupled stack the native host captures and encodes with (libdrm,
+# libva, EGL/GLES via libglvnd, GBM via mesa) and the PipeWire client library
+# for the host's audio. libcap provides setcap for the .install hook.
 depends=('glibc' 'gcc-libs' 'libglvnd' 'libx11' 'libxkbcommon-x11'
-         'fontconfig' 'freetype2' 'zlib' 'dbus')
+         'fontconfig' 'freetype2' 'zlib' 'dbus'
+         'libdrm' 'libva' 'mesa' 'pipewire' 'libcap')
 
 provides=('moonlightweb')
 conflicts=('moonlightweb')
+install=moonlightweb-bin.install
 
 # The bundled Qt libraries ship as-is; stripping them buys nothing and has
 # broken plugin loading before.
 options=('!strip' '!debug')
 
 source=("moonlightweb-${pkgver}.deb::https://github.com/linckosz/moonlight-web/releases/download/v${pkgver}/moonlightweb-${pkgver}-linux-x64.deb")
-sha256sums=('d7f4304156058a1c76d4e5ed3f71e7daf37eb7eded0ae59bc8e11cff3699f6cc')
+sha256sums=('c896b19a8dd69867998a3814bb5b902f23da2ebd18eae5bbcdedd11b85afdff0')
 
 package() {
     # makepkg hands .deb to libarchive, which unpacks it into its ar members;

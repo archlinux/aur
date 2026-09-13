@@ -1,0 +1,16 @@
+# The screen capture (KMS) needs CAP_SYS_ADMIN, carried as a file capability
+# by the launcher the .desktop entry and /usr/bin/moonlightweb point at — see
+# backend/packaging/linux/moonlightweb-launch.c for why it cannot sit on the
+# MoonlightWeb binary itself. pacman does not restore file capabilities from
+# the .deb payload, so it is set here, on every install and upgrade.
+post_install() {
+    if ! setcap cap_sys_admin+p /opt/moonlightweb/bin/moonlightweb-launch 2>/dev/null; then
+        echo "warning: could not set cap_sys_admin on moonlightweb-launch — the host"
+        echo "         cannot capture its screen until you run:"
+        echo "         sudo setcap cap_sys_admin+p /opt/moonlightweb/bin/moonlightweb-launch"
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
