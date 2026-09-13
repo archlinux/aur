@@ -1,0 +1,15 @@
+post_install() {
+    cat <<'EOF'
+The helper runs as a systemd user service. Start it with:
+
+    systemctl --user enable --now shometrics-linux-helper.service
+
+Socket: /tmp/shometrics-helper/ShoMetrics.Source.Windows.Grpc.v1
+Restart OpenDeck afterwards so the plugin picks the helper up.
+EOF
+}
+
+post_upgrade() {
+    # pacman runs this as root, so it cannot touch the user's systemd instance.
+    echo "Pick up the new helper: systemctl --user restart shometrics-linux-helper.service"
+}
