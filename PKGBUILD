@@ -1,6 +1,6 @@
 # Maintainer: musqz <gummy-fang-deputy@duck.com>
 pkgname=archcanary
-pkgver=0.1.34
+pkgver=0.1.35
 pkgrel=1
 pkgdesc="Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering"
 arch=('any')
@@ -18,10 +18,11 @@ optdepends=(
 backup=('etc/archcanary/dkms_allowlist.conf'
         'etc/archcanary/systemd_allowlist.conf'
         'etc/archcanary/bpftool_allowlist.conf'
-        'etc/archcanary/autostart_allowlist.conf')
+        'etc/archcanary/autostart_allowlist.conf'
+        'etc/archcanary/package_allowlist.conf')
 install=archcanary.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/musqz/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('9af70610b8abf1f54bdb88512bf8e5881ce79066269bc8c29083235ca0d49205')
+sha256sums=('5a842462ef948e18ca21be58f8553524b2398f6c6310ab9d552a484ba4a79ff5')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -159,5 +160,19 @@ EOF
 # Examples:
 # zeitgeist-datahub               # desktop activity logging, ships in a non-PATH libdir
 # /usr/bin/eos-update-notifier    # EndeavourOS update notifier, user unit ships via /etc/skel
+EOF
+
+  cat > "$pkgdir/etc/archcanary/package_allowlist.conf" << 'EOF'
+# Package names to skip during checks [1]/[2] (currently-installed foreign
+# packages and pacman.log history), system-wide allowlist. One package name
+# per line. Everything after # is a comment.
+# Add a name that matches an official compromised-package list purely by
+# name but has been manually verified clean — e.g. the AUR git history and
+# your locally cached PKGBUILD both show no trace of the campaign's
+# malicious commit. The underlying lists themselves are untouched, so
+# --search-packages still reports true list membership.
+#
+# Example:
+# chipmunk  # name-match against the June 2026 AUR incident list; verified clean
 EOF
 }
