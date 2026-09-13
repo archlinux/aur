@@ -1,5 +1,5 @@
 pkgname=synchrogit
-pkgver=26.9.3
+pkgver=26.9.4
 pkgrel=1
 pkgdesc='Daemon that keeps git repositories synced with their remotes'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ makedepends=('cargo' 'lowdown' 'perl')
 # Rust enables its own LTO. GCC LTO objects from vendored C libraries cannot
 # be linked by Rust's lld, so disable makepkg's additional cross-language LTO.
 options=('!lto' '!debug')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/partanskiy/synchrogit/archive/refs/tags/v26.9.3.tar.gz")
-sha256sums=('e49181124940b0c15fe5b94c0d495aad2c561b363a1e2c8c7de7ecc0efd199c2')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/partanskiy/synchrogit/archive/refs/tags/v26.9.4.tar.gz")
+sha256sums=('a5d4b7dfc12c6e32f27ff8bd163bce0b83da9f6ab7ee95eb64a5c6721ed2aa35')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
