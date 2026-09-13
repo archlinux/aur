@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <support@lmm.best>
 
 pkgname=lmm-api-go-bin
-pkgver=0.2.28
+pkgver=0.2.31
 pkgrel=1
 pkgdesc='LMM API Go backend, native CLI, and systemd service (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,6 @@ lmm_go_package_apply_metadata "$pkgver" "$pkgname" \
   'lmm-api-go' 'lmm-api-go-bin' 'lmm-api-go-git'
 backup=('etc/lmm-api-go/lmm-api-go.env')
 options=('!strip')
-install=lmm-api-go.install
 
 _release_tag="go-v${pkgver}"
 _legacy_bundled_version=0.1.34
@@ -27,7 +26,7 @@ _legacy_external_operator_version=0.1.57
 # go-v0.1.58 produced no release assets. Only signed 0.1.69 is accepted as the legacy N-1 layout.
 _artifact="lmm-api-go-${pkgver}-linux"
 _release_base="${url}/releases/download/${_release_tag}"
-source=('lmm-api-go-package.sh' 'lmm-api-go.install')
+source=('lmm-api-go-package.sh')
 source_x86_64=(
   "${_artifact}-amd64.tar.gz::${_release_base}/${_artifact}-amd64.tar.gz"
   "${_artifact}-amd64.tar.gz.sha256::${_release_base}/${_artifact}-amd64.tar.gz.sha256"
@@ -39,19 +38,16 @@ source_aarch64=(
   "${_artifact}-arm64.tar.gz.sigstore.json::${_release_base}/${_artifact}-arm64.tar.gz.sigstore.json"
 )
 noextract=("${_artifact}-amd64.tar.gz" "${_artifact}-arm64.tar.gz")
-sha256sums=(
-  '655e9346a6d87baa1cb81d97dcc412243d7ee305f90371b99d89033ea0e99bb1'
-  '0d66ac2265d289653a84b4d25a7601a779893b1cf011951dfe7b420ea8b4ccc6'
-)
+sha256sums=('655e9346a6d87baa1cb81d97dcc412243d7ee305f90371b99d89033ea0e99bb1')
 sha256sums_x86_64=(
-  '3eba2af2aaa7175ae36b91e9c35a10616bb7acfaef68e584e0ce0fdaf57ce12d'
-  '60f3443b25c91da5fccac254b8aead4a17852100291fda5838289221cc3f96b5'
-  '080423da0ae1d346f78a4219f147899a13d2a8bf5ae5cf9ff6c6f3f1c1c1d31c'
+  '03b5bed63bc48a870b1c0eb7dfa7048bf11e4e5b003a56e33392bf8d17839db0'
+  '40c2f3bc8bda2e0323ee4dbb7d00bd6f46eada5a531b131caea8858b315811a8'
+  '8e881501af0acd9f0b1787fa2647ba3166aaadb4dcd337ac2b0f66caf54b4f17'
 )
 sha256sums_aarch64=(
-  '75caa62532bb926141bddc921be5ae9f63bb21743b53a73398029fde362e3752'
-  '671d35e75c0470e2bdaef3970cc0f3b3a63307f1d5e94ed90716b739bdd22772'
-  '1a328d7e659218fc20a1001261f3bd3bdae7a84e3c85eaf1677b09fc775b14cc'
+  '53434d72c1156718e29a4d8862f24485b7170e6ac4bad4e15cbab31a23766b6e'
+  'ac0804ff330bbec098527178cb466f6333007de6748b7e9c07596af532934ffa'
+  'a6e748794b75ce19506f430bd854ddf39f16ad5625702ca8bd230b5822439310'
 )
 
 case "${CARCH}" in
