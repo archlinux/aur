@@ -1,0 +1,26 @@
+pkgbase = vega-nostr
+	pkgdesc = Cross-platform Nostr desktop client with Lightning integration
+	pkgver = 0.15.7
+	pkgrel = 1
+	url = https://github.com/hoornet/vega
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = openssl
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-libav
+	optdepends = gnome-keyring: persistent key storage (any Secret Service provider works)
+	optdepends = kwallet: Secret Service provider on KDE
+	options = !debug
+	source = vega-nostr-0.15.7::git+https://github.com/hoornet/vega.git#tag=v0.15.7
+	sha256sums = SKIP
+
+pkgname = vega-nostr
