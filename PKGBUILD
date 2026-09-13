@@ -5,6 +5,11 @@ _prgname=redumper
 pkgname=redumper-bin
 url="https://github.com/superg/redumper"
 arch=('x86_64')
+pkgdesc="Low level CD dumper utility"
+provides=('redumper')
+pkgver=b751
+pkgrel=1
+license=('GPL3')
 
 # redumper-gui is pre-packaged with a supported and recommended version of redumper, therefore this package and the GUI cannot co-exist. Generally the version of redumper in redumper-gui follows redumper releases.
 conflicts=(
@@ -13,11 +18,6 @@ conflicts=(
     "redumper"
 )
 
-pkgdesc="Low level CD dumper utility"
-provides=('redumper')
-pkgver=b750
-pkgrel=1
-license=('GPL3')
 source=("https://github.com/superg/redumper/releases/download/$pkgver/redumper-$pkgver-linux-x64.zip"
 'https://raw.githubusercontent.com/superg/redumper/main/README.md'
 'https://raw.githubusercontent.com/superg/redumper/main/LICENSE')
