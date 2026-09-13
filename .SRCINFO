@@ -1,6 +1,6 @@
 pkgbase = iptv-checker-gui
 	pkgdesc = GUI for validating IPTV playlists and inspecting stream health
-	pkgver = 1.9.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/kristofferR/IPTVChecker
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = iptv-checker-gui
 	conflicts = iptv-checker
 	options = !strip
 	options = !debug
-	source = LICENSE-1.9.0::https://raw.githubusercontent.com/kristofferR/IPTVChecker/v1.9.0/LICENSE
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/kristofferR/IPTVChecker/v2.0.0/LICENSE
 	sha256sums = 508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1
-	source_x86_64 = iptv-checker-gui-1.9.0-x86_64.deb::https://github.com/kristofferR/IPTVChecker/releases/download/v1.9.0/IPTV.Checker_1.9.0_lin_x64.deb
-	sha256sums_x86_64 = 412ca163e39be8b4288a7a42422f59f55096448818c0e56461006d99e90ff99f
-	source_aarch64 = iptv-checker-gui-1.9.0-aarch64.deb::https://github.com/kristofferR/IPTVChecker/releases/download/v1.9.0/IPTV.Checker_1.9.0_lin_arm.deb
-	sha256sums_aarch64 = aab9ee26f81789c9e3e4093d2feb594adc415e0f6b0d57e3a71ab8a9abe84bca
+	source_x86_64 = iptv-checker-gui-2.0.0-x86_64.deb::https://github.com/kristofferR/IPTVChecker/releases/download/v2.0.0/IPTV.Checker_2.0.0_lin_x64.deb
+	sha256sums_x86_64 = 8708ebd187bf217670a9267e9ef101454025566e1a237b7f8800bd2a9b188cfd
+	source_aarch64 = iptv-checker-gui-2.0.0-aarch64.deb::https://github.com/kristofferR/IPTVChecker/releases/download/v2.0.0/IPTV.Checker_2.0.0_lin_arm.deb
+	sha256sums_aarch64 = 849d205db6d354b319b2a3f83a3d7a5dac2fdc29f5537b14c7e1dec6d25a3814
 
 pkgname = iptv-checker-gui
