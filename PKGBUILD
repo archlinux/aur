@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal weather forecast and rain radar TUI (JMA + Open-Meteo + RainViewer - Kitty graphics)"
 
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('26f2d4c67c55c724a28de5a8c9cfa1f7e436afe4b00dff1fd5f79508b257491e')
+sha256sums_x86_64=('7de92fcf8f2c4c54c409dd528074c811f9b676bcba692d00ed558aca2ff80d7b')
 
 
 package() {
