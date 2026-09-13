@@ -1,0 +1,6 @@
+*.pkg.tar
+*.pkg.tar.*
+!*.srcinfo
+src/
+pkg/
+*~
