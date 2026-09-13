@@ -1,0 +1,14 @@
+pkgbase = opencode-sandbox-git
+	pkgdesc = Run OpenCode inside an isolated Docker sandbox (git master)
+	pkgver = 1.0.0.4.g3a13fdd
+	pkgrel = 1
+	url = https://github.com/Antiquete/opencode-sandbox
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = bash
+	depends = docker
+	source = opencode-sandbox::git+https://github.com/Antiquete/opencode-sandbox.git
+	sha256sums = SKIP
+
+pkgname = opencode-sandbox-git
