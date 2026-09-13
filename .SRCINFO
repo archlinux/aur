@@ -1,10 +1,14 @@
 pkgbase = python-pi-heif
-	pkgdesc = Python interface for libheif library (lightweight version without encoding)
-	pkgver = 1.3.0
+	pkgdesc = Python interface for libheif using the pi-heif namespace
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/bigcat88/pillow_heif
 	arch = x86_64
 	license = BSD-3-Clause
+	checkdepends = python-defusedxml
+	checkdepends = python-numpy
+	checkdepends = python-opencv
+	checkdepends = python-packaging
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
@@ -12,8 +16,8 @@ pkgbase = python-pi-heif
 	makedepends = python-wheel
 	depends = python
 	depends = python-pillow
-	depends = libheif
-	source = python-pi-heif-1.3.0.tar.gz::https://github.com/bigcat88/pillow_heif/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 2e435f773d57c405f4cc07ab3758f849d45eef0cd9ba6dfd55cee5b340507fca
+	depends = libheif>=1.19
+	source = python-pi-heif-1.4.0.tar.gz::https://github.com/bigcat88/pillow_heif/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = 0fe5b31902295029579e7e178fd64bef906dcb3a7c47519714638c2ff50ea4e4
 
 pkgname = python-pi-heif
