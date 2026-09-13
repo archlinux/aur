@@ -1,0 +1,16 @@
+pkgbase = moarchy-pegsolitaire
+	pkgdesc = Peg solitaire for a Linux phone, with a hint that is a proof
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-cairo
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/pegsolitaire-v0.1.0/moarchy-pegsolitaire-0.1.0.tar.gz
+	sha256sums = 202af455d30219226d24d8f4d1427f2887318a16f7c405edcd476738aa93d16d
+
+pkgname = moarchy-pegsolitaire
