@@ -1,0 +1,322 @@
+--- a/app/auth/views/fido.py
++++ b/app/auth/views/fido.py
+@@ -2,7 +2,7 @@ import json
+ import secrets
+ import uuid
+ 
+-import webauthn
++from app.webauthn_utils import authentication_options, verify_authentication
+ from flask import (
+     request,
+     render_template,
+@@ -86,20 +86,9 @@ def fido():
+             fido_key = Fido.get_by(
+                 uuid=user.fido_uuid, credential_id=sk_assertion["id"]
+             )
+-            webauthn_user = webauthn.WebAuthnUser(
+-                user.fido_uuid,
+-                user.email,
+-                user.name if user.name else user.email,
+-                False,
+-                fido_key.credential_id,
+-                fido_key.public_key,
+-                fido_key.sign_count,
+-                RP_ID,
++            new_sign_count = verify_authentication(
++                sk_assertion, fido_key, challenge, RP_ID, URL
+             )
+-            webauthn_assertion_response = webauthn.WebAuthnAssertionResponse(
+-                webauthn_user, sk_assertion, challenge, URL, uv_required=False
+-            )
+-            new_sign_count = webauthn_assertion_response.verify()
+         except Exception as e:
+             LOG.w(f"An error occurred in WebAuthn verification process: {e}")
+             flash("Key verification failed.", "warning")
+@@ -107,7 +96,7 @@ def fido():
+             g.deduct_limit = True
+             auto_activate = False
+         else:
+-            user.fido_sign_count = new_sign_count
++            fido_key.sign_count = new_sign_count
+             Session.commit()
+             del session[MFA_USER_ID]
+ 
+@@ -141,25 +130,7 @@ def fido():
+     session["fido_challenge"] = challenge.rstrip("=")
+ 
+     fidos = Fido.filter_by(uuid=user.fido_uuid).all()
+-    webauthn_users = []
+-    for fido in fidos:
+-        webauthn_users.append(
+-            webauthn.WebAuthnUser(
+-                user.fido_uuid,
+-                user.email,
+-                user.name if user.name else user.email,
+-                False,
+-                fido.credential_id,
+-                fido.public_key,
+-                fido.sign_count,
+-                RP_ID,
+-            )
+-        )
+-
+-    webauthn_assertion_options = webauthn.WebAuthnAssertionOptions(
+-        webauthn_users, challenge
+-    )
+-    webauthn_assertion_options = webauthn_assertion_options.assertion_dict
++    webauthn_assertion_options = authentication_options(fidos, challenge, RP_ID)
+     # Inject stored transports per credential, falling back to removing the field
+     # if none are stored (keys registered before metadata collection).
+     fido_by_credential_id = {fido.credential_id: fido for fido in fidos}
+--- a/app/dashboard/views/enter_admin.py
++++ b/app/dashboard/views/enter_admin.py
+@@ -1,7 +1,7 @@
+ import json
+ import secrets
+ 
+-import webauthn
++from app.webauthn_utils import authentication_options, verify_authentication
+ from flask import render_template, flash, redirect, url_for, session, request
+ from flask_login import login_required, current_user
+ from flask_wtf import FlaskForm
+@@ -78,20 +78,9 @@ def enter_admin():
+             if not fido_key:
+                 raise Exception("Unknown credential")
+ 
+-            webauthn_user = webauthn.WebAuthnUser(
+-                current_user.fido_uuid,
+-                current_user.email,
+-                current_user.name if current_user.name else current_user.email,
+-                False,
+-                fido_key.credential_id,
+-                fido_key.public_key,
+-                fido_key.sign_count,
+-                RP_ID,
++            new_sign_count = verify_authentication(
++                sk_assertion, fido_key, challenge, RP_ID, URL
+             )
+-            webauthn_assertion_response = webauthn.WebAuthnAssertionResponse(
+-                webauthn_user, sk_assertion, challenge, URL, uv_required=False
+-            )
+-            new_sign_count = webauthn_assertion_response.verify()
+         except Exception as e:
+             LOG.w(f"Admin {current_user} FIDO verification failed: %s", e)
+             flash("Key verification failed.", "warning")
+@@ -117,23 +106,9 @@ def enter_admin():
+     session["admin_fido_challenge"] = challenge.rstrip("=")
+ 
+     fidos = Fido.filter_by(uuid=current_user.fido_uuid).all()
+-    webauthn_users = [
+-        webauthn.WebAuthnUser(
+-            current_user.fido_uuid,
+-            current_user.email,
+-            current_user.name if current_user.name else current_user.email,
+-            False,
+-            fido.credential_id,
+-            fido.public_key,
+-            fido.sign_count,
+-            RP_ID,
+-        )
+-        for fido in fidos
+-    ]
+-
+-    webauthn_assertion_options = webauthn.WebAuthnAssertionOptions(
+-        webauthn_users, challenge, userVerification="required"
+-    ).assertion_dict
++    webauthn_assertion_options = authentication_options(
++        fidos, challenge, RP_ID, user_verification="required"
++    )
+     if ADMIN_FIDO_REQUIRED == "hardware":
+         webauthn_assertion_options["extensions"] = {"uvm": True}
+         webauthn_assertion_options["hints"] = ["security-key", "client-device"]
+--- a/app/dashboard/views/fido_setup.py
++++ b/app/dashboard/views/fido_setup.py
+@@ -4,7 +4,8 @@ import struct
+ import uuid
+ 
+ import cbor2
+-import webauthn
++from webauthn.helpers import bytes_to_base64url
++from app.webauthn_utils import registration_options, verify_registration
+ from flask import render_template, flash, redirect, url_for, session
+ from flask_login import login_required, current_user
+ from flask_wtf import FlaskForm
+@@ -71,17 +72,8 @@ def fido_setup():
+         fido_uuid = session["fido_uuid"]
+         challenge = session["fido_challenge"]
+ 
+-        fido_reg_response = webauthn.WebAuthnRegistrationResponse(
+-            RP_ID,
+-            URL,
+-            sk_assertion,
+-            challenge,
+-            trusted_attestation_cert_required=False,
+-            none_attestation_permitted=True,
+-        )
+-
+         try:
+-            fido_credential = fido_reg_response.verify()
++            fido_credential = verify_registration(sk_assertion, challenge, RP_ID, URL)
+         except Exception as e:
+             LOG.w(f"An error occurred in WebAuthn registration process: {e}")
+             flash("Key registration failed.", "warning")
+@@ -93,9 +85,9 @@ def fido_setup():
+ 
+         transports = sk_assertion.get("transports")
+         Fido.create(
+-            credential_id=str(fido_credential.credential_id, "utf-8"),
++            credential_id=bytes_to_base64url(fido_credential.credential_id),
+             uuid=fido_uuid,
+-            public_key=str(fido_credential.public_key, "utf-8"),
++            public_key=bytes_to_base64url(fido_credential.credential_public_key),
+             sign_count=fido_credential.sign_count,
+             name=fido_token_form.key_name.data,
+             user_id=current_user.id,
+@@ -108,7 +100,7 @@ def fido_setup():
+         Session.commit()
+ 
+         LOG.d(
+-            f"credential_id={str(fido_credential.credential_id, 'utf-8')} added for {fido_uuid}"
++            f"credential_id={bytes_to_base64url(fido_credential.credential_id)} added for {fido_uuid}"
+         )
+ 
+         flash("Security key has been activated", "success")
+@@ -123,33 +115,10 @@ def fido_setup():
+     )
+     challenge = secrets.token_urlsafe(32)
+ 
+-    credential_create_options = webauthn.WebAuthnMakeCredentialOptions(
+-        challenge,
+-        "SimpleLogin",
+-        RP_ID,
+-        fido_uuid,
+-        current_user.email,
+-        current_user.name if current_user.name else current_user.email,
+-        False,
+-        attestation="none",
+-        user_verification="discouraged",
++    registration_dict = registration_options(
++        current_user, fido_uuid, fidos, challenge, RP_ID
+     )
+ 
+-    # Don't think this one should be used, but it's not configurable by arguments
+-    # https://www.w3.org/TR/webauthn/#sctn-location-extension
+-    registration_dict = credential_create_options.registration_dict
+-    del registration_dict["extensions"]["webauthn.loc"]
+-
+-    # Prevent user from adding duplicated keys
+-    for fido in fidos:
+-        registration_dict["excludeCredentials"].append(
+-            {
+-                "type": "public-key",
+-                "id": fido.credential_id,
+-                "transports": ["usb", "nfc", "ble", "internal"],
+-            }
+-        )
+-
+     session["fido_uuid"] = fido_uuid
+     session["fido_challenge"] = challenge.rstrip("=")
+ 
+--- /dev/null
++++ b/app/webauthn_utils.py
+@@ -0,0 +1,100 @@
++"""Translate the existing browser payload and stored base64url keys to WebAuthn 3."""
++
++import json
++
++from webauthn import (
++    generate_authentication_options,
++    generate_registration_options,
++    verify_authentication_response,
++    verify_registration_response,
++)
++from webauthn.helpers import base64url_to_bytes, bytes_to_base64url, options_to_json
++from webauthn.helpers.structs import (
++    AuthenticatorSelectionCriteria,
++    PublicKeyCredentialDescriptor,
++    UserVerificationRequirement,
++)
++
++
++def descriptors(fidos):
++    return [
++        PublicKeyCredentialDescriptor(id=base64url_to_bytes(f.credential_id))
++        for f in fidos
++    ]
++
++
++def authentication_options(fidos, challenge, rp_id, user_verification="discouraged"):
++    return json.loads(
++        options_to_json(
++            generate_authentication_options(
++                rp_id=rp_id,
++                challenge=base64url_to_bytes(challenge),
++                allow_credentials=descriptors(fidos),
++                user_verification=UserVerificationRequirement(user_verification),
++            )
++        )
++    )
++
++
++def registration_options(user, user_id, fidos, challenge, rp_id):
++    return json.loads(
++        options_to_json(
++            generate_registration_options(
++                rp_id=rp_id,
++                rp_name="SimpleLogin",
++                user_id=user_id.encode(),
++                user_name=user.email,
++                user_display_name=user.name or user.email,
++                challenge=base64url_to_bytes(challenge),
++                exclude_credentials=descriptors(fidos),
++                authenticator_selection=AuthenticatorSelectionCriteria(
++                    user_verification=UserVerificationRequirement.DISCOURAGED,
++                ),
++            )
++        )
++    )
++
++
++def verify_registration(payload, challenge, rp_id, origin):
++    credential = {
++        "id": payload["id"],
++        "rawId": payload["rawId"],
++        "type": payload["type"],
++        "response": {
++            "clientDataJSON": payload["clientData"],
++            "attestationObject": payload["attObj"],
++        },
++    }
++    return verify_registration_response(
++        credential=credential,
++        expected_challenge=base64url_to_bytes(challenge),
++        expected_rp_id=rp_id,
++        expected_origin=origin,
++        require_user_verification=False,
++    )
++
++
++def verify_authentication(payload, key, challenge, rp_id, origin):
++    if key is None:
++        raise ValueError("Unknown credential")
++    credential = {
++        "id": payload["id"],
++        "rawId": payload["rawId"],
++        "type": payload["type"],
++        "response": {
++            "clientDataJSON": payload["clientData"],
++            "authenticatorData": payload["authData"],
++            # The existing browser helper sends a hexadecimal signature.
++            "signature": bytes_to_base64url(bytes.fromhex(payload["signature"])),
++        },
++    }
++    verification = verify_authentication_response(
++        credential=credential,
++        expected_challenge=base64url_to_bytes(challenge),
++        expected_rp_id=rp_id,
++        expected_origin=origin,
++        credential_public_key=base64url_to_bytes(key.public_key),
++        credential_current_sign_count=key.sign_count,
++        require_user_verification=False,
++    )
++    return verification.new_sign_count

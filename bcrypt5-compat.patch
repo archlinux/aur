@@ -1,0 +1,18 @@
+--- a/app/pw_models.py
++++ b/app/pw_models.py
+@@ -10,12 +10,13 @@ class PasswordOracle:
+ 
+     def set_password(self, password):
+         password = unicodedata.normalize(_NORMALIZATION_FORM, password)
++        # Preserve bcrypt <5 semantics for existing hashes, including UTF-8 passwords.
+         salt = bcrypt.gensalt()
+-        self.password = bcrypt.hashpw(password.encode(), salt).decode()
++        self.password = bcrypt.hashpw(password.encode()[:72], salt).decode()
+ 
+     def check_password(self, password) -> bool:
+         if not self.password:
+             return False
+ 
+         password = unicodedata.normalize(_NORMALIZATION_FORM, password)
+-        return bcrypt.checkpw(password.encode(), self.password.encode())
++        return bcrypt.checkpw(password.encode()[:72], self.password.encode())

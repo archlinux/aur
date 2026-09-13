@@ -1,65 +1,6 @@
---- a/app/models.py
-+++ b/app/models.py
-@@ -61,6 +61,7 @@
- 
- class TSVector(sa.types.TypeDecorator):
-     impl = TSVECTOR
-+    cache_ok = True
- 
- 
- class ModelMixin(object):
-@@ -299,10 +300,11 @@
- 
- class IntEnumType(sa.types.TypeDecorator):
-     impl = sa.Integer
-+    cache_ok = True
- 
-     def __init__(self, enumtype, *args, **kwargs):
-         super().__init__(*args, **kwargs)
--        self._enum_type = enumtype
-+        self.enumtype = enumtype
- 
-     def process_bind_param(self, enum_obj, dialect):
-         if enum_obj is None:
-@@ -312,7 +314,7 @@
-     def process_result_value(self, enum_value, dialect):
-         if enum_value is None:
-             return None
--        return self._enum_type(enum_value)
-+        return self.enumtype(enum_value)
- 
- 
- @dataclasses.dataclass
-@@ -1783,7 +1785,7 @@
-         last_email_log_id UPDATE.
-         """
-         Session.execute(
--            "SELECT id FROM alias WHERE id = :alias_id FOR UPDATE",
-+            text("SELECT id FROM alias WHERE id = :alias_id FOR UPDATE"),
-             {"alias_id": alias_id},
-         )
- 
-@@ -2360,7 +2362,7 @@
-         if "alias_id" in kwargs:
-             sql = "UPDATE alias SET last_email_log_id = :el_id WHERE id = :alias_id"
-             Session.execute(
--                sql, {"el_id": email_log.id, "alias_id": kwargs["alias_id"]}
-+                text(sql), {"el_id": email_log.id, "alias_id": kwargs["alias_id"]}
-             )
-         if commit:
-             Session.commit()
-@@ -4133,7 +4135,7 @@
-                 args["taken_older_than"] = allow_taken_older_than.datetime
-             sql_taken_condition = "({})".format(" OR ".join(taken_condition))
-             sql = f"UPDATE sync_event SET taken_time = :taken_time WHERE id = :sync_event_id AND {sql_taken_condition}"
--            res = Session.execute(sql, args)
-+            res = Session.execute(text(sql), args)
-             Session.commit()
-         except ObjectDeletedError:
-             return False
 --- a/app/api/serializer.py
 +++ b/app/api/serializer.py
-@@ -334,24 +334,22 @@
+@@ -334,24 +334,22 @@ def construct_alias_query(user: User):
      alias_activity_subquery = (
          Session.query(
              Alias.id,
@@ -95,7 +36,7 @@
              ).label("nb_forward"),
 --- a/app/dashboard/views/alias_contact_manager.py
 +++ b/app/dashboard/views/alias_contact_manager.py
-@@ -104,18 +104,16 @@
+@@ -104,18 +104,16 @@ def get_contact_infos(
      sub = (
          Session.query(
              Contact.id,
@@ -122,7 +63,7 @@
                      else_=0,
                  )
              ).label("nb_forward"),
-@@ -166,10 +164,8 @@
+@@ -166,10 +164,8 @@ def get_contact_infos(
          q = q.filter(Contact.id == contact_id)
  
      latest_activity = case(
@@ -135,9 +76,258 @@
          else_=Contact.created_at,
      )
      q = (
+--- a/app/events/event_dispatcher.py
++++ b/app/events/event_dispatcher.py
+@@ -1,3 +1,4 @@
++from sqlalchemy import text
+ from abc import ABC, abstractmethod
+ 
+ import newrelic.agent
+@@ -23,7 +24,7 @@ class Dispatcher(ABC):
+ class PostgresDispatcher(Dispatcher):
+     def send(self, event: bytes):
+         instance = SyncEvent.create(content=event, flush=True)
+-        Session.execute(f"NOTIFY {NOTIFICATION_CHANNEL}, '{instance.id}';")
++        Session.execute(text(f"NOTIFY {NOTIFICATION_CHANNEL}, '{instance.id}';"))
+ 
+     @staticmethod
+     def get():
+--- a/app/models.py
++++ b/app/models.py
+@@ -61,6 +64,7 @@ _PARTNER_SUBSCRIPTION_GRACE_DAYS = 14
+ 
+ class TSVector(sa.types.TypeDecorator):
+     impl = TSVECTOR
++    cache_ok = True
+ 
+ 
+ class ModelMixin(object):
+@@ -299,10 +303,11 @@ class JobPriority(EnumE):
+ 
+ class IntEnumType(sa.types.TypeDecorator):
+     impl = sa.Integer
++    cache_ok = True
+ 
+     def __init__(self, enumtype, *args, **kwargs):
+         super().__init__(*args, **kwargs)
+-        self._enum_type = enumtype
++        self.enumtype = enumtype
+ 
+     def process_bind_param(self, enum_obj, dialect):
+         if enum_obj is None:
+@@ -312,7 +317,7 @@ class IntEnumType(sa.types.TypeDecorator):
+     def process_result_value(self, enum_value, dialect):
+         if enum_value is None:
+             return None
+-        return self._enum_type(enum_value)
++        return self.enumtype(enum_value)
+ 
+ 
+ @dataclasses.dataclass
+@@ -1783,7 +1788,7 @@ class Alias(Base, ModelMixin):
+         last_email_log_id UPDATE.
+         """
+         Session.execute(
+-            "SELECT id FROM alias WHERE id = :alias_id FOR UPDATE",
++            text("SELECT id FROM alias WHERE id = :alias_id FOR UPDATE"),
+             {"alias_id": alias_id},
+         )
+ 
+@@ -2360,7 +2365,7 @@ class EmailLog(Base, ModelMixin):
+         if "alias_id" in kwargs:
+             sql = "UPDATE alias SET last_email_log_id = :el_id WHERE id = :alias_id"
+             Session.execute(
+-                sql, {"el_id": email_log.id, "alias_id": kwargs["alias_id"]}
++                text(sql), {"el_id": email_log.id, "alias_id": kwargs["alias_id"]}
+             )
+         if commit:
+             Session.commit()
+@@ -3418,7 +3423,7 @@ class SLDomain(Base, ModelMixin):
+         sa.ForeignKey(Partner.id, ondelete="cascade"),
+         nullable=True,
+         default=None,
+-        server_default="NULL",
++        server_default=text("NULL"),
+     )
+ 
+     # if enabled, do not show this domain when user creates a custom alias
+@@ -4115,7 +4120,7 @@ class SyncEvent(Base, ModelMixin):
+     __tablename__ = "sync_event"
+     content = sa.Column(sa.LargeBinary, unique=False, nullable=False)
+     taken_time = sa.Column(
+-        ArrowType, default=None, nullable=True, server_default=None, index=True
++        ArrowType, default=None, nullable=True, server_default=None
+     )
+     retry_count = sa.Column(sa.Integer, default=0, nullable=False, server_default="0")
+ 
+@@ -4127,13 +4132,13 @@ class SyncEvent(Base, ModelMixin):
+     def mark_as_taken(self, allow_taken_older_than: Optional[Arrow] = None) -> bool:
+         try:
+             taken_condition = ["taken_time IS NULL"]
+-            args = {"taken_time": arrow.now().datetime, "sync_event_id": self.id}
++            args = {"taken_time": arrow.now().to("UTC").naive, "sync_event_id": self.id}
+             if allow_taken_older_than:
+                 taken_condition.append("taken_time < :taken_older_than")
+-                args["taken_older_than"] = allow_taken_older_than.datetime
++                args["taken_older_than"] = allow_taken_older_than.to("UTC").naive
+             sql_taken_condition = "({})".format(" OR ".join(taken_condition))
+             sql = f"UPDATE sync_event SET taken_time = :taken_time WHERE id = :sync_event_id AND {sql_taken_condition}"
+-            res = Session.execute(sql, args)
++            res = Session.execute(text(sql), args)
+             Session.commit()
+         except ObjectDeletedError:
+             return False
+--- a/commands/alias_partner_set_flag_and_clear_note.py
++++ b/commands/alias_partner_set_flag_and_clear_note.py
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python3
++from sqlalchemy import text
++
+ import argparse
+ import time
+ 
+@@ -28,7 +30,7 @@ updated = 0
+ start_time = time.time()
+ for batch_start in range(alias_id_start, max_alias_id, step):
+     rows_done = Session.execute(
+-        alias_query,
++        text(alias_query),
+         {
+             "start": batch_start,
+             "end": batch_start + step,
+--- a/commands/backfill_email_log.py
++++ b/commands/backfill_email_log.py
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python3
++from sqlalchemy import text
++
+ import argparse
+ import time
+ 
+@@ -27,9 +29,9 @@ alias_query = "UPDATE alias set last_email_log_id = :el_id where id = :alias_id"
+ updated = 0
+ start_time = time.time()
+ for batch_start in range(alias_id_start, max_alias_id, step):
+-    rows = Session.execute(el_query, {"start": batch_start, "end": batch_start + step})
++    rows = Session.execute(text(el_query), {"start": batch_start, "end": batch_start + step})
+     for row in rows:
+-        Session.execute(alias_query, {"alias_id": row[0], "el_id": row[1]})
++        Session.execute(text(alias_query), {"alias_id": row[0], "el_id": row[1]})
+         Session.commit()
+         updated += 1
+     elapsed = time.time() - start_time
+--- a/commands/find_abuser_by_domain.py
++++ b/commands/find_abuser_by_domain.py
+@@ -1,3 +1,5 @@
++from sqlalchemy import text
++
+ import argparse
+ import sys
+ import time
+@@ -61,7 +63,7 @@ else:
+     LOG.i("Users will NOT be marked as abusers")
+ for batch_start in range(user_id_start, max_user_id, step):
+     rows = Session.execute(
+-        sql,
++        text(sql),
+         {
+             "start": batch_start,
+             "end": batch_start + step,
+--- a/commands/mark_aliases_as_partner_created.py
++++ b/commands/mark_aliases_as_partner_created.py
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python3
++from sqlalchemy import text
++
+ import argparse
+ import time
+ 
+@@ -34,7 +36,7 @@ updated = 0
+ start_time = time.time()
+ for batch_start in range(alias_id_start, max_alias_id, step):
+     updated += Session.execute(
+-        sql,
++        text(sql),
+         {
+             "start": batch_start,
+             "end": batch_start + step,
+--- a/commands/recalculate_user_flag_alias_create_from_partner.py
++++ b/commands/recalculate_user_flag_alias_create_from_partner.py
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python3
++from sqlalchemy import text
++
+ import argparse
+ import time
+ 
+@@ -28,7 +30,7 @@ updated = 0
+ start_time = time.time()
+ for batch_start in range(user_id_start, max_user_id, step):
+     rows = Session.execute(
+-        el_query,
++        text(el_query),
+         {
+             "start": batch_start,
+             "end": batch_start + step,
+@@ -38,7 +40,7 @@ for batch_start in range(user_id_start, max_user_id, step):
+     for row in rows:
+         if row[1] > 0:
+             Session.execute(
+-                user_update_query,
++                text(user_update_query),
+                 {"user_id": row[0], "user_flag": User.FLAG_CREATED_ALIAS_FROM_PARTNER},
+             )
+             Session.commit()
+--- a/commands/replace_noreply_in_contacts.py
++++ b/commands/replace_noreply_in_contacts.py
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python3
++from sqlalchemy import text
++
+ import argparse
+ import time
+ 
+@@ -25,7 +27,7 @@ last_id = 0
+ print(f"Replacing contacts with reply_email={_noreply_email}")
+ while True:
+     rows = Session.execute(
+-        el_query, {"last_id": last_id, "reply_email": _noreply_email, "step": step}
++        text(el_query), {"last_id": last_id, "reply_email": _noreply_email, "step": step}
+     )
+     loop_updated = 0
+     for row in rows:
+@@ -42,7 +44,7 @@ while True:
+             f"Replacing contact {contact_id} with {website_email} reply_email for {reply_email}"
+         )
+         Session.execute(
+-            update_query, {"contact_id": row[0], "reply_email": reply_email}
++            text(update_query), {"contact_id": row[0], "reply_email": reply_email}
+         )
+         Session.commit()
+         updated += 1
+--- a/cron.py
++++ b/cron.py
+@@ -108,7 +108,7 @@ def delete_logs():
+ 
+     total_deleted = 0
+     batch_size = 500
+-    Session.execute("set session statement_timeout=30000").rowcount
++    Session.execute(text("set session statement_timeout=30000")).rowcount
+     queries_done = 0
+     cutoff_time = arrow.now().shift(days=-14)
+     rows_to_delete = EmailLog.filter(EmailLog.created_at < cutoff_time).count()
+@@ -1104,7 +1104,7 @@ async def check_hibp():
+ 
+     LOG.d("Getting the list of users to skip")
+     query = "select u.id, count(a.id) from users u, alias a where a.user_id=u.id group by u.id having count(a.id) > :max_alias"
+-    rows = Session.execute(query, {"max_alias": config.HIBP_MAX_ALIAS_CHECK})
++    rows = Session.execute(text(query), {"max_alias": config.HIBP_MAX_ALIAS_CHECK})
+     user_ids = [row[0] for row in rows]
+     LOG.d("Got %d users to skip" % len(user_ids))
+ 
 --- a/job_runner.py
 +++ b/job_runner.py
-@@ -11,7 +11,7 @@
+@@ -11,7 +11,7 @@ import time
  from sqlalchemy.exc import IntegrityError
  from sqlalchemy.orm import Query
  from sqlalchemy.orm.exc import ObjectDeletedError
@@ -146,8 +336,17 @@
  
  from app import config
  from app.constants import JobType
-@@ -360,7 +360,7 @@
-         "taken_before_time": taken_before_time.datetime,
+@@ -353,14 +353,14 @@ def take_job(job: Job, taken_before_time: arrow.Arrow) -> bool:
+           AND (state = :ready_state OR (state=:taken_state AND taken_at < :taken_before_time))
+         """
+     args = {
+-        "taken_time": arrow.now().datetime,
++        "taken_time": arrow.now().to("UTC").naive,
+         "job_id": job.id,
+         "ready_state": JobState.ready.value,
+         "taken_state": JobState.taken.value,
+-        "taken_before_time": taken_before_time.datetime,
++        "taken_before_time": taken_before_time.to("UTC").naive,
      }
      try:
 -        res = Session.execute(sql, args)
@@ -155,3 +354,117 @@
          Session.commit()
      except ObjectDeletedError:
          return False
+--- a/monitoring.py
++++ b/monitoring.py
+@@ -1,3 +1,4 @@
++from sqlalchemy import text
+ import configparser
+ import os
+ import subprocess
+@@ -12,7 +13,6 @@ from app.config import JOB_MAX_ATTEMPTS, JOB_TAKEN_RETRY_WAIT_MINS
+ from app.db import Session
+ from app.log import LOG
+ from job_runner import get_jobs_to_run_query
+-from monitor.metric_exporter import MetricExporter
+ 
+ # the number of consecutive fails
+ # if more than _max_nb_fails, alert
+@@ -90,7 +90,7 @@ def _process_ps_output(proc_names: List[str], data: str) -> Dict[str, int]:
+ @newrelic.agent.background_task()
+ def log_nb_db_connection():
+     # get the number of connections to the DB
+-    r = Session.execute("select count(*) from pg_stat_activity;")
++    r = Session.execute(text("select count(*) from pg_stat_activity;"))
+     nb_connection = list(r)[0][0]
+ 
+     LOG.d("number of db connections %s", nb_connection)
+@@ -101,7 +101,9 @@ def log_nb_db_connection():
+ def log_nb_db_connection_by_app_name():
+     # get the number of connections to the DB
+     rows = Session.execute(
+-        "SELECT application_name, count(datid) FROM pg_stat_activity group by application_name"
++        text(
++            "SELECT application_name, count(datid) FROM pg_stat_activity group by application_name"
++        )
+     )
+     for row in rows:
+         if row[0].find("sl-") == 0:
+@@ -113,7 +115,9 @@ def log_nb_db_connection_by_app_name():
+ 
+ @newrelic.agent.background_task()
+ def log_pending_to_process_events():
+-    r = Session.execute("select count(*) from sync_event WHERE taken_time IS NULL;")
++    r = Session.execute(
++        text("select count(*) from sync_event WHERE taken_time IS NULL;")
++    )
+     events_pending = list(r)[0][0]
+ 
+     LOG.d("number of events pending to process %s", events_pending)
+@@ -124,14 +128,14 @@ def log_pending_to_process_events():
+ 
+ @newrelic.agent.background_task()
+ def log_events_pending_dead_letter():
+-    since = arrow.now().shift(minutes=-10).datetime
++    since = arrow.now().shift(minutes=-10).to("UTC").naive
+     r = Session.execute(
+-        """
++        text("""
+         SELECT COUNT(*)
+         FROM sync_event
+         WHERE (taken_time IS NOT NULL AND taken_time < :since)
+            OR (taken_time IS NULL AND created_at < :since)
+-        """,
++        """),
+         {"since": since},
+     )
+     events_pending = list(r)[0][0]
+@@ -145,11 +149,11 @@ def log_events_pending_dead_letter():
+ @newrelic.agent.background_task()
+ def log_failed_events():
+     r = Session.execute(
+-        """
++        text("""
+         SELECT COUNT(*)
+         FROM sync_event
+         WHERE retry_count >= 10;
+-        """,
++        """),
+     )
+     failed_events = list(r)[0][0]
+ 
+@@ -169,14 +173,14 @@ def log_jobs_to_run():
+ @newrelic.agent.background_task()
+ def log_failed_jobs():
+     r = Session.execute(
+-        """
++        text("""
+         SELECT COUNT(*)
+         FROM job
+         WHERE (
+             state = :error_state
+             OR (state = :taken_state AND attempts >= :max_attempts)
+         )
+-        """,
++        """),
+         {
+             "error_state": JobState.error.value,
+             "taken_state": JobState.taken.value,
+@@ -190,6 +194,8 @@ def log_failed_jobs():
+ 
+ 
+ if __name__ == "__main__":
++    from monitor.metric_exporter import MetricExporter
++
+     exporter = MetricExporter(get_newrelic_license())
+     while True:
+         log_postfix_metrics()
+--- a/tasks/cleanup_expired_oauth_token.py
++++ b/tasks/cleanup_expired_oauth_token.py
+@@ -10,6 +10,6 @@ def cleanup_expired_oauth_tokens(oldest_allowed: arrow.Arrow):
+     sql = text(
+         "DELETE FROM oauth_token WHERE expired IS NOT NULL AND expired < :expire_time"
+     )
+-    res = Session.execute(sql, {"expire_time": oldest_allowed.datetime}).rowcount
++    res = Session.execute(sql, {"expire_time": oldest_allowed.to("UTC").naive}).rowcount
+     LOG.i(f"Deleted {res} expired oauth_token entries")
+     Session.commit()

@@ -1,0 +1,20 @@
+--- a/app/jose_utils.py
++++ b/app/jose_utils.py
+@@ -14,7 +14,7 @@ with open(OPENID_PRIVATE_KEY_PATH, "rb") as f:
+ 
+ 
+ def get_jwk_key() -> dict:
+-    return _key._public_params()
++    return _key.export_public(as_dict=True)
+ 
+ 
+ def make_id_token(
+@@ -52,7 +52,7 @@ def make_id_token(
+     claims = {**claims, **client_user.get_user_info()}
+ 
+     jwt_token = jwt.JWT(
+-        header={"alg": "RS256", "kid": _key._public_params()["kid"]}, claims=claims
++        header={"alg": "RS256", "kid": _key.export_public(as_dict=True)["kid"]}, claims=claims
+     )
+     jwt_token.make_signed_token(_key)
+     return jwt_token.serialize()

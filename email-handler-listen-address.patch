@@ -1,6 +1,6 @@
 --- a/email_handler.py
 +++ b/email_handler.py
-@@ -2474,11 +2474,11 @@
+@@ -2474,11 +2474,11 @@ class MailHandler:
                  return return_status
  
  
@@ -14,7 +14,7 @@
          port=port,
          data_size_limit=config.SMTP_SIZE_LIMIT,
      )
-@@ -2497,10 +2497,13 @@
+@@ -2497,10 +2497,13 @@ def main(port: int):
  
  if __name__ == "__main__":
      parser = argparse.ArgumentParser()

@@ -1,9 +1,36 @@
+--- a/app/regex_utils.py
++++ b/app/regex_utils.py
+@@ -6,16 +6,14 @@ from app.log import LOG
+ 
+ 
+ def regex_match(rule_regex: str, local):
+-    regex = re2.compile(rule_regex)
+     try:
+-        if re2.fullmatch(regex, local):
+-            return True
+-    except TypeError:  # re2 bug "Argument 'pattern' has incorrect type (expected bytes, got PythonRePattern)"
+-        LOG.w("use re instead of re2 for %s %s", rule_regex, local)
++        regex = re2.compile(rule_regex)
++    except re2.error:
++        # pyre2 automatically used Python re for unsupported constructs such as
++        # lookaround. google-re2 raises instead; preserve existing domain rules.
++        LOG.w("use re instead of re2 for %s", rule_regex)
+         regex = re.compile(rule_regex)
+-        if re.fullmatch(regex, local):
+-            return True
+-    return False
++    return regex.fullmatch(local) is not None
+ 
+ 
+ def is_safe_regex_pattern(pattern: str, context: str = "") -> bool:
 --- a/app/spamassassin_utils.py
 +++ b/app/spamassassin_utils.py
-@@ -11,7 +11,7 @@
+@@ -11,7 +11,7 @@ import select
  
  from app.log import LOG
  
 -divider_pattern = re.compile(rb"^(.*?)\r?\n(.*?)\r?\n\r?\n", re.DOTALL)
 +divider_pattern = re.compile(rb"(?s)^(.*?)\r?\n(.*?)\r?\n\r?\n")
  first_line_pattern = re.compile(rb"^SPAMD/[^ ]+ 0 EX_OK$")
+ 
+ 

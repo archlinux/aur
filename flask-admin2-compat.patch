@@ -1,17 +1,629 @@
+--- a/app/admin/base.py
++++ b/app/admin/base.py
+@@ -123,4 +123,4 @@ class SLAdminIndexView(AdminIndexView):
+     @expose("/")
+     def index(self):
+         redirect_destination = _redirect_if_user_is_not_allowed()
+-        return redirect_destination or redirect(url_for("admin.email_search.index"))
++        return redirect_destination or redirect(url_for("email_search.index"))
+--- a/app/admin/custom_domain_search.py
++++ b/app/admin/custom_domain_search.py
+@@ -266,18 +266,18 @@ class CustomDomainSearchAdmin(BaseAdminView):
+ 
+         if not domain_id:
+             flash("Missing domain_id", "error")
+-            return redirect(url_for("admin.custom_domain_search.index"))
++            return redirect(url_for("custom_domain_search.index"))
+ 
+         try:
+             domain_id = int(domain_id)
+         except ValueError:
+             flash("Invalid domain_id", "error")
+-            return redirect(url_for("admin.custom_domain_search.index"))
++            return redirect(url_for("custom_domain_search.index"))
+ 
+         domain: Optional[CustomDomain] = CustomDomain.get(domain_id)
+         if domain is None:
+             flash("Domain not found", "error")
+-            return redirect(url_for("admin.custom_domain_search.index"))
++            return redirect(url_for("custom_domain_search.index"))
+ 
+         domain_name = domain.domain
+ 
+@@ -288,7 +288,7 @@ class CustomDomainSearchAdmin(BaseAdminView):
+                 "error",
+             )
+             return redirect(
+-                url_for("admin.custom_domain_search.index", query=domain_name)
++                url_for("custom_domain_search.index", query=domain_name)
+             )
+ 
+         # Validate deletion prerequisites before proceeding
+@@ -312,4 +312,4 @@ class CustomDomainSearchAdmin(BaseAdminView):
+             f"Admin {current_user.email} scheduled deletion of custom domain {domain_name} (id={domain_id})"
+         )
+         flash(f"Scheduled deletion of custom domain {domain_name}", "success")
+-        return redirect(url_for("admin.custom_domain_search.index", query=domain_name))
++        return redirect(url_for("custom_domain_search.index", query=domain_name))
+--- a/app/admin/email_search.py
++++ b/app/admin/email_search.py
+@@ -726,22 +726,22 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not user_id:
+             flash("Missing user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+         try:
+             user_id = int(user_id)
+         except ValueError:
+             flash("Missing user_id", "error")
+-            return redirect(url_for("admin.email_search.index", query=user_id))
++            return redirect(url_for("email_search.index", query=user_id))
+         user = User.get(user_id)
+         if user is None:
+             flash("User not found", "error")
+-            return redirect(url_for("admin.email_search.index", query=user_id))
++            return redirect(url_for("email_search.index", query=user_id))
+ 
+         # Get partner user to verify confirmation email
+         partner_user = PartnerUser.get_by(user_id=user.id)
+         if partner_user is None:
+             flash("User is not linked to a Proton account", "error")
+-            return redirect(url_for("admin.email_search.index", query=user.email))
++            return redirect(url_for("email_search.index", query=user.email))
+ 
+         # Verify email confirmation matches
+         if confirm_email != partner_user.partner_email:
+@@ -749,7 +749,7 @@ class EmailSearchAdmin(BaseAdminView):
+                 "Email confirmation does not match. User was not unlinked.",
+                 "error",
+             )
+-            return redirect(url_for("admin.email_search.index", query=user.email))
++            return redirect(url_for("email_search.index", query=user.email))
+ 
+         partner_email = partner_user.partner_email
+         external_user_id = perform_proton_account_unlink(user, skip_check=True)
+@@ -771,27 +771,27 @@ class EmailSearchAdmin(BaseAdminView):
+             f"Admin {current_user.email} unlinked user {user.email} (id={user.id}) from Proton account {partner_email}"
+         )
+         flash(f"User unlinked from Proton account {partner_email}", "success")
+-        return redirect(url_for("admin.email_search.index", query=user.email))
++        return redirect(url_for("email_search.index", query=user.email))
+ 
+     @expose("/stop_user_deletion", methods=["POST"])
+     def stop_user_deletion(self):
+         user_id = request.form.get("user_id")
+         if not user_id:
+             flash("Missing user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+         try:
+             user_id = int(user_id)
+         except ValueError:
+             flash("Invalid user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+         user = User.get(user_id)
+         if user is None:
+             flash("User not found", "error")
+-            return redirect(url_for("admin.email_search.index", query=user_id))
++            return redirect(url_for("email_search.index", query=user_id))
+ 
+         if user.delete_on is None:
+             flash("User is not scheduled for deletion", "warning")
+-            return redirect(url_for("admin.email_search.index", query=user.email))
++            return redirect(url_for("email_search.index", query=user.email))
+ 
+         user.delete_on = None
+         AdminAuditLog.clear_delete_on(current_user.id, user.id)
+@@ -801,7 +801,7 @@ class EmailSearchAdmin(BaseAdminView):
+             f"Admin {current_user.email} cancelled scheduled deletion for user {user.email} (id={user.id})"
+         )
+         flash(f"Cancelled scheduled deletion for user {user.email}", "success")
+-        return redirect(url_for("admin.email_search.index", query=user.email))
++        return redirect(url_for("email_search.index", query=user.email))
+ 
+     @expose("/update_subdomain_quota", methods=["POST"])
+     def update_subdomain_quota(self):
+@@ -810,26 +810,26 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not user_id:
+             flash("Missing user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+         if not new_quota:
+             flash("Missing subdomain quota value", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         try:
+             user_id = int(user_id)
+             new_quota = int(new_quota)
+         except ValueError:
+             flash("Invalid user_id or quota value", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         if new_quota < 0:
+             flash("Subdomain quota cannot be negative", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         user = User.get(user_id)
+         if user is None:
+             flash("User not found", "error")
+-            return redirect(url_for("admin.email_search.index", query=user_id))
++            return redirect(url_for("email_search.index", query=user_id))
+ 
+         old_quota = user._subdomain_quota
+         user._subdomain_quota = new_quota
+@@ -845,7 +845,7 @@ class EmailSearchAdmin(BaseAdminView):
+             f"Updated subdomain quota for user {user.email} from {old_quota} to {new_quota}",
+             "success",
+         )
+-        return redirect(url_for("admin.email_search.index", query=user.email))
++        return redirect(url_for("email_search.index", query=user.email))
+ 
+     @expose("/update_directory_quota", methods=["POST"])
+     def update_directory_quota(self):
+@@ -854,26 +854,26 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not user_id:
+             flash("Missing user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+         if not new_quota:
+             flash("Missing directory quota value", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         try:
+             user_id = int(user_id)
+             new_quota = int(new_quota)
+         except ValueError:
+             flash("Invalid user_id or quota value", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         if new_quota < 0:
+             flash("Directory quota cannot be negative", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         user = User.get(user_id)
+         if user is None:
+             flash("User not found", "error")
+-            return redirect(url_for("admin.email_search.index", query=user_id))
++            return redirect(url_for("email_search.index", query=user_id))
+ 
+         old_quota = user._directory_quota
+         user._directory_quota = new_quota
+@@ -889,7 +889,7 @@ class EmailSearchAdmin(BaseAdminView):
+             f"Updated directory quota for user {user.email} from {old_quota} to {new_quota}",
+             "success",
+         )
+-        return redirect(url_for("admin.email_search.index", query=user.email))
++        return redirect(url_for("email_search.index", query=user.email))
+ 
+     @expose("/mark_abuser", methods=["POST"])
+     def mark_abuser(self):
+@@ -900,25 +900,25 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not user_id:
+             flash("Missing user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+         if not note:
+             flash("Note is required when marking a user as abuser", "error")
+-            return redirect(url_for("admin.email_search.index", query=user_id))
++            return redirect(url_for("email_search.index", query=user_id))
+ 
+         try:
+             user_id = int(user_id)
+         except ValueError:
+             flash("Invalid user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         user = User.get(user_id)
+         if user is None:
+             flash("User not found", "error")
+-            return redirect(url_for("admin.email_search.index", query=user_id))
++            return redirect(url_for("email_search.index", query=user_id))
+ 
+         if user.disabled:
+             flash(f"User {user.email} is already disabled/marked as abuser", "warning")
+-            return redirect(url_for("admin.email_search.index", query=user.email))
++            return redirect(url_for("email_search.index", query=user.email))
+ 
+         mark_user_as_abuser(user, note, admin_id=current_user.id)
+ 
+@@ -926,7 +926,7 @@ class EmailSearchAdmin(BaseAdminView):
+             f"Admin {current_user.email} marked user {user.email} (id={user.id}) as abuser"
+         )
+         flash(f"Marked user {user.email} as abuser", "success")
+-        return redirect(url_for("admin.email_search.index", query=user.email))
++        return redirect(url_for("email_search.index", query=user.email))
+ 
+     @expose("/unmark_abuser", methods=["POST"])
+     def unmark_abuser(self):
+@@ -937,25 +937,25 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not user_id:
+             flash("Missing user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+         if not note:
+             flash("Note is required when unmarking a user as abuser", "error")
+-            return redirect(url_for("admin.email_search.index", query=user_id))
++            return redirect(url_for("email_search.index", query=user_id))
+ 
+         try:
+             user_id = int(user_id)
+         except ValueError:
+             flash("Invalid user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         user = User.get(user_id)
+         if user is None:
+             flash("User not found", "error")
+-            return redirect(url_for("admin.email_search.index", query=user_id))
++            return redirect(url_for("email_search.index", query=user_id))
+ 
+         if not user.disabled:
+             flash(f"User {user.email} is not disabled/marked as abuser", "warning")
+-            return redirect(url_for("admin.email_search.index", query=user.email))
++            return redirect(url_for("email_search.index", query=user.email))
+ 
+         unmark_as_abusive_user(user.id, note, admin_id=current_user.id)
+ 
+@@ -963,7 +963,7 @@ class EmailSearchAdmin(BaseAdminView):
+             f"Admin {current_user.email} unmarked user {user.email} (id={user.id}) as abuser"
+         )
+         flash(f"Unmarked user {user.email} as abuser", "success")
+-        return redirect(url_for("admin.email_search.index", query=user.email))
++        return redirect(url_for("email_search.index", query=user.email))
+ 
+     @expose("/disable_2fa", methods=["POST"])
+     def disable_2fa(self):
+@@ -971,25 +971,25 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not user_id:
+             flash("Missing user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         try:
+             user_id = int(user_id)
+         except ValueError:
+             flash("Invalid user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         user = User.get(user_id)
+         if user is None:
+             flash("User not found", "error")
+-            return redirect(url_for("admin.email_search.index", query=user_id))
++            return redirect(url_for("email_search.index", query=user_id))
+ 
+         had_totp = user.enable_otp
+         had_fido = bool(user.fido_uuid)
+ 
+         if not had_totp and not had_fido:
+             flash(f"User {user.email} does not have 2FA enabled", "warning")
+-            return redirect(url_for("admin.email_search.index", query=user.email))
++            return redirect(url_for("email_search.index", query=user.email))
+ 
+         # Disable TOTP
+         if had_totp:
+@@ -1024,7 +1024,7 @@ class EmailSearchAdmin(BaseAdminView):
+             f"Disabled 2FA ({', '.join(disabled_methods)}) for user {user.email}",
+             "success",
+         )
+-        return redirect(url_for("admin.email_search.index", query=user.email))
++        return redirect(url_for("email_search.index", query=user.email))
+ 
+     @expose("/delete_user", methods=["POST"])
+     def delete_user(self):
+@@ -1033,18 +1033,18 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not user_id:
+             flash("Missing user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         try:
+             user_id = int(user_id)
+         except ValueError:
+             flash("Invalid user_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         user = User.get(user_id)
+         if user is None:
+             flash("User not found", "error")
+-            return redirect(url_for("admin.email_search.index", query=user_id))
++            return redirect(url_for("email_search.index", query=user_id))
+ 
+         # Verify email confirmation matches
+         if confirm_email != user.email:
+@@ -1052,12 +1052,12 @@ class EmailSearchAdmin(BaseAdminView):
+                 "Email confirmation does not match. User was not deleted.",
+                 "error",
+             )
+-            return redirect(url_for("admin.email_search.index", query=user.email))
++            return redirect(url_for("email_search.index", query=user.email))
+ 
+         # Prevent deleting admin users
+         if user.is_admin:
+             flash("Cannot delete admin users", "error")
+-            return redirect(url_for("admin.email_search.index", query=user.email))
++            return redirect(url_for("email_search.index", query=user.email))
+ 
+         user_email = user.email
+ 
+@@ -1078,7 +1078,7 @@ class EmailSearchAdmin(BaseAdminView):
+             f"Admin {current_user.email} permanently deleted user {user_email} (id={user_id})"
+         )
+         flash(f"User {user_email} has been permanently deleted", "success")
+-        return redirect(url_for("admin.email_search.index"))
++        return redirect(url_for("email_search.index"))
+ 
+     @expose("/toggle_alias_status", methods=["POST"])
+     def toggle_alias_status(self):
+@@ -1087,24 +1087,24 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not alias_id:
+             flash("Missing alias_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         try:
+             alias_id = int(alias_id)
+         except ValueError:
+             flash("Invalid alias_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         alias = Alias.get(alias_id)
+         if alias is None:
+             flash("Alias not found", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         if not note:
+             flash("A note is required.", "error")
+             return redirect(
+                 url_for(
+-                    "admin.email_search.index", query=alias.email, search_type="alias"
++                    "email_search.index", query=alias.email, search_type="alias"
+                 )
+             )
+ 
+@@ -1141,7 +1141,7 @@ class EmailSearchAdmin(BaseAdminView):
+         )
+         flash(f"Alias {alias.email} has been {action_label}", "success")
+         return redirect(
+-            url_for("admin.email_search.index", query=alias.email, search_type="alias")
++            url_for("email_search.index", query=alias.email, search_type="alias")
+         )
+ 
+     @expose("/delete_alias", methods=["POST"])
+@@ -1152,24 +1152,24 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not alias_id:
+             flash("Missing alias_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         try:
+             alias_id = int(alias_id)
+         except ValueError:
+             flash("Invalid alias_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         alias = Alias.get(alias_id)
+         if alias is None:
+             flash("Alias not found", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         if confirm_email != alias.email:
+             flash("Email confirmation does not match. Alias was not deleted.", "error")
+             return redirect(
+                 url_for(
+-                    "admin.email_search.index", query=alias.email, search_type="alias"
++                    "email_search.index", query=alias.email, search_type="alias"
+                 )
+             )
+ 
+@@ -1180,7 +1180,7 @@ class EmailSearchAdmin(BaseAdminView):
+             flash("Alias has no associated user and cannot be deleted.", "error")
+             return redirect(
+                 url_for(
+-                    "admin.email_search.index", query=alias_email, search_type="alias"
++                    "email_search.index", query=alias_email, search_type="alias"
+                 )
+             )
+ 
+@@ -1209,10 +1209,10 @@ class EmailSearchAdmin(BaseAdminView):
+         if user_email:
+             return redirect(
+                 url_for(
+-                    "admin.email_search.index", query=user_email, search_type="email"
++                    "email_search.index", query=user_email, search_type="email"
+                 )
+             )
+-        return redirect(url_for("admin.email_search.index"))
++        return redirect(url_for("email_search.index"))
+ 
+     @expose("/send_mailbox_disable_warning", methods=["POST"])
+     def send_mailbox_disable_warning(self):
+@@ -1222,25 +1222,25 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not mailbox_id:
+             flash("Missing mailbox_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         try:
+             mailbox_id = int(mailbox_id)
+         except ValueError:
+             flash("Invalid mailbox_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         mailbox = Mailbox.get(mailbox_id)
+         if not mailbox:
+             flash("Mailbox not found", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         note = request.form.get("note", "").strip()
+         if not note:
+             flash("Note is required", "error")
+             return redirect(
+                 url_for(
+-                    "admin.email_search.index", query=mailbox.email, search_type="email"
++                    "email_search.index", query=mailbox.email, search_type="email"
+                 )
+             )
+ 
+@@ -1253,7 +1253,7 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         return redirect(
+             url_for(
+-                "admin.email_search.index", query=mailbox.email, search_type="email"
++                "email_search.index", query=mailbox.email, search_type="email"
+             )
+         )
+ 
+@@ -1265,18 +1265,18 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not mailbox_id:
+             flash("Missing mailbox_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         try:
+             mailbox_id = int(mailbox_id)
+         except ValueError:
+             flash("Invalid mailbox_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         mailbox = Mailbox.get(mailbox_id)
+         if not mailbox:
+             flash("Mailbox not found", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         if mailbox.is_admin_disabled():
+             flash(f"Mailbox {mailbox.email} is already admin-disabled", "warning")
+@@ -1294,7 +1294,7 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         return redirect(
+             url_for(
+-                "admin.email_search.index", query=mailbox.email, search_type="email"
++                "email_search.index", query=mailbox.email, search_type="email"
+             )
+         )
+ 
+@@ -1306,18 +1306,18 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not mailbox_id:
+             flash("Missing mailbox_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         try:
+             mailbox_id = int(mailbox_id)
+         except ValueError:
+             flash("Invalid mailbox_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         mailbox = Mailbox.get(mailbox_id)
+         if not mailbox:
+             flash("Mailbox not found", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         if not mailbox.is_admin_disabled():
+             flash(f"Mailbox {mailbox.email} is not admin-disabled", "warning")
+@@ -1335,7 +1335,7 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         return redirect(
+             url_for(
+-                "admin.email_search.index", query=mailbox.email, search_type="email"
++                "email_search.index", query=mailbox.email, search_type="email"
+             )
+         )
+ 
+@@ -1345,24 +1345,24 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         if not mailbox_id:
+             flash("Missing mailbox_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         try:
+             mailbox_id = int(mailbox_id)
+         except ValueError:
+             flash("Invalid mailbox_id", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         mailbox = Mailbox.get(mailbox_id)
+         if not mailbox:
+             flash("Mailbox not found", "error")
+-            return redirect(url_for("admin.email_search.index"))
++            return redirect(url_for("email_search.index"))
+ 
+         if not mailbox.verified:
+             flash(f"Cannot set unverified mailbox {mailbox.email} as default", "error")
+             return redirect(
+                 url_for(
+-                    "admin.email_search.index", query=mailbox.email, search_type="email"
++                    "email_search.index", query=mailbox.email, search_type="email"
+                 )
+             )
+ 
+@@ -1372,7 +1372,7 @@ class EmailSearchAdmin(BaseAdminView):
+             )
+             return redirect(
+                 url_for(
+-                    "admin.email_search.index", query=mailbox.email, search_type="email"
++                    "email_search.index", query=mailbox.email, search_type="email"
+                 )
+             )
+ 
+@@ -1405,6 +1405,6 @@ class EmailSearchAdmin(BaseAdminView):
+ 
+         return redirect(
+             url_for(
+-                "admin.email_search.index", query=mailbox.email, search_type="email"
++                "email_search.index", query=mailbox.email, search_type="email"
+             )
+         )
 --- a/app/admin/index.py
 +++ b/app/admin/index.py
-@@ -1,5 +1,6 @@
+@@ -1,5 +1,7 @@
  from flask import Flask
  from flask_admin import Admin
++from flask_babel import Babel
 +from flask_admin.theme import Bootstrap4Theme
  
  from app.db import Session
  from app.models import (
-@@ -38,19 +39,19 @@
+@@ -38,19 +40,20 @@ from app.admin.domain_check import DomainCheckAdmin
  
  
  def init_admin(app: Flask):
 -    admin = Admin(name="SimpleLogin", template_mode="bootstrap4")
++    Babel(app)
 +    admin = Admin(name="SimpleLogin", theme=Bootstrap4Theme())
  
      admin.init_app(app, index_view=SLAdminIndexView())
@@ -32,3 +644,288 @@
      admin.add_view(UserAdmin(User, Session))
      admin.add_view(AliasAdmin(Alias, Session))
      admin.add_view(MailboxAdmin(Mailbox, Session))
+--- a/templates/admin/custom_domain_search.html
++++ b/templates/admin/custom_domain_search.html
+@@ -445,7 +445,7 @@
+         <div class="col-lg-3 col-md-6 col-sm-12 mb-2 mb-lg-0">
+           <small class="text-muted">User</small>
+           <div>
+-            <a href="{{ url_for('admin.email_search.index', query=user.email, search_type='email') }}">
++            <a href="{{ url_for('email_search.index', query=user.email, search_type='email') }}">
+               <strong>{{ user.email }}</strong>
+             </a>
+           </div>
+@@ -818,7 +818,7 @@
+                             <code>{{ alias.id }}</code>
+                           </td>
+                           <td>
+-                            <a href="{{ url_for('admin.email_search.index', query=alias.email, search_type='alias') }}">{{ alias.email }}</a>
++                            <a href="{{ url_for('email_search.index', query=alias.email, search_type='alias') }}">{{ alias.email }}</a>
+                           </td>
+                           <td>{{ badge_status(alias.enabled, 'Yes', 'No', 'success', 'danger') }}</td>
+                           <td class="text-nowrap">{{ alias.created_at.strftime("%Y-%m-%d %H:%M") }}</td>
+@@ -834,7 +834,7 @@
+                     <ul class="pagination mb-0 justify-content-end small">
+                       {% if alias_page > 1 %}
+                       <li class="page-item">
+-                        <a class="page-link" href="{{ url_for('admin.custom_domain_search.index', query=query, **{'alias_page_' ~ domain.id: alias_page - 1}) }}">
++                        <a class="page-link" href="{{ url_for('custom_domain_search.index', query=query, **{'alias_page_' ~ domain.id: alias_page - 1}) }}">
+                           <i class="fa fa-chevron-left"></i> Previous
+                         </a>
+                       </li>
+@@ -848,7 +848,7 @@
+                       {% set end_page = (alias_page + 3) if alias_page + 3 < total_pages else total_pages %}
+                       {% for page_num in range(start_page, end_page) %}
+                       <li class="page-item {% if page_num == alias_page %}active{% endif %}">
+-                        <a class="page-link" href="{{ url_for('admin.custom_domain_search.index', query=query, **{'alias_page_' ~ domain.id: page_num}) }}">
++                        <a class="page-link" href="{{ url_for('custom_domain_search.index', query=query, **{'alias_page_' ~ domain.id: page_num}) }}">
+                           {{ page_num }}
+                         </a>
+                       </li>
+@@ -856,7 +856,7 @@
+ 
+                       {% if alias_page < total_pages %}
+                       <li class="page-item">
+-                        <a class="page-link" href="{{ url_for('admin.custom_domain_search.index', query=query, **{'alias_page_' ~ domain.id: alias_page + 1}) }}">
++                        <a class="page-link" href="{{ url_for('custom_domain_search.index', query=query, **{'alias_page_' ~ domain.id: alias_page + 1}) }}">
+                           Next <i class="fa fa-chevron-right"></i>
+                         </a>
+                       </li>
+@@ -924,7 +924,7 @@
+                     <ul class="pagination mb-0 justify-content-end small">
+                       {% if deleted_alias_page > 1 %}
+                       <li class="page-item">
+-                        <a class="page-link" href="{{ url_for('admin.custom_domain_search.index', query=query, **{'deleted_alias_page_' ~ domain.id: deleted_alias_page - 1}) }}">
++                        <a class="page-link" href="{{ url_for('custom_domain_search.index', query=query, **{'deleted_alias_page_' ~ domain.id: deleted_alias_page - 1}) }}">
+                           <i class="fa fa-chevron-left"></i> Previous
+                         </a>
+                       </li>
+@@ -938,7 +938,7 @@
+                       {% set end_deleted_page = (deleted_alias_page + 3) if deleted_alias_page + 3 < total_deleted_pages else total_deleted_pages %}
+                       {% for page_num in range(start_deleted_page, end_deleted_page) %}
+                       <li class="page-item {% if page_num == deleted_alias_page %}active{% endif %}">
+-                        <a class="page-link" href="{{ url_for('admin.custom_domain_search.index', query=query, **{'deleted_alias_page_' ~ domain.id: page_num}) }}">
++                        <a class="page-link" href="{{ url_for('custom_domain_search.index', query=query, **{'deleted_alias_page_' ~ domain.id: page_num}) }}">
+                           {{ page_num }}
+                         </a>
+                       </li>
+@@ -946,7 +946,7 @@
+ 
+                       {% if deleted_alias_page < total_deleted_pages %}
+                       <li class="page-item">
+-                        <a class="page-link" href="{{ url_for('admin.custom_domain_search.index', query=query, **{'deleted_alias_page_' ~ domain.id: deleted_alias_page + 1}) }}">
++                        <a class="page-link" href="{{ url_for('custom_domain_search.index', query=query, **{'deleted_alias_page_' ~ domain.id: deleted_alias_page + 1}) }}">
+                           Next <i class="fa fa-chevron-right"></i>
+                         </a>
+                       </li>
+@@ -992,7 +992,7 @@
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+-          <form action="{{ url_for('admin.custom_domain_search.delete_custom_domain') }}"
++          <form action="{{ url_for('custom_domain_search.delete_custom_domain') }}"
+                 method="POST"
+                 id="deleteDomainForm{{ domain.id }}">
+             <div class="modal-body">
+--- a/templates/admin/email_search.html
++++ b/templates/admin/email_search.html
+@@ -271,7 +271,7 @@
+             {% endif %}
+             {% if user.enable_otp or user.fido_uuid %}
+ 
+-              <form action="{{ url_for('admin.email_search.disable_2fa') }}"
++              <form action="{{ url_for('email_search.disable_2fa') }}"
+                     method="POST"
+                     class="mb-2">
+                 <input type="hidden" name="user_id" value="{{ user.id }}">
+@@ -292,7 +292,7 @@
+             {% endif %}
+             {% if user.delete_on %}
+ 
+-              <form action="{{ url_for('admin.email_search.stop_user_deletion') }}"
++              <form action="{{ url_for('email_search.stop_user_deletion') }}"
+                     method="POST"
+                     class="mb-2">
+                 <input type="hidden" name="user_id" value="{{ user.id }}">
+@@ -387,7 +387,7 @@
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+-        <form action="{{ url_for('admin.email_search.mark_abuser') }}"
++        <form action="{{ url_for('email_search.mark_abuser') }}"
+               method="POST">
+           <div class="modal-body">
+             <input type="hidden" name="user_id" value="{{ user.id }}">
+@@ -435,7 +435,7 @@
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+-        <form action="{{ url_for('admin.email_search.unmark_abuser') }}"
++        <form action="{{ url_for('email_search.unmark_abuser') }}"
+               method="POST">
+           <div class="modal-body">
+             <input type="hidden" name="user_id" value="{{ user.id }}">
+@@ -484,7 +484,7 @@
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+-          <form action="{{ url_for('admin.email_search.delete_partner_link') }}"
++          <form action="{{ url_for('email_search.delete_partner_link') }}"
+                 method="POST"
+                 id="unlinkProtonForm{{ user.id }}">
+             <div class="modal-body">
+@@ -554,7 +554,7 @@
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+-        <form action="{{ url_for('admin.email_search.delete_user') }}"
++        <form action="{{ url_for('email_search.delete_user') }}"
+               method="POST"
+               id="deleteUserForm{{ user.id }}">
+           <div class="modal-body">
+@@ -622,7 +622,7 @@
+             <span>&times;</span>
+           </button>
+         </div>
+-        <form action="{{ url_for('admin.email_search.update_subdomain_quota') }}"
++        <form action="{{ url_for('email_search.update_subdomain_quota') }}"
+               method="POST"
+               id="subdomainQuotaForm{{ user.id }}">
+           <div class="modal-body">
+@@ -658,7 +658,7 @@
+             <span>&times;</span>
+           </button>
+         </div>
+-        <form action="{{ url_for('admin.email_search.update_directory_quota') }}"
++        <form action="{{ url_for('email_search.update_directory_quota') }}"
+               method="POST"
+               id="directoryQuotaForm{{ user.id }}">
+           <div class="modal-body">
+@@ -739,7 +739,7 @@
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+-          <form action="{{ url_for('admin.email_search.toggle_alias_status') }}"
++          <form action="{{ url_for('email_search.toggle_alias_status') }}"
+                 method="POST"
+                 id="disableAliasForm{{ alias.id }}">
+             <div class="modal-body">
+@@ -802,7 +802,7 @@
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+-          <form action="{{ url_for('admin.email_search.toggle_alias_status') }}"
++          <form action="{{ url_for('email_search.toggle_alias_status') }}"
+                 method="POST"
+                 id="enableAliasForm{{ alias.id }}">
+             <div class="modal-body">
+@@ -864,7 +864,7 @@
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+-        <form action="{{ url_for('admin.email_search.delete_alias') }}"
++        <form action="{{ url_for('email_search.delete_alias') }}"
+               method="POST"
+               id="deleteAliasForm{{ alias.id }}">
+           <div class="modal-body">
+@@ -1037,7 +1037,7 @@
+     <div class="card-body">
+       <div class="row">
+         <div class="col-md-6 mb-3">
+-          <form action="{{ url_for('admin.email_search.update_subdomain_quota') }}"
++          <form action="{{ url_for('email_search.update_subdomain_quota') }}"
+                 method="POST">
+             <input type="hidden" name="user_id" value="{{ user.id }}">
+             <label class="font-weight-bold">Subdomain Quota</label>
+@@ -1060,7 +1060,7 @@
+           </form>
+         </div>
+         <div class="col-md-6 mb-3">
+-          <form action="{{ url_for('admin.email_search.update_directory_quota') }}"
++          <form action="{{ url_for('email_search.update_directory_quota') }}"
+                 method="POST">
+             <input type="hidden" name="user_id" value="{{ user.id }}">
+             <label class="font-weight-bold">Directory Quota</label>
+@@ -1216,7 +1216,7 @@
+                           <span aria-hidden="true">&times;</span>
+                         </button>
+                       </div>
+-                      <form action="{{ url_for('admin.email_search.set_default_mailbox') }}"
++                      <form action="{{ url_for('email_search.set_default_mailbox') }}"
+                             method="POST">
+                         <div class="modal-body">
+                           <input type="hidden" name="mailbox_id" value="{{ mailbox.id }}">
+@@ -1260,7 +1260,7 @@
+                           <span aria-hidden="true">&times;</span>
+                         </button>
+                       </div>
+-                      <form action="{{ url_for('admin.email_search.admin_reenable_mailbox') }}"
++                      <form action="{{ url_for('email_search.admin_reenable_mailbox') }}"
+                             method="POST">
+                         <div class="modal-body">
+                           <input type="hidden" name="mailbox_id" value="{{ mailbox.id }}">
+@@ -1311,7 +1311,7 @@
+                           <span aria-hidden="true">&times;</span>
+                         </button>
+                       </div>
+-                      <form action="{{ url_for('admin.email_search.send_mailbox_disable_warning') }}"
++                      <form action="{{ url_for('email_search.send_mailbox_disable_warning') }}"
+                             method="POST">
+                         <div class="modal-body">
+                           <input type="hidden" name="mailbox_id" value="{{ mailbox.id }}">
+@@ -1360,7 +1360,7 @@
+                           <span aria-hidden="true">&times;</span>
+                         </button>
+                       </div>
+-                      <form action="{{ url_for('admin.email_search.admin_disable_mailbox') }}"
++                      <form action="{{ url_for('email_search.admin_disable_mailbox') }}"
+                             method="POST">
+                         <div class="modal-body">
+                           <input type="hidden" name="mailbox_id" value="{{ mailbox.id }}">
+@@ -1794,7 +1794,7 @@
+                     <code>{{ domain.id }}</code>
+                   </td>
+                   <td>
+-                    <a href="{{ url_for('admin.custom_domain_search.index', query=domain.domain) }}">{{ domain.domain }}</a>{{ copy_btn(domain.domain) }}
++                    <a href="{{ url_for('custom_domain_search.index', query=domain.domain) }}">{{ domain.domain }}</a>{{ copy_btn(domain.domain) }}
+                   </td>
+                   <td>
+                     {% if domain.verified and domain.ownership_verified %}
+--- a/templates/admin/mailbox_domain_search.html
++++ b/templates/admin/mailbox_domain_search.html
+@@ -25,7 +25,7 @@
+       <tr>
+         <td>{{ user.id }}</td>
+         <td>
+-          <a href="{{ url_for('admin.email_search.index', query=user.email) }}">{{ user.email }}</a>
++          <a href="{{ url_for('email_search.index', query=user.email) }}">{{ user.email }}</a>
+         </td>
+         {% if user.activated %}
+ 
+@@ -65,7 +65,7 @@
+         <td>{{ user.updated_at }}</td>
+         <td>
+           <form class="d-inline"
+-                action="{{ url_for('admin.email_search.update_subdomain_quota') }}"
++                action="{{ url_for('email_search.update_subdomain_quota') }}"
+                 method="POST">
+             <input type="hidden" name="user_id" value="{{ user.id }}">
+             <div class="input-group input-group-sm" style="max-width: 120px;">
+@@ -89,7 +89,7 @@
+           <td class="flex">
+             <a href="?query={{ pu.partner_email }}">{{ pu.partner_email }}</a>
+             <form class="d-inline"
+-                  action="{{ url_for('admin.email_search.delete_partner_link') }}"
++                  action="{{ url_for('email_search.delete_partner_link') }}"
+                   method="POST">
+               <input type="hidden" name="user_id" value="{{ user.id }}">
+               <button type="submit"
+@@ -104,7 +104,7 @@
+ 
+           <td>
+             <form class="d-inline"
+-                  action="{{ url_for('admin.email_search.stop_user_deletion') }}"
++                  action="{{ url_for('email_search.stop_user_deletion') }}"
+                   method="POST">
+               <input type="hidden" name="user_id" value="{{ user.id }}">
+               <button type="submit"

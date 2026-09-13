@@ -1,6 +1,6 @@
 --- a/simplelogin_app.py
 +++ b/simplelogin_app.py
-@@ -438,7 +438,7 @@
+@@ -438,7 +438,7 @@ def create_simplelogin_app():
          app.config["SESSION_COOKIE_SECURE"] = True
      app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
      if config.MEM_STORE_URI:

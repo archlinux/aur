@@ -1,0 +1,843 @@
+--- a/tests/admin/test_custom_domain_search.py
++++ b/tests/admin/test_custom_domain_search.py
+@@ -62,7 +62,7 @@ def test_custom_domain_search_page_loads(flask_client):
+     """Test that the custom domain search page loads without errors."""
+     login_admin(flask_client)
+ 
+-    r = flask_client.get(url_for("admin.custom_domain_search.index"))
++    r = flask_client.get(url_for("custom_domain_search.index"))
+     assert r.status_code == 200
+     assert b"Custom Domain Search" in r.data
+ 
+@@ -71,7 +71,7 @@ def test_custom_domain_search_empty_query(flask_client):
+     """Test that empty query shows the search form."""
+     login_admin(flask_client)
+ 
+-    r = flask_client.get(url_for("admin.custom_domain_search.index"))
++    r = flask_client.get(url_for("custom_domain_search.index"))
+     assert r.status_code == 200
+     assert b"Search Query" in r.data
+ 
+@@ -92,7 +92,7 @@ def test_custom_domain_search_by_domain_name(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.custom_domain_search.index"),
++        url_for("custom_domain_search.index"),
+         query_string={"query": domain.domain},
+     )
+     assert r.status_code == 200
+@@ -114,7 +114,7 @@ def test_custom_domain_search_by_user_email(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.custom_domain_search.index"),
++        url_for("custom_domain_search.index"),
+         query_string={"query": test_user.email},
+     )
+     assert r.status_code == 200
+@@ -131,7 +131,7 @@ def test_custom_domain_search_by_domain_id(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.custom_domain_search.index"),
++        url_for("custom_domain_search.index"),
+         query_string={"query": str(domain.id)},
+     )
+     assert r.status_code == 200
+@@ -148,7 +148,7 @@ def test_custom_domain_search_by_user_id(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.custom_domain_search.index"),
++        url_for("custom_domain_search.index"),
+         query_string={"query": f"uid:{test_user.id}"},
+     )
+     assert r.status_code == 200
+@@ -168,7 +168,7 @@ def test_custom_domain_search_by_regex(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.custom_domain_search.index"),
++        url_for("custom_domain_search.index"),
+         query_string={"query": f"{unique_prefix}-.*\\.com"},
+     )
+     assert r.status_code == 200
+@@ -181,7 +181,7 @@ def test_custom_domain_search_no_results(flask_client):
+     login_admin(flask_client)
+ 
+     r = flask_client.get(
+-        url_for("admin.custom_domain_search.index"),
++        url_for("custom_domain_search.index"),
+         query_string={"query": "nonexistent-domain-xyz.com"},
+     )
+     assert r.status_code == 200
+@@ -202,7 +202,7 @@ def test_custom_domain_shows_user_link_to_email_search(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.custom_domain_search.index"),
++        url_for("custom_domain_search.index"),
+         query_string={"query": domain.domain},
+     )
+     assert r.status_code == 200
+@@ -228,7 +228,7 @@ def test_custom_domain_shows_verification_status(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.custom_domain_search.index"),
++        url_for("custom_domain_search.index"),
+         query_string={"query": domain.domain},
+     )
+     assert r.status_code == 200
+@@ -254,7 +254,7 @@ def test_custom_domain_shows_domain_info(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.custom_domain_search.index"),
++        url_for("custom_domain_search.index"),
+         query_string={"query": domain.domain},
+     )
+     assert r.status_code == 200
+@@ -277,14 +277,14 @@ def test_custom_domain_search_requires_admin(flask_client):
+         follow_redirects=True,
+     )
+ 
+-    r = flask_client.get(url_for("admin.custom_domain_search.index"))
++    r = flask_client.get(url_for("custom_domain_search.index"))
+     assert r.status_code == 302
+ 
+ 
+ def test_custom_domain_search_requires_login(flask_client):
+     """Test that unauthenticated users cannot access custom domain search."""
+     r = flask_client.get(
+-        url_for("admin.custom_domain_search.index"),
++        url_for("custom_domain_search.index"),
+         follow_redirects=True,
+     )
+     assert b"login" in r.data.lower() or r.status_code in [302, 403]
+@@ -304,7 +304,7 @@ def test_custom_domain_search_user_without_domains(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.custom_domain_search.index"),
++        url_for("custom_domain_search.index"),
+         query_string={"query": test_user.email},
+     )
+     assert r.status_code == 200
+--- a/tests/admin/test_email_search.py
++++ b/tests/admin/test_email_search.py
+@@ -59,7 +59,7 @@ def test_email_search_page_loads(flask_client):
+     """Test that the email search page loads without errors."""
+     login_admin(flask_client)
+ 
+-    r = flask_client.get(url_for("admin.email_search.index"))
++    r = flask_client.get(url_for("email_search.index"))
+     assert r.status_code == 200
+     assert b"Email Search" in r.data
+ 
+@@ -68,7 +68,7 @@ def test_email_search_empty_query(flask_client):
+     """Test that empty query shows the search form."""
+     login_admin(flask_client)
+ 
+-    r = flask_client.get(url_for("admin.email_search.index"))
++    r = flask_client.get(url_for("email_search.index"))
+     assert r.status_code == 200
+     assert b"Search Query" in r.data
+ 
+@@ -82,7 +82,7 @@ def test_email_search_user_by_email(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": test_user.email, "search_type": "email"},
+     )
+     assert r.status_code == 200
+@@ -99,7 +99,7 @@ def test_email_search_user_by_id(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": str(test_user.id), "search_type": "email"},
+     )
+     assert r.status_code == 200
+@@ -118,7 +118,7 @@ def test_email_search_no_regex_fallback(flask_client):
+ 
+     # Regex pattern should NOT match in email search (exact match only)
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={
+             "query": f"regextest_{unique_id}_.*@example.com",
+             "search_type": "email",
+@@ -145,7 +145,7 @@ def test_email_search_mailbox(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": mailbox.email, "search_type": "email"},
+     )
+     assert r.status_code == 200
+@@ -171,7 +171,7 @@ def test_email_search_partner_user(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": partner_user.partner_email, "search_type": "email"},
+     )
+     assert r.status_code == 200
+@@ -183,7 +183,7 @@ def test_email_search_no_results(flask_client):
+     login_admin(flask_client)
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": "nonexistent@nowhere.com", "search_type": "email"},
+     )
+     assert r.status_code == 200
+@@ -205,7 +205,7 @@ def test_email_search_user_with_subscription(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": test_user.email, "search_type": "email"},
+     )
+     assert r.status_code == 200
+@@ -229,7 +229,7 @@ def test_email_search_user_with_audit_logs(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": test_user.email, "search_type": "email"},
+     )
+     assert r.status_code == 200
+@@ -252,7 +252,7 @@ def test_email_search_user_with_abuse_logs(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": test_user.email, "search_type": "email"},
+     )
+     assert r.status_code == 200
+@@ -270,7 +270,7 @@ def test_alias_search_page_loads(flask_client):
+     login_admin(flask_client)
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"search_type": "alias"},
+     )
+     assert r.status_code == 200
+@@ -291,7 +291,7 @@ def test_alias_search_by_email(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": alias.email, "search_type": "alias"},
+     )
+     assert r.status_code == 200
+@@ -322,7 +322,7 @@ def test_alias_search_no_regex_support(flask_client):
+ 
+     # Regex pattern should not match - alias search only supports exact match
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": "regex_alias_.*@sl.lan", "search_type": "alias"},
+     )
+     assert r.status_code == 200
+@@ -353,7 +353,7 @@ def test_alias_search_deleted_alias(flask_client):
+ 
+     # Now search for the deleted alias
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": alias_email, "search_type": "alias"},
+     )
+     assert r.status_code == 200
+@@ -366,7 +366,7 @@ def test_alias_search_no_results(flask_client):
+     login_admin(flask_client)
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": "nonexistent@sl.lan", "search_type": "alias"},
+     )
+     assert r.status_code == 200
+@@ -389,17 +389,17 @@ def test_email_search_requires_admin(flask_client):
+     )
+ 
+     # Without follow_redirects, check for 302 redirect
+-    r = flask_client.get(url_for("admin.email_search.index"))
++    r = flask_client.get(url_for("email_search.index"))
+     # Should be redirected (302) to dashboard
+     assert r.status_code == 302
+     # The redirect should be to dashboard, not to admin
+-    assert "/admin" not in r.location or "dashboard" in r.location
++    assert r.location.split("?", 1)[0] in ("/auth/login", "/dashboard/")
+ 
+ 
+ def test_email_search_requires_login(flask_client):
+     """Test that unauthenticated users cannot access email search."""
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         follow_redirects=True,
+     )
+     # Should be redirected to login
+@@ -415,7 +415,7 @@ def test_search_type_defaults_to_email(flask_client):
+     """Test that search type defaults to email."""
+     login_admin(flask_client)
+ 
+-    r = flask_client.get(url_for("admin.email_search.index"))
++    r = flask_client.get(url_for("email_search.index"))
+     assert r.status_code == 200
+     # Check that email option is checked (radio button)
+     assert b'value="email" checked' in r.data
+@@ -426,7 +426,7 @@ def test_search_type_preserves_alias_selection(flask_client):
+     login_admin(flask_client)
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": "test", "search_type": "alias"},
+     )
+     assert r.status_code == 200
+@@ -448,7 +448,7 @@ def test_mark_abuser_button_displayed(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": test_user.email, "search_type": "email"},
+     )
+     assert r.status_code == 200
+@@ -467,7 +467,7 @@ def test_unmark_abuser_button_displayed(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": test_user.email, "search_type": "email"},
+     )
+     assert r.status_code == 200
+@@ -489,7 +489,7 @@ def test_mark_abuser_success(flask_client):
+ 
+     # Mark user as abuser
+     r = flask_client.post(
+-        url_for("admin.email_search.mark_abuser"),
++        url_for("email_search.mark_abuser"),
+         data={"user_id": user_id, "note": "Test abuse reason"},
+         follow_redirects=True,
+     )
+@@ -516,7 +516,7 @@ def test_mark_abuser_requires_note(flask_client):
+ 
+     # Try to mark user without a note
+     r = flask_client.post(
+-        url_for("admin.email_search.mark_abuser"),
++        url_for("email_search.mark_abuser"),
+         data={"user_id": test_user.id, "note": ""},
+         follow_redirects=True,
+     )
+@@ -541,7 +541,7 @@ def test_unmark_abuser_success(flask_client):
+ 
+     # Unmark user as abuser
+     r = flask_client.post(
+-        url_for("admin.email_search.unmark_abuser"),
++        url_for("email_search.unmark_abuser"),
+         data={"user_id": user_id, "note": "Test unmark reason"},
+         follow_redirects=True,
+     )
+@@ -573,7 +573,7 @@ def test_unmark_abuser_requires_note(flask_client):
+ 
+     # Try to unmark user without a note
+     r = flask_client.post(
+-        url_for("admin.email_search.unmark_abuser"),
++        url_for("email_search.unmark_abuser"),
+         data={"user_id": test_user.id, "note": ""},
+         follow_redirects=True,
+     )
+@@ -608,7 +608,7 @@ def test_email_search_shows_custom_domains(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": test_user.email, "search_type": "email"},
+     )
+     assert r.status_code == 200
+@@ -649,7 +649,7 @@ def test_email_search_shows_domain_alias_counts(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": test_user.email, "search_type": "email"},
+     )
+     assert r.status_code == 200
+@@ -686,7 +686,7 @@ def test_regex_search_does_not_search_aliases(flask_client):
+ 
+     # Regex search should NOT find aliases
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={
+             "query": f"regextest_{unique_id}_.*@sl.lan",
+             "search_type": "regex",
+@@ -708,7 +708,7 @@ def test_regex_search_users(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={
+             "query": f"regexuser_{unique_id}_.*@example.com",
+             "search_type": "regex",
+@@ -741,7 +741,7 @@ def test_regex_search_mailboxes(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={
+             "query": f"regexmailbox_{unique_id}_.*@example.com",
+             "search_type": "regex",
+@@ -772,7 +772,7 @@ def test_regex_search_across_multiple_tables(flask_client):
+     Session.commit()
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={
+             "query": f"alltest_{unique_id}.*",
+             "search_type": "regex",
+@@ -788,7 +788,7 @@ def test_regex_search_radio_button_present(flask_client):
+     """Test that the regex radio button is present on the page."""
+     login_admin(flask_client)
+ 
+-    r = flask_client.get(url_for("admin.email_search.index"))
++    r = flask_client.get(url_for("email_search.index"))
+     assert r.status_code == 200
+     assert b'value="regex"' in r.data
+     assert b"Regex" in r.data
+@@ -799,7 +799,7 @@ def test_regex_search_type_preserved(flask_client):
+     login_admin(flask_client)
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={"query": "test.*", "search_type": "regex"},
+     )
+     assert r.status_code == 200
+@@ -812,7 +812,7 @@ def test_regex_search_no_results(flask_client):
+     login_admin(flask_client)
+ 
+     r = flask_client.get(
+-        url_for("admin.email_search.index"),
++        url_for("email_search.index"),
+         query_string={
+             "query": "nonexistent_regex_pattern_.*",
+             "search_type": "regex",
+@@ -863,7 +863,7 @@ def test_disable_2fa_totp_only(flask_client):
+     assert user.enable_otp is True
+ 
+     r = flask_client.post(
+-        url_for("admin.email_search.disable_2fa"),
++        url_for("email_search.disable_2fa"),
+         data={"user_id": user_id},
+         follow_redirects=True,
+     )
+@@ -889,7 +889,7 @@ def test_disable_2fa_fido_only(flask_client):
+     assert Session.query(Fido).filter(Fido.user_id == user_id).count() == 1
+ 
+     r = flask_client.post(
+-        url_for("admin.email_search.disable_2fa"),
++        url_for("email_search.disable_2fa"),
+         data={"user_id": user_id},
+         follow_redirects=True,
+     )
+@@ -916,7 +916,7 @@ def test_disable_2fa_totp_and_fido(flask_client):
+     assert user.fido_uuid is not None
+ 
+     r = flask_client.post(
+-        url_for("admin.email_search.disable_2fa"),
++        url_for("email_search.disable_2fa"),
+         data={"user_id": user_id},
+         follow_redirects=True,
+     )
+@@ -961,7 +961,7 @@ def test_disable_2fa_does_not_affect_other_users(flask_client):
+     both_user_fido_uuid = both_user.fido_uuid
+ 
+     r = flask_client.post(
+-        url_for("admin.email_search.disable_2fa"),
++        url_for("email_search.disable_2fa"),
+         data={"user_id": target_user.id},
+         follow_redirects=True,
+     )
+@@ -997,7 +997,7 @@ def test_disable_2fa_creates_audit_log(flask_client):
+     user_id = user.id
+ 
+     r = flask_client.post(
+-        url_for("admin.email_search.disable_2fa"),
++        url_for("email_search.disable_2fa"),
+         data={"user_id": user_id},
+         follow_redirects=True,
+     )
+@@ -1022,7 +1022,7 @@ def test_disable_2fa_invalid_user_id(flask_client):
+     login_admin(flask_client)
+ 
+     r = flask_client.post(
+-        url_for("admin.email_search.disable_2fa"),
++        url_for("email_search.disable_2fa"),
+         data={"user_id": "not_a_number"},
+         follow_redirects=True,
+     )
+@@ -1035,7 +1035,7 @@ def test_disable_2fa_nonexistent_user(flask_client):
+     login_admin(flask_client)
+ 
+     r = flask_client.post(
+-        url_for("admin.email_search.disable_2fa"),
++        url_for("email_search.disable_2fa"),
+         data={"user_id": 999999999},
+         follow_redirects=True,
+     )
+@@ -1048,7 +1048,7 @@ def test_disable_2fa_missing_user_id(flask_client):
+     login_admin(flask_client)
+ 
+     r = flask_client.post(
+-        url_for("admin.email_search.disable_2fa"),
++        url_for("email_search.disable_2fa"),
+         data={},
+         follow_redirects=True,
+     )
+--- a/tests/api/test_auth_mfa.py
++++ b/tests/api/test_auth_mfa.py
+@@ -13,7 +13,7 @@ def test_auth_mfa_success(flask_client):
+ 
+     totp = pyotp.TOTP(user.otp_secret)
+     s = Signer(FLASK_SECRET)
+-    mfa_key = s.sign(str(user.id))
++    mfa_key = s.sign(str(user.id)).decode()
+ 
+     r = flask_client.post(
+         url_for("api.auth_mfa"),
+--- a/tests/api/test_user_info.py
++++ b/tests/api/test_user_info.py
+@@ -21,7 +21,7 @@ def test_user_in_trial(flask_client):
+         "name": "Test User",
+         "email": user.email,
+         "in_trial": True,
+-        "trial_end_timestamp": user.trial_end.timestamp,
++        "trial_end_timestamp": user.trial_end.int_timestamp,
+         "profile_picture_url": None,
+         "max_alias_free_plan": config.MAX_NB_EMAIL_FREE_PLAN,
+         "connected_proton_address": None,
+@@ -52,7 +52,7 @@ def test_user_linked_to_proton(flask_client):
+         "name": "Test User",
+         "email": user.email,
+         "in_trial": True,
+-        "trial_end_timestamp": user.trial_end.timestamp,
++        "trial_end_timestamp": user.trial_end.int_timestamp,
+         "profile_picture_url": None,
+         "max_alias_free_plan": config.MAX_NB_EMAIL_FREE_PLAN,
+         "connected_proton_address": partner_email,
+@@ -195,7 +195,7 @@ def test_trial_end_timestamp(flask_client):
+     )
+ 
+     assert r.status_code == 200
+-    assert r.json["trial_end_timestamp"] == user.trial_end.timestamp
++    assert r.json["trial_end_timestamp"] == user.trial_end.int_timestamp
+ 
+     # user with no trial
+     user.trial_end = None
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -29,15 +29,9 @@ app.config["TESTING"] = True
+ app.config["WTF_CSRF_ENABLED"] = False
+ app.config["SERVER_NAME"] = "sl.lan"
+ 
+-# enable pg_trgm extension
+-with engine.connect() as conn:
+-    try:
+-        conn.execute("DROP EXTENSION if exists pg_trgm")
+-        conn.execute("CREATE EXTENSION pg_trgm")
+-    except sqlalchemy.exc.InternalError as e:
+-        if isinstance(e.orig, errors.lookup(DEPENDENT_OBJECTS_STILL_EXIST)):
+-            print(">>> pg_trgm can't be dropped, ignore")
+-        conn.execute("Rollback")
++# DDL must be explicitly committed under SQLAlchemy 2.
++with engine.begin() as conn:
++    conn.execute(sqlalchemy.text("CREATE EXTENSION IF NOT EXISTS pg_trgm"))
+ 
+ add_sl_domains()
+ add_proton_partner()
+@@ -62,7 +56,11 @@ class CustomTestClient(testing.FlaskClient):
+ 
+ @pytest.fixture
+ def flask_client():
++    Session.remove()
++    if connection.in_transaction():
++        connection.rollback()
+     transaction = connection.begin()
++    Session.configure(join_transaction_mode="create_savepoint")
+ 
+     with app.app_context():
+         # disable rate limit during test
+--- a/tests/events/test_sent_events.py
++++ b/tests/events/test_sent_events.py
+@@ -68,7 +68,7 @@ def test_fire_event_on_alias_creation():
+     assert alias.email == alias_created.email
+     assert "" == alias_created.note
+     assert alias.enabled == alias_created.enabled
+-    assert int(alias.created_at.timestamp) == alias_created.created_at
++    assert int(alias.created_at.int_timestamp) == alias_created.created_at
+ 
+ 
+ def test_fire_event_on_alias_creation_with_note():
+@@ -116,5 +116,5 @@ def test_fire_event_on_alias_status_change():
+     event = event_content.alias_status_change
+     assert alias.id == event.id
+     assert alias.email == event.email
+-    assert int(alias.created_at.timestamp) == event.created_at
++    assert int(alias.created_at.int_timestamp) == event.created_at
+     assert event.enabled
+--- a/tests/events/test_subscription_webhook.py
++++ b/tests/events/test_subscription_webhook.py
+@@ -68,7 +68,7 @@ def test_webhook_with_subscription():
+         flush=True,
+     )
+     execute_subscription_webhook(user)
+-    assert check_event(user, pu).plan_end_time == end_at.timestamp
++    assert check_event(user, pu).plan_end_time == end_at.int_timestamp
+ 
+ 
+ def test_webhook_with_apple_subscription():
+@@ -84,7 +84,7 @@ def test_webhook_with_apple_subscription():
+         flush=True,
+     )
+     execute_subscription_webhook(user)
+-    assert check_event(user, pu).plan_end_time == end_at.timestamp
++    assert check_event(user, pu).plan_end_time == end_at.int_timestamp
+ 
+ 
+ def test_webhook_with_coinbase_subscription():
+@@ -95,7 +95,7 @@ def test_webhook_with_coinbase_subscription():
+     )
+ 
+     execute_subscription_webhook(user)
+-    assert check_event(user, pu).plan_end_time == end_at.timestamp
++    assert check_event(user, pu).plan_end_time == end_at.int_timestamp
+ 
+ 
+ def test_webhook_with_manual_subscription():
+@@ -106,4 +106,4 @@ def test_webhook_with_manual_subscription():
+     )
+ 
+     execute_subscription_webhook(user)
+-    assert check_event(user, pu).plan_end_time == end_at.timestamp
++    assert check_event(user, pu).plan_end_time == end_at.int_timestamp
+--- a/tests/jobs/test_send_alias_creation_events.py
++++ b/tests/jobs/test_send_alias_creation_events.py
+@@ -41,7 +41,7 @@ def test_send_alias_creation_events():
+     assert event_list[1].email == aliases[0].email
+     assert event_list[1].note == ""
+     assert event_list[1].enabled == aliases[0].enabled
+-    assert event_list[1].created_at == int(aliases[0].created_at.timestamp)
++    assert event_list[1].created_at == int(aliases[0].created_at.int_timestamp)
+     decoded_event = event_pb2.Event.FromString(dispatcher.events[1])
+     assert decoded_event.user_id == user.id
+     assert decoded_event.external_user_id == partner_user.external_user_id
+--- a/tests/oauth/test_authorize.py
++++ b/tests/oauth/test_authorize.py
+@@ -798,7 +798,7 @@ def test_authorize_page_invalid_client_id(flask_client):
+     )
+ 
+     assert r.status_code == 302
+-    assert r.location == url_for("auth.login")
++    assert r.location == url_for("auth.login", _external=False)
+ 
+ 
+ def test_authorize_page_http_not_allowed(flask_client):
+@@ -820,7 +820,7 @@ def test_authorize_page_http_not_allowed(flask_client):
+     )
+ 
+     assert r.status_code == 302
+-    assert r.location == url_for("dashboard.index")
++    assert r.location == url_for("dashboard.index", _external=False)
+ 
+ 
+ def test_authorize_page_unknown_redirect_uri(flask_client):
+@@ -842,7 +842,7 @@ def test_authorize_page_unknown_redirect_uri(flask_client):
+     )
+ 
+     assert r.status_code == 302
+-    assert r.location == url_for("dashboard.index")
++    assert r.location == url_for("dashboard.index", _external=False)
+ 
+ 
+ def test_oauth_cannot_create_alias_on_another_users_custom_domain(flask_client):
+--- a/tests/test_extensions.py
++++ b/tests/test_extensions.py
+@@ -91,7 +91,8 @@ def test_rate_limit_limits_by_user_id_ignoring_ip(flask_client):
+     assert res.status_code == HTTPStatus.TOO_MANY_REQUESTS
+ 
+     # Log out
+-    flask_client.cookie_jar.clear()
++    flask_client.get("/auth/logout")
++    fix_rate_limit_after_request()
+ 
+     # Log in with another user
+     login(flask_client)
+--- a/tests/test_paddle_callback.py
++++ b/tests/test_paddle_callback.py
+@@ -8,7 +8,8 @@ from tests.utils import create_new_user, random_token
+ 
+ 
+ @mail_sender.store_emails_test_decorator
+-def test_failed_payments():
++def test_failed_payments(monkeypatch):
++    monkeypatch.setattr(paddle_callback.paddle_utils, "cancel_subscription", lambda _: None)
+     user = create_new_user()
+     paddle_sub_id = random_token()
+     sub = Subscription.create(
+--- a/tests/test_server.py
++++ b/tests/test_server.py
+@@ -6,4 +6,4 @@ def test_redirect_login_page(flask_client):
+ 
+     rv = flask_client.get("/")
+     assert rv.status_code == 302
+-    assert rv.location == f"http://{EMAIL_DOMAIN}/auth/login"
++    assert rv.location == "/auth/login"
+--- /dev/null
++++ b/tests/test_arch_compat.py
+@@ -0,0 +1,123 @@
++"""Regression coverage for the rolling-distribution dependency stack."""
++
++import hashlib
++import json
++import secrets
++from types import SimpleNamespace
++
++import cbor2
++import pytest
++from cryptography.hazmat.primitives import hashes
++from cryptography.hazmat.primitives.asymmetric import ec
++from webauthn.helpers import base64url_to_bytes, bytes_to_base64url
++
++from app.pw_models import PasswordOracle
++from app.webauthn_utils import (
++    authentication_options,
++    registration_options,
++    verify_registration,
++    verify_authentication,
++)
++
++
++def test_bcrypt_legacy_long_password():
++    oracle = PasswordOracle()
++    oracle.set_password("é" * 50)
++    assert oracle.check_password("é" * 50)
++    assert not oracle.check_password("wrong")
++    # bcrypt <5 silently truncated UTF-8 bytes at 72, including existing hashes.
++    assert oracle.check_password("é" * 36 + "suffix")
++
++
++def test_webauthn_registration_and_authentication():
++    rp_id = "localhost"
++    origin = "http://localhost"
++    challenge = secrets.token_urlsafe(32)
++    private_key = ec.generate_private_key(ec.SECP256R1())
++    numbers = private_key.public_key().public_numbers()
++    cose = cbor2.dumps(
++        {1: 2, 3: -7, -1: 1, -2: numbers.x.to_bytes(32), -3: numbers.y.to_bytes(32)}
++    )
++    credential_id = secrets.token_bytes(32)
++    user = SimpleNamespace(email="test@example.com", name="Test")
++    options = registration_options(user, "user-uuid", [], challenge, rp_id)
++    assert base64url_to_bytes(options["challenge"]) == base64url_to_bytes(challenge)
++    assert base64url_to_bytes(options["user"]["id"]) == b"user-uuid"
++    assert options["excludeCredentials"] == []
++    client_data = json.dumps(
++        {"type": "webauthn.create", "challenge": challenge, "origin": origin}
++    ).encode()
++    auth_data = (
++        hashlib.sha256(rp_id.encode()).digest()
++        + b"\x41"
++        + (0).to_bytes(4)
++        + bytes(16)
++        + len(credential_id).to_bytes(2)
++        + credential_id
++        + cose
++    )
++    payload = {
++        "id": bytes_to_base64url(credential_id),
++        "rawId": bytes_to_base64url(credential_id),
++        "type": "public-key",
++        "clientData": bytes_to_base64url(client_data),
++        "attObj": bytes_to_base64url(
++            cbor2.dumps({"fmt": "none", "attStmt": {}, "authData": auth_data})
++        ),
++    }
++    result = verify_registration(payload, challenge, rp_id, origin)
++    key = SimpleNamespace(
++        credential_id=bytes_to_base64url(result.credential_id),
++        public_key=bytes_to_base64url(result.credential_public_key),
++        sign_count=result.sign_count,
++    )
++    options = authentication_options([key], challenge, rp_id)
++    assert options["allowCredentials"][0]["id"] == payload["id"]
++    assert (
++        authentication_options([key], challenge, rp_id, user_verification="required")[
++            "userVerification"
++        ]
++        == "required"
++    )
++    client_data = json.dumps(
++        {"type": "webauthn.get", "challenge": challenge, "origin": origin}
++    ).encode()
++    auth_data = hashlib.sha256(rp_id.encode()).digest() + b"\x01" + (1).to_bytes(4)
++    signature = private_key.sign(
++        auth_data + hashlib.sha256(client_data).digest(), ec.ECDSA(hashes.SHA256())
++    )
++    payload.update(
++        clientData=bytes_to_base64url(client_data),
++        authData=bytes_to_base64url(auth_data),
++        signature=signature.hex(),
++    )
++    assert verify_authentication(payload, key, challenge, rp_id, origin) == 1
++    for bad_challenge, bad_rp, bad_origin in [
++        (secrets.token_urlsafe(32), rp_id, origin),
++        (challenge, "wrong.example", origin),
++        (challenge, rp_id, "https://wrong.example"),
++    ]:
++        with pytest.raises(Exception):
++            verify_authentication(payload, key, bad_challenge, bad_rp, bad_origin)
++    key.sign_count = 1
++    with pytest.raises(Exception):
++        verify_authentication(payload, key, challenge, rp_id, origin)
++
++
++@pytest.mark.parametrize(
++    "agent, expected",
++    [
++        ("Mozilla/5.0 Chrome/120.0 Safari/537.36", "Chrome"),
++        ("Mozilla/5.0 Chrome/120.0 Safari/537.36 Edg/120.0", "Edge"),
++        ("Mozilla/5.0 Firefox/120.0", "Firefox"),
++        ("Mozilla/5.0 (Android) Chrome/120.0 Mobile", "Other"),
++        ("Mozilla/5.0 (iPhone) AppleWebKit/605.1.15", "Other"),
++        ("Mozilla/5.0 Safari/605.1.15", "Other"),
++        ("", "Other"),
++    ],
++)
++def test_browser_detection(flask_app, agent, expected):
++    from app.onboarding.utils import get_browser
++
++    with flask_app.test_request_context(headers={"User-Agent": agent}):
++        assert get_browser().name == expected

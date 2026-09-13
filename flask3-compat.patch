@@ -1,17 +1,70 @@
---- a/simplelogin_app.py
-+++ b/simplelogin_app.py
-@@ -207,7 +207,7 @@
-     app.register_blueprint(phone_bp)
+--- a/app/api/views/auth.py
++++ b/app/api/views/auth.py
+@@ -383,7 +383,7 @@ def auth_payload(user, device) -> dict:
+     # do not give api_key, user can only obtain api_key after OTP verification
+     if user.enable_otp:
+         s = Signer(FLASK_SECRET)
+-        ret["mfa_key"] = s.sign(str(user.id))
++        ret["mfa_key"] = s.sign(str(user.id)).decode("utf-8")
+         ret["api_key"] = None
+     else:
+         api_key = ApiKey.get_by(user_id=user.id, name=device)
+--- a/app/api/views/mailbox.py
++++ b/app/api/views/mailbox.py
+@@ -81,7 +81,7 @@ def delete_mailbox(mailbox_id):
+             400,
+         )
  
-     app.register_blueprint(oauth_bp, url_prefix="/oauth")
--    app.register_blueprint(oauth_bp, url_prefix="/oauth2")
-+    app.register_blueprint(oauth_bp, url_prefix="/oauth2", name="oauth2")
-     app.register_blueprint(onboarding_bp)
+-    data = request.get_json() or {}
++    data = (request.get_json() or {}) if request.is_json else {}
+     transfer_mailbox_id = data.get("transfer_aliases_to")
+     if transfer_mailbox_id and int(transfer_mailbox_id) >= 0:
+         transfer_mailbox_id = int(transfer_mailbox_id)
+@@ -123,7 +123,7 @@ def update_mailbox(mailbox_id):
+             400,
+         )
  
-     app.register_blueprint(discover_bp)
+-    data = request.get_json() or {}
++    data = (request.get_json() or {}) if request.is_json else {}
+     changed = False
+     if "default" in data:
+         is_default = data.get("default")
+--- a/app/api/views/setting.py
++++ b/app/api/views/setting.py
+@@ -53,7 +53,7 @@ def update_setting():
+     - random_alias_default_domain: str
+     """
+     user = g.user
+-    data = request.get_json() or {}
++    data = (request.get_json() or {}) if request.is_json else {}
+ 
+     if "notification" in data:
+         user.notification = data["notification"]
+--- a/app/api/views/sudo.py
++++ b/app/api/views/sudo.py
+@@ -17,7 +17,7 @@ def enter_sudo():
+     - password: user password to validate request to enter sudo mode
+     """
+     user = g.user
+-    data = request.get_json() or {}
++    data = (request.get_json() or {}) if request.is_json else {}
+     if "password" not in data:
+         return jsonify(error="Invalid password"), 403
+     if not user.check_password(data["password"]):
+--- a/app/api/views/user_info.py
++++ b/app/api/views/user_info.py
+@@ -78,7 +78,7 @@ def update_user_info():
+     - name (optional)
+     """
+     user = g.user
+-    data = request.get_json() or {}
++    data = (request.get_json() or {}) if request.is_json else {}
+ 
+     if "profile_picture" in data:
+         if user.profile_picture_id:
 --- a/app/session.py
 +++ b/app/session.py
-@@ -48,7 +48,7 @@
+@@ -48,7 +48,7 @@ class RedisSessionStore(SessionInterface):
      def extract_and_validate_session_id(
          cls, app: flask.Flask, request: flask.Request
      ) -> Optional[str]:
@@ -20,7 +73,7 @@
          if not unverified_session_Id:
              return None
          signer = cls._get_signer(app)
-@@ -101,9 +101,9 @@
+@@ -101,9 +101,9 @@ class RedisSessionStore(SessionInterface):
          )
          signed_session_id = self._get_signer(app).sign(
              itsdangerous.want_bytes(session.session_id)
@@ -32,3 +85,14 @@
              signed_session_id,
              expires=expires,
              httponly=httponly,
+--- a/simplelogin_app.py
++++ b/simplelogin_app.py
+@@ -207,7 +207,7 @@ def register_blueprints(app: Flask):
+     app.register_blueprint(phone_bp)
+ 
+     app.register_blueprint(oauth_bp, url_prefix="/oauth")
+-    app.register_blueprint(oauth_bp, url_prefix="/oauth2")
++    app.register_blueprint(oauth_bp, url_prefix="/oauth2", name="oauth2")
+     app.register_blueprint(onboarding_bp)
+ 
+     app.register_blueprint(discover_bp)

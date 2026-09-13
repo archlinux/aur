@@ -1,0 +1,40 @@
+--- a/app/onboarding/utils.py
++++ b/app/onboarding/utils.py
+@@ -22,26 +22,25 @@ class Browser(Enum):
+ 
+ 
+ def is_mobile() -> bool:
+-    return request.user_agent.platform in [
+-        "android",
+-        "blackberry",
+-        "ipad",
+-        "iphone",
+-        "symbian",
+-    ]
++    # Werkzeug 2+ retains the raw User-Agent but no longer parses it.
++    user_agent = request.user_agent.string.lower()
++    return any(platform in user_agent for platform in (
++        "android", "blackberry", "ipad", "iphone", "ipod", "symbian", "mobile"
++    ))
+ 
+ 
+ def get_browser() -> Browser:
+     if is_mobile():
+         return Browser.Other
+ 
+-    user_agent = request.user_agent
+-    if user_agent.browser == "edge":
++    user_agent = request.user_agent.string.lower()
++    # Chromium Edge also advertises Chrome, so check Edge first.
++    if "edg/" in user_agent or "edge/" in user_agent:
+         return Browser.Edge
+-    elif user_agent.browser in ["chrome", "opera", "webkit"]:
+-        return Browser.Chrome
+-    elif user_agent.browser in ["mozilla", "firefox"]:
++    if "firefox/" in user_agent:
+         return Browser.Firefox
++    if any(browser in user_agent for browser in ("chrome/", "chromium/", "opera/", "opr/")):
++        return Browser.Chrome
+     return Browser.Other
+ 
+ 

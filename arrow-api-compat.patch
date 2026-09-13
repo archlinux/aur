@@ -1,14 +1,267 @@
+--- a/app/account_linking.py
++++ b/app/account_linking.py
+@@ -70,7 +70,7 @@ def send_user_plan_changed_event(
+     if partner_user.user.lifetime:
+         event = UserPlanChanged(lifetime=True)
+     elif subscription_end:
+-        event = UserPlanChanged(plan_end_time=subscription_end.timestamp)
++        event = UserPlanChanged(plan_end_time=subscription_end.int_timestamp)
+     else:
+         event = UserPlanChanged(plan_end_time=None)
+     EventDispatcher.send_event(partner_user.user, EventContent(user_plan_change=event))
+--- a/app/admin/manual_subscription.py
++++ b/app/admin/manual_subscription.py
+@@ -55,7 +55,7 @@ class ManualSubscriptionAdmin(SLModelView):
+             EventDispatcher.send_event(
+                 user=sub.user,
+                 content=EventContent(
+-                    user_plan_change=UserPlanChanged(plan_end_time=sub.end_at.timestamp)
++                    user_plan_change=UserPlanChanged(plan_end_time=sub.end_at.int_timestamp)
+                 ),
+             )
+ 
+--- a/app/admin/user.py
++++ b/app/admin/user.py
+@@ -66,7 +66,7 @@ def manual_upgrade(way: str, ids: list[int], is_giveaway: bool):
+                 user=user,
+                 content=EventContent(
+                     user_plan_change=UserPlanChanged(
+-                        plan_end_time=manual_sub.end_at.timestamp
++                        plan_end_time=manual_sub.end_at.int_timestamp
+                     )
+                 ),
+             )
+@@ -87,7 +87,7 @@ def manual_upgrade(way: str, ids: list[int], is_giveaway: bool):
+                 user=user,
+                 content=EventContent(
+                     user_plan_change=UserPlanChanged(
+-                        plan_end_time=manual_sub.end_at.timestamp
++                        plan_end_time=manual_sub.end_at.int_timestamp
+                     )
+                 ),
+             )
+--- a/app/alias_delete.py
++++ b/app/alias_delete.py
+@@ -160,7 +160,7 @@ def __perform_alias_restore(user: User, alias: Alias) -> None:
+                 email=alias.email,
+                 note=alias.note,
+                 enabled=alias.enabled,
+-                created_at=int(alias.created_at.timestamp),
++                created_at=int(alias.created_at.int_timestamp),
+             )
+         ),
+     )
+--- a/app/alias_utils.py
++++ b/app/alias_utils.py
+@@ -506,7 +506,7 @@ def transfer_alias(alias: Alias, new_user: User, new_mailboxes: [Mailbox]):
+                 email=alias.email,
+                 note=alias.note,
+                 enabled=alias.enabled,
+-                created_at=int(alias.created_at.timestamp),
++                created_at=int(alias.created_at.int_timestamp),
+             )
+         ),
+     )
+@@ -524,7 +524,7 @@ def change_alias_status(
+         id=alias.id,
+         email=alias.email,
+         enabled=enabled,
+-        created_at=int(alias.created_at.timestamp),
++        created_at=int(alias.created_at.int_timestamp),
+     )
+     EventDispatcher.send_event(alias.user, EventContent(alias_status_change=event))
+     audit_log_message = f"Set alias status to {enabled}"
+--- a/app/api/serializer.py
++++ b/app/api/serializer.py
+@@ -42,7 +42,7 @@ def serialize_alias_info(alias_info: AliasInfo) -> dict:
+         "id": alias_info.alias.id,
+         "email": alias_info.alias.email,
+         "creation_date": alias_info.alias.created_at.format(),
+-        "creation_timestamp": alias_info.alias.created_at.timestamp,
++        "creation_timestamp": alias_info.alias.created_at.int_timestamp,
+         "enabled": alias_info.alias.enabled,
+         "note": alias_info.alias.note,
+         # activity
+@@ -58,7 +58,7 @@ def serialize_alias_info_v2(alias_info: AliasInfo) -> dict:
+         "id": alias_info.alias.id,
+         "email": alias_info.alias.email,
+         "creation_date": alias_info.alias.created_at.format(),
+-        "creation_timestamp": alias_info.alias.created_at.timestamp,
++        "creation_timestamp": alias_info.alias.created_at.int_timestamp,
+         "enabled": alias_info.alias.enabled,
+         "note": alias_info.alias.note,
+         "name": alias_info.alias.name,
+@@ -82,7 +82,7 @@ def serialize_alias_info_v2(alias_info: AliasInfo) -> dict:
+         contact = alias_info.latest_contact
+         # latest activity
+         res["latest_activity"] = {
+-            "timestamp": email_log.created_at.timestamp,
++            "timestamp": email_log.created_at.int_timestamp,
+             "action": email_log.get_action(),
+             "contact": {
+                 "email": contact.website_email,
+@@ -97,7 +97,7 @@ def serialize_contact(contact: Contact, existed=False) -> dict:
+     res = {
+         "id": contact.id,
+         "creation_date": contact.created_at.format(),
+-        "creation_timestamp": contact.created_at.timestamp,
++        "creation_timestamp": contact.created_at.int_timestamp,
+         "last_email_sent_date": None,
+         "last_email_sent_timestamp": None,
+         "contact": contact.website_email,
+@@ -110,7 +110,7 @@ def serialize_contact(contact: Contact, existed=False) -> dict:
+     email_log: EmailLog = contact.last_reply()
+     if email_log:
+         res["last_email_sent_date"] = email_log.created_at.format()
+-        res["last_email_sent_timestamp"] = email_log.created_at.timestamp
++        res["last_email_sent_timestamp"] = email_log.created_at.int_timestamp
+ 
+     return res
+ 
+--- a/app/api/views/alias.py
++++ b/app/api/views/alias.py
+@@ -236,7 +236,7 @@ def get_alias_activities(alias_id):
+     activities = []
+     for alias_log in alias_logs:
+         activity = {
+-            "timestamp": alias_log.when.timestamp,
++            "timestamp": alias_log.when.int_timestamp,
+             "reverse_alias": alias_log.reverse_alias,
+             "reverse_alias_address": alias_log.contact.reply_email,
+         }
+--- a/app/api/views/custom_domain.py
++++ b/app/api/views/custom_domain.py
+@@ -16,7 +16,7 @@ def custom_domain_to_dict(custom_domain: CustomDomain):
+         "is_verified": custom_domain.verified,
+         "nb_alias": custom_domain.nb_alias(),
+         "creation_date": custom_domain.created_at.format(),
+-        "creation_timestamp": custom_domain.created_at.timestamp,
++        "creation_timestamp": custom_domain.created_at.int_timestamp,
+         "catch_all": custom_domain.catch_all,
+         "name": custom_domain.name,
+         "random_prefix_generation": custom_domain.random_prefix_generation,
+@@ -53,7 +53,7 @@ def get_custom_domain_trash(custom_domain_id: int):
+         aliases=[
+             {
+                 "alias": dda.email,
+-                "deletion_timestamp": dda.created_at.timestamp,
++                "deletion_timestamp": dda.created_at.int_timestamp,
+             }
+             for dda in domain_deleted_aliases
+         ]
+--- a/app/api/views/mailbox.py
++++ b/app/api/views/mailbox.py
+@@ -18,7 +18,7 @@ def mailbox_to_dict(mailbox: Mailbox):
+         "email": mailbox.email,
+         "verified": mailbox.verified,
+         "default": mailbox.user.default_mailbox_id == mailbox.id,
+-        "creation_timestamp": mailbox.created_at.timestamp,
++        "creation_timestamp": mailbox.created_at.int_timestamp,
+         "nb_alias": mailbox.nb_alias(),
+     }
+ 
+--- a/app/api/views/user_info.py
++++ b/app/api/views/user_info.py
+@@ -32,7 +32,7 @@ def user_to_dict(user: User) -> dict:
+         "is_premium": user.is_premium(),
+         "email": user.email,
+         "in_trial": user.in_trial(),
+-        "trial_end_timestamp": user.trial_end.timestamp if user.trial_end else None,
++        "trial_end_timestamp": user.trial_end.int_timestamp if user.trial_end else None,
+         "max_alias_free_plan": user.max_alias_for_free_account(),
+         "connected_proton_address": None,
+         "can_create_reverse_alias": user.can_create_contacts(),
+--- a/app/coupon_utils.py
++++ b/app/coupon_utils.py
+@@ -91,7 +91,7 @@ def redeem_coupon(coupon_code: str, user: User) -> Optional[Coupon]:
+     EventDispatcher.send_event(
+         user=user,
+         content=EventContent(
+-            user_plan_change=UserPlanChanged(plan_end_time=sub.end_at.timestamp)
++            user_plan_change=UserPlanChanged(plan_end_time=sub.end_at.int_timestamp)
+         ),
+     )
+     Session.commit()
+--- a/app/jobs/event_jobs.py
++++ b/app/jobs/event_jobs.py
+@@ -27,7 +27,7 @@ def send_alias_creation_events_for_user(
+                 email=alias.email,
+                 note=alias.note,
+                 enabled=alias.enabled,
+-                created_at=int(alias.created_at.timestamp),
++                created_at=int(alias.created_at.int_timestamp),
+             )
+         )
+         if len(event_list) >= chunk_size:
+--- a/app/jobs/sync_subscription_job.py
++++ b/app/jobs/sync_subscription_job.py
+@@ -43,7 +43,7 @@ class SyncSubscriptionJob:
+                 include_partner_subscription=False
+             )
+             if plan_end:
+-                content = UserPlanChanged(plan_end_time=plan_end.timestamp)
++                content = UserPlanChanged(plan_end_time=plan_end.int_timestamp)
+             else:
+                 content = UserPlanChanged()
+ 
+--- a/app/jose_utils.py
++++ b/app/jose_utils.py
+@@ -35,9 +35,9 @@ def make_id_token(
+         "iss": URL,
+         "sub": str(client_user.id),
+         "aud": client_user.client.oauth_client_id,
+-        "exp": arrow.now().shift(hours=1).timestamp,
+-        "iat": arrow.now().timestamp,
+-        "auth_time": arrow.now().timestamp,
++        "exp": arrow.now().shift(hours=1).int_timestamp,
++        "iat": arrow.now().int_timestamp,
++        "auth_time": arrow.now().int_timestamp,
+     }
+ 
+     if nonce:
 --- a/app/models.py
 +++ b/app/models.py
-@@ -1856,7 +1856,7 @@
+@@ -1856,7 +1861,7 @@ class Alias(Base, ModelMixin):
              email=new_alias.email,
              note=new_alias.note,
              enabled=True,
 -            created_at=int(new_alias.created_at.timestamp),
-+            created_at=int(new_alias.created_at.timestamp()),
++            created_at=new_alias.created_at.int_timestamp,
          )
          EventDispatcher.send_event(user, EventContent(alias_created=event))
          emit_alias_audit_log(
+--- a/app/paddle_callback.py
++++ b/app/paddle_callback.py
+@@ -28,6 +28,6 @@ def failed_payment(sub: Subscription, subscription_id: str):
+         render(
+             "transactional/subscription-cancel.txt",
+             user=user,
+-            end_date=arrow.arrow.datetime.utcnow(),
++            end_date=arrow.utcnow().naive,
+         ),
+     )
+--- a/app/subscription_webhook.py
++++ b/app/subscription_webhook.py
+@@ -10,7 +10,7 @@ def execute_subscription_webhook(user: User):
+     )
+     sl_subscription_end = None
+     if subscription_end:
+-        sl_subscription_end = subscription_end.timestamp
++        sl_subscription_end = subscription_end.int_timestamp
+     event = UserPlanChanged(plan_end_time=sl_subscription_end)
+     EventDispatcher.send_event(user, EventContent(user_plan_change=event))
+     Session.commit()
+--- a/commands/send_lifetime_user_events.py
++++ b/commands/send_lifetime_user_events.py
+@@ -77,7 +77,7 @@ for batch_start in range(pu_id_start, max_pu_id, step):
+                 include_partner_subscription=False
+             )
+             if plan_end:
+-                event = UserPlanChanged(plan_end_time=plan_end.timestamp)
++                event = UserPlanChanged(plan_end_time=plan_end.int_timestamp)
+                 with_plan += 1
+             else:
+                 event = UserPlanChanged()
 --- a/templates/base.html
 +++ b/templates/base.html
 @@ -86,7 +86,7 @@
@@ -16,7 +269,7 @@
    <body>
      <div class="page">
 -      {% if NOW.timestamp < 1701475201 and current_user.is_authenticated and current_user.should_show_upgrade_button() %}
-+      {% if NOW.timestamp() < 1701475201 and current_user.is_authenticated and current_user.should_show_upgrade_button() %}
++      {% if NOW.int_timestamp < 1701475201 and current_user.is_authenticated and current_user.should_show_upgrade_button() %}
  
          <div class="alert alert-success text-center mb-0" role="alert">
            Black Friday: $20 for the first year instead of $30. Available until December 1st.
@@ -27,7 +280,7 @@
  {% block default_content %}
  
 -  {% if NOW.timestamp < 1733184000 %}
-+  {% if NOW.timestamp() < 1733184000 %}
++  {% if NOW.int_timestamp < 1733184000 %}
  
      <div class="alert alert-primary">
        Lifetime deal for SimpleLogin Premium and Proton Pass Plus for $199
