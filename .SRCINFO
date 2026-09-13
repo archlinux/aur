@@ -15,6 +15,6 @@ pkgbase = argos-bin
 	options = !strip
 	options = !debug
 	source = Argos_0.1.5_amd64.AppImage::https://github.com/thothlab/argos-app/releases/download/v0.1.5/Argos_0.1.5_amd64.AppImage
-	sha256sums = 2b444ae9f474eb3deb4a8d3a48212fdf023255317e1d2cf7dd6cdc3b450af245
+	sha256sums = 215c35eaf2ab2a65279f66d4bfec0fdef142094652c6f0c7df27ab5aa53fb2ea
 
 pkgname = argos-bin

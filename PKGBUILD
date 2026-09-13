@@ -19,7 +19,7 @@ depends=('fuse2' 'webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3')
 options=('!strip' '!debug')
 source=("Argos_${pkgver}_amd64.AppImage::https://github.com/thothlab/argos-app/releases/download/v${pkgver}/Argos_${pkgver}_amd64.AppImage")
 noextract=("Argos_${pkgver}_amd64.AppImage")
-sha256sums=('2b444ae9f474eb3deb4a8d3a48212fdf023255317e1d2cf7dd6cdc3b450af245')
+sha256sums=('215c35eaf2ab2a65279f66d4bfec0fdef142094652c6f0c7df27ab5aa53fb2ea')
 
 prepare() {
   chmod +x "Argos_${pkgver}_amd64.AppImage"
