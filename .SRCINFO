@@ -1,0 +1,16 @@
+pkgbase = aniterm
+	pkgdesc = Stream anime from your terminal
+	pkgver = 1.0.29
+	pkgrel = 1
+	url = https://github.com/amalxloop/aniterm
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-pip
+	depends = python
+	depends = mpv
+	depends = yt-dlp
+	depends = python-curl-cffi
+	source = aniterm-1.0.29::https://github.com/amalxloop/aniterm/archive/v1.0.29.tar.gz
+	sha256sums = SKIP
+
+pkgname = aniterm
