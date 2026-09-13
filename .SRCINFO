@@ -1,6 +1,6 @@
 pkgbase = hyprlogin
 	pkgdesc = Work-in-progress greetd greeter forked from hyprlock
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/AuthenticSm1les/hyprlogin
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = hyprlogin
 	optdepends = hyprland: greeter compositor session
 	options = !debug
 	backup = etc/hyprlogin/hyprlogin.conf
-	source = hyprlogin-0.1.0.tar.gz::https://github.com/AuthenticSm1les/hyprlogin/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 8c5950f4e052efb7bf2b398d8b8454051d3068a192430e80918b21e7e405c147
+	source = hyprlogin-0.3.0.tar.gz::https://github.com/AuthenticSm1les/hyprlogin/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = b12662f13d9dd55a87ddd6acbb8693f19bee005e775a9c501fcac6265302a40b
 
 pkgname = hyprlogin
