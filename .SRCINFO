@@ -1,0 +1,16 @@
+pkgbase = dankvideo-git
+	pkgdesc = Fast, beautiful Material 3 Video Player built for Linux and the DankMaterialShell ecosystem, inspired by GNOME Showtime.
+	pkgver = r99.05840ee
+	pkgrel = 1
+	url = https://github.com/hthienloc/dankapps
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	depends = quickshell
+	conflicts = dankvideo
+	source = dankvideo-git::git+https://github.com/hthienloc/dankapps.git
+	sha256sums = SKIP
+
+pkgname = dankvideo-git
