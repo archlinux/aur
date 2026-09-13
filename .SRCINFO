@@ -1,6 +1,6 @@
 pkgbase = acreetionos-mediawriter-bin
 	pkgdesc = AcreetionOS USB Flasher — Write AcreetionOS images to USB drives (binary)
-	pkgver = 5.3.1
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://github.com/spivanatalie64/AcreetionMediaWriter
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = acreetionos-mediawriter-bin
 	optdepends = udisks2: Disk Management Service for disk installation
 	provides = acreetionos-mediawriter
 	conflicts = acreetionos-mediawriter
-	source = https://github.com/spivanatalie64/AcreetionMediaWriter/releases/download/5.3.1/AcreetionOSMediaWriter-linux-x86_64-5.3.1.pkg.tar.zst
+	source = https://github.com/spivanatalie64/AcreetionMediaWriter/releases/download/5.4.1/AcreetionOSMediaWriter-linux-x86_64-5.4.1.pkg.tar.zst
 	sha256sums = SKIP
 
 pkgname = acreetionos-mediawriter-bin
