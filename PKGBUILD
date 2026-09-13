@@ -1,15 +1,15 @@
 # Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 
 pkgname=usql
-pkgver=0.21.4
-pkgrel=2
+pkgver=0.21.5
+pkgrel=1
 pkgdesc='A universal command-line interface for SQL databases'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xo/usql"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6dfe613eff669606ba52f8c4a046d70677c47b2af61e87dc471ae2c44e50cca7')
+sha256sums=('4d83d7ef218d2a309d08decec542d30a98ff59e693d7a2245f2184856a0b3f56')
 
 build() {
     cd $pkgname-$pkgver
