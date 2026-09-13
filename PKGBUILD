@@ -3,7 +3,7 @@
 _gitauthor=nao1215
 _gitname=mimixbox
 _appname=${_gitname}
-pkgname=${_appname}-bin
+pkgname=${_gitname}-bin
 pkgdesc="BusyBox-inspired toolbox for Linux with additional original commands"
 
 pkgver=0.42.2
@@ -20,11 +20,11 @@ url=${_ghurl}
 license=('Apache-2.0')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${pkgname%-bin}")
 
 options=('!strip')
 
-_pkgsrc="${_appname}-${pkgver}"
+_pkgsrc="${_gitname}-${pkgver}"
 
 source=("${_pkgsrc}-checksums.txt::${url}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${url}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
