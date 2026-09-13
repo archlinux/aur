@@ -1,0 +1,10 @@
+post_install() {
+    echo "Setting CAP_SYS_RAWIO & CAP_SYS_ADMIN capabilities on /usr/bin/diskwatch..."
+    setcap 'cap_sys_rawio,cap_sys_admin+eip' usr/bin/diskwatch
+}
+
+post_upgrade() {
+    post_install "$1"
+}
+
+# vim:set ts=2 sw=2 et:

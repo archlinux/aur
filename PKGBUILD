@@ -28,6 +28,8 @@ depends=('glibc' 'libgcc' 'smartmontools')
 
 provides=("${_appname}")
 
+install="${_appname}.install"
+
 options=('!lto' '!strip')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")

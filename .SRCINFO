@@ -3,6 +3,7 @@ pkgbase = diskwatch
 	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/matthart1983/diskwatch
+	install = diskwatch.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
