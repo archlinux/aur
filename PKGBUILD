@@ -7,7 +7,7 @@
 # traceroute) that also installs /usr/bin/etr, hence the name and conflicts.
 
 pkgname=etr-terminal-bin
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Reconnecting remote shell over QUIC — a Rust implementation of Eternal Terminal (et)"
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,10 @@ source_x86_64=("etr-${pkgver}-linux-x86_64::${url}/releases/download/v${pkgver}/
                "etrs-${pkgver}-linux-x86_64::${url}/releases/download/v${pkgver}/etrs-linux-x86_64")
 source_aarch64=("etr-${pkgver}-linux-aarch64::${url}/releases/download/v${pkgver}/etr-linux-aarch64"
                 "etrs-${pkgver}-linux-aarch64::${url}/releases/download/v${pkgver}/etrs-linux-aarch64")
-sha256sums_x86_64=('d93b28a355fdbf7b177db40645e9df72ebb3d942574439f5d802386f9518b557'
-                   '0f25957c7bdfa975c9a798489817dfdae8151689065537f5fcdc881575a5153c')
-sha256sums_aarch64=('92f825b460aae90ad9c58341406294e6456809e275b5090ed7c0c7f6e6333b6a'
-                    '6f4e85dde4e3b931e001c8dc31ba67a8b4c9cf56f8903d82c6108b97c1ec8fe6')
+sha256sums_x86_64=('09c2180b55117e535a4f736b06b293b6db7a47e3fd9bfdbfe4d1e2461ef95b32'
+                   'cb4521c3c77580acdd17f30399f0e355c12ad893475fb46784433e3910c28a4c')
+sha256sums_aarch64=('b353bc815ada787d2714baeecf6c30160f1138a94ba9c9dbaaa1568cda371018'
+                    '2a861f2bed5897c26c56fcd286ada073cda4dd230bdaf3414c044d95af42e0ba')
 
 package() {
     install -Dm755 "${srcdir}/etr-${pkgver}-linux-${CARCH}" "${pkgdir}/usr/bin/etr"
