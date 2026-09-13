@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=opentyrian
-pkgver=2.1.20221123
+pkgver=2.1.20260912
 pkgrel=1
 pkgdesc='Open Source port of the classic DOS shoot-em-up Tyrian'
 url="https://github.com/$pkgname/$pkgname"
@@ -14,10 +14,15 @@ provides=('tyrian')
 optdepends=('hicolor-icon-theme: .desktop file icons')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/v${pkgver}.tar.gz"
         'http://camanis.net/tyrian/tyrian21.zip')
-sha256sums=('e0e8a8b0d61de10a3a65789ace9ea8e8c5d8dc67f3e423d2c852d64da38aeeb9'
+sha256sums=('2d4df6182a728bd769b7779db9ae8e8ad78f0f5cac49dcddd4cf63add5d34d93'
             '7790d09a2a3addcd33c66ef063d5900eb81cc9c342f4807eb8356364dd1d9277')
 
 _srcdir="${pkgname}-${pkgver}"
+
+prepare() {
+	cd "$_srcdir"
+	sed -i 's/README/README.md/' 'Makefile'
+}
 
 build() {
 	make prefix=/usr all -C "$_srcdir"
@@ -28,7 +33,6 @@ package() {
 	make DESTDIR="$pkgdir" prefix=/usr install
 
 	install -Dm644 "linux/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	for _x in 22 24 32 48 128; do
 		install -Dm644 "linux/icons/tyrian-$_x.png" \
 			"$pkgdir/usr/share/icons/hicolor/${_x}x${_x}/apps/$pkgname.png"
