@@ -1,0 +1,24 @@
+[Unit]
+Description=Devinorium - self-hosted web UI for AI coding agents
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=devinorium
+Group=devinorium
+StateDirectory=devinorium devinorium/data
+WorkingDirectory=/var/lib/devinorium
+EnvironmentFile=-/etc/devinorium/devinorium.env
+ExecStart=/usr/bin/devinorium-server
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/devinorium
+
+[Install]
+WantedBy=multi-user.target
