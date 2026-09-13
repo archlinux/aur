@@ -1,7 +1,7 @@
 pkgbase = velvet-mux-git
-	pkgdesc = Scriptable terminal multiplexer which draws heavy inspiration from tmux and neovim (development version)
+	pkgdesc = A scriptable terminal multiplexer (development version)
 	pkgver = 0.4.0.r139.g9a22bed
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/alexnlarsen/velvet
 	arch = aarch64
 	arch = x86_64
