@@ -1,0 +1,14 @@
+pkgbase = udpx
+	pkgdesc = Single-packet UDP scanner written in Go
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/nullt3r/udpx
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.17
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/nullt3r/udpx#tag=1.0.7
+	b2sums = SKIP
+
+pkgname = udpx

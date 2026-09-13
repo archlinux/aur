@@ -1,0 +1,5 @@
+[udpx]
+source = "github"
+github = "nullt3r/udpx"
+prefix = "v"
+use_max_release = true
