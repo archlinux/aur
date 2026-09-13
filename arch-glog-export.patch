@@ -1,0 +1,19 @@
+--- a/src/nncf/torch/quantization/extensions.py
++++ b/src/nncf/torch/quantization/extensions.py
+@@ -58,6 +58,7 @@ class QuantizedFunctionsCPULoader(ExtensionLoader):
+                 cls.name(),
+                 CPU_EXT_SRC_LIST,
+                 extra_include_paths=EXT_INCLUDE_DIRS,
++                extra_cflags=["-DGLOG_USE_GLOG_EXPORT"],
+                 build_directory=cls.get_build_dir(),
+                 verbose=False,
+             )
+@@ -87,6 +88,8 @@ class QuantizedFunctionsCUDALoader(ExtensionLoader):
+                 cls.name(),
+                 CUDA_EXT_SRC_LIST,
+                 extra_include_paths=EXT_INCLUDE_DIRS,
++                extra_cflags=["-DGLOG_USE_GLOG_EXPORT"],
++                extra_cuda_cflags=["-DGLOG_USE_GLOG_EXPORT"],
+                 build_directory=cls.get_build_dir(),
+                 verbose=False,
+             )
