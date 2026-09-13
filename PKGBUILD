@@ -1,0 +1,51 @@
+# Maintainer: HttpAnimations
+pkgname=devinorium
+pkgver=0.72.1
+pkgrel=1
+pkgdesc="Self-hosted web UI for AI coding agents - desktop client"
+arch=('x86_64')
+url="https://gitlab.com/HttpAnimations/devinorium"
+license=('AGPL-3.0-only')
+options=('!lto')
+depends=('gtk3' 'glibc' 'gcc-libs')
+makedepends=('cargo' 'clang' 'cmake' 'ninja' 'pkgconf')
+optdepends=('xdg-utils: open URLs from the app'
+            'zenity: native file dialogs')
+_flutterver=3.44.9
+source=("devinorium-v$pkgver.tar.gz::https://gitlab.com/HttpAnimations/devinorium/-/archive/v$pkgver/devinorium-v$pkgver.tar.gz"
+        "flutter_linux_${_flutterver}-stable.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutterver}-stable.tar.xz"
+        "devinorium.desktop"
+        "devinorium.svg")
+sha256sums=('4f1c76f8a4c138a3f4345472b66e8b77e94097a024f33b0f5efb5d1430e0cb5b'
+            'a9120fa4a01048bdef438ddc3a2d4b7389662ea98a95db86eeaf10382bc4efcb'
+            'SKIP'
+            'SKIP')
+
+build() {
+  export PATH="$srcdir/flutter/bin:$PATH"
+  export PUB_CACHE="$srcdir/pub-cache"
+  export CARGO_HOME="$srcdir/cargo-home"
+  flutter config --no-analytics >/dev/null 2>&1 || true
+  flutter precache --linux >/dev/null
+
+  cd "$pkgname-v$pkgver"
+  cargo build --release --locked
+
+  cd flutter
+  flutter pub get
+  flutter build linux --release
+  install -Dm755 ../target/release/devinorium build/linux/x64/release/bundle/server/devinorium
+}
+
+package() {
+  cd "$pkgname-v$pkgver"
+  install -d "$pkgdir/opt/devinorium"
+  cp -a flutter/build/linux/x64/release/bundle/. "$pkgdir/opt/devinorium/"
+
+  install -d "$pkgdir/usr/bin"
+  ln -s /opt/devinorium/devinorium_frontend "$pkgdir/usr/bin/devinorium"
+
+  install -Dm644 "$srcdir/devinorium.desktop" "$pkgdir/usr/share/applications/devinorium.desktop"
+  install -Dm644 "$srcdir/devinorium.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/devinorium.svg"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
