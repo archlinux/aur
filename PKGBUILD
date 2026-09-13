@@ -7,7 +7,7 @@
 pkgname=audacity-git
 _pkgname=audacity
 pkgver=r0
-pkgrel=1
+pkgrel=2
 pkgdesc="A program that lets you manipulate digital audio waveforms (Audacity 4 development branch)"
 arch=('x86_64')
 url="https://github.com/audacity/audacity"
@@ -64,7 +64,6 @@ makedepends=(
 provides=(
 	'audacity'
 	'lv2-host'
-	'vamp-host'
 	'vst3-host'
 )
 conflicts=('audacity')
