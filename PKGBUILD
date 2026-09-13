@@ -4,7 +4,7 @@ _pkgname='multibase'
 _srcname="py-${_pkgname}"
 pkgname="python-${_pkgname}"
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Multibase implementation for Python'
 arch=('any')
 url="https://github.com/multiformats/${_srcname}"
@@ -52,6 +52,6 @@ check() {
 
 package() {
 	cd -- "${_srcname}-${pkgver}" || return 1
-	python -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
+	python -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode 2 dist/*.whl
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

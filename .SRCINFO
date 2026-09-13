@@ -1,7 +1,7 @@
 pkgbase = python-multibase
 	pkgdesc = Multibase implementation for Python
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/multiformats/py-multibase
 	arch = any
 	license = MIT
