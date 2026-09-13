@@ -1,0 +1,17 @@
+pkgbase = ttymap
+	pkgdesc = Scriptable globe for the terminal — Mapbox Vector Tiles rendered as Unicode Braille
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/Kohei-Wada/ttymap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	options = !lto
+	source = ttymap-0.3.1.tar.gz::https://github.com/Kohei-Wada/ttymap/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 54bd19b1f49bceee29967ab5802c5f38b5160c3acb3c83cf47932b3571b218b7
+
+pkgname = ttymap
