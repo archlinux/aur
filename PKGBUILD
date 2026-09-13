@@ -2,7 +2,7 @@
 
 pkgname=mastergo
 _pkgname=mastergo
-pkgver=1.11.5
+pkgver=1.11.7
 pkgrel=1
 pkgdesc='MasterGo desktop app repackaged from the official macOS release'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
 )
 noextract=("MasterGo-${pkgver}-mac-arm64.dmg")
 sha256sums=(
-  '43d3e85bfcdc3edfdd6a38086ad60705f38307f999667989897be1dd2bee1af4'
+  'e856ef5f6fd876a089f79f96d545f0a8a9070aeb8c7c2fbf26d0c969c460da01'
   '44fd0d776dc07cbe67827f1725447b7dbbd5b736baa649293a8ec5a6a2e000b4'
   '63d97f33c9c1f42c921f748c1567d08402618fbfce6f054fc8e4d307455376b0'
   '2e8b31a2ce5d52bafc22d01195d62cb8dd72f8d0e7bf23c638583b46cdcd26ec'
