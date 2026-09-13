@@ -1,7 +1,7 @@
 # Maintainer: imcb <irismessage@protonmail.com>
 
 pkgname='vlc-plugin-pipewire'
-pkgver='3'
+pkgver='4'
 pkgrel=1
 pkgdesc="PipeWire audio plugins for VLC"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=()
 provides=()
 conflicts=()
 source=("https://www.remlab.net/files/${pkgname}/${pkgname}-v${pkgver}.tar.xz")
-sha256sums=('dba410b7c11f295a6ea228bffeef31cf534f659ade75d15e7134308577124e7b')
+sha256sums=('13f19df13800c2a385c2b352299a7a69ccb1812a41bd77816db67f7a65faae8e')
 
 build() {
     cd "$pkgname-v$pkgver"

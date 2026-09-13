@@ -1,13 +1,13 @@
 pkgbase = vlc-plugin-pipewire
 	pkgdesc = PipeWire audio plugins for VLC
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://www.remlab.net/vlc-plugin-pipewire/
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = vlc
 	depends = pipewire
-	source = https://www.remlab.net/files/vlc-plugin-pipewire/vlc-plugin-pipewire-v3.tar.xz
-	sha256sums = dba410b7c11f295a6ea228bffeef31cf534f659ade75d15e7134308577124e7b
+	source = https://www.remlab.net/files/vlc-plugin-pipewire/vlc-plugin-pipewire-v4.tar.xz
+	sha256sums = 13f19df13800c2a385c2b352299a7a69ccb1812a41bd77816db67f7a65faae8e
 
 pkgname = vlc-plugin-pipewire
