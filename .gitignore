@@ -1,4 +1,9 @@
-audacity/*
-pkg/*
-src/*
-*.pkg.tar.zst
+src/
+pkg/
+*.pkg.tar.*
+*.log
+PREFIX.txt
+
+audacity/
+muse_framework/
+muse_deps/
