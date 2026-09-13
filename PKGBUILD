@@ -5,7 +5,7 @@
 
 _pkgname="hyprland"
 pkgname="$_pkgname-git"
-pkgver=0.56.2.r130.g4a4a527
+pkgver=0.56.2.r164.g1b85c7a
 pkgrel=1
 pkgdesc="Hyprland is an independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,6 @@ depends=(
   libdrm
   libglvnd
   libinput
-  libliftoff
   libx11
   libxcb
   libxcomposite
@@ -70,18 +69,12 @@ makedepends=(
   glaze
   hyprland-protocols-git
   hyprwayland-scanner-git
+  meson
   ninja
-  #patch
-  #pkgconf
   xorgproto
 )
 optdepends=(
-  'cmake: to build and install plugins using hyprpm'
-  'cpio: to build and install plugins using hyprpm'
-  'glaze: to build and install plugins using hyprpm'
-  'hyprwayland-scanner-git: to build and install plugins using hyprpm'
-  'hyprqt6engine-git: the recommended way to manage qt styles'
-  'meson: to build and install plugins using hyprpm'
+  'hyprpm-git: to build and install plugins'
   'rtkit: real-time scheduling support'
 )
 
@@ -93,6 +86,8 @@ source=("$_pkgsrc::git+$url.git")
 sha256sums=('SKIP')
 
 backup=("usr/share/xdg-desktop-portal/hyprland-portals.conf")
+
+install="hyprland-git.install"
 
 pkgver() {
   cd "$_pkgsrc"
@@ -109,6 +104,7 @@ build() {
     -W no-dev
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
+    -DNO_HYPRPM=1 # hyprpm is provided by hyprpm-git
   )
   cmake "${cmake_options[@]}"
   cmake --build build
