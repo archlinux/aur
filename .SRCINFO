@@ -1,0 +1,16 @@
+pkgbase = moarchy-vitals
+	pkgdesc = A task manager for a Linux phone: processor, memory, tasks and network
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/moarchy-apps
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-cairo
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/vitals-v0.1.0/moarchy-vitals-0.1.0.tar.gz
+	sha256sums = d199df2f268d68f3ab717bc1ee6cea19bc355401c509eda2ab4cb112c47b2f3d
+
+pkgname = moarchy-vitals
