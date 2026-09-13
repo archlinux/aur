@@ -3,7 +3,7 @@
 _gitauthor=nao1215
 _gitname=truss
 _appname=${_gitname}
-pkgname=${_appname}-bin
+pkgname=${_gitname}-bin
 pkgdesc="Rust image toolkit for CLI with signed URLs, SSRF protection, and AVIF/WebP/SVG support"
 
 pkgver=0.25.0
@@ -20,11 +20,11 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${pkgname%-bin}")
 
 options=('!strip')
 
-_pkgsrc="${_appname}-${pkgver}"
+_pkgsrc="${_gitname}-${pkgver}"
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md" "LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"${_pkgsrc}-checksums.txt::${_ghurl}/releases/download/${_gitversion}/checksums.txt")
