@@ -1,5 +1,5 @@
 pkgname=jetdb-cli
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="CLI tool for reading Microsoft Access (.mdb/.accdb) files"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('564fae87fbfa550c70e0f9e1ae8ed9861b07df64436de1162a7e9eb615e4effe')
+sha256sums=('64ebe457474fa6e561d98478867ef6083432437711ee6ac62dd131d084e8f794')
 
 prepare() {
   cd "jetdb-${pkgver}"
