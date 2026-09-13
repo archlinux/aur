@@ -1,7 +1,7 @@
 pkgbase = python-typer026
 	pkgdesc = Build great CLIs using Python type hints, compatibility release for Typer 0.26
 	pkgver = 0.26.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fastapi/typer
 	arch = any
 	license = MIT
