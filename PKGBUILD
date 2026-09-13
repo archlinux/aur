@@ -3,7 +3,7 @@
 _gitauthor=nao1215
 _gitname=gup
 _appname=${_gitname}
-pkgname=${_appname}-bin
+pkgname=${_gitname}-bin
 pkgdesc="Update binaries installed by \"go install\" with goroutines"
 
 pkgver=1.9.2
@@ -20,11 +20,11 @@ url=${_ghurl}
 license=('Apache-2.0')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${pkgname%-bin}")
 
 options=('!strip')
 
-_pkgsrc="${_appname}-${pkgver}"
+_pkgsrc="${_gitname}-${pkgver}"
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md" "LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"${_pkgsrc}-checksums.txt::${_ghurl}/releases/download/${_gitversion}/checksums.txt")
