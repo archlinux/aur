@@ -2,15 +2,13 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 pkgname=inklecate
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line compiler for ink: inkle's narrative scripting language"
 arch=('x86_64')
 url=https://www.inklestudios.com/ink/
 license=('MIT')
-conflicts=(inklecate inklecate-bin inklecate-git)
 depends=(glibc libgcc libstdc++ zlib)
 makedepends=(dotnet-sdk)
-options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/inkle/ink/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('7259d6c1ce735d330d7d01e105421787cbd43ad462f0bdbce5738989f0ae7c36')
 
