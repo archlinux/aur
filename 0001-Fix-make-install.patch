@@ -1,0 +1,35 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Sun, 13 Sep 2026 17:28:46 +0200
+Subject: [PATCH] Fix make install
+
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 43f9f0fca849..6596b33bcb66 100644
+--- a/Makefile
++++ b/Makefile
+@@ -145,19 +145,19 @@ installdirs :
+ .PHONY : install
+ install : $(TARGET) installdirs
+ 	$(INSTALL_PROGRAM) $(TARGET) $(DESTDIR)$(bindir)/
+-	$(INSTALL_DATA) NEWS README $(DESTDIR)$(docdir)/
++	$(INSTALL_DATA) NEWS README.md $(DESTDIR)$(docdir)/
+ 	$(INSTALL_DATA) linux/man/opentyrian.6 $(DESTDIR)$(man6dir)/opentyrian$(man6ext)
+ 	$(INSTALL_DATA) linux/opentyrian.desktop $(DESTDIR)$(desktopdir)/
+ 	$(INSTALL_DATA) linux/icons/tyrian-22.png $(DESTDIR)$(icondir)/hicolor/22x22/apps/opentyrian.png
+ 	$(INSTALL_DATA) linux/icons/tyrian-24.png $(DESTDIR)$(icondir)/hicolor/24x24/apps/opentyrian.png
+ 	$(INSTALL_DATA) linux/icons/tyrian-32.png $(DESTDIR)$(icondir)/hicolor/32x32/apps/opentyrian.png
+ 	$(INSTALL_DATA) linux/icons/tyrian-48.png $(DESTDIR)$(icondir)/hicolor/48x48/apps/opentyrian.png
+ 	$(INSTALL_DATA) linux/icons/tyrian-128.png $(DESTDIR)$(icondir)/hicolor/128x128/apps/opentyrian.png
+ 
+ .PHONY : uninstall
+ uninstall :
+ 	rm -f $(DESTDIR)$(bindir)/$(TARGET)
+-	rm -f $(DESTDIR)$(docdir)/NEWS $(DESTDIR)$(docdir)/README
++	rm -f $(DESTDIR)$(docdir)/NEWS $(DESTDIR)$(docdir)/README.md
+ 	rm -f $(DESTDIR)$(man6dir)/opentyrian$(man6ext)
+ 	rm -f $(DESTDIR)$(desktopdir)/opentyrian.desktop
+ 	rm -f $(DESTDIR)$(icondir)/hicolor/22x22/apps/opentyrian.png
