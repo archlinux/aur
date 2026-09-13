@@ -3,7 +3,7 @@
 pkgname='python-securetar'
 _module=${pkgname#python-}
 pkgver='2026.4.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module to handle tarfile backups."
 url="https://github.com/home-assistant-libs/securetar"
 depends=(
@@ -29,5 +29,5 @@ build() {
 
 package() {
 	cd "${srcdir}/${_module}-${pkgver}"
-	python -m installer --compile-bytecode=2 --destdir="$pkgdir" dist/*.whl
+	python -m installer --compile-bytecode 0 --compile-bytecode=2 --destdir="$pkgdir" dist/*.whl
 }

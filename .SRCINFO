@@ -1,7 +1,7 @@
 pkgbase = python-securetar
 	pkgdesc = Python module to handle tarfile backups.
 	pkgver = 2026.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/home-assistant-libs/securetar
 	arch = any
 	license = Apache-2.0
