@@ -1,4 +1,113 @@
-post_install()
-{
-  echo "Now run /opt/mssql/bin/mssql-conf setup"
+_masterdb=/var/opt/mssql/data/master.mdf
+
+_setup_hint() {
+	cat <<'MSG'
+
+  Microsoft SQL Server 2025 is installed but not yet configured.
+
+  1. Run the one-time setup (it asks for the edition, the licence terms and
+     the "sa" password):
+
+       sudo /opt/mssql/bin/mssql-conf setup
+
+  2. Enable and start the service:
+
+       sudo systemctl enable --now mssql-server
+
+  3. Check it came up:
+
+       systemctl status mssql-server
+       sudo journalctl -u mssql-server -e
+
+  The engine listens on TCP 1433 by default. Connect with sqlcmd, Azure Data
+  Studio, DBeaver or any SQL Server client as user "sa".
+
+MSG
+}
+
+post_install() {
+	_setup_hint
+}
+
+pre_upgrade() {
+	# $1 = new version, $2 = old version
+	local newmajor=${1%%.*} oldmajor=${2%%.*}
+
+	[ -f "$_masterdb" ] || return 0
+	[ "$newmajor" = "$oldmajor" ] && return 0
+
+	# A major-version jump rewrites every database file on the first start of
+	# the new engine and cannot be undone. Stop the service so that upgrade
+	# happens only when the administrator decides it does, not as a side
+	# effect of "pacman -Syu".
+	if systemctl is-active --quiet mssql-server 2>/dev/null; then
+		systemctl stop mssql-server || true
+		touch /var/opt/mssql/.arch-upgrade-stopped 2>/dev/null || true
+	fi
+}
+
+post_upgrade() {
+	local newmajor=${1%%.*} oldmajor=${2%%.*}
+
+	if [ ! -f "$_masterdb" ]; then
+		_setup_hint
+		return 0
+	fi
+
+	[ "$newmajor" = "$oldmajor" ] && return 0
+
+	cat <<MSG
+
+  ############################################################################
+  ##  ONE-WAY DATABASE UPGRADE AHEAD - READ BEFORE STARTING THE SERVICE     ##
+  ############################################################################
+
+  You just moved from SQL Server major version $oldmajor to $newmajor.
+
+  The next time mssql-server starts, every database in /var/opt/mssql
+  (master, msdb, model and all user databases) is rewritten to the new
+  on-disk format. That conversion is IRREVERSIBLE: the older engine can no
+  longer open those files and will abort with a fatal error. There is no
+  downgrade path and no supported way to run both majors side by side,
+  because /opt/mssql and /var/opt/mssql are fixed locations.
+
+  The service has been left stopped so nothing is converted yet.
+
+  Before you continue:
+
+    1. Back up /var/opt/mssql while it is still readable by the old engine,
+       e.g. with the service stopped:
+
+         sudo tar -C /var/opt -caf ~/mssql-backup-\$(date +%F).tar.zst mssql
+
+       (Or take proper BACKUP DATABASE dumps from the old engine first, by
+       downgrading this package, starting it, backing up, then upgrading.)
+
+    2. When you are ready to commit to version $newmajor:
+
+         sudo systemctl start mssql-server
+
+    3. Watch the conversion:
+
+         sudo journalctl -u mssql-server -f
+
+  Database compatibility levels are preserved across the upgrade, so existing
+  databases keep the behaviour they had; only the physical file format moves.
+
+MSG
+}
+
+pre_remove() {
+	systemctl stop mssql-server 2>/dev/null || true
+}
+
+post_remove() {
+	cat <<'MSG'
+
+  /var/opt/mssql has been left in place; it holds your databases.
+  Remove it manually if you no longer need them:
+
+      sudo rm -rf /var/opt/mssql
+
+MSG
 }

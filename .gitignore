@@ -5,3 +5,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!mssql-server.install
+!mssql-server.sysusers
