@@ -1,4 +1,4 @@
-# Maintainer: taxin <taxin@users.noreply.github.com>
+# Maintainer: taxin-404 <taxin404@duck.com>
 #
 # Prebuilt counterpart to packaging/aur/cordial/PKGBUILD. Where cordial (and
 # cordial-git) build the Rust workspace with cargo, this package downloads the
