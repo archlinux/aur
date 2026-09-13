@@ -1,14 +1,13 @@
 pkgbase = git-wd40
 	pkgdesc = Git with WD-40 applied
 	pkgver = 2.55.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Libre-WD-40/git
 	install = git.install
 	arch = i486
 	arch = i686
 	arch = pentium4
 	arch = x86_64
-	arch = arm
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64

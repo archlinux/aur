@@ -3,9 +3,9 @@
 pkgname=git-wd40
 _pkgname=git
 pkgver=2.55.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Git with WD-40 applied"
-arch=('i486' 'i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/Libre-WD-40/git'
 license=('LGPL-2.1')
 depends=('curl' 'expat' 'perl' 'perl-error' 'perl-mailtools'
@@ -64,10 +64,18 @@ _make() {
 build() {
   cd "${_pkgname}"
 
-  _make all man
+  # eurobuild4 (armv6h) only has 423MB RAM, no swap -- xmlto/xsltproc
+  # generating the man pages gets OOM-killed there. Skip doc/man on
+  # that arch only; every other arch still builds them.
+  if [ "$CARCH" = "armv6h" ]; then
+    _make all
+    _make -C contrib/subtree all
+  else
+    _make all man
+    _make -C contrib/subtree all man
+  fi
 
   _make -C contrib/credential/libsecret
-  _make -C contrib/subtree all man
   _make -C contrib/diff-highlight
 }
 
@@ -93,9 +101,15 @@ package() {
 
   cd "${_pkgname}"
 
-  _make \
-    DESTDIR="$pkgdir" \
-    install install-man
+  if [ "$CARCH" = "armv6h" ]; then
+    _make \
+      DESTDIR="$pkgdir" \
+      install
+  else
+    _make \
+      DESTDIR="$pkgdir" \
+      install install-man
+  fi
 
   # bash completion
   mkdir -p "$pkgdir"/usr/share/bash-completion/completions/
@@ -108,7 +122,11 @@ package() {
       "$pkgdir"/usr/lib/git-core/git-credential-libsecret
   _make -C contrib/credential/libsecret clean
   # subtree installation
-  _make -C contrib/subtree DESTDIR="$pkgdir" install install-man
+  if [ "$CARCH" = "armv6h" ]; then
+    _make -C contrib/subtree DESTDIR="$pkgdir" install
+  else
+    _make -C contrib/subtree DESTDIR="$pkgdir" install install-man
+  fi
   # the rest of the contrib stuff
   find contrib/ -name '.gitignore' -delete
   cp -a ./contrib/* "$pkgdir"/usr/share/git/
