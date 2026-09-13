@@ -1,0 +1,98 @@
+# b10938: reject JSON-schema numeric bounds before narrowing or overflow.
+--- a/common/json.h
++++ b/common/json.h
+@@ -179,6 +179,7 @@
+     bool is_boolean() const;
+     bool is_number()  const;
+     bool is_number_integer() const;
++    bool is_number_unsigned() const;
+     bool is_number_float()   const;
+
+     bool   empty() const;
+--- a/common/json.cpp
++++ b/common/json.cpp
+@@ -258,6 +258,7 @@
+ bool common_json::is_boolean()        const { return as_json(this).is_boolean(); }
+ bool common_json::is_number()         const { return as_json(this).is_number(); }
+ bool common_json::is_number_integer() const { return as_json(this).is_number_integer(); }
++bool common_json::is_number_unsigned() const { return as_json(this).is_number_unsigned(); }
+ bool common_json::is_number_float()   const { return as_json(this).is_number_float(); }
+
+ bool   common_json::empty() const { return as_json(this).empty(); }
+--- a/common/json-schema.cpp
++++ b/common/json-schema.cpp
+@@ -2,6 +2,7 @@
+ #include "common.h"
+
+ #include <cmath>
++#include <limits>
+ #include <map>
+ #include <stdexcept>
+ #include <string>
+@@ -28,8 +29,13 @@
+             return def;
+         }
+         const common_json & value = schema.at(key);
+-        if (!value.is_number_integer() || value.get<int>() < 0) {
+-            fail(path, key + " must be a non-negative integer");
++        if (value.is_number_unsigned()) {
++            if (value.get<uint64_t>() > uint64_t(std::numeric_limits<int>::max())) {
++                fail(path, key + " is outside the supported integer range");
++            }
++        } else if (!value.is_number_integer() || value.get<int64_t>() < 0 ||
++                   value.get<int64_t>() > std::numeric_limits<int>::max()) {
++            fail(path, key + " must be a non-negative integer in the supported range");
+         }
+         return value.get<int>();
+     }
+@@ -37,6 +43,13 @@
+     // a fractional bound is rounded inwards, towards the integers it still admits
+     static int64_t get_bound(const common_json & schema, const std::string & key, const std::string & path, bool round_up) {
+         const common_json & value = schema.at(key);
++        if (value.is_number_unsigned()) {
++            uint64_t bound = value.get<uint64_t>();
++            if (bound > uint64_t(INT64_MAX)) {
++                fail(path, key + " is outside the supported integer range");
++            }
++            return int64_t(bound);
++        }
+         if (value.is_number_integer()) {
+             return value.get<int64_t>();
+         }
+@@ -44,7 +57,12 @@
+             fail(path, key + " must be a number");
+         }
+         double d = value.get<double>();
+-        return (int64_t) (round_up ? std::ceil(d) : std::floor(d));
++        double bound = round_up ? std::ceil(d) : std::floor(d);
++        // double(INT64_MAX) rounds to 2^63, so the upper comparison is strict.
++        if (!std::isfinite(bound) || bound < -0x1p63 || bound >= 0x1p63) {
++            fail(path, key + " is outside the supported integer range");
++        }
++        return int64_t(bound);
+     }
+
+     static common_chat_schema::string_format get_format(const common_json & schema, const std::string & path) {
+@@ -214,12 +232,20 @@
+         if (schema.contains("minimum")) {
+             node->minimum = get_bound(schema, "minimum", path, /* round_up */ true);
+         } else if (schema.contains("exclusiveMinimum")) {
+-            node->minimum = get_bound(schema, "exclusiveMinimum", path, /* round_up */ false) + 1;
++            int64_t bound = get_bound(schema, "exclusiveMinimum", path, /* round_up */ false);
++            if (bound == INT64_MAX) {
++                fail(path, "exclusiveMinimum is outside the supported integer range");
++            }
++            node->minimum = bound + 1;
+         }
+         if (schema.contains("maximum")) {
+             node->maximum = get_bound(schema, "maximum", path, /* round_up */ false);
+         } else if (schema.contains("exclusiveMaximum")) {
+-            node->maximum = get_bound(schema, "exclusiveMaximum", path, /* round_up */ true) - 1;
++            int64_t bound = get_bound(schema, "exclusiveMaximum", path, /* round_up */ true);
++            if (bound == INT64_MIN) {
++                fail(path, "exclusiveMaximum is outside the supported integer range");
++            }
++            node->maximum = bound - 1;
+         }
+         return node;
+     }
