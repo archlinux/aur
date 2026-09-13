@@ -1,6 +1,6 @@
 pkgbase = proxysql-bin
 	pkgdesc = High-performance MySQL proxy with query routing, caching, and load balancing
-	pkgver = 3.0.9
+	pkgver = 3.0.11
 	pkgrel = 1
 	url = https://proxysql.com/
 	install = proxysql-bin.install
@@ -12,11 +12,11 @@ pkgbase = proxysql-bin
 	provides = proxysql
 	conflicts = proxysql
 	backup = etc/proxysql.cnf
-	source = proxysql_3.0.9-ubuntu24_amd64.deb::https://github.com/sysown/proxysql/releases/download/v3.0.9/proxysql_3.0.9-ubuntu24_amd64.deb
+	source = proxysql_3.0.11-ubuntu24_amd64.deb::https://github.com/sysown/proxysql/releases/download/v3.0.11/proxysql_3.0.11-ubuntu24_amd64.deb
 	source = proxysql-bin.sysusers
 	source = proxysql-bin.tmpfiles
-	sha256sums = a20548b17ede6d9e014decb1eefb1cb0775f643932561388770d2f50c8d316ab
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = cda9e28707c944ef673dac2a37b7d0c96b5d11c8df49daccaf377495c8ea69ff
+	sha256sums = b02df38d60e58d221a8143c6cc67046d2f23aa8fad2ccd8634629065e6ca3eb8
+	sha256sums = 1bd718424a1d5cc52d2c7b789254b6ee147532da801090aa0448ba28a9dbc1ca
 
 pkgname = proxysql-bin
