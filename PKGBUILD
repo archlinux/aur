@@ -1,11 +1,11 @@
 # Maintainer: LIghtJUNction <support@lmm.best>
 
 pkgname=lmm-api-go-bin
-pkgver=0.2.13
+pkgver=0.2.28
 pkgrel=1
 pkgdesc='LMM API Go backend, native CLI, and systemd service (prebuilt)'
 arch=('x86_64' 'aarch64')
-url='https://github.com/LIghtJUNction/api.lmm.best'
+url='https://github.com/TokenNotIncluded/api.lmm.best'
 license=('AGPL-3.0-only')
 depends=('ca-certificates' 'coreutils' 'libarchive' 'pacman' 'paru' 'sudo' 'systemd' 'tzdata' 'util-linux')
 makedepends=('cosign')
@@ -18,6 +18,7 @@ lmm_go_package_apply_metadata "$pkgver" "$pkgname" \
   'lmm-api-go' 'lmm-api-go-bin' 'lmm-api-go-git'
 backup=('etc/lmm-api-go/lmm-api-go.env')
 options=('!strip')
+install=lmm-api-go.install
 
 _release_tag="go-v${pkgver}"
 _legacy_bundled_version=0.1.34
@@ -26,7 +27,7 @@ _legacy_external_operator_version=0.1.57
 # go-v0.1.58 produced no release assets. Only signed 0.1.69 is accepted as the legacy N-1 layout.
 _artifact="lmm-api-go-${pkgver}-linux"
 _release_base="${url}/releases/download/${_release_tag}"
-source=('lmm-api-go-package.sh')
+source=('lmm-api-go-package.sh' 'lmm-api-go.install')
 source_x86_64=(
   "${_artifact}-amd64.tar.gz::${_release_base}/${_artifact}-amd64.tar.gz"
   "${_artifact}-amd64.tar.gz.sha256::${_release_base}/${_artifact}-amd64.tar.gz.sha256"
@@ -38,16 +39,19 @@ source_aarch64=(
   "${_artifact}-arm64.tar.gz.sigstore.json::${_release_base}/${_artifact}-arm64.tar.gz.sigstore.json"
 )
 noextract=("${_artifact}-amd64.tar.gz" "${_artifact}-arm64.tar.gz")
-sha256sums=('655e9346a6d87baa1cb81d97dcc412243d7ee305f90371b99d89033ea0e99bb1')
+sha256sums=(
+  '655e9346a6d87baa1cb81d97dcc412243d7ee305f90371b99d89033ea0e99bb1'
+  '0d66ac2265d289653a84b4d25a7601a779893b1cf011951dfe7b420ea8b4ccc6'
+)
 sha256sums_x86_64=(
-  '882a8d2500557a361bb223e08b04b8e3f5622a9bca0eb1bbe92e2854b871bdef'
-  '4593c8a556932dd296222a97b58bbb69c607738595a1a5cfc1a39908fe35d8ff'
-  '9b5409a1d79673ac977e079b1e76ac953615a59a1e843dba89c287141aec6c1a'
+  '3eba2af2aaa7175ae36b91e9c35a10616bb7acfaef68e584e0ce0fdaf57ce12d'
+  '60f3443b25c91da5fccac254b8aead4a17852100291fda5838289221cc3f96b5'
+  '080423da0ae1d346f78a4219f147899a13d2a8bf5ae5cf9ff6c6f3f1c1c1d31c'
 )
 sha256sums_aarch64=(
-  '3ff6f7114f7bd2c760f780163a3ae9093e1210373f099a5e828e9ae83a0e246a'
-  '56aac1c4cb26c47a24333b4c5304e566247eedb5600ea4db72e01fc24b8c1735'
-  'b6331cd53dadee576239a5c1144722a6e27fad91c36156577d15dcebbdd9f601'
+  '75caa62532bb926141bddc921be5ae9f63bb21743b53a73398029fde362e3752'
+  '671d35e75c0470e2bdaef3970cc0f3b3a63307f1d5e94ed90716b739bdd22772'
+  '1a328d7e659218fc20a1001261f3bd3bdae7a84e3c85eaf1677b09fc775b14cc'
 )
 
 case "${CARCH}" in
@@ -94,6 +98,14 @@ prepare() {
     fi
     [[ -f ${bundle}/API_ROUTE_CONTRACT_REVISION && ! -L ${bundle}/API_ROUTE_CONTRACT_REVISION ]] || return 1
     [[ $(<"${bundle}/API_ROUTE_CONTRACT_REVISION") =~ ^[0-9a-f]{64}$ ]] || return 1
+    if [[ -e ${bundle}/OAUTH_MANAGED_TOKEN_CAPABILITY ]]; then
+      [[ -f ${bundle}/OAUTH_MANAGED_TOKEN_CAPABILITY && ! -L ${bundle}/OAUTH_MANAGED_TOKEN_CAPABILITY ]] || return 1
+      [[ $(<"${bundle}/OAUTH_MANAGED_TOKEN_CAPABILITY") == v1 ]] || return 1
+    fi
+    if [[ -e ${bundle}/REFUND_TASK_DRAIN_CAPABILITY ]]; then
+      [[ -f ${bundle}/REFUND_TASK_DRAIN_CAPABILITY && ! -L ${bundle}/REFUND_TASK_DRAIN_CAPABILITY ]] || return 1
+      [[ $(<"${bundle}/REFUND_TASK_DRAIN_CAPABILITY") == v1 ]] || return 1
+    fi
     grep -Fqx 'Environment=LMM_API_FRONTEND_DIR=/srv/lmm-api-frontend/current' \
       "${bundle}/lmm-api.service"
   fi
@@ -147,6 +159,14 @@ package() {
     fi
     install -Dm0644 "${bundle}/API_ROUTE_CONTRACT_REVISION" \
       "${pkgdir}/usr/share/doc/${pkgname}/API_ROUTE_CONTRACT_REVISION"
+  fi
+  if [[ -f ${bundle}/OAUTH_MANAGED_TOKEN_CAPABILITY ]]; then
+    install -Dm0644 "${bundle}/OAUTH_MANAGED_TOKEN_CAPABILITY" \
+      "${pkgdir}/usr/share/doc/${pkgname}/OAUTH_MANAGED_TOKEN_CAPABILITY"
+  fi
+  if [[ -f ${bundle}/REFUND_TASK_DRAIN_CAPABILITY ]]; then
+    install -Dm0644 "${bundle}/REFUND_TASK_DRAIN_CAPABILITY" \
+      "${pkgdir}/usr/share/doc/${pkgname}/REFUND_TASK_DRAIN_CAPABILITY"
   fi
 
   install -d -m0755 "${pkgdir}/usr/share/lmm-api-go/edge-policy"

@@ -1,0 +1,9 @@
+post_install() {
+  systemctl daemon-reload
+  systemctl try-restart lmm-api.service
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  systemctl try-restart lmm-api.service
+}
