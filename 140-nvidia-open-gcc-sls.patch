@@ -1,9 +1,9 @@
 --- a/src/nvidia-modeset/Makefile
-+++ a/src/nvidia-modeset/Makefile
-@@ -166,6 +166,7 @@ ifeq ($(TARGET_ARCH),x86_64)
-   CONDITIONAL_CFLAGS += $(call TEST_CC_ARG, -fno-jump-tables)
++++ b/src/nvidia-modeset/Makefile
+@@ -167,6 +167,7 @@ ifeq ($(TARGET_ARCH),x86_64)
    CONDITIONAL_CFLAGS += $(call TEST_CC_ARG, -mindirect-branch=thunk-extern)
    CONDITIONAL_CFLAGS += $(call TEST_CC_ARG, -mindirect-branch-register)
+   CONDITIONAL_CFLAGS += $(call TEST_CC_ARG, -mfunction-return=thunk-extern)
 +  CONDITIONAL_CFLAGS += $(call TEST_CC_ARG, -mharden-sls=all)
  endif
  

@@ -4,7 +4,7 @@ pkgbase=nvidia-open-beta
 pkgname=(
     'nvidia-open-beta'
     'nvidia-open-beta-dkms')
-pkgver=610.57.04
+pkgver=615.71.09
 pkgrel=1
 epoch=1
 pkgdesc='NVIDIA open kernel modules (beta version)'
@@ -19,11 +19,11 @@ source=("https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-
         '120-nvidia-open-linux-rt-gift.patch'
         '130-nvidia-open-reproducible-build.patch'
         '140-nvidia-open-gcc-sls.patch')
-sha256sums=('0be1ce1905f579e68c1701c1286e15ddf02f5243e625773f5a997a8325dc856d'
-            '406ad63ea6cc469d311ecaa49f2b4c0b224fea1df57696bf888d0bac05e3f2bd'
+sha256sums=('b038fe5d70e7c3209459a8121f231543939895145f0ad0d58d34f170e7eaf7e9'
+            '7fb578c3ecb47f8895a22443f22f08c5319a5374790d628857c637d516f157ea'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
-            'c62b989627ae8b4ac919adf703794b181222dfb52d8ae727904c65cbc5a65eb6'
-            '7bf431dec09616d05da9135f3a0c5435fe5c5c44b3ac3da0c7c0ab0a762a687c')
+            '7f7cf450e909dd36c9cb37b4fc4a7ddce4d4b9554ad54b5d4738e61f8b746b66'
+            '8889fc942ff038ef3161209d3f72d87c8788fd8eb4853c79589c1ce54a4c3e25')
 
 prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
