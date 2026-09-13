@@ -1,6 +1,6 @@
 post_install() {
-    echo "Setting CAP_BPF & CAP_PERFMON capabilities on /usr/bin/syswatch..."
-    setcap 'cap_bpf,cap_perfmon+eip' usr/bin/syswatch
+    echo "Setting CAP_BPF & CAP_PERFMON & CAP_SYS_ADMIN capabilities on /usr/bin/syswatch..."
+    setcap 'cap_bpf,cap_perfmon,cap_sys_admin+eip' usr/bin/syswatch
 }
 
 post_upgrade() {
