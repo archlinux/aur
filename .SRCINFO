@@ -1,0 +1,20 @@
+pkgbase = amd-gpu-i2c-dkms-git
+	pkgdesc = AMD GPU internal I2C/SMBus bus driver
+	pkgver = r5.06ca41f
+	pkgrel = 1
+	url = https://github.com/twifty/amd-gpu-i2c
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	provides = amd-gpu-i2c-dkms
+	conflicts = amd-gpu-i2c-dkms
+	conflicts = amd-gpu-i2c
+	source = amd-gpu-i2c::git+https://github.com/twifty/amd-gpu-i2c.git
+	source = dkms.conf
+	source = amdgpu-i2c.conf
+	sha256sums = SKIP
+	sha256sums = 9191267839d18cb818959a91a4f9cae0ab9425f1ff05b474101ef120ef360214
+	sha256sums = a82419375efa45a97e28a4158613bfe9d1b54106770b771b61ccd64e8bb62186
+
+pkgname = amd-gpu-i2c-dkms-git

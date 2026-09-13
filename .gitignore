@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!dkms.conf
+!amdgpu-i2c.conf
+!LICENSE
