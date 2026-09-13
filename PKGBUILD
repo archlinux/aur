@@ -4,7 +4,7 @@
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=sipvicious
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Set of security tools that can be used to audit SIP based VoIP systems"
 arch=(any)
@@ -19,7 +19,7 @@ optdepends=(
 makedepends=(python-build python-installer python-wheel python-setuptools)
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('1c309a2aa996c5e34d2be85d459e4f47280467bc7178518767832bea9c55c85d9b22fff78f815cd7677eeaa882bf70955139e334ddf7a604bc62a37b6bfaaac6')
+b2sums=('66abe8a2b3c9423e31875f3c7e0d05cf174a876cbc3ffbc8d3fe1fa982ce7da7a16f18cc5a267d46795cdcd3bcba29f4684dc7a9fd3d67473cadda294a52af22')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
