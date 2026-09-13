@@ -1,6 +1,6 @@
 pkgbase = aube-bin
 	pkgdesc = A fast Node.js package manager
-	pkgver = 2.2.14
+	pkgver = 2.2.15
 	pkgrel = 1
 	url = https://github.com/jdx/aube
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = aube-bin
 	provides = aubr
 	provides = aubx
 	conflicts = aube
-	source = LICENSE-2.2.14::https://raw.githubusercontent.com/jdx/aube/v2.2.14/LICENSE
-	source = README-2.2.14.md::https://raw.githubusercontent.com/jdx/aube/v2.2.14/README.md
+	source = LICENSE-2.2.15::https://raw.githubusercontent.com/jdx/aube/v2.2.15/LICENSE
+	source = README-2.2.15.md::https://raw.githubusercontent.com/jdx/aube/v2.2.15/README.md
 	sha256sums = d12ab62ad9f4de7596b77e508910e6bcbb320f9550d665b581ce5b2e4a203e5a
 	sha256sums = 29573c637ccc6cfc97c07f845a5f17e3e85c05cfe5ee4cee0e00ddeab1fd2b19
-	source_x86_64 = aube-x86_64-2.2.14.tar.gz::https://github.com/jdx/aube/releases/download/v2.2.14/aube-v2.2.14-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 9f91fc9f2879e07fbc94ff840837d827203fca39a07d3d2452033686ad3ef86c
-	source_aarch64 = aube-aarch64-2.2.14.tar.gz::https://github.com/jdx/aube/releases/download/v2.2.14/aube-v2.2.14-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 5d9f70b243156d73f649fb670ab956d0ae090b0dc006467da36d5a4c223d7dfa
+	source_x86_64 = aube-x86_64-2.2.15.tar.gz::https://github.com/jdx/aube/releases/download/v2.2.15/aube-v2.2.15-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 42ef7b2c25cac36aa50bcacb8a31a1019b466adf3f5fbad416f410299ee5e99d
+	source_aarch64 = aube-aarch64-2.2.15.tar.gz::https://github.com/jdx/aube/releases/download/v2.2.15/aube-v2.2.15-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c275bb6f40b55b94b279c1057acf736a6327275a26dbacbc452b8573a2b2908d
 
 pkgname = aube-bin
