@@ -1,21 +1,45 @@
 pkgbase = python-gepa
 	pkgdesc = Optimize prompts, code, and more via reflective text evolution
-	pkgver = 0.0.27
-	pkgrel = 1
+	pkgver = 0.1.4
+	pkgrel = 2
 	url = https://github.com/gepa-ai/gepa
 	arch = any
 	license = MIT
+	checkdepends = python-cloudpickle>=3.0
+	checkdepends = python-langchain-core>=1.0
+	checkdepends = python-mcp
+	checkdepends = python-pytest
+	checkdepends = python-tqdm
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	optdepends = python-litellm: for the full extra (LLM backends, AUR)
-	optdepends = python-datasets: for the full extra (dataset adapters)
-	optdepends = python-mlflow: for the full extra (experiment tracking, AUR)
-	optdepends = python-wandb: for the full extra (experiment tracking, AUR)
-	optdepends = python-tqdm: for the full extra (progress bars)
-	source = https://files.pythonhosted.org/packages/source/g/gepa/gepa-0.0.27.tar.gz
-	sha256sums = 02ecb19e4aa6a1f5bb2994cd54b2057f25cd5e8cd662fee514303b2a8ba0a738
+	optdepends = python-tqdm>=4.66.1: progress bars
+	optdepends = python-cloudpickle>=3.0: robust state serialization and subprocess execution
+	optdepends = python-datasets>=4.5: dataset-backed examples and GSkill support
+	optdepends = python-pandas>=2.3.3: Python 3.14 dataset and tracking compatibility
+	optdepends = python-wandb>=0.23: Weights & Biases tracking (AUR)
+	optdepends = python-pyarrow>=22: Python 3.14 datasets and LanceDB support
+	optdepends = python-pydantic>=2.12: AnyMaths and Terminal-Bench adapters
+	optdepends = python-tiktoken>=0.12: Python 3.14 LiteLLM tokenization
+	optdepends = python-dspy: DSPy adapters (AUR)
+	optdepends = python-langchain>=1.0: LangChain model discovery
+	optdepends = python-langchain-core>=1.0: LangChain adapter
+	optdepends = python-mcp: Model Context Protocol adapter
+	optdepends = python-docker: GSkill container evaluation
+	optdepends = python-dotenv: GSkill environment loading
+	optdepends = python-yaml: GSkill and DSPy full-program adapters
+	optdepends = python-google-auth>=2.40.3: authenticated Google models in AnyMaths
+	optdepends = python-chromadb>=0.4: ChromaDB RAG vector store (AUR)
+	optdepends = python-weaviate-client>=4.0: Weaviate RAG vector store (AUR)
+	optdepends = python-qdrant-client>=1.15: Qdrant RAG vector store (AUR)
+	optdepends = python-pymilvus>=2.6: Milvus RAG vector store (AUR)
+	optdepends = python-lancedb>=0.22: LanceDB RAG vector store (AUR)
+	optdepends = python-numpy: reproducible numeric code execution and RAG fallbacks
+	optdepends = python-pytorch: reproducible PyTorch code execution
+	optdepends = python-psutil: reliable cleanup of code-execution child processes
+	source = gepa-0.1.4.tar.gz::https://github.com/gepa-ai/gepa/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 9fd2760b683631d6b9f9d7c2ade1027bed56627446c58bbebbfe35e290d2f53a
 
 pkgname = python-gepa
