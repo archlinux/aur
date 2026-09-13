@@ -1,5 +1,4 @@
 _masterdb=/var/opt/mssql/data/master.mdf
-_restartflag=/run/mssql-server.upgrade-restart
 
 _setup_hint() {
 	cat <<'MSG'
@@ -30,30 +29,9 @@ post_install() {
 	_setup_hint
 }
 
-pre_upgrade() {
+post_upgrade() {
 	# $1 = new version, $2 = old version
 	local newmajor=${1%%.*} oldmajor=${2%%.*}
-
-	rm -f "$_restartflag"
-
-	[ -f "$_masterdb" ] || return 0
-	[ "$newmajor" = "$oldmajor" ] && return 0
-
-	# Major version jump. Stop the engine before its binaries are swapped out
-	# from under it, and remember whether it was running so post_upgrade can
-	# put it back the way it found it.
-	if systemctl is-active --quiet mssql-server 2>/dev/null; then
-		: > "$_restartflag" 2>/dev/null || true
-		systemctl stop mssql-server || true
-	fi
-}
-
-post_upgrade() {
-	local newmajor=${1%%.*} oldmajor=${2%%.*}
-	local was_running=0
-
-	[ -f "$_restartflag" ] && was_running=1
-	rm -f "$_restartflag"
 
 	if [ ! -f "$_masterdb" ]; then
 		_setup_hint
@@ -65,56 +43,62 @@ post_upgrade() {
 	cat <<MSG
 
   ############################################################################
-  ##  SQL Server major version $oldmajor -> $newmajor : databases are converted  ##
+  ##  SQL Server major version $oldmajor -> $newmajor : action required                ##
   ############################################################################
 
-  On its first start the new engine rewrites every database in
+  The next time the engine starts it rewrites every database in
   /var/opt/mssql - master, msdb, model and all user databases - to the new
   on-disk format. This CANNOT BE UNDONE: version $oldmajor can no longer open
   those files afterwards, there is no downgrade path, and the two majors
   cannot run side by side because /opt/mssql and /var/opt/mssql are fixed
   locations.
 
-  Rolling back needs a copy of /var/opt/mssql taken BEFORE this upgrade, with
-  the service stopped. If you do not have one, going back means restoring
-  from a BACKUP DATABASE dump made by the old engine.
-
   Database compatibility levels are preserved, so existing databases keep the
   behaviour they had; only the physical file format moves.
 
+  NOTHING HAS BEEN CONVERTED YET. In keeping with Arch practice this package
+  does not start, stop or restart services, so the decision and the timing are
+  yours.
+
 MSG
 
-	if [ "$was_running" = 1 ]; then
+	if systemctl is-active --quiet mssql-server 2>/dev/null; then
 		cat <<'MSG'
-  The service was running before the upgrade and is being started again now,
-  so the conversion is happening as you read this. Follow it with:
+  The engine is still running from the previous version's binaries, which are
+  held open on disk, so it is unaffected until you restart it. Take a backup
+  while it can still be read by the old engine, then convert:
 
+      sudo systemctl stop mssql-server
+      sudo tar -C /var/opt --zstd -cf ~/mssql-pre-upgrade.tar.zst mssql
+      sudo systemctl start mssql-server
       sudo journalctl -u mssql-server -f
 
 MSG
-		systemctl start mssql-server || true
 	else
 		cat <<'MSG'
-  The service was not running, so nothing has been converted yet. It will be
-  converted the next time the engine starts - including automatically at boot
-  if the unit is enabled.
+  The service is stopped. Take a backup now if you want a way back, then
+  start it to convert:
+
+      sudo tar -C /var/opt --zstd -cf ~/mssql-pre-upgrade.tar.zst mssql
+      sudo systemctl start mssql-server
+      sudo journalctl -u mssql-server -f
+
+  Note that it will also convert on the next boot if the unit is enabled.
 
 MSG
 	fi
 }
 
-pre_remove() {
-	systemctl stop mssql-server 2>/dev/null || true
-	rm -f "$_restartflag"
-}
-
 post_remove() {
 	cat <<'MSG'
 
-  /var/opt/mssql has been left in place; it holds your databases.
-  Remove it manually if you no longer need them:
+  /var/opt/mssql has been left in place; it holds your databases. Remove it
+  manually if you no longer need them:
 
       sudo rm -rf /var/opt/mssql
+
+  If the engine was running it has not been stopped; this package does not
+  manage service state. Stop any leftover process yourself.
 
 MSG
 }
