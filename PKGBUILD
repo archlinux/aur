@@ -6,32 +6,14 @@
 #export CFLAGS+=" -march=$_cpu -O3"
 #export CXXFLAGS+=" -march=$_cpu -O3"
 
-# Export the variable matching your GPU, then run makepkg:
-#   CUDA_ARCH=120 makepkg -s --nocheck
-#
-# Architecture      Compute Cap.  GPUs
-# ─────────────────────────────────────────────────────────────────────────────
-# 121            12.1          GB10 (DGX Spark)
-# 120            12.0          GeForce RTX 5090/5080/5070/5060/5050,
-#                                 RTX PRO 6000/5000/4500/4000/2000 Blackwell
-# 103            10.3          GB300, B300 (data center)
-# 100            10.0          GB200, B200 (data center)
-# 90             9.0           H100, H200, GH200 (data center)
-# 89             8.9           GeForce RTX 4090/4080/4070/4060/4050,
-#                                 RTX 6000/5000/4500/4000 Ada, L4, L40, L40S
-# 87             8.7           Jetson AGX Orin, Orin NX, Orin Nano
-# 86             8.6           GeForce RTX 3090/3080/3070/3060/3050,
-#                                 RTX A6000/A5000/A4000/A3000/A2000, A40, A10
-# 80             8.0           A100, A30 (data center)
-# 75             7.5           GeForce RTX 2080/2070/2060, GTX 1650 Ti, T4
-#
-# Reference: https://developer.nvidia.com/cuda-gpus
-_cuda_arch="${CUDA_ARCH:-75;86;89;120}"
+# optionally define a specific GPU, see the here-doc text in prepare() for more
+_cuda_arch="${CUDA_ARCH:-75;86;89;120a-real}"
 
 pkgname=voxtype-cuda
 _pkgname=voxtype
-pkgver=1.0.1
-pkgrel=2
+_pkgver=1.1.0-rc5
+pkgver=${_pkgver//-/}
+pkgrel=1
 pkgdesc="Pure CUDA version of the push-to-talk voice-to-text tool"
 arch=(x86_64)
 url="https://voxtype.io"
@@ -74,14 +56,14 @@ backup=(etc/voxtype/config.toml)
 install=$pkgname.install
 validpgpkeys=('9CCF7915B750CAE8B095ED1AA3FC9F33FD209279')
 source=(
-  "$_pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz"
-  "$_pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz.asc"
+  "$_pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$_pkgver.tar.gz"
+  "$_pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$_pkgver/$_pkgname-$_pkgver.tar.gz.asc"
 )
-sha256sums=('a4d0a256167f58ce90153077da82620794422f5172c918625d480ff9ffca625e'
+sha256sums=('b4d0ffe3f4a8e22780b8f25b5df96df8358b2b313f9021cfe657f133e0bb6bbe'
             'SKIP')
 
 prepare() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname-$_pkgver"
 
     if [[ -z "${CUDA_ARCH:-}" ]]; then
       cat <<EOF
@@ -91,10 +73,10 @@ NOTE: CUDA_ARCH is not set, so this builds for the default set: $_cuda_arch
       multiplies the nvcc time. To build for yours only, interrupt now and
       set it, for example:
 
-       CUDA_ARCH=120 makepkg -si
+       CUDA_ARCH=120a-real makepkg -si
 
-  121  → GB10 (DGX Spark)
-  120  → GeForce RTX 5090/5080/5070/5060/5050, RTX PRO Blackwell
+  121a-real → GB10 (DGX Spark)
+  120a-real → GeForce RTX 5090/5080/5070/5060/5050, RTX PRO Blackwell
   103  → GB300, B300 (data center)
   100  → GB200, B200 (data center)
   90   → H100, H200, GH200
@@ -142,7 +124,7 @@ build() {
     env | grep -i rust || true
     echo "==============================="
 
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname-$_pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
@@ -150,7 +132,7 @@ build() {
     unset RUSTFLAGS DEBUG_RUSTFLAGS CFLAGS CXXFLAGS LDFLAGS
 
     # Remap build paths so binaries don't contain $srcdir references
-    local _src="$srcdir/$pkgname-$pkgver"
+    local _src="$srcdir/$_pkgname-$_pkgver"
     export RUSTFLAGS="--remap-path-prefix=$_src/= --remap-path-prefix=${CARGO_HOME}/registry/src/=cargo/"
     export CFLAGS="-ffile-prefix-map=$_src/="
     export CXXFLAGS="-ffile-prefix-map=$_src/="
@@ -189,11 +171,14 @@ build() {
         --config 'profile.release.codegen-units=8'
     cp target/release/voxtype voxtype-onnx
 
-    # Build OSD binaries: the launcher (voxtype-osd) plus both frontends.
-    # The launcher has no GUI deps; each frontend is gated on its feature
-    # so the cargo invocation needs both osd-gtk4 and osd-native enabled
-    # to produce all three. These don't need engine features (the OSD
-    # only consumes audio frames over IPC, not the transcribers).
+    # Build OSD binaries: the launcher (voxtype-osd) plus all three
+    # frontends and the audio-bridge sidecar.
+    # - voxtype-osd / voxtype-audio-bridge / voxtype-osd-quickshell have no
+    #   required-features (no GUI deps; quickshell loads QML at runtime).
+    # - voxtype-osd-gtk4 requires the osd-gtk4 feature.
+    # - voxtype-osd-native requires the osd-native feature.
+    # Engine features aren't needed — the OSD frontends consume audio
+    # frames over IPC, not the transcribers themselves.
     cargo clean
     cargo build --frozen --release \
         --bin voxtype-osd \
@@ -212,7 +197,7 @@ build() {
 }
 
 check() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname-$_pkgver"
 
     # Respect XDG Base Directory Specification
     export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
@@ -225,7 +210,7 @@ check() {
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname-$_pkgver"
 
     install -d "$pkgdir/usr/bin"
     ln -sf /usr/lib/voxtype/voxtype-cuda "$pkgdir/usr/bin/voxtype"
