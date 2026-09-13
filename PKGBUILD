@@ -1,17 +1,17 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname=nuclei-git
-pkgver=3.11.1.r6519.33d71f9
+pkgver=3.11.1.r6540.a04aba1
 pkgrel=1
-pkgdesc="Fast and customizable vulnerability scanner, git version"
+pkgdesc="Fast and customizable vulnerability scanner"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
 url="https://projectdiscovery.io/nuclei"
-license=(MIT)
+license=('MIT')
 depends=(
   'glibc'
 )
 makedepends=(
   'git'
-  'go>=1.26'
+  'go>=1.26.0'
 )
 provides=("nuclei=$pkgver")
 conflicts=("nuclei")
@@ -43,18 +43,18 @@ build() {
   ./docgen docs.md nuclei-jsonschema.json
 }
 
-#check() {
-#  cd nuclei
-#  export CGO_CPPFLAGS="$CPPFLAGS"
-#  export CGO_CFLAGS="$CFLAGS"
-#  export CGO_CXXFLAGS="$CXXFLAGS"
-#  export CGO_LDFLAGS="$LDFLAGS"
-#  export GOPATH="$srcdir"
-#  export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
-#  # Tests to skip
-#  # - github.com/projectdiscovery/nuclei/v3/lib: Connects to an external host and gets an unexpected result
-#  go test $(go list ./... | grep -v "nuclei/v3/lib$")
-#}
+check() {
+  cd nuclei
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export GOPATH="$srcdir"
+  export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
+  # Tests to skip
+  # - github.com/projectdiscovery/nuclei/v3/lib: Connects to an external host and gets an unexpected result
+  go test $(go list ./... | grep -v "nuclei/v3/lib$")
+}
 
 package() {
   cd nuclei
