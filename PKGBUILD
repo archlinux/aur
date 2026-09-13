@@ -5,7 +5,7 @@ _repo="${_pkgname}-python"
 _commit='640547832859f180d0668eac81a7ba7cbcfdc906'
 pkgname="python-${_pkgname}"
 pkgver=0.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Python library for the Isaacus API'
 arch=('any')
 url="https://github.com/isaacus-dev/${_repo}"
@@ -71,6 +71,6 @@ check() {
 
 package() {
 	cd -- "${_srcdir}" || return 1
-	python -m installer --destdir="${pkgdir}" --compile-bytecode=2 dist/*.whl
+	python -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode=2 dist/*.whl
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
