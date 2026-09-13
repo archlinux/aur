@@ -1,6 +1,6 @@
 pkgbase = mmlang
 	pkgdesc = Mobius Machine toolchain - assembler, VM and debugger for an esoteric language
-	pkgver = 1.1.0.3
+	pkgver = 1.2.0.3
 	pkgrel = 1
 	url = https://github.com/aura-deak/MMLang
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mmlang
 	depends = python-bitarray
 	provides = mmlang
 	conflicts = mmlang-git
-	source = mmlang-1.1.0.3.tar.gz::https://github.com/aura-deak/MMLang/archive/refs/tags/v1.1.0.3.tar.gz
-	sha256sums = 27863feaa360e96222513868e1600248efbd4fe9eae101ef69d6ced84b3016b4
+	source = mmlang-1.2.0.3.tar.gz::https://github.com/aura-deak/MMLang/archive/refs/tags/v1.2.0.3.tar.gz
+	sha256sums = 4f7210cdac41d0648ed2b8c64036e8193da312200b8a906ed9569886e6d84bd8
 
 pkgname = mmlang

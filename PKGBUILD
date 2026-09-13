@@ -1,6 +1,6 @@
 # Maintainer: aura-deak <https://github.com/aura-deak>
 pkgname=mmlang
-pkgver=1.1.0.3
+pkgver=1.2.0.3
 pkgrel=1
 pkgdesc="Mobius Machine toolchain - assembler, VM and debugger for an esoteric language"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'python-bitarray')
 provides=('mmlang')
 conflicts=('mmlang-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aura-deak/MMLang/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('27863feaa360e96222513868e1600248efbd4fe9eae101ef69d6ced84b3016b4')
+sha256sums=('4f7210cdac41d0648ed2b8c64036e8193da312200b8a906ed9569886e6d84bd8')
 
 package() {
   cd "MMLang-$pkgver"
