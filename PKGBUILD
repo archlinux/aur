@@ -1,6 +1,6 @@
 # Maintainer: shahriyardx <mdshahriyaralam552@gmail.com>
 pkgname=baaz
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Falcon-fast segmented download manager - Chrome interception and Omarchy bar widget"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libnotify: desktop notifications'
             'yt-dlp: media-site downloads (YouTube, TikTok, ...)'
             'omarchy: status bar widget (baaz install-bar)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2793e9397528740abed1c7830ad49a976a4b72b50eb3b0a9424f1710f12fd4ef')
+sha256sums=('c7bafce8c461fe8e8020f03d7d101ae15bbc1bab5fd4716afd02f859f1eb6498')
 
 build() {
   cd "$pkgname-$pkgver"
