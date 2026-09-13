@@ -8,7 +8,7 @@ pkgbase = patchsplit-bin
 	depends = curl
 	provides = patchsplit
 	conflicts = patchsplit
-	source_x86_64 = https://github.com/zitzhen/patchsplit/releases/download/v1.1.0/patchsplit-linux-x86_64.tar.gz
+	source_x86_64 = patchsplit-1.1.0-x86_64.tar.gz::https://github.com/zitzhen/patchsplit/releases/download/v1.1.0/patchsplit-linux-x86_64.tar.gz
 	sha256sums_x86_64 = b74ef7b26cc66ddc129d058e640cf47d8490b04e19a652fcfa3924ce50588669
 
 pkgname = patchsplit-bin

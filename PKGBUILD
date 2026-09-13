@@ -9,7 +9,7 @@ license=('MIT')
 depends=('curl')
 provides=('patchsplit')
 conflicts=('patchsplit')
-source_x86_64=("${url}/releases/download/v${pkgver}/patchsplit-linux-x86_64.tar.gz")
+source_x86_64=("patchsplit-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/patchsplit-linux-x86_64.tar.gz")
 sha256sums_x86_64=('b74ef7b26cc66ddc129d058e640cf47d8490b04e19a652fcfa3924ce50588669')
 package() {
   cd "${srcdir}"
