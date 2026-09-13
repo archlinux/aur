@@ -8,7 +8,7 @@
 # by hand.
 pkgname=sharkfin-keyboard
 _pkgname=sharkfin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Configurator for Attack Shark and other ROYUAN keyboards'
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=('sharkfin')
 # empty directory plus a dangling symlink. namcap flags both.
 options=('!lto' '!debug')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('3bbd9963aa71a0db7a678a657097574926325d0116cc2560fd788e263c48f88d60aad7f34be65204599d224bb794bac7ddf243295ce05ba0796342b1b314b54c')
+b2sums=('a8f5acb2623609c4e527d0e970556b45ef0104122016377e0dbb8450786c9e0dfb9386925a4761bf2edb9d61f45edc3f4cb735afbc29ae967b077ddb7950d52d')
 
 prepare() {
   cd "$_pkgname-$pkgver/app"
@@ -56,6 +56,8 @@ package() {
   install -Dm0755 "app/src-tauri/target/release/$_pkgname" -t "$pkgdir/usr/bin/"
   install -Dm0644 "packaging/$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm0644 "packaging/70-$_pkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+  install -Dm0644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm0644 'THIRD-PARTY-NOTICES.md' -t "$pkgdir/usr/share/licenses/$pkgname/"
   local _size
   for _size in 32 128; do
     install -Dm0644 "app/src-tauri/icons/${_size}x${_size}.png" \
