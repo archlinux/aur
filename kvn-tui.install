@@ -3,6 +3,54 @@ configure_sing_box_capabilities() {
         echo "WARNING: setcap failed — run manually: sudo setcap cap_net_admin,cap_net_raw+ep /usr/bin/sing-box"
 }
 
+seed_migration_baseline() {
+    local installed_from="${1:-}"
+    local state_dir=/var/lib/kvn
+    local baseline="$state_dir/migration-baseline"
+    local migrations=/usr/lib/kvn/migrations
+    local tmp
+    local introduced
+
+    [[ ! -e "$baseline" ]] || return 0
+    install -dm755 "$state_dir"
+    tmp=$(mktemp "$state_dir/.migration-baseline.XXXXXX") || return 1
+    for migration in "$migrations"/*.sh; do
+        [[ -f "$migration" ]] || continue
+        # Only a fresh installation starts with every shipped migration in its
+        # baseline. Upgrades from pre-framework versions still need all later
+        # migrations; stopping an incompatible daemon is a separate prerequisite.
+        if [[ -z "$installed_from" ]]; then
+            basename "$migration"
+            continue
+        fi
+        introduced=$(sed -n 's/^# kvn:introduced=//p' "$migration" | head -n1)
+        if [[ -n "$introduced" ]] && (( $(vercmp "$introduced" "$installed_from") <= 0 )); then
+            basename "$migration"
+        fi
+    done | sort >"$tmp"
+    chmod 0644 "$tmp"
+    mv -f "$tmp" "$baseline"
+}
+
+print_migration_notice() {
+    local installed_from="$1"
+    local migration
+    local introduced
+
+    [[ -d /usr/lib/kvn/migrations ]] || return 0
+    for migration in /usr/lib/kvn/migrations/*.sh; do
+        [[ -f "$migration" ]] || continue
+        introduced=$(sed -n 's/^# kvn:introduced=//p' "$migration" | head -n1)
+        if [[ -z "$introduced" ]] || (( $(vercmp "$introduced" "$installed_from") > 0 )); then
+            echo
+            echo "kvn has new migrations. They will run the next time you launch kvn."
+            echo "To run them now: kvn migrate"
+            echo
+            return 0
+        fi
+    done
+}
+
 print_service_enable_notice() {
     echo
     echo "======================================================================"
@@ -16,32 +64,18 @@ print_service_enable_notice() {
     echo
 }
 
-print_upgrade_notice() {
-    echo
-    echo "======================================================================"
-    echo "  ACTION REQUIRED: migrate kvn daemon autostart to systemd"
-    echo "======================================================================"
-    echo "Run as your regular user (without sudo):"
-    echo
-    echo "  systemctl --user enable --now kvn-tui.service"
-    echo
-    echo "If Omarchy previously started kvn from Hyprland autostart, also run:"
-    echo
-    echo "  kvn setup --omarchy"
-    echo
-    echo "======================================================================"
-    echo
-}
-
 post_install() {
+    seed_migration_baseline
     configure_sing_box_capabilities
     print_service_enable_notice
 }
 
 post_upgrade() {
+    seed_migration_baseline "$2"
     configure_sing_box_capabilities
+    print_migration_notice "$2"
+}
 
-    if (( $(vercmp "$2" 0.19.1) <= 0 )); then
-        print_upgrade_notice
-    fi
+post_remove() {
+    rm -f /var/lib/kvn/migration-baseline
 }

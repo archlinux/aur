@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Yarikov <dmitry@yarikov.com>
 pkgname=kvn-tui-bin
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Terminal VPN client for Arch Linux with vim navigation"
 arch=('x86_64')
@@ -9,19 +9,30 @@ license=('MIT')
 install=kvn-tui.install
 depends=('gcc-libs' 'dbus' 'libcap' 'sing-box')
 optdepends=(
+    'git: prepare Git resources required by package migrations'
+    'xdg-utils: open the project support page from the TUI'
     'wl-clipboard: clipboard integration on Wayland'
     'xclip: clipboard integration on X11 (preferred)'
     'xsel: clipboard integration on X11 (alternative)'
 )
 provides=('kvn-tui')
 conflicts=('kvn-tui')
-source=("https://github.com/yarikov/kvn-tui/releases/download/v0.29.0/kvn-tui-0.29.0-x86_64-linux.tar.gz")
-sha256sums=('9e89b10745acf18ccd8bf71e77d2342524b6749965a1c8543fa39fe568a60f7a')
+source=("https://github.com/yarikov/kvn-tui/releases/download/v0.30.0/kvn-tui-0.30.0-x86_64-linux.tar.gz")
+sha256sums=('5ee30745882e98b2cd0e6afd9ec328560a0137cfce08e523690b418df7ceaade')
 
 package() {
-    cd "kvn-tui-0.29.0-x86_64-linux"
+    cd "kvn-tui-0.30.0-x86_64-linux"
     install -Dm755 kvn-tui "$pkgdir/usr/bin/kvn-tui"
     ln -s kvn-tui "$pkgdir/usr/bin/kvn"
+    install -dm755 "$pkgdir/usr/lib/kvn/migrations"
+    for migration in migrations/*.sh; do
+        [[ -f "$migration" ]] || continue
+        install -m755 "$migration" "$pkgdir/usr/lib/kvn/migrations/"
+    done
+    for resources in migrations/*.resources.json; do
+        [[ -f "$resources" ]] || continue
+        install -m644 "$resources" "$pkgdir/usr/lib/kvn/migrations/"
+    done
     install -Dm644 kvn-tui.service "$pkgdir/usr/lib/systemd/user/kvn-tui.service"
     install -Dm644 kvn-tui-sing-box-capabilities.hook \
         "$pkgdir/usr/share/libalpm/hooks/kvn-tui-sing-box-capabilities.hook"
