@@ -9,6 +9,7 @@ pkgbase = localsend-bin
 	depends = fuse2
 	depends = xdg-user-dirs
 	depends = libayatana-appindicator
+	depends = libayatana-indicator
 	provides = localsend
 	conflicts = localsend
 	options = !debug
