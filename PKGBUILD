@@ -7,12 +7,12 @@
 # and repacks it untouched. No compilation, so arch lives with that artifact.
 #
 # The release asset name embeds the `git describe` build id
-# (0.13.2.r0.g323afa2 in this case), so a release bump touches both $pkgver
+# (0.14.0.r0.g2f623e2 in this case), so a release bump touches both $pkgver
 # and the pinned URL below. Regenerate the checksum with `sha256sum` on the
 # downloaded file.
 
 pkgname=cordial-bin
-pkgver=0.13.2
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Roblox's official Android build, run natively on Linux -- Cordial ships no Roblox code and fetches a signature-verified one (prebuilt)"
 arch=('x86_64')
@@ -43,8 +43,8 @@ install="$pkgname.install"
 # The binaries in the artifact were already stripped by CI's own makepkg;
 # stripping them again fails and would not make them byte-identical.
 options=('!strip' '!debug')
-source=("cordial.pkg.tar.zst::https://github.com/luohoa97/cordial/releases/download/v$pkgver/cordial-0.13.2.r0.g323afa2-1-x86_64.pkg.tar.zst")
-sha256sums=('ce1290a8f43cbe094b1aa99709534e0e3416319c4f5bd7b15a41e7ab88886ef0')
+source=("cordial.pkg.tar.zst::https://github.com/luohoa97/cordial/releases/download/v$pkgver/cordial-0.14.0.r0.g2f623e2-1-x86_64.pkg.tar.zst")
+sha256sums=('c3b0e337432cd239ad2d7e13db1ef91346971451865b6b93ea8d4d9b8b020b7b')
 
 package() {
   bsdtar -xf "$srcdir/cordial.pkg.tar.zst" -C "$pkgdir"
