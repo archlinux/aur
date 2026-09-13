@@ -2,7 +2,7 @@
 
 pkgname=prometheus-chrony-exporter
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus exporter for Chrony"
 url="https://github.com/SuperQ/chrony_exporter"
 arch=("x86_64")
@@ -10,6 +10,7 @@ license=("Apache-2.0")
 depends=("glibc")
 makedepends=("go" "git")
 options=(!lto)
+backup=('etc/conf.d/prometheus-chrony-exporter')
 source=(
     "git+https://github.com/SuperQ/chrony_exporter.git#tag=v${pkgver}?signed"
     "prometheus-chrony-exporter.conf"
