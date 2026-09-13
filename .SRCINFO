@@ -1,7 +1,7 @@
 pkgbase = python-ebcdic
 	pkgdesc = Additional EBCDIC codecs
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roskakori/CodecMapper
 	arch = any
 	license = BSD-2-Clause
