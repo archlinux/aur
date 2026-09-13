@@ -1,0 +1,43 @@
+diff --git a/tests/test_python_api.py b/tests/test_python_api.py
+index 7c2d38c..b922730 100644
+--- a/tests/test_python_api.py
++++ b/tests/test_python_api.py
+@@ -104,6 +104,8 @@ def test_dynamic_batch_size():
+ @skip_in_ci()
+ def test_torchvision_fasterrcnn_fpn():
+-    model = tv.models.detection.fasterrcnn_resnet50_fpn(pretrained=False)
++    model = tv.models.detection.fasterrcnn_resnet50_fpn(
++        weights=None, weights_backbone=None
++    )
+     x = [torch.rand(3, 300, 400), torch.rand(3, 500, 400)]
+     export_simplify_and_check_by_python_api(
+         model, x, export_kwargs={"opset_version": 11}
+@@ -114,6 +116,8 @@ def test_torchvision_fasterrcnn_fpn():
+ @skip_in_ci()
+ def test_torchvision_maskrcnn_fpn_opset11():
+-    model = tv.models.detection.maskrcnn_resnet50_fpn(pretrained=False)
++    model = tv.models.detection.maskrcnn_resnet50_fpn(
++        weights=None, weights_backbone=None
++    )
+     x = [torch.rand(3, 300, 400), torch.rand(3, 500, 400)]
+     export_simplify_and_check_by_python_api(
+         model, x, export_kwargs={"opset_version": 11}
+@@ -124,6 +128,8 @@ def test_torchvision_maskrcnn_fpn_opset11():
+ @skip_in_ci()
+ def test_torchvision_keypointrcnn_fpn():
+-    model = tv.models.detection.keypointrcnn_resnet50_fpn(pretrained=False)
++    model = tv.models.detection.keypointrcnn_resnet50_fpn(
++        weights=None, weights_backbone=None
++    )
+     x = [torch.rand(3, 300, 400), torch.rand(3, 500, 400)]
+     export_simplify_and_check_by_python_api(
+         model, x, export_kwargs={"opset_version": 11}
+@@ -149,5 +155,7 @@ def test_torchvision_mnasnet():
+ @skip_in_ci()
+ def test_torchvision_deeplabv3():
+-    model = tv.models.segmentation.deeplabv3_resnet50(pretrained=False)
++    model = tv.models.segmentation.deeplabv3_resnet50(
++        weights=None, weights_backbone=None
++    )
+     x = torch.rand(1, 3, 224, 224)
+     export_simplify_and_check_by_python_api(model, x)
