@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=webarchive
-pkgver=1.1.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Browse offline ZIM archives"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('meson')
 source=("WebArchive-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('393baa161617bd07896fbd1eb504d24b337b802c28db435077a18f1fbf6902f5')
+sha256sums=('4178d6b926344bf7c34be33c2436347b73101b0a436f451ea122abb560473283')
 
 build() {
   arch-meson "WebArchive-$pkgver" build
