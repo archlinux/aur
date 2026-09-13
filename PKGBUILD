@@ -5,11 +5,12 @@ pkgdesc='Development version of the DosierSkanilo GTK frontend'
 arch=('x86_64')
 url='https://gitlab.vahanus.net/dlang/dosierskanilo-gui'
 license=('custom:CC-BY-NC-SA-4.0')
-depends=('gtk3' 'gstreamer' 'dosierskanilo')
+depends=('gtk3' 'gstreamer')
 makedepends=('ldc' 'dub' 'git')
 provides=('dosierskanilo-gui')
 conflicts=('dosierskanilo-gui')
-source=('git+https://gitlab.vahanus.net/dlang/dosierskanilo-gui.git')
+source=('git+https://gitlab.vahanus.net/dlang/dosierskanilo-gui.git'
+        'git+https://github.com/cschlote/DosierSkanilo.git')
 sha256sums=('SKIP')
 
 pkgver() {
