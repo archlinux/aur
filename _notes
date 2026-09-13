@@ -25,6 +25,7 @@ _notes() {
     'create:Create a note from stdin, then commit and push it'
     'targets:List known repository targets'
     'agents:List installed agent targets'
+    'active-count:Emit the focused Herdr pane'\''s project note count and paths as JSON, including handoffs'
     'priority:Set a note priority, then commit and push it'
     'open-agent:Open a note in an installed agent through Herdr'
     'handoffs:Browse handoff-tagged notes'
@@ -81,6 +82,9 @@ _notes() {
           ;;
         agents)
           _notes_agents
+          ;;
+        active-count)
+          _notes_active_count
           ;;
         priority)
           _notes_priority
@@ -220,6 +224,9 @@ _notes_agents() {
     '(--format)--format[Output format]:value:(labels json)'
   )
   _arguments "${specs[@]}"
+}
+
+_notes_active_count() {
 }
 
 _notes_priority() {

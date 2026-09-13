@@ -136,6 +136,10 @@ _notes()
         _notes_agents "$i"
         return
         ;;
+      active-count)
+        _notes_active_count "$i"
+        return
+        ;;
       priority)
         _notes_priority "$i"
         return
@@ -178,7 +182,7 @@ _notes()
     return
   fi
 
-  COMPREPLY=( $(compgen -W 'root context list search read write delete move create targets agents priority open-agent handoffs mcp capture daemon' -- "$cur") )
+  COMPREPLY=( $(compgen -W 'root context list search read write delete move create targets agents active-count priority open-agent handoffs mcp capture daemon' -- "$cur") )
 }
 
 _notes_root()
@@ -543,6 +547,14 @@ _notes_agents()
     COMPREPLY=( $(compgen -W "$_filtered_flags" -- "$cur") )
     return
   fi
+
+}
+
+_notes_active_count()
+{
+  local cur prev words cword i
+  local _command_index="$1"
+  _init_completion -n "$COMP_WORDBREAKS" || return
 
 }
 

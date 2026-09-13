@@ -18,6 +18,7 @@ complete -c notes -n '__fish_use_subcommand' -f -a 'move' -d 'Move a note to ano
 complete -c notes -n '__fish_use_subcommand' -f -a 'create' -d 'Create a note from stdin, then commit and push it'
 complete -c notes -n '__fish_use_subcommand' -f -a 'targets' -d 'List known repository targets'
 complete -c notes -n '__fish_use_subcommand' -f -a 'agents' -d 'List installed agent targets'
+complete -c notes -n '__fish_use_subcommand' -f -a 'active-count' -d 'Emit the focused Herdr pane\'s project note count and paths as JSON, including handoffs'
 complete -c notes -n '__fish_use_subcommand' -f -a 'priority' -d 'Set a note priority, then commit and push it'
 complete -c notes -n '__fish_use_subcommand' -f -a 'open-agent' -d 'Open a note in an installed agent through Herdr'
 complete -c notes -n '__fish_use_subcommand' -f -a 'handoffs' -d 'Browse handoff-tagged notes'
@@ -119,6 +120,7 @@ complete -c notes -n '__fish_seen_subcommand_from targets; and not string match 
 complete -c notes -n '__fish_seen_subcommand_from agents' -f
 complete -c notes -n '__fish_seen_subcommand_from agents; and begin; not __fish_contains_opt format; or contains -- (commandline -poc)[-1] --format; end' -l format -d 'Output format' -r -f -a 'labels json'
 complete -c notes -n '__fish_seen_subcommand_from agents; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt format' -f -a '--format' -d 'Output format'
+complete -c notes -n '__fish_seen_subcommand_from active-count' -f
 complete -c notes -n '__fish_seen_subcommand_from priority' -f
 complete -c notes -n '__fish_seen_subcommand_from priority; and begin; not __fish_contains_opt path; or contains -- (commandline -poc)[-1] --path; end' -l path -d 'Absolute path to a note file inside the notes vault' -r -F
 complete -c notes -n '__fish_seen_subcommand_from priority; and begin; not __fish_contains_opt value; or contains -- (commandline -poc)[-1] --value; end' -l value -d 'New priority' -r -f -a 'low medium high critical'
