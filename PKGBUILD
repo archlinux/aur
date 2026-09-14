@@ -3,7 +3,7 @@
 pkgname=certbot-dns-aliyun
 _name=certbot-dns-aliyun
 pkgver=2.0.0
-pkgrel=0
+pkgrel=7
 epoch=
 pkgdesc="Aliyun DNS Authenticator plugin for Certbot"
 arch=('any')
@@ -19,10 +19,12 @@ depends=(
     #     python-acme
     python-requests
 )
-makedepends=(python-build
+makedepends=(
+    python-build
     python-installer
     python-wheel
-    python-setuptools)
+    python-setuptools
+)
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()

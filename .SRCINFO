@@ -1,7 +1,7 @@
 pkgbase = certbot-dns-aliyun
 	pkgdesc = Aliyun DNS Authenticator plugin for Certbot
 	pkgver = 2.0.0
-	pkgrel = 0
+	pkgrel = 7
 	url = https://pypi.org/project/certbot-dns-aliyun
 	arch = any
 	license = Apache-2.0
