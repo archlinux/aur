@@ -1,7 +1,7 @@
 pkgbase = python-micommunitytool-git
 	pkgdesc = Submitting a request for bootloader unlocking permission from the Mi Community automatically
 	pkgver = 1.5.4.r16.g5dd342a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MiForge/MiCommunityTool
 	arch = any
 	license = MIT

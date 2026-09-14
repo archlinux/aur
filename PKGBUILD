@@ -9,7 +9,7 @@ pkgname=(
     python-miapply-git
 )
 pkgver=1.5.4.r16.g5dd342a
-pkgrel=2
+pkgrel=3
 pkgdesc="Submitting a request for bootloader unlocking permission from the Mi Community automatically"
 arch=(any)
 url="https://github.com/MiForge/MiCommunityTool"
