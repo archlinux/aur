@@ -1,8 +1,8 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=vmaf-full
-pkgver=3.2.0
-pkgrel=3
+pkgver=3.2.1
+pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion with all features enabled'
 arch=('x86_64')
 url='https://github.com/Netflix/vmaf/'
@@ -28,11 +28,20 @@ source=(
     "vmaf-${pkgver}.tar.gz::https://github.com/Netflix/vmaf/archive/v${pkgver}/vmaf-${pkgver}.tar.gz"
     'vmaf-full-cuda-include-dir.patch')
 sha256sums=(
-    'a28f93f3b4fa65601be324587072e32a6a704a304ba7b1aec9b70b3f709bc1dc'
+    '5df7386911bc15fd1ca783132528748d219768ae4fc5f8e0b61184f041648092'
     '07486510455ea887e062d61cad7e831e92fc2e49ef189be7823d7e729bbd4f00')
 
 prepare() {
     cd "vmaf-${pkgver}"
+
+    # Upstream tagged v3.2.1 without updating Meson's project version.
+    local _meson='libvmaf/meson.build'
+    if [[ $(grep -Fc "version : '3.2.0'," "$_meson") -ne 1 ]]; then
+        printf 'ERROR: unexpected upstream Meson project version\n' >&2
+        return 1
+    fi
+    sed -i "s/version : '3.2.0'/version : '${pkgver}'/" "$_meson"
+
     patch -Np1 -i "${srcdir}/vmaf-full-cuda-include-dir.patch"
 }
 
