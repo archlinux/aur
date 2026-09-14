@@ -1,21 +1,22 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
-pkgname=fastpotify-git
-pkgver=0.5.0rc1.r5.6797a83
+pkgname=spotifast-git
+pkgver=0.8.0.r3.16ee665
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/spotifast"
 license=('MIT')
 install="${pkgname}.install"
-depends=('alsa-lib' 'libpulse' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
+depends=('dbus' 'alsa-lib' 'libpulse' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
 # MilkDrop builds libprojectM from source at compile time: cmake drives
 # that build, and clang carries the libclang bindgen reads its headers
 # with. Build with --no-default-features to leave the visualiser out.
 makedepends=('git' 'cargo' 'cmake' 'clang')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'pipewire-pulse: PipeWire as the PulseAudio server')
-provides=('fastpotify')
-conflicts=('fastpotify' 'fastpotify-bin')
+provides=("spotifast=$pkgver" "fastpotify=$pkgver" "fastpotify-git=$pkgver")
+conflicts=('fastpotify' 'fastpotify-bin' 'fastpotify-git' 'spotifast' 'spotifast-bin')
+replaces=('fastpotify-git')
 # !lto because ring compiles its own C and Arch's default CFLAGS put LTO
 # objects in the archive, which lld then cannot resolve: the link fails on
 # undefined ring_core_* symbols. The stable package is prebuilt and never
