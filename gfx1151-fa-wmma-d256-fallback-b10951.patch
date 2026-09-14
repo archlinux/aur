@@ -1,7 +1,7 @@
 From: llama.cpp-hip-gfx1151 maintainers
 Subject: [PATCH] hip: keep gfx1151 D=256 attention on the established dispatch path
 
-Precautionary b10938 fallback for the new RDNA WMMA dispatch inherited from
+Precautionary b10951 fallback for the new RDNA WMMA dispatch inherited from
 upstream #28102. A downstream Strix Halo report associates multi-image
 Flash-Next corruption and zero MTP acceptance with this optimization:
 https://github.com/Patt92/llama.cpp/commit/3294199a72d72fbc3061429c0bcc3050b065ed6e
