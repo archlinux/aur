@@ -1,13 +1,13 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-tools
 pkgver=26.09.7
-pkgrel=1
+pkgrel=2
 pkgdesc="MX Tools - Dashboard application launcher for various MX tools"
 arch=('x86_64')
 url="https://github.com/MX-Linux/mx-tools"
 license=('GPL3')
-depends=('qt6-base')
-makedepends=('cmake' 'ninja' 'qt6-tools')
+depends=('qt6-base' 'qt6-declarative')
+makedepends=('cmake' 'ninja' 'qt6-declarative' 'qt6-tools')
 source=("https://github.com/MX-Linux/mx-tools/archive/refs/tags/26.09.7.tar.gz")
 sha256sums=('aef5aba0feca3200c269b604c12dc843a897f1d49efa1bf2a6ba26b9c699a815')
 
@@ -36,7 +36,7 @@ package() {
     install -dm755 "${pkgdir}/usr/share/mx-tools/locale"
     install -Dm644 -t "${pkgdir}/usr/share/mx-tools/locale/" build/*.qm 2>/dev/null || true
 
-    install -Dm644 mx-tools.desktop "${pkgdir}/usr/share/applications/mx-tools.desktop"
+    install -Dm644 data/mx-tools.desktop "${pkgdir}/usr/share/applications/mx-tools.desktop"
 
     install -Dm644 icons/mx-tools.png "${pkgdir}/usr/share/icons/hicolor/96x96/apps/mx-tools.png"
     install -Dm644 icons/mx-tools.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mx-tools.svg"
