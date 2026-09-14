@@ -1,14 +1,13 @@
 pkgbase = nxp-uuu-qt-tool-git
 	pkgdesc = Gui tool based on mfgtools uuu.
 	pkgver = 1.0.0.r7.g6250cad
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/nixgnauhcuy/nxp-uuu-qt-tool
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = nuitka
 	makedepends = python-pyqt6
-	depends = glibc
 	depends = hicolor-icon-theme
 	optdepends = mfgtools: uuu (Universal Update Utility), mfgtools 3.0.Freescale/NXP I.MX Chip image deploy tools.
 	provides = nxp-uuu-qt-tool
