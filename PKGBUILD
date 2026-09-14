@@ -3,7 +3,7 @@
 pkgname=python-p115servedb
 _name=${pkgname#python-}
 pkgver=0.0.6.1
-pkgrel=5
+pkgrel=6
 epoch=
 pkgdesc="115 网盘基于 p115updatedb 导出数据库的挂载服务"
 arch=('any')
