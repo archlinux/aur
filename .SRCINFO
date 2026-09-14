@@ -1,7 +1,7 @@
 pkgbase = libcamera-ipu7-ov08x40
 	pkgdesc = Patched libcamera for Intel IPU7 with OV08X40
 	pkgver = 0.7.2
-	pkgrel = 3.8
+	pkgrel = 3.9
 	url = https://libcamera.org/
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -56,13 +56,14 @@ pkgbase = libcamera-ipu7-ov08x40
 	sha256sums = 3c520c0c2da92a8bbaaa3328839ebc54f08ff71fd9b0284307ddcdbcd57e8a64
 
 pkgname = intel-vision-drivers-dkms-ipu7-ov08x40
-	pkgdesc = Pinned Intel CVS DKMS driver for IPU7 OV08X40
+	pkgdesc = Internal vision-driver DKMS dependency for libcamera-ipu7-ov08x40
 	depends = dkms
 	provides = intel-vision-drivers-dkms=r59.845d6f8
 	conflicts = intel-vision-drivers-dkms
 	conflicts = intel-vision-drivers-dkms-git
 
 pkgname = libcamera-ipu7-ov08x40
+	pkgdesc = Native libcamera and PipeWire camera stack for Intel IPU7 OV08X40
 	depends = glibc
 	depends = gnutls
 	depends = intel-vision-drivers-dkms-ipu7-ov08x40
@@ -88,6 +89,7 @@ pkgname = libcamera-ipu7-ov08x40
 	backup = etc/libcamera/configuration.yaml
 
 pkgname = libcamera-ipu7-ov08x40-ipa
+	pkgdesc = Internal signed IPA dependency for libcamera-ipu7-ov08x40
 	depends = glibc
 	depends = libcamera-ipu7-ov08x40
 	depends = libcamera.so
@@ -99,12 +101,12 @@ pkgname = libcamera-ipu7-ov08x40-ipa
 	options = !strip
 
 pkgname = ipu-bridge-legacy-cvs-dkms
-	pkgdesc = Patched Intel IPU bridge DKMS module for legacy CVS ownership drivers
+	pkgdesc = Internal IPU bridge DKMS dependency for libcamera-ipu7-ov08x40
 	license = GPL-2.0-only
 	depends = dkms
 
 pkgname = v4l2-relayd-ipu7-ov08x40
-	pkgdesc = On-demand V4L2 compatibility camera for IPU7 OV08X40
+	pkgdesc = Full V4L2 browser compatibility stack for Intel IPU7 OV08X40
 	url = https://gitlab.com/vicamo/v4l2-relayd
 	license = GPL-2.0-only
 	depends = glib2

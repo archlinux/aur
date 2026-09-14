@@ -64,9 +64,21 @@ sudo systemctl enable --now v4l2-relayd-ipu7.service
 
 ## Install From The AUR
 
+For the complete stack, including the V4L2 compatibility camera used by
+Chromium-based browsers:
+
 ```bash
-paru -S libcamera-ipu7-ov08x40 v4l2-relayd-ipu7-ov08x40
+paru -S v4l2-relayd-ipu7-ov08x40
 ```
+
+For native libcamera and PipeWire camera support only:
+
+```bash
+paru -S libcamera-ipu7-ov08x40
+```
+
+Do not install the IPA or DKMS split packages directly. They are internal
+dependencies and are installed automatically by either user-facing package.
 
 ## Verification
 

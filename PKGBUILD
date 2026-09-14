@@ -8,7 +8,7 @@ pkgname=(
   v4l2-relayd-ipu7-ov08x40
 )
 pkgver=0.7.2
-pkgrel=3.8
+pkgrel=3.9
 pkgdesc="Patched libcamera for Intel IPU7 with OV08X40"
 arch=(x86_64)
 url="https://libcamera.org/"
@@ -82,7 +82,7 @@ _pick() {
 }
 
 package_intel-vision-drivers-dkms-ipu7-ov08x40() {
-  pkgdesc="Pinned Intel CVS DKMS driver for IPU7 OV08X40"
+  pkgdesc="Internal vision-driver DKMS dependency for libcamera-ipu7-ov08x40"
   depends=(dkms)
   provides=(intel-vision-drivers-dkms="r59.845d6f8")
   conflicts=(intel-vision-drivers-dkms intel-vision-drivers-dkms-git)
@@ -98,7 +98,7 @@ package_intel-vision-drivers-dkms-ipu7-ov08x40() {
 }
 
 package_ipu-bridge-legacy-cvs-dkms() {
-  pkgdesc="Patched Intel IPU bridge DKMS module for legacy CVS ownership drivers"
+  pkgdesc="Internal IPU bridge DKMS dependency for libcamera-ipu7-ov08x40"
   license=(GPL-2.0-only)
   depends=(dkms)
 
@@ -164,6 +164,7 @@ build() {
 }
 
 package_libcamera-ipu7-ov08x40() {
+  pkgdesc="Native libcamera and PipeWire camera stack for Intel IPU7 OV08X40"
   depends=(
     glibc
     gnutls
@@ -208,6 +209,7 @@ package_libcamera-ipu7-ov08x40() {
 }
 
 package_libcamera-ipu7-ov08x40-ipa() {
+  pkgdesc="Internal signed IPA dependency for libcamera-ipu7-ov08x40"
   depends=(
     glibc
     libcamera-ipu7-ov08x40
@@ -224,7 +226,7 @@ package_libcamera-ipu7-ov08x40-ipa() {
 }
 
 package_v4l2-relayd-ipu7-ov08x40() {
-  pkgdesc="On-demand V4L2 compatibility camera for IPU7 OV08X40"
+  pkgdesc="Full V4L2 browser compatibility stack for Intel IPU7 OV08X40"
   url="https://gitlab.com/vicamo/v4l2-relayd"
   license=(GPL-2.0-only)
   depends=(
