@@ -3,7 +3,7 @@
 pkgname=('rom-properties' 'rom-properties-gtk' 'rom-properties-kde')
 pkgbase=rom-properties
 pkgdesc="Shell extension for displaying ROM and disc image metadata in file managers"
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/GerbilSoft/rom-properties'
@@ -33,11 +33,20 @@ makedepends=(
 )
 source=(
     "$pkgbase-$pkgver.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v$pkgver.tar.gz"
+    'rp-download-allow-unix-sockets.patch'
 )
 sha256sums=(
-    'c9eccc8d57751878c115073cd3b61ae6b7a0380bf5a07e229bc4d8683675aa71'
+    '172c93326abe99a4c3f7d76ea12c94811fbf52a79c7e3b2cda8e1341ecba519a'
+    '3cd72b9b098a1a521f5292a322bffafee85669483fe2007cc5b1f8594a961adf'
 )
 options=(!debug)
+
+
+prepare() {
+    cd "$pkgbase-$pkgver"
+
+    patch -Np1 -i "$srcdir/rp-download-allow-unix-sockets.patch"
+}
 
 
 build() {

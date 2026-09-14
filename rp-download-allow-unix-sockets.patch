@@ -1,0 +1,56 @@
+# Fix rp-download hanging forever on systems using systemd-resolved.
+# glibc NSS with "resolve" in nsswitch.conf reaches the resolver over
+# an AF_UNIX socket, but the seccomp sandbox blocked socket(AF_UNIX),
+# killing libcurl's worker threads with SIGSYS on the first DNS lookup.
+# The main thread waits for them with no timeout, so rp-download (and
+# the KDE thumbnail queue behind it) hung indefinitely.
+--- a/src/rp-download/rp-download_secure.c
++++ b/src/rp-download/rp-download_secure.c
+@@ -127,7 +127,15 @@
+ 	param.syscall_wl = syscall_wl;
+ 	param.threading = true;		// libcurl uses multi-threading.
+ 	param.socket_tcp_udp = true;	// for downloading from the Internet
+-	param.socket_unix = false;
++	// Allow Unix domain sockets: glibc NSS with systemd-resolved
++	// ("resolve" in nsswitch.conf) uses AF_UNIX to reach the resolver.
++	// Blocking it kills libcurl's threads with SIGSYS and hangs
++	// rp-download forever.
++	param.socket_unix = true;
++	// Allow Netlink sockets: glibc getaddrinfo() and libcurl query
++	// network interface status via NETLINK_ROUTE. Blocking it kills
++	// the worker threads with SIGSYS the same way.
++	param.socket_netlink = true;
+ #elif defined(HAVE_PLEDGE)
+ 	// Promises:
+ 	// - stdio: General stdio functionality.
+--- a/src/librpsecure/os-secure.h
++++ b/src/librpsecure/os-secure.h
+@@ -58,6 +58,7 @@
+ 	bool threading;			// Set to true to enable multi-threading.
+ 	bool socket_tcp_udp;		// Allow socket() for TCP and UDP.
+ 	bool socket_unix;		// Allow socket() for Unix domain sockets.
++	bool socket_netlink;		// Allow socket() for Netlink (interface/route queries).
+ #elif defined(HAVE_PLEDGE)
+ 	const char *promises;	// pledge() promises
+ #elif defined(HAVE_TAME)
+--- a/src/librpsecure/os-secure_linux.c
++++ b/src/librpsecure/os-secure_linux.c
+@@ -293,8 +293,18 @@
+ 	if (param.socket_unix) {
+ 		// Allow socket() for Unix domain sockets.
+ 		seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(socket), 1,
+ 			SCMP_A0_32(SCMP_CMP_EQ, AF_UNIX, 0));
+ 	}
++
++	if (param.socket_netlink) {
++		// Allow socket() for Netlink.
++		// Used by glibc getaddrinfo() and libcurl to query network
++		// interface status (NETLINK_ROUTE). Read-only queries need
++		// no privileges; modifying routes requires CAP_NET_ADMIN,
++		// which the sandboxed process does not have.
++		seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(socket), 1,
++			SCMP_A0_32(SCMP_CMP_EQ, AF_NETLINK, 0));
++	}
+ 
+ 	// Add syscalls from the caller's whitelist.
+ 	// TODO: More extensive syscall parameters?

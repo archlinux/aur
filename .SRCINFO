@@ -1,6 +1,6 @@
 pkgbase = rom-properties
 	pkgdesc = Shell extension for displaying ROM and disc image metadata in file managers
-	pkgver = 2.8
+	pkgver = 2.9
 	pkgrel = 1
 	url = https://github.com/GerbilSoft/rom-properties
 	arch = x86_64
@@ -27,8 +27,10 @@ pkgbase = rom-properties
 	makedepends = qt6-base
 	makedepends = qt6-tools
 	options = !debug
-	source = rom-properties-2.8.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v2.8.tar.gz
-	sha256sums = c9eccc8d57751878c115073cd3b61ae6b7a0380bf5a07e229bc4d8683675aa71
+	source = rom-properties-2.9.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v2.9.tar.gz
+	source = rp-download-allow-unix-sockets.patch
+	sha256sums = 172c93326abe99a4c3f7d76ea12c94811fbf52a79c7e3b2cda8e1341ecba519a
+	sha256sums = 3cd72b9b098a1a521f5292a322bffafee85669483fe2007cc5b1f8594a961adf
 
 pkgname = rom-properties
 	depends = curl
