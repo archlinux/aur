@@ -2,7 +2,7 @@
 
 pkgname=arch-update-bin
 _pkgname="${pkgname%-bin}"
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="An interactive update notifier & applier that assists you with important pre / post update tasks (bin version)"
 url="https://github.com/Antiz96/arch-update"
@@ -28,8 +28,8 @@ conflicts=("${_pkgname}")
 options=(!strip)
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 source_x86_64=("${_pkgname}-tray-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-tray-${pkgver}-x86_64")
-sha256sums=('3f993999257bc06b826afa566cb6e40bf3c69826ac7b018e61a5e37d06df782b')
-sha256sums_x86_64=('4ff23f075dd3408349349c78827bbc5ed5f3a1f22537d65128a72bb7f12509b8')
+sha256sums=('c5d1af37a69ea0822f89d6c53485f05dcaf44d856725af2d9d8a6cd5b0c4e665')
+sha256sums_x86_64=('56c52cec0b37409b51c6bf2afc5c87cc65e853a488a984141b3226f932250b07')
 
 prepare() {
 	cd "${_pkgname}-${pkgver}"
