@@ -4,7 +4,7 @@
 # only run on sm_120a hardware.
 pkgname=ninfer-git
 _pkgbase=ninfer
-pkgver=20260907.ga16b644
+pkgver=20260911.gd492968
 pkgrel=1
 pkgdesc="High-performance single-GPU inference engine for registered Qwen checkpoints (sm_120a only)"
 arch=(x86_64)
@@ -28,15 +28,8 @@ makedepends=(
   ninja
   pkgconf
 )
-source=("git+${url}.git"
-        "fix-q4_m64-missing-cuda_bf16-include.patch")
-sha256sums=('SKIP'
-            '64413552fa5ee681f015af731fb68b4a188cc7e210bda7523f15aea0b1abff64')
-
-prepare() {
-  patch -Np1 -d "${srcdir}/${_pkgbase}" \
-    -i "${srcdir}/fix-q4_m64-missing-cuda_bf16-include.patch"
-}
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   # No upstream tags; use date + short hash of the default branch HEAD.
