@@ -4,7 +4,7 @@
 
 pkgbase=opentelemetry-python-contrib
 pkgver=0.65b0
-pkgrel=4
+pkgrel=5
 arch=("any")
 _url="https://github.com/open-telemetry/${pkgbase}"
 license=("Apache-2.0")
