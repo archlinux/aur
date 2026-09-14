@@ -1,7 +1,7 @@
 pkgbase = spaghettikart-bin
 	pkgdesc = Spaghetti Kart Reimplimentation engine for Mario Kart 64
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/spaghettikart
 	arch = x86_64
 	arch = aarch64

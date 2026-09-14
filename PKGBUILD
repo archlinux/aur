@@ -1,6 +1,6 @@
 pkgname=spaghettikart-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=1
 scriptver=1.2
 rlname=SpaghettiKart
 _rlname=spaghettikart
