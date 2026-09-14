@@ -1,7 +1,7 @@
 pkgbase = python-alibabacloud-credentials
 	pkgdesc = The alibabacloud credentials module of alibabaCloud Python SDK.
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aliyun/credentials-python
 	arch = any
 	license = Apache-2.0

@@ -3,7 +3,7 @@
 pkgname=python-alibabacloud-credentials
 _name=${pkgname#python-}
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The alibabacloud credentials module of alibabaCloud Python SDK."
 provides=(${pkgname})
 conflicts=(${pkgname})
