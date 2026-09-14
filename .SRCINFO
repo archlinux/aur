@@ -1,7 +1,7 @@
 pkgbase = fastpotify
-	pkgdesc = Native Spotify client
+	pkgdesc = Renamed to spotifast. Native Spotify client
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crmne/spotifast
 	install = fastpotify.install
 	arch = x86_64

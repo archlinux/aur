@@ -1,22 +1,18 @@
-print_fastpotify_post_install() {
-  cat <<'EOF2'
-fastpotify setup:
-
-  Launch it, press Sign in with Spotify, and approve in the browser.
-  Playing music on this computer is one more one-time approval from the
-  device menu (the speaker icon), and needs Spotify Premium.
-
-  Closing the window keeps the music playing in the system tray; quit from
-  the tray menu or with Ctrl+Q.
-
-Docs: https://spotifast.rocks/
-EOF2
-}
-
 post_install() {
-  print_fastpotify_post_install
+  cat <<'EOF'
+Fastpotify has been renamed to Spotifast.
+
+This package is now spotifast. Switch with:
+
+  yay -S spotifast
+
+Accept the offer to replace fastpotify. Your settings and saved sign-ins
+are kept. This update changes only package metadata, not application code.
+
+Details: https://spotifast.rocks/renaming/
+EOF
 }
 
 post_upgrade() {
-  print_fastpotify_post_install
+  post_install
 }
