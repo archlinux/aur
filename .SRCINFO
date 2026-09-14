@@ -6,10 +6,9 @@ pkgbase = cksk
 	arch = x86_64
 	license = LicenseRef-FSL-1.1-ALv2
 	makedepends = cargo
-	makedepends = git
 	provides = cksk
 	conflicts = cksk-bin
-	source = cksk::git+https://github.com/corbet-labs/cksk.git#tag=v0.1.0
-	sha256sums = SKIP
+	source = https://static.crates.io/crates/cksk/cksk-0.1.0.crate
+	sha256sums = 3896edcccfc9d30664c7669747814b93f968f836e793b107424403498e3ff32d
 
 pkgname = cksk

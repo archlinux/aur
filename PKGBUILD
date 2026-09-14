@@ -7,19 +7,21 @@ arch=('x86_64')
 url="https://github.com/corbet-labs/cksk"
 license=('LicenseRef-FSL-1.1-ALv2')
 depends=()
-makedepends=('cargo' 'git')
+makedepends=('cargo')
 provides=('cksk')
 conflicts=('cksk-bin')
-source=("$pkgname::git+https://github.com/corbet-labs/cksk.git#tag=v$pkgver")
-sha256sums=('SKIP')
+# NOTE: crates.io, not GitHub: github.com serves every corbet-labs URL with 404s
+# (org-wide flag, 2026-09-14). Revisit a git source once anonymous serving works again.
+source=("https://static.crates.io/crates/cksk/cksk-$pkgver.crate")
+sha256sums=('3896edcccfc9d30664c7669747814b93f968f836e793b107424403498e3ff32d')
 
 build() {
-    cd "$pkgname"
+    cd "cksk-$pkgver"
     cargo build --release --frozen --bin cksk
 }
 
 package() {
-    cd "$pkgname"
+    cd "cksk-$pkgver"
     install -Dm755 "target/release/cksk" "$pkgdir/usr/bin/cksk"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
