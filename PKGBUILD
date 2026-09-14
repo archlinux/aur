@@ -1,7 +1,7 @@
 # Maintainer: Milk (milk / milkii on Freenode) 
 # Contributor: osch <oliver@luced.de>
 pkgname=surge-synthesizer-lv2-git
-pkgver=r5585.fae324266
+pkgver=r5629.e2b3494b0
 scmver=1.6.1
 pkgrel=1
 pkgdesc="Surge Synthesizer plugin (LV2, git head)"
