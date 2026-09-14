@@ -1,17 +1,15 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=libpeci-git
-pkgver=r55.e836d46
-pkgrel=1
+pkgver=r62.4bf9f90
+pkgrel=2
 pkgdesc="libpeci is a library that provides various APIs to interface with the IOCTLs provided by the PECI driver in the OpenBMC kernel. "
 url="https://github.com/openbmc/libpeci"
 arch=($CARCH)
 license=('Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-depends=(
-    glibc
-)
+depends=()
 makedepends=(
     cmake
     git
