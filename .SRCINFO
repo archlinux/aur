@@ -16,8 +16,8 @@ pkgbase = rust-llm-bin
 	source = LICENSE::https://raw.githubusercontent.com/imjiaoyuan/llm/main/LICENSE
 	sha256sums = b0adbc31ae0c3ab64ae21504359ba5e70f29886a559c99a79fb5cba762de670c
 	source_x86_64 = llm-x86_64.tar.gz::https://github.com/imjiaoyuan/llm/releases/download/v0.2.0/llm-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = faef154d43557f65fbbda31d09e7fbac87b725a87e1af11a154c921bd041aa7d
+	sha256sums_x86_64 = 17148e13a91a24f918d1ab7324492bde94bb5afb4dad55fd359089d8a3d687cf
 	source_aarch64 = llm-aarch64.tar.gz::https://github.com/imjiaoyuan/llm/releases/download/v0.2.0/llm-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 22e599ff871650dcd0249165f31926981cd94cab756850cac488b1f66cdb20dd
+	sha256sums_aarch64 = b29202efc7fc5d918ad461b465b9a5c8b985bfb974161d03e61d063401e79e6d
 
 pkgname = rust-llm-bin
