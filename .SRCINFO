@@ -1,6 +1,6 @@
 pkgbase = python-unstructured
 	pkgdesc = A library that prepares raw documents for downstream ML tasks.
-	pkgver = 0.27.5
+	pkgver = 0.27.6
 	pkgrel = 1
 	url = https://github.com/Unstructured-IO/unstructured
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-unstructured
 	makedepends = python-installer
 	makedepends = python-hatchling
 	makedepends = python-wheel
-	source = python-unstructured-0.27.5.tar.gz::https://github.com/Unstructured-IO/unstructured/archive/0.27.5.tar.gz
-	sha256sums = e6619ee782882b6c4b8de86a7b55c13a1fbcd89a4e155c5a168b6f789acbc5b0
+	source = python-unstructured-0.27.6.tar.gz::https://github.com/Unstructured-IO/unstructured/archive/0.27.6.tar.gz
+	sha256sums = 834cb88e211f0786af57a041185ade11fc4f290503a052ce7510ec4e17494afc
 
 pkgname = python-unstructured
 	depends = python-beautifulsoup4
