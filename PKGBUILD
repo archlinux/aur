@@ -1,6 +1,6 @@
 # Maintainer: Minnow Contributors <noreply@example.com>
 pkgname=minnow-bin
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A simple, lightweight file manager for KDE (prebuilt binary)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('minnow')
 conflicts=('minnow')
 # grabs the tarball built by the release workflow (archlinux:latest container, so ABI matches)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/minnowfm/minnow/releases/download/v$pkgver/minnow-v$pkgver-x86_64.tar.gz")
-sha256sums=('83a3925619b1a5253dd968c7a43d434470f01dd6f3091782132d4d2dcee5c6f4')
+sha256sums=('e1fa6c37993a47e82d7a6e996eae4b4284d7edd1411d28d40144a87920997d3c')
 
 package() {
   cp -a "$srcdir/usr" "$pkgdir/"

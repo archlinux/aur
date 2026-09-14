@@ -1,6 +1,6 @@
 pkgbase = minnow-bin
 	pkgdesc = A simple, lightweight file manager for KDE (prebuilt binary)
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/minnowfm/minnow
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = minnow-bin
 	depends = kwindowsystem
 	provides = minnow
 	conflicts = minnow
-	source = minnow-bin-0.1.7.tar.gz::https://github.com/minnowfm/minnow/releases/download/v0.1.7/minnow-v0.1.7-x86_64.tar.gz
-	sha256sums = 83a3925619b1a5253dd968c7a43d434470f01dd6f3091782132d4d2dcee5c6f4
+	source = minnow-bin-0.1.8.tar.gz::https://github.com/minnowfm/minnow/releases/download/v0.1.8/minnow-v0.1.8-x86_64.tar.gz
+	sha256sums = e1fa6c37993a47e82d7a6e996eae4b4284d7edd1411d28d40144a87920997d3c
 
 pkgname = minnow-bin
