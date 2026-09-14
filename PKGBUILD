@@ -61,15 +61,7 @@ prepare() {
 build() {
   cd "${pkgname}"
 
-  EXTRA_CUDA_OPTS=
-
-  if command -v gcc-12 &> /dev/null
-  then
-      EXTRA_CUDA_OPTS="$EXTRA_CUDA_OPTS --with-cuda-host-compiler=gcc-12 "
-  fi
-
   ./autogen.sh --prefix=/usr --enable-plugins \
-      $EXTRA_CUDA_OPTS \
 	  --enable-qt=auto \
 	  --enable-holepunch=auto \
 	  --enable-opencv=auto \
