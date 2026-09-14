@@ -1,7 +1,7 @@
 # Maintainer: Damon Blais <damon.blais@gmail.com>
 
 pkgname=heft-git
-pkgver=0.6.0.r0.g6f21906
+pkgver=0.11.0.r0.g322fd6c
 pkgrel=1
 pkgdesc="Read-only Linux TUI for application-weight process accounting (git)"
 arch=('x86_64' 'aarch64')
