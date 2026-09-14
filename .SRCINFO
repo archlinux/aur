@@ -1,5 +1,5 @@
 pkgbase = torrentngd-git
-	pkgdesc = TorrentNG native Rust BitTorrent daemon
+	pkgdesc = TorrentNG Engine native Rust BitTorrent client
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/snapetech/TorrentNG
