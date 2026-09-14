@@ -3,7 +3,7 @@
 pkgname=toshibacomextractor
 _name=ToshibaComExtractor
 pkgver=0.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Quick and dirty tool to extract Toshiba .COM firmware files, released so it does not get lost.'
 arch=($CARCH)
 url='https://github.com/LongSoft/ToshibaComExtractor'
@@ -33,7 +33,7 @@ build() {
   cd "${srcdir}"/${_name}-${pkgver}/
   # see：https://wiki.archlinux.org/title/CMake_package_guidelines
   cmake -DCMAKE_BUILD_TYPE=None \
-    -Wno-dev \
+    -Wno-author \
     -B build
 
   cmake --build build
