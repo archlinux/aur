@@ -1,6 +1,6 @@
 pkgbase = carrier-cli
 	pkgdesc = A module manager for {box} modules
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/joshuamarie/carrier
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = carrier-cli
 	conflicts = carrier-cli-bin
 	options = !lto
 	options = !debug
-	source = carrier-cli-0.2.2.tar.gz::https://github.com/joshuamarie/carrier/archive/v0.2.2.tar.gz
-	sha512sums = 922f4c57fd0ec0f43aa0512716358ae6cf6a4aa95e55294c836cf2a0094ba28178dc3fdbfb1e05a4fe7c14f997e6193d77a69a4fc3936ccbfc7d6db5b9d4f184
+	source = carrier-cli-0.2.3.tar.gz::https://github.com/joshuamarie/carrier/archive/v0.2.3.tar.gz
+	sha512sums = cc11c4c4d7ddd90f95cff2e1f949a7466693503cfd2f888ff07eb8f3cabec0bc5d0a4c3e8d2c5c20bc952b25a457feb3ae0338dacf2b99f2015ba52c0513d4e7
 
 pkgname = carrier-cli
