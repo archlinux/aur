@@ -3,7 +3,7 @@
 pkgname=python-p115oss
 _name=${pkgname#python-}
 pkgver=0.1.2
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="115 oss upload."
 arch=('any')

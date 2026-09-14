@@ -1,7 +1,7 @@
 pkgbase = python-p115oss
 	pkgdesc = 115 oss upload.
 	pkgver = 0.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.org/project/p115oss
 	arch = any
 	license = MIT
