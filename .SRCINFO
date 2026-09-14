@@ -1,7 +1,7 @@
 pkgbase = python-cmake
 	pkgdesc = CMake is an open-source, cross-platform family of tools designed to build, test and package software
 	pkgver = 4.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-build/cmake-python-distributions
 	arch = x86_64
 	license = Apache-2.0 AND BSD-3-Clause
