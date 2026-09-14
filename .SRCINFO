@@ -1,6 +1,6 @@
 pkgbase = nanosvg-git
 	pkgdesc = Simple stupid SVG parser.
-	pkgver = r122.07a5e2a
+	pkgver = r185.239e102
 	pkgrel = 1
 	url = https://github.com/memononen/nanosvg
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = nanosvg-git
 	md5sums = SKIP
 
 pkgname = nanosvg-git
-
