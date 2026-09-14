@@ -1,0 +1,22 @@
+pkgbase = arculator_gcc15
+	pkgdesc = Arculator (Acorn Archimedes emulator), patched to compile under modern GCC
+	pkgver = 2.2_gcc15
+	pkgrel = 1
+	url = https://github.com/Venomtek/arculator_gcc15
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = sdl2
+	depends = wxwidgets-gtk3
+	depends = zlib
+	depends = alsa-lib
+	depends = libx11
+	depends = glibc
+	provides = arculator
+	conflicts = arculator
+	source = arculator_gcc15-2.2_gcc15::git+https://github.com/Venomtek/arculator-gcc15.git#tag=v2.2_gcc15
+	source = arculator.sh
+	sha256sums = 110d096f35ed3554c29adc38f06abebc30a56f3cb164cfa231b35a6108af80e6
+	sha256sums = 14770655c50ae0a560ac47c1bbee64569516f6ad557a8aa6c2ef14caba2a1432
+
+pkgname = arculator_gcc15
