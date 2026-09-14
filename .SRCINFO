@@ -1,7 +1,7 @@
 pkgbase = ironplc
 	pkgdesc = Prototype Rust-based SoftPLC
 	pkgver = 0.242.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ironplc/ironplc
 	arch = x86_64
 	license = MIT

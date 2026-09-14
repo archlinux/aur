@@ -2,7 +2,7 @@
 
 pkgname=ironplc
 pkgver=0.242.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prototype Rust-based SoftPLC"
 arch=($CARCH)
 url="https://github.com/ironplc/ironplc"
