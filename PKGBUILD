@@ -1,6 +1,6 @@
 # Maintainer: Julian Y. Richard Corbet (julian-corbet on GitHub)
 pkgname=cksk
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Server-monitor boards for a clck kiosk display"
 arch=('x86_64')
@@ -18,7 +18,7 @@ replaces=('nixwatch-bin' 'nixwatch')
 # NOTE: crates.io, not GitHub: github.com serves every corbet-labs URL with 404s
 # (org-wide flag, 2026-09-14). Revisit a git source once anonymous serving works again.
 source=("https://static.crates.io/crates/cksk/cksk-$pkgver.crate")
-sha256sums=('3896edcccfc9d30664c7669747814b93f968f836e793b107424403498e3ff32d')
+sha256sums=('4e9022782535c08f35e90303f18d0c2cc304da73635945f363081b9448a8c6d3')
 
 build() {
     cd "cksk-$pkgver"
