@@ -1,7 +1,7 @@
 # Maintainer: Fangjian Jin <askme@163.com>
 
 pkgname=transcribe.cpp
-pkgver=0.1.3
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='C/C++ speech-to-text inference library and CLI based on ggml'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=(
   'sox: convert audio to 16 kHz mono WAV'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a7baabcb365b7b9f049bba1eb6d2da56ccc5874eee41cde238e3ef3eee742bc1')
+sha256sums=('1cc81c908b9814c414ff9643fd44893ecc7dafe860f650ea475a16506628e474')
 
 build() {
   cmake -S "${pkgname}-${pkgver}" -B build -G Ninja \
