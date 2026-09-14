@@ -1,7 +1,7 @@
 pkgbase = python-bflb-iot-tool-uart
 	pkgdesc = Bouffalolab Iot Tool uart
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/bflb-iot-tool-uart
 	arch = any
 	license = MIT

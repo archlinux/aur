@@ -3,7 +3,7 @@
 pkgname=python-bflb-iot-tool-uart
 _name=${pkgname#python-}
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bouffalolab Iot Tool uart"
 arch=('any')
 url="https://pypi.org/project/${_name}"
