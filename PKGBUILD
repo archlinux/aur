@@ -9,7 +9,7 @@ license=('BSD-2-Clause')
 depends=('qt6-base' 'qt6-declarative' 'qt6-shadertools')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RyuZinOh/typeshi-mirror/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('da7a2d6f62ab6bc60950eafc75acf934de84719a5d646bc26ea7205098109d19')
+sha256sums=('7a1c3d980b0af984bfeab49d95869d74397d45a9cdd0703d221e3554929de771')
 
 build() {
   cmake -B build -S "typeshi-mirror-$pkgver" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -G Ninja

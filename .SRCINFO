@@ -12,6 +12,6 @@ pkgbase = typeshi
 	depends = qt6-declarative
 	depends = qt6-shadertools
 	source = typeshi-0.1.15.tar.gz::https://github.com/RyuZinOh/typeshi-mirror/archive/refs/tags/v0.1.15.tar.gz
-	sha256sums = da7a2d6f62ab6bc60950eafc75acf934de84719a5d646bc26ea7205098109d19
+	sha256sums = 7a1c3d980b0af984bfeab49d95869d74397d45a9cdd0703d221e3554929de771
 
 pkgname = typeshi
