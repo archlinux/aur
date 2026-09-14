@@ -33,7 +33,7 @@ options=('!strip' '!debug')
 source=(
   "https://github.com/dazemc/trickster/releases/download/v${pkgver}/trickster-${pkgver}-1-x86_64.pkg.tar.zst"
 )
-sha256sums=('875ed2814db78bcad39d1663896206b4500a6986cc8a204885d9e491e76a03c0')
+sha256sums=('eb825ab5b82e21411b80e60985c94d2da0df6f3a53bdebdefacd1d0bf8724c3d')
 noextract=("trickster-${pkgver}-1-x86_64.pkg.tar.zst")
 
 package() {
