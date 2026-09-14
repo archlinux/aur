@@ -2,7 +2,7 @@
 
 pkgname=file-manager-preview-git
 pkgver=r7.964ed88
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern file manager with preview support"
 arch=($CARCH)
 url="https://github.com/tonglingcn/file-manager"
@@ -11,8 +11,8 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    glibc
-    gcc-libs
+    libgcc_s.so
+    libstdc++.so
     hicolor-icon-theme
     qt6-base
     qt6-multimedia
@@ -47,7 +47,6 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}/"
-    sed -i '1s/^#include "OfficeConverter.h"/#include "OfficeConverter.h"\n#include <QRegularExpression>/' src/OfficeConverter.cpp
 
     cmake -B build \
           -DCMAKE_BUILD_TYPE=Release \
@@ -55,7 +54,7 @@ build() {
           -DENABLE_QT_WEBENGINE=ON \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -G Ninja \
-          -Wno-dev
+          -Wno-author
 
     ninja -C build
 }
