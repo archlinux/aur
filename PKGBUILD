@@ -43,8 +43,8 @@
 
 pkgbase=ttf-ms-win11
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
-pkgver=10.0.26200.9168
-pkgrel=3
+pkgver=10.0.26200.9445
+pkgrel=1
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
@@ -80,6 +80,7 @@ lucon.ttf                                                   # Lucida Console
 marlett.ttf                                                 # Marlett
 micross.ttf                                                 # Microsoft Sans Serifc
 pala.ttf       palab.ttf      palai.ttf      palabi.ttf     # Palatino Linotype
+SansSerifCollection.ttf                                     # Sans Serif Collection
 segmdl2.ttf                                                 # Segoe MDL2 Assets
 SegoeIcons.ttf                                              # Segoe Fluent Icons
 segoepr.ttf    segoeprb.ttf                                 # Segoe Print
@@ -151,6 +152,7 @@ _ttf_ms_win11_zh_cn=( # Chinese (Simplified)
 #########################################################################################
 simsun.ttc                                                  # NSimSun
 simsunb.ttf                                                 # SimSun-ExtB
+SimsunExtG.ttf                                              # SimSun-ExtG
 msyh.ttc       msyhbd.ttc                                   # Microsoft YaHei
 msyhl.ttc                                                   # Microsoft YaHei Light
 )
@@ -246,8 +248,9 @@ sha256sums=('b3658eadae55e682b5f69eb64c439c1ecc8f196c0bb8d4756d145d13bc86476a'
             '8e14668bbae03f78ed668dbe3261218881960dcd9fb80ad6c1d1dfb4226a57c3'
             '99f0af2d1941707fecda23da38bafbed5144a73a3720d773c05b9d4c445920ed'
             'd0e722b91ffd5391cc2e7d6e976f274d5aee9fe0b8d0fedfffe093763e695cde'
+            'eb78c210d380fce7d3822b3a5ccfa808f1eb0390de6237f5460970679f393ce0'
             'a2efc8b8e51fbd031a7142a1ade8866fa904c0c349511abc579ee53f8a926f31'
-            '8e8be40f1b949a9e5a99ed71f024ebf82167dc5f3c01e1bc7557c6b096a2c82f'
+            'af496bd8ed18e8b45ea9c914bb3319204ab4fac450e0f4d3aab62bac6c02e5e9'
             '91046862e08fbade0bdd648e81c4efbe6a963947f8b6e32b64a28fe39073c468'
             '3cced0162ddb9e5f1e63ee1b36fd6e581c090318dce1a0af01b77f5ea9952c80'
             'b24aa49a4bcb99a0ffc60cad77f00941e4b121153d8b0a519c03719d9be6004e'
@@ -262,7 +265,7 @@ sha256sums=('b3658eadae55e682b5f69eb64c439c1ecc8f196c0bb8d4756d145d13bc86476a'
             '4dc2db1870047663878da07fa5f8217e518ef875c8ad33287fcbad6aba5a7e73'
             'be191c94a0c7172870c3c87a136bd5aa67cdca7bc091de89242fb64ecb0f8fae'
             '51d300301197dfb0621a8d8b275274d408dd15a7edda4cc4a8f7666504d582cd'
-            'f07cbd7886f4a1a5255a1bdf4ca5ea29db3be3357414003a92bec5d1c3165578'
+            '451df9bb5546055af625ff86aa72695df43e8e170b4c6c1316fe44e9c7a22f7c'
             'a162ceeaf701b55d11c542daf1c39c52bfaf686496505bff2eb75ca24814c136'
             '2d9b22d71f72de2823fee5d9c8bc1b0fc32b2577c4c27b9ec6abdbb8df0e1731'
             '454295546b78810c95ffd7fc9d57890ed15a03b7cfd0d7e3485786400152b740'
@@ -314,6 +317,7 @@ sha256sums=('b3658eadae55e682b5f69eb64c439c1ecc8f196c0bb8d4756d145d13bc86476a'
             'f7a9d979c27baad75ebcd41ea45113919576c2e56af9ffd483dd9d0ef9272a25'
             '1526ac24375f51f6eb73bc2d3f8072dbe4a80a3a65217677c9d9a84f67dab2ab'
             '2a476ca00b5fbbbc12a4c5335634722b11a495ed87429284325701f1e36b596a'
+            '9cadcd0ab3d549446b51001d9896773d87ad012d93d842532f321eca514bffd8'
             'd79c55e68b1131eea0cc1c47be4f572d964f28c682e143db2ad09c1e4cb07a3f'
             '4508821b3dffe01f0ef5e5326a3e60df705a44633858811f67b6982dce3f6ee6'
             '7e9bdf90bb5d3fe1b5975fc8ae31944b8fa674122261f92c28d4ec0b9c482fa1'
