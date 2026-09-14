@@ -1,6 +1,6 @@
 # Maintainer: Daan Hessen <daanh2002@gmail.com>
 pkgname=sonyctl
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A Rust API/CLI that allows every device on your network to control your Sony headphones"
 arch=('x86_64')
@@ -13,7 +13,7 @@ install=sonyctl.install
 makedepends=('cargo')
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('afce482ea3f71aa2f64c30303ca71b924ab5ee9a6488811bb363c1b519f6a764')
+sha256sums=('c4a04c07fa50540b7e0263fd6ab07ca6a9a6aab3eaffab9a7c817777a62b1a82')
 
 build() {
   cd "${pkgname}-${pkgver}"
