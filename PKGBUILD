@@ -30,6 +30,7 @@ depends=(
 )
 makedepends=(git perl meson ninja wayland-protocols vulkan-headers linux-api-headers)
 provides=('wayland-compositor')
+install=doors-git.install
 source=("git+https://dawn.wine/CreeperFace/doors.git#branch=master" "doors-portals.conf" "doors-session.target")
 sha512sums=("SKIP" "ac8d23f5ace35b77c55e00e26976e8981f53e31b10ff1df717bc26acba3567e79d4b477bc8b60d0f83e0ca8d18ab4f42840a8e7734f447cdf525460510bc1063" "9bbd5bea647f983884ff92871b17a5cab68e6d46c0d465d859e49be61f6e31c171bb2916665c1b1dcd61988edc76f7b41a051ec35ac3d13aa45c393a0fe746ac")
 
@@ -51,12 +52,4 @@ package() {
   install -Dm644 "$_pkgname/examples/arch/doorshkrc" "$pkgdir/etc/doors/doorshkrc"
   install -Dm644 doors-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/doors-portals.conf"
   install -Dm644 doors-session.target "$pkgdir/usr/lib/systemd/user/doors-session.target"
-}
-
-post_install() {
-	setcap cap_sys_nice+ep usr/bin/doors
-}
-
-post_upgrade() {
-	setcap cap_sys_nice+ep usr/bin/doors
 }
