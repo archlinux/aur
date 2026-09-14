@@ -3,8 +3,8 @@
 
 _name=pyOCD
 pkgname=python-pyocd
-pkgver=0.45.0
-pkgrel=1
+pkgver=0.45.1
+pkgrel=2
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
 url="https://github.com/pyocd/pyOCD"
@@ -51,7 +51,7 @@ replaces=(pyocd)
 source=(
   $pkgname::git+$url.git#tag=v$pkgver
 )
-sha512sums=('975a230ddce691ef2e046f0c9825dad520e2d4c4937dcdfb9d494a8e6e1ceef7f31872e5979dbb2bb1826a15623b5ea0fa61b1d4e6a6392f16508d3e1f7b4351')
+sha512sums=('9177562f07cb1571d4678e1f50c2dace3f38bb5d35771d07ea2b715e2ddc085e26a53a6ca6f62c7dbe629bf01eb5f948f5ad64cb40b9c06db2c4f227d0cc3f91')
 
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
