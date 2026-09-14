@@ -3,8 +3,8 @@
 
 _name="jsoncpp"
 pkgname="lib32-$_name"
-pkgver=1.9.6
-pkgrel=2
+pkgver=1.9.8
+pkgrel=1
 pkgdesc="C++ library for interacting with JSON (32-bit)"
 arch=('x86_64')
 url="https://github.com/open-source-parsers/$_name"
@@ -18,8 +18,8 @@ provides=("lib${_name}.so")
 options=('staticlibs')
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz")
-sha512sums=('006d81f9f723dcfe875ebc2147449c07c5246bf97dd7b9eee1909decc914b051d6f3f06feb5c3dfa143d28773fb310aabb04a81dc447cc61513309df8eba8b08')
-b2sums=('efa5dea68ddc175391200077666204f7ec66cd1f96a889a2a3c53d0e22e1f96ead1a2e7a871940f60dbd4261650f133b83de428b9c8b663fa13bd7ab4b9fdffe')
+sha512sums=('849957d9c87edc1d375698a9ea2709b7304cabc2b05ba180dc09f68653e32316e1ae4fe0108ab63ec7b56d255ccbc6ccf8715cf8396c1438edda775bec74b05b')
+b2sums=('5af250cf6d641cc7d8c4897222cc97ccdcf110db0858abf11656835e91eb1976ee82c2cdf26e0b244aa914e2b2d8ca796a9642419f6d567bbd234a6b02bf82ff')
 
 prepare() {
   cd "$srcdir/$_pkgsrc"
