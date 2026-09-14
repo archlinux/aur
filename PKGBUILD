@@ -6,15 +6,15 @@
 # Contributor: hornetsnest0@gmail.com
 
 pkgname=mikmod
-pkgver=3.2.9
+pkgver=3.2.10
 pkgrel=1
 pkgdesc="A curses module player based on libmikmod"
 url="http://mikmod.sourceforge.net"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('libmikmod' 'ncurses')
+depends=('libmikmod>=3.1.5' 'ncurses')
 source=("http://downloads.sourceforge.net/project/mikmod/mikmod/${pkgver}/mikmod-${pkgver}.tar.gz")
-sha256sums=('214c10aa3019807a1eb26b2c709592f63dbcc00b72985aa86a4fb7ac3cd8b901')
+sha256sums=('465e99d89d762608b7d0c0a103a58eec68c8c28ae6bbd196354c13433e40d20a')
 
 prepare() {
 	mkdir build
