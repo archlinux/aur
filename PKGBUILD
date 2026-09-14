@@ -21,7 +21,7 @@ depends=(
     python-importlib_resources
 )
 optdepends=(
-    python-pyfluidsynth
+    'python-pyfluidsynth: FluidSynth suppprt'
 )
 makedepends=(
     python-build
