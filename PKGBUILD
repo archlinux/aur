@@ -6,7 +6,7 @@
 _appname=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-bin"
-pkgver=4.19.0
+pkgver=4.19.1
 pkgrel=1
 pkgdesc='Maintain your Ledger devices'
 license=('MIT')
@@ -21,7 +21,7 @@ _appimg="ledger-live-desktop-${pkgver}-linux-${arch[0]}.AppImage"
 source=("${_appimg}::https://download.live.ledger.com/${_appimg}"
         "LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live/refs/tags/%40ledgerhq/live-desktop%40${pkgver}/apps/ledger-live-desktop/LICENSE")
 # https://www.ledger.com/ledger-live/lld-signatures
-sha512sums=('a354f16d82d8d3674284cbbe2396dda90d8d97397950cd3ccf55cfcae74f10bd1d668c5e1a6f224fb13b82d3fb292ca8593c70a8f1cc936ee900444b148de232'
+sha512sums=('b269ee6972b8ced9a2cdb0f22022805673adcacb2e4824da1d32649475906b462be7d33ec6955293e00f1730a2f24447b9ecd21ca035b243c84d6a18e2c0bdd5'
             '915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318')
 
 prepare() {
