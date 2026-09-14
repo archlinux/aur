@@ -1,7 +1,7 @@
 pkgbase = uotantoolboxnt
 	pkgdesc = 现代化 Android & OpenHarmony 工具箱 | A Modern Toolbox for Android & OpenHarmony Devices
 	pkgver = 3.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Uotan-Dev/UotanToolboxNT
 	arch = x86_64
 	license = GPL-3.0-only
