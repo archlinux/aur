@@ -1,7 +1,7 @@
 pkgbase = myueqf-reader
 	pkgdesc = A simple TXT ebook reader
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/myueqf/reader
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,7 +12,6 @@ pkgbase = myueqf-reader
 	makedepends = vala
 	depends = dconf
 	depends = glib2
-	depends = glibc
 	depends = gtk4
 	depends = gdk-pixbuf2
 	depends = hicolor-icon-theme

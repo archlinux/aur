@@ -2,7 +2,7 @@
 
 pkgname=myueqf-reader
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A simple TXT ebook reader"
 arch=($CARCH)
@@ -12,7 +12,6 @@ groups=()
 depends=(
     dconf
     glib2
-    glibc
     gtk4
     gdk-pixbuf2
     hicolor-icon-theme
