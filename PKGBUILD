@@ -1,7 +1,7 @@
 # Maintainer: Eslam M. Abdel-Salam <eabdelsalam@hotmail.com>
 pkgname=arcitect-bin
 _pkgname=arcitect
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Cross-platform GUI app to create and manage DataPLANT ARCs (Annotated Research Contexts)."
 arch=('x86_64')

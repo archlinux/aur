@@ -1,6 +1,6 @@
 pkgbase = arcitect-bin
 	pkgdesc = Cross-platform GUI app to create and manage DataPLANT ARCs (Annotated Research Contexts).
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/nfdi4plants/ARCitect
 	arch = x86_64
@@ -34,10 +34,10 @@ pkgbase = arcitect-bin
 	optdepends = libnotify: For desktop notifications
 	optdepends = libsecret: For secure password storage
 	optdepends = xdg-utils: For opening links
-	provides = arcitect=1.6.0
+	provides = arcitect=1.7.0
 	conflicts = arcitect
 	options = strip
-	source = arcitect-bin-1.6.0.deb::https://github.com/nfdi4plants/ARCitect/releases/download/v1.6.0/ARCitect_1.6.0_amd64.deb
+	source = arcitect-bin-1.7.0.deb::https://github.com/nfdi4plants/ARCitect/releases/download/v1.7.0/ARCitect_1.7.0_amd64.deb
 	sha256sums = 6b5b02b29532eb259db8379319ad0a5b573100f2518406b0821a4a159498c144
 
 pkgname = arcitect-bin
