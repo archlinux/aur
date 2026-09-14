@@ -28,6 +28,7 @@ pkgbase = strongswan-ikev1
 	optdepends = python: Python support
 	optdepends = resolvconf: Resolveplugin
 	optdepends = openldap: LDAP support
+	provides = strongswan=6.1.0
 	conflicts = strongswan
 	backup = etc/ipsec.conf
 	backup = etc/ipsec.secrets

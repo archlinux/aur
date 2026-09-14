@@ -11,8 +11,9 @@
 # Contributor: Thermi <noel [at] familie-kuntze dot com>
 
 pkgname=strongswan-ikev1
-conflicts=('strongswan')
 pkgver=6.1.0
+provides=("strongswan=$pkgver")
+conflicts=('strongswan')
 pkgrel=2
 pkgdesc='Open source IPsec implementation (with deprecated ikev1 protocol implementation)'
 url='https://www.strongswan.org'
