@@ -1,0 +1,14 @@
+pkgbase = omacal-bin
+	pkgdesc = Native desktop calendar for Google Calendar, iCloud and any CalDAV server
+	pkgver = 3.7.2
+	pkgrel = 1
+	url = https://omacal.app/
+	arch = x86_64
+	license = unknown
+	depends = hicolor-icon-theme
+	provides = omacal
+	conflicts = omacal
+	source = omacal-bin-3.7.2.deb::https://github.com/x3me/omacal/releases/download/v3.7.2/omacal_3.7.2_amd64.deb
+	sha256sums = 63b807ebad76c8e15adcba646435790afb0af1cee540908482c6f098b43e4b72
+
+pkgname = omacal-bin
