@@ -1,7 +1,7 @@
 # Maintainer: Hewel <13846369+hewel@users.noreply.github.com>
 
 pkgname=jellypilot-bin
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Jellyfin and Emby companion app with embedded MPV from the pinned mpv fork (prebuilt binary)'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
 )
 noextract=("$pkgname-$pkgver.pkg.tar.zst")
 # Filled from the GitHub release SHA256SUMS when publishing to the AUR.
-sha256sums=('98e568d9a6d600103691f6bc9f5eb62ab4477b2c963f9b4d3bfdf9b6ce7702c7')
+sha256sums=('8187731b0e6d39c9ed34118bc577daaafa0c3e15675ded55047878636b2bddf9')
 
 package() {
   bsdtar -x \
