@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=152.0.7977.82
+pkgver=153.0.8010.36
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -72,11 +72,13 @@ makedepends=(
   'lld'
   'ninja'
   'nodejs'
+  'opus'
   'pipewire'
   'python'
   'qt6-base'
-  'rust-bindgen'
   'rust'
+  'rust-bindgen'
+  'typescript'
 )
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
@@ -96,11 +98,13 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-149-drop-unknown-clang-flag.patch
         chromium-149-use-of-undeclared-identifier-ERROR.patch
         chromium-150-revert-avx-flag-change.patch
-        chromium-152-crubit.patch
-        chromium-152-dawn-llvm-22.patch
         chromium-152-fix-gn-no-public_inputs.patch
         chromium-152-unbundle-minizip-undo-unicode.patch
         chromium-152-unbundle-opus-devtools.patch
+        chromium-153-hermetic-python.patch
+        chromium-153-iamf-tools-unbundled-opus.patch
+        chromium-153-typescript.patch
+        chromium-153-crubit.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         enable-widevine-arm64.patch
@@ -108,21 +112,23 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         glibc-2.42-baud-rate-fix.patch
         # ungoogled-chromium-xdg patches
         no-omnibox-suggestion-autocomplete.patch)
-sha256sums=('67ac37f365dfdac763c428862e5e460e5948940b3d6f856374da2ce219981417'
-            'a672d1a84b0a7744e2bb6c9d038a2aace269db51bcf99e76895fb169a7e0c218'
+sha256sums=('645f64566cfbb780747430d53ff3656f03639f89fed9544c1eadd4c17e7b1c82'
+            '8df8570d440a9117c187f1c466386543381c52bb9044817670df8a741423ca12'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             'c382830318c5b37826ecf44f3ba9def6be8affdad1bce819ecb83f3222ff4b3a'
             'b9e6339221efe03540ffb360c161d93604a1fc93a5a1c53e5e9849066f987d05'
-            'e25cf8fb60f5958127053c515b8decc2b45acceebf9a57654066d093df11f8e9'
+            '1b5190fa030850cf30a97dc90e35b31f3097243c88743fbfaedbd64ea80f1327'
             '951514535be65f0e2f84e82305d96292be1da353c1427ba1048ea24be70003c4'
             '5f6ccb7b945c8a13c690493723bad816b36f2f25792d47e677b56f8200907e60'
-            '6cf0b76bc5d9c9bb82ecde1fa87ed1f4380b4bbd29ea485261e5f2aada5d71ea'
-            '5e465d199c1a28d58078af08bcab151561d6423f43c6dba57d4db3f5de534140'
-            '5c4640a211d02ba8249299842ea2999ccc239d85bfd59a0f7c302483683adc07'
+            '50115642099ac131f40c419cbd12ed72e352538002d4bdc11ab657335891d03b'
             '890e5d98088ef1c7c075a551442f03385d1db266cad8a65576704a22720683f9'
             '3276453f2ce655b6286476f48d4df837be952d9447afa46583f79ec71f2288c3'
+            'ebf74154266d0b6d6cc957c413f845052c5fcfce7745befb8821595cdf3f7d49'
+            '2ab9fbe653829ce692f83ee780aad07e8c83a6686e51ab9459ad736cfa2850ee'
+            '44c86a7c26d726559d5bd06a64f81e6bcced7ab4dc949c899e4fd2c64ff37a16'
+            'a20e615fa03713e464fc3f2966c84e2130b6d942a4c8b5919ba0bf8320d39ed4'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '5ee4bb69379ac0cea7946c9f8f4ca9e20e0a9e4ee2ee9121eb0ebbb94dd7e928'
@@ -241,16 +247,28 @@ prepare() {
   # Credit: https://github.com/ungoogled-software/ungoogled-chromium/pull/3837
   patch -Np1 -i ../chromium-150-revert-avx-flag-change.patch
 
-  patch -Np1 -i ../chromium-152-crubit.patch
-
-  patch -Np1 -i ../chromium-152-dawn-llvm-22.patch
-
   # Just the reverted commit 8dab8b761385b7946588232e4e2a8c116f9293c3
   patch -Np1 -i "$srcdir/chromium-152-fix-gn-no-public_inputs.patch" -d third_party/devtools-frontend/src
 
   patch -Np1 -i ../chromium-152-unbundle-minizip-undo-unicode.patch
 
   patch -Np1 -i ../chromium-152-unbundle-opus-devtools.patch
+
+  # Use system python3 instead of the hermetic cpython3 interpreter
+  # https://github.com/ungoogled-software/ungoogled-chromium/pull/3946
+  patch -Np1 -i ../chromium-153-hermetic-python.patch
+
+  # third_party/iamf_tools includes vendored Opus via relative "include/opus.h"
+  # paths that only resolve against a real bundled Opus checkout; fix them up
+  # for the unbundled system Opus build
+  patch -Np1 -i ../chromium-153-iamf-tools-unbundled-opus.patch
+
+  # Work around TypeScript becoming a build dependency: disable tsgo for the
+  # WebUI and point devtools at the system tsc binary
+  # https://github.com/ungoogled-software/ungoogled-chromium/pull/3946
+  patch -Np1 -i ../chromium-153-typescript.patch
+
+  patch -Np1 -i ../chromium-153-crubit.patch
 
   # Custom Patches
 
