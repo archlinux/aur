@@ -1,0 +1,22 @@
+pkgbase = python-azure-data-tables
+	pkgdesc = Microsoft Corporation Azure Data Tables Client Library for Python
+	pkgver = 12.6.0
+	pkgrel = 1
+	url = https://pypi.org/project/azure-data-tables
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-isodate
+	depends = python-azure-core
+	depends = python-typing_extensions
+	depends = python-yarl
+	provides = python-azure-data-tables
+	conflicts = python-azure-data-tables
+	source = azure_data_tables-12.6.0.tar.gz::https://files.pythonhosted.org/packages/source/a/azure_data_tables/azure_data_tables-12.6.0.tar.gz
+	sha256sums = e0d5598113855f9114fd7671623d35509f83772970cfdc597901b35f42dc3134
+
+pkgname = python-azure-data-tables
