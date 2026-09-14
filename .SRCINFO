@@ -1,6 +1,6 @@
 pkgbase = carla-debug-git
 	pkgdesc = Audio Plugin Host
-	pkgver = 2.1.rc1.r26.ga511bb259
+	pkgver = 2.5.1.r571.g97a9e0740
 	pkgrel = 1
 	epoch = 1
 	url = http://kxstudio.sf.net/carla
@@ -9,7 +9,6 @@ pkgbase = carla-debug-git
 	arch = x86_64
 	license = GPL2+
 	makedepends = git
-	makedepends = gtk2
 	makedepends = gtk3
 	depends = ffmpeg
 	depends = file
@@ -17,7 +16,7 @@ pkgbase = carla-debug-git
 	depends = liblo
 	depends = python-pyqt5
 	depends = qt5-svg
-	optdepends = gtk2: LV2 GTK2 UI support
+	optdepends = gtk2: LV2 GTK2 UI support (needs AUR gtk2)
 	optdepends = gtk3: LV2 GTK3 UI support
 	optdepends = python-pyliblo: OSC control support
 	optdepends = python-rdflib: LADSPA-RDF support
@@ -25,8 +24,7 @@ pkgbase = carla-debug-git
 	conflicts = carla
 	options = !strip
 	options = debug
-	source = carla::git+https://github.com/falkTX/Carla.git#branch=develop
+	source = carla::git+https://github.com/falkTX/Carla.git#branch=main
 	md5sums = SKIP
 
 pkgname = carla-debug-git
-
