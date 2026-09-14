@@ -1,0 +1,20 @@
+pkgbase = gnome-shell-extension-universal-emoji-chooser
+	pkgdesc = Open the native GNOME emoji chooser in any application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/madmoh/gnome-shell-extension-universal-emoji-chooser
+	arch = any
+	license = MIT
+	depends = gnome-shell
+	depends = gjs
+	depends = gtk4
+	depends = libadwaita
+	depends = at-spi2-core
+	conflicts = gnome-shell-extension-universal-emoji-chooser-git
+	noextract = universal-emoji-chooser@madmoh.github.io-1.0.0.zip
+	source = universal-emoji-chooser@madmoh.github.io-1.0.0.zip::https://github.com/madmoh/gnome-shell-extension-universal-emoji-chooser/releases/download/v1.0.0/universal-emoji-chooser@madmoh.github.io.shell-extension.zip
+	source = gnome-shell-extension-universal-emoji-chooser-1.0.0-LICENSE::https://raw.githubusercontent.com/madmoh/gnome-shell-extension-universal-emoji-chooser/v1.0.0/LICENSE
+	sha256sums = 210afcc0e55730dccdb0e32f2454f62e720a089e5277165218bc9dad60e19de8
+	sha256sums = 81380b7cff0d2450171b74c270c4994dc2842c2de1067303caef1262875099ba
+
+pkgname = gnome-shell-extension-universal-emoji-chooser
