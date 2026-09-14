@@ -15,6 +15,11 @@ md5sums=('e1c0d4020dc33e4ec63d9b06544e12f6'
          '4342d9210effbe4bfb58722f4275aa5c'
          'adaee5c7e455ba15e0ca9a2692464253')
 
+prepare() {
+  cd $pkgname
+  sed -i 's/CFLAGS+=/CFLAGS+= -std=gnu11 /' Makefile
+}
+
 build() {
   cd $pkgname
   make PREFIX=/usr
