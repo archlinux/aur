@@ -3,7 +3,7 @@
 
 _pkgname=zen-browser-twilight
 pkgname=${_pkgname}-bin
-pkgver=1.23t.20260911
+pkgver=1.23t.20260914
 pkgrel=1
 pkgdesc='Zen Browser (Twilight Build) - Performance oriented Firefox-based web browser'
 arch=('x86_64' 'aarch64')
@@ -43,8 +43,8 @@ source_aarch64=("zen.linux-aarch64-${pkgver}-${pkgrel}.tar.xz::https://github.co
 b2sums=('bc733dba0aad89145425cf6e82a22379c1115b736f0938203e80d7e78f3e0f4c6a4c6abab0ceb36d5eecb009163b77d0b8f2145ffcf6b985a8f142f6fabaec6d'
         'f75e803fa9da53ab9c263cc357f388de87137393fac90e86dfb528029de1434d887c2c25050ea167fbe9959d2eec11f81c85f28010126bd0c46884b59bb6ae41'
         'f83302f32649f214d97f2cadf41d353d7d76fc3b50b6dabc6e25256dc52b7a98aed024a14a88966d0a4f18ee5546ad8f45b4de626aa6ed38c9f8e7a99ef151c3')
-b2sums_x86_64=('6ebe471480258d322c6dec68f5803931898123f9ee16cf63ac022f9f7afd8223714cd00be09b797c639c50b5d2f3463baf775778779fa8f6ac12342d23ab9337')
-b2sums_aarch64=('65e296e28497e6ab446e05f16669ccde94927c822608a13f74c65255755435c5f73f5f9a129a26ee9e1e828517df344ea051feccd4ec0571d3c7d34438df244a')
+b2sums_x86_64=('7b537a7fb9ab61eeeeff3e5d2f9eaccbcaff3b1ebb7b6c12a97e5ec0c054c6e881089105c0778c45c634fc79aa36183223a9ea669ae7961f7f7b1ed01ae043bd')
+b2sums_aarch64=('1eaf3ddc3fadf58d5a11d842a2c2d40af5ed971b2de38ea111cb134756bd44a9a2cd2567aa73aae8c6cb32cbe030d8e613f2785e23505989b5d781b66bf34f43')
 
 package() {
     # Browser files
