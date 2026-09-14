@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Digi Storage
+GenericName=Cloud storage
+Exec=digistorage -update=false
+Terminal=false
+Type=Application
+Icon=digistorage
+Categories=Network;FileTransfer;Internet;

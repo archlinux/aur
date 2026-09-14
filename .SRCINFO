@@ -1,0 +1,15 @@
+pkgbase = digistorage-bin
+	pkgdesc = Digi Storage Desktop Client - Cloud storage client for Digi Romania
+	pkgver = decf8db
+	pkgrel = 1
+	url = https://storage.rcs-rds.ro
+	arch = x86_64
+	license = custom
+	depends = gvfs
+	options = !strip
+	source = digistorage-decf8db-linux-x86_64.tar.gz::https://storage.rcs-rds.ro/dl/apps/linux64
+	source = digistorage.desktop
+	sha256sums = a1f701503bbe82aa558f3cf64b8f459df236c25f2b43991c305e9e283d4ea42f
+	sha256sums = c7f64722db8ab612b1ad1de435236d109fc79ab392b4d877d911f35f0f8c16d2
+
+pkgname = digistorage-bin
