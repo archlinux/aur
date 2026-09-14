@@ -4,6 +4,10 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="Server-monitor boards for a clck kiosk display"
 arch=('x86_64')
+# !lto: ureq pulls rustls/ring C+asm objects; under makepkg's global lto option
+# those objects mislink (undefined ring_core_* symbols) -- same class as cfetch's
+# sqlite3 case. The crate's own release profile already sets opt-level.
+options=('!lto')
 url="https://github.com/corbet-labs/cksk"
 license=('LicenseRef-FSL-1.1-ALv2')
 depends=()
