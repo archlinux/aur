@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=lib32-libvolt
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="32-bit library for volt-gui"
 arch=('x86_64')
@@ -12,14 +12,16 @@ depends=(
   'lib32-gcc-libs'
   'lib32-vulkan-icd-loader'
 )
-makedepends=('rustup')
+makedepends=(
+  'cargo'
+  'lib32-rust-libs'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('220cff30ca415e64160e71017b5a0cec11b44beb619cb463ad955e1fc7c4bb0c')
+sha256sums=('197f0b64d189a050625fe558f182addac261651a4dbd34510b35b14f404664ed')
 
 prepare() {
   cd "volt-gui-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  rustup target add i686-unknown-linux-gnu
   cargo fetch --locked --target i686-unknown-linux-gnu
 }
 
@@ -27,10 +29,6 @@ build() {
   cd "volt-gui-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  export LLVM_CONFIG="/usr/bin/llvm-config32"
   cargo build --frozen --release --lib --target i686-unknown-linux-gnu
 }
 
