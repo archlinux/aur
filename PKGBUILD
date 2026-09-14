@@ -1,4 +1,4 @@
-# Maintainer: Nico <54544490+dserv-nh@users.noreply.github.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
 
 pkgname=eitype
 pkgver=0.2.2
