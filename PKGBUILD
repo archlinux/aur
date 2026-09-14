@@ -2,7 +2,7 @@
 
 pkgname=lefdef-viewer
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Rust-based LEF (Library Exchange Format) and DEF (Design Exchange Format) file viewer with a modern GUI built using egui"
 arch=($CARCH)
 url="https://github.com/vowstar/lefdef-viewer"
@@ -10,14 +10,11 @@ license=('MIT')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
-depends=(
-    gcc-libs
-    glibc
-    )
+depends=()
 makedepends=(
     git
     rust
-    )
+)
 backup=()
 options=(!lto !debug)
 install=
