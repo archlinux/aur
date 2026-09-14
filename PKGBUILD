@@ -2,7 +2,7 @@
 # "anvil" was already taken on the AUR by an unrelated project, hence the
 # pkgname suffix below; the upstream project and repo are still just Anvil.
 pkgname=anvil-manager
-pkgver=0.7.15
+pkgver=0.7.16
 pkgrel=1
 pkgdesc="A self-hosted pacman GUI"
 arch=('any')
@@ -18,7 +18,7 @@ conflicts=('anvil')
 # $pkgname-$pkgver — the two diverge now that pkgname != the repo name.
 _srcdir="Anvil-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Hamza-b93/anvil/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b3ae871345c5dc75bd41d638e6f3f5f16ceb2618f995168495451011d9599420')
+sha256sums=('8732b13fc2f724e224b22d7adfc4f65c48dd2e13c678cf3ed9f9b6e87fc37738')
 
 build() {
   cd "$_srcdir"
