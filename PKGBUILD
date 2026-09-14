@@ -19,7 +19,7 @@ makedepends=(
 	'vim'
 )
 source=("$pkgname-$_pkgver.tar.gz"::"https://github.com/toitlang/toit/releases/download/$_pkgver/$pkgname-$_pkgver-with-submodules.tar.gz")
-sha256sums=('81a31ec0fd41bff7ff4983ddf79e54f575598bb0d0b37b1f11227c4642f949cb')
+sha256sums=('8c9f84992b4dfc872dfacae797b3314634b049f002d3da9dfb186c755f6a56a9')
 
 build() {
 	cd "$pkgname-$_pkgver"
