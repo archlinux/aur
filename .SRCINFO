@@ -1,6 +1,6 @@
 pkgbase = awob-listener-pipewire-bin
 	pkgdesc = awob listener: pipewire volume
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/jmylchreest/awob
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = awob-listener-pipewire-bin
 	provides = awob-listener-pipewire
 	conflicts = awob-listener-pipewire
 	conflicts = awob-git
-	source = awob-0.1.7-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.1.7/awob-0.1.7-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = e23b2b772c8c3ff7fe6680be1245fa6af2c74ad22227c95cdcfa90b950c36ee2
+	source = awob-0.1.8-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.1.8/awob-0.1.8-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 0dd8459642e318cbd6e1c6aaafd5b9622604e1e68d80770aa7a69432ca0a4223
 
 pkgname = awob-listener-pipewire-bin
