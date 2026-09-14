@@ -2,7 +2,7 @@
 
 pkgname=mobile-mcp
 _npmname='@mobilenext/mobile-mcp'
-pkgver=0.0.55
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Model Context Protocol (MCP) server for automating native iOS and Android apps and devices'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('android-tools: adb-based control of Android devices and emulators'
 options=('!strip' '!emptydirs')
 source=("https://registry.npmjs.org/${_npmname}/-/mobile-mcp-${pkgver}.tgz")
 noextract=("mobile-mcp-${pkgver}.tgz")
-sha256sums=('902890d6f638eb9f04d09c3ec83a18f44c355c7b759211d87b83808e93d2da78')
+sha256sums=('680332d164c43fe621e32ec67524a76ac080d0a7af55cdf7eb704d15bf782419')
 
 package() {
 	npm install -g \
