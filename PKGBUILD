@@ -1,7 +1,7 @@
 pkgname=spaghettikart-bin
-pkgver=0.9.9.1.libpatch
-pkgrel=1
-scriptver=1.1
+pkgver=1.0.0
+pkgrel=2
+scriptver=1.2
 rlname=SpaghettiKart
 _rlname=spaghettikart
 pkgdesc="Spaghetti Kart Reimplimentation engine for Mario Kart 64"
@@ -10,9 +10,9 @@ url="https://gitlab.com/linuxbombay/spaghettikart"
 license=('GPL')
 depends=('sdl2' 'libpng' 'libzip' 'nlohmann-json' 'tinyxml2' 'spdlog' 'sdl2_net' 'boost' 'libogg' 'libvorbis' 'zenity')
 makedepends=('unzip')
-sha256sums=('380655e827c5750a1641cc318277af650d927045a5746fd915cccdc89eab7b4d')
-sha256sums_x86_64=('dbbb389f2f79b430d67c773b1259484ee3629ada46b1de5d82e32953e032ebb1')
-sha256sums_aarch64=('d484b358c2e83c23c6a8d783f39e4d631d3fc71d1c74cf781300987d822ea8d4')
+sha256sums=('5f8b19a2546c16f18e8d836d376f1f3af598b98d1ea559c930a582c9bfcd8747')
+sha256sums_x86_64=('f34eac67c941ca5801f865516a249b49419ca7910ec05552c9a4765dcffee02a')
+sha256sums_aarch64=('db5c2f545cb7c9a2ac682b88e73a56ae6cb707739e0aeae6a2885655b9f21cbe')
 source=("https://gitlab.com/linuxbombay/spaghettikart/spaghettikart/-/archive/$scriptver/spaghettikart-$scriptver.tar.bz2")
 source_x86_64=("spaghettikart-$pkgver-linux-x64.tar.xz::https://gitlab.com/linuxbombay/spaghettikart/binaries/$pkgver/-/raw/main/spaghettikart-linux-x64.tar.xz")
 source_aarch64=("spaghettikart-$pkgver-linux-arm64.tar.xz::https://gitlab.com/linuxbombay/spaghettikart/binaries/$pkgver/-/raw/main/spaghettikart-linux-arm64.tar.xz")
@@ -24,13 +24,25 @@ package() {
     install -dm755 "$pkgdir/usr/share/applications"
     install -dm755 "$pkgdir/usr/share/pixmaps"
     
-    find "$srcdir" -type f \( -name "Spaghettify" -o -name "*.ini" -o -name "spaghettify.cfg.json" -o -name "spaghetti.o2r" -o -name "config.yml" -o -name "torch.hash.yml" \) -exec cp -rf {} "$pkgdir/usr/share/games/$rlname" \;
-    cp -r "$srcdir/torch" "$pkgdir/usr/share/games/$rlname"
-    cp -r "$srcdir/yamls" "$pkgdir/usr/share/games/$rlname"
+    for path in "$srcdir"/*; do
+        name="${path##*/}"
+
+        case "$name" in
+            usr|"$_rlname-$scriptver"|*.tar.*)
+                continue
+                ;;
+        esac
+
+        cp -a "$path" "$pkgdir/usr/share/games/$rlname/"
+    done
+
     install -Dm755 "$srcdir/$_rlname-$scriptver/$_rlname" "$pkgdir/usr/bin"
     install -Dm644 "$srcdir/$_rlname-$scriptver/$_rlname.png" "$pkgdir/usr/share/pixmaps"
     install -Dm755 "$srcdir/$_rlname-$scriptver/$_rlname.desktop" "$pkgdir/usr/share/applications"
     
     #libs
-    find "$srcdir/usr/lib/SpaghettiKart" -name "*.so*" -exec cp -a {} "$pkgdir/usr/lib/$rlname" \;
+    for libdir in "$srcdir/usr/lib/SpaghettiKart" "$srcdir/usr/lib/Spaghettikart"; do
+        [ -d "$libdir" ] || continue
+        find "$libdir" -name "*.so*" -exec cp -a {} "$pkgdir/usr/lib/$rlname" \;
+    done
 }
