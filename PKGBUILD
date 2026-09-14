@@ -3,7 +3,7 @@
 _pkgname=nmrpflash
 pkgname=${_pkgname}-git
 pkgver=0.9.27.r4.g8bf7ddc
-pkgrel=1
+pkgrel=2
 pkgdesc="Netgear Unbrick Utility"
 arch=($CARCH)
 url="https://github.com/jclehner/nmrpflash"

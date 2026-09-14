@@ -1,7 +1,7 @@
 pkgbase = nmrpflash-git
 	pkgdesc = Netgear Unbrick Utility
 	pkgver = 0.9.27.r4.g8bf7ddc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jclehner/nmrpflash
 	arch = x86_64
 	license = GPL-3.0-or-later
