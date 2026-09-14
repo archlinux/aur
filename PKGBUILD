@@ -2,8 +2,8 @@
 
 pkgbase=k230-burning-tool
 pkgname=k230-burning-tool
-pkgver=2.2.5
-pkgrel=1
+pkgver=2.2.7
+pkgrel=2
 groups=()
 pkgdesc="Kendryte K230 Flash Tool Cpp GUI version"
 arch=($CARCH)
@@ -39,7 +39,7 @@ source=(
     "git+https://github.com/kendryte747/libusb-cmake.git"
     "git+https://github.com/libusb/libusb.git"
 )
-sha256sums=('da819714c79acc559fa25f88cb0f17b5a3e709538571b5788832a1b846a2a6b4'
+sha256sums=('dec0d11a1343ebe4f7904a166478baaf8a24dd5481279ccb0cb14f6b843f7759'
             'SKIP'
             'SKIP'
             'SKIP')
