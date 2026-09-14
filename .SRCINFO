@@ -1,0 +1,19 @@
+pkgbase = xodopdfreader
+	pkgdesc = Open, view, annotate, fill out forms, and sign PDF documents
+	pkgver = 2026.2.0
+	pkgrel = 1
+	url = https://xodo.com/pdf-studio/free-pdf-reader
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Apryse
+	makedepends = dpkg
+	makedepends = desktop-file-utils
+	makedepends = gendesk
+	makedepends = libarchive
+	noextract = xodopdfreader-2026.2.0_linux64.deb
+	source = xodopdfreader-2026.2.0_linux64.deb::https://getpdfstudio.xodo.com/xodopdfreader/XodoPDFReader_linux64.deb
+	b2sums = 34dc07644c774d40ddfda8d3d631a682b086d791dece39f9b7080bb264be5e86f6ba8515234345bf22bab175428299780c05e0127b6fee8be19261d052ee1410
+
+pkgname = xodopdfreader
+	depends = java-runtime-openjdk=25
+	depends = sane
