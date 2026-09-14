@@ -2,7 +2,7 @@
 
 pkgname=dtk-candle-git
 pkgver=r28.acf33ab
-pkgrel=5
+pkgrel=6
 pkgdesc="A DTK6/Qt6 desktop application for temporarily preventing automatic screen dimming, locking, and system sleep by simulating NumLock key presses"
 arch=($CARCH)
 url="https://github.com/HuanSoft-Open-Source-Community/candle"
@@ -56,7 +56,7 @@ build() {
 	# see：https://wiki.archlinux.org/title/CMake_package_guidelines
 	cmake -DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-Wno-dev \
+		-Wno-author \
 		-B build \
 		-G Ninja
 
