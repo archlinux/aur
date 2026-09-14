@@ -3,7 +3,7 @@
 pkgbase=at32-bootloader-doc
 pkgname=at32-bootloader-doc
 pkgver=2.0.7
-pkgrel=5
+pkgrel=6
 pkgdesc="Artery AT MCU Bootloader ISP 协议文档"
 arch=(any)
 url="https://www.arterytek.com/cn/support/index.jsp?index=5"

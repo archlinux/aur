@@ -1,7 +1,7 @@
 pkgbase = at32-bootloader-doc
 	pkgdesc = Artery AT MCU Bootloader ISP 协议文档
 	pkgver = 2.0.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.arterytek.com/cn/support/index.jsp?index=5
 	arch = any
 	license = LicenseRef-scancode-commercial-license
