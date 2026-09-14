@@ -1,7 +1,7 @@
 pkgbase = ddccontrol
 	pkgdesc = DDCcontrol is a software used to control monitor parameters, like brightness, contrast, RGB color levels and others
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ddccontrol/ddccontrol
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ddccontrol
 	makedepends = intltool
 	makedepends = glib2-devel
 	makedepends = rust
-	depends = ddccontrol-db-git
+	depends = ddccontrol-db
 	depends = libxml2
 	depends = glib2
 	options = !libtool

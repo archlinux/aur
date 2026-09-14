@@ -8,12 +8,12 @@
 pkgbase=ddccontrol
 pkgname=(ddccontrol gddccontrol)
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DDCcontrol is a software used to control monitor parameters, like brightness, contrast, RGB color levels and others"
 arch=('i686' 'x86_64')
 url="https://github.com/ddccontrol/ddccontrol"
 license=('GPL')
-depends=('ddccontrol-db-git' 'libxml2' 'glib2')
+depends=('ddccontrol-db' 'libxml2' 'glib2')
 makedepends=('gtk3' 'intltool' 'glib2-devel' 'rust')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ddccontrol/ddccontrol/releases/download/${pkgver}/ddccontrol-${pkgver}-vendor.tar.gz")
 options=('!libtool')
