@@ -1,6 +1,6 @@
 pkgbase = arch-update-bin
 	pkgdesc = An interactive update notifier & applier that assists you with important pre / post update tasks (bin version)
-	pkgver = 4.4.0
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://github.com/Antiz96/arch-update
 	arch = x86_64
@@ -36,9 +36,9 @@ pkgbase = arch-update-bin
 	provides = arch-update
 	conflicts = arch-update
 	options = !strip
-	source = arch-update-4.4.0.tar.gz::https://github.com/Antiz96/arch-update/archive/v4.4.0.tar.gz
-	sha256sums = 13796df44c2e6137d193aa274da5d979bb386589a3747281b8ca1b42929562fa
-	source_x86_64 = arch-update-tray-4.4.0-x86_64::https://github.com/Antiz96/arch-update/releases/download/v4.4.0/arch-update-tray-4.4.0-x86_64
-	sha256sums_x86_64 = fa4709d74f974f8c82ffc98456063da58a361efe0c3f22541ebc46c0bdee62b0
+	source = arch-update-4.4.1.tar.gz::https://github.com/Antiz96/arch-update/archive/v4.4.1.tar.gz
+	sha256sums = 3f993999257bc06b826afa566cb6e40bf3c69826ac7b018e61a5e37d06df782b
+	source_x86_64 = arch-update-tray-4.4.1-x86_64::https://github.com/Antiz96/arch-update/releases/download/v4.4.1/arch-update-tray-4.4.1-x86_64
+	sha256sums_x86_64 = 4ff23f075dd3408349349c78827bbc5ed5f3a1f22537d65128a72bb7f12509b8
 
 pkgname = arch-update-bin
