@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=modrinth-app-bin
-pkgver=0.20.5
+pkgver=0.21.2
 pkgrel=1
 pkgdesc="Minecraft mod manager and launcher from Modrinth (upstream binary)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('modrinth-app')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::https://github.com/modrinth/code/releases/download/v${pkgver}/Modrinth.App_${pkgver}_amd64.deb")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('ec345321e87110d1be5f4f13583c8314832e36054bd356e2241994214a80ee7e')
+sha256sums=('eb3e5da0be62a33006fbd28d273c3dfb68de90de62d8781f4b507bd07d18ed00')
 
 package() {
   bsdtar -xOf "$srcdir/${pkgname}-${pkgver}.deb" 'data.tar.*' \
