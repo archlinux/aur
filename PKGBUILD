@@ -5,7 +5,7 @@
 # 已随 release 资产一并打包，不再从上游单独拉取。
 
 pkgname=miyu
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=2
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
@@ -13,7 +13,7 @@ url='https://github.com/SHORiN-KiWATA/miyu-agent'
 license=('MIT' 'OFL-1.1')
 options=('!strip' '!debug')
 export LC_ALL=C.UTF-8
-depends=('chafa' 'gcc-libs' 'ripgrep' 'alsa-lib' 'onnxruntime')
+depends=('alsa-lib' 'chafa' 'gcc-libs' 'glibc' 'onnxruntime' 'python' 'ripgrep')
 optdepends=(
   'miyu-voice: voice wake word + speech recognition front end'
   'git: update default Shorin Wiki knowledge base'
@@ -30,10 +30,12 @@ source=(
   "${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.pkg.tar.zst"
 )
 sha256sums=(
-  '0943349a9cc70675fb1bf4a197dd822f165ed9792e263bcca134003c069beb88'
+  '95989eae52241c6c29929add6b98f7934ceb1e631a67b950cdfedc6d42824eeb'
 )
 
+# Keep the last published version and checksum until channel_update records
+# the newly verified release asset. Never use SKIP for a binary release asset.
 package() {
-  install -Dm755 "${srcdir}/usr/bin/miyu" "${pkgdir}/usr/bin/miyu"
-  cp -a "${srcdir}/usr/share" "${pkgdir}/usr/"
+  install -d "${pkgdir}/usr"
+  cp -a "${srcdir}/usr/." "${pkgdir}/usr/"
 }
