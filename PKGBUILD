@@ -3,7 +3,7 @@
 pkgname=python-migate
 _name=${pkgname#python-}
 pkgver=1.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="migate is a simplified Xiaomi authentication gateway for Python projects"
 provides=(${pkgname})
 conflicts=(${pkgname})
