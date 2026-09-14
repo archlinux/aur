@@ -1,7 +1,7 @@
 pkgbase = cpak-bin
 	pkgdesc = A fast, decentralized, portable, powerful and low-memory footprint package format for Linux.
 	pkgver = 2.13.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Containerpak/cpak
 	arch = x86_64
 	arch = aarch64
@@ -24,12 +24,12 @@ pkgbase = cpak-bin
 	options = !debug
 	source = cpak-2.13.3.tar.gz::https://github.com/Containerpak/cpak/archive/refs/tags/v2.13.3.tar.gz
 	sha256sums = 2a6417c5cfc4e76cb574a0c174537788cb96ba2cd3bc7774537ce7d2d718f153
-	source_x86_64 = cpak-linux-amd64::https://github.com/Containerpak/cpak/releases/download/v2.13.3/cpak-linux-amd64
-	source_x86_64 = cpak-storaged-linux-amd64::https://github.com/Containerpak/cpak/releases/download/v2.13.3/cpak-storaged-linux-amd64
+	source_x86_64 = cpak-2.13.3-linux-amd64::https://github.com/Containerpak/cpak/releases/download/v2.13.3/cpak-linux-amd64
+	source_x86_64 = cpak-2.13.3-storaged-linux-amd64::https://github.com/Containerpak/cpak/releases/download/v2.13.3/cpak-storaged-linux-amd64
 	sha256sums_x86_64 = 1c842ae9eeccb071d948e2bf0360453f6b39edf011b585f3d0c4a77548c84b98
 	sha256sums_x86_64 = cc5ddf5fba5cbc9612b50cdb5fb9d5cfded3cd5d13297f1e8602b874f944aa40
-	source_aarch64 = cpak-linux-arm64::https://github.com/Containerpak/cpak/releases/download/v2.13.3/cpak-linux-arm64
-	source_aarch64 = cpak-storaged-linux-arm64::https://github.com/Containerpak/cpak/releases/download/v2.13.3/cpak-storaged-linux-arm64
+	source_aarch64 = cpak-2.13.3-linux-arm64::https://github.com/Containerpak/cpak/releases/download/v2.13.3/cpak-linux-arm64
+	source_aarch64 = cpak-2.13.3-storaged-linux-arm64::https://github.com/Containerpak/cpak/releases/download/v2.13.3/cpak-storaged-linux-arm64
 	sha256sums_aarch64 = 03055279aca7cb408f48cea9f0819103c247da0b08f19547a56abeaa9395438b
 	sha256sums_aarch64 = f19bcb33e71a06328b13c00cb0ed56c45cea4e163b0427c76e609f6d6b6c5c59
 

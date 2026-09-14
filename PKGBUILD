@@ -1,7 +1,7 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
 pkgname=cpak-bin
 pkgver=2.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, decentralized, portable, powerful and low-memory footprint package format for Linux."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Containerpak/cpak"
@@ -36,13 +36,13 @@ sha256sums_aarch64=('03055279aca7cb408f48cea9f0819103c247da0b08f19547a56abeaa939
                     'f19bcb33e71a06328b13c00cb0ed56c45cea4e163b0427c76e609f6d6b6c5c59')
 
 source_x86_64=(
-  "cpak-linux-amd64::https://github.com/Containerpak/cpak/releases/download/v${pkgver}/cpak-linux-amd64"
-  "cpak-storaged-linux-amd64::https://github.com/Containerpak/cpak/releases/download/v${pkgver}/cpak-storaged-linux-amd64"
+  "cpak-${pkgver}-linux-amd64::https://github.com/Containerpak/cpak/releases/download/v${pkgver}/cpak-linux-amd64"
+  "cpak-${pkgver}-storaged-linux-amd64::https://github.com/Containerpak/cpak/releases/download/v${pkgver}/cpak-storaged-linux-amd64"
 )
 
 source_aarch64=(
-  "cpak-linux-arm64::https://github.com/Containerpak/cpak/releases/download/v${pkgver}/cpak-linux-arm64"
-  "cpak-storaged-linux-arm64::https://github.com/Containerpak/cpak/releases/download/v${pkgver}/cpak-storaged-linux-arm64"
+  "cpak-${pkgver}-linux-arm64::https://github.com/Containerpak/cpak/releases/download/v${pkgver}/cpak-linux-arm64"
+  "cpak-${pkgver}-storaged-linux-arm64::https://github.com/Containerpak/cpak/releases/download/v${pkgver}/cpak-storaged-linux-arm64"
 )
 
 package() {
@@ -54,16 +54,16 @@ package() {
     aarch64) _suffix=arm64 ;;
   esac
 
-  install -Dm755 "${srcdir}/cpak-linux-${_suffix}" \
+  install -Dm755 "${srcdir}/cpak-${pkgver}-linux-${_suffix}" \
     "${pkgdir}/usr/bin/cpak"
 
-  install -Dm755 "${srcdir}/cpak-storaged-linux-${_suffix}" \
+  install -Dm755 "${srcdir}/cpak-${pkgver}-storaged-linux-${_suffix}" \
     "${pkgdir}/usr/lib/cpak/cpak-storaged"
 
-  chmod +x "${srcdir}/cpak-linux-${_suffix}"
-  "${srcdir}/cpak-linux-${_suffix}" completion bash > cpak.bash
-  "${srcdir}/cpak-linux-${_suffix}" completion zsh > _cpak
-  "${srcdir}/cpak-linux-${_suffix}" completion fish > cpak.fish
+  chmod +x "${srcdir}/cpak-${pkgver}-linux-${_suffix}"
+  "${srcdir}/cpak-${pkgver}-linux-${_suffix}" completion bash > cpak.bash
+  "${srcdir}/cpak-${pkgver}-linux-${_suffix}" completion zsh > _cpak
+  "${srcdir}/cpak-${pkgver}-linux-${_suffix}" completion fish > cpak.fish
   install -Dm644 cpak.bash "${pkgdir}/usr/share/bash-completion/completions/cpak"
   install -Dm644 _cpak "${pkgdir}/usr/share/zsh/site-functions/_cpak"
   install -Dm644 cpak.fish "${pkgdir}/usr/share/fish/vendor_completions.d/cpak.fish"
