@@ -1,7 +1,7 @@
 # Maintainer: Eldred Habert <arch@(my first name).fr>
 # Former maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister-git
-pkgver=0.19.0.r38.g79e6584
+pkgver=0.19.0.r66.g01ff8fc
 pkgrel=1
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites (git)"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ source=("$pkgname::git+https://github.com/asciimoo/hister.git"
         hister.sysusers)
 sha256sums=('SKIP'
             'f5713114859925e53bd9f99d26072bcf07946011545d1e69fbaf09a7623e7e23'
-            '6e447007916c143ac4a3389718b3529d54e84d36acdb8d93c070432f966ca4b9'
+            'f8d5c7f36bc4ee014f0aa5bad65dc93b2bc16940abeff51993157dcd3495b1be'
             '5f4f3e82c42ba517d0caaa1deb4d3532c4f26cc60e42861bff1c5c6dacf34e9f')
 backup=(etc/hister/{hister.env,config.yml})
 
@@ -65,7 +65,7 @@ build() {
 	cp contrib/systemd/hister{,-user}.service
 	patch --force --forward -p1 <"$srcdir/systemd-user.patch"
 
-	./hister create-config >config.yml
+	./hister config create >config.yml
 }
 
 package() {
