@@ -1,0 +1,20 @@
+pkgbase = ragpilot
+	pkgdesc = Token-efficient, local-first code intelligence layer for AI coding agents over MCP
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/alikaya/ragpilot
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = openssl
+	optdepends = qdrant: vector database the index is stored in (or run qdrant in Docker)
+	optdepends = claude-code: compiler engine for the second brain
+	options = !lto
+	options = !debug
+	source = ragpilot-0.9.0.tar.gz::https://github.com/alikaya/ragpilot/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = d51f636e570bca3be924d95e9a3fda9819214e417f297424087a1b156c7aca67
+
+pkgname = ragpilot
