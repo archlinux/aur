@@ -1,7 +1,7 @@
 pkgbase = python-kiauto
 	pkgdesc = KiCad automation scripts. In particular to automate tasks that can't be done using the KiCad native Python interface. The automation is carried out emulating the user interaction.
 	pkgver = 2.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/kiauto
 	arch = any
 	license = Apache-2.0

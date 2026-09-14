@@ -3,7 +3,7 @@
 pkgname=python-kiauto
 _name=${pkgname#python-}
 pkgver=2.3.10
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="KiCad automation scripts. In particular to automate tasks that can't be done using the KiCad native Python interface. The automation is carried out emulating the user interaction."
 arch=('any')
