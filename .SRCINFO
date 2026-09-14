@@ -1,6 +1,6 @@
 pkgbase = linux-explorer
 	pkgdesc = A faithful recreation of Windows 7's Explorer
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/actuallyaridan/linux-explorer
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = linux-explorer
 	optdepends = ffmpegthumbs: thumbnails for video
 	optdepends = kdegraphics-thumbnailers: thumbnails for PDF and RAW
 	optdepends = kdenetwork-filesharing: Samba browsing behind Map network drive
-	source = linux-explorer-1.0.tar.gz::https://github.com/actuallyaridan/linux-explorer/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 7dd6aaf162d17192d84a0183896a590fbc8533bf68cae4a1820110ce63356337
+	source = linux-explorer-1.1.tar.gz::https://github.com/actuallyaridan/linux-explorer/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 04d99ba7a135fd299c6d124c5fd355d452fc2f39c5e0b1ac0cff8d09b6b5cfe3
 
 pkgname = linux-explorer
