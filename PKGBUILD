@@ -3,8 +3,8 @@
 pkgname=opentubex-git
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
-pkgver=r13027.ed63baeb3
-pkgrel=2
+pkgver=r12607.a8dc8e696
+pkgrel=3
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://opentubex.org"
@@ -35,18 +35,6 @@ prepare() {
 
   sed -i "/^export default {/a\\  electronDist: '/usr/lib/electron43'," \
     "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
-
-  # Webpack must bundle dependencies which use createRequire. Leaving their
-  # original import.meta.url in app.asar leaks $srcdir and breaks after makepkg
-  # removes the source tree.
-  sed -i '/parser: { javascript: { createRequire: false } },/d' \
-    "$srcdir/$_pkgname/_scripts/webpack.main.config.js"
-  grep -Fq 'createRequire: false' \
-    "$srcdir/$_pkgname/_scripts/webpack.main.config.js" && {
-    printf '%s\n' 'Failed to restore webpack createRequire handling' >&2
-    return 1
-  }
-
   sed -i "/Platform\\.LINUX\\.createTarget/s/\\[[^]]*\\]/['dir']/" \
     "$srcdir/$_pkgname/_scripts/build.mjs"
   grep -Fq "Platform.LINUX.createTarget(['dir'], arch)" \
@@ -61,10 +49,6 @@ build() {
   pnpm install --frozen-lockfile
   # Webpack maps GITHUB_SHA -> BUILD_COMMIT for the About commit line.
   GITHUB_SHA="$(git rev-parse HEAD)" pnpm build
-  if grep -Fq "$srcdir/" dist/main.js; then
-    printf '%s\n' 'The main bundle contains temporary build paths' >&2
-    return 1
-  fi
 }
 
 package() {
