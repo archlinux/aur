@@ -1,0 +1,13 @@
+pkgbase = cksk-bin
+	pkgdesc = Server-monitor boards for a clck kiosk display (prebuilt, x86-64-v3)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/corbet-labs/cksk
+	arch = x86_64
+	license = LicenseRef-FSL-1.1-ALv2
+	provides = cksk
+	conflicts = cksk
+	source = https://github.com/corbet-labs/cksk/releases/download/v0.1.0/cksk-0.1.0-x86_64-v3.tar.gz
+	sha256sums = 2c2cf0474065596a87cc2d235ef3ade97636dce0fb6381b2ad94af7af882696a
+
+pkgname = cksk-bin
