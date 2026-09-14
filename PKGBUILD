@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mendingwall
-pkgver=0.3.8
-pkgrel=2
+pkgver=0.3.9
+pkgrel=1
 pkgdesc="Fix issues when hopping between multiple desktop environments"
 arch=('x86_64' 'aarch64')
 url="https://mendingwall.indii.org"
@@ -10,13 +10,14 @@ depends=(
   'gtk4'
   'libadwaita'
   'libportal'
+  'libportal-gtk4'
 )
 makedepends=(
   'blueprint-compiler'
   'meson'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lawmurray/mendingwall/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e93a5d1a4e6f266b7207d9363ba7985dbc5a14fcc52749bd40c27fe01cfeb876')
+sha256sums=('8692a1f6e2a192ae17e6efa6b0db15b1778cf4e648c2216e7376c42b0e7c84fe')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
