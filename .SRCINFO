@@ -1,0 +1,21 @@
+pkgbase = readeck
+	pkgdesc = Readeck is a simple web application that lets you save the precious readable content of web pages you like and want to keep forever
+	pkgver = 0.23.2
+	pkgrel = 1
+	url = https://readeck.org
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = AGPLv3
+	makedepends = go
+	makedepends = npm
+	optdepends = postgresql: for using PostgreSQL instead of SQLite
+	conflicts = readeck
+	source = readeck-0.23.2.tar.gz::https://codeberg.org/readeck/readeck/archive/0.23.2.tar.gz
+	sha256sums = 1094edb09ebc124526ce4e83d2125bbff1c75a188a302e21f39416dc4ada6182
+
+pkgname = readeck
