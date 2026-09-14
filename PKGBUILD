@@ -2,7 +2,7 @@
 
 pkgname=edac-utils
 pkgver=0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace helper for kernel EDAC drivers (Error Detection and Correction)"
 arch=($CARCH)
 url="https://github.com/grondo/edac-utils"
@@ -12,7 +12,6 @@ conflicts=(${pkgname})
 replaces=()
 depends=(
     sh
-    glibc
     perl
     sysfsutils
 )
