@@ -3,7 +3,7 @@
 
 pkgname='python-strictdoc'
 _name=${pkgname#python-}
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Software for technical documentation and requirements management."
 url="https://github.com/strictdoc-project/strictdoc"
@@ -41,7 +41,7 @@ makedepends=('python-pipreqs' 'python-setuptools')
 license=('Apache-2.0')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('f2a0a8b7e996506481cac51c37f55a702836f35f79e0c841978ae7d4d3d8177f2bd8036c40568315a590c6368705a08d068dce2b35988fb66340664441ea9485')
+sha512sums=('c5b88618f9e1a4cc18710b134dfc43638c5b234e4537790ffc5f0f9650386a69134b26418505f6c6b6ccc7c93a95351e5800e1b238d9e241303c6d6a9b3efbe2')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
