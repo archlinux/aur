@@ -1,8 +1,8 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastpotify-git
-pkgver=0.5.0rc1.r5.6797a83
-pkgrel=1
-pkgdesc="Native Spotify client"
+pkgver=0.8.0.r3.16ee665
+pkgrel=2
+pkgdesc="Renamed to spotifast-git. Native Spotify client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/spotifast"
 license=('MIT')
