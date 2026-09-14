@@ -20,7 +20,7 @@ index 8a717b12..f614e11c 100644
 -        'cloudscraper',
 -        'requests',
 -        'requests_toolbelt',
--        'requests_file.py',
+-        'requests_file',
 -        'urllib3',
 -        'certifi',
 -        'idna',
