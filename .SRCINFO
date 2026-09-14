@@ -1,18 +1,18 @@
 pkgbase = garamontio-font
 	pkgdesc = a fork of EB Garamond
-	pkgver = 1.308
+	pkgver = 1.310
 	pkgrel = 1
 	url = https://m-casanova.codeberg.page/Garamontio/
 	arch = any
 	license = OFL
-	source = Garamontio-1.308-otf.zip::https://codeberg.org/m-casanova/Garamontio/releases/download/v1.308/garamontio_otf.zip
-	source = Garamontio-1.308-ttf.zip::https://codeberg.org/m-casanova/Garamontio/releases/download/v1.308/garamontio_ttf.zip
-	source = Garamontio-1.308-var.zip::https://codeberg.org/m-casanova/Garamontio/releases/download/v1.308/garamontio_var.zip
-	source = Garamontio-1.308.tar.gz::https://codeberg.org/m-casanova/Garamontio/archive/v1.308.tar.gz
-	sha256sums = 575dcc71f5b92c9a2d63409a43d831eb25f595cc19fab38b27188ac1196960de
-	sha256sums = 37d4662ec3627d9822837c587a9363645ad1eeca83113c90af80bea7186decf7
-	sha256sums = 70199d11219aff4283bcdcb3a35982a7ef07c9a37526f5e1e2bca8160625523e
-	sha256sums = 431669c607bf65da3cdeb70bf456ad536bf2f1fcec40091c8ccf25ba055ea097
+	source = Garamontio-1.310-otf.zip::https://codeberg.org/m-casanova/Garamontio/releases/download/v1.310/garamontio_otf.zip
+	source = Garamontio-1.310-ttf.zip::https://codeberg.org/m-casanova/Garamontio/releases/download/v1.310/garamontio_ttf.zip
+	source = Garamontio-1.310-var.zip::https://codeberg.org/m-casanova/Garamontio/releases/download/v1.310/garamontio_var.zip
+	source = Garamontio-1.310.tar.gz::https://codeberg.org/m-casanova/Garamontio/archive/v1.310.tar.gz
+	sha256sums = a17b4124ce41fc8dd8b125b2fd5715c3966a74f29f61e0e5e985be7ebb4cb791
+	sha256sums = 99c5737c82984f955316cb4a8f33343ed9f16820b6cc003b978f27fad5c9e36f
+	sha256sums = cf869b7d7a1c6d7273de304c22b7107db504bfe39c6351fa3f038910864ea3ac
+	sha256sums = 0a357559ed9c1ef39371b33637e89b9f980668a227e878d4c9c011ed4cec5cb3
 
 pkgname = otf-garamontio
 	provides = garamontio-font
