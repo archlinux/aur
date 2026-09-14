@@ -1,8 +1,8 @@
 # Maintainer: zlicdt <xkicdt1@gmail.com>
 
 pkgname=open-orpheus
-pkgver=0.17.0
-pkgrel=2
+pkgver=0.17.1
+pkgrel=1
 pkgdesc="An open-source implementation of Netease Cloud Music's Orpheus browser host"
 arch=('x86_64')
 url="https://github.com/YUCLing/open-orpheus"
@@ -41,19 +41,21 @@ depends=(
 # Thanks @Misaka19465
 # optdepends=('kde-cli-tools: move deleted files to the KDE trash')
 makedepends=(
+    'cargo-zigbuild'
     'nodejs>=24'
     'pnpm'
     'rust'
     'rust-wasm'
 )
-options=('!debug' '!strip')
+# Zig cannot use makepkg's default -flto=auto flag.
+options=('!debug' '!strip' '!lto')
 _wasm_bindgen_ver=0.2.128
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "wasm-bindgen-$_wasm_bindgen_ver.tar.gz::https://github.com/wasm-bindgen/wasm-bindgen/releases/download/$_wasm_bindgen_ver/wasm-bindgen-$_wasm_bindgen_ver-x86_64-unknown-linux-musl.tar.gz"
     "$pkgname.desktop"
 )
-sha256sums=('733099d273718e9f27b2776e519f73edd8d4dd0b2e471c6b8bc2cb7fb3f44b3e'
+sha256sums=('4db4cd38beac45776160faf88df24195e600c5d26efadfdbae33d86154e1b01f'
             'b51f0208fdff83515a787bd8ab9ac5865ed84dabb66d0c709957bb59793c645f'
             '259b39667fe1dce5d6ce45d4464b7499989c0b0d527c9b9d3597d519dd744e76')
 
@@ -67,6 +69,10 @@ build() {
     cd "$pkgname-$pkgver"
 
     export PATH="$srcdir/wasm-bindgen-$_wasm_bindgen_ver-x86_64-unknown-linux-musl:$PATH"
+    # Zig treats generic tuning as an unsupported x86_64 CPU model.
+    export CFLAGS="${CFLAGS//-mtune=generic/}"
+    export CXXFLAGS="${CXXFLAGS//-mtune=generic/}"
+
     pnpm build:modules
     pnpm package
 }
