@@ -1,7 +1,7 @@
 pkgbase = marukotoolbox
 	pkgdesc = 小丸工具箱粉丝致敬版
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/arenascats/MarukoToolbox-Rewrite
 	arch = x86_64
 	license = Apache-2.0
@@ -11,7 +11,6 @@ pkgbase = marukotoolbox
 	makedepends = tcl
 	makedepends = tk
 	makedepends = tkdnd
-	depends = glibc
 	depends = hicolor-icon-theme
 	optdepends = amf-amdgpu-pro: AMDGPU Pro Advanced Multimedia Framework
 	optdepends = nvidia-utils: NVIDIA drivers utilities

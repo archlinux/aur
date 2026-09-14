@@ -2,7 +2,7 @@
 
 pkgname=marukotoolbox
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="小丸工具箱粉丝致敬版"
 arch=($CARCH)
 url="https://github.com/arenascats/MarukoToolbox-Rewrite"
@@ -11,7 +11,6 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 depends=(
-    glibc
     hicolor-icon-theme
 )
 makedepends=(
