@@ -1,2 +1,7 @@
-- Fix encoding issue on some Windows systems causing connections launches to fail
-- Fix debug output not showing all data messages from terminal sessions
+- Fix more encoding issues on Windows systems causing connection launches to fail
+- Fix terminal launches freezing when AdGuard was installed locally and blocked localhost connections
+  (+ Add local connectivity self test and show error message when localhost connections are blocked)
+- Fix various Junos OS recognition issues
+- Fix drag and drop graphic indicator not working properly on Linux and macOS
+  (There are still some upstream bugs in KDE that are being worked on where it always shows negative drop feedback)
+- Clarify that the Bitwarden integration also works for Vaultwarden
