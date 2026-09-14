@@ -1,6 +1,6 @@
 pkgbase = stone-phaser.lv2-git
 	pkgdesc = A classic analog phaser effect LV2 plugin (git version)
-	pkgver = 0.1.2.r17.gda92961
+	pkgver = 0.1.2.r26.gf057ea5
 	pkgrel = 1
 	url = https://github.com/jpcima/stone-phaser
 	arch = i686
@@ -22,4 +22,3 @@ pkgbase = stone-phaser.lv2-git
 	md5sums = SKIP
 
 pkgname = stone-phaser.lv2-git
-
