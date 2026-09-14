@@ -5,7 +5,7 @@ _pkgname=ekphos
 pkgname=${_pkgname}
 pkgdesc="A lightweight, fast, terminal-based markdown research tool inspired by Obsidian"
 
-pkgver=0.25.10
+pkgver=0.50.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,7 +22,7 @@ provides=("${pkgname}")
 makedepends=('rust')
 
 source=("${_pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0f88f0555d1d453458d35fad5779b824288857e95ac039605ac1901733fe044b')
+sha256sums=('fe42ee4e01b31041d2813c91d88271f3cebbd0d16cc79eebce9a1289dbecbcea')
 
 build() {
 	cd ${pkgname}-${pkgver} || exit 1
