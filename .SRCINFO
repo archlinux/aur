@@ -1,6 +1,6 @@
 pkgbase = ac-launcher-bin
 	pkgdesc = Launcher for Asheron's Call emulator servers that runs the game through Proton, without Steam
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/AC-Launcher
 	arch = x86_64
@@ -31,10 +31,10 @@ pkgbase = ac-launcher-bin
 	optdepends = libglvnd: GPU-accelerated drawing
 	provides = ac-launcher
 	conflicts = ac-launcher
-	noextract = ac-launcher-0.5.1-linux-x64.tar.gz
+	noextract = ac-launcher-0.5.2-linux-x64.tar.gz
 	options = !strip
 	options = !debug
-	source = https://github.com/codingncaffeine/AC-Launcher/releases/download/v0.5.1/ac-launcher-0.5.1-linux-x64.tar.gz
-	sha256sums = d0a165c95a64a486fa25ee7c8e20e13df3c05ffba21dff3bce27383caa03d9c2
+	source = https://github.com/codingncaffeine/AC-Launcher/releases/download/v0.5.2/ac-launcher-0.5.2-linux-x64.tar.gz
+	sha256sums = 4d651c5d363790734a93c1d341a37ca48cf1f2c7b68b97a44de3e720719a5d38
 
 pkgname = ac-launcher-bin
