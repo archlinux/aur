@@ -2,7 +2,7 @@
 
 pkgname=lumend
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Adaptive screen brightness for Wayland laptops without a light sensor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/DaanHessen/lumend"
