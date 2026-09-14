@@ -1,0 +1,27 @@
+post_install() {
+    # 1. Create system group and user if they don't exist
+    getent group teamcraft >/dev/null || groupadd -r teamcraft
+    getent passwd teamcraft >/dev/null || useradd -r -g teamcraft -d /opt/ffxiv-teamcraft -s /usr/bin/nologin teamcraft
+    
+    # 2. Set folder ownership
+    chown -R teamcraft:teamcraft /opt/ffxiv-teamcraft
+
+    # This guarantees that ANY new file dropped here automatically gets group write permissions
+    if command -v setfacl >/dev/null 2>&1; then
+        setfacl -R -m g:teamcraft:rwx /opt/ffxiv-teamcraft
+        setfacl -R -d -m g:teamcraft:rwx /opt/ffxiv-teamcraft
+    fi
+    # 3. Print the group notice to the user
+    echo "======================================================================="
+    echo " To use the FFXIV Teamcraft self-update functionality,"
+    echo " you must add your user to the teamcraft group:"
+    echo " "
+    echo "    sudo gpasswd -a \$USER teamcraft"
+    echo " "
+    echo " You must LOG OUT and LOG BACK IN for this group change to take effect!"
+    echo "======================================================================="
+}
+
+post_upgrade() {
+    post_install
+}

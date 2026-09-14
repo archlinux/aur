@@ -1,0 +1,12 @@
+#!/bin/bash
+TARGET_APPIMAGE="/opt/ffxiv-teamcraft/FFXIV-Teamcraft.AppImage"
+
+# Check if the file exists and is not executable
+if [ -f "$TARGET_APPIMAGE" ] && [ ! -x "$TARGET_APPIMAGE" ]; then
+    # Since the user is in the 'teamcraft' group and the folder has write ACLs,
+    # they have permission to fix the execution flag themselves seamlessly.
+    chmod +x "$TARGET_APPIMAGE" >/dev/null 2>&1
+fi
+
+# Launch the AppImage natively
+exec "$TARGET_APPIMAGE" "$@"

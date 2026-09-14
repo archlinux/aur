@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=FFXIV Teamcraft
-Exec=/opt/ffxiv-teamcraft/FFXIV-Teamcraft.AppImage
+Exec=/usr/bin/ffxiv-teamcraft
 Type=Application
 Terminal=false
 StartupNotify=true
