@@ -1,6 +1,6 @@
 # Maintainer: Ilyas Turki <ilyasturki at gmail dot com>
 pkgname=phasionary
-pkgver=0.8.6
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Terminal-first, single-user project planning tool"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('go')
 provides=('phasionary')
 conflicts=('phasionary-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('96b9e8787cc084bbe76f0c7b356078c27153b50e5f51e05e799642629ccc744f')
+sha256sums=('a1f5fcc5d961d37ef05f43e436ddc14f0fa79cbf264109a93d7c48f3b4e9d407')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
