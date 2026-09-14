@@ -1,7 +1,7 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 
 pkgname=miyu-git
-pkgver=0.5.0.r799.g3bfcabe7
+pkgver=0.6.0.r1040.g9142225c
 pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
@@ -9,8 +9,8 @@ url='https://github.com/SHORiN-KiWATA/miyu-agent'
 license=('MIT' 'OFL-1.1')
 options=('!lto' '!strip' '!debug')
 export LC_ALL=C.UTF-8
-depends=('alsa-lib' 'chafa' 'gcc-libs' 'glibc' 'onnxruntime' 'ripgrep')
-makedepends=('cargo' 'git' 'pkgconf')
+depends=('alsa-lib' 'chafa' 'gcc-libs' 'glibc' 'onnxruntime' 'python' 'ripgrep')
+makedepends=('cargo' 'git' 'pkgconf' 'python')
 optdepends=(
   'git: update default Shorin Wiki knowledge base'
   'fish: fish shell integration support'
@@ -50,74 +50,14 @@ prepare() {
 
 build() {
   cd miyu
-  cargo build --release --locked
+  cargo build --release --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 package() {
+  local wiki_commit
+  wiki_commit="$(git -C "${srcdir}/shorinwiki" rev-parse HEAD)"
   cd miyu
-  install -Dm755 "target/release/miyu" "${pkgdir}/usr/bin/miyu"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "assets/fonts/NotoSansCJK-Regular.ttc" "${pkgdir}/usr/share/miyu/fonts/NotoSansCJK-Regular.ttc"
-  install -Dm644 "assets/fonts/NotoColorEmoji.ttf" "${pkgdir}/usr/share/miyu/fonts/NotoColorEmoji.ttf"
-  install -Dm644 "assets/fonts/JetBrainsMono-Regular.ttf" "${pkgdir}/usr/share/miyu/fonts/JetBrainsMono-Regular.ttf"
-  install -Dm644 "assets/fonts/NotoSansCJK.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NotoSansCJK.LICENSE"
-  install -Dm644 "assets/fonts/NotoColorEmoji.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NotoColorEmoji.LICENSE"
-  install -Dm644 "assets/fonts/JetBrainsMono.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/JetBrainsMono.LICENSE"
-
-  # 内置本地 embedding 模型（语义检索辅助；运行库来自 onnxruntime-cpu）
-  while IFS= read -r -d '' file; do
-    local rel="${file#assets/models/}"
-    install -Dm644 "${file}" "${pkgdir}/usr/share/miyu/models/${rel}"
-  done < <(find assets/models -mindepth 2 -type f -print0 | sort -z)
-  install -Dm644 "assets/models/bge-small-zh-v1.5-int8/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/bge-small-zh-v1.5.LICENSE"
-
-  if [[ -d src/memes ]]; then
-    while IFS= read -r -d '' file; do
-      local rel="${file#src/memes/}"
-      install -Dm644 "${file}" "${pkgdir}/usr/share/miyu/memes/${rel}"
-    done < <(find src/memes -type f \( -name '*.json' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' -o -name '*.gif' -o -name '*.webp' \) -print0 | sort -z)
-  fi
-
-  if [[ -d src/scripts ]]; then
-    while IFS= read -r -d '' file; do
-      local rel="${file#src/scripts/}"
-      install -Dm755 "${file}" "${pkgdir}/usr/share/miyu/scripts/${rel}"
-    done < <(find src/scripts -type f -print0 | sort -z)
-  fi
-
-  # Default knowledge base: kb (from miyu repo)
-  local kb_dir="${srcdir}/miyu/kb"
-  if [[ -d "${kb_dir}" ]]; then
-    while IFS= read -r -d '' file; do
-      local rel="${file#${kb_dir}/}"
-      case "/${rel}" in
-        */.git/*|*/pictures/*|*/legacy/*|*/Legacy/*|*/lagacy/*|*/Lagacy/*|*/Wikis/*) continue ;;
-      esac
-      install -Dm644 "${file}" "${pkgdir}/usr/share/miyu/default-kb/kb/${rel}"
-    done < <(find "${kb_dir}" -type f -name '*.md' -print0 | sort -z)
-  fi
-
-  # Default knowledge base: shorinwiki (from shorinwiki source, wiki/ subdir)
-  local wiki_dir="${srcdir}/shorinwiki/wiki"
-  if [[ -d "${wiki_dir}" ]]; then
-    while IFS= read -r -d '' file; do
-      local rel="${file#${wiki_dir}/}"
-      case "/${rel}" in
-        */.git/*|*/pictures/*|*/legacy/*|*/Legacy/*|*/lagacy/*|*/Lagacy/*|*/Wikis/*) continue ;;
-      esac
-      install -Dm644 "${file}" "${pkgdir}/usr/share/miyu/default-kb/shorinwiki/${rel}"
-    done < <(find "${wiki_dir}" -type f -name '*.md' -print0 | sort -z)
-  fi
-
-  # Default knowledge base: manifest
-  install -d "${pkgdir}/usr/share/miyu/default-kb/manifest"
-  cat > "${pkgdir}/usr/share/miyu/default-kb/manifest/manifest.json" <<EOF
-{
-  "name": "miyu-default-kb",
-  "generated_by": "miyu-git PKGBUILD"
-}
-EOF
-  local sw_commit
-  sw_commit="$(git -C "${srcdir}/shorinwiki" rev-parse HEAD 2>/dev/null || echo '')"
-  printf '%s\n' "${sw_commit}" > "${pkgdir}/usr/share/miyu/default-kb/manifest/shorinwiki.commit"
+  python packaging/ci/lib/arch_package.py source-install \
+    --source "${srcdir}/miyu" --wiki "${srcdir}/shorinwiki" \
+    --wiki-commit "${wiki_commit}" --component core --destination "${pkgdir}/usr"
 }
