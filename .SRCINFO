@@ -1,0 +1,24 @@
+pkgbase = lnav-bin
+	pkgdesc = A terminal log file viewer and analyzer (upstream static musl build)
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/tstack/lnav
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	depends = ncurses
+	depends = ca-certificates
+	optdepends = wireshark-cli: read packet captures with tshark
+	optdepends = git: install and update log formats from Git repositories
+	provides = lnav=0.14.1
+	conflicts = lnav
+	options = !strip
+	options = !debug
+	source = lnav-0.14.1-LICENSE::https://raw.githubusercontent.com/tstack/lnav/v0.14.1/LICENSE
+	sha256sums = 7113b8b5d289fa2626798689991204e5cb2167b5d269eb148b96c642f9e26e6b
+	source_x86_64 = https://github.com/tstack/lnav/releases/download/v0.14.1/lnav-0.14.1-linux-musl-x86_64.zip
+	sha256sums_x86_64 = ec1750f0a6962eed6bb85ad4249457894f190e961277c56d69c47eecce9e705e
+	source_aarch64 = https://github.com/tstack/lnav/releases/download/v0.14.1/lnav-0.14.1-linux-musl-arm64.zip
+	sha256sums_aarch64 = e605ac855af193b5c7201e2fd94372febec931c5721b50fdf828b3e5af90c677
+
+pkgname = lnav-bin
