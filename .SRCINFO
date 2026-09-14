@@ -1,0 +1,18 @@
+pkgbase = recueil
+	pkgdesc = self-hosted webpage bookmarker and archiver
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://recueil.app
+	arch = aarch64
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	makedepends = jq
+	makedepends = pnpm
+	makedepends = sqlc
+	depends = glibc
+	source = git+https://github.com/mfinelli/recueil.git#tag=v1.0.0
+	sha256sums = ce98fa684a89a8d1acffa6729ec1aa69b130eb1c3ff23c3a33da355ec03f0133
+
+pkgname = recueil
