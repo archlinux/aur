@@ -5,7 +5,7 @@
 # 「语音功能」，daemon 就会拉起 `miyu-voice` 进程做唤醒词监听与本地识别。
 
 pkgname=miyu-voice
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=2
 pkgdesc='Miyu 语音前端：唤醒词 + 本地语音识别(SenseVoice / sherpa-onnx)，可选组件'
 arch=('x86_64')
@@ -13,17 +13,19 @@ url='https://github.com/SHORiN-KiWATA/miyu-agent'
 license=('MIT')
 options=('!strip' '!debug')
 export LC_ALL=C.UTF-8
-depends=('miyu' 'alsa-lib' 'gcc-libs' 'glibc')
-optdepends=('libnotify: desktop notifications when Miyu hears you')
 _release_pkgrel=2
+depends=("miyu=${pkgver}-${_release_pkgrel}" 'alsa-lib' 'bzip2' 'gcc-libs' 'glibc')
+optdepends=('libnotify: desktop notifications when Miyu hears you')
 source=(
   "${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.pkg.tar.zst"
 )
 sha256sums=(
-  '93f903d245c11c094fde35edd9ded86837f7923b295dbd3277122c1ea134a57f'
+  '83434e45c7099d7717569a262fa32e7d1ae8eaf244aade299775b684d24ac343'
 )
 
+# Keep the last published version and checksum until channel_update records
+# the newly verified release asset. Never use SKIP for a binary release asset.
 package() {
-  install -Dm755 "${srcdir}/usr/bin/miyu-voice" "${pkgdir}/usr/bin/miyu-voice"
-  install -Dm644 "${srcdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "${pkgdir}/usr"
+  cp -a "${srcdir}/usr/." "${pkgdir}/usr/"
 }
