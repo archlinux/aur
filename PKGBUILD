@@ -4,12 +4,12 @@
 pkgname="python-fastmcp"
 _name=${pkgname#python-}
 pkgver=4.0.3
-pkgrel=1
+pkgrel=3
 pkgdesc="The fast, Pythonic way to build MCP servers and clients."
 arch=('any')
 url='https://github.com/PrefectHQ/fastmcp'
 license=('MIT')
-depends=('python' 'python-fastmcp-slim')
+depends=('python')
 makedepends=(
     'git' 
     'python-setuptools' 
