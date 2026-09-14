@@ -2,7 +2,7 @@
 
 pkgname=libefex-git
 pkgver=r114.3752e38
-pkgrel=1
+pkgrel=2
 pkgdesc="library and cli for embedded firmware exchange protocol, support fel and fes protocol"
 arch=($CARCH)
 url="https://github.com/YuzukiTsuru/libefex"
@@ -57,7 +57,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DLIBEFEX_USE_SHARED_LIBUSB=ON \
         -DBUILD_SHARED_LIBS=ON \
-        -Wno-dev \
+        -Wno-author \
         -B build
 
     cmake --build "${srcdir}/build"
