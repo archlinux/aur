@@ -1,7 +1,7 @@
 # Maintainer: HttpAnimations
 pkgname=devinorium-server
 _pkgname=devinorium
-pkgver=0.77.0
+pkgver=0.77.1
 pkgrel=1
 pkgdesc="Self-hosted web UI for AI coding agents - server"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("devinorium-v$pkgver.tar.gz::https://github.com/justacalico/devinorium/r
         "devinorium.service"
         "devinorium.sysusers"
         "devinorium.env")
-sha256sums=('91fabd195e908a2916a3ef4b8749b8bbb1a362b109e9f8598c383cd2c1a34edc'
+sha256sums=('98292d3511dbbf0ba7486dc5d3195f3b78af877bfb3fb7cd50d4cac69c348b42'
             'a9120fa4a01048bdef438ddc3a2d4b7389662ea98a95db86eeaf10382bc4efcb'
             'SKIP'
             'SKIP'
