@@ -2,8 +2,8 @@
 
 pkgbase=qdap-git
 pkgname=qdap-git
-pkgver=r59.e98842a
-pkgrel=1
+pkgver=r61.6455eca
+pkgrel=2
 groups=()
 pkgdesc="cmsis-dap upper by a Qt"
 arch=($CARCH)
@@ -68,7 +68,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -B build \
         -G Ninja \
-        -Wno-dev
+        -Wno-author
 
     ninja -C build
 }
