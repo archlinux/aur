@@ -1,15 +1,15 @@
 pkgbase = usectl
 	pkgdesc = CLI for the usectl deployment platform
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/syst3mctl/usectl-cli
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = glibc
-	source_x86_64 = https://github.com/syst3mctl/usectl-cli/releases/download/v2.1.0/usectl_2.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 68b39cdd7670c8750e63dcc5538b90eacc7879b83e2b43ff1df60721ba7f55b9
-	source_aarch64 = https://github.com/syst3mctl/usectl-cli/releases/download/v2.1.0/usectl_2.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = e31e1ea4cb89e66c7b4fe7bb1564c890d8505df19d29ae7cf3f226a316aa978d
+	source_x86_64 = https://github.com/syst3mctl/usectl-cli/releases/download/v2.2.0/usectl_2.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b592d932841d8f3bda58f010627dca500f7ecf8a6971de05c6518680ca660711
+	source_aarch64 = https://github.com/syst3mctl/usectl-cli/releases/download/v2.2.0/usectl_2.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 235a5bfe7b911f74e141e40d7c5221591b3876470001ed53f886a959dada375a
 
 pkgname = usectl
