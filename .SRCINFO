@@ -1,7 +1,7 @@
 pkgbase = python-exejs
 	pkgdesc = Run JavaScript code from Python.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/exejs
 	arch = any
 	license = Apache-2.0

@@ -3,7 +3,7 @@
 pkgname=python-exejs
 _name=${pkgname#python-}
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Run JavaScript code from Python."
 arch=('any')
