@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mcuviewer-git
-pkgver=1.1.0.r0.g3650ed7
-pkgrel=2
+pkgver=1.2.3.r0.g4be6621
+pkgrel=1
 pkgdesc="Real-time embedded variable & trace viewer"
 arch=($CARCH)
 url="https://github.com/klonyyy/MCUViewer"
@@ -11,10 +11,8 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(
     sh
-    gcc-libs
     glfw
     glib2
-    glibc
     gtk3
     libglvnd
     libusb
@@ -77,7 +75,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
-        -Wno-dev \
+        -Wno-author \
         -Bbuild \
         -GNinja
 
