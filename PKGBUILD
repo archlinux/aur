@@ -1,6 +1,6 @@
 # Maintainer: Marcel W. Wysocki <maci.stgn@gmail.com>
 pkgname=tmog-bin
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Task Manager TMOG, a native system monitor and task manager (precompiled binary)"
 arch=('x86_64')
@@ -9,14 +9,13 @@ license=('LicenseRef-proprietary')
 depends=(
   'gcc-libs'
   'qt6-base'
-  'qt6-multimedia'
   'qt6-svg'
   'systemd-libs'
 )
 provides=('tmog-task-manager')
 conflicts=('tmog-task-manager')
-source=("https://tmog.org/downloads/TMOG-Task-Manager-Linux-x86_64.tar.gz?v=${pkgver}-free")
-sha256sums=('4d319d3d27f513e83801daeec8eb64cb78ddec1f6483bbe90d57d11e607af39d')
+source=("https://tmog.org/downloads/TaskManagerOG-${pkgver}-linux-x86_64.tar.gz")
+sha256sums=('8cbc25884c0adf01a9be43e773e6fbd9514c52ab5cadbdc5a7812acb1f149d99')
 options=('!strip')
 
 package() {
