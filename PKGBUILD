@@ -18,7 +18,10 @@ depends=(
     python-six
     #AUR
     python-mido
-
+    python-importlib_resources
+)
+optdepends=(
+    python-pyfluidsynth
 )
 makedepends=(
     python-build
