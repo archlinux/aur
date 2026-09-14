@@ -34,6 +34,7 @@ b2sums_x86_64=('dc422c9f2d1ff4f00e9ebe6c264b2ee03daad9701c7c971a1b6a2f887dd999c6
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 prepare() {
+  # sane and udev: copy files to the build directory
   sed -i 's|/lib/udev|${CMAKE_INSTALL_PREFIX}/lib/udev|' \
          "$srcdir/$pkgname-$_pkgver/CMakeLists.txt"
 
@@ -153,7 +154,7 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build --verbose
+  DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 "$srcdir/$pkgname-$_pkgver/desktop/rpm/i686/$pkgname.desktop" \
                  "$pkgdir/usr/share/applications/$pkgname.desktop"
