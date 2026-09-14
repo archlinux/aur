@@ -2,7 +2,7 @@
 
 pkgname=gd32-dfu-utils
 pkgver=0.9
-pkgrel=3
+pkgrel=5
 epoch=
 pkgdesc="Dfu-utils GD32 fork. Dfu-util - Device Firmware Upgrade Utilities"
 arch=($CARCH)
@@ -10,7 +10,6 @@ url="https://github.com/riscv-mcu/gd32-dfu-utils"
 license=('GPL-2.0-only')
 groups=()
 depends=(
-  glibc
   libusb
   python
 )
