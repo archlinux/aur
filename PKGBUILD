@@ -1,76 +1,49 @@
 # Maintainer: Zane Schepke <support@wgtunnel.com>
+# pkgver is a placeholder: publish-aur.yml rewrites it (and regenerates checksums via
+# updpkgsums) from the release tag before every AUR push.
 pkgname=wgtunnel-bin
-# Update on release
-pkgver=1.0.2
+pkgver=2.0.2
 pkgrel=1
 install=wgtunnel-bin.install
 pkgdesc="WireGuard and AmneziaWG VPN client with auto-tunneling, lockdown and proxying"
 arch=('x86_64')
 url="https://wgtunnel.com"
 license=('MIT')
-
-depends=(
-  'gtk3'
-  'libsecret'
-  'gcc-libs'
-  'freetype2'
-  'fontconfig'
-)
-optdepends=(
-  'libnotify: desktop notifications'
-  'gnome-keyring: GNOME keyring backend'
-  'kwallet: KDE keyring backend'
-  'libayatana-appindicator: improved system tray support'
-)
-
+depends=('systemd' 'gtk3' 'libsecret' 'gcc-libs' 'freetype2' 'fontconfig')
 provides=("wgtunnel=${pkgver}")
 conflicts=('wgtunnel' 'wgtunnel-git')
 options=(!strip !emptydirs)
 
-source=(
-  "wgtunnel-${pkgver}.tar.gz::https://github.com/wgtunnel/desktop/releases/download/${pkgver}/wgtunnel-${pkgver}-linux-amd64.tar.gz"
-)
-
-# Update on release
-sha256sums=('03b0809fba60121d34f012d943406ce02b1f76d3ba2a0e9b5bf81fbfed755145')
+# Nucleus artifact: ${name}-${version}-${os}-${arch}.pacman
+_src="wgtunnel-${pkgver}-linux-x64.pacman"
+source=("${_src}::https://github.com/wgtunnel/desktop/releases/download/${pkgver}/${_src}")
+sha256sums=('05a5ff89c611384152fc1b4f6cddb314b62cf02f35f23194024c8a8876a1c383')
 
 package() {
-  cd "$srcdir"
+  bsdtar -x -C "$pkgdir" -f "$srcdir/$_src"
+  rm -f "$pkgdir"/.PKGINFO "$pkgdir"/.MTREE "$pkgdir"/.BUILDINFO "$pkgdir"/.INSTALL
 
-  tar -xzf "wgtunnel-${pkgver}.tar.gz"
-
-  # Install full app bundle
-  install -d "$pkgdir/usr/lib/wgtunnel"
-  cp -a "wgtunnel-${pkgver}/." "$pkgdir/usr/lib/wgtunnel/"
-
-  # Symlink to PATH
   install -d "$pkgdir/usr/bin"
-  ln -s /usr/lib/wgtunnel/bin/wgtunnel \
-    "$pkgdir/usr/bin/wgtunnel"
-  ln -s /usr/lib/wgtunnel/bin/wgtctl \
-    "$pkgdir/usr/bin/wgtctl"
+  ln -sf /opt/wgtunnel/bin/wgtunnel "$pkgdir/usr/bin/wgtunnel"
 
-  # Install desktop file
-  install -Dm644 \
-    "$pkgdir/usr/lib/wgtunnel/share/applications/com.zaneschepke.wireguardautotunnel.wgtunnel.desktop" \
-    "$pkgdir/usr/share/applications/com.zaneschepke.wireguardautotunnel.wgtunnel.desktop"
-
-  # Install icons
-  cd "$pkgdir/usr/lib/wgtunnel/share/icons/hicolor"
-  for size in */; do
-      install -d "$pkgdir/usr/share/icons/hicolor/$size"
-      cp -a "$size"/* "$pkgdir/usr/share/icons/hicolor/$size/"
-  done
-
-  # Install systemd service
-  install -Dm644 \
-    "$pkgdir/usr/lib/wgtunnel/lib/systemd/system/wgtunnel-daemon.service" \
+  local unit="$pkgdir/opt/wgtunnel/wgtunnel-daemon.service"
+  [[ -f "$unit" ]] || unit="$pkgdir/opt/wgtunnel/lib/wgtunnel-daemon.service"
+  install -Dm644 "$unit" "$pkgdir/usr/lib/systemd/system/wgtunnel-daemon.service"
+  sed -i 's|^ExecStart=.*|ExecStart=/opt/wgtunnel/bin/wgtunnel-daemon|' \
+    "$pkgdir/usr/lib/systemd/system/wgtunnel-daemon.service"
+  sed -i 's|^WorkingDirectory=.*|WorkingDirectory=/opt/wgtunnel|' \
     "$pkgdir/usr/lib/systemd/system/wgtunnel-daemon.service"
 
-  # Patch service paths
-  sed -i 's|ExecStart=.*|ExecStart=/usr/lib/wgtunnel/bin/daemon|' \
-    "$pkgdir/usr/lib/systemd/system/wgtunnel-daemon.service"
-
-  sed -i 's|WorkingDirectory=.*|WorkingDirectory=/usr/lib/wgtunnel|' \
-    "$pkgdir/usr/lib/systemd/system/wgtunnel-daemon.service"
+  if ! compgen -G "$pkgdir/usr/share/applications/*.desktop" >/dev/null; then
+    install -d "$pkgdir/usr/share/applications"
+    cat > "$pkgdir/usr/share/applications/com.zaneschepke.wireguardautotunnel.wgtunnel.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=WG Tunnel
+Exec=wgtunnel
+Icon=wgtunnel
+Categories=Network;Security;Settings;Utility;
+Terminal=false
+EOF
+  fi
 }

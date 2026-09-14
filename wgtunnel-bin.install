@@ -1,13 +1,10 @@
 post_install() {
-    _update_desktop_icons
+  systemd-sysusers >/dev/null 2>&1 || true
+  systemctl daemon-reload >/dev/null 2>&1 || true
 
-    cat << 'EOF'
+  cat << 'EOF'
 
-=== WG Tunnel Installed Successfully ===
-
-For KDE users: log out and back in (or restart plasmashell) to see the app icon.
-
-Enable and start the daemon with:
+=== WG Tunnel Installed ===
 
     sudo systemctl enable --now wgtunnel-daemon.service
 
@@ -15,40 +12,16 @@ EOF
 }
 
 post_upgrade() {
-    _update_desktop_icons
-    systemctl daemon-reload 2>/dev/null || true
-
-    if systemctl is-active --quiet wgtunnel-daemon.service 2>/dev/null; then
-        cat << 'EOF'
-
-=== WG Tunnel Upgraded Successfully ===
-
-The daemon binary and/or service file have been updated.
-
-To bring the running daemon in sync (recommended):
-
-    sudo systemctl restart wgtunnel-daemon.service
-
-Note: This will briefly interrupt any active tunnels.
-EOF
-    else
-        cat << 'EOF'
-
-=== WG Tunnel Upgraded Successfully ===
-
-If you have the daemon enabled, restart it after the upgrade:
-
-    sudo systemctl restart wgtunnel-daemon.service
-EOF
-    fi
-}
-
-_update_desktop_icons() {
-    echo "Updating icon cache..."
-    gtk-update-icon-cache -f /usr/share/icons/hicolor
-    update-desktop-database /usr/share/applications 2>/dev/null || true
+  systemctl daemon-reload >/dev/null 2>&1 || true
+  if systemctl is-active --quiet wgtunnel-daemon.service 2>/dev/null; then
+    echo "Restart the daemon to pick up the new binary: sudo systemctl restart wgtunnel-daemon.service"
+  fi
 }
 
 pre_remove() {
-    systemctl disable --now wgtunnel-daemon.service 2>/dev/null || true
+  systemctl disable --now wgtunnel-daemon.service 2>/dev/null || true
+}
+
+post_remove() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
 }
