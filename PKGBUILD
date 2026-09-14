@@ -3,7 +3,7 @@
 pkgname=rttview
 _name=RTTView
 pkgver=20241201
-pkgrel=5
+pkgrel=6
 epoch=
 pkgdesc="SEGGER-RTT Client for J-LINK and DAPLink"
 arch=('any')

@@ -1,7 +1,7 @@
 pkgbase = rttview
 	pkgdesc = SEGGER-RTT Client for J-LINK and DAPLink
 	pkgver = 20241201
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/XIVN1987/RTTView
 	arch = any
 	license = MIT
