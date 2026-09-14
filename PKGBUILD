@@ -1,6 +1,6 @@
 # Maintainer: zyekhabdul <zyekhabdulqadirjailani@gmail.com>
 pkgname=agy-quota
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Antigravity Multi-Account Token, Quota & Tier Bulk Checker"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-cryptography' 'python-rich')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f1b0df9352e34c58a8c250c0f18204fbfe44312c2fd21f1b2d1266e2157889bc')
+sha256sums=('67629a73dedee450a4b829b82248faf14933930cbf5239e2b9265eaad282409a')
 
 build() {
     cd "$pkgname-$pkgver"
