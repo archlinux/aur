@@ -1,6 +1,6 @@
 pkgbase = noice-git
 	pkgdesc = Small terminal file browser written in C
-	pkgver = 0.8.r3.g16f473f
+	pkgver = r281.79da641
 	pkgrel = 1
 	url = http://git.2f30.org/noice/
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = noice-git
 	license = BSD
 	makedepends = git
 	depends = ncurses
-	source = git://git.2f30.org/noice
+	source = git+https://github.com/chrisw310/noice
 	source = config.h
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = noice-git
-
