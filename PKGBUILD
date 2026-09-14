@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=prek-git
-pkgver=0.4.8.r0.gcccc61be
+pkgver=0.5.3.r13.gd97dc32b
 pkgrel=1
 pkgdesc="A framework to run git hooks"
 arch=('i686' 'x86_64')
@@ -39,24 +39,24 @@ check() {
   cd "prek"
 
   #cargo test \
-  #  --locked
+  #  --frozen
 }
 
 package() {
   cd "prek"
 
   cargo install \
-    --locked \
+    --frozen \
     --no-track \
     --root "$pkgdir/usr" \
     --path "$srcdir/prek/crates/prek"
 
   install -d "$pkgdir/usr/share/bash-completion/completions"
-  (env PATH="$pkgdir/usr/bin" COMPLETE=bash prek > "$pkgdir/usr/share/bash-completion/completions/prek")
+  COMPLETE=bash "$pkgdir/usr/bin/prek" > "$pkgdir/usr/share/bash-completion/completions/prek"
   install -d "$pkgdir/usr/share/fish/vendor_completions.d"
-  (env PATH="$pkgdir/usr/bin" COMPLETE=fish prek > "$pkgdir/usr/share/fish/vendor_completions.d/prek.fish")
+  COMPLETE=fish "$pkgdir/usr/bin/prek" > "$pkgdir/usr/share/fish/vendor_completions.d/prek.fish"
   install -d "$pkgdir/usr/share/zsh/site-functions"
-  (env PATH="$pkgdir/usr/bin" COMPLETE=zsh prek > "$pkgdir/usr/share/zsh/site-functions/_prek")
+  COMPLETE=zsh "$pkgdir/usr/bin/prek" > "$pkgdir/usr/share/zsh/site-functions/_prek"
 
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/prek"
 }
