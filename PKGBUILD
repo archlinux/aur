@@ -3,7 +3,7 @@
 pkgname=python-doipclient
 _name=${pkgname#python-}
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Diagnostic over IP (DoIP) client implementing ISO-13400-2."
 arch=('any')
