@@ -2,8 +2,8 @@
 
 pkgname=python-gs-usb
 _name=${pkgname#python-}
-pkgver=0.3.0
-pkgrel=1
+pkgver=0.3.1
+pkgrel=2
 epoch=
 pkgdesc="Python Windows/Linux/Mac CAN driver based on usbfs or WinUSB WCID for Geschwister Schneider USB/CAN devices and candleLight USB CAN interfaces."
 arch=('any')
@@ -26,7 +26,7 @@ options=('!strip' '!debug')
 _name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('1f488fd7cd09d753dff74b7d05349f07933dc556844e3cd9df02c4e4b746bf8f')
+sha256sums=('a8a76285fda29b45a5a633cfe232a08058f642441b3d030877dc28ef6e0b7807')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
