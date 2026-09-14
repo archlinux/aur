@@ -3,7 +3,7 @@
 pkgname=python-azure-data-tables
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=12.6.0
+pkgver=12.7.0
 pkgrel=1
 pkgdesc="Microsoft Corporation Azure Data Tables Client Library for Python"
 provides=(${pkgname})
@@ -29,7 +29,7 @@ makedepends=(
 optdepends=()
 license=('MIT')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/$_name-$pkgver.tar.gz")
-sha256sums=('e0d5598113855f9114fd7671623d35509f83772970cfdc597901b35f42dc3134')
+sha256sums=('b14fc94a3223a2835ff5688e17d8e107b27c7cd7c4114138f2ac81373723705d')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
