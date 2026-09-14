@@ -13,6 +13,6 @@ pkgbase = waybar-niri-focused-workspaces
 	depends = gtk3
 	optdepends = niri: the compositor this module talks to
 	source = waybar-niri-focused-workspaces-0.1.0.tar.gz::https://github.com/pentago/waybar-niri-focused-workspaces-module/archive/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = b3fd9d4d6df50761e291079e1cbe2cba99cd4c44f6c05fb863378242581e71b4
 
 pkgname = waybar-niri-focused-workspaces

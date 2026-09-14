@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glib2' 'glibc' 'gtk3')
 makedepends=('cargo' 'scdoc')
 optdepends=('niri: the compositor this module talks to')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b3fd9d4d6df50761e291079e1cbe2cba99cd4c44f6c05fb863378242581e71b4')
 
 prepare() {
     cd "$pkgname-$pkgver"
