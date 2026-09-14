@@ -3,7 +3,7 @@
 pkgname=python-pycklink
 _name=${pkgname#python-}
 pkgver=0.1.1
-pkgrel=1
+pkgrel=9
 epoch=
 pkgdesc="Python interface for the T-HEAD CKLink"
 arch=('any')
@@ -14,14 +14,17 @@ depends=(
     gcc-libs
     glibc
     libusb
-    python)
+    python
+)
 _pymakedeps=(
     build
     installer
     wheel
-    setuptools)
+    setuptools
+)
 makedepends=(
-    "${_pymakedeps[@]/#/python-}")
+    "${_pymakedeps[@]/#/python-}"
+)
 checkdepends=()
 optdepends=()
 provides=(cklink pycklink)
