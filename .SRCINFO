@@ -1,7 +1,7 @@
 pkgbase = python-alibabacloud-gateway-spi
 	pkgdesc = Alibaba Cloud Gateway SPI SDK Library for Python
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/alibabacloud_gateway_spi
 	arch = any
 	license = Apache-2.0
