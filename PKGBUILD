@@ -1,7 +1,7 @@
 # Maintainer: Amy <me at he3als dot xyz>
 
 pkgname=bs-manager-bin
-pkgver=1.5.6
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="An all-in-one tool for managing Beat Saber versions, maps, mods, and more (binary release)"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=('gtk3' 'nss' 'libxss' 'libxtst' 'libnotify' 'xdg-utils' 'at-spi2-core' 
 provides=('bs-manager')
 conflicts=('bs-manager' 'bs-manager-git')
 source=("bs-manager-${pkgver}.rpm::https://github.com/Zagrios/bs-manager/releases/download/v${pkgver}/bs-manager-${pkgver}.${CARCH}.rpm")
-sha256sums=('a02654c940abcf9fce8cf23691089d3d3dcb297d7cc33db5dbc8fce61669e8f1')
+sha256sums=('f701450bca18084904cdee2aa4abc9d8f58787375272b8eab6d83040ac30d0b2')
 options=('!debug')
 
 package() {
