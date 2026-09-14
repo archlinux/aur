@@ -1,6 +1,6 @@
 pkgbase = kudu-app-bin
 	pkgdesc = Free Windows, Mac and Linux cleaner, scanner, and more.
-	pkgver = 2.9.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/AdventDevInc/kudu
 	arch = x86_64
@@ -34,12 +34,12 @@ pkgbase = kudu-app-bin
 	provides = kudu-app
 	conflicts = kudu
 	conflicts = kudu-bin
-	noextract = Kudu-2.9.0-amd64.deb
+	noextract = Kudu-3.1.0-amd64.deb
 	options = !strip
 	options = !debug
-	source = kudu-2.9.0-LICENSE::https://raw.githubusercontent.com/AdventDevInc/kudu/v2.9.0/LICENSE
+	source = kudu-3.1.0-LICENSE::https://raw.githubusercontent.com/AdventDevInc/kudu/v3.1.0/LICENSE
 	sha256sums = 25ffd176698d9f5cdebe9d8376a35b91a41aaef4dbac75c18d42730a71739a01
-	source_x86_64 = Kudu-2.9.0-amd64.deb::https://github.com/AdventDevInc/kudu/releases/download/v2.9.0/Kudu-2.9.0-amd64.deb
-	sha256sums_x86_64 = fe9c73a083987e1646d932e006e82b49bda2efa8b1704a69155430c22dcaa3b8
+	source_x86_64 = Kudu-3.1.0-amd64.deb::https://github.com/AdventDevInc/kudu/releases/download/v3.1.0/Kudu-3.1.0-amd64.deb
+	sha256sums_x86_64 = d93831f8d68f1ec3ae2266b0014a52ba7bdf0366a55b82102436b9e4b22d12d8
 
 pkgname = kudu-app-bin
