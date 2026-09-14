@@ -1,0 +1,27 @@
+pkgbase = moondeckbuddy
+	pkgdesc = Host companion that lets the MoonDeck Steam Deck plugin control Steam and the PC
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/FrogTheFrog/moondeck-buddy
+	arch = x86_64
+	license = LGPL-3.0-only
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libstdc++
+	depends = procps-ng
+	depends = qt6-base
+	depends = qt6-httpserver
+	depends = qt6-websockets
+	conflicts = moondeckbuddy-appimage
+	source = moondeckbuddy-1.10.0.tar.gz::https://github.com/FrogTheFrog/moondeck-buddy/archive/refs/tags/v1.10.0.tar.gz
+	source = moondeck-keys-9d1cc7356181f6f6c0aa2a5e92ad7174f09fa539.tar.gz::https://github.com/FrogTheFrog/moondeck-keys/archive/9d1cc7356181f6f6c0aa2a5e92ad7174f09fa539.tar.gz
+	source = glaze-7.7.1.tar.gz::https://github.com/stephenberry/glaze/archive/refs/tags/v7.7.1.tar.gz
+	sha256sums = f68aff3e26c51618bd78e7656cfe3481fd0c4d2be377a26fc4e5db54e9541642
+	sha256sums = 80438b7cec54f89e3b03ad4bf1bf46edd36a8438e5ebcdb5333ecacd45aba7cc
+	sha256sums = c51217ca374f2a7d556c501a849d3a43dfffff47ba7711b6f0c22020e71ff63d
+
+pkgname = moondeckbuddy
