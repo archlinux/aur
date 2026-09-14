@@ -2,8 +2,8 @@
 
 pkgbase=canopenlinux-git
 pkgname=canopenlinux-git
-pkgver=4.0.r23.g52ffe7a
-pkgrel=1
+pkgver=4.0.r25.gf1348d4
+pkgrel=3
 groups=()
 pkgdesc="CANopenNode on Linux devices"
 arch=($CARCH)
@@ -11,10 +11,11 @@ url="https://github.com/CANopenNode/CANopenLinux"
 license=('Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-depends=(glibc)
+depends=()
 makedepends=(
     git
-    doxygen)
+    doxygen
+)
 optdepends=(
     "can-utils: Linux-CAN / SocketCAN user space applications"
     "can-doc: Linux-CAN / SocketCAN documentation"
