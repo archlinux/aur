@@ -3,7 +3,7 @@
 pkgname=python-consolekit
 _name=${pkgname#python-}
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Additional utilities for click'
 arch=(any)
 url='https://consolekit.readthedocs.io/'
@@ -18,6 +18,7 @@ depends=(
   python-mistletoe
   python-psutil
   python-pytest
+  python-pytest-regressions
   python-typing_extensions
 )
 makedepends=(
@@ -28,9 +29,7 @@ makedepends=(
   python-setuptools
   python-flit-core
 )
-optdepends=(
-  'python-psutil: better terminal support'
-)
+optdepends=()
 source=("$_name::git+https://github.com/domdfcoding/consolekit#tag=v$pkgver")
 sha512sums=('cd13ef17e10034055706d2c0f86f42d797fd81f0fa1e390c74c047b1d582933e0329110ff3c3c1c5a357d78524a02ee2e82a28f18a3a1df16451cf296555c399')
 
