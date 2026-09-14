@@ -1,0 +1,27 @@
+pkgbase = trickster-bin
+	pkgdesc = Flutter-native Wayland status bar (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dazemc/trickster
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = dbus
+	depends = fontconfig
+	depends = glibc
+	depends = gtk-layer-shell
+	depends = gtk3
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = mesa
+	depends = systemd-libs
+	provides = trickster
+	conflicts = trickster
+	conflicts = trickster-git
+	noextract = trickster-0.1.0-1-x86_64.pkg.tar.zst
+	options = !strip
+	options = !debug
+	backup = etc/trickster/session.conf
+	source = https://github.com/dazemc/trickster/releases/download/v0.1.0/trickster-0.1.0-1-x86_64.pkg.tar.zst
+	sha256sums = f1097607ebede0149bcec2082cdf467ead610d235b6279f6a4817bd24d71ed33
+
+pkgname = trickster-bin
