@@ -45,7 +45,7 @@ optdepends=(
   'libdeep_filter_ladspa: deep noise remover'
 )
 conflicts=("${pkgname%%-git}")
-provides=("${pkgname%%-git}")
+provides=("${pkgname%%-git}=${pkgver%%.r*}")
 source=("${pkgname%%-git}::git+${url}")
 sha512sums=('SKIP')
 
