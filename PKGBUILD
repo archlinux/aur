@@ -1,40 +1,45 @@
-# Maintainer: Len Share <dranukan at proton dot me>
-# Contributor: Martin C. Doege <mdoege at compuserve dot com>
+# Maintainer: Uthopik <josearrillaga@ik.me>
 
 pkgname='openastro.org'
-pkgver='1.1.57'
+pkgver='1.2'
 pkgrel=1
 pkgdesc='Open source fully-featured astrology software'
-arch=('i686' 'x86_64')
-license=('GPL')
-url='http://www.openastro.org/'
-depends=('imagemagick' 'python-dateutil' 'python-cairo' 'python-pytz' 'pyswisseph' 'python-gobject')
+arch=('any')
+license=('GPL-3.0-only')
+url='https://github.com/Uthopik/openastro-astrology'
+depends=(
+    'python'
+    'gtk3'
+    'librsvg'
+    'hicolor-icon-theme'
+    'python-cairo'
+    'python-pytz'
+    'pyswisseph'
+    'python-gobject'
+)
 makedepends=('python-setuptools')
 optdepends=()
 conflicts=('openastro' 'openastro-dev' 'swisseph_12' 'swisseph_18' 'swisseph-fixstars')
 source=(
-    "openastro.org_"$pkgver".orig.tar.gz::https://sourceforge.net/projects/openastro-org/files/release/openastro.org_1.1.57.orig.tar.gz/download"
-    "openastro.org-data_1.9.orig.tar.gz::https://sourceforge.net/projects/openastro-org/files/release/openastro.org-data_1.9.orig.tar.gz/download"
-    "sqlite.patch"
-    "swiss.patch"
-	)
-md5sums=('4bb719ac3a22976d425f6337fd925d32'
-         'bf9b6b2ba2ced1a532e16df11447d471'
-         'afa8144cc701ab7405b63193c788f820'
-         'a6928c4007ae77d4bc137b2427e21cc6')
-
-prepare() {
-    cd $srcdir"/openastro.org-"$pkgver
-    patch -p0 < ../sqlite.patch
-    cd openastromod
-    patch -p0 < ../../swiss.patch
-}
+    "${pkgname}_${pkgver}.orig.tar.gz::https://github.com/Uthopik/openastro-astrology/releases/download/v${pkgver}/openastro.org_${pkgver}.orig.tar.gz"
+    "${pkgname}-data_${pkgver}.orig.tar.gz::https://github.com/Uthopik/openastro-astrology/releases/download/v${pkgver}/openastro.org-data_${pkgver}.orig.tar.gz"
+)
+sha256sums=('17884932ee0a5fc24f8703d7220f6e542e6011fe7e4d53c49a8a13b58929d11a'
+            '8042a7722be0f9444f52353dc6ca82f72aec346643d64feafe233d2d60812759')
 
 package() {
-    cd $srcdir"/openastro.org-"$pkgver
-    python setup.py install --root=$pkgdir || return 1
-    cd $srcdir"/openastro.org-data-1.9"
-    python setup.py install --root=$pkgdir || return 1
-    mkdir -p $pkgdir/usr/share/icons
-    cp $srcdir"/openastro.org-"$pkgver/icons/openastro.svg $pkgdir/usr/share/icons
+    # 1. Instalar la aplicación base
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
+
+    # 2. Instalar el paquete de datos
+    cd "${srcdir}/${pkgname}-data-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
+
+    # 3. Icono oficial en el tema del sistema
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/icons/openastro.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/openastro.svg"
+
+    # 4. Enlace obligatorio requerida por el código Python para localizar recursos
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -sf /usr/share/openastro.org "${pkgdir}/usr/bin/openastro.org"
 }
