@@ -2,7 +2,7 @@
 
 pkgname=svgtopng-git
 pkgver=1.0.r1.g8d66691
-pkgrel=1
+pkgrel=3
 pkgdesc="SVG to PNG Converter"
 arch=($CARCH)
 url="https://github.com/tonglingcn/svgtopng"
@@ -55,7 +55,7 @@ build() {
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -G Ninja \
-          -Wno-dev
+          -Wno-author
 
     ninja -C build
 }

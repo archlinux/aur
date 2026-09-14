@@ -1,7 +1,7 @@
 pkgbase = svgtopng-git
 	pkgdesc = SVG to PNG Converter
 	pkgver = 1.0.r1.g8d66691
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/tonglingcn/svgtopng
 	arch = x86_64
 	license = MIT
