@@ -1,7 +1,7 @@
 pkgbase = python-decotools
 	pkgdesc = Python decorator tools.
 	pkgver = 0.0.4
-	pkgrel = 6
+	pkgrel = 7
 	url = https://pypi.org/project/python-decotools
 	arch = any
 	license = MIT

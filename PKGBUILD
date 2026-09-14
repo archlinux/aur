@@ -3,7 +3,7 @@
 pkgname=python-decotools
 _name=${pkgname//-/_}
 pkgver=0.0.4
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="Python decorator tools."
 arch=('any')
