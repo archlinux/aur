@@ -1,6 +1,6 @@
 # Maintainer: HttpAnimations
 pkgname=devinorium
-pkgver=0.74.0
+pkgver=0.75.0
 pkgrel=1
 pkgdesc="Self-hosted web UI for AI coding agents - desktop client"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("devinorium-v$pkgver.tar.gz::https://github.com/justacalico/devinorium/r
         "flutter_linux_${_flutterver}-stable.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutterver}-stable.tar.xz"
         "devinorium.desktop"
         "devinorium.svg")
-sha256sums=('b121110d21aecb9a19a1a11502bae2e1b5e888edd07cc1f5f1f25861cba71b58'
+sha256sums=('74bdc366b8e5b81e85e611e290c6a98925a3a8627d28c4336780b25bbeae9606'
             'a9120fa4a01048bdef438ddc3a2d4b7389662ea98a95db86eeaf10382bc4efcb'
             'SKIP'
             'SKIP')
