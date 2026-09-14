@@ -1,6 +1,6 @@
 # Maintainer: ltdk <usr@ltdk.xyz>
 pkgname=ai-robots-txt-git
-pkgver=1.47.r5.ga0fed45
+pkgver=1.52.r10.g0e111dc
 pkgrel=1
 pkgdesc='List of AI crawler user agents. (git version)'
 arch=(any)
@@ -27,5 +27,5 @@ package() {
   install -m644 -D "$srcdir"/ai.robots.txt/haproxy-block-ai-bots.txt -T "$pkgdir"/usr/share/ai-robots-txt/haproxy-block-ai-bots.txt
   install -m644 -D "$srcdir"/ai.robots.txt/.htaccess -T "$pkgdir"/usr/share/ai-robots-txt/htaccess
   install -m644 -D "$srcdir"/ai.robots.txt/Caddyfile -T "$pkgdir"/usr/share/ai-robots-txt/Caddyfile
-  install -m644 -D "$srcdir"/ai.robots.txt/LICENSE -T "$pkgdir"/usr/share/licenses/ai.robots.txt/LICENSE
+  install -m644 -D "$srcdir"/ai.robots.txt/LICENSE -T "$pkgdir"/usr/share/licenses/ai-robots-txt-git/LICENSE
 }
