@@ -1,7 +1,7 @@
 pkgbase = lunar-calendar
 	pkgdesc = a gtk+ calendar widget for chinese lunar library.
 	pkgver = 3.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yetist/lunar-calendar
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -12,7 +12,6 @@ pkgbase = lunar-calendar
 	makedepends = gobject-introspection
 	makedepends = vala
 	depends = glib2
-	depends = glibc
 	depends = gtk3
 	depends = pango
 	depends = lunar-date

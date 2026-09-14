@@ -4,14 +4,13 @@
 
 pkgname=lunar-calendar
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a gtk+ calendar widget for chinese lunar library."
 arch=($CARCH)
 url="https://github.com/yetist/lunar-calendar"
 license=('LGPL-2.1-or-later')
 depends=(
     glib2
-    glibc
     gtk3
     pango
 # AUR
