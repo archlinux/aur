@@ -5,6 +5,7 @@ pkgbase = libosip2
 	url = https://www.gnu.org/software/osip
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = LGPL
 	depends = glibc
 	options = !emptydirs
