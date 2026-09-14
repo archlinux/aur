@@ -1,6 +1,6 @@
 # Maintainer: Divyaprakash Dhurandhar <divyaprakash.0426@gmail.com>
 pkgname=tidytui-git
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A blazingly fast, terminal-based system cleaner written in Rust"
 arch=('x86_64')
