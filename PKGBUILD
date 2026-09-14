@@ -3,7 +3,7 @@
 pkgname=ecubus-pro-bin
 _tagname=0.8.66
 pkgver=${_tagname//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support"
 arch=(x86_64)
 url="https://github.com/ecubus/EcuBus-Pro"
@@ -16,8 +16,8 @@ depends=(
     dbus
     expat
     glib2
-    libgcc
-    libstdc++
+    libgcc_s.so
+    libstdc++.so
     hicolor-icon-theme
     java-runtime
     systemd-libs
