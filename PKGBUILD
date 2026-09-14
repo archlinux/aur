@@ -4,7 +4,7 @@ pkgbase=python-soc-consistency
 pkgname=(python-soc-consistency meta-socc)
 _name=${pkgname#python-}
 pkgver=1.6.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Static analysis tool that catches hardware-level bugs in Linux Device Tree Source (DTS) files"
 arch=('any')
 url="https://github.com/gahingwoo/SoC-Consistency"
@@ -45,7 +45,7 @@ source=(
     'meta-socc.install'
 )
 sha256sums=('74b5332e72f9d3be3c3c5c3912e4683b57bbf8eda2b8882ebf210a7cc1581df5'
-            '3b8a4aafd0cd146ee522fa32ae2a4e6ecbd89f14384fe581dc465ced5e90e4a1')
+            '8478b6fbd9c45fb93a3daaef53291f7116bc28999dc34e9f659e18f8f77e1a70')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
