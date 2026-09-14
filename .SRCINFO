@@ -1,7 +1,7 @@
 pkgbase = icesugar-git
 	pkgdesc = iCESugar FPGA Board (base on iCE40UP5k)
 	pkgver = 1.1a.r35.g1ebe71b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wuxx/icesugar
 	arch = x86_64
 	license = GPL
