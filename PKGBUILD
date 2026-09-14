@@ -2,7 +2,7 @@
 
 pkgname=ecubus-pro
 pkgver=0.8.66
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support"
 arch=(x86_64)
 url="https://github.com/ecubus/EcuBus-Pro"
@@ -13,8 +13,8 @@ replaces=()
 depends=(
     sh
     electron
-    libgcc
-    libstdc++
+    libgcc_s.so
+    libstdc++.so
     java-runtime
     python
     python-lxml
