@@ -2,7 +2,7 @@
 # Former maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister
 pkgver=0.19.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 url="https://github.com/asciimoo/hister"
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         hister.sysusers)
 sha256sums=('59cbe6d03a7e7783e4922ea03fbbbe812701c50eb5f49f6a3c42d9480ebdd2ba'
             'f5713114859925e53bd9f99d26072bcf07946011545d1e69fbaf09a7623e7e23'
-            'ef2a171ba6f78978aaafc06e41407ea6c80712a806f0f514c7c7e1215481bdf2'
+            'd31841f6d6bc2213dbc64199dcbfd5047deed759306f0631c1dc7d5bdcacd11f'
             '5f4f3e82c42ba517d0caaa1deb4d3532c4f26cc60e42861bff1c5c6dacf34e9f')
 backup=(etc/hister/{hister.env,config.yml})
 

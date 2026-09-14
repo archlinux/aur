@@ -16,15 +16,16 @@ index 81d29a3..a8faa70 100644
  ExecStart=/usr/bin/hister listen
  Restart=on-failure
 
-@@ -18,7 +16,6 @@ CapabilityBoundingSet=
+@@ -18,7 +16,7 @@ CapabilityBoundingSet=
 
  NoNewPrivileges=true
  ProtectSystem=strict
 -ProtectHome=true
++ProtectHome=tmpfs
  PrivateTmp=true
  PrivateDevices=true
  ProtectKernelTunables=true
-@@ -35,9 +32,8 @@ RestrictRealtime=true
+@@ -35,9 +33,8 @@ RestrictRealtime=true
  RestrictSUIDSGID=true
  RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
  SystemCallArchitectures=native
