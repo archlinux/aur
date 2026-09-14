@@ -1,7 +1,7 @@
 # Maintainer: mzwing <mzwing@mzwing.eu.org>
 
 pkgname=latchshot-git
-pkgver=0.3.0.r0.ga65a6f8
+pkgver=0.3.0.r5.g19a15a3
 pkgrel=1
 pkgdesc='A lightweight yet intelligent window-aware screenshot tool for Wayland'
 arch=('x86_64')
