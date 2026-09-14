@@ -1,0 +1,28 @@
+pkgbase = eve-preview-manager-beta
+	pkgdesc = EVE Online window preview manager (beta)
+	pkgver = 1.9.0beta1
+	pkgrel = 1
+	url = https://github.com/h0lylag/EVE-Preview-Manager
+	arch = x86_64
+	license = MIT
+	makedepends = rust>=1:1.97.1
+	depends = dbus
+	depends = fontconfig
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxrandr
+	provides = eve-preview-manager=1.9.0beta1
+	conflicts = eve-preview-manager
+	options = !debug
+	source = eve-preview-manager-beta-1.9.0-beta.1.tar.gz::https://github.com/h0lylag/EVE-Preview-Manager/archive/refs/tags/v1.9.0-beta.1.tar.gz
+	sha256sums = f9f7b074ecf91dde332ca932894911ccfff68314434b2cc9b1eccd23d28ab10a
+
+pkgname = eve-preview-manager-beta
