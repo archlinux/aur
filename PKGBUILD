@@ -1,7 +1,7 @@
 # Maintainer: codingncaffeine <codingncaffeine@users.noreply.github.com>
 
 pkgname=ac-launcher-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Launcher for Asheron's Call emulator servers that runs the game through Proton, without Steam"
 arch=('x86_64')
@@ -14,13 +14,14 @@ conflicts=('ac-launcher')
 depends=('glibc' 'libgcc' 'libstdc++' 'icu' 'openssl' 'ca-certificates' 'fontconfig'
          'libx11' 'libxext' 'libxrandr' 'libxi' 'libxcursor' 'libxfixes' 'libice' 'libsm'
          'ttf-font' 'hicolor-icon-theme' 'tar' 'python' 'xdg-utils')
-optdepends=('umu-launcher: use the system umu-launcher instead of the copy the launcher downloads'
+optdepends=('libsecret: keep account passwords in the desktop keyring instead of the accounts file'
+            'umu-launcher: use the system umu-launcher instead of the copy the launcher downloads'
             'gtk3: folder picker when no desktop portal is available'
             'libglvnd: GPU-accelerated drawing')
 options=('!strip' '!debug')   # self-contained .NET payload
 source=("$url/releases/download/v$pkgver/ac-launcher-$pkgver-linux-x64.tar.gz")
 noextract=("ac-launcher-$pkgver-linux-x64.tar.gz")
-sha256sums=('fe516bf05f184cee8c06f008c24b9ad5f1b94b7d204a6450ae4ac17148c576b6')
+sha256sums=('d0a165c95a64a486fa25ee7c8e20e13df3c05ffba21dff3bce27383caa03d9c2')
 
 prepare() {
     rm -rf "$srcdir/payload"
@@ -37,7 +38,7 @@ package() {
     # silently drops whatever it does not name.
     install -dm755 "$lib"
     cp -a "$src/." "$lib/"
-    rm -rf "$lib/share" "$lib/LICENSE"
+    rm -rf "$lib/share" "$lib/LICENSE" "$lib/THIRD-PARTY-NOTICES.md"
 
     # Refuse to package a payload that cannot start.
     local f dlls
@@ -49,6 +50,7 @@ package() {
 
     cp -a "$src/share" "$pkgdir/usr/"
     install -Dm644 "$src/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$src/THIRD-PARTY-NOTICES.md" "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-NOTICES.md"
 
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/ac-launcher" <<'EOF'

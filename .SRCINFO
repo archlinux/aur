@@ -1,6 +1,6 @@
 pkgbase = ac-launcher-bin
 	pkgdesc = Launcher for Asheron's Call emulator servers that runs the game through Proton, without Steam
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/AC-Launcher
 	arch = x86_64
@@ -25,15 +25,16 @@ pkgbase = ac-launcher-bin
 	depends = tar
 	depends = python
 	depends = xdg-utils
+	optdepends = libsecret: keep account passwords in the desktop keyring instead of the accounts file
 	optdepends = umu-launcher: use the system umu-launcher instead of the copy the launcher downloads
 	optdepends = gtk3: folder picker when no desktop portal is available
 	optdepends = libglvnd: GPU-accelerated drawing
 	provides = ac-launcher
 	conflicts = ac-launcher
-	noextract = ac-launcher-0.5.0-linux-x64.tar.gz
+	noextract = ac-launcher-0.5.1-linux-x64.tar.gz
 	options = !strip
 	options = !debug
-	source = https://github.com/codingncaffeine/AC-Launcher/releases/download/v0.5.0/ac-launcher-0.5.0-linux-x64.tar.gz
-	sha256sums = fe516bf05f184cee8c06f008c24b9ad5f1b94b7d204a6450ae4ac17148c576b6
+	source = https://github.com/codingncaffeine/AC-Launcher/releases/download/v0.5.1/ac-launcher-0.5.1-linux-x64.tar.gz
+	sha256sums = d0a165c95a64a486fa25ee7c8e20e13df3c05ffba21dff3bce27383caa03d9c2
 
 pkgname = ac-launcher-bin
