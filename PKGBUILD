@@ -2,7 +2,7 @@
 
 pkgname=arch-update-cli
 _pkgname="${pkgname%-cli}"
-pkgver=4.4.3
+pkgver=4.4.4
 pkgrel=1
 pkgdesc="An interactive update notifier & applier that assists you with important pre / post update tasks (cli only version)"
 url="https://github.com/Antiz96/arch-update"
@@ -25,7 +25,7 @@ optdepends=('paru: AUR Packages support'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('47bda60f013f3c2cb41e6997ee1297d40169321da459348b5bc4beff35ae5a5a')
+sha256sums=('e4a3caf43bc33eb287025028472e637d3f40b7c3d3fa745c7eb177028420cc97')
 
 prepare() {
 	cd "${_pkgname}-${pkgver}"
