@@ -44,10 +44,22 @@ verify() {
 	sha256sum -c --ignore-missing "checksums.txt"
 }
 
+build() {
+	cd "${srcdir}/" || exit
+
+	mkdir -p "./completions"
+
+	"./${_appname}" completion zsh > "./completions/${_appname}.zsh"
+	"./${_appname}" completion bash > "./completions/${_appname}.bash"
+}
+
 package() {
 	cd "${srcdir}/" || exit
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "./completions/${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
+	install -Dm644 "./completions/${_appname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_appname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
