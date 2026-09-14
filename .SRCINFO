@@ -8,6 +8,8 @@ pkgbase = cksk
 	makedepends = cargo
 	provides = cksk
 	conflicts = cksk-bin
+	replaces = nixwatch-bin
+	replaces = nixwatch
 	source = https://static.crates.io/crates/cksk/cksk-0.1.0.crate
 	sha256sums = 3896edcccfc9d30664c7669747814b93f968f836e793b107424403498e3ff32d
 

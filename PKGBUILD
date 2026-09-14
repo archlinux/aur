@@ -10,6 +10,7 @@ depends=()
 makedepends=('cargo')
 provides=('cksk')
 conflicts=('cksk-bin')
+replaces=('nixwatch-bin' 'nixwatch')
 # NOTE: crates.io, not GitHub: github.com serves every corbet-labs URL with 404s
 # (org-wide flag, 2026-09-14). Revisit a git source once anonymous serving works again.
 source=("https://static.crates.io/crates/cksk/cksk-$pkgver.crate")
