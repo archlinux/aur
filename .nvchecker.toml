@@ -1,0 +1,5 @@
+[mew-bin]
+source = "github"
+github = "programmersd21/mew"
+use_latest_release = true
+prefix = "v"
