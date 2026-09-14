@@ -3,21 +3,23 @@
 # Contributor: Sasasu <lizhaolong0123@gmail.com>
 
 pkgname=hex2bin-git
-pkgver=1.12.r2.g97a58d9
-pkgrel=1
+pkgver=1.13.0.r0.gbd95451
+pkgrel=2
 pkgdesc="Hex to binary converter."
 arch=($CARCH)
 url="https://github.com/Keidan/hex2bin"
 license=('GPL-3.0-only')
 replaces=('hex2bin')
 depends=(
-    glibc
-    gcc-libs)
+    libgcc_s.so
+    libstdc++.so
+)
 makedepends=(
     git
     cmake
     ninja
-    python)
+    python
+)
 checkdepends=()
 source=("$pkgname::git+${url}.git")
 md5sums=('SKIP')
