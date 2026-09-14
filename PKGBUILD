@@ -5,23 +5,20 @@
 # Contributor: Michal Hybner <dta081@gmail.com>
 
 pkgname=libosip2
-pkgver=5.3.1
+pkgver=5.3.2
 pkgrel=1
 pkgdesc="An implementation of SIP"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://www.gnu.org/software/osip"
-license=('LGPL')
+license=('LGPL-2.1-only')
 depends=(glibc)
-options=(!emptydirs)
 source=("https://ftp.gnu.org/gnu/osip/libosip2-${pkgver}.tar.gz"{,.sig})
-sha256sums=('fe82fe841608266ac15a5c1118216da00c554d5006e2875a8ac3752b1e6adc79' 'SKIP')
+sha256sums=('16186f6f5540936b62c3aaca6e8409e1af25cd22abc3882b393be215f49d3b00' 'SKIP')
 validpgpkeys=('34C3985D068879312FE23C8BB5902A3AD90A5421')
 
 build() {
   cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr --disable-semaphore
-  # Fight unused direct deps
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
+  ./configure --prefix=/usr
   make
 }
 
