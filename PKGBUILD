@@ -1,18 +1,18 @@
 # Maintainer: Piliii <naifmohsenaziz@gmail.com>
 pkgname=librenotes-bin
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Private, self-hosted, end-to-end encrypted note-taking app"
 arch=('x86_64')
 url="https://github.com/Piliii/LibreNotes"
 license=('AGPL-3.0-only')
-depends=('gtk3')
+depends=('gtk3' 'libkeybinder3')
 optdepends=('xdg-utils: open links from notes')
 provides=('librenotes')
 conflicts=('librenotes')
 
 source_x86_64=("${pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/Piliii/LibreNotes/releases/download/v${pkgver}/LibreNotes-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('62ae50cc02d71027d0d0b96cfbfe02bde319d4e3088e8712dcb788b177b87675')
+sha256sums_x86_64=('33bba01cfc068d00e4482e51e7246e550905a6fbfd612d179b5a7703cf86d4c3')
 
 package() {
   # Flutter bundle — keep internal layout intact; binary uses $ORIGIN/lib and data/
