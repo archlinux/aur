@@ -1,6 +1,6 @@
 pkgbase = moarchy-coins
 	pkgdesc = A coin tracker for a Linux phone: the top hundred, and the ones you star
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/SimonSchubert/moarchy-apps
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = moarchy-coins
 	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita
-	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/coins-v0.1.0/moarchy-coins-0.1.0.tar.gz
-	sha256sums = 2d38512b57af41796fe6aa168cef85a83de701076403857361a086515d51c8ce
+	source = https://github.com/SimonSchubert/moarchy-apps/releases/download/coins-v0.1.1/moarchy-coins-0.1.1.tar.gz
+	sha256sums = 5c171a5e03369d2bf77510f38829df40eda96aecc869ef8ac456cbcb43d94896
 
 pkgname = moarchy-coins

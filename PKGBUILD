@@ -1,6 +1,6 @@
 # Maintainer: Simon Schubert <simon@librem.one>
 pkgname=moarchy-coins
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A coin tracker for a Linux phone: the top hundred, and the ones you star"
 arch=('any')
@@ -20,7 +20,7 @@ license=('MIT')
 # dependency for `requests.get` would be a cost with nothing behind it.
 depends=('python' 'python-gobject' 'gtk4' 'libadwaita')
 source=("$url/releases/download/coins-v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2d38512b57af41796fe6aa168cef85a83de701076403857361a086515d51c8ce')
+sha256sums=('5c171a5e03369d2bf77510f38829df40eda96aecc869ef8ac456cbcb43d94896')
 
 # The source tarball is assembled by packaging/release.sh from two subtrees of
 # one tag -- apps/coins and shared -- so it holds this app and the shared code it
