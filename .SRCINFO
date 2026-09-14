@@ -1,6 +1,6 @@
 pkgbase = bchoppr-git
 	pkgdesc = An audio stream chopping LV2 plugin (git version)
-	pkgver = 1.12.0.r0.gb355a1c
+	pkgver = 1.12.8.r0.g91f9e6d
 	pkgrel = 1
 	url = https://github.com/sjaehn/BChoppr
 	arch = x86_64
@@ -10,11 +10,12 @@ pkgbase = bchoppr-git
 	checkdepends = lv2lint
 	makedepends = git
 	makedepends = lv2
+	makedepends = libsndfile
 	depends = cairo
 	depends = gcc-libs
 	optdepends = lv2-host: for loading the LV2 plugin
 	provides = bchoppr
-	provides = bchoppr=1.12.0
+	provides = bchoppr=1.12.8
 	conflicts = bchoppr
 	source = bchoppr::git+https://github.com/sjaehn/BChoppr.git
 	md5sums = SKIP
