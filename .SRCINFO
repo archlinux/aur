@@ -11,6 +11,6 @@ pkgbase = baaz
 	optdepends = yt-dlp: media-site downloads (YouTube, TikTok, ...)
 	optdepends = omarchy: status bar widget (baaz install-bar)
 	source = baaz-0.1.6.tar.gz::https://github.com/shahriyardx/baaz/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = 9a0ef9806fb8b92e2891dfddbb2e0a1f627a6cef73ab1954b59e39f1fecaa92a
+	sha256sums = 23ce702a399e743e5541e8c564becc033c3cbfd29f8cbe17f159c41fd16275fa
 
 pkgname = baaz
