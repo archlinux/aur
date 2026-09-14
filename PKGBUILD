@@ -2,7 +2,7 @@
 # NOTE: pkgver and sha256sums here are placeholders — the release workflow
 # stamps the real values and pushes to the AUR. The AUR is the source of truth.
 pkgname=baaz
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Falcon-fast segmented download manager - Chrome interception and Omarchy bar widget"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('libnotify: desktop notifications'
             'yt-dlp: media-site downloads (YouTube, TikTok, ...)'
             'omarchy: status bar widget (baaz install-bar)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('23ce702a399e743e5541e8c564becc033c3cbfd29f8cbe17f159c41fd16275fa')
+sha256sums=('cfbb2464e9c8b2353d724524b37c8042c625f5fad1d24960b3c7d0499b8bc7fb')
 
 build() {
   cd "$pkgname-$pkgver"
