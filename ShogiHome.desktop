@@ -4,3 +4,4 @@ Exec=/opt/electron-shogi/shogihome
 Terminal=false
 Type=Application
 Categories=Game;
+Icon=shogihome
