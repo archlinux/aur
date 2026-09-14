@@ -1,5 +1,5 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
-pkgname=fastpotify
+pkgname=spotifast
 pkgver=0.8.0
 pkgrel=1
 pkgdesc="Native Spotify client"
@@ -7,16 +7,18 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/spotifast"
 license=('MIT')
 install="${pkgname}.install"
-depends=('alsa-lib' 'libpulse' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
+depends=('dbus' 'alsa-lib' 'libpulse' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
 makedepends=('cargo' 'cmake' 'clang')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'pipewire-pulse: PipeWire as the PulseAudio server')
-conflicts=('fastpotify-bin' 'fastpotify-git')
+provides=("fastpotify=$pkgver")
+conflicts=('fastpotify' 'fastpotify-bin' 'fastpotify-git' 'spotifast-bin' 'spotifast-git')
+replaces=('fastpotify')
 # !lto because ring compiles its own C and Arch's default CFLAGS put LTO
 # objects in the archive, which lld then cannot resolve: the link fails on
 # undefined ring_core_* symbols.
 options=('!debug' '!lto')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/fastpotify-v${pkgver}-source.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/spotifast-v${pkgver}-source.tar.gz")
 sha256sums=('60c384ab6aff397b08653572fac6b31c2372b30f32c7dfbd6b3624d67a00b7b1')
 
 # GitHub archives use the repository name; older releases used Fastpotify.
@@ -24,7 +26,7 @@ _source_dir() {
   if [[ -d "${srcdir}/spotifast-${pkgver}" ]]; then
     printf '%s\n' "${srcdir}/spotifast-${pkgver}"
   else
-    printf '%s\n' "${srcdir}/${pkgname}-${pkgver}"
+    printf '%s\n' "${srcdir}/fastpotify-${pkgver}"
   fi
 }
 
