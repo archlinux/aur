@@ -4,8 +4,8 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=0.86.5
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
 license=('Apache-2.0')
@@ -31,11 +31,11 @@ arch=('x86_64')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	'flet-linux.patch')
-sha256sums=('2376e9f1fa4ce0c2f6b54bdf5676efbbee6c25fc054c4be08afeac5712a366ac'
+sha256sums=('02dd1265a912ca6831c14a7eaaaef80d8f87578859fc2a2f5e44ddc75d8784b2'
             'e252e4eec325886d76dfc54c90604ea81ec0d6791b7e22bb93f63cec6378c50c')
 
 _srcdir="${_pkgname}-${pkgver}"
-_engine_version=3.44.8
+_engine_version=3.47.4
 
 prepare() {
 	cd "${_srcdir}"
@@ -63,7 +63,7 @@ build() {
 	#cd 'sdk/python'
 	#python -m build --wheel --no-isolation
 
-	for dir in 'sdk/python/packages/'{flet-cli,flet-desktop,flet,flet-web}; do
+	for dir in 'sdk/python/packages/'*; do
 		pushd "$dir"
 			python -m build --wheel --no-isolation
 		popd
@@ -93,7 +93,7 @@ package() {
 	#pushd 'sdk/python'
 	#	python -m installer --destdir="$pkgdir" 'dist/'*.whl
 	#popd
-	for dir in 'sdk/python/packages/'{flet-cli,flet-desktop,flet,flet-web}; do
+	for dir in 'sdk/python/packages/'*; do
 		pushd "$dir"
 			python -m installer --destdir="$pkgdir" 'dist/'*.whl
 		popd
