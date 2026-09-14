@@ -38,7 +38,4 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  mkdir -p "$pkgdir/usr/share/doc"
-  mv "$pkgdir/usr/doc" "$pkgdir/usr/share/doc/$pkgname"
 }

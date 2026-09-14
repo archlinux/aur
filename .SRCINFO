@@ -1,6 +1,6 @@
 pkgbase = gpujpeg-git
 	pkgdesc = JPEG encoder and decoder library and console application for NVIDIA GPUs (from git)
-	pkgver = r762.2252eaf
+	pkgver = r1378.0fdc696
 	pkgrel = 1
 	url = https://github.com/CESNET/GPUJPEG
 	arch = x86_64
