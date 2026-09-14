@@ -1,6 +1,6 @@
 pkgbase = pixelorama
 	pkgdesc = A free & open-source 2D sprite editor
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://orama-interactive.itch.io/pixelorama
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = pixelorama
 	depends = libxinerama
 	depends = libxrandr
 	provides = pixelorama
-	source = Pixelorama-1.2.1.tar.gz::https://github.com/Orama-Interactive/Pixelorama/archive/v1.2.1.tar.gz
-	b2sums = 37e39fbcb351d6f75aab05f64ce187d0dc99251cdf6f782a2d0ccdccab378499f54b2a319994bbd57d221bf34d10bf0365ad56269e50da641c94d522b81d03ed
+	source = Pixelorama-1.2.2.tar.gz::https://github.com/Orama-Interactive/Pixelorama/archive/v1.2.2.tar.gz
+	b2sums = 0db62062de127449f2cc1abc9fbf5956b8063960d51cef96d93e764ef7fce7ddcdc25145be9ec8a1b694070b86fe74954289e376a2ed7b83dd9f49ae8cc60b7d
 
 pkgname = pixelorama
