@@ -1,6 +1,6 @@
 pkgbase = dbar-bin
 	pkgdesc = A small, event-driven Wayland status bar for Sway and SwayFX (prebuilt)
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/dborovcanin/dbar
 	arch = x86_64
@@ -13,14 +13,14 @@ pkgbase = dbar-bin
 	optdepends = noto-fonts-cjk: Chinese, Japanese and Korean window titles
 	optdepends = ttf-nerd-fonts-symbols: Nerd Font glyphs in workspace names
 	optdepends = sway: the compositor dbar reads workspaces and window titles from
-	provides = dbar=0.5.0
+	provides = dbar=0.6.0
 	conflicts = dbar
 	conflicts = dbar-git
 	options = !strip
 	options = !debug
-	source = dbar-0.5.0-linux-x86_64::https://github.com/dborovcanin/dbar/releases/download/v0.5.0/dbar-linux-x86_64
-	source = dbar-0.5.0.tar.gz::https://github.com/dborovcanin/dbar/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 83b5b3071488eb4cefd2ae06f1e75b789f31b4dc2c5347ffc6189baf9c5a1b2d
-	sha256sums = 5829df08e4c8335bf46a40c44e7c80d3844cd273c4ab8b62bd7983ffe4b23647
+	source = dbar-0.6.0-linux-x86_64::https://github.com/dborovcanin/dbar/releases/download/v0.6.0/dbar-linux-x86_64
+	source = dbar-0.6.0.tar.gz::https://github.com/dborovcanin/dbar/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = cd4391cba02bdf4faf44b4bc50ecf75435a6aa2e9e007a0bfdbcf582558a6bb0
+	sha256sums = 8645398ba8ae209a77d6c89dbf7a71791997fd36a2567d299a584a85fb24be0f
 
 pkgname = dbar-bin
