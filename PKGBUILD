@@ -43,7 +43,7 @@ sha512sums=('01cea929cea2535751b5ef23eddc780a3c32ffafee640a6d5cea9a52798d0ec7030
             'SKIP')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd strongswan-${pkgver}
   sed -i 's/$(PYTHON) -m build/$(PYTHON) -m build --wheel --no-isolation/' src/libcharon/plugins/vici/python/Makefile.am
   autoreconf -fiv
 }
@@ -111,7 +111,7 @@ build() {
     --enable-xauth-pam
     --enable-ikev1
   )
-  cd ${pkgname}-${pkgver}
+  cd strongswan-${pkgver}
   ./configure "${_confflags[@]:?_confflags unset}"
   make
 }
@@ -119,7 +119,7 @@ build() {
 package() {
   local _gemdir="$(gem env gemdir)"
 
-  cd ${pkgname}-${pkgver}
+  cd strongswan-${pkgver}
   make DESTDIR="${pkgdir}" install
 
   python -m installer --destdir="$pkgdir" src/libcharon/plugins/vici/python/dist/*.whl
