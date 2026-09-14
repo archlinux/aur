@@ -1,13 +1,13 @@
 pkgbase = cencli-bin
 	pkgdesc = Command line interface for interacting with Censys
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://docs.censys.com/docs/platform-cli
 	arch = x86_64
 	license = Apache-2.0
 	options = !strip
 	options = !debug
-	source = https://github.com/censys/cencli/releases/download/v1.1.4/cencli_1.1.4_linux_amd64.tar.gz
-	sha256sums = 9fd5ece0142565f9c2730af55922e1855f63204b2618e80c45651c27c6646aad
+	source = https://github.com/censys/cencli/releases/download/v1.1.5/cencli_1.1.5_linux_amd64.tar.gz
+	sha256sums = 1fe7136413e0e0d140c58812cb17f3279c0b55f2ea062763be7988fe15872816
 
 pkgname = cencli-bin
