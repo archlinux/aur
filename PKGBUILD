@@ -2,7 +2,7 @@
 
 pkgname=sherpa-ncnn
 pkgver=2.1.15
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Real-time speech recognition and voice activity detection (VAD) using next-gen Kaldi with ncnn without Internet connection. "
 arch=($CARCH)
@@ -45,7 +45,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
-        -Wno-dev \
+        -Wno-author \
         -B build \
         -G Ninja
     #    -Wno-deprecated-declarations \
