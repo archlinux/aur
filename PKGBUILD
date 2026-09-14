@@ -3,7 +3,7 @@
 pkgname=nping
 _name=Nping
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="🏎 Nping mean NB Ping, A Ping Tool in Rust with Real-Time Data and Visualizations"
 arch=($CARCH)
 url="https://github.com/hanshuaikang/Nping"
@@ -11,10 +11,7 @@ license=('MIT')
 provides=(${pkgname} nbping)
 conflicts=(${pkgname} nbping)
 # replaces=(${pkgname})
-depends=(
-    gcc-libs
-    glibc
-)
+depends=()
 makedepends=(
     git
     rust
