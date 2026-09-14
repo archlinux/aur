@@ -1,11 +1,11 @@
 # Maintainer: Martin Piatka <(lastname) @ cesnet.cz>
 pkgname='gpujpeg-git'
-pkgver=r762.2252eaf
+pkgver=r1378.0fdc696
 pkgrel=1
 pkgdesc='JPEG encoder and decoder library and console application for NVIDIA GPUs (from git)'
 arch=('x86_64')
 url="https://github.com/CESNET/GPUJPEG"
-license=('BSD')
+license=('BSD-2-Clause')
 
 depends=(
 	'cuda'
