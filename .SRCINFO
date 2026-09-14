@@ -1,6 +1,6 @@
 pkgbase = bipscript-git
 	pkgdesc = A scripting language for interactive music
-	pkgver = r601.8b0e366
+	pkgver = r642.b362f4b
 	pkgrel = 1
 	url = http://www.bipscript.org
 	arch = i686

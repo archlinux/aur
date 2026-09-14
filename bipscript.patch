@@ -9,3 +9,11 @@
  
  #include "midifile.h"
  #include "miditune.h"
+--- ./src/bipscript/src/audio/audioconnection.h
++++ ../bipscript/src/audio/audioconnection.h
+@@ -25,4 +25,5 @@
+ #include "source.h"
+ #include "statusserver.h"
+ #include "timeline.h"
++#include <cstring>
+

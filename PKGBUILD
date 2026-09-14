@@ -1,7 +1,7 @@
 # Maintainer: milkii (milkii on freenode)
 # Contributer: Colean <colean@colean.cc>
 pkgname=bipscript-git
-pkgver=r601.8b0e366
+pkgver=r642.b362f4b
 pkgrel=1
 pkgdesc="A scripting language for interactive music"
 arch=('i686' 'x86_64')
