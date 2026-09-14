@@ -3,7 +3,7 @@
 pkgname=rttview
 _name=RTTView
 pkgver=20241201
-pkgrel=1
+pkgrel=5
 epoch=
 pkgdesc="SEGGER-RTT Client for J-LINK and DAPLink"
 arch=('any')
@@ -24,7 +24,6 @@ _makepydeps=(
     six
     pyelftools
     pyqt5
-    #     pyqt5-chart
     pyqt5-webengine
     pyusb
 )
