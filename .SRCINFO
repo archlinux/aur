@@ -1,6 +1,6 @@
 pkgbase = playwright-mcp
 	pkgdesc = MCP server that provides browser automation capabilities using Playwright
-	pkgver = 0.0.80
+	pkgver = 0.0.81
 	pkgrel = 1
 	url = https://github.com/microsoft/playwright-mcp
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = playwright-mcp
 	depends = nodejs>=18
 	optdepends = chromium: use system Chromium instead of Playwright-managed browsers
 	optdepends = firefox: use system Firefox instead of Playwright-managed browsers
-	noextract = playwright-mcp-0.0.80.tgz
-	source = playwright-mcp-0.0.80.tgz::https://registry.npmjs.org/@playwright/mcp/-/mcp-0.0.80.tgz
-	sha256sums = b81eda3f0a7cc70a9caf7db520cdad58c48a1dd334b4e3fcf096c0512c98af0d
+	noextract = playwright-mcp-0.0.81.tgz
+	source = playwright-mcp-0.0.81.tgz::https://registry.npmjs.org/@playwright/mcp/-/mcp-0.0.81.tgz
+	sha256sums = 4289f7d5fe256b69db0e49050148b175af80fcf8caba814ec6b7b64f5f64161b
 
 pkgname = playwright-mcp
