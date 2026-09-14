@@ -1,3 +1,4 @@
+# Maintainer : Jan Dorazil <doraz.jan@gmail.com>
 # Maintainer : Christian Rebischke <Chris.Rebischke@archlinux.org>
 # Contributor: dkorzhevin <dkorzhevin at gmail dot com>
 # Contributor: Thermi <noel [at] familie-kuntze dot de>
@@ -9,10 +10,11 @@
 # Contributor: 458italia <svenskaparadox [at] gmail dot com>
 # Contributor: Thermi <noel [at] familie-kuntze dot com>
 
-pkgname=strongswan
+pkgname=strongswan-ikev1
+conflicts=('strongswan')
 pkgver=6.1.0
 pkgrel=2
-pkgdesc='Open source IPsec implementation'
+pkgdesc='Open source IPsec implementation (with deprecated ikev1 protocol implementation)'
 url='https://www.strongswan.org'
 license=('GPL-2.0-only')
 arch=('x86_64')
@@ -107,6 +109,7 @@ build() {
     --enable-xauth-eap
     --enable-xauth-noauth
     --enable-xauth-pam
+    --enable-ikev1
   )
   cd ${pkgname}-${pkgver}
   ./configure "${_confflags[@]:?_confflags unset}"
