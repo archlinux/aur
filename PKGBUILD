@@ -47,14 +47,14 @@ makedepends=(
     'rust-wasm'
 )
 options=('!debug' '!strip')
-_wasm_bindgen_ver=0.2.123
+_wasm_bindgen_ver=0.2.128
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "wasm-bindgen-$_wasm_bindgen_ver.tar.gz::https://github.com/wasm-bindgen/wasm-bindgen/releases/download/$_wasm_bindgen_ver/wasm-bindgen-$_wasm_bindgen_ver-x86_64-unknown-linux-musl.tar.gz"
     "$pkgname.desktop"
 )
 sha256sums=('733099d273718e9f27b2776e519f73edd8d4dd0b2e471c6b8bc2cb7fb3f44b3e'
-            '80fc5c1d5c128fd67e99b14318eeabf79dfbadf459ece2d38ba93a82e55730c6'
+            'b51f0208fdff83515a787bd8ab9ac5865ed84dabb66d0c709957bb59793c645f'
             '259b39667fe1dce5d6ce45d4464b7499989c0b0d527c9b9d3597d519dd744e76')
 
 prepare() {
