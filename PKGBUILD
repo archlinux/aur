@@ -1,6 +1,6 @@
 # Maintainer: Greyson Christoforo <grey@christoforo.net>
 pkgname=python-drawsvg
-pkgver=2.4.0
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Programmatically generate SVG (vector) images"
 arch=('any')
@@ -19,7 +19,7 @@ python-setuptools
 )
 
 source=("https://github.com/cduck/drawSvg/archive/${pkgver}.tar.gz")
-sha256sums=('2ded625da44020a414493e6a7fa4e67354e6bb7968e35d89afe7af2e74939b9e')
+b2sums=('9fe76780e6b2c5e4f3a009d30791988ab2c470c2d75d19a5be3f1c320a2f414ef34344091350773d20a8225d744cf1b7bf627618a00b6a2eacedf638c6800d4c')
 
 prepare() {
   cd "drawsvg-${pkgver}"

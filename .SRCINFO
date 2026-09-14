@@ -1,6 +1,6 @@
 pkgbase = python-drawsvg
 	pkgdesc = Programmatically generate SVG (vector) images
-	pkgver = 2.4.0
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/cduck/drawSvg
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-drawsvg
 	depends = python-numpy
 	depends = python-imageio
 	depends = python-cairosvg
-	source = https://github.com/cduck/drawSvg/archive/2.4.0.tar.gz
-	sha256sums = 2ded625da44020a414493e6a7fa4e67354e6bb7968e35d89afe7af2e74939b9e
+	source = https://github.com/cduck/drawSvg/archive/2.4.2.tar.gz
+	b2sums = 9fe76780e6b2c5e4f3a009d30791988ab2c470c2d75d19a5be3f1c320a2f414ef34344091350773d20a8225d744cf1b7bf627618a00b6a2eacedf638c6800d4c
 
 pkgname = python-drawsvg
