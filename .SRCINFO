@@ -1,7 +1,7 @@
 pkgbase = nxp-uuu-qt-tool-git
 	pkgdesc = Gui tool based on mfgtools uuu.
 	pkgver = 1.0.0.r7.g6250cad
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nixgnauhcuy/nxp-uuu-qt-tool
 	arch = x86_64
 	license = MIT

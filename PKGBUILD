@@ -2,7 +2,7 @@
 
 pkgname=nxp-uuu-qt-tool-git
 pkgver=1.0.0.r7.g6250cad
-pkgrel=3
+pkgrel=4
 pkgdesc="Gui tool based on mfgtools uuu."
 arch=($CARCH)
 url="https://github.com/nixgnauhcuy/nxp-uuu-qt-tool"
