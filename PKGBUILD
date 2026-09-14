@@ -13,6 +13,7 @@ url="https://github.com/supechicken/KernelSU"
 _upstream="https://github.com/tiann/$_pkg.git"
 license=('GPL-2.0-only')
 depends=('dkms')
+optdepends=('modloader')
 makedepends=('git' 'rust' 'cargo')
 options=('!strip' '!emptydirs')
 
@@ -74,7 +75,6 @@ update_src() {
 verify_dest() {
   local dest=$1 current_url
   [ -d "${dest}/.git" ] || return
-  echo "Source dest exists, updating..."
 
   cd "${dest}"
   git remote set-url origin "${ORG_URL}"
@@ -121,15 +121,19 @@ export DLAGENTS="shallowclone::$(realpath "./DLAGENTS") %u %o"
 source=(
 	"${_pkg}::git+${url}#branch=${_branch}"
 	'Makefile'
+	'0001-Patch-Kbuild-for-dkms.patch'
 	'dkms.conf'
 	'00-kernelsu.conf'
+	'load-kernelsu.in'
 )
 
 sha256sums=(
 	'SKIP'
-	'32f4fb56b09afcd12ae651fa302cb8457070b6238391a664892c914408005d7f'
-	'3eaeaf5a2a5442204ae0cad3c4c25855a90e4e683da56579cc7eb2bada42ccb9'
+	'a836794d044068ee44f0e60b4f45f4f58e810a23e79cb800b4cba1dd9004e369'
+	'a45b6d9b38cc0fa06ca3984999ddd6940f4b4e2a84a4fccbf7801784903ef762'
+	'0bb3096d98e5ac4539d9b074ff4331874713100972326a410a1068d262e19eba'
 	'05feaafbbac794a68c7eeea8c0a4c5616fc9f6ef7e4b7540baf3f5d43fad5fb0'
+	'f01d10fbcfba1b83134746ccfdc7ef4ceb61fa43593b94f039eac3469637429c'
 )
 
 pkgver() {
@@ -144,6 +148,11 @@ pkgver() {
 	} >/dev/null 2>&1
 
 	git describe --long --tags | sed 's#v##;s#-RC#.rc#;s#-#+#g'
+}
+
+prepare() {
+	cd "$srcdir/$_pkg"
+	git apply "$srcdir/0001-Patch-Kbuild-for-dkms.patch"
 }
 
 build() {
@@ -172,6 +181,8 @@ package() {
 
 	cd "$srcdir"
 
+	echo "ksu git ver: $_count" >&2
+
 	sed "s|@PKGVER@|${pkgver}|g;\
     s|@KSU_GIT_VERSION@|${_count}|g;" "$(readlink -f dkms.conf)" >"$dest/dkms.conf"
 
@@ -183,5 +194,9 @@ package() {
 
 	# Install loader
 	cd "$srcdir/$_pkg/userspace/ksuinit"
-  install -Dm755 release/ksuinit "$pkgdir/usr/bin/kernelsu-loader"
+	install -Dm755 release/ksuinit "$pkgdir/usr/bin/kernelsu-loader"
+
+	# Install load script (for modloader)
+	mkdir -p "$pkgdir/usr/bin"
+	install -Dm755 "$(readlink -f load-kernelsu.in)" "$pkgdir/usr/bin/load-kernelsu"
 }

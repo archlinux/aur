@@ -1,0 +1,62 @@
+From 8388f584bf50028e1adb9520a81f6023832a7541 Mon Sep 17 00:00:00 2001
+From: shadichy <shadichy@blisslabs.org>
+Date: Mon, 14 Sep 2026 10:27:28 +0700
+Subject: [PATCH] Patch Kbuild for dkms
+
+---
+ kernel/Kbuild | 38 +++++++++++++++++++-------------------
+ 1 file changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/kernel/Kbuild b/kernel/Kbuild
+index 77d16f7b..56964317 100644
+--- a/kernel/Kbuild
++++ b/kernel/Kbuild
+@@ -95,26 +95,26 @@ obj-$(CONFIG_KSU) += kernelsu.o
+ 
+ MDIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+ 
+-# Workaround bazel
+-# https://github.com/tiann/KernelSU/pull/316#issuecomment-1479043219
+-GIT := $(shell PATH="$$PATH":/usr/bin:/usr/local/bin which git)
+-ifneq ($(GIT),)
+-# Check if this is a git repository
+-# Try to detect Git repo intelligently
+-GIT_ROOT := $(shell cd $(MDIR) && $(GIT) rev-parse --show-toplevel 2>/dev/null)
+-ifneq ($(GIT_ROOT),)
+-KERNEL_GIT_ROOT := $(shell cd $(srctree) && $(GIT) rev-parse --show-toplevel 2>/dev/null)
+-ifneq ($(GIT_ROOT),$(KERNEL_GIT_ROOT))
+-# Only set version if it's a different repo from kernel
+-$(shell cd $(GIT_ROOT) && [ -f .git/shallow ] && $(GIT) fetch --unshallow 2>/dev/null || true)
+-KSU_GIT_VERSION := $(shell cd $(GIT_ROOT) && $(GIT) rev-list --count HEAD 2>/dev/null)
++# # Workaround bazel
++# # https://github.com/tiann/KernelSU/pull/316#issuecomment-1479043219
++# GIT := $(shell PATH="$$PATH":/usr/bin:/usr/local/bin which git)
++# ifneq ($(GIT),)
++# # Check if this is a git repository
++# # Try to detect Git repo intelligently
++# GIT_ROOT := $(shell cd $(MDIR) && $(GIT) rev-parse --show-toplevel 2>/dev/null)
++# ifneq ($(GIT_ROOT),)
++# KERNEL_GIT_ROOT := $(shell cd $(srctree) && $(GIT) rev-parse --show-toplevel 2>/dev/null)
++# ifneq ($(GIT_ROOT),$(KERNEL_GIT_ROOT))
++# # Only set version if it's a different repo from kernel
++# $(shell cd $(GIT_ROOT) && [ -f .git/shallow ] && $(GIT) fetch --unshallow 2>/dev/null || true)
++# KSU_GIT_VERSION := $(shell cd $(GIT_ROOT) && $(GIT) rev-list --count HEAD 2>/dev/null)
+ KSU_GIT_VERSION_VALID := 1
+-$(info -- KernelSU: Git repo detected at $(GIT_ROOT))
+-endif
+-endif
+-else
+-$(warning -- KernelSU: Git not detected, make sure git is installed in your PATH!)
+-endif
++# $(info -- KernelSU: Git repo detected at $(GIT_ROOT))
++# endif
++# endif
++# else
++# $(warning -- KernelSU: Git not detected, make sure git is installed in your PATH!)
++# endif
+ 
+ 
+ # Calculate version if git version is available
+-- 
+2.55.0
+

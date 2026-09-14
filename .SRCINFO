@@ -13,11 +13,15 @@ pkgbase = kernelsu-dkms
 	options = !emptydirs
 	source = kernelsu::git+https://github.com/supechicken/KernelSU#branch=waydroid-experimental
 	source = Makefile
+	source = 0001-Patch-Kbuild-for-dkms.patch
 	source = dkms.conf
 	source = 00-kernelsu.conf
+	source = load-kernelsu.in
 	sha256sums = SKIP
-	sha256sums = d71e7580f548e48f234c403ba9a06baa5504473901b65f54a6cbea3b0219c5ca
-	sha256sums = 3eaeaf5a2a5442204ae0cad3c4c25855a90e4e683da56579cc7eb2bada42ccb9
+	sha256sums = a836794d044068ee44f0e60b4f45f4f58e810a23e79cb800b4cba1dd9004e369
+	sha256sums = a45b6d9b38cc0fa06ca3984999ddd6940f4b4e2a84a4fccbf7801784903ef762
+	sha256sums = 0bb3096d98e5ac4539d9b074ff4331874713100972326a410a1068d262e19eba
 	sha256sums = 05feaafbbac794a68c7eeea8c0a4c5616fc9f6ef7e4b7540baf3f5d43fad5fb0
+	sha256sums = f01d10fbcfba1b83134746ccfdc7ef4ceb61fa43593b94f039eac3469637429c
 
 pkgname = kernelsu-dkms
