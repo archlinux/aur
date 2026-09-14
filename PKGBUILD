@@ -2,7 +2,7 @@
 
 pkgname=flea
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, keyboard-first file manager for Omarchy'
 arch=('x86_64' 'aarch64')
 license=('MIT')
@@ -34,29 +34,25 @@ optdepends=('libarchive: archive listing and extraction'
             'dropbox-cli: Dropbox share links')
 # The release profile strips, so a debug package would have nothing to hold.
 options=('!debug')
-# Empty on purpose: with no source array makepkg builds from $startdir, so a clone is the source.
-sha256sums=()
+source=("$pkgname-$pkgver.tar.gz::https://github.com/thisisgm/flea/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('0b4da1fa62816899c1340094d733a17dfd703f9d098337852f3c6cf3a6a9796b')
 
 build() {
-  # Its own target directory, so a makepkg run never disturbs the checkout's target/.
+  cd "$pkgname-$pkgver"
   export CARGO_TARGET_DIR="$srcdir/target"
-  cd "$startdir"
   cargo build --release --locked
 }
 
 check() {
+  cd "$pkgname-$pkgver"
   export CARGO_TARGET_DIR="$srcdir/target"
-  cd "$startdir"
   cargo test --release --locked
-  # These two need no built binary and locate themselves, so they run correctly under makepkg.
-  # The rest of tests/ resolves ./target/<profile>/flea against the repo root, which CARGO_TARGET_DIR
-  # has moved, so they would refuse on a clean clone or silently test a stale binary on a dev box.
   ./tests/js.sh
   ./tests/keymap-gen.sh
 }
 
 package() {
-  cd "$startdir"
+  cd "$pkgname-$pkgver"
   install -Dm755 "$srcdir/target/release/flea" "$pkgdir/usr/bin/flea"
   install -Dm755 tools/flea-gio-auth "$pkgdir/usr/lib/flea/flea-gio-auth"
   # The portal backend, its registration and its D-Bus activation: xdg-desktop-portal 1.22 reads
@@ -73,8 +69,6 @@ package() {
   install -Dm644 packaging/com.thisisgm.flea.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 packaging/com.thisisgm.flea.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-
-  # paths.rs looks for /usr/share/flea/ui/shell.qml, so the UI ships as data beside the binary.
   install -Dm644 ui/qmldir ui/*.qml -t "$pkgdir/usr/share/flea/ui"
   install -Dm644 ui/js/*.js -t "$pkgdir/usr/share/flea/ui/js"
   # Commons and Ui are Omarchy's own, reached as qs.Commons: the checkout links them and so does the package.
