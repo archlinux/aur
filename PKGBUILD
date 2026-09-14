@@ -3,7 +3,7 @@
 pkgname=python-spsdk-pemicro
 _name=${pkgname#python-}
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="P&E Micro debugger probe plugin. A debugger probe plugin for SPSDK."
 arch=(any)
 url="https://pypi.org/project/${_name}"

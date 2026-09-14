@@ -1,7 +1,7 @@
 pkgbase = python-spsdk-pemicro
 	pkgdesc = P&E Micro debugger probe plugin. A debugger probe plugin for SPSDK.
 	pkgver = 0.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/spsdk-pemicro
 	arch = any
 	groups = spsdk-plugins
