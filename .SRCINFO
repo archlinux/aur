@@ -1,7 +1,7 @@
 pkgbase = python-alibabacloud-tea
 	pkgdesc = The tea module of alibabaCloud Python SDK.
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/alibabacloud-tea
 	arch = any
 	license = Apache-2.0

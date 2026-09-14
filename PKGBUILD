@@ -3,7 +3,7 @@
 pkgname=python-alibabacloud-tea
 _name=${pkgname#python-}
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The tea module of alibabaCloud Python SDK."
 arch=('any')
