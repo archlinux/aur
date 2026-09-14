@@ -1,0 +1,25 @@
+pkgbase = sendspin-client
+	pkgdesc = Minimal SendSpin client based on sendspin-cpp
+	pkgver = 0.2.1
+	pkgrel = 2
+	url = https://github.com/TermeHansen/sendspin-client
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = patch
+	depends = portaudio
+	depends = alsa-lib
+	depends = avahi
+	backup = etc/sendspin-client/sendspin-client.conf
+	source = sendspin-client-0.2.1.tar.gz::https://github.com/TermeHansen/sendspin-client/archive/refs/tags/v0.2.1.tar.gz
+	source = sendspin-cpp-bbc5958612939a3df970efcf9beb55e0d63084da.tar.gz::https://github.com/Sendspin/sendspin-cpp/archive/bbc5958612939a3df970efcf9beb55e0d63084da.tar.gz
+	source = sendspin-client.service
+	sha256sums = 5c6c999aa8b3b9d61990fcbb0076ebf4ca83f0615fd48d9ff2c85e79fe7abcb0
+	sha256sums = bbfa5e7086a244a666a25d86b60fc02309d076ff06325c9a53eaa6629613ddee
+	sha256sums = 567fba38110de6c193ea0ab4e816d2e87f1ed41c2473db9bf64372c421757469
+
+pkgname = sendspin-client

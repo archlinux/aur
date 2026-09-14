@@ -1,0 +1,13 @@
+[Unit]
+Description=SendSpin Client
+After=sound.target
+Requires=sound.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sendspin-client "SendSpin Client"
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target
