@@ -2,7 +2,7 @@
 
 pkgname=cloudflarespeedtest-git
 pkgver=2.3.5.3.gd9f0ced
-pkgrel=1
+pkgrel=2
 pkgdesc="XIU2/CloudflareSpeedTest 🌩 “Choose Your Own Preferred IP” Test Cloudflare CDN latency and speed, get the fastest IP! Written in go."
 arch=($CARCH)
 url="https://github.com/XIU2/CloudflareSpeedTest"
