@@ -1,0 +1,5 @@
+[portclue-bin]
+source = "github"
+github = "pbxqdown/portclue"
+use_latest_release = true
+prefix = "v"

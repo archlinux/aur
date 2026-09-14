@@ -1,0 +1,17 @@
+pkgbase = portclue-bin
+	pkgdesc = Explain why a Linux TCP port may or may not be reachable
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/pbxqdown/portclue
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = portclue
+	conflicts = portclue
+	options = !strip
+	source_x86_64 = portclue-x86_64-0.1.2.tgz::https://github.com/pbxqdown/portclue/releases/download/v0.1.2/portclue-0.1.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 80ceb12853f0324ef9ed490dcf4589ae9d014e7c60b630bda0d8178087c3db40
+	source_aarch64 = portclue-aarch64-0.1.2.tgz::https://github.com/pbxqdown/portclue/releases/download/v0.1.2/portclue-0.1.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9593639347c91658db64cd55cbe90d4e4a73662fe1989b9c19a69d2ae485cc29
+
+pkgname = portclue-bin
