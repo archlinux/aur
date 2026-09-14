@@ -1,7 +1,7 @@
 pkgbase = kibot
 	pkgdesc = KiCad automation utility
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/kibot
 	arch = any
 	license = AGPL-3.0-or-later
@@ -10,7 +10,6 @@ pkgbase = kibot
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = git
 	depends = blender
 	depends = ghostscript
 	depends = git

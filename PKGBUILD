@@ -3,7 +3,7 @@
 pkgname=kibot
 _name=${pkgname}
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="KiCad automation utility"
 arch=('any')
@@ -48,11 +48,12 @@ depends=(
     python-yaml
     xorg-server-xvfb
 )
-makedepends=('python-build'
+makedepends=(
+    'python-build'
     'python-installer'
     'python-setuptools'
     'python-wheel'
-    'git')
+)
 checkdepends=(python-pytest)
 optdepends=('kicad-interactivehtmlbom: Interactive HTML BOM generation plugin for KiCad'
     'kicad-library: KiCad symbol, footprint and template libraries'
