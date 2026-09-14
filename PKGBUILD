@@ -1,7 +1,7 @@
-# Contributor: Brian Bidulock <bidulock@openss7.org>
-# Maintainer: Keon Cachia <keonfarrugia@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Keon Cachia <keonfarrugia@gmail.com>
 pkgname='2bwm'
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="A fast floating window manager"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('ISC')
 depends=('xcb-util-wm' 'xcb-util-keysyms' 'xcb-util-xrm')
 conflicts=('2bwm-git' 'mcwm' 'mcwm-git') # due to /usr/bin/hidden program
 makedepends=('git' 'xcb-util' 'xorgproto')
-source=("$pkgname::git+https://github.com/bbidulock/2bwm.git#tag=v${pkgver}" '2bwm.desktop' '2bwm.copying')
-md5sums=('SKIP'
+source=("$pkgname::git+https://github.com/venam/2bwm.git#tag=v${pkgver}" '2bwm.desktop' '2bwm.copying')
+md5sums=('e1c0d4020dc33e4ec63d9b06544e12f6'
          '4342d9210effbe4bfb58722f4275aa5c'
          'adaee5c7e455ba15e0ca9a2692464253')
 
