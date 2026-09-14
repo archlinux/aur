@@ -2,7 +2,7 @@
 # Maintainer: Eldred Habert <arch@(my first name).fr>
 pkgname=hister-bin
 pkgver=0.19.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 provides=(hister)
@@ -19,7 +19,7 @@ source=(hister.override.service
         "LICENSE-$pkgver::https://raw.githubusercontent.com/asciimoo/hister/refs/tags/v$pkgver/LICENSE"
         "hister-$pkgver.service::https://raw.githubusercontent.com/asciimoo/hister/refs/tags/v$pkgver/contrib/systemd/hister.service")
 sha256sums=('f5713114859925e53bd9f99d26072bcf07946011545d1e69fbaf09a7623e7e23'
-            'ef2a171ba6f78978aaafc06e41407ea6c80712a806f0f514c7c7e1215481bdf2'
+            'd31841f6d6bc2213dbc64199dcbfd5047deed759306f0631c1dc7d5bdcacd11f'
             '5f4f3e82c42ba517d0caaa1deb4d3532c4f26cc60e42861bff1c5c6dacf34e9f'
             '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
             '1515b5a31e1a3c21a1ebe9727782ef9ba7ec8e1c3da4a5de04a5c81fd1413778')
