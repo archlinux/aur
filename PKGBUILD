@@ -1,4 +1,4 @@
-# Maintainer: puzzle9 <happypuzzle@126.com>
+# Maintainer: Maverick <owsmyf@gmail.com>
 
 _pkgname=wechat-devtools
 pkgname="${_pkgname}"-appimage
