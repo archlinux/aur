@@ -18,6 +18,6 @@ pkgbase = piliplus-bin
 	source_x86_64 = https://github.com/bggRGjQaUbCoE/PiliPlus/releases/download/2.1.4/PiliPlus_linux_2.1.4%2B5348_amd64.tar.gz
 	source_x86_64 = com.example.piliplus.desktop::https://raw.githubusercontent.com/bggRGjQaUbCoE/PiliPlus/main/assets/linux/com.example.piliplus.desktop
 	sha256sums_x86_64 = 1d34bad986146d7c3be64f3baa8908f395107a7e9034d7dd8b7c5e69e9291f58
-	sha256sums_x86_64 = da0eca41a99b9764de4069ce05ee4cf4067010ebe50fc5ad6f08cf4cf7cc7df0
+	sha256sums_x86_64 = 7cf1d7180a033f0ba86cc03a0ba652f0e96095713485e25f4a5f9ebf0abbe27c
 
 pkgname = piliplus-bin

@@ -18,7 +18,7 @@ source_x86_64=("https://github.com/bggRGjQaUbCoE/PiliPlus/releases/download/2.1.
 options=('!debug' '!strip')
 
 sha256sums_x86_64=('1d34bad986146d7c3be64f3baa8908f395107a7e9034d7dd8b7c5e69e9291f58'
-                   'da0eca41a99b9764de4069ce05ee4cf4067010ebe50fc5ad6f08cf4cf7cc7df0')
+                   '7cf1d7180a033f0ba86cc03a0ba652f0e96095713485e25f4a5f9ebf0abbe27c')
 
 package() {
   # 建立目录
