@@ -3,7 +3,7 @@
 pkgbase=img2kvm-rs-git
 pkgname=img2kvm-rs-git
 pkgver=0.2.0.r0.g1c857ab
-pkgrel=3
+pkgrel=4
 pkgdesc="A utility that convert disk image in Proxmox VE."
 arch=('x86_64')
 url="https://github.com/ywjno/img2kvm-rs"
@@ -12,10 +12,11 @@ provides=(${pkgbase%-git} ${pkgbase%-rs-git})
 conflicts=(${pkbase%-git} ${pkgbase%-rs-git})
 replaces=()
 depends=(
-    bzip2
-    gcc-libs
-    glibc
-    xz)
+    libbz2.so
+    libgcc_s.so
+    libstdc++.so
+    liblzma.so
+)
 makedepends=(
     'git'
     'cargo'
@@ -39,6 +40,9 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}"
+    cargo fetch --locked --target host-tuple
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
