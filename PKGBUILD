@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
-pkgver=1.1.0.r2.g953478f
-pkgrel=2
+pkgver=1.8.0.r2.g06a762c
+pkgrel=1
 pkgdesc="COSMIC greeter for greetd"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-greeter"
@@ -10,6 +10,7 @@ depends=(
   'cosmic-comp-git'
   'cosmic-icons-git'
   'cosmic-randr-git'
+  'dav1d'
   'dbus'
   'greetd'
   'libxkbcommon'
@@ -34,10 +35,12 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-greeter.git'
         'display-manager.patch'
-        'lto.patch')
+        'lto.patch'
+        'cosmic-greeter.pam')
 sha256sums=('SKIP'
             '12772a54559f299f9f8e8c5687b9aff30f37e38328e59692e27861f94cf6a0c7'
-            '0c64dcae8a0232a15ff5ce1d8728434b12125bdbb098fba4ae21624a977f1e57')
+            '0c64dcae8a0232a15ff5ce1d8728434b12125bdbb098fba4ae21624a977f1e57'
+            '8f30def7c2684b6f787aa9ad9b01a7b6104128168337c0b5093a5f8355899d87')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -54,9 +57,6 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
 
-  # revert pam config for now
-  git revert -n ef1253aa2393666bb2a0b0132b722f51ec7ebbf3
-
   # Enable default-display-manager systemd service link
   patch -Np1 -i ../display-manager.patch
 
@@ -66,6 +66,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+  export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
@@ -82,4 +83,5 @@ package() {
   install -Dm644 "${pkgname%-git}.toml" -t "$pkgdir/etc/greetd/"
   install -Dm644 debian/"${pkgname%-git}"{.service,-daemon.service} -t \
     "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "$srcdir/${pkgname%-git}.pam" -t "$pkgdir/etc/pam.d/${pkgname%-git}/"
 }
