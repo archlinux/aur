@@ -3,7 +3,7 @@
 pkgname=python-spsdk-pyocd
 _name=${pkgname#python-}
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="PyOCD SW Debugger. A debugger probe plugin for SPSDK."
 arch=(any)
 url="https://pypi.org/project/spsdk-pyocd"

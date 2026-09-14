@@ -1,7 +1,7 @@
 pkgbase = python-spsdk-pyocd
 	pkgdesc = PyOCD SW Debugger. A debugger probe plugin for SPSDK.
 	pkgver = 0.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/spsdk-pyocd
 	arch = any
 	groups = spsdk-plugins
