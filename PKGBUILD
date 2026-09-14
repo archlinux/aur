@@ -1,7 +1,7 @@
 # Maintainer: Máté Zoltán Farkas <mail@example.com>
 
 pkgname=widic
-pkgver=0.2.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="A Wiktionary viewer in your terminal. Definitions, Etymology, Pronunciation and more."
 arch=('any')
@@ -29,6 +29,12 @@ package() {
 
   install -Dm644 main.py \
     "$pkgdir/usr/share/widic/main.py"
+
+  install -Dm644 config.py \
+    "$pkgdir/usr/share/widic/config.py"
+
+  install -Dm644 telemetry.py \
+    "$pkgdir/usr/share/widic/telemetry.py"
 
   for file in renderers/*.py; do
     install -Dm644 "$file" \
