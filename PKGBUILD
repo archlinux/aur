@@ -1,14 +1,14 @@
 pkgname=nzportable-bin
 pkgver=2.0.0indev20260913124000
-pkgrel=1
-scriptver=1.0.6.1
+pkgrel=2
+scriptver=1.7
 pkgdesc='Nazi Zombies: Portable, a Call of Duty: Zombies "de-make" powered by various enhanced forks of the Quake engine'
 arch=('x86_64' 'i686' 'aarch64' 'armv7l')
 url="https://gitlab.com/linuxbombay/nzp"
 license=('GPL2')
-depends=('sdl2' 'yad')
+depends=('sdl2' 'zenity')
 makedepends=('unzip')
-sha256sums=('1e12a4017f50ef12c7bf7b5e9603c7608b83fd3690ede4b88bf62d4ef85bd1c2')
+sha256sums=('14a6c446fd45714dcc10ae52b0160cf16fdb9c2812e4b70c3ab6705424a3cd84')
 sha256sums_x86_64=('7d7894450a988092e7e0486654379817168949bf8795f333e217ff3007b3273a')
 sha256sums_i686=('5b54c4937d67abaf4d8ba773e32febeba1bb96bf77571f8ec9708b156ceef25a')
 sha256sums_aarch64=('85fd074dde632d54a3a2b02580833f09e443adcc0faa9116a1fdf5bdc7a8c75c')
@@ -37,7 +37,7 @@ package() {
     cp -r "$srcdir/nzp-packaging-$scriptver/nzp-title.png" "$pkgdir/usr/share/games/NZP"
     
     # Link to binary
-    install -Dm755 "$srcdir/nzp-packaging-$scriptver/nzp.sh" "$pkgdir/usr/bin/nzp"
+    install -Dm755 "$srcdir/nzp-packaging-$scriptver/nzp" "$pkgdir/usr/bin/nzp"
 
     # Desktop Entry
     install -Dm644 "$srcdir/nzp-packaging-$scriptver/nzp.desktop" \
