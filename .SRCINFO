@@ -2,7 +2,7 @@ pkgbase = fastpotify-git
 	pkgdesc = Native Spotify client
 	pkgver = 0.5.0rc1.r5.6797a83
 	pkgrel = 1
-	url = https://github.com/crmne/fastpotify
+	url = https://github.com/crmne/spotifast
 	install = fastpotify-git.install
 	arch = x86_64
 	arch = aarch64
@@ -24,7 +24,7 @@ pkgbase = fastpotify-git
 	conflicts = fastpotify-bin
 	options = !debug
 	options = !lto
-	source = fastpotify-git::git+https://github.com/crmne/fastpotify.git
+	source = fastpotify-git::git+https://github.com/crmne/spotifast.git
 	sha256sums = SKIP
 
 pkgname = fastpotify-git

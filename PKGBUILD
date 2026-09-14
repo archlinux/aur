@@ -4,7 +4,7 @@ pkgver=0.5.0rc1.r5.6797a83
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
-url="https://github.com/crmne/fastpotify"
+url="https://github.com/crmne/spotifast"
 license=('MIT')
 install="${pkgname}.install"
 depends=('alsa-lib' 'libpulse' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
@@ -21,7 +21,7 @@ conflicts=('fastpotify' 'fastpotify-bin')
 # undefined ring_core_* symbols. The stable package is prebuilt and never
 # meets this.
 options=('!debug' '!lto')
-source=("${pkgname}::git+https://github.com/crmne/fastpotify.git")
+source=("${pkgname}::git+https://github.com/crmne/spotifast.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -62,10 +62,13 @@ package() {
   cd "${srcdir}/${pkgname}"
 
   install -Dm755 "target/release/fastpotify" "${pkgdir}/usr/bin/fastpotify"
+  ln -s fastpotify "${pkgdir}/usr/bin/spotifast"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "packaging/applications/fastpotify.desktop" \
     "${pkgdir}/usr/share/applications/fastpotify.desktop"
   install -Dm644 "packaging/icons/fastpotify.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/fastpotify.svg"
+  install -Dm644 contrib/omarchy/spotifast.json.tpl "${pkgdir}/usr/share/spotifast/omarchy/spotifast.json.tpl"
+  install -Dm755 contrib/omarchy/spotifast-theme "${pkgdir}/usr/share/spotifast/omarchy/spotifast-theme"
 }
