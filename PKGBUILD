@@ -2,7 +2,7 @@
 # Contributor: Peter Jung ptr1337 <admin@ptr1337.dev>
 
 pkgname=llvm-bolt
-pkgver=23.1.0
+pkgver=23.1.1
 pkgrel=1
 pkgdesc='A post-link optimizer developed to speed up large applications'
 url="https://github.com/llvm/llvm-project/tree/main/bolt"
