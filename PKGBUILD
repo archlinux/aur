@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastsapp-bin
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="ZapFast native WhatsApp client (legacy FastsApp package name)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/zapfast"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/zapfast-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/zapfast-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('676038d540381a51b13b4880b2e117b324cf4b64e5bb0d69316557e6a3f0e405')
-sha256sums_aarch64=('06d4402d2a1ac35112429499eb8a23ff87b7eb519b9a9b54358cdfdf74aacd1d')
+sha256sums_x86_64=('bdb09dd5384e382ad5eba2fac39161c8ccf9f105b9eaee9452cda41441d39b9f')
+sha256sums_aarch64=('2683987268bf5e7bf805f0431daa88576a8cf884508c0e9835cc604f27148a34')
 
 package() {
   local target
