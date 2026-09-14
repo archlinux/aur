@@ -1,10 +1,10 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
-pkgname=fastsapp-git
-pkgver=0.4.0.r1.fd127ee
+pkgname=zapfast-git
+pkgver=0.13.0.r0.e6bddc9
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
-url="https://github.com/crmne/fastsapp"
+url="https://zapfast.rocks"
 license=('MIT')
 install="${pkgname}.install"
 depends=('alsa-lib' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
@@ -12,14 +12,15 @@ makedepends=('git' 'cargo' 'cmake')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'noto-fonts-emoji: colour emoji in messages and reactions'
             'xdg-desktop-portal: the file picker for attachments')
-provides=('fastsapp')
-conflicts=('fastsapp' 'fastsapp-bin')
+provides=('zapfast' 'fastsapp')
+conflicts=('zapfast' 'zapfast-bin' 'fastsapp' 'fastsapp-bin' 'fastsapp-git')
+replaces=('fastsapp-git')
 # !lto because ring compiles its own C and Arch's default CFLAGS put LTO
 # objects in the archive, which lld then cannot resolve: the link fails on
 # undefined ring_core_* symbols. The stable package is prebuilt and never
 # meets this.
 options=('!debug' '!lto')
-source=("${pkgname}::git+https://github.com/crmne/fastsapp.git")
+source=("${pkgname}::git+https://github.com/crmne/zapfast.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -57,11 +58,11 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}"
 
-  install -Dm755 "target/release/fastsapp" "${pkgdir}/usr/bin/fastsapp"
+  install -Dm755 "target/release/zapfast" "${pkgdir}/usr/bin/zapfast"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "packaging/applications/fastsapp.desktop" \
-    "${pkgdir}/usr/share/applications/fastsapp.desktop"
-  install -Dm644 "packaging/icons/fastsapp.svg" \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/fastsapp.svg"
+  install -Dm644 "packaging/applications/zapfast.desktop" \
+    "${pkgdir}/usr/share/applications/zapfast.desktop"
+  install -Dm644 "packaging/icons/zapfast.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/zapfast.svg"
 }
