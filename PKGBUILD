@@ -1,6 +1,6 @@
 # Maintainer: zyekhabdul <zyekhabdulqadirjailani@gmail.com>
 pkgname=agy-guard
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Deterministic AI Agent Governance, AST Blast-Radius Scanner & Verification Harness"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('03fb1c03f781bd195d7e9dd84d98c05e5c554e6d105d686de06464ba9d3e9198')
+sha256sums=('35d2c7eba733d9ce2ddd92a61335421410abdc8bcf5316e8f304d219519f9225')
 
 build() {
     cd "$pkgname-$pkgver"
