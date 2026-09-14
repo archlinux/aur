@@ -3,7 +3,7 @@
 pkgname=python-dom-toml
 _name=${pkgname#python-}
 pkgver=2.4.0b1
-pkgrel=3
+pkgrel=4
 pkgdesc="Dom's tools for Tom's Obvious, Minimal Language"
 provides=(${pkgname})
 conflicts=(${pkgname})
@@ -16,6 +16,7 @@ depends=(
     python-tomli
     python-tomli-w
     python-numpy
+    python-typing_extensions
 )
 makedepends=(
     'git'
