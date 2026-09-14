@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=lib32-libvolt
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="32-bit library for volt-gui"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
   'lib32-rust-libs'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('197f0b64d189a050625fe558f182addac261651a4dbd34510b35b14f404664ed')
+sha256sums=('aa3a6630dbc84e8ed20bb4288a0e57e7cff98b5df71d69422efa1420833f98e0')
 
 prepare() {
   cd "volt-gui-$pkgver"
@@ -34,6 +34,6 @@ build() {
 
 package() {
   cd "volt-gui-$pkgver"
-  install -Dm755 target/i686-unknown-linux-gnu/release/libvolt.so \
-    "$pkgdir/usr/lib32/libvolt.so"
+  install -Dm755 target/i686-unknown-linux-gnu/release/libvolt.so -t \
+    "$pkgdir/usr/lib32/"
 }
