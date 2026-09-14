@@ -1,6 +1,6 @@
 pkgbase = dotenv-sync-bin
 	pkgdesc = Keep .env files in sync with .env.example and provider-managed secrets
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/bytehound-labs/dotenv-sync
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = dotenv-sync-bin
 	conflicts = dotenv-sync
 	conflicts = dotenv-sync-git
 	options = !strip
-	source = LICENSE::https://raw.githubusercontent.com/bytehound-labs/dotenv-sync/v0.1.13/LICENSE
-	source = README.md::https://raw.githubusercontent.com/bytehound-labs/dotenv-sync/v0.1.13/README.md
+	source = LICENSE::https://raw.githubusercontent.com/bytehound-labs/dotenv-sync/v0.1.14/LICENSE
+	source = README.md::https://raw.githubusercontent.com/bytehound-labs/dotenv-sync/v0.1.14/README.md
 	sha256sums = 6e7c22106722c151ffc66d0faf2035155eca1ad91931f5679c6773891c08deef
 	sha256sums = 78c1b3cb0b15c59a3dc65876e563168545483aedb701a4e5cc30186bd5f06455
-	source_x86_64 = dotenv-sync-bin-0.1.13-x86_64.tar.gz::https://github.com/bytehound-labs/dotenv-sync/releases/download/v0.1.13/ds_v0.1.13_linux_amd64.tar.gz
-	sha256sums_x86_64 = 476c7f058eac9386248121321814526c1d6328c558dcf447e2de642acaa3b3f9
-	source_aarch64 = dotenv-sync-bin-0.1.13-aarch64.tar.gz::https://github.com/bytehound-labs/dotenv-sync/releases/download/v0.1.13/ds_v0.1.13_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6e7bb29a61750f4a8e1368fe0fd27caf1afa1c79f1a32cc06199c98068571570
+	source_x86_64 = dotenv-sync-bin-0.1.14-x86_64.tar.gz::https://github.com/bytehound-labs/dotenv-sync/releases/download/v0.1.14/ds_v0.1.14_linux_amd64.tar.gz
+	sha256sums_x86_64 = da99ef17b01b30b700a44562134b5a6fa15384d29373ceaab58194d3b4270d7c
+	source_aarch64 = dotenv-sync-bin-0.1.14-aarch64.tar.gz::https://github.com/bytehound-labs/dotenv-sync/releases/download/v0.1.14/ds_v0.1.14_linux_arm64.tar.gz
+	sha256sums_aarch64 = 58606c65adb0c11eb1f81a127b9fd1facfa505fb6488ef27649066a311e3c13e
 
 pkgname = dotenv-sync-bin
