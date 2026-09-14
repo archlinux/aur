@@ -1,6 +1,6 @@
 # Maintainer: glitchxmalde <maldemoksh437@gmail.com>
 pkgname=reconsage
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Advanced Network & Telemetry Reconnaissance Framework"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('dotnet-runtime' 'openssl')
 makedepends=('cmake' 'gcc' 'dotnet-sdk')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/moksh-codedeveloper/ReconSage_CLI/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2c108b800677df815a3d7c149068380f15a4d1843d3f0589c03b7a2deb0cb47c')
+sha256sums=('4331a4c481eb2f6cdeec4138a403347d3a9d8da287b1e7edbf7ad6e3dfae866d')
 
 build() {
   cd "ReconSage_CLI-$pkgver"
