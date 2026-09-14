@@ -1,6 +1,6 @@
 pkgbase = r-rmgarch
 	pkgdesc = Multivariate GARCH Models
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rmgarch
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-rmgarch
 	depends = r-spd
 	depends = r-xts
 	depends = r-zoo
-	source = https://cran.r-project.org/src/contrib/rmgarch_1.4-2.tar.gz
-	sha256sums = 76ccc53bbb9f461411765531a13132a9fa40489c860bd406f4334bb23a2c660f
+	source = https://cran.r-project.org/src/contrib/rmgarch_1.4-3.tar.gz
+	sha256sums = 57231456645be9511218608a307a1cfebfb5bc7ac7832e3852173370d3977d27
 
 pkgname = r-rmgarch
