@@ -1,7 +1,7 @@
 pkgbase = python-p115dav
 	pkgdesc = 115 网盘 WebDAV 和 302 直链程序.
 	pkgver = 0.0.10.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pypi.org/project/p115dav
 	arch = any
 	license = MIT

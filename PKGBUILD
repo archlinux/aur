@@ -3,7 +3,7 @@
 pkgname=python-p115dav
 _name=${pkgname#python-}
 pkgver=0.0.10.4
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="115 网盘 WebDAV 和 302 直链程序."
 arch=('any')
