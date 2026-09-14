@@ -6,12 +6,12 @@
 
 pkgname=pyalpm-git
 _pkgname=${pkgname%-git}
-pkgver=0.11.1.r0.g2c7917a
+pkgver=0.12.0.r1.ge64a1bc
 pkgrel=1
-pkgdesc="Libalpm bindings for Python 3 (Git version)"
+pkgdesc="Python bindings for libalpm (git version)"
 arch=('x86_64')
 url="https://gitlab.archlinux.org/archlinux/pyalpm"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=('python' 'pacman')
 makedepends=(
   'git'
