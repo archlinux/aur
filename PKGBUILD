@@ -8,7 +8,7 @@ pkgname=(
   v4l2-relayd-ipu7-ov08x40
 )
 pkgver=0.7.2
-pkgrel=3.11
+pkgrel=3.12
 pkgdesc="Patched libcamera for Intel IPU7 with OV08X40"
 arch=(x86_64)
 url="https://libcamera.org/"
@@ -193,7 +193,11 @@ package_libcamera-ipu7-ov08x40() {
     'pipewire-libcamera: PipeWire camera integration'
     'wireplumber=0.5.15: tested PipeWire camera export; requires matching libwireplumber'
   )
-  provides=(libcamera="$pkgver" libcamera.so libcamera-base.so)
+  provides=(
+    libcamera="$pkgver"
+    'libcamera.so=0.7-64'
+    'libcamera-base.so=0.7-64'
+  )
   conflicts=(libcamera)
   backup=(etc/libcamera/configuration.yaml)
 
@@ -219,8 +223,8 @@ package_libcamera-ipu7-ov08x40-ipa() {
   depends=(
     glibc
     libcamera-ipu7-ov08x40
-    libcamera.so
-    libcamera-base.so
+    'libcamera.so=0.7-64'
+    'libcamera-base.so=0.7-64'
     libgcc
     libstdc++
   )

@@ -18,9 +18,9 @@ camera. It replaces the stock `libcamera` and `libcamera-ipa` packages.
 - Restores the direct OV08X40 media topology on Linux 7.2 through a patched
   DKMS replacement for the modular IPU bridge.
 
-The package provides `libcamera`, `libcamera-ipa`, `libcamera.so`, and
-`libcamera-base.so`, so existing PipeWire and application dependencies remain
-satisfied.
+The package provides `libcamera`, `libcamera-ipa`, and the versioned
+`libcamera.so=0.7-64` and `libcamera-base.so=0.7-64` interfaces, so existing
+PipeWire and application dependencies remain satisfied.
 
 ## Requirements
 
