@@ -1,6 +1,6 @@
 pkgbase = jotite
 	pkgdesc = A lightweight, fun, distraction-free markdown note-taking app with live markdown rendering
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/maxberggren/jotite
 	install = jotite.install
@@ -10,7 +10,7 @@ pkgbase = jotite
 	depends = gtk4
 	depends = libadwaita
 	depends = fontconfig
-	source = jotite-2.5.1.tar.gz::https://github.com/maxberggren/jotite/archive/v2.5.1.tar.gz
-	sha256sums = 2564380729ea6853ba60a164ec7d2c10cb12fe05dd143be90f89e9fb1fb7b382
+	source = jotite-2.5.2.tar.gz::https://github.com/maxberggren/jotite/archive/v2.5.2.tar.gz
+	sha256sums = 9feadd7bcf8ee74be37d47753f83c2cfaeaee8f0c766f3bb35ca7ee24de75ca4
 
 pkgname = jotite
