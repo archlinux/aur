@@ -3,7 +3,7 @@
 pkgname=python-odxtools
 _name=${pkgname#python-}
 pkgver=11.5.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Utilities to work with the ODX standard for automotive diagnostics"
 arch=('any')
