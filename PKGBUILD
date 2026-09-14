@@ -1,10 +1,10 @@
 # Maintainer: Siôn le Roux <sion@leroux.hu>
 
 pkgname="gnome-thumbnailers-git"
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'gcode-thumb' '3mf-thumb' 'stl-thumb' 'openscad-thumb')
+conflicts=("${pkgname%-git}" 'gcode-thumb' '3mf-thumb' 'stl-thumb' 'openscad-thumb')
 pkgver=r23.6d695f6
-pkgrel=3
+pkgrel=4
 pkgdesc="Thumbnailing utilities for 3D files for GNOME 42+"
 arch=(any)
 url="https://github.com/rcarmo/gnome-thumbnailers"
