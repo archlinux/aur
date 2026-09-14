@@ -1,12 +1,12 @@
-# Maintainer: Adam Honse <calcprogrammer10@gmail.com>
+# Maintainer: Adam Honse <calcprogrammer1@gmail.com>
 pkgname=openrgb-plugin-effects
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Effects plugin for OpenRGB"
 arch=('any')
 url="https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin"
 license=('GPL-2.0-only')
-depends=('qt6-tools' 'openrgb' 'openal')
+depends=('qt6-tools' 'qt6-5compat' 'openrgb' 'openal')
 makedepends=('git')
 provides=('openrgb-plugin-effects')
 conflicts=('openrgb-plugin-effects')

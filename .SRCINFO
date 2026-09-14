@@ -1,12 +1,13 @@
 pkgbase = openrgb-plugin-effects
 	pkgdesc = Effects plugin for OpenRGB
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin
 	arch = any
 	license = GPL-2.0-only
 	makedepends = git
 	depends = qt6-tools
+	depends = qt6-5compat
 	depends = openrgb
 	depends = openal
 	provides = openrgb-plugin-effects
