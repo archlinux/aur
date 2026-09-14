@@ -2,7 +2,7 @@
 pkgname=torrentngd-git
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="TorrentNG Engine native Rust BitTorrent client"
+pkgdesc="TorrentNG Engine: native Rust BitTorrent client with the shared WebUI/API"
 arch=("x86_64")
 url="https://github.com/snapetech/TorrentNG"
 license=("GPL-3.0-or-later")
