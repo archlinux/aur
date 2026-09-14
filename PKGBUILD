@@ -7,11 +7,12 @@ pkgname=easyeffects-git
 pkgver=8.2.9.r64.g9b89da035
 pkgrel=1
 pkgdesc='Audio Effects for PipeWire applications'
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+arch=(aarch64 i686 x86_64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL-3.0-only')
 depends=(
   'breeze-icons'
+  'fftw'
   'gsl'
   'kconfigwidgets'
   'kiconthemes'
@@ -61,7 +62,6 @@ build() {
     -W no-dev
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
-    -G Ninja
   )
   cmake "${cmake_options[@]}"
   cmake --build build
