@@ -1,0 +1,14 @@
+pkgbase = eitype
+	pkgdesc = Type text on Wayland through the Emulated Input protocol
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Adam-D-Lewis/eitype
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libxkbcommon
+	source = https://static.crates.io/crates/eitype/eitype-0.2.2.crate
+	sha256sums = d23fca608db0989e00cd562a8966ee6b5192f07ec84ed1a4564909d146b54471
+
+pkgname = eitype
