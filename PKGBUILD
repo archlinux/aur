@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=n-m3u8dl-re-git
-pkgver=0.5.1.beta.r34.g17a42b0
-pkgrel=1
+pkgver=0.6.0.beta.r1.ge113dee
+pkgrel=2
 epoch=
 pkgdesc="Cross-Platform, beautiful and powerful stream downloader for DASH/HLS."
 arch=("x86_64" "aarch64")
@@ -11,9 +11,7 @@ license=('MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(
-    glibc
-)
+depends=()
 makedepends=(
     curl
     zlib
