@@ -1,7 +1,7 @@
 pkgbase = python-ai-urllib4
 	pkgdesc = A modern HTTP client for Python with HTTP/3, WebSocket extensions, and enhanced security features
-	pkgver = 2.1.5
-	pkgrel = 1
+	pkgver = 2.2.0
+	pkgrel = 2
 	url = https://pypi.org/project/ai_urllib4
 	arch = any
 	license = MIT
@@ -26,7 +26,7 @@ pkgbase = python-ai-urllib4
 	provides = python-ai-urllib4
 	conflicts = ai_urllib4
 	conflicts = python-ai-urllib4
-	source = ai_urllib4-2.1.5.tar.gz::https://files.pythonhosted.org/packages/source/a/ai_urllib4/ai_urllib4-2.1.5.tar.gz
-	sha256sums = 5ce32cd30eeee344296d8ef0d19dd62afceb518d3987c496222ee63191c98f04
+	source = ai_urllib4-2.2.0.tar.gz::https://files.pythonhosted.org/packages/source/a/ai_urllib4/ai_urllib4-2.2.0.tar.gz
+	sha256sums = a7f5399ce8e333bdcfc45e1688b43a45753a505fa9d04ed219ffc2a87d4c20a1
 
 pkgname = python-ai-urllib4

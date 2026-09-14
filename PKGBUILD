@@ -3,8 +3,8 @@
 pkgname=python-ai-urllib4
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=2.1.5
-pkgrel=1
+pkgver=2.2.0
+pkgrel=2
 epoch=
 pkgdesc="A modern HTTP client for Python with HTTP/3, WebSocket extensions, and enhanced security features"
 arch=('any')
@@ -40,7 +40,7 @@ makedepends=(
 options=()
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('5ce32cd30eeee344296d8ef0d19dd62afceb518d3987c496222ee63191c98f04')
+sha256sums=('a7f5399ce8e333bdcfc45e1688b43a45753a505fa9d04ed219ffc2a87d4c20a1')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
