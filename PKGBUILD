@@ -4,7 +4,7 @@
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
 pkgver=b10970.r2.7cf1c54a96
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -77,10 +77,6 @@ build() {
   local _commit_id _build_number
   _commit_id=$(git -C "${_pkgname}" rev-parse HEAD)
   _build_number=$(git -C "${_pkgname}" rev-list --count HEAD)
-
-  # Use GCC 15 as host compiler for nvcc (CUDA does not yet support GCC 16).
-  # Override via: aur_llamacpp_cmakeopts="-DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-XX"
-  local _nvcc_host_cxx="${CUDAHOSTCXX:-/usr/bin/g++-15}"
 
   local _cmake_options=(
     -G Ninja
