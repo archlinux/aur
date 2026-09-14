@@ -3,7 +3,7 @@
 pkgname=mediawarp-git
 _name=MediaWarp
 pkgver=0.2.4.r12.g070ad99
-pkgrel=1
+pkgrel=2
 pkgdesc="EmbyServer API Optimization: Optimize playback of Strm files, customize the front-end style, customize the allowed access to the client, embedded scripts, work with Alist to realize Emby playback of web resources, recommended to use with AutoFilm."
 arch=($CARCH)
 url="https://github.com/Akimio521/MediaWarp"
