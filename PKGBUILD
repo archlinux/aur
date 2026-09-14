@@ -3,7 +3,7 @@
 pkgname=python-spsdk-offline-signature-provider
 _name=${pkgname#python-}
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline Signature Provider for SPSDK."
 arch=(any)
 url="https://pypi.org/project/${_name}"

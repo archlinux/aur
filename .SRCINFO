@@ -1,7 +1,7 @@
 pkgbase = python-spsdk-offline-signature-provider
 	pkgdesc = Offline Signature Provider for SPSDK.
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/spsdk-offline-signature-provider
 	arch = any
 	groups = spsdk-plugins
