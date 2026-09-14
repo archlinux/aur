@@ -1,7 +1,7 @@
 # Maintainer: Ethan Stokes <erstokes10@gmail.com>
 
 pkgname=blockwork
-pkgver=0.5.0
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='A Tauri app to visually create and run macros on Windows, Linux, and macOS.'
 url='https://github.com/EthanRStokes/Blockwork'
@@ -15,7 +15,7 @@ depends=(
 conflicts=('macros')
 provides=('macros')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/EthanRStokes/Blockwork/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('134026e0f56782461c6ab8f9146e7c1917a4738e01eb147df43583c84f4e016c')
+sha256sums=('c06cdbf31e067ef405a255a93d3e5dd54135e895249de27c07b7d5f325b2dfd1')
 options=('!lto')
 
 prepare() {
