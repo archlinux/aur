@@ -1,6 +1,6 @@
 pkgbase = arch-update-cli
 	pkgdesc = An interactive update notifier & applier that assists you with important pre / post update tasks (cli only version)
-	pkgver = 4.4.1
+	pkgver = 4.4.2
 	pkgrel = 1
 	url = https://github.com/Antiz96/arch-update
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = arch-update-cli
 	optdepends = opendoas: Privilege elavation
 	provides = arch-update
 	conflicts = arch-update
-	source = arch-update-4.4.1.tar.gz::https://github.com/Antiz96/arch-update/archive/v4.4.1.tar.gz
-	sha256sums = 3f993999257bc06b826afa566cb6e40bf3c69826ac7b018e61a5e37d06df782b
+	source = arch-update-4.4.2.tar.gz::https://github.com/Antiz96/arch-update/archive/v4.4.2.tar.gz
+	sha256sums = c5d1af37a69ea0822f89d6c53485f05dcaf44d856725af2d9d8a6cd5b0c4e665
 
 pkgname = arch-update-cli
