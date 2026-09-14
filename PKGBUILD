@@ -1,6 +1,6 @@
 pkgname=waveloggate-git
 pkgdesc="CAT and WSJT-X Bridge for WaveLog"
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 arch=('x86_64')
 makedepends=(
@@ -25,7 +25,7 @@ source=(
     "WaveLogGate.desktop"
     "wavelog_icon_only.png"
 )
-sha256sums=('f73c682195ac71b590585973aa2a1e32c07e811f1876cc461104bc10cfa585dc'
+sha256sums=('72da6fe65cf5bce56579b42aca6b41a28805d528fe83fa6419a3ae27c772e90c'
             '1f42c3eedc034ef363388224d05284b686ba94769650e1a2359f304c849197cb'
             '593e1c6e902130d0c911e34f5d26f1e4d2703327b814c94ae82be04e1c2d80bb'
             'aa5da810c4c84cbde4b79445e2fb1195c61d4f9b5c85eafa4bc2867b3d16a39d')
