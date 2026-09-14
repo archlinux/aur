@@ -2,7 +2,7 @@
 
 pkgname=python-aerospike
 _name=${pkgname#python-}
-pkgver=19.2.1
+pkgver=19.2.2
 pkgrel=1
 pkgdesc="Aerospike Client Library for Python"
 provides=(${pkgname})
@@ -37,7 +37,7 @@ source=(
     "mod-lua::git+https://github.com/aerospike/aerospike-mod-lua.git"
     "lua::git+https://github.com/aerospike/lua.git"
 )
-sha256sums=('b6f06a236d96601b074c31eb168b864859884a27ccd34ed50802c5f5eb51464a'
+sha256sums=('952500d7d6f5975aeb547c4f442edf13196a63b0c17d6379f2fb252120909947'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -47,6 +47,10 @@ prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
     cd ${srcdir}/${_name}
     sed -i -E '/versioningit|parver/s/==[0-9][^"]*//' pyproject.toml
+    
+    sed -i "/'-Werror'/d" setup.py
+    ! grep -q "Werror" setup.py || { echo "setup.py still contains -Werror"; return 1; }
+
     git submodule init
     git config submodule.aerospike-client-c.url "$srcdir/aerospike-client-c"
     git -c protocol.file.allow=always submodule update
