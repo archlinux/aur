@@ -3,7 +3,7 @@
 pkgname=ggml-cuda-git
 _pkgname="${pkgname%-cuda-git}"
 _srcname=llama.cpp
-pkgver=b10142.r1.88b47a755c
+pkgver=b10970.r3.1bc7a5af0d
 pkgrel=1
 epoch=1
 pkgdesc="Tensor library for machine learning (with NVIDIA CUDA optimizations)"
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=(
   cmake
-  gcc15   # (CUDA does not yet support GCC 16)
+  gcc
   git
   ninja
 )
@@ -71,10 +71,6 @@ cmake_minimum_required(VERSION 3.14)
 project(ggml-cuda-git C CXX)
 add_subdirectory("${srcdir}/${_srcname}/ggml" ggml)
 EOF
-
-  # Use GCC 15 as host compiler for nvcc (CUDA does not yet support GCC 16)
-  # Override via: aur_ggml_cmakeopts="-DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-XX"
-  local _nvcc_host_cxx="${CUDAHOSTCXX:-/usr/bin/g++-15}"
 
   local _cmake_options=(
     -G Ninja

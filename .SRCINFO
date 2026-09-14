@@ -1,6 +1,6 @@
 pkgbase = ggml-cuda-git
 	pkgdesc = Tensor library for machine learning (with NVIDIA CUDA optimizations)
-	pkgver = b10142.r1.88b47a755c
+	pkgver = b10970.r3.1bc7a5af0d
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ggml-org/ggml
@@ -8,7 +8,7 @@ pkgbase = ggml-cuda-git
 	arch = aarch64
 	license = MIT
 	makedepends = cmake
-	makedepends = gcc15
+	makedepends = gcc
 	makedepends = git
 	makedepends = ninja
 	depends = cuda
