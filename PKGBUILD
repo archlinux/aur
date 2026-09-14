@@ -2,7 +2,7 @@
 
 pkgname=idl-serial-git
 pkgver=r126.cf63cb2
-pkgrel=1
+pkgrel=3
 pkgdesc="This project is a IDL serial generator for c. We use flex && bison to scan and parse files and generate json to struct and struct to json code."
 arch=('any')
 url="https://github.com/nanomq/idl-serial"
@@ -10,9 +10,11 @@ license=('MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=()
-makedepends=(git
+makedepends=(
+    git
     cmake
-    ninja)
+    ninja
+)
 backup=()
 options=('!strip')
 source=("${pkgname}::git+${url}.git")
