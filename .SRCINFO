@@ -1,7 +1,7 @@
 pkgbase = icsim-git
 	pkgdesc = Instrument Cluster Simulator for SocketCAN
-	pkgver = r41.74c0916
-	pkgrel = 1
+	pkgver = r43.2b3333e
+	pkgrel = 2
 	url = https://github.com/zombieCraig/ICSim
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,7 +9,6 @@ pkgbase = icsim-git
 	makedepends = git
 	makedepends = meson
 	makedepends = pkgconf
-	depends = glibc
 	depends = can-utils
 	depends = sdl2-compat
 	depends = sdl2_gfx

@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=icsim-git
-pkgver=r41.74c0916
-pkgrel=1
+pkgver=r43.2b3333e
+pkgrel=2
 pkgdesc="Instrument Cluster Simulator for SocketCAN"
 url="https://github.com/zombieCraig/ICSim"
 arch=($CARCH)
@@ -12,7 +12,6 @@ conflicts=(${pkgname%-git})
 replaces=()
 options=()
 depends=(
-    glibc
     can-utils
     sdl2-compat
     sdl2_gfx
