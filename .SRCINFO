@@ -1,7 +1,7 @@
 pkgbase = python-spsdk-pkcs11
 	pkgdesc = Signature Provider plugin for SPSDK using PKCS#11 interface
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/spsdk-pkcs11
 	arch = any
 	groups = spsdk-plugins

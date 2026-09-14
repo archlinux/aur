@@ -3,7 +3,7 @@
 pkgname=python-spsdk-pkcs11
 _name=${pkgname#python-}
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Signature Provider plugin for SPSDK using PKCS#11 interface"
 arch=(any)
 url="https://pypi.org/project/${_name}"
