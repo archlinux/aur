@@ -2,7 +2,7 @@
 
 pkgname=mcp-gitee
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Gitee MCP Server is a Model Context Protocol (MCP) server implementation for Gitee."
 arch=($CARCH)
 url="https://gitee.com/oschina/mcp-gitee"
@@ -10,7 +10,7 @@ license=('MIT')
 provides=(${pkgname})
 conflicts=(${pkgname})
 #replaces=(${pkgname})
-depends=(glibc)
+depends=()
 makedepends=(
     git
     go
