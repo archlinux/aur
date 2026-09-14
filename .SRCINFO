@@ -1,7 +1,7 @@
 pkgbase = python-kicad
 	pkgdesc = KiCad API Python Bindings
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/kicad/code/kicad-python
 	arch = any
 	license = MIT
