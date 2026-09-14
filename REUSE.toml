@@ -1,0 +1,42 @@
+version = 1
+
+[[annotations]]
+path = [
+  ".SRCINFO",
+  ".gitattributes",
+  ".gitignore",
+  "LICENSE",
+  "PKGBUILD",
+  "README.md",
+  "REUSE.toml",
+  "ipu-bridge-Makefile",
+  "ipu-bridge-dkms.conf",
+  "libcamera-configuration.yaml",
+  "libcamera-ipu7-ov08x40.modules-load.conf",
+  "v4l2-relayd-ipu7.service",
+  "v4l2loopback-ipu7.conf",
+  "v4l2loopback-ipu7.modules-load.conf",
+  "wireplumber-disable-ipu7-v4l2.conf",
+  "wireplumber-libcamera-gpu.conf",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Ragu Manjegowda"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "libcamera-ipu7-ov08x40.patch"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Ragu Manjegowda"
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+[[annotations]]
+path = "v4l2-relayd-cleanup.patch"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Ragu Manjegowda"
+SPDX-License-Identifier = "GPL-2.0-only"
+
+[[annotations]]
+path = "ipu7-legacy-cvs.patch"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Ragu Manjegowda"
+SPDX-License-Identifier = "GPL-2.0-only"

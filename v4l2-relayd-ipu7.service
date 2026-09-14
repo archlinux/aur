@@ -1,0 +1,27 @@
+[Unit]
+Description=On-demand IPU7 camera compatibility relay
+After=systemd-modules-load.service
+ConditionPathExists=/dev/video90
+
+[Service]
+Type=simple
+Environment=LIBCAMERA_SOFTISP_MODE=gpu
+Environment=__EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
+ExecStartPre=/usr/bin/v4l2-ctl --device=/dev/video90 --set-fmt-video-out=width=640,height=480,pixelformat=YUYV
+ExecStart=/usr/bin/v4l2-relayd -i libcamerasrc -s "videotestsrc is-live=true pattern=black" -o "appsrc name=appsrc caps=video/x-raw,format=BGRA,width=640,height=480,framerate=30/1 ! videoconvert ! video/x-raw,format=I420,width=640,height=480,framerate=30/1 ! v4l2sink name=v4l2sink device=/dev/video90 sync=false"
+Restart=on-failure
+RestartSec=3
+PrivateNetwork=yes
+PrivateTmp=yes
+InaccessibleDirectories=/home
+ReadOnlyDirectories=/etc /sys
+CapabilityBoundingSet=
+NoNewPrivileges=yes
+DeviceAllow=char-drm rw
+DeviceAllow=/dev/dma_heap/system rw
+DeviceAllow=char-media rw
+DeviceAllow=char-video4linux rw
+DevicePolicy=closed
+
+[Install]
+WantedBy=multi-user.target

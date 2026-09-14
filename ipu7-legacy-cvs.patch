@@ -1,0 +1,29 @@
+From: Ragu Manjegowda <ragu.manjegowda@gmail.com>
+Subject: [PATCH] media: ipu-bridge: retain direct PTL sensor topology
+
+The external Intel vision-drivers CVS module handles ownership but does not
+register a V4L2 subdevice. Treating Panther Lake INTC10E1 as a CSI bridge
+therefore leaves the IPU7 async notifier waiting forever and prevents the
+OV08X40 sensor from binding.
+
+Keep the pre-7.2 direct sensor-to-IPU topology for the affected CVS IDs while
+the external ownership driver remains in use.
+---
+ drivers/media/pci/intel/ipu-bridge.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/drivers/media/pci/intel/ipu-bridge.c b/drivers/media/pci/intel/ipu-bridge.c
+--- a/drivers/media/pci/intel/ipu-bridge.c
++++ b/drivers/media/pci/intel/ipu-bridge.c
+@@ -168,9 +168,6 @@ static const struct acpi_device_id ivsc_acpi_ids[] = {
+ 	{ "INTC1095" },
+ 	{ "INTC100A" },
+ 	{ "INTC10CF" },
+-	{ "INTC10DE" }, /* LNL */
+-	{ "INTC10E0" }, /* ARL */
+-	{ "INTC10E1" }, /* PTL */
+ };
+ 
+ static struct acpi_device *ipu_bridge_get_ivsc_acpi_dev(struct acpi_device *adev)
+-- 
+2.51.0

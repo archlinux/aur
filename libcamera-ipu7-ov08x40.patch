@@ -1,0 +1,112 @@
+diff --git a/src/libcamera/software_isp/debayer_cpu.cpp b/src/libcamera/software_isp/debayer_cpu.cpp
+index 49382b4..df48c84 100644
+--- a/src/libcamera/software_isp/debayer_cpu.cpp
++++ b/src/libcamera/software_isp/debayer_cpu.cpp
+@@ -48,6 +48,7 @@ private:
+ 	void setupInputMemcpy(const uint8_t *linePointers[]);
+ 	void shiftLinePointers(const uint8_t *linePointers[], const uint8_t *src);
+ 	void memcpyNextLine(const uint8_t *linePointers[]);
++	void maskInput(uint8_t *data);
+ 	void process2(uint32_t frame, const uint8_t *src, uint8_t *dst);
+ 	void process4(uint32_t frame, const uint8_t *src, uint8_t *dst);
+ 
+@@ -536,6 +537,7 @@ int DebayerCpu::setDebayerFunctions(PixelFormat inputFormat,
+ 
+ 	xShift_ = 0;
+ 	swapRedBlueGains_ = false;
++	inputMask_ = 0;
+ 
+ 	auto invalidFmt = []() -> int {
+ 		LOG(Debayer, Error) << "Unsupported input output format combination";
+@@ -587,9 +589,11 @@ int DebayerCpu::setDebayerFunctions(PixelFormat inputFormat,
+ 			break;
+ 		case 10:
+ 			SET_DEBAYER_METHODS(debayer10_BGBG_BGR888, debayer10_GRGR_BGR888)
++			inputMask_ = 0x03ff03ff;
+ 			break;
+ 		case 12:
+ 			SET_DEBAYER_METHODS(debayer12_BGBG_BGR888, debayer12_GRGR_BGR888)
++			inputMask_ = 0x0fff0fff;
+ 			break;
+ 		}
+ 		setupStandardBayerOrder(bayerFormat.order);
+@@ -742,6 +746,8 @@ void DebayerCpuThread::configure(unsigned int yStart, unsigned int yEnd)
+ 	lineBufferPadding_ = inputConfig.patternSize.width * inputConfig.bpp / 8;
+ 	lineBufferLength_ = debayer_->window_.width * inputConfig.bpp / 8 +
+ 			    2 * lineBufferPadding_;
++	if (debayer_->inputMask_)
++		enableInputMemcpy_ = true;
+ 
+ 	if (enableInputMemcpy_) {
+ 		for (unsigned int i = 0; i <= inputConfig.patternSize.height; i++)
+@@ -749,6 +755,17 @@ void DebayerCpuThread::configure(unsigned int yStart, unsigned int yEnd)
+ 	}
+ }
+ 
++void DebayerCpuThread::maskInput(uint8_t *data)
++{
++	if (!debayer_->inputMask_)
++		return;
++
++	uint32_t *input = reinterpret_cast<uint32_t *>(data);
++	uint32_t *end = reinterpret_cast<uint32_t *>(data + lineBufferLength_);
++	while (input < end)
++		*input++ &= debayer_->inputMask_;
++}
++
+ /*
+  * Get width and height at which the bayer-pattern repeats.
+  * Return pattern-size or an empty Size for an unsupported inputFormat.
+@@ -798,6 +815,7 @@ void DebayerCpuThread::setupInputMemcpy(const uint8_t *linePointers[])
+ 		memcpy(lineBuffers_[i].data(),
+ 		       linePointers[i + 1] - lineBufferPadding_,
+ 		       lineBufferLength_);
++		maskInput(lineBuffers_[i].data());
+ 		linePointers[i + 1] = lineBuffers_[i].data() + lineBufferPadding_;
+ 	}
+ 
+@@ -826,6 +844,7 @@ void DebayerCpuThread::memcpyNextLine(const uint8_t *linePointers[])
+ 	memcpy(lineBuffers_[lineBufferIndex_].data(),
+ 	       linePointers[patternHeight] - lineBufferPadding_,
+ 	       lineBufferLength_);
++	maskInput(lineBuffers_[lineBufferIndex_].data());
+ 	linePointers[patternHeight] = lineBuffers_[lineBufferIndex_].data() + lineBufferPadding_;
+ 
+ 	lineBufferIndex_ = (lineBufferIndex_ + 1) % (patternHeight + 1);
+diff --git a/src/libcamera/software_isp/debayer_cpu.h b/src/libcamera/software_isp/debayer_cpu.h
+index 5281c65..2e3a53d 100644
+--- a/src/libcamera/software_isp/debayer_cpu.h
++++ b/src/libcamera/software_isp/debayer_cpu.h
+@@ -153,6 +153,7 @@ private:
+ 	debayerFn debayer1_;
+ 	debayerFn debayer2_;
+ 	debayerFn debayer3_;
++	uint32_t inputMask_;
+ 	Rectangle window_;
+ 	std::unique_ptr<SwStatsCpu> stats_;
+ 	unsigned int xShift_; /* Offset of 0/1 applied to window_.x */
+diff --git a/src/libcamera/pipeline/simple/simple.cpp b/src/libcamera/pipeline/simple/simple.cpp
+index e26f438d9..65eb45f1b 100644
+--- a/src/libcamera/pipeline/simple/simple.cpp
++++ b/src/libcamera/pipeline/simple/simple.cpp
+@@ -1219,6 +1219,9 @@ CameraConfiguration::Status SimpleCameraConfiguration::validate()
+ 	 */
+ 	const SimpleCameraData::Configuration *maxPipeConfig = nullptr;
+ 	pipeConfig_ = nullptr;
++	const bool forceNativeSensorMode =
++		data_->sensor_->model() == "ov08x40" &&
++		data_->entities_.front().entity->device()->driver() == "intel-ipu7";
+ 
+ 	for (const SimpleCameraData::Configuration *pipeConfig : *configs) {
+ 		const Size &captureSize = pipeConfig->captureSize;
+@@ -1228,7 +1231,9 @@ CameraConfiguration::Status SimpleCameraConfiguration::validate()
+ 		    maxOutputSize.height >= maxProcessedStreamSize.height &&
+ 		    captureSize.width >= maxRawStreamSize.width &&
+ 		    captureSize.height >= maxRawStreamSize.height) {
+-			if (!pipeConfig_ || captureSize < pipeConfig_->captureSize)
++			if (!pipeConfig_ ||
++			    (forceNativeSensorMode && pipeConfig_->captureSize < captureSize) ||
++			    (!forceNativeSensorMode && captureSize < pipeConfig_->captureSize))
+ 				pipeConfig_ = pipeConfig;
+ 		}
+ 

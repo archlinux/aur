@@ -1,0 +1,57 @@
+diff --git a/src/v4l2-relayd.c b/src/v4l2-relayd.c
+index 6e7d6de..0390e30 100644
+--- a/src/v4l2-relayd.c
++++ b/src/v4l2-relayd.c
+@@ -147,9 +147,8 @@ backend_pipeline_bus_call (GstBus     *bus,
+       GError *error;
+ 
+       gst_message_parse_error (msg, &error, &debug);
++      GST_ERROR ("%s: %s", error->message, debug);
+       g_free (debug);
+-
+-      GST_ERROR ("%s", error->message);
+       g_error_free (error);
+ 
+       gst_element_set_state (pipeline, GST_STATE_NULL);
+@@ -285,7 +284,7 @@ input_pipeline_disable ()
+ {
+   if (input_pipeline != NULL)
+     gst_element_set_state (input_pipeline, GST_STATE_NULL);
+-  if (input_pipeline != NULL)
++  if (splash_pipeline != NULL)
+     gst_element_set_state (splash_pipeline, GST_STATE_PLAYING);
+ }
+ 
+@@ -463,18 +462,25 @@ main (int   argc,
+   GST_INFO ("Running...");
+   g_main_loop_run (loop);
+ 
+-  g_source_remove (input_bus_watch_id);
+-  g_source_remove (output_bus_watch_id);
+-  g_source_remove (splash_bus_watch_id);
++  if (input_bus_watch_id > 0)
++    g_source_remove (input_bus_watch_id);
++  if (output_bus_watch_id > 0)
++    g_source_remove (output_bus_watch_id);
++  if (splash_bus_watch_id > 0)
++    g_source_remove (splash_bus_watch_id);
+ 
+   gst_element_set_state (output_pipeline, GST_STATE_NULL);
+   gst_object_unref (GST_OBJECT (output_pipeline));
+ 
+-  gst_element_set_state (input_pipeline, GST_STATE_NULL);
+-  gst_object_unref (GST_OBJECT (input_pipeline));
++  if (input_pipeline != NULL) {
++    gst_element_set_state (input_pipeline, GST_STATE_NULL);
++    gst_object_unref (GST_OBJECT (input_pipeline));
++  }
+ 
+-  gst_element_set_state (splash_pipeline, GST_STATE_NULL);
+-  gst_object_unref (GST_OBJECT (splash_pipeline));
++  if (splash_pipeline != NULL) {
++    gst_element_set_state (splash_pipeline, GST_STATE_NULL);
++    gst_object_unref (GST_OBJECT (splash_pipeline));
++  }
+ 
+   g_main_loop_unref (loop);
+ 

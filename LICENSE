@@ -1,0 +1,17 @@
+This repository is distributed under multiple licenses.
+
+Original packaging metadata, documentation, and runtime configuration written
+for this repository are licensed under the MIT License.
+
+Patches remain under the license of the upstream code they modify:
+
+- libcamera-ipu7-ov08x40.patch: LGPL-2.1-or-later
+- v4l2-relayd-cleanup.patch: GPL-2.0-only
+
+The PKGBUILD fetches libcamera, Intel vision-drivers, and v4l2-relayd source
+code during the build. Those projects are not relicensed by this repository;
+their own copyright notices, SPDX identifiers, and license files remain
+authoritative.
+
+Complete license texts are available in the LICENSES directory. REUSE.toml is
+the machine-readable file-to-license mapping for repository content.

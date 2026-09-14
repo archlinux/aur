@@ -1,0 +1,118 @@
+pkgbase = libcamera-ipu7-ov08x40
+	pkgdesc = Patched libcamera for Intel IPU7 with OV08X40
+	pkgver = 0.7.2
+	pkgrel = 3.8
+	url = https://libcamera.org/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = glib2
+	makedepends = gst-plugins-base
+	makedepends = libglvnd
+	makedepends = libyaml
+	makedepends = libyuv
+	makedepends = meson
+	makedepends = libtool
+	makedepends = pkgconf
+	makedepends = python-jinja
+	makedepends = python-ply
+	makedepends = python-pyyaml
+	makedepends = systemd
+	options = !debug
+	source = libcamera::git+https://gitlab.freedesktop.org/libcamera/libcamera.git#commit=191e202178f02430b5942397c70d215cdd2056fa
+	source = vision-drivers::git+https://github.com/intel/vision-drivers.git#commit=845d6f8bdf66ff1f455901da9de5e00a53a83dce
+	source = v4l2-relayd::git+https://gitlab.com/vicamo/v4l2-relayd.git#commit=d6ec36aae87e765eddef8308f0f58c7b5be95ad7
+	source = libcamera-ipu7-ov08x40.patch
+	source = libcamera-configuration.yaml
+	source = libcamera-ipu7-ov08x40.modules-load.conf
+	source = wireplumber-disable-ipu7-v4l2.conf
+	source = wireplumber-libcamera-gpu.conf
+	source = v4l2-relayd-cleanup.patch
+	source = v4l2-relayd-ipu7.service
+	source = v4l2loopback-ipu7.conf
+	source = v4l2loopback-ipu7.modules-load.conf
+	source = ipu-bridge-7.2.4.c::https://raw.githubusercontent.com/gregkh/linux/v7.2.4/drivers/media/pci/intel/ipu-bridge.c
+	source = ipu7-legacy-cvs.patch
+	source = ipu-bridge-Makefile
+	source = ipu-bridge-dkms.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 9f92187ce488ce31c71fc42e3478779d7b8d23ce2f0306b709549c3ed1eab678
+	sha256sums = 37990699ba1a9146cdd3dd2e2482374e02b8637ef977f7897c0002bc87d2875c
+	sha256sums = 587979fcba7c49194a159ae07763b0f5758abf29312059f1e50b0347d2dd1755
+	sha256sums = 25fd6bf5fa4938a7e00c2b7c4915b8b3cd45dd2d41a38c81307eee6188bfa5dd
+	sha256sums = 78f6ddc7e19be130c6d88ad8b515c196da399128b907c9988b73530328808109
+	sha256sums = 4de66a63b6ca16802214221c373dc74de4be3e6b94e2af04f36c64966becb15f
+	sha256sums = 4454a58ae7af1d68312e3f2a5db47b0bc226d0e5855b6f8bf438a102079e37ab
+	sha256sums = ff91383aaeb3e97e2461b6cc460b5f66a686bfa47d76ae0c1ca208b31cc9cd2d
+	sha256sums = bb87430ef8c13d597c0ffb202d001b59bb865a2637fbf2c612e977a379b06270
+	sha256sums = bd9a936721b9d8bc755a013310e8258eb94c187395c440592bf4904417016444
+	sha256sums = a926313180a96bc7d9f16920dbc269aed78bdd63796d8602996d88f79e3b7939
+	sha256sums = d0372ef887d9029177bc4ba9a2dcd4a26e4dc454d85313185c211023ccffb507
+	sha256sums = 3c520c0c2da92a8bbaaa3328839ebc54f08ff71fd9b0284307ddcdbcd57e8a64
+
+pkgname = intel-vision-drivers-dkms-ipu7-ov08x40
+	pkgdesc = Pinned Intel CVS DKMS driver for IPU7 OV08X40
+	depends = dkms
+	provides = intel-vision-drivers-dkms=r59.845d6f8
+	conflicts = intel-vision-drivers-dkms
+	conflicts = intel-vision-drivers-dkms-git
+
+pkgname = libcamera-ipu7-ov08x40
+	depends = glibc
+	depends = gnutls
+	depends = intel-vision-drivers-dkms-ipu7-ov08x40
+	depends = ipu-bridge-legacy-cvs-dkms
+	depends = libcamera-ipu7-ov08x40-ipa
+	depends = libelf
+	depends = libgcc
+	depends = libglvnd
+	depends = libstdc++
+	depends = libyaml
+	depends = libyuv
+	depends = mesa
+	depends = sh
+	depends = systemd-libs
+	optdepends = gst-plugin-libcamera: GStreamer plugin
+	optdepends = libcamera-tools: applications
+	optdepends = pipewire-libcamera: PipeWire camera integration
+	optdepends = wireplumber: PipeWire session management
+	provides = libcamera=0.7.2
+	provides = libcamera.so
+	provides = libcamera-base.so
+	conflicts = libcamera
+	backup = etc/libcamera/configuration.yaml
+
+pkgname = libcamera-ipu7-ov08x40-ipa
+	depends = glibc
+	depends = libcamera-ipu7-ov08x40
+	depends = libcamera.so
+	depends = libcamera-base.so
+	depends = libgcc
+	depends = libstdc++
+	provides = libcamera-ipa=0.7.2
+	conflicts = libcamera-ipa
+	options = !strip
+
+pkgname = ipu-bridge-legacy-cvs-dkms
+	pkgdesc = Patched Intel IPU bridge DKMS module for legacy CVS ownership drivers
+	license = GPL-2.0-only
+	depends = dkms
+
+pkgname = v4l2-relayd-ipu7-ov08x40
+	pkgdesc = On-demand V4L2 compatibility camera for IPU7 OV08X40
+	url = https://gitlab.com/vicamo/v4l2-relayd
+	license = GPL-2.0-only
+	depends = glib2
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = libcamera-ipu7-ov08x40
+	depends = v4l-utils
+	depends = v4l2loopback-dkms
+	provides = v4l2-relayd=0.2.0
+	conflicts = v4l2-relayd
