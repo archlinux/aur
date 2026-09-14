@@ -2,7 +2,7 @@
 
 pkgname=mujoco
 pkgver=3.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-Joint dynamics with Contact. A general purpose physics simulator."
 arch=($CARCH)
 url="https://www.mujoco.org"
