@@ -1,7 +1,7 @@
 pkgbase = qucs-rflayout
 	pkgdesc = Export Qucs RF schematics to KiCad layouts & OpenEMS scripts
 	pkgver = 2.1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/thomaslepoix/Qucs-RFlayout
 	arch = x86_64
 	license = GPL-3.0-only

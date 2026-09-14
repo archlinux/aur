@@ -2,7 +2,7 @@
 
 pkgname=qucs-rflayout
 pkgver=2.1.2
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Export Qucs RF schematics to KiCad layouts & OpenEMS scripts"
 arch=($CARCH)
@@ -59,7 +59,7 @@ build() {
     cmake -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -B build \
-        -Wno-dev
+        -Wno-author
 
     cmake --build build
     cmake --build build --target doc
