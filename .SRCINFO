@@ -1,8 +1,8 @@
 pkgbase = fastpotify-bin
 	pkgdesc = Native Spotify client
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
-	url = https://github.com/crmne/fastpotify
+	url = https://github.com/crmne/spotifast
 	install = fastpotify-bin.install
 	arch = x86_64
 	arch = aarch64
@@ -20,9 +20,9 @@ pkgbase = fastpotify-bin
 	conflicts = fastpotify-git
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/crmne/fastpotify/releases/download/v0.7.1/fastpotify-v0.7.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 39cf22ee4d084181fcdd7290acb5578f08ba2a5d2a7fcbae62124f02728d316a
-	source_aarch64 = https://github.com/crmne/fastpotify/releases/download/v0.7.1/fastpotify-v0.7.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = cf03c6ec0f94ba0b01f99e8cd5c2ce5114791de76b657a6aa503d65acbcb10b7
+	source_x86_64 = https://github.com/crmne/spotifast/releases/download/v0.8.0/fastpotify-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 279caf363897e165a9f95c03a34313a8afa16128032eba3bf6b2cb88723394a4
+	source_aarch64 = https://github.com/crmne/spotifast/releases/download/v0.8.0/fastpotify-v0.8.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a09e4b11a96f0a36dc4ba66a7ef5c4238741acd270f9124a97f70ccab116e359
 
 pkgname = fastpotify-bin
