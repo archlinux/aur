@@ -3,7 +3,7 @@
 pkgname=python-inspice
 _name=${pkgname#python-}
 pkgver=1.7.0.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python interface to Ngspice and Xyce circuit simulators (forked from InSpice)"
 arch=('any')
