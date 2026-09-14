@@ -2,7 +2,7 @@
 
 pkgname=dsl2sigrok-git
 pkgver=r12.e41831e
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="a converter from DSView .dsl to Sigrok/Pulseview .sr"
 arch=($CARCH)
@@ -10,7 +10,6 @@ url="https://github.com/kittennbfive/dsl2sigrok"
 license=('AGPL-3.0-or-later')
 groups=()
 depends=(
-    glibc
     libzip
 )
 makedepends=(
