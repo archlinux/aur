@@ -6,13 +6,12 @@ pkgbase = clck
 	arch = x86_64
 	license = LicenseRef-FSL-1.1-ALv2
 	makedepends = cargo
-	makedepends = git
 	depends = pam
 	depends = wayland
 	depends = libxkbcommon
 	provides = clck
 	conflicts = clck-bin
-	source = clck::git+https://github.com/corbet-labs/clck.git#tag=v0.1.0
-	sha256sums = SKIP
+	source = https://static.crates.io/crates/clck-kiosk/clck-kiosk-0.1.0.crate
+	sha256sums = ec3dbaac924663e8aaa24aed92236347c500cfb3046fdcc7994ad1efa3b3b939
 
 pkgname = clck
