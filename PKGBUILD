@@ -3,7 +3,7 @@
 pkgname=python-p115dav
 _name=${pkgname#python-}
 pkgver=0.0.10.4
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="115 网盘 WebDAV 和 302 直链程序."
 arch=('any')
@@ -15,12 +15,13 @@ conflicts=(${pkgname})
 depends=(
     uvicorn
     python
+    python-a2wsgi
     python-rich
     python-sqlitedict
+    python-wsgidav
     python-orjson
     python-yaml
     #AUR
-    python-a2wsgi
     python-blacksheep
     python-cachedict
     python-dictattr
@@ -32,7 +33,6 @@ depends=(
     python-property
     python-posixpatht
     python-pysubs2
-    python-wsgidav
 )
 makedepends=(
     python-poetry
