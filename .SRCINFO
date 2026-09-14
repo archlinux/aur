@@ -1,0 +1,29 @@
+pkgbase = dbar
+	pkgdesc = A small, event-driven Wayland status bar for Sway and SwayFX
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/dborovcanin/dbar
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = pkgconf
+	makedepends = wayland
+	makedepends = libxkbcommon
+	depends = glibc
+	depends = libgcc
+	depends = libpipewire
+	optdepends = noto-fonts: the default font family and the Latin fallback
+	optdepends = noto-fonts-emoji: colour emoji in window titles and track names
+	optdepends = noto-fonts-cjk: Chinese, Japanese and Korean window titles
+	optdepends = ttf-nerd-fonts-symbols: Nerd Font glyphs in workspace names
+	optdepends = sway: the compositor dbar reads workspaces and window titles from
+	provides = dbar=0.5.0
+	conflicts = dbar-bin
+	conflicts = dbar-git
+	options = !debug
+	source = dbar-0.5.0.tar.gz::https://github.com/dborovcanin/dbar/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 5829df08e4c8335bf46a40c44e7c80d3844cd273c4ab8b62bd7983ffe4b23647
+
+pkgname = dbar
