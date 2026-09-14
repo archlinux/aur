@@ -4,7 +4,7 @@ pkgbase=hpmicro-manufacturing-tool-bin
 pkgname=${pkgbase}
 _pkgname=HPMicro_Manufacturing_Tool
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HPMicro Manufacturing Tool 是 HPMicro 公司推出的配置及批量烧写工具，旨在帮助企业用户快速批量的对 HPMicro 公司推出的芯片进行镜像配置及烧写。"
 arch=(x86_64)
 url="https://github.com/hpmicro/hpm_manufacturing_tool"
@@ -18,12 +18,13 @@ conflicts=(${pkgname%-bin}
     hpm-manufacturing-gui)
 replaces=()
 depends=(
-    gcc-libs
-    glibc
     libgpg-error
+    libgcc_s.so
+    libstdc++.so
+    libz.so
     perl
     systemd-libs
-    zlib)
+)
 makedepends=()
 checkdepends=()
 optdepends=()
