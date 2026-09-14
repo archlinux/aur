@@ -1,7 +1,7 @@
 pkgbase = python-aerospike
 	pkgdesc = Aerospike Client Library for Python
 	pkgver = 19.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aerospike/aerospike-client-python
 	arch = x86_64
 	license = Apache-2.0

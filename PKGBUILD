@@ -3,7 +3,7 @@
 pkgname=python-aerospike
 _name=${pkgname#python-}
 pkgver=19.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Aerospike Client Library for Python"
 provides=(${pkgname})
 conflicts=(${pkgname})
