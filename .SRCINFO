@@ -1,7 +1,7 @@
 pkgbase = dbar-bin
 	pkgdesc = A small, event-driven Wayland status bar for Sway and SwayFX (prebuilt)
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dborovcanin/dbar
 	arch = x86_64
 	license = Apache-2.0
@@ -20,7 +20,7 @@ pkgbase = dbar-bin
 	options = !debug
 	source = dbar-0.6.0-linux-x86_64::https://github.com/dborovcanin/dbar/releases/download/v0.6.0/dbar-linux-x86_64
 	source = dbar-0.6.0.tar.gz::https://github.com/dborovcanin/dbar/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = cd4391cba02bdf4faf44b4bc50ecf75435a6aa2e9e007a0bfdbcf582558a6bb0
+	sha256sums = 54ba04249ea6edcd5d3463e8d80eb92e752b7650288780b07497aacc19b9aa49
 	sha256sums = 8645398ba8ae209a77d6c89dbf7a71791997fd36a2567d299a584a85fb24be0f
 
 pkgname = dbar-bin
