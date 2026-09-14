@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast-git
-pkgver=0.8.0.r3.16ee665
+pkgver=0.8.0.r20.1ca29d5
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -66,10 +66,10 @@ package() {
   ln -s fastpotify "${pkgdir}/usr/bin/spotifast"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "packaging/applications/fastpotify.desktop" \
-    "${pkgdir}/usr/share/applications/fastpotify.desktop"
-  install -Dm644 "packaging/icons/fastpotify.svg" \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/fastpotify.svg"
+  install -Dm644 "packaging/applications/spotifast.desktop" \
+    "${pkgdir}/usr/share/applications/spotifast.desktop"
+  install -Dm644 "packaging/icons/spotifast.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/spotifast.svg"
   install -Dm644 contrib/omarchy/spotifast.json.tpl "${pkgdir}/usr/share/spotifast/omarchy/spotifast.json.tpl"
   install -Dm755 contrib/omarchy/spotifast-theme "${pkgdir}/usr/share/spotifast/omarchy/spotifast-theme"
 }
