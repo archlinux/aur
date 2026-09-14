@@ -3,7 +3,7 @@
 : "${aur_llamacpp_build_universal:=false}"
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b10830.r0.465e49b9ce
+pkgver=b10970.r2.7cf1c54a96
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=(
   cmake
-  gcc15   # CUDA does not yet support GCC 16
+  gcc
   git
   ninja
 )
