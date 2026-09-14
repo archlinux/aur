@@ -1,0 +1,22 @@
+post_install() {
+    echo "==> To start the sonyctl service, run:"
+    echo "    systemctl --user enable --now sonyctl.service"
+    echo ""
+    echo "==> Then you can use the CLI:"
+    echo "    sonyctl status"
+    echo "    sonyctl anc set noise_cancelling"
+    echo ""
+    echo "==> A waybar module is installed at:"
+    echo "    /usr/share/sonyctl/waybar/sonyctl-waybar.sh"
+}
+
+post_upgrade() {
+    echo "==> If the service is running, you may need to restart it:"
+    echo "    systemctl --user restart sonyctl.service"
+}
+
+pre_remove() {
+    # We cannot stop user services from a root script reliably.
+    # The user should stop it themselves or it will stop on logout.
+    true
+}

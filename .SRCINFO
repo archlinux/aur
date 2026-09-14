@@ -1,0 +1,19 @@
+pkgbase = sonyctl
+	pkgdesc = A Rust API/CLI that allows every device on your network to control your Sony headphones
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/DaanHessen/sonyctl
+	install = sonyctl.install
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	depends = dbus
+	depends = bluez
+	depends = bluez-utils
+	optdepends = bluez-deprecated-tools: RFCOMM channel auto-detection
+	options = !lto
+	options = !debug
+	source = sonyctl-0.1.0.tar.gz::https://github.com/DaanHessen/sonyctl/archive/v0.1.0.tar.gz
+	sha256sums = afce482ea3f71aa2f64c30303ca71b924ab5ee9a6488811bb363c1b519f6a764
+
+pkgname = sonyctl
