@@ -3,28 +3,32 @@
 pkgname=python-kicad-mcp-pro
 _name=${pkgname#python-}
 pkgver=3.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Model Context Protocol server for KiCad EDA workflows"
 provides=(${pkgname})
 conflicts=(${pkgname})
 arch=('any')
 url="https://github.com/oaslananka/kicad-mcp"
 _pydeps=(
-    authlib
     anyio
+    cairosvg
     click
+    dotenv
+    httpx
     opentelemetry-api
-    opentelemetry-exporter-otlp
     opentelemetry-sdk
+    packaging
+    pillow
     pydantic
     pydantic-settings
+    pystray
     rich
     starlette
     structlog
-    urllib3
     typer
+    watchfiles
     yaml
-
+    
     # AUR
     kicad
     kicad-sch-api
