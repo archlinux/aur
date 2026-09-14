@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=aptarch-git
-pkgver=r2.f810c84
-pkgrel=1
+pkgver=r6.8242ef5
+pkgrel=2
 pkgdesc="让 Debian/Ubuntu 用户能够在 Arch Linux 系统上无缝使用熟悉的 APT 命令"
 arch=($CARCH)
 url="https://github.com/ZXCLF/aptarch"
@@ -11,8 +11,7 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    glibc
-    libgcc
+    libgcc_s.so
 )
 makedepends=(
     git
