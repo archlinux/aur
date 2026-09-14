@@ -2,7 +2,7 @@
 
 pkgname=adguardvpn-web-git
 pkgver=r5.6a17fde
-pkgrel=1
+pkgrel=3
 pkgdesc="AdGuard VPN Web Controller"
 arch=($CARCH)
 url="https://github.com/xaoyao/adguardvpn-web"
@@ -12,7 +12,7 @@ conflicts=(${pkgname%-git})
 replaces=()
 depends=(
     glibc
-    libgcc
+    libgcc_s.so
 )
 makedepends=(
     cargo-zigbuild
