@@ -14,7 +14,7 @@
 
 _pkgname="waterfox"
 pkgname="$_pkgname"
-pkgver=6.7.1.1
+pkgver=6.7.3
 pkgrel=1
 pkgdesc="A customizable, privacy‑focused web browser"
 url="https://github.com/BrowserWorks/waterfox"
@@ -113,12 +113,10 @@ source=(
   "$_pkgname.desktop"
   '0001-1ecaa12-fix-rust-1.98-targets.patch'
 )
-sha256sums=(
-  '29e1a024be18cf0ae914873af58c875db637ec0e6e8a594012ed598be22ec240'
-  'ec79a5e4979e23fddca8d721a9423a1ed1ef29c6c35d5fcce475924fbbcc592b'
+sha256sums=('3d2610aca4d4e5d6901892759951d81a352d69b9d615f00b6e230bdc8c9ef91f'
+  '47125916f8e41c21ea0348c1981c008b3133c45034986a6c2e6c99539ddf65e9'
   '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286'
-  '8e93bc3f7745bd4a6bcf952120b60a260ea867f0c8319ea8f6df18ed1281bc1f'
-)
+  '8e93bc3f7745bd4a6bcf952120b60a260ea867f0c8319ea8f6df18ed1281bc1f')
 
 prepare() {
   mkdir -p mozbuild
