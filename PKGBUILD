@@ -2,8 +2,8 @@
 # Contributor: M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=python-minny
-pkgver=0.1.0a1_r20.2dcfefa
-_commit=2dcfefae26b114d192db8ddb35fcfd4fefd578d6
+pkgver=0.1.0a1_r41.9ba1f2d
+_commit=9ba1f2d0645caee7b4ef9235c985d97786a0718a
 pkgrel=1
 pkgdesc="Package and project manager for MicroPython and CircuitPython"
 arch=('any')
