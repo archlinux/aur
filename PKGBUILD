@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname=stepseq.lv2
 pkgname=${_pkgname}-git
-pkgver=r166.40ac760
+pkgver=r170.09c71fa
 pkgrel=1
 pkgdesc="Simple Step Sequencer (also available in community/x42-plugins)"
 arch=(x86_64)
