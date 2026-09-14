@@ -3,7 +3,7 @@
 pkgbase=x-tools
 pkgname=x-tools
 pkgver=7.7.1
-pkgrel=1
+pkgrel=2
 groups=()
 pkgdesc="Qt SerialPort-BLE-UDP-TCP-WebSocket-Modbus-CAN Assistant."
 arch=($CARCH)
@@ -69,7 +69,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -B build \
         -G Ninja \
-        -Wno-dev
+        -Wno-author
 
     ninja -C build
 }
