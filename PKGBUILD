@@ -4,7 +4,7 @@
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
 
 pkgname=qmidiarp-git
-pkgver=0.7.4.r14.g214693b
+pkgver=0.7.5.r1.g8ae828a
 pkgrel=1
 pkgdesc="A MIDI arpeggiator, phrase generator and controller LFO for the ALSA sequencer."
 arch=(x86_64)
