@@ -3,7 +3,7 @@
 pkgname=python-systemrdl-compiler
 _name=${pkgname#python-}
 pkgver=1.32.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Parse and elaborate front-end for SystemRDL 2.0"
 provides=(${pkgname})
 conflicts=(${pkgname})
