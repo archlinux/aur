@@ -3,7 +3,7 @@
 pkgname=python-iterutils
 _name=${pkgname//-/_}
 pkgver=0.3.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python another itertools."
 arch=('any')
