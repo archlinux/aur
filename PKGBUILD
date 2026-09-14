@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linglong-tools-git
-pkgver=2.2.1.r6.ge8650d5
-pkgrel=1
+pkgver=2.3.2.r0.g04f0e4f
+pkgrel=2
 pkgdesc='A command line helper for linglong.'
 arch=($CARCH)
 url='https://github.com/myml/linglong-tools'
@@ -15,8 +15,6 @@ conflicts=(
 )
 replaces=()
 depends=(
-  sh
-  glibc
   linyaps
 )
 makedepends=(
