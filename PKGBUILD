@@ -4,7 +4,7 @@
 pkgname=python-textparser
 _name=${pkgname#python-}
 pkgver=0.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A text parser library for python"
 provides=(${pkgname})
 conflicts=(${pkgname})
