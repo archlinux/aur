@@ -1,7 +1,7 @@
 pkgbase = python-blacksheep-rich-log
 	pkgdesc = BlackSheep access log middleware.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/blacksheep_rich_log
 	arch = any
 	license = MIT
