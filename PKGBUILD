@@ -53,7 +53,7 @@ source=(
     "wasm-bindgen-$_wasm_bindgen_ver.tar.gz::https://github.com/wasm-bindgen/wasm-bindgen/releases/download/$_wasm_bindgen_ver/wasm-bindgen-$_wasm_bindgen_ver-x86_64-unknown-linux-musl.tar.gz"
     "$pkgname.desktop"
 )
-sha256sums=('b79d1d98f8bac00cc4a23d43e120d1e46711194db53fc8a00159e9e1f3a51ebb'
+sha256sums=('733099d273718e9f27b2776e519f73edd8d4dd0b2e471c6b8bc2cb7fb3f44b3e'
             '80fc5c1d5c128fd67e99b14318eeabf79dfbadf459ece2d38ba93a82e55730c6'
             '259b39667fe1dce5d6ce45d4464b7499989c0b0d527c9b9d3597d519dd744e76')
 
