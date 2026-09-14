@@ -1,6 +1,6 @@
 pkgbase = python-cadquery
 	pkgdesc = A parametric CAD scripting framework based on PythonOCC
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/CadQuery/cadquery
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = python-cadquery
 	depends = nlopt
 	depends = python-typish
 	depends = python-nptyping
+	depends = python-numba
 	depends = python-multimethod
 	depends = python-docutils
 	depends = python-pyparsing
@@ -32,9 +33,7 @@ pkgbase = python-cadquery
 	depends = python-path
 	depends = openblas
 	depends = libxcursor
-	source = git+https://github.com/CadQuery/cadquery#commit=#tag=v2.7.0
-	source = support-ocp-7.9.3.patch
-	sha256sums = 46ef4f3867fe700f6ef34b09fad977278814fbc9d70abfd6451c96321361bc0d
-	sha256sums = 4d60cee6bf70d5eeaeb060e514d104969c1da7f30e7f4eb6d67c061e0debaa05
+	source = git+https://github.com/CadQuery/cadquery#commit=#tag=v2.8.0
+	b2sums = bca9374187a7ac073767cce6788dde141a0b37840fa6c992f08e5357c0f161ee6877aa0615b797a0ed3742716b377c9d0495ceed065a600c2cb69b1cdc0bd298
 
 pkgname = python-cadquery
