@@ -2,7 +2,7 @@
 
 pkgname=linyaps-test-git
 pkgver=1.12.5+3.r0.d3eb77b
-pkgrel=1
+pkgrel=2
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
 url='https://github.com/LFRon/linyaps-generic-linux'
@@ -18,16 +18,16 @@ conflicts=(
 replaces=(linglong-git)
 _qt=qt6
 depends=(
-  sh
   curl
+  erofs-utils
+  erofsfuse
   fmt
+  fuse-overlayfs
   glib2
-  glibc
   hicolor-icon-theme
   libcap
   libelf
-  libgcc
-  libstdc++
+  libseccomp
   linyaps-box
   ${_qt}-base
   systemd-libs
@@ -38,16 +38,15 @@ depends=(
 makedepends=(
   cli11
   cmake
-  fmt
   git
   gtest
-  libseccomp
   ${_qt}-tools
   ninja
   nlohmann-json
   openssl
   pkgconf
   tl-expected
+  util-linux
   vulkan-headers
 )
 optdepends=(
@@ -95,9 +94,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCPM_LOCAL_PACKAGES_ONLY=ON \
-    -DENABLE_LINGLONG_INSTALLER=ON \
     -DLINGLONG_EXPORT_PATH=apps/share \
-    -Wno-dev \
+    -Wno-author \
     -B build \
     -G Ninja
 
