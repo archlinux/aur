@@ -3,7 +3,7 @@
 pkgname=python-certbot-dns-aliyun-esa
 _name=${pkgname#python-}
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Aliyun ESA DNS Authenticator plugin for Certbot"
 provides=(${pkgname})
 conflicts=(${pkgname})
