@@ -1,7 +1,7 @@
 pkgbase = python-spsdk-keyfactor
 	pkgdesc = SPSDK Signature Provider plugin using Keyfactor's API
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/spsdk-keyfactor
 	arch = any
 	groups = spsdk-plugins
