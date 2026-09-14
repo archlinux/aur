@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastsapp-git
-pkgver=0.13.0.r0.e6bddc9
+pkgver=0.13.1.r0.271612d
 pkgrel=1
 pkgdesc="ZapFast native WhatsApp client (legacy FastsApp package name)"
 arch=('x86_64' 'aarch64')
