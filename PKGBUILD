@@ -5,13 +5,12 @@
 
 pkgname=goaccess-legacy
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source real-time web log analyzer and interactive viewer (lagacy)"
 arch=('x86_64')
 url='https://goaccess.io'
 license=('MIT')
 depends=(
-	'glibc'
 	'geoip'
 	'ncurses'
 	'openssl'
