@@ -4,7 +4,7 @@ _qhotkey_commit=6c0e98492c59206139f8490706aadeb8ed033057
 
 _pkgname=QPrompt-Teleprompter
 pkgname=${_pkgname,,} ; pkgname=${pkgname%-*}
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Teleprompter software for video creators"
@@ -15,7 +15,7 @@ options=('!lto')
 depends=('hicolor-icon-theme' 'kcoreaddons' 'kirigami' 'qhotkey-qt6' 'qt6-declarative')
 makedepends=('extra-cmake-modules' 'kcrash' 'ki18n' 'kiconthemes' 'ninja' 'qt6-shadertools' 'qt6-tools' 'vulkan-headers')
 source=("$_pkgname-$pkgver.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('7838b0223bbe5f4408dfb12aacb82ce882625aeab042b9595a0163c30b4b7532004c37ed40e5ca7d516c2c4c7b479c5597e5a7ed39999cd105c4b65abc5c8563')
+b2sums=('86f2d21e145fea98c39438a83d6cd06996196ce54d70d6b9e96f833027d7514d9a7369af31601606e8814acdfad52687c31b17690cce8f68a85ebae4e0487802')
 
 build() {
   cd $_pkgname-$pkgver
