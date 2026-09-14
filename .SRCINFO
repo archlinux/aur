@@ -1,28 +1,30 @@
 pkgbase = python-accelerate
 	pkgdesc = A simple way to train and use PyTorch models with multi-GPU, TPU, mixed-precision
-	pkgver = 1.12.0
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/huggingface/accelerate
 	arch = any
 	groups = huggingface
 	license = Apache-2.0
-	checkdepends = python-tokenizers
-	checkdepends = python-transformers
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-huggingface-hub
-	depends = python-numpy
-	depends = python-packaging
+	depends = python>=3.10
+	depends = python-huggingface-hub>=0.21.0
+	depends = python-numpy>=1.17
+	depends = python-packaging>=20.0
 	depends = python-psutil
-	depends = python-pytorch
-	depends = python-safetensors
+	depends = python-pytorch>=2.0.0
+	depends = python-safetensors>=0.4.3
+	depends = python-tqdm
 	depends = python-yaml
-	optdepends = python-deepspeed: DeepSpeed for easy and efficient ditributive training
-	optdepends = python-rich: Rich output to console
-	optdepends = python-torchao: Architecture optimization in PyTorch
-	source = accelerate-1.12.0.tar.gz::https://github.com/huggingface/accelerate/archive/refs/tags/v1.12.0.tar.gz
-	sha256sums = fb396a4d747d7dca72df559c59af54deec3874d89388ea4966098cec29b98188
+	optdepends = python-deepspeed: DeepSpeed integration for distributed training
+	optdepends = python-rich: Rich terminal output
+	optdepends = python-timm: Model memory estimation for timm models
+	optdepends = python-torchao>=0.6.1: FP8 training support
+	optdepends = python-transformers: Model memory estimation for Transformers models
+	source = accelerate-1.15.0.tar.gz::https://github.com/huggingface/accelerate/archive/refs/tags/v1.15.0.tar.gz
+	b2sums = 932a5db835e6cc7211352ce4a3ad271fb0a39c71732465c05d26d2934e7853c265fc0c8adf23a4b64ab56e985896981b913574de09322479eaf3a02c10ad51d4
 
 pkgname = python-accelerate
