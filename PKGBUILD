@@ -2,7 +2,7 @@
 
 pkgname=huawei-modem-calculator-git
 pkgver=r37.f007c01
-pkgrel=2
+pkgrel=3
 pkgdesc="Huawei modem unlock code calculator with the USB serial interface"
 arch=($CARCH)
 url="https://github.com/bigbigmdm/Huawei_modem_calculator_v2"
@@ -10,9 +10,8 @@ license=('GPL-2.0-only')
 groups=()
 _qt=qt5
 depends=(
-    glibc
-    libgcc
-    libstdc++
+    libgcc_s.so
+    libstdc++.so
     $_qt-base
     $_qt-serialport
     openssl
@@ -53,7 +52,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -B build \
         -G Ninja \
-        -Wno-dev
+        -Wno-author
 
     ninja -C $srcdir/build
 }
