@@ -6,7 +6,7 @@ pkgname=(
   'mullvad-vpn-daemon-bin'
 )
 pkgbase=mullvad-vpn-bin
-pkgver=2026.4
+pkgver=2026.5
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64' 'aarch64')
@@ -24,9 +24,9 @@ source=('mullvad-vpn.sh')
 source_x86_64=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_amd64.deb"{,.asc})
 source_aarch64=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_arm64.deb"{,.asc})
 sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
-sha256sums_x86_64=('f1d758079e1dc90fff0c8d48256599b717e1de9879682c861a6776851c59453b'
+sha256sums_x86_64=('aa6bd00452588597f50e8ca2f02bb91e9c295c4f01b0ae907354552e7428e7ab'
                    'SKIP')
-sha256sums_aarch64=('39d897f425f77c3fe49902cf2f3d58a02c812d482a22f95dfc069526f58e1d09'
+sha256sums_aarch64=('e62878f203ecd1037e45bf8158e6b40f5dc99547c714a426135c0be6f2379940'
                     'SKIP')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
 
@@ -44,7 +44,6 @@ package_mullvad-vpn-bin() {
   install='mullvad-vpn.install'
 
   bsdtar -xvf data.tar.xz -C "$pkgdir/"
-  chmod 4755 "$pkgdir/opt/Mullvad VPN/chrome-sandbox"
 
   # Remove useless changelog.gz & symlink actual changelog
   rm "$pkgdir/usr/share/doc/mullvad-vpn/changelog.gz"
