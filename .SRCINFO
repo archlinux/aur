@@ -1,0 +1,23 @@
+pkgbase = mmcli-bin
+	pkgdesc = A command-line YouTube downloader with built-in audio/video format conversion
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/rizukirr/mmcli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ffmpeg
+	depends = glibc
+	depends = zlib
+	provides = mmcli
+	conflicts = mmcli
+	options = !strip
+	options = !debug
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/rizukirr/mmcli/v0.1.1/LICENSE
+	sha256sums = 53fc69e9f347afbeca2b180cc840698a56ebdcf7e3de944557ce5c04dcba7c66
+	source_x86_64 = mmcli-0.1.1-x86_64::https://github.com/rizukirr/mmcli/releases/download/v0.1.1/mmcli-v0.1.1-linux-x86_64
+	sha256sums_x86_64 = f6fff92b570521b4b7eac227e3ccbc85b79a3cb1375a15089986352e19de432e
+	source_aarch64 = mmcli-0.1.1-aarch64::https://github.com/rizukirr/mmcli/releases/download/v0.1.1/mmcli-v0.1.1-linux-aarch64
+	sha256sums_aarch64 = 410a8ef052a7e0a23b44048a19c361f7ccfe16e8134ad2366779990530dd342c
+
+pkgname = mmcli-bin
