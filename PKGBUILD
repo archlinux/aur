@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=candle-git
-pkgver=11.2.r23.g3cff48a
-pkgrel=1
+pkgver=11.2.r26.gc04e6f2
+pkgrel=2
 pkgdesc="GRBL controller application with G-Code visualizer written in Qt"
 arch=($CARCH)
 url="https://github.com/Denvi/Candle"
@@ -52,7 +52,7 @@ build() {
 	# see：https://wiki.archlinux.org/title/CMake_package_guidelines
 	cmake -DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr/share/candle \
-		-Wno-dev \
+		-Wno-author \
 		-B build \
 		-G Ninja
 
