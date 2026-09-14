@@ -3,7 +3,7 @@
 pkgname=python-pwnv
 _name=${pkgname#python-}
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="CLI tool for CTF management"
 provides=(${pkgname})
 conflicts=(${pkgname})

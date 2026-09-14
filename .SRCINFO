@@ -1,7 +1,7 @@
 pkgbase = python-pwnv
 	pkgdesc = CLI tool for CTF management
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/CarixoHD/pwnv
 	arch = any
 	license = MIT
