@@ -2,7 +2,7 @@
 
 pkgname=hpm-isp
 pkgver=0.5.0
-pkgrel=5
+pkgrel=6
 pkgdesc="An ISP (In-system programming) tool for HPMicro MCUs"
 arch=($CARCH)
 url="https://github.com/tfx2001/hpm_isp"

@@ -1,7 +1,7 @@
 pkgbase = hpm-isp
 	pkgdesc = An ISP (In-system programming) tool for HPMicro MCUs
 	pkgver = 0.5.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/tfx2001/hpm_isp
 	arch = x86_64
 	license = MIT
