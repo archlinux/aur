@@ -2,7 +2,7 @@
 
 pkgname=pango-design-suite-bin
 pkgver=6.7.1
-pkgrel=3
+pkgrel=4
 # epoch=1
 pkgdesc="Pango Design Suite (PDS) 软件是紫光同创自主研发的从HDL描述到位流生成与下载调试的可编程工具套件，为公司全系列FPGA芯片提供高效友好的集成设计环境。该软件支持业界标准的开发流程，已具备支持大规模FPGA芯片的应用开发能力。"
 arch=('x86_64')
@@ -12,11 +12,9 @@ provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 replaces=()
 depends=(
-  bash
-  gcc-libs
-  glibc
+  sh
   python
-  zlib
+  libz.so
 )
 makedepends=(
   libarchive
