@@ -2,7 +2,7 @@
 
 _pkgname=rubick
 pkgname=${_pkgname}-kubernetes
-pkgver=4.14.0
+pkgver=4.16.0
 pkgrel=1
 pkgdesc="Modern cross-platform Kubernetes GUI client"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=("kubectl" "cairo" "desktop-file-utils" "gdk-pixbuf2" "glib2" "gtk3" "hi
 makedepends=("bun" "cargo-tauri")
 source=("${_pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
         "com.k8s-gui.app.desktop")
-sha256sums=('e13dbcf1274088ac50898a6baab5740b12152ded61d875b64b5b583f31687656'
+sha256sums=('a6f4a7d9f056f1986715aa1b3d5ef2a225c490fbe3e6388906e1e0204bab7db8'
             '82f31d2a4c5fa49a3e7c52378c94fe16a62e3adb0082eed9cd9f2787849deb00')
 
 build() {
