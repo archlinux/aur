@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=matrixmixer32.lv2-git
 pkgdesc="NxM Matrix Mixer LV2 Plugin (32 input/output version)"
-pkgver=r71.438b3ec
+pkgver=r75.aeca22a
 pkgrel=1
 epoch=
 arch=(x86_64)
