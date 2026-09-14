@@ -3,7 +3,7 @@
 
 _pkgname=snappy
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A fast compressor/decompressor library (mingw-w64)'
 arch=('any')
@@ -16,7 +16,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 source=(
 	"git+https://github.com/google/snappy.git#tag=${pkgver}"
 	'git+https://github.com/google/googletest.git')
-sha256sums=('6cc4304fc850b9878709c6da48490c8929929aa5befda2966981cea78059ba6d'
+sha256sums=('5aa422fbc9bdad9e25faab3411f546fb2f622d27470544fb286e045011955daf'
             'SKIP')
 
 _srcdir="${_pkgname}"
