@@ -1,6 +1,6 @@
 # Maintainer: Martin Piatka <(lastname) @ cesnet.cz>
 pkgname='ultragrid-git'
-pkgver=v1.10.r1536.g59483535f
+pkgver=v1.10.r1537.g0956ad2e7
 pkgrel=1
 pkgdesc='Low-latency audio and video network transmission system (from git)'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
 	'portaudio: Portaudio sound support'
 	'ffmpeg: Video/Audio support'
 	'v4l-utils: v4l device support (webcams, etc.)'
-	'sdl2: SDL sw. display, vulkan sw. display support'
+	'sdl3: SDL sw. display, vulkan sw. display support'
 	'glew: OpenGL sw. display support'
 	'glfw: OpenGL sw. display support'
 	'vulkan-icd-loader: vulkan sw. display support'
@@ -36,6 +36,9 @@ optdepends=(
 	'opencv: resize filter, conference video mix'
 	'pipewire: audio capture/playback, video capture/display, screen capture'
 	'glib2: pipewire screen capture on wayland'
+	'openapv: OpenAPV support'
+	'svt-jpeg-xs: JPEG-XS support'
+	'sdl3_ttf: time in testcard2'
 )
 
 provides=('ultragrid')
@@ -83,6 +86,9 @@ build() {
 	  --disable-pcp \
 	  --disable-rtsp-server \
 	  --disable-caca \
+	  --disable-omt \
+	  --disable-fluidsynth \
+	  --disable-pyrowave \
 	  --disable-zfec
 
   make clean && make
