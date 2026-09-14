@@ -10,7 +10,7 @@
 pkgname=dbar-bin
 _pkgname=dbar
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small, event-driven Wayland status bar for Sway and SwayFX (prebuilt)"
 # The Release workflow publishes one binary, and it is x86-64.
 arch=('x86_64')
