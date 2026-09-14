@@ -1,7 +1,7 @@
 pkgbase = python-miflash-git
 	pkgdesc = Flash Xiaomi fastboot ROMs on Termux, Linux, macOS, or Windows
 	pkgver = 1.0.0.r2.g73926c8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MiForge/MiFlash
 	arch = any
 	license = MIT
