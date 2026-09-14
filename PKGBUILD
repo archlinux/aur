@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=vmaware-bin
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc='Advanced VM detection library and tool'
 url='https://github.com/NotRequiem/VMAware'
