@@ -1,0 +1,19 @@
+pkgbase = clck-bin
+	pkgdesc = Wayland session locker with live kiosk outputs (prebuilt, x86-64-v3)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/corbet-labs/clck
+	arch = x86_64
+	license = LicenseRef-FSL-1.1-ALv2
+	depends = pam
+	depends = wayland
+	depends = libxkbcommon
+	provides = clck
+	provides = nixlock
+	conflicts = clck
+	conflicts = nixlock
+	conflicts = nixlock-bin
+	source = https://github.com/corbet-labs/clck/releases/download/v0.1.0/clck-0.1.0-x86_64-v3.tar.gz
+	sha256sums = b3fdefca7653779de1afd93d87256b54799193187a9c853846d2786781ad1d50
+
+pkgname = clck-bin
