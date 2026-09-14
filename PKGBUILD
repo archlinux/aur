@@ -3,7 +3,7 @@
 pkgname=python-spsdk-mcu-link
 _name=${pkgname#python-}
 pkgver=0.6.14
-pkgrel=1
+pkgrel=2
 pkgdesc="SPSDK MCU-Link. A debugger probe plugin for SPSDK supporting LPC-Link/MCU-Link from NXP."
 arch=(any)
 url="https://pypi.org/project/${_name}"
