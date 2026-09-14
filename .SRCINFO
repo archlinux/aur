@@ -1,0 +1,16 @@
+pkgbase = ccti
+	pkgdesc = ComfyUI TUI: agentic image chat with inline terminal rendering
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/corbet-labs/ccti
+	arch = x86_64
+	license = LicenseRef-FSL-1.1-ALv2
+	makedepends = cargo
+	makedepends = git
+	provides = ccti
+	conflicts = ccti-bin
+	options = !lto
+	source = ccti::git+https://github.com/corbet-labs/ccti.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = ccti
