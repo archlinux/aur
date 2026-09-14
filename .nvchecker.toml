@@ -1,0 +1,4 @@
+[open-cad-studio]
+source = "git"
+git = "https://github.com/HakanSeven12/OpenCADStudio.git"
+prefix = "v"
