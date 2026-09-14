@@ -44,10 +44,10 @@ enable = true
 x11 = true
 
 # When false, prevents application from connecting to legacy notifications endpoint. Defaults to true.
-classicNotifications = false
+classicNotifications = true
 
 [privacy.lockdown_options]
-seccomp_whitelist = false
+seccomp_whitelist = true
 landlock = true
 
 # Do not use. May break apps.
