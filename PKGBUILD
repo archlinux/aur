@@ -2,8 +2,8 @@
 
 pkgname=thunder-nas-bin
 _tagname=4.0.0-beta
-pkgver=${_tagname//-/_}
-pkgrel=3
+pkgver=${_tagname//-/+}
+pkgrel=4
 pkgdesc="Thunder (Xunlei) remote download service program extracted from thunder Synology suite for other devices"
 arch=($CARCH)
 url="https://github.com/cnk3x/xunlei"
@@ -20,7 +20,7 @@ install=${pkgname}.install
 source=(
     "xlp-${_tagname//-/}-linux-amd64.tar.gz::${url}/releases/download/v${_tagname}/xlp-${_tagname//-/}-linux-amd64.tar.gz"
     "xlp-${_tagname//-/}-linux-arm64.tar.gz::${url}/releases/download/v${_tagname}/xlp-${_tagname//-/}-linux-arm64.tar.gz"
-    "https://github.com/cnk3x/xunlei/raw/refs/heads/main/LICENSE"
+    "LICENSE.txt::https://github.com/cnk3x/xunlei/raw/refs/heads/main/LICENSE"
     thunder-nas.{sysusers,tmpfiles,service}
 )
 sha256sums=('d01f33b733ce1715f6c546980bee72c82c32f2b0020a2c37d8e70c9d7ab9515f'
@@ -47,7 +47,7 @@ synobios="rtd1296"
 unique="synology_rtd1296_DS220j"
 EOF
     fi
-    install -vDm0644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm0644 "${srcdir}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
     install -vdm777 "${pkgdir}/var/lib/thunder-nas" \
         "${pkgdir}/usr/syno/synoman/webman/modules" \
