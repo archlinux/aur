@@ -1,6 +1,6 @@
 # Maintainer: Muhammad Nu'man <numany2k2005@gmail.com>
 pkgname=talabulilm
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Watch Ceramah Ustaz (Islamic lectures) from the terminal, a full-screen TUI"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('yt-dlp' 'mpv')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/numan89/talabulilm/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0c156788ee9be2aca49e7725ddc1e253ca1e08caa5de614e96f4b3af7aedd79f')
+sha256sums=('a5d378dd4d109bcdcadd1478794c65bb25453ff852ddba8ddf24fca2e8e5c831')
 
 prepare() {
 	cd "$pkgname-$pkgver"
