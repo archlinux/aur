@@ -3,7 +3,7 @@
 
 pkgname=owlink-git
 pkgver=r45.da255a7
-pkgrel=1
+pkgrel=2
 pkgdesc='An open Apple Wireless Direct Link (AWDL) implementation written in C'
 arch=($CARCH)
 url=https://owlink.org/
@@ -47,7 +47,7 @@ build() {
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -B build \
     -G Ninja \
-    -Wno-dev
+    -Wno-author
   ninja -C build
 }
 
