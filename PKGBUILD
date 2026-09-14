@@ -2,7 +2,7 @@
 # Contributor: doclic <doclic@tutanota.com>
 
 pkgname=clever-tools
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Command Line Interface for Clever Cloud. (Node.js)"
 arch=('any')
@@ -19,8 +19,8 @@ options=(!strip !debug)
 # "npm install -g clever-tools" installs, published with provenance attestation.
 source=("clever-tools-$pkgver.tgz::https://registry.npmjs.org/clever-tools/-/clever-tools-$pkgver.tgz"
         "clever-tools-$pkgver-package-lock.json::https://raw.githubusercontent.com/CleverCloud/clever-tools/$pkgver/package-lock.json")
-sha512sums=('2ad49fffb3335779b98b53c460fc9c2fe6e6c417614ba73ee9984dd3e987bb613c3ceaa6ec4d573178e1251ada983217da48508e89eb6b1d3ffcc2c86a69dced'
-            'a901387f5d51683d1f286c5d0218db2e0f72139ac7b64cbcc16d975dec99c0f3a4c5f6a15344dac4d1ec6a1d6c50c886bd2733513d5181116078e998c9c29783')
+sha512sums=('730319b0f9df54013acb56d3d9bb2de4016032139668670187b1aed0709ca244154887d8c61a908886b63f5470475badf91527fc989986b686d787a5ade1c26b'
+            '29742cb8d0b591b191ed927b030b5ecf7dfead16ab51a9f1bff11961bb68698d321a46f0d661290bdec2c04f2191e54e394f4aa4b5f1eff4bd4d91d61a5baaa6')
 
 prepare() {
   cd "${srcdir}/package"
