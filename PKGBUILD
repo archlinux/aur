@@ -3,8 +3,8 @@
 pkgname=arch-update-cli
 _pkgname="${pkgname%-cli}"
 pkgver=4.4.0
-pkgrel=1
-pkgdesc="An interactive update notifier & applier that assists you with important pre / post update tasks (cli version)"
+pkgrel=2
+pkgdesc="An interactive update notifier & applier that assists you with important pre / post update tasks (cli only version)"
 url="https://github.com/Antiz96/arch-update"
 arch=('any')
 license=('GPL-3.0-or-later')
