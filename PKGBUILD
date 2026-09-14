@@ -3,7 +3,7 @@
 pkgname=python-jlc2kicadlib
 _name=${pkgname#python-}
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="JLC2KiCad_lib is a python script that generate a component library (symbol, footprint and 3D model) for KiCad from the JLCPCB/easyEDA library."
 arch=('any')
