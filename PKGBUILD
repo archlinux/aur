@@ -3,9 +3,9 @@
 _epsonscan2_non_free_plugin_version='1.0.0.6'
 
 pkgname=epsonscan2
-pkgver=6.7.91.1
+pkgver=6.7.92.0
 _pkgver="$pkgver-1"
-pkgrel=3
+pkgrel=1
 arch=('armv7h' 'x86_64')
 pkgdesc="Epson scanner management utility"
 url="https://download-center.epson.com/"
@@ -14,22 +14,22 @@ depends=('libjpeg-turbo' 'libpng' 'libtiff' 'libusb' 'qt5-base' 'sane' 'zlib')
 makedepends=('bbe' 'boost' 'cmake' 'qt5-singlecoreapplication' 'rapidjson')
 conflicts=('epsonscan2-non-free-plugin')
 options=('!buildflags')
-source=('https://download-center.epson.com/f/module/b35a1723-196e-44d9-b272-6cfd3e0e6349/epsonscan2-6.7.91.1-1.src.tar.gz'
+source=('https://download-center.epson.com/f/module/793c84de-6ffb-4ca6-9383-0390b06eb6bf/epsonscan2-6.7.92.0-1.src.tar.gz'
         '0002-Fix-crash.patch'
         '0003-Use-XDG-open-to-open-the-directory.patch'
         '0005-Fix-folder-creation-crash.patch'
         '0006-Fix-crash-no-serial-number.patch'
         '0007-Detect-scanners-that-need-firmware.patch')
-source_armv7h=('https://download-center.epson.com/f/module/da0de85f-55b8-449a-b761-0a9e2553da8a/epsonscan2-bundle-6.7.90.0.armv7l.deb.tar.gz')
-source_x86_64=('https://download-center.epson.com/f/module/ee3a3a45-95aa-4c80-b14d-ad4cff5f7428/epsonscan2-bundle-6.7.90.0.x86_64.deb.tar.gz')
-b2sums=('f13e3e80b57d98d534598827b1bb53c720dafbf0b667a2e1917da1c9b00cf382b1235a4d9f3af0bc764f4943a42f75a4a9705f525b87d8d2b50bcefbb7199d58'
+source_armv7h=('https://download-center.epson.com/f/module/f31a93a4-d21c-4420-8f29-b9c7ccc4bd12/epsonscan2-bundle-6.7.92.0.armv7l.deb.tar.gz')
+source_x86_64=('https://download-center.epson.com/f/module/967b0efe-4805-4723-bb6a-6ea0f68c5e2a/epsonscan2-bundle-6.7.92.0.x86_64.deb.tar.gz')
+b2sums=('65857d7cdb00a804619701c8b20e7e12d200d25159d721c6ccb421c9440e7dc76369801caba1c1b2bc46d4b4c3d6278bf94571c1b3dac562252a0f9994e871d6'
         'c763f16b2fac22b7ac0093228142a516222dc044533b7b320087f87b0fcad1f614ea93210f544f093f3e07c89220ab097901628a4d5dc57213bae505c4bebd58'
         'e398e821704599be0b6ba9192c32411f92650f2e455b088718ba4b643562c21bc02044df30affe2b7ea99069cd0c1c59902e586e9de7e1bb9b3e0ae013c9e30d'
         '5e2af573e616a6afaeb4b9035e54f5a0e05684f194a5fac52eb9ced619fdc156a62ab22bcf62af14a058f74d80a6606abf5e056ea720109c013624802d4b62e5'
         '282a18ad086446f290d795141d63235e67416cea894945d2c65dac7ffa36b3288ef920ef627df349f06e5f482b16e8fa6dbd0064db4b701437a01b913bd8a3fb'
         '5a3416356913438cfe901195198b0c00167d69f726ef2913e2dc209151d4c1b736c2a608e8b556bc201acc320548a56263f2782fdb79249c46e490ef756c2700')
-b2sums_armv7h=('aeeffb7194b9d9ce2326ff351722c07d06530d106abf3cc4e00cb17c39508882d10b14524e996240dbb923fce459cd881b386cc67789328fe96c928068e71277')
-b2sums_x86_64=('39e130cfb9c1207a4374136e5aa07fc409138c3a0e3db06bdb0363cfb4b0221b2975e7fdcdd80a29f4cebb03d1ddf4da96f6218a07e00b7bbf9838b8686cece1')
+b2sums_armv7h=('f66304ef47c455b10c611b3023f745e039902f931822db8f0f26363bc224ce9f10b3965d06995c382d0e73976fe8b0581b99a7c1b0cf0695c53f04a942320408')
+b2sums_x86_64=('dc422c9f2d1ff4f00e9ebe6c264b2ee03daad9701c7c971a1b6a2f887dd999c64bb6894c6f7ee7afb1fff315ce871dcd0d580be99c651a14ac53b953f43da7dc')
 
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
@@ -37,6 +37,10 @@ prepare() {
   sed -i 's|/lib/udev|${CMAKE_INSTALL_PREFIX}/lib/udev|' \
          "$srcdir/$pkgname-$_pkgver/CMakeLists.txt"
 
+  sed -i '/LIBDIR}\/sane/ s|${EPSON|\\$ENV{DESTDIR}\\${EPSON|' \
+         "$srcdir/$pkgname-$_pkgver/CMakeLists.txt"
+
+  # Disable zlib build; use the Arch Linux library
   sed -i '1 i #include "zlib.h"' \
          "$srcdir/$pkgname-$_pkgver/src/CommonUtility/DbgLog.cpp"
  
@@ -149,15 +153,10 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build --verbose
 
   install -Dm644 "$srcdir/$pkgname-$_pkgver/desktop/rpm/i686/$pkgname.desktop" \
                  "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-  install -d $pkgdir/usr/lib/sane ; cd $pkgdir/usr/lib/sane
-  ln -s ../$pkgname/libsane-epsonscan2.so libsane-epsonscan2.so
-  ln -s ../$pkgname/libsane-epsonscan2.so libsane-epsonscan2.so.1
-  ln -s ../$pkgname/libsane-epsonscan2.so libsane-epsonscan2.so.1.0.0
 
   # Package plugin files
   install -d "$pkgdir/usr/lib/"
