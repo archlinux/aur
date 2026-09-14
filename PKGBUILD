@@ -1,7 +1,7 @@
 # Maintainer: HttpAnimations
 pkgname=devinorium-server-git
 _pkgname=devinorium
-pkgver=nightly.r2.g6988754
+pkgver=0.76.0.r3.ga03150d
 pkgrel=1
 pkgdesc="Self-hosted web UI for AI coding agents - server (git build)"
 arch=('x86_64')
