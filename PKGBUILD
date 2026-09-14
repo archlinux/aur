@@ -1,10 +1,10 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
-pkgname=fastsapp
-pkgver=0.12.1
+pkgname=zapfast
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
-url="https://github.com/crmne/fastsapp"
+url="https://zapfast.rocks"
 license=('MIT')
 install="${pkgname}.install"
 depends=('alsa-lib' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
@@ -12,14 +12,16 @@ makedepends=('cargo' 'cmake')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'noto-fonts-emoji: colour emoji in messages and reactions'
             'xdg-desktop-portal: the file picker for attachments')
-conflicts=('fastsapp-bin' 'fastsapp-git')
+provides=('fastsapp')
+conflicts=('zapfast-bin' 'zapfast-git' 'fastsapp' 'fastsapp-bin' 'fastsapp-git')
+replaces=('fastsapp')
 # !lto because ring compiles its own C and Arch's default CFLAGS put LTO
 # objects in the archive, which lld then cannot resolve: the link fails on
 # undefined ring_core_* symbols. The stable package is prebuilt and never
 # meets this.
 options=('!debug' '!lto')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/fastsapp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('91733e9448aa108bd3a7701be5bad7e45953fbb5bf59025c6b5ad45f3b636351')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/zapfast/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('211034b03b4b2423017cf2fea19ead30878cdb1ffde97eb49e05b8bed06e64d3')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -51,11 +53,11 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  install -Dm755 "target/release/fastsapp" "${pkgdir}/usr/bin/fastsapp"
+  install -Dm755 "target/release/zapfast" "${pkgdir}/usr/bin/zapfast"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "packaging/applications/fastsapp.desktop" \
-    "${pkgdir}/usr/share/applications/fastsapp.desktop"
-  install -Dm644 "packaging/icons/fastsapp.svg" \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/fastsapp.svg"
+  install -Dm644 "packaging/applications/zapfast.desktop" \
+    "${pkgdir}/usr/share/applications/zapfast.desktop"
+  install -Dm644 "packaging/icons/zapfast.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/zapfast.svg"
 }
