@@ -3,7 +3,7 @@
 _name=spsdk
 pkgname=python-spsdk
 pkgver=3.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Secure Provisioning SDK for NXP MCU/MPU"
 arch=(any)
 url="https://github.com/nxp-mcuxpresso/spsdk"
