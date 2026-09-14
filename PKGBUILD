@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=opentyrian
-pkgver=2.1.20260912
+pkgver=2.1.20260913
 pkgrel=1
 pkgdesc='Open Source port of the classic DOS shoot-em-up Tyrian'
 url="https://github.com/$pkgname/$pkgname"
@@ -14,15 +14,10 @@ provides=('tyrian')
 optdepends=('hicolor-icon-theme: .desktop file icons')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/v${pkgver}.tar.gz"
         'http://camanis.net/tyrian/tyrian21.zip')
-sha256sums=('2d4df6182a728bd769b7779db9ae8e8ad78f0f5cac49dcddd4cf63add5d34d93'
+sha256sums=('dbcd96383d4fa571137242c36bd7eca054cf5a08a9bf2eec15ef230d6e60680d'
             '7790d09a2a3addcd33c66ef063d5900eb81cc9c342f4807eb8356364dd1d9277')
 
 _srcdir="${pkgname}-${pkgver}"
-
-prepare() {
-	cd "$_srcdir"
-	sed -i 's/README/README.md/' 'Makefile'
-}
 
 build() {
 	make prefix=/usr all -C "$_srcdir"
