@@ -13,16 +13,18 @@
 # depends list below is not merely `glibc`.
 #
 # Refreshing for a new release: bump pkgver, then `updpkgsums` to pull the
-# real checksums. They are SKIP here only because the assets for this version
-# are not published yet; a -bin package should carry real sums.
+# real checksums and regenerate .SRCINFO. The v0.5.0 archives predate the
+# networking helper: publish a new tag with the updated Release workflow
+# before publishing this packaging revision.
 
 pkgname=waycast-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Miracast source for wlroots compositors, with Hyprland extend-desktop support (prebuilt)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alchemy/waycast"
 license=('MIT')
+install=waycast.install
 
 # Linked at build time: confirmed with ldd against a release build, not
 # guessed. gst-plugins-base-libs also supplies videoscale.
@@ -53,6 +55,13 @@ depends=(
   'networkmanager'
   'wpa_supplicant'
   'xdg-desktop-portal'
+  'ufw'
+  'iptables'
+  'iproute2'
+  'polkit'
+  'python'
+  'systemd'
+  'dbus'
 )
 
 optdepends=(
@@ -86,6 +95,19 @@ package() {
   esac
 
   cd "waycast-v${pkgver}-linux-${_slug}"
+  if [[ ! -f waycast-networkd || ! -f contrib/networkd/install.py ]]; then
+    error "This release predates network-helper packaging; update pkgver and checksums to a new release."
+    return 1
+  fi
+  install -Dm0755 waycast-networkd "${pkgdir}/usr/lib/waycast/waycast-networkd"
+  install -Dm0644 contrib/networkd/waycast-networkd.service "${pkgdir}/usr/lib/systemd/system/waycast-networkd.service"
+  install -Dm0644 contrib/networkd/org.waycast.Network1.service "${pkgdir}/usr/share/dbus-1/system-services/org.waycast.Network1.service"
+  install -Dm0644 contrib/networkd/org.waycast.Network1.conf "${pkgdir}/usr/share/dbus-1/system.d/org.waycast.Network1.conf"
+  install -Dm0644 contrib/networkd/org.waycast.network.policy "${pkgdir}/usr/share/polkit-1/actions/org.waycast.network.policy"
+  install -Dm0644 contrib/networkd/60-waycast-network.rules "${pkgdir}/usr/share/polkit-1/rules.d/60-waycast-network.rules"
+  install -Dm0644 contrib/networkd/install.py "${pkgdir}/usr/share/waycast/networkd/install.py"
+  install -Dm0644 docs/network-helper.md "${pkgdir}/usr/share/doc/${pkgname}/network-helper.md"
+  install -Dm0644 docs/networking.md "${pkgdir}/usr/share/doc/${pkgname}/networking.md"
   install -Dm0755 waycast "${pkgdir}/usr/bin/waycast"
   install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
