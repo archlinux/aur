@@ -4,7 +4,7 @@ pkgbase=libosal
 pkgname=libosal
 _tagname=0.2.2
 pkgver="${_tagname//-/_}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Write os-independent code for easy portability between different systems and architectures"
 arch=($CARCH)
 url="https://github.com/robert-burger/libosal"
@@ -13,7 +13,7 @@ groups=()
 provides=(${pkgname} ${pkgname}.so)
 conflicts=(${pkgname} ${pkgname}.so)
 replaces=()
-depends=(glibc)
+depends=()
 makedepends=(
     cmake
     git
@@ -40,7 +40,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -B build \
-        -Wno-dev
+        -Wno-author
 
     cmake --build build
     # sed "s|PACKAGE_VERSION|${_tagname}|" configure.ac.in > configure.ac
