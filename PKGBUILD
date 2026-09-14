@@ -2,7 +2,7 @@
 
 pkgname=network-scanner-git
 pkgver=2.0.0.r0.ga280834
-pkgrel=1
+pkgrel=3
 pkgdesc="Scan local network for IP addresses"
 arch=($CARCH)
 url="https://github.com/tonglingcn/network-scanner"
@@ -11,9 +11,8 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    glibc
-    libgcc
-    libstdc++
+    libgcc_s.so
+    libstdc++.so
     hicolor-icon-theme
     qt6-base
 )
@@ -45,7 +44,7 @@ build() {
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -G Ninja \
-          -Wno-dev
+          -Wno-author
 
     ninja -C build
 }
