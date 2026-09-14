@@ -1,6 +1,6 @@
 pkgbase = ragpilot
 	pkgdesc = Token-efficient, local-first code intelligence layer for AI coding agents over MCP
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/alikaya/ragpilot
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ragpilot
 	optdepends = claude-code: compiler engine for the second brain
 	options = !lto
 	options = !debug
-	source = ragpilot-0.9.0.tar.gz::https://github.com/alikaya/ragpilot/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = d51f636e570bca3be924d95e9a3fda9819214e417f297424087a1b156c7aca67
+	source = ragpilot-0.10.0.tar.gz::https://github.com/alikaya/ragpilot/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 1a188d36b11f7620acebd27b806830dd2a1c8f8985a5b76204dbba5727f99298
 
 pkgname = ragpilot

@@ -1,6 +1,6 @@
 # Maintainer: Ali Kaya <alikayaa@gmail.com>
 pkgname=ragpilot
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Token-efficient, local-first code intelligence layer for AI coding agents over MCP"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('qdrant: vector database the index is stored in (or run qdrant in Do
             'claude-code: compiler engine for the second brain')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Filled in by `updpkgsums` once the v$pkgver tag is on GitHub.
-sha256sums=('d51f636e570bca3be924d95e9a3fda9819214e417f297424087a1b156c7aca67')
+sha256sums=('1a188d36b11f7620acebd27b806830dd2a1c8f8985a5b76204dbba5727f99298')
 
 prepare() {
   cd "$pkgname-$pkgver"
