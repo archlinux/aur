@@ -4,15 +4,13 @@ pkgbase=nuclei-dlink-gdbserver
 pkgname=(nuclei-dlink-gdbserver{,-console})
 _name=nuclei-dlink_gdbserver
 pkgver=0.9.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Nuclei DLink GDB Server Tool"
 arch=($CARCH)
 license=('Apache-2.0')
 # provides=(${pkgname})
 # conflicts=(${pkgname})
 depends=(
-	gcc-libs
-	glibc
 	qt6-base
 	qt6-serialport
 )

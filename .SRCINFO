@@ -1,14 +1,12 @@
 pkgbase = nuclei-dlink-gdbserver
 	pkgdesc = Nuclei DLink GDB Server Tool
 	pkgver = 0.9.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Nuclei-Software/nuclei-dlink_gdbserver
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = libglvnd
 	makedepends = qt6-tools
-	depends = gcc-libs
-	depends = glibc
 	depends = qt6-base
 	depends = qt6-serialport
 	optdepends = nuclei-qemu: nuclei-qemu 是 Nuclei Studio IDE 的仿真工具。
@@ -20,8 +18,6 @@ pkgbase = nuclei-dlink-gdbserver
 	sha256sums = af87281a557dac5e0240fe7db33e924a96a0ef0dc9735478a886af151c152bbb
 
 pkgname = nuclei-dlink-gdbserver
-	depends = gcc-libs
-	depends = glibc
 	depends = qt6-base
 	depends = qt6-serialport
 	depends = libglvnd
@@ -30,8 +26,6 @@ pkgname = nuclei-dlink-gdbserver
 
 pkgname = nuclei-dlink-gdbserver-console
 	pkgdesc = Nuclei DLink GDB Server Tool Console
-	depends = gcc-libs
-	depends = glibc
 	depends = qt6-base
 	depends = qt6-serialport
 	depends = nuclei-dlink-gdbserver
