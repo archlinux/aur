@@ -3,7 +3,7 @@
 pkgname=linyaps-store-minimalist-bin
 # _pkgname=
 pkgver=1.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Linyaps Store Minimalist"
 arch=('x86_64')
 url="https://github.com/LFRon/Linyaps-Store-Minimalist"
@@ -13,15 +13,15 @@ license=('GPL-2.0-only')
 depends=(
     'at-spi2-core'
     'cairo'
-    'gcc-libs'
     'gdk-pixbuf2'
-    'glibc'
     'glib2'
     'gtk3'
     'harfbuzz'
     'hicolor-icon-theme'
     'fontconfig'
     'libepoxy'
+    'libxi'
+    'libx11'
     'pango'
     'zlib'
 )
