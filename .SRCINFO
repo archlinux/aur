@@ -1,7 +1,7 @@
 pkgbase = pnm2ppa
 	pkgdesc = Ghostscript print filter for owners of HP DeskJet 710C, 712C, 720C, 722C, 820Cse, 820Cxi, 1000Cse, or 1000Cxi printers.
 	pkgver = 1.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pnm2ppa.sourceforge.net/
 	arch = armv6
 	arch = armv7h
@@ -20,6 +20,7 @@ pkgbase = pnm2ppa
 	source = HP-DeskJet_722C-pnm2ppa.ppd
 	source = HP-DeskJet_820C-pnm2ppa.ppd
 	source = HP-DeskJet_1000C-pnm2ppa.ppd
+	source = fix-parse_vlink.c.patch
 	source = missing-static.patch
 	sha256sums = 1c50ea2c97b232f5bee6ac3fab408d64b6f1380f1e289ac278778a7e368e7379
 	sha256sums = c84a1764967267be639344834376fffa84943f2aa17c13cd988c9a29f1c012f7
@@ -28,6 +29,7 @@ pkgbase = pnm2ppa
 	sha256sums = ce264686783ab6d1431c6cd03286e59382288b7a910ab18ee2242baa876a6435
 	sha256sums = bd96f78c9827d77c164af5d5fb5f049f6dbf63e6d6b178022f2424cb2571eb23
 	sha256sums = 68cdaad4d2a70bcc948c72d93514f158487b06b8866084f551f54202940236f6
+	sha256sums = ada0458bd5ded1ff8fcb442a8efe4ee94bf210bde8f44cbe3c3a6d8920b90814
 	sha256sums = 45c0abc9451fbab8e7ce927bfed64dfd90ee030dcc617be42924faed4b197713
 
 pkgname = pnm2ppa

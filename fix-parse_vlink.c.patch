@@ -1,0 +1,8 @@
+--- a/ppa_protocol/parse_vlink.c	2000-10-21 04:17:46.000000000 +0200
++++ b/ppa_protocol/parse_vlink.c	2026-09-14 21:45:31.587699754 +0200
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <string.h>
+ 
+ void parse_scp (FILE *fptr, int length, unsigned long *pos)
+ {

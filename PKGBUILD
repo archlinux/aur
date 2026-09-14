@@ -6,7 +6,7 @@
 
 pkgname=pnm2ppa
 pkgver=1.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Ghostscript print filter for owners of HP DeskJet 710C, 712C, 720C, 722C, 820Cse, 820Cxi, 1000Cse, or 1000Cxi printers."
 arch=('armv6' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url="https://pnm2ppa.sourceforge.net/"
@@ -19,6 +19,7 @@ source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz
         HP-DeskJet_722C-pnm2ppa.ppd
         HP-DeskJet_820C-pnm2ppa.ppd
         HP-DeskJet_1000C-pnm2ppa.ppd
+        fix-parse_vlink.c.patch
         missing-static.patch)
 sha256sums=('1c50ea2c97b232f5bee6ac3fab408d64b6f1380f1e289ac278778a7e368e7379'
             'c84a1764967267be639344834376fffa84943f2aa17c13cd988c9a29f1c012f7'
@@ -27,11 +28,13 @@ sha256sums=('1c50ea2c97b232f5bee6ac3fab408d64b6f1380f1e289ac278778a7e368e7379'
             'ce264686783ab6d1431c6cd03286e59382288b7a910ab18ee2242baa876a6435'
             'bd96f78c9827d77c164af5d5fb5f049f6dbf63e6d6b178022f2424cb2571eb23'
             '68cdaad4d2a70bcc948c72d93514f158487b06b8866084f551f54202940236f6'
+            'ada0458bd5ded1ff8fcb442a8efe4ee94bf210bde8f44cbe3c3a6d8920b90814'
             '45c0abc9451fbab8e7ce927bfed64dfd90ee030dcc617be42924faed4b197713')
 
 prepare() {
     cd ${pkgname}-${pkgver}
     find . -type d -exec chmod 755 {} \;
+    cp -p /usr/share/autoconf/build-aux/config.guess .
     for p in "${srcdir}"/*.patch
     do
         echo "Applying patch $(basename "${srcdir}"/${p})"
@@ -41,6 +44,7 @@ prepare() {
 
 build() {
     cd ${pkgname}-${pkgver}
+    export CFLAGS="$CFLAGS -std=gnu17"
     ./configure --prefix=/usr --sysconfdir=/etc --enable-syslog --disable-debug --enable-vlink --with-language=EN
     make
 }
