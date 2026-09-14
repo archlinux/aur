@@ -1,10 +1,10 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
-pkgname=fastsapp-bin
-pkgver=0.12.1
+pkgname=zapfast-bin
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
-url="https://github.com/crmne/fastsapp"
+url="https://zapfast.rocks"
 license=('MIT')
 install="${pkgname}.install"
 # Nothing beyond libc is linked directly; winit and glutin dlopen these at
@@ -14,14 +14,15 @@ depends=('alsa-lib' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'noto-fonts-emoji: colour emoji in messages and reactions'
             'xdg-desktop-portal: the file picker for attachments')
-provides=('fastsapp')
-conflicts=('fastsapp' 'fastsapp-git')
+provides=('zapfast' 'fastsapp')
+conflicts=('zapfast' 'zapfast-git' 'fastsapp' 'fastsapp-bin' 'fastsapp-git')
+replaces=('fastsapp-bin')
 options=('!debug' '!strip')
-_repo="https://github.com/crmne/fastsapp"
-source_x86_64=("${_repo}/releases/download/v${pkgver}/fastsapp-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${_repo}/releases/download/v${pkgver}/fastsapp-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('25b3ce7477e4b07972d806ab667b6c70ff323111cfa8cd2d2ef63a8017b01996')
-sha256sums_aarch64=('0cd62d21ad6129da854432d479c2cb16db862dbd8e15c1a8e2a6ff9b332bd970')
+_repo="https://github.com/crmne/zapfast"
+source_x86_64=("${_repo}/releases/download/v${pkgver}/zapfast-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("${_repo}/releases/download/v${pkgver}/zapfast-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('676038d540381a51b13b4880b2e117b324cf4b64e5bb0d69316557e6a3f0e405')
+sha256sums_aarch64=('06d4402d2a1ac35112429499eb8a23ff87b7eb519b9a9b54358cdfdf74aacd1d')
 
 package() {
   local target
@@ -29,13 +30,13 @@ package() {
     x86_64) target="x86_64-unknown-linux-gnu" ;;
     aarch64) target="aarch64-unknown-linux-gnu" ;;
   esac
-  local dir="${srcdir}/fastsapp-v${pkgver}-${target}"
+  local dir="${srcdir}/zapfast-v${pkgver}-${target}"
 
-  install -Dm755 "${dir}/fastsapp" "${pkgdir}/usr/bin/fastsapp"
+  install -Dm755 "${dir}/zapfast" "${pkgdir}/usr/bin/zapfast"
   install -Dm644 "${dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${dir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${dir}/packaging/applications/fastsapp.desktop" \
-    "${pkgdir}/usr/share/applications/fastsapp.desktop"
-  install -Dm644 "${dir}/packaging/icons/fastsapp.svg" \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/fastsapp.svg"
+  install -Dm644 "${dir}/packaging/applications/zapfast.desktop" \
+    "${pkgdir}/usr/share/applications/zapfast.desktop"
+  install -Dm644 "${dir}/packaging/icons/zapfast.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/zapfast.svg"
 }
