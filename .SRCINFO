@@ -1,7 +1,7 @@
 pkgbase = python-bflb-fw-post-proc
 	pkgdesc = Bouffalolab Firmware Post Proc
 	pkgver = 1.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/bflb_fw_post_proc
 	arch = any
 	license = MIT
