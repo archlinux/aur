@@ -8,7 +8,7 @@ pkgname=(
   v4l2-relayd-ipu7-ov08x40
 )
 pkgver=0.7.2
-pkgrel=3.10
+pkgrel=3.11
 pkgdesc="Patched libcamera for Intel IPU7 with OV08X40"
 arch=(x86_64)
 url="https://libcamera.org/"
@@ -100,7 +100,13 @@ package_intel-vision-drivers-dkms-ipu7-ov08x40() {
 package_ipu-bridge-legacy-cvs-dkms() {
   pkgdesc="Internal IPU bridge DKMS dependency for libcamera-ipu7-ov08x40"
   license=(GPL-2.0-only)
-  depends=(dkms)
+  depends=(
+    dkms
+    'linux>=7.2'
+    'linux<7.3'
+    'linux-headers>=7.2'
+    'linux-headers<7.3'
+  )
 
   local source_dir="$pkgdir/usr/src/ipu-bridge-legacy-cvs-$pkgver"
   install -Dm644 ipu-bridge-src/ipu-bridge.c "$source_dir/ipu-bridge.c"
@@ -185,7 +191,7 @@ package_libcamera-ipu7-ov08x40() {
     'gst-plugin-libcamera: GStreamer plugin'
     'libcamera-tools: applications'
     'pipewire-libcamera: PipeWire camera integration'
-    'wireplumber: PipeWire session management'
+    'wireplumber=0.5.15: tested PipeWire camera export; requires matching libwireplumber'
   )
   provides=(libcamera="$pkgver" libcamera.so libcamera-base.so)
   conflicts=(libcamera)

@@ -1,7 +1,7 @@
 pkgbase = libcamera-ipu7-ov08x40
 	pkgdesc = Patched libcamera for Intel IPU7 with OV08X40
 	pkgver = 0.7.2
-	pkgrel = 3.10
+	pkgrel = 3.11
 	url = https://libcamera.org/
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -81,7 +81,7 @@ pkgname = libcamera-ipu7-ov08x40
 	optdepends = gst-plugin-libcamera: GStreamer plugin
 	optdepends = libcamera-tools: applications
 	optdepends = pipewire-libcamera: PipeWire camera integration
-	optdepends = wireplumber: PipeWire session management
+	optdepends = wireplumber=0.5.15: tested PipeWire camera export; requires matching libwireplumber
 	provides = libcamera=0.7.2
 	provides = libcamera.so
 	provides = libcamera-base.so
@@ -104,6 +104,10 @@ pkgname = ipu-bridge-legacy-cvs-dkms
 	pkgdesc = Internal IPU bridge DKMS dependency for libcamera-ipu7-ov08x40
 	license = GPL-2.0-only
 	depends = dkms
+	depends = linux>=7.2
+	depends = linux<7.3
+	depends = linux-headers>=7.2
+	depends = linux-headers<7.3
 
 pkgname = v4l2-relayd-ipu7-ov08x40
 	pkgdesc = Full V4L2 browser compatibility stack for Intel IPU7 OV08X40

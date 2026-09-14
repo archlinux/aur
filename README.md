@@ -47,6 +47,21 @@ external Intel CVS ownership driver used by this camera stack. The package uses
 DKMS's force-install registry because it intentionally replaces an unversioned
 in-tree module.
 
+The package requires `linux>=7.2`, `linux<7.3`, and matching `linux-headers`.
+These constraints intentionally block an incompatible kernel upgrade until the
+bridge override has been updated and tested for the next kernel series.
+
+The complete tested platform is:
+
+- `linux` and `linux-headers`: `>=7.2` and `<7.3`
+- `wireplumber` and `libwireplumber`: `0.5.15`
+
+Pacman reports the Linux constraints directly if dependency resolution fails.
+WirePlumber remains optional so the V4L2 relay can be installed without a
+PipeWire camera session manager, but versions 0.5.16 and 0.5.17 are known not
+to export this camera correctly. Pacman displays the tested WirePlumber version
+as an unsatisfied optional dependency when another version is installed.
+
 ## Licensing
 
 Repository-authored packaging, documentation, and configuration use MIT.
