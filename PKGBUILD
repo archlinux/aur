@@ -3,8 +3,8 @@
 pkgname=opentubex-git
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
-pkgver=r12607.a8dc8e696
-pkgrel=3
+pkgver=r13031.4842ee9e6
+pkgrel=1
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://opentubex.org"
