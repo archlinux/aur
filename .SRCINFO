@@ -1,14 +1,14 @@
 pkgbase = lumend-git
 	pkgdesc = Adaptive screen brightness for Wayland laptops without a light sensor
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DaanHessen/lumend
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
 	optdepends = hyprland: window, fullscreen, idle and screen content signals
 	optdepends = hyprsunset: night light awareness
