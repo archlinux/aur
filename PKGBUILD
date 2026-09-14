@@ -2,7 +2,7 @@
 
 pkgname=all-logic-git
 pkgver=1.4.0.r5.gabaf301
-pkgrel=1
+pkgrel=2
 pkgdesc='ALL LOGIC is an unofficial multi-vendor logic analyzer host'
 arch=($CARCH)
 url='https://github.com/Doukeyi-X/ALL-LOGIC'
@@ -67,7 +67,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
-    -Wno-dev \
+    -Wno-author \
     -B build \
     -G Ninja
     
