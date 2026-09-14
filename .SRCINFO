@@ -1,10 +1,11 @@
 pkgbase = easyeda2kicad
 	pkgdesc = A Python script that convert any electronic components from LCSC or EasyEDA to a Kicad library
 	pkgver = 1.0.1
-	pkgrel = 1
-	url = https://pypi.org/project/easyeda2kicad
+	pkgrel = 2
+	url = https://github.com/uPesy/easyeda2kicad.py
 	arch = any
 	license = AGPL-3.0-or-later
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -14,7 +15,7 @@ pkgbase = easyeda2kicad
 	depends = python-pydantic
 	provides = easyeda2kicad
 	conflicts = easyeda2kicad
-	source = easyeda2kicad-1.0.1.tar.gz::https://files.pythonhosted.org/packages/source/e/easyeda2kicad/easyeda2kicad-1.0.1.tar.gz
-	sha256sums = 122a48fafa3b918e730185c973dd342183928b8a0dbe24436d13d58b90290e84
+	source = easyeda2kicad::git+https://github.com/uPesy/easyeda2kicad.py.git#tag=v1.0.1
+	sha256sums = e8b11a19b806cb38f45fc2f075a0493890637247c87446df370ab298b3c5e50e
 
 pkgname = easyeda2kicad
