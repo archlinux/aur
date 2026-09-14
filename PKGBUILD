@@ -2,7 +2,7 @@
 
 pkgname=gpds
 pkgver=1.10.0
-pkgrel=5
+pkgrel=6
 epoch=
 pkgdesc="A general purpose data serializer"
 arch=($CARCH)
@@ -10,9 +10,8 @@ url="https://github.com/simulton/gpds"
 license=('LicenseRef-SimultonGmbH')
 groups=()
 depends=(
-    glibc
-    libgcc
-    libstdc++
+    libgcc_s.so
+    libstdc++.so
     tinyxml2
     yaml-cpp
 )
