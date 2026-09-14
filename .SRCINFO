@@ -1,7 +1,7 @@
 pkgbase = python-alibabacloud-tea-openapi
 	pkgdesc = Alibaba Cloud openapi SDK Library for Python
 	pkgver = 0.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/alibabacloud_tea_openapi
 	arch = any
 	license = Apache-2.0
