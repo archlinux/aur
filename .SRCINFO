@@ -1,14 +1,13 @@
 pkgbase = loongson-debugger-bin
 	pkgdesc = loongson-debugger contains binary debugging tools and supporting documentation.
 	pkgver = 20250621
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitee.com/Zhou---wei/ctcisz
 	install = loongson-debugger-bin.install
 	arch = x86_64
 	license = MIT
 	makedepends = libarchive
 	depends = sh
-	depends = glibc
 	depends = perl
 	noextract = loongson-debugger-20250621.tar.xz
 	options = !strip

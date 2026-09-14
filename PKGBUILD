@@ -2,7 +2,7 @@
 
 pkgname=loongson-debugger-bin
 pkgver=20250621
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="loongson-debugger contains binary debugging tools and supporting documentation."
 arch=('x86_64')
@@ -11,7 +11,6 @@ license=('MIT')
 groups=()
 depends=(
     sh
-    glibc
     perl
 )
 makedepends=(libarchive)
