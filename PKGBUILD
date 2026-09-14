@@ -3,7 +3,7 @@
 pkgbase=libstring-util
 pkgname=libstring-util
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="C++ lib of useful string manipulation functions"
 arch=($CARCH)
 url="https://gitlab.com/links_and_nodes/libstring_util"
@@ -13,8 +13,8 @@ provides=(${pkgname} ${pkgname//-/_}.so)
 conflicts=(${pkgname} ${pkgname//-/_}.so)
 replaces=()
 depends=(
-	glibc
-	gcc-libs
+    libgcc_s.so
+    libstdc++.so
 )
 makedepends=(
     git

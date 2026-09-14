@@ -1,14 +1,14 @@
 pkgbase = libstring-util
 	pkgdesc = C++ lib of useful string manipulation functions
 	pkgver = 1.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/links_and_nodes/libstring_util
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = pkgconf
-	depends = glibc
-	depends = gcc-libs
+	depends = libgcc_s.so
+	depends = libstdc++.so
 	provides = libstring-util
 	provides = libstring_util.so
 	conflicts = libstring-util
