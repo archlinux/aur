@@ -1,7 +1,7 @@
 pkgbase = python-pretty_midi
 	pkgdesc = Python functions and classes for handling MIDI data conveniently.
 	pkgver = 0.2.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/pretty_midi
 	arch = any
 	license = MIT
