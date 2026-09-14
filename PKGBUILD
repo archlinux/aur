@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=smartdns-rs-git
-pkgver=0.13.1.r1.g79a70f6
-pkgrel=1
+pkgver=0.13.1.r2.g788e83f
+pkgrel=2
 pkgdesc="A cross platform local DNS server (Dnsmasq like) written in rust to obtain the fastest website IP for the best Internet experience, supports DoT, DoH. 一个用 Rust 编写的跨平台本地DNS服务器，获取最快的网站IP，获得最佳上网体验，支持DoH，DoT。"
 arch=($CARCH)
 url="https://github.com/mokeyish/smartdns-rs"
@@ -11,7 +11,6 @@ provides=(${pkgname%-git} ${pkgname%-rs-git})
 conflicts=(${pkgname%-git} ${pkgname%-rs-git})
 replaces=()
 depends=(
-    glibc
     libgcc
 )
 makedepends=(
