@@ -4,7 +4,7 @@
 pkgname=('conan')
 _name='conan'
 pkgver=2.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
@@ -22,7 +22,7 @@ depends=('python-requests>=2.25'
 conflicts=('conan1')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('668f46788b4435da222bf076e95f5d4d0b4733c6c28350bba2697df8dfee60fd')
+sha256sums=('59a033862bc46f99c4e4fd72c2741f44b8742377864ba33b28a698cd7361471e')
 
 prepare() {
   cd $pkgname-$pkgver
