@@ -3,7 +3,7 @@
 pkgname=python-spsdk-pqc
 _name=${pkgname#python-}
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Post-Quantum Crypto support for SPSDK"
 arch=($CARCH)
 url="https://pypi.org/project/${_name}"

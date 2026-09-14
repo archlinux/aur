@@ -1,7 +1,7 @@
 pkgbase = python-spsdk-pqc
 	pkgdesc = Post-Quantum Crypto support for SPSDK
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/spsdk-pqc
 	arch = x86_64
 	groups = spsdk-plugins
