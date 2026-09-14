@@ -6,8 +6,8 @@
 pkgname=oxitide-bin
 _pkgname=oxitide
 # Upstream tags are v0.1-betaN; pacman forbids '-' in pkgver.
-pkgver=0.1.10
-_tag="v0.1.10"
+pkgver=0.1.11
+_tag="v0.1.11"
 pkgrel=1
 pkgdesc="High-resolution TIDAL player for Linux, written in Rust. Bit-perfect USB output."
 arch=('x86_64')
@@ -29,7 +29,7 @@ conflicts=("${_pkgname}")
 install="${_pkgname}.install"
 options=('!strip' '!debug')
 source=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::${url}/releases/download/${_tag}/${_pkgname}-${pkgver}-1-x86_64_archlinux.pkg.tar.zst")
-sha256sums=('a9db5c83b2d57e0a7edbad0d5c6dd67478250dc3bec9538e7c18ed6f5c8d5fd3')
+sha256sums=('8068930c7a5dedc5af912990ed77906560fdf1825fbe503f3de2670646f44a22')
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 
 package() {
