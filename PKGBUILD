@@ -3,7 +3,7 @@
 # =============================================================================
 # Maintainer  : rezky_nightky <with dot rezky at gmail dot com>
 # Upstream    : https://github.com/oxyzenQ/cosmostrix
-# GPG         : 0D431313D6916DC76DB3AE6182FB5CCEFF501BCC
+# GPG         : F5324E0967F104D58CE025F347A50AEF4B65AAC2
 #
 # Mutation policy:
 #   AUR automation is ONLY allowed to modify: pkgver, _tag, .SRCINFO
@@ -12,7 +12,7 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=15.0.0
+pkgver=100.0.0
 _tag=
 pkgrel=1
 
