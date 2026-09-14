@@ -3,7 +3,7 @@
 pkgname=autofilm
 _tagname=2.0.0
 pkgver="${_tagname//-/+}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A small project to provide Strm direct-link playback for Emby and Jellyfin servers, recommended for use with MediaWarp."
 arch=($CARCH)
 url="https://github.com/Akimio521/AutoFilm"
@@ -12,8 +12,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 #replaces=(${pkgname})
 depends=(
-    glibc
-    libgcc
+    libgcc_s.so
 )
 makedepends=(
     git
