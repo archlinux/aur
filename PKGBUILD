@@ -2,7 +2,7 @@
 
 pkgname=linglong-tools
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line helper for linglong.'
 arch=($CARCH)
 url='https://github.com/myml/linglong-tools'
@@ -15,8 +15,6 @@ conflicts=(
 )
 replaces=()
 depends=(
-  sh
-  glibc
   linyaps
 )
 makedepends=(
