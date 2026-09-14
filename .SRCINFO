@@ -1,6 +1,6 @@
 pkgbase = pano-scrobbler-bin
 	pkgdesc = Feature rich scrobbler. Supports Last.fm, ListenBrainz, Libre.fm & Pleroma. With regex edits, charts & Discord Rich Presence on PC.
-	pkgver = 4.42
+	pkgver = 4.44
 	pkgrel = 1
 	url = https://github.com/kawaiiDango/pano-scrobbler
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = pano-scrobbler-bin
 	provides = pano-scrobbler
 	conflicts = pano-scrobbler
 	options = !strip
-	source_x86_64 = pano-scrobbler-442-linux-x64.tar.gz::https://github.com/kawaiiDango/pano-scrobbler/releases/download/442/pano-scrobbler-linux-x64.tar.gz
-	sha256sums_x86_64 = eb359ec01e571241c658a61ba63e281c767c3a624fd7e0cfec2dbaf2c7615ff3
-	source_aarch64 = pano-scrobbler-442-linux-arm64.tar.gz::https://github.com/kawaiiDango/pano-scrobbler/releases/download/442/pano-scrobbler-linux-arm64.tar.gz
-	sha256sums_aarch64 = 4af1b62393514707e9e405a220e1f5085e6491cbadc91c135aa99ca1bed871c8
+	source_x86_64 = pano-scrobbler-444-linux-x64.tar.gz::https://github.com/kawaiiDango/pano-scrobbler/releases/download/444/pano-scrobbler-linux-x64.tar.gz
+	sha256sums_x86_64 = 166b5a5370c4ef82448f1e598e499cd37fc50ee6c6f98a6a92ac85c77c5e13ec
+	source_aarch64 = pano-scrobbler-444-linux-arm64.tar.gz::https://github.com/kawaiiDango/pano-scrobbler/releases/download/444/pano-scrobbler-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9002ece8991460b0603e4df3a60652ea780df5af88c5c685ea68a3130030627d
 
 pkgname = pano-scrobbler-bin
