@@ -1,7 +1,7 @@
 pkgbase = cannelloni
 	pkgdesc = cannelloni is written in C++11 and uses UDP, TCP or SCTP to transfer CAN frames between two machines.
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mguentner/cannelloni
 	arch = x86_64
 	license = GPL-2.0-only

@@ -2,7 +2,7 @@
 
 pkgname=cannelloni
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="cannelloni is written in C++11 and uses UDP, TCP or SCTP to transfer CAN frames between two machines."
 arch=($CARCH)
 url="https://github.com/mguentner/cannelloni"
@@ -36,7 +36,7 @@ build() {
     # see：https://wiki.archlinux.org/title/CMake_package_guidelines
     cmake -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -Wno-dev \
+        -Wno-author \
         -B build \
         -G Ninja
 
