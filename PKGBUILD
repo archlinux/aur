@@ -3,7 +3,7 @@
 _pkgname=GX_CodeGen
 pkgname=gx-codegen-git
 pkgver=1.0.r5.gf7217e2
-pkgrel=6
+pkgrel=7
 pkgdesc="GX (感芯科技)芯片代码生成器，Qt编写，用于方便的配置各个线程的相关主频及栈空间参数，生成对应的lds文件与.h文件"
 arch=($CARCH)
 url="https://gitee.com/gxchip/${_pkgname}"
@@ -12,11 +12,14 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    glibc
-    gcc-libs
-    qt5-base)
-makedepends=(git
-    qt5-tools)
+    libgcc_s.so
+    libstdc++.so
+    qt5-base
+)
+makedepends=(
+    git
+    qt5-tools
+)
 backup=()
 options=()
 install=
