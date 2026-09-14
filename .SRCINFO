@@ -1,5 +1,5 @@
-pkgbase = strongswan
-	pkgdesc = Open source IPsec implementation
+pkgbase = strongswan-ikev1
+	pkgdesc = Open source IPsec implementation (with deprecated ikev1 protocol implementation)
 	pkgver = 6.1.0
 	pkgrel = 2
 	url = https://www.strongswan.org
@@ -28,6 +28,7 @@ pkgbase = strongswan
 	optdepends = python: Python support
 	optdepends = resolvconf: Resolveplugin
 	optdepends = openldap: LDAP support
+	conflicts = strongswan
 	backup = etc/ipsec.conf
 	backup = etc/ipsec.secrets
 	backup = etc/swanctl/swanctl.conf
@@ -115,4 +116,4 @@ pkgbase = strongswan
 	sha512sums = 01cea929cea2535751b5ef23eddc780a3c32ffafee640a6d5cea9a52798d0ec7030107463e8ddcc73fd0924b378a8676942297a42d79319207ecf7716badcb5f
 	sha512sums = SKIP
 
-pkgname = strongswan
+pkgname = strongswan-ikev1
