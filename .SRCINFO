@@ -1,0 +1,18 @@
+pkgbase = clck
+	pkgdesc = Wayland session locker with live kiosk outputs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/corbet-labs/clck
+	arch = x86_64
+	license = LicenseRef-FSL-1.1-ALv2
+	makedepends = cargo
+	makedepends = git
+	depends = pam
+	depends = wayland
+	depends = libxkbcommon
+	provides = clck
+	conflicts = clck-bin
+	source = clck::git+https://github.com/corbet-labs/clck.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = clck
