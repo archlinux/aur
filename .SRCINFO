@@ -1,7 +1,7 @@
 pkgbase = mwtool-git
 	pkgdesc = 云固件配置工具箱
-	pkgver = 0.0.1.3.r9.g429fba8
-	pkgrel = 1
+	pkgver = 0.0.1.3.r20.gfbe2d43
+	pkgrel = 2
 	url = https://gitee.com/xish-cc/MWTool
 	arch = any
 	license = MIT
