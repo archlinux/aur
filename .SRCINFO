@@ -1,7 +1,7 @@
 pkgbase = python-spsdk-lauterbach
 	pkgdesc = Lauterbach debug probe plugin for SPSDK
 	pkgver = 0.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/spsdk-lauterbach
 	arch = any
 	groups = spsdk-plugins

@@ -3,7 +3,7 @@
 pkgname=python-spsdk-lauterbach
 _name=${pkgname#python-}
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Lauterbach debug probe plugin for SPSDK"
 arch=(any)
 url="https://pypi.org/project/${_name}"
