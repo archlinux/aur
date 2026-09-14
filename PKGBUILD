@@ -10,6 +10,7 @@ url='https://github.com/swoole/typephp'
 license=('GPL-3.0-or-later')
 depends=('cmake' 'gcc' 'gcc-libs' 'glibc' 'gmp' 'make' 'mpfr' 'php' 'php-embed' 'pkgconf' 'python')
 makedepends=('composer' 'patchelf' 'python-setuptools')
+# In typephp ci phpy uses the main branch. Use the commit here to avoid using the older tagged version.
 _phpy_commit=5b9c650316ad87644e885a64a0a6767b03abdfa6
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/swoole/typephp/archive/refs/tags/v${pkgver}.tar.gz"
