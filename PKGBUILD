@@ -2,7 +2,7 @@
 
 pkgname=ectool-rs
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Reusable flashing and UniLog tools for EigenComm cellular chips"
 arch=($CARCH)
 url="https://github.com/yuzhan-tech/ectool"
