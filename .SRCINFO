@@ -1,6 +1,6 @@
 pkgbase = moony-lv2-git
 	pkgdesc = Realtime Lua as programmable glue in LV2 - git master
-	pkgver = 0.41.255.r2825.32288d84
+	pkgver = 0.41.261.r2828.bffd81aa
 	pkgrel = 1
 	url = https://git.open-music-kontrollers.ch/~hp/moony.lv2
 	arch = i686

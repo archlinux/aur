@@ -2,7 +2,7 @@
 
 _pkgname=moony.lv2
 pkgname=moony-lv2-git
-pkgver=0.41.255.r2825.32288d84
+pkgver=0.41.261.r2828.bffd81aa
 pkgrel=1
 pkgdesc="Realtime Lua as programmable glue in LV2 - git master"
 arch=('i686' 'x86_64')
