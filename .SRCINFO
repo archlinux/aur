@@ -1,7 +1,7 @@
 pkgbase = bouffalo-isp-git
 	pkgdesc = bouffalo_isp is an ISP tool that supports flashing firmware into BouffaloLab chips for MPUs running on the Linux platform.
 	pkgver = r2.7caf644
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/bouffalolab/bouffalo_isp
 	install = bouffalo-isp-git.install
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = bouffalo-isp-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = pkgconf
-	depends = glibc
 	provides = bouffalo-isp
 	conflicts = bouffalo-isp
 	source = bouffalo-isp-git::git+https://github.com/bouffalolab/bouffalo_isp.git

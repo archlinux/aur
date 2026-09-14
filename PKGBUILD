@@ -2,7 +2,7 @@
 
 pkgname=bouffalo-isp-git
 pkgver=r2.7caf644
-pkgrel=1
+pkgrel=4
 pkgdesc="bouffalo_isp is an ISP tool that supports flashing firmware into BouffaloLab chips for MPUs running on the Linux platform."
 arch=($CARCH)
 url="https://github.com/bouffalolab/bouffalo_isp"
@@ -10,9 +10,7 @@ license=('Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(
-    glibc
-)
+depends=()
 makedepends=(
     cmake
     git
@@ -48,7 +46,7 @@ build() {
     cmake -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -B build \
-        -Wno-dev
+        -Wno-author
 
     cmake --build build
 }
