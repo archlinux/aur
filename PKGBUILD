@@ -3,7 +3,7 @@
 
 pkgname=sublime-merge
 pkgver=2130
-pkgrel=1
+pkgrel=2
 pkgdesc='Meet a new Git Client, from the makers of Sublime Text'
 arch=('x86_64')
 url='https://www.sublimemerge.com'
@@ -18,7 +18,7 @@ b2sums=('7c0b98b897adeb50397565237e48d4b5cd4e5cc88526f7efcab06c2ff7ec4c66017fc46
 validpgpkeys=('EBC733B78AAB352DC773BF857FE2FA12CF6E38F2')
 
 package() {
-  cd sublime_merge-x64-tar
+  cd sublime_merge
   install -dm755 "${pkgdir}"/usr/bin
 
   # Install binaries
@@ -44,6 +44,6 @@ package() {
   done
 
   # install desktop file and license
-  install -Dm644 -t "${pkgdir}"/usr/share/applications/ "${srcdir}"/sublime_merge-x64-tar/sublime_merge.desktop
+  install -Dm644 -t "${pkgdir}"/usr/share/applications/ "${srcdir}"/sublime_merge/sublime_merge.desktop
   install -Dm644 -t "${pkgdir}"/usr/share/licenses/${pkgname}/ "${srcdir}"/LICENSE
 }
