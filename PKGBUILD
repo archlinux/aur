@@ -15,7 +15,7 @@ conflicts=('llm' 'llm-bin' 'llm-git' 'rust-llm-bin')
 source=(
     "llm-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('84153bf041eb1ffed3a1569b8eb05d76e51b8f39a8f41027516284cff5029552')
+sha256sums=('43a0113177b77cfb8d0c12a611e82671ecfed3b97d5f307a0962aae6fa550a25')
 
 # Release profile already sets lto=thin and strip=true. crates.io is reached
 # during build() (small four-crate dependency set), matching the common
