@@ -1,7 +1,7 @@
 pkgbase = ts-litex-driver-git
 	pkgdesc = Linux Driver for the LiteX-based Thunderscope
 	pkgver = r24.0414118
-	pkgrel = 2
+	pkgrel = 5
 	url = https://github.com/EEVengers/ts_litex_driver_linux
 	arch = any
 	license = LicenseRef-custom

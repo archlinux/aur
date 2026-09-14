@@ -3,7 +3,7 @@
 pkgbase=ts-litex-driver-git
 pkgname=ts-litex-driver-git
 pkgver=r24.0414118
-pkgrel=2
+pkgrel=5
 epoch=
 pkgdesc="Linux Driver for the LiteX-based Thunderscope"
 arch=(any)
@@ -58,5 +58,8 @@ package() {
     install -vDm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -vDm755 build/user/litepcie_util ${pkgdir}/usr/bin/litepcie-util
     install -vDm755 build/user/litepcie_test ${pkgdir}/usr/bin/litepcie-test
+    install -Dm644 /dev/stdin "${pkgdir}/etc/modules-load.d/thunderscope.conf" <<EOF
+thunderscope
+EOF
 #     install -Dm644 "LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
