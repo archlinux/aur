@@ -1,9 +1,18 @@
+i18n_hint() {
+    echo "  -> UI languages: /usr/share/kabekami/i18n/"
+    echo "     Copy ja.toml to <code>.toml there (or ~/.config/kabekami/i18n/)"
+    echo "     to add a language -- no rebuild needed, but restart kabekami"
+    echo "     afterwards. Untranslated keys fall back to English, so a partial"
+    echo "     translation works."
+}
+
 post_install() {
     local real_user="${SUDO_USER:-}"
     # Skip when installed directly as root (no SUDO_USER)
     if [ -z "$real_user" ] || [ "$real_user" = "root" ]; then
         echo "  -> Example configs installed to /usr/share/doc/kabekami-git/"
         echo "     Copy config.toml (or config.ja.toml) to ~/.config/kabekami/config.toml to get started."
+        i18n_hint
         return
     fi
 
@@ -18,6 +27,7 @@ post_install() {
         echo "  -> Installed default config for $real_user: $config_file"
         echo "     Japanese reference: /usr/share/doc/kabekami-git/config.ja.toml"
     fi
+    i18n_hint
 }
 
 post_upgrade() {
