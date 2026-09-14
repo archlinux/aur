@@ -1,6 +1,6 @@
 # Maintainer: Martin Piatka <(lastname) @ cesnet.cz>
 pkgname='ultragrid-git'
-pkgver=v1.9.r1556.gef0a54f6f
+pkgver=v1.10.r1536.g59483535f
 pkgrel=1
 pkgdesc='Low-latency audio and video network transmission system (from git)'
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
 )
 makedepends=(
 	'git'
+	'cmake'
 )
 optdepends=(
 	'alsa-lib: ALSA sound support'
@@ -28,7 +29,7 @@ optdepends=(
 	'glm: 360 video displays support'
 	'openxr: 360 video hmd display support'
 	'cuda: gpu accelerated FEC, DXT'
-	'qt5-base: QT GUI support'
+	'qt6-base: QT GUI support'
 	'gpujpeg: gpu accelerated jpeg'
 	'libx11: X11 screen recording'
 	'libjuice: UDP holepunching support'
