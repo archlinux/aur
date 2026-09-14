@@ -13,7 +13,7 @@ pkgrel=1
 
 arch=("i686" "x86_64")
 depends=(
-    "libjpeg"
+    "libjpeg-turbo"
     "r>=2.9.0"
 )
 optdepends=()
