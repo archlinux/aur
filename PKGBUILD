@@ -3,7 +3,7 @@
 pkgname=python-p123client
 _name=${pkgname#python-}
 pkgver=0.0.9.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python 123 webdisk client."
 arch=('any')
