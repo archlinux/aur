@@ -1,6 +1,6 @@
 pkgbase = music-player-bin
 	pkgdesc = An extensible music server written in Rust
-	pkgver = 0.3.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/tsirysndr/music-player
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = music-player-bin
 	conflicts = music-player
 	source = music-player.service
 	sha256sums = baf06a790cf152622a3f19c707805db724cd6a55a3398df45146feb62ff501f3
-	source_x86_64 = https://github.com/tsirysndr/music-player/releases/download/v0.3.0/music-player_v0.3.0_x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b22e247b67f5107332437049cd28466fe439a2159bb2f515c8529179c3078695
-	source_aarch64 = https://github.com/tsirysndr/music-player/releases/download/v0.3.0/music-player_v0.3.0_aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 977b4b08e95170dd382c2d664a78c8f2cfbc862cdcb281ef3e05486bc42b4427
+	source_x86_64 = https://github.com/tsirysndr/music-player/releases/download/v0.4.2/music-player_v0.4.2_x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ebc7daad09f86da9e338bcba645bfdaa8bf753cedcf659acca798c470cbb6d6f
+	source_aarch64 = https://github.com/tsirysndr/music-player/releases/download/v0.4.2/music-player_v0.4.2_aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f05c5536dc4ba37dec9b50ec871e90e16369f4b6f9e2c09e26a0ee3560fa8d1a
 
 pkgname = music-player-bin
