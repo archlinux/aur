@@ -3,7 +3,7 @@
 pkgname=stably-orca-git
 _gitname=orca
 pkgver=1.1.30.r0.g0000000
-pkgrel=2
+pkgrel=3
 pkgdesc="Stably AI Orca - Electron-based agentic coding IDE (built from main)"
 arch=('x86_64')
 url="https://github.com/stablyai/orca"
@@ -44,9 +44,19 @@ sha256sums=(
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  local tag count hash
-  # Strip leading v, replace hyphens with dots (pkgver forbids hyphens).
-  tag="$(git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//; s/-/./g')"
+  local tag='' candidate count hash
+  local -a matches=()
+  # Only desktop stable tags: upstream also tags mobile and prerelease builds.
+  # Give describe exact candidates so it still chooses the nearest ancestor.
+  while IFS= read -r candidate; do
+    if [[ "${candidate}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+      matches+=("--match=${candidate}")
+    fi
+  done < <(git tag --list 'v[0-9]*')
+  if (( ${#matches[@]} )); then
+    tag="$(git describe --tags --abbrev=0 "${matches[@]}" 2>/dev/null)" || tag=''
+  fi
+  tag="${tag#v}"
   count="$(git rev-list --count HEAD)"
   hash="$(git rev-parse --short HEAD)"
   printf '%s.r%s.g%s' "${tag:-0}" "${count}" "${hash}"
