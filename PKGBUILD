@@ -3,7 +3,7 @@
 pkgbase=purc
 pkgname=purc
 pkgver=0.9.26
-pkgrel=1
+pkgrel=2
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=($CARCH)
 url="https://github.com/HVML/PurC"
@@ -31,9 +31,7 @@ replaces=(
     purc-fetcher
 )
 depends=(
-    gcc-libs
     glib2
-    glibc
     libgcrypt
     libsoup3
     libxml2
@@ -41,7 +39,8 @@ depends=(
     sqlite
     openssl
     python
-    zlib)
+    zlib
+)
 makedepends=(
     #     avahi
     #     nss-mdns
@@ -118,7 +117,7 @@ build() {
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_COMPILER=clang \
-        -Wno-dev \
+        -Wno-author \
         -B build \
         -G Ninja
 
