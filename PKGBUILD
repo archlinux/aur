@@ -18,7 +18,7 @@ optdepends=(
 options=('!lto')
 conflicts=('lumend-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ecf82a3d00a9267e71f2627766602bce2d1652b1ddf2ea0d1e7220a8f29c4ead')
+sha256sums=('f657edfca1340b97c9c8540109e29073c927f9def4b9a1106c8a08c581a41c27')
 
 prepare() {
   cd "$pkgname-$pkgver"
