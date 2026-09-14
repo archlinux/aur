@@ -1,0 +1,22 @@
+pkgbase = proton-rtsp-wayland-ge-bin
+	pkgdesc = Latest Proton with the Proton-RTSP and Wayland GE patchset, for VRChat livestream (RTSP/VRCDN) playback
+	pkgver = 11.1.0.beta.3
+	pkgrel = 1
+	url = https://github.com/Go08er/Proton-RTSP-Wayland-GE
+	arch = x86_64
+	license = BSD
+	license = LGPL
+	license = zlib
+	license = MIT
+	license = MPL
+	license = custom
+	depends = sed
+	provides = proton
+	provides = proton-rtsp-wayland-ge
+	conflicts = proton-rtsp-wayland-ge
+	options = !strip
+	options = emptydirs
+	source = https://github.com/Go08er/Proton-RTSP-Wayland-GE/releases/download/v11.1.0-beta.3/proton-rtsp-wayland-ge-beta3.tar.gz
+	sha256sums = 6c752562ca02545f43b45e43afe320306b915f92f63356b3320f43f5760a08a8
+
+pkgname = proton-rtsp-wayland-ge-bin
