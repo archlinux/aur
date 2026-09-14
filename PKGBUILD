@@ -14,5 +14,5 @@ source=("${pkgname}-${pkgver}.deb::https://github.com/x3me/omacal/releases/downl
 sha256sums=('63b807ebad76c8e15adcba646435790afb0af1cee540908482c6f098b43e4b72')
 
 package() {
-    cp -r "${srcdir}/usr" "${pkgdir}/"
+    tar -xzf "${srcdir}/data.tar.gz" -C "${pkgdir}"
 }
