@@ -3,7 +3,7 @@
 pkgbase=kh-ucanfd
 pkgname=(kh-ucanfd kh-ucanfd-dkms)
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="KunHong UCANFD Linux driver"
 arch=($CARCH)
@@ -12,7 +12,6 @@ license=("GPL-2.0-only AND LGPL-2.0-only")
 depends=(
     sh
     dkms
-    glibc
     python
     popt
 )
@@ -60,7 +59,6 @@ package_kh-ucanfd() {
     conflicts=(${pkgname})
     depends=(
         sh
-        glibc
         python
     )
     arch=($CARCH)
