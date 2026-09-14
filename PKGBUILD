@@ -3,7 +3,7 @@
 pkgname=python-curated-tokenizers
 _name=${pkgname#python-}
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Lightweight piece tokenization library"
 arch=($CARCH)
