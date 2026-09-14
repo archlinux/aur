@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bookget-git
-pkgver=25.0601.2.g6d4fac3
-pkgrel=1
+pkgver=25.0701.5.g2cdbf6d
+pkgrel=2
 pkgdesc="bookget 数字图书馆下载工具，目前支持约 50+ 个数字图书馆。"
 arch=($CARCH)
 url="https://github.com/deweizhu/bookget"
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
-depends=(glibc)
+depends=()
 optdepends=('dezoomify-rs: Zoomable image downloader for Google Arts & Culture, Zoomify, IIIF, and others')
 makedepends=(
     git
