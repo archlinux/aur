@@ -1,0 +1,58 @@
+#!/bin/sh
+
+set -eu
+
+usage() {
+    cat <<'EOF'
+Usage: qt-solarized [--auto|--light|--dark] PROGRAM [ARGUMENT ...]
+
+Launch a Qt application with a Solarized palette. Automatic mode follows
+Darkman or the GNOME color-scheme setting and defaults to Solarized Light.
+EOF
+}
+
+theme="${QT_SOLARIZED_THEME:-auto}"
+case "${1:-}" in
+    --auto) theme="auto"; shift ;;
+    --light) theme="light"; shift ;;
+    --dark) theme="dark"; shift ;;
+    -h|--help) usage; exit 0 ;;
+esac
+
+if [ "$#" -eq 0 ]; then
+    usage >&2
+    exit 2
+fi
+
+case "$theme" in
+    auto)
+        scheme=""
+        if command -v darkman >/dev/null 2>&1; then
+            scheme="$(darkman get 2>/dev/null || true)"
+        fi
+        if [ -z "$scheme" ] && command -v gsettings >/dev/null 2>&1; then
+            scheme="$(gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null || true)"
+        fi
+        case "$scheme" in
+            *dark*) theme="dark" ;;
+            *) theme="light" ;;
+        esac
+        ;;
+    light|dark) ;;
+    *)
+        printf 'qt-solarized: invalid theme: %s\n' "$theme" >&2
+        exit 2
+        ;;
+esac
+
+stylesheet_dir="${QT_SOLARIZED_DIR:-/usr/share/qt-solarized}"
+stylesheet="$stylesheet_dir/solarized-$theme.qss"
+if [ ! -r "$stylesheet" ]; then
+    printf 'qt-solarized: stylesheet not found: %s\n' "$stylesheet" >&2
+    exit 1
+fi
+
+program="$1"
+shift
+export QT_QPA_PLATFORMTHEME="${QT_QPA_PLATFORMTHEME:-gtk3}"
+exec "$program" -style Fusion -stylesheet "$stylesheet" "$@"

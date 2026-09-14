@@ -1,0 +1,41 @@
+QMainWindow, QDialog, QMessageBox {
+    background-color: #fdf6e3;
+    color: #657b83;
+}
+QMenuBar, QMenu, QToolBar, QStatusBar, QDockWidget, QTabWidget::pane {
+    background-color: #eee8d5;
+    color: #586e75;
+    border-color: #93a1a1;
+}
+QMenu::item:selected, QMenuBar::item:selected, QTabBar::tab:selected {
+    background-color: #268bd2;
+    color: #fdf6e3;
+}
+QTabBar::tab, QPushButton, QToolButton, QComboBox, QSpinBox, QDoubleSpinBox {
+    background-color: #eee8d5;
+    color: #586e75;
+    border: 1px solid #93a1a1;
+    padding: 3px;
+}
+QTabBar::tab:hover, QPushButton:hover, QToolButton:hover {
+    border-color: #268bd2;
+    background-color: #fdf6e3;
+}
+QLineEdit, QTextEdit, QPlainTextEdit, QListView, QTreeView, QTableView {
+    background-color: #fdf6e3;
+    color: #657b83;
+    alternate-background-color: #eee8d5;
+    selection-background-color: #268bd2;
+    selection-color: #fdf6e3;
+    border: 1px solid #93a1a1;
+}
+QHeaderView::section {
+    background-color: #eee8d5;
+    color: #586e75;
+    border: 1px solid #93a1a1;
+}
+QToolTip {
+    background-color: #eee8d5;
+    color: #586e75;
+    border: 1px solid #268bd2;
+}
