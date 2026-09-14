@@ -1,7 +1,7 @@
 pkgbase = python-bflb-mcu-tool-uart
 	pkgdesc = Bouffalolab Mcu Tool uart
 	pkgver = 1.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/bflb-mcu-tool-uart
 	arch = any
 	license = MIT

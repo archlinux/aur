@@ -3,7 +3,7 @@
 pkgname=python-bflb-mcu-tool-uart
 _name=${pkgname#python-}
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Bouffalolab Mcu Tool uart"
 arch=('any')
