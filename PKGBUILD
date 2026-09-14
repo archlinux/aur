@@ -3,12 +3,11 @@
 pkgbase=nuclei-openocd
 pkgname=(nuclei-openocd)
 pkgver=2025.10
-pkgrel=1
+pkgrel=2
 pkgdesc="nuclei-openocd 是 Nuclei Studio IDE 的调试工具。"
 arch=("x86_64")
 depends=(
 	capstone
-	glibc
 	hidapi
 	jimtcl
 	libftdi-compat

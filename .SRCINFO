@@ -1,13 +1,12 @@
 pkgbase = nuclei-openocd
 	pkgdesc = nuclei-openocd 是 Nuclei Studio IDE 的调试工具。
 	pkgver = 2025.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/riscv-mcu/riscv-openocd
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
 	depends = capstone
-	depends = glibc
 	depends = hidapi
 	depends = jimtcl
 	depends = libftdi-compat
