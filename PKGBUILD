@@ -2,14 +2,14 @@
 
 pkgname=cangaroo
 pkgver=0.2.2.r64.gca7f907
-pkgrel=11
+pkgrel=12
 pkgdesc="Open source can bus analyzer software - with support for CANable / CANable2, CANFD, and other new features"
 arch=($CARCH)
 license=('GPL-2.0-only')
 depends=(
-	bash
-	gcc-libs
-	glibc
+	sh
+    libgcc_s.so
+    libstdc++.so
 	libnl
 	qt5-charts
 	qt5-base
