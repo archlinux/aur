@@ -12,14 +12,18 @@
 # so they need glibc 2.39 or newer -- fine on Arch, and the reason the
 # depends list below is not merely `glibc`.
 #
-# Refreshing for a new release: bump pkgver, then `updpkgsums` to pull the
-# real checksums and regenerate .SRCINFO. The v0.5.0 archives predate the
-# networking helper: publish a new tag with the updated Release workflow
-# before publishing this packaging revision.
+# This is the canonical copy. .github/workflows/aur-publish.yml pushes it to
+# the AUR when a release is published, rewriting three fields on the way --
+# pkgver from the tag, pkgrel back to 1, and both checksums from the .sha256
+# files the Release workflow publishes beside the archives. Edit anything
+# else here; editing those three is pointless because CI overwrites them.
+#
+# To publish by hand instead: set pkgver, run `updpkgsums`, regenerate
+# .SRCINFO with `makepkg --printsrcinfo > .SRCINFO`, and push both.
 
 pkgname=waycast-bin
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Miracast source for wlroots compositors, with Hyprland extend-desktop support (prebuilt)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alchemy/waycast"
@@ -83,8 +87,8 @@ conflicts=('swaybeam' 'swaybeam-bin' 'swaybeam-hyprland-bin' 'swaybeam-hyprland-
 _release="${url}/releases/download/v${pkgver}"
 source_x86_64=("waycast-v${pkgver}-linux-amd64.tar.gz::${_release}/waycast-v${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("waycast-v${pkgver}-linux-arm64.tar.gz::${_release}/waycast-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('bc17b28ec9479dcb261ce5b7381fcc9ccf1283ec7bcdb65b38bb91b54dd9f320')
-sha256sums_aarch64=('9175d8d0fbec26b9362bfdb9b4ca182bea115d235e358fd715e4393aed603c40')
+sha256sums_x86_64=('d2e1d3eaf5135cacb2f059a0bc0ba44f5da9106da72b4538945fb6ecae94d450')
+sha256sums_aarch64=('9b1e152479c6f279049ffed424334461c53cdf6424a74c41872c4b2685ee7f95')
 
 package() {
   local _slug

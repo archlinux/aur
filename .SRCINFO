@@ -1,7 +1,7 @@
 pkgbase = waycast-bin
 	pkgdesc = Miracast source for wlroots compositors, with Hyprland extend-desktop support (prebuilt)
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/alchemy/waycast
 	install = waycast.install
 	arch = x86_64
@@ -38,9 +38,9 @@ pkgbase = waycast-bin
 	conflicts = swaybeam-bin
 	conflicts = swaybeam-hyprland-bin
 	conflicts = swaybeam-hyprland-git
-	source_x86_64 = waycast-v0.5.0-linux-amd64.tar.gz::https://github.com/alchemy/waycast/releases/download/v0.5.0/waycast-v0.5.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = bc17b28ec9479dcb261ce5b7381fcc9ccf1283ec7bcdb65b38bb91b54dd9f320
-	source_aarch64 = waycast-v0.5.0-linux-arm64.tar.gz::https://github.com/alchemy/waycast/releases/download/v0.5.0/waycast-v0.5.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 9175d8d0fbec26b9362bfdb9b4ca182bea115d235e358fd715e4393aed603c40
+	source_x86_64 = waycast-v0.6.0-linux-amd64.tar.gz::https://github.com/alchemy/waycast/releases/download/v0.6.0/waycast-v0.6.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = d2e1d3eaf5135cacb2f059a0bc0ba44f5da9106da72b4538945fb6ecae94d450
+	source_aarch64 = waycast-v0.6.0-linux-arm64.tar.gz::https://github.com/alchemy/waycast/releases/download/v0.6.0/waycast-v0.6.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9b1e152479c6f279049ffed424334461c53cdf6424a74c41872c4b2685ee7f95
 
 pkgname = waycast-bin
