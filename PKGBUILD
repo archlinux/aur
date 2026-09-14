@@ -3,7 +3,7 @@
 pkgbase=openarm-can
 pkgname=(openarm-can python-openarm-can)
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ library for CAN communication with OpenArm robotic hardware, supporting Damiao motors over CAN/CAN-FD interfaces.'
 arch=($CARCH)
 url='https://github.com/enactic/openarm_can'
@@ -52,7 +52,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_SHARED_LIBS=ON \
-    -Wno-dev \
+    -Wno-author \
     -B build \
     -G Ninja
 
