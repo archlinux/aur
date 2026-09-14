@@ -2,12 +2,10 @@
 
 pkgname=elf2hex
 pkgver=20.08.00.00
-pkgrel=13
+pkgrel=132
 epoch=
 pkgdesc="SiFive's Verilog test harnesses can't directly read ELF binaries but are instead required to be provided with a hexidecimal dump of a particular width and depth. This project allows users to easily create these files."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/sifive/elf2hex"
 license=('Apache-2.0' 'MIT')
 groups=()

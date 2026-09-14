@@ -1,11 +1,9 @@
 pkgbase = elf2hex
 	pkgdesc = SiFive's Verilog test harnesses can't directly read ELF binaries but are instead required to be provided with a hexidecimal dump of a particular width and depth. This project allows users to easily create these files.
 	pkgver = 20.08.00.00
-	pkgrel = 13
+	pkgrel = 132
 	url = https://github.com/sifive/elf2hex
 	arch = x86_64
-	arch = aarch64
-	arch = riscv64
 	license = Apache-2.0
 	license = MIT
 	makedepends = autoconf
