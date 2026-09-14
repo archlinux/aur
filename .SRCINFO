@@ -1,7 +1,7 @@
 pkgbase = python-alibabacloud-credentials-api
 	pkgdesc = Alibaba Cloud Gateway SPI SDK Library for Python
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/alibabacloud_credentials_api
 	arch = any
 	license = Apache-2.0
