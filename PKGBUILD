@@ -1,7 +1,7 @@
 # Maintainer: Zachary M <minein12 at protonmail dot com>
 
 pkgname='noita_proxy'
-pkgver=1.6.4
+pkgver=1.6.6
 pkgrel=1
 pkgdesc='Noita Entangled Worlds mod'
 url='https://github.com/IntQuant/noita_entangled_worlds'
@@ -20,11 +20,15 @@ makedepends=(
     'cargo'
     'jack'
 )
+checkdepends=(
+    'cargo'
+    'desktop-file-utils'
+)
 source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "noita_proxy.desktop"
 )
-sha256sums=('7df00c5f3adf9ee75b659fcd9e7f81b0afadbb116c1a518a66e667241cc7e566'
+sha256sums=('8a8d64637f13f795aa3833966584218543df056dfabda34b761f7233cece4933'
             '512c06c20b86cd51188f883904efc7f48d59b852ee5607a80b11337a92ca1899')
 install=${pkgname}.install
 
@@ -48,6 +52,8 @@ check() {
     export RUSTUP_TOOLCHAIN=stable
     cd "noita_entangled_worlds-${pkgver}/noita_proxy"
     cargo test --frozen --all-features
+
+    desktop-file-validate "$srcdir/noita_proxy.desktop"
 }
 
 package() {
