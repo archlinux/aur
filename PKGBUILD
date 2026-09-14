@@ -8,7 +8,7 @@ pkgname=(
   v4l2-relayd-ipu7-ov08x40
 )
 pkgver=0.7.2
-pkgrel=3.9
+pkgrel=3.10
 pkgdesc="Patched libcamera for Intel IPU7 with OV08X40"
 arch=(x86_64)
 url="https://libcamera.org/"
@@ -36,7 +36,7 @@ _vision_commit=845d6f8bdf66ff1f455901da9de5e00a53a83dce
 _relay_commit=d6ec36aae87e765eddef8308f0f58c7b5be95ad7
 _ipu_bridge_kernel=7.2.4
 source=(
-  "libcamera::git+https://gitlab.freedesktop.org/libcamera/libcamera.git#commit=$_libcamera_commit"
+  "libcamera::git+https://gitlab.freedesktop.org/camera/libcamera.git#commit=$_libcamera_commit"
   "vision-drivers::git+https://github.com/intel/vision-drivers.git#commit=$_vision_commit"
   "v4l2-relayd::git+https://gitlab.com/vicamo/v4l2-relayd.git#commit=$_relay_commit"
   libcamera-ipu7-ov08x40.patch

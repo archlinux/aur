@@ -1,7 +1,7 @@
 pkgbase = libcamera-ipu7-ov08x40
 	pkgdesc = Patched libcamera for Intel IPU7 with OV08X40
 	pkgver = 0.7.2
-	pkgrel = 3.9
+	pkgrel = 3.10
 	url = https://libcamera.org/
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -22,7 +22,7 @@ pkgbase = libcamera-ipu7-ov08x40
 	makedepends = python-pyyaml
 	makedepends = systemd
 	options = !debug
-	source = libcamera::git+https://gitlab.freedesktop.org/libcamera/libcamera.git#commit=191e202178f02430b5942397c70d215cdd2056fa
+	source = libcamera::git+https://gitlab.freedesktop.org/camera/libcamera.git#commit=191e202178f02430b5942397c70d215cdd2056fa
 	source = vision-drivers::git+https://github.com/intel/vision-drivers.git#commit=845d6f8bdf66ff1f455901da9de5e00a53a83dce
 	source = v4l2-relayd::git+https://gitlab.com/vicamo/v4l2-relayd.git#commit=d6ec36aae87e765eddef8308f0f58c7b5be95ad7
 	source = libcamera-ipu7-ov08x40.patch
