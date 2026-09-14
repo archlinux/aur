@@ -1,7 +1,7 @@
 pkgbase = ethercat
 	pkgdesc = IgH EtherCAT Master for Linux
 	pkgver = 1.6.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/etherlab.org/ethercat
 	arch = x86_64
 	license = GPL-2.0-or-later OR LGPL-2.1-or-later

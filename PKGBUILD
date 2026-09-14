@@ -2,7 +2,7 @@
 
 pkgname=ethercat
 pkgver=1.6.12
-pkgrel=1
+pkgrel=2
 pkgdesc="IgH EtherCAT Master for Linux"
 arch=($CARCH)
 url="https://gitlab.com/etherlab.org/ethercat"
