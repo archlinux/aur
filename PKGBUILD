@@ -22,7 +22,7 @@
 # .SRCINFO with `makepkg --printsrcinfo > .SRCINFO`, and push both.
 
 pkgname=waycast-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Miracast source for wlroots compositors, with Hyprland extend-desktop support (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -87,8 +87,8 @@ conflicts=('swaybeam' 'swaybeam-bin' 'swaybeam-hyprland-bin' 'swaybeam-hyprland-
 _release="${url}/releases/download/v${pkgver}"
 source_x86_64=("waycast-v${pkgver}-linux-amd64.tar.gz::${_release}/waycast-v${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("waycast-v${pkgver}-linux-arm64.tar.gz::${_release}/waycast-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('d2e1d3eaf5135cacb2f059a0bc0ba44f5da9106da72b4538945fb6ecae94d450')
-sha256sums_aarch64=('9b1e152479c6f279049ffed424334461c53cdf6424a74c41872c4b2685ee7f95')
+sha256sums_x86_64=('af118d64e7f2d3cbab30806fd274b3d128e6c796e176a59b1d3e5a75a83e3a21')
+sha256sums_aarch64=('265ce1ab51955049d870e7df02f2e1c6b191d875c0d94d923c166b672ef59863')
 
 package() {
   local _slug
