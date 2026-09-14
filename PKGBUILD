@@ -3,7 +3,7 @@
 pkgname=jlc-assistant-bin
 _pkgname=${pkgname%-bin}
 pkgver=5.0.69
-pkgrel=27
+pkgrel=28
 pkgdesc="嘉立创下单助手:该应用为您下单提供便利，快速获取优惠及下单信息，无需在网站等待审核审单！在下单助手下单立享打折优惠！ "
 arch=('x86_64')
 url="https://www.jlc.com/portal/appDownloadsWithConfig.html"
