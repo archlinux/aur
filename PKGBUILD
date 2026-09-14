@@ -2,7 +2,7 @@
 
 pkgname=kicad-allegro
 pkgver=r9.4968f13
-pkgrel=6
+pkgrel=8
 pkgdesc="Converter from Allegro to KiCad, and Allegro extract viewer "
 arch=($CARCH)
 url="https://github.com/system76/kicad-allegro"
@@ -10,10 +10,11 @@ license=("unkown")
 provides=(${pkgname})
 conflicts=(${pkgname})
 #replaces=(${pkgname})
-depends=(glibc
-    gcc-libs)
-makedepends=(cargo
-    git)
+depends=()
+makedepends=(
+    rust
+    git
+)
 optdepends=('kicad')
 backup=()
 options=()
@@ -32,6 +33,9 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}/"
+    cargo fetch --locked --target host-tuple
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
