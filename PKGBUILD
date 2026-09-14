@@ -3,7 +3,7 @@
 pkgname=python-p115servedb
 _name=${pkgname#python-}
 pkgver=0.0.6.1
-pkgrel=3
+pkgrel=5
 epoch=
 pkgdesc="115 网盘基于 p115updatedb 导出数据库的挂载服务"
 arch=('any')
@@ -14,12 +14,13 @@ provides=(${_name} ${pkgname})
 conflicts=(${_name} ${pkgname})
 depends=(
     python
+    python-a2wsgi
+    python-wsgidav
     python-orjson
     python-urllib3
     python-yaml
     uvicorn
     #AUR
-    python-a2wsgi
     python-blacksheep
     python-blacksheep-rich-log
     python-cachedict
@@ -34,7 +35,6 @@ depends=(
     python-property
     python-posixpatht
     python-pysubs2
-    python-wsgidav
 )
 makedepends=(
     python-poetry
