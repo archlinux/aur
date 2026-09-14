@@ -45,7 +45,7 @@ optdepends=('libnotify: For desktop notifications'
 options=('strip')
 
 source=("${pkgname}-${pkgver}.deb::https://github.com/nfdi4plants/ARCitect/releases/download/v${pkgver}/ARCitect_${pkgver}_amd64.deb")
-sha256sums=('6b5b02b29532eb259db8379319ad0a5b573100f2518406b0821a4a159498c144')
+sha256sums=('4b62ae7a02bfba2e78545af7e6d0a9d9742a9fa881aecc14f7f7a9c6dbb91411')
 
 prepare() {
     cd "$srcdir"
