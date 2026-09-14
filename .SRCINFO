@@ -1,7 +1,7 @@
 pkgbase = python-spsdk-pylint-plugins
 	pkgdesc = PyLint plugins coverity SPSDK-specific coding rules.
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/spsdk-pylint-plugins
 	arch = any
 	groups = spsdk-plugins

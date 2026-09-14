@@ -3,7 +3,7 @@
 pkgname=python-spsdk-pylint-plugins
 _name=${pkgname#python-}
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="PyLint plugins coverity SPSDK-specific coding rules."
 arch=(any)
 url="https://pypi.org/project/${_name}"
