@@ -3,7 +3,7 @@
 pkgname=python-sqlitetools
 _name=${pkgname#python-}
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python sqlite3 tools."
 arch=('any')
