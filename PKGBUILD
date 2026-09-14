@@ -1,12 +1,17 @@
 # Maintainer: Dawit Worku <dawitworkujima@gmail.com>
 pkgname=omafil-git
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="File manager that follows your Omarchy theme"
 arch=('x86_64')
 url="https://github.com/dawitlabs/omafil"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'poppler' 'udisks2' 'xdg-utils' 'libnotify')
+# libarchive carries bsdtar, which extracts everything that is not a ZIP.
+# glib2 carries gdbus, which formats a drive through UDisks2.
+# wl-clipboard carries wl-copy and wl-paste, which move files to and from
+# the desktop clipboard so copying works with other file managers.
+depends=('webkit2gtk-4.1' 'gtk3' 'poppler' 'udisks2' 'xdg-utils' 'libnotify'
+         'libarchive' 'glib2' 'wl-clipboard')
 makedepends=('git' 'rust' 'bun-bin')
 optdepends=('omarchy: theme and editor integration')
 provides=('omafil')
