@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=x42-sisco-cv-git
 pkgdesc="Oscilloscope, varient of sisco.lv2 but with CV ports"
-pkgver=r248.99c4a24
+pkgver=r250.e6efc10
 pkgrel=1
 epoch=
 arch=(x86_64)
