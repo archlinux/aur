@@ -1,0 +1,24 @@
+pkgbase = currant-git
+	pkgdesc = Fast and powerful music player with a Rust core and thin frontends (git version)
+	pkgver = 57.abce92e.rolling
+	pkgrel = 1
+	url = https://git.disroot.org/trougnouf/currant
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = opus
+	depends = libogg
+	depends = alsa-lib
+	provides = currant
+	conflicts = currant
+	options = !lto
+	options = !strip
+	options = !debug
+	source = currant::git+https://git.disroot.org/trougnouf/currant.git
+	sha256sums = SKIP
+
+pkgname = currant-git
