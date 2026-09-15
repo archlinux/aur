@@ -1,0 +1,26 @@
+pkgbase = omafil-bin
+	pkgdesc = File manager that follows your Omarchy theme
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/dawitlabs/omafil
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = poppler
+	depends = udisks2
+	depends = xdg-utils
+	depends = libnotify
+	depends = libarchive
+	depends = glib2
+	depends = wl-clipboard
+	optdepends = omarchy: theme and editor integration
+	provides = omafil
+	conflicts = omafil
+	conflicts = omafil-git
+	options = !debug
+	options = !strip
+	source = omafil-0.2.1-x86_64.tar.gz::https://github.com/dawitlabs/omafil/releases/download/v0.2.1/omafil-0.2.1-x86_64.tar.gz
+	sha256sums = 1cd541e97be8455aa86688b5d446b11c084f6d3728789a4b6265363e8d55631e
+
+pkgname = omafil-bin
