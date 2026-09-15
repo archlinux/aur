@@ -1,7 +1,7 @@
 # Maintainer: Stefan Zipproth <s.zipproth@acrion.ch>
 
 pkgname=wayland-display-info
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Daemon that keeps /var/cache/wayland-display-info/display-info up to date using wlr-output-management"
 arch=('any')
@@ -21,22 +21,22 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    
+
     # Install binary
     install -Dm755 "wayland-display-info" "${pkgdir}/usr/lib/${pkgname}/wayland-display-info"
-    
+
     # Install systemd user service
     install -Dm644 "wayland-display-info.service" "${pkgdir}/usr/lib/systemd/user/wayland-display-info.service"
-    
+
     # Install tmpfiles configuration
     install -Dm644 "wayland-display-info.conf" "${pkgdir}/usr/lib/tmpfiles.d/wayland-display-info.conf"
-    
+
     # Install man page
     install -Dm644 "wayland-display-info.1" "${pkgdir}/usr/share/man/man1/wayland-display-info.1"
-    
+
     # Install documentation
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    
+
     # Install license
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
