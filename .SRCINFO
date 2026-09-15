@@ -1,7 +1,7 @@
 pkgbase = nsutils-git
 	pkgdesc = Nsutils suite includes a number of utilities to list, add/remove tag, and join namespaces
 	pkgver = v0.2.r7.b573702
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rd235/nsutils
 	arch = x86_64
 	license = GPL-2.0-or-later
