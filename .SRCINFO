@@ -1,6 +1,6 @@
 pkgbase = python-openinference-semantic-conventions
 	pkgdesc = OpenInference Semantic Conventions.
-	pkgver = 0.1.37
+	pkgver = 0.1.38
 	pkgrel = 1
 	url = https://github.com/Arize-ai/openinference/tree/main/python/openinference-semantic-conventions
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-openinference-semantic-conventions
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/Arize-ai/openinference/archive/refs/tags/python-openinference-semantic-conventions-v0.1.37.tar.gz
-	sha256sums = 9bd3da894eab4cb280c8db7fc5a2b16b74e5ddf95a1621c368937f725ae5de53
+	source = https://github.com/Arize-ai/openinference/archive/refs/tags/python-openinference-semantic-conventions-v0.1.38.tar.gz
+	sha256sums = c916de9610b35848bbb38cf4a87910c3af06196da1dba4016421a442c11ea698
 
 pkgname = python-openinference-semantic-conventions
