@@ -5,7 +5,7 @@ pkgname="${_pkgname}-bin"
 _pkgver=4.0.0-alpha
 _ghassetver=4x-alpha
 pkgver="$(printf '%s' "$_pkgver" | sed 's/-//')"
-pkgrel=3
+pkgrel=4
 pkgdesc="The modern Java bytecode editor"
 arch=(x86_64 aarch64)
 url="https://github.com/Col-E/Recaf"
@@ -22,25 +22,25 @@ source_x86_64=(
     "https://raw.githubusercontent.com/Col-E/Recaf/$_pkgver/LICENSE"
 )
 sha256sums_x86_64=(
-    "3c81b47087a235270718ba3ca1ce7050983468cb83cbcaeb5d7c23cc028b8c39"
+    "cd57faf9d6eed4c3fe8054529e08c74308b3c2c051253967623ae52d1de45410"
     "901fbcfa7944e89f5c34e73a3637fd21dc7c8e34b5612a7e0a0a707a4b45be1d"
     "a98659971ead7e75b30f8d4ef8c27d13338c6187a49fee181379e74b89d4a16f"
 )
 
 source_aarch64=(
-    "https://github.com/Col-E/Recaf/releases/download/$_pkgver/$_pkgname-$_ghassetver-linux-aarch64.jar"
+    "https://github.com/Col-E/Recaf/releases/download/$_pkgver/$_pkgname-$_ghassetver-linux-aarch.jar"
     "https://raw.githubusercontent.com/Col-E/Recaf/$_pkgver/recaf-ui/src/main/resources/icons/logo-full.png"
     "https://raw.githubusercontent.com/Col-E/Recaf/$_pkgver/LICENSE"
 )
 sha256sums_aarch64=(
-    "5455efdd7d49af405bb0f81caab7424637b363281422402559ba492a5427d33d"
+    "cbb9db3c2028932b6f95fc133d29c5cb35eb500797b0d3f30074d05ee6e23d74"
     "901fbcfa7944e89f5c34e73a3637fd21dc7c8e34b5612a7e0a0a707a4b45be1d"
     "a98659971ead7e75b30f8d4ef8c27d13338c6187a49fee181379e74b89d4a16f"
 )
 
 noextract=(
     "$_pkgname-$_ghassetver-linux-86-x64.jar"
-    "$_pkgname-$_ghassetver-linux-aarch64.jar"
+    "$_pkgname-$_ghassetver-linux-aarch.jar"
 )
 
 package() {
