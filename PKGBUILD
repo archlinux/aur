@@ -3,7 +3,7 @@
 pkgname=python-numbers-parser
 _name=${pkgname#python-}
 pkgver=4.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Read and write Apple Numbers spreadsheets"
 provides=(${pkgname})
 conflicts=(${pkgname})

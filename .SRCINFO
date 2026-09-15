@@ -1,7 +1,7 @@
 pkgbase = python-numbers-parser
 	pkgdesc = Read and write Apple Numbers spreadsheets
 	pkgver = 4.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/masaccio/numbers-parser
 	arch = any
 	license = MIT
