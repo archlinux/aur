@@ -1,0 +1,39 @@
+commit 990d498ea4d50f6aa197f4558e65bc724bf6a689
+Author: Maykel Moya <mmoya@mmoya.org>
+Date:   Tue Sep 15 10:15:03 2026 +0200
+
+    Replace strncpy() removed in kernel 7.2
+    
+    strncpy() was dropped from the kernel API. Use strscpy() bounded by
+    the destination signature buffer instead, per the fix proposed in
+    https://aur.archlinux.org/packages/asix-ax88179-dkms#comment-1084567
+
+diff --git a/src/ax88179_178a.c b/src/ax88179_178a.c
+index 1383263..e4ee07d 100644
+--- a/src/ax88179_178a.c
++++ b/src/ax88179_178a.c
+@@ -107,7 +107,7 @@ const struct ethtool_ops ax88179_ethtool_ops = {
+ 
+ int ax88179_signature(struct ax_device *axdev, struct _ax_ioctl_command *info)
+ {
+-	strncpy(info->sig, AX88179_SIGNATURE, strlen(AX88179_SIGNATURE));
++	strscpy(info->sig, AX88179_SIGNATURE, sizeof(info->sig));
+ 	return 0;
+ }
+ 
+diff --git a/src/ax88179a_772d.c b/src/ax88179a_772d.c
+index d35ad40..be1b5f6 100644
+--- a/src/ax88179a_772d.c
++++ b/src/ax88179a_772d.c
+@@ -612,9 +612,9 @@ void ax88279_get_ephy_fw_version(struct ax_device *axdev)
+ int ax88179a_signature(struct ax_device *axdev, struct _ax_ioctl_command *info)
+ {
+ 	if (axdev->chip_version >= AX_VERSION_AX88279)
+-		strncpy(info->sig, AX88279A_SIGNATURE, strlen(AX88279A_SIGNATURE));
++		strscpy(info->sig, AX88279A_SIGNATURE, sizeof(info->sig));
+ 	else if (axdev->chip_version == AX_VERSION_AX88179A_772D)
+-		strncpy(info->sig, AX88179A_SIGNATURE, strlen(AX88179A_SIGNATURE));
++		strscpy(info->sig, AX88179A_SIGNATURE, sizeof(info->sig));
+ 	
+ 	return 0;
+ }
