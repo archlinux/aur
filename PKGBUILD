@@ -3,8 +3,8 @@
 # Maintainer: Patrick Münch <patrick@mondoo.com>
 #
 pkgname=mondoo
-orignalVersion="13.38.1"
-pkgver="${orignalVersion/-/_}"
+originalVersion="13.39.0"
+pkgver="${originalVersion/-/_}"
 pkgrel=1
 pkgdesc="Mondoo Client CLI for the Mondoo Policy as Code Platform"
 url="https://mondoo.com"
