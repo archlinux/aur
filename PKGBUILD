@@ -20,16 +20,22 @@ pkgver() {
   printf "r%s.%s" "$(git -C ${_pkgname} rev-list --count HEAD)" "$(git -C ${_pkgname} rev-parse --short=7 HEAD)"
 }
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  cmake -S . -B build/ \
+    -D'CMAKE_INSTALL_PREFIX=/usr'
+}
+
 build() {
-  cd $srcdir/$_pkgname
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make -j $(nproc)
+  cd "${srcdir}/${_pkgname}/build"
+  make
 }
 
 package() {
-  cd $srcdir/$_pkgname/build
+  cd "${srcdir}/${_pkgname}"
+  install -Dm 644 COPYING -T "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+  cd "build/"
   make DESTDIR="$pkgdir" install
 }
 
