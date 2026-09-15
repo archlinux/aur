@@ -1,7 +1,9 @@
 # Maintainer: Grafcube <grafcube at disroot dot org>
 
+# TODO: Create package for chipass-unlock (I'll do it whenever I get around to switching)
+
 pkgname=keepassxc-unlock
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Passwordless unlocking of KeePassXC after login and screen unlock'
 arch=('x86_64')
@@ -10,7 +12,7 @@ license=('MIT')
 depends=(glib2 readline)
 makedepends=(gcc make m4)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('15288afe3a946c6876a7e210bf4f5c286b0d94f621147434cbc2db4f1540ceb1')
+sha256sums=('4fe4d8c2e8d3dc103cb3e025ab4f5a167f5575f01f50d67c2915521181ebefb5')
 install=keepassxc-unlock.install
 
 build() {
