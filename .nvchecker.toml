@@ -1,0 +1,4 @@
+[ttynvt]
+source = "git"
+git = "https://gitlab.com/lars-thrane-as/ttynvt.git"
+prefix = "v"
