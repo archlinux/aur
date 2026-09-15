@@ -1,0 +1,24 @@
+pkgbase = folio-bin
+	pkgdesc = Markdown note-taking application for GNOME using native Arch Linux libraries
+	pkgver = 26.01
+	pkgrel = 1
+	url = https://github.com/toolstack/Folio
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = perl
+	depends = dconf
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = gtksourceview5
+	depends = libadwaita
+	depends = libgee
+	depends = pango
+	provides = folio=26.01
+	conflicts = folio
+	noextract = Folio-26.01-x86_64.AppImage
+	options = !debug
+	source = https://github.com/toolstack/Folio/releases/download/26.01/Folio-26.01-x86_64.AppImage
+	sha256sums = 1ada0025ec3fdbe79511b52d9db7025d0ef30e0eaed738b0d297d3268e524364
+
+pkgname = folio-bin
