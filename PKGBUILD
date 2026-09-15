@@ -1,5 +1,5 @@
 pkgname=fenriz-bar-bin
-pkgver=0.1.15
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="Status bar for Wayland compositors (Binary Release)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('fenriz: the compositor this bar is built for'
 provides=('fenriz-bar')
 conflicts=('fenriz-bar' 'fenriz-bar-git')
 source=("${url}/releases/download/v${pkgver}/fenriz-bar-${pkgver}.tar.gz")
-sha256sums=('727d599320e2e262512213ce0c926c910d256a71eea2e09d877cdf76855492a6')
+sha256sums=('5e56070270f051b866877e9d15b5ed2c5fefcb8c11af3f90d1d0901552d7c627')
 
 package() {
     cd "fenriz-bar-${pkgver}"
