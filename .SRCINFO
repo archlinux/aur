@@ -1,6 +1,6 @@
 pkgbase = mongosh
 	pkgdesc = Rich Node.js REPL for interacting with MongoDB instances.
-	pkgver = 2.10.0
+	pkgver = 2.11.1
 	pkgrel = 1
 	url = https://github.com/mongodb-js/mongosh
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mongosh
 	optdepends = libmongocrypt: session encryption support
 	options = !debug
 	options = !strip
-	source = https://github.com/mongodb-js/mongosh/archive/refs/tags/v2.10.0.tar.gz
-	sha256sums = 42775a281d2848c98359c952286a0712cc170e6bb1eadc9b2a1470fa3a274b88
+	source = https://github.com/mongodb-js/mongosh/archive/refs/tags/v2.11.1.tar.gz
+	sha256sums = a586c68b72a4d95a3b55724d7b1eb4f155f12631d1eb4308d0bdfc9d7fd96a2f
 
 pkgname = mongosh
