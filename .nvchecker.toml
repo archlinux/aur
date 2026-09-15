@@ -1,0 +1,5 @@
+[open-code-review]
+source = "github"
+github = "alibaba/open-code-review"
+use_max_tag = true
+prefix = "v"
