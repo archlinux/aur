@@ -1,0 +1,91 @@
+#!/bin/bash
+# Enable the MX Linux Arch repository (mxarch) in /etc/pacman.conf.
+#
+# Deliberately a separate command rather than something mxarch-repo does on
+# install: /etc/pacman.conf belongs to the pacman package, and editing another
+# package's config as a silent side effect of installing is not a thing a
+# package should do - not least because the removal path would have to sed a
+# file the user may have edited, and a botched edit there breaks all package
+# management, not just this repository. Run deliberately, by hand or from a GUI
+# where the user asked for it, none of that applies.
+set -euo pipefail
+
+CONF=/etc/pacman.conf
+MIRRORLIST=/etc/pacman.d/mxarch-mirrorlist
+KEYFPR=A220D6ABB427CF38A8C5E560442D90008FE173AE
+FORCE=0
+
+die() { printf '%s\n' "$*" >&2; exit 1; }
+
+case "${1:-}" in
+    --force) FORCE=1 ;;
+    "")      ;;
+    *)       die "usage: mxarch-enable [--force]" ;;
+esac
+
+[ "$(id -u)" -eq 0 ] || die "mxarch-enable must be run as root."
+[ -f "$CONF" ] || die "$CONF does not exist."
+[ -f "$MIRRORLIST" ] || die "$MIRRORLIST is missing - reinstall mxarch-repo."
+
+# Refuse to enable a repository whose signatures pacman cannot verify yet.
+# This is not a nicety: with SigLevel = Required, an enabled repository whose
+# database will not verify makes *every* pacman transaction fail, including the
+# one that would install the key. The system then needs manual recovery, and
+# the error it gives says nothing about how. Checking here costs one command
+# and turns that into a message.
+key_ok() {
+    local validity
+    validity=$(pacman-key --list-keys --with-colons "$KEYFPR" 2>/dev/null |
+               awk -F: '/^pub/{print $2; exit}') || return 1
+    case "$validity" in
+        f|u) return 0 ;;   # fully or ultimately valid: locally signed and trusted
+        "")  return 1 ;;   # not in the keyring at all
+        *)   return 1 ;;   # present but not trusted - populate has not run
+    esac
+}
+
+if [ "$FORCE" -eq 0 ] && ! key_ok; then
+    die "The mxarch signing key is not trusted in this system's pacman keyring.
+
+Enabling the repository now would leave pacman unable to run at all, so this
+is being refused. Fix the keyring first:
+
+    sudo pacman-key --init        # only if the keyring has no master key yet
+    sudo pacman-key --populate mxarch
+
+then run mxarch-enable again. Use --force to skip this check."
+fi
+
+if grep -q '^[[:space:]]*\[mxarch\]' "$CONF"; then
+    echo "The mxarch repository is already enabled in $CONF."
+    exit 0
+fi
+
+# Any other mention of mxarch means the file has been edited in a way this
+# script should not guess at - a commented-out section, an abandoned edit, a
+# differently named section already using our mirrorlist. Appending a second
+# one could give pacman a duplicate or a conflicting definition.
+if grep -qi 'mxarch' "$CONF"; then
+    die "$CONF already mentions mxarch but has no [mxarch] section.
+Refusing to guess. Add the section by hand instead:
+
+    [mxarch]
+    SigLevel = Required DatabaseRequired
+    Include = $MIRRORLIST"
+fi
+
+backup="$CONF.$(date +%Y%m%d%H%M%S).bak"
+cp -a "$CONF" "$backup"
+
+# Appended last, so the official repositories keep precedence over mxarch.
+cat >> "$CONF" <<EOF
+
+[mxarch]
+SigLevel = Required DatabaseRequired
+Include = $MIRRORLIST
+EOF
+
+echo "Enabled the mxarch repository in $CONF."
+echo "Previous file saved as $backup"
+echo
+echo "Now run:  pacman -Syu"

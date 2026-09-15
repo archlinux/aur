@@ -1,0 +1,19 @@
+pkgbase = mxarch-repo
+	pkgdesc = GPG key and mirror list for the MX Linux Arch repository (mxarch)
+	pkgver = 20260915
+	pkgrel = 3
+	url = https://arch.mxrepo.com/
+	install = mxarch-repo.install
+	arch = any
+	license = GPL-3.0-or-later
+	backup = etc/pacman.d/mxarch-mirrorlist
+	source = mxarch.gpg
+	source = mxarch-trusted
+	source = mxarch-mirrorlist
+	source = mxarch-enable
+	sha256sums = 47b78f0737ff2a32800cfa53ccae7155b1272536d975c6a790845716bd85f7ff
+	sha256sums = 05a91e8443e7b11ba4e23442d330862260554accdeec9d690d01042b32ac05f3
+	sha256sums = 23da909be4603b561e55433998ee9d79d42dab32444c6094fac608d39bbd9733
+	sha256sums = b8aea3d8e6ab0d92cbd02a88e143bf69d61bbaa3dd137050ee141950693fc59f
+
+pkgname = mxarch-repo

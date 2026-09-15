@@ -1,0 +1,53 @@
+# Install scripts run chrooted into the install root, so these paths are
+# relative on purpose.
+
+post_install() {
+    # No guard on whether the keyring looks usable: the previous version tested
+    # `pacman-key -l`, which succeeds on a keyring that has no master signing
+    # key, so --populate then failed and the failure was swallowed. The package
+    # reported success, installed nothing into the keyring, and told the user to
+    # enable the repository - which wedges pacman. Run it, and say so if it
+    # fails.
+    if ! usr/bin/pacman-key --populate mxarch; then
+        cat <<'MSG'
+
+==> WARNING: the mxarch signing key could NOT be added to the pacman keyring.
+
+    Do not enable the repository until this is fixed. pacman refuses to run at
+    all while an enabled repository's database cannot be verified - including
+    the transaction that would repair it.
+
+    Usually the keyring has no master signing key yet:
+
+        sudo pacman-key --init
+        sudo pacman-key --populate mxarch
+
+MSG
+        return 0
+    fi
+
+    if ! grep -q '^\[mxarch\]' etc/pacman.conf 2>/dev/null; then
+        cat <<'MSG'
+
+==> The mxarch repository is installed but not enabled yet.
+
+    Run:  sudo mxarch-enable
+
+    That adds the [mxarch] section to /etc/pacman.conf, keeping a backup of
+    the previous file. Then:  sudo pacman -Syu
+
+MSG
+    fi
+}
+
+# Also on upgrade: the key is re-populated so a renewed expiry date takes
+# effect, and the reminder reappears only while [mxarch] is still missing.
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    if usr/bin/pacman-key -l >/dev/null 2>&1; then
+        usr/bin/pacman-key --delete A220D6ABB427CF38A8C5E560442D90008FE173AE 2>/dev/null || true
+    fi
+}

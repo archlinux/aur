@@ -1,0 +1,5 @@
+##
+## MX Linux Arch repository (mxarch)
+## https://arch.mxrepo.com/
+##
+Server = https://arch.mxrepo.com/os/$arch
