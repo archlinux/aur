@@ -3,7 +3,7 @@
 pkgbase=wx-tools
 pkgname=wx-tools
 pkgver=1.2.0
-pkgrel=5
+pkgrel=6
 groups=()
 pkgdesc="wxTools: A Serial Port, UDP, TCP, and WebSocket Debugging Assistant Based on wxWidgets."
 arch=($CARCH)
@@ -61,7 +61,7 @@ build() {
         -DWXT_GENERATE_MSIX:BOOL=OFF \
         -B build \
         -G Ninja \
-        -Wno-dev
+        -Wno-author
 
     ninja -C build
 }
