@@ -1,7 +1,7 @@
 # Maintainer: Cask Strength
 
 pkgname=archbeg
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Software to use AUR (Arch User Repository) outside AUR."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('gcc')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('f80f2735b604b09139a2c735e3b0e20fad59fce46faf38684ebec7cf52b21f27a452d453ef6f1587e4b9fc389d71319a5bf73f2d1b745a15accb511d28fb11a3')
+sha512sums=('dcc55fe6996f76bbfa7ad030c5bfec408c16ec0b93157d845dfd5a03acd944c7f7973bcea2bd80f70e7cc7d89c08afa01aa933626b49d9aae506a3352871f4ba')
 
 build() {
   cd "$pkgname"
