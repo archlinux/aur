@@ -3,7 +3,7 @@
 # Contributor: Max Bruckner <max at maxbruckner dot de>
 pkgname=smooth
 pkgver=0.9.10
-pkgrel=3
+pkgrel=4
 pkgdesc="An object oriented C++ class library"
 arch=('x86_64')
 url="http://www.smooth-project.org/"
@@ -14,9 +14,12 @@ depends=(
   'fribidi'
   'gtk3'
   'libcpuid'
+  'libiconv'
   'libjpeg-turbo'
   'libpng'
+  'libwebp'
   'libxml2'
+  'zlib'
 )
 provides=('libsmooth-0.9.so=0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/enzo1982/smooth/archive/v${pkgver}.tar.gz")
@@ -29,12 +32,31 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  make config=systemlibcpuid
+  make config="systemlibbz2,\
+    systemlibcpuid,\
+    systemlibcurl,\
+    systemlibfribidi,\
+    systemlibiconv,\
+    systemlibjpeg,\
+    systemlibpng,\
+    systemlibwebp,\
+    systemlibxml2,\
+    systemzlib"
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  make config="systemlibbz2,\
+    systemlibcpuid,\
+    systemlibcurl,\
+    systemlibfribidi,\
+    systemlibiconv,\
+    systemlibjpeg,\
+    systemlibpng,\
+    systemlibwebp,\
+    systemlibxml2,\
+    systemzlib" \
+    DESTDIR="${pkgdir}" install
 
-  ln -s "/usr/lib/libsmooth-${pkgver%.*}.so.0" "${pkgdir}/usr/lib/libsmooth.so"
+  ln -sv "/usr/lib/libsmooth-${pkgver%.*}.so.0" "${pkgdir}/usr/lib/libsmooth.so"
 }
