@@ -1,20 +1,45 @@
 pkgbase = python-fastmcp
 	pkgdesc = The fast, Pythonic way to build MCP servers and clients.
 	pkgver = 4.0.3
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/PrefectHQ/fastmcp
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-setuptools
-	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-hatchling
 	makedepends = python-uv-dynamic-versioning
-	makedepends = python-uv-build
-	depends = python
 	source = git+https://github.com/PrefectHQ/fastmcp.git#tag=v4.0.3
 	sha256sums = b0fc2ad48bc8d3f5ab282f0c5582ba100188f940ebd1aaf56c1d785e85990956
 
+pkgname = python-fastmcp-remote
+	pkgdesc = Python stdio bridge for remote MCP servers, powered by FastMCP
+	depends = python
+	depends = python-fastmcp-slim
+
+pkgname = python-fastmcp-slim
+	pkgdesc = Dependency-slim FastMCP package (provides the fastmcp module)
+	depends = python
+	depends = python-mcp-types
+	depends = python-platformdirs
+	depends = python-pydantic
+	depends = python-pydantic-settings
+	depends = python-dotenv
+	depends = python-rich
+	depends = python-typing_extensions
+
+pkgname = python-fastmcp-tasks
+	pkgdesc = Background task execution for FastMCP servers (SEP-2663)
+	depends = python
+	depends = python-cryptography
+	depends = python-fastmcp-slim
+	depends = python-pydocket
+
 pkgname = python-fastmcp
+	pkgdesc = The fast, Pythonic way to build MCP servers and clients (meta package)
+	depends = python
+	depends = python-fastmcp-remote
+	depends = python-fastmcp-slim
+	depends = python-fastmcp-tasks
