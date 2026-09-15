@@ -3,3 +3,4 @@ pkg/
 online/
 *.pkg.tar.zst
 *.tar.gz
+*.tar.zst
