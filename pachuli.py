@@ -807,6 +807,16 @@ class Pachuli:
         self.resolve_deps(srcinfo["depends"] + srcinfo["makedepends"], pkg)
 
         makepkg_cmd = ["makepkg", "-scr"]
+        if self.opts.noconfirm:
+            # Ohne dies fragt makepkg beim Nachinstallieren fehlender
+            # Build-/Laufzeit-Abhängigkeiten interaktiv "Proceed with
+            # installation? [Y/n]" — im Gegensatz zu praktisch jedem
+            # anderen pacman-Aufruf in dieser Datei (siehe z.B.
+            # install_cmd unten), der --noconfirm bereits korrekt
+            # weiterreicht. makepkg leitet dieses Flag an seinen eigenen
+            # internen pacman-Aufruf für die Abhängigkeitsauflösung
+            # weiter, siehe makepkg(8).
+            makepkg_cmd.append("--noconfirm")
         if self.opts.cleanbuild:
             # -C/--cleanbuild: $srcdir wird vor dem Bauen komplett entfernt,
             # sodass wirklich frisch aus den Quellen gebaut wird (keine
@@ -814,8 +824,34 @@ class Pachuli:
             makepkg_cmd.append("-C")
         result = subprocess.run(makepkg_cmd, cwd=pkg_dir)
         if result.returncode != 0:
-            log_failed_build(pkg, makepkg_cmd)
-            return False
+            if self.opts.cleanbuild:
+                # Schon mit -C gebaut und trotzdem fehlgeschlagen - ein
+                # erneuter Clean-Build würde am selben Fehler scheitern,
+                # es gibt nichts mehr zu wiederholen.
+                log_failed_build(pkg, makepkg_cmd)
+                return False
+            # Ein fehlgeschlagener Build (z.B. ein abgebrochenes check())
+            # kann Reste in $srcdir zurücklassen - etwa ein halb
+            # befülltes venv aus check() oder alte Objektdateien.
+            # makepkg's eigenes -c räumt $srcdir nur NACH einem
+            # ERFOLGREICHEN Build auf, sodass solche Reste sonst
+            # stillschweigend liegen bleiben und schon den nächsten
+            # Versuch mit einem verwirrenden Fehler blockieren (z.B.
+            # FileExistsError beim Wiederbefüllen eines Test-venvs),
+            # obwohl das Paket aus frischen Quellen problemlos bauen
+            # würde. Ein einziger automatischer Neuversuch mit -C
+            # (frisches $srcdir) behebt das, ohne bei einem echten
+            # Build-Fehler in eine Schleife zu laufen.
+            msg(
+                f"Build fehlgeschlagen, versuche erneut mit sauberem Build: {pkg}",
+                Colors.YELLOW, self.opts.quiet,
+            )
+            retry_cmd = makepkg_cmd + ["-C"]
+            result = subprocess.run(retry_cmd, cwd=pkg_dir)
+            if result.returncode != 0:
+                log_failed_build(pkg, retry_cmd)
+                return False
+            makepkg_cmd = retry_cmd
 
         # `makepkg --packagelist` liefert die exakten, tatsächlich gebauten
         # Paketdateien (inkl. korrektem PKGEXT und ALLER pkgname-Einträge
@@ -838,7 +874,20 @@ class Pachuli:
         install_cmd = ["pacman", "-U", *[str(p) for p in pkg_files], "--needed"]
         if self.opts.noconfirm:
             install_cmd.append("--noconfirm")
-        escalate(install_cmd, self.opts)
+        result = escalate(install_cmd, self.opts)
+        if result.returncode != 0:
+            # Bisher wurde das hier komplett ignoriert: build() gab
+            # unconditional True zurück, selbst wenn der eigentliche
+            # `pacman -U` fehlschlug oder die pkexec-Authentifizierung
+            # abgebrochen/verweigert wurde — das frisch gebaute Paket
+            # blieb dann unbemerkt uninstalliert, während der Rest des
+            # Laufs (und jede Erfolgsmeldung danach) so tat, als sei
+            # alles gutgegangen.
+            print(f"{Colors.RED}error:{Colors.RESET} Installation von "
+                  f"'{pkg}' fehlgeschlagen (pacman -U, Exit-Code "
+                  f"{result.returncode})", file=sys.stderr)
+            log_failed_build(pkg, install_cmd)
+            return False
 
         for tarball in pkg_dir.glob("*.tar.*"):
             tarball.unlink(missing_ok=True)
@@ -1170,10 +1219,23 @@ class Pachuli:
                 )
             print(f"\n{Colors.BOLD}Packages ({len(upgradable) + len(devel_pkgs)}){Colors.RESET} {names}\n")
             if yesno("Proceed with package upgrade", self.opts.noconfirm):
+                failed = []
                 for pkg, _ in upgradable:
-                    self.get(pkg)
+                    if not self.get(pkg):
+                        failed.append(pkg)
                 for pkg in devel_pkgs:
-                    self.get(pkg)
+                    if not self.get(pkg):
+                        failed.append(pkg)
+                if failed:
+                    # Bisher wurde hier jeder Rückgabewert von self.get()
+                    # verworfen — ein fehlgeschlagenes Paket (siehe build()
+                    # oben) blieb dadurch folgenlos: der Gesamtlauf endete
+                    # trotzdem mit Exit-Code 0, als sei alles installiert
+                    # worden, obwohl das betroffene Paket unverändert auf
+                    # der alten Version blieb.
+                    self.opts.noview = noview_prev
+                    die(f"{len(failed)} Paket(e) konnten nicht aktualisiert "
+                        f"werden: {', '.join(failed)}")
 
         self.opts.noview = noview_prev
 
@@ -1281,12 +1343,25 @@ class Pachuli:
                 else:
                     msg(f"'{pkg}' übersprungen, '{provider}' bleibt installiert", quiet=self.opts.quiet)
 
+        failed_aur = []
         for pkg in aur_pkgs:
             if self.aur.exists(pkg):
                 if not self.get(pkg):
                     msg(f"Exited {pkg} build early", Colors.YELLOW, self.opts.quiet)
+                    failed_aur.append(pkg)
             else:
                 die(f"unable to find package '{pkg}', is the name spelled correctly?")
+
+        if failed_aur:
+            # Bisher wurde ein Build-/Install-Fehlschlag hier nur als gelbe
+            # Warnung ausgegeben, während die Funktion danach ganz normal
+            # zurückkehrte — der Gesamtlauf (und jeder Aufrufer, der nur den
+            # Exit-Code auswertet, z.B. Pachul selbst) sah das als
+            # vollständigen Erfolg an, obwohl das betroffene Paket
+            # unverändert auf der alten Version blieb. Siehe dieselbe
+            # Problematik oben in upgrade().
+            die(f"{len(failed_aur)} AUR-Paket(e) konnten nicht installiert "
+                f"werden: {', '.join(failed_aur)}")
 
     # -- Entfernen --------------------------------------------------
 
