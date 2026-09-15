@@ -1,45 +1,48 @@
-# Maintainer: Josh Holmer <jholmer.in@gmail.com>
+# Maintainer: TheFeelTrain <the@feeltra.in>
+# Contributor: Josh Holmer <jholmer.in@gmail.com>
 
-_plug=mlrt
-pkgname=vapoursynth-plugin-${_plug}-migx-runtime-git
-pkgver=811.1f166ba
-pkgrel=2
+_plug=vs-mlrt
+pkgname=vapoursynth-plugin-mlrt-migx-runtime-git
+pkgver=672.c2e33e0
+pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (MIGraphX runtime)"
 arch=('x86_64')
-url='https://github.com/AmusementClub/vs-mlrt'
+url='https://github.com/Ichunjo/vs-mlrt'
 license=('GPL-3.0-only')
-depends=('vapoursynth' 'migraphx')
-makedepends=('git' 'ninja' 'cmake' 'jq' 'vapoursynth-api3-headers')
+depends=(
+	'vapoursynth' 
+	'migraphx'
+	'python'
+)
+makedepends=(
+	'git' 
+	'ninja' 
+	'cmake' 
+	'jq'
+)
 optdepends=()
-provides=("vapoursynth-plugin-${_plug}")
-conflicts=("vapoursynth-plugin-${_plug}")
-
-# Function to fetch the latest release version
-get_latest_release_version() {
-	curl --silent "https://api.github.com/repos/AmusementClub/vs-mlrt/releases/latest" | jq -r .tag_name
-}
-
-# Fetch the latest release version
-latest_release=$(get_latest_release_version)
+provides=('vapoursynth-plugin-mlrt')
+conflicts=('vapoursynth-plugin-mlrt')
 
 source=(
-	"${_plug}::git+https://github.com/AmusementClub/vs-mlrt.git"
-	"models-${latest_release}.7z::https://github.com/AmusementClub/vs-mlrt/releases/download/${latest_release}/models.${latest_release}.7z"
+	"${_plug}::git+${url}.git"
+	"https://raw.githubusercontent.com/Jaded-Encoding-Thaumaturgy/vs-wheels/refs/heads/master/vsmlrt/migx/CMakeLists.txt"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=(
+	'SKIP'
+	'SKIP'
+)
 
 pkgver() {
 	cd "${_plug}"
-
 	_rev=$(git rev-list --count --all)
 	_hash=$(git rev-parse --short HEAD)
 	printf "%s.%s" "$_rev" "$_hash"
 }
 
 build() {
-	cmake -S "${_plug}/vsmigx" -B build -G Ninja -Wno-dev -LA \
+	cmake -S . -B build -G Ninja -Wno-dev -LA \
 		-D CMAKE_BUILD_TYPE=Release \
-		-D VAPOURSYNTH_INCLUDE_DIRECTORY="/usr/include/vapoursynth" \
 		-D CMAKE_CXX_COMPILER=g++ \
 		-D CMAKE_CXX_FLAGS="${CXXFLAGS} -Wall -ffast-math" \
 		-D migraphx_DIR=/opt/rocm/lib/cmake/migraphx \
@@ -56,18 +59,6 @@ build() {
 }
 
 package() {
-	site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
-	PLUGINDIR=$(python -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
-
-	# The cmake script puts the library inside a `lib` dir, which we don't want, so we have to install it manually
-	install -Dm755 "build/libvsmigx.so" "${pkgdir}${PLUGINDIR}/libvsmigx.so"
-	# The plugin looks for this binary in this specific location, so make a symlink to it
-	mkdir "${pkgdir}${PLUGINDIR}/vsmlrt-hip"
-	ln -s /opt/rocm/bin/migraphx-driver "${pkgdir}${PLUGINDIR}/vsmlrt-hip/migraphx-driver"
-	for i in $(find models* -type f); do install -Dm644 "${i}" "${pkgdir}${PLUGINDIR}/${i}"; done
-
-	install -Dm644 "${_plug}/scripts/vsmlrt.py" "${pkgdir}${site_packages}/vsmlrt.py"
-
-	install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
-	install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    _plugindir=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
+	cmake --install build --prefix "${pkgdir}${_plugindir}"
 }
