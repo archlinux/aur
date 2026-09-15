@@ -20,7 +20,7 @@ license=('Apache-2.0')
 
 provides=("${_appname}")
 
-makedepends=('cargo')
+makedepends=('cargo' 'pnpm')
 depends=('glibc' 'libgcc' 'zlib')
 
 options=('!lto' '!strip')
@@ -30,13 +30,13 @@ sha256sums=('9aff2d45b1c9a0d999e205b3a86564bd14f5541fb6e485dd61ac34e4cb32312c')
 
 
 prepare() {
-	cd "${pkgname}-cli-${pkgver}" || exit
+	cd "${pkgname}-cli-${pkgver}"
 
 	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-	cd "${pkgname}-cli-${pkgver}" || exit
+	cd "${pkgname}-cli-${pkgver}"
 
 	cd "web"
 		export PNPM_HOME="$srcdir/.pnpm-home"
@@ -47,18 +47,18 @@ build() {
 	cd ..
 
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release
+	RUSTFLAGS="$RUSTFLAGS -C opt-level=3 -C target-cpu=native" cargo build --frozen --release
 }
 
 check() {
-	cd "${pkgname}-cli-${pkgver}" || exit
+	cd "${pkgname}-cli-${pkgver}"
 
 	export CARGO_TARGET_DIR=target
 	cargo test --frozen --release
 }
 
 package() {
-	cd "${pkgname}-cli-${pkgver}" || exit
+	cd "${pkgname}-cli-${pkgver}"
 
 	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
