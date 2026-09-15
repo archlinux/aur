@@ -1,6 +1,6 @@
 pkgbase = python-vondb
 	pkgdesc = VON: vEnhance's Olympiad Navigator
-	pkgver = 3.6.3
+	pkgver = 3.6.4
 	pkgrel = 1
 	url = https://github.com/vEnhance/von
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-vondb
 	depends = python-yaml
 	optdepends = fzf: for fuzzy finding
 	optdepends = texlive-latex: for LaTeX support
-	source = https://files.pythonhosted.org/packages/source/v/vondb/vondb-3.6.3.tar.gz
-	sha256sums = fc53d3b8dbb99aba0ccb17e35b21de535bcd3ab383723f302be8e7b1384fa6d2
+	source = https://files.pythonhosted.org/packages/source/v/vondb/vondb-3.6.4.tar.gz
+	b2sums = 7bc02612035342711295aa93e3f2071df0bac5363b387d7cddc95c407f785d7d7a238ecf777d1d585920f25af07dea1b16c687a32584cc51fe8f11e087fd345a
 
 pkgname = python-vondb
