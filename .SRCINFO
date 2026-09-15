@@ -1,0 +1,19 @@
+pkgbase = repadio-bin
+	pkgdesc = Pure-Rust audio player built with Symphonia and CPAL on the Repose GUI framework
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/mlm-games/repadio
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	provides = repadio
+	conflicts = repadio
+	options = !strip
+	source = icon.svg::https://raw.githubusercontent.com/mlm-games/repadio/main/others/packaging/icon.svg
+	sha256sums = SKIP
+	source_x86_64 = repadio-0.3.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/repadio/releases/download/v0.3.1/repadio-0.3.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 852cb13f4c224ca193b25a01ad165e4fb5f8e116c1472e6f68e13f214cf0d314
+	source_aarch64 = repadio-0.3.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/repadio/releases/download/v0.3.1/repadio-0.3.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4dac5ef6aabf8fd255a4350ae495f7d2f3ea8ebb7f75d73a0fe9131a9f86c7c3
+
+pkgname = repadio-bin
