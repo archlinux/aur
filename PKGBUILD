@@ -1,7 +1,7 @@
 # Maintainer: Capricornus007 <sihaogang@gmail.com>
 
 pkgbase=linux-cjktty
-pkgver=7.2.4.arch1
+pkgver=7.2.6.arch1
 pkgrel=1
 pkgdesc='Linux (with cjktty-patches)'
 url='https://github.com/archlinux/linux'
@@ -41,18 +41,18 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('01710ee01737dac492f1bae52becd057e08d20d11589089aa06accff415c28dd'
+sha256sums=('039aef84f2b0994aeda3f4fcfc3d02ec9d7a9bbb9020ea264c43f446c860f606'
             'SKIP'
-            '07b0526c8d8b9bae9dacf1a90aa77a92de8fca505ea35d3b523f28556361fc16'
+            'b9bb402b9d4808c2edb5d395262549837ac5326a6a5c191c9812e85ee7a88095'
             'SKIP'
-            'ea21308436ee9e93924516e6cd1287c72fc01554a56b568bc0a0a94ab8afc6ce'
+            '25a6d451d88c08b2033b0b5e485d318b25763690341e14e38707ca443ea43d3f'
             '9c40a638126adc2b5973f00aa09b30ce1b105c716f230c2fab9d538b254da74b'
             'c648ff21f0a5714743bbae85d6c6e1ed2bf961b6bca976d4c6b4c8d3f6b2739f')
-b2sums=('1dc0bee4d040846ac31672400339c179daf68919b2d923261205febbb4ff654d1ac21a4bc700f5bd46a7676335692565678b8142549d83c1d0a0da3b9db2e3d4'
+b2sums=('bbbb558b48b65cf544fe74652437f4aab6578fbb523f4bfef401cecfed8ea94fc939dbab73f2d30216b0729165b8f4a33e23993b082ca9285f259535e7441688'
         'SKIP'
-        '911acab50d12d1b81980ae5b639d222e6c2b4471c08b2eb0bf6221036ca435b18a836aac8855834acc56a0a6b01eb60087775df4f83f33d060410327a4786f30'
+        'dd50bdd2444ac3ba9b2920fb5a343748f534a9a156eba3fb65e093be78bb8d0211b68213b58f6c8137e0f868c38aa44faa857bf897e9128f0b55eb96cc058512'
         'SKIP'
-        '60a991bded2a41a9b3880445f5cefe3f19e593b2204a007a423d8a5f2858bbc7d3babab02ffebd9ff8fd37f3a1a32b3ca2512cbe768f5cb154deffacfbfee28a'
+        '267753ad20bd6004c8ea7f2a844d543b29f194e4dea19e57b46e303c05fd888ddcb97e830603c8bc091753b8f737b3c5328f6cd1d9a55e7883245f9a6cb0bace'
         'eb7ad3aa7b873786cb084247edfc8e8029edaf819d2f25e08e91f36c58e76fd225561bb526287b53353079ace71afae7821d1259b7156d15d2de0a14e7da0a35'
         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678')
 
