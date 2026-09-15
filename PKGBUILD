@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/RSPTCPServer/build"
-  make -j$(nproc)
+  make
 }
 
 package() {
