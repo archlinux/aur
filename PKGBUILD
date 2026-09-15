@@ -1,7 +1,8 @@
 # Maintainer: Zorbatron <46525467+Zorbatron@users.noreply.github.com>
 # Maintainer: FuzzyCheese
 
-pkgname=rsp_tcp-git
+_pkgname=rsp_tcp
+pkgname="${_pkgname}-git"
 pkgver=v0.1.beta.r16.g61b8c91
 pkgrel=2
 pkgdesc="a rtl_tcp compatible IQ server for the RSP range of SDRPlay SDR"
@@ -21,11 +22,9 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/RSPTCPServer"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_POLICY_VERSION_MINIMUM='3.5' \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		..
+  cmake -S . -B build/ \
+    -D'CMAKE_POLICY_VERSION_MINIMUM=3.5' \
+    -D'CMAKE_INSTALL_PREFIX=/usr'
 }
 
 build() {
@@ -34,6 +33,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/RSPTCPServer/build/"
+  cd "${srcdir}/RSPTCPServer/"
+  install -Dm 644 LICENSE -T "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+  cd build/
   make DESTDIR="${pkgdir}" install
 }
