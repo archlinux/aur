@@ -1,6 +1,6 @@
 pkgbase = septabee
 	pkgdesc = A DAW built around audio rate parameter modulation and a ridiculous amount of optimization.
-	pkgver = B_T10
+	pkgver = B_T11
 	pkgrel = 1
 	url = https://septabee.nekoweb.org
 	install = septabee.install
@@ -11,9 +11,9 @@ pkgbase = septabee
 	depends = libstdc++
 	optdepends = libpipewire: Audio playback via pipewire
 	options = !debug
-	source = https://septabee.nekoweb.org/important_stuff/SEPTABEE_DOWNLOADS/version_B/septabee_linux_B_T10.7z
+	source = https://septabee.nekoweb.org/important_stuff/SEPTABEE_DOWNLOADS/version_B/septabee_linux_B_T11.7z
 	source = septabee.desktop
-	sha256sums = 309274d30e2f9b5b886d98b265e214c3813242c8a3cc0334cd5715cbc98a6904
+	sha256sums = d94dc0917e7ff99331702343d65909af458eb906ab9acb9384c3e235e1a33d0f
 	sha256sums = e3b414eb7a8fa5d0b565873cb4753b79dac456e7d0b4e9bc25f1305bcf036734
 
 pkgname = septabee
