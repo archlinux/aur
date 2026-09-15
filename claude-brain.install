@@ -1,45 +1,77 @@
-# systemd does not restart user services on package upgrade, so without this the
-# previous version keeps running while the new dashboard is served off disk. The
-# two then disagree about which routes exist and the UI fails with a bare 404.
+# The brain wires itself into Claude Code when its daemon starts (MCP server, session
+# hooks, recall-first instructions, recording skill) — that has to happen as the user,
+# in the user's home, which a package script running as root must not touch. So the
+# script's whole job is to make sure the daemon starts: enable it on install, restart it
+# on upgrade. systemd does not restart user services on package upgrade by itself, and
+# without the restart the previous version keeps running while the new dashboard is
+# served off disk, disagreeing about which routes exist.
 #
-# Root can reach a logged-in user's service manager through --machine=<user>@.host.
-# Every step is best-effort: a machine with no logged-in user, no systemd-machined,
-# or the unit simply not enabled must never fail the pacman transaction.
+# Root reaches a logged-in user's service manager through --machine=<user>@.host. Every
+# step is best-effort: a machine with no logged-in user, no systemd-machined, or a user
+# who never enabled the unit must never fail the pacman transaction.
+_users() {
+	loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'
+}
+
+_user_systemctl() {
+	local u=$1
+	shift
+	systemctl --machine="${u}@.host" --user "$@" 2>/dev/null
+}
+
 _restart_for_users() {
 	local u
-	for u in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'); do
-		systemctl --machine="${u}@.host" --user is-active --quiet claude-brain.service 2>/dev/null || continue
-		if systemctl --machine="${u}@.host" --user restart claude-brain.service 2>/dev/null; then
-			printf '  claude-brain restarted for %s — the dashboard and server now match.\n' "$u"
+	for u in $(_users); do
+		_user_systemctl "$u" is-active --quiet claude-brain.service || continue
+		if _user_systemctl "$u" restart claude-brain.service; then
+			printf '  claude-brain restarted for %s — it re-wires Claude Code itself; restart Claude Code to load the MCP tools.\n' "$u"
 		else
 			printf '  Could not restart claude-brain for %s. Run: systemctl --user restart claude-brain\n' "$u"
 		fi
 	done
 }
 
-post_upgrade() {
-	_restart_for_users || true
-	# 0.5.0 added the MCP server; it is registered by integrate, which older installs
-	# ran before it existed.
-	if (( $(vercmp "$2" 0.5.0) < 0 )); then
-		cat <<'MSG'
-  claude-brain 0.5 serves the brain to Claude Code as MCP tools. Register them with:
+_enable_for_users() {
+	local u any=1
+	for u in $(_users); do
+		if _user_systemctl "$u" enable --now claude-brain.service; then
+			any=0
+			printf '  claude-brain enabled and started for %s.\n' "$u"
+		fi
+	done
+	return $any
+}
 
-      claude-brain integrate
+post_install() {
+	if _enable_for_users; then
+		cat <<'MSG'
+  The brain wires itself into Claude Code as it starts: MCP server, session hooks,
+  recall-first instructions, recording skill. Restart Claude Code once to load the
+  tools, then pick your vault at http://localhost:6868 (or: claude-brain vault <path>).
+
+MSG
+	else
+		cat <<'MSG'
+  Enable the brain with:
+
+      systemctl --user enable --now claude-brain
+
+  It wires itself into Claude Code on first start (MCP server, hooks, instructions,
+  skill); restart Claude Code once afterwards to load the tools.
 
 MSG
 	fi
 }
 
-post_install() {
-	cat <<'MSG'
-  Enable the brain with:
-
-      systemctl --user enable --now claude-brain
-
-  Then wire it into Claude Code (MCP server, session hooks, recall-first instructions):
-
-      claude-brain integrate
+post_upgrade() {
+	_restart_for_users || true
+	# Installs older than 0.5 were wired by hand, before the MCP server existed. A running
+	# daemon has just re-wired them above; one that is not running needs to start.
+	if (( $(vercmp "$2" 0.5.0) < 0 )); then
+		cat <<'MSG'
+  claude-brain 0.5 serves the brain to Claude Code as MCP tools. A running daemon
+  registers them itself; otherwise: systemctl --user enable --now claude-brain
 
 MSG
+	fi
 }
