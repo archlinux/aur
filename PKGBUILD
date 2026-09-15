@@ -30,27 +30,27 @@ sha256sums=('455530cb4852e99e86f625a680fbe92fbba31dd7ce7cce1a469802c2626bad5c')
 
 
 prepare() {
-	cd "${pkgname}-${pkgver}" || exit
+	cd "${pkgname}-${pkgver}"
 
 	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-	cd "${pkgname}-${pkgver}" || exit
+	cd "${pkgname}-${pkgver}"
 
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release
+	RUSTFLAGS="$RUSTFLAGS -C opt-level=3 -C target-cpu=native" cargo build --frozen --release
 }
 
 check() {
-	cd "${pkgname}-${pkgver}" || exit
+	cd "${pkgname}-${pkgver}"
 
 	export CARGO_TARGET_DIR=target
 	cargo test --frozen --release
 }
 
 package() {
-	cd "${pkgname}-${pkgver}" || exit
+	cd "${pkgname}-${pkgver}"
 
 	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
