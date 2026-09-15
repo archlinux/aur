@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="The verbose ed — a drop-in compatible ed clone with friendly errors, written in pure-stdlib Rust."
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('2d7dc6805c66498d0338a9bebed4d5e4e5c565006554463a17101a1961891dd7')
-sha256sums_aarch64=('43882f798aedde04a143eecadda8afa93754b28798c9e93e8e2681e2a56f6b32')
+sha256sums_x86_64=('d7cd82392aa16866ce343ef97267ad9988f8cdc6767c5425fbe8313986ffe5fb')
+sha256sums_aarch64=('e32a3d7b8de633a003eebd098fde1fe89440eef49c2672b8ca01a3b3bf2a5826')
 
 
 case ${CARCH} in
