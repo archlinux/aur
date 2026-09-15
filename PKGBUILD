@@ -2,7 +2,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=virtualbox-ext-oracle
-pkgver=7.2.16
+pkgver=7.2.18
 _filever="${pkgver}"
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Extension Pack'
@@ -14,7 +14,7 @@ optdepends=('rdesktop: client to connect vm via RDP')
 options=('!strip')
 source=("https://download.virtualbox.org/virtualbox/${_filever}/Oracle_VirtualBox_Extension_Pack-${_filever}.vbox-extpack")
 noextract=("Oracle_VirtualBox_Extension_Pack-${_filever}.vbox-extpack")
-sha256sums=('d1e268cfa05223fd651703043af09f39dfb90da259ce9ec093d9d9b022f19689')
+sha256sums=('e06834239947db06cc077d464bbb15d6441917ca03573e518506344dc28b64b9')
 
 prepare() {
   mkdir Oracle_VirtualBox_Extension_Pack/
