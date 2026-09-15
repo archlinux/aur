@@ -1,0 +1,7 @@
+clean.sh
+*.pkg.tar
+*.zst
+*.tar.gz
+*.deb
+pkg/
+src/

@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+
+# update SRCINFO before committing
+if [ "$(git config --bool aur.hook.srcinfo)" != "false" ]; then
+
+  echo "aur.hook.srcinfo: updating .SRCINFO ..."
+  makepkg --printsrcinfo > .SRCINFO
+  git add .SRCINFO
+
+
+fi
+
+# update SRCINFO before committing
+if [ "$(git config --bool aur.hook.clean)" != "false" ]; then
+  echo "Cleaning directories"
+  rm -rf pkg
+  rm -rf src
+  rm -f RemoteDesktopManager_2022*
+  rm -f RemoteDesktopManager_2023*
+  rm -f remote-desktop-manager-2022*
+  rm -f remote-desktop-manager-2023*
+fi

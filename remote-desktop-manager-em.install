@@ -1,0 +1,25 @@
+# Some colored makepkg-like functions
+msg_blue() {
+    printf "${BLUE}==>${ALL_OFF}${BOLD} ${1}${ALL_OFF}\n"
+}
+
+note() {
+    printf "${BLUE}==>${ALL_OFF}${YELLOW} NOTE:${ALL_OFF}${BOLD} ${1}${ALL_OFF}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+BLUE="${BOLD}$(tput setaf 4)"
+YELLOW="${BOLD}$(tput setaf 3)"
+
+post_install() {
+    if [ ! -d "/usr/share/.mono/new-certs/Trust" ]; then
+        msg_blue "Extracting ca-anchors.."
+        mkdir -p /usr/share/.mono/new-certs/Trust
+        trust extract --filter=ca-anchors --format=pem-directory-hash --purpose=server-auth /usr/share/.mono/new-certs/Trust/
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
