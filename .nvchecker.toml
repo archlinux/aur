@@ -1,0 +1,4 @@
+[port-checker-bin]
+source = "git"
+git = "https://github.com/qdm12/port-checker.git"
+prefix = "v"
