@@ -1,13 +1,13 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=go2tv
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Cast media files to Smart TVs and Chromecast devices'
 arch=('x86_64')
 url="https://github.com/alexballas/${pkgname}"
 license=('MIT')
-depends=('glibc' 'libx11' 'libglvnd' 'libpipewire' )
-makedepends=('go' 'pkg-config' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi')
+depends=('glibc' 'libx11' 'libglvnd' 'libpipewire' 'wayland')
+makedepends=('go' 'pkg-config' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libxkbcommon')
 optdepends=('ffmpeg: transcoding support')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
@@ -35,4 +35,4 @@ package() {
   install -Dm644 $pkgname-$pkgver/assets/go2tv-icon-color.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/app.go2tv.go2tv.svg
 }
 
-sha256sums=('6e28cab4545975a118be1a1baeb2e40a1029ce1c23b6e868c0faac5c0d14912b')
+sha256sums=('40496df16e06e4d32deb0f470ef58a0b9a0e92efc4c0e2d9323c4dbf3a5acf9a')
