@@ -2,7 +2,7 @@
 
 _pkgname=swiftly
 pkgname=swiftly-bin
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A Swift toolchain installer and manager, written in Swift."
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ provides=(swift-language)
 conflicts=(swift-language)
 source_x86_64=("https://download.swift.org/${_pkgname}/linux/${_pkgname}-${pkgver}-x86_64.tar.gz")
 source_aarch64=("https://download.swift.org/${_pkgname}/linux/${_pkgname}-${pkgver}-aarch64.tar.gz")
-sha256sums_x86_64=('4c4adb7b7ad7910f38c52b94a938c309586fe395e1fe1538c397384ee36bfff0')
-sha256sums_aarch64=('cc4f912fff6c7f53704fc6d22f9e8ee7fdf6bd574ad276998f7502418bf5a45a')
+sha256sums_x86_64=('243af08fa4a216a1d57f62851ae2a6b6eed215130779ce4635fd03adb230044f')
+sha256sums_aarch64=('f0bece813e2dcee1501ed966a85233f842c31f936dd44219eadb08595a65f968')
 
 package() {
   install -D -m 0755 ${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
