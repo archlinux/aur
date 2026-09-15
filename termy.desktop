@@ -2,9 +2,15 @@
 Name=Termy
 GenericName=Terminal Emulator
 Comment=Minimal GPUI-powered terminal
-Exec=termy
+Exec=termy %F
 Icon=termy
 Terminal=false
 Type=Application
 Categories=System;TerminalEmulator;
 Keywords=shell;prompt;command;commandline;cmd;
+MimeType=inode/directory;x-scheme-handler/termy;
+Actions=open-tab-here;
+
+[Desktop Action open-tab-here]
+Name=Open new Termy tab here
+Exec=termy --working-directory %f

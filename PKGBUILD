@@ -1,6 +1,6 @@
 # Maintainer: Lasse Vestergaard <hello@lassejlv.dk>
 pkgname=termy-bin
-pkgver=0.2.60
+pkgver=0.2.61
 pkgrel=1
 pkgdesc="Minimal GPUI-powered terminal (pre-compiled binary)"
 arch=('x86_64')
@@ -14,11 +14,11 @@ conflicts=('termy')
 source=("termy.desktop"
         "LICENSE::https://raw.githubusercontent.com/lassejlv/termy/v${pkgver}/LICENSE"
         "termy_icon.png::https://raw.githubusercontent.com/lassejlv/termy/v${pkgver}/assets/termy_icon.png")
-b2sums=('310d92f8a26968092eab7c5434701e6c2a8cbb40d0179f12031eb755f1bf743bb3d52e678000a30b247eb7a0c29d81ad38d8c4d042aef6d1beb18707aaefa4f8'
+b2sums=('933ab16ab2a685c780d5c575d02e9d1e97b8a46dc37ea46229d2d1d75bbc8f7af0285a68f6c42edf9dd9d8cc647a7cf24f4d833c8330c7f0a761d82830138bcb'
         '0128ba93a8dc10df25286bd85db9df93ef7ad68abd077d895ba29c2b1af7eca9530dc7146f0941ff128738416e2319ed3f906ac3525f26eff2589be9369149eb'
         '846adc793544028ef1bb111802a2e61013f6a0623f86d8546e27210ded24b1ef367e73ea4cda56a15f40c85a893d2f5c8288bbde035c9d77aa53d2fd223ead90')
 source_x86_64=("termy-${pkgver}-${CARCH}.tar.gz::https://github.com/lassejlv/termy/releases/download/v${pkgver}/Termy-v${pkgver}-linux-${CARCH}.tar.gz")
-b2sums_x86_64=('a1134c21cbde9766f930b984ee0ad7dfd831f056443cc6f2952e55ff957dab241d805f1ba270b1e69b81142a764e4ff7c581c738d8ecc3ad199d7e7611fa5e9a')
+b2sums_x86_64=('3992dad85b2d4923a21c31066b42e19f2d27b3b8f5e27fb481881072fd9c542ed10ffa8496b7fe1e1aecd4eaa6c914f5d91efa57449f3df1fc2f2029486e4825')
 
 package() {
   cd "$srcdir/termy"
@@ -29,8 +29,18 @@ package() {
   install -Dm755 "termy-bin" "$pkgdir/usr/bin/termy-bin"
   install -Dm755 "termy-cli" "$pkgdir/usr/bin/termy-cli"
 
-  # Install desktop file and icon
+  # Install desktop file, icon, and file-manager context actions
   install -Dm644 "$srcdir/termy.desktop" "$pkgdir/usr/share/applications/termy.desktop"
   install -Dm644 "$srcdir/termy_icon.png" "$pkgdir/usr/share/pixmaps/termy.png"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/termy/file-manager/termy-open-tab.desktop" \
+    "$pkgdir/usr/share/kio/servicemenus/termy-open-tab.desktop"
+  install -Dm644 "$srcdir/termy/file-manager/termy-open-tab.desktop" \
+    "$pkgdir/usr/share/kservices5/ServiceMenus/termy-open-tab.desktop"
+  install -Dm644 "$srcdir/termy/file-manager/termy-open-tab.nemo_action" \
+    "$pkgdir/usr/share/nemo/actions/termy-open-tab.nemo_action"
+  install -Dm755 "$srcdir/termy/file-manager/nautilus-open-tab.sh" \
+    "$pkgdir/usr/share/nautilus/scripts/Open new Termy tab here"
+  install -Dm755 "$srcdir/termy/file-manager/nautilus-open-tab.sh" \
+    "$pkgdir/usr/share/caja/scripts/Open new Termy tab here"
 }
