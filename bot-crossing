@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PORT="${PORT:-5274}"
+HOST="${BOT_CROSSING_HOST:-127.0.0.1}"
+export BOT_CROSSING_DATA="${BOT_CROSSING_DATA:-${XDG_DATA_HOME:-$HOME/.local/share}/bot-crossing}"
+URL="http://${HOST}:${PORT}"
+
+usage() {
+    cat <<USAGE
+Usage: bot-crossing [--open] [--help]
+
+Serve Bot Crossing on ${URL}.
+
+  --open      Open ${URL} in the default browser, starting the server
+              first if nothing is listening on the port.
+  -h, --help  Show this help.
+
+Environment:
+  PORT               Port to bind (default 5274)
+  BOT_CROSSING_HOST  Address to bind (default 127.0.0.1)
+  BOT_CROSSING_DATA  Where colony.json lives
+                     (default \${XDG_DATA_HOME:-~/.local/share}/bot-crossing)
+USAGE
+}
+
+listening() {
+    timeout 1 bash -c "exec 3<>/dev/tcp/${HOST}/${PORT}" 2>/dev/null
+}
+
+case "${1:-}" in
+    -h|--help)
+        usage
+        exit 0
+        ;;
+    --open)
+        if listening; then
+            exec xdg-open "${URL}"
+        fi
+        (
+            until listening; do sleep 0.2; done
+            xdg-open "${URL}"
+        ) &
+        ;;
+    "") ;;
+    *)
+        usage >&2
+        exit 1
+        ;;
+esac
+
+mkdir -p "${BOT_CROSSING_DATA}"
+exec node /usr/lib/bot-crossing/server/serve.mjs

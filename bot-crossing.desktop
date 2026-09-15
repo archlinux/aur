@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bot Crossing
+Comment=3D colony sim of your coding-agent threads
+Exec=bot-crossing --open
+Icon=applications-development
+Terminal=false
+Categories=Development;
+Keywords=claude;codex;cursor;agent;colony;
