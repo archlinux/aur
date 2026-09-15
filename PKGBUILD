@@ -1,8 +1,8 @@
 # Maintainer: Dawit Worku <dawitworkujima@gmail.com>
-# CI rewrites 0.2.2 and 2bf5152d4c603c9aa7793172e9472e08bc5ce5c27adb9d17af49b5f53dd58229 and attaches the result to the release,
+# CI rewrites 0.2.3 and 00496966bf9f3343a43c50f2ff7da07c3f3929444e42e7cbf7d644ed23382f76 and attaches the result to the release,
 # so the published PKGBUILD always matches the tarball it installs.
 pkgname=omafil-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="File manager that follows your Omarchy theme"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('omafil')
 options=('!debug' '!strip')
 conflicts=('omafil' 'omafil-git')
 source=("omafil-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/omafil-${pkgver}-x86_64.tar.gz")
-sha256sums=('2bf5152d4c603c9aa7793172e9472e08bc5ce5c27adb9d17af49b5f53dd58229')
+sha256sums=('00496966bf9f3343a43c50f2ff7da07c3f3929444e42e7cbf7d644ed23382f76')
 
 package() {
   cd "${srcdir}"
