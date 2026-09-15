@@ -1,0 +1,4 @@
+[mcjoin]
+source = "git"
+git = "https://github.com/troglobit/mcjoin.git"
+prefix = "v"
