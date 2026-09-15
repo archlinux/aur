@@ -6,6 +6,9 @@ HOST="${BOT_CROSSING_HOST:-127.0.0.1}"
 export BOT_CROSSING_DATA="${BOT_CROSSING_DATA:-${XDG_DATA_HOME:-$HOME/.local/share}/bot-crossing}"
 URL="http://${HOST}:${PORT}"
 
+EXIT_ALREADY_RUNNING=75
+OPEN_WAIT_TRIES=50
+
 usage() {
     cat <<USAGE
 Usage: bot-crossing [--open] [--help]
@@ -21,6 +24,11 @@ Environment:
   BOT_CROSSING_HOST  Address to bind (default 127.0.0.1)
   BOT_CROSSING_DATA  Where colony.json lives
                      (default \${XDG_DATA_HOME:-~/.local/share}/bot-crossing)
+
+Exit status:
+  0  Server exited normally, or --open reused a running server.
+  1  Bad arguments.
+  ${EXIT_ALREADY_RUNNING}  Something is already listening on ${URL}.
 USAGE
 }
 
@@ -38,8 +46,12 @@ case "${1:-}" in
             exec xdg-open "${URL}"
         fi
         (
-            until listening; do sleep 0.2; done
-            xdg-open "${URL}"
+            for ((i = 0; i < OPEN_WAIT_TRIES; i++)); do
+                if listening; then
+                    exec xdg-open "${URL}"
+                fi
+                sleep 0.2
+            done
         ) &
         ;;
     "") ;;
@@ -48,6 +60,12 @@ case "${1:-}" in
         exit 1
         ;;
 esac
+
+if listening; then
+    echo "bot-crossing: something is already listening on ${URL}; not starting a second server." >&2
+    echo "bot-crossing: stop it first, or set PORT to serve elsewhere." >&2
+    exit "${EXIT_ALREADY_RUNNING}"
+fi
 
 mkdir -p "${BOT_CROSSING_DATA}"
 exec node /usr/lib/bot-crossing/server/serve.mjs

@@ -5,6 +5,7 @@ Documentation=https://botcrossing.com https://github.com/Station-Sciences/bot-cr
 [Service]
 ExecStart=/usr/bin/bot-crossing
 Restart=on-failure
+RestartPreventExitStatus=75
 
 [Install]
 WantedBy=default.target

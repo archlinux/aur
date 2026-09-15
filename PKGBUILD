@@ -20,8 +20,8 @@ source=(
     "${_pkgname}.desktop"
 )
 md5sums=('SKIP'
-         '6a2fb5f01cac122032b324d93c75e6c0'
-         'd24bd4afdc73e916476b210d389e5888'
+         '4cc5db920c614169192f5970544ef3f2'
+         'e7b8a8425309723d600b75b6ba9e2c51'
          'b2fa0de39c0aeccb86a2ee880e49723b')
 
 pkgver() {

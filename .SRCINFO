@@ -16,8 +16,8 @@ pkgbase = bot-crossing-git
 	source = bot-crossing.service
 	source = bot-crossing.desktop
 	md5sums = SKIP
-	md5sums = 6a2fb5f01cac122032b324d93c75e6c0
-	md5sums = d24bd4afdc73e916476b210d389e5888
+	md5sums = 4cc5db920c614169192f5970544ef3f2
+	md5sums = e7b8a8425309723d600b75b6ba9e2c51
 	md5sums = b2fa0de39c0aeccb86a2ee880e49723b
 
 pkgname = bot-crossing-git

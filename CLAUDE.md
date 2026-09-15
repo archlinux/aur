@@ -48,3 +48,10 @@ If upstream starts tagging releases, switch to the `git describe --long` form us
 The server binds `127.0.0.1:5274` by default.
 `PORT` and `BOT_CROSSING_HOST` override that,
 and are honoured by both the launcher and upstream's `server/serve.mjs`.
+
+## Already-running handling
+
+The launcher refuses to start if something already listens on the port and exits 75 (`EX_TEMPFAIL`).
+The unit sets `RestartPreventExitStatus=75` so systemd reports one clear failure instead of a restart loop.
+This happens when a manual `bot-crossing` or the desktop entry is already serving and the unit is started afterwards;
+stop the other one first, or set `PORT`.
