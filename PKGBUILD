@@ -70,15 +70,15 @@ backup=(
   'etc/conf.d/vmware'
 )
 source=(
-  "https://voxhost.fr/vmware-aur/14/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
-  "https://voxhost.fr/vmware-aur/14/vmware-tools-freebsd-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://voxhost.fr/vmware-aur/14/vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://voxhost.fr/vmware-aur/14/vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://voxhost.fr/vmware-aur/14/vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://voxhost.fr/vmware-aur/14/vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://voxhost.fr/vmware-aur/14/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://voxhost.fr/vmware-aur/14/vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://voxhost.fr/vmware-aur/14/vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://hessfr.s3.lyn.io.hostmyservers.net/vmware/14/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
+  "https://hessfr.s3.lyn.io.hostmyservers.net/vmware/14/vmware-tools-freebsd-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://hessfr.s3.lyn.io.hostmyservers.net/vmware/14/vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://hessfr.s3.lyn.io.hostmyservers.net/vmware/14/vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://hessfr.s3.lyn.io.hostmyservers.net/vmware/14/vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://hessfr.s3.lyn.io.hostmyservers.net/vmware/14/vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://hessfr.s3.lyn.io.hostmyservers.net/vmware/14/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://hessfr.s3.lyn.io.hostmyservers.net/vmware/14/vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component.tar"
+  "https://hessfr.s3.lyn.io.hostmyservers.net/vmware/14/vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component.tar"
 
   'vmware-bootstrap'
   'vmware-vix-bootstrap'
@@ -169,8 +169,8 @@ makedepends+=(
 )
 
 source+=(
-  "darwinPre15-tools-${_vmware_fusion_ver_full}.zip.tar::https://voxhost.fr/vmware-aur/14/com.vmware.fusion.tools.darwinPre15.zip.tar"
-  "darwin-tools-${_vmware_fusion_ver_full}.zip.tar::https://voxhost.fr/vmware-aur/14/com.vmware.fusion.tools.darwin.zip.tar"
+  "darwinPre15-tools-${_vmware_fusion_ver_full}.zip.tar::https://hessfr.s3.lyn.io.hostmyservers.net/vmware/14/com.vmware.fusion.tools.darwinPre15.zip.tar"
+  "darwin-tools-${_vmware_fusion_ver_full}.zip.tar::https://hessfr.s3.lyn.io.hostmyservers.net/vmware/14/com.vmware.fusion.tools.darwin.zip.tar"
   "unlocker.py"
   "efi-patches.txt"
 )
