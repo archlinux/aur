@@ -1,11 +1,11 @@
 pkgbase = ddccontrol-db
 	pkgdesc = Monitor database for DDCControl
-	pkgver = 20260902
-	pkgrel = 2
+	pkgver = 20260915
+	pkgrel = 1
 	url = https://github.com/ddccontrol/ddccontrol-db
 	arch = any
 	license = GPL-2.0-only
-	source = https://github.com/ddccontrol/ddccontrol-db/releases/download/20260902/ddccontrol-db-20260902.tar.gz
+	source = https://github.com/ddccontrol/ddccontrol-db/releases/download/20260915/ddccontrol-db-20260915.tar.gz
 	source = check-db-report.sh
 	sha256sums = 70ecf4ab6e1952234e9b2740bca8fd10e6cf7b290fa9d464bde08d11969d3e46
 	sha256sums = 14d855f1a28121ebe39991e19f1275249ab6ebe174b9384b3c3f5609aec504a5
