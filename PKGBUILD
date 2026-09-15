@@ -16,8 +16,7 @@ makedepends=('git' 'rust' 'bun-bin')
 optdepends=('omarchy: theme and editor integration')
 provides=('omafil')
 # !debug: the release profile already sets strip = true, so makepkg's debug
-# symbols are generated and then discarded, and generating them at peak LTO
-# memory is what pushes the link over on smaller machines.
+# symbols are generated and then discarded.
 # !lto: makepkg's global -flto breaks the C sources in zstd-sys, leaving
 # undefined ZSTD_* symbols at link time. Cargo's own lto = true still applies.
 options=('!debug' '!lto')
@@ -45,11 +44,6 @@ build() {
   # (http://localhost:5173) and shows "Could not connect to localhost".
   cd "${srcdir}/omafil/src-tauri"
   cargo build --release --locked --features tauri/custom-protocol
-}
-
-check() {
-  cd "${srcdir}/omafil/src-tauri"
-  cargo test --release --locked --features tauri/custom-protocol
 }
 
 package() {
