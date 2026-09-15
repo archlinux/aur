@@ -7,6 +7,6 @@ Comment=Elden Ring Save File Editor and Manager
 Exec=er-save-manager
 Icon=er-save-manager
 Terminal=false
-Categories=Game;Utility;
+Categories=Game;
 Keywords=Elden Ring;Save;Editor;Backup;
 StartupNotify=true
