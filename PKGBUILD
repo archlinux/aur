@@ -1,7 +1,7 @@
 # Maintainer: Azur84 <Azur84@outlook.fr>
 pkgname=pandora-launcher-bin
 _pkgname=PandoraLauncher-Linux
-pkgver=5.5.3
+pkgver=5.6.0
 pkgrel=1
 pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features. (official binary version)"
 arch=('x86_64')
