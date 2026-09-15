@@ -1,0 +1,12 @@
+pkgbase = vexa-git
+	pkgdesc = Modern cross-platform graphics framework in C++
+	pkgver = r1.g0000000
+	pkgrel = 1
+	url = https://github.com/monjaris/vexa
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = vexa::git+https://github.com/monjaris/vexa.git
+	sha256sums = SKIP
+
+pkgname = vexa-git
