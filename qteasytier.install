@@ -1,12 +1,20 @@
+# AUR 安装钩子：与 deb 包的 postinst/prerm 行为保持一致。
+
 post_install() {
-    systemctl daemon-reload
-    systemctl enable --now qtet-daemon.service 2>/dev/null || true
+  systemctl daemon-reload >/dev/null 2>&1 || true
+  systemctl enable qtet-daemon.service >/dev/null 2>&1 || true
+  systemctl start qtet-daemon.service >/dev/null 2>&1 || true
 }
+
 post_upgrade() {
-    systemctl daemon-reload
-    systemctl restart qtet-daemon.service 2>/dev/null || true
+  post_install
 }
+
 pre_remove() {
-    systemctl stop qtet-daemon.service 2>/dev/null || true
-    systemctl disable qtet-daemon.service 2>/dev/null || true
+  systemctl stop qtet-daemon.service >/dev/null 2>&1 || true
+  systemctl disable qtet-daemon.service >/dev/null 2>&1 || true
+}
+
+post_remove() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
 }
