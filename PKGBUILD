@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
 pkgver=5.0.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -50,7 +50,8 @@ build() {
 	-DCMAKE_BUILD_TYPE=None \
 	-DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
 	-DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
-	-DCPACK_GENERATOR=RPM
+	-DCPACK_GENERATOR=RPM \
+	-DCMAKE_SKIP_INSTALL_RPATH=ON
 
 	cmake --build build
 }
