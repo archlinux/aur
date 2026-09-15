@@ -9,6 +9,7 @@ pkgdesc="Nsutils suite includes a number of utilities to list, add/remove tag, a
 arch=('x86_64')
 url='https://github.com/rd235/nsutils'
 license=('GPL-2.0-or-later')
+depends=('glibc' 'libcap')
 makedepends=('git' 'cmake')
 provides=('nsutils')
 conflicts=('nsutils')
