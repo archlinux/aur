@@ -2,7 +2,7 @@
 # Contributor: AchmadFathoni <fathoni.id@gmail.com>
 
 pkgname=xgboost
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="An optimized distributed gradient boosting library"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=(gcc-libs glibc)
 makedepends=(cmake cuda git nccl)
 source=("$pkgname.tar.gz"::"$url/releases/download/v$pkgver/xgboost-src-$pkgver.tar.gz")
-b2sums=('0d11780a4cc7286e63ee5f9ff83d81adbd2cb4b777c65e9248f94807c982d3d48e31cebf65c0a70ed2a4557de18112c3f263baf1a4ecb03d76a082b2e3eb5ad1')
+b2sums=('13de955f2559b16f9c877b8a1405e1e5daebd2e74e0653e542b48bc601a16f86d5a005bdc49eea04340022e85b4e96ca4407d18b435bc92d145585e3fe7c4e4f')
 
 prepare() {
     sed -i 's/NAMES ${NCCL_LIB_NAME}/NAMES nccl ${NCCL_LIB_NAME}/' \
