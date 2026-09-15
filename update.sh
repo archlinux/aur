@@ -45,7 +45,7 @@ fi
 
 if [ "${initial}x" = "x" ] ; then
     echo "New version available: $c_ver (last build is $l_ver)"
-    cp {config,PKGBUILD} ..
+    cp {config.x86_64,PKGBUILD} ..
     cd ..
 
     sed -i -e 's/# Maintainer/# Contributor/' \
@@ -81,7 +81,7 @@ done
 
 if [ "${initial}x" = "x" ] ; then
     makepkg --printsrcinfo > .SRCINFO
-    git add PKGBUILD config .SRCINFO
+    git add PKGBUILD config.x86_64 .SRCINFO
     git commit -m "Released $c_ver"
     git push -q
 fi
