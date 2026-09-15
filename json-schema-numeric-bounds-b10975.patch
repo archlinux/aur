@@ -1,4 +1,4 @@
-# b10951: reject JSON-schema numeric bounds before narrowing or overflow.
+# b10975: reject JSON-schema numeric bounds before narrowing or overflow.
 --- a/common/json.h
 +++ b/common/json.h
 @@ -179,6 +179,7 @@

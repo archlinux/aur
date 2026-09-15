@@ -1,4 +1,4 @@
-# Local hardening for issue #27166 on b10951.
+# Local hardening for issue #27166 on b10975.
 # Match each bucket buffer to its loop bound; ordinary thin images can exceed 1024 patches.
 --- a/tools/mtmd/clip.cpp
 +++ b/tools/mtmd/clip.cpp

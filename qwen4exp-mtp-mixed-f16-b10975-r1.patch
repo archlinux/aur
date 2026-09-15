@@ -1,16 +1,19 @@
-# Local exact-context compatibility fix for llama.cpp b10951.
+# Local exact-context compatibility fix for llama.cpp b10975.
 # Based on https://github.com/ggml-org/llama.cpp/pull/27836#issuecomment-5508708675
 --- a/src/models/qwen4exp.cpp
 +++ b/src/models/qwen4exp.cpp
-@@ -354,5 +354,6 @@ ggml_tensor * llama_model_qwen4exp::graph::build_hc_mix(
+@@ -353,6 +353,10 @@
+ 
+     // grouped RMSNorm: reduce over one stream, then scale all streams with the [n_embd, hc] gamma
      // the converter folded each gamma to (1 + w)
-     ggml_tensor * xn = ggml_rms_norm(ctx0, x, hparams.f_norm_rms_eps);
++    if (w_norm->type != x->type) {
++        w_norm = ggml_cast(ctx0, w_norm, x->type);
++        ggml_build_forward_expand(gf, w_norm);
++    }
+     ggml_tensor * xn = ggml_mul(ctx0, ggml_rms_norm(ctx0, x, hparams.f_norm_rms_eps), w_norm);
      xn = ggml_reshape_2d(ctx0, xn, hc_dim, nt);
--    xn = ggml_mul(ctx0, xn, w_norm);
-+    xn = ggml_mul(ctx0, xn,
-+            w_norm->type == xn->type ? w_norm : ggml_cast(ctx0, w_norm, xn->type));
      cb(xn, "hc_norm", il);
-@@ -599,6 +600,9 @@ llama_model_qwen4exp::graph_mtp::graph_mtp(const llama_model & model, const llm_
+@@ -599,6 +603,9 @@
      // [hc_dim] vector with the head's gamma, exactly as build_hc_mix does
      ggml_tensor * h_norm = ggml_rms_norm(ctx0, h_state, hparams.f_norm_rms_eps);
      h_norm = ggml_reshape_2d(ctx0, h_norm, hc_dim, n_tokens);
