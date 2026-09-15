@@ -1,6 +1,6 @@
 pkgbase = papis-git
 	pkgdesc = Command-line document and bibliography manager
-	pkgver = 0.15.0.r136.g0f7c026a
+	pkgver = 0.16.1.r0.gfea7958a
 	pkgrel = 1
 	url = https://github.com/papis/papis
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = papis-git
 	depends = python
 	depends = python-arxiv
 	depends = python-beautifulsoup4
-	depends = python-bibtexparser<2
+	depends = python-bibtexparser
 	depends = python-click
 	depends = python-colorama
 	depends = python-doi
@@ -38,6 +38,7 @@ pkgbase = papis-git
 	depends = python-platformdirs
 	depends = python-prompt_toolkit
 	depends = python-pygments
+	depends = python-pylatexenc
 	depends = python-requests
 	depends = python-slugify
 	depends = python-yaml
@@ -55,7 +56,7 @@ pkgbase = papis-git
 	optdepends = python-sphinx: for papis.sphinx_ext (used by some plugins)
 	optdepends = python-sphinx-click: for papis.sphinx_ext (used by some plugins)
 	optdepends = python-pytest: for papis.testing (used by some plugins)
-	provides = papis=0.15.0.r136.g0f7c026a
+	provides = papis=0.16.1.r0.gfea7958a
 	conflicts = papis
 	source = papis::git+https://github.com/papis/papis.git
 	sha256sums = SKIP

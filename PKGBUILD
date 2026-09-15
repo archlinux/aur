@@ -4,7 +4,7 @@
 
 pkgname=papis-git
 _pkgname=papis
-pkgver=0.15.0.r136.g0f7c026a
+pkgver=0.16.1.r0.gfea7958a
 pkgrel=1
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL-3.0-or-later')
 depends=('python'
     'python-arxiv'
     'python-beautifulsoup4'
-    'python-bibtexparser<2'
+    'python-bibtexparser'
     'python-click'
     'python-colorama'
     'python-doi'
@@ -25,6 +25,7 @@ depends=('python'
     'python-platformdirs'
     'python-prompt_toolkit'
     'python-pygments'
+    'python-pylatexenc' # due to python-bibtexparser#3
     'python-requests'
     'python-slugify'
     'python-yaml'
