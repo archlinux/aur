@@ -3,7 +3,7 @@
 
 pkgname=gotenberg
 pkgver=8.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A developer-friendly API for converting numerous document formats into PDF files, and more!'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
 url="https://github.com/$pkgname/$pkgname"
@@ -14,15 +14,15 @@ depends=(chromium
          pdfcpu
          pdftk
          perl-image-exiftool
-         qpdf
-         unoconv)
+	 qpdf)
+         #unoconv) no longer works with libreoffice 26
 makedepends=(go)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz"
         "$pkgname.env"
         "$pkgname.service")
 sha256sums=('b6395f7c819cd7c7a6ad9e2c1de9723639f8b150f160f777325ce16449ad4658'
-            'd37f7a96701804c07bb08e123dd05e03a84368251fb0088c060c770d08e436ea'
+            '99449d281a2228da65f976b6d836b0c04e5f5031c750dae74a36cc005ecdc514'
             '1b3567e2fe374ce104150d198de3fe372724d3b8510aba64716e3dcb3b37c50a')
 
 build() {
