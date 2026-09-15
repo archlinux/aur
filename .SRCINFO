@@ -1,6 +1,6 @@
 pkgbase = todesk-bin
 	pkgdesc = Remote control and team work
-	pkgver = 4.8.6.2
+	pkgver = 4.9.6.0
 	pkgrel = 1
 	url = https://www.todesk.com/
 	install = todesk.install
@@ -18,9 +18,9 @@ pkgbase = todesk-bin
 	options = emptydirs
 	source = license.html
 	sha256sums = 402b2db2586c723af990beb0f96249b9680880f4f30e58a7cbe7cbd20b979a0b
-	source_x86_64 = https://dl.todesk.com/linux/todesk-v4.8.6.2-amd64.deb
-	sha256sums_x86_64 = b3f2af7fc120948903df3aa455955cb5823fb5c1f5ec7dca17ac8a4cba53c808
-	source_aarch64 = https://dl.todesk.com/linux/todesk-v4.7.2.0-arm64.deb
-	sha256sums_aarch64 = 07a1239d0ea6b94f24e12b446d39cf6b23747b2e52f09c3dff50daa1394ae0b5
+	source_x86_64 = https://dl.todesk.com/linux/todesk-v4.9.6.0-amd64.deb
+	sha256sums_x86_64 = b7e2a0894996ee4e34fcb3ddfb39692c72943c05b133a73af49f48043d7dac16
+	source_aarch64 = https://dl.todesk.com/linux/todesk-v4.8.5.1-arm64.deb
+	sha256sums_aarch64 = 0c3a78f52df7b2d7877f05cb0ed9a112607be5976e09c01527cacfe3fb8dc2fc
 
 pkgname = todesk-bin

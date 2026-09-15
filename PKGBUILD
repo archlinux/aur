@@ -4,7 +4,7 @@
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 _binaryname=ToDesk
-pkgver=4.8.6.2
+pkgver=4.9.6.0
 pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64')
@@ -27,11 +27,11 @@ DLAGENTS=("https::/usr/bin/wget -U 'Mozilla' -O %o %u")
 install="${_pkgname}.install"
 source=('license.html')
 source_x86_64=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-amd64.deb")
-source_aarch64=("https://dl.todesk.com/linux/${_pkgname}-v4.7.2.0-arm64.deb")
+source_aarch64=("https://dl.todesk.com/linux/${_pkgname}-v4.8.5.1-arm64.deb")
 source_armv7h=("https://dl.todesk.com/linux/${_pkgname}-v${pkgver}-armv7l.deb")
 sha256sums=('402b2db2586c723af990beb0f96249b9680880f4f30e58a7cbe7cbd20b979a0b')
-sha256sums_x86_64=('b3f2af7fc120948903df3aa455955cb5823fb5c1f5ec7dca17ac8a4cba53c808')
-sha256sums_aarch64=('07a1239d0ea6b94f24e12b446d39cf6b23747b2e52f09c3dff50daa1394ae0b5')
+sha256sums_x86_64=('b7e2a0894996ee4e34fcb3ddfb39692c72943c05b133a73af49f48043d7dac16')
+sha256sums_aarch64=('0c3a78f52df7b2d7877f05cb0ed9a112607be5976e09c01527cacfe3fb8dc2fc')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/{} \;
