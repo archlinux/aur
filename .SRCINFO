@@ -1,6 +1,6 @@
 pkgbase = python-bugsnag
-	pkgdesc = Official bugsnag error monitoring and error reporting for various python apps.
-	pkgver = 4.9.1
+	pkgdesc = Automatic error monitoring for Django, Flask, Tornado, and more
+	pkgver = 4.9.2
 	pkgrel = 1
 	url = https://github.com/bugsnag/bugsnag-python
 	changelog = CHANGELOG.md
@@ -13,7 +13,7 @@ pkgbase = python-bugsnag
 	depends = python-webob
 	optdepends = python-flask: Flask integration
 	optdepends = python-blinker: Flask integration
-	source = python-bugsnag-4.9.1.tar.gz::https://github.com/bugsnag/bugsnag-python/archive/v4.9.1.tar.gz
-	sha256sums = f872478cd1232d8f00b631556e1344f64be219549cc63ff280cd8c8ab5518b6a
+	source = python-bugsnag-4.9.2.tar.gz::https://github.com/bugsnag/bugsnag-python/archive/v4.9.2.tar.gz
+	sha256sums = a1bb7c1abaa0981ae390a6889c3038ce58652e10d80dd7dbc24bf7417c18ba93
 
 pkgname = python-bugsnag

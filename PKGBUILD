@@ -2,20 +2,20 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=python-bugsnag
-pkgver=4.9.1
+pkgver=4.9.2
 pkgrel=1
-pkgdesc='Official bugsnag error monitoring and error reporting for various python apps.'
-arch=('any')
+pkgdesc='Automatic error monitoring for Django, Flask, Tornado, and more'
+arch=(any)
 url='https://github.com/bugsnag/bugsnag-python'
-license=('MIT')
-depends=('python-webob')
+license=(MIT)
+depends=(python-webob)
 optdepends=(
     'python-flask: Flask integration'
     'python-blinker: Flask integration')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=(python-setuptools python-build python-installer python-wheel)
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f872478cd1232d8f00b631556e1344f64be219549cc63ff280cd8c8ab5518b6a')
+sha256sums=('a1bb7c1abaa0981ae390a6889c3038ce58652e10d80dd7dbc24bf7417c18ba93')
 
 build() {
     cd "bugsnag-python-$pkgver"
