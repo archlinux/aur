@@ -3,3 +3,6 @@
 !/.SRCINFO
 !/.gitignore
 !/.nvchecker.toml
+!/REUSE.toml
+!/LICENSE
+!/LICENSES/
