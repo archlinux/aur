@@ -4,7 +4,7 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname=papis
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL-3.0-or-later')
 depends=('python'
     'python-arxiv'
     'python-beautifulsoup4'
-    'python-bibtexparser<2'
+    'python-bibtexparser'
     'python-click'
     'python-colorama'
     'python-doi'
@@ -25,6 +25,7 @@ depends=('python'
     'python-platformdirs'
     'python-prompt_toolkit'
     'python-pygments'
+    'python-pylatexenc' # due to python-bibtexparser#3
     'python-requests'
     'python-slugify'
     'python-yaml'
@@ -77,7 +78,7 @@ checkdepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9f7a6c5bc0452487a2774e764607735574541feeb7e23002a047aef7081f6903')
+sha256sums=('d3795f18701d1b756ed814862ceeec48a61c9aac7c6af4c16d644332024f2053')
 
 build() {
   cd "${pkgname}-${pkgver}"
