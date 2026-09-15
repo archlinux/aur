@@ -1,15 +1,15 @@
 # Maintainer: Zorbatron <46525467+Zorbatron@users.noreply.github.com>
 
-pkgname=nsutils-git
 _pkgname=nsutils
+pkgname="${_pkgname}-git"
 pkgver=v0.2.r7.b573702
 pkgrel=1
 
 pkgdesc="Nsutils suite includes a number of utilities to list, add/remove tag, and join namespaces"
 arch=('x86_64')
 url='https://github.com/rd235/nsutils'
-license=('GPL-2.0')
-makedepends=('make' 'coreutils' 'cmake')
+license=('GPL-2.0-or-later')
+makedepends=('cmake')
 provides=('nsutils')
 conflicts=('nsutils')
 source=("git+$url")
