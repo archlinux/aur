@@ -107,19 +107,19 @@ build() {
 }
 
 _install_completions() {
+    local _omp_bin="$1"
     local _completion_dir="${srcdir}/completions"
     local _runtime_dir="${srcdir}/completion-runtime"
-    local _omp_source="packages/coding-agent/src/cli.ts"
 
     rm -rf "${_completion_dir}" "${_runtime_dir}"
     mkdir -p "${_completion_dir}" "${_runtime_dir}/home" "${_runtime_dir}/xdg"
 
     env HOME="${_runtime_dir}/home" XDG_DATA_HOME="${_runtime_dir}/xdg" \
-        bun "${_omp_source}" completions bash >"${_completion_dir}/omp.bash"
+        "${_omp_bin}" completions bash >"${_completion_dir}/omp.bash"
     env HOME="${_runtime_dir}/home" XDG_DATA_HOME="${_runtime_dir}/xdg" \
-        bun "${_omp_source}" completions zsh >"${_completion_dir}/_omp"
+        "${_omp_bin}" completions zsh >"${_completion_dir}/_omp"
     env HOME="${_runtime_dir}/home" XDG_DATA_HOME="${_runtime_dir}/xdg" \
-        bun "${_omp_source}" completions fish >"${_completion_dir}/omp.fish"
+        "${_omp_bin}" completions fish >"${_completion_dir}/omp.fish"
 
     install -Dm644 "${_completion_dir}/omp.bash" "${pkgdir}/usr/share/bash-completion/completions/omp"
     install -Dm644 "${_completion_dir}/_omp" "${pkgdir}/usr/share/zsh/site-functions/_omp"
@@ -138,6 +138,6 @@ package() {
     done
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "../lib/${pkgname}/omp" "${pkgdir}/usr/bin/omp"
-    _install_completions
+    _install_completions "${pkgdir}/usr/bin/omp"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
