@@ -1,14 +1,14 @@
 # Maintainer: Monjaris <ziyanovruzlu750@gmail.com>
 
 pkgname=vexa-git
-pkgver=r1.g0000000
-pkgrel=1
+pkgver=r103.g8a3dc67
+pkgrel=2
 pkgdesc="Modern cross-platform graphics framework in C++"
 arch=('x86_64')
 url="https://github.com/monjaris/vexa"
 license=('MIT')
 
-makedepends=('git')
+makedepends=('git' 'xmake')
 
 source=('vexa::git+https://github.com/monjaris/vexa.git')
 sha256sums=('SKIP')
