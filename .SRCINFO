@@ -1,7 +1,7 @@
 pkgbase = libgourou
-	pkgdesc = Download and decrypt adobe encrypted (acsm) pdf and epub files
+	pkgdesc = Free implementation of Adobe's ADEPT protocol used to add DRM on EPUB/PDF files
 	pkgver = 0.8.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://forge.soutade.fr/soutade/libgourou
 	arch = any
 	license = LGPL-3.0-or-later
@@ -10,18 +10,36 @@ pkgbase = libgourou
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
+	depends = pugixml
 	depends = zlib
 	depends = libzip
 	depends = openssl
-	depends = pugixml
 	depends = curl
-	provides = gourou=0.8.10
 	conflicts = gourou-git
 	conflicts = gourou-bin
 	conflicts = gourou-appimage
-	replaces = gourou
-	options = strip
 	source = libgourou-0.8.10.tar.gz::https://forge.soutade.fr/soutade/libgourou/archive/v0.8.10.tar.gz
 	sha512sums = bf9c4341f45b1fe77a9c95b5844da7ac5cc96b0edf7ef39caf11b980e82765f6a7c5932aaee998df002b965215cd7fbae2606dbbb86da12f88eafa830e7c5c14
 
 pkgname = libgourou
+	license = LGPL-3.0-or-later
+	depends = updfparser
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = pugixml
+
+pkgname = libgourou-utils
+	pkgdesc = Downloading and decrypting tools for Adobe encrypted (ACSM) EPUB/PDF files
+	license = BSD-3-Clause
+	depends = libgourou
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = pugixml
+	depends = zlib
+	depends = libzip
+	depends = openssl
+	depends = curl
+	provides = gourou=0.8.10
+	replaces = gourou
