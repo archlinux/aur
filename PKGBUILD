@@ -2,19 +2,26 @@
 
 pkgname=music-player-bin
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc='An extensible music server written in Rust, with its Slint desktop client'
 url='https://github.com/tsirysndr/music-player'
 arch=(x86_64 aarch64)
 license=(MIT)
 provides=(music-player music-player-desktop)
 conflicts=(music-player music-player-desktop)
-# The first group is linked directly (DT_NEEDED). The rest are dlopened at
-# runtime by the Slint desktop client (winit/glutin/xkbcommon-dl), so they are
-# invisible to ldd but the app aborts on startup without them.
+# Only the first line is linked directly (DT_NEEDED). The X11, Wayland and GL
+# libraries are dlopened at runtime by the Slint desktop client
+# (winit/glutin/xkbcommon-dl), so they are invisible to ldd but the app aborts
+# on startup without them. ttf-font is needed just as hard: fontique panics
+# with NoMatch when fontconfig cannot match a single installed font.
 depends=(glibc gcc-libs alsa-lib fontconfig
          libglvnd libx11 libxcb libxcursor libxi libxrender
-         libxkbcommon libxkbcommon-x11 wayland)
+         libxkbcommon libxkbcommon-x11 wayland
+         ttf-font hicolor-icon-theme)
+
+# Upstream ships release binaries; keep them as built instead of stripping
+# them and splitting out a meaningless debug package.
+options=(!strip !debug)
 
 _tag="v${pkgver/_/-}"
 _raw="https://raw.githubusercontent.com/tsirysndr/music-player/$_tag"
