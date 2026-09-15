@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgname=widemelon-git
-pkgver=1.0.2.r1.g31f5abe
+pkgver=1.0.3.r0.g074d838
 pkgrel=1
 pkgdesc='Widescreen Nintendo DS emulator based on melonDS (Git version)'
 arch=('x86_64')
