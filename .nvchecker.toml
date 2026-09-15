@@ -1,4 +1,5 @@
 [eqonomize]
 source = "git"
 git = "https://github.com/Eqonomize/eqonomize.git"
+include_regex = 'v[\d.]+'
 prefix = "v"

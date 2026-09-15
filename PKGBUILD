@@ -3,8 +3,8 @@
 
 _pkgname="eqonomize"
 pkgname="$_pkgname"
-pkgver=1.5.12
-pkgrel=2
+pkgver=1.5.13
+pkgrel=1
 pkgdesc="Efficient and easy accounting for the small household economy"
 url="https://github.com/Eqonomize/Eqonomize"
 license=('GPL-3.0-or-later')
@@ -19,7 +19,7 @@ depends=(
 _pkgsrc="$pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/releases/download/v$pkgver/$_pkgsrc.$_pkgext")
-sha256sums=('de4c15d614fef38d65212235f60b904470152f30dc12073dac522dbae7e5ec4d')
+sha256sums=('a09c94db58bd938caaffc06a1e83dadcaa98777840461ee843605eaa6ce971fb')
 
 build() {
   cd "$_pkgsrc"
