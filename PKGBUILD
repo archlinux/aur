@@ -2,7 +2,7 @@
 pkgbase=aranet4-git
 _pkgbase=aranet4
 pkgname=(aranet4-ls-git aranet4-srv-git)
-pkgver=0.7.0.r2.g17b513d
+pkgver=0.15.1.r0.g09852c1
 pkgrel=1
 pkgdesc="Driver and utilities for the Aranet4 air quality monitor (latest git version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('go>=1.19')
 depends=('bluez')
 source=("${_pkgbase}::git+https://git.sr.ht/~sbinet/${_pkgbase}")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgbase}"
