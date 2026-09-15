@@ -1,5 +1,5 @@
 pkgbase = neosolve-daily-git
-	pkgdesc = Parametric 2D/3D CAD with OpenCASCADE support (daily-bugfix branch)
+	pkgdesc = SolveSpace fork adding fillet, chamfer, shell, loft and sweep via OpenCASCADE
 	pkgver = 3.2.r2302.geac98c4e
 	pkgrel = 1
 	url = https://github.com/dodox1/neosolve
