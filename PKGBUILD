@@ -4,18 +4,10 @@
 # Contributor: Katelyn Schiesser (slowbro) <katelyn.schiesser@gmail.com>
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
-## options
-: ${_build_level:=1}
-
-_pkgtype="-vfio"
-[[ ${_build_level::1} == "2" ]] && _pkgtype+="-x64v2"
-[[ ${_build_level::1} == "3" ]] && _pkgtype+="-x64v3"
-[[ ${_build_level::1} == "4" ]] && _pkgtype+="-x64v4"
-
 _gitname="linux"
-_pkgname="$_gitname${_pkgtype:-}"
+_pkgname="$_gitname-vfio"
 pkgbase="$_pkgname"
-pkgver=7.2.4
+pkgver=7.2.6
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -80,7 +72,7 @@ source=(
   1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
 )
 sha256sums=(
-  '01710ee01737dac492f1bae52becd057e08d20d11589089aa06accff415c28dd' # cksum
+  '039aef84f2b0994aeda3f4fcfc3d02ec9d7a9bbb9020ea264c43f446c860f606' # cksum
   'SKIP'
   'SKIP'
   'SKIP'
@@ -92,10 +84,6 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF # Jan Alexander Steffens (heftig)
 )
-
-if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
-  export KCFLAGS="-march=x86-64-v${_build_level::1} -O3"
-fi
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
