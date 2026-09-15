@@ -32,7 +32,7 @@
 # submittable package, not a simulation of one.
 
 pkgname=cordial
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="Roblox's official Android build, run natively on Linux -- Cordial ships no Roblox code and fetches a signature-verified one"
 arch=('x86_64')
