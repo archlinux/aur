@@ -14,7 +14,7 @@ optdepends=('libnotify: desktop notifications'
             'yt-dlp: media-site downloads (YouTube, TikTok, ...)'
             'omarchy: status bar widget (baaz install-bar)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5b0cbc23a6f189af3adb9fda702432731cc49c33e8f7d944b9f31a8a3d9f2431')
+sha256sums=('aa85866d586ebe6b886f3390fbdded5f88f4aa9d0120dcd71da4874ac5df2c1d')
 
 build() {
   cd "$pkgname-$pkgver"
