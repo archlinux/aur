@@ -1,9 +1,9 @@
 # Maintainer: PoDiax <pd@pdx.ovh>
 pkgname=waycord-bin
 _pkgname=waycord
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="Lightweight Discord voice overlay for Linux (precompiled binary)"
+pkgdesc="Lightweight Discord voice overlay for Linux"
 arch=('x86_64')
 url="https://github.com/podiax/waycord"
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('libx11' 'fontconfig' 'hicolor-icon-theme')
 provides=('waycord')
 conflicts=('waycord' 'waycord-git')
 source=("https://github.com/podiax/waycord/releases/download/v${pkgver}/waycord-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('95de13e3331a509f1e45e0f8df452074a1876149d495c522bff46436e91262d9')
+sha256sums=('d1bb6a00442ae886d34c166dec574af43a8abca9db165a2f62ec99c4bb46c23f')
 
 package() {
   cd "$srcdir/waycord-v${pkgver}-x86_64-unknown-linux-gnu"
