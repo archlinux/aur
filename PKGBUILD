@@ -3,7 +3,7 @@
 pkgname=python-kicad-mcp-pro
 _name=${pkgname#python-}
 pkgver=3.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Model Context Protocol server for KiCad EDA workflows"
 provides=(${pkgname})
 conflicts=(${pkgname})
