@@ -21,5 +21,7 @@ prepare () {
 
 package () {
 	bsdtar -C "$pkgdir" -xf "$srcdir/data.tar.xz"
-	find $pkgdir -type d -exec chmod -c 755 {} +
+	find "$pkgdir" -type d -exec chmod 755 {} +
+	find "$pkgdir" -type f -exec chmod go-w {} +
+	chown -R root:root "$pkgdir"
 }
