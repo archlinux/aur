@@ -5,7 +5,7 @@
 
 pkgbase=ghostty-nightly-bin
 pkgname=(ghostty-nightly-bin ghostty-shell-integration-nightly-bin ghostty-terminfo-nightly-bin)
-pkgver=20260914.r17768.g0c2a290
+pkgver=20260915.r17851.gd4c88d8
 pkgrel=1
 pkgdesc="Fast, native, feature-rich terminal emulator pushing modern features"
 arch=(x86_64)
@@ -37,9 +37,9 @@ source=(
   "ghostty-shell-integration-nightly-bin-${_source_rev}-x86_64.tar.zst::https://github.com/jpenilla/ghostty-nightly-bin/releases/download/nightly/ghostty-shell-integration-nightly-bin-x86_64.tar.zst"
 )
 sha256sums=(
-  '02ce599d4cfca88b1f31695d9d5914ef881acbec57f7490402501cb15ae24e25'
-  '7bc30c189dfc47469a92843ab54a7d0a88056dc51f4b4ab148336b4b0c59ab6c'
-  '44e27167308f17d8bee9f410ada2c7b174b2b8991296450fa89cf85b2e5f4a3c'
+  '367b8cd0bad12ac765962fffa5d3ffbfed78375569e19b5aff02193ef216e308'
+  '1d37a1e018d43d9f5371991002742ecffe3db656352837933cf3d1bf159e77cc'
+  'decaad69b93ea3f464c42cb533fc0ccc41f5ef93c062c2f74b250f40abdfc936'
 )
 
 package_ghostty-nightly-bin() {
