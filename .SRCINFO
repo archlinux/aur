@@ -1,0 +1,20 @@
+pkgbase = python-typed-ffmpeg-v9
+	pkgdesc = Typed FFmpeg bindings for FFmpeg 9.x.
+	pkgver = 4.5
+	pkgrel = 1
+	url = https://pypi.org/project/typed-ffmpeg-v9
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-hatchling
+	depends = ffmpeg>=9
+	depends = python-ffmpeg-core
+	conflicts = python-typed-ffmpeg-v8
+	source = https://files.pythonhosted.org/packages/source/t/typed_ffmpeg_v9/typed_ffmpeg_v9-4.5.tar.gz
+	sha256sums = 38e0a5af7b2fe0aebd0eeae3ddb1c8b16b89bf007ccfa4452ee0ea14aa31a5fa
+
+pkgname = python-typed-ffmpeg-v9
