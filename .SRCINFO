@@ -9,6 +9,7 @@ pkgbase = oh-my-pi
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	makedepends = clang
 	depends = gcc-libs
 	depends = glibc
