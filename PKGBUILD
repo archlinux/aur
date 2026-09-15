@@ -18,12 +18,16 @@ pkgver() {
   git -C vde-2 describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${srcdir}/vde-2/"
+  cmake -S . -B build/ \
+    -D'CMAKE_INSTALL_PREFIX=/usr' \
+    -D'CMAKE_INSTALL_LIBEXECDIR=lib'
+}
+
 build() {
-  cd $srcdir/vde-2
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  make -j $(nproc)
+  cd "${srcdir}/vde-2/build/"
+  make
 }
 
 package() {
