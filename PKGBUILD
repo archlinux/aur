@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 
 source=(
   "$pkgname::git+$url.git"
-  "$_rawurl/LICENSE"
+  "LICENSE_upstream::$_rawurl/LICENSE"
 )
 sha256sums=('SKIP'
             '9e3828f9fe592193e8790c2a299b51c52b1c8a1aa076f9fc0d59563e7318b589')
@@ -31,5 +31,5 @@ build() {
 package() {
   cd "$pkgname"
   install -Dm755 xdgctl "$pkgdir/usr/bin/xdgctl"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 LICENSE_upstream -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
