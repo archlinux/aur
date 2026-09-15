@@ -2,7 +2,7 @@
 # Maintainer: rubiin <roobin.bhandari@gmail.com>
 
 pkgname='ignit-bin'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Quickly generate .gitignore files for your projects from a curated list of environment templates.'
 url='https://github.com/rubiin/ignit'
@@ -12,13 +12,13 @@ provides=('ignit')
 conflicts=('ignit' 'ignit-git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rubiin/ignit/releases/download/v${pkgver}/ignit_Linux_arm64.tar.gz")
-sha256sums_aarch64=('787173792c16a99fb6497e8973510a73edee65a63bb6135886d90581f732f98a')
+sha256sums_aarch64=('87c958c2bb397692789a30730a968a927d48215aa0b1c56e5f33dda379a5335c')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rubiin/ignit/releases/download/v${pkgver}/ignit_Linux_i386.tar.gz")
-sha256sums_i686=('c0c3e2dc20d360a6eb92bbc47b818e6c3137e404af22956bccf45606315fa989')
+sha256sums_i686=('fcd6a75ecb2d0de9a8691f0a380743b085a1b734eb35614d127165650cafd7c0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rubiin/ignit/releases/download/v${pkgver}/ignit_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('6a52e3dd848e44ab18fee300b41ae963d0e4fdb61b87e6e3d7ccf024ef4da32f')
+sha256sums_x86_64=('c0651a2ec9f34d68863030f5f5d0200460ac05ddafa4e814ae85ca689771cea6')
 
 package() {
   # bin
