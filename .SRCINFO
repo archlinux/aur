@@ -1,6 +1,6 @@
 pkgbase = pgtcl
 	pkgdesc = Tcl client side interface to PostgreSQL (libpgtcl)
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://flightaware.github.io/Pgtcl/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pgtcl
 	depends = tcl
 	provides = libpgtcl
 	conflicts = pgtcl-ng
-	source = pgtcl-3.3.0.tar.gz::https://github.com/flightaware/Pgtcl/archive/v3.3.0.tar.gz
-	sha256sums = 69a89834fd55a87767bdd6fad201c0453ad8f80cebfb40bc8588302dc22cd654
+	source = pgtcl-3.3.1.tar.gz::https://github.com/flightaware/Pgtcl/archive/v3.3.1.tar.gz
+	sha256sums = 492ff3a051c9d4060a38798590780c1b60a64fbc8450e5dddf22f026dbece041
 
 pkgname = pgtcl
