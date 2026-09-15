@@ -1,6 +1,6 @@
 pkgbase = vcvrack-venom
 	pkgdesc = Venom VCV Rack modules
-	pkgver = 2.17.0
+	pkgver = 2.17.1
 	pkgrel = 1
 	url = https://github.com/DaveBenham/VenomModules
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = vcvrack-venom
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = git+https://github.com/DaveBenham/VenomModules#tag=v2.17.0
-	sha256sums = d1d5fa11b0987f48334b1e0d1a33d50f13e85d4ce3d73440e15d608b6c5f0460
+	source = git+https://github.com/DaveBenham/VenomModules#tag=v2.17.1
+	sha256sums = a9a06a46eae41539979b28cc1767662e72194f76901b573ec5bbcad1960ca909
 
 pkgname = vcvrack-venom
