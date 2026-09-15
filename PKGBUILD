@@ -1,11 +1,11 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_pkgauthor=hanebox
+_pkgauthor=nostacks
 _pkgname=ekphos
 pkgname=${_pkgname}
 pkgdesc="A lightweight, fast, terminal-based markdown research tool inspired by Obsidian"
 
-pkgver=0.50.0
+pkgver=0.50.10
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,7 +22,7 @@ provides=("${pkgname}")
 makedepends=('rust')
 
 source=("${_pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fe42ee4e01b31041d2813c91d88271f3cebbd0d16cc79eebce9a1289dbecbcea')
+sha256sums=('f23e990811b882087e01006b3ab6d1c1996b34bdf0f8399cc5941832feb5c744')
 
 build() {
 	cd ${pkgname}-${pkgver} || exit 1

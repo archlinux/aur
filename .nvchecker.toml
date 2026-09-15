@@ -1,5 +1,5 @@
 [ekphos]
 source = "github"
-github = "hanebox/ekphos"
+github = "nostacks/ekphos"
 use_max_tag = true
 prefix = "v"
