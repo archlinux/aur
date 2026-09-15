@@ -3,7 +3,7 @@
 pkgname=redumper-gui
 epoch=
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform digital fidget spinner and GUI for redumper. Package built from tagged release source.'
 arch=(x86_64)
 url='https://github.com/Deterous/Redumper-GUI'
