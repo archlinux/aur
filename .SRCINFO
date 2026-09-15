@@ -12,8 +12,6 @@ pkgbase = mx-boot-repair
 	depends = efibootmgr
 	depends = qt6-base
 	depends = polkit
-	provides = mx-boot-repair
-	conflicts = mx-boot-repair
 	source = https://github.com/MX-Linux/mx-bootrepair/archive/refs/tags/26.07.tar.gz
 	sha256sums = a7653fb7f0818faf8bb8fef029788b85f0f8b137e86379b657459add0a5f3e94
 
