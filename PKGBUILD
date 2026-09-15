@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=crm-git
-pkgver=0.2.2.r3.g5f59b93
-pkgrel=1
+pkgver=0.2.2.r5.g546eed8
+pkgrel=2
 pkgdesc="crm (Cargo registry manager)"
 arch=($CARCH)
 url="https://github.com/wtklbm/crm"
@@ -10,10 +10,7 @@ license=('MIT AND Apache-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(
-    gcc-libs
-    glibc
-)
+depends=()
 makedepends=(
     git
     cargo
@@ -32,7 +29,8 @@ pkgver() {
 prepare() {
     git -C "${srcdir}/${pkgname%-git}" clean -dfx
     cd "${srcdir}/${pkgname%-git}/"
-    #     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo update -w
+    cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
