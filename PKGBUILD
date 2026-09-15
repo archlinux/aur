@@ -3,7 +3,7 @@
 
 _pkgname=spectre-meltdown-checker
 pkgname=${_pkgname}-pt-br
-pkgver=26.36.0602723
+pkgver=26.36.0913490
 pkgrel=1
 pkgdesc="Verifique a resiliência do sistema contra vulnerabilidades de execução transitória (CVEs) publicadas desde 2018"
 arch=('any')
@@ -16,8 +16,8 @@ provides=("${_pkgname}=${pkgver}")
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/speed47/${_pkgname}/archive/v${pkgver}.tar.gz"
         "https://gitlab.com/-/snippets/5998033/raw/main/translate-pt-br.patch")
 
-sha256sums=('9595c721dfe33580f0a55fed382792c6100395b1cb12158867f2f1ad31adc924'
-            'bd797bbd1d3c9d5388b2001a12651352126a3b1711615d7e983a06107b908b29')
+sha256sums=('4e4d209a038c252a2833eeaac18a53c5f19141e88e35a32d4d1c7bb42239d96a'
+            '6b24d864a549040fc01c36153710e06ef16ddf1873bc75166e3d5872d616b6bc')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
