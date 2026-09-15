@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=smooth-git
 pkgver=0.9.10.r59.g65e9aee
-pkgrel=2
+pkgrel=3
 pkgdesc="An object oriented C++ class library"
 arch=('x86_64')
 url="http://www.smooth-project.org"
@@ -12,9 +12,12 @@ depends=(
   'fribidi'
   'gtk3'
   'libcpuid'
+  'libiconv'
   'libjpeg-turbo'
   'libpng'
+  'libwebp'
   'libxml2'
+  'zlib'
 )
 makedepends=('git')
 provides=("${pkgname%-git}" 'libsmooth-0.9.so=0')
@@ -34,12 +37,31 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  make config=systemlibcpuid
+  make config="systemlibbz2,\
+    systemlibcpuid,\
+    systemlibcurl,\
+    systemlibfribidi,\
+    systemlibiconv,\
+    systemlibjpeg,\
+    systemlibpng,\
+    systemlibwebp,\
+    systemlibxml2,\
+    systemzlib"
 }
 
 package() {
   cd "${pkgname%-git}"
-  make DESTDIR="$pkgdir/" install
+  make config="systemlibbz2,\
+    systemlibcpuid,\
+    systemlibcurl,\
+    systemlibfribidi,\
+    systemlibiconv,\
+    systemlibjpeg,\
+    systemlibpng,\
+    systemlibwebp,\
+    systemlibxml2,\
+    systemzlib" \
+    DESTDIR="${pkgdir}" install
 
   ln -sv "/usr/lib/libsmooth-${pkgver%.*.r*}.so.0" "${pkgdir}/usr/lib/libsmooth.so"
 }
