@@ -25,9 +25,9 @@
 : ${_build_limit_cores:=auto} # number of cores for parallelism; or auto, limited by RAM
 
 ## update
-_icver="140.15.0-1"
-_commit="55f4022a5d5703cbc6877cb470d2b2dfba8e521d"
-_ffsum="358bb03c550f95172f1e31694e4287da3411560df91e931cb25210efdf90e524"
+_icver="140.16.0-1"
+_commit="8726dec784c7e50e95c823e37e6648cd7c45dbe3"
+_ffsum="15d2d359b8571ecd0898faa6e05aa902b0de7cb34aadfc4d94adf6c8428f84df"
 
 ## package
 _pkgname="icecat"
@@ -64,7 +64,6 @@ makedepends=(
   nasm
   nodejs
   python
-  python-setuptools
   unzip
   wasi-compiler-rt
   wasi-libc
@@ -233,6 +232,32 @@ _make_icecat() (
   fi
 )
 
+_calc_parallel_jobs() {
+  local _build_limit_cores="$1"
+  local _mem _mb _cores _threads _jobs
+  _mem=$(grep -Pom1 '^MemAvailable:\s*\K[0-9]+' /proc/meminfo)
+  _mb=$((_mem / (1024 * 1024)))
+  _cores=$(lscpu | grep -Pom1 'per socket:\s*\K[0-9]+')
+  _threads=$(nproc)
+  _jobs="mach"
+
+  if [[ "${_build_limit_cores}" =~ ^[at] ]]; then
+    # calculate core availability based on free RAM and CPU count
+    _jobs=$((_mb < _cores ? _mb : _cores - 1))
+    _jobs=$((_jobs < 1 ? 1 : _jobs))
+  elif [[ "${_build_limit_cores}" =~ ^[0-9]+$ ]]; then
+    # user-specified, capped by thread count
+    if ((${_build_limit_cores:-0} > 0)); then
+      _jobs=$((_build_limit_cores > _threads ? _threads : _build_limit_cores))
+      _jobs=$((_jobs < 1 ? 1 : _jobs))
+    fi
+  fi
+
+  >&2 printf '\n:: Free RAM: %-5s Cores: %-5s Threads: %-5s Jobs: %-5s\n\n' "$_mb" "$_cores" "$_threads" "$_jobs"
+
+  echo "${_jobs:-mach}"
+}
+
 _prepare_icecat() (
   cat > icecat.desktop << END
 [Desktop Entry]
@@ -371,24 +396,7 @@ END
   fi
 
   # build parallelism
-  local _mem _threads _cores _jobs
-  _mem=$(grep -Pom1 '^MemAvailable:\s*\K[0-9]+' /proc/meminfo)
-  _cores=$(lscpu | grep -Pom1 'per socket:\s*\K[0-9]+')
-  _threads=$(nproc)
-  _jobs="auto"
-
-  if [[ "${_build_limit_cores}" =~ ^[at] ]]; then
-    # calculate core availability based on free RAM and CPU count
-    _jobs=$((_mem / (1024 * 1024) < _cores ? _mem / (1024 * 1024) : _cores - 1))
-    _jobs=$((_jobs < 1 ? 1 : _jobs))
-  elif ((${_build_limit_cores:-0} > 0)); then
-    # user-specified, capped by CPU count
-    _jobs=$((_build_limit_cores > _threads ? _threads : _build_limit_cores))
-    _jobs=$((_jobs < 1 ? 1 : _jobs))
-  fi
-
-  printf '\n:: Free RAM: %-5s Cores: %-5s Threads: %-5s Jobs: %-5s\n\n' "$((_mem / (1024 * 1024)))" "$_cores" "$_threads" "$_jobs"
-
+  local _jobs=$(_calc_parallel_jobs "$_build_limit_cores")
   if [[ "$_jobs" =~ ^[0-9]+$ ]]; then
     cat >> ../mozconfig << END
 mk_add_options MOZ_PARALLEL_BUILD=${_jobs}
