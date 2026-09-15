@@ -2,7 +2,7 @@
 
 pkgname=flclash
 _name=FlClash
-pkgver=0.8.97
+pkgver=0.8.98
 _flutter=3.47.3
 pkgrel=1
 pkgdesc="Multi-platform proxy client based on ClashMeta"
@@ -23,7 +23,7 @@ depends=('at-spi2-core'
 makedepends=('chrpath' 'clang' 'cmake' 'fvm' 'gendesk' 'git' 'go' 'ninja' 'rustup')
 source=("git+${url}.git#tag=v${pkgver}"
         "git+https://github.com/chen08209/Clash.Meta.git")
-sha256sums=('1df134396441d8dc695b35f572d906d50c8ed5d8a285ea8afcaed0393bdd2fe4'
+sha256sums=('30ddbb40247aaf38dec4147b508df63a8b244abdf15f7f7602ef18c66f91f954'
             'SKIP')
 
 prepare() {
@@ -66,8 +66,8 @@ build() {
 
 package() {
     cd "${_name}"
-    install -d "${pkgdir}/usr/lib/${pkgname}" "${pkgdir}/usr/bin"
-    cp -r build/linux/x64/release/bundle/* "${pkgdir}/usr/lib/${pkgname}"
+    install -d "${pkgdir}/usr/lib" "${pkgdir}/usr/bin"
+    cp -r build/linux/x64/release/bundle "${pkgdir}/usr/lib/${pkgname}"
     ln -s "/usr/lib/${pkgname}/${_name}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 assets/images/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"

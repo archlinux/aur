@@ -1,6 +1,6 @@
 pkgbase = flclash
 	pkgdesc = Multi-platform proxy client based on ClashMeta
-	pkgver = 0.8.97
+	pkgver = 0.8.98
 	pkgrel = 1
 	url = https://github.com/chen08209/FlClash
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = flclash
 	depends = libgcc
 	depends = libstdc++
 	depends = pango
-	source = git+https://github.com/chen08209/FlClash.git#tag=v0.8.97
+	source = git+https://github.com/chen08209/FlClash.git#tag=v0.8.98
 	source = git+https://github.com/chen08209/Clash.Meta.git
-	sha256sums = 1df134396441d8dc695b35f572d906d50c8ed5d8a285ea8afcaed0393bdd2fe4
+	sha256sums = 30ddbb40247aaf38dec4147b508df63a8b244abdf15f7f7602ef18c66f91f954
 	sha256sums = SKIP
 
 pkgname = flclash
