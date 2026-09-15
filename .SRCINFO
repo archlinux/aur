@@ -1,6 +1,6 @@
 pkgbase = agent-glovebox
 	pkgdesc = Hardware-isolated, allowlist-firewalled sandbox for running Claude Code
-	pkgver = 0.61.1
+	pkgver = 0.61.2
 	pkgrel = 1
 	url = https://github.com/AlexanderMattTurner/agent-glovebox
 	install = agent-glovebox.install
@@ -17,7 +17,7 @@ pkgbase = agent-glovebox
 	optdepends = sbx: Docker microVM backend; install per docs.docker.com/ai/sandboxes and run "sbx login" once
 	conflicts = claude-guard
 	replaces = claude-guard
-	source = agent-glovebox-0.61.1.tar.gz::https://github.com/AlexanderMattTurner/agent-glovebox/archive/refs/tags/v0.61.1.tar.gz
-	sha256sums = d3fba31a0b6ac5f681ab446712c7532b97fc9d930d477ee3418d531a638c1452
+	source = agent-glovebox-0.61.2.tar.gz::https://github.com/AlexanderMattTurner/agent-glovebox/archive/refs/tags/v0.61.2.tar.gz
+	sha256sums = c60fbd67890b7ea86ec308025fb7135e521162d6c54ee5267ee250c82f006bfd
 
 pkgname = agent-glovebox
