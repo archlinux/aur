@@ -1,0 +1,5 @@
+[jukebox-cli]
+source = "github"
+github = "funstuie-bit/JukeboxCli"
+use_latest_release = true
+prefix = "v"
