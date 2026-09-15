@@ -13,6 +13,7 @@ license=('GPL-3.0')
 # The redumper-bin AUR package is only updated when Media Preservation Frontend (MPF) marks a redumper version as "safe", or based on "safe" Redump.org version
 
 provides=('redumper')
+_redumperver=b750
 
 conflicts=(
     "redumper-gui-bin"
@@ -24,9 +25,10 @@ makedepends=(
     'cargo'
 )
 
+
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Deterous/Redumper-GUI/archive/refs/tags/v$pkgver.tar.gz"
-    "https://github.com/superg/redumper/releases/download/b750/redumper-b750-linux-x64.zip"
+    "https://github.com/superg/redumper/releases/download/$_redumperver/redumper-$_redumperver-linux-x64.zip"
     "https://raw.githubusercontent.com/Deterous/Redumper-GUI/refs/heads/main/LICENSE"
     "https://raw.githubusercontent.com/Deterous/Redumper-GUI/refs/heads/main/README.md"
 )
@@ -47,7 +49,7 @@ build() {
 package() {
 	# install binary
 	install -Dm 755 ${srcdir}/Redumper-GUI-${pkgver}/target/x86_64-unknown-linux-gnu/release/redumper-gui ${pkgdir}/usr/bin/${pkgname}
-	install -Dm 755 ${srcdir}/redumper-b734-linux-x64/bin/redumper ${pkgdir}/usr/bin/redumper
+	install -Dm 755 ${srcdir}/redumper-$_redumperver-linux-x64/bin/redumper ${pkgdir}/usr/bin/redumper
 
 	# install documentation
 	install -Dm 644 ${srcdir}/README.md ${pkgdir}/usr/local/share/doc/${_prgname}/README.md
