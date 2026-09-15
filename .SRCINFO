@@ -1,0 +1,13 @@
+pkgbase = ptf-ctf-thumbnailer
+	pkgdesc = A thumbnailer for PSP PTF and CTF theme files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://coding.homdworks.org/sateallia/ptf-ctf-thumbnailer
+	arch = x86_64
+	license = MIT
+	depends = libpng
+	depends = zlib
+	source = ptf-ctf-thumbnailer-1.0.0.tar.gz::https://coding.homdworks.org/sateallia/ptf-ctf-thumbnailer/archive/v1.0.0.tar.gz
+	sha256sums = 945b9c33bedbde1468d388629cf41a2f057f3ebd27f60eea2a46e39407863679
+
+pkgname = ptf-ctf-thumbnailer
