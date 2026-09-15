@@ -4,7 +4,7 @@ _name="libavif"
 pkgname="lib32-${_name}"
 pkgver=1.4.2
 _libargparse=ee74d1b53bd680748af14e737378de57e2a0a954 # should match cmake/Modules/LocalLibargparse.cmake
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for encoding and decoding .avif files (32-bit)"
 arch=(
   'x86_64'
@@ -16,7 +16,7 @@ license=(
 depends=(
   "${_name}>=${pkgver}"
   'lib32-aom'
-  'lib32-libdav1d'
+  'lib32-dav1d'
   'lib32-gcc-libs'
   'lib32-glib2'
   'lib32-glibc'
@@ -42,7 +42,7 @@ source=(
   "git+https://github.com/kmurray/libargparse.git#commit=${_libargparse}"
   "${_name}_gtest.patch"
 )
-sha256sums=('d9a958dfc7953c1c2ffb7fdf2ae670ea87c7972598bc55d8519d440670bd95bc'
+sha256sums=('2c84afde7ea25afbf3ed9981d65a87723920137e1033f5e4fb48c76c4566ede1'
             '235020da02227503eb09961efd664aca6e544a8b3ed5533cf81e1862bb94f48f'
             '2b35300a447f70d56809f35be961e6c12dff3e9034043775a42f4c0aba6a09c5')
 
