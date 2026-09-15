@@ -1,0 +1,18 @@
+pkgbase = avisynth-plugin-rife-asdg-bin
+	pkgdesc = AviSynth+ RIFE frame interpolation (Asd-g, ncnn Vulkan) — prebuilt
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/Asd-g/AviSynthPlus-RIFE
+	arch = x86_64
+	license = MIT
+	depends = avisynthplus
+	depends = vulkan-icd-loader
+	depends = gcc-libs
+	depends = glibc
+	provides = avisynth-plugin-rife-asdg=1.4.1
+	conflicts = avisynth-plugin-rife-asdg
+	options = !strip
+	source = avisynth-plugin-rife-asdg-1.4.1-linux-x86_64-arch.tar.zst::https://github.com/mysteryx93/AviSynth-Plugins-AUR/releases/download/rife-asdg-v1.4.1/avisynth-plugin-rife-asdg-1.4.1-linux-x86_64-arch.tar.zst
+	sha256sums = cf51ba1f0f9b542f8348a6a1a20825551b695c6d8ef1eb82018cee5d0bdc0b76
+
+pkgname = avisynth-plugin-rife-asdg-bin
