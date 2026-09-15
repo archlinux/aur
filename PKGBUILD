@@ -1,7 +1,7 @@
 # Maintainer: Saiem Saeed <saiem.saeed7 at gmail dot com>
 
 pkgname=sayall-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Linux voice dictation application and CLI (prebuilt)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=('sayall' 'sayall-src' 'sayall-git')
 options=('!debug')
 install='sayall-bin.install'
 source=("sayall-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/sayall-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('99587f875d3c26d8638c14cc8631c8df1e5ceba554a75b62b8884b855a9b9751')
+sha256sums=('0f9669be194bfaa7a77571b9a4bfaca5d5e5527b63c8b6675dec8b44289cd571')
 
 package() {
   local src="$srcdir/sayall-$pkgver-linux-x86_64"
