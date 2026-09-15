@@ -1,8 +1,8 @@
 # Maintainer: Máté Zoltán Farkas <mail@example.com>
 
 pkgname=widic
-pkgver=0.3
-pkgrel=1
+pkgver=0.3.0
+pkgrel=2
 pkgdesc="A Wiktionary viewer in your terminal. Definitions, Etymology, Pronunciation and more."
 arch=('any')
 url="https://github.com/matezoltanfarkas/widic"
@@ -13,6 +13,7 @@ depends=(
   'python-beautifulsoup4'
   'python-requests'
   'python-textual'
+  'python-ruamel-yaml'
 )
 
 source=("git+https://github.com/matezoltanfarkas/widic.git#branch=main")
