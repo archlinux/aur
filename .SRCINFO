@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-color-picker
 	pkgdesc = Simple color picker for Gnome Shell
-	pkgver = 50.1
+	pkgver = 51.0
 	pkgrel = 1
 	url = https://github.com/tuberry/color-picker
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-color-picker
 	makedepends = sassc
 	depends = dconf
 	depends = gnome-shell
-	source = gnome-shell-extension-color-picker-50.1.tar.gz::https://github.com/tuberry/color-picker/archive/refs/tags/50.1.tar.gz
-	sha256sums = 8914062c18f894ecb074fccc5932d4ed2cfb7975fc2744303bbfd2a52641b92b
+	source = gnome-shell-extension-color-picker-51.0.tar.gz::https://github.com/tuberry/color-picker/archive/refs/tags/51.0.tar.gz
+	sha256sums = 94ec4394db4a3a8a931aabe26efe9b18e12cb57dd4fea62d4864d4ae39acb127
 
 pkgname = gnome-shell-extension-color-picker
