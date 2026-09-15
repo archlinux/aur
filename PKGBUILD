@@ -2,8 +2,8 @@
 
 _pkgname=yandex-browser
 pkgname=yandex-browser-corporate
-pkgver=26.6.4.838
-_pkgver=26.6.4.838-1
+pkgver=26.8.1.1086
+_pkgver=26.8.1.1086-1
 pkgrel=1
 
 pkgdesc="The web browser from Yandex.
@@ -21,7 +21,7 @@ optdepends=("speech-dispatcher" "gstreamer-meta" "cryptopro-csp-k1")
 
 source=("${pkgname}-${_pkgver}.deb::https://repo.yandex.ru/${_pkgname}/deb/pool/main/y/${pkgname}/${pkgname}_${_pkgver}_amd64.deb")
 #        "wayland.patch")
-sha256sums=("529511f8d5af9206e2990399bc2846d6d913a500a9082129a3fa204b8d30fb6a")
+sha256sums=("ab90e6ce026c3ad736c8e3cd73443675367b81b0d0ffb5629113c1f261e41404")
 #            "86e4267e8b08e66d2227db41afe1b3d301f14579a76c9664e29645a49c26664d")
 install=${pkgname}.install
 
@@ -33,4 +33,6 @@ prepare() {
 package() {
     cp -dr --no-preserve=ownership opt usr "${pkgdir}"/
     chmod 4755 "${pkgdir}"/opt/yandex/browser/yandex_browser-sandbox
+    sed -i '/^\[Desktop Entry\]/a NoDisplay=true' \
+    "${pkgdir}"/usr/share/applications/ru.yandex.desktop.browser.desktop
 }
