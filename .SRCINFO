@@ -1,7 +1,7 @@
 pkgbase = oh-my-pi
 	pkgdesc = A coding agent with the IDE wired in
 	pkgver = 18.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://omp.sh/
 	arch = x86_64
 	license = MIT
@@ -30,7 +30,9 @@ pkgbase = oh-my-pi
 	options = !strip
 	source = oh-my-pi::git+https://github.com/can1357/oh-my-pi.git#tag=v18.2.0
 	source = skip-native-embed-for-aur.patch
+	source = disable-bytecode-for-aur.patch
 	sha256sums = SKIP
 	sha256sums = a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f
+	sha256sums = 163c04dcef629a1f744d1cbdc51760eb4089651308a3b1ae8763eed4cc791d76
 
 pkgname = oh-my-pi
