@@ -10,7 +10,9 @@
 # Override with: _pvernew=1.3.40 _vrcnew=-alpha2 _prelnew=0.alpha2 ./updates.sh
 
 # Fetch latest tag
-_latest_tag=$(git ls-remote --tags --refs --sort="version:refname" https://github.com/skycoin/skywire.git | tail -n1)
+# versionsort.suffix: without it git sorts v1.3.94-alpha1 AFTER v1.3.94 and a
+# stable release bumps the package to its own pre-release (seen on 1.3.94).
+_latest_tag=$(git -c versionsort.suffix=-alpha -c versionsort.suffix=-beta -c versionsort.suffix=-rc -c versionsort.suffix=-pr ls-remote --tags --refs --sort="version:refname" https://github.com/skycoin/skywire.git | tail -n1)
 _latest_tag=${_latest_tag##*/}
 _latest_tag=${_latest_tag//v/}
 
