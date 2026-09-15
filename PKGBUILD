@@ -1,4 +1,4 @@
-# Maintainer: local
+# Maintainer: (unmellow)melton.mayfield-brown@outlook.com
 # Contributor: needed by lokinet 0.9.14 (liboxenmq.so.0)
 # Matching submodule: oxen-io/lokinet v0.9.14 → oxen-mq v1.2.18
 
