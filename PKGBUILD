@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=beads-bin
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Graph-based memory + issue tracker for coding agents (binary release)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ latestver() {
 }
 
 source_x86_64=("beads-${pkgver}-linux-amd64.tar.gz::https://github.com/steveyegge/beads/releases/download/v${pkgver}/beads_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('8140098a51d3b81d5548d1c5e6db1a2d9930e5d141efe2a4bff7d079c4d321e8')
+sha256sums_x86_64=('2f92b904ecf35b607e44dc5c39229173af69c54f1183e8d709f1773540cdcf3b')
 
 package() {
     install -Dm755 "${srcdir}/bd" "${pkgdir}/usr/bin/bd"
