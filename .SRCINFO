@@ -1,6 +1,6 @@
 pkgbase = cksk
 	pkgdesc = Server-monitor boards for a clck kiosk display
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/corbet-labs/cksk
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cksk
 	replaces = nixwatch-bin
 	replaces = nixwatch
 	options = !lto
-	source = https://static.crates.io/crates/cksk/cksk-0.1.11.crate
-	sha256sums = 599a1a28dbf34f1180cad7cdb10ef8aa51f705debcaa72a06a4d07e40990f31f
+	source = https://static.crates.io/crates/cksk/cksk-0.1.12.crate
+	sha256sums = cdf22cc3c5b05a4ad1c91a11c4add033506a9d7ea95db22bf5481589ef0ed24c
 
 pkgname = cksk
