@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="All-in-one, batteries-included LLM CLI Tool"
 
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -37,8 +37,8 @@ sha256sums=('164ff98c54fd3842fa51ab014b23bbfbd20e426e0bfdc82a245144b283978c7d'
             '8eea4eccb4e6a8a20b96c1b6c58960da93ca9a08f732fc4cfdb812fff86416fd'
             '9e5df042fcd8772063f9916ac2e3d534126945230a4b3be84b486daef2b76cf9'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
-sha256sums_x86_64=('2bb020184f3f5507708542745f582a2a29c7635de020e6d9590321408da63aaa')
-sha256sums_aarch64=('c6e130c33d7afb9d23fa16d69c4124e806ef7537c74db63a2e6496b5af379edd')
+sha256sums_x86_64=('af5da548d5471b00e64c05ee38a964ec11b66ed3f0052dcb5cd2b22c134ef50a')
+sha256sums_aarch64=('c1aee8acc671e64660e1c99b65d489e029e7b2a465af96e42411750fbc6da0be')
 
 prepare() {
 	cd "${srcdir}/" || exit
