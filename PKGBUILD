@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uutils-shadow
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="A memory-safe reimplementation of the Linux shadow-utils in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/uutils/shadow"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'libgcc' 'libxcrypt' 'pam')
 makedepends=('cargo' 'pkgconf')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/uutils/shadow/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('72eaa54a666c715fed9ef9f642552a8e7e5ae7b3a7d30bd76ec0bd31c4f65a17')
+sha256sums=('0fa862fb8c425cbce747c86e783ffd07ec7870781204207e42125a18254d9161')
 
 
 prepare() {
@@ -20,9 +20,6 @@ prepare() {
     cargo update
   fi
   cargo fetch
-
-  # archlinux don't have shadow group
-  sed -i 's/install -Dm2755 -g shadow/install -Dm2755/g' "Makefile"
 }
 
 check() {
