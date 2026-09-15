@@ -1,7 +1,7 @@
 pkgbase = bot-crossing-git
 	pkgdesc = 3D colony sim where every coding-agent thread on your machine is an astronaut building something
 	pkgver = r10.a497242
-	pkgrel = 1
+	pkgrel = 2
 	url = https://botcrossing.com
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 _pkgname=bot-crossing
 pkgname=${_pkgname}-git
 pkgver=r10.a497242
-pkgrel=1
+pkgrel=2
 pkgdesc="3D colony sim where every coding-agent thread on your machine is an astronaut building something"
 arch=('any')
 url="https://botcrossing.com"
