@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=AI Toolbox
+Name[zh_CN]=AI Toolbox
+Comment=Personal AI toolbox for managing AI coding assistant configurations
+Comment[zh_CN]=一站式管理 AI 编程助手配置
+Exec=ai-toolbox
+Icon=ai-toolbox
+Terminal=false
+Type=Application
+Categories=Development;Utility;
+StartupWMClass=AI Toolbox
+MimeType=x-scheme-handler/aitoolbox;

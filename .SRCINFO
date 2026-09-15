@@ -1,0 +1,17 @@
+pkgbase = ai-toolbox-appimage
+	pkgdesc = Personal AI toolbox for managing AI coding assistant configurations
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/coulsontl/ai-toolbox
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	options = !strip
+	source = AI.Toolbox_1.1.5_amd64.AppImage::https://github.com/coulsontl/ai-toolbox/releases/download/v1.1.5/AI.Toolbox_1.1.5_amd64.AppImage
+	source = ai-toolbox.desktop
+	source = ai-toolbox.png
+	sha256sums = b09d84f2b177fcb17c62772caecf39327bd32b15e0213b1c8eb3f39731572424
+	sha256sums = c46aa7b5143e820fbbaafad346a73a951271728c2e3d8c77d656870ac7b05810
+	sha256sums = 3866168546a4b43df7c9024fa72dd5fba4c20c3e4372165bc29b525570e1a9e7
+
+pkgname = ai-toolbox-appimage
