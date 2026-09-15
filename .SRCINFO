@@ -1,4 +1,4 @@
-pkgbase = collabora-office
+pkgbase = collabora-office-bin
 	pkgdesc = Collabora Office - Qt6 desktop document editor powered by Collabora Online
 	pkgver = 26.04.3.3
 	pkgrel = 1
@@ -26,9 +26,12 @@ pkgbase = collabora-office
 	optdepends = noto-fonts: Noto font family
 	optdepends = noto-fonts-cjk: CJK font support
 	optdepends = ttf-dejavu: DejaVu fonts
+	provides = collabora-office=26.04.3.3
+	conflicts = collabora-office
+	replaces = collabora-office
 	options = !strip
 	options = !debug
 	source = collabora-office-cp-26.04.3-3-x86_64.tar.zst::https://github.com/Rash419/collabora-office-asset/releases/download/cp-26.04.3-3/collabora-office-cp-26.04.3-3-x86_64.tar.zst
 	sha256sums = f1830f3ac5f384d9c2e6347748a0bd967a301253dc4c8c664f0397a8639ab968
 
-pkgname = collabora-office
+pkgname = collabora-office-bin
