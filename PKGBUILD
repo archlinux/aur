@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-pure
-pkgver=155.0.1
+pkgver=156.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.firefox.com"
@@ -81,15 +81,15 @@ source=(
   "firefox.desktop"
   "org.mozilla.firefox.metainfo.xml"
   "0001-Install-under-remoting-name.patch"
-  "https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-155-patches-05.tar.xz"
+  "https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-156-patches-01.tar.xz"
 )
 sha256sums=(
-  '7548acd4788d4d0dce7ef9e14e62f7041df8746d9cfe4c05e923747954370d13'
+  '1f2768c043510009abaa3f078123664e106d3ab9dfce75d1819ad96b2145aab9'
   'cb00ea359d6daf37900102307be4f515f1b7ef9c98825c64cc55bb562449d0d8'
   '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
   '4e01a62e20026b67466943bad9dfba47874c5e1492375f8293aeb85ecedf2288'
   'a7364ddb3b6eab922873f35731ed5cfb61e8022a35d54edd2f80b95a4f5625ed'
-  '2900045a70ed374967828f705a18d859a22ee3d5708c8510ddbd6853392cfcb4'
+  '97bb045e0ab033c71ab7c524e517e479a37ad81cf418b961944ed494479d6d06'
 )
 
 prepare() {
