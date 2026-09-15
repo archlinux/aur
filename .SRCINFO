@@ -1,0 +1,17 @@
+pkgbase = jotbird-cli
+	pkgdesc = Publish Markdown from the command line with JotBird
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://www.jotbird.com/cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=18
+	optdepends = xdg-utils: open the browser for jotbird login
+	provides = jotbird
+	conflicts = jotbird
+	noextract = jotbird-0.4.1.tgz
+	source = https://registry.npmjs.org/jotbird/-/jotbird-0.4.1.tgz
+	sha256sums = 889269ae7e530a0094ff596e95bc53b177b5233401d88ef4b1ead6d6cdae50c5
+
+pkgname = jotbird-cli
