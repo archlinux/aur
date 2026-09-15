@@ -1,34 +1,31 @@
 # Maintainer: Rashesh Padia
 pkgname=collabora-office
-pkgver=26.04.2.4
-pkgrel=2
-_source_tag=cp-26.04.2-4
+pkgver=26.04.3.3
+pkgrel=1
+_source_tag=cp-26.04.3-3
 pkgdesc='Collabora Office - Qt6 desktop document editor powered by Collabora Online'
 arch=('x86_64')
 url='https://collaboraoffice.com'
 license=('MPL-2.0')
 # Derived from the system-libraries.txt asset that the build publishes next to
 # the payload, which lists every library the payload loads from outside itself.
-# cups and dbus are loaded at run time rather than linked, and fontconfig is
-# here for /etc/fonts and fc-cache: the payload carries its own
-# libfontconfig-lo.
+# fontconfig is here for /etc/fonts and fc-cache, because the payload carries
+# its own libfontconfig-lo. Everything else the engine used to link against is
+# built into the payload.
 depends=(
     'qt6-base'
     'qt6-declarative'
     'qt6-positioning'
     'qt6-webchannel'
     'qt6-webengine'
-    'cups'
-    'dbus'
-    'expat'
+    'qt6-websockets'
     'fontconfig'
     'hicolor-icon-theme'
-    'libpng'
+    'mpdecimal'
     'nspr'
     'nss'
     'util-linux-libs'
     'zlib'
-    'zstd'
 )
 optdepends=(
     'hunspell-en_us: English spell checking'
@@ -47,10 +44,7 @@ options=('!strip' '!debug')
 # statically from the engine workdir, so it is not a dependency.
 # https://github.com/Rash419/collabora-office-asset
 source=("collabora-office-${_source_tag}-x86_64.tar.zst::https://github.com/Rash419/collabora-office-asset/releases/download/${_source_tag}/collabora-office-${_source_tag}-x86_64.tar.zst")
-# Fill in from the sha256sums line in the release notes for ${_source_tag},
-# once the desktop tarball for that tag has been built. This has to carry the
-# real checksum before the package is published.
-sha256sums=('SKIP')
+sha256sums=('f1830f3ac5f384d9c2e6347748a0bd967a301253dc4c8c664f0397a8639ab968')
 
 package() {
     cp -a "$srcdir/usr" "$pkgdir/"
