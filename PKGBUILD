@@ -2,9 +2,9 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-funcy
-pkgver=2.0
+pkgver=2.1
 _commit=13fac0037c109a9e4649fc8ee343be17647f7407
-pkgrel=8
+pkgrel=1
 pkgdesc='A fancy and practical functional tools'
 arch=(any)
 license=(BSD-3-Clause)
