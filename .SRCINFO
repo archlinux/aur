@@ -1,13 +1,14 @@
 pkgbase = bot-crossing-git
 	pkgdesc = 3D colony sim where every coding-agent thread on your machine is an astronaut building something
 	pkgver = r10.a497242
-	pkgrel = 2
+	pkgrel = 3
 	url = https://botcrossing.com
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = npm
 	depends = nodejs>=22.13
+	depends = hicolor-icon-theme
 	optdepends = xdg-utils: open threads and folders, and launch the browser from the desktop entry
 	provides = bot-crossing
 	conflicts = bot-crossing
@@ -15,9 +16,11 @@ pkgbase = bot-crossing-git
 	source = bot-crossing
 	source = bot-crossing.service
 	source = bot-crossing.desktop
+	source = bot-crossing.svg
 	md5sums = SKIP
 	md5sums = 95efe63dac9efb2d84fa959d02aecc7f
 	md5sums = f431abc074b85ea8736ed120ba32d608
-	md5sums = d16997ebff2289e703d2177a6bf677d8
+	md5sums = a169bc2f4c95b79d9b556113b9f12169
+	md5sums = 07e2764bbc3836d9462d651b817b4794
 
 pkgname = bot-crossing-git
