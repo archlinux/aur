@@ -1,7 +1,7 @@
 pkgbase = hellwal
 	pkgdesc = fast, extensible color palette generator
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danihek/hellwal
 	arch = any
 	license = MIT

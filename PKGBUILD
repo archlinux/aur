@@ -2,7 +2,7 @@
 # Co-Maintainer: danihek <danihek07@gmail.com>
 pkgname=hellwal
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="fast, extensible color palette generator"
 arch=('any')
 url="https://github.com/danihek/hellwal"
@@ -19,7 +19,7 @@ sha512sums=('9cd043a72ce7b69929b5ba4390e64a8443b8d39a56192b9e1f3dcb0099c48edadb5
 
 build() {
 	cd ${pkgname}-${pkgver}
-	make ${pkgname}
+	make debug
 }
 
 package() {
@@ -28,6 +28,9 @@ package() {
 
 	# bash completion
 	install -D ${pkgname}-${pkgver}/assets/hellwal-completion.bash $pkgdir/usr/share/bash-completion/completions/${pkgname}
+
+	# fish completion
+	install -D ${pkgname}-${pkgver}/assets/hellwal.fish $pkgdir/usr/share/fish/vendor_completions./${pkgname}.fish
 
 	# templates
 	install -D ${pkgname}-${pkgver}/templates/alphacolors.css $pkgdir/usr/share/docs/${pkgname}/templates/alphacolors.css
@@ -57,6 +60,8 @@ package() {
 	install -D ${pkgname}-${pkgver}/templates/qt-colors.conf $pkgdir/usr/share/docs/${pkgname}/templates/qt-colors.conf
 	install -D ${pkgname}-${pkgver}/templates/micro-colors.micro $pkgdir/usr/share/docs/${pkgname}/templates/micro-colors.micro
 	install -D ${pkgname}-${pkgver}/templates/gtk.css $pkgdir/usr/share/docs/${pkgname}/templates/gtk.css
+	install -D ${pkgname}-${pkgver}/templates/niri-colors.kdl $pkgdir/usr/share/docs/${pkgname}/templates/niri-colors.kdl
+	install -D ${pkgname}-${pkgver}/templates/hellwal-theme.el $pkgdir/usr/share/docs/${pkgname}/templates/hellwal-theme.el
 
 	# themes
 	install -D ${pkgname}-${pkgver}/themes/catppuccin.hellwal $pkgdir/usr/share/docs/${pkgname}/themes/catppuccin.hellwal
