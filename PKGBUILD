@@ -1,13 +1,13 @@
 # Maintainer: Aditya Sirish <aditya@saky.in>
 pkgname=('has')
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='has checks presence of various command line tools and their versions on the path'
 arch=('any')
 url='https://github.com/kdabir/has'
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('965629d00b9c41fab2a9c37b551e3d860df986d86cdebd9b845178db8f1c998e')
+sha256sums=('99b4b82d8b935521bd1b44bf7a6af3421f4c850a28b8edfee39e6ee75af4d78f')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
