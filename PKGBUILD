@@ -3,7 +3,7 @@
 pkgname=redumper-gui
 epoch=
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross-platform digital fidget spinner and GUI for redumper. Package built from tagged release source.'
 arch=(x86_64)
 url='https://github.com/Deterous/Redumper-GUI'
@@ -25,7 +25,6 @@ makedepends=(
     'cargo'
 )
 
-
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Deterous/Redumper-GUI/archive/refs/tags/v$pkgver.tar.gz"
     "https://github.com/superg/redumper/releases/download/$_redumperver/redumper-$_redumperver-linux-x64.zip"
@@ -41,9 +40,18 @@ sha256sums=('b27a92d0171b92884382391da25eaab998209d6f72c7dadfd9b9331c34d1412a'
 # Arch default makepkg LTO settings cause a build failure without the added CFLAGS
 # Source of fix: https://github.com/mozilla/sccache/issues/862#issuecomment-2186738388
 
+prepare() {
+    cd ${srcdir}/Redumper-GUI-$pkgver
+    export RUSTUP_TOOLCHAIN=stable
+    cargo update
+    cargo fetch --locked --target host-tuple
+}
+
 build() {
-        cd ${srcdir}/Redumper-GUI-$pkgver
-        CFLAGS+=' -ffat-lto-objects' cargo build --release --verbose --target x86_64-unknown-linux-gnu 
+    cd ${srcdir}/Redumper-GUI-$pkgver
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    CFLAGS+=' -ffat-lto-objects' cargo build --all-features --frozen --release --verbose --target x86_64-unknown-linux-gnu 
 }
 
 package() {

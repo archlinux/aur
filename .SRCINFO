@@ -1,7 +1,7 @@
 pkgbase = redumper-gui
 	pkgdesc = A cross-platform digital fidget spinner and GUI for redumper. Package built from tagged release source.
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Deterous/Redumper-GUI
 	arch = x86_64
 	license = GPL-3.0
