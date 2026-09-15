@@ -1,6 +1,6 @@
 pkgbase = awsm-bin
 	pkgdesc = A fast command-line tool to manage your AWS profiles, sessions, and console access with ease
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/AleG03/awsm
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = awsm-bin
 	license = BSL-1.1
 	provides = awsm
 	conflicts = awsm
-	source_x86_64 = https://github.com/AleG03/awsm/releases/download/v1.5.3/awsm_1.5.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = f9eff780cba8c19ece7724989dc6d9e94e6309845527e27e66daea04ddb01a3e
-	source_aarch64 = https://github.com/AleG03/awsm/releases/download/v1.5.3/awsm_1.5.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2c196b239d0f431d0830e2b265b742a809407725b1253313f27a1a14ce562efc
+	source_x86_64 = https://github.com/AleG03/awsm/releases/download/v1.5.4/awsm_1.5.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8bfe7c4d4fd5a0dcfa80dbbf66f3c78c3d8a77f9c2fbbb11fc5d0f8ae1a262ff
+	source_aarch64 = https://github.com/AleG03/awsm/releases/download/v1.5.4/awsm_1.5.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 78da6e029b2a2c095b177eda36b9066ea41751ed7a73fd37f416ba818d93edd0
 
 pkgname = awsm-bin

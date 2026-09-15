@@ -2,7 +2,7 @@
 # Contributor: pusi77-robot <pusineriandrea+gmail+com>
 
 pkgname=awsm-bin
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 source_x86_64=("https://github.com/AleG03/awsm/releases/download/v${pkgver}/awsm_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/AleG03/awsm/releases/download/v${pkgver}/awsm_${pkgver}_linux_arm64.tar.gz")
@@ -17,5 +17,5 @@ package() {
   install -Dm755 ${pkgname%-bin} "$pkgdir"/usr/bin/${pkgname%-bin}
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }
-sha256sums_x86_64=('f9eff780cba8c19ece7724989dc6d9e94e6309845527e27e66daea04ddb01a3e')
-sha256sums_aarch64=('2c196b239d0f431d0830e2b265b742a809407725b1253313f27a1a14ce562efc')
+sha256sums_x86_64=('8bfe7c4d4fd5a0dcfa80dbbf66f3c78c3d8a77f9c2fbbb11fc5d0f8ae1a262ff')
+sha256sums_aarch64=('78da6e029b2a2c095b177eda36b9066ea41751ed7a73fd37f416ba818d93edd0')
