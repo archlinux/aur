@@ -1,0 +1,4 @@
+[tdns-bin]
+source = "git"
+git = "https://github.com/mbevc1/tdns.git"
+prefix = "v"
