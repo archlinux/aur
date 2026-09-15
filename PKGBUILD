@@ -1,16 +1,16 @@
 # Maintainer: Zorbatron <46525467+Zorbatron@users.noreply.github.com>
 
-pkgname=vde2-git
 _pkgname=vde2
-pkgver=v2.3.3.r28.6023871
-pkgrel=2
+pkgname="${_pkgname}-git"
+pkgver=v2.3.3.r60.7e7017b
+pkgrel=1
 
 pkgdesc="VDEv2: Virtual Distributed Ethernet."
 arch=('x86_64')
 url='https://github.com/virtualsquare/vde-2'
-license=('GPL-2.0' 'LGPL-2.1')
-makedepends=('make' 'coreutils' 'cmake' 'vdeplug4')
-depends=('vdeplug4')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
+depends=('glibc' 'vdeplug4' 'libpcap' 'wolfssl')
+makedepends=('git' 'cmake')
 source=("git+$url")
 sha256sums=('SKIP')
 

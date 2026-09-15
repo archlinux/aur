@@ -1,16 +1,17 @@
 pkgbase = vde2-git
 	pkgdesc = VDEv2: Virtual Distributed Ethernet.
-	pkgver = v2.3.3.r28.6023871
-	pkgrel = 2
+	pkgver = v2.3.3.r60.7e7017b
+	pkgrel = 1
 	url = https://github.com/virtualsquare/vde-2
 	arch = x86_64
-	license = GPL-2.0
-	license = LGPL-2.1
-	makedepends = make
-	makedepends = coreutils
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	makedepends = git
 	makedepends = cmake
-	makedepends = vdeplug4
+	depends = glibc
 	depends = vdeplug4
+	depends = libpcap
+	depends = wolfssl
 	source = git+https://github.com/virtualsquare/vde-2
 	sha256sums = SKIP
 
