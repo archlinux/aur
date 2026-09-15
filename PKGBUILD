@@ -5,13 +5,13 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-typed-ffmpeg-v8
 epoch=
-pkgver=4.1
+pkgver=4.5
 pkgrel=1
 pkgdesc='Typed FFmpeg bindings for FFmpeg 8.x'
 arch=(any)
 url=https://pypi.org/project/typed-ffmpeg-v8/
 license=(MIT)
-depends=(python 'python-ffmpeg-core>=4.1')
+depends=(python 'python-ffmpeg-core>=4.5')
 recommends=('python-graphviz: filter graph visualization')
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip)
@@ -21,9 +21,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/ec/fa/1ef8a3a50a3962495a190ccb3bb56771af21150471be7f50fe8099d0e0f6/typed_ffmpeg_v8-4.1-py3-none-any.whl)
-md5sums+=(67e318f7a5b74563c04fdbcc126d9751)
-noextract+=(typed_ffmpeg_v8-4.1-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/a7/63/6178147caaa4249979143980eee77f722ce2e4692d0611204b5ea89d167a/typed_ffmpeg_v8-4.5-py3-none-any.whl)
+md5sums+=(d8cfff8ae85cc39b314321c2e285efc6)
+noextract+=(typed_ffmpeg_v8-4.5-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(e4761ae89d23a3f9a0ac3c39c13262dd)
 
