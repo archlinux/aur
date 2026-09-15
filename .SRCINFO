@@ -5,6 +5,7 @@ pkgbase = nsutils-git
 	url = https://github.com/rd235/nsutils
 	arch = x86_64
 	license = GPL-2.0-or-later
+	makedepends = git
 	makedepends = cmake
 	provides = nsutils
 	conflicts = nsutils
