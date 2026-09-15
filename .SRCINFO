@@ -1,0 +1,19 @@
+pkgbase = libvirt-iso-archlinux-bin
+	pkgdesc = Official Arch Linux installation ISO for libvirt
+	pkgver = 2026.09.01
+	pkgrel = 1
+	url = https://archlinux.org/download/
+	arch = x86_64
+	license = LicenseRef-Various
+	checkdepends = libarchive
+	checkdepends = squashfs-tools
+	noextract = archlinux-2026.09.01-x86_64.iso
+	source = archlinux-2026.09.01-x86_64.iso::https://archive.archlinux.org/iso/2026.09.01/archlinux-2026.09.01-x86_64.iso
+	source = archlinux-2026.09.01-x86_64.iso.sig::https://archive.archlinux.org/iso/2026.09.01/archlinux-2026.09.01-x86_64.iso.sig
+	source = DISTRIBUTION-LICENSE
+	validpgpkeys = 3E80CA1A8B89F69CBA57D98A76A5EF9054449A5C
+	sha256sums = be8458032f8105e60ee2a3067f950b6e3c007ee51b38dac50e8b48e765561c91
+	sha256sums = SKIP
+	sha256sums = cb5f1ca3b96864dcbf26ef4792510c79eabd25a8988fd57e24fef4c02b278d4c
+
+pkgname = libvirt-iso-archlinux-bin
