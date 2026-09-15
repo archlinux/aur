@@ -1,6 +1,6 @@
 pkgbase = omafil-git
 	pkgdesc = File manager that follows your Omarchy theme
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/dawitlabs/omafil
 	arch = x86_64
