@@ -4,7 +4,7 @@
 _pkgname=rsp_tcp
 pkgname="${_pkgname}-git"
 pkgver=v0.1.beta.r16.g61b8c91
-pkgrel=2
+pkgrel=3
 pkgdesc="a rtl_tcp compatible IQ server for the RSP range of SDRPlay SDR"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/SDRplay/RSPTCPServer"
