@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-wetypex
 pkgver=2.2.3.657
-pkgrel=2
+pkgrel=3
 pkgdesc="Native Linux compatibility layer for WeType on Fcitx5"
 arch=('x86_64')
 url="https://github.com/panxuc/fcitx5-wetypex"
@@ -33,7 +33,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}-${pkgrel}/${pkgname}-${pkgver}.tar.gz"
     'libkqueue::git+https://github.com/mheily/libkqueue.git#commit=46a3e130f88b0b0742575dcb01d77e336538024b'
 )
-sha256sums=("b334725a062146598b3b4044cdb245564ad6de63781db7fe1e27c7f43ff6c24f" "SKIP")
+sha256sums=("9e89984549faa58392b1df7106842d850c5fa4f64123df13cda9da6cb38780d6" "SKIP")
 install=fcitx5-wetypex.install
 
 build() {
