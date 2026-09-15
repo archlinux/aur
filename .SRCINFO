@@ -1,0 +1,14 @@
+pkgbase = mimir-sleep
+	pkgdesc = Drop-in sleep replacement that plays soothing sound effects while your computer is asleep
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/FraioVeio/mimir
+	arch = any
+	license = MIT
+	depends = bash
+	depends = gawk
+	depends = sox
+	source = mimir-sleep-2.0.0.tar.gz::https://github.com/FraioVeio/mimir/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = 76173bdd4d56edee84eb579e940094831e7a7f15c74a420c4f7e30da450edf9f
+
+pkgname = mimir-sleep
