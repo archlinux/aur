@@ -1,7 +1,7 @@
 # Maintainer: Twilight0 <https://github.com/Twilight0>
 pkgname=polkit-aliveos
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Transparent Polkit authentication agent for AliveOS with explicit caller disclosure, UAC screen dimming, and Zenity-GTK3 styling"
 arch=('any')
 url="https://github.com/Twilight0/polkit-aliveos"
@@ -10,7 +10,7 @@ depends=('python' 'python-gobject' 'gtk3' 'gtk-layer-shell' 'polkit' 'libcanberr
 provides=('polkit-authentication-agent')
 conflicts=('polkit-gnome')
 source=("https://github.com/Twilight0/polkit-aliveos/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2a8843e8aad623b0a029766ffcd593e3d887072cbf33728eb714a905004775d1')
+sha256sums=('0308f5156ac64ac440810297738c77c15a577ed47528063055e2243e4cf27507')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
