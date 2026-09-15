@@ -32,15 +32,6 @@ package() {
 
     install -Dm755 libvexa.so \
         "$pkgdir/usr/lib/libvexa.so"
-}
-
-package() {
-    cd "$srcdir/vexa"
-
-    install -Dm755 libvexa.so \
-        "$pkgdir/usr/lib/libvexa.so"
 
     cp -r include "$pkgdir/usr/"
 }
-
-
