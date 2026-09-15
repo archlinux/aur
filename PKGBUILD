@@ -40,7 +40,7 @@ depends=(
     'python-conda-inject>=1.3.1' 'python-conda-inject<2.0'
     'python-sqlmodel>=0.0.37'
 )
-makedepends=(python-setuptools python-build python-installer python-wheel)
+makedepends=(python-setuptools python-build python-installer python-wheel python-setuptools-scm)
 optdepends=(
     'python-pygments: For report generation'
     'python-biopython: For GenBank/NCBI Entrez support'

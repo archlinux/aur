@@ -9,6 +9,7 @@ pkgbase = snakemake
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python-immutables
 	depends = python-configargparse
 	depends = python-connection_pool
