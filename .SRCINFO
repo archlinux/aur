@@ -1,7 +1,7 @@
 pkgbase = ymake-git
 	pkgdesc = A cross build dsl make tool
 	pkgver = 0.8.9.30.g233266d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evilbinary/ymake
 	arch = any
 	license = MIT
@@ -14,7 +14,6 @@ pkgbase = ymake-git
 	depends = python-colorama
 	depends = python-colorlog
 	depends = python-networkx
-	depends = python-pkg_resources
 	depends = python-diskcache
 	provides = ymake
 	conflicts = ymake

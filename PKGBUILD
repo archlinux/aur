@@ -2,7 +2,7 @@
 
 pkgname=ymake-git
 pkgver=0.8.9.30.g233266d
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross build dsl make tool"
 arch=('any')
 url="https://github.com/evilbinary/ymake"
@@ -14,7 +14,6 @@ depends=(
 	python-colorama
 	python-colorlog
 	python-networkx
-	python-pkg_resources
 	# AUR
 	python-diskcache
 )
