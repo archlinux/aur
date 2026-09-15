@@ -2,10 +2,10 @@
 # Contributor: Pierre-Loup A. Griffais (pgriffais@valvesoftware.com)
 
 pkgname=jupiter-hw-support
-_srctag=jupiter-20260807.1
+_srctag=jupiter-20260914.1
 _srcver=${_srctag#jupiter-}
 pkgver=${_srcver//-/.}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/evlav/jupiter-hw-support"
 pkgdesc="Jupiter HW support package"

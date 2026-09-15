@@ -1,7 +1,7 @@
 pkgbase = jupiter-hw-support
 	pkgdesc = Jupiter HW support package
-	pkgver = 20260807.1
-	pkgrel = 2
+	pkgver = 20260914.1
+	pkgrel = 1
 	url = https://github.com/evlav/jupiter-hw-support
 	arch = x86_64
 	license = MIT
@@ -23,7 +23,7 @@ pkgbase = jupiter-hw-support
 	depends = plymouth
 	optdepends = grub-steamos
 	options = !strip
-	source = git+https://github.com/evlav/jupiter-hw-support.git#tag=jupiter-20260807.1
+	source = git+https://github.com/evlav/jupiter-hw-support.git#tag=jupiter-20260914.1
 	sha512sums = SKIP
 
 pkgname = jupiter-hw-support
