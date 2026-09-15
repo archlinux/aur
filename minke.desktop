@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Minke
+GenericName=Minke
+Comment=Minke desktop agent powered by DeepSeek Harness
+Exec=minke %U
+Icon=minke
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
