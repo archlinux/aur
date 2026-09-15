@@ -1,0 +1,20 @@
+pkgbase = diffs-bin
+	pkgdesc = Fast, beautiful diffs in a single local binary
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/imfing/diffs-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	depends = zlib
+	provides = diffs
+	conflicts = diffs
+	options = !strip
+	source_x86_64 = diffs-x86_64-0.5.1.tgz::https://github.com/imfing/diffs-cli/releases/download/v0.5.1/diffs-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ba87e20cf090724d42dec4b33cae643fe758eb06929d5de58a52542988bc3d57
+	source_aarch64 = diffs-aarch64-0.5.1.tgz::https://github.com/imfing/diffs-cli/releases/download/v0.5.1/diffs-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 32ca097d99654e1467e6e117fbb485d09d388c9782f8b63b81fbf7558f55bec3
+
+pkgname = diffs-bin

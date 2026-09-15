@@ -1,0 +1,5 @@
+[diffs-bin]
+source = "github"
+github = "imfing/diffs-cli"
+use_latest_release = true
+prefix = "v"
