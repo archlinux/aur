@@ -1,6 +1,6 @@
 pkgbase = itchio-downloader
 	pkgdesc = Download free games from itch.io programmatically - no API key or GUI
-	pkgver = 1.2.5
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Wal33D/itchio-downloader
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = itchio-downloader
 	depends = nodejs>=20.19
 	optdepends = puppeteer>=25.11: last-resort browser automation fallback (requires Node.js 22.12+)
 	optdepends = chromium: browser executable for the optional Puppeteer fallback
-	source = https://registry.npmjs.org/itchio-downloader/-/itchio-downloader-1.2.5.tgz
-	sha256sums = e3333713c56bcaf78ad7fd1cfd3191672f4edd7606b3acc9655c958d65f049dd
+	source = https://registry.npmjs.org/itchio-downloader/-/itchio-downloader-1.3.0.tgz
+	sha256sums = 6aaf3c60fa0e55e26309916a6e16991cefa481fa9b7baece17232f5f4c976a81
 
 pkgname = itchio-downloader
