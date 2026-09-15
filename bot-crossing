@@ -1,22 +1,37 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+ENV_OVERRIDDEN="${PORT+x}${BOT_CROSSING_HOST+x}${BOT_CROSSING_DATA+x}"
 PORT="${PORT:-5274}"
 HOST="${BOT_CROSSING_HOST:-127.0.0.1}"
 export BOT_CROSSING_DATA="${BOT_CROSSING_DATA:-${XDG_DATA_HOME:-$HOME/.local/share}/bot-crossing}"
 URL="http://${HOST}:${PORT}"
+SERVER=/usr/lib/bot-crossing/server/serve.mjs
+UNIT=bot-crossing.service
+
+if [[ -d "${XDG_RUNTIME_DIR:-}" ]]; then
+    PIDFILE="${XDG_RUNTIME_DIR}/bot-crossing/${PORT}.pid"
+else
+    PIDFILE="${TMPDIR:-/tmp}/bot-crossing-$(id -u)-${PORT}.pid"
+fi
 
 EXIT_ALREADY_RUNNING=75
-OPEN_WAIT_TRIES=50
+STOP_WAIT_TRIES=25
+START_WAIT_TRIES=50
 
 usage() {
     cat <<USAGE
-Usage: bot-crossing [--open] [--help]
+Usage: bot-crossing [serve|start|stop|status|open|--help]
 
-Serve Bot Crossing on ${URL}.
+Manage the Bot Crossing server on ${URL}.
 
-  --open      Open ${URL} in the default browser, starting the server
-              first if nothing is listening on the port.
+  serve       Run the server in the foreground (default). Ctrl-C stops it.
+  start       Run the server in the background: through the systemd user
+              unit when one is available, otherwise as a detached process.
+  stop        Stop the background or foreground server.
+  status      Report whether the server is running. Exit 0 if it is.
+  open        Open ${URL} in the default browser, starting the
+              server first if it is not running.
   -h, --help  Show this help.
 
 Environment:
@@ -25,47 +40,169 @@ Environment:
   BOT_CROSSING_DATA  Where colony.json lives
                      (default \${XDG_DATA_HOME:-~/.local/share}/bot-crossing)
 
+The running server's pid is recorded in
+  ${PIDFILE}
+so every subcommand, the systemd unit and the desktop entry agree on
+what is running. When PORT, BOT_CROSSING_HOST or BOT_CROSSING_DATA are
+set, start does not use the systemd unit, since the unit would not see them.
+
 Exit status:
-  0  Server exited normally, or --open reused a running server.
-  1  Bad arguments.
-  ${EXIT_ALREADY_RUNNING}  Something is already listening on ${URL}.
+  0   Success, or the server is already in the requested state.
+  1   Bad arguments, or the server could not be started or stopped.
+  ${EXIT_ALREADY_RUNNING}  serve: the server is already running, or something else
+      is listening on ${URL}.
 USAGE
+}
+
+warn() {
+    echo "bot-crossing: $*" >&2
 }
 
 listening() {
     timeout 1 bash -c "exec 3<>/dev/tcp/${HOST}/${PORT}" 2>/dev/null
 }
 
-case "${1:-}" in
-    -h|--help)
-        usage
-        exit 0
-        ;;
-    --open)
+server_pid() {
+    [[ -r "${PIDFILE}" ]] || return 1
+    local pid
+    pid=$(<"${PIDFILE}")
+    if [[ "${pid}" =~ ^[0-9]+$ ]] \
+        && kill -0 "${pid}" 2>/dev/null \
+        && tr '\0' ' ' <"/proc/${pid}/cmdline" 2>/dev/null | grep -q "${SERVER}"; then
+        echo "${pid}"
+        return 0
+    fi
+    rm -f "${PIDFILE}"
+    return 1
+}
+
+record_pid() {
+    mkdir -p "$(dirname "${PIDFILE}")"
+    if ! (set -o noclobber; echo "$$" >"${PIDFILE}") 2>/dev/null; then
+        warn "another instance is starting on ${URL}"
+        exit "${EXIT_ALREADY_RUNNING}"
+    fi
+}
+
+env_overridden() {
+    [[ -n "${ENV_OVERRIDDEN}" ]]
+}
+
+unit_usable() {
+    [[ "$(systemctl --user show -p LoadState --value "${UNIT}" 2>/dev/null)" == "loaded" ]]
+}
+
+unit_active() {
+    systemctl --user is-active --quiet "${UNIT}" 2>/dev/null
+}
+
+wait_for() {
+    local tries=$1 test=$2 i
+    for ((i = 0; i < tries; i++)); do
+        if "${test}"; then return 0; fi
+        sleep 0.2
+    done
+    return 1
+}
+
+not_listening() {
+    ! listening
+}
+
+cmd_serve() {
+    local pid
+    if pid=$(server_pid); then
+        warn "already running (pid ${pid}) at ${URL}"
+        exit "${EXIT_ALREADY_RUNNING}"
+    fi
+    if listening; then
+        warn "something else is listening on ${URL}; stop it first, or set PORT to serve elsewhere"
+        exit "${EXIT_ALREADY_RUNNING}"
+    fi
+    record_pid
+    mkdir -p "${BOT_CROSSING_DATA}"
+    exec node "${SERVER}"
+}
+
+cmd_start() {
+    local pid
+    if pid=$(server_pid); then
+        echo "already running (pid ${pid}) at ${URL}"
+        return 0
+    fi
+    if listening; then
+        warn "something else is listening on ${URL}; stop it first, or set PORT to serve elsewhere"
+        return 1
+    fi
+    if ! env_overridden && unit_usable; then
+        systemctl --user start "${UNIT}"
+    else
+        setsid -f "$0" serve >/dev/null 2>&1
+    fi
+    if ! wait_for "${START_WAIT_TRIES}" listening; then
+        warn "server did not come up on ${URL}"
+        return 1
+    fi
+    echo "started (pid $(server_pid)) at ${URL}"
+}
+
+cmd_stop() {
+    local pid
+    if ! pid=$(server_pid); then
         if listening; then
-            exec xdg-open "${URL}"
+            warn "not started by this launcher, but something is listening on ${URL}"
+            return 1
         fi
-        (
-            for ((i = 0; i < OPEN_WAIT_TRIES; i++)); do
-                if listening; then
-                    exec xdg-open "${URL}"
-                fi
-                sleep 0.2
-            done
-        ) &
-        ;;
-    "") ;;
+        echo "not running"
+        return 0
+    fi
+    if unit_active; then
+        systemctl --user stop "${UNIT}"
+    else
+        kill -TERM "${pid}"
+    fi
+    if ! wait_for "${STOP_WAIT_TRIES}" not_listening; then
+        warn "pid ${pid} did not exit; kill -9 ${pid} if it is stuck"
+        return 1
+    fi
+    rm -f "${PIDFILE}"
+    echo "stopped (pid ${pid})"
+}
+
+cmd_status() {
+    local pid
+    if pid=$(server_pid); then
+        if unit_active; then
+            echo "running (pid ${pid}, systemd user unit) at ${URL}"
+        else
+            echo "running (pid ${pid}) at ${URL}"
+        fi
+        return 0
+    fi
+    if listening; then
+        echo "not started by this launcher, but something is listening on ${URL}"
+    else
+        echo "not running"
+    fi
+    return 1
+}
+
+cmd_open() {
+    if ! listening; then
+        cmd_start
+    fi
+    exec xdg-open "${URL}"
+}
+
+case "${1:-serve}" in
+    -h|--help) usage ;;
+    serve)  cmd_serve ;;
+    start)  cmd_start ;;
+    stop)   cmd_stop ;;
+    status) cmd_status ;;
+    open)   cmd_open ;;
     *)
         usage >&2
         exit 1
         ;;
 esac
-
-if listening; then
-    echo "bot-crossing: something is already listening on ${URL}; not starting a second server." >&2
-    echo "bot-crossing: stop it first, or set PORT to serve elsewhere." >&2
-    exit "${EXIT_ALREADY_RUNNING}"
-fi
-
-mkdir -p "${BOT_CROSSING_DATA}"
-exec node /usr/lib/bot-crossing/server/serve.mjs

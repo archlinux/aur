@@ -9,11 +9,12 @@ Upstream has no tags or releases, so the package builds from the `main` branch.
 
 ## Package-Specific Files
 
-- `bot-crossing`: Launcher installed to `/usr/bin`.
+- `bot-crossing`: Launcher installed to `/usr/bin` with `serve`, `start`, `stop`, `status` and `open` subcommands.
   It exports `BOT_CROSSING_DATA` to `${XDG_DATA_HOME:-~/.local/share}/bot-crossing` because upstream otherwise writes `colony.json` next to its own code.
-  `--open` starts the server if needed and opens the browser.
-- `bot-crossing.service`: systemd user unit (`systemctl --user enable --now bot-crossing`).
-- `bot-crossing.desktop`: Application menu entry that runs `bot-crossing --open`.
+  It records the server pid in `$XDG_RUNTIME_DIR/bot-crossing/<PORT>.pid` so the unit, the desktop entry and the terminal all agree on what is running.
+- `bot-crossing.service`: systemd user unit running `bot-crossing serve` (`systemctl --user enable --now bot-crossing`).
+  It never opens a browser.
+- `bot-crossing.desktop`: Application menu entry that runs `bot-crossing open`.
 
 ## Package Maintenance
 
@@ -49,9 +50,18 @@ The server binds `127.0.0.1:5274` by default.
 `PORT` and `BOT_CROSSING_HOST` override that,
 and are honoured by both the launcher and upstream's `server/serve.mjs`.
 
-## Already-running handling
+## Process management
 
-The launcher refuses to start if something already listens on the port and exits 75 (`EX_TEMPFAIL`).
-The unit sets `RestartPreventExitStatus=75` so systemd reports one clear failure instead of a restart loop.
-This happens when a manual `bot-crossing` or the desktop entry is already serving and the unit is started afterwards;
-stop the other one first, or set `PORT`.
+`serve` runs in the foreground and is what the unit calls.
+`start` backgrounds the server through the systemd user unit when `systemctl --user` can load it and none of `PORT`, `BOT_CROSSING_HOST` or `BOT_CROSSING_DATA` are set,
+because the unit would not see those overrides;
+otherwise it runs a detached `setsid` process.
+`stop` uses `systemctl --user stop` when the unit is active and `SIGTERM` on the recorded pid otherwise.
+`open` starts the server if nothing is listening, then runs `xdg-open`.
+
+The pid file is written just before `exec node`, so the recorded pid is the node process.
+Every read verifies the pid is alive and is running `serve.mjs`, and removes the file otherwise,
+which is how a crash or a `systemctl --user stop` behind the launcher's back is handled.
+
+`serve` exits 75 (`EX_TEMPFAIL`) if the server is already running or something else holds the port.
+The unit sets `RestartPreventExitStatus=75` so that produces one clear failure instead of a restart loop.

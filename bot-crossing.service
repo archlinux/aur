@@ -3,7 +3,7 @@ Description=Bot Crossing - coding-agent colony viewer
 Documentation=https://botcrossing.com https://github.com/Station-Sciences/bot-crossing
 
 [Service]
-ExecStart=/usr/bin/bot-crossing
+ExecStart=/usr/bin/bot-crossing serve
 Restart=on-failure
 RestartPreventExitStatus=75
 
