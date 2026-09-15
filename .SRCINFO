@@ -1,7 +1,7 @@
 pkgbase = audiowmark
 	pkgdesc = Audio and video watermarking
 	pkgver = 0.6.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://uplex.de/audiowmark/
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,9 @@ pkgbase = audiowmark
 	depends = glibc
 	depends = libgcrypt
 	source = https://github.com/swesterfeld/audiowmark/releases/download/0.6.5/audiowmark-0.6.5.tar.zst
+	source = fix-ffmpeg9.patch::https://github.com/swesterfeld/audiowmark/pull/79.patch
 	sha256sums = 12dd0232e47f29521c91d9d642183b3ca4145be61d353c4dc6d1c6cd7c388a4b
+	sha256sums = 87b6cc58eab4626aafb4c526b6fbd6bb8e07973baef2304f63bd4375de4cf3b9
 
 pkgname = audiowmark
 	depends = bash

@@ -4,7 +4,7 @@
 
 pkgname=audiowmark
 pkgver=0.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Audio and video watermarking'
 arch=(x86_64 aarch64)
 url='https://uplex.de/audiowmark/'
@@ -12,8 +12,16 @@ license=(GPL-3.0-or-later)
 depends=(bash gcc-libs glibc libgcrypt)
 makedepends=(autoconf-archive ffmpeg fftw libsndfile mpg123 zita-resampler)
 groups=(pro-audio)
-source=("https://github.com/swesterfeld/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.zst")
-sha256sums=('12dd0232e47f29521c91d9d642183b3ca4145be61d353c4dc6d1c6cd7c388a4b')
+source=("https://github.com/swesterfeld/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.zst"
+        'fix-ffmpeg9.patch::https://github.com/swesterfeld/audiowmark/pull/79.patch')
+sha256sums=('12dd0232e47f29521c91d9d642183b3ca4145be61d353c4dc6d1c6cd7c388a4b'
+            '87b6cc58eab4626aafb4c526b6fbd6bb8e07973baef2304f63bd4375de4cf3b9')
+
+prepare() {
+  cd $pkgname-$pkgver
+  # https://github.com/swesterfeld/audiowmark/pull/79
+  patch -Np1 -i "$srcdir"/fix-ffmpeg9.patch
+}
 
 build() {
   cd $pkgname-$pkgver

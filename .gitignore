@@ -1,3 +1,4 @@
+/fix-ffmpeg9.patch
 pkg/
 src/
 *.tar.*
