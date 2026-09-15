@@ -1,6 +1,6 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 pkgname=clipferry
-pkgver=0.0.1
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Lazy X11 <-> Wayland clipboard bridge for xwayland-satellite setups"
 arch=(x86_64 aarch64)
@@ -9,7 +9,7 @@ license=(MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('16899b657131e22189aa44c7988375373122cc9f29e8374d4fef0f8491acfbd1')
+sha256sums=('7a452fd086dde5c6039726cb6cbe4d102a20bbb7d194885f35e813bfd177c530')
 
 prepare() {
   cd "$pkgname-$pkgver"
