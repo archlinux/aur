@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=bindery
-pkgver=1.35.0
+pkgver=1.36.1
 pkgrel=1
 pkgdesc="Automated book download manager for Usenet."
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "bindery.service"
         "bindery.sysusers"
         "bindery.tmpfiles")
-b2sums=('cea753c6739145167a4b49dabb1813276835fa779ad2f5f16402e392a2fbcf3f1f22917eae5ed1ce09500109980fcfbafba5b7fb292451f54f08893bbdc97720'
+b2sums=('c22e09404937efe9d993ca133aabbcb9f688b1514108ef5a9f4186190b2ca68ca577e4e81c63c2d2e78c7b171cc0db0d87502c12fc90409c342ccaa5895cbc9a'
         'cde79a1296a1b4054aae9d213f905b4d0ecd635cdffa7e7979dcc25a3ee128e733c0903ca398a60736fa0c5e48c6be537ee1c1706442d240b2553f0dddb9e763'
         '21805141f8ce1101fdcc7a0ce9d1f2224d5dec2c7f3b6d24c41623c11ffb59446be5c07c35083295e2347ef2f41e1007df4c5cffac0bfaa6e479fbf0b3f3065e'
         'e86254c28f1ee7bd495e53da384b628c579188ace5905ed2d77ebb0cbc76eb5348a7cc9f5057901639487303f053b6081609a4b664d4ef9d8954a5ffb6386598')
