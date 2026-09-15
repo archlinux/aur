@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=kde1d
-_pkgver=1.2.0
+_pkgver=1.2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7edbbaa7410e1e58df17e54c3635eada')
-b2sums=('a951a29e06822b5e92fbcfd7e5cb145e5c36cdb4c5586f9bdbc30a5d697a0365bf01a7c67c41bd5eb3ae96b91ce50cadfb4eb0c533ef1f86c162991854fe509a')
+md5sums=('e70a6a25e73b467536d147bd1e7b7370')
+b2sums=('77bff3e095e9f849a614b6a11897d647d0c115027520b2e3e1a563e2e832cd3241caa72851754ce8d3ad774da3ecb49821c8fcf120290074211e5bf728123bd1')
 
 build() {
   mkdir build
