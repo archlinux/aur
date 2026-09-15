@@ -1,6 +1,6 @@
 pkgbase = dev-proxy
 	pkgdesc = Simulate API failures, throttling, and chaos, all from your command line
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/dotnet/dev-proxy
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dev-proxy
 	depends = gcc-libs
 	depends = glibc
 	conflicts = dev-proxy-bin
-	source = dev-proxy-3.2.0.tar.gz::https://github.com/dotnet/dev-proxy/archive/refs/tags/v3.2.0.tar.gz
-	sha256sums = c9c2c85e1543aecc81fbc0f4f3c8fb93719319c0d00f6138c440bfc37d552a70
+	source = dev-proxy-3.3.0.tar.gz::https://github.com/dotnet/dev-proxy/archive/refs/tags/v3.3.0.tar.gz
+	sha256sums = eb0792a27128549588f21773abcb0ee97eb9775577fcbea2eeb2dc838f804da9
 
 pkgname = dev-proxy
