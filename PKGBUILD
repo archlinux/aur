@@ -3,7 +3,7 @@
 pkgname=python-handy-archives
 _name=${pkgname#python-}
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Handy archive helpers for Python'
 provides=(${pkgname})
 conflicts=(${pkgname})
@@ -29,7 +29,7 @@ sha256sums=('b3054aa2f2ad87d2a545d4e5d34431d355b1fbbfd2511b1ef2948e5ff24b52b9')
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
     cd "${srcdir}/${_name}"
-    sed -i -E 's/"([a-zA-Z][a-zA-Z0-9_.-]*)[><!=~][0-9][^"]*"/"\1"/g' pyproject.toml
+    git cherry-pick -n 57eeb8a5da257d787cc978f7dd4796fc9335a29b
 }
 
 build() {
