@@ -1,6 +1,6 @@
 pkgbase = owntracks-recorder
 	pkgdesc = Lightweight program for storing and accessing location data published via MQTT (or HTTP) by the OwnTracks apps.
-	pkgver = 1.0.0
+	pkgver = 1.0.4
 	pkgrel = 2
 	url = https://github.com/owntracks/recorder
 	install = install.sh
@@ -14,6 +14,7 @@ pkgbase = owntracks-recorder
 	makedepends = libsodium
 	makedepends = lua
 	makedepends = mosquitto
+	makedepends = pkgconf
 	depends = curl
 	depends = libconfig
 	depends = libsodium
@@ -21,7 +22,7 @@ pkgbase = owntracks-recorder
 	depends = lua
 	depends = mosquitto
 	backup = etc/owntracks-recorder.conf
-	source = owntracks-recorder-1.0.0.tar.gz::https://github.com/owntracks/recorder/archive/refs/tags/1.0.0.tar.gz
-	sha256sums = f0fa4b413675128037b26ceabef48c29947426f989467e200e0739ff0c92bf00
+	source = owntracks-recorder-1.0.4.tar.gz::https://github.com/owntracks/recorder/archive/refs/tags/1.0.4.tar.gz
+	sha256sums = dee6222f048c7c90b9c7a9f859cd1a8c9ce826aadbc48853527bf421a2e84e81
 
 pkgname = owntracks-recorder
