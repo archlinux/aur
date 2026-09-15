@@ -1,7 +1,7 @@
 pkgbase = fladder-bin
 	pkgdesc = A cross-platform Jellyfin Frontend built on top of Flutter
 	pkgver = 0.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DonutWare/Fladder
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,6 +9,7 @@ pkgbase = fladder-bin
 	depends = mpv
 	depends = gtk3
 	depends = xdg-user-dirs
+	depends = hicolor-icon-theme
 	provides = fladder
 	conflicts = fladder
 	source = fladder-bin-0.11.0.zip::https://github.com/DonutWare/Fladder/releases/download/v0.11.0/Fladder-Linux-0.11.0.zip
