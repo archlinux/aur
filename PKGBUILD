@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: BrainDamage <braindamage springlobby.info>
 
 _pkgname="eqonomize"
