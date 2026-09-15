@@ -4,16 +4,17 @@
 pkgbase='netconsole'
 pkgname="${pkgbase}"
 _pkgname='initscripts'
-pkgver='10.26'
+pkgver='10.27'
 pkgrel='1'
 pkgdesc='Service for initializing of network console logging'
 arch=('any')
-url="https://github.com/fedora-sysv/${_pkgname}"
+_uri="github.com/fedora-sysv/${_pkgname}"
+url="https://${_uri}"
 license=('GPL2')
 depends=('sed' 'iproute2' 'iputils' 'util-linux' 'kmod')
 conflicts=("systemd-${pkgname}")
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cac382a2cc7644243db00e848d2334646520b88c10e841727dee42c726da21c4')
+source=("${_pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/tar.gz/refs/tags/${pkgver}")
+sha256sums=('5265f110f1d94e6719fa5e57f0f63ce490cc7eb66132fe75e30ffb653a597184')
 backup=("etc/sysconfig/${pkgname}")
 
 package() {
