@@ -3,12 +3,12 @@
 
 pkgname=electron-shogi
 pkgver=1.29.0
-pkgrel=2
+pkgrel=3
 pkgdesc="将棋の GUI アプリです。 コンピューターとの対局や棋譜の編集・検討ができます。"
 arch=('any')
 url="https://github.com/sunfish-shogi/${pkgname}"
 license=('MIT')
-makedepends=('nodejs' 'npm')
+makedepends=('nodejs' 'npm' 'libxcrypt-compat')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sunfish-shogi/shogihome/archive/v${pkgver//_/-}.tar.gz"
     "ShogiHome.desktop")
 
