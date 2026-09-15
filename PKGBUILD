@@ -2,7 +2,7 @@
 
 pkgname=uf2conv-rs-git
 pkgver=0.1.0.r6.g8dd76fd
-pkgrel=10
+pkgrel=11
 pkgdesc="Converts binary files to Microsoft's UF2 format https://github.com/Microsoft/uf2"
 arch=($CARCH)
 url="https://github.com/sajattack/uf2conv-rs"
@@ -10,10 +10,14 @@ license=('MIT')
 provides=(${pkgname%-git} ${pkgname%-rs-git})
 conflicts=(${pkgname%-git} ${pkgname%-rs-git})
 replaces=()
-depends=(gcc-libs
-    glibc)
-makedepends=(git
-    cargo)
+depends=(
+    gcc-libs
+    glibc
+)
+makedepends=(
+    git
+    rust
+)
 backup=()
 options=()
 install=
@@ -32,9 +36,10 @@ pkgver() {
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}"
+    cargo update -w
     export RUSTUP_TOOLCHAIN=stable
-    #     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
