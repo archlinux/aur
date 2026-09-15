@@ -1,16 +1,16 @@
 # Maintainer: nuggocto <aur@sshmoi.com>
 pkgname=orifude-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='A quiet, offline folding and ink puzzle game for the terminal'
 arch=('x86_64' 'aarch64')
 url='https://orifude.com'
 license=('Apache-2.0')
 options=('!strip')
-source_x86_64=("https://github.com/nuggocto/orifude/releases/download/v1.0.3/orifude-$pkgver-x86_64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('0edd6372649436f6f1df2e90bf8aea50ca44364bb16b0ab3469847e0338f16c7')
-source_aarch64=("https://github.com/nuggocto/orifude/releases/download/v1.0.3/orifude-$pkgver-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_aarch64=('73d7f822691a03fa5d19924dbe2ecf61dc475c5dad20e1387f3c01fbecbfbd6b')
+source_x86_64=("https://github.com/nuggocto/orifude/releases/download/v1.0.4/orifude-$pkgver-x86_64-unknown-linux-musl.tar.gz")
+sha256sums_x86_64=('a97e4b89dc51fa06f7a8eddead8d23dc8ad4e6da90117e9cb856aa92cc82acfe')
+source_aarch64=("https://github.com/nuggocto/orifude/releases/download/v1.0.4/orifude-$pkgver-aarch64-unknown-linux-musl.tar.gz")
+sha256sums_aarch64=('ce609bba83d31c602bb90d63a9c190bb8759fa807dfd77a4ed72728c8635586b')
 
 package() {
     local target
