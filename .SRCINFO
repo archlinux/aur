@@ -6,6 +6,7 @@ pkgbase = mcjoin-git
 	arch = x86_64
 	license = ISC
 	makedepends = git
+	depends = glibc
 	provides = mcjoin
 	conflicts = mcjoin
 	source = git+https://github.com/troglobit/mcjoin

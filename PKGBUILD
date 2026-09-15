@@ -10,6 +10,7 @@ arch=('x86_64')
 url='https://github.com/troglobit/mcjoin'
 license=('ISC')
 makedepends=('git')
+depends=('glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+$url")
