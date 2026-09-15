@@ -5,7 +5,6 @@ conflicts=('hyper8-bin' 'hyper8-cli')
 depends=(
     # hyper8-core dependencies
     'ffmpeg'
-    'rsync'
     # hyper8-desktop dependencies
     'cairo'
     'desktop-file-utils'
@@ -33,10 +32,10 @@ options=('!lto')
 pkgdesc='A static site generator for video publishing'
 pkgname=hyper8
 pkgrel=1
-pkgver=1.0.1
+pkgver=1.1.0
 provides=('hyper8')
-sha256sums=('44bed5af1aa3ce9aff0cabfa6817501473b58924cc1e186a05bcb5369e028386')
-url='https://simonrepp.com/hyper8'
+sha256sums=('789f6bb5bdb50ac8f01c52209f87737f8d04990991901885a9635289954aaae3')
+url='https://hyper8.org'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/simonrepp/hyper8/archive/${pkgver}.tar.gz")
 
