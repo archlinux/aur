@@ -1,6 +1,6 @@
 pkgbase = claude-desktop-extra
 	pkgdesc = Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship
-	pkgver = 1.52386.6
+	pkgver = 2.110.0
 	pkgrel = 1
 	url = https://github.com/patrickjaja/claude-desktop-extra
 	arch = x86_64
@@ -37,9 +37,9 @@ pkgbase = claude-desktop-extra
 	depends = systemd-libs
 	depends = xdg-desktop-portal
 	depends = xdg-utils
-	source_x86_64 = claude-desktop-1.52386.6-1-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v1.52386.6/claude-desktop-1.52386.6-linux.tar.gz
-	sha256sums_x86_64 = 3f4a7a74b9d7f7759e65c52a38568b03ef600ad74b04d642d32bba0837ef75ab
-	source_aarch64 = claude-desktop-1.52386.6-1-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v1.52386.6/claude-desktop-1.52386.6-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 034c7f42b071e0a39ec91e6cdb7143836f685506feb6e39233d007d88473b982
+	source_x86_64 = claude-desktop-2.110.0-1-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.110.0/claude-desktop-2.110.0-linux.tar.gz
+	sha256sums_x86_64 = 47ec4250dc4c10eb41cf9c72b300fd280747a9aa132f4d7de4d7bc0d29c02be6
+	source_aarch64 = claude-desktop-2.110.0-1-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.110.0/claude-desktop-2.110.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = ebf56d0c3358f277c7c3ea0e24f7ed9b43a4726b5e7c0fe7d68ea6f7b6453572
 
 pkgname = claude-desktop-extra
