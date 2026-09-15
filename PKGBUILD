@@ -3,7 +3,7 @@
 pkgname=python-apeye
 _name=${pkgname#python-}
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Handy tools for working with URLs and APIs"
 provides=(${pkgname})
 conflicts=(${pkgname})
@@ -36,6 +36,8 @@ sha512sums=('c3d5c232904ebe45c5e491390fe6862b59372166c602a7b4daa4b0922c1fe8108c6
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
+    cd "${srcdir}/${_name}"
+    sed -i 's|flit-core<4|flit-core<5|' pyproject.toml
 }
 
 build() {
