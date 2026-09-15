@@ -16,4 +16,4 @@ pre_remove() {
   echo ">>> Stopping and disabling mprisence service..."
   systemctl --user disable --now mprisence.service >/dev/null 2>&1 || :
   systemctl --user daemon-reload >/dev/null 2>&1 || :
-} 
+}
