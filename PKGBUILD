@@ -1,7 +1,7 @@
 # Maintainer: Youcef NAFA <youcef.nafa@gmail.com>
 
 pkgname=python-vastai
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc=" Vast.ai Python and CLI API client ."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-xdg' 'python-argcomplete' 'python-requests' 'python-da
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-poetry-dynamic-versioning')
 optdepends=()
 source=("vastai-${pkgver}.tar.gz::https://pypi.io/packages/source/v/vastai/vastai-${pkgver}.tar.gz")
-sha256sums=('b519b080ae72996d6db25bed8e3de23711e05d7a2373b6ee32a44392b1f72e01')
+sha256sums=('69ee81680e7c4bd8cd1bbf3e365d71e01b6c33839eda894acf93b387930fb756')
 
 prepare() {
   cd "${srcdir}/vastai-${pkgver}"
