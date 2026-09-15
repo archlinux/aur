@@ -15,8 +15,7 @@ sha256sums=('6b2d712929184f6332d9760c943124873f8e6cb6ecdc2aca8fb793a1bc4c5cf9')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr
-  make clean
-  make -j $(nproc)
+  make
 }
 
 package() {
