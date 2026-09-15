@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgname=widemelon-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Widescreen Nintendo DS emulator based on melonDS (AppImage)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('widemelon' 'widemelon-git')
 options=('!strip' '!debug')
 _appimage="WideMelon-${pkgver}-${CARCH}.AppImage"
 source=("${_appimage}::https://github.com/pruefsumme/widemelon/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('b371af8ba5bba146194b4e51a6ceb152a0d62471e29ffc0df73b3bdbf7b90b71')
+sha256sums=('1dabc934bd2fdfd1a8b8b20a08b1c40e1d7aa3727ca132de3eb0d092775b07da')
 
 prepare() {
   chmod +x "$_appimage"
