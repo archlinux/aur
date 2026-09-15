@@ -3,22 +3,21 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=wiiudownloader-bin
-pkgver=2.105
+pkgver=3.1
 pkgrel=1
 pkgdesc="Download encrypted Wii U files from Nintendo's official servers (upstream AppImage)"
 arch=('x86_64')
 url="https://github.com/Xpl0itU/WiiUDownloader"
 license=('GPL-3.0-or-later')
-# the AppImage bundles GTK3 and its stack; these are what is left over
-depends=('glibc' 'libx11' 'libxcb' 'wayland' 'fontconfig' 'freetype2'
-         'harfbuzz' 'fribidi' 'zlib' 'bzip2' 'expat' 'libgpg-error'
-         'hicolor-icon-theme')
+# the AppImage is built with sharun and carries GTK4, libadwaita, Mesa and its
+# own glibc and dynamic loader; only the shell that runs its AppRun.sh is left
+depends=('hicolor-icon-theme' 'sh')
 provides=('wiiudownloader')
 conflicts=('wiiudownloader')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/WiiUDownloader-Linux-x86_64.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums=('5e9b6fee20657fd1e3d7034a9f119ee77934b9b6613caf6a3cc8b012dfbc58a2')
+sha256sums=('49bfdb7371b650680aeb7cd799942e2802b54cf70d10acfe2cc50074af35ebf0')
 
 prepare() {
   chmod +x "$srcdir/${pkgname}-${pkgver}.AppImage"
@@ -26,7 +25,8 @@ prepare() {
 }
 
 package() {
-  # upstream's AppImage payload, installed unchanged
+  # upstream's AppImage payload, installed unchanged; its self-updater hook
+  # only acts when started from an AppImage ($APPIMAGE), so it stays inert
   install -d "$pkgdir/opt/$pkgname"
   cp -a "$srcdir/squashfs-root/." "$pkgdir/opt/$pkgname/"
   rm -f "$pkgdir/opt/$pkgname/.DirIcon"
@@ -40,10 +40,11 @@ exec /opt/$pkgname/AppRun "\$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/wiiudownloader"
 
-  install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/512x512/apps/WiiUDownloader.png" \
+  install -Dm644 "$srcdir/squashfs-root/WiiUDownloader.png" \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/wiiudownloader.png"
   install -Dm644 "$srcdir/squashfs-root/WiiUDownloader.desktop" \
     "$pkgdir/usr/share/applications/wiiudownloader.desktop"
   sed -i -e 's|^Exec=.*|Exec=wiiudownloader|' -e 's|^Icon=.*|Icon=wiiudownloader|' \
+    -e '/^X-AppImage-/d' \
     "$pkgdir/usr/share/applications/wiiudownloader.desktop"
 }
