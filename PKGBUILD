@@ -2,16 +2,15 @@
 
 pkgname=senpi
 pkgver=2026.9.15
-pkgrel=1
+pkgrel=2
 _npmver=${pkgver//_/-}
 pkgdesc='Opinionated coding agent CLI based on pi'
 arch=('x86_64' 'aarch64')
 url='https://github.com/code-yeongyu/senpi'
 license=('MIT')
-depends=('nodejs>=24' 'glibc' 'gcc-libs' 'libxcb')
+depends=('nodejs>=24' 'glibc' 'gcc-libs' 'libxcb' 'ripgrep')
 optdepends=(
   'git: repository-aware workflows and package installation'
-  'ripgrep: faster in-repository text search'
   'fd: faster file discovery'
   'python: Python eval kernel support'
 )
