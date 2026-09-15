@@ -1,14 +1,14 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=18.1.22
+pkgver=18.2.0
 pkgrel=1
 pkgdesc="A coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'oniguruma' 'opus' 'pcre2' 'zstd')
-makedepends=('bun' 'cargo' 'git')
+depends=('gcc-libs' 'glibc' 'oniguruma' 'pcre2' 'zstd')
+makedepends=('bun' 'cargo' 'cmake' 'git')
 optdepends=(
     'alsa-lib: ALSA fallback for live voice, STT, and TTS'
     'at-spi2-core: Linux accessibility backend for the computer tool'
@@ -24,11 +24,9 @@ optdepends=(
 options=('!lto' '!strip')
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
-    "use-system-opus.patch"
     "skip-native-embed-for-aur.patch"
 )
 sha256sums=('SKIP'
-            'd2e7b386c2655e053199113216023d128d6f1e8866547d84dfe1647d376e07a9'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f'
 )
 
@@ -46,7 +44,6 @@ prepare() {
     cd "${srcdir}/${pkgname}"
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
-    patch -p1 -i "${srcdir}/use-system-opus.patch"
 
     RUSTUP_TOOLCHAIN=stable cargo fetch --locked --target x86_64-unknown-linux-gnu
 
@@ -79,7 +76,6 @@ _build_native() {
     RUSTC_BOOTSTRAP=1 \
     RUSTFLAGS="-Ctarget-cpu=${_target_cpu}" \
     CC="${srcdir}/cc-tree-sitter" \
-    LIBOPUS_STATIC=0 \
     PCRE2_SYS_STATIC=0 \
     ZSTD_SYS_USE_PKG_CONFIG=1 \
     RUSTONIG_SYSTEM_LIBONIG=1 \
@@ -104,19 +100,19 @@ build() {
 }
 
 _install_completions() {
-    local _omp_bin="$1"
     local _completion_dir="${srcdir}/completions"
     local _runtime_dir="${srcdir}/completion-runtime"
+    local _omp_source="packages/coding-agent/src/cli.ts"
 
     rm -rf "${_completion_dir}" "${_runtime_dir}"
     mkdir -p "${_completion_dir}" "${_runtime_dir}/home" "${_runtime_dir}/xdg"
 
     env HOME="${_runtime_dir}/home" XDG_DATA_HOME="${_runtime_dir}/xdg" \
-        "${_omp_bin}" completions bash >"${_completion_dir}/omp.bash"
+        bun "${_omp_source}" completions bash >"${_completion_dir}/omp.bash"
     env HOME="${_runtime_dir}/home" XDG_DATA_HOME="${_runtime_dir}/xdg" \
-        "${_omp_bin}" completions zsh >"${_completion_dir}/_omp"
+        bun "${_omp_source}" completions zsh >"${_completion_dir}/_omp"
     env HOME="${_runtime_dir}/home" XDG_DATA_HOME="${_runtime_dir}/xdg" \
-        "${_omp_bin}" completions fish >"${_completion_dir}/omp.fish"
+        bun "${_omp_source}" completions fish >"${_completion_dir}/omp.fish"
 
     install -Dm644 "${_completion_dir}/omp.bash" "${pkgdir}/usr/share/bash-completion/completions/omp"
     install -Dm644 "${_completion_dir}/_omp" "${pkgdir}/usr/share/zsh/site-functions/_omp"
@@ -135,6 +131,6 @@ package() {
     done
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "../lib/${pkgname}/omp" "${pkgdir}/usr/bin/omp"
-    _install_completions "${pkgdir}/usr/bin/omp"
+    _install_completions
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
