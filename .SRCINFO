@@ -1,6 +1,6 @@
 pkgbase = languagetool-snapshot
 	pkgdesc = Grammar and style checker (daily snapshot)
-	pkgver = 6.9.20260913
+	pkgver = 6.9.20260914
 	pkgrel = 1
 	url = https://github.com/languagetool-org/languagetool
 	arch = any
@@ -10,13 +10,13 @@ pkgbase = languagetool-snapshot
 	optdepends = java-runtime>=17: GUI support
 	optdepends = libxtst: GUI support
 	optdepends = gtk3: GTK style for the GUI
-	provides = languagetool=6.9.20260913
+	provides = languagetool=6.9.20260914
 	conflicts = languagetool
-	noextract = LanguageTool-20260913-snapshot.zip
-	source = https://languagetool.org/download/snapshots/LanguageTool-20260913-snapshot.zip
+	noextract = LanguageTool-20260914-snapshot.zip
+	source = https://languagetool.org/download/snapshots/LanguageTool-20260914-snapshot.zip
 	source = languagetool.sh
 	source = languagetool.service
-	b2sums = f21f1b6cdbbfef0f5adb4832945abfd98f8011aac259ea8539c2501cc0b376e8c71619f6e98e154ede370d8329ecd870ad3552049119a65b39282b3c293508e9
+	b2sums = 8d3942334a3c600aa82eb5e7f07e3d671ed9e88b0386d9d612b989ed63715a2b94fda789314ea166b1762ec138202190be6b4a96205333960f373708c28a2cfb
 	b2sums = 3f8367e3e6e2c95741824804f061d1ce5a8267567576db4005c7e2538ccd793c79e5ea70b4e74cfb34f1fca7a175eb5de264542431ac4cc91f5f5a33bc9d4aa3
 	b2sums = 78d16d615b5af43eb50f49e91dfc4089432a6af6f9892c1e623ca596e27aa12a2375c705351750f89f99477e6478d5fa39e92b33c9e8dac1c86ab37a616a98da
 
