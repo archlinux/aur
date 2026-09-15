@@ -2,7 +2,7 @@
 pkgname='er-save-manager-bin'
 _pkgname=er-save-manager
 pkgver='1.10.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Elden Ring save editor, backup manager and corruption fixer'
 arch=('x86_64')
 url='https://github.com/Hapfel1/er-save-manager'
@@ -36,7 +36,7 @@ source=(
 sha256sums=('a0061afe78038b86ad8005c5898996588dc169c6007ef5740aed9f06bfff874c'
             '0d423ea2d046fc107e4af4d2938ccebf530bf99d7ac87032d8ce93d6e7d15ce8'
             'a8d6f40c43e0f55ac8fc2fde7cc06ff399a4b9f59e08d541965f6a4fe7d924d8'
-            '351edfde8daa69af9144819cc341ba1ba2cc2aabc71c7806af52e8a49a6736bf')
+            '8f9944e098e6b8a5e5734ab42038268566ca69122ded7c7b74fceb089f8f6ebb')
 
 package() {
     install -Dm755 \
