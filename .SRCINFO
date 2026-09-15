@@ -1,0 +1,17 @@
+pkgbase = quotracker-bin
+	pkgdesc = Linux desktop app for planning AI coding quotas around the 5-hour window
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/oioi555/quotracker
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = quotracker
+	conflicts = quotracker
+	options = !strip
+	options = !debug
+	source = https://github.com/oioi555/quotracker/releases/download/v0.1.1/Quotracker_0.1.1_amd64.deb
+	noextract = Quotracker_0.1.1_amd64.deb
+	sha256sums = 339311d9a17b08428a2968767960a7a4fe1aed23887ae44a6ca914777058e622
+pkgname = quotracker-bin
