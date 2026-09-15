@@ -24,8 +24,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/kristofferR/IPTVCh
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/kristofferR/IPTVChecker/releases/download/v${pkgver}/IPTV.Checker_${pkgver}_lin_x64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/kristofferR/IPTVChecker/releases/download/v${pkgver}/IPTV.Checker_${pkgver}_lin_arm.deb")
 sha256sums=('508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1')
-sha256sums_x86_64=('d6264c3fdc708f888148a41b1d182ab70cc37484cff8315d7c97add028d61883')
-sha256sums_aarch64=('6c38bc417c09d200a2936bdb320b49948925fe210907494a2c179788a364af58')
+sha256sums_x86_64=('6aa859786950178b356d5e560942fee395f6c18f76572cfcd6203d8bae42c451')
+sha256sums_aarch64=('b69899a786a0ade503ae1f98633c50bb58a2eee27031704cd8ccd4efd5927519')
 
 package() {
     # makepkg already extracted the .deb into srcdir; unpack its payload.
