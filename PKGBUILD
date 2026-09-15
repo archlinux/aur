@@ -38,6 +38,15 @@ package() {
 
     install -Dm644 data/mx-tools.desktop "${pkgdir}/usr/share/applications/mx-tools.desktop"
 
+    # The "MX Tools" submenu. On Debian these come from desktop-defaults-mx-common;
+    # the file names differ from that package's so both can be installed without a
+    # pacman file conflict - menus sharing a <Name> are merged and their include
+    # rules accumulate.
+    install -Dm644 data/menu/mx-tools-menu.directory \
+        "${pkgdir}/usr/share/desktop-directories/mx-tools-menu.directory"
+    install -Dm644 data/menu/mx-tools-menu.menu \
+        "${pkgdir}/etc/xdg/menus/applications-merged/mx-tools-menu.menu"
+
     install -Dm644 icons/mx-tools.png "${pkgdir}/usr/share/icons/hicolor/96x96/apps/mx-tools.png"
     install -Dm644 icons/mx-tools.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mx-tools.svg"
 
