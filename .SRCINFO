@@ -1,6 +1,6 @@
 pkgbase = fs2_open-git
 	pkgdesc = An enhancement of the original Freespace 2 engine - GIT version
-	pkgver = 26.0.0.RC3.20260621.d15cadc47.0
+	pkgver = 26.0.1.RC5.release.26.0.1.0
 	pkgrel = 1
 	url = http://scp.indiegames.us
 	install = fs2_open-git.install
@@ -20,6 +20,7 @@ pkgbase = fs2_open-git
 	depends = mesa
 	depends = openal
 	depends = sdl
+	depends = libxkbcommon
 	provides = fs2_open
 	conflicts = fs2_open
 	source = fs2_open-git::git+https://github.com/scp-fs2open/fs2open.github.com.git
