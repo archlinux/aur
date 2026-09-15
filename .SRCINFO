@@ -5,8 +5,8 @@ pkgbase = ttynvt
 	url = https://gitlab.com/lars-thrane-as/ttynvt
 	arch = x86_64
 	license = GPL-2.0-or-later
+	makedepends = git
 	makedepends = glibc
-	makedepends = fuse2
 	depends = fuse2
 	conflicts = ttynvt
 	source = git+https://gitlab.com/lars-thrane-as/ttynvt.git#tag=v0.17
