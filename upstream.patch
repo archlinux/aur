@@ -1,3 +1,160 @@
+diff --git a/Makefile b/Makefile
+index e684108..e922ca0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -29,7 +29,12 @@ PROTO_SRCS  := $(patsubst %,$(GEN)/%-protocol.c,$(PROTO_NAMES))
+ PROTO_OBJS  := $(PROTO_SRCS:.c=.o)
+ 
+ DEPS    := wayland-client xkbcommon freerdp3 freerdp-server3 winpr3 libpipewire-0.3
+-CFLAGS  += -std=c11 -Wall -Wextra -O2 -I$(GEN) -Isrc $(shell pkg-config --cflags $(DEPS))
++CFLAGS  ?= -O2
++CFLAGS  += -std=c11 -Wall -Wextra
++# Dependency headers go in as system headers: FreeRDP/WinPR mark parts of their
++# own API deprecated inside their own headers, and a -Werror build should not
++# fail on declarations the project does not even call.
++CPPFLAGS += -I$(GEN) -Isrc $(patsubst -I%,-isystem %,$(shell pkg-config --cflags $(DEPS)))
+ LDLIBS  += $(shell pkg-config --libs $(DEPS))
+ 
+ .PHONY: all clean protocols
+@@ -41,16 +46,16 @@ protocols: $(PROTO_HDRS) $(PROTO_SRCS)
+ # has no way to know that from the .c alone.
+ $(BUILD)/%.o: src/%.c | $(PROTO_HDRS)
+ 	@mkdir -p $(@D)
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+ 
+ $(BUILD)/wayrdp-probe: $(BUILD)/probe.o $(BUILD)/wayland.o $(PROTO_OBJS)
+-	$(CC) $^ $(LDLIBS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
+ 
+ $(BUILD)/wayrdp: $(BUILD)/main.o $(BUILD)/rdp.o $(BUILD)/config.o $(BUILD)/audio.o $(BUILD)/wayland.o $(PROTO_OBJS)
+-	$(CC) $^ $(LDLIBS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
+ 
+ $(GEN)/%-protocol.o: $(GEN)/%-protocol.c
+-	$(CC) $(CFLAGS) -c $< -o $@
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+ 
+ define proto_rule
+ $(GEN)/$(1)-client-protocol.h: $(2)
+diff --git a/README.md b/README.md
+index 3f7f5d7..28027b4 100644
+--- a/README.md
++++ b/README.md
+@@ -4,10 +4,9 @@
+ shares the desktop session that is already running: an RDP client sees the same
+ screen as the local user and can control it with a remote keyboard and pointer.
+ 
+-The project was originally written for wfkit, a Wayfire-based desktop, but the
+-server is not tied to Wayfire APIs. It uses standard Wayland and wlroots
+-protocols for capture and input, FreeRDP 3 for the RDP transport and RemoteFX
+-encoding, and PipeWire for bidirectional audio.
++The server uses standard Wayland and wlroots protocols for capture and input,
++FreeRDP 3 for the RDP transport and RemoteFX encoding, and PipeWire for
++bidirectional audio. It is not tied to a particular desktop shell.
+ 
+ > [!IMPORTANT]
+ > `wayrdp` is an early, working implementation rather than a security-audited
+@@ -60,7 +59,6 @@ The following are not implemented yet:
+ - concurrent clients;
+ - desktop scaling or a client-selected resolution;
+ - per-window capture;
+-- packaging and a systemd unit in this repository;
+ - an automated test suite.
+ 
+ The first `wl_output` announced by the compositor is served at its native
+@@ -105,6 +103,19 @@ RDP set-1 keyboard scancodes are translated to Linux evdev key codes. Extended
+ keys are mapped explicitly, and modifier state is sent separately because the
+ virtual-keyboard protocol does not derive it automatically.
+ 
++## Performance
++
++The RemoteFX encoder is created with threading disabled on purpose. FreeRDP's
++default WinPR thread pool spawns one worker per available CPU and, measured on a
++1080p output, contends badly enough that turning it off dropped the server's CPU
++roughly four times for the same frame rate. A single encoder thread is both
++cheaper and no slower here.
++
++The pixel repack into the BGRX32 mirror is likewise format-specialised: the
++compositor offers a single pixel format for the whole session, so the byte order
++and the 24- to 32-bit expansion are decided once per rectangle instead of being
++re-tested for every pixel.
++
+ ## Protocols and libraries
+ 
+ | Purpose | Interface or library | Role |
+@@ -174,6 +185,25 @@ Linux:
+ On another distribution, install equivalent development packages and adjust
+ `STAGING` and `WLR` in the Makefile if those files live elsewhere.
+ 
++## Arch Linux package
++
++An AUR package definition named `wayrdp` is available in the root
++[`PKGBUILD`](PKGBUILD). To build and install it locally from the project root:
++
++```bash
++sudo pacman -S --needed base-devel
++makepkg --syncdeps --install
++```
++
++It installs both `wayrdp` and `wayrdp-probe` under `/usr/bin`, a
++`wayrdp.service` user unit, and documentation and licenses under `/usr/share`.
++The package currently uses a fixed upstream commit and the supplied patch;
++additional local source edits are not included in this build. In the source
++checkout, `makepkg` uses `build/makepkg` to protect the project's `src/` directory.
++
++After installation, create the [per-user configuration](#configuration) and run
++`wayrdp --check` inside the Wayland session before starting the server.
++
+ ## Building on Arch Linux
+ 
+ Install the toolchain and dependencies:
+@@ -330,6 +360,23 @@ one long-lived compositor.
+ Stop the server with `Ctrl+C`, `SIGINT` or `SIGTERM`. After a client disconnects,
+ the listener remains available for the next client.
+ 
++The Arch package also includes a systemd user unit. After configuring the server,
++import the session environment and enable it from a terminal in that session:
++
++```bash
++systemctl --user import-environment WAYLAND_DISPLAY XDG_RUNTIME_DIR
++systemctl --user enable --now wayrdp.service
++```
++
++Autostart uses `graphical-session.target`. If the compositor does not activate
++that target, its session startup must import the display environment and start
++the enabled unit.
++
++An existing `~/.config/systemd/user/wayrdp.service` overrides the packaged unit.
++If it hardcodes `/usr/local/bin/wayrdp`, change it to `ExecStart=wayrdp` and run
++`systemctl --user daemon-reload`. Local installations under `/usr/local/bin`
++take precedence over the packaged binary under `/usr/bin`.
++
+ Connect with an RDP client to the host and configured port, supply the configured
+ username and password, and verify the self-signed certificate fingerprint on
+ the first connection. The client window is resized to the selected output's
+diff --git a/src/config.c b/src/config.c
+index 1b89d53..c0904db 100644
+--- a/src/config.c
++++ b/src/config.c
+@@ -31,7 +31,7 @@ bool wr_config_load(struct wr_config *cfg, const char **error) {
+     cfg->port = 3389;
+     snprintf(cfg->bind_address, sizeof(cfg->bind_address), "0.0.0.0");
+ 
+-    char dir[512];
++    char dir[256];
+     state_dir(dir, sizeof(dir));
+     snprintf(cfg->cert_path, sizeof(cfg->cert_path), "%s/tls.crt", dir);
+     snprintf(cfg->key_path, sizeof(cfg->key_path), "%s/tls.key", dir);
+@@ -109,7 +109,7 @@ static bool file_exists(const char *path) {
+ bool wr_config_ensure_certificate(struct wr_config *cfg, const char **error) {
+     if (file_exists(cfg->cert_path) && file_exists(cfg->key_path)) return true;
+ 
+-    char dir[512];
++    char dir[256];
+     state_dir(dir, sizeof(dir));
+     if (mkdir(dir, 0700) != 0 && errno != EEXIST) {
+         *error = "could not create ~/.local/share/wayrdp";
 diff --git a/src/main.c b/src/main.c
 index 00a884a..5a2f81e 100644
 --- a/src/main.c
@@ -24,10 +181,82 @@ index 00a884a..5a2f81e 100644
          wr_close(wayland);
          return 1;
 diff --git a/src/rdp.c b/src/rdp.c
-index 6604691..0fa7590 100644
+index 6604691..d2d08c6 100644
 --- a/src/rdp.c
 +++ b/src/rdp.c
-@@ -268,6 +268,9 @@ static bool send_frame(struct wr_server *s, const struct wr_frame *f, bool full)
+@@ -224,20 +224,61 @@ static BOOL peer_logon(freerdp_peer *peer, const SEC_WINNT_AUTH_IDENTITY *identi
+ // The compositor hands over BG24 and RemoteFX wants BGRX32, so the conversion
+ // has to happen somewhere. Doing it per damaged rectangle rather than per frame
+ // is what keeps a blinking cursor from costing a full-screen repack.
++//
++// The format is chosen once per rectangle and the byte order is resolved by a
++// tight loop: the compositor offers a single format for the whole session, so
++// this runs millions of times per frame and must not re-decide per pixel. The
++// old version called wr_read_rgb -- a function in another translation unit, so
++// never inlined -- for every pixel, with a switch inside it.
+ static void mirror_rect(struct wr_server *s, const struct wr_frame *f,
+                         int32_t x, int32_t y, int32_t width, int32_t height) {
++    const int bpp = f->bytes_per_pixel;
++    const size_t src_stride = f->stride;
++    const size_t dst_stride = (size_t)f->width * 4;
++
++    // On the wire BGR888/XRGB8888/ARGB8888 are already B,G,R in memory, which
++    // is what RemoteFX wants; those copy straight across. XBGR/ABGR8888 are
++    // R,G,B and need the red and blue halves exchanged.
++    const bool mem_bgr = wr_format_is_bgr(f->format);
++
+     for (int32_t row = 0; row < height; row++) {
+-        const uint8_t *src = f->pixels + (size_t)(y + row) * f->stride
+-                           + (size_t)x * f->bytes_per_pixel;
+-        uint8_t *dst = s->mirror + (size_t)(y + row) * (size_t)f->width * 4
++        const uint8_t *src = f->pixels + (size_t)(y + row) * src_stride
++                           + (size_t)x * (size_t)bpp;
++        uint8_t *dst = s->mirror + (size_t)(y + row) * dst_stride
+                      + (size_t)x * 4;
+-        for (int32_t col = 0; col < width; col++) {
+-            uint8_t rgb[3];
+-            wr_read_rgb(src + (size_t)col * f->bytes_per_pixel, f->format, rgb);
+-            dst[col * 4 + 0] = rgb[2];   // B
+-            dst[col * 4 + 1] = rgb[1];   // G
+-            dst[col * 4 + 2] = rgb[0];   // R
+-            dst[col * 4 + 3] = 0xFF;
++
++        if (bpp == 4) {
++            for (int32_t col = 0; col < width; col++) {
++                uint32_t px;
++                memcpy(&px, src, sizeof(px));
++                if (!mem_bgr)
++                    px = (px & 0xFF00FF00u) | ((px & 0x000000FFu) << 16)
++                       | ((px & 0x00FF0000u) >> 16);
++                px |= 0xFF000000u;              // RemoteFX ignores this byte
++                memcpy(dst, &px, sizeof(px));
++                src += 4;
++                dst += 4;
++            }
++        } else if (mem_bgr) {
++            for (int32_t col = 0; col < width; col++) {
++                uint32_t px = 0xFF000000u
++                            | (uint32_t)src[0]
++                            | ((uint32_t)src[1] << 8)
++                            | ((uint32_t)src[2] << 16);
++                memcpy(dst, &px, sizeof(px));
++                src += 3;
++                dst += 4;
++            }
++        } else {
++            for (int32_t col = 0; col < width; col++) {
++                uint32_t px = 0xFF000000u
++                            | (uint32_t)src[2]
++                            | ((uint32_t)src[1] << 8)
++                            | ((uint32_t)src[0] << 16);
++                memcpy(dst, &px, sizeof(px));
++                src += 3;
++                dst += 4;
++            }
+         }
+     }
+ }
+@@ -268,12 +309,17 @@ static bool send_frame(struct wr_server *s, const struct wr_frame *f, bool full)
          s->mirror_width = f->width;
          s->mirror_height = f->height;
          full = true;    // a resized mirror holds nothing the client has seen
@@ -37,7 +266,25 @@ index 6604691..0fa7590 100644
      }
  
      RFX_RECT rects[WR_MAX_DAMAGE];
-@@ -915,7 +918,11 @@ bool wr_server_run(struct wr_server *s, const volatile bool *running) {
+     size_t count = 0;
+ 
+-    if (full || f->damage_overflowed || f->damage_count == 0) {
++    if (!full && !f->damage_overflowed && f->damage_count == 0)
++        return true;    // the frame carries no damage: nothing changed
++    if (full || f->damage_overflowed) {
+         mirror_rect(s, f, 0, 0, (int32_t)f->width, (int32_t)f->height);
+         rects[count++] = (RFX_RECT){ 0, 0, (UINT16)f->width, (UINT16)f->height };
+     } else {
+@@ -699,7 +745,7 @@ static BOOL peer_activate(freerdp_peer *peer) {
+ 
+     uint32_t width = wr_width(s->wayland), height = wr_height(s->wayland);
+     if (!s->rfx) {
+-        s->rfx = rfx_context_new(TRUE);
++        s->rfx = rfx_context_new_ex(TRUE, THREADING_FLAGS_DISABLE_THREADS);
+         s->stream = Stream_New(NULL, 4 * 1024 * 1024);
+         if (!s->rfx || !s->stream) {
+             fprintf(stderr, "wayrdp: could not create the RemoteFX encoder\n");
+@@ -915,7 +961,11 @@ bool wr_server_run(struct wr_server *s, const volatile bool *running) {
                            s->vcm, s->peer_activated))
              drop_peer(s);
  
@@ -50,7 +297,7 @@ index 6604691..0fa7590 100644
  
          if (s->peer_activated) {
              open_microphone(s);
-@@ -925,6 +932,8 @@ bool wr_server_run(struct wr_server *s, const volatile bool *running) {
+@@ -925,6 +975,8 @@ bool wr_server_run(struct wr_server *s, const volatile bool *running) {
              const struct wr_frame *f = wr_capture_frame(s->wayland, 16);
              if (f && !send_frame(s, f, false))
                  drop_peer(s);
@@ -60,7 +307,7 @@ index 6604691..0fa7590 100644
      }
      return true;
 diff --git a/src/wayland.c b/src/wayland.c
-index 083d907..84b169c 100644
+index 083d907..9648367 100644
 --- a/src/wayland.c
 +++ b/src/wayland.c
 @@ -31,6 +31,7 @@ struct wr_wayland {
@@ -91,11 +338,17 @@ index 083d907..84b169c 100644
      // The capture buffer is allocated once and reused: a new wl_buffer per
      // frame would mean a new pool and an mmap per frame at 60Hz.
      struct wl_buffer *buffer;
-@@ -101,10 +108,11 @@ void wr_read_rgb(const uint8_t *p, uint32_t format, uint8_t out[3]) {
+@@ -101,10 +108,17 @@ void wr_read_rgb(const uint8_t *p, uint32_t format, uint8_t out[3]) {
      }
  }
  
 -static uint32_t now_ms(void) {
++bool wr_format_is_bgr(uint32_t format) {
++    return format == WL_SHM_FORMAT_RGB888 ||
++           format == WL_SHM_FORMAT_XRGB8888 ||
++           format == WL_SHM_FORMAT_ARGB8888;
++}
++
 +// Monotonic milliseconds; only differences are meaningful.
 +static int64_t now_ms(void) {
      struct timespec ts;
@@ -105,7 +358,7 @@ index 083d907..84b169c 100644
  }
  
  static int anonymous_shm(size_t size) {
-@@ -222,8 +230,10 @@ static void on_global(void *data, struct wl_registry *registry, uint32_t name,
+@@ -222,8 +236,10 @@ static void on_global(void *data, struct wl_registry *registry, uint32_t name,
          w->shm = wl_registry_bind(registry, name, &wl_shm_interface, 1);
      else if (!strcmp(interface, wl_seat_interface.name) && !w->seat)
          w->seat = wl_registry_bind(registry, name, &wl_seat_interface, 1);
@@ -117,7 +370,7 @@ index 083d907..84b169c 100644
      else if (!strcmp(interface, ext_output_image_capture_source_manager_v1_interface.name))
          w->sources = wl_registry_bind(registry, name,
              &ext_output_image_capture_source_manager_v1_interface, 1);
-@@ -241,8 +251,22 @@ static void on_global(void *data, struct wl_registry *registry, uint32_t name,
+@@ -241,8 +257,22 @@ static void on_global(void *data, struct wl_registry *registry, uint32_t name,
              &zwp_virtual_keyboard_manager_v1_interface, 1);
  }
  
@@ -142,7 +395,7 @@ index 083d907..84b169c 100644
  }
  
  static const struct wl_registry_listener registry_listener = {
-@@ -328,7 +352,7 @@ fail:
+@@ -328,7 +358,7 @@ fail:
  
  void wr_close(struct wr_wayland *w) {
      if (!w) return;
@@ -151,7 +404,7 @@ index 083d907..84b169c 100644
      if (w->display) wl_display_disconnect(w->display);
      free(w);
  }
-@@ -339,23 +363,56 @@ bool wr_dispatch_pending(struct wr_wayland *w) {
+@@ -339,23 +369,56 @@ bool wr_dispatch_pending(struct wr_wayland *w) {
      return wl_display_dispatch_pending(w->display) >= 0;
  }
  
@@ -212,7 +465,7 @@ index 083d907..84b169c 100644
      ext_image_copy_capture_session_v1_add_listener(w->session, &session_listener, w);
  
      if (!pump(w, &w->session_done, &w->session_stopped, 5000)) {
-@@ -374,7 +431,7 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
+@@ -374,7 +437,7 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
      if (fd < 0) { *error = "could not allocate shared memory"; return false; }
  
      w->pixels = mmap(NULL, w->size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
@@ -221,7 +474,7 @@ index 083d907..84b169c 100644
  
      struct wl_shm_pool *pool = wl_shm_create_pool(w->shm, fd, (int32_t)w->size);
      w->buffer = wl_shm_pool_create_buffer(pool, 0, (int32_t)w->width, (int32_t)w->height,
-@@ -391,7 +448,39 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
+@@ -391,7 +454,39 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
      return true;
  }
  
@@ -261,7 +514,7 @@ index 083d907..84b169c 100644
      w->frame_ready = w->frame_failed = false;
      w->frame.damage_count = 0;
      w->frame.damage_overflowed = false;
-@@ -460,7 +549,7 @@ static const struct zwlr_screencopy_frame_v1_listener now_listener = {
+@@ -460,7 +555,7 @@ static const struct zwlr_screencopy_frame_v1_listener now_listener = {
  };
  
  const struct wr_frame *wr_capture_now(struct wr_wayland *w, int timeout_ms) {
@@ -271,10 +524,21 @@ index 083d907..84b169c 100644
      w->now_ready = w->now_failed = w->now_described = false;
  
 diff --git a/src/wayland.h b/src/wayland.h
-index 1f1b383..97586fc 100644
+index 1f1b383..0c801be 100644
 --- a/src/wayland.h
 +++ b/src/wayland.h
-@@ -48,6 +48,9 @@ int wr_fd(const struct wr_wayland *w);
+@@ -36,6 +36,10 @@ struct wr_frame {
+ // encoder needs the same answer the probe does, and two copies drift.
+ void wr_read_rgb(const uint8_t *pixel, uint32_t format, uint8_t out[3]);
+ 
++// True when the format's bytes are already B,G,R in memory (as RemoteFX wants),
++// so the RDP side can skip exchanging the red and blue halves when it repacks.
++bool wr_format_is_bgr(uint32_t format);
++
+ struct wr_wayland;
+ 
+ // Connect, bind, and say plainly which piece is missing when one is: each is a
+@@ -48,6 +52,9 @@ int wr_fd(const struct wr_wayland *w);
  bool wr_flush(struct wr_wayland *w);
  bool wr_dispatch_pending(struct wr_wayland *w);
  

@@ -1,8 +1,8 @@
 # Maintainer: Danilo Falcão <danilo@falcao.org>
 
 pkgname=wayrdp
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='Native RDP server for wlroots-based Wayland compositors'
 arch=('x86_64')
 url='https://github.com/danilofalcao/wayrdp'
@@ -35,7 +35,7 @@ source=(
 )
 sha256sums=(
   'de7b499a8f92f4617043a2e82354598512d63df32ccc77753b6fd5672d7dcfc3'
-  'e2553c14dd5813be7d1f35ea4a14a687a17e08cf60964dc7a79493b5427bcb80'
+  '8ec7ca2211992b9ea3d59d2951176029ae8c5767d08e8f564377752da6acfccf'
   '36a394cb040608660ee2a987610fc2d23d9c76d365b0490612129dd01706ca1e'
 )
 
