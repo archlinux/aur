@@ -1,6 +1,6 @@
 # Maintainer: Julian Y. Richard Corbet (julian-corbet on GitHub)
 pkgname=ccti
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="ComfyUI TUI: agentic image chat with inline terminal rendering"
 arch=('x86_64')
