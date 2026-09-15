@@ -2,8 +2,8 @@ pkg/
 src/
 
 # Source files
-tor-browser-linux*-*_*.tar.xz
-tor-browser-linux*-*_*.tar.xz.asc
+tor-browser-linux-*.tar.xz
+tor-browser-linux-*.tar.xz.asc
 
 # Compressed package
 tor-browser-*-*.pkg.tar*
