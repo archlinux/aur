@@ -1,9 +1,9 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
 license=('MIT')
 depends=(
@@ -30,6 +30,22 @@ optdepends=(
     'gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)'
     'quickshell: Quickshell-based OSD frontend (opt in via [osd] frontend = "quickshell")'
 )
+# aarch64 has no GPU-accelerated binary variant yet (#547 tracks it) — no
+# mainstream consumer arm64 Vulkan/CUDA/ROCm hardware to build and test
+# against. Don't advertise optdepends that can't do anything on this arch.
+optdepends_aarch64=(
+    'wtype: keyboard simulation for Wayland (recommended, best CJK support)'
+    'dotool: keyboard simulation with layout support (KDE/GNOME compatible)'
+    'ydotool: keyboard simulation fallback (X11/TTY support)'
+    'wl-clipboard: clipboard support'
+    'libnotify: desktop notifications'
+    'pipewire: audio server (recommended)'
+    'pipewire-alsa: ALSA compatibility for PipeWire (required if using PipeWire)'
+    'pulseaudio: audio server (alternative to PipeWire)'
+    'ollama: local AI summarization for meeting mode'
+    'gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)'
+    'quickshell: Quickshell-based OSD frontend (opt in via [osd] frontend = "quickshell")'
+)
 provides=('voxtype')
 conflicts=('voxtype')
 backup=('etc/voxtype/config.toml')
@@ -47,7 +63,49 @@ validpgpkeys=(
     '9CCF7915B750CAE8B095ED1AA3FC9F33FD209279'
 )
 _github="https://github.com/peteonrails/voxtype/releases/download/v$pkgver"
+
+# Architecture-independent files: config, service unit, shell completions,
+# license, docs, desktop entry + launcher, and the signed source archive
+# (Quickshell QML tree + OSD style/recipe examples, identical on every arch).
 source=(
+    "config-$pkgver.toml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/config/default.toml"
+    "voxtype-$pkgver.service::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/systemd/voxtype.service"
+    "voxtype-$pkgver.bash::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/completions/voxtype.bash"
+    "voxtype-$pkgver.zsh::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/completions/voxtype.zsh"
+    "voxtype-$pkgver.fish::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/completions/voxtype.fish"
+    "LICENSE-$pkgver::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/LICENSE"
+    "README-$pkgver.md::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/README.md"
+    # Desktop entry + terminal launcher for `voxtype configure` (TUI surfaced in walker/rofi/etc.)
+    "voxtype-configure-$pkgver.desktop::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/voxtype-configure.desktop"
+    "voxtype-configure-launcher-$pkgver::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/scripts/voxtype-configure-launcher"
+    # Quickshell QML tree, copied wholesale from the signed source archive.
+    # Hand-listing individual QML files here is how #488, #697, and #762
+    # happened: scripts/package.sh tars the whole quickshell/ directory, so
+    # deb and rpm never drifted, while this PKGBUILD's enumeration silently
+    # fell behind three times. The auto-generated GitHub archive is signed
+    # byte-for-byte by CI (see the #415 post-mortem above), so we verify it
+    # like every binary.
+    "voxtype-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz"
+    "voxtype-$pkgver.tar.gz.asc::$_github/voxtype-$pkgver.tar.gz.asc"
+)
+sha256sums=(
+    'f4b2bccd56b31a6a50e1c0a8b6b72383dc1e636f9ccb8cb070442d58b7314579'  # config/default.toml
+    '531c3658e229619e56bb01659fb81f401767b85e1d6e2acd1ac67ee3414a168c'  # voxtype.service
+    '65c95805d9b03ccc2fadb9d63a03ab79974b00091df8457ee8ef290ec6bd5b12'  # voxtype.bash
+    'e5e63b3c7f48238cf719e4f2ef90c1f9c5c7e8cd25eaebc9f78bdd34b24b6605'  # voxtype.zsh
+    'f720ddd24ee97c105b448323899c36bca7c63d00c2d42c4a3da70c3d157dccbb'  # voxtype.fish
+    '31123c45b4ff9cb5fd9e01083350fea6ccaf14969013fd48e4c95fdf89e6eb4b'  # LICENSE
+    'e5b2ec5da5eafe2ce8f7b84b81a889f2ff496ad6488d56b6b9b32b73d025ed53'  # README.md
+    '32144a4a5210092b0aa909f6de7a43ebe8bbf82fa3dfb1f3519787512fdf8e4b'  # voxtype-configure.desktop
+    '044b1f7b52cc610ce57ba624111d882029b0ce4bc3e2c2c360f96d07f69e0e85'  # voxtype-configure-launcher
+    'a4d0a256167f58ce90153077da82620794422f5172c918625d480ff9ffca625e'  # voxtype-$pkgver.tar.gz (source archive)
+    'SKIP'                                                             # voxtype-$pkgver.tar.gz.asc
+)
+
+# x86_64: full binary set (baseline / AVX2 / AVX-512 / Vulkan Whisper,
+# ONNX AVX2 / AVX-512 / CUDA-12 / CUDA-13 / MIGraphX, plus the x86_64 OSD
+# binaries and audio-bridge sidecar).
+source_x86_64=(
     # Whisper binaries
     # baseline: x86-64-v2, for pre-AVX2 CPUs (#612). New in 1.1.0.
     "voxtype-$pkgver-baseline::$_github/voxtype-$pkgver-linux-x86_64-baseline"
@@ -93,34 +151,15 @@ source=(
     # Quickshell OSD frontend launcher + audio-bridge sidecar (new in v0.7.5).
     # voxtype-osd-quickshell resolves /proc/self/exe and probes its parent dir
     # plus /usr/share/voxtype/quickshell/ for shell.qml, so the QML files
-    # shipped further below sit on the lookup path without PATH gymnastics.
+    # shipped further above sit on the lookup path without PATH gymnastics.
     # voxtype-audio-bridge is the NDJSON sidecar that streams audio levels
     # to the Quickshell frontend over a UNIX socket.
     "voxtype-$pkgver-osd-quickshell::$_github/voxtype-$pkgver-linux-x86_64-osd-quickshell"
     "voxtype-$pkgver-osd-quickshell.asc::$_github/voxtype-$pkgver-linux-x86_64-osd-quickshell.asc"
     "voxtype-$pkgver-audio-bridge::$_github/voxtype-$pkgver-linux-x86_64-audio-bridge"
     "voxtype-$pkgver-audio-bridge.asc::$_github/voxtype-$pkgver-linux-x86_64-audio-bridge.asc"
-    # Config and support files
-    "config-$pkgver.toml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/config/default.toml"
-    "voxtype-$pkgver.service::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/systemd/voxtype.service"
-    "voxtype-$pkgver.bash::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/completions/voxtype.bash"
-    "voxtype-$pkgver.zsh::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/completions/voxtype.zsh"
-    "voxtype-$pkgver.fish::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/completions/voxtype.fish"
-    "LICENSE-$pkgver::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/LICENSE"
-    "README-$pkgver.md::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/README.md"
-    # Desktop entry + terminal launcher for `voxtype configure` (TUI surfaced in walker/rofi/etc.)
-    "voxtype-configure-$pkgver.desktop::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/voxtype-configure.desktop"
-    "voxtype-configure-launcher-$pkgver::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/scripts/voxtype-configure-launcher"
-    # Quickshell QML tree, copied wholesale from the signed source archive.
-    # Hand-listing individual QML files here is how #488 and #697 happened:
-    # scripts/package.sh tars the whole quickshell/ directory, so deb and rpm
-    # never drifted, while this PKGBUILD's enumeration silently fell behind
-    # twice. The auto-generated GitHub archive is signed byte-for-byte by CI
-    # (see the #415 post-mortem above), so we verify it like every binary.
-    "voxtype-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz"
-    "voxtype-$pkgver.tar.gz.asc::$_github/voxtype-$pkgver.tar.gz.asc"
 )
-sha256sums=(
+sha256sums_x86_64=(
     # Whisper binaries
     'SKIP'  # voxtype-baseline - PLACEHOLDER: real sum required at the version bump; never publish a binary with SKIP
     'SKIP'  # voxtype-baseline.asc
@@ -156,93 +195,126 @@ sha256sums=(
     'SKIP'                                                             # voxtype-osd.asc
     '74fb0f6ad87feb0c1c9e06a8b28a7f7ecee101caef4248f77dcf613b5271238e'  # voxtype-osd-gtk4
     'SKIP'                                                             # voxtype-osd-gtk4.asc
-    # Quickshell OSD launcher + audio-bridge sidecar (new in v0.7.5)
+    # Quickshell OSD launcher + audio-bridge sidecar
     'b809c5140e844a6add801d7e592775cd89af8cce73fa399b6a3aec15dfd09533'  # voxtype-osd-quickshell
     'SKIP'                                                             # voxtype-osd-quickshell.asc
     '45776290e364194d83a8b89445166406c278e890507bf07ec52a5f0e8fa57720'  # voxtype-audio-bridge
     'SKIP'                                                             # voxtype-audio-bridge.asc
-    # Config and support files
-    'f4b2bccd56b31a6a50e1c0a8b6b72383dc1e636f9ccb8cb070442d58b7314579'  # config/default.toml
-    '531c3658e229619e56bb01659fb81f401767b85e1d6e2acd1ac67ee3414a168c'  # voxtype.service
-    '65c95805d9b03ccc2fadb9d63a03ab79974b00091df8457ee8ef290ec6bd5b12'  # voxtype.bash
-    'e5e63b3c7f48238cf719e4f2ef90c1f9c5c7e8cd25eaebc9f78bdd34b24b6605'  # voxtype.zsh
-    'f720ddd24ee97c105b448323899c36bca7c63d00c2d42c4a3da70c3d157dccbb'  # voxtype.fish
-    '31123c45b4ff9cb5fd9e01083350fea6ccaf14969013fd48e4c95fdf89e6eb4b'  # LICENSE
-    'e5b2ec5da5eafe2ce8f7b84b81a889f2ff496ad6488d56b6b9b32b73d025ed53'  # README.md
-    # Desktop entry + launcher
-    '32144a4a5210092b0aa909f6de7a43ebe8bbf82fa3dfb1f3519787512fdf8e4b'  # voxtype-configure.desktop
-    '044b1f7b52cc610ce57ba624111d882029b0ce4bc3e2c2c360f96d07f69e0e85'  # voxtype-configure-launcher
-    # Quickshell QML tree (new in v0.7.5)
-    'a4d0a256167f58ce90153077da82620794422f5172c918625d480ff9ffca625e'  # voxtype-$pkgver.tar.gz (source archive)
-    'SKIP'                                                             # voxtype-$pkgver.tar.gz.asc
+)
+
+# aarch64: one generic CPU Whisper binary and one generic ONNX binary — no
+# AVX2/AVX-512 split exists on this architecture, and no GPU-accelerated
+# variant ships yet (#547 tracks it; no mainstream consumer arm64 Vulkan
+# hardware to build/test against). Experimental until validated on real
+# Pi/Ampere/Graviton/Snapdragon X hardware by external users — see the
+# "Experimental aarch64 variants" comment in .github/workflows/build-linux.yml.
+# voxtype-bin.install's _set_default_backend()/_set_onnx_cuda_symlink()
+# already special-case `uname -m = aarch64`; this just ships the binaries
+# those functions expect at /usr/lib/voxtype/voxtype-cpu and voxtype-onnx.
+source_aarch64=(
+    "voxtype-$pkgver-cpu::$_github/voxtype-$pkgver-linux-aarch64-cpu"
+    "voxtype-$pkgver-cpu.asc::$_github/voxtype-$pkgver-linux-aarch64-cpu.asc"
+    "voxtype-$pkgver-onnx::$_github/voxtype-$pkgver-linux-aarch64-onnx"
+    "voxtype-$pkgver-onnx.asc::$_github/voxtype-$pkgver-linux-aarch64-onnx.asc"
+    "voxtype-$pkgver-osd::$_github/voxtype-$pkgver-linux-aarch64-osd"
+    "voxtype-$pkgver-osd.asc::$_github/voxtype-$pkgver-linux-aarch64-osd.asc"
+    "voxtype-$pkgver-osd-gtk4::$_github/voxtype-$pkgver-linux-aarch64-osd-gtk4"
+    "voxtype-$pkgver-osd-gtk4.asc::$_github/voxtype-$pkgver-linux-aarch64-osd-gtk4.asc"
+    "voxtype-$pkgver-osd-quickshell::$_github/voxtype-$pkgver-linux-aarch64-osd-quickshell"
+    "voxtype-$pkgver-osd-quickshell.asc::$_github/voxtype-$pkgver-linux-aarch64-osd-quickshell.asc"
+    "voxtype-$pkgver-audio-bridge::$_github/voxtype-$pkgver-linux-aarch64-audio-bridge"
+    "voxtype-$pkgver-audio-bridge.asc::$_github/voxtype-$pkgver-linux-aarch64-audio-bridge.asc"
+)
+sha256sums_aarch64=(
+    'b5e31a85aaa952d1a78c12b8a16ba5cbdcd92eb31adc7d1a908f3c9d06edd4f1'  # voxtype-cpu
+    'SKIP'                                                             # voxtype-cpu.asc
+    'c3771f3e568629178201990976520f88da6d7599ec2d9e404a137570d6c1e108'  # voxtype-onnx
+    'SKIP'                                                             # voxtype-onnx.asc
+    'ea910d4fd1fe331d38dbed1c3a639cb7e0c04542919192ff6f74be2139afe3c6'  # voxtype-osd
+    'SKIP'                                                             # voxtype-osd.asc
+    '0d2148e0cd32bac538692470edc06aa9a2f5c6a891aaa373f59fbe78c247fae3'  # voxtype-osd-gtk4
+    'SKIP'                                                             # voxtype-osd-gtk4.asc
+    '097bd518d5e2eac2c3cbad714b65dd8058c818dcb4d900b9a16e442af7d65b8a'  # voxtype-osd-quickshell
+    'SKIP'                                                             # voxtype-osd-quickshell.asc
+    '35170ad89fea2874fce0f08758ccc2164892ed643aacae632bcfbc6f10433976'  # voxtype-audio-bridge
+    'SKIP'                                                             # voxtype-audio-bridge.asc
 )
 
 package() {
-    # Install Whisper CPU binaries to /usr/lib/voxtype/
-    install -Dm755 "$srcdir/voxtype-$pkgver-baseline" "$pkgdir/usr/lib/voxtype/voxtype-baseline"
-    install -Dm755 "$srcdir/voxtype-$pkgver-avx2" "$pkgdir/usr/lib/voxtype/voxtype-avx2"
-    install -Dm755 "$srcdir/voxtype-$pkgver-avx512" "$pkgdir/usr/lib/voxtype/voxtype-avx512"
+    if [ "$CARCH" = "aarch64" ]; then
+        # One generic CPU Whisper binary, one generic ONNX binary — matches
+        # what voxtype-bin.install's _set_default_backend() installs
+        # unconditionally on this arch (no AVX2/AVX-512 split, no GPU EP).
+        install -Dm755 "$srcdir/voxtype-$pkgver-cpu" "$pkgdir/usr/lib/voxtype/voxtype-cpu"
+        install -Dm755 "$srcdir/voxtype-$pkgver-onnx" "$pkgdir/usr/lib/voxtype/voxtype-onnx"
+    else
+        # Install Whisper CPU binaries to /usr/lib/voxtype/
+        install -Dm755 "$srcdir/voxtype-$pkgver-baseline" "$pkgdir/usr/lib/voxtype/voxtype-baseline"
+        install -Dm755 "$srcdir/voxtype-$pkgver-avx2" "$pkgdir/usr/lib/voxtype/voxtype-avx2"
+        install -Dm755 "$srcdir/voxtype-$pkgver-avx512" "$pkgdir/usr/lib/voxtype/voxtype-avx512"
 
-    # Install Whisper Vulkan GPU binary
-    install -Dm755 "$srcdir/voxtype-$pkgver-vulkan" "$pkgdir/usr/lib/voxtype/voxtype-vulkan"
+        # Install Whisper Vulkan GPU binary
+        install -Dm755 "$srcdir/voxtype-$pkgver-vulkan" "$pkgdir/usr/lib/voxtype/voxtype-vulkan"
 
-    # Install ONNX CPU binaries (no GPU EP, no companion .so files)
-    install -Dm755 "$srcdir/voxtype-$pkgver-onnx-avx2" "$pkgdir/usr/lib/voxtype/voxtype-onnx-avx2"
-    install -Dm755 "$srcdir/voxtype-$pkgver-onnx-avx512" "$pkgdir/usr/lib/voxtype/voxtype-onnx-avx512"
+        # Install ONNX CPU binaries (no GPU EP, no companion .so files)
+        install -Dm755 "$srcdir/voxtype-$pkgver-onnx-avx2" "$pkgdir/usr/lib/voxtype/voxtype-onnx-avx2"
+        install -Dm755 "$srcdir/voxtype-$pkgver-onnx-avx512" "$pkgdir/usr/lib/voxtype/voxtype-onnx-avx512"
 
-    # GPU-using ONNX binaries each live in their own subdirectory alongside
-    # the EP companion shared libs they dlopen at runtime. ort 2.0.0-rc.12's
-    # CUDA/MIGraphX EPs resolve their .so files via /proc/self/exe; if they
-    # aren't co-located, EP registration fails and ort silently falls back
-    # to CPU. /proc/self/exe follows symlinks, so the user-facing names at
-    # /usr/lib/voxtype/voxtype-onnx-* are symlinks into these subdirs.
+        # GPU-using ONNX binaries each live in their own subdirectory alongside
+        # the EP companion shared libs they dlopen at runtime. ort 2.0.0-rc.12's
+        # CUDA/MIGraphX EPs resolve their .so files via /proc/self/exe; if they
+        # aren't co-located, EP registration fails and ort silently falls back
+        # to CPU. /proc/self/exe follows symlinks, so the user-facing names at
+        # /usr/lib/voxtype/voxtype-onnx-* are symlinks into these subdirs.
 
-    # ONNX CUDA 12 (locked to libcudart.so.12 ABI)
-    install -Dm755 "$srcdir/voxtype-$pkgver-onnx-cuda-12" \
-        "$pkgdir/usr/lib/voxtype/cuda-12/voxtype-onnx-cuda-12"
-    install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-12.libonnxruntime_providers_cuda.so" \
-        "$pkgdir/usr/lib/voxtype/cuda-12/libonnxruntime_providers_cuda.so"
-    install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-12.libonnxruntime_providers_shared.so" \
-        "$pkgdir/usr/lib/voxtype/cuda-12/libonnxruntime_providers_shared.so"
-    ln -sf "cuda-12/voxtype-onnx-cuda-12" \
-        "$pkgdir/usr/lib/voxtype/voxtype-onnx-cuda-12"
+        # ONNX CUDA 12 (locked to libcudart.so.12 ABI)
+        install -Dm755 "$srcdir/voxtype-$pkgver-onnx-cuda-12" \
+            "$pkgdir/usr/lib/voxtype/cuda-12/voxtype-onnx-cuda-12"
+        install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-12.libonnxruntime_providers_cuda.so" \
+            "$pkgdir/usr/lib/voxtype/cuda-12/libonnxruntime_providers_cuda.so"
+        install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-12.libonnxruntime_providers_shared.so" \
+            "$pkgdir/usr/lib/voxtype/cuda-12/libonnxruntime_providers_shared.so"
+        ln -sf "cuda-12/voxtype-onnx-cuda-12" \
+            "$pkgdir/usr/lib/voxtype/voxtype-onnx-cuda-12"
 
-    # ONNX CUDA 13 (locked to libcudart.so.13 ABI, requires driver 580+).
-    # v0.7.3+: dlopens ORT at runtime. Install Microsoft's libonnxruntime
-    # under its SONAME plus a libonnxruntime.so symlink that ort/load-dynamic
-    # expects (resolved relative to /proc/self/exe, see ort src/lib.rs:96-109).
-    install -Dm755 "$srcdir/voxtype-$pkgver-onnx-cuda-13" \
-        "$pkgdir/usr/lib/voxtype/cuda-13/voxtype-onnx-cuda-13"
-    install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-13.libonnxruntime_providers_cuda.so" \
-        "$pkgdir/usr/lib/voxtype/cuda-13/libonnxruntime_providers_cuda.so"
-    install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-13.libonnxruntime_providers_shared.so" \
-        "$pkgdir/usr/lib/voxtype/cuda-13/libonnxruntime_providers_shared.so"
-    install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-13.libonnxruntime.so.1.24.4" \
-        "$pkgdir/usr/lib/voxtype/cuda-13/libonnxruntime.so.1.24.4"
-    ln -sf "libonnxruntime.so.1.24.4" \
-        "$pkgdir/usr/lib/voxtype/cuda-13/libonnxruntime.so"
-    ln -sf "cuda-13/voxtype-onnx-cuda-13" \
-        "$pkgdir/usr/lib/voxtype/voxtype-onnx-cuda-13"
+        # ONNX CUDA 13 (locked to libcudart.so.13 ABI, requires driver 580+).
+        # v0.7.3+: dlopens ORT at runtime. Install Microsoft's libonnxruntime
+        # under its SONAME plus a libonnxruntime.so symlink that ort/load-dynamic
+        # expects (resolved relative to /proc/self/exe, see ort src/lib.rs:96-109).
+        install -Dm755 "$srcdir/voxtype-$pkgver-onnx-cuda-13" \
+            "$pkgdir/usr/lib/voxtype/cuda-13/voxtype-onnx-cuda-13"
+        install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-13.libonnxruntime_providers_cuda.so" \
+            "$pkgdir/usr/lib/voxtype/cuda-13/libonnxruntime_providers_cuda.so"
+        install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-13.libonnxruntime_providers_shared.so" \
+            "$pkgdir/usr/lib/voxtype/cuda-13/libonnxruntime_providers_shared.so"
+        install -Dm644 "$srcdir/voxtype-$pkgver-onnx-cuda-13.libonnxruntime.so.1.24.4" \
+            "$pkgdir/usr/lib/voxtype/cuda-13/libonnxruntime.so.1.24.4"
+        ln -sf "libonnxruntime.so.1.24.4" \
+            "$pkgdir/usr/lib/voxtype/cuda-13/libonnxruntime.so"
+        ln -sf "cuda-13/voxtype-onnx-cuda-13" \
+            "$pkgdir/usr/lib/voxtype/voxtype-onnx-cuda-13"
 
-    # ONNX MIGraphX (AMD GPU EP, replaces ROCm in v0.7.0)
-    install -Dm755 "$srcdir/voxtype-$pkgver-onnx-migraphx" \
-        "$pkgdir/usr/lib/voxtype/migraphx/voxtype-onnx-migraphx"
-    install -Dm644 "$srcdir/voxtype-$pkgver-onnx-migraphx.libonnxruntime_providers_migraphx.so" \
-        "$pkgdir/usr/lib/voxtype/migraphx/libonnxruntime_providers_migraphx.so"
-    install -Dm644 "$srcdir/voxtype-$pkgver-onnx-migraphx.libonnxruntime_providers_shared.so" \
-        "$pkgdir/usr/lib/voxtype/migraphx/libonnxruntime_providers_shared.so"
-    ln -sf "migraphx/voxtype-onnx-migraphx" \
-        "$pkgdir/usr/lib/voxtype/voxtype-onnx-migraphx"
+        # ONNX MIGraphX (AMD GPU EP, replaces ROCm in v0.7.0)
+        install -Dm755 "$srcdir/voxtype-$pkgver-onnx-migraphx" \
+            "$pkgdir/usr/lib/voxtype/migraphx/voxtype-onnx-migraphx"
+        install -Dm644 "$srcdir/voxtype-$pkgver-onnx-migraphx.libonnxruntime_providers_migraphx.so" \
+            "$pkgdir/usr/lib/voxtype/migraphx/libonnxruntime_providers_migraphx.so"
+        install -Dm644 "$srcdir/voxtype-$pkgver-onnx-migraphx.libonnxruntime_providers_shared.so" \
+            "$pkgdir/usr/lib/voxtype/migraphx/libonnxruntime_providers_shared.so"
+        ln -sf "migraphx/voxtype-onnx-migraphx" \
+            "$pkgdir/usr/lib/voxtype/voxtype-onnx-migraphx"
 
-    # Compatibility symlink for users with scripts referencing the old
-    # voxtype-onnx-rocm name. The AMD GPU EP changed from ROCm to MIGraphX
-    # in v0.7.0; ship one release with both names to soften the transition.
-    # Drop in v0.8.0.
-    ln -sf "voxtype-onnx-migraphx" "$pkgdir/usr/lib/voxtype/voxtype-onnx-rocm"
+        # Compatibility symlink for users with scripts referencing the old
+        # voxtype-onnx-rocm name. The AMD GPU EP changed from ROCm to MIGraphX
+        # in v0.7.0; ship one release with both names to soften the transition.
+        # Drop in v0.8.0.
+        ln -sf "voxtype-onnx-migraphx" "$pkgdir/usr/lib/voxtype/voxtype-onnx-rocm"
+    fi
 
     # /usr/bin/voxtype symlink and the unversioned voxtype-onnx-cuda symlink
     # are created by the .install script's post_install/post_upgrade hooks
-    # so they can pick the right CUDA variant for the host.
+    # so they can pick the right CUDA variant for the host (a no-op on
+    # aarch64, where _set_onnx_cuda_symlink() short-circuits).
 
     # OSD launcher + GTK4 frontend. The launcher resolves /proc/self/exe and
     # probes its parent directory, so it finds /usr/lib/voxtype/voxtype-osd-gtk4
@@ -265,7 +337,7 @@ package() {
     # AudioBridge) registered via qmldir — keep the layout intact or
     # `import voxtype-shared 1.0` fails to resolve.
     # Copy the whole tree so a QML file added upstream can never be missed
-    # here (the #697 failure). Mirrors scripts/package.sh exactly.
+    # here (the #697/#762 failure class). Mirrors scripts/package.sh exactly.
     install -d "$pkgdir/usr/share/voxtype"
     cp -a "$srcdir/voxtype-$pkgver/quickshell" "$pkgdir/usr/share/voxtype/"
     find "$pkgdir/usr/share/voxtype/quickshell" -type f -exec chmod 644 {} +
