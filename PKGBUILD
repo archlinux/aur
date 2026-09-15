@@ -8,6 +8,8 @@ pkgdesc='Application to check if a TCP port works with a Golang HTTP server'
 url='https://github.com/qdm12/port-checker/'
 arch=('x86_64' 'aarch64' 'i686')
 license=('MIT')
+makedepends=('git' 'go')
+depends=('glibc')
 source=("git+${url}#tag=v${pkgver}")
 sha256sums=('f02f8bde0552986eecb9091a88ab7c945d05869e6b461b41da6e2a6769470c19')
 
