@@ -1,6 +1,6 @@
 # Maintainer: WgpArch <wgparch@riseup.net>
 pkgname=aur-security-dashboard
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A forensic-grade, local SIEM dashboard for Arch Linux to monitor system integrity, audit AUR packages, and hunt anomalies."
 arch=('any')
