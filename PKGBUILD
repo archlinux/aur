@@ -65,6 +65,11 @@ prepare() {
     # Fetch Rust deps up front so build/package stages don't need to
     # download crates again when using --locked.
     cargo fetch --locked --target "$(rustc --print host-tuple)"
+}
+
+build() {
+    cd "$_pkgname"
+    local -a make_args=("${_common_make_args[@]}")
 
     # _Disable_ cross-toolchain LTO because we are using different toolchains
     # for C/C++ and Rust code (i.e., LLVM LTO is incompatible with GCC LTO).
@@ -72,11 +77,6 @@ prepare() {
     # a workaround to force generation of normal object code on C side:
     CFLAGS+=" -ffat-lto-objects"
     CXXFLAGS+=" -ffat-lto-objects"
-}
-
-build() {
-    cd "$_pkgname"
-    local -a make_args=("${_common_make_args[@]}")
 
     make "${make_args[@]}" all
 }
