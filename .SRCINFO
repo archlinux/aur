@@ -1,13 +1,13 @@
 pkgbase = pikr-bin
 	pkgdesc = Vim-modal application launcher — rofi replacement built on floem. (binary release)
-	pkgver = 0.8.12
+	pkgver = 0.8.13
 	pkgrel = 1
 	url = https://pikr.kryptic.sh/
 	arch = x86_64
 	license = MIT
-	provides = pikr=0.8.12
+	provides = pikr=0.8.13
 	conflicts = pikr
-	source_x86_64 = pikr-v0.8.12-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/pikr/releases/download/v0.8.12/pikr-v0.8.12-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 69ebfa1921253aefcbe86cf40cfea070debbca3988a3d33eaf05c6130b50f84e
+	source_x86_64 = pikr-v0.8.13-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/pikr/releases/download/v0.8.13/pikr-v0.8.13-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d0d09cfdd42808e2944580c5b24d807e27c1d4e50c69422f10c767aa9b645ad9
 
 pkgname = pikr-bin
