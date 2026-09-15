@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=zux-bin
-pkgver=1.15.1
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="mDNS-SD Visualizer - A cross platform mDNS browsing visualizer written in Rust using tauri and svelte"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 conflicts=('zux')
 source_x86_64=("https://github.com/hrzlgnm/zux/releases/download/v$pkgver/zux_${pkgver}_amd64.deb" "https://github.com/hrzlgnm/zux/releases/download/v$pkgver/zux_linux_x64")
-sha256sums_x86_64=('0015f95d276755c776d5f0e8e5d477d55da4bf9eb12d724c2349d46e6eb2c446' '57bf65bd02bc3507fa05c896d4862cb14d6779557f4c03941b7a085c75957829')
+sha256sums_x86_64=('a5cb74c923cf9671040d195d8af8414e18a637180c6654f9d6eb5c2b24e07847' '2a5bdac4929bc69cec50d3eafe4cfb7e82de60959f7027b30f70ba159d2c752d')
 package() {
     # The .deb contains the icons, .desktop file and other files installed to shared.
     tar -xz -f data.tar.gz -C "${pkgdir}"
