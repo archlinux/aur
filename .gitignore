@@ -1,7 +1,6 @@
 src
 pkg
 xdgctl-git
-LICENSE
 *.tar.xz
 *.tar.gz
 *.tar.zst
