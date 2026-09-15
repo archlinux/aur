@@ -1,6 +1,6 @@
 pkgbase = writero-desktop
 	pkgdesc = Native block editor with AI writing tools and local-first documents
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ivankuznetsov/writero-desktop
 	arch = x86_64
@@ -11,9 +11,10 @@ pkgbase = writero-desktop
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-svg
+	depends = qt6-imageformats
 	depends = libsecret
 	depends = sqlite
-	source = writero-desktop-0.1.1.tar.gz::https://github.com/ivankuznetsov/writero-desktop/releases/download/v0.1.1/writero-desktop-0.1.1.tar.gz
-	sha256sums = 68629d116c083efa19a2ded4d346058ba20f0d604f9d3687bddf785bc51cac9c
+	source = writero-desktop-0.1.2.tar.gz::https://github.com/ivankuznetsov/writero-desktop/releases/download/v0.1.2/writero-desktop-0.1.2.tar.gz
+	sha256sums = be469a4d03215f4ad882931486ae865ae6aca3d6d6cc220d61120e5f1b4040dd
 
 pkgname = writero-desktop

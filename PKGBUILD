@@ -4,16 +4,16 @@
 # workflow overrides both from the tag and its attached source tarball
 # before publishing, so a stale value here never reaches the AUR.
 pkgname=writero-desktop
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Native block editor with AI writing tools and local-first documents"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ivankuznetsov/writero-desktop"
 license=('MIT')
-depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'libsecret' 'sqlite')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-imageformats' 'libsecret' 'sqlite')
 makedepends=('cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ivankuznetsov/writero-desktop/releases/download/v$pkgver/writero-desktop-$pkgver.tar.gz")
-sha256sums=('68629d116c083efa19a2ded4d346058ba20f0d604f9d3687bddf785bc51cac9c')
+sha256sums=('be469a4d03215f4ad882931486ae865ae6aca3d6d6cc220d61120e5f1b4040dd')
 
 build() {
     cmake -B build -G Ninja \
