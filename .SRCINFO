@@ -1,6 +1,6 @@
 pkgbase = python-pygtrie
 	pkgdesc = Python library implementing a trie data structure
-	pkgver = 2.6.1
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://github.com/google/pygtrie
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pygtrie
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pygtrie/pygtrie-2.6.1.tar.gz
-	sha256sums = 1934613126070b4ec51a3cefcf0c94cebb0139043b444c0f02486caebd0d8011
+	source = https://files.pythonhosted.org/packages/source/p/pygtrie/pygtrie-2.6.2.tar.gz
+	sha256sums = 879264597743ef52bf80f2dff085364088c0848ae22544db95dad2bf52e06471
 
 pkgname = python-pygtrie
