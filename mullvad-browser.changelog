@@ -1,3 +1,12 @@
+Mullvad Browser 15.0.23 - September 15 2026
+ * All Platforms
+   * Updated Firefox to 140.16.0esr
+   * Updated NoScript to 13.6.33.1984
+   * Bug 577: Rebase Mullvad Browser stable onto 140.16.0esr [mullvad-browser]
+   * Bug 45296: (H1) SharedWorker Identity Mismatch allows WebAssembly execution at Safer [tor-browser]
+   * Bug 45297: (H1) Missing setHTMLUnsafe hook leaves a permanent WebAssembly-capable child realm at Safer [tor-browser]
+   * Bug 45299: Backport Security Fixes from Firefox 156 [tor-browser]
+
 Mullvad Browser 15.0.21 - September 01 2026
  * All Platforms
    * Updated Firefox to 140.15.0esr
