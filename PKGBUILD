@@ -5,15 +5,15 @@
 
 _pkgname="vdeplug4"
 pkgname="$_pkgname-git"
-pkgver=v4.0.1.r12.a595069
-pkgrel=2
+pkgver=v4.0.1.r16.37c33e0
+pkgrel=1
 
 pkgdesc="VDE: Virtual Distributed Ethernet. Plug your VM directly to the cloud"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/rd235/$_pkgname"
-license=('GPL2' 'LGPL' 'custom:BSD')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 groups=('virtualsquare')
-depends=('s2argv-execs' 'libpcap' 'python' 'wolfssl')
+depends=('s2argv-execs')
 makedepends=('git' 'cmake')
 provides=("$_pkgname" 'vde2')
 conflicts=("$_pkgname" 'vde2')
@@ -38,26 +38,33 @@ pkgver() {
 	git -C $_pkgname describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
+prepare() {
+	cd "${srcdir}/${_pkgname}/"
+	cmake -S . -B build/ \
+		-D'CMAKE_INSTALL_PREFIX=/usr'
+}
+
 build() {
-	cd $srcdir/$_pkgname
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-	make -j $(nproc)
+	cd "${srcdir}/${_pkgname}/build/"
+	make
 }
 
 package() {
-	cd "$srcdir"
+	cd "${srcdir}/"
 
-	install -D -m 644 ../vde-config.sample $pkgdir/etc/vde/vde-config.sample
-	install -D -m 644 ../vde-connection.sample $pkgdir/etc/vde/vde-connection.sample
-	install -D -m 644 ../dhcpd.conf.sample $pkgdir/usr/share/vde2/dhcpd.conf.sample
-	install -D -m 644 ../iptables.rules.sample $pkgdir/usr/share/vde2/iptables.rules.sample
+	install -Dm 644 vde-config.sample -t "${pkgdir}/etc/vde/vde-config.sample"
+	install -Dm 644 vde-connection.sample -t "${pkgdir}/etc/vde/vde-connection.sample"
+	install -Dm 644 dhcpd.conf.sample -t "${pkgdir}/usr/share/vde2/dhcpd.conf.sample"
+	install -Dm 644 iptables.rules.sample -t "${pkgdir}/usr/share/vde2/iptables.rules.sample"
 
-	cd "$_pkgname/build"
+	cd "${_pkgname}/"
+	install -Dm 644 COPYING -T "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm 644 COPYING.libvdeplug4 -T "${pkgdir}/usr/share/licenses/libvdeplug4/LICENSE"
+
+	cd "build/"
 	make DESTDIR="$pkgdir/" install
 
-	cd "$pkgdir/usr/lib"
+	cd "${pkgdir}/usr/lib/"
 	ln -s libvdeplug.so.4.0.0 libvdeplug.so.3
 	ln -s libvdeplug_mod.so.4.0.0 libvdeplug_mod.so.3
 }
