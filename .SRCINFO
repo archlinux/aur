@@ -1,6 +1,6 @@
 pkgbase = omafil-bin
 	pkgdesc = File manager that follows your Omarchy theme
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/dawitlabs/omafil
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = omafil-bin
 	conflicts = omafil-git
 	options = !debug
 	options = !strip
-	source = omafil-0.2.3-x86_64.tar.gz::https://github.com/dawitlabs/omafil/releases/download/v0.2.3/omafil-0.2.3-x86_64.tar.gz
-	sha256sums = 00496966bf9f3343a43c50f2ff7da07c3f3929444e42e7cbf7d644ed23382f76
+	source = omafil-0.2.4-x86_64.tar.gz::https://github.com/dawitlabs/omafil/releases/download/v0.2.4/omafil-0.2.4-x86_64.tar.gz
+	sha256sums = 2453277d6ec339206348c3c31bc2afc0355551ec324e1949dadf1cffd6bf9be1
 
 pkgname = omafil-bin
