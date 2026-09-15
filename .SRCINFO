@@ -1,11 +1,11 @@
 pkgbase = archcanary
 	pkgdesc = Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering
 	pkgver = 0.1.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/musqz/archcanary
 	install = archcanary.install
 	arch = any
-	license = MIT
+	license = GPL-3.0-only
 	depends = bash
 	depends = pacman
 	optdepends = libnotify: desktop alerts on infected scan result

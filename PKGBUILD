@@ -1,11 +1,11 @@
 # Maintainer: musqz <gummy-fang-deputy@duck.com>
 pkgname=archcanary
 pkgver=0.1.36
-pkgrel=1
+pkgrel=2
 pkgdesc="Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering"
 arch=('any')
 url="https://github.com/musqz/archcanary"
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('bash' 'pacman')
 optdepends=(
   'libnotify: desktop alerts on infected scan result'
