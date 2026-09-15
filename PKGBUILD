@@ -1,81 +1,80 @@
-#lskdfj Maintainer: Robert Ulmer <arch.x(at)frontexpers.com>
-pkgname="filius"
-pkgver="2.10.1"
-_pkgver="${pkgver}"
+# Maintainer: Christian Macht <christian dot macht at gmail dot com>
+# Contributor: Robert Ulmer <arch.x(at)frontexpers.com>
+# Contributor: Adam Jedlička <adajedlicka@gmail.com>
+
+pkgname=filius
+pkgver=2.14.0
 pkgrel=1
-pkgdesc="Network simulation program"
+pkgdesc="Network simulation program for education"
 arch=('any')
 url="http://www.lernsoftware-filius.de"
-license=('GPL')
+license=('GPL-2.0-only' 'GPL-3.0-only')
 depends=('java-runtime>=17')
-source=(http://www.lernsoftware-filius.de/downloads/Setup/$pkgname-$_pkgver.zip)
-package() {
-  cd $srcdir
-  # cp -r usr/ etc/ $pkgdir
-  mkdir -p $pkgdir/usr/bin/
-  mkdir -p $pkgdir/usr/share/filius/
-  mkdir -p $pkgdir/usr/share/pixmaps/
-  mkdir -p $pkgdir/usr/share/applications/
-  mkdir -p $pkgdir/usr/share/mime/packages/
-  rm Filius.exe
-  rm Filius.command
-  # mv lib $pkgdir/usr/lib/filius
-  cp -r Changelog.md config Einfuehrung_Filius.pdf filius.jar filius.sh GPLv2.txt GPLv3.txt hilfe img Introduction_Filius.pdf lib tmpl $pkgdir/usr/share/filius/
-  chmod +x $pkgdir/usr/share/filius/filius.sh
-  echo '#!/usr/bin/env sh' >$pkgdir/usr/bin/filius
-  echo '[ -n "${WAYLAND_DISPLAY}" ] && export _JAVA_AWT_WM_NONREPARENTING=1' >>$pkgdir/usr/bin/filius
-  echo '/usr/share/filius/filius.sh $*' >>$pkgdir/usr/bin/filius
-  chmod +x $pkgdir/usr/bin/filius
+source=(
+  "http://www.lernsoftware-filius.de/downloads/Setup/${pkgname}-${pkgver}.zip"
+  'filius.png'  # 128x128 icon
+)
+sha256sums=('9b691f995821810428f6f430a2badf7dffea9e7281ef55b42641894749294b9e'
+            'faa27deb74b220033294338001b0ffbf5a999756773d0222d4582c4e9d1eea2e')
 
-  base64 -d >$pkgdir/usr/share/pixmaps/filius32.png <<EOF
-iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9
-kTtIw1AUhv8+pEUqDnZQcchQnSyIigguWoUiVAi1QqsOJjd9QZOGJMXFUXAtOPhYrDq4OOvq4CoI
-gg8QJ0cnRRcp8dyk0CLGA5f78d/z/9x7LuBvVJhqBscAVbOMdDIhZHOrQugVPgwgjBkEJWbqc6KY
-gmd93VM31V2cZ3n3/Vk9St5kgE8gnmW6YRFvEE9tWjrnfeIoK0kK8TnxqEEXJH7kuuzyG+eiw36e
-GTUy6XniKLFQ7GC5g1nJUIkniWOKqlG+P+uywnmLs1qpsdY9+QsjeW1lmeu0hpDEIpYgQoCMGsqo
-wEKcdo0UE2k6T3j4Bx2/SC6ZXGUwciygChWS4wf/g9+zNQsT425SJAF0vdj2xzAQ2gWaddv+Prbt
-5gkQeAautLa/2gCmP0mvt7XYEdC7DVxctzV5D7jcAfqfdMmQHClAy18oAO9n9E05oO8W6F5z59Y6
-x+kDkKFZpW6Ag0NgpEjZ6x7vDnfO7d+e1vx+AFywcp5Q21niAAAABmJLR0QA/wD/AP+gvaeTAAAA
-CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5AEZCQg5yX37HgAAABl0RVh0Q29tbWVudABDcmVh
-dGVkIHdpdGggR0lNUFeBDhcAAAHzSURBVFjD7ZfBattAEIa/9Y4vPaY41OQFAoFCz73aBxX6DPWj
-tfQRDD3ppkBvuQVy7CHBQaJ5AUveXkZmu11JK6PQFrJgLJifmdHMP/+OjHOO1DOfz21d1wvAdkAa
-Ean2+32T6tOkJqDBr4DPwHkHrAQ2InKbmkRyAsaYN8A34Ap4AsIAFjgDboEPzrnHFL9C+rH65k/A
-R2AX2JfAVjE21emYBI59BnbOuYegQkSqMnhm/OXzksApHLDAUnsektCO5YGMJF+pY7gdGMNm8haI
-SAVsggDWG7lGbRvFTquEESleAF/U9AmoTpHiURxQx4/e3L9WUxXqwv89BcaYtsR9krr07LGpCAlc
-OeeaQQ5o8KFbD48HtP3vwZYtgcMkZh3Bv+q/naDKv/nUGPEKBFfunWZd9rRgq8+x27E951rNy+hV
-7Zw7/oAL4F6dvQOsb+/A3gMXPTirvnYx7AygKAqyLPtD9VarVbNer8myjKIoTqq/9rzs4ohExOWn
-2hZ5nh/3vDzPG6AT2+4DrRD1+fWxBngbMN6XVn/Pu6vr+nJqrAFuEve8jTqcFCsj9rz5c2DF3/OA
-hw4VO3UnHMS+rGT/zG1olRgpe96YnXAQKyP2vP1zYC3wHXgPvIopKfCjFZfD4XA9NdaISNInt75F
-8ud56qf8L3SUS7sHJVXXAAAAAElFTkSuQmCC
+prepare() {
+  rm -f Filius.exe Filius.command
+}
+
+package() {
+  # Program
+  install -Dm644 -t "$pkgdir/usr/share/filius" filius.jar
+  install -Dm755 -t "$pkgdir/usr/share/filius" filius.sh
+  cp -r config hilfe img lib tmpl "$pkgdir/usr/share/filius/"
+
+  # Normalise permissions from zip file
+  find "$pkgdir/usr/share/filius" -type d -exec chmod 755 {} +
+  find "$pkgdir/usr/share/filius" -type f ! -name 'filius.sh' -exec chmod 644 {} +
+
+  # Documentation and licences
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    Changelog.md Einfuehrung_Filius.pdf Introduction_Filius.pdf
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" GPLv2.txt GPLv3.txt
+
+  # Launcher
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/filius" <<'EOF'
+#!/usr/bin/env sh
+[ -n "${WAYLAND_DISPLAY}" ] && export _JAVA_AWT_WM_NONREPARENTING=1
+exec /usr/share/filius/filius.sh "$@"
 EOF
 
-  cat >$pkgdir/usr/share/mime/packages/filius.xml <<EOF
+  # Icon
+  install -Dm644 "$srcdir/filius.png" "$pkgdir/usr/share/pixmaps/filius.png"
+
+  # MIME type
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/mime/packages/filius.xml" <<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-    <mime-type type="application/x-filius">
-        <comment>Filius file</comment>
-        <icon name="filius32"/>
-        <glob-deleteall/>
-        <glob pattern="*.fls"/>
-    </mime-type>
+  <mime-type type="application/x-filius">
+    <comment>Filius file</comment>
+    <comment xml:lang="de">Filius-Datei</comment>
+    <icon name="filius"/>
+    <glob-deleteall/>
+    <glob pattern="*.fls"/>
+  </mime-type>
 </mime-info>
 EOF
 
-  cat >$pkgdir/usr/share/applications/filius.desktop <<EOF
+  # Desktop file
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/filius.desktop" <<'EOF'
 [Desktop Entry]
 Name=Filius
-Name[de]=Filius
-Comment=Learn how Computer Networks are built
+Comment=Learn how computer networks are built
 Comment[de]=Lernsoftware zu Rechnernetzen
-Exec=/usr/share/filius/filius.sh %U
-Icon=filius32
+Exec=filius %U
+Icon=filius
 Terminal=false
 Type=Application
-Categories=Education
+Categories=Education;Network;
 StartupNotify=false
-MimeType=application/x-filius
+StartupWMClass=filius-Main
+MimeType=application/x-filius;
 EOF
-
 }
 
-sha256sums=('3581ef60f3983748d44354744d6c0dd1662e05fea39c2f1b7597e84f1660385e')
+# vim:set ts=2 sw=2 et:
