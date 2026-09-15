@@ -1,8 +1,9 @@
-# Maintainer: Josh Holmer <jholmer.in@gmail.com>
+# Maintainer: TheFeelTrain <the@feeltra.in>
+# Contributor: Josh Holmer <jholmer.in@gmail.com>
 
 _plug=muxtools
 pkgname=python-${_plug}-git
-pkgver=0.4.0.21.gc5d0e90
+pkgver=0.4.3.0.g56ca320
 pkgrel=1
 pkgdesc="Python Package: ${_plug} (GIT version)"
 arch=('any')
@@ -19,7 +20,7 @@ depends=(
     'python-pyparsebluray-git'
     'python-requests'
     'python-rich'
-    'python-typed-ffmpeg-compatible'
+    'python-typed-ffmpeg-compatible3'
     'python-videotimestamps'
     'python-wget'
 )
@@ -49,6 +50,5 @@ build() {
 package() {
     cd "${_plug}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
-
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
