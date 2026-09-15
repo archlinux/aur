@@ -33,7 +33,7 @@ sha256sums_aarch64=('720efe4ac149bf372f7cfb9fc625b85320b088891d5ebad7744da42fd93
 
 
 package() {
-	cd "${srcdir}/" || exit
+	cd "${srcdir}/"
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
