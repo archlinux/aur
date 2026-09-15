@@ -16,6 +16,7 @@ pkgbase = ly-git
 	optdepends = durdraw: for animations
 	provides = ly
 	conflicts = ly
+	backup = etc/ly/config.lua
 	backup = etc/ly/config.ini
 	backup = etc/ly/setup.sh
 	source = git+https://codeberg.org/fairyglade/ly.git

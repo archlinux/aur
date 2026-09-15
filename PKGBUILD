@@ -12,7 +12,7 @@ makedepends=('zig>=0.16' 'zig<0.17' git libxcb)
 optdepends=('xorg-xauth: for X server sessions' 'durdraw: for animations')
 conflicts=(ly)
 provides=(ly)
-backup=(etc/"$_pkgname"/{config.ini,setup.sh})
+backup=(etc/"$_pkgname"/{config.lua,config.ini,setup.sh})
 source=("git+$url")
 
 md5sums=('SKIP')
