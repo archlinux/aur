@@ -1,72 +1,101 @@
-post_upgrade() {
-        echo "###########################################################"
-        echo "### Mastodon from 4.7.0 and hight  Upgrade Instructions ###"
-        echo "###########################################################"
-        echo
-        echo "### If you are already running Mastodon 4.7.0, only the following steps are required: ###"
-        echo
-        echo "### 1. Fix ownership, but do not touch uploaded media in ./public/system ###"
-        echo "cd /var/lib/mastodon; find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +"
-        echo
-        echo "### 2. Precompile the assets ###"
-        echo "cd /var/lib/mastodon"
-        echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
-        echo
-        echo "### 3. Reload systemd and restart Mastodon ###"
-        echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
-        echo
-        echo
-        echo "########################################################################"
-        echo "### Upgrading from a Mastodon version earlier than 4.7.0             ###"
-        echo "########################################################################"
-        echo
-        echo "### If upgrading from an earlier version, read the skipped Mastodon release notes first. ###"
-        echo
-        echo "### IMPORTANT: Mastodon 4.7.0 contains substantial database migrations. ###"
-        echo "### Keep the PRE and POST deployment migrations as separate steps. ###"
-        echo "### When upgrading from Mastodon 4.6, the PRE migration does not require stopping Mastodon. ###"
-        echo
-        echo "### 1. Backup the PostgreSQL database before continuing ###"
-        echo "sudo -u postgres pg_dump -Fc mastodon_production > /root/mastodon_production_before_4.7.dump"
-        echo
-        echo "### 2. Go into the Mastodon directory ###"
-        echo "cd /var/lib/mastodon"
-        echo
-        echo "### 3. Fix ownership first, but do not touch uploaded media in ./public/system ###"
-        echo "find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +"
-        echo
-        echo "### 4. If rbenv is used, make sure ruby-build is up to date, then install the Ruby version requested by .ruby-version ###"
-        echo "sudo -iu mastodon bash -lc 'cd /var/lib/mastodon && RUBY_CONFIGURE_OPTS=--with-jemalloc rbenv install -s'"
-        echo "sudo -iu mastodon bash -lc 'cd /var/lib/mastodon && rbenv rehash'"
-        echo
-        echo "### 5. Install Ruby dependencies ###"
-        echo "sudo -iu mastodon bash -lc 'cd /var/lib/mastodon && bundle install'"
-        echo
-        echo "### If charlock_holmes fails to build with a recent gcc, retry bundle install with: ###"
-        echo "sudo -iu mastodon bash -lc 'cd /var/lib/mastodon && BUNDLE_BUILD__CHARLOCK_HOLMES=\"--with-cxxflags=-std=c++17\" bundle install'"
-        echo
-        echo "### 6. Install JavaScript dependencies ###"
-        echo "sudo -iu mastodon bash -lc 'cd /var/lib/mastodon && ./yarn install --immutable'"
-        echo
-        echo "### 7. Precompile the assets ###"
-        echo "cd /var/lib/mastodon"
-        echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
-        echo
-        echo "### 8. Run PRE-deployment database migrations BEFORE restarting Mastodon ###"
-        echo "sudo -u mastodon SKIP_POST_DEPLOYMENT_MIGRATIONS=true RAILS_ENV=production bundle exec rails db:migrate"
-        echo
-        echo "### Do not continue to the restart if the PRE-deployment migration fails. ###"
-        echo
-        echo "### 9. Reload systemd and restart all Mastodon processes ###"
-        echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
-        echo
-        echo "### 10. Check that all Mastodon services are active ###"
-        echo "systemctl is-active mastodon-web mastodon-sidekiq mastodon-streaming"
-        echo
-        echo "### 11. Run POST-deployment database migrations AFTER the services are running ###"
-        echo "cd /var/lib/mastodon"
-        echo "sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate"
+# Mastodon package install script
+#
+# IMPORTANT:
+# - Never recursively chown the package-owned application tree.
+# - Never restart Mastodon automatically during a pacman transaction.
+# - Never automatically run database migrations for upgrades from pre-4.7.
+#   Such upgrades require an operator-controlled PRE/POST migration sequence.
+
+_fix_ownership() {
+  # Pacman owns the application files and their root:root metadata.
+  # Only runtime-writable directories belong to the Mastodon service account.
+  echo "==> Fixing ownership of Mastodon runtime directories..."
+
+  install -d -o mastodon -g mastodon /var/lib/mastodon/tmp
+  install -d -o mastodon -g mastodon /var/lib/mastodon/log
+  install -d -o mastodon -g mastodon /var/lib/mastodon/public/system
+
+  chown mastodon:mastodon /var/lib/mastodon/tmp
+  chown mastodon:mastodon /var/lib/mastodon/log
+  chown mastodon:mastodon /var/lib/mastodon/public/system
 }
 
+_reload_systemd() {
+  echo "==> Reloading systemd units..."
+  systemctl daemon-reload 2>/dev/null || true
+}
 
+_restart_notice() {
+  echo
+  echo "==> Mastodon services were NOT restarted automatically."
+  echo "==> After checking the upgrade, restart them with:"
+  echo "    systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
+  echo
+  echo "==> Then verify:"
+  echo "    systemctl is-active mastodon-web mastodon-sidekiq mastodon-streaming"
+}
 
+post_install() {
+  echo "==> Mastodon installed."
+  _fix_ownership
+  _reload_systemd
+
+  echo
+  echo "==> Initial installation still requires Mastodon configuration"
+  echo "==> and database setup before starting the services."
+}
+
+post_upgrade() {
+  newver="$1"
+  oldver="$2"
+
+  echo
+  echo "###########################################################"
+  echo "### Mastodon package upgrade: ${oldver} -> ${newver}"
+  echo "###########################################################"
+  echo
+
+  _fix_ownership
+  _reload_systemd
+
+  if [ "$(vercmp "$oldver" '4.7.0-1')" -ge 0 ]; then
+    echo "==> Upgrade started from Mastodon 4.7.0 or newer."
+    echo "==> Production assets are already included in the package."
+    echo "==> No database migration is being run automatically."
+    _restart_notice
+    return 0
+  fi
+
+  echo
+  echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+  echo "!!! MANUAL DATABASE MIGRATION REQUIRED                  !!!"
+  echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+  echo
+  echo "==> This upgrade started from a Mastodon version older than 4.7."
+  echo "==> The package WILL NOT run database migrations automatically."
+  echo "==> Do not blindly restart the services."
+  echo
+  echo "==> Recommended operator procedure:"
+  echo
+  echo "  1. Take a verified PostgreSQL/database backup."
+  echo "  2. Run PRE-deployment migrations:"
+  echo
+  echo "     cd /var/lib/mastodon"
+  echo "     sudo -u mastodon env RAILS_ENV=production \\"
+  echo "       SKIP_POST_DEPLOYMENT_MIGRATIONS=true \\"
+  echo "       bundle exec rails db:migrate"
+  echo
+  echo "  3. Only after PRE migrations succeed, restart Mastodon:"
+  echo "     systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
+  echo
+  echo "  4. Verify the application, then run POST-deployment migrations:"
+  echo "     cd /var/lib/mastodon"
+  echo "     sudo -u mastodon env RAILS_ENV=production \\"
+  echo "       bundle exec rails db:migrate"
+  echo
+  _restart_notice
+}
+
+post_remove() {
+  _reload_systemd
+}

@@ -1,17 +1,10 @@
 # Maintainer: zoltix <lli@lli.be>
-# Contributor: Vamp898 <vamp898-aur@ikaros.space>
-# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
-# Contributor: Anthony Wang <a at exozy dot me>
-# Contributor: ny-a <nyaarch64 at gmail dot com>
-# Contributor: Daniel Moch <daniel@danielmoch.com>
-# Contributor: Jean Lucas <jean@4ray.co>
-# Contributor: Fredrick Brennan <copypaste@kittens.ph>
 
 pkgname=mastodon
 pkgver=4.7.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
-arch=(any)
+arch=(x86_64)
 url='https://github.com/mastodon/mastodon'
 license=(AGPL3)
 
@@ -32,7 +25,6 @@ depends=(
         postgresql
         protobuf
         ruby-bundler
-        sudo
         valkey
         zlib
         yarn-berry
@@ -43,7 +35,7 @@ install=mastodon.install
 options=(!strip)
 
 source=(
-        "https://github.com/mastodon/mastodon/archive/v${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz::https://github.com/mastodon/mastodon/archive/v${pkgver}.tar.gz"
         mastodon.target
         mastodon.sysusers.d
         mastodon.tmpfiles.d
@@ -57,92 +49,78 @@ sha256sums=('658bb926521fdf5278afa9df76e4224dc2effa3732f60ac36e3b46c2ef4b34e8'
             '8415cded8d5f159623439b8ab0a87c1ac653a32f6945eebc9140195289c1ece6')
 
 prepare() {
-        cd "mastodon-${pkgver}"
-
-        patch -p1 < ../devise_pam.patch
+  cd "mastodon-${pkgver}"
+  patch -p1 < ../devise_pam.patch
 }
 
 build() {
-        export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+  cd "mastodon-${pkgver}"
 
-        cd "mastodon-${pkgver}"
+  sed -i '/husky install/d' package.json
 
-        # Stop husky from hijacking git hooks
-        sed -i '/husky install/d' package.json
-
-        # Bundler configuration
-        bundle config set --local deployment true
-        bundle config set --local without 'development test'
-        bundle config set --local with 'pam_authentication'
-
-        # Disable LTO which breaks the C extension of the google-protobuf gem
-        # https://github.com/protocolbuffers/protobuf/issues/11935
-        bundle config set --local build.google-protobuf \
+  bundle config set --local deployment true
+  bundle config set --local without 'development test'
+  bundle config set --local with 'pam_authentication'
+  bundle config set --local build.google-protobuf \
                 "-- --with-cflags='$(ruby -r rbconfig -e 'print RbConfig::CONFIG["CFLAGS"]' |
                         sed -e 's/-Werror=format-security//' -e 's/-flto=auto/-fno-lto/')' \
                 --with-ldflags='$(ruby -r rbconfig -e 'print RbConfig::CONFIG["LDFLAGS"]' |
                         sed -e 's/-flto=auto/-fno-lto/')'"
 
-        # Mastodon modifies the bundle when adding erb during the package build
-        bundle config set --local frozen false
-        bundle add erb
+  bundle config set --local frozen false
+  bundle add erb
 
-        # charlock_holmes requires C++17 with recent GCC versions
-        BUNDLE_BUILD__CHARLOCK_HOLMES="--with-cxxflags=-std=c++17" \
+  BUNDLE_BUILD__CHARLOCK_HOLMES="--with-cxxflags=-std=c++17" \
                 bundle install -j"$(getconf _NPROCESSORS_ONLN)"
 
-        # Install JavaScript dependencies
-        corepack enable --install-directory . yarn
-        ./yarn install --immutable
+  corepack enable --install-directory . yarn
 
-        # ox extension workaround
-        # https://aur.archlinux.org/packages/mastodon?O=0#comment-986425
-        cd vendor/bundle/ruby/*/gems/ox-*/ext/ox
-        make
-        cp ox.so ../../lib
+  YARN_NETWORK_CONCURRENCY=8 \
+                ./yarn install --immutable
+
+  cd vendor/bundle/ruby/*/gems/ox-*/ext/ox
+  make
+  cp ox.so ../../lib
+
+  cd "$srcdir/mastodon-${pkgver}"
+  SECRET_KEY_BASE_DUMMY=1 \
+                RAILS_ENV=production \
+                bundle exec rails assets:precompile
 }
 
 package() {
-        install -d \
-                "$pkgdir/var/lib" \
-                "$pkgdir/etc"
+  install -d "$pkgdir/var/lib" "$pkgdir/etc"
+  cp -a "mastodon-${pkgver}" "$pkgdir/var/lib/mastodon"
 
-        cp -a "mastodon-${pkgver}" "$pkgdir/var/lib/mastodon"
+  # Build/runtime caches must never become package-owned state.
+  rm -rf "$pkgdir/var/lib/mastodon/tmp/cache"
 
-        # Put the config file in /etc and link to it
-        touch "$pkgdir/etc/mastodon.conf"
-        ln -s /etc/mastodon.conf \
-                "$pkgdir/var/lib/mastodon/.env.production"
+  # Normalize metadata copied from the build tree.  Pacman should own the
+  # application tree as root:root.  Runtime writable paths are handled by
+  # mastodon.install and tmpfiles/sysusers.
+  chown -R root:root "$pkgdir/var/lib/mastodon"
 
-        # Mastodon expects node to be available from its installation directory
-        ln -s /usr/bin/node \
-                "$pkgdir/var/lib/mastodon/node"
+  # Some bundled gems ship/build directories with group/world write bits.
+  # Do not package writable application-code directories.
+  find "$pkgdir/var/lib/mastodon" -type d -perm /022 -exec chmod go-w {} +
 
-        # systemd target
-        install -Dm644 mastodon.target \
-                -t "$pkgdir/usr/lib/systemd/system"
+  touch "$pkgdir/etc/mastodon.conf"
 
-        # systemd sysusers
-        install -Dm644 mastodon.sysusers.d \
-                "$pkgdir/usr/lib/sysusers.d/mastodon.conf"
+  ln -s /etc/mastodon.conf "$pkgdir/var/lib/mastodon/.env.production"
+  ln -s /usr/bin/node "$pkgdir/var/lib/mastodon/node"
 
-        # systemd tmpfiles
-        install -Dm644 mastodon.tmpfiles.d \
-                "$pkgdir/usr/lib/tmpfiles.d/mastodon.conf"
+  install -Dm644 mastodon.target -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 mastodon.sysusers.d "$pkgdir/usr/lib/sysusers.d/mastodon.conf"
+  install -Dm644 mastodon.tmpfiles.d "$pkgdir/usr/lib/tmpfiles.d/mastodon.conf"
 
-        cd "mastodon-${pkgver}/dist"
+  cd "mastodon-${pkgver}/dist"
 
-        # Fix path discrepancies in upstream systemd services
-        sed \
-                -e 's|home/mastodon/live|var/lib/mastodon|g' \
-                -e 's|home/mastodon/.rbenv/shims|usr/bin|g' \
-                -i mastodon-*.service
+  sed -e 's|home/mastodon/live|var/lib/mastodon|g' \
+      -e 's|home/mastodon/.rbenv/shims|usr/bin|g' \
+      -i mastodon-*.service
 
-        # Fix Mastodon path in nginx example configuration
-        sed \
-                -e 's|home/mastodon/live|var/lib/mastodon|g' \
-                -i nginx.conf
+  sed -e 's|home/mastodon/live|var/lib/mastodon|g' -i nginx.conf
 
-        install -Dm644 mastodon-*.service \
-                -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 mastodon-*.service -t "$pkgdir/usr/lib/systemd/system"
 }
