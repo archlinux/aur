@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ethercat
-pkgver=1.6.12
-pkgrel=2
+pkgver=1.6.13
+pkgrel=1
 pkgdesc="IgH EtherCAT Master for Linux"
 arch=($CARCH)
 url="https://gitlab.com/etherlab.org/ethercat"
@@ -24,7 +24,7 @@ options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 
-sha256sums=('32445dcff9be9e64a1673e7b5df8b65abedb0532e25e484281a1a28c74ceaf8b')
+sha256sums=('264ba1607853fd4e27d446c1ac76eaa71f9b0cc14fe11e4a4e83d53762d48af8')
 
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
