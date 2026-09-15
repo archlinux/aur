@@ -1,15 +1,15 @@
 # Maintainer: James Willson <jsdoublel@gmail.com>
 pkgname=camus
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A scalable program for inferring level-1 phylogenetic networks"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jsdoublel/camus"
 license=('MIT')
 depends=()
-makedepends=('go>=1.24')
+makedepends=('go>=1.25')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('73a3c032a1f4f14c9cf555b0d5d19aae2e7006607e502a94c5fd15a3859b6d45')
+sha256sums=('e9b2913a621dccb9f68269bce136c52f58175f39f5879d4eab0f93fc873a1b56')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -18,8 +18,10 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	GOPATH="$srcdir/gopath" CGO_ENABLED=0 GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw" \
-		go build -o "$pkgname" .
+	export GOPATH="$srcdir/gopath"
+	export CGO_ENABLED=0
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	go build -ldflags="-X main.Version=v$pkgver" -o "$pkgname" .
 }
 
 package() {
