@@ -8,6 +8,7 @@ pkgbase = psi-git
 	makedepends = cmake
 	makedepends = qt6-multimedia
 	makedepends = git
+	makedepends = libomemo-c
 	depends = hunspell
 	depends = minizip
 	depends = qca-qt6
