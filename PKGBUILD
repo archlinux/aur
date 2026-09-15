@@ -1,14 +1,14 @@
 # Maintainer: BartSte bartsteensma@outlook.com
 
     pkgname=fzf-help
-    pkgver=2.3.2
+    pkgver=2.4.1
     pkgrel=1
     pkgdesc="Use fzf to select command line options from --help"
     arch=('any')
     url="https://github.com/BartSte/fzf-help"
     license=('MIT')
     depends=('fzf' 'bat')
-    source=("$pkgname::git+https://github.com/BartSte/fzf-help.git")
+    source=("$pkgname::git+https://github.com/BartSte/fzf-help.git#tag=v$pkgver")
     md5sums=('SKIP')
     changelog="CHANGELOG.md"
 

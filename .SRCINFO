@@ -1,6 +1,6 @@
 pkgbase = fzf-help
 	pkgdesc = Use fzf to select command line options from --help
-	pkgver = 2.3.2
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/BartSte/fzf-help
 	changelog = CHANGELOG.md
@@ -8,7 +8,7 @@ pkgbase = fzf-help
 	license = MIT
 	depends = fzf
 	depends = bat
-	source = fzf-help::git+https://github.com/BartSte/fzf-help.git
+	source = fzf-help::git+https://github.com/BartSte/fzf-help.git#tag=v2.4.1
 	md5sums = SKIP
 
 pkgname = fzf-help
