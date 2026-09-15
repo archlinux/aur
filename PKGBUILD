@@ -1,7 +1,8 @@
 # Maintainer: k8ie <k8ie@mcld.eu>
+# Co-Maintainer: ItsDrike <itsdrike@protonmail.com>
 pkgname='proidcm'
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.4
+pkgrel=1
 _filename="${pkgname}-${pkgver}-0.amd64"
 pkgdesc="Graphical utility for managing ProID Smart Cards"
 depends=(libproidplus-gui qt6-base)
