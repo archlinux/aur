@@ -1,6 +1,6 @@
 pkgbase = mx-snapshot
 	pkgdesc = A tool for creating live ISO images from running systems
-	pkgver = 26.07.6
+	pkgver = 26.09arch
 	pkgrel = 1
 	url = https://mxlinux.org
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = mx-snapshot
 	replaces = mx-remaster-live-files
 	backup = etc/mx-snapshot.conf
 	backup = etc/mx-snapshot-exclude.list
-	source = https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.07.6.tar.gz
-	sha256sums = 33694d94448e4ead98fbb0497c9e3774a574b374b6f26ad1a3c9d014d6ff7062
+	source = https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.09arch.tar.gz
+	sha256sums = 6df7979c20d845dd19281072e6b70218da9185549ca01753bf7fea36f822539c
 
 pkgname = mx-snapshot
