@@ -2,7 +2,7 @@
 
 _pkgname=lyrune
 pkgname=lyrune-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Fast native QQ Music desktop client built with Rust and GPUI (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -39,10 +39,10 @@ sha256sums=(
   '68913e1ef3f2c4be855b046d7ec69d21371653cff22d40803a90c42cbf231abe'
 )
 sha256sums_x86_64=(
-  '4bfa791919c2f68a9fd4aae66760eccfaba2a63a2ea031a5c3783d37cdbd6c52'
+  '59d4e18a43ef968823a74d7fd3bffad8c21b0b5dc0800439284c20010b62f2f4'
 )
 sha256sums_aarch64=(
-  '2e66b3823d2953ad865e4d581d9197f9c0b07256de8f61fcbb5501073f40e882'
+  '8d9a15f0f16d6bc865c06b5f5cb643d248fbbc758cef9caf15b5538174bc072a'
 )
 
 package() {
