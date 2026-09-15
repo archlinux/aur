@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
-pkgver=5.2.1
+pkgver=5.2.2
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
@@ -68,9 +68,9 @@ optdepends=('cuda: Cycles renderer CUDA support'
 	    'hip-runtime-amd: HIP renderer AMD support')
 provides=('blender')
 conflicts=('blender')
-source=("https://mirrors.ocf.berkeley.edu/blender/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz"
+source=("https://mirror.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz"
 	"x-blender.xml")
-sha256sums=('a31f524fa99a527d3d52b7f5aaa68c34e1a19d5a1c9473f79c5cc610fd5b10e9'
+sha256sums=('84098912789dc450e95697c4184fb8a90acbe5111c2ba4aede3fecb57806a168'
             '230fc11e49d647215f4735117761d887756823ee1c8fab08987218fd037de75c')
 validpgpkeys=()
 
