@@ -5,6 +5,7 @@ pkgbase = mcjoin-git
 	url = https://github.com/troglobit/mcjoin
 	arch = x86_64
 	license = ISC
+	makedepends = git
 	provides = mcjoin
 	conflicts = mcjoin
 	source = git+https://github.com/troglobit/mcjoin
