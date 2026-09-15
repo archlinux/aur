@@ -1,7 +1,7 @@
 pkgbase = python-videotimestamps
 	pkgdesc = Get video timestamps.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moi15moi/VideoTimestamps/
 	arch = x86_64
 	license = MIT
@@ -13,11 +13,13 @@ pkgbase = python-videotimestamps
 	makedepends = python-setuptools
 	makedepends = nanobind
 	makedepends = robin-map
+	makedepends = vapoursynth
 	depends = ffmpeg
 	depends = ffms2-git
 	depends = dav1d
 	depends = python-xxhash
 	depends = xxhash
+	depends = vapoursynth-plugin-bestsource
 	source = https://files.pythonhosted.org/packages/source/v/videotimestamps/videotimestamps-1.2.0.tar.gz
 	sha256sums = a8ace9dcb148656dd552b6fc8d9c817bc2bd5192b4985ff50a0384caf0b835cb
 
