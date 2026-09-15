@@ -1,0 +1,30 @@
+pkgbase = neosolve-daily-git
+	pkgdesc = Parametric 2D/3D CAD with OpenCASCADE support (daily-bugfix branch)
+	pkgver = 3.2.r2302.geac98c4e
+	pkgrel = 1
+	url = https://github.com/dodox1/neosolve
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = cairo
+	depends = fontconfig
+	depends = freetype2
+	depends = gtkmm3
+	depends = json-c
+	depends = libglvnd
+	depends = libgomp
+	depends = libpng
+	depends = libspnav
+	depends = opencascade
+	depends = pangomm
+	depends = zlib
+	provides = solvespace
+	provides = neosolve
+	conflicts = solvespace
+	conflicts = neosolve
+	source = neosolve::git+https://github.com/dodox1/neosolve.git#branch=daily-bugfix
+	sha256sums = SKIP
+
+pkgname = neosolve-daily-git
