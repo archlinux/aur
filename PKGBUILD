@@ -15,8 +15,8 @@
 # Check the AUR package 'fs2_open-data' for details.
 
 pkgname=fs2_open
-pkgver=26.0.0
-pkgrel=2
+pkgver=26.0.1
+pkgrel=1
 pkgdesc="An enhancement of the FreeSpace 2 engine, need game data"
 url="https://scp.indiegames.us/"
 arch=(i686 x86_64)
@@ -28,26 +28,22 @@ optdepends=('fs2_open-mediavps: extensive audiovisual enhancements'
             'wxlauncher: cross-platform fs2 launcher'
             'doxygen: generate engine API docs when building from source')
 
-_upstream_tag=release_26_0_0
+_upstream_tag=release_26_0_1
 _extracted="fs2open.github.com-${_upstream_tag}"
 
 # Submodule commits from: git submodule status (at $_upstream_tag)
-_submod_rpavlik=7cef9577d6fc35057ea57f46b4986a8a28aeff50
 _submod_librocket=b0c18e17d257a46db8395485895185915f483ede
 
 source=("fs2open-${pkgver}.tar.gz::https://github.com/scp-fs2open/fs2open.github.com/archive/refs/tags/${_upstream_tag}.tar.gz"
-        "cmake-modules-${_submod_rpavlik}.tar.gz::https://github.com/rpavlik/cmake-modules/archive/${_submod_rpavlik}.tar.gz"
         "libRocket-${_submod_librocket}.tar.gz::https://github.com/scp-fs2open/libRocket/archive/${_submod_librocket}.tar.gz"
         'fs2_open.desktop')
-sha256sums=('f21f62f88474bf89525bca39a9d28539a8b234dec3f7566dc290387ac9d845ae'
-            '7b6912da01a56eeca58c13f8bbb07b6120af8f04722316747dc8132a8ec65aca'
+sha256sums=('f42b9918e0f49ceff70319756d9ca2930a7b0be369c79cc7b3c2d6728e40edb2'
             '444266ebd5fc1f48e565b91abdaa2bee87a621f792450c4339a5cc7be6f946ab'
             '5e5205173637029217c77cd426582d3df55d9c6671b271379d023664484a6153')
 
 prepare() {
   cd "${_extracted}"
-  rm -rf cmake/external/rpavlik-cmake-modules lib/libRocket
-  mv "$srcdir/cmake-modules-${_submod_rpavlik}" cmake/external/rpavlik-cmake-modules
+  rm -rf lib/libRocket
   mv "$srcdir/libRocket-${_submod_librocket}" lib/libRocket
   # Upstream uses fs2_open_${version}_${arch}_${SIMD}; force a fixed name for packaging.
   sed -i 's/OUTPUT_NAME "fs2_open_${FSO_BINARY_SUFFIX}"/OUTPUT_NAME "fs2_open"/' freespace2/CMakeLists.txt

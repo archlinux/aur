@@ -1,7 +1,7 @@
 pkgbase = fs2_open
 	pkgdesc = An enhancement of the FreeSpace 2 engine, need game data
-	pkgver = 26.0.0
-	pkgrel = 2
+	pkgver = 26.0.1
+	pkgrel = 1
 	url = https://scp.indiegames.us/
 	arch = i686
 	arch = x86_64
@@ -25,12 +25,10 @@ pkgbase = fs2_open
 	optdepends = fs2_open-data: extensive retail data
 	optdepends = wxlauncher: cross-platform fs2 launcher
 	optdepends = doxygen: generate engine API docs when building from source
-	source = fs2open-26.0.0.tar.gz::https://github.com/scp-fs2open/fs2open.github.com/archive/refs/tags/release_26_0_0.tar.gz
-	source = cmake-modules-7cef9577d6fc35057ea57f46b4986a8a28aeff50.tar.gz::https://github.com/rpavlik/cmake-modules/archive/7cef9577d6fc35057ea57f46b4986a8a28aeff50.tar.gz
+	source = fs2open-26.0.1.tar.gz::https://github.com/scp-fs2open/fs2open.github.com/archive/refs/tags/release_26_0_1.tar.gz
 	source = libRocket-b0c18e17d257a46db8395485895185915f483ede.tar.gz::https://github.com/scp-fs2open/libRocket/archive/b0c18e17d257a46db8395485895185915f483ede.tar.gz
 	source = fs2_open.desktop
-	sha256sums = f21f62f88474bf89525bca39a9d28539a8b234dec3f7566dc290387ac9d845ae
-	sha256sums = 7b6912da01a56eeca58c13f8bbb07b6120af8f04722316747dc8132a8ec65aca
+	sha256sums = f42b9918e0f49ceff70319756d9ca2930a7b0be369c79cc7b3c2d6728e40edb2
 	sha256sums = 444266ebd5fc1f48e565b91abdaa2bee87a621f792450c4339a5cc7be6f946ab
 	sha256sums = 5e5205173637029217c77cd426582d3df55d9c6671b271379d023664484a6153
 
