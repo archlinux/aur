@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=zux
-pkgver=1.16.1
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="mDNS-SD Visualizer - A cross platform mDNS browsing visualizer written in Rust using tauri and svelte"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('zux-bin')
 makedepends=('cargo' 'git' 'file' 'nodejs' 'pnpm' 'base-devel' 'rust' 'librsvg' 'patchelf')
 options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5747754c522930dcd46a97207b7280e6d49faa0b764c6289b34c724293956131')
+sha256sums=('2b76d6184bfd0da6214d9899eaa4eb14e39a9c4bbdc1d50cbfe554d3237fb197')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
@@ -24,7 +24,9 @@ build() {
     cd "$srcdir/$_builddir" || exit 1
     export CFLAGS="${CFLAGS//-flto=auto//}"
     pnpm run tauri build --no-bundle
-    pnpm run tauri build -b deb --no-sign
+    # bundle the already-built binary as deb to get required icons and
+    # desktop file for packaging, without building a second time
+    pnpm run tauri bundle -b deb --no-sign
 }
 check() {
     cd "$srcdir/$_builddir" || exit 1
