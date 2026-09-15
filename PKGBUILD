@@ -9,7 +9,7 @@
 # -- that instance returns a 404 on anonymous fetches even for public
 # repos, confirmed on the now-archived scaffold-arch-package.
 pkgname=washy-washy-cli-bin
-pkgver=3.1.11
+pkgver=3.1.12
 pkgrel=1
 pkgdesc="Turns a JSON chart of laundry piles into a phone PDF and a printable PDF"
 arch=('x86_64' 'aarch64')
@@ -56,10 +56,10 @@ source_aarch64=(
 # against. Not updpkgsums: it resolves $CARCH from the machine running
 # it, so a single-arch runner can only ever correctly checksum its own
 # arch. See rules/packaging.md.
-sha256sums_x86_64=('734aa03ecb1c6fe4d2bcd14ec2c2075b9dac74aa9265320b7dfd0cdb08aae3ad'
-                    '4f402a85479780c5c8d8df9a96affa544705b4ba28621d842073093c275c3460')
-sha256sums_aarch64=('d238185f8713d215b77ad1825a3b4343fcc5ef51c3bd3345e347bff1e57ef2e9'
-                    '4f402a85479780c5c8d8df9a96affa544705b4ba28621d842073093c275c3460')
+sha256sums_x86_64=('6ccedcd63ec18fa60bf5ab6a0d7a87c414ca12ac33c936d65ba9718b2f4c9507'
+                    '578787fb7e0b438a1f5ea02d40309f79a726432c01ccfca010a39c2c372def69')
+sha256sums_aarch64=('b0be843da06fd6df0550b715cce3b3bf32ba84acf0d06c68e327e8d549e1971b'
+                    '578787fb7e0b438a1f5ea02d40309f79a726432c01ccfca010a39c2c372def69')
 
 # No LICENSE install: this PKGBUILD lives alone in the AUR git repo, with
 # nothing else from the upstream checkout beside it, and it isn't in
