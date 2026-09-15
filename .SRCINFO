@@ -1,0 +1,15 @@
+pkgbase = avisynth-plugin-mvtools2-pinterf
+	pkgdesc = AviSynth+ MVTools2 (pinterf) — motion estimation and compensation
+	pkgver = 2.7.47
+	pkgrel = 1
+	url = https://github.com/pinterf/mvtools
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmake
+	depends = avisynthplus
+	depends = fftw
+	conflicts = avisynth-plugin-mvtools2-pinterf-bin
+	source = avisynth-plugin-mvtools2-pinterf-2.7.47.tar.gz::https://github.com/pinterf/mvtools/archive/refs/tags/2.7.47.tar.gz
+	sha256sums = 2c5f17ea196c1e52abbbc5728d5fffb39f669104412e831765d341c28cdb21eb
+
+pkgname = avisynth-plugin-mvtools2-pinterf
