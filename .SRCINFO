@@ -1,0 +1,15 @@
+pkgbase = hornero-greeter
+	pkgdesc = HorneroOS SDDM greeter theme (Argentina footage, offline)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/HorneroOS/greeter
+	arch = any
+	license = GPL-3.0-only
+	depends = sddm
+	depends = qt5-multimedia
+	depends = gst-plugins-good
+	optdepends = hornero-greeter-media-base: Argentina video pack
+	source = hornero-greeter::git+https://github.com/HorneroOS/greeter.git
+	sha256sums = SKIP
+
+pkgname = hornero-greeter
