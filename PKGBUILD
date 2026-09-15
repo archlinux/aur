@@ -2,7 +2,7 @@
 
 _pkgname=gotohp
 pkgname=${_pkgname}-bin
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Unofficial Google Photos Desktop GUI Client - binary version'
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!debug)
 
 source=("${_pkgname}_v${pkgver}_${CARCH}.deb"::"${url}/releases/download/v${pkgver}/${_pkgname}_amd64.deb"
         "${_pkgname}.desktop"::"https://github.com/xob0t/gotohp/raw/refs/tags/v${pkgver}/build/linux/desktop")
-sha256sums=('6d30e10b61899cb8d236a5c170522b25cc149122a64e274c46ac51bfcac2f256'
+sha256sums=('0c86ae421aca82d73b9bfc525e64f624a50167bcaac985f83815e7d8a2ef1c78'
             'f2ca2165f787496c7384cc132006402999e61026a4c2c7c8d71d587a5db8248e')
 
 package() {
