@@ -3,19 +3,19 @@
 # Maintainer: Patrick Münch <patrick@mondoo.com>
 #
 pkgname=cnspec
-orignalVersion="13.38.1"
-pkgver="${orignalVersion/-/_}"
+originalVersion="13.39.0"
+pkgver="${originalVersion/-/_}"
 pkgrel=1
 pkgdesc="Cloud-Native Security and Policy Framework "
 url="https://mondoo.com"
 license=('BUSL-1.1')
-source=("https://releases.mondoo.com/cnspec/${orignalVersion}/cnspec_${orignalVersion}_linux_amd64.tar.gz"
+source=("https://releases.mondoo.com/cnspec/${originalVersion}/cnspec_${originalVersion}_linux_amd64.tar.gz"
     )
 arch=('x86_64')
 depends=('mql')
 conflicts=('cnquery')
 replaces=('cnquery')
-sha256sums=('23114dc9a920c8faae7deb84ca87d513f6bbfef80cf30e181e7dd4b584807f8f'
+sha256sums=('285507224f551b4d402eb24e13f2e94592bc5a67d8c6fb2c8c2325cc5910ba99'
             )
 
 
