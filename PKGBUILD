@@ -1,7 +1,7 @@
 # Maintainer: Sergej Pupykin <arch+pub@sergej.pp.ru>
 
 pkgname='psi-git'
-pkgver=1.5.r2132.g052ffe4a
+pkgver=1.5.r2182.g3e3b5823
 pkgrel=1
 pkgdesc="Powerful XMPP (Jabber) client (Qt, C++) designed for power users"
 url="https://psi-im.org"
