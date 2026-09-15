@@ -5,11 +5,11 @@
 # add-os-packaging/design.md) and this just places it, plus the man
 # page. No build() step, no makedepends -- there is nothing to compile.
 #
-# source= points at github.com release assets, never git.higherlearning.eu
+# source= points at github.com release assets, never the internal forge
 # -- that instance returns a 404 on anonymous fetches even for public
 # repos, confirmed on the now-archived scaffold-arch-package.
 pkgname=washy-washy-cli-bin
-pkgver=3.1.10
+pkgver=3.1.11
 pkgrel=1
 pkgdesc="Turns a JSON chart of laundry piles into a phone PDF and a printable PDF"
 arch=('x86_64' 'aarch64')
@@ -56,10 +56,10 @@ source_aarch64=(
 # against. Not updpkgsums: it resolves $CARCH from the machine running
 # it, so a single-arch runner can only ever correctly checksum its own
 # arch. See rules/packaging.md.
-sha256sums_x86_64=('5ca01699f4b08b3783530245679f64133b424eede4dedc33b2c28ed2d4a067df'
-                    '12d1de58ff7cba803d9b3eaa3b6d5ab8b7016058551554b5340c65d99ea6534b')
-sha256sums_aarch64=('9d1302fde3078a3c75a864d587f6036642c0a06882ce390e118f264f6862fcfa'
-                    '12d1de58ff7cba803d9b3eaa3b6d5ab8b7016058551554b5340c65d99ea6534b')
+sha256sums_x86_64=('734aa03ecb1c6fe4d2bcd14ec2c2075b9dac74aa9265320b7dfd0cdb08aae3ad'
+                    '4f402a85479780c5c8d8df9a96affa544705b4ba28621d842073093c275c3460')
+sha256sums_aarch64=('d238185f8713d215b77ad1825a3b4343fcc5ef51c3bd3345e347bff1e57ef2e9'
+                    '4f402a85479780c5c8d8df9a96affa544705b4ba28621d842073093c275c3460')
 
 # No LICENSE install: this PKGBUILD lives alone in the AUR git repo, with
 # nothing else from the upstream checkout beside it, and it isn't in
