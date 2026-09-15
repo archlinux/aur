@@ -2,7 +2,7 @@
 
 pkgname=chipmunk-rs
 pkgver=4.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Fast Logfile Viewer for Analyzing Large Logfiles Chipmunk is a fast logfile viewer designed for analyzing large logfiles"
 arch=($CARCH)
 url="https://github.com/esrlabs/chipmunk"
