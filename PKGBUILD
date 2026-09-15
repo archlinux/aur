@@ -4,7 +4,6 @@ arch=('x86_64')
 depends=(
 	# hyper8-core dependencies
 	'ffmpeg'
-	'rsync'
 	# hyper8-desktop dependencies
 	'cairo'
 	'desktop-file-utils'
@@ -22,11 +21,11 @@ options=('!lto')
 pkgdesc='A static site generator for video publishing'
 pkgname=hyper8-bin
 pkgrel=1
-pkgver=1.0.1
-sha256sums_x86_64=('97d3ab6853fd8fc458804a465f6cd86157a8a47a2292d8ced9371d0dee0a0f81')
-url='https://simonrepp.com/hyper8'
+pkgver=1.1.0
+sha256sums_x86_64=('b633a7b92f757966ba3493baae068167de14024168274e6f6b900102ad09c880')
+url='https://hyper8.org'
 
-source_x86_64=("https://simonrepp.com/hyper8/packages/hyper8_${pkgver}-1+deb12_amd64.deb")
+source_x86_64=("https://hyper8.org/packages/hyper8_${pkgver}-1+deb12_amd64.deb")
 
 package() {
 	tar -xvf data.tar.xz -C "${pkgdir}"
