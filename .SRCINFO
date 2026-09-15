@@ -1,21 +1,21 @@
 pkgbase = lightning-matrix-appimage
 	pkgdesc = Native Qt 6 Matrix desktop client using the official Rust Matrix SDK (prebuilt AppImage)
-	pkgver = 0.9.2
-	pkgrel = 2
+	pkgver = 0.9.5
+	pkgrel = 1
 	url = https://www.lightning-matrix.org/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = fuse2
 	depends = hicolor-icon-theme
 	depends = zlib
-	provides = lightning-matrix=0.9.2
+	provides = lightning-matrix=0.9.5
 	conflicts = lightning-matrix
-	noextract = Lightning-0.9.2-x86_64.AppImage
+	noextract = Lightning-0.9.5-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = Lightning-0.9.2-x86_64.AppImage::https://github.com/Mizerd/lightning/releases/download/v0.9.2/Lightning-0.9.2-x86_64.AppImage
-	source_x86_64 = SHA256SUMS-0.9.2::https://github.com/Mizerd/lightning/releases/download/v0.9.2/SHA256SUMS
-	sha256sums_x86_64 = a77bb628704d363ca9d6b8fd24f2d5b47ad74b5daf68ee139038b11b36a8c3b6
-	sha256sums_x86_64 = dcceda4ccd26a973ebd76a63141b9e223fa52d2d2d2fa55dcfd86fc3e26caa64
+	source_x86_64 = Lightning-0.9.5-x86_64.AppImage::https://github.com/Mizerd/lightning/releases/download/v0.9.5/Lightning-0.9.5-x86_64.AppImage
+	source_x86_64 = SHA256SUMS-0.9.5::https://github.com/Mizerd/lightning/releases/download/v0.9.5/SHA256SUMS
+	sha256sums_x86_64 = 1f1781c5357a7ac52e6cb9306406cab978ea481cc343bdda44f32d4106526dff
+	sha256sums_x86_64 = 555334b189514864451290e4d4891612a30c6c3f6dd1cd5135d25171f9a6a948
 
 pkgname = lightning-matrix-appimage
