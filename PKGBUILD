@@ -4,7 +4,7 @@ pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git
     python-libuuu-git)
 pkgver=1.5.243.r10.g59c7638
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
 arch=($CARCH)
@@ -12,14 +12,15 @@ url="https://github.com/nxp-imx/mfgtools"
 license=('BSD-3-Clause')
 groups=()
 depends=(
-    bzip2
-    libgcc
-    libstdc++
+    libcrypto.so
+    libbz2.so
+    libgcc_s.so
+    libstdc++.so
+    libssl.so
     libusb
+    libz.so
+    libzstd.so
     tinyxml2
-    openssl
-    zlib
-    zstd
 )
 makedepends=(
     cmake
@@ -81,14 +82,14 @@ build() {
         -DCMAKE_BUILD_TYPE=None \
         -DBUILD_DOC=ON \
         -GNinja \
-        -Wno-dev
+        -Wno-author
 
     ninja -C build
 
     cd "${srcdir}/${pkgbase}/wrapper"
     cmake -DCMAKE_BUILD_TYPE=None \
         -B build \
-        -Wno-dev
+        -Wno-author
     cmake --build build
     mkdir -p libuuu/lib
     cp -rv build/libuuu.so libuuu/lib
@@ -99,14 +100,15 @@ package_mfgtools-git() {
     provides=('uuu' ${pkgname%-git})
     conflicts=('uuu' ${pkgname%-git})
     depends=(
-        bzip2
-        libgcc
-        libstdc++
+        libcrypto.so
+        libbz2.so
+        libgcc_s.so
+        libstdc++.so
+        libssl.so
         libusb
-        tinyxml2
-        openssl
-        zlib
-        zstd
+        libtinyxml2.so
+        libz.so
+        libzstd.so
     )
 
     cd "${srcdir}/${pkgbase}/build/"
@@ -143,14 +145,15 @@ package_python-libuuu-git() {
     conflicts=(${pkgname%-git})
     depends=(
         python
-        bzip2
-        libgcc
-        libstdc++
+        libcrypto.so
+        libbz2.so
+        libgcc_s.so
+        libstdc++.so
+        libssl.so
         libusb
-        tinyxml2
-        openssl
-        zlib
-        zstd
+        libtinyxml2.so
+        libz.so
+        libzstd.so
     )
 
     cd "${srcdir}/${pkgbase}/wrapper"
