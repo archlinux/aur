@@ -9,6 +9,7 @@ pkgbase = python-snakemake-interface-common
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-packaging
+	makedepends = python-setuptools
 	depends = python-argparse_dataclass
 	depends = python-configargparse
 	source = snakemake-interface-common-1.23.1.tar.gz::https://github.com/snakemake/snakemake-interface-common/archive/refs/tags/v1.23.1.tar.gz
