@@ -2,8 +2,8 @@
 # Co-Maintainer: ItsDrike <itsdrike@protonmail.com>
 
 pkgname=('libproidplus-gui')
-pkgver=2.5.0
-pkgrel=3
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="Library for ProID+ SmartCards"
 makedepends=(curl libarchive)
 arch=('x86_64')
