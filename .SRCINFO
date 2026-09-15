@@ -1,18 +1,24 @@
 pkgbase = sarif-tools
 	pkgdesc = A set of Python command line tools for working with SARIF files produced by code analysis tools
-	pkgver = 1.0.0
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://github.com/microsoft/sarif-tools
 	arch = any
 	license = MIT
+	checkdepends = python-jsonschema>=4.23.0
+	checkdepends = python-pytest>=8.3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-poetry-core>=1.0.0
 	makedepends = python-wheel
-	makedepends = python-poetry
-	depends = python-docx
-	depends = python-jinja
-	depends = python-matplotlib
-	source = https://files.pythonhosted.org/packages/source/s/sarif-tools/sarif-tools-1.0.0.tar.gz
-	sha256sums = e814d8249f6751f174d012c240b02601b877b78e5c4fe5dd00b30dc796f01ee4
+	depends = python>=3.8
+	depends = python-docx>=1.1.2
+	depends = python-jinja>=3.1.6
+	depends = python-jsonpath-ng>=1.6.0
+	depends = python-matplotlib>=3.7
+	depends = python-yaml>=6.0.1
+	optdepends = git: blame command
+	source = sarif-tools-3.0.5.tar.gz::https://github.com/microsoft/sarif-tools/archive/refs/tags/v3.0.5.tar.gz
+	b2sums = 36d7baacb279bbb9367dcc1cb128db8961b9b53d127e71eee475b8a2b5b737439fb3745190115fe233cc81109c1a7315389b8b6ad3df0e72878905fe963024eb
 
 pkgname = sarif-tools
