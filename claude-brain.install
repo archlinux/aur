@@ -19,6 +19,16 @@ _restart_for_users() {
 
 post_upgrade() {
 	_restart_for_users || true
+	# 0.5.0 added the MCP server; it is registered by integrate, which older installs
+	# ran before it existed.
+	if (( $(vercmp "$2" 0.5.0) < 0 )); then
+		cat <<'MSG'
+  claude-brain 0.5 serves the brain to Claude Code as MCP tools. Register them with:
+
+      claude-brain integrate
+
+MSG
+	fi
 }
 
 post_install() {
@@ -26,6 +36,10 @@ post_install() {
   Enable the brain with:
 
       systemctl --user enable --now claude-brain
+
+  Then wire it into Claude Code (MCP server, session hooks, recall-first instructions):
+
+      claude-brain integrate
 
 MSG
 }
