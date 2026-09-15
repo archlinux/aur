@@ -2,7 +2,7 @@
 
 pkgname=python-pydocket
 _name=pydocket
-pkgver=0.25.0
+pkgver=0.25.2
 pkgrel=1
 pkgdesc="A distributed background task system for Python functions"
 arch=('any')
@@ -24,8 +24,8 @@ depends=(
   'python-uncalled-for'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
-source=("https://files.pythonhosted.org/packages/31/04/aed51c2d53341d5651e17f7b853534b70021474109e595824c665681b148/${_name}-${pkgver}.tar.gz")
-sha256sums=('cf4b42cbb49276a0791470944b1518a342258f0d852c9e65c2e17e344b8418ed')
+source=("https://files.pythonhosted.org/packages/b7/7b/275197f8b2856d55e25d88986d864dc2df6d1e37bf5eca583dd1f88e7800/${_name}-${pkgver}.tar.gz")
+sha256sums=('1f6297883f9f615c65aacc622e07233137f491154251e3a8c8ec3cefb52ac7d0')
 
 build() {
   cd "${_name}-${pkgver}"
