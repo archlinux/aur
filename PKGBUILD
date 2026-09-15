@@ -4,7 +4,7 @@ pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git
     python-libuuu-git)
 pkgver=1.5.243.r10.g59c7638
-pkgrel=2
+pkgrel=6
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
 arch=($CARCH)
@@ -52,8 +52,8 @@ source=("${pkgbase}::git+${url}.git"
     "uuu-complete.bash")
 noextract=()
 sha256sums=('SKIP'
-    'SKIP'
-    'ffc8e32655ce574a4719c85c5c9a3530a5ec619e933fc801a291df8ec506a442')
+            'SKIP'
+            'ffc8e32655ce574a4719c85c5c9a3530a5ec619e933fc801a291df8ec506a442')
 #validpgpkeys=()
 
 pkgver() {
@@ -106,9 +106,9 @@ package_mfgtools-git() {
         libstdc++.so
         libssl.so
         libusb
-        libtinyxml2.so
         libz.so
         libzstd.so
+        tinyxml2
     )
 
     cd "${srcdir}/${pkgbase}/build/"
@@ -151,9 +151,9 @@ package_python-libuuu-git() {
         libstdc++.so
         libssl.so
         libusb
-        libtinyxml2.so
         libz.so
         libzstd.so
+        tinyxml2
     )
 
     cd "${srcdir}/${pkgbase}/wrapper"
