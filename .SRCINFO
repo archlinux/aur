@@ -1,6 +1,6 @@
 pkgbase = python-mcp-types
 	pkgdesc = Model Context Protocol wire types
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/modelcontextprotocol/python-sdk
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-mcp-types
 	optdepends = python-mcp: Model Context Protocol SDK
 	provides = python-mcp-types
 	conflicts = python-mcp-types
-	source = mcp-types::git+https://github.com/modelcontextprotocol/python-sdk.git#tag=v2.1.1
-	sha256sums = 66dd16fb0143d27a48754d8d4e60fd350d2739b29446ab9c1c136233f8c67b01
+	source = mcp-types::git+https://github.com/modelcontextprotocol/python-sdk.git#tag=v2.2.0
+	sha256sums = 6e44fea977b42bebba6bb25027ba11d0de8253ced22869e2b1517862f2cc80b4
 
 pkgname = python-mcp-types
