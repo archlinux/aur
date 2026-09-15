@@ -35,7 +35,7 @@ source=(
   "icon.svg::https://raw.githubusercontent.com/Moulberry/PandoraLauncher/refs/tags/v$pkgver/package/windows.svg"
   "$pkgname.desktop"
 )
-sha256sums=('eb5ac57d8306763c42f0f179b420f8016195b886ac4c4bf8d88cafd70f70cc1e'
+sha256sums=('63c56fb9be3bbe48621db9788869e0c5ad850357e7b228fb85670dbeba1d663f'
             'a416ff7bf8fca263a47d8256c154c4405df3502506520613500bed0cb6eb86a8'
             '8c045dbd40e52ee10f439e90f368ef4a12c0f3f830f252b2fefd2e862bc76fc5'
             '8ae5fa2476e937d0fdc1e53bacb62d8a5ac333d98f17da987d13b25e1a1afe31')
