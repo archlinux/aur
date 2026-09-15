@@ -6,6 +6,7 @@ pkgbase = altair-ai-studio
 	arch = any
 	makedepends = unzip
 	makedepends = gendesk
+	makedepends = aria2
 	depends = java-runtime
 	source = https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip
 	source = altair-ai-studio.sh

@@ -9,7 +9,7 @@ DLAGENTS=('https::/usr/bin/aria2c %u -o %o --continue --max-connection-per-serve
 arch=('any')
 url="https://rapidminer.com"
 depends=('java-runtime')
-makedepends=('unzip' 'gendesk')
+makedepends=('unzip' 'gendesk' 'aria2')
 source=('https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip'
         'altair-ai-studio.sh')
 sha256sums=('cf28f16d6b15cf813df3df5724bd49413d965e792c5369407e0caf806d092203'
