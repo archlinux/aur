@@ -3,10 +3,10 @@
 # Contributor: M A <morealaz at gmail dot com>
 
 pkgname='java-openjdk-bin'
-_majorver='26'
-_fullver="${_majorver}.0.2.1"
-_buildver='1'
-_hash='3b8e6c7ec6274148a7aa15e7e7dfb53c'
+_majorver='27'
+_fullver="${_majorver}"
+_buildver='35'
+_hash='55ce5470a6294008af0057ff4626d0e5'
 pkgver="${_fullver}.u${_buildver}"
 pkgrel=1
 pkgdesc="Java OpenJDK ${_fullver} Oracle Build."
@@ -26,8 +26,8 @@ _sourcePrefix="https://download.java.net/java/GA/jdk${_fullver}/${_hash}/${_buil
 _sourceSuffix="_bin.tar.gz"
 source_x86_64=("${_sourcePrefix}x64${_sourceSuffix}")
 source_aarch64=("${_sourcePrefix}aarch64${_sourceSuffix}")
-sha256sums_x86_64=('a1489256029b389ce6ee52da0de1d01496c5df1776d6870241fe4823b998ea61')
-sha256sums_aarch64=('b96b265a4a1a36c02454148891aa58ca63303cbc2d1b7979c33b4fe99e09117b')
+sha256sums_x86_64=('95fc37eb3a18a27a26d5904c2d89d52bace8dafa9a078ca27f4747fbc4bf070b')
+sha256sums_aarch64=('da4e9dde1fff90204739e969187bab4751bd59a2a1c479672e1a1810f7dd23ea')
 _jvmdir="usr/lib/jvm/java-${_majorver}-openjdk-bin"
 
 package() {

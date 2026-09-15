@@ -1,8 +1,8 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 26.0.2.1 Oracle Build.
-	pkgver = 26.0.2.1.u1
+	pkgdesc = Java OpenJDK 27 Oracle Build.
+	pkgver = 27.u35
 	pkgrel = 1
-	url = https://jdk.java.net/26
+	url = https://jdk.java.net/27
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
@@ -10,15 +10,15 @@ pkgbase = java-openjdk-bin
 	depends = java-runtime-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=26
-	provides = java-environment-openjdk=26
-	provides = java-runtime=26
-	provides = java-runtime-openjdk=26
-	provides = java-runtime-headless=26
-	provides = java-runtime-headless-openjdk=26
-	source_x86_64 = https://download.java.net/java/GA/jdk26.0.2.1/3b8e6c7ec6274148a7aa15e7e7dfb53c/1/GPL/openjdk-26.0.2.1_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = a1489256029b389ce6ee52da0de1d01496c5df1776d6870241fe4823b998ea61
-	source_aarch64 = https://download.java.net/java/GA/jdk26.0.2.1/3b8e6c7ec6274148a7aa15e7e7dfb53c/1/GPL/openjdk-26.0.2.1_linux-aarch64_bin.tar.gz
-	sha256sums_aarch64 = b96b265a4a1a36c02454148891aa58ca63303cbc2d1b7979c33b4fe99e09117b
+	provides = java-environment=27
+	provides = java-environment-openjdk=27
+	provides = java-runtime=27
+	provides = java-runtime-openjdk=27
+	provides = java-runtime-headless=27
+	provides = java-runtime-headless-openjdk=27
+	source_x86_64 = https://download.java.net/java/GA/jdk27/55ce5470a6294008af0057ff4626d0e5/35/GPL/openjdk-27_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = 95fc37eb3a18a27a26d5904c2d89d52bace8dafa9a078ca27f4747fbc4bf070b
+	source_aarch64 = https://download.java.net/java/GA/jdk27/55ce5470a6294008af0057ff4626d0e5/35/GPL/openjdk-27_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = da4e9dde1fff90204739e969187bab4751bd59a2a1c479672e1a1810f7dd23ea
 
 pkgname = java-openjdk-bin
