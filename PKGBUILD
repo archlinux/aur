@@ -1,14 +1,14 @@
 # Maintainer: Selim Bucher <me@selim.one>
 pkgname=ni-wine
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Native Instruments software under Wine — setup, launch, and product management"
 # The package ships a 32-bit Windows DLL (built from source in build()),
 # so it is no longer arch-independent.
 arch=('x86_64')
 url="https://github.com/selimbucher/native-instruments"
 license=('MIT')
-depends=('python' 'wine' 'winetricks' 'cabextract' '7zip' 'msitools'
+depends=('python' 'wine>=11' 'winetricks' 'cabextract' '7zip' 'msitools'
          'procps-ng' 'xorg-server-xvfb' 'zenity' 'xdg-utils'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
@@ -20,7 +20,7 @@ optdepends=('wine-staging: recommended Wine build for Native Instruments'
 # not byte-stable (the v2.1.3 tarball was regenerated with a different
 # compression envelope in Aug 2026, breaking the recorded sha256), so we fetch
 # via git and pin the commit hash instead.
-_commit=92806548a5ce2ef562f460c568bcd96eb796b5c1
+_commit=76208eef3e1ed6f104228704d330873b8bb50f1b
 source=("$pkgname::git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
