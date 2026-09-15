@@ -3,7 +3,7 @@
 # Contributor: aulonsal <seraur at aulonsal dot com>
 pkgname=dbgate-premium-bin
 _pkgname=dbgate-premium
-pkgver=7.2.6
+pkgver=7.3.0
 _electron_version=38
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Premium edition (proprietary). (Uses system-wide Electron)"
@@ -20,7 +20,7 @@ source=(
   "${_pkgname}.sh"
 )
 
-sha256sums=('268619715d45bd9c344317513cdb951b6bea1728aaff02c1dce0227154c269ec'
+sha256sums=('51f9dc5d68869a1b016b2969993f50cd1ce006a8fb7a99deba8999519f3245b8'
             'SKIP'
             '5a5efc7622eff23064bb00809b9549df58e48ba9dec6c56ca6a735ea57bb18d7')
 
@@ -35,7 +35,7 @@ prepare() {
 
   # Extract AppImage contents
   chmod +x "${srcdir}/${_appimage_file_name}"
-  "${srcdir}/${_appimage_file_name}" --appimage-extract
+  "${srcdir}/${_appimage_file_name}" --appimage-extract >/dev/null
 
   # Find asar payload
   _asar="$(find "${srcdir}/squashfs-root" -type f -name 'app.asar' | head -n1)"
