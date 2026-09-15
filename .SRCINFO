@@ -1,0 +1,20 @@
+pkgbase = ignit-bin
+	pkgdesc = Quickly generate .gitignore files for your projects from a curated list of environment templates.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/rubiin/ignit
+	license = GPL-3.0-only
+	conflicts = ignit
+	conflicts = ignit-git
+	provides = ignit
+	arch = aarch64
+	source_aarch64 = https://github.com/rubiin/ignit/releases/download/v1.0.1/ignit_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 787173792c16a99fb6497e8973510a73edee65a63bb6135886d90581f732f98a
+	arch = i686
+	source_i686 = https://github.com/rubiin/ignit/releases/download/v1.0.1/ignit_Linux_i386.tar.gz
+	sha256sums_i686 = c0c3e2dc20d360a6eb92bbc47b818e6c3137e404af22956bccf45606315fa989
+	arch = x86_64
+	source_x86_64 = https://github.com/rubiin/ignit/releases/download/v1.0.1/ignit_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6a52e3dd848e44ab18fee300b41ae963d0e4fdb61b87e6e3d7ccf024ef4da32f
+	
+pkgname = ignit-bin
