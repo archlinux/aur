@@ -8,7 +8,7 @@
 
 pkgname=claude-desktop
 pkgver=1.52386.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Claude AI desktop app from Anthropic — Chat, Cowork, and Claude Code"
 arch=('x86_64' 'aarch64')
 url="https://claude.com/download"
@@ -66,7 +66,11 @@ depends=('alsa-lib'
 # default — depending on it here gives Arch users the same out-of-the-box
 # experience.
 depends_x86_64=('qemu-system-x86' 'edk2-ovmf')
-depends_aarch64=('qemu-system-aarch64' 'edk2-aarch64')
+# On aarch64 the VM stack stays optional: Arch Linux ARM packages QEMU but
+# no edk2 firmware, so a hard dependency would make the package
+# uninstallable there, and without firmware Cowork cannot start anyway.
+optdepends_aarch64=('qemu-system-aarch64: run Cowork tasks in a local virtual machine'
+                    'edk2-aarch64: UEFI firmware for the Cowork virtual machine')
 
 optdepends=('gnome-keyring: credential storage via Secret Service (GNOME)'
             'kwallet: credential storage (KDE Plasma)'
@@ -84,8 +88,10 @@ conflicts=('claude' 'claude-desktop-bin')
 options=('!strip' '!debug')
 
 _baseurl="https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop"
+source=("${pkgname}.sh")
 source_x86_64=("${_baseurl}/${pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_baseurl}/${pkgname}_${pkgver}_arm64.deb")
+sha256sums=('2b50c019e70b263750255c446bab8db6ab1e50c7396d37ef6547cf118131da65')
 sha256sums_x86_64=('2e83a76c6ed9187671bfe80664fc6d59840171f4a2a81f408662c879a67f4e0a')
 sha256sums_aarch64=('882f4a52a86b07ecff989d8db87c5ec292d43f21d0a6557d3e8b01e113b18190')
 
@@ -95,6 +101,14 @@ package() {
   # maintainer scripts, both unused here) and data.tar.xz — the file
   # payload, which is the entire package.
   tar -xf data.tar.xz -C "$pkgdir"
+
+  # Upstream's /usr/bin/claude-desktop is a bare symlink to the Electron
+  # binary, which leaves Electron on its X11 default and therefore on
+  # XWayland under Wayland compositors (blurry on scaled displays). Replace
+  # it with a launcher that selects the Wayland backend when appropriate
+  # and honours ~/.config/claude-desktop-flags.conf.
+  rm -f "$pkgdir/usr/bin/claude-desktop"
+  install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/claude-desktop"
 
   # chrome-sandbox is Chromium's setuid sandbox helper: mode 4755
   # (setuid root) lets it create the browser sandbox on kernels where
