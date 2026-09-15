@@ -1,7 +1,7 @@
 pkgbase = pachul
 	pkgdesc = A modern, graphical Pacman/AUR front end for Arch Linux built with GTK4 and libadwaita
-	pkgver = 2.2.9
-	pkgrel = 2
+	pkgver = 2.2.10
+	pkgrel = 3
 	url = https://github.com/wergosam/Pachul
 	arch = any
 	license = GPL-2.0-only
@@ -14,13 +14,13 @@ pkgbase = pachul
 	optdepends = timeshift: snapshot integration (before/after transactions)
 	optdepends = snapper: snapshot integration (before/after transactions)
 	optdepends = libayatana-appindicator: persistent tray icon for pending updates (pachul-tray)
-	source = pachul-2.2.9.tar.gz::https://github.com/wergosam/Pachul/archive/refs/tags/v2.2.9.tar.gz
+	source = pachul-2.2.10.tar.gz::https://github.com/wergosam/Pachul/archive/refs/tags/v2.2.10.tar.gz
 	source = io.github.wergosam.pachul.desktop
 	source = io.github.wergosam.pachul-tray.desktop
 	source = pachuli.py
-	sha256sums = 5d94f8a6e651d5678df0e6c4d8e0e1d470b198f6daec03bfddca30f1b7a43d86
+	sha256sums = 6dee67a4c7ed8d49c8e3fd12e5f0d092430c2f09fe0c4a0a7941e207d85cea1e
 	sha256sums = 355adac78b4a3e16647e50ef819858b36de0831c47d6f874e4a08a7f1bb83da2
 	sha256sums = eb148625bfb4ad11b897e2c2e80722ebac0d4f34d94e8bda0f95a1169e88b194
-	sha256sums = 4e5bba8ae4be5c91738decc3dde9137a1de6ef8715cd6142d1a535f674e9e93d
+	sha256sums = 7d1edf9ecdf9af5fbf0e612f0256095d243be90aa8079898a762e9176e408814
 
 pkgname = pachul

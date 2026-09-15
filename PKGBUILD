@@ -4,8 +4,8 @@
 # URL: https://github.com/wergosam/Pachul
 
 pkgname=pachul
-pkgver=2.2.9
-pkgrel=2
+pkgver=2.2.10
+pkgrel=3
 pkgdesc="A modern, graphical Pacman/AUR front end for Arch Linux built with GTK4 and libadwaita"
 arch=('any')
 url="https://github.com/wergosam/Pachul"
@@ -29,16 +29,22 @@ source=(
     "io.github.wergosam.pachul-tray.desktop"
     "pachuli.py"
 )
-sha256sums=('5d94f8a6e651d5678df0e6c4d8e0e1d470b198f6daec03bfddca30f1b7a43d86'
+sha256sums=('6dee67a4c7ed8d49c8e3fd12e5f0d092430c2f09fe0c4a0a7941e207d85cea1e'
             '355adac78b4a3e16647e50ef819858b36de0831c47d6f874e4a08a7f1bb83da2'
             'eb148625bfb4ad11b897e2c2e80722ebac0d4f34d94e8bda0f95a1169e88b194'
-            '4e5bba8ae4be5c91738decc3dde9137a1de6ef8715cd6142d1a535f674e9e93d')
+            '7d1edf9ecdf9af5fbf0e612f0256095d243be90aa8079898a762e9176e408814')
 # pachuli.py is a local file, not fetched via URL — it must sit next to this
 # PKGBUILD in the AUR git repo (same as the two .desktop files above).
 # Checksum intentionally SKIP: unlike the tarball above (a remote download,
 # where the checksum guards against tampering/corruption in transit),
 # pachuli.py is maintained directly in this same git repo, so SKIP avoids
 # having to recompute and update a checksum by hand on every change.
+#
+# uninstall.sh and the Polkit policy file (io.github.wergosam.pachul.policy)
+# are NOT listed here as separate sources either — both already ship inside
+# the GitHub source tarball above (top-level files in the repo), so they
+# land in "$srcdir"/*/ automatically once the tarball is extracted.
+# package() below picks them up from there.
 
 prepare() {
     cd "$srcdir"/*/
@@ -97,6 +103,22 @@ EOF
     # hier direkt neben dem pachul-Launcher in /usr/bin, ist also ohne
     # weiteres Zutun sofort im PATH.
     install -Dm755 "$srcdir/pachuli.py" "$pkgdir/usr/bin/pachuli"
+
+    # Uninstaller für eine ältere install.sh-Installation (siehe README,
+    # Abschnitt "failed to commit transaction (conflicting files)"). Kommt
+    # aus dem Source-Tarball (kein eigener source=-Eintrag nötig, siehe
+    # Kommentar oben bei sha256sums) und wird unter /usr/bin/pachul-uninstall
+    # bereitgestellt, damit er auch ohne separaten Git-Checkout griffbereit
+    # ist, sobald Pachul einmal installiert wurde bzw. weiterhin im PATH
+    # bleibt, falls install.sh und die AUR-Version abwechselnd genutzt werden.
+    install -Dm755 uninstall.sh "$pkgdir/usr/bin/pachul-uninstall"
+
+    # Polkit-Policy (optional, siehe io.github.wergosam.pachul.policy: nur
+    # eine freundlichere Text-Meldung im pkexec-Dialog statt Polkits
+    # generischem Fallback-Text — kein Neustart von polkitd nötig, die Datei
+    # wird beim nächsten pkexec-Aufruf automatisch erkannt).
+    install -Dm644 io.github.wergosam.pachul.policy \
+        "$pkgdir/usr/share/polkit-1/actions/io.github.wergosam.pachul.policy"
 
     # Desktop-Datei + hicolor-Icon (für Menü/Dock, unabhängig vom internen
     # .icon-theme-Mechanismus von app.py)
