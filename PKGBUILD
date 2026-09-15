@@ -9,7 +9,7 @@
 
 pkgname=mastodon
 pkgver=4.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(x86_64)
 url='https://github.com/mastodon/mastodon'
