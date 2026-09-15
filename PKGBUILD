@@ -3,17 +3,14 @@
 pkgbase=svdtools
 pkgname=svdtools
 pkgver=0.5.0
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="svdtools is a set of tools for modifying vendor-supplied, often buggy SVD files. It can be imported as a library for use in other applications, or run directly via the included svdtools CLI utility."
 arch=($CARCH)
 url="https://github.com/rust-embedded/svdtools"
 license=('MIT AND Apache-2.0')
 groups=()
-depends=(
-  gcc-libs
-  glibc
-)
+depends=()
 makedepends=(
   git
   rust
@@ -37,7 +34,8 @@ export CARGO_TARGET_DIR=target
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
   cd "${srcdir}/${pkgbase}"
-  #   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo update -w
+  cargo fetch --locked --target host-tuple
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
