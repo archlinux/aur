@@ -2,7 +2,7 @@
 
 _basename=adbyss
 pkgname=${_basename}-bin
-pkgver=0.24.3
+pkgver=0.24.4
 pkgrel=1
 pkgdesc="DNS blocklist manager"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('tar')
 depends=('glibc' 'gcc-libs')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums_x86_64=('97c2ab8ee30d7bdb6246abc90413c1d0987a52a09f69b78f9d2529bdea960ae9')
+sha256sums_x86_64=('4744c8a8b561f6a51a6ce8febb50cb4572d9f7c211e02cff7616a70ae01762ab')
 
 package() {
     cd "${pkgdir}"
