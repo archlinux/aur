@@ -7,7 +7,7 @@
 
 pkgname=eggdrop
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="World's most popular Internet Relay Chat (IRC) bot"
 arch=('x86_64')
 url="https://www.eggheads.org"
@@ -36,8 +36,8 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}/build"
     install -d "${pkgdir}/usr/lib" "${pkgdir}/usr/share/doc" "${pkgdir}/usr/share/${pkgname}"
-    install -Dm755 "eggdrop-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
-    cp -r modules "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
+    cp -r "modules-${pkgver}" "${pkgdir}/usr/lib/${pkgname}"
 
     install -Dm644 "doc/man1/${pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
     rm -r doc/man1

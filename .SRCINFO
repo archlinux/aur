@@ -1,7 +1,7 @@
 pkgbase = eggdrop
 	pkgdesc = World's most popular Internet Relay Chat (IRC) bot
 	pkgver = 1.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eggheads.org
 	arch = x86_64
 	license = GPL-2.0-or-later
