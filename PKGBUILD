@@ -4,13 +4,13 @@
 
 pkgname=modrinth-enhanced
 pkgver=0.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Modrinth App without ads or telemetry, with offline and Ely.by accounts and Linux fixes"
 arch=('x86_64')
 url="https://github.com/Felitendo/Modrinth-Enhanced"
 license=('GPL-3.0-only')
 depends=('cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme'
-         'libgcc' 'libsoup3' 'webkit2gtk-4.1'
+         'libdrm' 'libgcc' 'libsoup3' 'webkit2gtk-4.1'
          # loaded by Minecraft, not by the launcher
          'libgl' 'libpulse' 'libx11' 'libxcursor' 'libxext' 'libxxf86vm')
 # git replays the patches the way upstream's scripts/prepare.sh does; the JDK
@@ -27,14 +27,20 @@ options=('!lto' '!debug')
 _tag="v0.21.2"
 _upstream="v0.21.2"
 _base="v0.21.2"
+# With the NVIDIA driver WebKitGTK paces the app with a 60 fps timer whatever
+# the monitor's refresh rate. vblank-shim.c, preloaded by modrinth-enhanced.sh,
+# paces it at the monitor's rate instead and keeps the app on X11, the only
+# place that works; it is not part of upstream's release.
 source=("${pkgname}-${_tag}.tar.gz::https://github.com/Felitendo/Modrinth-Enhanced/archive/refs/tags/${_tag}.tar.gz"
-        "modrinth-code-${_upstream}.tar.gz::https://github.com/modrinth/code/archive/refs/tags/${_upstream}.tar.gz")
+        "modrinth-code-${_upstream}.tar.gz::https://github.com/modrinth/code/archive/refs/tags/${_upstream}.tar.gz"
+        "vblank-shim.c"
+        "modrinth-enhanced.sh")
 noextract=("modrinth-code-${_upstream}.tar.gz")
 if [[ "$_base" != "$_upstream" ]]; then
   source+=("modrinth-code-${_base}.tar.gz::https://github.com/modrinth/code/archive/refs/tags/${_base}.tar.gz")
   noextract+=("modrinth-code-${_base}.tar.gz")
 fi
-sha256sums=('a87ddcef0a39ab4a2c56ece806e381c6b398c755da00a9734b0162abc377e5a6' '583e085cd7ae64a7020656af4ecc64ecfcc82fd97519f74cc3ab114d49574a5e')
+sha256sums=('a87ddcef0a39ab4a2c56ece806e381c6b398c755da00a9734b0162abc377e5a6' '583e085cd7ae64a7020656af4ecc64ecfcc82fd97519f74cc3ab114d49574a5e' '0190921b8ff2fb1deec3209cba71c01541ca1f013e3ba41680f1636e185fd455' 'b24872f82645c52ee4804599cd678d138876fb193c754403fa9c5cf92bd745b9')
 
 prepare() {
   # What upstream's scripts/prepare.sh does with two shallow tags: apply the
@@ -88,6 +94,10 @@ prepare() {
 }
 
 build() {
+  # GLib for its headers only: the shim looks GTK and GLib up at run time
+  gcc $CPPFLAGS $CFLAGS $LDFLAGS -shared -fPIC -o libwebkit-vblank-shim.so vblank-shim.c \
+    $(pkg-config --cflags glib-2.0) $(pkg-config --cflags --libs libdrm)
+
   cd app
 
   export RUSTUP_TOOLCHAIN=stable
@@ -106,8 +116,11 @@ build() {
 package() {
   cd app
 
-  # the same files, under the same names, as upstream's .deb
-  install -Dm755 target/release/ModrinthEnhanced -t "$pkgdir/usr/bin/"
+  # the same files, under the same names, as modrinth-enhanced-bin: the binary
+  # sits behind the script that preloads the shim
+  install -Dm755 target/release/ModrinthEnhanced -t "$pkgdir/usr/lib/modrinth-enhanced/"
+  install -Dm755 "$srcdir/libwebkit-vblank-shim.so" -t "$pkgdir/usr/lib/modrinth-enhanced/"
+  install -Dm755 "$srcdir/modrinth-enhanced.sh" "$pkgdir/usr/bin/ModrinthEnhanced"
   ln -s ModrinthEnhanced "$pkgdir/usr/bin/modrinth-enhanced"
 
   install -Dm644 apps/app/icons/128x128.png \
