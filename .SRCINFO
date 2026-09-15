@@ -1,0 +1,22 @@
+pkgbase = oxen-mq
+	pkgdesc = ZeroMQ-based message passing library (liboxenmq.so.0)
+	pkgver = 1.2.18
+	pkgrel = 1
+	url = https://github.com/oxen-io/oxen-mq
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = libsodium
+	depends = zeromq
+	provides = liboxenmq.so
+	conflicts = oxen-mq-git
+	source = oxen-mq::git+https://github.com/oxen-io/oxen-mq.git#tag=v1.2.18
+	sha256sums = SKIP
+
+pkgname = oxen-mq
