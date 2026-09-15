@@ -9,7 +9,7 @@ pkgdesc="A powerful, lightweight CLI to manage Technitium DNS server via HTTP AP
 arch=('x86_64')
 url='https://github.com/mbevc1/tdns'
 license=('MPL-2.0')
-makedepends=('go' 'upx')
+makedepends=('git' 'go' 'upx')
 conflicts=("${_pkgname}")
 source=("git+${url}#tag=v${pkgver}")
 sha256sums=('f34930d9ea1d61d404ad2bb5438b1267f487fa5b810fb55989a0929ec4f8076f')
