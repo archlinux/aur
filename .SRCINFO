@@ -1,6 +1,6 @@
 pkgbase = devinorium-server-git
 	pkgdesc = Self-hosted web UI for AI coding agents - server (git build)
-	pkgver = 0.77.1.r2.g9432043
+	pkgver = 0.77.2.r4.g37cafca
 	pkgrel = 1
 	url = https://gitlab.com/HttpAnimations/devinorium
 	arch = x86_64
