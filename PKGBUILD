@@ -4,9 +4,9 @@ pkgbase=hslinkupper
 pkgname=hslinknexus
 _name=HSLinkNexus
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="HSLinkUpper is a simple tool that allows you to config HSLink."
+pkgdesc="A simple tool that allows you to config HSLink."
 arch=($CARCH)
 url="https://github.com/HSLink/HSLinkNexus"
 license=(MIT)
@@ -17,38 +17,39 @@ replaces=(hslinkupper)
 depends=(
     cairo
     gdk-pixbuf2
-    gcc-libs
     glib2
-    glibc
     gtk3
     hicolor-icon-theme
+    libgcc_s.so
+    libstdc++.so
     libsoup3
     pango
     systemd-libs
     webkit2gtk-4.1
 )
 makedepends=(
+    git
     hidapi
     npm
     pnpm
     rust
     cargo-tauri
+    nodejs-lts
 )
 optdepends=()
 checkdepends=()
-options=('!strip' '!debug')
-source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${_name}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('2bdfc69d1b6c5b78bbcec89579cc5588eb06c6386464a0c59f806be1a97af547')
+sha256sums=('2e6d3fcd5d906a35e1a7950f17b1c5cd22a76d384b6d23feea271f60db1b026a')
 
 prepare() {
-    cd "${srcdir}/${_name}-${pkgver}/src-tauri"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cd "${srcdir}/${_name}/src-tauri"
+    cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}"
 
     export CARGO_HOME="${srcdir}/.cargo"
     {
@@ -72,19 +73,19 @@ build() {
 # }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}"
 
-    install -Dvm644 99-hslink.rules -t ${pkgdir}/usr/lib/udev/rules.d/
+    # install -Dvm644 69-hslink.rules -t ${pkgdir}/usr/lib/udev/rules.d/
     install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
-    install -Dm755 src-tauri/target/release/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+    install -Dm755 src-tauri/target/release/hslinknexus ${pkgdir}/usr/bin/${pkgname}
     install -Dm644 src-tauri/icons/128x128.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png
     install -Dvm644 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname}.desktop <<EOF
 [Desktop Entry]
 Categories=
 Comment=${pkgdesc}
 Exec=${pkgname}
-Icon=${pkgname}.png
-Name=${pkgname}
+Icon=${pkgname}
+Name=HSLink Nexus
 Terminal=false
 Type=Application
 
