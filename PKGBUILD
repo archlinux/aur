@@ -16,14 +16,14 @@ _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
 url=${_ghurl}
 
-license=('MIT')
+license=('Apache-2.0')
 
 provides=("${_appname}")
 
 makedepends=('cargo')
 depends=('glibc' 'libgcc')
 
-options=(!strip)
+options=('!lto' '!strip')
 
 source=("${_appname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
 sha256sums=('455530cb4852e99e86f625a680fbe92fbba31dd7ce7cce1a469802c2626bad5c')
