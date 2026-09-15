@@ -2,7 +2,7 @@
 
 _pkgname=crd-wizard
 pkgname=$_pkgname-bin
-pkgver=0.1.9 # renovate: datasource=github-releases depName=pehlicd/crd-wizard
+pkgver=0.2.2 # renovate: datasource=github-releases depName=pehlicd/crd-wizard
 pkgrel=1
 pkgdesc="CR(D) Wizard is a web and tui based dashboard [for viewing CRDs]"
 url="https://github.com/pehlicd/crd-wizard"
@@ -14,8 +14,8 @@ source_aarch64=(
   "$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_v${pkgver}_linux_arm64.tar.gz"
 )
 arch=('x86_64' 'aarch64')
-sha512sums_x86_64=('a865beb40f38f090efe29825a5b4fe9f2e0d1a432529bca868bdc75a7bbe49f5b2800844f09cf7c5339a0a0f2d798e3e09dc02e00b4c7179008b337701297c4b')
-sha512sums_aarch64=('29d72018fd7457ff26c0225e1c40ab1cb483625d258133730aa6666fec1d9089ee18a470f5f64d1f7bf70ecf276a20e963253111a11bc7f0e8e19c901ad5f8d2')
+sha512sums_x86_64=('4c39457495127b59cd1a56712e3ed3dfad3820580b0b22303013e7401425f33ecc0f6ab1bb3de4cf4cd4b672b4af5498cb4f1b936d19832a451dc9b978e11357')
+sha512sums_aarch64=('1354f8874f5bed4f4dbe94b659c92ab52d953c793a805cce8169c73bc9a528e83938896803d95a241c59e92bda9c3dd2f2b5b78bb99235150f2c3eccd48d1bff')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-git")
 
