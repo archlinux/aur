@@ -5,13 +5,13 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-typed-ffmpeg
 epoch=
-pkgver=4.1
+pkgver=4.5
 pkgrel=1
 pkgdesc='Modern Python & TypeScript FFmpeg wrappers with comprehensive typing (latest version)'
 arch=(any)
 url=https://pypi.org/project/typed-ffmpeg/
 license=(MIT)
-depends=(python 'python-typed-ffmpeg-v8=4.1')
+depends=(python 'python-typed-ffmpeg-v9=4.5')
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip)
 checkdepends=()
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/9b/c4/feea760dde1855b008b2f8a8c2052cd10431d6310f4ec9a351d02c43a55b/typed_ffmpeg-4.1-py3-none-any.whl)
-md5sums+=(93529dfe4b6071cdb45187cffd4886d3)
-noextract+=(typed_ffmpeg-4.1-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/dc/87/2798afeb9a7691e5f12d1fc00dbd08dec0b1fe5880a1125e669cf7d429ac/typed_ffmpeg-4.5-py3-none-any.whl)
+md5sums+=(31b45e2dc5b79348629320899a789e5b)
+noextract+=(typed_ffmpeg-4.5-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(e4761ae89d23a3f9a0ac3c39c13262dd)
 

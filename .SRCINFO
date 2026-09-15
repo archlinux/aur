@@ -1,19 +1,19 @@
 pkgbase = python-typed-ffmpeg
 	pkgdesc = Modern Python & TypeScript FFmpeg wrappers with comprehensive typing (latest version)
-	pkgver = 4.1
+	pkgver = 4.5
 	pkgrel = 1
 	url = https://pypi.org/project/typed-ffmpeg/
 	arch = any
 	license = MIT
 	makedepends = python-pip
 	depends = python
-	depends = python-typed-ffmpeg-v8=4.1
-	noextract = typed_ffmpeg-4.1-py3-none-any.whl
+	depends = python-typed-ffmpeg-v9=4.5
+	noextract = typed_ffmpeg-4.5-py3-none-any.whl
 	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/9b/c4/feea760dde1855b008b2f8a8c2052cd10431d6310f4ec9a351d02c43a55b/typed_ffmpeg-4.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/dc/87/2798afeb9a7691e5f12d1fc00dbd08dec0b1fe5880a1125e669cf7d429ac/typed_ffmpeg-4.5-py3-none-any.whl
 	source = LICENSE
 	md5sums = SKIP
-	md5sums = 93529dfe4b6071cdb45187cffd4886d3
+	md5sums = 31b45e2dc5b79348629320899a789e5b
 	md5sums = e4761ae89d23a3f9a0ac3c39c13262dd
 
 pkgname = python-typed-ffmpeg
