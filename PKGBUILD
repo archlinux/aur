@@ -11,7 +11,7 @@
 # so slow machines can install and update without the multi-minute build.
 pkgname=komai-bin
 _pkgname=komai
-pkgver=2026.08.24.1
+pkgver=2026.09.15.0
 pkgrel=1
 pkgdesc="A fine Matrix chat app you can get to love (prebuilt AppImage)"
 arch=('x86_64' 'aarch64')
@@ -32,8 +32,8 @@ source_aarch64=("komai-${pkgver}-aarch64.AppImage::${_url_base}/komai-${pkgver}-
 # In-tree development keeps SKIP, matching the source komai PKGBUILD. The AUR
 # release process downloads the published AppImages and replaces these with
 # real sha256sums before pushing (see ../komai/README.md for the AUR workflow).
-sha256sums_x86_64=('661f93231f9355a8b1137c12d3e089c5ec09becd4eec5d2840b15ef19bade6ac')
-sha256sums_aarch64=('aab601b7d9c8e87b895b558ad65758dd6f45e57c136658558ff35d610c9fc48f')
+sha256sums_x86_64=('0c667c3fc72fb45240e7227c37360f1c407ce3cf9653e9cf05c57e1c9e4f2d28')
+sha256sums_aarch64=('4619489a166827052ef6c21244cfac68471feaeacc1b2164f59687b802e1d812')
 noextract=(
 	"komai-${pkgver}-x86_64.AppImage"
 	"komai-${pkgver}-aarch64.AppImage"
