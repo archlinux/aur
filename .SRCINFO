@@ -1,0 +1,19 @@
+pkgbase = fogwall
+	pkgdesc = Ultra-lightweight procedural fog live wallpaper for wlroots-style Wayland compositors, reactive to Spotify/MPRIS
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ThiagoAVicente/fogwall
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = libglvnd
+	optdepends = pipewire: Spotify loudness reactivity and beat-sync
+	optdepends = dbus: MPRIS album-art tint sync
+	optdepends = curl: fetch remote (https://) album art for tint sync
+	source = fogwall-0.1.0.tar.gz::https://github.com/ThiagoAVicente/fogwall/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 163653ebbaf21b07659f17610e77900ff2d0aa05dd460d7cdec1ffdfa9622fa8
+
+pkgname = fogwall
