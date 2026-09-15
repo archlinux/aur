@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r20307.de0da87
+pkgver=r20310.a9da049
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core (hard fork of PCSX2)"
 arch=('aarch64' 'x86_64')
@@ -20,12 +20,6 @@ b2sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-	cd $_pkgname
-	# fix fallocate
-	sed -i '1i #define _GNU_SOURCE' libretro/libretro-common/vfs/vfs_implementation.c
 }
 
 build() {
