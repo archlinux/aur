@@ -3,7 +3,7 @@
 pkgname=linyaps-box-rust
 _tagname=2.3.0-rust.1
 pkgver=${_tagname//-/+}
-pkgrel=2
+pkgrel=3
 pkgdesc="Linyaps OCI runtime implemented in Rust A command-compatible Rust implementation of the Linyaps OCI runtime"
 arch=($CARCH)
 url="https://github.com/guanzi008/linyaps-box-rust"
@@ -64,7 +64,7 @@ package() {
         -executable \
         -type f \
         -exec install -vDm0755 -t "$pkgdir/usr/bin/" {} +
-    # install -vDm0755 target/release/${pkgname%-monitor} -t "$pkgdir/usr/bin/"
+
     # install -vDm0644 debian/*.1 -t ${pkgdir}/usr/share/man/man1/
     install -vDm0644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
