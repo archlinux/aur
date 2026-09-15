@@ -1,18 +1,17 @@
 pkgbase = crm
 	pkgdesc = crm (Cargo registry manager)
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/wtklbm/crm
 	arch = x86_64
-	license = MIT
-	license = Apache-2.0
-	makedepends = cargo
-	depends = gcc-libs
-	depends = glibc
+	license = MIT AND Apache-2.0
+	makedepends = git
+	makedepends = rust
 	provides = crm
 	conflicts = crm
 	options = !lto
-	source = crm-0.2.2.tar.gz::https://github.com/wtklbm/crm/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 77cae6fd157d8e9dac38b2dbee4dd9c438d24cc2a0e6f8943c7ac1c287301118
+	options = !debug
+	source = crm::git+https://github.com/wtklbm/crm.git#tag=v0.2.2
+	sha256sums = 32f909f20700e63837c311204e6197125bf5c655fbb4d53361d5cad89ffb0407
 
 pkgname = crm
