@@ -1,6 +1,6 @@
 pkgbase = dpt-rp1-cups
 	pkgdesc = CUPS driver for DPT-RP1 and similar devices
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/cristobaltapia/dpt-rp1-cups
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dpt-rp1-cups
 	depends = cups
 	depends = dpt-rp1-py
 	depends = notify-send.sh
-	source = https://github.com/cristobaltapia/dpt-rp1-cups/archive/refs/tags/v0.2.6.tar.gz
-	sha256sums = 46fba62ec642ccae85ff8ab73501863452f39fb40da32a28e3205cd247290cb1
+	source = https://github.com/cristobaltapia/dpt-rp1-cups/archive/refs/tags/v0.2.7.tar.gz
+	sha256sums = 7e48bb0462b0b2d233a88f9065f9706dd3f8513ebf002c8617c19f20386b7c58
 
 pkgname = dpt-rp1-cups

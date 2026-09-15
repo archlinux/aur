@@ -1,6 +1,6 @@
 # Maintainer: Cristóbal Tapia <crtapia at gmail dot com>
 pkgname=dpt-rp1-cups
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="CUPS driver for DPT-RP1 and similar devices"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('cups' 'dpt-rp1-py' 'notify-send.sh')
 makedepends=('make')
 source=( "https://github.com/cristobaltapia/$pkgname/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('46fba62ec642ccae85ff8ab73501863452f39fb40da32a28e3205cd247290cb1')
+sha256sums=('7e48bb0462b0b2d233a88f9065f9706dd3f8513ebf002c8617c19f20386b7c58')
 
 build() {
 	cd "$pkgname-$pkgver"
