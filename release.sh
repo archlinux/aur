@@ -169,17 +169,32 @@ print_step "Pushing to GitHub"
 run git push origin "$MAIN_BRANCH"
 run git push origin "$tag"
 
-# AUR takes master only, and keeps no tags. Note AUR's hooks deny
-# non-fast-forward pushes outright, so --force is not a way out of a diverged
-# history there; joining the histories is.
+# AUR cannot share history with this repository. It takes master only, rejects
+# non-fast-forward pushes, and rejects any commit that contains a subdirectory -
+# and a few commits here carry makepkg build output. So instead of pushing the
+# branch, hand AUR one commit carrying main's tree, parented on whatever AUR has
+# now: always flat, always a fast-forward.
 print_step "Pushing to AUR"
+git fetch -q "$AUR_REMOTE" "refs/heads/master:refs/remotes/$AUR_REMOTE/master" 2>/dev/null || true
+
+subdirs=$(git ls-tree -r --name-only "$MAIN_BRANCH" | grep '/' || true)
+# shellcheck disable=SC2001  # sed is the clear way to indent a multi-line list
+[[ -z $subdirs ]] || die "AUR rejects commits containing subdirectories, and this
+tree has some. Move these to top level or drop them before releasing:
+$(echo "$subdirs" | sed 's/^/    /')"
+
 if (( DRY_RUN )); then
-    echo -e "  ${YELLOW}[dry-run]${NC} git push $AUR_REMOTE $MAIN_BRANCH:master"
-elif ! git push "$AUR_REMOTE" "$MAIN_BRANCH":master; then
-    die "AUR push rejected. AUR refuses non-fast-forward pushes, so if the two
-histories have diverged, make this branch a descendant of theirs instead:
-    git fetch $AUR_REMOTE
-    git merge --allow-unrelated-histories $AUR_REMOTE/master"
+    echo -e "  ${YELLOW}[dry-run]${NC} git commit-tree $MAIN_BRANCH^{tree} -p $AUR_REMOTE/master"
+    echo -e "  ${YELLOW}[dry-run]${NC} git push $AUR_REMOTE <that commit>:master"
+else
+    aur_parent=$(git rev-parse -q --verify "$AUR_REMOTE/master" || true)
+    parent_args=()
+    [[ -n $aur_parent ]] && parent_args=(-p "$aur_parent")
+    aur_commit=$(git commit-tree "$(git rev-parse "$MAIN_BRANCH^{tree}")" \
+                 "${parent_args[@]}" -m "mxarch-repo $tag")
+    git push "$AUR_REMOTE" "$aur_commit":master
+    git fetch -q "$AUR_REMOTE" "refs/heads/master:refs/remotes/$AUR_REMOTE/master"
+    print_success "AUR at $(git rev-parse --short "$AUR_REMOTE/master")"
 fi
 
 print_step "Publishing the GitHub release"
