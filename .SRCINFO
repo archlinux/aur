@@ -1,7 +1,7 @@
 pkgbase = python-sphinx-toolbox
 	pkgdesc = Box of handy tools for Sphinx 🧰 📔
-	pkgver = 4.2.0
-	pkgrel = 3
+	pkgver = 4.3.1
+	pkgrel = 1
 	url = https://github.com/sphinx-toolbox/sphinx-toolbox
 	arch = any
 	license = MIT
@@ -33,7 +33,7 @@ pkgbase = python-sphinx-toolbox
 	depends = python-ruamel-yaml
 	depends = python-tabulate
 	depends = python-typing_extensions
-	source = sphinx-toolbox::git+https://github.com/sphinx-toolbox/sphinx-toolbox.git#tag=v4.2.0
-	sha512sums = 55c1fbf700887a8d2a9bcc8a2c97970a5cdd2b707f193648d5865e8d4416b2d0ad5e801280f73922a217e12fa00c282e0f18dfedf7df4e5207e325c69a401e91
+	source = sphinx-toolbox::git+https://github.com/sphinx-toolbox/sphinx-toolbox.git#tag=v4.3.1
+	sha512sums = aa1aa289c2b86218f902bc67f388a717339e50e6062d2a1425fe6835cde856c34629ab3a9afaff3a45d2001224093e750b3088ea2925c686e4d2b4e678a36fb1
 
 pkgname = python-sphinx-toolbox
