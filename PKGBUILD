@@ -8,7 +8,7 @@
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 
 pkgname=mastodon
-pkgver=4.7.1
+pkgver=4.7.2
 pkgrel=1
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
@@ -26,7 +26,9 @@ depends=(
         libxml2
         libxslt
         libyaml
-        nodejs
+        # Mastodon 4.7.2: Node.js 26.8.2 causes Yarn 4.18.0 to crash
+        # during the Link step. Node.js 24 LTS builds successfully.
+        nodejs-lts-krypton
         postgresql
         protobuf
         ruby-bundler
@@ -48,7 +50,7 @@ source=(
         devise_pam.patch
 )
 
-sha256sums=('4fe287ac3a22fa9e5848eac700333de84815ad18d2a5f5a2b567e5b12b648cfa'
+sha256sums=('658bb926521fdf5278afa9df76e4224dc2effa3732f60ac36e3b46c2ef4b34e8'
             'e9928ced31f6490476100f02f2e158e41a076988dd7f3dff8f21d245bc2bb0ff'
             '1b67693f7de5802a34985b9ac969497fc6e6042dcae0b8abf6595b9fe15ee80e'
             '3fdd54dd1f374b7206c8beaebafdf890e74d30385f0c93f9cd99e1e4be92f8fa'
