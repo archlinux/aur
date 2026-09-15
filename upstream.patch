@@ -307,7 +307,7 @@ index 6604691..d2d08c6 100644
      }
      return true;
 diff --git a/src/wayland.c b/src/wayland.c
-index 083d907..9648367 100644
+index 083d907..368ad6c 100644
 --- a/src/wayland.c
 +++ b/src/wayland.c
 @@ -31,6 +31,7 @@ struct wr_wayland {
@@ -404,7 +404,32 @@ index 083d907..9648367 100644
      if (w->display) wl_display_disconnect(w->display);
      free(w);
  }
-@@ -339,23 +369,56 @@ bool wr_dispatch_pending(struct wr_wayland *w) {
+@@ -336,26 +366,81 @@ void wr_close(struct wr_wayland *w) {
+ int wr_fd(const struct wr_wayland *w) { return wl_display_get_fd(w->display); }
+ bool wr_flush(struct wr_wayland *w) { return wl_display_flush(w->display) >= 0; }
+ bool wr_dispatch_pending(struct wr_wayland *w) {
++    // Dispatching alone never reads the socket, so a single unread Wayland
++    // message -- a stray reply to a capture frame that was already destroyed, a
++    // seat or output update -- leaves the display fd readable forever. The
++    // server's poll then returns at once on every turn and spins a core with no
++    // client connected. Read whatever has arrived, without blocking, and then
++    // dispatch it: this is the read half of the loop, not just the dispatch.
++    while (wl_display_prepare_read(w->display) != 0) {
++        if (wl_display_dispatch_pending(w->display) < 0) return false;
++    }
++
++    if (wl_display_flush(w->display) < 0 && errno != EAGAIN) {
++        wl_display_cancel_read(w->display);
++        return false;
++    }
++
++    struct pollfd pfd = { .fd = wl_display_get_fd(w->display), .events = POLLIN };
++    if (poll(&pfd, 1, 0) > 0) {
++        if (wl_display_read_events(w->display) < 0) return false;
++    } else {
++        wl_display_cancel_read(w->display);
++    }
++
      return wl_display_dispatch_pending(w->display) >= 0;
  }
  
@@ -465,7 +490,7 @@ index 083d907..9648367 100644
      ext_image_copy_capture_session_v1_add_listener(w->session, &session_listener, w);
  
      if (!pump(w, &w->session_done, &w->session_stopped, 5000)) {
-@@ -374,7 +437,7 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
+@@ -374,7 +459,7 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
      if (fd < 0) { *error = "could not allocate shared memory"; return false; }
  
      w->pixels = mmap(NULL, w->size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
@@ -474,7 +499,7 @@ index 083d907..9648367 100644
  
      struct wl_shm_pool *pool = wl_shm_create_pool(w->shm, fd, (int32_t)w->size);
      w->buffer = wl_shm_pool_create_buffer(pool, 0, (int32_t)w->width, (int32_t)w->height,
-@@ -391,7 +454,39 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
+@@ -391,7 +476,39 @@ bool wr_capture_open(struct wr_wayland *w, const char **error) {
      return true;
  }
  
@@ -514,7 +539,7 @@ index 083d907..9648367 100644
      w->frame_ready = w->frame_failed = false;
      w->frame.damage_count = 0;
      w->frame.damage_overflowed = false;
-@@ -460,7 +555,7 @@ static const struct zwlr_screencopy_frame_v1_listener now_listener = {
+@@ -460,7 +577,7 @@ static const struct zwlr_screencopy_frame_v1_listener now_listener = {
  };
  
  const struct wr_frame *wr_capture_now(struct wr_wayland *w, int timeout_ms) {
