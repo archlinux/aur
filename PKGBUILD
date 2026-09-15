@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A fast CLI for compressing and converting images (JPEG, PNG, WebP, AVIF, QOI)"
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc')
 options=(!strip)
 
 source=("${_appname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('ba0b6cc15013215340478ae9d39f2e36531bbcef54820f0d20651e7f9c6cd5c1')
+sha256sums=('455530cb4852e99e86f625a680fbe92fbba31dd7ce7cce1a469802c2626bad5c')
 
 
 prepare() {
