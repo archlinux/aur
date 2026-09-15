@@ -6,7 +6,7 @@ pkgbase = rsp_tcp-git
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
 	depends = libusb>=1.0
