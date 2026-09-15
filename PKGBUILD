@@ -1,7 +1,7 @@
 # Maintainer: Saiem Saeed <saiem.saeed7 at gmail dot com>
 
 pkgname=sayall-git
-pkgver=0.3.1.r0.g6e0f652
+pkgver=0.3.2.r0.g0b12cfb
 pkgrel=1
 pkgdesc='Linux voice dictation application and CLI (development version)'
 arch=('x86_64')
