@@ -6,7 +6,7 @@
 
 pkgname=('webwallpaper-plugin' 'webwallpaper-store')
 pkgbase=webwallpaper-kde
-pkgver=0.1.0
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Live HTML/WebGL KDE Plasma 6 wallpapers (plugin) + theme store app"
 arch=('x86_64')
