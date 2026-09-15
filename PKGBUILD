@@ -1,6 +1,6 @@
 # Maintainer: Hugo Mayonobe <hugomyb@users.noreply.github.com>
 pkgname=lume-bin
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Fast, lightweight, open-source terminal — a private, local alternative to Warp"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('lume')
 options=('!strip')
 source=("Lume_${pkgver}_amd64.deb::https://github.com/hugomyb/Lume/releases/download/v${pkgver}/Lume_${pkgver}_amd64.deb"
         "LICENSE::https://raw.githubusercontent.com/hugomyb/Lume/v${pkgver}/LICENSE")
-sha256sums=('ca835c92f21a9c36b43d10e7d7cc0bdf7f91f6d7f8c180d04342062662738a65'
+sha256sums=('31ef0acece89b8d2a1faf89fc87cc896d96e4f673df4551dcaa595ff7df5c542'
             'SKIP')
 
 package() {
