@@ -1,42 +1,24 @@
 # Maintainer: reakjra <reakjra@proton.me>
 pkgname=omikuji-bin
 _pkgname=omikuji
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc='Qt/QML based wine apps launcher for Linux'
 arch=('x86_64')
-url='https://github.com/reakjra/omikuji'
+url='https://github.com/omikuji-launcher/omikuji'
 license=('GPL-3.0-or-later')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland'
+         'openssl' 'xz' 'systemd-libs' 'gcc-libs' 'glibc'
+         'hicolor-icon-theme')
+optdepends=('plasma-integration: KDE Plasma theme integration'
+            'vulkan-icd-loader: GPU selection and dxvk/vkd3d layers')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-optdepends=('plasma-integration: KDE Plasma theme integration')
 options=('!strip')
-_appimage="Omikuji-v${pkgver}-anylinux-x86_64.AppImage"
-source=("$_appimage::${url}/releases/download/v${pkgver}/${_appimage}")
-noextract=("$_appimage")
-sha256sums=('ea53ea9df8753a1215fc21f63c025ca6f1579843f1b9bdb5ecb973cd62b16e1a')
+_tarball="omikuji-${pkgver}-x86_64.tar.zst"
+source=("${url}/releases/download/v${pkgver}/${_tarball}")
+sha256sums=('87d4cdd380a0d1512a023e04aa8655aa935cbc80c9c1562e212a56eb65be8f4f')
 
 package() {
-    cd "$srcdir"
-    chmod +x "$_appimage"
-    "./$_appimage" --appimage-extract >/dev/null
-
-    install -dm755 "$pkgdir/opt/$_pkgname"
-    cp -a squashfs-root/. "$pkgdir/opt/$_pkgname/"
-
-    # the AppImage bundles Qt6 plugins under shared/lib/qt6/plugins/ but does not include the KDE platform theme plugin.
-    # so yeah. lets just symlink to the host's KDEPlasmaPlatformTheme6.so. Absolute brain damage but works right????
-    install -dm755 "$pkgdir/opt/$_pkgname/shared/lib/qt6/plugins/platformthemes"
-    ln -s /usr/lib/qt6/plugins/platformthemes/KDEPlasmaPlatformTheme6.so \
-          "$pkgdir/opt/$_pkgname/shared/lib/qt6/plugins/platformthemes/"
-
-    install -dm755 "$pkgdir/usr/bin"
-    printf '#!/bin/sh\nARGV0=%s exec "/opt/%s/AppRun" "$@"\n' "$_pkgname" "$_pkgname" > "$pkgdir/usr/bin/$_pkgname"
-    chmod 755 "$pkgdir/usr/bin/$_pkgname"
-
-    install -Dm644 "squashfs-root/io.github.reakjra.omikuji.desktop" \
-        "$pkgdir/usr/share/applications/io.github.reakjra.omikuji.desktop"
-    sed -i "s|^Exec=.*|Exec=$_pkgname %f|" "$pkgdir/usr/share/applications/io.github.reakjra.omikuji.desktop"
-    install -Dm644 "squashfs-root/io.github.reakjra.omikuji.png" \
-        "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.reakjra.omikuji.png"
+    cp -a "$srcdir/usr" "$pkgdir/"
 }
