@@ -1,6 +1,6 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Mouse and keyboard macro recorder with hotkeys, scheduling, and text expansion"
 arch=('x86_64' 'aarch64')
@@ -9,16 +9,16 @@ license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst' 'shadow' 'systemd' 'systemd-libs' 'libxkbcommon' 'icu')
 makedepends=('dotnet-sdk>=10.0' 'clang' 'zlib')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v1.4.0.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/2f569b0811a8ec3258f2a26b2fabf4c7c6acff42.tar.gz"
         "crossmacro.sysusers"
         "crossmacro-modules.conf")
-sha256sums=('0edf9eb15159d17aa80a8e45e2675a84af037e59b59846ed945b9182a6dcb025'
+sha256sums=('45e36793c49b7136b5ced7627b0d17c23786e3e4804d75b0f4ddbbf6e8541937'
             'SKIP'
             'SKIP')
 install=crossmacro.install
 
 build() {
-    cd "CrossMacro-1.4.0"
+    cd "CrossMacro-2f569b0811a8ec3258f2a26b2fabf4c7c6acff42"
     local target_rid
     case "${CARCH}" in
         x86_64)
@@ -52,7 +52,7 @@ build() {
 }
 
 package() {
-    cd "CrossMacro-1.4.0"
+    cd "CrossMacro-2f569b0811a8ec3258f2a26b2fabf4c7c6acff42"
     
     # Install UI files
     install -dm755 "$pkgdir/usr/lib/$pkgname"
