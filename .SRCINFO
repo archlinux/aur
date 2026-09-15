@@ -1,20 +1,167 @@
 pkgbase = python-py-key-value-aio
 	pkgdesc = Async key-value store with pluggable backends
 	pkgver = 0.4.5
-	pkgrel = 2
-	url = https://github.com/chrisguidry/py-key-value-aio
+	pkgrel = 1
+	url = https://github.com/strawgate/py-key-value
 	arch = any
-	license = Apache
+	license = Apache-2.0
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-uv-build
-	depends = python>=3.10
+	depends = python
 	depends = python-beartype
 	depends = python-typing_extensions
-	optdepends = python-cachetools: memory backend support
-	optdepends = python-redis: redis backend support
-	source = https://files.pythonhosted.org/packages/fb/e2/d689d922894a7ecde73b6daeaf9b13dab5aae06fe6aaaf7514722644d382/py_key_value_aio-0.4.5.tar.gz
-	sha256sums = c6563a2c6abe5da5e20f4f9e875c2a9b425a2244a54fadbf46cf140a9eea45d7
+	optdepends = python-py-key-value-aio-aerospike: aerospike backend (python-aerospike)
+	optdepends = python-py-key-value-aio-azure-tables: azure-tables backend (python-azure-core python-azure-data-tables)
+	optdepends = python-py-key-value-aio-chdb: chdb backend (python-chdb)
+	optdepends = python-py-key-value-aio-disk: disk backend (python-diskcache python-pathvalidate)
+	optdepends = python-py-key-value-aio-duckdb: duckdb backend (python-duckdb python-pytz)
+	optdepends = python-py-key-value-aio-dynamodb: dynamodb backend (python-aioboto3 python-types-aiobotocore-dynamodb)
+	optdepends = python-py-key-value-aio-elasticsearch: elasticsearch backend (python-aiohttp python-elasticsearch)
+	optdepends = python-py-key-value-aio-filetree: filetree backend (python-aiofile python-anyio)
+	optdepends = python-py-key-value-aio-firestore: firestore backend (python-google-auth python-google-cloud-firestore)
+	optdepends = python-py-key-value-aio-keyring: keyring backend (python-keyring)
+	optdepends = python-py-key-value-aio-keyring-linux: keyring-linux backend (python-dbus python-keyring)
+	optdepends = python-py-key-value-aio-memcached: memcached backend (python-aiomcache)
+	optdepends = python-py-key-value-aio-memory: memory backend (python-cachetools)
+	optdepends = python-py-key-value-aio-mongodb: mongodb backend (python-pymongo)
+	optdepends = python-py-key-value-aio-opensearch: opensearch backend (python-opensearch)
+	optdepends = python-py-key-value-aio-postgresql: postgresql backend (python-asyncpg)
+	optdepends = python-py-key-value-aio-pydantic: pydantic backend (python-pydantic)
+	optdepends = python-py-key-value-aio-redis: redis backend (python-redis)
+	optdepends = python-py-key-value-aio-rocksdb: rocksdb backend (python-rocksdict)
+	optdepends = python-py-key-value-aio-s3: s3 backend (python-aioboto3 python-types-aiobotocore-s3)
+	optdepends = python-py-key-value-aio-valkey: valkey backend (python-valkey-glide)
+	optdepends = python-py-key-value-aio-vault: vault backend (python-hvac python-types-hvac)
+	optdepends = python-py-key-value-aio-wrappers-encryption: wrappers-encryption backend (python-cryptography)
+	source = py_key_value_aio::git+https://github.com/strawgate/py-key-value.git#tag=0.4.5
+	sha256sums = 17c077c4601c8ff85d98ee78962de89f0357f7ff50b2cb1ba59d46fbca995ced
 
 pkgname = python-py-key-value-aio
+
+pkgname = python-py-key-value-aio-aerospike
+	pkgdesc = Async key-value store with pluggable backends - aerospike backend
+	depends = python-py-key-value-aio
+	depends = python-aerospike
+
+pkgname = python-py-key-value-aio-azure-tables
+	pkgdesc = Async key-value store with pluggable backends - azure-tables backend
+	depends = python-py-key-value-aio
+	depends = python-azure-core
+	depends = python-azure-data-tables
+
+pkgname = python-py-key-value-aio-chdb
+	pkgdesc = Async key-value store with pluggable backends - chdb backend
+	depends = python-py-key-value-aio
+	depends = python-chdb
+
+pkgname = python-py-key-value-aio-disk
+	pkgdesc = Async key-value store with pluggable backends - disk backend
+	depends = python-py-key-value-aio
+	depends = python-diskcache
+	depends = python-pathvalidate
+
+pkgname = python-py-key-value-aio-duckdb
+	pkgdesc = Async key-value store with pluggable backends - duckdb backend
+	depends = python-py-key-value-aio
+	depends = python-duckdb
+	depends = python-pytz
+
+pkgname = python-py-key-value-aio-dynamodb
+	pkgdesc = Async key-value store with pluggable backends - dynamodb backend
+	depends = python-py-key-value-aio
+	depends = python-aioboto3
+	depends = python-types-aiobotocore-dynamodb
+
+pkgname = python-py-key-value-aio-elasticsearch
+	pkgdesc = Async key-value store with pluggable backends - elasticsearch backend
+	depends = python-py-key-value-aio
+	depends = python-aiohttp
+	depends = python-elasticsearch
+
+pkgname = python-py-key-value-aio-filetree
+	pkgdesc = Async key-value store with pluggable backends - filetree backend
+	depends = python-py-key-value-aio
+	depends = python-aiofile
+	depends = python-anyio
+
+pkgname = python-py-key-value-aio-firestore
+	pkgdesc = Async key-value store with pluggable backends - firestore backend
+	depends = python-py-key-value-aio
+	depends = python-google-auth
+	depends = python-google-cloud-firestore
+
+pkgname = python-py-key-value-aio-keyring
+	pkgdesc = Async key-value store with pluggable backends - keyring backend
+	depends = python-py-key-value-aio
+	depends = python-keyring
+
+pkgname = python-py-key-value-aio-keyring-linux
+	pkgdesc = Async key-value store with pluggable backends - keyring-linux backend
+	depends = python-py-key-value-aio
+	depends = python-dbus
+	depends = python-keyring
+
+pkgname = python-py-key-value-aio-memcached
+	pkgdesc = Async key-value store with pluggable backends - memcached backend
+	depends = python-py-key-value-aio
+	depends = python-aiomcache
+
+pkgname = python-py-key-value-aio-memory
+	pkgdesc = Async key-value store with pluggable backends - memory backend
+	depends = python-py-key-value-aio
+	depends = python-cachetools
+
+pkgname = python-py-key-value-aio-mongodb
+	pkgdesc = Async key-value store with pluggable backends - mongodb backend
+	depends = python-py-key-value-aio
+	depends = python-pymongo
+
+pkgname = python-py-key-value-aio-opensearch
+	pkgdesc = Async key-value store with pluggable backends - opensearch backend
+	depends = python-py-key-value-aio
+	depends = python-opensearch
+
+pkgname = python-py-key-value-aio-postgresql
+	pkgdesc = Async key-value store with pluggable backends - postgresql backend
+	depends = python-py-key-value-aio
+	depends = python-asyncpg
+
+pkgname = python-py-key-value-aio-pydantic
+	pkgdesc = Async key-value store with pluggable backends - pydantic backend
+	depends = python-py-key-value-aio
+	depends = python-pydantic
+
+pkgname = python-py-key-value-aio-redis
+	pkgdesc = Async key-value store with pluggable backends - redis backend
+	depends = python-py-key-value-aio
+	depends = python-redis
+
+pkgname = python-py-key-value-aio-rocksdb
+	pkgdesc = Async key-value store with pluggable backends - rocksdb backend
+	depends = python-py-key-value-aio
+	depends = python-rocksdict
+
+pkgname = python-py-key-value-aio-s3
+	pkgdesc = Async key-value store with pluggable backends - s3 backend
+	depends = python-py-key-value-aio
+	depends = python-aioboto3
+	depends = python-types-aiobotocore-s3
+
+pkgname = python-py-key-value-aio-valkey
+	pkgdesc = Async key-value store with pluggable backends - valkey backend
+	depends = python-py-key-value-aio
+	depends = python-valkey-glide
+
+pkgname = python-py-key-value-aio-vault
+	pkgdesc = Async key-value store with pluggable backends - vault backend
+	depends = python-py-key-value-aio
+	depends = python-hvac
+	depends = python-types-hvac
+
+pkgname = python-py-key-value-aio-wrappers-encryption
+	pkgdesc = Async key-value store with pluggable backends - wrappers-encryption backend
+	depends = python-py-key-value-aio
+	depends = python-cryptography
