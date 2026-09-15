@@ -1,6 +1,6 @@
 pkgbase = libundr
 	pkgdesc = C library with multiple utilities
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://codeberg.org/caskstrength/libundr
 	arch = x86_64
@@ -11,9 +11,10 @@ pkgbase = libundr
 	makedepends = make
 	depends = glibc
 	depends = openssl
+	depends = curl
 	provides = undr
 	conflicts = undr
-	source = libundr::git+https://codeberg.org/caskstrength/libundr.git#tag=0.6.0
-	sha512sums = 7c611715880b34fe4263aa624cbd740fa02565a7db9c8faf7a5b9b2e39649ea5ac577b82255ae72746b8a71881c5f4ef03be823171b85fbb1456d279924740f8
+	source = libundr::git+https://codeberg.org/caskstrength/libundr.git#tag=0.7.0
+	sha512sums = c0676c908e990fab7f3b9f2227a745511b1274c1a2ba6c09b569f16f3beb0b8c1082000b7cc5e1b3c85b47f0db28efaa70d7a01fa19e2664d59f0d6cd89c19b1
 
 pkgname = libundr
