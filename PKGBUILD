@@ -3,7 +3,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=eclair
-pkgver=0.14.2
+pkgver=0.14.3
 pkgrel=1
 pkgdesc='A Scala implementation of the Lightning Network (GUI)'
 arch=('any')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('java-environment=21' 'jq')
 makedepends=('maven')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f54036dad525ee437646962b3ead146711463aea068be48403ba1eac7cf83d23')
+sha256sums=('379709f8fae680d142749d2f50edce4ef3e116c11294f9021a825379438ec6c3')
 
 build() {
   cd "${pkgname}-${pkgver}"
