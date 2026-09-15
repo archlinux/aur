@@ -13,7 +13,7 @@
 
 pkgname=chipass-git
 _gitname=ChiPass
-pkgver=r4852.g270a56e
+pkgver=r4866.ge466fe6
 pkgrel=1
 pkgdesc="Modern, secure, and open-source password manager (fork of KeePassXC)"
 arch=('i686' 'x86_64')
@@ -40,10 +40,12 @@ depends=(
     'zlib'
 )
 makedepends=(
+    'appstream'
     'asciidoctor'
     'cmake'
+    'gcc'
     'git'
-    'intltool'
+    'ninja'
     'qt6-tools'
 )
 checkdepends=(
