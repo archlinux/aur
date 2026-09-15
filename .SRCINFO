@@ -1,0 +1,14 @@
+pkgbase = omarchy-games-menu-bin
+	pkgdesc = Steam-like QuickShell launcher grid for distrobox-managed PC ports, recomps and emulators (Rust backend, prebuilt binary)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/akitaonrails/omarchy-games-menu
+	arch = x86_64
+	license = MIT
+	depends = quickshell
+	provides = omarchy-games-menu
+	conflicts = omarchy-games-menu
+	source = omarchy-games-menu-0.1.4-x86_64.tar.gz::https://github.com/akitaonrails/omarchy-games-menu/releases/download/v0.1.4/omarchy-games-menu-0.1.4-x86_64.tar.gz
+	sha256sums = cb30e227287104593f539664906a79f188c4ce528bd55fde98fec09400032150
+
+pkgname = omarchy-games-menu-bin
