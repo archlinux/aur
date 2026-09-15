@@ -31,7 +31,11 @@ build() {
 }
 
 package() {
-  cd $srcdir/vde-2/build
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/vde-2/"
+  install -Dm 644 COPYING -T "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm 644 COPYING.libvdeplug -T "${pkgdir}/usr/share/licenses/libvdeplug/LICENSE"
+
+  cd "build/"
+  make DESTDIR="${pkgdir}" install
 }
 
