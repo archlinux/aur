@@ -4,3 +4,7 @@
 !/.gitignore
 !/vte.patch
 !/.nvchecker.toml
+!/REUSE.toml
+!/LICENSE
+!/LICENSES
+!/LICENSES/*
