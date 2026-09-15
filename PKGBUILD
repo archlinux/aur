@@ -2,8 +2,8 @@
 
 _pkgname=gotify-server
 pkgname=${_pkgname}-bin
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc='A simple server for sending and receiving messages'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://github.com/gotify/server'
@@ -37,10 +37,10 @@ sha256sums=('1d3b4d7563ba17a60f872e050715c4b3743114e74f3a9b7dddc76653c8bfd8c1'
             '9f2740e770ebf5b894370df3529ed7d244ff71d549088b24dd73eaa343b24ecf'
             '150a84f2f89d70c147cc3a2dbddb469f262ed2e8b6d3ffcb74eccb49dfdb2a24'
             '2f4b11daa1c7f3be0ad4a6fdcc01ffbda6e918539bfe10bb4dc90ea97f1d6723')
-sha256sums_x86_64=('01c4869f1cf874634416959f7aab45f7eab53597e018479fcf3ce76ae8465c75')
-sha256sums_i686=('11a847980781efb98b3e96e273a133cf87c46296850a5b1fc7fabc58f4f30e86')
-sha256sums_armv7h=('cb6e45da9af2be179f16e8d7c61b7ef89f5f9fc5a5284455c985f32c7017ee65')
-sha256sums_aarch64=('69d8e6b9c56ba561ff400cc4cb2c588993c32ef7ea8e37a019161daf256dd40e')
+sha256sums_x86_64=('d452faad071981d191d5c95f70d0f9520dc2ef2336b2b03055e12cfabfbae2d2')
+sha256sums_i686=('8da97485bff9902cecda851053dd0a78e72df5954c1d67d57f1e90fef33025dc')
+sha256sums_armv7h=('5c9b9323a72af163cff50a61597f8f0724d4ab7bbe26ca0ff3b5a74ff3af94e1')
+sha256sums_aarch64=('742ca7e0dd63b0902b7fb01552bd37f4df4d3bb66ced583144faff90a3e76901')
 
 prepare() {
   patch --follow-symlinks --forward -o "$srcdir/server.env" gotify-server.env.example config.patch
