@@ -2,7 +2,7 @@
 
 pkgname=proj2cmake-git
 pkgver=r19.22a7e6b
-pkgrel=11
+pkgrel=12
 pkgdesc="Convert an entire Visual Studio solution and all contained projects to CMake."
 arch=($CARCH)
 url="https://github.com/mrpi/proj2cmake"
@@ -10,9 +10,7 @@ license=('BSL-1.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
-depends=('boost-libs'
-    'glibc'
-    'gcc-libs')
+depends=('boost-libs')
 makedepends=('cmake' 'boost' 'git')
 backup=()
 options=()
@@ -34,7 +32,9 @@ build() {
 
     cmake -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -B build
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -B build \
+        -Wno-author
     make -C build
 }
 
