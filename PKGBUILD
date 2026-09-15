@@ -1,21 +1,21 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 pkgname=fladder-git
-_pkgname=Fladder
+_pkgname=fladder
 pkgver=r1759.710dd26
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Jellyfin Frontend built on top of Flutter"
 arch=('x86_64')
 url="https://github.com/DonutWare/Fladder"
 license=('GPL-3.0-or-later')
-depends=('mpv' 'gtk3' 'xdg-user-dirs')
+depends=('mpv' 'gtk3' 'xdg-user-dirs' 'hicolor-icon-theme')
 makedepends=('patchelf' 'cmake' 'clang' 'base-devel' 'git' 'ninja' 'jq' 'curl')
 _branch="develop"
-source=("git+https://github.com/DonutWare/Fladder.git#branch=${_branch}"
-    "fladder.desktop")
+source=("${_pkgname}::git+https://github.com/DonutWare/Fladder.git#branch=${_branch}"
+    "${_pkgname}.desktop")
 sha256sums=('SKIP'
             'a5b94f011895864fa2c3fa641ad578595d519ec51c867d76eb32da67877a5ccb')
-conflicts=('fladder')
-provides=('fladder')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 
 # if set, fladder will autoconnect to the given server
 # _base_url="http://192.168.1.100:8096"
@@ -62,17 +62,17 @@ package() {
     install -dm755 "$pkgdir/usr/lib/$pkgname"
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/share/applications"
-    install -dm755 "$pkgdir/usr/share/icons"
+    install -dm755 "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 
     cp -r "$srcdir/$_pkgname/build/linux/x64/release/bundle/lib" "$pkgdir/usr/lib/$pkgname/"
     cp -r "$srcdir/$_pkgname/build/linux/x64/release/bundle/data" "$pkgdir/usr/lib/$pkgname/"
 
-    install -m755 -t "$pkgdir/usr/lib/$pkgname" "$srcdir/$_pkgname/build/linux/x64/release/bundle/fladder"
+    install -m755 -t "$pkgdir/usr/lib/$pkgname" "$srcdir/$_pkgname/build/linux/x64/release/bundle/$_pkgname"
 
-    ln -s "/usr/lib/$pkgname/fladder" "$pkgdir/usr/bin/fladder"
-    ln -s "/usr/lib/$pkgname/data/flutter_assets/icons/fladder_icon.svg" "$pkgdir/usr/share/icons/fladder.svg"
+    ln -s "/usr/lib/$pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    ln -s "/usr/lib/$pkgname/data/flutter_assets/icons/${_pkgname}_icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 
-    install -m644 "$srcdir/fladder.desktop" "$pkgdir/usr/share/applications/"
+    install -m644 "$srcdir/${_pkgname}.desktop" "$pkgdir/usr/share/applications/"
 
     # fix rpath
     for lib in "$pkgdir/usr/lib/$pkgname/lib"/*.so; do
