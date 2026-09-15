@@ -1,7 +1,7 @@
 pkgbase = ai-toolbox-appimage
-	pkgdesc = Personal AI toolbox for managing AI coding assistant configurations
+	pkgdesc = AI Toolbox 是一个跨平台桌面应用，旨在帮助开发者高效管理各类 AI 编程助手的配置。
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coulsontl/ai-toolbox
 	arch = x86_64
 	license = MIT
