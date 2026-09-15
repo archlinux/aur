@@ -1,0 +1,20 @@
+pkgbase = python-burner-redis
+	pkgdesc = An embedded, in-process Redis-compatible database
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://pypi.org/project/burner-redis/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	depends = glibc
+	depends = libgcc
+	depends = python
+	depends = python-redis
+	source = https://files.pythonhosted.org/packages/source/b/burner_redis/burner_redis-0.1.7.tar.gz
+	sha256sums = 7474ff092669fd11ef765411572cdafcc3d89b8054aef4ca0617be6d6be4c680
+
+pkgname = python-burner-redis
