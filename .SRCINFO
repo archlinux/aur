@@ -1,6 +1,6 @@
 pkgbase = rat-commander
 	pkgdesc = A self-contained 2-panel terminal file manager with modern amenities like truecolor support and many built-in system tools for viewing images, managing disks, networks and synchronizing and editing files.
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://github.com/dividebysandwich/rat-commander
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = rat-commander
 	provides = rc
 	provides = rcedit
 	options = !lto
-	source = rat-commander-1.9.1.tar.gz::https://github.com/dividebysandwich/rat-commander/archive/refs/tags/v1.9.1.tar.gz
-	sha256sums = 44efdb4d94e55afcdb6fa597848f8890e7887bdcb84b6a11db3ccd21444ce588
+	source = rat-commander-1.9.2.tar.gz::https://github.com/dividebysandwich/rat-commander/archive/refs/tags/v1.9.2.tar.gz
+	sha256sums = 71d7ac0ff301a877b195caed3cc20659c4ad05ca13e91048c353386862c94936
 
 pkgname = rat-commander
