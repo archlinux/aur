@@ -3,7 +3,7 @@
 _pkgauthor='charles-001'
 _pkgname='dolphie'
 pkgname="${_pkgname}"
-pkgver=6.17.0
+pkgver=6.18.0
 pkgrel=1
 pkgdesc="Your single pane of glass for real-time analytics into MySQL/MariaDB & ProxySQL"
 
@@ -25,7 +25,7 @@ depends=('python' 'python-sqlparse' 'python-pygments' 'python-pymysql' 'python-p
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4bc8a5ba44b0350796e331ab120e764efe60e80c18c27b400b3d3e4d29c385e3')
+sha256sums=('6a97128516d0a0abc25dae4c2ade77fe15c73b0968e10132412d0cfcee151393')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
