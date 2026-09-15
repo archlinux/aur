@@ -1,20 +1,23 @@
 # Maintainer: Wal33D <aquataze@yahoo.com>
 pkgname=itchio-downloader
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Download free games from itch.io programmatically - no API key or GUI"
 arch=('any')
 url="https://github.com/Wal33D/itchio-downloader"
 license=('ISC')
 depends=('nodejs>=20.19')
-optdepends=('chromium: browser fallback when direct HTTP cannot download a game')
+optdepends=(
+    'puppeteer>=25.11: last-resort browser automation fallback (requires Node.js 22.12+)'
+    'chromium: browser executable for the optional Puppeteer fallback'
+)
 makedepends=('npm')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('3bfa82671ad5334a1c389edcebb14d94e3707ffd0cb5ce0011a3d78c9b3a6d07')
+sha256sums=('e3333713c56bcaf78ad7fd1cfd3191672f4edd7606b3acc9655c958d65f049dd')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
-    PUPPETEER_SKIP_DOWNLOAD=true npm install -g \
+    npm install -g \
         --cache "${srcdir}/npm-cache" \
         --prefix "${pkgdir}/usr" \
         "${srcdir}/${pkgname}-${pkgver}.tgz"
