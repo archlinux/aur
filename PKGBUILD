@@ -5,14 +5,14 @@
 
 pkgname=lightzone-git
 _pkgname=lightzone
-pkgver=5.0.0beta3.r46.g3978baf3
+pkgver=5.0.2.r3.gad9a496d
 pkgrel=1
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom (latest git version)"
 url="http://lightzoneproject.org/"
 license=('custom:BSD-3-Clause')
 arch=('x86_64')
-depends=('java-runtime=21' 'lcms2' 'libjpeg-turbo' 'libtiff' 'libxml2')
-makedepends=('java-environment=21' 'ant' 'git' 'libx11' 'rsync' 'lcms2' 'libjpeg-turbo' 'libtiff')
+depends=('java-runtime=21' 'lcms2' 'lensfun' 'libjpeg-turbo' 'libraw' 'libtiff' 'libxml2')
+makedepends=('java-environment=21' 'git' 'libx11')
 conflicts=('lightzone')
 source=('git+https://github.com/ktgw0316/LightZone.git')
 sha256sums=('SKIP')
@@ -22,40 +22,31 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 # https://github.com/Aries85/LightZone/issues/218#issuecomment-357868376
 MAKEFLAGS="-j1"
 
-build() { 
+build() {
   cd "${srcdir}/LightZone/"
   if [ -d /usr/lib/jvm/java-21-jdk ]; then
     export JAVA_HOME=/usr/lib/jvm/java-21-jdk
   else
     export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
   fi
+  export GRADLE_USER_HOME="${srcdir}/gradle-home"
 
-  ant -f linux/build.xml jar
+  ./gradlew --no-daemon jpackageImage -x test
 }
 
 package() {
   cd "${srcdir}/LightZone/"
 
-  _libexecdir=/usr/lib
-  install -dm 0755 "${pkgdir}/${_libexecdir}/${_pkgname}"
-  ls *
-  cp -pHR linux/products/*.so "${pkgdir}/${_libexecdir}/${_pkgname}"
-  _javadir=/usr/share/java
-  install -dm 0755 "${pkgdir}/${_javadir}/${_pkgname}"
-  cp -pH lightcrafts/products/dcraw_lz "${pkgdir}/${_javadir}/${_pkgname}"
-  cp -pHR linux/products/*.jar "${pkgdir}/${_javadir}/${_pkgname}"
-  
-  # create icons and shortcuts
-  _datadir=/usr/share
-  install -dm 0755 "${pkgdir}/${_datadir}/applications"
-  install -m 644 linux/products/lightzone.desktop "${pkgdir}/${_datadir}/applications/"
-  cp -pHR linux/icons "${pkgdir}/${_datadir}/"
+  install -Dm755 -t "${pkgdir}/usr/lib/${_pkgname}" lightcrafts/build/resources/main/native/*.so
+  install -Dm644 -t "${pkgdir}/usr/share/java/${_pkgname}" linux/build/jpackage/${_pkgname}/lib/app/*.jar
 
-  _bindir=/usr/bin
-  install -dm 0755 "${pkgdir}/${_bindir}"
-  install -m 755 "linux/products/${_pkgname}" "${pkgdir}/${_bindir}"
+  install -Dm644 -t "${pkgdir}/usr/share/applications" linux/products/lightzone.desktop
+  install -Dm644 -t "${pkgdir}/usr/share/metainfo" linux/products/io.github.ktgw0316.LightZone.metainfo.xml
+  cp -a linux/icons "${pkgdir}/usr/share/"
+
+  install -Dm755 -t "${pkgdir}/usr/bin" lightcrafts/build/resources/main/native/dcraw_lz "linux/products/${_pkgname}"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }

@@ -1,21 +1,18 @@
 pkgbase = lightzone-git
 	pkgdesc = A professional photo browser and editor, like Aperture or Lightroom (latest git version)
-	pkgver = 5.0.0beta3.r46.g3978baf3
+	pkgver = 5.0.2.r3.gad9a496d
 	pkgrel = 1
 	url = http://lightzoneproject.org/
 	arch = x86_64
 	license = custom:BSD-3-Clause
 	makedepends = java-environment=21
-	makedepends = ant
 	makedepends = git
 	makedepends = libx11
-	makedepends = rsync
-	makedepends = lcms2
-	makedepends = libjpeg-turbo
-	makedepends = libtiff
 	depends = java-runtime=21
 	depends = lcms2
+	depends = lensfun
 	depends = libjpeg-turbo
+	depends = libraw
 	depends = libtiff
 	depends = libxml2
 	conflicts = lightzone
