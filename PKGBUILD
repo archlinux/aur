@@ -1,6 +1,6 @@
 # Maintainer: Dawit Worku <dawitworkujima@gmail.com>
 pkgname=omafil-git
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="File manager that follows your Omarchy theme"
 arch=('x86_64')
