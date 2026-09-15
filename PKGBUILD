@@ -3,7 +3,7 @@
 pkgname=vdecapture-git
 _pkgname=vdecapture
 pkgver=r4.6cc3a88
-pkgrel=1
+pkgrel=2
 
 pkgdesc="vdecapture captures packet data from a live VDE network and saves it to an output file in pcap format."
 arch=('x86_64')
