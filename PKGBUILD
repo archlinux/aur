@@ -4,7 +4,7 @@
 _name=ToneShiftEQ
 pkgbase=${_name,,}
 pkgname=($pkgbase $pkgbase-{clap,lv2,standalone,vst3})
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A dynamic 12-band equalizer for mixing and mastering'
 arch=(aarch64 x86_64)
@@ -15,7 +15,7 @@ depends=()
 makedepends=(cairo fftw freetype2 jack libsndfile lv2 xxd)
 checkdepends=(lv2lint)
 source=("https://github.com/brummer10/$_name/releases/download/v$pkgver/$_name-v$pkgver-src.tar.xz")
-sha256sums=('f58d0323fabcd22829676a6b75c09a239efcbc780770d1b3f565c5af71f203bc')
+sha256sums=('b82941cdeedc39f2939e54224146328ff4a6e2f42c668c50eb0d39d8b7ac30ec')
 _plugin_uri="urn:brummer:$pkgbase"
 
 _pick() {
