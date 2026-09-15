@@ -1,6 +1,6 @@
 pkgbase = cc-switch-cli-musl-bin
 	pkgdesc = Static MUSL binary of the CC Switch CLI for Claude Code, Codex, and Gemini CLI
-	pkgver = 5.10.4
+	pkgver = 5.10.5
 	pkgrel = 1
 	url = https://github.com/SaladDay/cc-switch-cli
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = cc-switch-cli-musl-bin
 	options = !strip
 	source = upstream-LICENSE
 	sha256sums = 33a4126cc116d9f4b6bd8e988d17372e6f270d738474d95e02bc30c5bd785b99
-	source_x86_64 = cc-switch-cli-musl-bin-5.10.4-x86_64.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v5.10.4/cc-switch-cli-v5.10.4-linux-x64-musl.tar.gz
-	sha256sums_x86_64 = a9a569d85cb0a61169082a558f86786e0e7ee9c2725900e7d6e876873eb416c3
-	source_aarch64 = cc-switch-cli-musl-bin-5.10.4-aarch64.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v5.10.4/cc-switch-cli-v5.10.4-linux-arm64-musl.tar.gz
-	sha256sums_aarch64 = 37d9b2564f9d47215dbb45914158d71f746d92d829ad62ca1214de4eeb5bfc6f
+	source_x86_64 = cc-switch-cli-musl-bin-5.10.5-x86_64.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v5.10.5/cc-switch-cli-v5.10.5-linux-x64-musl.tar.gz
+	sha256sums_x86_64 = feda4dca0ecf01ec90708141cc346972683c27c1097fba22235c5022143f80ed
+	source_aarch64 = cc-switch-cli-musl-bin-5.10.5-aarch64.tar.gz::https://github.com/SaladDay/cc-switch-cli/releases/download/v5.10.5/cc-switch-cli-v5.10.5-linux-arm64-musl.tar.gz
+	sha256sums_aarch64 = 982051274b07d588fa790b35d6b17f231a775392c0ee4703696694650a49e347
 
 pkgname = cc-switch-cli-musl-bin
