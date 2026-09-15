@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=plezy-bin
-pkgver=2.19.1
+pkgver=2.20.0
 pkgrel=1
 pkgdesc="Modern client for Plex, Jellyfin and Emby (upstream binary)"
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ options=('!strip' '!debug')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/edde746/plezy/releases/download/${pkgver}/plezy-linux-x64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/edde746/plezy/releases/download/${pkgver}/plezy-linux-arm64.deb")
 noextract=("${pkgname}-${pkgver}-x86_64.deb" "${pkgname}-${pkgver}-aarch64.deb")
-sha256sums_x86_64=('09505cfb4c6f5ad25b71559d413d9d0afda6256ac4829b99b8f8ca4e7587f60c')
-sha256sums_aarch64=('16afb14b5cdb67ee802b2426ba9d6b07c1c4a7d1f51b0cbd661b30f9fbf0d960')
+sha256sums_x86_64=('4a333aad2e93a75ed5517cc0351ff6a7a3f8564fd2833d2e1bd730756e6cef0f')
+sha256sums_aarch64=('cb7e3767a91a3c045540b78d263efe71676b8853aca1576f05f0f1733498304a')
 
 package() {
   # the Flutter bundle in /opt/plezy plus the /usr/bin wrapper, desktop entry
