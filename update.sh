@@ -32,3 +32,9 @@ if [ $PKGBUILD_VERSION != $VERSION ]; then
         git commit -m "Updated to $VERSION"
         git push
 fi
+
+# Cleanup
+echo "Remove artifacts?"
+read
+rm -rf Plexamp*.AppImage
+rm -rf plexamp*.pkg.tar.zst
