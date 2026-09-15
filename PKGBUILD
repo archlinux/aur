@@ -8,7 +8,7 @@
 
 pkgname=gittyup
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphical Git client (GitAhead fork)'
 url="https://murmele.github.io/${pkgname^}"
 _url="https://github.com/Murmele/${pkgname^}"
@@ -53,6 +53,8 @@ prepare() {
 		git config "submodule.dep/$submodule/$submodule.url" "$srcdir/$pkgname-$submodule"
 	done
 	git -c protocol.file.allow=always submodule update
+	# https://github.com/Murmele/Gittyup/pull/993
+	git cherry-pick 428f81808910e5c966dfa4683dd904c68ea2ac63
 }
 
 build() {
