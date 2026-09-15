@@ -3,7 +3,7 @@
 
 _gemname=winrm-fs
 pkgname=ruby-$_gemname
-pkgver=1.3.5
+pkgver=1.3.7
 pkgrel=1
 pkgdesc='WinRM File System'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-erubi ruby-logging ruby-rubyzip ruby-winrm)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('e64960ab70244647ba543d7cc477ec3d81a6a666')
+sha1sums=('4ee38cb5443813fce66f77ad2b374da3f1d6e297')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
