@@ -4,7 +4,7 @@
 
 pkgname=unoconv
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Libreoffice-based document converter"
 url="https://github.com/unoconv/unoconv"
 license=(GPL-2.0-only)
