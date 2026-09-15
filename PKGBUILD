@@ -2,7 +2,7 @@
 # Maintainer: jonahz <jonah.zuercher@adfinis.com>
 
 pkgname='bssh-bin'
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='SSH client for the Bastion'
 url='https://github.com/adfinis/bssh'
@@ -13,13 +13,13 @@ conflicts=('bssh')
 depends=('openssh')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/adfinis/bssh/releases/download/v${pkgver}/bssh-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('020e6f51c32319bd53118500b49cd586f5625c552ae241da629adcaf89bab130')
+sha256sums_aarch64=('0fc305ff81cc3e3a3f18b02ce5d3eac1f7c8af60af994ad407f74019b5546573')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/adfinis/bssh/releases/download/v${pkgver}/bssh-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('817b8d79a8eda42e66ac5132981a395847694b0765fa2d857d1c264d85dc9f0b')
+sha256sums_x86_64=('eed2e6199b6ac47a21b85297b94a0a4d79d2c5df405a2408c3b1a4dd395bfeb2')
 
 package() {
-  cd ./bssh-v0.2.1-linux-amd64
+  cd ./bssh-v0.2.2-linux-amd64
   # bin
   install -Dm755 "./bssh" "${pkgdir}/usr/bin/bssh"
   # license
