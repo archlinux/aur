@@ -1,8 +1,8 @@
 # Maintainer: Aria Moradi <aria.moradi007 at gmail dot com>
 
 pkgname=catapult-dabdoob
-pkgver=28.4
-pkgrel=2
+pkgver=28.5
+pkgrel=1
 pkgdesc="A cross-platform launcher for Cataclysm: DDA, BN and TLG"
 arch=("x86_64")
 url="https://github.com/Hihahahalol/Catapult_Dabdoob"
