@@ -1,0 +1,14 @@
+pkgbase = hornero-greeter-media-base
+	pkgdesc = Base Argentina video pack for the HorneroOS SDDM greeter (offline H.264)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/HorneroOS/greeter
+	arch = any
+	license = CC-BY-4.0
+	license = CC-BY-3.0
+	license = CC-BY-SA-3.0
+	license = CC-BY-SA-4.0
+	source = hornero-greeter-media-base-1.0.0.tar.zst::https://github.com/HorneroOS/greeter/releases/download/v0.1.0-preview/hornero-greeter-media-base-1.0.0.tar.zst
+	sha256sums = fac8cbecef0b8225bb80c65eb68b64d5a84bb57555b0f37ae42cda33d452a057
+
+pkgname = hornero-greeter-media-base
