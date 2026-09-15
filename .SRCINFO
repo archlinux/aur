@@ -1,0 +1,14 @@
+pkgbase = avisynth-plugin-xclean
+	pkgdesc = AviSynth xClean 3-pass denoiser (AVSI)
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/mysteryx93/xClean
+	arch = any
+	license = GPL-3.0-only
+	depends = avisynthplus
+	optdepends = avisynth-plugin-mvtools2-pinterf: MVTools2 (pinterf)
+	optdepends = avisynth-plugin-masktools2-git: MaskTools2
+	source = avisynth-plugin-xclean-0.10.tar.gz::https://github.com/mysteryx93/xClean/archive/c50de272c6c8b90a97716523366f5d16054ae4f7.tar.gz
+	sha256sums = a58d7b00eecaa66719606285ff17e3604eae56bccf88d862041eb9dd33c03c95
+
+pkgname = avisynth-plugin-xclean
