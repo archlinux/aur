@@ -1,6 +1,6 @@
 pkgbase = primage-bin
 	pkgdesc = A fast CLI for compressing and converting images (JPEG, PNG, WebP, AVIF, QOI)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/imfing/primage
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = primage-bin
 	provides = primage
 	conflicts = primage
 	options = !strip
-	source_x86_64 = primage-x86_64-0.2.0.tgz::https://github.com/imfing/primage/releases/download/v0.2.0/primage-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = c65dc2bdd7c5fb5cac3cbb85c21c2c50ec992cb280881682f1ab9f80b6242179
-	source_aarch64 = primage-aarch64-0.2.0.tgz::https://github.com/imfing/primage/releases/download/v0.2.0/primage-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = e57753746b044733dd5a7a8af1a32f082eb37c3571d0ebe7c8a3b7e8689f95f8
+	source_x86_64 = primage-x86_64-0.2.1.tgz::https://github.com/imfing/primage/releases/download/v0.2.1/primage-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 988302b5e34834f0774fd126f3f9481c653c9092f299683eeeec1cdd318b330e
+	source_aarch64 = primage-aarch64-0.2.1.tgz::https://github.com/imfing/primage/releases/download/v0.2.1/primage-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 720efe4ac149bf372f7cfb9fc625b85320b088891d5ebad7744da42fd932b7a0
 
 pkgname = primage-bin
