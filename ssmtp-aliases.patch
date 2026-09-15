@@ -1,6 +1,8 @@
---- ssmtp-2.61/Makefile.in   2008-06-07 14:41:15.000000000 -0400
-+++ ssmtp-2.61.new/Makefile.in   2008-06-07 14:41:46.000000000 -0400
-@@ -17,6 +17,7 @@
+diff --git a/Makefile.in b/Makefile.in
+index 1cb7075..abdc797 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -17,6 +17,7 @@ SSMTPCONFDIR=$(etcdir)/ssmtp
  # Configuration files
  CONFIGURATION_FILE=$(SSMTPCONFDIR)/ssmtp.conf
  REVALIASES_FILE=$(SSMTPCONFDIR)/revaliases
@@ -8,7 +10,7 @@
  
  INSTALLED_CONFIGURATION_FILE=$(CONFIGURATION_FILE)
  INSTALLED_REVALIASES_FILE=$(REVALIASES_FILE)
-@@ -34,6 +35,7 @@
+@@ -34,6 +35,7 @@ EXTRADEFS=\
  -DSSMTPCONFDIR=\"$(SSMTPCONFDIR)\" \
  -DCONFIGURATION_FILE=\"$(CONFIGURATION_FILE)\" \
  -DREVALIASES_FILE=\"$(REVALIASES_FILE)\" \
@@ -16,10 +18,68 @@
  
  
  CFLAGS=@DEFS@ $(EXTRADEFS) @CFLAGS@
-diff -u -r -N ssmtp-2.61/ssmtp.c ssmtp-2.61.new/ssmtp.c
---- ssmtp-2.61/ssmtp.c   2008-06-07 14:41:15.000000000 -0400
-+++ ssmtp-2.61.new/ssmtp.c   2008-06-07 14:41:51.000000000 -0400
-@@ -429,6 +429,50 @@
+diff --git a/README b/README
+index be34c9d..d3d7556 100644
+--- a/README
++++ b/README
+@@ -3,12 +3,12 @@ Purpose and value:
+  send their mail via the departmental mailhub from which they pick up their
+  mail (via pop, imap, rsmtp, pop_fetch, NFS... or the like).  This program
+  accepts mail and sends it to the mailhub, optionally replacing the domain in
+- the From: line with a different one.
++ the From: line with a different one and expanding aliases.
+ 
+- WARNING: the above is all it does. It does not receive mail, expand aliases
+- or manage a queue.  That belongs on a mailhub with a system administrator.
+- The man page (ssmtp.8) and the program logic manual (ssmtp_plm) discuss the
+- limitations in more detail.
++ WARNING: the above is all it does. It does not receive mail, or manage a
++ queue.  That belongs on a mailhub with a system administrator.  The man page
++ (ssmtp.8) and the program logic manual (ssmtp_plm) discuss the limitations in
++ more detail. Expanding aliases is only available after release 2.61-11.8.
+ 
+  It uses a minimum of external configuration information, and so can be
+  installed by copying the (right!) binary and an optional four-line config
+diff --git a/ssmtp.8 b/ssmtp.8
+index 116c446..d7c6893 100644
+--- a/ssmtp.8
++++ b/ssmtp.8
+@@ -22,7 +22,8 @@ placed in dead.letter in the sender's home directory.
+ .PP
+ Config files allow one to specify the address to receive mail from
+ root, daemon, etc.; a default mailhub; a default domain to be used in
+-From: lines; and per-user From: addresses and mailhub names.
++From: lines; per-user From: addresses and mailhub names; and aliases in the
++traditional format used by sendmail for the /etc/aliases file.
+ .sp
+ .PP
+ It does not attempt to provide all the functionality of sendmail: it is
+@@ -32,9 +33,8 @@ spool option for non-Sun machines, for machines whose sendmails are too
+ difficult (or various) to configure, for machines with known disfeatures in
+ their sendmails or for ones where there are ``mysterious problems''. 
+ .PP
+-It does not do aliasing, which must be done either in the user agent
+-or on the mailhub. Nor does it honor .forwards, which have to be done
+-on the receiving host.  It especially does not deliver to pipelines.
++It does not honor .forwards, which have to be done on the receiving host.  It
++especially does not deliver to pipelines.
+ 
+ .SH OPTIONS
+ Most sendmail options are irrelevant to sSMTP. Those marked ``ignored'' or
+@@ -275,6 +275,8 @@ through mail.isp.com.
+  /etc/ssmtp/ssmtp.conf - configuration file
+ .br
+  /etc/ssmtp/revaliases - reverse aliases file
++.br
++ /etc/aliases - aliases file
+ 
+ .SH SEE ALSO
+ RFC821, RFC822, ssmtp.conf(5).
+diff --git a/ssmtp.c b/ssmtp.c
+index e847320..c639c55 100644
+--- a/ssmtp.c
++++ b/ssmtp.c
+@@ -450,6 +450,50 @@ void revaliases(struct passwd *pw)
  }
  
  /* 
@@ -70,7 +130,7 @@ diff -u -r -N ssmtp-2.61/ssmtp.c ssmtp-2.61.new/ssmtp.c
  from_strip() -- Transforms "Name <login@host>" into "login@host" or "login@host (Real name)"
  */
  char *from_strip(char *str)
-@@ -654,9 +698,14 @@
+@@ -675,9 +719,14 @@ rcpt_remap() -- Alias systems-level users to the person who
  char *rcpt_remap(char *str)
  {
  	struct passwd *pw;
@@ -88,64 +148,7 @@ diff -u -r -N ssmtp-2.61/ssmtp.c ssmtp-2.61.new/ssmtp.c
  	}
  	else {
  		return(append_domain(root));
-diff -up ssmtp-2.61/README.old ssmtp-2.61/README
---- ssmtp-2.61/README.old	2008-12-26 16:38:31.000000000 +0200
-+++ ssmtp-2.61/README	2008-12-26 16:33:29.000000000 +0200
-@@ -3,12 +3,12 @@ Purpose and value:
-  send their mail via the departmental mailhub from which they pick up their
-  mail (via pop, imap, rsmtp, pop_fetch, NFS... or the like).  This program
-  accepts mail and sends it to the mailhub, optionally replacing the domain in
-- the From: line with a different one.
-+ the From: line with a different one and expanding aliases.
- 
-- WARNING: the above is all it does. It does not receive mail, expand aliases
-- or manage a queue.  That belongs on a mailhub with a system administrator.
-- The man page (ssmtp.8) and the program logic manual (ssmtp_plm) discuss the
-- limitations in more detail.
-+ WARNING: the above is all it does. It does not receive mail, or manage a
-+ queue.  That belongs on a mailhub with a system administrator.  The man page
-+ (ssmtp.8) and the program logic manual (ssmtp_plm) discuss the limitations in
-+ more detail. Expanding aliases is only available after release 2.61-11.8.
- 
-  It uses a minimum of external configuration information, and so can be
-  installed by copying the (right!) binary and an optional four-line config
-diff -up ssmtp-2.61/ssmtp.8.old ssmtp-2.61/ssmtp.8
---- ssmtp-2.61/ssmtp.8.old	2008-12-26 16:38:49.000000000 +0200
-+++ ssmtp-2.61/ssmtp.8	2008-12-26 16:46:33.000000000 +0200
-@@ -22,7 +22,8 @@ placed in dead.letter in the sender's ho
- .PP
- Config files allow one to specify the address to receive mail from
- root, daemon, etc.; a default mailhub; a default domain to be used in
--From: lines; and per-user From: addresses and mailhub names.
-+From: lines; per-user From: addresses and mailhub names; and aliases in the
-+traditional format used by sendmail for the /etc/aliases file.
- .sp
- .PP
- It does not attempt to provide all the functionality of sendmail: it is
-@@ -32,9 +33,8 @@ spool option for non-Sun machines, for m
- difficult (or various) to configure, for machines with known disfeatures in
- their sendmails or for ones where there are ``mysterious problems''. 
- .PP
--It does not do aliasing, which must be done either in the user agent
--or on the mailhub. Nor does it honor .forwards, which have to be done
--on the recieving host.  It especially does not deliver to pipelines.
-+It does not honor .forwards, which have to be done on the recieving host.  It
-+especially does not deliver to pipelines.
- 
- .SH OPTIONS
- Most sendmail options are irrelevent to sSMTP. Those marked ``ignored'' or
-@@ -271,6 +271,8 @@ through mail.isp.com.
-  /etc/ssmtp/ssmtp.conf - configuration file
- .br
-  /etc/ssmtp/revaliases - reverse aliases file
-+.br
-+ /etc/aliases - aliases file
- 
- .SH SEE ALSO
- RFC821, RFC822, ssmtp.conf(5).
---- ssmtp-2.64/ssmtp.c.orig	2012-07-01 02:33:18.966734682 +0300
-+++ ssmtp-2.64/ssmtp.c	2012-07-01 02:33:53.102942337 +0300
-@@ -1781,7 +1781,7 @@ char **parse_options(int argc, char *arg
+@@ -1898,7 +1947,7 @@ char **parse_options(int argc, char *argv[])
  	}
  	else if(strcmp(prog, "newaliases") == 0) {
  		/* Someone wanted to rebuild aliases */

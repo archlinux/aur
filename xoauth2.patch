@@ -6,21 +6,22 @@ Patch by Moriyoshi Koizumi <mozo@mozo.jp>
 Modified by Kangjing Huang <huangkangjing@gmail.com>
 
 
-diff --color -u ssmtp-2.64.orig/ssmtp.c ssmtp-2.64/ssmtp.c
---- ssmtp-2.64.orig/ssmtp.c	2023-10-21 00:39:18.895976193 -0400
-+++ ssmtp-2.64/ssmtp.c	2023-10-21 00:40:59.993918590 -0400
-@@ -1604,6 +1604,7 @@
+diff --git a/ssmtp.c b/ssmtp.c
+index c639c55..0cf5e55 100644
+--- a/ssmtp.c
++++ b/ssmtp.c
+@@ -1725,6 +1725,7 @@ int ssmtp(char *argv[])
  		}
  		else {
  #endif
 +		if(auth_method && strcasecmp(auth_method, "login") == 0) {
  		memset(buf, 0, bufsize);
- 		to64frombits(buf, auth_user, strlen(auth_user));
+ 		to64frombits((unsigned char *)buf, (unsigned char *)auth_user, strlen(auth_user));
  		if (use_oldauth) {
-@@ -1628,6 +1629,22 @@
+@@ -1749,6 +1750,22 @@ int ssmtp(char *argv[])
  		memset(buf, 0, bufsize);
  
- 		to64frombits(buf, auth_pass, strlen(auth_pass));
+ 		to64frombits((unsigned char *)buf, (unsigned char *)auth_pass, strlen(auth_pass));
 +		} else if(auth_method && strcasecmp(auth_method, "xoauth2") == 0) {
 +			int authbuflen;
 +			char *authbuf = malloc(5 + strlen(auth_user) + 1 + 5 + 6 + 1 + strlen(auth_pass) + 2 + 1);
@@ -34,10 +35,9 @@ diff --color -u ssmtp-2.64.orig/ssmtp.c ssmtp-2.64/ssmtp.c
 +			}
 +			memset(buf, 0, bufsize);
 +			authbuflen = sprintf(authbuf, "user=%s\1auth=Bearer %s\1\1", auth_user, auth_pass);
-+			to64frombits(buf, (unsigned char*)authbuf, authbuflen);
++			to64frombits((unsigned char *)buf, (unsigned char *)authbuf, authbuflen);
 +			free(authbuf);
 +		}
  #ifdef MD5AUTH
  		}
  #endif
-

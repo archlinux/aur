@@ -29,7 +29,7 @@
  # Use SSL/TLS to send secure messages to server.
  #UseTLS=YES
 +#IMPORTANT: The following line is mandatory for TLS authentication
-+TLS_CA_File=/etc/pki/tls/certs/ca-bundle.crt
++TLS_CA_File=/etc/ssl/certs/ca-certificates.crt
  
  # Use SSL/TLS certificate to authenticate against smtp host.
  #UseTLSCert=YES
