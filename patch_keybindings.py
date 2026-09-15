@@ -42,10 +42,12 @@ DISPATCH_LOCAL_RE = re.compile(
     rb'[^;]{0,100}?return (?P<action>[A-Za-z_$][A-Za-z0-9_$]*)\(\),!0;'
 )
 MODEL_CYCLE_RE = re.compile(
-    rb'modelCycle:\{id:"model-cycle",label:"Ctrl\+[NP]",'
+    rb'modelCycle:\{id:"model-cycle",label:"Ctrl\+(?P<mlabel>[NP])",'
     rb'matcher:\((?P<mparam>[A-Za-z_$][A-Za-z0-9_$]{0,7})\)=>'
-    rb'[A-Za-z_$][A-Za-z0-9_$]{0,7}\((?P=mparam),"[np]"\)\}'
+    rb'[A-Za-z_$][A-Za-z0-9_$]{0,7}\((?P=mparam),"(?P<mkey>[np])"\)\}'
 )
+RANGE_GAP = b"\xde\xadRANGE_GAP\xad\xde"
+BINARY_RECORD_KEYMAP_WINDOW = 4096
 DISPLAY_REPLACEMENTS = (
     (b"Ctrl + P", b"Ctrl + G"),
     (b"Ctrl+P", b"Ctrl+G"),
@@ -64,6 +66,145 @@ DISPLAY_MAP = dict(DISPLAY_REPLACEMENTS)
 DISPLAY_RE = re.compile(b"|".join(re.escape(before) for before, _ in DISPLAY_REPLACEMENTS))
 
 
+def _ensure_disjoint_spans(spans: list[tuple[int, int]]) -> None:
+    ordered = sorted(spans)
+    if any(left[1] > right[0] for left, right in zip(ordered, ordered[1:])):
+        raise PatchError("keybinding patch targets overlap")
+
+
+def _find_binary_record_keymap(data: bytes, patched: bool) -> tuple[int, int, int] | None:
+    """Find the newer keymap whose entries carry binary records instead of actions."""
+    first_key, second_key = (b"ctrl-i", b"ctrl-g") if patched else (b"ctrl-g", b"ctrl-p")
+    candidates = []
+    offset = 0
+    while True:
+        first_position = data.find(first_key + b"\x00", offset)
+        if first_position == -1:
+            break
+        first_end = first_position + len(first_key) + 1
+        if not data[first_end : first_end + 2] == b"\x00\x06":
+            offset = first_end
+            continue
+        window_end = min(len(data), first_position + BINARY_RECORD_KEYMAP_WINDOW)
+        second_position = data.find(second_key + b"\x00", first_end, window_end)
+        slash_position = data.find(b"ctrl-slash\x00", first_end, window_end)
+        model_position = data.find(b"model-cycle\x00", first_end, window_end)
+        autonomy_position = data.find(b"autonomy-cycle\x00", first_end, window_end)
+        if (
+            second_position > first_position
+            and slash_position > second_position
+            and model_position > slash_position
+            and autonomy_position > model_position
+            and RANGE_GAP not in data[first_position:autonomy_position]
+        ):
+            second_end = second_position + len(second_key) + 1
+            if data[second_end : second_end + 2] == b"\x00\x06":
+                candidates.append((first_position, second_position, autonomy_position))
+        offset = first_end
+    if len(candidates) > 1:
+        raise PatchError("expected one binary-record keymap, found multiple")
+    return candidates[0] if candidates else None
+
+
+def _find_binary_model_key(data: bytes, keymap: tuple[int, int, int], key: bytes) -> int:
+    """Find the one binary-record keymap entry for the model-cycle binding."""
+    first_position, _, autonomy_position = keymap
+    marker = key + b"\x00\x00\x06"
+    candidates = []
+    offset = first_position
+    while True:
+        position = data.find(marker, offset, autonomy_position)
+        if position == -1:
+            break
+        candidates.append(position)
+        offset = position + 1
+    if RANGE_GAP in data[first_position:autonomy_position]:
+        raise PatchError("binary-record keymap crosses an unknown range gap")
+    if len(candidates) != 1:
+        raise PatchError("expected one binary-record model key")
+    return candidates[0]
+
+
+def _model_cycle_matches(data: bytes) -> list[re.Match[bytes]]:
+    return [match for match in MODEL_CYCLE_RE.finditer(data) if RANGE_GAP not in match.group(0)]
+
+
+def _apply_binary_record_patch(data: bytes, keymap: tuple[int, int, int]) -> bytes:
+    """Rotate the v0.219 keymap and its direct runtime dispatch statements."""
+    queue_key_start, editor_key_start, _ = keymap
+    patched = data[queue_key_start : queue_key_start + len(b"ctrl-i")] == b"ctrl-i"
+    model_key = _find_binary_model_key(data, keymap, b"ctrl-p" if patched else b"ctrl-n")
+    model_cycle = _model_cycle_matches(data)
+    dispatch_g = _dispatch_matches(data, b"ctrl-g")
+    dispatch_p = _dispatch_matches(data, b"ctrl-p")
+    dispatch_i = _dispatch_matches(data, b"ctrl-i")
+
+    if len(model_cycle) != 1:
+        raise PatchError("binary-record keymap has an unknown model registry")
+
+    model_match = model_cycle[0]
+    if len(dispatch_g) == 1 and len(dispatch_i) == 1 and not dispatch_p:
+        if (
+            dispatch_g[0][2].group("guard") is None
+            and dispatch_i[0][2].group("guard") == b"&&" + dispatch_i[0][2].group("action")
+            and model_match.group("mlabel") == b"P"
+            and model_match.group("mkey") == b"p"
+        ):
+            _ensure_disjoint_spans(
+                [
+                    (queue_key_start, queue_key_start + len(b"ctrl-i")),
+                    (editor_key_start, editor_key_start + len(b"ctrl-g")),
+                    (model_key, model_key + len(b"ctrl-p")),
+                    (dispatch_g[0][0], dispatch_g[0][1]),
+                    (dispatch_i[0][0], dispatch_i[0][1]),
+                    model_match.span(),
+                ]
+            )
+            return data
+        raise PatchError("binary-record keymap is partially patched or has an unknown model registry")
+
+    if len(dispatch_g) != 1 or len(dispatch_p) != 1 or dispatch_i:
+        raise PatchError("expected one unique binary-record Ctrl-G and Ctrl-P action")
+    g_start, g_end, g_match = dispatch_g[0]
+    p_start, p_end, p_match = dispatch_p[0]
+    if (
+        g_match.group("guard") != b"&&" + g_match.group("action")
+        or p_match.group("guard") is not None
+    ):
+        raise PatchError("binary-record dispatch has an unsafe action guard")
+    if not g_start < p_start or p_start - g_end > 16 or b";" in data[g_end:p_start]:
+        raise PatchError("binary-record dispatch statements are not adjacent")
+    if model_match.group("mlabel") != b"N" or model_match.group("mkey") != b"n":
+        raise PatchError("binary-record model registry is partially patched or unknown")
+    _ensure_disjoint_spans(
+        [
+            (queue_key_start, queue_key_start + len(b"ctrl-g")),
+            (editor_key_start, editor_key_start + len(b"ctrl-p")),
+            (model_key, model_key + len(b"ctrl-n")),
+            (g_start, p_end),
+            model_match.span(),
+        ]
+    )
+
+    g_stmt = g_match.group(0).replace(b'"ctrl-g"', b'"ctrl-i"', 1)
+    p_stmt = p_match.group(0).replace(b'"ctrl-p"', b'"ctrl-g"', 1)
+    dispatch_replacement = g_stmt + data[g_end:p_start] + p_stmt
+    if len(dispatch_replacement) != p_end - g_start:
+        raise PatchError("binary-record dispatch rotation changed binary size")
+
+    patched = bytearray(data)
+    patched[queue_key_start : queue_key_start + len(b"ctrl-g")] = b"ctrl-i"
+    patched[editor_key_start : editor_key_start + len(b"ctrl-p")] = b"ctrl-g"
+    patched[model_key : model_key + len(b"ctrl-n")] = b"ctrl-p"
+    patched[g_start:p_end] = dispatch_replacement
+    mc_start, mc_end = model_match.span()
+    patched[mc_start:mc_end] = model_match.group(0).replace(b',"n")}', b',"p")}', 1)
+    patched = bytearray(DISPLAY_RE.sub(lambda match: DISPLAY_MAP[match.group(0)], bytes(patched)))
+    if len(patched) != len(data):
+        raise PatchError("binary-record keybinding rotation changed binary size")
+    return bytes(patched)
+
+
 def _find_keymap(data: bytes) -> re.Match[bytes]:
     """Locate the one serialized keymap whose actions the dispatch confirms."""
     matches = []
@@ -73,7 +214,7 @@ def _find_keymap(data: bytes) -> re.Match[bytes]:
         if position == -1:
             break
         match = TABLE_RE.match(data, position)
-        if match:
+        if match and RANGE_GAP not in match.group(0):
             matches.append(match)
         offset = position + 1
     candidates = []
@@ -119,14 +260,25 @@ def _dispatch_matches(
         for match in DISPATCH_LOCAL_RE.finditer(data[window_start:window_end]):
             if match.group("key") != key:
                 continue
+            absolute_start = window_start + match.start()
+            absolute_end = window_start + match.end()
+            if RANGE_GAP in data[absolute_start:absolute_end]:
+                continue
             if action is not None and match.group("action") != action:
                 continue
-            found.append((window_start + match.start(), window_start + match.end(), match))
+            found.append((absolute_start, absolute_end, match))
         offset = position + 1
 
 
 def apply_patch_bytes(data: bytes) -> bytes:
     """Rotate editor/model/queue bindings, refusing unknown layouts."""
+    binary_keymap = _find_binary_record_keymap(data, patched=False)
+    if binary_keymap:
+        return _apply_binary_record_patch(data, binary_keymap)
+    patched_binary_keymap = _find_binary_record_keymap(data, patched=True)
+    if patched_binary_keymap:
+        return _apply_binary_record_patch(data, patched_binary_keymap)
+
     keymap_match = _find_keymap(data)
     start, end = keymap_match.span()
     keymap = keymap_match.group(0)
@@ -138,20 +290,26 @@ def apply_patch_bytes(data: bytes) -> bytes:
         queue_action, editor_action = editor_action, queue_action
     if len(queue_action) != len(editor_action):
         raise PatchError("keybinding action names have different byte lengths")
-    model_cycle = list(MODEL_CYCLE_RE.finditer(data))
+    model_cycle = _model_cycle_matches(data)
 
     if editor_key == b"ctrl-i":
         # Already-rotated (or partially rotated) layout: accept it only when it
         # is byte-for-byte the state this patcher produces.
-        if len(model_cycle) != 1 or not model_cycle[0].group(0).endswith(b',"p")}'):
+        if (
+            len(model_cycle) != 1
+            or model_cycle[0].group("mlabel") != b"P"
+            or model_cycle[0].group("mkey") != b"p"
+        ):
             raise PatchError("keymap is partially patched or has an unknown model registry")
         dispatch_g = _dispatch_matches(data, b"ctrl-g", editor_action)
         dispatch_n = _dispatch_matches(data, b"ctrl-i", queue_action)
+        dispatch_p = _dispatch_matches(data, b"ctrl-p")
         if (
             len(dispatch_g) == 1
             and dispatch_g[0][2].group("guard") is None
             and len(dispatch_n) == 1
             and dispatch_n[0][2].group("guard") == b"&&" + queue_action
+            and not dispatch_p
         ):
             return data
         raise PatchError("keymap is partially patched or has an unknown Ctrl-G/Ctrl-I layout")
@@ -171,6 +329,12 @@ def apply_patch_bytes(data: bytes) -> bytes:
         raise PatchError("expected one unique Ctrl-G, Ctrl-P, and Ctrl-I action")
     if dispatch_n_any:
         raise PatchError("upstream already binds Ctrl-I inline; refusing to rotate")
+    if (
+        len(model_cycle) != 1
+        or model_cycle[0].group("mlabel") != b"N"
+        or model_cycle[0].group("mkey") != b"n"
+    ):
+        raise PatchError("keymap has a partially patched or unknown model registry")
 
     g_start, g_end, g_match = dispatch_g[0]
     p_start, p_end, p_match = dispatch_p[0]
@@ -231,9 +395,7 @@ def apply_patch_bytes(data: bytes) -> bytes:
     if len(patched_keymap) != len(keymap):
         raise PatchError("keymap replacement changed binary size")
 
-    spans = sorted([(start, end), (g_start, p_end), model_cycle[0].span()])
-    if not (spans[0][1] <= spans[1][0] and spans[1][1] <= spans[2][0]):
-        raise PatchError("keybinding patch targets overlap")
+    _ensure_disjoint_spans([(start, end), (g_start, p_end), model_cycle[0].span()])
 
     patched = bytearray(data)
     patched[start:end] = patched_keymap
