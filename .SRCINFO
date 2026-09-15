@@ -1,11 +1,12 @@
 pkgbase = ldscript-generator
 	pkgdesc = This is a python tool based on pydevicetree (GitHub/PyPI) which generates linker scripts for Freedom Metal applications.
 	pkgver = 20.08.00.00
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/sifive/ldscript-generator
 	arch = any
 	groups = sifive
 	license = Apache-2.0
+	depends = git
 	depends = sh
 	depends = python
 	depends = python-jinja
@@ -14,7 +15,7 @@ pkgbase = ldscript-generator
 	depends = python-pylint
 	depends = python-pydevicetree
 	options = !strip
-	source = ldscript-generator-20.08.00.00.tar.gz::https://github.com/sifive/ldscript-generator/archive/refs/tags/v20.08.00.00.tar.gz
-	sha256sums = 81699bc1cc9cb6727d2b22e97192bf0431bf7018436d57cfedd13a10dc809144
+	source = ldscript-generator::git+https://github.com/sifive/ldscript-generator.git#tag=v20.08.00.00
+	sha256sums = 9a9e4492a71ebfa9890e5d03310651095f9e7c3588aff300b2c5df00c0cd0abe
 
 pkgname = ldscript-generator
