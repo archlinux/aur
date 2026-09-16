@@ -8,7 +8,8 @@ post_install() {
       systemctl enable --now infopanel-smart.timer
 
     Intel iGPU engine utilization (optional):
-      echo 'kernel.perf_event_paranoid=-1' > /etc/sysctl.d/99-infopanel-perf.conf
+      echo 'kernel.perf_event_paranoid=-1' | sudo tee /etc/sysctl.d/99-infopanel-perf.conf
+      sudo sysctl --system
 EOF
 }
 

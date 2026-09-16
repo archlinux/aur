@@ -1,6 +1,6 @@
 pkgbase = infopanel-bin
 	pkgdesc = Hardware monitoring dashboards for desktop overlays, USB LCD panels and web browsers
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/emaspa/InfoPanel-linux
 	install = infopanel-bin.install
@@ -25,9 +25,9 @@ pkgbase = infopanel-bin
 	conflicts = infopanel
 	options = !strip
 	options = !debug
-	source = https://github.com/emaspa/InfoPanel-linux/releases/download/v0.3.1/infopanel-0.3.1-linux-x64.tar.gz
+	source = https://github.com/emaspa/InfoPanel-linux/releases/download/v0.3.2/infopanel-0.3.2-linux-x64.tar.gz
 	source = stage-package.sh
-	sha256sums = b2d5c4e763364cf98fc59e359b79b387c70c89dcc1135fc7c64537967fd6532a
+	sha256sums = c2d54e3820971fd93f1772de420f06ae5662d4e09f4401628654b80e5cf6792e
 	sha256sums = a80ca27db456161f76f9b3198d0561fa3d327d05b3c57afd4222a64737dbcc8d
 
 pkgname = infopanel-bin
