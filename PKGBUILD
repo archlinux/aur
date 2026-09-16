@@ -15,10 +15,10 @@ url=https://www.notion.so/desktop
 license=(custom)
 depends=(
 	bash
-	gcc-libs
 	glibc
 	hicolor-icon-theme
 	electron41
+    libstdc++
 )
 makedepends=(
 	p7zip
