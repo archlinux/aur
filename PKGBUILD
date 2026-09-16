@@ -4,7 +4,7 @@
 
 _pkgname=github-mcp-server
 pkgname=${_pkgname}-bin
-pkgver=1.12.1 # renovate: datasource=github-releases depName=github/github-mcp-server versioning=semver-coerced
+pkgver=1.12.2 # renovate: datasource=github-releases depName=github/github-mcp-server versioning=semver-coerced
 pkgrel=1
 pkgdesc="GitHub's official MCP server which connects AI tools directly to GitHub's platform"
 arch=('aarch64' 'i686' 'x86_64')
@@ -21,9 +21,9 @@ source_i686=(
 source_x86_64=(
   "${_pkgname}_${pkgver}_Linux_x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz"
 )
-sha256sums_aarch64=('0f613c61fa524b30278a249ae199220465ff051e79177e58866e5e677191fda9')
-sha256sums_i686=('e751736f57e7e2cb060c77a166ddfd4bda173db8542fb9437cbcbfd52e628767')
-sha256sums_x86_64=('e45c73a26a3c4cd643b40360db06f442de1e73a60d4eaf9e8639204ec3b95d3b')
+sha256sums_aarch64=('2b30f9fcc061b57456cbe38ddc0f13c88863bad49557508a9196f2d1c4cb17a5')
+sha256sums_i686=('9d0be9fe3f68b3f4d6a9203b0405d821e839f3cdf6db5cd2e72210b690957f9f')
+sha256sums_x86_64=('95843162759da2c31dde082dd145be35db82164594796c294414b69790c2290e')
 
 prepare() {
   chmod +x "${srcdir}/${_pkgname}"
