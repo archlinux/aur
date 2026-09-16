@@ -1,6 +1,6 @@
 pkgbase = open-code-review
 	pkgdesc = AI-powered code review CLI (Alibaba)
-	pkgver = 1.12.3
+	pkgver = 1.12.4
 	pkgrel = 1
 	url = https://github.com/alibaba/open-code-review
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = open-code-review
 	makedepends = go>=1.25
 	makedepends = git
 	depends = glibc
-	source = open-code-review-1.12.3.tar.gz::https://github.com/alibaba/open-code-review/archive/refs/tags/v1.12.3.tar.gz
-	sha256sums = db9c2e290d9e56d727b6747109ff863915f7c3eb8497e12a223a67eeab1bc3ee
+	source = open-code-review-1.12.4.tar.gz::https://github.com/alibaba/open-code-review/archive/refs/tags/v1.12.4.tar.gz
+	sha256sums = 2046da3cf30a4b672236c66f707d02383de5792498a8e6d7b9fece6be2c212b9
 
 pkgname = open-code-review
