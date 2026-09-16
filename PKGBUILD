@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
 pkgname=pacman-hook-aur-set-notifications
 _name=aur-set-notifications
-pkgver="0.1.6"
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="toggle status of notifications for AUR packages on (un|)installation"
 arch=(any)
@@ -16,7 +16,7 @@ depends=(
 )
 backup=('etc/aur_credentials.conf')
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.zip")
-sha256sums=('cde99af311284c341c90221a0237c714cc3824e1e4553d9974f0f7aa2f864d06')
+sha256sums=('46eda28a3012fbfaf4f7b5dd1a08484fa8972d3344e37abb2e674f87627b369a')
 
 package() {
   cd "${srcdir}/${pkgname}-v$pkgver"

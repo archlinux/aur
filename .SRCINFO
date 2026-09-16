@@ -1,6 +1,6 @@
 pkgbase = pacman-hook-aur-set-notifications
 	pkgdesc = toggle status of notifications for AUR packages on (un|)installation
-	pkgver = 0.1.6
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://gitlab.com/Marcool04/pacman-hook-aur-set-notifications
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = pacman-hook-aur-set-notifications
 	depends = pacman
 	depends = ripgrep
 	backup = etc/aur_credentials.conf
-	source = https://gitlab.com/Marcool04/pacman-hook-aur-set-notifications/-/archive/v0.1.6/pacman-hook-aur-set-notifications-v0.1.6.zip
-	sha256sums = cde99af311284c341c90221a0237c714cc3824e1e4553d9974f0f7aa2f864d06
+	source = https://gitlab.com/Marcool04/pacman-hook-aur-set-notifications/-/archive/v0.1.8/pacman-hook-aur-set-notifications-v0.1.8.zip
+	sha256sums = 46eda28a3012fbfaf4f7b5dd1a08484fa8972d3344e37abb2e674f87627b369a
 
 pkgname = pacman-hook-aur-set-notifications
