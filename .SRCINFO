@@ -1,0 +1,17 @@
+pkgbase = tokensave-bin
+	pkgdesc = Semantic code intelligence for AI coding agents
+	pkgver = 7.12.1
+	pkgrel = 1
+	url = https://github.com/aovestdipaperino/tokensave
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tokensave
+	conflicts = tokensave
+	source = https://github.com/aovestdipaperino/tokensave/releases/download/v7.12.1/tokensave-v7.12.1-x86_64-linux.tar.gz
+	source = tokensave-license-7.12.1::https://raw.githubusercontent.com/aovestdipaperino/tokensave/v7.12.1/LICENSE
+	sha256sums = 184612db16800e384a1bcdc7fadcc53fa73bda70240f9c0416ac4b88c7e924fb
+	sha256sums = 08e7979abf9173c207753df084b5d94fa0cbe583a7cb6cbc20de5f973ee22aa0
+
+pkgname = tokensave-bin
