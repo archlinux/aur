@@ -1,0 +1,21 @@
+pkgbase = waymore
+	pkgdesc = Find way more from the Wayback Machine, Common Crawl, Alien Vault OTX, URLScan, VirusTotal, GhostArchive & Intelligence X!
+	pkgver = 8.9
+	pkgrel = 1
+	url = https://github.com/xnl-h4ck3r/waymore
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-yaml
+	depends = python-termcolor
+	depends = python-psutil
+	depends = python-tldextract
+	source = waymore-8.9.tar.gz::https://github.com/xnl-h4ck3r/waymore/archive/refs/tags/v8.9.tar.gz
+	sha256sums = cd36d7a1f8df76c598f4ca239bb3eb06840005fbf3f71169d58f079de1696fb0
+
+pkgname = waymore
