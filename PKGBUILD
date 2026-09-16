@@ -2,7 +2,7 @@
 
 pkgname=continuwuity-bin
 _name=${pkgname%-bin}
-pkgver=26.8.1
+pkgver=26.9.0
 pkgrel=1
 pkgdesc='Community driven continuation of conduwuit & Conduit, focusing on user experience and new features'
 arch=(x86_64 aarch64)
@@ -20,11 +20,11 @@ source=($_name-$pkgver-LICENSE::$url/raw/tag/v$pkgver/LICENSE
         $_name-$pkgver-conduwuit.service::$url/raw/tag/v$pkgver/pkg/conduwuit.service
         $_name-$pkgver-conduwuit-example.toml::$url/raw/tag/v$pkgver/conduwuit-example.toml)
 b2sums=('518d931ec3677f070b113790e4aa9ee45ed1e4b9db4b15c08ef72f62eb82f4778347a55fa7cd61cc1654c012cdc0b52f0cf5d05444b20c7e9a002f8d3088c276'
-        '3d3916c6f7fbcc48fca991f7643ad23c8c97159bbb5bdceaaf5472518c5d473b65140706252701bccba0c05dbbebac1d9354cfbe257996c522949b7bd4d01594'
+        '76157760c82c87456a614704a16493d9b17684c62ccf4a7c62d4de46090f13a9ca4419073505967417d9c6c33a05455f543590e74c82d6326ecc0f50afcb2e80'
         '1a7146581c3cedef312287589c5189e02ef205e08e997af3604a472b2584466c693d52ca8cda254d2202d50bd46af65bda049b3b1f1fc00aaa074cbcb31e0e73'
-        'e91561b83d3ecdded7b7b8a44ff2199b63a8c24b400200e0e5c7f1cdd12a2d34d8d4834c451b16acb4633687dc962368a8e67f13d13b71aa094e87fea6819136')
-b2sums_x86_64=('19e1e76fe5943bc417084ecac245a4bc21606ba9c5ab126b56f4065b8178761a7bdc31ce778462512b905b7f00e24477fef0f5294421e6a19d9fc74c87b01490')
-b2sums_aarch64=('f8545d3d5cf8f951b8bafecc53aacbbdf9752fc72390049bc72343e79eabb03b432d3586897f9ad2f1225f516d94eb6550e94ff10a3750dbef36a87de8598256')
+        'e8ffc238d3dfb527c1a08ac875373605fdf837cfbd459be7fc70f655b38fe689d984bc440e7a07b77d3532a9c14d269ac016a86e52f5bfce20e19ec7e0a97419')
+b2sums_x86_64=('f2d36b6b30dee5766f9dd39910e7425228483073f035a208941d0b5e1fa02b0a7d9c846b0436cdc28bd2290e8af3ad345c6db71fd23f6e509c4c94648dac4efe')
+b2sums_aarch64=('3fde369cb82c6d73518871c0f33e49cbfec61d572a85ac404906a3b73002eb60e4b5a04573be47a47403b5edfd235dd3982816db21a3408e1cb7540e026c851e')
 
 package() {
     install -Dm755 $_name-$pkgver-$CARCH "$pkgdir/usr/bin/conduwuit"
