@@ -8,7 +8,7 @@
 ## pkginfo
 pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-bin
-pkgver=GE_Proton11_6
+pkgver=GE_Proton11_7
 pkgrel=1
 epoch=1
 arch=('x86_64' 'aarch64')
@@ -79,11 +79,11 @@ sha512sums=(
 )
 
 sha512sums_x86_64=(
-  '543e3af57bb138b1be5a5b98bba4d39ca59340bfa34ec8c12144f3e16d7434ed75bd7a68eafc228b16695884629595af0905156e5227c1898f93cdbc92cb5fcb'
+  '7db87e9787e20c35cbdac26018431d5794626b626e4067b050684e45a88cc2ca229d7d263519eafb2e168cde5bef57611065d159d3685aaec152ccb9abe3073f'
 )
 
 sha512sums_aarch64=(
-  'c539b1c3b4fe6132fa3a2bce274926e41f0ea77a9bbc9aadb78878b840f6ab32d690a3e2b89f00ac864678c528cee3abf99e7ac222277f33403cf27834626f3b'
+  '741cf70256f13b20d44952b590defd68b115814097f911c9ec053a64d33795267e2a982a5ce939407e8b649613eb3943bb2e2ebf4794d302ff96b83b61457cdd'
 )
 
 build() {
