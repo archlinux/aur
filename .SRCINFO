@@ -1,14 +1,16 @@
 pkgbase = python-eth-tester
 	pkgdesc = Tool suite for testing ethereum applications.
-	pkgver = 0.13.0b1
-	pkgrel = 1
+	pkgver = 0.14.0b1
+	pkgrel = 2
 	url = https://github.com/ethereum/eth-tester
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
 	depends = python-eth-abi
@@ -21,7 +23,7 @@ pkgbase = python-eth-tester
 	depends = python-toolz
 	depends = python-hexbytes
 	depends = python-py-evm
-	source = https://files.pythonhosted.org/packages/source/e/eth_tester/eth_tester-0.13.0b1.tar.gz
-	sha512sums = 05bee3741cb903e257cc6f6604d104081aae3697a1a06ea0e77f55876f6f33ae1feb0d574412b9cdf25033b4d4d64a658c1dd82dfcaa9f94824b1c016fc94359
+	source = git+https://github.com/ethereum/eth-tester.git#tag=v0.14.0-beta.1
+	sha512sums = 6b21d85f005dd445878e553ddd636bbc3ad8ec0fcf95f3eb5f49b27d972e08b9d593cf1f66b47e608ed2b0e703dae76bbd5853d0b94c7baa0c415bd0354da30d
 
 pkgname = python-eth-tester
