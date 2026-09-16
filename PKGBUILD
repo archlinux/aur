@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Kalisiak <tomasz.kalisiak@rhythmgame.eu>
 pkgname=rhythmgame-git
 _pkgname=RhythmGame
-pkgver=1.3.17.r1.g362d974fb
+pkgver=1.3.18.r3.g2e7a9b35e
 pkgrel=1
 pkgdesc="A customizable BMS player for Windows and Linux – development git build"
 arch=(x86_64)
@@ -20,11 +20,18 @@ depends=(
   mimalloc
   zstd
   libsndfile
+  alsa-lib
+  systemd-libs
   sdl2
   sdl2_image
   libxml2
   libxkbcommon
   qtkeychain-qt6
+  tbb
+  sqlite
+  glibc
+  libgcc
+  libstdc++
   # aur
   miniaudio
   magic_enum
@@ -41,6 +48,9 @@ makedepends=(
   pkgconf
   autoconf-archive
   qt6-tools
+  curl
+  zip
+  unzip
 )
 provides=(rhythmgame)
 conflicts=(rhythmgame)
