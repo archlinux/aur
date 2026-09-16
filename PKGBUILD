@@ -4,11 +4,11 @@
 
 pkgname=nub
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The fast all-in-one Node.js toolkit'
 license=('MIT')
 url="https://nubjs.com"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 depends=('gcc-libs')
 makedepends=('cargo' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nubjs/nub/archive/v${pkgver}.tar.gz")
@@ -23,8 +23,11 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
-  CFLAGS+=' -ffat-lto-objects'
-  CXXFLAGS+=' -ffat-lto-objects'
+  if [[ ${CARCH} == x86_64 ]]; then
+    CFLAGS+=' -ffat-lto-objects'
+    CXXFLAGS+=' -ffat-lto-objects'
+  fi
+
   cargo build --release --frozen
 }
 
