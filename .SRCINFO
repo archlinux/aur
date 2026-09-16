@@ -1,6 +1,6 @@
 pkgbase = simplebench
 	pkgdesc = A workspace for terminal-driven development
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/MaciejKolerski/simplebench
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = simplebench
 	optdepends = git: source control and repository history
 	provides = simplebench
 	conflicts = simplebench-bin
-	source = simplebench-0.2.0.tar.gz::https://github.com/MaciejKolerski/simplebench/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 47c3e4e429be5d1bd846e20d0e5b66018f9f9ba1dc223bb7db48d226f80dfc64
+	source = simplebench-0.3.0.tar.gz::https://github.com/MaciejKolerski/simplebench/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = bd4726dfd6525c028063ca563120e8d17cfa21d336554b92e1c2c9a7e32c9dc4
 
 pkgname = simplebench
