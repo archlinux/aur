@@ -2,7 +2,7 @@
 
 pkgbase=pacredir-git
 pkgname=(pacredir-git pacredir-avahi-git)
-pkgver=0.7.7.r0.g30f1871
+pkgver=0.7.10.r0.g3d0668d
 pkgrel=1
 pkgdesc='redirect pacman requests, assisted by mDNS service discovery - git checkout'
 arch=('x86_64')

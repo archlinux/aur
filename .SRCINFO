@@ -1,6 +1,6 @@
 pkgbase = pacredir-git
 	pkgdesc = redirect pacman requests, assisted by mDNS service discovery - git checkout
-	pkgver = 0.7.7.r0.g30f1871
+	pkgver = 0.7.10.r0.g3d0668d
 	pkgrel = 1
 	url = https://github.com/eworm-de/pacredir
 	arch = x86_64
