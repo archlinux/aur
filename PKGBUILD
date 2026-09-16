@@ -1,6 +1,6 @@
 # Maintainer: sripwoud <me@sripwoud.xyz>
 pkgname=tagwerk-git
-pkgver=r49.8b38a85
+pkgver=r51.b633ce8
 pkgrel=1
 pkgdesc="Passive work-hours tracker for Hyprland, attributed per repo"
 arch=(any)
