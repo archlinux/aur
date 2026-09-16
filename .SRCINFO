@@ -1,6 +1,6 @@
 pkgbase = yakuda-connect
 	pkgdesc = WiVRn VR management software with gaming optimization and OpenXR/OpenVR fixes
-	pkgver = 1.2.8
+	pkgver = 1.2.9
 	pkgrel = 1
 	url = https://github.com/yakuda-stack/yakuda-connect
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = yakuda-connect
 	optdepends = opencomposite-git: OpenVR-Kompatibilitaet fuer VRChat & Co.
 	provides = yakuda-connect
 	conflicts = yakuda-connect-git
-	source = yakuda-connect-1.2.8.tar.gz::https://github.com/yakuda-stack/yakuda-connect/archive/refs/tags/v1.2.8.tar.gz
-	sha256sums = 7dd8f31ea6458eb170529e712121e4c11da87999729b631b184f9529b3d50bca
+	source = yakuda-connect-1.2.9.tar.gz::https://github.com/yakuda-stack/yakuda-connect/archive/refs/tags/v1.2.9.tar.gz
+	sha256sums = 29cecfa6ab63c3faad271787addaf0cd976b5afd161a70fe8796142e0e4a741a
 
 pkgname = yakuda-connect
