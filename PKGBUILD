@@ -1,13 +1,13 @@
 # Maintainer: Valentin Weber
 pkgname="rapidraw-tethering-bin"
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GPU-accelerated RAW image editor with tethering support"
 
 url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
 arch=('x86_64')
-depends=('libgphoto2') 
+depends=('libgphoto2' 'hicolor-icon-theme' 'webkit2gtk-4.1' 'gtk3' 'dbus' 'libsoup3' 'glib2' 'cairo' 'gdk-pixbuf2' 'libgcc' 'libstdc++' 'glibc') 
 provides=("rapidraw")
 conflicts=("rapidraw")
 
