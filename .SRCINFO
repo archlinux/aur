@@ -1,0 +1,14 @@
+pkgbase = timesheet-tray-net
+	pkgdesc = Tray application for tracking working hours
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/BlazekWasTaken/timesheet-tray-net
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	source = timesheet-tray-net-0.1.0::git+https://github.com/BlazekWasTaken/timesheet-tray-net.git#tag=v0.1.0
+	sha256sums = 89422a5d2bda2d337e7b074bc2fe6ce48959fec494a1e0cb953791f7ce3d3abb
+
+pkgname = timesheet-tray-net
