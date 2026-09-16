@@ -1,6 +1,6 @@
 pkgbase = ionix-quickshell-git
 	pkgdesc = Ionix Quickshell desktop shell — bar, popouts and OSD (git)
-	pkgver = r28.7388d3c
+	pkgver = r29.b2f4e2b
 	pkgrel = 1
 	url = https://github.com/LucasionGS/ionix-quickshell
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = ionix-quickshell-git
 	depends = polkit
 	depends = python
 	depends = libnotify
+	depends = sound-theme-freedesktop
 	optdepends = swaync: notification centre integration for the bell module
 	optdepends = brightnessctl: backlight control and brightness OSD
 	optdepends = pavucontrol: advanced audio settings from the audio popout
