@@ -1,0 +1,10 @@
+*
+!.nvchecker.toml
+!changelog.md
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+
+!LICENSES/*
+!LICENSE
+!REUSE

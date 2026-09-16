@@ -1,0 +1,5 @@
+[python-fastmcp]
+source = "github"
+github = "PrefectHQ/fastmcp"
+use_latest_release = true
+prefix = "v"
