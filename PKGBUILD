@@ -1,6 +1,6 @@
 # Maintainer: meatyari <https://github.com/MeatyAri>
 pkgname=slideflare-git
-pkgver=0.1.2.r6.g91fc898
+pkgver=0.1.2.r7.gb49ab22
 pkgrel=1
 pkgdesc="⚡ Blazing fast, interactive presentation tool for developers, educators, and creators"
 arch=('x86_64' 'aarch64')
@@ -23,12 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  local describe
-  describe=$(git describe --long 2>/dev/null) && {
-    printf '%s' "${describe//-/.}"
-    return
-  }
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags | sed 's/^app-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
