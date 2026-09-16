@@ -7,7 +7,7 @@ pkgdesc="‘Java’ Data Exchange for ‘R’ and ‘rJava’"
 url="https://cran.r-project.org/package=jdx"
 license=("GPL2" "BSD")
 pkgver=${_cranver//[:-]/.}
-pkgrel=4
+pkgrel=5
 
 arch=("any")
 depends=(
@@ -40,8 +40,8 @@ optdepends=(
 #     "r-testthat>=3.0.0"
 # )
 
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("f49d89823da03762cc88711bbfe613cdbfc332c7910e9926bbf95a4fd3dd82ea54c99bf696c11e4b020a7adc5a274dfbc2d7672e5aa13d1d6f000c2db3f33720")
+source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_cranname}_${_cranver}.tar.gz")
+b2sums=('f49d89823da03762cc88711bbfe613cdbfc332c7910e9926bbf95a4fd3dd82ea54c99bf696c11e4b020a7adc5a274dfbc2d7672e5aa13d1d6f000c2db3f33720')
 
 build() {
     mkdir -p "${srcdir}/build/"
