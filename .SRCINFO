@@ -1,0 +1,24 @@
+pkgbase = qsgreeter-hyprland-git
+	pkgdesc = QuickShell-based greeter for greetd, running under Hyprland
+	pkgver = r19.83bb4ad
+	pkgrel = 1
+	url = https://github.com/nninkovic95/greetd-qsgreeter
+	install = qsgreeter-hyprland-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = greetd
+	depends = quickshell
+	depends = hyprland
+	depends = glib2
+	depends = accountsservice
+	provides = qsgreeter
+	conflicts = qsgreeter
+	conflicts = qsgreeter-git
+	backup = etc/greetd/qsgreeter-hyprland.lua
+	backup = etc/xdg/quickshell/qsgreeter/colorscheme.json
+	backup = etc/xdg/quickshell/qsgreeter/style.json
+	source = qsgreeter-hyprland-git::git+https://github.com/nninkovic95/greetd-qsgreeter.git#branch=hyprland
+	sha256sums = SKIP
+
+pkgname = qsgreeter-hyprland-git
