@@ -1,6 +1,6 @@
 pkgbase = jet1090-bin
 	pkgdesc = Decode and demodulate Mode S and ADS-B in Rust/Python
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/xoolive/jet1090
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = jet1090-bin
 	license = MIT
 	provides = jet1090
 	conflicts = jet1090
-	source_x86_64 = jet1090-0.6.0-x86_64-unknown-linux-gnu.tar.xz::https://github.com/xoolive/jet1090/releases/download/v0.6.0/jet1090-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 457e1a9d7e80b9211b01da613103932f885f0a51365eed1e4a3903483357d9c0
-	source_aarch64 = jet1090-0.6.0-aarch64-unknown-linux-gnu.tar.xz::https://github.com/xoolive/jet1090/releases/download/v0.6.0/jet1090-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 63b739cdae5f9417b1d2d8bb432c0f26695b8e71121c49b134a7020e92ef26dc
+	source_x86_64 = jet1090-0.7.0-x86_64-unknown-linux-gnu.tar.xz::https://github.com/xoolive/jet1090/releases/download/v0.7.0/jet1090-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 98d175f458807848c4f9959e408f46efacfe573b1dd8c02130519534afb53e9d
+	source_aarch64 = jet1090-0.7.0-aarch64-unknown-linux-gnu.tar.xz::https://github.com/xoolive/jet1090/releases/download/v0.7.0/jet1090-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 75b6652ddae3abbe2bcb5dd96c5f13c7fae14339aa17d021239c39fe4df6bf3e
 
 pkgname = jet1090-bin
