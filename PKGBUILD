@@ -1,7 +1,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=roslyn-language-server
-pkgver=5.11.0_1.26380.4
+pkgver=5.12.0_1.26426.8
 pkgrel=1
 epoch=1
 pkgdesc="A Language Server Protocol (LSP) implementation for C# powered by Roslyn"
@@ -12,10 +12,10 @@ depends=(dotnet-runtime-10.0)
 makedepends=(dotnet-sdk-10.0 moreutils)
 
 # from nuget package metadata
-_commit=dc1db3e7dee178e2744a73eb06dce107c07fa7b1
+_commit=3aeb96c9ecc56a5ee483558f9e648e33e7bfe756
 source=("roslyn-${_commit:0:7}.tar.gz::https://github.com/dotnet/roslyn/archive/$_commit.tar.gz"
         'cache-path.patch')
-sha256sums=('7f3412e7ac80e0ef2f197fdd8868d9d6847dba8d07d311cd1b5afbf53af361d9'
+sha256sums=('99532b6d9b3fa05df2c34ea1dac402ff89a42e815eb96ec87c0d390b904c47a6'
             '1b97b5899e102286759dc4e10675d2524b1c104d0164c3c604402618ad09f0d4')
 
 prepare() {
