@@ -27,7 +27,7 @@ depends=(
   "python"
   "libgcc"
   "glibc"
-  "zlib-ng-compat"
+  "zlib"
 )
 optdepends=(
   "gamemode"
