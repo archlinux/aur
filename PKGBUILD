@@ -2,12 +2,14 @@
 
 # Maintainer: Riccardo Marotti
 
-# Downstream VCS package for Karere with custom CSS live reload.
+# This downstream package tracks upstream Karere and carries the optional
+# custom.css live-reload support from PR #183, which was not accepted upstream
+# for project-scope and maintenance reasons.
 
 pkgname=karere-custom-css-git
 pkgver=4.2.5.r1.g6bf8b2b
 pkgrel=1
-pkgdesc="Native WhatsApp client based on Karere with custom CSS live reload"
+pkgdesc="Downstream Karere with optional custom.css live reload"
 arch=('x86_64')
 url="https://github.com/riccardomarotti/karere"
 license=('GPL-3.0-or-later')
