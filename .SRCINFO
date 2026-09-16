@@ -1,6 +1,6 @@
 pkgbase = yawns
 	pkgdesc = Your Adaptable Widget Notification System
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/ikz87/yawns
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = yawns
 	depends = qt6-base
 	depends = qt6-wayland
 	depends = wayland
-	source = yawns-1.3.0.tar.gz::https://github.com/ikz87/yawns/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 1bdf307f8547233683d781d844ed9c45b233d3456a0306d2978b65e32e957f6a
+	source = yawns-1.3.1.tar.gz::https://github.com/ikz87/yawns/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 50915b3a4ef25a11e215a3021d2348a68ed01ed61f54857b9e12a1a6efd5c54b
 
 pkgname = yawns

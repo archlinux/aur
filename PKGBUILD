@@ -1,6 +1,6 @@
 # Maintainer: Isaac Arcia <[EMAIL]>
 pkgname=yawns
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Your Adaptable Widget Notification System"
 arch=('any')
@@ -29,7 +29,7 @@ makedepends=(
     'wayland'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1bdf307f8547233683d781d844ed9c45b233d3456a0306d2978b65e32e957f6a')
+sha256sums=('50915b3a4ef25a11e215a3021d2348a68ed01ed61f54857b9e12a1a6efd5c54b')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
