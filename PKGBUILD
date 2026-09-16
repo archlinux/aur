@@ -1,7 +1,7 @@
 # Maintainer: Xeonacid <h.dwwwwww@gmail.com>
 
 pkgname=certomancer
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Quickly construct, mock & deploy PKI test configurations using simple declarative configuration."
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python python-aiohttp python-asn1crypto python-click python-pyyaml pyth
 makedepends=(git python-build python-installer python-setuptools python-setuptools-scm python-wheel)
 checkdepends=(python-pytest python-pytz python-requests python-freezegun python-pytest-asyncio python-pyhanko-certvalidator)
 source=(git+$url.git#tag=v$pkgver)
-sha512sums=('6aa38e50ced7e3b901161f76728772f445b6cc31f2a2a69087a4c33778d58a0e7632424a0e804a4db84179d1b91345a1a2d0c8a15f151fe7bf808cd89fc80e17')
+sha512sums=('b8e1168311240776a3cc17302ea1ecaf43acede092d6a419cb7a12af3b20b791b27e6f10ad2530e3d381f4339774f3f2c13ae9e33f4fcc2092c49747c4c9702a')
 
 build() {
   cd $pkgname
