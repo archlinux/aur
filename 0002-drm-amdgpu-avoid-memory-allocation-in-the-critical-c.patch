@@ -1,4 +1,4 @@
-From a166b1f311da3d34e068ece6452a7241f8ab421d Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
 Date: Wed, 29 Oct 2025 15:36:32 +0100
 Subject: [PATCH] drm/amdgpu: avoid memory allocation in the critical code path
@@ -31,10 +31,10 @@ Cherry-picked-for: https://gitlab.archlinux.org/archlinux/packaging/packages/lin
  3 files changed, 14 insertions(+), 49 deletions(-)
 
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_ids.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_ids.c
-index 3ef5bc95642cab..b2af2cc6826c44 100644
+index 81cf9bf999a4..84770635fd04 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_ids.c
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_ids.c
-@@ -201,58 +201,34 @@ static int amdgpu_vmid_grab_idle(struct amdgpu_ring *ring,
+@@ -212,58 +212,34 @@ static int amdgpu_vmid_grab_idle(struct amdgpu_ring *ring,
  	struct amdgpu_device *adev = ring->adev;
  	unsigned vmhub = ring->vm_hub;
  	struct amdgpu_vmid_mgr *id_mgr = &adev->vm_manager.id_mgr[vmhub];
@@ -108,10 +108,10 @@ index 3ef5bc95642cab..b2af2cc6826c44 100644
  }
  
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c
-index 3d2f9d0e2d2397..63e49577a5b2e4 100644
+index ffbae605caaa..07a0bef7a808 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c
-@@ -2830,8 +2830,6 @@ void amdgpu_vm_fini(struct amdgpu_device *adev, struct amdgpu_vm *vm)
+@@ -2836,21 +2836,14 @@ void amdgpu_vm_fini(struct amdgpu_device *adev, struct amdgpu_vm *vm)
   */
  void amdgpu_vm_manager_init(struct amdgpu_device *adev)
  {
@@ -120,7 +120,8 @@ index 3d2f9d0e2d2397..63e49577a5b2e4 100644
  	/* Concurrent flushes are only possible starting with Vega10 and
  	 * are broken on Navi10 and Navi14.
  	 */
-@@ -2840,11 +2838,6 @@ void amdgpu_vm_manager_init(struct amdgpu_device *adev)
+ 	adev->vm_manager.concurrent_flush = !(adev->asic_type < CHIP_VEGA10 ||
+ 					      adev->asic_type == CHIP_NAVI10 ||
  					      adev->asic_type == CHIP_NAVI14);
  	amdgpu_vmid_mgr_init(adev);
  
@@ -133,10 +134,10 @@ index 3d2f9d0e2d2397..63e49577a5b2e4 100644
  	atomic_set(&adev->vm_manager.num_prt_users, 0);
  
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.h b/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.h
-index cf0ec94e8a0754..15d757c016cbbc 100644
+index 076d9a3a5e62..86d77423bc81 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.h
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.h
-@@ -453,10 +453,6 @@ struct amdgpu_vm_manager {
+@@ -455,10 +455,6 @@ struct amdgpu_vm_manager {
  	unsigned int				first_kfd_vmid;
  	bool					concurrent_flush;
  

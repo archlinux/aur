@@ -1,4 +1,4 @@
-From be65376f5df14f61c28c4d585f7571dd4988216c Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
 Date: Tue, 28 Oct 2025 11:16:12 +0100
 Subject: [PATCH] drm/amdgpu: use GFP_ATOMIC instead of NOWAIT in the critical
@@ -21,10 +21,10 @@ Cherry-picked-for: https://gitlab.archlinux.org/archlinux/packaging/packages/lin
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_ids.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_ids.c
-index b2af2cc6826c44..9cab36322c1658 100644
+index 84770635fd04..684f40fce73f 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_ids.c
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_ids.c
-@@ -289,7 +289,7 @@ static int amdgpu_vmid_grab_reserved(struct amdgpu_vm *vm,
+@@ -300,7 +300,7 @@ static int amdgpu_vmid_grab_reserved(struct amdgpu_vm *vm,
  	* user of the VMID.
  	*/
  	r = amdgpu_sync_fence(&(*id)->active, &job->base.s_fence->finished,
@@ -33,7 +33,7 @@ index b2af2cc6826c44..9cab36322c1658 100644
  	if (r)
  		return r;
  
-@@ -349,7 +349,7 @@ static int amdgpu_vmid_grab_used(struct amdgpu_vm *vm,
+@@ -360,7 +360,7 @@ static int amdgpu_vmid_grab_used(struct amdgpu_vm *vm,
  		 */
  		r = amdgpu_sync_fence(&(*id)->active,
  				      &job->base.s_fence->finished,
@@ -42,7 +42,7 @@ index b2af2cc6826c44..9cab36322c1658 100644
  		if (r)
  			return r;
  
-@@ -402,7 +402,7 @@ int amdgpu_vmid_grab(struct amdgpu_vm *vm, struct amdgpu_ring *ring,
+@@ -413,7 +413,7 @@ int amdgpu_vmid_grab(struct amdgpu_vm *vm, struct amdgpu_ring *ring,
  			/* Remember this submission as user of the VMID */
  			r = amdgpu_sync_fence(&id->active,
  					      &job->base.s_fence->finished,
