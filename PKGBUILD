@@ -3,10 +3,10 @@
 # Contributor: haha662 <haha662 at outlook dot com>
 
 _pkgname=blogdown
-_pkgver=1.23
+_pkgver=1.24
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=4
 pkgdesc="Create Blogs and Websites with R Markdown"
 arch=("any")
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,7 @@ depends=("r" "hugo" "pandoc" "r-rmarkdown>=2.8" "r-bookdown>=0.22" "r-jsonlite" 
 # makedepends=()
 optdepends=("r-testit" "r-shiny" "r-miniui" "r-stringr" "r-rstudioapi" "r-processx" "r-whoami" )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha512sums=('15f1f15fd62f84e60d4dcd58f6eb04e0a22c3c16f1eebb078d6b90387ce9ceb79daf618ba10cdf7db0dde08c156cf5a9e2f5ab91005c4ddd4838e622a0125ffe')
+sha512sums=('bfd24f07c17033898284e6c261228eb9758f56ab7c2f34e60e000dccf76b57cddd3547496862a4d116d00e52c46a88436d27f31104474332f67c64a1cfc71f8b')
 
 build() {
   cd "${srcdir}"
