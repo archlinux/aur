@@ -3,7 +3,7 @@
 
 _gemname=bundler-audit
 pkgname=ruby-$_gemname
-pkgver=0.9.1
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='Patch-level verification for Bundler'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-thor ruby-bundler)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('5430584042b50bc991828c16a589941b9f3400da')
+sha1sums=('0c5e4b81a175877fcd0484073a07ea59863ef372')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
