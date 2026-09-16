@@ -3,7 +3,7 @@
 pkgname=rrwm-bin
 _pkgname=rrwm
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling window manager developed in Rust for River, using cosmic/bspwm layout"
 arch=('x86_64')
 url="https://github.com/cap153/rrwm"
@@ -24,7 +24,7 @@ source_x86_64=(
 # 这里的值你可以运行 `updpkgsums` 自动生成覆盖
 sha256sums=('b47bce7fb7c35700d37c9df7f2dcd989acf8d56282acffa6a5d37aa1a64f8030'
             '26bc02acb6900eefb9bacdda0830b61b60f354c7b8e3b47a2f01a0c512eaeb39')
-sha256sums_x86_64=('ea2651a3125c5458df232672284d15e0cbe7d4da45ab806465d4cea0603a9834')
+sha256sums_x86_64=('e051b382f4e95cca23650beacd4d7429f0420d7d1211e424e48905a1aae0a3a8')
 
 package() {
   # 安装可执行文件
