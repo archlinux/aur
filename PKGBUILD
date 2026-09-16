@@ -1,6 +1,6 @@
 # Maintainer: Matthias Braun <me@matthiasbraun.eu>
 pkgname=swaypwd-bin
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Print the working directory of the foreground process in the focused Sway window"
 arch=(x86_64)
@@ -16,8 +16,8 @@ source=(
     "swaypwd-${pkgver}-man.1::https://gitlab.com/api/v4/projects/80488692/packages/generic/swaypwd/${pkgver}/swaypwd.1"
     "LICENSE::https://gitlab.com/bullbytes/swaypwd/-/raw/v${pkgver}/LICENSE"
 )
-b2sums=('e7c5f46d22b3a430f0b4a5375419285f25caa4c6a7a58400d286b7395188a05be8a1b9867401c2bfd5cb567041452721af97ad9cbeeea8b057beb27978cc62e4'
-        '12fbccc2d449d17a682b1462a56f25504e5d1aae77199445aed3e3774755b4eb29404dc76dd5a0e0c0c4692d83f85834461f481dd4235a74179a0538e97475bc'
+b2sums=('cd2b20cdbd572bd037578ff2277e61991483e863879d96ffcb0bfbfbe1f088ce69a9e718afe27171953bd4952d9cdb563d3fe98df85e47ca1015647fe5b327b9'
+        '1d7b8dac5a4e30f5dc93b95280413c74164b8e5e5e8680436fad786df3d789a52f181534ec10d31925e46eedce2f4ba7ec212933fac80413194f16d531cc3273'
         'b6829320f725e3e45c4807ef5deb4738a691fb3ab146d8531b81fdbccd8376a826c8ec76165985cdf37d534f68e395652c96841ba7636c4bd34c49b7c7b3a9ec')
 
 package() {
