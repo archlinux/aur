@@ -2,8 +2,8 @@
 
 pkgbase=gemmul8
 pkgname=('gemmul8-cuda' 'gemmul8-rocm')
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc='emulating GEMM using low-precision matrix engines, including int8 and fp8'
 url="https://github.com/RIKEN-RCCS/GEMMul8"
@@ -12,7 +12,9 @@ license=('MIT')
 source=(
 	"${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('6ed08492866185b6868ea74e1b3fcd253dc145313449c5b29beb5a8642a97a30')
+sha256sums=('88c9f93f13c4766a0fd643d9001dd4b75770c2053910961fcbb3761fb7112699')
+
+options=(staticlibs)
 
 build() {
 	cd GEMMul8-${pkgver}
@@ -28,7 +30,7 @@ check() {
 _package() {
 	cd GEMMul8-${pkgver}
         install -D lib/libgemmul8.so ${pkgdir}/usr/lib/libgemmul8.so
-
+	install -D lib/libgemmul8.a ${pkgdir}/usr/lib/libgemmul8.a
         install -Dm644 LICENSE ${pkgdir}/usr/share/${pkgbase}/LICENSE
 	install -d ${pkgdir}/usr/include
 	cp -r include ${pkgdir}/usr/include/${pkgbase}
