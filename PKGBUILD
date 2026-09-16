@@ -1,9 +1,7 @@
-# Maintainer: smesa <smesa@local>
-# Minke - DeepSeek Harness Desktop (Electron app + bundled dsh harness runtime)
-# https://github.com/lencx/Minke
+# Maintainer: Samuel Mesa <samuel.mesa@linuxmail.org>
 
 pkgname=minke
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Minke desktop agent powered by DeepSeek Harness"
 arch=(x86_64)
@@ -62,11 +60,10 @@ source=(
   "$pkgname.desktop"
   "$pkgname.tmpfiles"
 )
-sha512sums=(
-  SKIP
-  "4ca3b2fb1e6ccc46180b499c39ef36150910557e4301a086de787146fdb4a21f7d7ec917b4c8bffd4ab5b0d71c541d40b7c7b903490fee14450900428377b5f6"
-  "948820bfeef9a768d0d0400688b5d2e0cde94237c1cd487f83beca003c913fd495235c90b389d19f5bba199ee12d606d9c2fade8435af6c6bc101be5a3fd0e14"
-)
+
+sha512sums=('7411f58275d0f81064c1bda7fcad58f7286d827e948518feea3bf8c1923a1ec12839e40724b9caf3a1d5e019042ed1185b46dc878e479f0024435c2364af13f3'
+            '4ca3b2fb1e6ccc46180b499c39ef36150910557e4301a086de787146fdb4a21f7d7ec917b4c8bffd4ab5b0d71c541d40b7c7b903490fee14450900428377b5f6'
+            '948820bfeef9a768d0d0400688b5d2e0cde94237c1cd487f83beca003c913fd495235c90b389d19f5bba199ee12d606d9c2fade8435af6c6bc101be5a3fd0e14')
 
 # The harness runtime is a git submodule pinned by the tag; fetch it explicitly.
 prepare() {
