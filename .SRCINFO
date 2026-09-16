@@ -1,6 +1,6 @@
 pkgbase = tty-terminal
 	pkgdesc = Linux TTY styling with the Kitty engine and native inline images
-	pkgver = 0.1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/lunagoat/tty-terminal
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = tty-terminal
 	depends = python>=3.11
 	depends = kitty>=0.48.2
 	depends = fontconfig
-	source = tty-terminal-0.1.0.tar.gz::https://github.com/lunagoat/tty-terminal/releases/download/1.0.0/tty-terminal-0.1.0.tar.gz
-	sha256sums = 32c2fbd3818eebbcd1922723e0c574d225a21ae5c35c2bea57a1a7bbc257cf30
+	source = tty-terminal-1.0.0.tar.gz::https://github.com/lunagoat/tty-terminal/releases/download/1.0.0/tty-terminal-1.0.0.tar.gz
+	sha256sums = 9c75908b98db67373f7c46a6f6c0157077a75269bb2f54030623277cb7629532
 
 pkgname = tty-terminal
