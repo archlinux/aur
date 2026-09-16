@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="Unified messaging hub written in Rust"
 
-pkgver=0.3.56
+pkgver=0.3.57
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('e9cf3458d42cf89603da3d2c361527a1c903f5b9e2b97e5b499a018dcbb28165')
-sha256sums_x86_64=('f54eb468c475319c181cc5499419c9656d8c75f2959708ecd96f9686799adfc7')
-sha256sums_aarch64=('ba555b27a30210c30b5bba918b0683a7e0d13432c56cbb61389891645a30de14')
+sha256sums=('7646b0b198f25c80ef0f3fb903eda6c074fdf512081ddd1dfb6cadabbeefdcb1')
+sha256sums_x86_64=('cf892e63c542a6e5d0dac01005dc359189912a37b9f7f50dca1701095ecbaf4c')
+sha256sums_aarch64=('69eac87b70a8f44c1aaac1e1520313eb7dc21f388d4e3e25c0548c03d273b78b')
 
 
 package() {
