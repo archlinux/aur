@@ -10,18 +10,18 @@ license=('LicenseRef-Spokenly')
 depends=(
   'alsa-lib'
   'cairo'
-  'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
   'glibc'
   'gtk3'
   'hicolor-icon-theme'
-  'libayatana-appindicator'
   'libevdev'
   'libsoup3'
   'libx11'
   'libxtst'
   'webkit2gtk-4.1'
+  'libstdc++'
+  'libgcc'  
 )
 provides=('spokenly')
 conflicts=('spokenly')
