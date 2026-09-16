@@ -1,0 +1,20 @@
+pkgbase = ti-evo-tools
+	pkgdesc = Native Qt/Kirigami tools for working with TI-84 Evo calculators over USB
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/The-Real-NomadTax/TI-84-Evo-tools
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = kirigami
+	depends = libusb
+	depends = qt6-base
+	depends = qt6-declarative
+	source = ti-evo-tools-0.1.0.tar.gz::https://github.com/The-Real-NomadTax/TI-84-Evo-tools/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ti-evo-tools
