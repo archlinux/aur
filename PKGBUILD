@@ -4,7 +4,7 @@
 pkgname=llama.cpp-hip-gfx1151
 _pkgname=llama.cpp
 pkgver=b10992
-pkgrel=1
+pkgrel=2
 _upstream_commit=e13469a323147aed0c93f5b4efde10fcc379e977
 _mtp_graph_base=dbeb37548e25abc6e54961c4c99e63f191367809
 _mtp_graph_commit=33ed43518d078174b895a5b459a8f7018e433916
@@ -96,10 +96,13 @@ source=(
   "hipcub-rocm-${_hipcub_commit}-${_hipcub_sha256}.patch::https://github.com/ggml-org/llama.cpp/compare/${_hipcub_base_commit}...${_hipcub_commit}.diff"
   "rdna35-mmq-${_rdna35_mmq_commit}-${_rdna35_mmq_sha256}.patch::https://github.com/ggml-org/llama.cpp/commit/${_rdna35_mmq_commit}.diff"
   "hip-padding-stream-${_hip_padding_stream_commit}-${_hip_padding_stream_sha256}.patch::https://github.com/ggml-org/llama.cpp/commit/${_hip_padding_stream_commit}.diff"
-  "mrope-auto-pos-${_mrope_auto_pos_commit}-${_mrope_auto_pos_sha256}.patch::https://github.com/ggml-org/llama.cpp/commit/${_mrope_auto_pos_commit}.diff"
+  # Exact upstream snapshots; do not depend on GitHub's generated diff bytes.
+  # Provenance: https://github.com/ggml-org/llama.cpp/commit/de4f4bb77774f760f20d08339fd7e1e458f465b6
+  "mrope-auto-pos-${_mrope_auto_pos_commit}-${_mrope_auto_pos_sha256}-local.patch"
   "qwen4exp-ple-row-prefetch-${_ple_row_prefetch_commit}-${_ple_row_prefetch_sha256}.patch::https://github.com/Aristo94/EngramHalo.cpp/commit/${_ple_row_prefetch_commit}.diff"
   "qwen4exp-ple-row-prefetch-b10992.patch"
-  "qwen-thinking-end-${_qwen_thinking_end_commit}-${_qwen_thinking_end_sha256}.patch::https://github.com/ggml-org/llama.cpp/commit/${_qwen_thinking_end_commit}.diff"
+  # Provenance: https://github.com/ggml-org/llama.cpp/commit/cf6172a74d072b60f177f8e8d0a77a2ad758fc8e
+  "qwen-thinking-end-${_qwen_thinking_end_commit}-${_qwen_thinking_end_sha256}-local.patch"
   "json-schema-numeric-bounds-b10992.patch"
   "minicpmv-position-buckets-b10992.patch"
   # 提升性能的妙妙工具
@@ -231,7 +234,7 @@ prepare() {
 
   # PR #28910: allocate all auto-generated M-RoPE position sections.
   patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
-    -i "${srcdir}/mrope-auto-pos-${_mrope_auto_pos_commit}-${_mrope_auto_pos_sha256}.patch"
+    -i "${srcdir}/mrope-auto-pos-${_mrope_auto_pos_commit}-${_mrope_auto_pos_sha256}-local.patch"
 
   # Queue the sparse PLE rows before each graph and support its 160-wide IQ4_NL
   # rows in the HIP GET_ROWS kernel. The small second patch hooks that row
@@ -245,7 +248,7 @@ prepare() {
 
   # PR #28869: include the template newline when forcing Qwen reasoning to end.
   patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
-    -i "${srcdir}/qwen-thinking-end-${_qwen_thinking_end_commit}-${_qwen_thinking_end_sha256}.patch"
+    -i "${srcdir}/qwen-thinking-end-${_qwen_thinking_end_commit}-${_qwen_thinking_end_sha256}-local.patch"
 
   # b10992 includes #28646 tools-probe caching, #28747 framing and #28787 HTTP.
 

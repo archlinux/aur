@@ -6,6 +6,11 @@ It keeps the sibling package's build, service, and CPU/HIP tuning unless a
 difference is listed here. This revision pins upstream `b10992` (`e13469a`);
 the live sibling is at `b10991-1` (2026-09-16 review).
 
+Release **b10992-2** is a packaging-only follow-up: the M-RoPE and Qwen
+reasoning-newline fixes are now bundled as verified local snapshots under new
+filenames. Their bytes and checksums are unchanged; their GitHub diff downloads
+are no longer needed. Runtime code and configuration remain identical to -1.
+
 The sibling's dependency, service-asset and compiler policy remain synchronized.
 This package is one upstream commit further. `b10992` was the latest tag
 selected during the initial September 16 research; master matched that tag.
@@ -75,9 +80,9 @@ The comparison below is this package at `b10992` versus the live sibling at
 | Build identity | Pins the upstream `b10992` commit (`e13469a`) and prevents CMake's Git probes from escaping the extracted source tree | Can report the enclosing AUR wrapper commit when built from a normal AUR Git clone |
 | Flash Attention build option | `GGML_CUDA_FA_QUANTS=all` | Deprecated `GGML_CUDA_FA_ALL_QUANTS=ON`; equivalent type-pair coverage |
 | Installed RUNPATH | Suppresses CMake-generated RPATHs so amdclang leaves only the absolute `/opt/rocm/lib` entry on the HIP DSO | Does not override CMake's RPATH policy |
-| Extra source changes | Fifteen remotely sourced functional patch files and seven local, checksum-pinned adaptations/guards, described below | No MTP/PLE/Strix safety patch stack |
+| Extra source changes | Thirteen remote patch files and nine local checksum-pinned files: seven adaptations/guards plus two exact upstream snapshots | No MTP/PLE/Strix safety patch stack |
 | Source-cache identity | Remote patch aliases include both the commit and full content SHA-256; local adaptations use the current base-version filename | No active remote patch stack |
-| Package release | `pkgrel=1` | `pkgrel=1` at the time of comparison |
+| Package release | `pkgrel=2` | `pkgrel=1` at the time of comparison |
 
 The HIP package hard-codes `_pkgname=llama.cpp`; stripping only `-gfx1151`
 from its longer package name would incorrectly produce `llama.cpp-hip`. The
@@ -101,7 +106,7 @@ it does not mean that this build contains a Vulkan backend.
 ## Carried patches
 
 Patch order matters. Every remotely sourced functional patch is fetched from
-an immutable commit/compare URL and pinned by SHA-256 in
+an immutable commit identity through a commit/compare URL and pinned by SHA-256 in
 [`PKGBUILD`](./PKGBUILD); every other package source is checksum-pinned as
 well. GNU patch fuzz is explicitly disabled, and the filtered patches use
 Git's exact-context application, so an ambiguous rebase fails preparation
@@ -127,13 +132,22 @@ its complete expected SHA-256, and the same variable feeds `sha256sums` and
 download/application filename, even if the commit has not changed. This also
 avoids stale pre-September-9 files in yay/paru/shared `SRCDEST` caches; users
 do not need to clear the entire helper cache. September 16 retained remote
-downloads also match their prior pins. All seven local patches now use b10992
+downloads also match their prior pins. All seven local adaptations use b10992
 filenames: six change only version comments, and the RPC test additionally
 encodes protocol 7's cache flag. The two Qwen patches preserve the preceding
 norm-fusion-aware graph byte-for-byte and still use Git's exact-context
 application; no fuzzy application is enabled.
 If an asset's checksum changes in a future update, its alias and install
 reference must also change; the four service/config assets are unchanged here.
+
+For **b10992-2**, [#28910's M-RoPE snapshot](./mrope-auto-pos-de4f4bb77774f760f20d08339fd7e1e458f465b6-c96c58a32d9785a96522e29f0b455d650c6f2ca8c5f2dbc43f4db2e5616f68fd-local.patch)
+and [#28869's Qwen newline snapshot](./qwen-thinking-end-cf6172a74d072b60f177f8e8d0a77a2ad758fc8e-7e085430759eb42486a01c3ab340811579dc00e6607677945f7730849d5c83fa-local.patch)
+are shipped directly in the package Git checkout, bringing local files to
+nine and remote patches to thirteen. These are exact previously verified
+upstream diff bytes, not modified implementations. Their distinct `-local`
+filenames avoid reusing or overwriting cached remote downloads. A commit SHA
+pins code identity, but GitHub's generated diff serialization can change;
+checksum verification remains enabled for every source, with no `SKIP`.
 
 | Patch | Purpose | Review state and practical risk as of 2026-09-16 |
 | --- | --- | --- |
@@ -635,7 +649,26 @@ at the initial review. The meaningful shared-backend changes are weights-only
 RPC caching, protocol 7, local two-device HIP AllReduce and row-contiguous
 SUM_ROWS/MEAN; none demonstrates a single-APU performance gain by itself.
 
-#### Current b10992 validation (September 16)
+#### b10992-2 source-delivery follow-up (September 16)
+
+Two source checks failed on a user's machine after the initial sync. Fresh independent
+downloads here still match both recorded checksums, so the failing log alone
+does not establish whether the local cache, an incomplete response or GitHub
+diff serialization was responsible. The package now carries those exact two
+small snapshots locally instead of relying on the generated diff endpoints.
+No checksum was blindly replaced and no verification was disabled.
+
+Arch `makepkg --verifysource` passes **27/27 sources**, and `.SRCINFO` was
+regenerated with makepkg. A second check with deliberately invalid files under
+both old cache filenames also passes all 27 sources. Full exact-context/no-fuzz preparation passes;
+all **3,596 prepared files** match the previous verified source tree: the
+same **48 carried-file hashes** and **3,548 unchanged files**. Thus the earlier
+full HIP build and numerical tests still cover the identical code; they were
+not rerun or represented as a new -2 binary build. Only packaging delivery and
+the release number changed. Users need the updated package checkout, not
+`--skipchecksums` or a wholesale yay/paru cache purge.
+
+#### b10992-1 full build validation (September 16)
 
 The review covers **15 remote patches, seven local adaptations/guards**, the
 recipe and relevant upstream changes. No concealed payload, credential

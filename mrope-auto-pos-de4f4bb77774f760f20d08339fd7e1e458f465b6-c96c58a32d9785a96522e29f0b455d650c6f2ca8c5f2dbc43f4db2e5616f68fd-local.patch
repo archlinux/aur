@@ -1,0 +1,87 @@
+diff --git a/include/llama.h b/include/llama.h
+index 3ab935939c6d..f2180fafa319 100644
+--- a/include/llama.h
++++ b/include/llama.h
+@@ -251,6 +251,11 @@ extern "C" {
+     // - embd   : token embeddings (i.e. float vector of size n_embd) (used when token is NULL)
+     // - pos    : the positions of the respective token in the sequence
+     //            (if set to NULL, the token position will be tracked automatically by llama_encode/llama_decode)
++    //            note: for models that use multiple positions per embedding (n_pos_per_embd > 1, e.g. Qwen2.5-VL),
++    //                  batches that contain embeddings (i.e. token == NULL) must provide
++    //                  n_tokens * n_pos_per_embd positions, laid out as consecutive sections of n_tokens
++    //                  positions each; token batches only need n_tokens positions (section 0 is broadcast
++    //                  to all sections)
+     // - seq_id : the sequence to which the respective token belongs
+     //            (if set to NULL, the sequence ID will be assumed to be 0)
+     // - logits : if zero, the logits (and/or the embeddings) for the respective token will not be output
+diff --git a/src/llama-batch.cpp b/src/llama-batch.cpp
+index 2b98a552f48f..b1714f2f9987 100644
+--- a/src/llama-batch.cpp
++++ b/src/llama-batch.cpp
+@@ -88,7 +88,9 @@ bool llama_batch_allocr::init(
+     }
+ 
+     if (!batch.pos) {
+-        pos.resize(batch.n_tokens);
++        const int64_t n_pos_all = (int64_t) batch.n_tokens * n_pos_per_embd;
++
++        pos.resize(n_pos_all);
+ 
+         // initialize the starting position for each sequence based on the positions in the memory
+         llama_pos p0[LLAMA_MAX_SEQ];
+@@ -104,13 +106,18 @@ bool llama_batch_allocr::init(
+         for (int32_t i = 0; i < batch.n_tokens; i++) {
+             const llama_seq_id seq_id = batch.seq_id[i][0];
+ 
+-            pos[i] = p0[seq_id];
++            const llama_pos p = p0[seq_id];
++
++            // broadcast the auto-generated position across all RoPE sections (if any)
++            for (uint32_t j = 0; j < n_pos_per_embd; ++j) {
++                pos[j*batch.n_tokens + i] = p;
++            }
+ 
+             // update the starting position for all sequences that are assigned to the this token
+             for (int32_t s = 0; s < batch.n_seq_id[i]; ++s) {
+                 const llama_seq_id seq_id = batch.seq_id[i][s];
+ 
+-                p0[seq_id] = pos[i] + 1;
++                p0[seq_id] = p + 1;
+             }
+         }
+ 
+diff --git a/tests/test-batch-alloc.cpp b/tests/test-batch-alloc.cpp
+index 66d29d6f5164..504254494386 100644
+--- a/tests/test-batch-alloc.cpp
++++ b/tests/test-batch-alloc.cpp
+@@ -623,6 +623,30 @@ static void test_mrope(testing & t) {
+         }
+     });
+ 
++    t.test("auto_pos_broadcast_for_embd", [&](testing & t) {
++        const uint32_t n_pos = 4;
++        const uint32_t n_embd = 2;
++
++        batch_builder bb(n_embd);
++        bb.add(0, {0}, false);
++        bb.add(0, {0}, true);
++
++        // pos == NULL: positions are auto-generated and must be broadcast across all sections
++        llama_batch batch = bb.make(false, true, true);
++
++        llama_batch_allocr ba(n_pos);
++        t.assert_true(ba.init(batch, vocab, nullptr, n_embd, 4, false));
++
++        llama_ubatch ub = ba.split_simple(2);
++        t.assert_equal(2u, ub.n_tokens);
++        t.assert_equal(n_pos, ub.n_pos);
++
++        const llama_pos expected[8] = {0, 1, 0, 1, 0, 1, 0, 1};
++        for (int i = 0; i < 8; ++i) {
++            t.assert_equal(expected[i], ub.pos[i]);
++        }
++    });
++
+     t.test("pos_jump_allowed", [&](testing & t) {
+         const uint32_t n_pos = 4;
+         const uint32_t n_embd = 2;
