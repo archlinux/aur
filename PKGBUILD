@@ -1,6 +1,6 @@
 # Maintainer: sripwoud <me@sripwoud.xyz>
 pkgname=tagwerk-git
-pkgver=r47.8dbd0d4
+pkgver=r48.5de26e8
 pkgrel=1
 pkgdesc="Passive work-hours tracker for Hyprland, attributed per repo"
 arch=(any)
@@ -27,4 +27,5 @@ package() {
   install -Dm644 contrib/tagwerk-focus.service contrib/tagwerk-idle.service -t "$pkgdir/usr/lib/systemd/user"
   install -Dm644 contrib/hypridle.conf contrib/claude-hooks.json -t "$pkgdir/usr/share/tagwerk"
   install -Dm644 contrib/pi/tagwerk.ts -t "$pkgdir/usr/share/tagwerk/pi"
+  install -Dm644 contrib/omarchy/manifest.json contrib/omarchy/BarWidget.qml -t "$pkgdir/usr/share/tagwerk/omarchy"
 }
