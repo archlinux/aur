@@ -11,7 +11,7 @@
     makedepends=('python-fonttools')
     checkdepends=('desktop-file-utils')
     source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-    sha256sums=('9c75908b98db67373f7c46a6f6c0157077a75269bb2f54030623277cb7629532')
+    sha256sums=('e5489a05030b5b9a36fa8d3b5e3eb3be7861c3c520c1e0d3172a39d5a7d626d2')
 
     build() {
       cd "$pkgname-$pkgver"
