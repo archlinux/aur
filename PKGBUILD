@@ -7,7 +7,7 @@ pkgdesc="GPU-accelerated RAW image editor with tethering support"
 url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
 arch=('x86_64')
-depends=('libgphoto2') # Add runtime dependencies required by the application
+depends=('libgphoto2') 
 provides=("rapidraw")
 conflicts=("rapidraw")
 
