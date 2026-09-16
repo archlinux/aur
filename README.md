@@ -40,6 +40,13 @@ npm ci → npm run package:dir（electron-vite build + electron-builder --dir）
   ```bash
   ELECTRON_MIRROR='https://github.com/electron/electron/releases/download/' makepkg -si
   ```
+- **git clone 上游源码加速（国内用户可选）**：源仓库走 `git+https://github.com`，
+  PKGBUILD 无法在 clone 前自动探测。国内用户若 clone 慢，可一次性给 git 加全局加速：
+  ```bash
+  git config --global url."https://gh-proxy.com/https://github.com/".insteadOf "https://github.com/"
+  # 撤销：
+  git config --global --unset-all url.https://gh-proxy.com/https://github.com/.insteadOf
+  ```
 - 上游未在仓库提交 Linux 图标（只有 macOS 生成脚本），PKGBUILD 用 `imagemagick` 从
   `build/app-icon.png` 生成 hicolor 各尺寸图标。
 
@@ -61,11 +68,14 @@ git clone https://aur.archlinux.org/dsh-desktop-git.git
 cd dsh-desktop-git && makepkg -si
 ```
 
-## 维护（推送到 AUR）
+## 维护
+
+上游发布新的 `v` 前缀 release tag 后（如 `v0.9.1`），重新构建即可得到新版本号：
 
 ```bash
-cd aur/dsh-desktop-git
 makepkg -f -d                      # 构建（pkgver 自动跟随最新 tag）
 makepkg --printsrcinfo > .SRCINFO  # 同步 .SRCINFO
-bash ../push-to-aur.sh             # 一键提交推送（需输入 SSH 钥匙 passphrase）
+git add PKGBUILD .SRCINFO README.md dsh-desktop.desktop
+git commit -m "Update to <新版本>"
+git push origin master
 ```
