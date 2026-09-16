@@ -1,0 +1,4 @@
+[ferdium-electron]
+source = "git"
+git = "https://github.com/ferdium/ferdium-app.git"
+prefix = "v"
