@@ -1,7 +1,7 @@
 # Maintainer: Douglas Moura <doug@douglasmoura.com>
 pkgname=winkel-git
 _pkgname=winkel
-pkgver=0.1.2.r0.g4f0ba5f
+pkgver=0.1.3.r0.g8585014
 pkgrel=1
 pkgdesc="A metronome for Omarchy that follows the live theme (latest development version)"
 arch=(x86_64 aarch64)
