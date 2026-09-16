@@ -1,2 +1,6 @@
-pkgname=flea-git
-pkgver=0.0.0
+*.tar.gz
+*.tar.zst
+*.pkg.tar.zst
+src/
+pkg/
+flea-git/
