@@ -1,12 +1,12 @@
 # Maintainer: Ishan Parihar <ishan@example.com>
 # Upstream: https://github.com/browseros-ai/BrowserOS (browserclaw/*)
-# Maintenance-free: pkgver() fetches latest browserclaw/v* tag; prepare() resolves
-# the asset URL via GitHub API so every `makepkg`/`yay -Syu` pulls newest without bump.
+# Maintenance-free: pkgver() curls latest browserclaw tag; prepare() fetches deb via API
+# Dummy git source makes `yay -Syu` with `devel:true` run pkgver() on every Syu.
 
 pkgname=browseros-neo-bin
 _pkgname=browserclaw
 pkgver=0.50.5
-pkgrel=2
+pkgrel=3
 pkgdesc="BrowserOS neo — AI browser for agents (Chromium 151, binary from browserclaw/* tags, auto-rolling)"
 arch=('x86_64')
 url="https://github.com/browseros-ai/BrowserOS"
@@ -14,7 +14,7 @@ license=('AGPL-3.0-only')
 depends=('alsa-lib' 'at-spi2-core' 'atk' 'cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'gtk3'
          'libcups' 'libdrm' 'libxcomposite' 'libxdamage' 'libxrandr' 'libxkbcommon'
          'mesa' 'nspr' 'nss' 'pango' 'libx11' 'systemd-libs' 'expat' 'libxcb')
-makedepends=('curl' 'jq')
+makedepends=('curl' 'jq' 'git')
 optdepends=('xdg-utils: open links with xdg-open'
             'libnotify: desktop notifications'
             'apparmor: AppArmor profile at /etc/apparmor.d/browserclaw')
@@ -22,8 +22,8 @@ provides=("browseros-neo=${pkgver}" "browserclaw=${pkgver}" "${_pkgname}=${pkgve
 conflicts=('browseros-neo' 'browserclaw' 'browseros-neo-git')
 options=('!strip' '!emptydirs')
 install=browseros-neo.install
-source=()
-sha256sums=()
+source=("browseros-neo::git+https://aur.archlinux.org/browseros-neo-bin.git")
+sha256sums=('SKIP')
 
 pkgver() {
   _latest=$(curl -sL "https://api.github.com/repos/browseros-ai/BrowserOS/releases?per_page=20" \
@@ -58,27 +58,22 @@ prepare() {
           _fetched=1
           break
         else
-          echo "Downloaded file is not a valid deb, trying next URL"
+          echo "Not a valid deb, trying next"
           rm -f "$srcdir/$_deb"
         fi
       else
-        echo "curl failed for $_u, trying next"
+        echo "curl failed, trying next"
         rm -f "$srcdir/$_deb"
       fi
     done
-    if [[ $_fetched -eq 0 ]]; then
-      echo "ERROR: Failed to fetch $_deb from any URL" >&2
-      exit 1
-    fi
+    if [[ $_fetched -eq 0 ]]; then echo "ERROR: Failed to fetch $_deb" >&2; exit 1; fi
   fi
   bsdtar -xf "$srcdir/$_deb" -C "$srcdir"
 }
 
 package() {
   bsdtar -xf "$srcdir/data.tar.zst" -C "$pkgdir"
-  if [[ -f "$pkgdir/usr/lib/browserclaw/chrome_sandbox" ]]; then
-    chmod 4755 "$pkgdir/usr/lib/browserclaw/chrome_sandbox"
-  fi
+  if [[ -f "$pkgdir/usr/lib/browserclaw/chrome_sandbox" ]]; then chmod 4755 "$pkgdir/usr/lib/browserclaw/chrome_sandbox"; fi
   install -dm755 "$pkgdir/usr/bin"
   ln -sf /usr/bin/browserclaw "$pkgdir/usr/bin/browseros-neo" 2>/dev/null || true
   ln -sf /usr/bin/browserclaw "$pkgdir/usr/bin/browseros-neo-bin" 2>/dev/null || true
