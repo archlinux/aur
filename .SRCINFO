@@ -1,5 +1,5 @@
 pkgbase = karere-custom-css-git
-	pkgdesc = Native WhatsApp client based on Karere with custom CSS live reload
+	pkgdesc = Downstream Karere with optional custom.css live reload
 	pkgver = 4.2.5.r1.g6bf8b2b
 	pkgrel = 1
 	url = https://github.com/riccardomarotti/karere

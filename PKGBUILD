@@ -2,9 +2,12 @@
 
 # Maintainer: Riccardo Marotti
 
-# This downstream package tracks upstream Karere and carries the optional
-# custom.css live-reload support from PR #183, which was not accepted upstream
-# for project-scope and maintenance reasons.
+# Downstream package tracking upstream Karere with the optional custom.css
+# live-reload support from PR #183:
+# https://github.com/tobagin/karere/pull/183
+#
+# The feature was declined upstream because it falls outside Karere's intended
+# scope and would add maintenance burden as WhatsApp Web's CSS changes.
 
 pkgname=karere-custom-css-git
 pkgver=4.2.5.r1.g6bf8b2b
