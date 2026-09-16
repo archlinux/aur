@@ -1,0 +1,18 @@
+pkgbase = vy-bin
+	pkgdesc = Explore and query JSON and YAML, right in your terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ynqa/vy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = vy
+	conflicts = vy
+	source_x86_64 = vy-x86_64-0.1.0.txz::https://github.com/ynqa/vy/releases/download/v0.1.0/vy-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 248194408c38d7204458e56149b8ae5ebcc3b9202910aa48a79e4359d3a62bee
+	source_aarch64 = vy-aarch64-0.1.0.txz::https://github.com/ynqa/vy/releases/download/v0.1.0/vy-cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = acf05c738f90863d441d3dba0a1df0c391133c3520ed31edf8f19a836ec01dbb
+
+pkgname = vy-bin
