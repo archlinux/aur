@@ -1,6 +1,6 @@
 pkgbase = ronmodmanager-bin
 	pkgdesc = Ready or Not mod manager
-	pkgver = 0.0.14
+	pkgver = 0.0.15
 	pkgrel = 1
 	url = https://github.com/SavageCore/RoNModManager
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = ronmodmanager-bin
 	provides = ronmodmanager
 	conflicts = ronmodmanager
 	options = !strip
-	source_x86_64 = ronmodmanager-0.0.14.AppImage::https://github.com/SavageCore/RoNModManager/releases/download/v0.0.14/RoN.Mod.Manager_0.0.14_amd64.AppImage
-	source_x86_64 = uk.savagecore.ronmodmanager.png::https://github.com/SavageCore/RoNModManager/raw/v0.0.14/src-tauri/icons/icon.png
-	source_x86_64 = uk.savagecore.ronmodmanager.desktop::https://github.com/SavageCore/RoNModManager/raw/v0.0.14/packaging/aur/uk.savagecore.ronmodmanager.desktop
-	sha256sums_x86_64 = 4fce9d5bf2c136a46cdbec679209764a85988ca0c6b4f717f50648374d99ddc4
+	source_x86_64 = ronmodmanager-0.0.15.AppImage::https://github.com/SavageCore/RoNModManager/releases/download/v0.0.15/RoN.Mod.Manager_0.0.15_amd64.AppImage
+	source_x86_64 = uk.savagecore.ronmodmanager.png::https://github.com/SavageCore/RoNModManager/raw/v0.0.15/src-tauri/icons/icon.png
+	source_x86_64 = uk.savagecore.ronmodmanager.desktop::https://github.com/SavageCore/RoNModManager/raw/v0.0.15/packaging/aur/uk.savagecore.ronmodmanager.desktop
+	sha256sums_x86_64 = 4438f6a5f3134a08e7fcf4f5eb0c8472273283c4c0baad0064af6d398d342c3e
 	sha256sums_x86_64 = 15b67632b3bcbed97c4b7d7bfaf9545971ad6bf10992dd49bbd73d517bd02734
 	sha256sums_x86_64 = ee1930dd28bedf9410b3ceb4e0963bf7c3b42e2413dfc741406c9cfc6fd85fef
 
