@@ -2,13 +2,20 @@
 
 pkgname=quran-reader-bin
 _pkgname=quran-reader
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='A beautiful, fast, offline-first Quran reader'
 arch=('x86_64')
 url='https://github.com/ask-786/quran-reader'
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme')
+# The GStreamer plugins are for recitation. webkit2gtk-4.1 pulls in GStreamer's
+# *libraries* but not its elements, so a plain Arch install has no autoaudiosink
+# and no MP3 decoder — and that does not merely fail. WebKit wedges its web
+# process on play(), taking the window with it, which is why these are depends
+# and not optdepends. -base carries audioconvert/audioresample and alsasink;
+# -good carries autodetect, pulsesink and the mpg123 decoder.
+depends=('webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'gst-plugins-base'
+         'gst-plugins-good')
 optdepends=('xdg-utils: open external links in a browser')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -17,7 +24,7 @@ options=('!strip' '!debug')
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/Quran.Reader_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/ask-786/$_pkgname/v$pkgver/LICENSE"
         "$_pkgname.desktop")
-sha256sums=('5310411c9e786f2f5689a33fbef89614c164df023141ef4ef5ffd17bf2f39570'
+sha256sums=('554401ba0c4347ccfba417de5cafa75d7d8f7df743fa17a054c5b709d4c8bee4'
             '7ac4a8c2a9f051e95d1b4aaf77fab3c616837769b82871d37f94a91345df1e34'
             '3117e16cd8e62a5eb824deb896fc2af63a4703b1af81974435504b40b0908ad5')
 
