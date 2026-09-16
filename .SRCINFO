@@ -1,7 +1,7 @@
 pkgbase = r-tesseract
 	pkgdesc = Open Source OCR Engine
-	pkgver = 5.2.5
-	pkgrel = 3
+	pkgver = 5.3.1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=tesseract
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-tesseract
 	depends = leptonica
 	depends = tesseract
 	optdepends = tesseract-data-eng: English OCR training data
-	source = https://cran.r-project.org/src/contrib/tesseract_5.2.5.tar.gz
-	b2sums = a63dbeaa44d0fc40bb194ef67dbdea37d9e0cb0a02a572b6d261be48156fa0bd37365548d510983a39d519c8b075795933b875c3a468b7e204d6e4c5883f6861
+	source = https://cran.r-project.org/src/contrib/tesseract_5.3.1.tar.gz
+	b2sums = 89fa3ec64d62ffb9967007d72a4c68521d887820f6cb9fa18985eada77e57094529f5e37de1bd00770af46189777aef588f7f493a14d4a6ffd7e0abc6bf046f0
 
 pkgname = r-tesseract

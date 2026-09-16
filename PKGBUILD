@@ -1,13 +1,13 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=tesseract
-_pkgver=5.2.5
+_pkgver=5.3.1
 pkgname=r-${_pkgname,,}
 pkgdesc="Open Source OCR Engine"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("Apache-2.0")
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 
 arch=("i686" "x86_64")
 depends=(
@@ -24,7 +24,7 @@ optdepends=(
     "tesseract-data-eng: English OCR training data"
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-b2sums=('a63dbeaa44d0fc40bb194ef67dbdea37d9e0cb0a02a572b6d261be48156fa0bd37365548d510983a39d519c8b075795933b875c3a468b7e204d6e4c5883f6861')
+b2sums=('89fa3ec64d62ffb9967007d72a4c68521d887820f6cb9fa18985eada77e57094529f5e37de1bd00770af46189777aef588f7f493a14d4a6ffd7e0abc6bf046f0')
 
 build() {
     mkdir -p "${srcdir}/build/"
