@@ -3,7 +3,7 @@
 _pkgauthor=benhoyt
 _pkgname=goawk
 pkgname=${_pkgname}-bin
-pkgver=1.31.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc="A POSIX-compliant AWK interpreter written in Go, with CSV support"
 arch=('x86_64' 'i686' 'aarch64')
@@ -18,9 +18,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_${_barch[0]}.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_${_barch[1]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('0b4a84798bb24479f2acd16dfb6e809046ca8d2572be52d621db59e3faba3bee')
-sha256sums_i686=('e6d9a4b6acd32d465c831a85605b371902b522c1494d00b2f88ac0059ed6d8ed')
-sha256sums_aarch64=('e744a944e9dcdd1e4fd7c0f51f6aefcba201dd5cf2038a91540efa0d0236ec31')
+sha256sums_x86_64=('eda07f45b623ea9a82e9578e69632f79dd52321f2af7ff3b43935be7b805d675')
+sha256sums_i686=('25994e38d07016ffb4aea2c7cd5e3cafc62907976b7dd38f59129bdb6225e2e0')
+sha256sums_aarch64=('dad03aa7f07c49770bf6ffb2244716c05b21bfbc2f2d453170d3c1173a43dd5a')
 
 
 package() {
