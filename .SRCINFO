@@ -1,6 +1,6 @@
 pkgbase = raven
 	pkgdesc = Static analyzer for R — a language server in your editor, a checker in CI
-	pkgver = 0.20.2
+	pkgver = 0.20.3
 	pkgrel = 1
 	url = https://github.com/jbearak/raven
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = raven
 	conflicts = raven-bin
 	options = !lto
 	options = !debug
-	source = raven-0.20.2.tar.gz::https://github.com/jbearak/raven/archive/v0.20.2.tar.gz
-	sha512sums = c99c0e4f682cfe2333f94dc9b9d1b8a9c422c13888b357e6e60f9060c2636ac6047536534bacae603f5c146e8d0e532c1ee396157e6e5e55e7071b6851363c13
+	source = raven-0.20.3.tar.gz::https://github.com/jbearak/raven/archive/v0.20.3.tar.gz
+	sha512sums = 9ae8dbb5e875d63335bc7b8cf96587a91c0d790c6b791656b967ff4d7f1c3f28d84ca636ce9467fbda3bcd207b318103763bbf31253ea3b781f9abcbdfccf905
 
 pkgname = raven
