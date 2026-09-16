@@ -1,7 +1,7 @@
 pkgname=ioexplorer-git
-pkgver=r69.38a6ad6
+pkgver=r71.3d5e6f4
 pkgrel=1
-pkgdesc='Wayland-native provider-oriented file manager for Wayland desktops'
+pkgdesc='Wayland-native provider-oriented file manager, spotlight, and other utilities for Wayland desktops'
 arch=('x86_64')
 url='https://github.com/LucasionGS/ioexplorer'
 license=('MIT')
