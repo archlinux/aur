@@ -1,0 +1,5 @@
+[openscad-bosl2]
+source = "github"
+github = "BelfrySCAD/BOSL2"
+use_max_tag = true
+prefix = "v"
