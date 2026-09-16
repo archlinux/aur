@@ -8,7 +8,7 @@ pkgname=ase-explorer
 # (`vercmp 1:00.00.29-1 00.00.35-1` = 1) — ab hier laufen Paket und Katalog gleich.
 epoch=1
 pkgver=00.00.29
-pkgrel=1
+pkgrel=2
 pkgdesc='ASE Hierarchical Project Explorer with NerdFont Icons'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-explorer'
@@ -23,12 +23,47 @@ source=(
     "ase-adp-gtk::git+https://github.com/antarien/ase-adp-gtk.git"
     "ase-adp-libgit2::git+https://github.com/antarien/ase-adp-libgit2.git"
     "ase-adp-libcuckoo::git+https://github.com/antarien/ase-adp-libcuckoo.git"
+    # DIE LISTE IST DER TRANSITIVE ABSCHLUSS, NICHT DIE BINDELISTE DES ZIELS.
+    #
+    # ase-containers und ase-math zieht die CMakeLists des Explorers selbst (:62, :67),
+    # ase-types der Adapter ase-adp-libgit2 (:130) hinter `if(NOT TARGET ase::types)`. Alle drei
+    # fehlten hier, und der Bau brach in der Konfigurationsphase ab: `add_subdirectory given
+    # source … which is not an existing directory`.
+    #
+    # Wer die Liste aus `target_link_libraries` ableitet, bekommt genau diese Luecke: gebunden
+    # wird gegen ZIELE, geholt werden VERZEICHNISSE. Auf einer Entwicklermaschine faellt das nie
+    # auf, weil das Monorepo vollstaendig daliegt — der Fremdbau ist die erste Messung.
+    #
+    # NICHT gebraucht wird core/ase-log, obwohl beide Adapter es nennen: der Zug steht hinter
+    # `if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)` und gilt ihrem eigenen
+    # Beispiel-Executable. Im Bau des Explorers ist der Explorer die Wurzel, also schweigt er.
+    #
+    # DIESE DREI SIND HEUTE PRIVAT, UND DAMIT IST DAS PAKET FUER FREMDE NICHT BAUBAR.
+    # Gemessen anonym ueber https: ase-utils/ase-fileio/ase-json/ase-adp-gtk loesen auf,
+    # ase-containers/ase-math/ase-types verlangen Zugangsdaten (`could not read Username`).
+    # Von elf Foundation-Einheiten sind vier oeffentlich — genau die vier, die dieses Paket
+    # bisher holte. Der Schnitt ist also gewachsen, nicht verrutscht.
+    #
+    # WANN ES BRACH: der Explorer zieht ase-containers und ase-math seit 2026-06-08
+    # (CMakeLists.txt), ase-adp-libgit2 sein ase-types seit 2026-09-08. Das zuletzt
+    # veroeffentlichte 00.00.35 stammt vom 2026-05-13 — seither hat niemand neu gebaut, und
+    # deshalb hat niemand gemerkt, dass der Abschluss ueber den oeffentlichen Rand gewachsen ist.
+    #
+    # Diese Liste ist trotzdem richtig und bleibt: sie nennt, was der Bau braucht. Sie scheitert
+    # jetzt an der WAHREN Stelle mit der wahren Meldung, statt an einem fehlenden Verzeichnis.
+    # Sobald die drei Repos oeffentlich sind, baut das Paket ohne weitere Aenderung.
+    "ase-containers::git+https://github.com/antarien/ase-containers.git"
+    "ase-math::git+https://github.com/antarien/ase-math.git"
+    "ase-types::git+https://github.com/antarien/ase-types.git"
     "file-icons.hpp"
     "colors.hpp"
     "design_tokens.hpp"
     "ui_icons.hpp"
 )
 sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -51,6 +86,9 @@ prepare() {
     mv ase-utils            ase-root/foundation/
     mv ase-fileio           ase-root/foundation/
     mv ase-json             ase-root/foundation/
+    mv ase-containers       ase-root/foundation/
+    mv ase-math             ase-root/foundation/
+    mv ase-types            ase-root/foundation/
     mv ase-adp-gtk          ase-root/adapter/
     mv ase-adp-libgit2      ase-root/adapter/
     mv ase-adp-libcuckoo    ase-root/adapter/
