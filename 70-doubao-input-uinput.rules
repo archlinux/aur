@@ -1,0 +1,2 @@
+# Permit members of the input group to create the virtual keyboard used for paste.
+KERNEL=="uinput", SUBSYSTEM=="misc", GROUP="input", MODE="0660", OPTIONS+="static_node=uinput"

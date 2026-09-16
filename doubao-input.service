@@ -1,0 +1,16 @@
+[Unit]
+Description=Doubao push-to-talk voice input
+Documentation=https://github.com/wurong98/doubao-input-for-linux
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/doubao-input
+Restart=on-failure
+RestartSec=3
+Environment=GDK_BACKEND=wayland,x11
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target
