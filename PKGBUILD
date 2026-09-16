@@ -1,7 +1,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=cargo-lbin
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc='Cargo-powered application manager for crates.io command-line binaries'
 url='https://github.com/sirlucjan/cargo-lbin'
@@ -10,7 +10,7 @@ license=('MIT' 'Apache-2.0')
 depends=('cargo')
 options=(!lto)
 source=("git+https://github.com/sirlucjan/cargo-lbin?signed#tag=$pkgver")
-sha256sums=('2eb2d7a53f9ffc20a64435efd3833981f61942122128f53df52a8466d3d4b98a')
+sha256sums=('c9d8c8d967f815fc1778ea8af8f656444d532eb2ce406385bc4311b8e460d8b6')
 validpgpkeys=(
  399521CE9D6D65B35EEF0F8C79AFA05ABDB26C5A  # Piotr Gorski <lucjan.lucjanov@gmail.com>
 )
