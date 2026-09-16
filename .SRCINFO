@@ -1,28 +1,31 @@
 pkgbase = aelkey
 	pkgdesc = Lua-based input remapping framework
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/xiota/aelkey
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = cmake
 	makedepends = git
 	makedepends = go-md2man
 	makedepends = linux-api-headers
 	makedepends = meson
-	depends = dbus
 	depends = libevdev.so
 	depends = libjack.so
 	depends = libudev.so
 	depends = libusb-1.0.so
 	depends = lua
+	depends = libsdbus-c++.so
 	optdepends = bluez: provides BLE GATT services
 	optdepends = pipewire-jack: recommended jack server
 	options = !debug
 	options = !strip
 	options = !lto
-	source = aelkey::git+https://github.com/xiota/aelkey.git#tag=0.0.4
+	source = aelkey::git+https://github.com/xiota/aelkey.git#tag=0.0.5
 	source = nerixyz.sol2::git+https://github.com/Nerixyz/sol2.git
-	sha256sums = e6437920665a9542006f3909eab239efd7a06572cd8cc483f4dd99918b631e6f
+	source = readerwriterqueue::git+https://github.com/cameron314/readerwriterqueue.git
+	sha256sums = acf2d741b1f0875ad8d11371bb9aa9ce552b1d202ae597b3a66cb4c53a868258
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = aelkey
