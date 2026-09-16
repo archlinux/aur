@@ -1,8 +1,8 @@
 # Maintainer: Mark Austin <ganthore@gmail.com>
 
 pkgname=(gaia-amd gaia-amd-webui)
-pkgver=0.23.0
-pkgrel=2
+pkgver=0.24.1
+pkgrel=1
 pkgdesc="AI-powered inference engine for AMD hardware"
 arch=(x86_64)
 url="https://github.com/amd/gaia"
@@ -70,7 +70,7 @@ makedepends=(
     libappindicator
 )
 
-sha256sums=(5eafdbf62a43a5637a4719e723c7df5e7fbd2458b6c1d582a702ab801433f53d
+sha256sums=(f08f4835acc10eb8c9fd1d86c1e91680e11c2247a9f3fcc287278e819b348cac
             96ab23bd2b0d3d402a6c3160f0f5016f582994533723b503098deb042ebbcb03
             13598d2e9294b09ac7cf26739a0ae42acc4993fc2e63ac94a7867ec3d22c99df
             3d185692ac7bd9834643052cb570a6a214878bf74f9e6e14b8c5115493bc7c7e)
