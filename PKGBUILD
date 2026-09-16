@@ -1,11 +1,11 @@
-# Maintainer: Doctor Logix <doctor.logix@gmail.com>
+# Maintainer: Daazed McFarland <daazedjmcfarland@gmail.com>
 # AUR binary repackaging of Denial's signed first-party Arch packages.
 # Upstream first-party repo is primary; this pkgbase exists for AUR-only users.
 
 pkgbase=denial-bin
 pkgname=('denial-flutter-engine-bin' 'denial-bin' 'denial-ui-development-bin')
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 epoch=1
 arch=('x86_64')
 url='https://github.com/denialwm/denial'
@@ -15,7 +15,7 @@ _flutter_generation='3.44.7.denial1'
 # Upper bound for the Denial version compatible with this ui-development snapshot.
 # Derive as MAJOR.(MINOR+1).0 from pkgver; for 0.3.1 this is 0.4.0.
 # Must be bumped manually on every minor version bump.
-_denial_before='0.4.0'
+_denial_before='0.5.0'
 
 # Upstream publishes three signed Arch packages per release under
 # https://github.com/denialwm/denial/releases/tag/v${pkgver} :
@@ -40,11 +40,11 @@ source=(
   "https://github.com/denialwm/denial/releases/download/v${pkgver}/denial-ui-development-${pkgver}-1-x86_64.pkg.tar.zst.sig"
 )
 sha256sums=(
-  'a0a23e0b850821ef697779e42f30d8a53785d4ec0f576f4b1d5f825f04426d03'
+  'e391ff500ca73b879d98eacafaf80579ea436b093f02fd448b19de07b7b356d6'
   'SKIP'
-  '9a8c83bc3cb33144dac481ed0704a5603ce38aa04d733c84951ce4482334e7cc'
+  'b7b05675155078e6c34c4dbe3f8fbe40df0e03bc347bad44c4ffa09e742ccb09'
   'SKIP'
-  'bf7e4646ff4960f6e7cc6e8bb1914c90dce9768eda2f7c783334e1d55b7ceb2c'
+  '6a404ec148e2754e4edbe21f1bdacc5b8d125836297e209ebb5128535e72057c'
   'SKIP'
 )
 validpgpkeys=('AE4108FA5E91E26BE0EE331E0F5B3AD16E023091')
