@@ -1,0 +1,14 @@
+pkgbase = rapidraw-tethering-bin
+	pkgdesc = GPU-accelerated RAW image editor with tethering support
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/CyberTimon/RapidRAW
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = libgphoto2
+	provides = rapidraw
+	conflicts = rapidraw
+	source = https://github.com/CyberTimon/RapidRAW/releases/download/v1.6.3/03_tethering_RapidRAW_v1.6.3_ubuntu-24.04_amd64.deb
+	sha256sums = 851b436048b3b49898fdbd6e191621b9ff26e9c8b33949ff182597e5e2038c27
+
+pkgname = rapidraw-tethering-bin
