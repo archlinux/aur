@@ -1,15 +1,15 @@
 pkgbase = enumctl-bin
 	pkgdesc = CLI tool for enum
-	pkgver = 2026.09.9
+	pkgver = 2026.09.10
 	pkgrel = 1
 	url = https://enum.co/
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	depends = glibc
-	source_x86_64 = enumctl-x86_64::https://dl.enum.co/enumctl/2026.09.9/enumctl-linux-amd64
-	sha256sums_x86_64 = 77596fd4ca723676b17e59cf10de96d4d0ac92f1aeadfbbab02e9d4ca5415735
-	source_aarch64 = enumctl-aarch64::https://dl.enum.co/enumctl/2026.09.9/enumctl-linux-arm64
-	sha256sums_aarch64 = d18882ad2367ca01a22ad147ec2a6b61dc344d29b88f06c12982fff3b3b23f2b
+	source_x86_64 = enumctl-x86_64::https://dl.enum.co/enumctl/2026.09.10/enumctl-linux-amd64
+	sha256sums_x86_64 = a5ead7809018509a5d09a2a955400ce4bf8982af889bf17481cd7dbc2b35b357
+	source_aarch64 = enumctl-aarch64::https://dl.enum.co/enumctl/2026.09.10/enumctl-linux-arm64
+	sha256sums_aarch64 = 211f1ca4674854a1657532f0bebab03b6f7ebbcc82e09e1a3a5763485766c945
 
 pkgname = enumctl-bin
