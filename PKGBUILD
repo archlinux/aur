@@ -1,6 +1,6 @@
 # Maintainer: uku <hi@uku.moe>
 pkgname=tyrolienne
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="simple tool to convert, upload, and embed videos to zipline"
 arch=("x86_64" "aarch64")
@@ -13,7 +13,7 @@ source=(
   "net.uku3lig.tyrolienne.desktop"
 )
 sha256sums=(
-  '12d4d2c76a5d5a6e76afb176d6218b68621ba02759206863efc56495459d4a7c'
+  'e063429b2d6afad7fb565592407bb0cfd6c14884facd70666e9445f502108db4'
   'SKIP'
 )
 # fixes aws-lc-rs not linking
