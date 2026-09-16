@@ -26,8 +26,8 @@ optdepends=(
 )
 source_x86_64=("tcode-${pkgver}-linux-x64.tar.gz::https://github.com/Tryanks/tcode/releases/download/v${pkgver}/tcode-${pkgver}-linux-x64.tar.gz")
 source_aarch64=("tcode-${pkgver}-linux-arm64.tar.gz::https://github.com/Tryanks/tcode/releases/download/v${pkgver}/tcode-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('cfd9d9613d8b40d64800585811ac3e4cd8ac16ff7ed9037d79dda31a7aca96d3')
-sha256sums_aarch64=('fd5377d9e232f6ccf36bd6fc8802ee2f5ab55cd60a698bd5038bf4a5e5f39c02')
+sha256sums_x86_64=('5459e545196912886786fa98f02ad1fc61dad0b4462a7baef888af07c61e00b3')
+sha256sums_aarch64=('dde8b9a9e9f4896173f5541f3911de439756f71cee6c0e4868d72b189e4d694a')
 
 package() {
   local _archdir
