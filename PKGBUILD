@@ -11,7 +11,7 @@
 # Von dort wird gepusht — nicht von hier.
 
 pkgname=yakuda-connect
-pkgver=1.2.9
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="WiVRn VR management software with gaming optimization and OpenXR/OpenVR fixes"
 arch=('any')
@@ -39,7 +39,7 @@ conflicts=('yakuda-connect-git')
 # Tag-Format im Repo ist v<version> -> v1.1.2
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Wird von 'updpkgsums' im AUR-Ordner gesetzt — NICHT von Hand eintragen.
-sha256sums=('29cecfa6ab63c3faad271787addaf0cd976b5afd161a70fe8796142e0e4a741a')
+sha256sums=('115b2cf0cc357108f5ae362ee741203cbda3b7089e61f35bb7c16b5d8e7db598')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -50,7 +50,10 @@ package() {
     install -d "$dest"
     # locales/ ist PFLICHT: dort liegen seit v1.1.5 alle Texte der
     # Oberflaeche. Fehlt der Ordner, bricht translations.py beim Start ab.
-    for item in core ui assets locales config starter.py; do
+    # CHANGELOG.md/HIGHLIGHTS.md: seit v1.3.0 in der App lesbar
+    # (Einstellungen -> Community & Updates). Fehlen sie, zeigt der Dialog
+    # nur einen GitHub-Link.
+    for item in core ui assets locales config starter.py CHANGELOG.md HIGHLIGHTS.md; do
         [ -e "$item" ] && cp -r "$item" "$dest/"
     done
 
