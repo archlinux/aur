@@ -1,6 +1,6 @@
 pkgbase = python-espeakng-loader
 	pkgdesc = A Python package that provides shared library loader for eSpeak NG
-	pkgver = 0.2.4
+	pkgver = None
 	pkgrel = 1
 	url = https://github.com/thewh1teagle/espeakng-loader
 	arch = x86_64
