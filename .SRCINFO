@@ -1,6 +1,6 @@
 pkgbase = tagwerk-git
 	pkgdesc = Passive work-hours tracker for Hyprland, attributed per repo
-	pkgver = r51.b633ce8
+	pkgver = r52.4de1e16
 	pkgrel = 1
 	url = https://github.com/espadat-studio/tagwerk
 	install = tagwerk-git.install
