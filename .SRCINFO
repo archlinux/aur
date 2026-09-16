@@ -1,6 +1,6 @@
 pkgbase = mdmost
 	pkgdesc = Like less but for Markdown
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/oetiker/mdmost
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mdmost
 	makedepends = pandoc-cli
 	provides = mdmost
 	options = !strip
-	source = mdmost-0.3.3.tgz::https://github.com/oetiker/mdmost/archive/v0.3.3.tar.gz
-	sha256sums = a5e8236b61a53441d1e53fd94ff100bf685def49bb352cd543e8966912b0e57e
+	source = mdmost-0.3.4.tgz::https://github.com/oetiker/mdmost/archive/v0.3.4.tar.gz
+	sha256sums = 0dc5131f052bcd2ed8cf444382bb4ccbf29f96647b0892a0921e46fafa7a5560
 
 pkgname = mdmost
