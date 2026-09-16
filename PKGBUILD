@@ -1,7 +1,7 @@
 # Maintainer: Vlad Pirlog <(firstname) at (lastname) dot com>
 
 pkgname=temporal-cli
-pkgver='1.8.3'
+pkgver='1.9.1'
 pkgrel=1
 pkgdesc='CLI for running Temporal Server and interacting with various parts of Temporal'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/temporalio/cli/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('75d14f36d527940ba201d43437bec696385d32c865049961748487b4f376b3f7fdf62690f8d3aa7be31e0648ef440d3010e33c30922ec22b1dfaebf42f48dbd0')
+b2sums=('6387ef570f960646040afe9a1b9936e314620190a02a5561f95f60b8f0a10183d1cef273a132a549cdcb9bf56576a599d6f0efc9b20fac6205040f893c1699e6')
 
 build() {
   cd "cli-${pkgver}"
