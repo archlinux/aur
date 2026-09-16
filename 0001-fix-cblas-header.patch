@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ecb7910..f4398f4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -403,8 +403,9 @@ include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
+ if (${SIM_PLATFORM} STREQUAL "Linux" OR ${SIM_PLATFORM} STREQUAL "Darwin")
+     # libplatform.cpp needs OpenBLAS (<cblas.h>, openblas_set_num_threads)
+     set(BLA_VENDOR OpenBLAS)
+-    find_package(BLAS REQUIRED)
++    find_package(OpenBLAS CONFIG REQUIRED)
+     find_package(LAPACK REQUIRED)
++    include_directories("${OpenBLAS_INCLUDE_DIRS}")
+ endif()
+ 
+ # What to link with the object files to produce an executable
