@@ -13,7 +13,7 @@
 # is an absolute symlink — safe by design.
 
 pkgname=c0wrk-zabbius-cuda-git
-pkgver=0.8.0.r77.ga788e6e
+pkgver=0.8.0.r101.gfb60fba
 pkgrel=1
 pkgdesc='Desktop AI coding-agent built with Wails (Go + React) — CUDA flavor, git build'
 arch=(x86_64)
@@ -34,7 +34,7 @@ options=(!strip)
 # here and in the CPU package, and regenerates both .SRCINFO files.
 # `wails` (AUR) must match the version required by go.mod: v2.15.0.
 source=(
-  'c0wrk::git+https://github.com/zabbius/c0wrk.git#commit=a788e6e4446cd13beaf3b213e119bcef5c17ceb0'
+  'c0wrk::git+https://github.com/zabbius/c0wrk.git#commit=fb60fba59f8a8c5e32035f5c58c376e9a08a0077'
   'c0wrk.desktop'
 )
 sha256sums=(
@@ -55,15 +55,9 @@ build() {
   # fetch-embedding-model. VERSION/GITCOMMIT are `?=` in the Makefile, so
   # passing them here overrides the fallback and keeps the About dialog free
   # of "dev"/"none" placeholders.
-  make build \
+  make build-gpu \
     VERSION="$(git describe --tags --always)" \
     GITCOMMIT="$(git rev-parse --short HEAD)"
-
-  # CUDA flavor: swap in the GPU build of ONNX Runtime 1.28.1 (cuda13) on top
-  # of the CPU one `make build` just installed — it replaces libonnxruntime.so
-  # and adds the CUDA/shared provider libraries. Order matters: this MUST run
-  # after `make build`, never before.
-  make fetch-onnx-gpu
 }
 
 package() {
