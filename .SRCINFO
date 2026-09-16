@@ -1,0 +1,27 @@
+pkgbase = nebu-bin
+	pkgdesc = Model storage, inference runtime management, and API gateway
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nickheyer/nebu
+	license = MIT
+	optdepends = git: git model sources
+	optdepends = cmake: building llama.cpp
+	optdepends = gcc: compiling inference runtimes
+	optdepends = python: Python inference runtimes
+	optdepends = python-pip: installing Python inference runtimes
+	optdepends = cuda: building CUDA inference runtimes
+	optdepends = nvidia-utils: NVIDIA device probing
+	optdepends = hip-runtime-amd: AMD inference runtimes
+	optdepends = rocm-smi-lib: AMD device probing
+	optdepends = docker: optional container build sandbox
+	depends = ca-certificates
+	conflicts = nebu
+	provides = nebu
+	arch = aarch64
+	source_aarch64 = https://github.com/nickheyer/nebu/releases/download/v0.1.0/nebu_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7fbc2411516cbdf2dd9420ae9298ecaef309b710308907cb9e5bc3c1cbf9c8ec
+	arch = x86_64
+	source_x86_64 = https://github.com/nickheyer/nebu/releases/download/v0.1.0/nebu_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 80d4b377a676743365bc16137ed8edff2ea6d87ae691d687c3f127c0398d98b2
+	
+pkgname = nebu-bin
