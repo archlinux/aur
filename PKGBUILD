@@ -19,7 +19,7 @@ provides=("cake-wallet")
 source=("${pkgname}-v${pkgver}-release.tar.xz::${url}/releases/download/v${pkgver}/Cake_Wallet_v${pkgver}_Linux.tar.xz"
     "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha512sums=("d6e41704487b39746a3773bfa750f75a72431f1af006e7fe96593cf6c57842ce4addfec97878a0c8841fef183e3769e9943abcbb3af8f476755b0445788eae3e"
+sha512sums=("909f91bcf81c00430ead7655d9fb5e7c13d9c3549ddd69fc1f63abd040865ec8b5090a6549157be83f83681bb53f57deb9d59ca07aff760dd89a310865e472cc"
     "6656e1521604eaec3c95aed7505c74a9f8bef92c9ce54fcd584d9b04356d6500b257ab9a1d570c4cd05f5a6994568271c0167e30dd4bd41aca67acf9f51689dd"
     "5c023a15f0e6b6df6ca50192642c07b16697921bfe55fc657b0388123fb8cfc6dd90c6302fc417a2907d9c063084557b94df31617dc416bdc10041ad42359437")
 
