@@ -3,8 +3,8 @@
 
 pkgname=vocalinux
 # AUR pkgver cannot contain hyphens (v0.14.0-beta -> 0.14.0beta).
-pkgver=0.16.2
-_tag=0.16.2
+pkgver=0.17.0
+_tag=0.17.0
 pkgrel=1
 pkgdesc="Free, offline voice dictation for Linux"
 arch=('any')
@@ -26,8 +26,6 @@ depends=(
   'python-requests'
   'python-tqdm'
   'python-psutil'
-  'python-lxml'
-  'python-pydub'
   'python-evdev'
   'python-xlib'
   'hicolor-icon-theme'
@@ -45,6 +43,12 @@ optdepends=(
   'python-pywhispercpp-cuda: NVIDIA GPU whisper.cpp backend'
   'python-pywhispercpp-rocm: AMD GPU whisper.cpp backend'
   'python-onnxruntime: Silero VAD'
+  # One line per selectable engine. Without it the engine is offered in
+  # Settings and fails at import, which is how vosk and whisper shipped too.
+  'python-vosk: Vosk engine'
+  'python-openai-whisper: OpenAI Whisper engine'
+  'python-sherpa-onnx: Parakeet TDT 0.6B engine'
+  'python-faster-whisper: faster-whisper engine'
   'xdotool: X11 injection fallback'
   'xclip: X11 clipboard tools (copy/paste injection fallbacks)'
   'wl-clipboard: Wayland clipboard (wl-copy/wl-paste) injection fallbacks'
@@ -53,7 +57,7 @@ optdepends=(
 conflicts=('vocalinux-git')
 source=("${pkgname}-${_tag}.tar.gz::https://github.com/VocaHQ/vocalinux/archive/refs/tags/v${_tag}.tar.gz")
 # SKIP until the v${_tag} tarball exists. release.yml sets updpkgsums=true on publish.
-sha256sums=('2aee0b6553e562754c327db2aa2fd90336c19e71dc2a34c218c95a08bfaab6f1')
+sha256sums=('1afe5429e69a15f13fa5842d9010e8e2298e7fdc0eafb2d23736d54a82182cea')
 
 build() {
   cd "${pkgname}-${_tag}"
