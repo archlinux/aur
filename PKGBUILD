@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A distraction-free terminal text editor for prose"
 
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('465d59458f5bb6b96813e5c88f29f9e90184fff90b7db0af740add755e82c3f5')
-sha256sums_aarch64=('83018e928be50a17df8b59c1e0d3b202a09edf623a06262c98a94b0a5f9c0806')
+sha256sums_x86_64=('66b08b75263f149644770785383e23cd50e7ebba9363638300599cd7068df85f')
+sha256sums_aarch64=('e02f6a13b254371e36110a55abe7fe0772b11e55501210e85e7688143eb223df')
 
 
 package() {
