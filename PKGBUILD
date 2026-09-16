@@ -1,7 +1,7 @@
 # Maintainer: Tomáš Karela Procházka <tomas.prochazka5d@gmail.com>
 
 pkgname=profilecli
-pkgver=2.2.1
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='CLI for Grafana Pyroscope, the continuous profiling aggregation system'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 conflicts=('profilecli-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/grafana/pyroscope/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4865c37f47da0a7cb4176d7a1cae4b02b60413bc9510962360753f73e7258c7c')
+sha256sums=('4b48110650d3dbb6beabdd64a44ab89518ff73449b71ea5ff783818b8d2ac1e6')
 
 _srcname="pyroscope-$pkgver"
 # Upstream stamps the version into this package; see its Makefile GO_LDFLAGS.
@@ -28,7 +28,10 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  # -buildvcs=false: $srcdir lives inside this package's own git repo, so Go's
+  # automatic VCS stamping would record *this* repo's commit as vcs.revision and
+  # `profilecli --version` would report it (as "<aur commit>-modified").
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -buildvcs=false"
 
   # Without the -X stamps `profilecli --version` reports an empty version.
   # Revision/BuildDate are left unset: neither is knowable from a source
