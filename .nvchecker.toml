@@ -1,4 +1,4 @@
 [nestopia]
 source = "git"
-git = "https://github.com/0ldsk00l/nestopia.git"
-prefix = "v"
+git = "https://gitlab.com/jgemu/nestopia.git"
+include_regex = '[\d.]+'
