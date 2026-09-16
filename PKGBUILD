@@ -1,13 +1,13 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=osmdata
-_pkgver=0.3.0
+_pkgver=0.4.1
 pkgname=r-osmdata
 pkgdesc="Import 'OpenStreetMap' Data as Simple Features or Spatial Objects"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("GPL-3.0-only")
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 makedepends=("gcc-fortran")
 
 arch=("any")
@@ -32,7 +32,7 @@ optdepends=(
     "r-testthat"
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('26cbe70d7f1c5940f32fa4b9ac8fdbe6f5cf640abb1d11df7e1931e27fecf515')
+sha256sums=('5ee078216c9f1de7ca8cfcaa1fc8c38e6b6cf90636b205111775b4c9af4bcdaf')
 
 build() {
     mkdir -p "${srcdir}/build/"
