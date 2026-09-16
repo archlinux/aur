@@ -1,7 +1,7 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-bin
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=(moonshine)
 source=(
 	"https://github.com/hgaiser/moonshine/releases/download/v$pkgver/moonshine-v$pkgver-linux-amd64.tar.zst"
 )
-sha256sums=('fe7b83d0d85ceb864888c3c848cfbce75b51f3cc0f839649f6ec6956f61e148f')
+sha256sums=('14051d0f080e1d77ed6fb9e289bcd1fc0132e41f50f2a35f488fa8592ea0b9c7')
 
 package() {
 	cd "$srcdir/moonshine"
