@@ -16,7 +16,7 @@
 # and not the version; a build in a network-isolated chroot will still fail.
 
 pkgname=xpcog
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Audio player for the formats other players do not open"
 arch=('x86_64')
@@ -36,7 +36,7 @@ license=('GPL-2.0-or-later')
 # substituted, vcpkg builds them static, and they end up inside the executable
 # rather than beside it.
 depends=(
-  'wxwidgets-gtk3' 'glib2' 'gcc-libs'
+  'wxwidgets-gtk3' 'gtk3' 'glib2' 'gcc-libs'
   'ffmpeg' 'taglib' 'sqlite' 'libopenmpt' 'libgme' 'libarchive'
   'curl' 'opusfile' 'wavpack' 'libsoxr' 'rubberband' 'libmpcdec'
   'libsidplayfp' 'hicolor-icon-theme'
@@ -61,7 +61,7 @@ source=(
 # The release tarball is checksummed; the vcpkg tree is not, because a git
 # source is pinned by its commit and makepkg wants SKIP for one.
 sha256sums=(
-  '8649efc5658d8a3523595b088a94023a8242410444dece227956a35f1a37e2c3'
+  '852c81f0af9842149cf2ec193b6256b05c4ae285a074bd6b7d441d9a47d0fc8e'
   'SKIP'
 )
 
