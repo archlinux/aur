@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="LLM security testing framework for detecting prompt injection, jailbreaks, and adversarial attacks with 190+ probes and 28 providers"
 
-pkgver=0.14.29
+pkgver=0.14.30
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('2df22594217412e36449e4799f986f4536de4af74a1c6fac7193844702f5e581')
-sha256sums_aarch64=('3f00c0261bc26b30733ff9312c963dc27cd02321c30f64cce8f0664823f0b6ab')
+sha256sums_x86_64=('70001601ae830731db426675a1400ebc0d2cab813e6dfdee6218de49ff7013f5')
+sha256sums_aarch64=('543c81745b754cc635a2ef89747497df35a9d22866d86859acde7483c65dfc2f')
 
 
 package() {
