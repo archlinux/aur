@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=context-bin
-pkgver=20260916.0
+pkgver=20260916.1
 pkgrel=1
 pkgdesc="Standalone CLI and MCP server for deterministic repository context (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=('context')
 conflicts=('context' 'context-git')
 options=('!strip')
 source=('context.bash' 'context.fish' '_context' 'LICENSE')
-source_x86_64=("context-${pkgver}-linux-${CARCH}.tar.gz::$url/releases/download/${pkgver}/context-${pkgver}-linux-${CARCH}.tar.gz")
-source_aarch64=("context-${pkgver}-linux-${CARCH}.tar.gz::$url/releases/download/${pkgver}/context-${pkgver}-linux-${CARCH}.tar.gz")
+source_x86_64=("context-${pkgver}-linux-x86_64.tar.gz::$url/releases/download/${pkgver}/context-${pkgver}-linux-x86_64.tar.gz")
+source_aarch64=("context-${pkgver}-linux-aarch64.tar.gz::$url/releases/download/${pkgver}/context-${pkgver}-linux-aarch64.tar.gz")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 sha256sums_x86_64=('4d47b2fcc813cf9329def52a558b53029c466f0493ebf78a10e9fe825b762eb7')
 sha256sums_aarch64=('a97e2c2a6cce7462c4332f9cefb381f738534a18e645154e46bc735753577691')
