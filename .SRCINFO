@@ -1,6 +1,6 @@
 pkgbase = vet-bin
 	pkgdesc = Protect against malicious open source packages
-	pkgver = 1.19.0
+	pkgver = 1.19.1
 	pkgrel = 1
 	url = https://github.com/safedep/vet
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = vet-bin
 	depends = glibc
 	provides = vet
 	conflicts = vet
-	source_x86_64 = vet-x86_64-1.19.0.tgz::https://github.com/safedep/vet/releases/download/v1.19.0/vet_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 4e39ea7fb7c11e1edcdcf41a3c71766f62fb7f4533930b850afbd1bb441bb221
-	source_aarch64 = vet-aarch64-1.19.0.tgz::https://github.com/safedep/vet/releases/download/v1.19.0/vet_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 0cf95eca4d79e9252e11f2a0d87e928a36efa3b417b853724eafa0b3748cf923
+	source_x86_64 = vet-x86_64-1.19.1.tgz::https://github.com/safedep/vet/releases/download/v1.19.1/vet_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 4d8c57a9a746b13d5591b527b38cc0fe5fb8eda95c2a85557f1098abe560675d
+	source_aarch64 = vet-aarch64-1.19.1.tgz::https://github.com/safedep/vet/releases/download/v1.19.1/vet_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 6c3d8d72bd7f29f2dacecd67a8959ad7114296cb811c7eb7f454ce41a2a977f9
 
 pkgname = vet-bin

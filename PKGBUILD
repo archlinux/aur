@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="Protect against malicious open source packages"
 
-pkgver=1.19.0
+pkgver=1.19.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,8 +24,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('4e39ea7fb7c11e1edcdcf41a3c71766f62fb7f4533930b850afbd1bb441bb221')
-sha256sums_aarch64=('0cf95eca4d79e9252e11f2a0d87e928a36efa3b417b853724eafa0b3748cf923')
+sha256sums_x86_64=('4d8c57a9a746b13d5591b527b38cc0fe5fb8eda95c2a85557f1098abe560675d')
+sha256sums_aarch64=('6c3d8d72bd7f29f2dacecd67a8959ad7114296cb811c7eb7f454ce41a2a977f9')
 
 
 case ${CARCH} in
