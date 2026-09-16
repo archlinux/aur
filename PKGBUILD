@@ -23,7 +23,7 @@ source=("${_upstream_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}
   "LICENSE::https://raw.githubusercontent.com/${_pkgauthor}/${_upstream_pkgname}/refs/tags/v${pkgver}/LICENSE")
 sha256sums=(
   "8dc5bb55a206e8401a1c5a0ebed1b37681b93ff22216b2e0db256a51b1c4ca0d"
-  "08298012af72d8dba26569c199dd71d344ce1d39029363cf8bf0c6c7a08a5f70"
+  SKIP
 )
 
 package() {

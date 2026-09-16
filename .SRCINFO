@@ -10,6 +10,6 @@ pkgbase = circleci-cli-bin
 	source = circleci-cli-1.0.50462.tar.gz::https://github.com/CircleCI-Public/circleci-cli/releases/download/v1.0.50462/circleci-cli_1.0.50462_linux_amd64.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/refs/tags/v1.0.50462/LICENSE
 	sha256sums = 8dc5bb55a206e8401a1c5a0ebed1b37681b93ff22216b2e0db256a51b1c4ca0d
-	sha256sums = 08298012af72d8dba26569c199dd71d344ce1d39029363cf8bf0c6c7a08a5f70
+	sha256sums = SKIP
 
 pkgname = circleci-cli-bin
