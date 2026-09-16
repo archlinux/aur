@@ -1,5 +1,5 @@
 pkgname=ioexplorer-git
-pkgver=r71.3d5e6f4
+pkgver=r72.46eb9db
 pkgrel=1
 pkgdesc='Wayland-native provider-oriented file manager, spotlight, and other utilities for Wayland desktops'
 arch=('x86_64')
@@ -13,6 +13,9 @@ optdepends=(
   'grim: screen capture for ioexplorer-shot'
   'wl-clipboard: copy screenshots to the clipboard without keeping ioexplorer-shot running'
   'libnotify: screenshot notifications'
+  'wf-recorder: screen recording with ioexplorer-shot record'
+  'ffmpeg: finishing recordings and checking audio sources'
+  'libpulse: recording audio and mixing in the microphone'
 )
 source=("$pkgname::git+https://github.com/LucasionGS/ioexplorer.git")
 sha256sums=('SKIP')
