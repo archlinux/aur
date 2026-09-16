@@ -1,7 +1,7 @@
 pkgbase = r-geojsonsf
 	pkgdesc = GeoJSON to Simple Feature Converter
 	pkgver = 2.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=geojsonsf
 	arch = i686
 	arch = x86_64

@@ -8,7 +8,7 @@ pkgdesc="GeoJSON to Simple Feature Converter"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 
 arch=("i686" "x86_64")
 depends=(
@@ -54,15 +54,12 @@ b2sums=('25b31673a1d0df7ba38edf027f67c96b8aa186568ae3a600a4396a697c63f1cd90680aa
         'c2886074fda8274e8eb34ec82e4f81e92c43f7d275c67b1c6da85fcfaf2fe3f2fcf3820dd66e447029f08fbd63a7f56d4b7e69c856cfad285c517ac9ed2edd2c')
 
 prepare() {
-    cd "${srcdir}"
-    tar -xzf ${_pkgname}_${_pkgver}.tar.gz
     patch -p1 -d "${_pkgname}" < fix-rvalue-ref.patch
-    tar -czf ${_pkgname}_${_pkgver}.tar.gz ${_pkgname}
 }
 
 build() {
     mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}/build/"
+    R CMD INSTALL "${_pkgname}" -l "${srcdir}/build/"
 }
 
 # check() {
