@@ -4,10 +4,10 @@
 # Inspired from the PKGBUILD for ferdi-git.
 
 _electron='electron43'
-_recipes_commit='fc4675ab5724e83d59d92f38a63dcc503615a7c9'
+_recipes_commit='bc708f6aad02fc43168e976d1d65678eaf96f21b'
 
 pkgname="ferdium-electron"
-pkgver=7.2.2
+pkgver=7.2.3
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -20,8 +20,8 @@ conflicts=('ferdium')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ferdium/ferdium-app/archive/v$pkgver.tar.gz"
         "ferdium-recipes-$pkgver.tar.gz::https://github.com/ferdium/ferdium-recipes/archive/$_recipes_commit.tar.gz"
         ferdium.desktop)
-sha256sums=('ca5878ba00775096aae18c283b9d30701fc41443f237a91f9d821bfcf185272c'
-            'c7fffe3fb409d69c891b6bd237461dea4ce1464e0609dc608fedf4a6bd2a29cf'
+sha256sums=('ba266a71335c5e5a29d4a06990b1f8a279238a68fc2d077bb32d5e7ea790b3d5'
+            '8d2ddde9a1dda7a4656f5eb2c3deb9a4f536b7893c20521e0b47cf9080358b18'
             'd6e129220ed947cb5fa205211dabc6311a3d9c92434b6bc8deb2fae802c0b0d0')
 
 prepare() {

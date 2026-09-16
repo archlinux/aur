@@ -1,6 +1,6 @@
 pkgbase = ferdium-electron
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition
-	pkgver = 7.2.2
+	pkgver = 7.2.3
 	pkgrel = 1
 	url = https://ferdium.org/
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = ferdium-electron
 	depends = electron43
 	provides = ferdium
 	conflicts = ferdium
-	source = ferdium-electron-7.2.2.tar.gz::https://github.com/ferdium/ferdium-app/archive/v7.2.2.tar.gz
-	source = ferdium-recipes-7.2.2.tar.gz::https://github.com/ferdium/ferdium-recipes/archive/fc4675ab5724e83d59d92f38a63dcc503615a7c9.tar.gz
+	source = ferdium-electron-7.2.3.tar.gz::https://github.com/ferdium/ferdium-app/archive/v7.2.3.tar.gz
+	source = ferdium-recipes-7.2.3.tar.gz::https://github.com/ferdium/ferdium-recipes/archive/bc708f6aad02fc43168e976d1d65678eaf96f21b.tar.gz
 	source = ferdium.desktop
-	sha256sums = ca5878ba00775096aae18c283b9d30701fc41443f237a91f9d821bfcf185272c
-	sha256sums = c7fffe3fb409d69c891b6bd237461dea4ce1464e0609dc608fedf4a6bd2a29cf
+	sha256sums = ba266a71335c5e5a29d4a06990b1f8a279238a68fc2d077bb32d5e7ea790b3d5
+	sha256sums = 8d2ddde9a1dda7a4656f5eb2c3deb9a4f536b7893c20521e0b47cf9080358b18
 	sha256sums = d6e129220ed947cb5fa205211dabc6311a3d9c92434b6bc8deb2fae802c0b0d0
 
 pkgname = ferdium-electron
