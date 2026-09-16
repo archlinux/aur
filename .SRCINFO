@@ -1,7 +1,7 @@
 pkgbase = r-leafem
 	pkgdesc = 'leaflet' Extensions for 'mapview'
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=leafem
 	arch = any
 	license = MIT
