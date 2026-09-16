@@ -2,7 +2,7 @@
 
 _pkgname="evdi"
 pkgname="$_pkgname-dkms"
-pkgver="1.15.0"
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Kernel module to enable management of multiple screens"
 url="https://github.com/DisplayLink/evdi"
@@ -34,7 +34,7 @@ conflicts=(
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver/$_pkgsrc.$_pkgext")
-sha256sums=('c19cd1120b43a0d88e91cdd893b592a56b9a904ead25ea8299eb4b451f649899')
+sha256sums=('b120df303d14be09062157aab17a8598746c0caf2e076ff3388b4091186cf2d9')
 
 prepare() {
   sed -E -e '/^CLEAN=/d' -i "$_pkgsrc/module/dkms.conf"
