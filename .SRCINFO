@@ -1,23 +1,23 @@
 pkgbase = dotnet-core-rc-bin
-	pkgver = 10.0.11.sdk400
+	pkgver = 11.0.0.sdk100rc1.26425.128
 	pkgrel = 2
 	url = https://dotnet.microsoft.com
 	arch = aarch64
 	arch = x86_64
 	arch = armv7h
 	license = MIT
-	noextract = dotnet-sdk-10.0.400-linux-arm64.tar.gz
-	noextract = dotnet-sdk-10.0.400-linux-x64.tar.gz
-	noextract = dotnet-sdk-10.0.400-linux-arm.tar.gz
+	noextract = dotnet-sdk-11.0.100-rc.1.26425.128-linux-arm64.tar.gz
+	noextract = dotnet-sdk-11.0.100-rc.1.26425.128-linux-x64.tar.gz
+	noextract = dotnet-sdk-11.0.100-rc.1.26425.128-linux-arm.tar.gz
 	options = staticlibs
 	source = dotnet.sh
 	sha512sums = 768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06
-	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-arm64.tar.gz
-	sha512sums_aarch64 = a1b45da58e5591fff909a6126ac6bfc1ef9c12bc72c0625f7815e83a82be1a902317ee96926cbbf81324a45c6abf2ed8102a216d0507879cc166159af78d1b77
-	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-x64.tar.gz
-	sha512sums_x86_64 = 1033977dd837150e0814cf0c5d5b17ceb63925fda7ba2158b47258a4bd7c048cf82eac3bc1166f3146f53124a3f5fba09db1de1260d2ce96399860303b404b48
-	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.400/dotnet-sdk-10.0.400-linux-arm.tar.gz
-	sha512sums_armv7h = 6c0260ca5f735f299913eeb19851a4fc5e1a774f97de55c3f1d811799fb395261fba9132690c17a2963f24b2b356952bccd4ff654acf19f96a660676fad0c7b7
+	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-rc.1.26425.128/dotnet-sdk-11.0.100-rc.1.26425.128-linux-arm64.tar.gz
+	sha512sums_aarch64 = 59e3c8c1937f12219f437a05ffae6febad7e88155eac83c2bc97bdb590a70929dfdd0b585898e023cd3883ff44865bfb8cde9e9d265d3e4f1ba49db7720c95e7
+	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-rc.1.26425.128/dotnet-sdk-11.0.100-rc.1.26425.128-linux-x64.tar.gz
+	sha512sums_x86_64 = 608518577aab9db33db92ebd74f0fc9bfbcc7b3d473619f4731aca2edba80af6c571a38d5be6994862fc4679f6f3d13db767712fcb6f70a7683974a18824a0cc
+	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-rc.1.26425.128/dotnet-sdk-11.0.100-rc.1.26425.128-linux-arm.tar.gz
+	sha512sums_armv7h = f07ecf6d7ff70a09a410f676f9528bfd3ddef1b6fff7a7f8a1dd4883150eca6b27b28250bfd24d4c61d909d537fd377776b4bcd16e965890f10fa1978a5a819d
 
 pkgname = dotnet-host-rc-bin
 	pkgdesc = A generic driver for the .NET Core Command Line Interface
@@ -25,13 +25,13 @@ pkgname = dotnet-host-rc-bin
 	depends = libgcc
 	depends = libstdc++
 	depends = sh
-	provides = dotnet-host-rc=10.0.11.sdk400
-	provides = dotnet-host=10.0.11.sdk400
+	provides = dotnet-host-rc=11.0.0.sdk100rc1.26425.128
+	provides = dotnet-host=11.0.0.sdk100rc1.26425.128
 	conflicts = dotnet-host
 
 pkgname = dotnet-runtime-rc-bin
 	pkgdesc = The .NET Core runtime
-	depends = dotnet-host>=10.0.11.sdk400
+	depends = dotnet-host>=11.0.0.sdk100rc1.26425.128
 	depends = glibc
 	depends = icu
 	depends = krb5
@@ -41,45 +41,45 @@ pkgname = dotnet-runtime-rc-bin
 	depends = openssl
 	depends = zlib
 	optdepends = lttng-ust2.12: CoreCLR tracing
-	provides = dotnet-runtime-rc=10.0.11.sdk400
-	provides = dotnet-runtime-10.0=10.0.11.sdk400
-	provides = dotnet-runtime=10.0
+	provides = dotnet-runtime-rc=11.0.0.sdk100rc1.26425.128
+	provides = dotnet-runtime-11.0=11.0.0.sdk100rc1.26425.128
+	provides = dotnet-runtime=11.0
 	conflicts = dotnet-runtime-rc
-	conflicts = dotnet-runtime-10.0
+	conflicts = dotnet-runtime-11.0
 
 pkgname = aspnet-runtime-rc-bin
 	pkgdesc = The ASP.NET Core runtime
-	depends = dotnet-runtime-rc-bin>=:10.0.11.sdk400-2
-	provides = aspnet-runtime-rc=10.0.11.sdk400
-	provides = aspnet-runtime-10.0=10.0.11.sdk400
-	provides = aspnet-runtime=10.0
+	depends = dotnet-runtime-rc-bin>=:11.0.0.sdk100rc1.26425.128-2
+	provides = aspnet-runtime-rc=11.0.0.sdk100rc1.26425.128
+	provides = aspnet-runtime-11.0=11.0.0.sdk100rc1.26425.128
+	provides = aspnet-runtime=11.0
 	conflicts = aspnet-runtime-rc
-	conflicts = aspnet-runtime-10.0
+	conflicts = aspnet-runtime-11.0
 
 pkgname = dotnet-targeting-pack-rc-bin
 	pkgdesc = The .NET Core targeting pack
-	provides = dotnet-targeting-pack-rc=10.0.11.sdk400
-	provides = dotnet-targeting-pack-10.0=10.0.11.sdk400
-	provides = dotnet-targeting-pack=10.0
+	provides = dotnet-targeting-pack-rc=11.0.0.sdk100rc1.26425.128
+	provides = dotnet-targeting-pack-11.0=11.0.0.sdk100rc1.26425.128
+	provides = dotnet-targeting-pack=11.0
 	conflicts = dotnet-targeting-pack-rc
-	conflicts = dotnet-targeting-pack-10.0
+	conflicts = dotnet-targeting-pack-11.0
 
 pkgname = aspnet-targeting-pack-rc-bin
 	pkgdesc = The ASP.NET Core targeting pack
-	depends = dotnet-targeting-pack-rc-bin>=:10.0.11.sdk400-2
-	provides = aspnet-targeting-pack-rc=10.0.11.sdk400
-	provides = aspnet-targeting-pack-10.0=10.0.11.sdk400
-	provides = aspnet-targeting-pack=10.0
+	depends = dotnet-targeting-pack-rc-bin>=:11.0.0.sdk100rc1.26425.128-2
+	provides = aspnet-targeting-pack-rc=11.0.0.sdk100rc1.26425.128
+	provides = aspnet-targeting-pack-11.0=11.0.0.sdk100rc1.26425.128
+	provides = aspnet-targeting-pack=11.0
 	conflicts = aspnet-targeting-pack-rc
-	conflicts = aspnet-targeting-pack-10.0
+	conflicts = aspnet-targeting-pack-11.0
 
 pkgname = dotnet-sdk-rc-bin
 	pkgdesc = The .NET Core SDK
-	depends = dotnet-runtime-rc-bin>=:10.0.11.sdk400-2
-	depends = dotnet-targeting-pack-rc-bin>=:10.0.11.sdk400-2
+	depends = dotnet-runtime-rc-bin>=:11.0.0.sdk100rc1.26425.128-2
+	depends = dotnet-targeting-pack-rc-bin>=:11.0.0.sdk100rc1.26425.128-2
 	optdepends = aspnet-targeting-pack-rc-bin: Build ASP.NET Core applications
-	provides = dotnet-sdk-rc=10.0.11.sdk400
-	provides = dotnet-sdk-10.0=10.0.11.sdk400
-	provides = dotnet-sdk=10.0
+	provides = dotnet-sdk-rc=11.0.0.sdk100rc1.26425.128
+	provides = dotnet-sdk-11.0=11.0.0.sdk100rc1.26425.128
+	provides = dotnet-sdk=11.0
 	conflicts = dotnet-sdk-rc
-	conflicts = dotnet-sdk-10.0
+	conflicts = dotnet-sdk-11.0
