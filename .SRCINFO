@@ -1,6 +1,6 @@
 pkgbase = winkel-git
 	pkgdesc = A metronome for Omarchy that follows the live theme (latest development version)
-	pkgver = 0.1.0.r2.g330109a
+	pkgver = 0.1.2.r0.g4f0ba5f
 	pkgrel = 1
 	url = https://github.com/DouglasdeMoura/winkel
 	arch = x86_64
