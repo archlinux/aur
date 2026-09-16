@@ -18,6 +18,6 @@ pkgbase = anvil-manager
 	provides = anvil
 	conflicts = anvil
 	source = anvil-manager-0.7.17.tar.gz::https://github.com/Hamza-b93/anvil/archive/refs/tags/v0.7.17.tar.gz
-	sha256sums = 66985b5edeb1d466e1ddfe921f3f9bf6e3ded3f1b43f0db491a42154528baa12
+	sha256sums = 647056dc7e3b6fb27859d5fb462827b4567bbc9ef03fe78cf5996bd1022b4b82
 
 pkgname = anvil-manager
