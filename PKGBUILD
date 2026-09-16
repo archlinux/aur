@@ -38,20 +38,18 @@ source=(
     # `if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)` und gilt ihrem eigenen
     # Beispiel-Executable. Im Bau des Explorers ist der Explorer die Wurzel, also schweigt er.
     #
-    # DIESE DREI SIND HEUTE PRIVAT, UND DAMIT IST DAS PAKET FUER FREMDE NICHT BAUBAR.
-    # Gemessen anonym ueber https: ase-utils/ase-fileio/ase-json/ase-adp-gtk loesen auf,
-    # ase-containers/ase-math/ase-types verlangen Zugangsdaten (`could not read Username`).
-    # Von elf Foundation-Einheiten sind vier oeffentlich — genau die vier, die dieses Paket
-    # bisher holte. Der Schnitt ist also gewachsen, nicht verrutscht.
+    # DER ABSCHLUSS BESTIMMT DIE SICHTBARKEIT, NICHT UMGEKEHRT.
     #
-    # WANN ES BRACH: der Explorer zieht ase-containers und ase-math seit 2026-06-08
-    # (CMakeLists.txt), ase-adp-libgit2 sein ase-types seit 2026-09-08. Das zuletzt
-    # veroeffentlichte 00.00.35 stammt vom 2026-05-13 — seither hat niemand neu gebaut, und
-    # deshalb hat niemand gemerkt, dass der Abschluss ueber den oeffentlichen Rand gewachsen ist.
+    # Die drei waren bis 2026-09-16 privat und der Fremdbau scheiterte am Holen
+    # (`could not read Username`). Sie sind jetzt oeffentlich — anonym ueber https geprueft,
+    # zusammen mit ase-utils als Positivkontrolle. Wer hier stattdessen den Abschluss
+    # zurechtschneidet, bis er in die vorhandene Sichtbarkeit passt, baut ein Paket, das nur
+    # auf der Maschine des Autors funktioniert.
     #
-    # Diese Liste ist trotzdem richtig und bleibt: sie nennt, was der Bau braucht. Sie scheitert
-    # jetzt an der WAHREN Stelle mit der wahren Meldung, statt an einem fehlenden Verzeichnis.
-    # Sobald die drei Repos oeffentlich sind, baut das Paket ohne weitere Aenderung.
+    # WANN ES BRACH: der Explorer zieht ase-containers und ase-math seit 2026-06-08,
+    # ase-adp-libgit2 sein ase-types seit 2026-09-08. Das zuletzt veroeffentlichte 00.00.35
+    # stammt vom 2026-05-13 — seither hat niemand neu uebersetzt, und deshalb hat niemand
+    # gemerkt, dass der Abschluss ueber den oeffentlichen Rand gewachsen war.
     "ase-containers::git+https://github.com/antarien/ase-containers.git"
     "ase-math::git+https://github.com/antarien/ase-math.git"
     "ase-types::git+https://github.com/antarien/ase-types.git"
