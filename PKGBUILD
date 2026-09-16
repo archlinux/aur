@@ -57,7 +57,7 @@ _package() {
 				'scx-scheds: to use sched-ext schedulers'
 				'v4l2loopback-utils: utilities to control v4l2loopback devices'
 				'wireless-regdb: to set the correct wireless channels of your country')
-	provides=(linux-pf KSMBD-MODULE NTSYNC-MODULE V4L2LOOPBACK-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+	provides=(linux-pf KSMBD-MODULE NTSYNC-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 	replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
 	cd linux

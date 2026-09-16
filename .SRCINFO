@@ -45,7 +45,6 @@ pkgname = linux-pf
 	provides = linux-pf
 	provides = KSMBD-MODULE
 	provides = NTSYNC-MODULE
-	provides = V4L2LOOPBACK-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	replaces = virtualbox-guest-modules-arch
