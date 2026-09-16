@@ -1,6 +1,6 @@
 pkgbase = voicefox-git
 	pkgdesc = A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks
-	pkgver = 0.3.6.r0.g414a277
+	pkgver = 0.3.11.r0.g3f64a5d
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/emoeem/voicefox
@@ -14,7 +14,7 @@ pkgbase = voicefox-git
 	depends = openssl
 	depends = mpv
 	optdepends = nodejs>=23.5.0: support for custom JS music source
-	provides = voicefox=0.3.6.r0.g414a277
+	provides = voicefox=1:0.3.11.r0.g3f64a5d
 	conflicts = voicefox
 	conflicts = voicefox-bin
 	options = !lto

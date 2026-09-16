@@ -2,7 +2,7 @@
 
 pkgname=voicefox-git
 _pkgname="${pkgname%-git}"
-pkgver=0.3.6.r0.g414a277
+pkgver=0.3.11.r0.g3f64a5d
 pkgrel=1
 epoch=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
@@ -24,7 +24,7 @@ makedepends=(
 optdepends=(
 	"nodejs>=23.5.0: support for custom JS music source"
 )
-provides=("voicefox=${pkgver}")
+provides=("voicefox=${epoch}:${pkgver}")
 conflicts=("voicefox" "voicefox-bin")
 source=(
 	"${_pkgname}::git+${url}.git"
@@ -62,7 +62,9 @@ check() {
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo test --release --frozen --workspace
+	cargo test --frozen --workspace
+
+	target/release/voicefox --check-libmpv
 }
 
 package() {
