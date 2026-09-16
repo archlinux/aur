@@ -2,7 +2,7 @@
 
 pkgname=shorin-contrib-git
 _pkgname=shorin-contrib
-pkgver=r93.c9f9890
+pkgver=r96.e14e48f
 pkgrel=1
 pkgdesc="Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)"
 arch=('any')
