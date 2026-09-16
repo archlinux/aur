@@ -4,7 +4,7 @@
 pkgname=('conan')
 _name='conan'
 pkgver=2.32.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
@@ -43,5 +43,5 @@ package() {
   install -m755 -d "${pkgdir}/usr/share/licenses/conan"
   install -m644 LICENSE.md "${pkgdir}/usr/share/licenses/conan/"
   install -m755 -d "${pkgdir}/usr/share/doc/conan"
-  install -m644 contributors.txt "${pkgdir}/usr/share/doc/conan/"
+  # install -m644 contributors.txt "${pkgdir}/usr/share/doc/conan/"
 }
