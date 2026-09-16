@@ -1,7 +1,7 @@
 pkgbase = gperiodic
 	pkgdesc = A small GTK+-based program which allows you to browse through a periodic table of chemical elements.
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/gperiodic
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=gperiodic
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A small GTK+-based program which allows you to browse through a periodic table of chemical elements."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/${pkgname}"
@@ -14,18 +14,18 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/files/${pkgname}-${pkgver}.tar.gz/d
 sha256sums=('5e70128f61a311bd6b4ad129bd726ccc0e3731573cb0050201293e2a5389b29a')
 
 prepare() {
-  #Fix for line 140 of file gperiodic.c, since it contains a type error 
-  #(needs to type-cast a GtkWidget variable called 'label' into GTK_LABEL first):
-  sed -i '140 s/.*/gtk_label_set_selectable (GTK_LABEL (label), TRUE);/' "$srcdir/$pkgname-$pkgver/gperiodic.c"
+    # Fix for line 140 of the file gperiodic.c, since it contains a type error 
+    # (needs to type-cast a GtkWidget variable called 'label' into GTK_LABEL first):
+    sed -i '140 s/.*/gtk_label_set_selectable (GTK_LABEL (label), TRUE);/' "$srcdir/$pkgname-$pkgver/gperiodic.c"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"  
-  make all
+    cd "${srcdir}/${pkgname}-${pkgver}"  
+    make all
 
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
