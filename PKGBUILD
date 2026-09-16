@@ -6,14 +6,17 @@ pkgdesc="Ultra-fast, pure-Rust TeX engine and typesetting toolchain (pre-compile
 arch=('x86_64')
 url="https://github.com/leoliu0/ratex"
 license=('MIT' 'Apache-2.0')
-provides=('texmk')
+provides=('ratex' 'texmk' 'pdflatex' 'xelatex' 'lualatex')
 conflicts=('ratex')
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/leoliu0/ratex/releases/download/v${pkgver}/tex-suite-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('SKIP')
+sha256sums_x86_64=('ee71fb31c1d0ecc33f4c9431881ede30f583e8eee3ee8a4fbb65883f02a4ed1f')
 
 package() {
     cd "$srcdir/tex-suite-linux-x86_64"
     install -Dm755 bin/texmk "$pkgdir/usr/bin/texmk"
+    for alias in pdflatex xelatex lualatex; do
+        ln -sf texmk "$pkgdir/usr/bin/$alias"
+    done
     if [ -d share/tex-suite/texmf ]; then
         install -d "$pkgdir/usr/share/tex-suite"
         cp -a share/tex-suite/* "$pkgdir/usr/share/tex-suite/"
