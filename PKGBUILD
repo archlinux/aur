@@ -4,7 +4,7 @@
 # so they conflict with each other.
 pkgname=markview-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Native, read-only Markdown reader with optimized paragraph layout'
 arch=('x86_64')
 url='https://github.com/szdytom/markview'
@@ -21,7 +21,8 @@ depends=(
 	'xdg-desktop-portal'
 )
 optdepends=(
-	'fonts-noto-cjk: CJK glyphs for Chinese, Japanese, and Korean text'
+	'noto-fonts-cjk: CJK glyphs for Chinese, Japanese, and Korean text'
+	'noto-fonts-emoji: colour Emoji glyphs'
 	'vulkan-intel: Vulkan driver for Intel GPUs'
 	'vulkan-nouveau: Vulkan driver for NVIDIA GPUs with Nouveau'
 	'vulkan-radeon: Vulkan driver for AMD GPUs'
