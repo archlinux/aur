@@ -1,0 +1,30 @@
+pkgbase = markview
+	pkgdesc = Native, read-only Markdown reader with optimized paragraph layout
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/szdytom/markview
+	install = markview.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust>=1.88
+	makedepends = fontconfig
+	depends = fontconfig
+	depends = glibc
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = wayland
+	depends = vulkan-icd-loader
+	depends = xdg-desktop-portal
+	optdepends = fonts-noto-cjk: CJK glyphs for Chinese, Japanese, and Korean text
+	optdepends = vulkan-intel: Vulkan driver for Intel GPUs
+	optdepends = vulkan-nouveau: Vulkan driver for NVIDIA GPUs with Nouveau
+	optdepends = vulkan-radeon: Vulkan driver for AMD GPUs
+	source = markview-0.1.0.tar.gz::https://github.com/szdytom/markview/archive/refs/tags/v0.1.0.tar.gz
+	source = markview.mime.xml
+	sha256sums = b4be708ef5df54b193c2bffacafd7fa81130c662878e1271cb39883e9e0c31f9
+	sha256sums = c2b54efc155e407495127927cabafb92b369a4ead7e1a04d8246f9939bf280b0
+
+pkgname = markview
