@@ -2,7 +2,7 @@
 # Maintainer: Andrej Mihajlov <andrej@nymtech.net>
 
 pkgname=nym-vpnc-bin
-pkgver=2026.12.2
+pkgver=2026.12.4
 pkgrel=1
 pkgdesc='NymVPN command-line client'
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,11 @@ makedepends=()
 provides=('nym-vpnc')
 conflicts=('nym-vpnc')
 options=(!debug)
-source_x86_64=("$url/releases/download/nym-vpn-v2026.12.2/nym-vpn-core-v2026.12.2_linux_x86_64.tar.gz")
-source_aarch64=("$url/releases/download/nym-vpn-v2026.12.2/nym-vpn-core-v2026.12.2_linux_aarch64.tar.gz")
-sha256sums_x86_64=(388d79cd22ff6af3e29350b83ab5a7e7c625cf53b751a3657a213ee21452b2ae)
-sha256sums_aarch64=(1f9f0c577f4869b6d55c9ae16171c94676c57da321367c642e055b3ee2e3dc5c)
+source_x86_64=("$url/releases/download/nym-vpn-v2026.12.4/nym-vpn-core-v2026.12.4_linux_x86_64.tar.gz")
+source_aarch64=("$url/releases/download/nym-vpn-v2026.12.4/nym-vpn-core-v2026.12.4_linux_aarch64.tar.gz")
+sha256sums_x86_64=(17ec7c1d41395328aada6a71633ba11c9a152960d836f00ba6a9792fb0aa76a4)
+sha256sums_aarch64=(cca9b7bf98aab43d481b5a3ad0098300ee08e3d2e11497b423a71457ab8b565a)
 
 package() {
-  install -Dm755 "nym-vpn-core-v2026.12.2_linux_${CARCH}/nym-vpnc" "$pkgdir/usr/bin/nym-vpnc"
+  install -Dm755 "nym-vpn-core-v2026.12.4_linux_${CARCH}/nym-vpnc" "$pkgdir/usr/bin/nym-vpnc"
 }
