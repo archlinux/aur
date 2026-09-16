@@ -1,6 +1,6 @@
 pkgbase = grub-reboot-into-windows
 	pkgdesc = Reboot into dual-booted Windows with a Bluetooth keyboard
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/egor-tensin/grub-reboot-into-windows
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = grub-reboot-into-windows
 	depends = gawk
 	depends = grep
 	options = !debug
-	source = grub-reboot-into-windows-1.0.tar.gz::https://github.com/egor-tensin/grub-reboot-into-windows/archive/v1.0.tar.gz
+	source = grub-reboot-into-windows-1.0.1.tar.gz::https://github.com/egor-tensin/grub-reboot-into-windows/archive/v1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = grub-reboot-into-windows

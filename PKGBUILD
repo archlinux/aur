@@ -1,6 +1,6 @@
 # Maintainer: Egor Tensin <egor@tensin.name>
 pkgname=grub-reboot-into-windows
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Reboot into dual-booted Windows with a Bluetooth keyboard'
 arch=(any)
