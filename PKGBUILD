@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Off-line text tool CLI for developers' daily work needs, like converting texts, encoding, decoding, UUID generators, etc.. "
 
-pkgver=0.4.1
+pkgver=0.5.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('084658915d77465b7dd3bd9b6eee26c185a7556f47af63e9253a3fb142f20ebb')
-sha256sums_aarch64=('59e1df9c6c53da4853c1077a263888ba3e83e203ec63fed1ed9467328fb71f61')
+sha256sums_x86_64=('7b53bb7bc5d22a3923c7b091a4e20f20754cac3320d01ac9b6366e1a31364b29')
+sha256sums_aarch64=('746ef1a6ecbbed655f1307150dc1e2fa8d5632b75a756b023d4b5921201ad3a7')
 
 
 case ${CARCH} in
