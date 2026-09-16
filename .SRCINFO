@@ -1,6 +1,6 @@
 pkgbase = python-langfuse
 	pkgdesc = A client library for accessing langfuse
-	pkgver = 4.15.3
+	pkgver = 4.15.4
 	pkgrel = 1
 	url = https://github.com/langfuse/langfuse-python
 	install = migration-notice.install
@@ -23,7 +23,7 @@ pkgbase = python-langfuse
 	optdepends = python-langchain
 	optdepends = python-llama-index
 	optdepends = python-openai
-	source = python-langfuse-4.15.3.tar.gz::https://github.com/langfuse/langfuse-python/archive/v4.15.3.tar.gz
-	sha256sums = 5ff5c83cf78aba8fa8b5442f678e0083a0c8ea5b9060ce24c50fccb5ea13ceb2
+	source = python-langfuse-4.15.4.tar.gz::https://github.com/langfuse/langfuse-python/archive/v4.15.4.tar.gz
+	sha256sums = e2dae67c574e47897695e7843ac65a79ccc4cbfb05fec0f7f1447f6952e76f60
 
 pkgname = python-langfuse
