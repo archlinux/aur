@@ -8,7 +8,7 @@
 # (packaging/archlinux/PKGBUILD); both provide/conflict on the same name.
 
 pkgname=pdf-compressor
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Local-first desktop PDF compressor built with Vue, Tauri, and Rust (GUI + headless CLI)'
 arch=('x86_64')
@@ -36,7 +36,7 @@ provides=('pdf-compressor')
 conflicts=('pdf-compressor-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 # Filled in by the release workflow with the sha256 of the tag tarball.
-sha256sums=('f254adbe4e314dd2e08167dd30c71c86fc2677a40f93b0d688ae6bd82c82ebaf')
+sha256sums=('2239d547569366ff6a6fe5c043d253a0fae15cc3da1db5e4aa6b5c872b3c481b')
 
 build() {
   cd "${pkgname}-${pkgver}"
