@@ -35,7 +35,10 @@ build() {
 check() {
 	cd "${pkgname}-${pkgver}"
 
-	./target/release/${pkgname} -V
+	msg2 "$(./target/release/${pkgname} -V)"
+
+	export CARGO_TARGET_DIR=target
+	cargo test --frozen --release
 }
 
 package() {
