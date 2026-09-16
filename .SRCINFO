@@ -23,7 +23,7 @@ pkgbase = rovr
 	depends = python-pillow
 	depends = python-uvloop
 	depends = python-jsonschema
-	depends = python-fastjsonschema
+	depends = python-fastjsonschema>=2.22.2
 	depends = python-rich-click
 	depends = python-send2trash
 	depends = python-platformdirs

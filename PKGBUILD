@@ -37,7 +37,7 @@ provides=("${_pypi_package}")
 conflicts=("${pkgname}"{-bin,-git})
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'python-hatchling')
-depends=('python' 'python-textual' 'python-textual-autocomplete' 'python-textual-image' 'python-textual-drivers' 'python-pygments' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-uvloop' 'python-jsonschema' 'python-fastjsonschema' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-puremagic' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-pathvalidate' 'python-resvg_py' 'python-multiarchive' 'python-pytrash')
+depends=('python' 'python-textual' 'python-textual-autocomplete' 'python-textual-image' 'python-textual-drivers' 'python-pygments' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-uvloop' 'python-jsonschema' 'python-fastjsonschema>=2.22.2' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-puremagic' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-pathvalidate' 'python-resvg_py' 'python-multiarchive' 'python-pytrash')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
