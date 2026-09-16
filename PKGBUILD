@@ -2,7 +2,7 @@
 # Maintainer: InodeLabs
 
 pkgname='fern-bin'
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='Terminal UI markdown note-taking, journalling, and knowledge manager.'
 url='https://codeberg.org/InodeLabs/fern'
@@ -12,13 +12,13 @@ provides=('fern')
 conflicts=('fern')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://codeberg.org/InodeLabs/fern/releases/download/v${pkgver}/fern_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('83333776c0d40c76d199328715d44092977d39db7589f28a795f04ac02d5a6af')
+sha256sums_aarch64=('e64d0ec3bc7b18e6ac3953bfba8254a457612d45b81167768ca467c73f33e21c')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://codeberg.org/InodeLabs/fern/releases/download/v${pkgver}/fern_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('cbeede80d3664fdb0ed065663c7acd7fb8ba0cfc043cf507bc3e57987e8dc3ae')
+sha256sums_i686=('8d9631efb442c0d96264fc91488d30a6d4cf6281c45780e71e04ce7a27ced93a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://codeberg.org/InodeLabs/fern/releases/download/v${pkgver}/fern_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('7b24cbb190a94924df56966bbbe3e512a46a6b6e155a0fe60bf53e716ef64aba')
+sha256sums_x86_64=('9235ee2a5f85a0796aad510eba7d23d44b5a27a6b95f750b900cde7546001a34')
 
 package() {
   install -Dm755 "./fern" "${pkgdir}/usr/bin/fern"
