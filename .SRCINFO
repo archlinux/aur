@@ -1,6 +1,6 @@
 pkgbase = go2tv
 	pkgdesc = Cast media files to Smart TVs and Chromecast devices
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/alexballas/go2tv
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = go2tv
 	depends = libpipewire
 	depends = wayland
 	optdepends = ffmpeg: transcoding support
-	source = https://github.com/alexballas/go2tv/archive/v2.6.0/go2tv-2.6.0.tar.gz
-	sha256sums = 40496df16e06e4d32deb0f470ef58a0b9a0e92efc4c0e2d9323c4dbf3a5acf9a
+	source = https://github.com/alexballas/go2tv/archive/v2.6.1/go2tv-2.6.1.tar.gz
+	sha256sums = a0f91f88f69b56896b641a9372805bcfcd46d5a834be8b870d1de15724757290
 
 pkgname = go2tv
