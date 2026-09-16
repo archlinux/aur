@@ -16,6 +16,8 @@ depends=(
   'foomatic-db-gutenprint-ppds'
   'avahi'
   'python'
+  'python-gobject'
+  'gtk3'
 )
 optdepends=(
   'cnijfilter2-g3010: official Canon proprietary Linux driver'
