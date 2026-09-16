@@ -1,7 +1,7 @@
 # Maintainer: Antarien <dev@antarien.com>
 pkgname=ase-viewer
 pkgver=00.00.33
-pkgrel=1
+pkgrel=2
 pkgdesc='ASE TECH & DESIGN Documentation Viewer — Native GTK4 Markdown renderer'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-viewer'
@@ -31,12 +31,27 @@ source=(
     "ase-adp-treesitter::git+https://github.com/antarien/ase-adp-treesitter.git"
     "ase-adp-microtex::git+https://github.com/antarien/ase-adp-microtex.git"
     "ase-imgcache::git+https://github.com/antarien/ase-imgcache.git"
+    # DIE LISTE IST DER TRANSITIVE ABSCHLUSS, NICHT DIE BINDELISTE DES ZIELS.
+    #
+    # ase-containers zieht die CMakeLists des Betrachters selbst (:197, hinter
+    # `if(NOT TARGET ase::containers)`) und fehlte hier. Dieselbe Luecke stand am
+    # ase-explorer und brach dort den Bau in der Konfigurationsphase; hier stand sie nur
+    # noch nicht auf einer Wand. Wer die Liste aus `target_link_libraries` ableitet,
+    # bekommt sie beide: gebunden wird gegen ZIELE, geholt werden VERZEICHNISSE.
+    #
+    # ase-containers IST HEUTE PRIVAT, und damit ist dieses Paket fuer Fremde nicht baubar.
+    # Gemessen anonym ueber https: die uebrigen Quellen loesen auf, ase-containers verlangt
+    # Zugangsdaten. Die Zeile bleibt trotzdem: sie nennt, was der Bau braucht, und laesst ihn an
+    # der WAHREN Stelle scheitern. Sobald das Repo oeffentlich ist, baut das Paket ohne weitere
+    # Aenderung.
+    "ase-containers::git+https://github.com/antarien/ase-containers.git"
     "colors.hpp"
     "design_tokens.hpp"
     "ui_icons.hpp"
     "icon-replacer.ts"
 )
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -63,6 +78,7 @@ prepare() {
     mv ase-fileio           ase-root/foundation/
     mv ase-json             ase-root/foundation/
     mv ase-alloc            ase-root/foundation/
+    mv ase-containers       ase-root/foundation/
     mv ase-markdown         ase-root/core/
     mv ase-adp-gtk          ase-root/adapter/
     mv ase-adp-treesitter   ase-root/adapter/
