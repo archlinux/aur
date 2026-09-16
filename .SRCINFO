@@ -1,0 +1,16 @@
+pkgbase = sublime-keygen-git
+	pkgdesc = Cross-platform KEYGEN for Sublime products
+	pkgver = 1.0.r4.g6e0dc44
+	pkgrel = 1
+	url = https://github.com/Antibioticss/sublime-keygen
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = zig
+	provides = sublime-keygen
+	conflicts = sublime-keygen
+	source = git+https://github.com/Antibioticss/sublime-keygen.git
+	sha256sums = SKIP
+
+pkgname = sublime-keygen-git
