@@ -1,7 +1,7 @@
 pkgbase = r-mapview
 	pkgdesc = Interactive Viewing of Spatial Data in R
 	pkgver = 2.11.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=mapview
 	arch = any
 	license = GPL-3.0-or-later
