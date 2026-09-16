@@ -1,18 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Łukasz Moroz <lukaszmoroz@gmail.com>
 pkgname=nautilus-copy-path
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="Configurable extension for Nautilus to copy path, URI, or name"
 arch=('any')
-url="https://github.com/xariann-pkg/nautilus-copy-path"
+url="https://github.com/Xarianne/nautilus-copy-path"
 license=('MIT')
 depends=(
   'nautilus-python'
   'python-gobject'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1fc4fb5a3922fde76fa61ed154e342427a281ae6dbe399f5362725e317132e8f')
+sha256sums=('129768ef0b11b772a376d6e9f6d94b9529fac4c8069fbeda8c8c1329e88ef330')
 
 package() {
   cd "$pkgname-$pkgver"
