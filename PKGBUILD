@@ -2,7 +2,7 @@
 # Maintainer: rubiin <roobin.bhandari@gmail.com>
 
 pkgname='projecto-bin'
-pkgver=1.2.3
+pkgver=1.2.5
 pkgrel=1
 pkgdesc='Launch your project folders directly in your editor of choice from a single command.'
 url='https://github.com/rubiin/projecto'
@@ -12,13 +12,13 @@ provides=('projecto')
 conflicts=('projecto' 'projecto-git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rubiin/projecto/releases/download/v${pkgver}/projecto_Linux_arm64.tar.gz")
-sha256sums_aarch64=('0af64b32b5f13b6b189780aed47f94d5437c6a6ff55ad29603d3b9bbc24a867a')
+sha256sums_aarch64=('bc47e808738a4d29ad3030c34f89e78adaae2984762c56d6a501db9691846282')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rubiin/projecto/releases/download/v${pkgver}/projecto_Linux_i386.tar.gz")
-sha256sums_i686=('34edf1186db924e45946712b3052cac5caae54aeafa1bb1a94e31a7b815d773b')
+sha256sums_i686=('a5082bd794db7a746bdf49f9bc2c9df6dc0749fbd7603c2662e8a06539820a57')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rubiin/projecto/releases/download/v${pkgver}/projecto_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('234feb9dde2219f7eb444587584d360461fc06fb654babea0379e1166023dee5')
+sha256sums_x86_64=('766f5a66bcefc5448729f295cad846df2b441156635557581c803f67bc8f4acd')
 
 package() {
   # bin
