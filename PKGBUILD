@@ -2,7 +2,7 @@
 # Contributor: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
 pkgname=webex-bin
 pkgver=46.8.0.35631
-pkgrel=3
+pkgrel=5
 pkgdesc="Webex for Linux"
 arch=('x86_64')
 url="https://www.webex.com/"
@@ -12,23 +12,29 @@ depends=('alsa-lib'
          'at-spi2-core'
          'atk'
          'binutils'
+	 'curl'
+	 'hunspell'
          'krb5'
          'libcups'
+	 'libnghttp2'
          'libnotify'
          'libpulse'
          'libsecret'
          'libxcb'
          'libxcrypt-compat'
          'libxkbcommon-x11'
+	 'libxml2'
          'libxss'
          'mesa'
          'nspr'
          'nss'
          'openssl'
          'pango'
+	 'pcre2'
          'systemd-libs'
          'upower'
          'wayland'
+	 'xcb-util-cursor'
          'xcb-util-image'
          'xcb-util-keysyms'
          'xcb-util-renderutil'
@@ -48,26 +54,18 @@ prepare() {
 package() {
     cd "$pkgname-$pkgver"
     cp -dpr --no-preserve=ownership opt/ "$pkgdir/"
+    
+    # Remove bundled libs and use system libs instead
+    for l in stdc++ crypto ssl curl hunspell nghttp2 pcre2-16 xcb-cursor xml2; do
+	rm "$pkgdir"/opt/Webex/lib/lib$l.so*
+    done
 
-    # Entferne die Webex-eigenen OpenSSL-Bibliotheken,
-    # damit die System-Bibliotheken (libssl.so.3, libcrypto.so.3) verwendet werden
-    rm -f "$pkgdir/opt/Webex/lib/libssl.so.3"
-    rm -f "$pkgdir/opt/Webex/lib/libcrypto.so.3"
-    rm "$pkgdir/opt/Webex/lib/libstdc++.so.6"
-
-    # Erstelle das Wrapper-Skript, das LD_LIBRARY_PATH setzt
-    mkdir -p "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/webex" << 'EOF'
-#!/bin/bash
-export LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH
-exec /opt/Webex/bin/CiscoCollabHost "$@"
-EOF
-    chmod +x "$pkgdir/usr/bin/webex"
-
-    # Desktop-Datei und MIME-Typ
     mkdir -p "$pkgdir/usr/share/applications/"
     mv "$pkgdir/opt/Webex/bin/webex.desktop" "$pkgdir/usr/share/applications/"
 
     mkdir -p "$pkgdir/usr/share/mime/packages/"
     install -m0644 "${srcdir}/webex.xml" "${pkgdir}/usr/share/mime/packages/"
+
+    mkdir -p "$pkgdir/usr/bin/"
+    ln -s "/opt/Webex/bin/CiscoCollabHost" "$pkgdir/usr/bin/webex"
 }
