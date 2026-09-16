@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_gitname}-bin
 pkgdesc="Update binaries installed by \"go install\" with goroutines"
 
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,11 +30,11 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md" "LICENSE-${pkgver}::${_ghu
 		"${_pkgsrc}-checksums.txt::${_ghurl}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
-sha256sums=('04cf95c2c9e6329fda2b588d220b91bfad6cc27e373bca74191fd5be062cc07b'
+sha256sums=('349ae83b7c266d78ce998082689109297bb0380775f3057fb39d64d2e0add93e'
             '9342d2ca1f93313e4f2a06e19db82e4a94462fab17c82eda907226631bd62079'
-            '3fa141450454b61ff09bbb706554b5d898f1362d6da1b4d53ed23eeb09be5265')
-sha256sums_x86_64=('9864d2938d0006dad663de2c9dcae7604a605f05f033e8723b326f05174cfde9')
-sha256sums_aarch64=('46056c6c0fa73beda977aec7b202a32c114863947b7a99d3fc3e5837a8f50964')
+            'a9e3f0ef87ce292520ce84b2beb6e49ffa5fd201b8b7fc7276835e51af522cbd')
+sha256sums_x86_64=('1d823751ef7d8e9ed53851dcf199183813b462d7a68ea524ca41b3903faacc90')
+sha256sums_aarch64=('68fe8abdce261e4c23ce1e7a538668e3037c8dc9ce8a372f4a111db67af64354')
 
 
 verify() {
