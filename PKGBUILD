@@ -1,13 +1,13 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=snowflakeauth
-_pkgver=0.2.2
+_pkgver=0.3.0
 pkgname=r-${_pkgname,,}
 pkgdesc="Authentication to 'Snowflake'"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 
 arch=("any")
 depends=(
@@ -21,7 +21,7 @@ depends=(
     "r-rlang"
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-b2sums=('b97c68bfaee0b08de1e313276b3060a5142d6687fa73b29bd806b0bf90043d6d686b8b2b201834b24f6a279e88bb5f5bd74b4873e8b99a52c4f766854fd67e97')
+b2sums=('3e594ae7bd403a17dfade6af7762c02423ba7907329c4966c4a2ed0062eca4466be36b2c6bc3417ecf58706931f2e4293c309c9ca3a57462f31d54691e0bfd06')
 
 build() {
     mkdir -p "${srcdir}/build/"
