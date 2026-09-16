@@ -1,10 +1,10 @@
 # Maintainer: sripwoud <me@sripwoud.xyz>
 pkgname=tagwerk-git
-pkgver=r44.d5039fe
+pkgver=r46.91dea85
 pkgrel=1
 pkgdesc="Passive work-hours tracker for Hyprland, attributed per repo"
 arch=(any)
-url="https://github.com/sripwoud/tagwerk"
+url="https://github.com/espadat-studio/tagwerk"
 license=(AGPL-3.0-or-later)
 depends=(python hyprland hypridle)
 optdepends=('kitty: cwd of the focused terminal')
