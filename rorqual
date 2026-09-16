@@ -1,3 +1,13 @@
 #!/bin/sh
-export PYTHONPATH=/opt/rorqual/virtualenv/lib/python3.13/site-packages
-python -m rorqual
+# The venv's own interpreter, not the system one: it resolves site-packages
+# without PYTHONPATH and pins the ABI the deps were built against. The console
+# scripts in bin/ can't be used, their shebangs point into makepkg's $pkgdir.
+venv_python=/opt/rorqual/virtualenv/bin/python
+
+# Dangling symlink once Arch drops the minor version the venv was built with.
+if [ ! -x "$venv_python" ]; then
+	echo "rorqual: /opt/rorqual/virtualenv was built for a Python version that is no longer installed; rebuild rorqual-venv" >&2
+	exit 1
+fi
+
+exec "$venv_python" -m rorqual "$@"
