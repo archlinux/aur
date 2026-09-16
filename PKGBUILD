@@ -6,18 +6,18 @@
 
 _pkgorg=codeberg.org/mipi
 pkgname=otr
-pkgver=0.11.12
-pkgrel=1
+pkgver=0.12.0
+pkgrel=2
 pkgdesc="Decode and cut video files from Online TV Recorder (OTR)"
 arch=(
   aarch64
   x86_64
 )
-license=(GPL3)
+url="https://${_pkgorg}/${pkgname}/"
+license=(MPL-2.0)
 #source=("https://${_pkgorg}/${pkgname}/archive/${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://${_pkgorg}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('6ffc2899f4961a19504baa540d8a1538d3a8919ba6a1d9f9754766b233e0a576')
-validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fsfe.org>
+sha256sums=('3d0404638aa4370bc6786b2004a698c926fa09cfe97236a343fb8fbc4e18a70c')
 conflicts=(otr-git)
 depends=(
   ffmpeg
@@ -52,5 +52,5 @@ package() {
   cd "${pkgname}" || return
   make DESTDIR="$pkgdir" install
   install -Dm644 resources/otr.desktop "$pkgdir/usr/share/applications/otr.desktop"
-  install -Dm644 resources/otrkey_mime.xml "$pkgdir/usr/share/mime/packages/otrkey_mime.xml"
+  install -Dm644 resources/otr_mime.xml "$pkgdir/usr/share/mime/packages/otr_mime.xml"
 }
