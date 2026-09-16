@@ -1,4 +1,4 @@
-# Local exact-context hardening for llama.cpp b10975.
+# Local exact-context hardening for llama.cpp b10992 (RPC protocol 7).
 diff --git a/ggml/src/ggml-rpc/ggml-rpc.cpp b/ggml/src/ggml-rpc/ggml-rpc.cpp
 --- a/ggml/src/ggml-rpc/ggml-rpc.cpp
 +++ b/ggml/src/ggml-rpc/ggml-rpc.cpp
@@ -172,7 +172,7 @@ new file mode 100755
 +        return remote, base
 +
 +    def set_tensor(self, description, data):
-+        self.command(RPC_CMD_SET_TENSOR, description + struct.pack("<Q", 0) + data)
++        self.command(RPC_CMD_SET_TENSOR, description + struct.pack("<BQ", 0, 0) + data)
 +
 +    def compute(self, node_id, tensors):
 +        payload = struct.pack("<IIQ", 0, 1, node_id)

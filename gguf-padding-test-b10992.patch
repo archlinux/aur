@@ -1,4 +1,4 @@
-# Test-only exact-context rebase of PR #28810 at 6e2139f for b10975.
+# Test-only exact-context rebase of PR #28810 at 6e2139f for b10992.
 # Preserve the inherited zero-dimension regression alongside the padding test.
 --- a/tests/test-gguf.cpp
 +++ b/tests/test-gguf.cpp
