@@ -1,6 +1,6 @@
 pkgbase = matlab-mpm
 	pkgdesc = MATLAB Package Manager
-	pkgver = 2026.5.1+r154.g33346eb
+	pkgver = 2026.6+r156.g77fec96
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mathworks.com/products/mpm.html
@@ -12,9 +12,9 @@ pkgbase = matlab-mpm
 	depends = unzip
 	depends = libatomic
 	optdepends = matlab-mpm-input: input files used with '--inputfile'
-	source = matlab-dockerfile::git+https://github.com/mathworks-ref-arch/matlab-dockerfile.git#commit=33346eb7e577e6405fd349faff6efd98ae98b1d4
-	sha256sums = ce7101146ef13659dfaaf97d1c278a2c1bc3bdb40c587a906b4538546796ee91
-	source_x86_64 = matlab-mpm-2026.5.1-x86_64::https://ssd.mathworks.com/supportfiles/downloads/mpm/2026.5.1/glnxa64/mpm
-	sha256sums_x86_64 = 9e4844334d044468dc1f54ea8a0f7085d04086d3c2e58ba535d2c5dc5a5e78a4
+	source = matlab-dockerfile::git+https://github.com/mathworks-ref-arch/matlab-dockerfile.git#commit=77fec96ac0eced0a65083eefe93482f11b4d12d7
+	sha256sums = 073d5f0163679bac1de0326f26bc1b890e8610f53d3511ac7c4ff6bc8f9a530b
+	source_x86_64 = matlab-mpm-2026.6-x86_64::https://ssd.mathworks.com/supportfiles/downloads/mpm/2026.6/glnxa64/mpm
+	sha256sums_x86_64 = e8442d253046d154c4dcc5ead7338369a28fcaf4ee8f171992fc4eb63c65ca4d
 
 pkgname = matlab-mpm
