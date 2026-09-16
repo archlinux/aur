@@ -2,7 +2,7 @@
 
 pkgname=serial-studio
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
 url="https://github.com/Serial-Studio/Serial-Studio"
@@ -50,7 +50,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 backup=()
-options=(!lto)
+options=()
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 sha256sums=('da883c111e1edd0c79add96ec85273410498cddd93687c1ab8e82a714ea9e9ac')
@@ -60,7 +60,6 @@ prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}"
     sed -i -e 's/^X-AppImage.*//g' app/deploy/linux/serial-studio-gpl3.desktop
-
     git cherry-pick -n 7678839b8c835fb9a5be7d2573b4cee550aba23c
 }
 
