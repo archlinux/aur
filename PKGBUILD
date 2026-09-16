@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=gnome-shell-extension-simpleweather
-pkgver=51.0.1
+pkgver=51.0.2
 pkgrel=1
 pkgdesc="A highly configurable GNOME shell extension for viewing the weather"
 arch=(any)
@@ -10,7 +10,7 @@ license=(GPL-3.0-or-later)
 depends=(gnome-shell)
 makedepends=(npm typescript zip)
 source=($pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('833aa85fbf05d22b4fc5777f97b10522fbc703f8d1ee6dfe8286b43e7ce6cc75')
+sha256sums=('3ff225e1a4af9b66cf0d2cee3f263520ab20d5d84fa2e5fd9f42eab3ac8d3785')
 
 prepare() {
   cd SimpleWeather-$pkgver
