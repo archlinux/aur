@@ -1,7 +1,7 @@
 # Maintainer: Antarien <dev@antarien.com>
 pkgname=ase-explorer
 pkgver=00.00.35
-pkgrel=1
+pkgrel=2
 pkgdesc='ASE Hierarchical Project Explorer with NerdFont Icons'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-explorer'
