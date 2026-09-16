@@ -55,7 +55,6 @@ _package() {
 				'ksmbd-tools: userspace tools for the ksmbd kernel SMB server'
 				'linux-firmware: firmware images needed for some devices'
 				'scx-scheds: to use sched-ext schedulers'
-				'v4l2loopback-utils: utilities to control v4l2loopback devices'
 				'wireless-regdb: to set the correct wireless channels of your country')
 	provides=(linux-pf KSMBD-MODULE NTSYNC-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 	replaces=(virtualbox-guest-modules-arch wireguard-arch)

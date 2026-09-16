@@ -40,7 +40,6 @@ pkgname = linux-pf
 	optdepends = ksmbd-tools: userspace tools for the ksmbd kernel SMB server
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = scx-scheds: to use sched-ext schedulers
-	optdepends = v4l2loopback-utils: utilities to control v4l2loopback devices
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	provides = linux-pf
 	provides = KSMBD-MODULE
