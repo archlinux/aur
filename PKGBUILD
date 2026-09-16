@@ -1,12 +1,12 @@
 # Maintainer: SathyaG
 pkgname=lm-get
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Search and download GGUF models from Hugging Face"
 arch=('x86_64')
 url="https://github.com/GSathyaPrakash/lm-get"
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'aria2')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
