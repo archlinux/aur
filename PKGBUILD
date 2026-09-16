@@ -2,27 +2,38 @@
 
 _pkgauthor=ynqa
 _pkgname=logu
+_appname=${_pkgname}
 pkgname=${_pkgname}-bin
-pkgver=0.1.0
-_pkgvername=v${pkgver}
-pkgrel=1
 pkgdesc="Extract patterns from unstructured log messages"
+
+pkgver=0.1.0
+pkgrel=1
+_pkgvername=v${pkgver}
+
 arch=('x86_64')
-_barch=('x86_64')
+_barch=('x86_64-unknown-linux-gnu')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
 license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc')
 
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu.tar.xz")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}.tar.xz")
 sha256sums_x86_64=('10664c4037da9da16df63961775b382514fdbf52c384431c9a887e2202edd686')
 
 
+case ${CARCH} in
+	${arch[0]})
+		_CARCH="${_barch[0]}"
+		;;
+esac
+
 package() {
-	cd "${srcdir}/${_pkgname}-${CARCH}-unknown-linux-gnu/" || exit
+	cd "${srcdir}/${_appname}-${_CARCH}" || exit
 
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
