@@ -1,14 +1,14 @@
 # Maintainer: Leo Liu <leoliu0@users.noreply.github.com>
 pkgname=ratex
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultra-fast, pure-Rust TeX engine and typesetting toolchain (built from source)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/leoliu0/ratex"
 license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
-provides=('ratex' 'texmk' 'pdflatex' 'xelatex' 'lualatex')
+provides=('texmk')
 conflicts=('ratex-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leoliu0/ratex/archive/refs/tags/v${pkgver}.tar.gz")
@@ -22,9 +22,6 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 target/release/texmk "$pkgdir/usr/bin/texmk"
-    for alias in pdflatex xelatex lualatex; do
-        ln -sf texmk "$pkgdir/usr/bin/$alias"
-    done
     if [ -f LICENSE-MIT ]; then
         install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     fi
