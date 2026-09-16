@@ -10,7 +10,7 @@
 # and pushes this file (with a regenerated .SRCINFO) to the AUR.
 
 pkgname=pdf-compressor-bin
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Local-first desktop PDF compressor built with Vue, Tauri, and Rust (GUI + headless CLI)'
 arch=('x86_64')
@@ -31,7 +31,7 @@ conflicts=('pdf-compressor')
 options=(!strip)
 source=("${pkgname}-${pkgver}.zst::${url}/releases/download/v${pkgver}/pdf-compressor_${pkgver}_amd64.pkg.tar.zst")
 # Filled in by the release workflow with the sha256 of the released zst.
-sha256sums=('ed00bb15567ce8f18ed4d7096433ca5a00a111bc4911e1c5885876fc63b15d88')
+sha256sums=('32df84fb82cdb8731061abd19f581ff51a5eb3e1a9573ec43bb0b53e927e5cd8')
 
 # The zst is a plain tar — makepkg auto-extracts its contents (usr/, .PKGINFO,
 # .MTREE, .BUILDINFO) into srcdir.
