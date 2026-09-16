@@ -1,0 +1,6 @@
+[tfm-tui-bin]
+source = "github"
+github = "clarkarch/tfm-tui"
+use_latest_release = true
+from_pattern = 'v([0-9.]*)-(beta)?([0-9]*)'
+to_pattern = '\1\3'

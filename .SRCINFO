@@ -1,0 +1,21 @@
+pkgbase = tfm-tui-bin
+	pkgdesc = Modern mouse-first terminal file manager
+	pkgver = 0.1.0.0
+	pkgrel = 1
+	url = https://clarkarch.github.io/tfm-tui/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tfm
+	conflicts = tfm-tui
+	options = !strip
+	source = README-0.1.0.0.md::https://raw.githubusercontent.com/clarkarch/tfm-tui/v0.1.0-beta.0/README.md
+	source = LICENSE-0.1.0.0::https://raw.githubusercontent.com/clarkarch/tfm-tui/v0.1.0-beta.0/LICENSE
+	sha256sums = 03453b688a9c19ede9db289e91f886e1ce6bf8fc065183cf72951c76a52c3bc1
+	sha256sums = b2d4efd70a3897fa8ccfa35574c646be83ad2fd1459cf0e5661d2f48187cad4f
+	source_x86_64 = tfm-x86_64-0.1.0.0.gz::https://github.com/clarkarch/tfm-tui/releases/download/v0.1.0-beta.0/tfm-x86_64-linux.gz
+	sha256sums_x86_64 = 46e48344b23affa7e6dc8332b19c857a2012dc5de5eacda895cb7a9cb550eb9f
+	source_aarch64 = tfm-aarch64-0.1.0.0.gz::https://github.com/clarkarch/tfm-tui/releases/download/v0.1.0-beta.0/tfm-aarch64-linux.gz
+	sha256sums_aarch64 = 4bcd1a57d470ad81c72fdd31ad1b603a64c0d1abaf31d5df6a8d12ba46520f3b
+
+pkgname = tfm-tui-bin
