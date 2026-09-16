@@ -1,0 +1,24 @@
+pkgbase = optionsearch
+	pkgdesc = Instant local-first file search for Linux (Option family)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/fireflylabss/optionSearch
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk4
+	depends = libadwaita
+	optdepends = poppler: PDF text previews via pdftotext
+	provides = needle
+	provides = nld
+	conflicts = needle
+	replaces = needle
+	options = !lto
+	source = optionsearch-0.2.0.tar.gz::https://github.com/fireflylabss/optionSearch/archive/refs/tags/v0.2.0m-stable.tar.gz
+	source = optionSDK-0.1.3.tar.gz::https://github.com/fireflylabss/optionSDK/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 4f5796c7d68993c919c413e964da9ed0f2229f4399c7672cadb38fcdc1af57fd
+	sha256sums = f71374cb0adbd9736b9e1e9ef0c800a65aeb4c7b32f5e496561b5cb31d9d0eac
+
+pkgname = optionsearch
