@@ -1,0 +1,16 @@
+post_install() {
+  udevadm control --reload 2>/dev/null || true
+  udevadm trigger --action=change --subsystem-match=misc --sysname-match=uinput 2>/dev/null || true
+
+  echo "doubao-input: add each desktop user to the input group, then log out and back in:"
+  echo "  sudo usermod -aG input <username>"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  udevadm control --reload 2>/dev/null || true
+  udevadm trigger --action=change --subsystem-match=misc --sysname-match=uinput 2>/dev/null || true
+}

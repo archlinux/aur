@@ -1,0 +1,19 @@
+diff --git a/src/doubao_input/trigger/evdev_ptt.py b/src/doubao_input/trigger/evdev_ptt.py
+index b41a735..c581df5 100644
+--- a/src/doubao_input/trigger/evdev_ptt.py
++++ b/src/doubao_input/trigger/evdev_ptt.py
+@@ -88,7 +88,13 @@ class EvdevPtt:
+         fds: list[int] = []
+         paths: list[str] = []
+         # evdev.list_devices() returns paths the process can actually open.
+-        for path in evdev.list_devices():
++        # python-evdev 2.0 defaults to writable=True, but physical input
++        # devices only need to be opened read-only here.
++        try:
++            device_paths = evdev.list_devices(writable=False)
++        except TypeError:  # python-evdev < 2.0
++            device_paths = evdev.list_devices()
++        for path in device_paths:
+             try:
+                 dev = evdev.InputDevice(path)
+                 caps = dev.capabilities()
