@@ -1,0 +1,27 @@
+pkgbase = neomusic
+	pkgdesc = Retro CD-player music app with a cyberpunk LCD UI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://neomusic.tashila.me
+	arch = x86_64
+	license = LicenseRef-NeoMusic
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = gst-libav
+	depends = libglvnd
+	depends = libx11
+	depends = fontconfig
+	depends = libxext
+	depends = libxi
+	depends = libxrender
+	depends = libxtst
+	depends = zlib
+	depends = hicolor-icon-theme
+	options = !strip
+	source = https://github.com/tashilapathum/NeoMusic/releases/download/linux-v0.1.0/neomusic-0.1.0-linux-x86_64.tar.gz
+	sha256sums = be00c48727c8520d9708dd966fb8c6cc4db3a798b128fa17ca51ba78ae32fa5e
+
+pkgname = neomusic
