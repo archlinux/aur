@@ -141,10 +141,6 @@ build() (
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
 
-  # ensure extra/mbedtls is not used
-  CFLAGS+=" -I/usr/include/mbedtls3"
-  CXXFLAGS=" -I/usr/include/mbedtls3"
-
   local _cmake_options=(
     -B build
     -S "$_pkgname"
@@ -154,10 +150,7 @@ build() (
     -DCMAKE_INSTALL_LIBDIR='lib'
     -Wno-author
 
-    -DMbedTLS_INCLUDE_DIR="/usr/include/mbedtls3"
-    -DMbedtls_LIBRARY="/usr/lib/mbedtls3/libmbedtls.so"
-    -DMbedcrypto_LIBRARY="/usr/lib/mbedtls3/libmbedcrypto.so"
-    -DMbedx509_LIBRARY="/usr/lib/mbedtls3/libmbedx509.so"
+    -DMbedTLS_DIR="/usr/lib/mbedtls3/cmake/MbedTLS"
 
     -DCEF_ROOT_DIR="$srcdir/$_cef_src"
     -DOBS_VERSION_OVERRIDE="${pkgver%%.r*}"
