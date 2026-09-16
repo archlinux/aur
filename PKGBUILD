@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 epoch=1
 _tag="v${pkgver}"
@@ -27,7 +27,7 @@ optdepends=(
 source=(
 	"${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
 )
-sha512sums=('7330859ec8eecd38118a97d8e6d687a546ead9e22b7e519297c9250127367297b27e7402e68573c416049b32f04583f43742774c19e9db3d8a58e463977b0023')
+sha512sums=('2567796f17964d5f42e0ed65d8a600793e7396864c8f95cb9be0a396bd9dad4fc8ce95152a626ce1d65e04e478d2806c1ef7e2c6650a7f80d13a735cd93fab72')
 
 prepare() {
 	cd "${_srcdir}"
@@ -55,6 +55,8 @@ check() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo test --frozen --workspace
+
+	target/release/voicefox --check-libmpv
 }
 
 package() {
