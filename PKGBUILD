@@ -39,11 +39,10 @@ source=(
     # noch nicht auf einer Wand. Wer die Liste aus `target_link_libraries` ableitet,
     # bekommt sie beide: gebunden wird gegen ZIELE, geholt werden VERZEICHNISSE.
     #
-    # ase-containers IST HEUTE PRIVAT, und damit ist dieses Paket fuer Fremde nicht baubar.
-    # Gemessen anonym ueber https: die uebrigen Quellen loesen auf, ase-containers verlangt
-    # Zugangsdaten. Die Zeile bleibt trotzdem: sie nennt, was der Bau braucht, und laesst ihn an
-    # der WAHREN Stelle scheitern. Sobald das Repo oeffentlich ist, baut das Paket ohne weitere
-    # Aenderung.
+    # ase-containers war bis 2026-09-16 privat und liess den Fremdbau am Holen scheitern.
+    # Es ist jetzt oeffentlich — anonym ueber https geprueft. Der Abschluss bestimmt die
+    # Sichtbarkeit, nicht umgekehrt: eine Quellenliste, die auf das vorhandene Oeffentliche
+    # zurechtgeschnitten wird, ergibt ein Paket, das nur auf der Maschine des Autors laeuft.
     "ase-containers::git+https://github.com/antarien/ase-containers.git"
     "colors.hpp"
     "design_tokens.hpp"
