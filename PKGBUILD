@@ -9,7 +9,7 @@ pkgname=($pkgbase
     mounriver-studio-toolchain-riscv-gcc12-bin
     mounriver-studio-toolchain-riscv-gcc15-bin)
 pkgver=240
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('LicenseRef-custom')
@@ -94,7 +94,6 @@ package_mounriver-studio-toolchain-bin() {
 
 package_mounriver-studio-toolchain-openocd-bin() {
     depends=('bash'
-        'glibc'
         'libftdi-compat'
         'libusb'
         'hidapi'
@@ -126,7 +125,6 @@ package_mounriver-studio-toolchain-arm-none-eabi-gcc-bin() {
     pkgdesc="MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation."
     depends=(
         'bash'
-        'glibc'
         'python'
     )
     install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}"
@@ -144,7 +142,6 @@ EOF
 package_mounriver-studio-toolchain-riscv-gcc-bin() {
     pkgdesc="MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation."
     depends=('bash'
-        'glibc'
         'python')
     install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}"
     cd "${srcdir}/${_pkgbase}/Toolchain/RISC-V Embedded GCC/"
@@ -161,7 +158,6 @@ EOF
 package_mounriver-studio-toolchain-riscv-gcc12-bin() {
     pkgdesc="MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation."
     depends=('bash'
-        'glibc'
         'python')
     install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}"
     cd "${srcdir}/${_pkgbase}/Toolchain/RISC-V Embedded GCC12/"
@@ -178,7 +174,6 @@ EOF
 package_mounriver-studio-toolchain-riscv-gcc15-bin() {
     pkgdesc="MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation."
     depends=('bash'
-        'glibc'
         'python')
     install -dm0755 "${pkgdir}/opt/wch/${pkgname%-bin}"
     cd "${srcdir}/${_pkgbase}/Toolchain/RISC-V Embedded GCC15/"

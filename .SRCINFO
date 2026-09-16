@@ -1,6 +1,6 @@
 pkgbase = mounriver-studio-toolchain-bin
 	pkgver = 240
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.mounriver.com/
 	arch = x86_64
 	license = LicenseRef-custom
@@ -32,7 +32,6 @@ pkgname = mounriver-studio-toolchain-bin
 pkgname = mounriver-studio-toolchain-openocd-bin
 	pkgdesc = MRS Toolchain OpenOCD supports erasure, programming, verification and debugging of the chip.
 	depends = bash
-	depends = glibc
 	depends = libftdi-compat
 	depends = libusb
 	depends = hidapi
@@ -43,23 +42,19 @@ pkgname = mounriver-studio-toolchain-openocd-bin
 pkgname = mounriver-studio-toolchain-arm-none-eabi-gcc-bin
 	pkgdesc = MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation.
 	depends = bash
-	depends = glibc
 	depends = python
 
 pkgname = mounriver-studio-toolchain-riscv-gcc-bin
 	pkgdesc = MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation.
 	depends = bash
-	depends = glibc
 	depends = python
 
 pkgname = mounriver-studio-toolchain-riscv-gcc12-bin
 	pkgdesc = MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation.
 	depends = bash
-	depends = glibc
 	depends = python
 
 pkgname = mounriver-studio-toolchain-riscv-gcc15-bin
 	pkgdesc = MRS Toolchain Support for RISC-V assembly and GNU C compilation, link operation.
 	depends = bash
-	depends = glibc
 	depends = python
