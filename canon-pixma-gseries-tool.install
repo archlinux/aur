@@ -1,0 +1,19 @@
+post_install() {
+  # Compatibility symlink for legacy cnijfilter2 driver binaries on modern libxml2
+  if [ -f /usr/lib/libxml2.so.16 ] && [ ! -f /usr/lib/libxml2.so.2 ]; then
+    ln -sf /usr/lib/libxml2.so.16 /usr/lib/libxml2.so.2 2>/dev/null || true
+  fi
+
+  echo "=================================================================="
+  echo "  Canon PIXMA G-Series Linux Assistant & Maintenance Tool installed!"
+  echo "=================================================================="
+  echo "  • Run 'canon-pixma-gseries-tool' in terminal or launch from your"
+  echo "    desktop application menu (Rofi / Wofi / KDE / GNOME / Thunar)."
+  echo "  • Ensure CUPS and Avahi services are running:"
+  echo "      sudo systemctl enable --now cups avahi-daemon"
+  echo "=================================================================="
+}
+
+post_upgrade() {
+  post_install
+}
