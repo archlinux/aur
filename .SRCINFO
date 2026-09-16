@@ -1,50 +1,51 @@
 pkgbase = r-gtsummary
 	pkgdesc = Presentation-Ready Data Summary and Analytic Result Tables
 	pkgver = 2.6.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=gtsummary
 	arch = any
 	license = MIT
-	depends = r-cards
-	depends = r-cardx
-	depends = r-cli
-	depends = r-dplyr
-	depends = r-glue
-	depends = r-gt
-	depends = r-lifecycle
-	depends = r-rlang
-	depends = r-tidyr
-	depends = r-vctrs
-	optdepends = r-aod
-	optdepends = r-broom
-	optdepends = r-broom.helpers
-	optdepends = r-broom.mixed
-	optdepends = r-car
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-cards>=0.7.1
+	depends = r-cardx>=0.3.1
+	depends = r-cli>=3.6.3
+	depends = r-dplyr>=1.1.3
+	depends = r-glue>=1.8.0
+	depends = r-gt>=0.11.1
+	depends = r-lifecycle>=1.0.3
+	depends = r-rlang>=1.1.1
+	depends = r-tidyr>=1.3.0
+	depends = r-vctrs>=0.6.4
+	optdepends = r-aod>=1.3.3
+	optdepends = r-broom>=1.0.5
+	optdepends = r-broom.helpers>=1.20.0
+	optdepends = r-broom.mixed>=0.2.9
+	optdepends = r-car>=3.0-11
 	optdepends = r-cmprsk
-	optdepends = r-effectsize
-	optdepends = r-emmeans
-	optdepends = r-flextable
-	optdepends = r-geepack
-	optdepends = r-ggstats
-	optdepends = r-huxtable
-	optdepends = r-insight
-	optdepends = r-kableextra
-	optdepends = r-knitr
-	optdepends = r-lme4
-	optdepends = r-mice
+	optdepends = r-effectsize>=0.6.0
+	optdepends = r-emmeans>=1.7.3
+	optdepends = r-flextable>=0.8.1
+	optdepends = r-geepack>=1.3.10
+	optdepends = r-ggstats>=0.2.1
+	optdepends = r-huxtable>=5.4.0
+	optdepends = r-insight>=0.15.0
+	optdepends = r-kableextra>=1.3.4
+	optdepends = r-knitr>=1.37
+	optdepends = r-lme4>=1.1-31
+	optdepends = r-mice>=3.10.0
 	optdepends = r-officer
 	optdepends = r-openxlsx
-	optdepends = r-parameters
-	optdepends = r-parsnip
+	optdepends = r-parameters>=0.20.2
+	optdepends = r-parsnip>=0.1.7
 	optdepends = r-rmarkdown
-	optdepends = r-smd
+	optdepends = r-smd>=0.6.6
 	optdepends = r-spelling
-	optdepends = r-survey
-	optdepends = r-testthat
-	optdepends = r-withr
-	optdepends = r-workflows
+	optdepends = r-survey>=4.2
+	optdepends = r-testthat>=3.2.0
+	optdepends = r-withr>=2.5.0
+	optdepends = r-workflows>=0.2.4
 	source = https://cran.r-project.org/src/contrib/gtsummary_2.6.1.tar.gz
-	md5sums = 5c2234b3f554a369d9b2a600be9b6ff6
-	b2sums = 1aef6e5029909c6fb43fa1d22ab4e4587c63b1b73e695d190c05b0b30b49148f15320ebfd190869d14b393d5c2e9672f6a0889f1ca3bda9a43088a3574e4aa1e
+	sha256sums = e21f03800270d820f58cfef610dabf996e56d93c39ec963b662546a52330745d
 
 pkgname = r-gtsummary
