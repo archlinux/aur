@@ -13,7 +13,7 @@ groups=()
 depends=()
 makedepends=(
 	'git'
-	'dotnet-sdk-9.0'
+	'dotnet-sdk-10.0'
 )
 checkdepends=()
 optdepends=()
@@ -46,6 +46,7 @@ package() {
 
 	make DESTDIR="$pkgdir/" installcli
 	make DESTDIR="$pkgdir/" installgui
+	make DESTDIR="$pkgdir/" installdaemon
 }
 
 
