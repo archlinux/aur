@@ -10,7 +10,7 @@ _cratename=${_pkgname}-cli
 pkgname=${_cratename}
 pkgdesc="High-performance resumable download manager"
 
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('88185c3837a4c77913bca571655428113f752c2681232d59ff7531d2839b5a76')
+sha256sums=('2575f7503704c099b0855ec85f259df1ee2ea1954a365fc9f3addebe1ef8cfdf')
 
 
 build() {
