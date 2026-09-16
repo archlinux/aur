@@ -49,6 +49,14 @@ build() {
 	go build -trimpath -ldflags "${ldflags}" -o "${pkgname}" ./cmd/${pkgname}
 }
 
+check() {
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
+
+	# Run all package tests using the offline module cache
+	export GOPROXY=off
+	go test -v ./...
+}
+
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
 
