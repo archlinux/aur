@@ -1,7 +1,7 @@
 # Maintainer: Douglas Moura <doug@douglasmoura.com>
 pkgname=winkel-bin
 _pkgname=winkel
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A metronome for Omarchy that follows the live theme (prebuilt binary)"
 arch=(x86_64 aarch64)
@@ -13,8 +13,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64-linux.tar.gz")
-sha256sums_x86_64=('be3489b43918a9c9f53917ea0d48ce58c455e2b6ea0802a64472e03768777182')
-sha256sums_aarch64=('5cdc4c38772c0b0003d6daa4bb9270a9510ccff94f056f1262d0d1af7a763416')
+sha256sums_x86_64=('2a330673d72983e16fdb0cd5c859553428c321376facbad64dbb2c09d063abd6')
+sha256sums_aarch64=('9a88ae5de8a32e057124862bd90b76fd340717ccff1994236f4c4a8488dbc907')
 
 package() {
   cd "$_pkgname-$pkgver-$CARCH-linux"
