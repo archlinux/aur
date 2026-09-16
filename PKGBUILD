@@ -33,6 +33,7 @@ optdepends=(
   "gamemode"
   "gamescope"
   "mangohud"
+  "rsync: Move games using rsync instead of mv"
 )
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)

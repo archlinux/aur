@@ -19,6 +19,7 @@ pkgbase = heroic-games-launcher-bin
 	optdepends = gamemode
 	optdepends = gamescope
 	optdepends = mangohud
+	optdepends = rsync: Move games using rsync instead of mv
 	provides = heroic-games-launcher
 	conflicts = heroic-games-launcher
 	noextract = Heroic-2.22.3-linux-x64.pacman
