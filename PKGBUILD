@@ -2,7 +2,7 @@
 # Maintainer: CommandMC <kate@commandmc.de>
 
 pkgver=2.22.3
-pkgrel=1
+pkgrel=2
 sha256sums=('ed17ce083a71dd7e49a89218052ab475edd5a654cedf443853f6baacbb0a00e9')
 
 pkgname=heroic-games-launcher-bin
