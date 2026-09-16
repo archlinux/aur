@@ -8,7 +8,7 @@
 # rather than a placeholder nobody can build.
 
 pkgname=dbar
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A small, event-driven Wayland status bar for Sway and SwayFX"
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ options=('!debug')
 provides=("dbar=$pkgver")
 conflicts=('dbar-bin' 'dbar-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('761ecf76d653d050cd6be07931bb28a24e8afa1a32645f55b9aec75e63e73326')
+sha256sums=('20c984a4f99ebae74f85c57a72974e73537e9c8116bd22b10e3e1b0d7621aec0')
 
 prepare() {
   cd "$pkgname-$pkgver"
