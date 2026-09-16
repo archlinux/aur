@@ -1,6 +1,6 @@
 pkgbase = tyrolienne
 	pkgdesc = simple tool to convert, upload, and embed videos to zipline
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://git.uku3lig.net/uku/tyrolienne
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = tyrolienne
 	depends = ffmpeg
 	options = !lto
 	options = !debug
-	source = tyrolienne-1.2.2.tar.gz::https://git.uku3lig.net/uku/tyrolienne/archive/1.2.2.tar.gz
+	source = tyrolienne-1.2.3.tar.gz::https://git.uku3lig.net/uku/tyrolienne/archive/1.2.3.tar.gz
 	source = net.uku3lig.tyrolienne.desktop
-	sha256sums = 12d4d2c76a5d5a6e76afb176d6218b68621ba02759206863efc56495459d4a7c
+	sha256sums = e063429b2d6afad7fb565592407bb0cfd6c14884facd70666e9445f502108db4
 	sha256sums = SKIP
 
 pkgname = tyrolienne
