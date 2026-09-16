@@ -1,6 +1,6 @@
 # Maintainer: Antarien <dev@antarien.com>
 pkgname=ase-viewer
-pkgver=00.00.31
+pkgver=00.00.33
 pkgrel=1
 pkgdesc='ASE TECH & DESIGN Documentation Viewer — Native GTK4 Markdown renderer'
 arch=('x86_64')
