@@ -395,13 +395,17 @@ _herdr() {
 
     case "${cmd}" in
         herdr)
-            opts="-h -V --help --session --remote --remote-keybindings --handoff --default-config --skill --version completion completions update status config channel machine server api workspace worktree tab notification agent pane terminal session integration plugin"
+            opts="-h -V --help --session --machine --remote --remote-keybindings --handoff --default-config --skill --version completion completions update status config channel machine server api workspace worktree tab notification agent pane terminal session integration plugin"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 1 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
             fi
             case "${prev}" in
                 --session)
+                    COMPREPLY=($(compgen -f "${cur}"))
+                    return 0
+                    ;;
+                --machine)
                     COMPREPLY=($(compgen -f "${cur}"))
                     return 0
                     ;;
@@ -600,7 +604,7 @@ _herdr() {
             fi
             case "${prev}" in
                 --kind)
-                    COMPREPLY=($(compgen -W "pi claude codex gemini cursor devin agy cline omp mastracode opencode copilot kimi kiro droid amp grok hermes kilo qodercli qwen maki muse" -- "${cur}"))
+                    COMPREPLY=($(compgen -W "pi claude codex gemini cursor devin agy cline omp mastracode opencode copilot kimi kiro droid amp grok hermes kilo qodercli qwen letta maki muse" -- "${cur}"))
                     return 0
                     ;;
                 --pane)
@@ -799,7 +803,7 @@ _herdr() {
             return 0
             ;;
         herdr__subcmd__integration__subcmd__install)
-            opts="pi omp claude codex copilot devin droid kimi opencode kilo hermes qodercli qwen cursor mastracode antigravity-cli grok"
+            opts="pi omp claude codex copilot devin droid kimi opencode kilo hermes qodercli qwen cursor mastracode antigravity-cli grok letta"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -827,7 +831,7 @@ _herdr() {
             return 0
             ;;
         herdr__subcmd__integration__subcmd__uninstall)
-            opts="pi omp claude codex copilot devin droid kimi opencode kilo hermes qodercli qwen cursor mastracode antigravity-cli grok"
+            opts="pi omp claude codex copilot devin droid kimi opencode kilo hermes qodercli qwen cursor mastracode antigravity-cli grok letta"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 3 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0

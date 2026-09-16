@@ -16,6 +16,7 @@ _herdr() {
     local context curcontext="$curcontext" state line
     _arguments "${_arguments_options[@]}" : \
 '--session[Use or create a named persistent session]:NAME:_default' \
+'--machine[Run an API command on a saved SSH machine]:LABEL-OR-ID:_default' \
 '--remote[Attach through SSH to a remote Herdr server]:TARGET:_default' \
 '--remote-keybindings[Choose local or server keybindings for remote attach]:MODE:(local server)' \
 '-h[Show help]' \
@@ -501,7 +502,7 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (start)
 _arguments "${_arguments_options[@]}" : \
-'--kind[Supported agent kind and canonical executable]:KIND:(pi claude codex gemini cursor devin agy cline omp mastracode opencode copilot kimi kiro droid amp grok hermes kilo qodercli qwen maki muse)' \
+'--kind[Supported agent kind and canonical executable]:KIND:(pi claude codex gemini cursor devin agy cline omp mastracode opencode copilot kimi kiro droid amp grok hermes kilo qodercli qwen letta maki muse)' \
 '--pane[Existing pane at an interactive shell prompt]:ID:_default' \
 '--timeout[Wait for interactive readiness (default\: 30000; max\: 300000)]:MS:_default' \
 ':name:_default' \
@@ -882,12 +883,12 @@ _arguments "${_arguments_options[@]}" : \
         case $line[1] in
             (install)
 _arguments "${_arguments_options[@]}" : \
-':target:(pi omp claude codex copilot devin droid kimi opencode kilo hermes qodercli qwen cursor mastracode antigravity-cli grok)' \
+':target:(pi omp claude codex copilot devin droid kimi opencode kilo hermes qodercli qwen cursor mastracode antigravity-cli grok letta)' \
 && ret=0
 ;;
 (uninstall)
 _arguments "${_arguments_options[@]}" : \
-':target:(pi omp claude codex copilot devin droid kimi opencode kilo hermes qodercli qwen cursor mastracode antigravity-cli grok)' \
+':target:(pi omp claude codex copilot devin droid kimi opencode kilo hermes qodercli qwen cursor mastracode antigravity-cli grok letta)' \
 && ret=0
 ;;
 (status)

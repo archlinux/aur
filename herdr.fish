@@ -1,6 +1,6 @@
 # Print an optspec for argparse to handle cmd's options that are independent of any subcommand.
 function __fish_herdr_global_optspecs
-	string join \n h/help session= remote= remote-keybindings= handoff default-config skill V/version
+	string join \n h/help session= machine= remote= remote-keybindings= handoff default-config skill V/version
 end
 
 function __fish_herdr_needs_command
@@ -25,6 +25,7 @@ function __fish_herdr_using_subcommand
 end
 
 complete -c herdr -n "__fish_herdr_needs_command" -l session -d 'Use or create a named persistent session' -r
+complete -c herdr -n "__fish_herdr_needs_command" -l machine -d 'Run an API command on a saved SSH machine' -r
 complete -c herdr -n "__fish_herdr_needs_command" -l remote -d 'Attach through SSH to a remote Herdr server' -r
 complete -c herdr -n "__fish_herdr_needs_command" -l remote-keybindings -d 'Choose local or server keybindings for remote attach' -r -f -a "local\t''
 server\t''"
@@ -204,6 +205,7 @@ hermes\t''
 kilo\t''
 qodercli\t''
 qwen\t''
+letta\t''
 maki\t''
 muse\t''"
 complete -c herdr -n "__fish_herdr_using_subcommand agent; and __fish_seen_subcommand_from start" -l pane -d 'Existing pane at an interactive shell prompt' -r

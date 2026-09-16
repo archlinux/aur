@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=herdr-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Supervise multiple coding agents in one terminal"
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,11 @@ conflicts=('herdr')
 source_x86_64=("herdr-${pkgver}-x86_64::https://github.com/herdrdev/herdr/releases/download/v${pkgver}/herdr-linux-x86_64")
 source_aarch64=("herdr-${pkgver}-aarch64::https://github.com/herdrdev/herdr/releases/download/v${pkgver}/herdr-linux-aarch64")
 source=('herdr.bash' '_herdr' 'herdr.fish')
-sha256sums=('cc0ac46f79f46012e72050bef7660e70d7e171f0ecfa9951445632ab83d4f308'
-            'e2b5370f72d46f27d8e132daa509411e96c084d01cda677997bd232eedf3896c'
-            '446602af3d53c43bc5d4c961e57c2988b3a22770d3091a2b6e13f6078f2b4b0b')
-sha256sums_x86_64=('4fa1a01158dd8043da92d31b270780b0dcc10603038d9b61cac4d81ab63fb71f')
-sha256sums_aarch64=('9c8db20fb7e7427b138d5367113f1621ffd319f2f65d6f009e2594029115f0d2')
+sha256sums=('2f105759457e42e86cb989697f6b89e4d1ed3491a238664b33ef8a343048901b'
+            'c0c84a2014ef7c016240ea0be2f07129c1770f9e1c0162d5ebaa303235ae0905'
+            '58d842ef99bac0b3e2ab4aea1a6ae3856ce656959e9f0db90f33342ea2b2c821')
+sha256sums_x86_64=('2a02fed16beb651ef006e1d43f048f652ca4dc58ad053cd2d44450563d5c54b7')
+sha256sums_aarch64=('f4ccf4de745f2cb9a39a983e9ba3703dad50ec2a58dea83026ceab721bbd8d9e')
 
 package() {
     install -Dm755 "herdr-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/herdr"
