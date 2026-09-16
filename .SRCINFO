@@ -1,7 +1,7 @@
 pkgbase = askalono
 	pkgdesc = A tool & library to detect open source licenses from texts
 	pkgver = 0.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jpeddicord/askalono
 	arch = x86_64
 	license = Apache-2.0

@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=askalono
 pkgver=0.5.0
-pkgrel=4
-_lld_ver=3.28.0
+pkgrel=5
+_lld_ver=3.29.0
 pkgdesc="A tool & library to detect open source licenses from texts"
 arch=('x86_64')
 url="https://github.com/jpeddicord/askalono"
@@ -39,6 +39,7 @@ prepare() {
 
   # Use latest version of the SPDX License List instead of a 4-year-old commit
   cd datasets/modules/spdx-license-list-data
+  git fetch --tags
   git checkout -f "v${_lld_ver}"
 }
 
