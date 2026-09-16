@@ -3,12 +3,11 @@
 # Contributor: alice_aierlanta <aliceaierlanta@gmail.com>
 
 _pkgname='ipfs-desktop'
-# Electron 43.5.0 fixed the Wayland tray regression.
-_electron_pkg='electron43'
+_electron_pkg='electron44'
 
 pkgname="${_pkgname}-electron-bin"
-pkgver='0.50.0'
-pkgrel=2
+pkgver='0.50.1'
+pkgrel=1
 pkgdesc='Desktop client for the InterPlanetary File System (prebuilt, system Electron and Kubo)'
 # Only portable application assets remain after removing the bundled runtimes.
 arch=('any')
@@ -25,9 +24,8 @@ license=(
 	'Python-2.0'
 )
 depends=(
-	'bash'
 	"${_electron_pkg}"
-	'kubo>=0.43.0'
+	'kubo>=0.43.1'
 )
 makedepends=('asar')
 # The source-built package uses epoch=1; retain it in the compatibility version.
@@ -39,20 +37,24 @@ source=(
 	"${_pkgname}-${pkgver}.LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
 	"${_pkgname}.desktop"
 	"${_pkgname}-startup.sh"
-	"${_pkgname}-system-kubo-autostart.patch"
 	'Inter-LICENSE.txt::https://raw.githubusercontent.com/rsms/inter/3ac1bd32a473ea60d40d8f444820247e96dd7e70/LICENSE.txt'
 	'Montserrat-OFL.txt::https://raw.githubusercontent.com/JulietaUla/Montserrat/fc12e6819947c76db917f9d589a1d327e37a7b6b/OFL.txt'
-	"${_pkgname}-daemon-startup.patch"
+)
+sha256sums=(
+	'9e78001c1cdd463c687175499a7448c348d1fffed1445a49b1da4301f0fd3cd7'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
 )
 b2sums=(
-	'c44d515a6318e8d628869cad374942f4187db29553622391345547a8656fd2d5ad1665fe1114e77678299a6874dade828d04e99943f20980d8c215f8ac4fb12c'
+	'SKIP'
 	'2c3fb2af6c8e92bcacb15b3878b1125fd4f8b4d48e37b2b3ce818517b7a7a94f68ef3c155e8d8cb5b2d39727fe916e293b892c48ee59167b4ee564bbedc70d9d'
 	'849d57fd59653ed0c6eca01769ad12a01f37f6a5316f1a83c0bf7cae576074b978e3ca555d50a56114d177e5fe4817338106698716f054a3e18ae1c81d7a8785'
 	'bb51f22c1cf58020bbb9d7f9dde2bfd6f838443130d89539c9ce2474f5a1987b332f63dd21b8a903880a77f96d58e8a868d0468e15d266357bdfe3409380eab2'
-	'6ab7dc45ad9ca9748215f78368433178508266da9156128dc4e3f53afb31746cfd247e9e1438356e4b14efc1430fcd85aa01d3f103be35824859f068ad2c9c06'
 	'5417464983de312c9c2a250c64281d82c17fd531f78ceccaa44d97c6999a3faf61324eaaf588240a9d0f9319bb302b7d7ed88bdbc55c188efd0357645190690a'
 	'93047b82ab53aa80f1db73e4f9d0d2b2ac30fcee1be00b2b43c63a63da1ec41b32935acca720ed4b31d3cfd0e57d61faaf79be4951a90fa973312ab22e4f1488'
-	'0157eb4126e3a5a5bf0dae83ba1ee36f89703433c4eda62e4d639a2b1d6b036c0e84177d9c1cf0c1e4f0e1b59ab83a147150314f832d991fc2f53190f12fc55a'
 )
 
 prepare() {
@@ -60,8 +62,6 @@ prepare() {
 		"${srcdir}/${_pkgname}-${pkgver}"
 
 	cd -- "${srcdir}/${_pkgname}-${pkgver}" || return 1
-	patch --no-backup-if-mismatch -Np1 -i "${srcdir}/${_pkgname}-system-kubo-autostart.patch"
-	patch --no-backup-if-mismatch -Np1 -i "${srcdir}/${_pkgname}-daemon-startup.patch"
 
 	# Keep the JS module and its version metadata, but not the bundled daemon.
 	rm -rf -- node_modules/kubo/kubo
