@@ -1,15 +1,15 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=hash-calculator-bin
-pkgver=6.1.1
-pkgrel=3
+pkgver=6.1.2
+pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="Hash Calculator is the console tool that can calculate about 70 cryptographic hashes of strings and files."
 url="https://github.com/aegoroff/hc"
 license=('LGPL-3')
 source_x86_64=("https://github.com/aegoroff/hc/releases/download/${pkgver}/hc-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/aegoroff/hc/releases/download/${pkgver}/hc-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('09264d9114fdbf32c207cdaeadbe4670a1b61bf17cf11b81be6226a3c168ec1e')
-sha256sums_aarch64=('269b8792880cdc44f0de030bef02b4187f4d3a25e3a59fd160b86d883efb3f05')
+sha256sums_x86_64=('06abdfae9920bdea3b80d71433c6e55f91e3c6ea62240aca04333aed73ad21d3')
+sha256sums_aarch64=('2baad700f53eed279cdafe4e50fc8c4f1efd75f570ca3dd26b74ec4643359639')
 
 build() {
   return 0
