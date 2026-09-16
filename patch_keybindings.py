@@ -48,6 +48,7 @@ MODEL_CYCLE_RE = re.compile(
 )
 RANGE_GAP = b"\xde\xadRANGE_GAP\xad\xde"
 BINARY_RECORD_KEYMAP_WINDOW = 4096
+RECORD_HEADER_TAIL_LEN = 7
 DISPLAY_REPLACEMENTS = (
     (b"Ctrl + P", b"Ctrl + G"),
     (b"Ctrl+P", b"Ctrl+G"),
@@ -57,9 +58,9 @@ DISPLAY_REPLACEMENTS = (
     (b"Ctrl+N", b"Ctrl+P"),
     (b"ctrl+N", b"ctrl+P"),
     (b"Ctrl-N", b"Ctrl-P"),
-    (b"Ctrl + G", b"Ctrl + Q"),
-    (b"Ctrl+G", b"Ctrl+Q"),
-    (b"ctrl+G", b"ctrl+Q"),
+    (b"Ctrl + G", b"Ctrl + I"),
+    (b"Ctrl+G", b"Ctrl+I"),
+    (b"ctrl+G", b"ctrl+I"),
     (b"Ctrl-G", b"Ctrl-I"),
 )
 DISPLAY_MAP = dict(DISPLAY_REPLACEMENTS)
@@ -72,35 +73,38 @@ def _ensure_disjoint_spans(spans: list[tuple[int, int]]) -> None:
         raise PatchError("keybinding patch targets overlap")
 
 
+def _record_header_re(key: bytes) -> re.Pattern[bytes]:
+    return re.compile(re.escape(key) + rb"\x00{1,3}[^\x00]\x00\x00\x80")
+
+
 def _find_binary_record_keymap(data: bytes, patched: bool) -> tuple[int, int, int] | None:
     """Find the newer keymap whose entries carry binary records instead of actions."""
     first_key, second_key = (b"ctrl-i", b"ctrl-g") if patched else (b"ctrl-g", b"ctrl-p")
+    first_re = _record_header_re(first_key)
+    second_re = _record_header_re(second_key)
     candidates = []
-    offset = 0
-    while True:
-        first_position = data.find(first_key + b"\x00", offset)
-        if first_position == -1:
-            break
-        first_end = first_position + len(first_key) + 1
-        if not data[first_end : first_end + 2] == b"\x00\x06":
-            offset = first_end
-            continue
+    for first_match in first_re.finditer(data):
+        first_position = first_match.start()
         window_end = min(len(data), first_position + BINARY_RECORD_KEYMAP_WINDOW)
-        second_position = data.find(second_key + b"\x00", first_end, window_end)
-        slash_position = data.find(b"ctrl-slash\x00", first_end, window_end)
-        model_position = data.find(b"model-cycle\x00", first_end, window_end)
-        autonomy_position = data.find(b"autonomy-cycle\x00", first_end, window_end)
+        window = data[first_position:window_end]
+        second_match = second_re.search(window, RECORD_HEADER_TAIL_LEN)
+        slash_position = window.find(b"ctrl-slash\x00", RECORD_HEADER_TAIL_LEN)
+        model_position = window.find(b"model-cycle\x00", RECORD_HEADER_TAIL_LEN)
+        autonomy_position = window.find(b"autonomy-cycle\x00", RECORD_HEADER_TAIL_LEN)
         if (
-            second_position > first_position
-            and slash_position > second_position
+            second_match
+            and slash_position > second_match.start()
             and model_position > slash_position
             and autonomy_position > model_position
-            and RANGE_GAP not in data[first_position:autonomy_position]
+            and RANGE_GAP not in window[:autonomy_position]
         ):
-            second_end = second_position + len(second_key) + 1
-            if data[second_end : second_end + 2] == b"\x00\x06":
-                candidates.append((first_position, second_position, autonomy_position))
-        offset = first_end
+            candidates.append(
+                (
+                    first_position,
+                    first_position + second_match.start(),
+                    first_position + autonomy_position,
+                )
+            )
     if len(candidates) > 1:
         raise PatchError("expected one binary-record keymap, found multiple")
     return candidates[0] if candidates else None
@@ -109,15 +113,8 @@ def _find_binary_record_keymap(data: bytes, patched: bool) -> tuple[int, int, in
 def _find_binary_model_key(data: bytes, keymap: tuple[int, int, int], key: bytes) -> int:
     """Find the one binary-record keymap entry for the model-cycle binding."""
     first_position, _, autonomy_position = keymap
-    marker = key + b"\x00\x00\x06"
-    candidates = []
-    offset = first_position
-    while True:
-        position = data.find(marker, offset, autonomy_position)
-        if position == -1:
-            break
-        candidates.append(position)
-        offset = position + 1
+    model_re = _record_header_re(key)
+    candidates = [m.start() for m in model_re.finditer(data, first_position, autonomy_position)]
     if RANGE_GAP in data[first_position:autonomy_position]:
         raise PatchError("binary-record keymap crosses an unknown range gap")
     if len(candidates) != 1:
