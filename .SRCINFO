@@ -1,7 +1,7 @@
 pkgbase = hoppscotch-bin
 	pkgdesc = Hoppscotch. Open source API development ecosystem
 	pkgver = 26.8.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://hoppscotch.io/
 	install = hoppscotch-bin.install
 	arch = x86_64
