@@ -7,7 +7,7 @@ _npmver=27.7.0
 
 pkgname=netlify
 pkgver=${_npmver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Create, deploy, and delete new sites hosted on Netlify straight from your terminal"
 
 arch=(any)
@@ -30,6 +30,7 @@ package() {
     # Fix file ownership and permissions
     chown -R 0:0 "${pkgdir}/usr"
     find "${pkgdir}/usr" -perm -o+w,g+w -exec chmod o-w,g-w {} +
+    chmod +x "${pkgdir}/usr/lib/node_modules/netlify-cli/dist/lib/completion/script.js"
 
     rm -rf "${pkgdir}/usr/bin/node-gyp"
     rm -rf "${pkgdir}/usr/lib/node_modules/node-gyp"

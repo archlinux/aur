@@ -1,7 +1,7 @@
 pkgbase = netlify
 	pkgdesc = Create, deploy, and delete new sites hosted on Netlify straight from your terminal
 	pkgver = 27.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.netlify.com/docs/cli/
 	arch = any
 	license = MIT
