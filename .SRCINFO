@@ -1,6 +1,6 @@
 pkgbase = specify-cli
 	pkgdesc = Bootstrap and manage Spec Kit projects
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/github/spec-kit
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = specify-cli
 	optdepends = windsurf: Supported Agent, IDE-based
 	conflicts = specify-cli-bin
 	options = !debug
-	source = https://github.com/github/spec-kit/archive/refs/tags/v1.0.6.tar.gz
-	b2sums = 897844ff2053fae47ad90e7c50d03bb316006c00ed4fa5692f1ea7cfd9a73fbcb04d1b5c7b21ec01629b0215a7cda93f2e35a0a03036199f45ea65509e3cd113
+	source = https://github.com/github/spec-kit/archive/refs/tags/v1.0.7.tar.gz
+	b2sums = 65d167cc268cae993f00cc0a0d15378f488d8c37a73348bf3f86471fefda8e6ac6104a8e0dd83cac8d43b4f2d03b91ba056c6ed6e514d6c000fa1798c06ebdb0
 
 pkgname = specify-cli
