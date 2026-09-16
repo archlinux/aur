@@ -14,7 +14,7 @@ options=('!debug')
 package() {
     cd -- "$pkgname-$pkgver"
 
-    install -D -m 0755 -T bin/script "$pkgdir/usr/bin/$pkgname"
+    install -D -m 0755 -T bin/script.sh "$pkgdir/usr/bin/$pkgname"
     install -D -m 0644 -T share/script.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -D -m 0644 -t "$pkgdir/usr/share/$pkgname" share/icon.svg
     install -D -m 0640 -T etc/sudoers "$pkgdir/etc/sudoers.d/$pkgname"
