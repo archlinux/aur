@@ -1,14 +1,24 @@
 #!/bin/sh
 
-case "${XMODIFIERS}" in
-    "@im=ibus")
-        : ${QT_IM_MODULE:=ibus}
-        ;;
-    *)
-        : ${QT_IM_MODULE:=fcitx}
-        ;;
-esac
-export QT_IM_MODULE
+function is_fcitx {
+    command -v fcitx-remote 2>&1 1>/dev/null && fcitx-remote -c 2>&1 1>/dev/null && return 0
+    command -v fcitx5-remote 2>&1 1>/dev/null && fcitx5-remote -c 2>&1 1>/dev/null && return 0
+}
+
+if [ -z "$QT_IM_MODULE" ]; then
+    if [ "$XDG_SESSION_TYPE" != "wayland" ]; then
+        if is_fcitx; then
+            QT_IM_MODULE=fcitx
+        else
+            QT_IM_MODULE=ibus
+        fi
+    else
+        QT_IM_MODULE=text-input-unstable-v3
+    fi
+
+    echo "QT_IM_MODULE is not set, set to $QT_IM_MODULE"
+    export QT_IM_MODULE
+fi
 
 # 以下bug已经在 kde plasma 6.3.90 版本之后修复
 # https://bugs.kde.org/show_bug.cgi?id=469273
