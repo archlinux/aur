@@ -8,7 +8,7 @@ url="https://github.com/leoliu0/ratex"
 license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
-provides=('ratex' 'texmk' 'pdflatex' 'xelatex' 'lualatex' 'bibtex')
+provides=('texmk')
 conflicts=('ratex-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leoliu0/ratex/archive/refs/tags/v${pkgver}.tar.gz")
@@ -16,13 +16,12 @@ sha256sums=('SKIP')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    cargo build --release --locked --workspace
+    cargo build --release --locked --bin texmk
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
-    ./install.sh --prefix "$pkgdir/usr" --no-path --skip-verify --no-alias-latexmk --from-source --no-build
-    rm -f "$pkgdir/usr/share/tex-suite/.tex-suite-managed-files-v1"
+    install -Dm755 target/release/texmk "$pkgdir/usr/bin/texmk"
     if [ -f LICENSE-MIT ]; then
         install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     fi
