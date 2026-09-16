@@ -13,7 +13,10 @@ groups=()
 depends=()
 makedepends=(
 	'git'
+	'make'
 	'dotnet-sdk-10.0'
+	'dotnet-targeting-pack-10.0'
+	'aspnet-targeting-pack-10.0'
 )
 checkdepends=()
 optdepends=()
