@@ -41,7 +41,7 @@ pkgver() {
 build() {
     cd boxes
     python -m build --wheel --no-isolation
-    python scripts/boxes2inkscape inkex
+    PYTHONPATH="$PWD" python scripts/boxes2inkscape inkex
 }
 
 package() {
