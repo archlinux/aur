@@ -6,7 +6,7 @@
 pkgname=browseros-neo-bin
 _pkgname=browserclaw
 pkgver=0.50.5
-pkgrel=1
+pkgrel=2
 pkgdesc="BrowserOS neo — AI browser for agents (Chromium 151, binary from browserclaw/* tags, auto-rolling)"
 arch=('x86_64')
 url="https://github.com/browseros-ai/BrowserOS"
@@ -82,9 +82,6 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   ln -sf /usr/bin/browserclaw "$pkgdir/usr/bin/browseros-neo" 2>/dev/null || true
   ln -sf /usr/bin/browserclaw "$pkgdir/usr/bin/browseros-neo-bin" 2>/dev/null || true
-  if [[ -f "$pkgdir/usr/share/applications/browserclaw.desktop" ]]; then
-    cp "$pkgdir/usr/share/applications/browserclaw.desktop" "$pkgdir/usr/share/applications/browseros-neo.desktop"
-  fi
   if [[ ! -f "$pkgdir/usr/share/licenses/${pkgname}/LICENSE" ]]; then
     install -Dm644 /dev/null "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     echo "AGPL-3.0-only — see https://github.com/browseros-ai/BrowserOS/blob/browserclaw/v${pkgver}/LICENSE" > "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"

@@ -1,7 +1,7 @@
 pkgbase = browseros-neo-bin
 	pkgdesc = BrowserOS neo — AI browser for agents (Chromium 151, binary from browserclaw/* tags, auto-rolling)
 	pkgver = 0.50.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/browseros-ai/BrowserOS
 	install = browseros-neo.install
 	arch = x86_64
