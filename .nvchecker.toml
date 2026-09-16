@@ -1,3 +1,4 @@
 [volt-gui]
 source = "git"
 git = "https://github.com/pythonlover02/volt-gui.git"
+prefix = "v"
