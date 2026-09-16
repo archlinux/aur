@@ -23,7 +23,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A post-modern terminal file explorer"
 
-pkgver=0.10.2
+pkgver=0.10.2.1
 pkgrel=1
 _gitversion=v$(format_version "${pkgver}")
 
@@ -50,8 +50,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.zip")
 sha256sums=('1be30be2f444a2bf1082d0c8a0102c9452b0bd4dae71e5243438b86434126aef'
             'b1f7cd544c998e25bcc990abc8c1f7c46d01b3a2ec61efb454ea932cbcc69445')
-sha256sums_x86_64=('0a22e710b1077fbf234b59c2c5f9e97fa33389f24edef07be5a32a690b03b1ec')
-sha256sums_aarch64=('84b7b17771f8bad69e7b2da132e6cb30eaffa2d77e598a9498f7de337be53776')
+sha256sums_x86_64=('c799a6afb9f668dd7f759f77f4cd1c54546900793d947b30ae2fc71651208bb9')
+sha256sums_aarch64=('89e1c0954f372f2a0336317d6d95ba6c58bef3bd5b99bfcb8dd63f514ceecf10')
 
 noextract=("${source_x86_64[@]%%::*}" "${source_i686[@]%%::*}" "${source_aarch64[@]%%::*}")
 
