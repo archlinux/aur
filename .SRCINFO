@@ -1,23 +1,26 @@
 pkgbase = nestopia-git
 	pkgdesc = High-accuracy NES/Famicom emulator
-	pkgver = 1.53.2.r1.g39c5ead
+	pkgver = 2.0.0.r0.g2724614
 	pkgrel = 1
-	url = https://github.com/0ldsk00l/nestopia
+	url = https://gitlab.com/jgemu/nestopia
 	arch = x86_64
 	license = GPL-2.0-only
-	makedepends = autoconf-archive
+	makedepends = cmake
 	makedepends = git
-	makedepends = clang
-	makedepends = lld
-	depends = fltk
+	makedepends = ninja
+	depends = hicolor-icon-theme
 	depends = libarchive
 	depends = libepoxy
-	depends = libsamplerate
-	depends = sdl2
-	depends = zlib
-	provides = nestopia=1.53.2
+	depends = qt6-base
+	depends = sdl3
+	depends = speexdsp
+	provides = nestopia=2.0.0
 	conflicts = nestopia
-	source = nestopia::git+https://github.com/0ldsk00l/nestopia.git
+	source = nestopia.jgemu::git+https://gitlab.com/jgemu/nestopia.git
+	source = jg::git+https://gitlab.com/jgemu/jg.git
+	source = qtea::git+https://gitlab.com/jgemu/qtea.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = nestopia-git
