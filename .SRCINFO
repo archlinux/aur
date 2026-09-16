@@ -1,14 +1,14 @@
 pkgbase = gemmul8
 	pkgdesc = emulating GEMM using low-precision matrix engines, including int8 and fp8
-	pkgver = 3.3.0
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = https://github.com/RIKEN-RCCS/GEMMul8
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	options = staticlibs
-	source = https://github.com/RIKEN-RCCS/GEMMul8/archive/refs/tags/v3.3.0.tar.gz
-	sha256sums = 88c9f93f13c4766a0fd643d9001dd4b75770c2053910961fcbb3761fb7112699
+	source = https://github.com/RIKEN-RCCS/GEMMul8/archive/refs/tags/v3.4.3.tar.gz
+	sha256sums = 7643517700870c3cf1397e91551bfc0c7a8ead575d700028ad2ae173f3adaa6f
 
 pkgname = gemmul8-cuda
 	depends = cuda
