@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=tasks-bin
-pkgver=15.11
+pkgver=15.12
 _pkgverz=${pkgver/.0}
 pkgrel=1
 pkgdesc="Tasks.org: Open Source, Open Protocol, To-Do Lists & Reminders that's Private, Powerful, flexible, Customizable and multilingual, with Multiple sync options"
@@ -13,7 +13,7 @@ conflicts=('tasks')
 #source=("https://update.tasks.org/keys.asc")
 #sha256sums=('SKIP')
 source_x86_64=("https://github.com/tasks/tasks/releases/download/$pkgver/tasks-org-$_pkgverz-linux-amd64.tar.gz")
-sha256sums_x86_64=('7aa509bc4bd1f8f16c036faceedc52339d3bc282c4e523626c3d2d4a9c1b20ab')
+sha256sums_x86_64=('3eed1d5c358e44d5dddb56376c59c916b7f1582f6ff500d127043f247169b7da')
 validpgpkeys=("224FA88A5A19A03B06827A1BF60CE2127D6BBBDE")
 
 package() {
