@@ -1,0 +1,22 @@
+post_install() {
+  if [[ -f /usr/lib/browserclaw/chrome_sandbox ]]; then
+    chmod 4755 /usr/lib/browserclaw/chrome_sandbox 2>/dev/null || true
+  fi
+  update-desktop-database -q 2>/dev/null || true
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+  _ver=$(pacman -Q browseros-neo-bin 2>/dev/null | awk '{print $2}' | cut -d- -f1 || echo "unknown")
+  echo "==> browseros-neo-bin $_ver installed (maintenance-free rolling)."
+  echo "    Run: browseros-neo  or  browserclaw"
+  echo "    This package auto-fetches the latest browserclaw/v* tag on every makepkg/yay build."
+  echo "    Update: yay -Syu  or  cd ~/build/browseros-neo-bin && makepkg -si"
+  echo "    Check: curl -s https://api.github.com/repos/browseros-ai/BrowserOS/releases?per_page=5 | jq -r '[.[]|select(.tag_name|startswith(\"browserclaw/\"))][0].tag_name'"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  update-desktop-database -q 2>/dev/null || true
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+}
