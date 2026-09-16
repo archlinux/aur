@@ -1,12 +1,12 @@
 pkgbase = jellyfin-autorefresh-new-releases-bin
 	pkgdesc = Get missing metadata for new releases in Jellyfin
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/SinTan1729/jellyfin-autorefresh-new-releases
 	arch = x86_64
 	license = GPL3
 	provides = jellyfin-autorefresh
-	source = jellyfin-autorefresh-0.4.8.tar.gz::https://github.com/SinTan1729/jellyfin-autorefresh-new-releases/releases/download/0.4.8/jellyfin-autorefresh.tar.gz
-	sha256sums = cb566915ec7f11fb67266eb3239c9e7c333f7d895f84aba13ec53130aa363893
+	source = jellyfin-autorefresh-0.4.9.tar.gz::https://github.com/SinTan1729/jellyfin-autorefresh-new-releases/releases/download/0.4.9/jellyfin-autorefresh.tar.gz
+	sha256sums = 5f0134c23d7384ed9b718fed11277691939088595ab8bbfa6bbd9f9b47aaa1a6
 
 pkgname = jellyfin-autorefresh-new-releases-bin
