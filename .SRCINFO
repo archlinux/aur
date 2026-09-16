@@ -1,7 +1,7 @@
 pkgbase = r-vetiver
 	pkgdesc = Version, Share, Deploy, and Monitor Models
-	pkgver = 0.2.7
-	pkgrel = 3
+	pkgver = 0.2.8
+	pkgrel = 4
 	url = https://cran.r-project.org/package=vetiver
 	arch = any
 	license = MIT
@@ -70,7 +70,7 @@ pkgbase = r-vetiver
 	optdepends = r-workflows
 	optdepends = r-xgboost
 	optdepends = r-yardstick
-	source = https://cran.r-project.org/src/contrib/vetiver_0.2.7.tar.gz
-	sha256sums = 53a1ca4f516c6f2f4e691d418a71938bce9c9fad0b8a6f877a22e36bd52d1adb
+	source = https://cran.r-project.org/src/contrib/vetiver_0.2.8.tar.gz
+	sha256sums = 97bfe381e3194f98c30e0dce9a1c99b1e5ce9662811b57d506b9bf6e1869d6ac
 
 pkgname = r-vetiver

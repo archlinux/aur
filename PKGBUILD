@@ -1,13 +1,13 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=vetiver
-_pkgver=0.2.7
+_pkgver=0.2.8
 pkgname=r-vetiver
 pkgdesc="Version, Share, Deploy, and Monitor Models"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 makedepends=("gcc-fortran")
 
 arch=("any")
@@ -80,7 +80,7 @@ optdepends=(
     "r-yardstick"
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('53a1ca4f516c6f2f4e691d418a71938bce9c9fad0b8a6f877a22e36bd52d1adb')
+sha256sums=('97bfe381e3194f98c30e0dce9a1c99b1e5ce9662811b57d506b9bf6e1869d6ac')
 
 build() {
     mkdir -p "${srcdir}/build/"
