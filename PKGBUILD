@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=riprip
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Specialized audio CD-ripper optimized for track recovery"
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=(
     )
 #options=(!lto)
 source=("git+https://github.com/Blobfolio/riprip.git#tag=v${pkgver}")
-sha256sums=('e6e7e800beb385a8c4a13c980cbc8ce9eafa9c87f5f79341120c07d2f352edbe')
+sha256sums=('d36265271545eea94996f84ea6c930d457b1ff9b346a595c8090dc14b1fde0d9')
 
 prepare() {
   cd riprip
