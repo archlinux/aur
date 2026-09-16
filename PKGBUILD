@@ -1,13 +1,13 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=leaflegend
-_pkgver=1.2.1
+_pkgver=1.2.8
 pkgname=r-${_pkgname,,}
 pkgdesc="Add Custom Legends to 'leaflet' Maps"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 
 arch=("any")
 depends=(
@@ -18,7 +18,7 @@ depends=(
     "r-leaflet"
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-b2sums=('29a54ea6bc5b842bbd5eba270b713129a16bc7025add0daabee038ee1dc4e1bd6fff731f4442b4bb36334f58aa96410844a96ebed5ba1f8f0f9865264881c892')
+b2sums=('854f0c3769544a7047239c038fa92e6695445e1616353e6b48735a4e8de04a0e528ae4c864f847a52a4d6d7687a274c67ad62872df70f19d47d11df0f37eb06c')
 
 build() {
     mkdir -p "${srcdir}/build/"
