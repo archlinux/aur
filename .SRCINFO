@@ -1,7 +1,7 @@
 pkgbase = cosmic-comp-gaming
-	pkgdesc = Compositor for the COSMIC desktop environment with gaming patches, experimental HDR and support fifo-v1, commit-timing-v1, fullscreen tearing, and VRR Target Rate feature
-	pkgver = 1.20.0
-	pkgrel = 4
+	pkgdesc = Compositor for the COSMIC desktop environment with gaming patches, experimental Vulkan renderer, HDR and support fifo-v1, commit-timing-v1, fullscreen tearing, and VRR Target Rate feature
+	pkgver = 1.21.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/skygrango/cosmic-comp
 	arch = x86_64
@@ -49,22 +49,27 @@ pkgbase = cosmic-comp-gaming
 	depends = cosmic-terminal
 	depends = cosmic-text-editor
 	depends = cosmic-workspaces
-	depends = xdg-desktop-portal-cosmic
 	provides = cosmic-comp-git
 	provides = cosmic-comp
 	provides = cosmic-settings
 	provides = cosmic-settings-git
 	provides = cosmic-randr
 	provides = cosmic-randr-git
+	provides = xdg-desktop-portal-cosmic
+	provides = xdg-desktop-portal-cosmic-git
 	conflicts = cosmic-comp-git
 	conflicts = cosmic-comp
 	conflicts = cosmic-settings
 	conflicts = cosmic-settings-git
 	conflicts = cosmic-randr
 	conflicts = cosmic-randr-git
-	source = git+https://github.com/skygrango/cosmic-comp.git#branch=hdr_v7
+	conflicts = xdg-desktop-portal-cosmic
+	conflicts = xdg-desktop-portal-cosmic-git
+	source = git+https://github.com/skygrango/cosmic-comp.git#branch=vulkan-v2
 	source = git+https://github.com/skygrango/cosmic-settings.git#branch=hdr_v1
 	source = git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v2
+	source = git+https://github.com/skygrango/xdg-desktop-portal-cosmic.git#branch=hdr-v2
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

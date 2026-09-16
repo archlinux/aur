@@ -2,10 +2,10 @@
 # Contributor: soloturn <soloturn@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-gaming
-pkgver=1.20.0
-pkgrel=4
+pkgver=1.21.0
+pkgrel=1
 epoch=1
-pkgdesc="Compositor for the COSMIC desktop environment with gaming patches, experimental HDR and support fifo-v1, commit-timing-v1, fullscreen tearing, and VRR Target Rate feature"
+pkgdesc="Compositor for the COSMIC desktop environment with experimental Vulkan renderer, HDR and support fifo-v1, commit-timing-v1, fullscreen tearing, and VRR Target Rate feature"
 arch=('x86_64' 'aarch64')
 url="https://github.com/skygrango/cosmic-comp"
 license=('GPL-3.0-only')
@@ -47,7 +47,6 @@ depends=(
   'cosmic-terminal'
   'cosmic-text-editor'
   'cosmic-workspaces'
-  'xdg-desktop-portal-cosmic'
 )
 makedepends=(
   'cargo'
@@ -63,6 +62,8 @@ provides=(
 	"cosmic-settings-git"
 	"cosmic-randr"
 	"cosmic-randr-git"
+	"xdg-desktop-portal-cosmic"
+	"xdg-desktop-portal-cosmic-git"
 )
 conflicts=(
 	"cosmic-comp-git"
@@ -71,13 +72,17 @@ conflicts=(
 	"cosmic-settings-git"
 	"cosmic-randr"
 	"cosmic-randr-git"
+	"xdg-desktop-portal-cosmic"
+	"xdg-desktop-portal-cosmic-git"
 )
 source=(
-	'git+https://github.com/skygrango/cosmic-comp.git#branch=hdr_v7'
+	'git+https://github.com/skygrango/cosmic-comp.git#branch=vulkan-v2'
 	'git+https://github.com/skygrango/cosmic-settings.git#branch=hdr_v1'
 	'git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v2'
+	'git+https://github.com/skygrango/xdg-desktop-portal-cosmic.git#branch=hdr-v2'
 )
 sha256sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -91,6 +96,9 @@ prepare() {
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
   cd $srcdir/cosmic-settings
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cd $srcdir/xdg-desktop-portal-cosmic
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+
 }
 
 build() {
@@ -105,8 +113,12 @@ build() {
 
   cd $srcdir/cosmic-randr
   nice just build-release --frozen
+
   cd $srcdir/cosmic-settings
   nice just build-release
+
+  cd $srcdir/xdg-desktop-portal-cosmic
+  nice just build
 }
 
 package() {
@@ -115,7 +127,11 @@ package() {
   
   cd "$srcdir/cosmic-randr"
   just rootdir="$pkgdir" install
+
   cd "$srcdir/cosmic-settings"
+  just rootdir="$pkgdir" install
+
+  cd "$srcdir/xdg-desktop-portal-cosmic"
   just rootdir="$pkgdir" install
 
   install -Dm644 "$startdir/cosmic-comp-gaming.hook" \
