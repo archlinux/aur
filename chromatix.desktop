@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Chromatix
+Comment=A desktop music player for Plex and Jellyfin
+Exec=chromatix %U
+Icon=chromatix
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+StartupWMClass=Chromatix
