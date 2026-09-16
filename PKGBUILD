@@ -2,13 +2,13 @@
 
 pkgname=oh-my-pi
 pkgver=18.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'oniguruma' 'pcre2' 'zstd')
-makedepends=('bun' 'cargo' 'cmake' 'git' 'ninja')
+depends=('gcc-libs' 'glibc' 'oniguruma' 'opus' 'pcre2' 'zstd')
+makedepends=('bun' 'cargo' 'git')
 optdepends=(
     'alsa-lib: ALSA fallback for live voice, STT, and TTS'
     'at-spi2-core: Linux accessibility backend for the computer tool'
@@ -21,12 +21,18 @@ optdepends=(
     'xdg-desktop-portal-impl: compositor-specific backend for Wayland computer tool portals'
 )
 options=('!lto' '!strip')
+# Version of the `opus` crate pinned by the workspace lockfile; the checksum
+# below is the one Cargo.lock records for it. See prepare() for why a copy of
+# the crate is needed.
+_opus_ver=0.4.0
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
+    "https://static.crates.io/crates/opus/opus-${_opus_ver}.crate"
     "skip-native-embed-for-aur.patch"
     "fix-bytecode-esm-format.patch"
 )
 sha256sums=('SKIP'
+            '33718946cc77d4032911d4efe03a66dbcbfbd2bb16c3da06aaeadcc637c32216'
             'b2fe93ad7ef36869d660cc0ec9a0a0e7196370035efd86b32901101aff2920d1'
             '2f38e62c84e76e3c6d8d93e72d967a018de131cd1af242f543546015961bce76'
 )
@@ -63,6 +69,25 @@ prepare() {
 
     RUSTUP_TOOLCHAIN=stable cargo fetch --locked --target x86_64-unknown-linux-gnu
 
+    # `opus` pulls in opusic-sys with default features, and the default feature
+    # `bundled` cmake-builds the crate's vendored libopus copy and links it
+    # statically. Cargo features are additive, so the workspace cannot switch
+    # that default off; the only lever is the wrapper's own manifest. Patch a
+    # copy of it and redirect the graph there: with `bundled` off, opusic-sys'
+    # build script just emits `cargo:rustc-link-lib=dylib=opus` and links the
+    # system library (opusic-sys 0.7.5 build.rs, non-bundled `run()` branch).
+    sed -i '/^\[dependencies\.opusic-sys\]$/a default-features = false' \
+        "${srcdir}/opus-${_opus_ver}/Cargo.toml"
+    cat >"${srcdir}/system-opus.toml" <<EOF
+[patch.crates-io]
+opus = { path = "${srcdir}/opus-${_opus_ver}" }
+EOF
+    # Re-resolve with the patch in place. The lockfile delta is pure deletion
+    # (the `cmake` crate and opusic-sys' build-dependency edge to it), so this
+    # needs no downloads and build() stays --frozen.
+    RUSTUP_TOOLCHAIN=stable cargo fetch --offline --target x86_64-unknown-linux-gnu \
+        --config "${srcdir}/system-opus.toml"
+
     # tree-sitter's vendored array.h type-puns every Array(T)* through a generic
     # Array* whose contents member is void*. _array__grow may realloc and store
     # the new contents through the punned type, so under -fstrict-aliasing
@@ -95,7 +120,12 @@ _build_native() {
     PCRE2_SYS_STATIC=0 \
     ZSTD_SYS_USE_PKG_CONFIG=1 \
     RUSTONIG_SYSTEM_LIBONIG=1 \
-        cargo build --frozen --profile ci --package pi-natives "${_cargo_features[@]}"
+        cargo build --frozen --config "${srcdir}/system-opus.toml" \
+            --profile ci --package pi-natives "${_cargo_features[@]}"
+
+    # Fail loudly rather than silently shipping a statically linked libopus if
+    # the [patch.crates-io] redirect above ever stops applying.
+    readelf -d target/ci/libpi_natives.so | grep -Fq libopus.so
 
     install -Dm755 target/ci/libpi_natives.so \
         "packages/natives/native/pi_natives.linux-x64-${_variant}.node"
