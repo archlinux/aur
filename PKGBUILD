@@ -4,7 +4,7 @@ pkgname=gui-for-singbox-bin
 _pkgname=GUI.for.SingBox
 _installdir=gui-for-singbox
 pkgver=1.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for SingBox, a GUI client application for sing-box.'
 arch=('x86_64')
 license=('GPL3')
@@ -24,8 +24,8 @@ url="https://github.com/GUI-for-Cores/${_pkgname}"
 install="${pkgname%-bin}.install"
 
 source=(
-    "https://github.com/GUI-for-Cores/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.zip"
-    "https://raw.githubusercontent.com/GUI-for-Cores/${_pkgname}/main/build/appicon.png"
+    "${pkgname}-${pkgver}.zip::https://github.com/GUI-for-Cores/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.zip"
+    "${pkgname}-${pkgver}.png::https://raw.githubusercontent.com/GUI-for-Cores/${_pkgname}/main/build/appicon.png"
     "${pkgname%-bin}.desktop"
     "${pkgname%-bin}-launcher"
     "${pkgname%-bin}.install"
@@ -45,7 +45,7 @@ package() {
     install -Dm755 "${_pkgname}" "${pkgdir}/opt/${_installdir}/${_pkgname}"
 
     # Icon
-    install -Dm644 "appicon.png" "${pkgdir}/opt/${_installdir}/icon/${pkgname%-bin}.png"
+    install -Dm644 "${pkgname}-${pkgver}.png" "${pkgdir}/opt/${_installdir}/icon/${pkgname%-bin}.png"
 
     # Desktop entry
     install -Dm644 "${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
