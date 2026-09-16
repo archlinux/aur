@@ -2,7 +2,7 @@
 # Maintainer: Emmanuel Gautier <emmanuel@cerberauth.com>
 
 pkgname='proxyaudit-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Reverse proxy / API gateway security scanner — TLS, HTTP security headers, header trust boundaries, and exposed management interfaces.'
 url='https://github.com/cerberauth/proxyaudit'
@@ -12,16 +12,16 @@ provides=('proxyaudit')
 conflicts=('proxyaudit')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cerberauth/proxyaudit/releases/download/v${pkgver}/proxyaudit_Linux_arm64.tar.gz")
-sha256sums_aarch64=('456a5b22778dcf36bd510c35d8de13c8796dbe391058c23e8317d72922dfc919')
+sha256sums_aarch64=('53ffb847e414a78e8c6adc3847df4f16b5f9eeec20124f3fd49cf19bac3c9cb0')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/cerberauth/proxyaudit/releases/download/v${pkgver}/proxyaudit_Linux_armv7.tar.gz")
-sha256sums_armv7h=('35a48253dfa3872c837d3ce0aec9893a6b7abc3c53553541b2897702740f1cf4')
+sha256sums_armv7h=('f1dc67f02e19696d75e15623dd964cda54f351186f27e3eb8d85e204fb406ca3')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/cerberauth/proxyaudit/releases/download/v${pkgver}/proxyaudit_Linux_i386.tar.gz")
-sha256sums_i686=('a8df2cff79f37a2183e9267ab10ae678d82ba323655d0bcb5f2cc72492e8696f')
+sha256sums_i686=('bd93a89e7e9a484cfa8b36fab39e86bba3d145b9798e412cbe4aff1203302efc')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cerberauth/proxyaudit/releases/download/v${pkgver}/proxyaudit_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('ea630d11a57d33c7a21b23b508f48442b419d9513ab94e271b4179047cc41cbc')
+sha256sums_x86_64=('a2e4e8a44ce50d0fef4bee592f944b3f74bcea6780f1dfa449e0b8d43b777c5f')
 
 package() {
   install -Dm755 "./proxyaudit" "${pkgdir}/usr/bin/proxyaudit"
