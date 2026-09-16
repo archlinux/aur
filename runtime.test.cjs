@@ -119,18 +119,26 @@ test('package bootstrap does not persist browser detection or rewrite explicit b
   assert.equal(fs.readFileSync(envFile, 'utf8'), explicit)
 })
 
-test('package venv stage reuses a working interpreter and keeps installed files', t => {
-  const f = fixture(t)
-  f.succeeds(f.first)
-  const venv = path.join(f.root, 'venv')
-  const created = spawnSync('/usr/bin/python', ['-m', 'venv', '--without-pip', venv], { encoding: 'utf8' })
-  assert.equal(created.status, 0, created.stderr)
-  const version = spawnSync(path.join(venv, 'bin/python'), ['-c', 'import sys; print("%s.%s" % sys.version_info[:2])'], { encoding: 'utf8' }).stdout.trim()
-  fs.writeFileSync(path.join(venv, 'keep'), 'installed extension')
-  const result = f.shell('cd "$INSTALL_DIR"\nDISTRO=arch\nUV_CMD=/bin/false\nPYTHON_VERSION="$TEST_PYTHON_VERSION"\nsetup_venv', { TEST_PYTHON_VERSION: version })
-  assert.equal(result.status, 0, result.stderr + result.stdout)
-  assert.equal(fs.readFileSync(path.join(venv, 'keep'), 'utf8'), 'installed extension')
-})
+for (const selection of ['version', 'path', 'path with spaces', 'broken path']) {
+  test(`package venv stage preserves installed files with a ${selection} selection`, t => {
+    const f = fixture(t)
+    f.succeeds(f.first)
+    const venv = path.join(f.root, 'venv')
+    const created = spawnSync('/usr/bin/python', ['-m', 'venv', '--without-pip', venv], { encoding: 'utf8' })
+    assert.equal(created.status, 0, created.stderr)
+    const version = spawnSync(path.join(venv, 'bin/python'), ['-c', 'import sys; print("%s.%s" % sys.version_info[:2])'], { encoding: 'utf8' }).stdout.trim()
+    fs.writeFileSync(path.join(venv, 'keep'), 'installed extension')
+    let selected = version
+    if (selection !== 'version') {
+      selected = path.join(f.home, selection === 'path with spaces' ? 'python with spaces' : 'python')
+      fs.symlinkSync(selection === 'broken path' ? '/bin/false' : '/usr/bin/python', selected)
+    }
+    const result = f.shell('cd "$INSTALL_DIR"\nDISTRO=arch\nUV_CMD=/bin/false\nPYTHON_VERSION="$TEST_PYTHON_VERSION"\nsetup_venv', { TEST_PYTHON_VERSION: selected })
+    if (selection === 'broken path') assert.notEqual(result.status, 0)
+    else assert.equal(result.status, 0, result.stderr + result.stdout)
+    assert.equal(fs.readFileSync(path.join(venv, 'keep'), 'utf8'), 'installed extension')
+  })
+}
 
 for (const state of ['wrong version', 'broken interpreter']) {
   test(`package venv stage rebuilds a ${state}`, t => {
@@ -141,11 +149,13 @@ for (const state of ['wrong version', 'broken interpreter']) {
     fs.symlinkSync(state === 'wrong version' ? '/usr/bin/python' : '/bin/false', path.join(venv, 'bin/python'))
     fs.writeFileSync(path.join(venv, 'keep'), 'old environment')
     const uv = path.join(f.home, 'bin/uv')
-    fs.writeFileSync(uv, '#!/bin/sh\nmkdir -p venv\ntouch venv/rebuilt\n', { mode: 0o755 })
+    // Stub interpreter provisioning, but create the real venv that setup_venv validates.
+    fs.writeFileSync(uv, '#!/bin/sh\n[ "$1" = venv ] && [ "$3" = --python ] || exit 1\nexec /usr/bin/python -m venv --without-pip "$2"\n', { mode: 0o755 })
     const result = f.shell('cd "$INSTALL_DIR"\nDISTRO=arch\nUV_CMD="$HOME/bin/uv"\nPYTHON_VERSION=3.0\nsetup_venv', { PYTHONOPTIMIZE: '1' })
     assert.equal(result.status, 0, result.stderr + result.stdout)
     assert.equal(fs.existsSync(path.join(venv, 'keep')), false)
-    assert.equal(fs.existsSync(path.join(venv, 'rebuilt')), true)
+    const probe = spawnSync(path.join(venv, 'bin/python'), ['-c', 'import sys; sys.exit(sys.prefix == sys.base_prefix)'])
+    assert.equal(probe.status, 0)
   })
 }
 

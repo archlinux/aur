@@ -112,17 +112,24 @@
      log_info "Installing to $INSTALL_DIR..."
  
      # An interrupted previous clone leaves a .git with no initial commit, where
-@@ -1715,6 +1798,18 @@
+@@ -1715,6 +1798,25 @@
          return 0
      fi
  
 +    # Keep a compatible package runtime; the dependency stage still syncs it.
++    local expected_python_version="$PYTHON_VERSION"
++    if [ "${HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME:-}" = 1 ] && [[ "$PYTHON_VERSION" = /* ]]; then
++        expected_python_version=$("$PYTHON_VERSION" -c 'import sys; print("%s.%s" % sys.version_info[:2])') || {
++            log_error "Cannot inspect the selected Python; leaving the existing environment unchanged."
++            return 1
++        }
++    fi
 +    if [ "${HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME:-}" = 1 ] &&
 +        [ -x venv/bin/python ] && venv/bin/python -c '
 +import sys
 +version = tuple(map(int, sys.argv[1].split(".")))
 +sys.exit(sys.version_info[:len(version)] != version or sys.prefix == sys.base_prefix)
-+' "$PYTHON_VERSION" 2>/dev/null; then
++' "$expected_python_version" 2>/dev/null; then
 +        export UV_PYTHON="$INSTALL_DIR/venv/bin/python"
 +        log_success "Reusing virtual environment (Python $PYTHON_VERSION)"
 +        return 0

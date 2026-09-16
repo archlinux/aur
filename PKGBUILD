@@ -2,9 +2,9 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v2026.9.11
-_commit=939e45c91d751fadd94dcd1b873ac3cb44846213
-pkgver=0.21.2
+_pkgver_tag=v2026.9.14
+_commit=345cd2b057a452236de401d3534b8502a7465e8d
+pkgver=0.21.3
 pkgrel=1
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
@@ -37,17 +37,17 @@ source=(
   'runtime.test.cjs'
   'runtime-policy.test.py'
 )
-sha256sums=('bf45fc6c40ad770e30dfa7677ee6804a24be1a7eab768b283a0883c64662d76e'
+sha256sums=('47df72ebd3f9c96d806a94541163f7fe7d7ce5b84f85c1d3787e6dfeea1d7834'
             'ee465a1aa2ad5789fa5c7b3a89993bbf0e68efddbf27c93109519b72a4cb90f7'
             '5c185a979974f7a9a476b32e5e8ac21dfcd907ed7d0e671cfb294ecf17d021b0'
             '7f8500e475a13466ecba2bb74e73fbbcba8dcb70bcbf4e789faf7a8f27df0cac'
             'fa8933a96e58575e7d4f876a7eb380d6c1723233832b787a46fb158f79df7718'
-            '2f5595c0c85cf95c1b7af75e8553dd75d349e8b4e7015075d38fab826cee9d76'
+            '960009893274b567eca91f42ae168661efda18646f2783b75b831e1d71190cb1'
             '9fca70bad0c6db28e9499761a570e8bca83c9666e6bb8ec35401b8aef3424a8d'
             '700eaf971f8aeedf0268cd85954235d1770b786b19ca7e9d7905bf17aed86d44'
             'dcb84ac7c5f5a7168d089ba082a8c8c77cf3955abc79775f530aee870a30d5df'
-            'a55499378bec44ae6a42e77dd7eed8e27dd604a7c6b5f87111444912092250a9'
-            'ade15751253ed09ab2927733d02edaf6b8788ee7f14ff7d71d0982e0d3aa669c')
+            '1a39719fd6b6ac2e773e6f72bd55ef313469734cf72dbe1f9adf7bff0979c873'
+            '9be2b77733674bbfdb1a39ddc902ac9f751f49ce7398675c89190eb0cc6759ea')
 
 # NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
 # it inside the function scope of prepare()/build()/package(). Computing the
@@ -68,12 +68,12 @@ _set_npm_env() {
 prepare() {
   cd "$(_extract_dir)"
   _set_npm_env
-  patch -Np1 -i "${srcdir}/system-electron-resources.patch"
-  patch -Np1 -i "${srcdir}/pin-packaged-runtime.patch"
-  patch -Np1 -i "${srcdir}/fix-voice-prefs-storage-spy.patch"
-  patch -Np1 -i "${srcdir}/system-browser.patch"
-  patch -Np1 -i "${srcdir}/packaged-bootstrap.patch"
-  patch -Np1 -i "${srcdir}/runtime-policy.patch"
+  patch --batch --fuzz=0 -Np1 -i "${srcdir}/system-electron-resources.patch"
+  patch --batch --fuzz=0 -Np1 -i "${srcdir}/pin-packaged-runtime.patch"
+  patch --batch --fuzz=0 -Np1 -i "${srcdir}/fix-voice-prefs-storage-spy.patch"
+  patch --batch --fuzz=0 -Np1 -i "${srcdir}/system-browser.patch"
+  patch --batch --fuzz=0 -Np1 -i "${srcdir}/packaged-bootstrap.patch"
+  patch --batch --fuzz=0 -Np1 -i "${srcdir}/runtime-policy.patch"
   # Keep desktop metadata aligned with the Agent release, not the separately
   # versioned upstream desktop package.json.
   npm pkg set version=${pkgver} --prefix apps/desktop

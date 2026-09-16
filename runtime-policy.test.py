@@ -40,6 +40,7 @@ class UpdatePolicyTests(unittest.TestCase):
         self.addCleanup(env.stop)
         os.environ.pop("HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME", None)
         self.mock(image_provenance, "IMAGE_PROVENANCE_PATH", self.root / "image.json")
+        self.mock(banner, "upstream_commits_behind", lambda: [])
         # Supply only deployment discovery/config IO; admission logic stays real.
         config = types.ModuleType("hermes_cli.config")
         config.detect_install_method = lambda root: "git"
@@ -73,7 +74,6 @@ class UpdatePolicyTests(unittest.TestCase):
             "recommended_update_command_for_method": config.recommended_update_command_for_method,
             "get_hermes_home": lambda: self.root,
             "__version__": "test", "_NON_APPLYABLE_MESSAGES": {},
-            "_recent_upstream_commits": lambda: [],
         })
         route_globals.start()
         self.addCleanup(route_globals.stop)
