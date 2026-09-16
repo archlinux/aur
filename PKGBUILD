@@ -6,12 +6,12 @@
 
 pkgname=podman-bcachefs-bin
 _pkgname=podman-bcachefs
-pkgver=6.1.0
+pkgver=6.1.2
 pkgrel=1
 # pkgrel of the published artifact; independent of this package's pkgrel so an
 # AUR-only revision does not break the download URL.
 _binrel=1
-_reltag=v1.3.0
+_reltag=v1.5.0-arch
 pkgdesc='A tool for managing OCI containers and pods, with the bcachefs graphdriver compiled in'
 arch=('x86_64')
 url='https://github.com/ticpu/bcachefs-storage-driver'
@@ -46,7 +46,7 @@ options=('!strip' '!debug')
 validpgpkeys=('E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD')
 source=("$_pkgname-$pkgver-$_binrel-$CARCH.pkg.tar.zst::$url/releases/download/$_reltag/$_pkgname-$pkgver-$_binrel-$CARCH.pkg.tar.zst"
         "$_pkgname-$pkgver-$_binrel-$CARCH.pkg.tar.zst.asc::$url/releases/download/$_reltag/$_pkgname-$pkgver-$_binrel-$CARCH.pkg.tar.zst.asc")
-sha256sums=('348aec3e8c4d222c1cc9bd3ece59a5b42776d78766c7138a4f47f4a0af6bd563'
+sha256sums=('07cf643fe7d97c62fb0db3835310ad94fc5dfdc472aef96fd64105a8935f5600'
             'SKIP')
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = podman-bcachefs-bin
 	pkgdesc = A tool for managing OCI containers and pods, with the bcachefs graphdriver compiled in
-	pkgver = 6.1.0
+	pkgver = 6.1.2
 	pkgrel = 1
 	url = https://github.com/ticpu/bcachefs-storage-driver
 	arch = x86_64
@@ -26,17 +26,17 @@ pkgbase = podman-bcachefs-bin
 	optdepends = podlet: Generate Podman Quadlet files from a Podman command, compose file, or existing object
 	optdepends = podman-compose: for docker-compose compatibility
 	optdepends = podman-desktop: GUI and tray to manage Podman containers (and Kubernetes pods)
-	provides = podman=6.1.0
-	provides = podman-bcachefs=6.1.0
+	provides = podman=6.1.2
+	provides = podman-bcachefs=6.1.2
 	conflicts = podman
 	conflicts = podman-bcachefs
 	options = !strip
 	options = !debug
 	backup = etc/containers/storage.conf.d/00-storage-arch.conf
-	source = podman-bcachefs-6.1.0-1-x86_64.pkg.tar.zst::https://github.com/ticpu/bcachefs-storage-driver/releases/download/v1.3.0/podman-bcachefs-6.1.0-1-x86_64.pkg.tar.zst
-	source = podman-bcachefs-6.1.0-1-x86_64.pkg.tar.zst.asc::https://github.com/ticpu/bcachefs-storage-driver/releases/download/v1.3.0/podman-bcachefs-6.1.0-1-x86_64.pkg.tar.zst.asc
+	source = podman-bcachefs-6.1.2-1-x86_64.pkg.tar.zst::https://github.com/ticpu/bcachefs-storage-driver/releases/download/v1.5.0-arch/podman-bcachefs-6.1.2-1-x86_64.pkg.tar.zst
+	source = podman-bcachefs-6.1.2-1-x86_64.pkg.tar.zst.asc::https://github.com/ticpu/bcachefs-storage-driver/releases/download/v1.5.0-arch/podman-bcachefs-6.1.2-1-x86_64.pkg.tar.zst.asc
 	validpgpkeys = E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD
-	sha256sums = 348aec3e8c4d222c1cc9bd3ece59a5b42776d78766c7138a4f47f4a0af6bd563
+	sha256sums = 07cf643fe7d97c62fb0db3835310ad94fc5dfdc472aef96fd64105a8935f5600
 	sha256sums = SKIP
 
 pkgname = podman-bcachefs-bin
