@@ -10,7 +10,7 @@
 
 pkgname=zennotes-bin
 _appname=ZenNotes
-pkgver=2.50.4
+pkgver=2.51.0
 pkgrel=1
 pkgdesc="Keyboard-first, local-first Markdown notes with vim motions and live preview"
 arch=('x86_64')
@@ -21,7 +21,7 @@ license=('MIT')
 # without it, zennotes:// deep links silently go nowhere on a minimal install.
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'desktop-file-utils')
 provides=('zennotes')
-conflicts=('zennotes')
+conflicts=('zennotes' 'ZenNotes')
 options=('!strip')
 
 source=(
@@ -30,7 +30,7 @@ source=(
 
 # sha256 of the uploaded ZenNotes-${pkgver}-linux-x64.tar.gz release asset
 # (GitHub's authoritative asset digest; no Arch tooling needed).
-sha256sums=('428bdec0f436f4671c34e04a73d38a0f9345fb7119924e7938add50094703527')
+sha256sums=('4dac4ef574eb9bb2d510a9118951a978d5334416fc1a1970235eac75e7ed8c95')
 
 package() {
   cd "${srcdir}"
