@@ -4,7 +4,7 @@ _bcname=BSgenome.Scerevisiae.UCSC.sacCer2
 _bcver=1.4.0
 pkgname="r-${_bcname,,}"
 pkgver="${_bcver//[:-]/.}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Saccharomyces cerevisiae (Yeast) full genome (UCSC version sacCer2)"
 arch=("any")
 url="https://bioconductor.org/packages/release/data/annotation/html/${_bcname}.html"
@@ -15,7 +15,7 @@ depends=(
 )
 
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("fefbe5fcdacea53a40a571214471dcb7003d120a2430ee00155dd1eb32737bddf760c8e833c6b01a34c94996d627d707ccbe657112a497cac3abd41470520064")
+b2sums=('fefbe5fcdacea53a40a571214471dcb7003d120a2430ee00155dd1eb32737bddf760c8e833c6b01a34c94996d627d707ccbe657112a497cac3abd41470520064')
 
 build() {
     mkdir -p "${srcdir}/build/"
