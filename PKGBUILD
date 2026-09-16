@@ -1,6 +1,6 @@
 # Maintainer: lingbopro <lingbopro [at] outlook [dot] com>
 pkgname=patchsplit-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="CLI tool to split pull requests into separate patches per commit"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('curl')
 provides=('patchsplit')
 conflicts=('patchsplit')
 source_x86_64=("patchsplit-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/patchsplit-linux-x86_64.tar.gz")
-sha256sums_x86_64=('b74ef7b26cc66ddc129d058e640cf47d8490b04e19a652fcfa3924ce50588669')
+sha256sums_x86_64=('b90e2b9f18d1e5bf637bd9e6e6eb885bf4757cb38c0445f9ce6525de47ced883')
 package() {
   cd "${srcdir}"
   mkdir -p "${pkgdir}/usr/bin"

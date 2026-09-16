@@ -1,6 +1,6 @@
 pkgbase = patchsplit-bin
 	pkgdesc = CLI tool to split pull requests into separate patches per commit
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/zitzhen/patchsplit
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = patchsplit-bin
 	depends = curl
 	provides = patchsplit
 	conflicts = patchsplit
-	source_x86_64 = patchsplit-1.1.0-x86_64.tar.gz::https://github.com/zitzhen/patchsplit/releases/download/v1.1.0/patchsplit-linux-x86_64.tar.gz
-	sha256sums_x86_64 = b74ef7b26cc66ddc129d058e640cf47d8490b04e19a652fcfa3924ce50588669
+	source_x86_64 = patchsplit-1.2.0-x86_64.tar.gz::https://github.com/zitzhen/patchsplit/releases/download/v1.2.0/patchsplit-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b90e2b9f18d1e5bf637bd9e6e6eb885bf4757cb38c0445f9ce6525de47ced883
 
 pkgname = patchsplit-bin
