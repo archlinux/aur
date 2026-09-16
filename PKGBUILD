@@ -10,8 +10,8 @@
 
 _pkgname="mailspring"
 pkgname="$_pkgname"
-pkgver=1.23.0
-pkgrel=3
+pkgver=1.24.1
+pkgrel=1
 pkgdesc="A beautiful and fast mail client"
 url="https://github.com/Foundry376/Mailspring"
 license=('GPL-3.0-only')
@@ -30,7 +30,7 @@ makedepends=(
 
 _pkgsrc="$_pkgname"
 source=("$_pkgname"::"git+$url.git#tag=$pkgver")
-sha256sums=('d10372d596a37bfd587a3db5c28d2c263266f195e10c994ddd0f4cb4f00ed0b0')
+sha256sums=('acf7022a570b5f75b3bcdc7ec25c79b5440051ec04d7a13f9fc99c01cc157a6d')
 
 _nvm_env() {
   [ -n "$NVM_DIR" ] && return
