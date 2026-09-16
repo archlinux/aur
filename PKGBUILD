@@ -1,27 +1,32 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='basicanalysis'
 pkgdesc='Framework for automatic extraction of fundamental factors for Paraver traces (from BSC).'
-pkgver='0.5.1.20260423'
+pkgver='2026.09.15'
 pkgrel='1'
 arch=('any')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL-2.1-or-later')
 depends=(python wxparaver dimemas
-         python-pandas python-seaborn python-matplotlib python-numpy python-scipy)
-optdepends=('gnuplot: Drawing the generated plots')
-source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2")
-sha512sums=(d626f74f97ed148dea910bf3cc41ae98650867ce3d0430e1e307151d67d15b2184e370a146d59681fcc33430f0fb8abc8cdcd59efcc7116188bd523014d3e484)
+         python-pandas python-seaborn python-matplotlib python-numpy python-scipy
+         python-plotly python-yaml)
+optdepends=('gnuplot: Drawing the generated plots'
+            'chromium: Exporting reports to PDF')
+source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-$pkgver-src.tar.bz2")
+sha512sums=(2c42dd797502d86b249c6dc8fdf86a79392021b72aebfb91589923349d71ff3b63c88f7392c7a4a06a5a26fcde03ba75bd4480a957f1c5a6567bb412485075cd)
 
 package() {
-	# Install script and configurations in /usr/lib/basicanalysis
-	cd "$srcdir/$pkgname-${pkgver%.*}"
-	install -d -m755 "$pkgdir/usr/lib/basicanalysis/cfgs/"
-	find "." -type f -name "*.py" -exec install -D -m755 "{}" "$pkgdir/usr/lib/basicanalysis/" \;
-	find "cfgs" -type f -exec install -D -m644 "{}" "$pkgdir/usr/lib/basicanalysis/cfgs/" \;
-	rm "$pkgdir/usr/lib/basicanalysis/cfgs/.directory" # Remove crap
+	# Install the whole source tree in /usr/lib/basicanalysis
+	cd "$srcdir/$pkgname-$pkgver"
+	local instdir="$pkgdir/usr/lib/basicanalysis"
 
-	# Create a symlink to the main script in /usr/bin for ease of use
+	install -d -m755 "$instdir"
+	cp -a . "$instdir/"
+
+	# Create symlinks to the user-facing scripts in /usr/bin for ease of use
 	mkdir -p "$pkgdir/usr/bin"
 	chmod 0755 "$pkgdir/usr/bin" "$pkgdir/usr"
-	ln -s "/usr/lib/basicanalysis/modelfactors.py" "$pkgdir/usr/bin/modelfactors.py"
+	for script in modelfactors.py analyze_trace.py merge_trace_results.py \
+	              compute_metrics_from_merged.py html_to_pdf.py; do
+		ln -s "/usr/lib/basicanalysis/$script" "$pkgdir/usr/bin/$script"
+	done
 }

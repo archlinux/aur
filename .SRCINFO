@@ -1,6 +1,6 @@
 pkgbase = basicanalysis
 	pkgdesc = Framework for automatic extraction of fundamental factors for Paraver traces (from BSC).
-	pkgver = 0.5.1.20260423
+	pkgver = 2026.09.15
 	pkgrel = 1
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = any
@@ -13,8 +13,11 @@ pkgbase = basicanalysis
 	depends = python-matplotlib
 	depends = python-numpy
 	depends = python-scipy
+	depends = python-plotly
+	depends = python-yaml
 	optdepends = gnuplot: Drawing the generated plots
-	source = https://ftp.tools.bsc.es/basicanalysis/basicanalysis-0.5.1-src.tar.bz2
-	sha512sums = d626f74f97ed148dea910bf3cc41ae98650867ce3d0430e1e307151d67d15b2184e370a146d59681fcc33430f0fb8abc8cdcd59efcc7116188bd523014d3e484
+	optdepends = chromium: Exporting reports to PDF
+	source = https://ftp.tools.bsc.es/basicanalysis/basicanalysis-2026.09.15-src.tar.bz2
+	sha512sums = 2c42dd797502d86b249c6dc8fdf86a79392021b72aebfb91589923349d71ff3b63c88f7392c7a4a06a5a26fcde03ba75bd4480a957f1c5a6567bb412485075cd
 
 pkgname = basicanalysis
