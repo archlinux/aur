@@ -3,7 +3,7 @@
 
 pkgname=r-swirl
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Platform for learning (and teaching) statistics and R simultaneously and interactively'
 arch=('any')
 url='https://github.com/swirldev/swirl'
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('r' 'r-digest' 'r-httr' 'r-rcurl' 'r-stringr' 'r-yaml')
 makedepends=('r-testthat')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=("f532ec56579a87e0c42e6c94ec06c2c515a02ecec347b343916249b808a0f4a48f0bbd881cd4f8e3c54f00fa87b205be722321c76dc8de784cd52de8c1781c44")
+sha512sums=('4cf04eeb4e704ede76d03a9a3b2b8e57822d0081edea5296197161d08b376e53982bac966fac569c77672057bea24de7a39fb0bd7e1d4f7b89c84c88799f2d42')
 
 build(){
     R CMD INSTALL $pkgname-$pkgver.tar.gz -l "$srcdir"

@@ -1,7 +1,7 @@
 pkgbase = r-swirl
 	pkgdesc = Platform for learning (and teaching) statistics and R simultaneously and interactively
 	pkgver = 2.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/swirldev/swirl
 	arch = any
 	license = GPL
@@ -13,6 +13,6 @@ pkgbase = r-swirl
 	depends = r-stringr
 	depends = r-yaml
 	source = r-swirl-2.4.5.tar.gz::https://github.com/swirldev/swirl/archive/2.4.5.tar.gz
-	sha512sums = f532ec56579a87e0c42e6c94ec06c2c515a02ecec347b343916249b808a0f4a48f0bbd881cd4f8e3c54f00fa87b205be722321c76dc8de784cd52de8c1781c44
+	sha512sums = 4cf04eeb4e704ede76d03a9a3b2b8e57822d0081edea5296197161d08b376e53982bac966fac569c77672057bea24de7a39fb0bd7e1d4f7b89c84c88799f2d42
 
 pkgname = r-swirl
