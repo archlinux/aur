@@ -2,7 +2,7 @@
 
 pkgauthor=adrelanos
 pkgname=tor-ctrl
-pkgver=7.3
+pkgver=7.4
 pkgrel=1
 pkgdesc="Tor control port command line tool"
 
@@ -14,7 +14,7 @@ makedepends=('pandoc')
 depends=('bash' 'safe-rm')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${pkgver}-${pkgrel}.tar.gz")
-sha256sums=('45c0542d79bfd5648249f7b8e5c944ef64dcfc29b61a54dfe894b24ccc0c4d98')
+sha256sums=('59f2af725e6fd433666854f9889b305b8b767ec02dadf770840c1b87e006dcc9')
 
 
 package() {
