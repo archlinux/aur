@@ -3,12 +3,12 @@
 pkgname=ffxiv-teamcraft
 pkgdesc="Collaborative crafting tool for Final Fantasy XIV"
 pkgver=11.4.31
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/ffxiv-teamcraft/ffxiv-teamcraft"
 source=(
-    FFXIV-Teamcraft.AppImage::https://github.com/ffxiv-teamcraft/ffxiv-teamcraft/releases/download/v${pkgver}/FFXIV-Teamcraft.AppImage
+    FFXIV-Teamcraft-${pkgver}.AppImage::https://github.com/ffxiv-teamcraft/ffxiv-teamcraft/releases/download/v${pkgver}/FFXIV-Teamcraft.AppImage
     ffxiv-teamcraft
     FFXIV-Teamcraft.desktop
 )
@@ -21,6 +21,6 @@ options=(!strip)
 package() {
     install -Dm755 "${srcdir}/ffxiv-teamcraft" "${pkgdir}/usr/bin/ffxiv-teamcraft"
     install -d -m775 "${pkgdir}/opt/ffxiv-teamcraft"
-    install -Dm775 "${srcdir}/FFXIV-Teamcraft.AppImage" "${pkgdir}/opt/ffxiv-teamcraft/FFXIV-Teamcraft.AppImage"
+    install -Dm775 "${srcdir}/FFXIV-Teamcraft-${pkgver}.AppImage" "${pkgdir}/opt/ffxiv-teamcraft/FFXIV-Teamcraft.AppImage"
     install -Dm644 "${srcdir}/FFXIV-Teamcraft.desktop" "${pkgdir}/usr/share/applications/FFXIV-Teamcraft.desktop"
 }
