@@ -7,14 +7,14 @@ Rotates three interactive shortcuts without changing binary size:
   * pull queued messages:  Ctrl-G -> Ctrl-I
 
 The serialized keymap table, the guarded runtime dispatch statements, the
-model registry matcher, and every human-readable chord hint (``Ctrl+P``,
-``Ctrl + P``, ``ctrl+N``, ... and the matching N/G variants across locales)
-are rotated together. Optional-callback availability guards travel with
-their action, so the editor stays unguarded on Ctrl-G while the queue pull
-keeps its guard on Ctrl-I. Machine kebab-case keys (``ctrl-g``) and the
-key-name registry are never rewritten. Minified identifier names may change
-between releases; unknown, ambiguous, or partially patched layouts fail
-closed.
+runtime key descriptor registry, the model registry matcher, and every
+human-readable chord hint (``Ctrl+P``, ``Ctrl + P``, ``ctrl+N``, ... and the
+matching N/G variants across locales) are rotated together. Optional-callback
+availability guards travel with their action, so the editor stays unguarded
+on Ctrl-G while the queue pull keeps its guard on Ctrl-I. Machine kebab-case
+keys (``ctrl-g``) outside the validated keymap are never rewritten. Minified
+identifier names may change between releases; unknown, ambiguous, or
+partially patched layouts fail closed.
 """
 
 import argparse
@@ -45,6 +45,14 @@ MODEL_CYCLE_RE = re.compile(
     rb'modelCycle:\{id:"model-cycle",label:"Ctrl\+(?P<mlabel>[NP])",'
     rb'matcher:\((?P<mparam>[A-Za-z_$][A-Za-z0-9_$]{0,7})\)=>'
     rb'[A-Za-z_$][A-Za-z0-9_$]{0,7}\((?P=mparam),"(?P<mkey>[np])"\)\}'
+)
+RUNTIME_KEY_MAP_RE = re.compile(
+    rb"\{[^{}]{0,500}"
+    rb'(?P<key>p:"ctrl-p"|i:"ctrl-i")[^{}]{0,500}'
+    rb"\}"
+)
+RUNTIME_DESCRIPTOR_RE = re.compile(
+    rb"(?P<property>ctrlP|ctrlI):(?P<fn>[A-Za-z_$][A-Za-z0-9_$.]*?)\(\"(?P<letter>p|i)\"(?P<extra>[^)]*)\)"
 )
 RANGE_GAP = b"\xde\xadRANGE_GAP\xad\xde"
 BINARY_RECORD_KEYMAP_WINDOW = 4096
@@ -124,6 +132,61 @@ def _find_binary_model_key(data: bytes, keymap: tuple[int, int, int], key: bytes
 
 def _model_cycle_matches(data: bytes) -> list[re.Match[bytes]]:
     return [match for match in MODEL_CYCLE_RE.finditer(data) if RANGE_GAP not in match.group(0)]
+
+
+def _patch_runtime_key_registry(data: bytes) -> bytes:
+    """Make the generic key-ID registry agree with the rotated dispatch."""
+    key_maps = [
+        match
+        for match in RUNTIME_KEY_MAP_RE.finditer(data)
+        if b'b:"ctrl-b"' in match.group(0)
+        and b'c:"ctrl-c"' in match.group(0)
+        and b'x:"ctrl-x"' in match.group(0)
+        and b'z:"ctrl-z"' in match.group(0)
+        and RANGE_GAP not in match.group(0)
+    ]
+    descriptors = [
+        match
+        for match in RUNTIME_DESCRIPTOR_RE.finditer(data)
+        if RANGE_GAP not in match.group(0)
+    ]
+    old_maps = [match for match in key_maps if match.group("key") == b'p:"ctrl-p"']
+    new_maps = [match for match in key_maps if match.group("key") == b'i:"ctrl-i"']
+    old_descriptors = [
+        match
+        for match in descriptors
+        if match.group("property") == b"ctrlP" and match.group("letter") == b"p"
+    ]
+    new_descriptors = [
+        match
+        for match in descriptors
+        if match.group("property") == b"ctrlI" and match.group("letter") == b"i"
+    ]
+
+    if len(old_maps) == len(old_descriptors) == 1 and not new_maps and not new_descriptors:
+        if abs(old_maps[0].start() - old_descriptors[0].start()) > 8192:
+            raise PatchError("runtime key registry components are too far apart")
+        replacements = [
+            (old_maps[0].start("key"), old_maps[0].end("key"), b'i:"ctrl-i"'),
+            (old_descriptors[0].start("property"), old_descriptors[0].end("property"), b"ctrlI"),
+            (old_descriptors[0].start("letter"), old_descriptors[0].end("letter"), b"i"),
+        ]
+    elif len(new_maps) == len(new_descriptors) == 1 and not old_maps and not old_descriptors:
+        if abs(new_maps[0].start() - new_descriptors[0].start()) > 8192:
+            raise PatchError("runtime key registry components are too far apart")
+        return data
+    elif key_maps or descriptors:
+        raise PatchError("runtime key registry is ambiguous or partially patched")
+    else:
+        raise PatchError("expected one runtime key registry")
+
+    _ensure_disjoint_spans([(start, end) for start, end, _ in replacements])
+    patched = bytearray(data)
+    for start, end, replacement in replacements:
+        if end - start != len(replacement):
+            raise PatchError("runtime key registry replacement changed binary size")
+        patched[start:end] = replacement
+    return bytes(patched)
 
 
 def _apply_binary_record_patch(data: bytes, keymap: tuple[int, int, int]) -> bytes:
@@ -269,6 +332,7 @@ def _dispatch_matches(
 
 def apply_patch_bytes(data: bytes) -> bytes:
     """Rotate editor/model/queue bindings, refusing unknown layouts."""
+    data = _patch_runtime_key_registry(data)
     binary_keymap = _find_binary_record_keymap(data, patched=False)
     if binary_keymap:
         return _apply_binary_record_patch(data, binary_keymap)
