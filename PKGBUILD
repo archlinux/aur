@@ -1,11 +1,11 @@
 pkgname=polaris-gamestream-bin
 pkgver=1.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux-first game streaming host"
 arch=('x86_64')
 url="https://github.com/papi-ux/polaris"
 license=('GPL3')
-depends=('miniupnpc')
+depends=('miniupnpc' 'libayatana-appindicator')
 source=("Polaris-arch-x86_64-1.4.7.pkg.tar.zst::https://github.com/papi-ux/polaris/releases/download/v1.4.7/Polaris-arch-x86_64.pkg.tar.zst")
 noextract=("Polaris-arch-x86_64-1.4.7.pkg.tar.zst")
 sha256sums=('79ce9cb634ccbb25a52705353c4f431007b65a4e5195454e4e3e69be1da70a8e')
