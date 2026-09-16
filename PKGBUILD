@@ -6,7 +6,7 @@ _execname=cjsh
 pkgname=${_execname}-bin
 pkgdesc="POSIX shell scripting meets Modern Shell Features"
 
-pkgver=1.5.5
+pkgver=1.5.7
 pkgrel=1
 _appversion=v${pkgver}
 
@@ -37,16 +37,16 @@ source=("WHAT-TO-KNOW-${pkgver}.md::${_ghurlraw}/docs/getting-started/what-to-kn
         "LANGUAGE-COMPATIBILITY-${pkgver}.md::${_ghurlraw}/docs/reference/language-compatibility.md")
 source_x86_64=("${_execname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_appversion}/${_execname}-${_appversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_execname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_appversion}/${_execname}-${_appversion}-${_barch[1]}.tar.gz")
-sha256sums=('b57592e2605f319ba200df6ee9b0d851ed7aaea0723a7d29e21a6b0ff03b6854'
+sha256sums=('fded3b7f3fc3f53d30d4ba7bed833335c9e4851b05dee9dec618b7ddbdae9f60'
             '271ddb6d44b38c83cd2eb69739b74f18935a90638deb39a06ab299b265a93c88'
-            '1085ae40157e900b98060b1d8854c59cb40de13ffb7b221764770d64e2ae8452'
-            'fd565ad8840db0a34433ae7eb7f8db30b41b7c8621e3f335bc9aa6bf6f1ef013'
-            '5d9281667facf2c078280c3d3532bdd6793dd89865e44d3d5b5217df61fa6dce'
+            'dfda8562c00f1f8a3839c5ed0e102dafa44eb6a7671aac3b30c5fc55f1a2ca45'
+            'ec9e1b73cbeca3c19354fa3a29fa766f5fda9c08b8ea479b51c6c0bbd403d73b'
+            'b1a7cb8c8304cc08e24246cd8b20fc42eae126525037a06d87e2bb83152586ec'
             'c6fe360a8b01da454451e5e8e60d8400013729f25a7034e903f397b90867d5d3'
-            'a44c280fb650ae4a29169a6be233264d7c175ae5243c65e372c85204cc0651bb'
+            'a7db7322a0a7dd2352fbe246e10e39bc6bad57a4bc237316c62aa924d2e64914'
             '79b60b9d612285418c27bea23f09a5d0cd11620d791d34cc2aec8749c3dc681b')
-sha256sums_x86_64=('f88b879f21ba09f5c3b0415a1692afc43e42f67a539ce2e091619ffc3ac7e5d4')
-sha256sums_aarch64=('797fdbd07f3ce7d528e661d0e270ece7c44e0f7e84d148e881af3e13e4f401f8')
+sha256sums_x86_64=('b89a7d7e0db448da438af4d2e40ff34c28702d617ebbc199f58b76311e5d5cc0')
+sha256sums_aarch64=('3bc54309adef473b1affa0334fb92c350a799300fe41fcc9b34d626daead6068')
 
 
 case ${CARCH} in
