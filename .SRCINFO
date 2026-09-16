@@ -1,7 +1,7 @@
 pkgbase = r-mapboxapi
 	pkgdesc = R Interface to 'Mapbox' Web Services
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=mapboxapi
 	arch = any
 	license = MIT
