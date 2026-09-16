@@ -2,7 +2,7 @@
 
 pkgname=oh-my-pi
 pkgver=18.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
@@ -25,11 +25,11 @@ options=('!lto' '!strip')
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
     "skip-native-embed-for-aur.patch"
-    "disable-bytecode-for-aur.patch"
+    "fix-bytecode-esm-format.patch"
 )
 sha256sums=('SKIP'
             'b2fe93ad7ef36869d660cc0ec9a0a0e7196370035efd86b32901101aff2920d1'
-            '163c04dcef629a1f744d1cbdc51760eb4089651308a3b1ae8763eed4cc791d76'
+            '2f38e62c84e76e3c6d8d93e72d967a018de131cd1af242f543546015961bce76'
 )
 
 _variants=('baseline:x86-64-v2' 'modern:x86-64-v3')
@@ -46,11 +46,21 @@ prepare() {
     cd "${srcdir}/${pkgname}"
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
-    # Bun 1.4.0 emits the literal `import.meta.resolve` from yargs' ESM build
-    # into the bundle; `bytecode: true` forces CJS output, where `import.meta`
-    # is a syntax error, so the compiled binary aborts at startup with
-    # "SyntaxError: import.meta is only valid inside modules."
-    patch -p1 -i "${srcdir}/disable-bytecode-for-aur.patch"
+    # `bytecode: true` makes Bun emit the chunk as cjs, where it inlines
+    # `import.meta.{url,dir,path,file}` as the build tree's paths
+    # (oven-sh/bun#39715) and prints every other `import.meta` reference
+    # verbatim into a plain script wrapper (oven-sh/bun#38200). We skip
+    # embedding the native addon, so the loader resolves the sidecar `.node`
+    # off `import.meta` and then searches the build tree: `omp --smoke-test`
+    # dies in the addon loader. On bun 1.4.0 it was worse - that release
+    # predates oven-sh/bun#41186, so puppeteer-core's
+    # `await import("@puppeteer/browsers")` kept the whole namespace live and
+    # pulled in yargs, whose apply-extends.js calls `import.meta.resolve`;
+    # the script then failed to parse at all and the binary aborted with
+    # "SyntaxError: import.meta is only valid inside modules." Pin esm output,
+    # where `import.meta` stays real, and fail the build on an error-level
+    # build log instead of shipping a binary that throws before main().
+    patch -p1 -i "${srcdir}/fix-bytecode-esm-format.patch"
 
     RUSTUP_TOOLCHAIN=stable cargo fetch --locked --target x86_64-unknown-linux-gnu
 
@@ -97,6 +107,15 @@ build() {
 
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
+
+    # A JSC bytecode cache is only loadable by the Bun build that emitted it.
+    # ci:release:build-binaries otherwise bakes a downloaded
+    # bun-linux-x64-baseline runtime into the executable, which silently
+    # rejects the bytecode Arch's bun just produced and reparses the 38 MB
+    # bundle on every start -- `omp --version` 332 ms instead of 77 ms, while
+    # still carrying the 55 MB cache. Using the system bun as the runtime
+    # template also drops 18 MB off the binary.
+    export BUN_COMPILE_EXECUTABLE_PATH=/usr/bin/bun
 
     bun install --frozen-lockfile
     local _variant
