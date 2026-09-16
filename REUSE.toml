@@ -17,6 +17,8 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "valid-repos-riscv64.sh",
+    "z-archriscv-qemu-riscv64.conf",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
