@@ -1,7 +1,7 @@
 # Maintainer: Birbwell <jmbirdwell.us@gmail.com>
 
 pkgname=linuxmix-git
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 arch=(any)
 url=https://codeberg.org/Birbwell/linuxmix
@@ -15,7 +15,7 @@ source=(
 )
 sha256sums=(
     SKIP
-    e2a1f92be32c26c2fac0d04ed8ff9968adeb2badcd53f85af47940edbe91aeb6
+    adaf7ce12ccead24b2321d4343a638f4e9cdc82060e64f17c816278a474bf4b0
     193c74c29454f4412be2bdb4e86115029d378d88537104bb94843fbc189c69fe
 )
 
