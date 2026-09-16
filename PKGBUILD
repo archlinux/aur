@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=strumpack
 pkgname="${_pkgname}-git"
-pkgver=8.0.0.r30.g037e0a9
+pkgver=8.0.0.r31.g5bbe389
 pkgrel=1
 pkgdesc="Library providing linear algebra routines and linear system solvers for spare and for dense rank-structured linear systems."
 arch=('x86_64')
