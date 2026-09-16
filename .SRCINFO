@@ -1,7 +1,7 @@
 pkgbase = maxhub-exceedshare-bin
 	pkgdesc = MAXHUB 传屏助手 - Wireless screen sharing software (binary release)
 	pkgver = 5.10.45.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.maxhub.com
 	install = maxhub-exceedshare-bin.install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = maxhub-exceedshare-bin
 	depends = libsm
 	depends = libgpg-error
 	depends = util-linux-libs
-	optdepends = qt5-base: for ScreenShare Qt5Concurrent support
+	depends = qt5-base
 	optdepends = kmod: for kernel module loading (snd-dummy, uinput)
 	optdepends = systemd: for udev rules and systemd user service
 	provides = exceedshare
