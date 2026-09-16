@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=FvC Launcher
+Comment=Modern Minecraft launcher
+Exec=fvc-launcher %U
+Icon=fvc-launcher
+Terminal=false
+Type=Application
+Categories=Game;
+StartupWMClass=FvC Launcher
+MimeType=x-scheme-handler/fvc;
