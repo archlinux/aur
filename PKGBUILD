@@ -12,7 +12,7 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve
-pkgver=21.0.4
+pkgver=21.1
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 source=("file://DaVinci_Resolve_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh")
-sha256sums=('d0bbc5bc09aaecaa693e22b2a037f42da8c984a5e9f3e1ff77c7db681325b50f'
+sha256sums=('4133e2c38072758a93e9a959504c251178134040096edad79cf0e87813019a2b'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8')
 install="${pkgname}.install"
 options=('!strip')
@@ -84,10 +84,10 @@ prepare() {
     sed -i "s|RESOLVE_INSTALL_LOCATION|/opt/${_pkgname}|g" "${_file}"
   done < <(find . -type f '(' -name "*.desktop" -o -name "*.directory" -o -name "*.directory" -o -name "*.menu" ')' -print0)
 
-  rm squashfs-root/libs/libglib-2.0.so.0{,.6800.4} \
-     squashfs-root/libs/libgio-2.0.so.0{,.6800.4} \
-     squashfs-root/libs/libgmodule-2.0.so.0{,.6800.4} \
-     squashfs-root/libs/libgobject-2.0.so.0{,.6800.4} \
+  rm squashfs-root/libs/libglib-2.0.so.0{,.8200.4} \
+     squashfs-root/libs/libgio-2.0.so.0{,.8200.4} \
+     squashfs-root/libs/libgmodule-2.0.so.0{,.8200.4} \
+     squashfs-root/libs/libgobject-2.0.so.0{,.8200.4} \
      squashfs-root/libs/libc++.so.1{,.0} \
      squashfs-root/libs/libc++abi.so.1{,.0}
   ln -s "../BlackmagicRAWPlayer/BlackmagicRawAPI" "squashfs-root/bin/"
@@ -130,6 +130,9 @@ package() {
     "share/default_cm_config.bin"
   install -d -m 0755 "${pkgdir}/opt/${_pkgname}/.license"
   install -d -m 0755 "${pkgdir}/opt/${_pkgname}/Apple Immersive/Calibration"
+  install -d -m 0755 "${pkgdir}/opt/${_pkgname}/Extras"
+  install -d -m 0755 "${pkgdir}/opt/${_pkgname}/Fairlight"
+  install -d -m 0755 "${pkgdir}/opt/${_pkgname}/Immersive/Canon/STMap"
   # Install licenses
   install -d -m 0644 "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "/opt/resolve/docs/License.html" "${pkgdir}/usr/share/licenses/${pkgname}"
