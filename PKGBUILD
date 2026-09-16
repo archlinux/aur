@@ -37,11 +37,11 @@ provides=("${_pypi_package}")
 conflicts=("${pkgname}"{-bin,-git})
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'python-hatchling')
-depends=('python' 'python-textual' 'python-textual-autocomplete' 'python-textual-image' 'python-textual-drivers' 'python-pygments' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-uvloop' 'python-jsonschema' 'python-fastjsonschema>=2.22.2' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-puremagic' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-pathvalidate' 'python-resvg_py' 'python-multiarchive' 'python-pytrash')
+depends=('python' 'python-textual' 'python-textual-autocomplete' 'python-textual-image' 'python-textual-drivers' 'python-pygments' 'python-rich' 'python-ujson' 'python-tomli' 'python-pillow' 'python-uvloop' 'python-jsonschema' 'python-fastjsonschema' 'python-rich-click' 'python-send2trash' 'python-platformdirs' 'python-puremagic' 'python-psutil' 'python-rarfile' 'python-pdf2image' 'python-natsort' 'python-humanize' 'python-pathvalidate' 'python-resvg_py' 'python-multiarchive' 'python-pytrash')
 
-source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
-# source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('ac7332c00b6c8bbf657b8a8f07492f841f0033b6f0c3ca54846a7c196fc00354')
+# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
+source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
+sha256sums=('a44f2d542fde0545269bd9575b65a9e1c7289f3dc8998cf3766453ae67db021b')
 
 prepare() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"

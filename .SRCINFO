@@ -23,7 +23,7 @@ pkgbase = rovr
 	depends = python-pillow
 	depends = python-uvloop
 	depends = python-jsonschema
-	depends = python-fastjsonschema>=2.22.2
+	depends = python-fastjsonschema
 	depends = python-rich-click
 	depends = python-send2trash
 	depends = python-platformdirs
@@ -40,7 +40,7 @@ pkgbase = rovr
 	provides = rovr
 	conflicts = rovr-bin
 	conflicts = rovr-git
-	source = https://files.pythonhosted.org/packages/source/r/rovr/rovr-0.10.2.post1.tar.gz
-	sha256sums = ac7332c00b6c8bbf657b8a8f07492f841f0033b6f0c3ca54846a7c196fc00354
+	source = rovr-0.10.2.post1.tar.gz::https://github.com/NSPC911/rovr/archive/refs/tags/v0.10.2.post1.tar.gz
+	sha256sums = a44f2d542fde0545269bd9575b65a9e1c7289f3dc8998cf3766453ae67db021b
 
 pkgname = rovr
