@@ -2,7 +2,7 @@
 
 conflicts=('crown')
 pkgname=crown-bin
-pkgver=0.64.9
+pkgver=0.64.10
 pkgrel=1
 pkgdesc="A complete and cross-platform game engine designed for flexibility, performance, and fast-iterations."
 arch=(x86_64)
@@ -18,7 +18,7 @@ depends=('glib2>=2.64.6'
 source=("https://github.com/crownengine/crown/releases/download/v$pkgver/crown-$pkgver-linux-x64.tar.gz"
         "crown.sh"
         )
-sha256sums=('a2d52f747d08412b5809ae27056cf5b7ad358103b7a9203233a4e66cd1d6e89a'
+sha256sums=('682ea830b6a166886d0b9476177624f62ac5c899f246be45d1213887aebadecc'
             'a3623e9786261ab6d15e1a07091b2117d2d9cd4d25176209a42392ba512dfe08')
 options=('!strip')
 
