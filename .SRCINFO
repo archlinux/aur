@@ -1,6 +1,8 @@
+==> Generating checksums for source files...
+sha256sums=('a7c7c7dfb45f48be88499b4bdac4266d03c31fcb323777a63ce38bf53e3fa12a')
 pkgbase = claudebar
 	pkgdesc = Waybar widget displaying Claude AI subscription usage with colored progress bars
-	pkgver = 0.10.3
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://github.com/mryll/claudebar
 	arch = any
@@ -14,7 +16,7 @@ pkgbase = claudebar
 	optdepends = ttf-jetbrains-mono-nerd: monospace font the tooltip pins by default (--tooltip-font)
 	provides = waybar-claude-usage
 	conflicts = waybar-claude-usage
-	source = claudebar-0.10.3.tar.gz::https://github.com/mryll/claudebar/archive/refs/tags/v0.10.3.tar.gz
-	sha256sums = 6b87b0173e49f8e93ecc4e1c3dbfc93fd99e74adf14b1f510e4ea1914d5e583a
+	source = claudebar-0.10.4.tar.gz::https://github.com/mryll/claudebar/archive/refs/tags/v0.10.4.tar.gz
+	sha256sums = a7c7c7dfb45f48be88499b4bdac4266d03c31fcb323777a63ce38bf53e3fa12a
 
 pkgname = claudebar
