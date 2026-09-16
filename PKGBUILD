@@ -1,13 +1,13 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=REDCapR
-_pkgver=1.6.0
+_pkgver=1.7.0
 pkgname=r-${_pkgname,,}
 pkgdesc="Interaction Between R and REDCap"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=4
 
 arch=("any")
 depends=(
@@ -37,7 +37,7 @@ optdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-b2sums=('c654db0dbbfc10ea7158a2759176383aa14529b28543587edc96271194f3f921e67e3775e4d156d951245e6310b4e8a82651968698b0094bbf6bce0f8445f06e')
+b2sums=('553a46d19a604bf153261a23d848ccdc68c2838918fff536af1070a49d9a8a760ce517cc51260c0a51eba71635adf4a56c5741331df8d4d26b758ff23307c312')
 
 build() {
     mkdir -p "${srcdir}/build/"
