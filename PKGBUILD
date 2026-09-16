@@ -2,7 +2,7 @@
 
 pkgname=bushuray-git
 pkgdesc="Xray TUI client (builds bushuray, bushuray-core and v2parser)"
-pkgver=0.0.0.r0.g0000000
+pkgver=0.2.2
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/Keivan-sf/Bushuray-tui"
@@ -16,10 +16,10 @@ source=(
 )
 sha256sums=("SKIP" "SKIP" "SKIP")
 
-pkgver() {
-  cd "$srcdir/bushuray-tui"
-  git describe --tags --long 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./'
-}
+# pkgver() {
+#   cd "$srcdir/bushuray-tui"
+#   git describe --tags --long 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./'
+# }
 
 prepare() {
   cd "$srcdir/bushuray-tui"
