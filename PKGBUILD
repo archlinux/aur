@@ -1,15 +1,15 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=zapfast
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
 url="https://zapfast.rocks"
 license=('MIT')
 install="${pkgname}.install"
-depends=('alsa-lib' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
-makedepends=('cargo' 'cmake')
-optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
+depends=('alsa-lib' 'alsa-plugins' 'libglvnd' 'libxkbcommon' 'libxkbcommon-x11' 'wayland' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxrandr')
+makedepends=('cargo' 'cmake' 'perl')
+optdepends=('org.freedesktop.secrets: archive encryption key storage'
             'noto-fonts-emoji: colour emoji in messages and reactions'
             'xdg-desktop-portal: the file picker for attachments')
 provides=('fastsapp')
@@ -21,7 +21,7 @@ replaces=('fastsapp')
 # meets this.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/zapfast/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ec313ec5bcbcd08bcec3e4099fc71635db21cb7df89c29bb4db5bd2df887efb1')
+sha256sums=('1d9d361fa6afb9e903e7a26124ba94f2d002cfe66818d05d0114965fe4dc70eb')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -60,4 +60,12 @@ package() {
     "${pkgdir}/usr/share/applications/zapfast.desktop"
   install -Dm644 "packaging/icons/zapfast.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/zapfast.svg"
+  # Releases predating theme integration remain valid packaging inputs.
+  if [[ -f "contrib/omarchy/zapfast.json.tpl" ]]; then
+    install -Dm644 "contrib/omarchy/zapfast.json.tpl" \
+      "${pkgdir}/usr/share/zapfast/omarchy/zapfast.json.tpl"
+    install -Dm755 "contrib/omarchy/zapfast-theme" \
+      "${pkgdir}/usr/share/zapfast/omarchy/zapfast-theme"
+  fi
+
 }
