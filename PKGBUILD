@@ -1,6 +1,6 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=fluux-messenger
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 pkgdesc="A fast, modern, cross-platform XMPP client for communities and organizations."
 arch=('x86_64' 'aarch64')
@@ -83,5 +83,5 @@ package() {
 }
 
 sha512sums=(
-'6c97a0afd06a612a7c5c1f33267e707fb134825be269fa57180d739d109e27ac767ad61d7b166ef7dcffbf91809d807f0be4307f5eed79578ca77eba586e6cf9'
+'06635649ddd488b8efa56cb444b4d7199deba6cf9cc02a9ed4bbf3699ba5ce7a91d3c4f0820ab0fa82ef96670fad6ae9df00fc2320d491ff112a067f87345f00'
 )
