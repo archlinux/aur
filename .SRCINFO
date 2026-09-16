@@ -1,7 +1,7 @@
 pkgbase = rmg-git
 	pkgdesc = Rosalie's Mupen GUI
 	pkgver = git
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Rosalie241/rmg
 	arch = x86_64
 	arch = aarch64

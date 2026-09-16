@@ -11,7 +11,7 @@ license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-depends=("libusb" "hidapi" "libsamplerate" "speexdsp" "minizip" "sdl3" "sdl3_net" "zlib" "freetype2" "qt6-base" "qt6-svg" "qt6-websockets")
+depends=("libusb" "hidapi" "libsamplerate" "speexdsp" "minizip" "sdl3" "sdl3_net" "zlib" "zstd" "freetype2" "qt6-base" "qt6-svg" "qt6-websockets")
 makedepends=("git" "nasm" "cmake" "vulkan-headers")
 
 source=("git+https://github.com/Rosalie241/${_pkgname}.git")
