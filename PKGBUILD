@@ -2,7 +2,7 @@
 
 pkgname=modbustools
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ModbusTools are cross-platform Modbus simulator tools with GUI to work with Modbus protocol (TCP,RTU,ASCII)"
 arch=($CARCH)
 url="https://github.com/serhmarch/ModbusTools"
@@ -11,10 +11,9 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 depends=(
-    glibc
-    libgcc
-    libstdc++
     hicolor-icon-theme
+    libgcc_s.so
+    libstdc++.so
     qt5-base
     qt5-tools
     python
@@ -55,8 +54,7 @@ build() {
     cmake -S . \
         -DCMAKE_BUILD_TYPE=None \
         -DBUILD_SHARED_LIBS=OFF \
-        -Wdeprecated-declarations \
-        -Wno-dev \
+        -Wno-author \
         -Bbuild \
         -GNinja
 
