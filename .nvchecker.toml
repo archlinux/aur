@@ -1,0 +1,8 @@
+[visual-studio-code-bin]
+source = "httpheader"
+url = "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+release_url = "https://code.visualstudio.com/updates"
+follow_redirects = false
+header = 'location'
+method = "HEAD"
+regex = 'code_([\d\.]+)-'
