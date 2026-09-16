@@ -3,7 +3,7 @@
 pkgname=maxhub-exceedshare-bin
 _pkgname=exceedshare
 pkgver=5.10.45.0
-pkgrel=4
+pkgrel=5
 pkgdesc="MAXHUB 传屏助手 - Wireless screen sharing software (binary release)"
 arch=('x86_64')
 url="https://www.maxhub.com"
@@ -22,8 +22,8 @@ depends=(
     'libsm'
     'libgpg-error'
     'util-linux-libs'
-    'qt5-base'
 )
+makedepends=('qt5-base')
 optdepends=(
     'kmod: for kernel module loading (snd-dummy, uinput)'
     'systemd: for udev rules and systemd user service'
@@ -37,6 +37,9 @@ sha256sums=('85ef50fbc2056b13431fcd4cd8e76d136a2918fc8b8695a5d40a2254ba5afe44')
 
 package() {
     bsdtar -xvf data.tar.xz -C "${pkgdir}/"
+
+    cp -L /usr/lib/libQt5Concurrent.so.5 \
+        "${pkgdir}/opt/apps/com.cvte.exceedshare/files/lib/libQt5Concurrent.so.5"
 
     chmod -R 755 "${pkgdir}/opt/"
 
