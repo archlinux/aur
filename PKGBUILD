@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_appauthor="PrefectHQ"
+_appauthor="prefectlabs"
 _appname="burner-redis"
 
 pkgname="python-${_appname}"
@@ -16,7 +16,7 @@ arch=('any')
 
 _url_pypi="https://pypi.org/project/${_pypi_package}/"
 _url_github="https://github.com/${_appauthor}/${_appname}"
-url="${_url_pypi}"
+url="${_url_github}"
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-maturin')
 depends=('glibc' 'libgcc' 'python' 'python-redis')
