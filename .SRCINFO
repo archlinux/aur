@@ -1,0 +1,18 @@
+pkgbase = ca-certificates-bsi
+	pkgdesc = Bundesamt für Sicherheit in der Informationstechnik Root Certificates
+	pkgver = 20260916
+	pkgrel = 1
+	url = https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Moderner-Staat/Verwaltungs-PKI/Wurzelzertifizierungsstelle/FingerprintsderWurzelzertifikate/fingerprintsderwurzelzertifikate_node.html
+	arch = any
+	license = unknown
+	depends = ca-certificates-utils>=20181109-3
+	source = PCA-1-Verwaltung-17_zip.zip::https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/VerwaltungsPKI/PCA/Wurzelzertifikate/PCA-1-Verwaltung-17_zip.zip?__blob=publicationFile&v=2
+	source = PCA-1-Verwaltung-20_zip.zip::https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/VerwaltungsPKI/PCA/Wurzelzertifikate/PCA-1-Verwaltung-20_zip.zip?__blob=publicationFile&v=2
+	source = PCA-1-Verwaltung-23_zip.zip::https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/VerwaltungsPKI/PCA/Wurzelzertifikate/PCA-1-Verwaltung-23_zip.zip?__blob=publicationFile&v=3
+	source = PCA-1-Verwaltung-26_zip.zip::https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/VerwaltungsPKI/PCA/Wurzelzertifikate/PCA-1-Verwaltung-26_zip.zip?__blob=publicationFile&v=2
+	sha256sums = db8ce90cbfdd9678f32e8792f15e892359801d1fddd46c1a44336a2696c4ec47
+	sha256sums = c2be92c594a429366b24d1b412972f192f67dc53af852c07d78e1b5574042946
+	sha256sums = 51f07026e498896e55dc940e6ea4def76ec29b363ee6c07a50fbdc05cb280b66
+	sha256sums = 286160acb815372358f8355703e1dfa05f488b4742f4838e1f0ffd26507c2e46
+
+pkgname = ca-certificates-bsi
