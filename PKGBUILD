@@ -5,8 +5,8 @@ pkgdesc="Group calls powered by Matrix"
 url="https://github.com/element-hq/element-call"
 license=("Apache-2.0")
 arch=("any")
-pkgver=20260612.080550
-pkgrel=2
+pkgver=20260916.002913
+pkgrel=1
 makedepends=("git" "pnpm" "nodejs-vite")
 depends=()
 source=("git+${url}")
@@ -17,12 +17,14 @@ backup=()
 
 function prepare() {
 	cd element-call
-	pnpm i
+	pnpm install --frozen-lockfile --ignore-pnpmfile
 }
 
 function build() {
 	cd element-call
-	pnpm build
+	export NODE_OPTIONS="--max-old-space-size=4096"
+
+	pnpm run build:full:production
 }
 
 function package() {
