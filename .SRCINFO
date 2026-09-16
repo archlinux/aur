@@ -1,6 +1,6 @@
 pkgbase = spigot
 	pkgdesc = High performance Minecraft server implementation
-	pkgver = 1.21.11+b197
+	pkgver = 26.3+b201
 	pkgrel = 1
 	url = https://www.spigotmc.org/
 	install = spigot.install
@@ -17,16 +17,16 @@ pkgbase = spigot
 	depends = sed
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
-	provides = minecraft-server=1.21.11
-	provides = bukkit=1.21.11
-	provides = craftbukkit=1.21.11
+	provides = minecraft-server=26.3
+	provides = bukkit=26.3
+	provides = craftbukkit=26.3
 	conflicts = bukkit
 	conflicts = craftbukkit
 	conflicts = spigot-patcher
 	backup = etc/conf.d/spigot
-	source = BuildTools-1.21.11+b197.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/197/artifact/target/BuildTools.jar
+	source = BuildTools-26.3+b201.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/201/artifact/target/BuildTools.jar
 	source = minecraft-server-1.0.4.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.4.tar.gz
-	sha512sums = d74067111afeab4ea4539f30ab6e906a38327293cb87fb9b9bedcf967c8dd6e8b32b0c445a9e14f3fb20f665d0e832ee8a2c1185ae666dceefed54461e2527e4
+	sha512sums = f12e5a99b199dec121f0ff3870093ee0695290156c0c5929d54b4ec861840589f2f860257e424b2dcfce6581ec9ec8849fa0b1783382fa0d84a7d57d090b34d5
 	sha512sums = dd4d68ca061c97a1e3cb5c0bb68439f7d8d45b15092344f3c4dbd4f7f39fef433d566670ad440970061007d93055183b570c7bf98f09c111ecdf8ab0f208f556
 
 pkgname = spigot
