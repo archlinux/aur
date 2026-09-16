@@ -1,0 +1,10 @@
+# Per AUR submission guidelines: keep the repository to the build files only --
+# makepkg's output (pkg/, src/, *.pkg.tar.zst) must never be committed.
+# Everything is excluded and the build files are allow-listed back in.
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!LICENSE
+!spektrafilm.desktop
+!com.spektrafilm.app.svg
