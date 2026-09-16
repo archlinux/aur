@@ -1,6 +1,6 @@
 # Maintainer: Vendetta1871 <conqueror.v.v.v.v.v@gmail.com>
 pkgname=nvtray
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="NVIDIA GPU activity tray icon (StatusNotifierItem), like the classic Windows GPU Activity icon"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('nvidia-utils')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "nvtray.desktop")
-sha256sums=('f82d71086e3dec6107f395fd6001021c3b7f991c418e68d2e1e8e814940c46ec'
+sha256sums=('6a44d2d5ad827ca2e6691875c0b43f1626048494c66b975b772ca5889dc1f690'
             '7427c232b00876f6b5eb8ca5d26e4c2e2b7e4c09f5c8c4c66837836c85335dcd')
 
 prepare() {
