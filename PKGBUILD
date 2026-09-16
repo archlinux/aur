@@ -8,6 +8,7 @@ url="https://github.com/leoliu0/ratex"
 license=('MIT' 'Apache-2.0')
 provides=('texmk')
 conflicts=('ratex')
+options=('!strip' '!debug')
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/leoliu0/ratex/releases/download/v${pkgver}/tex-suite-v${pkgver}-linux-x86_64.tar.gz")
 sha256sums_x86_64=('33c9da07fada69e9d27ebfb351f59ecfad08de4d8fe913bb16d449dc9a9692e5')
 
