@@ -1,0 +1,31 @@
+pkgbase = mcmodding-mcp
+	pkgdesc = MCP server for Minecraft Fabric and NeoForge modding documentation
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/OGMatrix/mcmodding-mcp
+	arch = x86_64
+	license = MIT
+	makedepends = node-gyp
+	makedepends = python
+	makedepends = pkgconf
+	depends = nodejs>=22.15.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++.so
+	depends = libvips
+	depends = glib2
+	depends = sh
+	options = !strip
+	options = !debug
+	source = mcmodding-mcp-0.5.0.tar.gz::https://codeload.github.com/OGMatrix/mcmodding-mcp/tar.gz/refs/tags/v0.5.0
+	source = pnpm-10.30.0.tgz::https://registry.npmjs.org/pnpm/-/pnpm-10.30.0.tgz
+	source = onnxruntime-1.14.0-LICENSE::https://raw.githubusercontent.com/microsoft/onnxruntime/v1.14.0/LICENSE
+	source = onnxruntime-1.14.0-ThirdPartyNotices.txt::https://raw.githubusercontent.com/microsoft/onnxruntime/v1.14.0/ThirdPartyNotices.txt
+	source = xdg-cache.patch
+	sha256sums = e748b72ddbd1cd81faaf34a93a27abf1ad95d482de79cfb74af599e49d6f82d1
+	sha256sums = fde3cebbd4ed0d6d140b1983743bf575cdd4b15e4d5e5b257425152dce5b1b6a
+	sha256sums = 2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c
+	sha256sums = cc63920441c5681cfb1663caf1de1858349b517fc1bed9ca669a85bc526cd13e
+	sha256sums = 2d56098d3b4b3d99cc1d4bdfceec7f6e7a476f47f6e72d8aaa322ffc6fa73352
+
+pkgname = mcmodding-mcp

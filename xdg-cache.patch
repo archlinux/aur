@@ -1,0 +1,19 @@
+--- a/src/indexer/embeddings.ts
++++ b/src/indexer/embeddings.ts
+@@ -7,10 +7,16 @@
+ /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+ /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+ 
++import os from 'node:os';
++import path from 'node:path';
+ import { pipeline, env } from '@xenova/transformers';
+ import type { DocumentChunk } from './chunker.js';
+ 
+ // Configure transformers.js for local execution
++env.cacheDir = path.join(
++  process.env.XDG_CACHE_HOME || path.join(os.homedir(), '.cache'),
++  'mcmodding-mcp', 'transformers'
++);
+ env.allowLocalModels = true;
+ env.allowRemoteModels = true;
+ 
