@@ -2,7 +2,7 @@
 
 pkgname=canon-pixma-g3010-tool
 _pkgname=9M2PJU-Canon-PIXMA-G3010-Tool
-pkgver=1.0.0.r7.gfad411b
+pkgver=1.0.0.r8.g3a4afe0
 pkgrel=1
 pkgdesc="GTK3 GUI assistant, driver setup, and maintenance suite for Canon PIXMA G3010 Series"
 arch=('any')
