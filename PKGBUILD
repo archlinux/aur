@@ -4,7 +4,7 @@
 _pkgname='red-black-tree-mod'
 pkgname="python-${_pkgname}"
 pkgver=1.22
-pkgrel=2
+pkgrel=3
 pkgdesc='Flexible Python implementation of red-black trees'
 arch=('any')
 url="https://stromberg.dnsalias.org/svn/${_pkgname}"
@@ -16,7 +16,7 @@ makedepends=(
 	'python-setuptools'
 	'python-wheel'
 )
-# Upstream has no 1.22 SVN tag; r11079 is the last code revision before the PyPI 1.22 release.
+# Upstream has no 1.22 SVN tag; r11079 produces the modules published in PyPI 1.22.
 _revision=11079
 _sourceurl="${url%/*}/!svn/bc/${_revision}/${_pkgname}/trunk"
 source=(
@@ -56,6 +56,6 @@ check() {
 
 package() {
 	cd -- "${srcdir}/${_pkgname}-${pkgver}" || return 1
-	python -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl || return 1
+	python -m installer --destdir="${pkgdir}" --compile-bytecode 0 --compile-bytecode 2 dist/*.whl || return 1
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }

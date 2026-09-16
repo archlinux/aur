@@ -1,7 +1,7 @@
 pkgbase = python-red-black-tree-mod
 	pkgdesc = Flexible Python implementation of red-black trees
 	pkgver = 1.22
-	pkgrel = 2
+	pkgrel = 3
 	url = https://stromberg.dnsalias.org/svn/red-black-tree-mod
 	arch = any
 	license = MIT
