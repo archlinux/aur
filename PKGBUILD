@@ -2,23 +2,23 @@
 
 _pkgbase="zig-waybar-contrib"
 pkgname="${_pkgbase}-beta-bin"
-pkgver=26.09.10.1
+pkgver=26.09.16.1
 pkgrel=1
 pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring (Beta binary version)'
 arch=('x86_64')
 url="https://codeberg.org/erffy/$_pkgbase"
 license=('GPL3')
-provides=("zig-waybar-contrib=$pkgver")
-conflicts=('zig-waybar-contrib')
+provides=("${_pkgbase}=$pkgver")
+conflicts=("${_pkgbase}-bin")
 optdepends=(
   'fakeroot: updates module'
 )
 source=(
-  "zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.09.10.1/zig-waybar-contrib-release-26.09.10.1.zip"
-  "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.09.10.1/config.waybar.jsonc"
-  "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.09.10.1/LICENSE"
+  "zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/pre-26.09.16.1/zig-waybar-contrib-release-pre-26.09.16.1.zip"
+  "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/pre-26.09.16.1/config.waybar.jsonc"
+  "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/pre-26.09.16.1/LICENSE"
 )
-sha256sums=('e6b33df3d3eae4a68f47d95c8a2851f2bc753f3ff500b4d686b8e67fbce66702'
+sha256sums=('6a9d69b3b8e3c9af4712add1b254fa19697e1a570a3166477c073ef8358ff348'
             'dcd740a429998be22dbbf6eb47e89cc4a24863af75839d0f8621c146a125575d'
             '4452bc2d13bcd25bdd45ca659672df16c273ab9d1e65c4064447eec382dc96d6')
 
