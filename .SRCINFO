@@ -1,8 +1,9 @@
 pkgbase = maxhub-exceedshare-bin
 	pkgdesc = MAXHUB 传屏助手 - Wireless screen sharing software (binary release)
 	pkgver = 5.10.45.0
-	pkgrel = 1
-	url = https://excshare.com/
+	pkgrel = 3
+	url = https://www.maxhub.com
+	install = maxhub-exceedshare-bin.install
 	arch = x86_64
 	license = custom: commercial
 	depends = glibc

@@ -1,0 +1,59 @@
+_start_uwst_service_for() {
+    _user="$1"
+    _uid=$(id -u "${_user}" 2>/dev/null) || return 1
+    [ -d "/run/user/${_uid}/systemd" ] || return 1
+
+    runuser -u "${_user}" -- env XDG_RUNTIME_DIR="/run/user/${_uid}" \
+        systemctl --user daemon-reload >/dev/null 2>&1 || true
+    runuser -u "${_user}" -- env XDG_RUNTIME_DIR="/run/user/${_uid}" \
+        systemctl --user restart com.cvte.exceedshare.service >/dev/null 2>&1 || true
+
+    return 0
+}
+
+_enable_uwst_service() {
+    modprobe uinput >/dev/null 2>&1 || true
+    modprobe snd-dummy >/dev/null 2>&1 || true
+
+    [ -e /dev/uinput ] && chmod 0666 /dev/uinput >/dev/null 2>&1 || true
+
+    [ -d /run/systemd/system ] && systemctl --global enable com.cvte.exceedshare.service >/dev/null 2>&1 || true
+
+    if [ -n "${SUDO_USER}" ] && [ "${SUDO_USER}" != "root" ]; then
+        _start_uwst_service_for "${SUDO_USER}" && return 0
+    fi
+
+    for _runtime_dir in /run/user/[0-9]*; do
+        [ -d "${_runtime_dir}/systemd" ] || continue
+        _uid="${_runtime_dir##*/}"
+        _user=$(id -nu "${_uid}" 2>/dev/null) || continue
+        _start_uwst_service_for "${_user}" && return 0
+    done
+
+    echo ">>> No active systemd user session found."
+    echo ">>> The UWST service will start automatically on next login."
+}
+
+_disable_uwst_service() {
+    if [ -n "${SUDO_USER}" ] && [ "${SUDO_USER}" != "root" ]; then
+        _uid=$(id -u "${SUDO_USER}" 2>/dev/null)
+        if [ -n "${_uid}" ] && [ -d "/run/user/${_uid}" ]; then
+            runuser -u "${SUDO_USER}" -- env XDG_RUNTIME_DIR="/run/user/${_uid}" \
+                systemctl --user stop com.cvte.exceedshare.service >/dev/null 2>&1 || true
+        fi
+    fi
+
+    [ -d /run/systemd/system ] && systemctl --global disable com.cvte.exceedshare.service >/dev/null 2>&1 || true
+}
+
+post_install() {
+    _enable_uwst_service
+}
+
+post_upgrade() {
+    _enable_uwst_service
+}
+
+pre_remove() {
+    _disable_uwst_service
+}
