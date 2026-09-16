@@ -1,7 +1,7 @@
 # Maintainer: LUCKY / LuckySingh1 <luckysingh71826@gmail.com>
 pkgname=chillpill-shell
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight and feature rich dynamic pill bar for Hyprland"
 depends=(
        'cliphist'

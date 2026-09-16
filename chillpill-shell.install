@@ -1,37 +1,91 @@
+NC='\033[0m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+BOLD='\033[1m'
+
+info() { echo -e "${GREEN}[+]${NC} $*"; }
+warn() { echo -e "${YELLOW}[!]${NC} $*"; }
+
 post_install() {
-  echo -e "\n\033[1;37mRun 'chillpill-shell' to start now.\033[0m"
-  echo -e '\n\033[1;32m==> Paste this code in your Hyprland (Lua) config file to auto start:\033[0m'
-  echo -e '\n\033[1mhl.on("hyprland.start", function()'
-  echo -e '  hl.exec_cmd("chillpill-shell")'
-  echo -e 'end)\033[0m'
-  echo -e '\n\033[1;32m==> For the holidays/events feature in your calendar, run:\033[0m\n\033[1mpipx install holidays\033[0m\n'
-  update_config
+  print_notice
+  verify_optional_deps
+  setup_users
 }
 
 post_upgrade() {
-  update_config
+  verify_optional_deps
+  setup_users
 }
 
-update_config() {
-  local YOU="$(logname 2>/dev/null || echo "$SUDO_USER")"
+print_notice() {
+  echo -e "\n${BOLD}Run '${GREEN}chillpill-shell${NC}${BOLD}' to start now, or open '${GREEN}CP-Shell${NC}${BOLD}' from your app launcher.${NC}"
+  echo -e "\n${BLUE}==>${NC} ${BOLD}To auto start, paste this in your Hyprland (Lua) config:${NC}"
+  echo -e "\n${BOLD}hl.on(\"hyprland.start\", function()"
+  echo -e "  hl.exec_cmd(\"chillpill-shell\")"
+  echo -e "end)${NC}\n"
+}
 
-  if [[ -z "$YOU" || "$YOU" == "root" ]]; then
-     return
+verify_optional_deps() {
+  command -v awww &>/dev/null || \
+    warn "Awww not installed. It's needed if you don't use a custom wallpaper script."
+  command -v blueman-manager &>/dev/null || \
+    warn "Blueman not installed. The bluetooth module in the bar won't work — install 'blueman' if you need it."
+  if command -v python3 &>/dev/null; then
+    python3 -c "import holidays" &>/dev/null || \
+      warn "Python 'holidays' lib not installed. Calendar events won't show — run 'pipx install holidays' (needs python-pip/pipx)."
   fi
+}
 
-  local REAL_HOME="/home/$YOU"
-  local cfg="$REAL_HOME/.config/chillpill-shell/config.jsonc"
-  local example="/usr/share/chillpill-shell/config.jsonc.example"
-  local updater="/usr/share/chillpill-shell/scripts/config_update.py"
+# Figure out which real user(s) to set files up for.
+get_users() {
+  local you logins
+  you="$(logname 2>/dev/null)"
+  [[ -z "$you" ]] && you="$SUDO_USER"
+  if [[ -n "$you" && "$you" != "root" ]]; then
+    echo "$you"
+    return
+  fi
+  awk -F: '$3 >= 1000 && $3 < 65534 && $6 ~ /^\/home\// {print $1}' /etc/passwd
+}
+
+setup_user() {
+  local user="$1" real_home cfg_dir cache_dir cfg cava
+  real_home="$(getent passwd "$user" 2>/dev/null | cut -d: -f6)"
+  [[ -z "$real_home" ]] && real_home="/home/$user"
+  [[ -d "$real_home" ]] || return
+
+  cfg_dir="$real_home/.config/chillpill-shell"
+  cache_dir="$real_home/.cache/chillpill-shell"
+  mkdir -p "$cfg_dir" "$cache_dir"
+
+  cfg="$cfg_dir/config.jsonc"
+  cava="$cache_dir/cava.conf"
 
   if [[ -f "$cfg" ]]; then
-     if [[ -f "$updater" ]]; then
-        echo "Config update script found, updating your config..."
-        python3 "$updater" "$YOU" || echo "Config file update failed."
-     else
-        echo "config_update.py missing in '/usr/share/chillpill-shell/scripts', skipping config update."
-     fi
+    if [[ -f /usr/share/chillpill-shell/scripts/config_update.py ]] && command -v python3 &>/dev/null; then
+      info "Updating config for $user..."
+      python3 /usr/share/chillpill-shell/scripts/config_update.py "$user" 2>/dev/null \
+        || warn "Config update failed for $user, keeping your existing config."
+    fi
   else
-     install -Dm644 "$example" "$cfg"
+    info "Setting up default config for $user..."
+    install -Dm644 /usr/share/chillpill-shell/config.jsonc.example "$cfg" 2>/dev/null \
+      || warn "Could not create default config for $user."
   fi
+
+  if [[ ! -f "$cava" ]] && [[ -f /usr/share/chillpill-shell/scripts/cava.conf ]]; then
+    install -Dm644 /usr/share/chillpill-shell/scripts/cava.conf "$cava" 2>/dev/null \
+      || warn "Could not seed cava.conf for $user."
+  fi
+
+  chown -R "$user:$user" "$cfg_dir" "$cache_dir"
+}
+
+setup_users() {
+  local u
+  for u in $(get_users); do
+    setup_user "$u"
+  done
 }
