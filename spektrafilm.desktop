@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=SpektraFilm
+GenericName=Analog film simulator
+GenericName[es]=Simulador de película analógica
+Comment=Spectral simulation of analog film photography
+Comment[es]=Simulación espectral de fotografía analógica
+Exec=spektrafilm
+Icon=com.spektrafilm.app
+Terminal=false
+Categories=Graphics;Photography;
+StartupNotify=true
+Keywords=film;analogue;analog;photo;napari;lut;
