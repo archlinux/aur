@@ -1,9 +1,7 @@
 # Maintainer: empyrealm
 
 pkgname=ibm-bob-bin
-pkgver=1.126.0
-_bobrel=2.0.3
-_upstream_ver="${pkgver}+bob${_bobrel}"
+pkgver=1.126.0.bob2.1.0
 pkgrel=1
 pkgdesc='IBM Bob IDE repackaged from IBM upstream Linux binaries'
 arch=('x86_64')
@@ -35,8 +33,36 @@ options=('!strip')
 source=()
 sha256sums=()
 
+# Decode compound pkgver back into the two parts needed for the upstream filename.
+# pkgver uses only alphanumerics and dots (AUR rule); the upstream format is
+# "${_vs}+bob${_bob}", e.g. "1.126.0+bob2.1.0".
+_decode_ver() {
+  # pkgver = "1.126.0.bob2.1.0"  →  _vs="1.126.0"  _bob="2.1.0"
+  _vs="${pkgver%.bob*}"
+  _bob="${pkgver##*.bob}"
+}
+
+_decode_ver
+_upstream_ver="${_vs}+bob${_bob}"
 _rpm="IBM-Bob-linux-x64-${_upstream_ver}.rpm"
-_rpm_sha256='7303cc78c550288d163a61c66f04079001359f44d4cd2b5a201aac87efaf9569'
+_rpm_sha256='b328e31682b9028686fa08a063ae8e79b0b22b186a6020b5360ea981f1c08764'
+
+# pkgver() queries the IBM Bob download page for the latest upstream version
+# string and emits it in AUR-legal dot-only form.  makepkg --nobuild (or any
+# AUR helper that supports VCS-style pkgver bumping) will call this and update
+# pkgver in PKGBUILD automatically when a new release is published.
+pkgver() {
+  local raw
+  raw="$(
+    curl -fsS -A 'Mozilla/5.0' 'https://bob.ibm.com/download' \
+      | grep -oE 'IBM-Bob-linux-x64-[0-9]+\.[0-9]+\.[0-9]+\+bob[0-9]+\.[0-9]+\.[0-9]+\.rpm' \
+      | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\+bob[0-9]+\.[0-9]+\.[0-9]+' \
+      | sort -Vr | head -1
+  )"
+  [[ -n "$raw" ]] || { echo "pkgver: could not detect upstream version" >&2; return 1; }
+  # Convert "1.126.0+bob2.1.0"  →  "1.126.0.bob2.1.0"
+  echo "${raw/+bob/.bob}"
+}
 
 prepare() {
   cd "${srcdir}"
