@@ -2,7 +2,7 @@
 # Maintainer: rubiin <roobin.bhandari@gmail.com>
 
 pkgname='pokego-bin'
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="A fast, Go rewrite of [phoney badger's pokemon-colorscripts](https://gitlab.com/phoneybadger/pokemon-colorscripts) that prints Pokémon sprites in color directly in your terminal."
 url='https://github.com/rubiin/pokego'
@@ -12,13 +12,13 @@ provides=('pokego')
 conflicts=('pokego' 'pokego-git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rubiin/pokego/releases/download/v${pkgver}/pokego_Linux_arm64.tar.gz")
-sha256sums_aarch64=('21444abf1829ab7dd168b5dbaaa66b2bd1d70fabcf7f99e23bd90d79325e101d')
+sha256sums_aarch64=('d47e938e41111afa0ea644c327a5cb2ac5066c44c94e0dde6b54c7a92022e9c1')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rubiin/pokego/releases/download/v${pkgver}/pokego_Linux_i386.tar.gz")
-sha256sums_i686=('e9e029cf657d5801020b749bcc8302a8011afb33b662145690181701f244ead5')
+sha256sums_i686=('a788090a66dd7aee2e1617831abc83dca2b81d176d195a0abf1a95949246d3dc')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rubiin/pokego/releases/download/v${pkgver}/pokego_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('accc456a30dbc0acee8bf55c212824525138bb8df7fa6979cb2527fb76d8c208')
+sha256sums_x86_64=('c7059405b88299116b19a1b9f492f75cc2db73e0e2d2fb8cf6d7086bfc7e7fc0')
 
 package() {
   # bin

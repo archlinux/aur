@@ -1,6 +1,6 @@
 pkgbase = pokego-bin
 	pkgdesc = A fast, Go rewrite of [phoney badger's pokemon-colorscripts](https://gitlab.com/phoneybadger/pokemon-colorscripts) that prints Pokémon sprites in color directly in your terminal.
-	pkgver = 0.5.8
+	pkgver = 0.5.9
 	pkgrel = 1
 	url = https://github.com/rubiin/pokego
 	license = GPL-3.0-only
@@ -8,13 +8,13 @@ pkgbase = pokego-bin
 	conflicts = pokego-git
 	provides = pokego
 	arch = aarch64
-	source_aarch64 = https://github.com/rubiin/pokego/releases/download/v0.5.8/pokego_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 21444abf1829ab7dd168b5dbaaa66b2bd1d70fabcf7f99e23bd90d79325e101d
+	source_aarch64 = https://github.com/rubiin/pokego/releases/download/v0.5.9/pokego_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d47e938e41111afa0ea644c327a5cb2ac5066c44c94e0dde6b54c7a92022e9c1
 	arch = i686
-	source_i686 = https://github.com/rubiin/pokego/releases/download/v0.5.8/pokego_Linux_i386.tar.gz
-	sha256sums_i686 = e9e029cf657d5801020b749bcc8302a8011afb33b662145690181701f244ead5
+	source_i686 = https://github.com/rubiin/pokego/releases/download/v0.5.9/pokego_Linux_i386.tar.gz
+	sha256sums_i686 = a788090a66dd7aee2e1617831abc83dca2b81d176d195a0abf1a95949246d3dc
 	arch = x86_64
-	source_x86_64 = https://github.com/rubiin/pokego/releases/download/v0.5.8/pokego_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = accc456a30dbc0acee8bf55c212824525138bb8df7fa6979cb2527fb76d8c208
+	source_x86_64 = https://github.com/rubiin/pokego/releases/download/v0.5.9/pokego_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c7059405b88299116b19a1b9f492f75cc2db73e0e2d2fb8cf6d7086bfc7e7fc0
 	
 pkgname = pokego-bin
