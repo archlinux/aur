@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codebase-memory-mcp
-pkgver=0.10.8
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="High-performance code intelligence MCP server with persistent knowledge graph"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('git: git-history change-coupling analysis')
 conflicts=("${pkgname}-bin" "${pkgname}-ui-bin" "${pkgname}-git")
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bbb40b0af7860e518d5f11e1d7316634bfebaa0928a05928792a890e0222cbeb')
+sha256sums=('7a292eb925640c1d254863733dd260911c94a5f3d1846b228ada685c2770b7ae')
 
 build() {
     cd "${pkgname}-${pkgver}"
