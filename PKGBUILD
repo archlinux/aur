@@ -1,4 +1,4 @@
-# Maintainer: rNoz <maintainers@users.noreply.github.com>
+# Maintainer: rNoz <rNoz@users.noreply.github.com>
 pkgname=tokensave-bin
 pkgver=7.12.1
 pkgrel=1
