@@ -1,5 +1,5 @@
 # Maintainer: taxin-404 <taxin404@duck.com>
-pkgname=browsecode-bin
+pkgname=browsercode-bin
 pkgver=0.1.20
 pkgrel=1
 pkgdesc="An AI coding agent that drives real browsers (opencode fork, adds browser_execute via CDP) — prebuilt binary"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('uv')
 provides=('bcode' 'browsecode')
 options=('!debug' '!strip')
-install=browsecode-bin.install
+install=browsercode-bin.install
 
 source_x86_64=("bcode-linux-x64-${pkgver}.tar.gz::https://github.com/browser-use/browsecode/releases/download/v${pkgver}/bcode-linux-x64.tar.gz")
 source_aarch64=("bcode-linux-arm64-${pkgver}.tar.gz::https://github.com/browser-use/browsecode/releases/download/v${pkgver}/bcode-linux-arm64.tar.gz")
