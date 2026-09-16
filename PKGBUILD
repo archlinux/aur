@@ -1,7 +1,7 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=rill
-pkgver=0.6.0
-pkgrel=4
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="A minimalist scrolling window manager for River"
 arch=('x86_64')
 _zigwlver=0.6.0
@@ -17,7 +17,7 @@ source=(
 	zig-wayland-$_zigwlver.tar.gz::https://github.com/ifreund/zig-wayland/archive/refs/tags/v$_zigwlver.tar.gz
 	zig-xkbcommon-$_xkbver.tar.gz::https://github.com/ifreund/zig-xkbcommon/archive/refs/tags/v$_xkbver.tar.gz
 )
-sha256sums=('1218228fe2f1a2c9f9055d3cdea81da13ea719ce1e38a56506f02208c38a276b'
+sha256sums=('5f1bb08f67493bb58d41bd511adf5b8a6033035b33f59542b35f82b7531d5f9e'
             'd9804e50f9fa549ad0aed751fbbb5fbc52110d57971b59ecab34ff11f08b0230'
             'bff568b83a19630dc7cb27950e03337925d0d71b4fb0676bc6ebe2d31d1db032')
 optdepends=('alacritty: Default terminal emulator'
