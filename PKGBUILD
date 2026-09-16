@@ -1,9 +1,9 @@
 # Maintainer: TJ Smith
 
 pkgname='cfgd'
-pkgver='0.10.0'
+pkgver='0.11.0'
 pkgrel=1
-pkgdesc="Declarative, GitOps-style machine configuration management"
+pkgdesc='Declarative, GitOps-style machine configuration management'
 arch=('aarch64' 'x86_64')
 url='https://github.com/tj-smith47/cfgd'
 license=('MIT' 'Apache-2.0')
@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo')
 optdepends=('git: GitOps source sync from remote repositories')
 conflicts=('cfgd')
 provides=('cfgd')
-source=("https://github.com/tj-smith47/cfgd/archive/refs/tags/v0.10.0.tar.gz")
+source=("https://github.com/tj-smith47/cfgd/archive/refs/tags/v0.11.0.tar.gz")
 sha256sums=('SKIP')
 
 build() {
