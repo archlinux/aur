@@ -1,5 +1,5 @@
 pkgname=skwd-deck-steamworks
-pkgver=1.0.0_beta.14.2
+pkgver=1.0.0_beta.15
 pkgrel=1
 pkgdesc='Optional Steam Client Workshop backend for Skwd Deck'
 arch=(x86_64)
@@ -9,17 +9,17 @@ depends=(gcc-libs glibc skwd-deck)
 makedepends=(cargo lld)
 optdepends=('steam: running Steam client used by the backend')
 options=(!debug !lto)
-source=("$pkgname-1.0.0-beta.14.2.tar.xz::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.14.2/skwd-deck-steamworks-x86_64-1.0.0-beta.14.2.tar.xz")
-sha256sums=('1bb727589cde83033c342bb0f7c42f10c5f7b12edeaa40118832e9867a33cb0d')
+source=("$pkgname-1.0.0-beta.15.tar.xz::https://github.com/liixini/skwd-wall/releases/download/v1.0.0-beta.15/skwd-deck-steamworks-x86_64-1.0.0-beta.15.tar.xz")
+sha256sums=('a31451622f6cff6c09027f37159408148d5bb23b0f80606da0e0ed5c04ca3bbd')
 
 build() {
-  cd "$pkgname-1.0.0-beta.14.2"
+  cd "$pkgname-1.0.0-beta.15"
   export CARGO_PROFILE_RELEASE_STRIP=symbols
   export SKWD_USE_LLD=1
   ./distribution/build.sh steamworks
 }
 
 package() {
-  cd "$pkgname-1.0.0-beta.14.2"
+  cd "$pkgname-1.0.0-beta.15"
   ./distribution/install.sh steamworks "$pkgdir"
 }
