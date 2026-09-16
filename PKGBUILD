@@ -6,16 +6,16 @@
 
 _pkgorg=codeberg.org/mipi
 pkgname=gnome-backup
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Backup and restore GNOME settings and shell extensions"
 arch=(
   x86_64
 )
-license=(GPL3)
+url="https://${_pkgorg}/${pkgname}/"
+license=(GPL-3.0-or-later)
 source=("https://${_pkgorg}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('ec82348c57af9d9085e1cabc031b40446baef1db7ef93ff423d066c80a1d834a')
-validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fsfe.org>
+sha256sums=('d5bc5c271ad1efc7b20c667eaeb4aaa68f87c1b9d0e2bd82d0ccdc2cccfbf1bf')
 depends=(
   dconf
 )
@@ -34,7 +34,7 @@ options=(
 prepare() {
   cd "${pkgname}" || return
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"  
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
