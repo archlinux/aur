@@ -7,7 +7,6 @@ pkgbase = cssh
 	arch = i686
 	arch = pentium4
 	arch = x86_64
-	arch = arm
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
