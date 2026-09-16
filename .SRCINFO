@@ -1,7 +1,7 @@
 pkgbase = chillpill-shell
 	pkgdesc = Lightweight and feature rich dynamic pill bar for Hyprland
 	pkgver = 0.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LUCKYS1NGHH/ChillPill-Shell
 	install = chillpill-shell.install
 	arch = x86_64
