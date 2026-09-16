@@ -2,7 +2,7 @@
 pkgname=agentty-bin
 _pkgname=agentty
 # pkgver is rewritten from CMakeLists.txt (project VERSION) by scripts/release.sh.
-pkgver=0.9.0
+pkgver=0.9.1-rc1
 pkgrel=1
 pkgdesc="Blazing-fast Claude in your terminal — 8.8 MB static binary, sandboxed by default, one-command SSH airgap. C++26 alternative to claude-code."
 arch=('x86_64' 'aarch64')
