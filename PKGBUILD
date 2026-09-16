@@ -2,7 +2,7 @@
 
 pkgname=canon-pixma-gseries-tool
 _pkgname=9M2PJU-Canon-PIXMA-GSeries-Tool
-pkgver=1.0.0.r9.g97ffd22
+pkgver=1.0.0.r10.gf474e9f
 pkgrel=1
 pkgdesc="GTK3 GUI assistant, driver setup, and maintenance suite for Canon PIXMA G-Series MegaTank printers"
 arch=('any')
