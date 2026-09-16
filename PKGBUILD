@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=zapfast-bin
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ install="${pkgname}.install"
 # Nothing beyond libc is linked directly; winit and glutin dlopen these at
 # startup, and this is a GUI-only application, so all of them have to be
 # there for it to run at all.
-depends=('alsa-lib' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
-optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
+depends=('alsa-lib' 'alsa-plugins' 'libglvnd' 'libxkbcommon' 'libxkbcommon-x11' 'wayland' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxrandr')
+optdepends=('org.freedesktop.secrets: archive encryption key storage'
             'noto-fonts-emoji: colour emoji in messages and reactions'
             'xdg-desktop-portal: the file picker for attachments')
 provides=('zapfast' 'fastsapp')
@@ -21,8 +21,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/zapfast"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/zapfast-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/zapfast-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('bdb09dd5384e382ad5eba2fac39161c8ccf9f105b9eaee9452cda41441d39b9f')
-sha256sums_aarch64=('2683987268bf5e7bf805f0431daa88576a8cf884508c0e9835cc604f27148a34')
+sha256sums_x86_64=('5cbc07c4dd8345b38cf33f02fd8ff51461a4d712f621640994340ef3d5b6457a')
+sha256sums_aarch64=('b46536808df540689d752f5f3d9d435c32a8809b04819ff3b780277a2c478750')
 
 package() {
   local target
@@ -39,4 +39,12 @@ package() {
     "${pkgdir}/usr/share/applications/zapfast.desktop"
   install -Dm644 "${dir}/packaging/icons/zapfast.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/zapfast.svg"
+  # Releases predating theme integration remain valid packaging inputs.
+  if [[ -f "${dir}/contrib/omarchy/zapfast.json.tpl" ]]; then
+    install -Dm644 "${dir}/contrib/omarchy/zapfast.json.tpl" \
+      "${pkgdir}/usr/share/zapfast/omarchy/zapfast.json.tpl"
+    install -Dm755 "${dir}/contrib/omarchy/zapfast-theme" \
+      "${pkgdir}/usr/share/zapfast/omarchy/zapfast-theme"
+  fi
+
 }

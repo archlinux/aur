@@ -6,7 +6,11 @@ zapfast setup:
   device, then point the camera at the code (or link with your phone
   number instead). The chats sync to a local archive on the first link.
 
-  Colour emoji come from noto-fonts-emoji; GIFs play through ffmpeg.
+  Keep your desktop keyring unlocked so ZapFast can open its encrypted
+  archive. On Linux this needs a Secret Service provider (GNOME Keyring
+  or KeePassXC with Secret Service enabled).
+
+  Colour emoji have a bundled fallback; GIFs play in the app.
 
 Docs: https://zapfast.rocks
 EOF2
