@@ -1,11 +1,11 @@
 pkgbase = joidy
 pkgdesc = Personal knowledge management with gamification
-pkgver = 1.1.0_beta.4
+pkgver = 1.1.0_beta.5
 pkgrel = 1
 url = https://joidy-web.vercel.app
 arch = any
 license = GPL3
 depends = docker
-source = https://github.com/Axel-DaMage/joidy/archive/v1.1.0-beta.4.tar.gz
-sha256sums = d74cb3914688937a56f54a83fbe8453b6ce4957a05f3a87d16899339e03e876d
+source = https://github.com/Axel-DaMage/joidy/archive/v1.1.0-beta.5.tar.gz
+sha256sums = 8bb50c15ef2ffa3d36985e62ccb2f738da9b29fcfa72c173b18c49c8a60efb84
 pkgname = joidy
