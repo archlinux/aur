@@ -1,11 +1,11 @@
 # Maintainer: asm0dey <pavel.finkelshtein@gmail.com>
 
 pkgname=atomdrift-scan
-pkgver=2.3.0
+pkgver=2.11.0
 pkgrel=2
 pkgdesc='ML-powered malware classification using cleave static analysis'
 arch=('x86_64')
-url='https://codeberg.org/atomdrift/scan'
+
 license=('Apache-2.0')
 depends=('glibc' 'gcc-libs' 'bzip2' 'rizin' 'innoextract')
 makedepends=('cargo' 'git')
@@ -15,8 +15,8 @@ provides=('atomscan' 'ascan')
 # global -flto=auto produces GCC-LTO objects that some default linkers (lld)
 # cannot consume, breaking the final link. Disable LTO for a portable build.
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f1605b7ad963a7ea64cf75172a622925c11ab794dbf4bfdba4dedd97487172ce')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/atomdrift-project/scan/releases/download/v$pkgver/atomscan-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums=('ee1ed1a799d911ba04fe58076bf43b1ea7fc410bd2e5c9e0200aaedea25e2497')
 
 prepare() {
     cd scan
