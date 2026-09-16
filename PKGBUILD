@@ -3,7 +3,7 @@
 pkgname=mautrix-instagram
 _name=instagram
 _base_name=meta
-pkgver=0.2608.0
+pkgver=0.2609.0
 pkgrel=1
 pkgdesc="A Matrix-Instagram puppeting bridge"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ source=(
   log-path.diff
 )
 backup=("etc/${pkgname}/${pkgname}.yaml")
-sha256sums=('2f22393a81f4e7af2abca79c1a89da28f6b0308b976f1c093d4c02d1fa324e53'
+sha256sums=('c69994ab5633e73b18bf7d52de9644cca87c97d1b7a863128c707ee2c9502500'
             'd2b32fa5a94b95f2147e0fad47bc4ba0a8d9253cbf5e1db46c3ce8036b27ae5c'
             'fe826cbf14546f131cdda250b2c959ca0854d1769287b86ef0c1ce64f1d46b20'
             'b16101895a888cbaf89b1b73f91f67933996931cfdb2f223234b5f1ddfeb92a1'
