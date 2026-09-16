@@ -1,6 +1,6 @@
 pkgbase = context-bin
 	pkgdesc = Standalone CLI and MCP server for deterministic repository context (prebuilt binary)
-	pkgver = 20260913.0
+	pkgver = 20260916.0
 	pkgrel = 1
 	url = https://github.com/timmo001/context
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = context-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = context-20260913.0-linux-x86_64.tar.gz::https://github.com/timmo001/context/releases/download/20260913.0/context-20260913.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = cc215bb4262009e930862b2c2b139037410bf5c36fd97e5e2e481c9d4001dcb5
-	source_aarch64 = context-20260913.0-linux-x86_64.tar.gz::https://github.com/timmo001/context/releases/download/20260913.0/context-20260913.0-linux-x86_64.tar.gz
-	sha256sums_aarch64 = 83be2fc4fd475d828cd1596f83b0c9ecb8e1cb4aefdb7cfaff83cda2b89c8322
+	source_x86_64 = context-20260916.0-linux-x86_64.tar.gz::https://github.com/timmo001/context/releases/download/20260916.0/context-20260916.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 4d47b2fcc813cf9329def52a558b53029c466f0493ebf78a10e9fe825b762eb7
+	source_aarch64 = context-20260916.0-linux-x86_64.tar.gz::https://github.com/timmo001/context/releases/download/20260916.0/context-20260916.0-linux-x86_64.tar.gz
+	sha256sums_aarch64 = a97e2c2a6cce7462c4332f9cefb381f738534a18e645154e46bc735753577691
 
 pkgname = context-bin
