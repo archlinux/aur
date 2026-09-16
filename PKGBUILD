@@ -6,8 +6,8 @@
 _pkgname='icann-rdap'
 pkgname="$_pkgname-bin"
 pkgdesc='ICANN implementation of RDAP: the Registry Data Access Protocol (pre-compiled)'
-pkgver=0.0.31
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 changelog="$_pkgname.changelog"
 url="https://github.com/icann/$_pkgname"
 arch=('aarch64' 'x86_64')
@@ -57,11 +57,11 @@ package() {
 }
 
 sha256sums_aarch64=(
-  '60979db37ba9967c49fa51e722f3ff3ff8acf2c421ac93f3fd59408075edb61d'
+  '07a33ae06a871186d96132cefb4c9efb4b89af2113667200e4c85fd99fc337e9'
   "${_skip[@]}"
 )
 sha256sums_x86_64=(
-  'a6bc6c3cb2c32ddb562262d818ca5a49fc9ace0fb440ff5f65db8663ca62d75c'
+  'd5f69ff57ab2ac2392683b026ff1bd36ad99e9382a381fcf739db0259879fa14'
   "${_skip[@]}"
 )
 
