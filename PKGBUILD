@@ -18,7 +18,7 @@ conflicts=('anvil')
 # $pkgname-$pkgver — the two diverge now that pkgname != the repo name.
 _srcdir="Anvil-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Hamza-b93/anvil/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8732b13fc2f724e224b22d7adfc4f65c48dd2e13c678cf3ed9f9b6e87fc37738')
+sha256sums=('a9b337a8770b3c5e34b07f133724f933c29603b35f68f562657788017bae2d01')
 
 build() {
   cd "$_srcdir"
