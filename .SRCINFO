@@ -1,0 +1,17 @@
+pkgbase = ksops-dry-run
+	pkgdesc = Kustomize plugin to fake the decryption of ksops secrets
+	pkgver = 0.2.0_4.5.1
+	pkgrel = 1
+	url = https://github.com/joshdk/ksops-dry-run
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	conflicts = kustomize-sops
+	conflicts = ksops-bin
+	source = https://github.com/joshdk/ksops-dry-run/archive/refs/tags/v0.2.0.tar.gz
+	source = https://github.com/viaduct-ai/kustomize-sops/archive/refs/tags/v4.5.1.tar.gz
+	sha256sums = 80690d0d702b997aeb1ae6d6a7dc8ea8800d64c7307c004209387947bbd33aa2
+	sha256sums = c3cd2b77e6adb4cc84bcaad8cbd751ee0c633bed2f835ac85ce2bc969d21a88b
+
+pkgname = ksops-dry-run
