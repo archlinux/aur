@@ -2,7 +2,7 @@
 
 pkgname=(gaia-amd gaia-amd-webui)
 pkgver=0.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered inference engine for AMD hardware"
 arch=(x86_64)
 url="https://github.com/amd/gaia"

@@ -1,7 +1,7 @@
 pkgbase = gaia-amd
 	pkgdesc = AI-powered inference engine for AMD hardware
 	pkgver = 0.24.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amd/gaia
 	arch = x86_64
 	license = MIT
