@@ -3,12 +3,13 @@ _cranname=ankiR
 _cranver=0.6.6
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Comprehensive R Toolkit for Anki Flashcard Analysis (137 functions)"
 arch=('any')
 url="https://github.com/chrislongros/ankiR"
 license=('MIT')
-depends=(r r-jsonlite r-dbi r-rsqlite r-tibble)
+depends=(r r-jsonlite r-dbi r-rsqlite r-tibble r-rlang r-scales)
+makedepends=(r-knitr r-rmarkdown)
 optdepends=(
   'r-testthat: testing'
   'r-knitr: vignettes'
