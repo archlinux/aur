@@ -54,8 +54,12 @@ depends=(
     python-accelerate
     python-aiodns
     python-openai
+    python-openpyxl
+    python-reportlab
+    python-tomli-w
     lemonade-server
 )
+optdepends=('python-apscheduler: gaia schedule daemon (AUR)')
 makedepends=(
     git
     cmake
