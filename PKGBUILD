@@ -3,7 +3,7 @@
 pkgbase=bin2cpp
 pkgname=bin2cpp
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="bin2cpp: The easiest way to embed small files into a c++ executable. bin2cpp converts text or binary files to C++ files (*.h, *.cpp) for easy access within the code."
 arch=($CARCH)
 url="https://github.com/end2endzone/bin2cpp"
@@ -13,8 +13,8 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 depends=(
-    gcc-libs
-    glibc
+    libgcc_s.so
+    libstdc++.so
 )
 makedepends=(
     cmake
@@ -51,7 +51,7 @@ build() {
         -DBIN2CPP_BUILD_SAMPLES=OFF \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -Wno-dev \
+        -Wno-author \
         -B build \
         -G Ninja
 
