@@ -1,15 +1,18 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 6.1.0 ➙ 6.4.1
-              : 2026-07-05 ➙ 2026-07-27
+ Tags         : 6.2.0 ➙ 6.4.2
+              : 2026-07-09 ➙ 2026-09-16
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-07-27   : 6.4.1
+ 2026-09-16   : 6.4.2
+              - **6.4.2** - Update Readme (esp. dracut config section)
+
+ 2026-07-27   : 6.4.1, origin/master
               - Update src/.clang-tidy
                 Add nvcheker to the AUR package not just packaging directory in the git repo
 
- 2026-07-17   : 6.4.0, origin/master
+ 2026-07-17   : 6.4.0
               - **6.4.0**
             
                 * BugFix: sd-find-boot was not showing output unless verbose = 2 in version 6.3.0.
@@ -44,17 +47,3 @@
                   - faster with fewer system calls.
                   - Fix (benign) double // in pathname.
                 * Drop all include <stdbool.h> (not needed with C23).
-
- 2026-07-05   : 6.1.0
-              - **6.1.0**
-            
-                * Bug fix installing efi tools: typo in destination directory name.
-                * Improve build options
-                  - Compiler flag *-march=* now set by a build option: -Dcpu_level=x86-64-v3 (default is -march=x86-64)
-                  - Additional compiler/linker hardening
-                  - Release build now defaults to -Dhardened_export=true which uses -fvisibility=hidden
-                    Also speeds up shared lib load times.
-                  - Confirm project builds without any warnings using *-fanalyzer*
-                * efi-tool (always uses bls layout) - simplify the bls initialization.
-            
-                  Assisted-by: Claude (Anthropic) <https://claude.ai>
