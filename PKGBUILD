@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=nanoparquet
-_pkgver=0.5.1
+_pkgver=0.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Read and Write 'Parquet' Files"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -45,9 +45,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-libs.patch")
-md5sums=('b439a90ae836dbb571bd3c1050542e02'
+md5sums=('2daef8e6f96c5a5fdc0507c17896ba72'
          'cf09d29ea2a40167da7e4563ef66beff')
-b2sums=('d852ac361ffe313bff4b1a001f3e0171b1a32c234823cf14c723a0b864fa86af884787ccb216780a8b22c0e51bd328e38676048d518af81ef1d3c4211961152a'
+b2sums=('e680e24179f5b4c7634514605fb654dd55ba5a15f32e0f1e51d7a2b7f1bc2447a4b92dadcdaf4333ac705d54b932aba3c35ec529248421b15831707c407a0605'
         '4dc0680b02138f312b33efe03b30c2bcec289aed768dd2cb3b0e962056f4c107ef9e131eb582692f38b360d56dc49cd0d56bfaf280cea8ff5f732ed902e76268')
 
 prepare() {
