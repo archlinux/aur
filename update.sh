@@ -46,7 +46,7 @@ fi
 if [ "${initial}x" = "x" ] ; then
     echo "New version available: $c_ver (last build is $l_ver)"
     (cd .. ; git rm *.patch; git restore --staged bnx2x_warpcore+8727_2_5g_sgmii_arch.patch; git restore bnx2x_warpcore+8727_2_5g_sgmii_arch.patch)
-    cp {config,PKGBUILD,*.patch} ..
+    cp {config.x86_64,PKGBUILD,*.patch} ..
     cd ..
 
     sed -i -e 's/# Maintainer/# Contributor/' \
@@ -82,7 +82,7 @@ done
 
 if [ "${initial}x" = "x" ] ; then
     makepkg --printsrcinfo > .SRCINFO
-    git add PKGBUILD config .SRCINFO *.patch
+    git add PKGBUILD config.x86_64 .SRCINFO *.patch
     git commit -m "Released $c_ver"
     git push -q
 fi
