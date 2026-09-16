@@ -1,27 +1,27 @@
 pkgbase = denial-bin
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/denialwm/denial
 	arch = x86_64
 	license = GPL-3.0-or-later
-	noextract = denial-0.4.1-1-x86_64.pkg.tar.zst
-	noextract = denial-flutter-engine-1.0.4.1-1-x86_64.pkg.tar.zst
-	noextract = denial-ui-development-0.4.1-1-x86_64.pkg.tar.zst
+	noextract = denial-0.4.2-1-x86_64.pkg.tar.zst
+	noextract = denial-flutter-engine-1.0.4.2-1-x86_64.pkg.tar.zst
+	noextract = denial-ui-development-0.4.2-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = https://github.com/denialwm/denial/releases/download/v0.4.1/denial-0.4.1-1-x86_64.pkg.tar.zst
-	source = https://github.com/denialwm/denial/releases/download/v0.4.1/denial-0.4.1-1-x86_64.pkg.tar.zst.sig
-	source = https://github.com/denialwm/denial/releases/download/v0.4.1/denial-flutter-engine-1.0.4.1-1-x86_64.pkg.tar.zst
-	source = https://github.com/denialwm/denial/releases/download/v0.4.1/denial-flutter-engine-1.0.4.1-1-x86_64.pkg.tar.zst.sig
-	source = https://github.com/denialwm/denial/releases/download/v0.4.1/denial-ui-development-0.4.1-1-x86_64.pkg.tar.zst
-	source = https://github.com/denialwm/denial/releases/download/v0.4.1/denial-ui-development-0.4.1-1-x86_64.pkg.tar.zst.sig
+	source = https://github.com/denialwm/denial/releases/download/v0.4.2/denial-0.4.2-1-x86_64.pkg.tar.zst
+	source = https://github.com/denialwm/denial/releases/download/v0.4.2/denial-0.4.2-1-x86_64.pkg.tar.zst.sig
+	source = https://github.com/denialwm/denial/releases/download/v0.4.2/denial-flutter-engine-1.0.4.2-1-x86_64.pkg.tar.zst
+	source = https://github.com/denialwm/denial/releases/download/v0.4.2/denial-flutter-engine-1.0.4.2-1-x86_64.pkg.tar.zst.sig
+	source = https://github.com/denialwm/denial/releases/download/v0.4.2/denial-ui-development-0.4.2-1-x86_64.pkg.tar.zst
+	source = https://github.com/denialwm/denial/releases/download/v0.4.2/denial-ui-development-0.4.2-1-x86_64.pkg.tar.zst.sig
 	validpgpkeys = AE4108FA5E91E26BE0EE331E0F5B3AD16E023091
-	sha256sums = e391ff500ca73b879d98eacafaf80579ea436b093f02fd448b19de07b7b356d6
+	sha256sums = ff70f98848ac6277fdc65428d28a75517d02263c931263864d0e200b784572cd
 	sha256sums = SKIP
-	sha256sums = b7b05675155078e6c34c4dbe3f8fbe40df0e03bc347bad44c4ffa09e742ccb09
+	sha256sums = 8a0a2e64f1f37dd5026cf5cafea3aae15f23ffaf557056c5581e92f9a70d3270
 	sha256sums = SKIP
-	sha256sums = 6a404ec148e2754e4edbe21f1bdacc5b8d125836297e209ebb5128535e72057c
+	sha256sums = 4c9c7f8bba293104aab668329a6720c47805696d5ac79304f707813c82f613a9
 	sha256sums = SKIP
 
 pkgname = denial-flutter-engine-bin
@@ -29,7 +29,7 @@ pkgname = denial-flutter-engine-bin
 	license = BSD-3-Clause
 	depends = fontconfig
 	depends = glibc
-	provides = denial-flutter-engine=0.4.1
+	provides = denial-flutter-engine=0.4.2
 	provides = denial-flutter-engine-abi=3.44.7.denial1
 	conflicts = denial-flutter-engine
 	conflicts = denial-flutter-engine-git
@@ -44,7 +44,7 @@ pkgname = denial-bin
 	depends = bash
 	depends = coreutils
 	depends = ddcutil
-	depends = denial-flutter-engine-bin=1:0.4.1-1
+	depends = denial-flutter-engine-bin=1:0.4.2-1
 	depends = dbus
 	depends = glibc
 	depends = gtk3
@@ -72,7 +72,7 @@ pkgname = denial-bin
 	optdepends = power-profiles-daemon: system power profiles
 	optdepends = sddm: graphical login and session selection
 	optdepends = upower: battery and power status
-	provides = denial=0.4.1
+	provides = denial=0.4.2
 	conflicts = denial
 	conflicts = denial-git
 	backup = etc/denial/outputs.conf
@@ -83,12 +83,12 @@ pkgname = denial-ui-development-bin
 	pkgdesc = Pinned live Flutter UI development environment for Denial (prebuilt binary)
 	license = BSD-3-Clause
 	license = GPL-3.0-or-later
-	depends = denial-bin=1:0.4.1-1
+	depends = denial-bin=1:0.4.2-1
 	depends = fontconfig
 	depends = git
 	depends = glibc
 	depends = libgcc
-	provides = denial-ui-development=0.4.1
+	provides = denial-ui-development=0.4.2
 	provides = denial-ui-development-engine=3.44.7.denial1
 	conflicts = denial-ui-development
 	conflicts = denial-ui-development-git

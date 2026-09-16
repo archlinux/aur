@@ -4,7 +4,7 @@
 
 pkgbase=denial-bin
 pkgname=('denial-flutter-engine-bin' 'denial-bin' 'denial-ui-development-bin')
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -40,11 +40,11 @@ source=(
   "https://github.com/denialwm/denial/releases/download/v${pkgver}/denial-ui-development-${pkgver}-1-x86_64.pkg.tar.zst.sig"
 )
 sha256sums=(
-  'e391ff500ca73b879d98eacafaf80579ea436b093f02fd448b19de07b7b356d6'
+  'ff70f98848ac6277fdc65428d28a75517d02263c931263864d0e200b784572cd'
   'SKIP'
-  'b7b05675155078e6c34c4dbe3f8fbe40df0e03bc347bad44c4ffa09e742ccb09'
+  '8a0a2e64f1f37dd5026cf5cafea3aae15f23ffaf557056c5581e92f9a70d3270'
   'SKIP'
-  '6a404ec148e2754e4edbe21f1bdacc5b8d125836297e209ebb5128535e72057c'
+  '4c9c7f8bba293104aab668329a6720c47805696d5ac79304f707813c82f613a9'
   'SKIP'
 )
 validpgpkeys=('AE4108FA5E91E26BE0EE331E0F5B3AD16E023091')
