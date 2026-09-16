@@ -8,11 +8,11 @@ url="https://github.com/leoliu0/ratex"
 license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
-provides=('texmk')
+provides=('ratex' 'texmk' 'pdflatex' 'xelatex' 'lualatex')
 conflicts=('ratex-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leoliu0/ratex/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c177de1eaa509e807a78e19c3cf6187ac8ed3d38b68e37ee2348d88515777945')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -22,6 +22,9 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 target/release/texmk "$pkgdir/usr/bin/texmk"
+    for alias in pdflatex xelatex lualatex; do
+        ln -sf texmk "$pkgdir/usr/bin/$alias"
+    done
     if [ -f LICENSE-MIT ]; then
         install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     fi

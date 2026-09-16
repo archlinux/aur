@@ -9,10 +9,14 @@ pkgbase = ratex
 	license = Apache-2.0
 	makedepends = cargo
 	depends = gcc-libs
+	provides = ratex
 	provides = texmk
+	provides = pdflatex
+	provides = xelatex
+	provides = lualatex
 	conflicts = ratex-bin
 	options = !lto
 	source = ratex-0.1.0.tar.gz::https://github.com/leoliu0/ratex/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = c177de1eaa509e807a78e19c3cf6187ac8ed3d38b68e37ee2348d88515777945
 
 pkgname = ratex
