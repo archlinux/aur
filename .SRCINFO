@@ -1,5 +1,5 @@
 pkgbase = tty-terminal
-	pkgdesc = Linux TTY styling with the Kitty engine and native inline images
+	pkgdesc = Vibe-coded terminal emulator that looks like a TTY interface
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/lunagoat/tty-terminal

@@ -3,7 +3,7 @@
     pkgname=tty-terminal
     pkgver=1.0.0
     pkgrel=1
-    pkgdesc='Linux TTY styling with the Kitty engine and native inline images'
+    pkgdesc='Vibe-coded terminal emulator that looks like a TTY interface'
     arch=('any')
     url='https://github.com/lunagoat/tty-terminal'
     license=('MIT' 'GPL-2.0-only')
