@@ -1,6 +1,6 @@
 pkgbase = qsgreeter-hyprland-git
 	pkgdesc = QuickShell-based greeter for greetd, running under Hyprland
-	pkgver = r19.83bb4ad
+	pkgver = r20.7898fb0
 	pkgrel = 1
 	url = https://github.com/nninkovic95/greetd-qsgreeter
 	install = qsgreeter-hyprland-git.install

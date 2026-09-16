@@ -1,7 +1,7 @@
 # Maintainer: SleepNoMore <nninkovic95@gmail.com>
 # Contributor: Angel Talero <angelgotalero@outlook.com>
 pkgname=qsgreeter-hyprland-git
-pkgver=r19.83bb4ad
+pkgver=r20.7898fb0
 pkgrel=1
 pkgdesc='QuickShell-based greeter for greetd, running under Hyprland'
 arch=('any')
