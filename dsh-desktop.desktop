@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=DSH Desktop
+Name[zh_CN]=DSH 桌面版
+Comment=A cross-platform desktop shell for DeepSeek Harness
+Exec=/opt/dsh-desktop/dsh-desktop %U
+Terminal=false
+Type=Application
+Icon=dsh-desktop
+StartupWMClass=dsh-desktop
+Categories=Development;
