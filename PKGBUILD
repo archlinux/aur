@@ -1,7 +1,7 @@
 # Maintainer: Marek Mahut <marek@mahut.dev>
 
 pkgname=badfish
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Redfish-based API tool for managing bare-metal systems via out-of-band management"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quadsproject/badfish/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c11b88a998ae11ccdafe2a1be3acad89a6abfe208fe25353ddf7f87340a0f68d')
+sha256sums=('45bc245c08e45a2077578cb3a3dd65a95aca5f4cfa8f00996195f5a42504023b')
 
 build() {
     cd "${pkgname}-${pkgver}"
