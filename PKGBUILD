@@ -1,8 +1,8 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=18.2.0
-pkgrel=2
+pkgver=18.2.1
+pkgrel=1
 pkgdesc="A coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
@@ -28,7 +28,7 @@ source=(
     "disable-bytecode-for-aur.patch"
 )
 sha256sums=('SKIP'
-            'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f'
+            'b2fe93ad7ef36869d660cc0ec9a0a0e7196370035efd86b32901101aff2920d1'
             '163c04dcef629a1f744d1cbdc51760eb4089651308a3b1ae8763eed4cc791d76'
 )
 
