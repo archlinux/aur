@@ -1,0 +1,15 @@
+# pacman hooks for kwin-canvas. KWin compiles the effect's QML once per
+# session and keeps it, so a new version is picked up at the next login.
+post_install() {
+    echo "kwin-canvas: enable it in System Settings > Desktop Effects > Canvas, or:"
+    echo "  kwriteconfig6 --file kwinrc --group Plugins --key kwin-canvasEnabled true"
+    echo "  qdbus6 org.kde.KWin /Effects org.kde.kwin.Effects.loadEffect kwin-canvas"
+}
+
+post_upgrade() {
+    echo "kwin-canvas: the running KWin keeps the previous version until you log out and in."
+}
+
+post_remove() {
+    echo "kwin-canvas: windows that were off-screen stay off-screen; the task manager brings them back."
+}
