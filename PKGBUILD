@@ -1,30 +1,37 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=heroic-games-launcher
-pkgver=2.22.2
+pkgver=2.22.3
 pkgrel=1
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux"
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
 license=(GPL-3.0-only)
 _electron=electron43
-depends=(which $_electron zlib libgcc glibc)
+depends=(
+    $_electron
+    glibc
+    libgcc
+    python
+    which
+    zlib
+    )
 makedepends=(
     desktop-file-utils
     git
     nodejs-lts
     pnpm
-    python
     )
 optdepends=(
     gamemode
     gamescope
     mangohud
     proton
+    "rsync: Move games using rsync instead of mv"
     wine
     )
 source=("git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git#tag=v${pkgver}")
-sha256sums=('60bcefddbbb5daf47ea86a8a05c3565db695c5d91b9f66f16894fb3291312e5a')
+sha256sums=('0846c998e8a39dc146f1273f4e7a587f172e3075f7de42dc936fe845b70b2f10')
 
 build() {
   cd HeroicGamesLauncher
