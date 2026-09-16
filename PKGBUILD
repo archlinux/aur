@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=memoria-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Keep a project's documented mental model connected to its code"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('memoria')
 options=('!strip' '!debug')
 _archive="memoria-${pkgver}-${CARCH}-unknown-linux-gnu"
 source=("${url}/releases/download/v${pkgver}/${_archive}.tar.gz")
-sha256sums=('dcb2052f977ff946b7251e7795a5acbea4ec6f9e0296335e43b89660d65fdcb8')
+sha256sums=('2c2795d9f7ec6ab4dfb80db92e105214d9aecbf673de23f87456bee922884221')
 
 build() {
   cd "${_archive}"
