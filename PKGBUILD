@@ -1,6 +1,6 @@
 pkgname=open-in-native-client
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="Native client for the Open In browser extension"
 arch=(any)
 url=https://add0n.com/open-in.html
@@ -10,8 +10,8 @@ source=(
     https://github.com/andy-portmen/native-client/releases/download/v$pkgver/linux.zip
     install.patch
 )
-b2sums=('59d42614494610242153775bed30f3bba1db9526b6a592b55a9b24339e116ae45d11a9a5073384f5d052189da7a503aa7a68adfeb9d4edf6e725656db1391e8d'
-        '640166ce5f8f4c93e3d07edf38d76c753ddb4611cdafeca61ef358c41bad5c152ce5d261b2733d8aa36ab91f31a12b6cdd2470f833affa5215bc8d36ae23f033')
+b2sums=('040a1d1d403baa9a3a15299a4c33799ffe309d91f19a6b76603741f5addcf48187f06c65a8884f73d54c4b91eb80edf206216e499ab7e26566fbb3bd9a36c0dc'
+        'f1df5233a0dcf4ae2bbffa9dc65625bb8cde0e492c6c62594805bcbe0cf8f4ec1539ea1753de30a33b51e6c34bbc1b5d2e53b0ad9af261ef52c63e3e2ce5fe0b')
 
 prepare() {
     cd app

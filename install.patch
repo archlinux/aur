@@ -18,90 +18,59 @@
 -const dir = path.join(share, 'com.add0n.node');
 +const dir = path.join(prefix, share, 'com.add0n.node');
  const name = 'com.add0n.node';
- const ids = require('./config.js').ids;
+ const config = require('./config.js');
 
 -function manifest(root, type, executable = path.join(dir, 'run.sh')) {
 +function manifest(root, type, executable = path.join(share, 'com.add0n.node', 'run.sh')) {
    console.log(' -> Creating a directory at', root);
    return new Promise((resolve, reject) => {
      exists(root, e => {
-@@ -110,59 +114,29 @@
+@@ -114,32 +118,18 @@
+
  async function chrome() {
-   if (ids.chrome.length) {
-     await manifest(path.join(
--      process.env.HOME,
--      '.config/google-chrome/NativeMessagingHosts'
-+      prefix,
-+      '/etc/opt/chrome/native-messaging-hosts'
-     ), 'chrome');
-     console.log(' -> Chrome Browser is supported');
-     await manifest(path.join(
--      process.env.HOME,
--      '.config/chromium/NativeMessagingHosts'
-+      prefix,
-+      '/etc/chromium/native-messaging-hosts'
-     ), 'chrome');
-     console.log(' -> Chromium Browser is supported');
-     await manifest(path.join(
--      process.env.HOME,
--      '.config/vivaldi/NativeMessagingHosts'
--    ), 'chrome');
--    console.log(' -> Vivaldi Browser is supported');
--    await manifest(path.join(
--      process.env.HOME,
--      '.config/BraveSoftware/Brave-Browser/NativeMessagingHosts'
--    ), 'chrome');
--    console.log(' -> Brave Browser is supported');
--    await manifest(path.join(
--      process.env.HOME,
--      '.config/microsoftedge/NativeMessagingHosts'
-+      prefix,
-+      '/etc/opt/edge/native-messaging-hosts'
-     ), 'chrome');
-     console.log(' -> Microsoft Edge Browser is supported');
--    await manifest(path.join(
--      process.env.HOME,
--      '.config/comet/NativeMessagingHosts'
--    ), 'chrome');
--    console.log(' -> Perplexity Comet Browser is supported');
+   if (config.ids.chrome.length) {
+-    await manifest(path.join(process.env.HOME, '.config/google-chrome/NativeMessagingHosts'), 'chrome');
++    await manifest(path.join(prefix, '/etc/opt/chrome/native-messaging-hosts'), 'chrome');
+     support('Chrome');
+-    await manifest(path.join(process.env.HOME, '.config/chromium/NativeMessagingHosts'), 'chrome');
++    await manifest(path.join(prefix, '/etc/chromium/native-messaging-hosts'), 'chrome');
+     support('Chromium Browser');
+-    await manifest(path.join(process.env.HOME, '.config/vivaldi/NativeMessagingHosts'), 'chrome');
+-    support('Vivaldi');
+-    await manifest(path.join(process.env.HOME, '.config/BraveSoftware/Brave-Browser/NativeMessagingHosts'), 'chrome');
+-    support('Brave');
+-    await manifest(path.join(process.env.HOME, '.config/microsoftedge/NativeMessagingHosts'), 'chrome');
++    await manifest(path.join(prefix, '/etc/opt/edge/native-messaging-hosts'), 'chrome');
+     support('Microsoft Edge');
+-    await manifest(path.join(process.env.HOME, '.config/comet/NativeMessagingHosts'), 'chrome');
+-    support('Perplexity Comet');
    }
  }
  async function firefox() {
-   if (ids.firefox.length) {
-     await manifest(path.join(
--      process.env.HOME,
--      '.mozilla/native-messaging-hosts'
-+      prefix,
-+      '/usr/lib/mozilla/native-messaging-hosts'
-     ), 'firefox');
-     console.log(' -> Firefox Browser is supported');
+   if (config.ids.firefox.length) {
+-    await manifest(path.join(process.env.HOME, '.mozilla/native-messaging-hosts'), 'firefox');
++    await manifest(path.join(prefix, '/usr/lib/mozilla/native-messaging-hosts'), 'firefox');
+     support('Firefox');
+-    await manifest(path.join(process.env.HOME, '.waterfox/native-messaging-hosts'), 'firefox');
+-    support('Waterfox');
 -    await manifest(path.join(
--      process.env.HOME,
--      '.waterfox/native-messaging-hosts'
+-      process.env.HOME, '.tor-browser/app/Browser/TorBrowser/Data/Browser/.mozilla/native-messaging-hosts'
 -    ), 'firefox');
--    console.log(' -> Waterfox Browser is supported');
--    await manifest(path.join(
--      process.env.HOME,
--      '.tor-browser/app/Browser/TorBrowser/Data/Browser/.mozilla/native-messaging-hosts'
--    ), 'firefox');
--    console.log(' -> Tor Browser is supported');
--    await manifest(path.join(
--      process.env.HOME,
--      '.thunderbird/native-messaging-hosts'
--    ), 'firefox');
--    console.log(' -> Thunderbird Email Client is supported');
+-    support('Tor');
+-    await manifest(path.join(process.env.HOME, '.thunderbird/native-messaging-hosts'), 'firefox');
+-    support('Thunderbird', 'email client');
    }
  }
 
-@@ -283,7 +257,6 @@
+@@ -260,7 +250,6 @@
    try {
      await chrome();
      await firefox();
 -    await flatpak();
      await application();
-     console.log(' => Native Host is installed in', dir);
-     console.log('\n\n>>> host is ready <<<\n\n');
-@@ -293,4 +266,3 @@
+     console.log('\n\n\x1b[1m>>> Native host is ready <<<\x1b[0m\n');
+   }
+@@ -269,4 +258,3 @@
      process.exit(-1);
    }
  })();
