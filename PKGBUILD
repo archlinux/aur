@@ -2,7 +2,7 @@
 pkgname=steamachievementnotifier
 _pkgname="Steam Achievement Notifier"
 _mainver=1.9
-_subver=44
+_subver=46
 pkgver="${_mainver}.${_subver}"
 _electron=electron42
 pkgrel=1
