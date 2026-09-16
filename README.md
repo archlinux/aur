@@ -1,8 +1,16 @@
 # dsh-desktop-git (AUR)
 
-DeepSeek Harness 的跨平台桌面客户端（从源码构建，Arch 原生打包）。
+DeepSeek Harness 的跨平台桌面客户端：本地 Agent 运行时、多模型服务商、手机配对远程控制、可编辑 PPTX 生成（从源码构建，Arch 原生打包）。
 
+AUR 页面：<https://aur.archlinux.org/packages/dsh-desktop-git>
 官方仓库：<https://github.com/dataelement/dsh-desktop>
+
+## 版本策略
+
+- **版本号跟随上游最新 release tag**：取上游 `v` 前缀的 tag（如 `v0.9.0` → `0.9.0`），
+  天然排除 `0.9.0-test` 这类 test 版本以及 `rc` / `desktop-preview` 等非正式 tag。
+- **构建使用同一个 tag**：`prepare()` 检出该 tag 再构建，保证打出的包与版本号严格对应同一份源码。
+- 上游发布新 tag（如 `v0.9.1`）后，重新 `makepkg` 即可得到新版本号，`pkgrel` 无需变动。
 
 ## 为什么从源码构建 / 不用 .deb
 
@@ -22,15 +30,18 @@ npm ci → npm run package:dir（electron-vite build + electron-builder --dir）
 
 ## 构建说明
 
-- 依赖锁定在仓库的 `package-lock.json`（其 `resolved` 指向 npmmirror），PKGBUILD 里通过
-  `npm_config_registry` + `npm_config_replace_registry_host=always` 强制换回官方
-  `registry.npmjs.org`，保证全球可构建。
+- 依赖锁定在仓库的 `package-lock.json`（其 `resolved` 指向 npmmirror 公开镜像，全球可访问），
+  `npm ci` 直接按 lockfile 安装即可。**不要**用 `replace-registry-host=always` 强改 registry，
+  否则 `file:` 本地依赖的路径会被误改写成 registry URL 导致 404。
 - `npm ci` 的 postinstall 会下载 **Electron 43 二进制**（GitHub Releases）与**捆绑的 Node.js 运行时**（nodejs.org）。
-- 国内网络下载 Electron 慢/失败时，在 `makepkg` 前导出镜像：
+- **下载加速（自动）**：`build()` 会先探测 `https://github.com`，10 秒内不可达（国内常见）
+  就自动把 Electron 下载切换到 npmmirror 国内加速镜像，无需手动干预；官方源可达则保持默认。
+  如需手动覆盖：
   ```bash
-  export ELECTRON_MIRROR=https://npmmirror.com/mirrors/electron/
-  makepkg -si
+  ELECTRON_MIRROR='https://github.com/electron/electron/releases/download/' makepkg -si
   ```
+- 上游未在仓库提交 Linux 图标（只有 macOS 生成脚本），PKGBUILD 用 `imagemagick` 从
+  `build/app-icon.png` 生成 hicolor 各尺寸图标。
 
 ## 运行依赖
 
@@ -40,26 +51,21 @@ npm ci → npm run package:dir（electron-vite build + electron-builder --dir）
 > 若应用因 sandbox 报错无法启动，说明系统禁用了非特权用户命名空间：可启用
 > `kernel.unprivileged_userns_clone=1`，或临时用 `/opt/dsh-desktop/dsh-desktop --no-sandbox` 启动。
 
-## 测试构建
+## 安装
 
 ```bash
-makepkg -f          # 构建（会自动 git clone 源仓库）
-makepkg --printsrcinfo > .SRCINFO
-makepkg -i          # 构建并安装到本机
+# 用 AUR 助手（yay/paru）：
+yay -S dsh-desktop-git
+# 或手动：
+git clone https://aur.archlinux.org/dsh-desktop-git.git
+cd dsh-desktop-git && makepkg -si
 ```
 
-## 发布到 AUR（等你有账号后）
+## 维护（推送到 AUR）
 
-1. 注册 AUR 账号：<https://aur.archlinux.org/register/>，并在 <https://aur.archlinux.org/account/> 添加 SSH 公钥。
-2. 克隆 AUR 包仓库：
-   ```bash
-   git clone ssh://aur@aur.archlinux.org/dsh-desktop-git.git
-   ```
-3. 把 `PKGBUILD`、`.SRCINFO`、`README.md`、`dsh-desktop.desktop` 复制进去。
-4. 提交并推送（AUR 用 SSH 密钥认证，不需要 GPG）：
-   ```bash
-   git add PKGBUILD .SRCINFO README.md dsh-desktop.desktop
-   git commit -m "Initial release of dsh-desktop-git"
-   git push origin master
-   ```
-5. 更新包：改动 PKGBUILD 后重新 `makepkg --printsrcinfo > .SRCINFO` → 提交推送。
+```bash
+cd aur/dsh-desktop-git
+makepkg -f -d                      # 构建（pkgver 自动跟随最新 tag）
+makepkg --printsrcinfo > .SRCINFO  # 同步 .SRCINFO
+bash ../push-to-aur.sh             # 一键提交推送（需输入 SSH 钥匙 passphrase）
+```

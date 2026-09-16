@@ -7,6 +7,9 @@
 # 再以 Arch 原生布局安装（/opt/dsh-desktop + .desktop + hicolor 图标），
 # 不经过 .deb/fpm。
 #
+# 版本策略：跟随上游最新 release tag（v 前缀，如 v0.9.0），排除 test/rc/preview tag；
+# 构建时 prepare() 检出该 tag，保证打出的包与版本号严格对应同一份源码。
+#
 # 构建流程：
 #   1. npm ci                安装依赖；postinstall 自动完成
 #                             - patch-package 补丁
@@ -21,13 +24,13 @@
 # 依赖锁定在仓库的 package-lock.json（resolved 指向 npmmirror，公开镜像全球可访问），
 # 直接按 lockfile 安装即可。注意：不要用 replace-registry-host=always 强改 registry，
 # 否则 file: 本地依赖的路径会被误改写成 registry URL 导致 404。
-# 国内构建如遇 Electron 二进制下载慢，可在 makepkg 前加：
-#   export ELECTRON_MIRROR=https://npmmirror.com/mirrors/electron/
+# 国内构建：build() 会自动探测 GitHub，不可达时自动用 npmmirror 加速下载 Electron
+# （也可手动覆盖：ELECTRON_MIRROR=... makepkg）。npm 依赖本身已走 lockfile 的 npmmirror。
 
 pkgname=dsh-desktop-git
-pkgver=0.1.1.r428.gaca9708
+pkgver=0.9.0
 pkgrel=1
-pkgdesc='A cross-platform desktop shell for DeepSeek Harness'
+pkgdesc='Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation'
 arch=('x86_64')
 url='https://github.com/dataelement/dsh-desktop'
 license=('MIT')
@@ -65,7 +68,8 @@ depends=('alsa-lib'
          'util-linux'
          'xdg-utils'
          'zlib')
-makedepends=('git'
+makedepends=('curl'
+             'git'
              'imagemagick'
              'nodejs>=22'
              'npm')
@@ -78,13 +82,28 @@ source=("$pkgname::git+https://github.com/dataelement/dsh-desktop.git"
 sha256sums=('SKIP'
             'e61601b9dff6b609c097bc1af53c7c9b684472cb382ff840200040f0e355dfea')
 
+# 最新 v 前缀 release tag（按版本号降序取第一个；v 前缀天然排除 test/rc/preview）
+_latest_tag() {
+  local tag
+  tag=$(git for-each-ref --sort=-v:refname --format='%(refname:short)' 'refs/tags/v[0-9]*' | head -1)
+  if [[ -z "$tag" ]]; then
+    # 兜底：没有任何 v 前缀 tag 时退回 HEAD 短哈希
+    tag="v0.0.0.r$(git rev-list --count HEAD).g$(git rev-parse --short=7 HEAD)"
+  fi
+  printf '%s' "$tag"
+}
+
 pkgver() {
   cd "$srcdir/$pkgname"
-  local ver commits sha
-  ver=$(sed -n 's/^[[:space:]]*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' package.json | head -1)
-  commits=$(git rev-list --count HEAD)
-  sha=$(git rev-parse --short=7 HEAD)
-  printf '%s.r%s.g%s' "$ver" "$commits" "$sha"
+  local tag
+  tag=$(_latest_tag)
+  printf '%s' "${tag#v}"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  # 检出最新 release tag，保证构建的源码与版本号一致
+  git checkout -q "$(_latest_tag)"
 }
 
 build() {
@@ -92,6 +111,15 @@ build() {
 
   export npm_config_audit=false
   export npm_config_fund=false
+
+  # 下载加速：Electron 二进制（postinstall 与 electron-builder 都会下载）。
+  # 若未显式指定 ELECTRON_MIRROR，且官方源 GitHub 10 秒内不可达（国内常见），
+  # 自动切换到 npmmirror 国内加速镜像；官方源可达则保持默认。
+  if [[ -z "${ELECTRON_MIRROR:-}" ]] && ! timeout 10 curl -fsI https://github.com >/dev/null 2>&1; then
+    export ELECTRON_MIRROR='https://npmmirror.com/mirrors/electron/'
+    echo "==> GitHub 不可达，Electron 下载已切换到 npmmirror 国内加速镜像"
+    echo "==> 如需官方源可自行: ELECTRON_MIRROR='https://github.com/electron/electron/releases/download/' makepkg"
+  fi
 
   npm ci
   npm run package:dir

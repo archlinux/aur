@@ -1,10 +1,11 @@
 pkgbase = dsh-desktop-git
-	pkgdesc = A cross-platform desktop shell for DeepSeek Harness
-	pkgver = 0.1.1.r428.gaca9708
+	pkgdesc = Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/dataelement/dsh-desktop
 	arch = x86_64
 	license = MIT
+	makedepends = curl
 	makedepends = git
 	makedepends = imagemagick
 	makedepends = nodejs>=22
