@@ -4,7 +4,7 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin
-pkgver=6.3.3
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64' 'aarch64')
@@ -12,14 +12,14 @@ url="https://www.swift.org/"
 license=('apache')
 depends=('util-linux-libs' 'libxml2-legacy' 'ncurses')
 makedepends=('patchelf')
-optdepends=('python39: required for REPL')
+optdepends=('python312: required for REPL')
 options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
-source_x86_64=("https://download.swift.org/swift-$pkgver-release/ubi9/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-ubi9.tar.gz")
-source_aarch64=("https://download.swift.org/swift-$pkgver-release/ubi9-aarch64/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-ubi9-aarch64.tar.gz")
-sha256sums_x86_64=('8ba5af53510ea2e224d814b9c568825e87904328b4a8c1d73b2f7ac7fc892406')
-sha256sums_aarch64=('626f52eb79f27305a5e7c2dff682112ef2f81c0ba8380fd9df7c1559533b11f7')
+source_x86_64=("https://download.swift.org/swift-$pkgver-release/ubi10/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-ubi10.tar.gz")
+source_aarch64=("https://download.swift.org/swift-$pkgver-release/ubi10-aarch64/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-ubi10-aarch64.tar.gz")
+sha256sums_x86_64=('50863678e3bafd91fcbc94c0bb76610bab37c1ee01e335fc7d8616904e03e19a')
+sha256sums_aarch64=('641931cd5fdd4d17e47b75b959ba21d67d0f5749cb7d14c854971b49e23bfbd2')
 
 package() {
   find_elf_only() {
@@ -35,7 +35,7 @@ package() {
     _archsuffix="-aarch64"
   fi
   mkdir -p "${pkgdir}/usr/lib/swift"
-  cp -Ppr "${srcdir}/swift-$pkgver-RELEASE-ubi9${_archsuffix}"/usr/* "${pkgdir}/usr/lib/swift"
+  cp -Ppr "${srcdir}/swift-$pkgver-RELEASE-ubi10${_archsuffix}"/usr/* "${pkgdir}/usr/lib/swift"
 
   # Symlink the desired binaries to /usr/bin
   mkdir -p "${pkgdir}/usr/bin"
