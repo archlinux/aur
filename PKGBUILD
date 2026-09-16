@@ -1,7 +1,14 @@
 # Maintainer: Antarien <dev@antarien.com>
 pkgname=ase-explorer
-pkgver=00.00.35
-pkgrel=2
+# epoch, weil die veroeffentlichte 00.00.35 nie aus der SSOT stammte: die Wurzel-VERSION zaehlt
+# Commits OHNE die reinen VERSION-Schriebe (update_version_from_git.sh:173,
+# `rev-list --count HEAD -- . ':(exclude)VERSION'`) und steht deshalb heute bei 00.00.29. Ohne
+# epoch waere jede Angleichung an die SSOT ein Downgrade und pacman bote sie nie an
+# (`vercmp 00.00.29-1 00.00.35-1` = -1). Mit epoch gilt wieder die SSOT allein
+# (`vercmp 1:00.00.29-1 00.00.35-1` = 1) — ab hier laufen Paket und Katalog gleich.
+epoch=1
+pkgver=00.00.29
+pkgrel=1
 pkgdesc='ASE Hierarchical Project Explorer with NerdFont Icons'
 arch=('x86_64')
 url='https://github.com/antarien/ase-client-explorer'
