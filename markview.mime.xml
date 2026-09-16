@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Markview opens `.md`, `.markdown`, and `.mdown` files. shared-mime-info
+	registers the first two as `text/markdown` but maps `.mdown` to
+	`text/plain`, so a `.mdown` document never offers Markview as a handler.
+	This adds the missing glob. It merges into the existing `text/markdown`
+	definition instead of replacing it, so the globs, localized comments, and
+	the `text/x-markdown` alias from shared-mime-info stay in place.
+
+	Remove this file once shared-mime-info covers `.mdown` on its own.
+-->
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<mime-type type="text/markdown">
+		<glob pattern="*.mdown"/>
+	</mime-type>
+</mime-info>
