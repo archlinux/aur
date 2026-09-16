@@ -1,7 +1,7 @@
 pkgbase = release-tag
 	pkgdesc = Automatically create semantic version git tags.
-	pkgver = 0.5.2
-	pkgrel = 4
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/jmelahman/tag
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = release-tag
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = tag::git+https://github.com/jmelahman/tag.git#commit=a5a5b0d28c70dcb9ce39c2d5762c55c763342b50
+	source = tag::git+https://github.com/jmelahman/tag.git#commit=05c7b0f4da54388f7d31fe43f2ebe8458bbff3f5
 	md5sums = SKIP
 
 pkgname = release-tag

@@ -3,15 +3,14 @@
 
 pkgname=release-tag
 _pkgname=tag
-pkgver=0.5.2
-pkgrel=4
+pkgver=0.6.1
+pkgrel=1
 pkgdesc='Automatically create semantic version git tags.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/tag'
 license=('MIT')
-depends=('glibc')
-makedepends=('go' 'git')
-_commit='a5a5b0d28c70dcb9ce39c2d5762c55c763342b50'
+makedepends=('rust' 'git')
+_commit='05c7b0f4da54388f7d31fe43f2ebe8458bbff3f5'
 source=("${_pkgname}::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
@@ -23,23 +22,37 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}" || exit
-  go mod download -modcacherw
+
+  cargo fetch --locked
 }
 
 build() {
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
   cd "${_pkgname}" || exit
 
-  go build -buildmode=pie -trimpath -modcacherw -ldflags="-linkmode=external -X main.version=v$pkgver -X main.commit=$_commit -s -w" -o "${_pkgname}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export TAG_VERSION=$pkgver
+  export TAG_COMMIT=$_commit
+  cargo build --frozen --release --all-features
 }
 
 package() {
   cd "${_pkgname}" || exit
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # binary
+  install -Dm755 -t "$pkgdir/usr/bin" "target/release/${_pkgname}"
 
-  install -Dm755 "${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
+  # shell completion
+  install -Dm644 <(env PATH="$pkgdir/usr/bin" "${_pkgname}" completion bash) \
+    "$pkgdir/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 <(env PATH="$pkgdir/usr/bin" "${_pkgname}" completion zsh) \
+    "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 <(env PATH="$pkgdir/usr/bin" "${_pkgname}" completion fish) \
+    "$pkgdir/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+
+  # documentation
+  install -Dm644 -t "$pkgdir/usr/share/doc/${_pkgname}" README.md
+
+  # license
+  install -Dm644 -t "$pkgdir/usr/share/licenses/${_pkgname}" LICENSE
 }
