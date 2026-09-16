@@ -1,8 +1,8 @@
 pkgbase = r-fsrs
 	pkgdesc = R bindings for fsrs-rs spaced repetition algorithm (FSRS-6)
 	pkgver = 0.3.0
-	pkgrel = 1
-	url = https://github.com/chrislongros/r-fsrs
+	pkgrel = 2
+	url = https://github.com/open-spaced-repetition/r-fsrs
 	arch = x86_64
 	license = MIT
 	makedepends = rust
@@ -10,7 +10,7 @@ pkgbase = r-fsrs
 	depends = r
 	depends = r-r6
 	depends = r-jsonlite
-	source = r-fsrs-0.3.0.tar.gz::https://github.com/chrislongros/r-fsrs/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = SKIP
+	source = r-fsrs-0.3.0.tar.gz::https://github.com/open-spaced-repetition/r-fsrs/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = ebb8ef6e4886053335164f2f53a6327f5c5b639bccacc13b04ce3fd8570b858e
 
 pkgname = r-fsrs
