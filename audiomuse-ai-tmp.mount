@@ -1,8 +1,0 @@
-[Unit]
-Description=AudioMuse-AI temporary storage
-
-[Mount]
-What=tmpfs
-Where=/var/tmp/audiomuse-ai
-Type=tmpfs
-Options=mode=0755,size=3G,nosuid,nodev,noexec
