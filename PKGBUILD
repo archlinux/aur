@@ -2,7 +2,7 @@
 
 pkgname=kiro-crew-bin
 _name=${pkgname%-bin}
-pkgver=0.3.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A persistent workspace for development work that self-improves and continues beyond one session'
 arch=(aarch64 x86_64)
@@ -38,13 +38,13 @@ depends=(alsa-lib
 provides=($_name)
 conflicts=($_name)
 options=(!strip !debug)
-source_aarch64=($pkgname-$pkgver-aarch64.AppImage::https://github.com/kirodotdev/KiroCrew/releases/download/v$pkgver/KiroCrew-aarch64.AppImage)
-source_x86_64=($pkgname-$pkgver-x86_64.AppImage::https://github.com/kirodotdev/KiroCrew/releases/download/v$pkgver/KiroCrew-x86_64.AppImage)
-b2sums_aarch64=('7d3f184186bf0a3ad62ea6e54f25a0e1c33018282a88982951553d1c40e73953b0ea433ed640e5752170cf75fdc9c8a256030c93cd964471ce8904c96ce07cac')
-b2sums_x86_64=('b7a76ac80f2d552f22e15097d0c84599be44a17f6bede6a88d2b8e65c54a78e11d782372fafd64d63e723a616a054e79699d42ec17b321a5bc115dad2c75ede8')
+source_aarch64=($pkgname-$pkgver-aarch64.AppImage::https://github.com/kirodotdev/KiroCrew/releases/download/v$pkgver/KiroCrew-$pkgver-arm64.AppImage)
+source_x86_64=($pkgname-$pkgver-x86_64.AppImage::https://github.com/kirodotdev/KiroCrew/releases/download/v$pkgver/KiroCrew-$pkgver-x86_64.AppImage)
+b2sums_aarch64=('d21d8614613cbe5b66e43dc9bcea528a2f29ce36ed17db446329a6ca5fdfbe69867d5de25981ba2a40df8dde1b820ba604cfb8193516699618376262431ac669')
+b2sums_x86_64=('ebe1be47de95d5c0efd96ade3c0599f602e25108f35d05e43747fdd998ef77991b05101832370cfcf0608fd260b3fe02acae75f232648d770c3c3361dfccd7af')
 
 prepare() {
-    local appname=kirocrew-electron-mac
+    local appname=kirocrew-desktop
     local appimage=$pkgname-$pkgver-$CARCH.AppImage
 
     # Copy AppImage in case $SRCDEST is mounted with noexec
@@ -54,7 +54,7 @@ prepare() {
     rm $appimage.copy
 
     # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|^Exec=.*|Exec=/usr/bin/$_name %U|;s|^Icon=.*|Icon=$_name|" \
+    sed -i -E "s|^Exec=.*|Exec=/usr/bin/$_name %U|;s|^Icon=.*|Icon=$_name|;s|^StartupWMClass=.*|StartupWMClass=$_name|" \
         squashfs-root/$appname.desktop
 
     # Fix permissions; .AppImage permissions are 700 for all directories
@@ -67,6 +67,7 @@ prepare() {
     mv squashfs-root/usr/share/icons .
     rename $appname $_name icons/hicolor/*/apps/$appname.png
 
+    rm squashfs-root/resources/app-update.yml
     rm -f squashfs-root/{$appname.png,AppRun,.DirIcon}
     rm -r squashfs-root/usr/share
     find squashfs-root/resources/backend-dist/kirocrew-backend/lib/python3.12/site-packages/kiro_crew/_vendor/llama_cpp_libs \
