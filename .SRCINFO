@@ -1,0 +1,18 @@
+pkgbase = netleak-bin
+	pkgdesc = Kernel-level, proxychains-like tool for per-process traffic redirection on Linux (cgroup v2 + eBPF)
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/MuriloChianfa/netleak
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = GPL-3.0-only
+	depends = glibc
+	provides = netleak
+	conflicts = netleak
+	source_x86_64 = netleak-bin-1.1.1-x86_64.rpm::https://github.com/MuriloChianfa/netleak/releases/download/v1.1.1/netleak-1.1.1-1.fc40.x86_64_fedora-40-x86_64.rpm
+	sha256sums_x86_64 = f452aaedb4cd9d48f404cc9a7c34cf028b934083948027e0d4ac9ec810d2d46f
+	source_aarch64 = netleak-bin-1.1.1-aarch64.rpm::https://github.com/MuriloChianfa/netleak/releases/download/v1.1.1/netleak-1.1.1-1.fc40.aarch64_fedora-40-aarch64.rpm
+	sha256sums_aarch64 = 8a0b8771906f6d0fedc7dcab067de94ac3028b85ef8eb01185827e9418306d7a
+
+pkgname = netleak-bin
