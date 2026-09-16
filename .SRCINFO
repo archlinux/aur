@@ -1,6 +1,6 @@
 pkgbase = workmux-bin
 	pkgdesc = git worktrees + tmux windows for zero-friction parallel dev (prebuilt binary)
-	pkgver = 0.1.262
+	pkgver = 0.1.263
 	pkgrel = 1
 	url = https://github.com/raine/workmux
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = workmux-bin
 	provides = workmux
 	conflicts = workmux
 	options = !strip
-	source = LICENSE-0.1.262::https://github.com/raine/workmux/raw/v0.1.262/LICENSE
+	source = LICENSE-0.1.263::https://github.com/raine/workmux/raw/v0.1.263/LICENSE
 	sha256sums = 7a87de55d7cb84a5f017db6da9a58e4a7bba563253e9a821a384bb2900fccdf3
-	source_x86_64 = workmux-bin-0.1.262-x86_64.tar.gz::https://github.com/raine/workmux/releases/download/v0.1.262/workmux-linux-amd64.tar.gz
-	sha256sums_x86_64 = cc4bb06d010ba040d9137b3cc8a054f7461476c946c3e2b9cec416e222a392d3
-	source_aarch64 = workmux-bin-0.1.262-aarch64.tar.gz::https://github.com/raine/workmux/releases/download/v0.1.262/workmux-linux-arm64.tar.gz
-	sha256sums_aarch64 = 5e2927771aa6c76cd5f4ee7b8f6405ec0cd46d76d1f259e9878ceb24e8ecbc4b
+	source_x86_64 = workmux-bin-0.1.263-x86_64.tar.gz::https://github.com/raine/workmux/releases/download/v0.1.263/workmux-linux-amd64.tar.gz
+	sha256sums_x86_64 = 6f526155396b062a74d60e9a15b9e87a25ea46a9c032acfc9161a662adc8307b
+	source_aarch64 = workmux-bin-0.1.263-aarch64.tar.gz::https://github.com/raine/workmux/releases/download/v0.1.263/workmux-linux-arm64.tar.gz
+	sha256sums_aarch64 = d657df43432be4ed53f11ae934a1ed8b8dbf2caf8706554dcaddaec52a7b8fc5
 
 pkgname = workmux-bin
