@@ -2,19 +2,20 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=r5r
-_pkgver=2.3.0
+_pkgver=2.4.0
 pkgname=r-${_pkgname,,}
 pkgdesc="Rapid Realistic Routing with ‘R5’"
 url="https://cran.r-project.org/package=r5r"
 license=("MIT")
 pkgver=${_pkgver//-/.}
-pkgrel=6
+pkgrel=8
 
 arch=("any")
 depends=(
     "r-concaveman"
     "r-dplyr"
     "r-h3jsr"
+    "r-isoband"
     "r-gtfstools"
     "jdk11-openjdk"
     "r-checkmate"
@@ -47,7 +48,7 @@ checkdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-b2sums=('c70edbc7d67c7bc72b099e70d22bf1a9962a0a9f48fa1eae94e476932b74fab8afad1cd328b4df6fa8115276959b0c451f542974ec0a47d3f833b4200ae16392')
+b2sums=('8996286d982c9e0b78e839db74ca878148e63965b21768018e4f64204980de00bf5a5e400d7a907064958411e1696ba5062ad41a86acddb6025b76fcf5be0d70')
 
 build() {
     mkdir -p "${srcdir}/build/"
