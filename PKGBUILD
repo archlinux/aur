@@ -1,6 +1,6 @@
 # Maintainer: Woro <woro@tanieddosy.pl>
 pkgname=simplebench-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A workspace for terminal-driven development'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('simplebench')
 options=('!strip' '!debug')
 source_x86_64=("SimpleBench_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/SimpleBench_${pkgver}_amd64.deb")
 # The publication workflow replaces SKIP with the released DEB's SHA-256.
-sha256sums_x86_64=('3da0edc727a386057c3376db2a34f459dcc2fe48c7ff128b4aaad93f6051bc66')
+sha256sums_x86_64=('4dc88ea8bffbaa0d171f91e07ec67390f1712cba33c8e1a104ce56614237554d')
 
 package() {
   tar -xf data.tar.gz -C "${pkgdir}/"

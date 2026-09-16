@@ -1,6 +1,6 @@
 pkgbase = simplebench-bin
 	pkgdesc = A workspace for terminal-driven development
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/MaciejKolerski/simplebench
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = simplebench-bin
 	conflicts = simplebench
 	options = !strip
 	options = !debug
-	source_x86_64 = SimpleBench_0.2.0_amd64.deb::https://github.com/MaciejKolerski/simplebench/releases/download/v0.2.0/SimpleBench_0.2.0_amd64.deb
-	sha256sums_x86_64 = 3da0edc727a386057c3376db2a34f459dcc2fe48c7ff128b4aaad93f6051bc66
+	source_x86_64 = SimpleBench_0.3.0_amd64.deb::https://github.com/MaciejKolerski/simplebench/releases/download/v0.3.0/SimpleBench_0.3.0_amd64.deb
+	sha256sums_x86_64 = 4dc88ea8bffbaa0d171f91e07ec67390f1712cba33c8e1a104ce56614237554d
 
 pkgname = simplebench-bin
