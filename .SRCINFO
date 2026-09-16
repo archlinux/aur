@@ -1,7 +1,7 @@
 pkgbase = python-odxtools
 	pkgdesc = Utilities to work with the ODX standard for automotive diagnostics
-	pkgver = 11.5.4
-	pkgrel = 2
+	pkgver = 11.6.0
+	pkgrel = 1
 	url = https://github.com/mercedes-benz/odxtools
 	arch = any
 	license = MIT
@@ -25,7 +25,7 @@ pkgbase = python-odxtools
 	provides = python-odxtools
 	conflicts = python-odxtools
 	options = !strip
-	source = odxtools::git+https://github.com/mercedes-benz/odxtools.git#tag=11.5.4
-	sha256sums = 7149497305f39ff5c0436b248598bd217b70dd38984e2897a846f114b5051673
+	source = odxtools::git+https://github.com/mercedes-benz/odxtools.git#tag=11.6.0
+	sha256sums = 525d63fd7064d53bd87d3174e3d9f0c162a6f8760d7040ffc8dc416a2f704e86
 
 pkgname = python-odxtools
