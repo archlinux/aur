@@ -1,7 +1,7 @@
 # Maintainer: hikyae <h1ky43@gmail.com>
 
 pkgname=schedrem
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc='A cross-platform task scheduler and reminder configured in YAML.'
 arch=(any)
@@ -24,7 +24,7 @@ checkdepends=(
 	python-pytest
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hikyae/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b83fc4c9cc45f3c78f65d5036e32328cfe0ae9c9f984a1e090f9837d0111aa7e')
+sha256sums=('690c4c6e21cd5d4d2fdc57f1602af287c5b9cbed8a607b9b5bae196af49ca674')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
