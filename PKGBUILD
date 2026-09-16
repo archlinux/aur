@@ -2,17 +2,17 @@
 
 pkgname=shotcut-git
 pkgdesc='Cross-platform Qt based Video Editor - Git latest'
-pkgver=25.03.29+r6598+g86552b847
+pkgver=26.9.6+r7359+g6137e36ba
 pkgrel=1
 arch=('x86_64')
 url='https://www.shotcut.org'
 license=('GPL3')
 depends=('qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-translations'
-         'mlt' 'movit' 'ffmpeg' 'libx264' 'libvpx' 'lame' 'frei0r-plugins' 'ladspa' 'qt6-charts')
+         'mlt' 'movit' 'ffmpeg' 'libx264' 'libvpx' 'lame' 'frei0r-plugins' 'ladspa' 'qt6-charts' 'qt6-websockets' 'qt6-5compat')
 optdepends=('swh-plugins: Several audio filters')
 provides=("shotcut")
 conflicts=('shotcut' 'shotcut-bin')
-makedepends=('qt6-tools' 'git' 'cmake' 'ninja' 'clang')
+makedepends=('qt6-tools' 'git' 'cmake' 'ninja' 'clang' 'vulkan-headers')
 source=("git+https://github.com/mltframework/shotcut.git")
 sha512sums=('SKIP')
 
