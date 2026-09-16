@@ -23,7 +23,7 @@ conflicts=('needle')
 replaces=('needle')
 options=('!lto')
 # Path dep: workspace expects ../optionSDK next to the extracted sources.
-_optionsdk_ver=0.1.3
+_optionsdk_ver=0.1.4
 # Channeled release tag (Option mixed/stable). pkgver stays numeric for the AUR;
 # the source archive points at the exact tag.
 _tag=v0.2.0m-stable
@@ -32,8 +32,8 @@ source=(
   "optionSDK-$_optionsdk_ver.tar.gz::https://github.com/fireflylabss/optionSDK/archive/refs/tags/v$_optionsdk_ver.tar.gz"
 )
 sha256sums=(
-  'cb651a9ef891933a9b8269698822534694e4988f85730db47c84c4193887b948'
-  'f71374cb0adbd9736b9e1e9ef0c800a65aeb4c7b32f5e496561b5cb31d9d0eac'
+  '70f734428e05d83290ac9a81e52a8ea778ac72149a932a0426854fa4cf6cdd10'
+  'fadd75e0c6ade33018fb741a2f7e395649fff2833f6d08dde5c42459c37012a7'
 )
 
 _srcdir="optionSearch-${_tag#v}"
