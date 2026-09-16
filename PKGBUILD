@@ -2,7 +2,7 @@
 # Maintainer: rubiin <roobin.bhandari@gmail.com>
 
 pkgname='linkrot-bin'
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Fast CLI link checker for local files'
 url='https://github.com/rubiin/linkrot'
@@ -12,13 +12,13 @@ provides=('linkrot')
 conflicts=('linkrot')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rubiin/linkrot/releases/download/v${pkgver}/linkrot_Linux_arm64.tar.gz")
-sha256sums_aarch64=('75ab0054f4793170716681e6d8cf914ea44da1d5d0db39742bc4d746f67480ec')
+sha256sums_aarch64=('70cbd95d8b9ac14edaae8485c2c106951ce95edd635be7468ec17cff81cbb629')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rubiin/linkrot/releases/download/v${pkgver}/linkrot_Linux_i386.tar.gz")
-sha256sums_i686=('c40d2476982223e5c7d0f51f2ba743817ce1995a76131d395a3c3e1ba4966da2')
+sha256sums_i686=('80de61dda41461e8e5c345435a71e15dbe3321c78cfb4b968498c9f69b004aaa')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rubiin/linkrot/releases/download/v${pkgver}/linkrot_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('1f867874c9e3f0fe5d8e38d358178ff0265db4084c02adb0963beda3dff8f0aa')
+sha256sums_x86_64=('71d723dd7634bcedbf7e6a77a2f9464dab326f4ee3799e1a86c2b9db3cb57f26')
 
 package() {
   # bin
