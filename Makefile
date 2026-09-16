@@ -42,7 +42,6 @@ pkgver:
 		sed -i -e "s/^pkgrel=.*/pkgrel=1/" PKGBUILD; \
 	fi
 
-
 .PHONY: maintenance
 maintenance: pkgver
 	$(MAKE) build
