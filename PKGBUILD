@@ -1,6 +1,6 @@
 pkgname=audiomuse-ai-worker
-pkgver=3.6.0
-pkgrel=6
+pkgver=3.6.1
+pkgrel=1
 pkgdesc='AudioMuse-AI analysis and task queue worker'
 arch=('x86_64')
 url='https://github.com/NeptuneHub/AudioMuse-AI'
@@ -89,7 +89,7 @@ source=(
   'worker.env'
 )
 
-sha256sums=('e6d10aa26820a7589f6512123d8868c26be617b08b2bac4542e387ff5921e0f4'
+sha256sums=('f3c295a6fa89c42d9aa9fac8b23acedf161459f5868afe06ec571591e51322e7'
             'a48ad887950a557aefbb4dcddf58ad4802213ff5fc6fb51eda3507cd797bb9b0'
             '0d4e78dd43c610aec88c099e41f4a8969797da5ac2612ea6ca21faa9e1a428f3'
             '17860403f8fc90aff8ac0632a0741eb5e58d8c0b0ad2fce5ced967274b0ea971'
