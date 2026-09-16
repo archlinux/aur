@@ -1,8 +1,8 @@
 # Maintainer: sripwoud <me@sripwoud.xyz>
 pkgname=tagwerk-git
-pkgver=r52.4de1e16
+pkgver=r53.a195b8e
 pkgrel=1
-pkgdesc="Passive work-hours tracker for Hyprland, attributed per repo"
+pkgdesc="Passive time tracker for Hyprland, nothing to start or stop"
 arch=(any)
 url="https://github.com/espadat-studio/tagwerk"
 license=(AGPL-3.0-or-later)
