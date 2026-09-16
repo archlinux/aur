@@ -3,7 +3,7 @@
 pkgname=python-curated-transformers
 _name=${pkgname#python-}
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A PyTorch library of transformer models and components"
 arch=('any')
@@ -19,12 +19,12 @@ depends=(
     python-huggingface-hub
     python-pytorch
     python-pytest
+    python-safetensors
     python-requests
     python-typing_extensions
     # AUR
     python-catalogue
     python-curated-tokenizers
-    python-safetensors
     python-transformers
     python-tokenizers
 )
