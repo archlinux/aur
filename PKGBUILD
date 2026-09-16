@@ -5,7 +5,6 @@
 # DSH Desktop 官方没有发布 Linux 二进制（Linux 包一直是“从源码本地构建”），
 # 因此本 PKGBUILD 直接克隆官方源仓库，按官方流程构建出 Electron 应用本体，
 # 再以 Arch 原生布局安装（/opt/dsh-desktop + .desktop + hicolor 图标），
-# 不经过 .deb/fpm。
 #
 # 版本策略：跟随上游最新 release tag（v 前缀，如 v0.9.0），排除 test/rc/preview tag；
 # 构建时 prepare() 检出该 tag，保证打出的包与版本号严格对应同一份源码。
@@ -24,18 +23,16 @@
 # 依赖锁定在仓库的 package-lock.json（resolved 指向 npmmirror，公开镜像全球可访问），
 # 直接按 lockfile 安装即可。注意：不要用 replace-registry-host=always 强改 registry，
 # 否则 file: 本地依赖的路径会被误改写成 registry URL 导致 404。
-# 国内构建：build() 会自动探测 GitHub，不可达时自动用 npmmirror 加速下载 Electron
-# （也可手动覆盖：ELECTRON_MIRROR=... makepkg）。npm 依赖本身已走 lockfile 的 npmmirror。
+
 
 pkgname=dsh-desktop-git
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform desktop shell for DeepSeek Harness: local Agent runtime, model providers, mobile phone pairing, editable PPTX generation'
 arch=('x86_64')
 url='https://github.com/dataelement/dsh-desktop'
 license=('MIT')
-# 运行时依赖 = 应用自带 Electron/Node 运行时所需的系统库
-# （参照官方 .deb 声明的 Depends + Arch electron 的依赖）
+
 depends=('alsa-lib'
          'at-spi2-core'
          'brotli'
@@ -68,8 +65,7 @@ depends=('alsa-lib'
          'util-linux'
          'xdg-utils'
          'zlib')
-makedepends=('curl'
-             'git'
+makedepends=('git'
              'imagemagick'
              'nodejs>=22'
              'npm')
@@ -82,7 +78,7 @@ source=("$pkgname::git+https://github.com/dataelement/dsh-desktop.git"
 sha256sums=('SKIP'
             'e61601b9dff6b609c097bc1af53c7c9b684472cb382ff840200040f0e355dfea')
 
-# 最新 v 前缀 release tag（按版本号降序取第一个；v 前缀天然排除 test/rc/preview）
+# 最新 v 前缀 release tag（按版本号降序取第一个）
 _latest_tag() {
   local tag
   tag=$(git for-each-ref --sort=-v:refname --format='%(refname:short)' 'refs/tags/v[0-9]*' | head -1)
@@ -112,14 +108,7 @@ build() {
   export npm_config_audit=false
   export npm_config_fund=false
 
-  # 下载加速：Electron 二进制（postinstall 与 electron-builder 都会下载）。
-  # 若未显式指定 ELECTRON_MIRROR，且官方源 GitHub 10 秒内不可达（国内常见），
-  # 自动切换到 npmmirror 国内加速镜像；官方源可达则保持默认。
-  if [[ -z "${ELECTRON_MIRROR:-}" ]] && ! timeout 10 curl -fsI https://github.com >/dev/null 2>&1; then
-    export ELECTRON_MIRROR='https://npmmirror.com/mirrors/electron/'
-    echo "==> GitHub 不可达，Electron 下载已切换到 npmmirror 国内加速镜像"
-    echo "==> 如需官方源可自行: ELECTRON_MIRROR='https://github.com/electron/electron/releases/download/' makepkg"
-  fi
+  # Electron 二进制按官方默认源下载（GitHub）
 
   npm ci
   npm run package:dir

@@ -34,18 +34,10 @@ npm ci → npm run package:dir（electron-vite build + electron-builder --dir）
   `npm ci` 直接按 lockfile 安装即可。**不要**用 `replace-registry-host=always` 强改 registry，
   否则 `file:` 本地依赖的路径会被误改写成 registry URL 导致 404。
 - `npm ci` 的 postinstall 会下载 **Electron 43 二进制**（GitHub Releases）与**捆绑的 Node.js 运行时**（nodejs.org）。
-- **下载加速（自动）**：`build()` 会先探测 `https://github.com`，10 秒内不可达（国内常见）
-  就自动把 Electron 下载切换到 npmmirror 国内加速镜像，无需手动干预；官方源可达则保持默认。
-  如需手动覆盖：
+- **国内网络慢时按需加速**（包本身不含加速/代理逻辑）：
   ```bash
-  ELECTRON_MIRROR='https://github.com/electron/electron/releases/download/' makepkg -si
-  ```
-- **git clone 上游源码加速（国内用户可选）**：源仓库走 `git+https://github.com`，
-  PKGBUILD 无法在 clone 前自动探测。国内用户若 clone 慢，可一次性给 git 加全局加速：
-  ```bash
-  git config --global url."https://gh-proxy.com/https://github.com/".insteadOf "https://github.com/"
-  # 撤销：
-  git config --global --unset-all url.https://gh-proxy.com/https://github.com/.insteadOf
+  export ELECTRON_MIRROR=https://npmmirror.com/mirrors/electron/   # Electron 用国内镜像
+  makepkg -si
   ```
 - 上游未在仓库提交 Linux 图标（只有 macOS 生成脚本），PKGBUILD 用 `imagemagick` 从
   `build/app-icon.png` 生成 hicolor 各尺寸图标。
