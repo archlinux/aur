@@ -1,6 +1,6 @@
 pkgbase = iw4x-launcher-git
 	pkgdesc = Launcher/Updater for the IW4x MW2 (2009) mod
-	pkgver = 1.1.8.b.18.r1.ge7995e4
+	pkgver = 1.1.8.b.18.r2.gc3508ac
 	pkgrel = 1
 	url = https://github.com/iw4x/launcher
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = iw4x-launcher-git
 	source = launcher::git+https://github.com/iw4x/launcher.git
 	source = 0001-Restore-path-game-directory-option.patch
 	sha256sums = SKIP
-	sha256sums = 84896d27e2e4bd798b62a0ee72ddd73eb4d727362df8a59ce38edcff2d2fdcde
+	sha256sums = 69e07c17edfdf24d87e675d16e9681ac123b32a44c3f0502c39140374c3fb261
 
 pkgname = iw4x-launcher-git

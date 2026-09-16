@@ -2,7 +2,7 @@
 
 pkgname=iw4x-launcher-git
 _upstream=launcher
-pkgver=1.1.8.b.18.r1.ge7995e4
+pkgver=1.1.8.b.18.r2.gc3508ac
 pkgrel=1
 pkgdesc='Launcher/Updater for the IW4x MW2 (2009) mod'
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!lto')
 source=("$_upstream::git+https://github.com/iw4x/launcher.git"
         '0001-Restore-path-game-directory-option.patch')
 sha256sums=('SKIP'
-            '84896d27e2e4bd798b62a0ee72ddd73eb4d727362df8a59ce38edcff2d2fdcde')
+            '69e07c17edfdf24d87e675d16e9681ac123b32a44c3f0502c39140374c3fb261')
 
 pkgver() {
   cd "$srcdir/$_upstream"
