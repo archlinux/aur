@@ -1,6 +1,6 @@
 pkgbase = emutastic-bin
 	pkgdesc = Beautiful retro game library and emulation frontend (libretro)
-	pkgver = 0.9.7
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/Emutastic-For-Linux
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = emutastic-bin
 	optdepends = libsecret: keep the cloud-sync sign-in in the desktop keyring
 	provides = emutastic
 	conflicts = emutastic
-	noextract = Emutastic-0.9.7-linux-x64.tar.gz
+	noextract = Emutastic-0.9.8-linux-x64.tar.gz
 	options = !strip
-	source = https://github.com/codingncaffeine/Emutastic-For-Linux/releases/download/v0.9.7/Emutastic-0.9.7-linux-x64.tar.gz
-	source = https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.9.7/LICENSE
-	source = emutastic-logo.png::https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.9.7/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png
-	sha256sums = f859a79b2c572bc48984a251a5f2888f2b697c1f3493ecdefb2aab76d22db262
+	source = https://github.com/codingncaffeine/Emutastic-For-Linux/releases/download/v0.9.8/Emutastic-0.9.8-linux-x64.tar.gz
+	source = https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.9.8/LICENSE
+	source = emutastic-logo.png::https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.9.8/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png
+	sha256sums = 92bfc7801e7835a292379d814f796f47fbfd9129ce846193efc532d76ffe25cc
 	sha256sums = SKIP
 	sha256sums = SKIP
 
