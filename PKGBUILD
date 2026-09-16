@@ -1,7 +1,7 @@
 # Maintainer: Dawid Potocki <archlinux a dawidpotocki , com>
 
 pkgname=wayfreeze
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Tool to freeze the screen of a Wayland compositor'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL-3.0-only')
 depends=('glibc' 'libgcc' 'libxkbcommon' 'wayland')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Jappie3/wayfreeze/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('f8ad11e8b71cb21240bfd73787f8b1ebbbd921b2aba931d4639473615801574dd831418cfee15aa6d9516c20a6cc7f1556db96f6f881791b0313a66500092a76')
+b2sums=('d9a1e255758cca00510950690d483db01630c1ef42a718a537ffaee7180e0dc9835a1cc8c010e5a5ffac5fd7eea1beb7f3f86579871fe71d7d9e26c58dfeacd7')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
