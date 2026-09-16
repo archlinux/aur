@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=riprip
-pkgver=0.5.9
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Specialized audio CD-ripper optimized for track recovery"
 arch=(x86_64)
@@ -17,17 +17,19 @@ makedepends=(
     cargo
     clang
     )
-options=(!lto)
+#options=(!lto)
 source=("git+https://github.com/Blobfolio/riprip.git#tag=v${pkgver}")
-sha256sums=('824a46b46b7fb63db3aac5364d3e8cedf6d89158d85f0aaa6a416e0e8d3bce27')
+sha256sums=('49df1ac5d80f1e3d65e59449e4393253e06a4f9c622f9eefe685d7c68a2ab295')
 
 prepare() {
   cd riprip
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target host-tuple
 }
 
 build() {
   cd riprip
+  CFLAGS+=" -ffat-lto-objects"
+  CXXFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
