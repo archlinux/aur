@@ -3,3 +3,7 @@
 !/PKGBUILD
 !/.SRCINFO
 !/*.install
+!/LICENSE
+!/REUSE.toml
+!/LICENSES/
+!/LICENSES/**
