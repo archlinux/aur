@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Searchable interactive command palette for discovering, previewing and running reusable terminal workflows from YAML"
 
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ source=("CONFIG-${pkgver}.yaml::${_ghurlraw}/examples/basic.yaml")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('6166d5cee112b3960477dd186e448a1802288322045e005576aa96e29056a468')
-sha256sums_x86_64=('22bcd8676523d8ea8a95f46b8c30454e836aad35ad9bbbc2e5e1610e8c7e0252')
-sha256sums_aarch64=('208e9252dbd763f57f787853dc5e5c75b5d8a681f7e83a30bfdaed1d5193ef0b')
+sha256sums_x86_64=('e239ceb4b2799901bff19b3bae3cdb61d3f74bf3cb47285f6508eee05f45e172')
+sha256sums_aarch64=('81f5bcb3a30b93323c898964f8413fa43e97ce1b3bfa2b5db36caf9dd0161e6d')
 
 
 package() {
