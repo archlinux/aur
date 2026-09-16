@@ -3,11 +3,11 @@
 
 pkgname="n8n"
 pkgver=2.39.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('x86_64')
 url="https://n8n.io"
-license=("custom:Sustainable Use License")
+license=("LicenseRef-Sustainable-Use-License")
 backup=("etc/default/${pkgname}")
 # Check upstream nodejs version constraints with:
 #   curl -s "https://registry.npmjs.org/n8n/${pkgver}" | jq -r '.engines.node'
@@ -100,7 +100,11 @@ package() {
         echo "==> WARNING: cpu-features addon did not build; ssh2 skips its CPU probe" >&2; }
   done < <(find "${node_root}/node_modules" -type d -name cpu-features)
 
-  find "${node_root}/node_modules" -type d -name obj.target -prune -exec rm -rf {} +
+  # node-gyp leaves its Makefiles, config and dependency lists beside each
+  # binding, all of them naming ${pkgdir}; only the .node files are needed.
+  find "${node_root}/node_modules" -path '*/build/*' \
+    \( -name Makefile -o -name binding.Makefile -o -name '*.mk' -o -name config.gypi \
+       -o -name .deps -o -name obj.target \) -prune -exec rm -rf {} +
 
   node -e '
     const { createRequire } = require("node:module");
@@ -108,6 +112,14 @@ package() {
     new (req("sqlite3").Database)(":memory:").close();
     console.log("sqlite3 binding exercised");
   ' "${node_root}"
+
+  # Build-time only: the kafka binding links the system librdkafka, so its
+  # vendored source tree and upstream's lint/release scripts are dead weight;
+  # node-gyp is there for sqlite3's install script, which npm never runs here;
+  # flatted's Python port is not JavaScript at all.
+  rm -rf "${node_root}/node_modules/@confluentinc/kafka-javascript/"{deps,cpplint.py,scripts} \
+         "${node_root}/node_modules/node-gyp" "${node_root}/node_modules/.bin/node-gyp" \
+         "${node_root}/node_modules/flatted/python"
 
   # Development files
   find "${node_root}" -name "*.ts" -delete 2>/dev/null || true
