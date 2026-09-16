@@ -1,5 +1,5 @@
 pkgname=ioexplorer-git
-pkgver=r67.aaab7e1
+pkgver=r69.38a6ad6
 pkgrel=1
 pkgdesc='Wayland-native provider-oriented file manager for Wayland desktops'
 arch=('x86_64')
@@ -10,6 +10,9 @@ makedepends=('cargo' 'git')
 optdepends=(
   'xdg-desktop-portal: use ioexplorer as a desktop portal FileChooser backend'
   'xdg-utils: set ioexplorer as the default directory handler with xdg-mime'
+  'grim: screen capture for ioexplorer-shot'
+  'wl-clipboard: copy screenshots to the clipboard without keeping ioexplorer-shot running'
+  'libnotify: screenshot notifications'
 )
 source=("$pkgname::git+https://github.com/LucasionGS/ioexplorer.git")
 sha256sums=('SKIP')
@@ -27,6 +30,7 @@ package() {
   install -Dm755 target/release/ioexplorer-file-manager "$pkgdir/usr/bin/ioexplorer-file-manager"
   install -Dm755 target/release/ioexplorer-portal "$pkgdir/usr/bin/ioexplorer-portal"
   install -Dm755 target/release/ioexplorer-desktop "$pkgdir/usr/bin/ioexplorer-desktop"
+  install -Dm755 target/release/ioexplorer-shot "$pkgdir/usr/bin/ioexplorer-shot"
   install -Dm644 data/io.github.ionix.IoExplorer.desktop "$pkgdir/usr/share/applications/io.github.ionix.IoExplorer.desktop"
   install -Dm644 data/io.github.ionix.IoExplorer.metainfo.xml "$pkgdir/usr/share/metainfo/io.github.ionix.IoExplorer.metainfo.xml"
   install -Dm644 data/icons/hicolor/scalable/apps/io.github.ionix.IoExplorer.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.ionix.IoExplorer.svg"

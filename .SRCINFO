@@ -1,6 +1,6 @@
 pkgbase = ioexplorer-git
 	pkgdesc = Wayland-native provider-oriented file manager for Wayland desktops
-	pkgver = r67.aaab7e1
+	pkgver = r69.38a6ad6
 	pkgrel = 1
 	url = https://github.com/LucasionGS/ioexplorer
 	arch = x86_64
@@ -12,6 +12,9 @@ pkgbase = ioexplorer-git
 	depends = gtk4-layer-shell
 	optdepends = xdg-desktop-portal: use ioexplorer as a desktop portal FileChooser backend
 	optdepends = xdg-utils: set ioexplorer as the default directory handler with xdg-mime
+	optdepends = grim: screen capture for ioexplorer-shot
+	optdepends = wl-clipboard: copy screenshots to the clipboard without keeping ioexplorer-shot running
+	optdepends = libnotify: screenshot notifications
 	source = ioexplorer-git::git+https://github.com/LucasionGS/ioexplorer.git
 	sha256sums = SKIP
 
