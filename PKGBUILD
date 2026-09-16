@@ -2,13 +2,13 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=gettz
-_pkgver=0.0.5
+_pkgver=0.0.6
 pkgname=r-${_pkgname,,}
 pkgdesc="Get the Timezone Information"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("GPL2" "GPL3")
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=5
 
 arch=("i686" "x86_64")
 depends=(
@@ -16,7 +16,7 @@ depends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-b2sums=('3ce9f447a174a47c251ed1f1cee314721b75dd9a32f3fcee96b5c84d5ec40dcf6456636509c73b815a201a79353d664490a343b6eef221bdcdcdb6ca45b45a39')
+b2sums=('486bd56e77934e4b6b422621a6607afe8fb5060e27d55bf0127c5e47904c96ebc17d582b91375968c99e945da4d64e4c747ed0cfc5d9e6952e27f6df1a398f63')
 
 build() {
     mkdir -p "${srcdir}/build/"
