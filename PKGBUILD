@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=palace
 pkgname=${_pkgname}-git
-pkgver=0.16.1.r183.g3670079
+pkgver=0.18.0.r31.gdff1ef9
 pkgrel=1
 pkgdesc="3D finite element solver for computational electromagnetics"
 arch=('x86_64')
