@@ -1,20 +1,20 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=treesitter.r
-_pkgver=1.2.0
+_pkgver=1.3.0
 pkgname=r-${_pkgname,,}
 pkgdesc="'R' Grammar for 'Tree-Sitter'"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("MIT")
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=6
 
 arch=("i686" "x86_64")
 depends=(
     "r>=4.3.0"
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-b2sums=('f4ec9f8a6da2fb4048ead7b794d7cb13013d1c5e01e16d7a8d82227896e903dd3f7dd9088cae0ed66089313190f0ee00260b5e5b6e07139156895f5d163b9780')
+b2sums=('727f44b36a0ae0ccb67d1b0279c567d4db8d6063d0bbf03dd55320a4ba0a517bb0671f5608645391a3cdfbada1fac4ead8bd1ea9795c22b9693487bcac78d51f')
 
 build() {
     mkdir -p "${srcdir}/build/"
