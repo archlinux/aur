@@ -1,9 +1,9 @@
 # Maintainer: Markus Maiwald <markus@maiwald.work>
 pkgname=sober-bin
-_upstream_version=0.11.0
+_upstream_version=2026.09.1
 pkgver="${_upstream_version//-/_}"
-pkgrel=2
-pkgdesc='Prevent AI-Slop: The Sober Raccoon is your local CodeRabbit: A Local-first repository governance assistant and code reviewer with deterministic review readiness'
+pkgrel=1
+pkgdesc='Prevent AI-Slop: a local-first repository governance client and code reviewer with deterministic review readiness (local app; the forge-side Raccoon daemon and dashboard ship in Sober Enterprise)'
 arch=('x86_64')
 # Marketing / product site (read about Sober). Source + releases: git.sovereign-society.org/Sober/sober
 url='https://sober-dev.app'
@@ -27,7 +27,7 @@ source=(
   "https://pkg.sober-dev.app/ce/SHA256SUMS"
 )
 sha256sums=(
-  '4fb595ca85ae131c7477918bc4dde0cc714ba482eece080c6e87ddff5eace7ad'
+  '47550b5af9e7a33c0c13e4aaed97db2c3648ab3c19029966b125dc500faf8a53'
   'SKIP'
 )
 
