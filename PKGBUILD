@@ -2,16 +2,16 @@
 
 pkgname=g0v0
 pkgver=2026.913.0
-pkgrel=1
+pkgrel=2
 pkgdesc="g0v0! -- free and open rhythm experience! (a community project based on osu!lazer codebase)"
 arch=(x86_64 aarch64)
 url="https://github.com/GooGuTeam/g0v0"
 license=("MIT" "custom:CC-BY-NC 4.0")
-makedepends=(dotnet-sdk-8.0)
+makedepends=(dotnet-sdk-10.0)
 depends=(
   zlib
   libgl
-  dotnet-runtime-8.0
+  dotnet-runtime-10.0
   osu-mime
 )
 provides=(g0v0)
@@ -44,7 +44,7 @@ prepare() {
 build() {
   cd "$srcdir/g0v0-${pkgver}-g0v0"
   DOTNET_CLI_TELEMETRY_OPTOUT="1" dotnet publish osu.Desktop \
-    --framework net8.0 \
+    --framework net10.0 \
     --configuration Release \
     --use-current-runtime \
     --no-self-contained \
