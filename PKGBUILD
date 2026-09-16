@@ -7,7 +7,7 @@
 # 14.04.2026 dj_pask new mantainer
 
 pkgname=boosteroid
-pkgver=1.10.22
+pkgver=1.10.23
 pkgrel=1
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
@@ -27,8 +27,8 @@ source=(
   "${_custom_name}.md5::https://boosteroid.com/linux/installer/boosteroid-install-x64.md5"
   boosteroid.sh
 )
-md5sums=('8b568c6b6eb6b72148c2615b705241e6'
-         '3ae22a527747a4dde6bb2652e9cdca15'
+md5sums=('2e8edd1b2ea233c991e775273853d3e0'
+         '7ea24f401f5b7a28bbe59e7335a85060'
          '033cc5b68298d0fe7d36887b5db6f200')
 noextract=("${_custom_name}.deb")
 
