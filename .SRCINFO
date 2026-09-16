@@ -1,0 +1,21 @@
+pkgbase = gnome-backup-git
+	pkgdesc = Backup and restore GNOME settings and shell extensions
+	pkgver = 0.2.0.r0.g8e6106d
+	pkgrel = 1
+	url = https://codeberg.org/mipi/gnome-backup/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = bash
+	makedepends = cargo
+	makedepends = git
+	makedepends = make
+	makedepends = perl
+	depends = dconf
+	provides = gnome-backup
+	conflicts = gnome-backup
+	options = !debug
+	options = !lto
+	source = git+https://codeberg.org/mipi/gnome-backup.git
+	md5sums = SKIP
+
+pkgname = gnome-backup-git
