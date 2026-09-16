@@ -1,3 +1,14 @@
+2026.09.16, v19.20.7
+
+fix:
+- c244adcf client: dom: toggleSelectedFile: return DOM
+- 2dced747 client: insert key behavior: selection should automatically move cursor to the next item (#471)
+
+2026.09.15, v19.20.6
+
+fix:
+- 83961343 cloudcmd: client: all jpg files are opened with text viewer (#477)
+
 2026.09.04, v19.20.5
 
 fix:
