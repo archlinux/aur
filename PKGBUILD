@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A system fetch that does not stop at one frame"
 
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('f293949180efa9150a9ee9a914f67fc4f08bc295b631c02181597252b99e13eb')
-sha256sums_aarch64=('911eb55cc9fc660959c6484d0191ac874a40a575dcce8adb46744322465c8295')
+sha256sums_x86_64=('f127b5b1b5a4936f453b78f0018e909a4d8ed859a6e0a3a61cef40f7a871a81e')
+sha256sums_aarch64=('7dc2acfd5fc90ae0aea574487323391ed376c1e44470604da8165492816a43ab')
 
 
 case ${CARCH} in
