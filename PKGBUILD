@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023-2026 Michael Picht <mipi@fsfe.org>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 # Maintainer: Michael Picht <mipi@fsfe.org>
 
 _pkgorg=codeberg.org/mipi
@@ -9,10 +13,10 @@ arch=(
   aarch64
   x86_64
 )
-license=(GPL3)
+url="https://${_pkgorg}/${pkgname}/"
+license=(GPL-3.0-or-later)
 source=("https://${_pkgorg}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('fbc3a3beda180c4665a247be8d7d786ff0db27cbac792d34c8bf632dd8922c8f')
-validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fsfe.org>
+sha256sums=('8f544bbd69f7aa61785ce0c30ffeb78353259ae4b6044610b9277f7144d24e1c')
 conflicts=(repman-git)
 backup=("etc/repman.conf")
 depends=(
