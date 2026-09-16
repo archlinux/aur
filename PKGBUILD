@@ -2,7 +2,7 @@
 
 pkgname="python-katharos"
 pkgdesc="A functional programming and concurrency library for Python"
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 
 _pypi_package=${pkgname##python-}
@@ -18,7 +18,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2478e63dfd279775c6b1fe1b75a615b43ca06f4bf4a510f96652a45b4075f8dd')
+sha256sums=('73e8acf4f9529dc93ea2a975d569f9e680b5c0fff911fce3d63ed024a5ac2969')
 
 
 prepare() {
