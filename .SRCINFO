@@ -1,7 +1,7 @@
 pkgbase = antigravity-ide
 	pkgdesc = An agentic development platform from Google, evolving the IDE into the agent-first era
 	pkgver = 2.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://antigravity.google/
 	install = antigravity-ide.install
 	arch = aarch64
@@ -53,8 +53,12 @@ pkgbase = antigravity-ide
 	b2sums = 8d082784596cfe67fe48e409d780ae03f6e6c9aa999412d9b2a47bfcdb6357a08a5abf9c4fd90e2c49df5ecbd98c179c43a6bcc38e477aace24f4ba23a481a6c
 	b2sums = f6ed182fbf1463a24dc5545c71d7924b1e9b7c9832d25bfe09974a63c72385dfecbe0b609a492717348178ba6b61601f4ccea53d3f2942dd330567da40be6e95
 	source_aarch64 = antigravity-ide-2.5.5-aarch64.tar.gz::https://dl.google.com/release2/j0qc3/antigravity/stable/2.5.5-4923483625488384/linux-arm/Antigravity%20IDE.tar.gz
+	source_aarch64 = watcher-arm64-2.5.6.tgz::https://registry.npmjs.org/@parcel/watcher-linux-arm64-glibc/-/watcher-linux-arm64-glibc-2.5.6.tgz
 	b2sums_aarch64 = 09e5454f9793c536eeb9d3b10a7a08203caada8046f6c04f7b470509bcfd99337a134c07d682459af31920028e87446860d3d2e23b1c25e554114948832fcadd
+	b2sums_aarch64 = 7c646a9085006c79f346b56f04e68be3708a878625aac8bf948c7bc5dccee6c7231206230be351fb2d4e6e9c58e9abcab55dd474a135484f4732738948e7a8d5
 	source_x86_64 = antigravity-ide-2.5.5-x86_64.tar.gz::https://dl.google.com/release2/j0qc3/antigravity/stable/2.5.5-4923483625488384/linux-x64/Antigravity%20IDE.tar.gz
+	source_x86_64 = watcher-x64-2.5.6.tgz::https://registry.npmjs.org/@parcel/watcher-linux-x64-glibc/-/watcher-linux-x64-glibc-2.5.6.tgz
 	b2sums_x86_64 = c016152db0e08f3c49ee353481135c4285ac9f837da295021600464a41b7ee054d5e72ba0e1462d1c26e6bab0b06e1dcf6346f8df015acf2f1dc24ed03e65264
+	b2sums_x86_64 = 8a1b93db2872a1eb1dc095cd913c44c52a29adb5bd9f1c608e3baa2d5504c4fd0e72e9f429cbf931fb101f325d53f6b66d954ed40219a9f3099513924891d5fe
 
 pkgname = antigravity-ide
