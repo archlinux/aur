@@ -1,6 +1,6 @@
 pkgbase = slideflare
 	pkgdesc = ⚡ Blazing fast, interactive presentation tool for developers, educators, and creators
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/MeatyAri/slideflare
 	install = slideflare.install
@@ -17,7 +17,7 @@ pkgbase = slideflare
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source = slideflare_0.1.0_amd64.deb::https://github.com/MeatyAri/slideflare/releases/download/app-v0.1.0/slideflare_0.1.0_amd64.deb
+	source = slideflare_0.1.2_amd64.deb::https://github.com/MeatyAri/slideflare/releases/download/app-v0.1.2/slideflare_0.1.2_amd64.deb
 	sha256sums = SKIP
 
 pkgname = slideflare

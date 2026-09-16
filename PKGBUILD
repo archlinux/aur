@@ -1,6 +1,6 @@
 # Maintainer: meatyari <https://github.com/MeatyAri>
 pkgname=slideflare
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="⚡ Blazing fast, interactive presentation tool for developers, educators, and creators"
 arch=('x86_64')
