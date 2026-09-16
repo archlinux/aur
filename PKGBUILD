@@ -1,6 +1,6 @@
 pkgname=ti-evo-tools
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Native Qt/Kirigami tools for working with TI-84 Evo calculators over USB'
 arch=('x86_64')
@@ -19,14 +19,21 @@ depends=(
 makedepends=(
     'cargo'
     'cmake'
+    'lld'
     'pkgconf'
 )
 
+options=('!lto')
+
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "LICENSE::https://raw.githubusercontent.com/The-Real-NomadTax/TI-84-Evo-tools/b660dc16bf001c412506168b29e2296e080e595b/LICENSE"
 )
 
-sha256sums=('SKIP')
+sha256sums=(
+    'SKIP'
+    'SKIP'
+)
 
 prepare() {
     cd "TI-84-Evo-tools-${pkgver}"
@@ -38,7 +45,7 @@ build() {
     cd "TI-84-Evo-tools-${pkgver}"
 
     export QMAKE=/usr/bin/qmake6
-    export CARGO_TARGET_DIR=target
+    export CARGO_TARGET_DIR="${srcdir}/target"
 
     cargo build \
         --release \
@@ -48,14 +55,14 @@ build() {
 package() {
     cd "TI-84-Evo-tools-${pkgver}"
 
-    # Application
+    # Main application
     install -Dm755 \
-        target/release/ti-evo-tools \
+        "${srcdir}/target/release/ti-evo-tools" \
         "${pkgdir}/usr/bin/ti-evo-tools"
 
-    # License
+    # MIT license
     install -Dm644 \
-        LICENSE \
+        "${srcdir}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Desktop entry
@@ -71,7 +78,7 @@ Icon=accessories-calculator
 Terminal=false
 StartupNotify=true
 Categories=Utility;Education;
-Keywords=TI;TI-84;Evo;Calculator;USB;
+Keywords=TI;TI-84;TI-84 Evo;Evo;Calculator;USB;
 EOF
 
     # TI-84 Evo USB permissions
