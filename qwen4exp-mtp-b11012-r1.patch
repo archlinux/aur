@@ -1,7 +1,21 @@
-# Local exact-context rebase for llama.cpp b10992.
+# Local exact-context rebase for llama.cpp b11012.
+--- a/src/llama-arch.h
++++ b/src/llama-arch.h
+@@ -695,6 +695,11 @@
+     LLM_TENSOR_NEXTN_HNORM,
+     LLM_TENSOR_NEXTN_SHARED_HEAD_HEAD,
+     LLM_TENSOR_NEXTN_SHARED_HEAD_NORM,
++    // qwen4exp: the MTP head ends in its own hyper-connection mixer rather than a
++    // plain RMSNorm, mirroring the trunk's hc_head_* (which is its output norm)
++    LLM_TENSOR_NEXTN_HC_HEAD_NORM,
++    LLM_TENSOR_NEXTN_HC_HEAD_DOWN,
++    LLM_TENSOR_NEXTN_HC_HEAD_UP,
+     LLM_TENSOR_MASKED_EMBD_CENTROIDS,
+     LLM_TENSOR_MASKED_EMBD_ORDERING,
+     LLM_TENSOR_HRM_Z_L_INIT,
 --- a/src/llama-model.cpp
 +++ b/src/llama-model.cpp
-@@ -1234,7 +1234,11 @@
+@@ -1259,7 +1259,11 @@
      ml.get_key(LLM_KV_BLOCK_COUNT,             hparams.n_layer_all);
      GGML_ASSERT(hparams.n_layer_all > 0 && hparams.n_layer_all <= LLAMA_MAX_LAYERS);
      ml.get_key(LLM_KV_NEXTN_PREDICT_LAYERS,    hparams.n_layer_nextn,   false);
@@ -14,7 +28,6 @@
      ml.get_key(LLM_KV_EXPERT_COUNT,            hparams.n_expert,        false);
      std::fill(hparams.n_expert_used_arr.begin(), hparams.n_expert_used_arr.end(), 0);
      ml.get_key_or_arr(LLM_KV_EXPERT_USED_COUNT, hparams.n_expert_used_arr, hparams.n_layer_all, false);
-
 --- a/src/models/qwen4exp.cpp
 +++ b/src/models/qwen4exp.cpp
 @@ -24,6 +24,19 @@
@@ -243,7 +256,7 @@
      return std::make_unique<graph>(*this, params);
  }
  
-@@ -397,7 +472,11 @@
+@@ -414,7 +489,11 @@
              cur = build_layer_attn(inp->get_attn(), mctx_hyb, cur, inp_pos, sections, il);
          }
  
@@ -256,7 +269,7 @@
              // everything below is per token, so drop the rows that produce no output
              cur    = ggml_get_rows(ctx0, cur,    inp_out_ids);
              inject = ggml_get_rows(ctx0, inject, inp_out_ids);
-@@ -425,6 +504,23 @@
+@@ -442,6 +521,23 @@
          cb(res_hc, "l_last", il);
      }
  
@@ -280,7 +293,7 @@
      // the final mixer is the output norm: there is no separate one
      ggml_tensor * cur = build_hc_mix(res_hc,
              model.hc_head_norm, model.hc_head_down, model.hc_head_up,
-@@ -437,5 +533,197 @@
+@@ -454,6 +550,198 @@
      cb(cur, "result_output", -1);
      res->t_logits = cur;
  
@@ -478,3 +491,4 @@
 +
      ggml_build_forward_expand(gf, cur);
  }
+ 

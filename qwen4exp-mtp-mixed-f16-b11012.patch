@@ -1,4 +1,4 @@
-# Local exact-context compatibility fix for llama.cpp b10992.
+# Local exact-context compatibility fix for llama.cpp b11012.
 # Based on https://github.com/ggml-org/llama.cpp/pull/27836#issuecomment-5508708675
 --- a/src/models/qwen4exp.cpp
 +++ b/src/models/qwen4exp.cpp
@@ -13,7 +13,7 @@
      ggml_tensor * xn = ggml_mul(ctx0, ggml_rms_norm(ctx0, x, hparams.f_norm_rms_eps), w_norm);
      xn = ggml_reshape_2d(ctx0, xn, hc_dim, nt);
      cb(xn, "hc_norm", il);
-@@ -599,6 +603,9 @@
+@@ -616,7 +620,10 @@
      // [hc_dim] vector with the head's gamma, exactly as build_hc_mix does
      ggml_tensor * h_norm = ggml_rms_norm(ctx0, h_state, hparams.f_norm_rms_eps);
      h_norm = ggml_reshape_2d(ctx0, h_norm, hc_dim, n_tokens);
@@ -24,3 +24,4 @@
 +                    : ggml_cast(ctx0, layer.nextn.hnorm, h_norm->type));
      h_norm = ggml_reshape_3d(ctx0, h_norm, n_embd, hc, n_tokens);
      cb(h_norm, "mtp_hnorm", il);
+ 

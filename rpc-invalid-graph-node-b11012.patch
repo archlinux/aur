@@ -1,0 +1,163 @@
+# Exact-context rebase for llama.cpp b11012; production and test changes unchanged.
+# Provenance: https://github.com/ggml-org/llama.cpp/commit/181b1999205fd0e7c3e0db2874856649a0612d3f
+diff --git a/ggml/src/ggml-rpc/ggml-rpc.cpp b/ggml/src/ggml-rpc/ggml-rpc.cpp
+index a97db24e624e..f0ddbd6204f9 100644
+--- a/ggml/src/ggml-rpc/ggml-rpc.cpp
++++ b/ggml/src/ggml-rpc/ggml-rpc.cpp
+@@ -1758,16 +1758,12 @@ bool rpc_server::graph_compute(const std::vector<uint8_t> & input) {
+         memcpy(&id, &nodes[i], sizeof(id));
+         graph->nodes[i] = create_node(id, ctx, tensor_ptrs, tensor_map);
+-        // Check if create_node failed for a *non-zero* ID.
+-        // If id was 0, create_node returning nullptr is expected.
+-        // If id was non-zero and create_node returned nullptr, it indicates a deserialization error.
+-        if (graph->nodes[i] == nullptr && id != 0) {
++        // id 0 is valid for optional tensor sources, but not for graph nodes.
++        if (graph->nodes[i] == nullptr) {
+             GGML_LOG_ERROR("[%s] failed to create graph node %d (id=%" PRId64 ")\n", __func__, i, id);
+             return false;
+         }
+-        if (graph->nodes[i] != nullptr) {
+-            const size_t hash_pos = ggml_hash_insert(&graph->visited_hash_set, graph->nodes[i]);
+-            graph->use_counts[hash_pos] = tensor_ptrs.at(id)->use_count;
+-        }
++        const size_t hash_pos = ggml_hash_insert(&graph->visited_hash_set, graph->nodes[i]);
++        graph->use_counts[hash_pos] = tensor_ptrs.at(id)->use_count;
+     }
+     ggml_status status = ggml_backend_graph_compute(backends[device], graph);
+     GGML_ASSERT(status == GGML_STATUS_SUCCESS && "Unsuccessful graph computations are not supported with RPC");
+diff --git a/tools/rpc/CMakeLists.txt b/tools/rpc/CMakeLists.txt
+index 2891c7d034cf..a55e0f37973b 100644
+--- a/tools/rpc/CMakeLists.txt
++++ b/tools/rpc/CMakeLists.txt
+@@ -15,6 +15,18 @@ if (LLAMA_BUILD_TESTS AND UNIX AND NOT GGML_BACKEND_DL)
+     set_property(TEST test-rpc-multi-server PROPERTY LABELS main)
+ endif()
+ 
++if (LLAMA_BUILD_TESTS AND UNIX)
++    find_package(Python3 COMPONENTS Interpreter QUIET)
++    if (Python3_Interpreter_FOUND)
++        add_test(
++            NAME test-rpc-invalid-graph-node
++            COMMAND ${Python3_EXECUTABLE}
++                ${CMAKE_CURRENT_SOURCE_DIR}/test-rpc-invalid-graph-node.py
++                $<TARGET_FILE:${TARGET}>)
++        set_property(TEST test-rpc-invalid-graph-node PROPERTY LABELS main)
++    endif()
++endif()
++
+ if(LLAMA_TOOLS_INSTALL)
+     install(TARGETS ${TARGET} RUNTIME)
+ endif()
+diff --git a/tools/rpc/test-rpc-invalid-graph-node.py b/tools/rpc/test-rpc-invalid-graph-node.py
+new file mode 100755
+index 000000000000..ac28206554c7
+--- /dev/null
++++ b/tools/rpc/test-rpc-invalid-graph-node.py
+@@ -0,0 +1,107 @@
++#!/usr/bin/env python3
++import socket
++import struct
++import subprocess
++import sys
++import time
++
++
++def receive_exact(sock, size):
++    result = bytearray()
++    while len(result) < size:
++        chunk = sock.recv(size - len(result))
++        if not chunk:
++            raise ConnectionError("unexpected EOF")
++        result.extend(chunk)
++    return bytes(result)
++
++
++def reserve_port():
++    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
++        sock.bind(("127.0.0.1", 0))
++        return sock.getsockname()[1]
++
++
++def wait_for_server(port):
++    deadline = time.monotonic() + 5
++    while time.monotonic() < deadline:
++        try:
++            with socket.create_connection(("127.0.0.1", port), timeout=0.1):
++                return
++        except OSError:
++            time.sleep(0.03)
++    raise TimeoutError("RPC server did not bind")
++
++
++def hello(sock):
++    payload = b"\0" * 24
++    sock.sendall(struct.pack("<B Q", 14, len(payload)) + payload)
++    response_size, = struct.unpack("<Q", receive_exact(sock, 8))
++    receive_exact(sock, response_size)
++
++
++def verify_server_responds(port):
++    deadline = time.monotonic() + 2
++    last_error = None
++    while time.monotonic() < deadline:
++        try:
++            with socket.create_connection(("127.0.0.1", port), timeout=0.2) as sock:
++                sock.settimeout(0.5)
++                hello(sock)
++                return
++        except (ConnectionError, OSError, TimeoutError) as error:
++            last_error = error
++            time.sleep(0.03)
++    raise AssertionError(f"RPC server stopped responding after invalid graph: {last_error}")
++
++
++def main():
++    if len(sys.argv) != 2:
++        raise SystemExit(f"usage: {sys.argv[0]} <ggml-rpc-server>")
++
++    port = reserve_port()
++    server = subprocess.Popen(
++        [sys.argv[1], "-H", "127.0.0.1", "-p", str(port)],
++        stdout=subprocess.PIPE,
++        stderr=subprocess.STDOUT,
++        text=True,
++    )
++    error = None
++    try:
++        wait_for_server(port)
++        time.sleep(0.05)
++        with socket.create_connection(("127.0.0.1", port), timeout=1) as sock:
++            sock.settimeout(1)
++            hello(sock)
++            # RPC_CMD_GRAPH_COMPUTE is 10; unlike RPC_CMD_HELLO it is not pinned
++            # by a static_assert, so keep this in sync with enum rpc_cmd.
++            graph = struct.pack("<I I Q I", 0, 1, 0, 0)
++            sock.sendall(struct.pack("<B Q", 10, len(graph)) + graph)
++            try:
++                remainder = sock.recv(1)
++            except (socket.timeout, TimeoutError):
++                raise AssertionError(
++                    "RPC server kept the invalid graph connection open"
++                ) from None
++            if remainder != b"":
++                raise AssertionError("RPC server kept the invalid graph connection open")
++        verify_server_responds(port)
++        if server.poll() is not None:
++            raise AssertionError(f"RPC server exited after invalid graph: {server.returncode}")
++    except Exception as caught:
++        error = caught
++    finally:
++        if server.poll() is None:
++            server.terminate()
++        try:
++            output, _ = server.communicate(timeout=3)
++        except subprocess.TimeoutExpired:
++            server.kill()
++            output, _ = server.communicate()
++
++    if error is not None:
++        raise AssertionError(f"{error}\nRPC server output:\n{output}") from error
++
++
++if __name__ == "__main__":
++    main()

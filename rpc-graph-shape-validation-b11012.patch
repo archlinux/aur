@@ -1,8 +1,8 @@
-# Local exact-context hardening for llama.cpp b10992 (RPC protocol 7).
+# Local exact-context hardening for llama.cpp b11012 (RPC protocol 7).
 diff --git a/ggml/src/ggml-rpc/ggml-rpc.cpp b/ggml/src/ggml-rpc/ggml-rpc.cpp
 --- a/ggml/src/ggml-rpc/ggml-rpc.cpp
 +++ b/ggml/src/ggml-rpc/ggml-rpc.cpp
-@@ -1742,6 +1742,74 @@ bool rpc_server::graph_compute(const std::vector<uint8_t> & input) {
+@@ -1765,6 +1765,74 @@ bool rpc_server::graph_compute(const std::vector<uint8_t> & input) {
          const size_t hash_pos = ggml_hash_insert(&graph->visited_hash_set, graph->nodes[i]);
          graph->use_counts[hash_pos] = tensor_ptrs.at(id)->use_count;
      }
