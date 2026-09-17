@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rdist
-_pkgver=0.0.5
+_pkgver=0.0.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Calculate Pairwise Distances"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('394847a1782d753eaa4fd196ba2b569e')
-b2sums=('89536697e1af9cb4de58d36b976707f153f7aa1b929e69edfabda37f1d7a7f5a18026d1186460585498d7d33ff317e67e8a83d00cbc04307198cb31674f59801')
+md5sums=('e6f516837daa79c8fffb5e2569dc06b3')
+b2sums=('f7062f4fe1352a8b74bba8309ba5ed3ae8c020b151deb6c24e74d6685cbc14aefcaf1eb08639c5ccdfdc0deb88afe02a2074432596fde895bca2f0f371c5f6d6')
 
 build() {
   mkdir build
