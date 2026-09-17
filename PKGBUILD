@@ -1,24 +1,24 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
-# Scope: the KDE Plasma 6 applet only. Upstream also ships a Hyprland/Quickshell
-# shell and a terminal frontend; neither is packaged or supported here.
+# Scope: the KDE Plasma 6 applet only. Upstream's standalone frontends are not
+# packaged or supported here.
 
-_gitname=kde-ai-usage
+_gitname=ai-usage-widget
 # KPlugin.Id from package/metadata.json — the plasmoid install dir, the icon
 # name and the kpackagetool6 removal id all derive from it.
 _plasmoid=org.muddyblack.aiUsageWidget
 
 pkgname=plasma6-applets-ai-usage
-pkgver=2.3.1
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="KDE Plasma 6 panel widget tracking AI usage quotas across 14 AI providers"
 arch=('any')
-url="https://github.com/Muddyblack/kde-ai-usage"
+url="https://github.com/Muddyblack/ai-usage-widget"
 license=('MIT')
 # The backend is stdlib-only Python driven by bash launchers; the widget reaches
 # it through plasma5support's executable DataEngine.
 depends=('libplasma' 'plasma5support' 'python' 'hicolor-icon-theme')
-checkdepends=('jq')
+makedepends=('gettext')
 optdepends=(
     'claude-code: Claude subscription windows and local activity stats'
     'codex-bin: Codex/ChatGPT plan limits and account status for the OpenAI tab'
@@ -28,22 +28,25 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('36bb0a21ee0aa89be5c4a557e555c811890b5d92d61cadc451a2d7beee38e5c4')
+sha256sums=('813ab6147c06bf8cc76c8cc8e9070e9d821f91cdc00765fcadbb118da8498310')
+
+build() {
+    cd "${_gitname}-${pkgver}"
+    ./translate/build.sh
+}
 
 check() {
     cd "${_gitname}-${pkgver}"
     # Tests import the Python modules shipped inside package/. Keep build-host
     # bytecode (and its $srcdir paths) out of the final architecture-any payload.
     export PYTHONDONTWRITEBYTECODE=1
-    # Contract tests for the backend the widget shells out to. They are pure
-    # fixture replays — no network, no credentials — so they are safe in a
-    # clean chroot. tests/ai-usage-cli.test.sh is skipped on purpose: it covers
-    # the terminal frontend, which this package does not ship.
-    ./tests/get-ai-usage.test.sh
-    ./tests/credentials.test.sh
+    # Upstream migrated the provider contract suites from shell to unittest.
+    # Keep these offline backend checks separate from the standalone frontends.
+    PYTHONPATH="${PWD}/tests/python" python -m unittest \
+        test_fixtures test_provider_values test_collect test_envelope test_muse \
+        test_credentials test_codex_stats test_codex_rate_limits
     ./tests/python-interp.test.sh
-    ./tests/get-codex-stats.test.sh
-    ./tests/get-codex-rate-limits.test.sh
+    ./tests/history-io.test.sh
 }
 
 package() {
@@ -86,4 +89,6 @@ package() {
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 docs/provider-contract.md \
         "${pkgdir}/usr/share/doc/${pkgname}/provider-contract.md"
+    install -Dm644 docs/providers.md \
+        "${pkgdir}/usr/share/doc/${pkgname}/providers.md"
 }
