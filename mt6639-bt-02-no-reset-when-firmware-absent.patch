@@ -1,0 +1,55 @@
+Bluetooth: btmtk: do not reset the controller when firmware is absent
+
+btmtk_usb_setup() retries the firmware download once when
+btmtk_setup_firmware_79xx() fails, guarding the retry with
+BTMTK_FIRMWARE_DL_RETRY in btmtk_data->flags. The guard never holds.
+
+btmtk_data is allocated inside the hci_dev by hci_alloc_dev_priv() in
+btusb_probe(), and btmtk_reset_sync() reaches btusb_mtk_reset(), which calls
+usb_queue_reset_device(). btusb supplies neither pre_reset nor post_reset, so
+usb_reset_device() takes its unbind path and the driver is unbound and rebound
+across the reset. btusb_disconnect() frees the hci_dev holding the flag and
+btusb_probe() allocates a fresh, zeroed one, so BTMTK_FIRMWARE_DL_RETRY reads
+clear on the next attempt. "Retry once" becomes once per probe, which is once
+per reset, which does not terminate.
+
+With the firmware file missing the loop runs until the machine is powered off.
+odouglsantos recorded 398 resets in one boot and 1335 in another on an MT6639
+(0489:e13a), one per firmware failure, roughly one every 0.58 seconds. Several
+hundred resets leave the controller unable to answer a control transfer at
+all: it stops enumerating, and because the standby rail keeps it powered a
+reboot does not clear it. See
+https://github.com/jetm/mediatek-mt7927-dkms/issues/23.
+
+A subsystem reset cannot make a missing file appear, so skip the reset when
+the firmware failed to load with -ENOENT. Failures a reset can plausibly clear
+keep the existing single retry.
+
+This patch is carried here for two reasons. The bug is present in 6.18, 7.0,
+7.1 and 7.2 alike, so users on kernels below 7.1 - where this package builds
+btusb and btmtk by default - are exposed on an ordinary boot whenever the
+Bluetooth blob is absent. And it gives the reporter a way to confirm the fix
+before it goes to linux-bluetooth.
+
+Upstream submission is pending a Tested-by; drop this patch once it lands in
+the kernel base this package builds from.
+
+--- a/btmtk.c
++++ b/btmtk.c
+@@ -1394,8 +1394,14 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+ 						btmtk_usb_hci_wmt_sync,
+ 						dev_id);
+ 		if (err < 0) {
+-			/* retry once if setup firmware error */
+-			if (!test_and_set_bit(BTMTK_FIRMWARE_DL_RETRY, &btmtk_data->flags))
++			/*
++			 * Retry once if setup firmware error, but never when
++			 * the firmware file is absent: the reset unbinds the
++			 * driver, so the retry guard is lost with the hci_dev
++			 * and the retry repeats without bound.
++			 */
++			if (err != -ENOENT &&
++			    !test_and_set_bit(BTMTK_FIRMWARE_DL_RETRY, &btmtk_data->flags))
+ 				btmtk_reset_sync(hdev);
+ 			bt_dev_err(hdev, "Failed to set up firmware (%d)", err);
+ 			return err;

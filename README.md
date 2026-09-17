@@ -146,9 +146,9 @@ cd mediatek-mt7927-dkms
 make download
 make sources
 sudo make install
-sudo dkms add mediatek-mt7927/2.15
-sudo dkms build mediatek-mt7927/2.15
-sudo dkms install mediatek-mt7927/2.15
+sudo dkms add mediatek-mt7927/2.16
+sudo dkms build mediatek-mt7927/2.16
+sudo dkms install mediatek-mt7927/2.16
 sudo modprobe -r mt7925e mt7921e btusb
 sudo modprobe mt7925e
 sudo modprobe btusb
@@ -368,7 +368,7 @@ above still work. Check with `cat /sys/kernel/security/lockdown`.
 **DKMS not built for current kernel:**
 
 ```bash
-sudo dkms install mediatek-mt7927/2.15
+sudo dkms install mediatek-mt7927/2.16
 ```
 
 **DKMS modules installed but not visible in `/usr/src/`:**
@@ -493,6 +493,29 @@ sudo dkms autoinstall
 
 Check which Bluetooth modules are in use with `modinfo -n btusb`: a path under
 `updates/dkms/` means this package's build, anything else means the in-tree one.
+
+**Opting back out: the order matters, and getting it wrong removes your
+Bluetooth driver.** When the opt-in is active, DKMS archives the in-tree `btusb`
+and `btmtk` and installs ours over them. It can only restore them while
+`dkms.conf` still declares them, which it stops doing the moment the opt-in is
+gone. Disable the opt-in first and DKMS no longer knows those modules were ever
+its business: our copies are left orphaned under `updates/dkms/`, still
+shadowing the in-tree ones, and the archived originals are never put back.
+Delete the orphans at that point and the system has no `btusb` on disk at all -
+Bluetooth keeps working until the next reboot, then does not.
+
+Remove the modules **before** disabling the opt-in:
+
+```bash
+sudo dkms remove mediatek-mt7927/2.16 --all   # while BUILD_BT=yes is still set
+sudo rm /etc/mediatek-mt7927-dkms.conf
+sudo dkms autoinstall
+```
+
+Verify with `modinfo -n btusb`, which must now print a path under
+`kernel/drivers/bluetooth/`. If it errors with `Module btusb not found`, the
+in-tree modules are gone and you need to reinstall your kernel package to get
+them back (`pacman -S linux`, or extract just those two files from its package).
 
 ### Firmware dependencies
 

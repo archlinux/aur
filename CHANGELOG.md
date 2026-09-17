@@ -5,6 +5,20 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.16-1] - 2026-09-17
+
+### Driver
+
+- Carry `mt6639-bt-02-no-reset-when-firmware-absent.patch`, which stops btmtk resetting the controller over USB when the Bluetooth firmware fails to load with `-ENOENT`. The retry guard (`BTMTK_FIRMWARE_DL_RETRY`) lives in `btmtk_data`, which is allocated inside the `hci_dev`, and the reset unbinds btusb - so `btusb_disconnect()` frees the object holding the guard, `btusb_probe()` allocates a fresh zeroed one, and "retry once" becomes once per probe, which is once per reset, which never terminates. odouglsantos measured 398 resets in one boot and 1335 in another, one per firmware failure, after which the controller stops answering control transfers until standby power is cut (#23)
+- Released so the fix can be installed rather than built. It is **not** primarily a fix for users of this package: the Bluetooth blob is installed unconditionally to `/usr/lib/firmware/mediatek/mt7927/`, which is readable when btusb probes, so the loop does not fire for a normal install and the patch is a no-op there. It matters as something testers can install to confirm the fix before it goes to linux-bluetooth, and as cover for the case where the blob is absent or its path is not yet mounted at probe time
+- Note the one behaviour this gives up: where firmware lives on a filesystem mounted after btusb probes, the first reset could buy enough time for the mount to land and the retry then succeeded. odouglsantos measured that winning by 174 ms on an ostree `/var` path. That was timing rather than design, and the answer is to place the firmware where it is readable at probe - `/usr/lib/firmware`, where this package puts it, qualifies
+- Bluetooth modules are still skipped by default on kernel 7.1 and newer, so on those kernels this patch only takes effect with `BUILD_BT=yes` in `/etc/mediatek-mt7927-dkms.conf`. Below 7.1 the modules are built by default and carry it automatically
+- Upstream submission to linux-bluetooth is held pending a Tested-by. Drop this patch once it reaches the kernel base this package builds from
+
+### Documentation
+
+- Document the order the Bluetooth opt-out has to be done in, because the wrong order removes the system's Bluetooth driver. DKMS archives the in-tree `btusb` and `btmtk` when the opt-in installs ours over them, and it can only restore them while `dkms.conf` still declares them - which stops the moment the opt-in is removed. Disable `BUILD_BT` first and our copies are orphaned under `updates/dkms/` still shadowing the in-tree ones, with the archived originals never restored; delete the orphans then and there is no `btusb` on disk at all, which survives until the next reboot and then does not. Found while exercising the opt-in path on 7.2 for the first time since the gate was added in v2.14-6. `dkms remove --all` must run while the opt-in is still set
+
 ## [2.15-1] - 2026-09-17
 
 ### Driver
