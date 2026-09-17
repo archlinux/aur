@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=yt-dvr
 epoch=
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A service to automatically record livestreams from various platforms, backed by yt-dlp'
 arch=('any')
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/ed/56/4c76ee0a8a982fbde627f931a31cbf50170e085193d939b421b2f68bde65/yt_dvr-0.3.0-py3-none-any.whl)
-md5sums+=(1ca60fd18cccbc198e5c53fc763bae99)
-noextract+=(yt_dvr-0.3.0-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/3a/76/1c9bb6b07a29e5bb44ad63434a28d9f6ff3f848e90ef11d2fce419cfb3a9/yt_dvr-0.4.0-py3-none-any.whl)
+md5sums+=(bd26d823600b8bbc0c741510de3cea64)
+noextract+=(yt_dvr-0.4.0-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(ed23444cac663d14a07faeec0fcf63f5)
 
