@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=intelis-interfacing-bin
 _pkgname='InteLIS Interfacing'
-pkgver=4.3.0
+pkgver=4.6.0
 _electronversion=44
 pkgrel=1
-pkgdesc="Viral Load Sample Management - Machine Interfacing.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A standalone Electron application that receives test results from laboratory analyzers and stores them where a laboratory information system can pick them up."
 arch=('x86_64')
 url="https://deforay.github.io/intelis-interfacing/"
 _ghurl="https://github.com/deforay/intelis-interfacing"
@@ -15,12 +15,16 @@ depends=(
     "electron${_electronversion}"
     'nodejs'
 )
+options=(
+    '!strip'
+    '!emptydirs'
+)
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/deforay/vlsm-interfacing/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7881157afaf5b07e14346d0f7fb1ac31964b825d5e04a77c431468f046efb8eb'
+sha256sums=('cec01a89e87338f1cac2364c49d3871f2ea24993604fb62de88f76bea5f5336d'
             '90e8f1d7651f22d814f741854e325de31508a7d77cdc512f7244b87961612e41'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
@@ -51,7 +55,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"

@@ -1,18 +1,20 @@
 pkgbase = intelis-interfacing-bin
-	pkgdesc = Viral Load Sample Management - Machine Interfacing.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.3.0
+	pkgdesc = A standalone Electron application that receives test results from laboratory analyzers and stores them where a laboratory information system can pick them up.
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://deforay.github.io/intelis-interfacing/
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	depends = electron44
 	depends = nodejs
-	provides = intelis-interfacing=4.3.0
+	provides = intelis-interfacing=4.6.0
 	conflicts = intelis-interfacing
-	source = intelis-interfacing-4.3.0.deb::https://github.com/deforay/intelis-interfacing/releases/download/v4.3.0/intelis-interfacing-4.3.0-linux-amd64.deb
-	source = LICENSE-4.3.0.md::https://raw.githubusercontent.com/deforay/vlsm-interfacing/v4.3.0/LICENSE.md
+	options = !strip
+	options = !emptydirs
+	source = intelis-interfacing-4.6.0.deb::https://github.com/deforay/intelis-interfacing/releases/download/v4.6.0/intelis-interfacing-4.6.0-linux-amd64.deb
+	source = LICENSE-4.6.0.md::https://raw.githubusercontent.com/deforay/vlsm-interfacing/v4.6.0/LICENSE.md
 	source = intelis-interfacing.sh
-	sha256sums = 7881157afaf5b07e14346d0f7fb1ac31964b825d5e04a77c431468f046efb8eb
+	sha256sums = cec01a89e87338f1cac2364c49d3871f2ea24993604fb62de88f76bea5f5336d
 	sha256sums = 90e8f1d7651f22d814f741854e325de31508a7d77cdc512f7244b87961612e41
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
