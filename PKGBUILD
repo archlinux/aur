@@ -28,8 +28,7 @@ prepare() {
 
 
     # don't set RuntimeFrameworkVersion, just build against the version we are using
-    # this is needed since otherwise we will use a crossgen compiler version built
-    # against an older .NET 6 that does not have OpenSSL 3 support
+    # this is needed since upstream doesn't always keep up with the latest dotnet version
     sed -i '/RuntimeFrameworkVersion/d;' build.cake
     sed -i '/RuntimeFrameworkVersion/d;' src/OmniSharp.Stdio.Driver/OmniSharp.Stdio.Driver.csproj
     sed -i '/RuntimeFrameworkVersion/d;' src/OmniSharp.Stdio.Driver/OmniSharp.Stdio.Driver.csproj
@@ -40,7 +39,9 @@ prepare() {
     # use absolute path to global dotnet exe
     sed -i "s|? \"dotnet\"|? \"$(command -v dotnet)\"|" scripts/common.cake
 
+	#goodbye telemetry etc.
     export DOTNET_NOLOGO=1
+	export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
     dotnet tool restore
 }
