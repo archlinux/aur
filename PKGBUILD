@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=portable-packer-git
-pkgver=0.1.9.r7.g01193730
+pkgver=0.2.4.r74.g4c11c71e
 pkgrel=1
 pkgdesc="Packaging utility for Portable"
 arch=("x86_64")
@@ -9,32 +9,45 @@ url="https://github.com/Kimiblock/stashpak"
 license=("GPL-3.0-or-later")
 depends=("glibc" coreutils desktop-file-utils git)
 provides+=(portable-packer)
-makedepends=('go' 'git')
+makedepends=('rust' 'git')
+checkdepends=(portable)
 backup=()
 source=("source::git+https://github.com/Kimiblock/portable-packer.git")
 sha256sums=('SKIP')
 
 conflicts+=("portable<14.99")
 
-function prepare() {
-	cd source
-}
-
 function pkgver() {
 	cd source
 	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+function prepare() {
+	cd source
+	git submodule update --init --recursive
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target host-tuple
+}
+
 function build() {
 	cd source
-	go build -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
 }
 
 function check() {
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 	cd source
-	go test ./...
+	cargo test --frozen
 }
 
 function package() {
-	install -vDm755 "${srcdir}/source/packer" "${pkgdir}/usr/bin/portable-packer"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	install \
+		-vDm755 \
+		"${srcdir}/source/target/release/portable-packer" \
+		"${pkgdir}/usr/bin/portable-packer"
 }
