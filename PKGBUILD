@@ -1,6 +1,6 @@
 # Maintainer: Phundahl
 pkgname=tailtui
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A brutalist, keyboard-centric terminal user interface for Tailscale"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go')
 # without this makepkg emits an empty tailtui-debug package and a warning.
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Phundahl/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('beacd53f3c9aec58588385ce193ca21af98ef815921d8083dfff220385376aeb')
+sha256sums=('4cb0804213bbdefef0e7c4aa0249c93ea56659dae0ed859d27f49c74f78a8ca5')
 
 build() {
   cd "${pkgname}-${pkgver}"
