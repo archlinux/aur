@@ -1,6 +1,6 @@
 pkgbase = acheron-nightly
 	pkgdesc = Alternative Discord client made in C++ with Qt 6
-	pkgver = 2026.09.14_1d64ee7
+	pkgver = 2026.09.16_61e81ca
 	pkgrel = 1
 	url = https://github.com/ouwou/acheron
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = acheron-nightly
 	conflicts = acheron
 	conflicts = acheron-git
 	options = !strip
-	source = acheron-nightly-2026.09.14_1d64ee7.zip::https://nightly.link/ouwou/acheron/workflows/build/master/acheron-appimage.zip
+	source = acheron-nightly-2026.09.16_61e81ca.zip::https://nightly.link/ouwou/acheron/workflows/build/master/acheron-appimage.zip
 	source = acheron.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/acheron/acheron.desktop
 	source = acheron.png::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/acheron/acheron.png
-	sha256sums = 456567cc92a7ca8d003e10197fc962135bc0a9da002365d37fb4c9a7abca1324
+	sha256sums = b0b5aa39a46a85fbc03e95d3a05db56dbbab8dfa83179d197ca7d684b6371831
 	sha256sums = 22348420fd0e6cce6c9cf24c1ba9f4498d27b1ed169a0e38d88a0ef6a379f8e6
 	sha256sums = 3109929ab2009c8ceab6d2678492e0a0cccfd058726439e7f109a79ff9f85e84
 
