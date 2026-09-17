@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=GSL Shell
+Comment=Mathematical Shell using Lua and GSL library
+Keywords=mathematics;gsl;lua;statistics;graphics;
+Exec=gsl-shell-gui %u
+X-MultipleArgs=false
+Icon=gsl-shell
+Terminal=false
+Type=Application
+Categories=Development;
+Actions=OpenWindow;
+
+X-Desktop-File-Install-Version=0.21
+
+[Desktop Action OpenWindow]
+Name=Open New Window
+Exec=gsl-shell-gui
+

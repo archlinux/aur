@@ -1,0 +1,24 @@
+--- gsl_shell_window.cpp.orig
++++ gsl_shell_window.cpp.new
+@@ -69,17 +69,17 @@
+   FXVerticalFrame* side=new FXVerticalFrame(&about,LAYOUT_SIDE_RIGHT|LAYOUT_FILL_X|LAYOUT_FILL_Y,0,0,0,0, 10,10,10,10, 0,0);
+   new FXLabel(side,"G S L   S h e l l",NULL,JUSTIFY_LEFT|ICON_BEFORE_TEXT|LAYOUT_FILL_X);
+   new FXHorizontalSeparator(side,SEPARATOR_LINE|LAYOUT_FILL_X);
+-  new FXLabel(side, FXString::value(
++  FXString about_text;
++  about_text.format(
+     "GSL Shell %s -- %s\n"
+     "GNU Scientific Library -- Copyright (C) The GSL Team\n"
+     "%s -- %s\n"
+     "\n"
+     "With contribution of Lesley De Cruz, Benjamin Von Ardenne\n"
+     "and Jesus Romero Hebrero.",
+-    GSL_SHELL_RELEASE, GSL_SHELL_COPYRIGHT, LUAJIT_VERSION, LUAJIT_COPYRIGHT),
+-    NULL,JUSTIFY_LEFT|LAYOUT_FILL_X|LAYOUT_FILL_Y);
++    GSL_SHELL_RELEASE, GSL_SHELL_COPYRIGHT, LUAJIT_VERSION, LUAJIT_COPYRIGHT);
++  new FXLabel(side, about_text, NULL, JUSTIFY_LEFT|LAYOUT_FILL_X|LAYOUT_FILL_Y);
+   FXButton *button=new FXButton(side,"&OK",NULL,&about,FXDialogBox::ID_ACCEPT,BUTTON_INITIAL|BUTTON_DEFAULT|FRAME_RAISED|FRAME_THICK|LAYOUT_RIGHT,0,0,0,0,32,32,2,2);
+-  button->setFocus();
+   about.execute(PLACEMENT_OWNER);
+   return 1;
+ }

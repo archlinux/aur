@@ -1,0 +1,60 @@
+--- fx_console.cpp.orig
++++ fx_console.cpp.new
+@@ -4,6 +4,7 @@
+ #include "luajit.h"
+ 
+ #include "fx_console.h"
++#include "fox_message_channel.h"
+ #include "gsl_shell_app.h"
+ #include "gsl_shell_thread.h"
+ #include "fx_plot_window.h"
+@@ -13,7 +14,6 @@
+ FXDEFMAP(fx_console) fx_console_map[]=
+ {
+     FXMAPFUNC(SEL_KEYPRESS, 0, fx_console::on_key_press),
+-    FXMAPFUNC(SEL_COMMAND, FXText::ID_BACKSPACE_CHAR, fx_console::on_cmd_delete),
+     FXMAPFUNC(SEL_COMMAND, FXText::ID_BACKSPACE_BOL, fx_console::on_cmd_delete),
+     FXMAPFUNC(SEL_COMMAND, FXText::ID_BACKSPACE_WORD, fx_console::on_cmd_delete),
+     FXMAPFUNC(SEL_COMMAND, FXText::ID_DELETE_SEL, fx_console::on_cmd_delete),
+@@ -269,10 +269,8 @@
+         if ((has_no_ctrl_keys || is_paste_cmd) && getCursorPos() < m_input_begin) {
+             setCursorPos(getLength());
+             setEditable(true);
+-            if (is_paste_cmd) {
+-                pasteSelection(false);
+-                return 1;
+-            }
++            // no manual paste: fall through to FXText::onKeyPress(),
++            // which performs the paste at the new cursor position
+         }
+     }
+     }
+@@ -334,15 +332,15 @@
+ 
+         switch (FXSELID(sel))
+         {
+-        case ID_BACKSPACE_CHAR:
+-            del_pos = pos - 1;
+-            break;
+         case ID_BACKSPACE_BOL:
+         case ID_BACKSPACE_WORD:
+             del_pos = rowStart(pos);
+             break;
++        // Since FOX 1.6 doesn't have ID_BACKSPACE_CHAR, treat any unmapped delete command as a single-character deletion via default::
+         default:
+-            /* */;
++            // single-character backspace/delete command
++            del_pos = pos - 1;
++            break;
+         }
+         if (del_pos < m_input_begin)
+             return 1;
+@@ -360,7 +358,7 @@
+         // isn't yet any text, FOX will position the cursor after the ">" of the prompt but
+         // before the space character that is part of the prompt. This will prevent the user
+         // from entering some input text.
+-        if (m_status == input_mode && rowFromPos(getCursorPos()) == rowFromPos(getLength()) &&
++        if (m_status == input_mode && rowStart(getCursorPos()) == rowStart(getLength()) &&
+             getCursorPos() < m_input_begin) {
+             setCursorPos(m_input_begin);
+             setEditable(true);
