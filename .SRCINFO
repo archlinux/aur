@@ -8,7 +8,6 @@ pkgbase = ma-sh
 	depends = bash
 	depends = sed
 	depends = grep
-	depends = tac
 	noextract = git+https://github.com/viktoracoric/ma.sh.git
 	source = git+https://github.com/viktoracoric/ma.sh.git
 	sha256sums = SKIP
