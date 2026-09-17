@@ -40,7 +40,7 @@ pkgver() {
 
 build() {
  	cd "$_pkgname"
-	make publish
+	make -j1 publish
 }
 
 
