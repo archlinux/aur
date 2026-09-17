@@ -1,24 +1,46 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=lrcget
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='Utility for mass-downloading LRC synced lyrics for your offline music library.'
-arch=('x86_64' 'aarch64')
+arch=(
+    'x86_64'
+    'aarch64'
+)
 url='https://github.com/tranxuanthang/lrcget'
 license=('MIT')
-depends=('webkit2gtk-4.1' 'libappindicator' 'librsvg' 'gcc-libs')
-makedepends=('cargo' 'nodejs' 'npm' 'cargo-tauri' 'openssl' 'pkgconf')
-options=(!lto)
+depends=(
+    'webkit2gtk-4.1'
+    'libappindicator'
+    'librsvg'
+    'gcc-libs'
+)
+makedepends=(
+    'cargo'
+    'nodejs'
+    'npm'
+    'cargo-tauri'
+    'openssl'
+    'pkgconf'
+)
+options=(
+    !lto
+    !debug
+)
 provides=('lrcget')
 conflicts=('lrcget-git' 'lrcget-bin')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-    'lrcget')
-sha256sums=('79a070de9c094b4e831f8f15d880bb6da61b9e3c4675a463cdbf4e0943a4330a'
-            '123d8dc688e5b447ed6a9547fc4ddd1baec283238d86277392356c7e9fdef343')
+source=(
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+    'lrcget'
+)
+sha256sums=(
+    '543e0d44f48534c2aaa739ede0eb0c482b828ecaca3f47a136006c320c9a5302'
+    '123d8dc688e5b447ed6a9547fc4ddd1baec283238d86277392356c7e9fdef343'
+)
 
 prepare() {
     cd "$pkgname-$pkgver"
-    npm install --package-lock
+    npm install --package-lock --allow-git=all
     cd src-tauri
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
