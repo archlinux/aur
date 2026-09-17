@@ -1,0 +1,5 @@
+[firefox-vaapi]
+source = "jq"
+url = "https://product-details.mozilla.org/1.0/firefox_versions.json"
+filter = ".LATEST_FIREFOX_VERSION"
+release_url = "https://www.mozilla.org/en-US/firefox/__version__/releasenotes/"
