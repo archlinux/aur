@@ -1,5 +1,5 @@
 pkgname=bedrock-on-linux-bin
-pkgver=2.2.6
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="Run Minecraft Bedrock for Windows on Linux with native Microsoft identity and multiplayer"
 arch=(x86_64)
@@ -13,8 +13,8 @@ conflicts=("bedrock-on-linux")
 provides=(bedrock-on-linux)
 
 _appimage="BedrockOnLinux-${pkgver}-x86_64.AppImage"
-source=("${_appimage}::https://github.com/Wyze3306/BedrockOnLinux/releases/download/v2.2.6/BedrockOnLinux-2.2.6-x86_64.AppImage")
-sha256sums=('9152eb4ce7cff1aa81fb00215bce0e19d35b93e57c8db77dfc66576fd91066c7')
+source=("${_appimage}::https://github.com/Wyze3306/BedrockOnLinux/releases/download/v2.2.7/BedrockOnLinux-2.2.7-x86_64.AppImage")
+sha256sums=('72f83168423df2d6a5935f14c56b639c2fa0b4328bae9e7ced4011e5233668c1')
 noextract=("${_appimage}")
 
 prepare() {
