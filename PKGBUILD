@@ -1,6 +1,6 @@
 # Maintainer: Artem Stasyuk <stasyukartem2@gmail.com>
 pkgname=openfortivpn-gui-bin
-pkgver=0.3.5
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A modern GTK4/libadwaita GUI client for Fortinet SSL VPN on Linux, wrapping the openfortivpn CLI tool."
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=("https://github.com/shini4i/openfortivpn-gui/releases/download/v${pkgver
         "openfortivpn-gui-helper.service::https://raw.githubusercontent.com/shini4i/openfortivpn-gui/main/data/openfortivpn-gui-helper.service"
         "hicolor.tar.xz")
 
-sha256sums=('f4de7f6e47bd85cd5e3e9e4ae5cc0d6e81e9b5a803f66d3521fc82a7a3d6f689'
+sha256sums=('632c5000760f478fa65daa05d0972fbfd60854ba2acfaf617bcf523a7a139cee'
             'SKIP'
             'SKIP'
             '61d2d0454a3d96355b202bcdfee0a59b1c38cc838c23b560cdf2e4edae2cef32')
