@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-sh-bin
 pkgdesc="A Linux shell with a powerful line editor and IPC socket extensibility"
 
-pkgver=0.42.6
+pkgver=0.42.8
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,7 +32,7 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 sha256sums=('ed05e2c226c82d1687fbbc6521fef82d63451cdcaecfb752d4f03cee89b16dec')
-sha256sums_x86_64=('b32ffbc28c38c1020a31be2b417a9a7a77d3ef2ddcc59e3cb80300b0847e9f6c')
+sha256sums_x86_64=('a2682cabc96cf55693f9cd6c2eddd87a33a213dce082dc22748485060b8c4031')
 
 case ${CARCH} in
   ${arch[0]})
