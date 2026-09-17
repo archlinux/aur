@@ -1,3 +1,6 @@
 [finetune]
+
+# Use of cmd requires MR 295 reverted
+# https://gitlab.archlinux.org/archlinux/devtools/-/merge_requests/295
 source = "cmd"
 cmd = "curl -s https://flavio.tordini.org/finetune-ws/release.xml | tr -dc 0-9."
