@@ -2,8 +2,8 @@
 
 pkgbase=at32-ide-project-generate-bin
 pkgname=at32-ide-project-generate
-pkgver=1.0.06
-pkgrel=6
+pkgver=1.0.07
+pkgrel=1
 # epoch=1
 pkgdesc="AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32
 MCU。"
@@ -36,7 +36,7 @@ _pkg_name=AT32IDE_Project_Generate
 _pkg_linux=${_pkg_name}_Linux-${arch}
 _pkg_file_name=${_pkg_linux}_V${pkgver}
 source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/AT32%20IDE/${_pkg_file_name}.zip")
-sha256sums=('62d467329563818c97e6de1aa9ae20f25b68d2e3b57461546e477bf0c9d39e58')
+sha256sums=('a8621418dbc44db26dbe5710d22f80dee1dd6a056e69a4ac8fffd0fda8cb77e7')
 noextract=(${_pkg_file_name}.zip)
 
 package() {
