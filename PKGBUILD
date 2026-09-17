@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=datazen
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Lightweight, open-source AI database client"
 arch=('x86_64')
@@ -36,13 +36,22 @@ source=(
     'system-prompts-path.patch'
 )
 sha256sums=(
-    '5c7de35911af242951e4e29341a9b6f5fd776fe402e2dac40cd169e869856a6e'
-    '3df1db7493efa2f9df25ae413a7d44b9cd0655ddbb94b987e6e2d501c29d1ece'
+    'e217e172f3b2f561821ed93c7bc93254ec5bb1545a9915a61ac0b00ce80f3cc4'
+    'b12b1123e1827d744b4a4136bd615a3e83110790e051342197fcd00e4e5f814a'
 )
 
 prepare() {
     cd "${pkgname}-${pkgver}"
     patch -Np1 -i "${srcdir}/system-prompts-path.patch"
+
+    # The public source tree excludes the private Pro extension resources.
+    node -e '
+        const fs = require("node:fs");
+        const path = "src-tauri/tauri.conf.json";
+        const config = JSON.parse(fs.readFileSync(path, "utf8"));
+        delete config.bundle.resources["resources/builtin-ep"];
+        fs.writeFileSync(path, JSON.stringify(config, null, 2) + "\n");
+    '
 
     # Keep dependency caches inside the build tree.
     export CARGO_HOME="${srcdir}/.cargo"
@@ -50,8 +59,8 @@ prepare() {
     pnpm config --location project set store-dir "${srcdir}/.pnpm-store"
 
     pnpm install --frozen-lockfile
-    # v0.1.1's Cargo.lock is not synchronized with its workspace manifests.
-    # Upstream's release build refreshes it as well, so --locked cannot be used.
+    # Driver injection changes the workspace manifests, so Cargo.lock must
+    # remain writable for the selected drivers.
     cargo fetch --target "${CARCH}-unknown-linux-gnu"
 }
 
@@ -63,7 +72,7 @@ build() {
     export npm_config_cache="${srcdir}/.npm-cache"
     export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/${pkgname}-${pkgver}=/build/${pkgname} --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry --remap-path-prefix=${srcdir}/.cargo/git=/cargo-git"
 
-    # Match the standard upstream release: PostgreSQL, MySQL, SQLite and Redis.
+    # Build the community edition with PostgreSQL, MySQL, SQLite and Redis.
     node scripts/with-driver-inject.mjs --drivers=basic -- \
         pnpm exec tauri build --no-bundle
 }

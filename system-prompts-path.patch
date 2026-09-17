@@ -1,8 +1,7 @@
-diff --git a/src-tauri/src/lib.rs b/src-tauri/src/lib.rs
-index 80c3c76..da0094b 100644
---- a/src-tauri/src/lib.rs
-+++ b/src-tauri/src/lib.rs
-@@ -737,7 +737,7 @@ fn run_mcp_stdio() {
+diff --git a/src-tauri/src/bootstrap.rs b/src-tauri/src/bootstrap.rs
+--- a/src-tauri/src/bootstrap.rs
++++ b/src-tauri/src/bootstrap.rs
+@@ -257,7 +257,7 @@ pub fn run_mcp_stdio() {
                  .await
                  .expect("Failed to init store"),
          );
