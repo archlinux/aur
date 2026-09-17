@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wubi-dict-editor
 _zhname='五笔码表助手'
-pkgver=1.3.16
+pkgver=1.4.0
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -35,7 +35,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('b1532c3e222256f94e1ecb35ec177100d61c0a819b7fea38d4c0a279423afdcd'
+sha256sums=('d6018affda7a14b473f632075b790fc268400e2ee62a99709d258a7fa2501ef9'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -62,23 +62,49 @@ _set_build_env() {
 	export XDG_CACHE_HOME="${srcdir}/.cache"
 	export XDG_CONFIG_HOME="${srcdir}/.config"
 	export XDG_DATA_HOME="${srcdir}/.local/share"
-	export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
-	export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
-	export YARN_LINK_FOLDER="${srcdir}/.yarn/link"
-	export YARN_TEMP_FOLDER="${srcdir}/.yarn/tmp"
-	export YARN_NETWORK_CONCURRENCY=32
-	export YARN_NETWORK_TIMEOUT=600000
-	export YARN_CHILD_CONCURRENCY="$(nproc)"
-	export YARN_FROZEN_LOCKFILE=true
-	export YARN_NONINTERACTIVE=true
-	export YARN_NO_PROGRESS=true
-	export YARN_IGNORE_ENGINES=true
-	export NODE_ENV=production
-	export YARN_PRODUCTION=false
 	export npm_config_platform=linux
 	export npm_config_arch="${CARCH}"
 	export NODE_OPTIONS="--max-old-space-size=4096"
-	mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${YARN_LINK_FOLDER}" "${YARN_TEMP_FOLDER}"
+	export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+	export YARN_NETWORK_CONCURRENCY=32
+	local _yarnver _yarnmajor=0
+	_yarnver="$(node -p "require('./package.json').packageManager?.split('@')[1]?.split('-')[0] || ''" 2>/dev/null)"
+	_yarnmajor="${_yarnver%%.*}"
+	_yarnmajor="${_yarnmajor:-0}"
+	if [[ "${_yarnmajor}" -ge 2 ]] 2>/dev/null || [[ -f .yarnrc.yml ]]; then
+		export XDG_STATE_HOME="${srcdir}/.local/state"
+		export YARN_ENABLE_GLOBAL_CACHE=false
+		export YARN_ENABLE_MIRROR=false
+		export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/berry"
+		export YARN_NODE_LINKER=node-modules
+		export YARN_NM_MODE=hardlinks-local
+		export YARN_ENABLE_TELEMETRY=false
+		export YARN_ENABLE_SCRIPTS=true
+		export YARN_ENABLE_IMMUTABLE_INSTALLS=false
+		export YARN_ENABLE_PROGRESS_BARS=false
+		export YARN_ENABLE_COLORS=false
+		export YARN_HTTP_TIMEOUT=600000
+		export YARN_HTTP_RETRY=5
+		export COREPACK_HOME="${srcdir}/.corepack"
+		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}"
+		install -dm755 "${srcdir}/.bin"
+		corepack enable --install-directory "${srcdir}/.bin"
+		export PATH="${srcdir}/.bin:${PATH}"
+		corepack prepare "yarn@${_yarnver}" --activate
+	else
+		export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
+		export YARN_LINK_FOLDER="${srcdir}/.yarn/link"
+		export YARN_TEMP_FOLDER="${srcdir}/.yarn/tmp"
+		export YARN_NETWORK_TIMEOUT=600000
+		export YARN_CHILD_CONCURRENCY="$(nproc)"
+		export YARN_FROZEN_LOCKFILE=true
+		export YARN_NONINTERACTIVE=true
+		export YARN_NO_PROGRESS=true
+		export YARN_IGNORE_ENGINES=true
+		export NODE_ENV=production
+		export YARN_PRODUCTION=false
+		mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}" "${YARN_LINK_FOLDER}" "${YARN_TEMP_FOLDER}"
+	fi
 }
 _use_local_electron_for_forge() {
 	local _v="${SYSTEM_ELECTRON_VERSION}"
@@ -109,8 +135,8 @@ prepare() {
         --genericname="${_zhname} for Rime" \
         --exec="${pkgname} %U" \
         --custom="Name[zh_CN]=${_zhname}"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     icns2png  -d 32 -x assets/img/appIcon/appIcon.icns -o assets/img/appIcon/
     cp assets/img/appIcon/appIcon_16x16x32.png assets/img/appIcon/appicon.png
     sed -i "s/appIcon\/appicon\ico/img\/appIcon\/appicon\.png/g" main.js
@@ -119,15 +145,15 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     NODE_ENV=production     yarn run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
-    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     _icon_sizes=(16x16 32x32 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/assets/img/appIcon/appIcon_${_icons}x32.png" \
