@@ -1,4 +1,4 @@
 [botan2]
-source = 'regex'
-url = 'https://botan.randombit.net/releases/'
-regex = 'Botan-(2\.\d+\.\d+)\.tar'
+source = "jq"
+url = "https://api.github.com/repos/randombit/botan/compare/2.19.5...release-2"
+filter = '"2.19.5.r\(.ahead_by).g\(.commits[-1].sha[0:7])"'

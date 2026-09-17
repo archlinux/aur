@@ -9,9 +9,10 @@
 # Contributor: Hexchain Tong <richard0053@gmail.com>
 # Contributor: Jack Lloyd <jack@randombit.net>
 
+_commit=409ab8104c13c1b4c474bfddf4279535d614a668
 pkgname=botan2
-pkgver=2.19.5
-pkgrel=5
+pkgver=2.19.5.r22.g409ab81
+pkgrel=1
 pkgdesc='Crypto library written in C++ (legacy version)'
 arch=(x86_64)
 url='https://botan.randombit.net/'
@@ -21,22 +22,17 @@ depends=(
 )
 makedepends=(
   boost
+  git
   python
   python-setuptools
   python-sphinx
 )
 optdepends=('python: for using botan2.py')
-source=(https://botan.randombit.net/releases/Botan-"${pkgver}".tar.xz{,.asc}
+source=("git+https://github.com/randombit/botan.git#commit=${_commit}"
         boost-fixes.patch
-        CVE-2024-50382.patch
-        CVE-2024-50383.patch
 )
-sha256sums=('dfeea0e0a6f26d6724c4af01da9a7b88487adb2d81ba7c72fcaf52db522c9ad4'
-            'SKIP'
-            '4d6e04836b934671b893b7df207159b7a945191f25c134a8ab95ff43bd6ae536'
-            '34a34279260487a5f62859ba5abddb0cdcfdf0b62b1c49acf60117a941df0e07'
-            '4493316d4d04e152f3dd980b4710741bd620db404af59fba846f269ce2efeaa1')
-validpgpkeys=('621DAF6411E1851C4CF9A2E16211EBF1EFBADFBC') # Botan Distribution Key
+sha256sums=('4463db93245898513733596f2791486a588186cd3f5c85085084d7b03652a37e'
+            'c06c5e6ad6320a63dd3e5276ba4e093a62ef132e5938137f99b0b3c48a73accb')
 
 declare -gA _depends=(
   [bzip2]="libbz2.so"
@@ -50,17 +46,24 @@ makedepends+=(
   "${!_depends[@]}"
 )
 
+pkgver() {
+  cd botan
+
+  git describe \
+    --abbrev=7 \
+    --long \
+    --tags |
+    sed 's/-/.r/;s/-/./'
+}
+
 prepare() {
-  cd "Botan-${pkgver}"
+  cd botan
 
   patch -p0 -i ../boost-fixes.patch
-
-  patch -p1 -i ../CVE-2024-50382.patch
-  patch -p1 -i ../CVE-2024-50383.patch
 }
 
 build() {
-  cd Botan-$pkgver
+  cd botan
 
   ./configure.py \
     --prefix=/usr \
@@ -75,7 +78,7 @@ build() {
 }
 
 check() {
-  cd Botan-$pkgver
+  cd botan
 
   LD_LIBRARY_PATH="$PWD" ./botan-test
 }
@@ -88,8 +91,8 @@ package() {
 
   : "${pkgdir:?}"
 
-  DESTDIR="$pkgdir" make -C Botan-$pkgver install
-  install -Dm644 Botan-$pkgver/license.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  DESTDIR="$pkgdir" make -C botan install
+  install -Dm644 botan/license.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 : "${arch[@]}"
@@ -99,7 +102,7 @@ package() {
 : "${optdepends[@]}"
 : "${pkgdesc}"
 : "${pkgrel}"
+: "${pkgver}"
 : "${source[@]}"
 : "${sha256sums[@]}"
 : "${url}"
-: "${validpgpkeys[@]}"

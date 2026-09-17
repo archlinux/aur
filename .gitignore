@@ -3,5 +3,6 @@
 *.pkg.tar
 *.pkg.tar.*
 *.tar.xz
+/botan
 /pkg
 /src
