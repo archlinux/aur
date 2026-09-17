@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orca-ide-bin
 _pkgname=Orca
-pkgver=1.4.199
+pkgver=1.4.204
 _electronversion=43
 pkgrel=1
 pkgdesc="ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription."
@@ -27,6 +27,7 @@ makedepends=(
 )
 options=(
     '!emptydirs'
+    '!strip'
 )
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/stablyai/orca/v${pkgver}/LICENSE"
@@ -36,8 +37,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('99be7e2dc22cc899c20817872b48cb96fa3db0d45a8fb0aa1f892c500869d140')
-sha256sums_x86_64=('d9301f85d8afeb0e5fea49f399cefed51fdbc79138fb3687de98d2e34aca6b12')
+sha256sums_aarch64=('f285ad2e4cfe74bfd579b1166ab9a8bcaedaae2957c9d2b70c9e411ff7a935fb')
+sha256sums_x86_64=('1bc129b7069d600c0b5418237ff24e6aeefb26cf11d2f88a93091f1906d98f0d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
