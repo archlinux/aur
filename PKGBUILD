@@ -1,7 +1,10 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
+# NOTE: maintained in lockstep with the rtpengine package: the nft_rtpengine
+# kernel module and the userspace daemon share a kernel/userspace ABI, so both
+# PKGBUILDs must always be bumped to the same pkgver.
 pkgname=rtpengine-kernel-dkms
-pkgver=26.1.1.10
+pkgver=26.2.1.2
 pkgrel=1
 pkgdesc="Kernel module for Sipwise rtpengine media proxy (DKMS)"
 url="https://github.com/sipwise/rtpengine"
@@ -11,7 +14,7 @@ depends=('dkms')
 provides=("rtpengine-kernel-module=${pkgver}")
 conflicts=('rtpengine-kernel-module')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/mr${pkgver}.tar.gz")
-sha256sums=('8e6fbce8987dbf5510c51c7bbf0843ee03f8b4618007243c4f177dde739b5a2c')
+sha256sums=('a7ddc657f3f07883a267eb04aedb82b005db10f954f7a6c3a74b1acbdc21287b')
 
 prepare() {
   cd "rtpengine-mr${pkgver}"
