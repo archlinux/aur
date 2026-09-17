@@ -1,0 +1,13 @@
+# Binaries
+*.pkg.tar
+*.pkg.tar.zst
+*.pkg.tar.xz
+# Downloaded sources
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+*.zip
+# makepkg working dirs
+src/
+pkg/

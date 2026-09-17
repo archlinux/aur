@@ -1,0 +1,14 @@
+pkgbase = bend-bin
+	pkgdesc = Bend programming language
+	pkgver = 2.0.4
+	pkgrel = 1
+	arch = any
+	license = Apache-2.0
+	depends = bun
+	optdepends = clang: compile Bend programs to native binaries (clang 14+, 19+ for GPU programs)
+	optdepends = cuda: build and run GPU programs on NVIDIA GPUs
+	provides = bend
+	source = bend-2.0.4.tar.gz::https://bend-lang.com/dl/2.0.4.tar.gz
+	sha256sums = dff7d7e7b42a4572c79d3084093521d198a93af4684d4a10fe8322c265481734
+
+pkgname = bend-bin
