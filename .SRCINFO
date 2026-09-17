@@ -1,6 +1,6 @@
 pkgbase = codon
 	pkgdesc = A high-performance, zero-overhead, extensible Python compiler using LLVM
-	pkgver = 0.20.0
+	pkgver = 0.20.2
 	pkgrel = 1
 	url = https://github.com/exaloop/codon
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = codon
 	depends = semver
 	depends = fmt
 	depends = python
-	source = codon-0.20.0.tar.gz::https://github.com/exaloop/codon/archive/v0.20.0.tar.gz
-	sha512sums = 347528676d963498985b278a55272bb7bc5cda5acc08807d9613edcb4f58d4b278194cfd0533437767a92bc9fbe0ff2b529c030ee2d351acfe6e58fbda1c5d1d
+	source = codon-0.20.2.tar.gz::https://github.com/exaloop/codon/archive/v0.20.2.tar.gz
+	sha512sums = 6311dd16fcfc709fd17bb36ebb3fcb450a40f2e8fa93122c474931b014e59d0f3429445af92a2d7bbf6b392cd1cfc680682d5a08fcead565ca481eaee5ef22f0
 
 pkgname = codon
