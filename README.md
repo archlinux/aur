@@ -146,9 +146,9 @@ cd mediatek-mt7927-dkms
 make download
 make sources
 sudo make install
-sudo dkms add mediatek-mt7927/2.14
-sudo dkms build mediatek-mt7927/2.14
-sudo dkms install mediatek-mt7927/2.14
+sudo dkms add mediatek-mt7927/2.15
+sudo dkms build mediatek-mt7927/2.15
+sudo dkms install mediatek-mt7927/2.15
 sudo modprobe -r mt7925e mt7921e btusb
 sudo modprobe mt7925e
 sudo modprobe btusb
@@ -298,17 +298,77 @@ rfkill unblock bluetooth
 
 **Bluetooth USB device disappeared:**
 
-The MT6639 BT firmware can lock up during module reload or DKMS upgrade, causing the
-USB device to vanish from `lsusb`. This persists across reboots and affects all OSes
-(Linux and Windows). See [#23](https://github.com/jetm/mediatek-mt7927-dkms/issues/23).
+The controller vanishes from `lsusb` and a reboot does not bring it back, because the
+standby rail keeps it powered. Three distinct causes are known, and the journal tells
+them apart before you start guessing.
 
-Fix: shut down completely, unplug the PSU cable (or switch off at the back), wait at
-least 10 seconds, then power back on. A CMOS reset also works but is more disruptive.
+```bash
+journalctl -k -b 0 | grep -c 'reset high-speed USB device'
+journalctl -k -b 0 | grep -c 'Failed to load firmware file'
+```
+
+Hundreds of both, climbing together, means the **missing BT firmware** is the cause.
+With the blob absent, btmtk USB-resets the controller and retries; the retry guard is
+scoped to an object the reset destroys, so it loops indefinitely and a few hundred
+resets wedge the chip. Install the firmware before the next cold start - doing it while
+the loop runs does not help. Reported and traced by odouglsantos in
+[#23](https://github.com/jetm/mediatek-mt7927-dkms/issues/23).
+
+Zero of both, after a reboot from Windows, means the **controller inherited a state
+Windows left behind**. Windows Fast Startup makes this more likely.
+
+Either way, recovery needs the standby rail cut: enable **ErP** in the BIOS (S4+S5),
+then `poweroff`, wait ~15 seconds, and power on. Without ErP, switch the PSU off at the
+back or unplug it. A CMOS reset also works but costs you your tuning profile.
+
+The third cause is not this package at all - see the udev entry below.
+
+**Bluetooth or WiFi device removed by a local udev rule:**
+
+Two reporters ([#40](https://github.com/jetm/mediatek-mt7927-dkms/issues/40),
+[#103](https://github.com/jetm/mediatek-mt7927-dkms/issues/103)) traced a vanishing
+device to a forgotten rule of their own that wrote to `remove` or `disable` during
+coldplug replay. It fires on every boot, lands in the same window as firmware load and
+driver probe, and looks exactly like the driver pushing the device off the bus.
+
+```bash
+grep -rlE 'remove|disable' /etc/udev/rules.d/
+```
+
+Check this before opening an issue. Remember that udev rules are copied into the
+initramfs, so removing one needs `udevadm control --reload` plus an initramfs rebuild.
+
+**`dmesg` returns nothing at all:**
+
+`kernel.dmesg_restrict=1` makes `dmesg` print zero lines without root, so an empty
+`dmesg | grep -i btusb` proves nothing. Use `journalctl -k`, which works unprivileged.
+
+**Collecting driver state for a bug report:**
+
+Ring state per queue, which is the useful capture for a link that stays associated but
+passes no traffic. Take three samples rather than one - a single snapshot cannot show
+whether the indices have stopped moving.
+
+```bash
+for i in 1 2 3; do
+  date -u +%FT%TZ
+  cat /sys/kernel/debug/ieee80211/phy*/mt76/rx-queues
+  cat /sys/kernel/debug/ieee80211/phy*/mt76/xmit-queues
+  sleep 2
+done
+```
+
+Two traps here. The phy index **increments on every module reload**, so a script that
+hardcodes `phy0` silently stops working after the first recovery - use the `phy*` glob.
+And with Secure Boot enabled, kernel lockdown sits in `integrity` mode, which blocks
+every debugfs **write** on this driver (`chip_reset`, `fw_debug`, `runtime-pm`,
+`idle-timeout` all return `EPERM`, even as root). Reads are unaffected, so the dumps
+above still work. Check with `cat /sys/kernel/security/lockdown`.
 
 **DKMS not built for current kernel:**
 
 ```bash
-sudo dkms install mediatek-mt7927/2.14
+sudo dkms install mediatek-mt7927/2.15
 ```
 
 **DKMS modules installed but not visible in `/usr/src/`:**

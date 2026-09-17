@@ -1,0 +1,79 @@
+wifi: mt76: mt7925: cancel pending mlo_pm_work
+
+If the device is reset, suspended or unregistered within that window,
+the pending work can still run and access vif/bss data that may already
+be freed, or send MCU commands while the firmware is not available.
+
+Add cancel_delayed_work_sync(&dev->mlo_pm_work) in all relevant teardown
+and suspend paths:
+
+ - mt7925_mac_reset_work()        (chip reset recovery)
+ - mt7925e_unregister_device()    (PCIe unbind)
+ - mt7925_pci_suspend()           (PCIe bus suspend)
+ - mt7925_suspend()               (mac80211 suspend)
+ - mt7925u_suspend()              (USB bus / runtime suspend)
+
+This ensures the work is stopped before the device state becomes
+invalid.
+
+Fixes: 276a568832577 ("wifi: mt76: mt7925: update the power-saving flow")
+
+
+Backported from upstream commit 2889e84282dda147f10b10d94cf0efd90a349c53.
+The Fixes: commit is present in the kernel 7.2 tarball this package
+builds from, but this fix is not: it landed on mainline after v7.2 and
+first appears in v7.3-rc1.
+
+Context regenerated against the 7.2 tree with this package's AP-mode
+patches already applied, so it lands with no fuzz. The upstream hunks
+carry post-7.2 context and applied at fuzz 2 here, which succeeds
+silently and could misplace code on a future tarball bump.
+
+--- a/mt7925/mac.c
++++ b/mt7925/mac.c
+@@ -1344,6 +1344,7 @@
+ 
+ 	cancel_delayed_work_sync(&dev->mphy.mac_work);
+ 	cancel_delayed_work_sync(&pm->ps_work);
++	cancel_delayed_work_sync(&dev->mlo_pm_work);
+ 	cancel_work_sync(&pm->wake_work);
+ 
+ 	for (i = 0; i < 10; i++) {
+--- a/mt7925/main.c
++++ b/mt7925/main.c
+@@ -1653,6 +1653,7 @@
+ 	cancel_delayed_work_sync(&phy->mt76->mac_work);
+ 
+ 	cancel_delayed_work_sync(&dev->pm.ps_work);
++	cancel_delayed_work_sync(&dev->mlo_pm_work);
+ 	mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
+ 
+ 	mt792x_mutex_acquire(dev);
+--- a/mt7925/pci.c
++++ b/mt7925/pci.c
+@@ -48,6 +48,7 @@
+ 	mt76_for_each_q_rx(&dev->mt76, i)
+ 		napi_disable(&dev->mt76.napi[i]);
+ 	cancel_delayed_work_sync(&pm->ps_work);
++	cancel_delayed_work_sync(&dev->mlo_pm_work);
+ 	cancel_work_sync(&pm->wake_work);
+ 	cancel_work_sync(&dev->reset_work);
+ 
+@@ -517,6 +518,7 @@
+ 	dev->hif_resumed = false;
+ 	flush_work(&dev->reset_work);
+ 	cancel_delayed_work_sync(&pm->ps_work);
++	cancel_delayed_work_sync(&dev->mlo_pm_work);
+ 	cancel_work_sync(&pm->wake_work);
+ 
+ 	mt7925_roc_abort_sync(dev);
+--- a/mt7925/usb.c
++++ b/mt7925/usb.c
+@@ -269,6 +269,7 @@
+ 	pm->suspended = true;
+ 	dev->hif_resumed = false;
+ 	flush_work(&dev->reset_work);
++	cancel_delayed_work_sync(&dev->mlo_pm_work);
+ 
+ 	mt76_connac_mcu_set_hif_suspend(&dev->mt76, true, false);
+ 	ret = wait_event_timeout(dev->wait,

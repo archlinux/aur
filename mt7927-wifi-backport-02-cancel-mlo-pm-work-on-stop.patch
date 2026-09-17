@@ -1,0 +1,55 @@
+wifi: mt76: mt7925: cancel mlo_pm_work on stop
+
+mt7925 queues mlo_pm_work with a 5 second delay during multi-link
+power-save setup and never cancels it on the stop path. If the device is
+torn down inside that window, the work outlives the teardown and its timer
+fires afterwards, trying to queue onto the workqueue that is already gone:
+
+  workqueue: cannot queue mt7925_mlo_pm_work [mt7925_common] on wq phy0
+  WARNING: kernel/workqueue.c:2283 at __queue_work+0x59/0xa0, CPU#1: swapper/1/0
+   call_timer_fn+0x2a/0x140
+   __run_timers+0x203/0x330
+   run_timer_softirq+0x86/0xf0
+
+mt7921 already has its own stop callback, so add one for mt7925 that
+cancels the work before calling mt792x_stop(). mt7925_ops backs both the
+PCIe and USB drivers, so this covers both.
+
+Fixes: 276a56883257 ("wifi: mt76: mt7925: update the power-saving flow")
+
+
+Backported from upstream commit 81faf578320df2dfc682a96baa6e85851dd68b6f.
+The Fixes: commit is present in the kernel 7.2 tarball this package
+builds from, but this fix is not: it landed on mainline after v7.2 and
+first appears in v7.3-rc1.
+
+Context regenerated against the 7.2 tree with this package's AP-mode
+patches and the cancel-pending-mlo-pm-work backport already applied, in
+the order the Makefile glob imposes. Note the ops-table context differs
+from upstream: 7.2 still has .remove_interface = mt792x_remove_interface
+where mainline has mt7925_remove_interface, which is why the upstream
+hunk applied at fuzz 2 before regeneration.
+
+--- a/mt7925/main.c
++++ b/mt7925/main.c
+@@ -2498,10 +2498,19 @@
+ 	}
+ }
+ 
++static void mt7925_stop(struct ieee80211_hw *hw, bool suspend)
++{
++	struct mt792x_dev *dev = mt792x_hw_dev(hw);
++
++	cancel_delayed_work_sync(&dev->mlo_pm_work);
++
++	mt792x_stop(hw, suspend);
++}
++
+ const struct ieee80211_ops mt7925_ops = {
+ 	.tx = mt792x_tx,
+ 	.start = mt7925_start,
+-	.stop = mt792x_stop,
++	.stop = mt7925_stop,
+ 	.add_interface = mt7925_add_interface,
+ 	.remove_interface = mt792x_remove_interface,
+ 	.config = mt7925_config,

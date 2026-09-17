@@ -5,6 +5,20 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.15-1] - 2026-09-17
+
+### Driver
+
+- Backport the two upstream `mlo_pm_work` teardown fixes, which carry CVE-2026-80936 and CVE-2026-89523. The cause is `276a56883257` ("wifi: mt76: mt7925: update the power-saving flow", 2025-03-04), which queues `mlo_pm_work` with a 5 second delay and is present in 6.18, 7.0, 7.1 and 7.2 alike - so every kernel base this package has ever built from carried it, not just the current one. Both fixes landed on mainline 2026-07-31 and are ancestors of v7.3-rc1 but not of v7.2, so the work could still run after teardown, touching freed vif/bss data or queueing onto a workqueue that no longer exists. Because the DKMS module shadows the in-tree driver, installing this package on a 7.2.y kernel that had taken the stable backports actively reverted them, which made the package worse than absent on those kernels
+- Regenerate both backports' context against the 7.2 tree with this package's AP-mode patches applied, rather than vendoring the upstream hunks unchanged. Two hunks applied at fuzz 2 otherwise: 7.2 still has `.remove_interface = mt792x_remove_interface` where mainline has `mt7925_remove_interface`, and 7.2 carries an extra `cancel_work_sync(&dev->reset_work)` in `mt7925e_unregister_device()`. Fuzz succeeds silently and the Makefile only aborts on a hard reject, so an upstream-context hunk could have been misplaced by a future tarball bump without failing the build
+
+### Documentation
+
+- Separate the three known causes of a Bluetooth controller vanishing from `lsusb`, and lead with the `journalctl -k` grep that distinguishes them. Missing BT firmware drives btmtk into an unbounded USB reset loop that wedges the chip on an ordinary boot, which affects anyone on a stock distribution who never touched a module; a reboot from Windows leaves the controller in an inherited state; and a local udev rule removing the device is neither (#23, #40, #103)
+- Add a udev-rule troubleshooting entry. Two reporters independently lost days to a forgotten rule of their own writing to `remove` or `disable` during coldplug replay, which lands in the same window as firmware load and driver probe and so impersonates a driver fault (#40, #103)
+- Document that `kernel.dmesg_restrict=1` makes `dmesg` print nothing without root, so an empty `dmesg | grep` proves nothing, and use `journalctl -k` throughout instead
+- Add a diagnostics-collection entry for the ring dumps requested on every stall report, with the two traps that each cost a reporter a round: the phy index increments on every module reload, so a script pinned to `phy0` works exactly once, and Secure Boot implies kernel lockdown `integrity` mode, which returns `EPERM` on every debugfs write on this driver while leaving reads working
+
 ## [2.14-6] - 2026-08-21
 
 ### Packaging
