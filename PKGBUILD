@@ -3,7 +3,7 @@
 pkgname=aos-tools
 _name=$pkgname
 pkgver=1.1.43
-pkgrel=2
+pkgrel=7
 epoch=
 pkgdesc="aos-tools 是 AliOS Things 的命令行编译系统，支持组件管理、程序编译、烧录等功能。aos-tools 使用git 来获取组件的代码和维护代码的版本管理。"
 arch=('any')
@@ -12,22 +12,20 @@ license=('BSD')
 groups=()
 _pydeps=(
     chardet
-    configupdater
     gitdb
+    gitpython
     glob2
-    httplib2
-    threadpoolctl
     smmap
-    urllib3
     pyserial
-    yaml)
+    yaml
+)
 depends=(
     bash
-    git
     scons
     python
     "${_pydeps[@]/#/python-}")
 makedepends=(
+    git
     python-{build,installer,setuptools,wheel})
 checkdepends=()
 optdepends=()
@@ -45,12 +43,10 @@ sha256sums=('c213b6613b2609727d786275fe5020567fb401e9fa17358a8656cad5a4d883ef')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-#     python setup.py build
     python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-#     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
