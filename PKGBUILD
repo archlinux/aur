@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=speedata-publisher
-pkgver=5.9.4
+pkgver=5.9.5
 pkgrel=1
 pkgdesc='a database publishing software that creates high-quality layouted PDFs fully automatically'
 arch=(x86_64)
@@ -14,14 +14,11 @@ makedepends=(go
              lua53)
 _archive="${pkgname#*-}-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('85372cdf55550961e66fbecdfb86ae9654ca176d25a220e479521b80f3f25dd6')
+sha256sums=('4e54bfe0ca111d2ca54f9917e156ab26b080a7f8e7db05818432a4e9c5460c1b')
 
 build() {
-	local basedir="$srcdir/$_archive"
-	# sphelper drives the whole build (sp binary, libsplib.so and luaglue.so
-	# shared libraries, plus the sw/ and share/ data layout), the same way
-	# upstream's `distcustom` target works.
-	cd "$basedir/src/go"
+	cd "$_archive"
+	pushd src/go
 	export GOFLAGS="-trimpath -buildmode=pie -mod=readonly -modcacherw"
 	go build -o sphelper-bin speedatapublisher/sphelper/sphelper
 	export SP_BUILDDIR_BIN="$srcdir/build/bin"
@@ -35,11 +32,12 @@ build() {
 	export CGO_CXXFLAGS="$CXXFLAGS"
 	export CGO_LDFLAGS="$LDFLAGS"
 	export CC_amd64_linux="${CC:-gcc}"
-	cd "$basedir"
-	./src/go/sphelper-bin --basedir "$basedir" distcustom linux/amd64
+	popd
+	./src/go/sphelper-bin --basedir "./build" distcustom linux/amd64
 }
 
 package() {
+	cd "$_archive"
 	local basedir="$srcdir/build"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$basedir/bin/sp"
 	install -Dm0755 -t "$pkgdir/usr/share/speedata/lib/" \
