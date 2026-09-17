@@ -1,6 +1,6 @@
 pkgbase = go2tv-bin
 	pkgdesc = Cast media files to Smart TVs and Chromecast devices (pre-built binary)
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/alexballas/go2tv
 	arch = x86_64
@@ -11,23 +11,23 @@ pkgbase = go2tv-bin
 	depends = libglvnd
 	depends = wayland
 	optdepends = ffmpeg: transcoding support
-	provides = go2tv=2.6.0
+	provides = go2tv=2.6.1
 	conflicts = go2tv
-	source = LICENSE::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.0/LICENSE
-	source = app.go2tv.go2tv.desktop::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.0/assets/linux/app.go2tv.go2tv.desktop
-	source = app.go2tv.go2tv.appdata.xml::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.0/assets/linux/app.go2tv.go2tv.appdata.xml
-	source = go2tv-icon-desktop-512.png::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.0/assets/go2tv-icon-desktop-512.png
-	source = go2tv-icon-color.svg::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.0/assets/go2tv-icon-color.svg
+	source = LICENSE::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/LICENSE
+	source = app.go2tv.go2tv.desktop::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/assets/linux/app.go2tv.go2tv.desktop
+	source = app.go2tv.go2tv.appdata.xml::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/assets/linux/app.go2tv.go2tv.appdata.xml
+	source = go2tv-icon-desktop-512.png::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/assets/go2tv-icon-desktop-512.png
+	source = go2tv-icon-color.svg::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/assets/go2tv-icon-color.svg
 	sha256sums = f3e74b19ba21d7c94eb917b4a9027e069de8350629d25a14e95161c4f6e6fe51
 	sha256sums = cb4563f5856fac6b51f4c8b08e25520501bd7cca0dab48606025f350cdf1cc9a
-	sha256sums = 762156a032ba1b6a184172dc9558e2b9108cf69b7ebf65d7044a3a682965017e
+	sha256sums = fbd7188e80f209e72646cce41ea905ca349a19c33330ecde42fd0f2f59499171
 	sha256sums = 06ddd76db63dc6733dd12b3645fe817bb9e8c659cec6f1756031bcf91d459f23
 	sha256sums = d1825ec83521c2e46399955cd42813a3df2051b856c6296cf122dc435d9ed570
-	source_x86_64 = go2tv-2.6.0-amd64.zip::https://github.com/alexballas/go2tv/releases/download/v2.6.0/go2tv_v2.6.0_linux_amd64.zip
-	sha256sums_x86_64 = a484561efeb82f2443f2d09c4ee4e0eb14ae15288065487c71ff3f9c60460d46
-	source_aarch64 = go2tv-2.6.0-arm64.zip::https://github.com/alexballas/go2tv/releases/download/v2.6.0/go2tv_v2.6.0_linux_arm64.zip
-	sha256sums_aarch64 = 04d56717ca24804430cb5d0f82dd0c9e43bac86b4af4a576651aed07d4c55177
-	source_armv7h = go2tv-2.6.0-arm.zip::https://github.com/alexballas/go2tv/releases/download/v2.6.0/go2tv_v2.6.0_linux_arm.zip
-	sha256sums_armv7h = cb21a971b17c20b251e4242232d23673743709e502dd0fc592539e681a18ab90
+	source_x86_64 = go2tv-2.6.1-amd64.zip::https://github.com/alexballas/go2tv/releases/download/v2.6.1/go2tv_v2.6.1_linux_amd64.zip
+	sha256sums_x86_64 = 5a3165b2e41cc9740f35c148f50578b724925afb6e1e0335420e089a2458842c
+	source_aarch64 = go2tv-2.6.1-arm64.zip::https://github.com/alexballas/go2tv/releases/download/v2.6.1/go2tv_v2.6.1_linux_arm64.zip
+	sha256sums_aarch64 = ba88e8c17cd1eb061525d6a16367f2b436e249e93e99ef0c1f738bd085b1bc20
+	source_armv7h = go2tv-2.6.1-arm.zip::https://github.com/alexballas/go2tv/releases/download/v2.6.1/go2tv_v2.6.1_linux_arm.zip
+	sha256sums_armv7h = 4e2b9954e9609288e1bfa6b03c725b62b7a6c15ef59a14ef731c0d77f8ea42ba
 
 pkgname = go2tv-bin
