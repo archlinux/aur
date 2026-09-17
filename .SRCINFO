@@ -1,6 +1,6 @@
 pkgbase = forgejo-bin
 	pkgdesc = A lightweight software forge
-	pkgver = 16.0.4
+	pkgver = 16.0.5
 	pkgrel = 1
 	url = https://forgejo.org
 	arch = x86_64
@@ -26,13 +26,13 @@ pkgbase = forgejo-bin
 	sha512sums = 7eb2766c06bb0e104da5860c16fbb9743220b01eec2760a84353b315d0d91a03a10939a105a8b06c6e074782cb76d26e0af8bf8f10881fef6e942dc43300208a
 	sha512sums = f18cbfa60912221b29e3b3b824c77571797ac76b90cacd28f2014f295c90c964990d4d5079822d280681fa6b0bb80248cd98d0479a3ac6441a3eaf8179f640a3
 	sha512sums = e2882f5b7fb4425ede97e8115a1960c0789a838340526b632c51b98ce6216e520c6fda7eec923bf4bc29966853785767c13370ad2dad24107bb9e78f8669d3f6
-	source_x86_64 = forgejo::https://codeberg.org/forgejo/forgejo/releases/download/v16.0.4/forgejo-16.0.4-linux-amd64
-	source_x86_64 = forgejo.asc::https://codeberg.org/forgejo/forgejo/releases/download/v16.0.4/forgejo-16.0.4-linux-amd64.asc
-	sha512sums_x86_64 = 1943844e5bc5be93377acf1279ed1cd691bd5a9712d4bac1e05b5210b0325f7b774d4e507b9d8deb51ace21b3f3f40c0dffe20164341360a8b50090b354016c9
+	source_x86_64 = forgejo::https://codeberg.org/forgejo/forgejo/releases/download/v16.0.5/forgejo-16.0.5-linux-amd64
+	source_x86_64 = forgejo.asc::https://codeberg.org/forgejo/forgejo/releases/download/v16.0.5/forgejo-16.0.5-linux-amd64.asc
+	sha512sums_x86_64 = 2d0702bbcb170a17019e84ab98568ee4a0d14683d409ea88217b7425fd674c53708a2e8da58a72237038c060d2ae46a0e9b50789d473f319c91c9f0809e05184
 	sha512sums_x86_64 = SKIP
-	source_aarch64 = forgejo::https://codeberg.org/forgejo/forgejo/releases/download/v16.0.4/forgejo-16.0.4-linux-arm64
-	source_aarch64 = forgejo.asc::https://codeberg.org/forgejo/forgejo/releases/download/v16.0.4/forgejo-16.0.4-linux-arm64.asc
-	sha512sums_aarch64 = 7edf5c1d976eb455353fabed1e87245ab0e0177aaef1fb35c3825831277082f220ba6eb13a3f69b5ff238889c87a5edc49fdeb54c95ba5ff60b94d98c2e07399
+	source_aarch64 = forgejo::https://codeberg.org/forgejo/forgejo/releases/download/v16.0.5/forgejo-16.0.5-linux-arm64
+	source_aarch64 = forgejo.asc::https://codeberg.org/forgejo/forgejo/releases/download/v16.0.5/forgejo-16.0.5-linux-arm64.asc
+	sha512sums_aarch64 = dae3bd87f38f546e0612d47bedff3e766c70534f02f8a6dad4dfbc4d97929951a9484b5a62705f6ea636db735569db7b870a107a7d5d96f82efe8ea2867bfb77
 	sha512sums_aarch64 = SKIP
 
 pkgname = forgejo-bin
