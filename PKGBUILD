@@ -24,7 +24,7 @@ source=("${_appimage}::https://github.com/ayman708-UX/WAVE/releases/download/v${
         "wave.desktop")
 noextract=("${_appimage}")
 sha256sums=('61c187dbd8af5463e06c4e7b5eae016bf75aa3afb0413548831676039b9b3304'
-            'e7e208df1e586ac1d7ff04babfdb1aa41ab5fd038d750840452e98ef104b2e8a')
+            'f3fc91c30000b23a9fd7c7ad2f1979528e398157d813516fbcdd52c9c5ce7d7d')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -46,7 +46,9 @@ package() {
     # Install desktop entry
     install -Dm644 "${srcdir}/wave.desktop" "${pkgdir}/usr/share/applications/wave.desktop"
 
-    # Install icon
+    # Install icons in standard sizes and pixmaps
+    install -Dm644 "${srcdir}/squashfs-root/WAVE.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/wave.png"
     install -Dm644 "${srcdir}/squashfs-root/WAVE.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/wave.png"
     install -Dm644 "${srcdir}/squashfs-root/WAVE.png" "${pkgdir}/usr/share/pixmaps/wave.png"
+    install -Dm644 "${srcdir}/squashfs-root/WAVE.png" "${pkgdir}/usr/share/pixmaps/WAVE.png"
 }

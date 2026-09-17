@@ -1,10 +1,13 @@
 [Desktop Entry]
 Name=WAVE
+GenericName=Music Player
 Comment=Modern and sleek cross-platform music streaming player
-Exec=wave %U
+Exec=/usr/bin/wave %U
 Icon=wave
 Terminal=false
 Type=Application
 Categories=AudioVideo;Audio;Player;Music;
 StartupWMClass=wave
+StartupNotify=true
 MimeType=x-scheme-handler/wave;
+Keywords=music;player;streaming;audio;wave;

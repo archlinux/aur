@@ -21,6 +21,6 @@ pkgbase = wave-bin
 	source = wave-bin-1.1.4.AppImage::https://github.com/ayman708-UX/WAVE/releases/download/v1.1.4/WAVE-Linux-x86_64.AppImage
 	source = wave.desktop
 	sha256sums = 61c187dbd8af5463e06c4e7b5eae016bf75aa3afb0413548831676039b9b3304
-	sha256sums = e7e208df1e586ac1d7ff04babfdb1aa41ab5fd038d750840452e98ef104b2e8a
+	sha256sums = f3fc91c30000b23a9fd7c7ad2f1979528e398157d813516fbcdd52c9c5ce7d7d
 
 pkgname = wave-bin
