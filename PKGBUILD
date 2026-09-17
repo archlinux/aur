@@ -1,7 +1,7 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=openchamber
 _npmname=@openchamber/web
-pkgver=1.23.2
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="Desktop and web interface for OpenCode AI agent"
 arch=('x86_64')
@@ -11,11 +11,15 @@ depends=('nodejs' 'bash')
 makedepends=('npm' 'jq' 'patchelf')
 source=("https://registry.npmjs.org/@openchamber/web/-/web-${pkgver}.tgz")
 noextract=("web-${pkgver}.tgz")
-sha256sums=('8d99a57249b29bf2442b830af97c5c7363089a25473f3e4693a08afbcba7f242')
+sha256sums=('1a4ff353297c8f74b11c29ae741a8baabfabbf97c8f64430fa1df3863e2473d3')
 
 package() {
-    npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
-        "${srcdir}/web-${pkgver}.tgz"
+    mkdir -p "${srcdir}/web"
+    tar -xzf "${srcdir}/web-${pkgver}.tgz" -C "${srcdir}/web" --strip-components=1
+    if ! npm view @openchamber/sdk@1.23.1 >/dev/null 2>&1; then
+        sed -i 's/"@openchamber\\/sdk": "1.23.1"/"@openchamber\\/sdk": "1.24.0"/' "${srcdir}/web/package.json"
+    fi
+    npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/web"
 
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
     chown -R root:root "${pkgdir}"
