@@ -1,11 +1,14 @@
 pkgbase = lody
 	pkgdesc = Lody Desktop - run AI coding agents in parallel with isolated Git worktrees, live diff review and GitHub integration
 	pkgver = 0.95.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://lody.ai/home
 	arch = x86_64
 	license = custom
 	makedepends = libarchive
+	depends = alsa-lib
+	depends = avahi
+	depends = dbus
 	depends = gtk3
 	depends = libnotify
 	depends = nss

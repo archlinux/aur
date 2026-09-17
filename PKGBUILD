@@ -1,12 +1,12 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=lody
 pkgver=0.95.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Lody Desktop - run AI coding agents in parallel with isolated Git worktrees, live diff review and GitHub integration"
 arch=('x86_64')
 url="https://lody.ai/home"
 license=('custom')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
+depends=('alsa-lib' 'avahi' 'dbus' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 optdepends=('libappindicator: system tray support')
 makedepends=('libarchive')
 source=("Lody-${pkgver}-amd64.deb::https://updates.lody.ai/production/Lody-${pkgver}-amd64.deb")
