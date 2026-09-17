@@ -1,7 +1,7 @@
 # Maintainer: Sable Maintainers <https://github.com/SableClient/Sable>
 
 pkgname=sable-bin
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="An almost stable Matrix client"
 arch=('x86_64')
@@ -31,7 +31,7 @@ conflicts=('sable' 'sable-nightly-bin')
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Sable-${pkgver}-linux-x86_64.deb")
-sha256sums_x86_64=('1b82de1dba825c834b485d6787436ab7d0ff396169a33270f9e55e7ed17c820e')
+sha256sums_x86_64=('620bb2ba2385ea159790652a87580dcfa9fcafcf8bfe075753f20897088db7b5')
 
 package() {
   bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}.deb" 'data.tar*' \
