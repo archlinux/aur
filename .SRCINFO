@@ -1,6 +1,6 @@
 pkgbase = zed-bin
 	pkgdesc = A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter
-	pkgver = 1.20.1
+	pkgver = 1.20.2
 	pkgrel = 1
 	url = https://zed.dev
 	arch = x86_64
@@ -28,13 +28,13 @@ pkgbase = zed-bin
 	optdepends = rust-analyzer: improved Rust language support
 	optdepends = typescript-language-server: improved TypeScript/JavaScript support
 	optdepends = org.freedesktop.secrets: to keep you logged into your Zed account
-	provides = zed=1.20.1
+	provides = zed=1.20.2
 	conflicts = zed
 	conflicts = zed-git
 	conflicts = zed-preview-bin
-	source_x86_64 = zed-bin-1.20.1-x86_64.tar.gz::https://github.com/zed-industries/zed/releases/download/v1.20.1/zed-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a273674d829d7a536bfc2566967df9eb83718f191242b26d3ebe3a46f36f4de2
-	source_aarch64 = zed-bin-1.20.1-aarch64.tar.gz::https://github.com/zed-industries/zed/releases/download/v1.20.1/zed-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 7081248afe9bfd4882482e685f1ffd1bdae7596072d52c959fbee6d976aaf0ba
+	source_x86_64 = zed-bin-1.20.2-x86_64.tar.gz::https://github.com/zed-industries/zed/releases/download/v1.20.2/zed-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 647dc85e09fcd99cd175365a89b7b70ccf96469c4844eb8ae6eb83dfa82f7600
+	source_aarch64 = zed-bin-1.20.2-aarch64.tar.gz::https://github.com/zed-industries/zed/releases/download/v1.20.2/zed-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 715a5252234522bc9e8e4a8c1f9b462cf7bb2881eed23b7c8ae650b41c24aa6f
 
 pkgname = zed-bin
