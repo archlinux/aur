@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wubi-dict-editor-bin
 _zhname='五笔码表助手'
-pkgver=1.3.16
+pkgver=1.4.0
 _electronversion=28
 pkgrel=1
 pkgdesc="Five Pen Watch Assistant for Rime.五笔码表助手 for Rime."
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('74bf2badc500ad13b0d10efcbed418ab74d6bf2f4f1113fa67f093806fdf8c8f'
+sha256sums=('66db8aa151c4f5d13b5846cdee8a9bd6fb59b584997c661ceb7af7cb71557649'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -52,7 +52,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/doc/${pkgname%-bin}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
