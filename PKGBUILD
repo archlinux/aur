@@ -1,6 +1,6 @@
 # Maintainer: syst3mctl <support@usectl.com>
 pkgname=usectl
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="CLI for the usectl deployment platform"
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('glibc')
 source_x86_64=("${url}/releases/download/v${pkgver}/usectl_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/usectl_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('d436cec86cce16ac459b7b4edfe00bfe74bd11716f6073ecb2acd37e2b56e71e')
-sha256sums_aarch64=('d88a3b19dbca9c719bdd7b60bd6c008f7b05f6057baab5ace333eefb210a7a07')
+sha256sums_x86_64=('9c79a10be29efd805feae3cbadb5ce346e73a5e8203387ed74d19989e19d612f')
+sha256sums_aarch64=('b32260c7ebeb4e43c17674fbbb9c883c6ac7c0d9fe49e769a2d9cb1c445e7350')
 package() {
   install -Dm755 usectl "$pkgdir/usr/bin/usectl"
 }
