@@ -2,7 +2,7 @@
 
 pkgname=python-espeakng-loader
 _name=${pkgname#python-}
-pkgver=None
+pkgver=0.2.4
 pkgrel=1
 epoch=
 pkgdesc="A Python package that provides shared library loader for eSpeak NG"
