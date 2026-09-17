@@ -1,6 +1,6 @@
 # Maintainer: blitzkriegfc <blitzkriegfc@gmail.com>
 pkgname=qbzd-bin
-pkgver=2.1.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="QBZ headless Qobuz daemon for servers and appliances (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ options=('!strip')
 install=qbzd.install
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbzd-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbzd-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha256sums_x86_64=('040a2494812c20534ba0095ea7787644889b2720fab25268744236cf0555d92d')
+sha256sums_aarch64=('fbbce0c36a14dd679431ad8e0775635e635be212c2ea6d015412f8ef0f48133f')
 
 package() {
     local release_arch

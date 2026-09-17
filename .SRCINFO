@@ -1,6 +1,6 @@
 pkgbase = qbzd-bin
 	pkgdesc = QBZ headless Qobuz daemon for servers and appliances (prebuilt binary)
-	pkgver = 2.1.0
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/vicrodh/qbz
 	install = qbzd.install
@@ -16,9 +16,9 @@ pkgbase = qbzd-bin
 	conflicts = qbzd
 	conflicts = qbzd-git
 	options = !strip
-	source_x86_64 = qbzd-bin-2.1.0-x86_64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v2.1.0/qbzd-2.1.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = qbzd-bin-2.1.0-aarch64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v2.1.0/qbzd-2.1.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = SKIP
+	source_x86_64 = qbzd-bin-2.1.2-x86_64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v2.1.2/qbzd-2.1.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 040a2494812c20534ba0095ea7787644889b2720fab25268744236cf0555d92d
+	source_aarch64 = qbzd-bin-2.1.2-aarch64.tar.gz::https://github.com/vicrodh/qbz/releases/download/v2.1.2/qbzd-2.1.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = fbbce0c36a14dd679431ad8e0775635e635be212c2ea6d015412f8ef0f48133f
 
 pkgname = qbzd-bin
