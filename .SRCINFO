@@ -1,6 +1,6 @@
 pkgbase = grub-reboot-picker
 	pkgdesc = Tray application to reboot into different OSes or UEFI/BIOS
-	pkgver = 0.0.12
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://github.com/mendhak/grub-reboot-picker
 	arch = any
@@ -16,8 +16,7 @@ pkgbase = grub-reboot-picker
 	depends = python-cairo
 	depends = python-gobject
 	depends = systemd-sysvcompat
-	optdepends = molly-guard
-	source = grub-reboot-picker-0.0.12.tar.gz::https://github.com/mendhak/grub-reboot-picker/archive/v0.0.12.tar.gz
-	sha256sums = 3fc383ae6fd1f9588db950d804fd50efd8b40ce284229dc13f1918b9b3d35198
+	source = grub-reboot-picker-0.0.13.tar.gz::https://github.com/mendhak/grub-reboot-picker/archive/v0.0.13.tar.gz
+	sha256sums = 37ab920eca320673807af60e706f27dffce4e14210508703c4f4e5ac8986d005
 
 pkgname = grub-reboot-picker

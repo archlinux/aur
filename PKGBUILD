@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=grub-reboot-picker
 _app_id=com.mendhak.grubrebootpicker
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="Tray application to reboot into different OSes or UEFI/BIOS"
 arch=('any')
@@ -22,9 +22,8 @@ makedepends=(
   'python-installer'
   'python-wheel'
 )
-optdepends=('molly-guard')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3fc383ae6fd1f9588db950d804fd50efd8b40ce284229dc13f1918b9b3d35198')
+sha256sums=('37ab920eca320673807af60e706f27dffce4e14210508703c4f4e5ac8986d005')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -46,7 +45,7 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "${site_packages}/$pkgname/$pkgname.py" "$pkgdir/usr/bin/$pkgname"
 
-  install -Dm644 "${_app_id}.policy" -t "$pkgdir/usr/share/polkit-1/actions/"
+  install -Dm644 "${_app_id}.rules" -t "$pkgdir/usr/share/polkit-1/rules.d/"
   install -Dm644 "${_app_id}.desktop" -t "$pkgdir/etc/xdg/autostart/"
   install -Dm644 "${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "assets/$pkgname.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
