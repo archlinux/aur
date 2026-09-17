@@ -1,8 +1,8 @@
 pkgbase = dbgate-git
-	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.Use system-wide electron.
-	pkgver = 7.2.3.r1.gdbd31da
+	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.
+	pkgver = 7.3.0.r4.g4d5d4cb
 	pkgrel = 1
-	url = https://dbgate.org/
+	url = https://www.dbgate.io/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = dbgate-git
 	makedepends = jq
 	depends = electron38
 	depends = python
-	provides = dbgate=7.2.3
+	provides = dbgate=7.3.0
 	conflicts = dbgate
 	source = dbgate.git::git+https://github.com/dbgate/dbgate.git
 	source = dbgate.sh
