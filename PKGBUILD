@@ -1,13 +1,13 @@
 # Maintainer: blitzkriegfc <blitzkriegfc@gmail.com>
 pkgname=qbzd
-pkgver=2.1.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="QBZ headless Qobuz daemon for servers and appliances"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vicrodh/qbz"
 license=('MIT')
 depends=('alsa-lib')
-makedepends=('rust' 'cmake' 'nasm' 'jack2')
+makedepends=('rust' 'cmake' 'nasm' 'jack')
 # makepkg's GCC LTO objects cannot be consumed from Rust rlibs by rustc's lld.
 options=('!lto' '!debug')
 install=qbzd.install
@@ -23,7 +23,7 @@ source=(
     "qbz-${pkgver}.tar.gz::https://github.com/vicrodh/qbz/archive/refs/tags/v${pkgver}.tar.gz"
     "qbz-${pkgver}-cargo-vendor.tar.xz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbz-${pkgver}-cargo-vendor.tar.xz"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('d99fdb4c9dce548a49c86cf91b1f3ecda5c8344c46b07287c572a63e599e0145' 'be77fdc44467cd54d94c21b14998f2e48c209f0761c3a065eb538413de9b208e')
 
 prepare() {
     cd "${srcdir}/qbz-${pkgver}"
