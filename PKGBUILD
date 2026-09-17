@@ -3,13 +3,13 @@
 pkgname=proton-meet-bin
 _name=${pkgname%-bin}
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure, end-to-end encrypted video conferencing'
 arch=(any)
 url='https://proton.me/meet'
 license=(GPL-3.0-or-later)
 _electron=electron43
-depends=(bash $_electron xdg-utils)
+depends=(bash $_electron hicolor-icon-theme xdg-utils)
 provides=($_name)
 conflicts=($_name)
 source=($_name-$pkgver.deb::https://proton.me/download/meet/linux/$pkgver/ProtonMeet-desktop.deb
@@ -25,6 +25,7 @@ prepare() {
         "./usr/lib/$_name/resources/" \
         "./usr/lib/$_name/version" \
         "./usr/share/applications/$_name.desktop" \
+        "./usr/share/icons"
 
     # Find out which major release of electron this version of proton-meet requires
     local _electron_major=$(cat "usr/lib/$_name/version" | sed 's/^[~^]\?\([0-9]\+\)\(\.[0-9]\+\)*$/\1/')
@@ -44,6 +45,7 @@ package() {
 
     install -d "$pkgdir/usr/share/$_name"
     cp usr/lib/proton-meet/resources/* "$pkgdir/usr/share/$_name/"
+    cp -a usr/share/icons "$pkgdir/usr/share/"
 
     install -Dm644 usr/share/applications/$_name.desktop -t "$pkgdir/usr/share/applications"
 }
