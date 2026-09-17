@@ -1,6 +1,6 @@
 pkgbase = pob-redux-bin
 	pkgdesc = Path of Building for Path of Exile 1 and 2, rebuilt
-	pkgver = 0.2.17
+	pkgver = 0.2.18
 	pkgrel = 1
 	url = https://pobredux.com
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = pob-redux-bin
 	conflicts = pob-redux
 	options = !strip
 	options = !debug
-	source = pob-redux-0.2.17.deb::https://github.com/juddisjudd/pob-redux/releases/download/v0.2.17/PoB.Redux_0.2.17_amd64.deb
-	source = LICENSE-0.2.17::https://raw.githubusercontent.com/juddisjudd/pob-redux/v0.2.17/LICENSE
-	sha256sums = 71fdc3e2b5144f38cb4f3ac27279d8dc9e2d9952f4e0c8282a27c78d7b90ae40
+	source = pob-redux-0.2.18.deb::https://github.com/juddisjudd/pob-redux/releases/download/v0.2.18/PoB.Redux_0.2.18_amd64.deb
+	source = LICENSE-0.2.18::https://raw.githubusercontent.com/juddisjudd/pob-redux/v0.2.18/LICENSE
+	sha256sums = 3b3cf149b9072201ff69cf3e39e2b928382f4f74c1e0c40a778c8fbb7abb552b
 	sha256sums = 1724147fdca0d7d5be9f05217865af65e595ff3d17c8bcbd58683fe23e8909f7
 
 pkgname = pob-redux-bin
