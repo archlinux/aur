@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Santini <giovannisantini93@yahoo.it>
 
 pkgname=9router
-pkgver=0.5.59
+pkgver=0.5.75
 pkgrel=1
 pkgdesc="FREE AI Router & Token Saver"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=("https://registry.npmjs.org/9router/-/9router-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha512sums=('6f9669a21d448f1f1759c028a4fbac945d5fd94abc1499c4c23fe0c2f775b4eaf48324cee33620a20fa7c3c3b9225b06ce033c8297ef28dda1cef9624affe3d2')
+sha512sums=('77215d441bc3653e3c9c50abd03bb8f2986728c2033ae484d10d154a4f314d7c9a48da5151a2742bccb62442dc46e4e4635b57c2eb94a8e9b98ba64d64b078f1')
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
