@@ -35,8 +35,8 @@ package() {
 
     install -Dm644 "$srcdir/pipewire-crisp-vocals.service" "$pkgdir/usr/lib/systemd/user/pipewire-crisp-vocals.service"
 
-    install -Dm644 "$srcdir/99-crisp-vocals.conf" "$pkgdir/usr/share/pipewire/pipewire.conf.d/99-crisp-vocals.conf"
-    install -Dm644 "$srcdir/99-crisp-vocals-low-latency.conf" "$pkgdir/usr/share/pipewire/pipewire.conf.d/99-crisp-vocals-low-latency.conf"
+    install -Dm644 "$srcdir/99-crisp-vocals.conf" "$pkgdir/etc/pipewire/pipewire.conf.d/99-crisp-vocals.conf"
+    install -Dm644 "$srcdir/99-crisp-vocals-low-latency.conf" "$pkgdir/etc/pipewire/pipewire.conf.d/99-crisp-vocals-low-latency.conf"
 
     install -Dm644 "$srcdir/crisp-vocals.ron.example" "$pkgdir/usr/share/pipewire-crisp-vocals/crisp-vocals.ron.example"
     install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
@@ -46,22 +46,14 @@ package() {
 
 post_install() {
     echo ""
-    echo "==> pipewire-crisp-vocals installed."
-    echo "    PipeWire config drop-ins were installed to /usr/share/pipewire/pipewire.conf.d/"
-    echo "    -- symlink or copy them into /etc/pipewire/pipewire.conf.d/ (or your user config"
-    echo "    dir) if your PipeWire doesn't already load /usr/share/pipewire/pipewire.conf.d/:"
+    echo "==> pipewire-crisp-vocals installed. Enable it:"
     echo ""
-    echo "    mkdir -p ~/.config/pipewire/pipewire.conf.d"
-    echo "    ln -s /usr/share/pipewire/pipewire.conf.d/99-crisp-vocals.conf ~/.config/pipewire/pipewire.conf.d/"
-    echo "    ln -s /usr/share/pipewire/pipewire.conf.d/99-crisp-vocals-low-latency.conf ~/.config/pipewire/pipewire.conf.d/"
-    echo "    systemctl --user restart pipewire pipewire-pulse wireplumber"
-    echo ""
-    echo "==> Then enable the one user service (config + mic auto-detect on first run):"
     echo "    systemctl --user enable --now pipewire-crisp-vocals.service"
     echo ""
-    echo "    Edit ~/.config/pipewire/crisp-vocals.ron afterward to tune the DSP chain --"
-    echo "    changes hot-reload within ~50ms, no restart needed. Use 'crisp-links mic'"
-    echo "    to change the routed mic (<node-name> | --auto | --list)."
+    echo "    That's it -- config is auto-created at ~/.config/pipewire/crisp-vocals.ron"
+    echo "    with your mic auto-detected on first run. Edit that file to tune the DSP"
+    echo "    chain (hot-reloads within ~50ms, no restart needed), or run"
+    echo "    'crisp-links mic --list|--auto|<node-name>' to change the routed mic."
 }
 
 post_upgrade() {
