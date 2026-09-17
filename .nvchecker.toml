@@ -1,0 +1,4 @@
+[openmeters]
+source = "git"
+git = "https://github.com/httpsworldview/openmeters.git"
+prefix = "v"
