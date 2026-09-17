@@ -1,7 +1,7 @@
 # Maintainer: Felix Wolff <lixissimus at gmail dot com>
 
 pkgname=interception-fluent
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Interception plugin that allows to create arbitrary shortcuts'
 url='https://github.com/Lixissimus/fluent'
@@ -34,4 +34,4 @@ package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/fluent"
     install -Dm0644 -t "$pkgdir/etc/interception/udevmon.d/" "data/etc/interception/udevmon.d/fluent.yaml"
 }
-sha256sums=('604628c9f868a23239ebbe59947a459b5dc54e38470156c240a204024c248976')
+sha256sums=('afbc4a8f06ba38f920a1e3320f468381da5a30af56a6e952c5625478e0e0b6b8')
