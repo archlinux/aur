@@ -1,6 +1,6 @@
 # Maintainer: claude-brain maintainers
 pkgname=claude-brain
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="A local second brain for Claude Code, served as an MCP server: hybrid recall over notes and past sessions, episodic memory, note-graph traversal, design memory from screenshots and captured URLs, 3D visualisation, cloud sync"
 # x86_64 only: fastembed pulls @anush008/tokenizers, which publishes prebuilds for
@@ -19,7 +19,7 @@ optdepends=('claude-code: LLM-assisted vault reorganisation and design descripti
 options=('!strip' '!debug')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8ee11ccc5fc516b441d4d20ec01cd1159d4466011bbc8f4ba336faef451fa26a')
+sha256sums=('7ad52789f16f5eeb4881866ce0d8bf064a952f7e9102abb818d1e42f3d731550')
 
 build() {
 	cd "$pkgname-$pkgver"

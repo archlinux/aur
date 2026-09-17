@@ -1,6 +1,6 @@
 pkgbase = claude-brain
 	pkgdesc = A local second brain for Claude Code, served as an MCP server: hybrid recall over notes and past sessions, episodic memory, note-graph traversal, design memory from screenshots and captured URLs, 3D visualisation, cloud sync
-	pkgver = 0.9.9
+	pkgver = 0.9.10
 	pkgrel = 1
 	url = https://github.com/vermingov/claude-brain
 	install = claude-brain.install
@@ -12,7 +12,7 @@ pkgbase = claude-brain
 	optdepends = claude-code: LLM-assisted vault reorganisation and design descriptions
 	options = !strip
 	options = !debug
-	source = claude-brain-0.9.9.tar.gz::https://github.com/vermingov/claude-brain/archive/refs/tags/v0.9.9.tar.gz
-	sha256sums = 8ee11ccc5fc516b441d4d20ec01cd1159d4466011bbc8f4ba336faef451fa26a
+	source = claude-brain-0.9.10.tar.gz::https://github.com/vermingov/claude-brain/archive/refs/tags/v0.9.10.tar.gz
+	sha256sums = 7ad52789f16f5eeb4881866ce0d8bf064a952f7e9102abb818d1e42f3d731550
 
 pkgname = claude-brain
