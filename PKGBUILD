@@ -11,7 +11,7 @@
 pkgname='pentadactyl-git'
 license=(MIT)
 pkgver=r7307.3f48ca72
-pkgrel=2
+pkgrel=3
 pkgdesc='Vim-like five-fingered interface for Palemoon'
 arch=(any)
 url='https://github.com/pentadactyl/pentadactyl'
@@ -24,7 +24,7 @@ md5sums=('SKIP')
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	sed -i 's/<em:maxVersion>[^<]*</<em:maxVersion>34.\*</' pentadactyl/install.rdf
+	sed -i 's!<em:maxVersion>[^<]*</em:maxVersion>!<em:maxVersion>35.*</em:maxVersion>!' pentadactyl/install.rdf
 }
 
 pkgver() {
@@ -39,8 +39,8 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	local _version_pentadactyl="$(awk -F 'em:version="|"' '/em:version/ {print $2; exit}' $srcdir/$pkgname/pentadactyl/install.rdf)"
-	local _extension_id="$(awk -F 'em:id="|"' '/em:id/ {print $2; exit}' $srcdir/$pkgname/pentadactyl/install.rdf)"
+	local _version_pentadactyl="$(awk -F 'em:version="|"' '/em:version/ {print $2; exit}' pentadactyl/install.rdf)"
+	local _extension_id="$(awk -F 'em:id="|"' '/em:id/ {print $2; exit}' pentadactyl/install.rdf)"
 	local _path_xpi="$srcdir/$pkgname/downloads/pentadactyl-${_version_pentadactyl}.xpi"
 	local _path_install="$pkgdir/usr/lib/palemoon/browser/extensions/$_extension_id"
 
