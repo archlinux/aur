@@ -1,5 +1,5 @@
 pkgname=vgs-shell-git
-pkgver=0.5.0.r341.g400206b0
+pkgver=0.5.0.r343.g16b5b870
 pkgrel=1
 pkgdesc='VanillaGreen desktop shell for Hyprland and Niri (git)'
 arch=('x86_64' 'aarch64')
