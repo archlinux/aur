@@ -9,9 +9,9 @@
 
 pkgname=dbar-bin
 _pkgname=dbar
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
-pkgdesc="A small, event-driven Wayland status bar for Sway and SwayFX (prebuilt)"
+pkgdesc="A small, event-driven Wayland status bar for Sway, SwayFX, niri and Hyprland (prebuilt)"
 # The Release workflow publishes one binary, and it is x86-64.
 arch=('x86_64')
 url="https://github.com/dborovcanin/dbar"
@@ -26,7 +26,9 @@ optdepends=(
   'noto-fonts-emoji: colour emoji in window titles and track names'
   'noto-fonts-cjk: Chinese, Japanese and Korean window titles'
   'ttf-nerd-fonts-symbols: Nerd Font glyphs in workspace names'
-  'sway: the compositor dbar reads workspaces and window titles from'
+  'sway: one of the compositors dbar reads workspaces and window titles from'
+  'niri: one of the compositors dbar reads workspaces and window titles from'
+  'hyprland: one of the compositors dbar reads workspaces and window titles from'
 )
 # The release profile already strips, so makepkg has nothing to take out and
 # no symbols to split into a debug package.
@@ -36,9 +38,9 @@ conflicts=('dbar' 'dbar-git')
 # The tag archive comes along for the licence, the README and the examples:
 # the release asset is the binary on its own.
 source=("$_pkgname-$pkgver-linux-x86_64::$url/releases/download/v$pkgver/dbar-linux-x86_64"
-        "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aaf173d7a5621661f901938a25d7ffc62665ac2a0dffc60c4276682e6e5d6ef5'
-            '20c984a4f99ebae74f85c57a72974e73537e9c8116bd22b10e3e1b0d7621aec0')
+  "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('85bf3a6d638c3a7a28cf28998c618fb9f0c98f5cd5288a1bfa21f17d9ca07926'
+            '71d61f73911412b1c9df31559c64331a4008e9ed91be62101e972e360947acb9')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname-$pkgver-linux-x86_64" "$pkgdir/usr/bin/$_pkgname"
