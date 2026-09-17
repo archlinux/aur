@@ -1,6 +1,6 @@
 pkgbase = kernel-panic-git
 	pkgdesc = Neon arena shooter about keeping one stubborn process alive (development version)
-	pkgver = 3.1.0.r11.g1368dc2
+	pkgver = 3.2.0.r0.g76743a6
 	pkgrel = 1
 	url = https://github.com/mafuzyk/kernel-panic
 	arch = x86_64
