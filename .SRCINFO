@@ -1,7 +1,7 @@
 pkgbase = stayorganised
 	pkgdesc = Calendar-first personal agenda manager designed to replace Google Calendar, Outlook etc
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/nathanchere/stayorganised
 	arch = x86_64
 	license = Apache-2.0
@@ -19,6 +19,6 @@ pkgbase = stayorganised
 	depends = spdlog
 	depends = wayland
 	source = stayorganised::git+https://gitlab.com/nathanchere/stayorganised.git#tag=v0.3.3
-	sha256sums = 530a16718e1f4dbe362427e05a2dd79d21221dfdc2e6f3b212a887cca1d2266c
+	sha256sums = 25115b1f25ae7b0070fc3207080657c95842d534881b2dc2f6a5ab41250cd37d
 
 pkgname = stayorganised
