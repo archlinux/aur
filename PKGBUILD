@@ -1,5 +1,5 @@
 pkgname=hyprmoncfg
-pkgver=1.18.3
+pkgver=1.18.4
 pkgrel=1
 pkgdesc="Terminal-first monitor configurator and auto-switching daemon for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go')
 conflicts=('hyprmoncfg-bin' 'hyprmoncfg-git')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/hyprmoncfg/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8bb9eb29f21f162d6bad023cccc5194bc5d4c602966bbe19c08223491fbad635')
+sha256sums=('1b03c3a166073f1cc03420de6d6232a0a47ff5a761764f06556625557a96c24e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
