@@ -1,7 +1,7 @@
 # Maintainer: Christian Pinedo <chr.pinedo@gmail.com>
 pkgname=idazki-desktop
-pkgver=3.6.2
-pkgrel=3
+pkgver=4.0.5
+pkgrel=1
 _pkgdld="idazki-desktop-linux64.run"
 epoch=
 pkgdesc="Idazki Desktop application of Izenpe CA"
@@ -22,7 +22,7 @@ install=idazki-desktop.install
 changelog=
 source=("https://www.izenpe.eus/contenidos/informacion/idazki_izenpe/es_def/adjuntos/${_pkgdld}")
 noextract=()
-sha256sums=('494eff1444c5d6bbbc5e45b22a73f821fb587f01989cd3964ef364e99d3a2c12')
+sha256sums=('057e7c91cbf225f12e39438dbcb39938b6ef8bef761f2bf8a55d167098086a81')
 validpgpkeys=()
 
 prepare() {
