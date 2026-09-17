@@ -2,7 +2,7 @@
 
 _pkgbase=unsloth
 pkgname="$_pkgbase-bin"
-pkgver=0.1.803.beta
+pkgver=0.1.808.beta
 pkgrel=1
 pkgdesc='Local UI to run and train LLMs and diffusion models'
 arch=('x86_64')
@@ -33,11 +33,9 @@ conflicts=("$_pkgbase")
 options=('!strip' '!debug')
 install=setup.install
 
-_debver="${pkgver//./_}"
-_debfile="Unsloth-Desktop-$_debver-Ubuntu.deb"
-source=("$pkgname-$pkgver.deb::$url/releases/download/v${pkgver/.beta/-beta}/$_debfile")
+source=("$pkgname-$pkgver.deb::$url/releases/download/v${pkgver/.beta/-beta}/Unsloth-Desktop-Ubuntu.deb")
 noextract=("$pkgname-$pkgver.deb")
-sha256sums=('c4be4f81753f2be67aa54200010efd8c3e64cca78a6207bc1ccdb13ee5495347')
+sha256sums=('7322946b1e0be5fa08393e91c8e7869db1fbda4a4b14a8d6b58bf4709b3390bc')
 
 prepare() {
 	bsdtar -xOf "$pkgname-$pkgver.deb" data.tar.gz | bsdtar -x
