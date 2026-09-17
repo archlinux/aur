@@ -1,0 +1,22 @@
+pkgbase = o-pi-web-git
+	pkgdesc = Orion's Pi Agent with custom tools and enhancements (WebUI version)
+	pkgver = r535.g99afe65
+	pkgrel = 1
+	url = https://github.com/Orion-zhen/o-pi
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = bun>=1.4.0
+	depends = bash
+	depends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = icu
+	optdepends = libnotify: desktop notifications
+	provides = o-pi-web
+	conflicts = o-pi-web
+	options = !strip
+	options = !debug
+	source = o-pi::git+https://github.com/Orion-zhen/o-pi.git
+	sha256sums = SKIP
+
+pkgname = o-pi-web-git
