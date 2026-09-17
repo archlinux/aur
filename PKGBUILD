@@ -14,19 +14,19 @@ depends=(
 )
 
 source=(
-    "$pkgname-$pkgver.tar.gz::$url/archive/refs/heads/main.tar.gz"
+    "$pkgname::https://raw.githubusercontent.com/Raj-1727/badapple-hd/main/badapple-hd"
+    "badapple.mp4::https://raw.githubusercontent.com/Raj-1727/badapple-hd/main/badapple.mp4"
 )
 
 sha256sums=(
     'SKIP'
+    'SKIP'
 )
 
 package() {
-    cd "$srcdir/$pkgname-main"
+    install -Dm755 "$srcdir/$pkgname" \
+        "$pkgdir/usr/bin/$pkgname"
 
-    install -Dm755 badapple-hd \
-        "$pkgdir/usr/bin/badapple-hd"
-
-    install -Dm644 badapple.mp4 \
+    install -Dm644 "$srcdir/badapple.mp4" \
         "$pkgdir/usr/share/badapple-hd/badapple.mp4"
 }
