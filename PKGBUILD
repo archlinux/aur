@@ -16,8 +16,8 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 
 # Static musl builds, so no depends=() at all.
-source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
-source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-unknown-linux-musl.tar.gz")
+source_x86_64=("$_pkgname-$pkgver-$pkgrel-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
+source_aarch64=("$_pkgname-$pkgver-$pkgrel-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-unknown-linux-musl.tar.gz")
 # Refresh with `updpkgsums` on every version bump.
 sha256sums_x86_64=('478bd4d4f61e04f0ac58162111e49dacfc3b4242d9396001fa1e08a3c93b6452')
 sha256sums_aarch64=('153cedbd40a09c4b1c8bb6901d4d2a1b8fc13dd5294526b5ebd33793572f2ba6')
