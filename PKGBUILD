@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('bash' 'glibc' 'zlib')
 optdepends=('fuse2: mount AppImage without extraction')
 options=('!strip')
-_appimage="DISK_Commander-${pkgver}-linux-x86_64.AppImage"
+_appimage="DISK_Commander-${pkgver}-linux-${CARCH}.AppImage"
 source=("${_appimage}::https://github.com/Ptr314/dsk_commander/releases/download/${pkgver}/${_appimage}"
         "shortcut.desktop")
 sha256sums=('0d22343ad7ea893738290acf8f217ac038514fb52b7528fc70b75faf1feccc33'
