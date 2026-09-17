@@ -8,9 +8,9 @@
 # rather than a placeholder nobody can build.
 
 pkgname=dbar
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
-pkgdesc="A small, event-driven Wayland status bar for Sway and SwayFX"
+pkgdesc="A small, event-driven Wayland status bar for Sway, SwayFX, niri and Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dborovcanin/dbar"
 license=('Apache-2.0')
@@ -28,14 +28,16 @@ optdepends=(
   'noto-fonts-emoji: colour emoji in window titles and track names'
   'noto-fonts-cjk: Chinese, Japanese and Korean window titles'
   'ttf-nerd-fonts-symbols: Nerd Font glyphs in workspace names'
-  'sway: the compositor dbar reads workspaces and window titles from'
+  'sway: one of the compositors dbar reads workspaces and window titles from'
+  'niri: one of the compositors dbar reads workspaces and window titles from'
+  'hyprland: one of the compositors dbar reads workspaces and window titles from'
 )
 # The release profile already strips, so there are no symbols to split out.
 options=('!debug')
 provides=("dbar=$pkgver")
 conflicts=('dbar-bin' 'dbar-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('20c984a4f99ebae74f85c57a72974e73537e9c8116bd22b10e3e1b0d7621aec0')
+sha256sums=('71d61f73911412b1c9df31559c64331a4008e9ed91be62101e972e360947acb9')
 
 prepare() {
   cd "$pkgname-$pkgver"
