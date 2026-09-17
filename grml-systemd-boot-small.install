@@ -1,0 +1,79 @@
+# Detect the host's console keymap and apply it to the grml boot entries
+# (lang=XX, sets keyboard and locale in grml) and to grml.sh (loadkeys).
+# grml's lang= option takes short codes (de, at, ch, us, ...), so the prefix
+# of the vconsole KEYMAP is used (de-latin1 -> de); loadkeys gets the full name.
+_apply_keymap() {
+	local keymap lang f
+	keymap=$(sed -n 's/^KEYMAP=//p' /etc/vconsole.conf 2>/dev/null | tr -d '"' | head -n1)
+	[ -n "$keymap" ] || { echo "==> No KEYMAP in /etc/vconsole.conf, keeping keymap 'us' in grml entries and grml.sh"; return 0; }
+	lang=${keymap%%-*}
+	case "$lang" in uk) lang=gb ;; esac
+	for f in /boot/loader/entries/grml*.conf /boot/loader/entries/grml*.conf.pacnew; do
+		[ -f "$f" ] && sed -i -E "s/(^options .*\blang=)[^ ]+/\1$lang/" "$f"
+	done
+	for f in /boot/scripts/grml.sh /boot/scripts/grml.sh.pacnew; do
+		[ -f "$f" ] && sed -i -E "s/^loadkeys .*/loadkeys $keymap/" "$f"
+	done
+	echo "==> grml keymap set from /etc/vconsole.conf: lang=$lang (loader entries), loadkeys $keymap (grml.sh)"
+}
+
+# This package writes the live system, the loader entries and grml.sh straight
+# onto the EFI system partition, assuming it is mounted at /boot. Warn if it is
+# not, because then systemd-boot will never see any of it.
+_check_esp() {
+	local fstype
+	fstype=$(findmnt -no FSTYPE /boot 2>/dev/null)
+	[ "$fstype" = vfat ] && return 0
+	cat <<MSG
+==> WARNING: /boot is not a vfat mount (found: ${fstype:-no mount point}).
+    This package expects the EFI system partition at /boot. If your ESP is
+    mounted elsewhere (e.g. /efi), then /boot/grml, /boot/loader/entries and
+    /boot/scripts are in the wrong place and systemd-boot will not find them.
+    Move the ESP to /boot or use a different grml boot method.
+MSG
+}
+
+# Secure Boot: systemd-boot only loads a signed kernel when SB is enforced.
+# If sbctl is set up, sign the grml kernel and keep it in sbctl's database
+# (-s) so the sbctl pacman hook re-signs it after future upgrades.
+_sign_kernel() {
+	command -v sbctl >/dev/null 2>&1 || return 0
+	sbctl status 2>/dev/null | grep -qE '^Installed:.*(✓|sbctl is installed)' || {
+		echo "==> sbctl found but no keys installed; grml kernel not signed"; return 0; }
+	if sbctl sign -s /boot/grml/vmlinuz >/dev/null 2>&1; then
+		echo "==> Signed /boot/grml/vmlinuz with sbctl (Secure Boot)"
+	else
+		echo "==> WARNING: sbctl sign /boot/grml/vmlinuz failed; grml will not boot with Secure Boot enforced"
+	fi
+}
+
+post_install() {
+	_apply_keymap
+	_sign_kernel
+	cat <<'MSG'
+==> grml entry: /boot/loader/entries/grml.conf, live system under /boot/grml/.
+    Boot it directly: systemctl reboot --boot-loader-entry=grml.conf
+==> Custom grml configuration (boot option "scripts"): /boot/scripts/grml.sh
+    WLAN: copy /boot/scripts/wpa.conf.example to wpa.conf (PSK hash via wpa_passphrase).
+    Files needing permissions (root/bin, ...): list them in /etc/grml-config-update.conf,
+    run grml-config-update, and add the boot option "config" to the grml entries.
+==> Boot option "debs" installs /boot/debs/*.deb into the live system at boot.
+    Shipped: arch-install-scripts (arch-chroot, genfstab). Drop further .deb files
+    there to have them installed too. pacstrap comes along but needs pacman,
+    which grml does not ship.
+MSG
+	# Last, so the warning is not scrolled away by the hints above.
+	_check_esp
+}
+
+post_upgrade() {
+	_apply_keymap
+	_sign_kernel
+	cat <<'MSG'
+==> grml live system updated. grml*.conf, grml.sh and grml-config-update.conf are backup files:
+    if modified, the new version is placed next to them as .pacnew.
+    If /boot/config.tbz is in use, run grml-config-update to refresh it.
+MSG
+	# Last, so the warning is not scrolled away by the hints above.
+	_check_esp
+}

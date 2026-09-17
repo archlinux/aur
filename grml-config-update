@@ -1,0 +1,44 @@
+#!/bin/bash
+# Rebuild /boot/config.tbz for the grml systemd-boot entry from the path list
+# in /etc/grml-config-update.conf. grml-autoconfig extracts the tarball to /
+# at boot when the boot option "config" is present in the loader entry.
+set -euo pipefail
+
+conf=/etc/grml-config-update.conf
+esp=/boot
+out=$esp/config.tbz
+
+[ "$(id -u)" = 0 ] || { echo "error: must run as root" >&2; exit 1; }
+[ -r "$conf" ] || { echo "error: $conf not found" >&2; exit 1; }
+mountpoint -q "$esp" || { echo "error: $esp is not a mount point (ESP expected)" >&2; exit 1; }
+
+paths=()
+while IFS= read -r line; do
+	line=${line%%#*}
+	line=${line#"${line%%[![:space:]]*}"}
+	line=${line%"${line##*[![:space:]]}"}
+	[ -n "$line" ] || continue
+	line=${line#/}
+	if [ -e "/$line" ]; then
+		paths+=("$line")
+	else
+		echo "warning: /$line does not exist, skipped" >&2
+	fi
+done < "$conf"
+
+[ ${#paths[@]} -gt 0 ] || { echo "error: no existing paths listed in $conf" >&2; exit 1; }
+
+tmp=$(mktemp "$esp/config.tbz.XXXXXX")
+trap 'rm -f "$tmp"' EXIT
+tar cjf "$tmp" -C / "${paths[@]}"
+mv -f "$tmp" "$out"
+trap - EXIT
+echo "wrote $out ($(du -h "$out" | cut -f1)):"
+printf '  /%s\n' "${paths[@]}"
+
+if ! grep -qsE '^options .*\bconfig\b' "$esp"/loader/entries/grml*.conf; then
+	echo
+	echo "note: no grml loader entry has the boot option \"config\" yet."
+	echo "      Append \"config\" to the options line in $esp/loader/entries/grml.conf"
+	echo "      so grml-autoconfig unpacks the tarball at boot."
+fi
