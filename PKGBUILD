@@ -2,7 +2,7 @@
 
 _name=ag-ui-protocol
 pkgname=python-$_name
-pkgver=0.1.22
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Python SDK for the Agent-User Interaction (AG-UI) Protocol."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python' 'python-pydantic')
 makedepends=('python-uv-build' 'python-build' 'python-installer' 'python-wheel')
 source=("$_repo/archive/refs/tags/$_name@$pkgver.tar.gz")
-sha256sums=('4c5c83427fae01021b2c9ba9d1e4426bb0044498f638bf9c90cac0d32c280614')
+sha256sums=('9ba875dfceceb7887018456d43bc22df2c9768fcf6f5d459dbe628d9944a7e7b')
 
 prepare() {
   # Fix build
