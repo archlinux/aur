@@ -1,23 +1,23 @@
 pkgbase = notion-electron-bin
-	pkgdesc = An unofficial desktop application for Notion, built using Electron.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.4.0
+	pkgdesc = An unofficial desktop application for Notion, built using Electron.
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/anechunaev/notion-electron
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = asar
-	depends = electron42
+	depends = electron43
 	depends = nodejs
-	provides = notion-electron=2.4.0
+	provides = notion-electron=2.4.1
 	conflicts = notion-electron
-	source = LICENSE-2.4.0::https://raw.githubusercontent.com/anechunaev/notion-electron/v2.4.0/LICENSE
+	source = LICENSE-2.4.1::https://raw.githubusercontent.com/anechunaev/notion-electron/v2.4.1/LICENSE
 	source = notion-electron.sh
 	sha256sums = f23174e84307154014c3a935f893cf26adf50bfa78be53de5917129a864b08a7
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = notion-electron-2.4.0-aarch64.rpm::https://github.com/anechunaev/notion-electron/releases/download/v2.4.0/Notion_Electron-2.4.0-aarch64.rpm
-	sha256sums_aarch64 = 99c1bde329af058ec089ab476368d03fd4575f54768361c475359c2599bf798e
-	source_x86_64 = notion-electron-2.4.0-x86_64.rpm::https://github.com/anechunaev/notion-electron/releases/download/v2.4.0/Notion_Electron-2.4.0-x86_64.rpm
-	sha256sums_x86_64 = 3677350185fe9fe527ac9b633d12f23dd91349a7f47f95e25a28754707d2da9c
+	source_aarch64 = notion-electron-2.4.1-aarch64.rpm::https://github.com/anechunaev/notion-electron/releases/download/v2.4.1/Notion_Electron-2.4.1-aarch64.rpm
+	sha256sums_aarch64 = b13c89a06e9a8f783239ac569606c886aa8d73602fb77049364b8c07add813b0
+	source_x86_64 = notion-electron-2.4.1-x86_64.rpm::https://github.com/anechunaev/notion-electron/releases/download/v2.4.1/Notion_Electron-2.4.1-x86_64.rpm
+	sha256sums_x86_64 = 35b1f5507c0bb7706889ccc3cd653f52921253aeae0c89a05b39087b6ab5a276
 
 pkgname = notion-electron-bin
