@@ -2,7 +2,7 @@
 
 pkgname=shuvarie-bin
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Blazingly fast AI coding TUI for chivalrous people (Binary)"
 arch=("x86_64" "aarch64")
@@ -21,11 +21,11 @@ install=
 changelog=
 _repourl='https://github.com/shuvarie/shuvarie'
 source_x86_64=(
-    "shuvarie-v${pkgver}.tar.gz::${_repourl}/releases/download/v${pkgver}/shuvarie-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz"
+    "shuvarie-v${pkgver}.tar.gz::${_repourl}/releases/download/v${pkgver}/shuvarie-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 )
 
 source_aarch64=(
-    "shuvarie-v${pkgver}.tar.gz::${_repourl}/releases/download/v${pkgver}/shuvarie-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz"
+    "shuvarie-v${pkgver}.tar.gz::${_repourl}/releases/download/v${pkgver}/shuvarie-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 noextract=()
 sha256sums_x86_64=("c1370cd951424627f01634d77c9b6224de2caad5c2b18aa040466620c71b8cef")
