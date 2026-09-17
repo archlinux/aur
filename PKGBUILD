@@ -1,10 +1,10 @@
 # Maintainer: omartelo <meopedevts@proton.me>
-# Rendered by .github/workflows/release.yml (0.51.0 -> tag, checksums via
+# Rendered by .github/workflows/release.yml (0.52.0 -> tag, checksums via
 # updpkgsums) and pushed to the AUR — edit this template, never the AUR copy.
 pkgname=lich-bin
-pkgver=0.51.0
+pkgver=0.52.0
 pkgrel=1
-pkgdesc="A personal harness for AI-assisted development"
+pkgdesc="A terminal-first ADE for the coding agents you already use"
 arch=('x86_64')
 url="https://github.com/omartelo/lich"
 license=('AGPL-3.0-only')
@@ -20,8 +20,8 @@ optdepends=('zenity: native folder picker')
 source=("lich-v${pkgver}-linux-amd64.tar.zst::${url}/releases/download/v${pkgver}/lich-v${pkgver}-linux-amd64.tar.zst"
         "lich-${pkgver}.desktop::https://raw.githubusercontent.com/omartelo/lich/v${pkgver}/build/linux/lich.desktop"
         "lich-${pkgver}.png::https://raw.githubusercontent.com/omartelo/lich/v${pkgver}/build/appicon.png")
-sha256sums=('e42018a358a2b332856caea729be8f7b5ecd27da72eebad5f9afbb884dd2c26a'
-            'e39c9238b56be089973c254d031be152b3d990d3bc2735d866b044833a6c1a4d'
+sha256sums=('7edb7a432a5c520f9f9a22332948d96a1927dacbff53fea90d1062163853107a'
+            '6af34ff31490c369e1f4266b355a6a10bd0817fed0b61793ce163ac6bfa14769'
             '75aa775e531ad495d905a37f07e8e608f4d93e4b2ff1d4b145a764e71ac48b0a')
 
 package() {
