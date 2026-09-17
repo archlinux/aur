@@ -2,7 +2,7 @@
 # https://github.com/TD-Sky/PKGBUILDs
 
 pkgname=jj-bond
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="jujutsu TUI"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=("${pkgname}-bin")
 depends=('jujutsu')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('af883a87dfb2ab625dbc5f78b67374366758a297ede9b25255a0bf313b4dc80b')
+sha256sums=('718985f9ee88e557a22438e8d84e415535f44cb3240c9d0823ccbf61d6531c61')
 options=(!strip !lto !debug)
 
 prepare() {
