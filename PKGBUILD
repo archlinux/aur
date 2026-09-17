@@ -8,11 +8,7 @@ arch=("any")
 url="https://github.com/viktoracoric/ma.sh"
 license=("GPL-3")
 groups=()
-<<<<<<< HEAD
-depends=("bash" "sed" "grep" "tac")
-=======
 depends=("bash" "sed" "grep")
->>>>>>> 7a35b6e (OG commit - remove tac as dep)
 makedepends=()
 checkdepends=()
 optdepends=()
