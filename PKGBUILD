@@ -10,7 +10,7 @@ url="https://shuvarie.org/"
 license=('MIT')
 groups=()
 depends=(glibc)
-makedepends=(rust cargo)
+makedepends=(rust cargo clang lld)
 checkdepends=()
 optdepends=()
 provides=()
@@ -33,12 +33,22 @@ _dirname="shuvarie-$pkgver"
 
 build() {
     cd $_dirname
+
+    # The "lto" makepkg option adds -flto to CFLAGS, so cc-built C deps
+    # (simsimd, zstd-sys, aws-lc-sys, ...) emit LLVM bitcode objects. GNU ld
+    # (BFD) cannot parse bitcode ("file format not recognized"), so link with
+    # lld, which handles LTO bitcode natively. Pin the C compiler and the
+    # rustc linker to clang so the bitcode always matches the linking LLVM.
+    export CC=clang CXX=clang++
+    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=clang
+    export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=clang
+    export RUSTFLAGS="${RUSTFLAGS} -Clink-arg=-fuse-ld=lld"
+
     cargo build --release --locked
 }
 
 package() {
     cd $_dirname
-	make DESTDIR="$pkgdir/" install
 
     mkdir -p "$pkgdir/usr/bin"
     install -m755 -t "$pkgdir/usr/bin" ./target/release/shuvarie
