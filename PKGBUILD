@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simple-irc-client-bin
 _pkgname=Simple-Irc-Client
-pkgver=2.0.6
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="An open source project that provides a minimalist IRC client for users who don't need all the bells and whistles of a full-featured IRC client."
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
     'libayatana-appindicator'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('fe3ec81d21af32d6bfb6c46fc152aa9305287cb69e45428dd47fb77d2846cd63')
+sha256sums=('3ec2c567d4c964b69a0c1fa2289bd14f8f394f7eaf51e4005e2c75f1f264f37d')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
