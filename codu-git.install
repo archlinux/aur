@@ -1,0 +1,14 @@
+post_install() {
+    cat <<'MSG'
+==> codu can leave your shell in the directory you were viewing when it exits.
+    fish       works right away (autoloaded from /usr/share/fish/vendor_functions.d/codu.fish)
+    bash, zsh  login shells get it from /etc/profile.d/codu.sh. Terminals that
+               start a non-login shell need one line in ~/.bashrc or ~/.zshrc:
+                   eval "$(codu --shell bash)"      # or: codu --shell zsh
+    Open a new terminal afterwards. Turn it off with `cd-on-exit = false` in
+    ~/.config/codu/config.toml, or --no-cd for a single run.
+
+    Coming from cdu-git? The command is now `codu`: move ~/.config/cdu to
+    ~/.config/codu and change `cdu --shell` to `codu --shell` in your rc file.
+MSG
+}

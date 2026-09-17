@@ -1,0 +1,6 @@
+# makepkg build artefacts
+/codu/
+/src/
+/pkg/
+*.pkg.tar*
+*.log
