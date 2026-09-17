@@ -1,0 +1,16 @@
+pkgbase = armfortas
+	pkgdesc = Bespoke Fortran compiler with owned frontend and code generators
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/FortranGoingOnForty/armfortas
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = rust
+	depends = binutils
+	depends = gcc
+	depends = glibc
+	source = armfortas-0.1.0.tar.gz::https://github.com/FortranGoingOnForty/armfortas/releases/download/v0.1.0/armfortas-0.1.0.tar.gz
+	sha256sums = e59fc642d28637dae814ec431cad898388a219a68db8f8c02ff64a4782859492
+
+pkgname = armfortas
