@@ -1,5 +1,5 @@
 pkgname=browsec-desktop
-pkgver=1.3.2
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Browsec Desktop VPN client"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 makedepends=('binutils' 'tar')
 options=('!strip' '!debug')
 source=("browsec-desktop_${pkgver}_amd64.deb::https://github.com/brwinfo/desktop-release/releases/download/v${pkgver}/browsec-desktop_${pkgver}_amd64.deb")
-sha256sums=('55b2dbc48b555f496092804cc42564c971e522dc96ad951ff6c355e780d042d6')
+sha256sums=('22a3a3278270ebda09d6b2c6b5e7cd04ae0a62ad11492a7d634a292c4e0f6fb1')
 
 package() {
   cd "$srcdir"
