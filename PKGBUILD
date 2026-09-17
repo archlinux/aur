@@ -1,13 +1,13 @@
 # Maintainer: blitzkriegfc <blitzkriegfc@gmail.com>
 pkgname=qbz
-pkgver=2.1.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Native hi-fi Qobuz desktop player for Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vicrodh/qbz"
 license=('MIT')
 depends=('qt6-base>=6.8' 'qt6-declarative>=6.8' 'qt6-svg>=6.8' 'qt6-wayland' 'alsa-lib' 'xdg-utils')
-makedepends=('rust' 'cmake' 'nasm' 'jack2')
+makedepends=('rust' 'cmake' 'nasm' 'jack')
 # makepkg's GCC LTO objects cannot be consumed from Rust rlibs by rustc's lld.
 options=('!lto' '!debug')
 optdepends=(
@@ -22,7 +22,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/vicrodh/qbz/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}-${pkgver}-cargo-vendor.tar.xz::https://github.com/vicrodh/qbz/releases/download/v${pkgver}/qbz-${pkgver}-cargo-vendor.tar.xz"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('d99fdb4c9dce548a49c86cf91b1f3ecda5c8344c46b07287c572a63e599e0145' 'be77fdc44467cd54d94c21b14998f2e48c209f0761c3a065eb538413de9b208e')
 
 prepare() {
     cd "${srcdir}/qbz-${pkgver}"

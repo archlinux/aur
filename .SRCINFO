@@ -1,6 +1,6 @@
 pkgbase = qbz
 	pkgdesc = Native hi-fi Qobuz desktop player for Linux
-	pkgver = 2.1.0
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/vicrodh/qbz
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = qbz
 	makedepends = rust
 	makedepends = cmake
 	makedepends = nasm
-	makedepends = jack2
+	makedepends = jack
 	depends = qt6-base>=6.8
 	depends = qt6-declarative>=6.8
 	depends = qt6-svg>=6.8
@@ -25,9 +25,9 @@ pkgbase = qbz
 	conflicts = qbz-git
 	options = !lto
 	options = !debug
-	source = qbz-2.1.0.tar.gz::https://github.com/vicrodh/qbz/archive/refs/tags/v2.1.0.tar.gz
-	source = qbz-2.1.0-cargo-vendor.tar.xz::https://github.com/vicrodh/qbz/releases/download/v2.1.0/qbz-2.1.0-cargo-vendor.tar.xz
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = qbz-2.1.2.tar.gz::https://github.com/vicrodh/qbz/archive/refs/tags/v2.1.2.tar.gz
+	source = qbz-2.1.2-cargo-vendor.tar.xz::https://github.com/vicrodh/qbz/releases/download/v2.1.2/qbz-2.1.2-cargo-vendor.tar.xz
+	sha256sums = d99fdb4c9dce548a49c86cf91b1f3ecda5c8344c46b07287c572a63e599e0145
+	sha256sums = be77fdc44467cd54d94c21b14998f2e48c209f0761c3a065eb538413de9b208e
 
 pkgname = qbz
