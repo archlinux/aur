@@ -1,6 +1,6 @@
 # Maintainer: rafaeloledo <rafaeloliveiraledo@gmail.com>
 
-pkgname=auto-subs
+pkgname=auto-subs-bin
 pkgver=3.9.0
 pkgrel=1
 pkgdesc="On-device subtitle generation for DaVinci Resolve, Premiere, and After Effects"
