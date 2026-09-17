@@ -1,6 +1,7 @@
 # Maintainer: cemsbr <cems@cemshost.com.br>
 
-pkgname=supercompress-proxy
+pkgname=supercompress
+_npmname=supercompress-proxy
 pkgver=0.5.27
 pkgrel=1
 pkgdesc='Local proxy that compresses LLM context for coding agents (Claude Code, Codex, Cursor, ...)'
@@ -10,7 +11,7 @@ license=('MIT')
 depends=('nodejs>=18')
 makedepends=('npm')
 optdepends=('bun: TUI mode (supercompress tui)')
-source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 sha256sums=('5ec8a8ff7579068499b7c1d59bbe944883c4126f590a90831451609ac1d6fac3')
 
 package() {

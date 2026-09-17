@@ -1,4 +1,4 @@
-pkgbase = supercompress-proxy
+pkgbase = supercompress
 	pkgdesc = Local proxy that compresses LLM context for coding agents (Claude Code, Codex, Cursor, ...)
 	pkgver = 0.5.27
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = supercompress-proxy
 	source = https://registry.npmjs.org/supercompress-proxy/-/supercompress-proxy-0.5.27.tgz
 	sha256sums = 5ec8a8ff7579068499b7c1d59bbe944883c4126f590a90831451609ac1d6fac3
 
-pkgname = supercompress-proxy
+pkgname = supercompress
