@@ -1,7 +1,7 @@
 pkgbase = wowup-cf-beta-bin
 	pkgdesc = WowUp the World of Warcraft addon updater (with CurseForge support) - Beta version
 	pkgver = 2.24.0beta1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/WowUp/WowUp.CF
 	arch = x86_64
 	license = GPL3
@@ -21,7 +21,7 @@ pkgbase = wowup-cf-beta-bin
 	options = !strip
 	options = !debug
 	source = WowUp-CF-2.24.0beta1.AppImage::https://github.com/WowUp/WowUp.CF/releases/download/v2.24.0-beta.1/WowUp-CF-2.24.0-beta.1.AppImage
-	source = https://raw.githubusercontent.com/WowUp/WowUp.CF/main/LICENSE
+	source = LICENSE
 	source = WowUpCf.desktop
 	source = wowup-cf-beta
 	sha256sums = 4a014e19bcc0f8ed538a53c3fdaea8eb91baf158b3296a99af0c65a5d6c02688
