@@ -2,10 +2,10 @@
 pkgname=godot-launcher-bin
 _pkgname='Godot Launcher'
 _debname=org.godotlauncher.launcher
-pkgver=1.11.1
+pkgver=1.12.0
 _electronversion=43
 pkgrel=1
-pkgdesc="A companion app for Godot Engine development that lets you quickly manage and launch projects while maintaining per-project editor settings.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A streamlined, open-source tool designed to simplify and accelerate your Godot game development workflow."
 arch=(
     'aarch64'
     'x86_64'
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /_}-${pkgver}-linux_x86_64.rpm")
 sha256sums=('982e513d86e81b53d35a4c757a54ce36c7b77752feeaac2dfaab3ddd0c86d7b1'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('7a9b1a4e90082443af2aef14fd71bca557d6dc25895831aa675fde79400e828e')
-sha256sums_x86_64=('2e386e31e90936b9b3c243209319d40de45f71dc0e28cc14451b3280dfe16cba')
+sha256sums_aarch64=('6f7926b94911d821b646c9e7ba0a7649e7bea4c7afcc187b5983653205cb248b')
+sha256sums_x86_64=('5a9da408fb2516f5a01ddd19624930b42437c7d6d1b1e9f5b873b901ae74bf00')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -63,12 +63,21 @@ prepare() {
     find "${srcdir}/app.asar.unpacked/dist-electron" -type f -exec sed -i "s/${_debname}.desktop/${pkgname%-bin}.desktop/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
+    rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@electron-internal/extract-zip/"{*win32*,*ia32*,*darwin*}
+    case "${CARCH}" in
+        aarch64)
+            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@electron-internal/extract-zip/"*x64*
+            ;;
+        x86_64)
+            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@electron-internal/extract-zip/"*arm*
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
