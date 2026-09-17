@@ -17,11 +17,20 @@ route {
 
     mercure {
         # Transport to use (default to Bolt)
-        transport_url bolt:///run/mercure/mercure.db
-        # Publisher JWT key
-        publisher_jwt !ChangeThisMercureHubJWTSecretKey!
-        # Subscriber JWT key
-        subscriber_jwt !ChangeThisMercureHubJWTSecretKey!
+        transport bolt {
+            path /run/mercure/mercure.db
+        }
+
+        # Trusted issuer: binds the iss claim access tokens must carry to its
+        # verification keys. Change to your app's URL / IdP identifier in production.
+        issuer https://localhost {
+            publisher {
+                jwt !ChangeThisMercureHubJWTSecretKey!
+            }
+            subscriber {
+                jwt !ChangeThisMercureHubJWTSecretKey!
+            }
+        }
     }
 
     respond /healthz 200

@@ -20,17 +20,18 @@ route {
 
     mercure {
         # Transport to use (default to Bolt)
-        transport_url bolt:///run/mercure/mercure.db
-        # Publisher JWT key
-        publisher_jwt !ChangeThisMercureHubJWTSecretKey!
-        # Subscriber JWT key
-        subscriber_jwt !ChangeThisMercureHubJWTSecretKey!
-        # Permissive configuration for the development environment
-        cors_origins *
-        publish_origins *
-        demo
-        anonymous
-        subscriptions
+        transport bolt {
+            path /run/mercure/mercure.db
+        }
+
+        # An empty issuer block lets playground default it to the well-known
+        # dev signing key and mint its own all-access token.
+        issuer https://localhost {
+        }
+
+        # playground implies debugger, anonymous, subscriptions and wildcard
+        # origins. Dev only, never in prod.
+        playground
     }
 
     respond /healthz 200
