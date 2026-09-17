@@ -1,6 +1,6 @@
 pkgbase = chatbox-git
-	pkgdesc = A desktop client for ChatGPT, Claude and other LLM.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.22.1.r0.g7450ab2
+	pkgdesc = A desktop client for ChatGPT, Claude and other LLM.
+	pkgver = 1.23.3.r0.g0cf406c
 	pkgrel = 1
 	url = https://chatboxai.app/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = chatbox-git
 	depends = electron35
 	depends = nodejs
 	optdepends = ollama: Use your local Ollama model
-	provides = chatbox=1.22.1
+	provides = chatbox=1.23.3
 	conflicts = chatbox
 	source = chatbox.git::git+https://github.com/chatboxai/chatbox.git
 	source = chatbox.sh
