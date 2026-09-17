@@ -1,0 +1,18 @@
+pkgbase = lcp-dedrm-git
+	pkgdesc = LCP DRM removal tool
+	pkgver = 0.1.1.r9.7a6aa9c
+	pkgrel = 1
+	arch = any
+	makedepends = radicle
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = zstd
+	provides = lcp-dedrm
+	conflicts = lcp-dedrm
+	options = !lto
+	source = lcp-dedrm::git+rad://z41uCZqyBUSRQoBCQq4Bpq8ZSCHKr
+	sha256sums = SKIP
+
+pkgname = lcp-dedrm-git
