@@ -9,7 +9,7 @@ _pkgname=zenpower5
 pkgname=zenpower5-dkms-git
 epoch=5
 pkgver=0.5.0.r3.g66871d8
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux kernel driver for AMD Zen CPU monitoring (Zen 1-5): temperature, voltage, current, and power via SVI2/RAPL. Multi-file architecture with Zen 5 (Strix Halo) support"
 arch=('i686' 'x86_64')
 url="https://github.com/mattkeenan/zenpower5"
@@ -20,9 +20,11 @@ provides=('zenpower' 'zenpower5' 'zenpower5-dkms')
 conflicts=('zenpower' 'zenpower3' 'zenpower5' 'zenpower' 'zenpower3-dkms' 'zenpower5-dkms')
 install=$_pkgname.install
 source=("git+https://github.com/mattkeenan/zenpower5.git"
-        "$_pkgname.conf")
+        "$_pkgname.conf"
+        "$pkgname-linux-7.2.patch::https://github.com/mattkeenan/zenpower5/pull/16.patch")
 sha256sums=('SKIP'
-            '7bff3a5ea2c8b8abf56ce1d79b9724b1aea89e2564d244e09691070113d60f6a')
+            '7bff3a5ea2c8b8abf56ce1d79b9724b1aea89e2564d244e09691070113d60f6a'
+            '8be8c29b613c36dc85eff40880cff8b408fd6f99e724706fef44d6f3e17b4dd2')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -38,6 +40,11 @@ prepare() {
 	# Fix build with clang
 	# See https://github.com/mattkeenan/zenpower5/issues/1
 	sed -i "s/-Wimplicit-fallthrough=3/-Wimplicit-fallthrough/" "$srcdir/$_pkgname/Makefile"
+
+	# Support for Linux 7.2
+	# Upstream is MIA and doesn't merge the fix
+	# See: https://github.com/mattkeenan/zenpower5/pull/16
+	patch -p1 -d "${srcdir}/${_pkgname}" -i "${srcdir}/$pkgname-linux-7.2.patch"
 }
 
 package() {
