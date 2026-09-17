@@ -1,0 +1,8 @@
+post_install() {
+    systemctl daemon-reload || true
+    systemctl try-restart udevmon.service || true
+}
+
+post_upgrade() {
+    post_install
+}

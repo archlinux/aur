@@ -1,0 +1,10 @@
+[Unit]
+Description=Fluent status aggregator
+Before=udevmon.service
+
+[Service]
+ExecStart=/usr/bin/fluent-aggregator /tmp/fluent.sock
+Restart=on-failure
+
+[Install]
+WantedBy=udevmon.service

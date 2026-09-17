@@ -1,14 +1,19 @@
 pkgbase = interception-fluent
 	pkgdesc = Interception plugin that allows to create arbitrary shortcuts
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/Lixissimus/fluent
+	install = interception-fluent.install
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git
 	depends = interception-tools
-	source = fluent-v0.9.0.tar.gz::https://github.com/Lixissimus/fluent/releases/download/v0.9.0/fluent-v0.9.0.tar.gz
-	sha256sums = afbc4a8f06ba38f920a1e3320f468381da5a30af56a6e952c5625478e0e0b6b8
+	source = fluent-v0.10.0.tar.gz::https://github.com/Lixissimus/fluent/releases/download/v0.10.0/fluent-v0.10.0.tar.gz
+	source = fluent-aggregator.service
+	source = udevmon.service.d
+	sha256sums = c48c7b4f584b0b67ce9a76ad6c56847aa92b9e2230ebb0c632678b3bb4a7d2d4
+	sha256sums = 63bb17c16be4667349896b994179f0e3e8792343adb779b21b9c5d301d995e68
+	sha256sums = 237b106441e06d0277485913b357ddb2a016be6e3aa195a8d93ca24ce7605929
 
 pkgname = interception-fluent
