@@ -10,7 +10,7 @@ license=('MIT')
 # config/vshell/dependencies.json and packaging/optional-packages.json.
 # Run scripts/gen-package-metadata.py --write after changing either file.
 depends=(
-  'quickshell'
+  'quickshell>=0.3.1'
   'jq'
   'python'
   'systemd'

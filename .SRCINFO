@@ -7,7 +7,7 @@ pkgbase = vgs-shell
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = quickshell
+	depends = quickshell>=0.3.1
 	depends = jq
 	depends = python
 	depends = systemd
