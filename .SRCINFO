@@ -1,7 +1,7 @@
 pkgbase = tkimg
 	pkgdesc = Provides the handling of several image formats beyond the standard formats in Tk
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.tcl-lang.org/page/Img
 	arch = x86_64
 	license = TCL
