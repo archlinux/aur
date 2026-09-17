@@ -2,8 +2,8 @@
 
 _pkgname=archon-lite
 pkgname=${_pkgname}-bin
-pkgver=9.5.0
-pkgrel=2
+pkgver=9.6.80
+pkgrel=1
 pkgdesc="Archon Lite Uploader - pre-built binary AppImage"
 arch=('x86_64')
 url="https://github.com/RPGLogs/Uploaders-archon-lite"
@@ -16,7 +16,7 @@ _appimage="${_pkgname}-v${pkgver}.AppImage"
 source_x86_64=("${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}"
                "${_pkgname}.desktop")
 noextract=("${_appimage}")
-sha256sums_x86_64=('66e00b815b6ab18b6f9d2abc86424be00fa2e14684a64fb62f76e94845eb8513'
+sha256sums_x86_64=('2e23f43c0112854587a24309d008d19e26198e99c4865ed2533dad9092a777cd'
                     '19e8f7d78d5f621fd9a0aab1ebed74015a63beb797d8d942362e32be479077c0')
 
 prepare() {
