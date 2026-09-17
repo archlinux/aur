@@ -1,6 +1,6 @@
 pkgbase = webappcontainer
 	pkgdesc = Open any web app in this single, light weight, portable application with a tray icon.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/josephcrowell/webappcontainer
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = webappcontainer
 	depends = qt6-base
 	depends = qt6-svg
 	depends = qt6-webengine
-	source = webappcontainer-2.0.1.tar.gz::https://github.com/josephcrowell/webappcontainer/archive/refs/tags/2.0.1.tar.gz
-	sha256sums = 44a21a9d510ae069a35f317e304714740d2e464e5dbe8360e2c2a80cd9849c8b
+	source = webappcontainer-2.0.2.tar.gz::https://github.com/josephcrowell/webappcontainer/archive/refs/tags/2.0.2.tar.gz
+	sha256sums = 0a0048b803bde6b3848798bb61e9c2268f123e9b99f71bbeab7aeae5112de8ec
 
 pkgname = webappcontainer
