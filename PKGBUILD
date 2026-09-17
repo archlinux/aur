@@ -1,7 +1,7 @@
-# Maintainer: Markus Hoffmann <broken.pipe>
+# Maintainer: Markus
 
 pkgname=tone3000-bin
-pkgver=0.0.2
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Standalone and audio plug-ins for playing Neural Amp Modeler captures and impulse responses'
 arch=('x86_64')
@@ -9,13 +9,8 @@ url='https://github.com/tone-3000/tone3000-plugin'
 license=('custom')
 depends=('alsa-lib' 'curl' 'fontconfig' 'freetype2' 'gtk3' 'libx11' 'webkit2gtk-4.1')
 provides=('tone3000-clap' 'tone3000-lv2' 'tone3000-vst3')
-source=("${pkgname}-${pkgver}-linux-x64.zip::https://github.com/tone-3000/tone3000-plugin/releases/download/v${pkgver}/TONE3000-v${pkgver}-linux-x64.zip")
-sha256sums=('fade5434e78a0cfefeb7b13987cd549e169f7c1caf0584eebc1ce1497dac636d')
-
-prepare() {
-  # The release ZIP wraps the actual distribution in a tarball.
-  bsdtar -xzf "${srcdir}/TONE3000-v${pkgver}-linux-x64.tar.gz" -C "${srcdir}"
-}
+source=("${pkgname}-${pkgver}-linux-x64.tar.gz::https://github.com/tone-3000/tone3000-plugin/releases/download/v${pkgver}/TONE3000-v${pkgver}-linux-x64.tar.gz")
+sha256sums=('3e23fb63965f310834090c1cae0357ea0b279cfc14d6980e3beb0b7b5a54b546')
 
 package() {
   local _src="${srcdir}/TONE3000-v${pkgver}-linux-x64"
