@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protoc-gen-js
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Protocol Buffers for JavaScript"
 arch=('x86_64' 'aarch64')
@@ -12,14 +12,25 @@ makedepends=(
   'npm'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a08244115ed0535971ec894abf078da90ad2c0938700612f90dc550f218627ee')
+sha256sums=('43ea40481e7b5efdeccf4a0926226b0bd4f61386cdb819a55ce55f5828e32025')
+
+prepare() {
+  cd "protobuf-javascript-$pkgver"
+  export npm_config_cache="$srcdir/npm_cache"
+  npm ci
+}
 
 build() {
   cd "protobuf-javascript-$pkgver"
   export npm_config_cache="$srcdir/npm_cache"
-  npm ci
   npm run build
   bazel build plugin_files
+}
+
+check() {
+  cd "protobuf-javascript-$pkgver"
+  export npm_config_cache="$srcdir/npm_cache"
+  npm test
 }
 
 package() {
