@@ -1,6 +1,6 @@
 pkgbase = nebula-desktop-bin
 	pkgdesc = Desktop companion app for nebula.gg
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/agent-labs-dev/nebula-desktop/tree/main/apps/desktop
 	install = nebula-desktop-bin.install
@@ -33,11 +33,11 @@ pkgbase = nebula-desktop-bin
 	depends = pango
 	depends = systemd-libs
 	depends = libayatana-appindicator
-	provides = nebula-desktop=0.2.5
+	provides = nebula-desktop=0.2.6
 	conflicts = nebula-desktop
-	noextract = Nebula-0.2.5-x64.pacman
+	noextract = Nebula-0.2.6-x64.pacman
 	options = !strip
-	source = Nebula-0.2.5-x64.pacman::https://app-assets.nebula.gg/desktop/stable/0.2.5/Nebula-x64.pacman
-	sha256sums = 4194ed6cf37482996957971d67bf0fc08923427ad6131b1c555f8c83c31c17de
+	source = Nebula-0.2.6-x64.pacman::https://app-assets.nebula.gg/desktop/stable/0.2.6/Nebula-x64.pacman
+	sha256sums = 0222d93a3fcf75faa74e7ff3652700d675bfbecf450d937c0e5b5dbaf3dd863f
 
 pkgname = nebula-desktop-bin
