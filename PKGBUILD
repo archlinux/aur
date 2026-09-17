@@ -2,7 +2,7 @@
 # Contributor: Nicolas FORMICHELLA <stigpro@outlook.fr>
 
 pkgname=image-optimizer
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Simple lossless compression"
 url="https://github.com/gijsgoudzwaard/image-optimizer"
@@ -12,7 +12,7 @@ depends=('gtk4' 'optipng' 'jpegoptim')
 makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('37913b24ade2591fbbd7a6f0a348f5afb09e787e206542a94e1272cd0ba36b75')
+sha256sums=('6c0ca0160b4c1235ba2b906e3fb295b058d48b3710023f84de5c0808acd18c76')
 
 build() {
   arch-meson Image-Optimizer-$pkgver build
