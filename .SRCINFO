@@ -1,13 +1,13 @@
 pkgbase = org-cli-bin
 	pkgdesc = Standalone Org notes and task management for humans and agents
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dcprevere/org-cli
 	arch = x86_64
 	provides = org-cli
 	conflicts = org-cli
 	options = !strip
-	source = org-cli-bin-2.0.0-2.tar.gz::https://github.com/dcprevere/org-cli/releases/download/v2.0.0/org-linux-x64.tar.gz
-	sha256sums = a5607ec46bf797c488e9832257f895cef5a6b4898e5250107c7614295ec7f50d
+	source = org-cli-bin-2.0.0-3.tar.gz::https://github.com/dcprevere/org-cli/releases/download/v2.0.0/org-linux-x64.tar.gz
+	sha256sums = d5b00bbdb244f6e529928443cb5df252e3e74151b13ee38c3b023d092b96751c
 
 pkgname = org-cli-bin
