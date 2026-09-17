@@ -25,7 +25,6 @@ pkgname = eidklient-native
 	install = eidklient.install
 	depends = bash
 	depends = binutils
-	depends = botan2>=2.19.5-5
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libcrypto.so
