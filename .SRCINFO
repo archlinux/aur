@@ -1,0 +1,16 @@
+pkgbase = jev-axi
+	pkgdesc = Agent-ergonomic CLI for TypeSafe's Jev: calibrated judgments (pick, rate, check, rank, triage, guard) from the shell
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/shiftynick/jev-axi
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=22
+	noextract = jev-axi-0.4.2.tgz
+	options = !strip
+	options = !debug
+	source = jev-axi-0.4.2.tgz::https://registry.npmjs.org/jev-axi/-/jev-axi-0.4.2.tgz
+	sha256sums = 5791e1a0df216de541527466818d7c3ca19f3fcc66eac6760b93c6c104bb3cca
+
+pkgname = jev-axi
