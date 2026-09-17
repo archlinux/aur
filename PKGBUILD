@@ -1,7 +1,7 @@
 # Maintainer: fenuks
 
 pkgname=readeck
-pkgver=0.23.2
+pkgver=0.23.4
 pkgrel=1
 pkgdesc='Readeck is a simple web application that lets you save the precious readable content of web pages you like and want to keep forever.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=('postgresql: for using PostgreSQL instead of SQLite')
 makedepends=(go npm)
 # options=(!buildflags)
 source=("${pkgname}-${pkgver}.tar.gz::${_vcs_url}/archive/${pkgver}.tar.gz")
-sha256sums=('1094edb09ebc124526ce4e83d2125bbff1c75a188a302e21f39416dc4ada6182')
+sha256sums=('9b4b418c2ed6e0528b5a6808830ee7890f401e06b04c5f9f8762af9932bab9ca')
 privides=("${pkgname}")
 conflicts=("${pkgname}")
 
