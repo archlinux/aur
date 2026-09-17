@@ -1,7 +1,7 @@
 # Maintainer: Egor Tensin <egor@tensin.name>
 pkgname=yandex-cloud-cli-bin
 pkgver=1.39.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Yandex.Cloud CLI'
 arch=('x86_64')
 url='https://yandex.cloud/en/docs/cli/'
@@ -18,12 +18,20 @@ build() {
     "./yc-$pkgver" completion bash > yc.bash
     "./yc-$pkgver" completion fish > yc.fish
     "./yc-$pkgver" completion zsh > yc.zsh
+
+    # yc normally writes this wrapper next to itself when running
+    # `yc container registry configure-docker`, which fails for /usr/bin.
+    cat > docker-credential-yc <<'EOF'
+#!/bin/bash
+exec /usr/bin/yc --no-user-output container docker-credential "$@"
+EOF
 }
 
 package() {
     cd -- "$srcdir"
 
     install -D -m 755 "yc-${pkgver}" "$pkgdir/usr/bin/yc"
+    install -D -m 755 docker-credential-yc "$pkgdir/usr/bin/docker-credential-yc"
 
     install -D -m 644 yc.bash "$pkgdir/usr/share/bash-completion/completions/yc"
     install -D -m 644 yc.fish "$pkgdir/usr/share/fish/vendor_completions.d/yc.fish"
