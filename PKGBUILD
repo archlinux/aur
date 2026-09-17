@@ -2,21 +2,21 @@
 
 pkgname=shuvarie-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="Blazingly fast AI coding TUI for chivalrous people"
+pkgdesc="Blazingly fast AI coding TUI for chivalrous people (Binary)"
 arch=("x86_64" "aarch64")
 url="https://shuvarie.org/"
 license=('MIT')
 groups=()
 depends=(glibc)
-makedepends=(rust cargo)
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
 conflicts=()
 replaces=()
-options=(lto strip)
+options=()
 install=
 changelog=
 _repourl='https://github.com/shuvarie/shuvarie'
