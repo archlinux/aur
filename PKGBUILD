@@ -1,5 +1,5 @@
 pkgname=extera-next-bin
-pkgver=26.5.21
+pkgver=26.5.3
 pkgrel=1
 pkgdesc="A feature-rich Matrix client made in Flutter"
 arch=('x86_64')
