@@ -1,10 +1,10 @@
 pkgbase = tone3000-bin
 	pkgdesc = Standalone and audio plug-ins for playing Neural Amp Modeler captures and impulse responses
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tone-3000/tone3000-plugin
 	arch = x86_64
-	license = custom
+	license = MIT
 	depends = alsa-lib
 	depends = curl
 	depends = fontconfig
@@ -12,10 +12,13 @@ pkgbase = tone3000-bin
 	depends = gtk3
 	depends = libx11
 	depends = webkit2gtk-4.1
+	optdepends = jack2: JACK audio backend for the standalone application
 	provides = tone3000-clap
 	provides = tone3000-lv2
 	provides = tone3000-vst3
 	source = tone3000-bin-0.0.9-linux-x64.tar.gz::https://github.com/tone-3000/tone3000-plugin/releases/download/v0.0.9/TONE3000-v0.0.9-linux-x64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/tone-3000/tone3000-plugin/v0.0.9/LICENSE
 	sha256sums = 3e23fb63965f310834090c1cae0357ea0b279cfc14d6980e3beb0b7b5a54b546
+	sha256sums = 88d4908d7343898f682e47e70f4288728006ed650dbf79e8940c709d55b76326
 
 pkgname = tone3000-bin

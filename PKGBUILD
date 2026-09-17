@@ -1,21 +1,29 @@
-# Maintainer: Markus
+# Maintainer: Markus Hoffmann
 
 pkgname=tone3000-bin
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone and audio plug-ins for playing Neural Amp Modeler captures and impulse responses'
 arch=('x86_64')
 url='https://github.com/tone-3000/tone3000-plugin'
-license=('custom')
+license=('MIT')
 depends=('alsa-lib' 'curl' 'fontconfig' 'freetype2' 'gtk3' 'libx11' 'webkit2gtk-4.1')
+optdepends=('jack2: JACK audio backend for the standalone application')
 provides=('tone3000-clap' 'tone3000-lv2' 'tone3000-vst3')
-source=("${pkgname}-${pkgver}-linux-x64.tar.gz::https://github.com/tone-3000/tone3000-plugin/releases/download/v${pkgver}/TONE3000-v${pkgver}-linux-x64.tar.gz")
-sha256sums=('3e23fb63965f310834090c1cae0357ea0b279cfc14d6980e3beb0b7b5a54b546')
+source=(
+  "${pkgname}-${pkgver}-linux-x64.tar.gz::https://github.com/tone-3000/tone3000-plugin/releases/download/v${pkgver}/TONE3000-v${pkgver}-linux-x64.tar.gz"
+  "LICENSE::https://raw.githubusercontent.com/tone-3000/tone3000-plugin/v${pkgver}/LICENSE"
+)
+sha256sums=(
+  '3e23fb63965f310834090c1cae0357ea0b279cfc14d6980e3beb0b7b5a54b546'
+  '88d4908d7343898f682e47e70f4288728006ed650dbf79e8940c709d55b76326'
+)
 
 package() {
   local _src="${srcdir}/TONE3000-v${pkgver}-linux-x64"
 
   install -Dm755 "${_src}/TONE3000" "${pkgdir}/usr/bin/TONE3000"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${_src}/TONE3000.clap" "${pkgdir}/usr/lib/clap/TONE3000.clap"
   install -Dm644 "${_src}/tone3000.png" \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/tone3000.png"
