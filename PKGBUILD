@@ -2,10 +2,10 @@
 pkgname=wp-desktop-bin
 _appname=WordPress.com
 _pkgname=wpcom
-pkgver=8.2.3
+pkgver=8.2.4
 _electronversion=39
 pkgrel=1
-pkgdesc="WordPress.com for Desktop.(Prebuilt version.Use system-wide electron)"
+pkgdesc="WordPress.com for Desktop."
 arch=("x86_64")
 url="https://apps.wordpress.com/desktop/"
 _repourl="https://github.com/Automattic/wp-calypso/tree/trunk/desktop"
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_downurl}/releases/download/v${pkgver}/wordpress.com-linux-deb-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d4fbabd359227e382bd26c3a2805261294e5916317438f50aa507edf5a12cdb8'
+sha256sums=('e3c2c9c6d2a551343514df8915103d807f09608cb09f59a102354db432c5c4dc'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -42,10 +42,10 @@ _check_electron_version() {
 }
 prepare() {
     sed -i -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/${_pkgname}/
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
@@ -59,7 +59,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
