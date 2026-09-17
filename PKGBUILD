@@ -1,33 +1,24 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname=bbk-cli
-pkgver=1.2.2
-pkgrel=2
-pkgdesc="Measurement client for Bredbandskollen"
+pkgver=5.1.0
+pkgrel=1
+pkgdesc="Command-line speed test client for Bredbandskollen"
 arch=('x86_64')
-url='https://www.bredbandskollen.se/en/bredbandskollen-cli'
+url='https://gitlab.com/internetstiftelsen-oss/bredbandskollen'
 license=('MIT')
-makedepends=('gnutls')
-source=("https://github.com/dotse/bbk/archive/refs/tags/BBK_CLI_${pkgver}.tar.gz" "https://frontend.bredbandskollen.se/download/README.txt")
-sha256sums=('53fb3a50622d1661e38c96ba61fa906d21050f9e508380b605920bde1f955e6b'
-            '525254138b2dd44c810d5d31b1846dd2395eb6353c5f32805079da60a2f36ada')
-
-prepare() {
-
-	sed -i '/#include <limits>/a#include <cstdint>' "$srcdir/bbk-BBK_CLI_${pkgver}/src/json11/json11.cpp"
-											
-}
-
+source=("https://gitlab.com/internetstiftelsen-oss/bredbandskollen/-/archive/${pkgver}/bredbandskollen-${pkgver}.tar.gz")
+sha256sums=('0c7d523357812ffc426ad66cd43b0c042834081206c2d340a50f5b03373634e1')
 
 build() {
 
-	cd "$srcdir/bbk-BBK_CLI_${pkgver}/src/cli"
-	make clean
-	make GNUTLS=1
+	cd "$srcdir/bredbandskollen-${pkgver}/cli"
+	make
+
 }
 
 package() {
 
-	install -Dm755 "$srcdir/bbk-BBK_CLI_${pkgver}/src/cli/cli" "$pkgdir/usr/bin/bbk_cli"	
-	install -Dm644 "$srcdir/bbk-BBK_CLI_${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "$srcdir/README.txt" "$pkgdir/usr/share/doc/$pkgname/README"
+	install -Dm755 "$srcdir/bredbandskollen-${pkgver}/cli/bbk" "$pkgdir/usr/bin/bbk"
+	install -Dm644 "$srcdir/bredbandskollen-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/bredbandskollen-${pkgver}/cli/README.md" "$pkgdir/usr/share/doc/$pkgname/README"
 }
