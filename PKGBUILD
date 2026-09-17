@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=datazen-bin
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Lightweight, open-source AI database client"
 arch=('x86_64')
@@ -26,13 +26,13 @@ options=('!strip' '!debug')
 
 _relurl="${url}/releases/download/v${pkgver}"
 source=(
-    "${pkgname}-${pkgver}.deb::${_relurl}/linux-DataZen_${pkgver}_amd64-linux-x64.deb"
+    "${pkgname}-${pkgver}.deb::${_relurl}/DataZen-${pkgver}-linux-x64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/flyxl/datazen/v${pkgver}/LICENSE"
 )
 noextract=("${pkgname}-${pkgver}.deb")
 sha256sums=(
-    'f0430fbc8c85d90aa1693d63d58ab05d13ddd6f9d2fbba97388821b59c0b15d7'
-    '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+    '0805b7ffd99eeed133509b3393bf167390f3d542c4b3470516688b8b8f6b100b'
+    'd8369d4fd80887d45cd647bb67f2fbf4c500c516745b96444fc07d814fe48209'
 )
 
 prepare() {
