@@ -1,6 +1,6 @@
 pkgbase = kwin-canvas
 	pkgdesc = Infinite canvas for KDE Plasma: windows on one pannable plane, activities as monitor frames, as a KWin QML effect plus a ground wallpaper
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/aaronsb/kwin-canvas
 	install = kwin-canvas.install
@@ -11,7 +11,7 @@ pkgbase = kwin-canvas
 	depends = plasma-workspace
 	optdepends = plasma-activities: one frame group per activity
 	optdepends = qt6-tools: qdbus6 for make enable and make status
-	source = kwin-canvas-0.2.0.tar.gz::https://github.com/aaronsb/kwin-canvas/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 96e93f675dd3e6d24f688f161b73097d86271669db394e54b373da5116486b54
+	source = kwin-canvas-0.3.0.tar.gz::https://github.com/aaronsb/kwin-canvas/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = a0b8e8f76f17f09f911949c1cdcc20f3984fb4e636da31545016e13cb56a3673
 
 pkgname = kwin-canvas
