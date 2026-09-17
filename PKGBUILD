@@ -2,7 +2,7 @@
 
 pkgname=wayland-display-info
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon that keeps /var/cache/wayland-display-info/display-info up to date using wlr-output-management"
 arch=('any')
 url="https://github.com/acrion/wayland-display-info"
