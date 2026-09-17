@@ -1,0 +1,5 @@
+[tabbr-bin]
+source = "github"
+github = "Waradu/tabbr"
+use_latest_release = true
+prefix = "v"
