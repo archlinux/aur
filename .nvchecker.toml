@@ -1,0 +1,5 @@
+[vboard-bin]
+source = "github"
+github = "archisman-panigrahi/vboard"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,21 @@
+pkgbase = vboard-bin
+	pkgdesc = Wayland virtual keyboard for GNU/Linux with modifier key support
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://github.com/archisman-panigrahi/vboard
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = tar
+	depends = glib2
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = python
+	depends = python-uinput
+	depends = libappindicator
+	depends = python-gobject
+	provides = vboard
+	conflicts = vboard
+	source = https://github.com/archisman-panigrahi/vboard/releases/download/v2.7.0/vboard_2.7.0-1_all.deb
+	sha256sums = 0f6ddbf118fd6a235673d74f8270ff3025335782ebcdbb293138df32b0f93b7c
+
+pkgname = vboard-bin
