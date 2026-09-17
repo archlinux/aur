@@ -10,7 +10,7 @@ pkgbase = badapple-hd
 	depends = figlet
 	depends = lolcat
 	source = badapple-hd-1.0.0.tar.gz::https://github.com/Raj-1727/badapple-hd/archive/refs/tags/v1.0.0.tar.gz
-	source = badapple.mp4::https://raw.githubusercontent.com/Raj-1727/badapple-hd/main/badapple.mp4
+	source = badapple.mp4
 	sha256sums = SKIP
 	sha256sums = SKIP
 

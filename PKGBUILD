@@ -15,7 +15,7 @@ depends=(
 
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    "badapple.mp4::https://raw.githubusercontent.com/Raj-1727/badapple-hd/main/badapple.mp4"
+    "badapple.mp4"
 )
 
 sha256sums=(
