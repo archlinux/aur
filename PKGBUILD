@@ -1,7 +1,7 @@
 # Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
 
 pkgname=ctty
-pkgver=0.8.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Lightweight all-in-one TUI connection manager for SSH, serial, SFTP, telnet and FTP"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('ctty-bin')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d4921c4cfe9af554ffafdfd5e2c36da14fdbe44ee5ee8578cca4397329adf053')
+sha256sums=('8e24082847dcec2f7da3c8cbb9bde02d6f1725113290b206cc9cfdc401cf4698')
 
 build() {
     cd "$srcdir/ctty-$pkgver"
