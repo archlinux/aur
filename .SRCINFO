@@ -1,19 +1,18 @@
 pkgbase = nsql-bin
-	pkgdesc = Run SQL from your terminal, composed in your real Neovim — without taking over the screen (prebuilt binary)
-	pkgver = 0.1.13
+	pkgdesc = Run SQL from your terminal, composed in your real neovim — without taking over the screen.
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/fredrir/nsql
-	arch = x86_64
-	arch = aarch64
 	license = 0BSD
-	depends = dbus
 	optdepends = neovim: inline/embedded SQL editor (falls back to vim/vi/$EDITOR otherwise)
-	provides = nsql
+	depends = dbus
 	conflicts = nsql
-	options = !strip
-	source_x86_64 = nsql-x86_64-unknown-linux-gnu-0.1.13.tar.xz::https://github.com/fredrir/nsql/releases/download/v0.1.13/nsql-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 65c73b7d4a994d8b747bfc3a3c00e77b598a9496414db6c3a96e353f0a1b5012
-	source_aarch64 = nsql-aarch64-unknown-linux-gnu-0.1.13.tar.xz::https://github.com/fredrir/nsql/releases/download/v0.1.13/nsql-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 5fcff492086304bf39912a2af4dc29031f4f077902d2a7c23cf382a017594c6b
-
+	provides = nsql
+	arch = aarch64
+	source_aarch64 = nsql-bin_0.1.14_aarch64.tar.gz::https://github.com/fredrir/nsql/releases/download/v0.1.14/nsql-aarch64-unknown-linux-gnu-v0.1.14.tar.gz
+	sha256sums_aarch64 = 750fce742a454e96bba66cd2dfc2ee953d0dfa5f1f2e26f44dda807014184e4e
+	arch = x86_64
+	source_x86_64 = nsql-bin_0.1.14_x86_64.tar.gz::https://github.com/fredrir/nsql/releases/download/v0.1.14/nsql-x86_64-unknown-linux-gnu-v0.1.14.tar.gz
+	sha256sums_x86_64 = 091c7132224106e5ee28c2feadddd665f23f0c5688258173f473d1bb812441c6
+	
 pkgname = nsql-bin
