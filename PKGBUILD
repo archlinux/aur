@@ -2,7 +2,7 @@
 
 pkgname=httm-bin
 pkgver=0.50.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS, BTRFS, or NILFS snapshots. (binary .deb)"
 arch=('x86_64')
 url="https://github.com/kimono-koans/httm"
@@ -29,7 +29,7 @@ package(){
 
 	# install helper scripts
 	install -Dm755 "${srcdir}/usr/bin/bowie" "${pkgdir}/usr/bin/bowie"
-	install -Dm755 "${srcdir}/usr/bin/nicotine" "${pkgdir}/usr/bin/nicotine"
+	install -Dm755 "${srcdir}/usr/bin/nicotine" "${pkgdir}/usr/bin/httm-nicotine"
 
 	[[ -z "$(
 		command -v zfs
