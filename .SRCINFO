@@ -1,0 +1,33 @@
+pkgbase = synthos-git
+	pkgdesc = Local AI desktop studio: agentic chat, notes workspace, node editor for video/music/speech, code editor — on the native synaptix engine (git)
+	pkgver = 0.2.0.r375.g07d278e
+	pkgrel = 1
+	url = https://github.com/VitaminDB/synthos
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = git
+	makedepends = rust
+	makedepends = cuda
+	makedepends = pkgconf
+	makedepends = clang
+	depends = alsa-lib
+	depends = fontconfig
+	depends = vulkan-icd-loader
+	depends = libxkbcommon
+	depends = wayland
+	depends = gtk3
+	depends = ffmpeg
+	optdepends = nvidia-utils: GPU-инференс (CUDA-драйвер грузится в рантайме)
+	provides = synthos=0.2.0
+	conflicts = synthos
+	conflicts = synthos-bin
+	options = !lto
+	source = synthos::git+https://github.com/VitaminDB/synthos.git
+	source = syngui::git+https://github.com/VitaminDB/syngui.git
+	source = synaptix::git+https://github.com/VitaminDB/synaptix.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = synthos-git
