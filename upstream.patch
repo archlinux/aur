@@ -41,7 +41,7 @@ index e684108..cb6539e 100644
  define proto_rule
  $(GEN)/$(1)-client-protocol.h: $(2)
 diff --git a/README.md b/README.md
-index 3f7f5d7..d746d56 100644
+index 3f7f5d7..03b4ff8 100644
 --- a/README.md
 +++ b/README.md
 @@ -4,10 +4,9 @@
@@ -141,13 +141,21 @@ index 3f7f5d7..d746d56 100644
  ```
  
  | Key | Required | Default | Description |
-@@ -255,11 +289,29 @@ password = replace-this-with-a-strong-password
+@@ -255,11 +289,37 @@ password = replace-this-with-a-strong-password
  | `port` | No | `3389` | TCP port from 1 through 65535 |
  | `bind` | No | `0.0.0.0` | Address passed to the FreeRDP listener |
  | `username` | Yes | None | RDP login name |
 -| `password` | Yes | None | RDP password, stored as plain text in this file |
 +| `password_hash` | Yes* | None | Salted scrypt hash, as printed by `wayrdp --hash-password` |
 +| `password` | Yes* | None | Plaintext password, kept for compatibility; ignored when a hash is present |
++| `state_dir` | No | `~/.local/share/wayrdp` | Directory holding the TLS certificate and key |
++| `cert` | No | `<state_dir>/tls.crt` | Certificate path, overriding `state_dir` for that file |
++| `key` | No | `<state_dir>/tls.key` | Private key path, overriding `state_dir` for that file |
++
++A shared `state_dir` or an explicit `cert`/`key` pair lets more than one account
++serve the same machine under one certificate. Generate the pair once, make it
++readable by the group those accounts share, and no re-issue is needed: an
++existing certificate is reused as is, never regenerated or re-permissioned.
  
  Blank lines, surrounding whitespace and comments beginning with `#` are
 -accepted. Unknown keys are ignored. The server refuses to listen unless both a
@@ -174,7 +182,7 @@ index 3f7f5d7..d746d56 100644
  
  ## Checking compatibility
  
-@@ -330,6 +382,23 @@ one long-lived compositor.
+@@ -330,6 +390,23 @@ one long-lived compositor.
  Stop the server with `Ctrl+C`, `SIGINT` or `SIGTERM`. After a client disconnects,
  the listener remains available for the next client.
  
@@ -198,7 +206,7 @@ index 3f7f5d7..d746d56 100644
  Connect with an RDP client to the host and configured port, supply the configured
  username and password, and verify the self-signed certificate fingerprint on
  the first connection. The client window is resized to the selected output's
-@@ -415,8 +484,9 @@ before deployment:
+@@ -415,8 +492,9 @@ before deployment:
  - The private key is set to mode `0600`. Clients must validate and remember the
    certificate fingerprint themselves.
  - The configured password is compared without returning at the first mismatched
@@ -210,7 +218,7 @@ index 3f7f5d7..d746d56 100644
  - There is no brute-force throttling, account lockout, external identity provider
    or security audit.
  
-@@ -432,6 +502,7 @@ Do not expose the server directly to the public internet in its current form.
+@@ -432,6 +510,7 @@ Do not expose the server directly to the public internet in its current form.
  └── src/
      ├── main.c       Process lifecycle, readiness check and signal handling
      ├── config.c     Config parsing, validation and TLS certificate creation
@@ -219,19 +227,34 @@ index 3f7f5d7..d746d56 100644
      ├── rdp.c        FreeRDP listener, authentication, RemoteFX and channels
      ├── audio.c      PipeWire streams and synchronized ring buffers
 diff --git a/src/config.c b/src/config.c
-index 1b89d53..3b07c6b 100644
+index 1b89d53..4c074e8 100644
 --- a/src/config.c
 +++ b/src/config.c
-@@ -31,7 +31,7 @@ bool wr_config_load(struct wr_config *cfg, const char **error) {
+@@ -21,7 +21,7 @@ static void trim(char *s) {
+         s[--n] = 0;
+ }
+ 
+-static void state_dir(char *out, size_t size) {
++static void default_state_dir(char *out, size_t size) {
+     const char *home = getenv("HOME");
+     snprintf(out, size, "%s/.local/share/wayrdp", home ? home : "/tmp");
+ }
+@@ -31,10 +31,10 @@ bool wr_config_load(struct wr_config *cfg, const char **error) {
      cfg->port = 3389;
      snprintf(cfg->bind_address, sizeof(cfg->bind_address), "0.0.0.0");
  
 -    char dir[512];
-+    char dir[256];
-     state_dir(dir, sizeof(dir));
-     snprintf(cfg->cert_path, sizeof(cfg->cert_path), "%s/tls.crt", dir);
-     snprintf(cfg->key_path, sizeof(cfg->key_path), "%s/tls.key", dir);
-@@ -77,6 +77,8 @@ bool wr_config_load(struct wr_config *cfg, const char **error) {
+-    state_dir(dir, sizeof(dir));
+-    snprintf(cfg->cert_path, sizeof(cfg->cert_path), "%s/tls.crt", dir);
+-    snprintf(cfg->key_path, sizeof(cfg->key_path), "%s/tls.key", dir);
++    bool custom_state = false, custom_cert = false, custom_key = false;
++    default_state_dir(cfg->state_dir, sizeof(cfg->state_dir));
++    snprintf(cfg->cert_path, sizeof(cfg->cert_path), "%s/tls.crt", cfg->state_dir);
++    snprintf(cfg->key_path, sizeof(cfg->key_path), "%s/tls.key", cfg->state_dir);
+ 
+     const char *explicit_path = getenv("WAYRDP_CONFIG");
+     if (explicit_path) {
+@@ -77,10 +77,28 @@ bool wr_config_load(struct wr_config *cfg, const char **error) {
              snprintf(cfg->username, sizeof(cfg->username), "%s", value);
          else if (!strcmp(key, "password"))
              snprintf(cfg->password, sizeof(cfg->password), "%s", value);
@@ -239,8 +262,28 @@ index 1b89d53..3b07c6b 100644
 +            snprintf(cfg->password_hash, sizeof(cfg->password_hash), "%s", value);
          else if (!strcmp(key, "bind"))
              snprintf(cfg->bind_address, sizeof(cfg->bind_address), "%s", value);
++        else if (!strcmp(key, "state_dir")) {
++            snprintf(cfg->state_dir, sizeof(cfg->state_dir), "%s", value);
++            custom_state = true;
++        } else if (!strcmp(key, "cert")) {
++            snprintf(cfg->cert_path, sizeof(cfg->cert_path), "%s", value);
++            custom_cert = true;
++        } else if (!strcmp(key, "key")) {
++            snprintf(cfg->key_path, sizeof(cfg->key_path), "%s", value);
++            custom_key = true;
++        }
      }
-@@ -94,7 +96,14 @@ bool wr_config_usable(const struct wr_config *cfg, const char **why) {
+     fclose(f);
++
++    // A custom state directory relocates both files unless each was named.
++    if (custom_state) {
++        if (!custom_cert) snprintf(cfg->cert_path, sizeof(cfg->cert_path), "%s/tls.crt", cfg->state_dir);
++        if (!custom_key) snprintf(cfg->key_path, sizeof(cfg->key_path), "%s/tls.key", cfg->state_dir);
++    }
+     return true;
+ }
+ 
+@@ -94,7 +112,14 @@ bool wr_config_usable(const struct wr_config *cfg, const char **why) {
          return false;
      }
      // A server anyone can walk into is worse than one that will not start.
@@ -256,20 +299,25 @@ index 1b89d53..3b07c6b 100644
          *why = "no password set";
          return false;
      }
-@@ -109,7 +118,7 @@ static bool file_exists(const char *path) {
+@@ -109,10 +134,9 @@ static bool file_exists(const char *path) {
  bool wr_config_ensure_certificate(struct wr_config *cfg, const char **error) {
      if (file_exists(cfg->cert_path) && file_exists(cfg->key_path)) return true;
  
 -    char dir[512];
-+    char dir[256];
-     state_dir(dir, sizeof(dir));
-     if (mkdir(dir, 0700) != 0 && errno != EEXIST) {
-         *error = "could not create ~/.local/share/wayrdp";
+-    state_dir(dir, sizeof(dir));
+-    if (mkdir(dir, 0700) != 0 && errno != EEXIST) {
+-        *error = "could not create ~/.local/share/wayrdp";
++    // Create the state directory in case a relocated one does not exist yet.
++    if (mkdir(cfg->state_dir, 0700) != 0 && errno != EEXIST) {
++        *error = "could not create the wayrdp state directory";
+         return false;
+     }
+ 
 diff --git a/src/config.h b/src/config.h
-index 5767bda..b056300 100644
+index 5767bda..b4fd96b 100644
 --- a/src/config.h
 +++ b/src/config.h
-@@ -1,16 +1,21 @@
+@@ -1,18 +1,27 @@
 -// config.h — port, username and password, as the panel writes them.
 +// config.h — port, username and credential, as the panel writes them.
  
@@ -291,7 +339,13 @@ index 5767bda..b056300 100644
 +    char password_hash[WR_PASSWORD_ENCODED_MAX];
      char bind_address[WR_MAX_FIELD];
  
++    // Where the TLS certificate and key live. `state_dir` defaults to
++    // ~/.local/share/wayrdp; `cert` and `key` override the two files directly,
++    // so a shared, group-readable pair can serve several invocations.
++    char state_dir[256];
      char cert_path[512];
+     char key_path[512];
+     char path[512];                 // where this was read from
 diff --git a/src/main.c b/src/main.c
 index 00a884a..3025767 100644
 --- a/src/main.c

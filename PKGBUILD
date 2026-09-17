@@ -2,7 +2,7 @@
 
 pkgname=wayrdp
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Native RDP server for wlroots-based Wayland compositors'
 arch=('x86_64')
 url='https://github.com/danilofalcao/wayrdp'
