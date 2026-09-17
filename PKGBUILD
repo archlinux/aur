@@ -5,7 +5,7 @@
 _pkgname=mfem
 pkgname=${_pkgname}-palace
 pkgver=4.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight, general, scalable C++ library for finite element methods - With Palace EM Solver patches"
 arch=(x86_64)
 url="https://github.com/${_pkgname}/${_pkgname}"
