@@ -1,6 +1,6 @@
 pkgbase = goop-bin
 	pkgdesc = Native NIP-17 client to chat with your clankers (and friends)
-	pkgver = 2.11.1
+	pkgver = 2.11.2
 	pkgrel = 1
 	url = https://goop.dergigi.com
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = goop-bin
 	depends = wayland
 	optdepends = gnome-keyring: Secret Service provider for storing signer credentials
 	optdepends = kwallet: alternative Secret Service provider
-	provides = goop=2.11.1
+	provides = goop=2.11.2
 	conflicts = goop
 	options = !strip
 	options = !debug
-	source = goop-2.11.1-linux-x64.tar.gz::https://github.com/dergigi/goop/releases/download/v2.11.1/goop-linux-x64.tar.gz
+	source = goop-2.11.2-linux-x64.tar.gz::https://github.com/dergigi/goop/releases/download/v2.11.2/goop-linux-x64.tar.gz
 	source = goop
-	sha256sums = 1fb60e0dbe2add04644a4d90e05f2c4c93a10891dcdba008722f964656c691d9
+	sha256sums = fde8f0400e5dd6219d4de356f2da4381f9d68ac1a90c86b090ef1e5e159ae98c
 	sha256sums = 109196a81ab41147cc3d14a20cb5a17186fbf99658080ec213022e750e50e2d1
 
 pkgname = goop-bin

@@ -1,6 +1,6 @@
 # Maintainer: dergigi <dergigi@pm.me>
 pkgname=goop-bin
-pkgver=2.11.1
+pkgver=2.11.2
 pkgrel=1
 pkgdesc='Native NIP-17 client to chat with your clankers (and friends)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('goop')
 options=('!strip' '!debug')
 source=("goop-${pkgver}-linux-x64.tar.gz::https://github.com/dergigi/goop/releases/download/v${pkgver}/goop-linux-x64.tar.gz"
         'goop')
-sha256sums=('1fb60e0dbe2add04644a4d90e05f2c4c93a10891dcdba008722f964656c691d9'
+sha256sums=('fde8f0400e5dd6219d4de356f2da4381f9d68ac1a90c86b090ef1e5e159ae98c'
             '109196a81ab41147cc3d14a20cb5a17186fbf99658080ec213022e750e50e2d1')
 
 prepare() {
