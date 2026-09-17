@@ -1,4 +1,4 @@
-From f597c031b3d5236f598219fd960fb2cf4541f513 Mon Sep 17 00:00:00 2001
+From 19ebec653f8464277a9d768ebe036673c3fbf2f3 Mon Sep 17 00:00:00 2001
 From: Jasper van Bourgognie <jasper@knoop.je>
 Date: Mon, 15 Sep 2025 07:42:51 +0200
 Subject: [PATCH] meson: build options for 3/4 finger dragging
@@ -14,7 +14,7 @@ mode, but always go to drag
  3 files changed, 27 insertions(+), 1 deletion(-)
 
 diff --git a/meson.build b/meson.build
-index 85493425..165e1877 100644
+index f948c902..20b21281 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -411,6 +411,19 @@ if get_option('internal-event-debugging')
@@ -55,10 +55,10 @@ index 20d7e05e..4dc4f04e 100644
 +	value: '3fg',
 +	description: 'Default value for the 3-finger drag config option (default=3fg)')
 diff --git a/src/evdev-mt-touchpad-gestures.c b/src/evdev-mt-touchpad-gestures.c
-index 03a081c0..18a8b3ec 100644
+index ae42b513..53734d0f 100644
 --- a/src/evdev-mt-touchpad-gestures.c
 +++ b/src/evdev-mt-touchpad-gestures.c
-@@ -1908,6 +1908,9 @@ tp_gesture_handle_state_3fg_drag_or_swipe(struct tp_dispatch *tp, usec_t time)
+@@ -1909,6 +1909,9 @@ tp_gesture_handle_state_3fg_drag_or_swipe(struct tp_dispatch *tp, usec_t time)
  static void
  tp_gesture_handle_state_3fg_drag_or_swipe_start(struct tp_dispatch *tp, usec_t time)
  {
@@ -68,7 +68,7 @@ index 03a081c0..18a8b3ec 100644
  	const struct normalized_coords zero = { 0.0, 0.0 };
  	gesture_notify_swipe(&tp->device->base,
  			     time,
-@@ -1917,6 +1920,7 @@ tp_gesture_handle_state_3fg_drag_or_swipe_start(struct tp_dispatch *tp, usec_t t
+@@ -1918,6 +1921,7 @@ tp_gesture_handle_state_3fg_drag_or_swipe_start(struct tp_dispatch *tp, usec_t t
  			     &zero);
  	tp->gesture.state = GESTURE_STATE_3FG_DRAG_OR_SWIPE;
  	tp_gesture_set_3fg_drag_3fg_or_swipe_timer(tp, time);
@@ -76,7 +76,7 @@ index 03a081c0..18a8b3ec 100644
  }
  
  static void
-@@ -2347,7 +2351,7 @@ tp_3fg_drag_get_enabled(struct libinput_device *device)
+@@ -2375,7 +2379,7 @@ tp_3fg_drag_get_enabled(struct libinput_device *device)
  static enum libinput_config_3fg_drag_state
  tp_3fg_drag_default(struct tp_dispatch *tp)
  {
