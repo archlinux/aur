@@ -1,21 +1,13 @@
 pkgbase = sing-box-ref1nd-bin
 	pkgdesc = The universal proxy platform.
 	pkgver = 1.14.1.reF1nd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reF1nd/sing-box
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0
-	depends = glibc>=2.31
 	provides = sing-box
 	conflicts = sing-box
-	conflicts = sing-box-bin
-	conflicts = sing-box-git
-	conflicts = sing-box-alpha
-	conflicts = sing-box-beta
-	conflicts = sing-box-beta-bin
-	conflicts = sing-box-ref1nd
-	conflicts = sing-box-ref1nd-git
 	backup = etc/sing-box/config.json
 	source = config.json::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v1.14.1-reF1nd/release/config/config.json
 	source = sing-box.rules::https://raw.githubusercontent.com/reF1nd/sing-box/refs/tags/v1.14.1-reF1nd/release/config/sing-box.rules
@@ -29,9 +21,9 @@ pkgbase = sing-box-ref1nd-bin
 	sha256sums = 0b8740010bb3b2a5b65f1cc444b00127372d015f70f272ed566606949ed2b91b
 	sha256sums = ebdab3b912603c44b4d76640c5db5c4bc0ca04213d7f34ccaa5e789ba40b426f
 	sha256sums = 0d0631619b6f680b9a80b9a8f65c7a30f2565e80279182f63c77854051c5d473
-	source_x86_64 = sing-box-1.14.1-reF1nd-linux-amd64-glibc.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v1.14.1-reF1nd/sing-box-1.14.1-reF1nd-linux-amd64-glibc.tar.gz
-	sha256sums_x86_64 = 0e39a3e63d95356e2a940854d17d9440bb077b9659d053044dd7ed2df639508d
-	source_aarch64 = sing-box-1.14.1-reF1nd-linux-arm64-glibc.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v1.14.1-reF1nd/sing-box-1.14.1-reF1nd-linux-arm64-glibc.tar.gz
-	sha256sums_aarch64 = a836c4e73d49b216bff20841527debd913120b82c2af530469db2042417062dd
+	source_x86_64 = sing-box-1.14.1-reF1nd-linux-amd64-purego.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v1.14.1-reF1nd/sing-box-1.14.1-reF1nd-linux-amd64-purego.tar.gz
+	sha256sums_x86_64 = e71b12f81064ae48e8a3b4c9dab8cb1f347d6e0c9b4d1eb8c7b2483f73d3752a
+	source_aarch64 = sing-box-1.14.1-reF1nd-linux-arm64-purego.tar.gz::https://github.com/reF1nd/sing-box-releases/releases/download/v1.14.1-reF1nd/sing-box-1.14.1-reF1nd-linux-arm64-purego.tar.gz
+	sha256sums_aarch64 = 3010a868ecaa90d50af93bc658143bd0904c29947c86b42dcc2779778f26e694
 
 pkgname = sing-box-ref1nd-bin
