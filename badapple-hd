@@ -1,0 +1,210 @@
+#!/usr/bin/env python3
+import os
+import sys
+import time
+import subprocess
+import shutil
+import signal
+import fcntl
+import tty
+import termios
+import struct
+import select
+
+VIDEO_PATH = "/usr/share/badapple-py/badapple.mp4"
+FPS = 30.0
+FRAME_TIME = 1.0 / FPS
+
+paused = False
+running = True
+audio_proc = None
+ffmpeg_proc = None
+
+def get_char_ratio():
+    try:
+        buf = fcntl.ioctl(sys.stdout.fileno(), termios.TIOCGWINSZ, b'\x00' * 8)
+        rows, cols, xpix, ypix = struct.unpack('HHHH', buf)
+        if xpix > 0 and ypix > 0 and cols > 0 and rows > 0:
+            return (xpix / cols) / (ypix / rows)
+    except Exception:
+        pass
+    return 0.5
+
+def cleanup(*_):
+    global running
+    running = False
+    try:
+        if ffmpeg_proc:
+            ffmpeg_proc.terminate()
+            ffmpeg_proc.wait(timeout=1)
+    except Exception:
+        pass
+    try:
+        if audio_proc:
+            audio_proc.terminate()
+            audio_proc.wait(timeout=1)
+    except Exception:
+        pass
+    sys.stdout.write("\033[?25h\033c")
+    sys.stdout.flush()
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, cleanup)
+signal.signal(signal.SIGTERM, cleanup)
+
+def check_input():
+    global paused, running
+    if not sys.stdin.isatty():
+        return
+    if select.select([sys.stdin], [], [], 0)[0]:
+        ch = sys.stdin.read(1)
+        if ch == " ":
+            paused = not paused
+            if paused:
+                if audio_proc:
+                    audio_proc.send_signal(signal.SIGSTOP)
+            else:
+                if audio_proc:
+                    audio_proc.send_signal(signal.SIGCONT)
+        elif ch in ("q", "Q"):
+            running = False
+
+if not os.path.exists(VIDEO_PATH):
+    sys.exit("Video not found")
+
+print("\033c", end="")
+sys.stdout.write("\033[?25l")
+sys.stdout.flush()
+
+subprocess.run('figlet -f "Larry 3D 2" "BAD APPLE" | lolcat', shell=True)
+
+print("\nControls:\n  SPACE - Pause/Resume\n  Q     - Quit\n")
+print("Press any key to start...")
+
+fd = sys.stdin.fileno()
+old = termios.tcgetattr(fd)
+try:
+    tty.setraw(fd)
+    while True:
+        ch = sys.stdin.read(1)
+        if ch == '\x03':
+            continue
+        break
+finally:
+    termios.tcsetattr(fd, termios.TCSADRAIN, old)
+
+audio_proc = subprocess.Popen([
+    "ffplay", "-nodisp", "-autoexit", "-loglevel", "quiet", VIDEO_PATH
+])
+
+char_ratio = get_char_ratio()
+video_aspect = 16.0 / 9.0
+prev_term_size = (0, 0)
+target_width, target_height = 0, 0
+pixel_w, pixel_h = 0, 0
+ffmpeg_proc = None
+
+def start_ffmpeg(w, h):
+    return subprocess.Popen([
+        "ffmpeg", "-threads", "2", "-i", VIDEO_PATH,
+        "-vf", f"scale={w}:{h}:flags=neighbor",
+        "-f", "image2pipe", "-pix_fmt", "gray", "-vcodec", "rawvideo", "-"
+    ], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+
+start_time = time.time()
+pause_started = None
+frame_count = 0
+
+try:
+    while running:
+        check_input()
+
+        if paused:
+            if pause_started is None:
+                pause_started = time.time()
+            time.sleep(0.05)
+            continue
+        elif pause_started is not None:
+            start_time += time.time() - pause_started
+            pause_started = None
+
+        term_cols, term_lines = shutil.get_terminal_size()
+        max_w = term_cols
+        max_h = max(5, term_lines - 1)
+
+        needed_w = int(max_h * video_aspect / char_ratio)
+        if needed_w <= max_w:
+            t_w, t_h = needed_w, max_h
+        else:
+            t_w, t_h = max_w, int(max_w * char_ratio / video_aspect)
+
+        t_w = max(10, t_w)
+        t_h = max(5, t_h)
+        p_w, p_h = t_w * 2, t_h * 4
+
+        if (t_w, t_h) != (target_width, target_height) or ffmpeg_proc is None:
+            target_width, target_height = t_w, t_h
+            pixel_w, pixel_h = p_w, p_h
+            if ffmpeg_proc:
+                ffmpeg_proc.terminate()
+            ffmpeg_proc = start_ffmpeg(pixel_w, pixel_h)
+
+        frame_size = pixel_w * pixel_h
+        raw_frame = ffmpeg_proc.stdout.read(frame_size)
+        if not raw_frame or len(raw_frame) != frame_size:
+            break
+
+        frame_count += 1
+        now = time.time()
+        expected_time = start_time + (frame_count * FRAME_TIME)
+        
+        if expected_time < now:
+            continue
+
+        if (term_cols, term_lines) != prev_term_size:
+            sys.stdout.write("\033[2J")
+            prev_term_size = (term_cols, term_lines)
+
+        pad_top = max(0, (max_h - target_height) // 2)
+        pad_left = max(0, (max_w - target_width) // 2)
+
+        ascii_lines = []
+        for r in range(0, pixel_h, 4):
+            r_w = r * pixel_w
+            r1_w = (r + 1) * pixel_w
+            r2_w = (r + 2) * pixel_w
+            r3_w = (r + 3) * pixel_w
+            
+            line_chars = [
+                chr(0x2800 |
+                    (0x1  if raw_frame[r_w + c]        > 40  else 0) |
+                    (0x2  if raw_frame[r1_w + c]       > 90  else 0) |
+                    (0x4  if raw_frame[r2_w + c]       > 150 else 0) |
+                    (0x8  if raw_frame[r_w + c + 1]    > 70  else 0) |
+                    (0x10 if raw_frame[r1_w + c + 1]   > 120 else 0) |
+                    (0x20 if raw_frame[r2_w + c + 1]   > 180 else 0) |
+                    (0x40 if raw_frame[r3_w + c]       > 100 else 0) |
+                    (0x80 if raw_frame[r3_w + c + 1]   > 210 else 0))
+                for c in range(0, pixel_w, 2)
+            ]
+            ascii_lines.append("".join(line_chars))
+
+        prefix = " " * pad_left
+        out = "\033[H"
+        for _ in range(pad_top):
+            out += "\033[K\n"
+        for line in ascii_lines:
+            out += prefix + line + "\033[K\n"
+        out += "\033[J"
+
+        now = time.time()
+        if expected_time > now:
+            time.sleep(expected_time - now)
+
+        sys.stdout.write(out)
+        sys.stdout.flush()
+
+except Exception:
+    cleanup()
+
+cleanup()
