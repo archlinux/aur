@@ -1,6 +1,6 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=klayout-pex
-pkgver=0.4.1
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Parasitic Extraction (PEX) tool for KLayout"
 arch=("x86_64")
@@ -13,6 +13,7 @@ depends=(
 	'python-protobuf'
 	'python-rich'
 	'python-rich-argparse'
+	'python-packaging'
 )
 makedepends=(
 	'git'
@@ -21,6 +22,7 @@ makedepends=(
 	'abseil-cpp'
 	'python-build'
 	'python-installer'
+	'python-setuptools'
 	'python-wheel'
 	'python-poetry-core'
 )
@@ -38,35 +40,29 @@ optdepends=(
 	"meshlab: For previewing 3D geometries (STL) representing input to FasterCap"
 )
 options=()
-source=(
-	"${pkgname}::git+${_git_url}#tag=v${pkgver}"
-	"0001-fix-use-locally-installed-protobuf.patch"
-)
-b2sums=('cb0229acb7c44c391ac3a0a2b25b0706d96eb338ef79621bf6808fd522c4fe7bae0f115498fba9b900c3e22ff16039bf8b5155d51df32da2a6ef88394218b7f6'
-        '0642c635ed405a6938ab3a968e6a92b6864b5b3ea685cefbad214f46fdf6fb7e80068b3c89e6770e55508a1dce0042a291698885d575778f6775885e083bbe61')
-
-prepare() {
-	cd "${pkgname}"
-
-	# Apply patch
-	patch -Np1 < "../0001-fix-use-locally-installed-protobuf.patch"
-}
+source=("${pkgname}::git+${_git_url}#tag=v${pkgver}")
+b2sums=('c4d31f38c926587464b44d094f96b0c048227ed02238d540235f61b248abe8cac5ebba3770654f08a53e738625d9740f251ed3225bf50ef85579f614ab125ebd')
 
 build() {
-	cd "${pkgname}"
-	# Generate protobuf files and gen_tech_pb
+	local cmake_flags=(
+		-D CMAKE_BUILD_TYPE=None
+		-D PROTOBUF_USE_SYSTEM=ON
+	)
 	cmake \
+		"${cmake_flags[@]}" \
 		-B build \
-		-S . \
-		-DCMAKE_BUILD_TYPE=None
+		-S "${pkgname}"
 
 	cmake --build build
 
 	# Generate protobuf tech files
-	build/gen_tech_pb klayout_pex_protobuf
+	build/gen_tech_pb ${pkgname}/klayout_pex_protobuf
 	
 	# Build wheel
-	python -m build --wheel --no-isolation
+	(
+		cd ${pkgname}
+		python -m build --wheel --no-isolation
+	)
 }
 
 check() {
@@ -74,8 +70,7 @@ check() {
 	# TODO: slow tests require more extensive setup
 	pytest \
 		-v \
-		-m "not slow and not fastercap" \
-		--ignore=tests/klayout/netlist_expander_test.py # TODO: Fails for some reason
+		-m "not slow and not fastercap"
 }
 
 package() {
