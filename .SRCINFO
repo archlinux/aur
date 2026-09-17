@@ -1,6 +1,6 @@
 pkgbase = claude-code
 	pkgdesc = An agentic coding tool that lives in your terminal
-	pkgver = 2.1.274
+	pkgver = 2.1.275
 	pkgrel = 1
 	url = https://github.com/anthropics/claude-code
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = claude-code
 	options = !strip
 	source = cc-legal::https://code.claude.com/docs/en/legal-and-compliance.md
 	sha256sums = SKIP
-	source_x86_64 = claude-2.1.274-x86_64::https://downloads.claude.ai/claude-code-releases/2.1.274/linux-x64/claude
-	sha256sums_x86_64 = 15e2d05148f801b5774032faad87e624ecd172e9903288bda448b892eb58fa07
-	source_aarch64 = claude-2.1.274-aarch64::https://downloads.claude.ai/claude-code-releases/2.1.274/linux-arm64/claude
-	sha256sums_aarch64 = 2db904daea17addff9de557ba26a725916888aa7b546e2c5dd989c20d9d49ab3
+	source_x86_64 = claude-2.1.275-x86_64::https://downloads.claude.ai/claude-code-releases/2.1.275/linux-x64/claude
+	sha256sums_x86_64 = 13586f3150a7ca1655f36e1dba759fb404e0f7cf7021d4a3dcd5e6f604e56156
+	source_aarch64 = claude-2.1.275-aarch64::https://downloads.claude.ai/claude-code-releases/2.1.275/linux-arm64/claude
+	sha256sums_aarch64 = efcefb7448c3d12a045b5c53e0fb4e8859ff99abe90d67f83900c4f0ffd517ed
 
 pkgname = claude-code
