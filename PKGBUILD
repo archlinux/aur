@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="The fastest open source user interface for GIT workflows"
 
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -39,8 +39,8 @@ sha256sums=('51861511cc1b27c83057c61c62139e877b7d42dee861c1dd7c84b6035588130c'
             '5b37a2ac27ed747c62bc3d1aa9bdbffbee613954f2468c2eb4166710fbe491ea'
             '38a4776d0b425a2ca34656fc62ece9b52a8eeb48791c994064829057ffa6d67b'
             '7a75ee64acc3fc0d0a69450c8d0313527a937d4ffb78aeeb2d7d40b5f83e6d98')
-sha256sums_x86_64=('83d17bf73b12f911ba663c6986d7590886e736fce675c34d5c89a16be5776493')
-sha256sums_aarch64=('c2db3d33d030e6d92d705b40f7d7b7d0f65d498ca1468e45ff7994240590edc9')
+sha256sums_x86_64=('ad50c909a6c633e3e662a5a357c5bb6385f4de805dafc5f23fef1442531e20c1')
+sha256sums_aarch64=('acf582f9df74006c63ee8b8c0e336db616f438125bc6002ac043075c89121beb')
 
 
 case ${CARCH} in
