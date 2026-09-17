@@ -1,12 +1,14 @@
 diff --git a/Makefile b/Makefile
-index e684108..e922ca0 100644
+index e684108..cb6539e 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -29,7 +29,12 @@ PROTO_SRCS  := $(patsubst %,$(GEN)/%-protocol.c,$(PROTO_NAMES))
+@@ -28,8 +28,13 @@ PROTO_HDRS  := $(patsubst %,$(GEN)/%-client-protocol.h,$(PROTO_NAMES))
+ PROTO_SRCS  := $(patsubst %,$(GEN)/%-protocol.c,$(PROTO_NAMES))
  PROTO_OBJS  := $(PROTO_SRCS:.c=.o)
  
- DEPS    := wayland-client xkbcommon freerdp3 freerdp-server3 winpr3 libpipewire-0.3
+-DEPS    := wayland-client xkbcommon freerdp3 freerdp-server3 winpr3 libpipewire-0.3
 -CFLAGS  += -std=c11 -Wall -Wextra -O2 -I$(GEN) -Isrc $(shell pkg-config --cflags $(DEPS))
++DEPS    := wayland-client xkbcommon freerdp3 freerdp-server3 winpr3 libpipewire-0.3 libcrypto
 +CFLAGS  ?= -O2
 +CFLAGS  += -std=c11 -Wall -Wextra
 +# Dependency headers go in as system headers: FreeRDP/WinPR mark parts of their
@@ -27,8 +29,9 @@ index e684108..e922ca0 100644
 -	$(CC) $^ $(LDLIBS) -o $@
 +	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
  
- $(BUILD)/wayrdp: $(BUILD)/main.o $(BUILD)/rdp.o $(BUILD)/config.o $(BUILD)/audio.o $(BUILD)/wayland.o $(PROTO_OBJS)
+-$(BUILD)/wayrdp: $(BUILD)/main.o $(BUILD)/rdp.o $(BUILD)/config.o $(BUILD)/audio.o $(BUILD)/wayland.o $(PROTO_OBJS)
 -	$(CC) $^ $(LDLIBS) -o $@
++$(BUILD)/wayrdp: $(BUILD)/main.o $(BUILD)/rdp.o $(BUILD)/config.o $(BUILD)/password.o $(BUILD)/audio.o $(BUILD)/wayland.o $(PROTO_OBJS)
 +	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
  
  $(GEN)/%-protocol.o: $(GEN)/%-protocol.c
@@ -38,7 +41,7 @@ index e684108..e922ca0 100644
  define proto_rule
  $(GEN)/$(1)-client-protocol.h: $(2)
 diff --git a/README.md b/README.md
-index 3f7f5d7..28027b4 100644
+index 3f7f5d7..d746d56 100644
 --- a/README.md
 +++ b/README.md
 @@ -4,10 +4,9 @@
@@ -55,7 +58,17 @@ index 3f7f5d7..28027b4 100644
  
  > [!IMPORTANT]
  > `wayrdp` is an early, working implementation rather than a security-audited
-@@ -60,7 +59,6 @@ The following are not implemented yet:
+@@ -47,7 +46,8 @@ The core remote-desktop path is implemented and usable:
+ - keyboard-layout discovery through XKB environment variables or
+   `systemd-localed` configuration;
+ - TLS transport with an automatically generated self-signed certificate;
+-- username and password validation;
++- username and password validation, from either a plaintext secret or a salted
++  scrypt hash;
+ - desktop audio sent to the RDP client;
+ - client microphone exposed as a PipeWire source;
+ - sequential reconnects, with one active client at a time;
+@@ -60,7 +60,6 @@ The following are not implemented yet:
  - concurrent clients;
  - desktop scaling or a client-selected resolution;
  - per-window capture;
@@ -63,7 +76,7 @@ index 3f7f5d7..28027b4 100644
  - an automated test suite.
  
  The first `wl_output` announced by the compositor is served at its native
-@@ -105,6 +103,19 @@ RDP set-1 keyboard scancodes are translated to Linux evdev key codes. Extended
+@@ -105,6 +104,19 @@ RDP set-1 keyboard scancodes are translated to Linux evdev key codes. Extended
  keys are mapped explicitly, and modifier state is sent separately because the
  virtual-keyboard protocol does not derive it automatically.
  
@@ -83,7 +96,15 @@ index 3f7f5d7..28027b4 100644
  ## Protocols and libraries
  
  | Purpose | Interface or library | Role |
-@@ -174,6 +185,25 @@ Linux:
+@@ -157,6 +169,7 @@ freerdp3
+ freerdp-server3
+ winpr3
+ libpipewire-0.3
++libcrypto
+ ```
+ 
+ It also needs the staging XML files from `wayland-protocols`, the unstable XML
+@@ -174,6 +187,25 @@ Linux:
  On another distribution, install equivalent development packages and adjust
  `STAGING` and `WLR` in the Makefile if those files live elsewhere.
  
@@ -109,7 +130,51 @@ index 3f7f5d7..28027b4 100644
  ## Building on Arch Linux
  
  Install the toolchain and dependencies:
-@@ -330,6 +360,23 @@ one long-lived compositor.
+@@ -247,7 +279,9 @@ port = 3389
+ bind = 127.0.0.1
+ 
+ username = danilo
+-password = replace-this-with-a-strong-password
++
++# Printed by: wayrdp --hash-password
++password_hash = scrypt$ln=15,r=8,p=1$c2FsdA==$a2V5
+ ```
+ 
+ | Key | Required | Default | Description |
+@@ -255,11 +289,29 @@ password = replace-this-with-a-strong-password
+ | `port` | No | `3389` | TCP port from 1 through 65535 |
+ | `bind` | No | `0.0.0.0` | Address passed to the FreeRDP listener |
+ | `username` | Yes | None | RDP login name |
+-| `password` | Yes | None | RDP password, stored as plain text in this file |
++| `password_hash` | Yes* | None | Salted scrypt hash, as printed by `wayrdp --hash-password` |
++| `password` | Yes* | None | Plaintext password, kept for compatibility; ignored when a hash is present |
+ 
+ Blank lines, surrounding whitespace and comments beginning with `#` are
+-accepted. Unknown keys are ignored. The server refuses to listen unless both a
+-username and a non-empty password are configured.
++accepted. Unknown keys are ignored. The server refuses to listen unless a
++username and either a non-empty `password` or a valid `password_hash` are
++configured.
++
++### Hashing the password
++
++The server only has to verify a password, never recover it, so it needs a hash,
++not the secret itself. Generate one from a terminal:
++
++```bash
++wayrdp --hash-password
++```
++
++It reads the password without echo and prints a self-describing scrypt string to
++put after `password_hash =`. (It also accepts the password on standard input, so
++a panel can pipe it instead of prompting.) Every run uses a fresh random salt,
++so hashing the same password twice yields different values. A leaked
++configuration file then yields no usable secret, and there is no key to protect
++the way reversible encryption would need.
+ 
+ ## Checking compatibility
+ 
+@@ -330,6 +382,23 @@ one long-lived compositor.
  Stop the server with `Ctrl+C`, `SIGINT` or `SIGTERM`. After a client disconnects,
  the listener remains available for the next client.
  
@@ -133,8 +198,28 @@ index 3f7f5d7..28027b4 100644
  Connect with an RDP client to the host and configured port, supply the configured
  username and password, and verify the self-signed certificate fingerprint on
  the first connection. The client window is resized to the selected output's
+@@ -415,8 +484,9 @@ before deployment:
+ - The private key is set to mode `0600`. Clients must validate and remember the
+   certificate fingerprint themselves.
+ - The configured password is compared without returning at the first mismatched
+-  byte, but it is stored in plain text. Protect the configuration file with mode
+-  `0600` and protect the user account that owns it.
++  byte. Prefer `password_hash`, a salted scrypt value, so the file holds no
++  recoverable secret; a plaintext `password` is still accepted for compatibility
++  and should be protected with mode `0600`.
+ - There is no brute-force throttling, account lockout, external identity provider
+   or security audit.
+ 
+@@ -432,6 +502,7 @@ Do not expose the server directly to the public internet in its current form.
+ └── src/
+     ├── main.c       Process lifecycle, readiness check and signal handling
+     ├── config.c     Config parsing, validation and TLS certificate creation
++    ├── password.c   Salted scrypt hashing and verification
+     ├── wayland.c    Output capture, shared memory and virtual input
+     ├── rdp.c        FreeRDP listener, authentication, RemoteFX and channels
+     ├── audio.c      PipeWire streams and synchronized ring buffers
 diff --git a/src/config.c b/src/config.c
-index 1b89d53..c0904db 100644
+index 1b89d53..3b07c6b 100644
 --- a/src/config.c
 +++ b/src/config.c
 @@ -31,7 +31,7 @@ bool wr_config_load(struct wr_config *cfg, const char **error) {
@@ -146,7 +231,32 @@ index 1b89d53..c0904db 100644
      state_dir(dir, sizeof(dir));
      snprintf(cfg->cert_path, sizeof(cfg->cert_path), "%s/tls.crt", dir);
      snprintf(cfg->key_path, sizeof(cfg->key_path), "%s/tls.key", dir);
-@@ -109,7 +109,7 @@ static bool file_exists(const char *path) {
+@@ -77,6 +77,8 @@ bool wr_config_load(struct wr_config *cfg, const char **error) {
+             snprintf(cfg->username, sizeof(cfg->username), "%s", value);
+         else if (!strcmp(key, "password"))
+             snprintf(cfg->password, sizeof(cfg->password), "%s", value);
++        else if (!strcmp(key, "password_hash"))
++            snprintf(cfg->password_hash, sizeof(cfg->password_hash), "%s", value);
+         else if (!strcmp(key, "bind"))
+             snprintf(cfg->bind_address, sizeof(cfg->bind_address), "%s", value);
+     }
+@@ -94,7 +96,14 @@ bool wr_config_usable(const struct wr_config *cfg, const char **why) {
+         return false;
+     }
+     // A server anyone can walk into is worse than one that will not start.
+-    if (!cfg->password[0]) {
++    // Either the secret or a hash of it satisfies the requirement; a malformed
++    // hash is treated as no credential so a typo cannot silently open the port.
++    if (cfg->password_hash[0]) {
++        if (!wr_password_is_hash(cfg->password_hash)) {
++            *why = "password_hash is not a supported scrypt value";
++            return false;
++        }
++    } else if (!cfg->password[0]) {
+         *why = "no password set";
+         return false;
+     }
+@@ -109,7 +118,7 @@ static bool file_exists(const char *path) {
  bool wr_config_ensure_certificate(struct wr_config *cfg, const char **error) {
      if (file_exists(cfg->cert_path) && file_exists(cfg->key_path)) return true;
  
@@ -155,21 +265,140 @@ index 1b89d53..c0904db 100644
      state_dir(dir, sizeof(dir));
      if (mkdir(dir, 0700) != 0 && errno != EEXIST) {
          *error = "could not create ~/.local/share/wayrdp";
+diff --git a/src/config.h b/src/config.h
+index 5767bda..b056300 100644
+--- a/src/config.h
++++ b/src/config.h
+@@ -1,16 +1,21 @@
+-// config.h — port, username and password, as the panel writes them.
++// config.h — port, username and credential, as the panel writes them.
+ 
+ #ifndef WAYRDP_CONFIG_H
+ #define WAYRDP_CONFIG_H
+ 
+ #include <stdbool.h>
+ 
++#include "password.h"
++
+ #define WR_MAX_FIELD 128
+ 
+ struct wr_config {
+     int port;
+     char username[WR_MAX_FIELD];
++    // The panel may write either the secret itself, or (preferred) a scrypt
++    // hash of it. The hash wins when both are present.
+     char password[WR_MAX_FIELD];
++    char password_hash[WR_PASSWORD_ENCODED_MAX];
+     char bind_address[WR_MAX_FIELD];
+ 
+     char cert_path[512];
 diff --git a/src/main.c b/src/main.c
-index 00a884a..5a2f81e 100644
+index 00a884a..3025767 100644
 --- a/src/main.c
 +++ b/src/main.c
-@@ -19,8 +19,7 @@ static void usage(const char *argv0) {
-     printf("usage: %s [--check]\n"
+@@ -5,9 +5,14 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <termios.h>
++#include <unistd.h>
++
++#include <openssl/crypto.h>
+ 
+ #include "audio.h"
+ #include "config.h"
++#include "password.h"
+ #include "rdp.h"
+ #include "wayland.h"
+ 
+@@ -16,26 +21,81 @@ static volatile bool running = true;
+ static void on_signal(int sig) { (void)sig; running = false; }
+ 
+ static void usage(const char *argv0) {
+-    printf("usage: %s [--check]\n"
++    printf("usage: %s [--check] [--hash-password]\n"
             "\n"
             "Serves the Wayland session it is started in over RDP. Port, username\n"
 -           "and password come from ~/.config/wayrdp/wayrdp.conf, which the wfkit\n"
 -           "panel writes.\n"
-+           "and password come from ~/.config/wayrdp/wayrdp.conf.\n"
++           "and credential come from ~/.config/wayrdp/wayrdp.conf.\n"
             "\n"
-            "  --check   report whether this compositor and this configuration can\n"
-            "            serve, and exit without listening\n", argv0);
-@@ -74,8 +73,8 @@ int main(int argc, char **argv) {
+-           "  --check   report whether this compositor and this configuration can\n"
+-           "            serve, and exit without listening\n", argv0);
++           "  --check           report whether this compositor and this configuration\n"
++           "                    can serve, and exit without listening\n"
++           "  --hash-password   read a password from stdin and print the value to\n"
++           "                    store as password_hash in the configuration\n", argv0);
++}
++
++// Reads one line of secret, without echo on a terminal, so it can also be piped
++// from the panel.
++static bool read_password(char *out, size_t capacity) {
++    bool tty = isatty(STDIN_FILENO) == 1;
++    struct termios saved;
++    if (tty) {
++        if (tcgetattr(STDIN_FILENO, &saved) != 0) return false;
++        struct termios hidden = saved;
++        hidden.c_lflag &= ~(tcflag_t)ECHO;
++        if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &hidden) != 0) return false;
++        fprintf(stderr, "Password: ");
++        fflush(stderr);
++    }
++
++    bool read = fgets(out, (int)capacity, stdin) != NULL;
++
++    if (tty) {
++        tcsetattr(STDIN_FILENO, TCSAFLUSH, &saved);
++        fprintf(stderr, "\n");
++    }
++    if (!read) return false;
++
++    size_t n = strlen(out);
++    while (n && (out[n - 1] == '\n' || out[n - 1] == '\r')) out[--n] = 0;
++    return n > 0;
++}
++
++static int hash_password(void) {
++    char password[WR_MAX_FIELD];
++    char encoded[WR_PASSWORD_ENCODED_MAX];
++    if (!read_password(password, sizeof(password))) {
++        fprintf(stderr, "wayrdp: could not read a password\n");
++        return 1;
++    }
++    bool ok = wr_password_hash(password, encoded, sizeof(encoded));
++    OPENSSL_cleanse(password, sizeof(password));
++    if (!ok) {
++        fprintf(stderr, "wayrdp: could not hash the password\n");
++        return 1;
++    }
++    printf("%s\n", encoded);
++    return 0;
+ }
+ 
+ int main(int argc, char **argv) {
+     setvbuf(stdout, NULL, _IOLBF, 0);
+     bool check_only = false;
++    bool hash_only = false;
+ 
+     for (int i = 1; i < argc; i++) {
+         if (!strcmp(argv[i], "--check")) check_only = true;
++        else if (!strcmp(argv[i], "--hash-password")) hash_only = true;
+         else if (!strcmp(argv[i], "-h") || !strcmp(argv[i], "--help")) { usage(argv[0]); return 0; }
+         else { fprintf(stderr, "wayrdp: unknown argument '%s'\n", argv[i]); return 1; }
+     }
+ 
++    if (hash_only) {
++        if (check_only) {
++            fprintf(stderr, "wayrdp: --check and --hash-password are mutually exclusive\n");
++            return 1;
++        }
++        return hash_password();
++    }
++
+     const char *error = NULL;
+ 
+     struct wr_config config;
+@@ -74,8 +134,8 @@ int main(int argc, char **argv) {
      // Refusing to start is the right answer to a half-filled form: a desktop
      // listening with no password is worse than one that is not listening.
      if (!usable) {
@@ -180,11 +409,237 @@ index 00a884a..5a2f81e 100644
          wr_audio_close(audio);
          wr_close(wayland);
          return 1;
+diff --git a/src/password.c b/src/password.c
+new file mode 100644
+index 0000000..7369131
+--- /dev/null
++++ b/src/password.c
+@@ -0,0 +1,156 @@
++// password.c — scrypt hashing for the configured RDP password.
++//
++// The server only ever has to *check* a password, never recover it, so the
++// config stores a salted scrypt hash instead of the password itself. A leaked
++// file then yields no usable secret, and there is no key to protect — which is
++// what makes hashing a better fit here than reversible encryption.
++
++#define _GNU_SOURCE
++#include <stdint.h>
++#include <stdio.h>
++#include <string.h>
++
++#include <openssl/crypto.h>
++#include <openssl/evp.h>
++#include <openssl/rand.h>
++
++#include "password.h"
++
++// N = 2^15 with r = 8 is 32 MiB of work, one thread: expensive enough to make
++// guessing slow, cheap enough to pay once per connection.
++#define WR_SCRYPT_LN 15
++#define WR_SCRYPT_R 8
++#define WR_SCRYPT_P 1
++#define WR_SCRYPT_KEY 32
++#define WR_SCRYPT_SALT 16
++#define WR_SCRYPT_MAXMEM (64u * 1024u * 1024u)
++#define WR_SCRYPT_SCHEME "scrypt"
++
++static const char b64_alphabet[] =
++    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
++
++// Encoded length of `len` bytes, including '=' padding.
++static size_t b64_length(size_t len) {
++    return 4 * ((len + 2) / 3);
++}
++
++static void b64_encode(const unsigned char *in, size_t len, char *out) {
++    size_t o = 0;
++    for (size_t i = 0; i < len; i += 3) {
++        unsigned int v = (unsigned int)in[i] << 16;
++        if (i + 1 < len) v |= (unsigned int)in[i + 1] << 8;
++        if (i + 2 < len) v |= (unsigned int)in[i + 2];
++        out[o++] = b64_alphabet[(v >> 18) & 0x3F];
++        out[o++] = b64_alphabet[(v >> 12) & 0x3F];
++        out[o++] = (i + 1 < len) ? b64_alphabet[(v >> 6) & 0x3F] : '=';
++        out[o++] = (i + 2 < len) ? b64_alphabet[v & 0x3F] : '=';
++    }
++    out[o] = 0;
++}
++
++static int b64_value(char c) {
++    if (c >= 'A' && c <= 'Z') return c - 'A';
++    if (c >= 'a' && c <= 'z') return c - 'a' + 26;
++    if (c >= '0' && c <= '9') return c - '0' + 52;
++    if (c == '+') return 62;
++    if (c == '/') return 63;
++    return -1;
++}
++
++// Decodes exactly `expected` bytes; any other length or a stray character fails.
++static bool b64_decode(const char *in, unsigned char *out, size_t expected) {
++    size_t len = strlen(in);
++    if (len != b64_length(expected)) return false;
++
++    size_t produced = 0;
++    for (size_t i = 0; i < len; i += 4) {
++        int a = b64_value(in[i]);
++        int b = b64_value(in[i + 1]);
++        int c = in[i + 2] == '=' ? -2 : b64_value(in[i + 2]);
++        int d = in[i + 3] == '=' ? -2 : b64_value(in[i + 3]);
++        if (a < 0 || b < 0 || c == -1 || d == -1) return false;
++        if (c == -2 && d != -2) return false;   // '=' only terminates the tail
++
++        unsigned int v = ((unsigned int)a << 18) | ((unsigned int)b << 12);
++        if (c >= 0) v |= (unsigned int)c << 6;
++        if (d >= 0) v |= (unsigned int)d;
++
++        out[produced++] = (v >> 16) & 0xFF;
++        if (produced < expected) out[produced++] = (v >> 8) & 0xFF;
++        if (produced < expected) out[produced++] = v & 0xFF;
++    }
++    return produced == expected;
++}
++
++static bool derive(const char *password, size_t password_len,
++                   const unsigned char *salt, size_t salt_len,
++                   unsigned int ln, unsigned int r, unsigned int p,
++                   unsigned char *key, size_t key_len) {
++    // Reject anything but this build's parameters: a tampered config should not
++    // be able to ask for an unbounded work factor, or a shift past the type.
++    if (ln != WR_SCRYPT_LN || r != WR_SCRYPT_R || p != WR_SCRYPT_P) return false;
++    if (salt_len != WR_SCRYPT_SALT || key_len != WR_SCRYPT_KEY) return false;
++    return EVP_PBE_scrypt(password, password_len, salt, salt_len,
++                          (uint64_t)1 << ln, r, p, WR_SCRYPT_MAXMEM,
++                          key, key_len) == 1;
++}
++
++bool wr_password_hash(const char *password, char *out, size_t capacity) {
++    if (!password || !out) return false;
++
++    unsigned char salt[WR_SCRYPT_SALT];
++    unsigned char key[WR_SCRYPT_KEY];
++    if (RAND_bytes(salt, sizeof(salt)) != 1) return false;
++    if (!derive(password, strlen(password), salt, sizeof(salt),
++                WR_SCRYPT_LN, WR_SCRYPT_R, WR_SCRYPT_P, key, sizeof(key))) {
++        OPENSSL_cleanse(key, sizeof(key));
++        return false;
++    }
++
++    char salt_b64[b64_length(WR_SCRYPT_SALT) + 1];
++    char key_b64[b64_length(WR_SCRYPT_KEY) + 1];
++    b64_encode(salt, sizeof(salt), salt_b64);
++    b64_encode(key, sizeof(key), key_b64);
++
++    int written = snprintf(out, capacity, "%s$ln=%d,r=%d,p=%d$%s$%s",
++                           WR_SCRYPT_SCHEME, WR_SCRYPT_LN, WR_SCRYPT_R, WR_SCRYPT_P,
++                           salt_b64, key_b64);
++    OPENSSL_cleanse(key, sizeof(key));
++    return written > 0 && (size_t)written < capacity;
++}
++
++bool wr_password_is_hash(const char *encoded) {
++    return encoded && strncmp(encoded, WR_SCRYPT_SCHEME "$", strlen(WR_SCRYPT_SCHEME) + 1) == 0;
++}
++
++bool wr_password_verify(const char *given, size_t given_len, const char *encoded) {
++    if (!given || !encoded || strlen(encoded) >= WR_PASSWORD_ENCODED_MAX) return false;
++
++    // Parse a private copy: the tokenizer writes terminators.
++    char copy[WR_PASSWORD_ENCODED_MAX];
++    snprintf(copy, sizeof(copy), "%s", encoded);
++
++    char *save = NULL;
++    char *scheme = strtok_r(copy, "$", &save);
++    char *params = strtok_r(NULL, "$", &save);
++    char *salt_b64 = strtok_r(NULL, "$", &save);
++    char *key_b64 = strtok_r(NULL, "$", &save);
++    bool trailing = strtok_r(NULL, "$", &save) != NULL;
++    if (!scheme || !params || !salt_b64 || !key_b64 || trailing) return false;
++    if (strcmp(scheme, WR_SCRYPT_SCHEME) != 0) return false;
++
++    unsigned int ln = 0, r = 0, p = 0;
++    if (sscanf(params, "ln=%u,r=%u,p=%u", &ln, &r, &p) != 3) return false;
++
++    unsigned char salt[WR_SCRYPT_SALT];
++    unsigned char expected[WR_SCRYPT_KEY];
++    if (!b64_decode(salt_b64, salt, sizeof(salt))) return false;
++    if (!b64_decode(key_b64, expected, sizeof(expected))) return false;
++
++    unsigned char derived[WR_SCRYPT_KEY];
++    bool ok = derive(given, given_len, salt, sizeof(salt), ln, r, p,
++                     derived, sizeof(derived)) &&
++              CRYPTO_memcmp(derived, expected, sizeof(expected)) == 0;
++    OPENSSL_cleanse(derived, sizeof(derived));
++    return ok;
++}
+diff --git a/src/password.h b/src/password.h
+new file mode 100644
+index 0000000..b0f00c5
+--- /dev/null
++++ b/src/password.h
+@@ -0,0 +1,25 @@
++// password.h — salted scrypt credentials, so the config never holds the secret.
++
++#ifndef WAYRDP_PASSWORD_H
++#define WAYRDP_PASSWORD_H
++
++#include <stdbool.h>
++#include <stddef.h>
++
++// Longest encoded hash this build writes or accepts.
++#define WR_PASSWORD_ENCODED_MAX 256
++
++// Derives a fresh scrypt hash of `password`, encoded as
++// "scrypt$ln=..,r=..,p=..$<salt>$<key>" into `out`. False when the platform
++// RNG or the KDF fails, which callers must treat as "no credential written".
++bool wr_password_hash(const char *password, char *out, size_t capacity);
++
++// True when `encoded` carries this build's scrypt scheme, so a config error can
++// be reported instead of silently refusing every login.
++bool wr_password_is_hash(const char *encoded);
++
++// Verifies a client-supplied password against an encoded hash. The given length
++// is explicit because the RDP identity string carries no terminator.
++bool wr_password_verify(const char *given, size_t given_len, const char *encoded);
++
++#endif
 diff --git a/src/rdp.c b/src/rdp.c
-index 6604691..d2d08c6 100644
+index 6604691..6073f72 100644
 --- a/src/rdp.c
 +++ b/src/rdp.c
-@@ -224,20 +224,61 @@ static BOOL peer_logon(freerdp_peer *peer, const SEC_WINNT_AUTH_IDENTITY *identi
+@@ -38,6 +38,7 @@
+ #include <winpr/wtsapi.h>
+ 
+ #include "audio.h"
++#include "password.h"
+ #include "rdp.h"
+ 
+ struct wr_server {
+@@ -183,6 +184,15 @@ static bool equal_secret(const char *given, UINT32 given_len, const char *expect
+     return diff == 0;
+ }
+ 
++// A configured hash wins over a stored secret, so a config that carries both
++// migrates on its own and a plaintext one keeps working until it is rewritten.
++static bool password_matches(const struct wr_config *config,
++                             const char *given, size_t given_len) {
++    if (config->password_hash[0])
++        return wr_password_verify(given, given_len, config->password_hash);
++    return equal_secret(given, (UINT32)given_len, config->password);
++}
++
+ // Fires once the tunnel is up. With NLA the identity is filled in and this is
+ // the check; with a plain TLS tunnel -- which is what this server offers --
+ // it fires *before* the client has sent anything, and the identity is empty.
+@@ -207,7 +217,7 @@ static BOOL peer_logon(freerdp_peer *peer, const SEC_WINNT_AUTH_IDENTITY *identi
+     }
+ 
+     bool ok = equal_secret(user, user_len, s->config.username) &&
+-              equal_secret(password, password_len, s->config.password);
++              password_matches(&s->config, password, password_len);
+ 
+     fprintf(stderr, "wayrdp: %s for '%.*s' from %s\n",
+             ok ? "login accepted" : "login refused",
+@@ -224,20 +234,61 @@ static BOOL peer_logon(freerdp_peer *peer, const SEC_WINNT_AUTH_IDENTITY *identi
  // The compositor hands over BG24 and RemoteFX wants BGRX32, so the conversion
  // has to happen somewhere. Doing it per damaged rectangle rather than per frame
  // is what keeps a blinking cursor from costing a full-screen repack.
@@ -256,7 +711,7 @@ index 6604691..d2d08c6 100644
          }
      }
  }
-@@ -268,12 +309,17 @@ static bool send_frame(struct wr_server *s, const struct wr_frame *f, bool full)
+@@ -268,12 +319,17 @@ static bool send_frame(struct wr_server *s, const struct wr_frame *f, bool full)
          s->mirror_width = f->width;
          s->mirror_height = f->height;
          full = true;    // a resized mirror holds nothing the client has seen
@@ -275,7 +730,16 @@ index 6604691..d2d08c6 100644
          mirror_rect(s, f, 0, 0, (int32_t)f->width, (int32_t)f->height);
          rects[count++] = (RFX_RECT){ 0, 0, (UINT16)f->width, (UINT16)f->height };
      } else {
-@@ -699,7 +745,7 @@ static BOOL peer_activate(freerdp_peer *peer) {
+@@ -665,7 +721,7 @@ static BOOL peer_post_connect(freerdp_peer *peer) {
+ 
+         bool ok = user && password &&
+                   equal_secret(user, (UINT32)strlen(user), s->config.username) &&
+-                  equal_secret(password, (UINT32)strlen(password), s->config.password);
++                  password_matches(&s->config, password, strlen(password));
+ 
+         fprintf(stderr, "wayrdp: %s for '%s' from %s\n",
+                 ok ? "login accepted" : "login refused",
+@@ -699,7 +755,7 @@ static BOOL peer_activate(freerdp_peer *peer) {
  
      uint32_t width = wr_width(s->wayland), height = wr_height(s->wayland);
      if (!s->rfx) {
@@ -284,7 +748,7 @@ index 6604691..d2d08c6 100644
          s->stream = Stream_New(NULL, 4 * 1024 * 1024);
          if (!s->rfx || !s->stream) {
              fprintf(stderr, "wayrdp: could not create the RemoteFX encoder\n");
-@@ -915,7 +961,11 @@ bool wr_server_run(struct wr_server *s, const volatile bool *running) {
+@@ -915,7 +971,11 @@ bool wr_server_run(struct wr_server *s, const volatile bool *running) {
                            s->vcm, s->peer_activated))
              drop_peer(s);
  
@@ -297,7 +761,7 @@ index 6604691..d2d08c6 100644
  
          if (s->peer_activated) {
              open_microphone(s);
-@@ -925,6 +975,8 @@ bool wr_server_run(struct wr_server *s, const volatile bool *running) {
+@@ -925,6 +985,8 @@ bool wr_server_run(struct wr_server *s, const volatile bool *running) {
              const struct wr_frame *f = wr_capture_frame(s->wayland, 16);
              if (f && !send_frame(s, f, false))
                  drop_peer(s);
