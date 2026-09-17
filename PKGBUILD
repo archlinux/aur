@@ -9,6 +9,7 @@
   depends=('glibc' 'zlib' 'fontconfig' 'freetype2' 'libx11' 'libxcb' 'libxkbcommon' 'libice' 'libsm'
            'mpv' 'libraw')
   optdepends=('libheif: HEIC/HEIF/AVIF-Dateien lesen'
+              'libjxl: JPEG-XL-Dateien lesen und schreiben'
               'dnglab: RAW-Dateien in DNG umwandeln')
   provides=('ferrumpix')
   conflicts=('ferrumpix')
