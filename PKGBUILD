@@ -1,6 +1,6 @@
 # Maintainer: James H <james@jamesmcmahon.co.uk>
 pkgname=linear-electron-appimage
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Unofficial Linear desktop app (linear-electron-appimage)'
 arch=('x86_64' 'aarch64')
@@ -10,13 +10,13 @@ provides=("linear-electron=$pkgver")
 conflicts=(linear-electron linear-electron-git linear-electron-bin )
 options=('!strip' '!debug')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'libxrandr' 'libxkbcommon' 'libdrm' 'mesa' 'libnotify' 'xdg-utils' 'fuse3')
-source_x86_64=(https://github.com/hughesjs/linear-electron/releases/download/v0.1.1/linear-electron-x86_64-v0.1.1.AppImage)
-sha256sums_x86_64=(c637fbe288d84290907e5b44bb95ad9a9adb36334caed32dcdcc38c3abb58734)
-source_aarch64=(https://github.com/hughesjs/linear-electron/releases/download/v0.1.1/linear-electron-aarch64-v0.1.1.AppImage)
-sha256sums_aarch64=(700a0bf053e4f2250dfb099ee9979870b9933a58fde69e271e6674958bac9183)
-source=(https://github.com/hughesjs/linear-electron/releases/download/v0.1.1/linear-electron-0.1.1.tar.gz)
-sha256sums=(b2ee385ba00b291a043d4d329e50a59393ed64fecf0f9785cc786c4fd94b9482)
-noextract=('linear-electron-x86_64-v0.1.1.AppImage' 'linear-electron-aarch64-v0.1.1.AppImage')
+source_x86_64=(https://github.com/hughesjs/linear-electron/releases/download/v0.2.0/linear-electron-x86_64-v0.2.0.AppImage)
+sha256sums_x86_64=(45583685965d97560dd7c77b1ebc05eafd7e43ec25c981a2a07215fa51dab411)
+source_aarch64=(https://github.com/hughesjs/linear-electron/releases/download/v0.2.0/linear-electron-aarch64-v0.2.0.AppImage)
+sha256sums_aarch64=(c3fe41708807662055f605fd470eef61a7ef82dbaf205073a81c1615aea69c4c)
+source=(https://github.com/hughesjs/linear-electron/releases/download/v0.2.0/linear-electron-0.2.0.tar.gz)
+sha256sums=(dc28326fbe74aa99f873d7b7feb2ac2a6cf8e64976bcefa4c1d647df730716f9)
+noextract=('linear-electron-x86_64-v0.2.0.AppImage' 'linear-electron-aarch64-v0.2.0.AppImage')
 
 package() {
   install -Dm755 "linear-electron-$CARCH-v$pkgver.AppImage" "$pkgdir/opt/linear-electron/linear-electron.AppImage"
