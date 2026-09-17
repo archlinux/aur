@@ -2,8 +2,8 @@
 
 pkgname=python-elm327-emulator
 _name=${pkgname#python-}
-pkgver=3.0.5
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 epoch=
 pkgdesc="ELM327 Emulator for testing software interfacing OBDII via ELM327 adapter."
 arch=('any')
@@ -30,7 +30,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
 noextract=()
-sha256sums=('d15b01921b19dfd621ea6fe850ff89065545e3b237adf5ef6c1cedd979f03056')
+sha256sums=('3ca4ce404d9b6e013814f1df7fb113b7bb50b8cfa6b40edd3c082b1d6cf77c9f')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
