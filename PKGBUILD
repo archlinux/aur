@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=stayorganised
 appname=stayorganised
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Calendar-first personal agenda manager designed to replace Google Calendar, Outlook etc"
 arch=('x86_64')
