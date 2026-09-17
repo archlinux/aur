@@ -1,6 +1,6 @@
 # Maintainer: Paul Woisard <paulwoisard@gmail.com>
 pkgname=pdf-equilibrist
-pkgver=0.1.20
+pkgver=0.1.21
 pkgrel=1
 pkgdesc="Éditeur PDF de bureau, gratuit et open-source, construit avec PyQt6 et PyMuPDF"
 arch=('any')
@@ -42,7 +42,7 @@ source=(
   "io.github.BitScripts.PDFEquilibrist-256.png"
 )
 sha256sums=(
-  'ddd9b6431c9ba4bdf3bfb145a1d97b9e273fc79365c5c4e1535f038c95be1c36'
+  '6b03cdf0a4a2749088bed6e1ac7ac1b11ee337db0b2c8c9ff2f79ebf6d0b33c6'
   '51e985d95bae29ed2c6fb94029f7d790d9edc8d6dfe20a6385e275670cb8c383'
   'c35f51471c5dc7b607724da79828f039b9a6649f12e1faae10053f5513e33002'
   '91debebf1a5663c6b52cb1ad101c023d6ce751d3773476448808ad50c63fc440'
