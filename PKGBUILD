@@ -2,7 +2,7 @@
 # Contributor: Doridian <archlinux@doridian.net>
 
 pkgname=rshim-git
-pkgver=2.8.2.r10.ga66ae2f
+pkgver=2.8.2.r13.g6bbe1f5
 pkgrel=1
 pkgdesc="User-space RSHIM driver for Mellanox BlueField SoC"
 arch=('x86_64' 'aarch64')
@@ -13,15 +13,8 @@ makedepends=('git')
 provides=('rshim')
 conflicts=('rshim')
 backup=('etc/rshim.conf')
-source=(
-  "git+https://github.com/Mellanox/rshim-user-space.git"
-  # Drop when https://github.com/Mellanox/rshim-user-space/pull/363 gets merged
-  "fix-console-handling.patch::https://github.com/Mellanox/rshim-user-space/commit/28f4fb2781058fdc271986e91e0996fcce3aaaef.patch"
-)
-sha256sums=(
-  'SKIP'
-  '189588932529e550f09934c7f4908b08f302ff180186488cd9aa092f727f0716'
-)
+source=("git+https://github.com/Mellanox/rshim-user-space.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd rshim-user-space
@@ -30,7 +23,6 @@ pkgver() {
 
 prepare() {
   cd rshim-user-space
-  patch -Np1 -i "$srcdir/fix-console-handling.patch"
   ./bootstrap.sh
 }
 
