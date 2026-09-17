@@ -14,7 +14,7 @@ depends=(
 )
 
 source=(
-    "$pkgname::https://raw.githubusercontent.com/Raj-1727/badapple-hd/main/badapple-hd"
+    "badapple-hd"
     "badapple.mp4::https://raw.githubusercontent.com/Raj-1727/badapple-hd/main/badapple.mp4"
 )
 
@@ -24,9 +24,9 @@ sha256sums=(
 )
 
 package() {
-    install -Dm755 "$srcdir/$pkgname" \
-        "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/badapple-hd" \
+        "$pkgdir/usr/bin/badapple-hd"
 
     install -Dm644 "$srcdir/badapple.mp4" \
-        "$pkgdir/usr/share/badapple-hd/badapple.mp4"
+        "$pkgdir/usr/share/badapple-hd/badapple-hd/badapple.mp4"
 }
