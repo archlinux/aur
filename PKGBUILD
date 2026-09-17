@@ -20,11 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=41fb7de3adb7f33223ae5b24b969a93efa29a9aa} # daily-1070
+: ${_runtime_commit:=04556dbea6f1c761b36dfe7f973b8c538aebacfd} # daily-1094
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.17.2
+pkgver=12.18.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -122,7 +122,7 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  'fc45b232fa2a8f532f48478380dc7e41f473ec2770e9d73cb7c3a113da345cfa'
+  '4d39b6782c67ce689c074601b8fc179352c2f5513ee1d428b0249a484452cd1f'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
@@ -133,6 +133,32 @@ _deno() {
   pushd "$srcdir/$_pkgsrc_runtime/noraneko" > /dev/null || return
   deno "$@"
   popd > /dev/null || return
+}
+
+_calc_parallel_jobs() {
+  local _build_limit_cores="$1"
+  local _mem _mb _cores _threads _jobs
+  _mem=$(grep -Pom1 '^MemAvailable:\s*\K[0-9]+' /proc/meminfo)
+  _mb=$((_mem / (1024 * 1024)))
+  _cores=$(lscpu | grep -Pom1 'per socket:\s*\K[0-9]+')
+  _threads=$(nproc)
+  _jobs="mach"
+
+  if [[ "${_build_limit_cores}" =~ ^[at] ]]; then
+    # calculate core availability based on free RAM and CPU count
+    _jobs=$((_mb < _cores ? _mb : _cores - 1))
+    _jobs=$((_jobs < 1 ? 1 : _jobs))
+  elif [[ "${_build_limit_cores}" =~ ^[0-9]+$ ]]; then
+    # user-specified, capped by thread count
+    if ((${_build_limit_cores:-0} > 0)); then
+      _jobs=$((_build_limit_cores > _threads ? _threads : _build_limit_cores))
+      _jobs=$((_jobs < 1 ? 1 : _jobs))
+    fi
+  fi
+
+  >&2 printf '\n:: Free RAM: %-5s Cores: %-5s Threads: %-5s Jobs: %-5s\n\n' "$_mb" "$_cores" "$_threads" "$_jobs"
+
+  echo "${_jobs:-mach}"
 }
 
 prepare() (
@@ -247,24 +273,7 @@ END
   fi
 
   # build parallelism
-  local _mem _threads _cores _jobs
-  _mem=$(grep -Pom1 '^MemAvailable:\s*\K[0-9]+' /proc/meminfo)
-  _cores=$(lscpu | grep -Pom1 'per socket:\s*\K[0-9]+')
-  _threads=$(nproc)
-  _jobs="auto"
-
-  if [[ "${_build_limit_cores}" =~ ^[at] ]]; then
-    # calculate core availability based on free RAM and CPU count
-    _jobs=$((_mem / (1024 * 1024) < _cores ? _mem / (1024 * 1024) : _cores - 1))
-    _jobs=$((_jobs < 1 ? 1 : _jobs))
-  elif ((${_build_limit_cores:-0} > 0)); then
-    # user-specified, capped by CPU count
-    _jobs=$((_build_limit_cores > _threads ? _threads : _build_limit_cores))
-    _jobs=$((_jobs < 1 ? 1 : _jobs))
-  fi
-
-  printf '\n:: Free RAM: %-5s Cores: %-5s Threads: %-5s Jobs: %-5s\n\n' "$((_mem / (1024 * 1024)))" "$_cores" "$_threads" "$_jobs"
-
+  local _jobs=$(_calc_parallel_jobs "$_build_limit_cores")
   if [[ "$_jobs" =~ ^[0-9]+$ ]]; then
     cat >> mozconfig << END
 mk_add_options MOZ_PARALLEL_BUILD=${_jobs}
