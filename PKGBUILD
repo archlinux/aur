@@ -2,7 +2,7 @@
 # Maintainer: coolapso <coolapso@coolapso.tech>
 
 pkgname='tfimport-bin'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='The auto-pilot for tfimports'
 url='https://tfimport.cooolapso.sh'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('tfimport')
 conflicts=('tfimport')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/tfimport/releases/download/v0.4.0/tfimport_0.4.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('4b04b526a4171c7b9cadf6e82599a7be9a836665d3df2d8170a14c6ce9f35b9e')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/tfimport/releases/download/v0.5.0/tfimport_0.5.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('e583ba80b7236d1d992b22b15eb370e9b959280b54f54669386b1a0d8460f08b')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/tfimport/releases/download/v0.4.0/tfimport_0.4.0_linux_386.tar.gz")
-sha256sums_i686=('6182dc4094eba16721509667f142fe0fb0b4b914f0eba4280170d0b246ccb51d')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/tfimport/releases/download/v0.5.0/tfimport_0.5.0_linux_386.tar.gz")
+sha256sums_i686=('2f3ba39d278e4e8c9a2aba6a18bc6fe72b5d68ebd10be4dd16fbe6b1680e391f')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/tfimport/releases/download/v0.4.0/tfimport_0.4.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('df517d721abe357a18da32f7cf653a6b67b51bd9de0f9b6657de7145a93336d7')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/tfimport/releases/download/v0.5.0/tfimport_0.5.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('6090dea582f9d5a0ed4c903c1e649503242847c831f058e727651d0729119b9c')
 
 package() {
   install -Dm755 "./tfimport" "${pkgdir}/usr/bin/tfimport"
