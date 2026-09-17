@@ -1,0 +1,28 @@
+[Desktop Entry]
+Type=Application
+Name=Screen Test
+Name[ru]=Тест экрана
+Name[es]=Prueba de pantalla
+Name[fr]=Test d'écran
+Name[de]=Bildschirmtest
+Name[it]=Test dello schermo
+Name[pt]=Teste de tela
+Name[zh_CN]=屏幕测试
+Name[ja]=画面テスト
+Name[ar]=اختبار الشاشة
+
+Comment=Testing the quality of CRT/LCD monitors
+Comment[ru]=Проверка качества CRT/LCD мониторов
+Comment[es]=Prueba de calidad de monitores CRT/LCD
+Comment[fr]=Test de qualité des écrans CRT/LCD
+Comment[de]=Test der Bildqualität von CRT/LCD-Monitoren
+Comment[it]=Test della qualità dei monitor CRT/LCD
+Comment[pt]=Teste de qualidade de monitores CRT/LCD
+Comment[zh_CN]=CRT/LCD显示器质量测试
+Comment[ja]=CRT/LCDモニターの品質テスト
+Comment[ar]=اختبار جودة شاشات CRT/LCD
+
+Icon=gtk-fullscreen
+Exec=screentest
+Categories=Utility;System;
+Terminal=false
