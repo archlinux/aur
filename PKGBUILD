@@ -123,6 +123,10 @@ _prepare_tianocore_sources() {
 	msg "Delete bogus dependency files"
 	find . -type f -name '*.d' -delete
 
+	msg "Zero PE debug data so the image carries no build-tree path"
+	sed 's|^\*_\*_\*_GENFW_FLAGS .*|*_*_*_GENFW_FLAGS                  = --zero|' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template"
+	grep -q '^\*_\*_\*_GENFW_FLAGS .*--zero' "${EDK_TOOLS_PATH}/Conf/tools_def.template" || return 1
+
 	msg "Disable build ID generation"
 	sed 's|,--gc-sections|,--gc-sections,--build-id=none|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template"
 
