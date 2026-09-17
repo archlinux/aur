@@ -1,6 +1,6 @@
 pkgbase = uefi-shell-git
 	pkgdesc = UEFI Shell v2 - from Tianocore EDK2 - GIT Version
-	pkgver = 36432.edk2.stable202605.466.g3ff3b0e43f
+	pkgver = 36766.edk2.stable202608.229.g499a610255
 	pkgrel = 1
 	url = https://github.com/tianocore/edk2
 	install = uefi-shell.install
@@ -16,7 +16,7 @@ pkgbase = uefi-shell-git
 	options = !strip
 	options = !makeflags
 	source = edk2::git+https://github.com/tianocore/edk2.git#branch=master
-	source = brotli::git+https://github.com/google/brotli
+	source = brotli::git+https://github.com/google/brotli.git
 	source = mipisyst::git+https://github.com/MIPI-Alliance/public-mipi-sys-t.git
 	sha1sums = SKIP
 	sha1sums = SKIP

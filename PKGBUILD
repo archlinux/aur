@@ -30,7 +30,7 @@ _GUID="EA4BB293-2D7F-4456-A681-1F22F42CD0BC"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=36432.edk2.stable202605.466.g3ff3b0e43f
+pkgver=36766.edk2.stable202608.229.g499a610255
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="https://github.com/tianocore/edk2"
@@ -48,7 +48,7 @@ install="${_pkgname}.install"
 
 source=(
 	"${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master"
-	"brotli::git+https://github.com/google/brotli"
+	"brotli::git+https://github.com/google/brotli.git"
 	"mipisyst::git+https://github.com/MIPI-Alliance/public-mipi-sys-t.git"
 )
 
@@ -76,13 +76,14 @@ _prepare_tianocore_sources() {
 	# this repository's local config, so these rewrites only take effect when
 	# passed with -c: that exports them through GIT_CONFIG_PARAMETERS to children.
 	local _source _source_name _source_url
-	local -a _local_urls=()
+	local -a _local_urls=() _declared_urls=()
 	for _source in "${source[@]}"; do
 		_source_name=${_source%%::*}
 		_source_url=${_source#*::}
 		_source_url=${_source_url#git+}
 		_source_url=${_source_url%%#*}
 		_local_urls+=(-c "url.${srcdir}/${_source_name}.insteadOf=${_source_url}")
+		_declared_urls+=("${_source_url}")
 	done
 
 	msg "Updating submodules"
@@ -91,10 +92,23 @@ _prepare_tianocore_sources() {
 	# unconditionally. edk2 adding another such path breaks build() with
 	# "error 000E: File/directory not found in workspace" naming the .dec that
 	# wants it; declare that submodule in source=() and init its path here.
-	git submodule init \
-		BaseTools/Source/C/BrotliCompress/brotli \
-		MdeModulePkg/Library/BrotliCustomDecompressLib/brotli \
+	local -a _submodule_paths=(
+		BaseTools/Source/C/BrotliCompress/brotli
+		MdeModulePkg/Library/BrotliCustomDecompressLib/brotli
 		MdePkg/Library/MipiSysTLib/mipisyst
+	)
+	# insteadOf rewrites by prefix, so a declared URL must equal the .gitmodules
+	# URL byte for byte: "…/brotli" would turn "…/brotli.git" into a path that
+	# does not exist.
+	local _path _url
+	for _path in "${_submodule_paths[@]}"; do
+		_url=$(git config -f .gitmodules "submodule.${_path}.url")
+		if [[ " ${_declared_urls[*]} " != *" ${_url} "* ]]; then
+			echo "Submodule ${_path} uses ${_url}, which no source=() entry declares verbatim." >&2
+			return 1
+		fi
+	done
+	git submodule init "${_submodule_paths[@]}"
 	if ! git "${_local_urls[@]}" -c protocol.allow=never -c protocol.file.allow=always submodule update; then
 		msg 'Submodule update failed; add its repository to source=() first.'
 		return 1
