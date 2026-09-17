@@ -2,7 +2,7 @@
 _pkgname=hiddify-desktop
 pkgname=${_pkgname}-bin
 pkgver=4.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It's an open-source, secure and ad-free"
 arch=('x86_64')
 url='https://github.com/hiddify/hiddify-app'
@@ -94,6 +94,7 @@ package() {
 
     # Install metainfo
     if [[ -d "${srcdir}/usr/share/metainfo" ]]; then
+        install -dm755 "${pkgdir}/usr/share/metainfo"
         install -Dm644 "${srcdir}/usr/share/metainfo/"*.xml "${pkgdir}/usr/share/metainfo/"
     fi
 
