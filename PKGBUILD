@@ -2,7 +2,7 @@
 _base=gotranx
 pkgname=python-${_base}
 pkgdesc="A declarative language describing ordinary differential equations"
-pkgver=1.8.0
+pkgver=2.1.0
 pkgrel=1
 arch=(any)
 url="https://github.com/finsberg/${_base}"
@@ -14,7 +14,7 @@ checkdepends=(python-pytest-cov cmake)
 optdepends=('python-clang-format-docs: for formatter support'
   'python-black: for formatter support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('99799a13778cdf26b934ee99d8f3cef9cbff23ef25c21d5949684642209fc46cc71f1b1f9130b04cd3718357011ed1e9d65f162640334d026b1d854b3b96fac2')
+sha512sums=('35780ce0aa440a3cf2f1565207b094644ab2ee04b5e1f348af8619ab6d5e8d7e89e671b30c7e4a5c6515a2861a4d3c3207b9dc865b498399164782daadf08efe')
 
 build() {
   cd ${_base}-${pkgver}
