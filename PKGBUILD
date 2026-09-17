@@ -7,7 +7,7 @@
 #   paru -Ui        (oder)   yay -Bi .
 pkgname=dream-voicetraining
 _repo=Dream-VoiceTraining          # das GitHub-Archiv entpackt unter diesem Namen
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="Voice analysis for training your speaking voice: pitch, formants, resonance and voice quality"
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
 )
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aa2992fc839a9a61ce1fc2e0b20dcf89e5dcff39c2ccb0e44fbb0a2c6c982206')
+sha256sums=('d2f38c0aacbe6e7b6f39e08f6879ec94fc48ffa045a955ce4a9b110008453627')
 
 check() {
   cd "$srcdir/$_repo-$pkgver"
@@ -44,9 +44,12 @@ package() {
   cd "$srcdir/$_repo-$pkgver"
 
   install -dm755 "$pkgdir/usr/lib/$pkgname"
-  install -Dm644 ./*.py -t "$pkgdir/usr/lib/$pkgname"
+  install -Dm644 main.py -t "$pkgdir/usr/lib/$pkgname"
+  for dir in core voice ui; do
+    install -Dm644 "$dir"/*.py -t "$pkgdir/usr/lib/$pkgname/$dir"
+  done
 
-  # Bildschirmfotos der Einfuehrung liegen neben den .py-Dateien, dort sucht
+  # Bildschirmfotos der Einfuehrung liegen neben main.py, dort sucht
   # paths.intro_shot() zuerst.
   install -Dm644 assets/intro/* -t "$pkgdir/usr/lib/$pkgname/assets/intro"
 
@@ -64,6 +67,7 @@ package() {
   install -Dm644 THIRD_PARTY_NOTICES.md \
     "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_NOTICES.md"
   install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+  install -Dm644 HIGHLIGHTS.md "$pkgdir/usr/share/doc/$pkgname/HIGHLIGHTS.md"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 README.de.md "$pkgdir/usr/share/doc/$pkgname/README.de.md"
   install -Dm644 docs/metrics.md -t "$pkgdir/usr/share/doc/$pkgname/docs"

@@ -1,6 +1,6 @@
 pkgbase = dream-voicetraining
 	pkgdesc = Voice analysis for training your speaking voice: pitch, formants, resonance and voice quality
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/yakuda-stack/Dream-VoiceTraining
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = dream-voicetraining
 	optdepends = libpulse: readable PipeWire/PulseAudio device names via pactl
 	optdepends = pipewire-pulse: same, on a PipeWire system
 	optdepends = python-setproctitle: show the program name instead of python3 in process lists
-	source = dream-voicetraining-1.1.6.tar.gz::https://github.com/yakuda-stack/Dream-VoiceTraining/archive/refs/tags/v1.1.6.tar.gz
-	sha256sums = aa2992fc839a9a61ce1fc2e0b20dcf89e5dcff39c2ccb0e44fbb0a2c6c982206
+	source = dream-voicetraining-1.1.7.tar.gz::https://github.com/yakuda-stack/Dream-VoiceTraining/archive/refs/tags/v1.1.7.tar.gz
+	sha256sums = d2f38c0aacbe6e7b6f39e08f6879ec94fc48ffa045a955ce4a9b110008453627
 
 pkgname = dream-voicetraining
