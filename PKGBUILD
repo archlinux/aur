@@ -2,7 +2,7 @@
 # Maintainer: Bink
 pkgname=ik-llama.cpp-cuda-opt-git
 _pkgname="ik_llama.cpp"
-pkgver=t0002.r1064.1a2a8604a
+pkgver=t0002.r1104.dc3102444
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations) - fork by ikawrakow, installed in /opt"
 arch=(x86_64 armv7h aarch64)
@@ -16,11 +16,9 @@ depends=(
   nvidia-utils
   openssl
   nccl
-  gcc15-libs
 )
 makedepends=(
   cmake
-  gcc15  # CUDA requires gcc15
   git
   ninja
 )
@@ -66,7 +64,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX="/opt/${_pkgname}"
     -DCMAKE_INSTALL_RPATH="/opt/${_pkgname}/lib:/usr/lib/nvidia:/usr/lib"
-    -DCMAKE_BUILD_RPATH="/opt/${_pkgname}/lib:/usr/lib/nvidia:/usr/lib"
     -DBUILD_SHARED_LIBS=ON
     -DLLAMA_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
@@ -90,7 +87,6 @@ build() {
   if [[ ${aur_llamacpp_build_universal} == true ]]; then
     echo "Building universal binary [aur_llamacpp_build_universal == true]"
     _cmake_options+=(
-      -DGGML_BACKEND_DL=ON
       -DGGML_NATIVE=OFF
       -DGGML_CPU_ALL_VARIANTS=ON
     )
