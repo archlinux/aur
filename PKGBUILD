@@ -1,12 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.114.5
-_electronversion=43
+pkgver=0.115.19
+_electronversion=44
 pkgrel=1
-pkgdesc="VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)"
+pkgdesc="VS Code inspired text editor that mostly runs in a webworker."
 arch=(
     'aarch64'
-    'armv7h'
+#    'armv7h'
     'x86_64'
 )
 url="https://lvce-editor.github.io/lvce-editor"
@@ -17,13 +17,14 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'nodejs'
+    'python'
 )
 options=(
     '!strip'
     '!emptydirs'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_arm64.deb")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_armhf.deb")
+#source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_armhf.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb")
 source=(
     "lintian-${pkgname%-bin}"
@@ -31,9 +32,8 @@ source=(
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('5bf3284acfeaa624acae7130c1008bc0c272882d4854f288c3df40fcc8958501')
-sha256sums_armv7h=('53f4ee5468150cb21f6e3cbda491923440dc21defdf9e6643606d648ee363c72')
-sha256sums_x86_64=('da0cd7ae3bf67bae208feee70b30fedd7d3226d76d3a516216ec304100ebf933')
+sha256sums_aarch64=('e987ab8752ca5f667396b899a087daa268dbd0d82fb0aa0bbbb912cea3a06e3f')
+sha256sums_x86_64=('dbd3a63cb76bb37b2d3fa3d4a2f07c7aa9e3c0f670d700330eeaac4d855601fc')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -87,7 +87,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/doc/${pkgname%-bin}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
