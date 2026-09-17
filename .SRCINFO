@@ -1,6 +1,6 @@
 pkgbase = kmcp-bin
 	pkgdesc = CLI tool and Kubernetes controller for building, testing and deploying MCP servers
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/kagent-dev/kmcp
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = kmcp-bin
 	license = Apache-2.0
 	provides = kmcp
 	conflicts = kmcp
-	source_x86_64 = kmcp-bin-0.3.0-x86_64::https://github.com/kagent-dev/kmcp/releases/download/v0.3.0/kmcp-linux-amd64
-	sha256sums_x86_64 = b1d7c3ceccb3ab7aa578e0fe57e7ebf4b523c686b7a3ff0b751fc1d2ecc32829
-	source_aarch64 = kmcp-bin-0.3.0-aarch64::https://github.com/kagent-dev/kmcp/releases/download/v0.3.0/kmcp-linux-arm64
-	sha256sums_aarch64 = 6babd191f3af4266b886f76b5245e0ad0a430dc1cb22f77eef11a3ed19421963
+	source_x86_64 = kmcp-bin-0.4.0-x86_64::https://github.com/kagent-dev/kmcp/releases/download/v0.4.0/kmcp-linux-amd64
+	sha256sums_x86_64 = b6cd12bd3ed83d3263fa6417c1015d55c2704fde1e4727b1d1919c701e19a4fc
+	source_aarch64 = kmcp-bin-0.4.0-aarch64::https://github.com/kagent-dev/kmcp/releases/download/v0.4.0/kmcp-linux-arm64
+	sha256sums_aarch64 = df6cc6cfd64a3f9cf1f7ea442b367bcc726f20a08821857a2cea752804f4bdde
 
 pkgname = kmcp-bin
