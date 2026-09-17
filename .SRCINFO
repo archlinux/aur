@@ -16,6 +16,7 @@ pkgbase = python-groq
 	checkdepends = python-httpx-aiohttp
 	checkdepends = npm
 	checkdepends = nodejs
+	checkdepends = lsof
 	makedepends = python-hatchling
 	makedepends = python-hatch-fancy-pypi-readme
 	makedepends = python-build
