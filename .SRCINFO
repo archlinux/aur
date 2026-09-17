@@ -1,12 +1,12 @@
 pkgbase = codu-git
 	pkgdesc = Colourful, themeable, navigable disk usage TUI (like ncdu, with cd-on-exit)
-	pkgver = 0.1.0.r9.ga5a9634
+	pkgver = 0.2.0.r11.g9ae22b2
 	pkgrel = 1
 	url = https://github.com/hilgardt-collab/codu
 	install = codu-git.install
 	arch = x86_64
 	arch = aarch64
-	license = MIT
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs

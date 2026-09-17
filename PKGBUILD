@@ -1,12 +1,12 @@
 # Maintainer: hilgardt <hilgardt@gmail.com>
 pkgname=codu-git
 _pkgname=codu
-pkgver=0.1.0.r9.ga5a9634
+pkgver=0.2.0.r11.g9ae22b2
 pkgrel=1
 pkgdesc='Colourful, themeable, navigable disk usage TUI (like ncdu, with cd-on-exit)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/hilgardt-collab/codu'
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cargo')
 provides=('codu')
