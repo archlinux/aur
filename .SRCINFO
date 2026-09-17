@@ -1,0 +1,31 @@
+pkgbase = python-kicost-digikey-api-v3
+	pkgdesc = KiCost plugin for the Digikey PartSearch API
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/set-soft/kicost-digikey-api-v3
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-certifi
+	depends = python-dateutil
+	depends = python-inflection
+	depends = python-pyopenssl
+	depends = python-six
+	depends = python-urllib3
+	depends = python-requests
+	depends = python-tldextract
+	optdepends = kicad: Electronic schematic and printed circuit board (PCB) design tools
+	optdepends = kicost: KiCAD script to convert BOM xml into spreadsheet
+	provides = python-kicost-digikey-api-v3
+	provides = python-digikey-api
+	conflicts = python-kicost-digikey-api-v3
+	conflicts = python-digikey-api
+	source = kicost-digikey-api-v3::git+https://github.com/set-soft/kicost-digikey-api-v3.git#tag=v0.1.4
+	sha256sums = a041332477f34aab66041d710946fd13a637a42fddb65f0a318de1159cf54ec2
+
+pkgname = python-kicost-digikey-api-v3
