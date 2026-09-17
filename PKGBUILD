@@ -1,13 +1,13 @@
 # Maintainer: sripwoud <me@sripwoud.xyz>
 pkgname=tagwerk-git
-pkgver=r55.f7ce138
+pkgver=r57.65e8844
 pkgrel=1
 pkgdesc="Passive time tracker for Hyprland, nothing to start or stop"
 arch=(any)
 url="https://github.com/espadat-studio/tagwerk"
 license=(AGPL-3.0-or-later)
 depends=(python hyprland hypridle)
-optdepends=('kitty: cwd of the focused terminal')
+optdepends=('kitty: cwd stays exact with several tabs or splits open')
 makedepends=(git)
 provides=(tagwerk)
 conflicts=(tagwerk)
