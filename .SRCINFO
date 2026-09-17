@@ -1,6 +1,6 @@
 pkgbase = jsonize-bin
 	pkgdesc = Turn command output into JSON
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/nao1215/jsonize
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = jsonize-bin
 	provides = jz
 	conflicts = jsonize
 	options = !strip
-	source = jsonize-0.7.0-checksums.txt::https://github.com/nao1215/jsonize/releases/download/v0.7.0/checksums.txt
-	sha256sums = 512602b66a83be0f748fd9244ba898b0e266220c0a8c3304233564b772f14ccc
-	source_x86_64 = jsonize-0.7.0-x86_64.tgz::https://github.com/nao1215/jsonize/releases/download/v0.7.0/jsonize_0.7.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = c4592b0c3923444c8a2bd6ec95e384054273a4c95fa1b2892f900a52633c33af
-	source_aarch64 = jsonize-0.7.0-aarch64.tgz::https://github.com/nao1215/jsonize/releases/download/v0.7.0/jsonize_0.7.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = bf895b48f5cd6bf931a5ee09bf8834432e62885b3995680d9f789ce524ade8c3
+	source = jsonize-0.7.1-checksums.txt::https://github.com/nao1215/jsonize/releases/download/v0.7.1/checksums.txt
+	sha256sums = 6a75e3233fdec45275bad83d021f6c671b16428dfad1579ff76c833970dfc4a1
+	source_x86_64 = jsonize-0.7.1-x86_64.tgz::https://github.com/nao1215/jsonize/releases/download/v0.7.1/jsonize_0.7.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = a404de4f96fae4a7b4992f7a294c0ef5349c818d355c543c49aea02946e9ced5
+	source_aarch64 = jsonize-0.7.1-aarch64.tgz::https://github.com/nao1215/jsonize/releases/download/v0.7.1/jsonize_0.7.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = ec83e9b05ba189d85e92ac4915d9d20c6a255875182d2310026b68e5c37bac2e
 
 pkgname = jsonize-bin

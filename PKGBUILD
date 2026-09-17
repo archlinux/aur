@@ -6,7 +6,7 @@ _appname=jz
 pkgname=${_gitname}-bin
 pkgdesc="Turn command output into JSON"
 
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ _pkgsrc="${_gitname}-${pkgver}"
 source=("${_pkgsrc}-checksums.txt::${url}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${url}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tgz::${url}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
-sha256sums=('512602b66a83be0f748fd9244ba898b0e266220c0a8c3304233564b772f14ccc')
-sha256sums_x86_64=('c4592b0c3923444c8a2bd6ec95e384054273a4c95fa1b2892f900a52633c33af')
-sha256sums_aarch64=('bf895b48f5cd6bf931a5ee09bf8834432e62885b3995680d9f789ce524ade8c3')
+sha256sums=('6a75e3233fdec45275bad83d021f6c671b16428dfad1579ff76c833970dfc4a1')
+sha256sums_x86_64=('a404de4f96fae4a7b4992f7a294c0ef5349c818d355c543c49aea02946e9ced5')
+sha256sums_aarch64=('ec83e9b05ba189d85e92ac4915d9d20c6a255875182d2310026b68e5c37bac2e')
 
 
 verify() {
