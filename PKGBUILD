@@ -3,22 +3,23 @@
 
 pkgname=kapowarr
 _pkgname=Kapowarr
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Software to build and manage a comic book library, fitting in the *arr suite of software.'
 arch=('x86_64')
 url='https://github.com/Casvt/Kapowarr'
 license=('GPL-3.0-or-later')
 depends=(
-  python-typing_extensions
-  python-requests
-  python-beautifulsoup4
-  python-flask
-  python-waitress
-  python-cryptography
-  python-bencoding
   python-aiohttp
+  python-beautifulsoup4
+  python-bencoding
+  python-cron-converter
+  python-cryptography
+  python-flask
   python-flask-socketio
+  python-requests
+  python-typing_extensions
+  python-waitress
   python-websocket-client
 )
 makedepends=(python)
@@ -28,7 +29,7 @@ source=(
   kapowarr.tmpfiles
   kapowarr.sysusers
 )
-sha256sums=('94dbc9924bf1ded3cfdcdc551c896d5cf5ac48183081fa90833cd7166def88b1'
+sha256sums=('4c6c88c59c5b82327ddd3063a107a28bcf6415ad4ca2fea57cbc26dbd7893f45'
             '18213fb9bae7cd9004edfc99ec50832bc507b4a2614139afa81e0954a823f709'
             'ab76fd7e9d2ea854d596615b8a6c4ab984df107d8a96bb6a15cc9f711a0d5dcb'
             '72e466d84c18ed326ede2a5fddae36bbd9c44a1bac6199c73b98639d0796f7dd')
