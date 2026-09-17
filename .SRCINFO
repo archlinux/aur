@@ -1,0 +1,22 @@
+pkgbase = memoh-bin
+	pkgdesc = Give your agent a cloud computer - cloud-first multi-agent platform where every agent has its own desktop, files and network, running 24/7
+	pkgver = 2026.9.16.2
+	pkgrel = 2
+	url = https://memoh.ai
+	arch = x86_64
+	license = custom
+	makedepends = libarchive
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator: system tray support
+	source = Memoh-2026.9.16-2-linux-amd64.deb::https://desktopresource.memoh.ai/Memoh-2026.9.16-2-linux-amd64.deb
+	sha256sums = c8f8441607d0fb8a91f9c4908dd18951c22fe94e4d1ac20bcff2f289060b6c92
+
+pkgname = memoh-bin
