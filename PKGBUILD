@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-bin
 _pkgname=Atlassify
-pkgver=3.15.0
-_electronversion=43
+pkgver=3.16.0
+_electronversion=44
 pkgrel=1
-pkgdesc="Atlassian notifications on your menu bar.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Atlassian notifications on your menu bar."
 arch=('x86_64')
 url="https://atlassify.io/"
 _ghurl="https://github.com/setchy/atlassify"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/setchy/atlassify/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('35372b65129d9957bbfe62ae4b86d51599d112f507cfae26b24fc2ff12075b48'
+sha256sums=('3fb134c84b80c90b1ad2ba4ffdad9af22b481e86701a162613a92cd246c15eb4'
             '2030af44675d6523de146944f48720295a82c2e89023ec6f579661e22ad8be2d'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
