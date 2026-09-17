@@ -1,8 +1,8 @@
 pkgbase = devbox-bin
-	pkgdesc = A command-line tool that lets you easily create isolated shells for development.(Written in Go.Prebuilt version)
-	pkgver = 0.18.0
+	pkgdesc = A command-line tool that lets you easily create isolated shells for development.
+	pkgver = 0.18.3
 	pkgrel = 1
-	url = https://www.jetpack.io/devbox/
+	url = https://www.jetify.com/devbox/
 	arch = aarch64
 	arch = armv7h
 	arch = i686
@@ -10,15 +10,15 @@ pkgbase = devbox-bin
 	license = Apache-2.0
 	depends = docker
 	depends = nix
-	provides = devbox=0.18.0
+	provides = devbox=0.18.3
 	conflicts = devbox
-	source_aarch64 = devbox-0.18.0-aarch64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.18.0/devbox_0.18.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 222a79e87f5306625e5df7e6c15739bf246970c804df90116bf10700b83aad71
-	source_armv7h = devbox-0.18.0-armv7h.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.18.0/devbox_0.18.0_linux_armv7l.tar.gz
-	sha256sums_armv7h = ae390cc1223a2df0d2043018d6d0588a73143f99fe2c1d3a79c4b3de4d9a38fb
-	source_i686 = devbox-0.18.0-i686.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.18.0/devbox_0.18.0_linux_386.tar.gz
-	sha256sums_i686 = 2969a75e5172b9305acf7f0f92ac17c50a84661dbc1dac5758b0ebf5f2ad145a
-	source_x86_64 = devbox-0.18.0-x86_64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.18.0/devbox_0.18.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1b5732fddf9d35c37d8f992f026f266dee1a1ea781da64202ccf0532fa4fd079
+	source_aarch64 = devbox-0.18.3-aarch64.tar.gz::https://github.com/jetify-com/devbox/releases/download/0.18.3/devbox_0.18.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 21e620a6c4dec22b55c244ea84cc82484252594dc5ae98ad25e7253d2c94234a
+	source_armv7h = devbox-0.18.3-armv7h.tar.gz::https://github.com/jetify-com/devbox/releases/download/0.18.3/devbox_0.18.3_linux_armv7l.tar.gz
+	sha256sums_armv7h = 07d1edc990d7d7cdb3c4d2541a219750b53c4b4caf1bbc894ce284a77c2d3cc0
+	source_i686 = devbox-0.18.3-i686.tar.gz::https://github.com/jetify-com/devbox/releases/download/0.18.3/devbox_0.18.3_linux_386.tar.gz
+	sha256sums_i686 = e253272fa0d8513dbfaf93996fc95f010c981e3e062f7cd94c08e516e8828e64
+	source_x86_64 = devbox-0.18.3-x86_64.tar.gz::https://github.com/jetify-com/devbox/releases/download/0.18.3/devbox_0.18.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = b2c4f844d8b6917ac8f65bcd145e48d04705a54afc2d80e353ef97929bcdc466
 
 pkgname = devbox-bin

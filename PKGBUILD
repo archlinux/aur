@@ -1,17 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Kevin Maris <aur@kmaris.net>
 pkgname=devbox-bin
-pkgver=0.18.0
+pkgver=0.18.3
 pkgrel=1
-pkgdesc="A command-line tool that lets you easily create isolated shells for development.(Written in Go.Prebuilt version)"
+pkgdesc="A command-line tool that lets you easily create isolated shells for development."
 arch=(
     'aarch64'
     'armv7h'
     'i686'
     'x86_64'
 )
-url="https://www.jetpack.io/devbox/"
-_ghurl="https://github.com/jetpack-io/devbox"
+url="https://www.jetify.com/devbox/"
+_ghurl="https://github.com/jetify-com/devbox"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -23,10 +23,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_armv7l.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_386.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_aarch64=('222a79e87f5306625e5df7e6c15739bf246970c804df90116bf10700b83aad71')
-sha256sums_armv7h=('ae390cc1223a2df0d2043018d6d0588a73143f99fe2c1d3a79c4b3de4d9a38fb')
-sha256sums_i686=('2969a75e5172b9305acf7f0f92ac17c50a84661dbc1dac5758b0ebf5f2ad145a')
-sha256sums_x86_64=('1b5732fddf9d35c37d8f992f026f266dee1a1ea781da64202ccf0532fa4fd079')
+sha256sums_aarch64=('21e620a6c4dec22b55c244ea84cc82484252594dc5ae98ad25e7253d2c94234a')
+sha256sums_armv7h=('07d1edc990d7d7cdb3c4d2541a219750b53c4b4caf1bbc894ce284a77c2d3cc0')
+sha256sums_i686=('e253272fa0d8513dbfaf93996fc95f010c981e3e062f7cd94c08e516e8828e64')
+sha256sums_x86_64=('b2c4f844d8b6917ac8f65bcd145e48d04705a54afc2d80e353ef97929bcdc466')
 prepare() {
     "${srcdir}/${pkgname%-bin}" completion bash > "${srcdir}/${pkgname%-bin}.bash"
     if [ -x /usr/bin/fish ];then
