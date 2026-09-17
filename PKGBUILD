@@ -1,8 +1,8 @@
 # Maintainer: MLM Games <dev@mlm.games>
 pkgname=renamite-bin
 _pkgname=renamite
-pkgver=0.3.0
-_tag=v0.3.0
+pkgver=0.3.1
+_tag=v0.3.1
 pkgrel=1
 pkgdesc='Vector animation editor built on the Repose GUI framework'
 arch=('x86_64' 'aarch64')
@@ -12,19 +12,19 @@ depends=()
 provides=(renamite)
 conflicts=(renamite)
 options=(!strip)
-source_x86_64=("renamite-0.3.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/renamite/releases/download/${_tag}/renamite-0.3.0-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("renamite-0.3.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/renamite/releases/download/${_tag}/renamite-0.3.0-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('ca701bb8fff8236e761d7c943d4c45d441926c7f246a06de9186bbcccfe1a2b4')
-sha256sums_aarch64=('27f3549a20f343b3d970fed8a13bb95a73a30293337765d6a708f84b139b2b99')
+source_x86_64=("renamite-0.3.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/renamite/releases/download/${_tag}/renamite-0.3.1-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("renamite-0.3.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/renamite/releases/download/${_tag}/renamite-0.3.1-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('e235961bb0606f822961bfae7d6d7f5a7dd3a4e8cf020605683cce2838581015')
+sha256sums_aarch64=('7410c02cf6199f452e75c611f43c58cdda204dcf7ef371ede97460fa8fc9555f')
 source+=("icon.svg::https://raw.githubusercontent.com/mlm-games/renamite/main/others/packaging/icon.svg")
 sha256sums+=('SKIP')
 
 package() {
   local dir
   if [[ "$CARCH" == "x86_64" ]]; then
-    dir="${srcdir}/renamite-0.3.0-x86_64-unknown-linux-gnu"
+    dir="${srcdir}/renamite-0.3.1-x86_64-unknown-linux-gnu"
   else
-    dir="${srcdir}/renamite-0.3.0-aarch64-unknown-linux-gnu"
+    dir="${srcdir}/renamite-0.3.1-aarch64-unknown-linux-gnu"
   fi
   install -Dm755 "${dir}/renamite" "${pkgdir}/usr/bin/renamite"
 
