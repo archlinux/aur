@@ -1,0 +1,19 @@
+pkgbase = ip-watch-bot
+	pkgdesc = Checks your public IP address and sends a Telegram notification when it changes
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dasbd72/ip-watch-bot
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-requests
+	depends = python-yaml
+	source = ip-watch-bot::git+https://github.com/dasbd72/ip-watch-bot.git#tag=v0.2.0
+	sha256sums = SKIP
+
+pkgname = ip-watch-bot
