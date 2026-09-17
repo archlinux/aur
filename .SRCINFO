@@ -1,6 +1,6 @@
 pkgbase = budget-tracker
 	pkgdesc = Simple TUI budget tracker. Designed to track income and expenses and help visualize and gather basic insights from your transactions.
-	pkgver = 1.4.1
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/Feromond/budget_tracker_tui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = budget-tracker
 	conflicts = budget-tracker-bin
 	options = !lto
 	options = !debug
-	source = budget-tracker-1.4.1.tar.gz::https://github.com/Feromond/budget_tracker_tui/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = e92a496ef7fe9de6bacd081d9414c0c0b9f530086504ee635f2984416e3d6c8f
+	source = budget-tracker-1.6.1.tar.gz::https://github.com/Feromond/budget_tracker_tui/archive/refs/tags/v1.6.1.tar.gz
+	sha256sums = a32fc7263d470b6a8d6d7f178a818aa3b46fdb1eef35268cb3c46c8223efc427
 
 pkgname = budget-tracker

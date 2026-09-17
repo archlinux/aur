@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=budget-tracker
-pkgver=1.4.1
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Simple TUI budget tracker. Designed to track income and expenses and help visualize and gather basic insights from your transactions.'
 arch=(
@@ -18,23 +18,23 @@ options=(
 provides=('budget-tracker')
 conflicts=('budget-tracker-git' 'budget-tracker-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e92a496ef7fe9de6bacd081d9414c0c0b9f530086504ee635f2984416e3d6c8f')
+sha256sums=('a32fc7263d470b6a8d6d7f178a818aa3b46fdb1eef35268cb3c46c8223efc427')
 
 prepare() {
-    cd "budget_tracker_tui-$pkgver"
+    cd "budget-tracker-tui-$pkgver"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "budget_tracker_tui-$pkgver"
+    cd "budget-tracker-tui-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 
 package() {
-    cd "budget_tracker_tui-$pkgver"
-    install -Dm0755 target/release/Budget_Tracker "$pkgdir/usr/bin/budget-tracker"
+    cd "budget-tracker-tui-$pkgver"
+    install -Dm0755 target/release/budget-tracker "$pkgdir/usr/bin/budget-tracker"
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
