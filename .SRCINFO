@@ -1,7 +1,7 @@
 pkgbase = go2tv-bin
 	pkgdesc = Cast media files to Smart TVs and Chromecast devices (pre-built binary)
 	pkgver = 2.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexballas/go2tv
 	arch = x86_64
 	arch = aarch64
@@ -13,11 +13,13 @@ pkgbase = go2tv-bin
 	optdepends = ffmpeg: transcoding support
 	provides = go2tv=2.6.1
 	conflicts = go2tv
-	source = LICENSE::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/LICENSE
-	source = app.go2tv.go2tv.desktop::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/assets/linux/app.go2tv.go2tv.desktop
-	source = app.go2tv.go2tv.appdata.xml::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/assets/linux/app.go2tv.go2tv.appdata.xml
-	source = go2tv-icon-desktop-512.png::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/assets/go2tv-icon-desktop-512.png
-	source = go2tv-icon-color.svg::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/assets/go2tv-icon-color.svg
+	options = !strip
+	options = !debug
+	source = LICENSE-2.6.1::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/LICENSE
+	source = go2tv-2.6.1.desktop::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/assets/linux/app.go2tv.go2tv.desktop
+	source = go2tv-2.6.1.appdata.xml::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/assets/linux/app.go2tv.go2tv.appdata.xml
+	source = go2tv-2.6.1.png::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/assets/go2tv-icon-desktop-512.png
+	source = go2tv-2.6.1.svg::https://raw.githubusercontent.com/alexballas/go2tv/v2.6.1/assets/go2tv-icon-color.svg
 	sha256sums = f3e74b19ba21d7c94eb917b4a9027e069de8350629d25a14e95161c4f6e6fe51
 	sha256sums = cb4563f5856fac6b51f4c8b08e25520501bd7cca0dab48606025f350cdf1cc9a
 	sha256sums = fbd7188e80f209e72646cce41ea905ca349a19c33330ecde42fd0f2f59499171

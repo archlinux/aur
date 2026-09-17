@@ -3,7 +3,7 @@
 
 pkgname=go2tv-bin
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cast media files to Smart TVs and Chromecast devices (pre-built binary)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/alexballas/go2tv"
@@ -13,18 +13,26 @@ depends=('glibc' 'libglvnd' 'wayland')
 optdepends=('ffmpeg: transcoding support')
 provides=("go2tv=${pkgver}")
 conflicts=('go2tv')
+# 上游二进制已经是 stripped 的，再 strip 没有意义；不关掉 debug 会额外生成一个
+# 只含空 .debug/.build-id 桩文件的 go2tv-bin-debug 包（构建时还会报 gdb-add-index 噪音）
+options=('!strip' '!debug')
 
 # 上游发布使用 v 前缀的 tag，如 v2.4.0
 _upstream_repo="alexballas/go2tv"
 _upstream_tag="v${pkgver}"
 
 # 架构无关的公共资源（从上游源码仓库获取）
+# 本地文件名必须带 ${pkgver}：makepkg 只按文件名识别并复用已下载的源码（不比对 URL），
+# 名字不带版本时，上一版留在 $startdir/$SRCDEST 里的旧文件会被当成新版本的源码：
+#   - 重新生成校验和时（pkgctl version upgrade / updpkgsums）算的是旧内容的哈希，写进 PKGBUILD；
+#   - 构建时 makepkg 直接 "Found" 旧文件，校验时报 "sha256sums ... FAILED"（校验不通过）。
+# 上游 assets/linux/app.go2tv.go2tv.appdata.xml 内含 <release version="...">，每次发版都会变。
 source=(
-  "LICENSE::https://raw.githubusercontent.com/${_upstream_repo}/${_upstream_tag}/LICENSE"
-  "app.go2tv.go2tv.desktop::https://raw.githubusercontent.com/${_upstream_repo}/${_upstream_tag}/assets/linux/app.go2tv.go2tv.desktop"
-  "app.go2tv.go2tv.appdata.xml::https://raw.githubusercontent.com/${_upstream_repo}/${_upstream_tag}/assets/linux/app.go2tv.go2tv.appdata.xml"
-  "go2tv-icon-desktop-512.png::https://raw.githubusercontent.com/${_upstream_repo}/${_upstream_tag}/assets/go2tv-icon-desktop-512.png"
-  "go2tv-icon-color.svg::https://raw.githubusercontent.com/${_upstream_repo}/${_upstream_tag}/assets/go2tv-icon-color.svg"
+  "LICENSE-${pkgver}::https://raw.githubusercontent.com/${_upstream_repo}/${_upstream_tag}/LICENSE"
+  "go2tv-${pkgver}.desktop::https://raw.githubusercontent.com/${_upstream_repo}/${_upstream_tag}/assets/linux/app.go2tv.go2tv.desktop"
+  "go2tv-${pkgver}.appdata.xml::https://raw.githubusercontent.com/${_upstream_repo}/${_upstream_tag}/assets/linux/app.go2tv.go2tv.appdata.xml"
+  "go2tv-${pkgver}.png::https://raw.githubusercontent.com/${_upstream_repo}/${_upstream_tag}/assets/go2tv-icon-desktop-512.png"
+  "go2tv-${pkgver}.svg::https://raw.githubusercontent.com/${_upstream_repo}/${_upstream_tag}/assets/go2tv-icon-color.svg"
 )
 
 # 架构相关：预编译二进制
@@ -43,9 +51,9 @@ sha256sums_armv7h=('4e2b9954e9609288e1bfa6b03c725b62b7a6c15ef59a14ef731c0d77f8ea
 
 package() {
     install -Dm755 "go2tv" -t "${pkgdir}/usr/bin"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "app.go2tv.go2tv.desktop" "${pkgdir}/usr/share/applications/app.go2tv.go2tv.desktop"
-    install -Dm644 "app.go2tv.go2tv.appdata.xml" "${pkgdir}/usr/share/metainfo/app.go2tv.go2tv.appdata.xml"
-    install -Dm644 "go2tv-icon-desktop-512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/app.go2tv.go2tv.png"
-    install -Dm644 "go2tv-icon-color.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/app.go2tv.go2tv.svg"
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "go2tv-${pkgver}.desktop" "${pkgdir}/usr/share/applications/app.go2tv.go2tv.desktop"
+    install -Dm644 "go2tv-${pkgver}.appdata.xml" "${pkgdir}/usr/share/metainfo/app.go2tv.go2tv.appdata.xml"
+    install -Dm644 "go2tv-${pkgver}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/app.go2tv.go2tv.png"
+    install -Dm644 "go2tv-${pkgver}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/app.go2tv.go2tv.svg"
 }
