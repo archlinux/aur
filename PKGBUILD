@@ -2,7 +2,7 @@
 
 pkgname=gowitness-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Web screenshot utility using Chrome Headless (binary release)"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -17,9 +17,9 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/${pkgver}
 source_armv7h=("${_pkgname}-${pkgver}-armv7h::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-arm")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-arm64")
 sha256sums=('8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
-sha256sums_x86_64=('57b3188e24782c27fdf72493ce599537efd3187d03b80f8afe733c72d68c5517')
-sha256sums_armv7h=('d755b2fc0da943a73b6c68971d362d70e4ec89772c42b7830b94d651aec34d86')
-sha256sums_aarch64=('a24284b4df4ea94a34edc55232b5d102555dcd01c73b1eb950ac4e304f753784')
+sha256sums_x86_64=('d315bf505691ea64a87f6231a757acfee0a94c024ab3531f35b3c52dad15895e')
+sha256sums_armv7h=('bee9838858c51fe82b8375c4744b447cf2115c5a20db0893c7588e90ba42dd2e')
+sha256sums_aarch64=('bea4bc2b7935909267540ab75b23fe840aa0ac971dd743a7300ed967449addf3')
 
 package() {
   install -Dm755 "$srcdir/${_pkgname}-$pkgver-$CARCH" "$pkgdir/usr/bin/gowitness"
