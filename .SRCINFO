@@ -1,13 +1,15 @@
 pkgbase = python-marine
 	pkgdesc = Marine: Multi-task learning based on Japanese accent estimatio
 	pkgver = 0.0.6
-	pkgrel = 1
-	url = https://pypi.org/project/marine
+	pkgrel = 4
+	url = https://github.com/6gsn/marine
 	arch = any
 	license = Apache-2.0
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-joblib
 	depends = python-matplotlib
@@ -25,7 +27,7 @@ pkgbase = python-marine
 	conflicts = python-marine
 	options = !strip
 	options = !debug
-	source = marine-0.0.6.tar.gz::https://files.pythonhosted.org/packages/source/m/marine/marine-0.0.6.tar.gz
-	sha256sums = d5d7990364be80653294db04be7e7410d922aec9bafc375e0e9354cf94a00bee
+	source = marine::git+https://github.com/6gsn/marine.git#tag=v0.0.6
+	sha256sums = 15191bcad622732114c01f5d41f1ad334b7466a28056fe8ff545f7b4aaabd791
 
 pkgname = python-marine

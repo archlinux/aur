@@ -3,11 +3,11 @@
 pkgname=python-marine
 _name=${pkgname#python-}
 pkgver=0.0.6
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Marine: Multi-task learning based on Japanese accent estimatio"
 arch=('any')
-url="https://pypi.org/project/${_name}"
+url="https://github.com/6gsn/marine"
 license=(Apache-2.0)
 groups=()
 provides=(${pkgname})
@@ -29,24 +29,29 @@ depends=(
     python-torchmetrics
 )
 makedepends=(
+    git
     python-build
     python-installer
     python-wheel
-    # python-setuptools
+    python-setuptools
 )
 optdepends=()
 options=('!strip' '!debug')
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("${_name}::git+${url}.git#tag=v$pkgver")
 noextract=()
-sha256sums=('d5d7990364be80653294db04be7e7410d922aec9bafc375e0e9354cf94a00bee')
+sha256sums=('15191bcad622732114c01f5d41f1ad334b7466a28056fe8ff545f7b4aaabd791')
+
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
+}
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
