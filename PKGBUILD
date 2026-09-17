@@ -35,8 +35,8 @@ package() {
 
     install -Dm644 "$srcdir/pipewire-crisp-vocals.service" "$pkgdir/usr/lib/systemd/user/pipewire-crisp-vocals.service"
 
-    install -Dm644 "$srcdir/99-crisp-vocals.conf" "$pkgdir/etc/pipewire/pipewire.conf.d/99-crisp-vocals.conf"
     install -Dm644 "$srcdir/99-crisp-vocals-low-latency.conf" "$pkgdir/etc/pipewire/pipewire.conf.d/99-crisp-vocals-low-latency.conf"
+    install -Dm644 "$srcdir/virtual-devices.conf" "$pkgdir/usr/share/pipewire-crisp-vocals/virtual-devices.conf"
 
     install -Dm644 "$srcdir/crisp-vocals.ron.example" "$pkgdir/usr/share/pipewire-crisp-vocals/crisp-vocals.ron.example"
     install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
