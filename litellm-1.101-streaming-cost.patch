@@ -1,0 +1,14 @@
+--- a/tests/test_responses.py
++++ b/tests/test_responses.py
+@@ -100,8 +100,9 @@
+     assert attributes.pop("openinference.span.kind") == "LLM"
+     assert attributes.pop("output.mime_type") == "application/json"
+     assert attributes.pop("output.value").startswith('[{"role": "assistant"')
+-    # streams will not have cost unless litellm.include_cost_in_streaming_usage is set to True
+-    assert "llm.cost.total" not in attributes
++    # litellm >= 1.101.0 stamps the final response cost on streamed usage by default
++    # (BerriAI/litellm@9e25dd708f), so the span carries llm.cost.total for streams too
++    assert attributes.pop("llm.cost.total") > 0
+     assert attributes == {}
+ 
+ 
