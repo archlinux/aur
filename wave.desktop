@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=WAVE
+Comment=Modern and sleek cross-platform music streaming player
+Exec=wave %U
+Icon=wave
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Player;Music;
+StartupWMClass=wave
+MimeType=x-scheme-handler/wave;

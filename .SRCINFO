@@ -1,0 +1,26 @@
+pkgbase = wave-bin
+	pkgdesc = Modern and sleek cross-platform music streaming player
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://waveapp.pages.dev
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = gtk3
+	depends = mpv
+	depends = hicolor-icon-theme
+	depends = libsecret
+	depends = alsa-lib
+	provides = wave
+	provides = wave-app
+	provides = wave-music
+	conflicts = wave
+	conflicts = wave-app
+	conflicts = wave-music
+	noextract = wave-bin-1.1.4.AppImage
+	options = !strip
+	source = wave-bin-1.1.4.AppImage::https://github.com/ayman708-UX/WAVE/releases/download/v1.1.4/WAVE-Linux-x86_64.AppImage
+	source = wave.desktop
+	sha256sums = 61c187dbd8af5463e06c4e7b5eae016bf75aa3afb0413548831676039b9b3304
+	sha256sums = e7e208df1e586ac1d7ff04babfdb1aa41ab5fd038d750840452e98ef104b2e8a
+
+pkgname = wave-bin
