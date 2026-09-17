@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=prismlauncher-ore-ui-themes
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Minecraft Bedrock-inspired Ore UI theme and icon pack for Prism Launcher"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 optdepends=('prismlauncher: the launcher these themes are for')
 install=ore-ui.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9294c7a9ec160cbcaaa7a26998d4df42b28a1b73055bdbc64bc6ffa059d5f9cb')
+sha256sums=('307962fd07b1d36f5ff1503d858ec07944fc36a738c7ea716f0e72a00781839c')
 
 latestver() {
     curl -fsSL "https://api.github.com/repos/ninsent/Ore-UI-theme-pack/releases/latest" |
