@@ -7,7 +7,7 @@ pkgname=xfb
 # every machine that installed it. Raise it only if the version ever has to go
 # backwards again.
 epoch=1
-pkgver=4.0
+pkgver=4.01
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -177,26 +177,18 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v4.0:"
-    echo "  - XFB asks who is at the desk: operator accounts with roles, and"
-    echo "    every menu entry behind a permission its role has to hold"
-    echo "  - A production computer works on the station's own files over the"
-    echo "    share, prepares the programme, and publishes it back"
-    echo "  - A watched folder files what lands in it by itself, and a folder"
-    echo "    named after a category files its songs under that category"
-    echo "  - The national music quota, marked on the library and counted off"
-    echo "    the as-run log"
-    echo "  - Time signals: the pips on the hour, and an ident that names it"
-    echo "  - What Is Scheduled shows what is booked to go on air -- including"
-    echo "    the weekly bookings that never aired in Portuguese or French"
-    echo "  - The icons can be drawn to match the theme, with two more themes"
-    echo "    to draw them for, and an Options window an operator can read"
-    echo "  - Download options are managed per role, and the tools a job needs"
-    echo "    arrive the first time it asks for them"
-    echo "  - The playhead can be dragged to seek in wave view, and the hour"
-    echo "    clock puts its floating items on air, not just the pinned ones"
-    echo "  - Portuguese and French for all of it, plus 33 plurals that had"
-    echo "    been shipping blank"
+    echo "New in v4.01:"
+    echo "  - Record what goes on air, or the source coming into the desk,"
+    echo "    as MP3, Ogg or Opus, with keys to start and stop it"
+    echo "  - Control XFB over the network once you switch it on: its own"
+    echo "    port and its own keys, nothing shared with the phone sync"
+    echo "  - A control page comes with it, so a phone or a laptop drives the"
+    echo "    station without anybody writing a line of code"
+    echo "  - XFB installs as a flatpak or runs as a single AppImage file,"
+    echo "    and the flatpak repository offers every release after this one"
+    echo "  - The flatpak starts on a Wayland desk, which the first one did"
+    echo "    not: it asked for X11 after the sandbox had taken it away"
+    echo "  - Portuguese and French for the remote control and its page"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"
