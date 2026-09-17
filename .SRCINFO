@@ -1,6 +1,6 @@
 pkgbase = google-colab-cli
 	pkgdesc = CLI for interacting with Google Colab
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/googlecolab/google-colab-cli
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = google-colab-cli
 	depends = python-typing_extensions
 	depends = python-websocket-client
 	optdepends = openssh: colab ssh (SSH-over-WebSocket access to the runtime VM)
-	source = google-colab-cli-0.7.0.tar.gz::https://github.com/googlecolab/google-colab-cli/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = ab0035b2db23991133518bd18243c885efb15be95cbcac1e463912db0f496b18
+	source = google-colab-cli-0.7.1.tar.gz::https://github.com/googlecolab/google-colab-cli/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = 6e70c8a95bd3a07652d22960f3dd1240b066e6201dd17ada749b48037cdce841
 
 pkgname = google-colab-cli

@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=google-colab-cli
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="CLI for interacting with Google Colab"
 arch=('any')
@@ -29,7 +29,7 @@ makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-hatch-
 # PyPI sdists lag the git tags (which nvchecker tracks), so build from the
 # tag tarball; hatch-vcs gets the version via SETUPTOOLS_SCM_PRETEND_VERSION.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ab0035b2db23991133518bd18243c885efb15be95cbcac1e463912db0f496b18')
+sha256sums=('6e70c8a95bd3a07652d22960f3dd1240b066e6201dd17ada749b48037cdce841')
 
 build() {
   cd "$pkgname-$pkgver"
