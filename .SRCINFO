@@ -1,6 +1,6 @@
 pkgbase = linear-electron-git
 	pkgdesc = Unofficial Linear desktop app (linear-electron-git)
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/hughesjs/linear-electron
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = linear-electron-git
 	makedepends = git
 	depends = electron44
 	depends = xdg-utils
-	provides = linear-electron=0.1.1
+	provides = linear-electron=0.2.0
 	conflicts = linear-electron
 	conflicts = linear-electron-bin
 	conflicts = linear-electron-appimage

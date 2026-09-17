@@ -1,6 +1,6 @@
 # Maintainer: James H <james@jamesmcmahon.co.uk>
 pkgname=linear-electron-git
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Unofficial Linear desktop app (linear-electron-git)'
 arch=('x86_64' 'aarch64')
