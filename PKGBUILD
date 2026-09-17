@@ -1,3 +1,5 @@
+#!/hint/bash -e
+#
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
@@ -24,7 +26,7 @@ makedepends=(
   python-sphinx
 )
 optdepends=('python: for using botan2.py')
-source=(https://botan.randombit.net/releases/Botan-${pkgver}.tar.xz{,.asc}
+source=(https://botan.randombit.net/releases/Botan-"${pkgver}".tar.xz{,.asc}
         boost-fixes.patch
         fix-oaep-unpad-breaking-change.patch
         CVE-2024-50382.patch
@@ -87,6 +89,20 @@ package() {
     ${_depends[@]}
   )
 
+  : "${pkgdir:?}"
+
   DESTDIR="$pkgdir" make -C Botan-$pkgver install
   install -Dm644 Botan-$pkgver/license.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+
+: "${arch[@]}"
+: "${depends[@]}"
+: "${license[@]}"
+: "${makedepends[@]}"
+: "${optdepends[@]}"
+: "${pkgdesc}"
+: "${pkgrel}"
+: "${source[@]}"
+: "${sha256sums[@]}"
+: "${url}"
+: "${validpgpkeys[@]}"
