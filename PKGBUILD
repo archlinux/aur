@@ -3,7 +3,7 @@
 # Contributor: kiromantia <aur@dataclast.network>
 
 pkgname=cinc-workstation-bin
-pkgver=26.2.3
+pkgver=26.2.4
 pkgrel=1
 pkgdesc="The Cinc installation package includes everything you need to start converging your machines."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=(libxcrypt-compat)
 conflicts=(chef chef-solo chef-dk chef-client cinc)
 source=("http://downloads.cinc.sh/files/stable/cinc-workstation/${pkgver}/ubuntu/24.04/cinc-workstation_${pkgver}-1_amd64.deb")
-sha256sums=('78571fc2f3d564bc32c92b18f2ab8e653ebded4c08eecff5b47904677d701fe7')
+sha256sums=('a27a5a18142cbedcd7e7da4d16ca608634cacec0d307ab7a6ea03a0acceca9ad')
 
 package() {
   cd "$srcdir"
