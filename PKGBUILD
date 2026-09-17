@@ -3,7 +3,7 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=26.1.1.10
+pkgver=26.2.1.2
 pkgrel=1
 pkgdesc="Media relay for RTP sessions (Sipwise proxy)"
 arch=('x86_64')
@@ -26,8 +26,9 @@ makedepends=(
   'gcc'
   'gperf'
   'make'
+  'pandoc'
   'pkgconf'
-  'ruby-ronn-ng'
+  'systemd'
 )
 
 checkdepends=(
@@ -36,7 +37,12 @@ checkdepends=(
   'python-websockets'
 )
 
-optdepends=('rtpengine-kernel-dkms: Kernel module support for RTPengine forwarding')
+# NOTE: rtpengine-kernel-dkms is maintained in lockstep with this package:
+# the daemon and the nft_rtpengine kernel module share a kernel/userspace ABI,
+# so both PKGBUILDs must always be bumped to the same pkgver.
+optdepends=(
+  'rtpengine-kernel-dkms: In-kernel packet forwarding via the nft_rtpengine module'
+)
 options=(!emptydirs)
 
 install="${pkgname}.install"
@@ -49,7 +55,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archi
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "10-kmod.conf")
-sha256sums=('8e6fbce8987dbf5510c51c7bbf0843ee03f8b4618007243c4f177dde739b5a2c'
+sha256sums=('a7ddc657f3f07883a267eb04aedb82b005db10f954f7a6c3a74b1acbdc21287b'
             '9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e'
             '50330c2dd7c3f3fcb4dd0ed947cbc08139a1255199885299646ebefc48f5f34f'
             '342781f68382a10521dfe2eb1c0527e7f1bab18435995ea41da8eb57ca7d7e9d')
