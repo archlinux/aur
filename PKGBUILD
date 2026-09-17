@@ -3,7 +3,7 @@
 _pkgname=bt-dualboot-ng
 _pyname=bt_dualboot_ng
 pkgname=${_pkgname}
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Sync Bluetooth pairing keys between dualboot Linux and Windows"
 arch=('any')
@@ -11,8 +11,8 @@ url="https://github.com/awsl1414/bt-dualboot"
 license=('MIT')
 depends=('python' 'chntpw')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
-source=('https://files.pythonhosted.org/packages/f6/22/b58e6114485a3fa7d5257d164f17ee7265d31cb7faaa317ba82c10a4f7b7/bt_dualboot_ng-2.1.1.tar.gz')
-b2sums=('df82d8c51488d7f613dbe8339d0d1614de92b0ee8a2458fb180546b95107cfc6ef9aebfe44636fb94399c2f77f6f900c5aedfdf2e3935bd71015e76c03cb5b1b')
+source=("https://files.pythonhosted.org/packages/83/2a/f05096b724a9207068b8db0a740f94b7cca6b4745bbf5ead81102deeb4ab/bt_dualboot_ng-2.1.2.tar.gz")
+b2sums=('43c27a54b7d80f6e0ada450baeedf337cceaaaae9d2a1d65619d561a693c9b419a35d71377ed23ad0244e9f03939cfa6c95cd37a89dfe43de3b97fc8ea273d7c')
 
 build() {
     cd "${srcdir}/${_pyname}-${pkgver}"
