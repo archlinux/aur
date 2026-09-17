@@ -5,7 +5,7 @@
 
 pkgname=pob-redux-bin
 _pkgname=pob-redux
-pkgver=0.2.21
+pkgver=0.2.22
 pkgrel=1
 pkgdesc="Path of Building for Path of Exile 1 and 2, rebuilt"
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=("$_pkgname-$pkgver.deb::https://github.com/juddisjudd/pob-redux/releases/download/v$pkgver/PoB.Redux_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/juddisjudd/pob-redux/v$pkgver/LICENSE")
-sha256sums=('69ffa8d8c0192506aaa62dde4703f33f99a3e7d3ef6d4e57f1077ebaeefdb9b3'
+sha256sums=('136632400abeec6694c573473959fd9d204da9c11be212b906a33bc8901532eb'
             '1724147fdca0d7d5be9f05217865af65e595ff3d17c8bcbd58683fe23e8909f7')
 
 package() {
