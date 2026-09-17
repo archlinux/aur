@@ -1,6 +1,6 @@
 pkgbase = sync-worktrees
 	pkgdesc = Git cli tool for managing worktrees
-	pkgver = 5.3.1
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://github.com/yordan-kanchelov/sync-worktrees
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = sync-worktrees
 	makedepends = jq
 	depends = nodejs
 	provides = sync-worktrees
-	noextract = sync-worktrees-5.3.1.tgz
+	noextract = sync-worktrees-7.0.0.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = sync-worktrees-5.3.1.tgz::https://registry.npmjs.org/sync-worktrees/-/sync-worktrees-5.3.1.tgz
-	b2sums = ce7ee3b86b1e58b17343c2dd2ad10d7020966dbb7ee7d5b9905aabddbb8aca712aac71aebe9497e2748fec6590d1f597b0284f538f2630017343399b8419b7fe
+	source = sync-worktrees-7.0.0.tgz::https://registry.npmjs.org/sync-worktrees/-/sync-worktrees-7.0.0.tgz
+	b2sums = dc67dd05641bae5cbe4ad407df57da41b2408190e3d8487d086768d237caa8a335b885072f72c12f8a8282211a8fd2b83004bda9179f4236d3d59bfa8ba9674f
 
 pkgname = sync-worktrees
