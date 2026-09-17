@@ -2,11 +2,11 @@
 
 pkgname=python-kicost-digikey-api-v4
 _name=${pkgname#python-}
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="KiCost plugin for the Digikey PartSearch API"
-provides=(${pkgname} python-digikey-api)
-conflicts=(${pkgname} python-digikey-api)
+provides=(${pkgname})
+conflicts=(${pkgname})
 arch=('any')
 url="https://github.com/set-soft/kicost-digikey-api-v4"
 _pydeps=(
@@ -34,9 +34,9 @@ optdepends=(
     'kicad: Electronic schematic and printed circuit board (PCB) design tools'
     'kicost: KiCAD script to convert BOM xml into spreadsheet'
 )
-license=('MIT')
+license=('GPL-3.0-or-later')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('4c244015fcf1d2c2a94b65f23c51c042331f014e030f07401aa359747637f26c')
+sha256sums=('beed9bd89296c5946809b3043592d1c6107a7613b3c3d41b5dee4f3b43cb5b13')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
