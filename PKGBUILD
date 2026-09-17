@@ -5,15 +5,14 @@
 
 pkgname=basic256
 pkgver=2.0.99.10
-pkgrel=5
+pkgrel=6
 pkgdesc="Educational BASIC programming environment"
-arch=('i686' 'x86_64' 'i486' 'pentium4')
+arch=('i686' 'x86_64' 'pentium4')
 url="http://www.basic256.org/"
 license=('GPL2')
 depends=('qt5-multimedia' 'qt5-serialport' 'qt5-speech')
 makedepends=('bison' 'flex')
 makedepends_i686=('icu76')
-makedepends_i486=('icu76')
 makedepends_pentium4=('icu76')
 source=(http://downloads.sourceforge.net/kidbasic/${pkgname}_${pkgver}.orig.tar.gz
         "basic256.desktop")
