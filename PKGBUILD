@@ -5,7 +5,7 @@ pkgname=kei
 pkgdesc="Fast, parallel photo sync from the cloud to local storage"
 url="https://github.com/rhoopr/kei"
 
-pkgver=0.23.1
+pkgver=0.24.0
 pkgrel=1
 
 arch=("x86_64" "i686")
@@ -18,6 +18,9 @@ depends=(
 makedepends=(
     "cargo"
 )
+checkdepends=(
+    "git"
+)
 
 options=("!lto")
 
@@ -26,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
 )
 b2sums=(
-    "61f140b42e5ba6fb5f161753cd3555f3fb2167081a409ea1b51bb0ac036c31dac2159bfdd780c6cad2334fff921ebe8b984d90697325e4f589e6ab6baeb81835"
+    "67a89c727bdba73160c0b2cafa495f2c5ee5c5bd6a31255f8a9b057c4deb03aba3f2d0400ea6cd7fbfc49cf4b122058a496bcbdff774e23e4f63da3082bf20d0"
     "f6dc0928cf8b2e32a43f51600dfb1bd3ab5d8794b2c259a9171ace0d2d6aad28012a6561193c80a7b58a2f81384c67773d7ded7d60c19a8f14f7f7672f87e373"
 )
 
