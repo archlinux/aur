@@ -6,14 +6,26 @@
 # bumped by hand on every new beta and pushed to the AUR git repo — there is
 # no CI auto-push yet (#433).
 #
-# Installs alongside rkd-bin under a distinct path (/opt/rkd-dev-bin) so both
-# can coexist. The Electron build's WM class/binary internals still say
-# "RKD" (baked in at build time by productName), so windows from rkd-bin and
-# rkd-dev-bin won't be visually distinguishable beyond the launcher name/icon
-# — acceptable for a beta-tracking package.
+# Installs alongside rkd-bin under a distinct path (/opt/rkd-dev-bin) — real
+# coexistence (#822): main.ts gives this channel its own Electron app name
+# (own ~/.config data dir, so it can't clobber rkd-bin's settings/auth
+# tokens) and its own .desktop identity (this file, installed as
+# rkd-dev.desktop rather than the shared rkd.desktop rkd-bin uses — sharing
+# that path was the actual reason these two used to `conflicts=`). The
+# .deb's own auto-generated rkd.desktop is still baked from the shared
+# `productName: RKD` in electron-builder.yml, so it's deleted below rather
+# than left in place — otherwise it would collide with rkd-bin's own
+# rkd.desktop the moment both packages are installed together.
+#
+# Window-switcher-level distinction (a WM_CLASS the OS window manager can
+# tell apart, e.g. via StartupWMClass) is NOT included — Electron's actual
+# WM_CLASS derivation from app.setName() wasn't verified live before this
+# shipped, and a wrong guess here is worse than the field's absence (a
+# missing StartupWMClass just falls back to heuristic matching, the same
+# degraded-but-working state this package shipped with before #822).
 
 pkgname=rkd-dev-bin
-pkgver=0.2.0_beta.21
+pkgver=0.2.0_beta.22
 pkgrel=1
 pkgdesc="RKD desktop client (beta/development channel)"
 arch=(x86_64)
@@ -24,7 +36,6 @@ license=(LicenseRef-custom)
 # blobs that were never built with debug info to begin with.
 options=(!strip !debug)
 provides=(rkd)
-conflicts=(rkd rkd-bin)
 depends=(
   alsa-lib
   at-spi2-core
@@ -49,11 +60,11 @@ optdepends=('libayatana-appindicator: tray icon support')
 # uses the hyphenated form there even though the .deb's own control file
 # reports a tilde per Debian pre-release convention).
 # _tag: the Forgejo release tag the asset was uploaded under.
-_pkgver=0.2.0-beta.21
-_tag=v0.2.0-beta.21
+_pkgver=0.2.0-beta.22
+_tag=v0.2.0-beta.22
 
 source=("$pkgname-$pkgver.deb::https://git.rkd.nanoya.biz/rkd/releases/releases/download/${_tag}/RKD-electron-rkd_${_pkgver}_amd64.deb")
-sha256sums=('253b4e0eb73be66857ab034a59cbe32b630f9b604016d92da7d67dc87001f7e4')
+sha256sums=('e6e4fdd2d20ab90f45476350378f2608f450da717a6d33ef3c5a1b73a07ec15a')
 noextract=("$pkgname-$pkgver.deb")
 
 package() {
@@ -70,18 +81,17 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/rkd" "$pkgdir/usr/bin/$pkgname"
 
-  # Installed as the shared rkd.desktop filename (not $pkgname.desktop) so
-  # it matches main.ts's app.setDesktopName("rkd") across every channel —
-  # that's what Chromium's GetXdgAppId() reports for the notification
-  # desktop-entry hint, and it has to match the installed filename exactly
-  # for OS notification history to resolve this app's identity (#570).
-  # Name=/Icon=/Exec= below stay per-channel; only the filename is shared —
-  # rkd-bin and rkd-dev-bin already conflicts= each other, so only one is
-  # ever actually installed at a time, no real collision here. Overwrites
-  # the .deb's own auto-generated rkd.desktop outright (install -Dm644
-  # doesn't need it removed first) — that one's Exec= points at /opt/RKD,
-  # wrong for this renamed /opt/$pkgname install.
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/rkd.desktop" <<EOF
+  # Installed as rkd-dev.desktop (#822) — matches main.ts's
+  # app.setDesktopName("rkd-dev") for the beta-version-stamped build, which
+  # is what Chromium's GetXdgAppId() reports for the notification
+  # desktop-entry hint (#570); has to match the installed filename exactly
+  # for OS notification history to resolve this app's identity. Delete the
+  # .deb's own auto-generated rkd.desktop first — coexisting with rkd-bin
+  # now means that path is rkd-bin's alone, and leaving this package's copy
+  # in place too would collide the moment both are installed together (that
+  # collision is exactly what `conflicts=` used to paper over).
+  rm -f "$pkgdir/usr/share/applications/rkd.desktop"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/rkd-dev.desktop" <<EOF
 [Desktop Entry]
 Name=RKD (Dev)
 Comment=RKD desktop client (beta/development channel)
@@ -89,7 +99,6 @@ Exec=/opt/$pkgname/rkd %U
 Terminal=false
 Type=Application
 Icon=$pkgname
-StartupWMClass=Rkd
 Categories=Network;
 EOF
 
