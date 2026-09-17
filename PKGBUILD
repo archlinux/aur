@@ -2,7 +2,7 @@
 _base=trame-rca
 pkgname=python-${_base}
 pkgdesc="Remote Controlled Area widget for trame"
-pkgver=2.10.1
+pkgver=2.11.2
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -11,7 +11,7 @@ depends=(python-trame-client python-wslink python-pillow python-numpy)
 makedepends=(python-build python-installer python-hatchling nodejs npm)
 # checkdepends=(python-pytest-xprocess python-pixelmatch python-playwright)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9cbffebc4ba22a5533f56b543ce124b24fb848a7b1b1ea243e57e419b4a1745439fb6807f648a18580d66bcc712c95acf5daef3bdec60012efc38a6779d28a2c')
+sha512sums=('71aa06296168f4e9fddb3600d4f1c711bf9a46976c5e106e08f722583a98a5037dd6207d4de319df8544600b5662ecbbcd23d2dcc59641955f43a6e3e4abad55')
 
 build() {
   cd ${srcdir}/${_base}-${pkgver}/vue-components
