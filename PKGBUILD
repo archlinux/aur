@@ -2,7 +2,7 @@
 
 _pkgname=obs-livesplit-one
 pkgname="${_pkgname}-bin"
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 groups=('obs-plugins')
 pkgdesc="A plugin for OBS Studio that allows adding LiveSplit One as a source."
@@ -15,7 +15,7 @@ depends=("obs-studio")
 _arch=x86_64-unknown-linux-gnu
 _source="${_pkgname}-v${pkgver}-${_arch}.tar.gz"
 source=("${url}/releases/download/v${pkgver}/${_source}")
-sha256sums=('73e5fdafee5304328a1e2b12f7454db9c29c647fb5e71db0466a3b62445b5e42')
+sha256sums=('7b5c6ec1127a1830a5512d59ecf31dcd1b90242d17710360bbce439ee720690d')
 
 package() {
   install -Dm755 -t "${pkgdir}/usr/lib/obs-plugins/" "${srcdir}/${_pkgname}/bin/64bit/libobs-livesplit-one.so"
