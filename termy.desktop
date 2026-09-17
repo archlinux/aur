@@ -13,4 +13,4 @@ Actions=open-tab-here;
 
 [Desktop Action open-tab-here]
 Name=Open new Termy tab here
-Exec=termy --working-directory %f
+Exec=termy --new-tab --working-directory %f
