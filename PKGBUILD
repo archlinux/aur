@@ -3,7 +3,7 @@
 # Contributor: Aaron Abbott <aabmass at gmail dot com>
 
 pkgname=mycli
-pkgver=1.76.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A Terminal Client for MySQL with AutoCompletion and Syntax Highlighting'
 arch=('any')
@@ -38,11 +38,10 @@ makedepends=(
 )
 optdepends=(
     'python-llm: LLM support'
-    'python-sshtunnel: SSH support'
 )
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbcli/mycli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('99096d466b2d4c2b3823b5caa065a958b5a84be0254fefc78ed61231ac96fd09')
+sha256sums=('c4ac99757e9593813c8269e49cf68e804cc88ad31a8bae49d54e63c89f673346')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
