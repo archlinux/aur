@@ -1,0 +1,6 @@
+# Copy to /boot/scripts/wpa.conf and adjust. The ESP is plaintext:
+# use the PSK hash instead of the password (wpa_passphrase 'SSID' 'password').
+network={
+	ssid="MyWLAN"
+	psk=<64 hex characters from wpa_passphrase>
+}

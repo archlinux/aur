@@ -1,0 +1,8 @@
+# Build artefacts and downloads - never commit these to the AUR repo.
+/src/
+/pkg/
+*.pkg.tar*
+*.iso
+*.iso.asc
+*.iso.sha256
+*.deb
