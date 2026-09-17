@@ -1,8 +1,8 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 
 pkgname=ez2lazer
-pkgver=2026.913.0
-pkgrel=2
+pkgver=2026.917.0
+pkgrel=1
 pkgdesc="Ez to Lazer, As a cool client. (a fork of osu!lazer)"
 arch=(x86_64)
 url="https://github.com/SK-la/Ez2Lazer"
