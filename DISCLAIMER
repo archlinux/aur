@@ -1,0 +1,14 @@
+免责声明 / DISCLAIMER
+
+[中文]
+本项目为社区非官方维护的 Arch Linux 打包构建工程。
+WeChat、微信 及相关商标、Logo、版权均归腾讯科技（深圳）有限公司（Tencent Holdings Limited）所有。
+本项目仅作为 Linux 平台的兼容性与体验优化辅助工具，代码本身仅包含打包与启动脚本，
+不包含、不修改任何微信核心闭源二进制代码，不以牟利为目的，与腾讯官方无任何形式的隶属或合作关系。
+
+[English]
+This project is an unofficial community packaging effort for Arch Linux.
+WeChat and associated trademarks, logos, and copyrights belong to Tencent Holdings Limited.
+This repository only contains packaging and launcher scripts for compatibility and usability improvements on Linux.
+It does not contain or modify any proprietary binary code of WeChat, has no commercial intent,
+and is not affiliated with or endorsed by Tencent Holdings Limited.

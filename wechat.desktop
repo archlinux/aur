@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=微信
+Name[zh_CN]=微信
+Name[zh_TW]=微信
+Name[en]=WeChat
+Comment=Tencent WeChat
+Comment[zh_CN]=腾讯微信 Linux 原生客户端
+Exec=wechat %u
+Icon=wechat
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;Chat;
+StartupWMClass=wechat
+MimeType=x-scheme-handler/weixin;
+Keywords=wechat;weixin;tencent;微信;
