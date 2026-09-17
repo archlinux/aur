@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qcalc-bin
 _pkgname=Q.Calc
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="A modern, cross-platform calculator built for productivity."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname//./}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/from104/qcalc/v${pkgver}/LICENSE"
 )
-sha256sums=('38ed52c5ab9200bfe61830f803ebff14a0790cff72c8c1c149a055c3702a08d5'
+sha256sums=('b6b9924b67131381791ed33083470f50ce597ed1d9cbb8713ca8da76043fcd1d'
             '3987b48fb3c79907511fb74614201dbf40f9bff0cc691d4f2dbcad754cba519b')
 prepare() {
     sed -i -e "
