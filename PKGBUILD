@@ -2,7 +2,7 @@
 
 _name=gradio
 pkgname=python-$_name
-pkgver=6.26.0
+pkgver=6.27.0
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
@@ -16,15 +16,13 @@ optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth'
             'ruff: needed for custom component docs generation'
             'ffmpeg: audio/video processing')
 source=("$url/archive/refs/tags/$_name@$pkgver.tar.gz")
-sha256sums=('ad4becfa5b4258dc08e38ffa8ac108440e9f83d6c8ee9bbb7773a4b1924af6d8')
+sha256sums=('d0be3dacac936fd6630697186eb18eb1f3d9c9ed917feed01c79f41df4a03062')
 
 prepare(){
   cd "$srcdir"/$_name-$_name-$pkgver
   # Remove tests that need docker
   rm -rf test/test_docker
   # Fix tests
-  sed -i 's/package_json\["dependencies"\]/package_json.setdefault("dependencies", {})/' gradio/cli/commands/components/_create_utils.py
-  sed -i 's/            "TabbedInterface",/            "TabbedInterface",\n            "Workflow",/' gradio/utils.py
   sed -i "s/f\"{url}\//f\"{url.rstrip('\/')}\//g" test/test_routes.py
   sed -i "s/f\"{local_url}\//f\"{local_url.rstrip('\/')}\//g" test/test_routes.py
   sed -i 's/"-map", "0:a:0", "-f", "md5", "-"/"-map", "0:a:0", "-c", "copy", "-f", "md5", "-"/' test/test_processing_utils.py
