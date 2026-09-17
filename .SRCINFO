@@ -1,0 +1,22 @@
+pkgbase = openmeters
+	pkgdesc = Fast and professional audio metering/visualization for Linux.
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://github.com/httpsworldview/openmeters
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = pipewire
+	makedepends = clang
+	depends = pipewire
+	depends = wayland
+	depends = libxkbcommon
+	depends = vulkan-icd-loader
+	provides = openmeters
+	conflicts = openmeters
+	source = git+https://github.com/httpsworldview/openmeters.git#tag=v1.15.0
+	sha256sums = 645cee54965296e7484e124316c803d46640589c23ca280597848c9b3aa65b51
+
+pkgname = openmeters
