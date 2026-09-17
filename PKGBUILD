@@ -2,7 +2,7 @@
 
 
 pkgname=ustreamer
-pkgver=6.66
+pkgver=6.67
 pkgrel=1
 pkgdesc="Lightweight and fast MJPEG-HTTP streamer"
 url="https://github.com/pikvm/ustreamer"
@@ -11,7 +11,7 @@ arch=(i686 x86_64 armv6h armv7h aarch64)
 depends=(libjpeg-turbo libevent libbsd libgpiod systemd)
 makedepends=(git)
 source=("git+https://github.com/pikvm/ustreamer#commit=v${pkgver}")
-sha256sums=('04adb6cdb2bdaefa3cfc1678ed089c5d279ba93f39f6e5666e51f2b2a6f817d9')
+sha256sums=('e39afa3fdb22db55321d47135e2a6e3f43377935a24a866c41dd6d8fd9004073')
 
 
 _options="WITH_GPIO=1 WITH_SYSTEMD=1"
