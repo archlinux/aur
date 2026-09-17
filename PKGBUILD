@@ -1,6 +1,6 @@
 # Maintainer: James H <james@jamesmcmahon.co.uk>
 pkgname=linear-electron-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Unofficial Linear desktop app (linear-electron-bin)'
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ provides=("linear-electron=$pkgver")
 conflicts=(linear-electron linear-electron-git linear-electron-appimage )
 options=('!strip' '!debug')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'libxrandr' 'libxkbcommon' 'libdrm' 'mesa' 'libnotify' 'xdg-utils')
-source_x86_64=(https://github.com/hughesjs/linear-electron/releases/download/v0.1.1/linear-electron-x64-v0.1.1.tar.gz)
-sha256sums_x86_64=(f9f67c1e27b148f336cb9e65abaaf3c1cf7e38d479c3130af4b89772930b80cb)
-source_aarch64=(https://github.com/hughesjs/linear-electron/releases/download/v0.1.1/linear-electron-arm64-v0.1.1.tar.gz)
-sha256sums_aarch64=(750ea1179d2ddf780c91587384399f162a4ce9d9e1e532d0a0fe748e6bfc9b58)
+source_x86_64=(https://github.com/hughesjs/linear-electron/releases/download/v0.2.0/linear-electron-x64-v0.2.0.tar.gz)
+sha256sums_x86_64=(074fc831699672cdd34126006cda580d84fe022e94dddc447ce1b71c4543b671)
+source_aarch64=(https://github.com/hughesjs/linear-electron/releases/download/v0.2.0/linear-electron-arm64-v0.2.0.tar.gz)
+sha256sums_aarch64=(f20b00b22cf5e5d80df849433f32ef5cede151c36f0ccea4679f941f30f629bb)
 
 package() {
   local bundle_arch=x64
