@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=omniget-bin
 _pkgname=OmniGet
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
-pkgdesc="Media downloader. Paste a link. Get your file. Udemy, Hotmart, Telegram and 1000+ Downloader.(Prebuilt version)"
+pkgdesc="Media downloader. Paste a link. Get your file. Udemy, Hotmart, Telegram and 1000+ Downloader."
 arch=(
     'aarch64'
     'x86_64'
@@ -17,11 +17,14 @@ depends=(
     'gtk3'
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
+    'alsa-lib'
+    'libayatana-indicator'
+    'libappindicator'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('8c090789dfe29056c2b3b3c6e8d81e0d9b16bcec75c431fc5ffa1699f4117362')
-sha256sums_x86_64=('2dee804e4eca27a671a9e33aba95ac328541d421b3fa7f38adef23e019a74466')
+sha256sums_aarch64=('57dc6845ba5540d68496b197d58fb85d952d6d7b70a70e9ceaacd4f140d47dc5')
+sha256sums_x86_64=('a0e9f394496c89b53feaa94b96178a2885d81b6ca9ade48e7239a139fe9abf1c')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
