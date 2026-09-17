@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-bin
 _pkgname=Mailspring
-pkgver=1.23.0
-_electronversion=41
-pkgrel=2
-pkgdesc="A beautiful, fast and fully open source mail client.(Prebuilt version.Use system-wide electron)"
+pkgver=1.24.1
+_electronversion=44
+pkgrel=1
+pkgdesc="A beautiful, fast and fully open source mail client."
 arch=(
     'aarch64'
     'x86_64'
@@ -24,8 +24,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.x86_64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('f5241eb2064537c5e177ef2b56fe3ba909ec1312ea7f7717d027c142aa084bcc')
-sha256sums_x86_64=('b99be331fb4144b7556edb8e11cd854464cd3e8f3716527171da7c3c8fbb16ba')
+sha256sums_aarch64=('98af5f40f4c0d854fdaa8bdc1057a9a8b55a5f3dc98b8dc8c3fb41c09eeca3c2')
+sha256sums_x86_64=('f6836f553942a7c31c3fbe0382022e4f7e38496830268c2e3b0b4a6879fe147f')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -68,7 +68,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
