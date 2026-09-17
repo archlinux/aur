@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=pocket-casts
 pkgname="${_pkgname}-desktop-bin"
-pkgver=0.13.0
-_electronversion=42
+pkgver=0.14.0
+_electronversion=44
 pkgrel=1
-pkgdesc="The Pocket Casts webapp, packaged for the Linux Desktop.(Prebuilt version.Use system-wide electron)"
+pkgdesc="The Pocket Casts webapp, packaged for the Linux Desktop."
 arch=(
     'aarch64'
     'x86_64'
@@ -28,8 +28,8 @@ source=(
 )
 sha256sums=('5478e5a98666c41de828fb7f50c3ea53b05755b7bda7d11211c6b1406d3046ba'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('bca6f8957b72ede1301f51a303c09673a1e59d6cd5f4cd8f45eaa6a1816e715d')
-sha256sums_x86_64=('6e21fcee8c7c37bf22ee4e146c44346c4d49924b36579a30daf97ad929b79d81')
+sha256sums_aarch64=('5371c6fbd56ced0ec734f1f0c30b6afd4ffeba52e58e107d1f23521f4d69f729')
+sha256sums_x86_64=('687e9a670086b2e26c6882ce5bdcec190ed8c97251064186a834bf90a1613c39')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
