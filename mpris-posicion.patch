@@ -1,0 +1,1082 @@
+From a24a2fc8491829a514e78a21348c9ca4eb1a58cd Mon Sep 17 00:00:00 2001
+From: kitasael-burakku <280549934+kitasael-burakku@users.noreply.github.com>
+Date: Wed, 16 Sep 2026 20:43:05 -0600
+Subject: [PATCH] =?UTF-8?q?fix(mpris):=20la=20posici=C3=B3n=20deja=20de=20?=
+ =?UTF-8?q?arrastrarse=20de=20la=20pista=20anterior?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Con un cliente MPRIS abierto (la tarjeta de media de KitasanShell), al pasar
+de canción el tiempo transcurrido seguía contando desde la pista anterior
+durante la canción entera. Reproducido en un bus privado con un cliente que
+imita a Quickshell (ancla en Get Position al cambiar mpris:trackid, reancla
+con Seeked, extrapola): 6,3 s por delante tras un next y 9 s tras el avance
+natural, que es el caso de todos los días.
+
+La causa no estaba en MPRIS sino en el espejo del player, por tres lados:
+
+- mpv manda time-pos y duration SIN data en cada cambio de archivo, al
+  soltar el viejo, y el espejo lo ignoraba: se quedaba con los números de la
+  pista anterior. Ahora valen 0.
+- Aun así, mpv contesta al loadfile —y al set pause que Load manda detrás,
+  en la misma vuelta— ANTES de soltar el archivo: medido, 25 de 30 fotos tras
+  un next seguían llevando la posición anterior con la pista nueva en Track.
+  clockOf solo da por buenas posición y duración si el path del espejo es el
+  de la pista actual; path es la última propiedad observada y llega después
+  de los null, así que no depende de tiempos. La usan sus tres consumidores:
+  statusLocked, learnDuration y la foto de sesión. Se descartó reiniciar el
+  espejo en Load: si esa goroutine se retrasa pisa la duration ya publicada
+  de la pista nueva, que mpv no reenvía.
+- Nunca se emitía Seeked al empezar una pista, que es lo único que reancla a
+  un cliente. Ahora sale cuando el player ASIENTA el salto: con mpv
+  reproduciendo, en el primer avance de time-pos tras playback-restart, no en
+  el restart — tras un encadenado gapless time-pos se queda en 0 mientras
+  suena la cola de la pista anterior en el búfer (0,247 s con pipewire,
+  medido), y reanclar ahí deja al cliente ese tiempo por delante. En pausa
+  sale en el acto. Es la única fuente de la señal: el case "seek" de handle
+  ya no la emite, y cubre también los saltos que no pasan por handle.
+
+Dos hallazgos más que el informe no traía, misma causa:
+
+- El Metadata "duplicado" no era ruido: el primero llevaba la mpris:length
+  de la pista anterior. trackKeyOf se arma ahora sobre la length publicada
+  (lengthUS), así que sale una sola vez por cambio.
+- learnDuration escribía la duración de la pista anterior en la fila de
+  SQLite de la nueva tras cada next (8 de 8 corridas), que se corregía
+  después con otra escritura.
+
+Resultado en vivo: Get Position tras el cambio = 0, un Seeked y un Metadata
+por cambio, y diferencia con la posición real de 0,01–0,08 s en los dos
+caminos; seeks reproduciendo y en pausa correctos, y pausar/reanudar no
+emite Seeked.
+
+Tests por capa, verificados en ambas direcciones revirtiendo cada pieza por
+separado (todas compilando): en player, el null y cuatro variantes de la
+regla de asentado con eventos sintéticos, más TestRestartTrasEncadenadoConMpvReal
+contra mpv de verdad, que caza la simplificación "avisar en el restart"; en
+daemon, TestNextNoArrastraLaPistaAnterior (el escenario real) y
+TestEspejoDeOtroArchivoNoCuenta, que sostiene abierto el desajuste de path
+cargándole otro archivo a mpv por su socket — con el next solo, dos de los
+tres consumidores caían 3 de 30 y 2 de 10; así, 5 de 5; y en mpris, la
+clave de Metadata.
+
+Las fichas de arquitectura (playback.md, daemon.md, mpris-media.md) recogen
+las reglas con sus mediciones.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+---
+ docs/architecture/daemon.md        |  19 +++
+ docs/architecture/mpris-media.md   |  14 ++
+ docs/architecture/playback.md      |  23 ++-
+ internal/daemon/daemon.go          |  35 ++++-
+ internal/daemon/daemon_playback.go |  32 +++-
+ internal/daemon/daemon_test.go     | 124 ++++++++++++++++
+ internal/daemon/session.go         |  18 ++-
+ internal/mpris/mpris.go            |  41 ++++--
+ internal/mpris/mpris_test.go       |  20 +++
+ internal/player/player.go          | 154 +++++++++++++------
+ internal/player/player_test.go     | 228 ++++++++++++++++++++++++++++-
+ 11 files changed, 631 insertions(+), 77 deletions(-)
+
+diff --git a/docs/architecture/daemon.md b/docs/architecture/daemon.md
+index df97fb7..188d694 100644
+--- a/docs/architecture/daemon.md
++++ b/docs/architecture/daemon.md
+@@ -71,6 +71,25 @@ mitad del Write y sin ese intento el mensaje explicado no lo leería nadie
+ `learnDuration` aprende la duración desde mpv: muta la cola en memoria
+ bajo `d.mu` pero hace su `SetDuration` FUERA (era la única escritura a
+ SQLite bajo el mutex, y se dispara en cada cambio de pista).
++**La posición y la duración del espejo del player solo valen para la pista
++cuyo `path` coincide** (`clockOf`), y sus tres consumidores —`statusLocked`,
++`learnDuration` y la foto de sesión— pasan por ahí. Tras un `next` la cola ya
++dice la pista nueva pero mpv contesta al `loadfile` y al `set pause` que `Load`
++manda detrás ANTES de soltar el archivo viejo, así que el espejo sigue con sus
++números: medido, 25 de 30 fotos llevaban la posición de la pista anterior, que
++MPRIS publicaba justo cuando los clientes la preguntan, y `learnDuration`
++escribía la duración vieja en la fila de la nueva. Comparar `path` no depende
++de tiempos: es la última propiedad observada, y el `path` nuevo llega después
++de los `null` con que mpv suelta el anterior. Se descartó reiniciar el espejo
++en `Load` al recibir la respuesta: si esa goroutine se retrasa, pisa la
++`duration` ya publicada de la pista nueva, que mpv no reenvía.
++`TestNextNoArrastraLaPistaAnterior` fija el escenario real, pero la ventana
++dura milisegundos (sin la regla, `learnDuration` caía solo 3 de 30 veces);
++`TestEspejoDeOtroArchivoNoCuenta` la sostiene abierta cargándole otro archivo
++a mpv por su socket, y ahí cada consumidor cae 5 de 5.
++`restarted` emite `Seeked` en MPRIS cuando el player asienta un salto (ver
++`playback.md`); es la única fuente de esa señal: el `case "seek"` de `handle`
++ya no la emite, y así cubre también los saltos que no pasan por `handle`.
+ `advance(reason, chained, gen)` es la política de avance y salto de pistas
+ irreproducibles (guarda `errStreak`, silencio deliberado `stopped`). Sus dos
+ avisos —pista saltada, cola detenida tras una pasada entera sin nada que
+diff --git a/docs/architecture/mpris-media.md b/docs/architecture/mpris-media.md
+index fe41c54..0ccf83e 100644
+--- a/docs/architecture/mpris-media.md
++++ b/docs/architecture/mpris-media.md
+@@ -21,6 +21,20 @@ es seguro por godbus, no por maly: despacha cada llamada entrante con `go
+ conn.handleCall(msg)` (v5.2.2, `conn.go:435`), así que un método bloqueante
+ no detiene el bucle de lectura de la conexión — si algún día se cambia de
+ librería D-Bus, esa garantía hay que volver a comprobarla (A-17).
++**Position no se notifica por PropertiesChanged** (lo dice la spec): un
++cliente la ancla cuando la pregunta (al descubrir el reproductor, al cambiar
++`mpris:trackid`, al cambiar `PlaybackStatus`, según el cliente) y extrapola;
++solo `Seeked` la reancla. Hasta el 2026-09-16 maly no emitía `Seeked` al
++cambiar de pista y publicaba la posición de la anterior justo cuando el
++cliente preguntaba. Medido con un cliente que imita a Quickshell, iba 6,3 s
++por delante tras un `next` y 9 s tras el avance natural, durante toda la
++canción. Ahora `Seeked` sale cuando el player asienta cada salto (ver
++`playback.md`), y la diferencia medida queda en 0,01–0,08 s en los dos
++caminos. `trackKeyOf` se arma sobre la `mpris:length` PUBLICADA (`lengthUS`),
++no sobre la duración cruda de mpv. Así, cuando mpv reporta la misma que ya
++salía de la biblioteca (ffprobe y mpv leen la de libavformat), Metadata no
++se reemite: antes cada pista salía dos veces, y la primera con la duración de
++la anterior.
+ `metadataOf` es pura; el wrapper `Service.metadata` añade `artUrl` (carátula
+ embebida → cache SHA-1 en runtime dir, `art.go`; la extracción vive en
+ `internal/media`). El cache está ACOTADO a `maxArtBytes` (32 MB) con evicción
+diff --git a/docs/architecture/playback.md b/docs/architecture/playback.md
+index 449e81e..1ba19ab 100644
+--- a/docs/architecture/playback.md
++++ b/docs/architecture/playback.md
+@@ -8,7 +8,7 @@ wrapper de mpv. Gapless: `SetNext` mantiene una ventana de
+ dos entradas con `playlist-clear + append` (NUNCA podar por índices: van
+ rezagados tras end-file). Un end-file queda `pendingEnd` y se resuelve con el
+ evento siguiente (start-file = encadenó, idle = no había nada); `loadGen`
+-descarta desenlaces pisados por cargas propias. Callbacks (`onEnd`,
++descarta desenlaces pisados por cargas propias. Callbacks (`onEnd`, `onRestart`,
+ `onChange`) SIEMPRE async con `go` — en línea deadlockean readLoop. Y
+ justamente por ese `go`, `loadGen` se valida en DOS puntos: `resolveEnd`
+ cubre la ventana `[end-file → start-file/idle]`, pero el callback sale sin
+@@ -18,6 +18,27 @@ ventana, `[resolveEnd → el consumidor toma su mutex]`, es la que dejaba
+ perder una pista entera (roadmap: carrera de la promesa obsoleta).
+ `LoadGen()` es para eso; `LoadCount()`, en cambio, es diagnóstico de gapless.
+ 
++**`time-pos` y `duration` sin data valen 0**, no «dejar lo que había». mpv las
++manda así en CADA cambio de archivo (`loadfile replace` y encadenado gapless
++por igual), al soltar el viejo. Ignorarlas dejaba en el espejo la posición y la
++duración de la pista anterior hasta que la nueva decodificaba.
++
++**`onRestart` avisa de un salto de posición ya ASENTADO, no del
++`playback-restart` en sí** (lo consume el demonio para emitir `Seeked` en
++MPRIS). mpv emite `playback-restart` tras cada carga y cada seek, pausado o no
++y venga de quien venga, y nunca al pausar o reanudar. Pero con mpv
++reproduciendo, tras un encadenado gapless `time-pos` se queda en 0 mientras
++suena la cola de la pista anterior que seguía en el búfer de audio: **0,247 s
++con pipewire**, siempre igual, y 0,41 s con `ao=null`. Un cliente MPRIS que
++reanclara en el restart iría ese tiempo por delante la canción entera. Por eso
++`restartPending` espera el primer AVANCE de `time-pos` (avanzar, no cambiar:
++un `null` que se cruce baja a 0 y no es la reproducción arrancando). En pausa
++se avisa en el acto, porque la posición no va a avanzar y el `Seeked` de un
++seek hecho en pausa esperaría hasta reanudar. Si se pausa con un salto
++pendiente, también se da por asentado. `TestRestartTrasEncadenadoConMpvReal`
++fija la medición contra mpv de verdad: la variante «avisar en el restart»
++llega con la posición en 0.
++
+ **Toda espera a mpv está ACOTADA, y con dos topes distintos** (A-08). Un
+ comando normal espera `cmdTimeout` (5 s): su fallo lo ve el usuario y no hay
+ a quién delegarle el reintento. Los de la ventana gapless (`SetNext`) esperan
+diff --git a/internal/daemon/daemon.go b/internal/daemon/daemon.go
+index 0841612..cdb72cc 100644
+--- a/internal/daemon/daemon.go
++++ b/internal/daemon/daemon.go
+@@ -90,9 +90,10 @@ type Daemon struct {
+ 	// lectura+empuje, cada llamada que gana el mutex lee el estado más
+ 	// fresco disponible en ese instante y lo aplica entero antes de que la
+ 	// siguiente lea nada, así que nunca se aplica algo más viejo después de
+-	// algo más nuevo. Deliberadamente un mutex aparte de d.mu: notify() y el
+-	// case "seek" de handle() nunca corren con d.mu tomado (ver sus
+-	// comentarios), así que no hay riesgo de orden de adquisición cruzado.
++	// algo más nuevo. Deliberadamente un mutex aparte de d.mu: notify(),
++	// restarted() y el case "seek" de handle() nunca corren con d.mu tomado
++	// (ver sus comentarios), así que no hay riesgo de orden de adquisición
++	// cruzado.
+ 	notifyMu sync.Mutex
+ 
+ 	// Persistencia de sesión: notify marca dirty y sessionSaver guarda en
+@@ -219,7 +220,7 @@ func New(cfg config.Config) (*Daemon, error) {
+ 	}
+ 	d.libGen.Store(1) // 0 queda reservado a demonios sin soporte (omitempty)
+ 
+-	pl, err := player.Start(filepath.Join(config.RuntimeDir(), "mpv.sock"), d.advance, d.notify)
++	pl, err := player.Start(filepath.Join(config.RuntimeDir(), "mpv.sock"), d.advance, d.notify, d.restarted)
+ 	if err != nil {
+ 		lib.Close()
+ 		closeLn()
+@@ -536,14 +537,15 @@ func (d *Daemon) handle(req ipc.Request) ipc.Response {
+ 		case "ping", "status", "queue", "search", "scan", "config":
+ 			// solo lectura: nada que reflejar
+ 		case "seek":
++			// La señal Seeked NO sale de aquí sino de restarted(), cuando el
++			// salto se asentó en mpv: así hay una sola fuente, y cubre también
++			// los saltos que no pasan por handle (la pista que empieza, la
++			// restauración de sesión).
+ 			func() {
+ 				d.notifyMu.Lock()
+ 				defer d.notifyMu.Unlock()
+ 				if m, st := d.mprisState(); m != nil {
+ 					m.Update(st)
+-					if resp.OK {
+-						m.Seeked(int64(st.Position * 1e6))
+-					}
+ 				}
+ 			}()
+ 			d.wakeSubs()
+@@ -643,6 +645,24 @@ func (d *Daemon) notify() {
+ 	d.sessDirty.Store(true)
+ }
+ 
++// restarted emite Seeked en MPRIS cuando el player da por asentado un salto
++// de posición (playback-restart de mpv): una pista que empieza a sonar o un
++// seek, venga de quien venga. La spec no notifica Position por
++// PropertiesChanged, así que un cliente ancla la posición al preguntarla (al
++// descubrir el reproductor, al cambiar mpris:trackid) y desde ahí extrapola;
++// solo Seeked la reancla. Sin esta señal al empezar cada pista, un ancla
++// tomada un instante antes de tiempo se quedaba mala la canción entera —
++// medido con un cliente que imita a Quickshell: 6,3 s por delante tras un
++// next y 9 s tras el avance natural.
++func (d *Daemon) restarted() {
++	d.notifyMu.Lock()
++	defer d.notifyMu.Unlock()
++	if m, st := d.mprisState(); m != nil {
++		m.Update(st)
++		m.Seeked(int64(st.Position * 1e6))
++	}
++}
++
+ // wakeSubs marca dirty a cada suscriptor; el envío no bloquea (cap 1: si ya
+ // hay una marca pendiente, este cambio viaja en ese mismo push).
+ func (d *Daemon) wakeSubs() {
+@@ -1041,6 +1061,7 @@ func (d *Daemon) statusLocked(lang string) *ipc.Status {
+ 	if t, ok := d.q.Current(); ok && !st.Idle {
+ 		info := infoOf(t)
+ 		s.Track = &info
++		s.Position, s.Duration = clockOf(st, t)
+ 	}
+ 	return s
+ }
+diff --git a/internal/daemon/daemon_playback.go b/internal/daemon/daemon_playback.go
+index 37e9f35..b8fd058 100644
+--- a/internal/daemon/daemon_playback.go
++++ b/internal/daemon/daemon_playback.go
+@@ -10,6 +10,7 @@ import (
+ 	"maly/internal/i18n"
+ 	"maly/internal/ipc"
+ 	"maly/internal/library"
++	"maly/internal/player"
+ )
+ 
+ // Reproducción: avance de pista, ventana gapless, carga y seek.
+@@ -215,6 +216,27 @@ func (d *Daemon) seek(lang, val string) error {
+ 	return d.pl.SeekAbs(n)
+ }
+ 
++// clockOf devuelve la posición y la duración del espejo del player si
++// describen el archivo de t, y 0, 0 si todavía describen otro. Justo después
++// de un next la cola ya dice la pista nueva pero mpv no soltó la vieja: contesta
++// al loadfile —y al set pause que Load manda detrás, en la misma vuelta— ANTES
++// de emitir los eventos del cambio de archivo. Medido tras un next: 25 de 30
++// fotos llevaban la posición de la pista anterior y 29 de 30 su duración, con
++// la pista nueva en Track; MPRIS publicaba esa posición justo cuando los
++// clientes la preguntan, y learnDuration escribía esa duración en la fila de
++// la nueva.
++//
++// Comparar path no depende de tiempos: es la ÚLTIMA propiedad que observa
++// player.Start, mpv manda las de un mismo lote en orden de registro, y el path
++// nuevo no puede llegar antes de que el archivo arranque — así que cuando el
++// espejo dice el path de t, los null con que mpv suelta el anterior ya pasaron.
++func clockOf(st player.State, t library.Track) (pos, dur float64) {
++	if st.Path != t.Path {
++		return 0, 0
++	}
++	return st.Position, st.Duration
++}
++
+ // learnDuration aprende perezosamente la duración de la pista actual cuando
+ // mpv la reporta: los tags no la traen, así que la biblioteca la va
+ // completando a medida que suena música. La copia en memoria de la cola
+@@ -227,12 +249,18 @@ func (d *Daemon) learnDuration() {
+ 		defer d.mu.Unlock()
+ 		st := d.pl.State()
+ 		t, ok := d.q.Current()
+-		if !ok || st.Idle || st.Duration <= 0 || abs(t.Duration-st.Duration) < 0.5 {
++		if !ok || st.Idle {
++			return "", 0, false
++		}
++		// La de mpv solo si es de t (ver clockOf): si no, era la duración de
++		// la pista anterior escrita en la fila de la nueva.
++		_, dur := clockOf(st, t)
++		if dur <= 0 || abs(t.Duration-dur) < 0.5 {
+ 			return "", 0, false
+ 		}
+ 		for i := range d.q.Items {
+ 			if d.q.Items[i].Path == t.Path {
+-				d.q.Items[i].Duration = st.Duration
++				d.q.Items[i].Duration = dur
+ 			}
+ 		}
+ 		// Escritura EN SITIO: no pasa por ningún mutador de queue, así que
+diff --git a/internal/daemon/daemon_test.go b/internal/daemon/daemon_test.go
+index c26c880..3986800 100644
+--- a/internal/daemon/daemon_test.go
++++ b/internal/daemon/daemon_test.go
+@@ -1108,6 +1108,130 @@ func TestLearnsDuration(t *testing.T) {
+ 	}
+ }
+ 
++// TestNextNoArrastraLaPistaAnterior: la foto que sigue a un next —la misma que
++// recibe MPRIS en el notify de handle— no puede llevar la posición ni la
++// duración de la pista anterior. mpv las manda SIN data al soltar el archivo y
++// el espejo del player las ignoraba, así que la cola decía la pista nueva con
++// los números de la vieja: los clientes MPRIS anclaban la posición ahí (y la
++// extrapolaban la canción entera), y learnDuration escribía la duración vieja
++// en la fila de la nueva. Medido antes del arreglo: 8 de 8 corridas dejaban la
++// fila de b (40 s) en 9,00; y con el null ya atendido, 25 de 30 seguían
++// devolviendo la posición de a, porque mpv contesta al loadfile antes de soltar
++// el archivo (ver clockOf).
++func TestNextNoArrastraLaPistaAnterior(t *testing.T) {
++	d := newTestDaemon(t)
++	music := t.TempDir()
++	a := filepath.Join(music, "a.wav")
++	b := filepath.Join(music, "b.wav")
++	writeWAV(t, a, 9)
++	writeWAV(t, b, 40)
++	// Escanear: SetDuration no toca ninguna fila para una pista suelta por
++	// ruta, así que la escritura solo es observable con la pista indexada.
++	if resp := d.Do(ipc.Request{Cmd: "scan", Query: music}); !resp.OK {
++		t.Fatalf("scan: %s", resp.Error)
++	}
++	for _, p := range []string{a, b} {
++		if resp := d.Do(ipc.Request{Cmd: "add", Query: p}); !resp.OK {
++			t.Fatalf("add %s: %s", p, resp.Error)
++		}
++	}
++	// Con la duración de a publicada (si no, no hay nada viejo que arrastrar:
++	// la trampa 4 de verificacion.md) y una posición que no se confunda con la
++	// de una pista recién cargada.
++	waitStatus(t, d, "a sonando con duración y posición", func(st *ipc.Status) bool {
++		return st.Track != nil && st.Track.Path == a && st.Duration > 8 && st.Position > 1
++	})
++
++	resp := d.Do(ipc.Request{Cmd: "next"})
++	if !resp.OK || resp.Status == nil || resp.Status.Track == nil || resp.Status.Track.Path != b {
++		t.Fatalf("next: %+v", resp)
++	}
++	near9 := func(v float64) bool { return v > 8.5 && v < 9.5 }
++	if st := resp.Status; st.Position >= 1 || near9(st.Duration) {
++		t.Errorf("tras next el estado dice b con posición %.2f y duración %.2f: son las de a", st.Position, st.Duration)
++	}
++	if q := d.Do(ipc.Request{Cmd: "queue"}).Queue; len(q) != 2 || near9(q[1].Duration) {
++		t.Errorf("la cola quedó con b en %+v: la duración de a", q)
++	}
++	if row, ok := d.lib.ByPath(b); !ok || near9(row.Duration) {
++		t.Errorf("DURACIÓN DE a ESCRITA EN LA FILA DE b: %.2f (ok=%v)", row.Duration, ok)
++	}
++	d.mu.Lock()
++	sess := d.snapshotLocked()
++	d.mu.Unlock()
++	if sess.Index == 1 && sess.Position >= 1 {
++		t.Errorf("la sesión guardaría la posición de a (%.2f) para restaurarla sobre b", sess.Position)
++	}
++}
++
++// TestEspejoDeOtroArchivoNoCuenta sostiene ABIERTO el desajuste que un next
++// abre solo unos milisegundos —la cola dice una pista y el espejo del player
++// describe otro archivo—, para que cada consumidor de clockOf se pruebe de
++// forma determinista: en TestNextNoArrastraLaPistaAnterior la ventana se
++// cierra tan rápido que, sin la regla, learnDuration solo corrompía 3 de 30
++// corridas y la sesión 2 de 10. Se abre cargándole a mpv otro archivo por su
++// propio socket, sin pasar por el demonio (lo mismo que haría cualquiera que
++// controle ese mpv, como su mpris.so): un loadfile replace termina el anterior
++// con reason "stop", que no avanza la cola.
++func TestEspejoDeOtroArchivoNoCuenta(t *testing.T) {
++	d := newTestDaemon(t)
++	music := t.TempDir()
++	a := filepath.Join(music, "a.wav")
++	c := filepath.Join(music, "c.wav")
++	writeWAV(t, a, 9)
++	writeWAV(t, c, 40)
++	if resp := d.Do(ipc.Request{Cmd: "scan", Query: music}); !resp.OK {
++		t.Fatalf("scan: %s", resp.Error)
++	}
++	if resp := d.Do(ipc.Request{Cmd: "add", Query: a}); !resp.OK {
++		t.Fatalf("add: %s", resp.Error)
++	}
++	waitStatus(t, d, "a sonando con su duración aprendida", func(st *ipc.Status) bool {
++		row, _ := d.lib.ByPath(a)
++		return st.Track != nil && st.Track.Path == a && st.Duration > 8 && row.Duration > 8
++	})
++
++	conn, err := net.Dial("unix", filepath.Join(config.RuntimeDir(), "mpv.sock"))
++	if err != nil {
++		t.Fatal(err)
++	}
++	defer conn.Close()
++	msg, _ := json.Marshal(map[string]any{"command": []any{"loadfile", c, "replace"}})
++	if _, err := conn.Write(append(msg, '\n')); err != nil {
++		t.Fatal(err)
++	}
++	// Precondición (trampa 4): el espejo tiene que describir c de verdad, con
++	// duración y posición corriendo, o no hay nada ajeno que filtrar.
++	deadline := time.Now().Add(5 * time.Second)
++	for {
++		if st := d.pl.State(); st.Path == c && st.Duration > 39 && st.Position > 0.2 {
++			break
++		}
++		if time.Now().After(deadline) {
++			t.Fatalf("mpv nunca pasó a c: %+v", d.pl.State())
++		}
++		time.Sleep(50 * time.Millisecond)
++	}
++	d.notify() // síncrono: learnDuration corre aquí, no en una goroutine en vuelo
++
++	st := d.Do(ipc.Request{Cmd: "status"}).Status
++	if st.Track == nil || st.Track.Path != a {
++		t.Fatalf("la cola tenía que seguir en a: %+v", st.Track)
++	}
++	if st.Position != 0 || st.Duration != 0 {
++		t.Errorf("Status dice a con posición %.2f y duración %.2f: son las de c", st.Position, st.Duration)
++	}
++	if row, _ := d.lib.ByPath(a); row.Duration < 8.5 || row.Duration > 9.5 {
++		t.Errorf("la fila de a quedó en %.2f s: learnDuration le escribió la duración de c", row.Duration)
++	}
++	d.mu.Lock()
++	sess := d.snapshotLocked()
++	d.mu.Unlock()
++	if sess.Position != 0 {
++		t.Errorf("la sesión guardaría la posición de c (%.2f) para restaurarla sobre a", sess.Position)
++	}
++}
++
+ // TestScanFillsDurations: con la clave activa, el escaneo aprende las
+ // duraciones SIN reproducir nada, y además las refleja en la cola ya
+ // cargada (que learnDuration no tocaría hasta que cada pista sonara).
+diff --git a/internal/daemon/session.go b/internal/daemon/session.go
+index 6c20979..c1c4793 100644
+--- a/internal/daemon/session.go
++++ b/internal/daemon/session.go
+@@ -39,13 +39,17 @@ func sessionPath() string { return filepath.Join(config.DataDir(), "session.json
+ func (d *Daemon) snapshotLocked() session {
+ 	st := d.pl.State()
+ 	s := session{
+-		V:        sessionVersion,
+-		Index:    d.q.Index,
+-		Playing:  !st.Idle,
+-		Position: st.Position,
+-		Volume:   st.Volume,
+-		Shuffle:  d.q.Shuffle,
+-		Repeat:   string(d.q.Repeat),
++		V:       sessionVersion,
++		Index:   d.q.Index,
++		Playing: !st.Idle,
++		Volume:  st.Volume,
++		Shuffle: d.q.Shuffle,
++		Repeat:  string(d.q.Repeat),
++	}
++	// La posición se restaura sobre la pista de Index: solo vale si es la suya
++	// (ver clockOf), o un guardado en plena transición la aplicaría a otra.
++	if t, ok := d.q.Current(); ok {
++		s.Position, _ = clockOf(st, t)
+ 	}
+ 	for _, t := range d.q.Items {
+ 		s.Queue = append(s.Queue, t.Path)
+diff --git a/internal/mpris/mpris.go b/internal/mpris/mpris.go
+index e9c3143..3bd2a61 100644
+--- a/internal/mpris/mpris.go
++++ b/internal/mpris/mpris.go
+@@ -196,7 +196,8 @@ func (s *Service) Update(st *ipc.Status) {
+ }
+ 
+ // Seeked emite la señal Seeked (posición en µs) tras un salto no continuo;
+-// el demonio la dispara cuando atiende el comando seek.
++// el demonio la dispara cuando se asienta cada salto de mpv (pista que
++// empieza, seek). Es lo único que hace reanclar la posición a un cliente.
+ func (s *Service) Seeked(us int64) {
+ 	s.mu.Lock()
+ 	s.props.SetMust(playerIface, "Position", us)
+@@ -439,17 +440,32 @@ func snapshotOf(st *ipc.Status) snapshot {
+ 	}
+ }
+ 
+-// trackKeyOf identifica el contenido de Metadata. Incluye la duración porque
+-// mpv la reporta un instante después de cargar la pista y hay que reemitir
+-// Metadata cuando llega mpris:length. NO incluye QueueIndex a propósito:
+-// metadataOf tampoco depende de él (ver pathTrackID), así que agregarlo
+-// aquí solo dispararía reemisiones espurias de Metadata al reordenar la
+-// cola sin cambiar qué archivo suena.
++// trackKeyOf identifica el contenido de Metadata. Incluye la duración
++// PUBLICADA (lengthUS), no la cruda de mpv: mpv la reporta un instante
++// después de cargar la pista y hay que reemitir si mpris:length cambia de
++// verdad, pero con la de la biblioteca ya publicada, la llegada del mismo
++// valor desde mpv no cambia nada — y con la cruda cada pista salía dos veces.
++// NO incluye QueueIndex a propósito: metadataOf tampoco depende de él (ver
++// pathTrackID), así que agregarlo aquí solo dispararía reemisiones espurias
++// de Metadata al reordenar la cola sin cambiar qué archivo suena.
+ func trackKeyOf(st *ipc.Status) string {
+ 	if st.Track == nil {
+ 		return ""
+ 	}
+-	return fmt.Sprintf("%s|%d", st.Track.Path, int64(st.Duration*1e6))
++	return fmt.Sprintf("%s|%d", st.Track.Path, lengthUS(st))
++}
++
++// lengthUS es la mpris:length que se publica (0 = ninguna): la de mpv, o
++// mientras no la reporta (pista recién cargada), la aprendida por la
++// biblioteca, para que playerctl/Waybar no vean 0.
++func lengthUS(st *ipc.Status) int64 {
++	switch {
++	case st.Duration > 0:
++		return int64(st.Duration * 1e6)
++	case st.Track != nil && st.Track.Duration > 0:
++		return int64(st.Track.Duration * 1e6)
++	}
++	return 0
+ }
+ 
+ // metadata arma el Metadata completo: el diccionario puro de metadataOf más
+@@ -517,13 +533,8 @@ func metadataOf(st *ipc.Status) map[string]dbus.Variant {
+ 	if t.TrackNo > 0 {
+ 		m["xesam:trackNumber"] = dbus.MakeVariant(int32(t.TrackNo))
+ 	}
+-	switch {
+-	case st.Duration > 0:
+-		m["mpris:length"] = dbus.MakeVariant(int64(st.Duration * 1e6))
+-	case t.Duration > 0:
+-		// mpv aún no la reporta (pista recién cargada): usar la aprendida
+-		// por la biblioteca para que playerctl/Waybar no vean 0.
+-		m["mpris:length"] = dbus.MakeVariant(int64(t.Duration * 1e6))
++	if l := lengthUS(st); l > 0 {
++		m["mpris:length"] = dbus.MakeVariant(l)
+ 	}
+ 	return m
+ }
+diff --git a/internal/mpris/mpris_test.go b/internal/mpris/mpris_test.go
+index cf2b500..c79c248 100644
+--- a/internal/mpris/mpris_test.go
++++ b/internal/mpris/mpris_test.go
+@@ -173,6 +173,26 @@ func TestTrackKeyOf(t *testing.T) {
+ 	}
+ }
+ 
++// TestTrackKeyNoCambiaSiLaLengthPublicadaNo: recién cargada, mpv todavía no
++// reporta la duración y Metadata sale con la de la biblioteca. Cuando mpv la
++// publica con el MISMO valor (ffprobe y mpv leen la de libavformat), el
++// contenido de Metadata no cambió y no hay nada que reemitir: con la clave
++// armada sobre la duración cruda de mpv cada pista salía dos veces.
++func TestTrackKeyNoCambiaSiLaLengthPublicadaNo(t *testing.T) {
++	track := &ipc.TrackInfo{ID: 15, Path: "/m/ticket.mp3", Title: "Ticket", Duration: 189.3}
++	loading := ipc.Status{Track: track}
++	loaded := ipc.Status{Track: track, Duration: 189.3}
++	if trackKeyOf(&loading) != trackKeyOf(&loaded) {
++		t.Errorf("trackKey cambió al llegar de mpv la misma duración que ya se publicaba: %q → %q",
++			trackKeyOf(&loading), trackKeyOf(&loaded))
++	}
++	// …y sí cambia cuando lo publicado cambia de verdad.
++	noLib := ipc.Status{Track: &ipc.TrackInfo{ID: 15, Path: track.Path}}
++	if trackKeyOf(&noLib) == trackKeyOf(&loaded) {
++		t.Error("trackKey no cambió al aparecer mpris:length donde no había ninguna")
++	}
++}
++
+ func TestMetadataOfNoTrack(t *testing.T) {
+ 	m := metadataOf(&ipc.Status{})
+ 	if len(m) != 1 {
+diff --git a/internal/player/player.go b/internal/player/player.go
+index bf9b169..0a8e009 100644
+--- a/internal/player/player.go
++++ b/internal/player/player.go
+@@ -31,17 +31,18 @@ type State struct {
+ 
+ // Player es un wrapper sobre un proceso mpv propio.
+ type Player struct {
+-	mu       sync.Mutex
+-	cmd      *exec.Cmd
+-	conn     net.Conn
+-	reqID    int64
+-	pending  map[int64]chan mpvReply
+-	state    State
+-	onEnd    func(reason, next string, gen int64) // pista terminada; next = entrada anexada que mpv encadena; gen = loadGen del desenlace
+-	onChange func()                               // cambio de estado observado (pausa, pista, posición…)
+-	closed   bool
+-	done     chan struct{}
+-	exited   chan struct{} // cerrado cuando el proceso mpv termina
++	mu        sync.Mutex
++	cmd       *exec.Cmd
++	conn      net.Conn
++	reqID     int64
++	pending   map[int64]chan mpvReply
++	state     State
++	onEnd     func(reason, next string, gen int64) // pista terminada; next = entrada anexada que mpv encadena; gen = loadGen del desenlace
++	onChange  func()                               // cambio de estado observado (pausa, pista, posición…)
++	onRestart func()                               // la posición saltó (pista que empieza, seek) y ya se asentó
++	closed    bool
++	done      chan struct{}
++	exited    chan struct{} // cerrado cuando el proceso mpv termina
+ 
+ 	// Espejo de la entrada anexada por SetNext (ventana gapless), para no
+ 	// re-consultar la playlist de mpv cuando no cambió nada. nextKnown se
+@@ -77,12 +78,17 @@ type Player struct {
+ 
+ 	loads int64 // loadfile replace emitidos; diagnóstico de gapless
+ 
+-	// cbWG cuenta los callbacks onEnd/onChange en vuelo (van por `go`, fire-
+-	// and-forget: en línea deadlockearían readLoop). Close los espera antes
+-	// de devolver el control — sin esto, uno disparado justo antes del cierre
+-	// podía seguir corriendo (y tocar la biblioteca del demonio vía
+-	// learnDuration, que escribe fuera de d.mu a propósito) después de que el
+-	// demonio ya hubiera cerrado la base.
++	// restartPending marca un salto de posición (playback-restart) cuyo
++	// onRestart todavía no salió porque mpv reproduce y time-pos aún no
++	// avanzó: ver el case "playback-restart" de handleEvent.
++	restartPending bool
++
++	// cbWG cuenta los callbacks onEnd/onChange/onRestart en vuelo (van por
++	// `go`, fire-and-forget: en línea deadlockearían readLoop). Close los
++	// espera antes de devolver el control — sin esto, uno disparado justo
++	// antes del cierre podía seguir corriendo (y tocar la biblioteca del
++	// demonio vía learnDuration, que escribe fuera de d.mu a propósito)
++	// después de que el demonio ya hubiera cerrado la base.
+ 	cbWG sync.WaitGroup
+ }
+ 
+@@ -110,8 +116,10 @@ type mpvEvent struct {
+ // viaja por `go` sin ningún lock sostenido, así que para cuando corra puede
+ // haberse cruzado un loadfile replace de otro cliente; comparar gen contra
+ // LoadGen() es lo que deja detectarlo (ver resolveEnd). onChange se invoca
+-// ante cambios de estado observados (lo usa el demonio para MPRIS).
+-func Start(socketPath string, onEnd func(reason, next string, gen int64), onChange func()) (*Player, error) {
++// ante cambios de estado observados (lo usa el demonio para MPRIS). onRestart,
++// cuando un salto de posición de mpv (playback-restart) se asentó: ver su
++// case en handleEvent.
++func Start(socketPath string, onEnd func(reason, next string, gen int64), onChange, onRestart func()) (*Player, error) {
+ 	mpvBin, err := exec.LookPath("mpv")
+ 	if err != nil {
+ 		return nil, errors.New(i18n.T("p.no_mpv"))
+@@ -166,14 +174,15 @@ func Start(socketPath string, onEnd func(reason, next string, gen int64), onChan
+ 	}
+ 
+ 	p := &Player{
+-		cmd:      cmd,
+-		conn:     conn,
+-		pending:  map[int64]chan mpvReply{},
+-		state:    State{Idle: true, Volume: 100},
+-		onEnd:    onEnd,
+-		onChange: onChange,
+-		done:     make(chan struct{}),
+-		exited:   exited,
++		cmd:       cmd,
++		conn:      conn,
++		pending:   map[int64]chan mpvReply{},
++		state:     State{Idle: true, Volume: 100},
++		onEnd:     onEnd,
++		onChange:  onChange,
++		onRestart: onRestart,
++		done:      make(chan struct{}),
++		exited:    exited,
+ 	}
+ 	go p.readLoop()
+ 
+@@ -230,8 +239,8 @@ func (p *Player) readLoop() {
+ 	close(p.done)
+ }
+ 
+-// safeCall ejecuta fn recuperando cualquier panic. onEnd/onChange (el
+-// demonio: d.advance/d.notify) corren en su propia goroutine —ver el
++// safeCall ejecuta fn recuperando cualquier panic. Los callbacks (el demonio:
++// d.advance/d.notify/d.restarted) corren en su propia goroutine —ver el
+ // comentario de cbWG— disparados por eventos reales de mpv (fin de pista,
+ // cambio de estado) durante la reproducción normal, no solo bajo petición
+ // explícita de un cliente; sin este recover, un panic ahí no lo cubre nada
+@@ -250,26 +259,37 @@ func (p *Player) handleEvent(ev mpvEvent) {
+ 	switch ev.Event {
+ 	case "property-change":
+ 		p.mu.Lock()
+-		changed := false
++		changed, settled := false, false
+ 		switch ev.Name {
+ 		case "pause":
+ 			old := p.state.Paused
+ 			json.Unmarshal(ev.Data, &p.state.Paused)
+ 			changed = p.state.Paused != old
++			// En pausa la posición ya no va a moverse: el salto está asentado.
++			settled = p.restartPending && p.state.Paused
++		// time-pos y duration llegan SIN data cuando no están disponibles, y
++		// eso vale 0, no "dejar lo que había": mpv las manda así en CADA cambio
++		// de archivo —loadfile replace y encadenado gapless por igual—, al
++		// soltar el viejo y antes de que el nuevo decodifique. Ignorarlo dejaba
++		// en el espejo la posición y la duración de la pista ANTERIOR mientras
++		// la cola ya decía la nueva, y ese cruce salía por tres lados: MPRIS
++		// publicaba la posición vieja justo cuando los clientes la preguntan
++		// (anclan ahí y extrapolan), el primer Metadata llevaba la
++		// mpris:length de la pista anterior, y learnDuration escribía esa
++		// duración en la fila de la NUEVA —medido: tras un next de una pista
++		// de 9 s a una de 40 s, la fila quedaba en 9,00 hasta que mpv
++		// publicaba la de verdad—.
+ 		case "time-pos":
+-			var v *float64
+-			json.Unmarshal(ev.Data, &v)
+-			if v != nil {
+-				changed = p.state.Position != *v
+-				p.state.Position = *v
+-			}
++			old := p.state.Position
++			p.state.Position = numOrZero(ev.Data)
++			changed = p.state.Position != old
++			// Avanzar, no solo cambiar: el null de un cambio de archivo que se
++			// cruce (→ 0) no es la reproducción arrancando.
++			settled = p.restartPending && p.state.Position > old
+ 		case "duration":
+-			var v *float64
+-			json.Unmarshal(ev.Data, &v)
+-			if v != nil {
+-				changed = p.state.Duration != *v
+-				p.state.Duration = *v
+-			}
++			old := p.state.Duration
++			p.state.Duration = numOrZero(ev.Data)
++			changed = p.state.Duration != old
+ 		case "volume":
+ 			old := p.state.Volume
+ 			json.Unmarshal(ev.Data, &p.state.Volume)
+@@ -289,6 +309,9 @@ func (p *Player) handleEvent(ev mpvEvent) {
+ 			}
+ 			changed = p.state.Path != old
+ 		}
++		if settled {
++			p.restartPending = false
++		}
+ 		p.mu.Unlock()
+ 		// Async como onEnd: en línea bloquearía readLoop, y con él las
+ 		// respuestas de mpv que el demonio pueda estar esperando. cbWG lo
+@@ -300,6 +323,9 @@ func (p *Player) handleEvent(ev mpvEvent) {
+ 				safeCall(p.onChange)
+ 			}()
+ 		}
++		if settled {
++			p.fireRestart()
++		}
+ 	case "end-file":
+ 		p.mu.Lock()
+ 		p.nextKnown = false // la playlist de mpv cambió: espejo no confiable
+@@ -332,9 +358,51 @@ func (p *Player) handleEvent(ev mpvEvent) {
+ 				safeCall(func() { p.onEnd(reason, "", gen) })
+ 			}()
+ 		}
++
++	case "playback-restart":
++		// mpv lo emite tras cargar un archivo o tras un seek —pausado o no, y
++		// venga de quien venga: maly, la restauración de sesión, el mpris.so
++		// del propio mpv— y NUNCA al pausar o reanudar; medido contra mpv real.
++		// Es el salto que MPRIS llama Seeked, pero con mpv reproduciendo NO es
++		// todavía el momento de avisarlo: tras un encadenado gapless time-pos
++		// se queda en 0 mientras suena la cola de la pista anterior que seguía
++		// en el búfer de audio —medido: 0,247 s con pipewire, siempre igual, y
++		// 0,41 s con ao=null—, así que un cliente que reanclara aquí iría ese
++		// tiempo por delante la canción entera. Se avisa en el primer AVANCE de
++		// time-pos (ahí la posición ya corre de verdad), o ya mismo si está en
++		// pausa, porque entonces no va a avanzar y el aviso de un seek hecho
++		// en pausa esperaría hasta reanudar.
++		p.mu.Lock()
++		paused := p.state.Paused
++		p.restartPending = !paused
++		p.mu.Unlock()
++		if paused {
++			p.fireRestart()
++		}
+ 	}
+ }
+ 
++// fireRestart despacha onRestart como los demás callbacks: async y
++// registrado en cbWG (ver el campo).
++func (p *Player) fireRestart() {
++	if p.onRestart == nil {
++		return
++	}
++	p.cbWG.Add(1)
++	go func() {
++		defer p.cbWG.Done()
++		safeCall(p.onRestart)
++	}()
++}
++
++// numOrZero lee una propiedad numérica observada. mpv la publica sin data
++// cuando no está disponible: null o ausente dejan v en 0 (ver time-pos).
++func numOrZero(data json.RawMessage) float64 {
++	var v float64
++	json.Unmarshal(data, &v)
++	return v
++}
++
+ // cmdTimeout es lo que espera un comando de mpv antes de darlo por perdido.
+ // Generoso porque el fallo de un comando normal (cargar, pausar, saltar) es
+ // visible para el usuario y no hay a quién delegarle el reintento.
+@@ -705,7 +773,7 @@ func (p *Player) Close() {
+ 		p.cmd.Process.Kill()
+ 	}
+ 
+-	// Esperar los callbacks onEnd/onChange en vuelo (ver cbWG). p.mu ya está
++	// Esperar los callbacks en vuelo (ver cbWG). p.mu ya está
+ 	// libre acá —se soltó arriba, antes del select— y tiene que seguir
+ 	// libre: el callback vuelve a entrar al player (SetVolume, etc.) y
+ 	// necesita el mismo mutex, así que esperar bajo p.mu deadlockearía.
+diff --git a/internal/player/player_test.go b/internal/player/player_test.go
+index 26497c7..76c9c4b 100644
+--- a/internal/player/player_test.go
++++ b/internal/player/player_test.go
+@@ -8,8 +8,10 @@ import (
+ 	"math"
+ 	"net"
+ 	"os"
++	"os/exec"
+ 	"path/filepath"
+ 	"strings"
++	"sync"
+ 	"testing"
+ 	"time"
+ )
+@@ -32,7 +34,7 @@ func TestStartMpvDiesEarly(t *testing.T) {
+ 	fakeMpv(t, "echo 'boom: opción inválida' ; exit 1")
+ 	sock := filepath.Join(t.TempDir(), "mpv.sock")
+ 
+-	_, err := Start(sock, nil, nil)
++	_, err := Start(sock, nil, nil, nil)
+ 	if err == nil {
+ 		t.Fatal("se esperaba error cuando mpv muere al arrancar")
+ 	}
+@@ -47,7 +49,7 @@ func TestStartMpvDiesEarly(t *testing.T) {
+ // Sin mpv en el PATH, el error es el de "no instalado", no un fallo de socket.
+ func TestStartNoMpv(t *testing.T) {
+ 	t.Setenv("PATH", t.TempDir())
+-	if _, err := Start(filepath.Join(t.TempDir(), "mpv.sock"), nil, nil); err == nil {
++	if _, err := Start(filepath.Join(t.TempDir(), "mpv.sock"), nil, nil, nil); err == nil {
+ 		t.Fatal("se esperaba error sin mpv en el PATH")
+ 	}
+ }
+@@ -460,3 +462,225 @@ func TestDeadTrasPerderMpv(t *testing.T) {
+ 	}
+ 	t.Fatal("mpv se fue y Dead() siguió diciendo que no")
+ }
++
++// prop arma un property-change como lo manda mpv; data "" = sin data (así
++// llegan time-pos y duration cuando no están disponibles).
++func prop(name, data string) mpvEvent {
++	ev := mpvEvent{Event: "property-change", Name: name}
++	if data != "" {
++		ev.Data = json.RawMessage(data)
++	}
++	return ev
++}
++
++// TestPosicionSinDataValeCero: mpv manda time-pos y duration sin data en cada
++// cambio de archivo, al soltar el viejo. El espejo los ignoraba y se quedaba
++// con los de la pista ANTERIOR mientras la cola ya decía la nueva — de ahí
++// salían la posición vieja en MPRIS, la mpris:length vieja en el primer
++// Metadata y la duración vieja escrita en la fila de la nueva.
++func TestPosicionSinDataValeCero(t *testing.T) {
++	p := &Player{state: State{Position: 154.293, Duration: 163}}
++	changes := 0
++	var mu sync.Mutex
++	p.onChange = func() { mu.Lock(); changes++; mu.Unlock() }
++
++	p.handleEvent(prop("time-pos", ""))     // así llega: sin campo data
++	p.handleEvent(prop("duration", "null")) // y con null explícito, por si acaso
++	p.cbWG.Wait()
++
++	if st := p.State(); st.Position != 0 || st.Duration != 0 {
++		t.Errorf("tras soltar el archivo el espejo dice posición %.3f y duración %.0f; son las de la pista anterior, tenían que quedar en 0",
++			st.Position, st.Duration)
++	}
++	if changes != 2 {
++		t.Errorf("onChange se llamó %d veces, quería 2: el demonio tiene que enterarse de las dos", changes)
++	}
++}
++
++// restartSpy arma un Player sin mpv que registra la posición que ve cada
++// onRestart. Los eventos se inyectan con handleEvent y cbWG.Wait() espera los
++// callbacks en vuelo, así que las aserciones no dependen de sueños.
++func restartSpy(st State) (*Player, func() []float64) {
++	p := &Player{state: st}
++	var mu sync.Mutex
++	var seen []float64
++	p.onRestart = func() {
++		pos := p.State().Position
++		mu.Lock()
++		seen = append(seen, pos)
++		mu.Unlock()
++	}
++	return p, func() []float64 {
++		p.cbWG.Wait()
++		mu.Lock()
++		defer mu.Unlock()
++		return append([]float64(nil), seen...)
++	}
++}
++
++// TestRestartReproduciendoEsperaElAvance fija la secuencia MEDIDA de un
++// encadenado gapless con pipewire: playback-restart con time-pos en 0, y
++// 0,247 s después —lo que tarda en sonar la cola de la pista anterior que
++// quedaba en el búfer— el primer avance. Avisar en el restart deja a los
++// clientes MPRIS ese tiempo por delante la canción entera; el aviso tiene que
++// salir en el avance, una sola vez, y con la posición que ya corre.
++func TestRestartReproduciendoEsperaElAvance(t *testing.T) {
++	p, seen := restartSpy(State{Position: 162.9})
++
++	p.handleEvent(prop("time-pos", "")) // end-file: el viejo se suelta
++	p.handleEvent(mpvEvent{Event: "start-file"})
++	p.handleEvent(prop("time-pos", "0.0"))
++	p.handleEvent(mpvEvent{Event: "playback-restart"})
++	if got := seen(); len(got) != 0 {
++		t.Fatalf("onRestart salió en el playback-restart con mpv reproduciendo (posiciones %v): el búfer todavía suena la pista anterior", got)
++	}
++	p.handleEvent(prop("time-pos", "0.0")) // repetido: no es avance
++	if got := seen(); len(got) != 0 {
++		t.Fatalf("onRestart salió sin que time-pos avanzara: %v", got)
++	}
++	p.handleEvent(prop("time-pos", "0.034212"))
++	if got := seen(); len(got) != 1 || got[0] != 0.034212 {
++		t.Fatalf("onRestart tenía que salir en el primer avance, viendo 0.034212; vio %v", got)
++	}
++	p.handleEvent(prop("time-pos", "0.091078"))
++	if got := seen(); len(got) != 1 {
++		t.Errorf("onRestart salió %d veces (%v), quería 1: en el primer avance y nada más", len(got), got)
++	}
++}
++
++// TestRestartNullNoEsAvance: un cambio de archivo que se cruce con un salto
++// pendiente (un next antes del primer tick) baja time-pos a 0 por el null, y
++// eso no es la reproducción arrancando.
++func TestRestartNullNoEsAvance(t *testing.T) {
++	p, seen := restartSpy(State{})
++	p.handleEvent(prop("time-pos", "20.0")) // seek reproduciendo
++	p.handleEvent(mpvEvent{Event: "playback-restart"})
++	p.handleEvent(prop("time-pos", "")) // next antes del primer tick
++	if got := seen(); len(got) != 0 {
++		t.Fatalf("el null de un cambio de archivo contó como avance: %v", got)
++	}
++}
++
++// TestRestartEnPausaAvisaYa: en pausa time-pos no va a avanzar, así que
++// esperar el avance retrasaría el aviso de un seek hecho en pausa hasta
++// reanudar. Sale en el restart, con el valor pedido — y el tick que mpv
++// manda después en pausa (medido con ao=null: 5,0 → 4,806, que vuelve a 5,0
++// al reanudar) no repite el aviso.
++func TestRestartEnPausaAvisaYa(t *testing.T) {
++	p, seen := restartSpy(State{Paused: true, Position: 21.5})
++	p.handleEvent(mpvEvent{Event: "seek"})
++	p.handleEvent(prop("time-pos", "5.0"))
++	p.handleEvent(mpvEvent{Event: "playback-restart"})
++	if got := seen(); len(got) != 1 || got[0] != 5.0 {
++		t.Fatalf("en pausa onRestart tenía que salir en el restart con 5.0; vio %v", got)
++	}
++	p.handleEvent(prop("time-pos", "4.806014"))
++	if got := seen(); len(got) != 1 {
++		t.Errorf("el tick posterior en pausa repitió el aviso: %v", got)
++	}
++}
++
++// TestRestartPendienteSeAsientaAlPausar: si se pausa antes del primer avance,
++// la posición ya no va a correr y el aviso no puede esperar a reanudar.
++func TestRestartPendienteSeAsientaAlPausar(t *testing.T) {
++	p, seen := restartSpy(State{Position: 12.0})
++	p.handleEvent(mpvEvent{Event: "playback-restart"})
++	p.handleEvent(prop("pause", "true"))
++	if got := seen(); len(got) != 1 || got[0] != 12.0 {
++		t.Fatalf("pausar con un salto pendiente tenía que avisar con 12.0; vio %v", got)
++	}
++}
++
++// writeSilence fabrica un WAV PCM de silencio (8 kHz, mono, 8 bits); es el
++// writeWAV de los tests del demonio, que no se puede importar desde aquí.
++func writeSilence(t *testing.T, path string, seconds int) {
++	t.Helper()
++	const rate = 8000
++	n := rate * seconds
++	le := func(v, size int) []byte {
++		b := make([]byte, size)
++		for i := range b {
++			b[i] = byte(v >> (8 * i))
++		}
++		return b
++	}
++	buf := []byte("RIFF")
++	buf = append(buf, le(36+n, 4)...)
++	buf = append(buf, "WAVEfmt "...)
++	buf = append(buf, le(16, 4)...)
++	buf = append(buf, le(1, 2)...) // PCM
++	buf = append(buf, le(1, 2)...) // mono
++	buf = append(buf, le(rate, 4)...)
++	buf = append(buf, le(rate, 4)...)
++	buf = append(buf, le(1, 2)...) // block align
++	buf = append(buf, le(8, 2)...) // bits por muestra
++	buf = append(buf, "data"...)
++	buf = append(buf, le(n, 4)...)
++	buf = append(buf, []byte(strings.Repeat("\x80", n))...)
++	if err := os.WriteFile(path, buf, 0o644); err != nil {
++		t.Fatal(err)
++	}
++}
++
++// TestRestartTrasEncadenadoConMpvReal es la medición que justifica esperar el
++// avance, contra mpv de verdad: tras encadenar a la entrada anexada, el aviso
++// de la pista nueva tiene que llegar con su posición YA corriendo. Disparado
++// en el playback-restart vería 0 — el búfer de audio todavía está sonando la
++// cola de la anterior (0,41 s con ao=null).
++func TestRestartTrasEncadenadoConMpvReal(t *testing.T) {
++	if _, err := exec.LookPath("mpv"); err != nil {
++		t.Skip("mpv no está en PATH")
++	}
++	tmp := t.TempDir()
++	t.Setenv("XDG_CONFIG_HOME", filepath.Join(tmp, "cfg"))
++	if err := os.MkdirAll(filepath.Join(tmp, "cfg", "mpv"), 0o755); err != nil {
++		t.Fatal(err)
++	}
++	if err := os.WriteFile(filepath.Join(tmp, "cfg", "mpv", "mpv.conf"), []byte("ao=null\n"), 0o644); err != nil {
++		t.Fatal(err)
++	}
++	a, b := filepath.Join(tmp, "a.wav"), filepath.Join(tmp, "b.wav")
++	writeSilence(t, a, 1)
++	writeSilence(t, b, 3)
++
++	type seen struct {
++		path string
++		pos  float64
++	}
++	ch := make(chan seen, 8)
++	var p *Player
++	ready := make(chan struct{})
++	onRestart := func() {
++		<-ready
++		st := p.State()
++		ch <- seen{st.Path, st.Position}
++	}
++	p, err := Start(filepath.Join(tmp, "mpv.sock"), nil, nil, onRestart)
++	if err != nil {
++		t.Fatal(err)
++	}
++	close(ready)
++	defer p.Close()
++
++	if err := p.Load(a); err != nil {
++		t.Fatal(err)
++	}
++	if err := p.SetNext(b); err != nil {
++		t.Fatal(err)
++	}
++	deadline := time.After(5 * time.Second)
++	for {
++		select {
++		case s := <-ch:
++			if s.path != b {
++				continue // el aviso de a, al cargarla
++			}
++			if s.pos <= 0 {
++				t.Fatalf("el aviso de la pista encadenada llegó con la posición en %v: todavía no corría", s.pos)
++			}
++			return
++		case <-deadline:
++			t.Fatal("mpv nunca avisó del arranque de la pista encadenada")
++		}
++	}
++}
+-- 
+2.55.0
+

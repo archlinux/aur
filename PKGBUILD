@@ -1,7 +1,7 @@
 # Maintainer: kitasael-burakku
 pkgname=maly
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Local terminal music player (daemon + TUI + CLI) with mpv backend, gapless playback and MPRIS2"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kitasael-burakku/Malody-Mallow"
@@ -16,12 +16,17 @@ optdepends=(
 makedepends=('go' 'git')
 _pkgsrc=Malody-Mallow
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "maly.service")
+        "maly.service"
+        "mpris-posicion.patch")
 sha256sums=('225789ceac37b8396ffba072d5440e1ce3f00a8a1a14c481a06fd0970b3a6161'
-            'cbcd9c2804135080db7d938ea839b985e41583e1849522fe5379b5b92b22c96a')
+            'cbcd9c2804135080db7d938ea839b985e41583e1849522fe5379b5b92b22c96a'
+            '53b1be46f49a8f314f702c29e923d924c9939eb7a9d5a0580d35262de28c4f5f')
 
 prepare() {
 	cd "$_pkgsrc-$pkgver"
+	# Arreglo posterior al tag v1.19.0 (commit a24a2fc): la posición MPRIS ya
+	# no se arrastra de la pista anterior. Se quita con la próxima release.
+	patch -Np1 -i "$srcdir/mpris-posicion.patch"
 	export GOPATH="$srcdir/go"
 	go mod download -modcacherw
 }
