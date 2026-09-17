@@ -3,7 +3,7 @@ _appname=bitshares_astro_ui
 pkgname="${_appname//_/-}-bin"
 _pkgname=BTSAstroUI
 _orginame='Bitshares Astro UI'
-pkgver=0.6.00
+pkgver=0.6.21
 _electronversion=44
 pkgrel=1
 pkgdesc="Integrates with both the Beet and BeetEOS multiwallets, for the Bitshares and Bitshares Testnet blockchains."
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/BTS-CM/astro-ui/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8438d9177f0c96793264957c9b0517961d85dc47cfa5df96367fa9f201582d55'
+sha256sums=('a0728b6ca7114480e7c766cb17c40e05444f030720c8ef012a3bc68bd84f76ac'
             '8436084a3b95dce1c186bc57a5ab4832a03df731cfb652befe8764a5018eea35'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_app_dir() {
