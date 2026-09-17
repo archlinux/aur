@@ -1,6 +1,6 @@
 pkgbase = songr-bin
 	pkgdesc = Multi platform controller for your Roon Core. Linux, macOS, Windows, or browser, your library is at your fingertips.
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/roethlar/songr
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = songr-bin
 	options = !strip
 	options = !debug
 	options = emptydirs
-	source_x86_64 = songr-bin-1.4.3-x86_64.deb::https://github.com/roethlar/songr/releases/download/v1.4.3/songr_1.4.3_amd64.deb
-	sha256sums_x86_64 = 5d591807962df20e5332f949c605841699b9a844922d0084b5c78f9f2d346546
-	source_aarch64 = songr-bin-1.4.3-aarch64.deb::https://github.com/roethlar/songr/releases/download/v1.4.3/songr_1.4.3_arm64.deb
-	sha256sums_aarch64 = e245a6d216ec3eff6cb36552ca3148847a7f5a038c60aa741a46dc5e58a98099
+	source_x86_64 = songr-bin-1.4.4-x86_64.deb::https://github.com/roethlar/songr/releases/download/v1.4.4/songr_1.4.4_amd64.deb
+	sha256sums_x86_64 = 35ec210ed68f6b5df8c479cec0d724eae2a5ea23795699b38bce9ff8daac5326
+	source_aarch64 = songr-bin-1.4.4-aarch64.deb::https://github.com/roethlar/songr/releases/download/v1.4.4/songr_1.4.4_arm64.deb
+	sha256sums_aarch64 = 37a1911821c5ff718f57537fcd50d0e683a56afca33e0dca9c7271fdcc9d6a4a
 
 pkgname = songr-bin
