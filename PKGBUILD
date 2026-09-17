@@ -8,20 +8,20 @@ url="https://github.com/leoliu0/ratex"
 license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo')
-provides=('texmk')
+provides=('ratex')
 conflicts=('ratex-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leoliu0/ratex/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c177de1eaa509e807a78e19c3cf6187ac8ed3d38b68e37ee2348d88515777945')
+sha256sums=('90d18fe0cd62a3d908684de44438229e6ad41de15f2d58871adcd27e3b69df4b')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    cargo build --release --locked --bin texmk
+    cargo build --release --locked --bin ratex
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm755 target/release/texmk "$pkgdir/usr/bin/texmk"
+    install -Dm755 target/release/ratex "$pkgdir/usr/bin/ratex"
     if [ -f LICENSE-MIT ]; then
         install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     fi
