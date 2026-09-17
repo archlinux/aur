@@ -1,0 +1,14 @@
+[Unit]
+Description=Qingjian Input Method Server (Rust Backend)
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/qingjian-server
+Restart=on-failure
+RestartSec=2
+Environment=QINGJIAN_DATA_DIR=/usr/share/qingjian
+
+[Install]
+WantedBy=graphical-session.target

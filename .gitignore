@@ -1,0 +1,12 @@
+# Arch package build artifacts
+/src/
+/pkg/
+/*.pkg.tar.*
+/*.log
+/*.log.*
+
+# Upstream downloads & clones
+/*.tar.gz
+/*.qjm
+/qingjian/
+/qingjian-*/

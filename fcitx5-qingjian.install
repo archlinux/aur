@@ -1,0 +1,21 @@
+post_install() {
+  echo ":: 青简输入法已成功安装！"
+  echo ":: 1. 启用并启动后端后台服务（当前登录用户）："
+  echo "      systemctl --user enable --now qingjian-server"
+  echo ":: 2. 重启 fcitx5 并在输入法配置工具中添加「青简」："
+  echo "      fcitx5 -r"
+  echo "      fcitx5-configtool"
+}
+
+post_upgrade() {
+  echo ":: 重新加载并重启青简输入法后端服务："
+  echo "      systemctl --user daemon-reload"
+  echo "      systemctl --user restart qingjian-server"
+  echo "      fcitx5 -r"
+}
+
+pre_remove() {
+  echo ":: 停止并禁用青简输入法后端服务："
+  systemctl --user stop qingjian-server 2>/dev/null || true
+  systemctl --user disable qingjian-server 2>/dev/null || true
+}
