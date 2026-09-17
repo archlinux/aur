@@ -1,0 +1,22 @@
+pkgbase = linear-electron-git
+	pkgdesc = Unofficial Linear desktop app (linear-electron-git)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hughesjs/linear-electron
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = jq
+	makedepends = git
+	depends = electron44
+	depends = xdg-utils
+	provides = linear-electron=0.1.0
+	conflicts = linear-electron
+	conflicts = linear-electron-bin
+	conflicts = linear-electron-appimage
+	options = !strip
+	options = !debug
+	source = linear-electron::git+https://github.com/hughesjs/linear-electron.git#branch=main
+	sha256sums = SKIP
+
+pkgname = linear-electron-git
