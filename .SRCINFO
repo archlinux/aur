@@ -1,0 +1,15 @@
+pkgbase = hal-bin
+	pkgdesc = hal - the Bitcoin companion
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/stevenroose/hal
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = cargo
+	depends = gcc-libs
+	provides = hal
+	conflicts = hal
+	source = hal-bin-0.9.3.tar.gz::https://github.com/stevenroose/hal/releases/download/v0.9.3/hal-0.9.3-vendored.tar.gz
+	sha256sums = 31dc6b845b8b6b776b28903b51513f1f2b565ebbf77865dfb21db5730a6247a7
+
+pkgname = hal-bin

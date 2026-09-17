@@ -1,0 +1,5 @@
+pkg/
+src/
+hal-*
+*.tar.gz
+target/
