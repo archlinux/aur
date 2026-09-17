@@ -3,7 +3,7 @@
 
 pkgname=mold-ai
 _binname=mold
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Local AI image generation CLI — FLUX, SD3.5, SD 1.5, SDXL, Z-Image, Flux.2, Qwen-Image, Wuerstchen, LTX Video, & LTX-2 diffusion models on your GPU (built from source, CUDA)"
 arch=('x86_64')
@@ -45,7 +45,7 @@ conflicts=('mold-ai-bin' 'mold-ai-git' 'mold')
 options=(!lto)
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d1d31b4234e5abc67e5c04531c47e0f6a5e9b83042850e169f80707e7ec7603c')
+sha256sums=('7274c6e194721ea15ca44b19217e2008dc7054346f53706d9aff3815aaf46d05')
 
 prepare() {
   cd "mold-${pkgver}"
@@ -95,7 +95,7 @@ build() {
   [[ "${CUDA_COMPUTE_CAP}" == "120" ]] && gpu_feature="cuda"
   cargo build --release --frozen --offline \
     -p mold-ai \
-    --features "${gpu_feature},cudnn,preview,expand,tui,webp,mp4,metrics,mdns,pulid"
+    --features "${gpu_feature},cudnn,preview,expand,webp,mp4,metrics,mdns,pulid"
 }
 
 check() {
