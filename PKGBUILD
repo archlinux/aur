@@ -3,16 +3,16 @@
 _pkgname=openboardview
 __pkgname=OpenBoardView
 pkgname=${_pkgname}-git
-pkgver=9.95.0.r12.g8528b80
+pkgver=10.0.0.r6.gcc76e69
 pkgrel=1
 pkgdesc="Linux SDL/ImGui edition software for viewing .brd files"
 arch=('i686' 'x86_64')
 url="http://openboardview.org/"
 license=('MIT')
-depends=('sdl2' 'fontconfig' 'sqlite' 'gtk3')
+depends=('zlib' 'sdl2' 'fontconfig' 'sqlite' 'gtk3')
 conflicts=('openboardview')
-optdepends=('mdbtools: MDB file format support')
-makedepends=('git' 'cmake' 'sdl2' 'zlib' 'gtk3' 'fontconfig' 'sqlite' 'libpng' 'python')
+optdepends=('mdbtools: for bvconv tool to convert BV files to BVR')
+makedepends=('git' 'cmake' 'python' 'python-jinja')
 source=("${pkgname}::git+https://github.com/${__pkgname}/${__pkgname}.git#branch=master")
 sha512sums=('SKIP')
 
@@ -24,10 +24,12 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
   git submodule update --init --recursive
-  mkdir -p build && cd build
-  cmake .. \
+  cmake \
+    -S . \
+    -B build/ \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake --build build/
 }
 
 package() {
@@ -39,8 +41,7 @@ package() {
   mkdir -p ${pkgdir}/usr/share/licenses/${_pkgname}
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-  cd "${srcdir}/${pkgname}/build"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build/
 }
 
 # vim:set ts=2 sw=2 et:
