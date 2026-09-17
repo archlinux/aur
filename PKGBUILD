@@ -5,17 +5,18 @@
 # Contributor: Damien Robert <damien {dot} olivier {dot} robert {plus} archlinux {at} gmail {dot} com>
 
 pkgname=uni
-pkgver=2.9.0
-pkgrel=4
 pkgdesc='Query the Unicode database from the commandline, with good support for emojis'
+pkgver=2.10.0
+pkgrel=1
 url='https://github.com/arp242/uni'
+install="$pkgname.install"
+changelog="$pkgname.changelog"
 arch=('aarch64' 'x86_64')
-license=('MIT')  # SPDX-License-Identifier: MIT
+license=('MIT')
 makedepends=('go')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('dc595807a0ab875111dafd55be9f3de116cbea652216f9d0082d03dddb3d83be')
-install="$pkgname.install"
+sha256sums=('e9208bc0028d239f9cfbb701d98b14e93eddd138ac6433c6f2f5718244ffa5bf')
 
 prepare() {
   cd "$pkgname-$pkgver"
