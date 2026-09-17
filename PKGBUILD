@@ -2,7 +2,7 @@
 
 pkgname=shuvarie-bin
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Blazingly fast AI coding TUI for chivalrous people (Binary)"
 arch=("x86_64" "aarch64")
@@ -13,8 +13,8 @@ depends=(glibc)
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
+provides=(shuvarie)
+conflicts=(shuvarie)
 replaces=()
 options=()
 install=
