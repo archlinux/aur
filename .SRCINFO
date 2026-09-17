@@ -1,7 +1,7 @@
 pkgbase = certmonger
 	pkgdesc = Certificate status monitor and PKI enrollment client
-	pkgver = 0.79.21
-	pkgrel = 3
+	pkgver = 0.80
+	pkgrel = 1
 	url = https://codeberg.org/freeipa/certmonger
 	install = certmonger.install
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = certmonger
 	depends = talloc
 	depends = libxml2
 	backup = etc/certmonger/certmonger.conf
-	source = certmonger-0.79.21.tar.gz::https://codeberg.org/freeipa/certmonger/archive/0.79.21.tar.gz
-	sha512sums = 4d5cef4461018cb6dea486966fd079b143684a858bc51f108d4c7738c94fae028f40b54f810b75d89c12d25fa5ea36496db9746c94da7d1f893ff79da8142c0c
+	source = certmonger-0.80.tar.gz::https://codeberg.org/freeipa/certmonger/archive/0.80.tar.gz
+	sha512sums = 629119b0621e71b8027242e17425b7824114ee5e9d5c14db0a380ad20b92cdf7b5051b579d57661a31af3cfcde230366e6ced8047747f51ae74c15360897276f
 
 pkgname = certmonger
