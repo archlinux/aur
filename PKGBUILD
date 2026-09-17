@@ -1,6 +1,6 @@
 # Maintainer: arqueon <arqueonautis@gmail.com>
 pkgname=dankmail-git
-pkgver=r1.0000000
+pkgver=r96.66c429d
 pkgrel=1
 pkgdesc="Mail notifier with triage for Linux — Go daemon + Quickshell UI (git version)"
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,7 @@ makedepends=('go' 'git')
 optdepends=('gnome-keyring: Secret Service storage for tokens and passwords')
 provides=('dankmail')
 conflicts=('dankmail')
+install=dankmail.install
 source=("dankmail::git+$url.git")
 sha256sums=('SKIP')
 
