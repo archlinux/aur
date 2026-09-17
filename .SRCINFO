@@ -1,0 +1,17 @@
+pkgbase = wallapop-cli-bin
+	pkgdesc = Terminal CLI for Wallapop
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Microck/wallapop-cli
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = ca-certificates
+	provides = wallapop-cli
+	conflicts = wallapop-cli
+	source_aarch64 = wallapop-cli-bin_0.1.0_aarch64.tar.gz::https://github.com/Microck/wallapop-cli/releases/download/v0.1.0/wallapop_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d45b150c6b3ae7ea4047e5f9cbb2518ceffbc73d9d9ef8e27c73cda8384034f7
+	source_x86_64 = wallapop-cli-bin_0.1.0_x86_64.tar.gz::https://github.com/Microck/wallapop-cli/releases/download/v0.1.0/wallapop_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8340eef7a422fbf05325ba8afa883ca8970011cf6fa5bba32c58183ab554c6c3
+
+pkgname = wallapop-cli-bin
