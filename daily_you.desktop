@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Daily You
+Comment=Every day is worth remembering...
+Exec=daily_you
+Icon=daily_you
+Terminal=false
+Type=Application
+Categories=Office;Utility;

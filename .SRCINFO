@@ -1,0 +1,19 @@
+pkgbase = daily-you-bin
+	pkgdesc = Every day is worth remembering... (mood tracking, journaling)
+	pkgver = 3.4.3
+	pkgrel = 1
+	url = https://github.com/BigWebstas/Daily_You
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = sqlite
+	provides = daily-you
+	conflicts = daily-you
+	source = daily_you.desktop
+	source = logo.svg
+	source = https://github.com/BigWebstas/Daily_You/releases/download/v3.4.3/DailyYou-3.4.3-linux-x86_64-bundle.tar.gz
+	sha256sums = 5e65fec1284bddbf8b905d5adfc6975e0936429bc416fa86f8d9244ef2148934
+	sha256sums = 04b9e4925d53e37da78a5cc53945c709f45c7615e232fd67be59efecf236d403
+	sha256sums = SKIP
+
+pkgname = daily-you-bin
