@@ -1,0 +1,22 @@
+pkgbase = local-pdf-reader
+	pkgdesc = Local PDF.js reader in Microsoft Edge with browser-agent-readable page context
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/itonia149/local-pdf-reader
+	arch = any
+	license = MIT
+	license = Apache-2.0
+	checkdepends = desktop-file-utils
+	depends = python>=3.10
+	depends = microsoft-edge-stable-bin
+	depends = hicolor-icon-theme
+	optdepends = kdialog: KDE file picker when opening the app without a PDF
+	optdepends = zenity: alternative GTK file picker
+	optdepends = xdg-utils: configure the default PDF application
+	noextract = pdfjs-6.3.289-dist.zip
+	source = local-pdf-reader-1.0.0.tar.gz::https://github.com/itonia149/local-pdf-reader/releases/download/v1.0.0/local-pdf-reader-1.0.0.tar.gz
+	source = pdfjs-6.3.289-dist.zip::https://github.com/mozilla/pdf.js/releases/download/v6.3.289/pdfjs-6.3.289-dist.zip
+	sha256sums = e8168777ef4a206d0b2d3fd8b99e4c2b67926cf108f4ce06592db28dad3bb6ef
+	sha256sums = 98c5832ffe7af4edd59853476a478c0d4d4d76dd49c1701f4c86f7182725cdf9
+
+pkgname = local-pdf-reader
