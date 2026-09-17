@@ -1,6 +1,6 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=grafito
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A linux logs web frontend"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('crystal' 'shards')
 options=()
 install=install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archive/refs/tags/v$pkgver.tar.gz" "grafito.service")
-sha256sums=('129e6df31da400665386ccbd4c30914339bd1461d4d8baec39829d4ebe75ab03'
+sha256sums=('66a71a9f008b510820b43bde6d03d93fd1ccd2c4918f40c8a881b48bc16c8c31'
             '811bf1c965009017d9dfc3d6a3a62018fce8c5343ba4a37aa71c248ac255815b')
 
 prepare() {
