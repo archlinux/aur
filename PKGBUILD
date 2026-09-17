@@ -3,7 +3,7 @@
 _name=bithuman
 pkgname=python-$_name
 _py=cp314
-pkgver=3.1.8
+pkgver=2.11.1
 pkgrel=1
 pkgdesc='bitHuman Python SDK — libessence-backed avatar runtime.'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/
 source_aarch64=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/$_name-$pkgver-$_py-$_py-manylinux_2_28_aarch64.whl")
 noextract=("$_name-$pkgver-$_py-$_py-manylinux_2_28_x86_64.whl"
            "$_name-$pkgver-$_py-$_py-manylinux_2_28_aarch64.whl")
-sha256sums_x86_64=('7286cc34a0b4b56a73e56844beff5024105d0c7a2288e39ed58e19fbbb04d66e')
-sha256sums_aarch64=('ec391d6bc083e487f5e3a18e05bccb5ecb91d84969478b8bcfa4773b0de3d96b')
+sha256sums_x86_64=('55d499ee33cdacc146231b4e6b36ad1ef182a249f7fb60fc07578c44e19c8ffb')
+sha256sums_aarch64=('4103a72f1d6cf9db81b901e2e5b58492a7e5450c9cae82883e5341b97e8703c8')
 
 package() {
   python -m installer --destdir="$pkgdir" *.whl
