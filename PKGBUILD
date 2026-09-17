@@ -1,6 +1,6 @@
 # Maintainer: yakuda <yakuda@outlook.de>
 pkgname=osc-dreamchatbox
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="Native Linux alternative to MagicChatbox (VRCOSC) - VRChat OSC chatbox companion (status, now-playing, hardware, speech-to-text, OSCQuery)"
 # Reines Python, daher 'any' - der FPS-Vulkan-Layer liegt im
@@ -37,7 +37,7 @@ optdepends=(            'python-deepl: DeepL translation backend'
 # Git-Tag enthaelt einen Bindestrich (v1.0.6-alpha), pkgver darf keinen haben
 _tag="v${pkgver/_/-}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('f5afe9fa38cc8092d8853f9b439f5e4742a7e752f47a5860205d4b2d205f676b')
+sha256sums=('f1a655cacb21bee929a74c0fff0bb1fe511ba4f2b957056e23a16892c0ba49e7')
 
 
 package() {
@@ -55,6 +55,10 @@ package() {
     # kopieren ihn laengst mit, nur hier fehlte er.
     if [ -d config ]; then cp -r config "${app}/"; fi
     install -Dm644 assets/icon.png "${app}/assets/icon.png"
+    # Optionen -> General: Highlights- und Changelog-Knopf lesen die Dateien
+    # neben der App (ui/docviewer.py)
+    install -Dm644 CHANGELOG.md "${app}/CHANGELOG.md"
+    install -Dm644 HIGHLIGHTS.md "${app}/HIGHLIGHTS.md"
     # Python-Cache/Muell nicht paketieren
     find "${app}" -name '__pycache__' -type d -exec rm -rf {} + 2>/dev/null || true
 
