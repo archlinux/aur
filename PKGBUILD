@@ -2,7 +2,7 @@
 
 pkgname=indielinks-git
 _pkgname=${pkgname%-git}
-pkgver=r283.68bca71
+pkgver=r294.072ac14
 pkgrel=1
 pkgdesc="del.icio.us in the Fediverse (git version)"
 arch=('x86_64')
@@ -73,3 +73,5 @@ package() {
     install -Dm644 indielinks.toml    "$pkgdir/etc/indielinks.toml"
     install -Dm644 indielinks.service "$pkgdir/usr/lib/systemd/system/indielinks.service"
 }
+
+backup=('etc/indielinks.toml')
