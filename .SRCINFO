@@ -1,13 +1,13 @@
 pkgbase = cleaner-advanced
 	pkgdesc = Bash script for system maintenance on Arch Linux and derivatives
-	pkgver = 2.1
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://github.com/KlodCripta/Cleaner-Advanced
 	arch = any
 	license = MIT
 	depends = bash
 	depends = pacman
-	source = cleaner-advanced-2.1.tar.gz::https://github.com/KlodCripta/Cleaner-Advanced/archive/refs/tags/v2.1.tar.gz
-	sha256sums = SKIP
+	source = cleaner-advanced-3.0.tar.gz::https://github.com/KlodCripta/Cleaner-Advanced/archive/refs/tags/v3.0.tar.gz
+	sha256sums = 8624bd048e7075a56f97d5c8dc5937aaf058b04bc0eba29cc1f2824af7db29bd
 
 pkgname = cleaner-advanced

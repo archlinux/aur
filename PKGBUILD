@@ -1,15 +1,15 @@
 # Maintainer: Klod Cripta <klodcripta@linux.it>
 
 pkgname=cleaner-advanced
-pkgver=2.1
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc="Bash script for system maintenance on Arch Linux and derivatives"
 arch=('any')
 url="https://github.com/KlodCripta/Cleaner-Advanced"
 license=('MIT')
 depends=('bash' 'pacman')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('8624bd048e7075a56f97d5c8dc5937aaf058b04bc0eba29cc1f2824af7db29bd')
 
 package() {
   install -Dm755 "$srcdir/Cleaner-Advanced-$pkgver/cleaner_advanced.sh" \
