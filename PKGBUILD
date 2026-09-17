@@ -5,7 +5,7 @@
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=emudos-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful frontend for your classic DOS games (DOSBox Pure libretro)"
 arch=('x86_64')
 url="https://github.com/codingncaffeine/EmuDOS-For-Linux"
@@ -32,18 +32,45 @@ sha256sums=('74ca733b3338d401a7f8264a3c4b691cf0747d28f1cba2d1793e87c134587cc4'
             'SKIP'
             'SKIP'
             'SKIP')
+# The release tarball unpacks flat (top-level "./") and carries its own LICENSE, so extracting it in
+# $srcdir mixes the publish payload with the loose sources above. Stage it in its own directory
+# instead: package() then copies the payload wholesale, and no AUR build source reaches the app dir.
+noextract=("EmuDOS-$pkgver-linux-x64.tar.gz")
+
+prepare() {
+    rm -rf "$srcdir/publish"
+    mkdir -p "$srcdir/publish"
+    bsdtar -xf "$srcdir/EmuDOS-$pkgver-linux-x64.tar.gz" -C "$srcdir/publish"
+}
 
 package() {
     install -dm755 "$pkgdir/usr/lib/emudos" "$pkgdir/usr/bin" \
                    "$pkgdir/usr/share/applications" \
                    "$pkgdir/usr/share/icons/hicolor/512x512/apps" \
                    "$pkgdir/usr/share/metainfo"
-    # Install only the release-tarball payload into the app dir — NOT the AUR build's extra downloaded
-    # sources (icon/metainfo/LICENSE), which are placed under /usr/share below.
-    for item in EmuDOS *.so Assets README.txt; do
-        [ -e "$srcdir/$item" ] && cp -a "$srcdir/$item" "$pkgdir/usr/lib/emudos/"
+
+    # Copy the entire publish output. Do NOT narrow this to a list of names: the app is a
+    # self-contained .NET publish whose payload is the apphost, ~200 managed assemblies, the native
+    # .so set and the runtimeconfig/deps JSON. 0.5.0-1 copied {EmuDOS,*.so,Assets,README.txt}, which
+    # dropped every assembly: it installed cleanly, then failed at launch with
+    # "The application to execute does not exist: '/usr/lib/emudos/EmuDOS.dll'".
+    cp -a "$srcdir/publish/." "$pkgdir/usr/lib/emudos/"
+
+    # Guard the copy above; nothing in the build or install path notices a missing assembly.
+    local _dlls _f
+    _dlls=$(find "$pkgdir/usr/lib/emudos" -maxdepth 1 -name '*.dll' | wc -l)
+    if (( _dlls < 150 )); then
+        echo "==> ERROR: only $_dlls managed assemblies packaged (expected ~206)." >&2
+        return 1
+    fi
+    for _f in EmuDOS EmuDOS.dll EmuDOS.runtimeconfig.json EmuDOS.deps.json libcoreclr.so libhostfxr.so; do
+        if [[ ! -f "$pkgdir/usr/lib/emudos/$_f" ]]; then
+            echo "==> ERROR: $_f is missing from the package payload." >&2
+            return 1
+        fi
     done
-    install -Dm644 "$srcdir/NOTICES.txt" "$pkgdir/usr/share/doc/$pkgname/NOTICES.txt"
+
+    install -Dm644 "$srcdir/publish/NOTICES.txt" "$pkgdir/usr/share/doc/$pkgname/NOTICES.txt"
 
     cat > "$pkgdir/usr/bin/emudos" <<'EOF'
 #!/bin/sh

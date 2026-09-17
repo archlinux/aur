@@ -1,7 +1,7 @@
 pkgbase = emudos-bin
 	pkgdesc = A beautiful frontend for your classic DOS games (DOSBox Pure libretro)
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/codingncaffeine/EmuDOS-For-Linux
 	arch = x86_64
 	license = GPL-3.0-only
@@ -23,6 +23,7 @@ pkgbase = emudos-bin
 	optdepends = libisoburn: build ISO disc images from a folder (xorriso)
 	provides = emudos
 	conflicts = emudos
+	noextract = EmuDOS-0.5.0-linux-x64.tar.gz
 	options = !strip
 	source = https://github.com/codingncaffeine/EmuDOS-For-Linux/releases/download/v0.5.0/EmuDOS-0.5.0-linux-x64.tar.gz
 	source = https://github.com/codingncaffeine/EmuDOS-For-Linux/raw/v0.5.0/LICENSE
