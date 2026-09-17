@@ -1,24 +1,24 @@
 pkgbase = trezor-suite-bin
-	pkgdesc = Desktop app for Trezor hardware wallets.(Prebuilt version.Use system-wide electron)
-	pkgver = 26.8.2
+	pkgdesc = Desktop app for Trezor hardware wallets.
+	pkgver = 26.9.2
 	pkgrel = 1
 	url = https://trezor.io/trezor-suite
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-T-RSL
 	makedepends = asar
-	depends = electron42
+	depends = electron43
 	depends = trezor-udev
-	provides = trezor-suite=26.8.2
+	provides = trezor-suite=26.9.2
 	conflicts = trezor-suite
 	conflicts = trezor-suite-appimage
-	source = LICENSE-26.8.2.md::https://raw.githubusercontent.com/trezor/trezor-suite/v26.8.2/LICENSE.md
+	source = LICENSE-26.9.2.md::https://raw.githubusercontent.com/trezor/trezor-suite/v26.9.2/LICENSE.md
 	source = trezor-suite.sh
 	sha256sums = 0bb9e6855d6aa4f013a87ed9ceb2ef47b6eddc44858cc85ed3faf5d53677f67a
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = trezor-suite-26.8.2-aarch64.AppImage::https://github.com/trezor/trezor-suite/releases/download/v26.8.2/Trezor-Suite-26.8.2-linux-arm64.AppImage
-	sha256sums_aarch64 = 2544e48d790ac7085104ee36ab87017fe975a867d0ce7308d0437e89dd5bb708
-	source_x86_64 = trezor-suite-26.8.2-x86_64.AppImage::https://github.com/trezor/trezor-suite/releases/download/v26.8.2/Trezor-Suite-26.8.2-linux-x86_64.AppImage
-	sha256sums_x86_64 = 1eba51918968d0138d114ca0248cbb8910e7cc5b68fdd7b1c9a7c0a7926a2d53
+	source_aarch64 = trezor-suite-26.9.2-aarch64.AppImage::https://github.com/trezor/trezor-suite/releases/download/v26.9.2/Trezor-Suite-26.9.2-linux-arm64.AppImage
+	sha256sums_aarch64 = ef14fbad2ac830a547d7ffa65ed2273cd819223a9f11a6a5f34eacf5eebf6319
+	source_x86_64 = trezor-suite-26.9.2-x86_64.AppImage::https://github.com/trezor/trezor-suite/releases/download/v26.9.2/Trezor-Suite-26.9.2-linux-x86_64.AppImage
+	sha256sums_x86_64 = 56428d87988e7fdf90acd277bcbfa3dd9257154795a12e9e177403c5707b253b
 
 pkgname = trezor-suite-bin
