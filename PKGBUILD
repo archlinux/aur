@@ -3,29 +3,20 @@
 pkgname=atha
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="Simple and fast Arch Linux package manager wrapper built on top of pacman"
-arch=('any')
+pkgdesc="Safety and workflow layer for pacman"
+arch=('x86_64' 'aarch64')
 url="https://github.com/Bangkah/Atha"
 license=('MIT')
-depends=(
-    'bash'
-    'pacman'
-    'sudo'
-    'git'
-    'pacman-contrib' 
-    'curl'           
-    'jq'            
-)
+depends=('pacman' 'sudo' 'git')
+makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Bangkah/Atha/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
     cd "Atha-${pkgver}"
 
-    install -Dm755 atha "${pkgdir}/usr/bin/atha"
-
-    install -d "${pkgdir}/usr/lib/atha"
-    cp -dr --no-preserve=ownership commands "${pkgdir}/usr/lib/atha/"
+    cargo build --release
+    install -Dm755 target/release/atha "${pkgdir}/usr/bin/atha"
 
     if [ -f LICENSE ]; then
         install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

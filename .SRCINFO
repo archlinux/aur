@@ -1,17 +1,15 @@
 pkgbase = atha
-	pkgdesc = Simple and fast Arch Linux package manager wrapper built on top of pacman
+	pkgdesc = Safety and workflow layer for pacman
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/Bangkah/Atha
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
-	depends = bash
+	makedepends = rust
 	depends = pacman
 	depends = sudo
 	depends = git
-	depends = pacman-contrib
-	depends = curl
-	depends = jq
 	source = atha-3.0.0.tar.gz::https://github.com/Bangkah/Atha/archive/refs/tags/v3.0.0.tar.gz
 	sha256sums = SKIP
 
