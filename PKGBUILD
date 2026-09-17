@@ -1,6 +1,6 @@
 # Maintainer: J. Simon Richard <jsimonrichard@gmail.com>
 pkgname=hypr-taskspace
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Task-centric Hyprland control plane with Omarchy and Waybar integration"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ if [[ -z ${TSK_AUR_PKGBUILD:-} && -f "$startdir/install-share.sh" ]]; then
 fi
 
 # sha256 of the v$pkgver GitHub archive
-_aur_sha256='6b98426b11c96d1631bf6dba554dc99577335374064d79982201aa28cf15c5e7'
+_aur_sha256='60ac3c09e672d206ee7546c267b7c905e4d1764ee671a37f826438812fe9f6f2'
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("$_aur_sha256")

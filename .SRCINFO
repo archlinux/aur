@@ -1,6 +1,6 @@
 pkgbase = hypr-taskspace
 	pkgdesc = Task-centric Hyprland control plane with Omarchy and Waybar integration
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jsimonrichard/hypr-taskspace
 	install = hypr-taskspace.install
@@ -17,7 +17,7 @@ pkgbase = hypr-taskspace
 	optdepends = chromium: helper extension for tab restore
 	options = !strip
 	options = !lto
-	source = hypr-taskspace-0.1.0.tar.gz::https://github.com/jsimonrichard/hypr-taskspace/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 6b98426b11c96d1631bf6dba554dc99577335374064d79982201aa28cf15c5e7
+	source = hypr-taskspace-0.2.0.tar.gz::https://github.com/jsimonrichard/hypr-taskspace/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 60ac3c09e672d206ee7546c267b7c905e4d1764ee671a37f826438812fe9f6f2
 
 pkgname = hypr-taskspace
