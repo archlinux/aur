@@ -13,7 +13,7 @@ source=("git+https://github.com/maotovisk/MapWizard.git"
         "mapwizard.png")
 sha256sums=('SKIP'
             '00fe2d035637266874b2f986ff4ba2093ba6d287c348780026228ed5ec9c2607'
-            '47c200402dd7ba247e29b945e4367b4f126951cb0d3456e44ab2707dfc268215')
+            'd24d377f08ff2788e7df4cfee50708108aa0a9e2873238c7954698b5a33755b9')
 
 pkgver() {
   cd "$srcdir/MapWizard"
