@@ -3,10 +3,9 @@
 # XPCog for Arch, built against the distribution's libraries.
 #
 # The presets are not used here and that is deliberate: each one names a build
-# directory under the source tree and sets VCPKG_BINARY_SOURCES to a cache
-# inside it, neither of which a package build wants. What this configures by
-# hand is `linux-repo-release` -- XPCOG_USE_SYSTEM_LIBS=ON plus RelWithDebInfo
-# -- with the three differences set out below.
+# directory under the source tree, which a package build does not want. What
+# this configures by hand is `linux-repo-release` -- XPCOG_USE_SYSTEM_LIBS=ON
+# plus RelWithDebInfo -- with the three differences set out below.
 #
 # **This build reaches the network.** vcpkg cannot be avoided: mgba, libvgm and
 # the four libraries the project never substitutes (libogg, libflac, libvorbis,
@@ -16,7 +15,7 @@
 # and not the version; a build in a network-isolated chroot will still fail.
 
 pkgname=xpcog
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Audio player for the formats other players do not open"
 arch=('x86_64')
@@ -61,7 +60,7 @@ source=(
 # The release tarball is checksummed; the vcpkg tree is not, because a git
 # source is pinned by its commit and makepkg wants SKIP for one.
 sha256sums=(
-  '852c81f0af9842149cf2ec193b6256b05c4ae285a074bd6b7d441d9a47d0fc8e'
+  '8cceceb1f9cb243dec6ab5e6095a73e575d7ba9c34786324b72dea708d5ff4bc'
   'SKIP'
 )
 
