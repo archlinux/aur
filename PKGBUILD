@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=WiiUDownloader
 pkgname=wiiudownloader
-pkgver=3.0
+pkgver=3.2
 pkgrel=1
 pkgdesc="Allows to download encrypted wiiu files from nintendo's official servers"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'glib2' 'hicolor-icon-theme' 'gtk4' 'gdk-pixbuf2' 'cairo' 'pang
 makedepends=('go' 'gendesk' 'python')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a851ef8eb544711206efcde98a76ea9e191e33dab17f899a01967237ccdf9e9b')
+sha256sums=('7a085bd6f7f7a1680d8d10af9625a1d925f1f0fe9f3cf8d5c030e331ba6902a9')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
