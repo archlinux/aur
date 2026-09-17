@@ -1,6 +1,6 @@
 pkgbase = palace-git
 	pkgdesc = 3D finite element solver for computational electromagnetics
-	pkgver = 0.18.0.r31.gdff1ef9
+	pkgver = 0.18.0.r32.g0fb92e0
 	pkgrel = 1
 	url = https://github.com/awslabs/palace
 	arch = x86_64
