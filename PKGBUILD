@@ -2,16 +2,16 @@
 # Contributor: oscarcl <oscar.cowderylack@gmail.com>
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
-pkgver=1.39.15
+pkgver=1.40.0
 pkgrel=1
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
 license=('MIT')
-depends=('dotnet-sdk-9.0')
+depends=('dotnet-sdk')
 makedepends=('git')
 source=("git+$url#tag=v$pkgver")
-sha256sums=('0937a786e9b27fc5022b2bae8d81b2cf1ad18b31a597bde60074bdd7a7d4fde5')
+sha256sums=('5b4574424dcda1b3ce22d38a01da2ae35c7e46084c600cc3080aecfd89d5730c')
 prepare() {
     cd "$srcdir/$pkgname"
 
@@ -48,12 +48,12 @@ prepare() {
 build() {
     cd "$srcdir/$pkgname"
 
-    dotnet cake --target PublishNet6Builds --configuration Release --exclusive --use-global-dotnet-sdk
+    dotnet cake --target PublishNet10Builds --configuration Release --exclusive --use-global-dotnet-sdk
 }
 
 package() {
     install -d "$pkgdir/usr/lib"
-    cp -a "$srcdir/$pkgname/artifacts/publish/OmniSharp.Stdio.Driver/linux-x64/net6.0" "$pkgdir/usr/lib/$pkgname"
+    cp -a "$srcdir/$pkgname/artifacts/publish/OmniSharp.Stdio.Driver/linux-x64/net10.0" "$pkgdir/usr/lib/$pkgname"
 
     install -d "$pkgdir/usr/share/licenses/$pkgname"
     mv "$pkgdir/usr/lib/$pkgname/license.md" "$pkgdir/usr/share/licenses/$pkgname"
