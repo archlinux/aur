@@ -1,6 +1,6 @@
 pkgbase = tonearm
 	pkgdesc = Unofficial native GTK4 / Adwaita music streaming client for TIDAL
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://codeberg.org/dergs/Tonearm
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = tonearm
 	depends = gst-plugins-bad
 	depends = libadwaita
 	depends = libsecret
-	provides = tonearm=1.4.2
-	source = tonearm::https://codeberg.org/dergs/Tonearm/archive/v1.4.2.tar.gz
-	sha256sums = 6b50ea42c799667cd1158a369a173c27eb4fd7a3ccd2b09027167522a33688fc
+	provides = tonearm=1.5.0
+	source = tonearm::https://codeberg.org/dergs/Tonearm/archive/v1.5.0.tar.gz
+	sha256sums = fea97a740ab0ec62e33fecf1e55d85fa3cb434b4e887d8db4ceedabad5ad5c94
 
 pkgname = tonearm
