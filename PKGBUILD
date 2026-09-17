@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=natscli-git
-pkgver=r2745.e9c4f0b
+pkgver=r3153.cc0a8e3
 pkgrel=1
 pkgdesc="The NATS Command Line Interface"
 arch=(x86_64)
@@ -26,7 +26,7 @@ build() {
 		-buildmode=pie \
 		-mod=readonly \
 		-modcacherw \
-		-ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+		-ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X main.version=${pkgver}" \
 		.
 }
 
