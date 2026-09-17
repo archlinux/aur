@@ -1,6 +1,6 @@
 pkgbase = rapidraw-bin
 	pkgdesc = GPU-accelerated RAW image editor
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/CyberTimon/RapidRAW
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = rapidraw-bin
 	depends = webkit2gtk-4.1
 	provides = rapidraw
 	conflicts = rapidraw
-	source_x86_64 = rapidraw-1.6.3-x86_64.deb::https://github.com/CyberTimon/RapidRAW/releases/download/v1.6.3/03_RapidRAW_v1.6.3_ubuntu-24.04_amd64.deb
-	sha256sums_x86_64 = b455792645c8c89c4841fe98352bbbb66f4161dbf417fa77788995bec0a05dfa
-	source_aarch64 = rapidraw-1.6.3-aarch64.deb::https://github.com/CyberTimon/RapidRAW/releases/download/v1.6.3/03_RapidRAW_v1.6.3_ubuntu-24.04-arm_arm64.deb
-	sha256sums_aarch64 = 1346a610903e8f2906b9c5f1ba9882e7d17bc568709c1f26ef0f6b05aab4b139
+	source_x86_64 = rapidraw-1.6.4-x86_64.deb::https://github.com/CyberTimon/RapidRAW/releases/download/v1.6.4/03_RapidRAW_v1.6.4_ubuntu-24.04_amd64.deb
+	sha256sums_x86_64 = ad40088b3c84890b804705378b4fcb7696640402175d024573c7fdaacbe13cf7
+	source_aarch64 = rapidraw-1.6.4-aarch64.deb::https://github.com/CyberTimon/RapidRAW/releases/download/v1.6.4/03_RapidRAW_v1.6.4_ubuntu-24.04-arm_arm64.deb
+	sha256sums_aarch64 = 8c2e9974babfb5b43cd35558ac3a31d481f065d055e358cebb071cdf4ef3ce78
 
 pkgname = rapidraw-bin
