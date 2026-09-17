@@ -1,0 +1,9 @@
+post_install() {
+    # 设置插件目录权限，允许普通用户运行时读写
+    chmod 777 /usr/lib/typora-free-with-plugin/resources/plugin
+    chmod 666 /usr/lib/typora-free-with-plugin/resources/plugin/global/settings/settings.user.toml
+}
+
+post_upgrade() {
+    post_install
+}

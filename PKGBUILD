@@ -2,7 +2,7 @@
 _appname=typora
 pkgname="${_appname}-free-with-plugin"
 _pkgname=Typora
-pkgver=1.19.5
+pkgver=1.19.7
 _typoraver=0.11.18
 _electronversion=13
 pkgrel=1
@@ -27,12 +27,11 @@ depends=(
     "electron${_electronversion}"
     'alsa-lib'
 )
-source=(
-    "${_appname}-plugin-${pkgver}.zip::${_pluginurl}/releases/download/${pkgver}/${_appname}-plugin@v${pkgver}.zip"
-)
+source=("${_appname}-plugin-${pkgver}.zip::${_pluginurl}/releases/download/${pkgver}/${_appname}-plugin@v${pkgver}.zip")
+install="${pkgname}.install"
 source_aarch64=("${pkgname}-${_typoraver}-aarch64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_arm64.deb")
 source_x86_64=("${pkgname}-${_typoraver}-x86_64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_amd64.deb")
-sha256sums=('520fe62b3bd8adbf3e241f34cab8f87945b28b6a9b6524234152e64308655094')
+sha256sums=('2b3db9f2abb9dd9e5f576dde9d60b2c23c5d154ccd892319cc64d3a09e267047')
 sha256sums_aarch64=('12ad46732c4da7d9414701c584fee942baf83b89165563f18ba03d859eb59ad8')
 sha256sums_x86_64=('a202935a754c4b7344cc947db143e12885e4a716ca5f70f607f0318c346bb6c6')
 _get_app_dir() {
@@ -77,6 +76,4 @@ package() {
 	done
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/usr/share/doc/${_appname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    chmod 777 "${pkgdir}/usr/lib/${pkgname}/resources/plugin"
-    chmod 0777 "${pkgdir}/usr/lib/${pkgname}/resources/plugin/global/settings/"{settings.user.toml,custom_plugin.user.toml}
 }
