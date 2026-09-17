@@ -1,6 +1,6 @@
 pkgbase = dankmail-git
 	pkgdesc = Mail notifier with triage for Linux — Go daemon + Quickshell UI (git version)
-	pkgver = r96.66c429d
+	pkgver = r98.44bc59d
 	pkgrel = 1
 	url = https://github.com/arqueon/dankmail
 	install = dankmail.install
