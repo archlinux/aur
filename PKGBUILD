@@ -1,8 +1,8 @@
 # Maintainer: va2bbw <antelaurijssen@gmail.com>
 
 pkgname=yaac
-pkgver=1.0beta229
-pkgrel=6
+pkgver=1.0beta230
+pkgrel=7
 pkgdesc="Yet Another APRS Client is a (mostly) platform-independent Java application for monitoring and contributing to the Automatic Packet Reporting System (APRS) network."
 arch=('any')
 url="https://sourceforge.net/projects/yetanotheraprsc/"
@@ -10,7 +10,6 @@ license=('LGPL-3.0-only')   # confirm -only vs -or-later against the actual LICE
 depends=('java-runtime>=8' 'sh')
 provides=("$pkgname")
 source=("${pkgname}-${pkgver}.zip::$url/files/latest/download/YAAC.zip")
-sha256sums=('e64c3fca5fa466f08af49c2104ca604c14d6c1c9d681771408dd07c7db5007e6')
 
 package() {
     install -dm755 "$pkgdir/opt/yaac"
@@ -35,3 +34,4 @@ Type=Application
 Categories=HamRadio;Network;
 EOF
 }
+sha256sums=('a56c4037d1384e399290a1024e3b2d781a251257715528287db83a19429d5d5f')
