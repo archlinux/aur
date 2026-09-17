@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="The ultimate (terminal) client for Radio Paradise"
 
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,8 +29,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('48c628ba94d1294e6513bf21a93e373d92b1682157c02cea455159aa0b696f75')
-sha256sums_aarch64=('267a784823596da6f85a782b80f58700f91b893998b54d11d068a1cd24f6629f')
+sha256sums_x86_64=('80c8ecef9a9fa52f8ac729252452ee302c913e175f81edeb3b43ff3b24b67eac')
+sha256sums_aarch64=('0ae450df437b212b9e61655672000cc0f066f9c5f6c8615fdba791a23e241159')
 
 
 package() {
