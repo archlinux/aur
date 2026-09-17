@@ -2,8 +2,8 @@
 
 pkgname=python-inspice
 _name=${pkgname#python-}
-pkgver=1.7.0.6
-pkgrel=2
+pkgver=1.7.0.7
+pkgrel=1
 epoch=
 pkgdesc="Python interface to Ngspice and Xyce circuit simulators (forked from InSpice)"
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=()
 options=('!strip' '!debug')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
 noextract=()
-sha256sums=('b876549d9a65cad89b12a6ececb120045287ea64fc1528713c1a7827eadc8f29')
+sha256sums=('9e952a8c7102341344e28ed2e63a5920775791c69f62c3c6457093627a17b0e7')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
