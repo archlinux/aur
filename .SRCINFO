@@ -1,7 +1,7 @@
 pkgbase = asbru-cm
 	pkgdesc = A free and open-source connection manager. Latest release pulled from GIT.
 	pkgver = 6.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asbru-cm/asbru-cm
 	arch = any
 	license = GPL3
@@ -16,6 +16,7 @@ pkgbase = asbru-cm
 	depends = perl-yaml
 	depends = perl-crypt-cbc
 	depends = perl-crypt-blowfish
+	depends = perl-crypt-urandom
 	depends = perl-gtk3
 	depends = perl-net-arp
 	depends = uuid
