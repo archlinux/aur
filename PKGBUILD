@@ -1,7 +1,7 @@
 # Maintainer: Viktor-Alojzije Ćorić <viktor@viktoracoric.xyz>
 pkgname=ma-sh
-pkgver=0.1
-pkgrel=1
+pkgver=0.2
+pkgrel=2
 epoch=
 pkgdesc="Metal Archives Release Tracker - Track new releases for Metal Archives bookmarks"
 arch=("any")
