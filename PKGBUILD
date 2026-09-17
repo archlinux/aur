@@ -1,5 +1,5 @@
 pkgname=vgs-shell-git
-pkgver=0.5.0.r343.g16b5b870
+pkgver=0.5.0.r350.g480d285c
 pkgrel=1
 pkgdesc='VanillaGreen desktop shell for Hyprland and Niri (git)'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 # config/vshell/dependencies.json and packaging/optional-packages.json.
 # Run scripts/gen-package-metadata.py --write after changing either file.
 depends=(
-  'quickshell'
+  'quickshell>=0.3.1'
   'jq'
   'python'
   'systemd'
