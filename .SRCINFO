@@ -1,0 +1,24 @@
+pkgbase = tide-bin
+	pkgdesc = Terminal RSS reader built with Bubble Tea
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/allisonhere/tide
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = xdg-utils: open articles in a browser
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	optdepends = xsel: clipboard support on X11 (alternative to xclip)
+	provides = tide=1.2.0
+	conflicts = tide
+	options = !strip
+	options = !debug
+	source = LICENSE-1.2.0::https://github.com/allisonhere/tide/raw/v1.2.0/LICENSE
+	sha256sums = 7ded3abde5f4be92306e0ee24c6db97b1825e4eaa1b8fd473669c521f5a409dd
+	source_x86_64 = tide-bin-1.2.0-x86_64.tar.gz::https://github.com/allisonhere/tide/releases/download/v1.2.0/tide-linux-x86_64.tar.gz
+	sha256sums_x86_64 = cf7593d2921f5d00757e60e13a96a96290dc69a597683ef09c5e962841020831
+	source_aarch64 = tide-bin-1.2.0-aarch64.tar.gz::https://github.com/allisonhere/tide/releases/download/v1.2.0/tide-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 73d6f4e3888b76fff6fcf4aa8772ed0b5b40b2c90116cf2575e3143a364c1fb6
+
+pkgname = tide-bin
