@@ -1,0 +1,16 @@
+pkgbase = zipplay
+	pkgdesc = Qt 6 utility for splitting and recombining ZIP, TAR.GZ, and arbitrary files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yousefvand/zipplay
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = zip
+	depends = hicolor-icon-theme
+	source = zipplay-0.1.0.tar.gz::https://github.com/yousefvand/zipplay/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 1cd73ebc4826e7826e5925868ea84c4f2d88446fb5cc3f99c28ca604245a1768
+
+pkgname = zipplay
