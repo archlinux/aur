@@ -1,7 +1,7 @@
 # Maintainer: AnabasaSoft <anabasasoft@gmail.com>
 pkgname=mantpro-bin
 pkgver=3.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Sistema Integral de Mantenimiento Industrial (Cliente de Escritorio)"
 arch=('x86_64')
 url="https://github.com/AnabasaSoft/MantPro"
@@ -17,7 +17,7 @@ source_x86_64=("https://github.com/AnabasaSoft/MantPro/releases/download/v${pkgv
                "https://raw.githubusercontent.com/AnabasaSoft/MantPro/main/icono.png")
 
 # Usamos SKIP para evitar errores de checksum antes de que GitHub compile la release
-sha256sums_x86_64=('3282e578cf22ce796efa0842cecadb6b6f9fc9fb0e7ce2a57c880e0cba1d4b44'
+sha256sums_x86_64=('95395f0f8d37176bb9356537d882c6d42eae47eaea62d222197c6027ba36c2ca'
                    '2bf0349b288d8b77834fdfdd1a036e6fb2b5927b6aea89ca0606c6369694d5e3')
 
 package() {
