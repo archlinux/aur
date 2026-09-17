@@ -1,18 +1,20 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 pkgname=omnisharp-roslyn-bin
-pkgver=1.39.15
+pkgver=1.40.0
+_dotnet_ver=10.0
 pkgrel=1
 pkgdesc='OmniSharp server (STDIO) based on Roslyn workspaces'
 arch=(x86_64)
 url='https://github.com/OmniSharp/omnisharp-roslyn'
 license=(MIT)
-depends=(dotnet-sdk)
+depends=(dotnet-sdk-$_dotnet_ver)
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 source=(
-	"omnisharp-linux-x64-net6.0-$pkgver.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v$pkgver/omnisharp-linux-x64-net6.0.tar.gz"
+	"omnisharp-linux-x64-net$_dotnet_ver-$pkgver.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v$pkgver/omnisharp-linux-x64-net$_dotnet_ver.tar.gz"
 )
-sha256sums=('e34b2ad29c31202b05dbdc1439600f98ea38acf656f84817c52e3dda81879f6c')
+sha256sums=('a5c68aed11a4f51c1e815cfc6dbefe30d7f302297b826370e32403546b57da65')
+options=(!debug)
 
 package() {
 	install -Dm755 OmniSharp *.dll -t"$pkgdir"/usr/lib/omnisharp
