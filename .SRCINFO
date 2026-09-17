@@ -1,6 +1,6 @@
 pkgbase = drawy-git
 	pkgdesc = an infinite whiteboard tool
-	pkgver = r1255.22d8693d
+	pkgver = r1585.a1fa50c7
 	pkgrel = 1
 	url = https://invent.kde.org/graphics/drawy
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = drawy-git
 	depends = syntax-highlighting
 	depends = libgcc
 	depends = libstdc++
+	depends = sonnet
 	provides = drawy
 	provides = drawy-debug
 	source = drawy-git::git+https://invent.kde.org/graphics/drawy

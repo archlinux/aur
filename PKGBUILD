@@ -1,12 +1,12 @@
 # Maintainer: nathan marchiori <nathan.marchiori@gmail.com>
 pkgname="drawy-git"
-pkgver=r1255.22d8693d
+pkgver=r1585.a1fa50c7
 pkgrel=1
 pkgdesc="an infinite whiteboard tool"
 arch=("x86_64")
 url="https://invent.kde.org/graphics/drawy"
 license=('GPL-3.0-only')
-depends=('qt6-base>=6.9' 'glibc' 'hicolor-icon-theme'  'zstd' 'kcoreaddons' 'kcrash' 'kwidgetsaddons' 'kconfig' 'kiconthemes' 'ki18n' 'kconfigwidgets' 'kcolorscheme' 'kxmlgui' 'syntax-highlighting' 'libgcc' 'libstdc++')
+depends=('qt6-base>=6.9' 'glibc' 'hicolor-icon-theme'  'zstd' 'kcoreaddons' 'kcrash' 'kwidgetsaddons' 'kconfig' 'kiconthemes' 'ki18n' 'kconfigwidgets' 'kcolorscheme' 'kxmlgui' 'syntax-highlighting' 'libgcc' 'libstdc++' 'sonnet')
 makedepends=('git' 'cmake' 'qt6-tools' 'gcc' 'vulkan-headers' 'extra-cmake-modules' 'ninja')
 provides=('drawy' 'drawy-debug')
 source=('drawy-git::git+https://invent.kde.org/graphics/drawy')
