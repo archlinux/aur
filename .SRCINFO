@@ -1,0 +1,14 @@
+pkgbase = supercompress-proxy
+	pkgdesc = Local proxy that compresses LLM context for coding agents (Claude Code, Codex, Cursor, ...)
+	pkgver = 0.5.27
+	pkgrel = 1
+	url = https://github.com/Supercompress/Supercompress
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=18
+	optdepends = bun: TUI mode (supercompress tui)
+	source = https://registry.npmjs.org/supercompress-proxy/-/supercompress-proxy-0.5.27.tgz
+	sha256sums = 5ec8a8ff7579068499b7c1d59bbe944883c4126f590a90831451609ac1d6fac3
+
+pkgname = supercompress-proxy
