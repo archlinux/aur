@@ -14,7 +14,7 @@ depends=(
 )
 
 source=(
-    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::$url/archive/refs/heads/main.tar.gz"
     "badapple.mp4::https://raw.githubusercontent.com/Raj-1727/badapple-hd/main/badapple.mp4"
 )
 
