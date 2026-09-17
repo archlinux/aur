@@ -1,6 +1,6 @@
 _pkgname=influxdb-cxx
 pkgname="$_pkgname-git"
-pkgver=v0.8.1.r29.g80931b7
+pkgver=v0.8.1.r35.g74997a3
 pkgrel=1
 pkgdesc="C++ client library for InfluxDB 1.x/2.x"
 url=https://github.com/offa/$_pkgname
