@@ -7,7 +7,7 @@
 _productVariant=Fotobuch
 # leave this unset to get a package name based on the application name
 pkgname=
-pkgrel=4
+pkgrel=5
 
 ## Begin shared code ##
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'

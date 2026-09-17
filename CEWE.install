@@ -10,7 +10,10 @@ post_install() {
 
 	echo -e "${eula//?/=}\n$eula\n${eula//?/=}"
 	head -n 8 $eula
+	echo -e "...\n${eula//?/=}\n$eula\n${eula//?/=}"
 
-	read -p "Show rest of $eula (y/N)"
+	read -p "Show rest of EULA.txt? (y/N)"
 	[ "${REPLY#y}" != "$REPLY" ] && less -e $eula
+
+	true
 }
