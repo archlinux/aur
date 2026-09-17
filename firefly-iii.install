@@ -15,6 +15,12 @@ post_install() {
     echo ""
     echo "==> Point your web server's document root to /usr/share/webapps/firefly-iii/public"
     echo ""
+    echo "==> Apache: /chart/* and similar URLs are Laravel routes, not static files."
+    echo "    Arch httpd ignores .htaccess (AllowOverride None) and ships with"
+    echo "    mod_rewrite commented out, which 404s those routes."
+    echo "    Uncomment LoadModule rewrite_module in /etc/httpd/conf/httpd.conf"
+    echo "    and see /usr/share/webapps/firefly-iii/apache.example.conf"
+    echo ""
     echo "==> Enable the cron timer for recurring transactions and auto-budgets:"
     echo "    systemctl enable --now firefly-iii-cron.timer"
 }

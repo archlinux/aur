@@ -5,7 +5,7 @@
 
 pkgname=firefly-iii
 pkgver=6.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='PHP personal finances manager'
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -22,12 +22,22 @@ optdepends=('php-sqlite: SQLite database support'
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/FireflyIII-v${pkgver}.tar.gz"
         "$pkgname-cron.service"
-        "$pkgname-cron.timer")
+        "$pkgname-cron.timer"
+        "apache.example.conf")
 sha256sums=('facc4156fd72a9c2eb9a89b8068aae95c6c76317abc5424744d52b82c4aa5a4c'
+            'SKIP'
             'SKIP'
             'SKIP')
 
 backup=("etc/webapps/$pkgname/config.env")
+
+check() {
+    cd "$srcdir"
+    # /chart/* are Laravel routes; the front-controller rewrite must ship
+    [[ -f public/.htaccess ]]
+    grep -q 'RewriteRule ^ index.php' public/.htaccess
+    [[ ! -e public/chart ]]
+}
 
 package() {
     cd "$srcdir"
@@ -49,6 +59,7 @@ package() {
 
     install -Dm644 "$srcdir/$pkgname-cron.service" "$pkgdir/usr/lib/systemd/system/$pkgname-cron.service"
     install -Dm644 "$srcdir/$pkgname-cron.timer" "$pkgdir/usr/lib/systemd/system/$pkgname-cron.timer"
+    install -Dm644 "$srcdir/apache.example.conf" "$pkgdir/usr/share/webapps/$pkgname/apache.example.conf"
 }
 
 # vim:ts=4:sw=4:expandtab
