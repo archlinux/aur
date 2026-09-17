@@ -1,0 +1,26 @@
+pkgbase = educamadrid-wifi-bin
+	pkgdesc = Unofficial GUI to connect to the EducaMadrid WEDU_PROF Wi-Fi network via NetworkManager (prebuilt binary)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/13Stokes31/educamadrid_wifi
+	arch = x86_64
+	license = MIT
+	options = !strip
+	options = !debug
+	depends = networkmanager
+	depends = gcc-libs
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxrender
+	depends = wayland
+	provides = educamadrid-wifi=0.2.1
+	conflicts = educamadrid-wifi
+	source = educamadrid-wifi-bin-0.2.1.tar.gz::https://github.com/13Stokes31/educamadrid_wifi/releases/download/v0.2.1/educamadrid-wifi-v0.2.1-x86_64-linux-gnu.tar.gz
+	sha256sums = 0470ab789d7ddbbea3e76016a8590218b087e797907ee2ad6ed72f8721daefa2
+
+pkgname = educamadrid-wifi-bin
