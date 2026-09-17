@@ -1,6 +1,6 @@
 pkgbase = linear-electron
 	pkgdesc = Unofficial Linear desktop app (linear-electron)
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/hughesjs/linear-electron
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = linear-electron
 	conflicts = linear-electron-appimage
 	options = !strip
 	options = !debug
-	source = https://github.com/hughesjs/linear-electron/releases/download/v0.1.1/linear-electron-0.1.1.tar.gz
-	sha256sums = b2ee385ba00b291a043d4d329e50a59393ed64fecf0f9785cc786c4fd94b9482
+	source = https://github.com/hughesjs/linear-electron/releases/download/v0.2.0/linear-electron-0.2.0.tar.gz
+	sha256sums = dc28326fbe74aa99f873d7b7feb2ac2a6cf8e64976bcefa4c1d647df730716f9
 
 pkgname = linear-electron

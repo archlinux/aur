@@ -1,6 +1,6 @@
 # Maintainer: James H <james@jamesmcmahon.co.uk>
 pkgname=linear-electron
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Unofficial Linear desktop app (linear-electron)'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ conflicts=(linear-electron-git linear-electron-bin linear-electron-appimage )
 options=('!strip' '!debug')
 depends=('electron44' 'xdg-utils')
 makedepends=('jq')
-source=(https://github.com/hughesjs/linear-electron/releases/download/v0.1.1/linear-electron-0.1.1.tar.gz)
-sha256sums=(b2ee385ba00b291a043d4d329e50a59393ed64fecf0f9785cc786c4fd94b9482)
+source=(https://github.com/hughesjs/linear-electron/releases/download/v0.2.0/linear-electron-0.2.0.tar.gz)
+sha256sums=(dc28326fbe74aa99f873d7b7feb2ac2a6cf8e64976bcefa4c1d647df730716f9)
 
 package() {
   cd "linear-electron-$pkgver"
