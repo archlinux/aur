@@ -1,6 +1,6 @@
 pkgbase = python-k3d
 	pkgdesc = 3D visualization library
-	pkgver = 3.0.3
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/K3D-tools/K3D-jupyter
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-k3d
 	depends = python-ipywidgets
 	depends = python-deepcomparer
 	optdepends = jupyterlab: for notebook support
-	source = K3D-jupyter-3.0.3.tar.gz::https://github.com/K3D-tools/K3D-jupyter/archive/v3.0.3.tar.gz
-	sha512sums = c0e10751de525ffa117673728a080af32e5eed8996680462be0a924e0941bee30411470f954e47dc8f7230ebbf12adda6b44c6bbf5beffd3c92447a1a9f6eb43
+	source = K3D-jupyter-3.1.0.tar.gz::https://github.com/K3D-tools/K3D-jupyter/archive/v3.1.0.tar.gz
+	sha512sums = 22636a9290f75c3185dcf83f9e92323ae30ce1c7723cdb596fa0550ca208d638506c2dc578fe4e3c0f116b8ba77339896180cf8600a4a7529ca122e1524d763e
 
 pkgname = python-k3d
