@@ -1,0 +1,25 @@
+pkgbase = comtool-bin
+	pkgdesc = A cross platform serial debug tool written by python (upstream prebuilt bundle)
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://github.com/Neutree/COMTool
+	install = comtool-bin.install
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	depends = glibc
+	depends = zlib
+	depends = libxcb
+	depends = libglvnd
+	depends = libdrm
+	depends = fontconfig
+	depends = freetype2
+	provides = COMTool
+	conflicts = COMTool
+	conflicts = python-comtool
+	options = !debug
+	source = comtool_ubuntu_v3.4.1.tar.xz::https://github.com/Neutree/COMTool/releases/download/v3.4.1/comtool_ubuntu_v3.4.1.tar.xz
+	source = comtool-bin.install
+	sha256sums = 1f92aa43fac2f28f5a873d00864c031eb7ec158a950de92378a981f1e64df782
+	sha256sums = adf8b608536716fc01d7644c016b41dd45060c564e9911bff0d2d522ea5629cb
+
+pkgname = comtool-bin
