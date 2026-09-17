@@ -1,6 +1,6 @@
 pkgbase = windowtolayer
 	pkgdesc = Modify existing Wayland clients using xdg-shell to draw as a wallpaper instead
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mstoeckl/windowtolayer
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = windowtolayer
 	makedepends = rust
 	makedepends = cargo
 	makedepends = python
-	source = https://gitlab.freedesktop.org/mstoeckl/windowtolayer/-/archive/v0.3.1/windowtolayer-v0.3.1.tar.gz
-	sha256sums = 771be925123f4799b76ddaed16f40d73d820a0e447fd6fc49a2c0b8b92713cf3
+	source = https://gitlab.freedesktop.org/mstoeckl/windowtolayer/-/archive/v0.4.0/windowtolayer-v0.4.0.tar.gz
+	sha256sums = cf96f432d746f7660d2bd819d93448a39361468f8abc686ffcda2e5b493a02a5
 
 pkgname = windowtolayer
