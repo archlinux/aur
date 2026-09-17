@@ -1,14 +1,12 @@
 # shellcheck shell=bash  # pacman sources .install scriptlets with bash; no shebang by design
 post_install() {
   cat <<'EOF'
-VGS installs the user service but does not enable it automatically.
-Start it for the current user with:
+VGS is installed. Finish the setup for your account with:
 
-  systemctl --user enable --now vshell.service
+  vshell setup
 
-Run vshell deps status to inspect optional feature dependencies. It also
-reports which app owns org.freedesktop.Notifications; if it is not VGS,
-vshell notifications takeover hands the name back.
+That reports the optional feature dependencies and which app owns
+org.freedesktop.Notifications, then enables and starts vshell.service.
 EOF
 }
 
@@ -16,10 +14,6 @@ post_upgrade() {
   cat <<'EOF'
 VGS was upgraded. If the shell is not already running, start it with:
 
-  systemctl --user enable --now vshell.service
-
-Run vshell deps status to inspect optional feature dependencies. It also
-reports which app owns org.freedesktop.Notifications; if it is not VGS,
-vshell notifications takeover hands the name back.
+  vshell setup
 EOF
 }
