@@ -2,11 +2,11 @@
 # Contributor: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 pkgname=postybirb
 _pkgname=PostyBirb
-pkgver=4.0.47
+pkgver=4.1.0
 _electronversion=42
 _nodeversion=24
 pkgrel=1
-pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.(Use system-wide electron)"
+pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 arch=('any')
 url="https://www.postybirb.com/"
 _ghurl="https://github.com/mvdicarlo/postybirb"
@@ -40,22 +40,48 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export YARN_NPM_REGISTRY_SERVER="https://registry.npmmirror.com"
-            export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
-            export YARN_HTTP_RETRY=3
-            export YARN_HTTP_TIMEOUT=10000
-        }
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export HOME="${srcdir}/.electron-gyp"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export XDG_STATE_HOME="${srcdir}/.local/state"
+	export YARN_ENABLE_GLOBAL_CACHE=false
+	export YARN_ENABLE_MIRROR=false
+	export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+	export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/berry"
+	export YARN_NODE_LINKER=node-modules
+	export YARN_NM_MODE=hardlinks-local
+	export YARN_ENABLE_TELEMETRY=false
+	export YARN_ENABLE_SCRIPTS=true
+	export YARN_ENABLE_IMMUTABLE_INSTALLS=true
+	export YARN_ENABLE_PROGRESS_BARS=false
+	export YARN_ENABLE_COLORS=false
+	export YARN_NETWORK_CONCURRENCY=32
+	export YARN_HTTP_TIMEOUT=600000
+	export YARN_HTTP_RETRY=5
+	export npm_config_platform=linux
+	export npm_config_arch="${CARCH}"
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export COREPACK_HOME="${srcdir}/.corepack"
+	mkdir -p "${HOME}" "${YARN_CACHE_FOLDER}" "${YARN_GLOBAL_FOLDER}"
+}
+_use_new_yarn() {
+	local _yarnver
+	_yarnver="$(node -p "require('./package.json').packageManager?.split('@')[1] || ''")"
+	if [[ -z "${_yarnver}" ]]; then
+		error "package.json 中未找到 packageManager 字段（应形如 \"yarn@4.x\"）"
+		return 1
+	fi
+	export COREPACK_HOME="${srcdir}/.corepack"
+	install -dm755 "${srcdir}/.bin"
+	corepack enable --install-directory "${srcdir}/.bin"
+	export PATH="${srcdir}/.bin:${PATH}"
+	corepack prepare "yarn@${_yarnver}" --activate
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -90,8 +116,7 @@ prepare() {
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/\/packages//g" electron-builder.yml
-    _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
-    echo y | corepack enable yarn
+    _use_new_yarn
     sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"${_yarnver}\"/g" package.json
     NODE_ENV=development    yarn add -D node-addon-api
     NODE_ENV=development    yarn install
@@ -107,7 +132,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packaging-resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
