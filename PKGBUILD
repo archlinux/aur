@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=remotrix-bin
 _pkgname=Remotrix
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A Rust-native desktop download manager inspired by Motrix-next, built with the iced GUI framework and an aria2-next sidecar engine driven over WebSocket JSON-RPC (aria2-ws)."
 arch=('x86_64')
@@ -10,13 +10,15 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
+    'libgcc'
+    'glibc'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE"
 )
-sha256sums=('4cccbd653478c35a8309258d7a3d894dc4b20a7f8ca07a6b7d003e91bd4a81f8'
-            '634f002e12fff4b4fab31bd3cf91c5975bd365dbafa027725559ee2677252ce8')
+sha256sums=('3129c64e81accdfa478c958f1c8b06fbcf9d6c9f9067f26475923207127ecee5'
+            'bd41313039d578d73789177f2a71081afedfae4450a9203d845704a32ac7ec6b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/Categories=/Categories=Network;/" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
