@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=17.0.3.r37.gaecdb463
+pkgver=20.1.r39.g108c24be
 pkgrel=1
 epoch=1
 pkgdesc="Portable Sandboxing framework"
@@ -28,7 +28,6 @@ depends=(
 	"bash"
 	"xdg-desktop-portal-impl"
 	"grep"
-	"portable-packer"
 )
 
 optdepends=(
