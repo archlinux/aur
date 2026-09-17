@@ -1,0 +1,17 @@
+pkgbase = wau-git
+	pkgdesc = World of Warcraft Addon Updater
+	pkgver = r86.gbdcb338
+	pkgrel = 1
+	url = https://github.com/Gigas002/wau
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	depends = git
+	optdepends = github-cli: route GitHub API requests through authenticated CLI instead of client-side API keys
+	provides = wau
+	conflicts = wau
+	source = wau::git+https://github.com/Gigas002/wau.git
+	b2sums = SKIP
+
+pkgname = wau-git
