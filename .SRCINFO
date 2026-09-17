@@ -1,6 +1,6 @@
 pkgbase = o-pi-git
-	pkgdesc = Orion's Pi Agent with custom tools and TUI enhancements
-	pkgver = r530.gcc92703
+	pkgdesc = Orion's Pi Agent with custom tools and enhancements (TUI version)
+	pkgver = r535.g99afe65
 	pkgrel = 1
 	url = https://github.com/Orion-zhen/o-pi
 	arch = x86_64

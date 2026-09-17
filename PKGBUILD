@@ -1,9 +1,9 @@
 # Maintainer: Orion-zhen <https://github.com/Orion-zhen>
 
 pkgname=o-pi-git
-pkgver=r530.gcc92703
+pkgver=r535.g99afe65
 pkgrel=1
-pkgdesc="Orion's Pi Agent with custom tools and TUI enhancements"
+pkgdesc="Orion's Pi Agent with custom tools and enhancements (TUI version)"
 arch=('x86_64')
 url='https://github.com/Orion-zhen/o-pi'
 license=('AGPL-3.0-only')
@@ -28,11 +28,11 @@ prepare() {
 
 build() {
   cd "$srcdir/o-pi"
-  bun run build
+  bun run build:tui
 }
 
 package() {
   cd "$srcdir/o-pi"
-  install -Dm755 dist/opi "$pkgdir/usr/bin/opi"
+  install -Dm755 dist/tui/opi "$pkgdir/usr/bin/opi"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
