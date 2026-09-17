@@ -1,0 +1,21 @@
+pkgbase = jotawm-keybinds-git
+	pkgdesc = Always-on-top popup showing jotawm's keybinds
+	pkgver = 2026.09.17.r121.66f9fa0
+	pkgrel = 1
+	url = https://github.com/jotalea/jotawm
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = BSD-3-Clause
+	makedepends = go
+	makedepends = git
+	depends = fontconfig
+	optdepends = ttf-jetbrains-mono-nerd: default font
+	provides = jotawm-keybinds
+	conflicts = jotawm-keybinds
+	options = !debug
+	options = !lto
+	source = jotawm::git+https://github.com/jotalea/jotawm.git
+	sha256sums = SKIP
+
+pkgname = jotawm-keybinds-git
