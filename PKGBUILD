@@ -2,7 +2,7 @@
 
 pkgname=gauche-makiki
 _pkgname=Gauche-makiki
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A simple multithreaded http server'
 url='https://github.com/shirok/Gauche-makiki'
@@ -12,8 +12,8 @@ makedepends=('make')
 license=('BSD')
 
 # include any patches you want to have applied here
-source=('https://github.com/shirok/Gauche-makiki/archive/refs/tags/v0.5.tar.gz')
-sha1sums=('398fc8eef20012fe5451db18f549fb9332ea866e')
+source=("https://github.com/shirok/Gauche-makiki/archive/refs/tags/v${pkgver}.tar.gz")
+sha1sums=('b45de9ff4263685d8254f91872a39f50c3e0969b')
 
 build() {
   export LDFLAGS=""
