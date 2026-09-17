@@ -1,6 +1,6 @@
 pkgbase = jotawm-keybinds-git
 	pkgdesc = Always-on-top popup showing jotawm's keybinds
-	pkgver = 2026.09.17.r121.66f9fa0
+	pkgver = 2026.09.17.r122.631ea22
 	pkgrel = 1
 	url = https://github.com/jotalea/jotawm
 	arch = x86_64
