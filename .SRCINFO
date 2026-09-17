@@ -1,6 +1,6 @@
 pkgbase = grist-desktop
 	pkgdesc = A modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database.
-	pkgver = 0.3.14
+	pkgver = 0.3.15
 	pkgrel = 1
 	url = https://github.com/gristlabs/grist-desktop
 	arch = any
@@ -18,9 +18,9 @@ pkgbase = grist-desktop
 	depends = python-typing_extensions
 	depends = python-tornado
 	options = !strip
-	source = grist-desktop-0.3.14::git+https://github.com/gristlabs/grist-desktop.git#tag=v0.3.14
+	source = grist-desktop-0.3.15::git+https://github.com/gristlabs/grist-desktop.git#tag=v0.3.15
 	source = grist-desktop.sh
-	sha256sums = 52d5fb068659bedad86eefe81f1f54a4a06b36ae3461e61844b9fc5b06f50696
+	sha256sums = 7634068ba91be8a5e906b79e35f595fc7d442269ec782a97c5553971fe12d0eb
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = grist-desktop
