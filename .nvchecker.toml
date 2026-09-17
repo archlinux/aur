@@ -1,0 +1,3 @@
+["ik-llama.cpp-cuda-opt-git"]
+source = "git"
+git = "https://github.com/ikawrakow/ik_llama.cpp.git"
