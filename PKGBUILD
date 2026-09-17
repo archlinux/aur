@@ -31,4 +31,8 @@ package() {
   cd "$srcdir/$pkgname-$pkgver/"
 
   make DESTDIR="${pkgdir}" install
+  # We don't need this, it's statically linked
+  cd ${pkgdir}
+  rm -rf usr/lib
+  rm -rf usr/include
 }
