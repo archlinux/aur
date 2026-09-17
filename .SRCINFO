@@ -1,0 +1,25 @@
+pkgbase = tidemail-bin
+	pkgdesc = Keyboard-first terminal email client with multi-account mail, a unified inbox, drafts, contacts, search, and optional AI tools
+	pkgver = 1.0.18
+	pkgrel = 1
+	url = https://github.com/allisonhere/tidemail
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = xdg-utils: open links and attachments in a desktop application
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	optdepends = xsel: clipboard support on X11 (alternative to xclip)
+	optdepends = libnotify: desktop notifications for new mail
+	provides = tidemail=1.0.18
+	conflicts = tidemail
+	options = !strip
+	options = !debug
+	source = LICENSE-1.0.18::https://github.com/allisonhere/tidemail/raw/v1.0.18/LICENSE
+	sha256sums = 7ded3abde5f4be92306e0ee24c6db97b1825e4eaa1b8fd473669c521f5a409dd
+	source_x86_64 = tidemail-bin-1.0.18-x86_64.tar.gz::https://github.com/allisonhere/tidemail/releases/download/v1.0.18/tidemail-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 782b4eac9208b7ee32a7c2532cc230daf05a348024a4512e220e8a4dc6b02fc4
+	source_aarch64 = tidemail-bin-1.0.18-aarch64.tar.gz::https://github.com/allisonhere/tidemail/releases/download/v1.0.18/tidemail-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 64b54eab2e3bef61cde93edc4b9295ef475ad0f6ffd5d38d3800cdb3d593915d
+
+pkgname = tidemail-bin
