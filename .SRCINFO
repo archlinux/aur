@@ -1,0 +1,16 @@
+pkgbase = ma-sh
+	pkgdesc = Metal Archives Release Tracker - Track new releases for Metal Archives bookmarks
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/viktoracoric/ma.sh
+	arch = any
+	license = GPL-3
+	depends = bash
+	depends = sed
+	depends = grep
+	depends = tac
+	noextract = git+https://github.com/viktoracoric/ma.sh.git
+	source = git+https://github.com/viktoracoric/ma.sh.git
+	sha256sums = SKIP
+
+pkgname = ma-sh
