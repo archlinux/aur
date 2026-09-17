@@ -1,0 +1,11 @@
+post_install() {
+    cat <<'MSG'
+==> cdu can leave your shell in the directory you were viewing when it exits.
+    fish       works right away (autoloaded from /usr/share/fish/vendor_functions.d/cdu.fish)
+    bash, zsh  login shells get it from /etc/profile.d/cdu.sh. Terminals that
+               start a non-login shell need one line in ~/.bashrc or ~/.zshrc:
+                   eval "$(cdu --shell bash)"      # or: cdu --shell zsh
+    Open a new terminal afterwards. Turn it off with `cd-on-exit = false` in
+    ~/.config/cdu/config.toml, or --no-cd for a single run.
+MSG
+}
