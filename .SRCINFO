@@ -1,0 +1,15 @@
+pkgbase = mossp
+	pkgdesc = open-source music player using iced and gstreamer
+	pkgver = 26.9.0
+	pkgrel = 1
+	url = https://mossp.org
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	source = https://codeberg.org/xerusion/mossp/archive/26.9.0.tar.gz
+	sha256sums = a95dc31d63111dd8aa598f36549749ba1123622e517a48f9ba1035d32253c15c
+
+pkgname = mossp
