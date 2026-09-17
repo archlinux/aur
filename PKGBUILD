@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.1.38
+pkgver=0.1.39
 pkgrel=1
 pkgdesc="Control suite and PipeWire submixer for Elgato XLR interfaces, with an OpenDeck plugin"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'opendeck: Stream Deck control through the bundled plugin')
 install=openxlr.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e87048028e58d70cd19b170b9ebe75cfb61add6589d16d168ae0e85dfcb6178e')
+sha256sums=('1bf902dc642c1fded1bc412605c21dff7ded9380d46696e53d7ea6e8db3f5300')
 
 build() {
   cd "$pkgname-$pkgver/src"
@@ -47,6 +47,8 @@ WRAP
     "$pkgdir/usr/share/wireplumber/wireplumber.conf.d/50-xlr-dock-capture-hold.conf"
   install -Dm644 packaging/51-openxlr-pro-raw-names.conf \
     "$pkgdir/usr/share/wireplumber/wireplumber.conf.d/51-openxlr-pro-raw-names.conf"
+  install -Dm644 packaging/52-openxlr-mk1-capture-hold.conf \
+    "$pkgdir/usr/share/wireplumber/wireplumber.conf.d/52-openxlr-mk1-capture-hold.conf"
 
   # The reference unit points into a source checkout; the package runs the wrapper.
   sed 's|^ExecStart=.*|ExecStart=/usr/bin/openxlr-daemon|' packaging/openxlr-daemon.service |
