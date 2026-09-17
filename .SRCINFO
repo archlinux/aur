@@ -1,6 +1,6 @@
 pkgbase = 3x-ui
 	pkgdesc = Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit
-	pkgver = 3.8.0
+	pkgver = 3.8.5
 	pkgrel = 1
 	url = https://github.com/MHSanaei/3x-ui
 	arch = aarch64
@@ -22,7 +22,7 @@ pkgbase = 3x-ui
 	optdepends = speedtest-cli: Speedtest by Ookla
 	optdepends = ufw: Firewall Management
 	options = !debug
-	source = https://github.com/MHSanaei/3x-ui/archive/v3.8.0/3x-ui-3.8.0.tar.gz
-	b2sums = ea21db6e2f6af1039dacd64ce5ad17546a2f33f86d04aa7b4eaf6325475e3b3ef706f3f7de916c70509b4fa59968efe83ffc672e963ff1b1b1386e01f757b703
+	source = https://github.com/MHSanaei/3x-ui/archive/v3.8.5/3x-ui-3.8.5.tar.gz
+	b2sums = 312742c8aed48041b9608d9b5b5732a06e72491fc29257d5b4e5840dad9f1662889f272af68ead13a4d4997c194fc87a2c20ecf05b72df62ee27bc53af3e12bc
 
 pkgname = 3x-ui

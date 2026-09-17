@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui
-pkgver=3.8.0
+pkgver=3.8.5
 pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
@@ -28,7 +28,7 @@ optdepends=(
 )
 options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('ea21db6e2f6af1039dacd64ce5ad17546a2f33f86d04aa7b4eaf6325475e3b3ef706f3f7de916c70509b4fa59968efe83ffc672e963ff1b1b1386e01f757b703')
+b2sums=('312742c8aed48041b9608d9b5b5732a06e72491fc29257d5b4e5840dad9f1662889f272af68ead13a4d4997c194fc87a2c20ecf05b72df62ee27bc53af3e12bc')
 
 prepare() {
   cd $pkgname-$pkgver
