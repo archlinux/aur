@@ -2,7 +2,7 @@
 
 _pkgbase=unsloth
 pkgname="$_pkgbase"
-pkgver=0.1.803.beta
+pkgver=0.1.808.beta
 pkgrel=1
 pkgdesc='Local UI to run and train LLMs and diffusion models'
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
 	"unsloth-setup"
 	"unsloth-studio.desktop"
 )
-sha256sums=('fbfa7638e4c634b3e88010acfdc0f6b24fe5ea05cae7b8fd02ea662359a23ad2'
+sha256sums=('384ab66784d7ef92e260c01d7dcea824ded34de353d226dfe9671d907d72fd82'
             '14444b022bd50269d474df655e74c3309959c1bd312214b7b431ed341b26a222'
             '7eb6fb0d8576c26ab9e647dc4a69b546fc8f9a972a66a0f7f44eec0695610b6f')
 
