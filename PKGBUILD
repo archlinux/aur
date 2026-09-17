@@ -1,11 +1,11 @@
 # Maintainer: James H <james@jamesmcmahon.co.uk>
 pkgname=linear-electron-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Unofficial Linear desktop app (linear-electron-git)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/hughesjs/linear-electron'
-license=('MIT')
+license=('MIT' 'LicenseRef-Linear-Brand')
 provides=("linear-electron=$pkgver")
 conflicts=(linear-electron linear-electron-bin linear-electron-appimage )
 options=('!strip' '!debug')
@@ -32,5 +32,6 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 packaging/linear-electron.desktop "$pkgdir/usr/share/applications/linear-electron.desktop"
-  install -Dm644 packaging/linear-electron.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/linear-electron.svg"
+  install -Dm644 packaging/linear-electron.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/linear-electron.png"
+  install -Dm644 packaging/LINEAR-BRAND-NOTICE "$pkgdir/usr/share/licenses/$pkgname/LINEAR-BRAND-NOTICE"
 }
