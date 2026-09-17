@@ -1,11 +1,11 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=slopquota
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="CLI utility for viewing token quotas from AI providers"
+pkgrel=2
+pkgdesc="CLI utility for viewing token quotas from AI subscriptions like OpenAI Codex, Claude Max, Grok, OpenCode etc"
 arch=('x86_64')
 url="https://gitlab.com/nathanchere/slopquota"
-license=('LicenseRef-Unknown')
+license=('Apache-2.0')
 depends=('glibc')
 makedepends=('git' 'go')
 _commit=82f774828f04df5b69ca963e41ebcd2a83dee7f3

@@ -1,10 +1,10 @@
 pkgbase = slopquota
-	pkgdesc = CLI utility for viewing token quotas from AI providers
+	pkgdesc = CLI utility for viewing token quotas from AI subscriptions like OpenAI Codex, Claude Max, Grok, OpenCode etc
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/nathanchere/slopquota
 	arch = x86_64
-	license = LicenseRef-Unknown
+	license = Apache-2.0
 	makedepends = git
 	makedepends = go
 	depends = glibc
