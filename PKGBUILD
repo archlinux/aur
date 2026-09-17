@@ -1,12 +1,12 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=memoh-bin
 pkgver=2026.9.16.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Give your agent a cloud computer - cloud-first multi-agent platform where every agent has its own desktop, files and network, running 24/7"
 arch=('x86_64')
 url="https://memoh.ai"
 license=('custom')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
+depends=('alsa-lib' 'avahi' 'dbus' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 optdepends=('libappindicator: system tray support')
 makedepends=('libarchive')
 _debver="2026.9.16-2"

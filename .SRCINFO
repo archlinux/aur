@@ -1,11 +1,14 @@
 pkgbase = memoh-bin
 	pkgdesc = Give your agent a cloud computer - cloud-first multi-agent platform where every agent has its own desktop, files and network, running 24/7
 	pkgver = 2026.9.16.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://memoh.ai
 	arch = x86_64
 	license = custom
 	makedepends = libarchive
+	depends = alsa-lib
+	depends = avahi
+	depends = dbus
 	depends = gtk3
 	depends = libnotify
 	depends = nss
