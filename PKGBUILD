@@ -1,24 +1,16 @@
 # Maintainer: Muhammad Dhiyaul Atha <bangkah@aur>
 
 pkgname=atha
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Safety and workflow layer for pacman"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/Bangkah/Atha"
 license=('MIT')
 depends=('pacman' 'sudo' 'git')
-makedepends=('rust')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Bangkah/Atha/archive/refs/tags/v${pkgver}.tar.gz")
+source=("atha-${pkgver}::https://github.com/Bangkah/Atha/releases/download/v${pkgver}/atha-x86_64-linux")
 sha256sums=('SKIP')
 
 package() {
-    cd "Atha-${pkgver}"
-
-    cargo build --release
-    install -Dm755 target/release/atha "${pkgdir}/usr/bin/atha"
-
-    if [ -f LICENSE ]; then
-        install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    fi
+    install -Dm755 "${srcdir}/atha-${pkgver}" "${pkgdir}/usr/bin/atha"
 }

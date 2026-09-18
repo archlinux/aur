@@ -1,16 +1,14 @@
 pkgbase = atha
 	pkgdesc = Safety and workflow layer for pacman
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/Bangkah/Atha
 	arch = x86_64
-	arch = aarch64
 	license = MIT
-	makedepends = rust
 	depends = pacman
 	depends = sudo
 	depends = git
-	source = atha-3.0.0.tar.gz::https://github.com/Bangkah/Atha/archive/refs/tags/v3.0.0.tar.gz
+	source = atha-3.0.1::https://github.com/Bangkah/Atha/releases/download/v3.0.1/atha-x86_64-linux
 	sha256sums = SKIP
 
 pkgname = atha
