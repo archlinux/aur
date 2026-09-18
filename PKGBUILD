@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <mzz@tuta.io>
 
 pkgname=v2raya
-pkgver=2.4.20
+pkgver=2.4.23
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan, Tuic and Juicity protocols"
@@ -17,7 +17,6 @@ backup=("etc/default/v2raya")
 build() {
     [ -d "$srcdir/v2rayA-$pkgver" ] && rm -rf "$srcdir/v2rayA-$pkgver"
     git clone --depth 1 --branch "v$pkgver" "https://github.com/v2rayA/v2rayA.git" "$srcdir/v2rayA-$pkgver" >/dev/null 2>&1
-    cd "$srcdir/v2rayA-$pkgver" && git submodule update --init
     cd "$srcdir/v2rayA-$pkgver/gui"
     yarn --check-files --ignore-engines
     OUTPUT_DIR="$srcdir/v2rayA-$pkgver/service/server/router/web" yarn --ignore-engines build
