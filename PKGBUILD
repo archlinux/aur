@@ -1,13 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-bin
 _pkgname=Qoder
-pkgver=0.2.1
+pkgver=0.2.5
 _electronversion=43
 pkgrel=1
-pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Agent Programming Platform for Real Software."
 arch=('x86_64')
 url="https://qoder.com/"
-_ghurl="https://github.com/QoderAI/changelog-zh_CN"
 license=('LicenseRef-custom')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -32,9 +31,9 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('505b16066d1c0093b627b93658b81688906edd15ec769f5b70768508cd7657fa'
+sha256sums=('76fbecc145d78b24b36ddb36dfe080b756ab1e35589edfc8e04777ed0cde60ef'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
 pkgver() {
     cd "${srcdir}/app.asar.unpacked"
     grep '"version":' package.json | awk -F'"version": "' '{print $2}' | awk -F',' '{print $1}' | tr -d '"'
