@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.8.3.r0.g8641553
+pkgver=3.8.4.r0.g9f775e8
 _electronversion=44
 _nodeversion=24
 pkgrel=1
-pkgdesc="An open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together 开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作"
+pkgdesc="An open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together.开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作"
 arch=('x86_64')
 url="https://b3log.org/siyuan"
 _ghurl="https://github.com/siyuan-note/siyuan"
@@ -55,6 +55,8 @@ _set_build_env() {
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	_ev="$(electron${_electronversion} -v)"
 	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export HOME="${srcdir}/.electron-gyp"
+	mkdir -p "${HOME}"
 	export XDG_CACHE_HOME="${srcdir}/.cache"
 	export XDG_CONFIG_HOME="${srcdir}/.config"
 	export XDG_DATA_HOME="${srcdir}/.local/share"
@@ -64,7 +66,7 @@ _set_build_env() {
 	export PNPM_GLOBAL_DIR="${srcdir}/.pnpm/global"
 	export PNPM_GLOBAL_BIN_DIR="${srcdir}/.pnpm/bin"
 	export PNPM_STATE_DIR="${srcdir}/.pnpm/state"
-	export PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
+	export PNPM_MINIMUM_RELEASE_AGE=0
 	export PNPM_NODE_LINKER=hoisted
 	export PNPM_FETCH_RETRIES=3
 	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
@@ -73,9 +75,20 @@ _set_build_env() {
 	export PNPM_NO_PROGRESS=true
 	export pnpm_config_platform=linux
 	export pnpm_config_arch="${CARCH}"
-	export COREPACK_HOME="${srcdir}/.corepack"
 	export NODE_OPTIONS="--max-old-space-size=4096"
 	export npm_config_node_options="--max-old-space-size=4096"
+	mkdir -p "${PNPM_CACHE_DIR}" "${PNPM_STORE_DIR}" "${PNPM_GLOBAL_DIR}" "${PNPM_GLOBAL_BIN_DIR}" "${PNPM_STATE_DIR}"
+	local _pnpmver="${_pnpmversion}"
+	if [[ -z "${_pnpmver}" ]]; then
+		_pnpmver="$(node -p "const pm=require('./package.json').packageManager; pm && pm.startsWith('pnpm@') ? pm.split('@')[1] : ''" 2>/dev/null)"
+	fi
+	if [[ -n "${_pnpmver}" ]]; then
+		export COREPACK_HOME="${srcdir}/.corepack"
+		install -dm755 "${srcdir}/.bin"
+		corepack enable --install-directory "${srcdir}/.bin"
+		export PATH="${srcdir}/.bin:${PATH}"
+		corepack prepare "pnpm@${_pnpmver}" --activate
+	fi
     export GOPATH="${srcdir}/go"
 	export GOMODCACHE="${GOPATH}/pkg/mod"
 	export GOBIN="${GOPATH}/bin"
@@ -109,8 +122,8 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/SiYuan-Electron/g
     " "${srcdir}/${pkgname%-git}.sh"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -122,8 +135,8 @@ prepare() {
     NODE_ENV=development    pnpm install --no-frozen-lockfile
 }
 build() {
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     cd "${srcdir}/${pkgname//-/.}/app"
     NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname//-/.}/kernel"
@@ -145,7 +158,8 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname//-/.}/app/src/assets/icon/${_icons}.png" \
