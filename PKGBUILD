@@ -1,5 +1,5 @@
 pkgname=ioexplorer-git
-pkgver=r72.46eb9db
+pkgver=r73.f68ca39
 pkgrel=1
 pkgdesc='Wayland-native provider-oriented file manager, spotlight, and other utilities for Wayland desktops'
 arch=('x86_64')
@@ -11,11 +11,13 @@ optdepends=(
   'xdg-desktop-portal: use ioexplorer as a desktop portal FileChooser backend'
   'xdg-utils: set ioexplorer as the default directory handler with xdg-mime'
   'grim: screen capture for ioexplorer-shot'
-  'wl-clipboard: copy screenshots to the clipboard without keeping ioexplorer-shot running'
+  'wl-clipboard: copy screenshots and quick menu picks to the clipboard without staying running'
   'libnotify: screenshot notifications'
   'wf-recorder: screen recording with ioexplorer-shot record'
   'ffmpeg: finishing recordings and checking audio sources'
   'libpulse: recording audio and mixing in the microphone'
+  'wtype: typing symbols and emoji picked in ioexplorer-quick'
+  'ydotool: pasting ioexplorer-quick picks when wtype is missing'
 )
 source=("$pkgname::git+https://github.com/LucasionGS/ioexplorer.git")
 sha256sums=('SKIP')
@@ -34,6 +36,7 @@ package() {
   install -Dm755 target/release/ioexplorer-portal "$pkgdir/usr/bin/ioexplorer-portal"
   install -Dm755 target/release/ioexplorer-desktop "$pkgdir/usr/bin/ioexplorer-desktop"
   install -Dm755 target/release/ioexplorer-shot "$pkgdir/usr/bin/ioexplorer-shot"
+  install -Dm755 target/release/ioexplorer-quick "$pkgdir/usr/bin/ioexplorer-quick"
   install -Dm644 data/io.github.ionix.IoExplorer.desktop "$pkgdir/usr/share/applications/io.github.ionix.IoExplorer.desktop"
   install -Dm644 data/io.github.ionix.IoExplorer.metainfo.xml "$pkgdir/usr/share/metainfo/io.github.ionix.IoExplorer.metainfo.xml"
   install -Dm644 data/icons/hicolor/scalable/apps/io.github.ionix.IoExplorer.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.ionix.IoExplorer.svg"
