@@ -1,0 +1,20 @@
+pkgbase = hyprdown-bin
+	pkgdesc = A CLI counterpart to hyprshutdown for Hyprland
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/TheElevatedOne/hyprdown
+	arch = any
+	license = BSD-3-Clause
+	depends = systemd
+	depends = systemd-libs
+	provides = hyprdown
+	conflicts = hyprdown
+	options = !debug
+	source = https://github.com/TheElevatedOne/hyprdown/releases/download/0.2.0/hyprdown-0.2.0-linux.tar.gz
+	source = https://raw.githubusercontent.com/TheElevatedOne/hyprdown/refs/heads/main/LICENSE
+	source = https://raw.githubusercontent.com/TheElevatedOne/hyprdown/refs/heads/main/README.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hyprdown-bin
