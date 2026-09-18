@@ -2,7 +2,7 @@
 _pkgname=shrimply
 pkgname="${_pkgname}-git"
 pkgver=r422.f6fc8ee9
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, fast GPU-accelerated video editor"
 arch=('x86_64')
 url="https://github.com/soirihiroka/shrimply"
@@ -113,12 +113,15 @@ build() {
   fi
 
   # Slang compiler: prefer Arch package (shader-slang) if installed
-  if [ -f /usr/include/shader-slang/slang.h ] && [ -f /usr/lib/libslang.so ]; then
+  if [ -f /usr/include/shader-slang/slang-com-ptr.h ] && [ -f /usr/lib/libslang.so ]; then
     export SLANG_INCLUDE_DIR=/usr/include/shader-slang
     export SLANG_LIBRARY_DIR=/usr/lib
-  elif [ -f /usr/include/slang.h ] && [ -f /usr/lib/libslang.so ]; then
+  elif [ -f /usr/include/slang-com-ptr.h ] && [ -f /usr/lib/libslang.so ]; then
     export SLANG_INCLUDE_DIR=/usr/include
     export SLANG_LIBRARY_DIR=/usr/lib
+  else
+    unset SLANG_INCLUDE_DIR
+    unset SLANG_LIBRARY_DIR
   fi
 
   make release \
