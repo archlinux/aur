@@ -1,12 +1,12 @@
 pkgbase = apollo
-	pkgdesc = A self-hosted game stream server
+	pkgdesc = GameStream server for Moonlight. Alternative to Sunshine.
 	pkgver = 0.4.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ClassicOldSong/Apollo
 	install = apollo.install
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = gcc15
+	makedepends = gcc
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
