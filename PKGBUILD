@@ -5,8 +5,8 @@
 pkgname=waylyrics-layer-shell-git
 _pkgname=waylyrics
 _appname="io.github.waylyrics.Waylyrics"
-pkgver=0.4.5.r1.g29584718
-pkgrel=1
+pkgver=0.4.6.r3.g9806e9b7
+pkgrel=2
 pkgdesc="the furry way to show desktop lyrics (git version, with layer-shell feature enabled)"
 url="https://github.com/waylyrics/waylyrics"
 conflicts=('waylyrics' 'waylyrics-git')
@@ -18,12 +18,8 @@ depends=('openssl' 'hicolor-icon-theme' 'gtk4-layer-shell'
     'dbus' 'gcc-libs' 'glibc'
     # gtk4
     'glib2' 'cairo' 'dconf' 'gtk4'
-    # restart task
-    'sh'
-    # i18n
-    'gettext'
 )
-makedepends=('cargo' 'git' "sed")
+makedepends=('cargo' 'git' 'sed' 'gettext')
 optdepends=(
     'breeze-icons: better tray-icon icons'
     'xdg-desktop-portal: file dialog to import LRC'
@@ -88,8 +84,10 @@ package() {
         cd locales
         for po in $(find . -type f -name '*.po')
         do
-            mkdir -p "${pkgdir}/usr/share/locale/${po#/*}"
-            msgfmt -o "${pkgdir}/usr/share/locale/${po%.po}.mo" ${po}
+            # Extract locale name (e.g., zh_CN from ./zh_CN/LC_MESSAGES/waylyrics.po)
+            locale=$(echo "$po" | sed 's|^\./||' | cut -d'/' -f1)
+            mkdir -p "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES"
+            msgfmt -o "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES/waylyrics.mo" "$po"
         done
     )
 
