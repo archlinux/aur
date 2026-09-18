@@ -1,7 +1,7 @@
 # Maintainer: Adrià Arrufat <adria.arrufat@gmail.com>
 #
 # Check for a new release with:
-#   curl -so- https://apt.enpass.io/dists/stable/main/binary-amd64/Packages.gz | zcat | egrep "Package|Version|SHA256" | head -n 3
+#   curl -so- https://apt.enpass.io/dists/stable/main/binary-amd64/Packages.gz | zcat | grep -E "Package|Version|SHA256" | head -n 3
 
 pkgname=enpass
 pkgver=6.12.6.2258
