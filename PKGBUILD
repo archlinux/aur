@@ -2,7 +2,7 @@
 # Maintainer: nickheyer
 
 pkgname='nebu-bin'
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Model storage, inference runtime management, and API gateway'
 url='https://github.com/nickheyer/nebu'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('nebu')
 conflicts=('nebu')
 depends=('ca-certificates')
-optdepends=('git: git model sources' 'cmake: building llama.cpp' 'gcc: compiling inference runtimes' 'python: Python inference runtimes' 'python-pip: installing Python inference runtimes' 'cuda: building CUDA inference runtimes' 'nvidia-utils: NVIDIA device probing' 'hip-runtime-amd: AMD inference runtimes' 'rocm-smi-lib: AMD device probing' 'docker: optional container build sandbox')
+optdepends=('git: git model sources' 'cmake: building llama.cpp and stable-diffusion.cpp' 'gcc: compiling inference runtimes' 'python: Python inference runtimes' 'python-pip: installing Python inference runtimes' 'cuda: building CUDA inference runtimes' 'nvidia-utils: NVIDIA device probing' 'hip-runtime-amd: AMD inference runtimes' 'rocm-smi-lib: AMD device probing' 'docker: optional container build sandbox')
 backup=('etc/nebu/config.yaml')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nickheyer/nebu/releases/download/v${pkgver}/nebu_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('9a79fd4b78d0796764d8fedcab11bb86a3bdc15bfb5f6c4337828ed2336f86f1')
+sha256sums_aarch64=('55dde3386eab3321c434cecc2df8ed657f5d5c214afa58776bf867345310ff62')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nickheyer/nebu/releases/download/v${pkgver}/nebu_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('82739539aef20e2b1abd5ee92d6af41ada3eb5125da53fcba46d194b6906c55a')
+sha256sums_x86_64=('7b72c8cb68767bc1003e682d4b7e7c7528b932114047c7ac41a2315dd32c98ad')
 
 package() {
   install -Dm755 nebu "${pkgdir}/usr/bin/nebu"
