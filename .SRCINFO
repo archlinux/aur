@@ -17,6 +17,8 @@ pkgbase = forkgram-bin
 	optdepends = xdg-utils: for automatic opening of URLs, files and directories in proper applications
 	provides = forkgram=7.2.9
 	conflicts = forkgram
+	options = !strip
+	options = !debug
 	source = forkgram-7.2.9.tar.xz::https://github.com/Forkgram/tdesktop/releases/download/v7.2.9/Forkgram.tar.xz
 	source = forkgram-bin.desktop
 	source = tg.protocol

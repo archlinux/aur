@@ -28,6 +28,7 @@ optdepends=(
 )
 provides=("forkgram=${pkgver}")
 conflicts=("forkgram")
+options=(!strip !debug)
 
 # Sources
 source=(
