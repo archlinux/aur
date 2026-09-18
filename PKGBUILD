@@ -1,7 +1,7 @@
 # Maintainer: Muhammad Dhiyaul Atha <bangkah@aur>
 
 pkgname=atha
-pkgver=3.0.3
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Safety and workflow layer for pacman"
 arch=('x86_64')
