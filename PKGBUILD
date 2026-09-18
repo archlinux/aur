@@ -3,7 +3,7 @@
 pkgname=data-logging-service
 _name=dls
 pkgver=1.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The Data Logging Service (DLS) is a data logging system for EtherLab, that is capable of collecting, compressing and storing high-frequency realtime data. The goal is, to allow the user unlimited and performant access to the stored data."
 arch=($CARCH)
 url="https://gitlab.com/etherlab.org/dls"
@@ -13,12 +13,13 @@ conflicts=(${pkgname})
 replaces=()
 _qt=qt5
 depends=(
+    cairo
     fftw
     fltk
-    gcc-libs
-    glibc
     hicolor-icon-theme
     hdf5
+    libgcc_s.so
+    libstdc++.so
     libxml2
     pcre
     perl
@@ -53,7 +54,8 @@ build() {
     echo ${pkgver} >revision
     cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -Wno-dev \
+        -DCMAKE_CXX_FLAGS="-I/usr/include/cairo" \
+        -Wno-author \
         -B build \
         -G Ninja
 
