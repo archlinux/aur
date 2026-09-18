@@ -1,8 +1,8 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname="python-dploot"
-pkgver=4.0.0
+pkgver=4.1.1
 pkgrel=1
-_commit='ec05215bef2ed122218c6591bdfda0c001ac729e'
+_commit='5b3f836cc7a35f5b9f14cb890b245c312e6675b1'
 pkgdesc="DPAPI looting remotely in Python"
 arch=('any')
 url="https://github.com/zblurx/dploot"
@@ -25,7 +25,7 @@ makedepends=(
   'git'
 )
 source=("git+$url#commit=$_commit")
-b2sums=('dfa74491b012a0598aa261b048f7c3e3b99b6c61d74a5b2561caaca187d184698ed1929f25dfebe4e000e1ad4a5bd0f2e3ecc9b90b3b0d04d06956b32d6b12c4')
+b2sums=('d2025ebcfc4b95411ddf9dad83a14afdcad341a768bc6b2b21ba393842cac40ef78cbfc8eeec7a5e16df0b68bc676bf199c0204944eaea33c7cea866f847a7c1')
 
 prepare() {
   git -C dploot clean -dfx
