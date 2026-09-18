@@ -1,7 +1,7 @@
 pkgbase = fthr-clips-bin
 	pkgdesc = Instant replay capture and clip management (official Linux binary)
 	pkgver = 1.1.0alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FTHR-Community/FTHR-Clips
 	arch = x86_64
 	license = GPL-3.0-only

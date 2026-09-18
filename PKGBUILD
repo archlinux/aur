@@ -1,7 +1,7 @@
 # Maintainer: Vaspyyy <lolbautz2 at gmail dot com>
 pkgname=fthr-clips-bin
 pkgver=1.1.0alpha
-pkgrel=1
+pkgrel=2
 _upstream_version=1.1.0-alpha
 pkgdesc='Instant replay capture and clip management (official Linux binary)'
 arch=('x86_64')
@@ -92,7 +92,7 @@ if [ -z "${QT_QPA_PLATFORM:-}" ] \&\& [ -n "${WAYLAND_DISPLAY:-}" ]; then\
 fi' "$pkgdir/usr/bin/fthr-clips"
   chmod 755 "$pkgdir/usr/bin/fthr-clips"
   install -Dm644 fthr-clips.desktop "$pkgdir/usr/share/applications/fthr-clips.desktop"
-  sed -i -e 's/^Exec=AppRun$/Exec=fthr-clips/' -e 's/^Categories=.*/Categories=AudioVideo;Video;/' "$pkgdir/usr/share/applications/fthr-clips.desktop"
+  sed -i -e 's/^Exec=AppRun$/Exec=fthr-clips/' -e 's/^Categories=.*/Categories=AudioVideo;Video;/' -e '/^Icon=/a StartupWMClass=FTHR Clips' "$pkgdir/usr/share/applications/fthr-clips.desktop"
   install -Dm644 fthr-clips.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/fthr-clips.png"
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   cp -a LICENSE THIRD_PARTY_NOTICES.md licenses/. "$pkgdir/usr/share/licenses/$pkgname/"
