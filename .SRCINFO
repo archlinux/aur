@@ -1,7 +1,7 @@
 pkgbase = python-standardwebhooks
 	pkgdesc = Python library for Standard Webhooks
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/standard-webhooks/standard-webhooks/tree/main/libraries/python
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = python-standardwebhooks
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python
 	depends = python-httpx
 	depends = python-deprecated

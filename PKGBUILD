@@ -9,7 +9,7 @@
 _name=standardwebhooks
 pkgname=python-${_name}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for Standard Webhooks"
 url="https://github.com/standard-webhooks/standard-webhooks/tree/main/libraries/python"
 license=('MIT')
@@ -26,6 +26,7 @@ makedepends=(
 	'python-installer'
 	'python-setuptools'
 	'python-wheel'
+    'python-hatchling'
 )
 
 source=(
@@ -35,11 +36,11 @@ sha256sums=('e5cb66e21a6356ebb9375aeb57f1348583323015808d475a7c1baaa4b718068a')
 
 build() {
     cd $_name-$pkgver
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd $_name-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     cd ..
 }
