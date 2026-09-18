@@ -1,11 +1,12 @@
 pkgbase = goop-bin
 	pkgdesc = Native NIP-17 client to chat with your clankers (and friends)
 	pkgver = 2.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://goop.dergigi.com
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = patchelf
+	makedepends = imagemagick
 	depends = alsa-lib
 	depends = bash
 	depends = libgcc
