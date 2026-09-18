@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-knot-bin
 _pkgname=Knot
-pkgver=2.2.25
+pkgver=26.08.30
 pkgrel=1
-pkgdesc="An Android gadget that integrates common modules such as Todo, Notes and Reader and supports various clients (Win, Mac, Linux) for editing Todo and Notes.(Prebuilt version)"
+pkgdesc="An intelligent multi-scenario recording tool inspired by the minimalist concept of ancient "knot-tying" memorization."
 arch=('x86_64')
 url="https://github.com/ic005k/Knot"
 license=("MIT")
@@ -12,13 +12,9 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'e2fsprogs'
     'sqlite'
-    'qt6-declarative'
-    'qt6-positioning'
     'libgpg-error'
     'nss'
     'nspr'
-    'qt6-charts'
-    'qt6-location'
 )
 optdepends=(
     'fcitx5-qt'
@@ -32,7 +28,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ic005k/Knot/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f3c1a0841e826dc16e434546ba57ae12b53aecf045b474270004793467e0f7fe'
+sha256sums=('56357122b5d5b340012f2c94a047600fc2a3cc22d8704eb18a0e54303f97d2d5'
             '5076e0113e6e491d04559dd9ec0a80a35392bec88928393d47b8dd620aa96d66'
             '6f38e0cb252008b84532d5914cb851aa45518771db172e7f5a091fe16123e05e')
 prepare() {
@@ -57,7 +53,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "${srcdir}/squashfs-root/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "${srcdir}/squashfs-root/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/squashfs-root/default.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
