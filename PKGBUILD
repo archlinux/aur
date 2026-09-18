@@ -1,7 +1,7 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=httm
-pkgver=0.50.2
+pkgver=0.51.0
 pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS, BTRFS, or NILFS snapshots."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('btrfs-progs: BTRFS support'
             'nilfs-utils: NILFS2 support')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('8ae6ca036bba74656399cf4bea16502505f49032e1e97aad09da94c0eec2a3bcaa3f1e580a4c3c269963e158a3c92c982734ee37ade76d934c3b32b903b2ef3f')
+sha512sums=('b306bab0306b207d76c2eec2d3ff6d9819b4325d02c41d4b9a65508d2b9bd3d4062c2451553c1389c188a460764bed9f536688dc91b5d3b6013894eea7023bd2')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -34,6 +34,21 @@ build(){
 package(){
 	# install executable
 	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	
+        # install helper scripts
+        install -Dm755 "${srcdir}/${pkgname}-${pkgver}/scripts/bowie.bash" "${pkgdir}/usr/bin/bowie"
+        install -Dm755 "${srcdir}/${pkgname}-${pkgver}/scripts/nicotine.bash" "${pkgdir}/usr/bin/httm-nicotine"
+
+        [[ -z "$(
+                command -v zfs
+                exit 0
+        )" ]] || install -Dm755 "${srcdir}/${pkgname}-${pkgver}/scripts/ounce.bash" "${pkgdir}/usr/bin/ounce"
+
+        [[ -n "$(
+                command -v zfs
+                exit 0
+        )" ]] || echo "zfs not in path, helper script 'ounce' not installed"
+
 
 	# install man page
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
