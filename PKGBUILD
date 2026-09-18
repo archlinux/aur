@@ -3,8 +3,8 @@
 pkgbase='zl-compressor'
 pkgname=('zl-compressor-vst3' 'zl-compressor-lv2' 'zl-compressor')
 groups=('zl-audio' 'pro-audio')
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.6.0
+pkgrel=1
 options=()
 pkgdesc="Sidechain and oversample capable compressor plugin by ZL Audio"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('git' 'cmake' 'at-spi2-core' 'cairo' 'gtk3' 'gdk-pixbuf2' 'glib2' '
 source=("git+https://github.com/ZL-Audio/ZLCompressor#tag=${pkgver}"
 		"git+https://github.com/ZL-Audio/JUCE#tag=542dcc3"
 		"git+https://github.com/ZL-Audio/zldsp_fft.git#tag=959ff31")
-sha256sums=('1bdba1f65e2fb2332cff7c34e31009a66b337b340223f4b7419e37290d9dfa67'
+sha256sums=('a4a8614293053bb2a630f2ccd91bd6c95bd9f37cdf8b756016f4219bde418b58'
             '9fd8b671b3f0d2001f9acc1a9c13b3e0d778c76ab884ee2c69f122ec68729659'
             'd31d805f958746d375debaa1790712e831c2e428aa693a2220013315ff08a882')
 
@@ -25,8 +25,8 @@ prepare() {
 	
 	git submodule init
 	git config submodule."JUCE".url "${srcdir}/JUCE"
-	git config submodule."source/dsp/fft/zldsp_fft".url "${srcdir}/zldsp_fft"
-	git -c protocol.file.allow=always submodule update JUCE "source/dsp/fft/zldsp_fft"
+	git config submodule."zldsp_fft".url "${srcdir}/zldsp_fft"
+	git -c protocol.file.allow=always submodule update JUCE "zldsp_fft"
 
 
     # Use system libraries
