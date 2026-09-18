@@ -1,40 +1,37 @@
 # Maintainer: Ranadeep Biswas <mail@rnbguy.at>
 pkgname=bend-bin
-pkgver=2.0.4
+pkgver=2.0.10
 pkgrel=1
 pkgdesc='Bend programming language'
-arch=('any')
+arch=('x86_64' 'aarch64')
+url='https://github.com/bendlang/bend'
 license=('Apache-2.0')
-depends=('bun')
+depends=('glibc')
 optdepends=('clang: compile Bend programs to native binaries (clang 14+, 19+ for GPU programs)'
-            'cuda: build and run GPU programs on NVIDIA GPUs')
+            'cuda: build GPU programs (NVRTC headers/libs at /opt/cuda) and run them on NVIDIA GPUs (needs the NVIDIA driver)'
+            'libx11: build programs that open a window'
+            'alsa-lib: build programs that play audio')
 provides=('bend')
-source=("bend-${pkgver}.tar.gz::https://bend-lang.com/dl/${pkgver}.tar.gz")
-sha256sums=('dff7d7e7b42a4572c79d3084093521d198a93af4684d4a10fe8322c265481734')
-
-# To update: open https://bend-lang.com/dl/latest.json, copy its "ver" into
-# the pkgver literal above and its "sha256" into sha256sums, then rebuild.
-# Upstream publishes no buildable source, only a versioned release tarball
-# (pure TypeScript + C/JS effect snippets) behind a self-updating launcher
-# (install.sh). The launcher POSTs telemetry to /ping, rewrites
-# ~/.bend/current on every run, and races concurrent invocations, so this
-# package skips it: /usr/bin/bend invokes the release directly under the
-# system bun. Tarball's main.ts performs no telemetry itself (only
-# bend --publish contacts BEND_HUB).
+conflicts=('bend')
+source_x86_64=("bend-${pkgver}-linux-x64.tar.gz::https://github.com/bendlang/bend/releases/download/v${pkgver}/bend-${pkgver}-linux-x64.tar.gz")
+source_aarch64=("bend-${pkgver}-linux-arm64.tar.gz::https://github.com/bendlang/bend/releases/download/v${pkgver}/bend-${pkgver}-linux-arm64.tar.gz")
+sha256sums_x86_64=('f77ab6a2eff78648954451a6a4a26fe0157d6299afc95f3b85cb063cbc8a3af3')
+sha256sums_aarch64=('0b4b7c38f41642da1e174f2d5789a6c82430276bf30e820f3a756b78b54a8cfc')
+options=('!strip')
 
 package() {
-  # Upstream hardcodes the NVIDIA-default /usr/local/cuda (existence check,
-  # -I/-L flags in bend2/main.ts cli_build); Arch's cuda package lives at
-  # /opt/cuda. Patch the source, don't ship a /usr/local symlink (that tree
-  # is the admin's, not the package manager's).
-  sed -i 's|/usr/local/cuda|/opt/cuda|g' bend2/main.ts
+  # Tarball root is bend/{bin/bend,bend2,guide}; the binary locates its
+  # stdlib (bend2) and docs (guide) relative to its own path, so keep the
+  # tree intact under /usr/lib/bend and exec it via a PATH wrapper.
   install -dm755 "${pkgdir}/usr/lib/bend"
-  cp -a bend2 guide "${pkgdir}/usr/lib/bend/"
-  find "${pkgdir}/usr/lib/bend" -type d -exec chmod 755 {} +
-  find "${pkgdir}/usr/lib/bend" -type f -exec chmod 644 {} +
+  cp -a "${srcdir}/bend/bin" "${srcdir}/bend/bend2" "${srcdir}/bend/guide" \
+    "${pkgdir}/usr/lib/bend/"
 
+  # The binary defaults to the NVIDIA-default /usr/local/cuda; Arch's cuda
+  # package lives at /opt/cuda. Upstream honors CUDA_HOME, so export the
+  # Arch path instead of patching the binary.
   install -dm755 "${pkgdir}/usr/bin"
-  printf '#!/bin/sh\nexec /usr/bin/bun /usr/lib/bend/bend2/main.ts "$@"\n' \
+  printf '#!/bin/sh\nexport CUDA_HOME="${CUDA_HOME:-/opt/cuda}"\nexec /usr/lib/bend/bin/bend "$@"\n' \
     > "${pkgdir}/usr/bin/bend"
   chmod 755 "${pkgdir}/usr/bin/bend"
 }
