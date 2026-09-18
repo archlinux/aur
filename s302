@@ -11,8 +11,18 @@ APPIMAGE="/opt/steamcommunity302/steamcommunity302.AppImage"
 DATA_DIR="/var/lib/Steamcommunity_302"
 CFG="${DATA_DIR}/config.json"
 # 规则库(含全部规则的 section 与中文名;版本目录按 daemon 实际版本)
-RULES_INI="$(ls -d ${DATA_DIR}/app/versions/*/ 2>/dev/null | sort -V | tail -1)S302_rules.ini"
-[[ -f "$RULES_INI" ]] || RULES_INI="${DATA_DIR}/rules/active.ini"
+# 注意:app/versions/ 可能不存在(首次安装、或 daemon 只落盘 rules/),
+# 此时 glob 无匹配 -> ls 返回 2,pipefail 让整条管道失败 -> set -e 直接终止脚本,
+# 且发生在 case 分发之前,表现为所有子命令(含 GUI)静默退出 2。故用 || true 兜底退出码。
+# 空结果不进 RULES_INI:否则它会是 cwd 相对的 S302_rules.ini,可能被当前目录的同名文件截胡。
+# 首次初始化会新落盘版本目录,故封装成函数,初始化后再算一次(见 init_first_run)。
+resolve_rules_ini() {
+    RULES_VERS="$( { ls -d "${DATA_DIR}/app/versions/"*/ 2>/dev/null || true; } | sort -V | tail -1 )"
+    RULES_INI="${RULES_VERS:+${RULES_VERS}S302_rules.ini}"
+    [[ -f "$RULES_INI" ]] || RULES_INI="${DATA_DIR}/rules/S302_rules.ini"
+    [[ -f "$RULES_INI" ]] || RULES_INI="${DATA_DIR}/rules/active.ini"
+}
+resolve_rules_ini
 
 # --- 探测 systemd 服务名(按机器 UID 生成:s302-<uid>.service) ---
 find_svc() {
@@ -30,7 +40,39 @@ need_svc() {
     SVC="$(find_svc)"
     [[ -n "$SVC" ]] || die "未找到 s302 systemd 服务。先运行一次 's302 ui' 完成初始化(自动安装服务+证书),或在图形界面配置后使用 CLI 管理。"
 }
-need_cfg() { [[ -f "$CFG" ]] || die "未找到 $CFG —— 服务未初始化,先运行 's302 ui'"; }
+
+# 首次运行(数据目录尚未生成)时的初始化:先给反馈,再运行 AppImage 让它释放文件
+# (config.json、app/versions/<ver>/、rules/ 等),随后继续执行原命令。
+# GUI 必须以普通用户运行(提权由程序自身的 pkexec/polkit 处理):以 root 运行会生成
+# root 属主的数据文件,headless 下根本起不来 —— 这两种情况只提示、不启动。
+init_first_run() {
+    [[ -f "$CFG" ]] && return 0
+    echo "数据目录尚未初始化:$DATA_DIR 为空(首次运行)。"
+    if [[ $EUID -eq 0 ]]; then
+        echo "请以普通用户运行 's302 ui' 完成初始化;以 root 运行会生成 root 属主的数据文件。" >&2
+        return 1
+    fi
+    if [[ -z "${WAYLAND_DISPLAY:-}${DISPLAY:-}" ]]; then
+        echo "当前无图形会话,无法启动图形界面;请在有图形会话时运行 's302 ui'。" >&2
+        return 1
+    fi
+    if [[ ! -x "$APPIMAGE" ]]; then
+        echo "未找到可执行的 $APPIMAGE,无法自动初始化(请重装 steamcommunity302)。" >&2
+        return 1
+    fi
+    echo "正在启动图形界面完成初始化(会释放 app/versions/、rules/ 等文件)…"
+    "$APPIMAGE" || true
+    if [[ -f "$CFG" ]]; then
+        # 初始化新增了版本目录,规则库路径要按新落盘结果重算
+        resolve_rules_ini
+        echo "初始化完成,继续执行。"
+        return 0
+    fi
+    echo "初始化未完成:$CFG 仍未生成。" >&2
+    return 1
+}
+
+need_cfg() { [[ -f "$CFG" ]] || { init_first_run || die "未初始化;请先运行 's302 ui'"; }; }
 
 # --- 规则数据访问(经 python,处理 ini/json) ---
 # 输出: 全部规则 <名称>\t<中文名>\t<Group>  (来自规则库,不含基础设施)
@@ -121,6 +163,8 @@ fi
 
 case "$1" in
     ui)
+        # 首次运行先给反馈(桌面图标启动时看不到终端,但终端调用能看到)
+        [[ -f "$CFG" ]] || echo "首次运行:数据目录尚未初始化,正在启动图形界面完成初始化(会释放 app/versions/、rules/ 等文件)。"
         if [[ -z "${WAYLAND_DISPLAY:-}${DISPLAY:-}" ]]; then
             echo "当前无图形会话(headless)。管理请用: s302 start/stop/status/rules/dns/info"
             echo "初始化配置: 需图形会话运行 s302 ui(如本机/远程 X11 转发)"
@@ -286,7 +330,17 @@ print('规则数   :', len(s['rules']['enabled']), '| hosts 自动改:', s['host
         ;;
 
     version)
-        exec "$APPIMAGE" --appimage-version 2>/dev/null || echo "$("$APPIMAGE" --version 2>/dev/null || echo 'unknown')"
+        # AppImage type-2 runtime 把 --appimage-version 写到 stderr(stdout 为空,进程退出码仍是 0),
+        # 原来的 2>/dev/null + exec 让这一行什么都不输出;这里合并 stderr 并给出包版本。
+        # AppImage / pacman 包缺失都不能让 set -e 提前终止(管道退出码用 || true 兜住),
+        # 缺什么就降级为 unknown,而不是静默死亡。
+        av=""
+        if [[ -x "$APPIMAGE" ]]; then
+            av="$("$APPIMAGE" --appimage-version 2>&1 | tr -d '\n' || true)"
+        fi
+        pv="$(pacman -Q steamcommunity302 2>/dev/null | awk '{print $2}' || true)"
+        echo "steamcommunity302: ${pv:-unknown}"
+        echo "${av:-AppImage runtime: unknown}"
         ;;
 
     help|-h|--help)
