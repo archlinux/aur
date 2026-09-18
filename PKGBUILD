@@ -17,7 +17,6 @@ optdepends=(
     'julia: Julia eval backend'
     'libpulse: PulseAudio/PipeWire-Pulse client backend for live voice, STT, and TTS'
     'python: Python 3.10+ eval backend'
-    'sshfs: mount SSH remote workspaces'
     'xdg-desktop-portal: Wayland ScreenCast and RemoteDesktop portals for the computer tool'
     'xdg-desktop-portal-impl: compositor-specific backend for Wayland computer tool portals'
 )

@@ -24,7 +24,6 @@ pkgbase = oh-my-pi
 	optdepends = julia: Julia eval backend
 	optdepends = libpulse: PulseAudio/PipeWire-Pulse client backend for live voice, STT, and TTS
 	optdepends = python: Python 3.10+ eval backend
-	optdepends = sshfs: mount SSH remote workspaces
 	optdepends = xdg-desktop-portal: Wayland ScreenCast and RemoteDesktop portals for the computer tool
 	optdepends = xdg-desktop-portal-impl: compositor-specific backend for Wayland computer tool portals
 	options = !lto
