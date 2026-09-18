@@ -8,7 +8,6 @@ pkgbase = openmeters
 	makedepends = git
 	makedepends = cargo
 	makedepends = pkgconf
-	makedepends = pipewire
 	makedepends = clang
 	depends = pipewire
 	depends = wayland

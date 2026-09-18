@@ -9,7 +9,7 @@ arch=("x86_64")
 url="https://github.com/httpsworldview/openmeters"
 license=("GPL-3.0-or-later")
 depends=("pipewire" "wayland" "libxkbcommon" "vulkan-icd-loader")
-makedepends=("git" "cargo" "pkgconf" "pipewire" "clang")
+makedepends=("git" "cargo" "pkgconf" "clang")
 provides=("openmeters")
 conflicts=("openmeters")
 source=("git+${url}.git#tag=v${pkgver}")
