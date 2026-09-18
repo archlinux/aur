@@ -17,9 +17,14 @@ sha256sums=('673ac4df8553fbb1b14c98b38f5fe5ca729d6213b24f8e8ad6a97b1ce20eac85')
 # force disable lto for this package; it fails linking if it's enabled
 options=('!lto')
 
+prepare() {
+    cd "${srcdir}/openmeters"
+    cargo fetch --locked
+}
+
 build() {
     cd "${srcdir}/openmeters"
-    cargo build --locked --release
+    cargo build --frozen --release
 }
 
 package() {
