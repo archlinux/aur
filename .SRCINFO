@@ -1,6 +1,6 @@
 pkgbase = whisparr-nightly-bin
 	pkgdesc = Adult movie organizer/manager for usenet and torrent users (nightly builds)
-	pkgver = 2.2.0.develop.361
+	pkgver = 2.2.0.develop.376
 	pkgrel = 1
 	url = https://whisparr.com
 	install = whisparr.install
@@ -40,11 +40,11 @@ pkgbase = whisparr-nightly-bin
 	sha256sums = c8c0b16a154e8c7ed47fea616ff0f1bc9319993c0561e0866f0e20faad779de8
 	sha256sums = dfe5d421bc8c8bd9cfd46ee0183e61b572c28d31c8114dded887998bc432d22b
 	sha256sums = 0b235aed73eb0155d77c485ccff415e82e520d27013ba498ac70574e7106a762
-	source_x86_64 = Whisparr.2.2.0.develop.361.linux-x64.tar.gz::https://github.com/Whisparr/Whisparr/releases/download/v2.2.0-develop.361/Whisparr.2.2.0-develop.361.linux-x64.tar.gz
-	sha256sums_x86_64 = b91c1a71973257e04cfaabdfb3f13ad5077d52343a2cad868559ad852bd39ec7
-	source_aarch64 = Whisparr.2.2.0.develop.361.linux-arm64.tar.gz::https://github.com/Whisparr/Whisparr/releases/download/v2.2.0-develop.361/Whisparr.2.2.0-develop.361.linux-arm64.tar.gz
-	sha256sums_aarch64 = e4141ef2b8e3017b68b219d823ff270d72995fd8ca57039fc40d9e4b522d1d87
-	source_armv7h = Whisparr.2.2.0.develop.361.linux-arm.tar.gz::https://github.com/Whisparr/Whisparr/releases/download/v2.2.0-develop.361/Whisparr.2.2.0-develop.361.linux-arm.tar.gz
-	sha256sums_armv7h = 5302706eddf946a25e78e057563e4fa59caa2ef16baac61da51b18c17ffb0a37
+	source_x86_64 = Whisparr.2.2.0.develop.376.linux-x64.tar.gz::https://github.com/Whisparr/Whisparr/releases/download/v2.2.0-develop.376/Whisparr.2.2.0-develop.376.linux-x64.tar.gz
+	sha256sums_x86_64 = 30497f5cb42ec1d41b627d763a3a83e76bd4fa2b5c56d03cb2cbd3c5aefa63a1
+	source_aarch64 = Whisparr.2.2.0.develop.376.linux-arm64.tar.gz::https://github.com/Whisparr/Whisparr/releases/download/v2.2.0-develop.376/Whisparr.2.2.0-develop.376.linux-arm64.tar.gz
+	sha256sums_aarch64 = 16227996633cb67f3da317b9d995e40e37f7c19f062bdec1586816372c25dca9
+	source_armv7h = Whisparr.2.2.0.develop.376.linux-arm.tar.gz::https://github.com/Whisparr/Whisparr/releases/download/v2.2.0-develop.376/Whisparr.2.2.0-develop.376.linux-arm.tar.gz
+	sha256sums_armv7h = dd874f5ff6a8ba738d5cd4117689274cea163e6c88f9f577c0f9aa41e5ebcdd7
 
 pkgname = whisparr-nightly-bin
