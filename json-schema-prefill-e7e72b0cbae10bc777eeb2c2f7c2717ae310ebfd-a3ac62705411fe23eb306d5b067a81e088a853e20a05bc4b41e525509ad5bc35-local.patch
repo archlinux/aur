@@ -1,0 +1,118 @@
+diff --git a/common/common.h b/common/common.h
+index 63d0badd0f74..d389a371380d 100644
+--- a/common/common.h
++++ b/common/common.h
+@@ -214,10 +214,12 @@ inline const std::string & common_grammar_value(const common_grammar & g) {
+ }
+ 
+ // Returns true when the generation_prompt should be prefilled into the grammar sampler.
+-// Only output-format and tool-call grammars need prefill; user-supplied grammars must not be prefilled.
++// Only tool-call grammars need prefill: they are built by the chat template and begin with the
++// generation prompt. Output-format grammars come straight from json_schema_to_grammar (server
++// --json-schema, or a request json_schema that the template did not wrap) and start at the first
++// generated token; user-supplied grammars must not be prefilled.
+ inline bool common_grammar_needs_prefill(const common_grammar & g) {
+-    return g.type == COMMON_GRAMMAR_TYPE_OUTPUT_FORMAT
+-        || g.type == COMMON_GRAMMAR_TYPE_TOOL_CALLS;
++    return g.type == COMMON_GRAMMAR_TYPE_TOOL_CALLS;
+ }
+ 
+ // sampling parameters
+diff --git a/common/sampling.cpp b/common/sampling.cpp
+index 06dea1e1ccea..3c0c2aea6331 100644
+--- a/common/sampling.cpp
++++ b/common/sampling.cpp
+@@ -293,7 +293,7 @@ struct common_sampler * common_sampler_init(
+ 
+     // Feed generation prompt tokens to the grammar sampler so it advances past
+     // tokens the template already placed in the prompt.
+-    // Only applies to output-format and tool-call grammars; user-supplied grammars must not be prefilled.
++    // Only applies to tool-call grammars built by the chat template (see common_grammar_needs_prefill).
+     if (grmr && !params.grammar_lazy && common_grammar_needs_prefill(params.grammar)) {
+         try {
+             for (const auto & token : prefill_tokens) {
+@@ -303,7 +303,8 @@ struct common_sampler * common_sampler_init(
+         } catch (std::exception &e) {
+             LOG_ERR("%s: error initializing grammar sampler for grammar:\n%s\n\nGeneration prompt:\n'%s'\n", __func__,
+                 common_grammar_value(params.grammar).c_str(), params.generation_prompt.c_str());
+-            throw e;
++            // rethrow the original object: `throw e` slices it to std::exception and loses the message
++            throw;
+         }
+     }
+ 
+diff --git a/tools/server/tests/unit/test_chat_completion.py b/tools/server/tests/unit/test_chat_completion.py
+index 0258b539ed87..cd3e4ec2c6d7 100644
+--- a/tools/server/tests/unit/test_chat_completion.py
++++ b/tools/server/tests/unit/test_chat_completion.py
+@@ -287,6 +287,46 @@ def test_completion_with_json_schema(jinja: bool, json_schema: dict, n_predicted
+     assert match_regex(re_content, choice["message"]["content"]), f'Expected {re_content}, got {choice["message"]["content"]}'
+ 
+ 
++@pytest.mark.parametrize("skip_chat_parsing", [False, True])
++def test_completion_with_server_json_schema(skip_chat_parsing: bool):
++    # a schema given on the command line (--json-schema) is a plain json_schema_to_grammar grammar:
++    # it does not contain the template's generation prompt, so the chat endpoint must not prefill it
++    # with the generation prompt tokens (issue #29006)
++    global server
++    server.jinja = True
++    server.json_schema = '{"const": "42"}'
++    server.skip_chat_parsing = skip_chat_parsing
++    server.start()
++    res = server.make_request("POST", "/chat/completions", data={
++        "max_tokens": 6,
++        "messages": [
++            {"role": "user", "content": "Write an example"},
++        ],
++    })
++    assert res.status_code == 200, res.body
++    choice = res.body["choices"][0]
++    assert match_regex("\"42\"", choice["message"]["content"]), choice["message"]["content"]
++
++
++def test_completion_with_json_schema_skip_chat_parsing():
++    # with --skip-chat-parsing the template does not wrap the request json_schema either,
++    # so it reaches the sampler as a plain output-format grammar (issue #29006)
++    global server
++    server.jinja = True
++    server.skip_chat_parsing = True
++    server.start()
++    res = server.make_request("POST", "/chat/completions", data={
++        "max_tokens": 6,
++        "messages": [
++            {"role": "user", "content": "Write an example"},
++        ],
++        "json_schema": {"const": "42"},
++    })
++    assert res.status_code == 200, res.body
++    choice = res.body["choices"][0]
++    assert match_regex("\"42\"", choice["message"]["content"]), choice["message"]["content"]
++
++
+ @pytest.mark.parametrize("jinja,grammar,n_predicted,re_content", [
+     (False, 'root ::= "a"{5,5}', 6, "a{5,5}"),
+     (True, 'root ::= "a"{5,5}', 6, "a{5,5}"),
+diff --git a/tools/server/tests/utils.py b/tools/server/tests/utils.py
+index 826aef2d5bcb..6b2111f618de 100644
+--- a/tools/server/tests/utils.py
++++ b/tools/server/tests/utils.py
+@@ -107,6 +107,8 @@ class ServerProcess:
+     reasoning: Literal['on', 'off', 'auto'] | None = None
+     chat_template: str | None = None
+     chat_template_file: str | None = None
++    skip_chat_parsing: bool | None = None
++    json_schema: str | None = None
+     server_path: str | None = None
+     mmproj_url: str | None = None
+     no_mmproj: bool | None = None
+@@ -268,6 +270,10 @@ def start(self, timeout_seconds: int = DEFAULT_HTTP_TIMEOUT) -> None:
+             server_args.extend(["--chat-template", self.chat_template])
+         if self.chat_template_file:
+             server_args.extend(["--chat-template-file", self.chat_template_file])
++        if self.skip_chat_parsing:
++            server_args.append("--skip-chat-parsing")
++        if self.json_schema:
++            server_args.extend(["--json-schema", self.json_schema])
+         if self.mmproj_url:
+             server_args.extend(["--mmproj-url", self.mmproj_url])
+         if self.no_mmproj:

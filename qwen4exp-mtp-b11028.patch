@@ -1,4 +1,4 @@
-# Local exact-context rebase for llama.cpp b11012.
+# Local exact-context rebase for llama.cpp b11028.
 --- a/src/llama-arch.h
 +++ b/src/llama-arch.h
 @@ -695,6 +695,11 @@

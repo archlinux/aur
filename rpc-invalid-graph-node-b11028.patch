@@ -1,4 +1,4 @@
-# Exact-context rebase for llama.cpp b11012; production and test changes unchanged.
+# Exact-context rebase for llama.cpp b11028; production and test changes unchanged.
 # Provenance: https://github.com/ggml-org/llama.cpp/commit/181b1999205fd0e7c3e0db2874856649a0612d3f
 diff --git a/ggml/src/ggml-rpc/ggml-rpc.cpp b/ggml/src/ggml-rpc/ggml-rpc.cpp
 index a97db24e624e..f0ddbd6204f9 100644
