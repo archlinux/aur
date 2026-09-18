@@ -1,7 +1,7 @@
 # Maintainer: devolutionsinfra https://devolutions.net/
 pkgname=remote-desktop-manager-em
 pkgver=2026.2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Devolutions Remote Desktop Manager centralizes all remote connections on a single platform that is securely shared between users and across the entire team. (Extended maintenance / LTS channel)"
 arch=('x86_64')
 url="https://remotedesktopmanager.com/"
@@ -19,7 +19,7 @@ conflicts=('remote-desktop-manager')
 options=(!strip)
 install=${pkgname}.install
 source=("RemoteDesktopManager_${pkgver}_amd64.deb::https://cdn.devolutions.net/download/Linux/RDM/${pkgver}/RemoteDesktopManager_${pkgver}_amd64.deb")
-sha256sums=('2A61BE1E0357B3FF96E19EF32EBE696249A7427DC570E8DA449CC52A5405CF4E')
+sha256sums=('CA8E903AD22579310F2A7FCC22495754DF3EAE940FAA1DBA29E9B393B2838792')
 
 prepare() {
   tar -xf ${srcdir}/data.tar.xz
