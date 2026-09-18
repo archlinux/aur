@@ -1,5 +1,5 @@
 pkgname=youtuibe
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A resilient, approachable Ratatui frontend for yt-dlp'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ provides=('youtuibe')
 conflicts=('youtuibe-bin')
 _archive="youTUIbe-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sambuaneesh/youTUIbe/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1b3b8e30ec9e011990f47b8b67c29913baebd3961f14e150379cb1d0b4f16ef4')
+sha256sums=('ebca3493581ad499a24a9bbf8f5702ce043c5e0982bba513c43b7e2145323da4')
 
 build() {
   cd "${_archive}"
