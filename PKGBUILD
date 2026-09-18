@@ -2,6 +2,7 @@
 # vim:set ts=2 sw=2 et:
 pkgbase=linux-musl-bin
 pkgname=(
+    ld-linux-musl-bin
     aarch64-linux-musl-bin
     arm-linux-musleabi-bin
     arm-linux-musleabihf-bin
@@ -21,7 +22,7 @@ pkgname=(
 )
 pkgver=2637
 _gccver=16.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Static musl-based cross-compilation toolchains (binary)"
 url="https://github.com/userdocs/musl-cross-make"
 arch=(x86_64 aarch64)
@@ -80,8 +81,16 @@ source_aarch64=(
     ${_url_aarch64}x86_64-linux-musl.tar.xz
 )
 
+package_ld-linux-musl-bin() {
+  pkgdesc="Static musl-based cross-compilation toolchain (binary)"
+  provides=(musl ${pkgname%-bin})
+  conflicts=(musl ${pkgname%-bin})
+  install -vDm644 -t "${pkgdir}"/usr/lib ${CARCH}-linux-musl/${CARCH}-linux-musl/lib/ld-musl-${CARCH}.so.1
+}
+
 package_aarch64-linux-musl-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -101,6 +110,7 @@ package_aarch64-linux-musl-bin() {
 
 package_arm-linux-musleabi-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -120,6 +130,7 @@ package_arm-linux-musleabi-bin() {
 
 package_arm-linux-musleabihf-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -139,6 +150,7 @@ package_arm-linux-musleabihf-bin() {
 
 package_armv6-linux-musleabihf-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -158,6 +170,7 @@ package_armv6-linux-musleabihf-bin() {
 
 package_armv7l-linux-musleabihf-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -177,6 +190,7 @@ package_armv7l-linux-musleabihf-bin() {
 
 package_i686-linux-musl-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -196,6 +210,7 @@ package_i686-linux-musl-bin() {
 
 package_loongarch64-linux-musl-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -215,6 +230,7 @@ package_loongarch64-linux-musl-bin() {
 
 package_mips-linux-musl-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -234,6 +250,7 @@ package_mips-linux-musl-bin() {
 
 package_mips64-linux-musl-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -253,6 +270,7 @@ package_mips64-linux-musl-bin() {
 
 package_mips64el-linux-musl-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -272,6 +290,7 @@ package_mips64el-linux-musl-bin() {
 
 package_mipsel-linux-musl-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -291,6 +310,7 @@ package_mipsel-linux-musl-bin() {
 
 package_powerpc-linux-musl-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -310,6 +330,7 @@ package_powerpc-linux-musl-bin() {
 
 package_powerpc64le-linux-musl-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -329,6 +350,7 @@ package_powerpc64le-linux-musl-bin() {
 
 package_riscv64-linux-musl-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -348,6 +370,7 @@ package_riscv64-linux-musl-bin() {
 
 package_s390x-linux-musl-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"
@@ -367,6 +390,7 @@ package_s390x-linux-musl-bin() {
 
 package_x86_64-linux-musl-bin() {
   pkgdesc="Static ${pkgname%-bin} cross-compilation toolchain (binary)"
+  requires=(ld-linux-musl-bin)
   provides=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   conflicts=(${pkgname%-bin} ${pkgname%-bin}-cross ${pkgname%-bin}-cross-bin)
   install -dm755 "${pkgdir}/usr/lib/musl-cross"

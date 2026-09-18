@@ -1,7 +1,7 @@
 pkgbase = linux-musl-bin
 	pkgdesc = Static musl-based cross-compilation toolchains (binary)
 	pkgver = 2637
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/userdocs/musl-cross-make
 	arch = x86_64
 	arch = aarch64
@@ -80,6 +80,13 @@ pkgbase = linux-musl-bin
 	sha256sums_aarch64 = 737a740c7fac84ffab7c9878147696fe548c3a44a7083b40bc380b8f8e63f174
 	sha256sums_aarch64 = b6a747256af9b363bf9d5483f28dc23ffa0f7b7d347edf468405f6302e860de2
 	sha256sums_aarch64 = 0c227cfe895e6e16f4c3395c744e3f8d5d34c7210839602fc81707e2c286904d
+
+pkgname = ld-linux-musl-bin
+	pkgdesc = Static musl-based cross-compilation toolchain (binary)
+	provides = musl
+	provides = ld-linux-musl
+	conflicts = musl
+	conflicts = ld-linux-musl
 
 pkgname = aarch64-linux-musl-bin
 	pkgdesc = Static aarch64-linux-musl cross-compilation toolchain (binary)
