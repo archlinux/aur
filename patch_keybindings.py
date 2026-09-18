@@ -20,6 +20,7 @@ partially patched layouts fail closed.
 import argparse
 import re
 import shutil
+import struct
 import subprocess
 import sys
 from pathlib import Path
@@ -330,8 +331,95 @@ def _dispatch_matches(
         offset = position + 1
 
 
-def apply_patch_bytes(data: bytes) -> bytes:
-    """Rotate editor/model/queue bindings, refusing unknown layouts."""
+ELF_HEADER = struct.Struct("<16sHHIQQQIHHHHHH")
+SECTION_HEADER = struct.Struct("<IIQQQQIIQQ")
+JSC_CACHE_MAGIC = struct.pack("<I", 0xC33CCB8C)
+
+
+def _invalidate_bun_bytecode_caches(original: bytes, patched: bytes) -> bytes:
+    """For Bun standalone executables, invalidate precompiled bytecode for modified modules.
+
+    Bun executes precompiled WebKit JavaScriptCore CachedBytecode rather than raw JS
+    source text. When a module's JavaScript is patched, its precompiled bytecode cache
+    must be invalidated (magic 0xc33ccb8c -> 0x00000000) and its recorded source hash
+    must be zeroed so Bun falls back to compiling from our modified JavaScript source.
+    """
+    if len(patched) < ELF_HEADER.size or patched[:4] != b"\x7fELF":
+        return patched
+
+    header = ELF_HEADER.unpack_from(patched)
+    section_offset = header[6]
+    section_size = header[11]
+    section_count = header[12]
+    names_index = header[13]
+    if (
+        section_size != SECTION_HEADER.size
+        or names_index >= section_count
+        or section_offset + section_size * section_count > len(patched)
+    ):
+        return patched
+
+    headers = [
+        SECTION_HEADER.unpack_from(patched, section_offset + index * section_size)
+        for index in range(section_count)
+    ]
+    names_offset = headers[names_index][4]
+    names_size = headers[names_index][5]
+    names = patched[names_offset : names_offset + names_size]
+    sections = {}
+    for name_offset, _, _, _, file_offset, size, _, _, _, _ in headers:
+        name_end = names.find(b"\x00", name_offset)
+        if name_end != -1:
+            name = names[name_offset:name_end].decode("utf-8", "ignore")
+            sections[name] = (file_offset, size)
+
+    if ".bun" not in sections:
+        return patched
+
+    bun_off, bun_size = sections[".bun"]
+    base = bun_off + 8
+    tr = patched.rfind(b"\n---- Bun! ----\n")
+    if tr == -1 or tr < 32:
+        return patched
+
+    byte_count, mo, ml, entry, ao, al, flags = struct.unpack_from("<QIIIIII", patched, tr - 32)
+    rec_size = 52
+    if ml % rec_size != 0 or base + mo + ml > len(patched):
+        return patched
+
+    num_modules = ml // rec_size
+    hs_base = base + mo + ml
+    if hs_base + num_modules * 4 > len(patched):
+        return patched
+
+    result = bytearray(patched)
+    target_needle = b'modelCycle:{id:"model-cycle"'
+
+    for i in range(num_modules):
+        rec_offset = base + mo + i * rec_size
+        vals = struct.unpack_from("<12I4B", patched, rec_offset)
+        cont_off, cont_len = vals[2], vals[3]
+        bc_off, bc_len = vals[6], vals[7]
+
+        if cont_off + cont_len > len(patched) - base or bc_off + bc_len > len(patched) - base:
+            continue
+
+        orig_chunk = original[base + cont_off : base + cont_off + cont_len]
+        new_chunk = patched[base + cont_off : base + cont_off + cont_len]
+
+        if orig_chunk != new_chunk or target_needle in new_chunk:
+            bc_abs = base + bc_off
+            if bc_len >= 4 and result[bc_abs : bc_abs + 4] == JSC_CACHE_MAGIC:
+                result[bc_abs : bc_abs + 4] = bytes(4)
+
+            hash_slot = hs_base + i * 4
+            result[hash_slot : hash_slot + 4] = bytes(4)
+
+    return bytes(result)
+
+
+def _apply_source_patch_bytes(data: bytes) -> bytes:
+    """Rotate editor/model/queue bindings in JavaScript source text."""
     data = _patch_runtime_key_registry(data)
     binary_keymap = _find_binary_record_keymap(data, patched=False)
     if binary_keymap:
@@ -471,6 +559,12 @@ def apply_patch_bytes(data: bytes) -> bytes:
     if len(patched) != len(data):
         raise PatchError("keybinding rotation changed binary size")
     return bytes(patched)
+
+
+def apply_patch_bytes(data: bytes) -> bytes:
+    """Rotate editor/model/queue bindings, refusing unknown layouts."""
+    patched_source = _apply_source_patch_bytes(data)
+    return _invalidate_bun_bytecode_caches(data, patched_source)
 
 
 def apply_patch(

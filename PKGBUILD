@@ -1,7 +1,7 @@
 # Maintainer: Project Maintainers <maintainers@users.noreply.github.com>
 pkgname=factory-ai-droid-cli-rnoz-bin
 pkgver=0.222.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Factory.ai CLI (droid) with rNoz tweaks, optional zero-waste titling, and cross-harness keybindings (automatically tracks upstream releases)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rNoz/factory-ai-droid-cli-rnoz"
@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=(
   '6f8fc3992526e8c8b0a4af11f029a633498f7704e9c6a736e772788d18243d00'
-  '55abb3f645848b4366c271b0c635594a3ffc59e106ed66955cfc869e55684dd3'
+  '6598a5345cde3737913e44b43d67fa40a47a89b780e8ffb8bf872727f2570df5'
   'ca5befcf6fe0b388af9b4960050fc7e3d8cc6d1ec7be49fc88b3f88fe40d471d'
   '24d17bcf4f621c0d2bc1288e87596097f3489cd3d176deba1c03f468126c8004'
 )
@@ -37,9 +37,38 @@ package() {
   apply_patch_if_requested() {
     local label="$1"
     local patcher="$2"
-    if [[ -t 0 && -t 1 ]]; then
+
+    local env_name=""
+    if [[ "$label" == *"titling"* ]]; then
+      env_name="DROID_APPLY_TITLING_PATCH"
+    elif [[ "$label" == *"keybinding"* ]]; then
+      env_name="DROID_APPLY_KEYBINDINGS_PATCH"
+    fi
+
+    if [[ -n "$env_name" && -n "${!env_name:-}" ]]; then
+      if [[ "${!env_name}" =~ ^[Nn0]$ ]]; then
+        msg2 "Skipping ${label} patch (forced via ${env_name})."
+        return 0
+      elif [[ "${!env_name}" =~ ^[Yy1]$ ]]; then
+        msg2 "Applying ${label} patch (forced via ${env_name})."
+        python3 "$patcher" "$output_bin" --test
+        return 0
+      fi
+    fi
+
+    local is_interactive=0
+    if [[ " ${PACMAN_OPTS[*]:-} " =~ " --noconfirm " || "${DROID_NONINTERACTIVE:-0}" == "1" ]]; then
+      is_interactive=0
+    elif [[ -t 0 && -t 1 ]]; then
+      is_interactive=1
+    elif (exec </dev/tty && exec >/dev/tty) 2>/dev/null; then
+      is_interactive=1
+    fi
+
+    if (( is_interactive )); then
       local answer
-      read -r -p "Apply ${label} patch? [Y/n] " answer </dev/tty
+      printf "Apply %s patch? [Y/n] " "$label" >/dev/tty
+      read -r answer </dev/tty
       if [[ "$answer" =~ ^[Nn]$ ]]; then
         msg2 "Skipping ${label} patch (requested interactively)."
         return 0
