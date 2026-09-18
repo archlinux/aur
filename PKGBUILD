@@ -3,7 +3,7 @@
 pkgname=thunderbird-eas-4-tbsync
 _file=1032036
 _name=provider_fur_exchange_activesync
-pkgver=4.12
+pkgver=5.3.10
 pkgrel=1
 pkgdesc='Provider for Exchange ActiveSync Version History'
 arch=('any')
