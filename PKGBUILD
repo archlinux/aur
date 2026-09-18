@@ -1,6 +1,6 @@
 # Maintainer: HAHWUL <hahwul@gmail.com>
 pkgname=urx
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Extracts URLs from OSINT Archives for Security Insights"
 arch=('x86_64' 'aarch64')
