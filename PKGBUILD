@@ -1,25 +1,25 @@
 # Maintainer: David Kantun <dkantun@gmail.com>
 
 pkgname=libria
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Application for professional book creation and typesetting — book editor and layout tool with real-time preview, EPUB/DOCX/PDF export, and spell checking"
 arch=('x86_64')
 url="https://github.com/Gargadon/libria"
 license=('AGPL-3.0-only')
-depends=('electron>=32' 'ghostscript')
+depends=('electron42' 'ghostscript')
 makedepends=('bun' 'python')
 provides=("${pkgname}")
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7c9c8e212330c9a016544c07bc78c9f443e9bbe8761d26467863f282fd366373')
+source=("git+${url}.git#branch=main")
+sha256sums=('SKIP')
 
 prepare() {
-  cd "${srcdir}/libria-${pkgver}"
+  cd "${srcdir}/libria"
   bun install
 }
 
 build() {
-  cd "${srcdir}/libria-${pkgver}"
+  cd "${srcdir}/libria"
   bun run build
 }
 
@@ -40,7 +40,7 @@ package() {
 #!/bin/bash
 export GDK_BACKEND=x11
 export ELECTRON_OZONE_PLATFORM_HINT=x11
-exec /usr/bin/electron --ozone-platform=x11 /opt/libria/main.js "$@"
+exec /usr/bin/electron42 --ozone-platform=x11 /opt/libria/main.js "$@"
 SCRIPT
   chmod 755 "${pkgdir}/usr/bin/libria"
 
