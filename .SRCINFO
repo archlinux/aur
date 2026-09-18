@@ -1,6 +1,6 @@
 pkgbase = compcert
 	pkgdesc = The formally verified C compiler
-	pkgver = 3.17
+	pkgver = 3.18
 	pkgrel = 1
 	url = https://compcert.org/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = compcert
 	makedepends = ocaml-menhir>=20200624
 	makedepends = ocaml-findlib
 	depends = gcc
-	source = https://github.com/AbsInt/CompCert/archive/v3.17.tar.gz
-	source = https://github.com/AbsInt/CompCert-small-tests/archive/081175df374260304a5cd78dd3dfaded93dceb41.tar.gz
-	sha256sums = 671425695c92d6c3a44d9f0833a803a9fa6b9199675a0b10dfdc131a0e2abffa
-	sha256sums = 20b1c6fd68d3bb3ad49465acba674d231bf0d38412eb69464178110fbb3c8b91
+	source = https://github.com/AbsInt/CompCert/archive/v3.18.tar.gz
+	source = https://github.com/AbsInt/CompCert-small-tests/archive/0a34815caf6bdf6a8a9284b70c869f97daa9536b.tar.gz
+	sha256sums = 564b312b3ed3162f02605f0108feb555bd28fe7a80b97ea269c546bcc60c1cf0
+	sha256sums = ab95b78c2f5cf9c8f9ac4e9d64f43a5315c7b57312d5dece402fdee1756bd8db
 
 pkgname = compcert

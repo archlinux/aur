@@ -3,8 +3,8 @@
 
 pkgname=compcert
 _dirname=CompCert
-_testscommit=081175df374260304a5cd78dd3dfaded93dceb41
-pkgver=3.17
+_testscommit=0a34815caf6bdf6a8a9284b70c869f97daa9536b
+pkgver=3.18
 pkgrel=1
 pkgdesc="The formally verified C compiler"
 arch=('x86_64')
@@ -18,8 +18,8 @@ makedepends=('rocq>=9.0.0' 'rocq-stdlib>=9.0.0' 'ocaml>=4.05.0'
 checkdepends=('parallel')
 source=("https://github.com/AbsInt/$_dirname/archive/v$pkgver.tar.gz"
 	"https://github.com/AbsInt/$_dirname-small-tests/archive/$_testscommit.tar.gz")
-sha256sums=('671425695c92d6c3a44d9f0833a803a9fa6b9199675a0b10dfdc131a0e2abffa'
-	    '20b1c6fd68d3bb3ad49465acba674d231bf0d38412eb69464178110fbb3c8b91')
+sha256sums=('564b312b3ed3162f02605f0108feb555bd28fe7a80b97ea269c546bcc60c1cf0'
+            'ab95b78c2f5cf9c8f9ac4e9d64f43a5315c7b57312d5dece402fdee1756bd8db')
 
 prepare() {
   cd ${srcdir}/${_dirname}-${pkgver}
@@ -27,9 +27,6 @@ prepare() {
   # move tests to folder in main repo
   rmdir --ignore-fail-on-non-empty ${srcdir}/${_dirname}-${pkgver}/test
   mv -nT ${srcdir}/${_dirname}-small-tests-${_testscommit} ${srcdir}/${_dirname}-${pkgver}/test
-
-  # workaround until upstream updates flocq (https://github.com/AbsInt/CompCert/issues/580)
-  find flocq -type f -name "*.v" -exec sed -i 's/\bZmod\b/Z.modulo/g' {} +
 }
 
 build() {
