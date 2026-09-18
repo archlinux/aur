@@ -1,6 +1,6 @@
 pkgbase = fasthex-bin
 	pkgdesc = fasthex, a very fast hex dumper, prebuilt binary
-	pkgver = 45
+	pkgver = 46
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fasthex
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = fasthex-bin
 	depends = gcc-libs
 	provides = fasthex
 	conflicts = fasthex
-	source = fasthex-45::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex-x86_64-linux-musl
-	source = fasthex-45.sha256::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex-x86_64-linux-musl.sha256
+	source = fasthex-46::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex-x86_64-linux-musl
+	source = fasthex-46.sha256::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex-x86_64-linux-musl.sha256
 	sha256sums = 4b97b76c3d4f1600f8a9b6ec623c698454e2b29d366b70ee94dcc9e8331b0167
 	sha256sums = 9782f4e3e0c8d06f86dbf680fc6126916d840756abcd400ee15ca87b1bac102a
 
