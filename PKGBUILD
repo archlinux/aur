@@ -2,41 +2,61 @@
 # Maintainer: higorslva <higor.slva at outlook dot com>
 
 pkgname=pgadmin4-server-bin
-pkgver=9.17
+pkgver=9.18
 pkgrel=1
-pkgdesc='The core server package for pgAdmin. pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.'
+pkgdesc='The core server package for pgAdmin (binary from Ubuntu). pgAdmin is the most popular administration platform for PostgreSQL.'
 arch=('x86_64')
+url='https://www.pgadmin.org/'
 license=('PostgreSQL')
-makedepends=('python-pip')
+makedepends=('python-pip' 'libarchive' 'tar' 'zstd')
 depends=('python' 'libedit' 'krb5' 'sqlite' 'postgresql-libs')
 provides=('pgadmin4-server')
 conflicts=('pgadmin4-server')
-source=("pgadmin4-server-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-server_${pkgver}-1.noble_amd64.deb"
-        "requirements.txt::https://raw.githubusercontent.com/pgadmin-org/pgadmin4/refs/heads/master/requirements.txt")
-#source=("pgadmin4-server-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-server_${pkgver}_amd64.deb")
-sha256sums=('cec06cafd20b5d13f6dec3e767e46e4359f3620cc6ddb6449800c43a65971fc4'
-            'SKIP')
+
+# The requirements URL points to the released tag, with '.' replaced by '_' in the version
+source=(
+  "pgadmin4-server-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-server_9.18-1.noble_amd64.deb"
+  "requirements-${pkgver}.txt::https://raw.githubusercontent.com/pgadmin-org/pgadmin4/refs/tags/REL-${pkgver//./_}/requirements.txt"
+)
+
+# Real SHA256 of the pinned requirements file (maintained by the update script)
+sha256sums=(
+  '242ff77edfa1a380fdbd26bab10495608ecfc9d9332b503ec3b37b909160c12c'
+  'a4927028b94ac02664c1184c70f9c13e3f155d7a7c164f4ff9e7c117635abcbf'
+)
+
+prepare() {
+  msg2 "Extracting the debian package..."
+  mkdir -p "${srcdir}/deb-content"
+  
+  bsdtar -xf "pgadmin4-server-${pkgver}-x86_64.deb" -C "${srcdir}"
+  tar -x --zstd -f "${srcdir}/data.tar.zst" -C "${srcdir}/deb-content"
+
+  sed -i "s|ALLOW_SAVE_TUNNEL_PASSWORD = False|ALLOW_SAVE_TUNNEL_PASSWORD = True|" "${srcdir}/deb-content/usr/pgadmin4/web/config.py"
+}
+
+build() {
+  msg2 "Creating isolated Python virtual environment..."
+  cd "${srcdir}/deb-content/usr/pgadmin4"
+  
+  rm -rf venv
+  python -m venv venv
+
+  msg2 "Installing dependencies via pip (exact version ${pkgver})..."
+  ./venv/bin/python -m pip install --upgrade pip setuptools wheel
+  ./venv/bin/python -m pip install --no-cache-dir -r "${srcdir}/requirements-${pkgver}.txt"
+}
 
 package() {
-  # Extract package data
-  tar -x --zstd -f data.tar.zst -C "${pkgdir}"
-  sed -i "s|ALLOW_SAVE_TUNNEL_PASSWORD = False|ALLOW_SAVE_TUNNEL_PASSWORD = True|" "${pkgdir}/usr/pgadmin4/web/config.py"
+  msg2 "Installing files into the package..."
+  cp -r "${srcdir}/deb-content/usr" "${pkgdir}/"
 
-  msg2 "A criar ambiente virtual isolado para Python 3.14..."
-  rm -rf "${pkgdir}/usr/pgadmin4/venv"
-  python -m venv "${pkgdir}/usr/pgadmin4/venv"
-
-  msg2 "A instalar dependências do requirements.txt..."
-  
-  "${pkgdir}/usr/pgadmin4/venv/bin/python" -m pip install --upgrade pip setuptools wheel
-
-  "${pkgdir}/usr/pgadmin4/venv/bin/python" -m pip install --no-cache-dir \
-    -r "${srcdir}/requirements.txt"
-
-  msg2 "A ajustar executáveis e caminhos do venv..."
+  msg2 "Safely cleaning absolute VENV paths..."
   ln -sf python "${pkgdir}/usr/pgadmin4/venv/bin/python3"
-  find "${pkgdir}/usr/pgadmin4/venv/bin" -type f -executable -exec sed -i "s|${pkgdir}||g" {} +
-
-  install -dm775 "${pkgdir}/var/lib/pgadmin"
-  install -dm775 "${pkgdir}/var/log/pgadmin"
+  
+  # Only alter text files inside the virtual environment
+  find "${pkgdir}/usr/pgadmin4/venv/bin" -type f -executable -exec grep -Il '' {} + | xargs sed -i "s|${srcdir}/deb-content||g"
+  
+  install -dm755 "${pkgdir}/var/lib/pgadmin"
+  install -dm755 "${pkgdir}/var/log/pgadmin"
 }
