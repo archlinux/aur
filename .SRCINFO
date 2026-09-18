@@ -1,0 +1,24 @@
+pkgbase = silverbullet-desktop
+	pkgdesc = Local SilverBullet Markdown reader with desktop file integration and Obsidian vault support
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/itonia149/silverbullet-desktop
+	arch = x86_64
+	license = MIT
+	checkdepends = desktop-file-utils
+	makedepends = unzip
+	depends = python>=3.10
+	depends = systemd
+	depends = xdg-utils
+	depends = microsoft-edge-stable-bin
+	optdepends = kdialog: graphical error messages
+	options = !strip
+	options = !debug
+	source = silverbullet-desktop-1.0.1.tar.gz::https://github.com/itonia149/silverbullet-desktop/releases/download/v1.0.1/silverbullet-desktop-1.0.1.tar.gz
+	source = silverbullet-2.11.0.zip::https://github.com/silverbulletmd/silverbullet/releases/download/2.11.0/silverbullet-server-linux-x86_64.zip
+	source = silverbullet-LICENSE-2.11.0.md::https://raw.githubusercontent.com/silverbulletmd/silverbullet/2.11.0/LICENSE.md
+	sha256sums = 4794f29034d5c6dff8b1b45340f80caa6c26152f23f863305f80d1a45ece354d
+	sha256sums = 16ab986215ee28ebb53300de72e8a05554611355874b9592f1c4d8dca29f7288
+	sha256sums = ccf525a3b5c9ac8d843e118932036e6517d4d603f9ff3e474522b632c3996c65
+
+pkgname = silverbullet-desktop
