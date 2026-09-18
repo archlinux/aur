@@ -1,75 +1,88 @@
 # Contributor: Rafael Silva <perigoso at riseup dot net>
+# Maintainer: Julian Houba <info at craftingdragon dot ch>
 
-pkgname='epics-pvxs'
-pkgver=1.3.1
+_name=pvxs
+pkgname=epics-pvxs
+pkgver=1.5.2
 pkgrel=1
-pkgdesc="PVA protocol client/server library and utilities"
-arch=('any')
-url="https://mdavidsaver.github.io/pvxs"
-license=('custom')
-depends=('epics-base' 'libevent')
-makedepends=()
-source=("https://github.com/mdavidsaver/pvxs/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('6b1f477a1b8dbb90004baa62fb96d1a0f4375ecf0513000b9e206b0b9d49dffa3189e5337c14f4cb2b8b9e19b62ae8af3b57e8787cb41035ffd4d9987501e925')
+pkgdesc='EPICS PVA protocol client/server library and utilities'
+arch=('x86_64')
+url='https://epics-base.github.io/pvxs/'
+license=('BSD-3-Clause')
+depends=(
+    'epics-base'
+    'gcc-libs'
+    'glibc'
+    'libevent'
+)
+source=("${_name}-${pkgver}.tar.gz::https://github.com/epics-base/pvxs/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('061506998fcbfeb376ddf9c85095405197cf23a9f03a932984c40be4aa817cb0')
 
 prepare() {
-    cd "pvxs-$pkgver"
+    cd "${_name}-${pkgver}"
 
-    # set EPICS_BASE path
-    echo "EPICS_BASE=/usr/lib/epics" >'configure/RELEASE.local'
-
-    # install files to staging area
-    echo "INSTALL_LOCATION=${srcdir}/staging/usr/lib/epics" >'configure/CONFIG_SITE.local'
-
-    # final install location
-    echo 'FINAL_LOCATION=/usr/lib/epics' >>'configure/CONFIG_SITE.local'
-
-    # get the EPICS_HOST_ARCH and write it to a file
-    echo $(perl -CSD /usr/lib/epics/lib/perl/EpicsHostArch.pl) >"${srcdir}/EPICS_HOST_ARCH"
+    # EPICS requires this setting to come from a RELEASE file, not the
+    # environment or make command line.  The system libevent is found through
+    # its standard include and library paths, so no bundled copy is used.
+    printf 'EPICS_BASE = /usr/lib/epics\n' > configure/RELEASE.local
 }
 
 build() {
-    cd "pvxs-$pkgver"
+    cd "${_name}-${pkgver}"
 
-    # get the EPICS_HOST_ARCH and set it as an environment variable
-    export EPICS_HOST_ARCH=$(cat "${srcdir}/EPICS_HOST_ARCH")
+    make \
+        INSTALL_LOCATION="${srcdir}/install" \
+        FINAL_LOCATION='/usr/lib/epics/pvxs'
 
-    # build and install to staging area, "-s" for silent build
-    make -s
+    # EPICS generates the soft IOC registration source with the staging
+    # prefix.  Replace it before its final link so the installed binary finds
+    # its DBD files below the actual package prefix.
+    local _arch
+    _arch=$(perl /usr/lib/epics/lib/perl/EpicsHostArch.pl)
+    PVXS_STAGE="${srcdir}/install" PVXS_FINAL='/usr/lib/epics/pvxs' \
+        perl -pi -e 's{\Q$ENV{PVXS_STAGE}\E}{$ENV{PVXS_FINAL}}g' \
+        "qsrv/O.${_arch}/softIocPVX_registerRecordDeviceDriver.cpp"
+    make -C "qsrv/O.${_arch}" -f ../Makefile TOP=../.. T_A="${_arch}" \
+        INSTALL_LOCATION="${srcdir}/install" \
+        FINAL_LOCATION='/usr/lib/epics/pvxs' \
+        softIocPVX
+    install -Dm755 "qsrv/O.${_arch}/softIocPVX" \
+        "${srcdir}/install/bin/${_arch}/softIocPVX"
 }
 
 package() {
-    cd "staging/usr/lib/epics"
+    install -d "${pkgdir}/usr/lib/epics/pvxs"
 
-    # set EPICS_HOST_ARCH and EPICS_BASE as a local variable
-    local EPICS_HOST_ARCH=$(cat "${srcdir}/EPICS_HOST_ARCH")
-    local EPICS_BASE="${pkgdir}/usr/lib/epics"
+    local _arch _file _target
+    _arch=$(perl /usr/lib/epics/lib/perl/EpicsHostArch.pl)
+    while IFS= read -r -d '' _file; do
+        _target="${pkgdir}/usr/lib/epics/pvxs/${_file#"${srcdir}/install/"}"
+        if [[ -x ${_file} ]]; then
+            install -Dm755 "${_file}" "${_target}"
+        else
+            install -Dm644 "${_file}" "${_target}"
+        fi
+    done < <(find "${srcdir}/install" -type f -print0)
 
-    # install library files and link them to the system library path
-    install -dm755 "${EPICS_BASE}/lib/${EPICS_HOST_ARCH}"
-    cp -P "lib/${EPICS_HOST_ARCH}"/*.so* "${EPICS_BASE}/lib/${EPICS_HOST_ARCH}"
-    for lib in "${EPICS_BASE}/lib/${EPICS_HOST_ARCH}"/*.so*; do
-        ln -sr "${lib}" "${pkgdir}/usr/lib/"
+    while IFS= read -r -d '' _file; do
+        _target="${pkgdir}/usr/lib/epics/pvxs/${_file#"${srcdir}/install/"}"
+        install -d "$(dirname "${_target}")"
+        ln -s "$(readlink "${_file}")" "${_target}"
+    done < <(find "${srcdir}/install" -type l -print0)
+
+    # Keep the EPICS installation self-contained, while making the public
+    # command-line utilities available through the normal system command path.
+    install -d "${pkgdir}/usr/bin"
+    for _file in \
+        pvxcall pvxget pvxinfo pvxlist pvxmonitor pvxmshim pvxput pvxvct \
+        softIocPVX; do
+        ln -sr "${pkgdir}/usr/lib/epics/pvxs/bin/${_arch}/${_file}" \
+            "${pkgdir}/usr/bin"
     done
 
-    # install bin files and link non internal binaries to system path
-    install -dm755 "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}" "${pkgdir}/usr/bin"
-    cp -P "bin/${EPICS_HOST_ARCH}"/* "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}"
-    for bin in pvxcall pvxget pvxinfo pvxlist pvxmonitor pvxmshim pvxput pvxvct; do
-        ln -sr "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}/${bin}" "${pkgdir}/usr/bin"
-    done
+    printf '/usr/lib/epics/pvxs/lib/linux-%s\n' "${CARCH}" | \
+        install -Dm644 /dev/stdin "${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
 
-    # install include files and epics-base links the parent include directory to the system path
-    install -dm644 "${pkgdir}/usr/include/epics/pvxs"
-    cp -r include/pvxs "${EPICS_BASE}/include"
-
-    # cfg, db, dbd are installe to EPICS_BASE and don't have appropriate system locations
-    # configure not installed as it overlaps with epics-base configures
-    install -dm755 "${pkgdir}/usr/share/epics"
-    cp -rt "${EPICS_BASE}" cfg db dbd
-
-    # install LICENSE file
-    install -Dm644 "${srcdir}/pvxs-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    # TODO: makepkg complains the package contains references to $srcdir
+    install -Dm644 "${_name}-${pkgver}/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

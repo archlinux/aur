@@ -1,4 +1,6 @@
-src/
-pkg/
+/src
+/pkg
+*.tar.zst
+*.tar.xz
 *.tar.gz
-*.pkg.tar.*
+*.tar.gz.asc
