@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="⚡️ Ziggity an ultra fast, keyboard driven terminal UI for Git, written in Zig."
 
-pkgver=0.41.0
+pkgver=0.43.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums=('29b78b1118bb66a059de92346c17ab262c074e2c4bcf706bfcdc5c03a210fa72'
+sha256sums=('ec6511bb9ddcbca7bd2a371d16088f5c2b2b106d48d661b92d6ef93ecdf1ce69'
             '233ff8831d0647d24e8adbe4a5c32a8148f570220dd8ccacf52920a41ebab8b3')
-sha256sums_x86_64=('346d7e90e98b48112723c0d608dfbc114abc51eccb2f69f9bd6182baa8e92c69')
-sha256sums_aarch64=('ec505ea7442e91a93181ce7213a8dec14c8cb121233395e5a0c8fc9c003ec1c3')
+sha256sums_x86_64=('8074caeb0d4e44ea5e0991168dcd3327ede2cf183ce5191e32eedb89e01cd35f')
+sha256sums_aarch64=('fae44529fe56b74a13f519f2c875cc735f344aa5325355ae70482b04ecd252a6')
 
 
 package() {
