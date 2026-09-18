@@ -4,7 +4,7 @@
 
 pkgname=acarsdec
 pkgver=4.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-channel ACARS decoder"
 arch=('x86_64')
 url="https://github.com/f00b4r0/acarsdec"
@@ -22,6 +22,7 @@ build() {
     -DCJSON=ON \
     -DLIBACARS=ON \
     -DRTLSDR=ON \
+    -DSDRPLAY=OFF \
     -DSNDFILE=ON \
     -DSOAPYSDR=ON
   cmake --build build
