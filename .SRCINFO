@@ -1,0 +1,19 @@
+pkgbase = openkingdoms
+	pkgdesc = Open-source engine for Total Annihilation: Kingdoms (1999). Requires you own the original game.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/OpenKingdoms/OpenKingdoms
+	install = openkingdoms.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = sdl2
+	depends = ffmpeg
+	conflicts = openkingdoms-git
+	options = !debug
+	source = OpenKingdoms::git+https://github.com/OpenKingdoms/OpenKingdoms.git#tag=v0.1.4
+	sha256sums = SKIP
+
+pkgname = openkingdoms

@@ -1,0 +1,6 @@
+# AUR repo drží jen zdroj balíčku; build artefakty do něj nepatří.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.install
