@@ -1,0 +1,29 @@
+pkgbase = blink-markdown
+	pkgdesc = A Markdown editor with a live preview, for GNOME
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/sachesi/blink
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	license = OFL-1.1
+	makedepends = cargo
+	makedepends = blueprint-compiler
+	makedepends = just
+	makedepends = gettext
+	depends = gtk4>=1:4.20
+	depends = libadwaita>=1:1.8
+	depends = gtksourceview5
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = graphene
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = glibc
+	conflicts = blink
+	source = blink-0.7.0.tar.gz::https://github.com/sachesi/blink/archive/v0.7.0/blink-0.7.0.tar.gz
+	sha256sums = fa074964cc3aa8ce4bb797f30cf37ac889a327e1f92cdb6195e1cd111c79044d
+
+pkgname = blink-markdown
