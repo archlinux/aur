@@ -1,7 +1,7 @@
 # Maintainer: dobr1n7a
 
 pkgname='mts-linkchats-desktop'
-pkgver=0.89.0
+pkgver=0.90.0
 pkgrel=1
 pkgdesc='MTS Linkchats desktop'
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   "mts-linkchats-desktop.desktop"
 )
 b2sums=(
-  '2bc25081c49e11f8ff59c20912b819ce245bc636316d13038d6f9fbc6c4d6599140f246794ec8d6eb70c16ec79806a66cfe7dd5319f5dfdbbca366ce283cb19a'
+  'dd43c5eeda33b3e57b374d840d0ad1fd4a05b254d154e9afb6fa6d387cac938a9e8c777b037c4352da57ee60de8eb43558423948ec0a5e7da2acdcf5b8e50c52'
   'SKIP'
 )
 
