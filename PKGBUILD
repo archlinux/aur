@@ -1,7 +1,7 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname="paseo-desktop-bin-edge"
-pkgver=0.9.0_beta.1
-_deb_sha='4f8faf4c3a7fd86b7af9095dee077ebb977c51f752f5dd6af3b0bb8ef93394eb'
+pkgver=0.9.0_beta.2
+_deb_sha='bb27aba5a0283d1e837e0d31108a2a98ec9c42bf952f24d75e297326f549c3b7'
 pkgrel=2
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents. (edge - latest upstream release, beta or stable)"
 arch=("x86_64")
@@ -10,7 +10,7 @@ _github_url="https://github.com/getpaseo/paseo"
 makedepends=("binutils" "tar")
 depends=(libxkbcommon libxcb libgcc gtk3 libxext libx11 libcups nspr mesa dbus pango libxcomposite libxrandr nodejs glib2 nss libxdamage alsa-lib systemd-libs bash hicolor-icon-theme cairo at-spi2-core expat libstdc++ libxfixes)
 provides=("paseo=${pkgver}")
-conflicts=(paseo paseo-bin paseo-appimage paseo-desktop-bin paseo-desktop-bin-beta)
+conflicts=(paseo paseo-bin paseo-appimage paseo-desktop-bin)
 license=("Apache-2.0")
 source=("${_github_url}/releases/download/v${pkgver//_/-}/Paseo-${pkgver//_/-}-amd64.deb")
 sha256sums=("$_deb_sha")
