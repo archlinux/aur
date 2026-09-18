@@ -1,6 +1,6 @@
 pkgbase = xadi
 	pkgdesc = CoreADI wrapper based on libprovision
-	pkgver = 0.0.0.6
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/xtool-org/xadi
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xadi
 	makedepends = dub
 	makedepends = ldc
 	makedepends = git
-	source = git+https://github.com/xtool-org/xadi.git#commit=61c02708c9cb046100f500878863fd2122b0d7e3
-	b2sums = d4d08cbf53edd4f74ce577a0f33c524db85a5d9edb9e2bf7daeee53cbeb0822d14fcc3a175f670f7359dbd62010a0404f00fa14e346f8a71381f58eb02f5e597
+	source = xadi-0.4.0.tar.gz::https://github.com/xtool-org/xadi/archive/refs/tags/source-0.4.0.tar.gz
+	b2sums = 41072a590630ad6f3bf1636f90f94ce2a905acec42165dc6a0c74b58ba464c2d5245c85f142132c536927a736e45a3cfd48af49255a6b258ca52f896d003db3e
 
 pkgname = xadi
