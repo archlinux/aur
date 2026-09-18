@@ -3,8 +3,8 @@
 
 _pkgname=pano-scrobbler
 pkgname=pano-scrobbler-bin
-_pkgver=444
-pkgver=4.44
+_pkgver=445
+pkgver=4.45
 pkgrel=1
 pkgdesc="Feature rich scrobbler. Supports Last.fm, ListenBrainz, Libre.fm & Pleroma. With regex edits, charts & Discord Rich Presence on PC."
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ depends=('dbus' 'webkitgtk-6.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
-source_x86_64=("pano-scrobbler-${_pkgver}-linux-x64.tar.gz::${url}/releases/download/${_pkgver}/pano-scrobbler-linux-x64.tar.gz")
-source_aarch64=("pano-scrobbler-${_pkgver}-linux-arm64.tar.gz::${url}/releases/download/${_pkgver}/pano-scrobbler-linux-arm64.tar.gz")
-sha256sums_x86_64=('166b5a5370c4ef82448f1e598e499cd37fc50ee6c6f98a6a92ac85c77c5e13ec')
-sha256sums_aarch64=('9002ece8991460b0603e4df3a60652ea780df5af88c5c685ea68a3130030627d')
+source_x86_64=("pano-scrobbler-${_pkgver}-linux-x64.tar.zst::${url}/releases/download/${_pkgver}/pano-scrobbler-linux-x64.tar.zst")
+source_aarch64=("pano-scrobbler-${_pkgver}-linux-arm64.tar.zst::${url}/releases/download/${_pkgver}/pano-scrobbler-linux-arm64.tar.zst")
+sha256sums_x86_64=('1132666239074c800d991820e081295097e3ecf8acf16835a7f57e76af694ab2')
+sha256sums_aarch64=('6978c1c1272224c57182a73225ab33fb9517b22a36af6d016d930a6c7b37d989')
 
 package() {
     # Main executable
