@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wj-markdown-editor-git
-pkgver=2.19.7.r0.gd410872
+pkgver=2.19.8.r0.gc1c9c7e
 _electronversion=39
 _nodeversion=22
 pkgrel=1
-pkgdesc="An open-source desktop markup editor that supports webdav.(Use system-wide electron)一款支持webdav的开源桌面端markdown编辑器"
+pkgdesc="An open-source desktop markup editor that supports webdav.一款支持webdav的开源桌面端markdown编辑器"
 arch=('any')
 url="https://github.com/nlbwqmz/wj-markdown-editor"
 license=('MIT')
@@ -46,21 +46,24 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-    export NPM_CONFIG_MAXSOCKETS=32
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-        }
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export HOME="${srcdir}/.electron-gyp"
+	mkdir -p "${HOME}"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export npm_config_cache="${srcdir}/.npm_cache"
+	export npm_config_maxsockets=32
+	export npm_config_audit=false
+	export npm_config_fund=false
+	export npm_config_progress=false
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export npm_config_node_options="--max-old-space-size=4096"
+	mkdir -p "${npm_config_cache}"
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -83,8 +86,8 @@ prepare() {
         --categories="Office" \
         --name="${pkgname%-git}" \
         --exec="${pkgname%-git} %U"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     cd "${srcdir}/${pkgname%-git}.git/${pkgname%-git}-web"
     NODE_ENV=development    npm install
     NODE_ENV=production     npm run build
@@ -94,15 +97,16 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git/${pkgname%-git}-electron"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     icon_sizes=(256x256 1024x1024)
     for _icons in "${icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}-electron/icon/${_icons}.png" \
