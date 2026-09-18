@@ -1,6 +1,6 @@
 pkgbase = karere-custom-css
 	pkgdesc = Karere with optional custom.css live reload
-	pkgver = 4.2.5
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/riccardomarotti/karere
 	arch = x86_64
@@ -53,14 +53,14 @@ pkgbase = karere-custom-css
 	depends = wayland
 	optdepends = hunspell: spell checking support
 	optdepends = libappindicator-gtk3: system tray support
-	provides = karere=4.2.5
+	provides = karere=4.3.0
 	conflicts = karere
 	conflicts = karere-git
 	conflicts = karere-custom-css-git
 	options = !lto
-	source = karere::git+https://github.com/riccardomarotti/karere.git#commit=6bf8b2b3bc0ba95b2461f2f88cfefedb906b6191
-	source = cef-150.0.10.zip::https://github.com/tobagin/karere/releases/download/cef-150.0.10-proprietary-codecs/cef_binary_150.0.10%2Bg8042e43%2Bchromium-150.0.7871.101_linux64_minimal.zip
+	source = karere::git+https://github.com/riccardomarotti/karere.git#commit=b079de8bd30250ad2d10d2098fb0c7d12aa51c2f
+	source = cef-152.0.6.zip::https://github.com/tobagin/karere/releases/download/cef-152.0.6-proprietary-codecs/cef_binary_152.0.6%2Bg708dc14%2Bchromium-152.0.7977.83_linux64_minimal.zip
 	sha256sums = SKIP
-	sha256sums = 3bbe298368c4d87c19ad9b7ed4e8449ea91b32ffa3cefc8672791a1b96c9c3b9
+	sha256sums = 3d64f6fac8911a368ffa415e3ee53d002cbd792866f08ed6578dae1e252cbac8
 
 pkgname = karere-custom-css
