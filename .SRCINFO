@@ -1,6 +1,6 @@
 pkgbase = hyprlayer-desktop-bin
 	pkgdesc = Native desktop app for spec-driven development with coding agents
-	pkgver = 0.7.5
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://brightblock.ai/hyprlayer
 	arch = x86_64
@@ -13,12 +13,16 @@ pkgbase = hyprlayer-desktop-bin
 	optdepends = claude-code: run Claude Code agent sessions in-app
 	optdepends = nodejs: runtime for agent CLIs installed through npm
 	provides = hyprlayer-desktop
+	provides = hyprlayer-server
 	conflicts = hyprlayer-desktop
-	noextract = Hyprlayer_0.7.5_amd64.deb
+	conflicts = hyprlayer-server
+	noextract = Hyprlayer_0.8.0_amd64.deb
 	options = !strip
 	options = !debug
 	options = !emptydirs
-	source = Hyprlayer_0.7.5_amd64.deb::https://github.com/BrightBlock/hyprlayer-releases/releases/download/v0.7.5/Hyprlayer_0.7.5_amd64.deb
-	sha256sums = 435b2e3e9ba73fa6ff242ffcc02d61dcad48cad2300dd329e37cf5a9edbb1049
+	source = Hyprlayer_0.8.0_amd64.deb::https://github.com/BrightBlock/hyprlayer-releases/releases/download/v0.8.0/Hyprlayer_0.8.0_amd64.deb
+	source = hyprlayer-server.service
+	sha256sums = fbfa4b8bc932bf91dd839f429ff852dd8a45dbf16516ff199de2fb223365055d
+	sha256sums = e578119d5152948b1ba56576c36825d63bce9ad1266e1c8ac661365cd597adae
 
 pkgname = hyprlayer-desktop-bin

@@ -1,7 +1,7 @@
 # Maintainer: Jon Tsiros <jon@brightblock.ai>
 
 pkgname=hyprlayer-desktop-bin
-pkgver=0.7.5
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Native desktop app for spec-driven development with coding agents"
 arch=('x86_64')
@@ -10,12 +10,16 @@ license=('LicenseRef-proprietary')
 depends=('webkit2gtk-4.1' 'gtk3' 'git' 'xdg-utils' 'hicolor-icon-theme')
 optdepends=('claude-code: run Claude Code agent sessions in-app'
             'nodejs: runtime for agent CLIs installed through npm')
-provides=('hyprlayer-desktop')
-conflicts=('hyprlayer-desktop')
+# The deb ships hyprlayer-server too, so declare it: otherwise this and
+# hyprlayer-server-bin both own /usr/bin/hyprlayer-server, as a file conflict.
+provides=('hyprlayer-desktop' 'hyprlayer-server')
+conflicts=('hyprlayer-desktop' 'hyprlayer-server')
 options=('!strip' '!debug' '!emptydirs')
 _deb="Hyprlayer_${pkgver}_amd64.deb"
-source=("${_deb}::https://github.com/BrightBlock/hyprlayer-releases/releases/download/v${pkgver}/${_deb}")
-sha256sums=('435b2e3e9ba73fa6ff242ffcc02d61dcad48cad2300dd329e37cf5a9edbb1049')
+source=("${_deb}::https://github.com/BrightBlock/hyprlayer-releases/releases/download/v${pkgver}/${_deb}"
+        "hyprlayer-server.service")
+sha256sums=('fbfa4b8bc932bf91dd839f429ff852dd8a45dbf16516ff199de2fb223365055d'
+            'e578119d5152948b1ba56576c36825d63bce9ad1266e1c8ac661365cd597adae')
 noextract=("${_deb}")
 
 package() {
@@ -24,4 +28,15 @@ package() {
   install -d "${_unpack}"
   bsdtar -xf "${srcdir}/${_deb}" -C "${_unpack}"
   bsdtar -xpf "${_unpack}"/data.tar* -C "${pkgdir}"
+
+  # supervisor.rs looks for the server beside the running executable; staged
+  # anywhere else it installs an app that cannot start.
+  if [[ ! -f "${pkgdir}/usr/bin/hyprlayer-server" ]]; then
+    echo "error: ${_deb} has no usr/bin/hyprlayer-server beside the app" >&2
+    return 1
+  fi
+
+  # Installed, never enabled: `systemctl --user enable --now hyprlayer-server`.
+  install -Dm644 "${srcdir}/hyprlayer-server.service" \
+    "${pkgdir}/usr/lib/systemd/user/hyprlayer-server.service"
 }
