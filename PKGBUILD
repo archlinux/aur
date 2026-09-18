@@ -1,6 +1,6 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=schemahero-bin
-pkgver=0.26.1
+pkgver=0.26.2
 pkgrel=1
 pkgdesc='Declarative database schema management as code (CNCF)'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('schemahero')
 conflicts=('schemahero')
 source_x86_64=("schemahero-${pkgver}-amd64.tar.gz::${url}/releases/download/v${pkgver}/schemahero_linux_amd64.tar.gz")
 source_aarch64=("schemahero-${pkgver}-arm64.tar.gz::${url}/releases/download/v${pkgver}/schemahero_linux_arm64.tar.gz")
-sha256sums_x86_64=('3064e17f2ea015f2dc8153c77c16fe1424a0f42eb7fe07dc4ee4be1f67af93fa')
-sha256sums_aarch64=('a6306916137c47184e6b80654e8c60aa7bba3e59c1da45bd0ef1380024efd705')
+sha256sums_x86_64=('64e00407fd2d62c3c7d4bb96b9b36b36341739cd1e535ed69846755087481bda')
+sha256sums_aarch64=('7fc6463fd295af5c819a9127b841d7234048dd325ef1f344a00a0eb6991cd64f')
 
 package() {
     install -Dm755 schemahero -t "${pkgdir}/usr/bin/"
