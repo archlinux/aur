@@ -5,20 +5,20 @@
 # (unversioned filename, content rolls — sha is bumped every cycle).
 
 pkgname=paseo-desktop-git-bin
-pkgver=0.9.0.beta.1.r3.g3cc4ae286
+pkgver=0.9.0.beta.2.r1.gd636abd7a
 pkgrel=1
-_commit='3cc4ae28664493b2f1ad75a6a6ed1d318c76e944'
-_asset='Paseo-0.8.0-x64.tar.gz'
-_bin_sha='273c5aeade6f18707b5cb8db6be85f706896e5bd372c97e6bd9c55956d9374d3'
+_commit='d636abd7a4ce302e7ccb9eb6074f637c6dd4d83b'
+_asset='Paseo-0.9.0-beta.1-x64.tar.gz'
+_bin_sha='77dcd7ebdf9fd38f174a9199796bb4a899f07d649e48e74a469d3bfc28847cc8'
 _icon_sha='585d202ff6a6e41bcd5c7464a1c4889b78977cea000f7b88ba1f67f3d9fff0bd'
 _pkgdesc_base='One interface for all your Claude Code, Codex and OpenCode agents.'
-pkgdesc='One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-09-17 @3cc4ae2)'
+pkgdesc='One interface for all your Claude Code, Codex and OpenCode agents. (built from main 2026-09-18 @d636abd)'
 arch=('x86_64')
 url="https://paseo.sh"
 license=("Apache-2.0")
 depends=(libxkbcommon libxcb libgcc gtk3 libxext libx11 libcups nspr mesa dbus pango libxcomposite libxrandr nodejs glib2 nss libxdamage alsa-lib systemd-libs bash hicolor-icon-theme cairo at-spi2-core expat libstdc++ libxfixes)
 provides=("paseo=${pkgver}" "paseo-desktop-git")
-conflicts=(paseo paseo-bin paseo-appimage paseo-desktop-bin paseo-desktop-bin-beta paseo-desktop-bin-edge paseo-desktop-git)
+conflicts=(paseo paseo-bin paseo-appimage paseo-desktop-bin paseo-desktop-bin-edge paseo-desktop-git)
 source=("Paseo-git-bin.tar.gz::https://github.com/xpufx/xpufx-pkgs/releases/download/arch-x86_64-current/${_asset}"
         "icon.png::https://raw.githubusercontent.com/getpaseo/paseo/${_commit}/packages/desktop/assets/icon.png")
 sha256sums=("$_bin_sha"
