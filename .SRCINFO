@@ -1,6 +1,6 @@
 pkgbase = autolock-git
-	pkgdesc = A minimal X11 idle-watcher
-	pkgver = 0.4.r2.gae68f56
+	pkgdesc = A minimal X11 autolocker
+	pkgver = 0.5.r3.g782664a
 	pkgrel = 1
 	url = https://codeberg.org/ayari/autolock
 	arch = x86_64
