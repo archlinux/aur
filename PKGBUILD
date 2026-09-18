@@ -1,6 +1,6 @@
 # Maintainer: ralf <ralf.wierzbicki@gmail.com>
 pkgname=asteroidz-bar
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='The asteroidz shell: status bar and HDR10 wallpaper, out of the compositor'
 arch=('x86_64')
@@ -14,6 +14,10 @@ depends=(
   # The wallpaper's, which the QML plugin links statically -- there is no
   # separate wallpaper program any more, so these are this package's own.
   'cairo' 'wayland' 'gdk-pixbuf2' 'libjxl' 'libavif'
+  # gdbus, for the D-Bus activation file: it is what waits for the shell to
+  # claim org.freedesktop.Notifications. Already here through gdk-pixbuf2, and
+  # named anyway because a package should say what it actually runs.
+  'glib2'
   # Apple dynamic wallpapers: several images in one HEIC, of which gdk-pixbuf
   # only ever returns the primary one. libpng writes out the frame that is
   # pulled from it.
