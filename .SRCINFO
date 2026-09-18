@@ -9,7 +9,7 @@ pkgbase = hockeypuck-git
 	makedepends = git
 	depends = postgresql
 	backup = etc/hockeypuck/hockeypuck.conf
-	source = hockeypuck::git+https://github.com/hockeypuck/hockeypuck.git#branch=branch-2.3
+	source = hockeypuck::git+https://github.com/hockeypuck/hockeypuck.git#branch=branch-2.4
 	source = sysusers.conf
 	source = tmpfiles.conf
 	source = logrotate
