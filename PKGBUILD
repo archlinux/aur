@@ -3,7 +3,7 @@
 # Contributor: Aaron Abbott <aabmass at gmail dot com>
 
 pkgname=mycli
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='A Terminal Client for MySQL with AutoCompletion and Syntax Highlighting'
 arch=('any')
@@ -38,12 +38,13 @@ makedepends=(
 )
 optdepends=(
     'python-llm: LLM support'
-    'python-polars: dataframe support (also requires python-altair)'
-    'python-altair: dataframe support (also requires python-polars)'
+    'python-polars: dataframe support'
+    'python-altair: dataframe support'
+    'python-vl-convert: dataframe support'
 )
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbcli/mycli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dd429afe48695c7620b6072cfe54513b8dda575a52734b492482200d618ff106')
+sha256sums=('c47cc075a50ddfa3df2fb48aed438501921fc10217d13fea0601d76f10c1a3ed')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
