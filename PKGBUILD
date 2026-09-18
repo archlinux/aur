@@ -5,7 +5,7 @@
 # Contributor: Hurricane Pootis <hurricanepootis@protonmail.com>
 
 pkgname=geekbench
-pkgver=7.0.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="A cross-platform benchmark that measures processor and memory performance"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=("custom")
 conflicts=("geekbench227")
 source=("http://cdn.geekbench.com/Geekbench-${pkgver}-Linux.tar.gz")
 options=('!strip')
-sha256sums=('961a00ac0ac432ffa6874764e86c59d2e098fff65b5b398bb9381bf7fc46c81b')
+sha256sums=('411b72a9c851b69e6f91d390649d419e2e625f475e3983880169651ca27a8672')
 
 package() {
     local dest="$pkgdir/opt/${pkgname}"
