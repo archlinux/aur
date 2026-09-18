@@ -1,7 +1,7 @@
 pkgbase = axel-gui-git
 	pkgdesc = Modern Qt6 GUI wrapper for the Axel download accelerator with Firefox integration
-	pkgver = r9.f03045c
-	pkgrel = 1
+	pkgver = r14.e67bf70
+	pkgrel = 2
 	url = https://github.com/TheSerphh/AxelGUI
 	arch = x86_64
 	license = GPL-3.0-or-later
