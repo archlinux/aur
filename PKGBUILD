@@ -1,11 +1,11 @@
 _pkgname=Linn
 pkgname=linn
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="GTK4 NetEase Cloud Music client built with Rust and Relm4"
 arch=('x86_64')
 url="https://github.com/ljyh223/linn"
-license=('GPL-3.0-or-later')
+license=('MIT')
 depends=(
     'libadwaita'
     'gst-plugins-base'
@@ -19,7 +19,7 @@ optdepends=(
 )
 makedepends=('cargo' 'meson')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c13a19cf4339876a51394ad5ea77f78fe5b4bc8d12ca41c784c0dd2af3499669')
 build() {
     cd "$_pkgname-$pkgver"
     cargo build --release
