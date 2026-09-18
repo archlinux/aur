@@ -1,7 +1,7 @@
 pkgbase = pkgforge
 	pkgdesc = Modern .deb/.rpm package converter, safety analyzer, and lifecycle manager for Arch Linux
 	pkgver = 2.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/goun7/pkgforge
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -42,6 +42,6 @@ pkgbase = pkgforge
 	provides = pkgforge
 	conflicts = pkgforge
 	source = 2.2.0.tar.gz::https://github.com/goun7/pkgforge/archive/refs/tags/v2.2.0.tar.gz
-	sha256sums = f8181dda7e44bd07e8cfc7f5e40b281a00327b085240717510a7434ea987302e
+	sha256sums = 1b4639c8baef8277afcde345154fb8c1e6ed42d2a6e15df11b59deb6d3aaec8b
 
 pkgname = pkgforge
