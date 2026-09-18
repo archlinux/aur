@@ -1,6 +1,6 @@
 pkgbase = ghpending
 	pkgdesc = Watch GitHub repos for open issues and pull requests at a glance
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/akitaonrails/ghpending
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ghpending
 	depends = ca-certificates
 	conflicts = ghpending-bin
 	options = !debug
-	source = ghpending-0.6.0.tar.gz::https://github.com/akitaonrails/ghpending/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 54ae5b8e31ef9b8c163bf23c6f723667bb7830133e510252c4cd3feff8f883e7
+	source = ghpending-0.7.0.tar.gz::https://github.com/akitaonrails/ghpending/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = e9ec9a4f2a2ab8c0c76acfa8cdbbd244ff8916f1a15c0fbc558713db84095404
 
 pkgname = ghpending
