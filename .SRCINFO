@@ -1,7 +1,7 @@
 pkgbase = dms-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
-	pkgver = 1.6.0.r1.g8a871aa
-	pkgrel = 2
+	pkgver = 1.6.0.r118.g0784bdb
+	pkgrel = 1
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -19,14 +19,14 @@ pkgbase = dms-shell-git
 	optdepends = power-profiles-daemon: Set power profile
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = cups-pk-helper: Printer Management
-	provides = dms-shell=1.6.0.r1.g8a871aa
+	provides = dms-shell=1.6.0.r118.g0784bdb
 	conflicts = dms-shell
 	source = git+https://github.com/AvengeMedia/DankMaterialShell.git
 	source = dms.service
 	source = completions.bash
 	source = completions.fish
 	source = completions.zsh
-	source = danklogo.svg
+	source = com.danklinux.dms.svg
 	source = dms-open.desktop
 	source = com.danklinux.dms.desktop
 	source = com.danklinux.dms.notepad.desktop
@@ -36,9 +36,9 @@ pkgbase = dms-shell-git
 	sha256sums = 8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667
 	sha256sums = 41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d
 	sha256sums = 540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab
-	sha256sums = 16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d
-	sha256sums = 52a575af9fc0eaad3e320a4374203653a7add7c2c427bd069cb3bd9a8eff1183
-	sha256sums = 9d79626368818526b563687e56203cad97dcd9482a3e099e8f29cfc317c0f2ae
+	sha256sums = 81e57e959c5335619d9237989f126321e5048740b7246dc3144c6f748ea0e245
+	sha256sums = 0c286a16675cf13d1ea01c6263016aaf8de2cf657b1f40596fb30c53004191ea
+	sha256sums = 2a6125bb76e59ff4272b3077a300b4d23b4a86b3f9e296ac2b8f27c061f5ed7b
 
 pkgname = dms-shell-git
 	install = dms-shell-git.install

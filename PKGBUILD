@@ -4,7 +4,7 @@ pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
 pkgname=($_pkgbase-git)
-pkgver=1.6.0.r20.g3797422
+pkgver=1.6.0.r118.g0784bdb
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -31,7 +31,7 @@ source=(
         "completions.bash"
         "completions.fish"
         "completions.zsh"
-        "danklogo.svg"
+        "com.danklinux.dms.svg"
         "dms-open.desktop"
         "com.danklinux.dms.desktop"
         "com.danklinux.dms.notepad.desktop")
@@ -41,9 +41,9 @@ sha256sums=('SKIP'
             '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
             '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
             '540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab'
-            '16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d'
-            '52a575af9fc0eaad3e320a4374203653a7add7c2c427bd069cb3bd9a8eff1183'
-            '9d79626368818526b563687e56203cad97dcd9482a3e099e8f29cfc317c0f2ae')
+            '81e57e959c5335619d9237989f126321e5048740b7246dc3144c6f748ea0e245'
+            '0c286a16675cf13d1ea01c6263016aaf8de2cf657b1f40596fb30c53004191ea'
+            '2a6125bb76e59ff4272b3077a300b4d23b4a86b3f9e296ac2b8f27c061f5ed7b')
 
 pkgver() {
     cd "$_pkgname"
@@ -83,7 +83,6 @@ package_dms-shell-git() {
 	install="$pkgname.install"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname/core/dms"
 	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$_pkgname/README.md"
-	cp -r "$_pkgname/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dm0644 "dms.service" "$pkgdir/usr/lib/systemd/user/dms.service"
 	install -Dm0644 "completions.bash" "$pkgdir/usr/share/bash-completion/completions/dms"
 	install -Dm0644 "completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_dms"
@@ -91,5 +90,5 @@ package_dms-shell-git() {
 	install -Dm0644 "dms-open.desktop" "$pkgdir/usr/share/applications/dms-open.desktop"
 	install -Dm0644 "com.danklinux.dms.desktop" "$pkgdir/usr/share/applications/com.danklinux.dms.desktop"
 	install -Dm0644 "com.danklinux.dms.notepad.desktop" "$pkgdir/usr/share/applications/com.danklinux.dms.notepad.desktop"
-	install -Dm0644 "danklogo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/danklogo.svg"
+	install -Dm0644 "com.danklinux.dms.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.danklinux.dms.svg"
 }
