@@ -1,13 +1,15 @@
 pkgbase = httm-git
 	pkgdesc = Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS, BTRFS, or NILFS snapshots.
-	pkgver = r2286.67c7ce3
+	pkgver = r4710.52e9d9c8
 	pkgrel = 1
 	url = https://github.com/kimono-koans/httm
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cargo
 	makedepends = git
+	makedepends = cmake
 	depends = gcc-libs
+	depends = mimalloc
 	optdepends = btrfs-progs: BTRFS support
 	optdepends = zfs-utils: ZFS support
 	optdepends = nilfs-utils: NILFS2 support
