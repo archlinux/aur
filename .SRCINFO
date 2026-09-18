@@ -1,13 +1,13 @@
 pkgbase = hypruler
 	pkgdesc = Measure anything on your screen.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/t4t5/hypruler
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = fontconfig
-	source = hypruler-0.3.0.tar.gz::https://github.com/t4t5/hypruler/archive/v0.3.0.tar.gz
-	sha256sums = bfc00fff8f04f1d6aa8d2fb0453e71bf3a1cdd063d4e6a759c831c0411d6fb16
+	source = hypruler-0.4.0.tar.gz::https://github.com/t4t5/hypruler/archive/v0.4.0.tar.gz
+	sha256sums = df3312df1c56ccb6ed94b14510b56cd601fbc3013239f2261b41d1ff0751d241
 
 pkgname = hypruler
