@@ -11,7 +11,7 @@ pkgname=uniclipboard-git
 _pkgname=uniclipboard
 # pkgver 是 AUR web 上展示用的 snapshot；makepkg 实际编译时调用下方 pkgver() 重算。
 # CI 在 push 前会用 git describe 的当前值 sed 替换，保持 web 视图不过期。
-pkgver=1.0.0.alpha.10.r4.g3ba5276
+pkgver=1.0.0.alpha.16.r1.g9d2b524
 pkgrel=1
 pkgdesc="Real-time clipboard sync across macOS, Windows and Linux — local-first, peer-to-peer, and end-to-end encrypted"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,11 @@ license=('AGPL-3.0-only')
 # tauri.conf.json 的 .deb depends 只列了 appindicator，是因为 .deb 工具会自动
 # 从 ELF 反查共享库依赖；PKGBUILD 不会，所以必须显式列全。
 depends=('webkit2gtk-4.1' 'gtk3' 'gtk-layer-shell' 'libayatana-appindicator' 'libnotify')
-# bun 在 Arch [extra]；rust 也在 [extra]（不要写 rustup，那是 AUR 包且需要再装 toolchain）。
-makedepends=('git' 'rust' 'nodejs' 'bun' 'pkgconf')
+# Arch no longer ships a concrete `bun` package. Both `bun-bin` and `bun-git`
+# provide that virtual name, but bun-git itself needs bun to build and creates
+# a self-dependency when selected by an AUR helper. Pin the bootstrap-safe
+# binary provider so installation is deterministic.
+makedepends=('git' 'rust' 'nodejs' 'bun-bin' 'pkgconf')
 provides=("$_pkgname" "$_pkgname=$pkgver")
 # 三个 AUR 包共享同一个可执行文件路径，互斥安装。-bin 由 czyt 维护，-git/源码版由 upstream 维护。
 conflicts=("$_pkgname" "${_pkgname}-bin")
