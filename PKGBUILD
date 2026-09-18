@@ -4,7 +4,7 @@ pkgbase=xguipro-git
 # pkgname=(xguipro-gtk{3,4}-git)
 pkgname=(xguipro-git)
 pkgver=0.9.26.r0.g13b51b6
-pkgrel=1
+pkgrel=2
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=($CARCH)
 url="https://github.com/HVML/xGUI-Pro"
@@ -155,10 +155,9 @@ package() {
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_COMPILER=clang \
-        -Wno-deprecated-declarations \
+        -Wno-author \
         -B build-gtk3 \
         -G Ninja
-    #        -Wno-dev \
 
     ninja -C build-gtk3
 
@@ -222,10 +221,9 @@ package() {
 #         -DCMAKE_INSTALL_LIBEXECDIR=lib \
 #         -DCMAKE_CXX_COMPILER=clang++ \
 #         -DCMAKE_C_COMPILER=clang \
-#         -Wno-deprecated-declarations \
 #         -B build-gtk4 \
 #         -G Ninja
-#     #         -Wno-dev \
+#     #         -Wno-author \
 #
 #     ninja -C build-gtk4
 #
