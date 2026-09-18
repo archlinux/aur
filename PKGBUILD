@@ -2,7 +2,7 @@
 
 pkgname=hashline-bin
 _pkgname=hashline
-pkgver=0.9.16
+pkgver=0.9.19
 pkgrel=1
 pkgdesc="Hash-anchored line editing for AI coding agents — O(1) line addressing via content-hashed anchors and drift-safe surgical patches"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("$_pkgname")
 options=('!debug')
 source=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x86_64.tar.gz"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/quangdang46/$_pkgname/v$pkgver/MIT")
-sha256sums=('b5f079adac74fb78f2a353d330c57651a6db0aca3d8cf8a1cf483f512d4837e5'
+sha256sums=('f708e373f49fb6096ca659656d19153d88264c014399ef8677a8a0ede5b14c31'
             'ebb5e71bc9cf9a2b324d71576d646d2f69d613672dc12fca3b7ecc0f040596d7')
 
 package() {
