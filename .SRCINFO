@@ -1,7 +1,7 @@
 pkgbase = ocm-cli
 	pkgdesc = Open Component Model (OCM) Command Line Client
 	pkgver = 0.50.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-component-model/ocm
 	arch = x86_64
 	license = Apache-2.0
