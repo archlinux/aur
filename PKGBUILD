@@ -2,7 +2,7 @@
 _pkgname=shrimply
 pkgname="${_pkgname}-git"
 pkgver=r422.f6fc8ee9
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, fast GPU-accelerated video editor"
 arch=('x86_64')
 url="https://github.com/soirihiroka/shrimply"
@@ -100,7 +100,7 @@ build() {
   export CUDA_HOST_CXX="${CUDA_HOST_CXX:-g++-15}"
   export CUDA_ALLOW_UNSUPPORTED_COMPILER=1
   export CUDA_IMAGE_FORMAT=ptx
-  export CUDA_PTX_TARGET=compute_50
+  export CUDA_PTX_TARGET=compute_75
   export PATH="${CUDA_HOME}/bin:${PATH}"
   export LIBRARY_PATH="${CUDA_HOME}/lib64/stubs:${LIBRARY_PATH}"
   export LIBCLANG_PATH="${LIBCLANG_PATH:-/usr/lib}"
@@ -140,7 +140,7 @@ package() {
   export CUDA_HOST_CXX="${CUDA_HOST_CXX:-g++-15}"
   export CUDA_ALLOW_UNSUPPORTED_COMPILER=1
   export CUDA_IMAGE_FORMAT=ptx
-  export CUDA_PTX_TARGET=compute_50
+  export CUDA_PTX_TARGET=compute_75
   export PATH="${CUDA_HOME}/bin:${PATH}"
   export LIBRARY_PATH="${CUDA_HOME}/lib64/stubs:${LIBRARY_PATH}"
   export LIBCLANG_PATH="${LIBCLANG_PATH:-/usr/lib}"
