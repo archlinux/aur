@@ -1,7 +1,7 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr-yabridge
 pkgver=5.1.1.54
-pkgrel=2
+pkgrel=3
 pkgdesc="Tested Windows plugin bridge for OpenXLR, with the Wine editor input fix"
 arch=('x86_64')
 url="https://github.com/emaspa/openxlr"
@@ -10,8 +10,8 @@ depends=('wine' 'gcc-libs' 'glibc' 'libxcb' 'dbus')
 makedepends=('meson' 'ninja' 'cmake' 'pkgconf' 'python' 'rust')
 optdepends=('openxlr: the mixer that uses this bridge')
 options=('!strip' '!debug' '!lto')
-source=("https://github.com/emaspa/openxlr/releases/download/v0.1.30/openxlr-yabridge-${pkgver}-source.tar.xz")
-sha256sums=('f7b69081e6970fb3dc9337a689a72e2696fe511c6cb858a26704527112fa438a')
+source=("https://github.com/emaspa/openxlr/releases/download/v0.1.40/openxlr-yabridge-${pkgver}-source.tar.xz")
+sha256sums=('1dcf3063656e0b1ed829af832609ce8f28e88d2e70f14018fff17f6a46bcfab1')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"

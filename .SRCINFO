@@ -1,7 +1,7 @@
 pkgbase = openxlr-yabridge
 	pkgdesc = Tested Windows plugin bridge for OpenXLR, with the Wine editor input fix
 	pkgver = 5.1.1.54
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/emaspa/openxlr
 	arch = x86_64
 	license = GPL-3.0-only
@@ -21,7 +21,7 @@ pkgbase = openxlr-yabridge
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/emaspa/openxlr/releases/download/v0.1.30/openxlr-yabridge-5.1.1.54-source.tar.xz
-	sha256sums = f7b69081e6970fb3dc9337a689a72e2696fe511c6cb858a26704527112fa438a
+	source = https://github.com/emaspa/openxlr/releases/download/v0.1.40/openxlr-yabridge-5.1.1.54-source.tar.xz
+	sha256sums = 1dcf3063656e0b1ed829af832609ce8f28e88d2e70f14018fff17f6a46bcfab1
 
 pkgname = openxlr-yabridge
