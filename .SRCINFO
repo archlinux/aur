@@ -1,6 +1,6 @@
 pkgbase = mew-bin
 	pkgdesc = Fast, zero-daemon terminal companion and git workspace dashboard
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/programmersd21/mew
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mew-bin
 	provides = mew
 	conflicts = mew
 	options = !strip
-	source_x86_64 = mew-x86_64-0.1.1.tgz::https://github.com/programmersd21/mew/releases/download/v0.1.1/mew-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 6d62688eb963f22d7886858f00c53cc95846bf5eb00257c507584a9351e20604
+	source_x86_64 = mew-x86_64-0.1.2.tgz::https://github.com/programmersd21/mew/releases/download/v0.1.2/mew-v0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0db3bbf2de8d63d9ae05a57b5ad616939367e09d8ce7a8723c297c7311ba0dd3
 
 pkgname = mew-bin
