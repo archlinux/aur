@@ -3,7 +3,7 @@
 # so this tracks unreleased/dev code — rebuild to update. The CLI lives in the
 # `kobectl` workspace crate and installs as the `kobe` binary.
 pkgname=kobe-git
-pkgver=0.49.0.r493.gbe72e5c
+pkgver=0.50.0.r508.gf0d88ad
 pkgrel=1
 pkgdesc='CLI for pools of pre-warmed Kubernetes virtual clusters (latest git main)'
 arch=('x86_64' 'aarch64')
