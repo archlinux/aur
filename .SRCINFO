@@ -1,7 +1,7 @@
 pkgbase = iv-cli-bin
 	pkgdesc = A command-line image viewer using terminal graphics (Sixel, iTerm, Kitty)
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kenshaw/iv
 	arch = x86_64
 	arch = aarch64
@@ -20,7 +20,7 @@ pkgbase = iv-cli-bin
 	optdepends = openslide: whole-slide image support
 	provides = iv-cli
 	conflicts = iv-cli
-	source = https://raw.githubusercontent.com/kenshaw/iv/refs/tags/v0.18.0/README.md
+	source = iv-cli-bin-0.18.0-README.md::https://raw.githubusercontent.com/kenshaw/iv/refs/tags/v0.18.0/README.md
 	sha256sums = 45d06dea5e03ed270506c3d0dc2bf7c83661c763a4875360ea6c46c71adf766c
 	source_x86_64 = https://github.com/kenshaw/iv/releases/download/v0.18.0/iv-0.18.0-linux-amd64.tar.bz2
 	sha256sums_x86_64 = 42599b6c4d4a4c961e9c2962bee1592e52035293ac36821f856df03217e67453

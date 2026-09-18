@@ -2,7 +2,7 @@
 
 pkgname=iv-cli-bin
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line image viewer using terminal graphics (Sixel, iTerm, Kitty)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/kenshaw/iv"
@@ -13,7 +13,7 @@ optdepends=('libreoffice-fresh: preview office documents'
 provides=(iv-cli)
 conflicts=(iv-cli)
 
-source=("https://raw.githubusercontent.com/kenshaw/iv/refs/tags/v$pkgver/README.md")
+source=("$pkgname-$pkgver-README.md::https://raw.githubusercontent.com/kenshaw/iv/refs/tags/v$pkgver/README.md")
 source_x86_64=("$url/releases/download/v$pkgver/iv-$pkgver-linux-amd64.tar.bz2")
 source_aarch64=("$url/releases/download/v$pkgver/iv-$pkgver-linux-arm64.tar.bz2")
 
@@ -27,7 +27,7 @@ check() {
 
 package() {
     install -Dm755 iv -t "$pkgdir/usr/bin"
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 "$pkgname-$pkgver-README.md" -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
     # Generate and install shell completions
