@@ -27,6 +27,11 @@ build() {
     cargo build --frozen --release
 }
 
+check() {
+    cd "${srcdir}/openmeters"
+    cargo test --frozen
+}
+
 package() {
     cd "${srcdir}/openmeters"
     install -Dm755 target/release/openmeters "${pkgdir}/usr/bin/openmeters"
