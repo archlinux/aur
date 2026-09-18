@@ -1,0 +1,5 @@
+[maple-mono-nf-cn-unhinted]
+source = "github"
+github = "subframe7536/maple-font"
+use_latest_release = true
+prefix = "v"
