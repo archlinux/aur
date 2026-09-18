@@ -2,9 +2,9 @@
 _appname=ratssearch
 pkgname="${_appname//ss/s-s}-bin"
 _pkgname=RatsSearch
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
-pkgdesc="BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client.(Prebuilt version)"
+pkgdesc="BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client."
 arch=('x86_64')
 url="https://github.com/librats/rats-search"
 license=('MIT')
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/librats/rats-search/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c59c4e9c87e1371a89e26d75dd45672276e4f3b08ecf0d46a610dccd629738b4'
+sha256sums=('344a0084866dcaebb8dc0084ad291c79430a00062ca631cb7e26e67e8f27b84d'
             'fa6a25af037d88ee811669579da9674e5694611599600b11e691115054f6fe2f'
             'b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863')
 prepare() {
@@ -43,7 +43,16 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,translations} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/squashfs-root/usr/bin" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
+    for _lib in "${srcdir}/squashfs-root/usr/lib/"*.so.*; do
+        _libname="$(basename "${_lib}")"
+        if [ ! -f "/usr/lib/${_libname}" ]; then
+            install -Dm755 "${_lib}" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/${_libname}"
+        fi
+    done
+    cp -a "${srcdir}/squashfs-root/usr/plugins" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/squashfs-root/usr/translations" "${pkgdir}/usr/lib/${pkgname%-bin}"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
