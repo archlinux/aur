@@ -6,7 +6,7 @@
 
 _pkgname="freerdp"
 pkgname="$_pkgname-git"
-pkgver=3.18.0.r6.g193f76e
+pkgver=3.31.1.r263.g839dcaf
 pkgrel=2
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 url="https://github.com/FreeRDP/FreeRDP"
@@ -14,29 +14,48 @@ license=('Apache-2.0')
 arch=('i686' 'x86_64')
 
 depends=(
-  'ffmpeg'
-  'fuse3'
-  'icu'
-  'jansson'
-  'libcups'
-  'libxdamage'
-  'libxi'
-  'libxinerama'
-  'libxkbcommon'
-  'libxkbfile'
-  'libxrandr'
-  'libxtst'
-  'openssl'
-  'sdl3'
-  'sdl3_ttf' # AUR
-  'uriparser'
-  'wayland'
+  alsa-lib
+  ffmpeg
+  freerdp-git
+  fuse3
+  glib2
+  gtk3
+  icu
+  jansson
+  krb5
+  libcbor
+  libcups
+  libfido2
+  libjpeg-turbo
+  libpng
+  libpulse
+  libusb
+  libwebp
+  libx11
+  libxcursor
+  libxdamage
+  libxext
+  libxfixes
+  libxi
+  libxinerama
+  libxkbcommon
+  libxkbfile
+  libxrandr
+  libxrender
+  libxtst
+  openssl
+  pam
+  sdl3
+  sdl3_ttf
+  sndio
+  wayland
+  webkit2gtk-4.1
+  zlib
 )
 makedepends=(
   'cmake'
   'git'
   'ninja'
-  'cjson'
 )
 
 _libver=${pkgver%%.*}
@@ -80,37 +99,44 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_INSTALL_LIBDIR='lib'
     -DCMAKE_SKIP_INSTALL_RPATH=ON
-    -DCHANNEL_RDPECAM_CLIENT=ON
-    -DCHANNEL_URBDRC_CLIENT=ON
-    -DPROXY_PLUGINDIR="/usr/lib/$_pkgname/server/proxy/plugins"
-    -DRDTK_FORCE_STATIC_BUILD=ON # prevent file conflicts with freerdp2
-    -DUWAC_FORCE_STATIC_BUILD=ON # prevent file conflicts with freerdp2
-    -DWINPR_UTILS_IMAGE_JPEG=ON
-    -DWINPR_UTILS_IMAGE_PNG=ON
-    -DWINPR_UTILS_IMAGE_WEBP=ON
-    -DWITH_ALSA=ON
-    -DWITH_BINARY_VERSIONING=ON # prevent file conflicts with freerdp2
-    -DWITH_CHANNELS=ON
-    -DWITH_CLIENT_CHANNELS=ON
-    -DWITH_CLIENT_SDL2=OFF
-    -DWITH_CLIENT_SDL3=ON
-    -DWITH_CUPS=ON
-    -DWITH_DSP_FFMPEG=ON
-    -DWITH_FFMPEG=ON
-    -DWITH_FUSE=ON
-    -DWITH_ICU=ON
-    -DWITH_JPEG=ON
-    -DWITH_PULSE=ON
-    -DWITH_SERVER=ON
-    -DWITH_SERVER_CHANNELS=ON
-    -DWITH_SWSCALE=ON
-    -DWITH_SYSTEMD=ON
-    -DWITH_VERBOSE_WINPR_ASSERT=OFF
-    -DWITH_WAYLAND=ON
-    -DWITH_WINPR_TOOLS=ON
-    -DWITH_X11=ON
     -DBUILD_TESTING=OFF
-    -Wno-dev
+    -Wno-author
+
+    -D CHANNEL_RDPECAM_CLIENT=ON
+    -D CHANNEL_RDPEWA=ON
+    -D CHANNEL_RDPEWA_CLIENT=ON
+    -D CHANNEL_URBDRC_CLIENT=ON
+    -D PROXY_PLUGINDIR="/usr/lib/$_pkgname/server/proxy/plugins"
+    -D RDTK_FORCE_STATIC_BUILD=ON # prevent file conflicts with freerdp2
+    -D UWAC_FORCE_STATIC_BUILD=ON # prevent file conflicts with freerdp2
+    -D WINPR_UTILS_IMAGE_JPEG=ON
+    -D WINPR_UTILS_IMAGE_PNG=ON
+    -D WINPR_UTILS_IMAGE_WEBP=ON
+    -D WITH_ALSA=ON
+    -D WITH_BINARY_VERSIONING=ON # prevent file conflicts with freerdp2
+    -D WITH_CHANNELS=ON
+    -D WITH_CLIENT_CHANNELS=ON
+    -D WITH_CLIENT_SDL2=OFF
+    -D WITH_CLIENT_SDL3=ON
+    -D WITH_CUPS=ON
+    -D WITH_DSP_FFMPEG=ON
+    -D WITH_FFMPEG=ON
+    -D WITH_FUSE=ON
+    -D WITH_ICU=ON
+    -D WITH_JPEG=ON
+    -D WITH_PCSC=ON
+    -D WITH_PULSE=ON
+    -D WITH_SERVER=ON
+    -D WITH_SERVER_CHANNELS=ON
+    -D WITH_SWSCALE=ON
+    -D WITH_SYSTEMD=ON
+    -D WITH_VAAPI=ON
+    -D WITH_VERBOSE_WINPR_ASSERT=OFF
+    -D WITH_WAYLAND=ON
+    -D WITH_WINPR_TOOLS=ON
+    -D WITH_X11=ON
+
+    -D WITH_WEBVIEW_AAD_AUTH_HELPER=ON
   )
 
   cmake "${_cmake_options[@]}"
@@ -124,13 +150,26 @@ check() {
 package() {
   if [[ "${_use_sodeps::1}" == "t" ]]; then
     eval "depends+=(
-      'libavcodec.so' # ffmpeg
-      'libavutil.so' # ffmpeg
-      'libcrypto.so' # openssl
-      'libicuuc.so' # icu
-      'libssl.so' # openssl
-      'libswresample.so' # ffmpeg
-      'libswscale.so' # ffmpeg
+      libasound.so
+      libavcodec.so
+      libavutil.so
+      libcbor.so
+      libcrypto.so
+      libfido2.so
+      libicuuc.so
+      libjpeg.so
+      libk5crypto.so
+      libkrb5.so
+      libpam.so
+      libpng16.so
+      libpulse.so
+      libssl.so
+      libswresample.so
+      libswscale.so
+      libusb-1.0.so
+      libwebkit2gtk-4.1.so
+      libwebp.so
+      libz.so
     )"
   fi
 
