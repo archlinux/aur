@@ -1,0 +1,7 @@
+pkg/
+src/
+*.deb
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.pkg.tar.xz
+*.pkg.tar.xz.sig
