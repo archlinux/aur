@@ -1,0 +1,7 @@
+version = 1
+
+[[annotations]]
+path = ["PKGBUILD", ".SRCINFO", "REUSE.toml"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Marco Righi <marco.righi@cnr.it>"
+SPDX-License-Identifier = "0BSD"
