@@ -34,9 +34,11 @@ check() {
 
 package() {
     cd "${srcdir}/openmeters"
-    install -Dm755 target/release/openmeters "${pkgdir}/usr/bin/openmeters"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -vDm755 target/release/openmeters -t "${pkgdir}/usr/bin/"
+    install -vDm644 LICENSE                   -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm644 README.md                 -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
-    install -Dm644 misc/openmeters.desktop "${pkgdir}/usr/share/applications/openmeters.desktop"
-    install -Dm644 misc/openmeters.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/openmeters.svg"
+    cd "misc/"
+    install -vDm644 openmeters.desktop        -t "${pkgdir}/usr/share/applications/"
+    install -vDm644 openmeters.svg            -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
 }
