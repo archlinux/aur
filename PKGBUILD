@@ -3,7 +3,7 @@
 _pkgbase=WowUp
 pkgbase=${_pkgbase,,}
 pkgname=($pkgbase $pkgbase-cf)
-_pkgver=2.22.0
+_pkgver=2.23.1
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='World of Warcraft addon updater'
@@ -26,7 +26,7 @@ source=(
     run_wowup.sh
     run_wowup-cf.sh
 )
-sha256sums=('60724a35936c028a6711b613e441bbb0b13d3d7ae50d4628f29464648568fbe3'
+sha256sums=('ca21738124d883a8d6643de63d713b73c7cf21ab347c8f2f4155b91fda79d88c'
             '6492656d15dc74254189767f92a3d6d73ee21d2de952ae8586a40330dc0b6ef3'
             '371d0e19917b031911ac5503e01e19170988230fb793f68e42eb15e4d1cfb97c'
             '5c18235b5c92c98a405335916efce577c8b9b5582b717abb1c49834884fbe1db'
