@@ -4,7 +4,7 @@ pkgname=amneziawg-linux-hardened
 pkgdesc="AmneziaWG prebuilt kernel module for linux-hardened (AWG 3.1)"
 url="https://github.com/amnezia-vpn/amneziawg-linux-kernel-module"
 arch=("x86_64")
-pkgver=3.1.20260828
+pkgver=3.1.20260906
 pkgrel=1
 license=('GPLv2')
 provides=("AMNEZIAWG-MODULE")
@@ -13,8 +13,8 @@ makedepends=("linux-hardened" "linux-hardened-headers")
 _kernel=$(pacman -Q linux-hardened | awk '{print $2}' | sed "s,.[a-zA-Z].*,,g")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v${pkgver}.tar.gz"
         "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-${_kernel}.tar.xz")
-sha512sums=('8465b554955363d3a0702208d7ee39d3b38baaa87d4031e1f5a87196df382c7edc674aaa47a6a97590c006b73183feb725a7e451e5c7939a1d13808f7f3568a6'
-            'b139d559aba45cebd69d9172372f11d9d30e95008f0d721f160352390c91b5e42955c66c0e725f9eab461165e51f6685d0402e5349624b9e4d48eb6f166413be')
+sha512sums=('30c0571c1c9954dc4d0dfded4238cf2daf3ed4beb4579047fec4fd92a8ad522db930c7f5454ceca6ae77951008ac0805a17bc569a78afdec32b14410bbdfaadf'
+            '18767f513267e72eb9a946126e056ea760b03f1dcfdcecbc715969b6a91436afc422fa12bcef29b1ad1d2146f83a37126b502f0407aa4f91347bf26e9f7d2bd6')
 install="amneziawg-linux-hardened.install"
 
 build() {
