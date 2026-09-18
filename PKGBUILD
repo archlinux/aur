@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A zero-allocation reverse proxy and load balancer in Zig ⚡"
 
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -34,12 +34,12 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
 sha256sums=('a9e7a0b2ca0bb923c316c0cc1b9f60e8407ebbeb974467cea6b808644b5dd611'
             'd8742a22c29dd17266481c8884646446921964954dc64ffbdb7eba0ee97f499b'
-            '6efe66f8b8f83e60035d2204c301850b67cffd4d49d0e038b4f846011dfa45ad'
-            'daada35f5970552677465b852732b5f037ff8d252e7422ce18745d7e686d6e58'
+            '5dd17cb7c06721a5874804edbf9cd305191d6f16f5baab8ee15873bc90408e1c'
+            '0fbfe7d5044c487bd96dc9010c9c4ce769f6f47c3717375b06e8290065b60daa'
             'ef10bbdfbb5f0601d6e6e9eaf699c4b882564267ba5743bb9359fb9f89d2a60b'
-            'c02d5c26b6df1b940667e27e8d2508225f16d5e8ca77532dc53630f00ab9d7d1')
-sha256sums_x86_64=('614ce02cedb4f418cc5881005afef044221373b71585086ea67a500366ca1d24')
-sha256sums_aarch64=('368a4d771984769a5a855f745ecfcb71667128f57fe50d1900793b53e0cead5f')
+            '200c04aad5ff879be890018f281aee1fecdd53109694fbbeb34e596ea0947406')
+sha256sums_x86_64=('0c24b7dea056113033e811d0f6c400f91dafde3b4c1388063177dacebbb81304')
+sha256sums_aarch64=('476ebdb3c837e7d928a465a43dc3c94a6d1416c09ebc51908e6a4e7f8845ecff')
 
 
 package() {
