@@ -1,13 +1,12 @@
 pkgbase = omp-bun
-	pkgdesc = AI Coding agent for the terminal (built with system bun, non-standalone)
-	pkgver = 18.2.5
+	pkgdesc = AI Coding agent for the terminal (built with system bun)
+	pkgver = 18.2.6
 	pkgrel = 1
 	url = https://omp.sh/
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
+	makedepends = rustup
 	makedepends = cmake
-	makedepends = git
 	makedepends = make
 	makedepends = ninja
 	depends = bun
@@ -30,7 +29,7 @@ pkgbase = omp-bun
 	conflicts = oh-my-pi-git
 	options = !lto
 	options = !strip
-	source = omp-bun::git+https://github.com/can1357/oh-my-pi.git#tag=v18.2.5
+	source = omp-bun::git+https://github.com/can1357/oh-my-pi.git#tag=v18.2.6
 	sha256sums = SKIP
 
 pkgname = omp-bun

@@ -1,5 +1,4 @@
 [omp-bun]
-source = "github"
-github = "can1357/oh-my-pi"
-use_latest_release = true
+source = "git"
+git = "https://github.com/can1357/oh-my-pi.git"
 prefix = "v"
