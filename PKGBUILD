@@ -3,7 +3,7 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-shell'
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64' 'aarch64')
@@ -52,23 +52,24 @@ optdepends=(
 makedepends=('cmake' 'ninja' 'qt6-shadertools')
 provides=($pkgname)
 conflicts=($pkgname-git)
-source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('af7491727ff30699698150f9f7c186089ccd171a509def332bcba1de1cb31771')
+_pkg="${pkgname}-v${pkgver}"
+source=("${url}/releases/download/v${pkgver}/${_pkg}.tar.gz")
+sha256sums=('6bef9feff9f9c6afeb6fdf0b9bb1cfc3cfd7dff4c2a020e8079d6720975f3b6a')
 
 build() {
-    cd "${srcdir}/release"
+    cd "${srcdir}/${_pkg}"
 
     cmake -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/ \
         -DVERSION=$pkgver \
         -DGIT_REVISION="$(cat REVISION)" \
-        -DDISTRIBUTOR="AUR (package: $pkgname)"
+        -DDISTRIBUTOR="AUR (package: ${pkgname})"
     cmake --build build
 }
 
 package() {
-    cd "${srcdir}/release"
+    cd "${srcdir}/${_pkg}"
 
     DESTDIR="$pkgdir" cmake --install build
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
