@@ -14,7 +14,7 @@
 
 _pkgname="waterfox"
 pkgname="$_pkgname"
-pkgver=6.7.1.1
+pkgver=6.7.3
 pkgrel=1
 pkgdesc="A customizable, privacy‑focused web browser"
 url="https://github.com/BrowserWorks/waterfox"
@@ -111,14 +111,38 @@ source=(
   "$_pkgsrc.$_pkgext"::"https://github.com/BrowserWorks/waterfox/archive/refs/tags/$pkgver.$_pkgext"
   "$_pkgsrc-locales.$_pkgext"::"https://github.com/BrowserWorks/l10n/archive/$_commit_l10n.$_pkgext"
   "$_pkgname.desktop"
-  '0001-1ecaa12-fix-rust-1.98-targets.patch'
 )
 sha256sums=(
-  '29e1a024be18cf0ae914873af58c875db637ec0e6e8a594012ed598be22ec240'
-  'ec79a5e4979e23fddca8d721a9423a1ed1ef29c6c35d5fcce475924fbbcc592b'
+  '54c852524b5239baf1b23557bb5fc24eb88337fb5ff76c6d9923bdd44a5ea51b'
+  '47125916f8e41c21ea0348c1981c008b3133c45034986a6c2e6c99539ddf65e9'
   '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286'
-  '8e93bc3f7745bd4a6bcf952120b60a260ea867f0c8319ea8f6df18ed1281bc1f'
 )
+
+_calc_parallel_jobs() {
+  local _build_limit_cores="$1"
+  local _mem _mb _cores _threads _jobs
+  _mem=$(grep -Pom1 '^MemAvailable:\s*\K[0-9]+' /proc/meminfo)
+  _mb=$((_mem / (1024 * 1024)))
+  _cores=$(lscpu | grep -Pom1 'per socket:\s*\K[0-9]+')
+  _threads=$(nproc)
+  _jobs="mach"
+
+  if [[ "${_build_limit_cores}" =~ ^[at] ]]; then
+    # calculate core availability based on free RAM and CPU count
+    _jobs=$((_mb < _cores ? _mb : _cores - 1))
+    _jobs=$((_jobs < 1 ? 1 : _jobs))
+  elif [[ "${_build_limit_cores}" =~ ^[0-9]+$ ]]; then
+    # user-specified, capped by thread count
+    if ((${_build_limit_cores:-0} > 0)); then
+      _jobs=$((_build_limit_cores > _threads ? _threads : _build_limit_cores))
+      _jobs=$((_jobs < 1 ? 1 : _jobs))
+    fi
+  fi
+
+  >&2 printf '\n:: Free RAM: %-5s Cores: %-5s Threads: %-5s Jobs: %-5s\n\n' "$_mb" "$_cores" "$_threads" "$_jobs"
+
+  echo "${_jobs:-mach}"
+}
 
 prepare() {
   mkdir -p mozbuild
@@ -234,24 +258,7 @@ export MOZ_INCLUDE_SOURCE_INFO=
 END
 
   # build parallelism
-  local _mem _threads _cores _jobs
-  _mem=$(grep -Pom1 '^MemAvailable:\s*\K[0-9]+' /proc/meminfo)
-  _cores=$(lscpu | grep -Pom1 'per socket:\s*\K[0-9]+')
-  _threads=$(nproc)
-  _jobs="auto"
-
-  if [[ "${_build_limit_cores}" =~ ^[at] ]]; then
-    # calculate core availability based on free RAM and CPU count
-    _jobs=$((_mem / (1024 * 1024) < _cores ? _mem / (1024 * 1024) : _cores - 1))
-    _jobs=$((_jobs < 1 ? 1 : _jobs))
-  elif ((${_build_limit_cores:-0} > 0)); then
-    # user-specified, capped by CPU count
-    _jobs=$((_build_limit_cores > _threads ? _threads : _build_limit_cores))
-    _jobs=$((_jobs < 1 ? 1 : _jobs))
-  fi
-
-  printf '\n:: Free RAM: %-5s Cores: %-5s Threads: %-5s Jobs: %-5s\n\n' "$((_mem / (1024 * 1024)))" "$_cores" "$_threads" "$_jobs"
-
+  local _jobs=$(_calc_parallel_jobs "$_build_limit_cores")
   if [[ "$_jobs" =~ ^[0-9]+$ ]]; then
     cat >> ../mozconfig << END
 mk_add_options MOZ_PARALLEL_BUILD=${_jobs}
