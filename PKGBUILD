@@ -93,7 +93,7 @@ package() {
   cp -a "$pkgDir/." "$instDir/"
 
   chmod 755 \
-    "$instDir/Spencers-Macro-Utilities" \
+    "$instDir/Spencer-Macro-Utilities" \
     "$instDir/run.sh" \
     "$instDir/scripts/install_linux_permissions.sh"
   [[ -f "$instDir/nethelper" ]] && chmod 755 "$instDir/nethelper"
