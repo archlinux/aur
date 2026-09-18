@@ -1,6 +1,6 @@
 # Maintainer: Inche Hwang <me at libhwang dot cc>
 pkgname=vrc-avi-scaler
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A tool to resize your avatar on VRChat."
 arch=(any)
@@ -10,15 +10,9 @@ depends=('python>=3.12' 'python-osc' 'python-zeroconf')
 makedepends=()
 conflicts=("${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KutayX7/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-	"0001-Use-XDG-spec-for-config-path.patch"
 	"launch-wrapper")
-sha256sums=('916f1614e3d8f331c86d643c9c71d225dafc9be62bd1ecb3c4b178d3d5eb8ed1'
-            'eb42ad81c31f3c41ac603137b5ec41a8497a924ae43101f7421d312caad57a6f'
+sha256sums=('ab3d14ff4b929cc1107cfc406b4f0998faa41de9d82cb47833727a24b4bd9cad'
             '5a7d249f42080fecf16e38321a008201ce8008a9139fa88cfa33982332453818')
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -Np1 -i ../0001-Use-XDG-spec-for-config-path.patch
-}
 
 package() {
 	cd "$pkgname-$pkgver"
@@ -32,6 +26,11 @@ package() {
 	install -Dm644 simple_types.py "${pkgdir}/usr/share/vrc-avi-scaler/simple_types.py"
 	install -Dm644 main.py "${pkgdir}/usr/share/vrc-avi-scaler/main.py"
 	install -Dm644 config.py "${pkgdir}/usr/share/vrc-avi-scaler/config.py"
+	install -Dm644 command.py "${pkgdir}/usr/share/vrc-avi-scaler/command.py"
+	install -Dm644 task.py "${pkgdir}/usr/share/vrc-avi-scaler/task.py"
+	install -Dm644 translator.py "${pkgdir}/usr/share/vrc-avi-scaler/translator.py"
+
+	cp -r translations "${pkgdir}/usr/share/vrc-avi-scaler"
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 
