@@ -1,6 +1,6 @@
 pkgbase = wire-desktop-git
-	pkgdesc = End-to-end encrypted messenger with file sharing, voice calls and video conferences.(Use system-wide electron)
-	pkgver = 3.42.1540.r231.ge1ba98c
+	pkgdesc = End-to-end encrypted messenger with file sharing, voice calls and video conferences.
+	pkgver = 3.44.5377.r7.g16d1ba8
 	pkgrel = 1
 	url = https://wire.com/
 	arch = any
