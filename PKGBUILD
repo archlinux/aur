@@ -2,7 +2,7 @@
 
 pkgname=openmeters
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and professional audio metering/visualization for Linux."
 
 arch=("x86_64")

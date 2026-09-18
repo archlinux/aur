@@ -1,7 +1,7 @@
 pkgbase = openmeters
 	pkgdesc = Fast and professional audio metering/visualization for Linux.
 	pkgver = 1.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/httpsworldview/openmeters
 	arch = x86_64
 	license = GPL-3.0-or-later
