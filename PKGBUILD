@@ -1,5 +1,5 @@
 pkgname=sdroxide
-pkgver=1.6.6
+pkgver=1.6.8
 pkgrel=1
 pkgdesc="Powerful SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (native RTL-SDR/RX-888/CAT/etc backends, no SoapySDR)"
 arch=('x86_64')
@@ -9,6 +9,9 @@ license=('GPL-3.0-or-later')
 # Vulkan loader and the Wayland/X11 client libraries at startup.
 depends=('alsa-lib' 'opus' 'libxkbcommon' 'wayland' 'libx11' 'libxcursor'
          'libxi' 'libxrandr' 'vulkan-icd-loader')
+# HD Radio's decoder is libnrsc5, dlopened at startup rather than built in;
+# without it the mode is offered greyed out, with the reason.
+optdepends=('nrsc5: HD Radio (NRSC-5) reception')
 # rust/rust-wasm build the native binary and the wasm web client; trunk bundles
 # the web client; wasm-bindgen + binaryen(wasm-opt) are trunk's post-processors.
 # (The rustup package satisfies all of rust/cargo/rust-wasm by `provides`,
@@ -38,7 +41,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "rade_c-$_rade_commit.tar.gz::https://github.com/freedv/rade_c/archive/$_rade_commit.tar.gz"
         "rtl_433-$_rtl433_commit.tar.gz::https://github.com/merbanan/rtl_433/archive/$_rtl433_commit.tar.gz"
         "faad2-$_faad2_commit.tar.gz::https://github.com/knik0/faad2/archive/$_faad2_commit.tar.gz")
-sha256sums=('eb693a1a517a2b2a08e169ba33f16a7f4e94e95ff6fc1ea5918c482c8e9c18b2'
+sha256sums=('53fcdbd071cd0fe9214020e3af515e9d0bec9346e8d0e25bc3414a021cb546b1'
             'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd'
             '6e164f38216f46f1d08494c2adeaa7c72d7f3d5456e0b8c5ae424159d7051753'
             '98725cefc915771f00ffd0286901c865e7d3fd0e5ff6b98d004d6f48904776f9')
