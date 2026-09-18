@@ -1,6 +1,6 @@
 # Maintainer: NotMugil notmugil01@gmail.com
 pkgname=hardcover-tui-bin
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An unofficial TUI client for Hardcover - the social book tracking platform"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=('hardcover-tui')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/hardcover-tui_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/hardcover-tui_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('b3b322058c3c10949c4bb8b694ae1ebe8d2bdf8517e36593ad227a234227a0fa')
-sha256sums_aarch64=('12090deb967d0649d824b055c99fc37574ff220daa511231d59d638cc8dc222f')
+sha256sums_x86_64=('36b9ddea787fa86174a340d0f588106df19cc676702291f965e2d7d75e8ef3b5')
+sha256sums_aarch64=('580286b2871ce240e76f11403da216d6333fac81003cb124ababb79f779770e1')
 
 package() {
     install -Dm755 hardcover-tui "${pkgdir}/usr/bin/hardcover-tui"
