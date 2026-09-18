@@ -3,9 +3,9 @@
 # `markview-bin` packages the prebuilt archive from the same release. Both
 # install the same files, so they conflict with each other.
 pkgname=markview
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-pkgdesc='Native, read-only Markdown reader with optimized paragraph layout'
+pkgdesc='A fast, native Markdown reader with publication-quality typography.'
 arch=('x86_64')
 url='https://github.com/szdytom/markview'
 license=('MIT')
@@ -20,7 +20,7 @@ depends=(
 	'vulkan-icd-loader'
 	'xdg-desktop-portal'
 )
-makedepends=('cargo' 'rust>=1.88' 'fontconfig')
+makedepends=('cargo' 'rust>=1.92' 'fontconfig')
 optdepends=(
 	'noto-fonts-cjk: CJK glyphs for Chinese, Japanese, and Korean text'
 	'noto-fonts-emoji: colour Emoji glyphs'
@@ -34,7 +34,7 @@ source=(
 	'markview.mime.xml'
 )
 sha256sums=(
-	'aff9bd555ecf97922472a34c7c1d27accf057a067ff3724dfb9430af893894e3'
+	'7b8d1e2e03196b552830d125058c7e29b02e03dd8dcfbad28b058222ad33c451'
 	'c2b54efc155e407495127927cabafb92b369a4ead7e1a04d8246f9939bf280b0'
 )
 
@@ -81,5 +81,7 @@ package() {
 	install -Dm644 THIRD_PARTY.md "$pkgdir/usr/share/doc/$pkgname/THIRD_PARTY.md"
 	install -Dm644 licenses/KaTeX-OFL.txt \
 		"$pkgdir/usr/share/doc/$pkgname/KaTeX-OFL.txt"
+	install -Dm644 licenses/Noto-OFL.txt \
+		"$pkgdir/usr/share/doc/$pkgname/Noto-OFL.txt"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
