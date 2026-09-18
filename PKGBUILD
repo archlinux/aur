@@ -25,10 +25,8 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "kaze.desktop"
 )
-sha256sums=(
-    'be4c339b03be784201cdfb435aaead6a2a0ce614b3035fa3770c10362171bbda'
-    'eaf39dc7d4a05cefeb1543018e5a2ae84148343e3b5a8de50ba365087d43dd0c'
-)
+sha256sums=('165f4ab2eb98e31377c24a44c98587b21996443826ecf311fb8f5eae85823dbb'
+            'eaf39dc7d4a05cefeb1543018e5a2ae84148343e3b5a8de50ba365087d43dd0c')
 
 build() {
     cd "$pkgname-$pkgver"
