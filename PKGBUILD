@@ -18,8 +18,8 @@ source=("${pkgname%%-bin}.service::${url}/raw/${pkgver}/contrib/systemd/rmpd.ser
 source_x86_64=("${pkgname%%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${pkgname%%-bin}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname%%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/${pkgname%%-bin}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('6cb19b9086c95f4d1db803c65cae1bd8a422c2114deeb527787e0783a29101db')
-sha256sums_x86_64=('78841ebe4ee78fc8bed514aff09ac212c07126801ec247a777f8b7a0ee6251f5')
-sha256sums_aarch64=('b570837d3589211418924f49e60b85d1d331b136f2cd7c8571a548d9a10036d7')
+sha256sums_x86_64=('7038408a16c9f902c93afdfa1d2b94c025e33b58e13a7ca2533cd7e2e21a2b2a')
+sha256sums_aarch64=('756e5085766fa417e3909b161bed1fac98fea43b53cfaca7e53af79fe1951015')
 
 package() {
   # Install binary
