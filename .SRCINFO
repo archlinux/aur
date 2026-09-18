@@ -1,7 +1,7 @@
 pkgbase = untwine
 	pkgdesc = Tool for creating Cloud Optimized Point Cloud (COPC) web services from PDAL-readable point cloud data sources.
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hobuinc/untwine
 	arch = x86_64
 	arch = aarch64
