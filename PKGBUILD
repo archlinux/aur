@@ -3,8 +3,8 @@
 pkgname=paseo-cli-edge
 _pkgname=cli
 _npmscope=@getpaseo
-pkgver=0.9.0_beta.1
-_tarball_sha='e41ef0955d6efba0d1a64c1d0fecf55f703628915b2785dbe0e7b14b9a90147f'
+pkgver=0.9.0_beta.2
+_tarball_sha='57d162e09ac4c1eb6189c1985b50209fd121e3738f82a6022eae1bde19064187'
 _license_sha='79d5aedce6aa0adc547336dc1bd34c5cc9308ba110fac7079ed97515ee573ad3'
 pkgrel=1
 pkgdesc='Command-line interface for controlling Paseo AI coding agents (edge - latest upstream release, beta or stable)'
@@ -14,7 +14,7 @@ license=('Apache-2.0')
 depends=('nodejs' 'bash' 'glibc' 'gcc-libs')
 makedepends=('npm')
 provides=('paseo')
-conflicts=('paseo' 'paseo-bin' 'paseo-cli-bun' 'paseo-cli' 'paseo-cli-beta')
+conflicts=('paseo' 'paseo-bin' 'paseo-cli-bun' 'paseo-cli')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmscope}/${_pkgname}/-/${_pkgname}-${pkgver//_/-}.tgz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/getpaseo/paseo/v${pkgver//_/-}/LICENSE")
 noextract=("${_pkgname}-${pkgver}.tgz")
