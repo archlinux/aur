@@ -2,12 +2,12 @@
 _basename=ck3-tiger
 pkgname=${_basename}-bin
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Checks game mod files for common mistakes and warns about them."
 arch=('x86_64')
 url="https://github.com/amtep/tiger"
-license=('GPL3')
-depends=()
+license=('GPL-3.0-or-later')
+depends=('glibc' 'libgcc' 'openssl')
 source=("https://github.com/amtep/tiger/releases/download/v${pkgver}/${_basename}-linux-v${pkgver}.tar.gz")
 sha256sums=('6d72d276c2b2a953f63221ff8050d1276a085b5a2ffe74977675fdf6e17e9ff3')
 
