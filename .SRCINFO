@@ -1,6 +1,6 @@
 pkgbase = rebased-bin
 	pkgdesc = Standalone JetBrains-based Git client (prebuilt binary)
-	pkgver = 1.1.16
+	pkgver = 1.1.17
 	pkgrel = 1
 	url = https://github.com/DetachHead/rebased
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = rebased-bin
 	source = rebased.desktop
 	sha256sums = e152fc59d093764f826b990c04a64db48d43f1ee8708b265155c16888a9e54bf
 	sha256sums = c9ca95ac0578c7ad1db358afce473475d9d82010676018e157bbdfaaeb256cae
-	source_x86_64 = rebased-1.1.16-x86_64.tar.gz::https://github.com/DetachHead/rebased/releases/download/1.1.16/rebased.tar.gz
-	sha256sums_x86_64 = 1cb7f6530741f697a5b1d6daed39c664ee3280d7731ff9f784b967117c753560
-	source_aarch64 = rebased-1.1.16-aarch64.tar.gz::https://github.com/DetachHead/rebased/releases/download/1.1.16/rebased-aarch64.tar.gz
-	sha256sums_aarch64 = 285b102fe98c129cb91a6a975f006df884ba79f8d00815869052448a8016ec5b
+	source_x86_64 = rebased-1.1.17-x86_64.tar.gz::https://github.com/DetachHead/rebased/releases/download/1.1.17/rebased.tar.gz
+	sha256sums_x86_64 = b7f4b6a9d24ae8b03019ca091526ae60154b01a00122af9324d748240d6da20f
+	source_aarch64 = rebased-1.1.17-aarch64.tar.gz::https://github.com/DetachHead/rebased/releases/download/1.1.17/rebased-aarch64.tar.gz
+	sha256sums_aarch64 = e8129f0f9d5b4bfee1c40dcddf1ad073b8b2cd1b75107286b319ad1e69617b13
 
 pkgname = rebased-bin
