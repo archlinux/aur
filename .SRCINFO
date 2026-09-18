@@ -1,6 +1,6 @@
 pkgbase = libresprite-git
-	pkgdesc = Animated sprite editor and pixel art tool
-	pkgver = 1.2.r14.g94f52fa
+	pkgdesc = Animated sprite editor and pixel art tool, based on the last GPL2 commit of Aseprite
+	pkgver = 1.2.r49.g5b283d7
 	pkgrel = 1
 	url = https://github.com/LibreSprite/LibreSprite
 	arch = x86_64
@@ -22,12 +22,6 @@ pkgbase = libresprite-git
 	provides = libresprite
 	conflicts = libresprite
 	source = libresprite::git+https://github.com/LibreSprite/LibreSprite.git
-	source = aseprite.flic::git+https://github.com/aseprite/flic.git
-	source = aseprite.simpleini::git+https://github.com/aseprite/simpleini.git
-	source = libresprite.duktape::git+https://github.com/libresprite/duktape.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = libresprite-git

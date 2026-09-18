@@ -3,10 +3,10 @@
 
 _pkgname="libresprite"
 pkgname="$_pkgname-git"
-pkgver=1.2.r14.g94f52fa
+pkgver=1.2.r49.g5b283d7
 pkgrel=1
-pkgdesc="Animated sprite editor and pixel art tool"
-url='https://github.com/LibreSprite/LibreSprite'
+pkgdesc="Animated sprite editor and pixel art tool, based on the last GPL2 commit of Aseprite"
+url="https://github.com/LibreSprite/LibreSprite"
 license=('GPL-2.0-only')
 arch=('x86_64' 'i686')
 
@@ -32,19 +32,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=(
-  "$_pkgsrc"::"git+https://github.com/LibreSprite/LibreSprite.git"
-  'aseprite.flic'::'git+https://github.com/aseprite/flic.git'
-  'aseprite.simpleini'::'git+https://github.com/aseprite/simpleini.git'
-  'libresprite.duktape'::'git+https://github.com/libresprite/duktape.git'
-)
-
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
@@ -54,17 +43,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgsrc"
-  local _submodules=(
-    'aseprite.flic'::'src/flic'
-    'aseprite.simpleini'::'third_party/simpleini'
-    'libresprite.duktape'::'third_party/duktape'
-  )
-  local _module
-  for _module in "${_submodules[@]}"; do
-    git submodule init "${_module##*::}"
-    git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-    git -c protocol.file.allow=always submodule update "${_module##*::}"
-  done
+  git submodule update --init --recursive --depth=1
 }
 
 build() {
@@ -77,7 +56,7 @@ build() {
     -DUSE_SDL2_BACKEND=ON
     -DWITH_WEBP_SUPPORT=ON
     -DWITH_DESKTOP_INTEGRATION=ON
-    -Wno-dev
+    -Wno-author
   )
 
   cmake "${_cmake_options[@]}"
