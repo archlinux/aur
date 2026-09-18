@@ -2,12 +2,13 @@
 _basename=beets-filetote
 pkgname=${_basename}-bin
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin for beets that moves non-music files during import & other operations."
 arch=('any')
 url="https://github.com/gtronset/beets-filetote"
 license=('MIT')
 depends=('python>=3.10'
+    'python-mediafile'
     'beets')
 makedepends=('python-installer')
 source=("${url}/releases/download/v${pkgver}/beets_filetote-${pkgver}-py3-none-any.whl")
@@ -16,6 +17,9 @@ sha256sums=('52e9732cbb9bf58e10c11b5fbeb0d99ff22698551e0584f5b412e25f6d42d6a7')
 
 package() {
     python -m installer --destdir="${pkgdir}" "${srcdir}"/*.whl
+
+    install -Dm644 "${pkgdir}"/usr/lib/python*/site-packages/beets_filetote-"${pkgver}".dist-info/licenses/LICENSE \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     rm -f "${pkgdir}"/usr/lib/python*/site-packages/beetsplug/__init__.py
     rm -f "${pkgdir}"/usr/lib/python*/site-packages/beetsplug/__pycache__/__init__.cpython-*.opt-*.pyc
