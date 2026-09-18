@@ -1,6 +1,6 @@
 pkgbase = rv
 	pkgdesc = A declarative R package manager
-	pkgver = 0.23.0
+	pkgver = 0.23.1
 	pkgrel = 1
 	url = https://github.com/a2-ai/rv
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rv
 	conflicts = rv-bin
 	options = !lto
 	options = !debug
-	source = rv-0.23.0.tar.gz::https://github.com/a2-ai/rv/archive/v0.23.0.tar.gz
-	sha512sums = 6accebf1525d0c2fea36ad8cab9173251b0c9cd02500fd42d3f8247daed3f927a053ec96d93cbd47b1a0e481ee934352b8dca009384cb93817d31483dc94d2e7
+	source = rv-0.23.1.tar.gz::https://github.com/a2-ai/rv/archive/v0.23.1.tar.gz
+	sha512sums = 49d8362c4f59b5a24585d5cf25a9b72f9510c2e49bdc5be02a6d960add6eabe72cc85f078fcfdeb69a61762c78adfcbf5aabec5bee63bec4924be90fcb25f07d
 
 pkgname = rv
