@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=gitpane
-pkgver=0.15.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc='Multi-repo Git workspace dashboard for the terminal'
 arch=(
@@ -29,16 +29,16 @@ provides=('gitpane')
 conflicts=('gitpane-git' 'gitpane-bin')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    'disable-self-updates.patch'
+    '0001-clean-disable-the-self-update-subcommand.patch'
 )
 sha256sums=(
-    'e23ba1fae2b8ced2019299c86b994895caa64e966f7f3dab543d25dc417cad70'
-    '5b6b6bd1ab83ddf83484106219ffdb06cd52e17a0803ed0d0c28493f74ecbca2'
+    '9e75850c6a88157a11cead9a99be025018aa39fd85a22f3d2d1b5ff88e31e0b2'
+    '585746e0713807290faffbb4521668c1f15d1d96ecef6a7cc0b393dce272d2c3'
 )
 
 prepare() {
     cd "$pkgname-$pkgver"
-    patch -p1 < ../disable-self-updates.patch
+    patch -p1 < ../0001-clean-disable-the-self-update-subcommand.patch
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
