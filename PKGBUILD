@@ -2,7 +2,7 @@
 _pkgname=shrimply
 pkgname="${_pkgname}-git"
 pkgver=r422.f6fc8ee9
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple, fast GPU-accelerated video editor"
 arch=('x86_64')
 url="https://github.com/soirihiroka/shrimply"
@@ -49,11 +49,13 @@ options=('!debug')
 source=(
   "${_pkgname}::git+https://github.com/soirihiroka/shrimply.git#branch=main"
   "shrimply-manim-system-path.patch"
+  "shrimply-opencv5.patch"
 )
 
 sha256sums=(
   'SKIP'
   '3d648690fb909f6252b0392d1d5fcbf698d312f1691a4c255707c90131652a9f'
+  '1cb0477fcbe96d374cbd7a36d01df51ee61c7e6ca122d33754debe02b5f6b598'
 )
 
 pkgver() {
@@ -84,6 +86,9 @@ prepare() {
   # Apply path patch for installed Manim worker and user cache virtual environment
   patch -Np1 -i "${srcdir}/shrimply-manim-system-path.patch"
 
+  # Apply OpenCV 5 compatibility patch for Arch Linux
+  patch -Np1 -i "${srcdir}/shrimply-opencv5.patch"
+
   # Ensure the pinned Rust toolchain is available
   if ! rustup run nightly-2026-04-03 rustc --version &>/dev/null; then
     msg2 "Installing required Rust toolchain nightly-2026-04-03..."
@@ -104,6 +109,8 @@ build() {
   export PATH="${CUDA_HOME}/bin:${PATH}"
   export LIBRARY_PATH="${CUDA_HOME}/lib64/stubs:${LIBRARY_PATH}"
   export LIBCLANG_PATH="${LIBCLANG_PATH:-/usr/lib}"
+  export RUSTFLAGS=""
+  export LDFLAGS=""
 
   # OptiX headers: prefer Arch package (/usr/include/optix.h)
   if [ -f /usr/include/optix.h ]; then
@@ -147,6 +154,8 @@ package() {
   export PATH="${CUDA_HOME}/bin:${PATH}"
   export LIBRARY_PATH="${CUDA_HOME}/lib64/stubs:${LIBRARY_PATH}"
   export LIBCLANG_PATH="${LIBCLANG_PATH:-/usr/lib}"
+  export RUSTFLAGS=""
+  export LDFLAGS=""
 
   if [ -f /usr/include/optix.h ]; then
     export OPTIX_ROOT=/usr
