@@ -6,11 +6,13 @@ This script was written by Grok 4.5 (medium).
 Always run interactively in a terminal (no CLI flags). The script finds a
 newer qualifying IDEA tag, resolves its build number (prompting when Git /
 YouTrack are not enough), edits PKGBUILD, refreshes checksums / .SRCINFO,
-builds with ``makepkg -s`` (exit 13 = already built), installs with
-``makepkg -i``, confirms the pacman package version, verifies
-``product-info.json`` from the archive and install, asks ``y`` that IDEA
-launches, commits, shows ``git log -p`` of unpushed commits vs upstream,
-asks ``y`` to push, then ``git push``.
+builds with ``makepkg -Csc`` (``-C``/``--cleanbuild`` and ``-c``/``--clean``
+per the ArchWiki makepkg page so successive builds do not reuse a dirty
+``$srcdir``; exit 13 = already built), installs with ``makepkg -i``,
+confirms the pacman package version, verifies ``product-info.json`` from
+the archive and install, asks ``y`` that IDEA launches, commits, shows
+``git log -p`` of unpushed commits vs upstream, asks ``y`` to push, then
+``git push``, then offers to delete the built ``.pkg.tar.*`` archive(s).
 
 Pitfalls this encodes (from PKGBUILD comments and package Git history):
 
@@ -1132,12 +1134,27 @@ def confirm_pacman_installed(repo: Path, plan: UpdatePlan) -> None:
     info(f"pacman: {PKGNAME} {actual} is installed")
 
 
+def make_build_dirs_removable(repo: Path) -> None:
+    """Owner-chmod src/pkg so makepkg -C/-c can rm Bazel mode-readonly trees."""
+    for name in ("src", "pkg"):
+        path = repo / name
+        if path.is_dir() and not path.is_symlink():
+            run(["chmod", "-R", "u+w", "--", str(path)], check=False)
+
+
 def build_package(repo: Path, plan: UpdatePlan) -> Path:
-    """Build with makepkg -s; exit 13 means the archive already exists."""
-    info("running makepkg -s (build only)")
-    completed = run(["makepkg", "-s"], cwd=repo, check=False)
+    """Build with makepkg -Csc; exit 13 means the archive already exists.
+
+    ``-C``/``--cleanbuild`` removes ``$srcdir`` before the build and ``-c``/
+    ``--clean`` removes work files after (ArchWiki makepkg: successive builds
+    in the same directory). VCS mirrors stay under the package directory
+    (default ``SRCDEST``) so cleanbuild does not re-clone from GitHub.
+    """
+    make_build_dirs_removable(repo)
+    info("running makepkg -Csc (cleanbuild, syncdeps, clean)")
+    completed = run(["makepkg", "-Csc"], cwd=repo, check=False)
     if completed.returncode not in {0, 13}:
-        die(f"makepkg -s failed with exit status {completed.returncode}")
+        die(f"makepkg -Csc failed with exit status {completed.returncode}")
     if completed.returncode == 13:
         info("continuing with the existing already-built archive")
     built = find_built_package(repo, plan)
@@ -1145,28 +1162,18 @@ def build_package(repo: Path, plan: UpdatePlan) -> Path:
         die(
             "no package matching "
             f"{PKGNAME}-{planned_pkgver(plan)}-*-x86_64.pkg.tar.* was found "
-            "after makepkg -s"
+            "after makepkg -Csc"
         )
     return built
 
 
-def build_and_install(repo: Path, plan: UpdatePlan) -> bool:
-    """Build, install, and confirm via pacman. Return True when that ran."""
-    if not prompt_yes(
-        "Build and install the package with makepkg now?",
-        default=True,
-    ):
-        warn(
-            "skipping makepkg; install this PKGBUILD on the workstation before "
-            "the product-info and launch checks"
-        )
-        return False
-
+def build_and_install(repo: Path, plan: UpdatePlan) -> None:
+    """Build, install, and confirm via pacman."""
+    info("building and installing with makepkg")
     package_path = build_package(repo, plan)
     info(f"installing {package_path.name} with makepkg -i")
     run(["makepkg", "-i"], cwd=repo)
     confirm_pacman_installed(repo, plan)
-    return True
 
 
 # Verify product-info and launch.
@@ -1380,6 +1387,27 @@ def commit_and_push(repo: Path, plan: UpdatePlan) -> None:
     info("push finished")
 
 
+def prompt_delete_built_packages(repo: Path, plan: UpdatePlan) -> None:
+    """After push, offer to remove this release's built archive(s)."""
+    paths = sorted(
+        path
+        for path in repo.glob(f"{PKGNAME}-{planned_pkgver(plan)}-*-x86_64.pkg.tar.*")
+        if path.is_file()
+    )
+    if not paths:
+        info("no built package archive present to delete")
+        return
+    info("built package archive(s):")
+    for path in paths:
+        print(f"  {path.name}")
+    if not prompt_yes("Delete built package archive(s) now?", default=False):
+        info("keeping built package archive(s)")
+        return
+    for path in paths:
+        path.unlink()
+        info(f"deleted {path.name}")
+
+
 # Program entry.
 
 
@@ -1416,16 +1444,14 @@ def main() -> int:
     plan = complete_plan(plan, load_remote_tags(ANDROID_GIT))
 
     print_plan(state, plan, idea_tags=idea_tags)
-    if not prompt_yes("Apply these PKGBUILD changes?", default=True):
-        die("stopped before editing PKGBUILD")
-
-    info(f"writing {PKGBUILD_NAME}")
+    info(f"applying PKGBUILD changes and writing {PKGBUILD_NAME}")
     pkgbuild_path.write_text(apply_plan(text, plan), encoding="utf-8")
     post_edit_verify(repo)
 
-    installed = build_and_install(repo, plan)
-    confirm_release_and_launch(repo, plan, installed=installed)
+    build_and_install(repo, plan)
+    confirm_release_and_launch(repo, plan, installed=True)
     commit_and_push(repo, plan)
+    prompt_delete_built_packages(repo, plan)
     return 0
 
 
