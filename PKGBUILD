@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=appimage-installer-git
-pkgver=2.0beta2.r0.g259510f
-pkgrel=1
+pkgver=2.0beta2.r3.gd16ea8d
+pkgrel=3
 pkgdesc="AppImage install tool."
 arch=('x86_64')
 url="https://gitee.com/deepin-opensource/appimage-installer"
@@ -15,16 +15,19 @@ depends=(
     dtkcore
     dtkwidget
     dtkgui
-    gcc-libs
+    libgcc
+    libstdc++
     glibc
     hicolor-icon-theme
     qt5-base
     qt5-svg
-    python)
+    python
+)
 makedepends=(
     git
     qconf
-    qt5-tools)
+    qt5-tools
+)
 backup=()
 options=()
 # install=${pkgname}.install
@@ -34,6 +37,14 @@ sha256sums=('SKIP')
 pkgver(){
     cd "${srcdir}/${_pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare(){
+    git -C "${srcdir}/${_pkgname}" clean -dfx
+    cd "${srcdir}/${_pkgname}"
+    if [ -f version ]; then
+        echo "#define APP_VERSION \"$(cat version)\"" > version
+    fi
 }
 
 build() {
