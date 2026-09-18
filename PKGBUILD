@@ -1,7 +1,7 @@
 # Maintainer: komaruworld <rtysus228 at gmail dot com>
 
 pkgname=mocktail-git
-pkgver=1.0.4.r125.gb54c896
+pkgver=1.0.4.r126.g8549694
 pkgrel=1
 pkgdesc='Android x86-64 Roblox compatibility runtime for Linux'
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
   'libelf'
   'libglvnd'
   'libplacebo'
+  'libpng'
   'libsoup3'
   'libutf8proc'
   'libyaml'
