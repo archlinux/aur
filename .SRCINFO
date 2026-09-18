@@ -1,12 +1,12 @@
 pkgbase = fbv
 	pkgdesc = FrameBuffer image viewer
 	pkgver = 1.0c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jstkdng/fbv
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = libpng
-	depends = libjpeg
+	depends = libjpeg-turbo
 	source = https://github.com/jstkdng/fbv/archive/refs/tags/1.0c.tar.gz
 	sha256sums = b9884211d499682aa9d149dd4829dbe835f5b0166a73fbe95f58b935b102fcf4
 

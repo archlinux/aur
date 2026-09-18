@@ -5,12 +5,12 @@
 
 pkgname=fbv
 pkgver=1.0c
-pkgrel=1
+pkgrel=2
 pkgdesc="FrameBuffer image viewer"
 arch=("x86_64")
 url="https://github.com/jstkdng/fbv"
 license=("GPL-2.0-only")
-depends=("libpng" "libjpeg")
+depends=("libpng" "libjpeg-turbo")
 source=("https://github.com/jstkdng/fbv/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('b9884211d499682aa9d149dd4829dbe835f5b0166a73fbe95f58b935b102fcf4')
 
