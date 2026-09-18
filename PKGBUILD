@@ -2,7 +2,7 @@
 _pkgname=shrimply
 pkgname="${_pkgname}-git"
 pkgver=r422.f6fc8ee9
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple, fast GPU-accelerated video editor"
 arch=('x86_64')
 url="https://github.com/soirihiroka/shrimply"
@@ -49,13 +49,13 @@ options=('!debug')
 source=(
   "${_pkgname}::git+https://github.com/soirihiroka/shrimply.git#branch=main"
   "shrimply-manim-system-path.patch"
-  "shrimply-opencv5.patch"
+  "shrimply-arch-compat.patch"
 )
 
 sha256sums=(
   'SKIP'
   '3d648690fb909f6252b0392d1d5fcbf698d312f1691a4c255707c90131652a9f'
-  '1cb0477fcbe96d374cbd7a36d01df51ee61c7e6ca122d33754debe02b5f6b598'
+  '0dcee6095d5829fa875b1e3c805d55678c2ca2e2df98ec8c19e6033a5890d676'
 )
 
 pkgver() {
@@ -86,8 +86,8 @@ prepare() {
   # Apply path patch for installed Manim worker and user cache virtual environment
   patch -Np1 -i "${srcdir}/shrimply-manim-system-path.patch"
 
-  # Apply OpenCV 5 compatibility patch for Arch Linux
-  patch -Np1 -i "${srcdir}/shrimply-opencv5.patch"
+  # Apply Arch Linux compatibility patch (OpenCV 5, CUDA 13, release flags, curl fetch)
+  patch -Np1 -i "${srcdir}/shrimply-arch-compat.patch"
 
   # Ensure the pinned Rust toolchain is available
   if ! rustup run nightly-2026-04-03 rustc --version &>/dev/null; then

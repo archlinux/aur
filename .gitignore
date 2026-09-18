@@ -2,7 +2,7 @@
 !.SRCINFO
 !PKGBUILD
 !shrimply-manim-system-path.patch
-!shrimply-opencv5.patch
+!shrimply-arch-compat.patch
 !.gitignore
 !test-build.sh
 !README.md

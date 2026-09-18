@@ -1,7 +1,7 @@
 pkgbase = shrimply-git
 	pkgdesc = A simple, fast GPU-accelerated video editor
 	pkgver = r422.f6fc8ee9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/soirihiroka/shrimply
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -39,9 +39,9 @@ pkgbase = shrimply-git
 	options = !debug
 	source = shrimply::git+https://github.com/soirihiroka/shrimply.git#branch=main
 	source = shrimply-manim-system-path.patch
-	source = shrimply-opencv5.patch
+	source = shrimply-arch-compat.patch
 	sha256sums = SKIP
 	sha256sums = 3d648690fb909f6252b0392d1d5fcbf698d312f1691a4c255707c90131652a9f
-	sha256sums = 1cb0477fcbe96d374cbd7a36d01df51ee61c7e6ca122d33754debe02b5f6b598
+	sha256sums = 0dcee6095d5829fa875b1e3c805d55678c2ca2e2df98ec8c19e6033a5890d676
 
 pkgname = shrimply-git
