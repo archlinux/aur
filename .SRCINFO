@@ -1,8 +1,8 @@
 pkgbase = intel-ledmon
 	pkgdesc = Enclosure LED Utilities
 	pkgver = 1.1.0
-	pkgrel = 1
-	url = https://github.com/intel/ledmon
+	pkgrel = 2
+	url = https://github.com/md-raid-utilities/ledmon
 	arch = x86_64
 	arch = aarch64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = intel-ledmon
 	depends = sg3_utils
 	depends = systemd-libs
 	depends = pciutils
-	source = https://github.com/intel/ledmon/archive/refs/tags/v1.1.0.tar.gz
+	source = ledmon-1.1.0.tar.gz::https://codeload.github.com/md-raid-utilities/ledmon/tar.gz/refs/tags/v1.1.0
 	sha256sums = 4f626400e41ab1e4317b886db5b5df1afa517e8e4faa80fd4378fd22b0bcd055
 
 pkgname = ledmon

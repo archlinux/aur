@@ -4,21 +4,29 @@
 pkgbase='intel-ledmon'
 pkgname='ledmon'
 pkgver='1.1.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Enclosure LED Utilities'
 arch=('x86_64' 'aarch64')
-url="https://github.com/intel/${pkgname}"
+_uri="github.com/md-raid-utilities/${pkgname}"
+url="https://${_uri}"
 license=('GPL')
 depends=('sg3_utils' 'systemd-libs' 'pciutils')
 makedepends=('autoconf-archive' 'check' 'python-pytest')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/tar.gz/refs/tags/v${pkgver}")
 sha256sums=('4f626400e41ab1e4317b886db5b5df1afa517e8e4faa80fd4378fd22b0bcd055')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  sed --in-place \
+    --expression '/FORTIFY_SOURCE/d' \
+  "${pkgname}-${pkgver}/configure.ac"
+}
 
+build() {
+  cd "${pkgname}-${pkgver}"
   autoreconf -fvi
-  ./configure \
+  ./configure CFLAGS="${CFLAGS} ${DEBUG_CFLAGS}" \
+    CXXLAGS="${CXXFLAGS} ${DEBUG_CXXFLAGS}" \
+    LDLAGS="${LDFLAGS}" \
     --prefix="/usr" \
     --bindir="/usr/bin" \
     --sbindir="/usr/bin" \
@@ -31,11 +39,7 @@ prepare() {
     --enable-library \
     --enable-test \
     --enable-doc
-}
-
-build() {
-  cd "${pkgname}-${pkgver}"
-  make
+  make VERBOSE=1
 }
 
 check() {
