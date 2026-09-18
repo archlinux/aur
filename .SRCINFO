@@ -1,6 +1,6 @@
 pkgbase = uniclipboard-git
 	pkgdesc = Real-time clipboard sync across macOS, Windows and Linux — local-first, peer-to-peer, and end-to-end encrypted
-	pkgver = 1.0.0.alpha.16.r1.g9d2b524
+	pkgver = 1.0.0.alpha.16.r2.g9445f56
 	pkgrel = 1
 	url = https://www.uniclipboard.app
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = uniclipboard-git
 	depends = libayatana-appindicator
 	depends = libnotify
 	provides = uniclipboard
-	provides = uniclipboard=1.0.0.alpha.16.r1.g9d2b524
+	provides = uniclipboard=1.0.0.alpha.16.r2.g9445f56
 	conflicts = uniclipboard
 	conflicts = uniclipboard-bin
 	source = uniclipboard::git+https://github.com/UniClipboard/UniClipboard.git

@@ -11,7 +11,7 @@ pkgname=uniclipboard-git
 _pkgname=uniclipboard
 # pkgver 是 AUR web 上展示用的 snapshot；makepkg 实际编译时调用下方 pkgver() 重算。
 # CI 在 push 前会用 git describe 的当前值 sed 替换，保持 web 视图不过期。
-pkgver=1.0.0.alpha.16.r1.g9d2b524
+pkgver=1.0.0.alpha.16.r2.g9445f56
 pkgrel=1
 pkgdesc="Real-time clipboard sync across macOS, Windows and Linux — local-first, peer-to-peer, and end-to-end encrypted"
 arch=('x86_64' 'aarch64')
@@ -68,11 +68,11 @@ build() {
 package() {
   cd "$_pkgname"
 
-  install -Dm755 "src-tauri/target/release/$_pkgname" \
+  install -Dm755 "target/release/$_pkgname" \
                  "$pkgdir/usr/bin/$_pkgname"
 
   # ADR-008 D13: ship the daemon next to the GUI so it spawns as a sibling.
-  install -Dm755 "src-tauri/target/release/uniclipd" \
+  install -Dm755 "target/release/uniclipd" \
                  "$pkgdir/usr/bin/uniclipd"
 
   install -Dm644 "packaging/linux/$_pkgname.desktop" \
