@@ -10,9 +10,9 @@
 
 _pkgname="apollo"
 pkgname="$_pkgname-git"
-pkgver=0.4.8.r20.gdd99a82
+pkgver=0.4.8.r24.gadc5c5a
 pkgrel=2
-pkgdesc="A self-hosted game stream server"
+pkgdesc="GameStream server for Moonlight.  Alternative to Sunshine."
 url="https://github.com/ClassicOldSong/Apollo"
 license=('GPL-3.0-only')
 arch=('x86_64')
@@ -75,6 +75,7 @@ prepare() {
   local i _unwanted=(
     packaging/linux/flatpak/deps/flatpak-builder-tools
     packaging/linux/flatpak/deps/shared-modules
+    third-party/ViGEmClient
     third-party/doxyconfig
     third-party/nv-codec-headers
   )
@@ -132,7 +133,7 @@ build() (
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DBUILD_DOCS=OFF
     -DBUILD_TESTS=OFF
-    -Wno-dev
+    -Wno-author
 
     -DSUNSHINE_ASSETS_DIR="share/$_pkgname"
     -DSUNSHINE_EXECUTABLE_PATH="/usr/bin/$_pkgname"
@@ -169,7 +170,7 @@ package() {
     'mesa' # libgbm
   )
 
-  if [[ "$_use_sodeps::1}" == "t" ]]; then
+  if [[ "${_use_sodeps::1}" == "t" ]]; then
     eval "depends+=(
       'libboost_filesystem.so'
       'libboost_locale.so'
