@@ -1,20 +1,20 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.1.39
+pkgver=0.1.40
 pkgrel=1
 pkgdesc="Control suite and PipeWire submixer for Elgato XLR interfaces, with an OpenDeck plugin"
 arch=('x86_64')
 url="https://github.com/emaspa/openxlr"
 license=('GPL-3.0-only')
 depends=('aspnet-runtime' 'pipewire' 'pipewire-pulse' 'wireplumber' 'libpulse' 'libusb' 'lilv'
-         'fontconfig' 'libx11' 'libice' 'libsm')
+         'fontconfig' 'libx11' 'libice' 'libsm' 'glib2')
 makedepends=('dotnet-sdk' 'dotnet-targeting-pack' 'lv2' 'pkgconf')
 optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'lsp-plugins-lv2: a starter set of LV2 plugins for the inserts'
             'opendeck: Stream Deck control through the bundled plugin')
 install=openxlr.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1bf902dc642c1fded1bc412605c21dff7ded9380d46696e53d7ea6e8db3f5300')
+sha256sums=('56471ba69244a91146c07807af2c9aed540b6116016c3474cc74b69bdb316a4d')
 
 build() {
   cd "$pkgname-$pkgver/src"
