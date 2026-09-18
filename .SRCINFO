@@ -1,0 +1,21 @@
+pkgbase = qemu-windows-launcher
+	pkgdesc = Interactive launcher for a Windows drive in a QEMU/KVM VM
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dasbd72/qemu-windows-launcher
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = qemu-desktop
+	depends = edk2-ovmf
+	depends = sudo
+	provides = qemu-windows-launcher
+	source = qemu-windows-launcher::git+https://github.com/dasbd72/qemu-windows-launcher.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = qemu-windows-launcher
