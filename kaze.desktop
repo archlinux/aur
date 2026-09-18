@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Kaze
+Comment=A calm, intelligent local music player
+Exec=kaze
+Icon=kaze
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Player;Music;
+StartupWMClass=kaze
