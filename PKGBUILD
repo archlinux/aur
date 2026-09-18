@@ -4,7 +4,7 @@
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=hplip-plugin
-pkgver=3.26.4
+pkgver=3.26.6
 pkgrel=1
 pkgdesc="Binary plugin for HPs hplip printer driver library"
 arch=(x86_64 aarch64 armv6h armv7h i686)
@@ -17,11 +17,11 @@ depends=("hplip>=$pkgver")
 makedepends=(python)
 options=(!debug) # Binary package cannot produce correct debug information
 # https://developers.hp.com/hp-linux-imaging-and-printing/plugins
-_date=2026-05
+_date=2026-09
 source=("$pkgname-$pkgver.run::https://developers.hp.com/sites/default/files/$_date/hplip-$pkgver-plugin.run"
         "$pkgname-$pkgver.run.asc::https://developers.hp.com/sites/default/files/$_date/hplip-$pkgver-plugin.run.asc"
         "scan-plugin-spec.py")
-sha256sums=('199f78f8af7f36894d7180e9090963ce2550a75ec701f8a4ba37665a9746fdf0'
+sha256sums=('bb830712bfacc4567e8714522f1359a749df344786256c8513ededf3e9455325'
             'SKIP'
             'c6da101f46546f2145ecc0bf9b7bbb3fb5ecb40e799274e62a7e9bc435924d25')
 validpgpkeys=('82FFA7C6AA7411D934BDE173AC69536A2CF3A243') # HPLIP (HP Linux Imaging and Printing) <hplip@hp.com>
@@ -31,7 +31,7 @@ _user_agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gec
 DLAGENTS=("https::/usr/bin/curl --user-agent ${_user_agent// /\\ } -qgb '' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 prepare() {
-  sh "$pkgname-$pkgver.run" --target "$srcdir/$pkgname-$pkgver" --noexec
+  sh "$pkgname-$pkgver.run" --target "$srcdir/$pkgname-$pkgver" --noexec --nox11
 }
 
 package() {
