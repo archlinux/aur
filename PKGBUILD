@@ -10,7 +10,7 @@
 # Maintainer: Kordian Bruck <k@bruck.me>
 
 pkgname=android-studio
-pkgver=2026.1.4.7
+pkgver=2026.1.4.8
 _vername="quail4"
 pkgrel=1
 pkgdesc="The official Android IDE (Stable branch)"

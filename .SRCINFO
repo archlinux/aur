@@ -1,6 +1,6 @@
 pkgbase = android-studio
 	pkgdesc = The official Android IDE (Stable branch)
-	pkgver = 2026.1.4.7
+	pkgver = 2026.1.4.8
 	pkgrel = 1
 	url = https://developer.android.com/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = android-studio
 	optdepends = ncurses5-compat-libs: native debugger support
 	optdepends = vulkan-icd-loader: Vulkan acceleration for Gemini local models
 	options = !strip
-	source = https://dl.google.com/dl/android/studio/ide-zips/2026.1.4.7/android-studio-quail4-linux.tar.gz
+	source = https://dl.google.com/dl/android/studio/ide-zips/2026.1.4.8/android-studio-quail4-linux.tar.gz
 	source = android-studio.desktop
 	source = license.html
 	b2sums = c4f0dfad8eff9b8d0d9f2040dc9f26f2c60f7330226060ec1c9254f3a2ee8a8296c6be9002c7ef8818b18730d34dbe67b516036c4ad0378c4f4f6ba857571e5a
