@@ -1,4 +1,4 @@
 [basic256]
-source = "regex"
-url = "https://sourceforge.net/projects/kidbasic/files/"
-regex = "basic256_(\\d[\\d.]+)\\.orig\\.tar"
+source = "github"
+github = "uglymike17/basic256"
+use_latest_release = true
