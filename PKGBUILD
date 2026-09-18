@@ -1,7 +1,7 @@
 # Maintainer: Umar Alfarouk <medrivia@gmail.com>
 
 pkgname=mpv-music
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc='Blazing-fast, terminal-native music player and library browser for mpv'
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ optdepends=('yt-dlp: for playing URLs'
             'nodejs: alternative JS runtime for YouTube playback')
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7f8d5400cff02af0bb5b437ea3d7fba1ec336e657849aeea5bd42cc7885e36ee')
+sha256sums=('644a9a32a1e1d5a075d048305b0c6f881092976076aa96d400bdd2abc8a8a0f6')
 
 # NOTE: the 'update' self-updater feature is intentionally not enabled;
 # updates arrive via pacman.
