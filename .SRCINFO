@@ -1,6 +1,6 @@
 pkgbase = music-assistant-desktop-bin
 	pkgdesc = Music Assistant Desktop Companion App
-	pkgver = 0.6.7
+	pkgver = 0.6.9
 	pkgrel = 1
 	url = https://github.com/music-assistant/desktop-app
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = music-assistant-desktop-bin
 	conflicts = music-assistant-desktop-app-git
 	options = !strip
 	options = !debug
-	source = music-assistant-desktop-bin-0.6.7.deb::https://github.com/music-assistant/desktop-app/releases/download/0.6.7/Music.Assistant_0.6.7_amd64.deb
-	source = LICENSE-0.6.7::https://raw.githubusercontent.com/music-assistant/desktop-app/0.6.7/LICENSE
-	sha256sums = fbc3603d983fade44eb88564477ec33bda8deb7ea0f0bad1fbdae8a964e45b3e
+	source = music-assistant-desktop-bin-0.6.9.deb::https://github.com/music-assistant/desktop-app/releases/download/0.6.9/Music.Assistant_0.6.9_amd64.deb
+	source = LICENSE-0.6.9::https://raw.githubusercontent.com/music-assistant/desktop-app/0.6.9/LICENSE
+	sha256sums = f4c0f8c4307de484f0b13c5d23c385eafd15fdf6daeb77178e6182ce4b8b0b22
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
 pkgname = music-assistant-desktop-bin
