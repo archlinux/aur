@@ -3,7 +3,7 @@
 # `kobectl` workspace crate and installs as the `kobe` binary.
 # pkgver + checksum are refreshed by kunobi-ninja/kobe CI on each stable release.
 pkgname=kobe
-pkgver=0.51.0
+pkgver=0.51.1
 pkgrel=1
 pkgdesc='CLI for pools of pre-warmed Kubernetes virtual clusters'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kunobi-ninja/kobe/archive/v$pkgver.tar.gz")
-sha256sums=('ae773c70eb2880ab71c98da36d3c1f3f0de9fbc8dc6b3eed28e54ac5b183085c')
+sha256sums=('a045b9d28933c51f8bf9c98c4c264591c71794a8fd1f96c3fef66c70cc38d54a')
 
 prepare() {
   cd "kobe-$pkgver"
