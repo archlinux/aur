@@ -1,4 +1,4 @@
-# Maintainer: musqz
+# Maintainer: musqz <gummy-fang-deputy@duck.com>
 # Based on enpass-bin from the AUR
 
 pkgname='enpass-x11-bin'
