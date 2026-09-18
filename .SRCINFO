@@ -1,0 +1,12 @@
+pkgbase = url-open
+	pkgdesc = A CLI tool for opening URLs in the system browser
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/unsubble/url-open
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = url-open-1.1.0.tar.gz::https://github.com/unsubble/url-open/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = url-open
