@@ -14,7 +14,7 @@ optdepends=('vlc: alternative player'
             'rofi: alternative selection menu'
             'dmenu: alternative selection menu')
 source=("https://github.com/spaciousejar/vicine-cli/archive/v${pkgver}.tar.gz")
-sha256sums=('a9970ae16ea83b4c929d1496f23e96a964678779afad0360159cc6b405fd7a91')
+sha256sums=('772b4f466f6ec39f1a1b670daa333806f12e57a37760a5c08d5f40f79613efc5')
 
 package() {
     install -Dm755 "vicine-cli-${pkgver}/vicine" "${pkgdir}/usr/bin/vicine"
