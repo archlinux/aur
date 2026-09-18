@@ -1,27 +1,27 @@
 # Maintainer: sfn
 
-pkgbase='zl-equalizer'
-pkgname=('zl-equalizer-vst3' 'zl-equalizer-lv2' 'zl-equalizer')
+pkgbase='zl-spectrum-equalizer'
+pkgname=('zl-spectrum-equalizer-vst3' 'zl-spectrum-equalizer-lv2' 'zl-spectrum-equalizer')
 groups=('zl-audio' 'pro-audio')
-pkgver=1.3.1
+pkgver=0.0.3
 pkgrel=1
 options=()
-pkgdesc="Parametric, dynamic equalizer plugin by ZL Audio"
+pkgdesc="Spectrum equalizer plugin by ZL Audio"
 arch=('x86_64')
-url="https://zl-audio.github.io/plugins/zlequalizer2/"
+url="https://zl-audio.github.io/plugins/zlspeceq/"
 license=('AGPL-3.0')
 depends=('expat' 'freetype2' 'fontconfig' 'nlopt' 'highway' 'zlib' 'bzip2' 'libpng' 'brotli' 'alsa-lib')
 makedepends=('git' 'cmake' 'at-spi2-core' 'cairo' 'gtk3' 'gdk-pixbuf2' 'glib2' 'harfbuzz' 'pango' 'libsoup3')
 
-source=("git+https://github.com/ZL-Audio/ZLEqualizer#tag=${pkgver}"
+source=("git+https://github.com/ZL-Audio/ZLSpectrumEqualizer#tag=${pkgver}"
 		"git+https://github.com/ZL-Audio/JUCE#tag=176e410"
 		"git+https://github.com/ZL-Audio/zldsp_fft.git#tag=0215d7e")
-sha256sums=('abaebb176e0a125bf79ab1b73b01643db3378bbf1c0144f4ef35df7788535064'
+sha256sums=('8503e23bc20ca65bfec9cff51439e1fa3780eb75e8f0c4bcd0818ec0a75e058d'
             'ac62a6e5d36059845cf2ad61b1004b5e2b358604d303894c8ea237269c0d22bd'
             '471edb86c89d5dc9fd60cb75e2768bfe86b34f7c072f0c9dd5f4c4f18b2e5671')
 
 prepare() {
-	cd ZLEqualizer
+	cd ZLSpectrumEqualizer
 
 	git submodule init
 	git config submodule."JUCE".url "${srcdir}/JUCE"
@@ -35,7 +35,7 @@ prepare() {
 }
 
 build() {
-	cd ZLEqualizer
+	cd ZLSpectrumEqualizer
 
 	cmake -B Builds \
 	      -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DCMAKE_SKIP_INSTALL_RPATH=YES \
@@ -43,24 +43,24 @@ build() {
 	make -C Builds
 }
 
-package_zl-equalizer-vst3() {
+package_zl-spectrum-equalizer-vst3() {
 	groups+=('vst3-plugins')
 	pkgdesc+=' (VST3 version)'
 	replaces+=('zl-equalizer-vst')
 	mkdir -p ${pkgdir}/usr/lib/vst3/
-	cp -r ${srcdir}/ZLEqualizer/Builds/ZLEqualizer_artefacts/VST3/* ${pkgdir}/usr/lib/vst3/
-	install -Dm755 ${srcdir}/ZLEqualizer/LICENSE.md ${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md"
+	cp -r ${srcdir}/ZLSpectrumEqualizer/Builds/ZLSpectrumEqualizer_artefacts/VST3/* ${pkgdir}/usr/lib/vst3/
+	install -Dm755 ${srcdir}/ZLSpectrumEqualizer/LICENSE.md ${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
-package_zl-equalizer-lv2() {
+package_zl-spectrum-equalizer-lv2() {
 	groups+=('lv2-plugins')
 	pkgdesc+=' (LV2 version)'
 	mkdir -p ${pkgdir}/usr/lib/lv2/
-	cp -r ${srcdir}/ZLEqualizer/Builds/ZLEqualizer_artefacts/LV2/* ${pkgdir}/usr/lib/lv2/
-	install -Dm755 ${srcdir}/ZLEqualizer/LICENSE.md ${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md"
+	cp -r ${srcdir}/ZLSpectrumEqualizer/Builds/ZLSpectrumEqualizer_artefacts/LV2/* ${pkgdir}/usr/lib/lv2/
+	install -Dm755 ${srcdir}/ZLSpectrumEqualizer/LICENSE.md ${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
-package_zl-equalizer() {
+package_zl-spectrum-equalizer() {
   pkgdesc+=' (metapackage that requires all plugin formats)'
-  depends+=('zl-equalizer-vst3' 'zl-equalizer-lv2')
+  depends+=('zl-spectrum-equalizer-vst3' 'zl-spectrum-equalizer-lv2')
 }
