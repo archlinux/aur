@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # Get new version info
-VER=$(curl https://www.microsip.org/check-version | grep "Update available" | cut -d ':' -f2 | cut -d '<' -f1 | xargs)
+#VER=$(curl https://www.microsip.org/check-version | grep "Update available" | cut -d ':' -f2 | cut -d '<' -f1 | xargs)
+VER=$(curl https://www.microsip.org/check-version | grep "strong>Version" | cut -d '>' -f2 | cut -d '<' -f1 | cut -d ' ' -f2 | xargs)
 
 # Update PKGBUILD
 sed -i "s/pkgver=.*$/pkgver=$VER/g" PKGBUILD 
