@@ -4,7 +4,7 @@
 
 pkgname=room-arranger
 _pkgname=rooarr
-pkgver=11.1.0
+pkgver=11.2.0
 pkgrel=1
 pkgdesc="3D room / apartment / floor planner with simple user interface."
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip' '!debug')
 source=("https://f000.backblazeb2.com/file/rooarr/rooarr${pkgver//./}-linux64.tar.gz"
         "${_pkgname}_run.sh"
         "${pkgname//-/}.desktop")
-sha512sums=('38b6a8355c2b834021051de66e5a30dbf11ce5f6b4cd3f997b6110e7ecc10acf5b9dd827bab9a9adbcac6ffd5bbd2db7f170c09a371f5371ca52ed404ac08fcd'
+sha512sums=('24387ae039d995a7dfd06f4a5f89af83c619ff8dbe87e328b4c42f137eb69ce1cda4c808bb29a1e2ae8d9eecd80af714c90102f0d695a1803022ee6b7e2c5b01'
             '4fb685442c7527ae8494cc700c6e06dd37cdf1e21d3beb1b2479e98840329b612ec8ffb2f6b5e8e43a7cfda57800b2aee2b8bf0e1608f5fb510f68558be19663'
             '73799a47527485f0b2102ee1eba33ad8e86bf3b269697588390064467323e4ed44fc49d8b6a18b113d0a62ddf81178e8b0dbca2f321d4c52016ee2d8afeb165d')
 
