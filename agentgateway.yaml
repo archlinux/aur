@@ -1,23 +1,28 @@
-# Default agentgateway configuration
-# This configuration sets up a basic gateway that listens on port 3000
-# and connects to an example MCP server using stdio
+# Default agentgateway configuration.
+#
+# Intentionally inert: the only route answers GET /healthz for Host
+# 127.0.0.1, so the service starts without fetching or executing anything.
+# Configure real listeners, routes and MCP targets here.
+#
+# Examples: https://github.com/agentgateway/agentgateway/tree/main/examples
+# Schema:   https://agentgateway.dev/schema/config
+#
+# NOTE: MCP `stdio` targets make agentgateway spawn the given command
+# (e.g. `npx <package>`, which downloads code at runtime). Only add such
+# targets for commands you installed and trust.
 
+# yaml-language-server: $schema=https://agentgateway.dev/schema/config
 binds:
   - port: 3000
     listeners:
-      - routes:
-          - policies:
-              cors:
-                allowOrigins:
-                  - "*"
-                allowHeaders:
-                  - mcp-protocol-version
-                  - content-type
-                  - cache-control
-            backends:
-              - mcp:
-                  targets:
-                    - name: everything
-                      stdio:
-                        cmd: npx
-                        args: ["@modelcontextprotocol/server-everything"]
+      - protocol: HTTP
+        hostname: 127.0.0.1
+        routes:
+          - name: health
+            matches:
+              - path:
+                  pathPrefix: /healthz
+            policies:
+              directResponse:
+                body: "ok"
+                status: 200
