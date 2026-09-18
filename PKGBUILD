@@ -16,7 +16,7 @@ makedepends=(git wget)
 optdepends=('ruby: for running some scripts' 'coffee-script: for running some scripts')
 provides=(howl)
 conflicts=(howl)
-source=(git+https://github.com/howl-editor/howl.git#branch=next)
+source=(git+https://github.com/howl-editor/howl.git)
 md5sums=(SKIP)
 
 pkgver() {
