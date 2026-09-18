@@ -1,10 +1,13 @@
 pkgbase = vic3-tiger-bin
 	pkgdesc = Checks game mod files for common mistakes and warns about them.
 	pkgver = 1.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amtep/tiger
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	depends = openssl
 	source = https://github.com/amtep/tiger/releases/download/v1.19.0/vic3-tiger-linux-v1.19.0.tar.gz
 	sha256sums = eff63a3f74646634f81d0f2fc4e7f631c2b9276055ce3cd0e0cace0866c64ec4
 
