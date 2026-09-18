@@ -21,13 +21,14 @@ depends=(
   'pipewire'
   'poppler-glib'
   'python'
-  'python-manimgl'
   'rubberband'
   'uv'
 )
 optdepends=(
   'nvidia-utils: hardware acceleration for NVIDIA GPUs and CUDA'
   'cuda: runtime CUDA toolkit and development utilities'
+  'optix: NVIDIA OptiX development headers from AUR (optix-dev-headers)'
+  'shader-slang: system Slang shading language compiler from AUR'
 )
 makedepends=(
   'clang'
@@ -38,10 +39,8 @@ makedepends=(
   'gobject-introspection'
   'make'
   'ninja'
-  'optix'
   'pkgconf'
   'rustup'
-  'shader-slang'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -65,16 +64,15 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  # Prefer system OptiX package (optix / optix-dev-headers) over vendored submodule
+  # OptiX: prefer system package (/usr/include/optix.h); fallback to submodule
   if [ ! -f /usr/include/optix.h ]; then
     git submodule update --init external/optix-dev
   fi
 
-  # Prefer system python-manimgl package over vendored submodule
+  # Manim: prefer system python manimlib if installed; fallback to submodule
   if ! python3 -c 'import manimlib' &>/dev/null && [ ! -d /usr/lib/python*/site-packages/manimlib ]; then
     git submodule update --init external/manim
   else
-    # Remove editable path override so uv resolves manimgl from the system environment
     sed -i '/\[tool\.uv\.sources\]/,+1d' crates/media/visual/manim/manim-bridge/python/pyproject.toml
   fi
 
@@ -114,7 +112,7 @@ build() {
     export OPTIX_ROOT="${srcdir}/${_pkgname}/external/optix-dev"
   fi
 
-  # Slang shader compiler: prefer Arch package (shader-slang)
+  # Slang compiler: prefer Arch package (shader-slang) if installed
   if [ -f /usr/include/shader-slang/slang.h ] && [ -f /usr/lib/libslang.so ]; then
     export SLANG_INCLUDE_DIR=/usr/include/shader-slang
     export SLANG_LIBRARY_DIR=/usr/lib
