@@ -1,0 +1,36 @@
+pkgbase = omp-bun
+	pkgdesc = AI Coding agent for the terminal (built with system bun, non-standalone)
+	pkgver = 18.2.5
+	pkgrel = 1
+	url = https://omp.sh/
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	makedepends = make
+	makedepends = ninja
+	depends = bun
+	depends = gcc-libs
+	depends = glibc
+	optdepends = alsa-lib: ALSA fallback for live voice, STT, and TTS
+	optdepends = at-spi2-core: Linux accessibility backend for the computer tool
+	optdepends = chromium: system browser for the browser tool
+	optdepends = git: repository integration and isolated task worktrees
+	optdepends = julia: Julia eval backend
+	optdepends = libpulse: PulseAudio/PipeWire-Pulse client backend for live voice, STT, and TTS
+	optdepends = python: Python 3.10+ eval backend
+	optdepends = xdg-desktop-portal: Wayland ScreenCast and RemoteDesktop portals for the computer tool
+	optdepends = xdg-desktop-portal-impl: compositor-specific backend for Wayland computer tool portals
+	provides = omp
+	provides = oh-my-pi
+	provides = oh-my-pi-git
+	conflicts = omp
+	conflicts = oh-my-pi
+	conflicts = oh-my-pi-git
+	options = !lto
+	options = !strip
+	source = omp-bun::git+https://github.com/can1357/oh-my-pi.git#tag=v18.2.5
+	sha256sums = SKIP
+
+pkgname = omp-bun
