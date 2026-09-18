@@ -1,0 +1,5 @@
+[aranet4]
+source = "git"
+git = "https://git.sr.ht/~sbinet/aranet4"
+release_url = "https://git.sr.ht/~sbinet/aranet4/refs/v__version__"
+prefix = "v"

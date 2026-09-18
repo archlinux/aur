@@ -1,7 +1,7 @@
 pkgbase = aranet4
 	pkgdesc = Driver and utilities for the Aranet4 air quality monitor
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~sbinet/aranet4
 	arch = x86_64
 	license = MIT
@@ -16,3 +16,6 @@ pkgname = aranet4-ls
 
 pkgname = aranet4-srv
 	pkgdesc = Simple HTTP server that plots the full history of data samples from an Aranet4 air quality monitor
+
+pkgname = aranet4-daq
+	pkgdesc = Command line utility to retrieve data from an Aranet4 device and upload it to an HTTP server
