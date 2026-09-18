@@ -2,22 +2,16 @@
 _appname=qoder
 pkgname="${_appname}-ide-bin"
 _pkgname='Qoder IDE'
-pkgver=1.29.0
+pkgver=1.31.0
 _electronversion=42
 pkgrel=1
-pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Agent Programming Platform for Real Software."
 arch=('x86_64')
 url="https://qoder.com/"
 _ghurl="https://github.com/QoderAI/changelog-zh_CN"
 license=('LicenseRef-custom')
-conflicts=(
-    "${_appname}"
-    "${pkgname%-bin}"
-)
-provides=(
-    "${_appname}=${pkgver}"
-    "${pkgname%-bin}=${pkgver}"
-)
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'libxkbfile'
@@ -38,7 +32,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e94a3baedfb7d55a89c1723b629e0822933386cf586f85220b0616620ddec52c'
+sha256sums=('72a55be6a9b3643286cbec15e33c5ada36c02eb769badc602daf0d6cad2e6441'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
             'cbeb2e78d46c0cbe8793e7a2c06bd339e3ed9dca5f0ae1196281b8d2cf60c4c5'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
