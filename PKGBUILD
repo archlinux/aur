@@ -1,15 +1,15 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=checkip
-pkgver=0.53.3
-pkgrel=3
+pkgver=0.54.0
+pkgrel=1
 pkgdesc="Get (security) info about IP addresses"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jreisinger/checkip"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='32aa6276d85429715c58377458f408a2f9249c20'
+_commit='3b105eb9cc21ffbe92e91ed995385a26ab70f76f'
 source=("git+https://github.com/jreisinger/checkip.git#commit=$_commit")
 sha256sums=('SKIP')
 
