@@ -14,7 +14,7 @@
 
 pkgname=opera
 pkgver=136.0.6008.22
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
 options=(!strip !zipman)
@@ -34,7 +34,7 @@ source=(
     'eula.html'
     'terms.html'
     'privacy.html'
-    "https://github.com/ModLabsCC/chromium-ffmpeg-prebuilt/releases/download/chromium-${chromium_version}/libffmpeg.so"
+    "libffmpeg-${chromium_version}.so::https://github.com/ModLabsCC/chromium-ffmpeg-prebuilt/releases/download/chromium-${chromium_version}/libffmpeg.so"
 )
 
 sha512sums=('827b475ec6b025be752bffb3c9ef1c02c9e368bf2698fa8229f4de70987141111b2efe703c5050419c22dff627a1441e350f12b4256c283553d1d2696b6449e8'
@@ -43,7 +43,7 @@ sha512sums=('827b475ec6b025be752bffb3c9ef1c02c9e368bf2698fa8229f4de70987141111b2
             'aaaa4435a3b6a08bf8e6ad4802afcbf111c1e8f477054251f031b70ae57ac1234fa19048121d64c878dc3b1de03522ce7ef11a263a86dc7062f643d569ecff82'
             '800d62321344ff4e3521ff20fae281cad9206bae80e60965784d144f8bf852f756cbc21f4c9d8d4e93d026da7ca10e0eda7601c83a6d8d85125831eacb907d9a'
             '43d4a066758805597527dbdfc95b4c8ad4b22c5db812b9493e50f8820c72f30c1e431bed40fdb821ab0c23a63aa31dc0e946ab708cc23ac617446964fa6b96f2'
-            '0ee4b6b9832d0f9e67903e5b0a20696fbcbc5b6656f5aa0bb2b23e4aea04d6aad3c0ae8c21fe68a09816103c07e0ba48f804a4d65ac513721e7bf741e58a596b')
+            'f01cdb3fe7bc5bc723ecba479ea38e873a3da4c0423042d2608b7bb230cff814437f35f8a2eb5908b4ab7663a55e13472ff1a47d203b3237cbec71baaa921d35')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
@@ -63,7 +63,7 @@ package() {
     rm -rf "$pkgdir/usr/lib/"*-linux-gnu
 
     rm -f "$pkgdir/usr/lib/$pkgname-stable/libffmpeg.so"
-    install -Dm755 "$srcdir/libffmpeg.so" \
+    install -Dm755 "$srcdir/libffmpeg-${chromium_version}.so" \
         "$pkgdir/usr/lib/$pkgname-stable/libffmpeg.so"
 
     # suid opera_sandbox

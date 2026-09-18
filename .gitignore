@@ -4,3 +4,5 @@ opera-*
 PKGBUILD.bak
 *.zip
 libffmpeg.so
+
+*.so
