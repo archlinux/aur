@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgname=widemelon
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Widescreen Nintendo DS emulator based on melonDS'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('cmake' 'extra-cmake-modules' 'ninja')
 conflicts=('widemelon-git' 'widemelon-bin')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pruefsumme/widemelon/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7e6c55cbfe0547a1cd53c49600d17a90f9f75a525863a89f96d337b43a1e3d23')
+sha256sums=('33ca3c37bee6430222cf3af8cee075e9288c804938ed95909d7bb06c80328cbb')
 
 build() {
   cmake -S "${pkgname}-${pkgver}" -B build -G Ninja \
