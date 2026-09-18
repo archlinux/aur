@@ -1,8 +1,8 @@
 pkgbase = artificial-rage-git
 	pkgdesc = Scifi FPS made with Raylib
-	pkgver = r525.7a9f73d
+	pkgver = r537.cb66c29
 	pkgrel = 1
-	url = https://codeberg.org/akselmo/artificial-rage
+	url = https://sr.ht/~akselmo/ArtificialRage/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = artificial-rage-git
 	depends = raylib
 	provides = artificial-rage
 	conflicts = artificial-rage
-	source = artificial-rage-git::git+https://codeberg.org/akselmo/artificial-rage.git
+	source = artificial-rage-git::git+https://git.sr.ht/~akselmo/artificial-rage
 	sha512sums = SKIP
 
 pkgname = artificial-rage-git
