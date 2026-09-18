@@ -3,9 +3,9 @@
 # `markview` builds the same program from source. Both install the same files,
 # so they conflict with each other.
 pkgname=markview-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-pkgdesc='Native, read-only Markdown reader with optimized paragraph layout'
+pkgdesc='A fast, native Markdown reader with publication-quality typography.'
 arch=('x86_64')
 url='https://github.com/szdytom/markview'
 license=('MIT')
@@ -40,8 +40,8 @@ source=(
 	'markview.mime.xml'
 )
 sha256sums=(
-	'589c0b63eb6fe373616cfa5d60e6db14eb370550dc02e3f9dea303a5e4071858'
-	'aff9bd555ecf97922472a34c7c1d27accf057a067ff3724dfb9430af893894e3'
+	'1d2c51e0a549094f6cd1c47379f53507431279b7c031bb510036f33a5e8d7a37'
+	'7b8d1e2e03196b552830d125058c7e29b02e03dd8dcfbad28b058222ad33c451'
 	'c2b54efc155e407495127927cabafb92b369a4ead7e1a04d8246f9939bf280b0'
 )
 
@@ -84,5 +84,7 @@ package() {
 		"$pkgdir/usr/share/doc/$pkgname/THIRD_PARTY.md"
 	install -Dm644 "$doc/licenses/KaTeX-OFL.txt" \
 		"$pkgdir/usr/share/doc/$pkgname/KaTeX-OFL.txt"
+	install -Dm644 "$doc/licenses/Noto-OFL.txt" \
+		"$pkgdir/usr/share/doc/$pkgname/Noto-OFL.txt"
 	install -Dm644 "$doc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
