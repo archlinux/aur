@@ -67,6 +67,10 @@ build() {
   local sdk="$PWD/build/toolchain/linux-amd64/sdk" runtime="$PWD/runtime/linux-amd64" ldflags
 
   export GOBIN="$srcdir/wails-bin"
+  # Private build cache: the resolved #cgo pkg-config flags (libnfc -L/-I/-l)
+  # are not part of the Go build cache key, so an entry produced from a
+  # different source directory makes the link step use a stale -L path.
+  export GOCACHE="$srcdir/go-build"
   export CGO_ENABLED=1
   export NFCX_LIBNFC_SDK_DIR="$sdk"
   export NFCX_RUNTIME_DIR="$runtime"
@@ -123,6 +127,7 @@ check() {
   cd "NFCX-$pkgver"
 
   export CGO_ENABLED=1
+  export GOCACHE="$srcdir/go-build"
   export NFCX_LIBNFC_SDK_DIR="$PWD/build/toolchain/linux-amd64/sdk"
   export NFCX_RUNTIME_DIR="$PWD/runtime/linux-amd64"
   export PKG_CONFIG_PATH="$NFCX_LIBNFC_SDK_DIR/lib/pkgconfig"
