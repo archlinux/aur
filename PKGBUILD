@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=myip-git
-pkgver=0.5.2.r0.gf3fb342
+pkgver=0.5.2.r39.gee1eff4
 pkgrel=1
 pkgdesc="Returns your public IP and the public IP to access the extranet."
 arch=($CARCH)
@@ -11,13 +11,10 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    glibc
     gc
-    gcc-libs
     libevent
     openssl
     pcre2
-    zlib
 )
 makedepends=(
     cmake
