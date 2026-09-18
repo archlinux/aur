@@ -1,0 +1,28 @@
+pkgbase = rill-torrent
+	pkgdesc = A small BitTorrent client
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/sachesi/rill
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = blueprint-compiler
+	makedepends = just
+	makedepends = gettext
+	depends = gtk4>=1:4.20
+	depends = libadwaita>=1:1.8
+	depends = glib2
+	depends = cairo
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = glibc
+	conflicts = rill
+	conflicts = rill-git
+	conflicts = rill-bin
+	options = !lto
+	source = rill-0.3.0.tar.gz::https://github.com/sachesi/rill/archive/v0.3.0/rill-0.3.0.tar.gz
+	sha256sums = 153744a885ad180770472482d36b56ab653b51e7a9180b604208c649f75abbf5
+
+pkgname = rill-torrent
