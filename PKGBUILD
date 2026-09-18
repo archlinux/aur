@@ -2,7 +2,7 @@
 
 pkgname=clickr-git
 pkgver=r3.92c2164
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, lightweight autoclicker for Linux Wayland with TUI interface"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Wavefire5201/clickr"
@@ -15,6 +15,7 @@ optdepends=('dunst: desktop notifications'
             'libnotify: desktop notifications')
 provides=('clickr')
 conflicts=('clickr')
+install=clickr.install
 
 source=("$pkgname::git+https://github.com/Wavefire5201/clickr.git")
 sha256sums=('SKIP')

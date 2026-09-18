@@ -1,0 +1,14 @@
+post_install() {
+    echo ":: clickr reads keyboards and creates a virtual mouse through /dev/uinput,"
+    echo ":: so your user needs to be in the 'input' group:"
+    echo "::"
+    echo "::     sudo usermod -aG input \$USER"
+    echo "::"
+    echo ":: Then log out and back in. See the upstream README's 'Security' section"
+    echo ":: for what input-group membership grants. The binary refuses to start"
+    echo ":: setuid/setgid, so a plain installation is required."
+}
+
+post_upgrade() {
+    post_install
+}
