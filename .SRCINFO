@@ -1,7 +1,7 @@
 pkgbase = gnome-vram-booster
 	pkgdesc = Dynamic VRAM prioritization for GNOME
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sachesi/gnome-vram-booster
 	arch = x86_64
 	arch = aarch64
