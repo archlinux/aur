@@ -1,6 +1,6 @@
 pkgbase = handy
 	pkgdesc = Open source and extensible speech-to-text application that works completely offline
-	pkgver = 0.9.6
+	pkgver = 0.9.7
 	pkgrel = 1
 	url = https://github.com/cjpais/Handy
 	arch = x86_64
@@ -34,11 +34,12 @@ pkgbase = handy
 	depends = libappindicator-gtk3
 	depends = gtk-layer-shell
 	depends = openblas
-	optdepends = wtype: Wayland support
-	optdepends = xdotool: X11 support
+	optdepends = wtype: Wayland virtual input support
+	optdepends = xdotool: X11 virtual input support
+	optdepends = kwtype-git: KDE Plasma virtual input support
 	conflicts = handy-bin
 	options = !lto
-	source = handy-0.9.6::git+https://github.com/cjpais/Handy.git#tag=af48dd68a64d58aad128fdbb920492a03da53c79
-	sha256sums = e30a8ddde7259314509c0e7a6e0d181d55aa7945a8d5aa8ccad3884bd3f0862f
+	source = handy-0.9.7::git+https://github.com/cjpais/Handy.git#tag=05e0aedd2906f0d82722735f930465950c476b90
+	sha256sums = 13d2ebc2a5898af26c284668e77ae588f5fc6074e40c57b1b7eb7c9e3db05071
 
 pkgname = handy
