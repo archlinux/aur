@@ -29,4 +29,5 @@ package() {
 
 post_install() {
 	echo 'Add "cookie" header from request headers on Metal Archives into COOKIE variable on top of the script'
+	echo 'The script is located within /usr/local/bin/ma.sh'
 }
