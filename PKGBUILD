@@ -6,7 +6,7 @@
 ###############################################################################
 pkgname=tmog-appimage
 _pkgname=TaskManagerOG
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="TMOG brings the depth of a serious systems console to a native, focused task manager for macOS, Windows, and Linux.."
 arch=('x86_64')
@@ -50,7 +50,7 @@ options=(!strip)
 # All source files in root directory of PKGBUILD must be listed and with corresponding sha256/md5 sums
 source=("${_source_url}"
         "${_icon_file}")
-sha256sums=('a8aa11f5e30a273250bcfb9247cc3117e830d6cffaf502961e93f12b3dd85827'
+sha256sums=('a9873347ee2b1a4895cf2c8f39660d8cf4b86ab89b24c08d541f237e365b4346'
             '2ddcddba5bf94f076676b42ec6e576cb93c9aa6676e1b1e487b2d4531fc52941'
 )
 

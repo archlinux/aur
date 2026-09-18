@@ -1,6 +1,6 @@
 pkgbase = tmog-appimage
 	pkgdesc = TMOG brings the depth of a serious systems console to a native, focused task manager for macOS, Windows, and Linux..
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://www.tmog.org/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = tmog-appimage
 	provides = tmog-task-manager
 	conflicts = tmog-bin
 	options = !strip
-	source = https://www.tmog.org/downloads/TaskManagerOG-0.1.3-x86_64.AppImage
+	source = https://www.tmog.org/downloads/TaskManagerOG-0.1.4-x86_64.AppImage
 	source = tmog-task-manager.svg
-	sha256sums = a8aa11f5e30a273250bcfb9247cc3117e830d6cffaf502961e93f12b3dd85827
+	sha256sums = a9873347ee2b1a4895cf2c8f39660d8cf4b86ab89b24c08d541f237e365b4346
 	sha256sums = 2ddcddba5bf94f076676b42ec6e576cb93c9aa6676e1b1e487b2d4531fc52941
 
 pkgname = tmog-appimage
