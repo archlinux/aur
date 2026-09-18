@@ -3,8 +3,9 @@
 _pkgname='proton-rtsp-wayland-ge'
 pkgname="${_pkgname}-bin"
 pkgdesc='Latest Proton with the Proton-RTSP and Wayland GE patchset, for VRChat livestream (RTSP/VRCDN) playback'
-_pkgfolder='Proton-RTSP-Wayland-GE-Beta3'
-_pkgver='11.1.0-beta.3'
+_betaver='4'
+_pkgfolder="Proton-RTSP-Wayland-GE-Beta${_betaver}"
+_pkgver="11.1.0-beta.${_betaver}"
 pkgver=${_pkgver//-/.}
 pkgrel='1'
 arch=('x86_64')
@@ -14,8 +15,8 @@ depends=('sed')
 conflicts=("${_pkgname}")
 provides=('proton' "${_pkgname}")
 options=(!strip emptydirs)
-source=("${url}/releases/download/v${_pkgver}/${_pkgname}-beta3.tar.gz")
-sha256sums=('6c752562ca02545f43b45e43afe320306b915f92f63356b3320f43f5760a08a8')
+source=("${url}/releases/download/v${_pkgver}/${_pkgname}-beta${_betaver}.tar.gz")
+sha256sums=('3cea2cf5f4766b47f74396cbb4d5c6dcf7534dc364d8a18c6e8178383805d849')
 
 build() {
   sed -i -r 's|"Proton.*"|"Proton-RTSP-Wayland-GE"|' ${_pkgfolder}/compatibilitytool.vdf
