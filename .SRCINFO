@@ -1,6 +1,6 @@
 pkgbase = python-svix
 	pkgdesc = Svix webhooks API client and webhook verification library
-	pkgver = 1.99.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/svix/svix-webhooks/tree/main/python
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = python-svix
 	depends = python-attrs
 	depends = python-standardwebhooks
 	depends = python-types-python-dateutil
-	source = https://files.pythonhosted.org/packages/source/s/svix/svix-1.99.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/svix/svix-2.3.0.tar.gz
 	source = LICENSE::https://github.com/svix/svix-webhooks/raw/refs/heads/main/LICENSE
-	sha256sums = 70374aeb3cc19fcff384e9e22a35fce16c57bf1c95a325b940dc0b5b765c7047
+	sha256sums = 0c13d3397f83759bdcd0aeca8534da6529330c5fe2c6ceb806c4098712ed86da
 	sha256sums = 5962c28427cb0c49b4782932eeeb9dfd3fcd14002755a68155bd6bb306717ced
 
 pkgname = python-svix
