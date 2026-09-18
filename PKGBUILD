@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yet-another-electron-term
 _pkgname=YAET
-pkgver=7.4.5
-_electronversion=39
-_nodeversion=22
+pkgver=7.4.6
+_electronversion=41
+_nodeversion=24
 pkgrel=1
 pkgdesc="All-in-one remote connection manager. SSH/Telnet/WinRM/Serial terminals, SCP/FTP/SMB/WebDav/S3 file explorer, VNC/SPICE/RDP remote desktop."
 arch=('any')
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('f5302683f17bc7b14e6ac91915e2939233efd9876444af3ce1f61f543d427895'
+sha256sums=('b909f8fe9643d503cb45b14bd79ca0cd4bebd1cf5af9f6b06215f1b5d0b4df4e'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -101,7 +101,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-electron/assets/icons/app-icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
