@@ -9,8 +9,8 @@
 
 pkgname=chromium-clang-avx2-bin
 _upstream_name=chromium-browser-unstable
-pkgver=153.0.7993.0
-_revision=r1673900
+pkgver=155.0.8054.0
+_revision=r1696329
 _commit=
 pkgrel=1
 pkgdesc="Chromium unstable compiled w/ Clang, PGO, ThinLTO, AVX2 (No Sync, WebRTC, Widevine)"
@@ -24,7 +24,7 @@ makedepends=('rpm-tools')
 provides=("chromium" "$_upstream_name")
 conflicts=("chromium" "$_upstream_name")
 source=("https://github.com/RobRich999/Chromium_Clang/releases/download/v${pkgver}-${_revision}${_commit}-linux64-rpm-avx2/${_upstream_name}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('e65171601fa1734b5c016333caef0be2c8e646064ca8a5381c59f4195dc3908e')
+sha256sums=('4e9df85a9eaa269fdcbfa0f3fd69a0498f075fc55598089445b9c01e2fceebd2')
 
 prepare() {
   cd "$srcdir"
