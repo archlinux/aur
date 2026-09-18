@@ -4,7 +4,7 @@
 # The bootstrap checksum is replaced before publication; an unverified source
 # must never reach the AUR.
 pkgname=sway-session
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Persistent work sessions for Sway"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ depends=('sway')
 makedepends=('go>=1.26.5')
 options=('!debug')
 source=("sway-session-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1f237af8c15a3cf0bebf1b94745850260266125c7e80e005b2bc7e61636cbfb8')
+sha256sums=('3027aa93de77e186163e8634a3d932ddccd2d98513eebdba84ea20f662674bc7')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
 _go_ldflags=(-s -w -buildid=)
