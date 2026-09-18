@@ -2,7 +2,7 @@
 
 _pkgname=BB_Launcher
 pkgname=${_pkgname,,}
-pkgver=16.10
+pkgver=16.11
 pkgrel=1
 pkgdesc='Dedicated launcher/mod manager combo app for Bloodborne on shadPS4'
 url="https://github.com/rainmakerv3/$_pkgname"
@@ -33,7 +33,7 @@ source=("$_pkgname::git+$url.git#tag=Release$pkgver"
         "xz::git+https://github.com/tukaani-project/xz.git#commit=1aab7e9cab1293c2b8a481ed1beac94da21ef04f"
         "zarchive::git+https://github.com/shadexternals/ZArchive.git#commit=965b66c8d67b6b7e30fd63b3b75aa91a99ff303b"
         "zstd::git+https://github.com/shadexternals/zstd.git#commit=5c7b7bad26808e6b40ac3b3d0075466e27738a9d")
-sha256sums=('b93efc8e74e83e19fc21676e3d48dbf0396356aae9556689f61acdd016e00c52'
+sha256sums=('330458712f926fb8c427100424faaa86f20a37661e518b9731ab30d7d15ea608'
             '352c11078664e70bc69cb215b3250508d8a99111198c41df296553f95d8d37d1'
             '716398fce8d8bd0d477c9ff0277e3c4f0f3e2b2d2a7f0e948c9407a85c97f63e'
             'a006b22a89af4b5b7981f3b1375fbcf96e4d027105dd4537959b032cc206399c'

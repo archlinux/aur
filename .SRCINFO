@@ -1,6 +1,6 @@
 pkgbase = bb_launcher
 	pkgdesc = Dedicated launcher/mod manager combo app for Bloodborne on shadPS4
-	pkgver = 16.10
+	pkgver = 16.11
 	pkgrel = 1
 	url = https://github.com/rainmakerv3/BB_Launcher
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = bb_launcher
 	depends = qt6-websockets
 	depends = sdl3
 	depends = zlib
-	source = BB_Launcher::git+https://github.com/rainmakerv3/BB_Launcher.git#tag=Release16.10
+	source = BB_Launcher::git+https://github.com/rainmakerv3/BB_Launcher.git#tag=Release16.11
 	source = libarchive::git+https://github.com/libarchive/libarchive.git#commit=bede9a36921b3ee6ac01f60ce2715bdecf9f4b1f
 	source = nlohmann-json::git+https://github.com/nlohmann/json.git#commit=11cc676142d9ca85cc40a60330ed1b081c3afc6d
 	source = qmicroz::git+https://github.com/artemvlas/qmicroz.git#commit=14d6e8154628b7e9cdd37e78cf0e6f93785257a3
@@ -30,7 +30,7 @@ pkgbase = bb_launcher
 	source = xz::git+https://github.com/tukaani-project/xz.git#commit=1aab7e9cab1293c2b8a481ed1beac94da21ef04f
 	source = zarchive::git+https://github.com/shadexternals/ZArchive.git#commit=965b66c8d67b6b7e30fd63b3b75aa91a99ff303b
 	source = zstd::git+https://github.com/shadexternals/zstd.git#commit=5c7b7bad26808e6b40ac3b3d0075466e27738a9d
-	sha256sums = b93efc8e74e83e19fc21676e3d48dbf0396356aae9556689f61acdd016e00c52
+	sha256sums = 330458712f926fb8c427100424faaa86f20a37661e518b9731ab30d7d15ea608
 	sha256sums = 352c11078664e70bc69cb215b3250508d8a99111198c41df296553f95d8d37d1
 	sha256sums = 716398fce8d8bd0d477c9ff0277e3c4f0f3e2b2d2a7f0e948c9407a85c97f63e
 	sha256sums = a006b22a89af4b5b7981f3b1375fbcf96e4d027105dd4537959b032cc206399c
