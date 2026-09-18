@@ -2,7 +2,7 @@
 pkgname=voicestudio-bin
 _pkgname=VoiceStudio
 _debname=omnivoice-studio
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages."
 arch=('x86_64')
@@ -12,15 +12,7 @@ license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'python'
-    'python-yaml'
-    'python-pydantic'
-    'python-cryptography'
-    'python-pillow'
-    'python-httpx'
-    'python-psutil'
     'webkit2gtk-4.1'
-    'python-numpy'
     'yt-dlp'
     'ffmpeg'
     'uv'
@@ -31,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9481a253b3a426884ff3e7ea44cb6fe9ef367221f6594784d3be947fdc3e3a86'
+sha256sums=('3ee9bafe42b01aad5b6740df9d093fbe0cff99f65a7b7b01457ac9285730e0af'
             'c8da18372d51521dd3a75339f699c3432726b78eec814f15730dca05a2d05536')
 prepare() {
     sed -i -e "
