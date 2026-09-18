@@ -1,6 +1,6 @@
 # Maintainer: Panda <satodu@github.com>
 pkgname=bamboo-end-store-bin
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Modern community store for EndeavourOS and Arch Linux built with NativePHP"
 arch=('x86_64')
@@ -12,14 +12,14 @@ conflicts=('bamboo-end-store')
 options=('!strip')
 
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/linux-unpacked.tar.gz"
+    "${pkgname}-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/linux-unpacked.tar.xz"
     "bamboo-end-store.desktop"
     "icon.png"
 )
 
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('32f0f740d410581e6623ad2720e73fd98fe1e3c755a6112886c76067c94a3902'
+            '6e9e01d7b945b3faeb38f7b5be034d55c41a7e5786405e384646da84322b15be'
+            '4ab1f72cee29bcb6bc6fe9081e288f527944c03c4a207cc000fe2258b6e56939')
 
 package() {
     # 1. Cria a pasta em /opt e copia os arquivos extraídos

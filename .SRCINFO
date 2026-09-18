@@ -1,6 +1,6 @@
 pkgbase = bamboo-end-store-bin
 	pkgdesc = Modern community store for EndeavourOS and Arch Linux built with NativePHP
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/satodu/bamboo-end-store
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = bamboo-end-store-bin
 	provides = bamboo-end-store
 	conflicts = bamboo-end-store
 	options = !strip
-	source = bamboo-end-store-bin-1.4.1.tar.gz::https://github.com/satodu/bamboo-end-store/releases/download/1.4.1/linux-unpacked.tar.gz
+	source = bamboo-end-store-bin-1.4.2.tar.xz::https://github.com/satodu/bamboo-end-store/releases/download/1.4.2/linux-unpacked.tar.xz
 	source = bamboo-end-store.desktop
 	source = icon.png
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 32f0f740d410581e6623ad2720e73fd98fe1e3c755a6112886c76067c94a3902
+	sha256sums = 6e9e01d7b945b3faeb38f7b5be034d55c41a7e5786405e384646da84322b15be
+	sha256sums = 4ab1f72cee29bcb6bc6fe9081e288f527944c03c4a207cc000fe2258b6e56939
 
 pkgname = bamboo-end-store-bin
