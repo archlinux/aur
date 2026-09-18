@@ -1,6 +1,6 @@
 pkgbase = zuban
 	pkgdesc = A Mypy-compatible Python Language Server built in Rust
-	pkgver = 0.9.3
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://zubanls.com
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = zuban
 	makedepends = python-installer
 	depends = glibc
 	depends = libgcc
-	source = git+https://github.com/zubanls/zuban.git#tag=v0.9.3
+	source = git+https://github.com/zubanls/zuban.git#tag=v0.10.0
 	source = git+https://github.com/python/typeshed.git
 	source = git+https://github.com/davidhalter/mypy.git
 	source = git+https://github.com/typeddjango/django-stubs.git
-	sha256sums = cf1dafb90645ae61fd8cdcebe69ea6f13ab3ffef258a96de70bef3b40a37651b
+	sha256sums = 5a8060d045cbc0e633a3fab4de13f885b82ddb809ea75c1be61ce7f2ca663f4a
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
