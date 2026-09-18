@@ -6,7 +6,7 @@
 
 _pkgname="facetimehd-dkms"
 pkgname="$_pkgname"
-pkgver=0.7.0.2
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Reverse engineered Linux driver for the FacetimeHD (Broadcom 1570) PCIe webcam'
 url='https://github.com/patjak/facetimehd'
@@ -21,7 +21,7 @@ conflicts=('bcwc-pcie' 'bcwc-pcie-dkms')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+https://github.com/patjak/facetimehd.git#tag=$pkgver")
-sha256sums=('e25dbbf89f2145c8a61ee53a594271ef5bb3a6b8b006e70c637996240fffc219')
+sha256sums=('43344654bcdaa7de115f5393bc737117e8fda6665eef9cdcabd1dceaa1687366')
 
 prepare() {
   # deprecated
