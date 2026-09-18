@@ -1,0 +1,17 @@
+pkgbase = umbriel-vram-booster
+	pkgdesc = Dynamic VRAM prioritization for the Umbriel compositor via Linux dmem cgroups
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/sachesi/umbriel-vram-booster
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = dmemcg-booster
+	depends = libgcc
+	depends = glibc
+	optdepends = umbriel-git: the compositor it works with
+	source = umbriel-vram-booster-0.3.0.tar.gz::https://github.com/sachesi/umbriel-vram-booster/archive/v0.3.0/umbriel-vram-booster-0.3.0.tar.gz
+	sha256sums = 8d6746e885d8d31d5b2b85c296f32bb1edfe3cab02b11d87dcabc95f9e8142b3
+
+pkgname = umbriel-vram-booster
