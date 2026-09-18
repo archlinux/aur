@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=QQ
+Name[zh_CN]=QQ
+Comment=Tencent QQ for Linux
+Comment[zh_CN]=腾讯 QQ Linux 客户端
+Exec=qq %U
+Icon=qq
+Terminal=false
+Type=Application
+StartupWMClass=QQ
+Categories=Network;InstantMessaging;Chat;
+Keywords=qq;tencent;im;
+Keywords[zh_CN]=qq;腾讯;聊天;即时通讯;
