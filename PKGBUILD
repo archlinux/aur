@@ -14,7 +14,7 @@ optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'opendeck: Stream Deck control through the bundled plugin')
 install=openxlr.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('56471ba69244a91146c07807af2c9aed540b6116016c3474cc74b69bdb316a4d')
+sha256sums=('a373746320518ca97bf37c0f0629e926ee7c029f3d57bbfdac895c0d4579b99d')
 
 build() {
   cd "$pkgname-$pkgver/src"
