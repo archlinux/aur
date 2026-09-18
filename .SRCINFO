@@ -22,23 +22,7 @@ pkgbase = dms-shell-git
 	provides = dms-shell=1.6.0.r118.g0784bdb
 	conflicts = dms-shell
 	source = git+https://github.com/AvengeMedia/DankMaterialShell.git
-	source = dms.service
-	source = completions.bash
-	source = completions.fish
-	source = completions.zsh
-	source = com.danklinux.dms.svg
-	source = dms-open.desktop
-	source = com.danklinux.dms.desktop
-	source = com.danklinux.dms.notepad.desktop
 	sha256sums = SKIP
-	sha256sums = d2a41218a83af3e921f05867d0065eed65074eff33b5bc1f8bb0469d2db41f28
-	sha256sums = 61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4
-	sha256sums = 8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667
-	sha256sums = 41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d
-	sha256sums = 540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab
-	sha256sums = 81e57e959c5335619d9237989f126321e5048740b7246dc3144c6f748ea0e245
-	sha256sums = 0c286a16675cf13d1ea01c6263016aaf8de2cf657b1f40596fb30c53004191ea
-	sha256sums = 2a6125bb76e59ff4272b3077a300b4d23b4a86b3f9e296ac2b8f27c061f5ed7b
 
 pkgname = dms-shell-git
 	install = dms-shell-git.install

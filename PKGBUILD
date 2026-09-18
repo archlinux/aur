@@ -25,25 +25,8 @@ makedepends=(git
              make)
 provides=("$_pkgbase=$pkgver")
 conflicts=("dms-shell")
-source=(
-        "git+$url.git"
-        "dms.service"
-        "completions.bash"
-        "completions.fish"
-        "completions.zsh"
-        "com.danklinux.dms.svg"
-        "dms-open.desktop"
-        "com.danklinux.dms.desktop"
-        "com.danklinux.dms.notepad.desktop")
-sha256sums=('SKIP'
-            'd2a41218a83af3e921f05867d0065eed65074eff33b5bc1f8bb0469d2db41f28'
-            '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
-            '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
-            '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
-            '540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab'
-            '81e57e959c5335619d9237989f126321e5048740b7246dc3144c6f748ea0e245'
-            '0c286a16675cf13d1ea01c6263016aaf8de2cf657b1f40596fb30c53004191ea'
-            '2a6125bb76e59ff4272b3077a300b4d23b4a86b3f9e296ac2b8f27c061f5ed7b')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
@@ -81,14 +64,19 @@ build() {
 package_dms-shell-git() {
         optdepends+=('greetd-dms-greeter: DMS Greeter')
 	install="$pkgname.install"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname/core/dms"
-	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$_pkgname/README.md"
-	install -Dm0644 "dms.service" "$pkgdir/usr/lib/systemd/user/dms.service"
-	install -Dm0644 "completions.bash" "$pkgdir/usr/share/bash-completion/completions/dms"
-	install -Dm0644 "completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_dms"
-	install -Dm0644 "completions.fish" "$pkgdir/usr/share/fish/vendor_completions.d/dms.fish"
-	install -Dm0644 "dms-open.desktop" "$pkgdir/usr/share/applications/dms-open.desktop"
-	install -Dm0644 "com.danklinux.dms.desktop" "$pkgdir/usr/share/applications/com.danklinux.dms.desktop"
-	install -Dm0644 "com.danklinux.dms.notepad.desktop" "$pkgdir/usr/share/applications/com.danklinux.dms.notepad.desktop"
-	install -Dm0644 "com.danklinux.dms.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.danklinux.dms.svg"
+	cd "$_pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" core/dms
+	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+	install -Dm0644 assets/systemd/dms.service "$pkgdir/usr/lib/systemd/user/dms.service"
+	install -Dm0644 assets/dms-open.desktop "$pkgdir/usr/share/applications/dms-open.desktop"
+	install -Dm0644 assets/com.danklinux.dms.desktop "$pkgdir/usr/share/applications/com.danklinux.dms.desktop"
+	install -Dm0644 assets/com.danklinux.dms.notepad.desktop "$pkgdir/usr/share/applications/com.danklinux.dms.notepad.desktop"
+	install -Dm0644 assets/com.danklinux.dms.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.danklinux.dms.svg"
+
+	install -d "$pkgdir/usr/share/bash-completion/completions" \
+	           "$pkgdir/usr/share/zsh/site-functions" \
+	           "$pkgdir/usr/share/fish/vendor_completions.d"
+	core/dms completion bash > "$pkgdir/usr/share/bash-completion/completions/dms"
+	core/dms completion zsh > "$pkgdir/usr/share/zsh/site-functions/_dms"
+	core/dms completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/dms.fish"
 }
