@@ -3,7 +3,7 @@
 pkgbase=xguipro
 pkgname=(xguipro-gtk3)
 pkgver=0.9.26
-pkgrel=1
+pkgrel=2
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=($CARCH)
 url="https://github.com/HVML/xGUI-Pro"
@@ -58,12 +58,13 @@ optdepends=('webkit2gtk-hvml: to support two HVML-specific attributes hvml-handl
 backup=()
 options=()
 install=
-source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz"
+source=("${pkgbase}::git+${url}.git#tag=ver-${pkgver}"
     #         "001-fix.patch::https://github.com/HVML/xGUI-Pro/commit/a6e4022fa599e5e98d92d8d2feb56fe689e16f1a.patch"
 )
-sha256sums=('24cfb6367ffabf0e5a852aa69c77c93d325db4d32d35ca22c9d1c6b24c0f3dd7')
+sha256sums=('5e7fb92c659fccffe38f4522e4a1a932959eb8e79fed6a2ecf7c4c0259468cb8')
 
 prepare() {
+    git -C "${srcdir}/${pkgbase}" clean -dfx
     install -Dm644 /dev/stdin ${srcdir}/xguipro.csh <<EOF
 if (! \$?WEBKIT_WEBEXT_DIR ) then
     set WEBKIT_WEBEXT_DIR=/usr/lib/xguipro/
@@ -119,7 +120,7 @@ package_xguipro-gtk3() {
         export LD_LIBRARY_PATH=/lib64
     fi
 
-    cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
+    cd "${srcdir}/${pkgbase}/"
 
     # # Ninja build
     # # see：https://wiki.archlinux.org/title/CMake_package_guidelines
@@ -152,13 +153,13 @@ package_xguipro-gtk3() {
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_COMPILER=clang \
-        -Wno-deprecated-declarations \
+        -Wno-author \
         -B build-gtk3 \
         -G Ninja
     ninja -C build-gtk3
 
     # ninja install
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/xGUI-Pro-ver-${pkgver}/build-gtk3 install
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgbase}/build-gtk3 install
 
     install -Dm644 ${srcdir}/xguipro.csh ${pkgdir}/etc/profile.d/xguipro.csh
     install -Dm644 ${srcdir}/xguipro.sh ${pkgdir}/etc/profile.d/xguipro.sh
@@ -174,7 +175,7 @@ package_xguipro-gtk3() {
 #         libsoup3)
 #     options=('!strip')
 #
-#     cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
+#     cd "${srcdir}/${pkgbase}/"
 #
 # # Ninja build
 # # see：https://wiki.archlinux.org/title/CMake_package_guidelines
@@ -213,7 +214,7 @@ package_xguipro-gtk3() {
 #     ninja -C build-gtk4
 #
 # # ninja install
-#     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/xGUI-Pro-ver-${pkgver}/build-gtk4 install
+#     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgbase}/build-gtk4 install
 #
 #     install -Dm644 ${srcdir}/xguipro.csh ${pkgdir}/etc/profile.d/xguipro.csh
 #     install -Dm644 ${srcdir}/xguipro.sh ${pkgdir}/etc/profile.d/xguipro.sh
