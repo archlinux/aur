@@ -1,6 +1,6 @@
 pkgbase = qemu-windows-launcher
 	pkgdesc = Interactive launcher for a Windows drive in a QEMU/KVM VM
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/dasbd72/qemu-windows-launcher
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = qemu-windows-launcher
 	depends = edk2-ovmf
 	depends = sudo
 	provides = qemu-windows-launcher
-	source = qemu-windows-launcher::git+https://github.com/dasbd72/qemu-windows-launcher.git#tag=v0.1.0
+	source = qemu-windows-launcher::git+https://github.com/dasbd72/qemu-windows-launcher.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = qemu-windows-launcher

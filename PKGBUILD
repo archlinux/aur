@@ -1,6 +1,6 @@
 # Maintainer: dasbd72 <twbd723@gmail.com>
 pkgname=qemu-windows-launcher
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Interactive launcher for a Windows drive in a QEMU/KVM VM"
 arch=('any')
