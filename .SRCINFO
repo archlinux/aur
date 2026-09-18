@@ -1,16 +1,21 @@
 pkgbase = feedthemonkey
-	pkgdesc = Desktop client for the TinyTinyRSS reader
-	pkgver = 2.2.8
+	pkgdesc = Desktop client for FreshRSS, Miniflux and other servers implementing the Greader API
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://github.com/jeena/FeedTheMonkey
-	arch = i686
+	url = https://git.jeena.net/jeena/FeedTheMonkey
 	arch = x86_64
-	license = GPL3
-	depends = qt5-declarative
-	depends = qt5-quickcontrols
-	depends = qt5-webengine
-	source = https://github.com/jeena/FeedTheMonkey/archive/v2.2.8.tar.gz
-	md5sums = 9d3683463ba08b6bb15bdfe6ccef3681
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = blueprint-compiler
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	depends = libsecret
+	depends = glib2
+	depends = hicolor-icon-theme
+	options = !lto
+	source = feedthemonkey::git+https://git.jeena.net/jeena/FeedTheMonkey.git#tag=v3.0.0
+	sha256sums = SKIP
 
 pkgname = feedthemonkey
-

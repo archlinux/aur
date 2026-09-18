@@ -1,25 +1,32 @@
 # Maintainer: Jeena <hello@jeena.net>
 
 pkgname=feedthemonkey
-_name=FeedTheMonkey
-pkgver=2.2.8
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Desktop client for the TinyTinyRSS reader"
-arch=('i686' 'x86_64')
-url="https://github.com/jeena/FeedTheMonkey"
-license=('GPL3')
-depends=('qt5-declarative' 'qt5-quickcontrols' 'qt5-webengine')
-source=("https://github.com/jeena/${_name}/archive/v${pkgver}.tar.gz")
-md5sums=('9d3683463ba08b6bb15bdfe6ccef3681')
+pkgdesc="Desktop client for FreshRSS, Miniflux and other servers implementing the Greader API"
+arch=('x86_64')
+url="https://git.jeena.net/jeena/FeedTheMonkey"
+license=('GPL-3.0-or-later')
+depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'libsecret' 'glib2' 'hicolor-icon-theme')
+makedepends=('cargo' 'blueprint-compiler' 'git')
+options=(!lto)
+source=("$pkgname::git+https://git.jeena.net/jeena/FeedTheMonkey.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 build() {
-	cd "${_name}-$pkgver"
-	qmake-qt5 PREFIX=${pkgdir}/usr
-	make
+	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo build --release --locked
 }
 
 package() {
-	cd "${_name}-$pkgver"
-	make install
-	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+	cd "$pkgname"
+	install -Dm755 target/release/feedthemonkey "$pkgdir/usr/bin/feedthemonkey"
+	install -Dm644 data/net.jeena.FeedTheMonkey.desktop \
+		"$pkgdir/usr/share/applications/net.jeena.FeedTheMonkey.desktop"
+	install -Dm644 data/icons/net.jeena.FeedTheMonkey.png \
+		"$pkgdir/usr/share/icons/hicolor/256x256/apps/net.jeena.FeedTheMonkey.png"
+	install -Dm644 data/net.jeena.FeedTheMonkey.gschema.xml \
+		"$pkgdir/usr/share/glib-2.0/schemas/net.jeena.FeedTheMonkey.gschema.xml"
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
