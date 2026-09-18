@@ -1,6 +1,6 @@
 pkgbase = termy-bin
 	pkgdesc = Minimal GPUI-powered terminal (pre-compiled binary)
-	pkgver = 0.2.71
+	pkgver = 0.2.72
 	pkgrel = 1
 	url = https://github.com/lassejlv/termy
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = termy-bin
 	provides = termy
 	conflicts = termy
 	source = termy.desktop
-	source = LICENSE::https://raw.githubusercontent.com/lassejlv/termy/v0.2.71/LICENSE
-	source = termy_icon.png::https://raw.githubusercontent.com/lassejlv/termy/v0.2.71/assets/termy_icon.png
+	source = LICENSE::https://raw.githubusercontent.com/lassejlv/termy/v0.2.72/LICENSE
+	source = termy_icon.png::https://raw.githubusercontent.com/lassejlv/termy/v0.2.72/assets/termy_icon.png
 	b2sums = ce3f66620d3a7da5bd6e017d3432e2f509c095aa32ee8b7ea4ccf24d879f201bf29e62b59708bf32a01338ceedb4bbe9152ee7209564cd0191e5a9c58f8389e2
 	b2sums = 0128ba93a8dc10df25286bd85db9df93ef7ad68abd077d895ba29c2b1af7eca9530dc7146f0941ff128738416e2319ed3f906ac3525f26eff2589be9369149eb
 	b2sums = 846adc793544028ef1bb111802a2e61013f6a0623f86d8546e27210ded24b1ef367e73ea4cda56a15f40c85a893d2f5c8288bbde035c9d77aa53d2fd223ead90
-	source_x86_64 = termy-0.2.71-x86_64.tar.gz::https://github.com/lassejlv/termy/releases/download/v0.2.71/Termy-v0.2.71-linux-x86_64.tar.gz
-	b2sums_x86_64 = bd47ba218626d86c61091ee7ebcd40313f50f4a2d9cb3892ef73ac5453509daa4e6a809a8d0040c9a432cefb4ea72b52513a566a86f921dbbf737885493cd6cc
+	source_x86_64 = termy-0.2.72-x86_64.tar.gz::https://github.com/lassejlv/termy/releases/download/v0.2.72/Termy-v0.2.72-linux-x86_64.tar.gz
+	b2sums_x86_64 = 512cfa9c2e8fc3dbbf98d679f194a383538379fbf6efdc54cc4ada8967e1a1e4c102951a1ac2399a7812ab66d4dfe43d51391e05e4c5a20ed2e695c317e1e2a4
 
 pkgname = termy-bin
