@@ -37,9 +37,9 @@ source=(
   "ghostty-shell-integration-nightly-bin-${_source_rev}-x86_64.tar.zst::https://github.com/jpenilla/ghostty-nightly-bin/releases/download/nightly/ghostty-shell-integration-nightly-bin-x86_64.tar.zst"
 )
 sha256sums=(
-  '19606aeeef99bac4240cded37761e5f817579d9839d31ec996df7b58cf83076b'
-  '198aa6d3fdceaf0679bdd026d608aef51e3707330b0499074801dd155f54924c'
-  '079ef275959fa847984c1de0b64b82760be96a939d97aa0e3962bfcca1234ef5'
+  '1e8b8ff02e93a766021bf72a273df34862b66a57cf4c8fd439603a458f02bc91'
+  '490e0116844d7b6ea33fe10dad90b2b8b11e1f5b66761ed47d90362da41e756f'
+  'd7e5497ecbdafab37d87158cc2626912ba4b63b9a3a3c10ecd4dfdb715cde718'
 )
 
 package_ghostty-nightly-bin() {
