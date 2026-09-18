@@ -4,7 +4,7 @@
 pkgname=whisparr-eros-develop
 _pkgname=Whisparr
 __pkgname=Whisparr-Eros
-pkgver=3.5.0.1657
+pkgver=3.6.1.1661
 _pkgver=${pkgver%.*}-develop.${pkgver##*.}
 pkgrel=1
 pkgdesc='Adult movie organizer/manager for usenet and torrent users (develop branch)'
@@ -48,7 +48,7 @@ source=(
   whisparr-eros.sysusers
   whisparr-eros.tmpfiles
 )
-sha256sums=('a15e6d2e532dce75c3ce300c25455f9722b4593b0cb3a7b93f754a7ce8f7fb76'
+sha256sums=('29096d31b11daea685ddb935044a05ae638f6c78b2e5ecc7f4c7af1d326a6294'
             '66ede8c26b84f6313501d17edfa44b8bec5778e0ff3cc1bdb42476fabd1f0410'
             '3964160cb383c88c8d335da2ca37cf800a282b32f68b4093595694f4ac8fe99c'
             '050f751d01333298bccfa84dbe11550031075f595009c15d37b089eaf453b19c'
