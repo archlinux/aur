@@ -8,8 +8,8 @@
 
 _name=standardwebhooks
 pkgname=python-${_name}
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Python library for Standard Webhooks"
 url="https://github.com/standard-webhooks/standard-webhooks/tree/main/libraries/python"
 license=('MIT')
@@ -31,7 +31,7 @@ makedepends=(
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz"
 )
-sha256sums=('b557bb2e4b16ada179a517ec0fe6cbec5acf976c5619922bf29c457f89a451bd')
+sha256sums=('e5cb66e21a6356ebb9375aeb57f1348583323015808d475a7c1baaa4b718068a')
 
 build() {
     cd $_name-$pkgver
