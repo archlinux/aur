@@ -1,6 +1,6 @@
 # Maintainer: Huipeng <cheng.huipeng@outlook.com>
 pkgname=qodercli-bin
-pkgver=1.1.55
+pkgver=1.1.56
 pkgrel=1
 pkgdesc="Qoder Agentic CLI - Advanced AI coding agent from Alibaba"
 arch=('x86_64' 'aarch64')
@@ -22,18 +22,18 @@ source=(
 # https://download.qoder.com/qodercli/channels/manifest.json
 # We include a local LICENSE file (from https://qoder.com/product-service)
 source_x86_64=(
-  "qodercli_1.1.55_linux_amd64.tar.gz::https://qoder-ide.oss-accelerate.aliyuncs.com/qodercli/releases/1.1.55/qodercli-linux-x64.tar.gz"
+  "qodercli_1.1.56_linux_amd64.tar.gz::https://qoder-ide.oss-accelerate.aliyuncs.com/qodercli/releases/1.1.56/qodercli-linux-x64.tar.gz"
 )
 source_aarch64=(
-  "qodercli_1.1.55_linux_arm64.tar.gz::https://qoder-ide.oss-accelerate.aliyuncs.com/qodercli/releases/1.1.55/qodercli-linux-arm64.tar.gz"
+  "qodercli_1.1.56_linux_arm64.tar.gz::https://qoder-ide.oss-accelerate.aliyuncs.com/qodercli/releases/1.1.56/qodercli-linux-arm64.tar.gz"
 )
 
-sha256sums=('c903bdab6b0279aa4b3d1735e423f0fec30c8ed931a111eb268f162d9ddade18'
+sha256sums=('0ca5cf9b9d897f4fb1384ed715e296ca5046c07abfecd4604353494622a236d9'
              'SKIP'
              'SKIP'
              'SKIP')
-sha256sums_x86_64=('d5b44477e392a63699a7466732a6c504a274e6e9809ea04cf4c89959f3dbb216')
-sha256sums_aarch64=('875f8dd091b1078ff2c7a6f6630a08170edc2a3b639554a36242675e32cea1b5')
+sha256sums_x86_64=('92ca0dcb561b6eec2bfb92470fc3344d62fb4ad125b40aa5078878c5b29f4c83')
+sha256sums_aarch64=('0b8734d0e233d55094078fa5c19ad3d30755ea53a567c3c5aa0abd7f9441b2bc')
 
 package() {
   # Find the extracted qodercli binary and install
