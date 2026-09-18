@@ -1,6 +1,6 @@
 # Maintainer: Ja4e <Jakie101@proton.me>
 pkgname=lyrus-git
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A Python curses lyrics player primarily for cmus, with playerctl as a fallback"
 arch=('any')
