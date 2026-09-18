@@ -1,8 +1,5 @@
-/LICENSE
-/README.md
-/pkg/
-/src/
-/*.tar.gz
-/*.tar.zst
-/*.tar.bz2
-/*.log
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO

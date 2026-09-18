@@ -1,0 +1,5 @@
+[usql]
+source = "github"
+github = "xo/usql"
+use_latest_release = true
+prefix = "v"
