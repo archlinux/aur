@@ -2,7 +2,7 @@
 _pkgname=globalping
 pkgname=$_pkgname-cli
 pkgver=1.6.0 # renovate: datasource=github-releases depName=jsdelivr/globalping-cli
-pkgrel=3
+pkgrel=1
 pkgdesc="Better understand your network routing, fix anycast issues, monitor your CDN and DNS performance, do uptime monitoring and build your own network tools for personal or public use."
 arch=(x86_64)
 url="https://github.com/jsdelivr/globalping-cli"
@@ -23,3 +23,5 @@ package() {
 	install -Dm644 ${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 	install -Dm755 "$pkgname/$pkgname" "$pkgdir/usr/bin/globalping"
 }
+
+# CI path-filter nudge for AUR action smoke test
