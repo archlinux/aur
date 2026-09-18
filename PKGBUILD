@@ -1,7 +1,7 @@
 # Maintainer: Project Maintainers <maintainers@users.noreply.github.com>
 pkgname=factory-ai-droid-cli-rnoz-bin
 pkgver=0.222.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Factory.ai CLI (droid) with rNoz tweaks, optional zero-waste titling, and cross-harness keybindings (automatically tracks upstream releases)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rNoz/factory-ai-droid-cli-rnoz"
@@ -34,6 +34,23 @@ package() {
   local platform="linux"
   local use_system_rg=0
 
+  # Detect whether non-interactive execution was genuinely requested by the user.
+  #
+  # Strategy for AUR helper interactivity:
+  # Most AUR helpers (yay, paru, pikaur, aurman, etc.) invoke makepkg internally
+  # with `--noconfirm` so pacman does not prompt when installing build dependencies.
+  # This populates makepkg's internal PACMAN_OPTS with "--noconfirm", which would
+  # falsely cause packaging scripts to treat interactive helper sessions as headless
+  # and skip user confirmation prompts for custom patches.
+  #
+  # To preserve interactive user choices without breaking automated CI/containers:
+  # 1. Respect explicit DROID_NONINTERACTIVE=1 (used in headless container builds/CI).
+  # 2. Inspect ancestor processes in /proc to check if an AUR helper is in the call chain.
+  #    If found, only suppress prompts if `--noconfirm` was genuinely part of the user's
+  #    invocation command line for that helper.
+  # 3. If no AUR helper is present (direct makepkg), fall back to PACMAN_OPTS.
+  # 4. If non-interactive is not requested and a controlling terminal (/dev/tty) is
+  #    accessible, prompt the user for confirmation; otherwise apply defaults fail-closed.
   has_user_noconfirm() {
     [[ "${DROID_NONINTERACTIVE:-0}" == "1" ]] && return 0
 
