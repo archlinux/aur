@@ -2,7 +2,7 @@
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=maigret
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="Collect a dossier on a person by username from thousands of sites"
 arch=(any)
@@ -39,7 +39,7 @@ makedepends=(
   python-wheel
 )
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('1b63356baf3055e180e9f52831edeeb05aa503f5eb35e072475d89f5442f6248')
+sha256sums=('8a364955d6272ac7a7c719fba59b4218fb23839f343a776ff783ed2c432f21b8')
 
 _archive="$pkgname-$pkgver"
 
