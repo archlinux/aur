@@ -1,3 +1,29 @@
+# 菜单项与图标完全采用程序自身生成的文件:
+#   首次运行 's302' 时程序写入 ~/.local/share/applications/Steamcommunity_302.desktop
+#   与 ~/.local/share/icons/hicolor/512x512/apps/com.dogfight360.steamcommunity302.png,
+#   每次启动幂等重写。本包不再安装 /usr/share/applications/*.desktop 与图标,
+#   否则会与程序自建条目并存(菜单两个同名项)或互相覆盖。
+# 旧版本(≤15.0.5-2)装到系统目录的文件残留必须清掉,否则重复依旧存在。
+# 只清理**系统目录**;~/.local/share 下的文件是程序的,绝不触碰。
+_cleanup_legacy_desktop_files() {
+    local f
+    for f in /usr/share/applications/steamcommunity302.desktop \
+             /usr/share/applications/Steamcommunity_302.desktop \
+             /usr/share/pixmaps/steamcommunity302.png; do
+        if [[ -e "$f" ]]; then
+            rm -f "$f"
+            echo "==> 已清理旧版本安装的 $f(菜单项与图标现由程序自建,不再由包提供)"
+        fi
+    done
+}
+
+post_install() {
+    _cleanup_legacy_desktop_files
+    echo "==> steamcommunity302 已安装"
+    echo "    菜单项与图标由程序首次运行时自动创建于 ~/.local/share/{applications,icons}"
+    echo "    首次启动: s302(会完成初始化并写入菜单项)"
+}
+
 post_upgrade() {
     # 15.x 起为 AppImage 安装,数据目录迁至 /var/lib/Steamcommunity_302/
     # 14.x 旧版为解包安装:清理程序残留(Steamcommunity_302/、.launcher/),
@@ -16,6 +42,7 @@ post_upgrade() {
         echo "==> 已清理旧版(14.x)程序残留"
         echo "    旧版配置/证书保留于 /opt/steamcommunity302/(如无需可手动删除)"
     fi
+    _cleanup_legacy_desktop_files
     echo "==> steamcommunity302 已升级"
     echo "    新版为 AppImage,数据目录: /var/lib/Steamcommunity_302/"
     echo "    启动: s302"

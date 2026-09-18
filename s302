@@ -163,13 +163,14 @@ fi
 
 case "$1" in
     ui)
-        # 首次运行先给反馈(桌面图标启动时看不到终端,但终端调用能看到)
-        [[ -f "$CFG" ]] || echo "首次运行:数据目录尚未初始化,正在启动图形界面完成初始化(会释放 app/versions/、rules/ 等文件)。"
         if [[ -z "${WAYLAND_DISPLAY:-}${DISPLAY:-}" ]]; then
             echo "当前无图形会话(headless)。管理请用: s302 start/stop/status/rules/dns/info"
             echo "初始化配置: 需图形会话运行 s302 ui(如本机/远程 X11 转发)"
             exit 0
         fi
+        # 首次运行先给反馈,再交给 AppImage 初始化(桌面图标启动时看不到终端,终端调用能看到)。
+        # 放在 headless 判断之后:无图形会话时并不启动 GUI,不能先声称"正在启动"。
+        [[ -f "$CFG" ]] || echo "首次运行:数据目录尚未初始化,正在启动图形界面完成初始化(会释放 app/versions/、rules/ 等文件)。"
         exec "$APPIMAGE"
         ;;
 

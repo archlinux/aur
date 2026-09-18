@@ -5,7 +5,7 @@
 # 打包采用 AUR 主流 AppImage 方式:本体装 /opt + /usr/bin wrapper(同 obsidian-appimage)
 pkgname=steamcommunity302
 pkgver=15.0.5
-pkgrel=2
+pkgrel=3
 #epoch=
 pkgdesc="羽翼城制作的Steam、Github等反代加速工具,使用s302命令启动"
 url="https://www.dogfight360.com/blog/18682/"
@@ -31,7 +31,7 @@ source_x86_64=(
 source_aarch64=(
   "steamcommunity302-${pkgver}.AppImage::https://www.dogfight360.com/Usbeam/V15/Steamcommunity_302_${pkgver}_Linux_WebKit_arm64.AppImage"
 )
-md5sums=('78c1c9bccd4816942547a5c1c0fd5cfc')
+md5sums=('4908d587f6a5e529412ca208c8203074')
 md5sums_x86_64=('50855aba518bbb64162281628fd56bab')
 md5sums_aarch64=('50855aba518bbb64162281628fd56bab')
 options=(!strip)
@@ -39,38 +39,16 @@ install=steamcommunity302.install
 
 _install_dir="/opt/steamcommunity302"
 
-prepare() {
-  # 解包 AppImage 提取 desktop 与图标(本体仍按 AppImage 安装)
-  chmod +x "${srcdir}/steamcommunity302-${pkgver}.AppImage"
-  "${srcdir}/steamcommunity302-${pkgver}.AppImage" --appimage-extract >/dev/null 2>&1
-  local _root="${srcdir}/squashfs-root"
-
-  # desktop:修正 Exec 指向系统 wrapper,Icon 用安装后的 png。
-  # 上游命名:15.0.3 为 com.dogfight360.steamcommunity302.desktop,
-  # 15.0.4 改为 Steamcommunity_302.desktop——用 glob 兼容两种
-  local _desktop
-  _desktop="$(find "${_root}" -maxdepth 1 -name '*.desktop' -print -quit)"
-  [ -n "$_desktop" ] || { msg2 "ERROR: 上游缺失 desktop"; return 1; }
-  sed -E \
-    -e 's|^[[:space:]]*Exec=.*|Exec=/usr/bin/s302|' \
-    -e 's|^[[:space:]]*Icon=.*|Icon=steamcommunity302|' \
-    "$_desktop" > "${srcdir}/steamcommunity302.desktop"
-
-  # 图标(png)
-  [ -f "${_root}/com.dogfight360.steamcommunity302.png" ] || { msg2 "ERROR: 上游缺失图标"; return 1; }
-  cp "${_root}/com.dogfight360.steamcommunity302.png" "${srcdir}/steamcommunity302.png"
-}
-
 package() {
-  # AppImage 本体(与旧版同目录,升级平滑)
+  # 本包只装 AppImage 本体与控制命令;菜单项/图标**完全采用程序自己生成的文件**
+  # (首次运行 's302' 时由程序写入 ~/.local/share/applications/Steamcommunity_302.desktop
+  # 与 ~/.local/share/icons/hicolor/512x512/apps/com.dogfight360.steamcommunity302.png,
+  # 且每次启动幂等重写)。包再装一份自己的 desktop/图标必然与它并存或互相覆盖:
+  # 用不同 ID 会在菜单里多出两个同名条目,用同 ID 又会随程序更新而过期。
+  # 旧版本(≤15.0.5-2)装到系统目录的 desktop/图标由 steamcommunity302.install 清理。
   install -Dm755 "${srcdir}/steamcommunity302-${pkgver}.AppImage" \
     "${pkgdir}${_install_dir}/steamcommunity302.AppImage"
 
   # s302 控制命令:无参/ui 开 GUI(exec AppImage),管理命令走 systemd+config
   install -Dm755 "${srcdir}/s302" "${pkgdir}/usr/bin/s302"
-
-  install -Dm644 "${srcdir}/steamcommunity302.desktop" \
-    "${pkgdir}/usr/share/applications/steamcommunity302.desktop"
-  install -Dm644 "${srcdir}/steamcommunity302.png" \
-    "${pkgdir}/usr/share/pixmaps/steamcommunity302.png"
 }
