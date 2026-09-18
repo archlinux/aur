@@ -1,6 +1,6 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 pkgname=reviewdog
-pkgver=0.21.1
+pkgver=0.21.2
 pkgrel=1
 pkgdesc='🐶 Automated code review tool integrated with any code analysis tools regardless of programming language'
 arch=(x86_64 aarch64)
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bebe82f4adb3002521e28052671d6b6aa84754d7a43692a961882e96e6bfc5f3')
+sha256sums=('a575127f03b85506f17d55ab1d66ea40df7d5b7d7530fbe2c725263c32ccb0c3')
 
 prepare() {
   cd "$pkgname-$pkgver"
