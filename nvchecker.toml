@@ -1,0 +1,4 @@
+[coccoc-browser-stable]
+source = "regex"
+url = "https://browser-linux.coccoc.com/deb/pool/main/"
+regex = 'coccoc-browser-stable_([0-9.]+)-'
