@@ -1,5 +1,5 @@
 pkgbase = omawarden-git
-	pkgdesc = High-performance Bitwarden CLI and resident daemon (Git develop branch)
+	pkgdesc = High-performance Bitwarden CLI and resident daemon (VCS build from develop branch)
 	pkgver = 0.8.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/icyleaf/omarchy-bitwarden

@@ -3,7 +3,7 @@
 pkgname=omawarden-git
 pkgver=0.8.0.r0.g0000000
 pkgrel=1
-pkgdesc="High-performance Bitwarden CLI and resident daemon (Git develop branch)"
+pkgdesc="High-performance Bitwarden CLI and resident daemon (VCS build from develop branch)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/icyleaf/omarchy-bitwarden"
 license=('MIT')
@@ -18,21 +18,14 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/omarchy-bitwarden"
-    _ver=$(grep -m1 '^version = ' omawarden/Cargo.toml | cut -d'"' -f2 | sed 's/-dev//')
+    _ver=$(grep '^version = ' omawarden/Cargo.toml | head -n 1 | cut -d'"' -f2 | cut -d'-' -f1)
     _rev=$(git rev-list --count HEAD)
-    _hash=$(git rev-parse --short HEAD)
+    _hash=$(git rev-parse --short=7 HEAD)
     printf "%s.r%s.g%s" "$_ver" "$_rev" "$_hash"
-}
-
-prepare() {
-    cd "${srcdir}/omarchy-bitwarden/omawarden"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "${srcdir}/omarchy-bitwarden/omawarden"
-    export RUSTUP_TOOLCHAIN=stable
     cargo build --frozen --release --bin omawarden
 }
 
