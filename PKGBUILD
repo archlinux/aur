@@ -1,6 +1,6 @@
 # Maintainer: Mattia Procopio (astro.matto) <matto.astro at gmail dot com>
 pkgname=indi-3rdparty-libs
-pkgver=2.2.2
+pkgver=2.2.4.1
 pkgrel=1
 pkgdesc='Indi 3rd party libraries'
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ depends=(ffmpeg
          wireplumber)
 makedepends=(cmake)
 source=(${pkgname}-${pkgver}::https://github.com/indilib/indi-3rdparty/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('ea4e90f3549cb28860d0d2a5820734579d4aa5b8c04ba202bc413ce5ffdb0377')
+sha256sums=('2ca31244224faa3db667baac71d6a7d2f056b0b8169ee1cdb37f7ca4a7203c25')
 
 prepare() {
   mkdir -p build
@@ -24,7 +24,7 @@ build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DBUILD_LIBS=1 \
-	-DQHY_FIRMWARE_INSTALL_DIR=/usr/lib/firmware/qhy \
+        -DQHY_FIRMWARE_INSTALL_DIR=/usr/lib/firmware/qhy \
         ../indi-3rdparty-${pkgver}
   make
 }
