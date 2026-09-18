@@ -3,7 +3,7 @@
 pkgbase='zl-equalizer'
 pkgname=('zl-equalizer-vst3' 'zl-equalizer-lv2' 'zl-equalizer')
 groups=('zl-audio' 'pro-audio')
-pkgver=1.2.2
+pkgver=1.3.1
 pkgrel=1
 options=()
 pkgdesc="Parametric, dynamic equalizer plugin by ZL Audio"
@@ -16,7 +16,7 @@ makedepends=('git' 'cmake' 'at-spi2-core' 'cairo' 'gtk3' 'gdk-pixbuf2' 'glib2' '
 source=("git+https://github.com/ZL-Audio/ZLEqualizer#tag=${pkgver}"
 		"git+https://github.com/ZL-Audio/JUCE#tag=176e410"
 		"git+https://github.com/ZL-Audio/zldsp_fft.git#tag=0215d7e")
-sha256sums=('da183e02363f7b027edf7dfd78f13bbe9abfc29466114999fd69def68e20bc6f'
+sha256sums=('abaebb176e0a125bf79ab1b73b01643db3378bbf1c0144f4ef35df7788535064'
             'ac62a6e5d36059845cf2ad61b1004b5e2b358604d303894c8ea237269c0d22bd'
             '471edb86c89d5dc9fd60cb75e2768bfe86b34f7c072f0c9dd5f4c4f18b2e5671')
 
@@ -25,8 +25,8 @@ prepare() {
 
 	git submodule init
 	git config submodule."JUCE".url "${srcdir}/JUCE"
-	git config submodule."source/dsp/fft/zldsp_fft".url "${srcdir}/zldsp_fft"
-	git -c protocol.file.allow=always submodule update JUCE "source/dsp/fft/zldsp_fft"
+	git config submodule."zldsp_fft".url "${srcdir}/zldsp_fft"
+	git -c protocol.file.allow=always submodule update JUCE zldsp_fft
 
 	# Use system libraries
 	sed 's|add_subdirectory(kfr)|find_package(KFR CONFIG REQUIRED)|' -i CMakeLists.txt
