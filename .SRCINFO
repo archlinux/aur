@@ -1,6 +1,6 @@
 pkgbase = fvc-launcher-bin
 	pkgdesc = Modern Minecraft launcher with isolated profiles and Modrinth integration
-	pkgver = 1.5.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/FvC-Launcher/FvC-Launcher
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = fvc-launcher-bin
 	conflicts = fvc-launcher
 	provides = fvc-launcher
 	options = !strip
-	source = fvc-launcher-1.5.2.AppImage::https://github.com/FvC-Launcher/FvC-Launcher/releases/download/v1.5.2/FvC-Launcher-1.5.2.AppImage
+	source = fvc-launcher-2.0.0.AppImage::https://github.com/FvC-Launcher/FvC-Launcher/releases/download/v2.0.0/FvC-Launcher-2.0.0.AppImage
 	source = fvc-launcher.desktop
-	source = fvc-launcher.png::https://raw.githubusercontent.com/FvC-Launcher/FvC-Launcher/v1.5.2/resources/icon.png
-	sha256sums = 93ce66fd0ee377a0fa20e4e8694cd70093649a3530f3e5c3136f211979a17e5e
+	source = fvc-launcher.png::https://raw.githubusercontent.com/FvC-Launcher/FvC-Launcher/v2.0.0/resources/icon.png
+	sha256sums = 25499afbf70c6e84853edda2e410f9417fbc6f83da1a16255eeef22ddf8a8b23
 	sha256sums = SKIP
 	sha256sums = 9717e74cc95bd7a5e7869fa12ecfc1a1855c55d35c336c9bc461bfd5a89975e3
 
