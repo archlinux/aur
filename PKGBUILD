@@ -1,6 +1,6 @@
 # Maintainer: ralf <ralf.wierzbicki@gmail.com>
 pkgname=asteroidz
-pkgver=0.30.1
+pkgver=0.30.2
 pkgrel=1
 pkgdesc='wlroots compositor with HDR10, dwm-style tags and its own Vulkan renderer'
 arch=('x86_64')
