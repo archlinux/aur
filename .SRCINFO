@@ -1,20 +1,20 @@
 pkgbase = openchrom-bin
 	pkgdesc = Visualization and analysis of mass spectrometric and chromatographic data
-	pkgver = 1.6.32
+	pkgver = 1.6.33
 	pkgrel = 1
 	url = https://openchrom.net/
 	arch = x86_64
 	license = EPL-2.0
 	depends = org.freedesktop.secrets
 	depends = webkit2gtk-4.1
-	provides = openchrom=1.6.32-1
+	provides = openchrom=1.6.33-1
 	conflicts = openchrom
-	noextract = openchrom_linux.x86_64_1.6.32.tar.gz
+	noextract = openchrom_linux.x86_64_1.6.33.tar.gz
 	options = !strip
-	source = https://products.lablicate.com/openchrom/1.6.32/openchrom_linux.x86_64_1.6.32.tar.gz
+	source = https://products.lablicate.com/openchrom/1.6.33/openchrom_linux.x86_64_1.6.33.tar.gz
 	source = openchrom.desktop
 	source = openchrom.png
-	sha256sums = d5ee642c1645a09bc500ec7b0761733aee5f350bed1101cb3675ae82a4236654
+	sha256sums = 572313f2e08c23bf3341cc363155b8846dc03eb8bb1ed7deeeaa346a4f1af3ac
 	sha256sums = 700aaa0a38757cd12d389598746a375df8e53c133ea7e73c59b5d3f252b336f1
 	sha256sums = 5668c08f75ec9ad00123e857b03502291cea1aaaf69e6641067386e17486ef7f
 
