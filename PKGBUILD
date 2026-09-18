@@ -2,7 +2,7 @@
 
 # pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=umbriel-vram-booster
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Dynamic VRAM prioritization for the Umbriel compositor via Linux dmem cgroups'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('dmemcg-booster' 'libgcc' 'glibc')
 makedepends=('cargo')
 optdepends=('umbriel-git: the compositor it works with')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('8d6746e885d8d31d5b2b85c296f32bb1edfe3cab02b11d87dcabc95f9e8142b3')
+sha256sums=('6275e85133305535c2b7344cced585ef996b85eada24a202291a1a671ad21549')
 
 prepare() {
   cd "$pkgname-$pkgver/daemon"
