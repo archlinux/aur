@@ -1,0 +1,33 @@
+--- a/crates/media/visual/manim/manim-bridge/src/lib.rs
++++ b/crates/media/visual/manim/manim-bridge/src/lib.rs
+@@ -221,7 +221,14 @@
+     let project = macos
+         .and_then(Path::parent)
+         .map(|contents| contents.join("Resources/manim-worker"))
+-        .unwrap_or_else(|| Path::new(env!("CARGO_MANIFEST_DIR")).join("python"));
++        .unwrap_or_else(|| {
++            let system_worker = Path::new("/usr/share/shrimply/crates/media/visual/manim/manim-bridge/python");
++            if system_worker.is_dir() {
++                system_worker.to_path_buf()
++            } else {
++                Path::new(env!("CARGO_MANIFEST_DIR")).join("python")
++            }
++        });
+     #[cfg(windows)]
+     let project = executable
+         .parent()
+@@ -234,7 +241,13 @@
+         .arg(&project);
+     let environment = std::env::var_os("UV_PROJECT_ENVIRONMENT")
+         .map(PathBuf::from)
+-        .unwrap_or_else(|| project.join(".venv"));
++        .unwrap_or_else(|| {
++            std::env::var_os("XDG_CACHE_HOME")
++                .map(PathBuf::from)
++                .or_else(|| std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".cache")))
++                .map(|cache| cache.join("shrimply/manim"))
++                .unwrap_or_else(|| project.join(".venv"))
++        });
+     #[cfg(target_os = "macos")]
+     let environment = if macos.is_some() {
+         use objc2_foundation::{NSFileManager, NSSearchPathDirectory, NSSearchPathDomainMask};

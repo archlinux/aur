@@ -1,0 +1,7 @@
+*
+!.SRCINFO
+!PKGBUILD
+!shrimply-manim-system-path.patch
+!.gitignore
+!test-build.sh
+!README.md
