@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Tomáš Mládek <t@mldk.cz>
 pkgname=graph2dot
-pkgver=9.0.1
+pkgver=9.0.2
 pkgrel="1"
 pkgdesc="parse a filtergraph description and issue a corresponding textual representation in the dot language"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ source=("${url}/releases/ffmpeg-${pkgver}.tar.gz")
 makedepends=('nasm' 'chromaprint' 'frei0r-plugins' 'ladspa' 'opencl-headers' 'vulkan-headers' 'avisynthplus' 'amf-headers')
 depends=('libdrm' 'libvdpau' 'libva' 'libmysofa' 'libass' 'vmaf' 'zimg' 'lilv' 'rubberband' 'tesseract' 'lcms2' 'libx11' 'harfbuzz' 'fribidi' 'zlib' 'freetype2' 'glibc' 'fontconfig' 'libgcc')
 optdepends=('graphviz: dot utility needed to convert gv to png')
-sha256sums=('657dbf258cce6c0681714b6e40b8ca69e988c67ecfc2f7aab47574e6ebaceb38')
+sha256sums=('84960df915059e8754fef2cd7c9afeb614062b1b5458ec471eecee619ee04e98')
 
 build() {
 	cd "ffmpeg-$pkgver"
