@@ -3,9 +3,9 @@
 # Contributor: Aaron Abbott <aabmass at gmail dot com>
 
 pkgname=mycli
-pkgver=2.13.1
+pkgver=2.13.2
 pkgrel=1
-pkgdesc='Rich terminal client for MySQL with autocompletion, syntax highlighting, and dataframes'
+pkgdesc='Rich MySQL terminal client with autocompletion, syntax highlighting, and dataframes'
 arch=('any')
 url='https://github.com/dbcli/mycli'
 license=('BSD-3-Clause')
@@ -39,13 +39,14 @@ makedepends=(
 )
 optdepends=(
     'python-llm: LLM support'
+    'python-openai: LLM support'
     'python-polars: dataframe support'
     'python-altair: dataframe support'
     'python-vl-convert: dataframe support'
 )
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbcli/mycli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('72b8da57ecab8898c1316bcedfebc320f8d5375058254d2d8c2fac172a10360a')
+sha256sums=('f25d21caae647f6d27f5286f4236ce6a19b6402c2067f203229ba3e4675ac56f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

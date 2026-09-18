@@ -1,6 +1,6 @@
 pkgbase = mycli
-	pkgdesc = Rich terminal client for MySQL with autocompletion, syntax highlighting, and dataframes
-	pkgver = 2.13.1
+	pkgdesc = Rich MySQL terminal client with autocompletion, syntax highlighting, and dataframes
+	pkgver = 2.13.2
 	pkgrel = 1
 	url = https://github.com/dbcli/mycli
 	arch = any
@@ -30,11 +30,12 @@ pkgbase = mycli
 	depends = python-jinja
 	depends = python-yaspin
 	optdepends = python-llm: LLM support
+	optdepends = python-openai: LLM support
 	optdepends = python-polars: dataframe support
 	optdepends = python-altair: dataframe support
 	optdepends = python-vl-convert: dataframe support
 	options = !emptydirs
-	source = mycli-2.13.1.tar.gz::https://github.com/dbcli/mycli/archive/refs/tags/v2.13.1.tar.gz
-	sha256sums = 72b8da57ecab8898c1316bcedfebc320f8d5375058254d2d8c2fac172a10360a
+	source = mycli-2.13.2.tar.gz::https://github.com/dbcli/mycli/archive/refs/tags/v2.13.2.tar.gz
+	sha256sums = f25d21caae647f6d27f5286f4236ce6a19b6402c2067f203229ba3e4675ac56f
 
 pkgname = mycli
