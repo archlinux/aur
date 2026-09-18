@@ -12,15 +12,15 @@
 #   tags (incl. v1.19.0) package the WRONG (CachyOS-branded) content and are
 #   not used.
 #
-#   The stable source below is pinned to the v1.30.1 release: the
-#   version-bump commit fed562c9a (`release: bump version to 1.30.1`) is the
-#   TAG TARGET (the annotated tag v1.30.1 sits on it) and the `_commit` this
-#   package fetches. Because `_commit` points at the version-bump commit
-#   (not at this re-pin), the archived source is a stable, non-circular
-#   snapshot. The v1.30.1 cycle: UI polish — the kernel-info header unified
-#   into a single 4×4 grid (the Release hero spanning columns 1–2, Compiler
-#   and Arch anchored to columns 3–4) and the compact build-date format
-#   (`Mon DD, YYYY HH:MM`, the SMP/PREEMPT prefix dropped).
+#   The stable source below is pinned to the v1.30.2 release: the
+#   version-bump commit e120613de (`chore(chunk-2): bump VERSION to
+#   1.30.2`) is the TAG TARGET (the annotated tag v1.30.2 is cut on it)
+#   and the `_commit` this package fetches. Because `_commit` points at
+#   the version-bump commit (not at this re-pin), the archived source is
+#   a stable, non-circular snapshot. The v1.30.2 cycle: hardening — a
+#   buildDir with a trailing separator no longer yields an empty
+#   git-clone destination (stripped on read and write of the setting;
+#   root/separator-only values refused before the git invocation).
 #
 #   RELEASE PROCEDURE (v1.30.x and later):
 #     1. Bump the CMake VERSION — the version-bump commit is the tag target.
@@ -82,7 +82,7 @@
 #   conflict + provide make it drop-in replace the CachyOS package cleanly.
 
 pkgname=kernel-manager
-pkgver=1.30.1
+pkgver=1.30.2
 pkgrel=1
 pkgdesc="Qt6 GUI for kernel configuration, compilation, and sched-ext (BPF) scheduler management"
 arch=(x86_64)
@@ -99,11 +99,11 @@ makedepends=(cmake make gcc git rust qt6-tools pkgconf python pacman glib2 polki
 # Defensive polkit reload so the shipped policy is picked up on (re)install.
 install=kernel-manager.install
 
-# Pinned v1.30.1 release commit (the version-bump commit, one before the
-# v1.30.1 tag — see the VERSIONING note above).
-_commit=fed562c9a04cc84efb83abaf1f75bd7eba1fe840
+# Pinned v1.30.2 release commit (the version-bump commit, one before the
+# v1.30.2 tag — see the VERSIONING note above).
+_commit=e120613de5677f678ca2604a8930d03a2a790e18
 source=("https://github.com/MadGoatHaz/kernel-manager/archive/${_commit}.tar.gz")
-sha256sums=("f0a3396ae91e3e029057a37b51b4aa239f830ae1af166a59b9c4f7fd9e9f1bf5")
+sha256sums=("a2efa6f4305cd4885bf559a40d43da89ce56d2deca124ca0f859ce044de93aad")
 
 # GitHub archive top dir for a commit is `<repo>-<full-sha>`.
 _srcdir="kernel-manager-${_commit}"

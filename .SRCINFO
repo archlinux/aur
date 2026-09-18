@@ -1,6 +1,6 @@
 pkgbase = kernel-manager
 	pkgdesc = Qt6 GUI for kernel configuration, compilation, and sched-ext (BPF) scheduler management
-	pkgver = 1.30.1
+	pkgver = 1.30.2
 	pkgrel = 1
 	url = https://github.com/MadGoatHaz/kernel-manager
 	install = kernel-manager.install
@@ -25,7 +25,7 @@ pkgbase = kernel-manager
 	provides = cachyos-kernel-manager
 	conflicts = cachyos-kernel-manager
 	conflicts = kernel-manager-bin
-	source = https://github.com/MadGoatHaz/kernel-manager/archive/fed562c9a04cc84efb83abaf1f75bd7eba1fe840.tar.gz
-	sha256sums = f0a3396ae91e3e029057a37b51b4aa239f830ae1af166a59b9c4f7fd9e9f1bf5
+	source = https://github.com/MadGoatHaz/kernel-manager/archive/e120613de5677f678ca2604a8930d03a2a790e18.tar.gz
+	sha256sums = a2efa6f4305cd4885bf559a40d43da89ce56d2deca124ca0f859ce044de93aad
 
 pkgname = kernel-manager
