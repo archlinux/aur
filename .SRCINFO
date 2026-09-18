@@ -1,0 +1,37 @@
+pkgbase = fthr-clips-bin
+	pkgdesc = Instant replay capture and clip management (official Linux binary)
+	pkgver = 1.1.0alpha
+	pkgrel = 1
+	url = https://github.com/FTHR-Community/FTHR-Clips
+	arch = x86_64
+	license = GPL-3.0-only
+	license = MIT
+	makedepends = python
+	makedepends = squashfs-tools
+	depends = glibc
+	depends = zlib
+	depends = libglvnd
+	depends = libdrm
+	depends = libxcb
+	depends = wayland
+	optdepends = pipewire-pulse: desktop audio through PipeWire
+	optdepends = pulseaudio: alternative desktop audio server
+	optdepends = grim: screenshots on supported Wayland compositors
+	optdepends = openbsd-netcat: compositor hotkey socket commands
+	optdepends = ffmpeg: clip export and video thumbnails
+	optdepends = xorg-xwayland: KDE UI fallback for the upstream native Wayland window bug
+	optdepends = xdg-utils: open the clips folder
+	optdepends = libva-mesa-driver: AMD VA-API encoding
+	optdepends = nvidia-utils: NVIDIA NVENC encoding (upstream unqualified)
+	optdepends = xdotool: X11 window detection
+	optdepends = xorg-xprop: X11 fullscreen detection
+	optdepends = xorg-xrandr: native X11 monitor geometry
+	provides = fthr-clips=1.1.0alpha
+	conflicts = fthr-clips
+	noextract = FTHRClips-1.1.0-alpha-x86_64.AppImage
+	options = !strip
+	options = !debug
+	source = FTHRClips-1.1.0-alpha-x86_64.AppImage::https://github.com/FTHR-Community/FTHR-Clips/releases/download/v1.1.0-alpha/FTHRClips-1.1.0-alpha-x86_64.AppImage
+	sha256sums = 47634819ac68e797ca42e76c9d1fe9f465d817f937a177d75733f4a591086b1a
+
+pkgname = fthr-clips-bin
