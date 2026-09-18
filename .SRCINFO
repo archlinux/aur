@@ -1,0 +1,22 @@
+pkgbase = navicat18-premium-lite-en
+	pkgdesc = Navicat Premium Lite with complete shutdown when its last window closes
+	pkgver = 18.0.1
+	pkgrel = 1
+	url = https://www.navicat.com/en/products/navicat-premium-lite
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = systemd-libs
+	depends = wmctrl
+	provides = navicat-premium-lite
+	provides = navicat-premium-lite-en
+	conflicts = navicat-premium-lite
+	conflicts = navicat-premium-lite-en
+	options = !strip
+	source = navicat-premium-lite-en-x86_64-18.0.1.AppImage::https://dn.navicat.com/download/navicat18-premium-lite-en-x86_64.AppImage
+	source = navicat-close-on-exit
+	source = Navicat.Premium.18.desktop
+	sha256sums = fe02a6ad8d9a49c3b15caf67be14f14425d529c5a8bef7e6da13313fb46094e6
+	sha256sums = db65186718d9a1f738e34ab1bdf40a55ad9d532d68be18ccfe44b2bb02d9360e
+	sha256sums = 9581f32c7cf42ed2acf89fd5a69df05fd98b2de4f840724fb988e6158a5557c9
+
+pkgname = navicat18-premium-lite-en
