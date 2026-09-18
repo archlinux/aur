@@ -1,7 +1,7 @@
 pkgbase = kaze
 	pkgdesc = A calm, intelligent local music player
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/selfAnnihilator/kaze
 	arch = x86_64
 	license = MIT

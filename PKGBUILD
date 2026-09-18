@@ -1,7 +1,7 @@
 # Maintainer: Music Player Contributors <https://github.com/selfAnnihilator/kaze>
 pkgname=kaze
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A calm, intelligent local music player"
 arch=('x86_64')
 url="https://github.com/selfAnnihilator/kaze"
