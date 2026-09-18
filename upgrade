@@ -28,6 +28,7 @@ echo "downloading from $src_url to calculate digest"
 digest=$(curl -L "${src_url}" | b2sum | cut -d' ' -f1)
 
 sed -i "s/b2sums=.*/b2sums=('${digest}')/" "${pkgbuild}"
+sed -i "s/pkgrel=.*/pkgrel=1/" "${pkgbuild}"
 
 srcinfo="${own_dir}/.SRCINFO"
 
@@ -35,3 +36,4 @@ old_version_re=$(echo "${old_version}" | sed "s/\./\\\./g")
 sed -i "s/${old_version_re}/${version}/g" "${srcinfo}"
 
 sed -i "s/b2sums =.*/b2sums = ${digest}/" "${srcinfo}"
+sed -i "s/pkgrel = .*/pkgrel = 1/" "${srcinfo}"
