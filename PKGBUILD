@@ -8,7 +8,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=7.1.4
+pkgver=7.2.9
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -16,6 +16,7 @@ license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
+  abseil-cpp
   ada
   ffmpeg
   hunspell
@@ -31,12 +32,12 @@ depends=(
   openal
   openh264
   opus
-  protobuf
   qt6-base
   qt6-imageformats
   qt6-svg
   qt6-wayland
   rnnoise
+  tlottie
   xxhash
 
   ## for libtg_owt
@@ -76,11 +77,11 @@ _pkgext="tar.gz"
 source=(
   "$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/$_pkgsrc.$_pkgext"
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
-  '0001-revert-cmake-patch.patch'
 )
-sha256sums=('20c6e9199dab302a1798ec519d5dd5151ad2952cd6be44f827144d4056620de9'
+sha256sums=(
+  '0e9694a264c25e74f88330c4976a7a2f0319bfd5550082a43a96a929e8bd8158'
   'SKIP'
-  'cf669c8a03f8ffcfb0898534c394324f9d59909e0526b86d63190d662a3dd861')
+)
 
 prepare() {
   cd "$_pkgsrc"
@@ -95,6 +96,9 @@ prepare() {
       patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
+
+  # fix cmake patching for non-git sources
+  sed -E -e 's& AND EXISTS \$\{_dir\}/\.git&&' -i CMakeLists.txt
 }
 
 build() {
@@ -141,8 +145,10 @@ package() {
       'libavfilter.so'
       'libavformat.so'
       'libavutil.so'
+      'libcairo.so'
       'libcrypto.so'
       'libfido2.so'
+      'libfontconfig.so'
       'libgio-2.0.so'
       'libglib-2.0.so'
       'libgobject-2.0.so'
@@ -154,8 +160,10 @@ package() {
       'libopenal.so'
       'libopenh264.so'
       'libopus.so'
+      'libpango-1.0.so'
+      'libpangocairo-1.0.so'
+      'libpangoft2-1.0.so'
       'libpipewire-0.3.so'
-      'libprotobuf-lite.so'
       'libsrtp2.so'
       'libssl.so'
       'libswresample.so'
