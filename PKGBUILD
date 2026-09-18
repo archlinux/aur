@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.8.3
+pkgver=3.8.4
 _electronversion=44
 _nodeversion=24
 pkgrel=1
-pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang.(Use system-wide electron)"
+pkgdesc="A privacy-first, self-hosted, fully open source personal knowledge management software, written in typescript and golang."
 arch=(
     'aarch64'
     'x86_64'
@@ -43,36 +43,62 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export CGO_ENABLED=1
-    export GO111MODULE=on
-    export GOOS=linux
-    export GOCACHE="${srcdir}/go-build"
-    export GOMODCACHE="${srcdir}/go/pkg/mod"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export pnpm_config_registry="https://registry.npmmirror.com"
-            export npm_config_registry="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export GOPROXY=https://goproxy.cn,direct
-        }
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export HOME="${srcdir}/.electron-gyp"
+	mkdir -p "${HOME}"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export XDG_STATE_HOME="${srcdir}/.local/state"
+	export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+	export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+	export PNPM_GLOBAL_DIR="${srcdir}/.pnpm/global"
+	export PNPM_GLOBAL_BIN_DIR="${srcdir}/.pnpm/bin"
+	export PNPM_STATE_DIR="${srcdir}/.pnpm/state"
+	export PNPM_MINIMUM_RELEASE_AGE=0
+	export PNPM_NODE_LINKER=hoisted
+	export PNPM_FETCH_RETRIES=3
+	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+	export PNPM_UPDATE_NOTIFIER=false
+	export PNPM_NO_COLOR=true
+	export PNPM_NO_PROGRESS=true
+	export pnpm_config_platform=linux
+	export pnpm_config_arch="${CARCH}"
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export npm_config_node_options="--max-old-space-size=4096"
+	mkdir -p "${PNPM_CACHE_DIR}" "${PNPM_STORE_DIR}" "${PNPM_GLOBAL_DIR}" "${PNPM_GLOBAL_BIN_DIR}" "${PNPM_STATE_DIR}"
+	local _pnpmver="${_pnpmversion}"
+	if [[ -z "${_pnpmver}" ]]; then
+		_pnpmver="$(node -p "const pm=require('./package.json').packageManager; pm && pm.startsWith('pnpm@') ? pm.split('@')[1] : ''" 2>/dev/null)"
+	fi
+	if [[ -n "${_pnpmver}" ]]; then
+		export COREPACK_HOME="${srcdir}/.corepack"
+		install -dm755 "${srcdir}/.bin"
+		corepack enable --install-directory "${srcdir}/.bin"
+		export PATH="${srcdir}/.bin:${PATH}"
+		corepack prepare "pnpm@${_pnpmver}" --activate
+	fi
+    export GOPATH="${srcdir}/go"
+	export GOMODCACHE="${GOPATH}/pkg/mod"
+	export GOBIN="${GOPATH}/bin"
+	export GOCACHE="${srcdir}/go-build"
+	export GOENV="${srcdir}/go/env"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export CGO_ENABLED=1
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOTOOLCHAIN=local
+	export GOWORK=off
+	mkdir -p "${GOMODCACHE}" "${GOBIN}" "${GOCACHE}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" "$(dirname "${GOENV}")"
+	: > "${GOENV}"
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -104,8 +130,8 @@ prepare() {
         --name="${pkgname}" \
         --exec="${pkgname} %U" \
         --custom="Name[zh_CN]=思源笔记"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     sed -i -e "
         /build:mobile/d
         s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
@@ -113,8 +139,8 @@ prepare() {
     NODE_ENV=development    pnpm install --no-frozen-lockfile
 }
 build() {
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     cd "${srcdir}/${pkgname}-${pkgver}/app"
     NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname}-${pkgver}/kernel"
@@ -136,7 +162,8 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/app/src/assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/app/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
