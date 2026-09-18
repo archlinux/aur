@@ -13,9 +13,9 @@ EOF
 
 post_upgrade() {
   systemctl daemon-reload >/dev/null 2>&1 || true
-  if systemctl is-active --quiet wgtunnel-daemon.service 2>/dev/null; then
-    echo "Restart the daemon to pick up the new binary: sudo systemctl restart wgtunnel-daemon.service"
-  fi
+  # Already running, so keep it in sync with a restart. This isn't auto-enabling a service
+  # that wasn't active before, so it doesn't violate the Arch conventions
+  systemctl restart wgtunnel-daemon.service >/dev/null 2>&1 || true
 }
 
 pre_remove() {

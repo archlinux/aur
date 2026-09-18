@@ -2,29 +2,30 @@
 # pkgver is a placeholder: publish-aur.yml rewrites it (and regenerates checksums via
 # updpkgsums) from the release tag before every AUR push.
 pkgname=wgtunnel-bin
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 install=wgtunnel-bin.install
-pkgdesc="WireGuard and AmneziaWG VPN client with auto-tunneling, lockdown and proxying"
+pkgdesc="WireGuard and AmneziaWG VPN client with auto-tunneling, a kill switch, and proxying"
 arch=('x86_64')
 url="https://wgtunnel.com"
 license=('MIT')
-depends=('systemd' 'gtk3' 'libsecret' 'gcc-libs' 'freetype2' 'fontconfig')
+depends=('systemd' 'gtk3' 'gcc-libs' 'freetype2' 'fontconfig')
 provides=("wgtunnel=${pkgver}")
 conflicts=('wgtunnel' 'wgtunnel-git')
 options=(!strip !emptydirs)
 
 # Nucleus artifact: ${name}-${version}-${os}-${arch}.pacman
 _src="wgtunnel-${pkgver}-linux-x64.pacman"
-source=("${_src}::https://github.com/wgtunnel/desktop/releases/download/${pkgver}/${_src}")
-sha256sums=('05a5ff89c611384152fc1b4f6cddb314b62cf02f35f23194024c8a8876a1c383')
+_tag="v2.1.0"
+source=("${_src}::https://github.com/wgtunnel/desktop/releases/download/${_tag}/${_src}")
+sha256sums=('0ddddf02b9764ed1f7480ef63c7a6cd5b63216c03cabaed794f45ea8ee713efe')
 
 package() {
   bsdtar -x -C "$pkgdir" -f "$srcdir/$_src"
   rm -f "$pkgdir"/.PKGINFO "$pkgdir"/.MTREE "$pkgdir"/.BUILDINFO "$pkgdir"/.INSTALL
 
   install -d "$pkgdir/usr/bin"
-  ln -sf /opt/wgtunnel/bin/wgtunnel "$pkgdir/usr/bin/wgtunnel"
+  ln -sf /opt/wgtunnel/wgtunnel "$pkgdir/usr/bin/wgtunnel"
 
   local unit="$pkgdir/opt/wgtunnel/wgtunnel-daemon.service"
   [[ -f "$unit" ]] || unit="$pkgdir/opt/wgtunnel/lib/wgtunnel-daemon.service"
