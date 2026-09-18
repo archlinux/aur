@@ -10,7 +10,7 @@
 # "unused"/"unassigned" heuristics don't apply to a PKGBUILD.
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=agent-glovebox
-pkgver=0.63.0
+pkgver=0.64.0
 pkgrel=1
 pkgdesc="Hardware-isolated, allowlist-firewalled sandbox for running Claude Code"
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
 
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3412ffd3192323b4d393775460ffcd0f1e2b7a5db2effe9e99c200b5f0f1bf37')
+sha256sums=('52f80d653675c2fe6e765c2613ba23d9e82ba66f62631eb56e1d6513e2218798')
 
 # Owner this release was cut from. Synced from config/packaging.json by
 # scripts/gen-packaging.mjs (shared with the Homebrew formula and nFPM manifest)
@@ -97,12 +97,10 @@ package() {
   install -Dm644 completions/glovebox.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/glovebox.fish"
   # bash-completion and fish autoload a completion file by the command name being
-  # completed, so each alias (`claude`, `agent-glovebox`) needs its own entry or
-  # tab-completing it loads nothing. Every dialect registers `claude` only when it
-  # resolves to the wrapper, so zsh needs no twin: its `#compdef glovebox
-  # agent-glovebox` header tags both, and it attaches `claude` under that guard.
-  ln -s glovebox "$pkgdir/usr/share/bash-completion/completions/claude"
-  ln -s glovebox.fish "$pkgdir/usr/share/fish/vendor_completions.d/claude.fish"
+  # completed, so the `agent-glovebox` alias needs its own entry or tab-completing
+  # it loads nothing. zsh needs no twin: its `#compdef glovebox agent-glovebox`
+  # header tags both. `claude` gets none either — this package puts no `claude` on
+  # PATH, so a twin would complete the user's own Claude Code with glovebox's flags.
   ln -s glovebox "$pkgdir/usr/share/bash-completion/completions/agent-glovebox"
   ln -s glovebox.fish "$pkgdir/usr/share/fish/vendor_completions.d/agent-glovebox.fish"
   install -Dm644 man/glovebox.1 "$pkgdir/usr/share/man/man1/glovebox.1"
