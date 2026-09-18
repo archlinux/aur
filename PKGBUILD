@@ -1,5 +1,6 @@
 # Maintainer: sachesi <xsachesi@pm.me>
 
+# pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=leyen
 pkgver=0.9.1
 pkgrel=1
