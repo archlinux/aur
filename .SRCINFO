@@ -1,6 +1,6 @@
 pkgbase = txc-bin
 	pkgdesc = Off-line text tool CLI for developers' daily work needs, like converting texts, encoding, decoding, UUID generators, etc..
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/vorjdux/txc
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = txc-bin
 	provides = txc
 	conflicts = txc
 	options = !strip
-	source_x86_64 = txc-x86_64-0.5.2.tgz::https://github.com/vorjdux/txc/releases/download/v0.5.2/txc-0.5.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 7b53bb7bc5d22a3923c7b091a4e20f20754cac3320d01ac9b6366e1a31364b29
-	source_aarch64 = txc-aarch64-0.5.2.tgz::https://github.com/vorjdux/txc/releases/download/v0.5.2/txc-0.5.2-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 746ef1a6ecbbed655f1307150dc1e2fa8d5632b75a756b023d4b5921201ad3a7
+	source_x86_64 = txc-x86_64-0.6.0.tgz::https://github.com/vorjdux/txc/releases/download/v0.6.0/txc-0.6.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = fd004a36bce7bee6db5fb6b4f09eaa800b8156b0855008ccd192c7f5e1f96f9d
+	source_aarch64 = txc-aarch64-0.6.0.tgz::https://github.com/vorjdux/txc/releases/download/v0.6.0/txc-0.6.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = cf61819f638c55d15ebf550859d06b9b02a6c217710239e7082c1e1325b27993
 
 pkgname = txc-bin
