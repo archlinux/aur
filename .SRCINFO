@@ -6,7 +6,7 @@ pkgbase = gcx-bin
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	provides = gcx
+	provides = gcx=1.3.0
 	conflicts = gcx
 	options = !strip
 	options = !debug

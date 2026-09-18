@@ -7,7 +7,7 @@ pkgdesc='A CLI for managing Grafana Cloud resources, optimized for agentic usage
 arch=('x86_64' 'aarch64')
 url='https://github.com/grafana/gcx'
 license=('Apache-2.0')
-provides=('gcx')
+provides=("gcx=${pkgver}")
 conflicts=('gcx')
 # Upstream ships statically-linked, already-stripped Go binaries; don't touch them.
 options=('!strip' '!debug')
