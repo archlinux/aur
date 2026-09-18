@@ -7,11 +7,12 @@ arch=('x86_64')
 url="https://github.com/Yubico/yubioath-flutter"
 license=('Apache-2.0')
 depends=('ccid' 'zenity')
+provides=("yubico-authenticator=${pkgver}")
 conflicts=('yubico-authenticator')
 options=(!strip)
 optdepends=('gnome-screenshot: QR scanning feature on GNOME'
             'spectacle: QR scanning feature on KDE')
-pkgrel=1
+pkgrel=2
 source=(
     "${url}/releases/download/${pkgver}/yubico-authenticator-${pkgver}-linux.tar.gz"{,.sig}
 )
