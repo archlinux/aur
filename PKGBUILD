@@ -7,7 +7,7 @@ pkgdesc='A CLI for managing Grafana Cloud resources, optimized for agentic usage
 arch=('x86_64' 'aarch64')
 url='https://github.com/grafana/gcx'
 license=('Apache-2.0')
-makedepends=('go>=1.26.2' 'git')
+makedepends=('go>=1.26.3' 'git')
 provides=('gcx')
 conflicts=('gcx')
 options=('!debug')
@@ -28,7 +28,7 @@ prepare() {
 	# Pre-fetch modules so build() runs against a read-only tree.
 	export GOPATH="$srcdir/gopath"
 	export GOFLAGS='-modcacherw'
-	go mod download -x
+	go mod download
 }
 
 build() {
@@ -65,7 +65,18 @@ build() {
 
 check() {
 	cd "$pkgname"
-	./build/gcx version >/dev/null
+
+	export GOPATH="$srcdir/gopath"
+	export GOFLAGS='-mod=readonly -modcacherw'
+
+	# Full unit suite: unlike the release tarball, the git checkout has the
+	# .git metadata the skills-drift test needs, so nothing is excluded.
+	# (If upstream main is red, this fails — that is the point of a VCS package.)
+	go test ./...
+
+	# The binary must report the exact revision it was built from. -o json is
+	# pinned: the default format depends on the environment (see gcx).
+	./build/gcx version -o json | grep -q "$(git rev-parse HEAD)"
 }
 
 package() {
@@ -79,4 +90,5 @@ package() {
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
