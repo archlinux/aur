@@ -1,0 +1,16 @@
+pkgbase = techdoro-bin
+	pkgdesc = A desktop Pomodoro timer with a to-do list.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/Zelchi/techdoro
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = techdoro=3.0.1
+	conflicts = techdoro
+	source = techdoro-3.0.1.rpm::https://github.com/Zelchi/techdoro/releases/download/v3.0.1/Techdoro-3.0.1-1.x86_64.rpm
+	sha256sums = 02d60f5744edbf469917195d612933c9a56510325285a6c78fd21e7327d1ef8c
+
+pkgname = techdoro-bin
