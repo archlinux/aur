@@ -1,0 +1,25 @@
+pkgbase = mako-render
+	pkgdesc = Next-generation, Vulkan-powered graphics layer for Linux gaming
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://eugeniosegala.github.io/MAKO
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = lib32-vulkan-icd-loader
+	makedepends = python
+	makedepends = vulkan-headers
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = vulkan-icd-loader
+	source = MAKO-render-v3.3.0.tar.gz::https://github.com/eugeniosegala/MAKO/archive/refs/tags/render-v3.3.0.tar.gz
+	sha256sums = 7131040e93fa64df2cb82ffe806fc7e770985a0b999cf26a6c2f44cd69373c8c
+
+pkgname = mako-render
+	optdepends = lib32-mako-render: 32-bit support
+
+pkgname = lib32-mako-render
+	pkgdesc = Next-generation, Vulkan-powered graphics layer for Linux gaming (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-vulkan-icd-loader
+	depends = mako-render

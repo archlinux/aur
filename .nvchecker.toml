@@ -1,0 +1,4 @@
+[mako-render]
+source = "git"
+git = "https://github.com/eugeniosegala/MAKO.git"
+prefix = "render-v"
