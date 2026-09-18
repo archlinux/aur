@@ -1,0 +1,43 @@
+pkgbase = spiral-file-manager
+	pkgdesc = File manager for Wayland with a file chooser portal backend
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/sachesi/spiral
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = blueprint-compiler
+	makedepends = just
+	makedepends = gettext
+	depends = gtk4>=1:4.22
+	depends = libadwaita>=1:1.9
+	depends = gtksourceview5
+	depends = glib2
+	depends = libseccomp
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-base
+	depends = gst-plugin-gtk4
+	depends = bubblewrap
+	depends = xdg-desktop-portal
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = glibc
+	optdepends = glycin: decode pictures in glycin's sandbox
+	optdepends = gst-plugins-good: play common video and sound formats
+	optdepends = gst-plugins-bad: play more video and sound formats
+	optdepends = gst-libav: play most other video and sound formats
+	optdepends = gvfs: network locations, the Trash folder and remembered folder views
+	optdepends = gvfs-smb: Windows shares
+	optdepends = gvfs-nfs: NFS shares
+	optdepends = poppler: PDF previews
+	optdepends = 7zip: 7z archives
+	optdepends = unrar: RAR archives
+	optdepends = xdg-terminal-exec: Open in Terminal
+	optdepends = gnome-disk-utility: open drives in Disks
+	conflicts = spiral-git
+	source = spiral-0.17.0.tar.gz::https://github.com/sachesi/spiral/archive/v0.17.0/spiral-0.17.0.tar.gz
+	sha256sums = 451dec0d15e87e7c1713dc589b5de40237f41a3cdcfc5711e4cd3faae1475d9e
+
+pkgname = spiral-file-manager
