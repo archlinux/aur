@@ -1,13 +1,10 @@
 pkgbase = nfcx
 	pkgdesc = NFC workbench for PN532 readers: reader discovery, MIFARE Classic reads, dumps, and key recovery
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nfcx.tools
 	arch = x86_64
 	license = MIT
-	license = LGPL-3.0-or-later
-	license = GPL-2.0-or-later
-	license = BSD-2-Clause
 	makedepends = go
 	makedepends = nodejs
 	makedepends = npm

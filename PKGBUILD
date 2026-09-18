@@ -6,8 +6,13 @@
 # mfoc/mfcuk/mfoc-hardnested and nfc-mfsetuid built against that same private
 # libnfc. The application resolves its runtime relative to its own executable
 # (runtime/linux-amd64, rpath $ORIGIN/runtime/linux-amd64), so the runtime is
-# installed under /usr/lib/nfcx next to the binary and the manifest of that
-# directory is hash-verified by the built-in self-check.
+# installed under /usr/lib/nfcx next to the binary (/usr/lib/nfcx/nfcx, with
+# /usr/bin/nfcx symlinked to it) and the manifest of that directory is
+# hash-verified by the built-in self-check.
+#
+# license covers the NFCX source only. The redistribution terms of the bundled
+# LGPL/GPL/BSD engines are met by shipping their license texts, which land in
+# /usr/share/licenses/nfcx/runtime/ and inside the runtime directory itself.
 #
 # The bundled third-party sources are pinned twice: by the sha256sums below and
 # by third_party/*/*.lock, which the upstream toolchain scripts re-verify while
@@ -20,11 +25,11 @@
 
 pkgname=nfcx
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='NFC workbench for PN532 readers: reader discovery, MIFARE Classic reads, dumps, and key recovery'
 arch=('x86_64')
 url='https://nfcx.tools'
-license=('MIT' 'LGPL-3.0-or-later' 'GPL-2.0-or-later' 'BSD-2-Clause')
+license=('MIT')
 # One entry per library the packaged ELF files need directly: gtk3 and
 # webkit2gtk-4.1 for the GUI shell, their direct leaf providers, xz for
 # mfoc-hardnested. libnfc.so.6 resolves inside the private runtime.
@@ -138,14 +143,20 @@ package() {
     "$pkgdir/usr/share/licenses/nfcx"
 
   # NFCX plus the runtime it resolves relative to itself. The manifest is
-  # hashed over exactly this tree, symlinked libnfc.so* included.
+  # hashed over exactly this tree, symlinked libnfc.so* included. Upstream
+  # names the executable NFCX (its product name, as in the AppImage); the
+  # package installs it lowercase, which is what the Arch naming conventions
+  # expect and what makes the GTK/Wayland application id line up with
+  # nfcx.desktop.
   cp -a build/bin/NFCX-linux-amd64/. "$pkgdir/usr/lib/nfcx/"
-  ln -s /usr/lib/nfcx/NFCX "$pkgdir/usr/bin/NFCX"
+  mv "$pkgdir/usr/lib/nfcx/NFCX" "$pkgdir/usr/lib/nfcx/nfcx"
+  ln -s /usr/lib/nfcx/nfcx "$pkgdir/usr/bin/nfcx"
 
-  install -Dm644 build/linux/NFCX.desktop "$pkgdir/usr/share/applications/NFCX.desktop"
+  sed -e 's|^Exec=.*|Exec=nfcx|' -e 's|^Icon=.*|Icon=nfcx|' \
+    build/linux/NFCX.desktop > "$pkgdir/usr/share/applications/nfcx.desktop"
   # Upstream ships a single 1024x1024 icon; hicolor has no native 1024 slot, so
   # it lands in 512x512 and toolkits scale it down.
-  install -Dm644 build/appicon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/NFCX.png"
+  install -Dm644 build/appicon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/nfcx.png"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/nfcx/LICENSE"
   install -Dm644 THIRD_PARTY_NOTICES.md "$pkgdir/usr/share/licenses/nfcx/THIRD_PARTY_NOTICES.md"
