@@ -1,7 +1,7 @@
 pkgbase = volctl
 	pkgdesc = Per-application volume control for GNU/Linux desktops
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://buzz.github.io/volctl/
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = volctl
 	optdepends = pavucontrol: mixer support
 	optdepends = statusnotifier-introspection-dbus-menu: SNI support
 	options = !emptydirs
-	source = volctl-1.0.0.tar.gz::https://github.com/buzz/volctl/archive/refs/tags/v1.0.0.tar.gz
-	b2sums = 531c3fae34b21b48b10edcf4ed8aaff4384dac16746c2b390bd627c62aeaf0571b90384c96d029bd759c48b810b053f261ae2cdfb1a71e26c70059463570639e
+	source = volctl-1.0.1.tar.gz::https://github.com/buzz/volctl/archive/refs/tags/v1.0.1.tar.gz
+	b2sums = 0059c330de313750fa4a828ae80ecbb12f895c68b3965520d886b201c1e4fef853a60ad2edfe5416ff1c21a66670a25103afbf757b67e142612167dbf13962e8
 
 pkgname = volctl

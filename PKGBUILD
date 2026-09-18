@@ -1,7 +1,7 @@
 # Maintainer: buzz <buzz@users.noreply.github.com>
 pkgname=volctl
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Per-application volume control for GNU/Linux desktops"
 arch=("x86_64" "aarch64")
 url="https://buzz.github.io/volctl/"
@@ -12,7 +12,7 @@ optdepends=("pavucontrol: mixer support"
             "statusnotifier-introspection-dbus-menu: SNI support")
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/buzz/volctl/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=("531c3fae34b21b48b10edcf4ed8aaff4384dac16746c2b390bd627c62aeaf0571b90384c96d029bd759c48b810b053f261ae2cdfb1a71e26c70059463570639e")
+b2sums=("0059c330de313750fa4a828ae80ecbb12f895c68b3965520d886b201c1e4fef853a60ad2edfe5416ff1c21a66670a25103afbf757b67e142612167dbf13962e8")
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
