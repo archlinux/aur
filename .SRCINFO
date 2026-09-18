@@ -1,0 +1,23 @@
+pkgbase = movo
+	pkgdesc = GTK 4 and Libadwaita client for HDRezka
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/sachesi/movo
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = gettext
+	depends = gtk4>=1:4.22
+	depends = libadwaita>=1:1.9
+	depends = glib2
+	depends = pango
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = glibc
+	optdepends = mpv: play streams
+	options = !lto
+	source = movo-0.4.4.tar.gz::https://github.com/sachesi/movo/archive/v0.4.4/movo-0.4.4.tar.gz
+	sha256sums = 172968b38d362879a8f52feec60a81968f39bdc8ec2b58a37934aba20c688dc6
+
+pkgname = movo
