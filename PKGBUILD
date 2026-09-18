@@ -2,7 +2,7 @@
 
 pkgname=wofimoji
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='the wofi emoji picker'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kenshaw/wofimoji"
@@ -28,6 +28,11 @@ build() {
                   -X main.name=$pkgname
                   -X main.version=$pkgver" \
         -o $pkgname
+}
+
+check() {
+    cd $pkgname-$pkgver
+    ./$pkgname --version
 }
 
 package() {

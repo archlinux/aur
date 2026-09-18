@@ -1,0 +1,5 @@
+[wofimoji]
+source = "github"
+github = "kenshaw/wofimoji"
+use_latest_release = true
+prefix = "v"

@@ -1,6 +1,5 @@
-/*.tar.xz
-/*.tar.gz
-/*.tar.zst
-/pkg
-/src
-/wofimoji
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO
