@@ -2,7 +2,7 @@
 _pkgname=shrimply
 pkgname="${_pkgname}-git"
 pkgver=r422.f6fc8ee9
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple, fast GPU-accelerated video editor"
 arch=('x86_64')
 url="https://github.com/soirihiroka/shrimply"
@@ -55,7 +55,7 @@ source=(
 sha256sums=(
   'SKIP'
   '3d648690fb909f6252b0392d1d5fcbf698d312f1691a4c255707c90131652a9f'
-  '0dcee6095d5829fa875b1e3c805d55678c2ca2e2df98ec8c19e6033a5890d676'
+  'd62223ffd425c2d18ffb73cb865d4c1b7acf3a3a39bc1678889f733facc7e63f'
 )
 
 pkgver() {
