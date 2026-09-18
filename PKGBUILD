@@ -20,6 +20,7 @@ depends=(
   'libelf'
   'libglvnd'
   'libplacebo'
+  'libpng'
   'libsoup3'
   'libutf8proc'
   'libyaml'

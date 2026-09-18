@@ -24,6 +24,7 @@ pkgbase = mocktail
 	depends = libelf
 	depends = libglvnd
 	depends = libplacebo
+	depends = libpng
 	depends = libsoup3
 	depends = libutf8proc
 	depends = libyaml
