@@ -14,6 +14,8 @@ provides=("openmeters")
 conflicts=("openmeters")
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=("645cee54965296e7484e124316c803d46640589c23ca280597848c9b3aa65b51")
+# force disable lto for this package; it fails linking if it's enabled
+options=('!lto')
 
 build() {
     cd "${srcdir}/openmeters"
