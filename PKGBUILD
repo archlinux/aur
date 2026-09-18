@@ -1,11 +1,11 @@
 # Maintainer: Jean-Louis Queguiner <jlqueguiner@gladia.io>
 pkgname=python-words2num2
 _pkgname=words2num2
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Inverse of num2words2: convert spoken-form numbers back to numeric values across 100+ languages."
 arch=('any')
-url="https://github.com/jqueguiner/words2num2"
+url="https://github.com/gladiaio/words2num2"
 license=('LGPL-2.1-only')
 depends=('python' 'python-docopt' 'python-num2words2')
 makedepends=('python-build'
@@ -15,7 +15,7 @@ makedepends=('python-build'
              'python-wheel')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/w/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('1c7294bfb76bdf23a99eb7fedc23089b0096313906c3ad93dc3ec19ff2f18afc')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 build() {
   cd "${_pkgname}-${pkgver}"
