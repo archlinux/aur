@@ -5,9 +5,9 @@
 
 pkgname=factorio-space-age-experimental
 pkgver=2.1.19 # renovate: datasource=custom.factorio depName=experimental.expansion
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories (experimental branch w/ Space Age expansion)."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="http://www.factorio.com/"
 license=('custom: commercial')
 provides=('factorio' 'factorio-experimental')
@@ -18,8 +18,26 @@ source=(factorio.desktop
         LICENSE)
 b2sums=('e92c56a60a2c393d8e9caef3d693dabef06321b20fc14b8978eba8255491b3a5cdbe6462885612633ef8c8b64986c7dd19f3f3288836f91f70f702c960164f14'
         'b2942a3b1136c206153f737408859cdda9be9bead95f10a4876c17cd4bc7f866bcf70f7545a818a5392732eb72f825947cc34071c7d5d657006ffbaef7eb8919')
-_url=https://factorio.com/get-download/${pkgver}/expansion/linux64
-_gamepkg=${pkgname}_linux_${pkgver}.tar.xz
+
+# Upstream is inconsistent: the download endpoint uses "linux64" while the
+# tarball it serves is named "..._linux_...", hence the two separate variables.
+# CARCH is set by makepkg; the fallback keeps the PKGBUILD sourceable on its own
+# (CI sources it under `set -u` just to read depends/makedepends).
+case "${CARCH:-$(uname -m)}" in
+  x86_64)
+    _dlplatform=linux64
+    _pkgplatform=linux
+    _bindir=x64
+    ;;
+  aarch64)
+    _dlplatform=linux-arm64
+    _pkgplatform=linux-arm64
+    _bindir=arm64
+    ;;
+esac
+
+_url=https://factorio.com/get-download/${pkgver}/expansion/${_dlplatform}
+_gamepkg=${pkgname}_${_pkgplatform}_${pkgver}.tar.xz
 
 build() {
   msg "You need a full copy of this game and the expansion in order to install it"
@@ -60,7 +78,7 @@ package() {
   install -g games -m 775 -d "${pkgdir}/usr/share/factorio"
   install -d "${pkgdir}/usr/share/licenses/factorio"
 
-  install -m755 "bin/x64/factorio" "${pkgdir}/usr/bin/factorio"
+  install -m755 "bin/${_bindir}/factorio" "${pkgdir}/usr/bin/factorio"
   cp -r data/* "${pkgdir}/usr/share/factorio"
   install -m644 "${srcdir}/factorio.desktop" "${pkgdir}/usr/share/applications/factorio.desktop"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/factorio/LICENSE"
