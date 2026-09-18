@@ -1,7 +1,7 @@
 # Maintainer: Project Maintainers <maintainers@users.noreply.github.com>
 pkgname=factory-ai-droid-cli-rnoz-bin
 pkgver=0.222.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Factory.ai CLI (droid) with rNoz tweaks, optional zero-waste titling, and cross-harness keybindings (automatically tracks upstream releases)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rNoz/factory-ai-droid-cli-rnoz"
@@ -34,6 +34,32 @@ package() {
   local platform="linux"
   local use_system_rg=0
 
+  has_user_noconfirm() {
+    [[ "${DROID_NONINTERACTIVE:-0}" == "1" ]] && return 0
+
+    local p=$PPID
+    local helper_found=0
+    while [[ -n "$p" && "$p" -gt 1 ]] 2>/dev/null; do
+      local comm="" cmdline=""
+      comm=$(cat "/proc/$p/comm" 2>/dev/null || true)
+      cmdline=$(tr '\0' ' ' < "/proc/$p/cmdline" 2>/dev/null || true)
+      if [[ "$comm" =~ ^(yay|paru|pikaur|aurman|pakku|trizen)$ ]]; then
+        helper_found=1
+        if [[ " $cmdline " =~ " --noconfirm " ]]; then
+          return 0
+        else
+          return 1
+        fi
+      fi
+      p=$(sed -n 's/.*) [^ ]* \([0-9]*\).*/\1/p' "/proc/$p/stat" 2>/dev/null || true)
+    done
+
+    if (( ! helper_found )) && [[ " ${PACMAN_OPTS[*]:-} " =~ " --noconfirm " ]]; then
+      return 0
+    fi
+    return 1
+  }
+
   apply_patch_if_requested() {
     local label="$1"
     local patcher="$2"
@@ -57,7 +83,7 @@ package() {
     fi
 
     local is_interactive=0
-    if [[ " ${PACMAN_OPTS[*]:-} " =~ " --noconfirm " || "${DROID_NONINTERACTIVE:-0}" == "1" ]]; then
+    if has_user_noconfirm; then
       is_interactive=0
     elif [[ -t 0 && -t 1 ]]; then
       is_interactive=1
@@ -66,12 +92,13 @@ package() {
     fi
 
     if (( is_interactive )); then
-      local answer
+      local answer=""
       printf "Apply %s patch? [Y/n] " "$label" >/dev/tty
-      read -r answer </dev/tty
-      if [[ "$answer" =~ ^[Nn]$ ]]; then
-        msg2 "Skipping ${label} patch (requested interactively)."
-        return 0
+      if read -r answer </dev/tty; then
+        if [[ "$answer" =~ ^[Nn]$ ]]; then
+          msg2 "Skipping ${label} patch (requested interactively)."
+          return 0
+        fi
       fi
     fi
     python3 "$patcher" "$output_bin" --test
