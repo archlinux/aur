@@ -7,7 +7,7 @@ pkgdesc='A CLI for managing Grafana Cloud resources, optimized for agentic usage
 arch=('x86_64' 'aarch64')
 url='https://github.com/grafana/gcx'
 license=('Apache-2.0')
-makedepends=('go>=1.26.2')
+makedepends=('go>=1.26.3')
 options=('!debug')  # The Go toolchain ships statically-linked binaries without DWARF in a separate package.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('c5bfdc31048547b2e6918f7e595f343208bbae9da3bbc4aa68195fd58b5472ad')
@@ -18,7 +18,7 @@ prepare() {
 	# Pre-fetch modules so build() can run offline with a read-only source tree.
 	export GOPATH="$srcdir/gopath"
 	export GOFLAGS='-modcacherw'
-	go mod download -x
+	go mod download
 }
 
 build() {
@@ -56,8 +56,22 @@ build() {
 check() {
 	cd "$pkgname-$pkgver"
 
+	export GOPATH="$srcdir/gopath"
+	export GOFLAGS='-mod=readonly -modcacherw'
+
+	# Upstream's full unit suite. cmd/gcx/root is excluded: its skills-drift
+	# test shells out to `git ls-files`, which needs a git checkout the
+	# release tarball doesn't have (verified: the only failure, and only for
+	# that reason). The root command is still covered by the smoke test below.
+	# NOTE: the $(...) is deliberately unquoted so each package becomes its
+	# own argument to `go test`.
+	go test $(go list ./... | grep -v '/cmd/gcx/root$')
 	# Smoke-test the binary: it must run and report the version we injected.
-	./build/gcx version | grep -q "v$pkgver"
+	# -o json is pinned deliberately: the default format is environment-
+	# dependent (agent mode flips it to a JSON envelope, human mode renders
+	# a text table), so grepping the default output would pass in one place
+	# and fail in another. Explicit JSON is identical everywhere.
+	./build/gcx version -o json | grep -q "\"version\": \"v$pkgver\""
 }
 
 package() {
@@ -73,4 +87,5 @@ package() {
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }

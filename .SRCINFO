@@ -6,7 +6,7 @@ pkgbase = gcx
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	makedepends = go>=1.26.2
+	makedepends = go>=1.26.3
 	options = !debug
 	source = gcx-1.3.0.tar.gz::https://github.com/grafana/gcx/archive/refs/tags/v1.3.0.tar.gz
 	sha256sums = c5bfdc31048547b2e6918f7e595f343208bbae9da3bbc4aa68195fd58b5472ad
