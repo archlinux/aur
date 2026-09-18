@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastwc-bin
-pkgver=34
+pkgver=35
 pkgrel=1
 pkgdesc="fastwc, a fast wc rewrite, prebuilt binary"
 arch=('x86_64')
