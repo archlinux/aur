@@ -14,6 +14,7 @@ pkgbase = flclash-bin
 	depends = libappindicator
 	provides = flclash=0.8.98
 	conflicts = flclash
+	options = !strip
 	source = flclash.sh
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 	source_aarch64 = flclash-0.8.98-aarch64.deb::https://github.com/chen08209/FlClash/releases/download/v0.8.98/FlClash-0.8.98-linux-arm64.deb

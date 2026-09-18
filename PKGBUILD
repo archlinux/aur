@@ -21,15 +21,15 @@ depends=(
     'libayatana-indicator'
     'libappindicator'
 )
-source=(
-    "${pkgname%-bin}.sh"
+options=(
+    '!strip'
 )
+source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 sha256sums_aarch64=('384ba5507fffb1b6d3af50bd430fa02b13fc945193dd21b7331a99f7da5f3ab9')
 sha256sums_x86_64=('19ef8fbe6c82b5534784eb97ac8e93696cb63d62f77b5f1cb6fb7ffe52f4ea66')
-# sha256sums_aarch64=('b250a118058cadd5d3dde417f38c439c5d535ae0597a145be235d6cdcbf4e325')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
