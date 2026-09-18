@@ -1,7 +1,7 @@
 # Maintainer: buzz <buzz@users.noreply.github.com>
 pkgname=volctl-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Per-application volume control for GNU/Linux desktops (binary release)"
 arch=("x86_64")
@@ -14,7 +14,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=(!emptydirs)
 source=("https://github.com/buzz/volctl/releases/download/v${pkgver}/volctl-v${pkgver}-x86_64.tar.gz")
-sha256sums=("1623d60c25df6a14a726da633088f455c70d9b0560ca4ae6fcb11897cb018efe")
+sha256sums=("4bb73480c1e1e3179d4bfbc689079a5ff5c23a9e185890dfe29158dbf325aded")
 
 package() {
     local src="${srcdir}/volctl-v${pkgver}-x86_64"
