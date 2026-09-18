@@ -1,6 +1,6 @@
 pkgbase = rmpd-git
-	pkgdesc = Modern, high-performance MPD server written in pure Rust with DSD support and multi-room audio
-	pkgver = r54.5bc8d59
+	pkgdesc = A flexible, powerful, server-side application for playing music
+	pkgver = r249.dc9a30b
 	pkgrel = 1
 	url = https://github.com/M0Rf30/rmpd
 	arch = x86_64
@@ -19,8 +19,6 @@ pkgbase = rmpd-git
 	provides = rmpd
 	conflicts = rmpd
 	source = rmpd-git::git+https://github.com/M0Rf30/rmpd.git
-	source = rmpd.service
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = rmpd-git

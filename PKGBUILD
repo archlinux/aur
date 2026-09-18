@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 pkgname=rmpd-git
-pkgver=r54.5bc8d59
+pkgver=r249.dc9a30b
 pkgrel=1
-pkgdesc="Modern, high-performance MPD server written in pure Rust with DSD support and multi-room audio"
+pkgdesc="A flexible, powerful, server-side application for playing music"
 arch=('x86_64' 'aarch64')
 url="https://github.com/M0Rf30/rmpd"
 license=('MIT' 'Apache-2.0')
@@ -15,10 +15,8 @@ optdepends=(
 )
 provides=('rmpd')
 conflicts=('rmpd')
-source=("${pkgname}::git+https://github.com/M0Rf30/rmpd.git"
-        "rmpd.service")
-sha256sums=('SKIP'
-            'SKIP')
+source=("${pkgname}::git+https://github.com/M0Rf30/rmpd.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -65,6 +63,7 @@ package() {
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "CI.md" "${pkgdir}/usr/share/doc/${pkgname}/CI.md"
 
-  # Install systemd service file
-  install -Dm644 "${srcdir}/rmpd.service" "${pkgdir}/usr/lib/systemd/user/rmpd.service"
+  # Install systemd service file (shipped by the upstream repo)
+  install -Dm644 "contrib/systemd/rmpd.service" \
+    "${pkgdir}/usr/lib/systemd/user/rmpd.service"
 }
