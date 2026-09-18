@@ -1,0 +1,35 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index 1aa1ed7..df7a81f 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -853,7 +853,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "gaypanel"
+-version = "0.1.0"
++version = "1.0.0"
+ dependencies = [
+  "alsa",
+  "async-channel",
+@@ -1814,7 +1814,7 @@ checksum = "8ed6a63f02c8539c91a8685a86f4099661ba3da017932f6ebbea6de3f0fa7c90"
+ [[package]]
+ name = "smithay-client-toolkit"
+ version = "0.20.0"
+-source = "git+https://github.com/pastthepixels/client-toolkit#e7190b3dbec2dfdea95cda56f501dc5971dc4c46"
++source = "git+https://github.com/pastthepixels/client-toolkit?rev=bfbcdb18f6c9ab9d1ad799586b7f9f8474ba73c6#bfbcdb18f6c9ab9d1ad799586b7f9f8474ba73c6"
+ dependencies = [
+  "bitflags 2.13.0",
+  "bytemuck",
+diff --git a/Cargo.toml b/Cargo.toml
+index 0e117e6..5945493 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -8,7 +8,7 @@ license = "GPL-3.0-only"
+ edition = "2024"
+ 
+ [dependencies]
+-smithay_client_toolkit = { git = "https://github.com/pastthepixels/client-toolkit", package = "smithay-client-toolkit" }
++smithay_client_toolkit = { git = "https://github.com/pastthepixels/client-toolkit", package = "smithay-client-toolkit", rev = "bfbcdb18f6c9ab9d1ad799586b7f9f8474ba73c6" }
+ wayland-client = "0.31.14"
+ wayland-protocols = "0.32.12"
+ adw = { version = "^0.9", package = "libadwaita", features = ["v1_6", "v1_8"] }

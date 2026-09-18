@@ -1,9 +1,12 @@
 pkgbase = gaypanel
 	pkgdesc = Panel for Wayland compositors
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/pastthepixels/gaypanel
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7
 	license = GPL-3.0-only
 	makedepends = rust
 	makedepends = clang
@@ -18,6 +21,8 @@ pkgbase = gaypanel
 	depends = libxkbcommon
 	optdepends = power-profiles-daemon: ppd widget
 	source = gaypanel-1.0.0.tar.gz::https://codeberg.org/pastthepixels/gaypanel/archive/v1.0.0.tar.gz
-	sha256sums = 3298eae94a5df6bb29f4134e1081ffddf289c98c1c6f912ed33ecedcbd73c117
+	source = 0001-fix-client-toolkit.patch
+	sha256sums = 5a9f9d2279b917217c8b098b85c2c0c4487feb799e4e296e27300ae5981e444f
+	sha256sums = 7d00e50698dcddfd881a2fb1877951f8e62ea069e702833a312db99d6098e381
 
 pkgname = gaypanel
