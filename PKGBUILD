@@ -2,10 +2,10 @@
 _pkgname=notesnook
 pkgname="${_pkgname}-electron-bin"
 _appname=Notesnook
-pkgver=3.4.7
+pkgver=3.4.8
 _electronversion=37
 pkgrel=1
-pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote."
 arch=(
     'aarch64'
     'x86_64'
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('7408cb3a25afa33268cfc3bf7de2ab338fea13d5d2f3720d038202e20599b60d')
-sha256sums_x86_64=('37035f853b9f276e70a9d66e45757bdda54e1e376a18f4388d974c5da5bedef3')
+sha256sums_aarch64=('6ea076415b1ea4ccb30ce435a4e65793aa77470aa498df0f9e1caf94c1898592')
+sha256sums_x86_64=('980b4685800f5cf19e99a45429f363bd8d8b466d10ba965e9c10dc941bf4ddb3')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -73,7 +73,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
