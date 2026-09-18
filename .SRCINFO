@@ -1,0 +1,44 @@
+pkgbase = python-pydantic-monty
+	pkgver = 0.0.23
+	pkgrel = 1
+	arch = any
+	license = MIT
+	checkdepends = python-anyio
+	checkdepends = python-dirty-equals
+	checkdepends = python-inline-snapshot
+	checkdepends = python-opentelemetry-sdk
+	checkdepends = python-pytest
+	checkdepends = python-pytest-examples
+	checkdepends = python-websockets
+	makedepends = python-maturin
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	options = !lto
+	source = https://github.com/pydantic/monty/archive/refs/tags/v0.0.23.tar.gz
+	sha256sums = 653bc739256dc511fa7600d1f7ee0a2f392ccbe91018a99e0c62c496197728a9
+
+pkgname = python-pydantic-monty-client
+	pkgdesc = Python client for the Monty sandboxed Python interpreter.
+	url = https://github.com/pydantic/monty/tree/main/crates/monty-python
+	depends = python
+	depends = python-typing_extensions
+	depends = glibc
+	depends = libgcc
+	optdepends = python-opentelemetry-api: opentelemetry
+
+pkgname = python-pydantic-monty-runtime
+	pkgdesc = The monty CLI binary — spawned as worker subprocesses by pydantic-monty.
+	url = https://github.com/pydantic/monty/tree/main/crates/monty-runtime
+	depends = glibc
+	depends = libgcc
+
+pkgname = python-pydantic-monty
+	pkgdesc = The Monty sandboxed Python interpreter: bindings plus the worker binary.
+	url = https://github.com/pydantic/monty/tree/main/packages/pydantic-monty
+	depends = python
+	depends = python-pydantic-monty-client
+	depends = python-pydantic-monty-runtime
+	optdepends = python-opentelemetry-api: opentelemetry
