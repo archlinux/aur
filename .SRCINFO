@@ -1,6 +1,6 @@
 pkgbase = nocturne
 	pkgdesc = Bring your music library together
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/Jeffser/Nocturne
 	arch = any
@@ -27,7 +27,11 @@ pkgbase = nocturne
 	depends = python-syncedlyrics
 	depends = python-tinytag
 	depends = python-urllib3
-	source = nocturne-1.5.1.tar.gz::https://github.com/Jeffser/Nocturne/archive/1.5.1.tar.gz
-	sha256sums = c8706fb9ebdd26fa890736d23cb2829c93bb1d48a0647a0adb634caa085c68e2
+	optdepends = gst-plugin-gtk4: for video rendering
+	optdepends = gst-plugins-bad: extra media codecs
+	optdepends = gst-plugins-good: extra media codecs
+	optdepends = gst-plugins-ugly: extra media codecs
+	source = nocturne-1.5.2.tar.gz::https://github.com/Jeffser/Nocturne/archive/1.5.2.tar.gz
+	sha256sums = 1902291269980d6f0ccba56a23df8512852edb86587dff93f6fb78f920c0073d
 
 pkgname = nocturne
