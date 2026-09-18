@@ -19,10 +19,10 @@ pkgbase = android-studio
 	optdepends = ncurses5-compat-libs: native debugger support
 	optdepends = vulkan-icd-loader: Vulkan acceleration for Gemini local models
 	options = !strip
-	source = https://dl.google.com/dl/android/studio/ide-zips/2026.1.4.8/android-studio-quail4-linux.tar.gz
+	source = https://dl.google.com/dl/android/studio/ide-zips/2026.1.4.8/android-studio-quail4-patch1-linux.tar.gz
 	source = android-studio.desktop
 	source = license.html
-	b2sums = c4f0dfad8eff9b8d0d9f2040dc9f26f2c60f7330226060ec1c9254f3a2ee8a8296c6be9002c7ef8818b18730d34dbe67b516036c4ad0378c4f4f6ba857571e5a
+	b2sums = 0c569b7fbd7dc4441eb478a8e1abd1697e50002f15093a0fa900a2288e124e21b7b70325371064f4c262c2f36b2a48ca50cf3b29dd8987fcb435d18e256cb930
 	b2sums = 0b978b7fdbcd277cf432080572b141a760ad169984c9cb09f11c6f3ca0be807483545685c86853329bc4622bf516c7a668148bd25ada906fa7289bb9a7c7ccf8
 	b2sums = 43b288fb81656cd72826a52620e41fbd0daa65d37246cb5b7dbff9c326022eabf18344513517b16134b557d6ae86535f44f863ebd06d6fe0410f92117c1a8c67
 
