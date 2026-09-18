@@ -1,6 +1,6 @@
 # Maintainer: Rodolfo Panerai <rodolfo.panerai at gmail dot com>
 pkgname=megasync-bin
-pkgver=6.5.1
+pkgver=6.6.2
 pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=('glibc>=2.33'
 optdepends=('xdg-desktop-portal: follow the desktop color scheme (using dbus)'
             'glib2: follow the desktop color scheme (using gsettings)')
 source=("https://mega.nz/linux/repo/Arch_Extra/x86_64/megasync-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('25e9376367c386b825e516552bdf5761f64c6637a9fdac413d45536e2cc0eb6d')
+sha256sums=('786290df31f4dca2e2ffa36fa407ecbb06d21ed729a46ead22c32be718618f30')
 
 package() {
     cp -R "${srcdir}/usr" "${pkgdir}/"
