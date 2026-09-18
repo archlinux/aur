@@ -2,7 +2,7 @@
 
 pkgauthor="rxb06"
 pkgname="credactor"
-pkgver=2.7.2
+pkgver=2.7.4
 pkgrel=1
 pkgdesc="Find the secret. Fix it. Commit clean."
 
@@ -24,7 +24,7 @@ depends=('git' 'python' 'python-charset-normalizer')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2d36969e2717393e815f523cd447d4dc8fa5e079257926201bcfd3cd9e97be90')
+sha256sums=('d5035fe77fa1f83697ea6359fcee66b37edbcc520b838a0c0e882ea79b034219')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit
