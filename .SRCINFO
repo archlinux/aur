@@ -1,0 +1,22 @@
+pkgbase = bspwm1-maflorezp-git
+	pkgdesc = bspwm1 with live edge magnetism, configurable Aero Snap and rules matched by window properties
+	pkgver = 1.6.2.r124.g03237e5
+	pkgrel = 1
+	url = https://github.com/maflorezp/bspwm1
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	depends = libxcb
+	depends = xcb-util
+	depends = xcb-util-keysyms
+	depends = xcb-util-wm
+	depends = libxkbcommon
+	optdepends = sxhkd: keybinding daemon
+	provides = bspwm
+	provides = bspwm1
+	conflicts = bspwm
+	conflicts = bspwm1
+	source = bspwm1::git+https://github.com/maflorezp/bspwm1.git#branch=local
+	sha256sums = SKIP
+
+pkgname = bspwm1-maflorezp-git
