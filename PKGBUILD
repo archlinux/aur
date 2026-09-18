@@ -1,7 +1,7 @@
 # Maintainer: mutex_lock
 pkgname=pesde
-pkgver=0.7.3
-pkgrel=2
+pkgver=0.7.4
+pkgrel=1
 pkgdesc="A package manager for the Luau programming language supporting multiple runtimes including Roblox and Lune"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pesde-pkg/pesde"
@@ -15,7 +15,7 @@ options=(!lto)
 _regver=0.2.3
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pesde-pkg/pesde/archive/refs/tags/v$pkgver+registry.$_regver.tar.gz")
-sha256sums=('18a1201a0f49892e90ada46ba64b2c7af7e2a7054569ab7e24157da6cdc31a05')
+sha256sums=('aa00b75db4c5a1e4450d2c7c334c9290365db94b82cc71cb001e4a58ab338b0d')
 
 prepare() {
   cd "$pkgname-$pkgver-registry.$_regver"
