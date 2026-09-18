@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/benjamimgois/opengrid"
 license=('GPL-3.0-or-later')
 depends=('python' 'python-pyqt6' 'python-pyte' 'python-paramiko' 'python-pysnmp' 'python-standard-telnetlib' 'qt6-serialport' 'picocom' 'sudo' 'openssh' 'samba' 'iperf3' 'traceroute' 'mtr' 'networkmanager' 'nmap')
-optdepends=('python-speedtest-cli: speedtest.net speed test support'
+optdepends=('speedtest-cli: speedtest.net speed test support'
             'python-pyftpdlib: built-in FTP server support'
             'tigervnc: VNC remote desktop viewer'
             'freerdp: RDP remote desktop client (provides wlfreerdp for Wayland)')
