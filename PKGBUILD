@@ -2,7 +2,7 @@
 
 _pkgname=xberg
 pkgname=xberg-bin
-pkgver=1.1.5
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Command-line interface for Xberg document intelligence (OCR and text extraction)"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ replaces=('kreuzberg-bin')
 options=('!debug')
 source_x86_64=("xberg-cli-$pkgver-x86_64.tar.gz::https://github.com/xberg-io/$_pkgname/releases/download/v$pkgver/xberg-cli-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("xberg-cli-$pkgver-aarch64.tar.gz::https://github.com/xberg-io/$_pkgname/releases/download/v$pkgver/xberg-cli-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('4b27bd624eea48a025d96c09cf6aa3d608538b8d066610885047ea4553619255')
-sha256sums_aarch64=('214df7415ae9bf1f44ad07bf2b1f3bedee46e76f6746bbf829785494b12cc1b3')
+sha256sums_x86_64=('0ccdea9a71e70d74ced2acece138d055761402166b9d7629dc9908547b6f2ad8')
+sha256sums_aarch64=('55fb572dc44a2ebfbf11338795e4d7e3ccb5555e4f8454f29f7983085a92332d')
 
 prepare() {
   cd "$srcdir"
