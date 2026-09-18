@@ -1,9 +1,10 @@
 /var/log/tengine/*log {
     missingok
-    create 640 http log
+    notifempty
+    create 640 http root
     sharedscripts
     compress
     postrotate
-        test -r /run/tengine.pid && kill -USR1 `cat /run/tengine.pid`
+        if systemctl -q is-active tengine; then systemctl -q kill --signal=USR1 --kill-whom=main tengine; fi
     endscript
 }

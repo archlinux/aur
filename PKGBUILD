@@ -11,32 +11,45 @@
 
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
-pkgver=3.1.0
-pkgrel=5
+pkgver=3.2.0.rc5
+_pkgver=3.2.0-rc5
+pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
 license=('BSD-2-Clause')
 depends=(
-  'glibc'
-  'pcre2'
-  'zlib'
-  'gperftools'
+  'gd'
   'geoip'
-  'mailcap'
-  'libxcrypt'
-  'luajit'
-  'lua-resty-core=1:0.1.27'
+  'glibc'
+  'gperftools'
   'libmaxminddb'
+  'libxcrypt'
+  'libxml2'
+  'libxslt'
+  'luajit'
+  'lua-resty-core=1:0.1.32R1'
+  'mailcap'
+  'openssl'
+  'pcre2'
+  'perl'
+  'zlib'
   'zstd>=1.4.0'
 )
 makedepends=(
   findutils
   gd
+  geoip
   git
+  glibc
+  libxcrypt
   libxml2
   libxslt
+  mailcap
+  openssl
+  pcre2
   rsync
+  zlib
   cargo
   clang
 )
@@ -58,18 +71,11 @@ _zstd_ver=0.1.1
 _geoip2_ver=3.4
 _fancyidx_ver=0.6.0
 _jdomain_ver=1.5.2
-_tongsuo_ver=8.4.0
+_tongsuo_ver=8.5.0-pre2
 _more_headers_ver=0.39
-source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgver.tar.gz
+source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$_pkgver.tar.gz
         service
         logrotate
-        "0001-pr-1887.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/1887.patch"
-	"0001-pr-2013.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/2013.patch"
-        "0001-fix-lua-ngx.location.capture.504.patch::https://github.com/alibaba/tengine/commit/6ee33c50ba1a9690e8f1459df0cfcc2a57626568.patch"
-        "0001-pr-2001.patch::https://patch-diff.githubusercontent.com/raw/alibaba/tengine/pull/2001.patch"
-        "0101-fix-CVE-2026-1642.patch::https://github.com/alibaba/tengine/commit/51e05b88fd2b2c656d087601bdd3186a90334201.patch"
-        "0102-fix-CVE-2026-42945-and-more.patch::https://github.com/alibaba/tengine/commit/70e6ba5f3a021d9cc54c0299fd29c9ef3400adf6.patch"
-        "0103-fix-buffer-overflow-with-overlapping-captures.patch::https://github.com/nginx/nginx/commit/3f135ae2eb60ce376196c898a6c7cb4d774f7068.patch"
         acme-v${_acme_ver}.tar.gz::https://github.com/nginx/nginx-acme/releases/download/v${_acme_ver}/nginx-acme-${_acme_ver}.tar.gz
         brotli-v${_brotli_ver}.tar.gz::https://github.com/google/ngx_brotli/archive/refs/tags/v${_brotli_ver}.tar.gz
         zstd-v${_zstd_ver}.tar.gz::https://github.com/tokers/zstd-nginx-module/archive/refs/tags/${_zstd_ver}.tar.gz
@@ -79,36 +85,29 @@ source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgv
         tongsuo-v${_tongsuo_ver}.tar.gz::https://github.com/Tongsuo-Project/Tongsuo/archive/refs/tags/${_tongsuo_ver}.tar.gz
         more-headers-v${_more_headers_ver}.tar.gz::https://github.com/openresty/headers-more-nginx-module/archive/refs/tags/v${_more_headers_ver}.tar.gz
         )
-sha256sums=('64ed7155c0c904ce0fe7199c21b8eb6c2abfc267278fa8af832c0cb781e864dc'
+sha256sums=('fea97353ac3619e40aa555219a60b539610ff44a3249b2c33ae2b1b2754b591b'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
-            '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97'
-            'dc8cba315b440b407548a10077b8bfca84bcbfe647cd215b5b3c73cd59db8f50'
-            '574b3e91027c3b27c3ab3f44067ee883329c2d75d59462183b86d011f58c87f9'
-            'a10e7cc50f100c1fb07d4f692d4ad07020c34fe4aa423507cbd5e46d6370dc5a'
-            '18b5f2a1bdd0b03895f079a5dbaa11e1ee155ce79306a458c1ba68813baf1e50'
-            '28caad27790100a06d7639e4d2b53e60a24974865607af93899f9a056a16ac48'
-            '8ad68aafd671db485cf073c4ec0daf5aebae94b7403b917dc0358c5e180c7856'
-            'af8f92c4883506d92f844805a3e870e9a6c5d6bc256a10a6258e17cccb4db95a'
+            'c9ff256ca07dc041922e24e47adec1996aeb590081dda70208f248a175304e93'
             'b4f99f971bd0bebc89b2037f3afeaa3281004fe434de558df87d69cab2be1f22'
             'c85cdcfd76703c95aa4204ee4c2e619aa5b075cac18f428202f65552104add3b'
             '707d534f8ca4263ff043066db15eac284632aea875f9fe98c96cea9529e15f41'
             'ad72fc23348d715a330994984531fab9b3606e160483236737f9a4a6957d9452'
             '2846819d4f80df7c753530b2ea93484d41326f5dc5162dc453b92579203c0c32'
             '7829440cc448edaa47b4fefb88fe35cad93b02ba5fe850c69a0421ccaa6190aa'
-            '57c2741750a699bfbdaa1bbe44a5733e9c8fc65d086c210151cfbc2bbd6fc975'
+            'b29fa0dd494f4d79a73a6a3402a545050d7701565914ed4f04ae9a359283ec22'
             'dde68d3fa2a9fc7f52e436d2edc53c6d703dcd911283965d889102d3a877c778')
 
 prepare() {
-    cd tengine-$pkgver
+    cd tengine-$_pkgver
 
-    for i in ../*.patch; do
-      echo "Applying patch $i..."
-      patch -Np1 -i $i
-    done
+    #for i in ../*.patch; do
+    #  echo "Applying patch $i..."
+    #  patch -Np1 -i $i
+    #done
 }
 
 build() {
-    cd tengine-$pkgver
+    cd tengine-$_pkgver
 
     export LUAJIT_LIB=/usr/lib
     export LUAJIT_INC=/usr/include/luajit-2.1
@@ -140,11 +139,14 @@ build() {
         --with-http_dav_module \
         --with-http_degradation_module \
         --with-http_flv_module \
-        --with-http_geoip_module \
+        --with-http_geoip_module=dynamic \
         --with-http_gunzip_module \
         --with-http_gzip_static_module \
         --with-http_lua_module \
+        --with-http_image_filter_module=dynamic \
         --with-http_mp4_module \
+        --with-http_perl_module=dynamic \
+        --with-http_random_index_module \
         --with-http_realip_module \
         --with-http_secure_link_module \
         --with-http_slice_module \
@@ -152,11 +154,12 @@ build() {
         --with-http_stub_status_module \
         --with-http_sub_module \
         --with-http_v2_module \
-        --with-mail \
+        --with-http_xslt_module=dynamic \
+        --with-mail=dynamic \
         --with-mail_ssl_module \
         --with-pcre-jit \
-        --with-stream \
-        --with-stream_geoip_module \
+        --with-stream=dynamic \
+        --with-stream_geoip_module=dynamic \
         --with-stream_realip_module \
         --with-stream_sni \
         --with-stream_ssl_module \
@@ -180,12 +183,12 @@ build() {
 }
 
 package() {
-    cd tengine-$pkgver
+    cd tengine-$_pkgver
     make DESTDIR="$pkgdir" install
 
-    sed -e 's|\<user\s\+\w\+;|user html;|g' \
-        -e '44s|html|/usr/share/tengine/html|' \
-        -e '54s|html|/usr/share/tengine/html|' \
+    sed -e 's|\<user\s\+\w\+;|user http;|g' \
+        -e '/^\s\+root/s|html|/usr/share/tengine/html|' \
+        -e '/^events {/ i # Load all installed modules\ninclude modules.d/*.conf;\n' \
         -i "$pkgdir"/etc/tengine/tengine.conf
 
     rm "$pkgdir"/etc/tengine/*.default
@@ -208,7 +211,7 @@ package() {
     rmdir "$pkgdir"/run
 
     install -d "$pkgdir"/usr/share/man/man8/
-    gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/tengine.8.gz
+    gzip -9c man/tengine.8 > "$pkgdir"/usr/share/man/man8/tengine.8.gz
 
     for i in ftdetect indent syntax; do
       install -Dm644 contrib/vim/$i/nginx.vim \
