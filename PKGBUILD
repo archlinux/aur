@@ -6,7 +6,7 @@ pkgver=14.0.3_20251201
 _launcherver=${pkgver%_*}
 _timestamp=${pkgver#*_}
 
-pkgrel=3
+pkgrel=4
 pkgdesc="An archive for games and animations from the web."
 arch=('x86_64')
 url="https://flashpointarchive.org/"
@@ -44,7 +44,7 @@ source=(
 sha256sums=(
     'f393a98c5c35e229a744c102b0cb53270b1b4f1b3ebd40d604f98323444a4b1f'
     'b8865f06dda550effba982517de304a448209fcf4a5e2180929fcf21ccc28508'
-    'e443b979700a8691eb3ba1f7b55cb23d758b7cc13d0fb612c7dcf96a54e8f9d0'
+    '7a3e4da22a962bb436ef3f2535a7d9ce5e51af4f2c7e7973044c9b26dc373a6d'
     'dea20d1a1ac8765adf6f81e8c1110dfe164770a38cd84b500c6dff258f690446')
 
 prepare() {

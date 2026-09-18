@@ -9,14 +9,14 @@ index b13a1e6..4d6aacf
  # Generate a desktop entry for Flashpoint Archive.
  
 -[ `id -u` -ne 0 ] && cd -P -- "`dirname "$0"`" && [ -f Launcher/flashpoint-launcher ] || exit 1
-+[ $(id -u) -eq 0 ] && cd -P -- "`dirname "$0"`" && [ -f "$(realpath "$(dirname "${BASH_SOURCE[0]}")")/Launcher/flashpoint-launcher" ] || exit 1
++[ $(id -u) -eq 0 ] && cd -P -- "`dirname "$0"`" && [ -f "$(realpath "$(dirname "$0")")/Launcher/flashpoint-launcher" ] || exit 1
  
  [ "$ENTRY" ] || ENTRY="$HOME/.local/share/applications/flashpoint-archive.desktop"
  [ -e "${ENTRY%/*}" ] || mkdir -p "${ENTRY%/*}"
  
 +# Set configurable Flashpoint root directory.
 +# Default: absolute path to script's directory
-+[ "$FP_DIR" ] || FP_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
++[ "$FP_DIR" ] || FP_DIR="$(realpath "$(dirname "$0")")"
 +
  printf "#!/usr/bin/env xdg-open
  [Desktop Entry]
