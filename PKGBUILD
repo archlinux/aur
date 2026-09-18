@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawx
 _pkgname=ClawX
-pkgver=0.5.6
+pkgver=0.5.8
 _electronversion=40
 _nodeversion=24
 pkgrel=1
-pkgdesc="A desktop app that provides a graphical interface for OpenClaw AI agents. It turns CLI-based AI orchestration into a desktop experience without using the terminal.(Use system-wide electron)"
+pkgdesc="A desktop app that provides a graphical interface for OpenClaw AI agents. It turns CLI-based AI orchestration into a desktop experience without using the terminal."
 arch=('any')
 url="https://clawx.com.cn/"
 _ghurl="https://github.com/ValueCell-ai/ClawX"
@@ -36,7 +36,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('3ab7710a6f575ca9709294b0115a282da1b32f694f5712bb2e8f0e3121a0eb32'
+sha256sums=('ea6dd175ecfba8a8b8a8717af3b28857228c33f37625901982a778dd0d9243d7'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -45,30 +45,45 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export pnpm_config_registry="https://registry.npmmirror.com"
-            export npm_config_registry="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-        }
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export HOME="${srcdir}/.electron-gyp"
+	mkdir -p "${HOME}"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export XDG_STATE_HOME="${srcdir}/.local/state"
+	export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+	export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+	export PNPM_GLOBAL_DIR="${srcdir}/.pnpm/global"
+	export PNPM_GLOBAL_BIN_DIR="${srcdir}/.pnpm/bin"
+	export PNPM_STATE_DIR="${srcdir}/.pnpm/state"
+	export PNPM_MINIMUM_RELEASE_AGE=0
+	export PNPM_NODE_LINKER=hoisted
+	export PNPM_FETCH_RETRIES=3
+	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+	export PNPM_UPDATE_NOTIFIER=false
+	export PNPM_NO_COLOR=true
+	export PNPM_NO_PROGRESS=true
+	export pnpm_config_platform=linux
+	export pnpm_config_arch="${CARCH}"
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export npm_config_node_options="--max-old-space-size=4096"
+	mkdir -p "${PNPM_CACHE_DIR}" "${PNPM_STORE_DIR}" "${PNPM_GLOBAL_DIR}" "${PNPM_GLOBAL_BIN_DIR}" "${PNPM_STATE_DIR}"
+	local _pnpmver="${_pnpmversion}"
+	if [[ -z "${_pnpmver}" ]]; then
+		_pnpmver="$(node -p "const pm=require('./package.json').packageManager; pm && pm.startsWith('pnpm@') ? pm.split('@')[1] : ''" 2>/dev/null)"
+	fi
+	if [[ -n "${_pnpmver}" ]]; then
+		export COREPACK_HOME="${srcdir}/.corepack"
+		install -dm755 "${srcdir}/.bin"
+		corepack enable --install-directory "${srcdir}/.bin"
+		export PATH="${srcdir}/.bin:${PATH}"
+		corepack prepare "pnpm@${_pnpmver}" --activate
+	fi
 }
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -94,16 +109,16 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname} %U"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     find electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     NODE_ENV=production     pnpm exec node scripts/generate-ext-bridge.mjs
     NODE_ENV=production     pnpm run build:vite
     NODE_ENV=production     pnpm exec zx scripts/bundle-openclaw.mjs
@@ -126,7 +141,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/" 
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/" 
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/resources/icons/${_icons}.png" \
