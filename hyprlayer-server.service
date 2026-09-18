@@ -1,0 +1,17 @@
+[Unit]
+Description=Hyprlayer server (one runtime, one profile)
+Documentation=https://github.com/BrightBlock/hyprlayer-app
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hyprlayer-server serve
+# A clean exit is `hyprlayer-server stop` and must stay stopped; only a crash restarts.
+Restart=on-failure
+RestartSec=5
+# No Environment=SSH_AUTH_SOCK here on purpose: it would freeze whatever value
+# existed at unit start. The client sends it per attach instead (ADR-0009).
+
+[Install]
+# Needed for `systemctl --user enable` to have somewhere to link. Installing the
+# package never runs enable, which is what keeps a daemon from starting silently.
+WantedBy=default.target
