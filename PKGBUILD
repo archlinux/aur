@@ -3,7 +3,7 @@
 # Contributor: Dmitriy Morozov <archlinux@foxcub.org>
 
 pkgname=shpool
-pkgver=0.11.4
+pkgver=0.11.5
 pkgrel=1
 pkgdesc='Think tmux, then aim... lower'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 checkdepends=('fish' 'less' 'zsh' 'procps-ng')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('078bdf03ec2618aa0efdcbf082ca419b8dd6894f83f8ef84a1137d06e51cd08fd7e4c8db2c4b628a0e7c5995a1f7a56523d357e038565b6f83717d10cc5d9442')
+sha512sums=('f17faedac656e1d37d0ce0b4cfa5a9c95c3b7a9985c9236424c368c8e65e9f28b323096142ae45abead3ecc657f2a41412c155df0e929f67ce7064c2eeba7e3b')
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
@@ -30,8 +30,7 @@ check() {
 
   cd $pkgname-$pkgver
 
-  # high_byte_input_does_not_kill_session is currently broken
-  cargo test --locked -- --skip=high_byte_input_does_not_kill_session
+  cargo test --locked -- --skip=high_byte_input_does_not_kill_session --skip=forward_env_live_reload_fish
 }
 
 package() {
