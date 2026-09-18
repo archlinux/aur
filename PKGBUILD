@@ -3,7 +3,8 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
-pkgver=1.48.3
+pkgver=1.48.4
+_pnpmversion=12.0.0
 _nodeversion=24
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -31,7 +32,7 @@ optdepends=(
     'gst-libav: FFmpeg-based codec support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/player@${pkgver}.tar.gz")
-sha256sums=('cc2131e42ad6f7c833b7ae8b246836a5243d20f81b297e1690d01a66f5f56aff')
+sha256sums=('b766a2125460609f8e6187bfc02774dd4c98a3a7f7f66cadafe240f8bbb26c5d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,32 +40,62 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-    export HOME="${srcdir}/.electron-gyp"
-    export CARGO_HOME="${srcdir}/.cargo"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export pnpm_config_registry="https://registry.npmmirror.com"
-            export npm_config_registry="https://registry.npmmirror.com"
-            export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-            export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-        }
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export HOME="${srcdir}/.electron-gyp"
+	mkdir -p "${HOME}"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export XDG_STATE_HOME="${srcdir}/.local/state"
+	export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+	export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+	export PNPM_GLOBAL_DIR="${srcdir}/.pnpm/global"
+	export PNPM_GLOBAL_BIN_DIR="${srcdir}/.pnpm/bin"
+	export PNPM_STATE_DIR="${srcdir}/.pnpm/state"
+	export PNPM_MINIMUM_RELEASE_AGE=0
+	export PNPM_NODE_LINKER=hoisted
+	export PNPM_FETCH_RETRIES=3
+	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+	export PNPM_UPDATE_NOTIFIER=false
+	export PNPM_NO_COLOR=true
+	export PNPM_NO_PROGRESS=true
+	export pnpm_config_platform=linux
+	export pnpm_config_arch="${CARCH}"
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export npm_config_node_options="--max-old-space-size=4096"
+	mkdir -p "${PNPM_CACHE_DIR}" "${PNPM_STORE_DIR}" "${PNPM_GLOBAL_DIR}" "${PNPM_GLOBAL_BIN_DIR}" "${PNPM_STATE_DIR}"
+	local _pnpmver="${_pnpmversion}"
+	if [[ -z "${_pnpmver}" ]]; then
+		_pnpmver="$(node -p "const pm=require('./package.json').packageManager; pm && pm.startsWith('pnpm@') ? pm.split('@')[1] : ''" 2>/dev/null)"
+	fi
+	if [[ -n "${_pnpmver}" ]]; then
+		export COREPACK_HOME="${srcdir}/.corepack"
+		install -dm755 "${srcdir}/.bin"
+		corepack enable --install-directory "${srcdir}/.bin"
+		export PATH="${srcdir}/.bin:${PATH}"
+		corepack prepare "pnpm@${_pnpmver}" --activate
+	fi
+    export HOME="${srcdir}/.home"
+	export CARGO_HOME="${srcdir}/.cargo"
+	export CARGO_NET_OFFLINE=false
+	export CARGO_NET_GIT_FETCH_WITH_CLI=true
+	export CARGO_NET_RETRY=5
+	export CARGO_HTTP_MULTIPLEXING=false
+	export CARGO_BUILD_JOBS="$(nproc)"
+	export CARGO_INCREMENTAL=0
+	export CARGO_TERM_COLOR=never
+	export CARGO_PROFILE_RELEASE_STRIP=symbols
+	export CARGO_PROFILE_RELEASE_DEBUG=0
+	mkdir -p "${HOME}" "${CARGO_HOME}"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     sed -i -e "
         s/Exec=nuclear-music-player/Exec=${pkgname}/g
         s/Icon=com.nuclearplayer.Nuclear/Icon=${pkgname}/g
@@ -79,26 +110,18 @@ prepare() {
     rustup default stable
 }
 build() {
-    _set_build_env
+    cd "${srcdir}/${pkgname}-${pkgver}"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/model"
-    NODE_ENV=production     pnpm run build
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/website"
-    NODE_ENV=production     pnpm run build
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/i18n"
-    NODE_ENV=production     pnpm run build
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/themes"
-    NODE_ENV=production     pnpm run build
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/hifi"
-    NODE_ENV=production     pnpm run build
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/ui"
-    NODE_ENV=production     pnpm run build
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/plugin-sdk"
-    NODE_ENV=production     pnpm run build
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/storybook"
-    NODE_ENV=production     pnpm run build
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/player"
-    NODE_ENV=production     pnpm run build
+    _set_build_env
+    # Build all packages in the correct order
+    for pkg in model website i18n themes hifi ui plugin-sdk storybook player; do
+        msg2 "Building ${pkg}..."
+        cd "${srcdir}/${pkgname}-${pkgver}/packages/${pkg}"
+        echo y | NODE_ENV=production pnpm run build || {
+            error "Failed to build ${pkg}"
+            return 1
+        }
+    done
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/packages/player/src-tauri/target/release/${pkgname}" -t "${pkgdir}/usr/bin"
