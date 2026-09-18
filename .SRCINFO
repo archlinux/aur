@@ -1,7 +1,7 @@
 pkgbase = freerdp-git
 	pkgdesc = Free implementation of the Remote Desktop Protocol (RDP)
 	pkgver = 3.31.1.r263.g839dcaf
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/FreeRDP/FreeRDP
 	arch = i686
 	arch = x86_64
@@ -44,8 +44,9 @@ pkgbase = freerdp-git
 	depends = sdl3_ttf
 	depends = sndio
 	depends = wayland
-	depends = webkit2gtk-4.1
 	depends = zlib
+	depends = uriparser
+	depends = webkit2gtk-4.1
 	provides = freerdp=2:3.31.1
 	provides = libfreerdp3.so
 	provides = libfreerdp-client3.so

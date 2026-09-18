@@ -7,7 +7,7 @@
 _pkgname="freerdp"
 pkgname="$_pkgname-git"
 pkgver=3.31.1.r263.g839dcaf
-pkgrel=2
+pkgrel=3
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 url="https://github.com/FreeRDP/FreeRDP"
 license=('Apache-2.0')
@@ -49,8 +49,10 @@ depends=(
   sdl3_ttf
   sndio
   wayland
-  webkit2gtk-4.1
   zlib
+
+  uriparser
+  webkit2gtk-4.1
 )
 makedepends=(
   'cmake'
