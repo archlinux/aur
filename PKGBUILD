@@ -1,6 +1,6 @@
 pkgname=openchamber-desktop-appimage
 pkgver=1.24.1
-pkgrel=2
+pkgrel=1
 pkgdesc='Desktop and web interface for OpenCode AI agent'
 arch=('x86_64')
 url='https://github.com/openchamber/openchamber'
@@ -18,11 +18,11 @@ prepare() {
   chmod a+x ./OpenChamber-${pkgver}-linux-x86_64.AppImage
   ./OpenChamber-${pkgver}-linux-x86_64.AppImage --appimage-extract >/dev/null
   sed -i "s+^Exec=.*+Exec=env ${_installdir}/OpenChamber.AppImage --no-sandbox %U+" "squashfs-root/openchamber.desktop"
-  sed -i 's#Icon=openchamber#Icon=/usr/share/icons/hicolor/1024x1024/apps/openchamber.png#g' squashfs-root/openchamber.desktop
+  sed -i 's#Icon=openchamber#Icon=/usr/share/icons/hicolor/scalable/apps/openchamber.svg#g' squashfs-root/openchamber.desktop
 }
 
 package() {
   install -Dm755 "OpenChamber-${pkgver}-linux-x86_64.AppImage" "${pkgdir}/${_installdir}/OpenChamber.AppImage"
-  install -Dm644 "squashfs-root/usr/share/icons/hicolor/1024x1024/apps/openchamber.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/openchamber.png"
+  install -Dm644 "squashfs-root/usr/share/icons/hicolor/scalable/openchamber.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/openchamber.svg"
   install -Dm644 "squashfs-root/openchamber.desktop" "${pkgdir}/usr/share/applications/openchamber.desktop"
 }
