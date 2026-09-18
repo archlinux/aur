@@ -1,6 +1,6 @@
 pkgbase = vrcx-0
 	pkgdesc = Fast, lightweight VRCX implementation built with Tauri and Rust
-	pkgver = 2.28.0
+	pkgver = 2.29.1
 	pkgrel = 1
 	url = https://github.com/Map1en/VRCX-0
 	arch = x86_64
@@ -20,7 +20,9 @@ pkgbase = vrcx-0
 	depends = webkit2gtk-4.1
 	depends = xdotool
 	options = !lto
-	source = VRCX-0-2.28.0.tar.gz::https://github.com/Map1en/VRCX-0/archive/refs/tags/v2.28.0.tar.gz
-	sha256sums = 381338c8adb94a79fdbec6b15a6e6209a31e6da3e46377a3c56de114441aacf4
+	source = VRCX-0-2.29.1.tar.gz::https://github.com/Map1en/VRCX-0/archive/refs/tags/v2.29.1.tar.gz
+	source = fix-notification-row-by-role-test.patch
+	sha256sums = 3f6338e850cb8ce011a57ad76fe5ba7e0b661cd725e21040b540d0d4bb88bb61
+	sha256sums = 5fc73185e0b20d09717d5521e3f3e61477695a08a96ad88ed73d03bc5d22c512
 
 pkgname = vrcx-0

@@ -1,0 +1,23 @@
+Description: Fix the NotificationRows role query for Testing Library 10.4.2
+ ByRoleOptions does not support `exact`. The string accessible-name matcher
+ remains exact by default, so this does not weaken the test assertion.
+Origin: upstream, https://github.com/Map1en/VRCX-0/commit/877a0aaeb8193a77f84c3d739f42a121d341de62
+Forwarded: not-needed
+Applied-Upstream: commit:877a0aaeb8193a77f84c3d739f42a121d341de62
+Last-Update: 2026-09-18
+
+diff --git a/src/features/notifications/NotificationRows.test.tsx b/src/features/notifications/NotificationRows.test.tsx
+index 9cd604d..8053c4b 100644
+--- a/src/features/notifications/NotificationRows.test.tsx
++++ b/src/features/notifications/NotificationRows.test.tsx
+@@ -128,9 +128,7 @@ describe('group invite notification rows', () => {
+                 )
+             );
+ 
+-            fireEvent.click(
+-                screen.getByRole('button', { name: 'Maple', exact: true })
+-            );
++            fireEvent.click(screen.getByRole('button', { name: 'Maple' }));
+             expect(openUserDialog).toHaveBeenCalledExactlyOnceWith({
+                 userId,
+                 title: 'Maple'
