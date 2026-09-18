@@ -2,7 +2,7 @@
 pkgname=lotti-bin
 _pkgname=Lotti
 _debname="com.matthiasn.${pkgname%-bin}"
-pkgver=1.1.17+4396
+pkgver=1.1.17+4397
 pkgrel=1
 pkgdesc="A private logbook with a staff of personal AI assistants. Agents read what you record and propose what to do next — you approve the changes. End-to-end encrypted sync between your own devices — servers only ever see ciphertext. Local AI optional."
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 noextract=("${pkgname%-bin}-${pkgver}.tar.gz")
-sha256sums=('71a2a4e6520e5aeeb324ca99b6261db7ddbcdbb3e6ce8bd1f15b6b94828e376b'
+sha256sums=('2a8e05e7843392b8b54db3fd09f07b280a7dc8159b32e851ff27f26b67390c4b'
             '6c653ecadf03d9566022c30e03185a6cbfc1ab8de1c9ddec899bac356c4d40d7')
 prepare() {
     sed -i -e "
