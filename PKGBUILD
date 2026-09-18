@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.9.0.r60.gc5826be
+pkgver=1.9.1.r34.gbd1fde8
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -32,6 +32,7 @@ checkdepends=('appstream')
 optdepends=(
   'gamemode: Feral GameMode daemon (for the GameMode tweak)'
   'lsfg-vk: Lossless Scaling'
+  'mako-render: Lossless Scaling'
   'protontricks: Proton prefix management'
   'vkbasalt: Vulkan post-processing effects'
   'vksumi: Alternative Vulkan post-processor with 15 tunable parameters'
