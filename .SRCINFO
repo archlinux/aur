@@ -1,6 +1,6 @@
 pkgbase = widemelon-bin
 	pkgdesc = Widescreen Nintendo DS emulator based on melonDS (AppImage)
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/pruefsumme/widemelon
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = widemelon-bin
 	conflicts = widemelon-git
 	options = !strip
 	options = !debug
-	source = WideMelon-1.0.3-x86_64.AppImage::https://github.com/pruefsumme/widemelon/releases/download/v1.0.3/WideMelon-1.0.3-x86_64.AppImage
-	sha256sums = 1dabc934bd2fdfd1a8b8b20a08b1c40e1d7aa3727ca132de3eb0d092775b07da
+	source = WideMelon-1.0.4-x86_64.AppImage::https://github.com/pruefsumme/widemelon/releases/download/v1.0.4/WideMelon-1.0.4-x86_64.AppImage
+	sha256sums = 02a825a95ebcb7990a66ee0c3903841a0c706b136c61cf537f4122351b8c4ae3
 
 pkgname = widemelon-bin
