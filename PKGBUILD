@@ -2,19 +2,39 @@
 _basename=trios
 pkgname=${_basename}-bin
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Starsector mod manager & toolkit."
 arch=('x86_64')
 url="https://github.com/wispborne/TriOS"
-license=('GPL3')
-depends=()
+license=('LicenseRef-TriOS-Community-License-1.0')
+depends=(
+    'at-spi2-core'
+    'cairo'
+    'curl'
+    'fontconfig'
+    'gdk-pixbuf2'
+    'glib2'
+    'glibc'
+    'gtk3'
+    'harfbuzz'
+    'hicolor-icon-theme'
+    'libepoxy'
+    'libgcc'
+    'libstdc++'
+    'pango'
+    'zlib')
 optdepends=('starsector')
-source=("${_basename}-${pkgver}.zip::https://github.com/wispborne/TriOS/releases/download/${pkgver}/TriOS-Linux.zip"
+_srcext="${pkgname}-${pkgver}"
+source=("${_srcext}.zip::https://github.com/wispborne/TriOS/releases/download/${pkgver}/TriOS-Linux.zip"
+    "${_srcext}-LICENSE.txt::https://raw.githubusercontent.com/wispborne/TriOS/refs/tags/${pkgver}/LICENSE.txt"
     "${_basename}.desktop")
 sha256sums=('0d4a9fcf8fca93fef7b24bf20bedf36a29d17ee2eb41fa9115174b46de25fb74'
+    '45e3bf8ce58e4cd361fca407b750c2921ea2414be46c50c730934af030aa217f'
     'a34536873f548821d7d91f192029114470f066fbac5aeb5854ad36bc2ed91f24')
 
 package() {
+    install -Dm644 "${srcdir}/${_srcext}-LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+
     install -Dm644 "${srcdir}/${_basename}.desktop" "${pkgdir}/usr/share/applications/${_basename}.desktop"
 
     install -Dm644 "${srcdir}/TriOS/data/flutter_assets/assets/images/telos_faction_crest.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_basename}.png"
