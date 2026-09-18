@@ -7,7 +7,7 @@ pkgname=${_appname}-c-bin
 pkgdesc="A high-performance terminal image/video/book browser written in C, based on the Chafa library"
 
 pkgver=1.8.4
-pkgrel=1
+pkgrel=2
 _pkgvername=v${pkgver}
 
 arch=('x86_64')
@@ -20,8 +20,9 @@ license=('LGPL-3.0-or-later')
 
 provides=("${_appname}")
 replaces=("${_appname}-bin")
-conflicts=("${_appname}"{,-c,-bin})
+conflicts=("${pkgname%-c-bin}"{,-c})
 
+makedepends=('patchelf')
 depends=('glibc' 'glib2' 'gdk-pixbuf2' 'chafa' 'ffmpeg' 'libmupdf')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
@@ -47,6 +48,12 @@ case ${CARCH} in
     _CARCH=${_barch[1]}
     ;;
 esac
+
+prepare() {
+	cd "${srcdir}/" || exit
+
+	patchelf --replace-needed "libmupdf.so.28.3" "libmupdf.so.28.4" "${_appname}-${_CARCH}"
+}
 
 package() {
 	cd "${srcdir}/" || exit
