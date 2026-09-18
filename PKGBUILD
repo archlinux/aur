@@ -1,7 +1,7 @@
 # Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 
 pkgname=iv-cli-bin
-pkgver=0.17.3
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='A command-line image viewer using terminal graphics (Sixel, iTerm, Kitty)'
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,9 @@ source=("https://raw.githubusercontent.com/kenshaw/iv/refs/tags/v$pkgver/README.
 source_x86_64=("$url/releases/download/v$pkgver/iv-$pkgver-linux-amd64.tar.bz2")
 source_aarch64=("$url/releases/download/v$pkgver/iv-$pkgver-linux-arm64.tar.bz2")
 
-sha256sums=('936ea163a04fac7b02a4687c81893215fc5514fc11d113eba7a07dcd2fcd34b0')
-sha256sums_x86_64=('ddfdaf7bd8a9b115d8b2c36e470d5eacd2a37cb7df1707f163a2886a71f62d7c')
-sha256sums_aarch64=('9b6641cb55db5471efe4af72132e0626ced4716a1feaad4f44e0975c93ff61b5')
+sha256sums=('45d06dea5e03ed270506c3d0dc2bf7c83661c763a4875360ea6c46c71adf766c')
+sha256sums_x86_64=('42599b6c4d4a4c961e9c2962bee1592e52035293ac36821f856df03217e67453')
+sha256sums_aarch64=('05bb73b1ca8cf6d1b87d7c5d9b3b98129c078235cdf9c22fc86d33891b458a08')
 
 check() {
     ./iv --version
