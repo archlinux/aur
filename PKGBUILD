@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=raven
-pkgver=0.21.0 # renovate: datasource=github-tags depName=jbearak/raven
+pkgver=0.21.1 # renovate: datasource=github-tags depName=jbearak/raven
 pkgrel=1
 pkgdesc="Static analyzer for R — a language server in your editor, a checker in CI"
 url="https://github.com/jbearak/raven"
@@ -34,4 +34,4 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/NOTICE" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
 
-sha512sums=('23de0cfa7cc7d260b826c6abd320593edaa5099a7e93e7bc0ab3086534c38320b483e2b990973e80e149d54aa0186c28ff7a434679a67990d6189125c4114f03')
+sha512sums=('75f451c9637b61ec707b1f203c0f88ab7c482b00a679efbd7e67d3da1f8a2f4d7fee16f3427ccad45703bac143732e30a6ef52886a882ce3d155b6a8c633fbd6')
