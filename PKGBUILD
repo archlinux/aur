@@ -10,7 +10,7 @@ pkgdesc='CachyOS Proton with the Proton-RTSP patchset, for VRChat livestream (RT
 _pkgname=proton-cachyos-rtsp
 pkgname=${_pkgname}-bin
 pkgver=11.0_20260703
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/wundervrc/proton-cachyos-rtsp'
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
@@ -52,7 +52,7 @@ _protondir=usr/share/steam/compatibilitytools.d/${_pkgname}
 _licensedir=usr/share/licenses/${pkgname}
 
 source=("${_srcdir}.tar.xz::${url}/releases/download/${_srcdir}/${_srcdir}.tar.xz")
-sha512sums=('f5be7df016f258425e6674b2650b33918da321c9ba6e44a42658789fc15e68794952bfc8396345311664d6f90fd524dd1844bc1d0d3bd29958b4a4ee5e0efa47')
+sha512sums=('96605b2e2b0b220668d66f606624d98a46864bbd349eae7eb9a57b913e4d8810dd74890aa3d751701d37e60a1da84eee8a61e17c6b0e9f37af29f971956e6c71')
 
 package() {
   install -d "${pkgdir}/${_protondir}"
