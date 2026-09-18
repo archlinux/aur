@@ -1,0 +1,22 @@
+pkgbase = tg-ws-proxy-rs
+	pkgdesc = Telegram MTProto WebSocket Bridge Proxy in Rust
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://github.com/valnesfjord/tg-ws-proxy-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = perl
+	depends = gcc-libs
+	depends = glibc
+	provides = tg-ws-proxy
+	conflicts = tg-ws-proxy
+	conflicts = tg-ws-proxy-bin
+	conflicts = tg-ws-proxy-cli
+	conflicts = tg-ws-proxy-git
+	options = !lto
+	source = git+https://github.com/valnesfjord/tg-ws-proxy-rs.git#tag=v2.3.3
+	sha256sums = SKIP
+
+pkgname = tg-ws-proxy-rs
