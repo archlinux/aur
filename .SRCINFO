@@ -1,0 +1,11 @@
+pkgbase = lith
+	pkgdesc = Maple Story 2 launcher
+	pkgver = 2.0.40
+	pkgrel = 1
+	url = https://www.lith.cat
+	arch = x86_64
+	depends = umu-launcher
+	source = https://github.com/LithMS/Lith-Artifacts/releases/download/v2.0.40/Lith.Launcher-2.0.40-x64.AppImage
+	sha256sums = cb5bbb130c5b4932cbc3c3134bacf4fc52495e79974132d9f85defa5858540e5
+
+pkgname = lith
