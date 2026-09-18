@@ -9,6 +9,7 @@ ExecStart=/usr/bin/python3 /usr/bin/nouveau-dynclockd.py
 Restart=always
 RestartSec=2
 TimeoutStopSec=3
+ExecReload=/bin/kill -HUP $MAINPID
 KillMode=mixed
 StandardOutput=journal
 StandardError=journal

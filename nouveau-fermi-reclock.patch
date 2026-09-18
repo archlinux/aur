@@ -1,6 +1,6 @@
-diff -uNrp nouveau-orig/dispnv50/disp.c nouveau-mod/dispnv50/disp.c
+diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/dispnv50/disp.c nouveau-source/dispnv50/disp.c
 --- nouveau-orig/dispnv50/disp.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/dispnv50/disp.c	2026-09-04 21:09:25.878646235 +0300
++++ nouveau-source/dispnv50/disp.c	2026-09-07 14:09:18.281423430 +0300
 @@ -228,6 +228,10 @@ MODULE_PARM_DESC(kms_vram_pushbuf, "Plac
  static int nv50_dmac_vram_pushbuf = -1;
  module_param_named(kms_vram_pushbuf, nv50_dmac_vram_pushbuf, int, 0400);
@@ -31,9 +31,9 @@ diff -uNrp nouveau-orig/dispnv50/disp.c nouveau-mod/dispnv50/disp.c
  
  	nv50_audio_component_init(drm);
  
-diff -uNrp nouveau-orig/nouveau_backlight.c nouveau-mod/nouveau_backlight.c
+diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nouveau_backlight.c nouveau-source/nouveau_backlight.c
 --- nouveau-orig/nouveau_backlight.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/nouveau_backlight.c	2026-09-04 21:09:25.879315770 +0300
++++ nouveau-source/nouveau_backlight.c	2026-09-07 14:09:18.282840660 +0300
 @@ -344,10 +344,7 @@ nouveau_backlight_init(struct drm_connec
  		goto fail_alloc;
  	}
@@ -46,10 +46,10 @@ diff -uNrp nouveau-orig/nouveau_backlight.c nouveau-mod/nouveau_backlight.c
  
  	if (!nouveau_get_backlight_name(backlight_name, bl)) {
  		NV_ERROR(drm, "Failed to retrieve a unique name for the backlight interface\n");
-diff -uNrp nouveau-orig/nvkm/subdev/clk/base.c nouveau-mod/nvkm/subdev/clk/base.c
+diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/base.c nouveau-source/nvkm/subdev/clk/base.c
 --- nouveau-orig/nvkm/subdev/clk/base.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/nvkm/subdev/clk/base.c	2026-09-04 21:09:25.957109827 +0300
-@@ -282,7 +282,8 @@ nvkm_pstate_prog(struct nvkm_clk *clk, i
++++ nouveau-source/nvkm/subdev/clk/base.c	2026-09-17 17:14:40.038439996 +0300
+@@ -282,15 +282,30 @@ nvkm_pstate_prog(struct nvkm_clk *clk, i
  
  	nvkm_pcie_set_link(pci, pstate->pcie_speed, pstate->pcie_width);
  
@@ -57,18 +57,31 @@ diff -uNrp nouveau-orig/nvkm/subdev/clk/base.c nouveau-mod/nvkm/subdev/clk/base.
 +	bool fermi_mem_reclock = nvkm_boolopt(subdev->device->cfgopt, "NvFermiMemReclock", false);
 +	if (fb && fb->ram && fb->ram->func->calc && (subdev->device->card_type != NV_C0 || fermi_mem_reclock)) {
  		struct nvkm_ram *ram = fb->ram;
++		struct nvkm_volt *volt = subdev->device->volt;
  		int khz = pstate->base.domain[nv_clk_src_mem];
++
++		/* Raise voltage first if target pstate requires higher voltage */
++		if (volt) {
++			struct nvkm_cstate *cstate = !list_empty(&pstate->list) ?
++				nvkm_cstate_get(clk, pstate, NVKM_CLK_CSTATE_HIGHEST) : &pstate->base;
++			if (cstate)
++				nvkm_volt_set_id(volt, cstate->voltage, pstate->base.voltage, clk->temp, +1);
++		}
++
  		do {
-@@ -291,6 +292,8 @@ nvkm_pstate_prog(struct nvkm_clk *clk, i
+ 			ret = ram->func->calc(ram, khz);
+ 			if (ret == 0)
  				ret = ram->func->prog(ram);
  		} while (ret > 0);
  		ram->func->tidy(ram);
-+		if (ret < 0)
++		if (ret < 0) {
 +			nvkm_error(subdev, "failed to reclock memory to %d kHz: %d\n", khz, ret);
++			return ret;
++		}
  	}
  
  	return nvkm_cstate_prog(clk, pstate, NVKM_CLK_CSTATE_HIGHEST);
-@@ -428,6 +431,8 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
+@@ -428,6 +443,8 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
  	pstate->pcie_width = perfE.pcie_width;
  	cstate = &pstate->base;
  	cstate->voltage = perfE.voltage;
@@ -77,7 +90,7 @@ diff -uNrp nouveau-orig/nvkm/subdev/clk/base.c nouveau-mod/nvkm/subdev/clk/base.
  	cstate->domain[nv_clk_src_core] = perfE.core;
  	cstate->domain[nv_clk_src_shader] = perfE.shader;
  	cstate->domain[nv_clk_src_mem] = perfE.memory;
-@@ -451,6 +456,9 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
+@@ -451,6 +468,9 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
  
  		cstate->domain[domain->name] = perfS.v40.freq;
  	}
@@ -87,7 +100,7 @@ diff -uNrp nouveau-orig/nvkm/subdev/clk/base.c nouveau-mod/nvkm/subdev/clk/base.
  
  	data = nvbios_cstepEm(bios, pstate->pstate, &ver, &hdr, &cstepE);
  	if (data) {
-@@ -463,6 +471,25 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
+@@ -463,6 +483,25 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
  	nvkm_pstate_info(clk, pstate);
  	list_add_tail(&pstate->head, &clk->states);
  	clk->state_nr++;
@@ -113,10 +126,42 @@ diff -uNrp nouveau-orig/nvkm/subdev/clk/base.c nouveau-mod/nvkm/subdev/clk/base.
  	return 0;
  }
  
-diff -uNrp nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-mod/nvkm/subdev/clk/gf100.c
+diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-source/nvkm/subdev/clk/gf100.c
 --- nouveau-orig/nvkm/subdev/clk/gf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/nvkm/subdev/clk/gf100.c	2026-09-04 21:09:25.956514569 +0300
-@@ -186,6 +186,8 @@ gf100_clk_read(struct nvkm_clk *base, en
++++ nouveau-source/nvkm/subdev/clk/gf100.c	2026-09-18 03:18:42.426084151 +0300
+@@ -91,6 +91,9 @@ read_pll(struct gf100_clk *clk, u32 pll)
+ 		return 0;
+ 	}
+ 
++	if (!M || !P)
++		return 0;
++
+ 	return sclk * N / M / P;
+ }
+ 
+@@ -179,13 +182,26 @@ gf100_clk_read(struct nvkm_clk *base, en
+ 		return read_pll(clk, 0x132000);
+ 	case nv_clk_src_mdiv:
+ 		return read_div(clk, 0, 0x137300, 0x137310);
+-	case nv_clk_src_mem:
+-		if (nvkm_rd32(device, 0x1373f0) & 0x00000002)
+-			return nvkm_clk_read(&clk->base, nv_clk_src_mpll);
+-		return nvkm_clk_read(&clk->base, nv_clk_src_mdiv);
++	case nv_clk_src_mem: {
++		u32 f = 0;
++		if (nvkm_rd32(device, 0x1373f0) & 0x00000001) {
++			u32 coef = nvkm_rd32(device, 0x132004);
++			if (coef == 0x0002230b)
++				f = 900000;
++			else if (coef == 0x00071806)
++				f = 324000;
++			else
++				f = nvkm_clk_read(&clk->base, nv_clk_src_mpll);
++		}
++		if (!f)
++			f = nvkm_clk_read(&clk->base, nv_clk_src_mdiv);
++		return f;
++	}
  
  	case nv_clk_src_gpc:
  		return read_clk(clk, 0x00);
@@ -125,17 +170,28 @@ diff -uNrp nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-mod/nvkm/subdev/clk/gf10
  	case nv_clk_src_rop:
  		return read_clk(clk, 0x01);
  	case nv_clk_src_hubk07:
-@@ -329,9 +331,6 @@ gf100_clk_calc(struct nvkm_clk *base, st
+@@ -327,13 +343,16 @@ gf100_clk_calc(struct nvkm_clk *base, st
+ 	struct gf100_clk *clk = gf100_clk(base);
+ 	int ret;
  
++	/* NOTE: nv_clk_src_pmu (domain 0x0c) is intentionally excluded from
++	 * runtime clock recalculation. Reclocking the PDAEMON Falcon clock
++	 * while its resident microcode is actively executing causes an
++	 * asynchronous clock glitch on the Falcon pipeline, triggering an
++	 * instruction fetch abort / STOPPED fault that breaks bidirectional
++	 * memory reclocking fast-path handshakes.
++	 */
  	if ((ret = calc_clk(clk, cstate, 0x00, nv_clk_src_gpc)) ||
  	    (ret = calc_clk(clk, cstate, 0x01, nv_clk_src_rop)) ||
 -	    (ret = calc_clk(clk, cstate, 0x02, nv_clk_src_hubk07)) ||
 -	    (ret = calc_clk(clk, cstate, 0x07, nv_clk_src_hubk06)) ||
 -	    (ret = calc_clk(clk, cstate, 0x08, nv_clk_src_hubk01)) ||
  	    (ret = calc_clk(clk, cstate, 0x09, nv_clk_src_copy)) ||
- 	    (ret = calc_clk(clk, cstate, 0x0c, nv_clk_src_pmu)) ||
+-	    (ret = calc_clk(clk, cstate, 0x0c, nv_clk_src_pmu)) ||
  	    (ret = calc_clk(clk, cstate, 0x0e, nv_clk_src_vdec)))
-@@ -457,9 +456,11 @@ gf100_clk = {
+ 		return ret;
+ 
+@@ -457,9 +476,11 @@ gf100_clk = {
  		{ nv_clk_src_hubk06 , 0x00 },
  		{ nv_clk_src_hubk01 , 0x01 },
  		{ nv_clk_src_copy   , 0x02 },
@@ -149,271 +205,875 @@ diff -uNrp nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-mod/nvkm/subdev/clk/gf10
  		{ nv_clk_src_vdec   , 0x06 },
  		{ nv_clk_src_pmu    , 0x0a },
  		{ nv_clk_src_hubk07 , 0x0b },
-@@ -477,5 +478,5 @@ gf100_clk_new(struct nvkm_device *device
+@@ -477,5 +498,5 @@ gf100_clk_new(struct nvkm_device *device
  		return -ENOMEM;
  	*pclk = &clk->base;
  
 -	return nvkm_clk_ctor(&gf100_clk, device, type, inst, false, &clk->base);
 +	return nvkm_clk_ctor(&gf100_clk, device, type, inst, true, &clk->base);
  }
-diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ramgf100.c
---- nouveau-orig/nvkm/subdev/fb/ramgf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/nvkm/subdev/fb/ramgf100.c	2026-09-04 21:09:25.880251893 +0300
-@@ -58,6 +58,9 @@ struct gf100_ramfuc {
- 	struct ramfuc_reg r_0x10f340;
- 	struct ramfuc_reg r_0x10f344;
- 	struct ramfuc_reg r_0x10f348;
-+	struct ramfuc_reg r_0x10f440;
-+	struct ramfuc_reg r_0x10f444;
-+	struct ramfuc_reg r_0x10f468;
+diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/fexec_code.inc nouveau-source/nvkm/subdev/fb/fexec_code.inc
+--- nouveau-orig/nvkm/subdev/fb/fexec_code.inc	1970-01-01 02:00:00.000000000 +0200
++++ nouveau-source/nvkm/subdev/fb/fexec_code.inc	2026-09-17 21:19:44.911419243 +0300
+@@ -0,0 +1,243 @@
++/* Native resident Falcon executor for Fermi GF106 DDR3 reclocking */
++static const u32 fexec_code[] = {
++	0xfe1e0ef4, 0x97f101ca, 0x94b60080, 0x009ad006,
++	0xf11832f4, 0xfe5ff097, 0x0ef50094, 0x97f100b7,
++	0x94fe5ff0, 0x0397f000, 0xf40093fe, 0x32f41032,
++	0x1832f411, 0xb61497f0, 0xb7f10694, 0xb3f1ffff,
++	0x9bd0ffff, 0x0497f000, 0xf10694b6, 0xf1ffffb7,
++	0xd0ffffb3, 0x97f0009b, 0x0694b628, 0x9bd0b4bd,
++	0x3897f000, 0xbd0694b6, 0x009bd0b4, 0x008497f1,
++	0xcf0694b6, 0xa6b0009a, 0x230bf401, 0xf402a6b0,
++	0x0ef4240b, 0x8097f103, 0x0694b600, 0x0001b7f1,
++	0xe1ecb3f1, 0xbd009bd0, 0x380ef404, 0x010e21f5,
++	0xf50a0ef4, 0xf406be21, 0x97f1030e, 0x94fe5ff0,
++	0x8497f100, 0x0694b600, 0x9bd0b4bd, 0x8097f100,
++	0x0694b600, 0x0001b7f1, 0xe1ecb3f1, 0xbd009bd0,
++	0x8497f104, 0x0694b600, 0x00c877f1, 0xb00172b6,
++	0x1bf40076, 0x009acffa, 0xf401a6b0, 0xa6b0b10b,
++	0xb20bf402, 0xf1e40ef4, 0xb6008097, 0xb7f10694,
++	0xb3f10000, 0x9bd0dead, 0xf404bd00, 0xe7f1c60e,
++	0xe3f07300, 0x03d7f113, 0x3521f501, 0x70e7f10e,
++	0x13e3f073, 0xf507d7f0, 0xf10e3521, 0xf07380e7,
++	0xd7f013e3, 0x3521f501, 0x08e7f10e, 0x10e3f0f8,
++	0x0004d7f1, 0x4802d3f1, 0x0e3521f5, 0xf824e7f1,
++	0xf110e3f0, 0xf07867d7, 0x21f502d3, 0x77f10e35,
++	0x21f50548, 0xe7f10cec, 0xe3f00b0c, 0x12d7f110,
++	0x08d3f000, 0x0e3521f5, 0x0cf721f5, 0x1200e7f1,
++	0xf161e3f0, 0xf53300d7, 0xf50e3521, 0xf10d0621,
++	0xf0f200e7, 0xd7f110e3, 0xd3f08000, 0x3521f502,
++	0x08e7f10e, 0x10e3f0f8, 0x0004d7f1, 0x4c02d3f1,
++	0x0e3521f5, 0x02a477f1, 0x0cec21f5, 0x73ece7f1,
++	0xf113e3f0, 0xf00909d7, 0x21f502d3, 0xe7f10e35,
++	0xe3f0f290, 0x13d7f110, 0x1ad3f192, 0x3521f506,
++	0x14e7f10e, 0x10e3f0f3, 0xf501d7f0, 0xf10e3521,
++	0xf0f210e7, 0xd4bd10e3, 0x0e3521f5, 0xf310e7f1,
++	0xf010e3f0, 0x21f501d7, 0xe7f10e35, 0xe3f0f310,
++	0x01d7f010, 0x0e3521f5, 0xf56477f0, 0xf10cec21,
++	0xf0f090e7, 0xd7f010e3, 0x3521f560, 0x90e7f10e,
++	0x10e3f0f0, 0x007ed7f1, 0xc000d3f1, 0x0e3521f5,
++	0x7360e7f1, 0xf013e3f0, 0x21f501d7, 0xe7f10e35,
++	0xe3f07370, 0xf5d4bd13, 0xf10e3521, 0xf07380e7,
++	0xd4bd13e3, 0x0e3521f5, 0x2000e7f1, 0xf113e3f0,
++	0xf10000d7, 0xf51803d3, 0xf10e3521, 0xf0fe20e7,
++	0xd7f110e3, 0xd3f10000, 0x21f52003, 0xe7f10e35,
++	0xe3f07320, 0x03d7f113, 0x3521f501, 0x30e7f10e,
++	0x13e3f073, 0x0600d7f1, 0x8120d3f1, 0x0e3521f5,
++	0xfe20e7f1, 0xf110e3f0, 0xf10001d7, 0xf52003d3,
++	0xf10e3521, 0xf07390e7, 0x57f113e3, 0x53f00000,
++	0x0047f102, 0x0243f000, 0x000077f1, 0xf51073f0,
++	0xf10cd021, 0xf0fe20e7, 0xd7f110e3, 0xd3f10005,
++	0x21f52003, 0xe7f10e35, 0xe3f02004, 0x0bd7f113,
++	0x02d3f023, 0x0e3521f5, 0x2000e7f1, 0xf113e3f0,
++	0xf10001d7, 0xf51803d3, 0xf10e3521, 0xf07390e7,
++	0x57f013e3, 0x0247f002, 0x000077f1, 0xf51073f0,
++	0xf10cd021, 0xf0f874e7, 0xd4bd10e3, 0x0e3521f5,
++	0xf824e7f1, 0xf110e3f0, 0xf01867d7, 0x21f502d3,
++	0x77f10e35, 0x21f50548, 0xe7f10cec, 0xe3f02018,
++	0x00d7f113, 0x3521f550, 0xe877f10e, 0xec21f503,
++	0x10e7f10c, 0x10e3f0f9, 0x2000d7f1, 0x0e3521f5,
++	0xf914e7f1, 0xf110e3f0, 0xf52000d7, 0xf10e3521,
++	0xf0f658e7, 0xd4bd10e3, 0x0e3521f5, 0xf830e7f1,
++	0xf010e3f0, 0x21f511d7, 0x77f10e35, 0x21f50548,
++	0xe7f10cec, 0xe3f07370, 0x07d7f013, 0x0e3521f5,
++	0x7380e7f1, 0xf013e3f0, 0x21f501d7, 0xe7f10e35,
++	0xe3f07360, 0xf5d4bd13, 0xf10e3521, 0xf0f090e7,
++	0xd7f110e3, 0xd3f1007f, 0x21f54000, 0xe7f10e35,
++	0xe3f0f210, 0x00d7f110, 0x00d3f100, 0x3521f580,
++	0x6477f00e, 0x0cec21f5, 0xf300e7f1, 0xf110e3f0,
++	0xf51520d7, 0xf00e3521, 0x21f56477, 0xe7f10cec,
++	0xe3f0f300, 0x20d7f110, 0x3521f514, 0x6477f00e,
++	0x0cec21f5, 0xf320e7f1, 0xf110e3f0, 0xf000a0d7,
++	0x21f520d3, 0x77f00e35, 0xec21f564, 0x00e7f10c,
++	0x10e3f0f3, 0x1e04d7f1, 0x0e3521f5, 0xf56477f0,
++	0xf10cec21, 0xf0f224e7, 0xd7f110e3, 0xd3f10c07,
++	0x21f50e07, 0xe7f10e35, 0xe3f0f290, 0x2ed7f110,
++	0x44d3f192, 0x3521f50e, 0x94e7f10e, 0x10e3f0f2,
++	0x848cd7f1, 0x4ce3d3f1, 0x0e3521f5, 0xf298e7f1,
++	0xf110e3f0, 0xf10711d7, 0xf5440ed3, 0xf10e3521,
++	0xf0f29ce7, 0xd7f110e3, 0x21f550b6, 0xe7f10e35,
++	0xe3f0f2a0, 0x69d7f110, 0xe3d3f180, 0x3521f542,
++	0x00e7f10e, 0x10e3f0f2, 0x9000d7f1, 0xf502d3f0,
++	0xf10e3521, 0xf0f604e7, 0xd7f110e3, 0xd3f10000,
++	0x21f5f100, 0xe7f10e35, 0xe3f0f614, 0x77d7f110,
++	0x04d3f14e, 0x3521f540, 0x10e7f10e, 0x10e3f0f6,
++	0x4e77d7f1, 0x4004d3f1, 0x0e3521f5, 0xf808e7f1,
++	0xf110e3f0, 0xf10000d7, 0xf55692d3, 0xf10e3521,
++	0xf50a9077, 0xf10cec21, 0xf073f8e7, 0xd7f113e3,
++	0x21f52040, 0xe7f10e35, 0xe3f0f870, 0xaad7f110,
++	0xaad3f1aa, 0x3521f5aa, 0xa477f10e, 0xec21f502,
++	0x00e7f10c, 0x10e3f00c, 0x0124d7f1, 0x0400d3f1,
++	0x0e3521f5, 0xf300e7f1, 0xf110e3f0, 0xf51f04d7,
++	0xf00e3521, 0x21f56477, 0xe7f10cec, 0xe3f0f300,
++	0x04d7f110, 0x3521f51e, 0x6477f00e, 0x0cec21f5,
++	0xf56477f0, 0xf10cec21, 0xf0f830e7, 0xd7f110e3,
++	0xd3f10011, 0x21f50100, 0xe7f10e35, 0xe3f0f830,
++	0x11d7f010, 0x0e3521f5, 0x0d7d21f5, 0x054877f1,
++	0x0cec21f5, 0x0b0ce7f1, 0xf110e3f0, 0xf00028d7,
++	0x21f508d3, 0xe7f10e35, 0xe3f01200, 0x30d7f161,
++	0x3521f533, 0x00e7f10e, 0x10e3f0f2, 0x9800d7f1,
++	0xf502d3f0, 0xf10e3521, 0xf0f824e7, 0xd7f110e3,
++	0xd3f01e67, 0x3521f502, 0x48e7f10e, 0x00e3f015,
++	0x0102d7f1, 0x0e3521f5, 0xf468e7f1, 0xf110e3f0,
++	0xf00020d7, 0x21f502d3, 0xe7f10e35, 0xe3f0f420,
++	0x43d7f010, 0x0e3521f5, 0xf430e7f1, 0xf010e3f0,
++	0x21f541d7, 0xe7f10e35, 0xe3f0f400, 0x1fd7f110,
++	0x3521f517, 0x10e7f10e, 0x10e3f0f4, 0x0107d7f1,
++	0x0e3521f5, 0xf444e7f1, 0xf110e3f0, 0xf1883fd7,
++	0xf504ccd3, 0xf10e3521, 0xf01548e7, 0xd7f100e3,
++	0x21f50101, 0xe7f10e35, 0xe3f01548, 0x01d7f100,
++	0x00d3f101, 0x3521f580, 0x50e7f10e, 0x10e3f0f0,
++	0x1050d7f1, 0xff00d3f1, 0x0e3521f5, 0xe7f100f8,
++	0xe3f07300, 0x03d7f113, 0x3521f501, 0x70e7f10e,
++	0x13e3f073, 0xf507d7f0, 0xf10e3521, 0xf07380e7,
++	0xd7f013e3, 0x3521f501, 0x24e7f10e, 0x10e3f0f8,
++	0x1867d7f1, 0xf502d3f0, 0xf10e3521, 0xf502a477,
++	0xf10cec21, 0xf00b0ce7, 0xd7f110e3, 0xd3f00012,
++	0x3521f508, 0xf721f50e, 0x00e7f10c, 0x61e3f012,
++	0x3300d7f1, 0x0e3521f5, 0x0d0621f5, 0xf200e7f1,
++	0xf110e3f0, 0xf09000d7, 0x21f502d3, 0xe7f10e35,
++	0xe3f0f314, 0x01d7f010, 0x0e3521f5, 0xf210e7f1,
++	0xbd10e3f0, 0x3521f5d4, 0x10e7f10e, 0x10e3f0f3,
++	0xf501d7f0, 0xf10e3521, 0xf0f310e7, 0xd7f010e3,
++	0x3521f501, 0x6477f00e, 0x0cec21f5, 0xf090e7f1,
++	0xf010e3f0, 0x21f560d7, 0xe7f10e35, 0xe3f0f090,
++	0x7ed7f110, 0x00d3f100, 0x3521f5c0, 0x60e7f10e,
++	0x13e3f073, 0xf501d7f0, 0xf10e3521, 0xf0f830e7,
++	0xd7f010e3, 0x3521f517, 0xa477f10e, 0xec21f502,
++	0x70e7f10c, 0x13e3f073, 0x21f5d4bd, 0xe7f10e35,
++	0xe3f07380, 0xf5d4bd13, 0xf10e3521, 0xf02018e7,
++	0xd7f113e3, 0x21f51000, 0xe7f10e35, 0xe3f02000,
++	0x00d7f113, 0x03d3f100, 0x3521f518, 0x20e7f10e,
++	0x10e3f0fe, 0x0000d7f1, 0x2003d3f1, 0x0e3521f5,
++	0x7320e7f1, 0xf113e3f0, 0xf50103d7, 0xf10e3521,
++	0xf07330e7, 0xd7f113e3, 0xd3f10600, 0x21f58120,
++	0xe7f10e35, 0xe3f0fe20, 0x01d7f110, 0x03d3f100,
++	0x3521f520, 0x90e7f10e, 0x13e3f073, 0x000057f1,
++	0xf10253f0, 0xf0000047, 0x77f10243, 0x73f00000,
++	0xd021f510, 0x20e7f10c, 0x10e3f0fe, 0x0005d7f1,
++	0x2003d3f1, 0x0e3521f5, 0x2004e7f1, 0xf113e3f0,
++	0xf01806d7, 0x21f507d3, 0xe7f10e35, 0xe3f02000,
++	0x01d7f113, 0x03d3f100, 0x3521f518, 0x90e7f10e,
++	0x13e3f073, 0xf00257f0, 0x77f10247, 0x73f00000,
++	0xd021f510, 0x74e7f10c, 0x10e3f0f8, 0x0000d7f1,
++	0x0400d3f1, 0x0e3521f5, 0xf658e7f1, 0xf110e3f0,
++	0xf08989d7, 0x21f591d3, 0x77f10e35, 0x21f50548,
++	0xe7f10cec, 0xe3f02018, 0x00d7f113, 0x00d3f110,
++	0x3521f510, 0x60e7f10e, 0x10e3f0f6, 0x1010d7f1,
++	0x0e3521f5, 0xf910e7f1, 0xbd10e3f0, 0x3521f5d4,
++	0x14e7f10e, 0x10e3f0f9, 0x21f5d4bd, 0xe7f10e35,
++	0xe3f0f824, 0x67d7f110, 0x02d3f078, 0x0e3521f5,
++	0x054877f1, 0x0cec21f5, 0x7370e7f1, 0xf013e3f0,
++	0x21f507d7, 0xe7f10e35, 0xe3f07380, 0x01d7f013,
++	0x0e3521f5, 0x7360e7f1, 0xbd13e3f0, 0x3521f5d4,
++	0x90e7f10e, 0x10e3f0f0, 0x007fd7f1, 0x4000d3f1,
++	0x0e3521f5, 0xf210e7f1, 0xf110e3f0, 0xf10000d7,
++	0xf58000d3, 0xf00e3521, 0x21f56477, 0xe7f10cec,
++	0xe3f0f300, 0x04d7f110, 0x3521f51f, 0x6477f00e,
++	0x0cec21f5, 0xf300e7f1, 0xf110e3f0, 0xf51e04d7,
++	0xf00e3521, 0x21f56477, 0xe7f10cec, 0xe3f0f320,
++	0x80d7f110, 0x20d3f000, 0x0e3521f5, 0xf56477f0,
++	0xf10cec21, 0xf0f300e7, 0xd7f110e3, 0x21f51420,
++	0x77f00e35, 0xec21f564, 0x24e7f10c, 0x10e3f0f2,
++	0x0c07d7f1, 0x0e05d3f1, 0x0e3521f5, 0xf290e7f1,
++	0xf110e3f0, 0xf13813d7, 0xf5061ad3, 0xf10e3521,
++	0xf0f294e7, 0xd7f110e3, 0xd3f18286, 0x21f54c61,
++	0xe7f10e35, 0xe3f0f298, 0x11d7f110, 0x06d3f104,
++	0x3521f544, 0x9ce7f10e, 0x10e3f0f2, 0x1e6ad7f1,
++	0x0e3521f5, 0xf2a0e7f1, 0xf110e3f0, 0xf18069d7,
++	0xf542e2d3, 0xf10e3521, 0xf0f200e7, 0xd7f110e3,
++	0xd3f08000, 0x3521f502, 0x04e7f10e, 0x10e3f0f6,
++	0x0000d7f1, 0xf000d3f1, 0x0e3521f5, 0xf614e7f1,
++	0xf110e3f0, 0xf14f77d7, 0xf54004d3, 0xf10e3521,
++	0xf0f610e7, 0xd7f110e3, 0xd3f14f77, 0x21f54004,
++	0xe7f10e35, 0xe3f0f808, 0x04d7f110, 0x02d3f100,
++	0x3521f548, 0x9077f10e, 0xec21f50a, 0xece7f10c,
++	0x13e3f073, 0x0909d7f1, 0x0e3521f5, 0x73f8e7f1,
++	0xf113e3f0, 0xf52055d7, 0xf10e3521, 0xf0f870e7,
++	0xd7f110e3, 0xd3f1aaaa, 0x21f5aaaa, 0x77f10e35,
++	0x21f502a4, 0xe7f10cec, 0xe3f00c00, 0x24d7f110,
++	0x00d3f101, 0x3521f50c, 0x00e7f10e, 0x10e3f0f3,
++	0x1520d7f1, 0x0e3521f5, 0xf56477f0, 0xf10cec21,
++	0xf0f300e7, 0xd7f110e3, 0x21f51420, 0x77f00e35,
++	0xec21f564, 0x6477f00c, 0x0cec21f5, 0xf324e7f1,
++	0xf110e3f0, 0xf503cbd7, 0xf10e3521, 0xf0f324e7,
++	0xd7f110e3, 0x21f506cb, 0xe7f10e35, 0xe3f0f324,
++	0xcbd7f110, 0x3521f501, 0x24e7f10e, 0x10e3f0f3,
++	0x03cad7f1, 0x0e3521f5, 0xf324e7f1, 0xf110e3f0,
++	0xf506cad7, 0xf10e3521, 0xf0f324e7, 0xd7f110e3,
++	0x21f501ca, 0xe7f10e35, 0xe3f0f830, 0x17d7f110,
++	0x00d3f100, 0x3521f501, 0x30e7f10e, 0x10e3f0f8,
++	0xf517d7f0, 0xf50e3521, 0xf10d7d21, 0xf5054877,
++	0xf10cec21, 0xf00b0ce7, 0xd7f110e3, 0xd3f00028,
++	0x3521f508, 0x00e7f10e, 0x61e3f012, 0x3330d7f1,
++	0x0e3521f5, 0xf200e7f1, 0xf110e3f0, 0xf08800d7,
++	0x21f502d3, 0xe7f10e35, 0xe3f02018, 0x00d7f113,
++	0x00d3f110, 0x3521f510, 0x24e7f10e, 0x10e3f0f8,
++	0x79e7d7f1, 0xf502d3f0, 0xf10e3521, 0xf0f808e7,
++	0xd7f110e3, 0xd3f10004, 0x21f50802, 0xe7f10e35,
++	0xe3f01548, 0x02d7f100, 0x3521f501, 0x68e7f10e,
++	0x10e3f0f4, 0x1005d7f1, 0x0e3521f5, 0xf420e7f1,
++	0xf010e3f0, 0x21f542d7, 0xe7f10e35, 0xe3f0f430,
++	0x40d7f010, 0x0e3521f5, 0xf400e7f1, 0xf110e3f0,
++	0xf51707d7, 0xf10e3521, 0xf0f410e7, 0xd7f110e3,
++	0x21f50307, 0xe7f10e35, 0xe3f0f444, 0x1fd7f110,
++	0xccd3f100, 0x3521f504, 0x48e7f10e, 0x00e3f015,
++	0x0101d7f1, 0x0e3521f5, 0x1548e7f1, 0xf100e3f0,
++	0xf10101d7, 0xf58000d3, 0xf10e3521, 0xf0f050e7,
++	0xd7f110e3, 0xd3f10450, 0x21f5ff00, 0x00f80e35,
++	0x0dde21f5, 0xb804d5fd, 0x0bf406d4, 0x0172b610,
++	0xf40076b0, 0x0ef5ed1b, 0x00f8f411, 0xb00172b6,
++	0x1bf40076, 0xf100f8fa, 0xb603e877, 0x76b00172,
++	0xfa1bf400, 0x67f100f8, 0x77f11620, 0x73f1f55d,
++	0x6eb9ffff, 0xde21f502, 0x04d7fd0d, 0x0e3521f5,
++	0xfffe77f1, 0xffff73f1, 0xf5026eb9, 0xfd0dde21,
++	0x21f504d7, 0x67f10e35, 0x6eb926f0, 0xde21f502,
++	0x04d7fd0d, 0x0e3521f5, 0x07e097f1, 0xf00694b6,
++	0x9bd004b7, 0xf104bd00, 0xf1010073, 0xb607c097,
++	0x99cf0694, 0x0494f000, 0xf40096b0, 0x72b6101b,
++	0x0076b001, 0xf5e71bf4, 0xf8f3800e, 0xe497f100,
++	0x0694b607, 0xd004b7f0, 0x04bd009b, 0x010073f1,
++	0x07c097f1, 0xcf0694b6, 0x94f00099, 0x0096b004,
++	0xb6100bf4, 0x76b00172, 0xe71bf400, 0xf34b0ef5,
++	0x26f067f1, 0xf5026eb9, 0xf10dde21, 0xfd000177,
++	0x21f505d7, 0x67f10e35, 0x6eb91620, 0xde21f502,
++	0xa377f10d, 0x05d7fd0a, 0x0e3521f5, 0x07f100f8,
++	0x04b607a0, 0x000ed006, 0xd7f104bd, 0xd3f00001,
++	0xac07f101, 0x0604b607, 0xbd000dd0, 0x10c3f004,
++	0x07acd7f1, 0xcf06d4b6, 0xd4f100dd, 0xd6b17000,
++	0x1bf41000, 0x01c2b610, 0xf400c6b0, 0x0ef5e51b,
++	0xd6b0f2d9, 0xd21bf500, 0xa4d7f1f2, 0x06d4b607,
++	0xf800ddcf, 0xa007f100, 0x0604b607, 0xbd000ed0,
++	0xa407f104, 0x0604b607, 0xbd000dd0, 0xf2d7f104,
++	0x01d3f000, 0x07ac07f1, 0xd00604b6, 0x04bd000d,
++	0xf110c3f0, 0xb607acd7, 0xddcf06d4, 0x00d4f100,
++	0x00d6b170, 0x101bf410, 0xb001c2b6, 0x1bf400c6,
++	0x760ef5e5, 0x00d6b0f2, 0xf26f1bf5, 0x000000f8,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++};
+diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/ramfuc.h nouveau-source/nvkm/subdev/fb/ramfuc.h
+--- nouveau-orig/nvkm/subdev/fb/ramfuc.h	2026-06-12 01:03:26.000000000 +0300
++++ nouveau-source/nvkm/subdev/fb/ramfuc.h	2026-09-07 14:09:18.333515126 +0300
+@@ -4,10 +4,15 @@
+ #include <subdev/fb.h>
+ #include <subdev/pmu.h>
  
- 	struct ramfuc_reg r_0x10f910;
- 	struct ramfuc_reg r_0x10f914;
-@@ -275,8 +278,10 @@ gf100_ram_calc(struct nvkm_ram *base, u3
- 	ram_mask(fuc, 0x10f200, 0x00000800, 0x00000000);
- 	ram_wr32(fuc, 0x10f210, 0x00000000);
- 	ram_nsec(fuc, 1000);
--	if (mode == 0)
--		gf100_ram_train(fuc, 0x000c1001);
-+	if (mode == 0) {
-+		if (ram->base.type == NVKM_RAM_TYPE_GDDR5)
-+			gf100_ram_train(fuc, 0x000c1001);
++#include <linux/delay.h>
++
+ struct ramfuc {
+ 	struct nvkm_memx *memx;
+ 	struct nvkm_fb *fb;
+ 	int sequence;
++	bool direct_exec;        /* bypass PMU MEMX, write registers directly */
++	bool irq_held;           /* direct_exec: inside block/unblock window */
++	unsigned long irq_flags; /* direct_exec: saved IRQ state */
+ };
+ 
+ struct ramfuc_reg {
+@@ -55,9 +60,23 @@ ramfuc_reg(u32 addr)
+ 	};
+ }
+ 
++static inline void ramfuc_unblock(struct ramfuc *ram);
++
+ static inline int
+ ramfuc_init(struct ramfuc *ram, struct nvkm_fb *fb)
+ {
++	if (ram->direct_exec) {
++		/* Direct MMIO mode: skip PMU MEMX init entirely.  IRQs are
++		 * disabled later, only inside the ram_block()/ram_unblock()
++		 * window, mirroring the PMU script's host-block semantics.
++		 */
++		ram->sequence++;
++		ram->fb = fb;
++		ram->memx = NULL;
++		ram->irq_held = false;
++		return 0;
 +	}
- 	ram_wr32(fuc, 0x10f310, 0x00000001);
- 	ram_nsec(fuc, 1000);
- 	ram_wr32(fuc, 0x10f090, 0x00000061);
-@@ -284,7 +289,13 @@ gf100_ram_calc(struct nvkm_ram *base, u3
- 	ram_nsec(fuc, 1000);
- 
- 	if (from == 0) {
--		ram_wr32(fuc, 0x10f824, 0x00007fd4);
-+		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
-+			if (freq == 900000)
-+				ram_wr32(fuc, 0x10f824, 0x00021e67);
-+			else
-+				ram_wr32(fuc, 0x10f824, 0x000279e7);
-+		} else
-+			ram_wr32(fuc, 0x10f824, 0x00007fd4);
- 	} else {
- 		ram_wr32(fuc, 0x1373ec, 0x00020404);
- 	}
-@@ -295,16 +306,41 @@ gf100_ram_calc(struct nvkm_ram *base, u3
- 		ram_wr32(fuc, 0x10f830, 0x41500010);
- 		ram_mask(fuc, 0x10f830, 0x01000000, 0x00000000);
- 		ram_mask(fuc, 0x132100, 0x00000100, 0x00000100);
--		ram_wr32(fuc, 0x10f050, 0xff000090);
-+		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
-+			if (freq == 900000)
-+				ram_wr32(fuc, 0x10f050, 0xff001050);
-+			else
-+				ram_wr32(fuc, 0x10f050, 0xff000450);
-+		} else
-+			ram_wr32(fuc, 0x10f050, 0xff000090);
- 		ram_wr32(fuc, 0x1373ec, 0x00020f0f);
- 		ram_wr32(fuc, 0x1373f0, 0x00000003);
- 		ram_wr32(fuc, 0x137310, 0x81201616);
- 		ram_wr32(fuc, 0x132100, 0x00000001);
--// 0x00020039 // 0x000000ba
- 		ram_wr32(fuc, 0x10f830, 0x00300017);
- 		ram_wr32(fuc, 0x1373f0, 0x00000001);
--		ram_wr32(fuc, 0x10f824, 0x00007e77);
--		ram_wr32(fuc, 0x132000, 0x18030001);
-+		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
-+			if (freq == 900000) {
-+				/* VBlank sync for DDR3 900 on eDP 120Hz — local */
-+				int i; for (i = 0; i < 100; i++) { if (nvkm_rd32(device, 0x6100b0) & 0x00000001) break; ram_nsec(fuc, 100); }
-+				ram_wr32(fuc, 0x10f824, 0x00021e67);
-+				ram_wr32(fuc, 0x132000, 0x18000000);
-+				ram_wr32(fuc, 0x10f440, 0x22f84f10);
-+				ram_wr32(fuc, 0x10f444, 0x04cc883f);
-+				ram_wr32(fuc, 0x10f468, 0x00020020);
-+				ram_wr32(fuc, 0x10f808, 0x08020004);
-+			} else {
-+				ram_wr32(fuc, 0x10f824, 0x000279e7);
-+				ram_wr32(fuc, 0x132000, 0x18000000);
-+				ram_wr32(fuc, 0x10f440, 0x22f84f10);
-+				ram_wr32(fuc, 0x10f444, 0x04cc001f);
-+				ram_wr32(fuc, 0x10f468, 0x00001005);
-+				ram_wr32(fuc, 0x10f808, 0x08020004);
-+			}
++
+ 	int ret = nvkm_memx_init(fb->subdev.device->pmu, &ram->memx);
+ 	if (ret)
+ 		return ret;
+@@ -72,8 +91,16 @@ ramfuc_exec(struct ramfuc *ram, bool exe
+ {
+ 	int ret = 0;
+ 	if (ram->fb) {
+-		ret = nvkm_memx_fini(&ram->memx, exec);
+-		ram->fb = NULL;
++		if (ram->direct_exec) {
++			/* Direct mode: writes already done.  Restore IRQs
++			 * if a block window was left open (error path). */
++			if (ram->irq_held)
++				ramfuc_unblock(ram);
++			ram->fb = NULL;
 +		} else {
-+			ram_wr32(fuc, 0x10f824, 0x00007e77);
-+			ram_wr32(fuc, 0x132000, 0x18030001);
-+		}
- 		ram_wr32(fuc, 0x10f090, 0x4000007e);
- 		ram_nsec(fuc, 2000);
- 		ram_wr32(fuc, 0x10f314, 0x00000001);
-@@ -312,26 +348,46 @@ gf100_ram_calc(struct nvkm_ram *base, u3
- 		ram_wr32(fuc, 0x10f338, 0x00300220);
- 		ram_wr32(fuc, 0x10f300, 0x0000011d);
- 		ram_nsec(fuc, 1000);
--		ram_wr32(fuc, 0x10f290, 0x02060505);
--		ram_wr32(fuc, 0x10f294, 0x34208288);
--		ram_wr32(fuc, 0x10f298, 0x44050411);
--		ram_wr32(fuc, 0x10f29c, 0x0000114c);
--		ram_wr32(fuc, 0x10f2a0, 0x42e10069);
--		ram_wr32(fuc, 0x10f614, 0x40044f77);
--		ram_wr32(fuc, 0x10f610, 0x40044f77);
-+		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
-+			if (freq == 900000) {
-+				ram_wr32(fuc, 0x10f290, 0x0e44922e);
-+				ram_wr32(fuc, 0x10f294, 0x4ce3848c);
-+				ram_wr32(fuc, 0x10f298, 0x440e0711);
-+				ram_wr32(fuc, 0x10f29c, 0x000050b6);
-+				ram_wr32(fuc, 0x10f2a0, 0x42e38069);
-+				ram_wr32(fuc, 0x10f614, 0x40044e77);
-+				ram_wr32(fuc, 0x10f610, 0x40044e77);
-+			} else {
-+				ram_wr32(fuc, 0x10f290, 0x061a3813);
-+				ram_wr32(fuc, 0x10f294, 0x34208288);
-+				ram_wr32(fuc, 0x10f298, 0x44060411);
-+				ram_wr32(fuc, 0x10f29c, 0x00001e6a);
-+				ram_wr32(fuc, 0x10f2a0, 0x42e28069);
-+				ram_wr32(fuc, 0x10f614, 0x40044f77);
-+				ram_wr32(fuc, 0x10f610, 0x40044f77);
-+			}
-+		} else {
-+			ram_wr32(fuc, 0x10f290, 0x02060505);
-+			ram_wr32(fuc, 0x10f294, 0x34208288);
-+			ram_wr32(fuc, 0x10f298, 0x44050411);
-+			ram_wr32(fuc, 0x10f29c, 0x0000114c);
-+			ram_wr32(fuc, 0x10f2a0, 0x42e10069);
-+			ram_wr32(fuc, 0x10f614, 0x40044f77);
-+			ram_wr32(fuc, 0x10f610, 0x40044f77);
-+		}
- 		ram_wr32(fuc, 0x10f344, 0x00600009);
- 		ram_nsec(fuc, 1000);
- 		ram_wr32(fuc, 0x10f348, 0x00700008);
- 		ram_wr32(fuc, 0x61c140, 0x19240000);
- 		ram_wr32(fuc, 0x10f830, 0x00300017);
--		gf100_ram_train(fuc, 0x80021001);
--		gf100_ram_train(fuc, 0x80081001);
-+		if (ram->base.type == NVKM_RAM_TYPE_GDDR5) {
-+			gf100_ram_train(fuc, 0x80021001);
-+			gf100_ram_train(fuc, 0x80081001);
-+		}
- 		ram_wr32(fuc, 0x10f340, 0x00500004);
- 		ram_nsec(fuc, 1000);
- 		ram_wr32(fuc, 0x10f830, 0x01300017);
- 		ram_wr32(fuc, 0x10f830, 0x00300017);
--// 0x00030020 // 0x00000000 // 0x00000000
--// 0x00020034 // 0x0000000b
- 		ram_wr32(fuc, 0x100b0c, 0x00080028);
- 		ram_wr32(fuc, 0x611200, 0x00003330);
- 	} else {
-@@ -345,53 +401,87 @@ gf100_ram_calc(struct nvkm_ram *base, u3
- 		ram_wr32(fuc, 0x1373f8, 0x00000000);
- 		ram_wr32(fuc, 0x132100, 0x00000101);
- 		ram_wr32(fuc, 0x137310, 0x89201616);
--		ram_wr32(fuc, 0x10f050, 0xff000090);
-+		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
-+			if (freq == 900000)
-+				ram_wr32(fuc, 0x10f050, 0xff001050);
-+			else
-+				ram_wr32(fuc, 0x10f050, 0xff000450);
-+		} else
-+			ram_wr32(fuc, 0x10f050, 0xff000090);
- 		ram_wr32(fuc, 0x1373ec, 0x00030404);
- 		ram_wr32(fuc, 0x1373f0, 0x00000002);
--	// 0x00020039 // 0x00000011
- 		ram_wr32(fuc, 0x132100, 0x00000001);
- 		ram_wr32(fuc, 0x1373f8, 0x00002000);
- 		ram_nsec(fuc, 2000);
--		ram_wr32(fuc, 0x10f808, 0x7aaa0050);
-+		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
-+			if (freq == 900000) {
-+				ram_wr32(fuc, 0x10f808, 0x08020004);
-+				ram_wr32(fuc, 0x10f824, 0x00021e67);
-+			} else {
-+				ram_wr32(fuc, 0x10f808, 0x08020004);
-+				ram_wr32(fuc, 0x10f824, 0x000279e7);
-+			}
-+		} else {
-+			ram_wr32(fuc, 0x10f808, 0x7aaa0050);
-+		}
- 		ram_wr32(fuc, 0x10f830, 0x00500010);
- 		ram_wr32(fuc, 0x10f200, 0x00ce1000);
- 		ram_wr32(fuc, 0x10f090, 0x4000007e);
- 		ram_nsec(fuc, 2000);
- 		ram_wr32(fuc, 0x10f314, 0x00000001);
- 		ram_wr32(fuc, 0x10f210, 0x80000000);
--		ram_wr32(fuc, 0x10f338, 0x00300200);
-+		ram_wr32(fuc, 0x10f338, 0x00300220);
- 		ram_wr32(fuc, 0x10f300, 0x0000084d);
- 		ram_nsec(fuc, 1000);
--		ram_wr32(fuc, 0x10f290, 0x0b343825);
--		ram_wr32(fuc, 0x10f294, 0x3483028e);
--		ram_wr32(fuc, 0x10f298, 0x440c0600);
--		ram_wr32(fuc, 0x10f29c, 0x0000214c);
--		ram_wr32(fuc, 0x10f2a0, 0x42e20069);
-+		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
-+			if (freq == 900000) {
-+				ram_wr32(fuc, 0x10f290, 0x0e44922e);
-+				ram_wr32(fuc, 0x10f294, 0x4ce3848c);
-+				ram_wr32(fuc, 0x10f298, 0x440e0711);
-+				ram_wr32(fuc, 0x10f29c, 0x000050b6);
-+				ram_wr32(fuc, 0x10f2a0, 0x42e38069);
-+				ram_wr32(fuc, 0x10f614, 0x40044e77);
-+				ram_wr32(fuc, 0x10f610, 0x40044e77);
-+			} else {
-+				ram_wr32(fuc, 0x10f290, 0x061a3813);
-+				ram_wr32(fuc, 0x10f294, 0x34208288);
-+				ram_wr32(fuc, 0x10f298, 0x44060411);
-+				ram_wr32(fuc, 0x10f29c, 0x00001e6a);
-+				ram_wr32(fuc, 0x10f2a0, 0x42e28069);
-+				ram_wr32(fuc, 0x10f614, 0x40044f77);
-+				ram_wr32(fuc, 0x10f610, 0x40044f77);
-+			}
-+		} else {
-+			ram_wr32(fuc, 0x10f290, 0x0b343825);
-+			ram_wr32(fuc, 0x10f294, 0x3483028e);
-+			ram_wr32(fuc, 0x10f298, 0x440c0600);
-+			ram_wr32(fuc, 0x10f29c, 0x0000214c);
-+			ram_wr32(fuc, 0x10f2a0, 0x42e20069);
-+			ram_wr32(fuc, 0x10f614, 0x60044e77);
-+			ram_wr32(fuc, 0x10f610, 0x60044e77);
-+		}
- 		ram_wr32(fuc, 0x10f200, 0x00ce0000);
--		ram_wr32(fuc, 0x10f614, 0x60044e77);
--		ram_wr32(fuc, 0x10f610, 0x60044e77);
- 		ram_wr32(fuc, 0x10f340, 0x00500000);
- 		ram_nsec(fuc, 1000);
- 		ram_wr32(fuc, 0x10f344, 0x00600228);
- 		ram_nsec(fuc, 1000);
- 		ram_wr32(fuc, 0x10f348, 0x00700000);
- 		ram_wr32(fuc, 0x13d8f4, 0x00000000);
--		ram_wr32(fuc, 0x61c140, 0x09a40000);
--
--		gf100_ram_train(fuc, 0x800e1008);
--
-+		if (ram->base.type == NVKM_RAM_TYPE_GDDR5) {
-+			ram_wr32(fuc, 0x61c140, 0x09a40000);
-+			gf100_ram_train(fuc, 0x800e1008);
-+		}
- 		ram_nsec(fuc, 1000);
- 		ram_wr32(fuc, 0x10f800, 0x00001804);
--	// 0x00030020 // 0x00000000 // 0x00000000
--	// 0x00020034 // 0x0000000b
- 		ram_wr32(fuc, 0x13d8f4, 0x00000000);
- 		ram_wr32(fuc, 0x100b0c, 0x00080028);
- 		ram_wr32(fuc, 0x611200, 0x00003330);
- 		ram_nsec(fuc, 100000);
--		ram_wr32(fuc, 0x10f9b0, 0x05313f41);
--		ram_wr32(fuc, 0x10f9b4, 0x00002f50);
--
--		gf100_ram_train(fuc, 0x010c1001);
-+		if (ram->base.type == NVKM_RAM_TYPE_GDDR5) {
-+			ram_wr32(fuc, 0x10f9b0, 0x05313f41);
-+			ram_wr32(fuc, 0x10f9b4, 0x00002f50);
-+			gf100_ram_train(fuc, 0x010c1001);
++			ret = nvkm_memx_fini(&ram->memx, exec);
++			ram->fb = NULL;
 +		}
  	}
+ 	return ret;
+ }
+@@ -95,10 +122,19 @@ ramfuc_wr32(struct ramfuc *ram, struct r
+ 	reg->sequence = ram->sequence;
+ 	reg->data = data;
  
- 	ram_mask(fuc, 0x10f200, 0x00000800, 0x00000800);
-diff -uNrp nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-mod/nvkm/subdev/pmu/gt215.c
+-	for (mask = reg->mask; mask > 0; mask = (mask & ~1) >> 1) {
+-		if (mask & 1)
+-			nvkm_memx_wr32(ram->memx, reg->addr+off, reg->data);
+-		off += reg->stride;
++	if (ram->direct_exec) {
++		struct nvkm_device *device = ram->fb->subdev.device;
++		for (mask = reg->mask; mask > 0; mask = (mask & ~1) >> 1) {
++			if (mask & 1)
++				nvkm_wr32(device, reg->addr+off, reg->data);
++			off += reg->stride;
++		}
++	} else {
++		for (mask = reg->mask; mask > 0; mask = (mask & ~1) >> 1) {
++			if (mask & 1)
++				nvkm_memx_wr32(ram->memx, reg->addr+off, reg->data);
++			off += reg->stride;
++		}
+ 	}
+ }
+ 
+@@ -122,25 +158,74 @@ ramfuc_mask(struct ramfuc *ram, struct r
+ static inline void
+ ramfuc_wait(struct ramfuc *ram, u32 addr, u32 mask, u32 data, u32 nsec)
+ {
+-	nvkm_memx_wait(ram->memx, addr, mask, data, nsec);
++	if (ram->direct_exec) {
++		struct nvkm_device *device = ram->fb->subdev.device;
++		u32 timeout_us = nsec / 1000 + 1;
++		u32 i;
++		for (i = 0; i < timeout_us; i++) {
++			if ((nvkm_rd32(device, addr) & mask) == data)
++				return;
++			udelay(1);
++		}
++		nvkm_warn(&ram->fb->subdev,
++			  "ramfuc_wait timeout: 0x%06x & 0x%08x != 0x%08x after %u us\n",
++			  addr, mask, data, timeout_us);
++	} else {
++		nvkm_memx_wait(ram->memx, addr, mask, data, nsec);
++	}
+ }
+ 
+ static inline void
+ ramfuc_nsec(struct ramfuc *ram, u32 nsec)
+ {
+-	nvkm_memx_nsec(ram->memx, nsec);
++	if (ram->direct_exec) {
++		if (nsec <= 10000)
++			ndelay(nsec);
++		else
++			udelay(nsec / 1000);
++	} else {
++		nvkm_memx_nsec(ram->memx, nsec);
++	}
+ }
+ 
+ static inline void
+ ramfuc_wait_vblank(struct ramfuc *ram)
+ {
+-	nvkm_memx_wait_vblank(ram->memx);
++	if (ram->direct_exec) {
++		/* PDAEMON INPUT (0x10a7c4) is not host-readable on Fermi;
++		 * poll head-0 raster line against armed vblank start. */
++		struct nvkm_device *device = ram->fb->subdev.device;
++		u32 vblanks = nvkm_rd32(device, 0x610af4) >> 16;
++		u32 i, vline;
++
++		if (!vblanks || vblanks > 0x3fff)
++			return;
++		for (i = 0; i < 45000; i++) {
++			vline = nvkm_rd32(device, 0x616340) & 0xffff;
++			if (vline < vblanks)
++				break;
++			udelay(1);
++		}
++		for (; i < 45000; i++) {
++			vline = nvkm_rd32(device, 0x616340) & 0xffff;
++			if (vline >= vblanks)
++				return;
++			udelay(1);
++		}
++		nvkm_warn(&ram->fb->subdev, "ramfuc_wait_vblank timeout\n");
++	} else {
++		nvkm_memx_wait_vblank(ram->memx);
++	}
+ }
+ 
+ static inline void
+ ramfuc_train(struct ramfuc *ram)
+ {
+-	nvkm_memx_train(ram->memx);
++	if (!ram->direct_exec)
++		nvkm_memx_train(ram->memx);
++	/* In direct mode, training is skipped — would require
++	 * a separate direct implementation if needed.
++	 */
+ }
+ 
+ static inline int
+@@ -152,13 +237,41 @@ ramfuc_train_result(struct nvkm_fb *fb,
+ static inline void
+ ramfuc_block(struct ramfuc *ram)
+ {
+-	nvkm_memx_block(ram->memx);
++	if (ram->direct_exec) {
++		/* Best effort only: the host cannot assert FB_PAUSE
++		 * (0x10a7e0 PRIVRING-faults), so engines may still touch
++		 * VRAM.  Gate engine->FB paths like memx_func_enter does
++		 * and keep the CPU off VRAM with IRQs disabled. */
++		struct nvkm_device *device = ram->fb->subdev.device;
++
++		if (ram->irq_held)
++			return;
++		nvkm_mask(device, 0x001620, 0x00000aa2, 0x00000000);
++		nvkm_mask(device, 0x001620, 0x00000001, 0x00000000);
++		nvkm_mask(device, 0x0026f0, 0x00000001, 0x00000000);
++		local_irq_save(ram->irq_flags);
++		ram->irq_held = true;
++	} else {
++		nvkm_memx_block(ram->memx);
++	}
+ }
+ 
+ static inline void
+ ramfuc_unblock(struct ramfuc *ram)
+ {
+-	nvkm_memx_unblock(ram->memx);
++	if (ram->direct_exec) {
++		struct nvkm_device *device = ram->fb->subdev.device;
++
++		if (!ram->irq_held)
++			return;
++		local_irq_restore(ram->irq_flags);
++		ram->irq_held = false;
++		nvkm_mask(device, 0x0026f0, 0x00000001, 0x00000001);
++		nvkm_mask(device, 0x001620, 0x00000001, 0x00000001);
++		nvkm_mask(device, 0x001620, 0x00000aa2, 0x00000aa2);
++	} else {
++		nvkm_memx_unblock(ram->memx);
++	}
+ }
+ 
+ #define ram_init(s,p)        ramfuc_init(&(s)->base, (p))
+diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-source/nvkm/subdev/fb/ramgf100.c
+--- nouveau-orig/nvkm/subdev/fb/ramgf100.c	2026-06-12 01:03:26.000000000 +0300
++++ nouveau-source/nvkm/subdev/fb/ramgf100.c	2026-09-17 21:20:21.178635156 +0300
+@@ -123,6 +123,286 @@ gf100_ram_train(struct gf100_ramfuc *fuc
+ 	}
+ }
+ 
++
++/******************************************************************************
++ * Fermi DDR3 (GF106M / GT 555M) memory reclocking
++ *
++ * gf100_ram_calc() below is Ben Skeggs' GDDR5 sequence for the GF100
++ * reference board.  Its DDR3 mode-register values (0x10f300 = 0x11d/0x84d,
++ * GDDR5 MRS encodings) are not valid for DDR3 and corrupt VRAM instantly.
++ *
++ * The sequence here is a verbatim replay of the PMU script uploaded by the
++ * NVIDIA 390.157 driver on this board (decoded from mmiotrace with
++ * tools/decode-pmu-memx.py), followed by the host-side PHY tune the blob
++ * applies after the script completes.  Only the two VBIOS memory clocks
++ * (324 MHz / 900 MHz) exist for this hardware.
++ *
++ * Execution is by the custom Falcon program (tmp/memx_exec_custom.fuc,
++ * see RECLOCKING_NOTES.md §8.1), NOT the PMU firmware (its message path
++ * never answers) and NOT direct host MMIO (FB_PAUSE faults from the host
++ * and engines stay live).  The builder below emits a custom TLV script
++ * (op + fixed args, opcodes 1 ENTER, 2 LEAVE, 3 WR32, 4 WAIT, 5 DELAY,
++ * 6 VBLANK) into DMEM scratch; the Falcon program walks it with full
++ * MMIO privilege.  DELAY carries host-precomputed loop iters
++ * (~ticks/us, SAFE direction: exact or longer, never shorter); WAIT
++ * carries a generous iteration bound (early exit on match, host 2s
++ * backstop covers pathology); VBLANK is a fixed spin (engines are
++ * paused, so sync is cosmetic).
++ *****************************************************************************/
++
++/* Custom-executor image (assembled from tmp/memx_exec_custom.fuc).
++ * Signals completion via PDAEMON.SCRATCH0 (0x10a080). */
++#include "fexec_code.inc"
++
++
++static void fexec_upload(struct nvkm_device *device, const u32 *code, int nwords)
++{
++	int i, npages = (nwords + 0x3f) >> 6;
++	int total_words = npages * 0x40;
++
++	/* Falcon v3+ IMEM pages are 256 bytes (64 words). The hardware
++	 * VTLB marks each page BUSY on first word write, and only marks it
++	 * USABLE when the last word (offset 0xfc) of the 64-word page is
++	 * written. If an unpadded code image is uploaded, the trailing
++	 * page stays BUSY, and the Falcon CPU instruction fetch freezes.
++	 * Pad every upload to complete 64-word pages. */
++	nvkm_wr32(device, 0x10a180, 0x01000000);
++	for (i = 0; i < total_words; i++) {
++		if ((i & 0x3f) == 0)
++			nvkm_wr32(device, 0x10a188, i >> 6);
++		nvkm_wr32(device, 0x10a184, (i < nwords) ? code[i] : 0);
++	}
++	nvkm_wr32(device, 0x10a180, 0x00000000);
++	(void)nvkm_rd32(device, 0x10a080);
++}
++
++static bool fexec_resident_running = false;
++
++static int
++gf100_ram_exec_custom(struct gf100_ram *ram, u32 freq)
++{
++	struct nvkm_subdev *subdev = &ram->base.fb->subdev;
++	struct nvkm_device *device = subdev->device;
++	unsigned long deadline;
++	u32 done, cur, pmc, cmd;
++
++	cmd = (freq == 900000) ? 1 : 2;
++
++	/* Check if resident executor is already running and ready in Falcon IMEM */
++	if (fexec_resident_running) {
++		u32 uc_ctrl = nvkm_rd32(device, 0x10a100);
++		u32 s0 = nvkm_rd32(device, 0x10a080);
++		u32 s1 = nvkm_rd32(device, 0x10a084);
++		u32 pc = nvkm_rd32(device, 0x10aff0);
++		u32 st = nvkm_rd32(device, 0x10a128);
++
++		nvkm_info(subdev, "DDR3: resident fast-path request: cmd=%u (target %u kHz) [UC=%08x S0=%08x S1=%08x PC=%08x ST=%08x]\n",
++			  cmd, freq, uc_ctrl, s0, s1, pc, st);
++
++		/* If Falcon stopped, restart it directly WITHOUT touching PMC 0x000200 */
++		if (uc_ctrl & 0x10) {
++			nvkm_warn(subdev, "DDR3: Falcon stopped (UC=%08x, PC=%08x), restarting directly without PMC reset\n",
++				  uc_ctrl, pc);
++			nvkm_wr32(device, 0x10a080, 0x00000000);
++			nvkm_wr32(device, 0x10a084, cmd);
++			nvkm_wr32(device, 0x10a10c, 0x00000000);
++			nvkm_wr32(device, 0x10a104, 0x00000000);
++			nvkm_wr32(device, 0x10a100, 0x00000002);
++		} else {
++			/* Falcon is running resident: write command to SCRATCH3 */
++			nvkm_wr32(device, 0x10a080, 0x00000000);  /* clear DONE */
++			nvkm_wr32(device, 0x10a084, cmd);         /* send cmd: 1=900, 2=324 */
++		}
++		(void)nvkm_rd32(device, 0x10a080);
++		(void)nvkm_rd32(device, 0x10a084);
++
++		/* Poll DONE (2s backstop) */
++		deadline = jiffies + msecs_to_jiffies(2000);
++		do {
++			done = nvkm_rd32(device, 0x10a080);
++			if (done)
++				break;
++			usleep_range(500, 1000);
++		} while (time_before(jiffies, deadline));
++
++		if (done == 0xE1EC0001) {
++			/* Assert hardware PHY timing commit latch from host */
++			nvkm_wr32(device, 0x001548, 0x00000101);
++			nvkm_wr32(device, 0x001548, 0x80000101);
++
++			deadline = jiffies + msecs_to_jiffies(100);
++			do {
++				cur = nvkm_clk_read(device->clk, nv_clk_src_mem);
++				if (cur && abs((int)cur - (int)freq) < (int)(freq / 20))
++					break;
++				usleep_range(500, 1000);
++			} while (time_before(jiffies, deadline));
++
++			u32 f0 = nvkm_rd32(device, 0x1373f0);
++			u32 f_mpll = nvkm_clk_read(device->clk, nv_clk_src_mpll);
++			u32 f_mdiv = nvkm_clk_read(device->clk, nv_clk_src_mdiv);
++			nvkm_info(subdev, "DDR3: resident fast-path DONE: cmd=%u, 0x1373f0=%08x, mpll=%u kHz, mdiv=%u kHz, mem=%u kHz (target %u)\n",
++				  cmd, f0, f_mpll, f_mdiv, cur, freq);
++			if (cur && abs((int)cur - (int)freq) < (int)(freq / 20))
++				return 0;
++			nvkm_error(subdev, "DDR3: resident fast-path completed, but readback %u kHz != target %u kHz!\n",
++				  cur, freq);
++			return -EIO;
++		}
++
++		nvkm_error(subdev, "DDR3: resident executor fast-path %s (cmd=%u SCRATCH2=%08x SCRATCH3=%08x UC=%08x PC=%08x ST=%08x)\n",
++			   done ? "error" : "timeout", cmd, done,
++			   nvkm_rd32(device, 0x10a084),
++			   nvkm_rd32(device, 0x10a100),
++			   nvkm_rd32(device, 0x10aff0),
++			   nvkm_rd32(device, 0x10a128));
++		return -ETIMEDOUT;
++	}
++
++	/* Cold path: First transition after boot - reset PDAEMON and start resident executor */
++	/* Safety check: Never reset PDAEMON via 0x000200 if memory clock > 400 MHz */
++	cur = nvkm_clk_read(device->clk, nv_clk_src_mem);
++	if (cur > 400000) {
++		nvkm_error(subdev, "DDR3: refusing cold-path PDAEMON reset while memory clock is %u kHz!\n", cur);
++		return -EBUSY;
++	}
++
++	/* Reset PDAEMON */
++	pmc = nvkm_rd32(device, 0x000200);
++	nvkm_wr32(device, 0x000200, pmc & ~0x00002000);
++	nvkm_rd32(device, 0x000200);
++	nvkm_wr32(device, 0x000200, pmc | 0x00002000);
++	nvkm_rd32(device, 0x000200);
++
++	/* Wait for crypto reset scrubber */
++	nvkm_msec(device, 2000,
++		if (!(nvkm_rd32(device, 0x10a180) & 0x80000000))
++			break;
++	);
++	usleep_range(2000, 3000);
++
++	/* Re-unlock PDAEMON */
++	nvkm_mask(device, 0x10a048, 0x00000001, 0x00000001);
++	nvkm_mask(device, 0x10a090, 0x00010000, 0x00010000);
++	nvkm_wr32(device, 0x10a004, 0x00000008);
++	nvkm_wr32(device, 0x10a600, 0x00000000);
++	nvkm_wr32(device, 0x10a604, 0x00000000);
++	nvkm_wr32(device, 0x10a608, 0x00000004);
++	nvkm_wr32(device, 0x10a60c, 0x00000005);
++	nvkm_wr32(device, 0x10a610, 0x00000006);
++
++	/* Wait for PDAEMON I/O to open */
++	deadline = jiffies + msecs_to_jiffies(1000);
++	while (time_before(jiffies, deadline)) {
++		nvkm_wr32(device, 0x10a080, 0x0000000a);
++		if (nvkm_rd32(device, 0x10a080) == 0x0000000a)
++			break;
++		usleep_range(1000, 2000);
++	}
++	nvkm_wr32(device, 0x10a080, 0x00000000);
++
++	nvkm_info(subdev, "DDR3: PDAEMON reset+re-unlock for native executor\n");
++
++	/* Clear and disable Falcon interrupts */
++	nvkm_wr32(device, 0x10a014, 0xffffffff);
++	nvkm_wr32(device, 0x10a004, 0xffffffff);
++
++	/* Upload program to IMEM */
++	fexec_upload(device, fexec_code, ARRAY_SIZE(fexec_code));
++	nvkm_wr32(device, 0x10a080, 0x00000000);  /* clear DONE */
++	nvkm_wr32(device, 0x10a084, cmd);         /* send cmd: 1=900MHz, 2=324MHz */
++	(void)nvkm_rd32(device, 0x10a080);
++	(void)nvkm_rd32(device, 0x10a084);
++
++	nvkm_info(subdev, "DDR3: native executor: cmd=%u (target %u kHz), starting (UC=%08x)\n",
++		  cmd, freq, nvkm_rd32(device, 0x10a100));
++
++	/* ENTRY=0, START */
++	nvkm_wr32(device, 0x10a10c, 0x00000000);
++	nvkm_wr32(device, 0x10a104, 0x00000000);
++	nvkm_wr32(device, 0x10a100, 0x00000002);
++
++	/* Brief delay to allow Falcon to begin execution */
++	usleep_range(1000, 2000);
++
++	/* Poll DONE (2s backstop). */
++	deadline = jiffies + msecs_to_jiffies(2000);
++	do {
++		done = nvkm_rd32(device, 0x10a080);
++		if (done)
++			break;
++		usleep_range(1000, 5000);
++	} while (time_before(jiffies, deadline));
++
++	if (done == 0xE1EC0001) {
++		fexec_resident_running = true;
++
++		/* Assert hardware PHY timing commit latch from host */
++		nvkm_wr32(device, 0x001548, 0x00000101);
++		nvkm_wr32(device, 0x001548, 0x80000101);
++
++		deadline = jiffies + msecs_to_jiffies(100);
++		do {
++			cur = nvkm_clk_read(device->clk, nv_clk_src_mem);
++			if (cur && abs((int)cur - (int)freq) < (int)(freq / 20))
++				break;
++			usleep_range(500, 1000);
++		} while (time_before(jiffies, deadline));
++
++		u32 f0 = nvkm_rd32(device, 0x1373f0);
++		u32 f_mpll = nvkm_clk_read(device->clk, nv_clk_src_mpll);
++		u32 f_mdiv = nvkm_clk_read(device->clk, nv_clk_src_mdiv);
++		nvkm_info(subdev, "DDR3: native resident executor started DONE: cmd=%u, 0x1373f0=%08x, mpll=%u kHz, mdiv=%u kHz, mem=%u kHz (target %u)\n",
++			  cmd, f0, f_mpll, f_mdiv, cur, freq);
++		if (cur && abs((int)cur - (int)freq) < (int)(freq / 20))
++			return 0;
++		nvkm_error(subdev, "DDR3: executor completed, but readback %u kHz does NOT match target %u kHz!\n",
++			  cur, freq);
++		return -EIO;
++	}
++
++	nvkm_error(subdev, "DDR3: native executor %s (cmd=%u SCRATCH2=%08x SCRATCH3=%08x UC=%08x PC=%08x STATUS=%08x)\n",
++		   done ? "error" : "timeout", cmd, done,
++		   nvkm_rd32(device, 0x10a084),
++		   nvkm_rd32(device, 0x10a100),
++		   nvkm_rd32(device, 0x10aff0),
++		   nvkm_rd32(device, 0x10a128));
++	return -ETIMEDOUT;
++}
++
++static int
++gf100_ram_calc_ddr3(struct gf100_ram *ram, u32 freq)
++{
++	struct nvkm_subdev *subdev = &ram->base.fb->subdev;
++	struct nvkm_device *device = subdev->device;
++	u32 cur = nvkm_clk_read(device->clk, nv_clk_src_mem);
++
++	/* State 03 requests 135 MHz in VBIOS: map to 324 MHz safe step-down */
++	if (freq == 135000)
++		freq = 324000;
++
++	if (freq != 324000 && freq != 900000) {
++		nvkm_error(subdev, "DDR3: unsupported memory clock %u kHz\n", freq);
++		return -EINVAL;
++	}
++
++	/* Already there (within 1%): do NOT retime DRAM for nothing. */
++	if (cur && abs((int)cur - (int)freq) < (int)(freq / 100)) {
++		nvkm_debug(subdev, "DDR3: memory already at %u kHz\n", cur);
++		return 0;
++	}
++
++	nvkm_info(subdev, "DDR3: reclocking memory %u -> %u kHz (custom Falcon executor)\n",
++		  cur, freq);
++
++
++
++	/* No ram_init: the custom executor needs no MEMX struct, no INFO
++	 * query and no PMU firmware running.  fuc stays untouched (fb
++	 * NULL), so prog() below safely no-ops via its fb guard. */
++	return gf100_ram_exec_custom(ram, freq);
++}
++
+ int
+ gf100_ram_calc(struct nvkm_ram *base, u32 freq)
+ {
+@@ -143,6 +423,9 @@ gf100_ram_calc(struct nvkm_ram *base, u3
+ 	int N1, M1, P;
+ 	int ret;
+ 
++	if (ram->base.type == NVKM_RAM_TYPE_DDR3)
++		return gf100_ram_calc_ddr3(ram, freq);
++
+ 	/* lookup memory config data relevant to the target frequency */
+ 	rammap.data = nvbios_rammapEm(bios, freq / 1000, &ver, &rammap.size,
+ 				      &cnt, &ramcfg.size, &cfg);
+@@ -408,6 +691,22 @@ gf100_ram_prog(struct nvkm_ram *base)
+ {
+ 	struct gf100_ram *ram = gf100_ram(base);
+ 	struct nvkm_device *device = ram->base.fb->subdev.device;
++
++	if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
++		/* Custom Falcon executor already ran synchronously inside
++		 * calc (fuc never inited, fb NULL); nothing left to do. */
++		return 0;
++	}
++
++	if (ram->fuc.base.direct_exec) {
++		/* Direct MMIO mode: registers were written during _calc().
++		 * ram_exec() just releases state (and IRQs on error paths). */
++		ram_exec(&ram->fuc, false);
++		nvkm_debug(&ram->base.fb->subdev,
++			   "direct MMIO memory reclock completed\n");
++		return 0;
++	}
++
+ 	ram_exec(&ram->fuc, nvkm_boolopt(device->cfgopt, "NvMemExec", true));
+ 	return 0;
+ }
+@@ -650,6 +949,14 @@ gf100_ram_new_(const struct nvkm_ram_fun
+ 	ram->fuc.r_0x611200 = ramfuc_reg(0x611200);
+ 
+ 	ram->fuc.r_0x13d8f4 = ramfuc_reg(0x13d8f4);
++
++	/* On Fermi (NV_C0) DDR3 boards the reclock script runs on the
++	 * custom Falcon executor (see gf100_ram_calc_ddr3 / §8.1), never
++	 * through host direct MMIO (FB_PAUSE faults from the host, engines
++	 * stay live: hard hangs) nor PMU MEMX (firmware never answers).
++	 * direct_exec is therefore never enabled here anymore.
++	 */
++
+ 	return 0;
+ }
+ 
+diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h
+--- nouveau-orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-06-12 01:03:26.000000000 +0300
++++ nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-09-07 14:09:18.334644255 +0300
+@@ -1260,7 +1260,7 @@ static uint32_t gf100_pmu_code[] = {
+ 	0xb8525413,
+ 	0x0bf406e1,
+ /* 0x04b5: host_recv_wait */
+-	0xcc17f1aa,
++	0x1d0ef4aa,
+ 	0x0614b604,
+ 	0xf10011cf,
+ 	0xb604c827,
+@@ -1277,10 +1277,10 @@ static uint32_t gf100_pmu_code[] = {
+ 	0x07f10f24,
+ 	0x04b604c8,
+ 	0x0002d006,
+-	0x27f004bd,
+-	0x0007f040,
+-	0xd00604b6,
+-	0x04bd0002,
++	0x04bd04bd,
++	0x04bd04bd,
++	0x04bd04bd,
++	0x04bd04bd,
+ /* 0x050a: host_init */
+ 	0x17f100f8,
+ 	0x14b60080,
+diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-source/nvkm/subdev/pmu/gt215.c
 --- nouveau-orig/nvkm/subdev/pmu/gt215.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/nvkm/subdev/pmu/gt215.c	2026-09-04 21:09:25.880747355 +0300
-@@ -56,9 +56,11 @@ gt215_pmu_send(struct nvkm_pmu *pmu, u32
++++ nouveau-source/nvkm/subdev/pmu/gt215.c	2026-09-07 15:06:39.534885364 +0300
+@@ -23,6 +23,7 @@
+  */
+ #include "priv.h"
+ #include "fuc/gt215.fuc3.h"
++#include "fuc/os.h"
+ 
+ #include <subdev/timer.h>
+ 
+@@ -35,8 +36,28 @@ gt215_pmu_send(struct nvkm_pmu *pmu, u32
+ 	u32 addr;
+ 
+ 	mutex_lock(&pmu->send.mutex);
++	/* Fermi DIAGNOSTIC: audit every host->PMU message. */
++	if (device->card_type == NV_C0)
++		nvkm_info(subdev, "pmu send: proc %08x msg %08x d0 %08x d1 %08x\n",
++			  process, message, data0, data1);
+ 	/* wait for a free slot in the fifo */
+ 	addr  = nvkm_rd32(device, 0x10a4a0);
++	if (device->card_type == NV_C0) {
++		/* Fermi: PUT reads are flaky (fault/garbage reads return
++		 * stale values).  Require two consecutive reads to agree
++		 * before trusting the slot. */
++		int i;
++
++		for (i = 0; i < 5; i++) {
++			u32 again = nvkm_rd32(device, 0x10a4a0);
++
++			if (again == addr)
++				break;
++			nvkm_info(subdev, "pmu PUT read unstable (%u vs %u)\n",
++				  addr, again);
++			addr = again;
++		}
++	}
+ 	if (nvkm_msec(device, 2000,
+ 		u32 tmp = nvkm_rd32(device, 0x10a4b0);
+ 		if (tmp != (addr ^ 8))
+@@ -56,27 +77,85 @@ gt215_pmu_send(struct nvkm_pmu *pmu, u32
  	}
  
  	/* acquire data segment access */
@@ -426,10 +1086,63 @@ diff -uNrp nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-mod/nvkm/subdev/pmu/gt21
 +		} while (nvkm_rd32(device, 0x10a580) != 0x00000001);
 +	}
  
- 	/* write the packet */
- 	nvkm_wr32(device, 0x10a1c0, 0x01000000 | (((addr & 0x07) << 4) +
-@@ -70,11 +72,24 @@ gt215_pmu_send(struct nvkm_pmu *pmu, u32
- 	nvkm_wr32(device, 0x10a4a0, (addr + 1) & 0x0f);
+-	/* write the packet */
+-	nvkm_wr32(device, 0x10a1c0, 0x01000000 | (((addr & 0x07) << 4) +
+-				pmu->send.base));
+-	nvkm_wr32(device, 0x10a1c4, process);
+-	nvkm_wr32(device, 0x10a1c4, message);
+-	nvkm_wr32(device, 0x10a1c4, data0);
+-	nvkm_wr32(device, 0x10a1c4, data1);
+-	nvkm_wr32(device, 0x10a4a0, (addr + 1) & 0x0f);
++	/* write the packet; Fermi PDAEMON posting is flaky, so verify
++	 * the PUT bump landed and retry (bounded) with re-unlock.
++	 * Only rewrite when the pointer demonstrably did not advance,
++	 * to avoid tearing a slot the firmware is already reading. */
++	if (device->card_type == NV_C0) {
++		int tries;
++
++		for (tries = 0; tries < 3; tries++) {
++			u32 want = (addr + 1) & 0x0f, got;
++
++			nvkm_wr32(device, 0x10a1c0, 0x01000000 | (((addr & 0x07) << 4) +
++						pmu->send.base));
++			nvkm_wr32(device, 0x10a1c4, process);
++			nvkm_wr32(device, 0x10a1c4, message);
++			nvkm_wr32(device, 0x10a1c4, data0);
++			nvkm_wr32(device, 0x10a1c4, data1);
++			nvkm_wr32(device, 0x10a4a0, want);
++			got = nvkm_rd32(device, 0x10a4a0);
++			if (got == want) {
++				if (tries)
++					nvkm_info(subdev, "pmu PUT bump stuck after %d retries\n",
++						  tries);
++				break;
++			}
++			if (got != addr) {
++				nvkm_info(subdev, "pmu PUT bump ambiguous (want %u addr %u got %u), proceeding\n",
++					  want, addr, got);
++				break;
++			}
++			nvkm_info(subdev, "pmu PUT bump lost (want %u got %u), re-unlocking (try %d)\n",
++				  want, got, tries);
++			nvkm_mask(device, 0x10a048, 0x00000001, 0x00000001);
++			nvkm_mask(device, 0x10a090, 0x00010000, 0x00010000);
++			nvkm_wr32(device, 0x10a004, 0x00000008);
++			nvkm_wr32(device, 0x10a600, 0x00000000);
++			nvkm_wr32(device, 0x10a604, 0x00000000);
++			nvkm_wr32(device, 0x10a608, 0x00000004);
++			nvkm_wr32(device, 0x10a60c, 0x00000005);
++			nvkm_wr32(device, 0x10a610, 0x00000006);
++		}
++	} else {
++		nvkm_wr32(device, 0x10a1c0, 0x01000000 | (((addr & 0x07) << 4) +
++					pmu->send.base));
++		nvkm_wr32(device, 0x10a1c4, process);
++		nvkm_wr32(device, 0x10a1c4, message);
++		nvkm_wr32(device, 0x10a1c4, data0);
++		nvkm_wr32(device, 0x10a1c4, data1);
++		nvkm_wr32(device, 0x10a4a0, (addr + 1) & 0x0f);
++	}
  
  	/* release data segment access */
 -	nvkm_wr32(device, 0x10a580, 0x00000000);
@@ -454,8 +1167,12 @@ diff -uNrp nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-mod/nvkm/subdev/pmu/gt21
 +		}
  		reply[0] = pmu->recv.data[0];
  		reply[1] = pmu->recv.data[1];
++		if (device->card_type == NV_C0)
++			nvkm_info(subdev, "pmu reply: %08x %08x\n", reply[0], reply[1]);
  	}
-@@ -96,12 +111,14 @@ gt215_pmu_recv(struct nvkm_pmu *pmu)
+ 
+ 	mutex_unlock(&pmu->send.mutex);
+@@ -96,31 +175,60 @@ gt215_pmu_recv(struct nvkm_pmu *pmu)
  		return;
  
  	/* acquire data segment access */
@@ -474,8 +1191,22 @@ diff -uNrp nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-mod/nvkm/subdev/pmu/gt21
  				pmu->recv.base));
  	process = nvkm_rd32(device, 0x10a1c4);
  	message = nvkm_rd32(device, 0x10a1c4);
-@@ -110,7 +127,8 @@ gt215_pmu_recv(struct nvkm_pmu *pmu)
+ 	data0   = nvkm_rd32(device, 0x10a1c4);
+ 	data1   = nvkm_rd32(device, 0x10a1c4);
  	nvkm_wr32(device, 0x10a4cc, (addr + 1) & 0x0f);
++	if (device->card_type == NV_C0) {
++		u32 want = (addr + 1) & 0x0f, got;
++
++		got = nvkm_rd32(device, 0x10a4cc);
++		if (got != want)
++			nvkm_info(subdev, "pmu RGET bump lost (want %u got %u)\n",
++				  want, got);
++	}
++
++	/* Fermi DIAGNOSTIC: log every consumed packet, not just mismatches. */
++	if (device->card_type == NV_C0)
++		nvkm_info(subdev, "pmu consumed: proc %08x msg %08x d0 %08x d1 %08x (slot %u)\n",
++			  process, message, data0, data1, addr & 0x0f);
  
  	/* release data segment access */
 -	nvkm_wr32(device, 0x10a580, 0x00000000);
@@ -484,9 +1215,418 @@ diff -uNrp nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-mod/nvkm/subdev/pmu/gt21
  
  	/* wake process if it's waiting on a synchronous reply */
  	if (pmu->recv.process) {
-diff -uNrp nouveau-orig/nvkm/subdev/pmu/memx.c nouveau-mod/nvkm/subdev/pmu/memx.c
+ 		if (process == pmu->recv.process &&
+ 		    message == pmu->recv.message) {
+-			pmu->recv.data[0] = data0;
+-			pmu->recv.data[1] = data1;
+-			pmu->recv.process = 0;
+-			wake_up(&pmu->recv.wait);
+-			return;
++			/* Fermi: only accept INFO replies with plausible
++			 * payload (script area base nonzero and small).
++			 * Stale/VBIOS slots (all-MEMX) and latch echoes of
++			 * our own packet (base zero) fail this and are
++			 * drained as parasites without completing the wait. */
++			if (device->card_type == NV_C0 &&
++			    message == MEMX_MSG_INFO &&
++			    (data0 == 0 || data0 > 0x00001000 ||
++			     data1 > 0x00001000)) {
++				nvkm_info(subdev, "pmu parasite reply ignored: %08x %08x\n",
++					  data0, data1);
++			} else {
++				pmu->recv.data[0] = data0;
++				pmu->recv.data[1] = data1;
++				pmu->recv.process = 0;
++				wake_up(&pmu->recv.wait);
++				return;
++			}
+ 		}
+ 	}
+ 
+@@ -202,10 +310,35 @@ gt215_pmu_init(struct nvkm_pmu *pmu)
+ {
+ 	struct nvkm_device *device = pmu->subdev.device;
+ 	int i;
++	u32 chan_pre = 0, chan_post = 0, chan_next = 0;
++
++	/* Fermi: save the live Falcon channel before reset.  The PDAEMON
++	 * ctxsw engine needs a valid loaded channel for the Falcon core
++	 * itself to reach its queue pointers; without one, the first
++	 * host->PMU message wakes the firmware and its PUT poll faults
++	 * Falcon-side, halting it.  The VBIOS channel descriptor live at
++	 * this point is valid by construction, so it is reloaded after
++	 * reset (see below).  Reads may fault pre-reset (I/O still gated)
++	 * and simply yield zero, which disables the reload gracefully. */
++	if (device->card_type == NV_C0) {
++		chan_pre = nvkm_rd32(device, 0x10a050);
++		chan_next = nvkm_rd32(device, 0x10a054);
++		nvkm_info(&pmu->subdev, "Fermi PDAEMON live channel: CUR %08x NEXT %08x\n",
++			  chan_pre, chan_next);
++	}
+ 
+ 	/* Inhibit interrupts, and wait for idle. */
+ 	if (pmu->func->enabled(pmu)) {
+ 		nvkm_wr32(device, 0x10a014, 0x0000ffff);
++		/* Fermi: the proprietary driver pauses the Falcon
++		 * (ENG_CONTROL.PAUSE_TRIGGER) before pulling reset. */
++		if (device->card_type == NV_C0) {
++			nvkm_wr32(device, 0x10a0a4, 0x00000002);
++			nvkm_msec(device, 2000,
++				if (nvkm_rd32(device, 0x10a0a4) & 0x00000200)
++					break;
++			);
++		}
+ 		nvkm_msec(device, 2000,
+ 			if (!nvkm_rd32(device, 0x10a04c))
+ 				break;
+@@ -220,11 +353,215 @@ gt215_pmu_init(struct nvkm_pmu *pmu)
+ 			break;
+ 	);
+ 
++	/* Fermi: after a Falcon reset the PDAEMON I/O block (queue pointers
++	 * 0x10a4a0, GPIO/FB_PAUSE 0x10a7xx, MEMIF ports 0x10a6xx) is not
++	 * reachable from the host and every access PRIVRING-faults.  The
++	 * proprietary driver unlocks it right after reset with interrupt
++	 * routing, ACCESS_EN.CHANNEL_SWITCH, UNK090 bit16 and MEMIF port
++	 * mapping (captured by mmiotrace on GF106).
++	 *
++	 * The blob additionally performs a CHANNEL_TRIGGER.LOAD, which is
++	 * load-bearing for the *Falcon core* side: without a valid loaded
++	 * channel the firmware faults on its first queue-pointer poll and
++	 * halts.  Its captured CHANNEL_SETUP value must NOT be replayed,
++	 * though: it points at a sysram DMA allocation valid only for the
++	 * captured boot (garbage descriptor, UC_STATUS never completes,
++	 * DMA to random system memory).  Instead the live VBIOS channel
++	 * saved above is reloaded; it is valid by construction on this
++	 * boot.  If no valid channel could be saved, the reload is
++	 * skipped (previous behavior).
++	 */
++	if (device->card_type == NV_C0) {
++		u32 chan_eff, stat;
++
++		nvkm_wr32(device, 0x10a014, 0x0000ffff);
++		nvkm_wr32(device, 0x10a01c, 0xff81ff52);
++		nvkm_wr32(device, 0x10a010, 0x000000f3);
++
++		nvkm_mask(device, 0x10a048, 0x00000001, 0x00000001);
++		nvkm_mask(device, 0x10a090, 0x00010000, 0x00010000);
++		nvkm_debug(&pmu->subdev, "Fermi PDAEMON I/O block enabled\n");
++		nvkm_wr32(device, 0x10a004, 0x00000008);
++		nvkm_wr32(device, 0x10a600, 0x00000000);
++		nvkm_wr32(device, 0x10a604, 0x00000000);
++		nvkm_wr32(device, 0x10a608, 0x00000004);
++		nvkm_wr32(device, 0x10a60c, 0x00000005);
++		nvkm_wr32(device, 0x10a610, 0x00000006);
++
++		/* Reload the saved live channel (prefer the pre-reset
++		 * reading; fall back to the post-reset register, which the
++		 * reset may have retained).  Non-fatal either way. */
++		chan_post = nvkm_rd32(device, 0x10a050);
++		if (chan_pre & 0x40000000)
++			chan_eff = chan_pre;
++		else if (chan_post & 0x40000000)
++			chan_eff = chan_post;
++		else
++			chan_eff = 0;
++		nvkm_info(&pmu->subdev, "Fermi PDAEMON channel: pre %08x post %08x using %08x\n",
++			  chan_pre, chan_post, chan_eff);
++		if (chan_eff) {
++			nvkm_wr32(device, 0x10a47c, chan_eff);
++			nvkm_wr32(device, 0x10a058, 0x00000002);
++			stat = 0;
++			if (nvkm_msec(device, 2000,
++				stat = nvkm_rd32(device, 0x10a128);
++				if ((nvkm_rd32(device, 0x10a050) == chan_eff) &&
++				    (stat & 0x00000002))
++					break;
++			) < 0)
++				nvkm_warn(&pmu->subdev,
++					  "Fermi PDAEMON channel reload did not complete (UC_STATUS %08x CUR %08x)\n",
++					  stat, nvkm_rd32(device, 0x10a050));
++			else
++				nvkm_info(&pmu->subdev,
++					  "Fermi PDAEMON channel reloaded (UC_STATUS %08x)\n",
++					  stat);
++			nvkm_wr32(device, 0x10a004, 0x00000008);
++		}
++	}
++
++	/* Fermi: PDAEMON I/O is racy right after reset (writes silently
++	 * lost, no fault logged).  Probe it open with a PUT
++	 * write/readback loop before uploading anything precious;
++	 * without this the image can miss true DMEM while VBIOS remnants
++	 * persist.  Bounded; firmware is halted (not polling PUT), and
++	 * the probe value is restored to empty afterwards. */
++	if (device->card_type == NV_C0) {
++		unsigned long deadline = jiffies + msecs_to_jiffies(5000);
++		int open = 0;
++
++		while (time_before(jiffies, deadline)) {
++			nvkm_wr32(device, 0x10a4a0, 0x0000000a);
++			if (nvkm_rd32(device, 0x10a4a0) == 0x0000000a) {
++				open = 1;
++				break;
++			}
++			usleep_range(1000, 2000);
++		}
++		nvkm_wr32(device, 0x10a4a0, 0x00000000);
++		nvkm_info(&pmu->subdev, "Fermi PDAEMON I/O %s before upload\n",
++			  open ? "open" : "never opened, proceeding anyway");
++	}
++
+ 	/* upload data segment */
+ 	nvkm_wr32(device, 0x10a1c0, 0x01000000);
+ 	for (i = 0; i < pmu->func->data.size / 4; i++)
+ 		nvkm_wr32(device, 0x10a1c4, pmu->func->data.data[i]);
+ 
++	/* Fermi DIAGNOSTIC: PDAEMON I/O is flaky (silent drops), so verify
++	 * every data word with explicit per-word indexing (robust against
++	 * any auto-increment step) and rewrite gaps, bounded.  Then log
++	 * the true queue slots via seg2 raw reads. */
++	if (device->card_type == NV_C0) {
++		int round, bad = 0;
++
++		for (round = 0; round < 3; round++) {
++			int shown = 0;
++
++			bad = 0;
++			for (i = 0; i < pmu->func->data.size / 4; i++) {
++				u32 w;
++
++				nvkm_wr32(device, 0x10a1c0, 0x01000000 + 4 * i);
++				w = nvkm_rd32(device, 0x10a1c4);
++				if (w != pmu->func->data.data[i]) {
++					if (round < 2) {
++						nvkm_wr32(device, 0x10a1c0,
++							  0x01000000 + 4 * i);
++						nvkm_wr32(device, 0x10a1c4,
++							  pmu->func->data.data[i]);
++					}
++					if (shown < 4)
++						nvkm_info(&pmu->subdev, "Fermi PDAEMON data mismatch at %03x: got %08x want %08x\n",
++							  i, w, pmu->func->data.data[i]);
++					shown++;
++					bad++;
++				}
++			}
++			nvkm_info(&pmu->subdev, "Fermi PDAEMON data verify round %d: %d mismatches\n",
++				  round, bad);
++			if (!bad)
++				break;
++		}
++		/* True sweep: seg2 was never written through, so these
++		 * reads have no latch ambiguity (unlike seg1).  64 words
++		 * over 0x270-0x36f (both FIFO areas): zeros throughout
++		 * means the upload landed and VBIOS is wiped; M/pattern
++		 * content beyond slot 0 means the upload faded mid-stream
++		 * (first words land, later ones silently dropped). */
++		{
++			int j, nonzero = 0;
++			u32 fa[4] = { 0, 0, 0, 0 }, fv[4] = { 0, 0, 0, 0 };
++
++			for (j = 0; j < 64; j++) {
++				u32 w;
++
++				nvkm_wr32(device, 0x10a1c0, 0x02000270 + 4 * j);
++				w = nvkm_rd32(device, 0x10a1c4);
++				if (w) {
++					if (nonzero < 4) {
++						fa[nonzero] = 0x270 + 4 * j;
++						fv[nonzero] = w;
++					}
++					nonzero++;
++				}
++			}
++			nvkm_info(&pmu->subdev, "Fermi PDAEMON true sweep 270-36f: %d/64 nonzero (first %05x=%08x %05x=%08x %05x=%08x %05x=%08x)\n",
++				  nonzero, fa[0], fv[0], fa[1], fv[1],
++				  fa[2], fv[2], fa[3], fv[3]);
++		}
++
++		/* Blind second pass over the data image (see above): if the
++		 * upload missed true DMEM anywhere in range, this lands it;
++		 * if it landed, idempotent no-op.  Fire-and-forget by design
++		 * (no readback theater). */
++		nvkm_wr32(device, 0x10a1c0, 0x01000000);
++		for (i = 0; i < pmu->func->data.size / 4; i++)
++			nvkm_wr32(device, 0x10a1c4, pmu->func->data.data[i]);
++		nvkm_info(&pmu->subdev, "Fermi PDAEMON image rewrite done\n");
++	}
++
++	/* Fermi: zero the host-visible queue areas unconditionally
++	 * (fifo 0x270-0x2ef, rfifo 0x2f0-0x36f).  Idempotent if the
++	 * upload landed (image zeros there anyway); clears VBIOS-stale
++	 * slots if it missed them.  Firmware is not running yet, so no
++	 * race. */
++	if (device->card_type == NV_C0) {
++		for (i = 0x270 / 4; i < 0x370 / 4; i++) {
++			nvkm_wr32(device, 0x10a1c0, 0x01000000 + 4 * i);
++			nvkm_wr32(device, 0x10a1c4, 0x00000000);
++		}
++		nvkm_info(&pmu->subdev, "Fermi PDAEMON queue areas zeroed\n");
++	}
++
++	/* Fermi: zero the MEMX/HOST process queue state too (qput/qget +
++	 * private queue data).  A VBIOS-full foreign queue makes send_proc
++	 * drop silently by design (no fault, no halt) while GET still
++	 * bumps -- exactly the observed signature.  The id/init/recv words
++	 * are deliberately preserved.  Layout from gf100.fuc3.h (structs
++	 * HOST@0x60, MEMX@0xb8, stride 0x58; qput+0x10, qget+0x14, queue
++	 * data +0x18..+0x58).  Same idempotence/no-race argument. */
++	if (device->card_type == NV_C0) {
++		static const u32 ranges[][2] = {
++			{ 0x070, 0x078 }, /* HOST qput/qget */
++			{ 0x078, 0x0b8 }, /* HOST queue data */
++			{ 0x0c8, 0x0d0 }, /* MEMX qput/qget */
++			{ 0x0d0, 0x110 }, /* MEMX queue data */
++		};
++		int r;
++
++		for (r = 0; r < 4; r++) {
++			u32 a;
++
++			for (a = ranges[r][0]; a < ranges[r][1]; a += 4) {
++				nvkm_wr32(device, 0x10a1c0, 0x01000000 + a);
++				nvkm_wr32(device, 0x10a1c4, 0x00000000);
++			}
++		}
++		nvkm_info(&pmu->subdev, "Fermi PDAEMON proc queues zeroed\n");
++	}
++
+ 	/* upload code segment */
+ 	nvkm_wr32(device, 0x10a180, 0x01000000);
+ 	for (i = 0; i < pmu->func->code.size / 4; i++) {
+@@ -256,7 +593,128 @@ gt215_pmu_init(struct nvkm_pmu *pmu)
+ 	pmu->recv.base = nvkm_rd32(device, 0x10a4dc) & 0x0000ffff;
+ 	pmu->recv.size = nvkm_rd32(device, 0x10a4dc) >> 16;
+ 
++	/* Fermi: a reset does not clear the queue pointers, so a stale
++	 * VBIOS-era RPUT makes the first send consume phantom slots.
++	 * The firmware just booted with empty queues, so drop them
++	 * explicitly (host writes to these registers are fine). */
++	if (device->card_type == NV_C0) {
++		u32 put, get, rput, rget;
++
++		nvkm_wr32(device, 0x10a4a0, 0x00000000);
++		nvkm_wr32(device, 0x10a4b0, 0x00000000);
++		nvkm_wr32(device, 0x10a4c8, 0x00000000);
++		nvkm_wr32(device, 0x10a4cc, 0x00000000);
++		put = nvkm_rd32(device, 0x10a4a0);
++		get = nvkm_rd32(device, 0x10a4b0);
++		rput = nvkm_rd32(device, 0x10a4c8);
++		rget = nvkm_rd32(device, 0x10a4cc);
++		if (put | get | rput | rget) {
++			nvkm_wr32(device, 0x10a4a0, 0x00000000);
++			nvkm_wr32(device, 0x10a4b0, 0x00000000);
++			nvkm_wr32(device, 0x10a4c8, 0x00000000);
++			nvkm_wr32(device, 0x10a4cc, 0x00000000);
++		}
++		nvkm_info(&pmu->subdev, "Fermi PDAEMON queue pointers cleared (now %08x %08x %08x %08x)\n",
++			  nvkm_rd32(device, 0x10a4a0), nvkm_rd32(device, 0x10a4b0),
++			  nvkm_rd32(device, 0x10a4c8), nvkm_rd32(device, 0x10a4cc));
++	}
++
+ 	nvkm_wr32(device, 0x10a010, 0x000000e0);
++
++	/* Fermi DIAGNOSTIC (experimental, remove after root-causing).
++	 * D1: DATA-window alignment check.  Write magic to unused send
++	 * slot 7 via the seg1 window, read it back via the seg2 window
++	 * (raw DMEM reads, as the blob uses them).  If seg1 offsets were
++	 * word (not byte) offsets, every packet/script upload would miss
++	 * the firmware's queue area.  Slot 7 is zeroed afterwards. */
++	if (device->card_type == NV_C0) {
++		static const u32 magic[4] = { 0xdeadbeef, 0xcafef00d,
++					      0x8badf00d, 0xfeedface };
++		u32 slot7 = ((7 << 4) + (pmu->send.base & 0x0000ffff)) & 0x00ffffff;
++		u32 rb[4], match = 1;
++		int j;
++
++		nvkm_wr32(device, 0x10a1c0, 0x01000000 | slot7);
++		for (j = 0; j < 4; j++)
++			nvkm_wr32(device, 0x10a1c4, magic[j]);
++		nvkm_wr32(device, 0x10a1c0, 0x02000000 | slot7);
++		for (j = 0; j < 4; j++) {
++			rb[j] = nvkm_rd32(device, 0x10a1c4);
++			if (rb[j] != magic[j])
++				match = 0;
++		}
++		nvkm_info(&pmu->subdev, "Fermi PDAEMON window check: wrote %08x %08x %08x %08x read %08x %08x %08x %08x (%s)\n",
++			  magic[0], magic[1], magic[2], magic[3],
++			  rb[0], rb[1], rb[2], rb[3],
++			  match ? "MATCH" : "DIFFER");
++		nvkm_wr32(device, 0x10a1c0, 0x01000000 | slot7);
++		for (j = 0; j < 4; j++)
++			nvkm_wr32(device, 0x10a1c4, 0x00000000);
++	}
++
++	/* Fermi DIAGNOSTIC: pristine INFO self-test with interrupt
++	 * accounting.  Freeze the watchdog so DSCRATCH(0) counts only
++	 * our PUT-bump interrupt; verify frozen-ness first (two reads).
++	 * Then send INFO up to 3 times (covers a full watchdog period
++	 * even if the freeze failed).  intr-delta >= 1 proves the bump
++	 * reached the Falcon; loops-delta proves it ran the idle loop;
++	 * both zero with a frozen counter proves the bump was lost in
++	 * I/O gating.  Watchdog re-enabled afterwards. */
++	if (device->card_type == NV_C0) {
++		u32 reply[2] = { 0, 0 };
++		u32 d0a, d1a, d0b, d1b, d0c, d1c;
++		int ret = -ETIMEDOUT, k;
++
++		nvkm_wr32(device, 0x10a038, 0x00000000);
++		d0a = nvkm_rd32(device, 0x10a5d0);
++		d1a = nvkm_rd32(device, 0x10a5d4);
++		msleep(100);
++		d0b = nvkm_rd32(device, 0x10a5d0);
++		d1b = nvkm_rd32(device, 0x10a5d4);
++		nvkm_info(&pmu->subdev, "Fermi PDAEMON watchdog %s (intr %u->%u loops %u->%u in 100ms)\n",
++			  (d0a == d0b && d1a == d1b) ? "frozen" : "still ticking",
++			  d0a, d0b, d1a, d1b);
++		/* Fermi: keepalive pings to keep the looper hot.  The idle
++		 * loop sleeps through messages if nothing keeps p2 set;
++		 * each TEST ping (fire-and-forget, true no-op handler
++		 * modulo a DSCRATCH bump) is another wake chance plus a
++		 * longer awake window for the INFO that follows. */
++		for (k = 0; k < 5; k++) {
++			nvkm_pmu_send(pmu, NULL, PROC_TEST, 0, 0, 0);
++			usleep_range(15000, 25000);
++		}
++		for (k = 0; k < 3; k++) {
++			ret = nvkm_pmu_send(pmu, reply, PROC_MEMX,
++					    MEMX_MSG_INFO, MEMX_INFO_DATA, 0);
++			if (!ret)
++				break;
++		}
++		d0c = nvkm_rd32(device, 0x10a5d0);
++		d1c = nvkm_rd32(device, 0x10a5d4);
++		nvkm_wr32(device, 0x10a038, 0x00000001);
++		nvkm_info(&pmu->subdev, "Fermi PDAEMON INFO self-test: ret %d reply %08x %08x (intr +%u loops +%u over 3 sends)\n",
++			  ret, reply[0], reply[1], d0c - d0b, d1c - d1b);
++	}
++
++	/* Fermi DIAGNOSTIC: TEST ping to discriminate looper-dead from
++	 * INFO-specific failure.  test_recv bumps DSCRATCH(2) (observable
++	 * via the trustworthy control path) and otherwise returns
++	 * immediately.  Fire-and-forget, then a generous window, then
++	 * compare: advanced means the looper dequeued, dispatched and ran
++	 * handler code (so INFO's failure is INFO-specific); static means
++	 * nothing message-driven can ever work (custom executor, which
++	 * needs no looper, becomes mandatory). */
++	if (device->card_type == NV_C0) {
++		u32 t0, t1;
++
++		t0 = nvkm_rd32(device, 0x10a5d4);
++		nvkm_pmu_send(pmu, NULL, PROC_TEST, 0, 0, 0);
++		msleep(200);
++		t1 = nvkm_rd32(device, 0x10a5d4);
++		nvkm_info(&pmu->subdev, "Fermi PDAEMON TEST ping: DSCRATCH2 %08x->%08x (%s)\n",
++			  t0, t1, t1 != t0 ? "PROCESSED" : "ignored");
++	}
++
+ 	return 0;
+ }
+ 
+diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/memx.c nouveau-source/nvkm/subdev/pmu/memx.c
 --- nouveau-orig/nvkm/subdev/pmu/memx.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-mod/nvkm/subdev/pmu/memx.c	2026-09-04 21:09:25.881003144 +0300
++++ nouveau-source/nvkm/subdev/pmu/memx.c	2026-09-07 14:09:18.336312616 +0300
 @@ -61,9 +61,11 @@ nvkm_memx_init(struct nvkm_pmu *pmu, str
  	memx->size = reply[1];
  

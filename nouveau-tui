@@ -2,9 +2,9 @@
 """
 nouveau-tui - Interactive GPU Performance & Reclocking Manager for Nouveau Fermi (GF100-GF119)
 Designed with a clean, focused 3-tab layout matching pulsemixer / qpowerconfig:
- - Tab 1: P-States (Manual clock locking + Dynamic Governor auto-reclock toggle)
+ - Tab 1: P-States & Governor (Manual clock locking + Dynamic Governor auto-reclock toggle + Thermal Cap adjustment)
  - Tab 2: 3D Clients (Live active DRM GPU clients & PIDs)
- - Tab 3: Telemetry (Real-time clocks, temperature, voltage & hardware sensors)
+ - Tab 3: Telemetry (Real-time clocks, temperature, voltage, fan speed, PCIe link & hardware sensors)
 """
 
 import curses
@@ -18,6 +18,7 @@ import time
 
 PSTATE_PATH = "/sys/kernel/debug/dri/0/pstate"
 CLIENTS_PATH = "/sys/kernel/debug/dri/0/clients"
+CONFIG_PATH = "/etc/nouveau-dynclockd.conf"
 
 PSTATE_DESCRIPTIONS = {
     "03": "P12 Low-Power Standby / Idle",
@@ -39,8 +40,34 @@ def read_debugfs_file(path):
             return f.read()
     except Exception:
         pass
-    # Sudoers allows passwordless 'sudo /bin/cat /sys/kernel/debug/dri/*'
     return run_cmd(f"sudo /bin/cat {path} 2>/dev/null")
+
+def save_throttle_temp(temp):
+    conf_path = CONFIG_PATH
+    lines = []
+    found = False
+    if os.path.exists(conf_path):
+        try:
+            with open(conf_path, "r") as f:
+                for line in f:
+                    if line.strip().startswith("THROTTLE_TEMP="):
+                        lines.append(f"THROTTLE_TEMP={temp}\n")
+                        found = True
+                    else:
+                        lines.append(line)
+        except Exception:
+            pass
+    if not found:
+        lines.append(f"THROTTLE_TEMP={temp}\n")
+
+    content = "".join(lines)
+    try:
+        with open(conf_path, "w") as f:
+            f.write(content)
+    except PermissionError:
+        run_cmd(f"echo '{content}' | sudo tee {conf_path} >/dev/null")
+
+    run_cmd("sudo systemctl kill -s HUP nouveau-dynclockd.service 2>/dev/null")
 
 def get_pstates():
     pstates = []
@@ -81,11 +108,17 @@ def get_pstates():
 
 def get_telemetry():
     temp_str = "N/A"
+    temp_val = None
     volt_str = "N/A"
+    fan_str = "N/A"
+    pcie_str = "N/A"
+    throttle_temp = 80
+
     for hwmon in glob.glob("/sys/class/drm/card0/device/hwmon/hwmon*/"):
         try:
             t_val = int(open(os.path.join(hwmon, "temp1_input")).read().strip())
-            temp_str = f"{t_val / 1000.0:.1f} °C"
+            temp_val = t_val / 1000.0
+            temp_str = f"{temp_val:.1f} °C"
         except Exception:
             pass
         try:
@@ -93,12 +126,62 @@ def get_telemetry():
             volt_str = f"{v_val / 1000.0:.3f} V"
         except Exception:
             pass
+        try:
+            f_val = open(os.path.join(hwmon, "fan1_input")).read().strip()
+            if f_val.isdigit():
+                fan_str = f"{f_val} RPM (GPU Fan)"
+        except Exception:
+            pass
+
+    # Platform/System Fan (e.g. dell_smm)
+    if fan_str == "N/A":
+        for hw_path in glob.glob("/sys/class/hwmon/hwmon*/"):
+            for f in glob.glob(os.path.join(hw_path, "fan*_input")):
+                try:
+                    f_val = open(f).read().strip()
+                    if f_val.isdigit():
+                        lbl_file = f.replace("_input", "_label")
+                        lbl = open(lbl_file).read().strip() if os.path.exists(lbl_file) else "Processor Fan"
+                        fan_str = f"{f_val} RPM ({lbl})"
+                        break
+                except Exception:
+                    pass
+            if fan_str != "N/A":
+                break
+
+    # PCIe Link
+    dev_path = "/sys/bus/pci/devices/0000:01:00.0/"
+    try:
+        cur_spd = open(dev_path + "current_link_speed").read().strip()
+        cur_wid = open(dev_path + "current_link_width").read().strip()
+        max_spd = open(dev_path + "max_link_speed").read().strip()
+        max_wid = open(dev_path + "max_link_width").read().strip()
+        gen_cur = " (Gen1)" if "2.5" in cur_spd else (" (Gen2)" if "5.0" in cur_spd else "")
+        gen_max = " (Gen1)" if "2.5" in max_spd else (" (Gen2)" if "5.0" in max_spd else "")
+        pcie_str = f"{cur_spd.replace(' PCIe', '')}{gen_cur} x{cur_wid}  [Max: {max_spd.replace(' PCIe', '')}{gen_max} x{max_wid}]"
+    except Exception:
+        pass
+
+    # Read configured throttle limit
+    if os.path.exists(CONFIG_PATH):
+        try:
+            with open(CONFIG_PATH, "r") as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("THROTTLE_TEMP="):
+                        throttle_temp = int(line.split("=", 1)[1].strip())
+        except Exception:
+            pass
 
     daemon_active = "active" in run_cmd("systemctl is-active nouveau-dynclockd 2>/dev/null")
 
     return {
         "temp": temp_str,
+        "temp_val": temp_val,
         "volt": volt_str,
+        "fan": fan_str,
+        "pcie": pcie_str,
+        "throttle_temp": throttle_temp,
         "daemon": daemon_active,
     }
 
@@ -112,7 +195,8 @@ def get_clients():
             if len(parts) >= 2:
                 cmd_name = parts[0]
                 pid = parts[1]
-                clients.append({"cmd": cmd_name, "pid": pid})
+                if cmd_name not in ("systemd-logind", "<unset>"):
+                    clients.append({"cmd": cmd_name, "pid": pid})
     return clients
 
 class Style:
@@ -132,7 +216,7 @@ class NouveauTUI:
 
     def __init__(self, stdscr):
         self.screen = stdscr
-        self.active_mode = 0  # 0: P-States & Governor, 1: 3D Clients, 2: Telemetry
+        self.active_mode = 0
         self.focus_idx = 0
         self.top_idx = 0
         self.status_msg = ""
@@ -149,7 +233,7 @@ class NouveauTUI:
 
     def init_curses(self):
         curses.curs_set(0)
-        curses.halfdelay(10)  # Non-blocking poll every 1s
+        curses.halfdelay(10)
         self.screen.keypad(True)
         self.screen.border(0)
         self.screen.clear()
@@ -159,15 +243,15 @@ class NouveauTUI:
         if curses.has_colors():
             curses.start_color()
             curses.use_default_colors()
-            curses.init_pair(1, curses.COLOR_GREEN, -1)   # Green / Active
-            curses.init_pair(2, curses.COLOR_YELLOW, -1)  # Yellow / Standby
-            curses.init_pair(3, curses.COLOR_RED, -1)     # Red / Hot / Inactive
-            curses.init_pair(4, curses.COLOR_CYAN, -1)    # Cyan / Accent
-            curses.init_pair(5, curses.COLOR_BLACK, curses.COLOR_CYAN) # Inverted active
-            curses.init_pair(6, curses.COLOR_MAGENTA, -1) # Magenta
-            curses.init_pair(7, curses.COLOR_BLACK, curses.COLOR_GREEN) # Connected badge
-            curses.init_pair(8, curses.COLOR_WHITE, curses.COLOR_BLUE)  # Mode Tabs
-            curses.init_pair(9, curses.COLOR_BLACK, curses.COLOR_WHITE) # Key badge
+            curses.init_pair(1, curses.COLOR_GREEN, -1)
+            curses.init_pair(2, curses.COLOR_YELLOW, -1)
+            curses.init_pair(3, curses.COLOR_RED, -1)
+            curses.init_pair(4, curses.COLOR_CYAN, -1)
+            curses.init_pair(5, curses.COLOR_BLACK, curses.COLOR_CYAN)
+            curses.init_pair(6, curses.COLOR_MAGENTA, -1)
+            curses.init_pair(7, curses.COLOR_BLACK, curses.COLOR_GREEN)
+            curses.init_pair(8, curses.COLOR_WHITE, curses.COLOR_BLUE)
+            curses.init_pair(9, curses.COLOR_BLACK, curses.COLOR_WHITE)
             self.green = curses.color_pair(1)
             self.yellow = curses.color_pair(2)
             self.red = curses.color_pair(3)
@@ -211,7 +295,8 @@ class NouveauTUI:
             row1 = [
                 ("Space/Enter", "Lock State / Toggle Governor"),
                 ("a", "Auto Reclock"),
-                ("r", "Refresh Data"),
+                ("t / - / +", "Throttle Temp"),
+                ("r", "Refresh"),
             ]
             row2 = [
                 ("1..3", "Direct Tab"),
@@ -221,80 +306,97 @@ class NouveauTUI:
             ]
         elif self.active_mode == 1:
             row1 = [
-                ("r", "Refresh Process List"),
-                ("1..3", "Direct Tab"),
-                ("← / →", "Switch Tabs"),
+                ("r", "Refresh Process Table"),
+                ("k / j", "Scroll Client List"),
             ]
             row2 = [
+                ("1..3", "Direct Tab"),
+                ("← / →", "Switch Tabs"),
                 ("F1", "Help"),
                 ("Esc", "Quit"),
             ]
         else:
             row1 = [
-                ("r", "Refresh Sensors"),
-                ("1..3", "Direct Tab"),
-                ("← / →", "Switch Tabs"),
+                ("r", "Poll Hardware Sensors"),
+                ("t / - / +", "Adjust Throttle Limit"),
             ]
             row2 = [
-                ("F1", "Full Help Reference"),
-                ("Esc / q", "Quit"),
+                ("1..3", "Direct Tab"),
+                ("← / →", "Switch Tabs"),
+                ("F1", "Help"),
+                ("Esc", "Quit"),
             ]
 
-        # Draw Row 1
-        x = 3
-        for k, action in row1:
-            if x + len(k) + len(action) + 4 < cols - 2:
-                self.safe_addstr(start_y, x, f" {k} ", self.key_badge | curses.A_BOLD)
-                x += len(k) + 2
-                self.safe_addstr(start_y, x, f" {action}   ", self.cyan)
-                x += len(action) + 4
+        y = start_y
+        for row in (row1, row2):
+            x = 2
+            for key, desc in row:
+                if x >= cols - 15:
+                    break
+                self.safe_addstr(y, x, f"[{key}]", self.cyan | curses.A_BOLD)
+                x += len(key) + 3
+                self.safe_addstr(y, x, f"{desc}  ", curses.A_DIM)
+                x += len(desc) + 2
+            y += 1
 
-        # Draw Row 2
-        x = 3
-        for k, action in row2:
-            if x + len(k) + len(action) + 4 < cols - 2:
-                self.safe_addstr(start_y + 1, x, f" {k} ", self.key_badge | curses.A_BOLD)
-                x += len(k) + 2
-                self.safe_addstr(start_y + 1, x, f" {action}   ", self.magenta)
-                x += len(action) + 4
-
-        try:
-            self.safe_addstr(start_y + 2, 0, "─" * (cols - 1))
-        except curses.error:
-            pass
-
-    def draw_bottom_bar(self, lines, cols):
-        if self.status_msg:
-            self.safe_addstr(lines, 3, f"ℹ {self.status_msg}"[:cols - 6], curses.color_pair(self.status_color) | curses.A_BOLD)
-        else:
-            act_p = self.active_pstate or "None"
-            gov_st = "AUTO" if self.telemetry.get("daemon") else "MANUAL"
-            hint = f" GPU: NVC3 (GF106) | P-State: [{act_p}] | Governor: [{gov_st}] | Temp: {self.telemetry.get('temp')} "
-            self.safe_addstr(lines, max(2, (cols - len(hint)) // 2), hint, curses.A_DIM)
-
-    def render_bar(self, width, val, max_val):
-        if width < 10 or max_val <= 0:
+    def render_bar(self, width, current, max_val):
+        if width <= 0 or max_val <= 0:
             return ""
-        pct = min(1.0, max(0.0, val / max_val))
-        fill_len = int(width * pct)
-        return (Style.bar_on * fill_len) + (Style.bar_off * (width - fill_len))
+        filled = int((current / max_val) * width)
+        filled = max(0, min(filled, width))
+        return (Style.bar_on * filled) + (Style.bar_off * (width - filled))
+
+    def prompt_throttle_temp(self):
+        curses.echo()
+        curses.curs_set(1)
+        h, w = self.screen.getmaxyx()
+        prompt = "Enter thermal throttle temperature in °C (50-95): "
+        self.safe_addstr(h - 1, 0, " " * (w - 1), curses.A_NORMAL)
+        self.safe_addstr(h - 1, 2, prompt, self.cyan | curses.A_BOLD)
+        self.screen.refresh()
+        try:
+            inp = self.screen.getstr(h - 1, len(prompt) + 2, 4).decode("utf-8").strip()
+            if inp.isdigit():
+                val = int(inp)
+                if 50 <= val <= 95:
+                    save_throttle_temp(val)
+                    self.telemetry["throttle_temp"] = val
+                    self.status_msg = f"Thermal throttle limit set to {val} °C."
+                    self.status_color = 1
+                else:
+                    self.status_msg = "Invalid temperature: must be between 50 and 95 °C."
+                    self.status_color = 3
+            else:
+                self.status_msg = "Cancelled: invalid input."
+                self.status_color = 2
+        except Exception:
+            self.status_msg = "Input cancelled."
+            self.status_color = 2
+        curses.noecho()
+        curses.curs_set(0)
+        curses.halfdelay(10)
+        self.refresh_data()
 
     def display(self):
-        self.screen.erase()
         lines, cols = self.screen.getmaxyx()
-        max_drawable_y = lines - 2
-
+        self.screen.erase()
         self.screen.border(0)
+
         self.draw_top_bar(lines, cols)
-        self.draw_keybind_ribbon(1, cols)
-        self.draw_bottom_bar(lines - 1, cols)
 
-        y = 4
-        bar_avail_width = max(10, cols - 32)
+        footer_y = lines - 3
+        self.draw_keybind_ribbon(footer_y, cols)
 
-        # TAB 1: Performance States & Dynamic Governor
+        if self.status_msg:
+            attr = self.green if self.status_color == 1 else (self.yellow if self.status_color == 2 else self.red)
+            self.safe_addstr(lines - 1, 2, f" {self.status_msg} ", attr | curses.A_BOLD)
+
+        y = 2
+        max_drawable_y = footer_y - 1
+        bar_avail_width = max(10, min(50, cols - 35))
+
+        # TAB 1: P-States & Governor
         if self.active_mode == 0:
-            # Build unified items: Governor Control Entry + Available P-States
             daemon_active = self.telemetry.get("daemon", False)
             total_items = 1 + len(self.pstates)
             self.focus_idx = max(0, min(self.focus_idx, total_items - 1))
@@ -312,9 +414,28 @@ class NouveauTUI:
             badge_x = max(20, cols - len(gov_badge) - 3)
             self.safe_addstr(y, badge_x, gov_badge, gov_badge_col)
 
-            gov_hint = "Manages 07 ↔ 0f load-aware clocking  •  [Space/Enter] Toggle  •  [a] Enable Auto"
+            gov_hint = "Manages 03 ↔ 0f load-aware clocking  •  [Space/Enter] Toggle  •  [a] Enable Auto"
             self.safe_addstr(y + 1, 6, gov_hint[:cols - 8], self.cyan if is_gov_focus else curses.A_DIM)
-            y += 3
+
+            # Live Temperature & Thermal throttle line
+            th_temp = self.telemetry.get("throttle_temp", 80)
+            temp_v = self.telemetry.get("temp_val")
+            temp_s = self.telemetry.get("temp", "N/A")
+            if temp_v is not None:
+                if temp_v > 75.0:
+                    t_col = self.red | curses.A_BOLD
+                elif temp_v >= 65.0:
+                    t_col = self.yellow | curses.A_BOLD
+                else:
+                    t_col = self.green | curses.A_BOLD
+            else:
+                t_col = curses.A_NORMAL
+
+            self.safe_addstr(y + 2, 6, "GPU Temp: ", curses.A_BOLD)
+            self.safe_addstr(y + 2, 16, f"{temp_s} ", t_col)
+            th_str = f" •  Thermal Limit: [ {th_temp} °C ] (Cap: 07)  •  [t] Set  •  [- / +] Adjust"
+            self.safe_addstr(y + 2, 16 + len(temp_s) + 1, th_str[:cols - (17 + len(temp_s))], self.yellow if is_gov_focus else curses.A_DIM)
+            y += 4
 
             # Divider between Governor and P-States
             self.safe_addstr(y, 4, "Manual Performance State Locks (Selecting disables governor):", curses.A_DIM)
@@ -355,7 +476,7 @@ class NouveauTUI:
         elif self.active_mode == 1:
             entries = self.clients
             if not entries:
-                self.safe_addstr(lines // 2, max(2, (cols - 40) // 2), "No active DRM / 3D clients detected.", curses.A_DIM)
+                self.safe_addstr(lines // 2, max(2, (cols - 40) // 2), "No active DRM / 3D clients detected (Desktop Idle).", curses.A_DIM)
                 self.screen.refresh()
                 return
 
@@ -382,12 +503,19 @@ class NouveauTUI:
             self.safe_addstr(y, 4, "Hardware Monitoring & GPU Sensors:", self.cyan | curses.A_BOLD)
             y += 2
 
+            th_temp = self.telemetry.get("throttle_temp", 80)
+            temp_v = self.telemetry.get("temp_val")
+            th_status = "THROTTLED (Cap: 07)" if (temp_v and temp_v >= th_temp) else "Normal (Cap: 07)"
+
             stats_rows = [
                 ("GPU Chipset", "NVIDIA GF106M (GeForce GT 555M / Fermi)"),
-                ("Driver Backend", "nouveau (Mesa 26.2.1-arch1.1)"),
+                ("Driver Backend", "nouveau (Mesa / Linux DRM)"),
                 ("Active P-State", f"{self.active_pstate} ({PSTATE_DESCRIPTIONS.get(self.active_pstate, 'Unknown')})"),
                 ("Core Temperature", self.telemetry.get("temp", "N/A")),
+                ("Thermal Throttle Limit", f"{th_temp} °C ({th_status})"),
                 ("Core Voltage", self.telemetry.get("volt", "N/A")),
+                ("Fan Speed", self.telemetry.get("fan", "N/A")),
+                ("PCIe Link Status", self.telemetry.get("pcie", "N/A")),
                 ("Dynamic Daemon", "Active / Running (Auto)" if self.telemetry.get("daemon") else "Inactive / Locked (Manual)"),
                 ("Kernel Interface", PSTATE_PATH),
             ]
@@ -395,9 +523,23 @@ class NouveauTUI:
             for label, val in stats_rows:
                 if y + 1 >= max_drawable_y:
                     break
-                self.safe_addstr(y, 6, f"{label:<22}: ", curses.A_BOLD)
-                val_col = self.green if "°C" in val or "Active" in val or "555M" in val else self.yellow
-                self.safe_addstr(y, 30, val[:cols - 32], val_col)
+                self.safe_addstr(y, 6, f"{label:<24}: ", curses.A_BOLD)
+                if label == "Core Temperature":
+                    temp_v = self.telemetry.get("temp_val")
+                    if temp_v is not None:
+                        if temp_v > 75.0:
+                            val_col = self.red | curses.A_BOLD
+                        elif temp_v >= 65.0:
+                            val_col = self.yellow | curses.A_BOLD
+                        else:
+                            val_col = self.green | curses.A_BOLD
+                    else:
+                        val_col = curses.A_NORMAL
+                elif label == "Thermal Throttle Limit":
+                    val_col = (self.red | curses.A_BOLD) if "THROTTLED" in val else self.green
+                else:
+                    val_col = self.green if ("Active" in val or "555M" in val or "RPM" in val or "Normal" in val) else (self.red if "THROTTLED" in val else self.yellow)
+                self.safe_addstr(y, 32, val[:cols - 34], val_col)
                 y += 2
 
         self.screen.refresh()
@@ -405,7 +547,9 @@ class NouveauTUI:
     def display_helpwin(self):
         doc = [
             ("j k   ↑ ↓",            "Navigate P-States or Governor"),
-            ("a",                    "Enable auto dynamic reclocking (governor)"),
+            ("Space / Enter",        "Lock P-State / Toggle Governor"),
+            ("a",                    "Enable auto dynamic governor"),
+            ("t / - / +",            "Adjust thermal throttle limit (50-95 °C)"),
             ("r",                    "Refresh telemetry & hardware status"),
             ("1  2  3",              "Jump directly to mode tab"),
             ("← / →  Tab / S-Tab",   "Switch mode tabs"),
@@ -495,6 +639,27 @@ class NouveauTUI:
                 self.status_color = 1
                 self.refresh_data()
 
+            elif ch in (ord('-'), ord('[')):
+                cur_th = self.telemetry.get("throttle_temp", 80)
+                new_th = max(50, cur_th - 1)
+                save_throttle_temp(new_th)
+                self.telemetry["throttle_temp"] = new_th
+                self.status_msg = f"Decreased thermal throttle limit to {new_th} °C."
+                self.status_color = 1
+                self.refresh_data()
+
+            elif ch in (ord('+'), ord('='), ord(']')):
+                cur_th = self.telemetry.get("throttle_temp", 80)
+                new_th = min(95, cur_th + 1)
+                save_throttle_temp(new_th)
+                self.telemetry["throttle_temp"] = new_th
+                self.status_msg = f"Increased thermal throttle limit to {new_th} °C."
+                self.status_color = 1
+                self.refresh_data()
+
+            elif ch == ord('t'):
+                self.prompt_throttle_temp()
+
             elif ch == ord('r'):
                 self.refresh_data()
                 self.status_msg = "Refreshed telemetry & hardware sensors."
@@ -503,7 +668,6 @@ class NouveauTUI:
     def execute_selection(self):
         if self.active_mode == 0:
             if self.focus_idx == 0:
-                # Entry 0: Toggle Governor daemon
                 if self.telemetry.get("daemon"):
                     run_cmd("sudo /usr/bin/systemctl stop nouveau-dynclockd.service")
                     self.status_msg = "Stopped nouveau-dynclockd governor."
@@ -511,7 +675,6 @@ class NouveauTUI:
                     run_cmd("sudo /usr/bin/systemctl restart nouveau-dynclockd.service")
                     self.status_msg = "Started nouveau-dynclockd governor (Auto reclocking)."
             else:
-                # Entries 1+: Lock selected P-State (always stop daemon to prevent auto reclock overwrite)
                 p_idx = self.focus_idx - 1
                 if 0 <= p_idx < len(self.pstates):
                     target = self.pstates[p_idx]["code"]
@@ -520,6 +683,7 @@ class NouveauTUI:
                     self.status_msg = f"Locked GPU to P-State [{target}] ({self.pstates[p_idx]['core']} MHz)."
             self.status_color = 1
             self.refresh_data()
+
 def main():
     curses.wrapper(lambda stdscr: NouveauTUI(stdscr).run())
 
