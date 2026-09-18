@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=chipmunk-rs
-pkgver=4.2.0
-pkgrel=3
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="Fast Logfile Viewer for Analyzing Large Logfiles Chipmunk is a fast logfile viewer designed for analyzing large logfiles"
 arch=($CARCH)
 url="https://github.com/esrlabs/chipmunk"
@@ -29,7 +29,7 @@ backup=()
 options=(!lto)
 install=
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-sha256sums=('61f82209afbbf4ec87f1a5bf2a088edccb1832c2e06fbc2da27bff853e50bc9e')
+sha256sums=('e6bacfc88d040d427e883e56682647eccf2fef167a9daa1005a7bde4be7ab999')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
