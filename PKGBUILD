@@ -28,7 +28,7 @@ prepare() {
         --name "${pkgname^}" \
         --categories 'Network'
 
-    cd "${pkgname^}-${pkgver}/core/server"
+    cd "${pkgname^}-${pkgver}/core"
 
     # Fix stale replace directives for cronet-go (commit removed from parhelia512/cronet-go)
     # and stale checksums in go.sum
@@ -53,7 +53,7 @@ build() {
         -W no-dev
     cmake --build build
 
-    cd "${pkgname^}-${pkgver}/core/server"
+    cd "${pkgname^}-${pkgver}/core"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS} -fno-lto"
     export CGO_CXXFLAGS="${CXXFLAGS} -fno-lto"
