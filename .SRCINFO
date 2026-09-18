@@ -4,6 +4,7 @@ pkgbase = owe
 	pkgrel = 1
 	url = https://github.com/omacom/owe
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	checkdepends = python
 	makedepends = meson
