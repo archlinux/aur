@@ -1,13 +1,13 @@
 # Maintainer: Orion-zhen <https://github.com/Orion-zhen>
 
 pkgname=o-pi-desktop-git
-pkgver=r535.g99afe65
+pkgver=r545.g8bf6f09
 pkgrel=1
 pkgdesc="Orion's Pi Agent with custom tools and enhancements (Desktop version)"
 arch=('x86_64')
 url='https://github.com/Orion-zhen/o-pi'
 license=('AGPL-3.0-only')
-depends=('bash' 'electron44' 'gcc-libs' 'git' 'glibc')
+depends=('bash' 'electron' 'gcc-libs' 'git' 'glibc')
 makedepends=('bun>=1.4.0' 'nodejs')
 provides=('o-pi-desktop')
 conflicts=('o-pi-desktop')
@@ -38,7 +38,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/opi-desktop" <<'EOF'
 #!/bin/sh
-exec /usr/bin/electron44 /usr/lib/opi-desktop/ "$@"
+exec /usr/bin/electron /usr/lib/opi-desktop/ "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/opi-desktop"
 

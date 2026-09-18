@@ -1,6 +1,6 @@
 pkgbase = o-pi-desktop-git
 	pkgdesc = Orion's Pi Agent with custom tools and enhancements (Desktop version)
-	pkgver = r535.g99afe65
+	pkgver = r545.g8bf6f09
 	pkgrel = 1
 	url = https://github.com/Orion-zhen/o-pi
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = o-pi-desktop-git
 	makedepends = bun>=1.4.0
 	makedepends = nodejs
 	depends = bash
-	depends = electron44
+	depends = electron
 	depends = gcc-libs
 	depends = git
 	depends = glibc
