@@ -1,7 +1,7 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=tone3000-plugin-bin
-pkgver=0.0.7
-_tar_sha='e1f8b7846c05fb03294a1e8a1cd939694aa3919b4dd1ed7f0bbee3e4dacc8637'
+pkgver=0.0.9
+_tar_sha='3e23fb63965f310834090c1cae0357ea0b279cfc14d6980e3beb0b7b5a54b546'
 _license_sha='88d4908d7343898f682e47e70f4288728006ed650dbf79e8940c709d55b76326'
 pkgrel=1
 pkgdesc="TONE3000 — NAM & IR loader plugin (VST3/CLAP/LV2/Standalone) (Github release binary)"
