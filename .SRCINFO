@@ -1,0 +1,22 @@
+pkgbase = omawarden-git
+	pkgdesc = High-performance Bitwarden CLI and resident daemon (Git develop branch)
+	pkgver = 0.8.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/icyleaf/omarchy-bitwarden
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = libsecret
+	depends = wl-clipboard
+	optdepends = libfido2: WebAuthn / Passkey / FIDO2 security key support
+	provides = omawarden
+	provides = omawarden-bin
+	conflicts = omawarden
+	conflicts = omawarden-bin
+	options = !lto
+	source = omarchy-bitwarden::git+https://github.com/icyleaf/omarchy-bitwarden.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = omawarden-git
