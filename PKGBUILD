@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kcl-bin
-pkgver=0.18.0
+pkgver=0.20.0
 pkgrel=1
-pkgdesc="Your one stop shop to do anything with Kafka. Producing, consuming, transacting, administrating; 0.8.0 through 3.2+"
+pkgdesc="Your one stop shop to do anything with Kafka. Producing, consuming, transacting, administrating; 0.8.0 through 4.2+"
 arch=(
     'aarch64'
     'x86_64'
@@ -18,8 +18,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.gz::${url}/releases/download/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_amd64.gz")
 source=("LICENSE::https://raw.githubusercontent.com/twmb/kcl/v${pkgver}/LICENSE")
 sha256sums=('9ed9133de92870659a93ee70f11102dac696c23a65d68161fa292f1a23831be6')
-sha256sums_aarch64=('ded8a9b24a2f94e0441abad96720bfb4d19a8a5790fcadeb90f98af0b787324f')
-sha256sums_x86_64=('98d0e689837cfe09bac17f1c52e7895f6180c37535c91cf2d1710a16b002b81a')
+sha256sums_aarch64=('720765d6acbf6d96f56ca871c0e3711d0ba12edf63ba9b3681c1a5fab390d5c8')
+sha256sums_x86_64=('bdf68250a9c050fffb9ba6bd2afdf2b0f794ad8301a4559f9bc8ea77ad395a7c')
 package(){
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
