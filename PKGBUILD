@@ -15,12 +15,12 @@
 # and not the version; a build in a network-isolated chroot will still fail.
 
 pkgname=xpcog
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Audio player for the formats other players do not open"
 arch=('x86_64')
 url="https://cog.losno.co/xpcog"
-license=('GPL-2.0-or-later')
+license=('GPL-3.0-or-later')
 
 # What the built binaries link from the repositories.
 #
@@ -60,7 +60,7 @@ source=(
 # The release tarball is checksummed; the vcpkg tree is not, because a git
 # source is pinned by its commit and makepkg wants SKIP for one.
 sha256sums=(
-  '1a47afdab6bd32f9f44f20e606e1393852b712774d4d77985696c95c612c4301'
+  '548b77b4a95d0b69ac02f1c5e702f4a4b70c76eaf55cefbbf538fb5eec9ee2c8'
   'SKIP'
 )
 
