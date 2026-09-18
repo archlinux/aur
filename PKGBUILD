@@ -2,35 +2,31 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 
 ## options
-: ${_electron_version=41}
-: ${_nodeversion=}
+: ${_nodeversion:=24}
 : ${_install_path:=usr/share}
 
 _pkgname="thorium-reader"
 pkgname="$_pkgname"
-pkgver=3.4.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Cross-platform desktop reading app based on the Readium Desktop toolkit"
 url="https://github.com/edrlab/thorium-reader"
 license=('MIT')
 arch=('any')
 
-depends=(
-  "electron${_electron_version:-}"
-)
 makedepends=(
   'git'
   'nvm'
+  'jq'
 )
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-sha256sums=('732f8e347ccd6e655b530451e571daf15db6da336e79812d80b19ca1bdd0f49f')
+sha256sums=('3919002acdca24f93837affb493e633e63f8f38d3e5e2ee60574c032f64db4ee')
 
 _nvm_env() {
-  export HOME="$SRCDEST/node-home"
+  [ -n "$NVM_DIR" ] && return
   export NVM_DIR="$SRCDEST/node-nvm"
-  export NODE_OPTIONS="--localstorage-file='$srcdir/localstorage.json'"
 
   # set up nvm
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -39,23 +35,31 @@ _nvm_env() {
 }
 
 _electron_env() {
+  [ -n "$ELECTRON_SKIP_BINARY_DOWNLOAD" ] && return
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-  export SYSTEM_ELECTRON_VERSION=$(< "/usr/lib/electron${_electron_version:-}/version")
-  export ELECTRON_VERSION=${SYSTEM_ELECTRON_VERSION%%.*}
+
+  local _electron_version=$(grep -Pom1 '^\s*"electron":\s*"[^0-9]*\K[0-9.]+' "$srcdir/$_pkgsrc/package.json")
+  : ${_electron_version:?}
+
+  export SYSTEM_ELECTRON_VERSION=$(LC_ALL=C pacman -Si "electron${_electron_version%%.*}" | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])')
+  : ${SYSTEM_ELECTRON_VERSION:?}
+
+  export ELECTRON_VERSION=$(sed -E 's&\..*&&' <<< "${SYSTEM_ELECTRON_VERSION%%.*}")
+  : ${ELECTRON_VERSION:?}
 }
 
 prepare() {
   _electron_env
 
-  # set electron version
-  sed -E \
-    -e 's&^(\s*)("electron"): "(.*)"(,?)$&\1\2: "'"$SYSTEM_ELECTRON_VERSION"'"\4&' \
-    -i "$_pkgsrc/package.json"
-
-  # allow any npm version
-  sed -E \
-    -e 's&("npm"): \S+$&\1: ">=1.0.0"&' \
-    -i "$_pkgsrc/package.json"
+  # set electron version; allow any node/npm version
+  local transform='.'
+  local transform+='| .devDependencies.electron = $ver'
+  local transform+='| .engines.node = ">=1.0.0"'
+  local transform+='| .engines.npm = ">=1.0.0"'
+  local transform+='| .devEngines.packageManager.version = ">=1.0.0"'
+  mv "$_pkgsrc/package.json" package.json
+  cat package.json \
+    | jq --arg ver "$ELECTRON_VERSION" "$transform" > "$_pkgsrc/package.json"
 }
 
 build() (
@@ -63,7 +67,7 @@ build() (
   _electron_env
 
   local _builder_options=(
-    -c.electronDist="'/usr/lib/electron${ELECTRON_VERSION:-}'"
+    #-c.electronDist="'/usr/lib/electron${ELECTRON_VERSION:-}'"
     -c.electronVersion=${SYSTEM_ELECTRON_VERSION}
   )
 
@@ -75,8 +79,7 @@ build() (
 
 package() {
   _electron_env
-
-  depends=("electron${ELECTRON_VERSION:-}")
+  depends+=("electron${ELECTRON_VERSION:-}")
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env bash
