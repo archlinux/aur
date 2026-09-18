@@ -1,7 +1,7 @@
 # Maintainer: kilo
 
 pkgname='kilo-bin'
-pkgver=7.7.4
+pkgver=7.7.5
 _subver=
 options=('!debug' '!strip')
 pkgrel=1
@@ -14,9 +14,9 @@ conflicts=('kilo')
 depends=('ripgrep')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Kilo-Org/kilocode/releases/download/v${pkgver}${_subver}/kilo-linux-arm64.tar.gz")
-sha256sums_aarch64=('fe2f2fc6f898fb97132a8bcba965f5550815f10a4e98b89661253305fbd1f175')
+sha256sums_aarch64=('7ba3a121c474d5e2dcf791b7712132ec53cc0876e0cf7a2119e3cbaf5c474f3d')
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Kilo-Org/kilocode/releases/download/v${pkgver}${_subver}/kilo-linux-x64.tar.gz")
-sha256sums_x86_64=('9b5a9bd3acc9ae94d45c9b37ad7fe5ec0f290722c04565684792c39655d16c42')
+sha256sums_x86_64=('8b7f3b4a6b7b5f6d5a3c003a179cf6cab32097b77176171628cea69fc3efde8e')
 
 package() {
   install -Dm755 ./kilo "${pkgdir}/usr/lib/kilo/kilo"
