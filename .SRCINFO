@@ -1,6 +1,6 @@
 pkgbase = opencode-pty
 	pkgdesc = OpenCode plugin for interactive PTY management - run background processes, send input, read output with regex filtering
-	pkgver = 0.3.6
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/shekohex/opencode-pty
 	install = opencode-pty.install
@@ -11,7 +11,7 @@ pkgbase = opencode-pty
 	depends = opencode
 	options = !strip
 	options = !debug
-	source = opencode-pty-0.3.6.tgz::https://registry.npmjs.org/opencode-pty/-/opencode-pty-0.3.6.tgz
-	sha256sums = 3c4c6714771556983d3d5ccc2bcb35687c2a2c0adbbf9bed9d67340f8e8f3337
+	source = opencode-pty-0.4.0.tgz::https://registry.npmjs.org/opencode-pty/-/opencode-pty-0.4.0.tgz
+	sha256sums = 605625afd2f46238bd4e66d81458062116008920fb1fd3b167df8c50c81d0cde
 
 pkgname = opencode-pty
