@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=raven-bin
-pkgver=0.21.0 # renovate: datasource=github-tags depName=jbearak/raven
+pkgver=0.21.1 # renovate: datasource=github-tags depName=jbearak/raven
 pkgrel=1
 pkgdesc="Static analyzer for R — a language server in your editor, a checker in CI"
 arch=('x86_64' 'aarch64')
@@ -23,5 +23,5 @@ package() {
     install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
 
-sha256sums_x86_64=('e22a87a1349dedd27ab015ba22c8c2c7e2c6b15f0fb94856025966bd3ee7055e')
-sha256sums_aarch64=('e22a87a1349dedd27ab015ba22c8c2c7e2c6b15f0fb94856025966bd3ee7055e')
+sha256sums_x86_64=('f051b3e083de7fe60dc3c60a40fac9aa9ee0d231e9d7ec01d494a1b85b9e5cc3')
+sha256sums_aarch64=('f051b3e083de7fe60dc3c60a40fac9aa9ee0d231e9d7ec01d494a1b85b9e5cc3')

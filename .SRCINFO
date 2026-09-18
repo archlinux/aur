@@ -1,6 +1,6 @@
 pkgbase = raven-bin
 	pkgdesc = Static analyzer for R — a language server in your editor, a checker in CI
-	pkgver = 0.21.0
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://github.com/jbearak/raven
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = raven-bin
 	depends = glibc
 	conflicts = raven
 	options = !debug
-	source_x86_64 = raven-bin-0.21.0.zip::https://github.com/jbearak/raven/releases/download/v0.21.0/raven-linux-x64.zip
-	provides_x86_64 = raven=0.21.0
-	sha256sums_x86_64 = e22a87a1349dedd27ab015ba22c8c2c7e2c6b15f0fb94856025966bd3ee7055e
-	source_aarch64 = raven-bin-0.21.0.zip::https://github.com/jbearak/raven/releases/download/v0.21.0/raven-linux-arm64.zip
-	provides_aarch64 = raven=0.21.0
-	sha256sums_aarch64 = e22a87a1349dedd27ab015ba22c8c2c7e2c6b15f0fb94856025966bd3ee7055e
+	source_x86_64 = raven-bin-0.21.1.zip::https://github.com/jbearak/raven/releases/download/v0.21.1/raven-linux-x64.zip
+	provides_x86_64 = raven=0.21.1
+	sha256sums_x86_64 = f051b3e083de7fe60dc3c60a40fac9aa9ee0d231e9d7ec01d494a1b85b9e5cc3
+	source_aarch64 = raven-bin-0.21.1.zip::https://github.com/jbearak/raven/releases/download/v0.21.1/raven-linux-arm64.zip
+	provides_aarch64 = raven=0.21.1
+	sha256sums_aarch64 = f051b3e083de7fe60dc3c60a40fac9aa9ee0d231e9d7ec01d494a1b85b9e5cc3
 
 pkgname = raven-bin
