@@ -1,0 +1,25 @@
+pkgbase = python-prefab-ui
+	pkgver = 0.20.2
+	pkgrel = 1
+	url = https://github.com/PrefectHQ/prefab
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-timeout
+	checkdepends = python-pytest-xdist
+	checkdepends = python-jsonschema
+	makedepends = python-hatchling
+	makedepends = python-uv-dynamic-versioning
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-pydantic
+	depends = python-cyclopts
+	depends = python-rich
+	source = prefab-ui::git+https://github.com/PrefectHQ/prefab.git#tag=v0.20.2
+	sha256sums = 7473db4c9aca69f45cd13c77b64edcc09b0f496a2013d18987a990490cde5850
+
+pkgname = python-prefab-ui
