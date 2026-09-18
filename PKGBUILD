@@ -2,8 +2,8 @@
 
 pkgname=uutils-coreutils-bin
 pkgver=0.12.0
-pkgrel=2
-pkgdesc="Cross-platform Rust rewrite of the GNU coreutils (upstream PGO optimized x86_64 binaries)"
+pkgrel=3
+pkgdesc="Cross-platform Rust rewrite of the GNU coreutils (upstream PGO optimized binaries)"
 arch=('aarch64' 'x86_64') # 'arm' 'i686'
 url="https://uutils.org/"
 license=('MIT')

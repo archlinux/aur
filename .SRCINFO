@@ -1,7 +1,7 @@
 pkgbase = uutils-coreutils-bin
-	pkgdesc = Cross-platform Rust rewrite of the GNU coreutils (upstream PGO optimized x86_64 binaries)
+	pkgdesc = Cross-platform Rust rewrite of the GNU coreutils (upstream PGO optimized binaries)
 	pkgver = 0.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://uutils.org/
 	arch = aarch64
 	arch = x86_64
