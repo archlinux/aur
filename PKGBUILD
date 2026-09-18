@@ -1,7 +1,7 @@
 # Maintainer: CallMeAlphabet
 pkgname=fasthex
-pkgver=21
-pkgrel=2
+pkgver=22
+pkgrel=1
 pkgdesc="fasthex, a very fast hex dumper, builds from source"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fasthex"
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('rustup')
 provides=('fasthex')
 conflicts=('fasthex-bin')
-_commit=1c0e9e91cfee83f0b1bc2d5e337aa56728588bd4
+_commit=14b407a15db5fafdb858c502b4cf299acce3cf38
 source=("fasthex-$pkgver-$_commit.tar.gz::https://github.com/CallMeAlphabet/fasthex/archive/$_commit.tar.gz")
 sha256sums=('SKIP')
 
