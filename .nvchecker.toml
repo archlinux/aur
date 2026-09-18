@@ -1,0 +1,4 @@
+[llama-preset-proxy]
+source = "git"
+git = "https://github.com/drizzt/llama-preset-proxy.git"
+prefix = "v"

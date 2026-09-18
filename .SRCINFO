@@ -1,0 +1,18 @@
+pkgbase = llama-preset-proxy
+	pkgdesc = HTTP proxy that injects llama.cpp preset params and reroutes requests to avoid model reloads
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/drizzt/llama-preset-proxy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	backup = etc/llama-preset-proxy.env
+	source = git+https://github.com/drizzt/llama-preset-proxy#tag=v0.2.2
+	b2sums = a153d5d262c62fcbed436fc912aaa441e59faa487e15e5651419505632c4e234ce9c66f9a4c2caf1ca29d24883ab38d897dd8cf125f5289509e108169d47ff69
+
+pkgname = llama-preset-proxy
