@@ -2,7 +2,7 @@
 
 pkgname=lexicon-beta
 pkgver=1.11.105
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(custom)
 url=https://www.lexicondj.com/
@@ -25,5 +25,5 @@ package() {
     mkdir -p "${pkgdir}/usr/lib/${pkgname}" "${pkgdir}/usr/bin"
     tar -xf "${pkgname}-${pkgver}-linux-amd64.tar.gz" -C "${pkgdir}/usr/lib/${pkgname}" --strip-components=1
     mv "${pkgdir}/usr/lib/${pkgname}/share" "${pkgdir}/usr/"
-    ln -nsf /usr/lib/lexicon-beta/lexicon-beta "${pkgdir}/usr/bin/lexicon-beta"
+    ln -nsf /usr/lib/lexicon-beta/lexicon-beta.bin "${pkgdir}/usr/bin/lexicon-beta"
 }
