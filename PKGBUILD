@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=carrier-cli-bin
-pkgver=0.2.3 # renovate: datasource=github-tags depName=joshuamarie/carrier
+pkgver=0.2.4 # renovate: datasource=github-tags depName=joshuamarie/carrier
 pkgrel=1
 pkgdesc="A module manager for {box} modules"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ package() {
     install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums_x86_64=('005323ca4c7bae66d130cb9156e68c85f697aa9398de5c1bcc829c3f1434e3fd'
+sha256sums_x86_64=('3bf2e36c9b8166d1f695e35be393e223571940859bdc95a486cb7ad1a392918f'
                    'ec04d5f03c96b3c4bd5afec05f4f73536ae26765323747e5969a0760809cdc93')
-sha256sums_aarch64=('005323ca4c7bae66d130cb9156e68c85f697aa9398de5c1bcc829c3f1434e3fd'
+sha256sums_aarch64=('3bf2e36c9b8166d1f695e35be393e223571940859bdc95a486cb7ad1a392918f'
                     'ec04d5f03c96b3c4bd5afec05f4f73536ae26765323747e5969a0760809cdc93')

@@ -1,6 +1,6 @@
 pkgbase = carrier-cli-bin
 	pkgdesc = A module manager for {box} modules
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/joshuamarie/carrier
 	arch = x86_64
@@ -10,15 +10,15 @@ pkgbase = carrier-cli-bin
 	depends = libgcc
 	conflicts = carrier-cli
 	options = !debug
-	source_x86_64 = carrier-cli-bin-0.2.3.tar.gz::https://github.com/joshuamarie/carrier/releases/download/v0.2.3/carrier-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = LICENSE::https://raw.githubusercontent.com/joshuamarie/carrier/refs/tags/v0.2.3/LICENSE.md
-	provides_x86_64 = carrier-cli=0.2.3
-	sha256sums_x86_64 = 005323ca4c7bae66d130cb9156e68c85f697aa9398de5c1bcc829c3f1434e3fd
+	source_x86_64 = carrier-cli-bin-0.2.4.tar.gz::https://github.com/joshuamarie/carrier/releases/download/v0.2.4/carrier-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/joshuamarie/carrier/refs/tags/v0.2.4/LICENSE.md
+	provides_x86_64 = carrier-cli=0.2.4
+	sha256sums_x86_64 = 3bf2e36c9b8166d1f695e35be393e223571940859bdc95a486cb7ad1a392918f
 	sha256sums_x86_64 = ec04d5f03c96b3c4bd5afec05f4f73536ae26765323747e5969a0760809cdc93
-	source_aarch64 = carrier-cli-bin-0.2.3.tar.gz::https://github.com/joshuamarie/carrier/releases/download/v0.2.3/carrier-aarch64-unknown-linux-gnu.tar.gz
-	source_aarch64 = LICENSE::https://raw.githubusercontent.com/joshuamarie/carrier/refs/tags/v0.2.3/LICENSE.md
-	provides_aarch64 = carrier-cli=0.2.3
-	sha256sums_aarch64 = 005323ca4c7bae66d130cb9156e68c85f697aa9398de5c1bcc829c3f1434e3fd
+	source_aarch64 = carrier-cli-bin-0.2.4.tar.gz::https://github.com/joshuamarie/carrier/releases/download/v0.2.4/carrier-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/joshuamarie/carrier/refs/tags/v0.2.4/LICENSE.md
+	provides_aarch64 = carrier-cli=0.2.4
+	sha256sums_aarch64 = 3bf2e36c9b8166d1f695e35be393e223571940859bdc95a486cb7ad1a392918f
 	sha256sums_aarch64 = ec04d5f03c96b3c4bd5afec05f4f73536ae26765323747e5969a0760809cdc93
 
 pkgname = carrier-cli-bin
