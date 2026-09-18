@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=carrier-cli
-pkgver=0.2.3 # renovate: datasource=github-tags depName=joshuamarie/carrier
+pkgver=0.2.4 # renovate: datasource=github-tags depName=joshuamarie/carrier
 pkgrel=1
 pkgdesc="A module manager for {box} modules"
 url="https://github.com/joshuamarie/carrier"
@@ -35,4 +35,4 @@ package() {
   install -Dm644 "${srcdir}/carrier-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('cc11c4c4d7ddd90f95cff2e1f949a7466693503cfd2f888ff07eb8f3cabec0bc5d0a4c3e8d2c5c20bc952b25a457feb3ae0338dacf2b99f2015ba52c0513d4e7')
+sha512sums=('0aa2dd45a82402505dfcae201ab539855dacc01f007ade85afb4ed419639596514f9d04c30da2d7144b88a84a8e1b63b0e38030d597caf0c828eae3b54da5def')
