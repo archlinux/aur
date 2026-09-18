@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Pomo-Tracker
+Comment=A pomodoro app with good stats metrics and a social twist.
+Exec=pomo-tracker
+Icon=icon
+Terminal=false
+Categories=Utility
