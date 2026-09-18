@@ -1,4 +1,4 @@
-# Maintainer: Fahim <contact@scirex.me>
+# Maintainer: Fahim Montasir Misbah <fahim@scirex.me>
 
 pkgname=commandcode-bin
 _pkgname=commandcode
