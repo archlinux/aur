@@ -1,7 +1,7 @@
 # Maintainer: igaurab <dev@igaurab.com>
 pkgname=sidetab-bin
 _pkgname=sidetab
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A Contexts-style window switcher sidebar for Hyprland (prebuilt binary)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=(!debug !strip)
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('8519ea2d9f826c53d7838e43f304ab9419ee914facaab79930281d845b766763')
+sha256sums=('090a12590a740a02e6c00d3b820240ca3842a24a9d3f317a836004fdacec9651')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"

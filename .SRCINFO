@@ -1,6 +1,6 @@
 pkgbase = sidetab-bin
 	pkgdesc = A Contexts-style window switcher sidebar for Hyprland (prebuilt binary)
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/igaurab/sidetab
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = sidetab-bin
 	depends = libxkbcommon
 	depends = fontconfig
 	depends = libbsd
-	provides = sidetab=0.2.3
+	provides = sidetab=0.2.4
 	conflicts = sidetab
 	options = !debug
 	options = !strip
-	source = sidetab-0.2.3.tar.gz::https://github.com/igaurab/sidetab/releases/download/v0.2.3/sidetab-0.2.3-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 8519ea2d9f826c53d7838e43f304ab9419ee914facaab79930281d845b766763
+	source = sidetab-0.2.4.tar.gz::https://github.com/igaurab/sidetab/releases/download/v0.2.4/sidetab-0.2.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 090a12590a740a02e6c00d3b820240ca3842a24a9d3f317a836004fdacec9651
 
 pkgname = sidetab-bin
