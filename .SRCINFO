@@ -1,27 +1,28 @@
 pkgbase = heroic-games-launcher
 	pkgdesc = Native GOG, Epic Games and Amazon games launcher for Linux
 	pkgver = 2.22.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://heroicgameslauncher.com/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = desktop-file-utils
 	makedepends = git
-	makedepends = nodejs-lts
+	makedepends = nodejs
 	makedepends = pnpm
 	depends = electron43
 	depends = glibc
 	depends = libgcc
 	depends = python
+	depends = sh
 	depends = which
 	depends = zlib
 	optdepends = gamemode
 	optdepends = gamescope
 	optdepends = mangohud
-	optdepends = proton
 	optdepends = rsync: Move games using rsync instead of mv
-	optdepends = wine
 	source = git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git#tag=v2.22.3
+	source = heroic.sh
 	sha256sums = 0846c998e8a39dc146f1273f4e7a587f172e3075f7de42dc936fe845b70b2f10
+	sha256sums = 6103e2429c60868452ad45e3537631a26812eeb3e3f57b5ba59c2f6f2b7398d9
 
 pkgname = heroic-games-launcher

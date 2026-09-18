@@ -2,7 +2,7 @@
 
 pkgname=heroic-games-launcher
 pkgver=2.22.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux"
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
@@ -13,48 +13,54 @@ depends=(
     glibc
     libgcc
     python
+    sh
     which
     zlib
     )
 makedepends=(
     desktop-file-utils
     git
-    nodejs-lts
+    nodejs
     pnpm
     )
 optdepends=(
     gamemode
     gamescope
     mangohud
-    proton
     "rsync: Move games using rsync instead of mv"
-    wine
     )
-source=("git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git#tag=v${pkgver}")
-sha256sums=('0846c998e8a39dc146f1273f4e7a587f172e3075f7de42dc936fe845b70b2f10')
+source=(
+    "git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git#tag=v${pkgver}"
+    heroic.sh
+    )
+sha256sums=('0846c998e8a39dc146f1273f4e7a587f172e3075f7de42dc936fe845b70b2f10'
+            '6103e2429c60868452ad45e3537631a26812eeb3e3f57b5ba59c2f6f2b7398d9')
+
+prepare() {
+  sed -i "s|@ELECTRON@|${_electron}|" heroic.sh
+}
 
 build() {
   cd HeroicGamesLauncher
-  HOME="${srcdir}/.electron-gyp" pnpm install
-
+  pnpm install --ignore-scripts
   pnpm run download-helper-binaries
-  ./node_modules/.bin/electron-vite build
-  ./node_modules/.bin/electron-builder --linux --x64 --dir -c.electronDist=/usr/lib/$_electron/ -c.electronVersion=$(cat /usr/lib/$_electron/version)
+  pnpm run dist:linux --dir --x64 -c.electronDist=/usr/lib/$_electron/ -c.electronVersion=$(cat /usr/lib/$_electron/version)
 }
 
 package() {
+  install -Dm755 heroic.sh "${pkgdir}/usr/bin/heroic"
+
   cd "HeroicGamesLauncher"
   install -d "${pkgdir}/usr/lib/heroic"
-  cp -rf dist/linux-unpacked/resources/app.asar{,.unpacked} "${pkgdir}/usr/lib/heroic/"
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/heroic" <<EOF
-#!/usr/bin/bash
-exec $_electron /usr/lib/heroic/app.asar "\$@"
-EOF
+  cp -r dist/linux-unpacked/resources/app.asar{,.unpacked} "${pkgdir}/usr/lib/heroic/"
 
-  install -Dm644 flatpak/com.heroicgameslauncher.hgl.png -t "${pkgdir}/usr/share/pixmaps"
-  install -Dm644 flatpak/templates/com.heroicgameslauncher.hgl.metainfo.xml.template "${pkgdir}"/usr/share/metainfo/com.heroicgameslauncher.hgl.metainfo.xml
+  install -Dm644 flatpak/com.heroicgameslauncher.hgl.png -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+  install -Dm644 src/frontend/assets/heroic-icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/com.heroicgameslauncher.hgl.svg"
+
+  # template and outdated
+  #install -Dm644 flatpak/templates/com.heroicgameslauncher.hgl.metainfo.xml.template "${pkgdir}"/usr/share/metainfo/com.heroicgameslauncher.hgl.metainfo.xml
 
   # fix icon on Gnome dock
-  desktop-file-edit --set-key=Exec --set-value="heroic %U" --set-key=StartupWMClass --set-value=heroic flatpak/com.heroicgameslauncher.hgl.desktop
+  desktop-file-edit --set-key=Exec --set-value="heroic %U" flatpak/com.heroicgameslauncher.hgl.desktop
   install -Dm644 flatpak/com.heroicgameslauncher.hgl.desktop -t "${pkgdir}/usr/share/applications"
 }
