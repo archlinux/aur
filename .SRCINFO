@@ -1,6 +1,6 @@
 pkgbase = flyenv-git
-	pkgdesc = All-In-One Full-Stack Environment Management Tool.Help developers quickly set up a local development environment.(Use system-wide electron)
-	pkgver = 4.15.0.r1.g41a378c
+	pkgdesc = A modern alternative to XAMPP, MAMP, Laragon and Laravel Herd, with runtimes, databases, web servers, local sites, HTTPS, AI coding tools and MCP.
+	pkgver = 4.18.3.r12.g163389f
 	pkgrel = 1
 	url = https://www.flyenv.com/
 	arch = aarch64
