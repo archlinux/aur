@@ -1,0 +1,5 @@
+pkg/
+src/*
+serein/*
+*.pkg.tar
+*.pkg.tar.zst
