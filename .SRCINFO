@@ -1,7 +1,7 @@
 pkgbase = vicine
 	pkgdesc = Search, stream, and download movies, series and anime from the terminal (POSIX shell)
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/spaciousejar/vicine-cli
 	arch = any
 	license = GPL-3.0-or-later

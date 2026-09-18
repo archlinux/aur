@@ -2,7 +2,7 @@
 
 pkgname=vicine
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Search, stream, and download movies, series and anime from the terminal (POSIX shell)"
 arch=('any')
 url="https://github.com/spaciousejar/vicine-cli"
