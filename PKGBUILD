@@ -9,7 +9,7 @@ pkgname='vrcx-nightly-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
 _pkgver='2026-09-17T13.06-1248dd5'
 pkgver=${_pkgver//-/.}
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://vrcx.app/'
 license=('MIT')
@@ -110,11 +110,13 @@ extract_appimage() (
 )
 
 build() {
-  mkdir opt
+  mkdir -p opt
+  # unsquashfs does not overwrite existing files, so clear any stale extraction dir first
+  rm -rf opt/vrcx
   extract_appimage "VRCX_${_pkgver}_x64.AppImage" opt/vrcx -no-xattrs
   rm opt/vrcx/AppRun
   rm opt/vrcx/.DirIcon
-  rm opt/vrcx/vrcx.desktop
+  rm opt/vrcx/VRCX.desktop
   rm opt/vrcx/resources/app-update.yml
   rm -r opt/vrcx/resources/app.asar.unpacked/build/Electron/dotnet-runtime
   rm -r opt/vrcx/resources/dotnet-runtime
@@ -240,5 +242,5 @@ package() {
     rm -- "$file"
   done
 
-  chmod 0755 "$pkgdir/opt/vrcx/vrcx"
+  chmod 0755 "$pkgdir/opt/vrcx/VRCX"
 }
