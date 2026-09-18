@@ -7,19 +7,19 @@ pkgdesc="Application for professional book creation and typesetting — book edi
 arch=('x86_64')
 url="https://github.com/Gargadon/libria"
 license=('AGPL-3.0-only')
-depends=('electron42' 'ghostscript')
+depends=('electron' 'ghostscript')
 makedepends=('bun' 'python')
 provides=("${pkgname}")
-source=("git+${url}.git#branch=main")
-sha256sums=('SKIP')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('fb3b9c47b0aa03d41618335dd268795f21017194a85dab42bba83ce200b171ca')
 
 prepare() {
-  cd "${srcdir}/libria"
+  cd "${srcdir}/libria-${pkgver}"
   bun install
 }
 
 build() {
-  cd "${srcdir}/libria"
+  cd "${srcdir}/libria-${pkgver}"
   bun run build
 }
 
@@ -38,9 +38,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/libria" << 'SCRIPT'
 #!/bin/bash
-export GDK_BACKEND=x11
-export ELECTRON_OZONE_PLATFORM_HINT=x11
-exec /usr/bin/electron42 --ozone-platform=x11 /opt/libria/main.js "$@"
+exec /usr/bin/electron /opt/libria/main.js "$@"
 SCRIPT
   chmod 755 "${pkgdir}/usr/bin/libria"
 

@@ -7,10 +7,10 @@ pkgbase = libria
 	license = AGPL-3.0-only
 	makedepends = bun
 	makedepends = python
-	depends = electron42
+	depends = electron
 	depends = ghostscript
 	provides = libria
-	source = git+https://github.com/Gargadon/libria.git#branch=main
-	sha256sums = SKIP
+	source = https://github.com/Gargadon/libria/archive/v1.9.1.tar.gz
+	sha256sums = fb3b9c47b0aa03d41618335dd268795f21017194a85dab42bba83ce200b171ca
 
 pkgname = libria
