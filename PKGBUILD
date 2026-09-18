@@ -1,5 +1,5 @@
 pkgname=graphify-bin
-pkgver=0.9.63
+pkgver=0.9.64
 pkgrel=1
 pkgdesc="AI coding assistant skill - turn any folder into a queryable knowledge graph"
 arch=(x86_64 aarch64)
@@ -9,8 +9,8 @@ makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools
 depends=("python>=3.10" "python" "python-pip")
 provides=(graphify)
 
-source=("https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.9.63.tar.gz")
-sha256sums=('0d2073903f6cc79a67eae27e1cb9284323da6b29555ecef5c2e35b7a4a1d2a5b')
+source=("https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.9.64.tar.gz")
+sha256sums=('5c0b18c8544a1af2afe345fdf2fd46ec9d9ba3ee3b2e3a51492dcef707e1f9a3')
 
 build() {
     cd "${srcdir}/graphifyy-${pkgver}"
