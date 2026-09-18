@@ -1,7 +1,7 @@
 # Maintainer: Sintan Santorum <c1scu0hh at anonaddy dot me>
 pkgname="jellyfin-autorefresh-new-releases-bin"
 _pkgname="jellyfin-autorefresh"
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="Get missing metadata for new releases in Jellyfin"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/SinTan1729/$_pkgname-new-releases"
 license=("GPL3")
 provides=("jellyfin-autorefresh")
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname.tar.gz")
-sha256sums=('5f0134c23d7384ed9b718fed11277691939088595ab8bbfa6bbd9f9b47aaa1a6')
+sha256sums=('b33303db1aea90049be5311a55d69923547c5646cd3dc6dde422ede7a5df1395')
 package() {
 	# binary
 	install -Dm755 ./$_pkgname "$pkgdir/usr/bin/$_pkgname"
