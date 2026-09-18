@@ -2,24 +2,27 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='libstoragemgmt'
-pkgver='1.10.3'
+pkgver='1.11.0'
 pkgrel='1'
 pkgdesc='A library for storage management'
 arch=('x86_64' 'aarch64')
-url="https://github.com/libstorage/${pkgname}"
+_uri="github.com/libstorage/${pkgname}"
+url="https://${_uri}"
 license=('LGPL')
-depends=('libxml2' 'icu' 'sqlite' 'openssl' 'libconfig' 'ledmon' 'systemd')
-makedepends=('check' 'chrpath' 'valgrind' 'python-pywbem' 'procps-ng')
+depends=('sqlite' 'openssl' 'libconfig' 'ledmon' 'sg3_utils' 'systemd')
+makedepends=('chrpath' 'python-pywbem' 'python-six' 'procps-ng')
+checkdepends=('check' 'valgrind')
 optdepends=('arcconf: support for Microsemi (Adaptec) controllers'
 	    'storcli: support for Broadcom (LSI) controllers')
-source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('66ccac385eb2759e47422d35d5325d2d8f077e4693a6663be12d100ebf608a10')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/tar.gz/refs/tags/${pkgver}")
+sha256sums=('9abd55b76b99bafac5448eb1b57166d2ec633ff76c929db1473c85efb900dbab')
 
-prepare() {
+build() {
   cd "${pkgname}-${pkgver}"
-
   autoreconf -fvi
-  ./configure \
+  ./configure CFLAGS="${CFLAGS} ${DEBUG_CFLAGS}" \
+    CXXLAGS="${CXXFLAGS} ${DEBUG_CXXFLAGS}" \
+    LDLAGS="${LDFLAGS}" \
     --prefix="/usr" \
     --bindir="/usr/bin" \
     --sbindir="/usr/bin" \
@@ -28,16 +31,12 @@ prepare() {
     --libdir="/usr/lib" \
     --datarootdir="/usr/share" \
     --datadir="/usr/share"
-}
-
-build() {
-  cd "${pkgname}-${pkgver}"
   make
 }
 
 check() {
-  cd "${pkgname}-${pkgver}/test"
-  ./runtests.sh
+  cd "${pkgname}-${pkgver}"
+  make test
 }
 
 package() {
