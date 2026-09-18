@@ -21,14 +21,13 @@ depends=(
   'pipewire'
   'poppler-glib'
   'python'
+  'python-manimgl'
   'rubberband'
   'uv'
 )
 optdepends=(
   'nvidia-utils: hardware acceleration for NVIDIA GPUs and CUDA'
   'cuda: runtime CUDA toolkit and development utilities'
-  'optix: NVIDIA OptiX development headers for raytracing denoiser'
-  'shader-slang: system Slang shading language compiler'
 )
 makedepends=(
   'clang'
@@ -39,8 +38,10 @@ makedepends=(
   'gobject-introspection'
   'make'
   'ninja'
+  'optix'
   'pkgconf'
   'rustup'
+  'shader-slang'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -64,8 +65,23 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  # Initialize git submodules for external libraries (optix-dev, vtracer, manim)
-  git submodule update --init --recursive
+  # Prefer system OptiX package (optix / optix-dev-headers) over vendored submodule
+  if [ ! -f /usr/include/optix.h ]; then
+    git submodule update --init external/optix-dev
+  fi
+
+  # Prefer system python-manimgl package over vendored submodule
+  if ! python3 -c 'import manimlib' &>/dev/null && [ ! -d /usr/lib/python*/site-packages/manimlib ]; then
+    git submodule update --init external/manim
+  else
+    # Remove editable path override so uv resolves manimgl from the system environment
+    sed -i '/\[tool\.uv\.sources\]/,+1d' crates/media/visual/manim/manim-bridge/python/pyproject.toml
+  fi
+
+  # External vtracer dependency
+  if [ ! -f external/vtracer/crates/vtracer/Cargo.toml ]; then
+    git submodule update --init external/vtracer
+  fi
 
   # Apply path patch for installed Manim worker and user cache virtual environment
   patch -Np1 -i "${srcdir}/shrimply-manim-system-path.patch"
@@ -91,14 +107,14 @@ build() {
   export LIBRARY_PATH="${CUDA_HOME}/lib64/stubs:${LIBRARY_PATH}"
   export LIBCLANG_PATH="${LIBCLANG_PATH:-/usr/lib}"
 
-  # Use system OptiX headers if optix / optix-dev-headers is installed
+  # OptiX headers: prefer Arch package (/usr/include/optix.h)
   if [ -f /usr/include/optix.h ]; then
     export OPTIX_ROOT=/usr
-  else
+  elif [ -d "${srcdir}/${_pkgname}/external/optix-dev" ]; then
     export OPTIX_ROOT="${srcdir}/${_pkgname}/external/optix-dev"
   fi
 
-  # Use system Slang if shader-slang is installed
+  # Slang shader compiler: prefer Arch package (shader-slang)
   if [ -f /usr/include/shader-slang/slang.h ] && [ -f /usr/lib/libslang.so ]; then
     export SLANG_INCLUDE_DIR=/usr/include/shader-slang
     export SLANG_LIBRARY_DIR=/usr/lib
@@ -133,7 +149,7 @@ package() {
 
   if [ -f /usr/include/optix.h ]; then
     export OPTIX_ROOT=/usr
-  else
+  elif [ -d "${srcdir}/${_pkgname}/external/optix-dev" ]; then
     export OPTIX_ROOT="${srcdir}/${_pkgname}/external/optix-dev"
   fi
 
@@ -158,9 +174,13 @@ package() {
 
   # Install Manim python worker runtime files
   install -dm755 "${pkgdir}/usr/share/shrimply/crates/media/visual/manim/manim-bridge"
-  install -dm755 "${pkgdir}/usr/share/shrimply/external"
   cp -r "crates/media/visual/manim/manim-bridge/python" "${pkgdir}/usr/share/shrimply/crates/media/visual/manim/manim-bridge/"
-  cp -r "external/manim" "${pkgdir}/usr/share/shrimply/external/"
+
+  # Install vendored manim source only if fallback submodule was used
+  if [ -d "external/manim/manimlib" ]; then
+    install -dm755 "${pkgdir}/usr/share/shrimply/external"
+    cp -r "external/manim" "${pkgdir}/usr/share/shrimply/external/"
+  fi
 
   # Install project license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
