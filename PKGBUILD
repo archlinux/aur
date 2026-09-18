@@ -9,7 +9,7 @@ _libs_ver='0.25.4'
 _driver_ver='10.2.0'
 _ctl_ver='0.13.0'
 _p_container_ver='0.7.1'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='Falco is a cloud native runtime security tool for Linux operating systems'
 arch=('x86_64' 'aarch64')
 url="https://${pkgname}.org/"
@@ -85,6 +85,9 @@ build() {
   cmake -B "plugin-container-build" -S "plugins-plugins-container-v${_p_container_ver}/plugins/container" \
     -Wno-author \
     -D CMAKE_BUILD_TYPE="Release" \
+    -D CMAKE_C_FLAGS="${CFLAGS} ${DEBUG_CFLAGS}" \
+    -D CMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
+    -D CMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" \
     -D LIBS_DIR="${srcdir}/libs-${_libs_ver}" \
     -D USE_BUNDLED_DEPS=Off \
     -D USE_BUNDLED_DRIVER=Off \
@@ -96,12 +99,15 @@ build() {
     -D USE_BUNDLED_VALIJSON=Off \
     -D USE_BUNDLED_ZLIB=Off
   # This is build for plugins/container
-  cmake --build "plugin-container-build" --target "container" --config "Release"
+  cmake --build "plugin-container-build" --target "container" --config "Release" --verbose
 
   # This is CMake prepare for eBPF files that req for actual falco build
   cmake -B "skeleton-build" -S "${pkgname}-${pkgver}" \
     -Wno-author \
     -D CMAKE_BUILD_TYPE="Release" \
+    -D CMAKE_C_FLAGS="${CFLAGS} ${DEBUG_CFLAGS}" \
+    -D CMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
+    -D CMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" \
     -D DRIVER_SOURCE_DIR="${srcdir}/libs-${_driver_ver}-driver/driver" \
     -D DRIVER_VERSION="${_driver_ver}" \
     -D FALCOSECURITY_LIBS_SOURCE_DIR="${srcdir}/libs-${_libs_ver}" \
@@ -126,12 +132,15 @@ build() {
     -D USE_JEMALLOC=Off \
     -D BUILD_FALCO_MODERN_BPF=On \
     -D FALCO_VERSION="${pkgver}"
-    cmake --build "skeleton-build" --target "ProbeSkeleton" --config "Release"
+    cmake --build "skeleton-build" --target "ProbeSkeleton" --config "Release" --verbose
 
   # This is CMake prepare for falco
   cmake -B "build" -S "${pkgname}-${pkgver}" \
     -Wno-author \
     -D CMAKE_BUILD_TYPE="Release" \
+    -D CMAKE_C_FLAGS="${CFLAGS} ${DEBUG_CFLAGS}" \
+    -D CMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
+    -D CMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" \
     -D DRIVER_SOURCE_DIR="${srcdir}/libs-${_driver_ver}-driver/driver" \
     -D DRIVER_VERSION="${_driver_ver}" \
     -D FALCOSECURITY_LIBS_SOURCE_DIR="${srcdir}/libs-${_libs_ver}" \
@@ -168,7 +177,7 @@ build() {
     -D FALCO_VERSION="${pkgver}"
 
   # This is falco build
-  cmake --build "build" --target "falco" --config "Release"
+  cmake --build "build" --target "falco" --config "Release" --verbose
 
   # This is falcoctl build (golang)
   cd "${GOPATH}/src/${_uri}/${pkgname}ctl"
@@ -193,6 +202,7 @@ check() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install "build" --config "release"
+  find "${pkgdir}/usr/lib" -type f -name "*.*a" -delete -print
   install -Dm0755 "${pkgname}ctl-${_ctl_ver}/${pkgname}ctl" -t "${pkgdir}/usr/bin"
   install -Dm0644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm0644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
