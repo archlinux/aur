@@ -1,5 +1,4 @@
 [zulip-desktop]
-source = "github"
-github = "zulip/zulip-desktop"
-use_max_tag = true
+source = "git"
+git = "https://github.com/zulip/zulip-desktop.git"
 prefix = "v"
