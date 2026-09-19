@@ -26,8 +26,8 @@ package(){
 
 	mkdir -p "$pkgdir/opt/elpAudioMini/"
 	
-	cp -drf resources/* "$pkgdir/opt/elpAudioMini/"
-	cp -drf themes/* "$pkgdir/opt/elpAudioMini/"
+	cp -drf resources/* "$pkgdir/opt/elpAudioMini/resources"
+	cp -drf themes/* "$pkgdir/opt/elpAudioMini/themes"
 	cp "elpAudioMini" "$pkgdir/opt/elpAudioMini/"
 	echo elpAudioMini was installed to /opt/elpAudioMini
 }
