@@ -6,7 +6,7 @@
 # armv7h tester: kauron
 pkgname=duplicati-bin
 pkgver=2.4.0.0
-pkgrel=1
+pkgrel=2
 _date=2026-09-03
 _branch=stable
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
@@ -40,7 +40,7 @@ backup=(
 sha256sums=('fbc76396405c645a3b9b7f00973540d4824f0cf634fa8369c6dfe2dd711cb38c'
             'feacc64d9d746aeeeeae4bef004640cbc49a35560aad6ba98c905a0c5ca3291b'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
-            'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
+            '173462a64fc5eaca287bf4b0b082206ea0e99edf846dc84487d73a0b14d8ef76'
             '3200d8d4c73dd677368e9837d07aec93a4cead2fb7d679376f1f8fd67366503c')
 sha256sums_x86_64=('d73f2c7d4d7d901f46ca72938d7c762f4b35998df23cf3ad587984f57a88b1e5')
 sha256sums_aarch64=('382bea5691f6b65faf5e0faa67edeb27d5ef678613254faa8e78fb1a2d1a73dc')
