@@ -1,8 +1,8 @@
 pkgbase = nextcloud-native-bin
 	pkgdesc = Adaptive native client for Nextcloud files, media and apps (upstream binary)
 	pkgver = 0.1.0alpha.2
-	pkgrel = 1
-	url = https://nc-native.obiente.dev
+	pkgrel = 2
+	url = https://nati.ve
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	depends = alsa-lib
@@ -37,7 +37,7 @@ pkgbase = nextcloud-native-bin
 	noextract = nextcloud-native-bin-0.1.0alpha.2.deb
 	options = !strip
 	options = !debug
-	source = nextcloud-native-bin-0.1.0alpha.2.deb::https://github.com/Obiente/nc-native/releases/download/v0.1.0-alpha.2/nextcloudnative_1.0.3822_amd64.deb
+	source = nextcloud-native-bin-0.1.0alpha.2.deb::https://github.com/Obiente/native/releases/download/v0.1.0-alpha.2/nextcloudnative_1.0.3822_amd64.deb
 	sha256sums = df8e3e616c79c4ce3f7597fa9b88c188a956475f2af4128bc7a70692ebf39325
 
 pkgname = nextcloud-native-bin

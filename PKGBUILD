@@ -4,10 +4,10 @@
 
 pkgname=nextcloud-native-bin
 pkgver=0.1.0alpha.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Adaptive native client for Nextcloud files, media and apps (upstream binary)"
 arch=('x86_64')
-url="https://nc-native.obiente.dev"
+url="https://nati.ve"
 license=('AGPL-3.0-or-later')
 # jpackage bundles its own Java runtime, so these are the shared libraries the
 # upstream .deb declares plus libsecret, whose secret-tool the client calls to
@@ -28,7 +28,7 @@ options=('!strip' '!debug')
 # number that cannot be derived from pkgver - both are refreshed automatically.
 _tag="v0.1.0-alpha.2"
 _asset="nextcloudnative_1.0.3822_amd64.deb"
-source=("${pkgname}-${pkgver}.deb::https://github.com/Obiente/nc-native/releases/download/${_tag}/${_asset}")
+source=("${pkgname}-${pkgver}.deb::https://github.com/Obiente/native/releases/download/${_tag}/${_asset}")
 noextract=("${pkgname}-${pkgver}.deb")
 sha256sums=('df8e3e616c79c4ce3f7597fa9b88c188a956475f2af4128bc7a70692ebf39325')
 
