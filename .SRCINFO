@@ -1,0 +1,19 @@
+pkgbase = lazycomd-bin
+	pkgdesc = One daemon for every long-running command
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/thanhphuchuynh/lazycomd
+	arch = x86_64
+	arch = aarch64
+	license = Unlincense
+	provides = lazycomd
+	conflicts = lazycomd
+	options = !strip
+	source = README-0.4.0.md::https://raw.githubusercontent.com/thanhphuchuynh/lazycomd/v0.4.0/README.md
+	sha256sums = a3db07812cd12533c21b0def969e6c91efadc9ed5d0113a7e082a93e51349677
+	source_x86_64 = lazycomd-x86_64-0.4.0::https://github.com/thanhphuchuynh/lazycomd/releases/download/v0.4.0/lazycomd_linux_amd64
+	sha256sums_x86_64 = 2c64e60c7bda2a90c6aae39fe3e46b5c7c2e035b2bd172f89e577374a4ec6abe
+	source_aarch64 = lazycomd-aarch64-0.4.0::https://github.com/thanhphuchuynh/lazycomd/releases/download/v0.4.0/lazycomd_linux_arm64
+	sha256sums_aarch64 = 4f1c726f14698b08837e9d2fb1468876ffbb68af65db8fc5217a79ec4098a387
+
+pkgname = lazycomd-bin

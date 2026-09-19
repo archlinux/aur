@@ -1,0 +1,5 @@
+[lazycomd-bin]
+source = "github"
+github = "thanhphuchuynh/lazycomd"
+use_latest_release = true
+prefix = "v"
