@@ -1,0 +1,9 @@
+#!/bin/sh
+# Current upstream's frameless native Wayland window is invisible on KWin.
+# Select only the UI backend; preserve WAYLAND_DISPLAY for capture detection.
+if [ -z "${QT_QPA_PLATFORM:-}" ] && [ -n "${WAYLAND_DISPLAY:-}" ]; then
+    case ":${XDG_CURRENT_DESKTOP:-}:" in
+        *:KDE:*) export QT_QPA_PLATFORM=xcb ;;
+    esac
+fi
+exec /usr/bin/python /usr/lib/fthr-clips/FTHR_UI/main.py "$@"
