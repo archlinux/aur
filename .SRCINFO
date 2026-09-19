@@ -1,0 +1,16 @@
+pkgbase = skip-git
+	pkgdesc = A replacement for sleep that snores (git version)
+	pkgver = r3.72cbff1
+	pkgrel = 1
+	url = https://codeberg.org/Jakepys/skip
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go
+	makedepends = git
+	provides = kip
+	conflicts = kip
+	source = skip-git::git+https://codeberg.org/Jakepys/skip.git
+	sha256sums = SKIP
+
+pkgname = skip-git
