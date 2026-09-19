@@ -1,6 +1,6 @@
 pkgbase = winkel-bin
 	pkgdesc = A metronome for Omarchy that follows the live theme (prebuilt binary)
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/DouglasdeMoura/winkel
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = winkel-bin
 	optdepends = ttf-jetbrains-mono-nerd: the default interface font
 	provides = winkel
 	conflicts = winkel
-	source_x86_64 = https://github.com/DouglasdeMoura/winkel/releases/download/v0.1.5/winkel-0.1.5-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 7c69d3bfdc7a3029da155c81c362835055071198aca8b27a4b712faec2078df8
-	source_aarch64 = https://github.com/DouglasdeMoura/winkel/releases/download/v0.1.5/winkel-0.1.5-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 9d994896a37c81234fe0a83e678c553ea39fc4fb8fdd06cdaf8ea6bee3e3dfcf
+	source_x86_64 = https://github.com/DouglasdeMoura/winkel/releases/download/v0.1.6/winkel-0.1.6-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 552ac57368d53a58ad6dcc4acc53b46872abd81f04c232c5b2c70713639b6bad
+	source_aarch64 = https://github.com/DouglasdeMoura/winkel/releases/download/v0.1.6/winkel-0.1.6-aarch64-linux.tar.gz
+	sha256sums_aarch64 = a088db0baa60d75d987b8f38938b3778567663192534cad483086d94bae867e9
 
 pkgname = winkel-bin
