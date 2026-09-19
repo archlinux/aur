@@ -1,6 +1,6 @@
 pkgbase = pshash
 	pkgdesc = A functional pseudo-hash password generator
-	pkgver = 0.1.20.4
+	pkgver = 0.1.21.0
 	pkgrel = 1
 	url = https://github.com/thornoar/pshash
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = pshash
 	depends = haskell-random
 	provides = pshash
 	conflicts = pshash
-	source = source.tar.gz::https://github.com/thornoar/pshash/archive/refs/tags/v0.1.20.4.tar.gz
-	sha256sums = ddd97056235bb6e4e625428f4d8fda49e133a0ae49e6a36f4c31b0abab414cbe
+	source = source.tar.gz::https://github.com/thornoar/pshash/archive/refs/tags/v0.1.21.0.tar.gz
+	sha256sums = f03bbb6664f039bcf2f145c6b67117da00dfa2ae7d1d6d74bf5e21f217191957
 
 pkgname = pshash
