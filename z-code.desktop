@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ZCode
+Comment=AI coding agent desktop app by Z.ai
+Exec=/usr/bin/z-code %U
+Icon=zcode
+Type=Application
+StartupNotify=true
+StartupWMClass=ZCode
+Categories=Development;IDE;
+MimeType=x-scheme-handler/zcode;
+Keywords=zcode;z.ai;glm;ai;code;
