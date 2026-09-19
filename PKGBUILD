@@ -15,6 +15,7 @@ depends=(
   'ffmpeg'
   'ffmpegthumbnailer'
   'fontconfig'
+  'glibc>=2.39'
   'gst-libav'
   'gstreamer'
   'gst-plugins-base'
@@ -30,15 +31,23 @@ optdepends=(
   'imagemagick: additional image preview support'
   'libraw: camera RAW preview support'
   'dcraw: camera RAW preview support'
+  'xdg-desktop-portal: use Strata for Open/Save file chooser dialogs'
+  'udiskie: unlock encrypted volumes with Strata'
 )
-source=(
+source_x86_64=(
   "https://github.com/lgse/strata/releases/download/v${pkgver}/strata-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
+)
+sha256sums_x86_64=(
+  'b849b54b4dc6b160262899d320ce6d3e11b6de36a77c8984b7b7c09a2a2bff54'
+)
+
+source_aarch64=(
   "https://github.com/lgse/strata/releases/download/v${pkgver}/strata-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
-sha256sums=(
-  'b849b54b4dc6b160262899d320ce6d3e11b6de36a77c8984b7b7c09a2a2bff54'
+sha256sums_aarch64=(
   '56240c5402a334b686b7dc065afc654441c8b023222410f747665bf15260d599'
 )
+
 
 package() {
   local _dir="strata-${pkgver}-${CARCH}-unknown-linux-gnu"
@@ -53,5 +62,5 @@ package() {
   install -Dm644 UnRAR.txt "$pkgdir/usr/share/licenses/$pkgname/UnRAR.txt"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 docs/portal-file-chooser.md "$pkgdir/usr/share/doc/$pkgname/portal-file-chooser.md"
-  install -Dm644 io.github.lgse.Strata.FileManager1.service "$pkgdir/usr/share/doc/$pkgname/io.github.lgse.Strata.FileManager1.service"
+  install -Dm644 io.github.lgse.Strata.FileManager1.service "$pkgdir/usr/share/dbus-1/services/io.github.lgse.Strata.FileManager1.service"
 }
