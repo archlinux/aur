@@ -13,7 +13,7 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 options=('!debug')
 source_x86_64=("${url}/releases/download/${pkgver}-${pkgrel}/dlssnr_${pkgver}-${pkgrel}_debian13_amd64.deb")
-sha256sums_x86_64=('2a498e2d9add99bb46f8c13a0aa27024367b12089c4267383e62e873cbab8ca4')
+sha256sums_x86_64=('397e270faff3fefd09a01a948992aa1dae36eac9f99a5cef92c89907d56394a0')
 
 
 prepare() {
