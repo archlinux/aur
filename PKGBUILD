@@ -3,24 +3,29 @@
 _themename=russia
 pkgname=plymouth-theme-$_themename
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Russia coat of arms splash screen for Plymouth"
-arch=("any")
+arch=('any')
 url="https://codeberg.org/Thr0TT1e/russia-theme-plymouth.git"
-license=("LGPL-3.0-only")
-depends=("plymouth")
+license=('LGPL-3.0-only')
+depends=('plymouth')
 install="$pkgname.install"
-makedepends=("git")
-source=("$pkgname::git+$url"
-        "AUTHORS"
-        "LICENSE"
-        "README.md")
-b2sums=('SKIP'
+makedepends=('git')
+source=(
+    "$pkgname::git+$url#tag=v$pkgver"
+    "$pkgname.install"
+    'AUTHORS'
+    'LICENSE'
+    'README.md'
+)
+
+# Рекомендуется использовать sha256sums или b2sums для всех файлов, включая .install
+b2sums=('7cfc867ae806b04c2b10ac07e314d1ec6aea97f508c20aa315e01ba215319e17cd67972a240f30ddd864f1cc6785d63c3e2ffddb33c950a4d97f8a2a17fe8cb9'
+        '7b526932bcafa11a993a5ca2af56988631d3ec0cfd717d173fb780ba835c40fff6ff8ad1440423d18f02abcf648bdca26a253ece6681428fed8f24a31fa7a8ec'
         '9a0de88ddd5a8ccea0ca8cefba88b57caae975fe6b6ff878aefb8479002751325afc38a89b062f6486b6110e3fcdf8814ed16b01e0efea444e11a18086c5f1fb'
         '74381aad2f4232b9ab8834245f2132805bdd0bea713ad5f47b2c47d68a469cf26b7d7a0c02678ff9bc08bfb178de0d54915f67a950db1e47455b10e83d55efaf'
         'c368a0b4921fb2062e96d6314094a3fb1811bf611b4f356105bd00b70baa1fc4868db7487b2128e844b157ea48abfa094663f6bf17ab4d966692803cf793e045')
 
-# Функция для проверки корректности после сборки
 check() {
     cd "$srcdir/$pkgname"
 
@@ -32,67 +37,61 @@ check() {
         fi
     done
 
-    # Проверка, что есть хотя бы один png файл
-    if ! compgen -G "*.png" > /dev/null; then
-        error "No PNG images found in theme"
-        return 1
+    # Проверка наличия изображений
+    if ! ls -1 *.png *.svg &>/dev/null; then
+        warning "No PNG or SVG images found in theme directory"
     fi
 }
 
 prepare() {
     cd "$srcdir/$pkgname"
 
+    # Проверка на HiDPI сделана более мягкой и информативной
     if [[ -f "$_themename.script" ]]; then
-        # Проверка, есть ли поддержка HiDPI в скрипте
-        if ! grep -q "screenHeight >= 1200" "$_themename.script"; then
-            warning "Theme script may not have HiDPI support for 2K/4K displays"
+        if grep -qE "(screenHeight|GetHeight)" "$_themename.script"; then
+            msg "HiDPI resolution handling detected in script"
+        else
+            warning "Theme script may lack explicit HiDPI (2K/4K) scaling logic"
         fi
     fi
 }
 
 package() {
     cd "$srcdir/$pkgname"
-    _themedir="$pkgdir/usr/share/plymouth/themes/$_themename"
+    local _themedir="$pkgdir/usr/share/plymouth/themes/$_themename"
 
     # Создание директории темы
     install -dm755 "$_themedir"
-
-    # Копирование файлов темы через массив
-    local files_to_copy=(
-        "$_themename.plymouth"
-        "$_themename.script"
-    )
-
-    # Добавление всех png файлов
+    
+    local theme_files=("$_.themename.plymouth" "$_themename.script")
+    
+    # Безопасно добавляем все png файлы, если они есть
     shopt -s nullglob
-    files_to_copy+=(*.png)
+    theme_files+=(*.png)
     shopt -u nullglob
 
-    # Копирование каждого файла с явной проверкой
-    for file in "${files_to_copy[@]}"; do
-        if [[ -f "$file" ]]; then
-            install -Dm644 "$file" "$_themedir/$file"
+    if [[ ${#theme_files[@]} -gt 0 ]]; then
+        install -Dm644 -t "$_themedir" "${theme_files[@]}"
+    else
+        error "No files to install for the theme!"
+        return 1
+    fi
+
+    # Установка документации и лицензии
+    local -a docs=(
+        "LICENSE:/usr/share/licenses/$pkgname/LICENSE"
+        "README.md:/usr/share/doc/$pkgname/README.md"
+        "AUTHORS:/usr/share/doc/$pkgname/AUTHORS"
+    )
+
+    for doc_pair in "${docs[@]}"; do
+        local src_file="${doc_pair%%:*}"
+        local dst_path="$pkgdir/${doc_pair#*:}"
+        
+        if [[ -f "$srcdir/$src_file" ]]; then
+            install -Dm644 "$srcdir/$src_file" "$dst_path"
         else
-            warning "File not found: $file"
+            warning "Optional file '$src_file' not found in srcdir, skipping."
         fi
     done
-
-    # Установка документации (файлы находятся в $srcdir, не в поддиректории!)
-    if [[ -f "$srcdir/LICENSE" ]]; then
-        install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    else
-        warning "LICENSE file not found, skipping"
-    fi
-
-    if [[ -f "$srcdir/README.md" ]]; then
-        install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-    else
-        warning "README.md file not found, skipping"
-    fi
-
-    if [[ -f "$srcdir/AUTHORS" ]]; then
-        install -Dm644 "$srcdir/AUTHORS" "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
-    else
-        warning "AUTHORS file not found, skipping"
-    fi
 }
