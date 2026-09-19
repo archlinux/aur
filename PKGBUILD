@@ -2,7 +2,7 @@
 
 pkgname=python-sigfig
 _name=${pkgname#python-}
-pkgver=1.3.19
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Python library for rounding numbers (with expected results)"
 provides=(${pkgname})
@@ -21,7 +21,7 @@ makedepends=(
     'python-wheel')
 license=('MIT')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a9e4fa37aa7595cc01b7207bfabf86cccd2d3edfddcdaa925ffd57dd77efcd9e')
+sha256sums=('ea818f83bffa2ee4d1dce7d4afcfddc03a9214b8aa952be4ad47b4996eba8e70')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
