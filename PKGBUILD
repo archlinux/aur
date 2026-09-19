@@ -5,7 +5,7 @@ pkgname=(
     'python-slint-git'
     'slint-cpp-git'
     'slint-tools-git')
-pkgver=1.17.0.r6.g381287b30c
+pkgver=1.18.0.r70.gceadeb9da9
 pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces (git version)'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
@@ -32,7 +32,7 @@ source=('git+https://github.com/slint-ui/slint.git'
         '010-slint-cpp-disable-jemalloc.patch'
         '020-slint-allow-python-maturin-0.14.1.patch')
 sha256sums=('SKIP'
-            'c15240a6330c486652ad72e0e438aed19eb044e41523beea16dade7c4e483ca9'
+            'd9cc59bca0c5b8cc0c4fc61deedfa5cf2e810a63f317fb65e649ce862d4abaa8'
             '784edbc91e7f5c6e9fcc650a652d30f7f1027a115e657a96b719b0e46f78f988')
 
 prepare () {
