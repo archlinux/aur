@@ -2,7 +2,7 @@
 
 _themename=russia
 pkgname=plymouth-theme-$_themename
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Russia coat of arms splash screen for Plymouth"
 arch=("any")
