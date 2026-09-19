@@ -1,20 +1,20 @@
 pkgbase = heft-bin
 	pkgdesc = Read-only Linux TUI for application-weight process accounting
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/Rethunk-Tech/heft
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	provides = heft=0.12.0
+	provides = heft=0.12.1
 	conflicts = heft
 	options = !strip
 	options = !debug
-	source = heft-completions-man-0.12.0.tar.gz::https://github.com/Rethunk-Tech/heft/releases/download/v0.12.0/heft-completions-man.tar.gz
-	sha256sums = 0884a21de2961f1eb96f8feb91fb991b1d4aff86e8f622b37d82bd5384181860
-	source_x86_64 = heft-0.12.0-x86_64::https://github.com/Rethunk-Tech/heft/releases/download/v0.12.0/heft-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 38e07147d76bd476a5ab08426d459dba835bc2eb0098ed5611577218454044b6
-	source_aarch64 = heft-0.12.0-aarch64::https://github.com/Rethunk-Tech/heft/releases/download/v0.12.0/heft-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = e755f6e75aa51b5330f9d7cd947c50be123d1a5d2d360e6ffce08a114bd7ea70
+	source = heft-completions-man-0.12.1.tar.gz::https://github.com/Rethunk-Tech/heft/releases/download/v0.12.1/heft-completions-man.tar.gz
+	sha256sums = 17f2eeb6f49d6b8cfd7415958449c2e2240e9e153653f9fad9451b65c6355096
+	source_x86_64 = heft-0.12.1-x86_64::https://github.com/Rethunk-Tech/heft/releases/download/v0.12.1/heft-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = dabb6eabd8724e731f9cdcdd7e1f62b1833461193a07fa8420b34ced3e7b6428
+	source_aarch64 = heft-0.12.1-aarch64::https://github.com/Rethunk-Tech/heft/releases/download/v0.12.1/heft-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = cff3b3e8d32ad70cf7977488d4145dbef3a5daf3f09858afb7e7da32dcbae552
 
 pkgname = heft-bin
