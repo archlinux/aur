@@ -4,10 +4,10 @@
 
 pkgname=waydroid-helper-bin
 pkgver=0.2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI application for Waydroid configuration and extension installation (upstream AppImage)"
 arch=('x86_64')
-url="https://github.com/ayasa520/waydroid-helper"
+url="https://github.com/waydroid-helper/waydroid-helper"
 license=('GPL-3.0-or-later')
 # the AppImage bundles Python, GTK4, VTE, adb and fakeroot; these are what is
 # left over
