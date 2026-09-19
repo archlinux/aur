@@ -3,7 +3,7 @@
 _themename=russia
 pkgname=plymouth-theme-$_themename
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Russia coat of arms splash screen for Plymouth"
 arch=('any')
 url="https://codeberg.org/Thr0TT1e/russia-theme-plymouth.git"
@@ -28,10 +28,6 @@ b2sums=('669b09d9b2e9d49cb0ecd73cc03393bfdae5e54e575ff56e1e5c6b7daa4e87b4ffe639d
 
 check() {
     cd "$srcdir/$pkgname" || return 1
-
-    msg "=== Отладка: содержимое директории $PWD ==="
-    ls -la
-    msg "============================================"
 
     # Безопасное обращение к переменным через ${_themename}
     for required in "${_themename}.plymouth" "${_themename}.script"; do
