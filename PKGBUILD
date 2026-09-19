@@ -5,17 +5,17 @@
 # Before the first upload: refresh .SRCINFO (makepkg --printsrcinfo).
 
 pkgname=xca-rs-bin
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="XCA (X Certificate and Key Management) rewritten in Rust with GTK4 and GOST support — prebuilt binary"
+pkgdesc="XCA rewritten in Rust with GTK4 and GOST support — prebuilt binary"
 arch=('x86_64')
 url="https://github.com/RinWate/xca-rs"
 license=('GPL-2.0-or-later')
-depends=('gtk4' 'libadwaita' 'openssl' 'openssl-gost-engine' 'glib2' 'glibc')
+depends=('gtk4' 'libadwaita' 'openssl' 'openssl-gost-engine' 'glib2' 'glibc' 'poppler')
 provides=("${pkgname%-bin}=$pkgver")
 conflicts=("${pkgname%-bin}")
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/xca-rs-$pkgver-x86_64.tar.gz")
-sha256sums=('26194f368b443ac4901c17ee2c24f4958b85e4dd819808c02a370468b9e1c15c')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/xca-rs-$pkgver-x86_64.pkg.tar.zst")
+sha256sums=('e8c4122d1f9f58e14a172f00048f89ed9683745d336531c4ddffcc485d54bd83')
 
 _dir="xca-rs-$pkgver-x86_64"
 
