@@ -1,0 +1,17 @@
+pkgbase = effy
+	pkgdesc = A small and friendly terminal FFmpeg helper that simplifies common tasks
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://projects.annimon.com/projects/effy/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = ffmpeg
+	depends = gcc-libs
+	depends = glibc
+	options = !debug
+	source = effy-0.9.0.tar.gz::https://github.com/aNNiMON/effy/archive/refs/tags/v0.9.0.tar.gz
+	b2sums = 2e5aed2147199b8566383fe62cea9f343f6caf85eca523806ed7e24f378e18e66e14618780629db971cf596a44722ee2a78b545fc6f031661536f99d65b88dd5
+
+pkgname = effy
