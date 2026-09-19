@@ -3,8 +3,8 @@
 
 _pkgname="perl-x11-guitest"
 pkgname="$_pkgname"
-pkgver=0.28
-pkgrel=4
+pkgver=0.29
+pkgrel=1
 pkgdesc="Provides GUI testing/interaction routines"
 url='https://metacpan.org/release/X11-GUITest'
 license=('GPL-2.0-or-later')
@@ -23,7 +23,7 @@ options=('!emptydirs')
 
 _pkgsrc="X11-GUITest-$pkgver"
 source=("https://cpan.metacpan.org/authors/id/C/CT/CTRONDLP/$_pkgsrc.tar.gz")
-sha256sums=('dceede53700610fff142dc9d5c4e4cd0370c88a4f2b1371f9cbf4d8d8ce6f64b')
+sha256sums=('59f78085e48f7b0400cfcf82617de0f4c87514273951573fbe733b491befc5c5')
 
 build() {
   export PERL_MM_USE_DEFAULT=1
