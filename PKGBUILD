@@ -1,7 +1,7 @@
 # Maintainer: Twilight0 <https://github.com/Twilight0>
 pkgname=nouveau-fermi-reclock-dkms
 _pkgname=nouveau-fermi-reclock
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Unified Nouveau out-of-tree module with Fermi core, shader, and DDR3 memory reclocking (DKMS)"
 arch=('x86_64')
@@ -21,9 +21,9 @@ source=(
   "nouveau-tui"
 )
 sha256sums=('1426cea7f5c4959cfcaec78b4974cde3071f51eb9fdf9beedf38efae0bc6b9ad'
-            '56216be43f7b8fcef0ea697af7ad68ed098381b4e6c1107a2e2d98c4ee05356b'
+            '4f1dd1678dc6acbc7400a55da4acb07ae1a7222cd9f94658291045880de921eb'
             'f2876f7cc04ca907063832488f5f8488bd61d49e18886001bd87e545e53381a0'
-            '0a3bba336815f0ef357de223f4210138586696fbea462baf8e616c44802d55be'
+            '80fd6268f03730c053c56ac67d9dfea450ac88e93b83aa60914d47dc218e4b97'
             '540d34a1aa71d71cebc1db4ecce8a1b40053a10c6173d17dd314170fa51b9ade'
             'c81b76976422580315f805dbc83f428cba9186e86493e5757c78a1c717a1f6c3'
             '87f698b1de37689cb3889bfae916ceaba1caca634ab6a653b1602bda613b20e4'

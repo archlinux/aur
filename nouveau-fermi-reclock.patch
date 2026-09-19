@@ -1,6 +1,6 @@
 diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/dispnv50/disp.c nouveau-source/dispnv50/disp.c
---- nouveau-orig/dispnv50/disp.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-source/dispnv50/disp.c	2026-09-07 14:09:18.281423430 +0300
+--- nouveau-orig/dispnv50/disp.c	2026-09-19 09:19:27.856133967 +0300
++++ nouveau-source/dispnv50/disp.c	2026-09-19 09:17:27.351762287 +0300
 @@ -228,6 +228,10 @@ MODULE_PARM_DESC(kms_vram_pushbuf, "Plac
  static int nv50_dmac_vram_pushbuf = -1;
  module_param_named(kms_vram_pushbuf, nv50_dmac_vram_pushbuf, int, 0400);
@@ -32,8 +32,8 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	nv50_audio_component_init(drm);
  
 diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nouveau_backlight.c nouveau-source/nouveau_backlight.c
---- nouveau-orig/nouveau_backlight.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-source/nouveau_backlight.c	2026-09-07 14:09:18.282840660 +0300
+--- nouveau-orig/nouveau_backlight.c	2026-09-19 09:19:27.912134139 +0300
++++ nouveau-source/nouveau_backlight.c	2026-09-19 09:17:27.354650203 +0300
 @@ -344,10 +344,7 @@ nouveau_backlight_init(struct drm_connec
  		goto fail_alloc;
  	}
@@ -47,8 +47,8 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	if (!nouveau_get_backlight_name(backlight_name, bl)) {
  		NV_ERROR(drm, "Failed to retrieve a unique name for the backlight interface\n");
 diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/base.c nouveau-source/nvkm/subdev/clk/base.c
---- nouveau-orig/nvkm/subdev/clk/base.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-source/nvkm/subdev/clk/base.c	2026-09-17 17:14:40.038439996 +0300
+--- nouveau-orig/nvkm/subdev/clk/base.c	2026-09-19 09:19:27.966983231 +0300
++++ nouveau-source/nvkm/subdev/clk/base.c	2026-09-19 09:17:27.355762299 +0300
 @@ -282,15 +282,30 @@ nvkm_pstate_prog(struct nvkm_clk *clk, i
  
  	nvkm_pcie_set_link(pci, pstate->pcie_speed, pstate->pcie_width);
@@ -127,8 +127,8 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  }
  
 diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-source/nvkm/subdev/clk/gf100.c
---- nouveau-orig/nvkm/subdev/clk/gf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-source/nvkm/subdev/clk/gf100.c	2026-09-18 03:18:42.426084151 +0300
+--- nouveau-orig/nvkm/subdev/clk/gf100.c	2026-09-19 09:19:27.966983231 +0300
++++ nouveau-source/nvkm/subdev/clk/gf100.c	2026-09-19 09:17:27.376762364 +0300
 @@ -91,6 +91,9 @@ read_pll(struct gf100_clk *clk, u32 pll)
  		return 0;
  	}
@@ -214,7 +214,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  }
 diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/fexec_code.inc nouveau-source/nvkm/subdev/fb/fexec_code.inc
 --- nouveau-orig/nvkm/subdev/fb/fexec_code.inc	1970-01-01 02:00:00.000000000 +0200
-+++ nouveau-source/nvkm/subdev/fb/fexec_code.inc	2026-09-17 21:19:44.911419243 +0300
++++ nouveau-source/nvkm/subdev/fb/fexec_code.inc	2026-09-19 09:17:27.377865130 +0300
 @@ -0,0 +1,243 @@
 +/* Native resident Falcon executor for Fermi GF106 DDR3 reclocking */
 +static const u32 fexec_code[] = {
@@ -460,8 +460,8 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
 +	0x00000000, 0x00000000, 0x00000000, 0x00000000,
 +};
 diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/ramfuc.h nouveau-source/nvkm/subdev/fb/ramfuc.h
---- nouveau-orig/nvkm/subdev/fb/ramfuc.h	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-source/nvkm/subdev/fb/ramfuc.h	2026-09-07 14:09:18.333515126 +0300
+--- nouveau-orig/nvkm/subdev/fb/ramfuc.h	2026-09-19 09:19:27.973134327 +0300
++++ nouveau-source/nvkm/subdev/fb/ramfuc.h	2026-09-19 09:17:27.378195373 +0300
 @@ -4,10 +4,15 @@
  #include <subdev/fb.h>
  #include <subdev/pmu.h>
@@ -669,9 +669,9 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  
  #define ram_init(s,p)        ramfuc_init(&(s)->base, (p))
 diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-source/nvkm/subdev/fb/ramgf100.c
---- nouveau-orig/nvkm/subdev/fb/ramgf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-source/nvkm/subdev/fb/ramgf100.c	2026-09-17 21:20:21.178635156 +0300
-@@ -123,6 +123,286 @@ gf100_ram_train(struct gf100_ramfuc *fuc
+--- nouveau-orig/nvkm/subdev/fb/ramgf100.c	2026-09-19 09:19:27.973134327 +0300
++++ nouveau-source/nvkm/subdev/fb/ramgf100.c	2026-09-19 09:18:34.088968128 +0300
+@@ -123,6 +123,300 @@ gf100_ram_train(struct gf100_ramfuc *fuc
  	}
  }
  
@@ -742,6 +742,19 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
 +
 +	/* Check if resident executor is already running and ready in Falcon IMEM */
 +	if (fexec_resident_running) {
++		u32 s0 = nvkm_rd32(device, 0x10a080);
++
++		/* Across S3 suspend/resume or Falcon reset, IMEM is cleared and S0 drops to 0x0.
++		 * If our resident handshake signature (0xE1EC0001) is missing, Falcon is uninitialized.
++		 * Fall back immediately to the cold path to reload the resident executor. */
++		if (s0 != 0xE1EC0001) {
++			nvkm_info(subdev, "DDR3: Falcon lost resident executor across suspend/reset (S0=%08x, PC=%08x), reloading via cold path\n",
++				  s0, nvkm_rd32(device, 0x10aff0));
++			fexec_resident_running = false;
++		}
++	}
++
++	if (fexec_resident_running) {
 +		u32 uc_ctrl = nvkm_rd32(device, 0x10a100);
 +		u32 s0 = nvkm_rd32(device, 0x10a080);
 +		u32 s1 = nvkm_rd32(device, 0x10a084);
@@ -808,6 +821,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
 +			   nvkm_rd32(device, 0x10a100),
 +			   nvkm_rd32(device, 0x10aff0),
 +			   nvkm_rd32(device, 0x10a128));
++		fexec_resident_running = false;
 +		return -ETIMEDOUT;
 +	}
 +
@@ -958,7 +972,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  int
  gf100_ram_calc(struct nvkm_ram *base, u32 freq)
  {
-@@ -143,6 +423,9 @@ gf100_ram_calc(struct nvkm_ram *base, u3
+@@ -143,6 +437,9 @@ gf100_ram_calc(struct nvkm_ram *base, u3
  	int N1, M1, P;
  	int ret;
  
@@ -968,7 +982,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	/* lookup memory config data relevant to the target frequency */
  	rammap.data = nvbios_rammapEm(bios, freq / 1000, &ver, &rammap.size,
  				      &cnt, &ramcfg.size, &cfg);
-@@ -408,6 +691,22 @@ gf100_ram_prog(struct nvkm_ram *base)
+@@ -408,6 +705,22 @@ gf100_ram_prog(struct nvkm_ram *base)
  {
  	struct gf100_ram *ram = gf100_ram(base);
  	struct nvkm_device *device = ram->base.fb->subdev.device;
@@ -991,7 +1005,17 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	ram_exec(&ram->fuc, nvkm_boolopt(device->cfgopt, "NvMemExec", true));
  	return 0;
  }
-@@ -650,6 +949,14 @@ gf100_ram_new_(const struct nvkm_ram_fun
+@@ -438,6 +751,9 @@ gf100_ram_init(struct nvkm_ram *base)
+ 	struct nvkm_device *device = ram->base.fb->subdev.device;
+ 	int i;
+ 
++	/* Reset resident executor state across subdev reinit/resume */
++	fexec_resident_running = false;
++
+ 	switch (ram->base.type) {
+ 	case NVKM_RAM_TYPE_GDDR5:
+ 		break;
+@@ -650,6 +966,14 @@ gf100_ram_new_(const struct nvkm_ram_fun
  	ram->fuc.r_0x611200 = ramfuc_reg(0x611200);
  
  	ram->fuc.r_0x13d8f4 = ramfuc_reg(0x13d8f4);
@@ -1007,8 +1031,8 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  }
  
 diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h
---- nouveau-orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-09-07 14:09:18.334644255 +0300
+--- nouveau-orig/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-09-19 09:19:27.990906184 +0300
++++ nouveau-source/nvkm/subdev/pmu/fuc/gf100.fuc3.h	2026-09-19 09:17:27.399762435 +0300
 @@ -1260,7 +1260,7 @@ static uint32_t gf100_pmu_code[] = {
  	0xb8525413,
  	0x0bf406e1,
@@ -1034,8 +1058,8 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	0x17f100f8,
  	0x14b60080,
 diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-source/nvkm/subdev/pmu/gt215.c
---- nouveau-orig/nvkm/subdev/pmu/gt215.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-source/nvkm/subdev/pmu/gt215.c	2026-09-07 15:06:39.534885364 +0300
+--- nouveau-orig/nvkm/subdev/pmu/gt215.c	2026-09-19 09:19:27.991134383 +0300
++++ nouveau-source/nvkm/subdev/pmu/gt215.c	2026-09-19 09:17:27.401762441 +0300
 @@ -23,6 +23,7 @@
   */
  #include "priv.h"
@@ -1625,8 +1649,8 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  }
  
 diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/pmu/memx.c nouveau-source/nvkm/subdev/pmu/memx.c
---- nouveau-orig/nvkm/subdev/pmu/memx.c	2026-06-12 01:03:26.000000000 +0300
-+++ nouveau-source/nvkm/subdev/pmu/memx.c	2026-09-07 14:09:18.336312616 +0300
+--- nouveau-orig/nvkm/subdev/pmu/memx.c	2026-09-19 09:19:27.991134383 +0300
++++ nouveau-source/nvkm/subdev/pmu/memx.c	2026-09-19 09:17:27.403762447 +0300
 @@ -61,9 +61,11 @@ nvkm_memx_init(struct nvkm_pmu *pmu, str
  	memx->size = reply[1];
  
