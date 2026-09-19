@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.1.42
+pkgver=0.1.43
 pkgrel=1
 pkgdesc="Control suite and PipeWire submixer for Elgato XLR interfaces, with an OpenDeck plugin"
 arch=('x86_64')
@@ -13,8 +13,17 @@ optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'lsp-plugins-lv2: a starter set of LV2 plugins for the inserts'
             'opendeck: Stream Deck control through the bundled plugin')
 install=openxlr.install
+
+# Omarchy 4 replaced Waybar with its own Quickshell process, whose bar is
+# built from plugins. Ship the mixer's bar plugin only when the build host
+# has that shell, so a package built on plain Arch is unchanged.
+_openxlr_omarchy=0
+if [[ -f /usr/share/omarchy/shell/Ui/PluginBarApi.qml ]]; then
+    _openxlr_omarchy=1
+    depends+=(qt6-websockets)
+fi
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('67149616b3e80299b3dedc9729731e3986ad4ae05c4b30ca67b998481808aba9')
+sha256sums=('3f621bbe2c4a7b654d4161e9fb808a0961a15925c6be712ad2c1f390475277a9')
 
 build() {
   cd "$pkgname-$pkgver/src"
@@ -77,4 +86,14 @@ WRAP
   cp -r plugin/com.emaspa.openxlr.sdPlugin "$pkgdir/usr/share/openxlr/"
   find "$pkgdir/usr/share/openxlr" -type f -exec chmod 644 {} +
   find "$pkgdir/usr/share/openxlr" -type d -exec chmod 755 {} +
+
+  # A package cannot write into a home directory, so the user runs
+  # openxlr-omarchy-enable once to link and enable the plugin.
+  if (( _openxlr_omarchy )); then
+    install -d "$pkgdir/usr/share/openxlr/omarchy/openxlr.mixer"
+    install -m644 packaging/omarchy/openxlr.mixer/{manifest.json,*.qml,*.js} \
+      "$pkgdir/usr/share/openxlr/omarchy/openxlr.mixer/"
+    install -Dm755 packaging/omarchy/openxlr-omarchy-enable \
+      "$pkgdir/usr/bin/openxlr-omarchy-enable"
+  fi
 }
