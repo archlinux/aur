@@ -5,8 +5,8 @@
 
 _pkgname="skippy-xd"
 pkgname="$_pkgname-git"
-pkgver=2026.06.24.r2.g455b3eb
-pkgrel=2
+pkgver=2026.09.13.r5.gf1e95a8
+pkgrel=1
 pkgdesc="A full-screen task switcher for X11, similar to Overview and Exposé"
 url="https://github.com/felixfung/skippy-xd"
 license=("GPL-2.0-or-later")
@@ -22,6 +22,7 @@ depends=(
   'libxinerama'
 )
 makedepends=(
+  'cmake'
   'git'
   'meson'
 )
@@ -32,8 +33,15 @@ conflicts=("$_pkgname")
 backup=('etc/xdg/skippy-xd.rc')
 
 _pkgsrc="felixfung.skippy-xd"
-source=("$_pkgsrc"::"git+$url.git")
-sha256sums=('SKIP')
+_pkgsrc_chipmunk="chipmunk"
+source=(
+  "$_pkgsrc"::"git+$url.git"
+  "$_pkgsrc_chipmunk"::"git+https://codeberg.org/slembcke/Chipmunk2D.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd "$_pkgsrc"
@@ -44,6 +52,9 @@ pkgver() {
 prepare() {
   # set version for AUR Edition
   echo "- $pkgver - AUR Edition" > "$_pkgsrc/version.txt"
+
+  # subprojects
+  ln -sf "$srcdir/$_pkgsrc_chipmunk" "$_pkgsrc/subprojects/chipmunk2d"
 }
 
 build() {
