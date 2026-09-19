@@ -1,14 +1,15 @@
 pkgbase = ytfe
 	pkgdesc = Lightweight YouTube client using the LCL toolkit
 	pkgver = 1.27.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://oscomp.hu
 	install = ytfe.install
 	arch = x86_64
 	arch = i686
 	license = custom
 	makedepends = xz
-	depends = qt5pas
+	depends_x86_64 = qt5pas
+	depends_i686 = gtk2
 	optdepends = yt-dlp: default downloader
 	optdepends = mpv: default player
 	optdepends = vlc: compatible video player
@@ -19,7 +20,7 @@ pkgbase = ytfe
 	sha256sums = 44bc1c569ae7829e65bc5ec3525ad260a2dc64d340da0f9912c4395552134eae
 	sha256sums = bf8e1295602992c618eacbc43a36c201293c8a159f49dd42a724c72f5e8a5267
 	source_x86_64 = ytfe_x86_64_1.27.2.xz::http://oscomp.hu/depot/ytfe_direct/1.27.1/ytfe_linux_x86_64.xz
-	sha256sums_x86_64 = 410b88ae9e167ac2d487d625aab1e44194f0e7961f47aa49b6c39391a993cf40
+	sha256sums_x86_64 = 49b5dd640ebbfb08752deb78583fe1314c2488518ea39fa30e329e764ee3cccb
 	source_i686 = ytfe_i686_1.27.2.xz::hhttp://oscomp.hu/depot/ytfe_direct/1.27.1/ytfe_linux_i686.xz
 	sha256sums_i686 = dee1f3d9f193cac777adc2b311700dea0f9424324410128b2924163d0cf09b2f
 
