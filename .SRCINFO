@@ -1,6 +1,6 @@
 pkgbase = tidemail-bin
 	pkgdesc = Keyboard-first terminal email client with multi-account mail, a unified inbox, drafts, contacts, search, and optional AI tools
-	pkgver = 1.0.23
+	pkgver = 1.0.24
 	pkgrel = 1
 	url = https://github.com/allisonhere/tidemail
 	arch = x86_64
@@ -11,15 +11,15 @@ pkgbase = tidemail-bin
 	optdepends = xclip: clipboard support on X11
 	optdepends = xsel: clipboard support on X11 (alternative to xclip)
 	optdepends = libnotify: desktop notifications for new mail
-	provides = tidemail=1.0.23
+	provides = tidemail=1.0.24
 	conflicts = tidemail
 	options = !strip
 	options = !debug
-	source = LICENSE-1.0.23::https://github.com/allisonhere/tidemail/raw/v1.0.23/LICENSE
+	source = LICENSE-1.0.24::https://github.com/allisonhere/tidemail/raw/v1.0.24/LICENSE
 	sha256sums = 7ded3abde5f4be92306e0ee24c6db97b1825e4eaa1b8fd473669c521f5a409dd
-	source_x86_64 = tidemail-bin-1.0.23-x86_64.tar.gz::https://github.com/allisonhere/tidemail/releases/download/v1.0.23/tidemail-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 92b94ea423db35e3102278c810bc1b12dd2c28cbb1c00afeb77a6e633f616029
-	source_aarch64 = tidemail-bin-1.0.23-aarch64.tar.gz::https://github.com/allisonhere/tidemail/releases/download/v1.0.23/tidemail-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 3ce2e07b11dde97f504a43c2c465dc70f5f442e8057eb40b3cf2dfae617c917f
+	source_x86_64 = tidemail-bin-1.0.24-x86_64.tar.gz::https://github.com/allisonhere/tidemail/releases/download/v1.0.24/tidemail-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 88bf363a521312cca9a3dd904cd0fdf01a616027e41a35ca89275219ae479869
+	source_aarch64 = tidemail-bin-1.0.24-aarch64.tar.gz::https://github.com/allisonhere/tidemail/releases/download/v1.0.24/tidemail-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 1d32104d837bb21146f3c25fb1b4e31e38a75eae63a6a97ba5175b25eecdf2fd
 
 pkgname = tidemail-bin
