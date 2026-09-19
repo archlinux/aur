@@ -48,8 +48,24 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  		NV_ERROR(drm, "Failed to retrieve a unique name for the backlight interface\n");
 diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x '*.mod.c' -x '*.mod' -x '.*' -x ramgf100.c.probe.inc -x '*.orig' -x '*.rej' -x '*.inc.orig' -x '*.fuc' -x '*.bin' nouveau-orig/nvkm/subdev/clk/base.c nouveau-source/nvkm/subdev/clk/base.c
 --- nouveau-orig/nvkm/subdev/clk/base.c	2026-09-19 09:19:27.966983231 +0300
-+++ nouveau-source/nvkm/subdev/clk/base.c	2026-09-19 09:17:27.355762299 +0300
-@@ -282,15 +282,30 @@ nvkm_pstate_prog(struct nvkm_clk *clk, i
++++ nouveau-source/nvkm/subdev/clk/base.c	2026-09-19 10:36:52.331364190 +0300
+@@ -29,6 +29,7 @@
+ #include <subdev/bios/perf.h>
+ #include <subdev/bios/vpstate.h>
+ #include <subdev/fb.h>
++#include <subdev/pci.h>
+ #include <subdev/therm.h>
+ #include <subdev/volt.h>
+ 
+@@ -278,19 +279,37 @@ nvkm_pstate_prog(struct nvkm_clk *clk, i
+ 	}
+ 
+ 	nvkm_debug(subdev, "setting performance state %d\n", pstatei);
+-	clk->pstate = pstatei;
++	if (fb && fb->ram)
++		clk->pstate = pstatei;
++	else
++		clk->pstate = -1;
  
  	nvkm_pcie_set_link(pci, pstate->pcie_speed, pstate->pcie_width);
  
@@ -81,7 +97,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	}
  
  	return nvkm_cstate_prog(clk, pstate, NVKM_CLK_CSTATE_HIGHEST);
-@@ -428,6 +443,8 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
+@@ -428,6 +447,8 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
  	pstate->pcie_width = perfE.pcie_width;
  	cstate = &pstate->base;
  	cstate->voltage = perfE.voltage;
@@ -90,7 +106,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  	cstate->domain[nv_clk_src_core] = perfE.core;
  	cstate->domain[nv_clk_src_shader] = perfE.shader;
  	cstate->domain[nv_clk_src_mem] = perfE.memory;
-@@ -451,6 +468,9 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
+@@ -451,6 +472,9 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
  
  		cstate->domain[domain->name] = perfS.v40.freq;
  	}
@@ -100,7 +116,7 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
  
  	data = nvbios_cstepEm(bios, pstate->pstate, &ver, &hdr, &cstepE);
  	if (data) {
-@@ -463,6 +483,25 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
+@@ -463,6 +487,25 @@ nvkm_pstate_new(struct nvkm_clk *clk, in
  	nvkm_pstate_info(clk, pstate);
  	list_add_tail(&pstate->head, &clk->states);
  	clk->state_nr++;
@@ -123,6 +139,71 @@ diff -uNrp -x '*.o' -x '.*.cmd' -x '*.ko*' -x Module.symvers -x modules.order -x
 +		}
 +	}
 +
+ 	return 0;
+ }
+ 
+@@ -524,6 +567,7 @@ nvkm_clk_ustate(struct nvkm_clk *clk, in
+ 	if (ret >= 0) {
+ 		if (ret -= 2, pwr) clk->ustate_ac = ret;
+ 		else		   clk->ustate_dc = ret;
++		clk->pstate = -1;
+ 		return nvkm_pstate_calc(clk, true);
+ 	}
+ 	return ret;
+@@ -555,6 +599,7 @@ nvkm_clk_dstate(struct nvkm_clk *clk, in
+ 	if ( rel) clk->dstate += rel;
+ 	clk->dstate = min(clk->dstate, clk->state_nr - 1);
+ 	clk->dstate = max(clk->dstate, 0);
++	clk->pstate = -1;
+ 	return nvkm_pstate_calc(clk, true);
+ }
+ 
+@@ -590,6 +635,7 @@ static int
+ nvkm_clk_init(struct nvkm_subdev *subdev)
+ {
+ 	struct nvkm_clk *clk = nvkm_clk(subdev);
++	struct nvkm_pci *pci = subdev->device->pci;
+ 	const struct nvkm_domain *clock = clk->domains;
+ 	int ret;
+ 
+@@ -612,11 +658,40 @@ nvkm_clk_init(struct nvkm_subdev *subdev
+ 	if (clk->func->init)
+ 		return clk->func->init(clk);
+ 
++	/* Synchronize initial PCIe link speed to match boot performance state on cold boot */
++	if (pci && (int)pci->pcie.speed == -1) {
++		struct nvkm_pstate *pstate, *boot_pstate = NULL;
++		list_for_each_entry(pstate, &clk->states, head) {
++			u32 core = pstate->base.domain[nv_clk_src_core];
++			u32 mem = pstate->base.domain[nv_clk_src_mem];
++			u32 bcore = clk->bstate.base.domain[nv_clk_src_core];
++			u32 bmem = clk->bstate.base.domain[nv_clk_src_mem];
++			u32 cdiff = (core > bcore) ? (core - bcore) : (bcore - core);
++			u32 mdiff = (mem > bmem) ? (mem - bmem) : (bmem - mem);
++
++			if (cdiff < 15000 && mdiff < 15000) {
++				boot_pstate = pstate;
++				break;
++			}
++		}
++		if (!boot_pstate) {
++			list_for_each_entry(pstate, &clk->states, head) {
++				if (pstate->pstate == 0x07) {
++					boot_pstate = pstate;
++					break;
++				}
++			}
++		}
++		if (boot_pstate)
++			nvkm_pcie_set_link(pci, boot_pstate->pcie_speed, boot_pstate->pcie_width);
++	}
++
+ 	clk->astate = clk->state_nr - 1;
+ 	clk->dstate = 0;
+ 	clk->pstate = -1;
+ 	clk->temp = 90; /* reasonable default value */
+ 	nvkm_pstate_calc(clk, true);
++	clk->pstate = -1;
  	return 0;
  }
  
