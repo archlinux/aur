@@ -3,8 +3,8 @@
 pkgname=wowup-cf-beta-bin
 _pkgname=wowup-cf-beta
 _desktopname=WowUpCf
-pkgver=2.24.0beta1
-pkgrel=3
+pkgver=2.24.0beta2
+pkgrel=2
 pkgdesc='WowUp the World of Warcraft addon updater (with CurseForge support) - Beta version'
 arch=(x86_64)
 url='https://github.com/WowUp/WowUp.CF'
@@ -24,10 +24,10 @@ source=(
   "${_pkgname}"
 )
 noextract=("WowUp-CF-${pkgver}.AppImage")
-sha256sums=('4a014e19bcc0f8ed538a53c3fdaea8eb91baf158b3296a99af0c65a5d6c02688'
-  '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-  '97386552c7ac77df8173436d4dd8a75d0e083ab4fd974bcd58147fac2e32adaa'
-  '6740afe4ba04a95995c98139343b3e4ea504d3203e1faee1caa3712be9616c2d')
+sha256sums=('d696f385b20746f8b107c66333b3f721373a3780b200dfdbb1b96a703b4d18a1'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            '97386552c7ac77df8173436d4dd8a75d0e083ab4fd974bcd58147fac2e32adaa'
+            '6740afe4ba04a95995c98139343b3e4ea504d3203e1faee1caa3712be9616c2d')
 
 prepare() {
   cd "$srcdir"
