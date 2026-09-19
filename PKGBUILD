@@ -1,7 +1,7 @@
 # Maintainer: Stokes <jesusmanuelgonzalezmeneses18@gmail.com>
 
 pkgname=educamadrid-wifi
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Unofficial GUI to connect to the EducaMadrid WEDU_PROF Wi-Fi network via NetworkManager"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('networkmanager' 'gcc-libs' 'glibc' 'libglvnd' 'libx11' 'libxcursor' 'l
          'libxkbcommon' 'libxkbcommon-x11' 'libxrender' 'wayland')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4244a85e1d02ca77d5c83ed7a2d18bd12d9e0635b3c813553b6eea465d28ae5d')
+sha256sums=('201810b491ed83033a6a0e53b51dab7f6ebe5e5184faf4dfe7abb33e37ea1059')
 
 prepare() {
     cd "educamadrid_wifi-$pkgver"
