@@ -4,7 +4,7 @@
 pkgname=elpaudio-mini
 pkgdesc="Simple audio player, written on GameBreaker"
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://codeberg.org/elpAudio/elpAudioMini"
 license=(BSD-3)

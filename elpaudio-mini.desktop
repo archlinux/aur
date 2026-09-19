@@ -2,8 +2,7 @@
 [Desktop Entry]
 Type=Application
 Name=elpAudioMini
-Exec=/opt/elpAudioMini/elpaudio-mini %f
-Icon=
-;MimeType=application/x-happ;application/json;
-Categories=Utility;
+Exec=/opt/elpaudio-mini/elpaudio-mini %f
+Icon=elpaudio-mini
+Categories=Multimedia;
 Terminal=false
