@@ -1,3 +1,6 @@
 function post_upgrade(){
-	echo "YTFE has switched to Qt 5. Make sure to remove GTK+ 2 unless it's needed by something else."
+	arch=`uname -m`
+	if [ $arch != "i386" ] && [ $arch != "i686" ] ; then
+		echo "YTFE has switched to Qt 5. Make sure to remove GTK+ 2 unless it's needed by something else."
+	fi
 }
