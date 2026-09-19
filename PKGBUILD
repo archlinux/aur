@@ -6,7 +6,7 @@ _name="cops"
 _github_name="seblucas-cops"
 provides=('cops')
 conflicts=('cops')
-pkgver=4.5.2
+pkgver=4.5.4
 pkgrel=1
 pkgdesc='Lightweight Calibre OPDS (and HTML) PHP Server (mikespub.org fork)'
 arch=('any')
@@ -30,7 +30,7 @@ makedepends=(
 backup=("etc/webapps/${_name}/local.php")
 install="${_name}.install"
 source=("${pkgname}_${pkgver}.zip::${url}/archive/refs/tags/${pkgver}.zip")
-sha256sums=('9b29ce378fc2d3b8ed8996bb2d7e2ea8459088718d82331aad1404e50570b216')
+sha256sums=('76921506006b74728bfa8410b8fbc42367af0e1819e0f85b3efb7ccf0b8e2873')
 
 prepare () {
     cd "${_github_name}-$pkgver"
@@ -54,17 +54,9 @@ build () {
 
 package () {
     cd "${_github_name}-$pkgver"
-    xmllint --xpath "//project/target/zip/fileset/exclude/@name" "build.xml" | \
-        sed -e 's#^\s*name="##' -e 's#"$##' -e 's#/\*\*$##g' -e 's#\*\*#\*#g' | \
-        while read -r exclude; do 
-            echo "Removing $exclude"
-	    rm -R $exclude || echo "This one does not exist, passing.";
-        done
     install -d "$pkgdir/etc/webapps/${_name}/"
     install -d "$pkgdir/usr/share/webapps"
     cp -r ./ "$pkgdir/usr/share/webapps/${_name}"
     cp "$pkgdir/usr/share/webapps/${_name}/config/local.php.example" "$pkgdir/etc/webapps/${_name}/local.php"
     ln -s "/etc/webapps/${_name}/local.php" "$pkgdir/usr/share/webapps/${_name}/config/local.php"
-    rm -R "${pkgdir}/usr/share/webapps/${_name}/tests" || echo "No tests folder to remove"
-    rm -R "${pkgdir}/usr/share/webapps/${_name}/tools" || echo "No tools folder to remove"
 }
