@@ -5,7 +5,7 @@
 pkgname=lunar-client-bin
 _pkgname=lunarclient
 pkgver=3.7.17
-pkgrel=1
+pkgrel=2
 pkgdesc="PvP modpack for all modern versions of Minecraft (upstream AppImage)"
 arch=('x86_64')
 url="https://lunarclient.com"
@@ -45,4 +45,16 @@ package() {
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+
+  # A custom licence has to ship its terms. Lunar Client publishes none in the
+  # AppImage, so what goes in is the reference to the terms it is used under.
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<'EOF'
+Lunar Client is proprietary software, distributed by Moonsworth, LLC.
+
+It is not covered by a free-software licence: use is governed by the terms
+of service the vendor publishes, and redistribution of the AppImage this
+package installs is not granted by them.
+
+Terms of service: https://www.lunarclient.com/terms
+EOF
 }
