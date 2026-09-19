@@ -1,8 +1,8 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 
 pkgname=sho-metrics-source-linux
-_forkver=0.3.0-linux.4
-pkgver=0.3.0.linux.4
+_forkver=0.3.0-linux.5
+pkgver=0.3.0.linux.5
 pkgrel=1
 pkgdesc="Linux hardware sensor helper daemon for the Sho Metrics OpenDeck plugin"
 arch=('any')
@@ -16,9 +16,10 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${_forkver}.tar.gz::${url}/releases/download/v${_forkver}/${pkgname}-${_forkver}.tar.gz")
-# Placeholder: run updpkgsums once the release asset is uploaded, then regenerate
-# .SRCINFO with `makepkg --printsrcinfo > .SRCINFO`.
-sha256sums=('48b91653dc46490a7cbded1701f2fea7b8a9b804865e1adfc9ca4df40f46af96')
+# The checksum of the published release asset. After bumping _forkver, run
+# updpkgsums once the asset is uploaded, then regenerate .SRCINFO with
+# `makepkg --printsrcinfo > .SRCINFO`.
+sha256sums=('ca87d07b8d16b974b23657c7dd658a54fa8f11863ae3be87ee932ae3ba04dbf0')
 
 _libdir="/usr/lib/${pkgname}"
 
@@ -50,6 +51,8 @@ package() {
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 shometrics-linux-helper.service \
         "${pkgdir}/usr/lib/systemd/user/shometrics-linux-helper.service"
+    install -Dm644 udev/60-sho-metrics-rapl.rules \
+        "${pkgdir}/usr/lib/udev/rules.d/60-sho-metrics-rapl.rules"
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
