@@ -40,7 +40,7 @@ optdepends=('python-sentry_sdk: for Sentry error reporting to dev.gajim.org (use
 provides=('gajim')
 conflicts=('gajim' 'gajim-hg' 'gajim-svn')
 replaces=('gajim-hg' 'gajim-svn')
-source=("$_name::git+https://dev.gajim.org/gajim/gajim.git")
+source=("$_name::git+https://gitlab.com/gajim/gajim.git")
 md5sums=('SKIP')
 
 pkgver() {

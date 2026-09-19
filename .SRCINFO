@@ -58,7 +58,7 @@ pkgbase = gajim-git
 	conflicts = gajim-svn
 	replaces = gajim-hg
 	replaces = gajim-svn
-	source = gajim::git+https://dev.gajim.org/gajim/gajim.git
+	source = gajim::git+https://gitlab.com/gajim/gajim.git
 	md5sums = SKIP
 
 pkgname = gajim-git
