@@ -1,6 +1,6 @@
 # Maintainer: Naqua Darazaki <n.darazaki@gmail.com>
 pkgname=clockode
-pkgver=0.2.7
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="TOTP client made with Iced"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ug
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 conflicts=()
-b2sums=('f54b3ecc95970b9ca4a46feefed842c24fb0ab9f6a2211ca05cd7b15fc8970f2640665c517e0028ecbe30c750cac1f3f669e4950c7bc242a205aa72aa7b5e81c')
+b2sums=('7686fed207528573a7d096a0545ac57ceb3f6511317da3caa611485cdb842623ed35b4c50d51339fc588e3ce4accc96624ba8957d6238435821d689dddb9917e')
 
 cargo_do() {
     RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target cargo "$@"
@@ -18,7 +18,7 @@ cargo_do() {
 
 prepare() {
     cd "$pkgname-$pkgver"
-    cargo_do fetch --target "$(rustc --print host-tuple)"
+    cargo_do fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
