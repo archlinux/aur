@@ -1,6 +1,6 @@
 pkgbase = hintcontrol-bin
 	pkgdesc = T-Mobile Home Internet Control
-	pkgver = 1.17.2
+	pkgver = 1.17.3
 	pkgrel = 1
 	url = https://github.com/zacharee/HINTControl
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = hintcontrol-bin
 	depends = hicolor-icon-theme
 	depends = java-runtime
 	depends = alsa-lib
-	source = https://github.com/zacharee/HINTControl/releases/download/1.17.2/hintcontrol_1.17.2_amd64.deb
+	source = https://github.com/zacharee/HINTControl/releases/download/1.17.3/hintcontrol_1.17.3_amd64.deb
 	source = https://github.com/zacharee/HINTControl/raw/refs/heads/main/LICENSE
-	sha256sums = 9ef6429d6612706a563209b8937e3d8f1f3c532266979e1ef9b386dd417eaabc
+	sha256sums = ee73629f9bf216b60adba9381db27969ece92d6e633612b1ca577be8b7e26394
 	sha256sums = 2ad4258551f1508d403106e33098acdff4884c3984780b43ce1a8db1dbabe36b
 
 pkgname = hintcontrol-bin
