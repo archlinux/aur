@@ -1,6 +1,6 @@
 pkgbase = openai-codex-reasoning
 	pkgdesc = OpenAI Codex CLI with raw reasoning traces enabled by default
-	pkgver = 0.155.0
+	pkgver = 0.155.1
 	pkgrel = 1
 	url = https://github.com/openai/codex
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = openai-codex-reasoning
 	conflicts = openai-codex-reasoning-bin
 	replaces = openai-codex-reasoning-bin
 	options = !lto
-	source = codex::git+https://github.com/openai/codex.git#commit=f0a1b8f0849d90960bc406b848f32e5a129b0457
+	source = codex::git+https://github.com/openai/codex.git#commit=be2951ea34f0d295ed0becf97079f92fa5f6950e
 	source = default-raw-reasoning.patch
 	sha256sums = SKIP
 	sha256sums = dd39bdc924e771e1400f3fbb98c8b48767ed135f0c79a9b99b8ee7da95627758
