@@ -1,0 +1,4 @@
+g tee -
+g teepriv -
+u teesuppl - "OP-TEE supplicant"
+m teesuppl teepriv

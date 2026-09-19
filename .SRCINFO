@@ -1,0 +1,19 @@
+pkgbase = optee-client
+	pkgdesc = OP-TEE client library, PKCS#11 library (libckteec) and tee-supplicant
+	pkgver = 4.10.0
+	pkgrel = 1
+	url = https://github.com/OP-TEE/optee_client
+	arch = aarch64
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = systemd
+	depends = glibc
+	source = optee_client-4.10.0.tar.gz::https://github.com/OP-TEE/optee_client/archive/refs/tags/4.10.0.tar.gz
+	source = optee-client.sysusers
+	source = optee-client.tmpfiles
+	sha256sums = 984084a465f55ed8037e0e27eb4399149b5cec981ed295c2f0ee0dd515f60af9
+	sha256sums = 5cd1063e78a60d273b7f995796c1e0ae92d1ada7fddef2183d8028af1dbab272
+	sha256sums = a79dad28d5ec7a88a2c1f06894199ba7f44d1444c3f09d1c4802ccb36be8e637
+
+pkgname = optee-client
