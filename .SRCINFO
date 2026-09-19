@@ -1,6 +1,6 @@
 pkgbase = ganbaru-ai-bin
 	pkgdesc = Local, privacy-first productivity app for reducing procrastination and burnout
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/opengrimoire/ganbaru-ai
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = ganbaru-ai-bin
 	depends = webkit2gtk-4.1
 	provides = ganbaru-ai
 	conflicts = ganbaru-ai
-	noextract = ganbaru-ai_0.1.7_amd64.deb
+	noextract = ganbaru-ai_0.1.8_amd64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = ganbaru-ai_0.1.7_amd64.deb::https://github.com/opengrimoire/ganbaru-ai/releases/download/app-v0.1.7/ganbaru-ai_0.1.7_amd64.deb
-	sha256sums_x86_64 = 7ff0264b9b1821f71bb982172a135ec2280318e895d020bb04365d5ef28f2916
+	source_x86_64 = ganbaru-ai_0.1.8_amd64.deb::https://github.com/opengrimoire/ganbaru-ai/releases/download/app-v0.1.8/ganbaru-ai_0.1.8_amd64.deb
+	sha256sums_x86_64 = 39458928da3863e51e0e65eeb2fe6b21cda22afaa584d5613caab3e683383a7e
 
 pkgname = ganbaru-ai-bin

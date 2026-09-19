@@ -1,6 +1,6 @@
 # Maintainer: Victor Benito Garcia Rocha <victorbenitogr@gmail.com>
 pkgname=ganbaru-ai-bin
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Local, privacy-first productivity app for reducing procrastination and burnout"
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=('ganbaru-ai')
 conflicts=('ganbaru-ai')
 options=('!strip' '!debug')
 source_x86_64=("ganbaru-ai_${pkgver}_amd64.deb::https://github.com/opengrimoire/ganbaru-ai/releases/download/app-v${pkgver}/ganbaru-ai_${pkgver}_amd64.deb")
-sha256sums_x86_64=('7ff0264b9b1821f71bb982172a135ec2280318e895d020bb04365d5ef28f2916')
+sha256sums_x86_64=('39458928da3863e51e0e65eeb2fe6b21cda22afaa584d5613caab3e683383a7e')
 noextract=("ganbaru-ai_${pkgver}_amd64.deb")
 
 prepare() {
