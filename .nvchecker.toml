@@ -1,0 +1,3 @@
+[convey]
+source = "git"
+git = "https://gitlab.gnome.org/donnybeelo/convey.git"
