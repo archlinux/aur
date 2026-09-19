@@ -152,6 +152,21 @@ build() {
         _build_native "${_variant%%:*}" "${_variant##*:}"
     done
     RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
+
+    # Fail loudly if the override above ever stops landing: the release profile
+    # downloads bun-linux-x64-baseline into ~/.bun/install/cache and bakes that
+    # runtime into the executable, and a foreign runtime silently rejects the
+    # bytecode Arch's bun just produced -- reparsing the 38 MB bundle on every
+    # start with the 55 MB cache still in the payload. Both buns report the
+    # same `--revision`, but the template's ELF Build ID is carried into the
+    # output verbatim, so it identifies the embedded runtime.
+    local _want _got
+    _want=$(readelf -n "${BUN_COMPILE_EXECUTABLE_PATH}" | sed -n 's/.*Build ID: //p')
+    _got=$(readelf -n packages/coding-agent/binaries/omp-linux-x64 | sed -n 's/.*Build ID: //p')
+    if [[ -z $_want || $_got != "$_want" ]]; then
+        error "compiled omp does not embed ${BUN_COMPILE_EXECUTABLE_PATH} (Build ID: ${_got:-none})"
+        return 1
+    fi
 }
 
 _install_completions() {
