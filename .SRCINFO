@@ -1,6 +1,6 @@
 pkgbase = fenriz-bar-bin
 	pkgdesc = Status bar for Wayland compositors (Binary Release)
-	pkgver = 0.1.16
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/zackb/fenriz
 	arch = x86_64
@@ -17,10 +17,11 @@ pkgbase = fenriz-bar-bin
 	optdepends = networkmanager: wifi
 	optdepends = bluez: bluetooth
 	optdepends = upower: battery
+	optdepends = wf-recorder: screen recording
 	provides = fenriz-bar
 	conflicts = fenriz-bar
 	conflicts = fenriz-bar-git
-	source = https://github.com/zackb/fenriz/releases/download/v0.1.16/fenriz-bar-0.1.16.tar.gz
-	sha256sums = 5e56070270f051b866877e9d15b5ed2c5fefcb8c11af3f90d1d0901552d7c627
+	source = https://github.com/zackb/fenriz/releases/download/v0.1.17/fenriz-bar-0.1.17.tar.gz
+	sha256sums = fc511032b70da6c1f8116ae7022f3d1d8b433f003a48f3f88f52773429e17de3
 
 pkgname = fenriz-bar-bin
