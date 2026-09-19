@@ -5,7 +5,7 @@
 # llama-launcher/utils/check-aur-sync.sh must report OK for all packages.
 
 pkgname=llama-hdd
-pkgver=9
+pkgver=10
 pkgrel=1
 pkgdesc="LLM inference in C/C++ with disk-backed prompt-checkpoint persistence (llama.cpp soft-fork)"
 arch=('x86_64' 'aarch64')
@@ -27,6 +27,9 @@ sha256sums=('SKIP')
 # Backend selection: cpu, vulkan, cuda, rocm, metal (+ other for custom)
 # Non-interactive: LLAMA_HDD_BACKEND=metal makepkg
 _backend="${LLAMA_HDD_BACKEND:-}"
+# CUDA toolkit root / nvcc path, resolved by _check_backend_deps (cuda backend).
+_cuda_root=""
+_cuda_nvcc=""
 
 _detect_backend() {
     if command -v nvidia-smi >/dev/null 2>&1; then
@@ -107,7 +110,54 @@ _check_backend_deps() {
             [ -f /usr/lib/cmake/SPIRV-Headers/spirv-headers-config.cmake ] || missing+=(spirv-headers)
             ;;
         cuda)
-            command -v nvcc >/dev/null 2>&1 || [ -x /opt/cuda/bin/nvcc ] || [ -x /usr/local/cuda/bin/nvcc ] || missing+=(cuda)
+            # Probing that nvcc merely EXISTS is not enough. CMake's
+            # FindCUDAToolkit searches only PATH and CUDAToolkit_ROOT; on Arch
+            # nvcc lives in /opt/cuda/bin, which the cuda package adds to PATH
+            # via /etc/profile.d/cuda.sh -- and that only applies to LOGIN
+            # shells. makepkg inherits whatever shell invoked it, so straight
+            # after `pacman -S cuda` the toolkit is installed but invisible, the
+            # old check passed, and the build died inside CMake with
+            #   Could not find `nvcc` executable in any searched paths,
+            #   please set CUDAToolkit_ROOT
+            # Source that profile (defining append_path, which normally comes
+            # from /etc/profile, if the shell lacks it) so we also inherit
+            # CUDA_PATH and NVCC_CCBIN -- the g++-15 host-compiler pin Arch sets
+            # deliberately. Then resolve nvcc ourselves as a fallback.
+            if [ -r /etc/profile.d/cuda.sh ]; then
+                if ! declare -F append_path >/dev/null 2>&1; then
+                    append_path() {
+                        case ":${PATH}:" in
+                            *":$1:"*) ;;
+                            *) PATH="${PATH:+$PATH:}$1" ;;
+                        esac
+                    }
+                fi
+                . /etc/profile.d/cuda.sh || true
+            fi
+
+            local _nvcc="" _cand
+            _nvcc="$(command -v nvcc 2>/dev/null || true)"
+            if [ -z "$_nvcc" ]; then
+                for _cand in "${CUDAToolkit_ROOT:-}" "${CUDA_PATH:-}" "${CUDA_HOME:-}" /opt/cuda /usr/local/cuda; do
+                    if [ -n "$_cand" ] && [ -x "$_cand/bin/nvcc" ]; then
+                        _nvcc="$_cand/bin/nvcc"
+                        break
+                    fi
+                done
+            fi
+
+            if [ -n "$_nvcc" ]; then
+                # <root>/bin/nvcc -> <root>; readlink so a /usr/bin symlink resolves
+                _cuda_nvcc="$(readlink -f "$_nvcc")"
+                _cuda_root="$(dirname "$(dirname "$_cuda_nvcc")")"
+                if [ ! -d "$_cuda_root/include" ] && [ ! -d "$_cuda_root/targets" ]; then
+                    echo "ERROR: found nvcc at $_cuda_nvcc but no headers under $_cuda_root." >&2
+                    echo "The CUDA toolkit install looks incomplete." >&2
+                    return 1
+                fi
+            else
+                missing+=(cuda)
+            fi
             ;;
         rocm)
             command -v hipcc >/dev/null 2>&1 || [ -d /opt/rocm ] || missing+=(rocm-hip-sdk)
@@ -128,7 +178,7 @@ pkgver() {
 
 build() {
     _select_backend
-    _check_backend_deps
+    _check_backend_deps || return 1
 
     cd "$pkgname"
 
@@ -151,7 +201,19 @@ build() {
     )
 
     case "$_backend" in
-        cuda)    cmake_args+=(-DGGML_CUDA=ON) ;;
+        cuda)
+            cmake_args+=(-DGGML_CUDA=ON)
+            # Two variables, two mechanisms -- setting only the root still
+            # fails with "No CMAKE_CUDA_COMPILER could be found":
+            #   CUDAToolkit_ROOT    -> find_package(CUDAToolkit) finds libs
+            #   CMAKE_CUDA_COMPILER -> enable_language(CUDA) finds nvcc
+            [ -n "$_cuda_root" ] && cmake_args+=(-DCUDAToolkit_ROOT="$_cuda_root")
+            [ -n "$_cuda_nvcc" ] && cmake_args+=(-DCMAKE_CUDA_COMPILER="$_cuda_nvcc")
+            # Honour Arch's host-compiler pin (NVCC_CCBIN=/usr/bin/g++-15)
+            # rather than letting CMake pick the system default.
+            [ -n "${NVCC_CCBIN:-}" ] && [ -x "${NVCC_CCBIN}" ] && \
+                cmake_args+=(-DCMAKE_CUDA_HOST_COMPILER="$NVCC_CCBIN")
+            ;;
         rocm)    cmake_args+=(-DGGML_HIP=ON -DAMDGPU_TARGETS="${AMDGPU_TARGETS:-gfx1100;gfx1151}") ;;
         vulkan)  cmake_args+=(-DGGML_VULKAN=ON) ;;
         cpu)     ;;
