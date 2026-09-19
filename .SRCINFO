@@ -24,6 +24,7 @@ pkgbase = harlequin
 	depends = python-tomli
 	depends = python-tomlkit
 	depends = python-questionary
+	depends = python-msgspec
 	depends = python-black
 	depends = python-ruff
 	depends = mypy

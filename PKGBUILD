@@ -27,6 +27,7 @@ depends=('python'
          'python-tomli'
          'python-tomlkit'
          'python-questionary'
+         'python-msgspec'
          'python-black'
          'python-ruff'
          'mypy')
