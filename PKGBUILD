@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark at proton dot me>
 # Co-Maintainer: soloturn <soloturn@gmail.com>
 pkgname=cosmic-edit-git
-pkgver=1.0.0.beta.1.r0.g6844f29
+pkgver=1.8.0.r7.g14aba66
 pkgrel=1
 pkgdesc="Text editor for the COSMIC desktop"
 arch=('x86_64')
@@ -10,6 +10,7 @@ license=('GPL-3.0-only')
 depends=(
   'cosmic-icons-git'
   'libxkbcommon'
+  'oniguruma'
   'wayland'
 )
 makedepends=(
@@ -48,6 +49,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+  export RUSTONIG_DYNAMIC_LIBONIG=1
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
