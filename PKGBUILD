@@ -15,7 +15,7 @@ source=("GameBreaker-${pkgver}-sdl3.tar.gz::https://codeberg.org/elpoeprod/GameB
 md5sums=('65ce46aa61fe647c75c372b2646534c9')
 
 build(){
-	rename "gamebreaker" "GameBreaker-${pkgver}-sdl3" "${srcdir}/gamebreaker-sdl3"
+	rename "gamebreaker" "GameBreaker-${pkgver}-sdl3" "${srcdir}/gamebreaker"
 	cd "${srcdir}/GameBreaker-${pkgver}-sdl3"
 	mkdir "build"
 	make
