@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="🎨 GPU-accelerated animated wallpaper engine for Wayland"
 
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ options=(!strip)
 source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 sha256sums=('cc3c6e9b47b26034c07cf061c660c58cf11a522d8d26eed42b68d8ece1c5076e')
-sha256sums_x86_64=('119e0af45efb08d03583033c7bc0347cf70a8a12657b53996379ba39bd663cb1')
+sha256sums_x86_64=('208dcbb958aa2c12e7cb9172d4807d2140b147aa974355225d855430d3c6cef5')
 
 
 package() {
