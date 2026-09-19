@@ -1,0 +1,21 @@
+## Arg line: "strix requires the Docker daemon to run scans"
+
+post_install() {
+  cat <<EOF
+
+==> Strix needs a running Docker daemon and an LLM API key to scan:
+
+    sudo systemctl enable --now docker
+    export STRIX_LLM="openai/gpt-5.4"      # or any supported provider
+    export LLM_API_KEY="your-api-key"
+    strix --target ./app-directory
+
+==> The first run pulls the sandbox image ghcr.io/usestrix/strix-sandbox.
+==> Docs: https://docs.strix.ai  (authorized testing only)
+
+EOF
+}
+
+post_upgrade() {
+  post_install "$@"
+}
