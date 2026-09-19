@@ -1,6 +1,6 @@
 # Maintainer: Rumato Estorsky <@rumatoest at x.com>
 pkgname=llama-prism-cuda
-pkgdesc="Prism ML fork of llama.cpp with CUDA support to run Ternary Bonsai models."
+pkgdesc="PrismML fork of llama.cpp with CUDA support to run Ternary Bonsai LLM models."
 url="https://github.com/PrismML-Eng/llama.cpp"
 pkgrel=1
 arch=('x86_64')
