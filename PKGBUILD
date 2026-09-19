@@ -7,8 +7,8 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt
 install=linuxqq-nt.install
-pkgver=3.2.33_260902
-pkgrel=1
+pkgver=3.2.33_52892
+pkgrel=2
 epoch=5
 pkgdesc="New Linux QQ based on Electron"
 arch=('x86_64' 'aarch64' 'loong64')

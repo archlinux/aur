@@ -1,7 +1,7 @@
 pkgbase = linuxqq-nt
 	pkgdesc = New Linux QQ based on Electron
-	pkgver = 3.2.33_260902
-	pkgrel = 1
+	pkgver = 3.2.33_52892
+	pkgrel = 2
 	epoch = 5
 	url = https://im.qq.com/linuxqq
 	install = linuxqq-nt.install
@@ -16,7 +16,7 @@ pkgbase = linuxqq-nt
 	depends = pulse-native-provider
 	optdepends = libappindicator-gtk3: System tray support
 	optdepends = gjs: Screen sharing support
-	provides = linuxqq=3.2.33_260902
+	provides = linuxqq=3.2.33_52892
 	conflicts = linuxqq-nt-bwrap
 	conflicts = linuxqq
 	options = !strip
