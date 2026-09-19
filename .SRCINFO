@@ -1,6 +1,6 @@
 pkgbase = waycord-bin
-	pkgdesc = Lightweight Discord voice overlay for Linux (precompiled binary)
-	pkgver = 0.1.0
+	pkgdesc = Lightweight Discord voice overlay for Linux
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/podiax/waycord
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = waycord-bin
 	provides = waycord
 	conflicts = waycord
 	conflicts = waycord-git
-	source = https://github.com/podiax/waycord/releases/download/v0.1.0/waycord-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/podiax/waycord/releases/download/v0.1.2/waycord-v0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = b23cc2cc7945699e5e49a574978dced80456dd9abe4efe6782810719448c53da
 
 pkgname = waycord-bin
