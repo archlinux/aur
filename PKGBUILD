@@ -18,7 +18,6 @@ md5sums=('ea8b0fd5959dd74222e0a825adfe74c2')
 build() {
 	rename "elpaudiomini" "elpAudioMini-${pkgver}" "${srcdir}/elpaudiomini"
 	cd "${srcdir}/elpAudioMini-${pkgver}"
-	mkdir "build"
 	make
 }
 
@@ -26,6 +25,8 @@ package(){
 	cd "${srcdir}/elpAudioMini-${pkgver}"
 
 	mkdir -p "$pkgdir/opt/elpAudioMini/"
+	mkdir -p "$pkgdir/opt/elpAudioMini/resources"
+	mkdir -p "$pkgdir/opt/elpAudioMini/themes/default"
 	
 	cp -drf resources/* "$pkgdir/opt/elpAudioMini/resources"
 	cp -drf themes/* "$pkgdir/opt/elpAudioMini/themes"
