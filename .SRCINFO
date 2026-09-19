@@ -1,0 +1,19 @@
+pkgbase = xca-rs-bin
+	pkgdesc = XCA (X Certificate and Key Management) rewritten in Rust with GTK4 and GOST support — prebuilt binary
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/RinWate/xca-rs
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = gtk4
+	depends = libadwaita
+	depends = openssl
+	depends = openssl-gost-engine
+	depends = glib2
+	depends = glibc
+	provides = xca-rs=0.2.2
+	conflicts = xca-rs
+	source = xca-rs-bin-0.2.2.tar.gz::https://github.com/RinWate/xca-rs/releases/download/v0.2.2/xca-rs-0.2.2-x86_64.tar.gz
+	sha256sums = 26194f368b443ac4901c17ee2c24f4958b85e4dd819808c02a370468b9e1c15c
+
+pkgname = xca-rs-bin
