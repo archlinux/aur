@@ -2,8 +2,8 @@
 # Contributor: WeChat Linux Community
 
 pkgname=tencent-wechat
-pkgver=4.1.13.9
-pkgrel=2
+pkgver=4.1.13.23
+pkgrel=1
 pkgdesc="Tencent WeChat (Linux) with native Wayland support and privacy sandbox (Community Repackage)"
 arch=('x86_64')
 url="https://linux.weixin.qq.com/"
