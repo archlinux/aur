@@ -1,6 +1,6 @@
 pkgbase = jellium-desktop-bin
 	pkgdesc = A desktop client for Jellyfin
-	pkgver = 0.r1149.b0a962d
+	pkgver = 0.r1151.dc5d42c
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/andrewrabert/jellium-desktop
