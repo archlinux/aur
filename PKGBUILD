@@ -7,13 +7,13 @@ pkgver=5.0.3.r4.gb44690d
 pkgrel=1
 pkgdesc="Nonblocking Jabber/XMPP library, used by Gajim"
 arch=('any')
-url="https://dev.gajim.org/gajim/python-nbxmpp"
+url="https://gitlab.com/gajim/python-nbxmpp"
 license=('GPL3')
 makedepends=('git' 'python' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 depends=('python' 'python-precis_i18n' 'python-gobject' 'python-packaging' 'python-idna' 'libsoup3' 'glib2')
 conflicts=('python-nbxmpp')
 provides=("python-nbxmpp=$pkgver")
-source=("git+https://dev.gajim.org/gajim/${_pkgbase}.git")
+source=("git+https://gitlab.com/gajim/${_pkgbase}.git")
 sha384sums=('SKIP')
 
 pkgver() {
