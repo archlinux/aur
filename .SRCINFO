@@ -1,6 +1,6 @@
 pkgbase = paseo-cli-git-bin
-	pkgdesc = Command-line interface for controlling Paseo AI coding agents (built from main 2026-09-10 @d7c7044)
-	pkgver = 0.8.0.r1.gd7c7044df
+	pkgdesc = Command-line interface for controlling Paseo AI coding agents (built from main 2026-09-18 @d636abd)
+	pkgver = 0.9.0.beta.2.r1.gd636abd7a
 	pkgrel = 1
 	url = https://github.com/getpaseo/paseo/tree/main/packages/cli
 	arch = x86_64
@@ -16,11 +16,10 @@ pkgbase = paseo-cli-git-bin
 	conflicts = paseo-bin
 	conflicts = paseo-cli
 	conflicts = paseo-cli-bun
-	conflicts = paseo-cli-beta
 	conflicts = paseo-cli-edge
 	conflicts = paseo-cli-git
 	options = !strip
-	source = paseo-cli-git-standalone-0.8.0.r1.gd7c7044df.tar.gz::https://github.com/xpufx/xpufx-pkgs/releases/download/arch-x86_64-current/paseo-cli-git-standalone-0.8.0.r1.gd7c7044df.tar.gz
-	sha256sums = a69b2660f9a4e99c03b42c815d708cfc450da46db3793fb05ad0cbda148efb65
+	source = paseo-cli-git-standalone-0.9.0.beta.2.r1.gd636abd7a.tar.gz::https://github.com/xpufx/xpufx-pkgs/releases/download/arch-x86_64-current/paseo-cli-git-standalone-0.9.0.beta.2.r1.gd636abd7a.tar.gz
+	sha256sums = 5e6d8cc131f84fc6e19805de345c9f31c8068d0b1f5cb64891dd0b67b1047993
 
 pkgname = paseo-cli-git-bin

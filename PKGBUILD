@@ -4,18 +4,18 @@
 # _commit pins the upstream commit; _bin_sha pins the prebuilt tarball.
 
 pkgname=paseo-cli-git-bin
-pkgver=0.8.0.r1.gd7c7044df
+pkgver=0.9.0.beta.2.r1.gd636abd7a
 pkgrel=1
-_commit='d7c7044dfc91d1d18721dc8757ac3bb913d8c232'
-_bin_sha='a69b2660f9a4e99c03b42c815d708cfc450da46db3793fb05ad0cbda148efb65'
+_commit='d636abd7a4ce302e7ccb9eb6074f637c6dd4d83b'
+_bin_sha='5e6d8cc131f84fc6e19805de345c9f31c8068d0b1f5cb64891dd0b67b1047993'
 _pkgdesc_base='Command-line interface for controlling Paseo AI coding agents'
-pkgdesc='Command-line interface for controlling Paseo AI coding agents (built from main 2026-09-10 @d7c7044)'
+pkgdesc='Command-line interface for controlling Paseo AI coding agents (built from main 2026-09-18 @d636abd)'
 arch=('x86_64')
 url='https://github.com/getpaseo/paseo/tree/main/packages/cli'
 license=('Apache-2.0')
 depends=('nodejs>=22' 'bash' 'glibc' 'gcc-libs')
 provides=('paseo' 'paseo-cli' 'paseo-cli-git')
-conflicts=('paseo' 'paseo-bin' 'paseo-cli' 'paseo-cli-bun' 'paseo-cli-beta' 'paseo-cli-edge' 'paseo-cli-git')
+conflicts=('paseo' 'paseo-bin' 'paseo-cli' 'paseo-cli-bun' 'paseo-cli-edge' 'paseo-cli-git')
 source=("paseo-cli-git-standalone-${pkgver}.tar.gz::https://github.com/xpufx/xpufx-pkgs/releases/download/arch-x86_64-current/paseo-cli-git-standalone-${pkgver}.tar.gz")
 sha256sums=("$_bin_sha")
 options=('!strip')
