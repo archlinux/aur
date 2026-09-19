@@ -1,13 +1,13 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-git
 _pkgname=vegastrike
-pkgver=0.10.0.alpha1.r14.ga6986688
+pkgver=0.10.0.alpha1.r66.gff611b78
 pkgrel=1
 pkgdesc="Vega Strike - Upon the Coldest Sea. Space flight and trading simulator with realistic distances"
 arch=('any')
 url="https://www.vega-strike.org"
 license=('GPL')
-depends=('expat' 'vegastrike-engine' 'python-screeninfo' 'python-kivy')
+depends=('expat' 'vegastrike-engine' 'python-kivy')
 optdepends=()
 makedepends=('git' 'cmake')
 provides=('vegastrike')
