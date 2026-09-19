@@ -13,6 +13,6 @@ pkgbase = dlssnr-bin
 	conflicts = dlssnr
 	options = !debug
 	source_x86_64 = https://github.com/bmitch87/DLSS5VKLayer/releases/download/0.3.1-1/dlssnr_0.3.1-1_debian13_amd64.deb
-	sha256sums_x86_64 = 2a498e2d9add99bb46f8c13a0aa27024367b12089c4267383e62e873cbab8ca4
+	sha256sums_x86_64 = 397e270faff3fefd09a01a948992aa1dae36eac9f99a5cef92c89907d56394a0
 
 pkgname = dlssnr-bin
