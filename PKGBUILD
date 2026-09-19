@@ -4,7 +4,7 @@
 pkgname=namida-bin
 pkgver=7.1.2
 _buildnumber=260919170
-pkgrel=1
+pkgrel=2
 pkgdesc="A Beautiful and Feature-rich Music Player, With YouTube & Video Support Built in Flutter"
 arch=('x86_64')
 url="https://github.com/namidaco/namida-snapshots"
@@ -59,23 +59,10 @@ package() {
     find data -type d -exec install -dm755 "${pkgdir}/opt/namida/{}" \;
   fi
   
-  # install desktop file
-  install -Dm644 "share/applications/namida.desktop" \
-    "${pkgdir}/usr/share/applications/namida.desktop"
-
-  # install metainfo
-  install -Dm644 "share/metainfo/namida.metainfo.xml" \
-    "${pkgdir}/usr/share/metainfo/namida.metainfo.xml"
-
-  # install icons
-  install -Dm644 "share/icons/namida_512.png" \
-    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/namida.png"
-
-  install -Dm644 "share/icons/namida_128.png" \
-    "${pkgdir}/usr/share/icons/hicolor/128x128/apps/namida.png"
-
-  install -Dm644 "share/icons/namida_256.png" \
-    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/namida.png"
+  # install desktop entry, metainfo & icons - the tarball ships them as a drop-in XDG tree
+  if [ -d "share" ]; then
+    find share -type f -exec install -Dm644 {} "${pkgdir}/usr/{}" \;
+  fi
   
   # symlink to bin
   install -dm755 "${pkgdir}/usr/bin"
