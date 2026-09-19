@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=9.1.r126056.gee498f5e82
+pkgver=9.1.r126658.g6397b2b5b6
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.9.2'
+_whispercpp_ver='1.9.4'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -13,6 +13,7 @@ depends=(
     'alsa-lib'
     'aom'
     'aribb24'
+    'astc-encoder'
     'avisynthplus' # loaded on-demand by dlopen()
     'bzip2'
     'cairo'
@@ -172,27 +173,34 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '030-ffmpeg-add-svt-vp9.patch'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
-        '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
+        '060-ffmpeg-lensfun-fix-pkgconfig.patch'
+        '070-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         'LICENSE')
 sha256sums=('SKIP'
             'SKIP'
-            'a6abd064fcca8b85e794d205abf328c522e9451db43a3eadc178b883b7d0e9cd'
-            '4a4ae8f17065236ebb1c3606c1617e16f35ee451d8c1d5165d31b753da73f2df'
+            '57e280cee375ab02425b806ad5146b99f6eb9357e3c2b31357c8a6af2e2e44ae'
+            'be900abcf53220704c575eb7f28ba956189777bb5d2f2e3319258b78e358503e'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '32a0bef461482582673f35f101d96357f5e78ed0fd550ecdc2eefe8f7b3de090'
-            '57db0ce758e1599fadaa21066405a0f8783aaaed2587273a6308382f9fc0dcb4'
-            '064d5a574a01e189027febff189d5b5681a986e41f8dbd15ec9258bfc4a3159d'
-            '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
+            '682cff03dece2f4d1d7b0a12f7602413ce1f15a59a3c445133d1db599bbb287d'
+            '9e883bab6260fef1841f2f6d5b8525ce106dceb58eaeddae75a8c9370548cf86'
+            'd6c819bee822fb9b8cebea679d60a8449354c90c2f054d5cbd0fb3d569ae01cd'
+            'c39addf190d25d1182c5c5658677f77ee7c1ae542969b2004441c62a425d324b'
+            '2c846c629ad129ae8ce50791de4f1d390714db6d6420a35406b83b9b44999d4a'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
+    # ffmpeg includes the astc-encoder header from <astcenc/astcenc.h> instead of using just <astcenc.h>
+    mkdir -p include/astcenc
+    ln -sf /usr/include/astcenc.h include/astcenc/astcenc.h
+    
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch"
-    patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
+    patch -d lensfun -Np1 -i "${srcdir}/060-ffmpeg-lensfun-fix-pkgconfig.patch"
+    patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/070-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
 }
 
 pkgver() {
@@ -223,14 +231,12 @@ build() {
         -DINSTALL_PYTHON_MODULE:BOOL='OFF' \
         -DINSTALL_HELPER_SCRIPTS:BOOL='OFF'
     cmake --build build/lensfun --target install
-    sed -i \
-        -e 's/\(-llensfun\)/\1 -lglib-2.0 -lstdc++/' \
-        -e '/Cflags: /s/$/ -DCONF_LENSFUN_STATIC/' "${_pkgconfigdir}/lensfun.pc"
     
     # using whisper-cpp package from the official repositories will cause a circular dependency with ffmpeg,
     # building it locally as a static library for the time being
     cmake -B build/whisper.cpp -S "whisper.cpp-${_whispercpp_ver}" \
         "${_cmake_opts[@]}" \
+        -DGGML_CCACHE:BOOL='OFF' \
         -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
         -DWHISPER_BUILD_TESTS:BOOL='OFF'
     cmake --build build/whisper.cpp --target install
@@ -238,7 +244,7 @@ build() {
     cd ffmpeg
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
-    export CFLAGS+=' -isystem/opt/cuda/include'
+    export CFLAGS+=" -isystem/opt/cuda/include -isystem ${srcdir}/include"
     export LDFLAGS+=' -L/opt/cuda/lib64'
     
     # fix build of libavfilter/asrc_flite.c with gcc 14
@@ -274,6 +280,7 @@ build() {
         --enable-libaribb24 \
         --enable-libaribcaption \
         --enable-libass \
+        --enable-libastcenc \
         --enable-libbluray \
         --enable-libbs2b \
         --enable-libcaca \
