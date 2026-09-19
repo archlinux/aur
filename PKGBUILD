@@ -1,8 +1,8 @@
 # Maintainer: omartelo <meopedevts@proton.me>
-# Rendered by .github/workflows/release.yml (0.52.0 -> tag, checksums via
+# Rendered by .github/workflows/release.yml (0.53.0 -> tag, checksums via
 # updpkgsums) and pushed to the AUR — edit this template, never the AUR copy.
 pkgname=lich-bin
-pkgver=0.52.0
+pkgver=0.53.0
 pkgrel=1
 pkgdesc="A terminal-first ADE for the coding agents you already use"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('zenity: native folder picker')
 source=("lich-v${pkgver}-linux-amd64.tar.zst::${url}/releases/download/v${pkgver}/lich-v${pkgver}-linux-amd64.tar.zst"
         "lich-${pkgver}.desktop::https://raw.githubusercontent.com/omartelo/lich/v${pkgver}/build/linux/lich.desktop"
         "lich-${pkgver}.png::https://raw.githubusercontent.com/omartelo/lich/v${pkgver}/build/appicon.png")
-sha256sums=('7edb7a432a5c520f9f9a22332948d96a1927dacbff53fea90d1062163853107a'
+sha256sums=('3464bfdd4215747a00ebaf5dc7dfb2d9d59ef02d9fc9f22ea7156610368517cb'
             '6af34ff31490c369e1f4266b355a6a10bd0817fed0b61793ce163ac6bfa14769'
             '75aa775e531ad495d905a37f07e8e608f4d93e4b2ff1d4b145a764e71ac48b0a')
 
