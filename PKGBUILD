@@ -2,18 +2,18 @@
 
 _name=tavily-python
 pkgname=python-$_name
-pkgver=0.8.3
-_commit=01c9182c098d32b7db5d2b5ce4ba5f3eaec99553
+pkgver=0.8.4
+_commit=01277b6301dd0945cbcec2212d5534e59d663d88
 pkgrel=1
 pkgdesc="Python wrapper for the Tavily API."
 arch=('any')
 url="https://github.com/tavily-ai/tavily-python"
 license=('MIT')
 depends=('python' 'python-requests' 'python-tiktoken' 'python-httpx')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-pytest' 'python-typing_extensions')
 source=("$_name::git+$url.git#commit=$_commit")
-sha256sums=('07e08b3094288a77ebaffa81cd2a0de27f5ae8a0534243a8b1fee5fbf9acfcb0')
+sha256sums=('58195bf0ef6728bd4725ff9b6502a1dbfb0cfc4f1395407038131008d8dc88d1')
 
 build() {
   cd "$srcdir"/$_name
