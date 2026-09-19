@@ -4,7 +4,7 @@
 # The bootstrap checksum is replaced before publication; an unverified source
 # must never reach the AUR.
 pkgname=sway-session
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Persistent work sessions for Sway"
 arch=('x86_64' 'aarch64')
@@ -14,10 +14,10 @@ depends=('sway')
 makedepends=('go>=1.26.5')
 options=('!debug')
 source=("sway-session-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3027aa93de77e186163e8634a3d932ddccd2d98513eebdba84ea20f662674bc7')
+sha256sums=('9100a7252cce1285d8617b215ce6f02bbe0896473a26e18794e34efe3e03a122')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
-_go_ldflags=(-s -w -buildid=)
+_go_ldflags=(-s -w -buildid= -X "main.version=$pkgver")
 
 _install_codex_hook() {
   local hook=contrib/codex/report-agent-session.sh
