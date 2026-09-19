@@ -1,6 +1,6 @@
 # Maintainer: Main Serve Contributors <https://github.com/dekoding/main-serve>
 pkgname=main-serve
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A high-performance, YAML-configured web server"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ backup=('etc/main-serve/config.yaml')
 install=main-serve.install
 conflicts=('main-serve-bin')
 source=("$pkgname-$pkgver::https://github.com/dekoding/main-serve/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4599414d83cfe7b3c7c4950eb4fc466f0859b948f8e772ab7b78d92543961ac8')
+sha256sums=('18099e7a40aa5bb695c221e7b0a5b2565c4c28844118b74facfb977197ba207d')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
