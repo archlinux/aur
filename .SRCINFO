@@ -1,6 +1,6 @@
 pkgbase = markview-bin
 	pkgdesc = A fast, native Markdown reader with publication-quality typography.
-	pkgver = 0.1.2
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/szdytom/markview
 	install = markview-bin.install
@@ -22,11 +22,11 @@ pkgbase = markview-bin
 	optdepends = vulkan-radeon: Vulkan driver for AMD GPUs
 	provides = markview
 	conflicts = markview
-	source = markview-bin-0.1.2.tar.gz::https://github.com/szdytom/markview/releases/download/v0.1.2/markview-x86_64-unknown-linux-gnu.tar.gz
-	source = markview-0.1.2-src.tar.gz::https://github.com/szdytom/markview/archive/refs/tags/v0.1.2.tar.gz
+	source = markview-bin-0.1.4.tar.gz::https://github.com/szdytom/markview/releases/download/v0.1.4/markview-x86_64-unknown-linux-gnu.tar.gz
+	source = markview-0.1.4-src.tar.gz::https://github.com/szdytom/markview/archive/refs/tags/v0.1.4.tar.gz
 	source = markview.mime.xml
-	sha256sums = 1d2c51e0a549094f6cd1c47379f53507431279b7c031bb510036f33a5e8d7a37
-	sha256sums = 7b8d1e2e03196b552830d125058c7e29b02e03dd8dcfbad28b058222ad33c451
+	sha256sums = 517f5d19ef6744d35eca4045926a200b3b69464f54195c127d3b003f4b90e332
+	sha256sums = a5cce31d36515dbf13a84da0c627b5bad18446749a4596988aaf9b1cb1a88b34
 	sha256sums = c2b54efc155e407495127927cabafb92b369a4ead7e1a04d8246f9939bf280b0
 
 pkgname = markview-bin
