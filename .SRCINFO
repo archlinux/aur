@@ -1,6 +1,6 @@
 pkgbase = plutonic-bin
 	pkgdesc = Suikalike game where you shoot planets in space
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/mlm-games/plutonic
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = plutonic-bin
 	options = !strip
 	source = https://raw.githubusercontent.com/mlm-games/plutonic/refs/heads/main/fastlane/metadata/android/en-US/images/icon.png
 	sha256sums = SKIP
-	source_x86_64 = plutonic-1.1.1-x64::https://github.com/mlm-games/plutonic/releases/download/1.1.1/plutonic.x86_64
-	sha256sums_x86_64 = ae8ed7bab47d0b322d985777284d36a42f01b808c1cd334a9a7344a79a421d89
-	source_aarch64 = plutonic-1.1.1-arm64::https://github.com/mlm-games/plutonic/releases/download/1.1.1/plutonic.arm64
-	sha256sums_aarch64 = 57b81b1d0b4f31e73b25035216bd6de63d081c01b6ec8897e1d1d2b1c1288178
+	source_x86_64 = plutonic-1.1.2-x64::https://github.com/mlm-games/plutonic/releases/download/1.1.2/plutonic.x86_64
+	sha256sums_x86_64 = 392d8d1326948ccf6bba4f104449a4fe4edc7d3893ee2751e02d99aaa2de488a
+	source_aarch64 = plutonic-1.1.2-arm64::https://github.com/mlm-games/plutonic/releases/download/1.1.2/plutonic.arm64
+	sha256sums_aarch64 = 6e1a02d2fd759a926b3fe5cbf7139af3b88ee97444d0dee571bea352ffe32584
 
 pkgname = plutonic-bin
