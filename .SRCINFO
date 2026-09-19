@@ -7,7 +7,7 @@ pkgbase = clessc-git
 	license = GPLv3
 	makedepends = git
 	depends = libpng
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = google-glog
 	provides = clessc
 	conflicts = clessc
@@ -16,4 +16,3 @@ pkgbase = clessc-git
 	md5sums = SKIP
 
 pkgname = clessc-git
-
