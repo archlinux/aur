@@ -1,16 +1,16 @@
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -195,7 +195,6 @@ unicode-segmentation = { version = "1.12
- icu_normalizer = { version = "2", default-features = false, features = ["compiled_data"] }
+@@ -153,7 +153,6 @@ icu_normalizer = { version = "2", default-features = false, features = ["compile
+ icu_properties = { version = "2.2.0", features = ["compiled_data"] }
  
- glow = { version = "0.17" }
+ glow = { version = "0.18" }
 -tikv-jemallocator = { version = "0.7" }
- wgpu-28 = { package = "wgpu", version = "28", default-features = false }
  wgpu-29 = { package = "wgpu", version = "29.0.4", default-features = false }
- input = { version = "0.10.0", default-features = false }
+ wgpu-30 = { package = "wgpu", version = "30", default-features = false }
+ # Version floor only: the Metal surface code (renderer-skia) calls
 --- a/api/cpp/CMakeLists.txt
 +++ b/api/cpp/CMakeLists.txt
-@@ -191,10 +191,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
+@@ -109,10 +109,6 @@ if(SLINT_FEATURE_COMPILER AND NOT SLINT_COMPILER)
      if (SLINT_FEATURE_SDF_FONTS)
          list(APPEND slint_compiler_features "sdf-fonts")
      endif()
@@ -45,13 +45,37 @@
  extern crate alloc;
 --- a/api/slint-sc/lib.rs
 +++ b/api/slint-sc/lib.rs
-@@ -2,5 +2,5 @@
+@@ -2,7 +2,7 @@
  // SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-Slint-Software-3.0
  
  #![doc = include_str!("README.md")]
 -#![no_std]
 +
  #![forbid(unsafe_code)]
+ #![forbid(missing_docs)]
+ 
+--- a/api/slint-sc/tests/driver.rs
++++ b/api/slint-sc/tests/driver.rs
+@@ -492,7 +492,7 @@ fn assemble_program(gen_path: &str, body: &str) -> String {
+         .replace('\\', "/");
+     let mut content = String::new();
+     // no_std so that accidental use of std in the generated code doesn't compile
+-    writeln!(content, "#![no_std]").unwrap();
++    writeln!(content, "").unwrap();
+     writeln!(content, "extern crate std;").unwrap();
+     writeln!(content).unwrap();
+     writeln!(content, "#[macro_use]").unwrap();
+--- a/demos/analogclock/rust/main.rs
++++ b/demos/analogclock/rust/main.rs
+@@ -1,7 +1,7 @@
+ // Copyright © SixtyFPS GmbH <info@slint.dev>
+ // SPDX-License-Identifier: MIT
+ 
+-#![no_std]
++
+ #![cfg_attr(not(feature = "simulator"), no_main)]
+ 
+ extern crate alloc;
 --- a/demos/energy-monitor/src/main.rs
 +++ b/demos/energy-monitor/src/main.rs
 @@ -1,6 +1,6 @@
@@ -114,10 +138,32 @@
 -#![no_std]
 +
  #![no_main]
- #![macro_use]
  
---- a/examples/safe-ui/core/src/lib.rs
-+++ b/examples/safe-ui/core/src/lib.rs
+ extern crate alloc;
+--- a/examples/safe-ui/app/src/lib.rs
++++ b/examples/safe-ui/app/src/lib.rs
+@@ -8,7 +8,7 @@
+ //! airlock sequence is application logic, so it lives here in Rust. The scene
+ //! shows the state it's given and decides nothing.
+ 
+-#![no_std]
++
+ 
+ use core::time::Duration;
+ 
+--- a/examples/safe-ui/esp32-s3-box/src/main.rs
++++ b/examples/safe-ui/esp32-s3-box/src/main.rs
+@@ -7,7 +7,7 @@
+ //! scheduler provides embassy's time driver, and the UI runs as the main
+ //! embassy task through [`slint_safeui_app::app_main`].
+ 
+-#![no_std]
++
+ #![no_main]
+ 
+ extern crate alloc;
+--- a/examples/safe-ui/ffi/src/lib.rs
++++ b/examples/safe-ui/ffi/src/lib.rs
 @@ -1,7 +1,7 @@
  // Copyright © SixtyFPS GmbH <info@slint.dev>
  // SPDX-License-Identifier: MIT
@@ -184,7 +230,7 @@
  extern crate alloc;
 --- a/internal/core/platform.rs
 +++ b/internal/core/platform.rs
-@@ -102,7 +102,7 @@ fn new_event_loop_proxy(&self) -> Option<Box<dyn EventLoopProxy>> {
+@@ -104,7 +104,7 @@ fn new_event_loop_proxy(&self) -> Option<Box<dyn EventLoopProxy>> {
      /// This is used by the animations and timer to compute the elapsed time.
      ///
      /// When the `std` feature is enabled, this function is implemented in terms of
@@ -195,7 +241,7 @@
          #[cfg(feature = "std")]
 --- a/internal/renderers/software/lib.rs
 +++ b/internal/renderers/software/lib.rs
-@@ -7,7 +7,7 @@
+@@ -8,7 +8,7 @@
  #![deny(unsafe_code)]
  #![cfg_attr(slint_nightly_test, feature(non_exhaustive_omitted_patterns_lint))]
  #![cfg_attr(slint_nightly_test, warn(non_exhaustive_omitted_patterns))]
@@ -206,24 +252,24 @@
  extern crate alloc;
 --- a/tools/compiler/Cargo.toml
 +++ b/tools/compiler/Cargo.toml
-@@ -19,7 +19,6 @@ path = "main.rs"
- 
+@@ -21,7 +21,6 @@ path = "main.rs"
  [features]
- software-renderer = ["i-slint-compiler/software-renderer"]
+ renderer-software = ["i-slint-compiler/renderer-software"]
+ image-default-formats = ["i-slint-compiler/image-default-formats"]
 -jemalloc = ["dep:tikv-jemallocator"]
- sdf-fonts = ["i-slint-compiler/sdf-fonts"]
+ sdf-fonts = ["renderer-software", "i-slint-compiler/sdf-fonts"]
  fontconfig-dlopen = ["i-slint-common/fontconfig-dlopen"]
  
-@@ -32,7 +31,7 @@ python = ["i-slint-compiler/python"]
+@@ -34,7 +33,7 @@ python = ["i-slint-compiler/python"]
  slint-sc = ["i-slint-compiler/slint-sc"]
  
  # Keep defaults in sync with defaults applied in api/cpp/CMakeLists.txt for slint-compiler
--default = ["software-renderer", "jemalloc", "bundle-translations", "cpp", "rust", "python"]
-+default = ["software-renderer", "bundle-translations", "cpp", "rust", "python"]
+-default = ["renderer-software", "image-default-formats", "jemalloc", "bundle-translations", "cpp", "rust", "python"]
++default = ["renderer-software", "image-default-formats",  "bundle-translations", "cpp", "rust", "python"]
  
  [dependencies]
  i-slint-compiler = { workspace = true, features = ["default", "display-diagnostics"] }
-@@ -44,4 +43,3 @@ spin_on = { workspace = true }
+@@ -46,4 +45,3 @@ spin_on = { workspace = true }
  itertools = { workspace = true }
  
  [target.'cfg(not(any(target_os = "openbsd", target_os = "windows", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
@@ -259,17 +305,17 @@
  enum Embedding {
 --- a/tools/lsp/Cargo.toml
 +++ b/tools/lsp/Cargo.toml
-@@ -117,7 +117,6 @@ tokio-tungstenite-wasm = "0.8.2"
- postcard = { version = "1.1.3", features = ["alloc"] }
+@@ -119,7 +119,6 @@ tokio-tungstenite-wasm = "0.8.2"
+ postcard = { version = "1.1.3", default-features = false, features = ["alloc"] }
  
  [target.'cfg(not(any(target_os = "openbsd", target_os = "windows", target_arch = "wasm32", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]
 -tikv-jemallocator = { workspace = true }
  
- # Used by the visual editor for the macOS unified title bar.
  [target.'cfg(target_os = "macos")'.dependencies]
+ objc2-app-kit = { version = "0.3.2", default-features = false, features = ["std", "NSResponder", "NSToolbar", "NSView", "NSWindow", "objc2-core-foundation"] }
 --- a/tools/lsp/main.rs
 +++ b/tools/lsp/main.rs
-@@ -54,7 +54,6 @@
+@@ -59,7 +59,6 @@
      target_arch = "wasm32",
      all(target_arch = "aarch64", target_os = "linux")
  )))]
@@ -277,7 +323,7 @@
  
  #[cfg(not(any(
      target_os = "openbsd",
-@@ -62,8 +61,6 @@
+@@ -67,8 +66,6 @@
      target_arch = "wasm32",
      all(target_arch = "aarch64", target_os = "linux")
  )))]
@@ -288,7 +334,7 @@
  
 --- a/tools/viewer/Cargo.toml
 +++ b/tools/viewer/Cargo.toml
-@@ -121,7 +121,6 @@ i-slint-backend-android-activity = { workspace = true, optional = true }
+@@ -126,7 +126,6 @@ i-slint-backend-android-activity = { workspace = true, optional = true }
  jni = { version = "0.22", optional = true }
  
  [target.'cfg(not(any(target_os = "openbsd", target_os = "windows", target_os = "ios", all(target_arch = "aarch64", target_os = "linux"))))'.dependencies]

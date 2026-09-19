@@ -1,6 +1,6 @@
 pkgbase = slint
 	pkgdesc = Declarative GUI toolkit to build native user interfaces
-	pkgver = 1.17.1
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/slint-ui/slint/
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = slint
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = systemd-libs
-	source = https://github.com/slint-ui/slint/archive/v1.17.1/slint-1.17.1.tar.gz
+	source = https://github.com/slint-ui/slint/archive/v1.18.0/slint-1.18.0.tar.gz
 	source = 010-slint-remove-jemalloc.patch
 	source = 020-slint-allow-python-maturin-0.14.1.patch
-	sha256sums = 68222567f8c70ff677cd4a98cd94fb4765ac0f797eb8f8608a646911c908dc2a
-	sha256sums = d124acb5002d71d8efc0c580b1a49cc9432fa78a8599af3a44085d000ff4f28a
+	sha256sums = 399ef10a0bcd8db236f755e68548e2e55e7cac00ee3da7f50e8d9d6881d34c25
+	sha256sums = 01a64bd3376222e07bf1454d4faa433b9d38949f37a1461d0bfc58fbe4b5759e
 	sha256sums = 784edbc91e7f5c6e9fcc650a652d30f7f1027a115e657a96b719b0e46f78f988
 
 pkgname = python-slint
