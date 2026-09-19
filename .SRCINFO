@@ -1,0 +1,27 @@
+pkgbase = dopeiptv
+	pkgdesc = Linux IPTV player with Xtream Codes, M3U, EPG, timeshift, recording and multiview
+	pkgver = 1.2.11
+	pkgrel = 1
+	url = https://github.com/slimture/dopeIPTV
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyqt6
+	depends = python-requests
+	depends = python-mpv
+	depends = python-pychromecast
+	depends = mpv
+	depends = ffmpeg
+	optdepends = vlc: external VLC playback
+	provides = dopeiptv
+	conflicts = dopeiptv-git
+	conflicts = dopeiptv-bin
+	source = dopeIPTV::git+https://github.com/slimture/dopeIPTV.git#tag=v1.2.11
+	sha256sums = 73fd47762f4d7cd04552f57072ebe281a77162457295e440eb3bed1824abd66f
+
+pkgname = dopeiptv
