@@ -14,7 +14,7 @@ options=('!debug' '!strip')
 depends=('gtk3')
 source_x86_64=("Slive-x86_64-linux.zip::https://github.com/SlotSun/dart_simple_live/releases/download/v1.8.12/Slive-x86_64-linux.zip" "https://raw.githubusercontent.com/SlotSun/dart_simple_live/refs/tags/v1.8.12/simple_live_app/assets/io.github.SlotSun.Slive.desktop")
 source_aarch64=("Slive-aarch64-linux.zip::https://github.com/SlotSun/dart_simple_live/releases/download/v1.8.12/Slive-aarch64-linux.zip" "https://raw.githubusercontent.com/SlotSun/dart_simple_live/refs/tags/v1.8.12/simple_live_app/assets/io.github.SlotSun.Slive.desktop")
-sha256sums_x86_64=('d2917600328b9831b983c3c8caff40ced1bf847b142a15ce00ab7ee8832e26af' 'SKIP')
+sha256sums_x86_64=('d73e579f8a9e402c4c1d914b29fd744b2aa7d13ca15589d9c2205e97eb7081cd' 'SKIP')
 sha256sums_aarch64=('SKIP' 'SKIP')
 
 
