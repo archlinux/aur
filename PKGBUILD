@@ -1,7 +1,7 @@
 # Maintainer: colegeming <collegeming@outlook.com>
 
 pkgname=snishaper-bin
-pkgver=1.29.0beta3
+pkgver=1.29.0beta4
 pkgrel=1
 pkgdesc='Local proxy to bypass SNI blocking via ECH injection, TLS fragmentation, QUIC and a TUN device (prebuilt binary)'
 arch=('x86_64')
@@ -20,12 +20,12 @@ options=('!strip')
 # release asset), so their sha256 are pinned here on the default branch;
 # refresh them only if upstream changes those files.
 source_x86_64=(
-    "https://github.com/SnishaperTeam/SniShaper/releases/download/v1.29.0-beta.3/snishaper-linux-amd64.tar.gz"
+    "https://github.com/SnishaperTeam/SniShaper/releases/download/v1.29.0-beta.4/snishaper-linux-amd64.tar.gz"
     "snishaper.png::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/main/Assets/AppList.targetsize-256_altform-unplated.png"
     "LICENSE::https://raw.githubusercontent.com/SnishaperTeam/SniShaper/main/LICENSE"
 )
 sha256sums_x86_64=(
-    '68b587bf1c008f150d631c6f8d68e38ff5720e238b01f7be5489208393bd5e12'
+    'c8d27c2805e0d9afecd68e549a034ee077857907b75e9e8a1a431378531ab379'
     'c8c6fb14ef896c6fe2a3d65632445bb1d01a3c78796f3ed494e0592bf329d40b'
     '95bc608f8ed815a6a47f1c209e33c4ea991c5c5acf664fdf3ba204117a7d96b7'
 )
