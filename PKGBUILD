@@ -12,14 +12,14 @@
 
 pkgname=granola
 pkgver=7.576.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI notepad for back-to-back meetings, repackaged from the official macOS build"
 arch=('x86_64')
 url="https://www.granola.ai"
 license=('LicenseRef-proprietary')
 _electron=electron44
 # version of the installed $_electron package
-_elver=44.4.1
+_elver=44.4.2
 # version of Granola's bundled better-sqlite3-multiple-ciphers fork
 _bs3ver=12.9.0
 depends=(
@@ -49,7 +49,7 @@ noextract=(
 )
 sha256sums=('c16d5dcd35bce9c766355cf88e986769a714b93345749d1c179b68bad93cda72'
             'ad8ceb2cfe687e0c106547fdd281f0d20b40688200d04f40bb163afd1f102609'
-            '3246fc72539c7c651a012cd54d302dc8b72740d9bd0e9049ca2edca3bc8004e8'
+            '90a39e5649bee14dfb5b4ca588b58756e129bc7e24b7e1844da30fc2a45d0a0b'
             '22b5217b929a1d184f1f73d5f55fbef6756d5fbcef207da64f188231d38c9c20')
 
 _res="Granola/Granola.app/Contents/Resources"
