@@ -13,7 +13,7 @@ pkgname=(
  dotnet-source-built-artifacts-6.0
 )
 pkgver=6.0.36.sdk136
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url=https://www.microsoft.com/net/core
 license=(MIT)

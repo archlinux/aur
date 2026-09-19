@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-6.0
 	pkgver = 6.0.36.sdk136
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	license = MIT
@@ -26,7 +26,7 @@ pkgbase = dotnet-core-6.0
 	optdepends = bash-completion: Bash completion support
 	options = !lto
 	options = staticlibs
-	source = dotnet-installer::git+https://github.com/dotnet/installer.git#tag=d638663530d923adbe0442604b7a6562127321e9
+	source = dotnet-installer::git+https://github.com/dotnet/installer.git#tag=v6.0.136
 	source = dotnet.sh
 	source = dotnet-core-runtime-disable-package-validation.patch
 	source = dotnet-core-sdk-telemetry-optout.patch
@@ -48,10 +48,12 @@ pkgname = dotnet-runtime-6.0
 	depends = zlib
 	depends = openssl
 	optdepends = lttng-ust2.12: CoreCLR tracing
+	provides = dotnet-runtime=6.0
 
 pkgname = aspnet-runtime-6.0
 	pkgdesc = The ASP.NET Core runtime
 	depends = dotnet-runtime-6.0
+	provides = aspnet-runtime=6.0
 
 pkgname = dotnet-sdk-6.0
 	pkgdesc = The .NET Core SDK
@@ -61,14 +63,18 @@ pkgname = dotnet-sdk-6.0
 	depends = gcc-libs
 	depends = netstandard-targeting-pack
 	optdepends = aspnet-targeting-pack-6.0: Build ASP.NET Core applications
+	provides = dotnet-sdk=6.0
 
 pkgname = dotnet-targeting-pack-6.0
 	pkgdesc = The .NET Core targeting pack
 	depends = netstandard-targeting-pack
+	provides = dotnet-targeting-pack=6.0
 
 pkgname = aspnet-targeting-pack-6.0
 	pkgdesc = The ASP.NET Core targeting pack
 	depends = dotnet-targeting-pack-6.0
+	provides = aspnet-targeting-pack=6.0
 
 pkgname = dotnet-source-built-artifacts-6.0
 	pkgdesc = Internal package for building the .NET Core SDK
+	provides = dotnet-source-built-artifacts=6.0
