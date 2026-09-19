@@ -4,8 +4,7 @@
 
 _pkgname=audiveris
 pkgname="${_pkgname}-git"
-pkgver=5.2.5.r843.g6579168
-_tag=5.7.1
+pkgver=5.11.0.r1.g7a36078
 _name="${_pkgname}-git"
 pkgrel=1
 pkgdesc="Music score OMR engine - current"
@@ -13,15 +12,17 @@ arch=('any')
 url="https://github.com/Audiveris/$_pkgname"
 license=('AGPL3')
 depends=(
-  'java-runtime>=24'
+  'java-runtime>=25'
   'tesseract'
   'freetype2'
   'hicolor-icon-theme'
 )
 makedepends=(
-  'java-environment>=21'
+  'java-environment>=25'
   'gradle'
   'git'
+  'fontconfig'
+  'ttf-dejavu'
 )
 optdepends=(
   'tesseract-data: For languages other than english'
@@ -41,7 +42,7 @@ sha256sums=(
 
 pkgver() {
   cd "$_name"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --match '5.*' --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -50,18 +51,27 @@ build() {
 }
 
 package() {
+  # The distribution tar carries the upstream version in its name, which
+  # changes as HEAD advances - so it must not be hardcoded. The distTar task
+  # produces exactly one 'app-*.tar' in the distributions directory.
+  local _dist
+  _dist=$(find "$srcdir/${_name}/app/build/distributions" -maxdepth 1 \
+    -name 'app-*.tar' -print -quit)
+  if [[ ! -f "$_dist" ]]; then
+    printf '%s\n' "ERROR: no app-*.tar found in $srcdir/${_name}/app/build/distributions" >&2
+    return 1
+  fi
+
   # Extracting libraries
   install -dm755 "$pkgdir/usr/share/java/$_pkgname"
   bsdtar -C "$pkgdir/usr/share/java/$_pkgname" --strip-components=2 \
-    -xf "$srcdir/$_name/app/build/distributions/app-${_tag}.tar" \
-    app-${_tag}/lib/*
-  
+    -xf "$_dist" 'app-*/lib/*'
+
   # Creating starter script
   install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
   # Install desktopfile
-  install -Dm755 "$srcdir/$_name/app/res/icon-256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
-  install -Dm755 "$srcdir/$_name/app/res/icon-64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/$_pkgname.png"
+  install -Dm755 "$srcdir/$_name/app/res/icon-256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  install -Dm755 "$srcdir/$_name/app/res/icon-64.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
   install -Dm755 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
-
