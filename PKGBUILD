@@ -9,7 +9,7 @@ _pkgmainver=76
 _pkgminorver=1
 pkgname="${_pkgname}${_pkgmainver}"
 pkgver="${_pkgmainver}.${_pkgminorver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="International Components for Unicode library (legacy version ${_pkgmainver})."
 arch=(
   'i486'
@@ -65,16 +65,16 @@ source=(
   #"https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz.asc"
   "ICU-22132.patch"
   "icudata-stdlibs.patch"
-  "${pkgname}-LICENSE::https://github.com/unicode-org/icu/raw/main/LICENSE"
+  "${pkgname}-LICENSE::https://github.com/unicode-org/icu/raw/release-${pkgver//./-}/LICENSE"
 )
 md5sums=('857fdafff8127139cc175a3ec9b43bd6'
          '7e501a2e7d14ce94b843e6853d96e4c2'
          '4e5202245fce364490334bd66b5edabc'
-         'e531a388be7c1df9a0fb7b4010c9c1d7')
+         '7c364a0debecf16d5a13de2b7f1aaabd')
 sha256sums=('dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e'
             'f534b472dd7a6961591466eef542e2c3ad698d3008c9b6af813c66cbc0b4dd8e'
             '13444e40ec8da75a3c4140448b25bdf51887a2691c9afdb0c63134ddd33d915b'
-            'e55522d81edc687a341a4411e0776e54ca654e90147f354a90458aaced4116af')
+            '01edac20612b1e590c1c1cfb02b7218c6adc7b0a944eda7a1e03aeee10725aed')
 #validpgpkeys=(
 #  '4058F67406EAA6AB'
 #)
