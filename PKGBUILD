@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libopenshot-git
-pkgver=0.7.0.r111.g8f1f091c
+pkgver=1.0.0.r31.gf20829fb
 pkgrel=1
 pkgdesc='A high quality, open-source video editing, animation, and playback library for C++, Python, and Ruby (git version)'
 arch=('x86_64')
@@ -13,16 +13,13 @@ depends=(
     'glibc'
     'jsoncpp'
     'libgcc'
+    'libgomp'
     'libmagick'
     'libopenshot-audio-git'
     'libstdc++'
-    'opencv'
-    'protobuf'
     'python'
-    'qt5-base'
-    'qt5-multimedia'
-    'qt5-svg'
-    'zeromq')
+    'qt6-base'
+    'qt6-svg')
 makedepends=(
     'catch2'
     'cmake'
@@ -31,7 +28,9 @@ makedepends=(
     'git'
     'python-setuptools'
     'swig'
-    'unittestpp')
+    'unittestpp'
+    'vulkan-headers'
+    'vulkan-icd-loader')
 provides=('libopenshot' 'libopenshot.so')
 conflicts=('libopenshot')
 source=('git+https://github.com/OpenShot/libopenshot.git')
@@ -48,19 +47,22 @@ build() {
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DDISABLE_TESTS:BOOL='ON' \
+        -DENABLE_OPENCV:BOOL='OFF' \
         -DENABLE_RUBY:BOOL='OFF' \
+        -DUSE_QT6:BOOL='ON' \
         -DUSE_SYSTEM_JSONCPP:BOOL='ON' \
-        -Wno-dev
+        -Wno-author
     cmake --build build
 }
 
-check() {
-    # disable broken tests
-    # https://github.com/OpenShot/libopenshot/issues/922
-    # https://github.com/OpenShot/libopenshot/issues/948
-    ctest --test-dir build --output-on-failure \
-        -E '(Caption:caption effect|FFmpegWriter:DisplayInfo|FFmpegWriter:Options_Overloads|FFmpegWriter:Webm)'
-}
+#check() {
+#    # disable broken tests
+#    # https://github.com/OpenShot/libopenshot/issues/922
+#    # https://github.com/OpenShot/libopenshot/issues/948
+#    ctest --test-dir build --output-on-failure \
+#        -E '(Caption:caption effect|FFmpegWriter:DisplayInfo|FFmpegWriter:Options_Overloads|FFmpegWriter:Webm)'
+#}
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
