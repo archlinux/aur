@@ -1,7 +1,7 @@
 # Maintainer: <your AUR username>
 
 pkgname=opencode-sandbox-git
-pkgver=1.0.0.4.g3a13fdd
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Run OpenCode inside an isolated Docker sandbox (git master)"
 arch=("any")

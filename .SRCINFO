@@ -1,6 +1,6 @@
 pkgbase = opencode-sandbox-git
 	pkgdesc = Run OpenCode inside an isolated Docker sandbox (git master)
-	pkgver = 1.0.0.4.g3a13fdd
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/Antiquete/opencode-sandbox
 	arch = any
