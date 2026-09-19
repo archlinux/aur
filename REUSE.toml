@@ -1,0 +1,11 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".gitignore",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Jakob Hellermann <jakob.hellermann@protonmail.com>"
+SPDX-License-Identifier = "0BSD"

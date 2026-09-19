@@ -1,0 +1,16 @@
+pkgbase = buildprof
+	pkgdesc = Records every process and file access in a build and shows it as an interactive timeline
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://buildprof.lalitm.com
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = zstd
+	options = !debug
+	source = buildprof-0.2.7.tar.gz::https://github.com/LalitMaganti/buildprof/releases/download/v0.2.7/source.tar.gz
+	sha256sums = f1c5961f0719c0f25b35ae9dd45fa7cda002f14590817ed78f3ac9712411bce6
+
+pkgname = buildprof
