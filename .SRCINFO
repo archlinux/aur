@@ -1,6 +1,6 @@
 pkgbase = snd-hdspe-dkms-git
 	pkgdesc = A linux kernel module for RME HDSPe sound cards and extension modules (development branch)
-	pkgver = r227.e0d2b60
+	pkgver = r289.abf9146
 	pkgrel = 1
 	url = https://github.com/Schroedingers-Cat/snd-hdspe
 	arch = any
