@@ -2,15 +2,20 @@
 # https://github.com/nihalxkumar/PKGBUILDs/tree/main/onionspray-git
 
 pkgname=onionspray-git
-pkgver=1.7.0.r1415.gfd7e69b
+pkgver=1.8.1.r1415.gfd7e69b
 pkgrel=1
 pkgdesc="A tool to setup Onion Services for existing websites."
 arch=('any')
 url="https://gitlab.torproject.org/tpo/onion-services/onionspray"
-license=('GPL3')
-depends=('perl' 'bash' 'tor')
+license=('GPL-3.0-or-later')
+depends=('perl' 'bash' 'tor' 'openbsd-netcat' 'rsync' 'openssl')
 makedepends=('git')
-optdepends=('onionbalance: for load balancing onion services')
+optdepends=(
+  'onionbalance: for load balancing onion services'
+  'python: for validate-onion-key helper script'
+  'ruby: for onion-csr helper script'
+  'mkcert: for generating local CA certificates for TLS'
+)
 provides=('onionspray')
 conflicts=('onionspray')
 source=("git+https://gitlab.torproject.org/tpo/onion-services/onionspray.git#branch=main")
@@ -18,9 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "1.7.0.r%s.g%s" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  git describe --long --tags --match 'v[0-9]*' | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 prepare() {
