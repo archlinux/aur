@@ -4,9 +4,9 @@
 
 _pkgname=audiveris
 pkgname="$_pkgname"
-pkgver=5.10.0
-_tag=5.10.0
-_gitcommit=2ae1aae
+pkgver=5.10.1
+_tag=5.10.1
+_gitcommit=b1c0bda47b25c16bff1e886d21acd13d8d323b5d
 _name="${_pkgname}-${_tag/_/-}"
 pkgrel=1
 pkgdesc="Music score OMR engine"
@@ -14,14 +14,16 @@ arch=('any')
 url="https://github.com/Audiveris/$_pkgname"
 license=('AGPL3')
 depends=(
-  'java-runtime>=24'
+  'java-runtime>=25'
   'tesseract'
   'freetype2'
   'hicolor-icon-theme'
 )
 makedepends=(
-  'java-environment>=21'
+  'java-environment>=25'
   'gradle'
+  'fontconfig'
+  'ttf-dejavu'
 )
 optdepends=(
   'tesseract-data: For languages other than english'
@@ -33,11 +35,20 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  'e33cee6379472aad81b6693a7287988d3267148b8c055a5169b7aa965bbae404'
+  'eaef842e4d9b12a02f54c9fae789461462a45e4e015a194b6132ced8cbfb99f1'
   '3f5f7b788f32f74f3ae97b4c0e43d66a7664a94e2fcf262ea2b049c03265403a'
-  'a3c48eeac63cfdf0b0e3fdf788d48d51d4bc32291fdeb159c2244178604a28aa'
+  '61dc56cd82fa5c547419916c0585e645693f2b5a2fa08e19ef7dfc45d2116b3b'
 )
 
+
+prepare() {
+  # The source tarball is not a git repository, so the gradle task "getCommit"
+  # (which runs `git log`) fails in a clean build environment. Replace the git
+  # call with the static commit hash of this release (quickfix, as done for
+  # earlier releases).
+  sed -i "s|git log -n1 --pretty=%H -- :^../flatpak/flathub|echo ${_gitcommit}|" \
+    "$srcdir/${_name}/app/build.gradle"
+}
 
 build() {
   cd "$srcdir/${_name}"
