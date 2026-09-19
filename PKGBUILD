@@ -21,7 +21,7 @@ source_x86_64=("$pkgname-$pkgver-$CARCH.tar.gz::https://github.com/usestrix/stri
 sha256sums_x86_64=('f3f29fa64bee420bf64f8911fb9f38e20270d406f6df44cc2436252c2af0bc81')
 # Upstream names the arm64 artifacts with "arm64", not "aarch64".
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/usestrix/strix/releases/download/v$pkgver/strix-$pkgver-linux-arm64.tar.gz")
-sha256sums_aarch64=('PLACEHOLDER_ARM64_SHA256')
+sha256sums_aarch64=('4a4cba115bda8b89d7bbfabe960246a480ff43563144959b2e33477955aa6df2')
 
 # Upstream tarball holds a single PyInstaller-built executable named
 # strix-$pkgver-linux-<arch> (x86_64 / arm64); makepkg already unpacked it.
