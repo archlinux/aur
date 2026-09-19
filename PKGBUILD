@@ -3,7 +3,7 @@
 
 pkgname=sunshine-bin
 _pkgname=${pkgname%-bin}
-pkgver=2026.906.222525
+pkgver=2026.914.233613
 _gittag=v$pkgver
 pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight."
@@ -52,7 +52,7 @@ optdepends=(
 # makedepends=('patchelf')
 conflicts=('sunshine')
 provides=('sunshine')
-b2sums=('b73ae29bf3e7763c5187b0ebfe2061a87764a79d699df9737ba7170a0a5954e961601afbccb7ccfb0140d561f60c3a7895049ec421c4f9f239267a46111e5b43')
+sha256sums=('17eb8c4d823a2693038f40aeeab56943ef0d5d6ace8ac90b3693905b0acbba87')
 
 # prepare() {
 #     patchelf \
