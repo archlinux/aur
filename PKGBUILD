@@ -8,9 +8,9 @@
   license=('GPL-3.0-only')
   depends=('glibc' 'zlib' 'fontconfig' 'freetype2' 'libx11' 'libxcb' 'libxkbcommon' 'libice' 'libsm'
            'mpv' 'libraw')
-  optdepends=('libheif: HEIC/HEIF/AVIF-Dateien lesen'
-              'libjxl: JPEG-XL-Dateien lesen und schreiben'
-              'dnglab: RAW-Dateien in DNG umwandeln')
+  optdepends=('libheif: read HEIC, HEIF and AVIF files'
+              'libjxl: read and write JPEG XL files'
+              'dnglab: convert RAW files to DNG')
   provides=('ferrumpix')
   conflicts=('ferrumpix')
   options=('!strip')
