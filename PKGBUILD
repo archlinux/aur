@@ -2,7 +2,7 @@
 
 pkgname=chromium-ffmpeg
 _avcodec=63
-pkgver=9.0.1
+pkgver=9.0.2
 pkgrel=1
 pkgdesc="Add codecs to Chromium M152+ (libavcodec ${_avcodec})"
 arch=('x86_64')
@@ -13,12 +13,12 @@ install=chromium-ffmpeg.install
 source=(
 $install ${pkgname}.hook ${url}releases/ffmpeg-${pkgver}.tar.xz
 "sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
-https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${pkgver}-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
+https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-9.0.1-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 )
 
 b2sums=('abd7a259599872b1d499de65d4416ac454de3f473b27f7ec15f3472291bd474f861bbe231d3450d8297c2947d731a236aeb768f6e72d2bf90794876173f252f1'
         '371ab8750f8a27a2506af0379765d309031de83e4b7e2100fcef0bb130522ef0427998b0cdbc0b06fea924efb8c91e032c020d0f7643069fef48a83c40c51225'
-        '85b3b175211dfc013ae5df3ffd2bf2a1fd68f682f6b63d1a1a3aa431b7a8b5ef15c41108a6fa1ef2b15e6677f182ab02e48e0b56d3f301ef8e1777a473e8dd82'
+        'c768e75f3b129d7e51131ebe36813fdddbf8087637a15d3bad6e10a73b1d4fc815deee189809ff51750c5e00c4df401134417c911a3c97393d40e56cf3fd8308'
         '046f7fcb32ccd2d18a8a85a6ef4e1445cb6af682fb75999b12b60cd900fc4d37962dd86fc3f0201ec23ba296a834a01139ba379fabb33b1b49fa331a876593d5'
         'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d')
 depends=(glibc)
@@ -82,5 +82,5 @@ package(){
   install -Dm644 ${pkgname}.hook -t "$pkgdir"/usr/share/libalpm/hooks
   # Block DL binary
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
-  touch "$pkgdir"/opt/vivaldi{,-snapshot}/${_so}.{8.1,8.2,8.3,8.4,8.5,8.6,8.7,8.8,8.9,9.0}
+  touch "$pkgdir"/opt/vivaldi{,-snapshot}/${_so}.{8.2,8.3,8.4,8.5,8.6,8.7,8.8,8.9,9.0,9.1}
 }
