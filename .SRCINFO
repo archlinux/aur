@@ -1,6 +1,6 @@
 pkgbase = koushi-matrix-bin
 	pkgdesc = Koushi (光子・格子) — Matrix desktop client built on Tauri and matrix-rust-sdk (binary release)
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/shinaoka/koushi-matrix
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = koushi-matrix-bin
 	conflicts = koushi-desktop
 	options = !strip
 	options = !debug
-	source = koushi-matrix-bin-0.10.1.deb::https://github.com/shinaoka/koushi-matrix/releases/download/v0.10.1/Koushi-linux-x64.deb
-	sha256sums = b34604c1e86bc17b4394b589e6dcecd1f44fa92f3afba08d9f1b296383ebc9b5
+	source = koushi-matrix-bin-0.10.2.deb::https://github.com/shinaoka/koushi-matrix/releases/download/v0.10.2/Koushi-linux-x64.deb
+	sha256sums = 7345ded1f5972fb41a995859c9a615eb55666b5b1fdda2cd9e3eed4db9aadd46
 
 pkgname = koushi-matrix-bin
