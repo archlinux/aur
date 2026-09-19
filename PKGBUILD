@@ -1,8 +1,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=vinecopulib
-pkgver=0.7.3
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="C++ vine copula library"
 license=(MIT)
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(gcc-libs)
 makedepends=(cmake eigen boost libwdm r)
 provides=("lib${pkgname}.so")
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('fb506b950774ace72ef806af12171515606bf6e8b5c9f9c181bc083fc3de31ff963f656b987b57e2bd7d086bd90b49c1301fc75039e997acf18aa3a4fece8b7c')
+sha512sums=('36c3899f5981d697091853f4742cb6c99bda9ae72ac4d10c97f3df31e79ac97866a1f09d4122761858476a65bb09c3286b3aa18973c38460b0369e0a885da80b')
 
 prepare() {
   cd ${pkgname}-${pkgver}
