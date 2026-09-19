@@ -5,7 +5,7 @@ pkgname="${_pkgname}-slr-bin"
 pkgdesc='CachyOS Proton with the Proton-RTSP patchset, for VRChat livestream (RTSP/VRCDN) playback. Package for steam with less dependencies'
 _pkgver='11.0-20260703'
 pkgver=${_pkgver//-/.}
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://github.com/wundervrc/proton-cachyos-rtsp'
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 provides=('proton' "${_pkgname}")
 options=(!strip emptydirs)
 source=("${url}/releases/download/${_pkgname}-${_pkgver}-${pkgrel}/${_pkgname}-${_pkgver}-${pkgrel}.tar.xz")
-sha256sums=('e5a314d3fa6cf058d7f5234fe7899891be4d04e955449cd6628d041aace9a431')
+sha256sums=('51609af8dbcc7e72bc976958ccb5806d2fcbb625bad0769240b8d16faf72bcd7')
 
 build() {
   sed -i -r 's|"proton.*"|"Proton-CachyOS-RTSP"|' "${_pkgname}-${_pkgver}-${pkgrel}"/compatibilitytool.vdf
