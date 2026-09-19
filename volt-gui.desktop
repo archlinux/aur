@@ -1,8 +1,12 @@
 [Desktop Entry]
+Type=Application
+Version=1.0
 Name=volt-gui
 Comment=My AMD Adrenaline / NVIDIA Settings Linux Alternative
 Exec=volt-gui
-Icon=preferences-system
+Icon=volt-gui
 Terminal=false
-Type=Application
 Categories=Utility;
+Keywords=vulkan;vsync;gpu;gaming;
+StartupNotify=true
+StartupWMClass=volt-gui

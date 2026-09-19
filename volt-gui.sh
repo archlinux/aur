@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec /usr/bin/python /opt/volt-gui/volt-gui.py "$@"
+exec /usr/bin/python /usr/share/volt-gui/volt-gui.py "$@"
