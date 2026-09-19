@@ -1,5 +1,5 @@
 pkgname=fenriz-bar-git
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="Status bar for Wayland compositors"
 arch=('x86_64')
@@ -11,7 +11,8 @@ optdepends=('fenriz: the compositor this bar is built for'
             'fenriz-desktop: shared config and theme'
             'networkmanager: wifi'
             'bluez: bluetooth'
-            'upower: battery')
+            'upower: battery'
+            'wf-recorder: screen recording')
 provides=('fenriz-bar')
 conflicts=('fenriz-bar' 'fenriz-bar-bin')
 source=("git+${url}.git")

@@ -1,6 +1,6 @@
 pkgbase = fenriz-bar-git
 	pkgdesc = Status bar for Wayland compositors
-	pkgver = 0.1.16
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/zackb/fenriz
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = fenriz-bar-git
 	optdepends = networkmanager: wifi
 	optdepends = bluez: bluetooth
 	optdepends = upower: battery
+	optdepends = wf-recorder: screen recording
 	provides = fenriz-bar
 	conflicts = fenriz-bar
 	conflicts = fenriz-bar-bin
