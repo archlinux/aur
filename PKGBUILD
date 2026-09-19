@@ -1,6 +1,6 @@
 # Maintainer: Wisbendji Fimerlus <archledger236@gmail.com>
-pkgname=irlume
-pkgver=0.13.0
+pkgname=(irlume irlume-kcm)
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Face authentication for Linux: IR cameras, consent-gated, photo-spoofing resistant, TPM-sealed, password always works"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('fprintd: fingerprint companion factor')
 backup=('etc/pam.d/irlume-retry-reset')
 # clang: v4l2-sys-mit generates its V4L2 bindings with bindgen, which needs
 # libclang at build time; without it makepkg fails on a clean system.
-makedepends=('rust' 'cargo' 'gcc' 'clang')
+makedepends=('rust' 'cargo' 'gcc' 'clang' 'cmake' 'extra-cmake-modules' 'qt6-base' 'qt6-declarative' 'kcmutils' 'kcoreaddons' 'kio')
 # The code comes from the signed git tag. The ONNX model weights are NOT in the
 # tag; they are hosted as release assets on the version-independent `models-v1`
 # release (kept out of Git LFS so builds do not consume the account's LFS
@@ -45,7 +45,7 @@ sha256sums=('SKIP'
 install=irlume.install
 
 prepare() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/irlume"
     # Stage the release-hosted weights (makepkg already downloaded and verified
     # them from the sources above) into the tree the build expects.
     mkdir -p models
@@ -56,12 +56,15 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/irlume"
     cargo build --release --locked
+    # Plasma System Settings module (split package irlume-kcm).
+    cmake -S kcm -B kcm-build
+    cmake --build kcm-build
 }
 
-package() {
-    cd "$srcdir/$pkgname"
+package_irlume() {
+    cd "$srcdir/irlume"
     install -Dm0755 target/release/irlumed "$pkgdir/usr/bin/irlumed"
     install -Dm0755 target/release/irlume  "$pkgdir/usr/bin/irlume"
     install -Dm0644 packaging/desktop/io.github.archledger.Irlume.desktop "$pkgdir/usr/share/applications/io.github.archledger.Irlume.desktop"
@@ -102,7 +105,7 @@ package() {
         "$pkgdir/usr/share/irlume/tflite/LICENSE.tensorflow"
     install -Dm0644 "$srcdir/libtensorflowlite_c-v2.19.0-linux-x64/PROVENANCE" \
         "$pkgdir/usr/share/irlume/tflite/PROVENANCE"
-    install -Dm0644 "$srcdir/$pkgname/packaging/licenses/THIRD-PARTY-NOTICES.tflite" \
+    install -Dm0644 "$srcdir/irlume/packaging/licenses/THIRD-PARTY-NOTICES.tflite" \
         "$pkgdir/usr/share/irlume/tflite/THIRD-PARTY-NOTICES"
     install -Dm0644 packaging/polkit/org.irlume.enroll.policy "$pkgdir/usr/share/polkit-1/actions/org.irlume.enroll.policy"
     install -Dm0644 packaging/polkit/org.irlume.recovery-manage.policy "$pkgdir/usr/share/polkit-1/actions/org.irlume.recovery-manage.policy"
@@ -131,4 +134,11 @@ package() {
     install -Dm0644 schemas/machine-api-v1.schema.json "$pkgdir/usr/share/irlume/schemas/machine-api-v1.schema.json"
     install -Dm0644 docs/MACHINE-API.md "$pkgdir/usr/share/doc/$pkgname/MACHINE-API.md"
     install -Dm0644 docs/INTEGRATION.md "$pkgdir/usr/share/doc/$pkgname/INTEGRATION.md"
+}
+
+package_irlume-kcm() {
+    pkgdesc="Plasma System Settings module for irlume: read-only status, health and launch actions"
+    depends=('irlume' 'qt6-declarative' 'kcmutils' 'kio' 'kirigami')
+    cd "$srcdir/irlume"
+    DESTDIR="$pkgdir" cmake --install kcm-build
 }

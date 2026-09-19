@@ -1,6 +1,6 @@
 pkgbase = irlume
 	pkgdesc = Face authentication for Linux: IR cameras, consent-gated, photo-spoofing resistant, TPM-sealed, password always works
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/archledger/irlume
 	install = irlume.install
@@ -10,6 +10,13 @@ pkgbase = irlume
 	makedepends = cargo
 	makedepends = gcc
 	makedepends = clang
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = kcmutils
+	makedepends = kcoreaddons
+	makedepends = kio
 	depends = onnxruntime
 	depends = tpm2-tss
 	depends = pam
@@ -17,7 +24,7 @@ pkgbase = irlume
 	depends = dbus
 	optdepends = fprintd: fingerprint companion factor
 	backup = etc/pam.d/irlume-retry-reset
-	source = git+https://github.com/archledger/irlume.git#tag=v0.13.0
+	source = git+https://github.com/archledger/irlume.git#tag=v0.14.0
 	source = glintr100.onnx::https://github.com/archledger/irlume/releases/download/models-v1/glintr100.onnx
 	source = face_detection_yunet_2023mar.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_detection_yunet_2023mar.onnx
 	source = face_landmark.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_landmark.onnx
@@ -37,3 +44,11 @@ pkgbase = irlume
 	sha256sums = dd3abcdbc0f35a9466a682358955ac3826a9a81590cd6b8abcf98548e17bd311
 
 pkgname = irlume
+
+pkgname = irlume-kcm
+	pkgdesc = Plasma System Settings module for irlume: read-only status, health and launch actions
+	depends = irlume
+	depends = qt6-declarative
+	depends = kcmutils
+	depends = kio
+	depends = kirigami
