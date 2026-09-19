@@ -1,6 +1,6 @@
 pkgbase = peertube-viewer-rs-bin
 	pkgdesc = Peertube command line viewer inspired by youtube-viewer
-	pkgver = 1.8.10
+	pkgver = 1.8.11
 	pkgrel = 1
 	url = https://peertube-viewer.sgued.fr
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = peertube-viewer-rs-bin
 	depends = gcc-libs
 	provides = peertube-viewer-rs
 	conflicts = peertube-viewer-rs
-	source = https://peertube-viewer.sgued.fr/releases/linux/peertube-viewer-rs-v1.8.10.tar.gz
-	sha256sums = 988e1d2b69fd665160738ed9a07c61d284d6cf008c2d95e2a9d3fa778b75d683
+	source = https://peertube-viewer.sgued.fr/releases/linux/peertube-viewer-rs-v1.8.11.tar.gz
+	sha256sums = c991ce2b995d07538609dc0461f66dfc18dc3fd3209bbdfcaaa242e16d22cbde
 
 pkgname = peertube-viewer-rs-bin
