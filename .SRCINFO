@@ -1,6 +1,6 @@
 pkgbase = bilup-bin
 	pkgdesc = TurboWarp mod with Chinese translations and live collaboration.
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/Bilup/
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = bilup-bin
 	conflicts = bilup-git
 	options = !strip
 	options = !debug
-	source_x86_64 = bilup-2.0.6-x86_64.deb::https://github.com/Bilup/Desktop/releases/download/v2.0.6/Bilup-linux-amd64-2.0.6.deb
+	source_x86_64 = bilup-2.0.7-x86_64.deb::https://github.com/Bilup/Desktop/releases/download/v2.0.7/Bilup-linux-amd64-2.0.7.deb
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = bilup-2.0.6-aarch64.deb::https://github.com/Bilup/Desktop/releases/download/v2.0.6/Bilup-linux-arm64-2.0.6.deb
+	source_aarch64 = bilup-2.0.7-aarch64.deb::https://github.com/Bilup/Desktop/releases/download/v2.0.7/Bilup-linux-arm64-2.0.7.deb
 	sha256sums_aarch64 = SKIP
-	source_armv7h = bilup-2.0.6-armv7h.deb::https://github.com/Bilup/Desktop/releases/download/v2.0.6/Bilup-linux-armv7l-2.0.6.deb
+	source_armv7h = bilup-2.0.7-armv7h.deb::https://github.com/Bilup/Desktop/releases/download/v2.0.7/Bilup-linux-armv7l-2.0.7.deb
 	sha256sums_armv7h = SKIP
 
 pkgname = bilup-bin
