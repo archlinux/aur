@@ -1,6 +1,6 @@
 pkgbase = wechat-bin
 	pkgdesc = 微信是一种生活方式. This is a repackage of WeChat.
-	pkgver = 4.1.13.9
+	pkgver = 4.1.13.23
 	pkgrel = 1
 	url = https://weixin.qq.com/
 	arch = x86_64
@@ -48,11 +48,11 @@ pkgbase = wechat-bin
 	optdepends = xdg-desktop-portal-impl: XDG Desktop Portal implementation for File Chooser and ScreenCast
 	options = !debug
 	options = !strip
-	source_x86_64 = wechat-x86-4.1.13.9.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb
+	source_x86_64 = wechat-x86-4.1.13.23.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb
 	md5sums_x86_64 = SKIP
-	source_aarch64 = wechat-arm-4.1.13.9.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.deb
+	source_aarch64 = wechat-arm-4.1.13.23.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.deb
 	md5sums_aarch64 = SKIP
-	source_loong64 = wechat-loong64-4.1.13.9.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_LoongArch.deb
+	source_loong64 = wechat-loong64-4.1.13.23.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_LoongArch.deb
 	md5sums_loong64 = SKIP
 
 pkgname = wechat-bin
