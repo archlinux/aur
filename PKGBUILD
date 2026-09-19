@@ -1,6 +1,6 @@
 # Maintainer: Platon Pronko < platon7pronko at gmail dot com >
 pkgname=mill-global
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Mill Build Tool, global installation"
 arch=("any")
@@ -9,7 +9,7 @@ license=("MIT")
 
 source=("https://repo1.maven.org/maven2/com/lihaoyi/mill-dist/${pkgver/_/-}/mill-dist-${pkgver/_/-}-mill.sh"
         "https://raw.githubusercontent.com/lefou/mill-bash-completion/dfd5ac9b8b0d08b0a22596e88f0f4b1d15abcfd4/mill.complete.sh")
-sha256sums=('fceaafae3d25cf240cdf1810cf1ee7881eef686f5b9f68143f564c780cfd9166'
+sha256sums=('109c471a691a2eaf8f8181b42cd230f0b6631676641a5986f376850afd897831'
             'bf293fbc521cc0c8108cbbc3580adc81cbf470380b4f5cd160af075a5f1214e0')
 
 prepare() {
