@@ -1,0 +1,21 @@
+pkgbase = nvim-mcp-git
+	pkgdesc = MCP server for Neovim, git main build
+	pkgver = r323.986be68
+	pkgrel = 1
+	url = https://github.com/linw1995/nvim-mcp
+	install = nvim-mcp-git.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	checkdepends = neovim
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	optdepends = neovim: Lua plugin that registers the RPC socket
+	provides = nvim-mcp
+	conflicts = nvim-mcp
+	source = nvim-mcp-git::git+https://github.com/linw1995/nvim-mcp.git#branch=main
+	sha256sums = SKIP
+
+pkgname = nvim-mcp-git

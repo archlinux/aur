@@ -1,0 +1,31 @@
+post_install() {
+  cat <<'EOF'
+This package installs the nvim-mcp server binary.
+
+The Neovim plugin is optional. It creates one socket per project so that 
+nvim-mcp --connect auto finds the running instance. In neovim, you would
+add this to your init.lua:
+
+  vim.pack.add({
+    { name = 'nvim-mcp', src = 'https://github.com/linw1995/nvim-mcp' },
+  })
+  require('nvim-mcp').setup({})
+
+If you don't use the plugin, just make sure you start Neovim with a socket
+that matches the glob nvim-mcp knows to search for:
+
+  nvim --listen "$XDG_RUNTIME_DIR/nvim-mcp-shared.sock"
+
+Registering the server with various agent harnesses:
+
+  # claude
+  claude mcp add --scope user Neovim -- nvim-mcp
+
+  # codex
+  codex mcp add Neovim -- nvim-mcp
+
+  # opencode
+  opencode mcp add --global Neovim -- nvim-mcp
+
+EOF
+}
