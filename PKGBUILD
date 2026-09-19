@@ -1,7 +1,7 @@
 # Maintainer: Rockykln <contact@rockykln.com>
 pkgname=podctl-git
 _pkgname=podctl
-pkgver=0.1.3.r32.g0db20d4
+pkgver=0.2.0.r37.gc02f3f9
 pkgrel=1
 pkgdesc="Linux control suite for AirPods — daemon, CLI, tray icon and case-open popup (git HEAD)"
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,7 @@ depends=('bluez-utils' 'dbus')
 makedepends=('cargo' 'git')
 optdepends=(
   'libpulse: audio verbs (volume, mute, profile, codec, default sink, latency, podctl meter)'
+  'pipewire-audio: conversation-awareness volume stage measures the music level (pw-record)'
   'systemd: podctl install / podctl reboot user services'
 )
 provides=('podctl')
