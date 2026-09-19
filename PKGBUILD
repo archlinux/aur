@@ -1,10 +1,10 @@
 # Maintainer: Andres Perez <aur@andresperezl.com>
 pkgname=dusklight-bin
-pkgver=1.4.1
+pkgver=2.0.0
 pkgrel=1
 _desktop_id=dev.twilitrealm.dusk
 pkgdesc='PC port of a classic adventure game'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/TwilitRealm/dusklight'
 license=('CC0-1.0')
 depends=(
@@ -41,6 +41,7 @@ source=(
   "1024x1024-${_desktop_id}.png::https://raw.githubusercontent.com/TwilitRealm/dusklight/v${pkgver}/platforms/freedesktop/1024x1024/apps/${_desktop_id}.png"
 )
 source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/TwilitRealm/dusklight/releases/download/v${pkgver}/Dusklight-v${pkgver}-linux-x86_64.AppImage")
+source_aarch64=("${pkgname}-${pkgver}.AppImage::https://github.com/TwilitRealm/dusklight/releases/download/v${pkgver}/Dusklight-v${pkgver}-linux-arm64.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
 sha256sums=('6671ee17ed017db6e2175bdd68e82b724427b98696547a1e3ce2599672e689c6'
             '6d489af6292662d9e36d34ce49423784984a5f6e41d7b58f49b01264df59fa03'
@@ -52,7 +53,8 @@ sha256sums=('6671ee17ed017db6e2175bdd68e82b724427b98696547a1e3ce2599672e689c6'
             '48f9aba6b3309650cc23df507834601f13aef657212cda957f3d6458db7e5487'
             '223800f8c29c7d4dad7af0c1f947dec3120120507bdea0c0d6d08366840f5aef'
             '49afadfd709bbfd2ecb5c9036d880a972561e5839d1ae2c51e67a9ad2dc5e7fb')
-sha256sums_x86_64=('f5dd1308c131430945cc12cdd44f22d31e3dd6ec5458498491924a5e9fa92d40')
+sha256sums_x86_64=('310de0c8e27c6ce8b1217a689412201e445ca7cdddefa429df718a645540450a')
+sha256sums_aarch64=('f1ac6d0d92b732bcc1d0334f3b4464a435f7ccd5d4a9f18dce197af0a332a8de')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" \
