@@ -26,6 +26,6 @@ pkgbase = openxlr
 	optdepends = lsp-plugins-lv2: a starter set of LV2 plugins for the inserts
 	optdepends = opendeck: Stream Deck control through the bundled plugin
 	source = openxlr-0.1.43.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v0.1.43.tar.gz
-	sha256sums = 3f621bbe2c4a7b654d4161e9fb808a0961a15925c6be712ad2c1f390475277a9
+	sha256sums = 975add3105de5c6ba5d5f15ccac834d2331a1253530ffabd60d69245b383b86b
 
 pkgname = openxlr
