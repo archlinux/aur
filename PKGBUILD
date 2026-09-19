@@ -1,7 +1,7 @@
 # Maintainer: rabbull <karl.liu.1024@gmail.com>
 _pkgname=reckless
 pkgname=reckless-git
-pkgver=0.10.0.dev.7300f044.r143.g91b56c2
+pkgver=0.10.0.dev.7300f044.r144.g31d9cd6
 pkgrel=1
 pkgdesc='Competitive UCI chess engine written in Rust'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'clang' 'git')
 options=('!debug')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
-source=("$_pkgname::git+$url.git")
+source=("$_pkgname::git+$url.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = reckless-git
 	pkgdesc = Competitive UCI chess engine written in Rust
-pkgver = 0.10.0.dev.7300f044.r143.g91b56c2
+	pkgver = 0.10.0.dev.7300f044.r144.g31d9cd6
 	pkgrel = 1
 	url = https://github.com/codedeliveryservice/Reckless
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgver = 0.10.0.dev.7300f044.r143.g91b56c2
 	conflicts = reckless
 	conflicts = reckless-bin
 	options = !debug
-	source = reckless::git+https://github.com/codedeliveryservice/Reckless.git
+	source = reckless::git+https://github.com/codedeliveryservice/Reckless.git#branch=main
 	sha256sums = SKIP
 
 pkgname = reckless-git
