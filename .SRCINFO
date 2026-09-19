@@ -1,6 +1,6 @@
 pkgbase = r-kebabs
 	pkgdesc = Kernel-Based Analysis of Biological Sequences
-	pkgver = 1.46.0
+	pkgver = 1.46.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/kebabs
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = r-kebabs
 	optdepends = r-biocgenerics
 	optdepends = r-knitr
 	optdepends = r-sparsem
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/kebabs_1.46.0.tar.gz
-	md5sums = 185a580c18c677fd9771a87885f24b4a
-	b2sums = 73c93467865f78b5b2f30aed01a3f0e0d01e8c32630eb4471711e0a7e9a46a61838c893a5f95fdc23fd19516831c890066a6fe05e16069dd131ecdef4a89e55b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/kebabs_1.46.1.tar.gz
+	md5sums = 59a295fc6578d1b47fba2c35ef6ccea9
+	b2sums = b3981764af5c83c71d2d69b64bf9e8aa3d77504bc34498265b951eac00162b39f2672e1bab9177514fc736bc363e70c0648e592b8a5a59ace49db3f5d8bcdaa8
 
 pkgname = r-kebabs
