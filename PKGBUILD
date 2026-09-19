@@ -1,7 +1,7 @@
 # Maintainer: T4toh <https://github.com/T4toh>
 pkgname=twriter-bin
 _pkgname=tWriter
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Editor de novelas en ES/EN con conversor RAE de diálogos, gramática vía LanguageTool, export EPUB"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=("${pkgname}-${pkgver}.deb::https://github.com/T4toh/tWriter/releases/dow
 #   cd packaging/aur && updpkgsums   # pacman-contrib
 # y commitear el PKGBUILD antes de subirlo al AUR. `bump-version.sh` lo
 # recuerda al final.
-sha256sums=('32273b24b0821c2e586468cb7cf36aa2ad8ac7fa8cb70c71ab9894ec547532ba')
+sha256sums=('f88ee519869f8d00a95b71fec4245f3be869dfe916881cc067dc0a5a00c2c1eb')
 
 package() {
     cd "${srcdir}"
