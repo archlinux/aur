@@ -1,7 +1,7 @@
 pkgbase = dlssnr-bin
 	pkgdesc = DLSS5 Neural Rendering Vulkan layer and helper.
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/bmitch87/DLSS5VKLayer
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -12,7 +12,7 @@ pkgbase = dlssnr-bin
 	provides = dlssnr
 	conflicts = dlssnr
 	options = !debug
-	source_x86_64 = https://github.com/bmitch87/DLSS5VKLayer/releases/download/0.3.0-2/dlssnr_0.3.0-2_debian13_amd64.deb
+	source_x86_64 = https://github.com/bmitch87/DLSS5VKLayer/releases/download/0.3.1-1/dlssnr_0.3.1-1_debian13_amd64.deb
 	sha256sums_x86_64 = 2a498e2d9add99bb46f8c13a0aa27024367b12089c4267383e62e873cbab8ca4
 
 pkgname = dlssnr-bin
