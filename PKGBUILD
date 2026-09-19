@@ -1,6 +1,6 @@
 # Maintainer: blazebsc <blakeisfruity@proton.me>
 pkgname=froststrap
-_tag='v2.0.0-beta.14'
+_tag='v2.0.0'
 pkgver=${_tag#v}
 pkgver=${pkgver//-/.}
 pkgrel=1
@@ -12,7 +12,7 @@ depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme')
 makedepends=('dotnet-sdk-10.0' 'git')
 source=("git+${url}.git#tag=${_tag}"
     "git+https://github.com/Froststrap/ColorPicker.git")
-sha256sums=('1c8b5ff783ef8f301748fdda0da9cbac4e4cf6ae7f579ad4ab12eb682737c69b'
+sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
@@ -62,7 +62,7 @@ MimeType=x-scheme-handler/roblox;x-scheme-handler/roblox-player;
 EOF
 
     # Install licenses
-    install -Dm644 LICENSES/AGPL-3.0-only.txt "$pkgdir/usr/share/licenses/$pkgname/AGPL-3.0"
-    install -Dm644 LICENSES/MIT.txt "$pkgdir/usr/share/licenses/$pkgname/MIT"
-    install -Dm644 LICENSES/MPL-2.0.txt "$pkgdir/usr/share/licenses/$pkgname/MPL-2.0"
+    install -Dm644 LICENSES/AGPL-3.0-only "$pkgdir/usr/share/licenses/$pkgname/AGPL-3.0"
+    install -Dm644 LICENSES/MIT "$pkgdir/usr/share/licenses/$pkgname/MIT"
+    install -Dm644 LICENSES/MPL-2.0 "$pkgdir/usr/share/licenses/$pkgname/MPL-2.0"
 }
