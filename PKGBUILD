@@ -1,13 +1,13 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=tone3000-plugin
 pkgver=0.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="TONE3000 — NAM & IR loader plugin (VST3/CLAP/LV2/Standalone) (Built from source)"
 arch=('x86_64')
 url="https://github.com/tone-3000/tone3000-plugin"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'alsa-lib' 'freetype2' 'curl' 'hicolor-icon-theme' 'glibc' 'gcc-libs')
-makedepends=('cmake' 'ninja' 'nodejs' 'npm' 'git' 'pkgconf' 'unzip' 'jack2')
+makedepends=('cmake' 'ninja' 'nodejs' 'npm' 'git' 'pkgconf' 'unzip' 'jack')
 optdepends=('jack: JACK audio backend for standalone')
 # provides not needed for canonical package
 conflicts=('tone3000-plugin-bin')
