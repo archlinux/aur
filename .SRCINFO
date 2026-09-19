@@ -1,0 +1,21 @@
+pkgbase = minaw
+	pkgdesc = X11 wallpaper setter with smooth fade transitions
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://gitlab.com/mgmillani/minaw
+	arch = any
+	license = GPL-3.0-only
+	depends = feh
+	depends = fish
+	depends = imagemagick
+	depends = nsxiv
+	depends = xorg-xprop
+	depends = xorg-xwininfo
+	depends = xwinwrap
+	depends = xorg-xrandr
+	optdepends = picom: compositor providing wallpaper opacity transitions
+	optdepends = fortune: write a fortune cookie on the wallaper
+	source = minaw-1.6.tar.gz::https://gitlab.com/mgmillani/minaw/-/archive/1.6/minaw-1.6.tar.gz
+	sha256sums = 50c334a0c9895778c4f1c0312ec5cdfa0c58dcb3450f5425f72db14dc045dbe1
+
+pkgname = minaw
