@@ -1,6 +1,6 @@
 # Maintainer: Hugh Whelan <brickhousedevelopers@gmail.com>
 pkgname=scidcommunity
-pkgver=5.1.4.15
+pkgver=5.1.4.17
 pkgrel=1
 pkgdesc="Enhanced fork of Scid chess database with Chess.com/Lichess integration, tablebase lookup, improved search, and additional training features"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('tcl' 'tk')
 makedepends=('gcc' 'make' 'git')
 # Commit hash that includes the ui_tcltk.h fix for system-wide installations
-_commit="e526c4680f20f79e4f7f36e84bac50017bf2c796"
+_commit="b5cadd0a5f2195849317c5c3d848de316626e757"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/whelanh/scidCommunity/archive/${_commit}.tar.gz")
 sha256sums=('SKIP')  # Safe to skip: integrity verified by commit hash
 
@@ -17,7 +17,7 @@ build() {
   cd "${srcdir}/scidCommunity-${_commit}"
   
   # Set version via environment variable (configure script checks this)
-  # The version must match what's in tcl/start.tcl (scidVersionExpected = "5.1.1")
+  # The version must match what's in tcl/start.tcl (scidVere526c4680f20f79e4f7f36e84bac50017bf2c796sionExpected = "5.1.1")
   export SCIDCOMMUNITY_VERSION="5.1.1"
   
   # Configure with runtime paths
