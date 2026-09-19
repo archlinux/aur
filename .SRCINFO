@@ -1,0 +1,22 @@
+pkgbase = strix-bin
+	pkgdesc = Open-source AI pentesting tool - autonomous AI hackers that find and fix your app vulnerabilities (prebuilt binary)
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/usestrix/strix
+	install = strix.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = docker
+	optdepends = ca-certificates: HTTPS targets and LLM API TLS
+	provides = strix
+	conflicts = strix
+	options = !strip
+	source = LICENSE::https://raw.githubusercontent.com/usestrix/strix/v1.6.2/LICENSE
+	sha256sums = 7db9697134251e314bd8d39257fe170c98b3e2ad9b2ed67e97acaf9613e7b9e3
+	source_x86_64 = strix-bin-1.6.2-x86_64.tar.gz::https://github.com/usestrix/strix/releases/download/v1.6.2/strix-1.6.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f3f29fa64bee420bf64f8911fb9f38e20270d406f6df44cc2436252c2af0bc81
+	source_aarch64 = strix-bin-1.6.2-aarch64.tar.gz::https://github.com/usestrix/strix/releases/download/v1.6.2/strix-1.6.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4a4cba115bda8b89d7bbfabe960246a480ff43563144959b2e33477955aa6df2
+
+pkgname = strix-bin
