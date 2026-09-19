@@ -397,7 +397,7 @@ pkgname=(
   "${pkgbase}-gcc"
   "${pkgbase}-gcc-fortran"
 )
-pkgver=R2026a+26.1.0.3251617
+pkgver=R2026a+26.1.0.3346908
 _release="${pkgver%+*}"
 _version="${pkgver##*+}"
 pkgrel=1
@@ -557,7 +557,7 @@ build() {
   echo "  -> Patching MathWorksProductAuthorizer for GnuTLS compatibility..."
   local mode="$(stat -c '%a' 'bin/glnxa64/MathWorksProductAuthorizer')"
   chmod u+w 'bin/glnxa64/MathWorksProductAuthorizer'
-  patchelf --add-needed 'libleancrypto.so.1' 'bin/glnxa64/MathWorksProductAuthorizer'
+  patchelf --add-needed 'libleancrypto.so' 'bin/glnxa64/MathWorksProductAuthorizer'
   chmod "${mode}" 'bin/glnxa64/MathWorksProductAuthorizer'
 }
 
