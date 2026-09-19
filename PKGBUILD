@@ -3,7 +3,7 @@
 # Updated by https://github.com/termux/termux-language-server/blob/main/.github/workflows/main.yml
 pkgname=termux-language-server
 _name=$pkgname
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Language server for build.sh, PKGBUILD, ebuild"
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=(portage paru)
 makedepends=(uv python-installer)
 license=(GPL3)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('aadc89ccde6099edb4167650154736716470949c1adfb5faec12538b2ef7552c')
+sha256sums=('5fa4ae0df4a865ecfae08b19db55edbb2a60d788fe6f038011fbf84189b47e3b')
 
 build() {
 	cd "${_name//-/_}-$pkgver" || exit
