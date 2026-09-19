@@ -1,7 +1,7 @@
 # Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
 
 pkgname='docling'
-pkgver='2.126.0'
+pkgver='2.129.0'
 pkgrel=1
 pkgdesc='Document processing toolkit for converting diverse formats into structured data'
 url="https://github.com/docling-project/${pkgname}"
@@ -14,14 +14,14 @@ depends=(
 	'python-rtree>=1.3.0'
 	'python-scipy>=1.6.0'
 	'python-pypdfium2>=4.30.2'
-	'python-docling-parse>=7.16.0'
+	'python-docling-parse>=7.20.0'
 	'python-docling-ibm-models>=4.0.2'
 	'python-pytorch>=2.2.2'
 	'python-torchvision'
 	'python-transformers>=5.4.0'
 	'python-lxml'
 	'python-defusedxml>=0.7.1'
-	'python-typer026>=0.12.5'
+	'python-typer026>=0.19.0'
 	'python-rich>=13.0.0'
 	'python-opencv>=4.6.0'
 )
@@ -68,8 +68,8 @@ source=(
 	'slim_meta_package.patch'
 )
 b2sums=(
-	'725266497a407ff5b5a7b05b1ec5c988fcb40c27b1a01dc68ea0fd158269339a80f5b67197f9efe851feb8befcb428bb5d4ed891f4bb3fc9f1c7cc37486e5895'
-	'dbfecd410543a868a28bc9c7b3b22ac40620a3b8462657df1a400f62cc167947c25351b1d3d9205164fba4efb53d52640b78dc135a91951322ff41eac0e42185'
+	'edf1d1cf73b67849777fd77fa4cf56155d0a8b20011293829480e1812d15dcdd10cb69abd7d26d4950ef0093df91a9b759e5bd2aa28b110dcc5cfd795a2978f0'
+	'4316fa8e1ea803f82291c4da18357fad50463100116b379a3eadc19d74e727809ed26d063dd4eb5c790ce53bf5c1a2805b6e3fd93928204eecdcaccfa0618305'
 )
 
 prepare() {
