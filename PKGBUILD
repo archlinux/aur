@@ -5,6 +5,7 @@ pkgname=python-$_name
 _py=cp314
 pkgver=2.11.3
 pkgrel=1
+epoch=1
 pkgdesc='bitHuman Python SDK — libessence-backed avatar runtime.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/bithuman-product/bithuman-sdk-public/tree/main/python'

@@ -2,6 +2,7 @@ pkgbase = python-bithuman
 	pkgdesc = bitHuman Python SDK — libessence-backed avatar runtime.
 	pkgver = 2.11.3
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/bithuman-product/bithuman-sdk-public/tree/main/python
 	arch = x86_64
 	arch = aarch64
