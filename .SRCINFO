@@ -1,0 +1,18 @@
+pkgbase = musitui
+	pkgdesc = A minimalist TUI music player (MP3/FLAC/WAV) with FFT spectrum visualizer and BPM detection
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/ardet696/musiTui
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = sdl2
+	provides = minimalist-mp3-player
+	conflicts = minimalist-mp3-player
+	replaces = minimalist-mp3-player
+	source = musitui-1.3.0::git+https://github.com/ardet696/musiTui.git#tag=v1.3.0
+	sha256sums = SKIP
+
+pkgname = musitui
