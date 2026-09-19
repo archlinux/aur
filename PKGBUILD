@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=0.3.13
+pkgver=0.3.15
 pkgrel=1
 epoch=1
 _tag="v${pkgver}"
@@ -25,20 +25,16 @@ optdepends=(
 	"nodejs>=23.5.0: support for custom JS music source"
 )
 source=(
-	"${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
+	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
 )
-sha512sums=('af151a9281c17607e747a2682296e44d60573a7b12433673a86c7aa4da5da2ac467f1d8962da99a615c2f21239b97ffe41e40d1e2f458cd27d126638ba9e2797')
+sha512sums=('b7c1508e73a2f51cfd79479efbbfb56227886a2d772dec738419aeeeee568712155ba80300a6b0ab23e349171a6a7893d81e2bfa5f87810da93afba9790b9484')
 
 prepare() {
 	cd "${_srcdir}"
 
 	export RUSTUP_TOOLCHAIN=stable
 
-	# Upstream often doesn't update this
-	sed -i "s/^version = .*/version = \"${pkgver}\"/" Cargo.toml
-	cargo update --workspace --offline
-
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
