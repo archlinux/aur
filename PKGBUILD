@@ -3,7 +3,7 @@
 
 _pkgbase='python-nbxmpp'
 pkgname="${_pkgbase}-git"
-pkgver=5.0.3.r4.gb44690d
+pkgver=7.4.0.r2.gaa73cb4
 pkgrel=1
 pkgdesc="Nonblocking Jabber/XMPP library, used by Gajim"
 arch=('any')
