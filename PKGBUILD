@@ -1,7 +1,7 @@
 # Maintainer: Cristo Cola <hello@argyrolabs.com>
 pkgname=fast-folder
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Template-driven project folder generator with a guided TUI and CLI (fastf)"
 arch=(x86_64)
 url="https://github.com/cristocola/fast-folder"
@@ -27,6 +27,15 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
+  # Release mode, so debug assertions are off as they are in the binary this
+  # package ships, but without the release profile's fat LTO and single codegen
+  # unit. Those exist for that one binary. Applied to two dozen test binaries
+  # built in parallel they cost gigabytes: on 8 threads with 3 GB free, as on
+  # a desktop busy with other things, the kernel killed rustc and the package
+  # failed to build. A target dir of its own keeps the binary build() made,
+  # which package() installs, from being rebuilt without LTO over the top.
+  export CARGO_PROFILE_RELEASE_LTO=false CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
+  export CARGO_TARGET_DIR=target/check
   # Tests are hermetic: they redirect all state via FASTF_INSTALL_DIR.
   cargo test --frozen --release
 }
