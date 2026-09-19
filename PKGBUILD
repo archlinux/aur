@@ -2,16 +2,16 @@
 
 _name=nbxmpp-client
 pkgname="python-nbxmpp-client"
-pkgrel=1
+pkgrel=2
 pkgver=2.0.0
 pkgdesc="A small GTK test client to test various ways to connect to a server."
 arch=("any")
-url="https://dev.gajim.org/gajim/$_name"
+url="https://gitlab.com/gajim/$_name"
 license=('MIT')
 makedepends=('git' 'python' 'python-setuptools')
 depends=('python' 'python-nbxmpp' 'gtksourceview5' 'python-gobject' 'gobject-introspection' "gtk4" "libadwaita")
 provides=('nbc')
-source=("https://dev.gajim.org/gajim/$_name/-/archive/v$pkgver/$_name-v$pkgver.tar.gz")
+source=("https://gitlab.com/gajim/$_name/-/archive/v$pkgver/$_name-v$pkgver.tar.gz")
 sha256sums=('9c432c5a56935d0cf8eaa2da81ce62ef2d6654a54085bdccf14ace0b26ec4ad1')
 
 build() {
