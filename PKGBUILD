@@ -5,7 +5,7 @@
 
 pkgname=xca-rs
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="XCA (X Certificate and Key Management) rewritten in Rust with GTK4 and GOST support"
 arch=('x86_64')
 url="https://github.com/RinWate/xca-rs"
@@ -21,16 +21,23 @@ options=(!lto)
 # redirects there), so this must keep the repo name's exact case.
 _srcrel="XCA-RS-$pkgver"
 
-# Hermetic build: a fresh CARGO_HOME makes cargo ignore the builder's
-# ~/.cargo/config.toml — cross linkers set there (e.g.
-# x86_64-linux-gnu-gcc) break build scripts, and rustflags like
-# target-cpu=native would produce a non-portable package. Unset
-# makepkg.conf CFLAGS for the same reason (they leak into the bundled
-# SQLCipher C objects).
+# Hermetic build, immune to every source of a stray linker:
+#  - a fresh CARGO_HOME ignores the builder's ~/.cargo/config.toml (cross
+#    linkers like x86_64-linux-gnu-gcc break build scripts; rustflags like
+#    target-cpu=native would make a non-portable package);
+#  - unsetting CARGO_TARGET_*_LINKER / RUSTFLAGS kills the same settings
+#    coming from the shell profile or ~/.makepkg.conf;
+#  - makepkg.conf CFLAGS must not leak into the bundled SQLCipher C code;
+#  - the --config flag outranks both env and config files, so the host
+#    linker is pinned to the system compiler no matter what.
 _hermetic_cargo() {
     export CARGO_HOME="$srcdir/cargo-home"
     unset CFLAGS CXXFLAGS LDFLAGS
+    unset RUSTFLAGS CARGO_ENCODED_RUSTFLAGS
+    unset CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER
 }
+
+_pin_linker=(--config 'target.x86_64-unknown-linux-gnu.linker="cc"')
 
 prepare() {
     _hermetic_cargo
@@ -41,13 +48,13 @@ build() {
     _hermetic_cargo
     cd "$_srcrel"
     export CARGO_TARGET_DIR="$srcdir/target"
-    cargo build --frozen --release
+    cargo build --frozen --release "${_pin_linker[@]}"
 }
 
 check() {
     _hermetic_cargo
     cd "$_srcrel"
-    cargo test --frozen --release
+    cargo test --frozen --release "${_pin_linker[@]}"
 }
 
 package() {
