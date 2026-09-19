@@ -1,6 +1,6 @@
 pkgbase = owe
 	pkgdesc = High-performance wallpaper engine for Omarchy (mp4, gif, stills)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/omacom/owe
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = owe
 	depends = socat
 	optdepends = intel-media-driver: VAAPI hardware decode on Intel GPUs
 	optdepends = libva-mesa-driver: VAAPI hardware decode on AMD GPUs
-	source = owe-0.2.0.tar.gz::https://github.com/omacom/owe/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = d667048b0096bbcbb508c0cedd460bf5fb669fafffdcefc432f2886e284295c8
+	source = owe-0.2.1.tar.gz::https://github.com/omacom/owe/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 1d90b751c87fdac1e948404d282cd4f729a6bce653194303b21217b4ee84f6af
 
 pkgname = owe
