@@ -6,10 +6,10 @@
 
 pkgname=clash-rs-bin
 pkgver=0.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom protocol, rule based network proxy software"
 arch=(x86_64 armv7h aarch64 i686)
-url="https://github.com/Watfaq/clash-rs"
+url="https://github.com/ibigbug/clash-rs"
 license=(Apache-2.0)
 depends=(glibc libgcc libgcc_s.so)
 provides=(clash-rs)

@@ -1,4 +1,4 @@
 [clash-rs-bin]
 source = "git"
-git = "https://github.com/Watfaq/clash-rs.git"
+git = "https://github.com/ibigbug/clash-rs.git"
 prefix = "v"
