@@ -1,6 +1,6 @@
 pkgbase = tcalm
 	pkgdesc = Prayer Time Media Pauser for Linux (CLI, TUI, and systemd service)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/abod8639/Tcalm
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = tcalm
 	depends = python
 	depends = playerctl
 	optdepends = libnotify: for desktop notifications
-	source = tcalm::git+https://github.com/abod8639/Tcalm.git#tag=v1.0.0
+	source = tcalm::git+https://github.com/abod8639/Tcalm.git#tag=v1.1.0
 	sha256sums = SKIP
 
 pkgname = tcalm

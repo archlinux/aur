@@ -1,6 +1,6 @@
 # Maintainer: Abdelrahman <abot8639@gmail.com>
 pkgname=tcalm
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Prayer Time Media Pauser for Linux (CLI, TUI, and systemd service)"
 arch=('any')
