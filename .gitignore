@@ -1,0 +1,9 @@
+# The AUR repository tracks the packaging sources and nothing else: no built
+# package, no filelist, no src/ or pkg/ directory. Everything is ignored and
+# the tracked files are force-added (git add -f), which is what the AUR
+# submission guidelines suggest for keeping the working tree clean.
+#
+# In this repository this file is called aur.gitignore. A file named
+# .gitignore here would ignore this directory in md-notes itself; the
+# publish-aur workflow copies it into the AUR checkout under its real name.
+*

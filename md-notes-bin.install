@@ -1,0 +1,15 @@
+post_install() {
+	cat <<'NOTE'
+mdn reads ~/.config/mdn/config.yml and will not start without a notes root:
+
+    notes_root: /home/you/notes
+    port: 7337
+
+Then, as your own user, not as root:
+
+    systemctl --user enable --now mdn
+
+The daemon binds to localhost only; `mdn token` prints the bearer token the
+browser extension presents. See https://github.com/davison/md-notes
+NOTE
+}
