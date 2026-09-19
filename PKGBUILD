@@ -5,6 +5,7 @@ pkgver=0.3.0.r0.gabb5489
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy (git version)'
 arch=('x86_64' 'aarch64')
+url="https://github.com/thisisgm/flea"
 license=('MIT')
 # gvfs-mtp, gvfs-gphoto2 and gvfs-afc are the three phone backends the rail reads, and usbmuxd is
 # what AFC talks to. Stock Omarchy installs gvfs-mtp, gvfs-nfs and gvfs-smb only, so on a clean box
