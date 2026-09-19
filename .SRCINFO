@@ -1,0 +1,20 @@
+pkgbase = llama-prism-cuda
+	pkgdesc = Prism ML fork of llama.cpp with CUDA support to run Ternary Bonsai models.
+	pkgver = 0.0.1_b10709_9a9394a
+	pkgrel = 1
+	url = https://github.com/PrismML-Eng/llama.cpp
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = cuda
+	provides = llama-cpp
+	conflicts = llama-cpp
+	conflicts = llama-cpp-git
+	conflicts = ggml
+	conflicts = ggml-cuda
+	source = llama-prism-cuda_prism-b10709-9a9394a.tar.gz::https://github.com/PrismML-Eng/llama.cpp/releases/download/prism-b10709-9a9394a/llama-prism-b10709-9a9394a-bin-linux-cuda-13.3-x64.tar.gz
+	sha256sums = 7e01a434e513b373026c347cd008502ab04f6307d1cab71fcd4cea212b4fdbb0
+
+pkgname = llama-prism-cuda
