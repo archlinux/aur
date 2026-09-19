@@ -1,16 +1,19 @@
 pkgbase = oa-sdk-git
-	pkgdesc = OA SDK — C++ headers, CMake package, shader sources, and example tools (git version)
-	pkgver = 0.7.18.r0.gfc286c9
+	pkgdesc = OA SDK — runnable Rust tutorials, examples, benchmarks, and applications (git version)
+	pkgver = 0.8.3.r0.gf9c97de
 	pkgrel = 1
 	url = https://github.com/realminc/oa
 	arch = x86_64
 	license = BUSL-1.1
-	makedepends = git
-	makedepends = cmake
-	makedepends = ninja
 	makedepends = clang
-	depends = oa-git
-	provides = oa-sdk=0.7.18.r0.gfc286c9
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = python
+	makedepends = rust
+	makedepends = spirv-tools
+	depends = alsa-lib
+	depends = vulkan-icd-loader
+	provides = oa-sdk=0.8.3.r0.gf9c97de
 	conflicts = oa-sdk
 	source = git+https://github.com/realminc/oa.git
 	source = slang-2026.5.2-linux-x86_64.tar.gz::https://github.com/shader-slang/slang/releases/download/v2026.5.2/slang-2026.5.2-linux-x86_64.tar.gz

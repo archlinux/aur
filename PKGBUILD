@@ -1,17 +1,17 @@
 # Maintainer: Empyrealm <realminc.depravity737@passinbox.com>
 pkgname=oa-sdk-git
-pkgver=0.7.18.r0.gfc286c9
+pkgver=0.8.3.r0.gf9c97de
 pkgrel=1
-pkgdesc="OA SDK — C++ headers, CMake package, shader sources, and example tools (git version)"
+pkgdesc="OA SDK — runnable Rust tutorials, examples, benchmarks, and applications (git version)"
 arch=('x86_64')
 url="https://github.com/realminc/oa"
 license=('BUSL-1.1')
-depends=('oa-git')
+depends=('alsa-lib' 'vulkan-icd-loader')
 provides=("oa-sdk=${pkgver}")
 conflicts=('oa-sdk')
 # NOTE: `slangc` comes from shader-slang, NOT Arch's `slang` (the S-Lang interpreter).
 # Fetch the pinned upstream release, matching OA's CI.
-makedepends=('git' 'cmake' 'ninja' 'clang')
+makedepends=('clang' 'git' 'pkgconf' 'python' 'rust' 'spirv-tools')
 _slangver=2026.5.2
 source=("git+https://github.com/realminc/oa.git"
         "slang-${_slangver}-linux-x86_64.tar.gz::https://github.com/shader-slang/slang/releases/download/v${_slangver}/slang-${_slangver}-linux-x86_64.tar.gz")
@@ -24,31 +24,30 @@ pkgver() {
 }
 
 prepare() {
-  if [ ! -d "$HOME/.vcpkg/vcpkg" ]; then
-    git clone https://github.com/microsoft/vcpkg.git "$HOME/.vcpkg/vcpkg"
-    "$HOME/.vcpkg/vcpkg/bootstrap-vcpkg.sh" -disableMetrics
-  fi
+  cd oa
+  cargo fetch --locked --target x86_64-unknown-linux-gnu
 }
 
 build() {
   cd oa
-  cmake -B build -G Ninja \
-    -DCMAKE_C_COMPILER=clang \
-    -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_TOOLCHAIN_FILE="$HOME/.vcpkg/vcpkg/scripts/buildsystems/vcpkg.cmake" \
-    -DVCPKG_INSTALLED_DIR="$HOME/.vcpkg/installed" \
-    -DSLANGC="$srcdir/bin/slangc" \
-    -DOA_EMBED_SHADERS=ON \
-    -DOA_BUILD_CRYPTO=ON \
-    -DOA_BUILD_SHARED=ON \
-    -DOA_BUILD_TESTS=OFF \
-    -DOA_BUILD_TUTORIALS=ON
-  ninja -C build -j$(nproc)
+  export PATH="$srcdir/bin:$PATH"
+  export AR=ar
+  # makepkg enables LTO.  Native dependencies may therefore contain LLVM
+  # bitcode, which requires lld rather than GNU ld when Cargo links examples.
+  export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }-C link-arg=-fuse-ld=lld"
+  export CARGO_TARGET_DIR="$srcdir/target"
+  cargo build -p oa --release --examples --frozen
+  python3 tools/build/stage.py --clean --profile release
+  python3 tools/build/stage.py --profile release
 }
 
 package() {
   cd oa
-  DESTDIR="$pkgdir" cmake --install build --component oa_sdk
-  DESTDIR="$pkgdir" cmake --install build --component oa_tools
+  while IFS= read -r -d '' executable; do
+    relative="${executable#bin/release/sdk/}"
+    install -Dm755 "$executable" "$pkgdir/usr/$relative"
+  done < <(find bin/release/sdk -type f -perm -111 -print0)
+  install -Dm644 README.md "$pkgdir/usr/share/doc/oa-sdk/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/doc/oa-sdk/LICENSE"
+  install -Dm644 NOTICE.md "$pkgdir/usr/share/doc/oa-sdk/NOTICE.md"
 }
