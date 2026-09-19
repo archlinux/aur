@@ -1,6 +1,6 @@
 # Maintainer: itonia149 <283548443+itonia149@users.noreply.github.com>
 pkgname=quantum-desktop
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Local FileBrowser Quantum desktop integration with browser-based file management'
 arch=('x86_64')
@@ -14,7 +14,7 @@ _qver=1.5.6-stable
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "quantum-$_qver::https://github.com/gtsteffaniak/filebrowser/releases/download/v$_qver/linux-amd64-filebrowser"
         "quantum-LICENSE-$_qver::https://raw.githubusercontent.com/gtsteffaniak/filebrowser/v$_qver/LICENSE")
-sha256sums=('cf7c6b0a1cac5fc765a6de181c187687d6a38f3d11e7ea14293c27458fefe992'
+sha256sums=('0522e460ef86c1ae28754e88c6bf6240b7dbbf04aea408e2d7858bc9a3485199'
             'febf1ded3368eac1f13481f413db272c57678b70f09e74f5513d5e25e0bfb0e5'
             '47ce67778fa9640ab20c2414ab2d073430099bbbf6de163f8d215d3abc4a171c')
 check() {
