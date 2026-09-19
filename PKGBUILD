@@ -21,11 +21,23 @@ depends=(
     'curl'
 )
 conflicts=('gourou-git' 'gourou-bin' 'gourou-appimage')
-source=("libgourou-$pkgver.tar.gz::https://forge.soutade.fr/soutade/libgourou/archive/v$pkgver.tar.gz")
-sha512sums=('bf9c4341f45b1fe77a9c95b5844da7ac5cc96b0edf7ef39caf11b980e82765f6a7c5932aaee998df002b965215cd7fbae2606dbbb86da12f88eafa830e7c5c14')
+source=(
+    "libgourou-$pkgver.tar.gz::https://forge.soutade.fr/soutade/libgourou/archive/v$pkgver.tar.gz"
+    "inherit-cxxflags.patch"
+)
+sha512sums=(
+    'bf9c4341f45b1fe77a9c95b5844da7ac5cc96b0edf7ef39caf11b980e82765f6a7c5932aaee998df002b965215cd7fbae2606dbbb86da12f88eafa830e7c5c14'
+    '98e1b81a655468f13d7974ba8d9bfd6bfcf6ef58709b9cfb2046c385e4d1bd0c38c1bd55bd0db9fe232c955723dd5adfd66b50c1dbf37e74df69b41152fbcda7'
+)
 # For dealing with the humanity check
 _cookie=$(curl -s https://forge.soutade.fr/402.html | sed -nE 's/.*document\.cookie = "([^;"]*).*/\1/p')
 DLAGENTS=("https::/usr/bin/curl -b $_cookie -o %o %u")
+
+prepare() {
+    cd libgourou
+    # Patch utils/Makefile to inherit CXXFLAGS, and utils/drmprocessorclientimpl.h to work with flto=auto which is set by default in makepkg.conf
+    patch -Np1 < ../inherit-cxxflags.patch
+}
 
 build() {
     cd libgourou
@@ -34,11 +46,11 @@ build() {
         BUILD_STATIC=0 \
         BUILD_SHARED=1 \
         UPDFPARSERLIB="/dev/null" \
-        LDFLAGS="-lpugixml -lupdfparser -Wl,-z,relro,-z,now" \
+        LDFLAGS="$LDFLAGS -lpugixml -lupdfparser" \
         obj libgourou
 
     cd utils
-    make ROOT=.. DEBUG=1
+    make ROOT=..
 }
 
 package_libgourou() {

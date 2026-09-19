@@ -1,0 +1,25 @@
+diff --git a/utils/Makefile b/utils/Makefile
+index 2b4bfda..163268d 100644
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -6,7 +6,7 @@ TARGETS=$(TARGET_BINARIES) launcher
+ 
+ MAN_PAGES=acsmdownloader adept_activate adept_remove adept_loan_mgt
+ 
+-CXXFLAGS=-Wall -fPIC -I$(ROOT)/include -fmacro-prefix-map=$(ROOT)/= -fdata-sections -ffunction-sections
++CXXFLAGS+=-Wall -fPIC -I$(ROOT)/include -fmacro-prefix-map=$(ROOT)/= -fdata-sections -ffunction-sections
+ 
+ STATIC_DEP=
+ # LDFLAGS += -Wl,--gc-sections
+diff --git a/utils/drmprocessorclientimpl.h b/utils/drmprocessorclientimpl.h
+index 453058b..b080839 100644
+--- a/utils/drmprocessorclientimpl.h
++++ b/utils/drmprocessorclientimpl.h
+@@ -31,6 +31,7 @@
+ 
+ #include <string>
+ 
++#include <openssl/opensslv.h>
+ #if OPENSSL_VERSION_MAJOR >= 3
+ #include <openssl/provider.h>
+ #endif
