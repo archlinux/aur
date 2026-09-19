@@ -7,7 +7,7 @@
 
 _pkgname=libceed
 pkgname=${_pkgname}-git
-pkgver=0.12.0.r1392.gd05a68c
+pkgver=0.12.0.r1475.gc7a728a
 pkgrel=1
 pkgdesc="Code for Efficient Extensible Discretizations"
 arch=('x86_64')
@@ -35,8 +35,13 @@ optdepends=(
 )
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("${_pkgname}::git+${url}")
-b2sums=('SKIP')
+source=(
+  "${_pkgname}::git+${url}"
+  "0001-install-macros-header.patch"
+)
+b2sums=('SKIP'
+        '393966fa6c8c898ee795187b47f80523589cd265df7ec54a46284fd64190ef65dc023fa5e15bbd8c048ac39b42dd1f97eb6609b6408f663853907e3afabb8965')
+
 validpgpkeys=('BA543CE09D732BE604D53F6FCA6D4A3B32D335A0') # Jed Brown <jed@jedbrown.org>
 options=()
 
@@ -49,6 +54,10 @@ prepare() {
   cd ${_pkgname}
   # don't compile CEED twice for python-ceed
   sed -i '/always-make/d' setup.py
+
+  # BUG: Libceed is missing macros.h:
+  # see upstream: https://github.com/CEED/libCEED/issues/2042
+  patch -Np1 < "../0001-install-macros-header.patch"
 }
 
 build() {
