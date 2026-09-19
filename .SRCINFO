@@ -1,5 +1,5 @@
 pkgbase = wch-bleuart
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = http://www.mounriver.com/
 	arch = x86_64
@@ -7,25 +7,28 @@ pkgbase = wch-bleuart
 	makedepends = libarchive
 	makedepends = unarchiver
 	depends = bash
-	depends = gcc-libs
+	depends = freetype2
+	depends = fontconfig
 	depends = glib2
 	depends = glibc
+	depends = libgcc
 	depends = libgpg-error
+	depends = libstdc++
 	depends = java-runtime
 	depends = zlib
 	optdepends = mounriver-studio-toolchain-bin: This MRS Toolchain includes the tool chain for RISC-V kernel chip under Linux x64 and the debug download tool OpenOCD.
-	noextract = wch-bleuart-app-1.3.zip
-	noextract = wch-ble-lib-1.3.zip
-	source = wch-ble-lib-1.3.zip::https://api.wch.cn/api/official/website/common/downloadFile?fileName=BleUartLib.ZIP
-	source = wch-bleuart-app-1.3.zip::https://api.wch.cn/api/official/website/common/downloadFile?fileName=BleUartApp.ZIP
-	source = CH9143DS1-1.3.pdf::https://api.wch.cn/api/official/website/common/downloadFile?fileName=CH9143DS1.PDF
-	source = CH9140DS1-1.3.pdf::https://api.wch.cn/api/official/website/common/downloadFile?fileName=CH9140DS1.PDF
-	source = CH9141DS1-1.3.pdf::https://api.wch.cn/api/official/website/common/downloadFile?fileName=CH9141DS1.PDF
+	noextract = wch-bleuart-app-1.4.zip
+	noextract = wch-ble-lib-1.4.zip
+	source = wch-ble-lib-1.4.zip::https://file.wch.cn/download/file?id=346
+	source = wch-bleuart-app-1.4.zip::https://file.wch.cn/download/file?id=347
+	source = CH9143DS1-1.4.pdf::https://file.wch.cn/download/file?id=274
+	source = CH9140DS1-1.4.pdf::https://file.wch.cn/download/file?id=331
+	source = CH9141DS1-1.4.pdf::https://file.wch.cn/download/file?id=332
 	sha256sums = 9f9326c81fdf2d1e88e621a628f1c5d64c55d07fd2dab67c5362a3c9b1a3282d
-	sha256sums = 85cd9431265bb728d5f89bb72947b6deb62338689c8be647027b07314dbeed48
-	sha256sums = 7d31eb1b4fede49c7f6786c072a6a4d61329dad797b1ad72e5060ac24f33456b
-	sha256sums = 4013a01ef7a7928e3232b0aed9a4622ad4a9c4ac3481900c6ff895250de690ef
+	sha256sums = 155facfb45e0bc3e8af3b9de2b6af1fd12a1a85f0770e71857ddc7b426b7dc18
 	sha256sums = 95dac832cb5168d4388192baa16e84baf38672b39420fdd7bcd793c3784a2fd3
+	sha256sums = 4013a01ef7a7928e3232b0aed9a4622ad4a9c4ac3481900c6ff895250de690ef
+	sha256sums = 7d31eb1b4fede49c7f6786c072a6a4d61329dad797b1ad72e5060ac24f33456b
 
 pkgname = wch-bleuart
 	pkgdesc = Wch-bleuart contains all related software packages of BleUart.
@@ -38,6 +41,7 @@ pkgname = wch-bleuart-app
 
 pkgname = wch-ble-lib
 	pkgdesc = WCH BleLib Multi-system platform low Power Bluetooth Development Interface Library.
+	depends = 
 	provides = CH914X-lib
 	provides = CH57X-lib
 	provides = CH9140-lib
@@ -49,6 +53,7 @@ pkgname = wch-ble-lib
 
 pkgname = wch-bleuart-guide
 	pkgdesc = Introduction to CH9140 CH9141 CH9143.
+	depends = 
 	provides = CH914X-guide
 	provides = CH9140-guide
 	provides = CH9141-guide
