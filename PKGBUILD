@@ -3,8 +3,8 @@
 
 pkgname=tidal-hifi-tidaluna
 pkgver=8.1.3
-_tidalunaver=1.16.4-beta
-pkgrel=1
+_tidalunaver=1.16.6-beta
+pkgrel=2
 pkgdesc="The web version of Tidal running in electron with hifi support thanks to widevine (with TidaLuna client mod)."
 conflicts=("tidal-hifi")
 arch=(x86_64)
@@ -17,7 +17,7 @@ source=("tidal-hifi-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi
         "tidal-hifi-tidaluna.desktop")
 noextract=("luna-${_tidalunaver}.zip")
 sha256sums=('c63ffef62216a66148566c516bd04b894b6318c871579e05b1db160dde3d4bd4'
-            'e1a38d1002342744e81c8cb77f06c1b8598c18ff9273b0b2f92ec6e10efa3c64'
+            'ee07aac73cb2f4049b9e7f262366ad014e556b6c0f9e43a367621a41cb19466f'
             '8fe1352dae97c301bf63be9419e56c9775683e124b0218e118f020588d95565b')
 
 build() {
