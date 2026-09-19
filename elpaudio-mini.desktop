@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=elpAudioMini
+Exec=/opt/elpAudioMini/elpaudio-mini %f
+Icon=
+;MimeType=application/x-happ;application/json;
+Categories=Utility;
+Terminal=false
