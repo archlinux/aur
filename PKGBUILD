@@ -4,10 +4,10 @@
 
 pkgname=nextcloud-native
 pkgver=0.1.0alpha.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Adaptive native client for Nextcloud files, media and apps"
 arch=('x86_64')
-url="https://nc-native.obiente.dev"
+url="https://nati.ve"
 license=('AGPL-3.0-or-later')
 # createDistributable produces a jpackage application image with its own jlink
 # runtime, so the shared libraries that runtime needs are the only depends.
@@ -26,10 +26,10 @@ options=('!strip' '!debug')
 # Upstream has no stable release yet; only the versioned tags are packaged.
 # pkgver drops the hyphen from the tag; see pkg.sh.
 _tag="v0.1.0-alpha.2"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Obiente/nc-native/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('7ec5b795778668f133f0fe3d3e41e11b4fcb0c2e825c794c3915d791af14f920')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Obiente/native/archive/refs/tags/${_tag}.tar.gz")
+sha256sums=('7df806cfb84c1bc3e3d1ce6c642003a16ed7d607546d89973fba31cd381fd699')
 
-_srcname="nc-native-${_tag#v}"
+_srcname="native-${_tag#v}"
 
 build() {
   cd "$_srcname"
