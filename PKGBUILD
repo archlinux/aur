@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=reviewdog-bin
-pkgver=0.21.1 # renovate: datasource=github-tags depName=reviewdog/reviewdog
+pkgver=0.21.2 # renovate: datasource=github-tags depName=reviewdog/reviewdog
 pkgrel=1
 pkgdesc='Automated code review tool integrated with any code analysis tools regardless of programming language'
 arch=('x86_64')
@@ -19,4 +19,4 @@ package() {
     "${pkgdir}/usr/bin/reviewdog"
 }
 
-sha256sums=('e70aed7f3617605eaccdeeba71042babee65db5268d82c0f6601ed605944b5fe')
+sha256sums=('30413aa3c7443e9c3c157fe5766cad40e3bb39a32e210ee69b710a8d5c4b8e51')
