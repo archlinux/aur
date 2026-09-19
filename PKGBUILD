@@ -27,13 +27,8 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  # Release mode, so debug assertions are off as they are in the binary this
-  # package ships, but without the release profile's fat LTO and single codegen
-  # unit. Those exist for that one binary. Applied to two dozen test binaries
-  # built in parallel they cost gigabytes: on 8 threads with 3 GB free, as on
-  # a desktop busy with other things, the kernel killed rustc and the package
-  # failed to build. A target dir of its own keeps the binary build() made,
-  # which package() installs, from being rebuilt without LTO over the top.
+  # Test binaries skip fat LTO (it can exhaust memory) and build in their own
+  # target dir, so the binary build() made is still the one package() ships.
   export CARGO_PROFILE_RELEASE_LTO=false CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
   export CARGO_TARGET_DIR=target/check
   # Tests are hermetic: they redirect all state via FASTF_INSTALL_DIR.
