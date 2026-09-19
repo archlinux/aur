@@ -1,7 +1,7 @@
 pkgbase = fluxer-bin
 	pkgdesc = Fluxer Desktop Application
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fluxer.app
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,8 @@ pkgbase = fluxer-bin
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
+	provides = fluxer
+	conflicts = fluxer
 	options = !strip
 	source = fluxer.desktop
 	sha256sums = 981daa8015b823fef254bb8e79fe6b28f77dda02cdc374796443bd64f5041de1

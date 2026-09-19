@@ -5,12 +5,16 @@
 
 pkgname=fluxer-bin
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Fluxer Desktop Application"
 arch=('x86_64' 'aarch64')
 url="https://fluxer.app"
 license=('AGPL-3.0-only')
 depends=('gtk3' 'nss' 'alsa-lib')
+# the AUR also carries fluxer-git, which installs the same /usr/bin/fluxer:
+# provides/conflicts makes that an either/or instead of a file conflict
+provides=('fluxer')
+conflicts=('fluxer')
 options=('!strip')
 
 source=("fluxer.desktop")
