@@ -1,7 +1,7 @@
 # Maintainer: PoDiax <pd@pdx.ovh>
 pkgname=waycord-git
 _pkgname=waycord
-pkgver=0.1.1.r0.g0f3bb29
+pkgver=0.1.2.r0.b2792d4
 pkgrel=1
 pkgdesc="Lightweight Discord voice overlay for Linux"
 arch=('x86_64')

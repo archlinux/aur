@@ -1,6 +1,6 @@
 pkgbase = waycord-git
 	pkgdesc = Lightweight Discord voice overlay for Linux
-	pkgver = 0.1.1.r0.g0f3bb29
+	pkgver = 0.1.2.r0.b2792d4
 	pkgrel = 1
 	url = https://github.com/podiax/waycord
 	arch = x86_64
