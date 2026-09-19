@@ -1,7 +1,7 @@
 # Maintainer: Rockykln <contact@rockykln.com>
 pkgname=podctl-bin
 _pkgname=podctl
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Linux control suite for AirPods — daemon, CLI, tray icon and case-open popup"
 arch=('x86_64')
@@ -10,12 +10,13 @@ license=('MIT' 'Apache-2.0')
 depends=('bluez-utils' 'dbus')
 optdepends=(
   'libpulse: audio verbs (volume, mute, profile, codec, default sink, latency, podctl meter)'
+  'pipewire-audio: conversation-awareness volume stage measures the music level (pw-record)'
   'systemd: podctl install / podctl reboot user services'
 )
 provides=('podctl')
 conflicts=('podctl' 'podctl-git')
 source=("${_pkgname}-${pkgver}-x86_64-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/podctl-${pkgver}-x86_64-linux-musl.tar.gz")
-sha256sums=('a034c15b223acb2674d69bfc5db378da6b3993f097f60d547812219acc21a8d6')
+sha256sums=('a68681f368407d883b4b165ccd14e40863de1700fc799f85432a35bbddd3dc1c')
 options=('!strip')   # musl-static binary, already stripped by release workflow
 
 package() {
