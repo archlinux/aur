@@ -10,7 +10,6 @@ license=('LGPL-3.0-or-later')
 provides=('updfparser')
 conflicts=('updfparser')
 makedepends=(
-    'curl'
     'git'
 )
 depends=(
@@ -19,10 +18,6 @@ depends=(
     'libstdc++'    
 )
 source=("git+${url}.git")
-# Variables required for humanity check
-export GIT_CONFIG_COUNT=1
-export GIT_CONFIG_KEY_0="http.extraHeader"
-export GIT_CONFIG_VALUE_0="Cookie: $(/usr/bin/curl -s https://forge.soutade.fr/402.html | /usr/bin/sed -nE 's/.*document\.cookie = "([^;"]*).*/\1/p')"
 sha256sums=('SKIP')
 
 _srcdir="uPDFParser"
@@ -39,7 +34,7 @@ build() {
 }
 
 package() {
-    install -Dm644 $_srcdir/include/*.h -t $pkgdir/usr/include/
-    install -Dm644 $_srcdir/libupdfparser.so -t $pkgdir/usr/lib/
+    install -Dm644 $_srcdir/include/*.h -t "$pkgdir/usr/include/"
+    install -Dm644 $_srcdir/libupdfparser.so -t "$pkgdir/usr/lib/"
 }
 
