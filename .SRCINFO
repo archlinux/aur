@@ -1,0 +1,24 @@
+pkgbase = digimem-bin
+	pkgdesc = Two-way face sync between digiKam and Nextcloud Memories
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/keithvassallomt/digikam-memories-sync
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-yaml
+	depends = python-psutil
+	depends = python-keyring
+	depends = hicolor-icon-theme
+	optdepends = python-pymysql: digiKam libraries kept in MySQL or MariaDB
+	optdepends = python-psycopg2: digiKam libraries kept in PostgreSQL
+	optdepends = openssh: reaching a remote digiKam or Nextcloud database over an SSH tunnel
+	optdepends = gnome-keyring: somewhere to keep the Nextcloud app password other than a file
+	provides = digimem=0.2.0
+	conflicts = digimem
+	options = !strip
+	options = !debug
+	source = digimem_0.2.0_all.deb::https://github.com/keithvassallomt/digikam-memories-sync/releases/download/v0.2.0/digimem_0.2.0_all.deb
+	sha256sums = bab544be8dbfdd82e11bba39b08caa8741f2efbf9fbda51cb2017d0254c662a0
+
+pkgname = digimem-bin
