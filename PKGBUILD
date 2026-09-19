@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=beszel-hub-bin
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="System monitoring dashboard"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,9 +18,9 @@ source+=(
 sha256sums=('237e832c47ebb4017228a3c41f552c62a9a77b4f9b5e115df649e57d9e4584ce'
             '48d839334dc6b43a5b177d524ffe74d2f91f691efb37f97f59b4c1c8d381a1b7'
             'b57bb1d2ee8b9321c7ded06527c3efa2083d16b5a6f265aacf1b01719ab22cc1')
-sha256sums_x86_64=('63b20d6ca328dc08e588126da2e13f8bece6ae875de5f25a058f48cb6ea19998')
-sha256sums_aarch64=('303f144f865a24b95b539740222dc65dc376b25526c8430eb5b093f3759e337c')
-sha256sums_armv7h=('ac021f786fc966149756b6a50628e68cadb18e2ca8ca016523f64866a7748c00')
+sha256sums_x86_64=('35bd36638449b42cd7b090c0151de04e392bd0cd0d8d8241403a332f40d12d76')
+sha256sums_aarch64=('d632417198b622a0148902a6dfa624d444ec99c79f6a2957a90213c7b7199edc')
+sha256sums_armv7h=('a25a06cb312c62ba94c4ae64f93f3a315cbdb49f22f1d4da05cd1be604115d9f')
 
 source_x86_64=("beszel_linux_amd64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel_linux_amd64.tar.gz")
 source_aarch64=("beszel_linux_arm64-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/beszel_linux_arm64.tar.gz")
