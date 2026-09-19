@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=carve-rs
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Rust parser and HTML renderer for the Carve markup language'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(glibc # libc.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/$pkgver/$_archive.tar.gz")
-sha256sums=('14352e5c646754bac1dbcc1f0ffa1575010342e2a6719499991c55469a701105')
+sha256sums=('a5159e50e0137e2b027c417fee44ce5146f28036a4c284167767a0d71739db6c')
 
 _srcenv() {
 	cd "$_archive"
