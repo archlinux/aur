@@ -6,7 +6,7 @@
 # regenerates .SRCINFO with `makepkg --printsrcinfo` on every release tag.
 # Keep the two PKGBUILDs in step by hand; the AUR one is what users see.
 pkgname=clockwork-orange-git
-pkgver=4.2.5
+pkgver=4.2.6
 pkgrel=1
 pkgdesc="Wallpaper manager and downloader with plugin support (Wallhaven, DuckDuckGo Images) for KDE Plasma 6"
 arch=('x86_64' 'aarch64')
