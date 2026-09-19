@@ -1,7 +1,7 @@
 # Maintainer: Braulio Oliveira <brauliobo at gmail dot com>
 
 pkgname=alacrium-browser-bin
-pkgver=153.0.8010.47
+pkgver=153.0.8010.52
 pkgrel=1
 pkgdesc='Performance-focused Chromium browser tracking stable releases (prebuilt)'
 arch=('x86_64')
@@ -43,13 +43,13 @@ provides=("alacrium-browser=${pkgver}")
 conflicts=('alacrium-browser')
 options=('!debug' '!strip')
 _deb="alacrium-browser_${pkgver}_AVX.deb"
-_commit=837899bf0f57af21d3e5c6557478e097058ca207
+_commit=679829ea3c6473ff56fe2d3e9e1b0b331a76e4bb
 source=(
   "https://github.com/brauliobo/alacrium/releases/download/M${pkgver}/${_deb}"
   "LICENSE-${_commit}.md::https://raw.githubusercontent.com/brauliobo/alacrium/${_commit}/LICENSE.md"
 )
 sha256sums=(
-  'f41344bb2072453a743151afaee0a02e0c58d7d146fbfc376a7920ae471933e7'
+  '49383af39a3a544446788aab09114ec86b574df92e8ca6764ab8296585c47d03'
   '1d43c681d483ed1bf2e88507be7368eea8d1dedc503d39b8e17e701d0be00fe2'
 )
 noextract=("$_deb")
