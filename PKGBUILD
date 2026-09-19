@@ -8,7 +8,7 @@
 # by hand.
 pkgname=sharkfin-keyboard
 _pkgname=sharkfin
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc='Configurator for Attack Shark and other ROYUAN keyboards'
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=('sharkfin')
 # empty directory plus a dangling symlink. namcap flags both.
 options=('!lto' '!debug')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('47973d71b51994c60be1f47fa548a5609f06ac7cf238d4bdf084a55cd1387f7a2114d48d5c618a8c9d506f90a0784c0abc6bf2410774d6d9c1fa2af7c5a4ad0a')
+b2sums=('3beeb675d6804f666857e7ac0e9e92b3817d6210cfea4c97a81b158aa5db0ec22b1d719c49e78b03e726178c69d0b258a3621854a931d5891803d2fc09ce5474')
 
 prepare() {
   cd "$_pkgname-$pkgver/app"
