@@ -8,15 +8,16 @@ _npmver=26.9.0
 
 pkgname=actual-server
 pkgver=${_npmver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Actual Budget server used for syncing across devices. Includes the web client."
 arch=(x86_64)
 url="https://actualbudget.org"
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs>=22')
 makedepends=('npm' 'python')
 backup=("etc/conf.d/${pkgname}")
 options=('!debug')
+install="${pkgname}.install"
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://registry.npmjs.org/${_npmscope}/${_npmpkg}/-/${_npmpkg}-${_npmver}.tgz"
     "${pkgname}.service"
@@ -27,7 +28,7 @@ source=(
 noextract=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=(
     'f6f0a25766b0062d0a8e441d17e66c2875db8be958cbf777baa1e578122b50c6' # tgz
-    '7359980edd568ddbaaef2a2d8c60fab277cb7f5d09372f72f8f1e0ee61df62f7' # service
+    'd72c435a26c84e03824ac2e23b0e1e8ff2b46c27dd331b5ed42b1b350681eabf' # service
     '041744d6403aa2cdf18a09d0e82d005203d11d56795c6738fbc4f9b0cccb2c12' # sysusers
     '8112d19ee07f43c8cd100796bb4b995f45f4304d5c78cfa21b6750c04a82b194' # tmpfiles
     '3c58a11ca5a57d0a640b852e3e24c0c19d5be52557743af0a93e384ad5851a0c' # conf

@@ -4,9 +4,29 @@ After=network.target
 
 [Service]
 User=actual
+Group=actual
 EnvironmentFile=/etc/conf.d/actual-server
 ExecStart=/usr/bin/actual-server
-Restart=on-watchdog
+WorkingDirectory=/var/lib/actual
+Restart=on-failure
+RestartSec=5
+
+# Sandboxing
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/actual
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+RestrictRealtime=true
+LockPersonality=true
+CapabilityBoundingSet=
+UMask=0027
 
 [Install]
 WantedBy=multi-user.target
