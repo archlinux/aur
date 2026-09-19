@@ -8,7 +8,7 @@ license=('MIT')
 makedepends=('cargo')
 options=()
 
-source=("$pkgname-$pkgver.tar.gz::https://gh-proxy.com/https://github.com/pnpm/pnpm/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pnpm/pnpm/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('bc9595fc80327594ba13d1ccde8add584b15def771ee0cd4bebf9e0a53b759da')
 
 prepare() {
