@@ -3,7 +3,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-gaming
 pkgver=1.22.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compositor for the COSMIC desktop environment with experimental Vulkan renderer, HDR and support fifo-v1, commit-timing-v1, fullscreen tearing, and VRR Target Rate feature"
 arch=('x86_64' 'aarch64')
