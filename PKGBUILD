@@ -1,5 +1,5 @@
 pkgname=ioexplorer-git
-pkgver=r73.f68ca39
+pkgver=r75.956cc2c
 pkgrel=1
 pkgdesc='Wayland-native provider-oriented file manager, spotlight, and other utilities for Wayland desktops'
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=(
   'xdg-desktop-portal: use ioexplorer as a desktop portal FileChooser backend'
   'xdg-utils: set ioexplorer as the default directory handler with xdg-mime'
   'grim: screen capture for ioexplorer-shot'
-  'wl-clipboard: copy screenshots and quick menu picks to the clipboard without staying running'
+  'wl-clipboard: copy screenshots and quick menu picks to the clipboard, and record the quick menu clipboard history'
   'libnotify: screenshot notifications'
   'wf-recorder: screen recording with ioexplorer-shot record'
   'ffmpeg: finishing recordings and checking audio sources'
@@ -45,6 +45,7 @@ package() {
   install -Dm644 data/org.freedesktop.FileManager1.service "$pkgdir/usr/share/doc/$pkgname/org.freedesktop.FileManager1.service"
   install -Dm644 data/ioexplorer-portals.conf "$pkgdir/usr/share/doc/$pkgname/ioexplorer-portals.conf"
   install -Dm644 data/ioexplorer-spotlight.service "$pkgdir/usr/lib/systemd/user/ioexplorer-spotlight.service"
+  install -Dm644 data/ioexplorer-quick.service "$pkgdir/usr/lib/systemd/user/ioexplorer-quick.service"
   install -Dm644 data/ioexplorer-portal.service "$pkgdir/usr/lib/systemd/user/ioexplorer-portal.service"
   install -Dm644 data/ioexplorer-desktop.service "$pkgdir/usr/lib/systemd/user/ioexplorer-desktop.service"
 }
@@ -53,6 +54,9 @@ post_install() {
   echo "------------------------------------------------------------"
   echo "Enable the Spotlight server with:"
   echo "  systemctl --user enable --now ioexplorer-spotlight.service"
+  echo
+  echo "Enable the quick menu server (instant opening, clipboard history) with:"
+  echo "  systemctl --user enable --now ioexplorer-quick.service"
   echo
   echo "Enable the Portal server with:"
   echo "  systemctl --user enable --now ioexplorer-portal.service"
