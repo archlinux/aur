@@ -8,7 +8,7 @@
 
 pkgname=cline-desktop
 pkgver=0.0.32
-pkgrel=2
+pkgrel=3
 pkgdesc="Cline coding agent as a native desktop app (unofficial Linux build)"
 arch=('x86_64' 'aarch64')
 url="https://cline.bot/desktop"
@@ -39,7 +39,10 @@ optdepends=(
   'libayatana-appindicator: system tray icon (Ayatana)'
   'xdg-desktop-portal-gtk: native file picker on Wayland'
 )
-options=('!lto' '!debug')
+# Bun --compile binaries store the JS payload after the ELF. makepkg's strip
+# removes it and the sidecar becomes a bare bun CLI ("bun --help"), so Sign in
+# fails with get_desktop_backend_endpoint / "exited before publishing".
+options=('!lto' '!debug' '!strip')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/cline/cline/archive/refs/tags/desktop-v$pkgver.tar.gz"
   'cline-desktop.desktop'

@@ -1,7 +1,7 @@
 pkgbase = cline-desktop
 	pkgdesc = Cline coding agent as a native desktop app (unofficial Linux build)
 	pkgver = 0.0.32
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cline.bot/desktop
 	arch = x86_64
 	arch = aarch64
@@ -28,6 +28,7 @@ pkgbase = cline-desktop
 	optdepends = xdg-desktop-portal-gtk: native file picker on Wayland
 	options = !lto
 	options = !debug
+	options = !strip
 	source = cline-desktop-0.0.32.tar.gz::https://github.com/cline/cline/archive/refs/tags/desktop-v0.0.32.tar.gz
 	source = cline-desktop.desktop
 	sha256sums = 19199a217201750acb7d22dca6d6a43ae37616500bfa468d6201c6a2afac89cf
