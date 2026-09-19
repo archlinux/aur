@@ -5,7 +5,7 @@
 pkgname=tenzen-studio-bin
 _pkgname=tenzen
 pkgver=0.1.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Record and edit product demos: cut pauses, add zooms and captions (upstream Flatpak bundle)"
 arch=('x86_64')
 url="https://tenzen.studio"
@@ -55,4 +55,24 @@ package() {
 
   # 1024x1024, which the hicolor theme has no directory for
   install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+
+  # A custom licence has to ship its terms. Upstream publishes none as a file,
+  # so what goes in is the reference to the terms it is used under, next to
+  # the notices for everything bundled with it, which the app dir does carry.
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<'EOF'
+Tenzen Studio is proprietary software, distributed by Tenzen Studio.
+
+It is not covered by a free-software licence: use is governed by the terms
+of service the vendor publishes, and redistribution of the build this
+package installs is not granted by them.
+
+Terms of service: https://tenzen.studio/legal/terms-of-service/
+EOF
+
+  ln -s "/opt/${pkgname}/resources/THIRD_PARTY_NOTICES.txt" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES.txt"
+  ln -s "/opt/${pkgname}/LICENSE.electron.txt" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
+  ln -s "/opt/${pkgname}/LICENSES.chromium.html" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 }

@@ -1,7 +1,7 @@
 pkgbase = tenzen-studio-bin
 	pkgdesc = Record and edit product demos: cut pauses, add zooms and captions (upstream Flatpak bundle)
 	pkgver = 0.1.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tenzen.studio
 	arch = x86_64
 	license = LicenseRef-proprietary
