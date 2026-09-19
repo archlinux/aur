@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=opencode-desktop-bin
-pkgver=1.18.31
+pkgver=2.0.10
 pkgrel=1
 pkgdesc="OpenCode desktop client"
 arch=('x86_64' 'aarch64')
@@ -15,21 +15,22 @@ _electron=electron42
 depends=('ripgrep')
 depends_x86_64=("${_electron}")
 depends_aarch64=('gtk3' 'nss' 'libxss' 'libxtst' 'alsa-lib' 'libsecret' 'libnotify' 'xdg-utils')
+makedepends_x86_64=('asar')
 optdepends=('libappindicator-gtk3: tray icon support')
-options=('!debug')
+# opencode-cli is a Bun standalone executable: stripping discards the embedded
+# bundle and leaves a bare Bun runtime that no longer knows the "serve" command.
+options=('!strip' '!debug')
 
 latestver() {
-  gh api --paginate repos/anomalyco/opencode/releases --jq \
-    '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "opencode-desktop-linux-amd64.deb") and any(.assets[]; .name == "opencode-desktop-linux-arm64.deb")) | .tag_name' |
-    head -1 | sed -E 's/^v//'
+  curl -fsSL https://opencode.ai/update/api/latest/desktop/opencode | jq -r '.version'
 }
 
 source=("LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver}/LICENSE")
-source_x86_64=("opencode-desktop-${pkgver}-linux-amd64.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-amd64.deb")
-source_aarch64=("opencode-desktop-${pkgver}-linux-arm64.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-desktop-linux-arm64.deb")
+source_x86_64=("opencode-desktop-${pkgver}-linux-amd64.deb::https://opencode.ai/files/bin/${pkgver}/opencode-desktop-linux-amd64.deb")
+source_aarch64=("opencode-desktop-${pkgver}-linux-arm64.deb::https://opencode.ai/files/bin/${pkgver}/opencode-desktop-linux-arm64.deb")
 sha256sums=('625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
-sha256sums_x86_64=('6606cd71bef7ded32ff936029d3fda68ce2148cec69bb6f1b0a3c62ff642f240')
-sha256sums_aarch64=('4433503efeb792c4a807979cbebe9dd300f32df941c85d203644c706201745df')
+sha256sums_x86_64=('fb8c37b76b8a5231323eb6c7f524e2c7c9f2c502b934d97260d303bbb5985521')
+sha256sums_aarch64=('cfa84b27f2bf82b9d97fdfcc71e4ae6b441d873e7f39d2accb36924a6c0c4394')
 
 package() {
   local _debarch=amd64
@@ -54,7 +55,19 @@ package() {
     install -d "${_appdir}"
     mv "${pkgdir}/opt/OpenCode/resources/"* "${_appdir}/"
     rm -rf "${pkgdir}/opt"
-    _exec="${_electron} /usr/lib/opencode-desktop/app.asar"
+
+    # The app resolves opencode-cli relative to process.resourcesPath, which the
+    # system electron reports as its own directory. A shim app repoints it here
+    # and then loads the untouched asar.
+    asar extract-file "${_appdir}/app.asar" package.json
+    sed -i 's|"main": "./out/main/index.js"|"main": "./main.mjs"|' package.json
+    grep -q '"main": "./main.mjs"' package.json
+    install -Dm644 package.json "${_appdir}/package.json"
+    install -Dm644 /dev/stdin "${_appdir}/main.mjs" <<'EOF'
+Object.defineProperty(process, "resourcesPath", { value: import.meta.dirname, configurable: true })
+await import("./app.asar/out/main/index.js")
+EOF
+    _exec="${_electron} /usr/lib/opencode-desktop"
   else
     _appdir="${pkgdir}/opt/OpenCode/resources"
     _exec="/opt/OpenCode/ai.opencode.desktop"
