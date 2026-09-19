@@ -2,7 +2,7 @@
 # Maintainer: j4y <j4y_w4lk3r@pobox.com>
 
 pkgname='ttcli-bin'
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='TickTick CLI: tasks, lists, pomodoro/focus over the private web API.'
 url='https://github.com/j4y-w4lk3r/ttcli'
@@ -13,13 +13,13 @@ conflicts=('ttcli' 'ttcli-git')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/j4y-w4lk3r/ttcli/releases/download/v${pkgver}/ttcli_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('d559321a669e9d777248e42d188eb6b5a138d1a9d6834482276cd14b81c01ef8')
+sha256sums_aarch64=('a525d2ef7be097df7cb8a78a0a183831a3566865354bb7d42e126d643145e5c3')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/j4y-w4lk3r/ttcli/releases/download/v${pkgver}/ttcli_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('22bd5ea0ec47f6e27b969a8c4990c7db2dccfdb750d95f43db1c05da8e24d1a7')
+sha256sums_armv7h=('f7a60a0a6ed420f52add28743b53ef7c374a3bc3e99714704e66ddadbdb33a56')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/j4y-w4lk3r/ttcli/releases/download/v${pkgver}/ttcli_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c1cec19683d8d1806d9d1b2cd2ce4321baf33cf75edc3ab2e6a9a9e311ff6ac6')
+sha256sums_x86_64=('be92e8feb144e45702db4db36e27cdccc543ffd3b174904a0ef491c92725295e')
 
 package() {
   install -Dm755 "./ttcli" "${pkgdir}/usr/bin/ttcli"
