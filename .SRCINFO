@@ -1,0 +1,14 @@
+pkgbase = rinklecate
+	pkgdesc = Rust implementation of inklecate - compile and play Ink stories from the command line
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/bladecoder/blade-ink-rs
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = rinklecate-2.0.0.tar.gz::https://github.com/bladecoder/blade-ink-rs/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 9816a66fb64a8369f58d4d4880fb8a90285597d1142bae56ca7f134e1dfcc1a3
+
+pkgname = rinklecate

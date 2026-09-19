@@ -1,0 +1,5 @@
+[rinklecate]
+source = "github"
+git = "bladecoder/blade-ink-rs"
+prefix = "v"
+use_latest_release = true
