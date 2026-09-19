@@ -1,12 +1,12 @@
 # Maintainer: Agildo Gomes da Silva <agomesdasilva99@gmail.com>
-# Upstream: https://github.com/juglesbass/AgildoCheats — etiqueta v${pkgver}
+# Upstream: https://github.com/juglesbass/AgildoCheats — tag v${pkgver}
 
 pkgname=agildocheats
 
 _githubuser=juglesbass
 _repo=AgildoCheats
 
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 
 pkgdesc="Trainer de memória Linux: scanner, .CT, congelar valores e teleport (PyQt6)"
@@ -32,7 +32,7 @@ source=(
   "${_source_file}::https://github.com/${_githubuser}/${_repo}/archive/refs/tags/v${pkgver}.tar.gz"
   "agildocheats.desktop"
 )
-sha256sums=('ab95a4978fe0996dede4eb43238f08a878db3bd811c2a628c8244a0c99c16cf7'
+sha256sums=('bfe5d58aaeb5c7a3d76283d9a0a6e561ce376223fe08e3fadea1eea583b4e2b8'
             '778f0be0ac03ed41991bde29030b88d69f455d252ce1c1c37ad4c1fe478bddda')
 
 package() {
