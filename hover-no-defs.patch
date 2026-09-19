@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index 8eac0e974..4d02c9128 100644
+index c1a6dc334612..012a0cc14cae 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -667,7 +667,6 @@ HoverInfo getHoverContents(const NamedDecl *D, const PrintingPolicy &PP,
+@@ -724,7 +724,6 @@ HoverInfo getHoverContents(const NamedDecl *D, const PrintingPolicy &PP,
        HI.Value = toString(ECD->getInitVal(), 10);
    }
  

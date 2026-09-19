@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index a868d3bb4e3f..db7e0fa6ddbc 100644
+index 96e21d17a4c0..c1a6dc334612 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -1364,7 +1364,7 @@ std::optional<HoverInfo> getHover(ParsedAST &AST, Position Pos,
+@@ -1545,7 +1545,7 @@ std::optional<HoverInfo> getHover(ParsedAST &AST, Position Pos,
          HoverCountMetric.record(1, "decl");
          HI = getHoverContents(DeclToUse, PP, Index, TB);
          // Layout info only shown when hovering on the field/class itself.

@@ -1,7 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
+index b7e851e805e1..8ff7dcb2b4fc 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -369,7 +369,7 @@
+@@ -397,7 +397,7 @@ void fillFunctionTypeAndParams(HoverInfo &HI, const Decl *D,
                                 const FunctionDecl *FD,
                                 const PrintingPolicy &PP) {
    HI.Parameters.emplace();
@@ -10,7 +11,7 @@ diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover
      HI.Parameters->emplace_back(toHoverInfoParam(PVD, PP));
  
    // We don't want any type info, if name already contains it. This is true for
-@@ -385,7 +385,6 @@
+@@ -413,7 +413,6 @@ void fillFunctionTypeAndParams(HoverInfo &HI, const Decl *D,
    if (const VarDecl *VD = llvm::dyn_cast<VarDecl>(D)) // Lambdas
      QT = VD->getType().getDesugaredType(D->getASTContext());
    HI.Type = printType(QT, D->getASTContext(), PP);
@@ -19,9 +20,10 @@ diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover
  
  // Non-negative numbers are printed using min digits
 diff --git a/clang-tools-extra/clangd/unittests/HoverTests.cpp b/clang-tools-extra/clangd/unittests/HoverTests.cpp
+index 15b03e6bb6ec..debe73368b8d 100644
 --- a/clang-tools-extra/clangd/unittests/HoverTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/HoverTests.cpp
-@@ -263,6 +263,29 @@
+@@ -436,6 +436,29 @@ class Foo final {})cpp";
               {{"bool"}, std::string("T"), std::string("false")},
           };
         }},
@@ -51,4 +53,3 @@ diff --git a/clang-tools-extra/clangd/unittests/HoverTests.cpp b/clang-tools-ext
        // Pointers to lambdas
        {R"cpp(
          void foo() {
-

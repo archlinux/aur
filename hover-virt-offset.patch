@@ -1,9 +1,9 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index ef3523211..4cbbcfcd1 100644
+index 070707126445..96e21d17a4c0 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -993,6 +993,131 @@ bool isHardLineBreakAfter(llvm::StringRef Line, llvm::StringRef Rest) {
-   return punctuationIndicatesLineBreak(Line) || isHardLineBreakIndicator(Rest);
+@@ -1028,6 +1028,131 @@ std::optional<HoverInfo> getHoverContents(const Attr *A, ParsedAST &AST) {
+   return HI;
  }
  
 +static auto getRecordOfMethodDecl(const CXXMethodDecl *Method) {
@@ -134,7 +134,7 @@ index ef3523211..4cbbcfcd1 100644
  void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
    if (ND.isInvalidDecl())
      return;
-@@ -1039,6 +1164,18 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+@@ -1083,6 +1208,18 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
      }
      return;
    }

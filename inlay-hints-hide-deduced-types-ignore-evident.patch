@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/InlayHints.cpp b/clang-tools-extra/clangd/InlayHints.cpp
-index d56b93e5f3..104341945d 100644
+index 0a459ef392e8..7ce4e350bc7d 100644
 --- a/clang-tools-extra/clangd/InlayHints.cpp
 +++ b/clang-tools-extra/clangd/InlayHints.cpp
-@@ -650,6 +650,74 @@ public:
+@@ -720,6 +720,74 @@ public:
            T = D->getType();
          }
          if (!T.isNull()) {

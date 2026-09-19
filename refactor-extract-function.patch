@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/refactor/tweaks/ExtractFunction.cpp b/clang-tools-extra/clangd/refactor/tweaks/ExtractFunction.cpp
-index cd07cbf73635..2033e76c65ad 100644
+index 479e3e7724b4..c68345c03e31 100644
 --- a/clang-tools-extra/clangd/refactor/tweaks/ExtractFunction.cpp
 +++ b/clang-tools-extra/clangd/refactor/tweaks/ExtractFunction.cpp
 @@ -60,6 +60,8 @@
@@ -21,9 +21,9 @@ index cd07cbf73635..2033e76c65ad 100644
  namespace clang {
  namespace clangd {
  namespace {
-@@ -95,6 +100,208 @@ enum FunctionDeclKind {
-   OutOfLineDefinition
- };
+@@ -104,6 +109,208 @@ bool isUnselectedRootStmtCandidate(const Node *N) {
+   return N->ASTNode.get<DeclStmt>() || N->ASTNode.get<CXXOperatorCallExpr>();
+ }
  
 +// Helpers for handling "binary subexpressions" like a + [[b + c]] + d. This is
 +// taken from ExtractVariable, and adapted a little to handle collection of
@@ -230,7 +230,7 @@ index cd07cbf73635..2033e76c65ad 100644
  // A RootStmt is a statement that's fully selected including all its children
  // and its parent is unselected.
  // Check if a node is a root statement.
-@@ -125,11 +332,14 @@ bool isRootStmt(const Node *N) {
+@@ -153,8 +360,6 @@ const Node *getEnclosingStmt(const Node *Child) {
  // begins in selection range, ends in selection range and any scope that begins
  // outside the selection range, ends outside as well.
  const Node *getParentOfRootStmts(const Node *CommonAnc) {
@@ -239,15 +239,7 @@ index cd07cbf73635..2033e76c65ad 100644
    const Node *Parent = nullptr;
    switch (CommonAnc->Selected) {
    case SelectionTree::Selection::Unselected:
-+    // Workaround for an operator call: BinaryOperator will be selecteded
-+    // completely, but the operator call would be unselected, thus we treat it
-+    // as it would be completely selected.
-+    if (CommonAnc->ASTNode.get<CXXOperatorCallExpr>() != nullptr)
-+      return CommonAnc->Parent;
-     // Typically a block, with the { and } unselected, could also be ForStmt etc
-     // Ensure all Children are RootStmts.
-     Parent = CommonAnc;
-@@ -155,6 +365,7 @@ const Node *getParentOfRootStmts(const Node *CommonAnc) {
+@@ -186,6 +391,7 @@ const Node *getParentOfRootStmts(const Node *CommonAnc) {
  
  // The ExtractionZone class forms a view of the code wrt Zone.
  struct ExtractionZone {
@@ -255,7 +247,7 @@ index cd07cbf73635..2033e76c65ad 100644
    // Parent of RootStatements being extracted.
    const Node *Parent = nullptr;
    // The half-open file range of the code being extracted.
-@@ -165,6 +376,8 @@ struct ExtractionZone {
+@@ -196,6 +402,8 @@ struct ExtractionZone {
    SourceRange EnclosingFuncRange;
    // Set of statements that form the ExtractionZone.
    llvm::DenseSet<const Stmt *> RootStmts;
@@ -264,18 +256,13 @@ index cd07cbf73635..2033e76c65ad 100644
  
    SourceLocation getInsertionPoint() const {
      return EnclosingFuncRange.getBegin();
-@@ -295,20 +508,12 @@ computeEnclosingFuncRange(const FunctionDecl *EnclosingFunction,
+@@ -326,15 +534,12 @@ computeEnclosingFuncRange(const FunctionDecl *EnclosingFunction,
    return toHalfOpenFileRange(SM, LangOpts, EnclosingFunction->getSourceRange());
  }
  
 -// returns true if Child can be a single RootStmt being extracted from
 -// EnclosingFunc.
 -bool validSingleChild(const Node *Child, const FunctionDecl *EnclosingFunc) {
--  // Don't extract expressions.
--  // FIXME: We should extract expressions that are "statements" i.e. not
--  // subexpressions
--  if (Child->ASTNode.get<Expr>())
--    return false;
 -  // Extracting the body of EnclosingFunc would remove it's definition.
 -  assert(EnclosingFunc->hasBody() &&
 +bool isEntireFunctionBodySelected(const ExtractionZone &ExtZone) {
@@ -290,7 +277,7 @@ index cd07cbf73635..2033e76c65ad 100644
  }
  
  // FIXME: Check we're not extracting from the initializer/condition of a control
-@@ -316,17 +521,30 @@ bool validSingleChild(const Node *Child, const FunctionDecl *EnclosingFunc) {
+@@ -342,17 +547,30 @@ bool validSingleChild(const Node *Child, const FunctionDecl *EnclosingFunc) {
  std::optional<ExtractionZone> findExtractionZone(const Node *CommonAnc,
                                                   const SourceManager &SM,
                                                   const LangOptions &LangOpts) {
@@ -325,7 +312,7 @@ index cd07cbf73635..2033e76c65ad 100644
      return std::nullopt;
    if (auto FuncRange =
            computeEnclosingFuncRange(ExtZone.EnclosingFunction, SM, LangOpts))
-@@ -370,6 +588,7 @@ struct NewFunction {
+@@ -396,6 +614,7 @@ struct NewFunction {
    bool Static = false;
    ConstexprSpecKind Constexpr = ConstexprSpecKind::Unspecified;
    bool Const = false;
@@ -333,7 +320,7 @@ index cd07cbf73635..2033e76c65ad 100644
  
    // Decides whether the extracted function body and the function call need a
    // semicolon after extraction.
-@@ -498,8 +717,11 @@ std::string NewFunction::getFuncBody(const SourceManager &SM) const {
+@@ -523,8 +742,11 @@ std::string NewFunction::getFuncBody(const SourceManager &SM) const {
    // - hoist decls
    // - add return statement
    // - Add semicolon
@@ -347,7 +334,7 @@ index cd07cbf73635..2033e76c65ad 100644
  }
  
  std::string NewFunction::Parameter::render(const DeclContext *Context) const {
-@@ -533,6 +755,7 @@ struct CapturedZoneInfo {
+@@ -558,6 +780,7 @@ struct CapturedZoneInfo {
    // FIXME: Capture type information as well.
    DeclInformation *createDeclInfo(const Decl *D, ZoneRelative RelativeLoc);
    DeclInformation *getDeclInfoFor(const Decl *D);
@@ -355,7 +342,7 @@ index cd07cbf73635..2033e76c65ad 100644
  };
  
  CapturedZoneInfo::DeclInformation *
-@@ -546,7 +769,14 @@ CapturedZoneInfo::createDeclInfo(const Decl *D, ZoneRelative RelativeLoc) {
+@@ -571,7 +794,14 @@ CapturedZoneInfo::createDeclInfo(const Decl *D, ZoneRelative RelativeLoc) {
  
  CapturedZoneInfo::DeclInformation *
  CapturedZoneInfo::getDeclInfoFor(const Decl *D) {
@@ -371,7 +358,7 @@ index cd07cbf73635..2033e76c65ad 100644
    auto Iter = DeclInfoMap.find(D);
    if (Iter == DeclInfoMap.end())
      return nullptr;
-@@ -667,12 +897,29 @@ CapturedZoneInfo captureZoneInfo(const ExtractionZone &ExtZone) {
+@@ -692,12 +922,29 @@ CapturedZoneInfo captureZoneInfo(const ExtractionZone &ExtZone) {
    return Result;
  }
  
@@ -406,7 +393,7 @@ index cd07cbf73635..2033e76c65ad 100644
    for (const auto &KeyVal : CapturedInfo.DeclInfoMap) {
      const auto &DeclInfo = KeyVal.second;
      // If a Decl was Declared in zone and referenced in post zone, it
-@@ -680,20 +927,16 @@ bool createParameters(NewFunction &ExtractedFunc,
+@@ -705,20 +952,16 @@ bool createParameters(NewFunction &ExtractedFunc,
      // FIXME: Support Decl Hoisting.
      if (DeclInfo.DeclaredIn == ZoneRelative::Inside &&
          DeclInfo.IsReferencedInPostZone)
@@ -432,7 +419,7 @@ index cd07cbf73635..2033e76c65ad 100644
      // FIXME: Need better qualifier checks: check mutated status for
      // Decl(e.g. was it assigned, passed as nonconst argument, etc)
      // FIXME: check if parameter will be a non l-value reference.
-@@ -701,12 +944,61 @@ bool createParameters(NewFunction &ExtractedFunc,
+@@ -726,12 +969,61 @@ bool createParameters(NewFunction &ExtractedFunc,
      // pointers, etc by reference.
      bool IsPassedByReference = true;
      // We use the index of declaration as the ordering priority for parameters.
@@ -499,7 +486,7 @@ index cd07cbf73635..2033e76c65ad 100644
  }
  
  // Clangd uses open ranges while ExtractionSemicolonPolicy (in Clang Tooling)
-@@ -726,29 +1018,47 @@ getSemicolonPolicy(ExtractionZone &ExtZone, const SourceManager &SM,
+@@ -751,29 +1043,47 @@ getSemicolonPolicy(ExtractionZone &ExtZone, const SourceManager &SM,
    return SemicolonPolicy;
  }
  
@@ -558,7 +545,7 @@ index cd07cbf73635..2033e76c65ad 100644
  }
  
  void captureMethodInfo(NewFunction &ExtractedFunc,
-@@ -794,14 +1104,25 @@ llvm::Expected<NewFunction> getExtractedFunction(ExtractionZone &ExtZone,
+@@ -819,14 +1129,25 @@ llvm::Expected<NewFunction> getExtractedFunction(ExtractionZone &ExtZone,
      ExtractedFunc.ForwardDeclarationSyntacticDC = ExtractedFunc.SemanticDC;
    }
  
@@ -590,10 +577,10 @@ index cd07cbf73635..2033e76c65ad 100644
  }
  
 diff --git a/clang-tools-extra/clangd/tool/CMakeLists.txt b/clang-tools-extra/clangd/tool/CMakeLists.txt
-index 850a82833e44..0970fb945203 100644
+index 1bd6a1f864dd..688ac5a87159 100644
 --- a/clang-tools-extra/clangd/tool/CMakeLists.txt
 +++ b/clang-tools-extra/clangd/tool/CMakeLists.txt
-@@ -23,6 +23,7 @@ endif()
+@@ -26,6 +26,7 @@ endif()
  clang_target_link_libraries(clangdMain
    PRIVATE
    clangAST
@@ -602,19 +589,10 @@ index 850a82833e44..0970fb945203 100644
    clangFormat
    clangFrontend
 diff --git a/clang-tools-extra/clangd/unittests/tweaks/ExtractFunctionTests.cpp b/clang-tools-extra/clangd/unittests/tweaks/ExtractFunctionTests.cpp
-index eff4d0f43595..07663c0ceb24 100644
+index 00e549d4e0f8..8f925183c217 100644
 --- a/clang-tools-extra/clangd/unittests/tweaks/ExtractFunctionTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/tweaks/ExtractFunctionTests.cpp
-@@ -24,8 +24,6 @@ TEST_F(ExtractFunctionTest, FunctionTest) {
- 
-   // Root statements should have common parent.
-   EXPECT_EQ(apply("for(;;) [[1+2; 1+2;]]"), "unavailable");
--  // Expressions aren't extracted.
--  EXPECT_EQ(apply("int x = 0; [[x++;]]"), "unavailable");
-   // We don't support extraction from lambdas.
-   EXPECT_EQ(apply("auto lam = [](){ [[int x;]] }; "), "unavailable");
-   // Partial statements aren't extracted.
-@@ -191,6 +189,16 @@ F (extracted();)
+@@ -191,6 +191,16 @@ F (extracted();)
    )cpp";
    EXPECT_EQ(apply(CompoundFailInput), "unavailable");
  
@@ -629,10 +607,10 @@ index eff4d0f43595..07663c0ceb24 100644
 +  EXPECT_EQ(apply(CompoundWithMultipleStatementsFailInput), "unavailable");
 +
    ExtraArgs.push_back("-std=c++14");
-   // FIXME: Expressions are currently not extracted
-   EXPECT_EQ(apply(R"cpp(
-@@ -630,6 +638,795 @@ int main() {
-   EXPECT_EQ(apply(Before), After);
+   // A bare expression-statement can be extracted (the semicolon isn't part
+   // of the selection either way, since it isn't owned by any AST node).
+@@ -678,6 +688,795 @@ TEST_F(ExtractFunctionTest, SingleStatement) {
+             "unavailable");
  }
  
 +TEST_F(ExtractFunctionTest, Expressions) {

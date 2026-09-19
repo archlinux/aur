@@ -98,7 +98,7 @@
 : ${CLANGD_INLAYHINTSIGNOREEVIDENT:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=23.r15494.gd2a54bea0e5e
+pkgver=24.r9691.gc0c563526ba9
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
@@ -126,19 +126,19 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
     'implement-abstract-class.patch'
     'inlay-hints-hide-deduced-types-ignore-evident.patch')
 sha256sums=('SKIP'
-    '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
-    '85cec3889f7a818fcc998c3564cdd9b01fbeb95855d64ea999d6df5af9ebe817'  # lsp-codelens
-    '2eb41b00885c6f198a981d2881f5379f9e5a06dd126d2bc62fd6dcb8cecd2aab'  # postfix-completion-trunk
-    'fd1f752f7a5a29bc18432ba60b0a9faa0381b3fee49febc53fc8f8f177d61f5d'  # refactor-extract-function
-    'ad4b75468f2969e7414fb68670fb0ca622b0a1e19ca0fa7b836468f085fe0178'  # inlay-hints-paddings
-    'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
-    'a91d05221bf464be15960bd6b5abedacd86289289032589637cfe915c4ba0000'  # hover-bit-fields-mask
-    '1b1ad88faa83b36dd68f63851a0fd6e07eed16595fcbffdc8a57b5c884f8a98c'  # hover-virt-offset
-    '62e38f3074f39d51524b3d43aabb3991df97e43ea4a8c20e8073c479a41d1057'  # hover-layout-everyhere
-    '94b328ea81eb615a90acf18a9a78733d77093deb12203683510fe4881bad95c6'  # hover-no-defs
-    '63e951edbafca684984c6878a7650570dc20021198622e627d374692b1b6e8eb'  # lsp-remove-files-from-cdb
-    '3d395094394e00def6ae7a311cf8ec85e4886336ddb1da5ef3b02d378e455f15'  # implement-abstract-class
-    'a63d3afdd26692853b1ef31b2bb285ac8cd0747dac198a09998e3caf184859e6') # inlay-hints-hide-deduced-types-ignore-evident
+    'eb3b9c9f3cb275ed492b9171976ee2cda55ba82df4149fe87c9ce51a30b35dda'  # hover-resolve-forward-params
+    '786d9ff8c84b3c3953915fb4d43d89fd7a8f8430260c145d66167f9200e0c656'  # lsp-codelens
+    '3844041d9b831894e678dee5e5ca86bec7fa9935e4dabb19a119132a01302119'  # postfix-completion-trunk
+    'bb89651954fc0f7748d2f6934f62ddd2d6181a7a171dc8dd3ea5052f1db9650b'  # refactor-extract-function
+    'dd115f96963d0577db1ff4447de521cc697621b93607cfe225cd5416d40ca5f6'  # inlay-hints-paddings
+    '641c629f7fdd59c62929756e0e6a41113bf5db4ae29e3c1d2a914c3fc80dc0f7'  # hover-hex-formats
+    'ef1721f12a11c26c5e09d9ee8cda01078a2bcc8cd0b55627ccedb3e21323c9ca'  # hover-bit-fields-mask
+    'eef2aba140b76247256fb65b5db535dfd749f2ccf7ef4ced81e585b4fecdee7f'  # hover-virt-offset
+    '683caf4bd56ce906d41f49bf911364a0f6c2f083307d1eb57666982873741d6a'  # hover-layout-everyhere
+    'b9227c1807decf6cb7916b6fc90f141c63e49a5d8577636700e4a08c8d0ca142'  # hover-no-defs
+    'b21ee165ffb05dc4b984288ea8ad3be4cbea580d49daaec8e54741c60b2532fc'  # lsp-remove-files-from-cdb
+    '2af83e1fd4478470ab9b403ec2b0e9593fcce6558cb0a2e4cf07f36450b1f437'  # implement-abstract-class
+    'ee52826da959385d92881c1df8c20df6753462d08f1f8e978a172d9533fb9231') # inlay-hints-hide-deduced-types-ignore-evident
 
 pkgver() {
     cd llvm-project

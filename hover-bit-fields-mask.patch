@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index 3ab3d8903052..cfb90c6073a3 100644
+index 8ff7dcb2b4fc..ebda42d389fe 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -1017,9 +1017,17 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
+@@ -1050,9 +1050,17 @@ void addLayoutInfo(const NamedDecl &ND, HoverInfo &HI) {
        HI.Align = Ctx.getTypeAlign(FD->getType());
        const ASTRecordLayout &Layout = Ctx.getASTRecordLayout(Record);
        HI.Offset = Layout.getFieldOffset(FD->getFieldIndex());

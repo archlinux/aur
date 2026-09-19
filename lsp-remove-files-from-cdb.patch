@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/ClangdLSPServer.cpp b/clang-tools-extra/clangd/ClangdLSPServer.cpp
-index 05dd313d0a0d..24bf2b503de3 100644
+index 7d646d6f7583..c854bcc017f1 100644
 --- a/clang-tools-extra/clangd/ClangdLSPServer.cpp
 +++ b/clang-tools-extra/clangd/ClangdLSPServer.cpp
-@@ -1424,7 +1424,10 @@ void ClangdLSPServer::applyConfiguration(
+@@ -1455,7 +1455,10 @@ void ClangdLSPServer::applyConfiguration(
          tooling::CompileCommand(std::move(Command.workingDirectory), File,
                                  std::move(Command.compilationCommand),
                                  /*Output=*/"");

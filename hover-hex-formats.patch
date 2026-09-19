@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index 0ae70dd121eb..094a4471ddee 100644
+index ebda42d389fe..070707126445 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -1406,6 +1406,10 @@ std::optional<HoverInfo> getHover(ParsedAST &AST, Position Pos,
+@@ -1452,6 +1452,10 @@ std::optional<HoverInfo> getHover(ParsedAST &AST, Position Pos,
  static std::string formatSize(uint64_t SizeInBits) {
    uint64_t Value = SizeInBits % 8 == 0 ? SizeInBits / 8 : SizeInBits;
    const char *Unit = Value != 0 && Value == SizeInBits ? "bit" : "byte";

@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/refactor/tweaks/CMakeLists.txt b/clang-tools-extra/clangd/refactor/tweaks/CMakeLists.txt
-index 1d6e38088a..7774f91df6 100644
+index 1d6e38088ad6..7774f91df65d 100644
 --- a/clang-tools-extra/clangd/refactor/tweaks/CMakeLists.txt
 +++ b/clang-tools-extra/clangd/refactor/tweaks/CMakeLists.txt
 @@ -21,6 +21,7 @@ add_clang_library(clangDaemonTweaks OBJECT
@@ -12,7 +12,7 @@ index 1d6e38088a..7774f91df6 100644
    ObjCMemberwiseInitializer.cpp
 diff --git a/clang-tools-extra/clangd/refactor/tweaks/ImplementAbstract.cpp b/clang-tools-extra/clangd/refactor/tweaks/ImplementAbstract.cpp
 new file mode 100644
-index 0000000000..3b2ea64821
+index 000000000000..3b2ea64821e6
 --- /dev/null
 +++ b/clang-tools-extra/clangd/refactor/tweaks/ImplementAbstract.cpp
 @@ -0,0 +1,419 @@
@@ -436,10 +436,10 @@ index 0000000000..3b2ea64821
 +} // namespace clangd
 +} // namespace clang
 diff --git a/clang-tools-extra/clangd/unittests/CMakeLists.txt b/clang-tools-extra/clangd/unittests/CMakeLists.txt
-index 9656eeaeb3..1a67c7e583 100644
+index d596ba77efd4..57e7ae3d53d4 100644
 --- a/clang-tools-extra/clangd/unittests/CMakeLists.txt
 +++ b/clang-tools-extra/clangd/unittests/CMakeLists.txt
-@@ -129,6 +129,7 @@ add_unittest(ClangdUnitTests ClangdTests
+@@ -130,6 +130,7 @@ add_unittest(ClangdUnitTests ClangdTests
    tweaks/ExpandMacroTests.cpp
    tweaks/ExtractFunctionTests.cpp
    tweaks/ExtractVariableTests.cpp
@@ -449,7 +449,7 @@ index 9656eeaeb3..1a67c7e583 100644
    tweaks/ObjCMemberwiseInitializerTests.cpp
 diff --git a/clang-tools-extra/clangd/unittests/tweaks/ImplementAbstractTests.cpp b/clang-tools-extra/clangd/unittests/tweaks/ImplementAbstractTests.cpp
 new file mode 100644
-index 0000000000..711bd5d123
+index 000000000000..711bd5d123d6
 --- /dev/null
 +++ b/clang-tools-extra/clangd/unittests/tweaks/ImplementAbstractTests.cpp
 @@ -0,0 +1,427 @@
