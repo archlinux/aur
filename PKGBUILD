@@ -8,7 +8,7 @@
 
 pkgname=cline-desktop
 pkgver=0.0.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Cline coding agent as a native desktop app (unofficial Linux build)"
 arch=('x86_64' 'aarch64')
 url="https://cline.bot/desktop"
@@ -31,6 +31,7 @@ makedepends=(
   'git'
   'pkgconf'
   'python'
+  'imagemagick'
 )
 optdepends=(
   'github-cli: pull-request status in the composer'
@@ -128,19 +129,30 @@ package() {
     "$pkgdir/usr/share/applications/cline-desktop.desktop"
   find "$pkgdir/usr/share/applications" -name '*.desktop' ! -name 'cline-desktop.desktop' -delete
 
-  # Point leftover icon names at our desktop file if the bundler used another stem.
-  if [[ ! -e "$pkgdir/usr/share/icons/hicolor/128x128/apps/cline-desktop.png" ]]; then
-    local icon
-    icon="$(find "$pkgdir/usr/share/icons" -type f \( -name '*.png' -o -name '*.svg' \) -print -quit || true)"
-    if [[ -n "$icon" ]]; then
-      install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/128x128/apps/cline-desktop.png"
-    else
-      install -Dm644 "$_appdir/src-tauri/icons/128x128.png" \
-        "$pkgdir/usr/share/icons/hicolor/128x128/apps/cline-desktop.png"
-      install -Dm644 "$_appdir/src-tauri/icons/32x32.png" \
-        "$pkgdir/usr/share/icons/hicolor/32x32/apps/cline-desktop.png"
-    fi
+  # Tauri's deb ships 32/128 plus a 256x256@2 HiDPI path that Qt/Vicinae never
+  # look up. Install the usual hicolor sizes + pixmaps so launchers resolve Icon=.
+  rm -rf "$pkgdir/usr/share/icons/hicolor/"*"@2"
+  local src_icon=""
+  local f
+  for f in \
+      "$_appdir/src-tauri/icons/icon.png" \
+      "$_appdir/src-tauri/icons/128x128.png" \
+      "$pkgdir/usr/share/icons/hicolor/128x128/apps/"*.png
+  do
+    [[ -f "$f" ]] && src_icon="$f" && break
+  done
+  if [[ -z "$src_icon" ]]; then
+    echo "error: no source icon to install" >&2
+    return 1
   fi
+  local sz
+  for sz in 16 24 32 48 64 128 256 512; do
+    magick "$src_icon" -resize "${sz}x${sz}" "$srcdir/cline-desktop-${sz}.png"
+    install -Dm644 "$srcdir/cline-desktop-${sz}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${sz}x${sz}/apps/cline-desktop.png"
+  done
+  install -Dm644 "$srcdir/cline-desktop-128.png" \
+    "$pkgdir/usr/share/pixmaps/cline-desktop.png"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$_appdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"

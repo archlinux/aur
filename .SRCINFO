@@ -1,7 +1,7 @@
 pkgbase = cline-desktop
 	pkgdesc = Cline coding agent as a native desktop app (unofficial Linux build)
 	pkgver = 0.0.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cline.bot/desktop
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = cline-desktop
 	makedepends = git
 	makedepends = pkgconf
 	makedepends = python
+	makedepends = imagemagick
 	depends = cairo
 	depends = gcc-libs
 	depends = gdk-pixbuf2
