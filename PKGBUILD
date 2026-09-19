@@ -5,7 +5,7 @@
 
 pkgname=xca-rs
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="XCA (X Certificate and Key Management) rewritten in Rust with GTK4 and GOST support"
 arch=('x86_64')
 url="https://github.com/RinWate/xca-rs"
