@@ -1,15 +1,15 @@
 pkgbase = snd-hdspe-dkms
 	pkgdesc = A linux kernel module for RME HDSPe sound cards and extension modules
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Schroedingers-Cat/snd-hdspe
 	arch = any
 	license = GPL-3.0-or-later
 	depends = dkms
-	provides = snd-hdspe=1.0.2
-	source = snd-hdspe-dkms-1.0.2.tar.gz::https://github.com/Schroedingers-Cat/snd-hdspe/archive/refs/tags/v1.0.2.tar.gz
+	provides = snd-hdspe=1.0.3
+	source = snd-hdspe-dkms-1.0.3.tar.gz::https://github.com/Schroedingers-Cat/snd-hdspe/archive/refs/tags/v1.0.3.tar.gz
 	source = dkms.conf
-	sha256sums = 38cf74f7664c5fe9a9b53d91edee6d8354a13f51143e598fd75128eddeaf4d36
+	sha256sums = 2f25747d048b7ceccfa7b1f51848e75ea5ed502aa4244b2bdd73249a40836d40
 	sha256sums = 6a135481ba649e0a853b3d68334cb93f869d195495f367c516138b6e7203db6f
 
 pkgname = snd-hdspe-dkms

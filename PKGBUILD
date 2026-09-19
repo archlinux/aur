@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=snd-hdspe-dkms
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='A linux kernel module for RME HDSPe sound cards and extension modules'
 url='https://github.com/Schroedingers-Cat/snd-hdspe'
@@ -13,7 +13,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/Schroedingers-Cat/snd-hdspe/archive/refs/tags/v${pkgver}.tar.gz"
   "dkms.conf"
 )
-sha256sums=('38cf74f7664c5fe9a9b53d91edee6d8354a13f51143e598fd75128eddeaf4d36'
+sha256sums=('2f25747d048b7ceccfa7b1f51848e75ea5ed502aa4244b2bdd73249a40836d40'
             '6a135481ba649e0a853b3d68334cb93f869d195495f367c516138b6e7203db6f')
 
 package() {
