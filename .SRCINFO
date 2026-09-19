@@ -1,7 +1,7 @@
 pkgbase = python-nbxmpp-client
 	pkgdesc = A small GTK test client to test various ways to connect to a server.
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://gitlab.com/gajim/nbxmpp-client
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = python-nbxmpp-client
 	depends = gtk4
 	depends = libadwaita
 	provides = nbc
-	source = https://gitlab.com/gajim/nbxmpp-client/-/archive/v2.0.0/nbxmpp-client-v2.0.0.tar.gz
-	sha256sums = 9c432c5a56935d0cf8eaa2da81ce62ef2d6654a54085bdccf14ace0b26ec4ad1
+	source = https://gitlab.com/gajim/nbxmpp-client/-/archive/v2.0.1/nbxmpp-client-v2.0.1.tar.gz
+	sha256sums = c31bef5b4205981c0b3b9f18831a3784769522f62ae0f4986188780ceb9cb09f
 
 pkgname = python-nbxmpp-client
