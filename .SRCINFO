@@ -22,9 +22,7 @@ pkgbase = libceed-git
 	provides = libceed
 	conflicts = libceed
 	source = libceed::git+https://github.com/ceed/libceed
-	source = 0001-install-macros-header.patch
 	validpgpkeys = BA543CE09D732BE604D53F6FCA6D4A3B32D335A0
 	b2sums = SKIP
-	b2sums = 393966fa6c8c898ee795187b47f80523589cd265df7ec54a46284fd64190ef65dc023fa5e15bbd8c048ac39b42dd1f97eb6609b6408f663853907e3afabb8965
 
 pkgname = libceed-git
