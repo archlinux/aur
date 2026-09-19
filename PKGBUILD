@@ -27,6 +27,11 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP')
 
+prepare() {
+    cd "$srcdir/dotty"
+    git submodule update --init --recursive
+}
+
 pkgver() {
     cd "$srcdir/dotty"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
