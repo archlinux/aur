@@ -7,6 +7,6 @@ pkgbase = movie-rename-bin
 	license = GPL3
 	provides = movie-rename
 	source = movie-rename-2.4.1.tar.gz::https://github.com/SinTan1729/movie-rename/releases/download/2.4.1/movie-rename.tar.gz
-	b2sums = 6eb23688cac9e5363efcbc7c6ee646ea1ded7c80c66ceda302bd28a77cf11b43ea74878ed4a0adf350b57c4e5a56b044e4da5dd72ff415dec35d8a487a2b6f57
+	b2sums = a28ed57c118b79904576b155123bdceb5c94090c6042fd5a6d76edacbca90020352e6b69079a6a8bc4bcf20c4f29606d6c419e33c4161cc976ee7e7adc2e3047
 
 pkgname = movie-rename-bin
