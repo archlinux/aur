@@ -1,6 +1,6 @@
 pkgbase = dumptoolbox-bin
 	pkgdesc = A cross-platform .NET 8 and Avalonia desktop application for disc-image conversion, checksum-based recovery, and reconstruction from Redumper, DiscImageCreator, and PlayStation 3 IRD metadata
-	pkgver = 0.8.102
+	pkgver = 0.8.107
 	pkgrel = 1
 	url = https://github.com/wiggy2k/DumpToolbox
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = dumptoolbox-bin
 	conflicts = dumptoolbox
 	options = !strip
 	options = !debug
-	source = https://github.com/wiggy2k/DumpToolbox/releases/download/0.8.102/Linux-x64-v0.8.102.zip
-	source = DumpToolbox-0.8.102.zip::https://github.com/wiggy2k/DumpToolbox/archive/refs/tags/0.8.102.zip
-	sha1sums = b1d6c774a1d1a264c5c29cfbd05739aefaa55fee
-	sha1sums = 08d357ae9c330ffffecb462228b92fecf1e7cc48
+	source = https://github.com/wiggy2k/DumpToolbox/releases/download/0.8.107/Linux-x64-v0.8.107.zip
+	source = DumpToolbox-0.8.107.zip::https://github.com/wiggy2k/DumpToolbox/archive/refs/tags/0.8.107.zip
+	sha1sums = 266d77af1a55292f7ddc4d86ed8b7046ee8fd932
+	sha1sums = d634af82d7217b65d03b1b642b2563a9f24f4716
 
 pkgname = dumptoolbox-bin
