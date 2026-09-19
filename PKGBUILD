@@ -3,7 +3,7 @@
 # pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=umbriel-vram-booster
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic VRAM prioritization for the Umbriel compositor via Linux dmem cgroups'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sachesi/umbriel-vram-booster'

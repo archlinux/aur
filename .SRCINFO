@@ -1,7 +1,7 @@
 pkgbase = umbriel-vram-booster
 	pkgdesc = Dynamic VRAM prioritization for the Umbriel compositor via Linux dmem cgroups
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sachesi/umbriel-vram-booster
 	arch = x86_64
 	arch = aarch64
