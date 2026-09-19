@@ -23,26 +23,18 @@ makedepends=(
 
 source=(
     "dotty::git+https://github.com/Monjaris/dotty.git"
-    "dotline::git+https://github.com/Monjaris/dotline.git"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 prepare() {
     cd "$srcdir/dotty"
     git submodule update --init --recursive
 }
 
-pkgver() {
-    cd "$srcdir/dotty"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
     cd "$srcdir/dotty"
-    cp -r "$srcdir/dotline/." deps/dotline
     xmake config -m release
     xmake build -j$(nproc) dotty
-    cp build/linux/x86_64/release/dotty ./dotty
 }
 
 package() {

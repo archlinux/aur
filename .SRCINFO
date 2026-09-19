@@ -14,8 +14,6 @@ pkgbase = dotty-git
 	conflicts = dotty
 	options = !debug
 	source = dotty::git+https://github.com/Monjaris/dotty.git
-	source = dotline::git+https://github.com/Monjaris/dotline.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = dotty-git
