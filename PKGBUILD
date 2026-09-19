@@ -3,10 +3,10 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full-llvm
-pkgver=9.0.1
-pkgrel=4
+pkgver=9.0.2
+pkgrel=2
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.9.2'
+_whispercpp_ver='1.9.4'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and mold'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -173,18 +173,20 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '030-ffmpeg-add-svt-vp9.patch'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
-        '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
+        '060-ffmpeg-lensfun-fix-pkgconfig.patch'
+        '070-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         'LICENSE')
-sha256sums=('cf38e0e28c7e5605942c4a77755349b0145804a397af37eb1fb4c77cb237f635'
+sha256sums=('8c3850283eb25fa026482078a04051e0be17347b09ef81a0849bec15a96e002e'
             'SKIP'
             'SKIP'
-            'a6abd064fcca8b85e794d205abf328c522e9451db43a3eadc178b883b7d0e9cd'
+            '57e280cee375ab02425b806ad5146b99f6eb9357e3c2b31357c8a6af2e2e44ae'
             'e6fdcb8446b0a0c0967f125d2de5084a5bdb418a1a6608f808cff2c97fc9bd6a'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             'cc80568f7dab2094f4f3bede6d0f068f217161f924915b067b0d287cf53b0849'
             'cd1aa93e78800247b4516a01ef391106acb362957bd1e56f85d64906343cddac'
             '4a9a672f67cc0e5dd63bd7659f5a5198cd981e60bbbc1b9a63277758be6a7fdf'
-            '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
+            'c39addf190d25d1182c5c5658677f77ee7c1ae542969b2004441c62a425d324b'
+            '2c846c629ad129ae8ce50791de4f1d390714db6d6420a35406b83b9b44999d4a'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -195,7 +197,8 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch"
-    patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
+    patch -d lensfun -Np1 -i "${srcdir}/060-ffmpeg-lensfun-fix-pkgconfig.patch"
+    patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/070-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
 
     # Retain indirect flite1 dependencies under --as-needed to avoid leaving
     # the voice libraries with unresolved symbols such as usenglish_init.
@@ -240,14 +243,12 @@ build() {
         -DINSTALL_PYTHON_MODULE:BOOL='OFF' \
         -DINSTALL_HELPER_SCRIPTS:BOOL='OFF'
     cmake --build build/lensfun --target install
-    sed -i \
-        -e 's/\(-llensfun\)/\1 -lglib-2.0 -lstdc++/' \
-        -e '/Cflags: /s/$/ -DCONF_LENSFUN_STATIC/' "${_pkgconfigdir}/lensfun.pc"
     
     # using whisper-cpp package from the official repositories will cause a circular dependency with ffmpeg,
     # building it locally as a static library for the time being
     cmake -B build/whisper.cpp -S "whisper.cpp-${_whispercpp_ver}" \
         "${_cmake_opts[@]}" \
+        -DGGML_CCACHE:BOOL='OFF' \
         -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
         -DWHISPER_BUILD_TESTS:BOOL='OFF'
     cmake --build build/whisper.cpp --target install
