@@ -11,6 +11,7 @@ pkgbase = concat-git
 	makedepends = pkgconf
 	makedepends = git
 	depends = ffmpeg
+	depends = onnxruntime
 	depends = alsa-lib
 	depends = fontconfig
 	depends = freetype2

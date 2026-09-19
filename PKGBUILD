@@ -15,11 +15,12 @@ license=('AGPL-3.0-or-later')
 # vulkan-icd-loader are the two backends wgpu picks between, and the rest is
 # what winit opens by name for whichever session the user is in. dbus is the
 # XDG portal, which is how the file dialogs and "reveal in file manager"
-# work without a toolkit.
-depends=('ffmpeg' 'alsa-lib' 'fontconfig' 'freetype2' 'libglvnd'
-         'vulkan-icd-loader' 'libxkbcommon' 'libxkbcommon-x11' 'libx11'
-         'libxcursor' 'libxi' 'libxrender' 'wayland' 'dbus' 'gcc-libs'
-         'glibc' 'hicolor-icon-theme')
+# work without a toolkit. onnxruntime runs the cutout models and is linked
+# dynamically, see ORT_LIB_LOCATION in build().
+depends=('ffmpeg' 'onnxruntime' 'alsa-lib' 'fontconfig' 'freetype2'
+         'libglvnd' 'vulkan-icd-loader' 'libxkbcommon' 'libxkbcommon-x11'
+         'libx11' 'libxcursor' 'libxi' 'libxrender' 'wayland' 'dbus'
+         'gcc-libs' 'glibc' 'hicolor-icon-theme')
 # clang: bindgen (FFmpeg headers, whisper.cpp) needs libclang.
 # cmake: whisper.cpp is compiled in, by its own CMake build.
 makedepends=('rust' 'cmake' 'clang' 'pkgconf' 'git')
@@ -42,17 +43,27 @@ pkgver() {
 }
 
 prepare() {
-  cd "$pkgname/engine"
+  cd "$pkgname/src"
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
 }
 
 build() {
-  cd "$pkgname/engine"
+  cd "$pkgname/src"
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # ort, the ONNX Runtime binding behind the cutout models, downloads a
+  # prebuilt runtime from its build script unless it is pointed at one. Arch
+  # has the library, so it is linked against that instead - dynamically, so
+  # the package follows onnxruntime's updates rather than freezing a copy.
+  # Upstream's flake.nix does the same with nixpkgs' onnxruntime.
+  export ORT_LIB_LOCATION=/usr/lib
+  export ORT_PREFER_DYNAMIC_LINK=1
+  # and if that ever stops being picked up, fail the build instead of
+  # quietly falling back to the download
+  export ORT_SKIP_DOWNLOAD=1
   # ggml (whisper.cpp's kernels) tunes itself to the machine it is compiled
   # on unless told otherwise. A package is not always built on the machine it
   # runs on, and a binary that faults on a CPU without AVX-512 is a bad trade
@@ -65,7 +76,7 @@ build() {
   # choice, for the same reason, that upstream's flake.nix makes.
   #
   # --profile app: upstream's shipping profile - fat LTO, panic=abort,
-  # stripped. See engine/Cargo.toml for what each knob is for.
+  # stripped. See src/Cargo.toml for what each knob is for.
   #
   # sherpa-onnx-sys, the text-to-speech backend, ships no C++ build: its build
   # script downloads a prebuilt static-lib archive from its own release page.
@@ -78,17 +89,18 @@ build() {
 package() {
   cd "$pkgname"
 
-  install -Dm755 "engine/target/app/concat" "$pkgdir/usr/bin/concat"
+  install -Dm755 "src/target/app/concat" "$pkgdir/usr/bin/concat"
 
-  # The desktop entry upstream's release workflow writes into the Linux
-  # tarball; there is none in the tree, because the Nix build generates its
-  # own. Reproduced here so this package and concat-bin install the same one.
+  # The desktop entry upstream's release workflow writes into its Linux
+  # packages; there is none in the tree, because the Nix build generates its
+  # own. Reproduced here, with the Exec line pointing at this package's
+  # binary rather than at the /opt folder upstream's .deb installs.
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/concat.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=Concat
 Comment=Video editor
-Exec=concat
+Exec=concat %U
 Icon=concat
 Categories=AudioVideo;Video;
 Terminal=false
