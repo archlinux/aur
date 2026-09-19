@@ -1,6 +1,6 @@
 # Maintainer: Douglas Moura <doug@douglasmoura.com>
 pkgname=winkel
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A metronome for Omarchy that follows the live theme (Rust + Quickshell)"
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ depends=(quickshell alsa-lib gcc-libs glibc hicolor-icon-theme)
 optdepends=('ttf-jetbrains-mono-nerd: the default interface font')
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d69b7cc59cf55c2c4660bfd165fd086fb06a2092fb629e07927623deacc3e7d3')
+sha256sums=('186eeb4898fdc92b2b215d45deea568706c5500b7e893a620f0cf175992d03dc')
 
 prepare() {
   cd "$pkgname-$pkgver"
