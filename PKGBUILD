@@ -2,8 +2,8 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=lcevcdec-llvm
-pkgver=4.2.1
-pkgrel=4
+pkgver=4.2.2
+pkgrel=2
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC) — built with Clang and mold'
 arch=('x86_64')
 url='https://github.com/v-novaltd/LCEVCdec/'
@@ -25,7 +25,7 @@ provides=('lcevcdec')
 conflicts=('lcevcdec')
 options=('!emptydirs')
 source=("git+https://github.com/v-novaltd/LCEVCdec.git#tag=${pkgver}")
-sha256sums=('f9bb4b3e4c5fbc45a8b9816d595ee0afcb09dd6fe80b5c27d973ab2554799c96')
+sha256sums=('4f3fc9ba674c05a5a10e0db820094a51bbae0aef5924e148446187a4b3885a0a')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
