@@ -1,6 +1,6 @@
 pkgbase = fastwc
 	pkgdesc = fastwc, a fast wc rewrite, builds from source
-	pkgver = 19
+	pkgver = 20
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastwc
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fastwc
 	depends = gcc-libs
 	provides = fastwc
 	conflicts = fastwc-bin
-	source = fastwc-19-64b5c93c3f2372e7bef1726daac6af2c7ec3597a.tar.gz::https://github.com/CallMeAlphabet/fastwc/archive/64b5c93c3f2372e7bef1726daac6af2c7ec3597a.tar.gz
+	source = fastwc-20-6d42078b60c221dc4f0776270b7d52424ceba4cb.tar.gz::https://github.com/CallMeAlphabet/fastwc/archive/6d42078b60c221dc4f0776270b7d52424ceba4cb.tar.gz
 	sha256sums = SKIP
 
 pkgname = fastwc
