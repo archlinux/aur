@@ -1,0 +1,20 @@
+pkgbase = dopeiptv-bin
+	pkgdesc = Linux IPTV player with Xtream Codes, M3U, EPG, timeshift, recording and multiview
+	pkgver = 1.2.11
+	pkgrel = 1
+	url = https://iptv.dope.rs/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = patchelf
+	depends = glibc
+	optdepends = mpv: external MPV playback
+	optdepends = vlc: external VLC playback
+	provides = dopeiptv=1.2.11
+	conflicts = dopeiptv
+	noextract = dopeiptv_1.2.11_amd64.deb
+	options = !strip
+	options = !debug
+	source = dopeiptv_1.2.11_amd64.deb::https://iptv.dope.rs/dl.php?f=dopeiptv_1.2.11_amd64.deb
+	sha256sums = 4b0ca24a3fadc08a885299c3dfc920c89cb0fe4a828645f918ad688fa07094c2
+
+pkgname = dopeiptv-bin
