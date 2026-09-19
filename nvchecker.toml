@@ -1,0 +1,4 @@
+[serein]
+source = "git"
+git = "https://github.com/ViceVerse-cz/Serein.git"
+prefix = "v"
