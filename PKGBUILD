@@ -3,7 +3,7 @@
 _themename=russia
 pkgname=plymouth-theme-$_themename
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Russia coat of arms splash screen for Plymouth"
 arch=('any')
 url="https://codeberg.org/Thr0TT1e/russia-theme-plymouth.git"
@@ -27,28 +27,38 @@ b2sums=('7cfc867ae806b04c2b10ac07e314d1ec6aea97f508c20aa315e01ba215319e17cd67972
         'c368a0b4921fb2062e96d6314094a3fb1811bf611b4f356105bd00b70baa1fc4868db7487b2128e844b157ea48abfa094663f6bf17ab4d966692803cf793e045')
 
 check() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname" || return 1
 
-    # Проверка наличия обязательных файлов
-    for required in "$_themename.plymouth" "$_themename.script"; do
+    msg "=== Отладка: содержимое директории $PWD ==="
+    ls -la
+    msg "============================================"
+
+    # Безопасное обращение к переменным через ${_themename}
+    for required in "${_themename}.plymouth" "${_themename}.script"; do
         if [[ ! -f "$required" ]]; then
             error "Missing required file: $required"
             return 1
         fi
     done
 
-    # Проверка наличия изображений
-    if ! ls -1 *.png *.svg &>/dev/null; then
-        warning "No PNG or SVG images found in theme directory"
+    # Включаем игнорирование регистра (на случай .PNG) и nullglob
+    shopt -s nullglob nocaseglob
+    local images=(*.png *.svg)
+    shopt -u nullglob nocaseglob
+
+    if [[ ${#images[@]} -eq 0 ]]; then
+        warning "No PNG or SVG images found in the root of the theme directory."
+        warning "Check if they are in a subfolder or have different extensions."
+    else
+        msg "Successfully found images: ${images[*]}"
     fi
 }
 
 prepare() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname" || return 1
 
-    # Проверка на HiDPI сделана более мягкой и информативной
-    if [[ -f "$_themename.script" ]]; then
-        if grep -qE "(screenHeight|GetHeight)" "$_themename.script"; then
+    if [[ -f "${_themename}.script" ]]; then
+        if grep -qE "(screenHeight|GetHeight)" "${_themename}.script"; then
             msg "HiDPI resolution handling detected in script"
         else
             warning "Theme script may lack explicit HiDPI (2K/4K) scaling logic"
@@ -57,20 +67,21 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    local _themedir="$pkgdir/usr/share/plymouth/themes/$_themename"
+    cd "$srcdir/$pkgname" || return 1
+    local _themedir="$pkgdir/usr/share/plymouth/themes/${_themename}"
 
-    # Создание директории темы
     install -dm755 "$_themedir"
+
+    # Явное и безопасное указание файлов через ${_themename}
+    local theme_files=("${_themename}.plymouth" "${_themename}.script")
     
-    local theme_files=("$_.themename.plymouth" "$_themename.script")
-    
-    # Безопасно добавляем все png файлы, если они есть
-    shopt -s nullglob
-    theme_files+=(*.png)
-    shopt -u nullglob
+    shopt -s nullglob nocaseglob
+    theme_files+=(*.png *.svg)
+    shopt -u nullglob nocaseglob
 
     if [[ ${#theme_files[@]} -gt 0 ]]; then
+        msg "Installing theme files: ${theme_files[*]}"
+        # -t указывает целевую директорию, что позволяет передать массив файлов
         install -Dm644 -t "$_themedir" "${theme_files[@]}"
     else
         error "No files to install for the theme!"
