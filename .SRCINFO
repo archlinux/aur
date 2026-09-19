@@ -1,7 +1,7 @@
 pkgbase = elpaudio-mini
 	pkgdesc = Simple audio player, written on GameBreaker
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/elpAudio/elpAudioMini
 	arch = x86_64
 	license = BSD-3
