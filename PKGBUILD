@@ -2,17 +2,18 @@
 # https://github.com/nihalxkumar/PKGBUILDs/tree/main/onionspray
 pkgname=onionspray
 pkgver=1.8.1
-pkgrel=1
-pkgdesc="A tool to setup Onion Services for existing websites.
+pkgrel=2
+pkgdesc="A tool to setup Onion Services for existing websites."
 arch=('any')
 url="https://gitlab.torproject.org/tpo/onion-services/onionspray"
 license=('GPL-3.0-or-later')
-depends=('perl' 'bash' 'tor')
+depends=('perl' 'bash' 'tor' 'openbsd-netcat' 'rsync' 'openssl')
 makedepends=('git')
 optdepends=(
   'onionbalance: for load balancing onion services'
   'python: for validate-onion-key helper script'
   'ruby: for onion-csr helper script'
+  'mkcert: for generating local CA certificates for TLS'
 )
 source=("git+https://gitlab.torproject.org/tpo/onion-services/onionspray.git#tag=v$pkgver")
 sha256sums=('SKIP')
