@@ -13,8 +13,8 @@ pkgname=(
   'mariadb-mytop-git'
   'mariadb-pam-git')
 pkgdesc='Fast SQL database server, derived from MySQL'
-_pkgver=12.3
-pkgver=12.3.3.r2.g3b78f10
+_pkgver=13.0
+pkgver=13.0.2.r0.g620a4b5
 pkgrel=1
 arch=('x86_64')
 license=('GPL-2.0-only')
@@ -22,7 +22,7 @@ url='https://mariadb.org/'
 makedepends=('git' 'boost' 'bzip2' 'cmake' 'cracklib' 'curl' 'jemalloc' 'judy' 'krb5' 'liburing'
              'libxcrypt' 'libxml2' 'lz4' 'openssl' 'pcre2' 'systemd' 'zlib' 'zstd' 'xz')
 validpgpkeys=('177F4010FE56CA3336300305F1656F24C74CD1D8') # MariaDB Signing Key <signing-key@mariadb.org>
-source=("mariadb::git+https://github.com/MariaDB/server.git#branch=${_pkgver}?signed"
+source=("mariadb::git+https://github.com/MariaDB/server.git?signed#branch=${_pkgver}"
         'git+https://github.com/codership/wsrep-lib.git'
         'git+https://github.com/duckdb/duckdb.git'
         'git+https://github.com/facebook/rocksdb.git'
