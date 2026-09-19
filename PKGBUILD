@@ -3,9 +3,9 @@
 pkgname=splayer-next
 _pkgname=SPlayer-Next
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform desktop music player with rich lyric support and wide audio format compatibility"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/SPlayer-Dev/SPlayer-Next"
 license=('AGPL-3.0-only')
 depends=(
@@ -38,11 +38,9 @@ source=(
   '0001-Disable-builtin-updater.patch'
   'top.imsyy.splayer_next.desktop'
 )
-sha256sums=(
-  '248b814590e45e81856573de8b6b435515d42648c8b9b00a0fe3e0135ca64f00'
-  '72a7a31955318e3d2b6b1ad070f46f5ef5f6862c9fb47a5b6ceacdedbf4f62f9'
-  'f9530b38c0222ce185bb2dfcd9f5c6ece6fdadb3ba7a0eb10a41846be8b7b632'
-)
+sha256sums=('248b814590e45e81856573de8b6b435515d42648c8b9b00a0fe3e0135ca64f00'
+            '72a7a31955318e3d2b6b1ad070f46f5ef5f6862c9fb47a5b6ceacdedbf4f62f9'
+            'f9530b38c0222ce185bb2dfcd9f5c6ece6fdadb3ba7a0eb10a41846be8b7b632')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -66,8 +64,10 @@ package() {
   cd "${_pkgname}-${pkgver}"
 
   # 安装运行时
+  local _appdir=linux-unpacked
+  [[ "${CARCH}" == "aarch64" ]] && _appdir=linux-arm64-unpacked
   install -d "${pkgdir}/opt/${_pkgname}"
-  cp -a dist/linux-unpacked/. "${pkgdir}/opt/${_pkgname}/"
+  cp -a "dist/${_appdir}/." "${pkgdir}/opt/${_pkgname}/"
 
   # 设置沙盒权限
   chmod 755 "${pkgdir}/opt/${_pkgname}/chrome-sandbox"

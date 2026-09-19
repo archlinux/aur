@@ -1,9 +1,10 @@
 pkgbase = splayer-next
 	pkgdesc = Cross-platform desktop music player with rich lyric support and wide audio format compatibility
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SPlayer-Dev/SPlayer-Next
 	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-only
 	makedepends = clang
 	makedepends = git
