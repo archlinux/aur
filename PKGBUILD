@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.1.41
+pkgver=0.1.42
 pkgrel=1
 pkgdesc="Control suite and PipeWire submixer for Elgato XLR interfaces, with an OpenDeck plugin"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'opendeck: Stream Deck control through the bundled plugin')
 install=openxlr.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e99528b359548bf20c2201485f326c5f5d76d8081cececa4564420ed85af83a7')
+sha256sums=('67149616b3e80299b3dedc9729731e3986ad4ae05c4b30ca67b998481808aba9')
 
 build() {
   cd "$pkgname-$pkgver/src"
@@ -22,6 +22,7 @@ build() {
   dotnet publish OpenXLR.Daemon -c Release -r linux-x64 --self-contained false \
     -p:EnableNativeLv2Host=true -o "$srcdir/out/daemon"
   dotnet publish OpenXLR.UI -c Release -r linux-x64 --self-contained false -o "$srcdir/out/ui"
+  dotnet publish OpenXLR.Tui -c Release -r linux-x64 --self-contained false -o "$srcdir/out/tui"
 }
 
 package() {
@@ -30,6 +31,7 @@ package() {
   install -dm755 "$pkgdir/usr/lib/openxlr"
   cp -r "$srcdir/out/daemon" "$pkgdir/usr/lib/openxlr/daemon"
   cp -r "$srcdir/out/ui" "$pkgdir/usr/lib/openxlr/ui"
+  cp -r "$srcdir/out/tui" "$pkgdir/usr/lib/openxlr/tui"
 
   install -dm755 "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/openxlr-daemon" <<'WRAP'
@@ -40,7 +42,11 @@ WRAP
 #!/bin/sh
 exec /usr/lib/openxlr/ui/OpenXLR.UI "$@"
 WRAP
-  chmod 755 "$pkgdir/usr/bin/openxlr-daemon" "$pkgdir/usr/bin/openxlr"
+  cat > "$pkgdir/usr/bin/openxlr-tui" <<'WRAP'
+#!/bin/sh
+exec /usr/lib/openxlr/tui/openxlr-tui "$@"
+WRAP
+  chmod 755 "$pkgdir/usr/bin/openxlr-daemon" "$pkgdir/usr/bin/openxlr" "$pkgdir/usr/bin/openxlr-tui"
 
   install -Dm644 packaging/70-openxlr.rules "$pkgdir/usr/lib/udev/rules.d/70-openxlr.rules"
   install -Dm644 packaging/50-xlr-dock-capture-hold.conf \
