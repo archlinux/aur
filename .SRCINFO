@@ -1,0 +1,17 @@
+pkgbase = oinkoin-bin
+	pkgdesc = An offline Privacy focused expense tracker
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://github.com/emavgl/oinkoin
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = sqlite
+	depends = gtk3
+	depends = glib2
+	provides = oinkoin
+	conflicts = oinkoin
+	options = !strip
+	source = piggybank-1.14.0+7150-linux.AppImage::https://github.com/emavgl/oinkoin/releases/download/1.14.0/piggybank-1.14.0+7150-linux.AppImage
+	sha256sums = d587b0d518e0b2643285dc006db9c7cd4a57f55950c7b2a109ff944a70043530
+
+pkgname = oinkoin-bin
