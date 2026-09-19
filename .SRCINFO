@@ -1,6 +1,6 @@
 pkgbase = g-tmce
 	pkgdesc = PySide6 app for creating and extracting MKV files with TMDB metadata
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/G-grbz/G-TMCE
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = g-tmce
 	depends = python-pillow>=12.3.0
 	optdepends = kdialog: KDE-native file dialogs
 	optdepends = zenity: GTK-native file dialogs
-	source = g-tmce-2.0.2-1.tar.gz::https://github.com/G-grbz/G-TMCE/archive/refs/tags/v2.0.2.tar.gz
-	sha256sums = 421ebef584b1e335ea05272e291bd135d6e98963bfbbd1633f6d394fea56e2f8
+	source = g-tmce-2.0.3-1.tar.gz::https://github.com/G-grbz/G-TMCE/archive/refs/tags/v2.0.3.tar.gz
+	sha256sums = c3af304e92b34ee1e823e0c004893b62d5f7331950202a2f900d99fd7db2100c
 
 pkgname = g-tmce
