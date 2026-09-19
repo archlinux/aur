@@ -1,7 +1,7 @@
 # Maintainer: Project Maintainers <maintainers@users.noreply.github.com>
 pkgname=factory-ai-droid-cli-rnoz-bin
-pkgver=0.222.0
-pkgrel=4
+pkgver=0.223.0
+pkgrel=1
 pkgdesc="Factory.ai CLI (droid) with rNoz tweaks, optional zero-waste titling, and cross-harness keybindings (automatically tracks upstream releases)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rNoz/factory-ai-droid-cli-rnoz"
@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=(
   '6f8fc3992526e8c8b0a4af11f029a633498f7704e9c6a736e772788d18243d00'
-  '6598a5345cde3737913e44b43d67fa40a47a89b780e8ffb8bf872727f2570df5'
+  '37d1c0490a4c413aaa1c121bad87c05a55d753f54ce7220c94e62b53ee719041'
   'ca5befcf6fe0b388af9b4960050fc7e3d8cc6d1ec7be49fc88b3f88fe40d471d'
   '24d17bcf4f621c0d2bc1288e87596097f3489cd3d176deba1c03f468126c8004'
 )

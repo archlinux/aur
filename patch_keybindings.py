@@ -331,6 +331,262 @@ def _dispatch_matches(
         offset = position + 1
 
 
+HARVEST_KIND_META = {
+    "keymap": {"relational": False, "states": ("unpatched", "rotated")},
+    "runtime_registry": {
+        "relational": True,
+        "max_pair_distance": 8192,
+        "states": ("unpatched", "rotated"),
+    },
+    "dispatch": {"relational": True, "states": ("unpatched", "rotated")},
+    "model_cycle": {"relational": False, "states": ("unpatched", "rotated")},
+    "display": {"relational": False, "states": ("unpatched", "rotated", "unresolved")},
+}
+KEYBINDING_HARVEST_KINDS = tuple(HARVEST_KIND_META)
+DISPLAY_TEMPLATES = (b"Ctrl+%s", b"Ctrl + %s", b"ctrl+%s", b"Ctrl-%s")
+DISPLAY_UNPATCHED_LETTERS = (b"G", b"N", b"P")
+DISPLAY_ROTATED_LETTERS = (b"I", b"P", b"G")
+
+
+def _count_chord(data: bytes, chord: bytes) -> int:
+    count = 0
+    pos = 0
+    chord_len = len(chord)
+    while True:
+        pos = data.find(chord, pos)
+        if pos == -1:
+            return count
+        end = pos + chord_len
+        if end >= len(data) or not (65 <= data[end] <= 90 or 97 <= data[end] <= 122):
+            count += 1
+        pos += chord_len
+
+
+def _model_spans(data: bytes) -> list[tuple[int, int]]:
+    return [match.span() for match in _model_cycle_matches(data)]
+
+
+def _span_overlaps(start: int, end: int, spans: list[tuple[int, int]]) -> bool:
+    return any(start < span_end and end > span_start for span_start, span_end in spans)
+
+
+def _display_letter_hits(data: bytes, letter: bytes) -> list[tuple[int, int]]:
+    hits = []
+    excluded = _model_spans(data)
+    for template in DISPLAY_TEMPLATES:
+        chord = template % letter
+        pos = 0
+        while True:
+            pos = data.find(chord, pos)
+            if pos == -1:
+                break
+            end = pos + len(chord)
+            if end < len(data) and (65 <= data[end] <= 90 or 97 <= data[end] <= 122):
+                pos += len(chord)
+                continue
+            if not _span_overlaps(pos, end, excluded):
+                hits.append((pos, end))
+            pos += len(chord)
+    return hits
+
+
+def locate_runtime_registry(data: bytes) -> list[tuple[int, int, str]]:
+    key_maps = [
+        match
+        for match in RUNTIME_KEY_MAP_RE.finditer(data)
+        if b'b:"ctrl-b"' in match.group(0)
+        and b'c:"ctrl-c"' in match.group(0)
+        and b'x:"ctrl-x"' in match.group(0)
+        and b'z:"ctrl-z"' in match.group(0)
+        and RANGE_GAP not in match.group(0)
+    ]
+    descriptors = [
+        match
+        for match in RUNTIME_DESCRIPTOR_RE.finditer(data)
+        if RANGE_GAP not in match.group(0)
+    ]
+    old_maps = [match for match in key_maps if match.group("key") == b'p:"ctrl-p"']
+    new_maps = [match for match in key_maps if match.group("key") == b'i:"ctrl-i"']
+    old_descriptors = [
+        match
+        for match in descriptors
+        if match.group("property") == b"ctrlP" and match.group("letter") == b"p"
+    ]
+    new_descriptors = [
+        match
+        for match in descriptors
+        if match.group("property") == b"ctrlI" and match.group("letter") == b"i"
+    ]
+    hits: list[tuple[int, int, str]] = []
+    for key_map, descriptor, state in (
+        (old_maps, old_descriptors, "unpatched"),
+        (new_maps, new_descriptors, "rotated"),
+    ):
+        for map_match in key_map:
+            for desc_match in descriptor:
+                if abs(map_match.start() - desc_match.start()) > 8192:
+                    continue
+                start = min(map_match.start(), desc_match.start())
+                end = max(map_match.end(), desc_match.end())
+                hits.append((start, end, state))
+    return hits
+
+
+def locate_dispatch(data: bytes) -> list[tuple[int, int, str]]:
+    dispatch_g = _dispatch_matches(data, b"ctrl-g")
+    dispatch_p = _dispatch_matches(data, b"ctrl-p")
+    dispatch_i = _dispatch_matches(data, b"ctrl-i")
+    hits: list[tuple[int, int, str]] = []
+    if len(dispatch_g) == 1 and len(dispatch_p) == 1 and not dispatch_i:
+        g_start, g_end, _g_match = dispatch_g[0]
+        p_start, p_end, _p_match = dispatch_p[0]
+        if g_start < p_start and p_start - g_end <= 16 and b";" not in data[g_end:p_start]:
+            hits.append((g_start, p_end, "unpatched"))
+    if len(dispatch_g) == 1 and len(dispatch_i) == 1 and not dispatch_p:
+        g_start, g_end, _g_match = dispatch_g[0]
+        i_start, i_end, _i_match = dispatch_i[0]
+        lo, hi = (g_start, i_end) if g_start < i_start else (i_start, g_end)
+        if abs(i_start - g_end) <= 16 or abs(g_start - i_end) <= 16:
+            if b";" not in data[min(g_end, i_end) : max(g_start, i_start)]:
+                hits.append((lo, hi, "rotated"))
+    return hits
+
+
+def locate_model_cycle(data: bytes) -> list[tuple[int, int, str]]:
+    hits: list[tuple[int, int, str]] = []
+    for match in _model_cycle_matches(data):
+        if match.group("mlabel") == b"N" and match.group("mkey") == b"n":
+            hits.append((match.start(), match.end(), "unpatched"))
+        elif match.group("mlabel") == b"P" and match.group("mkey") == b"p":
+            hits.append((match.start(), match.end(), "rotated"))
+    return hits
+
+
+def locate_display(data: bytes) -> list[tuple[int, int, str]]:
+    n_hits = _display_letter_hits(data, b"N")
+    i_hits = _display_letter_hits(data, b"I")
+    p_hits = _display_letter_hits(data, b"P")
+    g_hits = _display_letter_hits(data, b"G")
+    if n_hits:
+        state = "unpatched"
+        all_hits = n_hits + p_hits + g_hits
+    elif i_hits:
+        state = "rotated"
+        all_hits = i_hits + p_hits + g_hits
+    elif p_hits or g_hits:
+        state = "unresolved"
+        all_hits = p_hits + g_hits
+    else:
+        return []
+    return [(start, end, state) for start, end in all_hits]
+
+
+def locate_keymap(data: bytes) -> list[tuple[int, int, str]] | str:
+    hits: list[tuple[int, int, str]] = []
+    try:
+        binary = _find_binary_record_keymap(data, patched=False)
+    except PatchError:
+        return "ambiguous"
+    if binary:
+        hits.append((binary[0], binary[2] + len(b"autonomy-cycle"), "unpatched"))
+    try:
+        binary_rotated = _find_binary_record_keymap(data, patched=True)
+    except PatchError:
+        return "ambiguous"
+    if binary_rotated:
+        hits.append(
+            (binary_rotated[0], binary_rotated[2] + len(b"autonomy-cycle"), "rotated")
+        )
+    if hits:
+        return hits
+    matches = []
+    offset = 0
+    while True:
+        position = data.find(b"ctrl-g\x00", offset)
+        if position == -1:
+            break
+        match = TABLE_RE.match(data, position)
+        if match and RANGE_GAP not in match.group(0):
+            matches.append(match)
+        offset = position + 1
+    candidates = []
+    for match in matches:
+        queue_action = match.group("queue_action")
+        editor_action = match.group("editor_action")
+        editor_key = match.group("editor_key")
+        if editor_key == b"ctrl-p":
+            valid = _dispatch_matches(data, b"ctrl-g", queue_action) and _dispatch_matches(
+                data, editor_key, editor_action
+            )
+            state = "unpatched"
+        else:
+            valid = _dispatch_matches(data, b"ctrl-g", queue_action) and _dispatch_matches(
+                data, b"ctrl-i", editor_action
+            )
+            state = "rotated"
+        if valid:
+            candidates.append((match.start(), match.end(), state))
+    if len(candidates) > 1:
+        return "ambiguous"
+    return candidates
+
+
+def raw_keymap_spans(data: bytes) -> list[tuple[int, int]]:
+    km_bin = None
+    try:
+        km_bin = _find_binary_record_keymap(data, patched=False)
+    except PatchError:
+        km_bin = None
+    if km_bin is None:
+        try:
+            km_bin = _find_binary_record_keymap(data, patched=True)
+        except PatchError:
+            km_bin = None
+    if km_bin:
+        return [(km_bin[0], km_bin[2] + len(b"autonomy-cycle"))]
+    spans = []
+    offset = 0
+    while True:
+        position = data.find(b"ctrl-g\x00", offset)
+        if position == -1:
+            return spans
+        match = TABLE_RE.match(data, position)
+        if match and RANGE_GAP not in match.group(0):
+            spans.append((position, match.end()))
+        offset = position + 1
+
+
+def locate_kinds(data: bytes) -> dict[str, list[tuple[int, int, str]] | str]:
+    return {
+        "keymap": locate_keymap(data),
+        "runtime_registry": locate_runtime_registry(data),
+        "dispatch": locate_dispatch(data),
+        "model_cycle": locate_model_cycle(data),
+        "display": locate_display(data),
+    }
+
+
+def inventory_kinds(data: bytes) -> dict[str, str | None]:
+    located = locate_kinds(data)
+    inventory: dict[str, str | None] = {}
+    for kind, hits in located.items():
+        if hits == "ambiguous":
+            inventory[kind] = "ambiguous"
+            continue
+        if not hits:
+            inventory[kind] = None
+            continue
+        states = {state for _start, _end, state in hits}
+        if kind == "display":
+            inventory[kind] = hits[0][2]
+            continue
+        if len(hits) != 1 or len(states) != 1:
+            inventory[kind] = "ambiguous"
+            continue
+        inventory[kind] = hits[0][2]
+    return inventory
+
+
 ELF_HEADER = struct.Struct("<16sHHIQQQIHHHHHH")
 SECTION_HEADER = struct.Struct("<IIQQQQIIQQ")
 JSC_CACHE_MAGIC = struct.pack("<I", 0xC33CCB8C)
