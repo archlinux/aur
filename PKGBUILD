@@ -38,7 +38,7 @@ build() {
         obj libgourou
 
     cd utils
-    make ROOT=..
+    make ROOT=.. DEBUG=1
 }
 
 package_libgourou() {
