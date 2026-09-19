@@ -1,0 +1,17 @@
+pkgbase = molpe-bin
+	pkgdesc = Linux 终端中的网易云音乐 TUI 播放器（预编译版本）
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Nk-YMZ/Molpe
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = mpv
+	provides = molpe=1.0.0
+	conflicts = molpe
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/Nk-YMZ/Molpe/releases/download/v1.0.0/molpe-1.0.0-1-x86_64.pkg.tar.zst
+	b2sums_x86_64 = 631b53898dda08347a14d10b5c211bebdac549c8401e11cdeb1220013b1cfb59b4048e9858c3ac92b25a067bc9928f4411e28730d23ef4600339f5abb0fa58df
+
+pkgname = molpe-bin
