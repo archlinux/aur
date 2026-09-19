@@ -2,7 +2,7 @@
 # https://github.com/nihalxkumar/PKGBUILDs/tree/main/onionspray-git
 
 pkgname=onionspray-git
-pkgver=1.8.1.r1415.gfd7e69b
+pkgver=1.8.2.r0.g217f430
 pkgrel=1
 pkgdesc="A tool to setup Onion Services for existing websites."
 arch=('any')
