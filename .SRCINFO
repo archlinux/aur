@@ -1,13 +1,21 @@
 pkgbase = auraview
 	pkgdesc = a minimal, elegant image viewer inspired by the art of melody.
-	pkgver = 0.1.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://pypi.org/project/auraview/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/d/auraview/auraview-1.0.0.tar.gz
-	sha256sums = 72e6a7b7f408c7f0859ccf9ca5a60d9aebc0f151943299f6e5bf48dc1e48418f
+	depends = python-pandas
+	depends = python-piexif
+	depends = python-pillow
+	depends = python-pillow-heif
+	depends = python-send2trash
+	depends = python-tkcalendar
+	depends = python-natsort
+	source = https://files.pythonhosted.org/packages/source/a/auraview/auraview-1.1.0.tar.gz
+	sha256sums = 1c2f2f47c604d05319c1e8e1e4ab00498a30c28469e911f9e045be481554a6ec
 
 pkgname = auraview
