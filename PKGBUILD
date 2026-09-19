@@ -4,10 +4,10 @@
 
 pkgname=nextcloud-native-git
 pkgver=0.1.0.alpha.2.r31.gdcfde9b
-pkgrel=1
+pkgrel=2
 pkgdesc="Adaptive native client for Nextcloud files, media and apps (git)"
 arch=('x86_64')
-url="https://nc-native.obiente.dev"
+url="https://nati.ve"
 license=('AGPL-3.0-or-later')
 # createDistributable produces a jpackage application image with its own jlink
 # runtime, so the shared libraries that runtime needs are the only depends.
@@ -25,7 +25,7 @@ optdepends=('gnome-keyring: Secret Service provider for stored accounts'
 options=('!strip' '!debug')
 provides=('nextcloud-native')
 conflicts=('nextcloud-native')
-source=("${pkgname}::git+https://github.com/Obiente/nc-native.git")
+source=("${pkgname}::git+https://github.com/Obiente/native.git")
 sha256sums=('SKIP')
 
 pkgver() {

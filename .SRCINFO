@@ -1,8 +1,8 @@
 pkgbase = nextcloud-native-git
 	pkgdesc = Adaptive native client for Nextcloud files, media and apps (git)
 	pkgver = 0.1.0.alpha.2.r31.gdcfde9b
-	pkgrel = 1
-	url = https://nc-native.obiente.dev
+	pkgrel = 2
+	url = https://nati.ve
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = jdk21-openjdk
@@ -39,7 +39,7 @@ pkgbase = nextcloud-native-git
 	conflicts = nextcloud-native
 	options = !strip
 	options = !debug
-	source = nextcloud-native-git::git+https://github.com/Obiente/nc-native.git
+	source = nextcloud-native-git::git+https://github.com/Obiente/native.git
 	sha256sums = SKIP
 
 pkgname = nextcloud-native-git
