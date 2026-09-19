@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-linux
 	pkgdesc = Minecraft: Pocket Edition launcher for Linux
-	pkgver = 1.7.6
+	pkgver = 1.8.4
 	pkgrel = 1
 	url = https://github.com/minecraft-linux/mcpelauncher-manifest
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = mcpelauncher-linux
 	depends = glibc
 	optdepends = mcpelauncher-ui: GUI for Launcher
 	provides = mcpelauncher-client
-	source = git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#tag=v1.7.6-qt6
+	source = git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#tag=v1.8.4-qt6
 	source = git+https://github.com/minecraft-linux/android-support-headers.git
 	source = git+https://github.com/minecraft-linux/arg-parser.git
 	source = git+https://github.com/minecraft-linux/base64.git
@@ -52,9 +52,13 @@ pkgbase = mcpelauncher-linux
 	source = git+https://github.com/minecraft-linux/properties-parser.git
 	source = git+https://github.com/MCMrARM/simple-ipc.git
 	source = git+https://github.com/minecraft-linux/android_bionic.git
-	source = git+https://github.com/libsdl-org/SDL.git
+	source = sdl3::git+https://github.com/libsdl-org/SDL.git
+	source = git+https://github.com/MCMrARM/axml-parser.git
+	source = git+https://github.com/minecraft-linux/mcpelauncher-apkinfo.git
 	source = git+https://github.com/minecraft-linux/android_core
-	sha256sums = 9685a579bb28e3f1c0f95cbb78256f941f832e0f11097e56cd0f9742456373da
+	sha256sums = dffe43d648638ab7f21a26e6fc0643dc41b99fe115668b3a1d11f0a8eb8a1897
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

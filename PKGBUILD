@@ -3,7 +3,7 @@
 # Contributer: Paul <paul@mrarm.io>
 
 pkgname=mcpelauncher-linux
-pkgver=1.7.6
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
@@ -44,13 +44,16 @@ source=(
   'git+https://github.com/minecraft-linux/properties-parser.git'
   'git+https://github.com/MCMrARM/simple-ipc.git'
   'git+https://github.com/minecraft-linux/android_bionic.git'
-  'git+https://github.com/libsdl-org/SDL.git'
-  # Temporary override of 'git+https://android.googlesource.com/platform/system/core'
-  # git clone --mirror timed out on archlinux while it still works on ubuntu 22.04, the history has been truncated due to large files
+  'sdl3::git+https://github.com/libsdl-org/SDL.git'
+  'git+https://github.com/MCMrARM/axml-parser.git'
+  #mcpelauncher-linker submodules
+  'git+https://github.com/minecraft-linux/mcpelauncher-apkinfo.git'
   'git+https://github.com/minecraft-linux/android_core'
 )
 
-sha256sums=('9685a579bb28e3f1c0f95cbb78256f941f832e0f11097e56cd0f9742456373da'
+sha256sums=('dffe43d648638ab7f21a26e6fc0643dc41b99fe115668b3a1d11f0a8eb8a1897'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -84,41 +87,20 @@ sha256sums=('9685a579bb28e3f1c0f95cbb78256f941f832e0f11097e56cd0f9742456373da'
             'SKIP')
 
 prepare() {
-  git -C mcpelauncher-manifest submodule init
-  git -C mcpelauncher-manifest config submodule.android-support-headers.url "$srcdir/android-support-headers"
-  git -C mcpelauncher-manifest config submodule.arg-parser.url "$srcdir/arg-parser"
-  git -C mcpelauncher-manifest config submodule.base64.url "$srcdir/base64"
-  git -C mcpelauncher-manifest config submodule.cll-telemetry.url "$srcdir/cll-telemetry"
-  git -C mcpelauncher-manifest config submodule.daemon-utils.url "$srcdir/daemon-utils"
-  git -C mcpelauncher-manifest config submodule.eglut.url "$srcdir/eglut"
-  git -C mcpelauncher-manifest config submodule.epoll-shim.url "$srcdir/epoll-shim"
-  git -C mcpelauncher-manifest config submodule.file-picker.url "$srcdir/file-picker"
-  git -C mcpelauncher-manifest config submodule.file-util.url "$srcdir/file-util"
-  git -C mcpelauncher-manifest config submodule.game-window.url "$srcdir/game-window"
-  git -C mcpelauncher-manifest config submodule.libc-shim.url "$srcdir/libc-shim"
-  git -C mcpelauncher-manifest config submodule.libjnivm.url "$srcdir/libjnivm"
-  git -C mcpelauncher-manifest config submodule.linux-gamepad.url "$srcdir/linux-gamepad"
-  git -C mcpelauncher-manifest config submodule.logger.url "$srcdir/logger"
-  git -C mcpelauncher-manifest config submodule.mcpelauncher-client.url "$srcdir/mcpelauncher-client"
-  git -C mcpelauncher-manifest config submodule.mcpelauncher-common.url "$srcdir/mcpelauncher-common"
-  git -C mcpelauncher-manifest config submodule.mcpelauncher-core.url "$srcdir/mcpelauncher-core"
-  git -C mcpelauncher-manifest config submodule.mcpelauncher-errorwindow.url "$srcdir/mcpelauncher-errorwindow"
-  git -C mcpelauncher-manifest config submodule.mcpelauncher-linker.url "$srcdir/mcpelauncher-linker"
-  git -C mcpelauncher-manifest config submodule.mcpelauncher-linux-bin.url "$srcdir/mcpelauncher-linux-bin"
-  git -C mcpelauncher-manifest config submodule.mcpelauncher-mac-bin.url "$srcdir/mcpelauncher-mac-bin"
-  git -C mcpelauncher-manifest config submodule.mcpelauncher-webview.url "$srcdir/mcpelauncher-webview"
-  git -C mcpelauncher-manifest config submodule.minecraft-imported-symbols.url "$srcdir/minecraft-imported-symbols"
-  git -C mcpelauncher-manifest config submodule.msa-daemon-client.url "$srcdir/msa-daemon-client"
-  git -C mcpelauncher-manifest config submodule.osx-elf-header.url "$srcdir/osx-elf-header"
-  git -C mcpelauncher-manifest config submodule.properties-parser.url "$srcdir/properties-parser"
-  git -C mcpelauncher-manifest config submodule.simple-ipc.url "$srcdir/simple-ipc"
-  git -C mcpelauncher-manifest config submodule.sdl3.url "$srcdir/SDL"
-  git -C mcpelauncher-manifest config submodule.imgui.url "$srcdir/imgui"
-  git -C mcpelauncher-manifest -c protocol.file.allow=always submodule update
-  # Submodules of submodules
-  git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.bionic.url "$srcdir/android_bionic"
-  git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.core.url "$srcdir/android_core"
-  git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule update
+  cd "$srcdir/mcpelauncher-manifest"
+  git submodule init
+  for _submodule in {android-support-headers,arg-parser,base64,cll-telemetry,daemon-utils,eglut,epoll-shim,file-picker,file-util,game-window,libc-shim,libjnivm,linux-gamepad,logger,mcpelauncher-client,mcpelauncher-common,mcpelauncher-core,mcpelauncher-errorwindow,mcpelauncher-linker,mcpelauncher-linux-bin,mcpelauncher-mac-bin,mcpelauncher-webview,minecraft-imported-symbols,msa-daemon-client,osx-elf-header,properties-parser,simple-ipc,sdl3,imgui,axml-parser,mcpelauncher-apkinfo}
+  do
+	  git config submodule.${_submodule}.url "$srcdir/${_submodule}"
+  done
+
+  git -c protocol.file.allow=always submodule update
+  pushd mcpelauncher-linker
+  git submodule init
+  git config submodule.bionic.url "$srcdir/android_bionic"
+  git config submodule.core.url "$srcdir/android_core"
+  git -c protocol.file.allow=always submodule update
+  popd
 }
 
 build() {
