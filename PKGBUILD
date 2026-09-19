@@ -2,7 +2,7 @@
 # Maintainer: Captain Kill Switch Team <support@captainkillswitch.com>
 # -bin package: repacks the released Debian package (static musl binary, no deps).
 pkgname=captain-kill-switch-bin
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Close every running application in one click from the system tray"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('captain-kill-switch')
 depends=('hicolor-icon-theme')
 options=('!strip')
 source=("https://github.com/captainkillswitch/downloads/releases/download/v${pkgver}/captain-kill-switch-${pkgver}-linux-amd64.deb")
-sha256sums=('ba55120d249c1e1ec57fad025b05714aa0462d56f59efbeda42eb4882d2918b5')
+sha256sums=('f1ba91f9a6c55949dcf61ce6b430eab627b43e94a984a1ad7f1816c5ac43706f')
 
 package() {
   # makepkg auto-extracts the .deb (ar archive) into srcdir; the payload lives
