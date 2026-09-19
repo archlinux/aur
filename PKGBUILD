@@ -1,0 +1,58 @@
+# Maintainer: Felitendo
+# This PKGBUILD is updated automatically:
+# https://github.com/Felitendo/PKGBUILDS
+
+pkgname=tenzen-studio-bin
+_pkgname=tenzen
+pkgver=0.1.26
+pkgrel=1
+pkgdesc="Record and edit product demos: cut pauses, add zooms and captions (upstream Flatpak bundle)"
+arch=('x86_64')
+url="https://tenzen.studio"
+license=('LicenseRef-proprietary')
+depends=('gtk3' 'nss' 'alsa-lib' 'ffmpeg' 'python-xlib')
+optdepends=('libpulse: record system audio')
+makedepends=('ostree' 'asar')
+provides=('tenzen-studio')
+conflicts=('tenzen-studio')
+options=('!strip' '!debug')
+_bundle="Tenzen-${pkgver}-linux-x64.flatpak"
+source=("${_bundle}::https://downloads.tenzen.studio/desktop/stable/linux/${pkgver}/${_bundle}")
+noextract=("${_bundle}")
+sha256sums=('172496d25807dc54bf0313594f198834ba4fa3df0c29ee5265b13f2fca07c093')
+
+prepare() {
+  # A Flatpak bundle is an OSTree static delta carrying a single commit:
+  # apply it to a throwaway repository and check that commit out.
+  rm -rf repo flatpak
+  ostree init --repo=repo --mode=bare-user-only
+  ostree static-delta apply-offline --repo=repo "${_bundle}"
+
+  local _commit
+  _commit="$(find repo/objects -name '*.commit')"
+  _commit="$(basename "$(dirname "${_commit}")")$(basename "${_commit}" .commit)"
+  ostree checkout --repo=repo --user-mode "${_commit}" flatpak
+
+  # the bundle exports no icon - the app's own is only inside app.asar
+  asar extract-file flatpak/files/lib/com.tenzen.desktop/resources/app.asar \
+    dist/assets/brand/icon.png
+}
+
+package() {
+  install -d "${pkgdir}/opt/${pkgname}"
+  cp -a "${srcdir}/flatpak/files/lib/com.tenzen.desktop/." "${pkgdir}/opt/${pkgname}/"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  # named after the app's desktopName, so windows are matched to the entry
+  install -Dm644 "${srcdir}/flatpak/files/share/applications/com.tenzen.desktop.desktop" \
+    "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  sed -i \
+    -e "s|^Exec=.*|Exec=${_pkgname} %U|" \
+    -e "s|^Icon=.*|Icon=${_pkgname}|" \
+    "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+  # 1024x1024, which the hicolor theme has no directory for
+  install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+}
