@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastwc
-pkgver=22
+pkgver=23
 pkgrel=1
 pkgdesc="fastwc, a fast wc rewrite, builds from source"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('rustup')
 provides=('fastwc')
 conflicts=('fastwc-bin')
-_commit=74ffdbead392104b7613f3872443cacacbd70577
+_commit=00233f1f7ec59f19e0b96f2f22e48d41b20f2170
 source=("fastwc-$pkgver-$_commit.tar.gz::https://github.com/CallMeAlphabet/fastwc/archive/$_commit.tar.gz")
 sha256sums=('SKIP')
 
