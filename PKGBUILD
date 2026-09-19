@@ -2,7 +2,7 @@
 
 pkgname=ghpending-bin
 _pkgname=ghpending
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Watch GitHub repos for open issues and pull requests at a glance (prebuilt binary)"
 arch=('x86_64')
@@ -22,9 +22,9 @@ source=(
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
 sha256sums=(
     '18332c61780ce8e694d4fa330770cd4d8c85e33f47ac13a80d72d70bb032ae72'
-    '38cc92750cb605c10b00a8d6e8bb8dcc6999b67e3482cd159fa11b090fa4be89'
+    'c2295786bb6fba5fb0ada430cbea770e46e5874bede59b28b91a621d84f802c2'
 )
-sha256sums_x86_64=('35eb9b982adef0580627d63f3462b419b0a0c297679cadf7ce660e9d939b6658')
+sha256sums_x86_64=('d02cd9af5aa06679c7a8960546bce0d106d93cbd42e3eda67753c26879774f25')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/"                     "ghpending"
