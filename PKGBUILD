@@ -2,8 +2,8 @@
 
 _themename=russia
 pkgname=plymouth-theme-$_themename
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Russia coat of arms splash screen for Plymouth"
 arch=('any')
 url="https://codeberg.org/Thr0TT1e/russia-theme-plymouth.git"
@@ -20,7 +20,7 @@ source=(
 )
 
 # Рекомендуется использовать sha256sums или b2sums для всех файлов, включая .install
-b2sums=('7cfc867ae806b04c2b10ac07e314d1ec6aea97f508c20aa315e01ba215319e17cd67972a240f30ddd864f1cc6785d63c3e2ffddb33c950a4d97f8a2a17fe8cb9'
+b2sums=('7e490c9c2652eec066c21ba22afa2350a15c9a20a6717946269b2408aa4c523fde5e7383c3cf3f6f09f0bfdee4bcbded53079e3e907152adfbe0a8a509df3480'
         '7b526932bcafa11a993a5ca2af56988631d3ec0cfd717d173fb780ba835c40fff6ff8ad1440423d18f02abcf648bdca26a253ece6681428fed8f24a31fa7a8ec'
         '9a0de88ddd5a8ccea0ca8cefba88b57caae975fe6b6ff878aefb8479002751325afc38a89b062f6486b6110e3fcdf8814ed16b01e0efea444e11a18086c5f1fb'
         '74381aad2f4232b9ab8834245f2132805bdd0bea713ad5f47b2c47d68a469cf26b7d7a0c02678ff9bc08bfb178de0d54915f67a950db1e47455b10e83d55efaf'
