@@ -1,7 +1,7 @@
 # Maintainer: Karol Pieniący <karol.pieniacy@gmail.com>
 _appname=ArduDeck
 pkgname=ardudeck-appimage
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Modern cross-platform ground control station for ArduPilot, Betaflight, and iNav (AppImage)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-x86_64.AppImage"
         "${pkgname}-${pkgver}.LICENSE::https://raw.githubusercontent.com/rubenCodeforges/ardudeck/v${pkgver}/LICENSE")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums=('68a44ceaf90f92071de08b2bad4dcfdfad16ae7634a21242f44b0bd7eedb2ede'
+sha256sums=('c85a57c62d4501aa1c4b8c541d765dd136612249ef8ce8376e6039deaf4a1e3a'
             '86030766b025ce4e69bdc8e3cf33ba9e573b92e32c5392d0b8df0d1dddbc35d1')
 
 build() {
