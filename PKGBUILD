@@ -1,8 +1,8 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 
 pkgname=sho-metrics-source-linux
-_forkver=0.3.0-linux.6
-pkgver=0.3.0.linux.6
+_forkver=0.3.0-linux.7
+pkgver=0.3.0.linux.7
 pkgrel=1
 pkgdesc="Linux hardware sensor helper daemon for the Sho Metrics OpenDeck plugin"
 arch=('any')
@@ -19,7 +19,7 @@ source=("${pkgname}-${_forkver}.tar.gz::${url}/releases/download/v${_forkver}/${
 # The checksum of the published release asset. After bumping _forkver, run
 # updpkgsums once the asset is uploaded, then regenerate .SRCINFO with
 # `makepkg --printsrcinfo > .SRCINFO`.
-sha256sums=('7d4371dd2989cec711f62e6553d36724660e17c6bf5fc7361d7ff013030cb94f')
+sha256sums=('cae904078afdef82b6e6ab7035452d180b48964d036e72b2c5ee9068a161654c')
 
 _libdir="/usr/lib/${pkgname}"
 
