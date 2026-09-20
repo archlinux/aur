@@ -5,7 +5,7 @@ _pkgname=forge
 pkgname=kenn-${_pkgname}-bin
 pkgdesc="Local maintainer console for pull requests, issues, reviews, activity, and local workspaces."
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,10 +24,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('c050fefa411634786f122e05d02980f67ce61251e1c9f6a7176586f617a85187'
+sha256sums=('baec51e554ec172db7e2f4e54c823210916e6a2a069856a28281a7253c1862eb'
             'cb03f5511781719ba3f56d474ada3f08d221f620e2ff384175690fc54122f6ba')
-sha256sums_x86_64=('06e5fe553fbb51d6b5cc9801ccd97d321020f5b7b4c0474b5b7ad1e9fb9e84af')
-sha256sums_aarch64=('5f4732608c21fd8829f42bccbf77ecf4274df913345e4b0aa98db97c72c90fe3')
+sha256sums_x86_64=('987d76ed83e8d164610a832707af9fab1117c9bdfda48b5cd90c60413ddb359e')
+sha256sums_aarch64=('a682eee572232afdf78102fb3d4071f9d56544914b703000d874b8410355f9c9')
 
 
 package() {
