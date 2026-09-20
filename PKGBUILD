@@ -17,7 +17,7 @@
 # Cargo.toml expects.
 
 pkgname=harletty-bridge
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Format-decoder bridge plugin for the orender engine (loaded via dlopen at runtime)"
 arch=('x86_64')
@@ -32,19 +32,19 @@ depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 
 # Omniphony tag providing the workspace path-deps (bridge_api/spdif/sys).
-_omniver=0.4.2
+_omniver=0.6.0
 
 source=("harletty-bridge-$pkgver.tar.gz::https://github.com/harletty/harletty-bridge/archive/refs/tags/v$pkgver.tar.gz"
-        "omniphony-$_omniver.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/liborender-v$_omniver.tar.gz")
-sha256sums=('5c53b2d75e575bf8cb8299d1414925cfd0bb709415d043853c6ba825e88cd78d'
-            '103d10f67024e5038cd43fb85a6425a69e4ca17ff548980f82254f7f2005fd58')
+        "omniphony-$_omniver.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/v$_omniver.tar.gz")
+sha256sums=('9865dace51f4d2a763ac522bfba36658f46af590f69c21ff8cbb8d88b07617ee'
+            '2fc90db9f979710b4d4275f3da35c13ca7caddef0f0def7d30e06b21cb1ab355')
 
 _bridge="harletty-bridge-$pkgver"
 
 prepare() {
     # The upstream bridge's Cargo.toml references ../Omniphony/omniphony-renderer/*;
     # expose the extracted Omniphony source under that sibling name.
-    ln -sfn "Omniphony-liborender-v$_omniver" "$srcdir/Omniphony"
+    ln -sfn "Omniphony-$_omniver" "$srcdir/Omniphony"
 }
 
 build() {
