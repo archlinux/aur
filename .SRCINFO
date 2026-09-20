@@ -14,7 +14,6 @@ pkgbase = vigaphone-piano-tuner-midi-synth-bin
 	depends = libglvnd
 	depends = rsync
 	provides = vigaphone-bin
-	conflicts = vigaphone-bin
 	options = !strip
 	options = !debug
 	source = https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R1.6.2/ViGAPhoneR_linux_amd64.tar.gz
