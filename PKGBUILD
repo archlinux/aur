@@ -9,7 +9,7 @@ pkgname=(
 )
 pkgbase=python-nab
 _name=${pkgbase#python-}
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 pkgdesc="PubGrub-based dependency resolver for Python packages."
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
   'python-wheel'
 )
 source=("${_name}-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6932c9dab830d60adfa98f5cc4da4dee90db6bf31f1a8c0e7e2962163d6592ff')
+sha256sums=('49461940cb22c7d1da59448e26b605e1ad58123654cc17f1f97d58d970a3c96a')
 
 build() {
   cd "${_name}-$pkgver"
@@ -62,13 +62,16 @@ package_python-nab() {
 package_python-nab-index() {
   pkgdesc="PyPI Simple-API client and on-disk cache for nab"
   depends=(
-    'python-packaging'
     'python-nab-provider'
+    'python-packaging'
     'python-truststore'
     'python-typing_extensions'
     'python-urllib3'
   )
-  optdepends=('python-httpx')
+  optdepends=(
+    'python-httpx: Alternative HTTP backend'
+    'python-httpx2: Alternative HTTP backend'
+  )
 
   cd "${_name}-$pkgver/${pkgname#python-}"
   python -m installer --destdir="$pkgdir" dist/*.whl
