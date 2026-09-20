@@ -1,14 +1,14 @@
 pkgbase = ladybug-bin
 	pkgdesc = In-process property graph database management system (GDBMS) built for query speed and scalability
-	pkgver = 0.20.2
+	pkgver = 0.20.4
 	pkgrel = 1
 	url = https://ladybugdb.com
 	arch = x86_64
 	license = MIT
 	replaces = kuzu-bin
-	source = ladybug-bin-v0.20.2.tar.gz::https://github.com/ladybugdb/ladybug/releases/download/v0.20.2/lbug_cli-linux-x86_64.tar.gz
-	source = libladybug-bin-v0.20.2.tar.gz::https://github.com/ladybugdb/ladybug/releases/download/v0.20.2/liblbug-linux-x86_64.tar.gz
-	sha256sums = 82491680cdc62b00d0132fed3b3fe3c939364688e5a6e0dd47d0fc58729bc897
-	sha256sums = c114087eb6587d7f49eb8579825fafd2507ddac6ca9dfb02f66b22e65432b0b7
+	source = ladybug-bin-v0.20.4.tar.gz::https://github.com/ladybugdb/ladybug/releases/download/v0.20.4/lbug_cli-linux-x86_64.tar.gz
+	source = libladybug-bin-v0.20.4.tar.gz::https://github.com/ladybugdb/ladybug/releases/download/v0.20.4/liblbug-linux-x86_64.tar.gz
+	sha256sums = 8bf11c5b9af24b1a7d07c1a4f243da4d2f1095e9212c5b8bcdeae084f7984fba
+	sha256sums = 34e3914cfda9d3d88cc46d4c2518411997d3b66c1af31e5363abc4cc985f47d1
 
 pkgname = ladybug-bin
