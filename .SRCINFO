@@ -1,0 +1,45 @@
+pkgbase = python-aiconfigurator-core
+	pkgdesc = Standalone AIConfigurator modeling data and native Rust estimators
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/ai-dynamo/aiconfigurator
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-timeout
+	checkdepends = python-jinja>=3.1.0
+	checkdepends = python-matplotlib>=3.9.4
+	checkdepends = python-plotext>=5.3.2
+	checkdepends = python-plotext<6
+	checkdepends = python-plotly>=6.0.1
+	checkdepends = python-prettytable>=3.16.0
+	checkdepends = python-pydantic>=2.5
+	checkdepends = python-tqdm>=4.0.0
+	checkdepends = python-bokeh
+	checkdepends = python-nvidia-ml-py
+	checkdepends = python-munch>=4.0.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = git-lfs
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin>=1.12
+	makedepends = python-maturin<2
+	makedepends = python-setuptools>=69
+	makedepends = python-wheel
+	depends = glibc
+	depends = gcc-libs
+	depends = python>=3.11
+	depends = python-packaging>=20.0
+	depends = python-numpy>=2.1
+	depends = python-numpy<3
+	depends = python-pandas>=2.2.3
+	depends = python-pyarrow>=15.0.0
+	depends = python-yaml>=6.0
+	depends = python-scipy>=1.13.1
+	options = !lto
+	source = git+https://github.com/ai-dynamo/aiconfigurator.git#commit=7bdd746cedc46f4d555ccbd3d0d2194c4015219f
+	sha256sums = SKIP
+
+pkgname = python-aiconfigurator-core
