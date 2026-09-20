@@ -1,7 +1,7 @@
 pkgbase = nub
 	pkgdesc = The fast all-in-one Node.js toolkit
-	pkgver = 0.9.2
-	pkgrel = 2
+	pkgver = 0.9.3
+	pkgrel = 1
 	url = https://nubjs.com
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = nub
 	makedepends = cargo
 	makedepends = cmake
 	depends = gcc-libs
-	source = nub-0.9.2.tar.gz::https://github.com/nubjs/nub/archive/v0.9.2.tar.gz
-	sha256sums = 76cdad3d6a047aba688330b95b926aecc6b725fe5c966014144c37505881307d
+	source = nub-0.9.3.tar.gz::https://github.com/nubjs/nub/archive/v0.9.3.tar.gz
+	sha256sums = a59fa2e65d500eace079aa5ee0168af57fac71e2a2dd168dbb6ff11a8d163ffb
 
 pkgname = nub
