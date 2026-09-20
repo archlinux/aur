@@ -1,0 +1,16 @@
+pkgbase = python-timerit
+	pkgdesc = Time and benchmark blocks of Python code. A powerful multi-line in-code alternative to timeit.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Erotemic/timerit
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/timerit/timerit-1.2.0.tar.gz
+	sha256sums = 735194b3ac1e06764d65344d2325fb5fc6b3e9a737ae157a6012f453c2bd394a
+
+pkgname = python-timerit
