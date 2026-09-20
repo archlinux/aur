@@ -1,0 +1,17 @@
+pkgbase = zj-58
+	pkgdesc = CUPS filter for ESC/POS thermal receipt printers (Zjiang ZJ-58, Xprinter XP-58 and clones)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/RinWate/zj-58
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	depends = cups
+	conflicts = zj-58-git
+	replaces = zj-58-cups
+	source = zj-58::git+https://github.com/RinWate/zj-58.git#commit=ae3091a1a1ac31760ad9860377ce79095a368646
+	sha256sums = SKIP
+
+pkgname = zj-58
