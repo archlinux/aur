@@ -9,7 +9,7 @@
 # The decoder bridge stays optional (`harletty-bridge`), matching the engine.
 
 pkgname=omniphony-studio
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Omniphony Studio — control and 3D visualization UI for the orender spatial audio engine"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=('rust' 'cargo' 'nodejs' 'npm' 'jq')
 # (GCC LTO bitcode is unreadable by the Rust linker; same issue as orender).
 options=('!lto')
 source=("omniphony-$pkgver.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e0c1915f94fd8ce6367517169cfba27b7f6d976622b808aafab6376f868a474a')
+sha256sums=('2fc90db9f979710b4d4275f3da35c13ca7caddef0f0def7d30e06b21cb1ab355')
 
 _src="Omniphony-$pkgver"
 _studio="$_src/omniphony-studio"
