@@ -1,0 +1,4 @@
+post_remove() {
+    echo "Removing /var/lib/zapret-rust"
+    rm -rf -- /var/lib/zapret-rust
+}

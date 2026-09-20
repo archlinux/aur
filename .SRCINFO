@@ -1,0 +1,19 @@
+pkgbase = zapret-rust-bin
+	pkgdesc = Zapret-Rust TUI for DPI bypass (prebuilt binary)
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/Sergeydigl3/zapret-discord-youtube-rust
+	install = zapret-rust.install
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = nftables
+	depends = polkit
+	provides = zapret-rust=2.1.0
+	conflicts = zapret-rust
+	options = !strip
+	source_x86_64 = zapret-rust-2.1.0::https://github.com/Sergeydigl3/zapret-discord-youtube-rust/releases/download/zapret-rust-v2.1.0/zapret-rust-linux-x86_64
+	sha256sums_x86_64 = 518409cc1322d21ce2b2497a08a185ce6e1a9604fa8d32b623d5828ac47431c9
+
+pkgname = zapret-rust-bin
