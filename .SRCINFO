@@ -1,5 +1,4 @@
 pkgbase = d-lan
-	pkgdesc = A free LAN file sharing software
 	pkgver = 1.2.2
 	pkgrel = 2
 	url = https://www.d-lan.net/
@@ -17,6 +16,7 @@ pkgbase = d-lan
 	sha256sums = 0d0b3d0855c67a8ea9f214256bc494a4fb7bbb61492d7c3f399a2b98af9bfb28
 
 pkgname = d-lan-core
+	pkgdesc = A free LAN file sharing software (headless core)
 	depends = libstdc++
 	depends = abseil-cpp
 	depends = protobuf
@@ -26,6 +26,7 @@ pkgname = d-lan-core
 	optdepends = d-lan-gui: Graphical user interface
 
 pkgname = d-lan-gui
+	pkgdesc = A free LAN file sharing software (GUI)
 	depends = d-lan-core
 	depends = libgcc
 	depends = abseil-cpp
