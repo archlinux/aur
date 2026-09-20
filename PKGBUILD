@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=drakonhub-bin
 _pkgname=DrakonHub
-pkgver=2026.06.14
-_electronversion=32
+pkgver=2026.09.10
+_electronversion=44
 pkgrel=1
-pkgdesc="The desktop version of the DrakonHub diagram editor.(Prebuilt version.Use system-wide electron)"
+pkgdesc="The desktop version of the DrakonHub diagram editor."
 arch=('x86_64')
 url="https://github.com/stepan-mitkin/drakonhub_desktop"
 license=('LicenseRef-unknown')
@@ -17,10 +17,10 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}-electron/${pkgname%-bin}-${pkgver//09/9}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('090e448ca8fe956a891cff6524c58a26867ca8bed45a83ca796d82d2398ff6e7'
+sha256sums=('d68ccd3b5f23ab242e26b40bed2e7c3c03d2dd033a3229c94426072511a73673'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1

@@ -1,17 +1,17 @@
 pkgbase = drakonhub-bin
-	pkgdesc = The desktop version of the DrakonHub diagram editor.(Prebuilt version.Use system-wide electron)
-	pkgver = 2026.06.14
+	pkgdesc = The desktop version of the DrakonHub diagram editor.
+	pkgver = 2026.09.10
 	pkgrel = 1
 	url = https://github.com/stepan-mitkin/drakonhub_desktop
 	arch = x86_64
 	license = LicenseRef-unknown
-	depends = electron32
-	provides = drakonhub=2026.06.14
+	depends = electron44
+	provides = drakonhub=2026.09.10
 	conflicts = drakonhub
 	options = !emptydirs
-	source = drakonhub-2026.06.14.rpm::https://github.com/stepan-mitkin/drakonhub_desktop/releases/download/v2026.06.14/drakonhub-2026.06.14-1.x86_64.rpm
+	source = drakonhub-2026.09.10.rpm::https://github.com/stepan-mitkin/drakonhub_desktop/releases/download/v2026.09.10-electron/drakonhub-2026.9.10-1.x86_64.rpm
 	source = drakonhub.sh
-	sha256sums = 090e448ca8fe956a891cff6524c58a26867ca8bed45a83ca796d82d2398ff6e7
+	sha256sums = d68ccd3b5f23ab242e26b40bed2e7c3c03d2dd033a3229c94426072511a73673
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = drakonhub-bin
