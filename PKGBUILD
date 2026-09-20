@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal dashboard for tasks, notes, and focus, built with Go and Bubble Tea"
 
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,8 +30,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('55bcb8562d1d3d68a5a777e8c45ff26c7d21682a7427ea22c345cdd2d0938749'
             '026b8f2966d49364a239f972cd761fbc32a0cd456c0811611d2233dc9c730512')
-sha256sums_x86_64=('96dd197e0711830a84cee78cfdcdce725e4a290f68c6900ee0e7eca592a72270')
-sha256sums_aarch64=('d395775b8af7dad8e01fce215a7bc76a378100cb406bdd5a3c5a234426658591')
+sha256sums_x86_64=('c258ef077d2ec88b48efc5c84229adf599ac4fea4fe92c77a42c047477ba3ed7')
+sha256sums_aarch64=('5955f6835c675912d40666c8ba586f657efd5fe630f70952891b0e743e601d18')
 
 
 case ${CARCH} in
