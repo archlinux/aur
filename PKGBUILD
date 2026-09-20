@@ -6,7 +6,10 @@ pkgdesc="An AI coding agent that drives real browsers (opencode fork, adds brows
 arch=('x86_64' 'aarch64')
 url="https://github.com/browser-use/browsercode"
 license=('MIT')
-depends=('uv')
+# The binary statically embeds its JS runtime (libuv) and links only glibc, so
+# it runs without uv; uv is useful only as the agent's Python tooling.
+depends=()
+optdepends=('uv: Python tooling inside the coding agent')
 provides=('bcode' 'browsecode')
 options=('!debug' '!strip')
 install=browsercode-bin.install
