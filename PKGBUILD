@@ -1,6 +1,6 @@
 # Maintainer: Phil Kulak <phil@kulak.us>
 pkgname=matui
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="An opinionated Matrix TUI client."
 makedepends=('cargo')
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/pkulak/matui"
 license=('GPL2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pkulak/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('be8222bbfa97361f9542bb05d0e4144ea12e00008214f1d4e89473b849191de63a2ba3a965a7285adf1e751c8f3831cf5cdfa837c332aa33e8d4377ef90c8043')
+b2sums=('c24ca5ad205db1e3ac4205963cbf68284757d878ad7b887e0d3d996014bb13aeeb5a91bf96b8de3dff23064d6c5f4fc007bdc5e57e48f07743827238764d1c87')
 
 build() {
     cd "$pkgname-$pkgver"
