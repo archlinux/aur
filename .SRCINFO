@@ -1,6 +1,6 @@
 pkgbase = python-mizani
 	pkgdesc = Scales for python
-	pkgver = 0.14.4
+	pkgver = 0.14.6
 	pkgrel = 1
 	url = https://github.com/has2k1/mizani
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-mizani
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-pandas
-	source = https://files.pythonhosted.org/packages/source/m/mizani/mizani-0.14.4.tar.gz
-	sha256sums = 28934d91516d922d7cb0382c82a6c513692abc0174c42a50294ae571520633f9
+	source = https://files.pythonhosted.org/packages/source/m/mizani/mizani-0.14.6.tar.gz
+	sha256sums = 5b37ec00adb30420f18272844688b91137297068c707f18d6fd32673aed58a23
 
 pkgname = python-mizani
