@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=todoist-wrapper-bin
 _pkgname=Todoist
-pkgver=4.20260918040514
+pkgver=4.20260919040226
 _electronversion=41
 pkgrel=1
 pkgdesc="A lightweight Electron wrapper for Todoist that provides a native desktop experience on Linux with full Wayland support."
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/conjfrnk/todoist-wrapper/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b63b612ef80d21da9dfdd3f7454c776637c07f8cde1d035f9a2aeeabfbf29434'
+sha256sums=('09ecaa7b7815194e3bf2eeb1268b64bdf47b0f9a111cc2d731ae2d5f92db44f7'
             '112b8e04327007cf75839bee7547718f334908c27700f9d5f5211062258510fe'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
