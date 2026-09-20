@@ -1,6 +1,6 @@
 pkgbase = gloomberb-bin
 	pkgdesc = Finance terminal, in your terminal
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/vincelwt/gloomberb
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = gloomberb-bin
 	provides = gloomberb
 	conflicts = gloomberb
 	options = !strip
-	source = README-0.14.0.md::https://raw.githubusercontent.com/vincelwt/gloomberb/v0.14.0/README.md
-	source = LICENSE-0.14.0::https://raw.githubusercontent.com/vincelwt/gloomberb/v0.14.0/LICENSE
+	source = README-0.14.1.md::https://raw.githubusercontent.com/vincelwt/gloomberb/v0.14.1/README.md
+	source = LICENSE-0.14.1::https://raw.githubusercontent.com/vincelwt/gloomberb/v0.14.1/LICENSE
 	sha256sums = 1b2ff524789445bcd3fcb597eca30856bfccbdb94fa03a834a744e1cd423385f
 	sha256sums = 735bda4a87be6cbfa596f6957866c94838a171ed7e371d6cb59998e60b87f1a7
-	source_x86_64 = gloomberb-x86_64-0.14.0.gz::https://github.com/vincelwt/gloomberb/releases/download/v0.14.0/gloomberb-linux-x64.gz
-	sha256sums_x86_64 = f7983aa7d2d7a90dfbabd6cfac1aa9c06e43d7ed93838634a0f3255a1fa091e9
-	source_aarch64 = gloomberb-aarch64-0.14.0.gz::https://github.com/vincelwt/gloomberb/releases/download/v0.14.0/gloomberb-linux-arm64.gz
-	sha256sums_aarch64 = a0dc17a10ac005adadf28cad18b382950048f748504921fe7221764f07f9bf8a
+	source_x86_64 = gloomberb-x86_64-0.14.1.gz::https://github.com/vincelwt/gloomberb/releases/download/v0.14.1/gloomberb-linux-x64.gz
+	sha256sums_x86_64 = 3a027f96f950ebf9a9f9246ffa847b54bd3b52a24d94e3d13eeb323f11f8d8ca
+	source_aarch64 = gloomberb-aarch64-0.14.1.gz::https://github.com/vincelwt/gloomberb/releases/download/v0.14.1/gloomberb-linux-arm64.gz
+	sha256sums_aarch64 = 8722057a3d7c231ea789cb6ac377a45ee7541ebc9583b8dab57e77fcb881895c
 
 pkgname = gloomberb-bin
