@@ -1,6 +1,6 @@
 pkgbase = termux-language-server
 	pkgdesc = Language server for build.sh, PKGBUILD, ebuild
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/termux/termux-language-server
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = termux-language-server
 	conflicts = portage-language-server
 	replaces = pkgbuild-language-server
 	replaces = portage-language-server
-	source = https://files.pythonhosted.org/packages/source/t/termux_language_server/termux_language_server-0.1.11.tar.gz
-	sha256sums = 5fa4ae0df4a865ecfae08b19db55edbb2a60d788fe6f038011fbf84189b47e3b
+	source = https://files.pythonhosted.org/packages/source/t/termux_language_server/termux_language_server-0.1.12.tar.gz
+	sha256sums = 154ca1f00195f7b66ad99bc35040151620fbaa4409201fd3a620c8029ede3adf
 
 pkgname = termux-language-server
