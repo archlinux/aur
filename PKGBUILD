@@ -1,18 +1,15 @@
 # Maintainer: Rasmus Steinke <rasi@xssn.at>
-pkgname=melody-git
-pkgver=r115.gfbc825e
+pkgbase=melody-git
+pkgname=(melody-git melodyd-git melody-agent-git melody-tui-git melody-cli-git
+         melody-musiclist-git melody-lrcmatch-git melody-watcher-git melody-rofi-git)
+pkgver=r116.gacab9f7
 pkgrel=1
-pkgdesc='Music server with MPD support, remote playback, and terminal clients (built from HEAD)'
+pkgdesc='Music server and clients with MPD support (built from HEAD)'
 arch=(x86_64 aarch64)
 url='https://github.com/carnager/melody-music'
 license=(GPL-3.0-only)
-depends=(glibc ffmpeg mpv)
 makedepends=(git go)
-optdepends=('rofi: menu interface for melody-rofi'
-            'flac: embed downloaded lyrics into FLAC files')
-provides=(melodyd melody-agent melody-tui melody-cli melody-musiclist melody-lrcmatch melody-watcher melody-rofi)
-conflicts=(melodyd melody-agent melody-tui melody-cli melody-musiclist melody-lrcmatch melody-watcher melody-rofi)
-install=melody.install
+checkdepends=(ffmpeg mpv)
 source=("melody::git+https://github.com/carnager/melody-music.git")
 sha256sums=('SKIP')
 
@@ -33,15 +30,83 @@ check() {
   go test ./...
 }
 
-package() {
-  cd melody
-  local binary
-  for binary in melodyd melody-agent melody-tui melody-cli melody-musiclist melody-lrcmatch melody-watcher melody-rofi; do
-    install -Dm755 "bin/$binary" "$pkgdir/usr/bin/$binary"
-  done
-  install -Dm644 melodyd/melodyd.service "$pkgdir/usr/lib/systemd/user/melodyd.service"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 docs/melodyd.md "$pkgdir/usr/share/doc/$pkgname/melodyd.md"
-  install -Dm644 docs/clients.md "$pkgdir/usr/share/doc/$pkgname/clients.md"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+_install_binary() {
+  install -Dm755 "$srcdir/melody/bin/$1" "$pkgdir/usr/bin/$1"
+  install -Dm644 "$srcdir/melody/docs/clients.md" "$pkgdir/usr/share/doc/$pkgname/clients.md"
+  install -Dm644 "$srcdir/melody/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_melody-git() {
+  pkgdesc='All Melody components (metapackage)'
+  depends=(melodyd-git melody-agent-git melody-tui-git melody-cli-git
+           melody-musiclist-git melody-lrcmatch-git melody-watcher-git melody-rofi-git)
+}
+
+package_melodyd-git() {
+  pkgdesc='Melody music server with MPD support'
+  depends=(glibc ffmpeg mpv)
+  optdepends=('flac: embed downloaded lyrics into FLAC files')
+  provides=(melodyd)
+  conflicts=(melodyd)
+  install=melody.install
+  _install_binary melodyd
+  install -Dm644 "$srcdir/melody/melodyd/melodyd.service" "$pkgdir/usr/lib/systemd/user/melodyd.service"
+  install -Dm644 "$srcdir/melody/docs/melodyd.md" "$pkgdir/usr/share/doc/$pkgname/melodyd.md"
+}
+
+package_melody-agent-git() {
+  pkgdesc='Remote playback agent for Melody'
+  depends=(glibc mpv)
+  provides=(melody-agent)
+  conflicts=(melody-agent)
+  _install_binary melody-agent
+}
+
+package_melody-tui-git() {
+  pkgdesc='Terminal UI for Melody'
+  depends=(glibc)
+  provides=(melody-tui)
+  conflicts=(melody-tui)
+  _install_binary melody-tui
+}
+
+package_melody-cli-git() {
+  pkgdesc='Command-line client for Melody'
+  depends=(glibc)
+  provides=(melody-cli)
+  conflicts=(melody-cli)
+  _install_binary melody-cli
+}
+
+package_melody-musiclist-git() {
+  pkgdesc='Static music list exporter for Melody'
+  depends=(glibc openssh)
+  provides=(melody-musiclist)
+  conflicts=(melody-musiclist)
+  _install_binary melody-musiclist
+}
+
+package_melody-lrcmatch-git() {
+  pkgdesc='Offline lyrics matcher for Melody'
+  depends=(glibc)
+  provides=(melody-lrcmatch)
+  conflicts=(melody-lrcmatch)
+  _install_binary melody-lrcmatch
+}
+
+package_melody-watcher-git() {
+  pkgdesc='Filesystem watcher for a remote Melody library'
+  depends=(glibc)
+  provides=(melody-watcher)
+  conflicts=(melody-watcher)
+  _install_binary melody-watcher
+}
+
+package_melody-rofi-git() {
+  pkgdesc='Menu client for Melody'
+  depends=(glibc)
+  optdepends=('rofi: default menu launcher (custom launchers can be configured)')
+  provides=(melody-rofi)
+  conflicts=(melody-rofi)
+  _install_binary melody-rofi
 }

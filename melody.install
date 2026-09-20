@@ -8,7 +8,7 @@ Melody includes a systemd USER service. Run these commands as your normal user:
 
 Run setup in a terminal first; the service cannot answer its questions.
 Configuration: ~/.config/melody/melodyd.toml (or $XDG_CONFIG_HOME/melody/).
-Open http://localhost:6701/web/ or run melody-tui.
+Open http://localhost:6701/web/. For the terminal UI, install melody-tui-git.
 MPD clients connect to localhost:6600 by default.
 
 For troubleshooting: journalctl --user -u melodyd.service

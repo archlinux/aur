@@ -1,36 +1,80 @@
 pkgbase = melody-git
-	pkgdesc = Music server with MPD support, remote playback, and terminal clients (built from HEAD)
-	pkgver = r115.gfbc825e
+	pkgdesc = Music server and clients with MPD support (built from HEAD)
+	pkgver = r116.gacab9f7
 	pkgrel = 1
 	url = https://github.com/carnager/melody-music
-	install = melody.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
+	checkdepends = ffmpeg
+	checkdepends = mpv
 	makedepends = git
 	makedepends = go
-	depends = glibc
-	depends = ffmpeg
-	depends = mpv
-	optdepends = rofi: menu interface for melody-rofi
-	optdepends = flac: embed downloaded lyrics into FLAC files
-	provides = melodyd
-	provides = melody-agent
-	provides = melody-tui
-	provides = melody-cli
-	provides = melody-musiclist
-	provides = melody-lrcmatch
-	provides = melody-watcher
-	provides = melody-rofi
-	conflicts = melodyd
-	conflicts = melody-agent
-	conflicts = melody-tui
-	conflicts = melody-cli
-	conflicts = melody-musiclist
-	conflicts = melody-lrcmatch
-	conflicts = melody-watcher
-	conflicts = melody-rofi
 	source = melody::git+https://github.com/carnager/melody-music.git
 	sha256sums = SKIP
 
 pkgname = melody-git
+	pkgdesc = All Melody components (metapackage)
+	depends = melodyd-git
+	depends = melody-agent-git
+	depends = melody-tui-git
+	depends = melody-cli-git
+	depends = melody-musiclist-git
+	depends = melody-lrcmatch-git
+	depends = melody-watcher-git
+	depends = melody-rofi-git
+
+pkgname = melodyd-git
+	pkgdesc = Melody music server with MPD support
+	install = melody.install
+	depends = glibc
+	depends = ffmpeg
+	depends = mpv
+	optdepends = flac: embed downloaded lyrics into FLAC files
+	provides = melodyd
+	conflicts = melodyd
+
+pkgname = melody-agent-git
+	pkgdesc = Remote playback agent for Melody
+	depends = glibc
+	depends = mpv
+	provides = melody-agent
+	conflicts = melody-agent
+
+pkgname = melody-tui-git
+	pkgdesc = Terminal UI for Melody
+	depends = glibc
+	provides = melody-tui
+	conflicts = melody-tui
+
+pkgname = melody-cli-git
+	pkgdesc = Command-line client for Melody
+	depends = glibc
+	provides = melody-cli
+	conflicts = melody-cli
+
+pkgname = melody-musiclist-git
+	pkgdesc = Static music list exporter for Melody
+	depends = glibc
+	depends = openssh
+	provides = melody-musiclist
+	conflicts = melody-musiclist
+
+pkgname = melody-lrcmatch-git
+	pkgdesc = Offline lyrics matcher for Melody
+	depends = glibc
+	provides = melody-lrcmatch
+	conflicts = melody-lrcmatch
+
+pkgname = melody-watcher-git
+	pkgdesc = Filesystem watcher for a remote Melody library
+	depends = glibc
+	provides = melody-watcher
+	conflicts = melody-watcher
+
+pkgname = melody-rofi-git
+	pkgdesc = Menu client for Melody
+	depends = glibc
+	optdepends = rofi: default menu launcher (custom launchers can be configured)
+	provides = melody-rofi
+	conflicts = melody-rofi
