@@ -1,0 +1,24 @@
+post_install() {
+    # FluxCast ships a D-Bus policy for wpa_supplicant P2P; dbus-daemon only
+    # picks it up after a reload. Arch's own hooks already handle the desktop
+    # entry and the icon cache.
+    systemctl reload dbus 2>/dev/null || true
+
+    cat <<'EOF'
+FluxCast is installed. Start the tray with:
+
+    fluxcast --tray
+
+Check your system first with:
+
+    fluxcast --doctor
+EOF
+}
+
+post_upgrade() {
+    systemctl reload dbus 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl reload dbus 2>/dev/null || true
+}
