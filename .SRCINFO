@@ -1,6 +1,6 @@
 pkgbase = reviu-bin
 	pkgdesc = Keyboard-first desktop Git client in Rust + GPUI
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/reviu-dev/reviu
 	arch = x86_64
@@ -19,13 +19,13 @@ pkgbase = reviu-bin
 	provides = reviu
 	conflicts = reviu
 	options = !strip
-	source = README-1.1.0.md::https://raw.githubusercontent.com/reviu-dev/reviu/v1.1.0/README.md
-	source = LICENSE-1.1.0::https://raw.githubusercontent.com/reviu-dev/reviu/v1.1.0/LICENSE
+	source = README-1.2.0.md::https://raw.githubusercontent.com/reviu-dev/reviu/v1.2.0/README.md
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/reviu-dev/reviu/v1.2.0/LICENSE
 	sha256sums = 991f14b8c10428cb89f0b9592049094022b4b844fca896c573b86df776870051
 	sha256sums = 4dceb15afbd70286259a0c40c6d4b323e259cb79d6d3feda44609c455e84793e
-	source_x86_64 = reviu-x86_64-1.1.0.tgz::https://github.com/reviu-dev/reviu/releases/download/v1.1.0/reviu-1.1.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 6fd1914e30791771e458af0c2605c8e1a14b31853954635ac1ed0a2cec29fb62
-	source_aarch64 = reviu-aarch64-1.1.0.tgz::https://github.com/reviu-dev/reviu/releases/download/v1.1.0/reviu-1.1.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 026d4497bf038a40c8ddde7da94a2f00b5f702b343f375e33bd4b29fa729ce70
+	source_x86_64 = reviu-x86_64-1.2.0.tgz::https://github.com/reviu-dev/reviu/releases/download/v1.2.0/reviu-1.2.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 392ebb38e30fa5fc51d76e56c6d3ab5aaf9dcc0f2d8a71ca0bef5b95238e9ce0
+	source_aarch64 = reviu-aarch64-1.2.0.tgz::https://github.com/reviu-dev/reviu/releases/download/v1.2.0/reviu-1.2.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 83bd7bf39fe9b9f54108b511b97aaf7dbfd606b97e43a8bc801b95ac73615b5a
 
 pkgname = reviu-bin
