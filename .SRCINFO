@@ -1,7 +1,7 @@
 pkgbase = vantage-browser
 	pkgdesc = Vantage 浏览器 - 基于 Firefox ESR 的隐私/快速/易用定制版 (编译安装) - 非官方社区打包
-	pkgver = 153.2.0
-	pkgrel = 2
+	pkgver = 153.3.0
+	pkgrel = 1
 	url = https://github.com/asystech-chen/Vantage
 	arch = x86_64
 	arch = aarch64
@@ -64,7 +64,7 @@ pkgbase = vantage-browser
 	conflicts = vantage-browser
 	conflicts = vantage-browser-bin
 	conflicts = vantage-browser-appimage
-	source = git+https://github.com/asystech-chen/Vantage.git#tag=v153.2.0-2
+	source = git+https://github.com/asystech-chen/Vantage.git#tag=v153.3.0-1
 	sha256sums = SKIP
 
 pkgname = vantage-browser
