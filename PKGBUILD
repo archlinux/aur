@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=taratormusic-bin
 _pkgname=TaratorMusic
-pkgver=1.9.5
+pkgver=1.9.6
 _electronversion=40
 pkgrel=1
 pkgdesc="A music player application with playlist support and Discord integration."
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d677c0e60674bd76b3faf28e12c9c6dff631ac216ab5c61b2504a37c8baa2255'
+sha256sums=('e696e56de54f5aee34170435912c9c8bf0ebd9ea4ff2d0f53ef26b0c9234623f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
