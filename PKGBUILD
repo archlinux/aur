@@ -2,12 +2,12 @@
 # Contributor: Xuanwo
 pkgname=folo-bin
 _pkgname=Folo
-pkgver=1.13.0
+pkgver=1.14.0
 _electronversion=43
 pkgrel=1
-pkgdesc="Organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing."
 arch=('x86_64')
-url="https://folo.is/"
+url="https://app.folo.is/"
 _ghurl="https://github.com/RSSNext/Folo"
 license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -16,10 +16,10 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/desktop%2Fv${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/desktop%2Fv${pkgver}/${_pkgname}-${pkgver}-linux-x64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0d552d7a1550ae9dc2a17cc698c94269671fb3cbe6f263b76a810b6698dbbc72'
+sha256sums=('f40af385c91f07ca027b7bdc495c3143bed46b355cb2a12d360da7bdc3eedb2b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -41,31 +41,14 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    fi
-    if [ -d "${srcdir}/squashfs-root" ];then
-        rm -rf "${srcdir}/squashfs-root"
-    fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    bsdtar -xf "${srcdir}/data."*
     _check_electron_version
-    local _app_dir=$(_get_app_dir)
-    sed -i -e "
-        s/${_pkgname} --no-sandbox/${pkgname%-bin}/g
-        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " "${_app_dir}/${_pkgname}.desktop"
-    find "${_app_dir}/resources" -maxdepth 1 -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
-        _extension="${_i##*.}"
-        _icon_path="${_i#*share/icons/}"
-        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
-        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
-    done
-    install -Dm644 "${_app_dir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
