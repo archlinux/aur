@@ -1,6 +1,6 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.38
+pkgver=1.0.39
 pkgrel=1
 _srcdir=Tide-island-$pkgver
 _builddir=build-$pkgver
@@ -41,15 +41,18 @@ optdepends=(
     'networkmanager: for wifi control'
     'iwd: for wifi control'
     'swaync: for the Focus do-not-disturb toggle'
+    'power-profiles-daemon: for power profile controls via powerprofilesctl'
     'tlp: for TLP power profile controls'
     'polkit: for applying TLP profiles via pkexec'
     'sudo: alternative for applying TLP profiles'
     'zenity: for Ask-mode TLP password prompts when no Polkit agent is running'
+    'cliphist: for clipboard history manager'
+    'wl-clipboard: for clipboard copy/paste support'
 )
 conflicts=('tide-island-git')
 install='tide-island.install'
 source=("$pkgname-$pkgver.tar.xz::https://github.com/enhaoswen/Tide-island/releases/download/$pkgver/tide-island-source.tar.xz")
-sha256sums=('ba24fb1cc58c834d4ebc5b8d1513e29dd8c0085f13ed56090a77213c8b4b986d')
+sha256sums=('e96fcc3bbe149a31b22968012b0b9e6a0d362d0f5e0695bc0ff8ad0b395dbb1e')
 
 build() {
   cmake -S "$_srcdir" -B "$_builddir" \
