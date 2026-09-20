@@ -3,7 +3,7 @@
 
 pkgname=gamebreaker-sdl3
 pkgdesc="Simple graphics engine for C++ on SDL3"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 arch=(x86_64)
 url="https://codeberg.org/elpoeprod/GameBreaker"
@@ -12,7 +12,7 @@ depends=(sdl3 sdl3_ttf sdl3_image sdl3_mixer alsa-tools libopenmpt enet glm tagl
 conflicts=(gamebreaker)
 makedepends=(make)
 source=("GameBreaker-${pkgver}-sdl3.tar.gz::https://codeberg.org/elpoeprod/GameBreaker/archive/v${pkgver}-sdl3.tar.gz")
-md5sums=('00fe442cbce58dbb4a8b583a7195c126')
+md5sums=('3db025001b1b5c5f2a2c165db41f8de0')
 
 build(){
 	rename "gamebreaker" "GameBreaker-${pkgver}-sdl3" "${srcdir}/gamebreaker"
