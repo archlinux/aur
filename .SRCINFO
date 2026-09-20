@@ -1,6 +1,6 @@
 pkgbase = stools-bin
 	pkgdesc = A minimal, fast, Fuzzel-style application launcher with pinyin support
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/cap153/stools
 	arch = x86_64
@@ -20,11 +20,13 @@ pkgbase = stools-bin
 	provides = stools
 	conflicts = stools
 	options = !strip
-	source = stools-0.1.0::https://github.com/cap153/stools/releases/download/v0.1.0/stools
+	source = stools-0.1.1::https://github.com/cap153/stools/releases/download/v0.1.1/stools
 	source = stools.desktop
 	source = stools.png
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = LICENSE::https://raw.githubusercontent.com/cap153/stools/v0.1.1/LICENSE
+	sha256sums = 0e73922064425a4faa8c387260456b2d56df9662df429d2b5fb58ad59b60bd15
+	sha256sums = c9ce99448e12a0efefde70a0d275e005362ec627d93242045d884b3f2cb492f5
+	sha256sums = 34eb566db977573133cc556dd6e6422dffdd11b7aed5035ec1184744b7837ae3
+	sha256sums = 26bc02acb6900eefb9bacdda0830b61b60f354c7b8e3b47a2f01a0c512eaeb39
 
 pkgname = stools-bin
