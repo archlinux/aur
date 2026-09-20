@@ -1,5 +1,5 @@
 pkgname=pdf-inspector-ocr
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Native CLI tools for PDF classification and Markdown extraction with OCR"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ conflicts=('pdf-inspector')
 # The ring dependency cannot link with GCC LTO.
 options=('!debug' '!lto')
 source=("pdf-inspector-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3bb2229e6b39ada3646a68debecb50bf91c53883b075070ad3705839c37aace1')
+sha256sums=('f18d9a1c559331f6af676def87c22fe5cf5666bc23916d624d7b94f7cdb36e1d')
 
 prepare() {
   cd "pdf-inspector-${pkgver}"
