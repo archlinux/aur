@@ -2,7 +2,7 @@
 # Contributor: Aaron Keesing <agkphysics at gmail dot com>
 # Contributor: Siddhartha <dev@sdht.in>
 pkgname="zotero-git"
-pkgver=11.0.r16801.3c959e1
+pkgver=11.0.r16807.b6f0f6c
 pkgrel=1
 pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources"
 arch=('x86_64' 'i686')
@@ -70,18 +70,12 @@ sha256sums=(
   'dc1894ac2e1520c3dae8e9cd5e09608f4bb3298bdede2891a77118187edffa9d'
 )
 
-pkgver() {
-  cd zotero-client
-  local _tag="$(cat version | sed 's/.SOURCE//')"
-  printf "%s.r%s.%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
 prepare() {
   cd zotero-client
 
   patch -N -p1 < "$srcdir/disable-updater.patch"
   
-  npm i --legacy-peer-deps
+  npm ci --ignore-scripts
 
   git submodule init
   git submodule deinit --force app/modules/zotero-word-for-{mac,windows}-integration
@@ -124,13 +118,15 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 }
 
+pkgver() {
+  cd zotero-client
+  local _tag="$(cat version | sed 's/.SOURCE//')"
+  printf "%s.r%s.%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
 build() {
   cd zotero-client
-  local _NODE_OPTIONS="--openssl-legacy-provider"
-  if (( $(vercmp "$(node --version)" "25.2.0") >= 0 )); then
-    _NODE_OPTIONS+=" --no-experimental-webstorage"
-  fi
-  NODE_OPTIONS="$_NODE_OPTIONS" npm run build
+  npm run build
   app/scripts/dir_build
 }
 
