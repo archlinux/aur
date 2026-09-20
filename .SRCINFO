@@ -1,7 +1,7 @@
 pkgbase = python-flashinfer-rocm
 	pkgdesc = ROCm port of FlashInfer (CDNA3+)
-	pkgver = 0.5.3
-	pkgrel = 2
+	pkgver = 0.6.18
+	pkgrel = 1
 	url = https://github.com/ROCm/flashinfer
 	arch = x86_64
 	license = Apache-2.0
@@ -9,7 +9,6 @@ pkgbase = python-flashinfer-rocm
 	makedepends = ninja
 	makedepends = python-build
 	makedepends = python-setuptools-scm
-	makedepends = python-scikit-build-core
 	makedepends = cmake
 	makedepends = rocm-hip-sdk
 	makedepends = python-installer
@@ -18,7 +17,7 @@ pkgbase = python-flashinfer-rocm
 	optdepends = python-click
 	optdepends = python-tvm-ffi
 	provides = python-flashinfer
-	source = https://github.com/ROCm/flashinfer/archive/refs/tags/v0.5.3+amd.2.tar.gz
-	sha256sums = f83eb02af3cbec2c757a093a7b308dd814b5e6901dcc2308070a4b3172ec9f76
+	source = https://github.com/ROCm/flashinfer/archive/refs/tags/v0.6.18+amd.1.tar.gz
+	sha256sums = adf4c28b6e0a8a19410cd9060994e485b21577119459df5acdee29dd312d5a37
 
 pkgname = python-flashinfer-rocm
