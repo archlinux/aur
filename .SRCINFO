@@ -1,7 +1,7 @@
 pkgbase = python-onnxoptimizer
 	pkgdesc = ONNX model optimizer
 	pkgver = 0.4.2
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/onnx/optimizer
 	arch = x86_64
 	license = Apache-2.0
@@ -13,9 +13,9 @@ pkgbase = python-onnxoptimizer
 	makedepends = python-setuptools
 	makedepends = cmake
 	makedepends = git
-	makedepends = protobuf
 	depends = python
 	depends = python-onnx
+	depends = python-typing_extensions
 	depends = protobuf
 	depends = gcc-libs
 	source = onnx-optimizer::git+https://github.com/onnx/optimizer.git#tag=v0.4.2

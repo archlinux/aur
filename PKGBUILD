@@ -5,12 +5,12 @@
 pkgname=python-onnxoptimizer
 pkgver=0.4.2
 pkgdesc='ONNX model optimizer'
-pkgrel=2
+pkgrel=4
 arch=(x86_64)
 url='https://github.com/onnx/optimizer'
 license=('Apache-2.0')
-depends=(python python-onnx protobuf gcc-libs)
-makedepends=(python-build python-installer python-wheel python-setuptools cmake git protobuf)
+depends=(python python-onnx python-typing_extensions protobuf gcc-libs)
+makedepends=(python-build python-installer python-wheel python-setuptools cmake git)
 checkdepends=(python-pytest python-numpy)
 source=("onnx-optimizer::git+https://github.com/onnx/optimizer.git#tag=v$pkgver"
         "onnx"::"git+https://github.com/onnx/onnx.git"
@@ -62,5 +62,10 @@ check() {
 package() {
   cd onnx-optimizer
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # The wheel bundles upstream's pytest suite, which is not part of the
+  # runtime API and would otherwise introduce a spurious pytest dependency.
+  rm -rf "$pkgdir"/usr/lib/python*/site-packages/onnxoptimizer/test
+
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
