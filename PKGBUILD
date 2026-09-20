@@ -1,7 +1,7 @@
 # Maintainer: Firstp1ck <al.leuzi@hotmail.com>
 # Contributor: Firstp1ck <al.leuzi@hotmail.com>
 pkgname="hyprland-simple-setup-git"
-pkgver=0.6.0.r0.gf95c5d5
+pkgver=0.7.0.r0.g610a18b
 pkgrel=1
 pkgdesc="Setup Hyprland the simple way (TUI)."
 arch=('x86_64')
