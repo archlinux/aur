@@ -1,0 +1,16 @@
+pkgbase = skript
+	pkgdesc = Fast and minimalist GTK3 markdown editor/viewer
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Twilight0/Skript
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconf
+	depends = gtk3
+	depends = libportal-gtk3
+	source = skript-1.2.1.tar.gz::https://github.com/Twilight0/Skript/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = c8f96a8e2acf27a90dd14cbbc7f7e1cad978e2dc2673798dccc78e878a4ccce5
+
+pkgname = skript
