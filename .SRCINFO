@@ -1,6 +1,6 @@
 pkgbase = stoat-desktop-git
 	pkgdesc = Stoat for Desktop.
-	pkgver = 1.5.3.r3.g68cfeb5
+	pkgver = 1.5.4.r0.g03b757c
 	pkgrel = 1
 	url = https://stoat.chat/
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = stoat-desktop-git
 	makedepends = zip
 	makedepends = pnpm
 	makedepends = nvm
-	depends = electron43
+	depends = electron44
 	depends = libpipewire
-	provides = stoat-desktop=1.5.3
+	provides = stoat-desktop=1.5.4
 	conflicts = stoat-desktop
 	source = stoat-desktop.git::git+https://github.com/stoatchat/for-desktop.git
 	source = stoat-desktop.sh
