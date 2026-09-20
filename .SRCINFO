@@ -1,6 +1,6 @@
 pkgbase = rclone-ui-bin
-	pkgdesc = The cross-platform desktop GUI for rclone & S3.(Prebuilt version)
-	pkgver = 3.7.4
+	pkgdesc = The cross-platform desktop GUI for rclone & S3.
+	pkgver = 3.7.5
 	pkgrel = 1
 	url = https://rcloneui.com/
 	arch = aarch64
@@ -11,11 +11,11 @@ pkgbase = rclone-ui-bin
 	depends = webkit2gtk-4.1
 	depends = rclone
 	depends = libayatana-appindicator
-	provides = rclone-ui=3.7.4
+	provides = rclone-ui=3.7.5
 	conflicts = rclone-ui
-	source_aarch64 = rclone-ui-3.7.4-aarch64.rpm::https://github.com/rclone-ui/rclone-ui/releases/download/v3.7.4/Rclone.UI_aarch64.rpm
-	sha256sums_aarch64 = c1dfc81ffd153983003167dea50fe153007de06f219e54f90220c8169015b09a
-	source_x86_64 = rclone-ui-3.7.4-x86_64.rpm::https://github.com/rclone-ui/rclone-ui/releases/download/v3.7.4/Rclone.UI_x86_64.rpm
-	sha256sums_x86_64 = 64a38d65db7b9d38c63996918b04b6485eb303e196d5f7de63da8c395375b053
+	source_aarch64 = rclone-ui-3.7.5-aarch64.rpm::https://github.com/rclone-ui/rclone-ui/releases/download/v3.7.5/Rclone.UI_aarch64.rpm
+	sha256sums_aarch64 = 4d530425334bfdb467ec757f27186c34ff9f64cf80a31d3a12d97bb58c69d9b7
+	source_x86_64 = rclone-ui-3.7.5-x86_64.rpm::https://github.com/rclone-ui/rclone-ui/releases/download/v3.7.5/Rclone.UI_x86_64.rpm
+	sha256sums_x86_64 = d675b560edc2818f909deaccf4874f4046a82ed7ab3cdb1a1e8c3efe69112544
 
 pkgname = rclone-ui-bin
