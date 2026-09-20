@@ -5,7 +5,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-gdk-pixbuf2-bootstrap
-pkgver=2.44.4
+pkgver=2.44.7
 pkgrel=1
 arch=('any')
 pkgdesc="An image loading library (Android ${_android_arch})"
@@ -22,7 +22,7 @@ provides=("android-${_android_arch}-gdk-pixbuf2")
 conflicts=("android-${_android_arch}-gdk-pixbuf2")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/${pkgver}/gdk-pixbuf-${pkgver}.tar.bz2")
-md5sums=('0d1ad3666145572cbdf1153cd74c874d')
+md5sums=('d8b74088e4b216b16cf9dc5eea4905e8')
 
 build() {
     cd "${srcdir}/gdk-pixbuf-${pkgver}"
