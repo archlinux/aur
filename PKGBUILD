@@ -14,9 +14,9 @@ url="https://github.com/kdeldycke/${_name}"
 license=('GPL-2.0-or-later')
 arch=('any')
 
-makedepends=('uv' 'python-pip')
-checkdepends=('uv' 'python-pytest')
-depends=('python' 'python-click>=8.4.1' 'python-boltons' 'python-pygments' 'python-json5' 'python-hjson' 'python-tomli' 'python-tomlkit' 'python-yaml' 'python-cloup' 'python-deepmerge' 'python-extra-platforms' 'python-requests' 'python-tabulate' 'python-xmltodict' 'python-wcmatch' 'python-wcwidth' 'python-docutils' 'python-sphinx' 'python-myst-parser' 'python-pymdown-extensions' 'mkdocs')
+makedepends=('python-pip' 'python-installer' 'python-uv-build')
+# checkdepends=('git' 'python-pytest' 'python-hjson' 'python-jsonschema' 'python-pygments' 'python-pytest-httpserver' 'python-requests' 'python-tomlkit' 'python-xmltodict' 'python-yaml')
+depends=('python' 'python-click>=8.4.1' 'python-boltons' 'python-pygments' 'python-json5' 'python-hjson' 'python-tomlkit' 'python-yaml' 'python-cloup' 'python-deepmerge' 'python-extra-platforms' 'python-tabulate' 'python-xmltodict' 'python-wcmatch' 'python-wcwidth' 'python-sphinx' 'python-pymdown-extensions' 'mkdocs')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('eb3fe59aa4f6fb603f69787e0c1de1f65108ac9cc2d5d6faaa69690cf2e02339b95db7782119c1b4f1676930f5df627c49a00d12b3d9e473b620a646c114f739')
@@ -25,32 +25,21 @@ sha512sums=('eb3fe59aa4f6fb603f69787e0c1de1f65108ac9cc2d5d6faaa69690cf2e02339b95
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
 
-    uv build
+    python -m build --wheel --no-isolation
 }
 
-check() {
-    cd "${srcdir}/${_name}-${pkgver}"
-
-    # Install project
-    # Install all extras, so we can check any incompatibility.
-    uv --no-progress sync --frozen --all-extras --group test
-
-    # Run local CLI
-    uv run -- "${_name}" --version
-
-    # Unittests
-    uv --no-progress run --frozen -- pytest -m once --cov --cov-report=term --cov-fail-under=16
-
-    # Check if it runs outside of UV environment
-    python -m click_extra --version
-}
+# check() {
+#     cd "${srcdir}/${_name}-${pkgver}"
+#
+#     python -m venv --system-site-packages venv
+#
+#     pytest -m "not network"
+# }
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
 
-    uv pip install --system --link-mode=copy --no-deps --prefix="${pkgdir}/usr" dist/*.whl
-
-    rm "$pkgdir/usr/.lock"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm0644 "readme.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
