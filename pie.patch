@@ -1,0 +1,9 @@
+--- a/build.zig
++++ b/build.zig
+@@ -43,6 +43,7 @@
+         }),
+         .use_llvm = true, // zigimg needs
+     });
++    exe.pie = true;
+     exe.root_module.addOptions("zon", options);
+     if (optimize == .ReleaseFast) exe.root_module.strip = true;

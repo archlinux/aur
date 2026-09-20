@@ -1,0 +1,14 @@
+pkgbase = zjpeg2png
+	pkgdesc = Zig port of jpeg2png
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dnjulek/zjpeg2png
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = zig>=0.16
+	source = zjpeg2png-1.0.0.tar.gz::https://github.com/dnjulek/zjpeg2png/archive/refs/tags/v1.0.0.tar.gz
+	source = pie.patch
+	sha256sums = 2cb1bcff245bd2f9673b71c141c1521b45ce069b2de04d2722b5a9556fb25c41
+	sha256sums = 0641b8def7a2b9338ca3a6da19fed1b28529d22c7ac15b929b7ad7f8bb3b2795
+
+pkgname = zjpeg2png
