@@ -1,0 +1,24 @@
+pkgbase = python-cel-python
+	pkgdesc = Pure Python implementation of Google Common Expression Language
+	pkgver = 0.5.0
+	pkgrel = 2
+	url = https://github.com/cloud-custodian/cel-python
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-behave
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python
+	depends = python-google-re2>=1.1.20240702
+	depends = python-jmespath>=1.0.1
+	depends = python-lark-parser>=1.2.2
+	depends = python-packaging
+	depends = python-pendulum>=3.1
+	depends = python-yaml>=6.0.2
+	source = python-cel-python-0.5.0.tar.gz::https://github.com/cloud-custodian/cel-python/archive/refs/tags/v0.5.tar.gz
+	sha256sums = b370b2494e838a05e9a0d3bdabe045640fb2cc46c4fb9d853cb0559f513eeed9
+
+pkgname = python-cel-python
