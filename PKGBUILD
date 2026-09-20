@@ -3,7 +3,7 @@
 
 pkgname=xadi
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CoreADI wrapper based on libprovision "
 arch=('x86_64')
 url="https://github.com/xtool-org/xadi"
@@ -20,7 +20,7 @@ b2sums=('41072a590630ad6f3bf1636f90f94ce2a905acec42165dc6a0c74b58ba464c2d5245c85
 
 build() {
   cd "$pkgname-source-$pkgver"
-  dub build --build=release
+  ./Linux/build.sh
 }
 
 package() {
