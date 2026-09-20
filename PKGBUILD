@@ -1,6 +1,6 @@
 # Maintainer: nicknb <nicknb at posteo dot com>
 pkgname=firefox-extension-singlefile-bin
-pkgver=1.24.1
+pkgver=1.26.1
 pkgrel=1
 pkgdesc="Save an entire web page—including images and styling as a single HTML file"
 arch=("any")
@@ -13,7 +13,7 @@ makedepends=("zip")
 source=("$pkgname-$pkgver.xpi::$url/releases/download/v$pkgver/singlefile-extension-firefox.zip"
         "add-id.patch")
 noextract=("$pkgname-$pkgver.xpi")
-sha256sums=('ece4cf7d69daa06e1dfbebae86a6168b915e356262b9ccbaffea78c96753f666'
+sha256sums=('14cf13f714b20353204ba5141c56d43948da3f500d680d26dc587e468916d554'
             '9efc9d96fda85e61d8b746af4c71b4272b551533c89b471713af7100f2e66310')
 
 prepare() {
