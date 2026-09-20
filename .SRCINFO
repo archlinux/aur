@@ -1,0 +1,16 @@
+pkgbase = agent-skills-validator-bin
+	pkgdesc = Validate Agent Skills against the public specification
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/coolapso/agent-skills-validator
+	license = MIT
+	conflicts = agent-skills-validator
+	provides = agent-skills-validator
+	arch = aarch64
+	source_aarch64 = agent-skills-validator-bin_0.1.0_aarch64.tar.gz::https://github.com/coolapso/agent-skills-validator/releases/download/v0.1.0/agent-skills-validator_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 64149b6f6858b9548c65ed6992872c5abb2b971b249f1d5990af15bc64b07bf2
+	arch = x86_64
+	source_x86_64 = agent-skills-validator-bin_0.1.0_x86_64.tar.gz::https://github.com/coolapso/agent-skills-validator/releases/download/v0.1.0/agent-skills-validator_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d4f1ee2b11eaf06a58dccd59ac552139fdc98a251e4f76c2ff24137b12997a78
+	
+pkgname = agent-skills-validator-bin
