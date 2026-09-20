@@ -6,7 +6,7 @@
 pkgbase=falco-module-dkms
 pkgname=falco-module-dkms
 provides=(falco-module-dkms)
-pkgver=0.40.0
+pkgver=0.44.1
 pkgrel=1
 pkgdesc="Cloud native runtime security - dkms module"
 arch=(x86_64)
@@ -17,7 +17,7 @@ source_x86_64=(
     "https://download.falco.org/packages/bin/${arch}/falco-${pkgver}-x86_64.tar.gz"
     "falco-dkms.service"
 )
-sha256sums_x86_64=('e9f14b04f9675ce6a168f62efeee4e7365cdc07747c9f8deeda240f76e8b1f55'
+sha256sums_x86_64=('bc5b7a3bdf26fc91e520fc20b3461613c6e725148437121697a8d20243132127'
                    '86f0681cb0738adecc13359b52d1471ac4dc8ffb36a71a4c2054a4b392835d78')
 install="falco-dkms.install"
 
