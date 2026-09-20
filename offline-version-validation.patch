@@ -1,0 +1,14 @@
+diff --git a/tests/test_version.py b/tests/test_version.py
+index caaccc8..1c0cb01 100644
+--- a/tests/test_version.py
++++ b/tests/test_version.py
+@@ -217,7 +217,8 @@ def test_unwrap_version_id_when_only_version_id_is_given() -> None:
+ 
+ class TestValidateAgainstProjectType(unittest.TestCase):
+     def _version(self, project_type):
+-        return get_version(type=project_type)
++        with patch.object(rfapi, "get_version", side_effect=rfapi.RoboflowError("offline test")):
++            return get_version(type=project_type)
+ 
+     def test_detection_project_accepts_plain_yolo(self):
+         self._version(TYPE_OBJECT_DETECTION)._validate_against_project_type("yolov11")

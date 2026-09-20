@@ -1,38 +1,51 @@
 pkgbase = python-roboflow
 	pkgdesc = Official Python package for working with the Roboflow API
-	pkgver = 1.3.9
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/roboflow/roboflow-python
 	arch = any
 	license = Apache-2.0
-	checkdepends = python-pytest
+	checkdepends = python-responses
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	depends = python-certifi
-	depends = python-idna
+	depends = python-idna>=3.7
 	depends = python-cycler
-	depends = python-kiwisolver
+	depends = python-kiwisolver>=1.3.1
 	depends = python-matplotlib
-	depends = python-numpy
-	depends = python-opencv
-	depends = python-pillow
+	depends = python-numpy>=1.18.5
+	depends = python-numpy<3
+	depends = python-opencv>=4.10
+	depends = python-opencv<6
+	depends = python-pillow>=7.1.2
 	depends = python-dateutil
 	depends = python-dotenv
 	depends = python-requests
 	depends = python-six
-	depends = python-urllib3
-	depends = python-tqdm
-	depends = python-yaml
+	depends = python-urllib3>=1.26.6
+	depends = python-tqdm>=4.41.0
+	depends = python-yaml>=5.3.1
 	depends = python-packaging
 	depends = python-requests-toolbelt
 	depends = python-filetype
-	depends = python-typer
-	depends = python-pi-heif
-	depends = python-pillow-avif-plugin
-	source = python-roboflow-1.3.9.tar.gz::https://github.com/roboflow/roboflow-python/archive/refs/tags/v1.3.9.tar.gz
-	sha256sums = 52c4cc14f993b17a7377d8cb27bc0b81ebc0a325759e25a5779ea174712550e7
+	depends = python-typer>=0.12.0
+	depends = python-typer<0.28
+	depends = python-click>=8.0
+	depends = python-rich
+	depends = python-pi-heif<2
+	depends = python-pillow-avif-plugin<2
+	source = python-roboflow-1.4.2.tar.gz::https://github.com/roboflow/roboflow-python/archive/refs/tags/v1.4.2.tar.gz
+	source = relax-system-dependencies.patch
+	source = typer-0.26.patch
+	source = exclude-tests-package.patch
+	source = offline-version-validation.patch
+	sha256sums = ca39facd646f5d9615d9d343c8717df840e068e686543de1c801ffb0d69fff72
+	sha256sums = 198258ebfef1a31d04dac0bc65d49c2906f7c76a2662e9e1fbd52882b53db1d1
+	sha256sums = edc9df623eca3a1d7aebcddb84f040c89a5f675cc163ade50179e509fe321a20
+	sha256sums = bfe799a95ae3530f0b561cf9b6a3a4ec23b124210d3e74b0004fb0e4d3af6605
+	sha256sums = a7e2142ef275e7799012e36b8fbe0be94c6ce2b69f6fcfc902f0844616f2b594
 
 pkgname = python-roboflow
