@@ -34,6 +34,7 @@
 #   - install.sh -> /usr/share/ramsleuth/install.sh (the self-contained transparency
 #     artifact — AUR users can re-run/audit the full flow post-install)
 #   - LICENSE -> /usr/share/licenses/ramsleuth/LICENSE (MIT compliance, AUR requirement)
+#   - the application-menu entry -> /usr/share/applications/ramsleuth.desktop
 #
 # No-panic contract: installation never fails on the absence of
 # the ryzen_smu module, AVX-512, or a display; after a bare install the
@@ -46,7 +47,7 @@
 # plus the eframe 0.27 / winit dlopen + fallback runtime surface.
 
 pkgname=ramsleuth
-pkgver=2.1.0   # FIXED — taken from the git tag v$pkgver (no pkgver() — that belongs to ramsleuth-git)
+pkgver=2.1.1   # FIXED — taken from the git tag v$pkgver (no pkgver() — that belongs to ramsleuth-git)
 pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients"
 arch=(x86_64)
@@ -95,6 +96,10 @@ package() {
 
     # (6) the MIT license — the AUR license-compliance install path
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/ramsleuth/LICENSE"
+
+    # (7) the application-menu entry — shared asset next to the preset
+    install -Dm644 "packaging/ramsleuth-git/ramsleuth.desktop" \
+        "$pkgdir/usr/share/applications/ramsleuth.desktop"
 
     # NOTE: the ramsleuth group is created on the TARGET system by the .install
     # pre_install/pre_upgrade hooks (package() runs in the build env, not the target).
