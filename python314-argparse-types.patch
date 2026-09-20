@@ -1,0 +1,14 @@
+--- a/draccus/wrappers/field_wrapper.py
++++ b/draccus/wrappers/field_wrapper.py
+@@ -138,6 +138,11 @@
+             if not _arg_options.get("help"):
+                 _arg_options["help"] = f"Must be one of: {', '.join(str(c) for c in args)}"
+         else:
++            # Python 3.14's argparse validates callability while adding an
++            # action. Draccus later converts every CLI value to str before its
++            # own decoding, so non-callable typing forms such as Union can use
++            # str safely at this stage.
++            tpe = tpe if callable(tpe) else str
+             _arg_options["type"] = tpe
+             try:
+                 _arg_options["type"].__name__ = self.type.__repr__().replace("typing.", "")
