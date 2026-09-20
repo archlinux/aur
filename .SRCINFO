@@ -1,0 +1,26 @@
+pkgbase = nextendo-citron-bin
+	pkgdesc = Nintendo Switch emulator (Citron nightly build from NextendoNetwork)
+	pkgver = 20260919.r813b32e8b
+	pkgrel = 1
+	url = https://github.com/NextendoNetwork/citron-nextendo
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	depends = glibc
+	depends = zlib
+	depends = fuse2
+	depends = hicolor-icon-theme
+	optdepends = vulkan-driver: Vulkan graphics backend support
+	optdepends = libva: Hardware video decoding support
+	provides = citron
+	conflicts = citron
+	conflicts = citron-neo
+	conflicts = citron-neo-git
+	conflicts = citron-neo-nightly-bin
+	options = !strip
+	source_x86_64 = nextendo-citron-bin-813b32e8b-x86_64.tar.zst::https://github.com/NextendoNetwork/citron-nextendo/releases/download/nightly-linux/citron_nightly-813b32e8b-linux-x86_64-use-nopgo.tar.zst
+	sha256sums_x86_64 = dc5b0192471b03547b7a72e3bba4e1a38b4901f57bd9c43b63be23aa053008d3
+	source_aarch64 = nextendo-citron-bin-813b32e8b-aarch64.tar.zst::https://github.com/NextendoNetwork/citron-nextendo/releases/download/nightly-linux/citron_nightly-813b32e8b-linux-aarch64-use-nopgo.tar.zst
+	sha256sums_aarch64 = 706d6916f91fca3362a9b20c41dc1e906d8373264a768671251e5038daa9227c
+
+pkgname = nextendo-citron-bin
