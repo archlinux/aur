@@ -1,5 +1,5 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
-_upver='1.0.0-nightly.20260918.39'
+_upver='1.0.0-nightly.20260919.40'
 pkgname='serein'
 pkgver="${_upver/-/pre.}"
 pkgrel=1
