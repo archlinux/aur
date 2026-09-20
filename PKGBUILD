@@ -6,7 +6,7 @@
 # runtime deps are listed in optdepends so a pure Arch/CachyOS install stays minimal.
 
 pkgname=kodexbar-suite
-pkgver=0.12.10
+pkgver=0.12.11
 pkgrel=1
 pkgdesc='KodexBar Suite: Plasma widget, ai CLI, native Claude/Codex/Grok/Hermes/Devin quotas (optional codexbar for Antigravity)'
 arch=('any')
@@ -30,7 +30,7 @@ source=(
   'reload-plasma-after-upgrade'
 )
 sha256sums=(
-  'ba13ab562fc3c606f3401ab292473167ea3a1e3459b7c9ad680f2ff2c2615795'
+  'fd49942df2c9d1ddf6cc7c98bb14138e2313b7301694eb338966866991bb114b'
   '0b3891e5a4a1248558307c5fd5f42e73911b5740a068654e085d0635f7cbdf4c'
 )
 
@@ -46,24 +46,15 @@ package() {
     packages/ai-cli-control/kodexbar-quotas \
     packages/ai-cli-control/kodexbar-panel \
     packages/ai-cli-control/kodexbar-tray \
-    packages/ai-cli-control/local-ai \
     packages/ai-cli-control/kodexbar-skills \
     packages/ai-cli-control/recover.py \
     "${payload}/"
-
-  install -d "${payload}/local_ai_drivers"
-  install -m644 \
-    packages/ai-cli-control/local_ai_drivers/__init__.py \
-    packages/ai-cli-control/local_ai_drivers/builtin.py \
-    packages/ai-cli-control/local_ai_drivers/descriptors.py \
-    "${payload}/local_ai_drivers/"
 
   install -d "${pkgdir}/usr/bin"
   ln -s /usr/lib/kodexbar-suite/ai-cli-control/ai "${pkgdir}/usr/bin/ai"
   ln -s /usr/lib/kodexbar-suite/ai-cli-control/kodexbar-quotas "${pkgdir}/usr/bin/kodexbar-quotas"
   ln -s /usr/lib/kodexbar-suite/ai-cli-control/kodexbar-panel "${pkgdir}/usr/bin/kodexbar-panel"
   ln -s /usr/lib/kodexbar-suite/ai-cli-control/kodexbar-tray "${pkgdir}/usr/bin/kodexbar-tray"
-  ln -s /usr/lib/kodexbar-suite/ai-cli-control/local-ai "${pkgdir}/usr/bin/local-ai"
   ln -s /usr/lib/kodexbar-suite/ai-cli-control/kodexbar-skills "${pkgdir}/usr/bin/kodexbar-skills"
 
   # Distributable plasmoid only: metadata.json and contents/ (no tests, scripts,
@@ -88,8 +79,4 @@ package() {
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.ai-cli-control"
   install -m644 packages/kodexbar/LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.kodexbar"
-
-  install -d "${pkgdir}/usr/share/doc/${pkgname}/local_ai_drivers"
-  install -m644 packages/ai-cli-control/local_ai_drivers/CONTRACT.md \
-    "${pkgdir}/usr/share/doc/${pkgname}/local_ai_drivers/"
 }
