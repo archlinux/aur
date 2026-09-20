@@ -6,7 +6,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-gsm
-pkgver=1.0.23
+pkgver=1.0.24
 pkgrel=1
 arch=('any')
 pkgdesc="Shared libraries for GSM 06.10 lossy speech compression (Android ${_android_arch})"
@@ -17,7 +17,7 @@ depends=('android-ndk')
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.quut.com/gsm/gsm-${pkgver}.tar.gz")
-md5sums=('fc625564fb388b98ac195301e75d7404')
+md5sums=('c13a7e1c5f826e9dbaa71db19e7ebfae')
 
 prepare() {
     cd "${srcdir}/gsm-${pkgver%.*}-pl${pkgver##*.}"
