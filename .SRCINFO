@@ -1,16 +1,16 @@
 pkgbase = colamd-bin
-	pkgdesc = A free, elegant Markdown editor for humans and AI agents — with real-time sync for AI-generated changes.
-	pkgver = 2.4.3
+	pkgdesc = A free, elegant Markdown editor anyone can pick up. No toolbars, no clutter, and the file on disk is always what you see.
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = http://colamd.com/
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron44
-	provides = colamd=2.4.3
+	provides = colamd=2.5.0
 	conflicts = colamd
-	source = colamd-2.4.3.deb::https://github.com/marswaveai/ColaMD/releases/download/v2.4.3/ColaMD_2.4.3_amd64.deb
-	source = LICENSE-2.4.3::https://raw.githubusercontent.com/marswaveai/ColaMD/v2.4.3/LICENSE
+	source = colamd-2.5.0.deb::https://github.com/marswaveai/ColaMD/releases/download/v2.5.0/ColaMD_2.5.0_amd64.deb
+	source = LICENSE-2.5.0::https://raw.githubusercontent.com/marswaveai/ColaMD/v2.5.0/LICENSE
 	source = colamd.sh
 	sha256sums = ee5db74f7b1200816701f3fa47b67103ad62fb6c25c349747c3cbf44568d81e6
 	sha256sums = b458eb0211ec5df71f8c32cfde43027bd0471337d36f1637fe229b76369fcc45

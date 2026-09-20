@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=colamd-bin
 _pkgname=ColaMD
-pkgver=2.4.3
+pkgver=2.5.0
 _electronversion=44
 pkgrel=1
-pkgdesc="A free, elegant Markdown editor for humans and AI agents — with real-time sync for AI-generated changes."
+pkgdesc="A free, elegant Markdown editor anyone can pick up. No toolbars, no clutter, and the file on disk is always what you see."
 arch=('x86_64')
 url="http://colamd.com/"
 _ghurl="https://github.com/marswaveai/ColaMD"
@@ -26,7 +26,7 @@ sha256sums=('ee5db74f7b1200816701f3fa47b67103ad62fb6c25c349747c3cbf44568d81e6'
             'b458eb0211ec5df71f8c32cfde43027bd0471337d36f1637fe229b76369fcc45'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
