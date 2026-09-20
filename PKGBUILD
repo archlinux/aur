@@ -2,7 +2,7 @@
 # Contributor: missing-aur project <https://github.com/Cleboost/missing-aur>
 
 pkgname=acheron-nightly
-pkgver=2026.09.18_5dd37cd
+pkgver=2026.09.19_0df9116
 pkgrel=1
 pkgdesc="Alternative Discord client made in C++ with Qt 6"
 url="https://github.com/ouwou/acheron"
@@ -14,7 +14,7 @@ options=("!strip")
 license=("GPL-3.0")
 
 source=("acheron-nightly-${pkgver}.zip::https://nightly.link/ouwou/acheron/workflows/build/master/acheron-appimage.zip" "acheron.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/acheron/acheron.desktop" "acheron.png::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/acheron/acheron.png")
-sha256sums=('a58f386159a75a451fb4e9c02106c8761a300656430e5e31da7d26ef81ed63ba'
+sha256sums=('e7cb7fea3710863cce57b7841dcbcecc7aa295eb7059cc509f576a7c5935a753'
             '22348420fd0e6cce6c9cf24c1ba9f4498d27b1ed169a0e38d88a0ef6a379f8e6'
             '3109929ab2009c8ceab6d2678492e0a0cccfd058726439e7f109a79ff9f85e84')
 
