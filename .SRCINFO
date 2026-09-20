@@ -1,6 +1,6 @@
 pkgbase = bilibili-bin
-	pkgdesc = Bilibili official desktop client.(Prebuilt version.Use system-wide electron)哔哩哔哩官方客户端linux移植版。
-	pkgver = 1.18.0_1
+	pkgdesc = Bilibili official desktop client.哔哩哔哩官方客户端linux移植版。
+	pkgver = 1.19.0_1
 	pkgrel = 1
 	epoch = 5
 	url = https://github.com/msojocs/bilibili-linux
@@ -11,15 +11,15 @@ pkgbase = bilibili-bin
 	depends = electron43
 	depends = libappindicator
 	depends = libinput
-	provides = bilibili=1.18.0_1
+	provides = bilibili=1.19.0_1
 	conflicts = bilibili
-	source = LICENSE-1.18.0_1::https://raw.githubusercontent.com/msojocs/bilibili-linux/v1.18.0-1/license
+	source = LICENSE-1.19.0_1::https://raw.githubusercontent.com/msojocs/bilibili-linux/v1.19.0-1/license
 	source = bilibili.sh
 	sha256sums = 21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = bilibili-1.18.0_1-aarch64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.18.0-1/bilibili-1.18.0.aarch64.rpm
-	sha256sums_aarch64 = 30fbd394759b1c780afd222c4702e2e83149b36b607a0e0f2dfe5aec0b5219bf
-	source_x86_64 = bilibili-1.18.0_1-x86_64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.18.0-1/bilibili-1.18.0.x86_64.rpm
-	sha256sums_x86_64 = 77ed87e8508b402e37e21f422fef5af2dc75a8a0c0e376fadabe121424daf118
+	source_aarch64 = bilibili-1.19.0_1-aarch64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.19.0-1/bilibili-1.19.0.aarch64.rpm
+	sha256sums_aarch64 = c40e052cfa6249ae2fda3b7e63ded33b55b7eefd10580065ae096c74ca99f3c4
+	source_x86_64 = bilibili-1.19.0_1-x86_64.rpm::https://github.com/msojocs/bilibili-linux/releases/download/v1.19.0-1/bilibili-1.19.0.x86_64.rpm
+	sha256sums_x86_64 = fa722959af26040c8b2af7df45d1b1ec9d49a1c04b55736c14674c980183c33c
 
 pkgname = bilibili-bin

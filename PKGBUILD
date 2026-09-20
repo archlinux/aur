@@ -8,13 +8,13 @@
 # Contributor: wxt1221 <3264117476@qq.com>
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
-_pkgver=1.18.0
+_pkgver=1.19.0
 _subver=1
 pkgver="${_pkgver}_${_subver}"
 _electronversion=43
 epoch=5
 pkgrel=1
-pkgdesc="Bilibili official desktop client.(Prebuilt version.Use system-wide electron)哔哩哔哩官方客户端linux移植版。"
+pkgdesc="Bilibili official desktop client.哔哩哔哩官方客户端linux移植版。"
 arch=(
     'aarch64'
     'x86_64'
@@ -37,10 +37,10 @@ source=(
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('30fbd394759b1c780afd222c4702e2e83149b36b607a0e0f2dfe5aec0b5219bf')
-sha256sums_x86_64=('77ed87e8508b402e37e21f422fef5af2dc75a8a0c0e376fadabe121424daf118')
+sha256sums_aarch64=('c40e052cfa6249ae2fda3b7e63ded33b55b7eefd10580065ae096c74ca99f3c4')
+sha256sums_x86_64=('fa722959af26040c8b2af7df45d1b1ec9d49a1c04b55736c14674c980183c33c')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -66,7 +66,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
