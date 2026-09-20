@@ -2,12 +2,15 @@
 _pkgauthor=aNNiMON
 pkgname=effy
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small and friendly terminal FFmpeg helper that simplifies common tasks"
 url="https://projects.annimon.com/projects/effy/"
 license=('MIT')
 makedepends=('cargo')
 depends=('ffmpeg' 'gcc-libs' 'glibc')
+optdepends=('wl-clipboard: copy commands on Wayland'
+            'xclip: copy commands on X11'
+            'xsel: copy commands on X11 (xclip alternative)')
 arch=('x86_64' 'aarch64')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
