@@ -1,0 +1,22 @@
+pkgbase = ramsleuth-bin
+	pkgdesc = Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients (precompiled binary)
+	pkgver = 2.1.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/MadGoatHaz/RamSleuth
+	install = ramsleuth-bin.install
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libxkbcommon
+	depends = wayland
+	depends = libxrandr
+	depends = libxi
+	depends = libxcursor
+	depends = libxinerama
+	depends = mesa
+	conflicts = ramsleuth
+	source = https://github.com/MadGoatHaz/RamSleuth/releases/download/v2.1.0/ramsleuth-2.1.0-x86_64.tar.zst
+	sha256sums = d8db88fa4cafbb6e995713bdbd7dd7278043d558778d9d011f310c6fa3388b39
+
+pkgname = ramsleuth-bin

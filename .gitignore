@@ -1,0 +1,6 @@
+# AUR package build artifacts — makepkg output, never commit:
+*.tar.*
+*.pkg.tar.*
+*.zip
+src/
+pkg/
