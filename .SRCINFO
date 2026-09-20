@@ -1,8 +1,8 @@
 pkgbase = bilibili
-	pkgdesc = Linux version based on Beilai official client porting supports roaming.(Use system-wide electron).基于哔哩哔哩官方客户端移植的Linux版本,支持漫游
-	pkgver = 1.18.0_1
+	pkgdesc = Linux version based on Beilai official client porting supports roaming.基于哔哩哔哩官方客户端移植的Linux版本,支持漫游
+	pkgver = 1.19.0_1
 	pkgrel = 1
-	url = https://github.com/msojocs/bilibili-linux
+	url = https://www.jysafe.cn/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
@@ -20,11 +20,15 @@ pkgbase = bilibili
 	depends = electron43
 	depends = ffmpeg
 	depends = libappindicator
+	depends = nodejs
+	depends = libinput
 	provides = bilibili
 	conflicts = bilibili
-	source = bilibili-1.18.0_1::git+https://github.com/msojocs/bilibili-linux#tag=v1.18.0-1
+	options = !strip
+	options = !emptydirs
+	source = bilibili-1.19.0_1::git+https://github.com/msojocs/bilibili-linux#tag=v1.19.0-1
 	source = bilibili.sh
-	sha256sums = 473fcb4b19792641e93f77d3e1aadc2463b6331a50fc7a767ca15b6b9b0d7f6e
+	sha256sums = f74ff78054f34342b2073139793915ffdaf7378fd60e4e4b492e0a5b18d85d08
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = bilibili
