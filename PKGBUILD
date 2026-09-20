@@ -1,7 +1,7 @@
 # Maintainer: taxin-404 <taxin404@duck.com>
 
 pkgname=clickr-git
-pkgver=r3.92c2164
+pkgver=r10.854d8cf
 pkgrel=2
 pkgdesc="Fast, lightweight autoclicker for Linux Wayland with TUI interface"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --locked --release 2>/dev/null || cargo build --release
+    cargo build --locked --release
 }
 
 package() {
