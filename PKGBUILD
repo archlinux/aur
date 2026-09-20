@@ -10,7 +10,7 @@ license=('custom')
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux_amd64.tar.gz")
 sha256sums=('b044ee0d281cf28d7a9237c6247bde4ddb6f4780acd697f9ac1e5ba9571abb6f')
 
-provides=('vigaphone-bin')
+#provides=('vigaphone-bin')
 conflicts=('vigaphone-bin')
 replaces=('vigaphone-bin')
 

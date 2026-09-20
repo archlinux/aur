@@ -13,7 +13,6 @@ pkgbase = vigaphone-piano-tuner-midi-synth-bin
 	depends = libx11
 	depends = libglvnd
 	depends = rsync
-	provides = vigaphone-bin
 	conflicts = vigaphone-bin
 	replaces = vigaphone-bin
 	options = !strip
