@@ -13,7 +13,7 @@ source=(
   "templar-arena.png"
   "templar-arena.desktop"
 )
-sha256sums=('SKIP'
+sha256sums=('4f3ad00fd2d782c81f5dd13716238307b78b47cd364647eba109b8c82f721010'
   'SKIP'
   'SKIP')
 

@@ -12,7 +12,7 @@ pkgbase = templar-arena-bin
 	source = templar-arena-v0.1.2-linux.zip::https://github.com/taxin-404/templar-arena-bin/releases/download/v0.1.2/templar-arena-v0.1.2-linux.zip
 	source = templar-arena.png
 	source = templar-arena.desktop
-	sha256sums = SKIP
+	sha256sums = 4f3ad00fd2d782c81f5dd13716238307b78b47cd364647eba109b8c82f721010
 	sha256sums = SKIP
 	sha256sums = SKIP
 
