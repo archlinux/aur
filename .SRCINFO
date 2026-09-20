@@ -1,25 +1,44 @@
 pkgbase = python-stanza
 	pkgdesc = Stanford NLP Python library for tokenization, sentence segmentation, NER, and parsing of many human languages
-	pkgver = 1.12.1
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://stanfordnlp.github.io/stanza
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python
 	depends = python-emoji
+	depends = python-huggingface-hub
 	depends = python-networkx
 	depends = python-numpy
+	depends = python-packaging
 	depends = python-platformdirs
 	depends = python-protobuf
 	depends = python-pytorch
 	depends = python-requests
 	depends = python-tqdm
 	depends = python-udtools
+	optdepends = ipython: Display interactive Semgrex visualizations
+	optdepends = python-crfsuite: Use CRFSuite-backed tokenization
+	optdepends = python-datasets: Process Hugging Face datasets
+	optdepends = python-datasketch: Deduplicate Community OSCAR corpora with MinHash
+	optdepends = python-flask: Run the browser demo server
+	optdepends = python-jieba: Use Jieba tokenization
+	optdepends = python-lxml: Convert XML-based datasets
+	optdepends = python-matplotlib: Visualize model weights
+	optdepends = python-peft>=0.6.1: Use parameter-efficient transformer fine-tuning
 	optdepends = python-scipy: Perform CEAF scoring for the Kuhn-Munkres linear assignment scheme
-	source = stanza-1.12.1.tar.gz::https://github.com/stanfordnlp/stanza/archive/refs/tags/v1.12.1.tar.gz
-	sha256sums = 973fb51714749aee5ad0df0c93b7d13bcdb34b29a7b5ace674de98e27b576f3c
+	optdepends = python-spacy: Use spaCy tokenization and visualizations
+	optdepends = python-streamlit: Run the Semgrex visualization app
+	optdepends = python-tlsh: Inspect corpus similarity with TLSH
+	optdepends = python-transformers>=3.0.0: Use transformer-backed models
+	optdepends = python-wandb: Log training runs to Weights & Biases
+	optdepends = python-zstandard: Process compressed Community OSCAR corpora
+	source = stanza-1.14.0.tar.gz::https://github.com/stanfordnlp/stanza/archive/refs/tags/v1.14.0.tar.gz
+	sha256sums = 07858f7c91fc0c6bd499d544b4e67963994a52c06a8cf189cd67d373765398ed
 
 pkgname = python-stanza
