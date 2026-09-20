@@ -1,8 +1,8 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 _perlmod="Crypt-OpenSSL-X509"
-_modnamespace=Crypt
+_author=JONASBN
 pkgname=perl-crypt-openssl-x509
-pkgver=2.0.1
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Perl extension to OpenSSL's X509 API"
 arch=(x86_64)
@@ -10,8 +10,8 @@ url="http://search.cpan.org/dist/$_perlmod"
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-convert-asn1' 'perl-crypt-openssl-guess' 'openssl')
 checkdepends=('perl-test-pod')
-source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha512sums=('987a033c3de1ab7ed4a3da012979bb98a8ed1f0766397f564d6996276cc254a3b79982df2f6f956da6cdfd3ad370e23d1e0656afe35ab261c2fc3e0f16b0b64b')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_perlmod-$pkgver.tar.gz")
+sha512sums=('f45f8289e6dad9fa8da9865cf797194159dce8b6a4ede5b56640a7c262fdcd2241771e97c9eefcb3526b355982d187ab0f2e4770ba8b5f775d61b245a2278652')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
