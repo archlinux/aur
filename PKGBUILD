@@ -4,7 +4,7 @@
 pkgname=dash-static-musl
 _pkgbase=dash
 pkgver=0.5.13.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A POSIX compliant shell that aims to be as small as possible"
 arch=('x86_64' 'aarch64')
 url="http://gondor.apana.org.au/~herbert/dash/"
@@ -34,5 +34,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  strip ${pkgdir}/usr/bin/dash
   install -m644 -D COPYING ${pkgdir}/usr/share/licenses/${_pkgbase}/COPYING
 }
