@@ -1,6 +1,6 @@
 pkgbase = vkshade
 	pkgdesc = A ReShade-compatible Vulkan post-processing layer
-	pkgver = 0.0.13
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/ralgar/vkShade
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = vkshade
 	makedepends = ninja
 	makedepends = vulkan-headers
 	makedepends = vulkan-utility-libraries
-	depends = libinih
 	depends = libx11
 	depends = libxcb
+	depends = libxi
 	depends = libxkbcommon
 	depends = spdlog
 	depends = wayland
 	optdepends = reshade-shaders-git
-	source = vkshade-0.0.13.tar.gz::https://github.com/ralgar/vkShade/archive/refs/tags/v0.0.13.tar.gz
-	sha256sums = 22aa5ce869907ddcaf2ed8aef497f563060102be57afadf408f13a2c09a6ba09
+	source = vkshade-0.1.0.tar.gz::https://github.com/ralgar/vkShade/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = afbd489aafa4ea432094e0421899ec2ade1257de5de1f19d4594f0487dabeccc
 
 pkgname = vkshade
