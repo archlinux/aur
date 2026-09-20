@@ -32,14 +32,16 @@ optdepends=('ttf-harmonyos-sans: font removed from original package'
 source=("${_url_source}/dists/noble/main/binary-amd64/develop_AnycubicSlicerNext-1.3.96_20260319_224609-Ubuntu_24_04_3_LTS.deb"
     "https://archive.ubuntu.com/ubuntu/pool/main/i/icu/libicu74_74.2-1ubuntu3.1_amd64.deb"
     "https://archive.ubuntu.com/ubuntu/pool/main/libs/libselinux/libselinux1_3.5-2ubuntu2.1_amd64.deb"
-    "AnycubicSlicerNext.sh")
+    "AnycubicSlicerNext.sh"
+    "acnext-workbench-fix.c")
 
 noextract=("${source[@]##*/}")
 
 sha256sums=('2c2883a9c624ab64e721a0211667852e0083d8794f7839c1d7932c9f712ed076'
     'c9a70989678660eed9a1e904c74fa043da8bec8e2036856fc16e31ced79b04f8'
     '6abaa6c26f46ef17764c4a753e0e84de1cdadde5634fd2987621fdc617988d19'
-    '20a2e851c8914af6a4098f9718b7462f9f108430b498483f9c04eba81e695fc2')
+    'f0f3abf1d4e75320aaca10ee601977f49f25927c7d4b2b7a3c89142322575b5a'
+    '2f0f4a7183f4f261478ab86edfa0ab5ca497f6f47665674ddf4196b0c125df3c')
 
 prepare() {
     [ -d AnycubicSlicerNext ] && rm -r AnycubicSlicerNext
@@ -70,6 +72,7 @@ build() {
     sed -i 's@Icon=/usr/share/AnycubicSlicerNext/resources/images/AnycubicSlicer.png@Icon=/opt/AnycubicSlicerNext/share/resources/images/AnycubicSlicer.png@' \
         AnycubicSlicerNext/usr/share/applications/AnycubicSlicer.desktop
     rm -r AnycubicSlicerNext/usr/share/AnycubicSlicerNext/resources/fonts
+    gcc -shared -fPIC -O2 -o acnext-workbench-fix.so acnext-workbench-fix.c -ldl
 }
 
 package() {
@@ -87,5 +90,6 @@ package() {
     install -Dm644 libicu74/usr/lib/x86_64-linux-gnu/libicuuc.so.74 "${pkgdir}/opt/AnycubicSlicerNext/lib/libicuuc.so.74"
     install -Dm644 libselinux1/usr/lib/x86_64-linux-gnu/libselinux.so.1 "${pkgdir}/opt/AnycubicSlicerNext/lib/libselinux.so.1"
     install -Dm644 AnycubicSlicerNext/usr/share/applications/AnycubicSlicer.desktop "${pkgdir}/usr/share/applications/AnycubicSlicer.desktop"
+    install -Dm644 acnext-workbench-fix.so "${pkgdir}/opt/AnycubicSlicerNext/lib/acnext-workbench-fix.so"
     install -Dm755 AnycubicSlicerNext.sh "${pkgdir}/usr/bin/AnycubicSlicerNext"
 }
