@@ -2,10 +2,10 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=2.0.14
-_electronversion=41
+pkgver=2.1.0
+_electronversion=44
 pkgrel=1
-pkgdesc="AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs"
+pkgdesc="AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs."
 arch=(
     'aarch64'
     'x86_64'
@@ -43,8 +43,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-linux-x64.rpm")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('aeaa4c12011892b41d12df7ebc547e389624a835ec2668614be4bc9c852541c7')
-sha256sums_x86_64=('99c89b9f96d7671d3b774d974c74860af11ed1747e9ba73590bca2611a7192b5')
+sha256sums_aarch64=('41818b7352cc8edc5ab55466fd6b8484a9434ddf3aec13699624427d1b5bf176')
+sha256sums_x86_64=('6f1477f0594daa3ba5cd8288b49f8b3e7c1e8068f11255088764d5069e8cc6ba')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -103,7 +103,7 @@ prepare() {
     find "${_app_dir}/resources" -type d \( \
         -name "*darwin*" -o \
         -name "*win32*" -o \
-        -name "*-${_arch_rem}" \
+        -name "*${_arch_rem}*" \
     \) -exec rm -rf {} +
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
 }

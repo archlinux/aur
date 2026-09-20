@@ -1,6 +1,6 @@
 pkgbase = cherry-studio-electron-bin
-	pkgdesc = AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs
-	pkgver = 2.0.14
+	pkgdesc = AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs.
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://cherryai.com/
 	arch = aarch64
@@ -8,7 +8,7 @@ pkgbase = cherry-studio-electron-bin
 	license = AGPL-3.0-or-later
 	license = LicenseRef-custom
 	makedepends = asar
-	depends = electron41
+	depends = electron44
 	depends = libevdev
 	depends = python
 	depends = python-yaml
@@ -18,15 +18,15 @@ pkgbase = cherry-studio-electron-bin
 	depends = uv
 	depends = mise
 	optdepends = ollama: Use your local LLM
-	provides = cherry-studio=2.0.14
+	provides = cherry-studio=2.1.0
 	conflicts = cherry-studio
-	source = LICENSE-2.0.14::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v2.0.14/LICENSE
+	source = LICENSE-2.1.0::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v2.1.0/LICENSE
 	source = cherry-studio-electron.sh
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = cherry-studio-electron-2.0.14-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.0.14/Cherry-Studio-2.0.14-linux-arm64.rpm
-	sha256sums_aarch64 = aeaa4c12011892b41d12df7ebc547e389624a835ec2668614be4bc9c852541c7
-	source_x86_64 = cherry-studio-electron-2.0.14-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.0.14/Cherry-Studio-2.0.14-linux-x64.rpm
-	sha256sums_x86_64 = 99c89b9f96d7671d3b774d974c74860af11ed1747e9ba73590bca2611a7192b5
+	source_aarch64 = cherry-studio-electron-2.1.0-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.1.0/Cherry-Studio-2.1.0-linux-arm64.rpm
+	sha256sums_aarch64 = 41818b7352cc8edc5ab55466fd6b8484a9434ddf3aec13699624427d1b5bf176
+	source_x86_64 = cherry-studio-electron-2.1.0-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.1.0/Cherry-Studio-2.1.0-linux-x64.rpm
+	sha256sums_x86_64 = 6f1477f0594daa3ba5cd8288b49f8b3e7c1e8068f11255088764d5069e8cc6ba
 
 pkgname = cherry-studio-electron-bin
