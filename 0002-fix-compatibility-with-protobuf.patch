@@ -1,7 +1,7 @@
-From 89a812a19b87b9aed0a5eb63d93dd78ff9ebd50f Mon Sep 17 00:00:00 2001
+From f9bc2351d13cbfa5325cbef42bd68fedf73d6281 Mon Sep 17 00:00:00 2001
 From: kXuan <kxuanobj@gmail.com>
 Date: Mon, 8 Sep 2025 10:34:18 +0800
-Subject: [PATCH 2/2] fix compatibility with protobuf
+Subject: [PATCH] fix compatibility with protobuf
 
 protobuf has migrate to use std::string_view. This patch fix the compatibility
 issue.
@@ -12,7 +12,7 @@ Signed-off-by: kXuan <kxuanobj@gmail.com>
  1 file changed, 44 insertions(+), 39 deletions(-)
 
 diff --git a/javascript/net/grpc/web/generator/grpc_generator.cc b/javascript/net/grpc/web/generator/grpc_generator.cc
-index ac44360..f08f193 100644
+index 7dc2d84..e5594ac 100644
 --- a/javascript/net/grpc/web/generator/grpc_generator.cc
 +++ b/javascript/net/grpc/web/generator/grpc_generator.cc
 @@ -51,6 +51,7 @@ namespace web {
@@ -161,7 +161,7 @@ index ac44360..f08f193 100644
    if (HasPrefixString(to_filename, "google/protobuf")) {
      // Well-known types (.proto files in the google/protobuf directory) are
      // assumed to come from the 'google-protobuf' npm package.  We may want to
-@@ -494,8 +499,8 @@ std::map<string, const Descriptor*> GetAllMessages(const FileDescriptor* file) {
+@@ -514,8 +519,8 @@ std::map<string, const Descriptor*> GetAllMessages(const FileDescriptor* file) {
      const ServiceDescriptor* service = file->service(s);
      for (int m = 0; m < service->method_count(); ++m) {
        const MethodDescriptor* method = service->method(m);
@@ -172,7 +172,7 @@ index ac44360..f08f193 100644
      }
    }
  
-@@ -513,14 +518,14 @@ void PrintCommonJsMessagesDeps(Printer* printer, const FileDescriptor* file) {
+@@ -533,14 +538,14 @@ void PrintCommonJsMessagesDeps(Printer* printer, const FileDescriptor* file) {
    std::map<string, string> vars;
  
    for (int i = 0; i < file->dependency_count(); i++) {
@@ -189,7 +189,7 @@ index ac44360..f08f193 100644
    vars["package_name"] = package;
  
    if (!package.empty()) {
-@@ -556,7 +561,7 @@ void PrintES6Imports(Printer* printer, const FileDescriptor* file) {
+@@ -576,7 +581,7 @@ void PrintES6Imports(Printer* printer, const FileDescriptor* file) {
  
    std::set<string> imports;
    for (const auto& entry : GetAllMessages(file)) {
@@ -198,7 +198,7 @@ index ac44360..f08f193 100644
      string dep_filename = GetRootPath(file->name(), proto_filename) + StripProto(proto_filename);
      if (imports.find(dep_filename) != imports.end()) {
        continue;
-@@ -810,7 +815,7 @@ void PrintProtoDtsOneofCase(Printer* printer, const OneofDescriptor* desc) {
+@@ -835,7 +840,7 @@ void PrintProtoDtsOneofCase(Printer* printer, const OneofDescriptor* desc) {
  
  void PrintProtoDtsMessage(Printer* printer, const Descriptor* desc,
                            const FileDescriptor* file) {
@@ -207,7 +207,7 @@ index ac44360..f08f193 100644
    std::map<string, string> vars;
    vars["class_name"] = class_name;
  
-@@ -936,7 +941,7 @@ void PrintProtoDtsFile(Printer* printer, const FileDescriptor* file) {
+@@ -968,7 +973,7 @@ void PrintProtoDtsFile(Printer* printer, const FileDescriptor* file) {
    printer->Print("import * as jspb from 'google-protobuf'\n\n");
  
    for (int i = 0; i < file->dependency_count(); i++) {
@@ -216,7 +216,7 @@ index ac44360..f08f193 100644
      // We need to give each cross-file import an alias.
      printer->Print("import * as $alias$ from '$dep_filename$_pb'; // proto import: \"$proto_filename$\"\n",
                     "alias", ModuleAlias(proto_filename),
-@@ -1254,15 +1259,15 @@ void PrintMultipleFilesMode(const FileDescriptor* file, string file_name,
+@@ -1286,15 +1291,15 @@ void PrintMultipleFilesMode(const FileDescriptor* file, string file_name,
  
        vars["method_name"] = method->name();
        vars["in"] = method->input_type()->full_name();
@@ -235,7 +235,7 @@ index ac44360..f08f193 100644
            "proto." + vars["package_dot"] + vars["class_name"] + "." +
            vars["method_name"] + "MethodDescriptor";
      }
-@@ -1335,9 +1340,9 @@ void PrintMultipleFilesMode(const FileDescriptor* file, string file_name,
+@@ -1367,9 +1372,9 @@ void PrintMultipleFilesMode(const FileDescriptor* file, string file_name,
        vars["in"] = input_type->full_name();
        vars["out"] = output_type->full_name();
        vars["method_descriptor"] =
@@ -248,7 +248,7 @@ index ac44360..f08f193 100644
  
        // Client streaming is not supported yet
        if (!method->client_streaming()) {
-@@ -1364,7 +1369,7 @@ void PrintClosureES6Imports(Printer* printer, const FileDescriptor* file,
+@@ -1396,7 +1401,7 @@ void PrintClosureES6Imports(Printer* printer, const FileDescriptor* file,
    for (int i = 0; i < file->service_count(); ++i) {
      const ServiceDescriptor* service = file->service(i);
  
@@ -257,7 +257,7 @@ index ac44360..f08f193 100644
      printer->Print(
          "import $service_name$Client_import from 'goog:$namespace$';\n",
          "service_name", service->name(), "namespace",
-@@ -1379,7 +1384,7 @@ void PrintClosureES6Imports(Printer* printer, const FileDescriptor* file,
+@@ -1411,7 +1416,7 @@ void PrintClosureES6Imports(Printer* printer, const FileDescriptor* file,
  }
  
  void PrintGrpcWebClosureES6File(Printer* printer, const FileDescriptor* file) {
@@ -266,7 +266,7 @@ index ac44360..f08f193 100644
  
    printer->Print(
        "/**\n"
-@@ -1400,7 +1405,7 @@ void PrintGrpcWebClosureES6File(Printer* printer, const FileDescriptor* file) {
+@@ -1432,7 +1437,7 @@ void PrintGrpcWebClosureES6File(Printer* printer, const FileDescriptor* file) {
    for (int i = 0; i < file->service_count(); ++i) {
      const ServiceDescriptor* service = file->service(i);
  
@@ -275,7 +275,7 @@ index ac44360..f08f193 100644
      printer->Print("export const $name$Client = $name$Client_import;\n", "name",
                     service->name());
      printer->Print(
-@@ -1539,7 +1544,7 @@ class GrpcCodeGenerator : public CodeGenerator {
+@@ -1571,7 +1576,7 @@ class GrpcCodeGenerator : public CodeGenerator {
  
      std::map<string, string> vars;
      std::map<string, string> method_descriptors;
@@ -284,7 +284,7 @@ index ac44360..f08f193 100644
      vars["package"] = package;
      vars["package_dot"] = package.empty() ? "" : package + '.';
      vars["promise"] = "Promise";
-@@ -1582,7 +1587,7 @@ class GrpcCodeGenerator : public CodeGenerator {
+@@ -1614,7 +1619,7 @@ class GrpcCodeGenerator : public CodeGenerator {
      vars["protoc_version"] = GetProtocVersion(context);
      vars["source_file"]    = file->name();
  
@@ -293,7 +293,7 @@ index ac44360..f08f193 100644
      if (generator_options.multiple_files() &&
          ImportStyle::CLOSURE == generator_options.import_style()) {
        PrintMultipleFilesMode(file, file_name, context, vars);
-@@ -1661,7 +1666,7 @@ class GrpcCodeGenerator : public CodeGenerator {
+@@ -1693,7 +1698,7 @@ class GrpcCodeGenerator : public CodeGenerator {
          vars["in"] = input_type->full_name();
          vars["out"] = output_type->full_name();
          vars["method_descriptor"] =
@@ -302,7 +302,7 @@ index ac44360..f08f193 100644
  
          // Cross-file ref in CommonJS needs to use the module alias instead
          // of the global name.
-@@ -1670,14 +1675,14 @@ class GrpcCodeGenerator : public CodeGenerator {
+@@ -1702,14 +1707,14 @@ class GrpcCodeGenerator : public CodeGenerator {
            vars["in_type"] = ModuleAlias(input_type->file()->name()) +
                              GetNestedMessageName(input_type);
          } else {
@@ -320,5 +320,5 @@ index ac44360..f08f193 100644
  
          // Client streaming is not supported yet
 -- 
-2.49.0
+2.55.0
 
