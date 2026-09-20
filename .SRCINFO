@@ -1,6 +1,6 @@
 pkgbase = limine-snapper-sync
 	pkgdesc = Integrates Limine boot entries with Snapper snapshots.
-	pkgver = 1.31.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-snapper-sync
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = limine-snapper-sync
 	options = !debug
 	options = !strip
 	backup = etc/limine-snapper-sync.conf
-	source = limine-snapper-sync::git+https://gitlab.com/Zesko/limine-snapper-sync.git#tag=1.31.0
-	sha256sums = ed236f1bbab966950bf11ba5a7958e97a76e66db7fd647b7737bab4b48c9fc40
-	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0
-	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-25.0.2/graalvm-community-jdk-25.0.2_linux-aarch64_bin.tar.gz
-	sha256sums_aarch64 = b4580d9f223d0a4b3a1757e58b18ff4c1db950e67e105fc5cb741457d2384a71
+	source = limine-snapper-sync::git+https://gitlab.com/Zesko/limine-snapper-sync.git#tag=1.32.0
+	sha256sums = 6bcc1d3ace58030204260a9a4d40d500c4822416be1b1c6edd153d1df0796b3d
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.2.4/graalvm-community-jdk-25i2-25.0.4_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = 3f4a89de8eaa96f2ed677f09957c7e872cd8467aad3537f8b5394c1b8c4b942e
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.2.4/graalvm-community-jdk-25i2-25.0.4_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = 22286f7ecd21b9aedb3226b9bf797469e1bd3eefc491e12ef3dd49b452d230b7
 
 pkgname = limine-snapper-sync
