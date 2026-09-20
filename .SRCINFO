@@ -1,6 +1,6 @@
 pkgbase = querya-desktop
 	pkgdesc = Multi-database desktop client (PostgreSQL, MySQL, Redis, MongoDB, SQLite)
-	pkgver = 0.4.16
+	pkgver = 0.4.17
 	pkgrel = 1
 	url = https://github.com/QueryaHub/Querya-Desktop
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = querya-desktop
 	depends = libsecret
 	depends = glib2
 	optdepends = libappindicator-gtk3: system tray / app indicator
-	source = Querya-Desktop-0.4.16-linux.zip::https://github.com/QueryaHub/Querya-Desktop/releases/download/0.4.16/Querya-Desktop-0.4.16-linux.zip
+	source = Querya-Desktop-0.4.17-linux.zip::https://github.com/QueryaHub/Querya-Desktop/releases/download/0.4.17/Querya-Desktop-0.4.17-linux.zip
 	source = querya_desktop.desktop
 	source = querya_desktop.png
-	sha256sums = d9d97500ce80e31673273654242f487a84164eff04199125b8ec53e4d78091f0
+	sha256sums = a89e79654664a612dc963e1578d2e72ea42244e2a21135f7a063c2b3076be9f0
 	sha256sums = 85b629e96451459c3df7c756e1765e85af13fcb9c556b0f921ff8b17bc85c6ba
 	sha256sums = 0a91c6c1bf242e54ee179e34629e9ef3e8a6d286c0fce01e302280a8be9277e6
 
