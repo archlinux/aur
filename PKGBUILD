@@ -1,6 +1,6 @@
 # Maintainer: Redminote11tech
 
-pkgname=zcode-desktop-bin
+pkgname=zcode-redminote11tech
 _pkgname=zcode
 _appdir=ZCode
 pkgver=3.14.1

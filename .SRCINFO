@@ -1,9 +1,9 @@
-pkgbase = zcode-desktop-bin
+pkgbase = zcode-redminote11tech
 	pkgdesc = ZCode desktop app repackaged from official Linux release
 	pkgver = 3.14.1
 	pkgrel = 1
 	url = https://zcode.z.ai/en
-	install = zcode-desktop-bin.install
+	install = zcode-redminote11tech.install
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-Proprietary
@@ -33,4 +33,4 @@ pkgbase = zcode-desktop-bin
 	source_aarch64 = ZCode-3.14.1-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.14.1/linux-arm64/ZCode-3.14.1-linux-arm64.deb
 	sha256sums_aarch64 = 9995e1b5bd3f5786387f39cbc1c376e85dd4b001a94aa7bbc290125bac1ddf14
 
-pkgname = zcode-desktop-bin
+pkgname = zcode-redminote11tech
