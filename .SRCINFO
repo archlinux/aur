@@ -1,0 +1,14 @@
+pkgbase = xget
+	pkgdesc = A universal CLI downloader written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/denix666/xget
+	arch = x86_64
+	license = MIT
+	depends = bash-completion
+	optdepends = zsh: zsh shell completions
+	optdepends = fish: fish shell completions
+	source = https://github.com/denix666/xget/releases/download/v1.0.0/xget_linux_x86_64.tar.gz
+	sha256sums = 9b5e3467fa771b404ea5ec20ef61543da0890adbdef36ecbfe005023da09594b
+
+pkgname = xget
