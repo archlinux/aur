@@ -20,7 +20,7 @@ sha512sums=('615d47567b93c31293bc0cc923e5759214ec1770f0506ec3a25238301e17d3421e8
 prepare() {
     cd "grpc-web-$pkgver"
     patch --forward --strip=1 --input="${srcdir}/0001-fix-build-error.patch"
-#    patch --forward --strip=1 --input="${srcdir}/0002-fix-compatibility-with-protobuf.patch"
+    patch --forward --strip=1 --input="${srcdir}/0002-fix-compatibility-with-protobuf.patch"
 }
 build() {
     cd "grpc-web-${pkgver}"
