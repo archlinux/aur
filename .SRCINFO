@@ -1,6 +1,6 @@
 pkgbase = pattn
 	pkgdesc = A GUI client for Windows, Linux and macOS, support Xray and sing-box and others
-	pkgver = 7.25.1.P25
+	pkgver = 7.25.2.P28
 	pkgrel = 1
 	url = https://github.com/patterniha/PattN
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = pattn
 	depends = libgcc
 	depends = libstdc++
 	depends = xray
-	source = git+https://github.com/patterniha/PattN#tag=7.25.1-P25
+	source = git+https://github.com/patterniha/PattN#tag=7.25.2-P28
 	source = git+https://github.com/2dust/GlobalHotKeys.git
 	source = git+https://github.com/Chocolate4U/Iran-sing-box-rules.git#branch=rule-set
 	source = git+https://github.com/Chocolate4U/Iran-v2ray-rules.git#branch=release
@@ -24,7 +24,7 @@ pkgbase = pattn
 	source = sing-box-rules-geoip::git+https://github.com/2dust/sing-box-rules.git#branch=rule-set-geoip
 	source = sing-box-rules-geosite::git+https://github.com/2dust/sing-box-rules.git#branch=rule-set-geosite
 	source = pattn.sh
-	sha256sums = ae818a3164b188a67c5d2eb0eb215bff135d5e3b503338eef9f7ef278682c8a3
+	sha256sums = d208e20bbb81e61a5df4de8e25bbf3f35d365223cf312739802d7103e044a973
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
