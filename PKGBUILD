@@ -1,7 +1,7 @@
 # Maintainer: erdii <me@erdii.net>
 
 pkgname=calicoctl-bin
-pkgver=3.31.3
+pkgver=3.32.2
 pkgrel=1
 pkgdesc='command line tool to manage Calico resources and perform administrative functions'
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,10 @@ sha256sums=()
 
 case "$CARCH" in
   x86_64) _pkgarch="amd64"
-    sha256sums+=('dc920efee0045d352780c73cfdd3f6fbd6eab9fdb0675897095c755715a8fc8d')
+    sha256sums+=('fd2ebfc94e63ed34e924cbb8dcdcf3ffc8b264098e58d87069abd46ada2e103a')
     ;;
   aarch64) _pkgarch="arm64"
-    sha256sums+=('3cb41949679c963ac42a39c30024b225b53485985b9fb7f1eb6177e86a0ec564')
+    sha256sums+=('9235f55386cfd96e2f55393e997efec7768049cf2379a8dffa07e724890a4691')
     ;;
 esac
 
