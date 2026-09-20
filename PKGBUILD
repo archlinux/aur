@@ -5,8 +5,8 @@
 # 已随 release 资产一并打包，不再从上游单独拉取。
 
 pkgname=miyu
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
 url='https://github.com/SHORiN-KiWATA/miyu-agent'
@@ -17,6 +17,8 @@ depends=('alsa-lib' 'chafa' 'gcc-libs' 'glibc' 'onnxruntime' 'python' 'ripgrep')
 optdepends=(
   'miyu-voice: voice wake word + speech recognition front end'
   'git: update default Shorin Wiki knowledge base'
+  'libnotify: 桌面通知(kitty 以外的终端由它弹)'
+  'libcanberra: 通知提示音(没有时退到 pw-play/paplay)'
   'fish: fish shell integration support'
   'bash: bash shell integration support'
   'zsh: zsh shell integration support'
@@ -25,12 +27,12 @@ optdepends=(
   'chromium: 网页检索脚本的浏览器(或改装 google-chrome)'
   'python-qrcode: 扫码登录时在终端里画二维码'
 )
-_release_pkgrel=2
+_release_pkgrel=1
 source=(
   "${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.pkg.tar.zst"
 )
 sha256sums=(
-  '95989eae52241c6c29929add6b98f7934ceb1e631a67b950cdfedc6d42824eeb'
+  '277f396250b4c7715d5cabcdc8acc06a5aee5ac4f57cbb2d4449ced9326bc8b6'
 )
 
 # Keep the last published version and checksum until channel_update records
