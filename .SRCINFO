@@ -1,0 +1,17 @@
+pkgbase = python-nkeys
+	pkgdesc = Public-key signature system based on Ed25519 for the NATS ecosystem
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/nats-io/nkeys.py
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=68
+	makedepends = python-wheel
+	depends = python>=3.6
+	depends = python-pynacl
+	source = python-nkeys-0.2.1.tar.gz::https://github.com/nats-io/nkeys.py/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 1586d7bd60a89f5b5613c6426361d9550add92a6d7475b95de1729a6ca9ddc8c
+
+pkgname = python-nkeys
