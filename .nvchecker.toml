@@ -1,0 +1,4 @@
+[vampy-host]
+source = "git"
+git = "https://github.com/vamp-plugins/vampy-host.git"
+prefix = "v"
