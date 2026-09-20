@@ -1,12 +1,12 @@
 pkgbase = melody-git
 	pkgdesc = Music server with MPD support, remote playback, and terminal clients (built from HEAD)
-	pkgver = r113.g3c40e7d
+	pkgver = r115.gfbc825e
 	pkgrel = 1
 	url = https://github.com/carnager/melody-music
 	install = melody.install
 	arch = x86_64
 	arch = aarch64
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = go
 	depends = glibc

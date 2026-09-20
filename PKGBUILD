@@ -1,11 +1,11 @@
 # Maintainer: Rasmus Steinke <rasi@xssn.at>
 pkgname=melody-git
-pkgver=r113.g3c40e7d
+pkgver=r115.gfbc825e
 pkgrel=1
 pkgdesc='Music server with MPD support, remote playback, and terminal clients (built from HEAD)'
 arch=(x86_64 aarch64)
 url='https://github.com/carnager/melody-music'
-license=(MIT)
+license=(GPL-3.0-only)
 depends=(glibc ffmpeg mpv)
 makedepends=(git go)
 optdepends=('rofi: menu interface for melody-rofi'
@@ -43,6 +43,5 @@ package() {
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 docs/melodyd.md "$pkgdir/usr/share/doc/$pkgname/melodyd.md"
   install -Dm644 docs/clients.md "$pkgdir/usr/share/doc/$pkgname/clients.md"
-  # Upstream declares MIT in README.md and does not yet ship a separate LICENSE.
-  install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
