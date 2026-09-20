@@ -1,0 +1,27 @@
+pkgbase = python-cut-cross-entropy
+	pkgdesc = A fast implementation of cross entropy loss using cut method with Triton kernels
+	pkgver = 25.9.3
+	pkgrel = 3
+	url = https://github.com/apple/ml-cross-entropy
+	arch = any
+	license = LicenseRef-Apple-Sample-Code
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-packaging
+	depends = python-pytorch
+	depends = python-setuptools
+	depends = python-triton
+	optdepends = python-nvidia-ml-py: for GPU clock detection when nvidia-smi is unavailable
+	optdepends = python-transformers: for Hugging Face Transformers monkey-patching
+	source = git+https://github.com/apple/ml-cross-entropy.git#commit=b7a02791b234e187b524fb1dba6a812d521b203a
+	source = cce-exact-cpu-test-skip.patch
+	sha256sums = SKIP
+	sha256sums = e2b118aff76eced3e32650c75e2fd38b36549c8527a523c434eae5d1b88c7400
+
+pkgname = python-cut-cross-entropy

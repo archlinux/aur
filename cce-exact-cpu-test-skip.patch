@@ -1,0 +1,13 @@
+diff --git a/tests/test_vocab_parallel.py b/tests/test_vocab_parallel.py
+index d21ff68..31c8b04 100644
+--- a/tests/test_vocab_parallel.py
++++ b/tests/test_vocab_parallel.py
+@@ -139,7 +139,7 @@ def test_vocab_parallel(
+     invalids: bool,
+     z_loss: bool,
+ ):
+-    if impl == "cce" and not torch.cuda.is_available():
++    if impl == "cce_exact" and not torch.cuda.is_available():
+         pytest.skip("Testing vocab parallel CCE requires cuda")
+ 
+     mp_spawn(
