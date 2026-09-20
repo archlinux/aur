@@ -1,7 +1,7 @@
 # Maintainer: Alexander Mot <alexander@amot.dev>
 pkgname=metaelite-proton
 pkgver=1.02
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Role playing environment for stories in Elite Dangerous. Runs in ED's Proton-GE prefix"
 arch=('any')
@@ -11,7 +11,10 @@ groups=()
 depends=('protontricks' 'proton-ge-custom')
 makedepends=('msitools' 'icoutils')
 checkdepends=()
-optdepends=()
+optdepends=(
+    'protonup-qt: recommended GUI tool to install and keep stable Proton-GE versions'
+    'proton-ge-custom-bin: system-wide Proton-GE from the AUR'
+)
 provides=('metaelite')
 conflicts=()
 replaces=()
