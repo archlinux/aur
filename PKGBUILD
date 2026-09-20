@@ -5,8 +5,8 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-graphite
-pkgver=1.3.14
-pkgrel=2
+pkgver=1.3.15
+pkgrel=1
 arch=('any')
 pkgdesc="Reimplementation of the SIL Graphite text processing engine (Android ${_android_arch})"
 url="https://github.com/silnrsi/graphite"
@@ -19,17 +19,17 @@ makedepends=('android-cmake'
              'python')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/silnrsi/graphite/releases/download/${pkgver}/graphite2-${pkgver}.tgz"
-        "002-graphite2-1.2.1-pkgconfig.patch"
-        "003-graphite2-1.3.8-staticbuild.patch")
-md5sums=('1bccb985a7da01092bfb53bb5041e836'
-         '3462eb980cbe7036c1f966e1768e70cf'
+        "0001-Fix-pkgconfig.patch"
+        "0002-Fix-staticbuild.patch")
+md5sums=('93fe1a233fadf8eafb3f0dba8804b083'
+         '1e9a2f9cd1d8bae64f3317ff67de0c5f'
          '7a55e2a39c02c0ad009394f4483c1384')
 
 prepare() {
     cd "${srcdir}/graphite2-${pkgver}"
 
-    patch -Np1 -i ../002-graphite2-1.2.1-pkgconfig.patch
-    patch -Np1 -i ../003-graphite2-1.3.8-staticbuild.patch
+    patch -Np1 -i ../0001-Fix-pkgconfig.patch
+    patch -Np1 -i ../0002-Fix-staticbuild.patch
 }
 
 build() {
@@ -51,7 +51,9 @@ package() {
     source android-env ${_android_arch}
 
     make -C build DESTDIR="${pkgdir}" install
-    rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
+    rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
