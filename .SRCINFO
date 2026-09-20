@@ -1,6 +1,6 @@
 pkgbase = r-rvinecopulib
 	pkgdesc = High Performance Algorithms for Vine Copula Modeling
-	pkgver = 0.7.3.1.0
+	pkgver = 1.0.0.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rvinecopulib
 	arch = x86_64
@@ -17,9 +17,12 @@ pkgbase = r-rvinecopulib
 	optdepends = r-ggplot2
 	optdepends = r-ggraph
 	optdepends = r-igraph
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rvinecopulib_0.7.3.1.0.tar.gz
-	md5sums = 8638c89effd2834872aec4533f400751
-	b2sums = 7feb5732578e8322ec30b4553e1010afde3b05e161e595c9af775a0100ba080736b78228d975d3797dd93ed8713d097f3b937c0e578ef44a0ce02e69b11dafaf
+	optdepends = r-univariateml
+	source = https://cran.r-project.org/src/contrib/rvinecopulib_1.0.0.1.0.tar.gz
+	md5sums = f2dfc10b30b8f7fd35b1c61b60d2e964
+	b2sums = a4be719be6d9c88ee6f1ec64eb83f32354b3b50111fcadfd6f0d605481c158333345e24a2eb80d327a84e4b1941e47e8c2a0ee4cabce9ca050838e7b3bdf1501
 
 pkgname = r-rvinecopulib
