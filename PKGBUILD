@@ -1,7 +1,7 @@
 # Maintainer: vho <v_h@me.com>
 
 pkgname=lucidlink-bin
-pkgver=3.7.8252
+pkgver=3.9.8826
 pkgrel=1
 pkgdesc="Your private filespace in the cloud"
 arch=('x86_64')
@@ -23,11 +23,17 @@ provides=('lucidlink')
 conflicts=('lucidlink')
 install="${pkgname}.install"
 source=("https://releases.lucidlink.com/prod/linux-deb/lucidlink_${pkgver}_amd64.deb")
-sha256sums=('4eadf9735c7ecf576cbab0aea2eb9262ef5384d9e80f32b67ab0fa1a70f5998f')
+sha256sums=('ce61b8db317d047204f0f539d6b9e64835c32df140eabb01d42befcfe01bf3f7')
 
 package() {
   bsdtar -xf "${srcdir}/lucidlink_${pkgver}_amd64.deb" -C "${srcdir}"
-  bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+
+  # Upstream has shipped data.tar.xz and data.tar.zst at different times, so
+  # don't hardcode the compression -- take whichever member the .deb contains.
+  local data
+  data="$(find "${srcdir}" -maxdepth 1 -type f -name 'data.tar.*' -print -quit)"
+  [[ -n "${data}" ]] || { echo "no data.tar.* inside the .deb" >&2; return 1; }
+  bsdtar -xf "${data}" -C "${pkgdir}"
 
   install -d "${pkgdir}/usr/bin"
   if [[ -e "${pkgdir}/usr/local/bin/lucidlink" ]]; then
