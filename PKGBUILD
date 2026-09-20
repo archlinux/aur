@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pupu-bin
 _pkgname=PuPu
-pkgver=0.1.10
+pkgver=0.1.11
 _electronversion=40
 pkgrel=1
 pkgdesc="A lightweight, cross-platform desktop AI client that works with both local and cloud-hosted models."
@@ -37,7 +37,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/haoxiang-xu/PuPu/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('14cbb71fcd81cae73bc98b4d2f74a8aabeee426deb6bb0a18ef7f1a0eec4eee6'
+sha256sums=('b5366b11db3ffe18d7a5661fd9d803e5f9a482bde3f80df7389efb418daf92ae'
             '2191d05c6ee7c145480916b745bd020484adb61653be943c43cff10bc22927a1'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
@@ -75,7 +75,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"

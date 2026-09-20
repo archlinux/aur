@@ -1,6 +1,6 @@
 pkgbase = pupu-bin
 	pkgdesc = A lightweight, cross-platform desktop AI client that works with both local and cloud-hosted models.
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/haoxiang-xu/PuPu
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = pupu-bin
 	depends = python-cryptography
 	depends = libxcrypt-compat
 	depends = python-requests
-	provides = pupu=0.1.10
+	provides = pupu=0.1.11
 	conflicts = pupu
 	options = !emptydirs
-	source = pupu-0.1.10.deb::https://github.com/haoxiang-xu/PuPu/releases/download/v0.1.10/PuPu-0.1.10-linux-x64.deb
-	source = LICENSE-0.1.10::https://raw.githubusercontent.com/haoxiang-xu/PuPu/v0.1.10/LICENSE
+	source = pupu-0.1.11.deb::https://github.com/haoxiang-xu/PuPu/releases/download/v0.1.11/PuPu-0.1.11-linux-x64.deb
+	source = LICENSE-0.1.11::https://raw.githubusercontent.com/haoxiang-xu/PuPu/v0.1.11/LICENSE
 	source = pupu.sh
-	sha256sums = 14cbb71fcd81cae73bc98b4d2f74a8aabeee426deb6bb0a18ef7f1a0eec4eee6
+	sha256sums = b5366b11db3ffe18d7a5661fd9d803e5f9a482bde3f80df7389efb418daf92ae
 	sha256sums = 2191d05c6ee7c145480916b745bd020484adb61653be943c43cff10bc22927a1
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
