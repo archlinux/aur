@@ -1,13 +1,13 @@
 # Maintainer: Mike Pento <mjpento@gmail.com>
 
 pkgname=apache-cxf
-pkgver=4.1.3
+pkgver=4.1.8
 pkgrel=1
 pkgdesc='open source services framework'
 arch=('any')
-license=('Apache')
+license=('Apache-2.0')
 url='http://cxf.apache.org'
-depends=('java-runtime')
+depends=('bash' 'java-runtime')
 options=('!strip')
 source=("https://dlcdn.apache.org/cxf/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	'apache-cxf.sh')
@@ -37,5 +37,5 @@ package() {
   install -m 644  "${srcdir}/apache-cxf.sh" "${pkgdir}/etc/profile.d"
 }
 
-sha256sums=('70ec09e5431e4833f923efe5f2206859e10f14fb1b4b56f7f0b1358f94751270'
+sha256sums=('cad0302b53f32a424b175fef5f117142e74d0ae91cfe201aedbee316f2550ac2'
             'c52ba86604138776e50f6fc9506e21ad6f30064a54a0aaef3d5316245b14e668')
