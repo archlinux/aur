@@ -3,32 +3,21 @@
 
 _reponame=mold
 pkgname=${_reponame}-git
-pkgver=2.40.4.r224.gbe3d214c
+pkgver=2.42.1.r442.gd567d10f
 pkgrel=1
 pkgdesc='A Modern Linker'
 arch=('x86_64')
 url="https://github.com/rui314/$_reponame"
 license=('MIT')
-# bundled: xxhash
+# bundled: xxhash, mimalloc, zstd, libblake3
 depends=(
   glibc
-  libblake3
-  libstdc++
-  mimalloc
-  tbb
+  libgcc
   zlib
-  zstd
 )
 makedepends=(
-  cmake
-  ninja
+  cargo
   git
-  mold
-  python
-)
-checkdepends=(
-  clang
-  libdwarf
 )
 source=("git+${url}.git")
 b2sums=('SKIP')
@@ -41,33 +30,19 @@ pkgver() {
 }
 
 build() {
-  local _cmake_options=(
-    -S "$_reponame"
-    -B build
-    -G Ninja
-    -W no-author
-    -D CMAKE_BUILD_TYPE='Release'
-    -D CMAKE_C_FLAGS_RELEASE='-DNDEBUG'
-    -D CMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
-    -D CMAKE_INSTALL_PREFIX='/usr'
-    -D CMAKE_INSTALL_LIBEXECDIR='lib'
-    -D MOLD_USE_SYSTEM_MIMALLOC=ON
-    -D MOLD_USE_SYSTEM_TBB=ON
-    -D MOLD_LTO=ON
-    -D MOLD_USE_MOLD=ON
-  )
-
-  cmake "${_cmake_options[@]}"
-
-  cmake --build build
+  cd "$_reponame"
+  cargo build --release --locked --package mold-cli
 }
 
 check() {
-  ctest --test-dir build --output-on-failure -j$(nproc)
+  cd "$_reponame"
+  cargo test --locked --package mold-cli
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  PREFIX="$pkgdir/usr" "$_reponame/install-mold.sh"
+  mv "$pkgdir/usr/libexec/$_reponame/ld" "$pkgdir/usr/lib/$_reponame/"
+  rm -rf "$pkgdir/usr/libexec"
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$_reponame/LICENSE"
 }
 # vim: ts=2 sw=2 et:
