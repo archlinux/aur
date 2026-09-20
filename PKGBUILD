@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=key-echo-bin
 _pkgname=KeyEcho
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="Listen to Mechanical Keyboard Sounds with Every Keystroke - It's Fast.(Prebuilt version)"
+pkgdesc="Listen to Mechanical Keyboard Sounds with Every Keystroke - It's Fast."
 arch=(
     'aarch64'
     'x86_64'
@@ -21,8 +21,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('74f242081d61b08a7df498ac923e5ac450cd56f2c29074347012b1ad0c8a5086')
-sha256sums_x86_64=('4b838f93f50419c7f4e02b8db9c9c6fffec83573010abde1d40ad88de06d765f')
+sha256sums_aarch64=('c5102e47443b408e23d030df10329a4fe90c0ffc0b933ae7a8a5029f3ffe4305')
+sha256sums_x86_64=('1a70d5192818b4d7c54631d2ca9b9cb430f1bfa835144260abdf378f403e90f3')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
