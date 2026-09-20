@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-bin
 _pkgname=Mailspring
-pkgver=1.24.1
+pkgver=1.25.0
 _electronversion=44
 pkgrel=1
 pkgdesc="A beautiful, fast and fully open source mail client."
@@ -24,8 +24,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.x86_64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('98af5f40f4c0d854fdaa8bdc1057a9a8b55a5f3dc98b8dc8c3fb41c09eeca3c2')
-sha256sums_x86_64=('f6836f553942a7c31c3fbe0382022e4f7e38496830268c2e3b0b4a6879fe147f')
+sha256sums_aarch64=('666dfe7a1089ed4d6ab6d5c06af669835664b1fb0c5b0719e2b0a7598143d690')
+sha256sums_x86_64=('7a03f4d0db99e67601ff00a5ff45d84ef1f1f7404ef646b679d3307396256a03')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
