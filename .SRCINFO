@@ -1,0 +1,43 @@
+pkgbase = python-aiconfigurator
+	pkgdesc = Offline inference configuration planner and configuration generator
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/ai-dynamo/aiconfigurator
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest>=9.0.3
+	checkdepends = python-pytest-mock>=3.14.0
+	checkdepends = python-pytest-timeout>=2.3.1
+	checkdepends = python-jsonschema>=4.23
+	makedepends = git
+	makedepends = git-lfs
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=69
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python-aiconfigurator-core=0.12.0
+	depends = python-jinja>=3.1.0
+	depends = python-packaging>=20.0
+	depends = python-matplotlib>=3.9.4
+	depends = python-numpy>=2.1
+	depends = python-numpy<3
+	depends = python-pandas>=2.2.3
+	depends = python-plotext>=5.3.2
+	depends = python-plotext<6
+	depends = python-plotly>=6.0.1
+	depends = python-prettytable>=3.16.0
+	depends = python-pydantic>=2.5
+	depends = python-pyarrow>=15.0.0
+	depends = python-yaml>=6.0
+	depends = python-tqdm>=4.0.0
+	depends = python-bokeh
+	depends = python-nvidia-ml-py
+	depends = python-munch>=4.0.0
+	optdepends = python-fastapi>=0.115.12: HTTP service
+	optdepends = python-orjson>=3.10.16: HTTP service serialization
+	optdepends = uvicorn>=0.34.2: HTTP service runner
+	source = git+https://github.com/ai-dynamo/aiconfigurator.git#commit=7bdd746cedc46f4d555ccbd3d0d2194c4015219f
+	sha256sums = SKIP
+
+pkgname = python-aiconfigurator
