@@ -13,7 +13,7 @@ conflicts=('vigil')
 options=(!lto)
 install=vigil-baseline.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lousclues-labs/vigil/archive/v$pkgver.tar.gz")
-sha256sums=('243afb06df80afe5de55e71e757fce6bfbc61816754aa53a89ecd72b2c42b375')
+sha256sums=('b73a3763a8053123a40755180b0aefce67260bc51d943fea93fc84dd95c64e83')
 
 prepare() {
     cd "vigil-$pkgver"
