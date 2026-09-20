@@ -117,7 +117,7 @@ build() {
     _ensure_local_nvm
     _set_build_env
     NODE_ENV=production     pnpm exec electron-vite build
-    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
 
 }
 package() {
