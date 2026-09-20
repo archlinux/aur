@@ -5,7 +5,7 @@ _android_arch=riscv64
 
 pkgname=android-${_android_arch}-freetype2
 pkgver=2.14.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Font rasterization library (Android ${_android_arch})"
 url='https://www.freetype.org/'
@@ -14,8 +14,7 @@ groups=('android-freetype2')
 depends=("android-ndk"
          "android-${_android_arch}-zlib"
          "android-${_android_arch}-brotli"
-         "android-${_android_arch}-libpng"
-         "android-${_android_arch}-harfbuzz")
+         "android-${_android_arch}-libpng")
 # FIXME: It does not properly locate bzip2, disabling for now.
 #depends+=("android-${_android_arch}-bzip2")
 provides=("android-${_android_arch}-freetype2-boostrap")
@@ -51,7 +50,7 @@ build() {
         -D zlib=enabled \
         -D bzip2=disabled \
         -D png=enabled \
-        -D harfbuzz=enabled \
+        -D harfbuzz=disabled \
         -D brotli=enabled \
         -D b_lto=false
     ninja -C build
