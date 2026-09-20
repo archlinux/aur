@@ -5,7 +5,6 @@ pkgname=(d-lan-core
 pkgver=1.2.2
 pkgrel=2
 license=GPL-3.0-or-later
-pkgdesc="A free LAN file sharing software"
 arch=('x86_64')
 url="https://www.d-lan.net/"
 license=('GPL-3.0-or-later')
@@ -31,6 +30,7 @@ build() {
     cmake --build build --config Release
 }
 package_d-lan-core() {
+    pkgdesc="A free LAN file sharing software (headless core)"
     optdepends=(
         'd-lan-gui: Graphical user interface'
     )
@@ -44,6 +44,7 @@ package_d-lan-core() {
     install -vD "$_appdir/build/output/D-LAN.Core" "$pkgdir/usr/bin/$pkgname"
 }
 package_d-lan-gui() {
+    pkgdesc="A free LAN file sharing software (GUI)"
     depends=(d-lan-core
         libgcc
         abseil-cpp
