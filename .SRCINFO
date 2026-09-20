@@ -1,7 +1,7 @@
 pkgbase = effy-bin
 	pkgdesc = A small and friendly terminal FFmpeg helper that simplifies common tasks. Binaries only
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.annimon.com/projects/effy/
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,9 @@ pkgbase = effy-bin
 	depends = ffmpeg
 	depends = gcc-libs
 	depends = glibc
+	optdepends = wl-clipboard: copy commands on Wayland
+	optdepends = xclip: copy commands on X11
+	optdepends = xsel: copy commands on X11 (xclip alternative)
 	provides = effy=0.10.0
 	conflicts = effy
 	options = !debug
