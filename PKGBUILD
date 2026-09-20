@@ -2,7 +2,7 @@
 
 _pkgname=sing-box
 pkgname=sing-box-extended-bin
-_pkgver="1.14.0-extended-2.7.0"
+_pkgver="1.14.1-extended-2.7.2"
 pkgver="${_pkgver//-/\~}"
 pkgrel=1
 
@@ -27,9 +27,9 @@ sha256sums=('a828ee277711a6b376c8cf4c9a1f73458ca39ef262dd9d2a726f63111ff19e09'
             '927315d96d5681a1c019de450b2bb4de3d0e56e6db4fd619dc13c925b37e5405'
             '77d1b5fbcfe27e3effbe382c574f3bde140ca4eb18fab76faa31e147f74b7f71'
             '44f3e5d85740b26c9f4d5cbbddfced42fce98bdf6fd8d28e1480b93c9edf18d6')
-sha256sums_x86_64=('e7c0bcf66ef398c9e02f5072900586438ad17650277ffa81cf318907f707a345')
-sha256sums_armv7h=('07ab509aada170ef0c04c1beb09d65c4452e7589cedc151fd72152d5053ee085')
-sha256sums_aarch64=('93ecaf67476cf64bda2a4577a8a2b4286ea44cb0bda18e272a952a4fc3222761')
+sha256sums_x86_64=('c57646ac53e793559d736dce9cba12dbf6845d187b0bfd8c3aacf61a4328941d')
+sha256sums_armv7h=('d68fa2b279704a544d5098704a9d12b7628a91412ad7e830c74d580705c0bd5d')
+sha256sums_aarch64=('f56efc4aff76332e4cb49bd01cdd3b4c0c9cff0126efd0e437c90f7826bd18b8')
 conflicts=($_pkgname "$_pkgname-git" "$_pkgname-beta" "$_pkgname-extended")
 
 backup=("etc/sing-box/config.json")
