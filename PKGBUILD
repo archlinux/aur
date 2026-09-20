@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A database client for the terminal"
 
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
-sha256sums_x86_64=('95a9fc0ab41592d7e79e44b2509e459ae5674ea489d8990f95458ddd7edba8b2')
-sha256sums_aarch64=('95a9fc0ab41592d7e79e44b2509e459ae5674ea489d8990f95458ddd7edba8b2')
+sha256sums_x86_64=('3ccbdab36f85c08cdba38e7336ce5c5527aa49dab6ff2efa43a32e1cf3dd1d66')
+sha256sums_aarch64=('3ccbdab36f85c08cdba38e7336ce5c5527aa49dab6ff2efa43a32e1cf3dd1d66')
 
 
 package() {
