@@ -1,0 +1,30 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -186,11 +186,15 @@ if (CUDA_VERSION VERSION_GREATER_EQUAL 12.0)
+ endif()
+ 
+ if (CUDA_VERSION VERSION_GREATER_EQUAL 12.8)
+-  list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 100 100a 120 120a 121 121a)
+   if (CUDA_VERSION VERSION_LESS 13.0)
++    list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 100 100a 120 120a 121 121a)
+     list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 101 101a)
+   else()
+-    list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 110 110a)
++    # CUDA 13 maps the unsuffixed Blackwell targets to their family-specific
++    # counterparts (for example sm_100 to sm_100f).  Requesting both makes
++    # nvcc abort with "same GPU code generated"; retain the architecture-
++    # specific and family-specific forms, which cover both capabilities.
++    list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 100a 120a 121a 110a)
+   endif()
+ endif()
+ 
+@@ -204,10 +208,6 @@ if (CUDA_VERSION VERSION_GREATER_EQUAL 12.9)
+   endif()
+ endif()
+ 
+-if (CUDA_VERSION VERSION_GREATER_EQUAL 13.0)
+-  list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 110 110a)
+-endif()
+-
+ set(CUTLASS_NVCC_ARCHS ${CUTLASS_NVCC_ARCHS_SUPPORTED} CACHE STRING "The SM architectures requested.")
+ set(CUTLASS_NVCC_ARCHS_ENABLED ${CUTLASS_NVCC_ARCHS} CACHE STRING "The SM architectures to build code for.")

@@ -1,0 +1,10 @@
+diff --git a/python/cutlass_library/__init__.py b/python/cutlass_library/__init__.py
+index 424c5e36..690d63a0 100644
+--- a/python/cutlass_library/__init__.py
++++ b/python/cutlass_library/__init__.py
+@@ -60,4 +60,4 @@ install_source_path = os.path.join(__path__[0], 'source')
+ if os.path.isdir(install_source_path):
+     source_path = install_source_path
+ else:
+-    source_path = os.path.join(__path__[0], '../..')
++    source_path = '/usr'

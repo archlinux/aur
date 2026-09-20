@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -795,8 +795,6 @@ if(NOT WIN32)
+     "-Wl,-rpath,'$$ORIGIN'"
+     "-Wl,-rpath,'$$ORIGIN/../lib64'"
+     "-Wl,-rpath,'$$ORIGIN/../lib'"
+-    "-Wl,-rpath,'${CUDA_TOOLKIT_ROOT_DIR}/lib64'"
+-    "-Wl,-rpath,'${CUDA_TOOLKIT_ROOT_DIR}/lib'"
+     ${CMAKE_DL_LIBS}
+     )
+ endif()

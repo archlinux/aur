@@ -1,0 +1,199 @@
+diff --git a/python/cutlass_library/library.py b/python/cutlass_library/library.py
+--- a/python/cutlass_library/library.py
++++ b/python/cutlass_library/library.py
+@@ -419,6 +419,52 @@ class LayoutType(enum.Enum):
+   TensorKCSR = enum_auto()
+   TensorKCSRT = enum_auto()
+ 
++#
++def sm120_rowmajor_epilogue_threadblock_shape_ok(
++    threadblock_mnk, element_c, element_d, gmem_layout_tag_d,
++    output_sf_vector_size=None):
++  """
++  Return whether an SM120 auto-epilogue can represent a row-major output.
++
++  The SM120 mainloop accepts smaller CTA-N shapes than every output storage
++  atom and block-scale-factor visitor can represent.  Keep the valid small-N
++  kernels while preventing the manifest from instantiating impossible C++
++  template combinations.
++  """
++  if gmem_layout_tag_d != LayoutType.RowMajor:
++    raise ValueError("SM120 epilogue filter currently models row-major D only")
++
++  cta_n = threadblock_mnk[1]
++  fp6_types = (DataType.e2m3, DataType.e3m2)
++
++  # FP6 TMA output is stored in 8-bit containers and requires a contiguous
++  # CTA/epilogue extent of 128 elements.
++  if element_d in fp6_types:
++    if cta_n % 128 != 0:
++      return False
++    epilogue_n = 128
++  else:
++    epilogue_n = min(cta_n, 32)
++
++  def storage_atom_ok(element):
++    if element == DataType.void:
++      return True
++    storage_bits = 8 if element in fp6_types else DataTypeSize[element]
++    required_extent = max(8, 128 // storage_bits)
++    return epilogue_n % required_extent == 0
++
++  if not storage_atom_ok(element_c) or not storage_atom_ok(element_d):
++    return False
++
++  if output_sf_vector_size is not None:
++    if epilogue_n % output_sf_vector_size != 0:
++      return False
++    vectors_per_epilogue = epilogue_n // output_sf_vector_size
++    if vectors_per_epilogue not in (1, 2, 4, 8):
++      return False
++
++  return True
++
+ #
+ LayoutTag = {
+   LayoutType.ColumnMajor: 'cutlass::layout::ColumnMajor',
+diff --git a/python/cutlass_library/generator.py b/python/cutlass_library/generator.py
+--- a/python/cutlass_library/generator.py
++++ b/python/cutlass_library/generator.py
+@@ -11339,7 +11339,21 @@ def tile_schedulers(sfdtype, kernel_schedule):
+           TileDescription(tile_size, 0, [4, 1, 1], math_inst, min_cc, max_cc, cluster_shape))
+ 
+       for data_type in data_types:
+-        CreateGemmUniversal3xOperator(manifest, layouts, tile_descriptions, data_type,
++        filtered_tile_descriptions = [
++          td for td in tile_descriptions
++          if all(sm120_rowmajor_epilogue_threadblock_shape_ok(
++            td.threadblock_shape,
++            data_type["c_type"],
++            data_type["d_type"],
++            layout_d[2][0],
++            data_type["sfd_type"]["vector_size"])
++            for layout_d in layouts)
++        ]
++        if not filtered_tile_descriptions:
++          raise RuntimeError(
++            "No valid SM120 mixed-input epilogue tile remains for "
++            f"D={data_type['d_type']} SFD={data_type['sfd_type']}")
++        CreateGemmUniversal3xOperator(manifest, layouts, filtered_tile_descriptions, data_type,
+           [[kernel_schedule, EpilogueScheduleType.ScheduleAuto]],
+           tile_schedulers = tile_schedulers(data_type["sfd_type"], kernel_schedule),
+           gemm_kind = gemm_kind
+@@ -11438,6 +11452,8 @@ def tile_schedulers(sfdtype, kernel_schedule):
+           tile_descriptions.append(
+             TileDescription(tile_size, 0, [4, 1, 1], math_inst, min_cc, max_cc, cluster_shape))
+ 
++      if not tile_descriptions:
++        continue
+       data_types = [
+         {
+           "a_type"   : math_inst.element_a,
+@@ -11529,7 +11545,21 @@ def tile_schedulers(sfdtype, kernel_schedule):
+         layout[2][1] = 128 // DataTypeSize[data_types[0]["d_type"]]
+ 
+       for data_type in data_types:
+-        CreateGemmUniversal3xOperator(manifest, layouts, tile_descriptions, data_type,
++        filtered_tile_descriptions = [
++          td for td in tile_descriptions
++          if all(sm120_rowmajor_epilogue_threadblock_shape_ok(
++            td.threadblock_shape,
++            data_type["c_type"],
++            data_type["d_type"],
++            layout_d[2][0],
++            data_type["sfd_type"]["vector_size"])
++            for layout_d in layouts)
++        ]
++        if not filtered_tile_descriptions:
++          raise RuntimeError(
++            "No valid SM120 FP4 epilogue tile remains for "
++            f"D={data_type['d_type']} SFD={data_type['sfd_type']}")
++        CreateGemmUniversal3xOperator(manifest, layouts, filtered_tile_descriptions, data_type,
+           [[kernel_schedule, EpilogueScheduleType.ScheduleAuto]],
+           tile_schedulers = tile_schedulers(data_type["sfd_type"], kernel_schedule),
+           gemm_kind = gemm_kind
+diff --git a/test/python/cutlass/test_sm120_epilogue_filter.py b/test/python/cutlass/test_sm120_epilogue_filter.py
+new file mode 100644
+--- /dev/null
++++ b/test/python/cutlass/test_sm120_epilogue_filter.py
+@@ -0,0 +1,80 @@
++#################################################################################################
++#
++# Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
++# SPDX-License-Identifier: BSD-3-Clause
++#
++#################################################################################################
++
++"""Regression coverage for the SM120 generated-library epilogue filter."""
++
++import os
++import sys
++import unittest
++
++_CUTLASS_PY = os.path.abspath(
++    os.path.join(os.path.dirname(__file__), "..", "..", "..", "python")
++)
++if _CUTLASS_PY not in sys.path:
++  sys.path.insert(0, _CUTLASS_PY)
++
++from cutlass_library.library import (  # noqa: E402
++    DataType,
++    LayoutType,
++    sm120_rowmajor_epilogue_threadblock_shape_ok,
++)
++
++
++class Sm120EpilogueThreadblockFilterTests(unittest.TestCase):
++  @staticmethod
++  def compatible(n, element_c, element_d, output_sf_vector_size=None):
++    return sm120_rowmajor_epilogue_threadblock_shape_ok(
++        (128, n, 128),
++        element_c,
++        element_d,
++        LayoutType.RowMajor,
++        output_sf_vector_size)
++
++  def test_fp32_output_retains_small_n(self):
++    self.assertTrue(self.compatible(8, DataType.void, DataType.f32))
++    self.assertTrue(self.compatible(16, DataType.f16, DataType.f32))
++
++  def test_eight_bit_output_starts_at_n16(self):
++    self.assertFalse(self.compatible(8, DataType.void, DataType.e5m2))
++    self.assertTrue(self.compatible(16, DataType.void, DataType.e5m2))
++
++  def test_output_scale_vector_32_starts_at_n32(self):
++    self.assertFalse(
++        self.compatible(16, DataType.f16, DataType.e5m2, 32))
++    self.assertTrue(
++        self.compatible(32, DataType.f16, DataType.e5m2, 32))
++
++  def test_fp4_output_storage_starts_at_n32(self):
++    self.assertFalse(
++        self.compatible(8, DataType.f16, DataType.e2m1, 16))
++    self.assertFalse(
++        self.compatible(16, DataType.f16, DataType.e2m1, 16))
++    self.assertTrue(
++        self.compatible(32, DataType.f16, DataType.e2m1, 16))
++    self.assertTrue(
++        self.compatible(32, DataType.f16, DataType.e2m1, 32))
++
++  def test_fp6_output_requires_n_multiple_of_128(self):
++    for element_d in (DataType.e2m3, DataType.e3m2):
++      for n in (8, 16, 32, 64):
++        with self.subTest(element_d=element_d, n=n):
++          self.assertFalse(
++              self.compatible(n, DataType.f16, element_d, 32))
++      self.assertTrue(
++          self.compatible(128, DataType.f16, element_d, 32))
++
++  def test_non_rowmajor_layout_fails_closed(self):
++    with self.assertRaisesRegex(ValueError, "row-major D only"):
++      sm120_rowmajor_epilogue_threadblock_shape_ok(
++          (128, 128, 128),
++          DataType.void,
++          DataType.f32,
++          LayoutType.ColumnMajor)
++
++
++if __name__ == "__main__":
++  unittest.main()

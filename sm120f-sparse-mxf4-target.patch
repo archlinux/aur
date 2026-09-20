@@ -1,0 +1,64 @@
+diff --git a/python/cutlass_library/manifest.py b/python/cutlass_library/manifest.py
+--- a/python/cutlass_library/manifest.py
++++ b/python/cutlass_library/manifest.py
+@@ -66,6 +66,21 @@
+ _LOGGER = logging.getLogger(__name__)
+ 
+ 
++def operation_build_subclass(operation):
++  """Return the private generated-target group for an operation."""
++  subclass = operation.extended_name()
++  if (operation.operation_kind == OperationKind.Gemm and
++      operation.arch == 120 and
++      operation.tile_description.math_instruction.opcode_class ==
++        OpcodeClass.BlockScaledSparseTensorOp and
++      operation.A.element == DataType.e2m1 and
++      operation.B.element == DataType.e2m1):
++    # SM120 sparse block-scaled kernels need architecture-specific code, but
++    # extended_name() also groups ordinary sparse kernels into this target.
++    return subclass + "_bssptensorop"
++  return subclass
++
++
+ class EmitOperationKindAll:
+   """
+   Emit the OperationKind-level CUTLASS library initialization code.
+@@ -296,7 +311,9 @@ class EmitOperationKindLibrary:
+     # The extended name for all operations of a given configuration_name is guaranteed
+     # to be the same because extended_name() is used in defining configuration_name. Thus,
+     # we can safely use the extended_name() of the first operation.
+-    extended_name = operations[0].extended_name()
++    extended_name = operation_build_subclass(operations[0])
++    assert all(operation_build_subclass(operation) == extended_name
++               for operation in operations)
+     _LOGGER.debug('***   extended_name (for all ops): ' + extended_name)
+ 
+     # Create a directory for operations with this subclass if it does not exist
+@@ -744,7 +761,7 @@ class Manifest:
+       for min_cc, configurations in operations_by_cc.items():
+         for operations in configurations.values():
+           for operation in operations:
+-            key = (kind, min_cc, operation.extended_name())
++            key = (kind, min_cc, operation_build_subclass(operation))
+             supported = supported_by_target.setdefault(key, set())
+             if not self.filter_by_cc:
+               supported.update(self.compute_capabilities_feature_set)
+diff --git a/tools/library/CMakeLists.txt b/tools/library/CMakeLists.txt
+--- a/tools/library/CMakeLists.txt
++++ b/tools/library/CMakeLists.txt
+@@ -136,6 +136,15 @@ function(cutlass_add_cutlass_library)
+       message(FATAL_ERROR "The SM100 MXF4/NVF4 sparse kernels require an architecture-specific target")
+     endif()
+     cutlass_apply_cuda_gencode_flags(${__NAME}_objs SM_ARCHS ${__MXF4_SPARSE_ARCHS})
++  elseif (__SUFFIX MATCHES "^gemm_sm120_.*_spgemm_e2m1_bssptensorop$")
++    # PTX excludes sparse MXF4/NVF4 from the SM120 family feature set. Keep
++    # both concrete architectures, which support the instruction class.
++    set(__MXF4_SPARSE_ARCHS ${__SM_ARCHS})
++    list(FILTER __MXF4_SPARSE_ARCHS EXCLUDE REGEX "f$")
++    if (NOT __MXF4_SPARSE_ARCHS)
++      message(FATAL_ERROR "The SM120 MXF4/NVF4 sparse kernels require a supported target")
++    endif()
++    cutlass_apply_cuda_gencode_flags(${__NAME}_objs SM_ARCHS ${__MXF4_SPARSE_ARCHS})
+   elseif (__SM_ARCHS)
+     cutlass_apply_cuda_gencode_flags(${__NAME}_objs SM_ARCHS ${__SM_ARCHS})
+   endif()

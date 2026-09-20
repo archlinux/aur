@@ -1,0 +1,23 @@
+diff --git a/python/cutlass_library/manifest.py b/python/cutlass_library/manifest.py
+--- a/python/cutlass_library/manifest.py
++++ b/python/cutlass_library/manifest.py
+@@ -79,5 +79,19 @@ def operation_build_subclass(operation):
+     # extended_name() also groups ordinary sparse kernels into this target.
+     return subclass + "_bssptensorop"
++  if (operation.operation_kind == OperationKind.Gemm and
++      operation.arch == 100 and
++      operation.gemm_kind in (
++        GemmKind.GroupedUniversal3x,
++        GemmKind.GroupedBlockScaledUniversal3x,
++        GemmKind.GroupedBlockwiseUniversal3x) and
++      operation.C.element == DataType.void and
++      (operation.A.element, operation.B.element) in (
++        (DataType.e4m3, DataType.e5m2),
++        (DataType.e5m2, DataType.e4m3))):
++    # Six SM100 code profiles make the unsplit crossed-FP8 group exceed the
++    # x86-64 PC-relative range. Split only private build targets by output
++    # type; kernel procedural names and manifest registration stay unchanged.
++    return subclass + "_d_" + DataTypeNames[operation.D.element]
+   return subclass
+ 
+ 

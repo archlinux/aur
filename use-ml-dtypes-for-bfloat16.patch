@@ -1,0 +1,49 @@
+diff --git a/python/cutlass_cppgen/utils/datatypes.py b/python/cutlass_cppgen/utils/datatypes.py
+index dd113797..e84262d7 100644
+--- a/python/cutlass_cppgen/utils/datatypes.py
++++ b/python/cutlass_cppgen/utils/datatypes.py
+@@ -214,26 +214,26 @@ def is_bfloat16_available():
+ 
+     if bfloat16_available is None:
+         try:
+-            import bfloat16
++            import ml_dtypes
+ 
+             bfloat16_available = True
+         except ImportError:
+             bfloat16_available = False
+     return bfloat16_available
+ 
+ 
+ def bfloat16_library_type(inp) -> cutlass_cppgen.DataType:
+     if is_bfloat16_available():
+-        import bfloat16
+-        if inp == bfloat16.bfloat16:
++        import ml_dtypes
++        if inp == ml_dtypes.bfloat16:
+             return cutlass_cppgen.DataType.bf16
+ 
+ 
+ def bfloat16_type(inp):
+     if is_bfloat16_available():
+-        import bfloat16
++        import ml_dtypes
+         if inp == cutlass_cppgen.DataType.bf16:
+-            return bfloat16.bfloat16
++            return ml_dtypes.bfloat16
+ 
+ 
+ def library_type(inp):
+diff --git a/python/setup_cutlass.py b/python/setup_cutlass.py
+index 4a7993eb..9639af09 100644
+--- a/python/setup_cutlass.py
++++ b/python/setup_cutlass.py
+@@ -64,7 +64,7 @@ setup(
+         ],
+     setup_requires=['pybind11'],
+     install_requires=[
+-        'bfloat16',
++        'ml_dtypes',
+         'cuda-python>=11.8.0',
+         'pybind11',
+         'scikit-build',

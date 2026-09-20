@@ -1,0 +1,98 @@
+diff --git a/python/cutlass_library/manifest.py b/python/cutlass_library/manifest.py
+--- a/python/cutlass_library/manifest.py
++++ b/python/cutlass_library/manifest.py
+@@ -732,7 +732,50 @@ class Manifest:
+       _LOGGER.debug("Culled {} from manifest".format(operation.procedural_name()))
+   #
+ 
++  def target_architecture_index(self):
++    """Map generated targets to requested architectures in one operation pass."""
++    architecture_features = [
++      (architecture, int(architecture.split('a')[0].split('f')[0]))
++      for architecture in self.compute_capabilities_feature_set
++    ]
++    supported_by_target = {}
++
++    for kind, operations_by_cc in self.operations.items():
++      for min_cc, configurations in operations_by_cc.items():
++        for operations in configurations.values():
++          for operation in operations:
++            key = (kind, min_cc, operation.extended_name())
++            supported = supported_by_target.setdefault(key, set())
++            if not self.filter_by_cc:
++              supported.update(self.compute_capabilities_feature_set)
++              continue
++            tile = operation.tile_description
++            smem_usage = CalculateSmemUsage(operation)
++
++            for architecture, baseline_cc in architecture_features:
++              if baseline_cc >= tile.minimum_compute_capability and \
++                 baseline_cc <= tile.maximum_compute_capability and \
++                 (baseline_cc not in SharedMemPerCC or
++                  SharedMemPerCC[baseline_cc] >= smem_usage):
++                supported.add(architecture)
++
++    target_architectures = {}
++    for key, supported in supported_by_target.items():
++      architectures = [
++        architecture for architecture in self.compute_capabilities_feature_set
++        if architecture in supported
++      ]
++      if not architectures:
++        kind, min_cc, subclass = key
++        raise RuntimeError(
++          "No requested architecture supports generated target "
++          f"{OperationKindNames[kind]}_sm{min_cc}_{subclass}")
++      target_architectures[key] = architectures
++
++    return target_architectures
++
+   def emit_manifest_cmake(self, manifest_path, top_level_path, source_files):
++    target_architectures = self.target_architecture_index()
+     with open(manifest_path, "w") as manifest_file:
+ 
+       target_text = SubstituteTemplate("""cutlass_target_sources(cutlass_library_objs PRIVATE
+@@ -749,6 +792,7 @@ class Manifest:
+       for kind in self.operations.keys():
+         for min_cc in sorted(self.operations[kind].keys()):
+           for subclass in sorted(source_files[kind][min_cc].keys()):
++            architectures = target_architectures[(kind, min_cc, subclass)]
+             target_text = SubstituteTemplate("""cutlass_add_cutlass_library(
+       SUFFIX ${kind}_sm${min_cc}_${subclass}
+ """, { 'min_cc': str(min_cc), 'kind': OperationKindNames[kind], 'subclass': subclass })
+@@ -757,6 +801,7 @@ class Manifest:
+             for source_file in source_files[kind][min_cc][subclass]:
+               manifest_file.write("    %s\n" % str(source_file.replace('\\', '/')))
+ 
++            manifest_file.write("    SM_ARCHS %s\n" % ' '.join(architectures))
+             manifest_file.write(")\n")
+ 
+           if self.disable_full_archs_compilation:
+diff --git a/tools/library/CMakeLists.txt b/tools/library/CMakeLists.txt
+--- a/tools/library/CMakeLists.txt
++++ b/tools/library/CMakeLists.txt
+@@ -97,7 +97,7 @@ function(cutlass_add_cutlass_library)
+ 
+   set(options)
+   set(oneValueArgs SUFFIX)
+-  set(multiValueArgs)
++  set(multiValueArgs SM_ARCHS)
+   cmake_parse_arguments(_ "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
+ 
+   set(DEFAULT_NAME cutlass_library)
+@@ -130,9 +130,14 @@ function(cutlass_add_cutlass_library)
+   # invalid family-portable code objects for this one instruction class.
+   # The corresponding architecture-specific sm_*a code objects remain.
+   if (__SUFFIX MATCHES "^gemm_sm100_.*_spgemm_e2m1$")
+-    set(__MXF4_SPARSE_ARCHS ${CUTLASS_NVCC_ARCHS_ENABLED})
++    set(__MXF4_SPARSE_ARCHS ${__SM_ARCHS})
+     list(FILTER __MXF4_SPARSE_ARCHS EXCLUDE REGEX "f$")
++    if (NOT __MXF4_SPARSE_ARCHS)
++      message(FATAL_ERROR "The SM100 MXF4/NVF4 sparse kernels require an architecture-specific target")
++    endif()
+     cutlass_apply_cuda_gencode_flags(${__NAME}_objs SM_ARCHS ${__MXF4_SPARSE_ARCHS})
++  elseif (__SM_ARCHS)
++    cutlass_apply_cuda_gencode_flags(${__NAME}_objs SM_ARCHS ${__SM_ARCHS})
+   endif()
+ 
+   # Use medium code model to handle large libraries (>2GB) on Linux x86_64

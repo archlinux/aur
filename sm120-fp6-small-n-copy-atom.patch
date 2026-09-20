@@ -1,0 +1,20 @@
+diff --git a/include/cutlass/gemm/collective/builders/sm120_common.inl b/include/cutlass/gemm/collective/builders/sm120_common.inl
+--- a/include/cutlass/gemm/collective/builders/sm120_common.inl
++++ b/include/cutlass/gemm/collective/builders/sm120_common.inl
+@@ -81,7 +81,15 @@ auto
+ sm120_rr_smem_copy_selector_B() {
+   if constexpr (UseF8f6f4) {
+     if constexpr (sizeof_bits_v<ElementB> == 6) {
+-      return SM100_SU6_DU8x16_x4_LDSM_N{};
++      if constexpr (TileShapeN < 16) {
++        return SM100_SU6_DU8x16_x1_LDSM_N{};
++      }
++      else if constexpr (TileShapeN < 32) {
++        return SM100_SU6_DU8x16_x2_LDSM_N{};
++      }
++      else {
++        return SM100_SU6_DU8x16_x4_LDSM_N{};
++      }
+     }
+     else if constexpr (sizeof_bits_v<ElementB> == 4) {
+       if constexpr (TileShapeN < 16) {

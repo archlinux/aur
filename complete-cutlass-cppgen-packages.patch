@@ -1,0 +1,14 @@
+diff --git a/python/setup_cutlass.py b/python/setup_cutlass.py
+--- a/python/setup_cutlass.py
++++ b/python/setup_cutlass.py
+@@ -57,8 +57,2 @@
+-    packages=[
+-        'cutlass_cppgen',
+-        'cutlass_cppgen.emit',
+-        'cutlass_cppgen.op',
+-        'cutlass_cppgen.utils',
+-        'cutlass_cppgen.backend',
+-        'cutlass_cppgen.backend.utils'
+-        ],
++    packages=setuptools.find_packages(
++        include=('cutlass_cppgen', 'cutlass_cppgen.*')),

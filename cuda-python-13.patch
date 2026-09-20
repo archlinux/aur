@@ -1,0 +1,37 @@
+diff --git a/python/cutlass_cppgen/backend/operation.py b/python/cutlass_cppgen/backend/operation.py
+index 7fb590ef..ef8e5f71 100644
+--- a/python/cutlass_cppgen/backend/operation.py
++++ b/python/cutlass_cppgen/backend/operation.py
+@@ -40,7 +40,10 @@ _supports_cluster_launch = None
+ 
+ 
+ def supports_cluster_launch():
+-    from cuda import __version__ 
++    try:
++        from cuda.bindings import __version__
++    except ImportError:
++        from cuda import __version__
+     _version_splits = [int(x) for x in __version__.split("rc")[0].split(".post")[0].split(".")]
+     global _supports_cluster_launch
+     if _supports_cluster_launch is None:
+diff --git a/python/cutlass_cppgen/utils/lazy_import.py b/python/cutlass_cppgen/utils/lazy_import.py
+index 9345e395..1bd44620 100644
+--- a/python/cutlass_cppgen/utils/lazy_import.py
++++ b/python/cutlass_cppgen/utils/lazy_import.py
+@@ -32,7 +32,17 @@ import importlib
++import importlib.util
+ from typing import Any
+ 
+ def lazy_import(mod_name: str) -> Any:
++    # cuda-python 13 moved the driver and runtime APIs from cuda.cuda and
++    # cuda.cudart to cuda.bindings. Keep compatibility with both layouts.
++    if importlib.util.find_spec("cuda.bindings.driver") is not None:
++        mod_name = {
++            "cuda": "cuda.bindings",
++            "cuda.cuda": "cuda.bindings.driver",
++            "cuda.cudart": "cuda.bindings.runtime",
++        }.get(mod_name, mod_name)
++
+     class Lazy:
+         def __getattr__(self, name:str) -> Any:
+             module = importlib.import_module(mod_name)

@@ -1,0 +1,21 @@
+--- a/tools/library/CMakeLists.txt
++++ b/tools/library/CMakeLists.txt
+@@ -123,6 +123,18 @@ function(cutlass_add_cutlass_library)
+     PRIVATE cutlass_library_internal_interface
+     )
+ 
++  # The SM100 MXF4/NVF4 sparse object group contains tcgen05
++  # .kind::mxf4nvf4.sp instructions. PTX explicitly excludes those
++  # instructions from family-specific targets. Keep the complete kernel
++  # group and every concrete architecture, but do not ask ptxas to produce
++  # invalid family-portable code objects for this one instruction class.
++  # The corresponding architecture-specific sm_*a code objects remain.
++  if (__SUFFIX MATCHES "^gemm_sm100_.*_spgemm_e2m1$")
++    set(__MXF4_SPARSE_ARCHS ${CUTLASS_NVCC_ARCHS_ENABLED})
++    list(FILTER __MXF4_SPARSE_ARCHS EXCLUDE REGEX "f$")
++    cutlass_apply_cuda_gencode_flags(${__NAME}_objs SM_ARCHS ${__MXF4_SPARSE_ARCHS})
++  endif()
++
+   # Use medium code model to handle large libraries (>2GB) on Linux x86_64
+   # Conservative approach: only apply on Linux with GCC/Clang/Intel compilers
+   # This addresses the "relocation truncated to fit" linker error when libraries exceed 2GB
