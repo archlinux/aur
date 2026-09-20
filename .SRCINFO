@@ -1,6 +1,6 @@
 pkgbase = jellypilot-bin
 	pkgdesc = Jellyfin and Emby companion app with embedded MPV from the pinned mpv fork (prebuilt binary)
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/hewel/jellypilot
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = jellypilot-bin
 	optdepends = mpv: External MPV Playback
 	provides = jellypilot
 	conflicts = jellypilot
-	noextract = jellypilot-bin-2.2.1.pkg.tar.zst
+	noextract = jellypilot-bin-2.2.2.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = jellypilot-bin-2.2.1.pkg.tar.zst::https://github.com/hewel/jellypilot/releases/download/v2.2.1/jellypilot-2.2.1-1-x86_64.pkg.tar.zst
-	sha256sums = 8187731b0e6d39c9ed34118bc577daaafa0c3e15675ded55047878636b2bddf9
+	source = jellypilot-bin-2.2.2.pkg.tar.zst::https://github.com/hewel/jellypilot/releases/download/v2.2.2/jellypilot-2.2.2-1-x86_64.pkg.tar.zst
+	sha256sums = be031aca4c16851df89be88876cacf9f7a7acce87d8f6c8bcefb972c9206446f
 
 pkgname = jellypilot-bin
