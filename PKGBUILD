@@ -1,7 +1,7 @@
 # Maintainer : HMK
 
 pkgname=svt-av1-hdr10plus-git
-pkgver=4.1.0.r21.g00333404f
+pkgver=4.2.0.r0.g9dabe3ca0
 pkgrel=1
 pkgdesc='SVT-AV1 with enhancements for SDR and HDR encoding with HDR10+ and DoVi support. PGO.'
 arch=('x86_64')
@@ -22,7 +22,8 @@ sha256sums=('SKIP'
 
 _pgo=1
 _pgo_clip_seconds=20
-_pgo_train_params=(--rc 1 --tbr 8000 --tune 5 --preset 2 --film-grain 12)
+_pgo_train_params_vbr=(--rc 1 --tbr 8000 --tune 0 --preset 2 --film-grain 12 --film-grain-denoise 1)
+_pgo_train_params_crf=(--rc 0 --crf 30 --tune 5 --preset 2 --film-grain 12)
 _pgo_runs=5
 
 pkgver() {
@@ -68,11 +69,13 @@ build() {
     local _libdir="svt-av1-hdr/Bin/Release"
     for i in $(seq 1 "$_pgo_runs"); do
         LLVM_PROFILE_FILE="$_pgo_dir/%p_%m.profraw" LD_LIBRARY_PATH="$_libdir" \
-            "$_bin" -i "$_pgo_dir/PGO.y4m" -b /dev/null "${_pgo_train_params[@]}" \
+            "$_bin" -i "$_pgo_dir/PGO.y4m" -b /dev/null "${_pgo_train_params_vbr[@]}" \
             --pass 1 --stats "$_pgo_dir/stats.log"
         LLVM_PROFILE_FILE="$_pgo_dir/%p_%m.profraw" LD_LIBRARY_PATH="$_libdir" \
-            "$_bin" -i "$_pgo_dir/PGO.y4m" -b /dev/null "${_pgo_train_params[@]}" \
+            "$_bin" -i "$_pgo_dir/PGO.y4m" -b /dev/null "${_pgo_train_params_vbr[@]}" \
             --pass 2 --stats "$_pgo_dir/stats.log"
+        LLVM_PROFILE_FILE="$_pgo_dir/%p_%m.profraw" LD_LIBRARY_PATH="$_libdir" \
+            "$_bin" -i "$_pgo_dir/PGO.y4m" -b /dev/null "${_pgo_train_params_crf[@]}"
     done
     llvm-profdata merge -o "$_pgo_dir/default.profdata" "$_pgo_dir"/*.profraw
 
