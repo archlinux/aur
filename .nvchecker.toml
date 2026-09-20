@@ -1,0 +1,5 @@
+[dkron-bin]
+source = "github"
+github = "dkron-io/dkron"
+use_latest_release = true
+prefix = "v"

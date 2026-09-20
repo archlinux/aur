@@ -1,0 +1,22 @@
+pkgbase = dkron-bin
+	pkgdesc = Distributed, fault tolerant job scheduling system
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://dkron.io
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0
+	provides = dkron
+	conflicts = dkron
+	options = !strip
+	backup = etc/dkron/dkron.yml
+	source = CONFIG-4.2.0.yml::https://raw.githubusercontent.com/dkron-io/dkron/v4.2.0/builder/files/dkron.yml
+	source = SERVICE-4.2.0.service::https://raw.githubusercontent.com/dkron-io/dkron/v4.2.0/builder/files/dkron.service
+	sha256sums = 16e2582c09b22c23e2aa479f7aea410c8d092f56a288144d75fd8b88fd95da35
+	sha256sums = 6aa819ebd51f6ac1c327e9c2fb7c48e692ea8f0b592c359d27e1b24633be775b
+	source_x86_64 = dkron-x86_64-4.2.0.tgz::https://github.com/dkron-io/dkron/releases/download/v4.2.0/dkron_4.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 4db3c62df8fbf4789b7df8d6ca12c58926d91b78a2601a3df5480b327fb8eb1c
+	source_aarch64 = dkron-aarch64-4.2.0.tgz::https://github.com/dkron-io/dkron/releases/download/v4.2.0/dkron_4.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9115e55f0becb0a2da8aa8d5728847f370a7d7e866cc0bc8b20b85130f369316
+
+pkgname = dkron-bin
