@@ -1,6 +1,6 @@
 # Maintainer: noahlyk <noahlykins@gmail.com>
 pkgname=pipewire-crisp-vocals
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Hot-reloadable PipeWire mic DSP chain (denoise/gate/compressor/EQ) + declarative auto-wiring into a single virtual mic"
 arch=('x86_64')

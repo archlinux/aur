@@ -1,6 +1,6 @@
 pkgbase = pipewire-crisp-vocals
 	pkgdesc = Hot-reloadable PipeWire mic DSP chain (denoise/gate/compressor/EQ) + declarative auto-wiring into a single virtual mic
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/noahlyk/pipewire-crisp-vocals
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = pipewire-crisp-vocals
 	depends = jack
 	optdepends = fluidsynth: optional MIDI-keyboard synth fan-in (synth.enabled in crisp-vocals.ron)
 	options = !debug
-	source = https://github.com/noahlyk/pipewire-crisp-vocals/releases/download/v0.1.1/pipewire-crisp-vocals-0.1.1-x86_64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/noahlyk/pipewire-crisp-vocals/v0.1.1/LICENSE
+	source = https://github.com/noahlyk/pipewire-crisp-vocals/releases/download/v0.2.0/pipewire-crisp-vocals-0.2.0-x86_64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/noahlyk/pipewire-crisp-vocals/v0.2.0/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
