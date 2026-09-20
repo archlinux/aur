@@ -1,7 +1,7 @@
 pkgbase = playwright
 	pkgdesc = Node.js library to automate Chromium, Firefox and WebKit with a single API
 	pkgver = 1.63.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://playwright.dev
 	install = playwright.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = playwright
 	depends = bash
 	optdepends = flite-voices-extra: extra Flite voice libraries for bundled WebKit
 	optdepends = icu74: ICU 74 ABI required by the downloaded WebKit payload; system ICU 78 is not sufficient
+	optdepends = libxml2-legacy: libxml2.so.2 ABI required by the downloaded WebKit payload
 	conflicts = python-playwright
 	noextract = playwright-1.63.0.tgz
 	noextract = playwright-core-1.63.0.tgz
