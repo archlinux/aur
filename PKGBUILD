@@ -2,7 +2,7 @@
 
 pkgname=clifm-bin
 _pkgname=clifm
-pkgver=1.28
+pkgver=1.29
 pkgrel=1
 pkgdesc="The command line file manager (binary version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -25,7 +25,7 @@ optdepends=(
 	)
 
 source_x86_64=("${_pkgname}-${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('80be580f67d9da178a2f0d56e1ebf2812f947b49bd36790ff5f55232bfa14347')
+sha256sums_x86_64=('2c9e192ff945004ccb1a449a21802db41f1c520b291021a28091d670d5f6d495')
 
 package() {
 	install -Dm 0755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
