@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_gitname}-bin
 pkgdesc="Performance budgets and regression checks for CLIs from plain YAML"
 
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ _pkgsrc="${_gitname}-${pkgver}"
 source=("${_pkgsrc}-checksums.txt::${url}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${url}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tgz::${url}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
-sha256sums=('3b2b9e2cfe0255a5eaaa73cf483c141bfd49dce691a9a49572783033a4c453db')
-sha256sums_x86_64=('1b9dccbd51744550454e52eea788920855f4087ea15f73fafd9a92ba22f63c85')
-sha256sums_aarch64=('43f7636600d06234d637a75045f1cce7b02531a674dd7f3dce7a236232ca5227')
+sha256sums=('8aeec652dd6921f97b92e4c40c847ac50097be3886d85eef33530abd20de3234')
+sha256sums_x86_64=('45d58df979ed69552b8368b4a50fd70c84a41ac05f28048ffdaf0f14041cb8b1')
+sha256sums_aarch64=('f486cb437d3f61ccb216370a5f38f518c46134f40d0f6c22530530ee5d2098d4')
 
 
 verify() {
