@@ -1,7 +1,7 @@
 pkgbase = vigaphone-piano-tuner-midi-synth-bin
-	pkgdesc = Piano tuner, MIDI synth, and analyzer (Meta-package redirecting to vigaphone-bin)
+	pkgdesc = ViGAPhone Synth Lab: New Physical-Modeling Synthesizer, Instrument Piano Tuner, MIDI-MPE application, VST3 plugin, Sound and Timbre Spectral Analyzer and more...(Meta-pkg for vigaphone-bin)
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/vigaphone-bin
 	arch = x86_64
 	license = custom
