@@ -2,8 +2,8 @@
 
 pkgname=cinnamon-aliveos
 pkgver=6.6.9
-pkgrel=11
-pkgdesc="Cinnamon desktop environment for AliveOS (without Nemo, with Dory integration and custom enhancements)"
+pkgrel=12
+pkgdesc="Cinnamon desktop environment for AliveOS (with custom enhancements)"
 arch=('x86_64')
 url="https://github.com/linuxmint/cinnamon"
 license=('GPL-2.0-or-later')
@@ -19,7 +19,7 @@ depends=('accountsservice' 'at-spi2-core' 'bash' 'cairo' 'cinnamon-control-cente
          'python-pam' 'python-pexpect' 'python-pillow' 'python-psutil'
          'python-pyinotify' 'python-pytz' 'python-requests'          'python-setproctitle'
          'python-tinycss2' 'python-xapp' 'sound-theme-freedesktop' 'timezonemap'
-         'upower' 'xapp' 'xdg-desktop-portal-xapp')
+         'upower' 'xapp' 'xdg-desktop-portal-xapp' 'nemo')
 makedepends=()
 optdepends=('blueman: Bluetooth support'
             'cinnamon-translations: i1n'
@@ -31,7 +31,7 @@ optdepends=('blueman: Bluetooth support'
             'system-config-printer: printer settings'
             'touchegg: touch gestures'
             'wget: cover download support in audio applet')
-conflicts=('cinnamon' 'nemo' 'cinnamon-no-nemo')
+conflicts=('cinnamon' 'cinnamon-no-nemo')
 provides=("cinnamon=$pkgver")
 replaces=('cinnamon-no-nemo')
 backup=('etc/xdg/cinnamon-session/sessions/cinnamon.session')
@@ -52,7 +52,7 @@ source=("cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst::https://archlinux.org/pack
         'keyringPrompt.js'
         'patch-dialogs.py')
 sha256sums=('5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224'
-            '1b46a3e8720269ba2c5abf3604835a7aff527abbb1bb401121f8626f74427255'
+            'acc73dfeb944065d632cdfda59f0e53ff5d06c75e4d1423b4b9a723530ba86a3'
             'f89390f4af9e81219e6e0fa88d61044053dab66b42d53a4748b5d5d82009573a'
             'a71adbacde83112333df881cc839299df51ca18b9507b95df0430a39cb0f449e'
             'c0a966a9a9b8e664a72d022e6c8b81cdb040debcb59a4c6b9e77781268bdda1a'
@@ -86,7 +86,7 @@ package() {
   # Copy extracted files
   cp -a extracted/* "$pkgdir/"
 
-  # Replace cinnamon.session with dory version
+  # Install cinnamon.session with nemo-autostart
   install -Dm644 "$srcdir/cinnamon.session" \
     "$pkgdir/etc/xdg/cinnamon-session/sessions/cinnamon.session"
 
@@ -94,34 +94,12 @@ package() {
   if [ -d "$pkgdir/usr/share/cinnamon-session/sessions" ]; then
     install -Dm644 "$srcdir/cinnamon.session" \
       "$pkgdir/usr/share/cinnamon-session/sessions/cinnamon.session"
-    sed -i 's/nemo-autostart/dory-autostart/g' "$pkgdir/usr/share/cinnamon-session/sessions/"*.session 2>/dev/null || true
   fi
 
-  # Remove nemo-related files if any exist
-  rm -f "$pkgdir/usr/share/applications/nemo.desktop" 2>/dev/null || true
-  rm -f "$pkgdir/usr/share/applications/nemo-autostart.desktop" 2>/dev/null || true
-  rm -f "$pkgdir/usr/share/applications/nemo-autorun-software.desktop" 2>/dev/null || true
-  rm -f "$pkgdir/etc/xdg/autostart/nemo-autostart.desktop" 2>/dev/null || true
-
-  # Ensure dory-autostart.desktop is installed in /etc/xdg/autostart/
-  if [ -f "$pkgdir/usr/share/applications/dory-autostart.desktop" ]; then
-    install -Dm644 "$pkgdir/usr/share/applications/dory-autostart.desktop" \
-      "$pkgdir/etc/xdg/autostart/dory-autostart.desktop"
-  fi
-
-  # Route GTK3 native file choosers through the portal so Dory is used
+  # Route GTK3 native file choosers through the portal
   install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/gtk-portal.sh" << 'EOF'
 export GTK_USE_PORTAL=1
 EOF
-
-  # Patch cs_actions.py to use Dory layout editor instead of Nemo
-  sed -i \
-    -e 's|nemo-action-layout-editor|dory-action-layout-editor|' \
-    -e 's|nemo/layout-editor|dory/layout-editor|' \
-    -e 's|nemo_action_layout_editor|dory_action_layout_editor|' \
-    -e 's|NemoActionsOrganizer|DoryActionsOrganizer|' \
-    -e 's|\.local/share/nemo/actions|.local/share/dory/actions|' \
-    "$pkgdir/usr/share/cinnamon/cinnamon-settings/modules/cs_actions.py"
 
   # Override session quit dialog with GTK3 Zenity dialog
   install -Dm755 "$srcdir/zenity-session-quit.py" \
