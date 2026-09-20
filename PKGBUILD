@@ -10,7 +10,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-gtest
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 arch=('any')
 pkgdesc="Google Test - C++ testing utility (Android ${_android_arch})"
@@ -27,7 +27,7 @@ provides=("android-${_android_arch}-gmock")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/google/googletest/archive/v${pkgver}.tar.gz"
         '0001-gtest-version.patch')
-md5sums=('b6f100bc2a5853a48046aa168ececf84'
+md5sums=('ae87634285dbe148a7abc6d19c4c05bd'
          '4b2b6493b95389d3428470eb3f904df6')
 
 prepare() {
@@ -66,6 +66,8 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
     cd googletest
     install -Dm 644 cmake/* -t "${pkgdir}/${ANDROID_PREFIX}/src/googletest/cmake"
