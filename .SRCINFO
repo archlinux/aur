@@ -1,0 +1,27 @@
+pkgbase = omniphony-studio-egui
+	pkgdesc = Omniphony Studio, native egui/wgpu host — control and 3D visualization UI for the orender spatial audio engine
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/mgth/Omniphony
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = rust
+	makedepends = cargo
+	depends = orender
+	depends = gcc-libs
+	depends = vulkan-icd-loader
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	optdepends = harletty-bridge: decode compressed/object-audio formats via the orender bridge plugin
+	optdepends = xdg-desktop-portal: native file dialogs (layout import and export)
+	optdepends = noto-fonts-cjk: Japanese, Chinese and Korean labels
+	options = !lto
+	source = omniphony-0.6.0.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 2fc90db9f979710b4d4275f3da35c13ca7caddef0f0def7d30e06b21cb1ab355
+
+pkgname = omniphony-studio-egui
