@@ -1,0 +1,39 @@
+# Said here as well as in the pkgdesc, because a package registry is where a
+# false promise costs most: someone installs, launches, gets a dialog they did
+# not expect, and files a bug against a maintainer rather than reading a README.
+
+_note() {
+  cat <<'MSG'
+
+Cordial ships no Roblox build. On first run it offers to fetch one, and
+installs it only if Roblox's own signing certificate signed it.
+
+Roblox publishes no Android binary of its own -- its endpoint answers
+supportsAndroidBinaries: false -- so the build comes from a third-party mirror,
+or from a copy Sober has already unpacked, or from an APK you point it at:
+
+    ~/.var/app/org.vinegarhq.Sober/data/sober/packages/x86_64/com.roblox.client/
+
+A local copy is preferred when there is one: it costs no request and no bytes,
+and it gets the same signature check either way.
+
+Start it with `cordial-shell`, or from your application list. `cordial-run` is
+the loader the shell launches and is not what you run by hand.
+
+Cordial is early. You can sign in, load an experience, play with keyboard and
+mouse, type into text fields and hear sound. Not working: voice chat, and on
+roughly one launch in three a signed-in client reaches the home screen and
+freezes -- reopening usually works.
+https://github.com/luohoa97/cordial#readme says which claims were measured and
+how.
+
+MSG
+}
+
+post_install() {
+  _note
+}
+
+post_upgrade() {
+  :
+}
