@@ -17,8 +17,7 @@ pkgbase = openviking-cli
 	depends = glibc
 	depends = libgcc
 	depends = xz
-	provides = ov-cli
-	provides = ov
+	conflicts = ov
 	source = openviking-cli-0.4.20.tar.gz::https://github.com/volcengine/OpenViking/archive/refs/tags/cli@0.4.20.tar.gz
 	sha256sums = 91f342011e760521570c4dd0dcbca5c420861d9afa2f79ee88e3bc4f29e6cd93
 
