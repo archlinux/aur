@@ -6,19 +6,19 @@
 # Contributor: "donaldtrump" [AUR]
 pkgname=osu-lazer
 _pkgname=osu
-pkgver=2026.804.2
+pkgver=2026.920.0
 pkgrel=1
 pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=('x86_64' 'aarch64')
 url="https://osu.ppy.sh/"
 license=('MIT AND CC-BY-NC-4.0')
-depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime-8.0')
-makedepends=('dotnet-sdk-8.0')
+depends=('ffmpeg' 'libgl' 'sdl3' 'dotnet-runtime=10.0')
+makedepends=('dotnet-sdk=10.0')
 source=("https://github.com/ppy/osu/archive/${pkgver}-lazer.tar.gz"
         "osu-lazer.sh"
         "osu-lazer.desktop"
         "osu-lazer.xml")
-sha256sums=('6a8a0b6864331a0152b43498768c55d67b1ebadf90a6da0656872bf3fc941025'
+sha256sums=('09ba951da36ab53a1744b627d98c2ce8d6e0e1c41bae6980e3b1dffc5f4f62df'
             '488b52f62445054d0615c334b6bd81ffa70d00964e91384a9cad92c54b216b3d'
             'c22099222c01f33979e17ec0575b864f018f5f416919f9ed1b2b99584a5d37d6'
             'e01a156e7c9bb11ad5b1e1698b029378cb971c29469fc3dceca9421e9a81f3e8')
@@ -26,7 +26,7 @@ sha256sums=('6a8a0b6864331a0152b43498768c55d67b1ebadf90a6da0656872bf3fc941025'
 build() {
   cd "$srcdir/$_pkgname-$pkgver-lazer"
   DOTNET_CLI_TELEMETRY_OPTOUT="1" dotnet publish osu.Desktop \
-    --framework net8.0 \
+    --framework net10.0 \
     --configuration Release \
     --use-current-runtime \
     --no-self-contained \
