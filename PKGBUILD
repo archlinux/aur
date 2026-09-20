@@ -6,7 +6,7 @@
 # Contributor: Themaister <post@themaister.net>
 
 pkgname=pcsx2-parallel-gs-git
-pkgver=2.9.9.r3.g7d25973fd3
+pkgver=2.9.72.r3.gcd83176c4d
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator with experimental paraLLEl-GS support'
 arch=(x86_64)
@@ -142,6 +142,6 @@ package() {
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '7987fe856d5d1b76c542ceda4c9dfb76f89a70044a6ed7f736633c04785d5559'
-            'd8385c21c9e7ee3b6b676ae330d8af26dc0c910c76299329b782ca96a4cea742'
-            'bccbf27e2c545dea9d95b20ba9bf9adeb3fd75bff5cf782e91dcd79d6c04e4c0')
+            '8449d257d3d9b59f1887544ca94b720b614decfe45735aa90b8505f1283ecc4b'
+            '6a0cde3f2d2564b38278054d69bc591c71c829f7d804ffd8b279b945003d273d'
+            '1de6d6e4bc7cbc01b7d23ff0af9bc6921badd0fb3ffbeee7d61f288894e9d197')

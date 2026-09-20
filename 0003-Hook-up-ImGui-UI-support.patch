@@ -1,4 +1,4 @@
-From 9fccc432b302e29b6e1d25c3f7d98e28ea6766ff Mon Sep 17 00:00:00 2001
+From ff90d9960d08447a5ae715713dcc2f506fb03be5 Mon Sep 17 00:00:00 2001
 From: Hans-Kristian Arntzen <post@arntzen-software.no>
 Date: Fri, 29 May 2026 21:23:20 +0200
 Subject: [PATCH] Hook up ImGui UI support.
@@ -13,7 +13,7 @@ Subject: [PATCH] Hook up ImGui UI support.
  6 files changed, 514 insertions(+), 132 deletions(-)
 
 diff --git a/pcsx2/GS/GS.cpp b/pcsx2/GS/GS.cpp
-index bd356d926..69e5a38e9 100644
+index d27558493..21c54afcd 100644
 --- a/pcsx2/GS/GS.cpp
 +++ b/pcsx2/GS/GS.cpp
 @@ -3,6 +3,7 @@
@@ -24,7 +24,7 @@ index bd356d926..69e5a38e9 100644
  std::unique_ptr<GSRendererPGS> g_pgs_renderer;
  #endif
  
-@@ -155,8 +156,26 @@ static bool OpenGSDevice(GSRendererType renderer, bool clear_state_on_fail, bool
+@@ -156,8 +157,26 @@ static bool OpenGSDevice(GSRendererType renderer, bool clear_state_on_fail, bool
  
  #ifdef HAVE_PARALLEL_GS
  		case RenderAPI::Granite:
@@ -51,7 +51,7 @@ index bd356d926..69e5a38e9 100644
  #endif
  
  		default:
-@@ -202,11 +221,14 @@ static bool OpenGSDevice(GSRendererType renderer, bool clear_state_on_fail, bool
+@@ -203,11 +222,14 @@ static bool OpenGSDevice(GSRendererType renderer, bool clear_state_on_fail, bool
  
  static void CloseGSDevice(bool clear_state)
  {
@@ -70,7 +70,7 @@ index bd356d926..69e5a38e9 100644
  	g_gs_device.reset();
  }
  
-@@ -240,9 +262,9 @@ static bool OpenGSRenderer(GSRendererType renderer, u8* basemem)
+@@ -241,9 +263,9 @@ static bool OpenGSRenderer(GSRendererType renderer, u8* basemem)
  		g_gs_renderer = std::make_unique<GSRendererNull>();
  	}
  #ifdef HAVE_PARALLEL_GS
@@ -82,7 +82,7 @@ index bd356d926..69e5a38e9 100644
  		if (!g_pgs_renderer->Init())
  		{
  			g_pgs_renderer.reset();
-@@ -627,7 +649,7 @@ void GSvsync(u32 field, bool registers_written)
+@@ -628,7 +650,7 @@ void GSvsync(u32 field, bool registers_written)
  
  #ifdef HAVE_PARALLEL_GS
  	if (g_pgs_renderer)
@@ -91,7 +91,7 @@ index bd356d926..69e5a38e9 100644
  #endif
  
  	// Do not move the flush into the VSync() method. It's here because EE transfers
-@@ -712,6 +734,10 @@ void GSEndCapture()
+@@ -745,6 +767,10 @@ void GSToggleVideoCapture()
  
  void GSPresentCurrentFrame()
  {
@@ -102,7 +102,7 @@ index bd356d926..69e5a38e9 100644
  	if (g_gs_renderer)
  		g_gs_renderer->PresentCurrentFrame();
  }
-@@ -742,8 +768,8 @@ void GSGameChanged()
+@@ -775,8 +801,8 @@ void GSGameChanged()
  bool GSHasDisplayWindow()
  {
  #ifdef HAVE_PARALLEL_GS
@@ -113,7 +113,7 @@ index bd356d926..69e5a38e9 100644
  #else
  	pxAssert(g_gs_device);
  #endif
-@@ -757,23 +783,19 @@ bool GSHasDisplayWindow()
+@@ -790,23 +816,19 @@ bool GSHasDisplayWindow()
  void GSResizeDisplayWindow(u32 width, u32 height, float scale)
  {
  #ifdef HAVE_PARALLEL_GS
@@ -140,7 +140,7 @@ index bd356d926..69e5a38e9 100644
  #endif
  
  	if (g_gs_device && !g_gs_device->UpdateWindow())
-@@ -782,8 +804,7 @@ void GSUpdateDisplayWindow()
+@@ -815,8 +837,7 @@ void GSUpdateDisplayWindow()
  		return;
  	}
  
@@ -150,7 +150,7 @@ index bd356d926..69e5a38e9 100644
  }
  
  void GSSetVSyncMode(GSVSyncMode mode, bool allow_present_throttle)
-@@ -796,8 +817,8 @@ void GSSetVSyncMode(GSVSyncMode mode, bool allow_present_throttle)
+@@ -829,8 +850,8 @@ void GSSetVSyncMode(GSVSyncMode mode, bool allow_present_throttle)
  	Console.WriteLnFmt(Color_StrongCyan, "Setting vsync mode: {}{}", modes[static_cast<size_t>(mode)],
  		allow_present_throttle ? " (throttle allowed)" : "");
  #ifdef HAVE_PARALLEL_GS
@@ -162,7 +162,7 @@ index bd356d926..69e5a38e9 100644
  	if (g_gs_device)
  		g_gs_device->SetVSyncMode(mode, allow_present_throttle);
 diff --git a/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp b/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp
-index 5a9f22e93..509281a5d 100644
+index 5a9f22e93..f3ff76382 100644
 --- a/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp
 +++ b/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp
 @@ -3,6 +3,7 @@
@@ -711,7 +711,7 @@ index 5a9f22e93..509281a5d 100644
 +	auto height = cmd.get_device().get_swapchain_view().get_view_height();
 +	cmd.set_viewport({ 0, 0, float(width), float(height), 0, 1 });
 +
-+	for (int n = 0; n < draw_data->CmdListsCount; n++)
++	for (int n = 0; n < draw_data->CmdLists.Size; n++)
 +	{
 +		const ImDrawList *cmd_list = draw_data->CmdLists[n];
 +		memcpy(cmd.allocate_vertex_data(0, cmd_list->VtxBuffer.Size * sizeof(ImDrawVert), sizeof(ImDrawVert)),
@@ -935,10 +935,10 @@ index 8fba63757..1e6e8d9e2 100644
 +	void render_ui_end();
  };
 diff --git a/pcsx2/GameDatabase.cpp b/pcsx2/GameDatabase.cpp
-index 0ad9a91c3..6d04913e8 100644
+index 3e82a8f31..1697b9475 100644
 --- a/pcsx2/GameDatabase.cpp
 +++ b/pcsx2/GameDatabase.cpp
-@@ -703,7 +703,7 @@ void GameDatabaseSchema::GameEntry::applyGSHardwareFixes(Pcsx2Config::GSOptions&
+@@ -707,7 +707,7 @@ void GameDatabaseSchema::GameEntry::applyGSHardwareFixes(Pcsx2Config::GSOptions&
  
  	// Only apply GS HW fixes if the user hasn't manually enabled HW fixes.
  	const bool apply_auto_fixes = !config.ManualUserHacks;
