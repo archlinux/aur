@@ -1,5 +1,5 @@
 pkgbase = mister-companion
-	pkgdesc = Companion utility for managing and syncing MiSTer FPGA setups
+	pkgdesc = Companion utility for managing MiSTer FPGA setups (source build; see mister-companion-bin for Cloud/Scraper support)
 	pkgver = r415.ae87ce3
 	pkgrel = 1
 	url = https://github.com/Anime0t4ku/mister-companion
