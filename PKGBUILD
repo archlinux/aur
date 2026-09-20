@@ -22,7 +22,7 @@ conflicts=('rsclip')
 source=(
   "${pkgname}-${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/rsclip-${pkgver}-x86_64.tar.zst"
 )
-sha256sums=('36f0d87aa8cf0d4216e0895c1334229985084900640f3011c74c318dc4d2c75b')
+sha256sums=('77bef6046c5fa4207df2e3f2d19783e0aff38e06375f967f36782885c392e00c')
 
 package() {
   install -d "${pkgdir}"
