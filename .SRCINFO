@@ -1,0 +1,13 @@
+pkgbase = kgb-git
+	pkgdesc = KGB Archiver is the compression tool with unbelievable high compression rate
+	pkgver = 1.0b5.r0.g2dcf1fc
+	pkgrel = 1
+	url = https://sourceforge.net/projects/kgbarchiver/
+	arch = any
+	license = GPL-2.0
+	makedepends = git
+	makedepends = make
+	source = git+https://github.com/FS-make-simple/kgb.git
+	md5sums = SKIP
+
+pkgname = kgb-git
