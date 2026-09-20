@@ -1,57 +1,43 @@
 # Maintainer: Naikee <dktgsitu@gmail.com>
 #
-# Arch package built straight from the repository, so that it follows the
-# git tip: makepkg re-reads pkgver() on every build and pacman sees a newer
-# version whenever a commit lands.
+# The released build, with Python and Qt inside it. Nothing from the system
+# is used beyond libGL and fonts, so an Arch upgrade cannot break it — the
+# price being eighty megabytes instead of one, and a version that only
+# moves when a release is cut.
 #
-# Nothing is bundled here. On Arch the right thing is to lean on the system
-# Python and the system Qt rather than ship a copy of both, which is what
-# the .tar.gz release does. That makes this package about a megabyte
-# instead of eighty.
+# Prefer ergopsx-git if you would rather follow the repository and let the
+# system provide Python and Qt.
 
 _pkgname=ergopsx
 pkgname=ergopsx-git
-pkgver=r55.7400400
+pkgver=0.2
 pkgrel=1
 pkgdesc="PlayStation 1 save manager: memory cards, containers, game breakdowns, consoles over FTP"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/NaikeeAndy/ergopsx"
 license=('MIT')
-depends=('python' 'pyside6')
-makedepends=('git')
+# Measured by starting the build in a bare Arch container: everything else
+# it needs travels inside the archive.
+depends=('libglvnd' 'fontconfig')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/NaikeeAndy/ergopsx.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+options=('!strip')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/ErgoPSXSaveManager-v$pkgver-linux-x86_64.tar.gz"
+        "ergopsx.desktop::https://raw.githubusercontent.com/NaikeeAndy/ergopsx/v$pkgver/qt/packaging/ergopsx.desktop"
+        "ergopsx.png::https://raw.githubusercontent.com/NaikeeAndy/ergopsx/v$pkgver/qt/packaging/ergopsx.png")
+sha256sums=('51dd922c1558df6b7a9ddfb9fd634476e2743b255ef93b5adb91515c26c882e5'
+            'd0ed821311b4dc49b177bb8e6ec1ebe46b050dda742494ba8ed6494826cef1e2'
+            'dd3a905c42eb45341ba0529121d8606fb31cb521bc2f526c8cd574fbacb65448')
 
 package() {
-    cd "$srcdir/$_pkgname"
-
-    # The app reads its engine from tools/ and its string tables from
-    # tools/data, so both travel with it.
-    install -d "$pkgdir/usr/share/$_pkgname"
-    cp -r qt tools "$pkgdir/usr/share/$_pkgname/"
-    rm -rf "$pkgdir/usr/share/$_pkgname/qt/.venv" \
-           "$pkgdir/usr/share/$_pkgname/qt/dist" \
-           "$pkgdir/usr/share/$_pkgname/qt/build"
-    find "$pkgdir/usr/share/$_pkgname" -name '__pycache__' -type d -exec rm -rf {} +
+    install -d "$pkgdir/opt/$_pkgname"
+    cp -r "$srcdir/ErgoPSXSaveManager/." "$pkgdir/opt/$_pkgname/"
 
     install -d "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/$_pkgname" <<'LAUNCH'
-#!/bin/sh
-exec python /usr/share/ergopsx/qt/app.py "$@"
-LAUNCH
-    chmod 755 "$pkgdir/usr/bin/$_pkgname"
+    ln -s "/opt/$_pkgname/ErgoPSXSaveManager" "$pkgdir/usr/bin/$_pkgname"
 
-    install -Dm644 qt/packaging/ergopsx.desktop \
+    install -Dm644 "$srcdir/ergopsx.desktop" \
         "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    install -Dm644 qt/packaging/ergopsx.png \
+    install -Dm644 "$srcdir/ergopsx.png" \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
