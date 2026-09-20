@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xpipe-bin
 _pkgname=XPipe
-pkgver=24.3
+pkgver=24.4
 pkgrel=1
 pkgdesc="Access your entire server infrastructure from your local desktop."
 arch=(
@@ -24,8 +24,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-installer-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-installer-linux-x86_64.rpm")
 sha256sums=('235061e14a5ba0983364e506bdf824ea11f6c987d9b116af7ce6ce8967ef5603')
-sha256sums_aarch64=('d85ec8661ad6aab5c2d47154d244e4d98d1d44d6782541217acee2526a1ad05f')
-sha256sums_x86_64=('77718b398004a416f769ba32c07e0975a8f119935b246c9f669331bb9fba072b')
+sha256sums_aarch64=('b08f22d6b73d07827fd653f0b329c5e4ff440f7656322a3af038bb514e621d9d')
+sha256sums_x86_64=('45af310ac5c06e2a795725621857c5d5f2bce63e632e5b85212c9aafdb90ae45')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
