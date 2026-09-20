@@ -1,7 +1,7 @@
 # Maintainer: Pol Rivero <aur at polrivero dot com>
 pkgname=omasnap-bin
 _pkgname=omasnap
-pkgver=1.20.1
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Native Wayland screenshot and annotation editor for Omarchy and Hyprland (prebuilt binary)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/tobi/omasnap/v${pkgver}/LICENSE"
 )
 
-sha256sums=('8890b45aad71728ec7ebaad4bdaf8cdc59bd2a5d7e14b749973e4bb5f544a366'
+sha256sums=('55a0dbf6c1f3c86438389ffaa471448a772466316e09041b38bc5a662f34cba5'
             'SKIP')
 
 package() {
