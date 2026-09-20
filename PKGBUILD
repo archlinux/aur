@@ -1,6 +1,6 @@
 # Maintainer: Kritiqual
 pkgname=neovide-nightly-bin
-pkgver=nightly.r25.gade2d9c
+pkgver=nightly.r26.g105fd64
 pkgrel=1
 pkgdesc='No Nonsense Neovim Client in Rust (nightly build)'
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     'LICENSE::https://raw.githubusercontent.com/neovide/neovide/nightly/LICENSE'
 )
 
-sha256sums=('8acc3aca8807e546ae1e49fb6393b0b768b67c132679d25bf59b3c19981326a9'
+sha256sums=('a5e17c5d8add691a500ff94e96d9782192a757c942c7fdff8f090b2025b8ebdd'
             '028fe24eee4a367dfba9cb223725055da327b1c261325cc33049192ca0fdd2f8'
             'a6870391ded090cc5f24f0cb40a8ffa67930faf109a419753ec25ac0a03177a9'
             '60c7b5e1d0b3daee2f2a504d622e47ca37f45e61bb2538a2a10e1c5555da1dd7')
