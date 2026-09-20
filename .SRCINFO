@@ -1,6 +1,6 @@
 pkgbase = viizeymix
 	pkgdesc = VoiceMeeter-style PipeWire mixer, router, and IntelliPan processor
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/PetLucy/ViiZeyMix
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = viizeymix
 	depends = wireplumber
 	depends = pipewire-pulse
 	depends = libpulse
-	source = viizeymix-0.7.3.tar.gz::https://github.com/PetLucy/ViiZeyMix/archive/refs/tags/v0.7.3.tar.gz
-	sha256sums = cf085c7c3d8b0ab34810a34e912144ec36aad6bef85b000db1ef9ba1a05a70cc
+	source = viizeymix-0.7.4.tar.gz::https://github.com/PetLucy/ViiZeyMix/archive/refs/tags/v0.7.4.tar.gz
+	sha256sums = 27bd39bdf870bdcd793501af40de011c433e0c09bfef9c4790057483d7f569c9
 
 pkgname = viizeymix

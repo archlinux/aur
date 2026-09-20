@@ -1,6 +1,6 @@
 # Maintainer: Lucy <https://github.com/PetLucy>
 pkgname=viizeymix
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='VoiceMeeter-style PipeWire mixer, router, and IntelliPan processor'
 arch=('x86_64')
@@ -17,7 +17,8 @@ depends=(
 )
 makedepends=('meson' 'ninja' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cf085c7c3d8b0ab34810a34e912144ec36aad6bef85b000db1ef9ba1a05a70cc')
+# Replace this after the v0.7.4 tag is published.
+sha256sums=('27bd39bdf870bdcd793501af40de011c433e0c09bfef9c4790057483d7f569c9')
 
 build() {
   arch-meson "ViiZeyMix-$pkgver" build
