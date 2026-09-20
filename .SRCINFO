@@ -1,6 +1,6 @@
 pkgbase = python-certipy-ad-git
 	pkgdesc = Tool for Active Directory Certificate Services enumeration and abuse
-	pkgver = 5.0.4.r3.g890dbf8
+	pkgver = 5.1.0.r12.g3ae3442
 	pkgrel = 1
 	url = https://github.com/ly4k/certipy
 	arch = any
@@ -23,8 +23,10 @@ pkgbase = python-certipy-ad-git
 	depends = python-httpx>=0.28.1
 	depends = python-argcomplete>=3.6.2
 	optdepends = python-neo4j: For BloodHound output
-	provides = python-certipy-ad
+	provides = python-certipy-ad=5.1.0.r12.g3ae3442
+	provides = certipy-ad=5.1.0.r12.g3ae3442
 	conflicts = python-certipy-ad
+	conflicts = certipy-ad
 	source = git+https://github.com/ly4k/certipy
 	b2sums = SKIP
 

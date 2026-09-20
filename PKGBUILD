@@ -1,13 +1,18 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
-_name="certipy"
-pkgname="python-$_name-ad-git"
-pkgver=5.0.4.r3.g890dbf8
+pkgname="python-certipy-ad-git"
+pkgver=5.1.0.r12.g3ae3442
 pkgrel=1
 pkgdesc="Tool for Active Directory Certificate Services enumeration and abuse"
-arch=(any)
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-url="https://github.com/ly4k/$_name"
+arch=('any')
+provides=(
+  "${pkgname%-git}=$pkgver"
+  "certipy-ad=$pkgver"
+)
+conflicts=(
+  "${pkgname%-git}"
+  'certipy-ad'
+)
+url="https://github.com/ly4k/certipy"
 license=('MIT')
 depends=(
   'python>=3.12'
@@ -37,23 +42,26 @@ source=("git+$url")
 b2sums=('SKIP')
 
 prepare() {
-  git -C "$_name" clean -dfx
+  git -C certipy clean -dfx
 }
 
 pkgver() {
-  cd "$_name"
+  cd certipy
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$_name"
+  cd certipy
   python -m build -wnx
 }
 
 package() {
-  cd "$_name"
-  python -m installer -d "$pkgdir/" dist/*.whl
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd certipy
+  python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm0644 <(register-python-argcomplete -s bash certipy) "$pkgdir/usr/share/bash-completion/completions/certipy"
+  install -Dm0644 <(register-python-argcomplete -s zsh certipy) "$pkgdir/usr/share/zsh/site-functions/_certipy"
+  install -Dm0644 <(register-python-argcomplete -s fish certipy) "$pkgdir/usr/share/fish/vendor_completions.d/certipy.fish"
 }
 
 # vim: ts=2 sw=2 et:
