@@ -9,12 +9,12 @@
 #
 # _tag and pkgver are bumped by .github/workflows/publish-aur.yml when a release
 # is published. pkgver is the tag without the leading "v" and the "-alpha" suffix.
-_tag=v1.4.0.5652
+_tag=v1.4.0.5653
 # The launcher is a separate repository with no tags, so it is pinned by commit.
-_launcher_commit=10fb12a66c5f096938600937bd2dfe59182138a5
+_launcher_commit=cbd4d70580f6296bde38b08e7d0682b4b1c1bb0b
 pkgbase=keeperfx-tux
 pkgname=('keeperfx-tux' 'keeperfx-tux-data' 'keeperfx-tux-launcher')
-pkgver=1.4.0.5652
+pkgver=1.4.0.5653
 # rel 4: ship the pacman hook that reports a library break the soname
 # dependencies below cannot catch, and pick up the launcher fix that stops a
 # crash report carrying a log the failing run never wrote.
@@ -27,11 +27,7 @@ pkgver=1.4.0.5652
 # the breaking upgrade does not run for it. It has to already be installed.
 # Hence this: same engine tag, same pkgver, packaging only. Nothing here changes
 # the game; it puts the safety net in place before the fall.
-# rel 2: pin the launcher to the commit the 1.4.0.5652 AppImage was built from.
-# rel 1 kept the previous stable's launcher pin, so it paired a month-newer
-# engine with a launcher lacking the RAR installer, the updater's engine stash
-# and the channel fixes.
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/ForkedInTime/keeperfx-linux-alpha"
 license=('GPL-2.0-or-later')
@@ -72,7 +68,7 @@ source=(
 noextract=("keeperfx-tux-${pkgver}-full.7z")
 sha256sums=(
   'SKIP'
-  'fc88f7e37c2664b2b5e7fe74f03fd4d98dcf181c89330bf8d866540c9402eaa2'
+  '3410fd859489133ced3d395fc0e7b52af141295c336505e735258d8b18613aa2'
   'SKIP'
   '31a4488a90ea45828d4a4704c99b5b77e3295d519b6c0fee23c6654a2f8dcc3a'
   '72d72a8e7c1221208eed0622a6e323399ba8cb139ab8840d620ef2697623a1b4'

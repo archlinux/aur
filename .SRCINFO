@@ -1,6 +1,6 @@
 pkgbase = keeperfx-tux
-	pkgver = 1.4.0.5652
-	pkgrel = 2
+	pkgver = 1.4.0.5653
+	pkgrel = 1
 	url = https://github.com/ForkedInTime/keeperfx-linux-alpha
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -26,13 +26,13 @@ pkgbase = keeperfx-tux
 	makedepends = ninja
 	makedepends = qt6-base
 	makedepends = qt6-tools
-	noextract = keeperfx-tux-1.4.0.5652-full.7z
+	noextract = keeperfx-tux-1.4.0.5653-full.7z
 	options = !strip
 	options = !debug
 	options = !lto
-	source = keeperfx-tux::git+https://github.com/ForkedInTime/keeperfx-linux-alpha.git#tag=v1.4.0.5652
-	source = keeperfx-tux-1.4.0.5652-full.7z::https://github.com/ForkedInTime/keeperfx-linux-alpha/releases/download/v1.4.0.5652/keeperfx-linux-alpha-x86_64-full.7z
-	source = keeperfx-tux-launcher::git+https://github.com/ForkedInTime/keeperfx-launcher-qt-linux.git#commit=10fb12a66c5f096938600937bd2dfe59182138a5
+	source = keeperfx-tux::git+https://github.com/ForkedInTime/keeperfx-linux-alpha.git#tag=v1.4.0.5653
+	source = keeperfx-tux-1.4.0.5653-full.7z::https://github.com/ForkedInTime/keeperfx-linux-alpha/releases/download/v1.4.0.5653/keeperfx-linux-alpha-x86_64-full.7z
+	source = keeperfx-tux-launcher::git+https://github.com/ForkedInTime/keeperfx-launcher-qt-linux.git#commit=cbd4d70580f6296bde38b08e7d0682b4b1c1bb0b
 	source = keeperfx-tux.sh
 	source = keeperfx-tux.desktop
 	source = keeperfx-tux-launcher.sh
@@ -43,7 +43,7 @@ pkgbase = keeperfx-tux
 	source = keeperfx-tux-unstash.hook
 	source = keeperfx-tux-previous.sh
 	sha256sums = SKIP
-	sha256sums = fc88f7e37c2664b2b5e7fe74f03fd4d98dcf181c89330bf8d866540c9402eaa2
+	sha256sums = 3410fd859489133ced3d395fc0e7b52af141295c336505e735258d8b18613aa2
 	sha256sums = SKIP
 	sha256sums = 31a4488a90ea45828d4a4704c99b5b77e3295d519b6c0fee23c6654a2f8dcc3a
 	sha256sums = 72d72a8e7c1221208eed0622a6e323399ba8cb139ab8840d620ef2697623a1b4
@@ -80,9 +80,9 @@ pkgname = keeperfx-tux
 	depends = gcc-libs
 	depends = bash
 	depends = hicolor-icon-theme
-	depends = keeperfx-tux-data=1.4.0.5652-2
-	depends = keeperfx-tux-launcher=1.4.0.5652-2
-	provides = keeperfx-tux=1.4.0.5652
+	depends = keeperfx-tux-data=1.4.0.5653-1
+	depends = keeperfx-tux-launcher=1.4.0.5653-1
+	provides = keeperfx-tux=1.4.0.5653
 	conflicts = keeperfx-linux-alpha
 	conflicts = keeperfx-linux-alpha-git
 
