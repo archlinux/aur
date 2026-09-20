@@ -1,0 +1,18 @@
+pkgbase = dell-g15-fan-control-git
+	pkgdesc = Modern thermal profile manager and fan control for Dell G15 5511 on Arch Linux.
+	pkgver = 1.0.0.r32.270ac73
+	pkgrel = 1
+	url = https://github.com/MapleProjects/DellG15FanControl---EndeavorOS
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	depends = python-psutil
+	depends = acpi_call-dkms
+	provides = dell-g15-fan-control
+	conflicts = dell-g15-fan-control
+	source = git+https://github.com/MapleProjects/DellG15FanControl---EndeavorOS.git
+	sha256sums = SKIP
+
+pkgname = dell-g15-fan-control-git
