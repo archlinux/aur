@@ -17,10 +17,11 @@
 #   scripts/install-ryzen-smu-dkms.sh — the shared pinned DKMS helper
 #   install.sh                    — the self-contained transparency entrypoint
 #   LICENSE                       — MIT (AUR license-compliance install path)
+#   ramsleuth.desktop             — the application-menu entry
 #
-# sha256sums pins that exact asset. The v2.1.0 release is published (C19-08);
+# sha256sums pins that exact asset. The v2.1.1 release is published (C20-06);
 # the sha256 below is the real hash of the release tarball, captured from
-# the published release .sha256 asset (finalized in C19-08b). AUR requires a real
+# the published release .sha256 asset (finalized in C20-06). AUR requires a real
 # sha256 (no SKIP).
 #
 # Mutual conflict: ramsleuth (source) and ramsleuth-bin (precompiled)
@@ -33,15 +34,15 @@
 # daemon starts and serves N/A (DriverMissing) sections with exit 0.
 
 pkgname=ramsleuth-bin
-pkgver=2.1.0   # FIXED — the tarball is downloaded from the GitHub Release for this exact version
+pkgver=2.1.1   # FIXED — the tarball is downloaded from the GitHub Release for this exact version
 pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients (precompiled binary)"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
 license=(MIT)
 source=("https://github.com/MadGoatHaz/RamSleuth/releases/download/v$pkgver/ramsleuth-$pkgver-x86_64.tar.zst")
-# sha256 of the published v2.1.0 release tarball (captured from the release .sha256 asset; finalized in C19-08b).
-sha256sums=('d8db88fa4cafbb6e995713bdbd7dd7278043d558778d9d011f310c6fa3388b39')
+# sha256 of the published v2.1.1 release tarball (captured from the release .sha256 asset; finalized in C20-06).
+sha256sums=('75580c19bbece28ddaacbcc674621d06231f1a5fbe0a40e111a5aee091bfae98')
 install=ramsleuth-bin.install
 conflicts=('ramsleuth')
 depends=(libx11 libxkbcommon wayland libxrandr libxi libxcursor libxinerama mesa)
@@ -76,6 +77,10 @@ package() {
 
     # (6) the MIT license — the AUR license-compliance install path
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/ramsleuth-bin/LICENSE"
+
+    # (7) the application-menu entry — at the tarball top level
+    install -Dm644 "ramsleuth.desktop" \
+        "$pkgdir/usr/share/applications/ramsleuth.desktop"
 
     # NOTE: the ramsleuth group is created on the TARGET system by the .install
     # pre_install/pre_upgrade hooks (package() runs in the build env, not the target).
