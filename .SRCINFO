@@ -1,7 +1,7 @@
 pkgbase = shelltestrunner
 	pkgdesc = Easy, repeatable testing of CLI programs/commands
-	pkgver = 1.10
-	pkgrel = 2
+	pkgver = 1.11
+	pkgrel = 1
 	url = https://github.com/simonmichael/shelltestrunner
 	arch = x86_64
 	license = GPL
@@ -20,7 +20,7 @@ pkgbase = shelltestrunner
 	depends = haskell-hspec
 	depends = haskell-hspec-core
 	depends = haskell-hspec-contrib
-	source = https://hackage.haskell.org/packages/archive/shelltestrunner/1.10/shelltestrunner-1.10.tar.gz
-	sha256sums = 07bd3365fbbde9b4c80a3139792c30c1b1929736175fc207b4af1285bb97cbb0
+	source = https://hackage.haskell.org/packages/archive/shelltestrunner/1.11/shelltestrunner-1.11.tar.gz
+	sha256sums = b1742f8c0262034197faa879f1871848a3c404bc8a8aab706fbd053130d3414d
 
 pkgname = shelltestrunner

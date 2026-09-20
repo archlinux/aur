@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 pkgname=shelltestrunner
-pkgver=1.10
-pkgrel=2
+pkgver=1.11
+pkgrel=1
 pkgdesc="Easy, repeatable testing of CLI programs/commands"
 arch=(x86_64)
 url="https://github.com/simonmichael/shelltestrunner"
@@ -15,7 +15,7 @@ makedepends=(ghc)
 checkdepends=()
 optdepends=()
 source=("https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('07bd3365fbbde9b4c80a3139792c30c1b1929736175fc207b4af1285bb97cbb0')
+sha256sums=('b1742f8c0262034197faa879f1871848a3c404bc8a8aab706fbd053130d3414d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
