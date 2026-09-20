@@ -1,8 +1,7 @@
 pkgbase = retroarch-assets-sounds
 	pkgdesc = XMB menu sounds for RetroArch
 	pkgver = 1.22.0
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = http://www.libretro.com/
 	arch = any
 	groups = libretro
