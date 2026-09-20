@@ -2,7 +2,7 @@
 
 pkgname=tyler-git
 pkgver=r35.bd0f636
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiling Wayland compositor on wlroots, with the bar and launcher built in"
 arch=('x86_64')
 url="https://github.com/thinkoid/tyler"
@@ -15,7 +15,8 @@ makedepends=('git' 'meson' 'wayland-protocols' 'tllist')
 optdepends=('foot: default terminal (termcmd)'
             'libpulse: volume keys drive pactl'
             'light: brightness keys'
-            'iw: wifi field in the bundled status feeder')
+            'iw: wifi field in the bundled status feeder'
+            'ttf-nerd-fonts-symbols: the private-use glyphs the bundled status feeder emits')
 provides=('tyler')
 conflicts=('tyler')
 source=("tyler::git+https://github.com/thinkoid/tyler.git")
