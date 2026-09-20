@@ -1,6 +1,6 @@
 pkgbase = cosmostrix-bin
 	pkgdesc = Professional-grade cinematic Matrix rain renderer for serious terminal environments.
-	pkgver = 100.0.1
+	pkgver = 100.0.2
 	pkgrel = 1
 	url = https://github.com/oxyzenQ/cosmostrix
 	arch = x86_64
