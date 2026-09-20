@@ -1,34 +1,29 @@
 # Maintainer: Antony Ho <ntonyworkshop@gmail.com>
 pkgname=python-pycangjie
-pkgver=1.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="This is a Python wrapper to libcangjie, the library implementing Cangjie and Quick input methods."
-arch=('x86_64' 'i686')
-url="http://cangjians.github.io/projects/pycangjie/"
+arch=('x86_64')
+url="https://gitlab.freedesktop.org/cangjie/pycangjie"
 license=('LGPL3')
-depends=('libcangjie' 'python>=3.2')
-makedepends=('cython>=0.17' 'autoconf' 'automake')
+depends=('libcangjie' 'python')
+makedepends=('cython' 'git' 'meson' 'ninja' 'python-setuptools')
 replaces=('pycangjie-git')
-sha256sums=('6cfc4ea568f0160fd63a6f786208b3cd991fc420aa61f7d03c41a1b903d39f7e')
-source=("https://github.com/Cangjians/pycangjie/releases/download/v$pkgver/cangjie-$pkgver.tar.xz")
 
-
-check() {
-  cd "$srcdir/cangjie-$pkgver"
-  make check
-}
-
-prepare() {
-  cd "$srcdir/cangjie-$pkgver"
-}
+# Latest upstream release (v1.5.0). Replace with the resolved commit SHA on update.
+_commit='1.5.0'
+source=("$pkgname::git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/cangjie-$pkgver"
-  ./autogen.sh --prefix=/usr
-  make
+  meson setup "$srcdir/$pkgname/build" "$srcdir/$pkgname" --prefix=/usr --buildtype=plain
+  meson compile -C "$srcdir/$pkgname/build"
+}
+
+check() {
+  meson test -C "$srcdir/$pkgname/build" --print-errorlogs
 }
 
 package() {
-  cd "$srcdir/cangjie-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  meson install -C "$srcdir/$pkgname/build" --destdir "$pkgdir"
 }
