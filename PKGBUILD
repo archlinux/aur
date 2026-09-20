@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=dusklight
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/TwilitRealm/dusklight-randomizer.git"
 	"git+https://github.com/TwilitRealm/dusklight-cosmetics.git"
 	)
-sha256sums=('a5f8140d1140bd59861dd18afd5cb4aa9dee9cd987b81ae620ab7e93bf0a6e53'
+sha256sums=('9cd9f9729c53e341b20df9d2bf67389742cb560dc78af5992bd1a0f4fdd31a68'
             'SKIP'
             'SKIP'
             'SKIP'
