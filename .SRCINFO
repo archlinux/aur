@@ -1,6 +1,6 @@
 pkgbase = pixelviewer-bin
 	pkgdesc = A cross-platform image viewer which supports reading raw Luminance/YUV/RGB/ARGB/Bayer pixels data from file and rendering it.
-	pkgver = 2026.1.2
+	pkgver = 2026.1.3
 	pkgrel = 1
 	url = https://carina-studio.github.io/PixelViewer/
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = pixelviewer-bin
 	license = MIT
 	makedepends = gendesk
 	depends = fontconfig
-	provides = pixelviewer=2026.1.2
+	provides = pixelviewer=2026.1.3
 	conflicts = pixelviewer
-	noextract = pixelviewer-2026.1.2-x86_64.zip
+	noextract = pixelviewer-2026.1.3-x86_64.zip
 	options = !strip
-	source = LICENSE-2026.1.2.md::https://raw.githubusercontent.com/carina-studio/PixelViewer/2026.1.2/LICENSE.md
+	source = LICENSE-2026.1.3.md::https://raw.githubusercontent.com/carina-studio/PixelViewer/2026.1.3/LICENSE.md
 	source = pixelviewer.sh
 	sha256sums = 4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea
 	sha256sums = f96446b452c48cb8b0306c4f999ab6729927c8b3a27f2355abbb484e3e63cf6f
-	source_aarch64 = pixelviewer-2026.1.2-aarch64.zip::https://github.com/carina-studio/PixelViewer/releases/download/2026.1.2/PixelViewer-2026.1.2-linux-arm64.zip
-	sha256sums_aarch64 = 4bc8871481befebe4d934f2e90f8e72894971a8f5537086f6c1656b6aa02891d
-	source_x86_64 = pixelviewer-2026.1.2-x86_64.zip::https://github.com/carina-studio/PixelViewer/releases/download/2026.1.2/PixelViewer-2026.1.2-linux-x64.zip
-	sha256sums_x86_64 = e96dbb8f93fb2c83b4649182250e2388c03aad6f669dd5ad7303f4b27d85e039
+	source_aarch64 = pixelviewer-2026.1.3-aarch64.zip::https://github.com/carina-studio/PixelViewer/releases/download/2026.1.3/PixelViewer-2026.1.3-linux-arm64.zip
+	sha256sums_aarch64 = c1a1c16bd15f99da00374849fef156a60d833926897ecd5c20e2777052229e5a
+	source_x86_64 = pixelviewer-2026.1.3-x86_64.zip::https://github.com/carina-studio/PixelViewer/releases/download/2026.1.3/PixelViewer-2026.1.3-linux-x64.zip
+	sha256sums_x86_64 = 01c95b1a37cd099a2c25478923918e7cdd3227d414739d2c4fb57702618ab711
 
 pkgname = pixelviewer-bin
