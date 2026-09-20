@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=p2p.kiwi
 pkgname="${_appname//./-}-bin"
-pkgver=2.0.2
+pkgver=3.0.1
 _electronversion=44
 pkgrel=1
-pkgdesc="Asimple and easy-to-use screen sharing tool."
+pkgdesc="A simple and easy-to-use screen sharing tool."
 arch=(
     'aarch64'
     'x86_64'
@@ -17,16 +17,19 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
+makedepends=(
+    'asar'
+)
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dont-be-evil-company/p2p.kiwi/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_amd64.deb")
-sha256sums=('5ba8d10757c4ce9b880422e3746897d89b27647febd1f70ab5021f9ac10ade95'
+sha256sums=('24423e39863b72a85358f85dae872b061b540716a06ee120aab322cb657eec2f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('797ca31cec71316b19a1123de21acf4fd252e2239211b835d279db46425b1de4')
-sha256sums_x86_64=('04b42333af5e705a3ca67a56d02f6f0f44633d8ac51b6331ec6765c7f60f1555')
+sha256sums_aarch64=('d80c7baf2ece6bd64b3d4d5adea14283afcdbddabf3d75bcef52016ecde04248')
+sha256sums_x86_64=('615e28735ed15a4f42e08bf523dddad2c93a88ca0f81dd6cd2aad1c184633691')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -50,6 +53,10 @@ prepare() {
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i "s/\/opt\/${_appname}\/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
+    local _app_dir=$(_get_app_dir)
+    asar e "${_app_dir}//resources/app.asar" "${srcdir}/app.asar.unpacked"
+    find "${srcdir}/app.asar.unpacked" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}//resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

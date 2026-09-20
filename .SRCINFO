@@ -1,21 +1,22 @@
 pkgbase = p2p-kiwi-bin
-	pkgdesc = Asimple and easy-to-use screen sharing tool.
-	pkgver = 2.0.2
+	pkgdesc = A simple and easy-to-use screen sharing tool.
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://p2p.kiwi/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
+	makedepends = asar
 	depends = electron44
-	provides = p2p-kiwi=2.0.2
+	provides = p2p-kiwi=3.0.1
 	conflicts = p2p-kiwi
-	source = LICENSE-2.0.2::https://raw.githubusercontent.com/dont-be-evil-company/p2p.kiwi/v2.0.2/LICENSE
+	source = LICENSE-3.0.1::https://raw.githubusercontent.com/dont-be-evil-company/p2p.kiwi/v3.0.1/LICENSE
 	source = p2p-kiwi.sh
-	sha256sums = 5ba8d10757c4ce9b880422e3746897d89b27647febd1f70ab5021f9ac10ade95
+	sha256sums = 24423e39863b72a85358f85dae872b061b540716a06ee120aab322cb657eec2f
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = p2p-kiwi-2.0.2-aarch64.deb::https://github.com/dont-be-evil-company/p2p.kiwi/releases/download/v2.0.2/p2p-kiwi_arm64.deb
-	sha256sums_aarch64 = 797ca31cec71316b19a1123de21acf4fd252e2239211b835d279db46425b1de4
-	source_x86_64 = p2p-kiwi-2.0.2-x86_64.deb::https://github.com/dont-be-evil-company/p2p.kiwi/releases/download/v2.0.2/p2p-kiwi_amd64.deb
-	sha256sums_x86_64 = 04b42333af5e705a3ca67a56d02f6f0f44633d8ac51b6331ec6765c7f60f1555
+	source_aarch64 = p2p-kiwi-3.0.1-aarch64.deb::https://github.com/dont-be-evil-company/p2p.kiwi/releases/download/v3.0.1/p2p-kiwi_arm64.deb
+	sha256sums_aarch64 = d80c7baf2ece6bd64b3d4d5adea14283afcdbddabf3d75bcef52016ecde04248
+	source_x86_64 = p2p-kiwi-3.0.1-x86_64.deb::https://github.com/dont-be-evil-company/p2p.kiwi/releases/download/v3.0.1/p2p-kiwi_amd64.deb
+	sha256sums_x86_64 = 615e28735ed15a4f42e08bf523dddad2c93a88ca0f81dd6cd2aad1c184633691
 
 pkgname = p2p-kiwi-bin
