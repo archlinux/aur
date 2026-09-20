@@ -3,8 +3,8 @@
 # Contributor: Thomas Eizinger <thomas@eizinger.io>
 
 pkgname=photoprism
-pkgver=260728
-_commit=bbde8f452
+pkgver=260919
+_commit=28c46a116
 _pkgver="${pkgver}-${_commit}"
 pkgrel=1
 pkgdesc="AI-Powered Photos App for the Decentralized Web"
@@ -22,6 +22,8 @@ optdepends=("darktable: for RAW to JPEG conversion"
 	"perl-image-exiftool: for extracting metadata"
 	"rawtherapee: for RAW to JPEG conversion")
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
+	"https://dl.${pkgname}.app/onnx/models/face_detection_yunet_2026may.onnx"
+	"https://dl.${pkgname}.app/onnx/models/face_recognition_sface_2021dec.onnx"
 	"https://dl.${pkgname}.app/onnx/models/scrfd_500m_bnkps_shape640x640.onnx"
 	"https://dl.${pkgname}.app/tensorflow/facenet.zip"
 	"https://dl.${pkgname}.app/tensorflow/nasnet.zip"
@@ -32,7 +34,9 @@ source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.g
 	"defaults.yml"
 	"01-internal-config-config_go.patch")
 backup=("etc/${pkgname}/defaults.yml")
-b2sums=('613ef4ae5f486f2c5797bf1d4dd3c94cb87c34ef316c7144feef40fed1e6dd8fc0c29698e73f8169f08c9c3bcdc558412ef95e7a5918493d2e2d37d0cb8dd837'
+b2sums=('f3d9829fecd30ff26dd3bbb09627fceebde857a1dcce9429a20f3ad5ffdd2e6e709e6724fc0e1da86c8f271d0e564d82b0c13a929c42e47f64561bf01cb96207'
+        '14dc17a3321d41a557a5dc4dc75b69687d89a912b372004b750ce239bef6b3554c74022ddfcd8d737ba10b197f8a5767114edc209ae69f99c38120f1a4707ea5'
+        'c52ac4bf680272a9a532249f9d0f26abf9056f88187de829fd85be7010e188c2566cd6ba621a1f7daedc37c1ffca0059fe3b9e58fb570cf7e54836a882371ac1'
         '2cafc2c00eabba8dee5e63982c4c642c5df00975c568b37d3cff81f0da94c8db746ea3fc31c4a98086527ed2db86b2ff48c36551163d0457001913eddfdbddc4'
         'ae3fe8162773ca9c84be2ea49dbc33e8a381d25cbbb51660c9f7a0764b89128eb8b40aceb10272e2579f277f76b8622d1f366e38e7c290266280c1db268365c5'
         '846cc4ce2d8c170c6442cf1f3a235d49744ff704300b619947bd425861ac4312d5465c749fd1179e4c25163d3a3428cd31359b7ea1521fa6edab81dba88074a0'
@@ -92,7 +96,9 @@ build() {
 
 package() {
 	find {facenet,nasnet,nsfw} -type f -exec install -Dm644 {} "$pkgdir/usr/share/$pkgname/"{} \;
-	install -Dm644 scrfd*.onnx -t "$pkgdir/usr/share/$pkgname/scrfd"
+	for model in scrfd yunet sface; do
+		install -Dm644 *"$model"*.onnx -t "$pkgdir/usr/share/$pkgname/$model"
+	done
 
 	install -Dm644 "$pkgname-import".* "$pkgname-vision".* "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
 	install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
