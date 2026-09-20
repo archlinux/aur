@@ -1,7 +1,7 @@
 # Maintainer: Nk-YMZ <village_flute@outlook.com>
 
 pkgname=molpe-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Linux 终端中的网易云音乐 TUI 播放器（预编译版本）'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("molpe=${pkgver}")
 conflicts=('molpe')
 options=('!strip' '!debug')
 source_x86_64=("${url}/releases/download/v${pkgver}/molpe-${pkgver}-1-${CARCH}.pkg.tar.zst")
-b2sums_x86_64=('631b53898dda08347a14d10b5c211bebdac549c8401e11cdeb1220013b1cfb59b4048e9858c3ac92b25a067bc9928f4411e28730d23ef4600339f5abb0fa58df')
+b2sums_x86_64=('6f7afe37440114040aa2b3e45333747161db4d8a3c825d3a127360ecd138b564066838287245595eef8e8709f331e245888d76566f02995df856c2c4f2826957')
 
 package() {
 	install -Dm755 "$srcdir/usr/bin/molpe" "$pkgdir/usr/bin/molpe"
