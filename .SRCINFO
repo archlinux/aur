@@ -1,6 +1,6 @@
 pkgbase = pupu-git
-	pkgdesc = A simple and easy to use UI for the Ollama.(Use system-wide electron)
-	pkgver = 0.1.10.r2.gb664b9f
+	pkgdesc = A simple and easy to use UI for the Ollama.
+	pkgver = 0.1.11.tools.5.r35.g216b0bf
 	pkgrel = 1
 	url = https://github.com/haoxiang-xu/PuPu
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = pupu-git
 	depends = python-cryptography
 	depends = libxcrypt-compat
 	depends = python-requests
-	provides = pupu=0.1.10
+	provides = pupu=0.1.11.tools.5
 	conflicts = pupu
 	source = pupu.git::git+https://github.com/haoxiang-xu/PuPu.git
 	source = unchain::git+https://github.com/haoxiang-xu/unchain.git
