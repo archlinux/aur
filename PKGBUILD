@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Fuzzy autocomplete for commands you actually use"
 
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,8 +29,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('0ba7af84afd43716b91fe0cce5900259f46aa74e9e193ef6f4181a07d1f7f4d2')
-sha256sums_aarch64=('d1a68dcad9d1d38a92ac1943894985cdcca0856317d654f9e2494db2cc49dccd')
+sha256sums_x86_64=('6aa2bc76a59777266fee7f92659e00d516d8e006e0091f40a3b5ae091ce4bd70')
+sha256sums_aarch64=('c0869d369eb87a2a42774d53efe1cc740c432a40b9dc2cf3ef809e5b7657e7a9')
 
 
 package() {
