@@ -2,7 +2,7 @@
 
 pkgname=flea
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, keyboard-first file manager for Omarchy'
 arch=('x86_64' 'aarch64')
 url="https://github.com/thisisgm/flea"
