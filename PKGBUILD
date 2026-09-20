@@ -7,15 +7,14 @@ _android_arch=riscv64
 
 pkgname=android-${_android_arch}-cairo
 pkgver=1.18.4
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="2D graphics library with support for multiple output devices (Android ${_android_arch})"
 license=('LGPL'
          'MPL')
 url="http://cairographics.org/"
 groups=('android-cairo')
-depends=("android-${_android_arch}-fontconfig"
-         "android-${_android_arch}-glib2"
+depends=("android-${_android_arch}-glib2"
          "android-${_android_arch}-libpng"
          "android-${_android_arch}-lzo"
          "android-${_android_arch}-pixman"
@@ -24,12 +23,6 @@ provides=("android-${_android_arch}-cairo")
 conflicts=("android-${_android_arch}-cairo")
 makedepends=('android-meson'
              "android-${_android_arch}-poppler")
-
-# riscv64 target is not properly supported by rust so disable the librsvg
-# dependency in that architecture for now
-if [ "${_android_arch}" != riscv64 ]; then
-    makedepends+=("android-${_android_arch}-librsvg")
-fi
 
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.freedesktop.org/cairo/cairo/-/archive/${pkgver}/cairo-${pkgver}.tar.gz"
@@ -56,8 +49,8 @@ build() {
     android-${_android_arch}-meson build \
         -D spectre=disabled \
         -D dwrite=disabled \
-        -D freetype=enabled \
-        -D fontconfig=enabled \
+        -D freetype=disabled \
+        -D fontconfig=disabled \
         -D tests=disabled \
         -D symbol-lookup=disabled \
         -D gtk_doc=false \

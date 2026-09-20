@@ -1,7 +1,7 @@
 pkgbase = android-riscv64-cairo
 	pkgdesc = 2D graphics library with support for multiple output devices (Android riscv64)
 	pkgver = 1.18.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cairographics.org/
 	arch = any
 	groups = android-cairo
@@ -9,7 +9,6 @@ pkgbase = android-riscv64-cairo
 	license = MPL
 	makedepends = android-meson
 	makedepends = android-riscv64-poppler
-	depends = android-riscv64-fontconfig
 	depends = android-riscv64-glib2
 	depends = android-riscv64-libpng
 	depends = android-riscv64-lzo
