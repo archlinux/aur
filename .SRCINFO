@@ -1,7 +1,7 @@
 pkgbase = convey
 	pkgdesc = Email application built around conversations for the GNOME desktop.
 	pkgver = 50.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/donnybeelo/convey
 	arch = x86_64
 	license = CC-BY-3.0
@@ -9,6 +9,7 @@ pkgbase = convey
 	license = LGPL-2.1-or-later
 	checkdepends = appstream
 	checkdepends = desktop-file-utils
+	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = itstool
 	makedepends = meson
@@ -41,7 +42,7 @@ pkgbase = convey
 	depends = sqlite
 	depends = webkitgtk-6.0
 	conflicts = geary
-	source = https://gitlab.gnome.org/donnybeelo/convey/-/archive/50.2/convey-50.2.tar.gz
-	sha256sums = ffd8bbace9e4f23003f47278b8506009ac81a637852ba55fe5fe6d3f84e99116
+	source = git+https://gitlab.gnome.org/donnybeelo/convey.git#tag=50.2-1
+	sha256sums = 9ca94857c220731dfe9ab5fc2ffa9221ca44f272e292c652209962f5b5f533f0
 
 pkgname = convey

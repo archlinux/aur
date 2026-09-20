@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=convey
 pkgver=50.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Email application built around conversations for the GNOME desktop."
 arch=('x86_64')
 url="https://gitlab.gnome.org/donnybeelo/convey"
@@ -40,6 +40,7 @@ depends=(
   'webkitgtk-6.0'
 )
 makedepends=(
+  'git'
   'gobject-introspection'
   'itstool'
   'meson'
@@ -56,11 +57,11 @@ checkdepends=(
   # 'xorg-server-xvfb'
 )
 conflicts=('geary')
-source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ffd8bbace9e4f23003f47278b8506009ac81a637852ba55fe5fe6d3f84e99116')
+source=("git+https://gitlab.gnome.org/donnybeelo/convey.git#tag=$pkgver-1")
+sha256sums=('9ca94857c220731dfe9ab5fc2ffa9221ca44f272e292c652209962f5b5f533f0')
 
 build() {
-  arch-meson "$pkgname-$pkgver" build -Dprofile=release
+  arch-meson "$pkgname" build -Dprofile=release
   meson compile -C build
 }
 
