@@ -1,7 +1,7 @@
 pkgbase = ratex
 	pkgdesc = Ultra-fast, pure-Rust TeX engine and typesetting toolchain (built from source)
 	pkgver = 0.4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/leoliu0/ratex
 	arch = x86_64
 	arch = aarch64
@@ -24,6 +24,6 @@ pkgbase = ratex
 	conflicts = ratex-bin
 	options = !lto
 	source = ratex-0.4.1.tar.gz::https://github.com/leoliu0/ratex/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = b685a29b88ee3629c7bf46c712ca4c9a272bea85cf10559801936565875a126b
+	sha256sums = 289372b25fa2fb99015de62ef18fc11aadc4a5d659a32a167cadb0d8fb7634fd
 
 pkgname = ratex
