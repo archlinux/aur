@@ -4,7 +4,7 @@
 # pkgver is replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge-git
-pkgver=5.8.3.r6169.g7e20bb7
+pkgver=5.8.3.r6170.g246efe3
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'mise')
@@ -50,7 +50,6 @@ build() {
   mise install
   mise exec -C web-client -- bun install --frozen-lockfile
   mise run build:web-client
-  mise run build:tui
   local version
   version="$(cd "$srcdir/$pkgname" && git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)")"
   mise exec -- go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${version}'" -o "system-bridge" .
@@ -72,7 +71,6 @@ package() {
   install -dm755 "$pkgdir/usr/share/icons/hicolor/512x512/apps"
   cd "$srcdir/$pkgname"
   install -Dm755 system-bridge "$pkgdir/usr/bin/system-bridge"
-  install -Dm755 system-bridge-tui "$pkgdir/usr/bin/system-bridge-tui"
   install -Dm644 system-bridge.bash "$pkgdir/usr/share/bash-completion/completions/system-bridge"
   install -Dm644 _system-bridge "$pkgdir/usr/share/zsh/site-functions/_system-bridge"
   install -Dm644 system-bridge.fish "$pkgdir/usr/share/fish/vendor_completions.d/system-bridge.fish"
