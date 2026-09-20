@@ -6,7 +6,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-curl
-pkgver=8.20.0
+pkgver=8.22.0
 pkgrel=1
 arch=('any')
 pkgdesc="An URL retrival utility and library (Android ${_android_arch})"
@@ -25,7 +25,7 @@ depends=("android-${_android_arch}-brotli"
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/download/curl-${pkgver}.tar.bz2")
-md5sums=('64506c654b72580cf21223bdc405c7ac')
+md5sums=('3f6862e123fa4203667d1253ceb2d89c')
 
 prepare() {
     cd "${srcdir}/curl-${pkgver}"
