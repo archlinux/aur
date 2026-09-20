@@ -1,7 +1,7 @@
 # Maintainer: raindropqwq <raindropqwq@outlook.com>
 
 pkgname=lobehub-desktop-bin
-_pkgver=2.2.17
+_pkgver=2.2.18
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="Desktop version of lobe-chat, an open-source, modern design AI chat framework."
@@ -16,7 +16,7 @@ provides=('lobehub-desktop')
 source=("lobehub-desktop-${_pkgver}.x86_64.rpm::https://github.com/lobehub/lobehub/releases/download/v${_pkgver}/lobehub-desktop-${_pkgver}.x86_64.rpm"
   "LICENSE::https://raw.githubusercontent.com/lobehub/lobehub/main/LICENSE"
   "lobehub-desktop.png::https://raw.githubusercontent.com/lobehub/lobehub/main/apps/desktop/resources/tray.png")
-sha256sums=('361a99ff33e2de2d921bab9d6240abe8904e71930c6c9ff2c794c30a0992a063'
+sha256sums=('2b8a04e623a09697804cdcf7fa15985664d8c3c300677633d77eda72dd92a88c'
   '790a8c42f10beb4f5e9122e05a8e65d5522de49f89ac69cd31063c0f2be93ea4'
   '38e5a907edee6a2188c7f49d6c56688c8c7e110a0dc2ccd6172129372f21efaf')
 
