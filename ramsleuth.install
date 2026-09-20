@@ -1,0 +1,51 @@
+# ramsleuth.install — pacman hooks for ramsleuth.service (STABLE source package)
+#
+# All systemctl calls are guarded (2>/dev/null || true) so install,
+# upgrade, and removal never fail the transaction (no-panic contract):
+# missing systemd or a failed service start is non-fatal.
+# The daemon degrades gracefully without the ryzen_smu module
+# (N/A (DriverMissing), exit 0, no panic) and is not removed from
+# unit files on upgrade.
+# post_install is informative (the hook cannot be interactive — the AUR-parity offer).
+
+pre_install() {
+    # The daemon unit uses Group=ramsleuth; the group must exist on the
+    # target system or the service fails to start. Create it idempotently.
+    getent group ramsleuth >/dev/null 2>&1 || groupadd -r ramsleuth
+}
+
+pre_upgrade() {
+    getent group ramsleuth >/dev/null 2>&1 || groupadd -r ramsleuth
+}
+
+post_install() {
+    systemctl daemon-reload 2>/dev/null || true
+    if ! systemctl enable --now ramsleuth.service 2>/dev/null; then
+        echo "ramsleuth: ramsleuth.service not started (non-fatal);" \
+             "run: systemctl enable --now ramsleuth" >&2
+    fi
+
+    # Informative block (non-interactive, non-fatal):
+    # the binary names + the optional pinned ryzen_smu DKMS offer.
+    echo "ramsleuth: installed — start the GUI with \`ramsleuth\` (the TUI with \`ramsleuth-tui\`)"
+    if grep -q "AuthenticAMD" /proc/cpuinfo 2>/dev/null; then
+        echo "ramsleuth: AMD host — full telemetry: sudo ramsleuth-install-ryzen-smu-dkms"
+        echo "ramsleuth:   (pinned upstream, shown + confirmed before any build; or: yay -S ryzen-smu-dkms)"
+        echo "ramsleuth:   RamSleuth runs without it — the AMD section reads N/A (DriverMissing)"
+    else
+        echo "ramsleuth: Intel host — built-in MCHBAR decode, no extra driver needed"
+    fi
+}
+
+post_upgrade() {
+    systemctl daemon-reload 2>/dev/null || true
+}
+
+pre_remove() {
+    systemctl stop ramsleuth.service 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl disable ramsleuth.service 2>/dev/null || true
+    systemctl daemon-reload 2>/dev/null || true
+}

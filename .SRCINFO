@@ -1,0 +1,32 @@
+pkgbase = ramsleuth
+	pkgdesc = Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/MadGoatHaz/RamSleuth
+	install = ramsleuth.install
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = libx11
+	makedepends = libxkbcommon
+	makedepends = wayland
+	makedepends = wayland-protocols
+	makedepends = libxrandr
+	makedepends = libxi
+	makedepends = libxcursor
+	makedepends = libxinerama
+	makedepends = mesa
+	depends = libx11
+	depends = libxkbcommon
+	depends = wayland
+	depends = libxrandr
+	depends = libxi
+	depends = libxcursor
+	depends = libxinerama
+	depends = mesa
+	conflicts = ramsleuth-bin
+	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v2.1.0
+
+pkgname = ramsleuth
