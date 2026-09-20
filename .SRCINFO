@@ -1,6 +1,6 @@
 pkgbase = mqttx-appimage
 	pkgdesc = A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket.
-	pkgver = 1.13.0
+	pkgver = 1.13.1
 	pkgrel = 1
 	url = https://github.com/emqx/MQTTX
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mqttx-appimage
 	conflicts = mqttx-bin
 	conflicts = mqttx-git
 	conflicts = mqttx-clean-bin
-	source_x86_64 = mqttx-appimage-1.13.0-x86_64.AppImage::https://github.com/emqx/MQTTX/releases/download/v1.13.0/MQTTX-1.13.0.AppImage
-	sha256sums_x86_64 = 5974dd37ee4a2cd44da9f672f6c1d717438830e0e2ae49073a3f1b900c19fa04
-	source_aarch64 = mqttx-appimage-1.13.0-aarch64.AppImage::https://github.com/emqx/MQTTX/releases/download/v1.13.0/MQTTX-1.13.0-arm64.AppImage
-	sha256sums_aarch64 = 71591bfd99fe91dc440234b3b8f1aaedd3995ae5613ac32c84ee20679e8a3a53
+	source_x86_64 = mqttx-appimage-1.13.1-x86_64.AppImage::https://github.com/emqx/MQTTX/releases/download/v1.13.1/MQTTX-1.13.1.AppImage
+	sha256sums_x86_64 = c2e400487277bd31dbd280066a3c127373baa09079ed7c12abd8b9c8c5b9dbb0
+	source_aarch64 = mqttx-appimage-1.13.1-aarch64.AppImage::https://github.com/emqx/MQTTX/releases/download/v1.13.1/MQTTX-1.13.1-arm64.AppImage
+	sha256sums_aarch64 = 73875905d8f5a62a956d3666a35424629bf8fae3ee71ace7f2e270a916dcc1ad
 
 pkgname = mqttx-appimage
