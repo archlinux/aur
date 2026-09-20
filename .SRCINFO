@@ -1,6 +1,6 @@
 pkgbase = biblioteq
 	pkgdesc = Qt application for library catalog and membership management
-	pkgver = 2026.07.31
+	pkgver = 2026.09.15
 	pkgrel = 1
 	url = https://textbrowser.github.io/biblioteq/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = biblioteq
 	depends = yaz
 	depends = gcc-libs
 	optdepends = postgresql-libs: PostgreSQL database connectivity
-	source = biblioteq-2026.07.31.tar.gz::https://github.com/textbrowser/biblioteq/archive/2026.07.31.tar.gz
-	sha256sums = e7d30ff0895567877d800bfb6206cd338fffccbfb177a5c38641bb36d29b7d59
+	source = biblioteq-2026.09.15.tar.gz::https://github.com/textbrowser/biblioteq/archive/2026.09.15.tar.gz
+	sha256sums = 83ea0368e50b77740f32d049e40cbc0bd460b197c8c5c38a25a19e13f3bff7fe
 
 pkgname = biblioteq

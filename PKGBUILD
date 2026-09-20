@@ -1,7 +1,7 @@
 # Maintainer: Chris Charabaruk <chris [at] charabaruk [dot] net>
 
 pkgname=biblioteq
-pkgver=2026.07.31
+pkgver=2026.09.15
 pkgrel=1
 pkgdesc="Qt application for library catalog and membership management"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('qt6-base'
 makedepends=('qt6-tools')
 optdepends=('postgresql-libs: PostgreSQL database connectivity')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/textbrowser/biblioteq/archive/$pkgver.tar.gz")
-sha256sums=('e7d30ff0895567877d800bfb6206cd338fffccbfb177a5c38641bb36d29b7d59')
+sha256sums=('83ea0368e50b77740f32d049e40cbc0bd460b197c8c5c38a25a19e13f3bff7fe')
 
 build() {
   cd "$pkgname-$pkgver"
