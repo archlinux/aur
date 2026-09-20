@@ -1,11 +1,14 @@
-# Maintainer: devome <evinedeng@hotmail.com>
+# Maintainer: xiretza <aur@xiretza.xyz>
+# Contributor: devome <evinedeng@hotmail.com>
 
 _pkgname=insightface
 _pipname="${_pkgname//-/_}"
-pkgname="python-${_pkgname}"
+pkgname="python-${_pkgname}1"
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="InsightFace Python Library"
+pkgdesc="InsightFace Python Library (version 1.0)"
+conflicts=("python-${_pkgname}")
+provides=("python-${_pkgname}=$pkgver")
 arch=("i686" "x86_64" "aarch64" "armv7h")
 url="https://github.com/deepinsight/${_pkgname}"
 license=('MIT')
