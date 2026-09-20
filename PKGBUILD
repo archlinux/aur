@@ -1,7 +1,7 @@
 # Maintainer: Adam Nielsen <malvineous@shikadi.net>
 
 pkgname=bacnet-stack
-pkgver=1.3.3
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="BACnet protocol stack and diagnostic tools (bacrp, bacwp, etc.)"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ depends=()
 makedepends=()
 options=()
 source=("https://sourceforge.net/projects/bacnet/files/bacnet-stack/bacnet-stack-${pkgver}/bacnet-stack-${pkgver}.tgz")
-md5sums=('e15f6f8c375cd76086661da69e7420e6')
-sha256sums=('d06f17964b4630f5d43947340b0ba57e03ec2af68e4bbc691500005f3ad58e1f')
+md5sums=('3e4108c569d6dc1065f38f0646a043ad')
+sha256sums=('8aed4b42083271da4b91d1e9b4b465da68ea3e360952258a205d0e71212fdfb9')
 
 prepare() {
 	cd "$srcdir/${pkgname}-${pkgver}"
@@ -30,7 +30,9 @@ build() {
 	# Parallel builds don't work in v1.0.0.  Appears to be fixed in git so the
 	# next release should be ok.
 	#make -j1
-	CFLAGS="$CFLAGS -Wno-deprecated-declarations" make ${MAKEFLAGS}
+	#CFLAGS="$CFLAGS -Wno-deprecated-declarations" make ${MAKEFLAGS}
+	# 1.6.1 broke parallel builds again
+	make -j1
 }
 
 package() {
