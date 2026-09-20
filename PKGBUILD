@@ -1,12 +1,12 @@
 # Maintainer: Diego Essaya <dessaya at gmail dot com>
 pkgname=waydoodle
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='A minimalistic screen annotation tool for Wayland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/dessaya/waydoodle'
 license=('MIT')
-depends=('gcc-libs' 'wayland')
+depends=('gcc-libs' 'wayland' 'systemd-libs')
 makedepends=('git' 'cargo')
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
