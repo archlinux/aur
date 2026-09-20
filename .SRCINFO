@@ -1,6 +1,6 @@
 pkgbase = spicetify-bin
 	pkgdesc = Command-line tool to customize the official Spotify client
-	pkgver = 2.44.0
+	pkgver = 2.45.1
 	pkgrel = 1
 	url = https://github.com/spicetify/cli
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = spicetify-bin
 	provides = spicetify
 	conflicts = spicetify-cli
 	conflicts = spicetify
-	noextract = spicetify-2.44.0-linux-amd64.tar.gz
-	source = https://github.com/spicetify/cli/releases/download/v2.44.0/spicetify-2.44.0-linux-amd64.tar.gz
-	sha256sums = 115045610a609a2084af389e65aa4f60351a4b8ef1497ce98bdbdf379544ef9b
+	noextract = spicetify-2.45.1-linux-amd64.tar.gz
+	source = https://github.com/spicetify/cli/releases/download/v2.45.1/spicetify-2.45.1-linux-amd64.tar.gz
+	sha256sums = 994381833cf09e708ff961f8f26b5b944e61f7c66e7af93a4ae2889341ca6c32
 
 pkgname = spicetify-bin
