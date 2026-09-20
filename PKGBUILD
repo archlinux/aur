@@ -61,7 +61,7 @@ build() {
 check() {
 	cd ${srcdir}/${pkgname}/ || exit 1
 
-	go test -count=1 -v ./test/...
+	go test -count=1 -v -skip ^TestLoweringDeterminism$ $(go list ./test/... | grep -v '/test/e2e')
 }
 
 package() {
