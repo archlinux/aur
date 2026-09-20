@@ -1,7 +1,7 @@
 # Maintainer: xiryuu < farrel2008ganteng@protonmail.com >
 pkgname=limusic-bin
 _pkgname=limusic
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Feature rich, native desktop, YouTube Music client. Tauri + Rust + SvelteKit, ad-free playback through libmpv, Last.fm scrobbling and Discord Rich Presence, no Electron."
 arch=("x86_64")
@@ -13,7 +13,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("https://github.com/SimoHypers/limusic/releases/download/v${pkgver}/limusic_${pkgver}_amd64.deb")
-sha256sums=("e3fd496b1901ff3cc40dceccd411b28544d603854ead0a027cad23bba94d2024")
+sha256sums=("cbbb382e245f942dc5048b8ec87bd01a4fb12e541966372d5c18dc91c5baa546")
 
 prepare() {
   tar -xf data.tar.*
