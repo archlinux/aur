@@ -2,7 +2,7 @@
 # Co-Maintainer: rafaeloledo <rafaeloliveiraledo@gmail.com>
 
 pkgname=grok-bot-bin
-pkgver=0.55.0
+pkgver=0.57.1
 pkgrel=1
 pkgdesc='Grok Bot desktop agent'
 arch=('x86_64')
@@ -28,7 +28,7 @@ provides=('sand' 'grok-bot')
 conflicts=('sand' 'grok-bot' 'grokbot-linux-port' 'grokbot-linux-port-bin')
 replaces=('grok-bot')
 options=('!strip' '!debug')
-_commit=b4d3f3b656b57c91705c69d2aea9dd31d6428748
+_commit=c4074f405d36a56b406f11cc6485404ff8b395eb
 source=(
     "grok-bot_${pkgver}_amd64.deb::https://downloads.cursor.com/grokbot/stable/${_commit}/linux/x64/grok-bot_${pkgver}_amd64.deb"
     grok-bot.sh
@@ -36,7 +36,7 @@ source=(
     extract-asar.py
 )
 sha256sums=(
-    '55b3a38e581b9e0c51edc2de255d339b2c7cfedff9a16fdd908e870fb0160a31'
+    'ca034cc1db2526ea8727bce232818434057caca9e5a0a737721ad0bf2a5f4bf3'
     '9b3cccfada1dbe44ce794177181515aaf328603484327ef72a914234544bfbf8'
     '9ea1f1939677ec7364bc024ec4b87f8873ef41e6b1b5cec407d0a022ca3678f6'
     '86e6a9d2ce60f974c002a0187fdca7f111744ff4a1187dc70ba415fe6c715942'
