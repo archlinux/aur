@@ -1,21 +1,10 @@
 pkgbase = vigaphone-bin
-	pkgdesc = ViGAPhone Synth Lab: New Physical-Modeling Synthesizer, Instrument Piano Tuner, MIDI-MPE application, VST3 plugin, Sound and Timbre Spectral Analyzer and more...
+	pkgdesc = Meta-package for new package name: vigaphone-piano-tuner-midi-synth-bin
 	pkgver = 1.6.2
-	pkgrel = 2
-	url = https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone
+	pkgrel = 3
+	url = https://aur.archlinux.org/packages/vigaphone-piano-tuner-midi-synth-bin
 	arch = x86_64
-	groups = pro-audio
-	groups = vst3-plugins
 	license = custom
-	makedepends = rsync
-	depends = alsa-lib
-	depends = jack
-	depends = libx11
-	depends = libglvnd
-	depends = rsync
-	options = !strip
-	options = !debug
-	source = https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R1.6.2/ViGAPhoneR_linux_amd64.tar.gz
-	sha256sums = b044ee0d281cf28d7a9237c6247bde4ddb6f4780acd697f9ac1e5ba9571abb6f
+	depends = vigaphone-piano-tuner-midi-synth-bin
 
 pkgname = vigaphone-bin
