@@ -1,0 +1,20 @@
+pkgbase = python-nvdlfw-inspect
+	pkgdesc = Debugging and inspection tools for deep-learning frameworks
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/NVIDIA/nvidia-dlfw-inspect
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytorch>=2.1
+	depends = python-yaml
+	options = !debug
+	source = python-nvdlfw-inspect-0.2.2.tar.gz::https://github.com/NVIDIA/nvidia-dlfw-inspect/archive/4118044cc84f0183714a2ab1bc215fa49f9aaa82.tar.gz
+	sha256sums = e706821db11cf1fd60b5c221bfb5ca753caee13e724d96e973fa9e242ac74784
+
+pkgname = python-nvdlfw-inspect
