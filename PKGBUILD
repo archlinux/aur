@@ -28,7 +28,7 @@ optdepends=(
   'python: AI masking script fallback'
   'zenity: native GTK file picker dialog'
 )
-provides=("spirula-studio=${pkgver%%.r*}")
+provides=("spirula-studio=$pkgver")
 conflicts=('spirula-studio')
 
 _slangver=2026.12.0.1
