@@ -1,6 +1,6 @@
 # Maintainer: alexvermaning0 <alex.boot@outlook.com>
 pkgname=openmediabridge
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Bridge media playback and synchronized lyrics to WebSocket clients via MPRIS. For Resonite VR, OBS overlays, and Discord status."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('dotnet-sdk')
 conflicts=('openmediabridge-bin')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexvermaning0/OpenMediaBridge/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3861c7cbb61e9c6e44eedd48aeae6351b9bb63baef1035726d08b99530c82535')
+sha256sums=('c9926a923f933e175c220f8b3bb250271d783392f2d714f13aea94d2edbbe2f4')
 
 build() {
     cd "${srcdir}/OpenMediaBridge-${pkgver}"
