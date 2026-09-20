@@ -1,6 +1,6 @@
 pkgbase = hushmic-bin
 	pkgdesc = Real-time microphone noise suppression as a virtual mic (DPDFNet via PipeWire) — prebuilt binary
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/Fovty/hushmic
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = hushmic-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = hicolor-icon-theme
-	provides = hushmic=0.8.1
+	provides = hushmic=0.9.0
 	conflicts = hushmic
 	options = !strip
 	options = !debug
-	source = https://github.com/Fovty/hushmic/releases/download/v0.8.1/hushmic-0.8.1-x86_64.tar.gz
-	sha256sums = 367274d810c3e70e43bf9f88a677915bdfec29aab9fc44e36f482f7cc6bd8eb2
+	source = https://github.com/Fovty/hushmic/releases/download/v0.9.0/hushmic-0.9.0-x86_64.tar.gz
+	sha256sums = 28b4dc6ac3042506cfa64b70633ab2d5aa6238997a61ba159af0bf0d565029a9
 
 pkgname = hushmic-bin

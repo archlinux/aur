@@ -1,7 +1,7 @@
 # Maintainer: Fovty <38868829+Fovty@users.noreply.github.com>
 pkgname=hushmic-bin
 _srcname=hushmic
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Real-time microphone noise suppression as a virtual mic (DPDFNet via PipeWire) — prebuilt binary"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('hushmic')
 # bundled ONNX Runtime, and debug extraction has no sources to point at.
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/hushmic-$pkgver-x86_64.tar.gz")
-sha256sums=('367274d810c3e70e43bf9f88a677915bdfec29aab9fc44e36f482f7cc6bd8eb2')
+sha256sums=('28b4dc6ac3042506cfa64b70633ab2d5aa6238997a61ba159af0bf0d565029a9')
 
 package() {
   cd "$srcdir/hushmic-$pkgver-x86_64"
@@ -48,9 +48,11 @@ package() {
   install -Dm644 share/applications/hushmic.desktop \
     "$pkgdir/usr/share/applications/hushmic.desktop"
 
-  # App icon + the tray status ladder (three SNI names x eight sizes); a plain
-  # copy of the tree keeps every size/state the release ships.
-  find share/icons -type f -name '*.png' -print0 | while IFS= read -r -d '' _icon; do
+  # App icon + the tray status ladder (five SNI names x eight sizes) + the
+  # monochrome -symbolic SVGs the desktop recolors; a plain copy of the tree
+  # keeps every size, state and format the release ships.
+  find share/icons -type f \( -name '*.png' -o -name '*.svg' \) -print0 \
+    | while IFS= read -r -d '' _icon; do
     install -Dm644 "$_icon" "$pkgdir/usr/$_icon"
   done
 
