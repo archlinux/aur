@@ -1,7 +1,7 @@
 # Maintainer: Alexeyev Vitaly <vitamindbnfkz@gmail.com>
 pkgname=synthos-git
 _pkgname=synthos
-pkgver=0.2.0.r375.g07d278e
+pkgver=268.r404.g8463477
 pkgrel=1
 pkgdesc="Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — on the native synaptix engine (git)"
 arch=("x86_64")

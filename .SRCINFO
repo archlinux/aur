@@ -1,6 +1,6 @@
 pkgbase = synthos-git
 	pkgdesc = Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — on the native synaptix engine (git)
-	pkgver = 0.2.0.r375.g07d278e
+	pkgver = 268.r404.g8463477
 	pkgrel = 1
 	url = https://github.com/VitaminDB/synthos
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = synthos-git
 	depends = gtk3
 	depends = ffmpeg
 	optdepends = nvidia-utils: GPU-инференс (CUDA-драйвер грузится в рантайме)
-	provides = synthos=0.2.0
+	provides = synthos=268
 	conflicts = synthos
 	conflicts = synthos-bin
 	options = !lto
