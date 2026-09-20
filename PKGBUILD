@@ -1,6 +1,6 @@
 # Maintainer: tuanlyphong
 pkgname=anime_tui
-pkgver=r47.g3709d9a
+pkgver=r48.g56ce5b5
 pkgrel=1
 pkgdesc='Terminal anime browser and player'
 arch=('any')
