@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = netbird-dashboard
+
+[Action]
+Description = Regenerating netbird-dashboard static config (netbird-dashboard-generate)...
+When = PostTransaction
+Exec = /bin/sh -c '/usr/bin/netbird-dashboard-generate 2>/dev/null || echo "  -> skipped: fill /etc/netbird-dashboard.env and run netbird-dashboard-generate"'

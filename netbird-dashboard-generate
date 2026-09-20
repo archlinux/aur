@@ -1,0 +1,82 @@
+#!/bin/bash
+# netbird-dashboard-generate — generate a working copy of the dashboard with
+# environment variables substituted. Equivalent of docker/init_react_envs.sh
+# from netbirdio/dashboard: the static files under /usr/share/webapps contain
+# $NETBIRD_*/$AUTH_* placeholders; without substitution the dashboard cannot
+# find the API or perform the OIDC login. Substituting in /usr/share would be
+# lost on package upgrade, so the result goes to OUTPUT_DIR (default
+# /var/lib/netbird-dashboard) — point your web server root there.
+set -euo pipefail
+
+ENV_FILE="${1:-/etc/netbird-dashboard.env}"
+SRC_DIR="/usr/share/webapps/netbird-dashboard"
+
+if [[ ! -r "$ENV_FILE" ]]; then
+    echo "netbird-dashboard-generate: config $ENV_FILE not found or not readable" >&2
+    exit 1
+fi
+
+set -a
+# shellcheck source=/etc/netbird-dashboard.env
+source "$ENV_FILE"
+set +a
+
+: "${NETBIRD_MGMT_API_ENDPOINT:?NETBIRD_MGMT_API_ENDPOINT not set in $ENV_FILE}"
+: "${AUTH_AUTHORITY:?AUTH_AUTHORITY not set in $ENV_FILE}"
+: "${AUTH_CLIENT_ID:?AUTH_CLIENT_ID not set in $ENV_FILE}"
+
+OUTPUT_DIR="${OUTPUT_DIR:-/var/lib/netbird-dashboard}"
+
+# Defaults follow the official init_react_envs.sh
+export AUTH_AUTHORITY AUTH_CLIENT_ID
+export AUTH_CLIENT_SECRET="${AUTH_CLIENT_SECRET:-}"
+export AUTH_AUDIENCE="${AUTH_AUDIENCE:-}"
+[[ "${AUTH_AUDIENCE}" == "none" ]] && unset AUTH_AUDIENCE
+export AUTH_REDIRECT_URI="${AUTH_REDIRECT_URI:-}"
+export AUTH_SILENT_REDIRECT_URI="${AUTH_SILENT_REDIRECT_URI:-}"
+export USE_AUTH0="${USE_AUTH0:-false}"
+export AUTH_SUPPORTED_SCOPES="${AUTH_SUPPORTED_SCOPES:-openid profile email api offline_access email_verified}"
+export NETBIRD_MGMT_API_ENDPOINT="$(sed -E 's/(:80|:443)$//' <<<"$NETBIRD_MGMT_API_ENDPOINT")"
+export NETBIRD_MGMT_GRPC_API_ENDPOINT="${NETBIRD_MGMT_GRPC_API_ENDPOINT:-$NETBIRD_MGMT_API_ENDPOINT}"
+export NETBIRD_TOKEN_SOURCE="${NETBIRD_TOKEN_SOURCE:-accessToken}"
+export NETBIRD_DRAG_QUERY_PARAMS="${NETBIRD_DRAG_QUERY_PARAMS:-false}"
+export NETBIRD_AUTH_SERVICE_URL="${NETBIRD_AUTH_SERVICE_URL:-}"
+export NETBIRD_WASM_PATH="${NETBIRD_WASM_PATH:-}"
+export NETBIRD_LICENSED="${NETBIRD_LICENSED:-false}"
+export NETBIRD_CLOUD="${NETBIRD_CLOUD:-false}"
+export NETBIRD_AGENT_NETWORK_ONLY="${NETBIRD_AGENT_NETWORK_ONLY:-false}"
+export NETBIRD_AGENT_NETWORK_ENABLED="${NETBIRD_AGENT_NETWORK_ENABLED:-false}"
+export NETBIRD_HOTJAR_TRACK_ID="${NETBIRD_HOTJAR_TRACK_ID:-}"
+export NETBIRD_GOOGLE_ANALYTICS_ID="${NETBIRD_GOOGLE_ANALYTICS_ID:-}"
+export NETBIRD_GOOGLE_TAG_MANAGER_ID="${NETBIRD_GOOGLE_TAG_MANAGER_ID:-}"
+export NETBIRD_HUBSPOT_PORTAL_ID="${NETBIRD_HUBSPOT_PORTAL_ID:-}"
+export NETBIRD_HUBSPOT_SIGNUP_FORM_ID="${NETBIRD_HUBSPOT_SIGNUP_FORM_ID:-}"
+export NETBIRD_HUBSPOT_ONBOARDING_FORM_ID="${NETBIRD_HUBSPOT_ONBOARDING_FORM_ID:-}"
+export NETBIRD_HUBSPOT_SURVEY_FORM_ID="${NETBIRD_HUBSPOT_SURVEY_FORM_ID:-}"
+export NETBIRD_ANALYTICS_EXCLUDED_EMAILS="${NETBIRD_ANALYTICS_EXCLUDED_EMAILS:-}"
+
+# Exactly the variable list from init_react_envs.sh; restricting the list
+# protects other '$' occurrences in the JS code from envsubst.
+ENV_STR='$USE_AUTH0 $AUTH_AUDIENCE $AUTH_AUTHORITY $AUTH_CLIENT_ID $AUTH_CLIENT_SECRET $AUTH_SUPPORTED_SCOPES $NETBIRD_MGMT_API_ENDPOINT $NETBIRD_MGMT_GRPC_API_ENDPOINT $NETBIRD_HOTJAR_TRACK_ID $NETBIRD_GOOGLE_ANALYTICS_ID $NETBIRD_GOOGLE_TAG_MANAGER_ID $AUTH_REDIRECT_URI $AUTH_SILENT_REDIRECT_URI $NETBIRD_TOKEN_SOURCE $NETBIRD_DRAG_QUERY_PARAMS $NETBIRD_AUTH_SERVICE_URL $NETBIRD_WASM_PATH $NETBIRD_LICENSED $NETBIRD_CLOUD $NETBIRD_AGENT_NETWORK_ONLY $NETBIRD_AGENT_NETWORK_ENABLED $NETBIRD_HUBSPOT_PORTAL_ID $NETBIRD_HUBSPOT_SIGNUP_FORM_ID $NETBIRD_HUBSPOT_ONBOARDING_FORM_ID $NETBIRD_HUBSPOT_SURVEY_FORM_ID $NETBIRD_ANALYTICS_EXCLUDED_EMAILS'
+
+mkdir -p "$OUTPUT_DIR"
+# --delete: drop files removed from the package after an upgrade
+if command -v rsync >/dev/null; then
+    rsync -a --delete "$SRC_DIR/" "$OUTPUT_DIR/"
+else
+    find "$OUTPUT_DIR" -mindepth 1 -delete
+    cp -a "$SRC_DIR/." "$OUTPUT_DIR/"
+fi
+
+envsubst "$ENV_STR" < "$OUTPUT_DIR/OidcTrustedDomains.js.tmpl" > "$OUTPUT_DIR/OidcTrustedDomains.js"
+rm -f "$OUTPUT_DIR/OidcTrustedDomains.js.tmpl"
+
+count=0
+while IFS= read -r f; do
+    tmp="$f.gen"
+    envsubst "$ENV_STR" < "$f" > "$tmp"
+    mv "$tmp" "$f"
+    count=$((count + 1))
+done < <(grep -R -l AUTH_SUPPORTED_SCOPES "$OUTPUT_DIR")
+
+echo "netbird-dashboard-generate: done — $OUTPUT_DIR (files substituted: $((count + 1)))"
