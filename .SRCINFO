@@ -1,6 +1,6 @@
 pkgbase = cpumon
 	pkgdesc = Real-time CPU monitoring for Linux - temperatures, frequencies, throttling, and fan status
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/Mohabdo21/cpumon
 	install = cpumon.install
@@ -10,7 +10,7 @@ pkgbase = cpumon
 	makedepends = go
 	makedepends = git
 	depends = libcap
-	source = cpumon::git+https://github.com/Mohabdo21/cpumon.git#tag=v0.2.7
-	sha256sums = 6de4c4e022d6697ac30f2cc803c9ffbfe42385b5076ba5bc7a99e333025ad2ad
+	source = cpumon::git+https://github.com/Mohabdo21/cpumon.git#tag=v0.2.8
+	sha256sums = 3d4475048aa87c9e9fbbf6218631060fa17659b2f9e4aa5c669f3fe1757f96b3
 
 pkgname = cpumon
