@@ -1,0 +1,29 @@
+post_install() {
+  cat <<'MESSAGE'
+Melody includes a systemd USER service. Run these commands as your normal user:
+
+  melodyd setup
+  systemctl --user daemon-reload
+  systemctl --user enable --now melodyd.service
+
+Run setup in a terminal first; the service cannot answer its questions.
+Configuration: ~/.config/melody/melodyd.toml (or $XDG_CONFIG_HOME/melody/).
+Open http://localhost:6701/web/ or run melody-tui.
+MPD clients connect to localhost:6600 by default.
+
+For troubleshooting: journalctl --user -u melodyd.service
+For a headless server that should run after logout, an administrator can enable
+lingering for your account with: loginctl enable-linger USERNAME
+MESSAGE
+}
+
+post_upgrade() {
+  cat <<'MESSAGE'
+Melody updated. To use the new daemon, run as your normal user:
+
+  systemctl --user daemon-reload
+  systemctl --user restart melodyd.service
+
+For initial configuration run melodyd setup before starting the user service.
+MESSAGE
+}

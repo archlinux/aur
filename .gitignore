@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/melody/
+/*.pkg.tar.*
+/*.src.tar.*
