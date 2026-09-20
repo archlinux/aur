@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-gdk-pixbuf2
-pkgver=2.44.4
+pkgver=2.44.7
 pkgrel=1
 arch=('any')
 pkgdesc="An image loading library (Android ${_android_arch})"
@@ -22,14 +22,13 @@ optdepends=(
   "android-${_android_arch}-libwmf: Load .wmf and .apm"
   "android-${_android_arch}-libavif: Load .avif"
   "android-${_android_arch}-libheif: Load .heif, .heic, and .avif"
-  "android-${_android_arch}-libjxl: Load .jxl"
   "android-${_android_arch}-librsvg: Load .svg, .svgz, and .svg.gz"
   "android-${_android_arch}-webp-pixbuf-loader: Load .webp"
 )
 conflicts=("android-${_android_arch}-gdk-pixbuf2-bootstrap")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/${pkgver}/gdk-pixbuf-${pkgver}.tar.bz2")
-md5sums=('0d1ad3666145572cbdf1153cd74c874d')
+md5sums=('d8b74088e4b216b16cf9dc5eea4905e8')
 
 build() {
     cd "${srcdir}/gdk-pixbuf-${pkgver}"
