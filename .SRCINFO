@@ -1,6 +1,6 @@
 pkgbase = requesto-bin
 	pkgdesc = A modern, lightweight, self-hostable API client. No accounts, no cloud, no telemetry.
-	pkgver = 1.9.0
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://requesto.com.au/
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = requesto-bin
 	depends = nodejs
 	depends = libappindicator
 	depends = libayatana-appindicator
-	provides = requesto=1.9.0
+	provides = requesto=1.10.1
 	conflicts = requesto
 	options = !emptydirs
 	options = !strip
-	source = requesto-1.9.0.deb::https://github.com/t3rr11/Requesto/releases/download/v1.9.0/requesto-electron_1.9.0_amd64.deb
-	source = LICENSE-1.9.0::https://raw.githubusercontent.com/t3rr11/Requesto/v1.9.0/LICENSE
+	source = requesto-1.10.1.deb::https://github.com/t3rr11/Requesto/releases/download/v1.10.1/requesto-electron_1.10.1_amd64.deb
+	source = LICENSE-1.10.1::https://raw.githubusercontent.com/t3rr11/Requesto/v1.10.1/LICENSE
 	source = requesto.sh
-	sha256sums = d618c44893b13fd1dbd3824ea09ce46d8ce951c3a304ef1169414862a36cd693
+	sha256sums = 173c679dd69ecb4438aee5261d813d19e83e2c03aaf74747844707647bcfa963
 	sha256sums = baa265fc2389eb1ac3a489bd8fdb9255614a801f0b1624faf107c5a0d0c1bd66
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 

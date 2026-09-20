@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requesto-bin
 _pkgname=Requesto
-pkgver=1.9.0
+pkgver=1.10.1
 _electronversion=44
 pkgrel=1
 pkgdesc="A modern, lightweight, self-hostable API client. No accounts, no cloud, no telemetry."
@@ -30,11 +30,11 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/t3rr11/Requesto/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d618c44893b13fd1dbd3824ea09ce46d8ce951c3a304ef1169414862a36cd693'
+sha256sums=('173c679dd69ecb4438aee5261d813d19e83e2c03aaf74747844707647bcfa963'
             'baa265fc2389eb1ac3a489bd8fdb9255614a801f0b1624faf107c5a0d0c1bd66'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+    find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print | xargs dirname | head -n 1
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -61,7 +61,6 @@ prepare() {
     " "${srcdir}/usr/share/applications/${pkgname%-bin}-electron.desktop"
     local _app_dir=$(_get_app_dir)
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    rm -rf "${_app_dir}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
@@ -69,7 +68,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
