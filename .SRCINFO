@@ -1,11 +1,11 @@
 pkgbase = deepchat-bin
-	pkgdesc = A smart assistant that connects powerful AI to your personal world.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.1.1
+	pkgdesc = A smart assistant that connects powerful AI to your personal world.
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://deepchat.thinkinai.xyz/
 	arch = x86_64
 	license = Apache-2.0
-	depends = electron41
+	depends = electron43
 	depends = python
 	depends = python-six
 	depends = python-lxml
@@ -13,12 +13,12 @@ pkgbase = deepchat-bin
 	depends = python-pillow
 	depends = python-yaml
 	depends = nodejs
-	provides = deepchat=1.1.1
+	provides = deepchat=1.1.2
 	conflicts = deepchat
 	options = !strip
-	source = deepchat-1.1.1-x86_64.AppImage::https://github.com/ThinkInAIXYZ/deepchat/releases/download/v1.1.1/DeepChat-1.1.1-linux-x86_64.AppImage
+	source = deepchat-1.1.2-x86_64.AppImage::https://github.com/ThinkInAIXYZ/deepchat/releases/download/v1.1.2/DeepChat-1.1.2-linux-x86_64.AppImage
 	source = deepchat.sh
-	sha256sums = 2ef9ad20e76afeba3d05e04f7b1b853aab61d8f8c989bbef42e43503df1cb486
+	sha256sums = 0d4f34b4888dbf502cdc144203e3a286b6fd8f4b37b40c1e9b178c4c9bc353bd
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = deepchat-bin
