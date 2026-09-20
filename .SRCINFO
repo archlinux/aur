@@ -1,6 +1,6 @@
 pkgbase = let-go
 	pkgdesc = Almost Clojure written in Go
-	pkgver = 1.12.2
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/nooga/let-go
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = let-go
 	depends = bash
 	provides = lg
 	options = !strip
-	source = git+https://github.com/nooga/let-go.git#tag=v1.12.2
-	sha256sums = 4fdaf39077651aad4c7482fd6308ebbd720bee9c702ab1ab1a6383b5b83239ed
+	source = git+https://github.com/nooga/let-go.git#tag=v1.13.0
+	sha256sums = 9ee8677f175b21a631bc6f08b0fd692e0b82a54d3067e67664682536e65499e7
 
 pkgname = let-go
