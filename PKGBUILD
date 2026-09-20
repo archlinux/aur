@@ -2,18 +2,22 @@
 
 pkgname=gomics-git
 _pkgname=gomics
-pkgver=r28.f6b53a2
+pkgver=r29.9b785a5
 pkgrel=1
 pkgdesc="A lightweight and free comic viewer"
 url="https://github.com/salviati/gomics"
 license=('GPLv3')
-depends=('gtk3' 'gdk-pixbuf2' 'glib2')
+depends=('qt6-base')
 makedepends=('git' 'go')
 conflicts=('gomics')
 provides=('gomics')
 arch=('i686' 'x86_64')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
+optdepends=(
+  'qt6-imageformats: printing support'
+  'kimageformats: scanner support'
+)
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -35,7 +39,7 @@ build() {
 
 	export BUILD_DATE=`date +'%Y%m%d'`
 	export GIT_REVISON=`git rev-parse HEAD`
-	go build -modcacherw -ldflags="-X main.buildDate=$BUILD_DATE -X main.gitVersion=$GIT_REVISON"
+	go build -modcacherw -ldflags="-s -w -X main.buildDate=$BUILD_DATE -X main.gitVersion=$GIT_REVISON"
 }
 
 package() {
