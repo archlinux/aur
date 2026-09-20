@@ -10,6 +10,7 @@ post_install() {
   echo "    This package auto-fetches the latest browserclaw/v* tag on every makepkg/yay build."
   echo "    Update: yay -Syu  or  cd ~/build/browseros-neo-bin && makepkg -si"
   echo "    Check: curl -s https://api.github.com/repos/browseros-ai/BrowserOS/releases?per_page=5 | jq -r '[.[]|select(.tag_name|startswith(\"browserclaw/\"))][0].tag_name'"
+  echo " Note: Run 'browseros-neo-doctor' as your user to repair sidecar DB migrations if needed."
 }
 
 post_upgrade() {

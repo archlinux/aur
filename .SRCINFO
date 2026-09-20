@@ -1,7 +1,7 @@
 pkgbase = browseros-neo-bin
 	pkgdesc = BrowserOS neo — AI browser for agents (Chromium 151, binary from browserclaw/* tags, auto-rolling)
 	pkgver = 0.50.5
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/browseros-ai/BrowserOS
 	install = browseros-neo.install
 	arch = x86_64
@@ -31,6 +31,8 @@ pkgbase = browseros-neo-bin
 	depends = systemd-libs
 	depends = expat
 	depends = libxcb
+	depends = sqlite3
+	depends = binutils
 	optdepends = xdg-utils: open links with xdg-open
 	optdepends = libnotify: desktop notifications
 	optdepends = apparmor: AppArmor profile at /etc/apparmor.d/browserclaw
