@@ -1,7 +1,7 @@
 pkgbase = python-muxtools-git
 	pkgdesc = Python Package: muxtools (GIT version)
 	pkgver = 0.4.3.0.g56ca320
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/muxtools
 	arch = any
 	license = MIT
@@ -24,6 +24,7 @@ pkgbase = python-muxtools-git
 	depends = python-typed-ffmpeg-compatible3
 	depends = python-videotimestamps
 	depends = python-wget
+	depends = python-py-cpuinfo2
 	provides = python-muxtools
 	conflicts = python-muxtools
 	source = muxtools::git+https://github.com/Jaded-Encoding-Thaumaturgy/muxtools.git

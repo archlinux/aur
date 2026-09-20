@@ -3,7 +3,7 @@
 
 _plug=muxtools
 pkgname=python-${_plug}-git
-pkgver=0.4.3.0.g56ca320
+pkgver=0.4.3.3.gfab28b1
 pkgrel=1
 pkgdesc="Python Package: ${_plug} (GIT version)"
 arch=('any')
@@ -23,6 +23,7 @@ depends=(
     'python-typed-ffmpeg-compatible3'
     'python-videotimestamps'
     'python-wget'
+    'python-py-cpuinfo2'
 )
 makedepends=(
     'git'
