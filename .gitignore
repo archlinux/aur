@@ -1,2 +1,8 @@
-pkg/
+# makepkg leftovers
+*.tar.gz
+*.tar.zst
+*.pkg.tar.*
 src/
+pkg/
+lfff-gui.desktop
+lfff-gui.svg
