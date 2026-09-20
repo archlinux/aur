@@ -1,7 +1,7 @@
 # Maintainer: taxin-404 <taxin404@duck.com>
 
 pkgname=flea
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy'
 arch=('x86_64' 'aarch64')
@@ -40,7 +40,7 @@ optdepends=('libarchive: archive listing and extraction'
 # The release profile strips, so a debug package would have nothing to hold.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thisisgm/flea/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e9655cf4898ddb522fd5f18069cdcb98db69dddb0ca5a066dd54febb6cab10ae')
+sha256sums=('a9aa626352b3741a8651942ad3785fafb7468c5d5cc392b00f4bf070df36ced2')
 
 build() {
   cd "$pkgname-$pkgver"

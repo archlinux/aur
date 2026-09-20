@@ -1,6 +1,6 @@
 pkgbase = flea
 	pkgdesc = Fast, keyboard-first file manager for Omarchy
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/thisisgm/flea
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = flea
 	optdepends = dropbox-cli: Dropbox share links
 	conflicts = flea-git
 	options = !debug
-	source = flea-0.3.0.tar.gz::https://github.com/thisisgm/flea/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = e9655cf4898ddb522fd5f18069cdcb98db69dddb0ca5a066dd54febb6cab10ae
+	source = flea-0.3.1.tar.gz::https://github.com/thisisgm/flea/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = a9aa626352b3741a8651942ad3785fafb7468c5d5cc392b00f4bf070df36ced2
 
 pkgname = flea
