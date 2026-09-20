@@ -1,6 +1,6 @@
-# Maintainer: duanluan <duanluan@outlook.com>
+# Maintainer: Redminote11tech
 
-pkgname=zcode
+pkgname=zcode-desktop-bin
 _pkgname=zcode
 _appdir=ZCode
 pkgver=3.14.1
@@ -26,7 +26,8 @@ optdepends=(
   'libappindicator-gtk3: system tray indicator support'
 )
 makedepends=('libarchive')
-provides=("zcode-desktop-bin=${pkgver}")
+provides=("zcode=${pkgver}")
+conflicts=('zcode')
 options=('!strip' '!lto')
 install="${pkgname}.install"
 source=('zcode.desktop')
