@@ -1,7 +1,7 @@
 # Maintainer: Coraline Shuryn <coraline.shuryn@gmail.com>
 
 pkgname=spirula-studio-git
-pkgver=2026.9.2.r9.g8979836
+pkgver=2026.9.20.r3.ga954d70
 pkgrel=1
 pkgdesc="End-to-end 3D Gaussian Splatting pipeline (Vulkan backend), git version"
 arch=('x86_64' 'aarch64')
@@ -76,7 +76,6 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSS_BACKEND=vulkan \
-    -DSS_BUILD_CLI=ON \
     -DSS_BUILD_GUI=ON \
     -DSS_CHECK_COMMENTS=OFF \
     -DSS_SLANGC="${srcdir}/slang/bin/slangc" \
