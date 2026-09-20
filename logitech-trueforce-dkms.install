@@ -26,8 +26,11 @@ post_install() {
          (or point --sdk-dir / $LOGITECH_TRUEFORCE_SDK_DIR elsewhere)
       2. Run as your normal user (NOT root):
            logi-shim --all-steam
-      3. Per SDK sim in Steam: set launch option PROTON_ENABLE_HIDRAW=1
-         and disable Steam Input for the wheel.
+      3. Per game in Steam: launch option `logi-launch %command%` and
+         Steam Input off. The launcher works out raw HID, the proxies
+         and the daemon per game and per wheel; never set
+         PROTON_ENABLE_HIDRAW by hand, on a G923 it costs the force
+         feedback you have.
 
     Full guide: https://github.com/mescon/logitech-trueforce-linux-driver/wiki/Installation
 MSG
