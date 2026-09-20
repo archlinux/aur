@@ -1,0 +1,19 @@
+pkgbase = bibata-material-cursor-theme-bin
+	pkgdesc = Bibata cursor themes using Material Design 3's tonal color system
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/SakibShahariar/material-bibata-cursor
+	arch = any
+	license = MIT
+	depends = adwaita-cursors
+	provides = bibata-material-cursor-theme
+	conflicts = bibata-material-cursor-theme
+	options = !strip
+	source = https://github.com/SakibShahariar/material-bibata-cursor/releases/download/v1.4.0/bibata-material-dark-v1.4.0.tar.gz
+	source = https://github.com/SakibShahariar/material-bibata-cursor/releases/download/v1.4.0/bibata-material-light-v1.4.0.tar.gz
+	source = LICENSE-upstream::https://raw.githubusercontent.com/SakibShahariar/material-bibata-cursor/refs/tags/v1.4.0/LICENSE
+	sha256sums = df68e79ef7a0cb87fc0a45adcce4f9c2ed2fe8f89f617459f26357ec5c8d8c78
+	sha256sums = 8774d79a174aa6dd9a772454740eac582990eafd866d03f6432be95bcce0a863
+	sha256sums = f2088b19938f1e5a3e1049cf141130b410af889526c118898b80be581d7d926d
+
+pkgname = bibata-material-cursor-theme-bin

@@ -1,0 +1,4 @@
+[bibata-material-cursor-theme-bin]
+source = "git"
+git = "https://github.com/SakibShahariar/material-bibata-cursor.git"
+prefix = "v"
