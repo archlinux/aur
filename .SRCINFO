@@ -1,16 +1,20 @@
 pkgbase = libcangjie
 	pkgdesc = CangJie Input Method Library
-	pkgver = 1.3
+	pkgver = 1.4.0
 	pkgrel = 1
-	url = http://cangjians.github.io/projects/libcangjie/
+	url = https://cangjie.pages.freedesktop.org/projects/libcangjie/
 	arch = x86_64
 	arch = i686
 	license = LGPL3
-	makedepends = pkg-config
+	makedepends = git
+	makedepends = meson>=1.3.2
+	makedepends = ninja
+	makedepends = gettext
+	makedepends = pkgconf
+	makedepends = cmake
 	depends = sqlite
 	replaces = libcangjie-git
-	source = https://github.com/Cangjians/libcangjie/releases/download/v1.3/libcangjie-1.3.tar.xz
-	sha256sums = f4b9a0cf8673f49adb22b675992360799d66eb8d5bce2bd603358de78509d30b
+	source = libcangjie::git+https://gitlab.freedesktop.org/cangjie/libcangjie.git#commit=98241ed512cc10e33b4b023b3022780efc49182c
+	sha256sums = SKIP
 
 pkgname = libcangjie
-

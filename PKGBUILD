@@ -1,29 +1,30 @@
 # Maintainer: Antony Ho <ntonyworkshop@gmail.com>
 pkgname=libcangjie
-pkgver=1.3
+pkgver=1.4.0
 pkgrel=1
+_commit=98241ed512cc10e33b4b023b3022780efc49182c
 pkgdesc="CangJie Input Method Library"
 arch=('x86_64' 'i686')
-url="http://cangjians.github.io/projects/libcangjie/"
+url="https://cangjie.pages.freedesktop.org/projects/libcangjie/"
 license=('LGPL3')
 depends=('sqlite')
-makedepends=('pkg-config')  
+makedepends=('git' 'meson>=1.3.2' 'ninja' 'gettext' 'pkgconf' 'cmake')
 replaces=('libcangjie-git')
-sha256sums=('f4b9a0cf8673f49adb22b675992360799d66eb8d5bce2bd603358de78509d30b')
-source=("https://github.com/Cangjians/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('SKIP')
+source=("${pkgname}::git+https://gitlab.freedesktop.org/cangjie/${pkgname}.git#commit=${_commit}")
 
 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make
+  cd "$srcdir/$pkgname"
+  meson setup build --prefix=/usr --buildtype=plain
+  meson compile -C build
+}
+
+check() {
+  meson test -C "$srcdir/$pkgname/build" --print-errorlogs
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  meson install -C "$srcdir/$pkgname/build" --destdir "$pkgdir"
 }
