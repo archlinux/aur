@@ -1,0 +1,5 @@
+[myoso-bin]
+source = "github"
+github = "vmargb/Myoso"
+use_latest_release = true
+prefix = "v"

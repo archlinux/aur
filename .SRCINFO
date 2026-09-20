@@ -1,0 +1,20 @@
+pkgbase = myoso-bin
+	pkgdesc = A spaced-repetition Anki alternative with superpowers
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/vmargb/Myoso
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = myoso
+	conflicts = myoso
+	options = !strip
+	source = README-0.5.3.md::https://raw.githubusercontent.com/vmargb/Myoso/v0.5.3/README.md
+	source = LICENSE-0.5.3::https://raw.githubusercontent.com/vmargb/Myoso/v0.5.3/LICENSE
+	sha256sums = 67d94313167c31d8a3a8ad2818ef98c5b2512035cfa77f7e697bb6ab8c524b1e
+	sha256sums = a4cb9fe432afc1ad1290710b62536121b89035aa00c5074c04a316243e9cc83a
+	source_x86_64 = myoso-x86_64-0.5.3.tgz::https://github.com/vmargb/Myoso/releases/download/v0.5.3/myoso-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 96c480ac85c86832a7dacba15f41a2f4c8087988ab3faaa112bd8845d61c71e6
+
+pkgname = myoso-bin
