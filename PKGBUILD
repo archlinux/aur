@@ -2,7 +2,7 @@
 # Previous maintainer: gardenapple <mailbox@appl.garden>
 
 pkgname=chromium-extension-adnauseam
-pkgver=3.28.8
+pkgver=3.29.0
 _pkgver="$pkgver"
 pkgrel=1
 epoch=1
@@ -25,5 +25,5 @@ package() {
    mkdir -p "$pkgdir/usr/share/$pkgname"
    cp -dr --no-preserve=ownership $srcdir/adnauseam.chromium/* "$pkgdir/usr/share/$pkgname/"
 }
-sha256sums=('09464eb0ebe662d596cfbcf576c708abff13e4dd008e2a8083e9db5d32f7dbe7')
-b2sums=('f9ed784a129a4b41b0000197dbafbd7da453a1728e2747a14064c4062bd6150ccb23b3fc4440e546bdbc047ce91f5fd9077ac84fe0686ea6e332b9e590717988')
+sha256sums=('02502898d6116d73fca41e92f5331d2e5f35ba3b4c049a90736a8aa2ae54b40f')
+b2sums=('a8dcbd37f2d2ef4f227e62e19b6a6c4aa2830cd75a6f2e06eacca36fd8979df497dd1d3db76b1607f2904815bbeaafcdc34ce7a6fc6c4597f3b1c5238f4a3c3c')
