@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A modern, open-source database client for desktop and web"
 
-pkgver=2026.4.8
+pkgver=2026.9.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.deb")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.deb")
-sha256sums=('aba508ad4dacd1ebb57819a262c6fe97d2733eaf0da66be8fcb6dae4a2ace108'
+sha256sums=('500086e6ec297b21a999f6c8bf22bfa714cd3a8d6449b7a300aff7193bb643f0'
             'ee532cbc55110ff7bea4384756e145b0f0a185447e0ed7e523029a4744b5e98f')
-sha256sums_x86_64=('9798f92c11a8b851f3c667d7fa370186c4999eeded35c60c9ea1a9114e562055')
-sha256sums_aarch64=('d2f51f0a6924d52f3124530ab73d6a7d89e6d45c098b3ffab8f472a350aa8738')
+sha256sums_x86_64=('f18c9ba607fbfb1d3b80455574215182e8330c0b99f30f8672ccf3b2c5a2fab9')
+sha256sums_aarch64=('e62be4b602450075bd1c066db7409e39374decbbad33bd0be3983dc967501efa')
 
 
 package() {
