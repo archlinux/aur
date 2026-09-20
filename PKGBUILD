@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo-git
 _pkgname=Folo
-pkgver=1.13.0.r11.g8b097ab
+pkgver=1.14.0.r5.g141567e
 _electronversion=43
 _nodeversion=22
 pkgrel=1
 pkgdesc="Organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing."
 arch=('any')
-url="https://folo.is/"
+url="https://app.folo.is/"
 _ghurl="https://github.com/RSSNext/Folo"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-git}")
@@ -27,7 +27,7 @@ makedepends=(
     'zip'
 )
 source=(
-    "${pkgname//-/.}::git+${_ghurl}.git"
+    "${pkgname//-/.}::git+${_ghurl}"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
@@ -49,39 +49,63 @@ _get_app_dir() {
 }
 _set_build_env() {
     export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+    export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    _ev="$(electron${_electronversion} -v)"
+    export SYSTEM_ELECTRON_VERSION="${_ev#v}"
     export HOME="${srcdir}/.electron-gyp"
-    export CXXFLAGS="${CXXFLAGS} -std=c++17"
-    export CFLAGS="${CFLAGS} -std=c++17"
-    export npm_config_build_from_source=true
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export pnpm_config_registry="https://registry.npmmirror.com"
-            export npm_config_registry="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-        }
+    mkdir -p "${HOME}"
+    export XDG_CACHE_HOME="${srcdir}/.cache"
+    export XDG_CONFIG_HOME="${srcdir}/.config"
+    export XDG_DATA_HOME="${srcdir}/.local/share"
+    export XDG_STATE_HOME="${srcdir}/.local/state"
+    export PNPM_HOME="${srcdir}/.pnpm/bin"
+    export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+    export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+    export PNPM_GLOBAL_DIR="${srcdir}/.pnpm/global"
+    export PNPM_STATE_DIR="${srcdir}/.pnpm/state"
+    export PNPM_MINIMUM_RELEASE_AGE=0
+    export PNPM_NODE_LINKER=hoisted
+    export PNPM_FETCH_RETRIES=3
+    export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+    export PNPM_UPDATE_NOTIFIER=false
+    export PNPM_NO_COLOR=true
+    export PNPM_NO_PROGRESS=true
+    export pnpm_config_platform=linux
+    export pnpm_config_arch="${CARCH}"
+    export NODE_OPTIONS="--max-old-space-size=4096"
+    export npm_config_node_options="--max-old-space-size=4096"
+    mkdir -p "${PNPM_CACHE_DIR}" "${PNPM_STORE_DIR}" "${PNPM_GLOBAL_DIR}" "${PNPM_HOME}" "${PNPM_STATE_DIR}"
+    export PATH="${PNPM_HOME}:${PATH}"
+    local _pnpmver="${_pnpmversion}"
+    if [[ -z "${_pnpmver}" ]]; then
+        _pnpmver="$(node -p "const pm=require('./package.json').packageManager; pm && pm.startsWith('pnpm@') ? pm.split('@')[1] : ''" 2>/dev/null)"
+    fi
+    if [[ -n "${_pnpmver}" ]]; then
+        export COREPACK_HOME="${srcdir}/.corepack"
+        install -dm755 "${srcdir}/.bin"
+        corepack enable --install-directory "${srcdir}/.bin"
+        export PATH="${srcdir}/.bin:${PATH}"
+        corepack prepare "pnpm@${_pnpmver}" --activate
     fi
 }
+_use_local_electron_for_forge() {
+    local _v="${SYSTEM_ELECTRON_VERSION}"
+    local _zd="${srcdir}/electron-zips"
+    case "${CARCH}" in
+        aarch64)    _arch=arm64 ;;
+        x86_64) _arch=x64   ;;
+    esac
+    local _zf="${_zd}/electron-v${_v}-linux-${_arch}.zip"
+    install -Dm755 -d "${_zd}"
+    ( cd "${ELECTRON_DIST}" && zip -r -q -0 "${_zf}" . )
+    sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," "${srcdir}/${pkgname//-/.}/apps/desktop/forge.config."*
+}
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 4 -name "package.json" ! -name "node_modules" \
-        -exec jq -r '.devDependencies.electron // empty' {} + 2>/dev/null | grep -v "^$" | head -n 1)
-    _elec_ver=$(echo "${_elec_ver}" | sed 's/[^0-9.]//g')
-    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
-    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
+        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
+    [[ -z "${_elec_ver}" ]] && return 1
+    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -98,41 +122,33 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    _set_build_env
     _ensure_local_nvm
-    # Use project's pnpm version via corepack
-    _pnpmver=`grep "pnpm@" package.json | awk '{print $2}' | sed "s/\"//g;s/pnpm@//g;s/,//g"`
-    corepack enable
-    corepack prepare pnpm@"${_pnpmver}" --activate
+    _set_build_env
     sed -i -e "
         s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
         s/electron-forge make/electron-forge package/g
     " apps/desktop/package.json
-    NODE_ENV=development    pnpm add -D -w node-addon-api node-gyp
-    NODE_ENV=development    pnpm install
-    local _v="${SYSTEM_ELECTRON_VERSION}"
-	local _zd="${srcdir}/electron-zips"
-	local _zf="${_zd}/electron-v${_v}-linux-x64.zip"
-	install -Dm755 -d "${_zd}"
-	( cd "${ELECTRON_DIST}" && zip -r -q -0 "${_zf}" . )
-	sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," apps/desktop/forge.config.*
+    cp apps/desktop/.env.example apps/desktop/.env
+    export NODE_ENV=development
+    export SHARP_IGNORE_GLOBAL_LIBVIPS=1
+    pnpm install
+    _use_local_electron_for_forge
 }
 build() {
-    cd "${srcdir}/${pkgname//-/.}"
-    _set_build_env
-    _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}/apps/desktop"
-    cp .env.example .env
-    NODE_ENV=production     pnpm update:main-hash   
-    NODE_ENV=production     pnpm build:electron-vite
-    cd "${srcdir}/${pkgname//-/.}"
-    NODE_ENV=production     pnpm --filter=Folo build:electron-forge
+    _ensure_local_nvm
+    _set_build_env
+    export NODE_ENV=production
+    pnpm update:main-hash   
+    pnpm build:electron-vite
+    pnpm build:electron-forge
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     install -Dm644 "${srcdir}/${pkgname//-/.}/apps/desktop/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
