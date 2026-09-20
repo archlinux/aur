@@ -15,12 +15,6 @@ pkgbase = uutils-coreutils-git
 	conflicts = uutils-coreutils
 	conflicts = coreutils
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
-	source = git+https://github.com/rustcrypto/hashes.git
-	source = fast-md5.patch::https://github.com/RustCrypto/hashes/commit/981bd7cc56077995c67bf20a215cdfefc7b6a29b.patch
-	source = no-openssl-md5.patch
 	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = a21b1450a143d18800faa0858e7e376f208082c5cd45db33a848cd5bdda2f8e56b23aa9818ca14bd599020e25c737c11c6caa44fb46cb3e7edf9abf9c2754d03
-	b2sums = bc10d079dd8a0d34aa5173296aa20ad649354d121d73dd751899c70a34d6c23843994f68a0a31df3e6fa674f81403aab179670a46573412aadc05c4b208826a0
 
 pkgname = uutils-coreutils-git
