@@ -19,6 +19,7 @@ pkgbase = yukigram-desktop
 	makedepends = python
 	makedepends = range-v3
 	makedepends = tl-expected
+	makedepends = vulkan-headers
 	depends = abseil-cpp
 	depends = ada
 	depends = ffmpeg
