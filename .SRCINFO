@@ -1,6 +1,6 @@
 pkgbase = typeshi-bin
 	pkgdesc = A typing application (prebuilt binary)
-	pkgver = 0.1.16
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/RyuZinOh/typeshi-mirror
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = typeshi-bin
 	depends = qt6-shadertools
 	provides = typeshi
 	conflicts = typeshi
-	source = typeshi-bin-0.1.16.tar.gz::https://github.com/RyuZinOh/typeshi-mirror/releases/download/v0.1.16/typeshi-bin-0.1.16-x86_64.tar.gz
-	sha256sums = 96cb1af983ee8e03fc56c6b95e12826dcb232d9f9a8bf3235d2719a7de64ec3d
+	source = typeshi-bin-0.1.17.tar.gz::https://github.com/RyuZinOh/typeshi-mirror/releases/download/v0.1.17/typeshi-bin-0.1.17-x86_64.tar.gz
+	sha256sums = af6f4d06125541adf6d6f1864b274e7154f3b1d2baca022bf950ad69395ab315
 
 pkgname = typeshi-bin
