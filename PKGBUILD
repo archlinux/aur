@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=budgetbutlerweb-desktop
 _pkgnameshort=budgetbutlerweb
-pkgver=4.6.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="Simple and fast household book with offline and online functionality in German."
 arch=("x86_64")
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 prepare() {
 	cd "$_pkgnameshort"
 	cd application-wrapper/BudgetButlerWeb
-	npm install
+	npm install --allow-git=all
 	cd ../..
 }
 
