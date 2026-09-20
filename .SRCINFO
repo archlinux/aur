@@ -1,0 +1,20 @@
+pkgbase = python-wonderwords
+	pkgdesc = Generate random English words and sentences
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/mrmaxguns/wonderwordsmodule
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-rich
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	optdepends = python-rich: command-line interface
+	source = python-wonderwords-3.0.1.tar.gz::https://github.com/mrmaxguns/wonderwordsmodule/archive/refs/tags/v3.0.1.tar.gz
+	sha256sums = 65a5bfd85060e8982b13afa401500afb4116d3b89d519c79c34621fde6b799cd
+
+pkgname = python-wonderwords
