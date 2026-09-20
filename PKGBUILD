@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=tailcat-bin
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="like netcat, but over Tailscale's data plane, without Tailscale's control plane"
 url='https://github.com/tailscale/tailcat'
@@ -16,8 +16,8 @@ source_x86_64=(
 source_aarch64=(
   ${pkgname%-bin}-arm64-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz
 )
-sha256sums_aarch64=('fff48f25d223aea31f985bae8a2c01378b22e51e985e8c7d270e1a8586598506')
-sha256sums_x86_64=('f3597a9ad02f5cca538f8f5a6f89123910bce3e9611d1e5a8e96d5f2d3cc90fd')
+sha256sums_aarch64=('bbb1ab50f24f00effe1e1fd86d0501803fb80793a90785a2a16ff3428f03d8ef')
+sha256sums_x86_64=('23c0b1887a5ec422f0d18a9c52b4f5357815febdaae738a1eb54036d10bd9ee6')
 
 package() {
   install -Dm755 ${pkgname%-bin} "${pkgdir}/usr/bin/${pkgname%-bin}"
