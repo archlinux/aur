@@ -2,7 +2,7 @@
 # AUR package for cyberghostvpn-gui
 
 pkgname=cyberghostvpn-gui
-pkgver=1.0.5   # Update with the latest release version
+pkgver=1.0.6   # Update with the latest release version
 pkgrel=1
 pkgdesc="A GUI for CyberGhost VPN"
 arch=('x86_64')
@@ -13,9 +13,9 @@ makedepends=()
 source=("https://github.com/picharly/cyberghostvpn-gui/releases/download/${pkgver}/cyberghostvpn-gui_linux_amd64_${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/picharly/cyberghostvpn-gui/refs/heads/main/extras/cyberghostvpn-gui.desktop"
         "https://raw.githubusercontent.com/picharly/cyberghostvpn-gui/refs/heads/main/extras/cyberghostvpn-gui.png")
-sha256sums=('30ddbf679dcbcde3f45d1d0b95a3596add7a3305ecc941a6d5c6dc51a41d56a9'
+sha256sums=('ec76768f24472c5dbd663648bb5a55a2b8ca1b38d733475ef8f157751f464ca0'
             '1df2b448a5e5386162ea8a467ead6987f17cd3220538e7c0b8891335168296fb'
-            'a9d8cd955a0435741d460145918532295a44e1dfc2c1dab10c6f88cddd438980')  # Use 'SKIP' for GitHub releases, because they might change
+            'a9d8cd955a0435741d460145918532295a44e1dfc2c1dab10c6f88cddd438980')
 
 package() {
     # Change to the source directory
