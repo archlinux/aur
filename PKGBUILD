@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=brisk-bin
 _pkgname=Brisk
-pkgver=2.3.8
+pkgver=2.3.9
 pkgrel=1
-pkgdesc="Fast, multithreaded, cross-platform download manager.(Prebuilt version)"
+pkgdesc="Ultra-fast, modern download manager for desktop."
 arch=('x86_64')
 url="https://github.com/AminBhst/brisk"
 license=('GPL-3.0-only')
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${CARCH}.tar.xz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('123a75e4fbeb34d66342f324745c4f817b652d1db9ca4f075f07ab61c295b5e7'
+sha256sums=('c66629981a823476c779136c1f7b7a8991f7fba4e719116b68836311e028eb93'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 prepare() {
     sed -i -e "
@@ -42,7 +42,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
+    cp -a "${srcdir}/usr" "${pkgdir}"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/data/flutter_assets/assets/icons/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }

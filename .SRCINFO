@@ -1,6 +1,6 @@
 pkgbase = brisk-bin
-	pkgdesc = Fast, multithreaded, cross-platform download manager.(Prebuilt version)
-	pkgver = 2.3.8
+	pkgdesc = Ultra-fast, modern download manager for desktop.
+	pkgver = 2.3.9
 	pkgrel = 1
 	url = https://github.com/AminBhst/brisk
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = brisk-bin
 	depends = libayatana-indicator
 	depends = ayatana-ido
 	depends = libayatana-appindicator
-	provides = brisk=2.3.8
+	provides = brisk=2.3.9
 	conflicts = brisk
-	noextract = brisk-2.3.8.tar.xz
-	source = brisk-2.3.8.tar.xz::https://github.com/AminBhst/brisk/releases/download/v2.3.8/Brisk-v2.3.8-linux-x86_64.tar.xz
+	noextract = brisk-2.3.9.tar.xz
+	source = brisk-2.3.9.tar.xz::https://github.com/AminBhst/brisk/releases/download/v2.3.9/Brisk-v2.3.9-linux-x86_64.tar.xz
 	source = brisk.sh
-	sha256sums = 123a75e4fbeb34d66342f324745c4f817b652d1db9ca4f075f07ab61c295b5e7
+	sha256sums = c66629981a823476c779136c1f7b7a8991f7fba4e719116b68836311e028eb93
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 
 pkgname = brisk-bin
