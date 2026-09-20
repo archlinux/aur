@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-gsm
 	pkgdesc = Shared libraries for GSM 06.10 lossy speech compression (Android x86-64)
-	pkgver = 1.0.23
+	pkgver = 1.0.24
 	pkgrel = 1
 	url = https://www.quut.com/gsm/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-x86-64-gsm
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.quut.com/gsm/gsm-1.0.23.tar.gz
-	md5sums = fc625564fb388b98ac195301e75d7404
+	source = https://www.quut.com/gsm/gsm-1.0.24.tar.gz
+	md5sums = c13a7e1c5f826e9dbaa71db19e7ebfae
 
 pkgname = android-x86-64-gsm
