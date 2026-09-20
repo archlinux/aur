@@ -1,6 +1,6 @@
 pkgbase = rufux-git
 	pkgdesc = Rufux — bootable USB creator for Linux (Rufus port, latest git)
-	pkgver = 1.6.r0.g3469ec7
+	pkgver = 1.6.0.r0.g32d3422
 	pkgrel = 1
 	url = https://github.com/Hultwl/Rufux
 	arch = x86_64
