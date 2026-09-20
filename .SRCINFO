@@ -1,6 +1,6 @@
 pkgbase = weewx
 	pkgdesc = Software for logging data from weather stations
-	pkgver = 5.5.0
+	pkgver = 5.5.1
 	pkgrel = 1
 	url = http://www.weewx.com/
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = weewx
 	makedepends = python-cheetah3
 	makedepends = python-configobj
 	makedepends = python-regex
-	source = weewx-5.5.0.tar.xz::https://github.com/weewx/weewx/archive/refs/tags/v5.5.0.tar.gz
+	source = weewx-5.5.1.tar.xz::https://github.com/weewx/weewx/archive/refs/tags/v5.5.1.tar.gz
 	source = weewx.sysusers
 	source = weewx.tmpfiles
-	sha512sums = ac2ecad83a4d6eaff0416d084e739131de108b4a30a747ce734d820ec8285fa430b9cfc44d8e7a727d55187ace259a25336faea7fcbd98c7290c11481b209efd
+	sha512sums = 57d2bde398185c0df27b819d4eefb23a9c32b477b9f51d1ed888d5130cc541d3337bd0f602d07452090e026ca89f6f6bde8fbefa7eed287005dba8ea24dab09b
 	sha512sums = 6015b870143f6b8ae094b3f94ad53323be8a083f11c177dc508315fb3bbc20dd318124e6ccd41ba9d0388828e18c4b4ae6ce7c4a35ac0cab442eca9e8bbbca2d
 	sha512sums = e97b287acf53c55d30f4e1a4d533fe5c649fac44080095fa1052f6f1cc9a55b6b0592d63c63a4a241e7007894e882648d5c4c4a221da69666e284637c5a3e15e
 
