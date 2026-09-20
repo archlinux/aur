@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=izpack
-pkgver=5.2.6
+pkgver=5.2.7
 pkgrel=1
 pkgdesc='Tool for packaging applications on the Java platform as cross-platform installers'
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=(
     'gtk3')
 source=("git+https://github.com/izpack/izpack.git#tag=${pkgname}-${pkgver}"
         '010-izpack-compile.patch')
-sha256sums=('73c4a1e619f2538d085153a7213937b364c093b5212779c7c4cbcbc709ed54cf'
+sha256sums=('2e858059ca7f635ef31d9116e852783ecb04eaa5289444468462ad1152bd63f8'
             'a42578544bfba028a804f9fd9dfa7ad69bc3d7be72bedd47c95341c7719ab17c')
 
 prepare() {
