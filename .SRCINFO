@@ -1,0 +1,25 @@
+pkgbase = ascii-forge
+	pkgdesc = Turn your images into ASCII art from your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kanakOS01/ascii-forge
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = bash
+	depends = python
+	depends = python-textual
+	depends = python-rich
+	depends = python-click
+	depends = python-colorama
+	depends = python-pillow
+	depends = python-importlib-metadata
+	provides = ascii-forge
+	conflicts = python-ascii-forge
+	source = https://files.pythonhosted.org/packages/source/a/ascii-forge/ascii-forge-1.0.0.tar.gz
+	sha256sums = e838ee90b7035edda1cd1d8d1f64d802497cae28272861f95fb129571747f800
+
+pkgname = ascii-forge
