@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=veyon-bin
-pkgver=4.11.2
+pkgver=4.11.3
 pkgrel=1
-pkgdesc="Cross-platform computer monitoring and classroom management.(Prebuilt version)"
+pkgdesc="Cross-platform computer monitoring and classroom management."
 arch=('x86_64')
 url="https://veyon.io/"
 _ghurl="https://github.com/veyon/veyon"
@@ -24,7 +24,7 @@ depends=(
     'qt6-base'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}.0-ubuntu.26.04_amd64.deb")
-sha256sums=('8ea92d3c31ccd094fa49515d8d74228a68a72fab6ed83a5fdf2cee0920f31504')
+sha256sums=('ad63aeb19fb61463ac414518b961113a4d01ffcb94b9c460ac1647b41587e6ec')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/usr\/bin\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}-"{master,configurator}.desktop
