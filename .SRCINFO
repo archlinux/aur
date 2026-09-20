@@ -1,0 +1,26 @@
+pkgbase = python-prometheus-api-client
+	pkgdesc = Python client for the Prometheus HTTP API
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/4n4nd/prometheus-api-client-python
+	arch = any
+	license = MIT
+	checkdepends = python-httmock
+	checkdepends = python-matplotlib
+	checkdepends = python-numpy
+	checkdepends = python-pandas
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-dateparser
+	depends = python-requests
+	optdepends = python-pandas>=1.4: metric objects and DataFrame conversions
+	optdepends = python-numpy: NumPy-formatted aggregation results
+	optdepends = python-matplotlib: metric plotting
+	source = python-prometheus-api-client-0.7.2.tar.gz::https://github.com/4n4nd/prometheus-api-client-python/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = a295ffaa2177d8b04507ed23efa89970a4b1b6e05dfcc676aff8a95e2a9d06bc
+
+pkgname = python-prometheus-api-client
