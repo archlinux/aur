@@ -1,0 +1,6 @@
+D-LAN
+pkg
+src
+d-lan-*.log
+d-lan-*.zst
+*namcap.log
