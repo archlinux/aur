@@ -2,21 +2,29 @@
 
 pkgname='python-rotary-embedding-torch'
 _module='rotary-embedding-torch'
-_src_folder="rotary_embedding_torch-0.8.9"
-pkgver=0.8.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Rotary Embedding - Pytorch"
 url="https://github.com/lucidrains/rotary-embedding-torch"
-depends=('python' 'python-pytorch' 'python-einops')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+depends=('python' 'python-pytorch>=2.4' 'python-einops>=0.8')
+optdepends=('python-triton: fused FlashAttention kernels')
+makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/r/rotary-embedding-torch/rotary_embedding_torch-$pkgver.tar.gz")
-sha256sums=('b213f153cad1d108064d930544fb3af678d56515893d3f869a7a146f87997e3f')
+_commit=9a46f1a58a40ad752a647b91b6003290249ef3b5
+_src_folder="rotary-embedding-torch-$_commit"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
+sha256sums=('53788db6501028110267f006a6650054484778a5aabe9a78a64a14ab90909aea')
 
 build() {
     cd "${srcdir}/${_src_folder}"
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${srcdir}/${_src_folder}"
+    CUDA_VISIBLE_DEVICES='' pytest -ra
 }
 
 package() {
