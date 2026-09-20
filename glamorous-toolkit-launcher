@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly app_root="${XDG_DATA_HOME:-$HOME/.local/share}/glamorous-toolkit"
+readonly installed_root=/opt/glamorous-toolkit
+
+if [[ ! -x "$app_root/bin/GlamorousToolkit" ]]; then
+	install -d "$app_root/bin"
+	install -Dm755 "$installed_root/bin/GlamorousToolkit.bin" "$app_root/bin/GlamorousToolkit"
+	ln -sfn "$installed_root/lib" "$app_root/lib"
+	ln -sfn "$installed_root/gt-extra" "$app_root/gt-extra"
+	install -Dm644 "$installed_root/GlamorousToolkit.image" "$app_root/GlamorousToolkit.image"
+	install -Dm644 "$installed_root/GlamorousToolkit.changes" "$app_root/GlamorousToolkit.changes"
+	install -Dm644 "$installed_root/Pharo12.0-64bit-e35513c.sources" \
+		"$app_root/Pharo12.0-64bit-e35513c.sources"
+fi
+
+exec "$app_root/bin/GlamorousToolkit" "$@"
