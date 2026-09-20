@@ -1,6 +1,6 @@
 pkgbase = docker-secrets-engine-shim
 	pkgdesc = Unofficial Docker Secrets Engine implementation, via docker-credential-helpers
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/chadsr/docker-secrets-engine-shim
 	install = docker-secrets-engine-shim.install
@@ -15,7 +15,7 @@ pkgbase = docker-secrets-engine-shim
 	provides = docker-secrets-engine
 	conflicts = docker-secrets-engine
 	conflicts = docker-secrets-engine-bin
-	source = docker-secrets-engine-shim-0.1.1.tar.gz::https://github.com/chadsr/docker-secrets-engine-shim/archive/refs/tags/v0.1.1.tar.gz
-	b2sums = fe66fb8d85c616b19a92ad3a2db75602d18476854533a6acf1400daa18620bd25d87ed4590274cf9e0788eb64b0d0f7b67a63aa1a345e6ec5af0f2f769990957
+	source = docker-secrets-engine-shim-0.2.0.tar.gz::https://github.com/chadsr/docker-secrets-engine-shim/archive/refs/tags/v0.2.0.tar.gz
+	b2sums = 3327ee8b4a07cd7bc7d9c1e6b8547e829a3dbbe422dab451c8a04743e2fd9d19d54a40c6502915427fe2397b751eeaa87e49e46c131b095af84df3c3bceba0a4
 
 pkgname = docker-secrets-engine-shim

@@ -1,7 +1,7 @@
 # Maintainer: Ross <git@ross.ch>
 
 pkgname=docker-secrets-engine-shim
-pkgver=0.1.1 # renovate: datasource=github-releases depName=chadsr/docker-secrets-engine-shim
+pkgver=0.2.0 # renovate: datasource=github-releases depName=chadsr/docker-secrets-engine-shim
 pkgrel=1
 pkgdesc="Unofficial Docker Secrets Engine implementation, via docker-credential-helpers"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ provides=('docker-secrets-engine')
 conflicts=('docker-secrets-engine' 'docker-secrets-engine-bin')
 install=docker-secrets-engine-shim.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('fe66fb8d85c616b19a92ad3a2db75602d18476854533a6acf1400daa18620bd25d87ed4590274cf9e0788eb64b0d0f7b67a63aa1a345e6ec5af0f2f769990957')
+b2sums=('3327ee8b4a07cd7bc7d9c1e6b8547e829a3dbbe422dab451c8a04743e2fd9d19d54a40c6502915427fe2397b751eeaa87e49e46c131b095af84df3c3bceba0a4')
 
 prepare() {
 	cd "$pkgname-$pkgver"
