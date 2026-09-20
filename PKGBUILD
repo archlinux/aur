@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='VHDL compiler and simulator'
 pkgname=nvc
-pkgver=1.22.1
+pkgver=1.23.0
 pkgrel=1
 url=https://www.nickg.me.uk/nvc
 license=(GPL-3.0-or-later)
@@ -11,7 +11,7 @@ depends=(libelf llvm-libs ncurses zstd tcl capstone tcllib)
 makedepends=(pkgconfig make flex check llvm automake autoconf)
 optdepends=('ruby: for the scripts to download and install VHDL libraries')
 source=("${url%/nvc}/files/${pkgname}-${pkgver}.tar.gz")
-b2sums=('ac406cccb56304be47cca48c7c5aa574c092088169bdf6f323aa0ddc0fa3412943af0eba3ef4a66117d8a78b8dcae96d67655189615e813cea3d1b701245d0e1')
+b2sums=('6c8da61ec5e1039e0c9e160f4b8e975da912bd0d70b064448105a7b283b19e0bd531a87792f196ff7017ef601b3287c05197d0424c23d039c9f21b0ba8865958')
 
 build () {
 	cd "${pkgname}-${pkgver}"
