@@ -1,7 +1,7 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 _name='trufflehog'
 pkgname="$_name-git"
-pkgver=3.97.4.r0.g363923b90
+pkgver=3.97.5.r1.g288a8a864
 pkgrel=1
 pkgdesc="Secrets scanner for repositories"
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,6 @@ pkgver() {
 
 build() {
   cd "$_name"
-  sed -i "s/dev/$pkgver/" pkg/version/version.go
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
@@ -40,8 +39,6 @@ build() {
   export GOPATH="$srcdir"
   export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
   go build -ldflags "-compressdwarf=false -linkmode external"
-  ./trufflehog --completion-script-bash > "$_name-c.bash"
-  ./trufflehog --completion-script-zsh > "$_name-c.zsh"
 }
 
 check() {
@@ -60,8 +57,8 @@ package() {
   cd "$_name"
   install -Dm0755 -t "$pkgdir/usr/bin/" "$_name"
   install -Dm0644 -t "$pkgdir/usr/share/man/man1/" "docs/man/$_name.1"
-  install -Dm0644 "$_name-c.bash" "$pkgdir/usr/share/bash-completion/completions/$_name"
-  install -Dm0644 "$_name-c.zsh" "$pkgdir/usr/share/zsh/site_functions/_$_name"
+  install -Dm0644 <(./trufflehog --completion-script-bash) "$pkgdir/usr/share/bash-completion/completions/$_name"
+  install -Dm0644 <(./trufflehog --completion-script-zsh) "$pkgdir/usr/share/zsh/site-functions/_$_name"
 }
 
 # vim: ts=2 sw=2 et:
