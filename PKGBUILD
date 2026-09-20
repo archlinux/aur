@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawd-on-desk-bin
 _pkgname='Clawd on Desk'
-pkgver=1.0.0
+pkgver=1.1.0
 _electronversion=41
 pkgrel=1
-pkgdesc="A desktop pet that reacts to your Claude Code sessions in real-time — thinking, typing, juggling, sleeping, and more.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A pixel desktop pet that watches Claude Code, Codex, Cursor & other AI coding agents — so you don't have to."
 arch=('x86_64')
 url="https://github.com/rullerzhou-afk/clawd-on-desk"
 license=('AGPL-3.0-only')
@@ -23,10 +23,10 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a6f6e017f095c64247359cb8dbcb297c759f5101193a8916453fee5e9c463439'
+sha256sums=('b32e8ca497ece13a15411db3e8224d22452e639606486e508e87372741c07b5e'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+    find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
