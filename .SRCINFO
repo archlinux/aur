@@ -1,6 +1,6 @@
 pkgbase = yank-note-bin
-	pkgdesc = A Hackable Markdown Note Application for Programmers.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.92.1
+	pkgdesc = A Hackable Markdown Note Application for Programmers.
+	pkgver = 3.93.0
 	pkgrel = 1
 	url = https://yank-note.com/
 	arch = aarch64
@@ -9,14 +9,15 @@ pkgbase = yank-note-bin
 	depends = electron41
 	depends = ripgrep
 	depends = python
-	provides = yank-note=3.92.1
+	depends = java-runtime
+	provides = yank-note=3.93.0
 	conflicts = yank-note
 	options = !strip
 	source = yank-note.sh
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = yank-note-3.92.1-aarch64.deb::https://github.com/purocean/yn/releases/download/v3.92.1/Yank-Note-linux-arm64-3.92.1.deb
-	sha256sums_aarch64 = 0f872e784a22c59deb4c109ed574304da1bc37ee148b4a754b7ff2204f62f0d2
-	source_x86_64 = yank-note-3.92.1-x86_64.deb::https://github.com/purocean/yn/releases/download/v3.92.1/Yank-Note-linux-amd64-3.92.1.deb
-	sha256sums_x86_64 = 211fe1001643168824325e4d406e4d18b6de5595b187905bddda14e29eca9593
+	source_aarch64 = yank-note-3.93.0-aarch64.deb::https://github.com/purocean/yn/releases/download/v3.93.0/Yank-Note-linux-arm64-3.93.0.deb
+	sha256sums_aarch64 = bcd87c53c6e7b52e2f3e67a41fc395cc0359a835d3835d84654d76e76c5417e5
+	source_x86_64 = yank-note-3.93.0-x86_64.deb::https://github.com/purocean/yn/releases/download/v3.93.0/Yank-Note-linux-amd64-3.93.0.deb
+	sha256sums_x86_64 = 4890121f47500c119c8128bc3cc60fa4f20843fc4a6fc6150aa5c116d9f122af
 
 pkgname = yank-note-bin

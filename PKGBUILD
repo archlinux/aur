@@ -2,10 +2,10 @@
 # Contributor: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yank-note-bin
 _pkgname=Yank-Note
-pkgver=3.92.1
+pkgver=3.93.0
 _electronversion=41
 pkgrel=1
-pkgdesc='A Hackable Markdown Note Application for Programmers.(Prebuilt version.Use system-wide electron)'
+pkgdesc='A Hackable Markdown Note Application for Programmers.'
 arch=(
     'aarch64'
     'x86_64'
@@ -19,6 +19,7 @@ depends=(
     "electron${_electronversion}"
     'ripgrep'
     'python'
+    'java-runtime'
 )
 options=('!strip')
 source=(
@@ -27,10 +28,10 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-${pkgver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('0f872e784a22c59deb4c109ed574304da1bc37ee148b4a754b7ff2204f62f0d2')
-sha256sums_x86_64=('211fe1001643168824325e4d406e4d18b6de5595b187905bddda14e29eca9593')
+sha256sums_aarch64=('bcd87c53c6e7b52e2f3e67a41fc395cc0359a835d3835d84654d76e76c5417e5')
+sha256sums_x86_64=('4890121f47500c119c8128bc3cc60fa4f20843fc4a6fc6150aa5c116d9f122af')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -62,7 +63,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
