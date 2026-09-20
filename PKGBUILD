@@ -3,7 +3,7 @@
 _gitauthor=dnjulek
 pkgname=zjpeg2png
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Zig port of jpeg2png"
 
 arch=('x86_64')
@@ -20,7 +20,7 @@ sha256sums=('2cb1bcff245bd2f9673b71c141c1521b45ce069b2de04d2722b5a9556fb25c41'
             '0641b8def7a2b9338ca3a6da19fed1b28529d22c7ac15b929b7ad7f8bb3b2795')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}" || exit
     patch -Np1 -i "${srcdir}/pie.patch"
 }
 

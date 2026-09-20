@@ -1,7 +1,7 @@
 pkgbase = zjpeg2png
 	pkgdesc = Zig port of jpeg2png
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dnjulek/zjpeg2png
 	arch = x86_64
 	license = GPL-3.0-or-later
