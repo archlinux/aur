@@ -1,0 +1,11 @@
+# makepkg build artifacts
+src/
+pkg/
+*.pkg.tar.*
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# makepkg working files
+root.json
+sub-store.json

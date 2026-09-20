@@ -1,0 +1,33 @@
+[Unit]
+Description=Sub-Store - Advanced Subscription Manager
+Documentation=https://github.com/sub-store-org/Sub-Store/wiki
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=sub-store
+Group=sub-store
+WorkingDirectory=/var/lib/sub-store
+Environment=SUB_STORE_BACKEND_API_PORT=%i
+ExecStart=/usr/bin/node /usr/share/sub-store/sub-store.bundle.js
+Restart=on-failure
+RestartSec=5s
+LimitNOFILE=65536
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=read-only
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+SystemCallFilter=@system-service
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+# Maintainer: chenpi11 <chenpi11@users.noreply.github.com>
+pkgbase = sub-store-git
+	pkgdesc = Advanced Subscription Manager for QX, Loon, Surge, Stash, Egern and Shadowrocket (git)
+	pkgver = 2.39.9.r0.g0000000-1
+	pkgrel = 1
+	url = https://github.com/sub-store-org/Sub-Store
+	arch = any
+	license = AGPL-3.0-only
+	depends = nodejs>=24.15.0
+	makedepends = git
+	makedepends = pnpm
+	provides = sub-store
+	conflicts = sub-store
+	conflicts = sub-store-bin
+	source = git+https://github.com/sub-store-org/Sub-Store.git
+	source = sub-store@.service
+	source = sub-store.sysusers
+	source = sub-store.tmpfiles
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sub-store-git
