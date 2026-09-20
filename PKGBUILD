@@ -1,17 +1,21 @@
 # Maintainer: Alexander Mot <alexander@amot.dev>
 pkgname=eddiscovery-proton
 pkgver=19.1.11
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Captains log and 3d star map for Elite Dangerous. Runs in ED's Proton-GE prefix"
 arch=('any')
 url="https://github.com/EDDiscovery/EDDiscovery"
 license=('Apache')
 groups=()
-depends=('protontricks' 'proton-ge-custom' 'hicolor-icon-theme')
+depends=('protontricks' 'hicolor-icon-theme')
 makedepends=('icoutils')
 checkdepends=()
 optdepends=('ttf-ms-fonts')
+optdepends=(
+    'protonup-qt: recommended GUI tool to install and keep stable Proton-GE versions'
+    'proton-ge-custom-bin: system-wide Proton-GE from the AUR'
+)
 provides=('eddiscovery')
 conflicts=('eddiscovery')
 replaces=()
