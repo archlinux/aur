@@ -1,0 +1,12 @@
+pkgbase = smallz4-git
+	pkgdesc = Extremely small C++ compressor with optimal parsing, fully compatible with LZ4 by Yann Collet
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/skandau/smallz4
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/skandau/smallz4.git
+	md5sums = SKIP
+
+pkgname = smallz4-git
