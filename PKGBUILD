@@ -8,7 +8,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-faac
-pkgver=1.50
+pkgver=2.1
 pkgrel=1
 arch=('any')
 pkgdesc="Freeware Advanced Audio Coder (Android ${_android_arch})"
@@ -20,7 +20,7 @@ depends=('android-ndk')
 makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/knik0/faac/archive/refs/tags/faac-${pkgver}.tar.gz")
-md5sums=('10a90885ef4d6b521b22e9ed7ecf9992')
+md5sums=('96408560a0df42efd08ee69f1b7f5de9')
 
 build() {
     cd "${srcdir}/faac-faac-${pkgver}"
