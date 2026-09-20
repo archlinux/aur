@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=markflowy-bin
 _pkgname=MarkFlowy
-pkgver=0.101.0
+pkgver=0.101.1
 pkgrel=1
 pkgdesc="AI-powered cross-platform editor for WYSIWYG Markdown and general-purpose text editing."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('825e3982ef165518d20bfa28275622f8dae9c443193c471c2c48fb2aec094b1a')
+sha256sums=('246c6f9ef8dc280ec032953b81c79b23f023a103dfceb3a8cb3333dc96040a02')
 prepare() {
     sed -i "s/Development/Utility/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
