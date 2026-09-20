@@ -3,7 +3,7 @@
 # based on aur/balena-etcher: Matthew McGinn <mamcgi@gmail.com>
 pkgname=etcher-git
 _pkgname=balenaEtcher
-pkgver=2.1.6.r0.g1e2500e
+pkgver=2.1.7.r0.gbfcfafd
 _electronversion=37
 _nodeversion=20
 pkgrel=1
@@ -60,20 +60,31 @@ _get_electron_version() {
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export NODE_OPTIONS="--max-old-space-size=4096"
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
 	export HOME="${srcdir}/.electron-gyp"
-	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-	export NPM_CONFIG_MAXSOCKETS=32
-	export npm_config_platform=linux
-	export npm_config_arch="${CARCH}"
-	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-		export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-		export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-		export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-		export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+	mkdir -p "${HOME}"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export npm_config_cache="${srcdir}/.npm_cache"
+	export npm_config_maxsockets=32
+	export npm_config_audit=false
+	export npm_config_fund=false
+	export npm_config_progress=false
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export npm_config_node_options="--max-old-space-size=4096"
+	mkdir -p "${npm_config_cache}"
+	local _npmver
+	_npmver="$(node -p "const pm=require('./package.json').packageManager; pm && pm.startsWith('npm@') ? pm.split('@')[1] : ''" 2>/dev/null)"
+	if [[ -n "${_npmver}" ]]; then
+		export COREPACK_HOME="${srcdir}/.corepack"
+		install -dm755 "${srcdir}/.bin"
+		corepack enable --install-directory "${srcdir}/.bin"
+		export PATH="${srcdir}/.bin:${PATH}"
+		corepack prepare "npm@${_npmver}" --activate
 	fi
 }
 _use_local_electron_for_forge() {
@@ -103,8 +114,8 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     npm cache clean --force
     NODE_ENV=development    npm install --legacy-peer-deps
@@ -112,15 +123,15 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     NODE_ENV=production     npm run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(16x16 32x32 48x48 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/assets/iconset/${_icons}.png" \
