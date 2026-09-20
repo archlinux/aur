@@ -1,7 +1,7 @@
 pkgbase = metaelite-proton
 	pkgdesc = Role playing environment for stories in Elite Dangerous. Runs in ED's Proton-GE prefix
 	pkgver = 1.02
-	pkgrel = 2
+	pkgrel = 3
 	url = https://raxxla.org
 	install = metaelite-proton.install
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = metaelite-proton
 	makedepends = msitools
 	makedepends = icoutils
 	depends = protontricks
-	depends = proton-ge-custom
 	optdepends = protonup-qt: recommended GUI tool to install and keep stable Proton-GE versions
 	optdepends = proton-ge-custom-bin: system-wide Proton-GE from the AUR
 	provides = metaelite

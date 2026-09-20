@@ -1,14 +1,14 @@
 # Maintainer: Alexander Mot <alexander@amot.dev>
 pkgname=metaelite-proton
 pkgver=1.02
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Role playing environment for stories in Elite Dangerous. Runs in ED's Proton-GE prefix"
 arch=('any')
 url="https://raxxla.org"
 license=('custom')
 groups=()
-depends=('protontricks' 'proton-ge-custom')
+depends=('protontricks')
 makedepends=('msitools' 'icoutils')
 checkdepends=()
 optdepends=(
