@@ -3,8 +3,8 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-lame
-pkgver=3.100
-pkgrel=9
+pkgver=3.101
+pkgrel=1
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder (Android ${_android_arch})"
 arch=('any')
 url="http://lame.sourceforge.net/"
@@ -48,4 +48,5 @@ package() {
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 
     install -vDm 644 lame.pc -t "${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig/"
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
