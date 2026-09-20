@@ -1,13 +1,12 @@
 # Maintainer: Youknow-sys <samani0019 at gmail dot com>
 
 pkgname=dorion-bin
-pkgver=6.13.1
+pkgver=6.13.2
 _rpmrel=1
 pkgrel=1
 pkgdesc="Tiny alternative Discord client with a smaller footprint, snappier startup, themes, plugins and more!"
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://spikehd.dev/projects/dorion"
-_url="https://github.com/SpikeHD/Dorion"
+url="https://github.com/SpikeHD/Dorion"
 license=('GPL-3.0-only')
 depends=(
     'dbus'
@@ -29,13 +28,13 @@ provides=('dorion')
 conflicts=('dorion')
 options=('!debug' '!strip')
 
-source_x86_64=("${pkgname}-${pkgver}-x86_64.rpm::${_url}/releases/download/v${pkgver}/Dorion_${pkgver}-${_rpmrel}.x86_64.rpm")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.rpm::${_url}/releases/download/v${pkgver}/Dorion_${pkgver}-${_rpmrel}.aarch64.rpm")
-source_armv7h=("${pkgname}-${pkgver}-armv7h.rpm::${_url}/releases/download/v${pkgver}/Dorion_${pkgver}-${_rpmrel}.armhfp.rpm")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/Dorion_${pkgver}-${_rpmrel}.x86_64.rpm")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/Dorion_${pkgver}-${_rpmrel}.aarch64.rpm")
+source_armv7h=("${pkgname}-${pkgver}-armv7h.rpm::${url}/releases/download/v${pkgver}/Dorion_${pkgver}-${_rpmrel}.armhfp.rpm")
 
-sha256sums_x86_64=('129e8948001f6d0ec0314fd351466396dfac3b67bc51b45d469dfcdeb2df1816')
-sha256sums_aarch64=('b9863473bb75d581c941668cc47be8d8e20327032dc6e84bd011fd4d3d28de14')
-sha256sums_armv7h=('f397132b6351a2ff8e7dd96cadebd6386cbceb0b7308bb73345fbeb7ab0287be')
+sha256sums_x86_64=('8cbace7e4bc6a333f063fd95ea6fb7b43bdbd8d1550422ffc0eb8f946d3d0fd2')
+sha256sums_aarch64=('e1b8f36399f35b843ad185059bc4d2a500c6496f6a25a0b39552ca8322deec18')
+sha256sums_armv7h=('0e1c206f934817a190c7cb6c48ba5c505673d80dd9324851a171bad93805c2be')
 
 package() {
     cp -dr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}/"
