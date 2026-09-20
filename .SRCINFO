@@ -1,6 +1,6 @@
 pkgbase = python-wikiteam3
 	pkgdesc = Tools for downloading and preserving MediaWikis. We archive MediaWikis, from Wikipedia to tiniest wikis.
-	pkgver = 4.4.9
+	pkgver = 4.4.10
 	pkgrel = 1
 	url = https://github.com/saveweb/wikiteam3
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-wikiteam3
 	depends = python-slugify
 	depends = 7zip
 	depends = zstd
-	source = https://pypi.io/packages/source/w/wikiteam3/wikiteam3-4.4.9.tar.gz
-	sha256sums = 006e0a89aecfdd6055882050897d8e4211c2572553bacdbf4a52c616cca4b7a0
+	source = https://pypi.io/packages/source/w/wikiteam3/wikiteam3-4.4.10.tar.gz
+	sha256sums = 62b9a8312e1dc241a7a5a6e1a00c79d6c7e2d3ffed9f84412fda7b053d689ed1
 
 pkgname = python-wikiteam3
