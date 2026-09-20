@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stoat-desktop-bin
 _pkgname=Stoat
-pkgver=1.5.3
-_electronversion=43
+pkgver=1.5.4
+_electronversion=44
 pkgrel=1
-pkgdesc="Stoat for Desktop. (Prebuilt version. Use system-wide electron)"
+pkgdesc="Stoat for Desktop."
 arch=(
     'aarch64'
     'x86_64'
@@ -24,8 +24,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-anylinux-aarch64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-anylinux-x86_64.AppImage")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('fa36a052dcf3953a273d87161937ad327da525e9061e3631100c98b42cf8ad8f')
-sha256sums_x86_64=('8f6e8c6c16069ba1ff30ee60443e4cca35eb5e11c6f279f64a93f0af1500b1eb')
+sha256sums_aarch64=('19b1b6bde826d74dea5c8bc02e2ca47c0991b69402571f5965824e4af04535db')
+sha256sums_x86_64=('75fe486433d245c58b4e59eb9df8ccb0a64aa9773108f57054aad56839413afb')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -60,7 +60,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/AppDir/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
     install -Dm644 "${srcdir}/AppDir/chat.stoat.StoatDesktop.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
