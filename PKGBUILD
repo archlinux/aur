@@ -1,6 +1,6 @@
 # Maintainer: blazebsc <blakeisfruity@proton.me>
 pkgname=froststrap
-_tag='v2.0.0'
+_tag='v2.0.1'
 pkgver=${_tag#v}
 pkgver=${pkgver//-/.}
 pkgrel=1
