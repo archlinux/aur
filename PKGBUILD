@@ -67,7 +67,6 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSS_BACKEND=vulkan \
-    -DSS_BUILD_CLI=ON \
     -DSS_BUILD_GUI=ON \
     -DSS_CHECK_COMMENTS=OFF \
     -DSS_SLANGC="${srcdir}/slang/bin/slangc" \
