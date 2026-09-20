@@ -2,7 +2,6 @@
 pkgname=libcangjie
 pkgver=1.4.0
 pkgrel=1
-_commit=98241ed512cc10e33b4b023b3022780efc49182c
 pkgdesc="CangJie Input Method Library"
 arch=('x86_64' 'i686')
 url="https://cangjie.pages.freedesktop.org/projects/libcangjie/"
@@ -11,6 +10,7 @@ depends=('sqlite')
 makedepends=('git' 'meson>=1.3.2' 'ninja' 'gettext' 'pkgconf' 'cmake')
 replaces=('libcangjie-git')
 sha256sums=('SKIP')
+_commit='v1.4.0'
 source=("${pkgname}::git+https://gitlab.freedesktop.org/cangjie/${pkgname}.git#commit=${_commit}")
 
 

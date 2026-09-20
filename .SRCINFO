@@ -14,7 +14,7 @@ pkgbase = libcangjie
 	makedepends = cmake
 	depends = sqlite
 	replaces = libcangjie-git
-	source = libcangjie::git+https://gitlab.freedesktop.org/cangjie/libcangjie.git#commit=98241ed512cc10e33b4b023b3022780efc49182c
+	source = libcangjie::git+https://gitlab.freedesktop.org/cangjie/libcangjie.git#commit=v1.4.0
 	sha256sums = SKIP
 
 pkgname = libcangjie
