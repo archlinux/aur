@@ -1,7 +1,7 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 
 pkgname=miyu-git
-pkgver=0.6.0.r1040.g9142225c
+pkgver=0.6.1.r1197.g5784976f
 pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
@@ -13,6 +13,8 @@ depends=('alsa-lib' 'chafa' 'gcc-libs' 'glibc' 'onnxruntime' 'python' 'ripgrep')
 makedepends=('cargo' 'git' 'pkgconf' 'python')
 optdepends=(
   'git: update default Shorin Wiki knowledge base'
+  'libnotify: 桌面通知(kitty 以外的终端由它弹)'
+  'libcanberra: 通知提示音(没有时退到 pw-play/paplay)'
   'fish: fish shell integration support'
   'bash: bash shell integration support'
   'zsh: zsh shell integration support'
