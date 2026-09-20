@@ -1,0 +1,21 @@
+pkgbase = mister-companion
+	pkgdesc = Companion utility for managing and syncing MiSTer FPGA setups
+	pkgver = r415.ae87ce3
+	pkgrel = 1
+	url = https://github.com/Anime0t4ku/mister-companion
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-paramiko
+	depends = python-psutil
+	depends = python-pyqt6
+	depends = python-websocket-client
+	depends = python-pillow
+	provides = mister-companion
+	conflicts = mister-companion
+	source = git+https://github.com/Anime0t4ku/mister-companion.git
+	sha256sums = SKIP
+
+pkgname = mister-companion
