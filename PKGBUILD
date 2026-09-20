@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=hyprfm-git
-pkgver=r476.ge7ea302
+pkgver=r514.gc036c53
 pkgrel=1
 pkgdesc="A lightweight Qt6/QML file manager for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -82,10 +82,6 @@ package() {
         "${pkgdir}/usr/share/hyprfm/HyprFM/qmldir"
     install -Dm644 "build/src/HyprFM/hyprfm.qmltypes" \
         "${pkgdir}/usr/share/hyprfm/HyprFM/hyprfm.qmltypes" 2>/dev/null || true
-
-    # Install QML sources for Quill module
-    install -dm755 "${pkgdir}/usr/share/hyprfm/src"
-    cp -r "${pkgname}/src/qml" "${pkgdir}/usr/share/hyprfm/src/qml"
 
     # Install desktop entry, icon and AppStream metainfo
     install -Dm644 "${pkgname}/dist/io.github.soyeb_jim285.HyprFM.desktop" \
