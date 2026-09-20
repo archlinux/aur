@@ -5,7 +5,7 @@
 # llama-launcher/utils/check-aur-sync.sh must report OK for all packages.
 
 pkgname=llama-hdd
-pkgver=10
+pkgver=11
 pkgrel=1
 pkgdesc="LLM inference in C/C++ with disk-backed prompt-checkpoint persistence (llama.cpp soft-fork)"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,9 @@ optdepends=(
     'llama-launcher: launcher with --hdd-cache mode that drives this fork'\''s sidecar feature'
  )
 provides=('llama.cpp' "llama.cpp=${pkgver}")
-conflicts=('llama.cpp' 'llama.cpp-cuda' 'llama.cpp-vulkan' 'llama.cpp-hip')
+# Bundled ggml installs to the same paths as the standalone ggml/libggml
+# packages (headers, /usr/lib/cmake/ggml, libggml*.so) - same as AUR llama.cpp.
+conflicts=('llama.cpp' 'llama.cpp-cuda' 'llama.cpp-vulkan' 'llama.cpp-hip' 'libggml' 'ggml')
 source=("${pkgname}::git+https://codeberg.org/LuminaNAO/llama-hdd.cpp.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
