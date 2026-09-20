@@ -1,5 +1,5 @@
 pkgname=ferrumplay-bin
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='Desktop music player with album-grouped playlists and Audio CD support'
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 source=("FerrumPlay-${pkgver}-${pkgrel}-linux-x64-aur.zip::https://github.com/Bitpainter75/FerrumPlay/releases/download/${pkgver}/FerrumPlay-${pkgver}-${pkgrel}-linux-x64-aur.zip"
         'io.github.Bitpainter75.FerrumPlay.desktop' 'io.github.Bitpainter75.FerrumPlay.png')
 noextract=("FerrumPlay-${pkgver}-${pkgrel}-linux-x64-aur.zip")
-sha256sums=('7a73a0ab85b1de76c9920c46897e888c8570e1e4bbac599f609dfb9113006f38' '6d59170c7e8756fa9bf310bb018a4df24bbd117895d003281dd98f86ca756ebd' 'c20d42ee7a0540237fc93744c125041f160b5e1235cbadd0ff47989c254f7783')
+sha256sums=('99b646148d806d363bf5dd0affedfa573f4f41e05bd3c4e1c08f65c9cbe36d02' '6d59170c7e8756fa9bf310bb018a4df24bbd117895d003281dd98f86ca756ebd' 'c20d42ee7a0540237fc93744c125041f160b5e1235cbadd0ff47989c254f7783')
 prepare() { rm -rf "$srcdir/FerrumPlay-${pkgver}"; mkdir -p "$srcdir/FerrumPlay-${pkgver}"; bsdtar -xf "$srcdir/FerrumPlay-${pkgver}-${pkgrel}-linux-x64-aur.zip" -C "$srcdir/FerrumPlay-${pkgver}"; }
 package() {
   install -dm755 "$pkgdir/opt/ferrumplay" "$pkgdir/usr/bin"
