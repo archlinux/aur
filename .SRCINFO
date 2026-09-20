@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-reflective-rapidjson
 	pkgdesc = Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON (mingw-w64)
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/Martchus/reflective-rapidjson
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = mingw-w64-reflective-rapidjson
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = reflective-rapidjson-0.0.16.tar.gz::https://github.com/Martchus/reflective-rapidjson/archive/v0.0.16.tar.gz
-	sha256sums = 12496b8d334e8e1245f05de17c81e269365e9b02e7a14da4274ccf643a19609f
+	source = reflective-rapidjson-0.0.17.tar.gz::https://github.com/Martchus/reflective-rapidjson/archive/v0.0.17.tar.gz
+	sha256sums = 4402950a92ddb4befe94782a00a37bd36a340ddd8eecd41e6c76bd1a1ae59ca0
 
 pkgname = mingw-w64-reflective-rapidjson
