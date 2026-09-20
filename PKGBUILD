@@ -3,14 +3,14 @@
 # Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="nzbhydra2"
-pkgver=8.9.0
+pkgver=9.0.2
 pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
 license=('Apache-2.0')
 depends=('python' 'java-runtime-headless=17')
-makedepends=('maven' 'java-environment=17')
+makedepends=('maven' 'java-environment=17' 'npm')
 optdepends=('jackett: torrent indexer proxy')
 options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theotherp/nzbhydra2/archive/refs/tags/v${pkgver}.tar.gz"
@@ -21,13 +21,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theotherp/nzbhydra2/arc
         'disable-update-checks.patch'
         'skip-unneeded-builds.patch')
 
-sha256sums=('562d36e0c2d225c2a88f20c15ab701aac5ff9cf039c552e76785aa14237ab40d'
+sha256sums=('afe916242cbbc483bb19f6df4f7340fbc84f3fac34d775a328eaa7b57a61abd6'
             '86c2f02cb8913c3093b1669247447691329bf5bd88fee1b8f2977cff96775655'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
             'ed649f9b5d9f9f561829f8a563d28c1335945785b08b887634be15bc742cb4e7'
             '20c57da3a877f0390778b88cbea2f98cc88fd59a2e6f15895fd6a2ef69b245a7'
-            'fa133df02514af1fd10d282f6b52f03d70778dc9fdf55ca2469bc124f8c815d0')
+            'bb06e4fbc8f514f03726b618c1f50da4f4d9a5a2aa874b59ac2cb4f5dffeb45c')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -46,7 +46,8 @@ check() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-    mvn -pl core -am test
+    # skip tests that would require us to install the h2legacy jar to the maven repository
+    mvn -Dtest=!DatabaseRecreationTest -Dsurefire.failIfNoSpecifiedTests=false -pl core -am test
 }
 
 package() {

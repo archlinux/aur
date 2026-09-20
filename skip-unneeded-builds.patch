@@ -2,10 +2,11 @@ diff --git a/other/pom.xml b/other/pom.xml
 index d0aa614c..87ba7c2f 100644
 --- a/other/pom.xml
 +++ b/other/pom.xml
-@@ -10,10 +10,7 @@
+@@ -10,11 +10,8 @@
      <packaging>pom</packaging>
  
      <modules>
+         <module>h2legacy</module>
 -        <module>mockserver</module>
          <module>sockslib</module>
 -        <module>github-release-plugin</module>
