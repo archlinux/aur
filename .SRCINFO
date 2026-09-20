@@ -1,0 +1,21 @@
+pkgbase = terminal-image-paste-git
+	pkgdesc = Universal CLI utility to quickly paste images from clipboard into terminal on Linux (Wayland / X11)
+	pkgver = 1.0.0.r5.gfe4d8c4
+	pkgrel = 1
+	url = https://github.com/chiconcota/terminal-image-paste
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = wl-clipboard: Wayland clipboard support (recommended)
+	optdepends = wtype: Wayland keystroke simulation (recommended)
+	optdepends = xclip: X11 clipboard support
+	optdepends = xdotool: X11 keystroke simulation
+	optdepends = timg: High-resolution terminal image viewer
+	optdepends = chafa: Character art terminal image viewer fallback
+	provides = terminal-image-paste
+	provides = tip
+	conflicts = terminal-image-paste
+	source = git+https://github.com/chiconcota/terminal-image-paste.git
+	sha256sums = SKIP
+
+pkgname = terminal-image-paste-git
