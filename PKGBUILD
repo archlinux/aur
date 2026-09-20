@@ -1,6 +1,6 @@
 # Maintainer: Fovty <38868829+Fovty@users.noreply.github.com>
 pkgname=hushmic
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Real-time microphone noise suppression as a virtual mic (DPDFNet via PipeWire)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT OR Apache-2.0')
 depends=('pipewire' 'pipewire-pulse' 'wireplumber' 'onnxruntime')
 makedepends=('rust' 'cargo' 'python' 'curl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a6729879f865c82e2de1d8829be536d397c59b1c9d95f61ca23942a28637a67b')
+sha256sums=('aa7510e0004d39f6d9064b7ca1a4151a408d68c2a79ccf60cbd616be348c70f3')
 # GitHub archive dirs use the CANONICAL repo name (Fovty/HushMic), so the
 # tarball extracts to HushMic-<ver>/ regardless of the URL's casing.
 _srcname="HushMic-$pkgver"
@@ -54,12 +54,20 @@ package() {
   install -Dm644 packaging/hushmic.desktop "$pkgdir/usr/share/applications/hushmic.desktop"
   install -Dm644 packaging/systemd/hushmic.service "$pkgdir/usr/lib/systemd/user/hushmic.service"
   install -Dm644 packaging/hushmic-256.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/hushmic.png"
-  # Tray status-icon ladder (three SNI names x eight sizes); explicit installs
+  # Tray status-icon ladder (five SNI names x eight sizes); explicit installs
   # so a missing size or state fails packaging instead of shipping incomplete.
   for _size in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
     for _icon in hushmic-tray hushmic-tray-off hushmic-tray-bypass hushmic-tray-mute hushmic-tray-error; do
       install -Dm644 "packaging/tray/hicolor/$_size/status/$_icon.png" \
         "$pkgdir/usr/share/icons/hicolor/$_size/status/$_icon.png"
+    done
+  done
+  # The monochrome set the desktop recolors: same five states, same stems
+  # plus a -symbolic suffix, in the panel sizes (with their @2 twins) plus scalable/.
+  for _size in 16x16 16x16@2 22x22 22x22@2 24x24 24x24@2 scalable; do
+    for _icon in hushmic-tray hushmic-tray-off hushmic-tray-bypass hushmic-tray-mute hushmic-tray-error; do
+      install -Dm644 "packaging/tray/hicolor/$_size/status/hushmic-mono${_icon#hushmic-tray}-symbolic.svg" \
+        "$pkgdir/usr/share/icons/hicolor/$_size/status/hushmic-mono${_icon#hushmic-tray}-symbolic.svg"
     done
   done
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/hushmic/LICENSE-MIT"
