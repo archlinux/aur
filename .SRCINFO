@@ -1,0 +1,14 @@
+pkgbase = bash-guard
+	pkgdesc = Local-first safety gate for Claude Code and Codex tool calls
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/lloydzhou/bash-guard
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = bash-guard-0.2.0.tar.gz::https://github.com/lloydzhou/bash-guard/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 9d4952afdb6b08b712259d7c39383e1beb82ce877c927ef389d94f30598b8624
+
+pkgname = bash-guard
