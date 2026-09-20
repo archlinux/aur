@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=2.0.9.r297.g6beb5e1
-_electronversion=41
+pkgver=2.0.9.r555.g6ae3b04
+_electronversion=44
 _nodeversion=24.11.1
 pkgrel=1
-pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers.(Use system-wide electron)"
+pkgdesc="AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs."
 arch=('any')
 url="https://cherryai.com/"
 _ghurl="https://github.com/CherryHQ/cherry-studio"
@@ -53,30 +53,43 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=isolated
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export pnpm_config_registry="https://registry.npmmirror.com"
-            export npm_config_registry="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-        }
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	_ev="$(electron${_electronversion} -v)"
+	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export HOME="${srcdir}/.electron-gyp"
+	mkdir -p "${HOME}"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export XDG_STATE_HOME="${srcdir}/.local/state"
+	export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+	export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+	export PNPM_GLOBAL_DIR="${srcdir}/.pnpm/global"
+	export PNPM_GLOBAL_BIN_DIR="${srcdir}/.pnpm/bin"
+	export PNPM_STATE_DIR="${srcdir}/.pnpm/state"
+	export PNPM_MINIMUM_RELEASE_AGE=0
+	export PNPM_NODE_LINKER=hoisted
+	export PNPM_FETCH_RETRIES=3
+	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+	export PNPM_UPDATE_NOTIFIER=false
+	export PNPM_NO_COLOR=true
+	export PNPM_NO_PROGRESS=true
+	export pnpm_config_platform=linux
+	export pnpm_config_arch="${CARCH}"
+	export NODE_OPTIONS="--max-old-space-size=4096"
+	export npm_config_node_options="--max-old-space-size=4096"
+	mkdir -p "${PNPM_CACHE_DIR}" "${PNPM_STORE_DIR}" "${PNPM_GLOBAL_DIR}" "${PNPM_GLOBAL_BIN_DIR}" "${PNPM_STATE_DIR}"
+	local _pnpmver="${_pnpmversion}"
+	if [[ -z "${_pnpmver}" ]]; then
+		_pnpmver="$(node -p "const pm=require('./package.json').packageManager; pm && pm.startsWith('pnpm@') ? pm.split('@')[1] : ''" 2>/dev/null)"
+	fi
+	if [[ -n "${_pnpmver}" ]]; then
+		echo "Using pnpm version: ${_pnpmver}"
+		# Use system pnpm directly (corepack has issues with pnpm 12.x ESM format)
+		export PATH="$(dirname "$(which pnpm)"):${PATH}"
+	fi
 }
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -105,8 +118,8 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"    
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json    
     # Update better-sqlite3 release.json to match system electron version
     sed -i "s/\"electronVersion\": \"[^\"]*\"/\"electronVersion\": \"${SYSTEM_ELECTRON_VERSION}\"/g" \
@@ -121,9 +134,11 @@ prepare() {
   return { ...verified, cached: true, ...artifactPaths }\
 }' scripts/linux-native/download.js    
     # Patch before-pack.js to skip download-binaries.js (we use system binaries)
-    sed -i '/Downloading bundled binaries/,+2c\
+    sed -i '/Downloading bundled binaries/,+3c\
   console.log(`Using system binaries for ${platform}-${arch}...`);\
-  // Skip download - using system binaries via symlinks' scripts/before-pack.js    
+  // Skip download - using system binaries via symlinks' scripts/before-pack.js
+    # Skip verifyBundledBinaries check (we use symlinks to system binaries)
+    sed -i '/verifyBundledBinaries/s/^/\/\/ /' scripts/before-pack.js    
     # Create placeholder binaries (will be replaced with symlinks in package())
     local _arch_name
     case "${CARCH}" in
@@ -135,15 +150,19 @@ prepare() {
     # Create empty placeholder files (electron-builder needs these to exist during packaging)
     touch "${_binaries_dir}/"{mise,bun,uv,uvx,rg}    
     NODE_ENV=development pnpm install --ignore-scripts
-    NODE_ENV=development pnpm add -w -D node-abi    
+    NODE_ENV=development pnpm add -w -D node-abi --ignore-scripts
+    
+    # Build dsh-bridge package (required for typecheck)
+    NODE_ENV=development pnpm --filter @cherrystudio/dsh-bridge build
+    
     # Build better-sqlite3 from source and prepare cached artifact
     source "${srcdir}/build-better-sqlite3.sh"
     build_better_sqlite3 "${SYSTEM_ELECTRON_VERSION}" "${CARCH}" "${srcdir}"
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    _set_build_env
-    _ensure_local_nvm    
+    _ensure_local_nvm
+    _set_build_env  
     NODE_ENV=production     pnpm exec dotenv pnpm run build
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.yml"
     local _arch_rem
@@ -162,7 +181,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     # Replace placeholder binaries with symlinks to system binaries
     local _arch_name
