@@ -16,7 +16,7 @@ pkgbase = gravitype
 	depends = python-rich
 	provides = gravitype
 	conflicts = python-gravitype
-	source = gravitype-1.0.1.tar.gz::https://github.com/kanakOS01/gravitype/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 656c87152ea64ed2db775693eb94f138b2b614143c9465cba299a94bc98dd0f7
+	source = https://files.pythonhosted.org/packages/source/g/gravitype/gravitype-1.0.1.tar.gz
+	sha256sums = 16d9512cc8809a447d130b2dc59abdc50e64c6258efb6325193fe6b96ec1da4b
 
 pkgname = gravitype
