@@ -2,7 +2,7 @@
 # Contributor: Janne Heß <jannehess@gmail.com>
 
 pkgname=mattermost-push-proxy
-pkgver=6.5.0
+pkgver=6.6.0
 pkgrel=1
 pkgdesc='Mattermost Push Notifications Service'
 arch=('x86_64')
@@ -13,7 +13,7 @@ backup=('etc/mattermost-push-proxy/config.json')
 source=("https://github.com/mattermost/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers")
-sha512sums=('ab6afb49da8dfc5d615b9580edcc280d27a58ff58775fd216917546d5173d58bf8e763818685fc089fa52fff940607ea54698a44670945a0aeea25509952b57e'
+sha512sums=('96da0db08c07b3ddae9fd43c9cac8e36151f2a94850ed42c03f746b9608465a248a1741013ae4d0a9fb50813fd5811949df85b8641462dcd321a8f71df31f4c4'
             '6d646673f10d2e291d37bbfa53c0314f076922bf76ceadcecad8febb7ac377fedc1bbbc82d118e161ad662e1f363fb5ca0b3750a0601eedf56bdb9c5e084ede4'
             '8f92e38eb6918850af6a84402a13f56977d5a8c767c258c2efc8b5fe22bfb266a4f1e5bfbf440324cbb2228df0cf2feb9d4bb77c8b04d9b6731e7a654de90f84')
 
