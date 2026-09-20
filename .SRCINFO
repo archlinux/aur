@@ -1,0 +1,29 @@
+pkgbase = python-git-changelog
+	pkgdesc = Automatic changelog generator using Jinja2 templates
+	pkgver = 2.9.7
+	pkgrel = 1
+	url = https://github.com/pawamoy/git-changelog
+	arch = any
+	license = ISC
+	checkdepends = mkdocstrings>=0.29
+	checkdepends = python-griffe>=2.0
+	checkdepends = python-pytest>=8.2
+	checkdepends = python-pytest-cov>=5.0
+	checkdepends = python-pytest-gitconfig>=0.7
+	checkdepends = python-pytest-randomly>=3.15
+	checkdepends = python-pytest-xdist>=3.6
+	checkdepends = python-tomli-w>=1.2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pdm-backend
+	depends = git
+	depends = python>=3.10
+	depends = python-jinja>=3.0
+	depends = python-packaging>=26.0
+	depends = python-platformdirs>=4.4
+	depends = python-semver>=3.0
+	depends = python-typing_extensions
+	source = python-git-changelog-2.9.7.tar.gz::https://github.com/pawamoy/git-changelog/archive/refs/tags/2.9.7.tar.gz
+	sha256sums = 1192a29a8ab7c8d7c371ead7866912ce5716ec8d6aefb8ca7b1a186fb97a1beb
+
+pkgname = python-git-changelog
