@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-globalmenu
-pkgver=153.0.4
+pkgver=156.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.firefox.com/"
@@ -79,7 +79,7 @@ options=(
   !lto
   !makeflags
 )
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/94c6383287095fb4b69da0a267faa90821856d9d
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/5767015918c870ff607cb7f86bd1909eddb5323b
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   $commit/firefox-symbolic.svg
@@ -88,30 +88,24 @@ source=(
 
   # Make different channels installable in parallel
   $commit/0001-Install-under-remoting-name.patch
-
-  # Support FFmpeg 9
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/work_items/34
-  $commit/0002-Bug-2057577-DOM-Media-Add-FFmpeg-63-support.-r-alwu-.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2026/08/10/updated-gpg-key-for-signing-firefox-and-thunderbird-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('f7aa83924c66bb3b04cf139b3b00612d388a9f024c92fe7834161553a6028a48'
+sha256sums=('1f2768c043510009abaa3f078123664e106d3ab9dfce75d1819ad96b2145aab9'
             'SKIP'
             'cb00ea359d6daf37900102307be4f515f1b7ef9c98825c64cc55bb562449d0d8'
             '2a51d57d98fbda86f094bc991e1ad4dd6e8a9d32fd0836b1183bf70ec4b68915'
             '4e01a62e20026b67466943bad9dfba47874c5e1492375f8293aeb85ecedf2288'
-            '83311ecf83698f2739ac42f26777df2e5df3fc090144480d10a9c203076b8165'
-            '55aeec4d098990e91f881de32126ea91576b0d185e322b561241c513ea5b9fcd')
-b2sums=('f5385a9383c449b3e6971366217f2edae15a3809b1d2fd6052b7942c1edf0f9cb5e98e67bb844dc6067f7a9577c962c8b48b464601bf46b00e5d3ad91218a3bc'
+            '8886b9f6109c1ec1d1f041d786e6a431766e2a06359f930ce07aaa6b84c6bef1')
+b2sums=('19be7acf988ee6b7bf27ea292ce36a3a491d7cf4aad2f0c6bdff2f333cf1da540c0fcd5904d5618b7f64624508d0457bd7418b570a8b72d3ae242d5e40fea4d7'
         'SKIP'
         'f2a9cfb758692584dd8057ab30d0ed9d22f5356d0021e1c8111a061866ee66d6b2d891351e11064f904fe8c90032e78f9def61ed54ae4208c8be4de6b4226277'
         '63c62c85ee70e22b02e9ea34e69f04f50403b7634b99fb0e996a83c963916dc4224041a0b265e54f6c224bd1777ddfdeb255037e3e30fec288695f3050278b05'
         '607d592b164a88a11a1041002d67339a9a0001469cd979d24d0fda547cec472f602f6299c198f626f2c854df3ff05bd0b1fd84ae47ee52b97a7906575f5a5f36'
-        '20b287c93a43bbd08373af81d626c167a374700a5318ac83546c45d4bc54ff335c12cb32584f66ca61b7509836292117f8622feda56983fe72d6a4f3af3a5613'
-        '3a613f8534d1895b2e683e91155f990502f139dd49589de61589ce9c223e43d07782e1a8c07e1f82b2a8e74c313ec545e4851075cece927326f8aa43b2a18c57')
+        '1a58067934e3309d25e53504006f1706bf6144f8a2ac7e446cf62680bb6ba856c832580624ee41f4ae8c012bec7e1c7e7eec376d9b86054d2601eec2291adce4')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
