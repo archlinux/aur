@@ -1,0 +1,14 @@
+pkgbase = echowarp
+	pkgdesc = Real-time network audio streaming between hosts
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/lHumaNl/EchoWarp
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = pkgconf
+	depends = opus
+	source = echowarp-0.9.1.tar.gz::https://github.com/lHumaNl/EchoWarp/archive/refs/tags/0.9.1.tar.gz
+	sha256sums = f5a3e0c0a8bd2b774fbc43d4980de127824cba880b2192e1dd7afde4faef4c59
+
+pkgname = echowarp
