@@ -1,7 +1,7 @@
 pkgbase = d-lan
 	pkgdesc = A free LAN file sharing software
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.d-lan.net/
 	arch = x86_64
 	license = GPL-3.0-or-later
