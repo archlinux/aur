@@ -6,7 +6,7 @@ _appname=lg
 pkgname=${_gitname}-bin
 pkgdesc="Almost Clojure written in Go"
 
-pkgver=1.12.2
+pkgver=1.13.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,8 +29,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('4a866916f005f044207ecebb6b95ef27d0240d4defc99ddfb8ae1fe8d2e3c077')
-sha256sums_aarch64=('4fa187c41322991f9cf58f91ccc0638da3d6f87dd392aa3960271361588b581b')
+sha256sums_x86_64=('c3f5b6e0b7c1236e4dcb44759cfc7c30e1bd39d34a9999422c34673c2feacd78')
+sha256sums_aarch64=('96c3284d336ece688bd6ef808182fa8e6811487fe066d5a3dcbe220247970c77')
 
 
 prepare() {
