@@ -3,7 +3,7 @@
 ##Email: pony at just-a-pony dot net
 pkgname=yukigram-desktop
 pkgver=7.1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A patch-based Telegram Desktop fork,with features from 64Gram'
 arch=('x86_64')
 url="https://github.com/yukigram/yukigram"
@@ -11,7 +11,6 @@ license=('GPL3')
 depends=(
   'abseil-cpp'
   'ada'
-  'cmark-gfm'
   'ffmpeg'
   'glib2'
   'glibc'
@@ -19,12 +18,20 @@ depends=(
   'hunspell'
   'kcoreaddons'
   'libavif'
+  'libfido2'
   'libgcc'
   'libheif'
+  'libjpeg-turbo'
   'libjxl'
+  'libpipewire'
+  'libsrtp'
   'libstdc++'
+  'libxcb'
   'libxcomposite'
   'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon'
   'libxrandr'
   'libxtst'
   'lz4'
@@ -33,6 +40,7 @@ depends=(
   'openh264'
   'openssl'
   'pipewire'
+  'qt6-base'
   'qt6-imageformats'
   'qt6-svg'
   'qt6-wayland'
@@ -55,7 +63,6 @@ makedepends=(
   'python'
   'range-v3'
   'tl-expected'
-  'vulkan-headers'
 )
 optdepends=(
   'geoclue: geoinformation support'
@@ -65,7 +72,7 @@ optdepends=(
   'xdg-desktop-portal: desktop integration'
 )
 
-_td_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
+_td_commit=bc9c263e2bfee06aaab41e82db51a103376030bc
 source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver%.*}/tdesktop-${pkgver%.*}-full.tar.gz"
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
