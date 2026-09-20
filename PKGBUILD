@@ -4,25 +4,24 @@
 # Contributor: Ray Hogenson <rayhogenson at gmail dot com>
 
 pkgname=par
-pkgver=1.53
-pkgrel=1
+pkgver=1.53.0
+pkgrel=2
 pkgdesc='Paragraph reformatter'
-url='http://www.nicemice.net/par/'
-depends=('glibc')
-arch=('x86_64' 'i686' 'aarch64' 'arm7h' 'arm6h' 'arm')
-license=('custom')
-source=("$pkgname-$pkgver.tar.gz::http://www.nicemice.net/par/Par-1.53.0.tar.gz")
-sha512sums=('3f8ac57fe19ebcf427b11f4d79f2c5cc9286c1439c38a53d45bd29b9219369db2798efbd0e203ac359d59ebbdd3ead1c50ae75352a1ffc568d4d3b9ad50642b1')
-_dirname='Par-1.53.0'
+url='https://bitbucket.org/amc-nicemice/par'
+arch=(x86_64 i686 aarch64 armv7h)
+license=('LicenseRef-unknown')
+depends=(glibc)
+source=("$pkgname-$pkgver.tar.gz::$url/get/$pkgver.tar.gz")
+sha512sums=('61bf0286f9c0ae21bc6f73c50f0f9ea3dce57293445086a20d63d36b5d613f91e89e3b69e3b390bfdfd9dc37ec51160d167ed8f5ec37ada6e0828fd348bd8f2e')
 
 build() {
-	cd "$_dirname"
-	make -f protoMakefile CC="cc $CFLAGS -std=c99 -D_GNU_SOURCE -c" LINK1="cc $LDFLAGS"
+    cd amc-nicemice-par-eb0590f6bafc
+    make -f protoMakefile CC="cc $CFLAGS -std=c99 -D_GNU_SOURCE -c" LINK1="cc $LDFLAGS"
 }
 
 package() {
-	cd "$_dirname"
-	install -Dm755 -D par		"$pkgdir/usr/bin/par"
-	install -Dm644 -D par.1		"$pkgdir/usr/share/man/man1/par.1"
-	install -Dm644 -D par.doc	"$pkgdir/usr/share/licenses/$pkgname/par.doc"
+    cd amc-nicemice-par-eb0590f6bafc
+    install -Dm755 -D par       -t "$pkgdir/usr/bin/"
+    install -Dm644 -D par.1     -t "$pkgdir/usr/share/man/man1/"
+    install -Dm644 -D par.doc   -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

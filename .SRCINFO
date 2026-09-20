@@ -1,17 +1,15 @@
 pkgbase = par
 	pkgdesc = Paragraph reformatter
-	pkgver = 1.53
-	pkgrel = 1
-	url = http://www.nicemice.net/par/
+	pkgver = 1.53.0
+	pkgrel = 2
+	url = https://bitbucket.org/amc-nicemice/par
 	arch = x86_64
 	arch = i686
 	arch = aarch64
-	arch = arm7h
-	arch = arm6h
-	arch = arm
-	license = custom
+	arch = armv7h
+	license = LicenseRef-unknown
 	depends = glibc
-	source = par-1.53.tar.gz::http://www.nicemice.net/par/Par-1.53.0.tar.gz
-	sha512sums = 3f8ac57fe19ebcf427b11f4d79f2c5cc9286c1439c38a53d45bd29b9219369db2798efbd0e203ac359d59ebbdd3ead1c50ae75352a1ffc568d4d3b9ad50642b1
+	source = par-1.53.0.tar.gz::https://bitbucket.org/amc-nicemice/par/get/1.53.0.tar.gz
+	sha512sums = 61bf0286f9c0ae21bc6f73c50f0f9ea3dce57293445086a20d63d36b5d613f91e89e3b69e3b390bfdfd9dc37ec51160d167ed8f5ec37ada6e0828fd348bd8f2e
 
 pkgname = par
