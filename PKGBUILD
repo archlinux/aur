@@ -3,7 +3,7 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
-pkgver=1.48.4
+pkgver=1.48.6
 _pnpmversion=12.0.0
 _nodeversion=24
 pkgrel=1
@@ -32,7 +32,7 @@ optdepends=(
     'gst-libav: FFmpeg-based codec support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/player@${pkgver}.tar.gz")
-sha256sums=('b766a2125460609f8e6187bfc02774dd4c98a3a7f7f66cadafe240f8bbb26c5d')
+sha256sums=('fb7dc2721b96d2a9ce3b0296c3319ed96876cf5e5e2c5c2de3b5a9b39d2690d4')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -40,57 +40,31 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
-	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	_ev="$(electron${_electronversion} -v)"
-	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
-	export HOME="${srcdir}/.electron-gyp"
-	mkdir -p "${HOME}"
+    export HOME="${srcdir}/.home"
 	export XDG_CACHE_HOME="${srcdir}/.cache"
 	export XDG_CONFIG_HOME="${srcdir}/.config"
 	export XDG_DATA_HOME="${srcdir}/.local/share"
 	export XDG_STATE_HOME="${srcdir}/.local/state"
-	export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-	export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-	export PNPM_GLOBAL_DIR="${srcdir}/.pnpm/global"
-	export PNPM_GLOBAL_BIN_DIR="${srcdir}/.pnpm/bin"
-	export PNPM_STATE_DIR="${srcdir}/.pnpm/state"
-	export PNPM_MINIMUM_RELEASE_AGE=0
-	export PNPM_NODE_LINKER=hoisted
-	export PNPM_FETCH_RETRIES=3
-	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-	export PNPM_UPDATE_NOTIFIER=false
-	export PNPM_NO_COLOR=true
-	export PNPM_NO_PROGRESS=true
-	export pnpm_config_platform=linux
-	export pnpm_config_arch="${CARCH}"
-	export NODE_OPTIONS="--max-old-space-size=4096"
-	export npm_config_node_options="--max-old-space-size=4096"
-	mkdir -p "${PNPM_CACHE_DIR}" "${PNPM_STORE_DIR}" "${PNPM_GLOBAL_DIR}" "${PNPM_GLOBAL_BIN_DIR}" "${PNPM_STATE_DIR}"
-	local _pnpmver="${_pnpmversion}"
-	if [[ -z "${_pnpmver}" ]]; then
-		_pnpmver="$(node -p "const pm=require('./package.json').packageManager; pm && pm.startsWith('pnpm@') ? pm.split('@')[1] : ''" 2>/dev/null)"
-	fi
-	if [[ -n "${_pnpmver}" ]]; then
-		export COREPACK_HOME="${srcdir}/.corepack"
-		install -dm755 "${srcdir}/.bin"
-		corepack enable --install-directory "${srcdir}/.bin"
-		export PATH="${srcdir}/.bin:${PATH}"
-		corepack prepare "pnpm@${_pnpmver}" --activate
-	fi
-    export HOME="${srcdir}/.home"
+	export PNPM_HOME="${srcdir}/.pnpm/bin"
+	export pnpm_config_cache_dir="${srcdir}/.pnpm_cache"
+	export pnpm_config_store_dir="${srcdir}/.pnpm_store"
+	export pnpm_config_global_dir="${srcdir}/.pnpm/global"
+	export pnpm_config_state_dir="${srcdir}/.pnpm/state"
+	export pnpm_config_node_linker=hoisted
+	export pnpm_config_minimum_release_age=0
+	export pnpm_config_update_notifier=false
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${srcdir}/.corepack"
+	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
+	export PATH="${PNPM_HOME}:${PATH}"
 	export CARGO_HOME="${srcdir}/.cargo"
-	export CARGO_NET_OFFLINE=false
 	export CARGO_NET_GIT_FETCH_WITH_CLI=true
 	export CARGO_NET_RETRY=5
 	export CARGO_HTTP_MULTIPLEXING=false
-	export CARGO_BUILD_JOBS="$(nproc)"
 	export CARGO_INCREMENTAL=0
 	export CARGO_TERM_COLOR=never
 	export CARGO_PROFILE_RELEASE_STRIP=symbols
-	export CARGO_PROFILE_RELEASE_DEBUG=0
-	mkdir -p "${HOME}" "${CARGO_HOME}"
+	mkdir -p "${CARGO_HOME}"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -105,19 +79,21 @@ prepare() {
         s/\"active\"\: true\,/\"active\"\: false\,/g
         s/${_appname}-music-player/${pkgname}/g
     " packages/player/src-tauri/tauri.conf.json
-    NODE_ENV=development    pnpm add -D node-addon-api node-gyp
-    NODE_ENV=development    pnpm install --no-frozen-lockfile
+    export NODE_ENV=development
+    pnpm add -D node-addon-api node-gyp
+    pnpm install --no-frozen-lockfile
     rustup default stable
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     _ensure_local_nvm
     _set_build_env
+    exportNODE_ENV=production
     # Build all packages in the correct order
     for pkg in model website i18n themes hifi ui plugin-sdk storybook player; do
         msg2 "Building ${pkg}..."
         cd "${srcdir}/${pkgname}-${pkgver}/packages/${pkg}"
-        echo y | NODE_ENV=production pnpm run build || {
+        echo y | pnpm run build || {
             error "Failed to build ${pkg}"
             return 1
         }
