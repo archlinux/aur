@@ -1,6 +1,6 @@
 pkgbase = appflowy
 	pkgdesc = Open-source alternative to Notion – you own your data and customizations
-	pkgver = 0.14.3
+	pkgver = 0.14.4
 	pkgrel = 1
 	url = https://appflowy.com
 	arch = x86_64
@@ -31,10 +31,10 @@ pkgbase = appflowy
 	options = !lto
 	options = !debug
 	options = !buildflags
-	source = appflowy-0.14.3.tar.gz::https://github.com/AppFlowy-IO/AppFlowy/archive/refs/tags/0.14.3.tar.gz
+	source = appflowy-0.14.4.tar.gz::https://github.com/AppFlowy-IO/AppFlowy/archive/refs/tags/0.14.4.tar.gz
 	source = flutter::git+https://github.com/flutter/flutter.git#tag=3.27.4
 	source = appflowy.desktop
-	sha256sums = d638d16074e677047d0e28ff2b7593e5c3210bb0d70c41a0225fc1c32c510981
+	sha256sums = d95f25b2657d511a6f65c36fdc79e7932dd5b1375245d3671cce9bfa6cfb7ef5
 	sha256sums = 41d2ef9589b0ff14b4c55a614933fb8f68307738882c8e6c454fc334d4952ce3
 	sha256sums = 55c02d13249b333088ee452e76c8f36254e510651023549dc7e35efca02ca821
 
