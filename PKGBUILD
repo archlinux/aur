@@ -4,8 +4,8 @@
 # Contributor: Mattias Andersson <contact at stablemate dot se>
 
 pkgname=playwright
-pkgver=1.62.1
-pkgrel=2
+pkgver=1.63.0
+pkgrel=1
 pkgdesc='Node.js library to automate Chromium, Firefox and WebKit with a single API'
 arch=('any')
 url='https://playwright.dev'
@@ -27,8 +27,8 @@ noextract=(
   "playwright-core-$pkgver.tgz"
 )
 sha512sums=(
-  'd0cf8bdcb003f3f9e6e79e0b3a56bd032c748f4b66159d0505ca10ec5d55b951e933f5e9882f11703cc1401f16e7e840f0bdb64c7c442f3785fb659c533bdc2e'
-  'c0f612c0404963d187ada2125eacaab71d276b42e93b75c45fb8cd0e19ed6dec7bb73512ee42e766c3a516bb85241e078bfae10cc8d71aa1dec0367af2761957'
+  'fbbce204b89d4b835a34276de7b4940d3fb062699de5f9a241e8d489cfe46fe62c61208fc8e384f6c79bccc8cd990aec9cda4326a778587bd5ffc95f29f50352'
+  'ad80ac045fcce478d4721e766dbb5538d1058efe97bbcb26f21ef674d951e5bcc81357ef0bf6f182ca7392349f53e3307843263ccf0a25e6c6ea79f2c68e660a'
 )
 
 check() {
