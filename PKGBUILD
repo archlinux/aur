@@ -3,7 +3,7 @@
 
 _name=plotnine
 pkgname=python-$_name
-pkgver=0.15.7
+pkgver=0.15.8
 pkgrel=1
 pkgdesc='A grammar of graphics for python'
 arch=(any)
@@ -39,7 +39,7 @@ makedepends=(
 # 	python-geopandas
 # )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('6e578bdd93c7ba12ce495dcdeaf8651f8e4ccdceb0c85b94c8195566d709c2a0')
+sha256sums=('d3859997c3abd6edff6dee376d912716e75bbe0b0099b7054176d84fe11e8e20')
 
 build() {
 	cd "${_name}-${pkgver}"
