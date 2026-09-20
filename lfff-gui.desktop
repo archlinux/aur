@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=LibreFastboot FirmwareFlasher
+Name[ru]=LibreFastboot FirmwareFlasher
+GenericName=Firmware Flasher
+GenericName[ru]=Прошивальщик прошивок
+Comment=Flash Android firmware via fastboot
+Comment[ru]=Прошивка Android-устройств через fastboot
+Exec=lfff-gui
+Icon=lfff-gui
+Terminal=false
+Type=Application
+Categories=Utility;System;
+Keywords=android;fastboot;firmware;flash;oneplus;realme;oppo;
+StartupNotify=true
