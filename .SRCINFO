@@ -1,6 +1,6 @@
 pkgbase = can-utils-git
 	pkgdesc = Linux-CAN / SocketCAN user space applications
-	pkgver = 2025.01.r5.gc542c9a
+	pkgver = 2025.01.r82.gcbbad5e
 	pkgrel = 1
 	url = https://github.com/linux-can/can-utils
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = can-utils-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
-	depends = glibc
-	depends = bash
+	depends = sh
 	optdepends = can-doc: Linux-CAN / SocketCAN documentation
 	provides = can-utils
 	conflicts = can-utils
