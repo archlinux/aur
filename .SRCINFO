@@ -1,13 +1,13 @@
 pkgbase = shiki
 	pkgdesc = TUI note-taking app with a Yazi-inspired three-pane layout and git-backed notebooks
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/sazardev/shiki
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	conflicts = shiki-bin
-	source = shiki-0.9.5.tar.gz::https://github.com/sazardev/shiki/archive/refs/tags/v0.9.5.tar.gz
-	sha256sums = e126f6b728de5ecda7559239bcf8218b0537522586d5a2c29de5ff28d21eaedc
+	source = shiki-0.9.6.tar.gz::https://github.com/sazardev/shiki/archive/refs/tags/v0.9.6.tar.gz
+	sha256sums = 4a26378de8cba339c4bddd9369e5100d774831aaa636250b20acef0766ff2bf4
 
 pkgname = shiki
