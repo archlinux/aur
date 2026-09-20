@@ -10,6 +10,17 @@
 # (0.17.0.r0.g5412f88 in this case), so a release bump touches both $pkgver
 # and the pinned URL below. Regenerate the checksum with `sha256sum` on the
 # downloaded file.
+#
+# This stays version-pinned on purpose instead of asking GitHub for "the
+# latest release": AUR helpers (yay, paru, ...) decide whether an upgrade
+# exists by comparing the pkgver a package declares in its .SRCINFO with what
+# is installed. A dynamic fetch at build time would need a SKIP checksum and
+# could not declare the artifact's real version, so it would silently break
+# upgrade tracking. The pinned sha256 IS the trust anchor; bumping a release
+# means touching pkgver, the asset URL and sha256sums together.
+#
+# The -x86_64 arch token is $CARCH (expanded into .SRCINFO), so the day
+# upstream ships an aarch64 artifact this URL slots it in with no other edit.
 
 pkgname=cordial-bin
 pkgver=0.17.0
@@ -43,7 +54,7 @@ install="$pkgname.install"
 # The binaries in the artifact were already stripped by CI's own makepkg;
 # stripping them again fails and would not make them byte-identical.
 options=('!strip' '!debug')
-source=("cordial.pkg.tar.zst::https://github.com/luohoa97/cordial/releases/download/v$pkgver/cordial-0.17.0.r0.g5412f88-1-x86_64.pkg.tar.zst")
+source=("cordial.pkg.tar.zst::https://github.com/luohoa97/cordial/releases/download/v$pkgver/cordial-0.17.0.r0.g5412f88-1-$CARCH.pkg.tar.zst")
 sha256sums=('0835b7eddbe726248211642ca036a7b7370388fe3a0bc91bcb665a63b4db9bca')
 
 package() {
