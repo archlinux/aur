@@ -2,7 +2,7 @@
 
 _name=leidenalg
 pkgname=python-$_name
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='The Leiden algorithm for community detection'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(python python-igraph libleidenalg)
 makedepends=(cmake python-setuptools python-setuptools-scm python-build python-installer python-wheel)
 optdepends=('python-tqdm: Optimizer progress status')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f454be96bbc8089ea2a90ca853d8d389ab646de964a03bd58417f8b29ff8ef5d')
+sha256sums=('c81a45a2fb874fe71e903d43a869d0efeb7f907af70476c03f6945ef0e8f44c5')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
