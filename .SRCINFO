@@ -1,7 +1,7 @@
 pkgbase = vantage-browser-bin
 	pkgdesc = Vantage 浏览器 - 基于 Firefox ESR (预编译 deb 解包安装) - 非官方社区打包
-	pkgver = 153.2.0
-	pkgrel = 2
+	pkgver = 153.3.0
+	pkgrel = 1
 	url = https://github.com/asystech-chen/Vantage
 	arch = x86_64
 	arch = aarch64
@@ -37,9 +37,9 @@ pkgbase = vantage-browser-bin
 	provides = vantage-browser
 	conflicts = vantage-browser
 	conflicts = vantage-browser-appimage
-	source_x86_64 = https://github.com/asystech-chen/Vantage/releases/download/v153.2.0-2/vantage_153.2.0-2_amd64.deb
-	sha256sums_x86_64 = 7cf5c0843b393b4a85a2a2e25613712053c7988e6c6e28ca0c84294c15eb9b80
-	source_aarch64 = https://github.com/asystech-chen/Vantage/releases/download/v153.2.0-2/vantage_153.2.0-2_arm64.deb
-	sha256sums_aarch64 = 4068dcc24c9349e25dd6d5c3be67e82b56b98df1c3ff12f387f930ffea21b65f
+	source_x86_64 = https://github.com/asystech-chen/Vantage/releases/download/v153.3.0-1/vantage_153.3.0-1_amd64.deb
+	sha256sums_x86_64 = 0fd7bb28b9147a184acc5bb96e3c20181aceb7d45e0e570414f4c0208a38fc78
+	source_aarch64 = https://github.com/asystech-chen/Vantage/releases/download/v153.3.0-1/vantage_153.3.0-1_arm64.deb
+	sha256sums_aarch64 = 5f35417146bbcd7ca44cbd038f771b506727ef8feb0277c28d89b4fc9d84531b
 
 pkgname = vantage-browser-bin

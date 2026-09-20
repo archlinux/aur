@@ -1,8 +1,8 @@
 # Maintainer: chen-shuhan <2502820816@qq.com>
 # 非官方社区打包
 pkgname=vantage-browser-bin
-pkgver=153.2.0
-pkgrel=2
+pkgver=153.3.0
+pkgrel=1
 pkgdesc="Vantage 浏览器 - 基于 Firefox ESR (预编译 deb 解包安装) - 非官方社区打包"
 arch=('x86_64' 'aarch64')
 url="https://github.com/asystech-chen/Vantage"
@@ -44,8 +44,8 @@ conflicts=('vantage-browser' 'vantage-browser-appimage')
 # 上游 deb 按架构区分，使用关联数组形式
 source_x86_64=("https://github.com/asystech-chen/Vantage/releases/download/v${pkgver}-${pkgrel}/vantage_${pkgver}-${pkgrel}_amd64.deb")
 source_aarch64=("https://github.com/asystech-chen/Vantage/releases/download/v${pkgver}-${pkgrel}/vantage_${pkgver}-${pkgrel}_arm64.deb")
-sha256sums_x86_64=('7cf5c0843b393b4a85a2a2e25613712053c7988e6c6e28ca0c84294c15eb9b80')
-sha256sums_aarch64=('4068dcc24c9349e25dd6d5c3be67e82b56b98df1c3ff12f387f930ffea21b65f')
+sha256sums_x86_64=('0fd7bb28b9147a184acc5bb96e3c20181aceb7d45e0e570414f4c0208a38fc78')
+sha256sums_aarch64=('5f35417146bbcd7ca44cbd038f771b506727ef8feb0277c28d89b4fc9d84531b')
 
 package() {
   # deb 为 ar 归档，data.tar.xz 内含 /opt/vantage 等
