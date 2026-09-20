@@ -13,7 +13,8 @@ pkgbase = gss-ntlmssp
 	depends = libunistring
 	depends = libwbclient
 	depends = openssl
-	source = git+https://github.com/gssapi/gss-ntlmssp.git#commit=aa602d0e0cd891870458c8a6d206555131b6adf5
+	source = git+https://github.com/gssapi/gss-ntlmssp.git#tag=v1.3.2?signed
+	validpgpkeys = 7C7BD146943B206BB645B64594EAD67E004B65AB
 	sha256sums = aca6350e97e24c0bdbba10bd3afabd1587d9252d35cf74c40f8289ab22469d5b
 
 pkgname = gss-ntlmssp
