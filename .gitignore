@@ -1,0 +1,15 @@
+# makepkg build artifacts
+src/
+pkg/
+*.pkg.tar.*
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# makepkg downloaded sources
+root.json
+sub-store.json
+LICENSE
+cron-sync-artifacts.min.js
+runtime-manifest.json
+sub-store.bundle.js

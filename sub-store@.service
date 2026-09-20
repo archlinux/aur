@@ -18,14 +18,12 @@ LimitNOFILE=65536
 # Security hardening
 NoNewPrivileges=true
 PrivateTmp=true
-ProtectSystem=strict
-ProtectHome=true
-ReadWritePaths=/var/lib/sub-store
+ProtectSystem=full
+ProtectHome=read-only
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectControlGroups=true
 RestrictSUIDSGID=true
-MemoryDenyWriteExecute=true
 RestrictRealtime=true
 LockPersonality=true
 SystemCallFilter=@system-service
