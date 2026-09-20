@@ -4,10 +4,11 @@ pkgbase=seanime-git
 pkgname=('seanime-server-git' 'seanime-denshi-git')
 _pkgname=seanime
 _electronver=42
-pkgver=v3.10.0.r0.gb0da396
+pkgver=v3.10.3.r0.g2da73d9
 pkgrel=1
 pkgdesc="Open-source media server with a web interface and desktop app for anime and manga."
 arch=('x86_64' 'aarch64')
+options=('!debug')
 url="https://seanime.app"
 license=('GPL-3.0-only')
 depends=(
@@ -18,7 +19,7 @@ makedepends=(
     'git'
     'make'
     'npm'
-    'go>=1.26'
+    'go>=1.27.1'
     "electron$_electronver")
 source=(
     "git+https://github.com/5rahim/seanime.git"
@@ -47,12 +48,11 @@ build() {
     cd "${_pkgname}/seanime-web"
 
     # Mirror the workflow, build order webapp > server > denshi, start with webapp below
-    # By default npm do not allow remote packages to be install add an exception for mpv-prism
 
-    npm ci --allow-remote=root
+    npm ci
     make build-all
 
-    # Prepare for the server (go)
+    # Prepare for the server binary (go)
 
     cd "${srcdir}/${_pkgname}"
 
@@ -69,10 +69,10 @@ build() {
     fi
 
     # https://wiki.archlinux.org/title/Go_package_guidelines#Flags_and_build_options
-    # (cgo) is required for linking and its enabled by default
+    # (cgo) is required for linking and its enabled by default, let's be verbose
     # TODO: debug symbols for GO
 
-    # Fail if we have to downlaod (go) from the internet
+    # Fail if we have to downlaod (go) compiler from the internet
     export GOTOOLCHAIN=path
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -90,19 +90,19 @@ build() {
 
     cd "seanime-denshi/"
     
-    # Prepare for binary
+    # Prepare for the binary
 
     mkdir -p binaries
 
     cp "${srcdir}/${_pkgname}/binaries/seanime-server-linux-${GOARCH}" ./binaries/
 
-    # Prepare for system electron for use after build
+    # Prepare for system electron to be used after build
 
     electronDist=/usr/lib/electron$_electronver
     electronVer=$(electron$_electronver --version | tail -c +2)
 
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    npm ci --allow-remote=root
+    npm ci
     npm run build:main
     npm run sync:mpv-prism -- linux-${_Arch}
     npm exec -- electron-builder build --linux --${_Arch} --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
