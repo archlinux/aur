@@ -1,6 +1,6 @@
 pkgbase = cordial
 	pkgdesc = Roblox's official Android build, run natively on Linux -- Cordial ships no Roblox code and fetches a signature-verified one
-	pkgver = 0.14.2
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/luohoa97/cordial
 	install = cordial.install
@@ -39,7 +39,7 @@ pkgbase = cordial
 	conflicts = cordial-git
 	conflicts = cordial-bin
 	options = !lto
-	source = cordial::git+https://github.com/luohoa97/cordial.git#tag=v0.14.2
+	source = cordial::git+https://github.com/luohoa97/cordial.git#tag=v0.17.0
 	source = mcpelauncher-linker::git+https://github.com/minecraft-linux/mcpelauncher-linker.git
 	source = android_bionic::git+https://github.com/minecraft-linux/android_bionic.git
 	source = android_core::git+https://github.com/minecraft-linux/android_core.git
