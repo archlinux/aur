@@ -8,7 +8,7 @@ fi
 
 _pkgname=PhoenixBrowser
 _binname=phoenixbrowser
-pkgver=0.87.3
+pkgver=0.88
 pkgrel=1
 pkgdesc="A light and snappy web browser"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ depends=('libelectron>=2026.6' 'nss' 'gtk3' 'libxss' 'git' 'bitwarden-cli')
 depends_x86_64=('electron-castlab-bin>=v43.0.0')
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/phoenix-$pkgver.tar.bz2")
-sha256sums=('eec8a1bddd716bcd08b2e1a4e466d18af90c0c6b3f789db88a248cb59f6d38f1')
+sha256sums=('4d3b043dd13ab9fbfe4eb2bb89c1f790d4b2311d569c88cc8a626d168b649ae2')
 
 _package_common() {
     install -dm755 "$pkgdir/opt/$_pkgname"
@@ -36,6 +36,7 @@ _package_common() {
     ln -sf "/opt/libelectron/libadblock" "$srcdir/phoenix-$pkgver/libadblock"
     ln -sf "/opt/libelectron/libuseragent" "$srcdir/phoenix-$pkgver/libuseragent"
 
+    rm -rf "version.txt"
     cp -r ./ "$pkgdir/opt/$_pkgname"
     cp -r "$pkgdir/opt/$_pkgname/sysicons/icon.svg" "$pkgdir/usr/share/pixmaps/$_binname.svg"
 
