@@ -2,7 +2,6 @@ pkgbase = ramsleuth-bin
 	pkgdesc = Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients (precompiled binary)
 	pkgver = 2.1.0
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/MadGoatHaz/RamSleuth
 	install = ramsleuth-bin.install
 	arch = x86_64
