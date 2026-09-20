@@ -2,5 +2,6 @@ D-LAN
 pkg
 src
 d-lan-*.log
-d-lan-*.zst
+d-lan-debug*
+*sig.zst
 *namcap.log
