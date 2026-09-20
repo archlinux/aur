@@ -1,7 +1,7 @@
 pkgbase = glamorous-toolkit-bin
 	pkgdesc = Moldable development environment and knowledge management system
 	pkgver = 1.1.590
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gtoolkit.com/
 	arch = x86_64
 	arch = aarch64

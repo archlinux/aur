@@ -1,7 +1,7 @@
 # Maintainer: fivegrant
 pkgname=glamorous-toolkit-bin
 pkgver=1.1.590
-pkgrel=1
+pkgrel=2
 pkgdesc='Moldable development environment and knowledge management system'
 arch=('x86_64' 'aarch64')
 url='https://gtoolkit.com/'
