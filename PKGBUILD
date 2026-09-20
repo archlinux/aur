@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=autolock
-pkgver=1.0
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc='A minimal X11 autolocker'
 url='https://codeberg.org/ayari/autolock'
 arch=(
@@ -29,7 +29,7 @@ source=(
     'systemd-libs.patch'
 )
 sha256sums=(
-    '8bca1086e957e8a5a5710ea055213312de0d63a18ba6ded8ca7755e147cfd5f1'
+    '15048bcfc56c38fe360c1242383674aca492ea1fbc8c080a67b3a87ea1d2f742'
     '66ae860a0f428979a551b3a95026e53897ee5ec68ab5e23ccdd86287e0883858'
 )
 
