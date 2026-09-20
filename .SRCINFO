@@ -1,7 +1,7 @@
 pkgbase = cosmic-comp-gaming
 	pkgdesc = Compositor for the COSMIC desktop environment with experimental Vulkan renderer, HDR and support fifo-v1, commit-timing-v1, fullscreen tearing, and VRR Target Rate feature
 	pkgver = 1.22.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/skygrango/cosmic-comp
 	arch = x86_64
@@ -65,7 +65,7 @@ pkgbase = cosmic-comp-gaming
 	conflicts = cosmic-randr-git
 	conflicts = xdg-desktop-portal-cosmic
 	conflicts = xdg-desktop-portal-cosmic-git
-	source = git+https://github.com/skygrango/cosmic-comp.git#branch=vulkan-v6
+	source = git+https://github.com/skygrango/cosmic-comp.git#branch=vulkan-v7
 	source = git+https://github.com/skygrango/cosmic-settings.git#branch=hdr_v1
 	source = git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v2
 	source = git+https://github.com/skygrango/xdg-desktop-portal-cosmic.git#branch=hdr-v2
