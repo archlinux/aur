@@ -1,7 +1,7 @@
 pkgbase = ferrumplay-bin
 	pkgdesc = Desktop music player with album-grouped playlists and Audio CD support
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bitpainter75/FerrumPlay
 	arch = x86_64
 	license = GPL-3.0-only
@@ -16,12 +16,12 @@ pkgbase = ferrumplay-bin
 	depends = mpv
 	provides = ferrumplay
 	conflicts = ferrumplay
-	noextract = FerrumPlay-0.9.4-1-linux-x64-aur.zip
+	noextract = FerrumPlay-0.9.4-2-linux-x64-aur.zip
 	options = !strip
-	source = FerrumPlay-0.9.4-1-linux-x64-aur.zip::https://github.com/Bitpainter75/FerrumPlay/releases/download/0.9.4/FerrumPlay-0.9.4-1-linux-x64-aur.zip
+	source = FerrumPlay-0.9.4-2-linux-x64-aur.zip::https://github.com/Bitpainter75/FerrumPlay/releases/download/0.9.4/FerrumPlay-0.9.4-2-linux-x64-aur.zip
 	source = io.github.Bitpainter75.FerrumPlay.desktop
 	source = io.github.Bitpainter75.FerrumPlay.png
-	sha256sums = a180860194b6d52459e0ccd6728d10883cdfd53329c7c6673aa70d827b956d09
+	sha256sums = 8d9d67491d22a5974bc72a9616a88a57091bed8fc9f3600993dbe7f2a2161bb5
 	sha256sums = 6d59170c7e8756fa9bf310bb018a4df24bbd117895d003281dd98f86ca756ebd
 	sha256sums = c20d42ee7a0540237fc93744c125041f160b5e1235cbadd0ff47989c254f7783
 
