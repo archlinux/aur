@@ -1,7 +1,7 @@
 # Maintainer: Leo Liu <leoliu0@users.noreply.github.com>
 pkgname=ratex
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultra-fast, pure-Rust TeX engine and typesetting toolchain (built from source)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/leoliu0/ratex"
@@ -25,7 +25,7 @@ provides=('ratex')
 conflicts=('ratex-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leoliu0/ratex/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b1b3cda82a19fddfceaabfeb45e9f61aedfb26d55fca58b87dd91e38e5ec2b3b')
+sha256sums=('0e9754bcad3b7c09c064940d06108894df81a37b7db38b3e0ab98342cb38faab')
 
 build() {
     cd "${pkgname}-${pkgver}"
