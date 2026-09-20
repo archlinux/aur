@@ -2,7 +2,7 @@
 
 # pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=movo
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='GTK 4 and Libadwaita client for HDRezka'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('mpv: play streams')
 # ring compiles C code in; the Rust linker cannot read the objects makepkg's LTO makes of it.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('172968b38d362879a8f52feec60a81968f39bdc8ec2b58a37934aba20c688dc6')
+sha256sums=('49ba603330af0028b62718e5749e7ac6d0bcc2cf49dc853948540f5c6a5e55df')
 
 _app_id=io.github.sachesi.Movo
 
