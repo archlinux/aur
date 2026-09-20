@@ -15,8 +15,8 @@ arch=('i686' 'x86_64')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 optdepends=(
-  'qt6-imageformats: printing support'
-  'kimageformats: scanner support'
+  'qt6-imageformats: additional image format support'
+  'kimageformats: additional image format support'
 )
 
 pkgver() {
