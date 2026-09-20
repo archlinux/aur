@@ -27,7 +27,18 @@ pkgver=1.4.0.5656
 # the breaking upgrade does not run for it. It has to already be installed.
 # Hence this: same engine tag, same pkgver, packaging only. Nothing here changes
 # the game; it puts the safety net in place before the fall.
-pkgrel=1
+#
+# 1.4.0.5656 rel 2: make `yay -Syu` work. yay installs the split packages in
+# layers -- data and launcher first, as dependencies, the engine after -- and
+# the engine pinned both to its exact version-release. So the first layer of
+# every upgrade broke the still-installed engine's pin and pacman refused the
+# whole thing ("installing keeperfx-tux-data (1.4.0.5656-1) breaks dependency
+# 'keeperfx-tux-data=1.4.0.5652-2' required by keeperfx-tux"). The pins are
+# now >= pkgver, which the first layer satisfies, and the data and launcher
+# packages provide the exact versions earlier engines still ask for, so the
+# installs that are out there right now get across too. Also stops the build
+# directory being written into the launcher binary.
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/ForkedInTime/keeperfx-linux-alpha"
 license=('GPL-2.0-or-later')
@@ -126,6 +137,11 @@ build() {
     *-alpha)     _ver_suffix=alpha ;;
     *-prototype) _ver_suffix=Prototype ;;
   esac
+  # The engine keeps its symbols (options above) so crash reports resolve, and
+  # the debug info records the compilation directory -- makepkg's "$srcdir"
+  # warning. Given through the environment so linux.mk's own += flags survive.
+  export KFX_CFLAGS="-ffile-prefix-map=${srcdir}=/usr/src/${pkgbase}"
+  export KFX_CXXFLAGS="-ffile-prefix-map=${srcdir}=/usr/src/${pkgbase}"
   make -f linux.mk \
     BUILD_NUMBER="$(git rev-list --count HEAD)" \
     VER_SUFFIX="${_ver_suffix}" \
@@ -163,6 +179,10 @@ build() {
   # a RUNPATH that namcap rejects and that would not exist on a user's machine.
   # Nothing is lost -- zlib, Qt and OpenSSL all resolve from the system.
   rm -rf build
+  # Sources compiled in-tree (LIEF's spdlog, through __FILE__) otherwise carry
+  # the build directory into the binary -- makepkg's "$srcdir" warning.
+  export CFLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}=/usr/src/${pkgbase}"
+  export CXXFLAGS="${CXXFLAGS} -ffile-prefix-map=${srcdir}=/usr/src/${pkgbase}"
   cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -196,11 +216,15 @@ package_keeperfx-tux() {
     'glibc' 'gcc-libs' 'bash' 'hicolor-icon-theme'
     # Pulled in automatically, so installing this one name gives a complete,
     # playable install rather than an engine with nothing to run.
-    "keeperfx-tux-data=${pkgver}-${pkgrel}"
+    # ">=" and not "=": yay upgrades these two in a layer of their own BEFORE
+    # the engine, against the engine that is still installed. An exact pin made
+    # pacman refuse that layer, and with it every `yay -Syu` (see rel 2 above).
+    # `yay -Syu` upgrades all three together anyway, so they stay in step.
+    "keeperfx-tux-data>=${pkgver}"
     # The launcher is the front door: it finds your Dungeon Keeper installation,
     # copies the files it needs, and configures the game. Installing the engine
     # without it would lose the only route a new player has to a playable install.
-    "keeperfx-tux-launcher=${pkgver}-${pkgrel}"
+    "keeperfx-tux-launcher>=${pkgver}"
   )
   conflicts=('keeperfx-linux-alpha' 'keeperfx-linux-alpha-git')
   provides=("keeperfx-tux=${pkgver}")
@@ -287,6 +311,12 @@ package_keeperfx-tux() {
 package_keeperfx-tux-data() {
   pkgdesc="Game data for KeeperFX Tux Edition (campaigns, graphics, sounds) — you still supply your own Dungeon Keeper files"
   arch=('any')
+  # Engines from the exact-pin era (every install up to 1.4.0.5656-1) still
+  # demand these exact version-releases of this package, and yay upgrades this
+  # package before the engine. Providing them lets that first layer through;
+  # the engine layer that follows drops the exact pin for good. Remove once
+  # those installs are gone.
+  provides=("keeperfx-tux-data=1.4.0.5652-2" "keeperfx-tux-data=1.4.0.5653-1" "keeperfx-tux-data=1.4.0.5656-1")
   # Nothing here is executable: nothing to strip, no debug info to split out.
   options=('!strip' '!debug')
 
@@ -316,6 +346,12 @@ package_keeperfx-tux-launcher() {
   pkgdesc="Qt launcher for KeeperFX Tux Edition — finds your Dungeon Keeper install, copies the files in, configures and plays"
   depends=('qt6-base' 'zlib' 'openssl' 'glibc' 'gcc-libs' 'bash' 'hicolor-icon-theme')
   optdepends=('keeperfx-tux: the game it launches')
+  # Engines from the exact-pin era (every install up to 1.4.0.5656-1) still
+  # demand these exact version-releases of this package, and yay upgrades this
+  # package before the engine. Providing them lets that first layer through;
+  # the engine layer that follows drops the exact pin for good. Remove once
+  # those installs are gone.
+  provides=("keeperfx-tux-launcher=1.4.0.5652-2" "keeperfx-tux-launcher=1.4.0.5653-1" "keeperfx-tux-launcher=1.4.0.5656-1")
 
   cd "${srcdir}/keeperfx-tux-launcher"
 

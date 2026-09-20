@@ -1,6 +1,6 @@
 pkgbase = keeperfx-tux
 	pkgver = 1.4.0.5656
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ForkedInTime/keeperfx-linux-alpha
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -80,8 +80,8 @@ pkgname = keeperfx-tux
 	depends = gcc-libs
 	depends = bash
 	depends = hicolor-icon-theme
-	depends = keeperfx-tux-data=1.4.0.5656-1
-	depends = keeperfx-tux-launcher=1.4.0.5656-1
+	depends = keeperfx-tux-data>=1.4.0.5656
+	depends = keeperfx-tux-launcher>=1.4.0.5656
 	provides = keeperfx-tux=1.4.0.5656
 	conflicts = keeperfx-linux-alpha
 	conflicts = keeperfx-linux-alpha-git
@@ -89,6 +89,9 @@ pkgname = keeperfx-tux
 pkgname = keeperfx-tux-data
 	pkgdesc = Game data for KeeperFX Tux Edition (campaigns, graphics, sounds) — you still supply your own Dungeon Keeper files
 	arch = any
+	provides = keeperfx-tux-data=1.4.0.5652-2
+	provides = keeperfx-tux-data=1.4.0.5653-1
+	provides = keeperfx-tux-data=1.4.0.5656-1
 	options = !strip
 	options = !debug
 
@@ -102,3 +105,6 @@ pkgname = keeperfx-tux-launcher
 	depends = bash
 	depends = hicolor-icon-theme
 	optdepends = keeperfx-tux: the game it launches
+	provides = keeperfx-tux-launcher=1.4.0.5652-2
+	provides = keeperfx-tux-launcher=1.4.0.5653-1
+	provides = keeperfx-tux-launcher=1.4.0.5656-1
