@@ -1,9 +1,9 @@
 # Maintainer: Alexeyev Vitaly <vitamindbnfkz@gmail.com>
 pkgname=synthos-bin
 _pkgname=synthos
-pkgver=0.2.0
+pkgver=268
 pkgrel=1
-pkgdesc="Local AI desktop studio: agentic chat, notes workspace, node editor for video/music/speech, code editor — on the native synaptix engine (binary release)"
+pkgdesc="Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — on the native synaptix engine (binary release)"
 arch=("x86_64")
 url="https://github.com/VitaminDB/synthos"
 license=("MIT" "Apache-2.0")
@@ -31,7 +31,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
 
 source=("$_pkgname-$pkgver.tar.zst::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux.tar.zst")
-sha256sums=('64f45c859994a0e1a1412218fba21115b1121ac72335d80eef937c70bb9703d8')
+sha256sums=('429b9cf9f9c9bdb87ab0873d9227ea438faa44215253073e750ca13a81152f57')
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
