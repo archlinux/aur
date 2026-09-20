@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-freetype2
 	pkgdesc = Font rasterization library (Android armv7a-eabi)
 	pkgver = 2.14.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freetype.org/
 	arch = any
 	groups = android-freetype2
@@ -11,7 +11,6 @@ pkgbase = android-armv7a-eabi-freetype2
 	depends = android-armv7a-eabi-zlib
 	depends = android-armv7a-eabi-brotli
 	depends = android-armv7a-eabi-libpng
-	depends = android-armv7a-eabi-harfbuzz
 	provides = android-armv7a-eabi-freetype2-boostrap
 	conflicts = android-armv7a-eabi-freetype2-boostrap
 	options = !strip
