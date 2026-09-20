@@ -58,11 +58,11 @@ _bs3rel="app.asar.unpacked/node_modules/better-sqlite3-multiple-ciphers"
 prepare() {
   local dmg="$srcdir/granola-$pkgver.dmg"
 
-  # The native module is built against the installed electron's headers.
+  # The module builds against $_elver headers and needs the same system Electron major at runtime.
   local sysver
   sysver="$(</usr/lib/$_electron/version)"
-  if [[ "$sysver" != "$_elver" ]]; then
-    echo "installed $_electron is $sysver, set _elver=$sysver and run updpkgsums" >&2
+  if [[ "$sysver%%.*" != "$_elver%%.*" ]]; then
+    echo "installed $_electron is $sysver, set _electron and _elver to match and run updpkgsums" >&2
     return 1
   fi
 
