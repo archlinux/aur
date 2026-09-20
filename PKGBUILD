@@ -1,7 +1,7 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 
 pkgname=libplctag
-pkgver=2.6.3
+pkgver=2.7.2
 pkgrel=1
 pkgdesc='Portable and simple API for accessing Allen-Bradley and Modbus PLC data over Ethernet.'
 arch=('x86_64')
@@ -10,12 +10,10 @@ license=('GPL')
 makedepends=('cmake')
 source=(
   "$url/archive/v$pkgver.tar.gz"
-  missing-string-header.patch
   )
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -p1 -i ../missing-string-header.patch
 }
 
 build() {
@@ -33,5 +31,4 @@ package() {
   cd "$pkgname-$pkgver/build"
   make DESTDIR="$pkgdir/" install
 }
-sha256sums=('ebbcd659d5137d1299780e49b139d1e991b5a731df6dca0d7130b58555673a6d'
-            '198d18d5f97dbfcb3672465d30a0783e9fc9045233cc9be7a1d677346bde513b')
+sha256sums=('09057d893a418e10c977267fe57a0195a4b8a4d7e512acc2d9ccef0314823056')
