@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=senpi
-pkgver=2026.9.19_2
+pkgver=2026.9.20
 pkgrel=1
 _npmver=${pkgver//_/-}
 pkgdesc='Opinionated coding agent CLI based on pi'
@@ -29,7 +29,7 @@ source_aarch64=(
   "$pkgname-$_npmver-esbuild-arm64::https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-$_esbuild_ver.tgz"
 )
 noextract=("$pkgname-$_npmver.tgz")
-sha256sums=('a9fc7b33fd1bf6d39f6d886246e51c9405010e707cfa6f96fd194f6f32565fe9'
+sha256sums=('6b9d6596dfd417aff98b6d9b56643f7bbf89f0cf1c0934614caf83891f21a53d'
             'b572487f123bf259487f7dab25923af16fecd08ed7a2c50964f393282dba883c')
 sha256sums_x86_64=('9573bb2233aab0f9ea7647d5cca9726113cc1768de61d66b17267f4db84488f6')
 sha256sums_aarch64=('a96dbfa41d3ef5dbd1ef22b1c10d5187be9267e86093a870f06402a7ec931596')
@@ -76,7 +76,7 @@ package() {
   chmod -R go-w "$_target"
 
   install -d "$pkgdir/usr/bin"
-  ln -s "../lib/node_modules/@code-yeongyu/$pkgname/dist/cli.js" \
+  ln -s "../lib/node_modules/@code-yeongyu/$pkgname/dist/bundle/cli.js" \
     "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 "$srcdir/$pkgname-$_npmver-LICENSE" \
