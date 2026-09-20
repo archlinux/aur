@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/trackknife/
+/*.pkg.tar.*
+/*.src.tar.*
