@@ -1,0 +1,27 @@
+pkgbase = python-nats-py
+	pkgdesc = Asyncio NATS client for Python
+	pkgver = 2.16.0
+	pkgrel = 1
+	url = https://github.com/nats-io/nats.py
+	arch = any
+	license = Apache-2.0
+	checkdepends = nats-server>=2.12
+	checkdepends = python-aiofiles
+	checkdepends = python-aiohttp
+	checkdepends = python-fast-mail-parser
+	checkdepends = python-nkeys
+	checkdepends = python-pytest>=9.0.3
+	checkdepends = python-pytest-asyncio>=0.21
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build>=0.9.28
+	depends = python>=3.7
+	optdepends = python-aiohttp: WebSocket transport support
+	optdepends = python-fast-mail-parser: accelerated message-header parsing
+	optdepends = python-nkeys: NKey and JWT authentication support
+	source = python-nats-py-2.16.0.tar.gz::https://github.com/nats-io/nats.py/archive/refs/tags/v2.16.0.tar.gz
+	source = fast-parser-header-name-validation.patch
+	sha256sums = efe0fe244f02c18de7816a214825e383fcd8d38382ba8d6faf51abc3d142e7a8
+	sha256sums = 44e236d00ac84672c8fbe58c61339593fa192c14a4d55ed594e1b8378bf23c90
+
+pkgname = python-nats-py

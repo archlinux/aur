@@ -1,0 +1,15 @@
+diff --git a/nats/src/nats/aio/client.py b/nats/src/nats/aio/client.py
+index 4e20c61..e55a1e5 100644
+--- a/nats/src/nats/aio/client.py
++++ b/nats/src/nats/aio/client.py
+@@ -1911,7 +1911,9 @@ class Client:
+             if parse_email:
+                 to_delete = []
+                 for k in hdr.keys():
+-                    if any(c in k for c in string.whitespace):
++                    # Header names are ASCII tokens. Match the built-in
++                    # parser when the optional accelerated parser is active.
++                    if not k.isascii() or any(c in k for c in string.whitespace):
+                         to_delete.append(k)
+                 for k in to_delete:
+                     del hdr[k]
