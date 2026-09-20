@@ -1,7 +1,7 @@
 # Maintainer: RainyPixel <me@bobchenkov.ru>
 
 pkgname=wallpaper-engine-kde-plugin-git
-pkgver=0.6.0.r645.g5b85b36
+pkgver=0.6.0.r738.g1fd3c1f
 pkgrel=1
 pkgdesc="Wallpaper Engine integration for KDE Plasma 6 (native C++, no Python)"
 arch=('x86_64')
