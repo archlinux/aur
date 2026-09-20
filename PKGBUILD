@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Wavefire5201/clickr"
 license=('MIT')
 depends=('glibc' 'gcc-libs')
-makedepends=('cargo' 'rust')
+makedepends=('rust')
 optdepends=('dunst: desktop notifications'
             'mako: desktop notifications'
             'swaync: desktop notifications'

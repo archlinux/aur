@@ -7,7 +7,6 @@ pkgbase = clickr
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = cargo
 	makedepends = rust
 	depends = glibc
 	depends = gcc-libs
