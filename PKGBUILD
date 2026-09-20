@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-plus-bin
-pkgver=3.1.74
+pkgver=3.1.75
 _electronversion=19
 pkgrel=1
-pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.(Prebuilt version.Use system-wide electron)"
+pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 arch=('x86_64')
 url="https://github.com/mvdicarlo/postybirb-plus"
 license=('BSD-3-Clause')
@@ -58,7 +58,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${_app_dir}/usr/lib/"*.* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
