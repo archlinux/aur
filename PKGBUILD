@@ -4,14 +4,17 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=fluxer-bin
-pkgver=0.0.8
-pkgrel=2
+# Upstream versions are date-based: this is the build of 2026-09-20 at
+# 04:13:03 UTC. They sort above the 0.0.x scheme the package used before.
+pkgver=2026.920.41303
+pkgrel=1
 pkgdesc="Fluxer Desktop Application"
 arch=('x86_64' 'aarch64')
 url="https://fluxer.app"
 license=('AGPL-3.0-only')
 depends=('gtk3' 'nss' 'alsa-lib')
-# the AUR also carries fluxer-git, which installs the same /usr/bin/fluxer:
+# /usr/bin/fluxer is also installed by fluxer-git on the AUR and by the
+# "fluxer" package in upstream's own pacman repository:
 # provides/conflicts makes that an either/or instead of a file conflict
 provides=('fluxer')
 conflicts=('fluxer')
@@ -21,16 +24,16 @@ source=("fluxer.desktop")
 sha256sums=('981daa8015b823fef254bb8e79fe6b28f77dda02cdc374796443bd64f5041de1')
 
 source_x86_64=("fluxer-${pkgver}-x64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/x64/${pkgver}/tar_gz")
-sha256sums_x86_64=('acf6398fa6810720fed85b06c011b324e7db4fec6bf2fc7ad93c2446c3600f2d')
+sha256sums_x86_64=('e56b839eed12e0fdaccbd02bf8c5bfd92308929c43eb08d9e270c5ed8122aa08')
 
 source_aarch64=("fluxer-${pkgver}-arm64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/arm64/${pkgver}/tar_gz")
-sha256sums_aarch64=('77b874a98caf48de5bc4ccf03119f45262fe26fd7be085b57d7b40b1505d0ec8')
+sha256sums_aarch64=('fac0f1e76063377a4111a653c690528820c9fb6ea1694ae334321c7d35cd6d7e')
 
 package() {
     local _dir
     case "$CARCH" in
-        x86_64)  _dir="fluxer-stable-${pkgver}-x64" ;;
-        aarch64) _dir="fluxer-stable-${pkgver}-arm64" ;;
+        x86_64)  _dir="Fluxer-${pkgver}-linux-x64" ;;
+        aarch64) _dir="Fluxer-${pkgver}-linux-arm64" ;;
     esac
     # upstream has changed the archive layout before - fall back to a glob
     if [ ! -d "$srcdir/$_dir" ]; then
@@ -51,8 +54,22 @@ package() {
 
     install -Dm644 "$srcdir/fluxer.desktop" "$pkgdir/usr/share/applications/fluxer.desktop"
 
-    if [ -f "$pkgdir/opt/$pkgname/resources/512x512.png" ]; then
-        install -Dm644 "$pkgdir/opt/$pkgname/resources/512x512.png" \
-            "$pkgdir/usr/share/icons/hicolor/512x512/apps/fluxer.png"
+    # The bundle carries a full icon set, named after the size it holds.
+    # The glob takes those and leaves icon.png and the tray templates, which
+    # carry no size, alone.
+    local _icon _size _found=0
+    for _icon in "$srcdir/$_dir"/resources/icons/[0-9]*x[0-9]*.png; do
+        [ -f "$_icon" ] || continue
+        _size="$(basename "$_icon" .png)"
+        install -Dm644 "$_icon" \
+            "$pkgdir/usr/share/icons/hicolor/$_size/apps/fluxer.png"
+        _found=1
+    done
+    # the .desktop entry points at this icon, so a silent miss would ship a
+    # window with no icon at all
+    if [ "$_found" -eq 0 ]; then
+        echo "Error: no icons in $_dir/resources/icons" >&2
+        ls -la "$srcdir/$_dir/resources" >&2
+        return 1
     fi
 }
