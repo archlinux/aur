@@ -1,6 +1,6 @@
 pkgbase = linuxtoys-bin
 	pkgdesc = A collection of tools for Linux in a user-friendly way.
-	pkgver = 7.2.1
+	pkgver = 7.2.2
 	pkgrel = 1
 	url = https://github.com/psygreg/linuxtoys
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = linuxtoys-bin
 	depends = appstream
 	depends = archlinux-appstream-data
 	depends = sudo
-	provides = linuxtoys=7.2.1
-	source = https://github.com/psygreg/linuxtoys/releases/download/7.2.1/linuxtoys-7.2.1.tar.xz
-	sha256sums = a07df960607ce9bc180e5ec1a8012309abcd537872f953e470e43056deb5f60c
+	provides = linuxtoys=7.2.2
+	source = https://github.com/psygreg/linuxtoys/releases/download/7.2.2/linuxtoys-7.2.2.tar.xz
+	sha256sums = ba43a4dce1112e5cd9b2309913f508faa4f0736a26b4ce39943ffb6a947c011b
 pkgname = linuxtoys-bin
