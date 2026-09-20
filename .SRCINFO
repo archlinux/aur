@@ -1,21 +1,24 @@
 pkgbase = ibus-cangjie
 	pkgdesc = This is an IBus engine for users of the Cangjie and Quick input methods.
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
-	url = http://cangjians.github.io/projects/ibus-cangjie/
+	url = https://cangjie.pages.freedesktop.org/projects/ibus-cangjie/
 	install = ibus-cangjie.install
-	arch = x86_64
-	arch = i686
-	license = GPL3
-	makedepends = intltool
-	makedepends = dconf
-	depends = ibus>=1.4.1
-	depends = python-pycangjie>=1.0
-	depends = python>=3.2
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-coverage
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gobject-introspection
+	makedepends = gettext
+	depends = ibus
+	depends = gtk3
+	depends = gsound
+	depends = python-pycangjie>=1.5
+	depends = python>=3.10
 	depends = python-gobject
-	replaces = ibus-cangjie-git
-	source = https://github.com/Cangjians/ibus-cangjie/releases/download/v2.4/ibus-cangjie-2.4.tar.xz
-	sha512sums = cef9562fc4a5f3b78881c09b43e502f02322148e501022d3f80989caef4ca98ae26903e9a3dcc422feeba7712a8321c731ba229429e52fe919db5144aa0ead47
+	source = git+https://gitlab.freedesktop.org/cangjie/ibus-cangjie.git#tag=2.5
+	sha256sums = SKIP
 
 pkgname = ibus-cangjie
-
