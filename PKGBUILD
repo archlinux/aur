@@ -1,7 +1,7 @@
 # Maintainer: Stefanie Jane <stef@hyperbliss.tech>
 
 pkgname=sibyl
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Persistent memory and task coordination CLI for AI coding agents"
 arch=('any')
@@ -34,12 +34,12 @@ makedepends=(
     'python-wheel'
 )
 source=(
-    "sibyl-dev-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/bb/6a/5e928a850080e8757af966199049d33b36edc5974be18a17d045b66dc560/sibyl_dev-1.3.2.tar.gz"
-    "sibyl-core-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/b5/57/cfdda599e13e84fef10c680a19c6dc3bf17a61cb8676d9b856f8b7a4a20b/sibyl_core-1.3.2.tar.gz"
+    "sibyl-dev-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/32/ae/e18e45f58e388837c7f0e110a6fe3f56fdd4187c3049fea9eca6fe694735/sibyl_dev-1.4.0.tar.gz"
+    "sibyl-core-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/54/b2/6d981d2973b825615f479860004ae5616a13a5ed32bb6c74cbce087bd6d4/sibyl_core-1.4.0.tar.gz"
 )
 sha256sums=(
-    '919e2f16eea39b5babcf3720714b42b79d08d1f49b59da1283d77abc3d0b0dd4'
-    '68f4b6a3ebcef630a7c9e3d1c8b18ad2eeb655444b7048ed605f58bc27e735db'
+    '2ca7e7890626f5c97c12ce2db525d4540f1a5f0688ba61b04b7cda774b291e4f'
+    '85c37d34258ab0e05d93fd6429143b6d7fae9c962e00ef75676a045e773c07c9'
 )
 
 build() {
