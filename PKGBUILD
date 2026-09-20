@@ -2,7 +2,7 @@
 # WARNING: This package uses a lot of memory to build (16+ GB)
 
 pkgname=symbolicator
-pkgver=26.8.0
+pkgver=26.9.0
 pkgrel=1
 pkgdesc="A sentry symbolication service for native stacktraces"
 arch=(x86_64)
@@ -20,7 +20,7 @@ options=(!lto)
 source=(
     "$pkgname::git+$url#tag=$pkgver"
     "symbolicator.service")
-sha256sums=('a6ae72a7e269ecfd8c1244ccbf5ce615e0c99a9ed4d94967e52a0441ac89eb8d'
+sha256sums=('e95f89b2f6077ca98e8bd5a19493b82630be4ecd60634570f78bb88de5b6be8f'
             '1e249394e2f17aba6c8c4d44bf6ad473669d020f2a1627085f82c8cc0cc96f47')
 
 prepare() {

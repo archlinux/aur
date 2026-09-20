@@ -1,6 +1,6 @@
 pkgbase = symbolicator
 	pkgdesc = A sentry symbolication service for native stacktraces
-	pkgver = 26.8.0
+	pkgver = 26.9.0
 	pkgrel = 1
 	url = https://github.com/getsentry/symbolicator
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = symbolicator
 	depends = libzstd.so
 	options = !lto
 	backup = etc/symbolicator/symbolicator.yml
-	source = symbolicator::git+https://github.com/getsentry/symbolicator#tag=26.8.0
+	source = symbolicator::git+https://github.com/getsentry/symbolicator#tag=26.9.0
 	source = symbolicator.service
-	sha256sums = a6ae72a7e269ecfd8c1244ccbf5ce615e0c99a9ed4d94967e52a0441ac89eb8d
+	sha256sums = e95f89b2f6077ca98e8bd5a19493b82630be4ecd60634570f78bb88de5b6be8f
 	sha256sums = 1e249394e2f17aba6c8c4d44bf6ad473669d020f2a1627085f82c8cc0cc96f47
 
 pkgname = symbolicator
