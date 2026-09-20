@@ -6,7 +6,7 @@ pkgname=(
     'openvino-intel-gpu-plugin-git'
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
-pkgver=2026.3.0.r263.g0f453eb8dca
+pkgver=2026.4.0.r249.g5dde2c8795f
 pkgrel=1
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
@@ -56,6 +56,10 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/herumi/xbyak_riscv.git'
         'git+https://github.com/intel/ipf.git'
         'git+https://github.com/axboe/liburing.git'
+        # protobuf git submodules
+        'git+https://github.com/google/googletest.git'
+        'git+https://github.com/abseil/abseil-cpp.git'
+        'git+https://github.com/open-source-parsers/jsoncpp.git'
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch'
         '030-openvino-ignore-system-onnx.patch'
@@ -86,10 +90,13 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '549cff4011c7cdec0ceca052b6d6f541e3c22fffd08a9316c4a7ec4f34a9c444'
-            '74a11ff976c25cbd1fb231ee751411c0b60c228bc71da64d6d8c17fb7fa77767'
-            'de646ab5b83cb25fbec891ef84663af52e5153061e4d6446113c0779fd214446'
-            'e9ca24f135bf85606be18d0fb52f8a0702dc4ed82c10dd5de122e18be47df3c0')
+            'f6cba91a4c054c454906ba59aadec0d98790782099efe65ab72d888e848f72e4'
+            '846b35799982f3d7f6f0b69d4faf0be2692b3974dd33f30988edf6eb647ad75c'
+            '3d982e4bc99c62027c5b4fbeba659c23083205db3b14f6190039adbb412a0afc')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -129,6 +136,13 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/liburing/liburing.url "${srcdir}/liburing"
     git -C openvino -c protocol.file.allow='always' submodule update
     
+    # protobuf git submodules
+    git -C openvino/thirdparty/protobuf/protobuf submodule init
+    git -C openvino/thirdparty/protobuf/protobuf config --local submodule.third_party/googletest.url "${srcdir}/googletest"
+    git -C openvino/thirdparty/protobuf/protobuf config --local submodule.third_party/abseil-cpp.url "${srcdir}/abseil-cpp"
+    git -C openvino/thirdparty/protobuf/protobuf config --local submodule.third_party/jsoncpp.url "${srcdir}/jsoncpp"
+    git -C openvino/thirdparty/protobuf/protobuf -c protocol.file.allow='always' submodule update
+    
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-change-install-paths.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/030-openvino-ignore-system-onnx.patch"
@@ -161,7 +175,6 @@ build() {
         -G 'Unix Makefiles' \
         -DBUILD_TESTING:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
-        -DCMAKE_CXX_STANDARD:STRING='17' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_SKIP_RPATH:BOOL='YES' \
         -DENABLE_SSE42:BOOL='OFF' \
@@ -200,8 +213,8 @@ package_openvino-git() {
         'pugixml'
         'snappy')
     optdepends=(
-        'openvino-intel-gpu-plugin-git: for Intel GPU plugin'
-        'openvino-intel-npu-plugin-git: for Intel NPU plugin')
+        'openvino-intel-gpu-plugin-git: for using Intel GPU devices'
+        'openvino-intel-npu-plugin-git: for using Intel NPU devices')
     provides=("openvino=${pkgver}" 'intel-openvino-git')
     conflicts=('openvino' 'intel-openvino-git')
     replaces=('intel-openvino-git')

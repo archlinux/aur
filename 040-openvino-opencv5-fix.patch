@@ -1,6 +1,6 @@
 --- a/src/plugins/intel_npu/tools/protopipe/src/utils/utils.cpp
 +++ b/src/plugins/intel_npu/tools/protopipe/src/utils/utils.cpp
-@@ -34,7 +34,7 @@ void generateRandom(cv::Mat& out) {
+@@ -37,7 +37,7 @@ void generateRandom(cv::Mat& out) {
          break;
      case CV_16F: {
          std::vector<int> dims;

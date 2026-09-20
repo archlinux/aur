@@ -11,5 +11,5 @@
 +#    ov_add_compiler_flags(-Werror)
 +#endif()
  
- add_subdirectory(src/runtime)
- add_subdirectory(src/kernel_selector)
+ # Directory-wide on purpuse: the macro guards virtual methods in
+ # include/intel_gpu/runtime, so ENABLE_MLIR_FOR_GPU must be defined consistently in all targets
