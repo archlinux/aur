@@ -1,20 +1,22 @@
 # Maintainer: Hultwl <Hultwl@users.noreply.github.com>
 pkgname=rufux-git
-pkgver=1.1.2.r0.ga8e02b3
+pkgver=1.4.1.r6.g8ef26fd
 pkgrel=1
 pkgdesc="Rufux — bootable USB creator for Linux (Rufus port, latest git)"
 arch=('x86_64')
 url="https://github.com/Hultwl/Rufux"
 license=('GPL-3.0-or-later')
-depends=('gtk4' 'hicolor-icon-theme' 'udisks2' 'util-linux')
-makedepends=('git' 'cmake' 'gcc' 'pkgconf' 'gettext')
+depends=('qt6-base' 'hicolor-icon-theme' 'openssl' 'udisks2' 'util-linux')
+makedepends=('git' 'cmake' 'gcc' 'pkgconf' 'gettext' 'qt6-tools')
 optdepends=(
   'dosfstools: FAT32 formatting (mkfs.vfat)'
   'ntfsprogs: NTFS formatting (mkfs.ntfs)'
   'exfatprogs: exFAT formatting (mkfs.exfat)'
   'e2fsprogs: ext4 formatting and persistence'
   'libarchive: ISO extraction (bsdtar)'
-  'p7zip: ISO extraction fallback (7z)'
+  'p7zip: required for UDF/Windows ISOs (7z)'
+  'wimlib: Windows 11 checks bypass inside boot.wim (wimlib-imagex)'
+  'hivex: offline registry editing for the bypass (hivexsh)'
   'syslinux: BIOS/GPT MBR + syslinux install'
   'grub: GRUB bootloader install'
   'xorriso: ISO building'
