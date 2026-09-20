@@ -3,7 +3,7 @@ pkgbase=d-lan
 pkgname=(d-lan-core
     d-lan-gui)
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 license=GPL-3.0-or-later
 pkgdesc="A free LAN file sharing software"
 arch=('x86_64')
@@ -62,4 +62,5 @@ package_d-lan-gui() {
     install -vD "$_appdir/Setups/Ubuntu/$pkgbase.desktop" "$pkgdir/usr/share/applications/$pkgbase.desktop"
     sed -i "s|^Exec=$pkgname|Exec=bash -c 'd-lan-core \& $pkgname'|" "$pkgdir/usr/share/applications/$pkgbase.desktop"
     install -vD "$_appdir/GUI/resources/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgbase.svg"
+    cp --recursive "$_appdir/styles" "$pkgdir/opt/$pkgbase/styles"
 }
