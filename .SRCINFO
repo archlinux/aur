@@ -1,0 +1,12 @@
+pkgbase = qbak
+	pkgdesc = Single-command backup helper for Linux/POSIX, written in Rust
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/andreas-glaser/qbak
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = qbak-1.5.1.tar.gz::https://codeload.github.com/andreas-glaser/qbak/tar.gz/refs/tags/v1.5.1
+	sha256sums = 51d4bf3f8b893ffb6b09617e8236e49e9294b28526acae8d6cff8e248b2ab14a
+
+pkgname = qbak
