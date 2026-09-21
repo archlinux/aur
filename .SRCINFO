@@ -1,10 +1,11 @@
 pkgbase = shellix
 	pkgdesc = Virtual terminal for Linux with tab support and customizable options
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/itsegork/shellix
 	arch = any
 	license = MIT
+	makedepends = gettext
 	depends = python
 	depends = python-gobject
 	depends = python-requests
@@ -17,7 +18,7 @@ pkgbase = shellix
 	depends = ttf-jetbrains-mono-nerd
 	depends = conspy
 	depends = nautilus-python
-	source = shellix-1.1.1.tar.gz::https://github.com/itsegork/shellix/archive/refs/tags/1.1.1.tar.gz
-	sha256sums = e395d05e9add45d9ccb7121f5db6560d2001d6d258abf7d02aeb500420c9740c
+	source = shellix-1.1.2.tar.gz::https://github.com/itsegork/shellix/archive/refs/tags/1.1.2.tar.gz
+	sha256sums = aad69e3e7f8bfe07b4dd5887000604a9af78498f87d14f8692d0bae3cf68c8be
 
 pkgname = shellix
