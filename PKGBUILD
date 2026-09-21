@@ -9,10 +9,18 @@ license=('BSD-3-Clause')
 
 depends=('qt6-base' 'layer-shell-qt' 'kconfigwidgets' 'libre' 'openssl'
          'opus' 'frameworkintegration' 'bash')
-makedepends=('cmake' 'git')
-
-# Optional module dependencies (dlopen'd .so plugins — baresip
-# tolerates a missing module gracefully, so these are optdepends).
+# Module libraries are listed in makedepends so every build produces
+# the complete module set (each module's CMakeLists auto-skips when a
+# dep is missing — without this the package contents would vary by
+# build machine). They are optdepends at runtime: modules are
+# dlopen'd and only needed if enabled in ~/.baresip/config.
+makedepends=('cmake' 'git'
+             'alsa-lib' 'libpulse' 'libpipewire' 'jack2' 'portaudio'
+             'libfdk-aac' 'opencore-amr' 'codec2' 'gsm' 'spandsp'
+             'aom' 'libvpx' 'ffmpeg' 'gstreamer' 'gst-plugins-base'
+             'sdl2' 'libx11' 'libxext' 'libpng' 'libsndfile'
+             'v4l-utils' 'glib2' 'mosquitto' 'libsrtp'
+             'webrtc-audio-processing-1')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'libpipewire: PipeWire audio driver'
@@ -32,14 +40,15 @@ optdepends=('alsa-lib: ALSA audio driver'
             'libx11: X11 video display'
             'libpng: snapshot module'
             'libsndfile: sndfile module'
+            'libsrtp: srtp media encryption module'
             'v4l-utils: v4l2 video source'
             'glib2: ctrl_dbus module'
             'mosquitto: mqtt module'
             'webrtc-audio-processing-1: WebRTC echo cancellation'
             'openbsd-netcat: forwards tel: links to a running instance')
 
-provides=('baresip' 'baresip-qt-gui' 'libbaresip.so')
-conflicts=('baresip' 'baresip-qt-gui')
+provides=('baresip' 'baresip-qt' 'baresip-qt-gui' 'libbaresip.so')
+conflicts=('baresip' 'baresip-qt' 'baresip-qt-gui')
 
 source=("git+https://github.com/CxOrg/baresip-qt.git#branch=call-dialogue")
 sha256sums=('SKIP')
