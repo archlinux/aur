@@ -1,5 +1,5 @@
  pkgname=anitrack
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
   pkgdesc="CLI/TUI companion for ani-cli with watch-progress tracking"
   arch=("x86_64")
@@ -9,7 +9,7 @@ pkgrel=1
   makedepends=("rust>=1.85" "pkgconf")
   options=("!lto")
   source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('8b587a8194d768a5eed0d38ec2df5acb754222ab1353424c86124d8000777a96')
+sha256sums=('9e0d4ad33d57aa9a851b737f7ee2784c994b3e7482e6a610f119ea3b41bbb4a2')
 
   prepare() {
     cd "$srcdir/$pkgname-$pkgver"
