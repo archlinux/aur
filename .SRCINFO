@@ -1,6 +1,6 @@
 pkgbase = feedthemonkey
 	pkgdesc = Desktop client for FreshRSS, Miniflux and other servers implementing the Greader API
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://git.jeena.net/jeena/FeedTheMonkey
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = feedthemonkey
 	depends = glib2
 	depends = hicolor-icon-theme
 	options = !lto
-	source = feedthemonkey::git+https://git.jeena.net/jeena/FeedTheMonkey.git#tag=v3.0.0
+	source = feedthemonkey::git+https://git.jeena.net/jeena/FeedTheMonkey.git#tag=v3.0.1
 	sha256sums = SKIP
 
 pkgname = feedthemonkey

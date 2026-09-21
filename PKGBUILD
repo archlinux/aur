@@ -1,7 +1,7 @@
 # Maintainer: Jeena <hello@jeena.net>
 
 pkgname=feedthemonkey
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Desktop client for FreshRSS, Miniflux and other servers implementing the Greader API"
 arch=('x86_64')
