@@ -1,0 +1,16 @@
+pkgbase = sub-store-front-end-git
+	pkgdesc = Sub-Store Progressive Web App (git)
+	pkgver = 2.32.2.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/sub-store-org/Sub-Store-Front-End
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = pnpm
+	provides = sub-store-front-end
+	conflicts = sub-store-front-end
+	conflicts = sub-store-front-end-bin
+	source = git+https://github.com/sub-store-org/Sub-Store-Front-End.git
+	sha256sums = SKIP
+
+pkgname = sub-store-front-end-git
