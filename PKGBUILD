@@ -3,7 +3,7 @@
 _pkgname='vrcx-0'
 pkgname="${_pkgname}-bin"
 pkgdesc='Friendship management tool for VRChat (Tauri version)'
-pkgver='2.29.0'
+pkgver='2.30.0'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/Map1en/VRCX-0'
