@@ -1,0 +1,16 @@
+pkgbase = finance-tracker-tui-git
+	pkgdesc = Simple TUI expense/investment tracker backed by SQLite (Go)
+	pkgver = r147.894edf1
+	pkgrel = 2
+	url = https://github.com/shen-kit/finance-tracker-tui
+	arch = x86_64
+	license = unknown
+	makedepends = go
+	makedepends = git
+	makedepends = gcc
+	provides = finance-tracker-tui
+	conflicts = finance-tracker-tui
+	source = finance-tracker-tui::git+https://github.com/shen-kit/finance-tracker-tui.git
+	sha256sums = SKIP
+
+pkgname = finance-tracker-tui-git
