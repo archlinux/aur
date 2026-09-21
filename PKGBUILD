@@ -9,7 +9,7 @@ license=('LicenseRef-SparkLost')
 provides=('endcord-gui')
 conflicts=('endcord-gui')
 depends=('gtk3')
-makedepends=('python>=3.12' 'uv' 'git' 'clang' 'patchelf' 'wget' 'gtk3' 'libgirepository')
+makedepends=('python>=3.12' 'uv' 'git' 'clang' 'patchelf' 'wget' 'libgirepository')
 optdepends=('xclip: clipboard support on X11'
             'wl-clipboard: clipboard support on Wayland'
             'aspell: spellchecking'
