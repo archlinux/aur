@@ -31,7 +31,7 @@ build() {
         -fdata-sections -fvisibility=hidden \
         -fstrict-vtable-pointers \
         -fno-asynchronous-unwind-tables \
-        smallz4.cpp -o smallz4 \
+        "${pkgname%-*}".cpp -o "${pkgname%-*}" \
         -Wl,--icf=safe \
         -Wl,--gc-sections \
         -Wl,-O3 \
@@ -49,7 +49,7 @@ build() {
         -fstrict-aliasing -fno-rtti -fno-exceptions \
         -fmerge-all-constants -ffunction-sections \
         -fdata-sections -fvisibility=hidden \
-        smallz4.cpp -o smallz4 \
+        "${pkgname%-*}".cpp -o "${pkgname%-*}" \
         -Wl,--gc-sections \
         -Wl,-O3 \
         -flto \
@@ -61,7 +61,7 @@ package() {
     cd "${pkgname%-*}"
 
     # Install binary
-    install -Dm755 smallz4 "$pkgdir/usr/bin/smallz4"
+    install -Dm755 "${pkgname%-*}" "$pkgdir/usr/bin/"${pkgname%-*}""
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
