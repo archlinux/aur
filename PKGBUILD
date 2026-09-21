@@ -2,7 +2,7 @@
 
 pkgname=pi
 pkgver=0.86.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
 url="https://github.com/earendil-works/pi"
@@ -60,7 +60,7 @@ package() {
   cp -a packages/coding-agent/{docs,examples,CHANGELOG.md} \
     "$pkgdir/$mod_dir/packages/coding-agent/"
 
-  ln -s "$mod_dir/packages/coding-agent/dist/cli.js" "$pkgdir/usr/bin/pi"
+  ln -s "$mod_dir/packages/coding-agent/dist/bundle/cli.js" "$pkgdir/usr/bin/pi"
 
   # Copy coding-agent docs and README and CHANGELOG into /usr/share/doc/pi to align it with Arch packages
   cp -r packages/coding-agent/docs/* packages/coding-agent/examples "$pkgdir/usr/share/doc/$pkgname/"
