@@ -1,7 +1,7 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@gmail.com>
 pkgname=tuxtunes-git
 # Set by pkgver() below; this value only matters before the first build.
-pkgver=0.1.0.r1.g13b0860
+pkgver=0.4.0.r0.gfb6af06
 pkgrel=1
 # pkgver() used to count every commit ($ver.r<rev-list count>), which put
 # the last untagged build at 0.1.0.r278. Now that the repo is tagged, it
