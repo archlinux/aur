@@ -1,0 +1,12 @@
+pkgbase = gocost
+	pkgdesc = A simple, keyboard-driven TUI for tracking monthly expenses (Go + Bubble Tea)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/madalinpopa/gocost
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = gocost-1.5.0.tar.gz::https://codeload.github.com/madalinpopa/gocost/tar.gz/refs/tags/v1.5.0
+	sha256sums = 6092f748ba471dd0f40db2da0e20bd849ac5ba26d483a47d6a23495bc02db55b
+
+pkgname = gocost
