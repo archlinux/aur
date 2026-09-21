@@ -5,7 +5,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-lcms2
-pkgver=2.18
+pkgver=2.19.1
 pkgrel=1
 pkgdesc="Small-footprint color management engine, version 2 (Android ${_android_arch})"
 arch=('any')
@@ -17,7 +17,7 @@ depends=('android-ndk'
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://downloads.sourceforge.net/sourceforge/lcms/lcms2-${pkgver}.tar.gz")
-md5sums=('bf1dcc205fe3889897ed16e2913b3197')
+md5sums=('541978f73749499e9e0277bfe5a3c868')
 
 prepare() {
     cd "${srcdir}/lcms2-${pkgver}"
