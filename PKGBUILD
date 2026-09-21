@@ -3,8 +3,8 @@
 
 _pkgname="fsearch"
 pkgname="$_pkgname"
-pkgver="0.3.1"
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="A fast graphical file search utility"
 url="https://github.com/cboxdoerfer/fsearch"
 license=('GPL-2.0-or-later')
@@ -27,10 +27,8 @@ source=(
   "$_pkgsrc.$_pkgext"::"$url/archive/$pkgver.$_pkgext"
   '0001-fix_new_window.patch'
 )
-sha256sums=(
-  'b16ab75556d841bf858633710d71c92f35d34362614b8584b0a5b71690a72c39'
-  '66b92a2bcba6006469d8aecb94612d4f633f47800bbe502d6e2061d5218478b1'
-)
+sha256sums=('2c9bc7de9ac1ba72232cb4d66a750fe04210fdae96273f04316b6616fc098308'
+  '66b92a2bcba6006469d8aecb94612d4f633f47800bbe502d6e2061d5218478b1')
 
 prepare() {
   local src
