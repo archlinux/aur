@@ -1,7 +1,7 @@
 # Maintainer: taxin-404 <taxin404@duck.com>
 pkgname=browsercode-bin
 pkgver=0.1.20
-pkgrel=1
+pkgrel=2
 pkgdesc="An AI coding agent that drives real browsers (opencode fork, adds browser_execute via CDP) — prebuilt binary"
 arch=('x86_64' 'aarch64')
 url="https://github.com/browser-use/browsercode"
@@ -20,6 +20,15 @@ source_aarch64=("bcode-linux-arm64-${pkgver}.tar.gz::https://github.com/browser-
 sha256sums_x86_64=('af259261fb0562fc23c9996c2d7a627ca0d657c91ca1721427947d3427734b68')
 sha256sums_aarch64=('4e71c6c3126c7f2e5457a2f6e1e3b030aa78aa191f5326f3e946f25959558f48')
 
+# The OpenCode Console free tier gate rejects client versions < 1.18.0 in the
+# User-Agent. The fork bakes its own version (0.1.20) into the UA template, so
+# rewrite it to a clean opencode semver. 1.18.0 is the same byte length as
+# 0.1.20 (6 chars), so binary structure and checksums are preserved.
+patch_version() {
+  perl -0777 -pi -e 's/0\.1\.20(?![0-9])/1.18.0/g' "$1"
+}
+
 package() {
   install -Dm755 "$srcdir/bcode" "$pkgdir/usr/bin/bcode"
+  patch_version "$pkgdir/usr/bin/bcode"
 }

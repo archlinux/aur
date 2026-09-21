@@ -1,7 +1,7 @@
 pkgbase = browsercode-bin
 	pkgdesc = An AI coding agent that drives real browsers (opencode fork, adds browser_execute via CDP) — prebuilt binary
 	pkgver = 0.1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/browser-use/browsercode
 	install = browsercode-bin.install
 	arch = x86_64
