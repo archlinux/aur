@@ -1,7 +1,7 @@
 pkgbase = opsh
 	pkgdesc = A small, local-first shell written in Rust
 	pkgver = 0.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fireflylabss/opsh
 	arch = x86_64
 	arch = aarch64
@@ -10,8 +10,8 @@ pkgbase = opsh
 	depends = gcc-libs
 	options = !lto
 	source = opsh-0.1.12.tar.gz::https://github.com/fireflylabss/opsh/archive/refs/tags/v0.1.12.tar.gz
-	source = optionSDK-0.1.3.tar.gz::https://github.com/fireflylabss/optionSDK/archive/refs/tags/v0.1.3.tar.gz
+	source = optionSDK-0.1.6.tar.gz::https://github.com/fireflylabss/optionSDK/archive/refs/tags/v0.1.6.tar.gz
 	sha256sums = 4a8fb69f5fc332dc2154a69d743b7ee4c3a05fd35f57236ad4ebdf445c204628
-	sha256sums = f71374cb0adbd9736b9e1e9ef0c800a65aeb4c7b32f5e496561b5cb31d9d0eac
+	sha256sums = 0b1ca7a784519f1a61656fd154eb731b27b245d41bac5de5e6dd51539dd4bdc7
 
 pkgname = opsh
