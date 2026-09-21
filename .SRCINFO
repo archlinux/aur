@@ -1,6 +1,6 @@
 pkgbase = fastapi-lsp
 	pkgdesc = Language server for FastAPI and Starlette
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/alex-oleshkevich/fastapi-lsp
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = fastapi-lsp
 	license = MIT
 	provides = fastapi-lsp
 	conflicts = fastapi-lsp
-	source_x86_64 = fastapi-lsp-0.1.8-x86_64.tar.gz::https://github.com/alex-oleshkevich/fastapi-lsp/releases/download/v0.1.8/fastapi-lsp-v0.1.8-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = ad9a4ce362765dcc4fa6845384089d4a1975a1866f24472d0266072fadca9d67
-	source_aarch64 = fastapi-lsp-0.1.8-aarch64.tar.gz::https://github.com/alex-oleshkevich/fastapi-lsp/releases/download/v0.1.8/fastapi-lsp-v0.1.8-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 0f0aae8b0c605a2fcd815f4cc52278f95fc760ad3276da02b1b34a0f31bc13ed
+	source_x86_64 = fastapi-lsp-0.1.9-x86_64.tar.gz::https://github.com/alex-oleshkevich/fastapi-lsp/releases/download/v0.1.9/fastapi-lsp-v0.1.9-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ffd0138ce71890bad4766fd42a81fc59e5a1eaa9991e138612eeef220cc10d59
+	source_aarch64 = fastapi-lsp-0.1.9-aarch64.tar.gz::https://github.com/alex-oleshkevich/fastapi-lsp/releases/download/v0.1.9/fastapi-lsp-v0.1.9-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8d1ea03455292b66c1bbcdbaf7d92378586212b1db94b68e8bdf0a9924ca4897
 
 pkgname = fastapi-lsp
