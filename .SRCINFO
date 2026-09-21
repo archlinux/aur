@@ -1,6 +1,6 @@
 pkgbase = webtorrent-desktop-git
-	pkgdesc = Streaming torrent client.(Use system-wide electron)
-	pkgver = 0.24.0.r397.g787e4c4
+	pkgdesc = Streaming torrent client.
+	pkgver = 0.24.0.r411.g6c91af3
 	pkgrel = 1
 	url = https://webtorrent.io/desktop
 	arch = aarch64
@@ -11,12 +11,13 @@ pkgbase = webtorrent-desktop-git
 	makedepends = nvm
 	makedepends = npm
 	makedepends = curl
+	makedepends = jq
 	depends = electron27
 	provides = webtorrent-desktop
 	conflicts = webtorrent-desktop
 	source = webtorrent-desktop.git::git+https://github.com/webtorrent/webtorrent-desktop.git
 	source = webtorrent-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = webtorrent-desktop-git
