@@ -1,6 +1,6 @@
 pkgbase = python-jh2
 	pkgdesc = HTTP/2 State-Machine based protocol implementation
-	pkgver = 5.0.14
+	pkgver = 5.0.15
 	pkgrel = 1
 	url = https://github.com/jawah/h2
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = python-jh2
 	depends = libgcc
 	depends = glibc
 	depends = python
-	source = python-jh2-5.0.14.tar.gz::https://github.com/jawah/h2/archive/refs/tags/v5.0.14.tar.gz
-	sha256sums = ba728a95888359e76e9e516ccc02f77ee25ddfadaef8de8ccab4812e33346909
+	source = python-jh2-5.0.15.tar.gz::https://github.com/jawah/h2/archive/refs/tags/v5.0.15.tar.gz
+	sha256sums = 4f83c8d1ab88539d317fc5106933165b522c8cbce7f9c96de86c4fdc17a04b99
 
 pkgname = python-jh2
