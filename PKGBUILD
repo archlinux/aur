@@ -1,5 +1,5 @@
 pkgname=dogma
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Bridges secrets from vault backends and infrastructure outputs into sops-encrypted files deployed to NixOS machines"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('glibc')
 makedepends=('rust')
 
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/x71c9/$pkgname/tar.gz/refs/tags/v$pkgver")
-sha256sums=("38a6df5a4d7a33702c14b0329bf4078da5330c689d6a229aab57aaedbfc0f76c")
+sha256sums=("148a474c82ac97dda86735d184d94a7c44cbe3b430b732d9552a5e6b2ecd8926")
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -27,4 +27,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/dogma"
+  "target/release/dogma" completions bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/dogma"
+  "target/release/dogma" completions zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_dogma"
+  "target/release/dogma" completions fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/dogma.fish"
 }
