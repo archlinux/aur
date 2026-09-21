@@ -1,0 +1,15 @@
+pkgbase = surfn-arched-icons-git
+	pkgdesc = Surfn Arched, a colourful icon theme
+	pkgver = 25.04.01.r1.g72178d5f
+	pkgrel = 1
+	url = https://github.com/erikdubois/Surfn
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	depends = surfn-icons-git
+	options = !strip
+	options = !emptydirs
+	source = Surfn-Arched::git+https://github.com/erikdubois/Surfn.git#commit=72178d5f93e73334fb38fff9e3c47b206ec47c18
+	sha256sums = SKIP
+
+pkgname = surfn-arched-icons-git
