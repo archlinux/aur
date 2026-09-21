@@ -4,7 +4,7 @@
 pkgbase=logitech-trueforce-dkms
 pkgname=('logitech-trueforce-dkms' 'logi-wheel' 'logi-wheel-gui')
 _dkmsname=logitech-trueforce
-pkgver=0.42.1
+pkgver=0.42.2
 pkgrel=1
 pkgdesc="DKMS kernel driver for Logitech racing wheels (RS50, G PRO, G923): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 arch=('x86_64')
@@ -27,7 +27,7 @@ options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v0.18.0 release tarball. On the next version bump, regenerate:
 #   updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('c8b3d8d6149d32e89dd4e3b45340634060eca2a2c56af64bbd5e9c4a254ae3d4')
+sha256sums=('c78323fb362484e235b58a6b386bb11338dfe05f3f7cb25ddd7eccda916b856e')
 
 _src() {
 	echo "$srcdir/logitech-trueforce-linux-driver-$pkgver"
@@ -102,6 +102,10 @@ package_logitech-trueforce-dkms() {
 		"$pkgdir/usr/lib/udev/rules.d/70-logitech-trueforce.rules"
 	install -Dm644 "$_src/udev/71-logi-ffb-uhid.rules" \
 		"$pkgdir/usr/lib/udev/rules.d/71-logi-ffb-uhid.rules"
+	# Load uhid at boot: the static /dev/uhid node is root-only until the
+	# module loads and the rule above fires (#105).
+	install -Dm644 "$_src/packaging/modules-load.d/logitech-trueforce.conf" \
+		"$pkgdir/usr/lib/modules-load.d/logitech-trueforce.conf"
 	# G923 (c266/c267/c26e) driver pre-emption: reclaims the wheel from a
 	# competing driver that won the bind race, PID-scoped only.
 	install -Dm644 "$_src/udev/72-logitech-g923-rebind.rules" \

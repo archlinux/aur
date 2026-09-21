@@ -1,4 +1,7 @@
 post_install() {
+	# /dev/uhid only gets the udev rule's mode once the uhid module is
+	# loaded; modules-load.d does that at the next boot, this does it now.
+	modprobe uhid 2>/dev/null || true
 	cat <<'MSG'
 ==> logitech-trueforce-dkms installed.
     DKMS builds the module automatically (see the dkms hook output above).
@@ -37,6 +40,7 @@ MSG
 }
 
 post_upgrade() {
+	modprobe uhid 2>/dev/null || true
 	cat <<'MSG'
 ==> logitech-trueforce-dkms upgraded.
     DKMS rebuilt the module. Reload it (or reboot) to run the new build:
