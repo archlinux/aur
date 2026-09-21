@@ -6,7 +6,7 @@
 # runtime deps are listed in optdepends so a pure Arch/CachyOS install stays minimal.
 
 pkgname=kodexbar-suite
-pkgver=0.12.11
+pkgver=0.12.12
 pkgrel=1
 pkgdesc='KodexBar Suite: Plasma widget, ai CLI, native Claude/Codex/Grok/Hermes/Devin quotas (optional codexbar for Antigravity)'
 arch=('any')
@@ -30,7 +30,7 @@ source=(
   'reload-plasma-after-upgrade'
 )
 sha256sums=(
-  'fd49942df2c9d1ddf6cc7c98bb14138e2313b7301694eb338966866991bb114b'
+  'bef54ab5ae88d9f1911a29a95247d78afc61b37d57646e6d80e801e223ebf408'
   '0b3891e5a4a1248558307c5fd5f42e73911b5740a068654e085d0635f7cbdf4c'
 )
 
@@ -72,6 +72,11 @@ package() {
     packages/ai-cli-control/icons/kodexbar-tray-warning.svg \
     packages/ai-cli-control/icons/kodexbar-tray-critical.svg \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+
+  install -d "${pkgdir}/usr/share/applications"
+  install -m644 packages/ai-cli-control/applications/kodexbar-tray.desktop \
+    packages/ai-cli-control/applications/ai-cli-control.desktop \
+    "${pkgdir}/usr/share/applications/"
 
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 LICENSE NOTICE.md "${pkgdir}/usr/share/licenses/${pkgname}/"
