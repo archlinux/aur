@@ -1,7 +1,7 @@
 pkgbase = python-kgb
 	pkgdesc = Utilities for spying on function calls in unit tests
 	pkgver = 7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/beanbaginc/kgb
 	arch = any
 	license = MIT
@@ -10,10 +10,11 @@ pkgbase = python-kgb
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = git
 	depends = python
 	optdepends = python-pytest: pytest plugin for spy assertions
-	source = git+https://github.com/beanbaginc/kgb.git#commit=c77c3f4133a405e38b38e60ae4282583762b408b
-	sha256sums = SKIP
+	source = python-kgb-7.3.tar.gz::https://github.com/beanbaginc/kgb/archive/c77c3f4133a405e38b38e60ae4282583762b408b.tar.gz
+	source = Build-release-version.patch
+	sha256sums = 69da9b30b35db18c76c9376c0d991c563e5854856122c0670403917aa3b231c4
+	sha256sums = 89d700ee91ed3c6203e0abb6796b65dc33f11cd33814d26b4983d3f770a66172
 
 pkgname = python-kgb

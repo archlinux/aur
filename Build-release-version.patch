@@ -1,0 +1,20 @@
+From: Arch Linux Contributors
+Subject: Build the release version without a development suffix
+
+The tagged release commit sets kgb.VERSION to the final release, but the
+repository-wide egg_info default still appends .dev0.  Upstream removes that
+suffix through its legacy `setup.py release` alias, which is not available to a
+PEP 517 frontend.  Clear the suffix for this release build.
+
+diff --git a/setup.cfg b/setup.cfg
+index 519274a..16656af 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -3,7 +3,7 @@ universal = 1
+ 
+ [egg_info]
+-tag_build = .dev
++tag_build =
+ 
+ [flake8]
+ ignore = E121,E125,E129,E241,W504
