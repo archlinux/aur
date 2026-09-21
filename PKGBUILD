@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-desktop-git
-pkgver=0.9.0.beta.1.r3.g3cc4ae286
+pkgver=0.9.0.beta.2.r4.g135a3b4c9
 pkgrel=2
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents. (git - built from main)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=("Apache-2.0")
 depends=(libxkbcommon libxcb libgcc gtk3 libxext libx11 libcups nspr mesa dbus pango libxcomposite libxrandr nodejs glib2 nss libxdamage alsa-lib systemd-libs bash hicolor-icon-theme cairo at-spi2-core expat libstdc++ libxfixes)
 makedepends=('git' 'npm' 'nodejs' 'python')
 provides=("paseo=${pkgver}" "paseo-desktop=${pkgver}" "paseo-desktop-git")
-conflicts=(paseo paseo-bin paseo-appimage paseo-desktop-bin paseo-desktop-bin-beta paseo-desktop-bin-edge paseo-cli paseo-cli-git paseo-cli-beta paseo-cli-edge)
+conflicts=(paseo paseo-bin paseo-appimage paseo-desktop-bin paseo-desktop-bin-edge paseo-cli paseo-cli-git paseo-cli-edge)
 source=('paseo::git+https://github.com/getpaseo/paseo.git#branch=main')
 sha256sums=('SKIP')
 options=('!strip')
