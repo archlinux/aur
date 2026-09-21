@@ -3,7 +3,7 @@
 
 _reponame=mold
 pkgname=${_reponame}-git
-pkgver=2.42.1.r442.gd567d10f
+pkgver=2.42.1.r466.g99d79c42
 pkgrel=1
 pkgdesc='A Modern Linker'
 arch=('x86_64')
@@ -27,6 +27,11 @@ conflicts=("$_reponame")
 pkgver() {
   cd "$_reponame"
   git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  # Fix missing FULL RELRO on mold-wrapper.so
+  sed -i '/command.arg("-ldl")/ s/arg.*/args(["-ldl", "-Wl,-z,relro,-z,now"]);/' "$_reponame"/build.rs
 }
 
 build() {
