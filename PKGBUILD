@@ -6,7 +6,7 @@
 # when a user explicitly requests them.
 
 pkgname=mxcli
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Unofficial community package for the mxcli Mendix development CLI"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ makedepends=(
 )
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1dbba691e381dcc8831d7b0c2abfb5bba3b240f1e4e91dc693635a34451350cc')
+sha256sums=('b5f35ce2889758ddb91c5096e7e148d5ce62d3b6a37834cc3851aa34f57e7cd7')
 
 build() {
   cd "$pkgname-$pkgver"
