@@ -3,46 +3,39 @@
 # Contributor: Xavier <shiningxc[at]gmail[dot]com>
 
 pkgname=savage2
-pkgver=2.1.1.1
-pkgrel=2
+pkgver=2.2.5.0
+pkgrel=1
 pkgdesc="Savage 2: A Tortured Soul is an fantasy themed online multiplayer team-based FPS/RTS/RPG hybrid. Completely free as of December 2008."
 arch=('x86_64')
-url='https://savage2.com/'
-license=('custom: "Savage 2"')
-depends=('mesa' 'libxml2' 'glu' 'ncurses5-compat-libs')
-makedepends=('unzip')
-install=savage2.install
-source=("https://masterserver1.talesofnewerth.com/downloads/Savage2-${pkgver}-linux-x64-installer.run" \
-'savage2.launcher' 'savage2.desktop' 's2editor.desktop' 's2mviewer.desktop' 'savage2.sh')
-sha512sums=('9a568b5886ac0c86cd5132ab04d35ed8715f029a00a072eed5916e75153fcd0fe6b25b75995f44aa0585569358442f1a592f6637dff6280d5519e8a7b354f8f7'
-            '5beba717e612dba323bacedb73f2cddd3844f51fc5d1f93f490b3d8e1597e6f3f9e1606e22a6e2dc9d3555cbc85c09cc762f9a2a4036e9f9f245e11c937f5453'
-            '4f4fc1ec350f6ce4ddcc9f32ae251e151f315df3a8964ec1a900fbbf22376a488e8bd4bd87e86889c93127919c9298362a1f979418a15653925766a6dc6b96c7'
-            'e5b7353fdf13bcb8bb5cb0a77757ed35bf19375c0ae5fd6341c65a28d3282eeeb60ff6471f6b9da5923c20d850bfcd20967f2636f1b100b427f2c087ee580553'
-            'e17db181b90d8fb30c106f3b745d0251dccfea04c3c67d7aa4e247eb069ca7acc71471a46581f50ced812bcf6ccbc72f8e3f109d170d4d7f44f369abe684470a'
-            'cd64032cb56bac763cb7f19112b8f86f1e0a7439797f1e955f73b96ce2f9b874cfc68b4e3f7bcf06f8dddd9481a65cc7699627fd3014984702d129e9b017b314')
+url='https://savage2.net/'
+license=('LicenseRef-savage2')
+depends=('mesa' 'glu' 'ncurses5-compat-libs')
+makedepends=()
+install=
+source=('https://masterserver1.talesofnewerth.com/lr1/x86_64/latest/Savage2CE.tar.gz' \
+'savage2.launcher' 'savage2.desktop' 's2editor.desktop' 's2mviewer.desktop')
+b2sums=('be6f1718d4c4818ab7c3071461176e13d929abbf856aa4a8655fff8631f7408acf0afe3ebd52605998c9e7e4747ce3b093cf638778b3bae96b970ac1a5fe01b9'
+        '51557c346c55a29a397d21b05e56e92c62fa2e296f20387d16f66a1fd1edf77d31650806b5d2593f1c35fb26a67e11fd7aa35b797fee4ee9ca3fc420a5fff00c'
+        'c2976cfa829eac67ca76856983f284c2a9e9479657c20ee75a8a627c4f74b78c4da7baf4e92f447530ffe5514f5cade9be09f8c2c52a8cf91a8cd79aae34a3be'
+        '8a7200cf07be782656ebec265c40fdfb3430e1d0147893aabd3e1b9635090c70f4f599fcfa1057d30e2be0c19bc684a3daea150aca07807798776a19702abfbb'
+        '55ed67ed12cd2ecc568557a61adcbfc35cc363f1c5524931b74705293246125cc657b2ab5edece8f5c444f57656032352d4efea98e4a5efb391bce13ac79dba6')
+noextract=("Savage2CE.tar.gz")
 PKGEXT='.pkg.tar'
 
 package() {
     cd "${srcdir}"
 
-    # Installer name
-    _installer_name="Savage2-${pkgver}-linux-x64-installer.run"
-
     # Create Destination Directory
     install -d "${pkgdir}/opt/savage2"
 
-    # Make Installer Executable
-    chmod +x "${srcdir}/${_installer_name}"
+    # Extract upstream package into Destination Directory
+    bsdtar -x -o -C "${pkgdir}/opt/savage2" -f "${srcdir}/Savage2CE.tar.gz"
 
-    # Run Installer
-    "${srcdir}/${_installer_name}" --mode unattended --prefix "${pkgdir}/opt/savage2/"
+    # Symlink ncurses5-compat library to savage directory
+    ln -sf /usr/lib/libncurses++.so.5.9 "${pkgdir}/opt/savage2/libncurses.so.6"
 
-    # Remove old libraries
-    rm "${pkgdir}/opt/savage2/libs/libstdc++.so.6"
-
-    # Install Game Script missing from 2.1.0.7
-    install -D -m 755 "${srcdir}/savage2.sh" \
-        "${pkgdir}/opt/savage2/savage2.sh"
+    # Ensure Savage 2 is executable
+    chmod +x "${pkgdir}/opt/savage2/savage2"
 
     # Install Game Launcher
     install -D -m 755 "${srcdir}/savage2.launcher" \

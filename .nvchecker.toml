@@ -1,0 +1,4 @@
+[savage2]
+source = "regex"
+url = "https://masterserver1.talesofnewerth.com/wb6/i686/latest/version.txt"
+regex = '^(.+)$'
