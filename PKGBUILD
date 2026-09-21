@@ -7,8 +7,8 @@ url='https://github.com/liixini/skwd-lens'
 license=(Apache-2.0 CC-BY-4.0 MIT)
 depends=(gcc-libs glibc)
 options=(!strip !debug)
-source=("skwd-lens-model-1.0.0-1.fc44.src.rpm::https://download.copr.fedorainfracloud.org/results/piixini/skwd-wall-v2/srpm-builds/11005810/skwd-lens-model-1.0.0-1.fc44.src.rpm")
-sha256sums=('33255a77cc0b3e5ecc89e71e107b65ecf23fa41f6908a5af7022ac370b8b518c')
+source=("skwd-lens-model-1.0.0-1.fc44.src.rpm::https://download.copr.fedorainfracloud.org/results/piixini/skwd-wall-v2/srpm-builds/11017909/skwd-lens-model-1.0.0-1.fc44.src.rpm")
+sha256sums=('a72ca5192a339c65171f427115b70605d2a4c1b343c386cdf33cbc20dad4cf56')
 
 prepare() {
   bsdtar -xf "$srcdir/skwd-lens-model-1.0.0-1.fc44.src.rpm" -C "$srcdir"
