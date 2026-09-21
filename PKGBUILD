@@ -3,7 +3,7 @@
 
 pkgname=jellyfin-desktop
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL-2.0-only')

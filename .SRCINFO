@@ -1,7 +1,7 @@
 pkgbase = jellyfin-desktop
 	pkgdesc = Jellyfin Desktop Client
 	pkgver = 2.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jellyfin/jellyfin-desktop
 	arch = i686
 	arch = x86_64
