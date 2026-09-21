@@ -2,9 +2,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname=authpass-bin
-pkgver=1.9.12
-_subver=2096
-pkgrel=5
+pkgver=1.9.12_2178
+pkgrel=1
 pkgdesc='Password Manager based on Flutter for all platforms. Keepass 2.x (kdbx 3.x) compatible.'
 arch=('x86_64')
 url="https://authpass.app/"
@@ -19,11 +18,17 @@ depends=(
     'libkeybinder3'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_dlurl}/${pkgname%-bin}-linux-${pkgver}_${_subver}.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_dlurl}/${pkgname%-bin}-linux-latest.deb"
+    "pkgver.txt::${_dlurl}/${pkgname%-bin}-linux-latest.deb.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6808cefe8ca5b4e72819fac66fc30641f214b4d53ef98b4c8cf7dea30c199af2'
+sha256sums=('SKIP'
+            'SKIP'
             '97155fcff09b03405209fd5bb1f341d0d0d92e83ca9cf96c219d19214456e9b1')
+pkgver() {
+    cd "${srcdir}"
+    cat "pkgver.txt"
+}
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -38,7 +43,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    cp -a "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
 }
