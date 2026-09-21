@@ -1,0 +1,36 @@
+pkgbase = soundux-pipewire
+	pkgdesc = A crossplatform soundboard that plays sounds into your microphone, with native PipeWire support
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://github.com/hedgeg0d/Soundux-pipe
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libappindicator
+	depends = libsoup3
+	depends = openssl
+	depends = libx11
+	depends = libxi
+	depends = libxtst
+	depends = glib2
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = harfbuzz
+	depends = libice
+	depends = libsm
+	optdepends = pipewire: native PipeWire playback and moving applications into the soundboard
+	optdepends = libpulse: fallback for systems without PipeWire
+	optdepends = libwnck3: application icons in the output picker
+	optdepends = yt-dlp: downloading sounds from links
+	optdepends = ffmpeg: converting downloaded sounds
+	provides = soundux
+	conflicts = soundux
+	conflicts = soundux-git
+	source = soundux-pipewire::git+https://github.com/hedgeg0d/Soundux-pipe.git#tag=v0.2.8-pipewire
+	sha256sums = SKIP
+
+pkgname = soundux-pipewire
