@@ -15,18 +15,20 @@ pkgbase = hotaru
 	makedepends = libxxf86vm
 	makedepends = libxkbcommon
 	makedepends = wayland
+	depends = glibc
+	depends = openrgb
 	source = hotaru-0.1.0.tar.gz::https://github.com/ushineko/hotaru/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = a42c7d7f0f602a77523463086b82273712578cefd69dc2e44bdb00b8595836b8
 
 pkgname = hotaru
-	depends = glibc
-	depends = openrgb
 	optdepends = nvidia-utils: GPU temperature on the dashboard
 	optdepends = hotaru-gui: the desktop window
 
 pkgname = hotaru-gui
 	pkgdesc = RGB lighting and AIO cooler control for Linux (desktop window)
 	depends = hotaru
+	depends = glibc
+	depends = hicolor-icon-theme
 	depends = libglvnd
 	depends = libx11
 	depends = libxcursor

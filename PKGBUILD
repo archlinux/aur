@@ -19,6 +19,12 @@ url='https://github.com/ushineko/hotaru'
 license=('MIT')
 makedepends=('go' 'libglvnd' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama'
              'libxi' 'libxxf86vm' 'libxkbcommon' 'wayland')
+
+# The base's dependencies, which each package narrows. namcap wants a split
+# PKGBUILD to declare at the top what its packages depend on, and it is right
+# to: this is the answer to "what does installing hotaru pull in", and reading
+# it should not mean reading two shell functions.
+depends=('glibc' 'openrgb')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a42c7d7f0f602a77523463086b82273712578cefd69dc2e44bdb00b8595836b8')
 
@@ -57,7 +63,10 @@ check() {
 }
 
 package_hotaru() {
-  depends=('glibc' 'openrgb')
+  # namcap reports openrgb as possibly unneeded, because nothing in the
+  # binary links against it. Nothing would: it is a daemon hotaru speaks to
+  # over a socket, and it is a hard dependency on purpose -- see
+  # docs/packaging.md, "The rule that decides everything else".
   optdepends=('nvidia-utils: GPU temperature on the dashboard'
               'hotaru-gui: the desktop window')
 
@@ -89,8 +98,13 @@ package_hotaru() {
 
 package_hotaru-gui() {
   pkgdesc='RGB lighting and AIO cooler control for Linux (desktop window)'
-  depends=('hotaru' 'libglvnd' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama'
-           'libxi' 'libxxf86vm' 'libxkbcommon' 'wayland')
+  # The graphics stack is dlopened by GLFW rather than linked, so namcap
+  # reports most of this as possibly unneeded. It is needed: a window that
+  # cannot open libGL at runtime does not start. hicolor-icon-theme owns the
+  # directory this package's icon goes in.
+  depends=('hotaru' 'glibc' 'hicolor-icon-theme' 'libglvnd' 'libx11'
+           'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libxxf86vm'
+           'libxkbcommon' 'wayland')
 
   cd "$pkgbase-$pkgver"
 
