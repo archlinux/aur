@@ -1,0 +1,12 @@
+pkgbase = portfinder
+	pkgdesc = Identify and manage processes using network ports, with project awareness
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/doganarif/portfinder
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = portfinder-0.2.1.tar.gz::https://codeload.github.com/doganarif/portfinder/tar.gz/refs/tags/v0.2.1
+	sha256sums = def1e41bee05ac806211c8891c92b02409164626809446b951e58264dd4aa063
+
+pkgname = portfinder
