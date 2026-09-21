@@ -1,0 +1,60 @@
+#!/bin/bash
+set -u
+
+app=${0##*/}
+setsid --fork --wait "/opt/${app}/AppRun" "$@" &
+runner=$!
+pid=
+seen=0
+
+for _ in {1..100}; do
+  pid=$(pgrep -P "${runner}" | head -n 1)
+  [[ -n "${pid}" ]] && break
+  kill -0 "${runner}" 2>/dev/null || exit 1
+  sleep 0.05
+done
+
+if [[ -z "${pid}" ]]; then
+  echo 'Navicat failed to start' >&2
+  exit 1
+fi
+
+stop_navicat() {
+  if kill -0 -- "-${pid}" 2>/dev/null; then
+    kill -TERM -- "-${pid}" 2>/dev/null
+    for _ in {1..20}; do
+      kill -0 -- "-${pid}" 2>/dev/null || return
+      sleep 0.25
+    done
+    kill -KILL -- "-${pid}" 2>/dev/null
+  fi
+}
+
+has_window() {
+  wmctrl -lp | awk -v pid="${pid}" '$3 == pid { found=1 } END { exit !found }'
+}
+
+trap stop_navicat EXIT
+trap 'exit 130' INT
+trap 'exit 143' HUP TERM
+
+for _ in {1..120}; do
+  if ! kill -0 -- "-${pid}" 2>/dev/null; then
+    wait "${runner}"
+    exit $?
+  fi
+  if has_window; then
+    seen=1
+    break
+  fi
+  sleep 0.25
+done
+
+if (( ! seen )); then
+  echo 'Navicat did not create a window within 30 seconds' >&2
+  exit 1
+fi
+
+while kill -0 -- "-${pid}" 2>/dev/null && has_window; do
+  sleep 0.25
+done

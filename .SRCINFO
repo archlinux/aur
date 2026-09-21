@@ -1,0 +1,18 @@
+pkgbase = navicat18-mysql-en
+	pkgdesc = Navicat for MySQL trial with complete shutdown when its last window closes
+	pkgver = 18.0.1
+	pkgrel = 1
+	url = https://www.navicat.com/en/products/navicat-for-mysql
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = systemd-libs
+	depends = wmctrl
+	provides = navicat-mysql
+	conflicts = navicat-mysql
+	options = !strip
+	source = navicat-mysql-en-x86_64-18.0.1.AppImage::https://dn.navicat.com/download/navicat18-mysql-en-x86_64.AppImage
+	source = navicat-close-on-exit
+	sha256sums = 9151931a382596e6f2febf4e26a7e7b54cfae6290069acb84f7f60d4f3ebb5c6
+	sha256sums = 39643c5c2d1fe608983c26555717f2b0999f83dd810f6fdf1587b78489dc75e2
+
+pkgname = navicat18-mysql-en
