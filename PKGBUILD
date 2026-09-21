@@ -39,6 +39,6 @@ package() {
 	install -Dm644 ./docs/extensions.md "$pkgdir/usr/share/doc/endcord/extensions.md"
 	install -Dm644 ./docs/keybindings.md "$pkgdir/usr/share/doc/endcord/keybindings.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/endcord/LICENSE"
-	install -Dm644 ./tools/endcord.desktop "$pkgdir/usr/share/applications/com.sparklost.endcord.desktop"
+	install -Dm644 ./tools/com.sparklost.endcord.desktop "$pkgdir/usr/share/applications/com.sparklost.endcord.desktop"
     install -Dm644 ./tools/icons/endcord.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.sparklost.endcord.svg"
 }
