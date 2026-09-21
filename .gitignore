@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/spinel-git/
+/*.pkg.tar.*
