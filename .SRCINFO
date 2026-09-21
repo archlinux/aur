@@ -14,7 +14,7 @@ pkgbase = endcord-gui
 	provides = endcord-gui
 	conflicts = endcord-gui
 	options = !strip
-	source = endcord-gui-1.5.4.tar.gz::https://github.com/sparklost/endcord-gui/releases/download/1.5.4/endcord-gui-1.5.4-linux.tar.gz
+	source = endcord-gui-1.5.4.tar.gz::https://github.com/sparklost/endcord-gui/releases/download/endcord/endcord-gui-1.5.4-linux.tar.gz
 	sha256sums = SKIP
 
 pkgname = endcord-gui
