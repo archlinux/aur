@@ -1,0 +1,15 @@
+pkgbase = rumos-git
+	pkgdesc = Command-line utility to control screen brightness
+	pkgver = r48.ef6bb7f
+	pkgrel = 2
+	url = https://github.com/octagony/rumos
+	arch = x86_64
+	license = unknown
+	makedepends = cargo
+	makedepends = git
+	provides = rumos
+	conflicts = rumos
+	source = rumos::git+https://github.com/octagony/rumos.git
+	sha256sums = SKIP
+
+pkgname = rumos-git
