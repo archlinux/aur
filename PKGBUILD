@@ -2,7 +2,7 @@
 AppName=SynthMultiViewer
 appid=synthmultiviewer
 pkgname=${appid}-appimage
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Cross-platform editor and viewer for VapourSynth and AviSynth"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mysteryx93/VapourSynthViewer.NET/releases/download/v${pkgver}/${AppName}-${pkgver}_Linux_x64.AppImage")
 source_aarch64=("${_appimage}::https://github.com/mysteryx93/VapourSynthViewer.NET/releases/download/v${pkgver}/${AppName}-${pkgver}_Linux_arm64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('5c4003e3e169fdba59773730448cd67b2245830fb1709878c97150badeb4c4e8')
-sha256sums_aarch64=('5c4003e3e169fdba59773730448cd67b2245830fb1709878c97150badeb4c4e8')
+sha256sums_x86_64=('e48ec3d8e4b1ad54ba5cb467b00238a780105b72e86090b9f4738e8b74db278c')
+sha256sums_aarch64=('e48ec3d8e4b1ad54ba5cb467b00238a780105b72e86090b9f4738e8b74db278c')
 
 prepare() {
     chmod +x "${_appimage}"
