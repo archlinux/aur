@@ -1,6 +1,6 @@
 pkgname=ferrumkix-bin
-pkgver=0.9.6
-pkgrel=4
+pkgver=0.9.7
+pkgrel=1
 pkgdesc='Desktop music player with album-grouped playlists and Audio CD support'
 arch=('x86_64')
 url='https://github.com/Bitpainter75/FerrumKix'
@@ -14,7 +14,7 @@ options=('!strip')
 source=("FerrumKix-${pkgver}-${pkgrel}-linux-x64-aur.zip::https://github.com/Bitpainter75/FerrumKix/releases/download/${pkgver}/FerrumKix-${pkgver}-${pkgrel}-linux-x64-aur.zip"
         'io.github.Bitpainter75.FerrumKix.desktop' 'io.github.Bitpainter75.FerrumKix.png')
 noextract=("FerrumKix-${pkgver}-${pkgrel}-linux-x64-aur.zip")
-sha256sums=('d233e61e43b90739bab1cae339b5d9c0a14daf9ee6795584db3c0ee84980b637' '7012e15c2b82d0e0c0446d0f751c95541307bce2205a6604965c8ede1e81cde4' 'c20d42ee7a0540237fc93744c125041f160b5e1235cbadd0ff47989c254f7783')
+sha256sums=('51a5825b2e7cd3873a3921bb1da927928524d309980690681c07879a4f9ab308' '7012e15c2b82d0e0c0446d0f751c95541307bce2205a6604965c8ede1e81cde4' 'c20d42ee7a0540237fc93744c125041f160b5e1235cbadd0ff47989c254f7783')
 prepare() { rm -rf "$srcdir/FerrumKix-${pkgver}"; mkdir -p "$srcdir/FerrumKix-${pkgver}"; bsdtar -xf "$srcdir/FerrumKix-${pkgver}-${pkgrel}-linux-x64-aur.zip" -C "$srcdir/FerrumKix-${pkgver}"; }
 package() {
   install -dm755 "$pkgdir/opt/ferrumkix" "$pkgdir/usr/bin"
