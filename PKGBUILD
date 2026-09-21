@@ -1,7 +1,7 @@
 # Maintainer: ToRvaLDz <torvalds@github.com>
 pkgname=monique
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='MONitor Integrated QUick Editor — graphical monitor configurator for Hyprland, Sway and Niri'
 arch=('any')
 url='https://github.com/ToRvaLDz/monique'
@@ -9,6 +9,7 @@ license=('GPL-3.0-or-later')
 depends=(
     'python'
     'python-gobject'
+    'python-cairo'
     'gtk4'
     'libadwaita'
 )
