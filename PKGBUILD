@@ -96,9 +96,6 @@ package() {
         --exclude='cmake_install.cmake' --exclude='Makefile' --exclude='qml/' \
         "./" "$pkgdir/usr/share/sleex/"
 
-  mkdir -p "$pkgdir/usr/share/wayland-sessions"
-  cp -r "$srcdir/$_pkgname/src/share/wayland-sessions/"* "$pkgdir/usr/share/wayland-sessions/"
-
   mkdir -p "$pkgdir/usr/share"
   cp -r "$srcdir/share/wayland-sessions/" "$pkgdir/usr/share/"
   cp -r "$srcdir/share/libalpm/" "$pkgdir/usr/share/"
