@@ -4,10 +4,10 @@
 # Contributor: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 # Contributor: Astro Benzene <universebenzene at sina dot com>
 pkgname=astrometry.net
-pkgver=0.97
+pkgver=0.98
 pkgrel=1
 pkgdesc="Automatic recognition of astronomical images"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://astrometry.net"
 license=("BSD-3-Clause-Clear AND GPL-3.0-or-later")
 depends=('bzip2'
@@ -28,8 +28,8 @@ depends=('bzip2'
 makedepends=('python-setuptools')
 backup=(etc/astrometry.cfg)
 install=astrometry.net.install
-source=("https://github.com/dstndstn/astrometry.net/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e4eef1b658ba5ad462282b661c0ca3a5c538ba1716e853f7970b7b9fa4a33459')
+source=("$pkgname-$pkgver::https://astrometry.net/downloads/astrometry.net-$pkgver.tar.gz")
+sha256sums=('d3fe037c9de2e747a9c8d5cdb467f723f023eaacc2e3dc607ff1496dc0d2c7fc')
 
 _pyver() {
 	python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
