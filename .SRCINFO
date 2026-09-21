@@ -1,0 +1,15 @@
+pkgbase = python-pybricks
+	pkgdesc = Pybricks API type stubs and documentation for MicroPython on LEGO hubs
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/pybricks/pybricks-api
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pybricks/pybricks-4.0.0.tar.gz
+	sha256sums = 8901de69884c1982b85f3cabef647b68df6efc52470b41326ab713031b1d35d5
+
+pkgname = python-pybricks
