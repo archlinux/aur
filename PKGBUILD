@@ -3,7 +3,7 @@
 pkgname=omp-bun
 pkgver=18.2.7
 pkgrel=1
-pkgdesc="AI Coding agent for the terminal (built with system bun)"
+pkgdesc="oh-my-pi (omp): AI Coding agent for the terminal (built with system bun)"
 arch=('x86_64')
 url="https://omp.sh/"
 license=('MIT')
