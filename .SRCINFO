@@ -1,0 +1,18 @@
+pkgbase = cloudstream-desktop-bin
+	pkgdesc = CloudStream desktop client for Linux (Early test build - contributions welcome)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MematiBas42/cloudstream-desktop
+	arch = x86_64
+	license = GPL3
+	depends = alsa-lib
+	depends = gtk3
+	depends = libmpv.so
+	provides = cloudstream-desktop
+	conflicts = cloudstream-desktop
+	source = cloudstream-desktop-1.0.0.tar.gz::https://github.com/MematiBas42/cloudstream-desktop/releases/download/v1.0.0/CloudStream-Linux-x64-Portable.tar.gz
+	source = cloudstream-desktop.desktop
+	sha256sums = 5b086aa3245966cf12d6368eb8bc89319e95c5f981bec362b715ca50e017dae7
+	sha256sums = 5c10944d6a3743167a1b2b8af72c2eff2fe89db58782ed63fd656b147b19bd9f
+
+pkgname = cloudstream-desktop-bin

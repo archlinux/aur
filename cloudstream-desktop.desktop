@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=CloudStream
+Comment=CloudStream Desktop Client (Community Port by MematiBas42)
+Exec=/usr/bin/cloudstream-desktop
+Icon=cloudstream-desktop
+Terminal=false
+Type=Application
+Categories=AudioVideo;Video;Player;TV;
+Keywords=streaming;anime;movies;series;tv;
+StartupNotify=true
+StartupWMClass=com.lagradost.cloudstream3.desktop.MainKt
