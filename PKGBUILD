@@ -15,7 +15,7 @@
 
 pkgname=netscli-gui-bin
 _appname=netscli-gui
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="NetsCLI desktop app for reviewing network scans, DNS, ARP, and local inventory"
 arch=('x86_64')
@@ -28,11 +28,22 @@ conflicts=("${_appname}")
 # AppImage is largely self-contained but these are the runtime libs
 # Tauri's window manager needs that aren't always pre-installed.
 depends=('gcc-libs' 'glibc' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator')
+# Do not let makepkg strip the AppImage. `strip` is in the default makepkg
+# OPTIONS, and an AppImage is the AppImage runtime -- an ordinary static ELF
+# -- with a squashfs image appended after everything the ELF headers
+# describe. Stripping rewrites the file from its section table and discards
+# that appended image, so what lands in /usr/bin is the bare runtime and
+# nothing else. Measured on the v0.2.6 asset: 79,448,568 bytes on the
+# release, 944,632 bytes of ELF, and 944,632 bytes is exactly what the
+# reporter of #377 found installed. It then fails at runtime with "This
+# doesn't look like a squashfs image", which names the missing payload but
+# not what removed it.
+options=('!strip')
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/fstubner/netscli/v${pkgver}/LICENSE"
         "${_appname}.png::https://raw.githubusercontent.com/fstubner/netscli/v${pkgver}/apps/netscli-gui/src-tauri/icons/128x128.png")
 source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/fstubner/netscli/releases/download/v${pkgver}/netscli-gui-linux-x86_64.AppImage")
 sha256sums=(6f035a96b0da6e99589b2a1656f59bee8c6519686d8a94627301e074746041d3 021f1d939fe496033ef90a47d29e7a1bd11ea83cfe0ffc445cb5b88418240882)
-sha256sums_x86_64=('f583839440358296bfe05949826c34c2a133e1df836101626c41fe39a6dddec2')
+sha256sums_x86_64=('ef9994e7dde19d300ef843a3bb040e7c587cbd5f38fc1522b306f1807536e320')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" \
