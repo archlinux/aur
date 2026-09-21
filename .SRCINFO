@@ -1,0 +1,18 @@
+pkgbase = ptable-git
+	pkgdesc = A beautiful TUI periodic table for GNU/Linux terminals
+	pkgver = r57.6c3f178
+	pkgrel = 1
+	url = https://github.com/velorek1/ptable
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconf
+	depends = ncurses
+	provides = ptable
+	conflicts = ptable
+	source = ptable::git+https://github.com/velorek1/ptable.git
+	sha256sums = SKIP
+
+pkgname = ptable-git
