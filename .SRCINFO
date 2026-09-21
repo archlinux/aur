@@ -1,6 +1,6 @@
 pkgbase = itgray-bin
 	pkgdesc = ITG Ray - VLESS/sing-box VPN client with a privileged TUN helper (prebuilt)
-	pkgver = 0.1.1beta1
+	pkgver = 0.1.2beta1
 	pkgrel = 1
 	url = https://github.com/IvanTopGaming/ITG_Ray
 	install = itgray-bin.install
@@ -18,7 +18,7 @@ pkgbase = itgray-bin
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/IvanTopGaming/ITG_Ray/releases/download/v0.1.1-beta.1/ITGRay-0.1.1-beta.1-linux-x64.tar.gz
-	sha256sums = 801fd6e23904ab15fc4956d8868f73d121668def4b6ab68c62841a710afae7f6
+	source = https://github.com/IvanTopGaming/ITG_Ray/releases/download/v0.1.2-beta.1/ITGRay-0.1.2-beta.1-linux-x64.tar.gz
+	sha256sums = a9a8286aeccb7027a3c479e7ee9d9451253d6eefbd452057655e302704445c41
 
 pkgname = itgray-bin
