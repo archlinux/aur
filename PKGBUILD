@@ -1,8 +1,8 @@
 # Maintainer: Mikhail felixoid Shiryaev <mr dot felixoid on gmail>
 
 pkgname=joystickwake
-pkgver=0.5.3
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc='A joystick-aware screen waker'
 arch=('any')
 url='https://codeberg.org/forestix/joystickwake'
@@ -13,9 +13,7 @@ license=('MIT')
 source=(
   "${url}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=(
-  295aa926c2c5b82d0727650098e2915e0a4b30d79a4fbbbd9a51406b7a49231d
-)
+sha256sums=('828a44b40ce979ce630b06d80b10cd25c2ded2c46954c7dc1eb1b6bcd0b81dde')
 
 package() {
   # The source archive extracts to joystickwake, but we want
