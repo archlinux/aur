@@ -1,6 +1,6 @@
 pkgbase = sqlite3-page-explorer-git
-	pkgdesc = Cross Platform app to explore internal organisation of tables and indices.(Use system-wide electron)
-	pkgver = 1.0.r75.g0d0b58b
+	pkgdesc = Cross Platform app to explore internal organisation of tables and indices.
+	pkgver = 1.0.r88.g633fb21
 	pkgrel = 1
 	url = https://github.com/siara-cc/sqlite3_page_explorer
 	arch = any
@@ -10,12 +10,13 @@ pkgbase = sqlite3-page-explorer-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
-	depends = electron22
-	provides = sqlite3-page-explorer=1.0.r75.g0d0b58b
+	makedepends = jq
+	depends = electron39
+	provides = sqlite3-page-explorer=1.0.r88.g633fb21
 	conflicts = sqlite3-page-explorer
 	source = sqlite3-page-explorer.git::git+https://github.com/siara-cc/sqlite3_page_explorer.git
 	source = sqlite3-page-explorer.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = sqlite3-page-explorer-git
