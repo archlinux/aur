@@ -1,6 +1,6 @@
 pkgbase = python-numba-git
 	pkgdesc = NumPy aware dynamic Python compiler using LLVM (Git version)
-	pkgver = 0.68.0dev0.r12.g0d0938a71
+	pkgver = 0.69.0dev0.r41.g4b3e8fb92
 	pkgrel = 1
 	url = https://github.com/numba/numba
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-numba-git
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	depends = python-llvmlite>=0.50.0dev0
+	depends = python-llvmlite>=0.51.0dev0
 	depends = python-numpy
 	depends = python-setuptools
 	optdepends = openmp: OpenMP threading backend
@@ -25,7 +25,7 @@ pkgbase = python-numba-git
 	optdepends = python-yaml: use of a .numba_config.yaml file for storing per project configuration options
 	optdepends = python-colorama: error message highlighting
 	optdepends = python-pygments: “pretty” type annotation
-	provides = python-numba=0.68.0dev0.r12.g0d0938a71
+	provides = python-numba=0.69.0dev0.r41.g4b3e8fb92
 	conflicts = python-numba
 	source = git+https://github.com/numba/numba.git
 	sha256sums = SKIP
