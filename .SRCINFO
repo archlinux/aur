@@ -1,14 +1,13 @@
 pkgbase = python-nats-py
 	pkgdesc = Asyncio NATS client for Python
 	pkgver = 2.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nats-io/nats.py
 	arch = any
 	license = Apache-2.0
 	checkdepends = nats-server>=2.12
 	checkdepends = python-aiofiles
 	checkdepends = python-aiohttp
-	checkdepends = python-fast-mail-parser
 	checkdepends = python-nkeys
 	checkdepends = python-pytest>=9.0.3
 	checkdepends = python-pytest-asyncio>=0.21

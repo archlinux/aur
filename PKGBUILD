@@ -3,7 +3,7 @@
 pkgname=python-nats-py
 _pkgname=nats.py
 pkgver=2.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Asyncio NATS client for Python"
 arch=('any')
 url="https://github.com/nats-io/nats.py"
@@ -23,7 +23,6 @@ checkdepends=(
     'nats-server>=2.12'
     'python-aiofiles'
     'python-aiohttp'
-    'python-fast-mail-parser'
     'python-nkeys'
     'python-pytest>=9.0.3'
     'python-pytest-asyncio>=0.21'
@@ -65,9 +64,11 @@ check() {
     python -m installer --destdir="$_checkroot" nats/dist/*.whl
     _site=$(python -c 'import site; print(site.getsitepackages()[0])')
 
-    # Run upstream's complete client suite against the built wheel and the
-    # packaged nats-server. Upstream itself marks two flaky cases and its
-    # external multi-client compatibility harness as unavailable here.
+    # Exercise the built-in header parser: the optional fast-mail-parser's
+    # public test dependencies cannot currently provide a working mailparser.
+    # Keep the upstream suite; it handles the accelerator's absence itself.
+    # This run does not cover accelerated parsing. Upstream also skips two
+    # flaky cases and its external multi-client compatibility harness.
     _server_version=$(nats-server --version | awk '{print $2}')
     NATS_SERVER_VERSION="$_server_version" \
         PYTHONPATH="$_checkroot$_site:$PWD/nats" \
