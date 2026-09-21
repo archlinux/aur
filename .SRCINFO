@@ -1,0 +1,20 @@
+pkgbase = python-mpy-cross-v5
+	pkgdesc = Python wrapper for the MicroPython mpy-cross compiler (MPY ABI v5), used by pybricksdev
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/pybricks/python-mpy-cross
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = glibc
+	source = https://files.pythonhosted.org/packages/source/m/mpy_cross_v5/mpy_cross_v5-1.1.2.tar.gz
+	source = LICENSE-micropython::https://raw.githubusercontent.com/micropython/micropython/v1.22.0/LICENSE
+	sha256sums = 550c672e2fc08c84a491544f7e28af504ccaeeb7eda2f84f4ad6800b78d0ed22
+	sha256sums = d9e0e0395867c899090e150213bc2b417e970c17355a8d48300089875b3c8037
+
+pkgname = python-mpy-cross-v5
