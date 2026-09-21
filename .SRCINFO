@@ -1,10 +1,13 @@
 pkgbase = python-lightning-utilities
 	pkgdesc = Common Python utilities and GitHub Actions in Lightning Ecosystem
 	pkgver = 0.15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lightning-AI/utilities
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-requests
+	checkdepends = python-tomlkit
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -15,7 +18,7 @@ pkgbase = python-lightning-utilities
 	optdepends = python-requests: documentation retrieval helpers (lightning_utilities.docs)
 	optdepends = python-jsonargparse: command-line interface utilities (lightning_utilities.cli)
 	optdepends = python-tomlkit: command-line interface utilities (lightning_utilities.cli)
-	source = https://files.pythonhosted.org/packages/source/l/lightning_utilities/lightning_utilities-0.15.3.tar.gz
-	sha512sums = e5c9ec533381f27b02faa3bd777dbc95de92477c43b69549f84ee898f7fe10e855ae5619dd21dbb154250dfb8eae27c8b9fd565e7ed3307f02acc0376313d815
+	source = python-lightning-utilities-0.15.3.tar.gz::https://github.com/Lightning-AI/utilities/archive/refs/tags/v0.15.3.tar.gz
+	sha512sums = 215ad92587cea75977bd52b9cb17aab70178a9868b02dc0abd3d89be2a249f9b3976f0f88e53a975f9a22fc55260cdba66d5e11bfe1558d789bdeea157957df6
 
 pkgname = python-lightning-utilities
