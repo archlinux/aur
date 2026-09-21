@@ -1,6 +1,6 @@
 pkgbase = kodexbar-suite
 	pkgdesc = KodexBar Suite: Plasma widget, ai CLI, native Claude/Codex/Grok/Hermes/Devin quotas (optional codexbar for Antigravity)
-	pkgver = 0.12.12
+	pkgver = 0.12.13
 	pkgrel = 1
 	url = https://github.com/Karasowl/KodexBar-Suite
 	install = kodexbar-suite.install
@@ -16,9 +16,9 @@ pkgbase = kodexbar-suite
 	optdepends = wl-clipboard: Wayland clipboard support for ai recover --copy
 	optdepends = xclip: X11 clipboard support for ai recover --copy
 	optdepends = xsel: alternate X11 clipboard support for ai recover --copy
-	source = kodexbar-suite-0.12.12.tar.gz::https://github.com/Karasowl/KodexBar-Suite/archive/refs/tags/v0.12.12.tar.gz
+	source = kodexbar-suite-0.12.13.tar.gz::https://github.com/Karasowl/KodexBar-Suite/archive/refs/tags/v0.12.13.tar.gz
 	source = reload-plasma-after-upgrade
-	sha256sums = bef54ab5ae88d9f1911a29a95247d78afc61b37d57646e6d80e801e223ebf408
+	sha256sums = 27af98e64ab274b442d272cf7ddaaf5e0105c3e2ee97aeaaabb8261591146211
 	sha256sums = 0b3891e5a4a1248558307c5fd5f42e73911b5740a068654e085d0635f7cbdf4c
 
 pkgname = kodexbar-suite
