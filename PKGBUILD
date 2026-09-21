@@ -2,7 +2,7 @@
 
 pkgname=keywisp-git
 _pkgname=keywisp
-pkgver=0.2.0.r0.gf1a4cd4
+pkgver=0.3.0.r0.g539b333
 pkgrel=1
 pkgdesc='A small Wayland keystroke visualizer'
 arch=('x86_64' 'aarch64')
