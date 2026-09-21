@@ -1,0 +1,12 @@
+pkgbase = nics
+	pkgdesc = Display information about Network Interface Cards (NICs) cross-platform
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/jftuga/nics
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = nics-1.7.0.tar.gz::https://codeload.github.com/jftuga/nics/tar.gz/refs/tags/v1.7.0
+	sha256sums = 97b06728111be79ce327185a5aa43f86e5a8b76118c622568df2d4cc8f60f882
+
+pkgname = nics
