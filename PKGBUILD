@@ -1,8 +1,8 @@
 # Maintainer: Ardox <ardox@axos-project.com>
 pkgname=sleex-git
 _pkgname=sleex
-pkgver=1.39.r761.ca30239
-pkgrel=3
+pkgver=1.36.r765.7c5957a
+pkgrel=1
 pkgdesc="Desktop environment focused on aesthetics and performance (git version)"
 arch=("x86_64")
 url="https://github.com/axos-project/sleex"
@@ -97,6 +97,7 @@ package() {
         "./" "$pkgdir/usr/share/sleex/"
 
   mkdir -p "$pkgdir/usr/share"
-  cp -r "$srcdir/share/wayland-sessions/" "$pkgdir/usr/share/"
-  cp -r "$srcdir/share/libalpm/" "$pkgdir/usr/share/"
+  cd "$srcdir/$_pkgname"
+  cp -r "src/share/wayland-sessions/" "$pkgdir/usr/share/"
+  cp -r "src/share/libalpm/" "$pkgdir/usr/share/"
 }
