@@ -1,12 +1,12 @@
 pkgbase = mactahoe-gtk-theme
 	pkgdesc = MacOS Tahoe theme for gtk desktops
-	pkgver = 2026.08.08
+	pkgver = 2026.09.10
 	pkgrel = 1
 	url = https://github.com/vinceliuice/MacTahoe-gtk-theme
 	arch = any
 	license = MIT
 	options = !debug
-	source = mactahoe-gtk-theme-2026.08.08.tar.gz::https://github.com/vinceliuice/MacTahoe-gtk-theme/archive/refs/tags/2026-08-08.tar.gz
-	sha512sums = 100eadd397f49933215310d1ed8f70dc41a7956319ceba561c13de30567abdab7d8f247e830f8a0032947a111c570ef36c4b8568308dd6f35395a806882b1118
+	source = mactahoe-gtk-theme-2026.09.10.tar.gz::https://github.com/vinceliuice/MacTahoe-gtk-theme/archive/refs/tags/2026-09-10.tar.gz
+	sha512sums = b2b353a8fb8161c307830390e888cbb4151046877ff189023f8bc73756ac4e37854642bb3bb384f1bbb40949bcd1d8d4f710f44aaaf3fbf9b721b90ac428b950
 
 pkgname = mactahoe-gtk-theme

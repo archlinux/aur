@@ -3,11 +3,11 @@ _reponame="MacTahoe-gtk-theme"
 pkgname="mactahoe-gtk-theme"
 pkgdesc="MacOS Tahoe theme for gtk desktops"
 license=("MIT")
-pkgver="2026.08.08"
+pkgver="2026.09.10"
 pkgrel=1
 arch=("any")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_repoowner/$_reponame/archive/refs/tags/${pkgver//./-}.tar.gz")
-sha512sums=("100eadd397f49933215310d1ed8f70dc41a7956319ceba561c13de30567abdab7d8f247e830f8a0032947a111c570ef36c4b8568308dd6f35395a806882b1118")
+sha512sums=("b2b353a8fb8161c307830390e888cbb4151046877ff189023f8bc73756ac4e37854642bb3bb384f1bbb40949bcd1d8d4f710f44aaaf3fbf9b721b90ac428b950")
 url="https://github.com/$_repoowner/$_reponame"
 options=("!debug")
 
