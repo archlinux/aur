@@ -8,9 +8,13 @@ reload_kodexbar_plasma() {
 post_install() {
   echo "Add KodexBar Suite to a Plasma panel: right-click the panel, Add Widgets, search for KodexBar."
   echo "Installed AI CLI quotas are detected automatically on first use."
+  update-desktop-database -q /usr/share/applications 2>/dev/null || true
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
   reload_kodexbar_plasma
 }
 
 post_upgrade() {
+  update-desktop-database -q /usr/share/applications 2>/dev/null || true
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
   reload_kodexbar_plasma
 }
