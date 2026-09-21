@@ -1,0 +1,13 @@
+diff --git a/src/sensai/util/hash.py b/src/sensai/util/hash.py
+index 2aaeb16..b6d2147 100644
+--- a/src/sensai/util/hash.py
++++ b/src/sensai/util/hash.py
+@@ -28,7 +28,7 @@ def str_hash(o: Any, algorithm='sha1', with_class_name=False) -> str:
+     :return: the object's hash code as a hex string
+     """
+     s = str(o)
+-    result = hashlib.new(algorithm, s).hexdigest()
++    result = hashlib.new(algorithm, s.encode("utf-8")).hexdigest()
+     if with_class_name:
+         result = o.__class__.__name__ + result
+     return result
