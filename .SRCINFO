@@ -1,6 +1,6 @@
 pkgbase = obs-build
 	pkgdesc = OBS build script, can be used with OBS or stand alone
-	pkgver = 20250829
+	pkgver = 20260901
 	pkgrel = 1
 	url = https://github.com/openSUSE/obs-build
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = obs-build
 	checkdepends = devscripts
 	checkdepends = patchutils
 	depends = perl
-	source = obs-build-20250829.tar.gz::https://github.com/openSUSE/obs-build/archive/20250829.tar.gz
-	sha256sums = 618585b222bb6d4cc7e40d267bdb186e30f6116a5ccaf070806244c688319822
+	source = obs-build-20260901.tar.gz::https://github.com/openSUSE/obs-build/archive/20260901.tar.gz
+	sha256sums = 921556c0c17bf0f2aae031636c64ff1da8b32e012f142cb056ca61ccdbc22ce0
 
 pkgname = obs-build
