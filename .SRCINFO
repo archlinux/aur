@@ -1,0 +1,15 @@
+pkgbase = charfreq-git
+	pkgdesc = Count unicode character frequency from stdin
+	pkgver = r2.c7c67f3
+	pkgrel = 2
+	url = https://github.com/proycon/charfreq
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	provides = charfreq
+	conflicts = charfreq
+	source = charfreq::git+https://github.com/proycon/charfreq.git
+	sha256sums = SKIP
+
+pkgname = charfreq-git
