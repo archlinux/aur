@@ -1,0 +1,12 @@
+pkgbase = rsnip
+	pkgdesc = A powerful command-line snippet manager
+	pkgver = 0.7.0
+	pkgrel = 4
+	url = https://github.com/sysid/rsnip
+	arch = x86_64
+	license = custom
+	makedepends = cargo
+	source = rsnip-0.7.0.tar.gz::https://codeload.github.com/sysid/rsnip/tar.gz/refs/tags/v0.7.0
+	sha256sums = 13b14fb5a5272e5b7f609bbe710e2933a5c53d972ccb035a0ad6e18621578524
+
+pkgname = rsnip
