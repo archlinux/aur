@@ -30,7 +30,9 @@ source=("mariadb::git+https://github.com/MariaDB/server.git?signed#branch=${_pkg
         'git+https://github.com/mariadb-corporation/mariadb-columnstore-engine.git'
         'git+https://github.com/MariaDB/mariadb-connector-c.git'
         'git+https://github.com/wolfSSL/wolfssl.git'
-        '0001-arch-specific.patch')
+        '0001-arch-specific.patch'
+        'mariadb-Environment-jemalloc.conf'
+        'mariadb-PrivateTmp.conf')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -39,7 +41,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '9a388374ed0f04a5b576c0177cc93d35075c9d50bb422b9c09ce69f48eefb978')
+            '0420cd146f3bb50801e0642d1f8d10a138cc5f4c3113e09fd82ab1fc67b6f3de'
+            '8ca7ed2d3b2d91a54f781ec9dbf8e9b8941c00686d2a3f9ece0adb9c4fb68009'
+            'b3df8d27b443d4d6ae40f8c0544ee765e618b56bed801e14433f0da0f774a6f2')
 
 pkgver() {
   cd mariadb/
@@ -169,7 +173,7 @@ package_mariadb-libs-git() {
   cd build
 
   for dir in libmariadb libmysqld libservices include; do
-    make -C "$dir" DESTDIR="$pkgdir" install
+    make -C "${dir}" DESTDIR="${pkgdir}" install
   done
 
   # remove static libraries
@@ -178,14 +182,14 @@ package_mariadb-libs-git() {
   # remove man pages
   rm -r "${pkgdir}"/usr/share/man
 
-  ln -s mariadb_config "$pkgdir"/usr/bin/mariadb-config
-  ln -s mariadb_config "$pkgdir"/usr/bin/mysql_config
-  install -D -m0644 "$srcdir"/mariadb/man/mariadb_config.1 "$pkgdir"/usr/share/man/man1/mariadb_config.1
-  ln -s mariadb_config.1 "$pkgdir"/usr/share/man/man1/mariadb-config.1
-  ln -s mariadb_config.1 "$pkgdir"/usr/share/man/man1/mysql_config.1
+  ln -s mariadb_config "${pkgdir}"/usr/bin/mariadb-config
+  ln -s mariadb_config "${pkgdir}"/usr/bin/mysql_config
+  install -D -m0644 "${srcdir}"/mariadb/man/mariadb_config.1 "${pkgdir}"/usr/share/man/man1/mariadb_config.1
+  ln -s mariadb_config.1 "${pkgdir}"/usr/share/man/man1/mariadb-config.1
+  ln -s mariadb_config.1 "${pkgdir}"/usr/share/man/man1/mysql_config.1
 
-  install -D -m0644 support-files/mariadb.pc "$pkgdir"/usr/share/pkgconfig/mariadb.pc
-  install -D -m0644 "$srcdir"/mariadb/support-files/mysql.m4 "$pkgdir"/usr/share/aclocal/mysql.m4
+  install -D -m0644 support-files/mariadb.pc "${pkgdir}"/usr/share/pkgconfig/mariadb.pc
+  install -D -m0644 "${srcdir}"/mariadb/support-files/mysql.m4 "${pkgdir}"/usr/share/aclocal/mysql.m4
 }
 
 package_mariadb-clients-git() {
@@ -241,9 +245,15 @@ package_mariadb-git() {
 
   cd build
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 
-  cd "$pkgdir"
+  # service overrides for jemalloc & private /tmp
+  install -D -m0644 ../mariadb-Environment-jemalloc.conf "${pkgdir}"/usr/lib/systemd/system/mariadb.service.d/Environment-jemalloc.conf
+  install -D -m0644 ../mariadb-Environment-jemalloc.conf "${pkgdir}"/usr/lib/systemd/system/mariadb@.service.d/Environment-jemalloc.conf
+  install -D -m0644 ../mariadb-PrivateTmp.conf "${pkgdir}"/usr/lib/systemd/system/mariadb.service.d/PrivateTmp.conf
+  install -D -m0644 ../mariadb-PrivateTmp.conf "${pkgdir}"/usr/lib/systemd/system/mariadb@.service.d/PrivateTmp.conf
+
+  cd "${pkgdir}"
 
   # no SysV init, please!
   rm -r etc/logrotate.d
