@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=cc-mesh-bin
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Claude Code and Codex local Tauri proxy gateway with Anthropic/OpenAI protocol translation, model mapping, and endpoint rotation/failover"
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('cc-mesh')
 _deb="ccMesh_${pkgver}_amd64.deb"
 source_x86_64=("${_deb}::${url}/releases/download/v${pkgver}/${_deb}")
 noextract=("${_deb}")
-sha256sums_x86_64=('35883bf088a3dca36dbe0dbf1fb8e3e589df7575c0056ebcd1d5a166aed2389a')
+sha256sums_x86_64=('5ca2ff56c6aad11cc27347be5913d123d46b786d346c3ddb5b9f09c00afbebec')
 
 package() {
     local data_member
