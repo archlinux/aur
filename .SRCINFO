@@ -1,6 +1,6 @@
 pkgbase = libjffi
 	pkgdesc = Java bindings for libffi
-	pkgver = 1.3.13
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/jnr/jffi
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = libjffi
 	makedepends = gcc
 	depends = libffi
 	provides = libjffi.so
-	source = https://github.com/jnr/jffi/archive/refs/tags/jffi-1.3.13.tar.gz
-	sha256sums = 299a1656b7ca35593623160f5bca988ea773c49480eb33d495256f46ccfc655d
+	source = https://github.com/jnr/jffi/archive/refs/tags/jffi-1.4.1.tar.gz
+	sha256sums = 2c60fe5628814bbcca41921dd5d69e6678c3ebb79d4ca2e90c6a4344b25c2f18
 
 pkgname = libjffi
