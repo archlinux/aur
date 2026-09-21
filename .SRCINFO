@@ -1,0 +1,17 @@
+pkgbase = surfn-plasma-flow-icons-git
+	pkgdesc = Surfn Plasma Flow, a colourful icon theme
+	pkgver = r7.b04f285
+	pkgrel = 1
+	url = https://github.com/erikdubois/surfn-plasma-flow
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	depends = surfn-icons-git
+	depends = surfn-plasma-dark-icons-git
+	depends = breeze-icons
+	options = !strip
+	options = !emptydirs
+	source = Surfn-Plasma-Flow::git+https://github.com/erikdubois/surfn-plasma-flow.git
+	sha256sums = SKIP
+
+pkgname = surfn-plasma-flow-icons-git
