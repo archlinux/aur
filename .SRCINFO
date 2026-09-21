@@ -1,13 +1,13 @@
 pkgbase = firefox-extension-styl-us-bin
 	pkgdesc = Redesign your favorite websites with Stylus, an actively developed and community driven userstyles manager. Easily install custom themes from popular online repositories, or create, edit, and manage your own personalized CSS stylesheets.
-	pkgver = 2.4.13
+	pkgver = 2.4.14
 	pkgrel = 2
 	url = https://add0n.com/stylus.html
 	arch = any
 	license = GPL-3.0-only
 	depends = firefox
 	noextract = styl-us.xpi
-	source = styl-us.xpi::https://addons.mozilla.org/firefox/downloads/file/5028285/styl_us-2.4.13.xpi
-	sha256sums = 2d969b7514acbfa7b77b4e4c6341b9e1e8bcd4c3b9bc63d8b06e5d853dd1cbdd
+	source = styl-us.xpi::https://addons.mozilla.org/firefox/downloads/file/5044316/styl_us-2.4.14.xpi
+	sha256sums = 51d4efd6aa6484a749b97e36222f7bbe2ff699ed16b9a13adf40ecb6a0597081
 
 pkgname = firefox-extension-styl-us-bin
