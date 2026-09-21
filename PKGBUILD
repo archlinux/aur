@@ -2,7 +2,7 @@
 # Maintainer: Lucas Santos <hello@lsantos.dev>
 
 pkgname='proton-drive-fs-bin'
-pkgver=0.25.1
+pkgver=0.25.2
 pkgrel=1
 pkgdesc='FUSE virtual filesystem for Proton Drive on Linux.'
 url='https://github.com/khaosdoctor/proton-drive-linux-fs'
@@ -14,10 +14,10 @@ depends=('fuse3')
 optdepends=('zenity: About dialog' 'libsecret: store the key password in the OS keyring')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v${pkgver}/proton-drive-linux-fs_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('c57e41e3cb596a1695a7fde588988673484939104cf543301654fde5fb64d276')
+sha256sums_aarch64=('7e4e95e2fd125f1ac43c324d0f96504cac5230d647ad88e0e0f0e2a24684d66b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v${pkgver}/proton-drive-linux-fs_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('ea4684e87a3baf185080a204b1fc9936fff6d1c8ba0b659f3e3ecb43ba038bbe')
+sha256sums_x86_64=('d9b03d355a32388e477e0d07a76aa39e73be1f396111d462402af79d07d383f6')
 
 package() {
   install -Dm755 "./proton-drive-fs" "${pkgdir}/usr/bin/proton-drive-fs"
