@@ -4,7 +4,7 @@
 _reponame=mold
 pkgname=${_reponame}-git
 pkgver=2.42.1.r466.g99d79c42
-pkgrel=1
+pkgrel=2
 pkgdesc='A Modern Linker'
 arch=('x86_64')
 url="https://github.com/rui314/$_reponame"
@@ -18,6 +18,7 @@ depends=(
 makedepends=(
   cargo
   git
+  mold
 )
 source=("git+${url}.git")
 b2sums=('SKIP')
@@ -36,6 +37,7 @@ prepare() {
 
 build() {
   cd "$_reponame"
+  RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
   cargo build --release --locked --package mold-cli
 }
 
