@@ -1,13 +1,13 @@
-pkgbase = lazyssh
-	pkgdesc = A terminal-based SSH manager inspired by lazydocker and k9s
-	pkgver = 0.3.0
+pkgbase = neossh
+	pkgdesc = An actively maintained fork and continuation of lazyssh
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/Adembc/lazyssh
+	url = https://github.com/WhiteRoseLK/neossh
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = lazyssh-0.3.0.tar.gz::https://github.com/Adembc/lazyssh/archive/v0.3.0.tar.gz
-	sha256sums = 36cd630b3cd9447e88904171cbb64944aeacbbd62c15db66d8a0e4a4486ffe88
+	source = neossh-1.0.0.tar.gz::https://github.com/WhiteRoseLK/neossh/archive/v1.0.0.tar.gz
+	sha256sums = 6d96bef14e3269c33c59cc28b942a94bb0471e45a8752d5c853dae734f3a969d
 
-pkgname = lazyssh
+pkgname = neossh

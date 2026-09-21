@@ -1,14 +1,16 @@
-# Maintainer: Andy Kelk <andy@andykelk.net>
-pkgname=lazyssh
-pkgver=0.3.0
+# Based on work of neossh maintainer: Andy Kelk <andy@andykelk.net>
+# Maintainer: Leonardo Amaral <archlinux@leonardoamaral.com.br>
+
+pkgname=neossh
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='A terminal-based SSH manager inspired by lazydocker and k9s'
+pkgdesc='An actively maintained fork and continuation of lazyssh'
 arch=('x86_64' 'aarch64')
-url='https://github.com/Adembc/lazyssh'
+url='https://github.com/WhiteRoseLK/neossh'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('36cd630b3cd9447e88904171cbb64944aeacbbd62c15db66d8a0e4a4486ffe88')
+sha256sums=('6d96bef14e3269c33c59cc28b942a94bb0471e45a8752d5c853dae734f3a969d')
 
 prepare() {
     cd "$pkgname-$pkgver"
