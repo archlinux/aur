@@ -1,18 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-rdm-git
 _pkgname='Tiny RDM'
-pkgver=1.2.3.r13.g2fb7e06
-_nodeversion=20
+pkgver=1.2.7.r14.g4ddb94a
+_nodeversion=24
 pkgrel=1
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
 arch=('any')
-url="https://redis.tinycraft.cc/"
+url="https://tinyrdm.com/"
 _ghurl="https://github.com/tiny-craft/tiny-rdm"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-git}")
 depends=(
     'gtk3'
-    'webkit2gtk'
+    'webkit2gtk-4.1'
 )
 makedepends=(
     'nvm'
@@ -41,34 +41,48 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+_set_build_env() {
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export npm_config_cache="${HOME}/.npm_cache"
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
+	export npm_config_audit=false
+	export GOPATH="${HOME}/go"
+	export GOCACHE="${HOME}/go-build"
+	export GOENV="${HOME}/go/env"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOTOOLCHAIN=local
+	export GOWORK=off
+	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}" "${GOCACHE}" "${XDG_CONFIG_HOME}" "${XDG_CACHE_HOME}" "$(dirname "${GOENV}")"
+	: > "${GOENV}"
+}
+prepare() {
+    cd "${srcdir}/${pkgname%-git}.git/frontend"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname%-git}.git"
-    HOME="${srcdir}/.electron-gyp"
-    export CGO_ENABLED=1
-    export GO111MODULE=on
-    export GOOS=linux
-    export GOCACHE="${srcdir}/go-build"
-    export GOMODCACHE="${srcdir}/go/pkg/mod"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-    } >> frontend/.npmrc
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-        } >> frontend/.npmrc
-        export GOPROXY=https://goproxy.cn,direct
-    fi
+    _set_build_env
     export NODE_ENV=development
-    wails build -platform linux -o "${pkgname%-git}"
-    sed -e "
+    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    _ensure_local_nvm
+    _set_build_env
+    export NODE_ENV=production
+    wails build -platform linux -tags webkit2_41 -o "${pkgname%-git}"
+    sed -i -e "
         s/{{.Info.ProductName}}/${_pkgname}/g
         s/\/usr\/local\/bin\/${pkgname%-git}/${pkgname%-git}/g
         s/{{.Info.Comments}}/${pkgdesc}/g
-    " -i "build/linux/${pkgname%-git}_0.0.0_amd64/usr/share/applications/${pkgname%-git}.desktop"
+    " "build/linux/${pkgname%-git}_0.0.0_amd64/usr/share/applications/${pkgname%-git}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.git/build/bin/${pkgname%-git}" -t "${pkgdir}/usr/bin"
