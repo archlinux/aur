@@ -1,6 +1,6 @@
 pkgbase = mlp-bin
 	pkgdesc = Encrypt and decrypt files with AES-256-GCM using an auto-managed keyfile (prebuilt binary)
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/EldinBegano/mask-decryption
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mlp-bin
 	provides = mlp
 	conflicts = mlp
 	options = !debug
-	source_x86_64 = https://github.com/EldinBegano/mask-decryption/releases/download/v0.4.0/mask-decryption_0.4.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 550cc769003a36373206b2f51d1ae868d36330e0926b542bca7d0085a2e603a5
-	source_aarch64 = https://github.com/EldinBegano/mask-decryption/releases/download/v0.4.0/mask-decryption_0.4.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5f571aaff9e921cc156ed1ab1e4e2ba02284d6cd042269006123e5b691fe02ce
+	source_x86_64 = https://github.com/EldinBegano/mask-decryption/releases/download/v0.5.0/mask-decryption_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d5def29ce4dd54bc46a178445cbdeeedc1e98d8ebb8efc773d8fe9871627afa2
+	source_aarch64 = https://github.com/EldinBegano/mask-decryption/releases/download/v0.5.0/mask-decryption_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = bc723960eb908b304917ef35eb2a478b7d22fb028805cd501fdbe7d15cc9d095
 
 pkgname = mlp-bin

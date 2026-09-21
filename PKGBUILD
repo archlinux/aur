@@ -3,7 +3,7 @@
 # pkgver is rewritten from the release tag, and checksums by updpkgsums, by
 # packaging/aur/publish.sh on every release.
 pkgname=mlp-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Encrypt and decrypt files with AES-256-GCM using an auto-managed keyfile (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=('mlp')
 options=('!debug')
 source_x86_64=("$url/releases/download/v$pkgver/mask-decryption_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/mask-decryption_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('550cc769003a36373206b2f51d1ae868d36330e0926b542bca7d0085a2e603a5')
-sha256sums_aarch64=('5f571aaff9e921cc156ed1ab1e4e2ba02284d6cd042269006123e5b691fe02ce')
+sha256sums_x86_64=('d5def29ce4dd54bc46a178445cbdeeedc1e98d8ebb8efc773d8fe9871627afa2')
+sha256sums_aarch64=('bc723960eb908b304917ef35eb2a478b7d22fb028805cd501fdbe7d15cc9d095')
 
 check() {
   export MLP_CONFIG_DIR="$srcdir/check-config"
