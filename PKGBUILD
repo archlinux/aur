@@ -4,7 +4,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libtool
-pkgver=2.6.0
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="A generic library support script (Android ${_android_arch})"
 arch=('any')
@@ -22,7 +22,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/autotools-mirror/libtool/archive/refs/tags/v${pkgver}.tar.gz"
         "gnulib.tar.gz::https://github.com/coreutils/gnulib/archive/refs/heads/master.tar.gz"
         "gnulib-bootstrap.tar.gz::https://github.com/gnulib-modules/bootstrap/archive/refs/heads/master.tar.gz")
-md5sums=('7b3332a9ebd13b2765dbc412d329435c'
+md5sums=('4c76803f1b3afb3d7ee540cbc7049cf2'
          'SKIP'
          'SKIP')
 
