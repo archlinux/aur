@@ -2,7 +2,7 @@
 # AviSynth AVSI only. VapourSynth already has vapoursynth-plugin-xclean-git on the AUR.
 
 pkgname=avisynth-plugin-xclean
-pkgver=0.10
+pkgver=r20260507.5fd5548
 pkgrel=1
 pkgdesc="AviSynth xClean 3-pass denoiser (AVSI)"
 arch=('any')
@@ -13,9 +13,9 @@ optdepends=(
     'avisynth-plugin-mvtools2-pinterf: MVTools2 (pinterf)'
     'avisynth-plugin-masktools2-git: MaskTools2'
 )
-_commit='c50de272c6c8b90a97716523366f5d16054ae4f7'
+_commit='5fd5548f5b372932c5901bc2a085cd72a4585d9d'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mysteryx93/xClean/archive/${_commit}.tar.gz")
-sha256sums=('a58d7b00eecaa66719606285ff17e3604eae56bccf88d862041eb9dd33c03c95')
+sha256sums=('f8dd4a0a123d65e066413358f9c1f489fd99decdaf381eff6b6e7b4657617df9')
 
 package() {
     cd "xClean-${_commit}"
