@@ -1,0 +1,17 @@
+pkgbase = spinel-git
+	pkgdesc = Ahead-of-time compiler for Ruby
+	pkgver = r8209.71939bd
+	pkgrel = 1
+	url = https://github.com/matz/spinel
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = ruby
+	depends = gcc
+	provides = spinel
+	conflicts = spinel
+	source = spinel-git::git+https://github.com/matz/spinel.git
+	sha256sums = SKIP
+
+pkgname = spinel-git
