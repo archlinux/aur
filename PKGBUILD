@@ -4,7 +4,7 @@
 pkgname=unicode
 pkgver=3.2
 _commit=fa4fa6118d68c693ee14b97df6bf12d2fdbb37df
-pkgrel=1
+pkgrel=2
 pkgdesc='Display unicode character properties on the command line'
 url='https://github.com/garabik/unicode'
 arch=('any')
@@ -14,8 +14,8 @@ source=("git+https://github.com/garabik/${pkgname%-git}.git#commit=$_commit"
         UnicodeData-${pkgver}-${pkgrel}.txt::'https://www.unicode.org/Public/UNIDATA/UnicodeData.txt'
         Blocks-${pkgver}-${pkgrel}.txt::'https://www.unicode.org/Public/UNIDATA/Blocks.txt')
 sha256sums=('2997e87f7f45de9750d027de9d9d94c5343eab6e0e4051c5fc6f53ca84f932f9'
-            '2e1efc1dcb59c575eedf5ccae60f95229f706ee6d031835247d843c11d96470c'
-            'c0edefaf1a19771e830a82735472716af6bf3c3975f6c2a23ffbe2580fbbcb15')
+            '0736451de439ae7baf1425136617da495e09ee5afbe6e394374db7009ea08950'
+            'a58f8d322f3c5e254f9f97b1cbf76a454a7e02de6ac35619a5e4f27aaabfd553')
 
 package() {
   cd "$pkgname"
