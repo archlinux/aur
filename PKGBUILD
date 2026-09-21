@@ -1,6 +1,6 @@
 # Maintainer: Fergal Moran <fergal.moran@gmail.com>
 pkgname=xtreamium-proxy
-pkgver=1.4.47
+pkgver=1.4.53
 pkgrel=1
 pkgdesc="Xtreamium Proxy Service - runs as a per-user systemd service"
 arch=('x86_64')
@@ -20,4 +20,12 @@ package() {
     install -Dm644 "${srcdir}/appsettings.json" "${pkgdir}/usr/share/xtreamium-proxy/appsettings.json.example"
     install -Dm644 "${srcdir}/xtreamium-proxy.service" "${pkgdir}/usr/lib/systemd/user/xtreamium-proxy.service"
     install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    # Notification-area icon — bound to the proxy's lifecycle by its user unit (see the unit for
+    # details); the graphical-session.target.wants link starts it when the desktop session comes
+    # up after the proxy.
+    install -Dm755 "${srcdir}/xtreamium-tray" "${pkgdir}/usr/bin/xtreamium-tray"
+    install -Dm644 "${srcdir}/xtreamium-tray.service" "${pkgdir}/usr/lib/systemd/user/xtreamium-tray.service"
+    install -dm755 "${pkgdir}/usr/lib/systemd/user/graphical-session.target.wants"
+    ln -s ../xtreamium-tray.service "${pkgdir}/usr/lib/systemd/user/graphical-session.target.wants/xtreamium-tray.service"
 }

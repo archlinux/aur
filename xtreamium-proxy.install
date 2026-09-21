@@ -12,6 +12,9 @@ To start it automatically on boot (without requiring login):
 Config will be created at ~/.config/xtreamium-proxy/appsettings.json on first run.
 Reference template: /usr/share/xtreamium-proxy/appsettings.json.example
 
+A notification-area icon showing recording status starts and stops with the
+service (whenever a graphical session is available) - nothing extra to enable.
+
 Manage the service:
   Status:  systemctl --user status xtreamium-proxy
   Logs:    journalctl --user -u xtreamium-proxy -f
