@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/hydra/
+*.tar.*
+*.log
