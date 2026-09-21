@@ -1,0 +1,26 @@
+pkgbase = welink-wine
+	pkgdesc = 华为云 WeLink 数字化办公平台（官方 Windows 客户端 + wine，已修复输入框无法打字）
+	pkgver = 7.60.2
+	pkgrel = 1
+	url = https://www.huaweicloud.com/product/welink.html
+	install = welink-wine.install
+	arch = x86_64
+	license = LicenseRef-proprietary
+	makedepends = icoutils
+	depends = wine
+	depends = 7zip
+	depends = python-fonttools
+	depends = noto-fonts-cjk
+	depends = hicolor-icon-theme
+	optdepends = fcitx5: 中文输入法
+	conflicts = deepin-wine-welink
+	replaces = deepin-wine-welink
+	noextract = WeLink_Win_cloud_202607081412_36816_release_2026.06.0_cloud_7.60.2_615.exe
+	source = WeLink_Win_cloud_202607081412_36816_release_2026.06.0_cloud_7.60.2_615.exe::https://welink.huaweicloud.com/appstore/file/web/free/down/7a8e659ca19b40e5bfa81411b4f92bcb/WeLink_Win_cloud_202607081412_36816_release_2026.06.0_cloud_7.60.2_615.exe
+	source = welink-wine.sh
+	source = welink-mkfont.py
+	sha256sums = 6042c4409431dd7827d7f351531e6957387b198f2fef7e007fbb83f84fc42301
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = welink-wine

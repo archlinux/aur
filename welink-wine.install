@@ -1,0 +1,18 @@
+post_install() {
+    echo "首次启动 welink-wine 会创建 wine 容器并部署 WeLink 到"
+    echo "  ~/.local/share/welink-wine/prefix/"
+    echo "若存在旧的 deepin-wine-welink 容器 (~/.deepinwine/Spark-Welink)，会自动迁移，登录数据保留。"
+    echo
+    echo "输入框修复说明："
+    echo "  以 C.UTF-8 locale 运行（避免 wine 把按键交给空壳 IME），并在容器内生成"
+    echo "  一个由 Noto Sans CJK SC 改名的 \"Microsoft YaHei\" 字体（页面指定了该字体，"
+    echo "  缺失时输入框无法建立光标）。两者缺一不可。"
+}
+
+post_upgrade() {
+    echo "升级后首次启动会只替换应用文件，登录与聊天数据保留。"
+}
+
+post_remove() {
+    echo "用户数据保留在 ~/.local/share/welink-wine/，如不再需要请手动删除。"
+}
