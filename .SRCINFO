@@ -1,6 +1,6 @@
 pkgbase = android-studio-beta
 	pkgdesc = The Official Android IDE (Beta branch)
-	pkgver = 2026.1.3.5
+	pkgver = 2026.1.4.8
 	pkgrel = 1
 	url = https://developer.android.com/studio/preview
 	arch = i686
@@ -25,23 +25,21 @@ pkgbase = android-studio-beta
 	optdepends = lib32-zlib: for aapt
 	optdepends = ncurses5-compat-libs: native gdb support
 	optdepends = usbutils
-	provides = android-studio=2026.1.3.5
+	optdepends = libgomp: gemini plugin
+	optdepends = zenity: GTK-based GUI dialogs
+	optdepends = kdialog: KDE/Qt-based GUI dialogs
+	optdepends = libnotify: desktop notifications via notify-send
+	optdepends = xorg-xmessage: lightweight fallback X11 dialogs
+	provides = android-studio=2026.1.4.8
 	options = !strip
-	source = https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2026.1.3.5/android-studio-quail3-rc1-linux.tar.gz
+	source = https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2026.1.4.8/android-studio-quail4-patch1-linux.tar.gz
 	source = android-studio-beta.desktop
-	sha256sums = 3fc6285271b862d08e3e46c72c50477ed79983c70925e5ee0e0b72fa49a06d2c
+	sha256sums = 25c97ca6c6b505f2a20bff962dfd28718327f61e25b09a9bc915f1dae7b1e534
 	sha256sums = c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f
 
 pkgname = android-studio-beta
 	depends = alsa-lib
 	depends = fontconfig
-	depends = freetype2
-	depends = gcc-libs
-	depends = bzip2
-	depends = libedit
+	depends = libgl
 	depends = libxcrypt-compat
-	depends = libxml2
 	depends = libxrender
-	depends = libxtst
-	depends = python
-	depends = which

@@ -10,8 +10,8 @@
 PKGEXT='.pkg.tar'
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
-pkgver=2026.1.3.5
-_subver='quail3-rc1'
+pkgver=2026.1.4.8
+_subver='quail4-patch1'
 pkgrel=1
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
@@ -37,6 +37,12 @@ optdepends=(
   'lib32-zlib: for aapt'
   'ncurses5-compat-libs: native gdb support'
   'usbutils'
+  'libgomp: gemini plugin'
+# you only need one of the followings:
+  'zenity: GTK-based GUI dialogs'
+  'kdialog: KDE/Qt-based GUI dialogs'
+  'libnotify: desktop notifications via notify-send'
+  'xorg-xmessage: lightweight fallback X11 dialogs'
 )
 provides=("android-studio=${pkgver}")
 options=('!strip')
@@ -44,7 +50,7 @@ source=(
   "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-${_subver}-linux.tar.gz"
   "${pkgname}.desktop"
 )
-sha256sums=('3fc6285271b862d08e3e46c72c50477ed79983c70925e5ee0e0b72fa49a06d2c'
+sha256sums=('25c97ca6c6b505f2a20bff962dfd28718327f61e25b09a9bc915f1dae7b1e534'
             'c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f')
 
 if [ "${CARCH}" = "i686" ]; then
@@ -64,18 +70,11 @@ build() {
 
 package() {
   depends=(
-    'alsa-lib'
-    'fontconfig'
-    'freetype2'
-    'gcc-libs'
-    'bzip2'
-    'libedit'
-    'libxcrypt-compat'
-    'libxml2'
-    'libxrender'
-    'libxtst'
-    'python'
-    'which'
+    alsa-lib
+    fontconfig
+    libgl
+    libxcrypt-compat
+    libxrender
   )
 
   cd "${_pkgname}"
