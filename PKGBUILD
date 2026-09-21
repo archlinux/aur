@@ -1,9 +1,9 @@
 # Maintainer: PenguinBurner contributors
 
 pkgname=penguin-burner
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
-pkgdesc='NVIDIA GPU automatic undervolting and fine tuning tool'
+pkgdesc='Automatic NVIDIA GPU undervolting, overclocking and adaptive per-game tuning'
 arch=('x86_64')
 url='https://github.com/jpietek/PenguinBurner'
 license=('GPL-3.0-or-later')
