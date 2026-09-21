@@ -1,0 +1,20 @@
+pkgbase = sleex-welcome-screen-git
+	pkgdesc = Welcome screen and interactive tutorial for Sleex desktop environment
+	pkgver = 1.0.r7.165d4f3
+	pkgrel = 1
+	url = https://github.com/axos-project/sleex-welcome-screen
+	arch = x86_64
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-wayland
+	depends = layer-shell-qt
+	depends = sleex-ui-kit
+	optdepends = sleex: Sleex desktop environment
+	optdepends = hyprland: Wayland compositor
+	provides = sleex-welcome-screen
+	conflicts = sleex-welcome-screen
+	source = git+https://github.com/axos-project/sleex-welcome-screen.git
+	sha256sums = SKIP
+
+pkgname = sleex-welcome-screen-git
