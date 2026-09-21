@@ -1,8 +1,8 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-lite-git
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
-pkgdesc="Feature rich Discord TUI client. Lite version without terminal media player."
+pkgdesc="Feature rich Discord TUI client. Lite version without media and call support."
 arch=('any')
 url="https://github.com/sparklost/endcord"
 license=('LicenseRef-SparkLost')
@@ -25,33 +25,13 @@ pkgver() {
   git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	cd "endcord"
-	
-	# setup python 3.14
-	if uv python list --only-installed | grep -q '3.14'; then
-        echo "Python 3.14 is already installed"
-        PY_ALREADY_INSTALLED=true
-    else
-        uv python install 3.14
-        PY_ALREADY_INSTALLED=false
-    fi
-	
-	uv sync --all-groups
-}
-
 build() {
-	cd "endcord"
-	uv run build.py --level=LITE --nuitka --custom-python
-	
-	# remove python 3.14
-	if [ "$PY_ALREADY_INSTALLED" != "true" ]; then
-        uv python uninstall 3.14  # Or exact version from 'uv python list'
-    fi
+	cd endcord
+	python build.py --clean-uv --level=LITE --nuitka --custom-python
 }
 
 package() {
-	cd "endcord"
+	cd endcord
 	install -Dm755 ./dist/endcord-lite "$pkgdir/usr/bin/endcord-lite"
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/endcord-lite/README.md"
 	install -Dm644 ./docs/commands.md "$pkgdir/usr/share/doc/endcord-lite/commands.md"
@@ -59,6 +39,6 @@ package() {
 	install -Dm644 ./docs/extensions.md "$pkgdir/usr/share/doc/endcord-lite/extensions.md"
 	install -Dm644 ./docs/keybindings.md "$pkgdir/usr/share/doc/endcord-lite/keybindings.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/endcord-lite/LICENSE"
-	# install -Dm644 endcord.desktop "$pkgdir/usr/share/applications/endcord-lite.desktop"
-    # install -Dm644 endcord.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/endcord-lite.svg"
+	install -Dm644 ./tools/endcord.desktop "$pkgdir/usr/share/applications/endcord.desktop"
+    install -Dm644 ./tools/icons/endcord.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/endcord.svg"
 }
