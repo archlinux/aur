@@ -5,7 +5,7 @@
 # Pull requests are welcome here: https://github.com/yurikoles-aur/osc
 
 pkgname=osc
-pkgver=1.27.2
+pkgver=1.27.3
 pkgrel=1
 pkgdesc="Command-line client for the Open Build Service"
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=('build: osc build support'
             'python-zstandard: support for opening control.tar.zst in debquery'
             'xdg-utils: osc browse support')
 source=($pkgname-$pkgver.tar.gz::https://www.github.com/openSUSE/osc/archive/$pkgver.tar.gz)
-sha256sums=('0b4da761f3788a6f457955d7ff62aad4c49facccfe93be1cde5b6f61f70acb0d')
+sha256sums=('72e90ff3d278fc072f640223cf911635eed58c7ecbac4da722205a0ebf83ddf0')
 
 build() {
   cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = osc
 	pkgdesc = Command-line client for the Open Build Service
-	pkgver = 1.27.2
+	pkgver = 1.27.3
 	pkgrel = 1
 	url = https://www.github.com/openSUSE/osc
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = osc
 	optdepends = python-keyring: keyring support
 	optdepends = python-zstandard: support for opening control.tar.zst in debquery
 	optdepends = xdg-utils: osc browse support
-	source = osc-1.27.2.tar.gz::https://www.github.com/openSUSE/osc/archive/1.27.2.tar.gz
-	sha256sums = 0b4da761f3788a6f457955d7ff62aad4c49facccfe93be1cde5b6f61f70acb0d
+	source = osc-1.27.3.tar.gz::https://www.github.com/openSUSE/osc/archive/1.27.3.tar.gz
+	sha256sums = 72e90ff3d278fc072f640223cf911635eed58c7ecbac4da722205a0ebf83ddf0
 
 pkgname = osc
