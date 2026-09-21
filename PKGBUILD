@@ -1,6 +1,6 @@
 # Maintainer: PandaDEV <contact@pandadev.net>
 pkgname=dataflare-bin
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Easily manage your Table, view Data, write SQL and run Query."
 arch=(x86_64 aarch64)
@@ -10,10 +10,10 @@ options=('!strip')
 depends=()
 provides=(dataflare)
 conflicts=(dataflare)
-source_x86_64=("Dataflare-x86_64.AppImage::https://assets.dataflare.app/release/linux/x86_64/Dataflare-3.2.1.AppImage")
-source_aarch64=("Dataflare-aarch64.AppImage::https://assets.dataflare.app/release/linux/aarch64/Dataflare-3.2.1.AppImage")
-sha256sums_x86_64=('2e3cc344c4247a2167734c836acf434b32fc9195508f88ce1cecfaf728052694')
-sha256sums_aarch64=('36e632900ae8a9a673201456c98542fc7c3cc22fdbaf2c295bd72a1c5db0c769')
+source_x86_64=("Dataflare-x86_64.AppImage::https://assets.dataflare.app/release/linux/x86_64/Dataflare-3.2.2.AppImage")
+source_aarch64=("Dataflare-aarch64.AppImage::https://assets.dataflare.app/release/linux/aarch64/Dataflare-3.2.2.AppImage")
+sha256sums_x86_64=('5327bc2b50d947c3dd99b93bbca3a213fe385af824db296e3a57c8098c9f2888')
+sha256sums_aarch64=('82f7fee7717ff553d2e3e9ddbc37abca0034fdb7ebf36fdc99c9350ae2819097')
 
 package() {
 	install -Dm755 *.AppImage "$pkgdir/opt/dataflare/dataflare.appimage"
