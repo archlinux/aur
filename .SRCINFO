@@ -1,6 +1,6 @@
 pkgbase = environment-modules
 	pkgdesc = Provides for an easy dynamic modification of a user's environment via modulefile.
-	pkgver = 5.6.2
+	pkgver = 5.7.0
 	pkgrel = 1
 	url = https://envmodules.io/
 	arch = i686
@@ -37,9 +37,7 @@ pkgbase = environment-modules
 	replaces = env-modules
 	backup = etc/environment-modules/siteconfig.tcl
 	backup = etc/environment-modules/initrc
-	source = environment-modules-5.6.2.tar.gz::https://github.com/envmodules/modules/releases/download/v5.6.2/modules-5.6.2.tar.gz
-	source = domainname.patch
-	sha256sums = a06dd0001aef2722564bba3ec7ff62bc52fb560565af8522728ac8296f98fd69
-	sha256sums = e4983c68225d8d5bdf5b952a8cb7ee14941b38d1e544e99ab55b883b6552edbc
+	source = environment-modules-5.7.0.tar.gz::https://github.com/envmodules/modules/releases/download/v5.7.0/modules-5.7.0.tar.gz
+	sha256sums = 0267e47602237ab3fa3b820b5c94332b2e4a551bc08ba7b9d9e68d0eec92b18d
 
 pkgname = environment-modules

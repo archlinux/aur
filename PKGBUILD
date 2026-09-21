@@ -5,7 +5,7 @@
 # shellcheck shell=bash
 
 pkgname=environment-modules
-pkgver=5.6.2
+pkgver=5.7.0
 pkgrel=1
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
@@ -17,21 +17,13 @@ optdepends=('python: Support for environment modules in Python.'
   'cmake: Support for environment modules in CMake.'
   'xorg-xrdb: x-resource command in modulefiles')
 checkdepends=('dejagnu' 'bash' 'fish' 'zsh' 'dash' 'ksh' 'tcsh' 'ruby' 'cmake' 'python' 'perl' 'r' 'xorg-xrdb')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/releases/download/v${pkgver}/modules-${pkgver}.tar.gz"
-  'domainname.patch')
-sha256sums=('a06dd0001aef2722564bba3ec7ff62bc52fb560565af8522728ac8296f98fd69'
-            'e4983c68225d8d5bdf5b952a8cb7ee14941b38d1e544e99ab55b883b6552edbc')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/releases/download/v${pkgver}/modules-${pkgver}.tar.gz")
+sha256sums=('0267e47602237ab3fa3b820b5c94332b2e4a551bc08ba7b9d9e68d0eec92b18d')
 conflicts=('lmod')
 replaces=('env-modules')
 
 backup=('etc/environment-modules/siteconfig.tcl'
   'etc/environment-modules/initrc')
-
-prepare() {
-  cd "modules-${pkgver}"
-
-  patch --forward --strip=1 --input=../domainname.patch
-}
 
 build() {
   cd "modules-${pkgver}"
@@ -61,10 +53,13 @@ build() {
     --enable-set-shell-startup
     --enable-silent-shell-debug-support
     --enable-unique-name-loaded
+    --with-domainname=hostname
+    --with-domainname-opts=-y
   )
 
   ./configure "${conf[@]}"
   make -C doc all
+  make
 }
 
 check() {
@@ -78,8 +73,8 @@ package() {
   make DESTDIR="${pkgdir}/" install
 
   mkdir -p "${pkgdir}/etc/profile.d"
-  ln -s "/usr/share/modules/init/profile.csh" "${pkgdir}/etc/profile.d/environment-modules.csh"
-  ln -s "/usr/share/modules/init/profile.sh" "${pkgdir}/etc/profile.d/environment-modules.sh"
+  ln -rs "/usr/share/modules/init/profile.csh" "${pkgdir}/etc/profile.d/environment-modules.csh"
+  ln -rs "/usr/share/modules/init/profile.sh"  "${pkgdir}/etc/profile.d/environment-modules.sh"
 
   mkdir "${pkgdir}/etc/environment-modules/modulefiles"
 }
