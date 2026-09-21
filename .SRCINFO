@@ -1,0 +1,21 @@
+pkgbase = baresip-qt-gui
+	pkgdesc = Baresip bundled with custom native Qt applet and simple call interface for KDE Plasma 6
+	pkgver = 4.10.0_qt1
+	pkgrel = 1
+	url = https://github.com/CxOrg/baresip-qt
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = layer-shell-qt
+	depends = libre
+	depends = openssl
+	depends = opus
+	depends = frameworkintegration
+	provides = baresip
+	conflicts = baresip
+	source = git+https://github.com/CxOrg/baresip-qt.git#commit=848e5abb
+	sha256sums = SKIP
+
+pkgname = baresip-qt-gui
