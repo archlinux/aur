@@ -3,9 +3,9 @@
 _pkgname=mihomo-party
 pkgname=clash-party-bin
 _appname='Clash Party'
-pkgver=2.0.2
+pkgver=2.0.3
 _electronversion=43
-pkgrel=2
+pkgrel=1
 pkgdesc=":electron: Another Mihomo GUI."
 arch=(
     'aarch64'
@@ -35,8 +35,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-x86_64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('0479e0455901d047867a02aa51d9bf81bb4e8759d0b8578d9e198849c4d30830')
-sha256sums_x86_64=('72f140325ba1988426bb61f5d38707f69bcb4da98c6d131ad86332ef835e0ada')
+sha256sums_aarch64=('21c3d6cd0a35ae89e50fc78ce376beadaa28731397de25a8976e68e66ac32c20')
+sha256sums_x86_64=('f4366602e7398a7a8849ec2bc85e1c1e4340bf41c67f4ec4a17fcf418a1e048d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -82,7 +82,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
