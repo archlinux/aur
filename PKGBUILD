@@ -1,6 +1,6 @@
 # Maintainer: Joseph Quinn <quinn.josephr@protonmail.com>
 pkgname=rustky
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A modern conky-like system monitor for Wayland'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=(
   'python: Python scripting support (build with python-scripting feature)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pegasusheavy/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e7c495a162d540aa2fdb0bb92a83b02ff2176cfa1ba6e4683c749c846cba93ef')
+sha256sums=('14448257b09865af0bc5e983a5d94e2e0d870d406961f49f27abc6ee04c0b900')
 
 prepare() {
   cd "$pkgname-$pkgver"
