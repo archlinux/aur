@@ -1,18 +1,21 @@
 pkgbase = python-pyre-extensions
 	pkgdesc = Type system extensions for use with the pyre type checker
 	pkgver = 0.0.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyre-check.org
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = python-typing-inspect
+	depends = python-typing_inspect
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/p/pyre-extensions/pyre_extensions-0.0.32.tar.gz
-	sha256sums = 5396715f14ea56c4d5fd0a88c57ca7e44faa468f905909edd7de4ad90ed85e55
+	source = python-pyre-extensions-0.0.32.tar.gz::https://github.com/facebook/pyre-check/archive/a0661eba1582932402518f52b698491a1e890057.tar.gz
+	source = pyre-extensions-pyproject.toml
+	sha256sums = f63b6f16e955733c0cfbaaceb420d468b46e691817267c567ba5a1b7d6b79719
+	sha256sums = c8f681a8d0ca27e4336abc5f29482e1085e44c14bdde3e1ade1421303c7e8d4a
 
 pkgname = python-pyre-extensions
