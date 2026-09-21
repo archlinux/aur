@@ -1,6 +1,6 @@
 pkgbase = ripwire-bin
 	pkgdesc = C++23 CLI and MCP server providing ranked repository context, blast radius, tests-to-run and quality deltas for AI agents
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/redhat-et/ripwire
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = ripwire-bin
 	depends = bash
 	optdepends = git: remote repository cloning and Git history features
 	optdepends = jq: optional agent hook integration
-	provides = ripwire=0.6.1
+	provides = ripwire=0.6.2
 	conflicts = ripwire
 	options = !strip
 	options = !debug
-	source_x86_64 = ripwire-0.6.1-linux-x64.tar.gz::https://github.com/redhat-et/ripwire/releases/download/v0.6.1/ripwire-0.6.1-linux-x64.tar.gz
-	sha256sums_x86_64 = 5bd05e4e983a8d80ca9b69e289f4b210cecc66df7835437c7700af26c343e050
-	source_aarch64 = ripwire-0.6.1-linux-arm64.tar.gz::https://github.com/redhat-et/ripwire/releases/download/v0.6.1/ripwire-0.6.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = bb745a737823be55a2de79acb53e75bd39d6e9919d7ae8894d2468446e2d3054
+	source_x86_64 = ripwire-0.6.2-linux-x64.tar.gz::https://github.com/redhat-et/ripwire/releases/download/v0.6.2/ripwire-0.6.2-linux-x64.tar.gz
+	sha256sums_x86_64 = 62ca4bf6dda09a23fe5829489232e64445ac80f42e51017614e31e201cc92b5a
+	source_aarch64 = ripwire-0.6.2-linux-arm64.tar.gz::https://github.com/redhat-et/ripwire/releases/download/v0.6.2/ripwire-0.6.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 99754cfcfa2ec9cb51582e74cbd9fece6d8dce3523fc263881f278c56fd4d34a
 
 pkgname = ripwire-bin
