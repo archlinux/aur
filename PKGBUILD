@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-trx-git
-pkgver=1.7.0.r0.g4f6e9eb4
+pkgver=1.8.0.r44.ga0d3fd49
 pkgrel=1
 pkgdesc="GSM Radio Modem based on a fork of the OpenBTS Transceiver program"
 url="https://osmocom.org/projects/osmotrx"
@@ -16,8 +16,10 @@ depends=('libosmocore-git'
          'fftw')
 makedepends=('git' 'boost')
 conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}=${pkgver}")
-backup=('etc/osmocom/osmo-trx-uhd.cfg'
+provides=("${pkgname%-git}=${pkgver}"
+          'libosmo-trx.so=0-64')
+backup=('etc/osmocom/osmo-trx-proxy.cfg'
+        'etc/osmocom/osmo-trx-uhd.cfg'
         'etc/osmocom/osmo-trx-lms.cfg'
         'etc/osmocom/osmo-trx-ipc.cfg')
 source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}.git")
@@ -38,6 +40,7 @@ build() {
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --localstatedir=/var \
+              --with-proxy \
               --with-uhd \
               --with-lms \
               --with-ipc
