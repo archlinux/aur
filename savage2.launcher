@@ -1,8 +1,4 @@
 #!/bin/bash
-/*
- * SPDX-FileCopyrightText: 2026 slashbunny
- * SPDX-License-Identifier: 0BSD
- */
 
 cd "/opt/savage2"
 ./savage2 $*
