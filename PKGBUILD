@@ -1,6 +1,6 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=mpd_info_screen2
-pkgver=1.24.6
+pkgver=1.24.7
 pkgrel=1
 pkgdesc="Views graphical info on MPD, the successor to mpd_info_screen, in C++"
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(
     "raylib-6.0.tar.gz::https://github.com/raysan5/raylib/archive/refs/tags/6.0.tar.gz"
 )
 sha256sums=(
-    '2111cef3d8bf511af81c4afe2ce886c428381d088c67f1551db8bdcd3b58db59'
+    '8297a42c608651b3c3b67fb074007d946ef40daa51eaf4aca0c9d6d98281b574'
     '2b3ee1e2120c7a0796b33062c7e9a694dd8a8caa56a96319ac8c8ecf54a90d0b'
 )
 
