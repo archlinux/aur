@@ -1,6 +1,6 @@
 pkgbase = checkip
 	pkgdesc = Get (security) info about IP addresses
-	pkgver = 0.54.0
+	pkgver = 0.55.0
 	pkgrel = 1
 	url = https://github.com/jreisinger/checkip
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = checkip
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/jreisinger/checkip.git#commit=3b105eb9cc21ffbe92e91ed995385a26ab70f76f
+	source = git+https://github.com/jreisinger/checkip.git#commit=9851ec8bd26ac0be5eb6c01cb6da664cdf16bbc7
 	sha256sums = SKIP
 
 pkgname = checkip
