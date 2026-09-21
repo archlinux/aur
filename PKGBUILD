@@ -12,13 +12,13 @@ provides=('shelf-sh-bin')
 conflicts=('shelf-sh-bin')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rubiin/shelf/releases/download/v${pkgver}/shelf_Linux_arm64.tar.gz")
-sha256sums_aarch64=('5c7a315d785621f489895b124cd83063185d1dd4d07f35f6baeb1741254b51d9')
+sha256sums_aarch64=('775382a4c401ab6949f691a8c9343fd97e3840f7b8c7f2c72d7cfb5645020533')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rubiin/shelf/releases/download/v${pkgver}/shelf_Linux_i386.tar.gz")
-sha256sums_i686=('ddae7168479be48d9c6e3e2c02910450b4aef068fd6bde05ec150f626b8aa913')
+sha256sums_i686=('ef0afb882e0bb10f789c5e21241e7d46387905ab3a5eff4f8a6e415a3a861463')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rubiin/shelf/releases/download/v${pkgver}/shelf_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('ffeff2b5040cbff8191b12dd5a8df9f9773a81459a2e95a681b39f34803fc5a7')
+sha256sums_x86_64=('6d7bb064c298649128aed163c952018acf38fa0ad7412c69d791e0a364fb396b')
 
 package() {
   # bin
