@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  Use fat LTO objects to fix linking
+  CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
