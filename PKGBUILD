@@ -4,7 +4,7 @@
 # pkgver is replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge-git
-pkgver=5.8.3.r6170.g246efe3
+pkgver=5.8.3.r6175.gfa78233
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'mise')
@@ -50,9 +50,7 @@ build() {
   mise install
   mise exec -C web-client -- bun install --frozen-lockfile
   mise run build:web-client
-  local version
-  version="$(cd "$srcdir/$pkgname" && git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)")"
-  mise exec -- go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${version}'" -o "system-bridge" .
+  mise exec -- go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${pkgver}'" -o "system-bridge" .
   ./system-bridge completions bash >system-bridge.bash
   ./system-bridge completions zsh >_system-bridge
   ./system-bridge completions fish >system-bridge.fish
