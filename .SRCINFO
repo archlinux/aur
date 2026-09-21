@@ -1,0 +1,18 @@
+pkgbase = navicat18-premium-en
+	pkgdesc = Navicat Premium trial with complete shutdown when its last window closes
+	pkgver = 18.0.1
+	pkgrel = 1
+	url = https://www.navicat.com/en/products/navicat-premium
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = systemd-libs
+	depends = wmctrl
+	provides = navicat-premium
+	conflicts = navicat-premium
+	options = !strip
+	source = navicat-premium-en-x86_64-18.0.1.AppImage::https://dn.navicat.com/download/navicat18-premium-en-x86_64.AppImage
+	source = navicat-close-on-exit
+	sha256sums = 212758d353c5157ce3f625b7fa0a33ef4f492fa621ffef398678f180b340a7ba
+	sha256sums = 39643c5c2d1fe608983c26555717f2b0999f83dd810f6fdf1587b78489dc75e2
+
+pkgname = navicat18-premium-en
