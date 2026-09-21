@@ -13,7 +13,7 @@ makedepends=('cmake' 'git')
 provides=('baresip')
 conflicts=('baresip')
 
-source=("git+https://github.com/CxOrg/baresip-qt.git#commit=848e5abb")
+source=("git+https://github.com/CxOrg/baresip-qt.git#commit=cd1327ff")
 sha256sums=('SKIP')
 
 build() {
