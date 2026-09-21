@@ -1,6 +1,6 @@
 pkgbase = netscli-bin
 	pkgdesc = Network diagnostics CLI, terminal UI, and MCP server
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://netscli.com
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = netscli-bin
 	depends = glibc
 	provides = netscli
 	conflicts = netscli
-	source = LICENSE-0.3.1::https://raw.githubusercontent.com/fstubner/netscli/v0.3.1/LICENSE
+	source = LICENSE-0.3.2::https://raw.githubusercontent.com/fstubner/netscli/v0.3.2/LICENSE
 	sha256sums = 6f035a96b0da6e99589b2a1656f59bee8c6519686d8a94627301e074746041d3
-	source_x86_64 = netscli-0.3.1-x86_64::https://github.com/fstubner/netscli/releases/download/v0.3.1/netscli-linux-x86_64
-	sha256sums_x86_64 = fcfa09284ae5019d01f1b7f9ed4f0b846ffebb8bbdbb778ee1c305461af3b0f1
-	source_aarch64 = netscli-0.3.1-aarch64::https://github.com/fstubner/netscli/releases/download/v0.3.1/netscli-linux-aarch64
-	sha256sums_aarch64 = ea319f8a8b0218591953ee131ab014fe81749b2859f7fe3e2c9c2ae82257a5ac
+	source_x86_64 = netscli-0.3.2-x86_64::https://github.com/fstubner/netscli/releases/download/v0.3.2/netscli-linux-x86_64
+	sha256sums_x86_64 = 7f2e6d8bc18d723284981891a4e5ff4c51a192b67485b79721c213c17ff2f6eb
+	source_aarch64 = netscli-0.3.2-aarch64::https://github.com/fstubner/netscli/releases/download/v0.3.2/netscli-linux-aarch64
+	sha256sums_aarch64 = 7f00b8688efa3ee8c82c59203101566c790572c721e5ac8b2815f229da938a47
 
 pkgname = netscli-bin
