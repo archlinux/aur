@@ -1,0 +1,16 @@
+pkgbase = cho-git
+	pkgdesc = The safe echo & quoting utility you always knew you needed
+	pkgver = r10.f9e1a04
+	pkgrel = 1
+	url = https://github.com/jaggzh/cho
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	provides = cho
+	conflicts = cho
+	source = cho::git+https://github.com/jaggzh/cho.git
+	sha256sums = SKIP
+
+pkgname = cho-git
