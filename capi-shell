@@ -1,0 +1,204 @@
+#!/usr/bin/env bash
+
+set -eu
+set -o pipefail
+
+if [[ "${1:-}" == "--help" ]] || [[ "${1:-}" == "-h" ]]; then
+  cat <<EOF
+Usage: capi-shell <namespace> <name> [command...]
+
+Opens a shell with kubeconfig and provider-specific environment variables set
+for a CAPI-managed cluster. Provider-specific behavior (credentials, API
+server proxying) comes entirely from installed plugins in
+/usr/share/capi-shell/plugins/.
+
+Arguments:
+  namespace    Kubernetes namespace of the cluster
+  name         Name of the cluster
+  command      Command to run (default: \$SHELL or bash)
+
+Environment variables (override config file):
+  KUBECONFIG_CONTEXT              kubectl context to use for the management cluster
+  CAPI_SHELL_KUBECONFIG_FILTER    yq expression to filter the workload kubeconfig
+
+Config file: \${XDG_CONFIG_HOME:-\$HOME/.config}/capi-shell/config.yaml
+  transforms.{clusters,contexts,users}   jq expressions applied to workload kubeconfig sections
+  custom_fields.friendly_name             jq expression (against the Cluster resource) used to
+                                           rename the workload kubeconfig cluster (CAPI already
+                                           names it after the cluster, so this only takes effect
+                                           if the expression resolves non-empty); the kubeconfig
+                                           user is renamed to the identity reported by
+                                           "kubectl auth whoami", if available; if either rename
+                                           happened, the context is renamed to "<user>|<cluster>"
+  management_clusters.<name>.{kubeconfig,context}   cluster sources; <name> is also used to
+                                                      resolve per-cluster plugin settings
+  plugins.<plugin-name>.*                            settings owned by installed plugins (global)
+  management_clusters.<name>.plugins.<plugin-name>.* per-cluster override of the above
+EOF
+  exit 0
+fi
+
+CAPI_SHELL_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/capi-shell/config.yaml"
+export CAPI_SHELL_CONFIG_PATH
+
+_CAPI_SHELL_MGMT_CLUSTER_NAME=""
+_CAPI_SHELL_PLUGIN_DIR="${_CAPI_SHELL_PLUGIN_DIR:-/usr/share/capi-shell/plugins}"
+
+capi_shell_plugin_config() {
+  local plugin="$1" path="$2" default="${3:-}"
+  local value=""
+  if [[ ! -f "$CAPI_SHELL_CONFIG_PATH" ]]; then
+    echo "$default"
+    return
+  fi
+  if [[ -n "$_CAPI_SHELL_MGMT_CLUSTER_NAME" ]]; then
+    value="$(yq -r ".management_clusters.\"$_CAPI_SHELL_MGMT_CLUSTER_NAME\".plugins.\"$plugin\".$path // empty" "$CAPI_SHELL_CONFIG_PATH" 2>/dev/null || true)"
+  fi
+  if [[ -z "$value" ]]; then
+    value="$(yq -r ".plugins.\"$plugin\".$path // empty" "$CAPI_SHELL_CONFIG_PATH" 2>/dev/null || true)"
+  fi
+  envsubst <<<"${value:-$default}"
+}
+
+declare -a _CAPI_SHELL_PRE_EXEC_FNS=()
+declare -A _CAPI_SHELL_PRE_EXEC_CLEANUP_FNS=()
+declare -A _CAPI_SHELL_PRE_EXEC_STATE=()
+
+capi_shell_register_pre_exec() {
+  local pre_exec_fn="$1" cleanup_fn="${2:-}"
+  _CAPI_SHELL_PRE_EXEC_FNS+=("$pre_exec_fn")
+  [[ -n "$cleanup_fn" ]] && _CAPI_SHELL_PRE_EXEC_CLEANUP_FNS["$pre_exec_fn"]="$cleanup_fn"
+  return 0
+}
+
+cleanup() {
+  local ec=$?
+  [[ -v NEW_KUBECONFIG ]] && [[ -f "$NEW_KUBECONFIG" ]] && rm -f "$NEW_KUBECONFIG"
+  local fn cleanup_fn
+  for fn in "${_CAPI_SHELL_PRE_EXEC_FNS[@]}"; do
+    cleanup_fn="${_CAPI_SHELL_PRE_EXEC_CLEANUP_FNS[$fn]:-}"
+    if [[ -n "$cleanup_fn" ]] && [[ -v _CAPI_SHELL_PRE_EXEC_STATE[$fn] ]]; then
+      "$cleanup_fn" "${_CAPI_SHELL_PRE_EXEC_STATE[$fn]}" || true
+    fi
+  done
+  return $ec
+}
+
+main() {
+namespace="${1?}"
+name="${2?}"
+shift
+shift
+envs=()
+
+trap 'EC=$?; cleanup || true; exit $EC' EXIT INT TERM
+NEW_KUBECONFIG="$(mktemp -p "$XDG_RUNTIME_DIR")"
+
+if [[ -f "$CAPI_SHELL_CONFIG_PATH" ]] && [[ -v KUBECONFIG ]]; then
+  while IFS= read -r _mc_name && IFS= read -r _mc_kc; do
+    [[ -z "$_mc_name" ]] && continue
+    if [[ "$(envsubst <<<"$_mc_kc")" == "$KUBECONFIG" ]]; then
+      _CAPI_SHELL_MGMT_CLUSTER_NAME="$_mc_name"
+      break
+    fi
+  done < <(yq -r '(.management_clusters // {}) | to_entries[] | (.key, .value.kubeconfig)' "$CAPI_SHELL_CONFIG_PATH")
+fi
+
+if [[ -v KUBECONFIG_CONTEXT ]]; then
+  function kubectl() {
+    command kubectl --context "$KUBECONFIG_CONTEXT" "$@"
+  }
+fi
+
+if [[ -f "$CAPI_SHELL_CONFIG_PATH" ]] && [[ ! -v CAPI_SHELL_KUBECONFIG_FILTER ]]; then
+  _filter=""
+  _t="$(yq -r '.transforms.clusters // empty' "$CAPI_SHELL_CONFIG_PATH")"
+  [[ -n "$_t" ]] && _filter="${_filter:+$_filter | }.clusters |= map($_t)"
+  _t="$(yq -r '.transforms.contexts // empty' "$CAPI_SHELL_CONFIG_PATH")"
+  [[ -n "$_t" ]] && _filter="${_filter:+$_filter | }.contexts |= map($_t)"
+  _t="$(yq -r '.transforms.users // empty' "$CAPI_SHELL_CONFIG_PATH")"
+  [[ -n "$_t" ]] && _filter="${_filter:+$_filter | }.users |= map($_t)"
+  [[ -n "$_filter" ]] && CAPI_SHELL_KUBECONFIG_FILTER="$_filter"
+fi
+
+_friendly_name_expr=""
+[[ -f "$CAPI_SHELL_CONFIG_PATH" ]] && _friendly_name_expr="$(yq -r '.custom_fields.friendly_name // empty' "$CAPI_SHELL_CONFIG_PATH")"
+
+if kubectl -n "$namespace" get secrets "${name}-kubeconfig" -o jsonpath='{.data.value}' 2>/dev/null | base64 -d >"$NEW_KUBECONFIG"; then
+  hasKubeconfig=true
+  envs+=(KUBECONFIG="$NEW_KUBECONFIG")
+  if [[ -v CAPI_SHELL_KUBECONFIG_FILTER ]]; then
+    yq -i -Y "$CAPI_SHELL_KUBECONFIG_FILTER" "$NEW_KUBECONFIG"
+  fi
+  _renamed=false
+  if [[ -n "$_friendly_name_expr" ]]; then
+    if _friendly="$(kubectl -n "$namespace" get cluster "$name" -o yaml 2>/dev/null | yq -er "(${_friendly_name_expr}) // empty" 2>/dev/null)" && [[ -n "$_friendly" ]]; then
+      yq -i -Y --arg name "$_friendly" '
+        (.contexts[0].context.cluster) as $oldCluster |
+        (.clusters[] | select(.name == $oldCluster) | .name) = $name |
+        (.contexts[0].context.cluster) = $name
+      ' "$NEW_KUBECONFIG"
+      _renamed=true
+    fi
+  fi
+  if _whoami="$(command kubectl --kubeconfig "$NEW_KUBECONFIG" auth whoami -o jsonpath='{.status.userInfo.username}' 2>/dev/null)" && [[ -n "$_whoami" ]]; then
+    yq -i -Y --arg user "$_whoami" '
+      (.contexts[0].context.user) as $oldUser |
+      (.users[] | select(.name == $oldUser) | .name) = $user |
+      (.contexts[0].context.user) = $user
+    ' "$NEW_KUBECONFIG"
+    _renamed=true
+  fi
+  if [[ "$_renamed" == true ]]; then
+    yq -i -Y '
+      (.contexts[0].context.user) as $user |
+      (.contexts[0].context.cluster) as $cluster |
+      (.contexts[0].name) = "\($user)|\($cluster)" |
+      (."current-context") = "\($user)|\($cluster)"
+    ' "$NEW_KUBECONFIG"
+  fi
+else
+  hasKubeconfig=false
+  envs+=(KUBECONFIG="")
+fi
+
+if [[ -d "$_CAPI_SHELL_PLUGIN_DIR" ]]; then
+  for _plugin in "$_CAPI_SHELL_PLUGIN_DIR"/*.sh; do
+    # shellcheck disable=SC1090
+    [[ -e "$_plugin" ]] && source "$_plugin"
+  done
+fi
+
+hasPluginEnv=false
+if declare -F capi_shell_plugin_env >/dev/null; then
+  _plugin_env_tmp="$(mktemp -p "$XDG_RUNTIME_DIR")"
+  if capi_shell_plugin_env "$namespace" "$name" >"$_plugin_env_tmp"; then
+    hasPluginEnv=true
+  fi
+  _plugin_env_entries=()
+  mapfile -d '' -t _plugin_env_entries <"$_plugin_env_tmp"
+  rm -f "$_plugin_env_tmp"
+  envs+=("${_plugin_env_entries[@]}")
+fi
+
+if [[ "$hasPluginEnv" == false ]] && [[ "$hasKubeconfig" == false ]]; then
+  echo "All secrets are missing!" >/dev/stderr
+  exit 1
+fi
+if declare -F capi_shell_plugin_env >/dev/null && [[ "$hasPluginEnv" == false ]]; then
+  echo "Provider plugin found no credentials for this cluster, only setting KUBECONFIG" >/dev/stderr
+fi
+if [[ "$hasKubeconfig" == false ]]; then
+  echo "KUBECONFIG missing, only setting provider env" >/dev/stderr
+fi
+
+for _pre_exec_fn in "${_CAPI_SHELL_PRE_EXEC_FNS[@]}"; do
+  _CAPI_SHELL_PRE_EXEC_STATE["$_pre_exec_fn"]="$("$_pre_exec_fn" "$namespace" "$name" || true)"
+done
+
+env -u KUBECONFIG -u KUBECONFIG_CONTEXT "${envs[@]}" "${@:-${SHELL:-/usr/bin/env bash}}"
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi

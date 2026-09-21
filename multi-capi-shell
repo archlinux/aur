@@ -5,26 +5,26 @@ set -o pipefail
 
 if [[ "${1:-}" == "--help" ]] || [[ "${1:-}" == "-h" ]]; then
   cat <<EOF
-Usage: multi-capo-shell [command...]
-       multi-capo-shell --direct <management-name> <namespace> <name> [command...]
+Usage: multi-capi-shell [command...]
+       multi-capi-shell --direct <management-name> <namespace> <name> [command...]
 
-Interactively selects a CAPO cluster from all management clusters using
-fzf, then opens a capo-shell for the selected cluster.
+Interactively selects a CAPI cluster from all management clusters using
+fzf, then opens a capi-shell for the selected cluster.
 
-With --direct, skips fzf and opens a capo-shell directly for <namespace>/<name>
+With --direct, skips fzf and opens a capi-shell directly for <namespace>/<name>
 on the named management cluster from the config file's management_clusters map,
 without needing fzf installed.
 
 Arguments:
-  command      Command to pass through to capo-shell (default: \$SHELL or bash)
+  command      Command to pass through to capi-shell (default: \$SHELL or bash)
 
 Environment variables (override/extend config file):
   MANAGEMENT_KUBECONFIGS                    Semicolon-separated list of management kubeconfig paths
   KUBECONFIG                                Semicolon-separated management cluster kubeconfig paths (additional)
-  MULTI_CAPO_SHELL_CUSTOM_COLUMN_<name>     yq expression for an extra fzf preview column (overrides config)
-  MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION   yq expression for a custom cluster display name
+  MULTI_CAPI_SHELL_CUSTOM_COLUMN_<name>     yq expression for an extra fzf preview column (overrides config)
+  MULTI_CAPI_SHELL_CUSTOM_NAME_EXPRESSION   yq expression for a custom cluster display name
 
-Config file: \${XDG_CONFIG_HOME:-\$HOME/.config}/capo-shell/config.yaml
+Config file: \${XDG_CONFIG_HOME:-\$HOME/.config}/capi-shell/config.yaml
   management_clusters.<name>.{kubeconfig,context}   cluster sources (merged with env vars above);
                                                      <name> is required to address a cluster via --direct
   custom_fields.<name>                              jq expressions for fzf preview columns (used if no env columns set)
@@ -32,11 +32,12 @@ EOF
   exit 0
 fi
 
-_capo_config="${XDG_CONFIG_HOME:-$HOME/.config}/capo-shell/config.yaml"
+_capi_config="${XDG_CONFIG_HOME:-$HOME/.config}/capi-shell/config.yaml"
 declare -a _mgmt_kubeconfigs=()
 declare -a _mgmt_contexts=()
 declare -a _mgmt_names=()
 
+main() {
 while IFS= read -r _kc; do
   [[ -n "$_kc" ]] && _mgmt_kubeconfigs+=("$_kc") && _mgmt_contexts+=("") && _mgmt_names+=("")
 done < <(
@@ -44,7 +45,7 @@ done < <(
   [[ -v KUBECONFIG ]] && echo -e "${KUBECONFIG//;/\\n}"
 )
 
-if [[ -f "$_capo_config" ]]; then
+if [[ -f "$_capi_config" ]]; then
   while IFS= read -r _name && IFS= read -r _kc && IFS= read -r _ctx; do
     _expanded="$(envsubst <<< "$_kc")"
     if [[ -n "$_expanded" ]]; then
@@ -52,7 +53,7 @@ if [[ -f "$_capo_config" ]]; then
       _mgmt_contexts+=("$_ctx")
       _mgmt_names+=("$_name")
     fi
-  done < <(yq -r '(.management_clusters // {}) | to_entries[] | (.key, .value.kubeconfig, (.value.context // ""))' "$_capo_config")
+  done < <(yq -r '(.management_clusters // {}) | to_entries[] | (.key, .value.kubeconfig, (.value.context // ""))' "$_capi_config")
 fi
 
 if [[ "${1:-}" == "--direct" ]]; then
@@ -64,9 +65,9 @@ if [[ "${1:-}" == "--direct" ]]; then
   for _i in "${!_mgmt_names[@]}"; do
     if [[ -n "${_mgmt_names[$_i]}" ]] && [[ "${_mgmt_names[$_i]}" == "$mgmt_name" ]]; then
       if [[ -n "${_mgmt_contexts[$_i]}" ]]; then
-        exec env KUBECONFIG="${_mgmt_kubeconfigs[$_i]}" KUBECONFIG_CONTEXT="${_mgmt_contexts[$_i]}" capo-shell "$namespace" "$name" "${@}"
+        exec env KUBECONFIG="${_mgmt_kubeconfigs[$_i]}" KUBECONFIG_CONTEXT="${_mgmt_contexts[$_i]}" capi-shell "$namespace" "$name" "${@}"
       else
-        exec env KUBECONFIG="${_mgmt_kubeconfigs[$_i]}" capo-shell "$namespace" "$name" "${@}"
+        exec env KUBECONFIG="${_mgmt_kubeconfigs[$_i]}" capi-shell "$namespace" "$name" "${@}"
       fi
     fi
   done
@@ -80,13 +81,13 @@ if ! command -v fzf &>/dev/null; then
 fi
 
 declare -a custom_columns=()
-for custom_column_var in ${!MULTI_CAPO_SHELL_CUSTOM_COLUMN_*}; do
+for custom_column_var in ${!MULTI_CAPI_SHELL_CUSTOM_COLUMN_*}; do
   custom_columns+=("${!custom_column_var}")
 done
-if [[ "${#custom_columns[@]}" -eq 0 ]] && [[ -f "$_capo_config" ]]; then
+if [[ "${#custom_columns[@]}" -eq 0 ]] && [[ -f "$_capi_config" ]]; then
   while IFS= read -r _expr; do
     [[ -n "$_expr" ]] && custom_columns+=("$_expr")
-  done < <(yq -r '(.custom_fields // {}) | to_entries[] | select(.key != "friendly_name") | .value' "$_capo_config")
+  done < <(yq -r '(.custom_fields // {}) | to_entries[] | select(.key != "friendly_name") | .value' "$_capi_config")
 fi
 if [[ "${#custom_columns[@]}" -gt 0 ]]; then
   printf -v custom_columns_string "\\(%s):" "${custom_columns[@]}"
@@ -94,11 +95,11 @@ else
   custom_columns_string=""
 fi
 
-if [[ ! -v MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION ]] && [[ -f "$_capo_config" ]]; then
-  _friendly_expr="$(yq -r '.custom_fields.friendly_name // empty' "$_capo_config")"
-  [[ -n "$_friendly_expr" ]] && MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION="$_friendly_expr"
+if [[ ! -v MULTI_CAPI_SHELL_CUSTOM_NAME_EXPRESSION ]] && [[ -f "$_capi_config" ]]; then
+  _friendly_expr="$(yq -r '.custom_fields.friendly_name // empty' "$_capi_config")"
+  [[ -n "$_friendly_expr" ]] && MULTI_CAPI_SHELL_CUSTOM_NAME_EXPRESSION="$_friendly_expr"
 fi
-MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION="${MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION:-\"\"}"
+MULTI_CAPI_SHELL_CUSTOM_NAME_EXPRESSION="${MULTI_CAPI_SHELL_CUSTOM_NAME_EXPRESSION:-\"\"}"
 
 if [[ "${#_mgmt_kubeconfigs[@]}" -gt 0 ]]; then
   shopt -s lastpipe
@@ -110,8 +111,13 @@ if [[ "${#_mgmt_kubeconfigs[@]}" -gt 0 ]]; then
       mapfile -t _contexts < <(kubectl config get-contexts -o name)
     fi
     for context in "${_contexts[@]}"; do
-      (kubectl --context "$context" get cluster -A -o yaml || true) | yq -r --arg kubeconfig "$KUBECONFIG" --arg context "$context" '.items | map("\($kubeconfig):\($context):\(.metadata.namespace):\(.metadata.name):'"$custom_columns_string"'\(('"${MULTI_CAPO_SHELL_CUSTOM_NAME_EXPRESSION}"') as $custom_name | if $custom_name == "" then .metadata.name else "\($custom_name) (\(.metadata.name))" end)")[]'
+      (kubectl --context "$context" get cluster -A -o yaml || true) | yq -r --arg kubeconfig "$KUBECONFIG" --arg context "$context" '.items | map("\($kubeconfig):\($context):\(.metadata.namespace):\(.metadata.name):'"$custom_columns_string"'\(('"${MULTI_CAPI_SHELL_CUSTOM_NAME_EXPRESSION}"') as $custom_name | if $custom_name == "" then .metadata.name else "\($custom_name) (\(.metadata.name))" end)")[]'
     done
   done | fzf --sync --preview="awk -v name={} 'BEGIN{split(name,splitted,\":\"); print splitted[2] \"@\" splitted[1]}'" -d : --with-nth=5..$((5 + ${#custom_columns[@]})) | IFS=: read -r mgmt_kubeconfig mgmt_context namespace name _
-  exec env KUBECONFIG="$mgmt_kubeconfig" KUBECONFIG_CONTEXT="$mgmt_context" capo-shell "$namespace" "$name" "${@}"
+  exec env KUBECONFIG="$mgmt_kubeconfig" KUBECONFIG_CONTEXT="$mgmt_context" capi-shell "$namespace" "$name" "${@}"
+fi
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
 fi
