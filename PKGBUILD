@@ -27,7 +27,7 @@ _pkgname=calcesara
 
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 pkgname="${_pkgname}"
-pkgver=8.6.6
+pkgver=8.6.8
 pkgrel=1
 pkgdesc='Simulation Assisted Reliability Assessment (SARA) Software'
 arch=('any')
@@ -73,7 +73,7 @@ source=(
 sha256sums=(
     826670642a9eba219d64063510a8ca33da4a8f2b53717e22c80796bf877e0885
     f64901f5f5df3bf613b1bf143602380a52469c2a36723b7c5ff6ea95260bca1b
-    5b4cabdc9942978a4473802e2a999a870c911080d3f8b1f365b727631097fd97
+    ad755caec315264ce58c743a04e1febc8a321c9108111bdd92e554c924e78ea3
 )
 
 # If you don't have these font, most text will just render as boxes.
