@@ -1,6 +1,6 @@
 # Maintainer CxOrg <clx.org@cloud-org.uk>
-pkgname=baresip-qt-gui
-pkgver=4.10.0_qt1
+pkgname=baresip-qt-gui-git
+pkgver=4.10.0_qt1.r4733.gcd1327ff
 pkgrel=1
 pkgdesc="Baresip bundled with custom native Qt applet and simple call interface for KDE Plasma6 (Wayland)"
 arch=('x86_64')
@@ -10,11 +10,17 @@ license=('BSD-3-Clause')
 depends=('qt6-base' 'layer-shell-qt' 'libre' 'openssl' 'opus' 'frameworkintegration')
 makedepends=('cmake' 'git')
 
-provides=('baresip')
-conflicts=('baresip')
+provides=('baresip' 'baresip-qt-gui')
+conflicts=('baresip' 'baresip-qt-gui')
 
-source=("git+https://github.com/CxOrg/baresip-qt.git#commit=cd1327ff")
+source=("git+https://github.com/CxOrg/baresip-qt.git#branch=call-dialogue")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd baresip-qt
+  printf "4.10.0_qt1.r%s.g%s" "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
+}
 
 build() {
   # No -DMODULES override: build all modules whose deps are available
