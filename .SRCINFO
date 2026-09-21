@@ -1,0 +1,34 @@
+pkgbase = proton-drive-for-linux-git
+	pkgdesc = Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (git)
+	pkgver = 1.11.1.r0.g860d29c
+	pkgrel = 1
+	url = https://github.com/narrrl/proton-drive-linux
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = fuse3
+	depends = gtk4
+	depends = libadwaita
+	depends = webkitgtk-6.0
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	optdepends = perl-image-exiftool: thumbnails for camera RAW files
+	optdepends = gnome-keyring: credential storage over the Secret Service API
+	optdepends = kwallet: credential storage over the Secret Service API
+	optdepends = xdg-utils: "Open folder" action in the tray menu
+	optdepends = fzf: search-as-you-type launcher (pdfs-prompt --fzf)
+	optdepends = foot: terminal that hosts pdfs-prompt --fzf when started from a keybinding
+	provides = proton-drive-for-linux=1.11.1.r0.g860d29c
+	provides = proton-drive-linux=1.11.1.r0.g860d29c
+	provides = pdfs
+	conflicts = proton-drive-linux
+	conflicts = proton-drive-for-linux
+	conflicts = proton-drive-for-linux-bin
+	options = !lto
+	source = proton-drive-for-linux-git::git+https://github.com/narrrl/proton-drive-linux.git
+	sha256sums = SKIP
+
+pkgname = proton-drive-for-linux-git
