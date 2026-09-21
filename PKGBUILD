@@ -4,7 +4,7 @@
 
 _appname=oxlint
 pkgname=${_appname}-bin
-pkgver=1.83.0
+pkgver=1.85.0
 oxlint_pkgver=${pkgver}
 pkgrel=1
 pkgdesc="A high-performance linter for JavaScript and TypeScript built on the Oxc compiler stack"
@@ -19,8 +19,8 @@ conflicts=("${_appname}")
 optdepends=('oxfmt')
 depends=('glibc' 'libgcc')
 
-_github_url="https://github.com/oxc-project/oxc/releases/download/apps_v${oxlint_pkgver}"
-_github_url_raw="https://raw.githubusercontent.com/oxc-project/oxc/apps_v${oxlint_pkgver}"
+_github_url="https://github.com/oxc-project/oxc/releases/download/${_appname}_v${oxlint_pkgver}"
+_github_url_raw="https://raw.githubusercontent.com/oxc-project/oxc/${_appname}_v${oxlint_pkgver}"
 
 _binary_x86_64="${_appname}-x86_64-unknown-linux-gnu"
 _binary_aarch64="${_appname}-aarch64-unknown-linux-gnu"
@@ -32,8 +32,8 @@ source_aarch64=("${_binary_aarch64}-$pkgver.tar.gz::${_github_url}/${_binary_aar
 
 sha256sums=('324ce0bf668dd2add5bed0ab6b46cf582c46292e1b88fccb9f82a0d42edd1a56'
             '95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3')
-sha256sums_x86_64=('4995c0f6a55ed8aa611a7c5461dd4d61cdc41ce767d6d92aae665d135b50e5a1')
-sha256sums_aarch64=('612b6f36ff61a19a604bf2a51f7d1a9528c3cbbb73eccb43a07e55d89ca19d8b')
+sha256sums_x86_64=('39cb1f977613ea1c0d734590e9b9325a959a740cfec702a63df56ee04ce15cc3')
+sha256sums_aarch64=('0ce23045d6090acaff48f0e4237682117c02b87d5084b6e30b1af12e3001bb4a')
 
 package() {
     local _binary_var="_binary_${CARCH}"
