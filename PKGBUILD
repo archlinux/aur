@@ -4,9 +4,9 @@
 # Contributor: Jimmy Tang <jtang@tchpc.tcd.ie>
 
 pkgname=pristine-tar
-pkgver=1.50.nmu2
-_pkgver=1.50+nmu2
-pkgrel=2
+pkgver=1.50.nmu3
+_pkgver=1.50+nmu3
+pkgrel=1
 pkgdesc="Tool to regenerate a pristine upstream tarball using only a small binary delta file and a copy of the source which can be a revision control checkout."
 arch=('i686' 'x86_64')
 url="https://salsa.debian.org/debian/pristine-tar"
@@ -25,20 +25,20 @@ source=(
   "http://ftp.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${_pkgver}.tar.xz"
   remove-sys-cpuaffinity-dep.patch
 )
-sha256sums=('4b6c801bd6bd72a93b37e040ecef9113728016ba3baa35be2f8736c3d725c06c'
+sha256sums=('bdd25f594ee551e8a860a5c5bfe974d5fc5636b0a2de565c392cfa84e7cd4bdb'
             '561230b404e8b43c48c67f9eb271b44afb71f748911101a0d2ef745a7d8f2640')
-b2sums=('4439219b3f402681e693e20d7ae4efd6a3e390332203286c0b0b6878daba13d71f4e86e0e0002eff4272c577a7dbcfc7740ac8a47b62ea4fce4117efa7faa57c'
+b2sums=('12723dae0ee260fab8205dca9f003b24aef437d6aeea106fe5615ae1cd825f2c75cbfd60a5c86d593116001955a906105f013f639e69ed01fd84d4a71af7d412'
         '19f2afeb860c432f459c579b5eb56d3a8c64ea51c1d2e00913e989282d273bdd4938edb7963e0d8b44d73a75f9912d6ce44f953dd12a678ffe5d6d396ec9b34d')
 
 
 prepare() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/source"
 
   patch -p1 < "$startdir/remove-sys-cpuaffinity-dep.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/source"
 
   export PATH=/usr/bin/core_perl:$PATH
 
@@ -48,13 +48,13 @@ build() {
 
 
 check() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/source"
 
   make test
 }
 
 package() {
-  cd "$srcdir/$pkgname-$_pkgver"
+  cd "$srcdir/source"
 
   make install "DESTDIR=$pkgdir" PREFIX=/usr INSTALLSITESCRIPT=/usr/bin
   install -d "$pkgdir/usr/share/doc/pristine-tar"
