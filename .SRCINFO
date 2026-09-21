@@ -1,0 +1,12 @@
+pkgbase = sasqwatch
+	pkgdesc = A modern take on the classic watch command
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/fabio42/sasqwatch
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = sasqwatch-0.2.5.tar.gz::https://codeload.github.com/fabio42/sasqwatch/tar.gz/refs/tags/v0.2.5
+	sha256sums = 5fdd2d91857adc2ae2ffa34adfafff7d4f23977d0045809e7d3a7ff01e610bb6
+
+pkgname = sasqwatch
