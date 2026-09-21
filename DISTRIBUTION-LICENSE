@@ -1,0 +1,11 @@
+The Arch Linux virtual machine image is an aggregate distribution containing
+software and other works under multiple licenses.
+
+No single license applies to all contents of the image. Each component remains
+subject to its own copyright and license terms. Those terms are provided by
+the corresponding Arch Linux packages and upstream projects and remain
+available within the image and Arch Linux package metadata.
+
+This package redistributes the official Arch Linux virtual machine image
+unchanged and grants no additional rights beyond the licenses of its
+individual contents.

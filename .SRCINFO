@@ -1,0 +1,20 @@
+pkgbase = libvirt-image-archlinux-bin
+	pkgdesc = Official Arch Linux cloud-init QCOW2 template for libvirt
+	pkgver = 20260915.594445
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/archlinux/arch-boxes
+	arch = x86_64
+	license = LicenseRef-Various
+	checkdepends = libguestfs
+	checkdepends = linux
+	checkdepends = qemu-img
+	noextract = Arch-Linux-x86_64-cloudimg-20260915.594445.qcow2
+	source = Arch-Linux-x86_64-cloudimg-20260915.594445.qcow2::https://geo.mirror.pkgbuild.com/images/v20260915.594445/Arch-Linux-x86_64-cloudimg-20260915.594445.qcow2
+	source = Arch-Linux-x86_64-cloudimg-20260915.594445.qcow2.sig::https://geo.mirror.pkgbuild.com/images/v20260915.594445/Arch-Linux-x86_64-cloudimg-20260915.594445.qcow2.sig
+	source = DISTRIBUTION-LICENSE
+	validpgpkeys = 1B9A16984A4E8CB448712D2AE0B78BF4326C6F8F
+	sha256sums = d7cc7c86a21b32d6678c001464714f71f4ef7e0d7bbbfca65e99123ac5afc25b
+	sha256sums = SKIP
+	sha256sums = 1227563c5cc845d4a1fd0dbd0aced043040edb36168ad3278e6341e638647e29
+
+pkgname = libvirt-image-archlinux-bin
