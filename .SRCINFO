@@ -1,6 +1,6 @@
 pkgbase = python-materialsdb
 	pkgdesc = A library to work with materialsdb.org open standard for building materials
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/CyrilWaechter/python-materialsdb
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-materialsdb
 	depends = python
 	depends = python-lxml
 	optdepends = ifcopenshell: for IFC conversion features
-	source = https://files.pythonhosted.org/packages/source/p/python_materialsdb/python_materialsdb-0.3.1.tar.gz
-	sha256sums = eb5fa6ca3b884714b10ad2c149bb36121484be14456aaed377939bbd8ecdd3f7
+	source = https://files.pythonhosted.org/packages/source/p/python_materialsdb/python_materialsdb-0.3.2.tar.gz
+	sha256sums = 00c28b51901a27efc3d2cb24a2acdefbc7e2a36a9607869f97f453624ef756cb
 
 pkgname = python-materialsdb
