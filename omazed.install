@@ -6,7 +6,7 @@ post_install() {
     echo "   omazed setup"
     echo ""
     echo "   This will:"
-    echo "   • Set up omarchy hook integration (or systemd fallback)"
+    echo "   • Set up omarchy hook integration"
     echo "   • Set the Zed theme once on first run"
     echo ""
     echo "Then change your Omarchy theme and watch Zed follow along!"
