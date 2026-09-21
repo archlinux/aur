@@ -2,7 +2,7 @@ pkgbase = bottles-opener
 	pkgdesc = Double-click a file and it opens in its Windows program, inside its Bottles bottle
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/Felitendo/bottles-opener
+	url = https://github.com/LoonixTools/bottles-opener
 	install = bottles-opener.install
 	arch = any
 	license = GPL-3.0-or-later
@@ -22,7 +22,7 @@ pkgbase = bottles-opener
 	optdepends = libnotify: report files that could not be opened
 	optdepends = desktop-file-utils: refresh the desktop database after a change
 	optdepends = flatpak: open files with the Bottles Flatpak
-	source = bottles-opener-0.1.0.tar.gz::https://github.com/Felitendo/bottles-opener/archive/refs/tags/v0.1.0.tar.gz
+	source = bottles-opener-0.1.0.tar.gz::https://github.com/LoonixTools/bottles-opener/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = 4120340cacb141feb4cbbd16475a894873bfff3f4b9ba969614918b68ae5ab6c
 
 pkgname = bottles-opener
