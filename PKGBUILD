@@ -3,11 +3,11 @@
 
 pkgname=fvwm
 pkgver=2.7.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Fvwm2 - a virtual window manager. Only gets serious bugfixes. New version is Fvwm3."
 arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="http://www.fvwm.org"
-license=('GPL-2.0-or-later' 'custom')
+license=('GPL-2.0-or-later' 'LicenseRef-custom')
 depends=('fribidi' 'perl' 'libstroke' 'libxpm' 'librsvg' 'libxinerama' 'libxcursor' 'python-xdg')
 makedepends=('libxslt')
 optdepends=('perl-tk: for ClickToFocus support'
