@@ -6,7 +6,7 @@ _pkgname=jump
 pkgname=${_pkgname}-bin
 pkgdesc="Navigate faster by learning your habits"
 
-pkgver=0.67.0
+pkgver=0.69.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("${_pkgname}-${pkgver}.1::${_urlraw}/man/${_pkgname}.1"
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE.txt")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_linux_${_barch[0]}_binary")
-sha256sums=('a72f14659c5e955cd2bc4ceaa437cbf12e1940c7e59fbdf3790975dfc03e2e82'
-            '8b60f1e2df3e67a895973d394d252a248886172e77646a263ebd01dee4df2f1e'
+sha256sums=('a36a216cfb1df381a3817080c4a06630805859d99801499ee70c47c7f34b4bc1'
+            '8dab3ed677a55bad13ba48738a95b28bb1f3f52a8bc5a3cdda1f0ec8691ed499'
             'b16631067cb8bcf731e7ff3da91ecb0744fbdae52db68017637aec55bfef0617')
-sha256sums_x86_64=('7b2e5a82923c0e51fd2b9fb9304e2b12ba323a4b345654a35c3402f0d3c39152')
+sha256sums_x86_64=('7b1be5c608ee8364caac4313fa37d0a0c69cea8cb1e65e4481160afda00d8ab1')
 
 
 package() {
