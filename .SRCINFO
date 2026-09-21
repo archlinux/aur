@@ -1,13 +1,13 @@
 pkgbase = apache-gremlin-console
 	pkgdesc = Gremlin console from Apache TinkerPop
-	pkgver = 3.7.4
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://tinkerpop.apache.org
 	arch = any
 	license = Apache-2.0
 	depends = bash
 	depends = java-environment
-	source = https://www.apache.org/dist/tinkerpop/3.7.4/apache-tinkerpop-gremlin-console-3.7.4-bin.zip
-	sha256sums = 877ae0df1cd26d652224e18d54bbe43f57941eef3a7ee7a5eda17c945c5ead26
+	source = https://www.apache.org/dist/tinkerpop/3.8.2/apache-tinkerpop-gremlin-console-3.8.2-bin.zip
+	sha256sums = b8178ba30d8da1760b1b0b8b161ad1026dc3aa6a93f0d41bdad6720951a72aa2
 
 pkgname = apache-gremlin-console
