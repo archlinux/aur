@@ -4,8 +4,8 @@
 
 pkgname=meta-package-manager
 _pkgname=${pkgname//-/_}
-pkgver=7.6.1
-pkgrel=2
+pkgver=8.0.0
+pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url='https://kdeldycke.github.io/meta-package-manager/'
 makedepends=(python-build python-installer python-uv-build)
@@ -36,8 +36,8 @@ optdepends=('apt: support for apt packages'
             'zypper: support for RPM packages')
 license=('GPL-2.0-or-later')
 arch=('any')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/0c/d7/40a3c0ba8a2dbdc177ad3138d9862d3733e0f4356b13f81dcf7f30eb7041/meta_package_manager-7.6.1.tar.gz")
-sha512sums=('aee6f41b9f0be0a063ba59ef5aa9666378a0a6b00b32f20ae9bcf0fcc196bec195ddf20e96a556fb0067c9111872ce525326f2edc00bc8f9d2b2c7f07376ee8c')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/79/ce/1b608ea6ce77d657fd1dc40681cec7dee6deceb5cb83d19be6a0fdd6881e/meta_package_manager-8.0.0.tar.gz")
+sha512sums=('47c2e85f40378c80b81229b79c484119d0fa61c1edf8ff25a2d62da4e46aac3d01b8dd258503496f60a50f46dfee86bf546c136be95fe52852a5dca0ff0face5')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
