@@ -1,6 +1,6 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=tartrazine
-pkgver=0.22.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="A syntax highlighting tool"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('crystal' 'shards')
 options=()
 install=install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7d8a61649c7957e1f1d5787c2d1c9dc93d3d439bec2ea027f2f6ec58a4291751')
+sha256sums=('fe064e4973fe02ca35c0e9d094cbcf11285edad1f61fb42ff77d76b136ed544c')
 
 prepare() {
 	cd "$pkgname-$pkgver"
