@@ -1,0 +1,19 @@
+pkgbase = google-calender-widget-bin
+	pkgdesc = An unofficial google calendar desktop widget.
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://github.com/p32929/google-calender-widget
+	arch = x86_64
+	license = MIT
+	depends = electron38
+	depends = asar
+	provides = google-calender-widget=1.1.7
+	conflicts = google-calender-widget
+	source = google-calender-widget-1.1.7-x86_64.AppImage::https://github.com/p32929/google-calender-widget/releases/download/v1.1.7/google-calender-widget-1.1.7.AppImage
+	source = LICENSE-1.1.7::https://raw.githubusercontent.com/p32929/google-calender-widget/v1.1.7/LICENSE
+	source = google-calender-widget.sh
+	sha256sums = 4f01997550a85591ae385902d163da1cc811838fb271c243cd5bda3831f510a5
+	sha256sums = 5d1bcace68c53fffb3c60e8bd1d065a29c5af4fc64c8fdb079b7b2bdce796f09
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = google-calender-widget-bin
