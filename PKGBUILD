@@ -2,7 +2,7 @@
 
 pkgname=berrydash
 pkgver=26.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple game where you catch berries with a leaderboard system and more."
 arch=('x86_64')
 url="https://berrydash.lncvrt.xyz/"
@@ -11,7 +11,7 @@ depends=()
 makedepends=('unzip')
 options=(!strip !debug)
 source=(
-  "https://games-r2.lncvrt.xyz/berry-dash/Berry-Dash-$pkgver-linux.zip"
+  "https://archive.org/download/lncvrt-games-archive/berry-dash/Berry-Dash-$pkgver-linux.zip"
   "berrydash.desktop"
   "berrydash.png"
 )
