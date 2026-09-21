@@ -1,0 +1,12 @@
+pkgbase = konfigo
+	pkgdesc = Work with multiple config formats: JSON, YAML, TOML
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/ebogdum/konfigo
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = konfigo-2.0.2.tar.gz::https://codeload.github.com/ebogdum/konfigo/tar.gz/refs/tags/v2.0.2
+	sha256sums = 4bcf852ca67d22d82f2c6a8b3119100b7dfb8e20228d4104478138aab8e6cbbd
+
+pkgname = konfigo
