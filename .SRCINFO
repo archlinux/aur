@@ -1,0 +1,12 @@
+pkgbase = go-typ0
+	pkgdesc = Interactive CLI tool for typing practice and speed tests, built with Bubble Tea
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/TusharIbtekar/go-typ0
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = go-typ0-1.1.2.tar.gz::https://codeload.github.com/TusharIbtekar/go-typ0/tar.gz/refs/tags/v1.1.2
+	sha256sums = 49c4e2bbdea8a96aefff49b6e1184873a99a668fa8538496307534eb78f33d60
+
+pkgname = go-typ0
