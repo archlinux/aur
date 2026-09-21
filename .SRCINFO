@@ -1,6 +1,6 @@
 pkgbase = nub-bin
 	pkgdesc = The fast all-in-one Node.js toolkit
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://nubjs.com
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = nub-bin
 	depends = gcc-libs
 	provides = nub
 	conflicts = nub
-	source = LICENSE::https://raw.githubusercontent.com/nubjs/nub/refs/tags/v0.9.3/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/nubjs/nub/refs/tags/v0.9.4/LICENSE
 	sha256sums = 950fffd5e5c4c4be9e44ccf80bcf5147b25afc19bfef2f53a1e87facb1144b66
-	source_x86_64 = nub-0.9.3-x86_64.tar.xz::https://github.com/nubjs/nub/releases/download/v0.9.3/nub-linux-x64.tar.gz
-	sha256sums_x86_64 = f085a11ed0fa18050d3dad31e676ba3e2f69d6b4a4a35a17cd88077485802cf0
-	source_aarch64 = nub-0.9.3-aarch64.tar.xz::https://github.com/nubjs/nub/releases/download/v0.9.3/nub-linux-arm64.tar.gz
-	sha256sums_aarch64 = 244355d322eeb332be938634148b81019a9b838d0bb889c668351f5b55b2908a
+	source_x86_64 = nub-0.9.4-x86_64.tar.xz::https://github.com/nubjs/nub/releases/download/v0.9.4/nub-linux-x64.tar.gz
+	sha256sums_x86_64 = 782a7068ba7d5ba188f2d07c76d4852a1d066f5894205c92abd15c68c9a62e50
+	source_aarch64 = nub-0.9.4-aarch64.tar.xz::https://github.com/nubjs/nub/releases/download/v0.9.4/nub-linux-arm64.tar.gz
+	sha256sums_aarch64 = 5c33306effacf05d1b99df8e9bcc6785788ecf3a265eb1464b8a2a69aab8248a
 
 pkgname = nub-bin
