@@ -1,6 +1,6 @@
 pkgbase = libks2
 	pkgdesc = Foundational support for signalwire C products
-	pkgver = 2.0.10
+	pkgver = 2.0.11
 	pkgrel = 1
 	url = https://github.com/signalwire/libks
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libks2
 	makedepends = cmake
 	depends = util-linux-libs
 	depends = openssl
-	source = libks2-2.0.10.tar.gz::https://github.com/signalwire/libks/archive/v2.0.10.tar.gz
-	sha256sums = cd0d8504870c2e0e1306e55fd27dede976ab9f3a919487bc10b526576d24d568
+	source = libks2-2.0.11.tar.gz::https://github.com/signalwire/libks/archive/v2.0.11.tar.gz
+	sha256sums = 7142800a0c9095ce0e52308c815026a8ad2a197f519363c050fe441039de20be
 
 pkgname = libks2
