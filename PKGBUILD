@@ -1,7 +1,7 @@
 # Maintainer: Oskar Roesler <oskar AT oskar MINUS roesler DOT de>
 
 pkgname=minidump-stackwalk
-pkgver=0.26.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="A CLI minidump analyzer"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 options=('!lto')
-source=("${pkgname}-${pkgver}.tar.gz::https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
-sha256sums=('31866f6cc922a6c7bae646553b5a40c364b45d934f9459c3e65b3aba7d698463')
+source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
+sha256sums=('e9527f1e47fc491d3645f7d372d10bed80307774209489fd7828291c71b0237a')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit 1
