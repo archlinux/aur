@@ -1,6 +1,6 @@
 # Maintainer: owe contributors
 pkgname=owe
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="High-performance wallpaper engine for Omarchy (mp4, gif, stills)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ checkdepends=('python')
 optdepends=('intel-media-driver: VAAPI hardware decode on Intel GPUs'
             'libva-mesa-driver: VAAPI hardware decode on AMD GPUs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/omacom/owe/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('80336cae4e3e90336b9597274883a3ef4a219e3bcf638026c2532065e38f8143')
+sha256sums=('10272b563d8d55bf0befa4af4e61530726edbaa1e1e9e94936cc1d432b9d7914')
 
 build() {
   meson setup build "$srcdir/owe-$pkgver" -Dbuildtype=release -Dprefix=/usr
