@@ -2,7 +2,7 @@
 pkgname=baresip-qt-gui
 pkgver=4.10.0_qt1
 pkgrel=1
-pkgdesc="Baresip bundled with custom native Qt applet and simple call interface for KDE Plasma 6"
+pkgdesc="Baresip bundled with custom native Qt applet and simple call interface for KDE Plasma6 (Wayland)"
 arch=('x86_64')
 url="https://github.com/CxOrg/baresip-qt"
 license=('BSD-3-Clause')
