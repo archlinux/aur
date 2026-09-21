@@ -24,7 +24,7 @@
 #
 _pkg_user="eranif"
 _pkg_name="codelite"
-_pkg_ver="18.4.0"
+_pkg_ver="18.5.0"
 #_commit="bf6820c7c8bece16c857f5a992aff23ac4ddc1ee"
 
 # pkg
@@ -56,19 +56,20 @@ _pkg_src_res="${_pkg_name_ident}.tar.gz::https://github.com/${_pkg_user}/${_pkg_
 
 # git submodule | sed -E 's/^ (.*) (.*) /\2  \t \1/g'
 
+# git submodule:
 #  a78d4f1469890eb4e795709848ebf57b002ad369 submodules/LuaBridge (heads/master)
 #  666897b95da9756d906cbfff1be123fe527b64f8 submodules/agent-sop (v1.1.2)
-#  89cea946f8404dbe0224ba10b9abb406aff0cc0a submodules/assistant (remotes/origin/HEAD)
+#  6462fb53604e3c0ab69cd48a1ed5eae35cc2b32a submodules/assistant (remotes/origin/HEAD)
 #  53464674ff2c287dfd68f05030d1d79e02d4974c submodules/cc-wrapper (remotes/origin/HEAD)
 #  1da23a3e8119ec5cce4f9388e91b065e20bf06f5 submodules/doctest (v2.4.12)
 #  32567bb9ec704f09040fb1ed7431a3d967e3df03 submodules/dtl (v1.21)
 # -1d9a9ca8841ac0cd591c95b162301d2502641901 submodules/hunspell
 #  8502988a5eb83fcd281ee5a38533a9f170e6b2bf submodules/lexilla (remotes/origin/HEAD)
 # -854795c654eda518ed6de6c1ebb4e2107fcb2e73 submodules/libssh
-#  bb8dc5ff01cf725dff2a8dcfe08fb0b81a9a7729 submodules/lua (heads/master)
+#  d939306e46fa5e4a68e9becd2f5809a40ad49fe1 submodules/lua (remotes/origin/HEAD)
 # -7042229f977ca801983116593b2bbd73ae7f2657 submodules/openssl-cmake
 # -8bb3ad01d5cbdef8d8f749d85df9fcd24d90923c submodules/wx-config-msys2
-#  eba78200448022ba5dcca72a8a1a27ccdf873462 submodules/wxTerminalEmulator (heads/main-140-geba7820)
+#  5216c4a034bdbbc08022bbd71a03a034bd5ccf7d submodules/wxTerminalEmulator (v1.0.0-7-g5216c4a)
 #  2eee32020c5309136358d422230abe24411d657f submodules/wxdap (remotes/origin/HEAD)
 #  2f86d13775d119edbb69af52e5f566fd65c6953b submodules/yaml-cpp (0.8.0-74-g2f86d13)
 # -0f51fb4933fc9ce18199cb2554dacea8033e7fd3 submodules/zlib
@@ -97,7 +98,7 @@ _agent_sop_pkg_src_res="${_agent_sop_pkg_name_ident}.tar.gz::https://github.com/
 # submodules/assistant: ssh://github.com/eraniff/codelite-assistant.git
 _assistant_pkg_user="${_pkg_user}"
 _assistant_pkg_name="assistant"
-_assistant_pkg_ident="89cea946f8404dbe0224ba10b9abb406aff0cc0a"
+_assistant_pkg_ident="6462fb53604e3c0ab69cd48a1ed5eae35cc2b32a"
 _assistant_pkg_name_ident="${_assistant_pkg_user}-${_assistant_pkg_name}-${_assistant_pkg_ident:0:7}"
 _assistant_pkg_src_res="${_assistant_pkg_name_ident}.tar.gz::https://github.com/${_assistant_pkg_user}/${_assistant_pkg_name}/tarball/${_assistant_pkg_ident}"
 
@@ -150,7 +151,7 @@ _lexilla_pkg_src_res="${_lexilla_pkg_name_ident}.tar.gz::https://github.com/${_l
 # submodules/lua: https://github.com/eranif/lua.git
 _lua_pkg_user="${_pkg_user}"
 _lua_pkg_name="lua"
-_lua_pkg_ident="bb8dc5ff01cf725dff2a8dcfe08fb0b81a9a7729"
+_lua_pkg_ident="d939306e46fa5e4a68e9becd2f5809a40ad49fe1"
 _lua_pkg_name_ident="${_lua_pkg_user}-${_lua_pkg_name}-${_lua_pkg_ident:0:7}"
 _lua_pkg_src_res="${_lua_pkg_name_ident}.tar.gz::https://github.com/${_lua_pkg_user}/${_lua_pkg_name}/tarball/${_lua_pkg_ident}"
 
@@ -166,7 +167,7 @@ _wxcfg_pkg_src_res="${_wxcfg_pkg_name_ident}.tar.gz::https://github.com/${_wxcfg
 # submodules/wxTerminalEmulator: https://github.com/eranif/wxTerminalEmulator.git
 _wxterm_pkg_user="${_pkg_user}"
 _wxterm_pkg_name="wxTerminalEmulator"
-_wxterm_pkg_ident="eba78200448022ba5dcca72a8a1a27ccdf873462"
+_wxterm_pkg_ident="5216c4a034bdbbc08022bbd71a03a034bd5ccf7d"
 _wxterm_pkg_name_ident="${_wxterm_pkg_user}-${_wxterm_pkg_name}-${_wxterm_pkg_ident:0:7}"
 _wxterm_pkg_src_res="${_wxterm_pkg_name_ident}.tar.gz::https://github.com/${_wxterm_pkg_user}/${_wxterm_pkg_name}/tarball/${_wxterm_pkg_ident}"
 
@@ -267,18 +268,18 @@ source=(
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('bbb71f82926fcef0821776b404f7580fb42f1065f9f8153598d25cf3240c4d29'
+sha256sums=('238892b615fff9cbb4ba812d18cbead48def7b614cccfbd9c8f91b430f7a4a52'
             '1cb22a33ddacbafa9b3526e248b9abfed098d87bcbbd793774af2e816c6eb94e'
             '674519d58ab53166514b12446a83ac61a0641c8ce424b54ecf34653d12d636e3'
-            'cef5805a14f95eee28b0e2ea6add6e91271c08c195c1f40675a30df620f1ca5e'
+            '8bc2cfa169087048ecd025e292733f5742f389c2f849aa50f4e102e6f9a756b0'
             'fa90de0cadd10d875af9fc08142a46079fc024ba5afebb23fa1a966807980dc8'
             '70518c1b8203359c19b0313e05639568d8089cf9ffa9c9784970fdd69ab6eaad'
             'b9277072988a8318e7b2fec411c915eee0838dd05564d10e9e9381617458dd30'
             'baea37f9af8663240b56b634fd6e3ebd464f6b31f8ff520fc46b2ec8a8f4b3f5'
             '34b9a38f2b5e789a0d0aefa91df0fc4f18b1876589a78004e31b834e32821d98'
-            '1032a78573385a7ebdbebeb88441fd041b0b377c8c2456ddf9290f11aa7ea41a'
+            'ad2db3de0fb0b81f4b58dc809935f2cd6f39ae86d8928d088bbf263506798581'
             '0c13192f989832a2f72bcecd5e4a81b5ae744516a6e27d5f691dbd5f00167cb2'
-            'd8525774b076ea9f60853ab0220356e2f6c411b1bdc72b7c876fd5320108e2d3'
+            '5e0ab7841acd8106c54d4b6496d84f76f02d7e38f3aa9e0afdd6f977f6597d8f'
             'aa53f13b9b67bd3e86dfc441389fcf576ce13f1206082885f6088eea12814998'
             '1603dfef3d3457d2414eab1fb29bbdba8bf350b59745fff2f4f6c2a34d81b5af'
             'e9464a9c0a5e7bddf6759410602088d51c41faea2c39ec5759add8ddf1305687'
