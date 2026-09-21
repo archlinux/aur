@@ -1,0 +1,12 @@
+pkgbase = duplito
+	pkgdesc = Command-line tool to identify duplicate files on your system
+	pkgver = 5.0.0
+	pkgrel = 3
+	url = https://github.com/ftarlao/duplito
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	source = duplito-5.0.0.tar.gz::https://codeload.github.com/ftarlao/duplito/tar.gz/refs/tags/v5.0.0-Red.Max.Donner.und.Blitzen
+	sha256sums = 706ced7404a769aae5259eb76d928c6f1add5e9ffe1c5de0cb8f0dadf9aae58e
+
+pkgname = duplito
