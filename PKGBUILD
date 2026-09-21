@@ -6,7 +6,7 @@
 pkgname=python-torchmetrics
 _pkgname=${pkgname#python-}
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Machine learning metrics for distributed, scalable PyTorch applications'
 arch=('any')
 url='https://github.com/Lightning-AI/torchmetrics'
@@ -41,12 +41,59 @@ makedepends=(
   'python-wheel'
   'python-setuptools'
 )
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('34408d6bd60dc9c4816b8b795cbb228cd23334a951adc8be766bd44397aedb7151af3aa582ff1c75bb2538be3652b3bf5316547c2ee3ab698db6e80892840247')
+checkdepends=(
+  'python-cloudpickle'
+  'python-psutil'
+  'python-pytest'
+  'python-scikit-learn'
+  'python-scipy'
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('30d4f63efab5a3aec26e1a22510e36e6076d07ef0d1feca7b373319263140f59')
 
 build() {
   cd "${_pkgname}-${pkgver}"
   python -m build --no-isolation --wheel
+}
+
+check() {
+  cd "${_pkgname}-${pkgver}"
+  local _checkroot="$srcdir/_check" _site
+  rm -rf "$_checkroot"
+  python -m installer --destdir="$_checkroot" dist/*.whl
+  _site=$(python -c 'import site; print(site.getsitepackages()[0])')
+  cp -a tests/unittests "$_checkroot/unittests"
+  # cachier is used only to memoize generated test references. Replace that
+  # optional development helper with a no-op decorator; assertions are intact.
+  sed -i \
+    '/from cachier import cachier/c\def cachier(*args, **kwargs):\n    return lambda function: function' \
+    "$_checkroot/unittests/__init__.py"
+
+  cd "$_checkroot"
+  # Exercise the complete base, pairwise, retrieval and shape groups. The
+  # other domains deliberately require the optional audio/image/text stacks.
+  PYTHONPATH="$_checkroot$_site:$_checkroot" pytest -ra -c /dev/null \
+    unittests/bases \
+    unittests/pairwise \
+    unittests/retrieval \
+    unittests/shape
+
+  PYTHONPATH="$_checkroot$_site" python - <<'PY'
+import torch
+from torchmetrics.classification import MulticlassAccuracy
+from torchmetrics.regression import MeanSquaredError
+
+accuracy = MulticlassAccuracy(num_classes=3)
+accuracy.update(
+    torch.tensor([[0.1, 0.8, 0.1], [0.9, 0.05, 0.05], [0.1, 0.2, 0.7]]),
+    torch.tensor([1, 0, 2]),
+)
+assert torch.isclose(accuracy.compute(), torch.tensor(1.0))
+mse = MeanSquaredError()
+mse.update(torch.tensor([1.0, 2.0, 4.0]), torch.tensor([1.0, 3.0, 2.0]))
+assert torch.isclose(mse.compute(), torch.tensor(5.0 / 3.0))
+print("staged stateful classification and regression metrics workflow passed")
+PY
 }
 
 package() {
