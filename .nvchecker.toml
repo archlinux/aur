@@ -1,0 +1,5 @@
+[open-file-lock-handle-bin]
+source = "github"
+github = "karimz1/open-file-lock-handle"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,21 @@
+pkgbase = open-file-lock-handle-bin
+	pkgdesc = A cross-platform terminal UI to find processes using files, directories, and open handles
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/karimz1/open-file-lock-handle
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = oflh
+	conflicts = open-file-lock-handle
+	options = !strip
+	source = README-0.0.5.md::https://raw.githubusercontent.com/karimz1/open-file-lock-handle/v0.0.5/README.md
+	source = LICENSE-0.0.5::https://raw.githubusercontent.com/karimz1/open-file-lock-handle/v0.0.5/LICENSE
+	sha256sums = f636e486ac7aba6c4a72d8e1eca5e4472c1d0ada658e2713112734e39e12abf4
+	sha256sums = 79d2fcdb0c79c0bf33e1afd2151b0187115b190c78c806a6aaf99b507a73ab31
+	source_x86_64 = oflh-x86_64-0.0.5::https://github.com/karimz1/open-file-lock-handle/releases/download/v0.0.5/oflh-linux-amd64
+	sha256sums_x86_64 = b90d7bb1ace29b44cae7602e5eb58133bf9b7f3ae9cb66c353bc5884a59d8570
+	source_aarch64 = oflh-aarch64-0.0.5::https://github.com/karimz1/open-file-lock-handle/releases/download/v0.0.5/oflh-linux-arm64
+	sha256sums_aarch64 = b465ae175292243670400ca8fe0470d8f22d2d14f5a1403eebf19d4d52476c78
+
+pkgname = open-file-lock-handle-bin
