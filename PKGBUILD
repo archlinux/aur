@@ -3,12 +3,13 @@
 # Contributor: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=meta-package-manager
+_pkgname=${pkgname//-/_}
 pkgver=7.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A wrapper around all package managers'
 url='https://kdeldycke.github.io/meta-package-manager/'
-makedepends=(git uv)
-depends=(python python-boltons python-click-extra python-extra-platforms python-cyclonedx-lib python-more-itertools python-packageurl python-spdx-tools python-tomli-w python-tomli python-xmltodict python-backports)
+makedepends=(python-build python-installer python-uv-build)
+depends=(python python-boltons python-click-extra python-extra-platforms python-packageurl python-tomli-w python-xmltodict)
 checkdepends=(python-pytest python-pytest-cov python-pytest-randomly python-pytest-xdist)
 optdepends=('apt: support for apt packages'
             'rust: support for Rust packages'
@@ -24,6 +25,8 @@ optdepends=('apt: support for apt packages'
             'paru: support for AUR packages'
             'python-pip: support for Python packages'
             'python-pipx: support for Python pipx packages'
+            'python-cyclonedx-lib: SBOM CycloneDX output (mpm sbom)'
+            'python-spdx-tools: SBOM SPDX output (mpm sbom)'
             'snapd: support for Snap packages'
             'steamcmd: support for Steam games'
             'uv: support for Python packages'
@@ -31,24 +34,23 @@ optdepends=('apt: support for apt packages'
             'yarn: support for Node packages'
             'yay: support for AUR packages'
             'zypper: support for RPM packages')
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 arch=('any')
-source=("git+https://github.com/kdeldycke/${pkgname}.git#tag=v$pkgver")
-sha512sums=('721d873aae89b69698e97834adabe0852d23b23eafec792fcb62e3825dc06356353d06342d9622f12a7ca563d4a0699c29bd3018235b4473f433c60b745351a5')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
-}
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/0c/d7/40a3c0ba8a2dbdc177ad3138d9862d3733e0f4356b13f81dcf7f30eb7041/meta_package_manager-7.6.1.tar.gz")
+sha512sums=('aee6f41b9f0be0a063ba59ef5aa9666378a0a6b00b32f20ae9bcf0fcc196bec195ddf20e96a556fb0067c9111872ce525326f2edc00bc8f9d2b2c7f07376ee8c')
 
 build() {
-    cd "$srcdir/$pkgname"
-    uv build
+    cd "$srcdir/$_pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "$srcdir/$_pkgname-$pkgver"
+    pytest -m "not integration"
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    uv pip install --system --link-mode=copy --no-deps --prefix="$pkgdir/usr" dist/*.whl
-    rm "$pkgdir/usr/.lock"
+    cd "$srcdir/$_pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" license
 }
