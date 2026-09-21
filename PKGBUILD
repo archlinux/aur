@@ -1,9 +1,9 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-lite
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
-pkgdesc="Feature rich Discord TUI client. Lite version without terminal media player."
-arch=('any')
+pkgdesc="Feature rich Discord TUI client. Lite version without media and call support."
+arch=('x86_64')
 url="https://github.com/sparklost/endcord"
 license=('LicenseRef-SparkLost')
 provides=('endcord-lite')
@@ -28,6 +28,6 @@ package() {
 	install -Dm644 ./docs/extensions.md "$pkgdir/usr/share/doc/$pkgname/extensions.md"
 	install -Dm644 ./docs/keybindings.md "$pkgdir/usr/share/doc/$pkgname/keybindings.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	# install -Dm644 endcord.myapp.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-    # install -Dm644 endcord.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.svg"
+	install -Dm644 ./endcord.desktop "$pkgdir/usr/share/applications/com.sparklost.endcord.desktop"
+    install -Dm644 ./endcord.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.sparklost.endcord.svg"
 }
