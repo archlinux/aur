@@ -1,0 +1,16 @@
+pkgbase = sub-store-front-end-bin
+	pkgdesc = Sub-Store Progressive Web App
+	pkgver = 2.32.2
+	pkgrel = 1
+	url = https://github.com/sub-store-org/Sub-Store-Front-End
+	arch = any
+	license = GPL-3.0-only
+	provides = sub-store-front-end
+	conflicts = sub-store-front-end
+	conflicts = sub-store-front-end-git
+	source = https://github.com/sub-store-org/Sub-Store-Front-End/releases/download/2.32.2/dist.zip
+	source = https://github.com/sub-store-org/Sub-Store-Front-End/raw/2.32.2/LICENSE
+	sha256sums = 5caa2dbcef7506bf67753adc1665da5ac8bd847f9769c4a7472d95ab0cb92057
+	sha256sums = SKIP
+
+pkgname = sub-store-front-end-bin
