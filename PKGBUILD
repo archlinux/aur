@@ -11,6 +11,7 @@ url='https://github.com/EldinBegano/mask-decryption'
 license=('GPL-3.0-or-later')
 provides=('mlp')
 conflicts=('mlp')
+options=('!debug')
 source_x86_64=("$url/releases/download/v$pkgver/mask-decryption_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/mask-decryption_${pkgver}_linux_arm64.tar.gz")
 sha256sums_x86_64=('550cc769003a36373206b2f51d1ae868d36330e0926b542bca7d0085a2e603a5')

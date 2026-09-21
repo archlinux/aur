@@ -8,6 +8,7 @@ pkgbase = mlp-bin
 	license = GPL-3.0-or-later
 	provides = mlp
 	conflicts = mlp
+	options = !debug
 	source_x86_64 = https://github.com/EldinBegano/mask-decryption/releases/download/v0.4.0/mask-decryption_0.4.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = 550cc769003a36373206b2f51d1ae868d36330e0926b542bca7d0085a2e603a5
 	source_aarch64 = https://github.com/EldinBegano/mask-decryption/releases/download/v0.4.0/mask-decryption_0.4.0_linux_arm64.tar.gz
