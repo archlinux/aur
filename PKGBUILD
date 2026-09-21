@@ -2,7 +2,7 @@
 # Maintainer: rubiin <roobin.bhandari@gmail.com>
 
 pkgname='shelf-sh-bin'
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='Fast, configurable shell plugin manager written in Go.'
 url='https://github.com/rubiin/shelf'
@@ -12,13 +12,13 @@ provides=('shelf-sh-bin')
 conflicts=('shelf-sh-bin')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rubiin/shelf/releases/download/v${pkgver}/shelf_Linux_arm64.tar.gz")
-sha256sums_aarch64=('53f2795d1f4ab78e996ef3e5be7d7bdf09e772415298e7754639dddfb1949efc')
+sha256sums_aarch64=('5c7a315d785621f489895b124cd83063185d1dd4d07f35f6baeb1741254b51d9')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rubiin/shelf/releases/download/v${pkgver}/shelf_Linux_i386.tar.gz")
-sha256sums_i686=('ad39997388c511eadd09ded02b11555ff0899d32f7a8c7e2b5903d17641973c5')
+sha256sums_i686=('ddae7168479be48d9c6e3e2c02910450b4aef068fd6bde05ec150f626b8aa913')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rubiin/shelf/releases/download/v${pkgver}/shelf_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('1abcb50a4cc9af9408ce3ab294fc252aa858d217a5a7018b8e992cc053e32121')
+sha256sums_x86_64=('ffeff2b5040cbff8191b12dd5a8df9f9773a81459a2e95a681b39f34803fc5a7')
 
 package() {
   # bin
