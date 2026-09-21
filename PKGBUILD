@@ -1,35 +1,17 @@
 # Maintainer: Demitrius Belai <demitriusbelai at gmail dot com>
 
-# They changed the versioning scheme. The new version is not greater than
-# the previous one, and the package also includes a 'develop' suffix.
-# Update at your own risk.
-
-# # apt-cache policy anycubicslicernext
-# anycubicslicernext:
-#   Installed: 1.3.7156
-#   Candidate: 1.3.7156
-#   Version table:
-#  *** 1.3.7156 100
-#         100 /var/lib/dpkg/status
-#      1.3.96 500
-#         500 https://cdn-universe-slicer.anycubic.com/prod noble/main amd64 Packages
-
 pkgname=anycubicslicernext-bin
-# I know I can use 'epoch'. But I’m sure they will release some patch version
-# with four digits at some point. So I padded the version with zeros.
-pkgver=1.3.9600
-pkgrel=3
+pkgver=2.0.0.5
+pkgrel=1
 pkgdesc="Anycubic Slicer is an open source slicer for FDM printers"
 arch=('x86_64')
 url="https://github.com/ANYCUBIC-3D/AnycubicSlicer"
 _url_source="https://cdn-universe-slicer.anycubic.com/prod"
 license=("AGPL-3.0")
 depends=('webkit2gtk-4.1' 'libxml2-legacy' 'libbsd' 'gtk3' 'zlib' 'wayland' 'libglvnd'
-    'gst-plugins-base' 'gst-plugins-good' 'gst-libav' 'dbus' 'libsoup3' 'noto-fonts' 'noto-fonts-cjk')
-optdepends=('ttf-harmonyos-sans: font removed from original package'
-            'ttf-nanum: font removed from original package')
+    'gst-plugins-base' 'gst-plugins-good' 'gst-libav' 'dbus' 'libsoup3')
 
-source=("${_url_source}/dists/noble/main/binary-amd64/develop_AnycubicSlicerNext-1.3.96_20260319_224609-Ubuntu_24_04_3_LTS.deb"
+source=("${_url_source}/pool/main/a/anycubicslicernext/AnycubicSlicerNext_linux-v2.0.0.5-20260913065625.deb"
     "https://archive.ubuntu.com/ubuntu/pool/main/i/icu/libicu74_74.2-1ubuntu3.1_amd64.deb"
     "https://archive.ubuntu.com/ubuntu/pool/main/libs/libselinux/libselinux1_3.5-2ubuntu2.1_amd64.deb"
     "AnycubicSlicerNext.sh"
@@ -37,17 +19,18 @@ source=("${_url_source}/dists/noble/main/binary-amd64/develop_AnycubicSlicerNext
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('2c2883a9c624ab64e721a0211667852e0083d8794f7839c1d7932c9f712ed076'
+sha256sums=('fe087a56014ed25cdfe4c3c293b517adaee0a9b2e1ded79f5e394b7968817c15'
     'c9a70989678660eed9a1e904c74fa043da8bec8e2036856fc16e31ced79b04f8'
     '6abaa6c26f46ef17764c4a753e0e84de1cdadde5634fd2987621fdc617988d19'
-    'f0f3abf1d4e75320aaca10ee601977f49f25927c7d4b2b7a3c89142322575b5a'
+    '8b4157aa14a3500ac912ca0d9c366641e5a9ce79f553dd5f8aa10b390f08809f'
     '2f0f4a7183f4f261478ab86edfa0ab5ca497f6f47665674ddf4196b0c125df3c')
 
 prepare() {
     [ -d AnycubicSlicerNext ] && rm -r AnycubicSlicerNext
     mkdir AnycubicSlicerNext
     pushd AnycubicSlicerNext
-    ar x ../develop_AnycubicSlicerNext-*
+    packagename=$(basename "${source[0]}")
+    ar x "../$packagename"
     bsdtar -xf data.tar.gz
     popd
 
@@ -67,21 +50,18 @@ prepare() {
 }
 
 build() {
-    sed -i 's@/usr/share/AnycubicSlicerNext/resources@/opt/AnycubicSlicerNext/share/resources@' \
-        AnycubicSlicerNext/usr/bin/AnycubicSlicerNext
-    sed -i 's@Icon=/usr/share/AnycubicSlicerNext/resources/images/AnycubicSlicer.png@Icon=/opt/AnycubicSlicerNext/share/resources/images/AnycubicSlicer.png@' \
+    sed -i 's@Icon=/usr/share/AnycubicSlicerNext/resources/images/AnycubicSlicer.png@Icon=/opt/AnycubicSlicerNext/resources/images/AnycubicSlicer.png@' \
         AnycubicSlicerNext/usr/share/applications/AnycubicSlicer.desktop
-    rm -r AnycubicSlicerNext/usr/share/AnycubicSlicerNext/resources/fonts
     gcc -shared -fPIC -O2 -o acnext-workbench-fix.so acnext-workbench-fix.c -ldl
 }
 
 package() {
-    mkdir -p "${pkgdir}/opt/AnycubicSlicerNext/share/resources"
-    mkdir -p "${pkgdir}/opt/AnycubicSlicerNext/bin"
+    mkdir -p "${pkgdir}/opt/AnycubicSlicerNext/resources"
+    mkdir -p "${pkgdir}/opt/AnycubicSlicerNext/usr/bin"
     mkdir -p "${pkgdir}/opt/AnycubicSlicerNext/lib"
-    install -Dm755 AnycubicSlicerNext/usr/bin/AnycubicSlicerNext "${pkgdir}/opt/AnycubicSlicerNext/bin/AnycubicSlicerNext"
+    install -Dm755 AnycubicSlicerNext/usr/bin/AnycubicSlicerNext "${pkgdir}/opt/AnycubicSlicerNext/usr/bin/AnycubicSlicerNext"
     pushd AnycubicSlicerNext/usr/share/AnycubicSlicerNext/resources/
-    find . -type f -exec install -Dm644 "{}" "${pkgdir}/opt/AnycubicSlicerNext/share/resources/{}" \;
+    find . -type f -exec install -Dm644 "{}" "${pkgdir}/opt/AnycubicSlicerNext/resources/{}" \;
     popd
     pushd AnycubicSlicerNext/usr/lib
     find . -type f -exec install -Dm644 "{}" "${pkgdir}/opt/AnycubicSlicerNext/lib" \;
