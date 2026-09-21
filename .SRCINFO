@@ -1,0 +1,18 @@
+pkgbase = lazyide-git
+	pkgdesc = A full IDE experience anywhere you have a terminal. SSH into a server, run lazyide, and pair with your agentic coding tool
+	pkgver = 0
+	pkgrel = 1
+	url = tysonlabs.dev
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = jaq
+	optdepends = rust-analyzer: LSP completions, diagnostics, go-to-definition
+	optdepends = ripgrep: Project-wide search
+	optdepends = git: Branch display, gutter markers
+	source = git+https://github.com/TysonLabs/lazyide.git
+	sha256sums = SKIP
+
+pkgname = lazyide-git
