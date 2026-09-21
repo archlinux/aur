@@ -4,7 +4,7 @@
 
 pkgname=elite-insights-cli-bin
 pkgver=3.30.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Guild Wars 2 Elite Insights CLI (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/baaron4/GW2-Elite-Insights-Parser'
