@@ -3,7 +3,7 @@
 pkgname=zapret-rust-git
 _pkgname=zapret-rust
 pkgver=2.1.0.r4.g76540dc
-pkgrel=3
+pkgrel=4
 
 pkgdesc="Zapret-Rust TUI for DPI bypass (git version)"
 arch=('x86_64')
