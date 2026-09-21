@@ -1,7 +1,7 @@
 # Maintainer: spaciousejar <thedarkspacian@proton.me>
 
 pkgname=vicine
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Search, stream, and download movies, series and anime from the terminal (POSIX shell)"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('vlc: alternative player'
             'rofi: alternative selection menu'
             'dmenu: alternative selection menu')
 source=("https://github.com/spaciousejar/vicine-cli/archive/v${pkgver}.tar.gz")
-sha256sums=('a57c7065f938123e41a65593ba3c4a5909adbc506694df2b18701d4a1cb3f3d5')
+sha256sums=('02e141b6360ad200abcdeef6f0de69889e518e2aabbf753d3f50af0f0c18480c')
 
 package() {
     install -Dm755 "vicine-cli-${pkgver}/vicine" "${pkgdir}/usr/bin/vicine"
