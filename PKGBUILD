@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=colamd-bin
 _pkgname=ColaMD
-pkgver=2.5.0
+pkgver=2.6.0
 _electronversion=44
 pkgrel=1
 pkgdesc="A free, elegant Markdown editor anyone can pick up. No toolbars, no clutter, and the file on disk is always what you see."
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/marswaveai/ColaMD/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ee5db74f7b1200816701f3fa47b67103ad62fb6c25c349747c3cbf44568d81e6'
+sha256sums=('fd73d87f17a9797f5975d54e1e09ef10e277186c78c0464c5ab4b651264f4937'
             'b458eb0211ec5df71f8c32cfde43027bd0471337d36f1637fe229b76369fcc45'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
