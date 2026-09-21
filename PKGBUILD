@@ -2,7 +2,7 @@
 # Contributor: Dilant <dilant@qq.com>
 
 pkgname=celemod
-pkgver=1.1.11
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="An alternative mod manager for Celeste"
 arch=('x86_64')
@@ -30,9 +30,9 @@ source=(
   'CeleMod.desktop'
   'disable-self-update.patch'
 )
-sha256sums=('65a2245dbec1a0f7f11bedd7f0bbb7202cad56c7dca26fa31ba7397d04b97448'
+sha256sums=('dfc9ea2c535fba508b22ed5404e86e4bb44a4e7273aa2b11158fd3124380e4bf'
             '683c5ab3017cb560d715576e0eb0342833f22b52ad17d9594499dfd2a7655c42'
-            '0de0b5e93d462d4f27ca7a37f93a95013c82f0cc643ebd7dfc4c0bfc780fa186')
+            '808ef279cf059a2fcdf25dd4b040a41866670aa27161b1d532ff67fc65cef303')
 
 prepare() {
   cd "$srcdir/CeleMod-$pkgver"
