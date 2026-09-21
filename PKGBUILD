@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=modeest
-_pkgver=2.4.0
+_pkgver=2.5.0
 pkgname=r-${_pkgname,,}
-pkgver=2.4.0
-pkgrel=4
+pkgver=2.5.0
+pkgrel=1
 pkgdesc='Mode Estimation'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1a949409bf64679d32400d20aa3d53e65a9a20f5bd1a40993b95f81100e0ed20')
+sha256sums=('e139381d18fcf855f3bc00eda71ebaa4f7caa21dc8243adcc498de71018bbc0a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
