@@ -2,7 +2,7 @@
 
 pkgname=commandcode-bin
 _pkgname=commandcode
-pkgver=0.1.32
+pkgver=0.1.35
 pkgrel=1
 pkgdesc="Command Code desktop app"
 arch=('x86_64')
@@ -26,7 +26,7 @@ conflicts=("${_pkgname}" "command-code" "command-code-bin")
 options=('!strip' '!debug')
 
 source=("${pkgname}-${pkgver}.deb::https://github.com/CommandCodeAI/desktop/releases/download/v${pkgver}/CommandCode-${pkgver}-amd64.deb")
-sha256sums=('4bc40498e63c1ea06909e2375a87f77624ad70fc7e792d891fcb7701400ecc1e')
+sha256sums=('2d281c1a552e5c6b48cc37d9978170cdb359ec76e91e52073b0212dd9eec1387')
 
 package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}"
