@@ -10,7 +10,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libssh
-pkgver=0.11.3
+pkgver=0.12.2
 pkgrel=1
 arch=('any')
 pkgdesc="Library for accessing ssh client services through C libraries (Android ${_android_arch})"
@@ -25,7 +25,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.libssh.org/files/${pkgver%.*}/libssh-${pkgver}.tar.xz"
         '0001-Fix-static-lib.patch'
         '0002-Disable-getifaddrs.patch')
-md5sums=('b55bad6ad6fd6b1e191fbb495adcfe40'
+md5sums=('d8a7ab5a0b337353494eac1f343db365'
          '66588a420aac9c580c31018a5b1c78cf'
          '063230102f24f4bcb8aea86575e00def')
 
