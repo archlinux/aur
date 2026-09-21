@@ -4,7 +4,7 @@
 
 pkgname=zcode-pro
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ZCode Pro — 界面增强启动器（自定义项目别名等），不修改官方应用文件"
 arch=(any)
 license=(Apache)
@@ -13,7 +13,7 @@ depends=('zcode')
 optdepends=('nodejs>=22: 使用系统 Node 运行启动器（缺省复用 ZCode 内置运行时，无需安装 Node）')
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5ed26994783be8dbb703d2207ac780387d6ebf74e605e229d45dc82ac992453c')
+sha256sums=('5a1f5f1eeb4b4c72aaee5b1cd478a9df244fb76ad7e5ecd27d419a5e665497d8')
 options=('!strip')
 
 package() {
