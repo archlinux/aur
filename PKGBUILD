@@ -1,12 +1,15 @@
 # Maintainer: Luke Simpson <luke@s4solutions.ai>
 pkgname=nexis
-pkgver=2.10.0
+pkgver=2.11.1
 pkgrel=1
 pkgdesc="Linux system optimizer and monitoring tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/s4solutionsllc/Nexis"
 license=('GPL-3.0-only')
-depends=('qt6-base' 'qt6-charts' 'qt6-svg')
+# GH#424: xdg-utils provides the xdg-open fallback QDesktopServices::openUrl()
+# uses on Linux when no portal handles the request; minimal Arch/KDE installs
+# (AUR, unlike the self-contained AppImage) don't pull it in transitively.
+depends=('qt6-base' 'qt6-charts' 'qt6-svg' 'xdg-utils')
 makedepends=('cmake' 'gcc' 'make' 'qt6-tools')
 # GH#82: '!lto' stops makepkg injecting -flto. On distros that enable LTO by
 # default (CachyOS), GCC emits slim LTO objects that LLD cannot resolve, so the
@@ -21,7 +24,7 @@ options=('!lto')
 # release that ships the asset (> 2.8.2); aur.yml's updpkgsums regenerates
 # sha256sums at publish time.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/s4solutionsllc/Nexis/releases/download/v$pkgver/nexis-$pkgver-source.tar.gz")
-sha256sums=('12bfe91730e659c5c92d895abe5f0b0059ab9871e8a40ea69691592c78611549')
+sha256sums=('705347e0733a4dd56ac66ac48909697e60880a118474585f43c732e7e82f971d')
 
 build() {
     # GH#82: in-tree LLD auto-selection is now OFF by default (see
