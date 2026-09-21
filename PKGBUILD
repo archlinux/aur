@@ -4,7 +4,7 @@ pkgver=1.5.4
 pkgrel=1
 pkgdesc="Feature rich Discord 'TUI' client. Windowed 'GUI' version using GTK3."
 arch=('x86_64')
-url="https://github.com/sparklost/$pkgname"
+url="https://github.com/sparklost/endcord"
 license=('LicenseRef-SparkLost')
 provides=('endcord-gui')
 conflicts=('endcord-gui')
@@ -15,7 +15,7 @@ optdepends=('xclip: clipboard support on X11'
             'aspell: spellchecking'
             'yt-dlp: youtube support'
             'mpv: youtube in native player')
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/endcord/$pkgname-$pkgver-linux.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver-linux.tar.gz")
 sha256sums=('SKIP')
 options=(!strip)
 
