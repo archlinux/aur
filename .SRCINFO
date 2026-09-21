@@ -1,0 +1,15 @@
+pkgbase = surfn-numix-icons-git
+	pkgdesc = Surfn Numix, a colourful icon theme
+	pkgver = r3.efe055a
+	pkgrel = 1
+	url = https://github.com/erikdubois/surfn-numix
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	depends = surfn-icons-git
+	options = !strip
+	options = !emptydirs
+	source = Surfn-Numix::git+https://github.com/erikdubois/surfn-numix.git
+	sha256sums = SKIP
+
+pkgname = surfn-numix-icons-git
