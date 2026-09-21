@@ -1,7 +1,7 @@
 pkgbase = photon-studio-bin
 	pkgdesc = A desktop local-first image editor with layers and native PSD support (Extracted from Flatpak)
-	pkgver = 0.1.9
-	pkgrel = 4
+	pkgver = 0.1.14
+	pkgrel = 1
 	url = https://tenzen.studio/photon/
 	arch = x86_64
 	license = LicenseRef-Photon-Studio
@@ -24,9 +24,9 @@ pkgbase = photon-studio-bin
 	depends = nspr
 	depends = nss
 	options = !strip
-	source = Photon-Studio-0.1.9-linux-x64.flatpak::https://files06.tchspt.com/down/Photon-Studio-0.1.9-linux-x64.flatpak
+	source = Photon-Studio-0.1.14-linux-x64.flatpak::https://tenzen.studio/api/v1/photon/download?platform=linux&arch=x64
 	source = photon-studio.png
-	sha256sums = c0e5394c500ac95dfa1b5722f3fe9d3170cfd98934d48fed85ebe32114d0f249
+	sha256sums = 5cc660fdf8c0814376dc197f2e0145fdc170a2cd519945e78ddb3b7c415cde13
 	sha256sums = d09bc04240d4fccecc0667fcd263324a104cf3515388a71789e0cfa72bfc50f7
 
 pkgname = photon-studio-bin
