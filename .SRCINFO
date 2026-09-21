@@ -1,0 +1,12 @@
+pkgbase = addrb
+	pkgdesc = A lightweight CLI/TUI address book that supports CardDAV
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/mrusme/addrb
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	source = addrb-0.6.0.tar.gz::https://codeload.github.com/mrusme/addrb/tar.gz/refs/tags/v0.6.0
+	sha256sums = 98a1b1a235738bf13f792d7768fda4606abc11b574beb5fa2f0c956d6439c5f9
+
+pkgname = addrb
