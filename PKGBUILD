@@ -1,6 +1,6 @@
 # Maintainer: Danilo Falcão <danilo@falcao.org>
 pkgname=bind-utils-standalone
-pkgver=9.20.27
+pkgver=9.21.26
 pkgrel=1
 pkgdesc="DNS client utilities from BIND: dig, host, nslookup, nsupdate, delv, mdig"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
   'libcap'
   'liburcu'
 )
-makedepends=('git' 'python-sphinx')
+makedepends=('git' 'python-sphinx' 'meson' 'ninja')
 optdepends=('krb5: GSSAPI authentication for nsupdate')
 provides=('bind-tools')
 conflicts=('bind' 'bind-tools')
@@ -31,33 +31,26 @@ _tools=(dig host nslookup nsupdate delv mdig)
 
 prepare() {
   cd bind9
-  autoreconf -fiv
 }
 
 build() {
   cd bind9
-  ./configure \
+  meson setup build \
     --prefix=/usr \
+    --bindir=/usr/bin \
+    --libdir=/usr/lib \
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
     --localstatedir=/var \
-    --disable-static \
-    --with-openssl \
-    --with-libidn2 \
-    --without-json-c \
-    --without-libxml2 \
-    --without-lmdb \
-    --without-maxminddb \
-    --disable-geoip \
-    --disable-dnsrps
-  make
+    -Dgeoip=disabled
+  ninja -C build
 }
 
 package() {
   cd bind9
 
   # Full install into a staging directory, then cherry-pick what we need
-  make DESTDIR="${srcdir}/staging" install
+  DESTDIR="${srcdir}/staging" meson install -C build
 
   # Install only client tool binaries
   install -dm755 "${pkgdir}/usr/bin"
