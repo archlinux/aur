@@ -1,6 +1,6 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=bitbucket-cli
-pkgver=0.3.18
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A powerful command-line interface for Bitbucket Cloud - manage repos, PRs, issues, and pipelines from your terminal with OAuth 2.0"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 provides=('bitbucket')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/quinnjr/bitbucket-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('69a4e88c1f39cb1622aba31293723f1bb9e87937a40076523fef8c77af4734b0')
+sha256sums=('c0f6c0f236dc4f669a022f43fd416dea685dd9be60e619dbe448f073f41287bd')
 
 _rust_env() {
     export RUSTUP_TOOLCHAIN=stable
