@@ -1,8 +1,8 @@
-# Maintainer: kotontrion <kotontrion@tutanota.de>
+# Maintainer: kotontrion <kotontrion@kotontrion.net>
 
 pkgname=libastal-wl-git
 _pkgname=wl
-pkgver=r862.41b5029
+pkgver=r983.7c3371c
 pkgrel=2
 provides=(libastal-wl libastal-wl.so=0-64)
 pkgdesc="Provides a central lib to manage wayland objects for other astal libs"
@@ -33,13 +33,12 @@ pkgver() {
 }
 
 build() {
-  cd astal/lib/$_pkgname
+  cd astal/lib/wl/$_pkgname
   arch-meson build
   meson compile -C build
 }
 
 package() {
-  cd astal/lib/$_pkgname
+  cd astal/lib/wl/$_pkgname
   meson install -C build --destdir "$pkgdir"
 }
-
