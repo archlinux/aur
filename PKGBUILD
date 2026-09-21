@@ -1,9 +1,9 @@
-# Maintainer: Smoolak <smoolak [at] gmail.com>.
+# Maintainer: Smoolak <smoolak@gmail.com>
 
 _pkgname=imagededup
 pkgname=python-imagededup-git
 pkgver=0.3.3.post2.0.gf0534a6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to find duplicate images using hashing and CNNs"
 arch=('x86_64')
 url="https://github.com/idealo/imagededup"
@@ -14,7 +14,7 @@ depends=(
   'python-scipy'
   'python-scikit-learn'
   'python-pillow'
-  'python-pytorch'
+  'python-pytorch>=2.1.2'
   'python-torchvision'
   'python-pywavelets'
   'python-tqdm'
@@ -35,7 +35,7 @@ checkdepends=(
 provides=("python-${_pkgname}")
 conflicts=("python-${_pkgname}")
 source=("git+https://github.com/idealo/imagededup.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -52,16 +52,18 @@ build() {
 check() {
   cd "${srcdir}/${_pkgname}"
 
-  local build_lib
-  build_lib=$(find build -maxdepth 2 -type d -name "lib.*" | head -n1)
+  local site_packages
+  site_packages="$(python -c 'import sysconfig; print(sysconfig.get_path("purelib"))')"
+  rm -rf "$srcdir/_check" "$srcdir/_test-run"
+  python -m installer --destdir="$srcdir/_check" dist/*.whl
+  install -d "$srcdir/_test-run"
+  cp -a tests "$srcdir/_test-run/"
+  cd "$srcdir/_test-run"
 
-  if [[ -n "$build_lib" ]]; then
-    export PYTHONPATH="${build_lib}:${PWD}:${PYTHONPATH}"
-  else
-    echo "WARNING: could not find build lib directory; tests may fail."
-  fi
-
-  pytest
+  # CNN and CNN data-loader tests download pretrained model weights. Keep the
+  # offline hashing, search and utility suite independent of that network access.
+  PYTHONPATH="$srcdir/_check$site_packages" pytest -o pythonpath='' \
+    --ignore=tests/test_cnn.py --ignore=tests/test_data_generator.py tests
 }
 
 package() {

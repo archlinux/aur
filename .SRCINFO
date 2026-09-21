@@ -1,7 +1,7 @@
 pkgbase = python-imagededup-git
 	pkgdesc = Python library to find duplicate images using hashing and CNNs
 	pkgver = 0.3.3.post2.0.gf0534a6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/idealo/imagededup
 	arch = x86_64
 	license = Apache-2.0
@@ -18,7 +18,7 @@ pkgbase = python-imagededup-git
 	depends = python-scipy
 	depends = python-scikit-learn
 	depends = python-pillow
-	depends = python-pytorch
+	depends = python-pytorch>=2.1.2
 	depends = python-torchvision
 	depends = python-pywavelets
 	depends = python-tqdm
@@ -26,6 +26,6 @@ pkgbase = python-imagededup-git
 	provides = python-imagededup
 	conflicts = python-imagededup
 	source = git+https://github.com/idealo/imagededup.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-imagededup-git
