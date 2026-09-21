@@ -2,8 +2,9 @@
 # Contributor: zerfithel <hazetlab@proton.me>
 
 pkgname=wordle-solver-git
-pkgver=1.3
+pkgver=1.3.48
 pkgrel=1
+
 pkgdesc="A fast wordle solver written in C99"
 arch=('x86_64')
 url="https://github.com/emile-ross/wordle"
@@ -22,6 +23,7 @@ pkgver() {
 	  | sed -E 's/^(.+)-([0-9]+)-g/\1.\2./' \
 	  | sed -E 's/-/./g'
 }
+
 build() {
 	cd "${srcdir}/wordle" || exit 1
 	make wordle
