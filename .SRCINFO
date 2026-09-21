@@ -1,7 +1,7 @@
 pkgbase = wine-gohryt-wayland-wow64
 	pkgdesc = Includes fixes for wayland + vulkan, gamepad, steam, unreal, unity, affinity.
-	pkgver = 11.17
-	pkgrel = 9
+	pkgver = 11.18
+	pkgrel = 1
 	url = https://www.winehq.org
 	install = wine.install
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = wine-gohryt-wayland-wow64
 	optdepends = libpulse: PulseAudio/PipeWire audio driver
 	optdepends = sdl2: game controller support
 	optdepends = vulkan-icd-loader: Vulkan support
-	provides = wine=11.17
+	provides = wine=11.18
 	provides = wine-mono=11.3.0
 	provides = wine-gecko=2.47.4
 	conflicts = wine

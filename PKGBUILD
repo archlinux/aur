@@ -57,8 +57,8 @@
 #   (GL/VK takes over the toplevel surface, gamescope scales buffers itself),
 #   so -w/-h game resolution is honoured.
 pkgname=wine-gohryt-wayland-wow64
-pkgver=11.17
-pkgrel=9
+pkgver=11.18
+pkgrel=1
 _monover=11.3.0   # must match MONO_VERSION in dlls/appwiz.cpl/addons.c
 _geckover=2.47.4  # must match GECKO_VERSION in dlls/appwiz.cpl/addons.c
 pkgdesc="Includes fixes for wayland + vulkan, gamepad, steam, unreal, unity, affinity."
