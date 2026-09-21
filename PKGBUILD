@@ -1,6 +1,6 @@
 pkgname=megabasterd
 _name=MegaBasterd
-pkgver=8.58
+pkgver=8.60
 pkgrel=1
 pkgdesc="Yet another unofficial (and ugly) cross-platform MEGA downloader/uploader/streaming suite."
 arch=('any')
@@ -26,6 +26,6 @@ package() {
     "$pkgdir/usr/share/applications/megabasterd.desktop"
 }
 
-sha256sums=('199b333f91dc55698110da04bd6574245a3f757d6191f87bccbf9f51b208c4a0'
+sha256sums=('2f82576e1e92f35fea77a656729a85a489f0b15b5eaa4b58425137d972022907'
             '72c7a1db49c5e58a6e6400a445758f7779a594789705dfeac954171d457af103'
             'a85b49dab7f58ab3c3b3e609a1c3c8e0fab2bedf5597a179aae82773681e7753')
