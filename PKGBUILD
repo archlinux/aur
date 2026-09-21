@@ -2,7 +2,7 @@
 
 pkgname=yaabsa-bin
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial feature rich, responsive, modern client for Audiobookshelf"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Vito0912/yaabsa"
@@ -18,15 +18,14 @@ depends=(
 	'libayatana-appindicator'
 	'hicolor-icon-theme'
 )
-makedepends=('tar')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/linux-deb-x86_64-yaabsa_v${pkgver}_amd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/linux-deb-aarch64-yaabsa_v${pkgver}_arm64.deb")
 
 package() {
+  bsdtar -xvf "${srcdir}"/data.tar.zst -C "${pkgdir}"
   install -dm755 "${pkgdir}/usr/bin/"
-  tar -xvf "${srcdir}"/data.tar.zst -C "${pkgdir}"
-  ln -s "${pkgdir}/usr/share/${pkgname%-bin}/yaabsa" "${pkgdir}/usr/bin/yaabsa"
+  ln -s "${pkgdir}/usr/share/yaabsa/yaabsa" "${pkgdir}/usr/bin/yaabsa"
 }
 
 sha256sums_x86_64=('6ce2f04906fc1ce94c75af0b7f813a6bab8ce3c93a986306dfec3fc94e5bf908')
