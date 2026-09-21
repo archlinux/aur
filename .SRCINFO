@@ -1,6 +1,6 @@
 pkgbase = voicefox-bin
 	pkgdesc = A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks
-	pkgver = 0.3.16
+	pkgver = 0.3.17
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/emoeem/voicefox
@@ -13,13 +13,13 @@ pkgbase = voicefox-bin
 	depends = openssl
 	depends = mpv
 	optdepends = nodejs>=23.5.0: support for custom JS music source
-	provides = voicefox=1:0.3.16
+	provides = voicefox=1:0.3.17
 	conflicts = voicefox
 	conflicts = voicefox-git
 	options = !debug
-	source = voicefox-0.3.16.zip::https://github.com/emoeem/voicefox/releases/download/v0.3.16/voicefox-linux-x86_64.zip
-	source = voicefox-0.3.16-src.tar.gz::https://github.com/emoeem/voicefox/archive/refs/tags/v0.3.16.tar.gz
-	sha512sums = 03bd9c2dbdced3912a0290316d8501f2e58c817d46d36dd9cfd49501b32efe0907ed6489cad86e756a54bb6902236d1a7bc5fa2db49a619d056e87eeecf992d2
-	sha512sums = 0c8b45bbb00f1be768267f577592627761b37628771fc916e91ef1ed3e1aa8471f0bdabdef1aad35d87b9243aa8a0a48680322392fc13dc218faff4de2cff73c
+	source = voicefox-0.3.17.zip::https://github.com/emoeem/voicefox/releases/download/v0.3.17/voicefox-linux-x86_64.zip
+	source = voicefox-0.3.17-src.tar.gz::https://github.com/emoeem/voicefox/archive/refs/tags/v0.3.17.tar.gz
+	sha512sums = bc2edc245dbafad49915c1d8cca978a1f46e8e3b4fde93f1644dce9c2ab147867e9779ec1543f04b02f9a0385b03067a0d1b106219248ddd6b5304e4b04b6ade
+	sha512sums = 018ace8bca3e1d646f33542b9432a77d1a203a1cc055429aea3a0c798e3bc3645459eb26fefd876fcc2e20504c5bb22a0b0c634136b5cbbc3d06881caba24301
 
 pkgname = voicefox-bin
