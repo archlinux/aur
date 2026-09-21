@@ -20,9 +20,6 @@ conflicts=(
 	gtk3
 	gtk3-typeahead
 	gtk3-print-backends
-	gtk3-nocsd
-	gtk3-nocsd-git
-	gtk3-nocsd-legacy-git
 )
 provides=(
 	gtk3=$_gtkver

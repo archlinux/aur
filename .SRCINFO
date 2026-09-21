@@ -52,9 +52,6 @@ pkgbase = gtk3-classic
 	conflicts = gtk3
 	conflicts = gtk3-typeahead
 	conflicts = gtk3-print-backends
-	conflicts = gtk3-nocsd
-	conflicts = gtk3-nocsd-git
-	conflicts = gtk3-nocsd-legacy-git
 	source = git+https://github.com/lah7/gtk3-classic.git#commit=1adb3ea1fb666564c1ec7e2bc1c567de3798b75a
 	source = https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.52/gtk-3.24.52.tar.gz
 	source = gtk-query-immodules-3.0.hook::https://gitlab.archlinux.org/archlinux/packaging/packages/gtk3/-/raw/30ab95bd37954d13b583aa4294204dcd4c1f5460/gtk-query-immodules-3.0.hook
