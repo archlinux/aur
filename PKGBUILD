@@ -3,14 +3,16 @@
 # Contributor: archlinuxbits <archlinuxbits at proton.me>
 
 : ${_snap_id:=nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV}
-: ${_snap_rev:=72}
+: ${_snap_rev:=74}
 
 : ${_use_system_electron:=false}
 
+DLAGENTS=("${DLAGENTS[@]//curl/curl -L}") # for redirect
+
 _pkgname="tradingview"
 pkgname="$_pkgname"
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.4.1
+pkgrel=1
 pkgdesc='Charting platform for traders and investors'
 arch=('x86_64')
 url="https://www.tradingview.com/desktop/"
@@ -34,12 +36,12 @@ source=(
   "$_terms_of_use.html"::"https://www.tradingview.com/policies/"
 )
 sha256sums=(
-  'e4343ff1a62a67a75f05720d4762392f44fa0c70ecf4858049366632043bf118'
+  '7c355bf31609e17b57434048217530da6b3451ab536dbae681bc0d47d706f670'
   'SKIP'
 )
 
 prepare() {
-  hxextract .tv-policies "$_terms_of_use.html" \
+  hxextract .tv-policies-page "$_terms_of_use.html" \
     1> "$_terms_of_use-2.html" \
     2> /dev/null
 
