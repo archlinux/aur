@@ -7,7 +7,7 @@ pkgver=2.0.0.beta.40.r2.g4a7424b
 _electronversion=44
 _nodeversion=24
 pkgrel=1
-pkgdesc="A full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc.(Use system-wide electron)"
+pkgdesc="A full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc."
 arch=(
     'aarch64'
     'armv7h'

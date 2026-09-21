@@ -1,5 +1,5 @@
 pkgbase = motrix-git
-	pkgdesc = A full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc.(Use system-wide electron)
+	pkgdesc = A full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc.
 	pkgver = 2.0.0.beta.40.r2.g4a7424b
 	pkgrel = 1
 	url = https://motrix.app/
