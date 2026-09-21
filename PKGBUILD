@@ -2,7 +2,7 @@
 pkgname=hydra-ade-git
 _pkgname=hydra
 pkgver=0.1.0.r75.ga76d0fc
-pkgrel=1
+pkgrel=2
 pkgdesc="Autonomous Development Environment for parallel AI agent fleets (Tauri v2 + Rust Core)"
 arch=('x86_64')
 url="https://github.com/renanbs/hydra"

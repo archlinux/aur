@@ -1,7 +1,7 @@
 pkgbase = hydra-ade-git
 	pkgdesc = Autonomous Development Environment for parallel AI agent fleets (Tauri v2 + Rust Core)
 	pkgver = 0.1.0.r75.ga76d0fc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/renanbs/hydra
 	arch = x86_64
 	license = MIT
