@@ -1,0 +1,25 @@
+Backport the safe out-of-radius index strategy proposed upstream in
+https://github.com/onnx/sklearn-onnx/commit/65c5384c0899dc10bccb007e2cd15c4c0105350f.
+
+ArrayFeatureExtractor rejects negative indices.  Radius-neighbor positions
+outside the radius are already multiplied by a zero binary mask, so index 0
+is a safe placeholder for those positions.
+
+diff --git a/skl2onnx/operator_converters/nearest_neighbours.py b/skl2onnx/operator_converters/nearest_neighbours.py
+index 54837f89d..5a89ea024 100644
+--- a/skl2onnx/operator_converters/nearest_neighbours.py
++++ b/skl2onnx/operator_converters/nearest_neighbours.py
+@@ -225,7 +225,12 @@ def onnx_nearest_neighbors_indices_radius(
+ 
+     dist_only = OnnxWhere(less, dist, zero, op_version=opv)
+     dist_only.set_onnx_name_prefix("nndist")
+-    indices = OnnxWhere(less, minus_range, minus, op_version=opv)
++    zero_int = OnnxCast(
++        OnnxConstantOfShape(shape, op_version=opv),
++        op_version=opv,
++        to=onnx_proto.TensorProto.INT64,
++    )
++    indices = OnnxWhere(less, minus_range, zero_int, op_version=opv)
+     indices.set_onnx_name_prefix("nnind")
+     binary = OnnxCast(less, to=proto_dtype, op_version=opv)
+     binary.set_onnx_name_prefix("nnbin")

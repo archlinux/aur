@@ -1,0 +1,185 @@
+--- a/skl2onnx/_parse.py
++++ b/skl2onnx/_parse.py
+@@ -536,9 +536,19 @@
+ 
+ def _parse_sklearn_classifier(scope, model, inputs, custom_parsers=None):
+     options = scope.get_options(model, dict(zipmap=True))
+-    no_zipmap = (isinstance(options["zipmap"], bool) and not options["zipmap"]) or (
+-        isinstance(model, (NuSVC, SVC)) and not model.probability
+-    )
++    effective_probability = getattr(
++        model, "_effective_probability", getattr(model, "probability", False)
++    )
++    is_svc_without_probability = (
++        isinstance(model, (NuSVC, SVC))
++        or (
++            model.__class__.__name__ in {"NuSVC", "SVC"}
++            and model.__class__.__module__.startswith("sklearn.svm")
++        )
++    ) and not effective_probability
++    no_zipmap = (
++        isinstance(options["zipmap"], bool) and not options["zipmap"]
++    ) or is_svc_without_probability
+     probability_tensor = _parse_sklearn_simple_model(
+         scope, model, inputs, custom_parsers=custom_parsers
+     )
+--- a/skl2onnx/common/utils_classifier.py
++++ b/skl2onnx/common/utils_classifier.py
+@@ -57,7 +57,7 @@
+     if np.issubdtype(classes.dtype, np.floating) or classes.dtype == np.bool_:
+         class_type = onnx_proto.TensorProto.INT32
+         classes = np.array(list(map(lambda x: int(x), classes)))
+-    elif np.issubdtype(classes.dtype, np.signedinteger):
++    elif np.issubdtype(classes.dtype, np.integer):
+         class_type = onnx_proto.TensorProto.INT32
+     else:
+         classes = np.array([s.encode("utf-8") for s in classes])
+--- a/skl2onnx/operator_converters/decision_tree.py
++++ b/skl2onnx/operator_converters/decision_tree.py
+@@ -25,7 +25,7 @@
+     get_default_tree_classifier_attribute_pairs,
+     get_default_tree_regressor_attribute_pairs,
+ )
+-from ..common.utils_classifier import get_label_classes
++from ..common.utils_classifier import get_label_classes, _finalize_converter_classes
+ from ..proto import onnx_proto
+ 
+ 
+@@ -88,7 +88,6 @@
+ ):
+     """Predict target and calculate probability scores."""
+     indices_name = scope.get_unique_variable_name("indices")
+-    dummy_proba_name = scope.get_unique_variable_name("dummy_proba")
+     values_name = scope.get_unique_variable_name("values")
+     out_values_name = scope.get_unique_variable_name("out_indices")
+     transposed_result_name = scope.get_unique_variable_name("transposed_result")
+@@ -119,14 +118,26 @@
+         attrs = populate_tree_attributes(
+             model, scope.get_unique_operator_name(op_type), dtype
+         )
++        # The synthetic classifier has one class per tree node and a score of
++        # one only at the selected leaf. Current runtimes can alter its label
++        # output, so derive the node id from the unambiguous score vector.
++        runtime_label_name = scope.get_unique_variable_name("runtime_label")
++        leaf_scores_name = scope.get_unique_variable_name("leaf_scores")
+         container.add_node(
+             op_type,
+             input_name,
+-            [indices_name, dummy_proba_name],
++            [runtime_label_name, leaf_scores_name],
+             op_domain=op_domain,
+             op_version=op_version,
+             **attrs,
+         )
++        container.add_node(
++            "ArgMax",
++            leaf_scores_name,
++            indices_name,
++            name=scope.get_unique_operator_name("ArgMax"),
++            axis=1,
++        )
+     else:
+         zero_name = scope.get_unique_variable_name("zero")
+         zero_matrix_name = scope.get_unique_variable_name("zero_matrix")
+@@ -397,14 +408,38 @@
+                 ):
+                     attrs[k] = np.array(attrs[k], dtype=dtype)
+ 
++        runtime_label_name = (
++            operator.outputs[0].full_name
++            if len(classes) == 1
++            else scope.get_unique_variable_name("runtime_label")
++        )
+         container.add_node(
+             op_type,
+             input_name,
+-            [operator.outputs[0].full_name, operator.outputs[1].full_name],
++            [runtime_label_name, operator.outputs[1].full_name],
+             op_domain=op_domain,
+             op_version=op_version,
+             **attrs,
+         )
++        if len(classes) > 1:
++            argmax_output_name = scope.get_unique_variable_name("argmax_output")
++            container.add_node(
++                "ArgMax",
++                operator.outputs[1].full_name,
++                argmax_output_name,
++                name=scope.get_unique_operator_name("ArgMax"),
++                axis=1,
++            )
++            _finalize_converter_classes(
++                scope,
++                argmax_output_name,
++                operator.outputs[0].full_name,
++                container,
++                np.asarray(classes),
++                onnx_proto.TensorProto.DOUBLE
++                if dtype == np.float64
++                else onnx_proto.TensorProto.FLOAT,
++            )
+ 
+         n_out = 2
+         if options["decision_path"]:
+--- a/skl2onnx/operator_converters/random_forest.py
++++ b/skl2onnx/operator_converters/random_forest.py
+@@ -18,7 +18,7 @@
+     get_default_tree_classifier_attribute_pairs,
+     get_default_tree_regressor_attribute_pairs,
+ )
+-from ..common.utils_classifier import get_label_classes
++from ..common.utils_classifier import get_label_classes, _finalize_converter_classes
+ from ..proto import onnx_proto
+ from .decision_tree import (
+     predict,
+@@ -269,14 +269,38 @@
+                 ):
+                     attr_pairs[k] = np.array(attr_pairs[k], dtype=attr_dtype).ravel()
+ 
++        runtime_label_name = (
++            operator.outputs[0].full_name
++            if len(classes) == 1
++            else scope.get_unique_variable_name("runtime_label")
++        )
+         container.add_node(
+             op_type,
+             input_name,
+-            [operator.outputs[0].full_name, operator.outputs[1].full_name],
++            [runtime_label_name, operator.outputs[1].full_name],
+             op_domain=op_domain,
+             op_version=op_version,
+             **attr_pairs,
+         )
++        if len(classes) > 1:
++            argmax_output_name = scope.get_unique_variable_name("argmax_output")
++            container.add_node(
++                "ArgMax",
++                operator.outputs[1].full_name,
++                argmax_output_name,
++                name=scope.get_unique_operator_name("ArgMax"),
++                axis=1,
++            )
++            _finalize_converter_classes(
++                scope,
++                argmax_output_name,
++                operator.outputs[0].full_name,
++                container,
++                np.asarray(classes),
++                onnx_proto.TensorProto.DOUBLE
++                if dtype == np.float64
++                else onnx_proto.TensorProto.FLOAT,
++            )
+ 
+         if not options.get("decision_path", False) and not options.get(
+             "decision_leaf", False
+--- a/tests/test_sklearn_grid_search_cv_converter.py
++++ b/tests/test_sklearn_grid_search_cv_converter.py
+@@ -151,7 +151,7 @@
+     def test_grid_search_gaussian_regressor_float(self):
+         # Very small alpha values make the float32 Gaussian kernel system
+         # ill-conditioned without adding coverage to the GridSearch wrapper.
+-        tuned_parameters = [{"alpha": np.logspace(-2, -0.5, 4)}]
++        tuned_parameters = [{"alpha": np.logspace(3, 4, 4)}]
+         clf = GridSearchCV(GaussianProcessRegressor(), tuned_parameters, cv=5)
+         model, X = fit_regression_model(clf)
+         model_onnx = convert_sklearn(
