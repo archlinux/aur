@@ -9,7 +9,7 @@
 #   modifiche non ancora rilasciate)
 
 pkgname=klamav-py
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Frontend Python minimale per ClamAV via clamd, erede spirituale di KlamAV 0.22"
 arch=('any')
@@ -32,7 +32,7 @@ install=klamav-py.install
 # Aggiornare pkgver a ogni rilascio, insieme a klamav_py/__init__.py,
 # debian/changelog e CHANGELOG.md (tests/test_changelog.py lo verifica).
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7528706784f171bc3f25cd7dc6154ce11011908151a3ad520f2aa7977c59af81')
+sha256sums=('9f2fe6621f9b1c7ad90c96c70c1d98abd98ce4ce388756ba3676818229545b28')
 
 build() {
   cd "$srcdir/KlamAV-Py-$pkgver"
