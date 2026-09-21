@@ -1,7 +1,7 @@
 # Maintainer: Seraphim Pardee <me at srp dot life>
 
 pkgname=rlshim-git
-pkgver=1.3.0
+pkgver=1.4.0.r0.g714cd71
 pkgrel=1
 pkgdesc="A lightweight, native Linux launcher for RuneLite. (Git version)"
 arch=('x86_64' 'aarch64')
