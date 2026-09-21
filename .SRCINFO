@@ -1,0 +1,18 @@
+pkgbase = rss-cli-git
+	pkgdesc = A UNIX-inspired CLI application for interacting with RSS feeds
+	pkgver = r25.111d396
+	pkgrel = 1
+	url = https://github.com/Clortox/rss-cli
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconf
+	depends = curl
+	provides = rss-cli
+	conflicts = rss-cli
+	source = rss-cli::git+https://github.com/Clortox/rss-cli.git
+	sha256sums = SKIP
+
+pkgname = rss-cli-git
