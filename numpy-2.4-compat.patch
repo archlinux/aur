@@ -1,0 +1,72 @@
+diff --git a/filterpy/kalman/EKF.py b/filterpy/kalman/EKF.py
+--- a/filterpy/kalman/EKF.py
++++ b/filterpy/kalman/EKF.py
+@@ -405,7 +405,7 @@ class ExtendedKalmanFilter(object):
+         mahalanobis : float
+         """
+         if self._mahalanobis is None:
+-            self._mahalanobis = sqrt(float(dot(dot(self.y.T, self.SI), self.y)))
++            self._mahalanobis = sqrt(dot(dot(self.y.T, self.SI), self.y).item())
+         return self._mahalanobis
+ 
+     def __repr__(self):
+diff --git a/filterpy/kalman/CubatureKalmanFilter.py b/filterpy/kalman/CubatureKalmanFilter.py
+--- a/filterpy/kalman/CubatureKalmanFilter.py
++++ b/filterpy/kalman/CubatureKalmanFilter.py
+@@ -423,7 +423,7 @@ class CubatureKalmanFilter(object):
+         mahalanobis : float
+         """
+         if self._mahalanobis is None:
+-            self._mahalanobis = sqrt(float(dot(dot(self.y.T, self.SI), self.y)))
++            self._mahalanobis = sqrt(dot(dot(self.y.T, self.SI), self.y).item())
+         return self._mahalanobis
+ 
+     def __repr__(self):
+diff --git a/filterpy/kalman/fading_memory.py b/filterpy/kalman/fading_memory.py
+--- a/filterpy/kalman/fading_memory.py
++++ b/filterpy/kalman/fading_memory.py
+@@ -438,7 +438,7 @@ class FadingKalmanFilter(object):
+         mahalanobis : float
+         """
+         if self._mahalanobis is None:
+-            self._mahalanobis = sqrt(float(dot(dot(self.y.T, self.SI), self.y)))
++            self._mahalanobis = sqrt(dot(dot(self.y.T, self.SI), self.y).item())
+         return self._mahalanobis
+ 
+     def __repr__(self):
+diff --git a/filterpy/kalman/UKF.py b/filterpy/kalman/UKF.py
+--- a/filterpy/kalman/UKF.py
++++ b/filterpy/kalman/UKF.py
+@@ -753,7 +753,7 @@ class UnscentedKalmanFilter(object):
+         mahalanobis : float
+         """
+         if self._mahalanobis is None:
+-            self._mahalanobis = sqrt(float(dot(dot(self.y.T, self.SI), self.y)))
++            self._mahalanobis = sqrt(dot(dot(self.y.T, self.SI), self.y).item())
+         return self._mahalanobis
+ 
+     def __repr__(self):
+diff --git a/filterpy/kalman/kalman_filter.py b/filterpy/kalman/kalman_filter.py
+--- a/filterpy/kalman/kalman_filter.py
++++ b/filterpy/kalman/kalman_filter.py
+@@ -1131,7 +1131,7 @@ class KalmanFilter(object):
+         mahalanobis : float
+         """
+         if self._mahalanobis is None:
+-            self._mahalanobis = sqrt(float(dot(dot(self.y.T, self.SI), self.y)))
++            self._mahalanobis = sqrt(dot(dot(self.y.T, self.SI), self.y).item())
+         return self._mahalanobis
+ 
+     @property
+diff --git a/filterpy/leastsq/least_squares.py b/filterpy/leastsq/least_squares.py
+--- a/filterpy/leastsq/least_squares.py
++++ b/filterpy/leastsq/least_squares.py
+@@ -129,7 +129,7 @@ class LeastSquaresFilter(object):
+ 
+         if self._order == 0:
+             K[0] = 1. / n
+-            y = z - x
++            y = z - x[0]
+             x[0] += K[0] * y
+ 
+         elif self._order == 1:

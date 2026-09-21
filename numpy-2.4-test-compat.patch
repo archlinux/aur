@@ -1,0 +1,94 @@
+diff --git a/filterpy/kalman/tests/test_imm.py b/filterpy/kalman/tests/test_imm.py
+--- a/filterpy/kalman/tests/test_imm.py
++++ b/filterpy/kalman/tests/test_imm.py
+@@ -176,8 +176,8 @@ def test_imm():
+ 
+     zs = np.zeros((N, 2))
+     for i in range(len(zs)):
+-        zs[i, 0] = simxs[i, 0] + randn()*r
+-        zs[i, 1] = simxs[i, 2] + randn()*r
++        zs[i, 0] = simxs[i, 0].item() + randn()*r
++        zs[i, 1] = simxs[i, 2].item() + randn()*r
+ 
+     '''
+     try:
+diff --git a/filterpy/kalman/tests/test_fm.py b/filterpy/kalman/tests/test_fm.py
+--- a/filterpy/kalman/tests/test_fm.py
++++ b/filterpy/kalman/tests/test_fm.py
+@@ -59,7 +59,9 @@ def test_noisy_1d():
+ 
+         # test mahalanobis
+         a = np.zeros(f.y.shape)
+-        maha = scipy_mahalanobis(a, f.y, f.SI)
++        maha = scipy_mahalanobis(
++            np.asarray(a).reshape(-1), np.asarray(f.y).reshape(-1), f.SI
++        )
+         assert f.mahalanobis == approx(maha)
+         print(z, maha, f.y, f.S)
+         assert maha < 4
+diff --git a/filterpy/kalman/tests/test_kf.py b/filterpy/kalman/tests/test_kf.py
+--- a/filterpy/kalman/tests/test_kf.py
++++ b/filterpy/kalman/tests/test_kf.py
+@@ -121,7 +121,9 @@ def test_noisy_1d():
+ 
+         # test mahalanobis
+         a = np.zeros(f.y.shape)
+-        maha = scipy_mahalanobis(a, f.y, f.SI)
++        maha = scipy_mahalanobis(
++            np.asarray(a).reshape(-1), np.asarray(f.y).reshape(-1), f.SI
++        )
+         assert f.mahalanobis == approx(maha)
+ 
+ 
+@@ -233,7 +235,9 @@ def test_noisy_11d():
+ 
+         # test mahalanobis
+         a = np.zeros(f.y.shape)
+-        maha = scipy_mahalanobis(a, f.y, f.SI)
++        maha = scipy_mahalanobis(
++            np.asarray(a).reshape(-1), np.asarray(f.y).reshape(-1), f.SI
++        )
+         assert f.mahalanobis == approx(maha)
+ 
+     # now do a batch run with the stored z values so we can test that
+@@ -353,7 +357,9 @@ def test_steadystate():
+         cv.update_steadystate([i]*dim)
+         # test mahalanobis
+         a = np.zeros(cv.y.shape)
+-        maha = scipy_mahalanobis(a, cv.y, cv.SI)
++        maha = scipy_mahalanobis(
++            np.asarray(a).reshape(-1), np.asarray(cv.y).reshape(-1), cv.SI
++        )
+         assert cv.mahalanobis == approx(maha)
+ 
+ 
+diff --git a/filterpy/stats/tests/test_stats.py b/filterpy/stats/tests/test_stats.py
+--- a/filterpy/stats/tests/test_stats.py
++++ b/filterpy/stats/tests/test_stats.py
+@@ -20,12 +20,25 @@ from math import exp
+ import numpy as np
+ from numpy.linalg import inv
+ import scipy
+-from scipy.spatial.distance import mahalanobis as scipy_mahalanobis
++from scipy.spatial.distance import mahalanobis as _scipy_mahalanobis
+ from filterpy.stats import norm_cdf, multivariate_gaussian, logpdf, mahalanobis
+ 
+ 
+ ITERS = 10000
+ 
++
++def scipy_mahalanobis(x, mean, cov):
++    # SciPy requires 1-D inputs; preserve the scalar/column-vector coverage
++    # of FilterPy's more permissive public helper.
++    def validate_vector(value):
++        value = np.asarray(value).squeeze()
++        return np.atleast_1d(value)
++
++    x = validate_vector(x)
++    mean = validate_vector(mean)
++    return _scipy_mahalanobis(x, mean, cov)
++
++
+ def test_mahalanobis():
+     global a, b, S
+     # int test
