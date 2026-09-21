@@ -15,23 +15,21 @@ depends=(
   'zlib'
   'libnghttp2'
   'libuv'
-  'libcap'
   'liburcu'
+  'json-c'
+  'libxml2'
+  'lmdb'
+  'krb5'
 )
 makedepends=('git' 'python-sphinx' 'meson' 'ninja')
-optdepends=('krb5: GSSAPI authentication for nsupdate')
 provides=('bind-tools')
 conflicts=('bind' 'bind-tools')
 options=('!emptydirs')
 source=("git+https://gitlab.isc.org/isc-projects/bind9.git#tag=v${pkgver}")
-sha256sums=('a23a762a4cc591f28b6aa7fa5fe446996ee514e01cd69ec962110df705c4721b')
+sha256sums=('d437b2abc88de4c206bdc911c7837bda17f37409b936ef337a5bee44a46e1ade')
 
 # Client tools to keep
 _tools=(dig host nslookup nsupdate delv mdig)
-
-prepare() {
-  cd bind9
-}
 
 build() {
   cd bind9
@@ -42,7 +40,8 @@ build() {
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
     --localstatedir=/var \
-    -Dgeoip=disabled
+    -Dgeoip=disabled \
+    -Ddnstap=disabled
   ninja -C build
 }
 
@@ -74,8 +73,8 @@ package() {
     fi
   done
 
-  # Install license
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+  # Install license (from the BIND source tree, keeping the AUR repo minimal)
+  install -Dm644 "${srcdir}/bind9/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/bind9/COPYRIGHT" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 }
 

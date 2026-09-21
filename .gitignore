@@ -1,1 +1,7 @@
+src/
+pkg/
+output/
 bind9/
+*.pkg.tar.zst
+*.pkg.tar.xz
+Dockerfile
