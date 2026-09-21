@@ -5,10 +5,10 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/qingjian-server
+ExecStart=/usr/bin/qingjian-linux-server
 Restart=on-failure
 RestartSec=2
-Environment=QINGJIAN_DATA_DIR=/usr/share/qingjian
+Environment=QINGJIAN_RESOURCES=/usr/share/qingjian/resources
 
 [Install]
 WantedBy=graphical-session.target
