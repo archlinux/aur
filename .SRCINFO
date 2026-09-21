@@ -1,5 +1,5 @@
 pkgbase = nbtcon
-	pkgdesc = Convert between NBT and other formats.
+	pkgdesc = Convert between NBT and other formats
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://gitlab.com/FoxAmes/nbtcon
