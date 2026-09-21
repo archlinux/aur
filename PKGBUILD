@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <devel at sciunto dot org>
 
 pkgname=labelassister
-pkgver=2026.09.04.0
+pkgver=2026.09.21.0
 pkgrel=1
 pkgdesc="Label editor for Brother QL-700 and QL-800 series"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('python' 'pyside6' 'python-pillow' 'python-pymupdf' 'python-pyusb' 'python-brother_ql')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("labelassister-v${pkgver}.tar.gz::https://git.sciunto.org/PublicTools/LabelAssister/archive/${pkgver}.tar.gz")
-sha256sums=('c3523eecaa289c6420e9ca58a0d23011958c9ca54c4cbe888e3ab8a6ae9cd69f')
+sha256sums=('c795aa551d494a035209d8345bc7540f639db821edfcbddf9c355ef670b6e73a')
 
 build() {
     cd "$srcdir/labelassister"
