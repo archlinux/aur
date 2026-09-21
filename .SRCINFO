@@ -1,6 +1,6 @@
 pkgbase = php-phalcon-git
 	pkgdesc = Web framework delivered as a C-extension for PHP (development version)
-	pkgver = 5.20.3.r0.geecab4d
+	pkgver = 5.21.0.r8.g97bd9f7
 	pkgrel = 1
 	url = https://phalcon.io
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = php-phalcon-git
 	makedepends = git
 	depends = php>=8.5
 	depends = php<8.6
-	provides = php-phalcon=5.20.3.r0.geecab4d
+	provides = php-phalcon=5.21.0.r8.g97bd9f7
 	conflicts = php-phalcon
 	backup = etc/php/conf.d/phalcon.ini
 	source = cphalcon::git+https://github.com/phalcon/cphalcon.git#branch=master
