@@ -1,6 +1,6 @@
 pkgbase = open-cad-studio
 	pkgdesc = A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering
-	pkgver = 2026.37
+	pkgver = 2026.38
 	pkgrel = 1
 	url = https://github.com/HakanSeven12/OpenCADStudio
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = open-cad-studio
 	depends = libgcc
 	depends = wayland
 	options = !lto
-	source = https://github.com/HakanSeven12/OpenCADStudio/archive/refs/tags/v2026.37.tar.gz
+	source = https://github.com/HakanSeven12/OpenCADStudio/archive/refs/tags/v2026.38.tar.gz
 	source = logo.png
 	source = OpenCADStudio.desktop
-	sha256sums = 97eeaa76182a72921aeaa5b964801f6c954eb0c51209838fafae1fdf0ab903dc
+	sha256sums = 0215bbb999e1e4b2b8c62ac8eb1cdbb680245dc4491c8970da446ffa92530754
 	sha256sums = 0d1be965a2d3d2b9013be97fd18b4e5bee92369547cf184c19de0629879f362b
 	sha256sums = ad8b78df51f5bb346a41812b649b7f201c460c045982080c51539398fb9b2f93
 
