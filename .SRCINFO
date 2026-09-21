@@ -1,18 +1,19 @@
 pkgbase = python-torch-scatter
 	pkgdesc = PyTorch Extension Library of Optimized Scatter Operations
 	pkgver = 2.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rusty1s/pytorch_scatter
 	arch = x86_64
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = cuda
 	makedepends = gcc15
 	depends = python
-	depends = python-pytorch
+	depends = python-pytorch-cuda
+	depends = cuda
 	source = python-torch-scatter-2.1.2.tar.gz::https://github.com/rusty1s/pytorch_scatter/archive/refs/tags/2.1.2.tar.gz
 	sha256sums = 6f375dbc9cfe03f330aa29ea553e9c7432e9b040d039b041f08bf05df1a8bf37
 
