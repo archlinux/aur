@@ -1,7 +1,7 @@
 pkgbase = blockbench
 	pkgdesc = A low-poly 3D model editor
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blockbench.net
 	arch = x86_64
 	arch = armv7h
