@@ -1,6 +1,6 @@
 # Maintainer: Marcus Ordoñez <guitaripod@gmail.com>
 pkgname=tailscode
-pkgver=1.51
+pkgver=1.52
 pkgrel=1
 pkgdesc="Coding agents over Tailscale — a GTK4 client for Claude Code and opencode"
 arch=('x86_64' 'aarch64')
