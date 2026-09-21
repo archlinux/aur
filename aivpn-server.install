@@ -11,7 +11,9 @@ post_install() {
     fi
 
     if [ ! -f /var/lib/aivpn/clients.json ]; then
-        install -o aivpn -g aivpn -m 600 /dev/null /var/lib/aivpn/clients.json
+        # Must be valid JSON: server 1.0.0 rejects a zero-byte DB at startup
+        printf '{"clients":[]}\n' | install -o aivpn -g aivpn -m 600 /dev/stdin \
+            /var/lib/aivpn/clients.json
     fi
 
     echo "

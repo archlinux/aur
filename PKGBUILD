@@ -2,7 +2,7 @@
 
 pkgbase=aivpn
 pkgname=('aivpn-client' 'aivpn-server' 'aivpn-kernel-dkms')
-pkgver=0.9.2
+pkgver=1.1.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/infosave2007/aivpn"
@@ -16,12 +16,12 @@ source=(
     'aivpn-server.install'
     'aivpn-client@.service'
 )
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha512sums=('7813db0821439e3e9c6f41407ac59658f7c6897e993190cfae1bea8186e734751e0ca84ed3895df7220d4b674a9986e0928c9e9d8c094ecc15b80d85ee7bf5af'
+            'd9b68153914a3ce30c4cc23fc6e1a13b4460e0d6ccaf5e9945bd1a46bd780239ee8bd62e3627e13b082d47dded074eacd5d9109cd04afa6fcfa1a0561cc94197'
+            '7862443dbfd9aedc8c1c279f6c4532c9ac8359329ea076f967c6cbad77f83b6506cd124d815bbaf48356dbdb8c27c537fdfb187c7c48755728603bf4beed6409'
+            '649912ba3d34ec82c9d1360d1e0d572c727834ee2ce321da84211fd89159884ead1417ac1d9320b13694247cc08896105116c104733f38271c43740485e03942'
+            'f11cf113932772e5cb90ea6c1e19a14db83aa420f931fc4f09da46d9da90a5e7772a03b9528316093dc1ce044c855dbd84030b2bd6307274dae3611e74fa4608'
+            '5bb056f29c71db4545f6327272d8d9db8c80accdc88f2d2b131ceadc9be5b25191e521ae3e6aafa3d913a677a155cbdf464fa2dc35d166096c4324610a524443')
 
 prepare() {
     cd "$pkgbase-$pkgver"
@@ -33,7 +33,9 @@ build() {
     cd "$pkgbase-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --bin aivpn-server
+    # Full server build: management-api is required by the aivpn-web panel
+    cargo build --frozen --release --bin aivpn-server \
+        --features 'management-api,metrics,neural'
     cargo build --frozen --release --bin aivpn-client
 }
 
@@ -55,7 +57,6 @@ package_aivpn-server() {
     optdepends=('aivpn-kernel-dkms: optional kernel-accelerated data path')
     backup=(
         'etc/aivpn/server.json'
-        'etc/aivpn/clients.json'
     )
     install='aivpn-server.install'
 
@@ -69,9 +70,7 @@ package_aivpn-server() {
         "$pkgdir/usr/lib/tmpfiles.d/aivpn-server.conf"
     install -Dm640 "$pkgbase-$pkgver/deploy/config/server.json.example" \
         "$pkgdir/etc/aivpn/server.json"
-    # Empty client DB placeholder — preserved across upgrades via backup=
-    echo '{}' | install -Dm640 /dev/stdin \
-        "$pkgdir/etc/aivpn/clients.json"
+    # Client DB lives in /var/lib/aivpn/clients.json, created by post_install()
 
     local mask
     for mask in "$pkgbase-$pkgver/assets/masks/"*.json; do

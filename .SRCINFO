@@ -1,23 +1,23 @@
 pkgbase = aivpn
-	pkgver = 0.9.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/infosave2007/aivpn
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = aivpn-0.9.2.tar.gz::https://github.com/infosave2007/aivpn/archive/refs/tags/v0.9.2.tar.gz
+	source = aivpn-1.1.0.tar.gz::https://github.com/infosave2007/aivpn/archive/refs/tags/v1.1.0.tar.gz
 	source = aivpn-server.service
 	source = aivpn-server.sysusers
 	source = aivpn-server.tmpfiles
 	source = aivpn-server.install
 	source = aivpn-client@.service
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = 7813db0821439e3e9c6f41407ac59658f7c6897e993190cfae1bea8186e734751e0ca84ed3895df7220d4b674a9986e0928c9e9d8c094ecc15b80d85ee7bf5af
+	sha512sums = d9b68153914a3ce30c4cc23fc6e1a13b4460e0d6ccaf5e9945bd1a46bd780239ee8bd62e3627e13b082d47dded074eacd5d9109cd04afa6fcfa1a0561cc94197
+	sha512sums = 7862443dbfd9aedc8c1c279f6c4532c9ac8359329ea076f967c6cbad77f83b6506cd124d815bbaf48356dbdb8c27c537fdfb187c7c48755728603bf4beed6409
+	sha512sums = 649912ba3d34ec82c9d1360d1e0d572c727834ee2ce321da84211fd89159884ead1417ac1d9320b13694247cc08896105116c104733f38271c43740485e03942
+	sha512sums = f11cf113932772e5cb90ea6c1e19a14db83aa420f931fc4f09da46d9da90a5e7772a03b9528316093dc1ce044c855dbd84030b2bd6307274dae3611e74fa4608
+	sha512sums = 5bb056f29c71db4545f6327272d8d9db8c80accdc88f2d2b131ceadc9be5b25191e521ae3e6aafa3d913a677a155cbdf464fa2dc35d166096c4324610a524443
 
 pkgname = aivpn-client
 	pkgdesc = AIVPN client — connects to an aivpn-server endpoint
@@ -30,7 +30,6 @@ pkgname = aivpn-server
 	depends = 
 	optdepends = aivpn-kernel-dkms: optional kernel-accelerated data path
 	backup = etc/aivpn/server.json
-	backup = etc/aivpn/clients.json
 
 pkgname = aivpn-kernel-dkms
 	pkgdesc = AIVPN kernel module (DKMS) — in-kernel fast path (Linux 6.1+, CONFIG_RUST=y required)
