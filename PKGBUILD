@@ -1,7 +1,7 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 # Contributor: Bin Jin <bjin@protonmail.com>
 pkgname=omp-bun
-pkgver=18.2.6
+pkgver=18.2.7
 pkgrel=1
 pkgdesc="AI Coding agent for the terminal (built with system bun)"
 arch=('x86_64')
