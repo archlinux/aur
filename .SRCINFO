@@ -1,0 +1,14 @@
+pkgbase = openrdap
+	pkgdesc = A command line RDAP client implementation in Go.
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://www.openrdap.org/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = https://github.com/openrdap/rdap/archive/refs/tags/v0.10.2.tar.gz
+	sha256sums = 90c8ad29468cfb774c166a371b164c1e2a37de088e52328f4b9d5c80c0e23d98
+
+pkgname = openrdap
