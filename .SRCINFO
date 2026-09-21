@@ -1,6 +1,6 @@
 pkgbase = vinci-client-bin
 	pkgdesc = Vinci, your second brain (prebuilt; requires private repository access)
-	pkgver = 0.2.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/meetvinci/vinci
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = vinci-client-bin
 	depends = gdk-pixbuf2
 	depends = dbus
 	depends = hicolor-icon-theme
-	provides = vinci=0.2.0
+	provides = vinci=0.3.1
 	conflicts = vinci
 	options = !strip
 	options = !debug
-	source = vinci-0.2.0-amd64.deb::vinci://567538388
+	source = vinci-0.3.1-amd64.deb::vinci://578803025
 	source = download.sh
-	sha256sums = 03eda658d3ff2644d4428dd41d0c6a05bfba2841996806af2ef6f5a15ceaab77
+	sha256sums = bf46602337e56861d97d3e1b5c4d5055d48eb92430dd78acf7276889e5d8e430
 	sha256sums = 690e066bdf9fddc809d5810903966c5109bc8aaf75a2cf55c837e9e1f3147c5a
 
 pkgname = vinci-client-bin
