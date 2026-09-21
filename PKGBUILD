@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=datazen
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Lightweight, open-source AI database client"
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(
     'system-prompts-path.patch'
 )
 sha256sums=(
-    'e217e172f3b2f561821ed93c7bc93254ec5bb1545a9915a61ac0b00ce80f3cc4'
+'14598cb6bec0b9dde1b21b79142ac3f0720c5a9a0dcaabe672097780c0b5eeec'
     'b12b1123e1827d744b4a4136bd615a3e83110790e051342197fcd00e4e5f814a'
 )
 

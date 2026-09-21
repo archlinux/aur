@@ -1,6 +1,6 @@
 pkgbase = datazen
 	pkgdesc = Lightweight, open-source AI database client
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/flyxl/datazen
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = datazen
 	conflicts = datazen-bin
 	options = !lto
 	options = !debug
-	source = datazen-0.2.0.tar.gz::https://github.com/flyxl/datazen/archive/refs/tags/v0.2.0.tar.gz
+	source = datazen-0.2.1.tar.gz::https://github.com/flyxl/datazen/archive/refs/tags/v0.2.1.tar.gz
 	source = system-prompts-path.patch
-	sha256sums = e217e172f3b2f561821ed93c7bc93254ec5bb1545a9915a61ac0b00ce80f3cc4
+	sha256sums = 14598cb6bec0b9dde1b21b79142ac3f0720c5a9a0dcaabe672097780c0b5eeec
 	sha256sums = b12b1123e1827d744b4a4136bd615a3e83110790e051342197fcd00e4e5f814a
 
 pkgname = datazen
