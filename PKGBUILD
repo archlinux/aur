@@ -2,7 +2,7 @@
 # Contributor: Santiago Burgos <santiago.burgos1089@gmail.com>
 pkgname=fingwit
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Fingerprint Configuration Tool"
 url="https://github.com/xapp-project/fingwit"
 arch=('x86_64')
@@ -20,19 +20,18 @@ depends=(
   'xapp'
   'xapp-symbolic-icons'
 )
-makedepends=(
-  'meson'
-  'ninja'
-)
-source=("${pkgname}_${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('30f0914e8e7689f9005fd9a7bf3bc5d188ce42e664a6b39e2fe17abb7a2af4a0')
+makedepends=('meson')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+        'license.patch')
+sha256sums=('30f0914e8e7689f9005fd9a7bf3bc5d188ce42e664a6b39e2fe17abb7a2af4a0'
+            'c93378f42af280a724960c895b2007dabaa028368d1aba70d0cde6044f475222')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
 
-  # Fix license path
-  # Dialog expands too wide
-#  sed -i 's|common-licenses/GPL|licenses/spdx/GPL-3.0-or-later.txt|g' "$pkgname"
+  # Set license type in About dialog
+  # https://github.com/linuxmint/hypnotix/pull/406
+  patch -Np1 -i ../license.patch
 }
 
 build() {

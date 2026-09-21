@@ -1,0 +1,27 @@
+diff -Npur a/fingwit b/fingwit
+--- a/fingwit	2026-06-28 08:18:58.000000000 -0600
++++ b/fingwit	2026-09-21 10:20:37.508659460 -0600
+@@ -132,17 +132,7 @@ class Window():
+         dlg.set_title(_("About"))
+         dlg.set_program_name("Fingwit")
+         dlg.set_comments(_("Fingerprint configuration tool"))
+-        try:
+-            h = open('/usr/share/common-licenses/GPL', encoding="utf-8")
+-            s = h.readlines()
+-            gpl = ""
+-            for line in s:
+-                gpl += line
+-            h.close()
+-            dlg.set_license(gpl)
+-        except Exception as e:
+-            print (e)
+-
++        dlg.set_license_type(Gtk.License.GPL_3_0)
+         dlg.set_version("__PROJECT_VERSION__")
+         dlg.set_icon_name("fingwit")
+         dlg.set_logo_icon_name("fingwit")
+@@ -415,4 +405,3 @@ class Window():
+ if __name__ == "__main__":
+     application = Application("org.x.fingwit", Gio.ApplicationFlags.FLAGS_NONE)
+     application.run()
+-
