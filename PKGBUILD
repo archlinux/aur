@@ -1,8 +1,7 @@
 #
 # PKGBUILD for ADFlib
 #
-# Contributor: Uffe Jakobsen <uffe@uffe.org>
-# Maintainer: Uffe Jakobsen <uffe@uffe.org>
+# Maintainer: Uffe Jakobsen: uffe _.at._ uffe _.dot._ org
 #
 pkgname=adflib
 pkgver=0.10.7
@@ -33,7 +32,7 @@ sha256sums=('7670749f3da56c6321ec14a879f69ed12e8c6cb57fcced70f20926c67b4367d6')
 
 prepare()
 {
-  cd "$srcdir/${_pkgname}-${_pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
 }
 
 build()
