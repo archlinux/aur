@@ -1,0 +1,23 @@
+pkgbase = endcord-installer
+	pkgdesc = Installer script for endcord - feature rich Discord TUI client.
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://github.com/sparklost/endcord
+	arch = any
+	license = LicenseRef-SparkLost
+	depends = curl
+	depends = bash
+	optdepends = xclip: clipboard support on X11
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = aspell: spellchecking
+	optdepends = yt-dlp: youtube support
+	optdepends = mpv: youtube in native player
+	optdepends = imagemagick: make notification images round
+	optdepends = gtk3: for endcord-gui
+	optdepends = libgirepository: required if building endcord-gui
+	provides = endcord-installer
+	conflicts = endcord-installer
+	source = install.sh::https://raw.githubusercontent.com/sparklost/endcord/main/tools/install.sh
+	sha256sums = SKIP
+
+pkgname = endcord-installer
