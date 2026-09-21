@@ -10,7 +10,6 @@ pkgbase = pshash
 	makedepends = ghc-libs
 	makedepends = haskell-random
 	makedepends = help2man
-	makedepends = ncurses
 	depends = haskell-random
 	provides = pshash
 	conflicts = pshash
