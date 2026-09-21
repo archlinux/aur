@@ -1,7 +1,7 @@
 pkgbase = welink-wine
 	pkgdesc = 华为云 WeLink 数字化办公平台（官方 Windows 客户端 + wine，已修复输入框无法打字）
 	pkgver = 7.60.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.huaweicloud.com/product/welink.html
 	install = welink-wine.install
 	arch = x86_64

@@ -2,7 +2,7 @@
 pkgname=welink-wine
 pkgver=7.60.2
 _build=202607081412_36816_release_2026.06.0_cloud_7.60.2_615
-pkgrel=1
+pkgrel=2
 pkgdesc="华为云 WeLink 数字化办公平台（官方 Windows 客户端 + wine，已修复输入框无法打字）"
 arch=('x86_64')
 url="https://www.huaweicloud.com/product/welink.html"
