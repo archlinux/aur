@@ -2,7 +2,7 @@
 # Maintainer: Lucas Santos <hello@lsantos.dev>
 
 pkgname='proton-drive-fs-bin'
-pkgver=0.24.2
+pkgver=0.25.0
 pkgrel=1
 pkgdesc='FUSE virtual filesystem for Proton Drive on Linux.'
 url='https://github.com/khaosdoctor/proton-drive-linux-fs'
@@ -14,10 +14,10 @@ depends=('fuse3')
 optdepends=('zenity: About dialog' 'libsecret: store the key password in the OS keyring')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v${pkgver}/proton-drive-linux-fs_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('bdf4a55099fbdf9edda10af2345a03685843c984b5dcae97c850f14464cdf34a')
+sha256sums_aarch64=('d2018cbba1f0aadff4dabbeecc7d7d1e27ac6081834807753e1749e1826f75e8')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v${pkgver}/proton-drive-linux-fs_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('ccf05113502bb2bd90269e077cef14d5bb72d7a5ba16ab8b6e135ed0a6064eb2')
+sha256sums_x86_64=('406fc99297de97da2a2b769792ffad517070ae57a58756a1aa23f4d3e86d0b44')
 
 package() {
   install -Dm755 "./proton-drive-fs" "${pkgdir}/usr/bin/proton-drive-fs"
@@ -25,9 +25,7 @@ package() {
   install -Dm644 "./contrib/proton-drive-fs.desktop" "${pkgdir}/usr/share/applications/proton-drive-fs.desktop"
   install -Dm644 "./contrib/icons/proton-drive-fs.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/proton-drive-fs.png"
   sed 's|@BINDIR@|/usr/bin|g' "./contrib/systemd/proton-drive-fs.service" > "${srcdir}/proton-drive-fs.service"
-  sed 's|@BINDIR@|/usr/bin|g' "./contrib/systemd/proton-drive-fs-tray.service" > "${srcdir}/proton-drive-fs-tray.service"
   install -Dm644 "${srcdir}/proton-drive-fs.service" "${pkgdir}/usr/lib/systemd/user/proton-drive-fs.service"
-  install -Dm644 "${srcdir}/proton-drive-fs-tray.service" "${pkgdir}/usr/lib/systemd/user/proton-drive-fs-tray.service"
   install -Dm644 "./contrib/io.github.khaosdoctor.proton_drive_fs.metainfo.xml" "${pkgdir}/usr/share/metainfo/io.github.khaosdoctor.proton_drive_fs.metainfo.xml"
   install -Dm644 "./contrib/packaging/proton-drive-fs-upgrade.hook" "${pkgdir}/usr/share/libalpm/hooks/proton-drive-fs-upgrade.hook"
   install -Dm755 "./contrib/packaging/proton-drive-fs-restart" "${pkgdir}/usr/share/libalpm/scripts/proton-drive-fs-restart"
