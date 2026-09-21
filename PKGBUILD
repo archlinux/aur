@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=electronmail
-pkgver=5.3.8
+pkgver=5.3.9
 pkgrel=1
 _nodeversion=24
-_electronversion=42
+_electronversion=44
 pkgdesc="Unofficial ProtonMail Desktop App"
 arch=('x86_64')
 url="https://github.com/vladimiry/ElectronMail"
@@ -26,7 +26,7 @@ optdepends=('org.freedesktop.secrets: password storage backend')
 source=("git+https://github.com/vladimiry/ElectronMail.git#tag=v$pkgver"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('a58b0c604b419c9e9509e512787adf05e7fd18dc98174bb1576d98205e28efee'
+sha256sums=('c677451da4c7867f7c8a52275d93d3cdd30e2df7252ef5615bccc8b99ae3603c'
             'c95c69f1d0db27180236ff063d9563da8750ecce81883adfb217b73ac3bb974e'
             'e7e9dd6e065118ae5d9624c7c81328086719fab198d30a92b08979c29757a3b2')
 
@@ -63,7 +63,7 @@ build() {
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   _ensure_local_nvm
   pnpm app:dist
-  npm run electron-builder:shortcut -- --linux pacman \
+  pnpm electron-builder:dist:linux:pacman \
     -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
