@@ -1,0 +1,11 @@
+post_install() {
+  echo 'surfn-icons-git now contains only the base Surfn theme.'
+  echo 'Install surfn-icons-meta for the full collection, or surfn-<variant>-icons-git for an individual theme.'
+}
+
+post_upgrade() {
+  if [ "$(vercmp "$2" '1:26.06.21.r7.g1f8dde7b-2')" -lt 0 ]; then
+    echo 'Bundled Surfn variants have been removed and are now packaged separately.'
+    post_install
+  fi
+}
