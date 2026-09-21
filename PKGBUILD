@@ -6,13 +6,13 @@
 _name=plasma-framework
 pkgname=${_name}5
 pkgver=5.116.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Plasma library and runtime components based upon KF5 and Qt5'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kactivities5 kdeclarative5 kglobalaccel5 kwayland5 kirigami2)
-makedepends=(extra-cmake-modules qt5-tools qt5-doc kdoctools5 doxygen)
+makedepends=(extra-cmake-modules qt5-tools kdoctools5 doxygen)
 conflicts=("$_name<5.111")
 replaces=("$_name<5.111")
 groups=(kf5)
