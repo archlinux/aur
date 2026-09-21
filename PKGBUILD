@@ -1,7 +1,7 @@
 # Maintainer: Léo Haf <leo@haf.ovh>
 pkgname=bitcoin-knots
-pkgver=29.4.1.knots20260508
-pkgrel=2
+pkgver=29.4.2.knots20260508
+pkgrel=1
 epoch=
 pkgdesc="enhanced Bitcoin node/wallet software"
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=('bitcoin')
 backup=('etc/bitcoin/bitcoin.conf')
 options=('!debug')
 source=("https://bitcoinknots.org/files/29.x/$pkgver/bitcoin-$pkgver.tar.gz")
-sha256sums=('da43e8c790bed9d8c432d07a10271084537dbd61de3ba0f7bd49f959adcb9b8f')
+sha256sums=('11c0b99a82b8b1c9c29ab76d9b0507ce1017813665741627b3f3883a4c2f7a7f')
 validpgpkeys=(
 	'DAED928C727D3E613EC46635F5073C4F4882FFFC' # Léo haf <leo@haf.ovh>
 )
