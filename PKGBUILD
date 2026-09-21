@@ -3,7 +3,7 @@
 pkgname=python-aiorwlock
 _pkgname=aiorwlock
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Read-write lock for asyncio'
 arch=('any')
 url='https://github.com/aio-libs/aiorwlock'
@@ -13,7 +13,7 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
-    'python-setuptools'
+    'python-poetry-core'
 )
 checkdepends=(
     'python-pytest'
