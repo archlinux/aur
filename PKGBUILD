@@ -1,7 +1,7 @@
 # Maintainer: SergioEduP <arch at sergioedup dot com>
 
 pkgname=cow-wm-git
-pkgver=0.2.r63.gc71eb81
+pkgver=0.3.r41.g165a3a1
 pkgrel=1
 pkgdesc='cow is a stacking window manager using river as the compositor.'
 arch=(x86_64)
@@ -20,7 +20,7 @@ depends=(
   pango
   cairo
   libbsd
-  scdoc
+  lowdown
   bison
   flex
 )
