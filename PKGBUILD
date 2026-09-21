@@ -35,7 +35,7 @@ build() {
   npm run build:offline
 
   # Remove packages which are only necessary in development / building
-  npm prune --omit=dev --cache "${srcdir}/npm-cache"
+  npm prune --omit=dev --ignore-scripts --no-audit --no-fund --cache "${srcdir}/npm-cache"
 }
 
 package() {
