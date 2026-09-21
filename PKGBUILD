@@ -1,7 +1,7 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 _pkgname=appium-inspector-plugin
 pkgname="nodejs-$_pkgname"
-pkgver=2026.9.1
+pkgver=2026.9.2
 pkgrel=1
 pkgdesc="An app inspector for use with an Appium server"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('43394cda44c4ad5c69690881612da7962e2cc720fed33090ca8c7e8fdc0d3a22')
+sha256sums=('aba1d2e2b53975b7b49c28066b6bb6d2e5adf374c67286f95123aae0ca6c9e23')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
