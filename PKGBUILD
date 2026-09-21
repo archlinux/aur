@@ -12,6 +12,7 @@ arch=("x86_64")
 url="https://github.com/KytyPS5/KytyPS5"
 license=("GPL-2.0-only")
 conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 depends=(
 	"jxrlib"
 	"karchive"

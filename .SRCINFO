@@ -24,6 +24,7 @@ pkgbase = kytyps5-git
 	depends = qt6-imageformats
 	depends = qt6-wayland
 	depends = qt6-webengine
+	provides = kytyps5
 	conflicts = kytyps5
 	source = kytyps5::git+https://github.com/KytyPS5/KytyPS5.git
 	source = kytyps5.desktop
