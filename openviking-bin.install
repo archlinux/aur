@@ -1,0 +1,20 @@
+post_install() {
+	cat <<'EOF'
+==> OpenViking is installed into a private virtualenv at /opt/openviking/venv.
+    Available commands: openviking, openviking-server, ov, vikingbot
+
+==> A configuration file is required before the service can start; create either
+      /etc/openviking/ov.conf                   (system wide), or
+      /var/lib/openviking/.openviking/ov.conf   (service user, takes precedence)
+    e.g.  sudo -u openviking -H openviking-server init
+
+==> Then start it with:
+      systemctl enable --now openviking
+
+==> This package must be rebuilt after every Python minor version upgrade.
+EOF
+}
+
+post_upgrade() {
+	post_install
+}

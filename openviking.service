@@ -1,0 +1,33 @@
+[Unit]
+Description=OpenViking Context Database
+Documentation=https://openviking.ai
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=openviking
+Group=openviking
+Environment=HOME=/var/lib/openviking
+WorkingDirectory=/var/lib/openviking
+StateDirectory=openviking
+StateDirectoryMode=0700
+ExecStart=/usr/bin/openviking-server
+Restart=on-failure
+RestartSec=5
+
+# Configuration is read from /etc/openviking/ov.conf, or from
+# /var/lib/openviking/.openviking/ov.conf which takes precedence.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/openviking
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target
