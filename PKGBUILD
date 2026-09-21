@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast-git
-pkgver=0.8.0.r20.1ca29d5
+pkgver=0.9.0.r1.64b1089
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')

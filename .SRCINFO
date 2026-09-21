@@ -1,6 +1,6 @@
 pkgbase = spotifast-git
 	pkgdesc = Native Spotify client
-	pkgver = 0.8.0.r20.1ca29d5
+	pkgver = 0.9.0.r1.64b1089
 	pkgrel = 1
 	url = https://github.com/crmne/spotifast
 	install = spotifast-git.install
@@ -20,9 +20,9 @@ pkgbase = spotifast-git
 	depends = libx11
 	optdepends = libxkbcommon-x11: keyboard handling in X11 sessions
 	optdepends = pipewire-pulse: PipeWire as the PulseAudio server
-	provides = spotifast=0.8.0.r20.1ca29d5
-	provides = fastpotify=0.8.0.r20.1ca29d5
-	provides = fastpotify-git=0.8.0.r20.1ca29d5
+	provides = spotifast=0.9.0.r1.64b1089
+	provides = fastpotify=0.9.0.r1.64b1089
+	provides = fastpotify-git=0.9.0.r1.64b1089
 	conflicts = fastpotify
 	conflicts = fastpotify-bin
 	conflicts = fastpotify-git
