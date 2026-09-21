@@ -1,7 +1,7 @@
 # Maintainer: aeneby <aaron (at) sowry (dot) nz>
 
 pkgname=thinlinc-client
-pkgver=4.20.0
+pkgver=4.21.0
 pkgrel=1
 pkgdesc="Cendio ThinLinc Linux remote desktop client"
 arch=('x86_64')
@@ -11,11 +11,11 @@ options=(!debug)
 
 # The ThinLinc client RPM includes a build number, so we have to define it
 # here. Remember to update this along with the version number for each release.
-buildnum="4284"
+buildnum="4588"
 
 source=("https://www.cendio.com/downloads/clients/thinlinc-client-${pkgver}-${buildnum}.${arch[0]}.rpm")
 
-sha256sums=('e7ca370f44a6c58bf1d1673d9a4b74efcbae55b4e4d266d3c7a339240bf88b0b')
+sha256sums=('47ab445ffe9ab26240fbcd7b1bed807f06b11282dca24411d964dbf26afb8217')
 
 package() {
     cp -aR "$srcdir"/{etc,opt,usr} "$pkgdir"

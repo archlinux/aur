@@ -1,12 +1,12 @@
 pkgbase = thinlinc-client
 	pkgdesc = Cendio ThinLinc Linux remote desktop client
-	pkgver = 4.20.0
+	pkgver = 4.21.0
 	pkgrel = 1
 	url = https://cendio.com
 	arch = x86_64
 	license = custom
 	options = !debug
-	source = https://www.cendio.com/downloads/clients/thinlinc-client-4.20.0-4284.x86_64.rpm
-	sha256sums = e7ca370f44a6c58bf1d1673d9a4b74efcbae55b4e4d266d3c7a339240bf88b0b
+	source = https://www.cendio.com/downloads/clients/thinlinc-client-4.21.0-4588.x86_64.rpm
+	sha256sums = 47ab445ffe9ab26240fbcd7b1bed807f06b11282dca24411d964dbf26afb8217
 
 pkgname = thinlinc-client
