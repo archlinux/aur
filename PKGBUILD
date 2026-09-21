@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=pomchat-bin
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 provides=('pomchat')
 conflicts=('pomchat')
@@ -15,7 +15,7 @@ source=(
     "$url/raw/refs/tags/v$pkgver/LICENSE"
     "pomchat.desktop"
 )
-sha256sums=('27bd2b39f1f190dc8e0deead1680d3222e9f2a4d89c8868dedeb3cdd6ab3a4e0'
+sha256sums=('2e14001aa4ce915c7b42e38780e169201aedc55c655166caf378f67ec538a47c'
             '6f83a3354bd403442a0391078b470b471c611157c5246061367ba9a93dd34836'
             '0440b7b0ecf812c826c12693f37eae6d7f1703130bd8409a8af170e2719c667f')
 
