@@ -1,0 +1,15 @@
+pkgbase = surfn-papirus-casablanca-icons-git
+	pkgdesc = Surfn Papirus Casablanca, a colourful icon theme
+	pkgver = r3.3bd67c6
+	pkgrel = 1
+	url = https://github.com/erikdubois/surfn-papirus-casablanca
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	depends = surfn-icons-git
+	options = !strip
+	options = !emptydirs
+	source = Surfn-Papirus-Casablanca::git+https://github.com/erikdubois/surfn-papirus-casablanca.git
+	sha256sums = SKIP
+
+pkgname = surfn-papirus-casablanca-icons-git
