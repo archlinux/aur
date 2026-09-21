@@ -1,7 +1,7 @@
 # Maintainer: BlackFuffey <fluffistical@gmail.com>
 
 pkgname=(sable-web)
-pkgver=1.21.0
+pkgver=1.22.6
 pkgrel=1
 pkgdesc='A Matrix client built to enhance user experience, forked from cinny.'
 url=https://github.com/SableClient/Sable
@@ -13,7 +13,7 @@ depends=()
 makedepends=(mise)
 
 source=(sable-${pkgver}.tar.gz::"https://github.com/SableClient/Sable/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('25218f5d1875165d7d934c270503ac9debe9f97e149e88eba4111d296d3e0fef3f05deb9578fcfc1d70deea48b650e9360fb5cf8176115d4ca200a0dd3170603')
+sha512sums=('6ab7a35f3fe33aa57626d7bdfca3fff45270d96613ffede7f6465dd037eae52ee25f99c0f1012994b61b6ad17451dd34b5745257bac24e9d6ca7fec0f87552ac')
 
 prepare() {
         cd "${srcdir}"/"Sable-${pkgver}"
