@@ -1,0 +1,28 @@
+# chrome-sandbox 的 setuid 位必须在安装后设置，不能靠包内容携带：
+# makepkg 在打包时会规范化权限、剥离 setuid 位，所以 package() 里的 chmod 4755 不会生效。
+# 上游 .deb 包的 .INSTALL 也是在 post_install 里做同样的事。
+#
+# 内核支持 user namespace 时不需要 setuid（0755 即可，更安全）；不支持时才需要 4755，
+# 否则 Electron 的沙箱起不来、应用直接启动失败。
+post_install() {
+    if ! { [[ -L /proc/self/ns/user ]] && unshare --user true; }; then
+        chmod 4755 '/opt/ZCode-CE/chrome-sandbox' 2>/dev/null || true
+    else
+        chmod 0755 '/opt/ZCode-CE/chrome-sandbox' 2>/dev/null || true
+    fi
+
+    # 桌面数据库与 MIME 缓存刷新，让应用出现在菜单里。
+    command -v update-desktop-database >/dev/null 2>&1 && \
+        update-desktop-database -q /usr/share/applications 2>/dev/null || true
+    command -v gtk-update-icon-cache >/dev/null 2>&1 && \
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    command -v update-desktop-database >/dev/null 2>&1 && \
+        update-desktop-database -q /usr/share/applications 2>/dev/null || true
+}

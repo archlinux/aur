@@ -1,0 +1,21 @@
+pkgbase = zcode-ce-bin
+	pkgdesc = ZCode 的开源社区版：移除遥测、保留官方服务权益、开源文档与桌面自动化能力
+	pkgver = 3.14.1.ce.1
+	pkgrel = 1
+	url = https://github.com/Zcode-CE/Zcode-CE
+	install = zcode-ce-bin.install
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = libnotify
+	depends = alsa-lib
+	depends = mesa
+	depends = xdg-utils
+	options = !strip
+	source = zcode-ce-bin-3.14.1.ce.1.pkg.tar.zst::https://github.com/Zcode-CE/Zcode-CE/releases/download/v3.14.1-ce.1/ZCode-CE-3.14.1-ce.1-linux-x64.pkg.tar.zst
+	sha256sums = 2b3bd9933c18b384da64f95034c5626b523fda6fa4978c2686653898b2835946
+
+pkgname = zcode-ce-bin
