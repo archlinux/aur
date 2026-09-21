@@ -1,10 +1,13 @@
+# Source of truth for the AUR package: the release workflow copies this file to
+# https://aur.archlinux.org/packages/yson-tools with pkgver/pkgrel bumped and
+# regenerates .SRCINFO there. Edit it here, not in the AUR repository.
 
 # Maintainer: Denis Sheremet <aur@lxlz.space>
 pkgname=yson-tools
-pkgver=0.3.4
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="A set of tools for working with YSON format"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/lesf0/yson-tools"
 license=('Apache-2.0')
 depends=('jq' 'python-jsondiff')
