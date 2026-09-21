@@ -1,9 +1,8 @@
 pkgbase = v2raya
-	pkgdesc = A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan, Tuic and Juicity protocols
-	pkgver = 2.4.25
+	pkgdesc = A web GUI client of Project V which supports VMess, VLESS, Shadowsocks, Trojan, TUIC, Juicity and AnyTLSs
+	pkgver = 2.5.5
 	pkgrel = 1
 	url = https://github.com/v2rayA/v2rayA
-	install = .INSTALL
 	arch = i686
 	arch = pentium4
 	arch = x86_64
@@ -14,7 +13,7 @@ pkgbase = v2raya
 	arch = loong64
 	license = AGPL3
 	makedepends = git
-	makedepends = go>=2:1.25.0-1
+	makedepends = go>=2:1.26.0-1
 	makedepends = nodejs>=24
 	makedepends = yarn
 	depends = glibc
