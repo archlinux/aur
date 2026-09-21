@@ -1,13 +1,13 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=rsconnect
-_pkgver=1.11.0
+_pkgver=1.11.1
 pkgname=r-rsconnect
 pkgdesc="Deploy Docs, Apps, and APIs to 'Posit Connect', 'shinyapps.io', and 'RPubs'"
 url="https://cran.r-project.org/package=${_pkgname}"
 license=("GPL-2.0-only")
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 makedepends=("gcc-fortran")
 
 arch=("any")
@@ -42,7 +42,7 @@ optdepends=(
     "r-withr"
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('644ba61865848b61dae82420077c7f5bcd61643e3cbbfa2e665bb0b31f55361f')
+sha256sums=('350f7024cfab9beb8a85f8e8a7f88c811c33fa435567c6b546e638b9fcbee41b')
 
 build() {
     mkdir -p "${srcdir}/build/"
