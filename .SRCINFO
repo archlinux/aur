@@ -1,0 +1,15 @@
+pkgbase = surfn-dracul-icons-git
+	pkgdesc = Surfn Dracul, a colourful icon theme
+	pkgver = r5.d08829d
+	pkgrel = 1
+	url = https://github.com/erikdubois/surfn-dracul
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	depends = surfn-icons-git
+	options = !strip
+	options = !emptydirs
+	source = Surfn-Dracul::git+https://github.com/erikdubois/surfn-dracul.git
+	sha256sums = SKIP
+
+pkgname = surfn-dracul-icons-git
