@@ -1,3 +1,4 @@
+# Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-installer
 pkgver=1.5.4
 pkgrel=1
