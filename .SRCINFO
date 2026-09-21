@@ -1,6 +1,6 @@
 pkgbase = bspwm1-maflorezp-git
-	pkgdesc = bspwm1 with live edge magnetism, configurable Aero Snap and rules matched by window properties
-	pkgver = 1.6.2.r129.gd7f5da8
+	pkgdesc = bspwm fork with live edge magnetism, stepped drags, configurable Aero Snap and rules matched on window properties
+	pkgver = 1.6.3.r0.g659ee9c
 	pkgrel = 1
 	url = https://github.com/maflorezp/bspwm1
 	arch = x86_64
