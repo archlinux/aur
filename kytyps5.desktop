@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=kytyps5
+Name=KytyPS5
+GenericName=PlayStation 5 emulator
+Icon=applications-games
+Type=Application
+Terminal=false
+Categories=Game;Emulator;
+StartupWMClass=launcher;
