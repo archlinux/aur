@@ -1,0 +1,15 @@
+pkgbase = surfn-papirus-blue-icons-git
+	pkgdesc = Surfn Papirus Blue, a colourful icon theme
+	pkgver = r6.d1a6657
+	pkgrel = 1
+	url = https://github.com/erikdubois/surfn-papirus-blue
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = surfn-icons-git
+	options = !strip
+	options = !emptydirs
+	source = Surfn-Papirus-Blue::git+https://github.com/erikdubois/surfn-papirus-blue.git
+	sha256sums = SKIP
+
+pkgname = surfn-papirus-blue-icons-git
