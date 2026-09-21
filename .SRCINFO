@@ -1,6 +1,6 @@
 pkgbase = maple-saturation-hyprland-git
 	pkgdesc = Screen color saturation and contrast control for Hyprland via GLSL shaders
-	pkgver = 1.0.0.r4
+	pkgver = 1.0.0.r7.fd71660
 	pkgrel = 1
 	url = https://github.com/MapleProjects/maple-saturation-hyprland
 	arch = any
