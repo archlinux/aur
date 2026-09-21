@@ -2,7 +2,7 @@
 # Created with assistance from GLM 5.3 Flash.
 
 pkgname=zxc
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Asymmetric lossless compression CLI — ultra-fast decode, 40%+ faster than LZ4 on ARM64 (source build)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('cmake' 'gcc')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hellobertrand/zxc/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dc33dfc9ab911f37d9e79f87c883955961f4b014fe07b3862dac028c077881b0')
+sha256sums=('53744db7583231b03dc012b18880ea74b3a7060b58d411eed3694c9f521ceda3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
