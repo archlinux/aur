@@ -2,8 +2,8 @@
 
 pkgname=zapret-rust-git
 _pkgname=zapret-rust
-pkgver=2.1.0.r0.g0000000
-pkgrel=2
+pkgver=2.1.0.r4.g76540dc
+pkgrel=3
 
 pkgdesc="Zapret-Rust TUI for DPI bypass (git version)"
 arch=('x86_64')
@@ -27,6 +27,10 @@ provides=(
 )
 conflicts=(
     'zapret-rust'
+)
+
+options=(
+    '!lto'
 )
 
 install=zapret-rust.install
@@ -53,7 +57,7 @@ pkgver() {
 
 prepare() {
     RUSTUP_TOOLCHAIN=stable \
-    CARGO_HOME="${srcdir}/cargo-home" \
+        CARGO_HOME="${srcdir}/cargo-home" \
         cargo fetch \
         --locked \
         --manifest-path "${srcdir}/${_pkgname}/Cargo.toml"
@@ -61,7 +65,7 @@ prepare() {
 
 build() {
     RUSTUP_TOOLCHAIN=stable \
-    CARGO_HOME="${srcdir}/cargo-home" \
+        CARGO_HOME="${srcdir}/cargo-home" \
         cargo build \
         --release \
         --frozen \
@@ -79,7 +83,7 @@ package() {
     install -dm755 \
         "${pkgdir}/usr/bin"
 
-    cat > "${pkgdir}/usr/bin/${_pkgname}" <<'EOF'
+    cat >"${pkgdir}/usr/bin/${_pkgname}" <<'EOF'
 #!/bin/sh
 
 exec /usr/lib/zapret-rust/zapret-rust \
