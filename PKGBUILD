@@ -3,7 +3,7 @@
 # Contributor: Dmytro Bagrii <dimich.dmb@gmail.com>
 
 pkgname=neard
-pkgver=0.19
+pkgver=0.20
 pkgrel=1
 pkgdesc="Intel's Near Field Communication manager"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('dbus>=1.2' 'libnl' 'glib2>=2.28' 'glibc')
 makedepends=('automake' 'autoconf>=2.60' 'autoconf-archive' 'libtool')
 backup=(etc/neard/main.conf)
 source=($pkgname-$pkgver.tar.gz::https://github.com/linux-nfc/neard/archive/refs/tags/v$pkgver.tar.gz)
-sha384sums=('892ad3b875db9b1b5de1b8ce8c64d1e2efecd35167066501ffbbe864187361073dddd892c0f992b61a1f7aa6acfb1a49')
+sha384sums=('898373a97b3534006ef1eb14fe383743fedf710165f17136d0a6cfb07cf8a194e153d8f7703ac477d65871f45f404ac2')
 
 build() {
   cd $pkgname-$pkgver
