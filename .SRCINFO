@@ -1,6 +1,6 @@
 pkgbase = spotifast-bin
 	pkgdesc = Native Spotify client
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/crmne/spotifast
 	install = spotifast-bin.install
@@ -16,9 +16,9 @@ pkgbase = spotifast-bin
 	depends = libx11
 	optdepends = libxkbcommon-x11: keyboard handling in X11 sessions
 	optdepends = pipewire-pulse: PipeWire as the PulseAudio server
-	provides = spotifast=0.8.0
-	provides = fastpotify=0.8.0
-	provides = fastpotify-bin=0.8.0
+	provides = spotifast=0.9.0
+	provides = fastpotify=0.9.0
+	provides = fastpotify-bin=0.9.0
 	conflicts = fastpotify
 	conflicts = fastpotify-bin
 	conflicts = fastpotify-git
@@ -27,9 +27,9 @@ pkgbase = spotifast-bin
 	replaces = fastpotify-bin
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/crmne/spotifast/releases/download/v0.8.0/spotifast-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 279caf363897e165a9f95c03a34313a8afa16128032eba3bf6b2cb88723394a4
-	source_aarch64 = https://github.com/crmne/spotifast/releases/download/v0.8.0/spotifast-v0.8.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a09e4b11a96f0a36dc4ba66a7ef5c4238741acd270f9124a97f70ccab116e359
+	source_x86_64 = https://github.com/crmne/spotifast/releases/download/v0.9.0/spotifast-v0.9.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 137f79127b5209ca33684810d8c65347db2cbd915896a8ee6b44092cca04a1e9
+	source_aarch64 = https://github.com/crmne/spotifast/releases/download/v0.9.0/spotifast-v0.9.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0c3bc9c5b68bf3324a57854497166bf2c15720136be3f4e467166b233ea24466
 
 pkgname = spotifast-bin

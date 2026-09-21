@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast-bin
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/spotifast"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/spotifast-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/spotifast-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('279caf363897e165a9f95c03a34313a8afa16128032eba3bf6b2cb88723394a4')
-sha256sums_aarch64=('a09e4b11a96f0a36dc4ba66a7ef5c4238741acd270f9124a97f70ccab116e359')
+sha256sums_x86_64=('137f79127b5209ca33684810d8c65347db2cbd915896a8ee6b44092cca04a1e9')
+sha256sums_aarch64=('0c3bc9c5b68bf3324a57854497166bf2c15720136be3f4e467166b233ea24466')
 
 package() {
   local target
@@ -35,10 +35,15 @@ package() {
   ln -s fastpotify "${pkgdir}/usr/bin/spotifast"
   install -Dm644 "${dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${dir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${dir}/packaging/applications/fastpotify.desktop" \
-    "${pkgdir}/usr/share/applications/fastpotify.desktop"
-  install -Dm644 "${dir}/packaging/icons/fastpotify.svg" \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/fastpotify.svg"
+  # Historical releases retain their matching launcher/window identity.
+  local desktop=spotifast
+  if [[ ! -f "${dir}/packaging/applications/spotifast.desktop" ]]; then
+    desktop=fastpotify
+  fi
+  install -Dm644 "${dir}/packaging/applications/${desktop}.desktop" \
+    "${pkgdir}/usr/share/applications/${desktop}.desktop"
+  install -Dm644 "${dir}/packaging/icons/${desktop}.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${desktop}.svg"
   # Older release fixtures predate the optional integration.
   if [[ -d "${dir}/contrib/omarchy" ]]; then
     install -Dm644 "${dir}/contrib/omarchy/spotifast.json.tpl" "${pkgdir}/usr/share/spotifast/omarchy/spotifast.json.tpl"
