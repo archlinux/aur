@@ -5,7 +5,7 @@
 # llama-launcher/utils/check-aur-sync.sh must report OK for all packages.
 
 pkgname=llama-hdd
-pkgver=11
+pkgver=12
 pkgrel=1
 pkgdesc="LLM inference in C/C++ with disk-backed prompt-checkpoint persistence (llama.cpp soft-fork)"
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,10 @@ optdepends=(
     'llama-launcher: launcher with --hdd-cache mode that drives this fork'\''s sidecar feature'
  )
 provides=('llama.cpp' "llama.cpp=${pkgver}")
-# Bundled ggml installs to the same paths as the standalone ggml/libggml
-# packages (headers, /usr/lib/cmake/ggml, libggml*.so) - same as AUR llama.cpp.
-conflicts=('llama.cpp' 'llama.cpp-cuda' 'llama.cpp-vulkan' 'llama.cpp-hip' 'libggml' 'ggml')
+# Static build: bundled ggml is linked into the binaries and its dev files
+# (headers, cmake package, archives) are pruned in package(), so the
+# standalone ggml/libggml packages can stay installed (whisper.cpp needs ggml).
+conflicts=('llama.cpp' 'llama.cpp-cuda' 'llama.cpp-vulkan' 'llama.cpp-hip')
 source=("${pkgname}::git+https://codeberg.org/LuminaNAO/llama-hdd.cpp.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -188,7 +189,7 @@ build() {
         -B build
         -DCMAKE_BUILD_TYPE=Release
         -DCMAKE_INSTALL_PREFIX=/usr
-        -DBUILD_SHARED_LIBS=ON
+        -DBUILD_SHARED_LIBS=OFF
         -DLLAMA_CURL=ON
         -DLLAMA_BUILD_TESTS=OFF
         -DLLAMA_BUILD_EXAMPLES=ON
@@ -205,6 +206,11 @@ build() {
     case "$_backend" in
         cuda)
             cmake_args+=(-DGGML_CUDA=ON)
+            # makepkg sets SOURCE_DATE_EPOCH, which forces GGML_NATIVE off and
+            # makes nvcc target every arch: with static linking that is ~150M
+            # of cubin per binary. AUR builds run on the install host, so
+            # native is the right default; override for cross-GPU builds.
+            cmake_args+=(-DCMAKE_CUDA_ARCHITECTURES="${CMAKE_CUDA_ARCHITECTURES:-native}")
             # Two variables, two mechanisms -- setting only the root still
             # fails with "No CMAKE_CUDA_COMPILER could be found":
             #   CUDAToolkit_ROOT    -> find_package(CUDAToolkit) finds libs
@@ -235,6 +241,13 @@ build() {
 package() {
     cd "$pkgname"
     DESTDIR="$pkgdir" cmake --install build
+
+    # Drop bundled-ggml dev files that collide with the standalone ggml
+    # package (headers, cmake package, archives). Binaries are statically
+    # linked, so these are not needed downstream.
+    rm -rf "$pkgdir/usr/lib/cmake/ggml"
+    rm -f "$pkgdir"/usr/include/ggml*.h "$pkgdir"/usr/include/gguf.h
+    rm -f "$pkgdir"/usr/lib/libggml*.a "$pkgdir"/usr/lib/libgguf*.a
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
