@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=dns-stream
-pkgver=1.0.3
+pkgver=1.0.4
 _zigver=0.16.0
 pkgrel=1
 pkgdesc="Unified real-time DNS log stream and visualization engine"
@@ -14,7 +14,7 @@ makedepends=('zig' 'scdoc')
 backup=('etc/dns-stream/config.json')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tsukumoakito/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 validpgpkeys=('66B227EC5F67D7B4F8C6C1C7E98764DF6FCE8857')
-sha256sums=('1072f08768a0ff90c4d9652e6b8137abdb2ce67fbc6caf146960d76b3306c4da')
+sha256sums=('65796e2f84dd9828242fe59208aa4200739d5008c98c0d9e30438ad6e45e9864')
 
 build() {
     cd "${pkgname}-${pkgver}"
