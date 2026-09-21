@@ -1,14 +1,14 @@
 pkgbase = r-weibullness
 	pkgdesc = Goodness-of-Fit Test for Weibull Distribution (Weibullness)
-	pkgver = 1.24.1
-	pkgrel = 2
+	pkgver = 2.26.9
+	pkgrel = 1
 	url = https://cran.r-project.org/package=weibullness
 	arch = any
 	license = GPL-2.0-only OR GPL-3.0-only
 	depends = r
 	optdepends = r-bsgof
-	source = https://cran.r-project.org/src/contrib/weibullness_1.24.1.tar.gz
-	md5sums = 3725675d4d305d1ffe3f7ca8d2392132
-	b2sums = e720ac9abe50b74199c74ed717a1b0d5e7f2778eeef5e3b9b1a6b9b94e0781364e10687616d6aeea0d553e385c7384d1cba1d51a273ac40779cacd901e629bd4
+	source = https://cran.r-project.org/src/contrib/weibullness_2.26.9.tar.gz
+	md5sums = 10ab3669a9173ca3618a57d02661ec34
+	b2sums = 87de21332d15ff1ee5d06b27074b81bd873791da334066e9f703b197427325b93aa62f023823b4c1770ad8dc927110e45190c9e191880dc160669fa40370b21e
 
 pkgname = r-weibullness
