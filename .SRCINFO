@@ -1,0 +1,17 @@
+pkgbase = r-savvy-cli
+	pkgdesc = CLI for the savvy framework for building R packages with Rust
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/yutannihilation/savvy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	conflicts = r-savvy-cli-bin
+	source = savvy::git+https://github.com/yutannihilation/savvy.git#tag=v0.11.0
+	sha256sums = SKIP
+
+pkgname = r-savvy-cli
