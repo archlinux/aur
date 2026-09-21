@@ -1,0 +1,17 @@
+pkgbase = surfn-plasma-dark-qogir-icons-git
+	pkgdesc = Surfn Plasma Dark Qogir, a colourful icon theme
+	pkgver = r10.2c53977
+	pkgrel = 1
+	url = https://github.com/erikdubois/surfn-plasma-dark-qogir
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	depends = surfn-icons-git
+	depends = surfn-plasma-dark-icons-git
+	depends = breeze-icons
+	options = !strip
+	options = !emptydirs
+	source = Surfn-Plasma-Dark-Qogir::git+https://github.com/erikdubois/surfn-plasma-dark-qogir.git
+	sha256sums = SKIP
+
+pkgname = surfn-plasma-dark-qogir-icons-git
