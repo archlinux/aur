@@ -1,0 +1,12 @@
+pkgbase = http-tanker
+	pkgdesc = Terminal app for API testing: create, manage and execute HTTP requests
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/PierreKieffer/http-tanker
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	source = http-tanker-0.0.1.tar.gz::https://codeload.github.com/PierreKieffer/http-tanker/tar.gz/refs/tags/v0.0.1
+	sha256sums = 2bb53d2527d1e8a194cdf95601024b20046b14dfddd5bcdfbfd5702c353ec81f
+
+pkgname = http-tanker
