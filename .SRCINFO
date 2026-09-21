@@ -1,0 +1,18 @@
+pkgbase = navicat17-mariadb-en
+	pkgdesc = Navicat for MariaDB trial with complete shutdown when its last window closes
+	pkgver = 17.3.10
+	pkgrel = 1
+	url = https://www.navicat.com/en/products/navicat-for-mariadb
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = systemd-libs
+	depends = wmctrl
+	provides = navicat-mariadb
+	conflicts = navicat-mariadb
+	options = !strip
+	source = navicat-mariadb-en-x86_64-17.3.10.AppImage::https://dn.navicat.com/download/navicat17-mariadb-en-x86_64.AppImage
+	source = navicat-close-on-exit
+	sha256sums = 49c976c41a61fb5aa1492466f5a39373ecbf8da3684e5cc7a75f162b41dddd2b
+	sha256sums = 39643c5c2d1fe608983c26555717f2b0999f83dd810f6fdf1587b78489dc75e2
+
+pkgname = navicat17-mariadb-en
