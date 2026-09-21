@@ -1,0 +1,15 @@
+pkgbase = surfn-tela-icons-git
+	pkgdesc = Surfn Tela, a colourful icon theme
+	pkgver = r4.479dfdd
+	pkgrel = 1
+	url = https://github.com/erikdubois/surfn-tela
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = surfn-icons-git
+	options = !strip
+	options = !emptydirs
+	source = Surfn-Tela::git+https://github.com/erikdubois/surfn-tela.git
+	sha256sums = SKIP
+
+pkgname = surfn-tela-icons-git
