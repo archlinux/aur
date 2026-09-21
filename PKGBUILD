@@ -46,6 +46,7 @@ prepare() {
         s/@cfgdirname@/${_appname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _check_electron_version
     sed -i -e"
         s/\"\/opt\/${_zhname}\/${_appname}\"/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
