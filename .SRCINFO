@@ -1,6 +1,6 @@
 pkgbase = mailspring-git
 	pkgdesc = A beautiful, fast and fully open source mail client.
-	pkgver = 1.24.1.r2.g386a2c2
+	pkgver = 1.25.0.r0.gadd26bb
 	pkgrel = 1
 	url = https://getmailspring.com/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mailspring-git
 	makedepends = jq
 	depends = electron44
 	depends = db5.3
-	provides = mailspring=1.24.1
+	provides = mailspring=1.25.0
 	conflicts = mailspring
 	source = mailspring.git::git+https://github.com/Foundry376/Mailspring.git
 	source = mailspring.sh

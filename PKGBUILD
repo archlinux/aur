@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-git
 _pkgname=Mailspring
-pkgver=1.24.1.r2.g386a2c2
+pkgver=1.25.0.r0.gadd26bb
 _electronversion=44
 _nodeversion=22
 pkgrel=1
@@ -43,25 +43,22 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	_ev="$(electron${_electronversion} -v)"
-	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
 	export HOME="${srcdir}/.electron-gyp"
 	export XDG_CACHE_HOME="${srcdir}/.cache"
 	export XDG_CONFIG_HOME="${srcdir}/.config"
 	export XDG_DATA_HOME="${srcdir}/.local/share"
 	export npm_config_cache="${srcdir}/.npm_cache"
-	export npm_config_maxsockets=32
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${srcdir}/.corepack"
 	export npm_config_audit=false
-	export npm_config_fund=false
-	export npm_config_progress=false
-	export NODE_OPTIONS="--max-old-space-size=4096"
-	export npm_config_node_options="--max-old-space-size=4096"
+	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
