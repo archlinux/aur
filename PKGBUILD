@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ replaces=('fastpotify')
 # undefined ring_core_* symbols.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/spotifast-v${pkgver}-source.tar.gz")
-sha256sums=('60c384ab6aff397b08653572fac6b31c2372b30f32c7dfbd6b3624d67a00b7b1')
+sha256sums=('f78cc77432af7739ca243b2b2d01accb46bff59937bd00c69578e90eaba8024a')
 
 # GitHub archives use the repository name; older releases used Fastpotify.
 _source_dir() {
@@ -62,10 +62,15 @@ package() {
   ln -s fastpotify "${pkgdir}/usr/bin/spotifast"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "packaging/applications/fastpotify.desktop" \
-    "${pkgdir}/usr/share/applications/fastpotify.desktop"
-  install -Dm644 "packaging/icons/fastpotify.svg" \
-    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/fastpotify.svg"
+  # Historical releases retain their matching launcher/window identity.
+  local desktop=spotifast
+  if [[ ! -f "packaging/applications/spotifast.desktop" ]]; then
+    desktop=fastpotify
+  fi
+  install -Dm644 "packaging/applications/${desktop}.desktop" \
+    "${pkgdir}/usr/share/applications/${desktop}.desktop"
+  install -Dm644 "packaging/icons/${desktop}.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${desktop}.svg"
   # Older release fixtures predate the optional integration.
   if [[ -d contrib/omarchy ]]; then
     install -Dm644 contrib/omarchy/spotifast.json.tpl "${pkgdir}/usr/share/spotifast/omarchy/spotifast.json.tpl"
