@@ -5,7 +5,7 @@
 # Contributor: Zeph <zeph33@gmail.com>
 
 pkgname=codelite-bin
-pkgver=18.4.0
+pkgver=18.5.0
 pkgrel=1
 _pkgubuntu="ubuntu-noble"
 pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
@@ -24,7 +24,7 @@ provides=(codelite)
 conflicts=(codelite)
 
 source_x86_64=("https://downloads.codelite.org/codelite/${pkgver}/CodeLite-${pkgver}-gtk3-${_pkgubuntu}-x86_64.deb")
-sha256sums_x86_64=('73e136df463eff19f73ccedad10c4d9b810d91c234fd1ebca66cf34a33899a9b')
+sha256sums_x86_64=('9725819ac91269af1554636ac528bbd5637339ff18b4384f474c1cdfc70126bb')
 
 package() {
     bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
