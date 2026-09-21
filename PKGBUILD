@@ -1,14 +1,13 @@
 # Maintainer: Marco Gulino <marco dot gulino at gmail dot com>
 pkgname=python-xisf-fits-utils
 _name=${pkgname#python-}
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Simple command line utilities for conversion and keyword manipulation of FITS and XISF files"
 arch=('any')
 url="https://github.com/GuLinux/xifs-fits-python-utils"
 license=('GPL3')
-sha256sums=('3e09d18e0e4b8b4aceda8dcddbb6c447e66d30a912b01b5a54c151555ee33bae')
-
+sha256sums=('08ef1e290554a8c6f3ba200005cc4b5257a4c02da323130e7c1b00139d3e61c0')
 depends=(
   'python'
   'python-xisf'
@@ -27,5 +26,6 @@ package() {
   install -Dm755 xisf-add-keyword -t "$pkgdir/usr/bin/"
   install -Dm755 xisf-metadata -t "$pkgdir/usr/bin/"
 }
+
 
 
