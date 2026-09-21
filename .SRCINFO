@@ -1,0 +1,12 @@
+pkgbase = fwtui
+	pkgdesc = A TUI for managing UFW (Uncomplicated Firewall) rules
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/Beny406/fwtui
+	arch = x86_64
+	license = unknown
+	makedepends = go
+	source = fwtui-0.0.5.tar.gz::https://codeload.github.com/Beny406/fwtui/tar.gz/refs/tags/v0.0.5
+	sha256sums = b8925246e872e24aadd956ea25118fd7ec538ec52794447b3e8e233efbb3795a
+
+pkgname = fwtui
