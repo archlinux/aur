@@ -1,6 +1,6 @@
 pkgname=twitch
 _pkgname=Twitch
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Unofficial Twitch desktop application."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron>=2026.3' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('86397d937152b1076e0d73725807692245284382f1424402f6eaec7cd32d7809')
+sha256sums=('27d0d6a731b37155938bd6e3b9d34f96421474007fcd48370dcd293b7b0165ce')
 
 package() {
     cd "$srcdir/application-$pkgver"
