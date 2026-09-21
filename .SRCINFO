@@ -1,7 +1,7 @@
 pkgbase = python-xisf-fits-utils
 	pkgdesc = Simple command line utilities for conversion and keyword manipulation of FITS and XISF files
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GuLinux/xifs-fits-python-utils
 	arch = any
 	license = GPL3
