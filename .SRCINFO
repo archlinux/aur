@@ -1,20 +1,20 @@
 pkgbase = eusoft-ting-fr-bin
-	pkgdesc = Listening statistics, note synchronization, and voice highlighting follow-up make learning French easy and enjoyable for you.(Prebuilt version.Use system-wide electron)听力统计、笔记同步、语音高亮跟随，让您轻松愉快学法语
-	pkgver = 10.2.0
+	pkgdesc = Listening statistics, note synchronization, and voice highlighting follow-up make learning French easy and enjoyable for you.听力统计、笔记同步、语音高亮跟随，让您轻松愉快学法语
+	pkgver = 26.9.1
 	pkgrel = 1
 	url = https://www.frdic.com/ting
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = electron11
+	depends = electron22
 	depends = ffmpeg
 	conflicts = eusoft-ting-fr
 	conflicts = eudic-ting_fr
 	conflicts = ting_fr
-	source = eusoft-ting-fr-10.2.0.deb::https://static.frdic.com/pkg/ting_fr/ting_fr.deb
+	source = eusoft-ting-fr-26.9.1.deb::https://static.frdic.com/pkg/ting_fr/ting_fr.deb?v=26.9.1
 	source = LICENSE.html::https://www.eudic.net/v4/en/home/privacy
 	source = eusoft-ting-fr.sh
-	sha256sums = cdf9d08b640518a101e875a9d2b5c4e92e32258c78f0e98017020031803a4a93
-	sha256sums = 7f16e15435a7380645f8573fd7333f67c16811c04c15364d2e5d7bd44fa5e23a
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	sha256sums = 0f66747c249260bbbea73af445ec61cfa21bfaecdd646a072d1814271269a16c
+	sha256sums = 64a0ab6830212ea9d3b21e0f9542b3610d2aff1087dae38faef81649e873490d
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = eusoft-ting-fr-bin
