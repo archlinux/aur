@@ -1,0 +1,23 @@
+pkgbase = libastal-wl4-git
+	pkgdesc = A thin util lib to match GTK4 objects to AstalWl ones
+	pkgver = r983.7c3371c
+	pkgrel = 2
+	url = https://github.com/Aylur/astal
+	arch = x86_64
+	groups = libastal
+	license = LGPL-2.1-only
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = wl-vapi-gen
+	depends = glib2
+	depends = glibc
+	depends = libastal-wl
+	depends = gtk4
+	provides = libastal-wl4
+	provides = libastal-wl4.so=0-64
+	source = git+https://github.com/Aylur/astal.git
+	sha256sums = SKIP
+
+pkgname = libastal-wl4-git
