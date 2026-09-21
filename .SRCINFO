@@ -1,15 +1,15 @@
 pkgbase = speedata-publisher-bin
 	pkgdesc = a publishing tool that automates creation of high-quality layouted PDFs from databases
-	pkgver = 5.9.5
+	pkgver = 5.9.6
 	pkgrel = 1
 	url = https://www.speedata.de/en/product
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = glibc
-	provides = speedata-publisher=5.9.5
+	provides = speedata-publisher=5.9.6
 	conflicts = speedata-publisher
 	options = !debug
-	source = https://download.speedata.de/dl/speedata-publisher-linux-amd64-5.9.5.zip
-	sha256sums = 20c036f1cc875619c45e73d20cb45ef8c9f020edb3d627c4a6b5b92d33fd844c
+	source = https://download.speedata.de/dl/speedata-publisher-linux-amd64-5.9.6.zip
+	sha256sums = fd8a908da7f528db562821a7452105d807ec5afa4cf6f21240d5d0a1a4f36a9f
 
 pkgname = speedata-publisher-bin
