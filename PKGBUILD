@@ -1,6 +1,6 @@
 # Maintainer: Austin Choi <austin.c.percussion@gmail.com>
 pkgname=dusk-lang-bin
-pkgver=1.15.1
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Compiler for the dusk programming language, a systems language with generational memory safety (release binary)"
 # The release binary is the x86_64 linux build the release's stage ladder
@@ -22,9 +22,9 @@ options=('!debug')
 source=("dusk-bin-${pkgver}::https://github.com/choice404/dusk/releases/download/v${pkgver}/dusk"
         "dawn-bin-${pkgver}::https://github.com/choice404/dusk/releases/download/v${pkgver}/dawn"
         "dusk-share-${pkgver}.tar.gz::https://github.com/choice404/dusk/releases/download/v${pkgver}/dusk-share.tar.gz")
-sha256sums=('bf0e41c62dd122ab26aa7a28c574486e1a6737c4345635e7f5d52bde0c228367'
-            '7c6b5a7b5ea34eda46fcce5533720d05451a03e0514c253f20c402fa0ccb5c27'
-            'dcea7ab38b4752abf16fc7659c8bf4f3976609b1997b754c57e6a92967b2c766')
+sha256sums=('08b18f031a60bcb1e28b8073a48aa69aa4b96ab80a0a0f936012226857990837'
+            'a11f20df7e4c04440461dea245a1a5a965975b706b5897e9a52217e0d9534de7'
+            'c34c05ef39ce73ca4cbd7a19433bb93864977a3c4713e922e65d6176f6041d8a')
 noextract=("dusk-bin-${pkgver}" "dawn-bin-${pkgver}")
 
 check() {
