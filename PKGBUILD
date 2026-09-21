@@ -2,15 +2,15 @@
 # old maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=tastytrade
-pkgver='2.29.2'
+pkgver='2.59.0'
 pkgrel='1'
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
 url='https://tastytrade.com/'
 license=('custom:commercial')
 conflicts=('tastytrade-bin')
-source=(https://download.tastytrade.com/desktop-2.x.x/${pkgver}/tastytrade-${pkgver}-1_amd64.deb)
-sha256sums=('edb5eb69382a0b2819e1745a4746e050882339807170b7805c0e38881b82f892')
+source=(https://download.tastytrade.com/desktop-2.0/tastytrade-linux-amd64-latest.deb)
+sha256sums=('7efa5502f209a029509c98198c84043fc83dde69f8b9ead266b1fff2eda30b78')
 
 build() {
 	tar axf data.tar.zst
@@ -49,5 +49,5 @@ package() {
 	install -Dm 644 "${srcdir}/opt/tastytrade/share/doc/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm 644 "${srcdir}/opt/tastytrade/lib/tastytrade.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-	echo "changelog: https://tastytrade.freshdesk.com/support/solutions/articles/43000435186-recent-release-notes?_sp=7c25726d-6774-4b70-bda4-a82570383c13.1600117130600"
+	echo "changelog: https://support.tastytrade.com/support/s/solutions/articles/43000435186"
 }
