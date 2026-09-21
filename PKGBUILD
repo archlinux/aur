@@ -3,19 +3,20 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-lame
-pkgver=3.100
-pkgrel=9
+pkgver=4.0
+pkgrel=1
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder (Android ${_android_arch})"
 arch=('any')
 url="http://lame.sourceforge.net/"
 license=('LGPL')
 groups=('android-lame')
-depends=('android-ndk')
+depends=('android-ndk'
+         "android-${_android_arch}-mpg123")
 makedepends=('android-configure' 'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://downloads.sourceforge.net/lame/lame-${pkgver}.tar.gz"
         'lame.pc.in')
-md5sums=('83e260acbe4389b54fe08e0bdbf7cddb'
+md5sums=('4b82945ffc410cb5d3947b9d6f890ae8'
          '23be318682f69026533062f470def74c')
 
 prepare() {
@@ -48,4 +49,5 @@ package() {
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 
     install -vDm 644 lame.pc -t "${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig/"
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
