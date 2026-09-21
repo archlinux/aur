@@ -2,7 +2,7 @@
 
 pkgauthor=tappunk
 pkgname=gsty
-pkgver=0.1.18
+pkgver=0.1.19
 pkgrel=1
 pkgdesc="Ghostty terminal theme browser with live preview TUI"
 
@@ -18,7 +18,7 @@ depends=('glibc' 'libgcc' 'ghostty')
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4133c7f51b69838beba72bffea5f99e8e10e5142b3b38f017c7d75d46794ccee')
+sha256sums=('baa2f0a7b4e6c12c26f39c6418561039b96719a9d3f542befdc3c08f5095c11c')
 
 prepare() {
 	cd "${pkgname}-${pkgver}" || exit

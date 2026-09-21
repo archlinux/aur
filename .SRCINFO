@@ -1,6 +1,6 @@
 pkgbase = gsty
 	pkgdesc = Ghostty terminal theme browser with live preview TUI
-	pkgver = 0.1.18
+	pkgver = 0.1.19
 	pkgrel = 1
 	url = https://github.com/tappunk/gsty
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gsty
 	depends = ghostty
 	provides = gsty
 	options = !lto
-	source = gsty-0.1.18.tgz::https://github.com/tappunk/gsty/archive/v0.1.18.tar.gz
-	sha256sums = 4133c7f51b69838beba72bffea5f99e8e10e5142b3b38f017c7d75d46794ccee
+	source = gsty-0.1.19.tgz::https://github.com/tappunk/gsty/archive/v0.1.19.tar.gz
+	sha256sums = baa2f0a7b4e6c12c26f39c6418561039b96719a9d3f542befdc3c08f5095c11c
 
 pkgname = gsty
