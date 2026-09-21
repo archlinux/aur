@@ -7,7 +7,7 @@ pkgname=(
     'otf-departure-mono-nerd'
     'ttf-ubuntusans-nerd'
 )
-pkgver=3.4.0
+pkgver=3.5.1
 pkgrel=1
 arch=('any')
 url="https://www.nerdfonts.com/"
@@ -20,8 +20,8 @@ source=(
     "${_urlbase}/UbuntuSans.zip"
 )
 sha256sums=(
-    'e186890efcae31b72e9f2abc860360123ec1b3ae03bc79bb2a9fec388ebade8a'
-    '1166e2666da3ee4f044e32dd1dfc08da7f9ddaa6989fc1b0cbc18a78479434d7'
+    'a49e33d74093541c26f48cfb94f3db7bcf9f4d6c975cb0de34dd3a25bb4e4993'
+    '2e7dc2d1e116d1f4fd9d2fc65071f5c6c5c95af0c1484379b06581161466ae0b'
 )
 
 package_ttf-nerd-fonts-meta() {
@@ -35,7 +35,9 @@ package_ttf-nerd-fonts-meta() {
         # All TTF Nerd Fonts from official repos (alphabetical)
         'ttf-0xproto-nerd'
         'ttf-3270-nerd'
+        'ttf-adwaitamono-nerd'
         'ttf-agave-nerd'
+        'ttf-annotationmono-nerd'
         'ttf-anonymouspro-nerd'
         'ttf-arimo-nerd'
         'ttf-bigblueterminal-nerd'
@@ -51,6 +53,7 @@ package_ttf-nerd-fonts-meta() {
         'ttf-firacode-nerd'
         'ttf-go-nerd'
         'ttf-gohu-nerd'
+        'ttf-googlesanscode-nerd'
         'ttf-hack-nerd'
         'ttf-heavydata-nerd'
         'ttf-iawriter-nerd'
@@ -58,6 +61,7 @@ package_ttf-nerd-fonts-meta() {
         'ttf-inconsolata-go-nerd'
         'ttf-inconsolata-lgc-nerd'
         'ttf-inconsolata-nerd'
+        'ttf-input-nerd'
         'ttf-intone-nerd'
         'ttf-iosevka-nerd'
         'ttf-iosevkaterm-nerd'
@@ -89,6 +93,7 @@ package_ttf-nerd-fonts-meta() {
     )
     optdepends=(
         # OTF variants from official repos (for users who prefer OpenType)
+        'otf-atkinsonhyperlegiblemono-nerd: Atkinson Hyperlegible Mono (OTF variant)'
         'otf-aurulent-nerd: Aurulent Sans Mono (OTF variant)'
         'otf-codenewroman-nerd: Code New Roman (OTF variant)'
         'otf-comicshanns-nerd: Comic Sans/Comic Shanns (OTF variant)'
