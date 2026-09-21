@@ -1,7 +1,7 @@
 # Maintainer: Seraphim Pardee <me at srp dot life>
 
 pkgname=rlshim
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A lightweight, native Linux launcher for RuneLite."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'clang' 'make' 'pkgconf' 'curl' 'git' 'libx11' 'libxcursor'
 provides=('rlshim')
 conflicts=('rlshim')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RdrSeraphim/rlshim/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('62a8f318cb893cc872d415ccc5c5e78a0bed0351a1ee2240c1b29cc91446a7b9')
+sha256sums=('179462375ec81fdb0754cbdb9ced61677a17184637216a0e219c624f002aae00')
 
 build() {
     cd "$pkgname-$pkgver"
