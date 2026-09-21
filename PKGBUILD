@@ -2,7 +2,7 @@
 
 _name=joystickwake
 pkgname="${_name}-git"
-pkgver=v0.5.3.r0.gb88071c
+pkgver=v1.0.r0.gfd5cffc
 pkgrel=1
 pkgdesc='A joystick-aware screen waker'
 arch=('any')
