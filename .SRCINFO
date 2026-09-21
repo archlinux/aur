@@ -1,6 +1,6 @@
 pkgbase = mark-shot-bin
 	pkgdesc = Qt 6 Wayland screenshot selection and annotation tool (prebuilt binary)
-	pkgver = 0.1.52
+	pkgver = 0.1.53
 	pkgrel = 1
 	url = https://github.com/jswysnemc/mark-shot
 	arch = x86_64
@@ -28,13 +28,13 @@ pkgbase = mark-shot-bin
 	optdepends = tesseract: fallback OCR backend
 	provides = mark-shot
 	conflicts = mark-shot
-	noextract = mark-shot-bin-0.1.52-1-x86_64.pkg.tar.zst
-	noextract = mark-shot-bin-0.1.52-1-aarch64.pkg.tar.zst
+	noextract = mark-shot-bin-0.1.53-1-x86_64.pkg.tar.zst
+	noextract = mark-shot-bin-0.1.53-1-aarch64.pkg.tar.zst
 	options = !strip
-	source_x86_64 = https://github.com/jswysnemc/mark-shot/releases/download/v0.1.52/mark-shot-bin-0.1.52-1-x86_64.pkg.tar.zst
+	source_x86_64 = https://github.com/jswysnemc/mark-shot/releases/download/v0.1.53/mark-shot-bin-0.1.53-1-x86_64.pkg.tar.zst
 	depends_x86_64 = layer-shell-qt
-	sha256sums_x86_64 = d1a3cfe06838d0ea187ab7c682f624869997eed6e56ea79afaddb08a1d3a8291
-	source_aarch64 = https://github.com/jswysnemc/mark-shot/releases/download/v0.1.52/mark-shot-bin-0.1.52-1-aarch64.pkg.tar.zst
-	sha256sums_aarch64 = 049448617b84e8162c25894926c13f0c22b8cdca6286ea246b8515129709db3c
+	sha256sums_x86_64 = f163949e44489acc99a516260de9b3e0ff5215a754a3319d3f7c04ce2057d2f1
+	source_aarch64 = https://github.com/jswysnemc/mark-shot/releases/download/v0.1.53/mark-shot-bin-0.1.53-1-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = 04018110c2c2c38482a89bdd8c5c231bce0659588aacc8e66d98dbc681f0012a
 
 pkgname = mark-shot-bin
