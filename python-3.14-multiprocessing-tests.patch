@@ -1,0 +1,69 @@
+--- a/test/stateful_dataloader/test_dataloader.py
++++ b/test/stateful_dataloader/test_dataloader.py
+@@ -6,5 +6,6 @@
+ 
+ import ctypes
++import dataclasses
+ import errno
+ import faulthandler
+ import functools
+@@ -960,14 +961,20 @@ def _test_worker_info_init_fn(worker_id):
+     assert isinstance(dataset, TestWorkerInfoDataset), "worker_info should have correct dataset copy"
+     assert not hasattr(dataset, "value"), "worker_info should have correct dataset copy"
+     # test that WorkerInfo attributes are read-only
+     try:
+         worker_info.id = 3999
+-    except RuntimeError as e:
+-        assert str(e) == "Cannot assign attributes to WorkerInfo objects"
++    except (RuntimeError, dataclasses.FrozenInstanceError) as e:
++        assert str(e) in {
++            "Cannot assign attributes to WorkerInfo objects",
++            "cannot assign to field 'id'",
++        }
+     try:
+         worker_info.a = 3
+-    except RuntimeError as e:
+-        assert str(e) == "Cannot assign attributes to WorkerInfo objects"
++    except (RuntimeError, dataclasses.FrozenInstanceError) as e:
++        assert str(e) in {
++            "Cannot assign attributes to WorkerInfo objects",
++            "cannot assign to field 'a'",
++        }
+     for k in ["id", "num_workers", "seed", "dataset"]:
+         assert f"{k}=" in repr(worker_info)
+     dataset.value = [worker_id, os.getpid()]
+@@ -980,7 +987,11 @@ def _test_get_worker_info():
+     batch_size = 2
+     dataset = TestWorkerInfoDataset(6, batch_size, num_workers)
+     dataloader = DataLoader(
+-        dataset, batch_size=batch_size, num_workers=num_workers, worker_init_fn=_test_worker_info_init_fn
++        dataset,
++        batch_size=batch_size,
++        num_workers=num_workers,
++        worker_init_fn=_test_worker_info_init_fn,
++        multiprocessing_context=mp,
+     )
+     it = iter(dataloader)
+     data = []
+@@ -2979,6 +2990,10 @@ class SetAffinityDataset(IterableDataset):
+         return iter(after)
+ 
+ 
++def _set_worker_affinity(_, expected_affinity):
++    os.sched_setaffinity(0, [expected_affinity])
++
++
+ @unittest.skipIf(not hasattr(os, "sched_setaffinity"), "os.sched_setaffinity is not available")
+ class TestSetAffinity(TestCase):
+     def test_set_affinity_in_worker_init(self):
+@@ -2989,9 +3004,7 @@ class TestSetAffinity(TestCase):
+         # Choose any
+         expected_affinity = list(old_affinity)[-1]
+ 
+-        def worker_set_affinity(_):
+-            os.sched_setaffinity(0, [expected_affinity])
+-
++        worker_set_affinity = functools.partial(_set_worker_affinity, expected_affinity=expected_affinity)
+         dataset = SetAffinityDataset()
+ 
+         dataloader = DataLoader(dataset, num_workers=2, worker_init_fn=worker_set_affinity)
