@@ -28,7 +28,7 @@ makedepends=(
   'pnpm'
   'rust'
 )
-provides=('hydra-ade' 'hydra')
+provides=('hydra-ade')
 conflicts=('hydra-ade' 'hydra')
 source=("git+https://github.com/renanbs/hydra.git")
 sha256sums=('SKIP')

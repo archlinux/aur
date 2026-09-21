@@ -21,7 +21,6 @@ pkgbase = hydra-ade-git
 	depends = webkit2gtk-4.1
 	optdepends = ripgrep: accelerated file and text search in workspace explorer
 	provides = hydra-ade
-	provides = hydra
 	conflicts = hydra-ade
 	conflicts = hydra
 	source = git+https://github.com/renanbs/hydra.git
