@@ -1,6 +1,6 @@
 pkgbase = round-drop-git
-	pkgdesc = Circle UI Desktop Application Launcher.(Use system-wide electron)
-	pkgver = 1.6.2.r0.g8bf5d5e
+	pkgdesc = Circle UI Desktop Application Launcher.
+	pkgver = 1.6.2.r11.g2b3d23a
 	pkgrel = 1
 	url = https://github.com/nekobato/RoundDrop
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = round-drop-git
 	makedepends = pnpm
 	makedepends = curl
 	makedepends = jq
-	depends = electron42
+	depends = electron44
 	depends = java-runtime
 	provides = round-drop
 	conflicts = round-drop
