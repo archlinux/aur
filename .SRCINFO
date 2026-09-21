@@ -1,6 +1,6 @@
 pkgbase = firedragon-bin
 	pkgdesc = FireDragon is a cross-platform, feature-rich and privacy-focused web browser
-	pkgver = 13.5.1
+	pkgver = 13.6.0
 	pkgrel = 1
 	epoch = 2
 	url = https://gitlab.com/garuda-linux/firedragon/firedragon13
@@ -47,14 +47,14 @@ pkgbase = firedragon-bin
 	provides = firedragon
 	conflicts = firedragon
 	replaces = firedragon-next-bin
-	noextract = firedragon-v13.5.1.linux-x64.tar.xz
-	noextract = firedragon-v13.5.1.linux-arm64.tar.xz
+	noextract = firedragon-v13.6.0.linux-x64.tar.xz
+	noextract = firedragon-v13.6.0.linux-arm64.tar.xz
 	options = !emptydirs
-	source = firedragon::git+https://gitlab.com/garuda-linux/firedragon/firedragon13.git#tag=v13.5.1
-	sha256sums = 6fe0bdbe747764e72d55c10a687131fae6ddcd5e17fe193d533249cbd7ac65d5
-	source_x86_64 = firedragon-v13.5.1.linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.5.1/downloads/firedragon.linux-x64.tar.xz
-	sha256sums_x86_64 = 33a99fc1dca6aaf49439439e0bc93b4ca3bfeab721324d0c72e12501ec95b613
-	source_aarch64 = firedragon-v13.5.1.linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.5.1/downloads/firedragon.linux-arm64.tar.xz
-	sha256sums_aarch64 = f2ea7e1629dea1ebf281f9a4365747874f857f54934c2d4e392a905a3f80e57e
+	source = firedragon::git+https://gitlab.com/garuda-linux/firedragon/firedragon13.git#tag=v13.6.0
+	sha256sums = b3c6b4b26cfd9b8fc83d7ac6fe4769f7a40f51b7134479cd55459aade433ceea
+	source_x86_64 = firedragon-v13.6.0.linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.6.0/downloads/firedragon.linux-x64.tar.xz
+	sha256sums_x86_64 = 23376dbb687431304c611b622e7dcd9c9a641a1b4f3816f9825a365884f6983e
+	source_aarch64 = firedragon-v13.6.0.linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.6.0/downloads/firedragon.linux-arm64.tar.xz
+	sha256sums_aarch64 = 2a2fdf28ad13b60e13e5931fc59e394f8841cb521ff3cca1f78cfb1f524c2481
 
 pkgname = firedragon-bin
