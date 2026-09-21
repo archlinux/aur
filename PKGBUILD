@@ -60,9 +60,6 @@ package() {
   cp -a packages/coding-agent/{docs,examples,CHANGELOG.md} \
     "$pkgdir/$mod_dir/packages/coding-agent/"
 
-  # This package is only useful in windows installation, therefore remove it
-  rm -rf "$pkgdir/$mod_dir/node_modules/koffi"
-
   ln -s "$mod_dir/packages/coding-agent/dist/cli.js" "$pkgdir/usr/bin/pi"
 
   # Copy coding-agent docs and README and CHANGELOG into /usr/share/doc/pi to align it with Arch packages
