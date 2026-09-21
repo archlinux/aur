@@ -3,7 +3,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r7447.2a36099d
+pkgver=r7522.50e9191b
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,6 @@ makedepends=('git'
 checkdepends=('gtest')
 source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/ocornut/imgui.git'
-        'git+https://github.com/grumpycoders/uC-sdk.git'
         'git+https://github.com/serge1/ELFIO.git'
         'git+https://github.com/exoticlibraries/libcester.git'
         'git+https://github.com/grumpycoders/LuaJIT.git'
@@ -55,10 +54,13 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/grumpycoders/luacov.git'
         'git+https://github.com/bluebird75/luaunit.git'
         'git+https://github.com/taocpp/PEGTL.git' # as of 9/1/2026, pcsx-redux fails to compile with extra/pegtl due to missing `auto_rewind`
-        'git+https://github.com/grumpycoders/psxlua.git'
         'git+https://codeberg.org/malucart/xmake-psx.git'
+        'git+https://github.com/rixnobis/iec-60908b.git'
+        'git+https://github.com/rixnobis/cueparser.git'
+        'git+https://github.com/pcsx-redux/nugget.git'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -93,7 +95,6 @@ prepare() {
   cd "$_pkgname"
   git submodule init
   git config submodule.third_party/imgui.url "$srcdir/imgui"
-  git config submodule.third_party/uC-sdk.url "$srcdir/uC-sdk"
   git config submodule.third_party/ELFIO.url "$srcdir/ELFIO"
   git config submodule.third_party/libcester.url "$srcdir/libcester"
   git config submodule.third_party/luajit.url "$srcdir/LuaJIT"
@@ -113,10 +114,11 @@ prepare() {
   git config submodule.third_party/luacov.url "$srcdir/luacov"
   git config submodule.third_party/luaunit.url "$srcdir/luaunit"
   git config submodule.third_party/PEGTL.url "$srcdir/PEGTL"
-  git config submodule.third_party/psxlua.url "$srcdir/psxlua"
+  git config submodule.third_party/iec-60908b.url "$srcdir/iec-60908b"
+  git config submodule.third_party/cueparser.url "$srcdir/cueparser"
+  git config submodule.src/mips.url "$srcdir/nugget"
 
   git -c protocol.file.allow=always submodule update third_party/imgui \
-                       third_party/uC-sdk \
                        third_party/ELFIO \
                        third_party/libcester \
                        third_party/luajit \
@@ -136,7 +138,9 @@ prepare() {
                        third_party/luacov \
                        third_party/luaunit \
                        third_party/PEGTL \
-                       third_party/psxlua
+                       third_party/iec-60908b \
+                       third_party/cueparser \
+                       src/mips
 
   cd third_party/luv
   git submodule init
