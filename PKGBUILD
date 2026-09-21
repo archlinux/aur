@@ -1,7 +1,7 @@
 # Maintainer: PenguinBurner contributors
 
 pkgname=penguin-burner
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Automatic NVIDIA GPU undervolting, overclocking and adaptive per-game tuning'
 arch=('x86_64')
