@@ -1,6 +1,6 @@
 pkgbase = baresip-qt-gui-git
 	pkgdesc = Baresip bundled with custom native Qt applet and simple call interface for KDE Plasma6 (Wayland)
-	pkgver = 4.10.0_qt1.r4740.g267d13dd
+	pkgver = 4.10.0_qt1.r4741.g162897a0
 	pkgrel = 1
 	url = https://github.com/CxOrg/baresip-qt
 	arch = x86_64
