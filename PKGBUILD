@@ -2,7 +2,7 @@
 
 _pkgbase=visage
 pkgname="$_pkgbase"
-pkgver=0.3.6
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Linux face authentication via PAM with persistent daemon, IR camera support, ONNX inference'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("$_pkgbase")
 install='setup.install'
 options=(!lto)
 source=("$_pkgbase::git+https://github.com/sovren-software/visage.git#tag=v${pkgver}")
-sha256sums=('370c1370910b92bb379c87fa2566ba8269a79284f2a69b1dd87e5108cdb5c8e1')
+sha256sums=('3714bd31f3f76b6f72b7a90de7bd9bb9d28f036fa33de0512044e9138597d923')
 
 prepare() {
 	cd "$_pkgbase"
