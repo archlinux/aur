@@ -33,7 +33,7 @@ package_capi-shell() {
 
 package_capi-shell-plugin-capo() {
   pkgdesc="OpenStack (CAPO) credentials plugin for capi-shell"
-  depends=('capi-shell' 'yq')
+  depends=('capi-shell' 'yq' 'python-openstackclient')
   provides=('capo-shell')
   conflicts=('capo-shell')
   replaces=('capo-shell')

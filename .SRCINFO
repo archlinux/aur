@@ -28,6 +28,7 @@ pkgname = capi-shell-plugin-capo
 	pkgdesc = OpenStack (CAPO) credentials plugin for capi-shell
 	depends = capi-shell
 	depends = yq
+	depends = python-openstackclient
 	provides = capo-shell
 	conflicts = capo-shell
 	replaces = capo-shell
