@@ -1,0 +1,5 @@
+[grip-bin]
+source = "github"
+github = "karimz1/grip"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,21 @@
+pkgbase = grip-bin
+	pkgdesc = A cross-platform terminal UI for discovering and stopping processes
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/karimz1/grip
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = grip
+	conflicts = grip
+	options = !strip
+	source = README-0.0.4.md::https://raw.githubusercontent.com/karimz1/grip/v0.0.4/README.md
+	source = LICENSE-0.0.4::https://raw.githubusercontent.com/karimz1/grip/v0.0.4/LICENSE
+	sha256sums = dac34f4944f71bfa231b08829c485eb529aa7da03977c69b7a536d69ef991438
+	sha256sums = 79d2fcdb0c79c0bf33e1afd2151b0187115b190c78c806a6aaf99b507a73ab31
+	source_x86_64 = grip-x86_64-0.0.4::https://github.com/karimz1/grip/releases/download/v0.0.4/grip-linux-amd64
+	sha256sums_x86_64 = 2871339e0babb3f5d57aaebf34e5808f0b4bbc96d3c5409d15584f504d877477
+	source_aarch64 = grip-aarch64-0.0.4::https://github.com/karimz1/grip/releases/download/v0.0.4/grip-linux-arm64
+	sha256sums_aarch64 = 8f8a619ccc806b0a90ac781f70573cce3d2e76124f48299fdc0c6493dc360fae
+
+pkgname = grip-bin
