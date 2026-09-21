@@ -1,6 +1,6 @@
 pkgbase = pacrank-bin
 	pkgdesc = Pick the fastest Archlinux mirrors (prebuilt binary)
-	pkgver = 0.2.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/mexus/pacrank
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = pacrank-bin
 	optdepends = sudo: required at runtime to rewrite /etc/pacman.d/mirrorlist
 	provides = pacrank
 	conflicts = pacrank
-	source = pacrank-0.2.0-x86_64.tar.gz::https://github.com/mexus/pacrank/releases/download/v0.2.0/pacrank-x86_64-unknown-linux-gnu.tar.gz
-	source = LICENSE-MIT-0.2.0::https://github.com/mexus/pacrank/raw/v0.2.0/LICENSE-MIT
-	source = LICENSE-APACHE-0.2.0::https://github.com/mexus/pacrank/raw/v0.2.0/LICENSE-APACHE
-	sha256sums = 574a561df5b0bb413d7d2b1b5add7afff381066b2be31f3de51a359023cbb698
+	source = pacrank-0.4.1-x86_64.tar.gz::https://github.com/mexus/pacrank/releases/download/v0.4.1/pacrank-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE-MIT-0.4.1::https://github.com/mexus/pacrank/raw/v0.4.1/LICENSE-MIT
+	source = LICENSE-APACHE-0.4.1::https://github.com/mexus/pacrank/raw/v0.4.1/LICENSE-APACHE
+	sha256sums = 6e368cd680a6e657cb065990da201ae32c2e53887cfe942309ec35b9cfd6bab6
 	sha256sums = 1f4501dd650e746acbfb3b11a4143ec4334751180817115a41b8583b60909548
 	sha256sums = 8e026767a7a93aa2d295f7a0b912d438aae888004d42a45c9510954a9efdb3d2
 
