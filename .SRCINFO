@@ -1,0 +1,13 @@
+pkgbase = output-as-format
+	pkgdesc = Take stdin and format it as a GitHub/Slack/Jira-formatted code/quote block
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://github.com/sshaw/output-as-format
+	arch = any
+	license = custom:none
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	source = output-as-format-0.04.tar.gz::https://codeload.github.com/sshaw/output-as-format/tar.gz/refs/tags/v0.04
+	sha256sums = 67f396972b6ccd69820af4f51e1232673f282f078f19c5113c731d2f304ac38a
+
+pkgname = output-as-format
