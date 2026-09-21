@@ -1,0 +1,17 @@
+pkgbase = nbcat
+	pkgdesc = Preview Jupyter notebooks (.ipynb) in the terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/akopdev/nbcat
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-rich
+	depends = python-nbformat
+	source = nbcat-1.0.0.tar.gz::https://codeload.github.com/akopdev/nbcat/tar.gz/refs/tags/v1.0.0
+	sha256sums = da5c83144d65e1be5b0179eb9530187db2fdc2a2839cfff06327846817ad2762
+
+pkgname = nbcat
