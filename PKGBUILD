@@ -7,7 +7,7 @@
 # pkgver 与 sha256sums 由 .github/workflows/release.yml 的 publish-aur 任务在每次
 # v* tag 发版时自动改写并推到 AUR，别手动 bump。
 pkgname=boss-job-agent-bin
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="AI 自动刷 Boss 直聘：自动筛岗位、写定制打招呼、和 HR 聊天约面"
 arch=('x86_64')
@@ -24,7 +24,7 @@ options=('!strip')
 install="${pkgname}.install"
 source=("boss-job-agent-${pkgver}-amd64.deb::https://storage2.maoertech.cn/releases/boss-job-agent/v${pkgver}/_Boss_${pkgver}_amd64.deb")
 noextract=("boss-job-agent-${pkgver}-amd64.deb")
-sha256sums=('ea75e693416dc1d95305ef09ac11c9ddcbc5c1e86567b8048191b51ef674a8cf')
+sha256sums=('1dd215a5a95f49dc2c572c53f44b80dcf6ce3ec1593c1486af605538746cd924')
 
 package() {
   cd "$srcdir"
