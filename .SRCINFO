@@ -1,0 +1,25 @@
+pkgbase = python-parllama
+	pkgdesc = Terminal UI for Ollama and other LLM providers (Textual-based TUI)
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/paulrobello/parllama
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-httpx
+	depends = python-pillow
+	depends = python-pydantic
+	depends = python-dotenv
+	depends = python-pytz
+	depends = python-requests
+	depends = python-rich
+	depends = python-textual
+	depends = python-orjson
+	source = parllama-0.9.2.tar.gz::https://codeload.github.com/paulrobello/parllama/tar.gz/refs/tags/v0.9.2
+	sha256sums = 2c2bb92eff73db90a658cb18c5d9138fc944f6edee332ac1263d8ffde8463de2
+
+pkgname = python-parllama
