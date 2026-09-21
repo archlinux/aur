@@ -133,6 +133,16 @@ if [ "${WELINK_LANG}" != "zh" ]; then
     done
 fi
 
+# 输入法：WeLink 是 XWayland(X11) 客户端，只有带 XMODIFIERS 才会去连 fcitx5/ibus 的 XIM。
+# Plasma Wayland 下 KWin 接管 fcitx5 后会话里常常没有这些变量，这里按运行中的框架自动补上。
+if [ -z "${XMODIFIERS}" ]; then
+    if pgrep -x fcitx5 >/dev/null 2>&1 || pgrep -x fcitx >/dev/null 2>&1; then
+        export XMODIFIERS="@im=fcitx" GTK_IM_MODULE="${GTK_IM_MODULE:-fcitx}" QT_IM_MODULE="${QT_IM_MODULE:-fcitx}"
+    elif pgrep -x ibus-daemon >/dev/null 2>&1; then
+        export XMODIFIERS="@im=ibus" GTK_IM_MODULE="${GTK_IM_MODULE:-ibus}" QT_IM_MODULE="${QT_IM_MODULE:-ibus}"
+    fi
+fi
+
 # 从桌面/开始菜单启动时 stdout/stderr 是 systemd 交给的 journal socket，wine 把它包成
 # Windows 句柄后 Node 打不开 process.stderr（EINVAL uv_pipe_open），主进程直接弹
 # "A JavaScript error occurred in the main process"。统一把 stdio 指向普通文件即可。
