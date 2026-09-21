@@ -1,0 +1,14 @@
+pkgbase = hardv
+	pkgdesc = A CLI flashcard app for UNIX-compatible systems, conforming to the UNIX philosophy
+	pkgver = 5.0.0_alpha.2
+	pkgrel = 1
+	url = https://github.com/dongyx/hardv
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = hardv-5.0.0_alpha.2.tar.gz::https://codeload.github.com/dongyx/hardv/tar.gz/refs/tags/v5.0.0-alpha.2
+	sha256sums = 4e4f4816a3793b18e276aa747d6f2406aa621f62017d1120ec077c6ee25f1493
+
+pkgname = hardv
