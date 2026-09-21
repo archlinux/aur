@@ -1,0 +1,26 @@
+pkgbase = furious-bin
+	pkgdesc = GUI proxy client based on PySide6 supporting Xray-core & hysteria (official prebuilt release)
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/LorenEteval/Furious
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = xcb-util
+	depends = xcb-util-cursor
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
+	options = !debug
+	source_x86_64 = Furious-0.8.2-linux-x86_64.deb::https://github.com/LorenEteval/Furious/releases/download/0.8.2/Furious-0.8.2-linux-x86_64.deb
+	sha256sums_x86_64 = b7889bbad8bb91ae275b10cdfbb20e50ff6f55e5dd1b1b14dd677e552027618d
+	source_aarch64 = Furious-0.8.2-linux-aarch64.deb::https://github.com/LorenEteval/Furious/releases/download/0.8.2/Furious-0.8.2-linux-aarch64.deb
+	sha256sums_aarch64 = 4df37882e7b4a54c0078bbb3c9df4d9bde7f8667430b289c4e910e4c90b561d4
+
+pkgname = furious-bin
