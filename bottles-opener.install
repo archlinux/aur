@@ -1,0 +1,28 @@
+post_install() {
+  cat <<'MSG'
+
+  bottles-opener is installed but not active yet.
+
+    bottles-opener          interactive menu
+    bottles-opener enable   set up file opening for your bottles
+
+  Run it as your own user, not with sudo: it only ever writes inside your own
+  home directory.
+
+MSG
+}
+
+pre_remove() {
+  # The changes live in each user's home and cannot be undone from a root-run
+  # hook, so say so while the command that does it still exists.
+  cat <<'MSG'
+
+  Before removing this package, run
+
+    bottles-opener disable
+
+  as each user that enabled it. That removes the file types, launchers and
+  icons it added and puts back the previous default applications.
+
+MSG
+}
