@@ -3,7 +3,7 @@
 pkgname=orca-ide-appimage
 _pkgname=orca-ide
 pkgver=1.4.206
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-gen IDE for working with a fleet of parallel coding agents (AppImage)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/stablyai/orca"
@@ -25,8 +25,11 @@ optdepends=('at-spi2-core: UI automation for Design Mode/element picking'
             'libappindicator-gtk3: system tray icon')
 # orca-ide is upstream's own Linux name, also used by orca-ide-bin, onorca-bin
 # and stably-orca; all three collide with this package file-for-file.
+# stably-orca-bin shares no file with this package -- it renames everything to
+# stably-orca -- but repackages the same upstream AppImage. Conflicting on it so
+# pacman retires this package in the same transaction when migrating to it.
 provides=("orca-ide=$pkgver")
-conflicts=('orca-ide')
+conflicts=('orca-ide' 'stably-orca-bin')
 # Prebuilt Electron payload inside a squashfs image: stripping corrupts it and
 # there is nothing to put in a -debug package.
 options=('!strip' '!debug')

@@ -1,7 +1,7 @@
 pkgbase = orca-ide-appimage
 	pkgdesc = Next-gen IDE for working with a fleet of parallel coding agents (AppImage)
 	pkgver = 1.4.206
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stablyai/orca
 	arch = x86_64
 	arch = aarch64
@@ -20,6 +20,7 @@ pkgbase = orca-ide-appimage
 	optdepends = libappindicator-gtk3: system tray icon
 	provides = orca-ide=1.4.206
 	conflicts = orca-ide
+	conflicts = stably-orca-bin
 	noextract = orca-ide-1.4.206-x86_64.AppImage
 	noextract = orca-ide-1.4.206-aarch64.AppImage
 	options = !strip
