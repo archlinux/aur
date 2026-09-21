@@ -3,7 +3,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libiconv
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 arch=('any')
 pkgdesc="Provides GNU libiconv.so and libcharset.so (Android ${_android_arch})"
@@ -14,7 +14,7 @@ depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://ftp.gnu.org/pub/gnu/libiconv/libiconv-$pkgver.tar.gz")
-md5sums=('1af69958b42981d3c3029ffb4c7ebaed')
+md5sums=('c04d0fa4cae4e9a4febc457fc00ee519')
 
 build() {
     cd "${srcdir}/libiconv-${pkgver}"
@@ -34,4 +34,6 @@ package() {
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
