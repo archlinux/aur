@@ -1,6 +1,6 @@
 # Maintainer: Selim Bucher <me@selim.one>
 pkgname=ni-wine
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Native Instruments software under Wine — setup, launch, and product management"
 # The package ships a 32-bit Windows DLL (built from source in build()),
@@ -20,7 +20,7 @@ optdepends=('wine-staging: recommended Wine build for Native Instruments'
 # not byte-stable (the v2.1.3 tarball was regenerated with a different
 # compression envelope in Aug 2026, breaking the recorded sha256), so we fetch
 # via git and pin the commit hash instead.
-_commit=11f2b361817c6f33fb44fa74dd6daf3019cad63e
+_commit=5f802c74e5c92b88acb578fdf27791f03b7a175f
 source=("$pkgname::git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
