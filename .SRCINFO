@@ -1,6 +1,6 @@
 pkgbase = rustrover-eap
 	pkgdesc = JetBrains IDE for Rust Developers (EAP)
-	pkgver = 2026.2.1
+	pkgver = 2026.3pre+263.5153.48
 	pkgrel = 1
 	url = https://www.jetbrains.com/rust/nextversion/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = rustrover-eap
 	source = LICENSE
 	sha256sums = cd4f42c4d3f9c0fb967a96da2c0c71884df55fe21409a97d12690e8a4c878a06
 	sha256sums = db26ca1fd026fbacfeb87f4bad42d78b3512bb733ce1c566bdd5b751e77d7bb3
-	source_x86_64 = RustRover-2026.2.1-x86_64.tar.gz::https://download.jetbrains.com/rustrover/RustRover-2026.2.1.tar.gz
-	sha256sums_x86_64 = fd7baa32a6b29cf867bb8afc05ec001e1fca7408278192541611bd5d3f482f5b
-	source_aarch64 = RustRover-2026.2.1-aarch64.tar.gz::https://download.jetbrains.com/rustrover/RustRover-2026.2.1-aarch64.tar.gz
-	sha256sums_aarch64 = 33dd2ca7f0a8c9be3d57cee05fd0153fb0b4f3b1e4c6b4e8e5937823746ba4dc
+	source_x86_64 = RustRover-263.5153.48-x86_64.tar.gz::https://download.jetbrains.com/rustrover/RustRover-263.5153.48.tar.gz
+	sha256sums_x86_64 = b776e2dcaad0e33c04d457e50f6cd1067a49fc87742ed330bcd97a39d90e3b9c
+	source_aarch64 = RustRover-263.5153.48-aarch64.tar.gz::https://download.jetbrains.com/rustrover/RustRover-263.5153.48-aarch64.tar.gz
+	sha256sums_aarch64 = 9203b257290a4d8684a37bc772f985061e2aec88ebfe79a12770cd85054c3ae4
 
 pkgname = rustrover-eap
 	depends = libdbusmenu-glib
