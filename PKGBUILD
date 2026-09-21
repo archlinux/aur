@@ -2,7 +2,7 @@
 # Created with assistance from GLM 5.3 Flash.
 
 pkgname=pake-cli
-pkgver=3.16.3
+pkgver=3.17.0
 pkgrel=1
 pkgdesc="Turn any webpage into a desktop app with one command (Tauri/Rust-based CLI)"
 arch=('any')
@@ -19,7 +19,7 @@ options=('!debug')
 _pkgname=pake-cli
 
 source=("https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-b2sums=('244be8c636a058b516d3913938e0000dd3b6f765159ac0a22206ecee92c5054358d060a231d46a6d224ba492c5e6b268102676267eda789424797735e75e99e4')
+b2sums=('0ec5cdcb04850a757766ded5b8a1dd4fbae068f5405f6c5a4bf06cfa8ce37c5f362269957de96e740168bf191e48ded0586ee25acf173499843758b39143e613')
 
 prepare() {
     bsdtar -xf "${_pkgname}-${pkgver}.tgz"
