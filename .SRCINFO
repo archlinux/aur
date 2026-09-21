@@ -1,7 +1,7 @@
 pkgbase = python-dllist
 	pkgdesc = List the shared libraries loaded by the current process
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wardbrian/dllist
 	arch = any
 	license = BSD-3-Clause

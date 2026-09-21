@@ -1,8 +1,8 @@
-# Maintainer: Smoolak <smoolak [at] gmail.com>.
+# Maintainer: Smoolak <smoolak@gmail.com>
 
 pkgname=python-dllist
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="List the shared libraries loaded by the current process"
 arch=('any')
 url="https://github.com/wardbrian/dllist"
