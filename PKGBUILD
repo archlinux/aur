@@ -1,6 +1,6 @@
 # Maintainer: Kristofer Lund <kristoferlund@users.noreply.github.com>
 pkgname=ostt
-pkgver=0.0.25
+pkgver=0.0.26
 pkgrel=1
 pkgdesc="Open Speech-to-Text: Terminal application for recording and transcribing audio"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 makedepends=('cargo' 'rust' 'git' 'pkgconf')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kristoferlund/ostt/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c2c8d5c5593cfb11e771fb1334f7150fd9f97d4f31c43ab562c1b645e2c163d2')
+sha256sums=('fc92f837f4f73886a3f90f920b99f387bf43eac461869c59716a2f977d7cd015')
 
 prepare() {
     cd "ostt-${pkgver}"
