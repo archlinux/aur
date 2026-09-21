@@ -19,11 +19,11 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-_java_build_ver=26
+_java_build_ver=25
 _java_run_ver=25
 _tag='28+9'
 pkgver=${_tag//+/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64 x86_64_v3)
 url='https://wiki.openjdk.java.net/display/OpenJFX/Main'
@@ -118,7 +118,7 @@ package_java-openjfx() {
 
   cd $_jfxdir
 
-  install -dm 755  "${pkgdir}"/usr/{lib/$pkgbase,share/java/$pkgbase,share/licenses}
+  install -dm 755 "${pkgdir}"/usr/{lib/$pkgbase,share/java/$pkgbase,share/licenses}
   cp -dr --no-preserve=ownership build/sdk/lib/*.jar "${pkgdir}/usr/share/java/$pkgbase"
   cp -dr --no-preserve=ownership build/sdk/lib/*.so "${pkgdir}/usr/lib/$pkgbase"
   cp -dr --no-preserve=ownership build/jmods "${pkgdir}/usr/share/java/$pkgbase"
@@ -141,7 +141,7 @@ package_java-openjfx-src() {
   arch=(any)
   cd $_jfxdir
 
-  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-$_java_build_ver-openjdk,share/licenses}
+  install -dm 755 "${pkgdir}"/usr/{lib/jvm/java-$_java_build_ver-openjdk,share/licenses}
   install -m 644 build/sdk/src.zip "${pkgdir}/usr/lib/jvm/java-$_java_build_ver-openjdk/javafx-src.zip"
   ln -s "$pkgbase" "${pkgdir}/usr/share/licenses/$pkgbase-src"
 }
