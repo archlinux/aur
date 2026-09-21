@@ -1,20 +1,20 @@
 pkgbase = eusoft-ting-de-bin
 	pkgdesc = 听力统计、笔记同步、语音高亮跟随，让您轻松愉快学德语
-	pkgver = 10.2.0
+	pkgver = 26.9.1
 	pkgrel = 1
 	url = https://www.godic.net/ting
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = electron11
+	depends = electron22
 	depends = ffmpeg
 	conflicts = eusoft-ting-de
 	conflicts = eudic-ting-de
 	conflicts = ting-de
-	source = eusoft-ting-de-10.2.0.deb::https://static.frdic.com/pkg/ting_de/ting_de.deb
+	source = eusoft-ting-de-26.9.1.deb::https://static.frdic.com/pkg/ting_de/ting_de.deb
 	source = LICENSE.html::https://www.eudic.net/v4/en/home/privacy
 	source = eusoft-ting-de.sh
-	sha256sums = d758d44503db2bce5b5b22ebf1228ac9378f2d4e81f963bc89c4c34d00ea4b69
-	sha256sums = 7f16e15435a7380645f8573fd7333f67c16811c04c15364d2e5d7bd44fa5e23a
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	sha256sums = 46ff02b3bd5d08289ce230530d2000f2b1b4a876328900d623ffca94f810b2bb
+	sha256sums = 926546d03b551cca9d4ef027f5119e70db3cce2bc25b25bd838c97d73ee824c4
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = eusoft-ting-de-bin
