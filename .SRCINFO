@@ -1,0 +1,16 @@
+pkgbase = python-expecttest
+	pkgdesc = Python library for expect-style testing
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ezyang/expecttest
+	arch = any
+	license = MIT
+	checkdepends = python-hypothesis
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	source = python-expecttest-0.3.0.tar.gz::https://github.com/ezyang/expecttest/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = e35ef2df7f97071c735a93612bfeb4d60b1c5f0990656bccffaf81b917cab09b
+
+pkgname = python-expecttest
