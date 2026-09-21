@@ -1,0 +1,15 @@
+pkgbase = surfn-vimix-black-icons-git
+	pkgdesc = Surfn Vimix Black, a colourful icon theme
+	pkgver = r3.3b936b9
+	pkgrel = 1
+	url = https://github.com/erikdubois/surfn-vimix-black
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	depends = surfn-icons-git
+	options = !strip
+	options = !emptydirs
+	source = Surfn-Vimix-Black::git+https://github.com/erikdubois/surfn-vimix-black.git
+	sha256sums = SKIP
+
+pkgname = surfn-vimix-black-icons-git
