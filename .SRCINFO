@@ -1,0 +1,15 @@
+pkgbase = surfn-numix-polo-icons-git
+	pkgdesc = Surfn Numix Polo, a colourful icon theme
+	pkgver = r3.90dd60e
+	pkgrel = 1
+	url = https://github.com/erikdubois/surfn-numix-polo
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	depends = surfn-icons-git
+	options = !strip
+	options = !emptydirs
+	source = Surfn-Numix-Polo::git+https://github.com/erikdubois/surfn-numix-polo.git
+	sha256sums = SKIP
+
+pkgname = surfn-numix-polo-icons-git
