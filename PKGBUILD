@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libunistring
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 arch=('any')
 pkgdesc="Library for manipulating Unicode strings and C strings (Android ${_android_arch})"
@@ -18,7 +18,7 @@ makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.gnu.org/gnu/libunistring/libunistring-${pkgver}.tar.xz")
 validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871')
-md5sums=('7419fcbca7c0b29d3b218a09a15cbc76')
+md5sums=('e033195d90d0803063f3fecc77148124')
 
 build() {
     cd "${srcdir}/libunistring-${pkgver}"
