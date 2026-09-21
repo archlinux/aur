@@ -1,0 +1,12 @@
+pkgbase = nocjk
+	pkgdesc = Detect CJK (Chinese, Japanese, Korean) text: CLI tool and library
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/aethiopicuschan/nocjk
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = nocjk-1.0.2.tar.gz::https://codeload.github.com/aethiopicuschan/nocjk/tar.gz/refs/tags/v1.0.2
+	sha256sums = 0ea7a4c5e8314c6940483717a6f6033afe1e73fe8bad7144d43b8b1c99921477
+
+pkgname = nocjk
