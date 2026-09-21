@@ -1,7 +1,7 @@
 # Maintainer: Marat Bakeev <hawara@gmail.com>
 pkgname=floocast
-pkgver=1.1.8.3
-pkgrel=4
+pkgver=1.1.9
+pkgrel=1
 pkgdesc="GUI to control and configure FlooGoo USB Bluetooth dongles (FMA120): pairing, AuraCast broadcasting and DFU"
 arch=('any')
 url="https://github.com/Flairmesh/FlooCast"
@@ -26,12 +26,12 @@ source=(
   "$pkgname-single-instance.patch"
   "$pkgname-sni-tray.patch"
 )
-sha256sums=('7541f0f0f658f794111d11f7cfa7ae13303cbf6eff56ef6a3fbfab18ed98eea5'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('f3f328c8ff50423c1f61b0a5c9ef9627e51a4581d57c7e32badce5854968050a'
+            '9ab1d5bc3edbe9f51cd7075e511dceed5ce3c0a0ce0ca267e0dce81040c6d477'
+            'f5a152c07de10d0f238e693d068664c9507eaebc24b04e50b32c3138312fd936'
+            '33b2afb9305a74b77fa764820e611fb3c08fb00e296d047b2ed0de280fefb383'
+            '5f07e92c189883f2217f2e9ce46a2aae6253d34040b8b85f656127737ba4b238'
+            '9f6f63b54c95c158ddf05aee6e5bc38373b44ab386a6f21202504785aec421f8')
 
 _srcdir="FlooCast-Linux_$pkgver"
 
