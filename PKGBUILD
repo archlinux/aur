@@ -2,7 +2,7 @@
 
 _name=exa-py
 pkgname=python-$_name
-pkgver=2.22.0
+pkgver=2.22.2
 pkgrel=1
 pkgdesc="Python SDK for Exa API."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-requests' 'python-typing_extensions' 'python-openai' '
 makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf5184a9e2395e9aa152c7cf7182d848e370e4b91c5f7fc59888540115c1cd2a')
+sha256sums=('b43e150b541405ab20698c3c78f8f92a4311fc462f34871850cfc6b2df42ab83')
 
 build() {
   cd "$srcdir"/$_name-$pkgver
