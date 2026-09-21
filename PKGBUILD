@@ -7,7 +7,7 @@ pkgver=1.3.0
 pkgrel=1
 pkgdesc="Unattended background updates for CachyOS, aware of battery, gaming and manual package management"
 arch=('any')
-url="https://github.com/Felitendo/cachy-auto-update"
+url="https://github.com/LoonixTools/cachy-auto-update"
 license=('GPL-3.0-or-later')
 depends=('bash' 'systemd' 'pacman' 'pacman-contrib' 'util-linux' 'sudo'
          'gettext')
