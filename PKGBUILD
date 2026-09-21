@@ -10,7 +10,7 @@
 
 pkgname=bspwm1-maflorezp-git
 _srcname=bspwm1
-pkgver=1.6.2.r124.g03237e5
+pkgver=1.6.2.r129.gd7f5da8
 pkgrel=1
 pkgdesc="bspwm1 with live edge magnetism, configurable Aero Snap and rules matched by window properties"
 arch=('x86_64')
