@@ -1,10 +1,14 @@
 pkgbase = sleex-ui-kit-git
 	pkgdesc = UI kit for Sleex desktop environment (git version)
-	pkgver = 1.0.r5.a58e1f7
-	pkgrel = 1
+	pkgver = 1.0.r22.a17b0da
+	pkgrel = 9
 	url = https://github.com/axos-project/sleex-ui-kit
 	arch = x86_64
 	license = GPL3
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-tools
+	depends = qt6-wayland
 	optdepends = sleex-git: The Sleex desktop environment
 	provides = sleex-ui-kit
 	conflicts = sleex-ui-kit
