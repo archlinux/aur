@@ -1,5 +1,3 @@
-==> Generating checksums for source files...
-sha256sums=('a7c7c7dfb45f48be88499b4bdac4266d03c31fcb323777a63ce38bf53e3fa12a')
 pkgbase = claudebar
 	pkgdesc = Waybar widget displaying Claude AI subscription usage with colored progress bars
 	pkgver = 0.10.4
