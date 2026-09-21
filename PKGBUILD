@@ -1,7 +1,7 @@
 # Maintainer: Roman Maksimovich <r.a.maksimovich@gmail.com>
 
 pkgname=pshash
-pkgver=0.1.22.0
+pkgver=0.1.23.0
 pkgrel=1
 epoch=
 pkgdesc="A functional pseudo-hash password generator"
@@ -48,4 +48,4 @@ package() {
 	install -Dm644 ${pkgname}-${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 }
-sha256sums=('d7652b97811be9a377be1a9c7f100cc589650231691b0e3f23403d3ba8172a0d')
+sha256sums=('d0b06a60b797519437161d81722caf566d3bc692475c760d9ad9151b264c3674')
