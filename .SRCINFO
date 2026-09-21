@@ -1,0 +1,15 @@
+pkgbase = brash-git
+	pkgdesc = Move and restore items from the XDG trash, written in pure Bash
+	pkgver = r33.6db2d9f
+	pkgrel = 1
+	url = https://github.com/zakariagatter/brash
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	provides = brash
+	conflicts = brash
+	source = brash::git+https://github.com/zakariagatter/brash.git
+	sha256sums = SKIP
+
+pkgname = brash-git
