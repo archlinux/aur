@@ -5,9 +5,9 @@
 pkgname=qt5-serialbus
 _basever=5.15.19
 pkgver=5.15.19
-pkgrel=1
+pkgrel=2
 _commit=6734222bccc5541f9527281c810c6b5f8fdd092f
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Qt module for general purpose serial bus access'
