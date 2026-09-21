@@ -3,7 +3,7 @@
 pkgname=zapret-rust-bin
 _pkgname=zapret-rust
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Zapret-Rust TUI for DPI bypass (prebuilt binary)"
 arch=('x86_64')

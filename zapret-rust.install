@@ -1,4 +1,5 @@
 post_remove() {
-    echo "Removing /var/lib/zapret-rust"
-    rm -rf -- /var/lib/zapret-rust
+    printf '%s\n' \
+        "zapret-rust: persistent data remains in /var/lib/zapret-rust" \
+        "Remove it manually if it is no longer needed."
 }
