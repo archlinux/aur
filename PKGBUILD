@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=youwee-bin
 _pkgname=Youwee
-pkgver=0.20.3
+pkgver=0.20.4
 pkgrel=1
 pkgdesc="A beautifull YouTube, TikTok, Instagram and 1800+ sites downloader (yt-dlp GUI) and AI summary video content for cross-platform."
 arch=('x86_64')
@@ -21,11 +21,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-Linux.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/vanloctech/youwee/v${pkgver}/LICENSE"
 )
-sha256sums=('1acc33659b8d170f8597893a96380526e34368b808d1c0877b6e261a0d103afe'
+sha256sums=('3fa198f21814d841f582c32a4034dcbda91639c353c0cfe30ddeb48f5bc7b076'
             '1cea78a161f726406b7611610171f5ac0e42b620126334e1150084179faf5b7b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/Categories=/Categories=AudioVideo;Utility/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
