@@ -33,12 +33,12 @@ build() {
 package() {
 	cd endcord
 	install -Dm755 ./dist/endcord-lite "$pkgdir/usr/bin/endcord-lite"
-	install -Dm644 ./README.md "$pkgdir/usr/share/doc/endcord-lite/README.md"
-	install -Dm644 ./docs/commands.md "$pkgdir/usr/share/doc/endcord-lite/commands.md"
-	install -Dm644 ./docs/configuration.md "$pkgdir/usr/share/doc/endcord-lite/configuration.md"
-	install -Dm644 ./docs/extensions.md "$pkgdir/usr/share/doc/endcord-lite/extensions.md"
-	install -Dm644 ./docs/keybindings.md "$pkgdir/usr/share/doc/endcord-lite/keybindings.md"
-	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/endcord-lite/LICENSE"
-	install -Dm644 ./tools/endcord.desktop "$pkgdir/usr/share/applications/endcord.desktop"
+	install -Dm644 ./README.md "$pkgdir/usr/share/doc/endcord/README.md"
+	install -Dm644 ./docs/commands.md "$pkgdir/usr/share/doc/endcord/commands.md"
+	install -Dm644 ./docs/configuration.md "$pkgdir/usr/share/doc/endcord/configuration.md"
+	install -Dm644 ./docs/extensions.md "$pkgdir/usr/share/doc/endcord/extensions.md"
+	install -Dm644 ./docs/keybindings.md "$pkgdir/usr/share/doc/endcord/keybindings.md"
+	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/endcord/LICENSE"
+	install -Dm644 ./tools/com.sparklost.endcord.desktop "$pkgdir/usr/share/applications/endcord.desktop"
     install -Dm644 ./tools/icons/endcord.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/endcord.svg"
 }
