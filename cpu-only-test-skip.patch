@@ -1,0 +1,30 @@
+diff --git a/tests/L0/conftest.py b/tests/L0/conftest.py
+new file mode 100644
+index 0000000..51e9d23
+--- /dev/null
++++ b/tests/L0/conftest.py
+@@ -0,0 +1,24 @@
++from pathlib import Path
++
++import pytest
++import torch
++
++
++# Apex's default L0 runner covers these three directories. Every test in them
++# constructs CUDA tensors and exercises a fused CUDA kernel; keep collection
++# intact but report a precise hardware skip on CPU-only builders.
++_CUDA_KERNEL_DIRECTORIES = {
++    "run_optimizers",
++    "run_fused_layer_norm",
++    "run_mlp",
++}
++
++
++def pytest_collection_modifyitems(items):
++    if torch.cuda.is_available():
++        return
++    marker = pytest.mark.skip(reason="Apex fused L0 kernel test requires a CUDA GPU")
++    for item in items:
++        parts = set(Path(str(item.path)).parts)
++        if parts & _CUDA_KERNEL_DIRECTORIES:
++            item.add_marker(marker)

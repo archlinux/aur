@@ -3,20 +3,20 @@
 pkgname=python-apex
 _pkgname=apex
 pkgver=25.09
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA Apex: PyTorch extensions for mixed precision and distributed training (fused ops)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/apex'
 license=('BSD-3-Clause')
 depends=(
-  'python'
-  'python-pytorch'
-  'python-tqdm'
-  'python-numpy'
-  'python-yaml'
-  'python-packaging'
   'cuda'
   'cudnn'
+  'glibc'
+  'libgcc'
+  'libstdc++'
+  'python'
+  'python-packaging'
+  'python-pytorch-cuda'
 )
 makedepends=(
   'python-build'
@@ -25,8 +25,26 @@ makedepends=(
   'python-setuptools'
   'gcc15'
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/NVIDIA/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d30ce19d8519363fd3ee52d028d60c6f66062c53f72d1265ed79e743449b12db')
+checkdepends=(
+  'python-expecttest'
+  'python-pytest'
+)
+optdepends=(
+  'python-einops: OpenFold Triton attention helpers'
+  'python-numpy: contrib sparsity, peer-memory, and GroupBN helpers'
+  'python-tabulate: formatted ASP permutation reports'
+  'python-torchvision: ASP support for torchvision detection models'
+  'python-triton: OpenFold Triton kernels'
+)
+options=('!debug' '!lto')
+source=(
+  "${_pkgname}-${pkgver}.tar.gz::https://github.com/NVIDIA/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+  'cpu-only-test-skip.patch'
+)
+sha256sums=(
+  'd30ce19d8519363fd3ee52d028d60c6f66062c53f72d1265ed79e743449b12db'
+  'e4c890b25bf35c185d722762cc92c9a98a185617712016e212d7591366dc5096'
+)
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -48,8 +66,10 @@ prepare() {
   # 'compute_70'". Env vars don't reliably reach torch's flag generation through
   # the build frontend, so pin a CUDA-13-safe arch list in-process at the very
   # top of setup.py (Turing..Blackwell). Override _APEX_ARCHS to retarget.
-  sed -i "1i os.environ.setdefault('TORCH_CUDA_ARCH_LIST', os.environ.get('_APEX_ARCHS') or '7.5;8.0;8.6;8.9;9.0;10.0;12.0')" setup.py
+  sed -i "1i os.environ.setdefault('TORCH_CUDA_ARCH_LIST', os.environ.get('_APEX_ARCHS') or '7.5;8.0;8.6;8.9;9.0;10.0;11.0;12.0')" setup.py
   sed -i '1i import os' setup.py
+
+  patch -Np1 --fuzz=0 -i "$srcdir/cpu-only-test-skip.patch"
 }
 
 build() {
@@ -111,11 +131,81 @@ WRAP
 
 check() {
   cd "${_pkgname}-${pkgver}"
-  # apex.amp was removed in recent apex (use torch.amp); test the real submodules.
-  # The compiled CUDA extensions need libtorch_cuda.so (python-pytorch-cuda) to
-  # dlopen, which may be absent in a CPU-only build env, so keep this best-effort.
-  python -c "import apex; from apex.normalization import FusedLayerNorm, FusedRMSNorm; from apex.optimizers import FusedAdam, FusedLAMB; from apex.multi_tensor_apply import multi_tensor_applier; import apex.transformer; print('apex import OK')" \
-    || echo 'Warning: import check skipped (torch-cuda runtime may be unavailable in build env)'
+
+  local _check_root="$srcdir/apex-check"
+  rm -rf "$_check_root"
+  python -m installer --destdir="$_check_root" dist/*.whl
+  local _site_packages
+  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+
+  # Run Apex's complete default L0 suite. Its optimizer, normalization, and MLP
+  # cases are all CUDA-kernel tests and remain fully collected as hardware skips.
+  # test_fused_novograd.py uses the upstream runner's sibling-style bare
+  # import (`from test_fused_optimizer import ...`), so expose that exact test
+  # directory just as tests/L0/run_test.py's unittest discovery does.
+  CUDA_VISIBLE_DEVICES='' \
+  PYTHONPATH="$_check_root$_site_packages:$PWD/tests/L0/run_optimizers" \
+    pytest -ra \
+      tests/L0/run_optimizers \
+      tests/L0/run_fused_layer_norm \
+      tests/L0/run_mlp
+
+  # This upstream transformer sampler module is CPU-capable and exercises real
+  # batching behavior, so run its two tests instead of excluding all transformer
+  # coverage with the GPU/distributed modules. Python 3.14 changed POSIX's
+  # multiprocessing default to forkserver; upstream defines its fixture dataset
+  # locally, so retain the fork behavior under which this test is authored.
+  CUDA_VISIBLE_DEVICES='' \
+  PYTHONPATH="$_check_root$_site_packages" \
+    python - <<'PY'
+import multiprocessing
+
+import pytest
+
+multiprocessing.set_start_method("fork", force=True)
+raise SystemExit(
+    pytest.main(["-ra", "tests/L0/run_transformer/test_batch_sampler.py"])
+)
+PY
+
+  # Exercise the installed native CPU extension: flatten heterogeneous dense
+  # tensors, unflatten them exactly, and propagate gradients through the result.
+  CUDA_VISIBLE_DEVICES='' \
+  PYTHONPATH="$_check_root$_site_packages" python - <<'PY'
+from pathlib import Path
+
+import torch
+
+import apex
+import apex_C
+import amp_C
+from apex.normalization import FusedLayerNorm, FusedRMSNorm
+from apex.optimizers import FusedAdam, FusedLAMB
+
+assert Path(apex.__file__).is_relative_to(Path("/usr")) is False
+left = torch.tensor([[1.0, 2.0], [3.0, 4.0]], requires_grad=True)
+right = torch.tensor([5.0, 6.0, 7.0], requires_grad=True)
+flat = apex_C.flatten([left, right])
+torch.testing.assert_close(flat, torch.tensor([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]))
+restored = apex_C.unflatten(flat, [left, right])
+torch.testing.assert_close(restored[0], left)
+torch.testing.assert_close(restored[1], right)
+(flat.square().sum()).backward()
+torch.testing.assert_close(left.grad, 2 * left.detach())
+torch.testing.assert_close(right.grad, 2 * right.detach())
+assert callable(amp_C.multi_tensor_scale)
+assert all(x is not None for x in (FusedLayerNorm, FusedRMSNorm, FusedAdam, FusedLAMB))
+print({"module": apex.__file__, "flattened": flat.tolist()})
+PY
+
+  # Validate full cross-compiled CUDA coverage without requiring a GPU device.
+  local _extension _arch
+  _extension=$(CUDA_VISIBLE_DEVICES='' PYTHONPATH="$_check_root$_site_packages" \
+    python -c 'import amp_C; print(amp_C.__file__)')
+  cuobjdump --list-elf "$_extension" > "$srcdir/apex-cuobjdump.txt"
+  for _arch in 75 80 86 89 90 100 110 120; do
+    grep -q "sm_$_arch" "$srcdir/apex-cuobjdump.txt"
+  done
 }
 
 package() {
