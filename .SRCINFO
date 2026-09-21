@@ -1,6 +1,6 @@
 pkgbase = firedragon-catppuccin-bin
 	pkgdesc = FireDragon is a cross-platform, feature-rich and privacy-focused web browser
-	pkgver = 13.5.1
+	pkgver = 13.6.0
 	pkgrel = 1
 	epoch = 2
 	url = https://gitlab.com/garuda-linux/firedragon/firedragon13
@@ -47,14 +47,14 @@ pkgbase = firedragon-catppuccin-bin
 	provides = firedragon
 	conflicts = firedragon
 	replaces = firedragon-catppuccin-next-bin
-	noextract = firedragon-catppuccin-v13.5.1.linux-x64.tar.xz
-	noextract = firedragon-catppuccin-v13.5.1.linux-arm64.tar.xz
+	noextract = firedragon-catppuccin-v13.6.0.linux-x64.tar.xz
+	noextract = firedragon-catppuccin-v13.6.0.linux-arm64.tar.xz
 	options = !emptydirs
-	source = firedragon::git+https://gitlab.com/garuda-linux/firedragon/firedragon13.git#tag=v13.5.1
-	sha256sums = 6fe0bdbe747764e72d55c10a687131fae6ddcd5e17fe193d533249cbd7ac65d5
-	source_x86_64 = firedragon-catppuccin-v13.5.1.linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.5.1/downloads/firedragon-catppuccin.linux-x64.tar.xz
-	sha256sums_x86_64 = 43fc417d418005b3916149c846a72940f541cfed624483c35af28b1de1c6bf60
-	source_aarch64 = firedragon-catppuccin-v13.5.1.linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.5.1/downloads/firedragon-catppuccin.linux-arm64.tar.xz
-	sha256sums_aarch64 = b880f9ef282a082c94f62d017511896470b4570dd5e49847cc337b70e7e42700
+	source = firedragon::git+https://gitlab.com/garuda-linux/firedragon/firedragon13.git#tag=v13.6.0
+	sha256sums = b3c6b4b26cfd9b8fc83d7ac6fe4769f7a40f51b7134479cd55459aade433ceea
+	source_x86_64 = firedragon-catppuccin-v13.6.0.linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.6.0/downloads/firedragon-catppuccin.linux-x64.tar.xz
+	sha256sums_x86_64 = 6b88e08e7e3e0079b7d692b80f38ee9c3e80ba78c7430ed7cb63e4178793523e
+	source_aarch64 = firedragon-catppuccin-v13.6.0.linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.6.0/downloads/firedragon-catppuccin.linux-arm64.tar.xz
+	sha256sums_aarch64 = 4f6f0f44a8b74756121526164477c963ef66afa3191b4deab60721544191e064
 
 pkgname = firedragon-catppuccin-bin
