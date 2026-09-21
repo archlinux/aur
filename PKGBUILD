@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel gmail>
 pkgname=meridian
-pkgver=1.72.0
+pkgver=1.74.0
 pkgrel=1
 pkgdesc="Use your Claude Max subscription with OpenCode, OpenClaw, Pi, Droid, Aider, Crush, Cline."
 arch=(any)
@@ -10,7 +10,7 @@ depends=(nodejs)
 makedepends=(bun)
 provides=(meridian)
 source=(https://github.com/rynfar/$pkgname/archive/refs/tags/$pkgname-v$pkgver.tar.gz)
-sha512sums=('bc51d6a6ca1bd828c46ef70da743c8acdcbc56047af1a5109a0a69133cf514cfc9065210ee238655d341ec4e2933326e1051f87534204934464adce73cd0be50')
+sha512sums=('c6deebc7bbb53617445f29738f7bb6ed2698bf4f6bae078763051989fb21e0a5f359651e9853c0c9ce2f097d7e24021274a5812339ba2433d15ff2f11ce47dac')
 
 build() {
   cd "$srcdir/$pkgname-${pkgname}-v${pkgver}"
