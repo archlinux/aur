@@ -3,7 +3,7 @@
 pkgname=berrydash
 pkgver=26.1
 pkgrel=2
-pkgdesc="A simple game where you catch berries with a leaderboard system and more."
+pkgdesc="A simple game where you catch berries with a leaderboard system and more.\n\nThis package is not recommended to use, you should use the \"lncvrt-games-launcher\" package instead and download Berry Dash from there."
 arch=('x86_64')
 url="https://berrydash.lncvrt.xyz/"
 license=('GPL3')
