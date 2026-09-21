@@ -1,0 +1,17 @@
+pkgbase = badness
+	pkgdesc = A language server, formatter, and linter for LaTeX
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://github.com/jolars/badness
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/jolars/badness/archive/refs/tags/v0.23.0/badness-0.23.0.tar.gz
+	sha256sums = 6da45215c1a28074dcbb128e59c090cabaeef7a36e584ed8e8c8594303f9c3fa
+
+pkgname = badness
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
