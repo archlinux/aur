@@ -1,6 +1,6 @@
 pkgbase = hihat-git
-	pkgdesc = A minimalist offline music library player for desktop, built on Electron, React, and Material UI.(Use system-wide electron)
-	pkgver = 2.3.6.r0.gfb06501
+	pkgdesc = A free, open-source, and modern music player for local libraries. No ads, no accounts, no internet — just your music.
+	pkgver = 2.3.6.r5.gc72bf7e
 	pkgrel = 1
 	url = https://github.com/johnnyshankman/hihat
 	arch = any
