@@ -2,7 +2,7 @@
 # Maintainer: Lucas Santos <hello@lsantos.dev>
 
 pkgname='proton-drive-fs'
-pkgver=0.24.2
+pkgver=0.25.0
 pkgrel=1
 pkgdesc='FUSE virtual filesystem for Proton Drive on Linux.'
 url='https://github.com/khaosdoctor/proton-drive-linux-fs'
@@ -14,7 +14,7 @@ depends=('fuse3')
 makedepends=('go' 'git')
 optdepends=('zenity: About dialog' 'libsecret: store the key password in the OS keyring')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/khaosdoctor/proton-drive-linux-fs/releases/download/v${pkgver}/proton-drive-linux-fs-${pkgver}.tar.gz")
-sha256sums=('dce59bab8daa46ad67fde2f42de6c5c2be4f1ccef233fd29cc36506efecde5a3')
+sha256sums=('20c93f24ec72b47e3003f7c92789372edba57f4205000853bc55c67c5664b4bb')
 prepare() {
   go mod download
 }
@@ -29,9 +29,7 @@ package() {
   install -Dm644 "./contrib/proton-drive-fs.desktop" "${pkgdir}/usr/share/applications/proton-drive-fs.desktop"
   install -Dm644 "./contrib/icons/proton-drive-fs.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/proton-drive-fs.png"
   sed 's|@BINDIR@|/usr/bin|g' "./contrib/systemd/proton-drive-fs.service" > "${srcdir}/proton-drive-fs.service"
-  sed 's|@BINDIR@|/usr/bin|g' "./contrib/systemd/proton-drive-fs-tray.service" > "${srcdir}/proton-drive-fs-tray.service"
   install -Dm644 "${srcdir}/proton-drive-fs.service" "${pkgdir}/usr/lib/systemd/user/proton-drive-fs.service"
-  install -Dm644 "${srcdir}/proton-drive-fs-tray.service" "${pkgdir}/usr/lib/systemd/user/proton-drive-fs-tray.service"
   install -Dm644 "./contrib/io.github.khaosdoctor.proton_drive_fs.metainfo.xml" "${pkgdir}/usr/share/metainfo/io.github.khaosdoctor.proton_drive_fs.metainfo.xml"
   install -Dm644 "./contrib/packaging/proton-drive-fs-upgrade.hook" "${pkgdir}/usr/share/libalpm/hooks/proton-drive-fs-upgrade.hook"
   install -Dm755 "./contrib/packaging/proton-drive-fs-restart" "${pkgdir}/usr/share/libalpm/scripts/proton-drive-fs-restart"
