@@ -1,0 +1,37 @@
+pkgbase = plasma6-applets-panon-refreshed-git
+	pkgdesc = Fork of Panon - Audio spectrum, rotating artwork and synchronized lyrics widget for Plasma 6
+	pkgver = r5.fe33431
+	pkgrel = 1
+	url = https://github.com/LeoDreamer2004/Panon-Refreshed
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = gettext
+	makedepends = qt6-shadertools
+	depends = plasma-workspace>=6.0
+	depends = libplasma
+	depends = plasma5support
+	depends = kirigami
+	depends = kcmutils
+	depends = qt6-declarative
+	depends = qt6-websockets
+	depends = qt6-5compat
+	depends = libpulse
+	depends = pulse-native-provider
+	depends = python>=3.10
+	depends = python-numpy
+	depends = python-websockets>=13
+	depends = python-dbus
+	depends = python-pillow
+	optdepends = netease-cloud-music-web-player: exact-song-ID NetEase lyrics integration
+	optdepends = qqmusic-electron: exact-song-ID QQ Music lyrics integration (1.1.8 adapter)
+	optdepends = python-pykakasi: local Japanese furigana readings
+	optdepends = python-jaconv: conversion of official romanized Japanese readings
+	provides = plasma6-applets-panon-refreshed=r5.fe33431
+	conflicts = plasma6-applets-panon-refreshed
+	conflicts = plasma6-applets-panon
+	conflicts = plasma6-applets-panon-git
+	source = panon-refreshed::git+https://github.com/LeoDreamer2004/Panon-Refreshed.git
+	sha256sums = SKIP
+
+pkgname = plasma6-applets-panon-refreshed-git
