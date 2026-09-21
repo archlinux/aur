@@ -1,6 +1,6 @@
 pkgbase = android-x86-libunistring
 	pkgdesc = Library for manipulating Unicode strings and C strings (Android x86)
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://www.gnu.org/software/libunistring/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = android-x86-libunistring
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/libunistring/libunistring-1.4.1.tar.xz
+	source = https://ftp.gnu.org/gnu/libunistring/libunistring-1.4.2.tar.xz
 	validpgpkeys = 462225C3B46F34879FC8496CD605848ED7E69871
-	md5sums = 7419fcbca7c0b29d3b218a09a15cbc76
+	md5sums = e033195d90d0803063f3fecc77148124
 
 pkgname = android-x86-libunistring
