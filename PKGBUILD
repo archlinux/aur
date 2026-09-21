@@ -1,7 +1,7 @@
 # Packager: Joseph R. Quinn <quinn.josephr@protonmail.com>
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=zshdb-git
-pkgver=1.1.0
+pkgver=1.1.4.r17.gc5e2cf3
 pkgrel=1
 pkgdesc='A debugger for zsh scripts.'
 arch=('i686' 'x86_64')
