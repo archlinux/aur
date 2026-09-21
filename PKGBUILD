@@ -1,31 +1,33 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=simplest-file-renamer-git
-pkgver=1.0.0.r73.g9eea2f0
-_electronversion=31
-_nodeversion=20
+_appname=renamer
+pkgname="simplest-file-${_appname}-git"
+pkgver=1.0.0.r88.gb40ebe9
+_nodeversion=24
 pkgrel=1
-pkgdesc="Rename your files directly or with your favorite text editor, making use of all your 1337 keyboard shortcuts.Use system-wide electron."
+pkgdesc="Rename your files and folders directly or with your favorite text editor, making use of all your 1337 keyboard shortcuts."
 arch=('any')
-url="https://github.com/whyboris/Simplest-File-Renamer"
+url="https://www.yboris.dev/renamer"
+_ghurl="https://github.com/whyboris/Simplest-File-Renamer"
 license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
-    "electron${_electronversion}"
+    'gtk3'
+    'gdk-pixbuf2'
+    'webkit2gtk-4.1'
+    'libayatana-indicator'
+    'libappindicator'
 )
 makedepends=(
-    'gendesk'
-    'git'
-    'npm'
     'nvm'
+    'git'
     'curl'
+    'rustup'
+    'bun'
+    'gendesk'
 )
-source=(
-    "${pkgname%-git}.git::git+${url}.git"
-    "${pkgname%-git}.sh"
-)
-sha256sums=('SKIP'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+source=("${pkgname%-git}.git::git+${_ghurl}.git")
+sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -38,47 +40,54 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_set_build_env() {
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export npm_config_cache="${srcdir}/.npm_cache"
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${srcdir}/.corepack"
+	export npm_config_audit=false
+	export CARGO_HOME="${srcdir}/.cargo"
+	export CARGO_NET_GIT_FETCH_WITH_CLI=true
+	export CARGO_NET_RETRY=5
+	export CARGO_HTTP_MULTIPLEXING=false
+	export CARGO_INCREMENTAL=0
+	export CARGO_TERM_COLOR=never
+	export CARGO_PROFILE_RELEASE_STRIP=symbols
+	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}" "${CARGO_HOME}"
+}
 prepare() {
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-git}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname%-git}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " "${srcdir}/${pkgname%-git}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
-    _ensure_local_nvm
     cd "${srcdir}/${pkgname%-git}.git"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-    } >> .npmrc
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-        } >> .npmrc
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-    fi
-    sed -i "s/favicon\.icns/favicon\.png/g" electron-builder.json
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${pkgname%-git}" \
+        --exec="${pkgname%-git} %U"
+    _ensure_local_nvm
+    _set_build_env
+    sed -i 's|"active": true,|"active": false,|' src-tauri/tauri.conf.json
+    cp src-tauri/icons/128x128@2x.png src-tauri/icons/256x256.png
+    rustup default stable
+    export NODE_ENV=development
+    npm install
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     npm run build:prod
-    NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist}"
+    _ensure_local_nvm
+    _set_build_env
+    export NODE_ENV=production
+    npm run tauri build
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/src/assets/favicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/${_appname}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    icon_sizes=(32x32 64x64 128x128 256x256)
+    for _icons in "${icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/icons/${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
+    done
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
