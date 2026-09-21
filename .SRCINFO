@@ -1,6 +1,6 @@
 pkgbase = kiosk-rs-git
 	pkgdesc = Minimal Wayland kiosk compositor: run one application fullscreen on one output (git)
-	pkgver = r6.gec1af1d
+	pkgver = 0.1.0.r1.ga5c9ae7
 	pkgrel = 1
 	url = https://github.com/quinnjr/kiosk-rs
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kiosk-rs-git
 	depends = libinput
 	depends = libxkbcommon
 	depends = libglvnd
-	provides = kiosk-rs=r6.gec1af1d
+	provides = kiosk-rs=0.1.0.r1.ga5c9ae7
 	conflicts = kiosk-rs
 	options = !debug
 	source = kiosk-rs::git+https://github.com/quinnjr/kiosk-rs.git

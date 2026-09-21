@@ -2,7 +2,7 @@
 
 pkgname=kiosk-rs-git
 _pkgname=kiosk-rs
-pkgver=r6.gec1af1d
+pkgver=0.1.0.r1.ga5c9ae7
 pkgrel=1
 pkgdesc="Minimal Wayland kiosk compositor: run one application fullscreen on one output (git)"
 arch=('x86_64')
@@ -45,9 +45,9 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  # Upstream has no tags yet, so the commit-count form is what actually gets
-  # used. The tag branch is kept for when it does: dropping it later would mean
-  # a package version that goes backwards.
+  # Upstream tags releases from v0.1.0 on, so the tag form is what actually
+  # gets used. The commit-count fallback stays for untagged forks and shallow
+  # clones, where no tag is reachable.
   local tag
   if tag=$(git describe --long --tags --abbrev=7 2>/dev/null); then
     printf '%s' "${tag#v}" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
