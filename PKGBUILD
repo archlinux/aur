@@ -2,7 +2,7 @@
 pkgname=sigma-file-manager-git
 _pkgname=Sigma-File-Manager
 _flatpakname=com.sigmafilemanager.app
-pkgver=2.2.0.r5.gc6916c2
+pkgver=ms.store.2.2.0.r17.gfed49ce
 _nodeversion=24
 pkgrel=1
 pkgdesc="A free, open-source, quickly evolving, modern file manager (explorer / browser) app."
@@ -21,8 +21,6 @@ makedepends=(
     'nvm'
     'npm'
     'python'
-    'ccache'
-    'sccache'
     'rustup'
 )
 source=(
@@ -36,19 +34,22 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 _set_build_env() {
-    export HOME="${srcdir}/.electron-gyp"
-    export CARGO_HOME="${srcdir}/.cargo"
-    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-    export NPM_CONFIG_MAXSOCKETS=32
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
-            export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
-        }
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-    fi
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${srcdir}/.cache"
+	export XDG_CONFIG_HOME="${srcdir}/.config"
+	export XDG_DATA_HOME="${srcdir}/.local/share"
+	export npm_config_cache="${srcdir}/.npm_cache"
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${srcdir}/.corepack"
+	export npm_config_audit=false
+	export CARGO_HOME="${srcdir}/.cargo"
+	export CARGO_NET_GIT_FETCH_WITH_CLI=true
+	export CARGO_NET_RETRY=5
+	export CARGO_HTTP_MULTIPLEXING=false
+	export CARGO_INCREMENTAL=0
+	export CARGO_TERM_COLOR=never
+	export CARGO_PROFILE_RELEASE_STRIP=symbols
+	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}" "${CARGO_HOME}"
 }
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -64,23 +65,26 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-	_set_build_env
-    _ensure_local_nvm
+	_ensure_local_nvm
+    _set_build_env
     sed -i "s/${_flatpakname}/${pkgname%-git}/g" "flatpak/com.${pkgname%-git}.app.metainfo.xml"
     sed -i "s/\"active\"\: true\,/\"active\"\: false\,/g" src-tauri/tauri.conf.json
+    cp src-tauri/icons/128x128@2x.png src-tauri/icons/256x256.png
     rustup default stable
-    NODE_ENV=development    npm install
+    export NODE_ENV=development
+    npm install
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    _set_build_env
     _ensure_local_nvm
-    NODE_ENV=production     npm run sync-version
-    NODE_ENV=production     npm run tauri:build:linux
+    _set_build_env
+    export NODE_ENV=production
+    npm run sync-version
+    npm run tauri:build:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.git/src-tauri/target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-    _icon_sizes=(32x32 64x64 128x128)
+    _icon_sizes=(32x32 64x64 128x128 256x256)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/src-tauri/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
