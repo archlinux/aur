@@ -14,8 +14,8 @@ pkgbase = dusk-lang-git
 	conflicts = dusk-lang
 	conflicts = dawn
 	source = dusk::git+https://github.com/choice404/dusk.git
-	source = dusk-seed-1.16.1.ll.xz::https://github.com/choice404/dusk/releases/download/v1.16.1/dusk.ll.xz
+	source = dusk-seed-1.17.0.ll.xz::https://github.com/choice404/dusk/releases/download/v1.17.0/dusk.ll.xz
 	sha256sums = SKIP
-	sha256sums = 564cc69b886192de62e49deb9233b6f15e4eb32aacbb46b3071291387b0cf780
+	sha256sums = bb1aa301c0fa863e7862846d76ce254b26d02534c683f68d97be75ea605b60bd
 
 pkgname = dusk-lang-git
