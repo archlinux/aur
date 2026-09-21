@@ -1,6 +1,6 @@
 # Maintainer: Raphael <raphael.girard.iut@gmail.com>
 pkgname=something-x
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="GTK4 device manager for Nothing earbuds on Linux"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'python-gobject' 'gtk4' 'libadwaita')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('libpulse: volume control via pactl')
 source=("https://files.pythonhosted.org/packages/source/s/something-x/something_x-${pkgver}.tar.gz")
-sha256sums=('986e593a822d0d33349c7234f8db640c7ef129638f4a5e80e057ecf1f17d1e4e')
+sha256sums=('649e0a1f3dc295d61d5eb0a9a754c9855233a564db338bf6c9c58cb7ca6ccfc6')
 
 prepare() {
     cd "something_x-${pkgver}"
