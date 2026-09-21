@@ -1,7 +1,7 @@
 pkgbase = badness
 	pkgdesc = A language server, formatter, and linter for LaTeX
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jolars/badness
 	arch = x86_64
 	license = MIT

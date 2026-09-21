@@ -2,12 +2,12 @@
 
 pkgname=badness
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A language server, formatter, and linter for LaTeX'
 arch=(x86_64)
 url="https://github.com/jolars/$pkgname"
 license=(MIT)
-depends=(glibc # jklibc.so
+depends=(glibc # glibc.so
          libgcc)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
@@ -46,5 +46,8 @@ package() {
 	depends+=(libgcc_s.so)
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm0644 -t "$pkgdir/usr/share/fish/vendor_completions.d/" "target/completions/$pkgname.fish"
+	install -Dm0644 -t "$pkgdir/usr/share/zsh/site-functions/" "target/completions/_$pkgname"
+	install -Dm0644 "target/completions/$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
