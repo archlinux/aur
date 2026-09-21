@@ -13,8 +13,6 @@ pkgbase = fsearch
 	depends = libicuuc.so
 	depends = pcre2
 	source = fsearch-0.3.2.tar.gz::https://github.com/cboxdoerfer/fsearch/archive/0.3.2.tar.gz
-	source = 0001-fix_new_window.patch
 	sha256sums = 2c9bc7de9ac1ba72232cb4d66a750fe04210fdae96273f04316b6616fc098308
-	sha256sums = 66b92a2bcba6006469d8aecb94612d4f633f47800bbe502d6e2061d5218478b1
 
 pkgname = fsearch

@@ -23,12 +23,8 @@ makedepends=(
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
-source=(
-  "$_pkgsrc.$_pkgext"::"$url/archive/$pkgver.$_pkgext"
-  '0001-fix_new_window.patch'
-)
-sha256sums=('2c9bc7de9ac1ba72232cb4d66a750fe04210fdae96273f04316b6616fc098308'
-  '66b92a2bcba6006469d8aecb94612d4f633f47800bbe502d6e2061d5218478b1')
+source=("$_pkgsrc.$_pkgext"::"$url/archive/$pkgver.$_pkgext")
+sha256sums=('2c9bc7de9ac1ba72232cb4d66a750fe04210fdae96273f04316b6616fc098308')
 
 prepare() {
   local src
