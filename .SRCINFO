@@ -1,0 +1,11 @@
+pkgbase = ojcat
+	pkgdesc = A lightweight ELF file inspection tool written in C
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ABO7GAG/ojcat
+	arch = x86_64
+	license = GPL
+	source = ojcat-1.0.tar.gz::https://github.com/ABO7GAG/ojcat/archive/refs/tags/V1.0.tar.gz
+	sha256sums = 3fa2fcc9544abaf8c1cda63b98018a6c33db7cd621539ce070e596bc8fa9cc1a
+
+pkgname = ojcat
