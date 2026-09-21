@@ -1,17 +1,17 @@
 pkgbase = krypt-bin
 	pkgdesc = Cross-platform dotfiles manager. Rust binary. Config-driven. (binary release)
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/kryptic-sh/krypt
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = glibc
-	provides = krypt=0.4.1
+	provides = krypt=0.4.2
 	conflicts = krypt
-	source_x86_64 = krypt-v0.4.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/krypt/releases/download/v0.4.1/krypt-v0.4.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 36788398abeb1d8a10ec4658e2deddc293a46235e0aca7bbef3f8b7a05eeea27
-	source_aarch64 = krypt-v0.4.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/krypt/releases/download/v0.4.1/krypt-v0.4.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = be82d60a30ecc77f5d5d461cabcd6baa7ea4227e94c90c6f2646376158e4a005
+	source_x86_64 = krypt-v0.4.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/krypt/releases/download/v0.4.2/krypt-v0.4.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 63cad2dfa22bb0c8dcd2ab0d8262005b42e3765fc1f364fb30d5e1c97a63428b
+	source_aarch64 = krypt-v0.4.2-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/krypt/releases/download/v0.4.2/krypt-v0.4.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6272820d4c49d07d068cfa2f81446eb318f8d3fa39072a7b0d4e78c82ace10a4
 
 pkgname = krypt-bin
