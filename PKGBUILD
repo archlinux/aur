@@ -1,5 +1,5 @@
 pkgname=dsxtool
-pkgver=1.8.8
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A modular, interactive Linux setup tool powered by fzf"
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL-2.0-only')
 depends=('bash' 'fzf' 'git' 'sudo')
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/csouzape/dsxtool/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dba4eecbf3166ac1d2c286cb41c049dcb12ea037e7711328d62211e6217b401f')
+sha256sums=('309dbe0e6342a42ba4bebf9a1dd030c1b948d83a9a6158ce8915a085b6b8cd61')
 
 package() {
   cd "$pkgname-$pkgver"

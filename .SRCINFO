@@ -1,6 +1,6 @@
 pkgbase = dsxtool
 	pkgdesc = A modular, interactive Linux setup tool powered by fzf
-	pkgver = 1.8.8
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/csouzape/dsxtool
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dsxtool
 	depends = fzf
 	depends = git
 	depends = sudo
-	source = dsxtool-1.8.8.tar.gz::https://github.com/csouzape/dsxtool/archive/refs/tags/v1.8.8.tar.gz
-	sha256sums = dba4eecbf3166ac1d2c286cb41c049dcb12ea037e7711328d62211e6217b401f
+	source = dsxtool-1.9.0.tar.gz::https://github.com/csouzape/dsxtool/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = 309dbe0e6342a42ba4bebf9a1dd030c1b948d83a9a6158ce8915a085b6b8cd61
 
 pkgname = dsxtool
