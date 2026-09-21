@@ -1,5 +1,5 @@
 pkgname=tempesta-bin
-pkgver=0.1.40
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="The fastest and lightest bookmark manager CLI written in Rust (binary package)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('tempesta')
 source_x86_64=("tempesta-x86_64-$pkgver.tar.gz::https://github.com/x71c9/tempesta/releases/download/v$pkgver/tempesta-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("tempesta-aarch64-$pkgver.tar.gz::https://github.com/x71c9/tempesta/releases/download/v$pkgver/tempesta-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=("45cfa5b2e995e6b991c204bf9c1fccf0c3bcee0ea2f2367f9f4b63436d4e989f")
-sha256sums_aarch64=("d2f6f4ea4936e606f00d8ef2db2e55b154c54c8b851d834f56f7c641389bff85")
+sha256sums_x86_64=("3332e4db9234eb8cc92776f400c0690caf66b1ed72322f1089096a74094ee6a9")
+sha256sums_aarch64=("60d4d4ec571aeeb65c740cb8d8163612cf18f4c625115437f213b8575151efb9")
 
 package() {
   if [[ $CARCH == "x86_64" ]]; then
@@ -22,4 +22,15 @@ package() {
     tar -xzf "tempesta-aarch64-$pkgver.tar.gz"
   fi
   install -Dm755 "tempesta" "$pkgdir/usr/bin/tempesta"
+  "./tempesta" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/tempesta"
+  "./tempesta" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_tempesta"
+  "./tempesta" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/tempesta.fish"
+  "./tempesta" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/t"
+  "./tempesta" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_t"
+  "./tempesta" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/t.fish"
+  "./tempesta" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/tmps"
+  "./tempesta" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_tmps"
+  "./tempesta" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/tmps.fish"
+  ln -s tempesta "$pkgdir/usr/bin/t"
+  ln -s tempesta "$pkgdir/usr/bin/tmps"
 }
