@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-acme
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Nginx module with the implementation of ACME protocol'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nginx/nginx-acme/'
