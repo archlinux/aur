@@ -1,7 +1,7 @@
 pkgbase = hermes-agent-desktop-bin
 	pkgdesc = Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime (prebuilt binary)
 	pkgver = 0.21.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NousResearch/hermes-agent
 	arch = x86_64
 	license = MIT
@@ -11,11 +11,21 @@ pkgbase = hermes-agent-desktop-bin
 	depends = hicolor-icon-theme
 	depends = libnotify
 	depends = libsecret
+	depends = nodejs>=22.22
+	depends = npm
+	depends = uv
 	depends = xdg-utils
 	optdepends = libayatana-appindicator: tray indicator support
+	optdepends = google-chrome: local browser automation (or chromium)
+	optdepends = chromium: local browser automation (or google-chrome)
+	optdepends = ffmpeg: audio and video processing
+	optdepends = ripgrep: fast file content search
+	provides = hermes-agent-desktop
 	conflicts = hermes-agent-desktop
+	noextract = hermes-agent-desktop-bin-0.21.3-2-prebuilt.tar.zst
 	options = !debug
-	source = https://github.com/jabla/hermes-agent-desktop-bin/releases/download/v0.21.3-1/hermes-agent-desktop-bin-0.21.3-1-x86_64.pkg.tar.zst
-	sha256sums = a85aa0b4f87e99fd49a1fc5244bdf110feddae61af3f8e886eaa7d607e08aec3
+	options = !strip
+	source = hermes-agent-desktop-bin-0.21.3-2-prebuilt.tar.zst::https://github.com/jabla/hermes-agent-desktop-bin/releases/download/v0.21.3-2/hermes-agent-desktop-bin-0.21.3-2-x86_64.pkg.tar.zst
+	sha256sums = 72894cd4d7f9d3cf701496581bdead01274f7919f48278a50cc04c0177f717f1
 
 pkgname = hermes-agent-desktop-bin
