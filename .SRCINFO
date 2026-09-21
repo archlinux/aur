@@ -1,0 +1,12 @@
+pkgbase = dirdiff
+	pkgdesc = Efficiently compute the differences between two directories
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/OCamlPro/dirdiff
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = dirdiff-0.2.0.tar.gz::https://codeload.github.com/OCamlPro/dirdiff/tar.gz/refs/tags/v0.2.0
+	sha256sums = 87ed32a7dcd543b434e4f1d87e414934993ca15a2874af0683372593a5fa3d06
+
+pkgname = dirdiff
