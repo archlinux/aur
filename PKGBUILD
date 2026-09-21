@@ -4,12 +4,16 @@ pkgname=python-applicationinsights
 _pkgname=applicationinsights
 _gitname=ApplicationInsights-Python
 pkgver=0.11.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Application Insights SDK for Python (telemetry for Microsoft Azure Application Insights)'
 arch=('any')
 url='https://github.com/Microsoft/ApplicationInsights-Python'
 license=('MIT')
 depends=('python')
+optdepends=(
+    'python-django: Django middleware and logging integration'
+    'python-flask: Flask request telemetry integration'
+)
 makedepends=(
     'python-build'
     'python-installer'
@@ -31,6 +35,11 @@ build() {
 
 check() {
     cd "$_gitname"
+
+    # TestSenderBase starts a loopback HTTP server.  A configured build proxy
+    # diverts its localhost request away from that server and deadlocks the
+    # upstream test, so keep the entirely-offline suite outside proxy routing.
+    unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY all_proxy ALL_PROXY
 
     # 1) upstream test suite (unittest-style, files named Test*.py). Two modules
     #    (TestTelemetryClient/TestTelemetryProcessor) import CPython's INTERNAL
