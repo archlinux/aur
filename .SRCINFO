@@ -1,6 +1,6 @@
 pkgbase = mozaik
 	pkgdesc = Qt6 GUI for managing Hyprland window rules stored in a Lua config
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/saliherdemk/Mozaik
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mozaik
 	makedepends = cmake
 	depends = qt6-base
 	depends = hyprland
-	source = mozaik-0.1.3.tar.gz::https://github.com/saliherdemk/Mozaik/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = b13522cb31f5ff5aaa6a31357d513322ca49eeb71e6c5bdc2941770c6d385a92
+	source = mozaik-0.1.4.tar.gz::https://github.com/saliherdemk/Mozaik/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = c327bc51e6c910b514d0d4f14a1eeb512af03c1e4a6b095005206810beaad75b
 
 pkgname = mozaik
