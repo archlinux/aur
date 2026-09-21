@@ -2,7 +2,7 @@
 pkgname=nbtcon
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Convert between NBT and other formats."
+pkgdesc="Convert between NBT and other formats"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/FoxAmes/nbtcon"
 license=('GPL-3.0-or-later')
