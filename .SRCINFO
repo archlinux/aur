@@ -1,19 +1,20 @@
 pkgbase = bitshares-astro-ui-bin
 	pkgdesc = Integrates with both the Beet and BeetEOS multiwallets, for the Bitshares and Bitshares Testnet blockchains.
-	pkgver = 0.6.21
+	pkgver = 0.6.30
 	pkgrel = 1
 	url = https://github.com/BTS-CM/astro-ui
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron44
-	provides = bitshares-astro-ui=0.6.21
+	depends = esbuild
+	provides = bitshares-astro-ui=0.6.30
 	conflicts = bitshares-astro-ui
 	options = !emptydirs
-	source = bitshares-astro-ui-0.6.21.deb::https://github.com/BTS-CM/astro-ui/releases/download/v0.6.21/BTSAstroUI.deb
-	source = LICENSE-0.6.21::https://raw.githubusercontent.com/BTS-CM/astro-ui/v0.6.21/LICENSE
+	source = bitshares-astro-ui-0.6.30.deb::https://github.com/BTS-CM/astro-ui/releases/download/v0.6.30/BTSAstroUI.deb
+	source = LICENSE-0.6.30::https://raw.githubusercontent.com/BTS-CM/astro-ui/v0.6.30/LICENSE
 	source = bitshares-astro-ui.sh
-	sha256sums = a0728b6ca7114480e7c766cb17c40e05444f030720c8ef012a3bc68bd84f76ac
+	sha256sums = db1b2a0f384d41ad1fc681178284986d16829f8f2b736e9f0ba2340421d9bb69
 	sha256sums = 8436084a3b95dce1c186bc57a5ab4832a03df731cfb652befe8764a5018eea35
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 

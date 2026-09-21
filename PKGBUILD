@@ -3,7 +3,7 @@ _appname=bitshares_astro_ui
 pkgname="${_appname//_/-}-bin"
 _pkgname=BTSAstroUI
 _orginame='Bitshares Astro UI'
-pkgver=0.6.21
+pkgver=0.6.30
 _electronversion=44
 pkgrel=1
 pkgdesc="Integrates with both the Beet and BeetEOS multiwallets, for the Bitshares and Bitshares Testnet blockchains."
@@ -14,6 +14,7 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
+    'esbuild'
 )
 makedepends=(
     'asar'
@@ -26,7 +27,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/BTS-CM/astro-ui/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a0728b6ca7114480e7c766cb17c40e05444f030720c8ef012a3bc68bd84f76ac'
+sha256sums=('db1b2a0f384d41ad1fc681178284986d16829f8f2b736e9f0ba2340421d9bb69'
             '8436084a3b95dce1c186bc57a5ab4832a03df731cfb652befe8764a5018eea35'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_app_dir() {
@@ -59,12 +60,14 @@ prepare() {
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/app" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
+    ln -sf "/usr/bin/esbuild" "${_app_dir}/resources/app.asar.unpacked/node_modules/@esbuild/linux-x64/bin/esbuild"
+    ln -sf "/usr/bin/esbuild" "${_app_dir}/resources/app.asar.unpacked/node_modules/esbuild/bin/esbuild"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
