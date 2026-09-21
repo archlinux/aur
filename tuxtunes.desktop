@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=TuxTunes
+Comment=Music library manager and player
+Exec=tuxtunes %U
+Icon=tuxtunes
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+Keywords=music;player;library;itunes;
+StartupWMClass=TuxTunes
