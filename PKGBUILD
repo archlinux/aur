@@ -1,4 +1,5 @@
-# Maintainer: Haruue Icymoon <i@haruue.moe>
+# Maintainer: smiley <smiley@archlinux.org>
+# Contributor: Haruue Icymoon <i@haruue.moe>
 # Contributor: 4679 <4679 at pm dot me>
 
 pkgname=hysteria-bin
