@@ -1,0 +1,15 @@
+pkgbase = surfn-majestic-icons-git
+	pkgdesc = Surfn Majestic, a colourful icon theme
+	pkgver = r3.2ea6d99
+	pkgrel = 1
+	url = https://github.com/erikdubois/surfn-majestic
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	depends = surfn-icons-git
+	options = !strip
+	options = !emptydirs
+	source = Surfn-Majestic::git+https://github.com/erikdubois/surfn-majestic.git
+	sha256sums = SKIP
+
+pkgname = surfn-majestic-icons-git
