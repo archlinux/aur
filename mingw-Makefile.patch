@@ -1,9 +1,7 @@
-diff --git a/Makefile b/Makefile
-index 5b7b8ff..f294d55 100644
---- a/Makefile
-+++ b/Makefile
-@@ -49,11 +49,7 @@ XXHSUM_VERSION = $(LIBVER)
- UNAME := $(shell uname)
+--- a/Makefile	2026-09-21 18:20:35.001667325 +0200
++++ b/Makefile	2026-09-21 18:26:22.365017204 +0200
+@@ -48,11 +48,7 @@
+ XXHSUM_VERSION = $(LIBVER)
  
  # Define *.exe as extension for Windows systems
 -ifneq (,$(filter Windows%,$(OS)))
@@ -13,8 +11,8 @@ index 5b7b8ff..f294d55 100644
 -endif
  
  # automatically enable runtime vector dispatch on x86/64 targets
- detect_x86_arch = $(shell $(CC) -dumpmachine | grep -E 'i[3-6]86|x86_64')
-@@ -77,8 +73,8 @@ ifeq ($(UNAME), Darwin)
+ detect_x86_arch = $(shell $(CC) $(CFLAGS) -dumpmachine | grep -E 'i[3-6]86|x86_64')
+@@ -82,8 +78,8 @@
  	SHARED_EXT_VER = $(LIBVER).$(SHARED_EXT)
  	SONAME_FLAGS = -install_name $(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR) -compatibility_version $(LIBVER_MAJOR) -current_version $(LIBVER)
  else
@@ -25,74 +23,79 @@ index 5b7b8ff..f294d55 100644
  	SHARED_EXT_MAJOR = $(SHARED_EXT).$(LIBVER_MAJOR)
  	SHARED_EXT_VER = $(SHARED_EXT).$(LIBVER)
  endif
-@@ -148,9 +144,7 @@ libxxhash.a: xxhash.o
- 	$(AR) $(ARFLAGS) $@ $^
+@@ -145,9 +141,7 @@
+ $(eval $(call static_library,libxxhash.a,$(LIBXXHASH_OBJS)))
  
- $(LIBXXH): LDFLAGS += -shared
+ $(LIBXXH): LDFLAGS += $(SONAME_FLAGS)
 -ifeq (,$(filter Windows%,$(OS)))
  $(LIBXXH): CFLAGS += -fPIC
 -endif
- ifeq ($(LIBXXH_DISPATCH),1)
- $(LIBXXH): xxh_x86dispatch.c
- endif
-@@ -623,10 +617,12 @@ install_libxxhash.a: libxxhash.a
+ $(eval $(call c_dynamic_library,$(LIBXXH),$(LIBXXHASH_OBJS)))
+ 
+ libxxhash.$(SHARED_EXT_MAJOR): $(LIBXXH)
+@@ -679,10 +673,12 @@
  
  install_libxxhash: libxxhash
  	@echo Installing libxxhash
-+	$(Q)$(MAKE_DIR) $(DESTDIR)$(BINDIR)
- 	$(Q)$(MAKE_DIR) $(DESTDIR)$(LIBDIR)
--	$(Q)$(INSTALL_PROGRAM) $(LIBXXH) $(DESTDIR)$(LIBDIR)
--	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR)
--	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT)
-+	$(Q)$(INSTALL_PROGRAM) libxxhash.dll.a $(DESTDIR)$(LIBDIR)
-+	$(Q)$(INSTALL_PROGRAM) $(LIBXXH) $(DESTDIR)$(BINDIR)
-+	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT_MAJOR)
-+	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT)
++	$(MAKE_DIR) $(DESTDIR)$(BINDIR)
+ 	$(MAKE_DIR) $(DESTDIR)$(LIBDIR)
+-	$(INSTALL_PROGRAM) $(LIBXXH) $(DESTDIR)$(LIBDIR)
+-	ln -sf $(LIBXXH) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR)
+-	ln -sf libxxhash.$(SHARED_EXT_MAJOR) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT)
++	$(INSTALL_PROGRAM) libxxhash.dll.a $(DESTDIR)$(LIBDIR)
++	$(INSTALL_PROGRAM) $(LIBXXH) $(DESTDIR)$(BINDIR)
++	ln -sf $(LIBXXH) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT_MAJOR)
++	ln -sf $(LIBXXH) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT)
  
  install_libxxhash.includes:
- 	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(INCLUDEDIR)   # includes
-@@ -644,11 +640,11 @@ install_libxxhash.pc: libxxhash.pc
- install_xxhsum: xxhsum
- 	@echo Installing xxhsum
- 	$(Q)$(MAKE_DIR) $(DESTDIR)$(BINDIR)/
--	$(Q)$(INSTALL_PROGRAM) xxhsum $(DESTDIR)$(BINDIR)/xxhsum
--	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh32sum
--	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh64sum
--	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh128sum
--	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh3sum
-+	$(Q)$(INSTALL_PROGRAM) xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxhsum$(EXT)
-+	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh32sum$(EXT)
-+	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh64sum$(EXT)
-+	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh128sum$(EXT)
-+	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh3sum$(EXT)
- 
- install_man:
- 	@echo Installing man pages
-@@ -667,18 +663,19 @@ install: install_libxxhash.a install_libxxhash install_libxxhash.includes instal
+ 	$(INSTALL) -d -m 755 $(DESTDIR)$(INCLUDEDIR)   # includes
+@@ -723,18 +719,19 @@
  .PHONY: uninstall
  uninstall:  ## uninstall libraries, CLI, links and man page
- 	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.a
--	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT)
--	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR)
--	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/$(LIBXXH)
-+	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.dll.a
-+	$(Q)$(RM) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT)
-+	$(Q)$(RM) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT_MAJOR)
-+	$(Q)$(RM) $(DESTDIR)$(BINDIR)/$(LIBXXH)
- 	$(Q)$(RM) $(DESTDIR)$(INCLUDEDIR)/xxhash.h
- 	$(Q)$(RM) $(DESTDIR)$(INCLUDEDIR)/xxh3.h
- 	$(Q)$(RM) $(DESTDIR)$(INCLUDEDIR)/xxh_x86dispatch.h
- 	$(Q)$(RM) $(DESTDIR)$(PKGCONFIGDIR)/libxxhash.pc
--	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh32sum
--	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh64sum
--	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh128sum
--	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh3sum
--	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxhsum
-+	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh32sum$(EXT)
-+	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh64sum$(EXT)
-+	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh128sum$(EXT)
-+	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxh3sum$(EXT)
-+	$(Q)$(RM) $(DESTDIR)$(BINDIR)/xxhsum$(EXT)
- 	$(Q)$(RM) $(DESTDIR)$(MANDIR)/xxh32sum.1
- 	$(Q)$(RM) $(DESTDIR)$(MANDIR)/xxh64sum.1
- 	$(Q)$(RM) $(DESTDIR)$(MANDIR)/xxh128sum.1
+ 	$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.a
+-	$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT)
+-	$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR)
+-	$(RM) $(DESTDIR)$(LIBDIR)/$(LIBXXH)
++	$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.dll.a
++	$(RM) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT)
++	$(RM) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT_MAJOR)
++	$(RM) $(DESTDIR)$(BINDIR)/$(LIBXXH)
+ 	$(RM) $(DESTDIR)$(INCLUDEDIR)/xxhash.h
+ 	$(RM) $(DESTDIR)$(INCLUDEDIR)/xxh3.h
+ 	$(RM) $(DESTDIR)$(INCLUDEDIR)/xxh_x86dispatch.h
+ 	$(RM) $(DESTDIR)$(PKGCONFIGDIR)/libxxhash.pc
+-	$(RM) $(DESTDIR)$(BINDIR)/xxh32sum
+-	$(RM) $(DESTDIR)$(BINDIR)/xxh64sum
+-	$(RM) $(DESTDIR)$(BINDIR)/xxh128sum
+-	$(RM) $(DESTDIR)$(BINDIR)/xxh3sum
+-	$(RM) $(DESTDIR)$(BINDIR)/xxhsum
++	$(RM) $(DESTDIR)$(BINDIR)/xxh32sum$(EXT)
++	$(RM) $(DESTDIR)$(BINDIR)/xxh64sum$(EXT)
++	$(RM) $(DESTDIR)$(BINDIR)/xxh128sum$(EXT)
++	$(RM) $(DESTDIR)$(BINDIR)/xxh3sum$(EXT)
++	$(RM) $(DESTDIR)$(BINDIR)/xxhsum$(EXT)
+ 	$(RM) $(DESTDIR)$(MANDIR)/xxh32sum.1
+ 	$(RM) $(DESTDIR)$(MANDIR)/xxh64sum.1
+ 	$(RM) $(DESTDIR)$(MANDIR)/xxh128sum.1
+--- a/build/make/multiconf.make	2026-09-21 20:59:56.751605376 +0200
++++ b/build/make/multiconf.make.patch	2026-09-21 21:07:35.924698962 +0200
+@@ -222,7 +222,7 @@
+ 
+ $$(CACHE_ROOT)/%/$(1) : $$(addprefix $$(CACHE_ROOT)/%/,$(2)) $(3)
+ 	@echo LD $$@
+-	$$(CC) $$(CPPFLAGS) $$(CFLAGS) $$(LDFLAGS) -shared -o $$@ $$^ $$(LDLIBS)
++	$$(CC) $$(CPPFLAGS) $$(CFLAGS) $$(LDFLAGS) -Wl,--out-implib,$(shell echo $(1) | sed -e s/dll.*/dll.a/ ) -shared -o $$@ $$^ $$(LDLIBS)
+ 	$(4)
+ 
+ .PHONY: $(1)
+--- a/build/make/multiconf.make	2026-09-21 18:48:58.119905097 +0200
++++ b/build/make/multiconf.make	2026-09-21 18:48:14.474631044 +0200
+@@ -259,7 +259,7 @@
+ 
+ .PHONY: $(1)
+ $(1) : $$(CACHE_ROOT)/$$(call HASH_FUNC,$(1),$$($(6)) $$(CPPFLAGS) $$($(7)) $$(LDFLAGS) $$(LDLIBS) $(5))/$(1)
+-	$$(LN) -sf $$< $$@$(EXT)
++	$$(LN) -sf $$<$(EXT) $$@$(EXT)
+ 
+ endef # program_base
+ # Note: $(EXT) must be set to .exe for Windows

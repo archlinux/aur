@@ -4,7 +4,7 @@
 # Contributor: Konstantin Gizdov <arch@kge.com>
 
 pkgname=mingw-w64-xxhash
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='Extremely fast non-cryptographic hash algorithm (mingw-w64)'
 arch=('any')
@@ -19,9 +19,9 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-make' 'git')
 _tag=bbb27a5efb85b92a0486cf361a8635715a53f6ba
 source=(git+https://github.com/Cyan4973/xxHash.git#tag=v${pkgver}
         mingw-Makefile.patch)
-b2sums=('e8c03ae30da955a0399bbbdee866dcc3f999bd1f780373d28119972a89a6ef3b266097024379c779d4c02ae3ca218728d4843c6085487ec76c5e7e1b393e1ea2'
-        'fb52e7ddc217386fb27f5a95812ec1ace559721ac0e293ec3db2c4fb23434a193ee44ed695cff6ed94686d30e3d10e9fee5dcc2bb773bb828b46b435850af4ae')
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+b2sums=('cd0decd603803637cb4c1f0edaff8ad7ac22c1a08cba38d0139cf6ba36209881d2043c40b7fcad8f93a17daef13a82219f793d30ba63f4f573ee9b56ae06f70d'
+        'd10bc77574fac4bee5494eabaea0525280322e6d4ccdc93132129fb84a6c56f18509b358ea757fae346a24feeeb349a95f4effdd7928bf29d4aa1751f5e8bf9f')
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 
 prepare() {
   cd ${srcdir}/xxHash
