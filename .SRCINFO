@@ -1,0 +1,16 @@
+pkgbase = surfn-plasma-dark-icons-git
+	pkgdesc = Surfn Plasma Dark, a colourful icon theme
+	pkgver = 1.0.0.r144.g1915c2ef
+	pkgrel = 1
+	url = https://github.com/erikdubois/surfn-plasma-dark
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = git
+	depends = surfn-icons-git
+	depends = breeze-icons
+	options = !strip
+	options = !emptydirs
+	source = Surfn-Plasma-Dark::git+https://github.com/erikdubois/surfn-plasma-dark.git
+	sha256sums = SKIP
+
+pkgname = surfn-plasma-dark-icons-git
