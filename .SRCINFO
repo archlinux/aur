@@ -1,0 +1,75 @@
+pkgbase = mcommander-git
+	pkgdesc = Modular TUI file manager with a tiny core, based on GNU Midnight Commander (Git version)
+	pkgver = v6.0.4.r326.e93c603
+	pkgrel = 1
+	url = https://github.com/blue-panels/mcommander
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = gettext
+	makedepends = glib2
+	makedepends = slang
+	makedepends = gpm
+	makedepends = e2fsprogs
+	makedepends = libssh2
+	makedepends = curl
+	makedepends = libarchive
+	makedepends = file
+	makedepends = lua
+	options = !emptydirs
+	source = mcommander::git+https://github.com/blue-panels/mcommander.git
+	b2sums = SKIP
+
+pkgname = mcommander-git
+	pkgdesc = Modular TUI file manager with a tiny core, based on GNU Midnight Commander (Git version)
+	depends = glib2
+	depends = slang
+	depends = gpm
+	depends = e2fsprogs
+	depends = file
+	optdepends = mcommander-plugins-git: panel plugins for FTP, SFTP, S3, Samba, Docker, k8s, MongoDB
+	optdepends = mcommander-lua-git: Lua runtime extension and the scripts that use it
+	optdepends = aspell: spell checking in the editor
+	optdepends = hunspell: spell checking in the editor
+	provides = mcommander=v6.0.4.r326.e93c603
+	conflicts = mcommander
+	conflicts = mc6
+	conflicts = mc6-git
+	replaces = mc6
+	replaces = mc6-git
+	backup = etc/mcommander/ctags.keymap
+	backup = etc/mcommander/edit.indent.rc
+	backup = etc/mcommander/extensions.ini
+	backup = etc/mcommander/filehighlight.ini
+	backup = etc/mcommander/keymap.default.ini
+	backup = etc/mcommander/keymap.emacs.ini
+	backup = etc/mcommander/keymap.ini
+	backup = etc/mcommander/keymap.vim.ini
+	backup = etc/mcommander/mcedit.menu
+	backup = etc/mcommander/panels.ftp.ini
+	backup = etc/mcommander/panels.git.ini
+	backup = etc/mcommander/sfs.ini
+	backup = etc/mcommander/spell.keymap
+
+pkgname = mcommander-plugins-git
+	pkgdesc = Panel plugins for M-Commander (Git version)
+	depends = mcommander-git=v6.0.4.r326.e93c603-1
+	depends = glib2
+	depends = libssh2
+	depends = curl
+	depends = libarchive
+	depends = file
+	provides = mcommander-plugins=v6.0.4.r326.e93c603
+	conflicts = mcommander-plugins
+	conflicts = mc6-plugins-git
+
+pkgname = mcommander-lua-git
+	pkgdesc = Lua runtime extension for M-Commander (Git version)
+	depends = mcommander-git=v6.0.4.r326.e93c603-1
+	depends = glib2
+	depends = lua
+	provides = mcommander-lua=v6.0.4.r326.e93c603
+	conflicts = mcommander-lua
