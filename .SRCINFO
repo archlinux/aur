@@ -1,0 +1,12 @@
+pkgbase = ll
+	pkgdesc = ls with git status
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/antonmedv/ll
+	arch = x86_64
+	license = unknown
+	makedepends = go
+	source = ll-1.0.0.tar.gz::https://codeload.github.com/antonmedv/ll/tar.gz/refs/tags/1.0.0
+	sha256sums = cf8f7ab836f5a7071c80dd37d3a1fbc3c23162167624cd0f160f89ec9535d4a6
+
+pkgname = ll
