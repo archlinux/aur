@@ -1,7 +1,7 @@
 # Maintainer: Niyoko Yuliawan <niyoko.yuliawan@logisly.com>
 pkgname=navicat18-premium-en
 pkgver=18.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Navicat Premium trial with complete shutdown when its last window closes'
 arch=('x86_64')
 url='https://www.navicat.com/en/products/navicat-premium'
@@ -37,7 +37,7 @@ package() {
 
   install -Dm755 navicat-close-on-exit "${pkgdir}/usr/bin/navicat-premium"
   install -Dm644 "${approot}/navicat.desktop" \
-    "${pkgdir}/usr/share/applications/Navicat.Premium.18.desktop"
+    "${pkgdir}/usr/share/applications/navicat18-premium-en.desktop"
   install -Dm644 squashfs-root/icon.png \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/navicat-premium.png"
   install -Dm644 squashfs-root/manual.pdf \

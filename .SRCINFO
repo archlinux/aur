@@ -1,7 +1,7 @@
 pkgbase = navicat18-premium-en
 	pkgdesc = Navicat Premium trial with complete shutdown when its last window closes
 	pkgver = 18.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.navicat.com/en/products/navicat-premium
 	arch = x86_64
 	license = LicenseRef-proprietary
