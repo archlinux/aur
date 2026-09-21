@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=voicestudio-bin
 _pkgname=VoiceStudio
-_debname=omnivoice-studio
-pkgver=0.5.3
+pkgver=0.5.4
+_electronversion=44
 pkgrel=1
 pkgdesc="Open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages."
 arch=('x86_64')
@@ -12,80 +12,71 @@ license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'webkit2gtk-4.1'
-    'yt-dlp'
-    'ffmpeg'
+    "electron${_electronversion}"
     'uv'
-    'libayatana-appindicator'
-    'libappindicator'
+    'python'
+    'python-yaml'
+    'yt-dlp'
+    'python-httpx'
+    'python-numpy'
+    'libmd'
+    'libbsd'
+    'python-cryptography'
+    'python-psutil'
+    'python-pydantic'
+    'python-pillow'
+)
+makedepends=(
+    'asar'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Electron-${pkgver}-linux-x64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3ee9bafe42b01aad5b6740df9d093fbe0cff99f65a7b7b01457ac9285730e0af'
-            'c8da18372d51521dd3a75339f699c3432726b78eec814f15730dca05a2d05536')
+sha256sums=('06948a109093b5f41f0d29e825626d02915cf9728ae54d5fbcf57fe1c1ff1813'
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
+    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
+        s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/${_debname}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
-    fi
-    if [ -d "${srcdir}/squashfs-root" ];then
-        rm -rf "${srcdir}/squashfs-root"
-    fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    bsdtar -xf "${srcdir}/data."*
+    _check_electron_version
     sed -i -e "
-        s/Exec=${_debname}/Exec=${pkgname%-bin}/g
-        s/Icon=${_debname}/Icon=${pkgname%-bin}/g
-    " "${srcdir}/squashfs-root/usr/share/applications/${_pkgname}.desktop"
-    ln -sf "/usr/bin/ffmpeg" "${srcdir}/squashfs-root/usr/bin/ffmpeg"
-    ln -sf "/usr/bin/ffprobe" "${srcdir}/squashfs-root/usr/bin/ffprobe"
-    ln -sf "/usr/bin/uv" "${srcdir}/squashfs-root/usr/bin/uv"
+        s/Exec=\/opt\/${_pkgname}\/${pkgname%-bin}-electron/Exec=${pkgname%-bin}/g
+        s/Icon=${pkgname%-bin}-electron/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    local _app_dir=$(_get_app_dir)
+    ln -sf "/usr/bin/uv" "${_app_dir}/resources/tools/uv"
+    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -a "${srcdir}/squashfs-root/usr/bin" "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    # 只保留系统没有的库（ayatana-appindicator 系列、hyphen、manette、xdo 等）
-    for _lib in \
-        libayatana-appindicator3.so.1 \
-        libayatana-ido3-0.4.so.0 \
-        libayatana-indicator3.so.7 \
-        libdbusmenu-glib.so.4 \
-        libdbusmenu-gtk3.so.4 \
-        libhyphen.so.0 \
-        libmanette-0.2.so.0 \
-        libxdo.so.3 \
-        libevdev.so.2 \
-        libgudev-1.0.so.0 \
-        libharfbuzz-icu.so.0 \
-        libsharpyuv.so.0 \
-        libsecret-1.so.0 \
-        libicudata.so.74 \
-        libicui18n.so.74 \
-        libicuuc.so.74 \
-        ; do
-        for _f in "${srcdir}/squashfs-root/usr/lib/${_lib}" "${srcdir}/squashfs-root/usr/lib/x86_64-linux-gnu/${_lib}"; do
-            if [ -e "$_f" ]; then
-                cp -a "$_f" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/"
-            fi
-        done
-    done
-    # 保留 gdk-pixbuf、gio、gtk-3.0 模块（GTK 主题/输入法等需要）
-    cp -a "${srcdir}/squashfs-root/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/"
-    cp -a "${srcdir}/squashfs-root/usr/lib/x86_64-linux-gnu/gio" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/"
-    cp -a "${srcdir}/squashfs-root/usr/lib/x86_64-linux-gnu/gtk-3.0" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/"
-    # 保留 glib-2.0 schemas
-    cp -a "${srcdir}/squashfs-root/usr/share/glib-2.0" "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    local _app_dir=$(_get_app_dir)
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
         _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
         install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }

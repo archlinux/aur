@@ -1,21 +1,73 @@
 #!/bin/bash
 set -e
 _APPDIR="/usr/lib/@appname@"
-_RUNNAME="${_APPDIR}/bin/@runname@"
-gsettings get org.gnome.desktop.interface gtk-theme 2> /dev/null | grep -qi "dark" && GTK_THEME_VARIANT="dark" || GTK_THEME_VARIANT="light"
-APPIMAGE_GTK_THEME="${APPIMAGE_GTK_THEME:-"Adwaita:$GTK_THEME_VARIANT"}" # Allow user to override theme (discouraged)
-export APPDIR="${_APPDIR}"
-export GTK_DATA_PREFIX="${_APPDIR}"
-export GTK_THEME="${APPIMAGE_GTK_THEME}" # Custom themes are broken
-export GDK_BACKEND=x11 # Crash with Wayland backend on Wayland - We tested it without it and ended up with this: https://github.com/tauri-apps/tauri/issues/8541
-export XDG_DATA_DIRS="${_APPDIR}/share:/usr/share:${XDG_DATA_DIRS}" # g_get_system_data_dirs() from GLib
-export GSETTINGS_SCHEMA_DIR="${_APPDIR}/glib-2.0/schemas"
-export GTK_EXE_PREFIX="${_APPDIR}"
-export GTK_PATH="${_APPDIR}/lib/x86_64-linux-gnu/gtk-3.0:/usr/lib64/gtk-3.0"
-export GTK_IM_MODULE_FILE="${_APPDIR}/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules.cache"
-export GDK_PIXBUF_MODULE_FILE="${_APPDIR}/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache"
-export GIO_EXTRA_MODULES="${_APPDIR}/lib/x86_64-linux-gnu/gio/modules"
-export GST_REGISTRY_1_0="${XDG_CACHE_HOME:-${HOME:-/tmp}/.cache}/OmniVoice/gstreamer-registry.bin"
-export LD_LIBRARY_PATH="/usr/lib"
+_RUNNAME="${_APPDIR}/@runname@"
+
+# Base environment variables
+export ELECTRON_IS_DEV=0
+export ELECTRON_FORCE_IS_PACKAGED=true
+export ELECTRON_DISABLE_SECURITY_WARNINGS=true
+export NODE_ENV=production
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export LD_LIBRARY_PATH="${_APPDIR}/lib:${LD_LIBRARY_PATH}"
+
+# 1. Display System Optimization (X11 & Wayland)
+# Use 'auto' to allow modern Electron (v20+) to detect the best platform
+# This helps with Wayland window decorations, fractional scaling, and GPU acceleration
+export ELECTRON_OZONE_PLATFORM_HINT="${ELECTRON_OZONE_PLATFORM_HINT:-auto}"
+
+# 2. Desktop Environment (DE) Compatibility
+# Set CHROME_DESKTOP to match the .desktop file for correct taskbar icon grouping
+export CHROME_DESKTOP="@appname@.desktop"
+
+# Fix for Electron's trash implementation on different DEs
+case "${XDG_CURRENT_DESKTOP}" in
+    KDE)
+        export ELECTRON_TRASH="kioclient5"
+        ;;
+    GNOME)
+        export ELECTRON_TRASH="gio"
+        ;;
+    XFCE)
+        export ELECTRON_TRASH="gvfs-trash"
+        ;;
+    *)
+        # Default fallback
+        ;;
+esac
+
+# 3. Load user-defined flags
+# The script checks for flags in the following order (later files override/append to earlier ones):
+# 1. System-wide Electron flags: $XDG_CONFIG_HOME/electron-flags.conf
+# 2. Version-specific Electron flags: $XDG_CONFIG_HOME/electron@electronversion@-flags.conf
+# 3. App-specific global flags: $XDG_CONFIG_HOME/@appname@-flags.conf
+# 4. App-specific directory flags: $XDG_CONFIG_HOME/@cfgdirname@/@appname@-flags.conf
+_FLAG_SOURCES=(
+    "${XDG_CONFIG_HOME}/electron-flags.conf"
+    "${XDG_CONFIG_HOME}/electron@electronversion@-flags.conf"
+    "${XDG_CONFIG_HOME}/@appname@-flags.conf"
+    "${XDG_CONFIG_HOME}/@cfgdirname@/@appname@-flags.conf"
+)
+
+declare -a flags
+for _FLAGS_FILE in "${_FLAG_SOURCES[@]}"; do
+    if [[ -f "${_FLAGS_FILE}" ]]; then
+        echo "Loading flags from ${_FLAGS_FILE}"
+        while read -r line || [[ -n "$line" ]]; do
+            [[ "${line}" =~ ^[[:space:]]*#.* ]] || [[ -z "${line}" ]] || {
+                read -ra line_flags <<< "$line"
+                flags+=("${line_flags[@]}")
+            }
+        done < "${_FLAGS_FILE}"
+    fi
+done
+
+# 4. Sandbox and Execution Permissions
+# Disable sandbox if running as root without ELECTRON_RUN_AS_NODE
+_SANDBOX_ARG=()
+if [[ "${EUID}" -eq 0 ]] && [[ "${ELECTRON_RUN_AS_NODE}" != "1" ]]; then
+    _SANDBOX_ARG=("--no-sandbox")
+fi
+
 cd "${_APPDIR}"
-exec "${_RUNNAME}" "$@"
+exec electron@electronversion@ "${flags[@]}" "${_SANDBOX_ARG[@]}" "${_RUNNAME}" "$@"
