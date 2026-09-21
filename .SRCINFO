@@ -1,0 +1,16 @@
+pkgbase = mlp
+	pkgdesc = Encrypt and decrypt files with AES-256-GCM using an auto-managed keyfile
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/EldinBegano/mask-decryption
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = glibc
+	options = !lto
+	options = !debug
+	source = mlp-0.4.0.tar.gz::https://github.com/EldinBegano/mask-decryption/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 02a9236f21b5c9bff8ba765aad4a000fad6d30b9bec2d1de50f8143b49fab4b3
+
+pkgname = mlp
