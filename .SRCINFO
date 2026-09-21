@@ -1,0 +1,12 @@
+pkgbase = bcm-git
+	pkgdesc = BCM is a high-performance BWT-based file compressor that utilizes advanced context modeling techniques to achieve a very high compression ratio.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/geekmaster/bcm
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/geekmaster/bcm.git
+	md5sums = SKIP
+
+pkgname = bcm-git
