@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-git
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client."
 arch=('any')
@@ -24,30 +24,9 @@ pkgver() {
   git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	cd endcord
-	export UV_NO_CACHE=1
-	
-	# setup python 3.14
-	if uv python list --only-installed | grep -q '3.14'; then
-        echo "Python 3.14 is already installed"
-        PY_ALREADY_INSTALLED=true
-    else
-        uv python install 3.14
-        PY_ALREADY_INSTALLED=false
-    fi
-    
-	uv sync --all-groups
-}
-
 build() {
 	cd endcord
-	uv run build.py --level=FULL --nuitka --custom-python
-	
-	# remove python 3.14
-	if [ "$PY_ALREADY_INSTALLED" != "true" ]; then
-        uv python uninstall 3.14  # Or exact version from 'uv python list'
-    fi
+	python build.py --clean-uv --level=FULL --nuitka --custom-python
 }
 
 package() {
@@ -59,6 +38,6 @@ package() {
 	install -Dm644 ./docs/extensions.md "$pkgdir/usr/share/doc/endcord/extensions.md"
 	install -Dm644 ./docs/keybindings.md "$pkgdir/usr/share/doc/endcord/keybindings.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/endcord/LICENSE"
-	# install -Dm644 endcord.desktop "$pkgdir/usr/share/applications/endcord.desktop"
-    # install -Dm644 endcord.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/endcord.svg"
+	install -Dm644 ./tools/endcord.desktop "$pkgdir/usr/share/applications/com.sparklost.endcord.desktop"
+    install -Dm644 ./tools/icons/endcord.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.sparklost.endcord.svg"
 }
