@@ -1,7 +1,7 @@
-pkgbase = openrgb
-	pkgdesc = Open source RGB lighting control that doesn't depend on manufacturer software
+pkgbase = openrgb-hotplug
+	pkgdesc = Open source RGB lighting control that doesn't depend on manufacturer software. Built with hotplug support
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gitlab.com/CalcProgrammer1/OpenRGB
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -11,7 +11,7 @@ pkgbase = openrgb
 	depends = libstdc++
 	depends = qt6-base
 	depends = libusb
-	depends = hidapi
+	depends = hidapi-hotplug
 	depends = mbedtls3
 	depends = hicolor-icon-theme
 	optdepends = i2c-tools: mainboard & RAM access
@@ -24,4 +24,4 @@ pkgbase = openrgb
 	sha256sums = e86604e9604d59cddcc13de60b71c0e652cd1f9b56d89de36b2158509849e51c
 	sha256sums = f53328babef392393ee44086f8897174232e863280a84266630a3cd92facc190
 
-pkgname = openrgb
+pkgname = openrgb-hotplug

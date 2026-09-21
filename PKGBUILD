@@ -1,14 +1,15 @@
+# Maintainer: Adam Honse <calcprogrammer1@gmail.com>
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Bo Davidson <bo.davidson@go.tarleton.edu>
 # Contributor: Paul Davis <paul@dangersalad.com>
-pkgname=openrgb
+pkgname=openrgb-hotplug
 pkgver=1.0
-pkgrel=2
-pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
+pkgrel=1
+pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software.  Built with hotplug support"
 arch=("x86_64")
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base' 'libusb' 'hidapi' 'mbedtls3' 'hicolor-icon-theme')
+depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base' 'libusb' 'hidapi-hotplug' 'mbedtls3' 'hicolor-icon-theme')
 makedepends=('qt6-tools')
 optdepends=('i2c-tools: mainboard & RAM access')
 source=("https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_$pkgver/OpenRGB-release_${pkgver}.tar.gz"
