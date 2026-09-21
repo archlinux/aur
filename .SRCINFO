@@ -1,6 +1,6 @@
 pkgbase = orca-ide-appimage
 	pkgdesc = Next-gen IDE for working with a fleet of parallel coding agents (AppImage)
-	pkgver = 1.4.205
+	pkgver = 1.4.206
 	pkgrel = 1
 	url = https://github.com/stablyai/orca
 	arch = x86_64
@@ -18,17 +18,17 @@ pkgbase = orca-ide-appimage
 	optdepends = python-gobject: UI automation for Design Mode/element picking
 	optdepends = xdotool: UI automation for Design Mode/element picking
 	optdepends = libappindicator-gtk3: system tray icon
-	provides = orca-ide=1.4.205
+	provides = orca-ide=1.4.206
 	conflicts = orca-ide
-	noextract = orca-ide-1.4.205-x86_64.AppImage
-	noextract = orca-ide-1.4.205-aarch64.AppImage
+	noextract = orca-ide-1.4.206-x86_64.AppImage
+	noextract = orca-ide-1.4.206-aarch64.AppImage
 	options = !strip
 	options = !debug
-	source = LICENSE-1.4.205::https://raw.githubusercontent.com/stablyai/orca/v1.4.205/LICENSE
+	source = LICENSE-1.4.206::https://raw.githubusercontent.com/stablyai/orca/v1.4.206/LICENSE
 	sha256sums = ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3
-	source_x86_64 = orca-ide-1.4.205-x86_64.AppImage::https://github.com/stablyai/orca/releases/download/v1.4.205/orca-linux.AppImage
-	sha256sums_x86_64 = 7bede254c95ad7237098890bbeca53e667a044997f0314bb67dbc4b932094bcf
-	source_aarch64 = orca-ide-1.4.205-aarch64.AppImage::https://github.com/stablyai/orca/releases/download/v1.4.205/orca-linux-arm64.AppImage
-	sha256sums_aarch64 = dbf39628d9122e1551175e002fd5d20c39dfbcbba0b61264c16dec0656c59c7f
+	source_x86_64 = orca-ide-1.4.206-x86_64.AppImage::https://github.com/stablyai/orca/releases/download/v1.4.206/orca-linux.AppImage
+	sha256sums_x86_64 = 547c60825ce6c8cedd94a02b3c445fbf2d88173576164b1b66444113ff225550
+	source_aarch64 = orca-ide-1.4.206-aarch64.AppImage::https://github.com/stablyai/orca/releases/download/v1.4.206/orca-linux-arm64.AppImage
+	sha256sums_aarch64 = 494dab899708b8d468186ef80b3b2d1f703f4ecf9fad1debb480135d6514a6ef
 
 pkgname = orca-ide-appimage

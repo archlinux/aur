@@ -2,7 +2,7 @@
 
 pkgname=orca-ide-appimage
 _pkgname=orca-ide
-pkgver=1.4.205
+pkgver=1.4.206
 pkgrel=1
 pkgdesc="Next-gen IDE for working with a fleet of parallel coding agents (AppImage)"
 arch=('x86_64' 'aarch64')
@@ -40,8 +40,8 @@ source_aarch64=("$_pkgname-$pkgver-aarch64.AppImage::$url/releases/download/v$pk
 noextract=("$_pkgname-$pkgver-x86_64.AppImage"
            "$_pkgname-$pkgver-aarch64.AppImage")
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3')
-sha256sums_x86_64=('7bede254c95ad7237098890bbeca53e667a044997f0314bb67dbc4b932094bcf')
-sha256sums_aarch64=('dbf39628d9122e1551175e002fd5d20c39dfbcbba0b61264c16dec0656c59c7f')
+sha256sums_x86_64=('547c60825ce6c8cedd94a02b3c445fbf2d88173576164b1b66444113ff225550')
+sha256sums_aarch64=('494dab899708b8d468186ef80b3b2d1f703f4ecf9fad1debb480135d6514a6ef')
 
 prepare() {
     cd "$srcdir"
