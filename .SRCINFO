@@ -1,0 +1,12 @@
+pkgbase = caldr
+	pkgdesc = A lightweight CLI/TUI calendar that supports CalDAV
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/mrusme/caldr
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	source = caldr-0.2.0.tar.gz::https://codeload.github.com/mrusme/caldr/tar.gz/refs/tags/v0.2.0
+	sha256sums = ed5469db7d70330c78f847821009d0ec646dfa973ab6c3354eb5c948ed5ba01b
+
+pkgname = caldr
