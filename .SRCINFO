@@ -1,27 +1,69 @@
 pkgbase = python-langchain-community
 	pkgdesc = Community contributed LangChain integrations.
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/langchain-ai/langchain/blob/master/libs/community
 	arch = any
 	license = MIT
+	checkdepends = python-beautifulsoup4
+	checkdepends = python-blockbuster
+	checkdepends = python-cffi
+	checkdepends = python-freezegun
+	checkdepends = python-langchain-tests
+	checkdepends = python-lark-parser
+	checkdepends = python-packaging
+	checkdepends = python-pandas
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-socket
+	checkdepends = python-pytest-xdist
+	checkdepends = python-requests-mock
+	checkdepends = python-responses
+	checkdepends = python-syrupy
+	checkdepends = python-toml
 	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-pdm-backend
-	makedepends = python-wheel
 	makedepends = python-hatchling
-	depends = python-aiohttp
-	depends = python-httpx-sse
-	depends = python-langchain-classic
-	depends = python-langchain-core
-	depends = python-langsmith
-	depends = python-numpy
-	depends = python-pydantic-settings
-	depends = python-requests
-	depends = python-sqlalchemy
-	depends = python-tenacity
-	depends = python-yaml
-	source = langchain-community-0.4.2.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain-community/langchain_community-0.4.2.tar.gz
-	b2sums = 263d2f35acc353411cf9bce15872a353ea45afc33c59016177d60dff538b76bc3914632d1ac363849c8687fb931e5cbaf88c48b3a14b1b223b2e1f2e3ad3eec3
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-aiohttp>=3.8.3
+	depends = python-aiohttp<4
+	depends = python-httpx-sse>=0.4
+	depends = python-httpx-sse<1
+	depends = python-langchain-classic>=1.0.7
+	depends = python-langchain-classic<2
+	depends = python-langchain-core>=1.4
+	depends = python-langchain-core<2
+	depends = python-langsmith>=0.1.125
+	depends = python-langsmith<1
+	depends = python-mypy_extensions
+	depends = python-numpy>=2.1
+	depends = python-numpy<3
+	depends = python-pydantic-settings>=2.10.1
+	depends = python-pydantic-settings<3
+	depends = python-requests>=2.32.5
+	depends = python-requests<3
+	depends = python-sqlalchemy>=1.4
+	depends = python-sqlalchemy<3
+	depends = python-tenacity>=8.1
+	depends = python-tenacity<10
+	depends = python-yaml>=5.3
+	depends = python-yaml<7
+	optdepends = python-beautifulsoup4: HTML and web document loaders
+	optdepends = python-lxml: XML and HTML document loaders
+	optdepends = python-networkx: NetworkX graph and vector stores
+	optdepends = python-pandas: data-frame and data-warehouse integrations
+	optdepends = python-pillow: image and PDF document loaders
+	optdepends = python-pyparsing: Ontotext GraphDB query parsing
+	optdepends = python-pytorch: local and self-hosted machine-learning integrations
+	optdepends = python-pytz: timezone handling for the Arthur callback
+	source = python-langchain-community-0.4.2.tar.gz::https://github.com/langchain-ai/langchain-community/archive/refs/tags/libs/community/v0.4.2.tar.gz
+	source = python-3.14-ast-constant-test.patch
+	source = pytest-fixture-decorators.patch
+	sha256sums = e611bbf6985f8ff613cfb8d2d5cd47879116054bccc69b458c2fbe8f15ebfd6e
+	sha256sums = 0788b182b216f2b457f4f73a1ac9b6582dac314d06b645f1ddd578ee75705e8e
+	sha256sums = 8595464bd24786e3ed0e7d3a6efd0e67929a1fea8911931a9f513d706c7d8e4f
 
 pkgname = python-langchain-community

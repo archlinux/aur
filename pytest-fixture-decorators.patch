@@ -1,0 +1,52 @@
+--- a/libs/community/tests/unit_tests/document_loaders/test_hugging_face.py
++++ b/libs/community/tests/unit_tests/document_loaders/test_hugging_face.py
+@@ -10,7 +10,6 @@
+ 
+ 
+ @pytest.mark.requires("datasets")
+-@pytest.fixture
+ def test_load_string() -> None:
+     """Loads page_content of type string"""
+     page_content_column = "text"
+@@ -33,7 +32,6 @@
+ 
+ 
+ @pytest.mark.requires("datasets")
+-@pytest.fixture
+ def test_load_list() -> None:
+     """Loads page_content of type List"""
+     page_content_column = "list"
+@@ -52,7 +50,6 @@
+ 
+ 
+ @pytest.mark.requires("datasets")
+-@pytest.fixture
+ def test_load_object() -> None:
+     """Loads page_content of type Object"""
+     page_content_column = "dict"
+@@ -74,7 +71,6 @@
+ 
+ 
+ @pytest.mark.requires("datasets")
+-@pytest.fixture
+ def test_load_nonexistent_dataset() -> None:
+     """Tests that ValueError is thrown for nonexistent dataset name"""
+     page_content_column = "text"
+@@ -88,7 +84,6 @@
+ 
+ 
+ @pytest.mark.requires("datasets")
+-@pytest.fixture
+ def test_load_nonexistent_feature() -> None:
+     """Tests that KeyError is thrown for nonexistent feature/key in dataset"""
+     page_content_column = "langchain"
+--- a/libs/community/tests/unit_tests/indexes/test_sql_record_manager.py
++++ b/libs/community/tests/unit_tests/indexes/test_sql_record_manager.py
+@@ -21,7 +21,6 @@
+ 
+ 
+ @pytest_asyncio.fixture
+-@pytest.mark.requires("aiosqlite")
+ async def amanager() -> SQLRecordManager:
+     """Initialize the test database and yield the TimestampedSet instance."""
+     # Initialize and yield the TimestampedSet instance

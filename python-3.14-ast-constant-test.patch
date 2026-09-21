@@ -1,0 +1,16 @@
+diff --git a/libs/community/tests/unit_tests/test_imports.py b/libs/community/tests/unit_tests/test_imports.py
+index a3e2412..287a7a2 100644
+--- a/libs/community/tests/unit_tests/test_imports.py
++++ b/libs/community/tests/unit_tests/test_imports.py
+@@ -55,7 +55,10 @@ def _check_correct_or_not_defined__all__(code: str) -> bool:
+                     # Check if the value assigned is a list
+                     if isinstance(node.value, ast.List):
+                         # Verify all elements in the list are string literals
+-                        if all(isinstance(el, ast.Str) for el in node.value.elts):
++                        if all(
++                            isinstance(el, ast.Constant) and isinstance(el.value, str)
++                            for el in node.value.elts
++                        ):
+                             pass
+                         else:
+                             all_good = False
