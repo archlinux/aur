@@ -3,11 +3,11 @@
 
 pkgname=python-pyqt5-datavisualization
 pkgver=5.15.6
-pkgrel=5
+pkgrel=6
 pkgdesc='Python bindings for QtDataVisualization'
 arch=(x86_64)
 url='https://www.riverbankcomputing.com/software/pyqtdatavisualization/intro'
-license=(GPL3)
+license=('GPL-3.0-only')
 depends=(qt5-datavis3d python-pyqt5)
 makedepends=(sip pyqt-builder)
 conflicts=(python-pyqtdatavisualization)
