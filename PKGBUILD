@@ -3,7 +3,7 @@
 pkgname=zapret-rust-git
 _pkgname=zapret-rust
 pkgver=2.1.0.r0.g0000000
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Zapret-Rust TUI for DPI bypass (git version)"
 arch=('x86_64')
@@ -39,11 +39,8 @@ sha256sums=(
     'SKIP'
 )
 
-_src_root="${srcdir}/${_pkgname}"
-
 pkgver() {
-    git -C "$_src_root" \
-        describe \
+    git -C "${srcdir}/${_pkgname}" describe \
         --long \
         --tags \
         --match 'zapret-rust-v*' \
@@ -54,28 +51,35 @@ pkgver() {
             -e 's/-/./'
 }
 
-_cargo_home="${srcdir}/cargo-home"
-_manifest_path="${_src_root}/Cargo.toml"
-
 prepare() {
-    CARGO_HOME="${_cargo_home}" cargo fetch --locked --manifest-path "$_manifest_path"
+    RUSTUP_TOOLCHAIN=stable \
+    CARGO_HOME="${srcdir}/cargo-home" \
+        cargo fetch \
+        --locked \
+        --manifest-path "${srcdir}/${_pkgname}/Cargo.toml"
 }
 
 build() {
-    CARGO_HOME="${_cargo_home}" cargo build --release --frozen --manifest-path "$_manifest_path"
+    RUSTUP_TOOLCHAIN=stable \
+    CARGO_HOME="${srcdir}/cargo-home" \
+        cargo build \
+        --release \
+        --frozen \
+        --manifest-path "${srcdir}/${_pkgname}/Cargo.toml"
 }
 
 package() {
-    # Actual binary
-    install -Dm755 "${_src_root}/target/release/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
+    install -Dm755 \
+        "${srcdir}/${_pkgname}/target/release/${_pkgname}" \
+        "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
 
-    # Persistent application data
-    install -dm755 "${pkgdir}/var/lib/${_pkgname}"
+    install -dm755 \
+        "${pkgdir}/var/lib/${_pkgname}"
 
-    # Wrapper
-    install -dm755 "${pkgdir}/usr/bin"
+    install -dm755 \
+        "${pkgdir}/usr/bin"
 
-    cat >"${pkgdir}/usr/bin/${_pkgname}" <<'EOF'
+    cat > "${pkgdir}/usr/bin/${_pkgname}" <<'EOF'
 #!/bin/sh
 
 exec /usr/lib/zapret-rust/zapret-rust \

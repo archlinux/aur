@@ -1,7 +1,7 @@
 pkgbase = zapret-rust-git
 	pkgdesc = Zapret-Rust TUI for DPI bypass (git version)
 	pkgver = 2.1.0.r0.g0000000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sergeydigl3/zapret-discord-youtube-rust
 	install = zapret-rust.install
 	arch = x86_64
