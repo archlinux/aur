@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hatt hotmail.com>
 pkgname=borgwarehouse
-pkgver=3.6.3
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="WebUI for a BorgBackup central repository server"
 arch=("x86_64")
@@ -34,7 +34,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
 	      "${pkgname}.tmpfiles"
         "fix-env-nodocker.patch")
-sha256sums=('eee2134119f5c9f4e08c1a16af7ed6f5c91d869b7518138b2fe87bf238caadd5'
+sha256sums=('541babfc0f6b1e6233df7ea5be3cbcaedf4529e66c3c52938fce26facd7376a1'
             'ce1a55c203eef3c65f186efc3ffa2bcf416de67e5586cf542edf199b8a9ec47a'
             '15bc6db13bfa17402ee07bb2f91711a0d84d298b3fbd3f48722345d4c19bb917'
             '1ca148f62f03cec0498194457568230e0a7e300add4788a600abd4b9a12f81ec'
