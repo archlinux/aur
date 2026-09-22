@@ -1,6 +1,6 @@
 pkgbase = netscli-gui-bin
 	pkgdesc = NetsCLI desktop app for reviewing network scans, DNS, ARP, and local inventory
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://netscli.com
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = netscli-gui-bin
 	provides = netscli-gui
 	conflicts = netscli-gui
 	options = !strip
-	source = LICENSE-0.3.2::https://raw.githubusercontent.com/fstubner/netscli/v0.3.2/LICENSE
-	source = netscli-gui.png::https://raw.githubusercontent.com/fstubner/netscli/v0.3.2/apps/netscli-gui/src-tauri/icons/128x128.png
+	source = LICENSE-0.3.3::https://raw.githubusercontent.com/fstubner/netscli/v0.3.3/LICENSE
+	source = netscli-gui.png::https://raw.githubusercontent.com/fstubner/netscli/v0.3.3/apps/netscli-gui/src-tauri/icons/128x128.png
 	sha256sums = 6f035a96b0da6e99589b2a1656f59bee8c6519686d8a94627301e074746041d3
 	sha256sums = 021f1d939fe496033ef90a47d29e7a1bd11ea83cfe0ffc445cb5b88418240882
-	source_x86_64 = netscli-gui-bin-0.3.2.AppImage::https://github.com/fstubner/netscli/releases/download/v0.3.2/netscli-gui-linux-x86_64.AppImage
-	sha256sums_x86_64 = ef9994e7dde19d300ef843a3bb040e7c587cbd5f38fc1522b306f1807536e320
+	source_x86_64 = netscli-gui-bin-0.3.3.AppImage::https://github.com/fstubner/netscli/releases/download/v0.3.3/netscli-gui-linux-x86_64.AppImage
+	sha256sums_x86_64 = ba7474d0567a62fa802a04d61f2426f578e4775b2ea8bd001509738fefddad86
 
 pkgname = netscli-gui-bin

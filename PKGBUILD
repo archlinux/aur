@@ -15,7 +15,7 @@
 
 pkgname=netscli-gui-bin
 _appname=netscli-gui
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="NetsCLI desktop app for reviewing network scans, DNS, ARP, and local inventory"
 arch=('x86_64')
@@ -43,7 +43,7 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/fstubner/netscli/v
         "${_appname}.png::https://raw.githubusercontent.com/fstubner/netscli/v${pkgver}/apps/netscli-gui/src-tauri/icons/128x128.png")
 source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/fstubner/netscli/releases/download/v${pkgver}/netscli-gui-linux-x86_64.AppImage")
 sha256sums=(6f035a96b0da6e99589b2a1656f59bee8c6519686d8a94627301e074746041d3 021f1d939fe496033ef90a47d29e7a1bd11ea83cfe0ffc445cb5b88418240882)
-sha256sums_x86_64=('ef9994e7dde19d300ef843a3bb040e7c587cbd5f38fc1522b306f1807536e320')
+sha256sums_x86_64=('ba7474d0567a62fa802a04d61f2426f578e4775b2ea8bd001509738fefddad86')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" \
