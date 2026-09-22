@@ -3,8 +3,8 @@
 _gitname="meshcore-open"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
-pkgver=alpha9+217.r962.20260903.dbd7f2aa
-pkgrel=2
+pkgver=alpha9+238.r983.20260920.d5f54dfa
+pkgrel=1
 pkgdesc="Open-source Flutter client for MeshCore LoRa mesh networking devices."
 groups=('meshcore')
 arch=(
