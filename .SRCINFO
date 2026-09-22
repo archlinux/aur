@@ -1,15 +1,15 @@
 pkgbase = badness
 	pkgdesc = A language server, formatter, and linter for LaTeX
-	pkgver = 0.23.0
-	pkgrel = 2
+	pkgver = 0.24.0
+	pkgrel = 1
 	url = https://github.com/jolars/badness
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = https://github.com/jolars/badness/archive/refs/tags/v0.23.0/badness-0.23.0.tar.gz
-	sha256sums = 6da45215c1a28074dcbb128e59c090cabaeef7a36e584ed8e8c8594303f9c3fa
+	source = https://github.com/jolars/badness/archive/refs/tags/v0.24.0/badness-0.24.0.tar.gz
+	sha256sums = 06a414c0f96c9d78939566df1e40cd44fd133fe9d3b95d1ca1345e97732d5d78
 
 pkgname = badness
 	depends = glibc
