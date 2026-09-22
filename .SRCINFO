@@ -1,17 +1,17 @@
 pkgbase = pom-perl
 	pkgdesc = Displays the phase of the moon. Perl re-write of bsd-games's 'pom'.
-	pkgver = 1.045
+	pkgver = 1.053
 	pkgrel = 1
-	url = http://metacpan.org/pod/distribution/ppt/bin/pom
+	url = https://metacpan.org/dist/PerlPowerTools/view/bin/pom
 	arch = any
-	license = GPL2
+	license = Artistic-1.0-Perl
 	depends = perl
-	provides = pom=1.045
+	provides = pom=1.053
 	conflicts = pom
 	replaces = pom<=0.14-1
-	source = https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/PerlPowerTools-1.045.tar.gz
-	source = https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/PerlPowerTools-1.045.readme
-	sha256sums = 859222ab050088068bfe0b305799e724fc84f4576a839d137eb3395263986abb
-	sha256sums = 1a9508af39a61e90903d2a5c32a36ba71e78a55486cdaff2cdb63ba76a6d4b63
+	source = https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/PerlPowerTools-1.053.tar.gz
+	source = https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/PerlPowerTools-1.053.readme
+	sha256sums = 38bb7598a92b1ecb364478f5945a7926046846b9a34a8032e3dcb8de0662c76a
+	sha256sums = 03d912cb652f3b9a4f2243af0a35fdb2f9880cb6c94ab59c7a45c944fbc33f92
 
 pkgname = pom-perl

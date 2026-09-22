@@ -2,18 +2,18 @@
 
 _pkgname="pom-perl"
 pkgname="${_pkgname}"
-pkgver="1.045"
+pkgver="1.053"
 pkgrel="1"
 pkgdesc="Displays the phase of the moon. Perl re-write of bsd-games's 'pom'."
 arch=('any')
-url="http://metacpan.org/pod/distribution/ppt/bin/pom"
+url="https://metacpan.org/dist/PerlPowerTools/view/bin/pom"
 depends=('perl')
 conflicts=(
   "pom"
 )
 replaces=("pom<=0.14-1")
 provides=("pom=${pkgver}")
-license=('GPL2')
+license=('Artistic-1.0-Perl')
 source=(
   "https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/PerlPowerTools-${pkgver}.tar.gz"
   "https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/PerlPowerTools-${pkgver}.readme"
@@ -21,8 +21,8 @@ source=(
 )
 
 sha256sums=(
-  '859222ab050088068bfe0b305799e724fc84f4576a839d137eb3395263986abb'
-  '1a9508af39a61e90903d2a5c32a36ba71e78a55486cdaff2cdb63ba76a6d4b63'
+  '38bb7598a92b1ecb364478f5945a7926046846b9a34a8032e3dcb8de0662c76a'
+  '03d912cb652f3b9a4f2243af0a35fdb2f9880cb6c94ab59c7a45c944fbc33f92'
   #'3d79a537c30b24e420d3bc97b895f1aa1918df0a4e51a3dc3fd9492cc024c334'
 )
 
