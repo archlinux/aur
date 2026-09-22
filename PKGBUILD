@@ -3,7 +3,7 @@
 _pkgname=udapi
 pkgname="python-${_pkgname}"
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Python framework for processing Universal Dependencies data"
 arch=('any')
 url="https://github.com/udapi/udapi-python"
@@ -26,6 +26,13 @@ checkdepends=(
 _archive="udapi-python-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('7b8f21bfed3bc62a576838251c210ff9de0623c0c51bcee19a3090579c04e947')
+
+prepare() {
+    cd "$_archive"
+    # The top-level docs namespace is not part of Udapi's public API. Exclude
+    # it during discovery, keeping the wheel RECORD and installed tree aligned.
+    sed -i 's/packages = {find = {}}/packages = {find = {include = ["udapi", "udapi.*"]}}/' pyproject.toml
+}
 
 build() {
     cd "$_archive"
@@ -57,9 +64,5 @@ check() {
 package() {
     cd "$_archive"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    # Upstream's broad package discovery includes its Sphinx configuration as
-    # a generic top-level `docs` Python package. It is not part of Udapi's API
-    # and conflicts with other Python projects making the same mistake.
-    rm -rf "$pkgdir"/usr/lib/python*/site-packages/docs
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

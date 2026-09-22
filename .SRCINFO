@@ -1,7 +1,7 @@
 pkgbase = python-udapi
 	pkgdesc = Python framework for processing Universal Dependencies data
 	pkgver = 0.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/udapi/udapi-python
 	arch = any
 	license = GPL-3.0-or-later
