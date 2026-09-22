@@ -4,7 +4,7 @@
 
 pkgname='epics-base'
 pkgver=7.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Physics and Industrial Control System"
 arch=('x86_64')
 url="https://epics-controls.org"
@@ -82,14 +82,13 @@ package() {
         ln -sr "${lib}" "${pkgdir}/usr/lib/perl5/${PERL_VERSION}/vendor_perl"
     done
 
-    # install bin files and link non internal binaries to system path
+    # Install bin files and link the public EPICS commands to the system path.
     install -dm755 "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}" "${pkgdir}/usr/bin"
     cp -P "bin/${EPICS_HOST_ARCH}"/* "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}"
-    for bin in caget caput cainfo camonitor caRepeater casw pvget pvinfo pvlist pvput caEventRate; do
-        ln -sr "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}/${bin}" "${pkgdir}/usr/bin"
-    done
-
-    for bin in softIoc softIocPVA; do
+    for bin in \
+        caConnTest caEventRate caRepeater caget cainfo camonitor caput casw catime \
+        pvcall pvget pvinfo pvlist pvmonitor pvput \
+        iocLogServer makeBpt msi softIoc softIocPVA; do
         ln -sr "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}/${bin}" "${pkgdir}/usr/bin"
     done
 
