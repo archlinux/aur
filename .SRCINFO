@@ -1,17 +1,17 @@
 pkgbase = leavepad-bin
-	pkgdesc = A simple note-taking app with integrated file editor, built with Electron and Monaco Editor.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.7.2
+	pkgdesc = A simple note-taking app with integrated file editor, built with Electron and Monaco Editor.
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/kaishuu0123/leavepad
 	arch = x86_64
 	license = MIT
 	depends = electron43
-	provides = leavepad=2.7.2
+	provides = leavepad=2.8.0
 	conflicts = leavepad
-	source = leavepad-2.7.2-x86_64.AppImage::https://github.com/kaishuu0123/leavepad/releases/download/v2.7.2/leavepad-2.7.2.AppImage
-	source = LICENSE-2.7.2::https://raw.githubusercontent.com/kaishuu0123/leavepad/v2.7.2/LICENSE
+	source = leavepad-2.8.0-x86_64.AppImage::https://github.com/kaishuu0123/leavepad/releases/download/v2.8.0/leavepad-2.8.0.AppImage
+	source = LICENSE-2.8.0::https://raw.githubusercontent.com/kaishuu0123/leavepad/v2.8.0/LICENSE
 	source = leavepad.sh
-	sha256sums = 1afd3e4025f679eb9e13f893d3dda7ed2ca5b9e94f9fb0600a756da74a212369
+	sha256sums = a7f740573199554e4a0460fe7d0697d5029e7454ef564d382beecb5e78d3d79a
 	sha256sums = 2db6d2f8319742e183737299159ca2a72096629542c080492f13770b7d305c3b
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 

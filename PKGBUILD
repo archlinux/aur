@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=leavepad-bin
 _pkgname=Leavepad
-pkgver=2.7.2
+pkgver=2.8.0
 _electronversion=43
 pkgrel=1
-pkgdesc="A simple note-taking app with integrated file editor, built with Electron and Monaco Editor.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A simple note-taking app with integrated file editor, built with Electron and Monaco Editor."
 arch=('x86_64')
 url="https://github.com/kaishuu0123/leavepad"
 license=('MIT')
@@ -18,11 +18,11 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kaishuu0123/leavepad/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1afd3e4025f679eb9e13f893d3dda7ed2ca5b9e94f9fb0600a756da74a212369'
+sha256sums=('a7f740573199554e4a0460fe7d0697d5029e7454ef564d382beecb5e78d3d79a'
             '2db6d2f8319742e183737299159ca2a72096629542c080492f13770b7d305c3b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -57,7 +57,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
