@@ -1,10 +1,11 @@
 pkgbase = python-gym-pusht
 	pkgdesc = A gymnasium environment for PushT
 	pkgver = 0.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/huggingface/gym-pusht
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -20,7 +21,7 @@ pkgbase = python-gym-pusht
 	optdepends = python-debugpy: for the dev extra
 	optdepends = python-pytest: for the test extra
 	optdepends = python-pytest-cov: for the test extra
-	source = https://files.pythonhosted.org/packages/source/g/gym-pusht/gym_pusht-0.1.6.tar.gz
-	sha256sums = b748dc5282c41b504df16359df26d3c2184e194edd20cde691fcda9fdc277005
+	source = python-gym-pusht-0.1.6.tar.gz::https://github.com/huggingface/gym-pusht/archive/8227842037637f92cf7e2a7199db7570d04de8a1.tar.gz
+	sha256sums = 717bc3e78acb2070d1e0bde907ed5738f3c5ee3aaf47417c7445f482d7bf9663
 
 pkgname = python-gym-pusht
