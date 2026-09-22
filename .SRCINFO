@@ -1,0 +1,24 @@
+pkgbase = bspwm-ng-git
+	pkgdesc = bspwm fork with live edge magnetism, stepped drags, configurable Aero Snap and rules matched on window properties
+	pkgver = 1.6.3.r2.g4e6da37
+	pkgrel = 1
+	url = https://github.com/maflorezp/bspwm-ng
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	depends = libxcb
+	depends = xcb-util
+	depends = xcb-util-keysyms
+	depends = xcb-util-wm
+	depends = libxkbcommon
+	optdepends = sxhkd: keybinding daemon
+	provides = bspwm
+	provides = bspwm1
+	conflicts = bspwm
+	conflicts = bspwm1
+	conflicts = bspwm1-maflorezp-git
+	replaces = bspwm1-maflorezp-git
+	source = bspwm-ng::git+https://github.com/maflorezp/bspwm-ng.git#branch=local
+	sha256sums = SKIP
+
+pkgname = bspwm-ng-git
