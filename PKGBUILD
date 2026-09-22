@@ -34,7 +34,18 @@
 #   - install.sh -> /usr/share/ramsleuth/install.sh (the self-contained transparency
 #     artifact — AUR users can re-run/audit the full flow post-install)
 #   - LICENSE -> /usr/share/licenses/ramsleuth/LICENSE (MIT compliance, AUR requirement)
-#   - the application-menu entry -> /usr/share/applications/ramsleuth.desktop
+#   - the application-menu entry -> /usr/share/applications/RamSleuth.desktop
+#   - the one-click setup helper scripts/ramsleuth-setup.sh -> /usr/bin/ramsleuth-setup
+#     (the pkexec-able root helper; polkit is Arch base — no new runtime dep; plan C21-01)
+#   - the shared polkit policy packaging/polkit/90-ramsleuth-setup.policy ->
+#     /usr/share/polkit-1/actions/90-ramsleuth-setup.policy (the org.freedesktop.
+#     ramsleuth.setup action; plan C21-02)
+#   - the hicolor icon tree assets/icons/hicolor/<size>/apps/ramsleuth.png
+#     (the 8 sizes 16/24/32/48/64/128/256/512) -> /usr/share/icons/hicolor/
+#     <size>/apps/ AND <size>x<size>/apps/ (dual bare+NxN: freedesktop
+#     index.theme files that declare only the NxN dirs make KIconLoader skip
+#     the bare dirs; C21-42) + the 48px legacy /usr/share/pixmaps/ramsleuth.png
+#     fallback (the Icon=ramsleuth resolution; plan C21-25, C21-42)
 #
 # No-panic contract: installation never fails on the absence of
 # the ryzen_smu module, AVX-512, or a display; after a bare install the
@@ -47,7 +58,7 @@
 # plus the eframe 0.27 / winit dlopen + fallback runtime surface.
 
 pkgname=ramsleuth
-pkgver=2.1.1   # FIXED — taken from the git tag v$pkgver (no pkgver() — that belongs to ramsleuth-git)
+pkgver=2.2.1   # FIXED — taken from the git tag v$pkgver (no pkgver() — that belongs to ramsleuth-git)
 pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients"
 arch=(x86_64)
@@ -97,9 +108,46 @@ package() {
     # (6) the MIT license — the AUR license-compliance install path
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/ramsleuth/LICENSE"
 
-    # (7) the application-menu entry — shared asset next to the preset
-    install -Dm644 "packaging/ramsleuth-git/ramsleuth.desktop" \
-        "$pkgdir/usr/share/applications/ramsleuth.desktop"
+    # (7) the application-menu entry — shared asset next to the preset.
+    # The FILENAME matches the GUI's Wayland app_id ("RamSleuth" — eframe/winit
+    # 0.29 sets app_id = window title), so KWin's app_id -> desktop-file match
+    # resolves the taskbar icon (C21-45).
+    install -Dm644 "packaging/ramsleuth-git/RamSleuth.desktop" \
+        "$pkgdir/usr/share/applications/RamSleuth.desktop"
+
+    # (8) the one-click setup helper — the pkexec-able root helper (plan C21-01);
+    # pkexec/polkit are Arch base, so no new runtime dep (plan §6)
+    install -Dm755 "scripts/ramsleuth-setup.sh" "$pkgdir/usr/bin/ramsleuth-setup"
+
+    # (9) the shared polkit policy — the org.freedesktop.ramsleuth.setup action
+    # (plan C21-02)
+    install -Dm644 "packaging/polkit/90-ramsleuth-setup.policy" \
+        "$pkgdir/usr/share/polkit-1/actions/90-ramsleuth-setup.policy"
+
+    # (10) the hicolor icon tree — the 8 sizes, installed to BOTH the bare
+    # <size>/apps/ and the <size>x<size>/apps/ hicolor dirs (freedesktop
+    # index.theme files that declare only the NxN dirs make KIconLoader skip
+    # the bare dirs; a bare-only install shows a missing-icon placeholder in
+    # the menu, C21-42) + the 48px legacy /usr/share/pixmaps/ramsleuth.png
+    # fallback (the Icon=ramsleuth resolution; plan C21-25, C21-42). Every
+    # icon is ALSO installed under the name RamSleuth.png (bare + NxN +
+    # pixmaps) — KWin's direct icon-name fallback when the Wayland app_id
+    # "RamSleuth" is used verbatim as the icon name (C21-45).
+    for size in 16 24 32 48 64 128 256 512; do
+        install -Dm644 "assets/icons/hicolor/$size/apps/ramsleuth.png" \
+            "$pkgdir/usr/share/icons/hicolor/$size/apps/ramsleuth.png"
+        install -Dm644 "assets/icons/hicolor/$size/apps/ramsleuth.png" \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/ramsleuth.png"
+        # The app_id-named fallback (C21-45)
+        install -Dm644 "assets/icons/hicolor/$size/apps/ramsleuth.png" \
+            "$pkgdir/usr/share/icons/hicolor/$size/apps/RamSleuth.png"
+        install -Dm644 "assets/icons/hicolor/$size/apps/ramsleuth.png" \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/RamSleuth.png"
+    done
+    install -Dm644 "assets/icons/hicolor/48/apps/ramsleuth.png" \
+        "$pkgdir/usr/share/pixmaps/ramsleuth.png"
+    install -Dm644 "assets/icons/hicolor/48/apps/ramsleuth.png" \
+        "$pkgdir/usr/share/pixmaps/RamSleuth.png"
 
     # NOTE: the ramsleuth group is created on the TARGET system by the .install
     # pre_install/pre_upgrade hooks (package() runs in the build env, not the target).
