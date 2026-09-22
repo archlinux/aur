@@ -1,7 +1,7 @@
 #!/bin/bash
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=float-app-bin
-pkgver=20260719.3
+pkgver=20260922.0
 pkgrel=1
 pkgdesc="Persistently float selected Hyprland windows (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ sha256sums=(
   '07b920b85fba70ff4af6ace8b059e605d96775a22eb93c5a93bf330bab616fdf'
   'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
 )
-sha256sums_x86_64=('daa98b33d3a48cc938dcb834125f2bf07a0ee0920d2aa72f3b3ef0cd0e277204')
-sha256sums_aarch64=('af23584483bc513bb8a8e52a479fade589e0c18057f3df92ba46a74678a3a356')
+sha256sums_x86_64=('6f487267a375b1cb3c8a9e8fcf40f750babe24d8fc7b8dfa3fa726636f9461bc')
+sha256sums_aarch64=('688f2256a19fdc7a007920f3e1d69f2403f6efcd1560dd12ea6916011d127956')
 
 package() {
   install -Dm755 float-app "$pkgdir/usr/bin/float-app"
