@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=repo-notes-bin
-pkgver=20260922.0
+pkgver=20260922.1
 pkgrel=1
 pkgdesc="Standalone CLI and MCP server for repository notes (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=('notes.bash' 'notes.fish' '_notes' 'LICENSE')
 source_x86_64=("repo-notes-${pkgver}-linux-x86_64.tar.gz::$url/releases/download/${pkgver}/repo-notes-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("repo-notes-${pkgver}-linux-aarch64.tar.gz::$url/releases/download/${pkgver}/repo-notes-${pkgver}-linux-aarch64.tar.gz")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
-sha256sums_x86_64=('af3fe063b2ec0cd8d093b5b51a7c900f199104fd20b695f415567fc506aa9880')
-sha256sums_aarch64=('9311420c22b35eee96c96feec0ca5edc8a559adc50e0943cde8dc20a85a3b2f8')
+sha256sums_x86_64=('2599cec82c86b157629f0f3da203f760bf3ee3c5056e4bca6f6ba60436aea9e0')
+sha256sums_aarch64=('394bbc39577f4d2ac3678c66b2f12b6ebc020dc48444b688e069432a146fd2da')
 
 package() {
   install -Dm755 notes "$pkgdir/usr/bin/notes"
