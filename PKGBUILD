@@ -2,7 +2,7 @@
 
 _sdk=10.0
 pkgname='dev-proxy'
-pkgver=3.3.0
+pkgver=3.3.1
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Simulate API failures, throttling, and chaos, all from your command line"
@@ -13,7 +13,7 @@ depends=("dotnet-runtime-${_sdk}" "aspnet-runtime-${_sdk}" 'gcc-libs' 'glibc')
 makedepends=("dotnet-sdk-${_sdk}")
 conflicts=('dev-proxy-bin')
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('eb0792a27128549588f21773abcb0ee97eb9775577fcbea2eeb2dc838f804da9')
+sha256sums=('6b3bce6cb8512a0f8da593ae934744ce3304eadb2a4c70b8c2741c7d36d0ae02')
 
 _dotnet_env() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
