@@ -1,6 +1,6 @@
 pkgbase = matuwall-bin
 	pkgdesc = Fast and lightweight wallpaper picker for Wayland
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/naurissteins/Matuwall
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = matuwall-bin
 	optdepends = sweetbg: apply wallpapers
 	optdepends = matugen: generate colorschemes from the applied wallpaper
 	optdepends = python-pywal: generate colorschemes from the applied wallpaper
-	provides = matuwall=0.2.0
+	provides = matuwall=0.2.1
 	conflicts = matuwall
 	conflicts = matuwall-git
 	options = !debug
-	source = matuwall-0.2.0-x86_64-linux.tar.xz::https://github.com/naurissteins/Matuwall/releases/download/v0.2.0/matuwall-0.2.0-x86_64-linux.tar.xz
-	source = LICENSE::https://raw.githubusercontent.com/naurissteins/Matuwall/v0.2.0/LICENSE
-	sha256sums = e56e58c3e12f52c8b40fd8a5b28c8fa8a710a265578b9972391136e1ffab1c3a
+	source = matuwall-0.2.1-x86_64-linux.tar.xz::https://github.com/naurissteins/Matuwall/releases/download/v0.2.1/matuwall-0.2.1-x86_64-linux.tar.xz
+	source = LICENSE::https://raw.githubusercontent.com/naurissteins/Matuwall/v0.2.1/LICENSE
+	sha256sums = eb475940d45f94bd0fa5f237afa93561d9a8b1756ebdeef7c2b1fd2cd2ac0752
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = matuwall-bin
