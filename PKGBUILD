@@ -2,7 +2,8 @@
 
 _pkgname=pdfrip
 pkgname="${_pkgname}-git"
-pkgver=3.0.0+2.r89.20260326.633932b
+epoch=1
+pkgver=3.0.0+2.r89.g633932b
 pkgrel=1
 arch=(
   'i686'
@@ -14,15 +15,14 @@ pkgdesc='A multi-threaded PDF password recovering/ cracking utility.'
 url='https://github.com/mufeedvh/pdfrip'
 license=('MIT')
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc_s.so'
 )
 makedepends=(
   'base-devel'
   'git'
-  'gifsicle'
-  'zopfli'
   'rust'
+  'libgcc'
 )
 optdepends=()
 provides=(
@@ -54,29 +54,20 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
   _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|-g[0-9a-f]*$||' -e 's|-|+|g')"
   _rev="$(git rev-list --count HEAD)"
-  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  #_date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
 
   if [ -z "${_ver}" ]; then
     error "Version could not be determined."
     return 1
   else
-    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+    #printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+    printf '%s' "${_ver}.r${_rev}.g${_hash}"
   fi
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
-
-  # shrinking PNG and GIF files losslessy:
-  local _png _gif
-  for _png in screenshots/*.png; do
-    zopflipng -y -m "${_png}" "${_png}"
-  done
-  for _gif in screenshots/*.gif; do
-    gifsicle -O3 -V -o "${_gif}" "${_gif}"
-  done
-
 
   CARGO_HOME="${srcdir}/cargo"
   export CARGO_HOME
@@ -90,7 +81,7 @@ check() {
   CARGO_HOME="${srcdir}/cargo"
   export CARGO_HOME
 
-  cargo test --offline
+  cargo test --tests --offline --release
 }
 
 package() {
