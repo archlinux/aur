@@ -1,7 +1,7 @@
 pkgbase = python-pmdarima
 	pkgdesc = Python's forecast::auto.arima equivalent
 	pkgver = 2.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/alkaline-ml/pmdarima
 	arch = x86_64
 	arch = aarch64
@@ -31,7 +31,7 @@ pkgbase = python-pmdarima
 	optdepends = python-matplotlib: plotting and visualization utilities
 	optdepends = python-pytest: bundled upstream compatibility and test helpers
 	source = pmdarima-2.1.1.tar.gz::https://github.com/alkaline-ml/pmdarima/archive/refs/tags/v2.1.1.tar.gz
-	source = gasoline.csv::http://alkaline-ml.com/datasets/gasoline.csv
+	source = gasoline.csv::https://alkaline-ml.com/datasets/gasoline.csv
 	sha256sums = 4debd209df0bb4eb772015350bf16ef9b48c0ff8ff6ba497270d9007e2a02ab1
 	sha256sums = 59ba35cda906b1b3ab695eeecba25cbc3c145168b455dda0ae44443ae7372287
 

@@ -4,7 +4,7 @@
 _pyname=pmdarima
 pkgname=python-${_pyname}
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Python's forecast::auto.arima equivalent"
 arch=('x86_64' 'aarch64')
 url='https://github.com/alkaline-ml/pmdarima'
@@ -43,7 +43,7 @@ checkdepends=(
 )
 source=(
   "${_pyname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-  'gasoline.csv::http://alkaline-ml.com/datasets/gasoline.csv'
+  'gasoline.csv::https://alkaline-ml.com/datasets/gasoline.csv'
 )
 sha256sums=(
   '4debd209df0bb4eb772015350bf16ef9b48c0ff8ff6ba497270d9007e2a02ab1'
