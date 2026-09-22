@@ -1,6 +1,6 @@
 pkgbase = retch
 	pkgdesc = A fast, feature-rich system information fetcher written in Rust
-	pkgver = 0.17.9
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/l1a/retch
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = retch
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = retch-0.17.9.tar.gz::https://github.com/l1a/retch/archive/refs/tags/v0.17.9.tar.gz
-	sha256sums = 7274fc6a369e48eee47f6ab1d774cd4b02f2a8fd3ecb8f233f197113bb97aba2
+	source = retch-0.18.0.tar.gz::https://github.com/l1a/retch/archive/refs/tags/v0.18.0.tar.gz
+	sha256sums = 6f955a6307de3c182f7724781b5cadeb8650c4104d6588b112723c6867ea2895
 
 pkgname = retch
