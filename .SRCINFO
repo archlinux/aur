@@ -15,6 +15,7 @@ pkgbase = desktop-plus-git
 	depends = curl
 	depends = git
 	depends = gtk3
+	depends = libnotify
 	depends = libsecret
 	depends = libxss
 	depends = nspr
