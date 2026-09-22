@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requesto-bin
 _pkgname=Requesto
-pkgver=1.10.1
+pkgver=1.10.2
 _electronversion=44
 pkgrel=1
 pkgdesc="A modern, lightweight, self-hostable API client. No accounts, no cloud, no telemetry."
@@ -26,13 +26,13 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-electron_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/t3rr11/Requesto/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('173c679dd69ecb4438aee5261d813d19e83e2c03aaf74747844707647bcfa963'
-            'baa265fc2389eb1ac3a489bd8fdb9255614a801f0b1624faf107c5a0d0c1bd66'
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-electron_${pkgver}_amd64.deb")
+sha256sums=('baa265fc2389eb1ac3a489bd8fdb9255614a801f0b1624faf107c5a0d0c1bd66'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_x86_64=('9f67d005c904a6a4ecba4b9e3e5e51dc3891f2a670022e9cd41730c559320b04')
 _get_app_dir() {
     find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print | xargs dirname | head -n 1
 }
