@@ -6,18 +6,19 @@
 _pkgname=maperitive
 pkgname="${_pkgname}-bin"
 epoch=0
-pkgver=2.4.3
-pkgrel=3
+pkgver=2.5.10
+pkgrel=1
 pkgdesc="A desktop application which renders maps in real time using OpenStreetMap (OSM) and other sources of data."
 _osmurl="https://wiki.openstreetmap.org/wiki/Maperitive"
 _upstreamurl="http://maperitive.net"
 url="${_osmurl}"
 _downloadurl="${_upstreamurl}/download/Maperitive-latest.zip"
+#_downloadurl="${_upstreamurl}/download/Maperitive-${pkgver}.zip"
 arch=(
   'i686'
   'x86_64'
 )
-license=('LicenseRef-custom')
+license=('LicenseRef-Maperitive')
 depends=(
   "bash"
   "mono>=2.6"
@@ -38,7 +39,7 @@ source=(
 )
 
 sha256sums=(
-  "ca1b25463e028d463492f8904c8ef3f0bbd2896be37fb2bcfad0cc780f733449"  # Upstream binary zipfile
+  "0f9e4e347722dc1ceeb1714842c630b500a9f95008a2d0315acd4598093b031e"  # Upstream binary zipfile
   "99d577bbea7a28bf0ecea4bd03ce6fb48410fe9c9ccafa78944f5d872648b97b"  # maperitive.sh
   "ef336669dbe7c61e8b12a154dfb8ae1b74fea2053aa355c64b0f046126705a62"  # fake-elinks.sh
 )
@@ -46,6 +47,11 @@ sha256sums=(
 prepare() {
   cd "${srcdir}"
   printf '%s\n' "${_osmurl}" > "info.url"
+}
+
+pkgver() {
+  cd Maperitive
+  grep -E 'Maperitive [0-9\.]+ documentation' docs/default.html | head -n1 | sed -E 's|^.*(Maperitive [0-9\.]+ documentation).*$|\1|' | awk '{print $2}'
 }
 
 package() {
