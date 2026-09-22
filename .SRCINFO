@@ -1,7 +1,7 @@
 pkgbase = monochrome-desktop-bin
-	pkgdesc = Stream and download millions of Hi-Res FLACs, unreleased songs and music videos, all for free on Monochrome.
+	pkgdesc = Stream and download millions of Hi-Res FLACs, all for free on Monochrome.
 	pkgver = 2.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/monochrome-music/monochrome
 	arch = x86_64
 	license = Apache-2.0

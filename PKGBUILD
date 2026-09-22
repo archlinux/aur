@@ -3,8 +3,8 @@
 pkgname='monochrome-desktop-bin'
 _pkgname='Monochrome.Desktop'
 pkgver=2.0.14
-pkgrel=1
-pkgdesc='Stream and download millions of Hi-Res FLACs, unreleased songs and music videos, all for free on Monochrome.'
+pkgrel=2
+pkgdesc='Stream and download millions of Hi-Res FLACs, all for free on Monochrome.'
 arch=('x86_64')
 url='https://github.com/monochrome-music/monochrome'
 license=('Apache-2.0')
