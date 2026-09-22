@@ -1,0 +1,13 @@
+pkgbase = simplelogin-cli
+	pkgdesc = Command-line interface for SimpleLogin
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/mexcool/simplelogin-cli
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = glibc
+	source = simplelogin-cli-0.4.0.tar.gz::https://github.com/mexcool/simplelogin-cli/archive/refs/tags/v0.4.0.tar.gz
+	sha512sums = 651ccb7a557e2cb0aebe1ac795b2ba3ad801700df3484c28133b7860aa8f63ee875ab788a3ee6700a5af9705e6643843751a9a62a9ab22c36c5fc6e15bc902cc
+
+pkgname = simplelogin-cli

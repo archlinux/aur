@@ -1,0 +1,6 @@
+[simplelogin-cli]
+source = "github"
+github = "mexcool/simplelogin-cli"
+use_latest_release = true
+prefix = "v"
+
