@@ -1,6 +1,6 @@
 pkgbase=waywallen-display
 pkgname=(waywallen-display plasma-wallpaper-waywallen gnome-shell-extension-waywallen)
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen-display
@@ -12,7 +12,7 @@ options=(!lto)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v$pkgver.tar.gz"
         "0001-cmake-Install-kde-wallpaper-to-correct-path.patch"
         "0002-cmake-Install-gnome-extensions-separately.patch")
-sha256sums=('c63b65157347011373b2a9a6649cbe77a08e24e768d5420c0308b447142bbbb9'
+sha256sums=('191e8a8f575288d25e1e4f9999c74dfd4bfa81404f42eabbe069c761e45f3607'
             '1cfbc0f7388e2be1e9a4385d5d0310fabf28e930ad4c0fc8ff17d82795e98140'
             '5593469af684d71870cc6d41678ac2201879617f0538cc5c947fc990cb057c30')
 
