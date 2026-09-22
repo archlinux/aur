@@ -1,13 +1,13 @@
 # lito.lock
-_rstd_ver=0.1.2
-_luato_commit=9ad07ca2604022319c0178b7f5543220baf87050
-_vvk_commit=14a99ea0e98d0580947abf426b4d04b5a201264c
+_rstd_ver=0.1.4
+_luato_commit=bd4848b3d6dc2cc57928e4405c3593b67322d6f8
+_vvk_ver=0.1.0
 _ncrequest_commit=cdaca8b5c523906fc0c9ed58cd5f2c7981b5a255
-_wavsen_commit=5a0ddb98def3d1c146968810fe711fd2123802d0
+_wavsen_commit=e9c4983bb8851eed0823e25ad277a7bb7f6250ac
 _qextra_commit=68f752fd38e3d7a923bf36d621f4a94be7b26fd8
 
 pkgname=waywallen
-pkgver=0.3.9
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
@@ -16,22 +16,22 @@ license=(MIT)
 depends=(libgcc libstdc++ glibc ffmpeg mesa sqlite vulkan-icd-loader
          qt6-base qt6-declarative qt6-grpc qt6-websockets zstd qmlmaterial)
 makedepends=(git cmake cargo lito "clang>=22" lld llvm vulkan-headers ninja
-             vulkan-memory-allocator qt6-tools)
+             qt6-tools)
 optdepends=('waywallen-display: Required for layer-shell based compositors')
 options=(!lto)
 source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
         "git+https://github.com/litocpp/rstd.git#tag=v$_rstd_ver"
         "git+https://github.com/litocpp/luato.git#commit=$_luato_commit"
-        "git+https://github.com/litocpp/vvk.git#commit=$_vvk_commit"
+        "git+https://github.com/litocpp/vvk.git#tag=v$_vvk_ver"
         "git+https://github.com/hypengw/ncrequest.git#commit=$_ncrequest_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
         "git+https://github.com/hypengw/QExtra.git#commit=$_qextra_commit")
-sha256sums=('8e1c6e119033a9fbf36d98968784b2e566c744293d7413a11bfdd428e93aa38e'
-            '9d7e6a4cbf1eb690e7d64af05dd7f9fc3730bf817b1152bbd99892f20101ce2d'
-            '0e7de62fac442c248334e98434b478ab230dd1fe94692cb43ec6f7b6e2a7fe36'
-            '4b1bdf273d52cd21524263e6f526b6fea848e2450f307fe00f1e5ff776d3fa89'
+sha256sums=('803d5f1fe69d58b5662ec85646f4dc66dfcb1d7aa237d71bf27e17c0aafa3644'
+            'edd45f5b4e745f8317ab8e0242fa63e6fc548b587ac01a6e94b904b9f8a8464b'
+            '7b09b22347e9db3206fc797f61ce69996ff7d9e909e9c1fe8564550c2b540704'
+            '4f6311b61894a24cb223cb8006de80986a5f51bd160c919217f0d698bd83bd33'
             'e0b29a7179d1f35b76ca2582003c0a97c20b1a30b8e2e24cd95b025e7bfabfca'
-            '8c5b03ca66cf4692bd13d0641882f7b741b3eb05e9cabee78ae5474ba0e3766a'
+            '1e2f280e8a0753bcfc107ea4d3f533c9628f58c50c8c32382c82c6f263a2ac3c'
             '2b2d0a9f7031c88656fde765e7118960486db25aff5ceff43d71a1c3737643ac')
 
 prepare() {
@@ -58,13 +58,11 @@ path = "../QExtra"
 
 [tools.cmake.overrides.qml_material]
 source = "installed"
-
-[tools.cmake.overrides.VulkanMemoryAllocator]
-source = "installed"
 EOF
 
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --target host-tuple
+    lito fetch --all-features
 }
 
 build() {
