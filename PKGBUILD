@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-sqlite
-pkgver=3.51.2
+pkgver=3.53.4
 _srcver=$(echo "${pkgver}" | awk -F. '{ printf "%d%02d%02d00", $1, $2, $3 }')
 pkgrel=1
 arch=('any')
@@ -17,7 +17,7 @@ depends=("android-${_android_arch}-zlib")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.sqlite.org/2026/sqlite-src-${_srcver}.zip")
-md5sums=('5089e70213906d8ffd3ddc67377d31d7')
+md5sums=('718613520b678b8754427ed2b01d12d3')
 
 build() {
     cd "${srcdir}/sqlite-src-${_srcver}"
