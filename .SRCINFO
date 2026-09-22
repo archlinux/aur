@@ -1,0 +1,37 @@
+pkgbase = doubletake-alchemy-bin
+	pkgdesc = AirPlay sender for Linux with Hyprland extended desktops (Alchemy fork, prebuilt)
+	pkgver = 0.4.0.alchemy.2
+	pkgrel = 1
+	url = https://github.com/alchemy/doubletake
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-or-later
+	depends = bash
+	depends = glibc
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = gst-plugin-pipewire
+	depends = libpulse
+	depends = xdg-desktop-portal
+	depends = systemd
+	depends = coreutils
+	optdepends = hyprland: virtual monitors for extend mode
+	optdepends = xdg-desktop-portal-hyprland: Hyprland capture and automatic extend selection
+	optdepends = xdg-desktop-portal-wlr: capture on other wlroots compositors
+	optdepends = gst-plugin-va: VA-API hardware video encoding
+	optdepends = xorg-xrandr: primary monitor detection for X11 capture
+	optdepends = org.freedesktop.secrets: system keyring credential storage
+	provides = doubletake=0.4.0.alchemy.2
+	provides = doubletake-alchemy=0.4.0.alchemy.2
+	conflicts = doubletake
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/alchemy/doubletake/releases/download/v0.4.0-alchemy.2/doubletake-v0.4.0-alchemy.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = fbf27c1c8ad37483a40b5f8f2d287f246131c419b48d93354bda15eec1beedaf
+	source_aarch64 = https://github.com/alchemy/doubletake/releases/download/v0.4.0-alchemy.2/doubletake-v0.4.0-alchemy.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8bf286cd6733f7607f885d2832c010fb583685a00a3eeedae5e39256e37ac08d
+
+pkgname = doubletake-alchemy-bin
