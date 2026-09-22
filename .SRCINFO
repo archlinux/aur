@@ -1,6 +1,6 @@
 pkgbase = mangowm-wlonly
 	pkgdesc = mangowm without scenefx
-	pkgver = 0.17.2
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://github.com/mangowm/mango/tree/wl-only
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = mangowm-wlonly
 	conflicts = mangowm-git
 	options = !strip
 	options = !lto
-	source = mangowm-wlonly::git+https://github.com/mangowm/mango.git#commit=3d17b6fd1abaf12e2c62466b46262a4ca9c42687
+	source = mangowm-wlonly::git+https://github.com/mangowm/mango.git#commit=d739253f976a0fdce13fbaf44eda88b65fe2f08b
 	md5sums = SKIP
 
 pkgname = mangowm-wlonly
