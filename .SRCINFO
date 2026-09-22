@@ -1,6 +1,6 @@
 pkgbase = zapret-gui-nodejs-bin
 	pkgdesc = A graphical user interface (GUI) for Zapret and Telegram proxy designed to bypass DPI blocks.
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/AvenCores/zapret-gui-nodejs
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = zapret-gui-nodejs-bin
 	conflicts = zapret-gui-nodejs
 	options = !strip
 	options = !debug
-	source_x86_64 = zapret-gui-nodejs-bin-1.0.8.deb::https://github.com/AvenCores/zapret-gui-nodejs/releases/download/v1.0.8/Zapret-GUI-1.0.8.deb
-	sha256sums_x86_64 = 60c7d5105f19b06e6ef43b777bd81b34de0749ba7501bc1073d3ecfc0808a91d
+	source_x86_64 = zapret-gui-nodejs-bin-1.0.9.deb::https://github.com/AvenCores/zapret-gui-nodejs/releases/download/v1.0.9/Zapret-GUI-1.0.9.deb
+	sha256sums_x86_64 = 0005916a72d6d462bdbba27a73cd7d6cfb3384c7950f8e05ee35a84467d15df5
 
 pkgname = zapret-gui-nodejs-bin
