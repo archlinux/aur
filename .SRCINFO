@@ -1,29 +1,39 @@
 pkgbase = python-mamba-ssm
 	pkgdesc = Mamba state-space model: selective-scan SSM layers with CUDA kernels
 	pkgver = 2.3.2.post1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/state-spaces/mamba
 	arch = x86_64
 	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = gcc15
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
-	makedepends = python-packaging
-	makedepends = cuda
-	makedepends = gcc15
-	makedepends = ninja
+	depends = cuda
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = ninja
 	depends = python
-	depends = python-pytorch
-	depends = python-causal-conv1d
-	depends = python-triton
 	depends = python-einops
 	depends = python-huggingface-hub
+	depends = python-packaging
+	depends = python-pytorch-cuda
+	depends = python-setuptools
 	depends = python-transformers
-	optdepends = python-tilelang: Mamba-3 fused tilelang kernels
-	optdepends = python-apache-tvm-ffi: Mamba-3 CuTe step-function (tvm-ffi backend)
-	optdepends = python-cuda: Mamba-3 CuTe step-function (CUDA driver bindings)
-	source = https://files.pythonhosted.org/packages/source/m/mamba-ssm/mamba_ssm-2.3.2.post1.tar.gz
-	sha256sums = 104cc47e9101e5401a675fa2b784f2952b9b037f3b1dd83b5ac544394e95d028
+	depends = python-triton>=3.5.0
+	optdepends = python-causal-conv1d: optimized CUDA short-convolution backend
+	optdepends = python-tilelang: Mamba-3 MIMO kernels (upstream targets tilelang 0.1.8)
+	optdepends = python-apache-tvm-ffi: Mamba-3 CuTe step function (upstream requires <=0.1.9)
+	optdepends = python-quack-kernels: Mamba-3 CuTe helpers (quack-kernels>=0.3.4)
+	optdepends = python-cutlass: Mamba-3 CuTe DSL
+	optdepends = python-cuda: Mamba-3 CuTe CUDA driver bindings
+	options = !debug
+	options = !lto
+	source = python-mamba-ssm-2.3.2.post1.tar.gz::https://github.com/state-spaces/mamba/archive/refs/tags/v2.3.2.post1.tar.gz
+	source = optional-mamba3-dependencies.patch
+	sha256sums = a49423a64dfccc5c46d8ba6c0fb50a3a8e48eee3e4c65b880b9fad5ac47383c2
+	sha256sums = 73accc816d48a3d6a61759e7c94009e3fca54011938eb611db8017ae41c51e39
 
 pkgname = python-mamba-ssm

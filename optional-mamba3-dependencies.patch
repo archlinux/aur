@@ -1,0 +1,44 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 5c5c933..8521817 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -17,9 +17,6 @@ classifiers = [
+ ]
+ dependencies = [
+     "torch",
+-    "tilelang==0.1.8",
+-    "apache-tvm-ffi<=0.1.9",
+-    "quack-kernels>=0.3.4",
+     "triton>=3.5.0",
+     "ninja",
+     "einops",
+@@ -36,4 +33,11 @@ causal-conv1d = [
+ ]
++mamba3-mimo = [
++    "tilelang==0.1.8"
++]
++mamba3-cute = [
++    "apache-tvm-ffi<=0.1.9",
++    "quack-kernels>=0.3.4"
++]
+ dev = [
+     "pytest"
+ ]
+diff --git a/setup.py b/setup.py
+index b237d50..344ef87 100644
+--- a/setup.py
++++ b/setup.py
+@@ -399,9 +399,10 @@ setup(
+         "einops",
+         "triton>=3.5.0",
+         "transformers",
+-        "tilelang==0.1.8",
+-        "apache-tvm-ffi<=0.1.9",
+-        "quack-kernels>=0.3.4",
+         # "causal_conv1d>=1.4.0",
+     ],
++    extras_require={
++        "mamba3-mimo": ["tilelang==0.1.8"],
++        "mamba3-cute": ["apache-tvm-ffi<=0.1.9", "quack-kernels>=0.3.4"],
++    },
+ )
