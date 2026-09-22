@@ -1,6 +1,6 @@
 # Maintainer: wsmajt <kacpermusz@gmail.com>
 pkgname=opentracker-cli
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="CLI for tracking AI provider usage limits"
 arch=('x86_64' 'aarch64')
