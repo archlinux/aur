@@ -63,10 +63,13 @@ build() {
   export PKG_CONFIG_PATH=/usr/lib/pkgconfig
   export ZSTD_SYS_USE_PKG_CONFIG=1
 
-  # Clear Arch build flags that break bundled C libraries (mimalloc, libdeflate)
+  # Clear Arch build flags that break bundled C libraries
   unset CFLAGS
   unset CXXFLAGS
   export LDFLAGS="${LDFLAGS/--as-needed/}"
+
+  # Force standard system cc linker instead of lld to prevent symbol dropping on static C libraries
+  export RUSTFLAGS="-C linker=cc -C link-arg=-Wl,--allow-shlib-undefined"
 
   cargo build --release --offline
 }
