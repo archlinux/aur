@@ -1,7 +1,7 @@
 pkgbase = pyggle-git
 	pkgdesc = Python command line programme which generates a static HTML image gallery from filenames passed on the command line. It aims to do this one thing well and does not support anything else.
 	pkgver = r72.20251230.53e06ed
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://finalrewind.org/projects/pyggle/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = pyggle-git
 	provides = pyggle
 	conflicts = pyggle
 	options = !emptydirs
-	source = pyggle::git+https://git.finalrewind.org/pyggle
+	source = pyggle::git+https://git.finalrewind.org/derf/pyggle
 	source = patch_basedir_systemwide.patch
 	sha256sums = SKIP
 	sha256sums = 2c678752c1a51496cc535f74e41752be09c911989f11dd539870ca26226d420d

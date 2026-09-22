@@ -5,7 +5,7 @@ _pkgname="${_pymod}"
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=r72.20251230.53e06ed
-pkgrel=1
+pkgrel=2
 pkgdesc='Python command line programme which generates a static HTML image gallery from filenames passed on the command line. It aims to do this one thing well and does not support anything else.'
 url='https://finalrewind.org/projects/pyggle/'
 license=(
@@ -36,7 +36,7 @@ conflicts=(
 )
 options=('!emptydirs')
 source=(
-  "${_pymod}::git+https://git.finalrewind.org/${_pymod}"
+  "${_pymod}::git+https://git.finalrewind.org/derf/${_pymod}"
   "patch_basedir_systemwide.patch"
 )
 sha256sums=(
