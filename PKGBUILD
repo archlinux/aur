@@ -13,7 +13,7 @@ pkgbase="${_pkgbase}-git"
 pkgname=(
   "${_pkgbare}-common-git"
 )
-pkgver=0.0.0.4+9.r608.20251223.57f199e
+pkgver=0.0.0.5+10.r703.20260919.b1a78a7
 pkgrel=1
 pkgdesc="32 and 64 bit DOS command interpreters ('command.com'), e.g. for fdpp and dosemu2. Latest git checkout."
 arch=('any')
@@ -93,7 +93,7 @@ prepare() {
   #mkdir -p subprojects
   #ln -sv "${srcdir}/thunk_gen" subprojects/thunk_gen
 
-  sed -e 's|i586-pc|i686-pc|g' -i '32/makefile'
+  sed -e 's|i586-pc|i686-pc|g' -i 'djgpp/makefile'
 
   set +u
 }
@@ -128,7 +128,7 @@ package_32() {
   )
 
   set -u
-  cd "${srcdir}/${_upstreamname}/32"
+  cd "${srcdir}/${_upstreamname}/src/32"
 
   make -j1 PREFIX=/usr DESTDIR="${pkgdir}" install
 
