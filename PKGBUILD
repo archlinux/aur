@@ -1,6 +1,6 @@
 # Maintainer: Lumina <luminanao at duck.com>
 pkgname=xscp
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Interactive scp wrapper with transfer history, fuzzy matching, and TUI file browsing"
 arch=(x86_64)
