@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=clouddrive-decrypt-git
-pkgver=r1.b7472e4
-pkgrel=12
+pkgver=r2.0f89923
+pkgrel=1
 pkgdesc="clouddrive-decrypt is a standalone tool designed to demo how to decrypt files encrypted by CloudDrive2."
 arch=($CARCH)
 url="https://github.com/cloud-fs/clouddrive-decrypt"
