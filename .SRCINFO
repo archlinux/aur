@@ -1,6 +1,6 @@
 pkgbase = r-aplot
 	pkgdesc = Decorate a 'ggplot' with Associated Information
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=aplot
 	arch = any
@@ -13,10 +13,11 @@ pkgbase = r-aplot
 	depends = r-patchwork
 	depends = r-pillar
 	depends = r-yulab.utils
+	optdepends = r-cowplot
 	optdepends = r-ggtree
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/aplot_0.3.1.tar.gz
-	md5sums = 99bf048631e9f54cbc2b82c8da4a96e9
-	b2sums = b42bb67affc1307aa7c16792eb1e872823bc13e97e968ef9776d9311579a6d0c5475c2ec2e5a04c07869d9de89af8af76a42b7a43730060e59913cb257d948ba
+	source = https://cran.r-project.org/src/contrib/aplot_0.3.2.tar.gz
+	md5sums = 39aff02633725cab3b1039de7ebd7f3a
+	b2sums = ffd14a89df354d17f3009cd517ddd1db580ab4a625c1ab6db7dfbd03f35901e6100cc06961df7d4ba7296631396eac3f9877d8b723ffdc2af912ecd136cb8214
 
 pkgname = r-aplot
