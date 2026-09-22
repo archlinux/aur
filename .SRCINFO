@@ -1,7 +1,7 @@
 pkgbase = synthmultiviewer-appimage
 	pkgdesc = Cross-platform editor and viewer for VapourSynth and AviSynth
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/mysteryx93/VapourSynthViewer.NET
 	arch = x86_64
 	arch = aarch64
@@ -11,8 +11,8 @@ pkgbase = synthmultiviewer-appimage
 	noextract = synthmultiviewer-appimage-1.4.AppImage
 	options = !strip
 	source_x86_64 = synthmultiviewer-appimage-1.4.AppImage::https://github.com/mysteryx93/VapourSynthViewer.NET/releases/download/v1.4/SynthMultiViewer-1.4_Linux_x64.AppImage
-	sha256sums_x86_64 = e48ec3d8e4b1ad54ba5cb467b00238a780105b72e86090b9f4738e8b74db278c
+	sha256sums_x86_64 = 14230fddd14e8b36213e8b5a1a780d1ec95ad8de1bb4711a713b000f590cc80c
 	source_aarch64 = synthmultiviewer-appimage-1.4.AppImage::https://github.com/mysteryx93/VapourSynthViewer.NET/releases/download/v1.4/SynthMultiViewer-1.4_Linux_arm64.AppImage
-	sha256sums_aarch64 = e48ec3d8e4b1ad54ba5cb467b00238a780105b72e86090b9f4738e8b74db278c
+	sha256sums_aarch64 = 14230fddd14e8b36213e8b5a1a780d1ec95ad8de1bb4711a713b000f590cc80c
 
 pkgname = synthmultiviewer-appimage
