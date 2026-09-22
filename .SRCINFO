@@ -8,12 +8,13 @@ pkgbase = ruston-mail-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
-	makedepends = cmake
-	makedepends = ninja
-	makedepends = nasm
+	makedepends = clang
+	makedepends = lld
 	source = git+https://github.com/luiscuellar31/ruston-mail.git
 	source = ruston-mail.desktop
+	source = ruston-mail.svg
 	b2sums = SKIP
-	b2sums = 6b2d4f404feed96b8f6ecb6d20b0f59a69d2759f7ce28e331fc872c55a47413f673c8b91c2b25893f859dff72812da4ec35db5c034dc4c396bb51bb3d78f1fc9
+	b2sums = 2a2d02f79e0db80db80930b0362d7a4c743653ee11181a427213745452cc6bfc34d53bff1c3024fb31f039c10ccf49ea38e3fd575be79133fe2c16b0f048ba7b
+	b2sums = bba7a0fd138b674695b9a60f4b4f6060fb52cea1435aa12f5c8f2ba57ba54745ea9f5fada4cac25404b7291688c988510747c713521add6a149d37d5134254a0
 
 pkgname = ruston-mail-git
