@@ -4,14 +4,15 @@
 pkgbase='intel-ledmon'
 pkgname='ledmon'
 pkgver='1.1.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Enclosure LED Utilities'
 arch=('x86_64' 'aarch64')
 _uri="github.com/md-raid-utilities/${pkgname}"
 url="https://${_uri}"
 license=('GPL')
 depends=('sg3_utils' 'systemd-libs' 'pciutils')
-makedepends=('autoconf-archive' 'check' 'python-pytest')
+makedepends=('autoconf-archive')
+checkdepends=('check' 'python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/tar.gz/refs/tags/v${pkgver}")
 sha256sums=('4f626400e41ab1e4317b886db5b5df1afa517e8e4faa80fd4378fd22b0bcd055')
 
@@ -26,7 +27,7 @@ build() {
   autoreconf -fvi
   ./configure CFLAGS="${CFLAGS} ${DEBUG_CFLAGS}" \
     CXXLAGS="${CXXFLAGS} ${DEBUG_CXXFLAGS}" \
-    LDLAGS="${LDFLAGS}" \
+    LDFLAGS="${LDFLAGS}" \
     --prefix="/usr" \
     --bindir="/usr/bin" \
     --sbindir="/usr/bin" \

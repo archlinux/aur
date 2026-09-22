@@ -1,14 +1,14 @@
 pkgbase = intel-ledmon
 	pkgdesc = Enclosure LED Utilities
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/md-raid-utilities/ledmon
 	arch = x86_64
 	arch = aarch64
 	license = GPL
+	checkdepends = check
+	checkdepends = python-pytest
 	makedepends = autoconf-archive
-	makedepends = check
-	makedepends = python-pytest
 	depends = sg3_utils
 	depends = systemd-libs
 	depends = pciutils
