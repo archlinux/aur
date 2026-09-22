@@ -1,6 +1,6 @@
 # Maintainer: owe contributors
 pkgname=owe
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="High-performance wallpaper engine for Omarchy (mp4, gif, stills)"
 arch=('x86_64' 'aarch64')
@@ -12,13 +12,14 @@ checkdepends=('python')
 optdepends=('intel-media-driver: VAAPI hardware decode on Intel GPUs'
             'libva-mesa-driver: VAAPI hardware decode on AMD GPUs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/omacom/owe/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e5c10e60bdfaebed861a3b7515c691a5a78fc0fe3ab29c0e96d934eb1a957cf8')
+sha256sums=('93c88257111e36537c43a9fb6acc9a6b8fb1f6ba5149444e828d719a02a533cd')
 
 build() {
   meson setup build "$srcdir/owe-$pkgver" -Dbuildtype=release -Dprefix=/usr
   ninja -C build
   cmake -S "$srcdir/owe-$pkgver/qml-plugin" -B build-qml \
-    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_TESTING=ON
   cmake --build build-qml
 }
 
