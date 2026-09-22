@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=FluAutoClicker
+Comment=Cross-platform automation tool for mouse clicks, keyboard input and macros
+Exec=fluautoclicker
+Icon=fluautoclicker
+Terminal=false
+Categories=Utility;
+StartupWMClass=FluAutoClicker

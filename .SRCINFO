@@ -1,0 +1,27 @@
+pkgbase = fluautoclicker
+	pkgdesc = Cross-platform automation tool for mouse clicks, keyboard input and macros
+	pkgver = 0.1.0.beta.9
+	pkgrel = 1
+	url = https://github.com/Agzes/FluAutoClicker
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = gdk-pixbuf2
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = xdotool
+	source = fluautoclicker-0.1.0.beta.9.tar.gz::https://github.com/Agzes/FluAutoClicker/archive/refs/tags/v.0.1.0-beta.9.tar.gz
+	source = fluautoclicker.desktop
+	source = fluautoclicker.sh
+	sha256sums = 3b68d0285d5bff96b09cbb4e902931e759720313df8fd5223d675b06453103d7
+	sha256sums = 9060aebc80c5ff5c27a55a67a5ff5c848257861f0c9b0c2c466aeef355c83c91
+	sha256sums = fdfce925cfb6f90a647a5b87c6bea572f7ca85de6a0516ea2c40ddd3a339e8ef
+
+pkgname = fluautoclicker
