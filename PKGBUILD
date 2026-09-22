@@ -6,8 +6,8 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-vid.stab
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.1.2
+pkgrel=1
 arch=('any')
 pkgdesc="Video stabilization library (Android ${_android_arch})"
 url='http://public.hronopik.de/vid.stab'
@@ -17,7 +17,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/georgmartius/vid.stab/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('3fb59a96f6e49e2719fd8c551eb3617a')
+md5sums=('a91ff0221dd8ec1f85b2a80a07af4831')
 
 build() {
     cd "${srcdir}/vid.stab-${pkgver}"
@@ -48,4 +48,6 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
