@@ -1,24 +1,36 @@
-# Maintainer: Taha YVR <taha@noiserandom.com>
+# Maintainer: Taha YVR <https://github.com/tahayvr>
 
 _pkgbase=omarchist
 pkgname=${_pkgbase}-git
-# The pkgver is a placeholder; the pkgver() function will generate the real one.
-pkgver=1.0.0
-pkgrel=4
-pkgdesc="A GUI app for Omarchy (development build from dev branch)."
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="A GUI app for Omarchy Linux (development build from the dev branch)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tahayvr/omarchist"
-license=('MIT')
+license=('Apache-2.0')
 
-depends=('webkit2gtk-4.1' 'gtk3' 'libsoup' 'cairo' 'gdk-pixbuf2' 'glib2' 'pango' 'desktop-file-utils' 'hicolor-icon-theme' 'zstd')
-makedepends=('git' 'pkgconf' 'cargo' 'rust' 'nodejs' 'npm' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg')
+depends=(
+    'libxcb'
+    'libxkbcommon'
+    'libxkbcommon-x11'
+    'wayland'
+    'vulkan-icd-loader'
+    'vulkan-driver'
+    'fontconfig'
+    'freetype2'
+    'openssl'
+    'zstd'
+    'hicolor-icon-theme'
+    'desktop-file-utils'
+    'gtk-update-icon-cache'
+)
+makedepends=('git' 'cargo' 'pkgconf')
 install=${pkgname}.install
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}-bin" "${_pkgbase}")
 source=("${pkgname}::git+$url.git#branch=dev")
 sha256sums=('SKIP')
 
-# This function dynamically generates the pkgver from the Git history.
 pkgver() {
   cd "${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -26,15 +38,22 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}"
-  npm install
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${pkgname}"
-  export ZSTD_SYS_USE_PKG_CONFIG=1
-  npm run tauri build
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
 }
 
 package() {
-  cp -a "${pkgname}/src-tauri/target/release/bundle/deb/"*/data/* "${pkgdir}"
+  cd "${pkgname}"
+  install -Dm755 target/release/omarchist "${pkgdir}/usr/bin/omarchist"
+  install -Dm644 omarchist.desktop        "${pkgdir}/usr/share/applications/omarchist.desktop"
+  install -Dm644 assets/logo/omarchist.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/omarchist.png"
+  install -Dm644 README.md                "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 LICENSE                  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
