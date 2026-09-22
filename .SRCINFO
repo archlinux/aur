@@ -1,14 +1,15 @@
 pkgbase = ciyue
 	pkgdesc = A simple mdict dictionary with Android/Windows/Linux support
-	pkgver = 1.23.0
+	pkgver = 1.23.2
 	pkgrel = 1
 	url = https://mumulhl.eu.org/Ciyue
 	arch = x86_64
 	license = MIT
 	makedepends = clang
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = fvm
+	makedepends = git
+	makedepends = ninja
 	makedepends = patchelf
 	depends = gtk3
 	depends = gstreamer
@@ -16,9 +17,11 @@ pkgbase = ciyue
 	depends = libkeybinder3
 	depends = libayatana-appindicator
 	depends = wpewebkit
-	source = ciyue-1.23.0.tar.gz::https://github.com/mumu-lhl/Ciyue/archive/refs/tags/v1.23.0.tar.gz
+	source = git+https://github.com/mumu-lhl/Ciyue.git#tag=v1.23.2
+	source = git+https://github.com/hunspell/hunspell.git
 	source = ciyue.desktop
-	sha256sums = 785ec35fe90402165f75fa4179c3d4641e9c8b7dacd06185c27f261983e47b6d
+	sha256sums = 1cfa2dee914587cd93d60c166e0ee953a0e673f11c92329b6e5589128a2baa23
+	sha256sums = SKIP
 	sha256sums = 5a6214e368452ed4be188b7e74395f7f0e34f3101d109b7e814d6ac0a291b1cc
 
 pkgname = ciyue
