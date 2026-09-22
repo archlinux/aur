@@ -1,16 +1,26 @@
 pkgbase = vlmcsd-git
-	pkgdesc = KMS Emulator in C (for activating Microsoft products)
-	pkgver = r29.65228e5
-	pkgrel = 2
-	url = https://github.com/Wind4/vlmcsd
+	pkgdesc = Volume License Manager Service: KMS Emulator in C (for activating Microsoft products)
+	pkgver = 2604.r29.gbadb24e
+	pkgrel = 1
+	url = https://github.com/tfslabs/vlmcsd
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = unknown
+	license = LicenseRef-TheFlightSims_OSS_License
 	makedepends = git
-	provides = vlmcsd
+	makedepends = groff
+	makedepends = gzip
+	makedepends = patchelf
+	depends = glibc
+	provides = vlmcsd=2604.r29.gbadb24e
+	provides = libkms-static=2604.r29.gbadb24e
+	provides = libkms.a
+	provides = libkms.so
 	conflicts = vlmcsd
-	source = git+https://github.com/Wind4/vlmcsd.git
+	conflicts = libkms-static
+	conflicts = libkms.a
+	conflicts = libkms.so
+	source = git+https://github.com/tfslabs/vlmcsd.git
 	source = vlmcsd.service
 	source = vlmcsd@.service
 	source = vlmcsd.socket
@@ -20,4 +30,3 @@ pkgbase = vlmcsd-git
 	sha256sums = e791484ed6d747f4e17f004894350ef610215c94fe444bfa623755ce17a29e6b
 
 pkgname = vlmcsd-git
-

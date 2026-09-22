@@ -1,15 +1,37 @@
-# Maintainer: phariseo <phariseo@hush.com>
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Maintainer:  JerryXiao (https://aur.archlinux.org/account/JerryXiao)
+# Contributor: xiretza (https://aur.archlinux.org/account/xiretza)
+# Contributor: phariseo <phariseo@hush.com>
+# Contributor: ausbin (https://aur.archlinux.org/account/ausbin)
+
 _pkgname=vlmcsd
 pkgname=$_pkgname-git
-pkgver=r29.65228e5
-pkgrel=2
-pkgdesc="KMS Emulator in C (for activating Microsoft products)"
+pkgver=2604.r29.gbadb24e
+_pkgreleasever="${pkgver%%.*}"
+pkgrel=1
+pkgdesc="Volume License Manager Service: KMS Emulator in C (for activating Microsoft products)"
 arch=('i686' 'x86_64' 'aarch64')
-url="https://github.com/Wind4/vlmcsd"
-license=('unknown')
-provides=('vlmcsd')
-conflicts=('vlmcsd')
-makedepends=('git')
+url="https://github.com/tfslabs/vlmcsd"
+license=('LicenseRef-TheFlightSims_OSS_License')
+provides=(
+    "vlmcsd=${pkgver}"
+    "libkms-static=${pkgver}"
+    "libkms.a"
+    "libkms.so"
+)
+conflicts=(
+    'vlmcsd'
+    'libkms-static'
+    'libkms.a'
+    'libkms.so'
+)
+depends=('glibc')
+makedepends=(
+    'git'
+    'groff'
+    'gzip'
+    'patchelf'
+)
 source=("git+$url.git"
         'vlmcsd.service'
         'vlmcsd@.service'
@@ -19,35 +41,74 @@ sha256sums=('SKIP'
             '7ff86964df9796d30fe22c96b5ba843ef9f170d7a23c6e17565e312db59f20d7'
             'e791484ed6d747f4e17f004894350ef610215c94fe444bfa623755ce17a29e6b')
 
+prepare() {
+    cd "$_pkgname"
+
+    git log > git.log
+}
+
 pkgver() {
     cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+    _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|-g[0-9a-f]*$||' -e 's|-|+|g')"
+    _rev="$(git rev-list --count HEAD)"
+    _hash="$(git rev-parse --short HEAD)"
+
+    if [ -z "${_ver}" ]; then
+        error "Version could not be determined."
+        return 1
+    else
+        printf '%s' "${_ver}.r${_rev}.g${_hash}"
+    fi
 }
 
 build() {
     cd "$_pkgname"
-    make STRIP=0
+
+    local _makeopts="STRIP=0 VLMCSD_VERSION=${pkgver} VERBOSE=2 FEATURES=full"
+    export CFLAGS+=' -DFULL_INTERNAL_DATA'
+    export CXXFLAGS+=' -DFULL_INTERNAL_DATA'
+
+    make ${_makeopts} libkms-static
+    make ${_makeopts} libkms
+    make ${_makeopts} vlmcs
+    make ${_makeopts} vlmcsd
+    make ${_makeopts} vlmcsdmulti
+    # make ${_makeopts} unixdocs  # As of 2026-09-22, fails with `No rule to make target 'vlmcsd-floppy.7.unix.txt', needed by 'unixdocs'.  Stop.`, see https://github.com/tfslabs/vlmcsd/issues/43.
+    # make ${_makeopts} pdfdocs   # As of 2026-09-22, fails with `No rule to make target 'vlmcsd-floppy.7.pdf', needed by 'pdfdocs'.  Stop.`, see https://github.com/tfslabs/vlmcsd/issues/43.
     cd man
-    gzip -fk *.[0-9]
+    gzip -fk9 *.[0-9]
 }
 
 package() {
-    for unit in vlmcsd.service vlmcsd@.service vlmcsd.socket; do
-        install -Dm644 "$srcdir/$unit" "$pkgdir/usr/lib/systemd/system/$unit"
+    local _unit
+    for _unit in vlmcsd.service vlmcsd@.service vlmcsd.socket; do
+        install -Dvm644 "$srcdir/$_unit" "$pkgdir/usr/lib/systemd/system/$_unit"
     done
 
     cd "$_pkgname"
 
-    for bin in vlmcs{d,}; do
-        install -Dm755 "bin/$bin" "$pkgdir/usr/bin/$bin"
+    local _bin
+    for _bin in vlmcs{,d,dmulti}; do
+        install -Dvm755 "bin/$_bin" "$pkgdir/usr/bin/$_bin"
     done
 
-    cd man
+    install -Dvm644 lib/libkms.a  "$pkgdir/usr/lib/libkms.a"
+    install -Dvm755 lib/libkms.so "$pkgdir/usr/lib/libkms.so.${_pkgreleasever}"
+    ln -svr "$pkgdir/usr/lib/libkms.so.${_pkgreleasever}" "$pkgdir/usr/lib/libkms.so"
+    patchelf --set-soname "libkms.so.${_pkgreleasever}" "${pkgdir}/usr/lib/libkms.so.${_pkgreleasever}"
 
-    for manpage in *.[0-9]; do
-        section=${manpage##*.}
-        install -Dm644 "$manpage.gz" "$pkgdir/usr/share/man/man$section/$manpage.gz"
+    pushd man > /dev/null
+    local _manpage
+    for _manpage in *.[0-9]; do
+        section=${_manpage##*.}
+        install -Dvm644 "$_manpage.gz" "$pkgdir/usr/share/man/man$section/$_manpage.gz"
     done
+    popd > /dev/null
+
+    install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"         git.log README.md SECURITY.md CODE_OF_CONDUCT.md Contributing.md
+    install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/config"  config/*
+    install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"     LICENSE
 }
 
 # vim: set ts=4 sw=4 et :
