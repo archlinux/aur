@@ -1,7 +1,7 @@
 # Maintainer: Hong Shick Pak <hong@hspak.com>
 
 pkgname=cosmurgy
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Infrastructure mutator and state tracker"
 arch=("x86_64")
@@ -11,11 +11,12 @@ depends=("ca-certificates")
 makedepends=("go>=1.25.0")
 options=("!debug")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("5c20af7a4a0d9b748927a46e8ab57623c3cfb54771469b38b08486c1f9f6224a")
+sha256sums=("bf4ce469f1a25cb398383954ab578aaa3c20ae15975e7056b1d460a8cabd769a")
 
 build() {
   cd "$pkgname-$pkgver"
-  CGO_ENABLED=0 go build -trimpath -buildvcs=false -mod=readonly -o cosmurgy ./cmd/cosmurgy
+  COSMURGY_VERSION="$pkgver" COSMURGY_REVISION="dfb9da450c51eb0b4108ba58af3fe52726ae5afc" bash scripts/build.sh
+  cp bin/cosmurgy cosmurgy
 }
 
 check() {

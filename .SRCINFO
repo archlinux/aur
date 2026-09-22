@@ -1,6 +1,6 @@
 pkgbase = cosmurgy
 	pkgdesc = Infrastructure mutator and state tracker
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/hspak/cosmurgy
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cosmurgy
 	makedepends = go>=1.25.0
 	depends = ca-certificates
 	options = !debug
-	source = cosmurgy-0.1.0.tar.gz::https://github.com/hspak/cosmurgy/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = 5c20af7a4a0d9b748927a46e8ab57623c3cfb54771469b38b08486c1f9f6224a
+	source = cosmurgy-0.2.0.tar.gz::https://github.com/hspak/cosmurgy/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = bf4ce469f1a25cb398383954ab578aaa3c20ae15975e7056b1d460a8cabd769a
 
 pkgname = cosmurgy
