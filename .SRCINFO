@@ -1,0 +1,19 @@
+pkgbase = libvirt-iso-manjaro-kde-bin
+	pkgdesc = Official Manjaro KDE Plasma installation ISO for libvirt
+	pkgver = 26.1.2.260910
+	pkgrel = 1
+	url = https://manjaro.org/products/download/x86/
+	arch = x86_64
+	license = LicenseRef-Various
+	checkdepends = libarchive
+	checkdepends = squashfs-tools
+	noextract = manjaro-kde-26.1.2-260910-linux71.iso
+	source = manjaro-kde-26.1.2-260910-linux71.iso::https://download.manjaro.org/kde/26.1.2/manjaro-kde-26.1.2-260910-linux71.iso
+	source = manjaro-kde-26.1.2-260910-linux71.iso.sig::https://download.manjaro.org/kde/26.1.2/manjaro-kde-26.1.2-260910-linux71.iso.sig
+	source = DISTRIBUTION-LICENSE
+	validpgpkeys = 3B794DE6D4320FCE594F4171279E7CF5D8D56EC8
+	sha256sums = e34870d576fd3c2ba46d27eaaa566cf81802088c8c24bee0c8424a115ac9dfa8
+	sha256sums = SKIP
+	sha256sums = 536a7c2deb4b29942a0ef66b1becd9500c9954307096f49ae8a136470b65e33c
+
+pkgname = libvirt-iso-manjaro-kde-bin
