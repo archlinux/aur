@@ -1,6 +1,6 @@
 pkgbase = lyrune-bin
 	pkgdesc = Fast native QQ Music desktop client built with Rust and GPUI (prebuilt binary)
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/amtoaer/lyrune
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = lyrune-bin
 	depends = alsa-lib
 	depends = fontconfig
 	depends = gcc-libs
+	depends = glib2
 	depends = glibc
 	depends = libxcb
 	depends = libxkbcommon
@@ -17,17 +18,17 @@ pkgbase = lyrune-bin
 	depends = vulkan-icd-loader
 	depends = wayland
 	optdepends = org.freedesktop.secrets: persist QQ Music credentials
-	provides = lyrune=1.4.0
+	provides = lyrune=1.4.1
 	conflicts = lyrune
 	options = !debug
 	options = !strip
-	source = lyrune.desktop::https://github.com/amtoaer/lyrune/raw/v1.4.0/packaging/arch/lyrune.desktop
-	source = lyrune.svg::https://github.com/amtoaer/lyrune/raw/v1.4.0/crates/lyrune-app/assets/lyrune.svg
+	source = lyrune.desktop::https://raw.githubusercontent.com/amtoaer/lyrune/v1.4.1/packaging/linux/lyrune.desktop
+	source = lyrune.svg::https://raw.githubusercontent.com/amtoaer/lyrune/v1.4.1/packaging/linux/lyrune.svg
 	sha256sums = 91ef70cfb609f0b32808f0cd40004f6800f43a176cb26a5819628d16c4af9f44
 	sha256sums = 68913e1ef3f2c4be855b046d7ec69d21371653cff22d40803a90c42cbf231abe
-	source_x86_64 = lyrune-v1.4.0-linux-amd64.tar.gz::https://github.com/amtoaer/lyrune/releases/download/v1.4.0/lyrune-v1.4.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 59d4e18a43ef968823a74d7fd3bffad8c21b0b5dc0800439284c20010b62f2f4
-	source_aarch64 = lyrune-v1.4.0-linux-arm64.tar.gz::https://github.com/amtoaer/lyrune/releases/download/v1.4.0/lyrune-v1.4.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 8d9a15f0f16d6bc865c06b5f5cb643d248fbbc758cef9caf15b5538174bc072a
+	source_x86_64 = lyrune-v1.4.1-linux-amd64.tar.gz::https://github.com/amtoaer/lyrune/releases/download/v1.4.1/lyrune-v1.4.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 7a511da3217ba872fbed36076427182b244e0cef8b8a20845c392cd919cb3fd2
+	source_aarch64 = lyrune-v1.4.1-linux-arm64.tar.gz::https://github.com/amtoaer/lyrune/releases/download/v1.4.1/lyrune-v1.4.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = c2270769fea65382ddc49446a997dde7f132799b47bc0903b419dfa6014ee279
 
 pkgname = lyrune-bin
