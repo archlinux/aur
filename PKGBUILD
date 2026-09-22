@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=buildifier
-pkgver=10.0.1
+pkgver=10.1.0
 pkgrel=1
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=('buildifier-bin')
 # Bazel does not honor makepkg's DEBUG_CFLAGS, so the generated debug package
 # contains no sources and only a dangling build-id symlink.
 options=('!debug')
-_commit='0cfe520f674ae009835d8ec30a9c20199a7d8701'
+_commit='d12fe38eb8b1680838af70fe9a797feb9c3f71ba'
 source=("${pkgname}::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 _BAZEL_OPTIONS=(
