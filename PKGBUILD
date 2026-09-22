@@ -3,8 +3,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-zlib
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 arch=('any')
 pkgdesc="A compression/decompression Library (Android, ${_android_arch})"
 url="http://www.zlib.net/"
@@ -18,8 +18,8 @@ source=("https://github.com/madler/zlib/releases/download/v$pkgver/zlib-$pkgver.
         "0001-Disable-versioning.patch"
         "0002-Fix-CC-definition.patch"
         "0003-Fix-missing-symbols.patch")
-md5sums=('5e6af153311327e516690d300527ec9e'
-         'c2d3fe1aba79ec3e75758b2f6478c980'
+md5sums=('be8a129ec5d60c5084911fd7ea16d84e'
+         'ebb25b85a3a53c1fbc03df4a7a6791bb'
          '9426b0365165dfa868c905825c48ef8e'
          '947d7215f8cfa3c579b4ba47bcd0a6d5')
 
