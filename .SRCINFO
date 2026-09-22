@@ -1,7 +1,7 @@
 pkgbase = ferrumpix-bin
 	pkgdesc = Desktop Photo/RAW-Editor, Viewer, Gallery, Immich and Nextcloud Client in one App
 	pkgver = 0.9.48
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Bitpainter75/FerrumPix
 	arch = x86_64
 	license = GPL-3.0-only
@@ -21,12 +21,12 @@ pkgbase = ferrumpix-bin
 	optdepends = dnglab: convert RAW files to DNG
 	provides = ferrumpix
 	conflicts = ferrumpix
-	noextract = FerrumPix-0.9.48-2-linux-x64-aur.zip
+	noextract = FerrumPix-0.9.48-3-linux-x64-aur.zip
 	options = !strip
-	source = FerrumPix-0.9.48-2-linux-x64-aur.zip::https://github.com/Bitpainter75/FerrumPix/releases/download/0.9.48/FerrumPix-0.9.48-2-linux-x64-aur.zip
+	source = FerrumPix-0.9.48-3-linux-x64-aur.zip::https://github.com/Bitpainter75/FerrumPix/releases/download/0.9.48/FerrumPix-0.9.48-3-linux-x64-aur.zip
 	source = io.github.Bitpainter75.FerrumPix.desktop
 	source = io.github.Bitpainter75.FerrumPix.png
-	sha256sums = ee378b4093414ddf1d2fe009c9d8e17090e496efff2054a6a035af31731b808a
+	sha256sums = 8e5c479fc0770b7fde7f8ecc0ed24a059d4794923258575584e651e5bad98e30
 	sha256sums = e2b596afb3471c36194d50905f0f158f03dd340fcf0f788668bf37204eb7c2ec
 	sha256sums = a674c4fd6cf2221a4b8a5d29922ce0a17ab4aa7ffdc7a4976e781bc9ebf194eb
 
