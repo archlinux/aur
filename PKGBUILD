@@ -106,8 +106,11 @@ check() {
   # Headless suite: compositor/GPU qualification belongs to the real desktop
   # smoke test, not an automatic build. Keep test state out of the user's home.
   mkdir -p "$srcdir/check-home"
+  # The Windows installer is not packaged here; its source contract belongs
+  # to upstream's Windows release checks.
   env -u DISPLAY -u WAYLAND_DISPLAY HOME="$srcdir/check-home" \
-    QT_QPA_PLATFORM=offscreen python -m pytest -o addopts='' -q
+    QT_QPA_PLATFORM=offscreen python -m pytest -o addopts='' -q \
+      --ignore=tests/test_windows_installer_contract.py
 }
 
 package() {
