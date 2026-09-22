@@ -1,11 +1,11 @@
 pkgbase = libvirt-sandbox
 	pkgdesc = An application sandbox toolkit
 	pkgver = 0.8.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://sandbox.libvirt.org/
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = gobject-introspection
 	makedepends = intltool
 	makedepends = rpcsvc-proto

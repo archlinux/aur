@@ -3,11 +3,11 @@
 # Contributor: Radostin Stoyanov
 pkgname=libvirt-sandbox
 pkgver=0.8.0
-pkgrel=6
+pkgrel=7
 pkgdesc="An application sandbox toolkit"
 arch=('i686' 'x86_64')
 url="http://sandbox.libvirt.org/"
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=(
   'libvirt-glib'
   'libselinux'
