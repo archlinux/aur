@@ -1,15 +1,16 @@
 # Maintainer: Romain Bertrand <romain@doxin.net>
 pkgname=terminalist
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A terminal-based Todoist client with modern TUI interface"
 arch=('x86_64')
 url="https://github.com/romaintb/terminalist"
 license=('MIT')
+options=('!lto')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'sqlite')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/romaintb/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('44968cd6a0dbb023309a3b6c5ed5404472377621b1f17376504bee76cfba07fe')
+sha256sums=('25fa07b954e6ec3e93b1d6430a1d171adef183a598ba05e8581b6b685abcb041')
 
 prepare() {
     cd "$pkgname-$pkgver"
