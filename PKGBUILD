@@ -7,8 +7,8 @@ pkgname=(
 	'frida'
 	'python-frida'
 )
-pkgver=17.17.0
-pkgrel=2
+pkgver=17.18.0
+pkgrel=1
 pkgdesc='Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers'
 arch=('x86_64')
 url='https://github.com/frida/frida'
@@ -25,6 +25,10 @@ license=(
 	'LicenseRef-Sqlite'
 	'LGPL-2.0-or-later'
 	'GPL-2.0-or-later OR LGPL-3.0-or-later'
+	'CC0-1.0'
+	'PSF-2.0'
+	'LicenseRef-fdlibm'
+	'LicenseRef-Valgrind'
 )
 options=('!lto')
 depends=(
@@ -44,10 +48,12 @@ depends=(
 	'openssl'
 	'sqlite'
 	'systemd-libs'
+	'zlib'
 )
 makedepends=(
 	'brotli'
 	'cmake'
+	'frida-v8=10.9.42.r20260120.192353.a07af892'
 	'git'
 	'go'
 	'glib2-devel'
@@ -69,13 +75,13 @@ makedepends=(
 	'vala'
 )
 
-_releng_commit='c9cc18138b364f691573c695e1fe47ddc4c56f26'
+_releng_commit='963fe3826f861a7d844d235957f2f13738e3a73b'
 _meson_commit='6620128a0fc86218dd8d2843c7e9a3513772448e'
 _tomlkit_commit='911cccd630965ff423316e25b4685ecf7df0ec0a'
-_frida_core_commit='c812943c457376c906802f7bb79d13c67a6e4d22'
-_frida_gum_commit='ddc10c5559cbb41a3dd72866bfba6ff3945ffa5c'
+_frida_core_commit='0602e5dca4c9d7be6098fc319edf978724dabeab'
+_frida_gum_commit='22e077120358a49b26e32110a6e2b8e80f1ed7f1'
 _capstone_commit='d536b1577fd033a31d75f48fd183aa425256cc18'
-_glib_commit='790ffa82e80d99fba8a3db494e46f907d560893c'
+_glib_commit='129e8d998936cdd47be41d25d3ffd1294c26a920'
 _glib_networking_commit='ef47b1a09cf8c1875f181bcf901643689a56d12f'
 _gvdb_commit='0854af0fdb6d527a8d1999835ac2c5059976c210'
 _json_glib_commit='1a39cbe151b02c4192987c8fcc98997a59db2154'
@@ -84,23 +90,23 @@ _libdwarf_commit='61ff154ae803d2b0202dbc1bf385cda1ac3ece54'
 _libgee_commit='ad17ed847039469fcc2dc711ecfee2bbf7d2bf87'
 _libnice_commit='9a3da6e3e5bbcf935fd85b6b8557ff8c7dd9032c'
 _lzfse_commit='5cfb7c86919d3c2c636d0d7552b51855a611ba1c'
-_quickjs_commit='e05ed9f327d382f29ac8a854b0c3faa0dff87716'
-_tinycc_commit='96e338ddfc6b1b409cd557356cadb3cf0d590d7b'
+_quickjs_commit='fd4842d54368a52d44dc3913df291ea82ca6174f'
+_tinycc_commit='3da7432bebd348bf16cdc7a22c3717b4f22946af'
 _vala_commit='172348fa9123ff4a95d541c5f9e56837434c4b6e'
-_frida_python_commit='1cc0bcae641053fc08ec4433dc2118973389b5d2'
+_frida_python_commit='aee40b044d42379bf918f142b0b1eb97bb1a4895'
 _frida_bindgen_commit='df17879d92d2700a7f1228a03271ba07e2fb579b'
 _libusb_commit='ffff4bdfe8faa38cecfad5aab106cae923502d55'
-_lwip_commit='a9f759897f26347c1a41d8d2a6d3a89aba9ce57b'
+_lwip_commit='9122f0d0006b7990c0f9d0c58506cc454f6a1f49'
 _usrsctp_commit='377fecfe06bb766c69cc0e1e1f6d5c72cf7704e6'
 _sdk_version='20260717'
 _sdk_zlib_commit='171a3eacaea8b731ef1fc586e7777b77742e2a1d'
-_sdk_libffi_commit='4b75d8a1d9cf401d8a2fa16619938637ea7e7afa'
+_sdk_libffi_commit='2b42587b9b5c8f4ab4144b615014e20d9e4d396f'
 _sdk_pcre2_commit='b47486922fdc3486499b310dc9cf903449700474'
 _sdk_elfutils_commit='1284bbc128473aea220337685985d465607fbac8'
 _sdk_xz_commit='e70f5800ab5001c9509d374dbf3e7e6b866c43fe'
 _sdk_brotli_commit='01d9e2922ca878965ebcd71ee8965d2a7aadb47a'
-_sdk_minizip_ng_commit='dfc1ccc070ff7bb50726c80215cac515253a8ba0'
-_sdk_sqlite_commit='9337327a50008f2d2236112ccb6f44059b1bafbd'
+_sdk_minizip_ng_commit='3a87bc9dedd9d1ece0845632a80d6c359e750d75'
+_sdk_sqlite_commit='ef9edc77c069f6824bc88352a437f00aabef6e11'
 _sdk_libunwind_commit='4d0abea0effd3c80916e70abe38c2a6156596f05'
 _sdk_libpsl_commit='b76c0fed2e27353d5fbb067ecdfdf76d2281eb91'
 _sdk_publicsuffix_commit='06a4956ac640e9f93499fda6b2113846687adfb2'
@@ -110,6 +116,11 @@ _sdk_nghttp2_commit='ae13d24ea59c30e36ca53d1b22c4e664588d0445'
 _sdk_libsoup_commit='4fd67869310b9de8fe2947bc8504ccbcf1abf285'
 _sdk_openssl_commit='fa60a1c8c704e4ca0cc0dcb289c3be1fea1b50ff'
 _sdk_v8_commit='a07af892420dfd873b33bd4ce4ba9d963072e1b9'
+_frida_v8_commit_file='/usr/share/frida-v8/commit'
+_frida_v8_licenses_file='/usr/share/frida-v8/licenses'
+_frida_v8_licensedir='/usr/share/licenses/frida-v8'
+_frida_v8_lib='/usr/lib/libv8-10.0.a'
+_frida_v8_pc='/usr/lib/pkgconfig/v8-10.0.pc'
 _compat32_zlib_pkg_commit='aba4401af6afa48804f1d592f8e65f8e3d7f9a06'
 _compat32_pcre2_pkg_commit='36a926cf8f06655673e318ef6198e75359ed7f23'
 _compat32_libffi_pkg_commit='338f9ff7682d4e039cfadbcb8cfcd15f9de189a7'
@@ -167,8 +178,6 @@ source=(
 	"sdk-libsoup-${_sdk_libsoup_commit}.tar.gz::https://github.com/frida/libsoup/archive/${_sdk_libsoup_commit}.tar.gz"
 	'sdk-libsoup-skip-chunked.patch::https://gitlab.gnome.org/GNOME/libsoup/-/commit/1e9d2b827d97fa6b9925d697b371c0000b051c6a.patch'
 	"sdk-openssl-${_sdk_openssl_commit}.tar.gz::https://github.com/frida/openssl/archive/${_sdk_openssl_commit}.tar.gz"
-	"sdk-v8-${_sdk_v8_commit}.tar.gz::https://github.com/frida/v8/archive/${_sdk_v8_commit}.tar.gz"
-	'sdk-v8-gcc16.patch'
 	'sdk-relocatable-paths.patch'
 	'frida-releng.patch'
 	'frida-core-arch.patch'
@@ -203,14 +212,14 @@ source=(
 	'compat32-libelf.patch'
 )
 b2sums=(
-	'583bd0d5cc30dd84d8c6c4f0808ba1a7324047f9feb1e4b86d1e7f252be18e79957a399e1bf051c31e9592b540bd2e24e8a227bad35473ccee3a6b01079dd9b1'
-	'a427f2d003b20241cab84564e00185a6bab0f970a32375c931e627b73a68c3f91b0439367d099d618af81f07af64df219d15e2952fb5876685e50cf44c6a0ebd'
+	'dc59de8ae8da09cf3f651918c2f6ad83e434262b9946bcb27e481b4a53c5adabe8bcc1c4ca82b5a11ff473996baae46a0a637004bf04c646edfe7460fee22db5'
+	'eb6262ca189074fea516133f3b1484fed9fc768ef42d56cf1d5e8ed0e9676ee052d68461f720bd5269fdaa2c4fc4337a1f2936781e2fe0f757039d9b37561977'
 	'1538b3360ce41fb884ceb4b8627689ab8420468b666b3ddbc98c619589e4edea8e9784aa5059899eba005d2a2b6205e6d1d6153960b7026713510eef9fc54bf3'
 	'4127ac2a39b8e4aaf612b8e0c54d40e87e8a175c408ae1d427333cd7c0fa932d9122f2af01ab2eaad737a8234034c7fc906208cd6241e18918cf9c5ee25f43e9'
-	'1c7252d80571b4b94cbdf66735106d2d4b7e98a07dae15c7bb2d00f24d2a572a4fccbc342f1c7320390e991f78b3fc77af88487639e64b41f5d32b2f9b813359'
-	'c4c05793a29adfbafba7313c5ea304c01799c2a40229b5d1b42f23f008683995e3285a6ccc4ef138542542afc4eba227cc770744e12f6563f79434cc166b939a'
+	'576c6d42a580163ce26037df054b17a3121a20f1373d0c84503513984d98f3514d95de00be058fd4a40cee79493b572ee499425e1736b734586ad3379257ed6f'
+	'1c6b55660e63b40decd6f761ab71947e7c7d84d9a2895afc23266ccc69d10e8ccc27657f252716012804591c90d0aed3d1e817bb0d2bad3f212e99d93447c712'
 	'31ca08f88cdc0545d32de7e6b06fc6d292729f7368a77e9a7b45688c7d2f5bf99f339970fe1feb9902555ddee28950cc1ef3e39eb7bc49e6febafeacea825eee'
-	'8dd7ab20d53ea03df8b939611a4bd7b6d165bbd659eab7ddaae8ed19c55181f571a322771e91beaea619cf13a02e7dec6ed4d8959cc54d3dda4dfcd3f36c523f'
+	'212eba0904d56ebd8b6500687aeed89caaa90a5f7730bafaca2ad75a50a8b21fa24b93b34833f7d6bb03622a2646c201bea07837acbd8e557f0d947b807ade20'
 	'f6c7c429f6b2f51cba67945c2a23d3521d7c581ac6501ed11602fa3f4d41f7d8047b19858d163c96b1dd67e2d7e1cb8e8b330c0080e8a681468a4f6c0aa2f1a3'
 	'6f0dc922a7df8bcbf98600a152b17e8e20ff6a3d0531fbe41475a58159cde99a4045e733f9d3548e4b3302fb23019ef4975dd48b040a4e97edf6429235d2cfe2'
 	'69f082cd148c83015362af4ea1e64d72a4b37badd95213f9c43339333d2771bc5f646b60f8da0f6dd345d4dd23f336c4620a211027a8cfa21b0bf4a6b40001b6'
@@ -219,23 +228,23 @@ b2sums=(
 	'f78657c43cd94dc191a422e7a124eb7c24f72d02b13e065246bcc329db3fda3aa5366c1cdd7576d6a7770204b6061939886a77523c63b7b832453eccd7ea641a'
 	'884738e164b04edcd09622440863bd856633749e28f42393143155767e25a5132b9fb3448929cf8f3bdf21e9b714d727f1b82fcff550ce9fe948a14f91cb8c4e'
 	'2477febff4fc1fb3f0897001f3f17d57946ae451469f9ca61baf3e5ab7f8b6bf7472c45a5841384512e557be59c15a7f09d39975c0d785a40fdc82158769c8c8'
-	'948a5a0e8339069e3e646d974af956ff75545a243089102b686358b07bc3678c778b68f2fd2565d32c0b654c63d88ef26e09f4e0f6d35af71552cb7f826bdb74'
-	'c782fea3d5d47533e57542dafbb76946f396a19135b6fa485760bcae0a0f452b7a04fc3a522b8882a4f64098f3247e1c94fa9e12de5b73a6f47fa52beb422a5f'
+	'a70d24d36b0e8b3175bb0ca897265517bba68967a67db5cbe29f6c411ba587c1da7765d6d0a5bfb84560129622a20319bba00c91e1f7d9c8d04e1ada6c5aba76'
+	'02baa51cee42221d8653aaab2f895faeaeed52fa4a4e38c8aab0f0dab00377696521cee860494ad5465a7104078a5262c9d0537f656af9e5821e3e55a2aa071e'
 	'd058bde27c8f89883de05a0229e3f4d83c19abc61e7db752bb4d43f6c99f0346ce962ca4ddae2be7ae1a6ededd4c8cf0b9ea4845e5efb2db9af8eda876903274'
-	'c301569e499896be65e92d57536cb85dcdf38a6c61520d86b450d1c63c5acd7b7c7f6d43834469f4244c329d652abcf1fd9212bcc686c1cca68ca7070e6a6d91'
+	'f044eb324718e2603bbed7a2effcb806f6e5e0e1bc55a6e5d9d35c7a69c4dce7d6b74cfbf01a9d9a60c21d34d979da216420d3b8c1246c7cd5ee516b69f8a87b'
 	'9b4e044bd74b8522b789d4026d642299b92e0becd9e5d1ec4ed7845637d864643c786001e1ec7b1085efeadea1aea931b084505796cf6fce4799d5ba8f8cbc53'
 	'11a0be3615a0438b16a2989de8ab8b7e6a5737847fab7e895333b0720837b60b2b53c0883d3721456a4073ae4fae8220c7931b6742281f152d8c59c167000462'
-	'6f4797662e66814dc178d365391a0370914bdefc05751e36ca6071fceba70ed1ac46fc7f47fef705347bf4a4221acee0df27e14e7032cbce95424a0ef2cc678e'
+	'c533aa9efdff9c626af5457d67d7d18bf2a06742c77f8e4cdc59bcd5e5bddb56a4dd423507620d4822db4a5c421d440e32157c00248cf1404f4055a89ade1d57'
 	'303b11566e3145c729aaf07a8585c1b3a0c8d39421c7ff378b789e1a1b57c33fcc0a280e2c87065eb643f7f2d8b840de6f7595c0bd32399fa67f7e0395ca9d27'
 	'e9c192d82ac859f3ccf4338ab30fd9e40009263efc233f889a777a2b12979344a1f505a8109179d26c8327c989827bf15ad8b41f2b4d4c95eadb20ed8fd5d6c2'
-	'9b674f56ffaba9bf8cb223c0b71f56fcfed225c33ba6e156c3290352180ece53988fc15f9a81ccf79b1da920a3b2e44657f505c23b4f81c601c51d498526b6e2'
+	'553523a1a2a58bc12dd87f938d038c3a3374ba255bc8214dff5ce30d776a9d8c450bc82f1487c284fe560d06d6a57b334b542739d5ef006d2b20b7cc537d88e8'
 	'e0ff54efb256c8ecfbdccd05c9ce3ec6715766835eb4942025949d973dca987f5cda1f7472409df0e59f3e948ffb38d7ca6e01bb9734b09348d19d181aaae477'
 	'63cee68d27a68d2fec858971b1e147e53bbef0349693da4652d85637113154659ddb0623df46134d16d0676d215fa91a93c564863a8bd441b4cf2f1a2352b60e'
 	'd03968c9826e952f97c634da0f2ca14fd3cd7faf80eb40e6e1d13ad02d8e49f10711f65856065b6f38fb02cbac2f0e836c96cfa70c405f467a2ab47b9151e18a'
 	'8778c4209acee501d15ab210f57ec2cf25aefe88238e21c5f655f86dd4b0f047950ce60847a1ce06e752e8b95a557a026e0d9f5c5ab529c72b75658f924c97fc'
 	'db92481ab7208a18637b14d01e5ced99dceccc26516a74057f1e97e0e067f2c78346eedc2ce854a68bee56b5721705f4ced9271e32a76dd1541246a0cad0f9e6'
-	'0a512a75226327372a55c72a2aa16d19461a9b62880ca5b31ab134bb861be80812b57ee1685caa9aa211500eae55bcde2a1120b22e22270148980a06c2763d5b'
-	'0cc182fa8227c7e4008dfdc91f492084c27b270b69419dcd728b90a066f9ca0e20fe3a1e3cee471b36e274c70728ca4c129c5ee45d02e5eb984bda4d192bfd10'
+	'd84bcf994d36dfb434a4955cb30597b65b525caa25ed0414d7d169b69e96ca5200fe33d101d42add5c93c7a694f02fa003c34f8367d1ee7e96e66535851c6707'
+	'f7b8b4438ee75d32349e92d59a57e563470935f70382cbc8057f2da996a27b6511a95707329c1c1bb43527c4aae504c9d1aa28f5544c8909dad55030787f8aba'
 	'9c4aaabdf97041669d74e7e0599e8384e23a4a6da6614cc3b3e082f4dcf0a158540e2fea4b859dbae325d685d14529e0459804abe4cbe773e5c4f6df233bb6c2'
 	'4d14d92e45d745e7f1025352c4f44cf492b6eb31ed45c3ee53e6861541edfa03c0ae650e3715665e19d879b6b1171acbc443b161dfacb295882d695da852eb62'
 	'9a9fbf2b295ede59b45a8d88ad30dca98d17874eede72af811fd3460c75b61cf2a15691f23941e07f852bb82db00110a726a1b443317a5bf6460e9c30c8e391f'
@@ -245,12 +254,10 @@ b2sums=(
 	'eb2babf107878f87347c542daf84dfc2bb548807d6f015277717f4beb110f381d11d2e6926d2d36932f98b3ea49e1752986c495d3c449ab558d989f9b240a964'
 	'b97a4daae1e65294f378c9f2a559eb3620ed2b2e6d1c01860f63c88b915eafa0afa4d50018ba834240503485e9fb29e29087b2c55215727bce1cf1c24b15077f'
 	'30409e02626d886dd1e976ed3a074039c8cb58030b1e74e6b29209d76ed8c38952a2771077c26433575728d64abc8f1888282d19dd964de3f29be3d2fa6e8e39'
-	'c8917bd0643b4b22c95e57c0eb411f048ab7630a92ed54c3bd97244b31e42bc56b68766ac34ce1b77152b15c4da7195cc9e093252c3a1a0ef679a88a437ff3c8'
-	'b12192f399a09598a6c49cf82dae81bdce62f9e621233eda650ce585fc84998dca05444926e6749c65d12386ac06240bed1e886c107ade4ba0f2032087b4d729'
 	'626b745ad1e6e40d443c26712b791ae44af732cbaf97c6baef066d3c88d64811e3e923cd3f85375687af1c186092cbb971cf983b267bdea81858d786395adb7a'
-	'7d4c652d381f315c675fed49e81580c803479c90f131204709769d1e8ba94774b83d464ee832c3e2f560a2304f5ce2f72dd6740e987c89d7c241608151af98ae'
-	'242c94ad87f147fe337575e7639dae7c486e6b8a9c089dea2fd67fcd496e076165afaba3003652f2a9d4da4b49d47273852b7e6753d3e527bc65d56ebcf3dcd3'
-	'b83ccfa39230231b4fddaf914eb20648f23352e137ed20e9978f9f3c4349431974cad63cfb30925b3e5fd9eadb631beb2b44ec2023ee1c02ce85f6616e17d893'
+	'44cf42d2e45b12567b94318f329a11559b4ee6341ae4ce512889871169571591504faf6d24f356edc91b52dcec3659e7121cc474786b52ef12892b019a4ed42c'
+	'4690cc029b269ed47127ed63a418e90109de977998d6a3109a3933e40ddd094443e430c42468f231fef1f9decdad79c8c5c60ca5435f877bcb40944f40c8add2'
+	'b1c3d3c922e35b8205913cae4de6a6862aa166504b8cd4751ae4a387978bed508aaba542c2a7c1f6a6258c8f8a2c7aaf97105b872e09f83dd99b2566369e4c0e'
 	'7ba008b86fd730eacd9868b66ce4e132719ef3976b92f5c035a7e5308368724eb3fadac7b051c76ff67daca37a59a16cb22cb1752ba4048e2ecc5ee2870f180f'
 	'5a2fa0418c540d8082c622b9db8534d5878ed30fbe817f01979e5773abaa475740b3f8d2b5f1af3caf7c43701af9c41113e5e5da7080260a43608e8260def01f'
 	'd6f6dee0b4abce002222d6e406934d4d43b4c261a61ce1092d8435eba4509d693bd2e278e06f0a5d89cacd5d6a1f78cea7cab225b700c431a14676a00d3f0cec'
@@ -269,7 +276,7 @@ b2sums=(
 	'7e5d90c787f4737d035cad67a0fa54de77be81e8a971a790c0e5e1ae384798a325eb9bb26f4b8703c5b30681b4165ea8d4c080e4c3455a3842f8b2529f3a998e'
 	'1225dad32ba798670a8a3cf2721336101d44ba7b4fd5e468e0c7966407c2a3ab171953c16c9b77eec35a978583e9162aa194e4e8608e27bbb4acc0f8c9299d8d'
 	'f13b67bb284ae3e1d558d32d2289efeee1ab48dd41b5f596647ae28fbd07f57b01f2586c581dc0636f381d6d64f5715f8757b9461a16510ae507df4f638abef2'
-	'628914bf5b1f5eb74a71bf5e32838d81514e75bcca02b61da5278f7d233274535275b31294147f07a990c0cae0f8de5b2d5cdaa706c5b6c4914435dbc82c797b'
+	'4c8482c9b6bc39f6e432ec8b1003876a3f61fd06fb97d249f749ee2556fa5cd42d870a8e1560512b22e7b4a83f9f6061b65930dcfe30bd0426cc2709b4575f6b'
 	'c28644068415ec063cc0ea52e4cc8bb01db4eda5ea5305174f5b2a7b6deb5413f3356b44326ff4fcafd8a12fdb2db43f8afeb81db2dce2c22f64e91663529ec6'
 	'a45e9e27d6e5f4af676fd2cd385105c85dcd88f60f4c40e04926d4b31ec444aa74ad7d1a67c6fb8bd952de302a3984adc8f9e302b84a030b5a86e3cb62e03117'
 	'3325f7ccc9cc079507778bda8d9497929b0ecd94eec63fb48138c83f281532bd3c90d85851776cd097c4f641123db5d0a9e1b41db0db888143f2fcca2c809ac5'
@@ -395,6 +402,9 @@ _build_compat32_recipe() {
 	local _name="${1:?missing recipe name}"
 	local _commit="${2:?missing recipe commit}"
 	local _compat32_sysroot="${3:?missing compat32 sysroot}"
+	local _jobs="${4:?missing job count}"
+	local _ninja_flags="${5:?missing Ninja flags}"
+	local _cmake_parallel_level="${CMAKE_BUILD_PARALLEL_LEVEL:-${_jobs}}"
 	local _recipe_dir="${srcdir}/lib32-${_name}-${_commit}"
 	local _nested_builddir
 	local _compat_cflags
@@ -411,6 +421,8 @@ _build_compat32_recipe() {
 		unset PKG_CONFIG_LIBDIR PKG_CONFIG_SYSROOT_DIR
 		PATH="${srcdir}/compat32-bin:${PATH}" \
 		FRIDA_COMPAT_SYSROOT="${_compat32_sysroot}" \
+		FRIDA_COMPAT_NINJAFLAGS="${_ninja_flags}" \
+		CMAKE_BUILD_PARALLEL_LEVEL="${_cmake_parallel_level}" \
 			PKG_CONFIG_PATH='' \
 			CPATH="${_compat32_sysroot}/usr/include${CPATH:+:${CPATH}}" \
 			makepkg -d --noextract --noprepare --nocheck --noarchive --force \
@@ -424,6 +436,7 @@ _build_compat32_recipe() {
 }
 
 _build_compat32_sysroot() {
+	local _jobs="${1:?missing job count}"
 	local _compat32_sysroot="${srcdir}/compat32"
 	local _compat32_bin="${srcdir}/compat32-bin"
 	local _glib_pc="${_compat32_sysroot}/usr/lib32/pkgconfig/glib-2.0.pc"
@@ -432,11 +445,17 @@ _build_compat32_sysroot() {
 	mkdir -p -- "${_compat32_sysroot}/usr/include" "${_compat32_sysroot}/usr/lib32"
 	mkdir -p -- "${_compat32_bin}"
 	ln -s -- "${srcdir}/frida-pkg-config-32" "${_compat32_bin}/i686-pc-linux-gnu-pkg-config"
+	printf '%s\n' \
+		'#!/usr/bin/bash' \
+		'read -r -a _ninja_flags <<< "${FRIDA_COMPAT_NINJAFLAGS:?missing FRIDA_COMPAT_NINJAFLAGS}"' \
+		'exec /usr/bin/ninja "${_ninja_flags[@]}" "$@"' \
+		> "${_compat32_bin}/ninja"
+	chmod 755 -- "${_compat32_bin}/ninja"
 
-	_build_compat32_recipe 'zlib' "${_compat32_zlib_pkg_commit}" "${_compat32_sysroot}"
-	_build_compat32_recipe 'pcre2' "${_compat32_pcre2_pkg_commit}" "${_compat32_sysroot}"
-	_build_compat32_recipe 'libffi' "${_compat32_libffi_pkg_commit}" "${_compat32_sysroot}"
-	_build_compat32_recipe 'glib2' "${_compat32_glib2_pkg_commit}" "${_compat32_sysroot}"
+	_build_compat32_recipe 'zlib' "${_compat32_zlib_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
+	_build_compat32_recipe 'pcre2' "${_compat32_pcre2_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
+	_build_compat32_recipe 'libffi' "${_compat32_libffi_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
+	_build_compat32_recipe 'glib2' "${_compat32_glib2_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
 
 	[[ -f "${_glib_pc}" ]] || return 1
 	sed -i \
@@ -444,15 +463,15 @@ _build_compat32_sysroot() {
 		"${_glib_pc}"
 
 
-	_build_compat32_recipe 'xz' "${_compat32_xz_pkg_commit}" "${_compat32_sysroot}"
-	_build_compat32_recipe 'libunwind' "${_compat32_libunwind_pkg_commit}" "${_compat32_sysroot}"
-	_build_compat32_recipe 'openssl' "${_compat32_openssl_pkg_commit}" "${_compat32_sysroot}"
-	_build_compat32_recipe 'sqlite' "${_compat32_sqlite_pkg_commit}" "${_compat32_sysroot}"
-	_build_compat32_recipe 'brotli' "${_compat32_brotli_pkg_commit}" "${_compat32_sysroot}"
-	_build_compat32_recipe 'libpsl' "${_compat32_libpsl_pkg_commit}" "${_compat32_sysroot}"
-	_build_compat32_recipe 'libnghttp2' "${_compat32_libnghttp2_pkg_commit}" "${_compat32_sysroot}"
-	_build_compat32_recipe 'libsoup3' "${_compat32_libsoup3_pkg_commit}" "${_compat32_sysroot}"
-	_build_compat32_recipe 'libelf' "${_compat32_libelf_pkg_commit}" "${_compat32_sysroot}"
+	_build_compat32_recipe 'xz' "${_compat32_xz_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
+	_build_compat32_recipe 'libunwind' "${_compat32_libunwind_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
+	_build_compat32_recipe 'openssl' "${_compat32_openssl_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
+	_build_compat32_recipe 'sqlite' "${_compat32_sqlite_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
+	_build_compat32_recipe 'brotli' "${_compat32_brotli_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
+	_build_compat32_recipe 'libpsl' "${_compat32_libpsl_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
+	_build_compat32_recipe 'libnghttp2' "${_compat32_libnghttp2_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
+	_build_compat32_recipe 'libsoup3' "${_compat32_libsoup3_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
+	_build_compat32_recipe 'libelf' "${_compat32_libelf_pkg_commit}" "${_compat32_sysroot}" "${_jobs}" "${NINJAFLAGS}"
 
 	if find "${_compat32_sysroot}/usr/lib32" \( -type f -o -type l \) -name '*.so*' -print -quit | grep -q .; then
 		printf 'compat32 sysroot unexpectedly contains shared libraries\n' >&2
@@ -524,8 +543,6 @@ _prepare_frida_sdk_sources() {
 	_stage_frida_sdk_source 'tinycc' "tinycc-${_tinycc_commit}.tar.gz" "${_tinycc_commit}"
 	patch -d "${_sdk_root}" -Np1 --fuzz=0 -i "${srcdir}/sdk-relocatable-paths.patch"
 	_stage_frida_sdk_source 'openssl' "sdk-openssl-${_sdk_openssl_commit}.tar.gz" "${_sdk_openssl_commit}"
-	_stage_frida_sdk_source 'v8' "sdk-v8-${_sdk_v8_commit}.tar.gz" "${_sdk_v8_commit}"
-	patch -d "${_sdk_root}/v8" -Np1 --fuzz=0 -i "${srcdir}/sdk-v8-gcc16.patch"
 
 	_glib_subprojects="${_sdk_root}/glib/subprojects"
 	rm -rf -- "${_glib_subprojects}/pcre2" "${_glib_subprojects}/gvdb"
@@ -602,7 +619,7 @@ prepare() {
 		cd -- subprojects/frida-core/src/compiler || exit 1
 		GOMODCACHE="${_go_mod_cache}" \
 			GOCACHE="${_go_build_cache}" \
-			go mod download
+			go mod download -modcacherw
 	)
 
 	_prepare_compat32_recipe 'zlib' "${_compat32_zlib_pkg_commit}" 'compat32-zlib.patch'
@@ -622,15 +639,34 @@ prepare() {
 
 _build_frida_sdk() {
 	local _toolchain_prefix="${1:?missing toolchain prefix}"
-	local _jobs="${2:?missing job count}"
 	local _sdk_work_root="${FRIDA_SDK_WORK_ROOT:-${srcdir}}/frida-sdk-build"
 	local _sdk_source_root="${srcdir}/frida-sdk-sources"
 	local _sdk_archive="${_sdk_work_root}/sdk-linux-${CARCH}.tar.xz"
 	local _sdk_prefix="${srcdir}/frida-sdk"
 	local _deps_toml="${srcdir}/frida-${pkgver}/releng/deps.toml"
+	local _deps_v8_commit
 
 	if ! grep -qx "version = \"${_sdk_version}\"" "${_deps_toml}"; then
 		printf 'Frida dependency version does not match expected SDK %s\n' "${_sdk_version}" >&2
+		return 1
+	fi
+
+	_deps_v8_commit="$(sed -n '/^\[v8\]$/,/^\[/ s/^version = "\(.*\)"$/\1/p' "${_deps_toml}")"
+	if [[ "${_deps_v8_commit}" != "${_sdk_v8_commit}" ]]; then
+		printf 'Frida expects V8 commit %s, PKGBUILD expects %s\n' \
+			"${_deps_v8_commit:-<missing>}" "${_sdk_v8_commit}" >&2
+		return 1
+	fi
+	if [[ ! -r "${_frida_v8_commit_file}" ]]; then
+		printf 'Missing frida-v8 commit metadata: %s\n' "${_frida_v8_commit_file}" >&2
+		return 1
+	fi
+	if [[ "$(<"${_frida_v8_commit_file}")" != "${_sdk_v8_commit}" ]]; then
+		printf 'Installed frida-v8 does not provide required commit %s\n' "${_sdk_v8_commit}" >&2
+		return 1
+	fi
+	if [[ ! -r "${_frida_v8_pc}" ]]; then
+		printf 'Missing frida-v8 pkg-config metadata: %s\n' "${_frida_v8_pc}" >&2
 		return 1
 	fi
 
@@ -640,16 +676,17 @@ _build_frida_sdk() {
 	FRIDA_DEPS="${_sdk_work_root}" \
 	FRIDA_DEPS_SOURCE_ROOT="${_sdk_source_root}" \
 	FRIDA_DEPS_TOOLCHAIN_PREFIX="${_toolchain_prefix}" \
-	FRIDA_MAKE_JOBS="${_jobs}" \
 		python "${srcdir}/frida-${pkgver}/releng/deps.py" build \
 			--bundle=sdk \
-			--host="linux-${CARCH}"
+			--host="linux-${CARCH}" \
+			--exclude=v8
 
 	[[ -f "${_sdk_archive}" ]] || {
 		printf 'Missing source-built Frida SDK archive: %s\n' "${_sdk_archive}" >&2
 		return 1
 	}
 	bsdtar -xf "${_sdk_archive}" -C "${_sdk_prefix}"
+	install -Dm644 -- "${_frida_v8_pc}" "${_sdk_prefix}/lib/pkgconfig/v8-10.0.pc"
 	[[ "$(<"${_sdk_prefix}/VERSION.txt")" == "${_sdk_version}" ]] || {
 		printf 'Source-built Frida SDK has an unexpected version\n' >&2
 		return 1
@@ -675,11 +712,15 @@ build() {
 	local _vala_builddir
 
 	_jobs="$(_makepkg_jobs)"
+	if [[ -z "${NINJAFLAGS:-}" ]]; then
+		NINJAFLAGS="-j${_jobs}"
+	fi
+	export NINJAFLAGS
 	_toolchain_prefix="${srcdir}/frida-${pkgver}/deps/toolchain-linux-${CARCH}"
 	_vala_builddir="${srcdir}/build-vala"
 
 	_build_env
-	_build_compat32_sysroot
+	_build_compat32_sysroot "${_jobs}"
 
 	[[ -d "${_toolchain_prefix}" ]] && chmod -R u+w -- "${_toolchain_prefix}"
 	[[ -d "${_vala_builddir}" ]] && chmod -R u+w -- "${_vala_builddir}"
@@ -690,11 +731,12 @@ build() {
 		-Doptimization=2 \
 		"${_vala_builddir}" \
 		"${srcdir}/vala-${_vala_commit}"
-	python "${srcdir}/frida-${pkgver}/releng/meson/meson.py" compile \
-		-C "${_vala_builddir}" \
-		--jobs "${_jobs}"
+	local _ninja_flags=()
+	read -r -a _ninja_flags <<< "${NINJAFLAGS}"
+	ninja "${_ninja_flags[@]}" -C "${_vala_builddir}"
 	python "${srcdir}/frida-${pkgver}/releng/meson/meson.py" install \
-		-C "${_vala_builddir}"
+		-C "${_vala_builddir}" \
+		--no-rebuild
 
 	sed \
 		-e "s|@TOOLCHAIN_PREFIX@|${_toolchain_prefix}|g" \
@@ -705,7 +747,6 @@ build() {
 	cd -- "frida-${pkgver}" || return 1
 	rm -rf -- build
 
-	export FRIDA_MAKE_JOBS="${_jobs}"
 	export FRIDA_COMPAT_PKG_CONFIG="${srcdir}/frida-pkg-config-32"
 	export PATH="${_toolchain_prefix}/bin:${PATH}"
 	export LD_LIBRARY_PATH="${_toolchain_prefix}/lib:${_toolchain_prefix}/lib/vala-0.58:${LD_LIBRARY_PATH:-}"
@@ -713,7 +754,7 @@ build() {
 	export PYTHONPATH="${PWD}:${PYTHONPATH}"
 	export VAPIGEN="${_toolchain_prefix}/bin/vapigen-0.58"
 
-	_build_frida_sdk "${_toolchain_prefix}" "${_jobs}"
+	_build_frida_sdk "${_toolchain_prefix}"
 	export FRIDA_COMPAT_SDK="${srcdir}/frida-sdk"
 
 	./configure \
@@ -742,6 +783,55 @@ build() {
 			subprojects/frida-python
 }
 
+_remove_pkgconfig_requirements() {
+	local _pc="$1"
+	shift
+	local -a _removed=("$@")
+	local -a _entries=()
+	local _entry
+	local _line
+	local _name
+	local _output
+	local _prefix
+	local _remove
+	local _skip
+	local _tmp
+
+	_tmp="$(mktemp "${_pc}.XXXXXX")" || return 1
+	while IFS= read -r _line || [[ -n "${_line}" ]]; do
+		case "${_line}" in
+			Requires:*|Requires.private:*)
+				_prefix="${_line%%:*}"
+				_line="${_line#*:}"
+				IFS=',' read -r -a _entries <<< "${_line}"
+				_output=''
+				for _entry in "${_entries[@]}"; do
+					_entry="${_entry#"${_entry%%[![:space:]]*}"}"
+					_entry="${_entry%"${_entry##*[![:space:]]}"}"
+					[[ -n "${_entry}" ]] || continue
+					_name="${_entry%%[[:space:]<>=]*}"
+					_skip=0
+					for _remove in "${_removed[@]}"; do
+						if [[ "${_name}" == "${_remove}" ]]; then
+							_skip=1
+							break
+						fi
+					done
+					(( _skip == 0 )) || continue
+					[[ -z "${_output}" ]] || _output+=', '
+					_output+="${_entry}"
+				done
+				printf '%s: %s\n' "${_prefix}" "${_output}" >> "${_tmp}"
+				;;
+			*)
+				printf '%s\n' "${_line}" >> "${_tmp}"
+				;;
+		esac
+	done < "${_pc}"
+	chmod 644 -- "${_tmp}"
+	mv -- "${_tmp}" "${_pc}"
+}
+
 _stage_install() {
 	local _dest="$1"
 
@@ -755,20 +845,25 @@ _stage_install() {
 
 package_frida() {
 	local _compiler_backend="${pkgdir}/usr/lib/frida-1.0/plugins/frida-compiler-backend.so"
-	local _embedded_symbols
-	local _embedded_symbols_raw
+	local _gum_lib="${pkgdir}/usr/lib/libfrida-gum-1.0.so"
 	local _gumjs_lib="${pkgdir}/usr/lib/libfrida-gumjs-1.0.so"
-	local _gumjs_pc="${pkgdir}/usr/lib/pkgconfig/frida-gumjs-1.0.pc"
+	local _pkgconfig_dir="${pkgdir}/usr/lib/pkgconfig"
+	local _gum_pc="${_pkgconfig_dir}/frida-gum-1.0.pc"
+	local _gumjs_pc="${_pkgconfig_dir}/frida-gumjs-1.0.pc"
+	local _pc_file
+	local _gum_symbols
+	local _gum_symbols_raw
 	local _gumjs_symbols
 	local _gumjs_symbols_raw
-	local _quickjs_lib="${srcdir}/frida-${pkgver}/build/subprojects/frida-gum/subprojects/quickjs/libquickjs.a"
-	local _tinycc_lib="${srcdir}/frida-${pkgver}/build/subprojects/frida-gum/subprojects/tinycc/libtcc.a"
 	local _rpath_target
 	local _sdk_component
 	local _sdk_source
 	local _license_file
 	local _license_first_line
 	local _license_relative
+	local _frida_v8_license
+	local _license_present
+	local _package_license
 	local _python_dir
 
 	optdepends=('frida-tools: command-line tools')
@@ -801,62 +896,74 @@ package_frida() {
 		"${pkgdir}/usr/lib/pkgconfig/libtcc.pc" \
 		"${pkgdir}/usr/lib/pkgconfig/usrsctp.pc"
 
+	[[ -f "${_gum_pc}" ]] || {
+		printf 'Missing Gum pkg-config file: %s\n' "${_gum_pc}" >&2
+		return 1
+	}
 	[[ -f "${_gumjs_pc}" ]] || {
 		printf 'Missing GumJS pkg-config file: %s\n' "${_gumjs_pc}" >&2
 		return 1
 	}
-	sed -i \
-		-e 's/, quickjs//' \
-		-e 's/, libtcc//' \
-		"${_gumjs_pc}"
-	if grep -Eq '^Requires\.private:.*(quickjs|libtcc)' "${_gumjs_pc}"; then
-		printf '%s\n' 'Internal GumJS dependencies leaked into installed pkg-config metadata' >&2
+
+	_remove_pkgconfig_requirements "${_gum_pc}" 'libtcc'
+	_remove_pkgconfig_requirements "${_gumjs_pc}" 'quickjs' 'v8-10.0'
+
+	if grep -R -E -n \
+		'(libtcc|quickjs|v8-10\.0|libusb-1\.0|lwip|usrsctp)' \
+		"${_pkgconfig_dir}"; then
+		printf '%s\n' 'Removed build-only dependencies leaked into installed pkg-config metadata' >&2
 		return 1
 	fi
+	for _pc_file in "${_pkgconfig_dir}"/frida-*.pc; do
+		[[ -f "${_pc_file}" ]] || continue
+		if ! PKG_CONFIG_PATH="${_pkgconfig_dir}" pkgconf --validate "${_pc_file}"; then
+			printf 'Invalid installed pkg-config metadata: %s\n' "${_pc_file}" >&2
+			return 1
+		fi
+	done
 
+	[[ -f "${_gum_lib}" ]] || {
+		printf 'Missing Gum library: %s\n' "${_gum_lib}" >&2
+		return 1
+	}
 	[[ -f "${_gumjs_lib}" ]] || {
 		printf 'Missing GumJS library: %s\n' "${_gumjs_lib}" >&2
 		return 1
 	}
-	[[ -f "${_quickjs_lib}" ]] || {
-		printf 'Missing QuickJS static library: %s\n' "${_quickjs_lib}" >&2
+	_gum_symbols="$(mktemp)" || return 1
+	_gum_symbols_raw="$(mktemp)" || {
+		rm -f -- "${_gum_symbols}"
 		return 1
 	}
-	[[ -f "${_tinycc_lib}" ]] || {
-		printf 'Missing TinyCC static library: %s\n' "${_tinycc_lib}" >&2
+	if ! nm -D --defined-only "${_gum_lib}" > "${_gum_symbols_raw}"; then
+		rm -f -- "${_gum_symbols}" "${_gum_symbols_raw}"
 		return 1
-	}
-
+	fi
+	awk '{ print $3 }' "${_gum_symbols_raw}" | sort -u > "${_gum_symbols}"
+	rm -f -- "${_gum_symbols_raw}"
+	if grep -Ev '^(gum_.*|_gum_exceptor_prepare_try|_gum_register_destructor|_gum_register_early_destructor|mspace_.*|create_mspace|create_mspace_with_base|destroy_mspace)$' "${_gum_symbols}"; then
+		printf '%s\n' 'Unexpected symbols exported from Gum' >&2
+		rm -f -- "${_gum_symbols}"
+		return 1
+	fi
+	rm -f -- "${_gum_symbols}"
 	_gumjs_symbols="$(mktemp)" || return 1
 	_gumjs_symbols_raw="$(mktemp)" || {
 		rm -f -- "${_gumjs_symbols}"
 		return 1
 	}
-	_embedded_symbols="$(mktemp)" || {
-		rm -f -- "${_gumjs_symbols}" "${_gumjs_symbols_raw}"
-		return 1
-	}
-	_embedded_symbols_raw="$(mktemp)" || {
-		rm -f -- "${_gumjs_symbols}" "${_gumjs_symbols_raw}" "${_embedded_symbols}"
-		return 1
-	}
 	if ! nm -D --defined-only "${_gumjs_lib}" > "${_gumjs_symbols_raw}"; then
-		rm -f -- "${_gumjs_symbols}" "${_gumjs_symbols_raw}" "${_embedded_symbols}" "${_embedded_symbols_raw}"
-		return 1
-	fi
-	if ! nm -g --defined-only "${_quickjs_lib}" "${_tinycc_lib}" > "${_embedded_symbols_raw}"; then
-		rm -f -- "${_gumjs_symbols}" "${_gumjs_symbols_raw}" "${_embedded_symbols}" "${_embedded_symbols_raw}"
+		rm -f -- "${_gumjs_symbols}" "${_gumjs_symbols_raw}"
 		return 1
 	fi
 	awk '{ print $3 }' "${_gumjs_symbols_raw}" | sort -u > "${_gumjs_symbols}"
-	awk '{ print $3 }' "${_embedded_symbols_raw}" | sort -u > "${_embedded_symbols}"
-	rm -f -- "${_gumjs_symbols_raw}" "${_embedded_symbols_raw}"
-	if comm -12 "${_gumjs_symbols}" "${_embedded_symbols}" | grep -q .; then
-		rm -f -- "${_gumjs_symbols}" "${_embedded_symbols}"
-		printf '%s\n' 'Embedded QuickJS or TinyCC symbols leaked from GumJS' >&2
+	rm -f -- "${_gumjs_symbols_raw}"
+	if grep -Ev '^(gum_|gumjs_|_gum_quick_profiler_get$)' "${_gumjs_symbols}"; then
+		printf '%s\n' 'Unexpected symbols exported from GumJS' >&2
+		rm -f -- "${_gumjs_symbols}"
 		return 1
 	fi
-	rm -f -- "${_gumjs_symbols}" "${_embedded_symbols}"
+	rm -f -- "${_gumjs_symbols}"
 
 	for _rpath_target in \
 		"${pkgdir}/usr/bin/frida-server" \
@@ -877,6 +984,32 @@ package_frida() {
 
 	install -Dm644 "${srcdir}/frida-${pkgver}/COPYING" \
 		"${pkgdir}/usr/share/licenses/frida/COPYING"
+
+	[[ -d "${_frida_v8_licensedir}" ]] || {
+		printf 'Missing frida-v8 license directory: %s\n' "${_frida_v8_licensedir}" >&2
+		return 1
+	}
+	[[ -s "${_frida_v8_licenses_file}" ]] || {
+		printf 'Missing frida-v8 license metadata: %s\n' "${_frida_v8_licenses_file}" >&2
+		return 1
+	}
+	while IFS= read -r _frida_v8_license; do
+		[[ -n "${_frida_v8_license}" ]] || continue
+		_license_present=0
+		for _package_license in "${license[@]}"; do
+			if [[ "${_package_license}" == "${_frida_v8_license}" ]]; then
+				_license_present=1
+				break
+			fi
+		done
+		if (( _license_present == 0 )); then
+			printf 'frida package metadata is missing embedded V8 license %s\n' \
+				"${_frida_v8_license}" >&2
+			return 1
+		fi
+	done < "${_frida_v8_licenses_file}"
+	install -d -- "${pkgdir}/usr/share/licenses/frida/sdk/v8"
+	cp -a -- "${_frida_v8_licensedir}/." "${pkgdir}/usr/share/licenses/frida/sdk/v8/"
 
 	for _sdk_source in "${srcdir}"/frida-sdk-sources/*; do
 		[[ -d "${_sdk_source}" ]] || continue

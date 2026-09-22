@@ -25,13 +25,16 @@
 
 --- a/releng/meson_make.py
 +++ b/releng/meson_make.py
-@@ -48,6 +48,9 @@
+@@ -48,6 +48,12 @@
          configure(sourcedir, builddir, environ=environ)
 
      compile_options = []
 +    jobs = environ.get("FRIDA_MAKE_JOBS")
++    ninja_flags = environ.get("NINJAFLAGS")
 +    if jobs:
 +        compile_options += ["--jobs", jobs]
++    elif ninja_flags:
++        compile_options += ["--ninja-args", repr(shlex.split(ninja_flags))]
      if environ.get("V") == "1":
          compile_options += ["-v"]
 
@@ -91,15 +94,18 @@
 
          git = lambda *args, **kwargs: subprocess.run(["git", *args],
                                                       **kwargs,
-@@ -592,7 +618,15 @@
+@@ -592,7 +618,18 @@
                           cwd=sourcedir,
                           **meson_kwargs)
 
 -        self._call_meson(["install"],
 +        compile_options = ["compile", "-C", builddir]
 +        jobs = os.environ.get("FRIDA_MAKE_JOBS")
++        ninja_flags = os.environ.get("NINJAFLAGS")
 +        if jobs:
 +            compile_options += ["--jobs", jobs]
++        elif ninja_flags:
++            compile_options += ["--ninja-args", repr(shlex.split(ninja_flags))]
 +        self._call_meson(compile_options,
 +                         cwd=sourcedir,
 +                         **meson_kwargs)

@@ -1,5 +1,13 @@
 --- a/subprojects/frida-core/compat/build.py
 +++ b/subprojects/frida-core/compat/build.py
+@@ -496,6 +496,7 @@
+     options: Optional[Sequence[str]] = None
+     build_env = scrub_environment(os.environ)
+     build_env["FRIDA_RELENG"] = str(releng_location)
++    build_env["FRIDA_MAKE_JOBS"] = "1"
+     top_builddir = state.top_builddir
+     depfile_lines = []
+     for group, outputs in state.outputs.items():
 @@ -515,11 +515,16 @@
                      options += [f"-Dfrida_version={state.frida_version}"]
 

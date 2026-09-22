@@ -1,24 +1,109 @@
 --- a/releng/env_generic.py
 +++ b/releng/env_generic.py
-@@ -252 +252 @@
+@@ -286,7 +286,7 @@
+             if machine.os != "windows":
+                 linker_flags += ["-Wl,-z,noexecstack"]
+             if machine.os not in {"windows", "none"}:
 -                linker_flags += ["-Wl,-z,relro"]
 +                linker_flags += ["-Wl,-z,relro", "-Wl,-z,now"]
+             cxx_link_flags += ["-static-libstdc++"]
+
+         if linker_flavor == "apple" and not bare:
 --- a/subprojects/frida-core/src/compiler/build-backend.py
 +++ b/subprojects/frida-core/src/compiler/build-backend.py
-@@ -81 +81,3 @@
+@@ -81,7 +81,9 @@
+             extra_go_args.append(f"-ldflags=-linkmode=external -extldflags=-Wl,{','.join(linker_args)}")
+         elif config["os_family"] != "windows":
+             version_script = priv_dir / "backend.version"
 -            extra_go_args.append(f"-ldflags=-linkmode=external -extldflags=-Wl,--version-script={version_script}")
 +            extra_go_args.append(
 +                f"-ldflags=-linkmode=external -extldflags=-Wl,--version-script={version_script},-z,relro,-z,now"
 +            )
-@@ -89,0 +92 @@
+
+     run(
+         go,
+@@ -90,6 +92,7 @@
+         "-o",
+         backend_binary.name,
+         "-buildvcs=false",
 +        "-trimpath",
---- a/subprojects/frida-gum/bindings/gumjs/meson.build
-+++ b/subprojects/frida-gum/bindings/gumjs/meson.build
-@@ -279,0 +280,5 @@
-+gumjs_link_args = []
+         *extra_go_args,
+         ".",
+     )
+--- a/subprojects/frida-gum/gum/meson.build
++++ b/subprojects/frida-gum/gum/meson.build
+@@ -437,10 +437,19 @@
+   gum_internal_deps += lzma_dep
+ endif
+
++gum_link_args = extra_libs_private
++gum_link_depends = []
 +if host_os_family == 'linux'
-+  gumjs_link_args += ['-Wl,--exclude-libs,libquickjs.a:libtcc.a']
++  gum_version_script = meson.current_source_dir() / 'frida-gum.map'
++  gum_link_args += ['-Wl,--version-script=' + gum_version_script]
++  gum_link_depends += files('frida-gum.map')
 +endif
 +
-@@ -281,0 +287 @@
+ gum = library('frida-gum-' + api_version, gum_sources + gum_enums,
+   c_args: frida_component_cflags,
+   include_directories: gum_incdirs,
+-  link_args: extra_libs_private,
++  link_args: gum_link_args,
++  link_depends: gum_link_depends,
+   dependencies: gum_internal_deps + extra_deps,
+   install: true,
+ )
+--- /dev/null
++++ b/subprojects/frida-gum/gum/frida-gum.map
+@@ -0,0 +1,13 @@
++{
++  global:
++    gum_*;
++    _gum_exceptor_prepare_try;
++    _gum_register_destructor;
++    _gum_register_early_destructor;
++    create_mspace;
++    create_mspace_with_base;
++    destroy_mspace;
++    mspace_*;
++  local:
++    *;
++};
+--- a/subprojects/frida-gum/bindings/gumjs/meson.build
++++ b/subprojects/frida-gum/bindings/gumjs/meson.build
+@@ -246,8 +246,24 @@
+   sqlite_dep,
+ ]
+
++gumjs_cpp_args = []
++gumjs_link_args = []
++gumjs_link_depends = []
++if host_os_family == 'linux'
++  gumjs_version_script = meson.current_source_dir() / 'frida-gumjs.map'
++  gumjs_cpp_args += ['-fvisibility=hidden']
++  gumjs_link_args += [
++    '-Wl,--exclude-libs,ALL',
++    '-Wl,--version-script=' + gumjs_version_script,
++  ]
++  gumjs_link_depends += files('frida-gumjs.map')
++endif
++
+ gumjs = library('frida-gumjs-' + api_version, gumjs_sources,
+   c_args: frida_component_cflags,
++  cpp_args: gumjs_cpp_args,
 +  link_args: gumjs_link_args,
++  link_depends: gumjs_link_depends,
+   override_options: [
+     'cpp_std=c++17',
+     'cpp_eh=none',
+--- /dev/null
++++ b/subprojects/frida-gum/bindings/gumjs/frida-gumjs.map
+@@ -0,0 +1,8 @@
++{
++  global:
++    gum_*;
++    gumjs_*;
++    _gum_quick_profiler_get;
++  local:
++    *;
++};
