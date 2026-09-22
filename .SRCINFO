@@ -1,13 +1,18 @@
 pkgbase = python-dynaconf
 	pkgdesc = The dynamic configurator for your Python project (12-factor settings, layered envs, multiple formats)
-	pkgver = 3.2.13
+	pkgver = 3.3.5
 	pkgrel = 1
 	url = https://github.com/dynaconf/dynaconf
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-pytest-mock
-	checkdepends = python-configobj
+	checkdepends = python-pytest>=8.4.2
+	checkdepends = python-pytest-mock>=3.14.1
+	checkdepends = python-packaging>=26.0
+	checkdepends = python-git-changelog>=2.6.3
+	checkdepends = python-configobj>=5.0.9
+	checkdepends = python-jinja>3.0.0
+	checkdepends = python-django>=4.2.26
+	checkdepends = python-flask>=1.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -21,7 +26,9 @@ pkgbase = python-dynaconf
 	optdepends = python-jinja: Jinja templating in setting values
 	optdepends = python-django: Django framework integration
 	optdepends = python-flask: Flask extension integration
-	source = dynaconf-3.2.13.tar.gz::https://github.com/dynaconf/dynaconf/archive/refs/tags/3.2.13.tar.gz
-	sha256sums = 82211b97b36eed6b2c0b8951b151d77e69110d59696afd4005e4efe7ad3880d1
+	source = dynaconf-3.3.5.tar.gz::https://github.com/dynaconf/dynaconf/archive/refs/tags/3.3.5.tar.gz
+	source = relax-pytest-mock.patch
+	sha256sums = 3f8809a5433a36aaa27351c8e75463c5a0670d25e506af4547bc58c3c5ffd870
+	sha256sums = bb7e9c7024041054c61faac816fa21b7fe2d59c2016767948a0678d9f6bf6969
 
 pkgname = python-dynaconf

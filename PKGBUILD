@@ -2,7 +2,7 @@
 
 pkgname=python-dynaconf
 _pkgname=dynaconf
-pkgver=3.2.13
+pkgver=3.3.5
 pkgrel=1
 pkgdesc='The dynamic configurator for your Python project (12-factor settings, layered envs, multiple formats)'
 arch=('any')
@@ -22,9 +22,14 @@ makedepends=(
     'python-setuptools'
 )
 checkdepends=(
-    'python-pytest'
-    'python-pytest-mock'
-    'python-configobj'
+    'python-pytest>=8.4.2'
+    'python-pytest-mock>=3.14.1'
+    'python-packaging>=26.0'
+    'python-git-changelog>=2.6.3'
+    'python-configobj>=5.0.9'
+    'python-jinja>3.0.0'
+    'python-django>=4.2.26'
+    'python-flask>=1.0'
 )
 optdepends=(
     'python-redis: Redis settings backend'
@@ -36,8 +41,20 @@ optdepends=(
     'python-django: Django framework integration'
     'python-flask: Flask extension integration'
 )
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/dynaconf/dynaconf/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('82211b97b36eed6b2c0b8951b151d77e69110d59696afd4005e4efe7ad3880d1')
+source=(
+    "$_pkgname-$pkgver.tar.gz::https://github.com/dynaconf/dynaconf/archive/refs/tags/$pkgver.tar.gz"
+    'relax-pytest-mock.patch'
+)
+sha256sums=('3f8809a5433a36aaa27351c8e75463c5a0670d25e506af4547bc58c3c5ffd870'
+            'bb7e9c7024041054c61faac816fa21b7fe2d59c2016767948a0678d9f6bf6969')
+
+prepare() {
+    cd "$_pkgname-$pkgver"
+
+    # Arch currently ships pytest-mock 3.14.1. Dynaconf only uses
+    # mocker.patch.object(), whose API is unchanged in 3.15.1.
+    patch -Np1 -i "$srcdir/relax-pytest-mock.patch"
+}
 
 build() {
     cd "$_pkgname-$pkgver"
@@ -47,31 +64,37 @@ build() {
 check() {
     cd "$_pkgname-$pkgver"
 
-    # 1) upstream test suite (480 tests: all file loaders, core, CLI, validators,
-    #    hooks, utils). Four files are deselected:
-    #      - test_redis.py / test_vault.py need a live Redis / HashiCorp Vault.
-    #      - test_django.py / test_flask.py are framework-integration tests that
-    #        mutate global Django/Flask state and require the per-test process
-    #        isolation dynaconf's CI runs them under (pytest-xdist); in a single
-    #        process they contaminate later tests. The library itself is fully
-    #        covered by the 480 that run here plus the smoke test below.
+    # 1) Upstream unit suite, including the Django and Flask integrations.
+    #    Redis and Vault tests are marked as integration tests and need live
+    #    services. test_vault.py must additionally be ignored because importing
+    #    its module requires hvac even when integration tests are deselected.
     # test_cli (runs the `dynaconf` console script) and test_inspect (reads
     # importlib.metadata.version) need the INSTALLED package, so run against the
     # built wheel in a temp prefix with its bin/ on PATH and site/ on PYTHONPATH
     # (the bare source tree only passes those if dynaconf is already installed).
-    local _site
+    # The source paths expose test fixtures plus the unshipped release_utility
+    # module; the installed wheel stays first so dynaconf itself is tested from
+    # the packaged artifact.
+    local _site _source="$PWD"
     rm -rf "$srcdir/_check"
     python -m installer --destdir="$srcdir/_check" dist/*.whl
     _site=$(python -c "import site; print(site.getsitepackages()[0])")
-    PYTHONPATH="$srcdir/_check$_site:$PYTHONPATH" PATH="$srcdir/_check/usr/bin:$PATH" \
-        python -m pytest tests/ \
-        --ignore=tests/test_redis.py --ignore=tests/test_vault.py \
-        --ignore=tests/test_django.py --ignore=tests/test_flask.py
+    cd "$srcdir"
+    # Keep the suite hermetic: unrelated globally installed pytest plugins
+    # (notably pytest-randomly) reorder these stateful tests and create false
+    # failures. Load only the plugin this suite actually uses.
+    PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+        PYTHONPATH="$srcdir/_check$_site:$_source/.github/scripts:$_source" \
+        PATH="$srcdir/_check/usr/bin:$PATH" \
+        python -m pytest -p pytest_mock --import-mode=importlib \
+        -m "not integration" \
+        "$_source/tests/" \
+        --ignore="$_source/tests/test_vault.py"
 
     # 2) smoke test simulating real use: layered TOML + YAML config with an
     #    environment selected, a .env-style env-var override, and a validator,
     #    exactly as an app wires dynaconf at startup.
-    PYTHONPATH="$srcdir/_check$_site:$PYTHONPATH" python - <<'PY'
+    PYTHONPATH="$srcdir/_check$_site" python - <<'PY'
 import os, tempfile
 os.chdir(tempfile.mkdtemp())
 open('settings.toml', 'w').write('[default]\nname="demo"\nport=8080\n[production]\nport=9090\n')
@@ -93,5 +116,11 @@ PY
 package() {
     cd "$_pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # Upstream's wheel carries ruamel.yaml's build script inside the vendored
+    # runtime tree.  It is never imported by Dynaconf and would incorrectly
+    # turn setuptools and wheel into runtime dependencies.
+    rm "$pkgdir"/usr/lib/python*/site-packages/dynaconf/vendor/ruamel/yaml/setup.py
+
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
