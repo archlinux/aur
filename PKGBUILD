@@ -5,8 +5,8 @@
 
 pkgname=postsrsd-git
 epoch=1
-pkgver=2.4.0+2.r431.20260909.g7ee3af6
-pkgrel=1
+pkgver=2.4.0+3.r432.20260922.gfa789f8
+pkgrel=2
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
 provides=("postsrsd=${pkgver}")
 conflicts=("postsrsd")
@@ -60,18 +60,25 @@ build() {
   ###sed -e 's|${SYSCONF_DIR}/systemd/system|/usr/lib/systemd/system|g' -i postsrsd/postinstall.cmake.in
   rm -rf build
   mkdir build
-  cd build
 
-  cmake ../postsrsd \
+  cmake -B build -S postsrsd \
     -DBUILD_TESTING=ON \
-    -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DEXECUTABLE_WITH_ASAN=OFF \
     -DGENERATE_SRS_SECRET=OFF \
-    -DINIT_FLAVOR=. \
+    -DINSTALL_SYSTEMD_SERVICE=ON \
+    -DINSTALL_SYSTEMD_SYSUSERS=OFF \
+    -DWITH_REDIS=ON \
+    -DWITH_SECCOMP=ON \
+    -DWITH_SQLITE=ON \
+    -DUSE_DOMAINS_FILE=OFF \
+    -DUSE_DOMAINS_FILE_WATCH=OFF \
     -DUSE_APPARMOR=OFF \
-    -DUSE_SELINUX=OFF
+    -DUSE_SELINUX=OFF \
+    -Wno-dev
 
-  make all
+  make -C build all
 }
 
 check() {
