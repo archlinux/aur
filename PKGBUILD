@@ -1,12 +1,12 @@
 # Maintainer: hex4 (hex4@duck.com)
 pkgname=tanuki-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Hourly Animal Crossing vibes, now on your desktop"
 arch=('x86_64')
 url="https://github.com/Hex-4/tanuki"
 license=('MIT')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gst-plugins-good' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/app-v${pkgver}/tanuki_${pkgver}_amd64.deb")
