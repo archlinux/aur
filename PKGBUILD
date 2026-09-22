@@ -1,7 +1,7 @@
 # Maintainer: Jaeho Cho <jaeho2025@gmail.com>
 pkgname=asst-git
 _pkgname=asst
-pkgver=0.1.0.r6.gd9f2441
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Tasks and reminders on a CalDAV server (Nextcloud): daemon, CLI, GTK window, quick add, waybar module"
 arch=('x86_64')
