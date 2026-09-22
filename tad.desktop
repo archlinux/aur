@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Tad
+GenericName=Tabular Data Viewer
+Comment=View and analyze tabular data
+Exec=tad %F
+Icon=tad
+Terminal=false
+Type=Application
+Categories=Office;Database;
+MimeType=text/csv;text/tab-separated-values;application/vnd.apache.parquet;application/vnd.sqlite3;
+StartupWMClass=Tad

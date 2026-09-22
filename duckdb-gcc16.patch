@@ -1,0 +1,22 @@
+diff --git a/node_modules/duckdb/src/duckdb/third_party/fsst/libfsst.hpp b/node_modules/duckdb/src/duckdb/third_party/fsst/libfsst.hpp
+--- a/node_modules/duckdb/src/duckdb/third_party/fsst/libfsst.hpp
++++ b/node_modules/duckdb/src/duckdb/third_party/fsst/libfsst.hpp
+@@ -17,6 +17,7 @@
+ // You can contact the authors via the FSST source repository : https://github.com/cwida/fsst 
+ #include <algorithm>
+ #include <cassert>
++#include <cstdint>
+ #include <cstring>
+ #include <fstream>
+ #include <iostream>
+diff --git a/node_modules/duckdb/src/duckdb/third_party/thrift/thrift/transport/TTransport.h b/node_modules/duckdb/src/duckdb/third_party/thrift/thrift/transport/TTransport.h
+--- a/node_modules/duckdb/src/duckdb/third_party/thrift/thrift/transport/TTransport.h
++++ b/node_modules/duckdb/src/duckdb/third_party/thrift/thrift/transport/TTransport.h
+@@ -22,6 +22,7 @@
+ 
+ #include "thrift/Thrift.h"
+ #include "thrift/transport/TTransportException.h"
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ 

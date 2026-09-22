@@ -1,0 +1,64 @@
+diff --git a/packages/tad-app/app/main.ts b/packages/tad-app/app/main.ts
+index 3d89f45..1c75968 100644
+--- a/packages/tad-app/app/main.ts
++++ b/packages/tad-app/app/main.ts
+@@ -314,20 +314,10 @@ const initApp =
+       // argv && (argv.length > 1) && !(argv[0].startsWith('--executed-from'))
+ 
+       if (process.defaultApp) {
+-        // npm / electron start -- passes '.' as first argument
++        // electron /path/to/app.asar -- passes the app path as first argument
+         log.debug("*** defaultApp: injecting --executed-from");
+-        // Find the index of the last non-option argument:
+-        let lastNonOptionIndex = argv.length - 1;
+-        while (
+-          !argv[lastNonOptionIndex].startsWith("-") &&
+-          lastNonOptionIndex > 0
+-        ) {
+-          lastNonOptionIndex--;
+-        }
+-        if (argv[lastNonOptionIndex].startsWith("-")) {
+-          lastNonOptionIndex++;
+-        }
+-        argv.splice(lastNonOptionIndex, 0, "--executed-from");
++        argv = argv.slice(1);
++        argv.unshift("--executed-from", workingDirectory ?? process.cwd());
+         log.debug("*** after argument processing: ", argv);
+       } // macOS insanity:  If we're started via Open With..., we get invoked
+       // with -psn_0_XXXXX argument; let's just kill it:
+diff --git a/packages/tad-app/app/quickStart.ts b/packages/tad-app/app/quickStart.ts
+index 7cda7f7..4ea7732 100644
+--- a/packages/tad-app/app/quickStart.ts
++++ b/packages/tad-app/app/quickStart.ts
+@@ -30,7 +30,7 @@ function getSetupInfo(): any {
+ function openExample() {
+   const app = electron.app;
+   const appPath = app.getAppPath();
+-  const appDir = process.defaultApp ? appPath : path.dirname(appPath);
++  const appDir = appPath.endsWith(".asar") ? path.dirname(appPath) : appPath;
+   const exampleFilePath = path.join(appDir, "examples", "movie_metadata.csv");
+   appWindow.createFromFile(exampleFilePath);
+ }
+diff --git a/packages/tad-app/webpack.config.js b/packages/tad-app/webpack.config.js
+index 7447e21..de3576e 100644
+--- a/packages/tad-app/webpack.config.js
++++ b/packages/tad-app/webpack.config.js
+@@ -58,18 +58,6 @@ const common = {
+                 name: "[hash].[ext]",
+               },
+             },
+-            {
+-              loader: "image-webpack-loader",
+-              options: {
+-                bypassOnDebug: true,
+-                optipng: {
+-                  optimizationLevel: 7,
+-                },
+-                gifsicle: {
+-                  interlaced: false,
+-                },
+-              },
+-            },
+           ],
+         },
+         {
