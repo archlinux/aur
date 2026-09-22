@@ -8,11 +8,21 @@ pkgdesc="An application sandbox toolkit"
 arch=('i686' 'x86_64')
 url="http://sandbox.libvirt.org/"
 license=('LGPL')
-depends=('libvirt-glib' 'libselinux' 'libcap-ng' 'cpio')
-makedepends=('gobject-introspection' 'intltool' 'pod2man' 'rpcsvc-proto')
+depends=(
+  'libvirt-glib'
+  'libselinux'
+  'libcap-ng'
+  'cpio'
+)
+makedepends=(
+  'gobject-introspection'
+  'intltool'
+  'pod2man'
+  'rpcsvc-proto'
+)
 optdepends=('dhclient: for sandbox network configuration using DHCP')
 source=(
-    http://libvirt.org/sources/sandbox/$pkgname-$pkgver.tar.gz{,.asc}
+    https://libvirt.org/sources/sandbox/$pkgname-$pkgver.tar.gz{,.asc}
     '0001-builder-Use-prefix-to-identify-lib-path.patch'
     '0002-Use-boot-vmlinuz-linux-as-default-kernel-path.patch'
 )
@@ -55,13 +65,12 @@ build() {
   export CXXFLAGS
 
   # --without-lzma is needed to work around '/usr/bin/ld: cannot find -llzma: No such file or directory'. If anyone has an idea how to fix it, please report to the Maintainer of this `PKGBUILD`. See also .
-
   ./configure \
       --prefix=/usr \
       --libexecdir=/usr/lib/$pkgname \
       --sysconfdir=/etc \
       --enable-shared \
-      --enable-static \
+      --disable-static \
       --disable-werror \
       --disable-gtk-doc \
       --enable-gtk-doc-html \
