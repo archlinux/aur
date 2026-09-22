@@ -1,0 +1,11 @@
+# Build artifacts
+src/
+pkg/
+*.pkg.tar.zst
+
+# Downloaded AppImages
+*.AppImage
+
+# Local editor noise
+*.swp
+.DS_Store

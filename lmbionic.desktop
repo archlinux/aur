@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Bionic
+GenericName=Large Language Model Agent
+Comment=An agent for open models, natively local.
+Exec=lm-bionic %U
+Icon=bionic
+Type=Application
+Categories=Development;ArtificialIntelligence;
+Terminal=false
+StartupNotify=true
+StartupWMClass=LM-Studio-Bionic
+MimeType=text/plain;
