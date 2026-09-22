@@ -1,6 +1,6 @@
 pkgbase = pdf-inspector
 	pkgdesc = Native CLI tools for PDF classification and Markdown extraction
-	pkgver = 1.22.1
+	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://github.com/firecrawl/pdf-inspector
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pdf-inspector
 	depends = gcc-libs
 	depends = glibc
 	options = !debug
-	source = pdf-inspector-1.22.1.tar.gz::https://github.com/firecrawl/pdf-inspector/archive/refs/tags/v1.22.1.tar.gz
-	sha256sums = 2e6d2d2435ae052e3ca753d12a973e341b5f4f5ba65a12e47995b9d6bcbaa0ca
+	source = pdf-inspector-1.23.0.tar.gz::https://github.com/firecrawl/pdf-inspector/archive/refs/tags/v1.23.0.tar.gz
+	sha256sums = 434167f2d5fea5571645fd0b92ea1f8cbf84c87799b58cd0141b75dad38d7fe6
 
 pkgname = pdf-inspector

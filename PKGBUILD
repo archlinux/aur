@@ -1,5 +1,5 @@
 pkgname=pdf-inspector
-pkgver=1.22.1
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="Native CLI tools for PDF classification and Markdown extraction"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2e6d2d2435ae052e3ca753d12a973e341b5f4f5ba65a12e47995b9d6bcbaa0ca')
+sha256sums=('434167f2d5fea5571645fd0b92ea1f8cbf84c87799b58cd0141b75dad38d7fe6')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
