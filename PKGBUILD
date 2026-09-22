@@ -2,12 +2,15 @@
 
 _pkgbase=omarchist
 pkgname=${_pkgbase}-git
-pkgver=2.0.0
+pkgver=r457.813e0df
 pkgrel=1
 pkgdesc="A GUI app for Omarchy Linux (development build from the dev branch)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tahayvr/omarchist"
 license=('Apache-2.0')
+# The cc crate compiles tree-sitter, curl and the Wayland trampoline with
+# makepkg's CFLAGS; gcc LTO objects cannot be consumed by a clang link.
+options=(!lto)
 
 depends=(
     'libxcb'

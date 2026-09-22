@@ -1,6 +1,6 @@
 pkgbase = omarchist-git
 	pkgdesc = A GUI app for Omarchy Linux (development build from the dev branch)
-	pkgver = 2.0.0
+	pkgver = r457.813e0df
 	pkgrel = 1
 	url = https://github.com/tahayvr/omarchist
 	install = omarchist-git.install
@@ -26,6 +26,7 @@ pkgbase = omarchist-git
 	provides = omarchist
 	conflicts = omarchist-bin
 	conflicts = omarchist
+	options = !lto
 	source = omarchist-git::git+https://github.com/tahayvr/omarchist.git#branch=dev
 	sha256sums = SKIP
 
