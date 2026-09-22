@@ -47,12 +47,9 @@ optdepends=(
 # )
 provides=(
   "${_pkgname}=${pkgver}"
-  # "python-${_pkgname}=${pkgver}"
-  # "python-${_pkgname}-git=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
-  # "python-${_pkgname}"
 )
 
 source=(
@@ -87,6 +84,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
+
   printf '%s\n' " --> building ..."
   python -m build --wheel --no-isolation
 }
@@ -100,6 +98,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
+
   printf '%s\n' " --> installing ..."
   python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
 
