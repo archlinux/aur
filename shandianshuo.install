@@ -1,0 +1,46 @@
+post_install() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+
+  getent group input >/dev/null 2>&1 || groupadd -r input 2>/dev/null || true
+
+  # Install udev rules: allow input group to access input devices for hotkey interception
+  cat > /etc/udev/rules.d/99-shandianshuo-input.rules << 'EOF'
+# Shandianshuo: Allow input group to access input devices for hotkey interception
+KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", MODE="0660", GROUP="input"
+KERNEL=="event*", SUBSYSTEM=="input", TAG+="uaccess", MODE="0660", GROUP="input"
+EOF
+
+  # Ensure uinput exists now and after reboot for Wayland key injection.
+  modprobe uinput 2>/dev/null || true
+  echo "uinput" > /etc/modules-load.d/shandianshuo-uinput.conf 2>/dev/null || true
+
+  # Reload udev rules
+  udevadm control --reload-rules 2>/dev/null || true
+  udevadm trigger 2>/dev/null || true
+
+  # Add the installing user to input group (if not already a member)
+  REAL_USER="${SUDO_USER:-$USER}"
+  if [ -n "$REAL_USER" ] && [ "$REAL_USER" != "root" ]; then
+      if ! groups "$REAL_USER" 2>/dev/null | grep -q '\binput\b'; then
+          usermod -aG input "$REAL_USER" 2>/dev/null || true
+      fi
+  fi
+  update-desktop-database -q 2>/dev/null || true
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor 2>/dev/null || true
+  # Clean up udev rules on uninstall
+  case "${1:-}" in
+      1|upgrade) exit 0 ;;
+  esac
+
+  rm -f /etc/udev/rules.d/99-shandianshuo-input.rules
+  rm -f /etc/modules-load.d/shandianshuo-uinput.conf
+  udevadm control --reload-rules 2>/dev/null || true
+  update-desktop-database -q 2>/dev/null || true
+}
