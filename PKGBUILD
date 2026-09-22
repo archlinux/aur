@@ -12,8 +12,8 @@ arch=("x86_64")
 license=("MIT")
 url="https://github.com/${gitauthor}/${gitname}"
 
-depends=("nodejs")
-makedepends=("sh" "npm")
+makedepends=("sh" "npm" "gcc" "make" "pkgconf")
+depends=("nodejs" "projectm-pulseaudio" "libpulse" "qt5-base" "mpv")
 
 provides=("${appname}")
 
@@ -26,7 +26,7 @@ b2sums=('5adf63b28214b8baf11b26ae00cdf1fe127190e9aeb7963916a56b8b76ff5a78ad7149c
 package() {
 	cd "${srcdir}/${gitname}-${pkgver}/"
 
-	./install.sh --prefix "${pkgdir}/usr"
+	./install.sh --prefix "${pkgdir}/usr" --with-cream-of-the-crop --no-system-deps
 
 	msg2 "Install README file"
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
