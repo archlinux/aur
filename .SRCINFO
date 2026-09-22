@@ -1,6 +1,6 @@
 pkgbase = netradiant-custom-git
 	pkgdesc = The open-source, cross-platform level editor for id Tech based games.
-	pkgver = latest.r42.g7ff91956
+	pkgver = 20260114.r20.g82161339
 	pkgrel = 1
 	url = https://github.com/Garux/netradiant-custom
 	arch = i686

@@ -3,13 +3,14 @@
 
 pkgname=netradiant-custom-git
 _pkgname=netradiant-custom
-pkgver=latest.r42.g7ff91956
+pkgver=20260114.r20.g82161339
 pkgrel=1
 pkgdesc='The open-source, cross-platform level editor for id Tech based games.'
 arch=('i686' 'x86_64')
 license=('BSD-3-Clause AND LGPL-2.1-only AND GPL-2.0-only')
 url="https://github.com/Garux/netradiant-custom"
 depends=(
+    'assimp'
     'gcc-libs'
     'glib2'
     'glibc'
@@ -17,6 +18,7 @@ depends=(
     'libpng'
     'libxml2'
     'qt5-base'
+    'qt5-svg'
     'zlib'
 )
 makedepends=(
