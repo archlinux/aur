@@ -6,24 +6,33 @@ pkgver=1.4
 pkgrel=1.1
 pkgdesc="Cross-platform editor and viewer for VapourSynth and AviSynth"
 arch=('x86_64' 'aarch64')
-url="https://github.com/mysteryx93/VapourSynthViewer.NET"
+url="https://github.com/mysteryx93/SynthMultiViewer"
 license=('MIT')
 optdepends=(
     'vapoursynth: VapourSynth script preview'
     'avisynthplus: AviSynth script preview'
 )
 options=(!strip)
-_appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/mysteryx93/VapourSynthViewer.NET/releases/download/v${pkgver}/${AppName}-${pkgver}_Linux_x64.AppImage")
-source_aarch64=("${_appimage}::https://github.com/mysteryx93/VapourSynthViewer.NET/releases/download/v${pkgver}/${AppName}-${pkgver}_Linux_arm64.AppImage")
-noextract=("${_appimage}")
+# pkgrel is part of the local name so a rebuild does not reuse a cached AppImage from the previous pkgrel.
+_src_x86_64="${pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage"
+_src_aarch64="${pkgname}-${pkgver}-${pkgrel}-aarch64.AppImage"
+source_x86_64=("${_src_x86_64}::https://github.com/mysteryx93/SynthMultiViewer/releases/download/v${pkgver}/${AppName}-${pkgver}_Linux_x64.AppImage")
+source_aarch64=("${_src_aarch64}::https://github.com/mysteryx93/SynthMultiViewer/releases/download/v${pkgver}/${AppName}-${pkgver}_Linux_arm64.AppImage")
+noextract=("${_src_x86_64}" "${_src_aarch64}")
 sha256sums_x86_64=('14230fddd14e8b36213e8b5a1a780d1ec95ad8de1bb4711a713b000f590cc80c')
-sha256sums_aarch64=('14230fddd14e8b36213e8b5a1a780d1ec95ad8de1bb4711a713b000f590cc80c')
+sha256sums_aarch64=('211cab4eabf9fdfcb922fe82a6b0bd7db2d98ff077b9d53e5d55169e41a882b7')
+
+_appimage() {
+    case "$CARCH" in
+        aarch64) printf '%s\n' "${_src_aarch64}" ;;
+        *) printf '%s\n' "${_src_x86_64}" ;;
+    esac
+}
 
 prepare() {
-    chmod +x "${_appimage}"
+    chmod +x "$(_appimage)"
     export APPIMAGE_EXTRACT_AND_RUN=1
-    ./"${_appimage}" --appimage-extract
+    ./"$(_appimage)" --appimage-extract
     sed -i "s/\/${AppName}/\/${appid}/g" "${srcdir}/squashfs-root/${appid}.desktop"
 }
 
@@ -37,7 +46,7 @@ build() {
 
 package() {
     # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${appid}.AppImage"
+    install -Dm755 "${srcdir}/$(_appimage)" "${pkgdir}/opt/${pkgname}/${appid}.AppImage"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/${appid}.desktop"\
