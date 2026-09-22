@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast-git
-pkgver=0.9.0.r1.64b1089
+pkgver=0.9.1.r1.4af455f
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -62,8 +62,8 @@ check() {
 package() {
   cd "${srcdir}/${pkgname}"
 
-  install -Dm755 "target/release/fastpotify" "${pkgdir}/usr/bin/fastpotify"
-  ln -s fastpotify "${pkgdir}/usr/bin/spotifast"
+  install -Dm755 "target/release/spotifast" "${pkgdir}/usr/bin/spotifast"
+  ln -s spotifast "${pkgdir}/usr/bin/fastpotify"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "packaging/applications/spotifast.desktop" \
