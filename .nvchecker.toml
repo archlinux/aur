@@ -1,0 +1,5 @@
+[knife-bin]
+source = "github"
+github = "bl4ckr0ss3/knife"
+use_latest_release = true
+prefix = "v"

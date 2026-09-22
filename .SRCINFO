@@ -1,0 +1,16 @@
+pkgbase = knife-bin
+	pkgdesc = A reverse engineer's binary Swiss-army knife in Rust
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/bl4ckr0ss3/knife
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = knife
+	conflicts = knife
+	options = !strip
+	source_x86_64 = knife-x86_64-1.8.1.tgz::https://github.com/bl4ckr0ss3/knife/releases/download/v1.8.1/knife-x86_64-unknown-linux-gnu.tgz
+	sha256sums_x86_64 = 705f1b702d5d14bc042b83d6d12cb6a47d79e2a5f0b3f4f76b6942f3e3b709c8
+
+pkgname = knife-bin
