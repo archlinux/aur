@@ -1,0 +1,26 @@
+pkgbase = kcd
+	pkgdesc = Lightweight, headless implementation of the KDE Connect protocol (v8) written in Go
+	pkgver = 1.19.1
+	pkgrel = 1
+	url = https://github.com/bethropolis/kcd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = libnotify: for desktop notifications
+	optdepends = wl-clipboard: for Wayland clipboard sync
+	optdepends = xclip: for X11 clipboard sync
+	optdepends = sshfs: for SFTP mounting support
+	optdepends = python-nautilus: for Nautilus file manager integration
+	optdepends = ydotool: for Wayland mousepad support
+	optdepends = xdotool: for X11 mousepad support
+	optdepends = wtype: for Wayland keyboard emulation
+	provides = kcd
+	conflicts = kcd-bin
+	options = !strip
+	options = !debug
+	source = kcd-1.19.1.tar.gz::https://github.com/bethropolis/kcd/archive/v1.19.1.tar.gz
+	sha256sums = fe26156a1d43e223cd56d325c824f023f6c7493a28798adc40644e4442a40260
+
+pkgname = kcd
