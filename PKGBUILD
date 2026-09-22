@@ -1,6 +1,6 @@
 # Maintainer: Zeffuro <Jeffroiscool@gmail.com>
 pkgname=zeff-boy-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A Game Boy, Game Boy Advance, NES, WonderSwan, and Sega 8-bit emulator written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('alsa-lib' 'systemd-libs')
 provides=('zeff-boy')
 conflicts=('zeff-boy')
 source=("zeff-boy-${pkgver}.tar.gz::https://github.com/Zeffuro/zeff-boy/releases/download/v${pkgver}/zeff-boy-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('0f0382a145b36278af4d3724e1e3236c732fd021d609b856d0c2e12adbb5c94c')
+sha256sums=('42dc6657b5d0f4791c9717aad0fadb0f9d593cb60c70863c2f4eff838eb91591')
 
 package() {
     install -Dm755 "zeff-boy" "${pkgdir}/usr/bin/zeff-boy"
