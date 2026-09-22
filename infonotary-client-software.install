@@ -1,5 +1,10 @@
 post_install() {
-	echo -n "If your card requires a custom driver (like bit4id-ipki),"
-	echo " you'll need to edit Preferences and add its module there (/usr/lib/libbit4ipki.so in this case)."
+	echo "Make sure the PC/SC daemon is running: systemctl enable --now pcscd.socket"
+	echo "If a SafeNet/IDPrime card (sac-core) is not detected, add this line to the [Providers]"
+	echo "section of ~/.InfoNotary/docsign_config_l.ini: ModuleSafeNet=/usr/lib/libeToken.so"
+	echo "Prefer updating via this package instead of the application's built-in self-updater."
 }
 
+post_upgrade() {
+	post_install
+}
