@@ -1,0 +1,19 @@
+pkgbase = dispatch-bin
+	pkgdesc = A terminal UI for browsing and launching GitHub Copilot CLI sessions
+	pkgver = 0.16.2
+	pkgrel = 1
+	url = https://github.com/jongio/dispatch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	depends = github-cli
+	provides = dispatch
+	conflicts = dispatch
+	options = !strip
+	source_x86_64 = dispatch-x86_64-0.16.2.tgz::https://github.com/jongio/dispatch/releases/download/v0.16.2/dispatch_0.16.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = c8f2fe63c04b9212dbf5ff9a5989b42035d2e4525bf2cefd1feba7ae6d68c175
+	source_aarch64 = dispatch-aarch64-0.16.2.tgz::https://github.com/jongio/dispatch/releases/download/v0.16.2/dispatch_0.16.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = d4c974a07f42cc00df4875cd4ff2ef8c12db05e6538dd89bac448d9ec61d27e4
+
+pkgname = dispatch-bin

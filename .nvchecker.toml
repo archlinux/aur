@@ -1,0 +1,5 @@
+[dispatch-bin]
+source = "github"
+github = "jongio/dispatch"
+use_latest_release = true
+prefix = "v"
