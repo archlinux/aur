@@ -2,20 +2,21 @@
 
 pkgname=python-pycxxfilt
 _pkgname="${pkgname#python-}"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Demangle C++ symbols using LLVM's C++ ABI demangler"
 arch=(x86_64 aarch64)
 url="https://github.com/tiran/pycxxfilt"
 license=(Apache-2.0)
 depends=(glibc libgcc libgcc_s.so libstdc++ libstdc++.so python)
-makedepends=(meson-python python-build python-installer python-setuptools-scm python-vcs-versioning python-wheel)
+makedepends=(meson-python python-build python-installer python-vcs-versioning python-wheel)
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f5bf59f87425931b91af8840417399f6bc5cbd3ce6edb49c680d0fed5957427d')
+sha256sums=('de500769fd2c838e672e329c913e50771a69b0cd5a1185ef175f7a77923aa772')
 
 build() {
     cd "$_pkgname-$pkgver"
+    # no longer requires python-setuptools-scm but still needs this env variable
     SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver" python -m build --wheel --no-isolation -Cbuild-dir=build
 }
 
