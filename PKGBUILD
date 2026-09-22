@@ -1,7 +1,7 @@
 # Maintainer: Egor3f <ef@efprojects.com>
 pkgname=konsole-companion-git
 _pkgname=konsole-companion
-pkgver=0.2.0.r5.gb3d4635
+pkgver=0.2.1.r7.gfe7228b
 pkgrel=1
 pkgdesc="Tab-set manager for KDE Konsole"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-	printf "0.2.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "0.2.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -29,5 +29,9 @@ package() {
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 data/konsole-companion.desktop \
 		"$pkgdir/usr/share/applications/konsole-companion.desktop"
+	install -Dm644 data/konsole-companion-daemon.service \
+		"$pkgdir/usr/lib/systemd/user/konsole-companion-daemon.service"
+	sed -i 's|%h/.local/bin/konsole-companion-daemon|/usr/bin/konsole-companion-daemon|' \
+		"$pkgdir/usr/lib/systemd/user/konsole-companion-daemon.service"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
