@@ -1,6 +1,6 @@
 pkgbase = hyprlayer-server-bin
 	pkgdesc = Hyprlayer runtime as a headless server, reached over a local socket or SSH
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://brightblock.ai/hyprlayer
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = hyprlayer-server-bin
 	conflicts = hyprlayer-server
 	options = !strip
 	options = !debug
-	source = hyprlayer-server-x86_64-unknown-linux-gnu-0.8.3::https://github.com/BrightBlock/hyprlayer-releases/releases/download/server-v0.8.3/hyprlayer-server-x86_64-unknown-linux-gnu
+	source = hyprlayer-server-x86_64-unknown-linux-gnu-0.8.4::https://github.com/BrightBlock/hyprlayer-releases/releases/download/server-v0.8.4/hyprlayer-server-x86_64-unknown-linux-gnu
 	source = hyprlayer-server.service
-	sha256sums = 8af4c7a2b83ba430fce03a6acce56b97759963ad7838cd2a09a6967d8244146b
+	sha256sums = 8104c3349abffa016f179816de627f58eae871b249d83ca5d52de1fab429719e
 	sha256sums = e578119d5152948b1ba56576c36825d63bce9ad1266e1c8ac661365cd597adae
 
 pkgname = hyprlayer-server-bin
