@@ -5,10 +5,10 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-declare -r _tag="04c528673024239d858998eebc34e1f8afa1acf3"
+declare -r _tag="9499b8a35efce4bb2d655ca24d9153576dcae39c"
 
 pkgname="matomo"
-pkgver="5.13.0"
+pkgver="5.14.0"
 pkgrel="1"
 pkgdesc="A powerful web analytics platform."
 arch=("x86_64")
@@ -54,7 +54,7 @@ source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/matomo-org/tag-manager.git"
     "git+https://github.com/matomo-org/travis-scripts.git"
     "override-${pkgname}.conf")
-sha512sums=("8cbf833620c94c055e16cbf2eacc1a58abf2ecbe03663517024414d19c55d10a8faa1ea1bdc1a0113b9f12ef599db2b6d5c8d80c681359e62ee703fd87fd64a6"
+sha512sums=("a381486f0b1e7e65789384511f89eaa1598d067f9f3223e4c23d41fbd5db4f322ea6225060c795498d2c9aaa9724b98c0b107a77af06d23093df0c3d038b687a"
     "SKIP"
     "SKIP"
     "SKIP"
