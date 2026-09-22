@@ -8,7 +8,7 @@ _pkgname=vlmcsd
 pkgname=$_pkgname-git
 pkgver=2604.r29.gbadb24e
 _pkgreleasever="${pkgver%%.*}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Volume License Manager Service: KMS Emulator in C (for activating Microsoft products)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/tfslabs/vlmcsd"
@@ -16,6 +16,7 @@ license=('LicenseRef-TheFlightSims_OSS_License')
 provides=(
     "vlmcsd=${pkgver}"
     "libkms=${pkgver}"
+    "libkms-git=${pkgver}"
     "libkms-static=${pkgver}"
     "libkms.a"
     "libkms.so"
