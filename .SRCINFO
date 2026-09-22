@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-vmaf
 	pkgdesc = Perceptual video quality assessment algorithm based on multi-method fusion (Android aarch64)
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.2.1
+	pkgrel = 1
 	url = https://github.com/Netflix/vmaf/
 	arch = any
 	groups = android-vmaf
@@ -13,9 +13,9 @@ pkgbase = android-aarch64-vmaf
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/Netflix/vmaf/archive/v3.0.0/vmaf-3.0.0.tar.gz
+	source = https://github.com/Netflix/vmaf/archive/v3.2.1/vmaf-3.2.1.tar.gz
 	source = 0001-Fix-fseeko-errors.patch
-	sha256sums = 7178c4833639e6b989ecae73131d02f70735fdb3fc2c7d84bc36c9c3461d93b1
-	sha256sums = 95eddd88210f3227ee0c7c1212d6b7caeecf2a94ac0d573aa5b4cc059aa03efb
+	md5sums = ff76dae88cab6fe3b83d9a47c6d78594
+	md5sums = 579e3a81ab53b903a6e78ad0606f747a
 
 pkgname = android-aarch64-vmaf
