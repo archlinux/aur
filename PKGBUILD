@@ -2,7 +2,7 @@
 
 pkgname=haguichi-git
 _pkgname=haguichi
-pkgver=1.5.4.r0.g2f38293
+pkgver=1.5.4.r30.g24c2e0a
 pkgrel=1
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux (development version)"
 arch=(x86_64)
@@ -32,7 +32,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_pkgname build
+  arch-meson -Dprofile=development $_pkgname build
   meson compile -C build
 }
 
