@@ -1,0 +1,26 @@
+pkgbase = wgpu-native
+	pkgdesc = Native WebGPU implementation based on wgpu-core
+	pkgver = 29.0.1.1
+	pkgrel = 1
+	url = https://github.com/gfx-rs/wgpu-native
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = clang
+	depends = gcc-libs
+	depends = glibc
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	provides = libwgpu_native.so
+	provides = webgpu-headers
+	conflicts = webgpu-headers
+	conflicts = webgpu-headers-git
+	options = staticlibs
+	source = wgpu-native-29.0.1.1.tar.gz::https://github.com/gfx-rs/wgpu-native/archive/refs/tags/v29.0.1.1.tar.gz
+	source = webgpu-headers-673658bc2bd70ec39fc55ebe6bb0173cf6d0a603.tar.gz::https://github.com/webgpu-native/webgpu-headers/archive/673658bc2bd70ec39fc55ebe6bb0173cf6d0a603.tar.gz
+	sha256sums = 6008651e1d10022d4ded15b69405b4ba88577be5d623938ba98ad241b2cbf818
+	sha256sums = 6754c6c2465c79a954f7c04c7890c9f00b7ecce8addbe01b5056e860ba3933e6
+
+pkgname = wgpu-native
