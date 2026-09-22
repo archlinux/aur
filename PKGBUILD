@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=luatos-cli-git
-pkgname=(luatos-cli-git luatos-mcp-git luatos-log-ffi-git)
-pkgver=1.11.0.r0.g22a8f95
+pkgname=(luatos-cli-git luatos-log-ffi-git)
+pkgver=1.11.0.r12.g5eccc13
 pkgrel=1
 pkgdesc="LuatOS command-line toolset (pure Rust)-brushing, logging, project management, firmware resources and builds"
 arch=($CARCH)
@@ -29,11 +29,9 @@ options=('!lto')
 install=
 source=("${pkgbase}::git+${url}.git"
         luatos-cli.install
-        luatos-mcp.install
         luatos-log-ffi.install)
 sha256sums=('SKIP'
             '028878803a8de1324da183486e04457b413417d6af7396f86deae87929232904'
-            '62097f257e96bb89ba585211451b6df9d168f96842289d757a190c34465b9ac7'
             '6c38d27bc0d64be9576a0189ab750fb762205622886ed35725d177a4f6f4526d')
 
 pkgver() {
@@ -81,21 +79,6 @@ package_luatos-cli-git() {
     install -Dm0644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
     cp -rv docs "${pkgdir}/usr/share/doc/${pkgname}/"
-    install -Dm0755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin/"
-}
-
-package_luatos-mcp-git() {
-    pkgdesc="LuatOS MCP server - exposes flash/log/project tools to AI agents over stdio"
-    provides=(${pkgname%-git})
-    conflicts=(${pkgname%-git})
-    replaces=()
-    depends+=(
-        luatos-cli
-    )
-    install=${pkgname%-git}.install
-    cd "${srcdir}/${pkgbase}/"
-
-    install -Dm0644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin/"
 }
 
