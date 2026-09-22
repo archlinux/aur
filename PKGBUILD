@@ -1,7 +1,7 @@
 # Maintainer: NanKill <nankill@nankill.xyz>
 pkgname=glassy-music-nankill-git
-_app_id=glassy-music-nankill-mod
-pkgver=4.0.0.r1.g84c510d
+_app_id=glassy-music-nankill
+pkgver=4.0.0.r22.g0a4cc36
 pkgrel=1
 _nodeversion=24
 _electronversion=42
