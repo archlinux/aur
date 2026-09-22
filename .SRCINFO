@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-p11-kit
 	pkgdesc = Loads and enumerates PKCS#11 modules (Android riscv64)
-	pkgver = 0.26.1
+	pkgver = 0.26.5
 	pkgrel = 1
 	url = https://p11-glue.freedesktop.org
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = android-riscv64-p11-kit
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/p11-glue/p11-kit/releases/download/0.26.1/p11-kit-0.26.1.tar.xz
-	md5sums = c5ef8b487869233ba58973a91dcfdf26
+	source = https://github.com/p11-glue/p11-kit/releases/download/0.26.5/p11-kit-0.26.5.tar.xz
+	md5sums = 308306e889850bff08fae74ae7897a21
 
 pkgname = android-riscv64-p11-kit
