@@ -1,6 +1,6 @@
 pkgbase = totray
 	pkgdesc = AutoRun utility for hyprland.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Agzes/ToTray
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = totray
 	makedepends = cargo
 	makedepends = pkgconf
 	depends = gtk4
-	source = totray-0.1.0.tar.gz::https://github.com/Agzes/ToTray/archive/v.0.1.0.tar.gz
-	sha256sums = 927c49e48494183cca6697b13de87f8e278fb7272b4a31cfb188c2128c03cd73
+	source = totray-0.2.0.tar.gz::https://github.com/Agzes/ToTray/archive/v.0.2.0.tar.gz
+	sha256sums = 2286b071497e57e013883617cbb46cb2284d819de9687d4ee3d5bbb286968fa6
 
 pkgname = totray

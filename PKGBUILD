@@ -1,7 +1,7 @@
 # Maintainer: agzes <agzes0@proton.me>
 pkgname=totray
 _pkgname=ToTray
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="AutoRun utility for hyprland."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gtk4')
 makedepends=('rust' 'cargo' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v.$pkgver.tar.gz")
-sha256sums=('927c49e48494183cca6697b13de87f8e278fb7272b4a31cfb188c2128c03cd73')
+sha256sums=('2286b071497e57e013883617cbb46cb2284d819de9687d4ee3d5bbb286968fa6')
 
 prepare() {
   cd "$_pkgname-v.$pkgver"
