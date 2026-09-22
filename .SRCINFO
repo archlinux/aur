@@ -1,6 +1,6 @@
 pkgbase = ultracopier
-	pkgdesc = Ultracopier acts as a replacement for files copy dialogs. Main features include: play/pause, speed limitation, on-error resume, error/collision management
-	pkgver = 3.1.0.3
+	pkgdesc = A replacement for files copy dialogs. Main features include: play/pause, speed limitation, on-error resume, error/collision management
+	pkgver = 3.1.0.6
 	pkgrel = 1
 	url = https://ultracopier.herman-brule.com
 	arch = x86_64
@@ -11,7 +11,8 @@ pkgbase = ultracopier
 	depends = libstdc++
 	depends = qt6-base
 	depends = hicolor-icon-theme
-	source = ultracopier-3.1.0.3.tgz::https://github.com/alphaonex86/Ultracopier/archive/3.1.0.3.tar.gz
-	b2sums = 18e06d604c2bba8ac8df7401a607260b0cb3ddec0ee6bbdaf45e495bd9e826f4afc5987417d76be886271f9c3a9f07d1b07d2b17eff638caa6c345e4d1cc9c0e
+	depends = liburing
+	source = ultracopier-3.1.0.6.tgz::https://github.com/alphaonex86/Ultracopier/archive/3.1.0.6.tar.gz
+	b2sums = 0871aa3ee64208eba221523747126f5efc1d05707acccb550faade677508d751380d9bca64a020553efe7ffeca41459886adfb076b6af682a3e4ac331753b328
 
 pkgname = ultracopier
