@@ -152,6 +152,10 @@ _notes()
         _notes_handoffs "$i"
         return
         ;;
+      handoff)
+        _notes_handoff "$i"
+        return
+        ;;
       mcp)
         _notes_mcp "$i"
         return
@@ -182,7 +186,7 @@ _notes()
     return
   fi
 
-  COMPREPLY=( $(compgen -W 'root context list search read write delete move create targets agents active-count priority open-agent handoffs mcp capture daemon' -- "$cur") )
+  COMPREPLY=( $(compgen -W 'root context list search read write delete move create targets agents active-count priority open-agent handoffs handoff mcp capture daemon' -- "$cur") )
 }
 
 _notes_root()
@@ -639,6 +643,41 @@ _notes_open_agent()
 }
 
 _notes_handoffs()
+{
+  local cur prev words cword i
+  local _command_index="$1"
+  _init_completion -n "$COMP_WORDBREAKS" || return
+
+  # Flag value completions
+  case "$prev" in
+    --format)
+      _notes--choices "$cur" "$_comp_word" 'labels' 'json'
+      return
+      ;;
+  esac
+
+  local _used_0="" _used_1="" _used_2=""
+  for ((i = 1; i < cword; i++)); do
+    case "${words[i]%%=*}" in
+      --all|--no-all) _used_0=1 ;;
+      --list|--no-list) _used_1=1 ;;
+      --format) _used_2=1 ;;
+    esac
+  done
+  local _filtered_flags=""
+  [[ -n "$_used_0" ]] || _filtered_flags+=" --all --no-all"
+  [[ -n "$_used_1" ]] || _filtered_flags+=" --list --no-list"
+  [[ -n "$_used_2" ]] || _filtered_flags+=" --format"
+
+  # Complete flags (filtered) and subcommands
+  if [[ "$cur" == -* ]]; then
+    COMPREPLY=( $(compgen -W "$_filtered_flags" -- "$cur") )
+    return
+  fi
+
+}
+
+_notes_handoff()
 {
   local cur prev words cword i
   local _command_index="$1"

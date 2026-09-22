@@ -29,6 +29,7 @@ _notes() {
     'priority:Set a note priority, then commit and push it'
     'open-agent:Open a note in an installed agent through Herdr'
     'handoffs:Browse handoff-tagged notes'
+    'handoff:Browse handoff-tagged notes'
     'mcp:Run the notes MCP server over stdio'
     'capture:Process a captured note through local OpenCode'
     'daemon:Process captured notes through local OpenCode'
@@ -94,6 +95,9 @@ _notes() {
           ;;
         handoffs)
           _notes_handoffs
+          ;;
+        handoff)
+          _notes_handoff
           ;;
         mcp)
           _notes_mcp
@@ -253,6 +257,18 @@ _notes_open_agent() {
 }
 
 _notes_handoffs() {
+  local -a specs
+  specs=(
+    '(--all --no-all)--all[Show notes from every projects directory]'
+    '(--all --no-all)--no-all[Disable all]'
+    '(--list --no-list)--list[List handoffs to stdout instead of opening the TUI]'
+    '(--list --no-list)--no-list[Disable list]'
+    '(--format)--format[Output format]:value:(labels json)'
+  )
+  _arguments "${specs[@]}"
+}
+
+_notes_handoff() {
   local -a specs
   specs=(
     '(--all --no-all)--all[Show notes from every projects directory]'

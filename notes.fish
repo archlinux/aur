@@ -22,6 +22,7 @@ complete -c notes -n '__fish_use_subcommand' -f -a 'active-count' -d 'Emit the f
 complete -c notes -n '__fish_use_subcommand' -f -a 'priority' -d 'Set a note priority, then commit and push it'
 complete -c notes -n '__fish_use_subcommand' -f -a 'open-agent' -d 'Open a note in an installed agent through Herdr'
 complete -c notes -n '__fish_use_subcommand' -f -a 'handoffs' -d 'Browse handoff-tagged notes'
+complete -c notes -n '__fish_use_subcommand' -f -a 'handoff' -d 'Browse handoff-tagged notes'
 complete -c notes -n '__fish_use_subcommand' -f -a 'mcp' -d 'Run the notes MCP server over stdio'
 complete -c notes -n '__fish_use_subcommand' -f -a 'capture' -d 'Process a captured note through local OpenCode'
 complete -c notes -n '__fish_use_subcommand' -f -a 'daemon' -d 'Process captured notes through local OpenCode'
@@ -152,6 +153,17 @@ complete -c notes -n '__fish_seen_subcommand_from handoffs; and not string match
 complete -c notes -n '__fish_seen_subcommand_from handoffs; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt list no-list' -f -a '--list' -d 'List handoffs to stdout instead of opening the TUI'
 complete -c notes -n '__fish_seen_subcommand_from handoffs; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt list no-list' -f -a '--no-list' -d 'Disable list'
 complete -c notes -n '__fish_seen_subcommand_from handoffs; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt format' -f -a '--format' -d 'Output format'
+complete -c notes -n '__fish_seen_subcommand_from handoff' -f
+complete -c notes -n '__fish_seen_subcommand_from handoff; and not __fish_contains_opt all no-all' -l all -d 'Show notes from every projects directory'
+complete -c notes -n '__fish_seen_subcommand_from handoff; and not __fish_contains_opt all no-all' -l no-all -d 'Disable all'
+complete -c notes -n '__fish_seen_subcommand_from handoff; and not __fish_contains_opt list no-list' -l list -d 'List handoffs to stdout instead of opening the TUI'
+complete -c notes -n '__fish_seen_subcommand_from handoff; and not __fish_contains_opt list no-list' -l no-list -d 'Disable list'
+complete -c notes -n '__fish_seen_subcommand_from handoff; and begin; not __fish_contains_opt format; or contains -- (commandline -poc)[-1] --format; end' -l format -d 'Output format' -r -f -a 'labels json'
+complete -c notes -n '__fish_seen_subcommand_from handoff; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt all no-all' -f -a '--all' -d 'Show notes from every projects directory'
+complete -c notes -n '__fish_seen_subcommand_from handoff; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt all no-all' -f -a '--no-all' -d 'Disable all'
+complete -c notes -n '__fish_seen_subcommand_from handoff; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt list no-list' -f -a '--list' -d 'List handoffs to stdout instead of opening the TUI'
+complete -c notes -n '__fish_seen_subcommand_from handoff; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt list no-list' -f -a '--no-list' -d 'Disable list'
+complete -c notes -n '__fish_seen_subcommand_from handoff; and not string match -q -- "-*" (commandline -ct); and not __fish_contains_opt format' -f -a '--format' -d 'Output format'
 complete -c notes -n '__fish_seen_subcommand_from mcp' -f
 complete -c notes -n '__fish_seen_subcommand_from capture' -f
 complete -c notes -n '__fish_seen_subcommand_from capture; and begin; not __fish_contains_opt config; or contains -- (commandline -poc)[-1] --config; end' -l config -d 'Daemon YAML configuration path' -r -F
