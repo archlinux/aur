@@ -3,7 +3,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-xz
-pkgver=5.8.2
+pkgver=5.8.4
 pkgrel=1
 arch=('any')
 pkgdesc="Library and command line tools for XZ and LZMA compressed files (Android ${_android_arch})"
@@ -16,7 +16,7 @@ makedepends=('android-configure'
              'po4a')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/tukaani-project/xz/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('8dfa4ca6a7bce36aa3391ccdcfd20c14')
+md5sums=('07a474428e41aad067567005ccede2b7')
 
 prepare() {
     cd "${srcdir}/xz-${pkgver}"
