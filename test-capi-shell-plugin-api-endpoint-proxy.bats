@@ -56,19 +56,12 @@ EOF
   [ -z "$output" ]
 }
 
-@test "tool sshuttle backgrounds sshuttle and prints its PID when a host is configured" {
-  stub sshuttle <<'EOF'
-#!/usr/bin/env bash
-echo "sshuttle called with: $*" >>"$SSHUTTLE_LOG"
-sleep 5 &
-wait
-EOF
-  export SSHUTTLE_LOG="$BATS_TEST_TMPDIR/sshuttle.log"
+@test "tool sshuttle prints the sshuttle argv when a host is configured" {
   export API_ENDPOINT_PROXY_SSHUTTLE_HOST="jump.example.com"
   run bash -c 'source "'"$TOOL_SSHUTTLE"'"; api_endpoint_proxy_tool_sshuttle 10.1.2.3 6443'
   [ "$status" -eq 0 ]
-  [[ "$output" =~ ^[0-9]+$ ]]
-  kill "$output" 2>/dev/null || true
+  printf -v expected 'sshuttle\n-r\njump.example.com\n10.1.2.3:6443'
+  [ "$output" = "$expected" ]
 }
 
 @test "tool sshuttle prints nothing and fails when no host is configured" {
@@ -79,7 +72,7 @@ EOF
   [ -z "$output" ]
 }
 
-@test "dispatcher backgrounds sshuttle via the capo provider and cleans it up" {
+@test "dispatcher starts the proxy via systemd-run in the plugin's slice" {
   stub kubectl <<'EOF'
 #!/usr/bin/env bash
 case "$*" in
@@ -97,31 +90,107 @@ YAML
   *) exit 1 ;;
 esac
 EOF
-  stub sshuttle <<'EOF'
+  stub systemd-run <<'EOF'
 #!/usr/bin/env bash
-echo "$*" >>"$SSHUTTLE_LOG"
-sleep 5 &
-wait
+echo "$*" >>"$SYSTEMD_RUN_LOG"
+exit 0
 EOF
-  export SSHUTTLE_LOG="$BATS_TEST_TMPDIR/sshuttle.log"
+  export SYSTEMD_RUN_LOG="$BATS_TEST_TMPDIR/systemd-run.log"
   export API_ENDPOINT_PROXY_SSHUTTLE_HOST="jump.example.com"
+  export API_ENDPOINT_PROXY_TOOL="sshuttle"
   run bash -c '
     source "'"$PROVIDER_CAPO"'"
     source "'"$TOOL_SSHUTTLE"'"
     source "'"$DISPATCHER"'"
-    state="$(api_endpoint_proxy_pre_exec ns foo)"
-    [[ "$state" =~ ^[0-9]+$ ]] || exit 1
-    kill -0 "$state" || exit 1
-    for i in $(seq 1 50); do
-      [[ -s "$SSHUTTLE_LOG" ]] && break
-      sleep 0.1
-    done
-    api_endpoint_proxy_cleanup "$state"
-    sleep 0.2
-    ! kill -0 "$state" 2>/dev/null
+    api_endpoint_proxy_pre_exec ns foo
   '
   [ "$status" -eq 0 ]
-  [[ "$(cat "$SSHUTTLE_LOG")" == *"jump.example.com"*"10.1.2.3:6443"* ]]
+  log="$(cat "$SYSTEMD_RUN_LOG")"
+  [[ "$log" == *"--user"* ]]
+  [[ "$log" == *"--unit=capi-shell-api-endpoint-proxy-sshuttle-10.1.2.3:6443"* ]]
+  [[ "$log" == *"--slice=capi-shell-api-endpoint-proxy.slice"* ]]
+  [[ "$log" == *"sshuttle -r jump.example.com 10.1.2.3:6443"* ]]
+}
+
+@test "dispatcher reuses an already-active proxy unit instead of starting a duplicate" {
+  stub kubectl <<'EOF'
+#!/usr/bin/env bash
+case "$*" in
+  *"get openstackcluster -l cluster.x-k8s.io/cluster-name=foo -o yaml"*)
+    cat <<'YAML'
+items:
+  - spec:
+      apiServerLoadBalancer:
+        allowedCIDRs: ["10.0.0.0/8"]
+      controlPlaneEndpoint:
+        host: 10.1.2.3
+        port: 6443
+YAML
+    ;;
+  *) exit 1 ;;
+esac
+EOF
+  stub systemd-run <<'EOF'
+#!/usr/bin/env bash
+echo "Unit capi-shell-api-endpoint-proxy-sshuttle-10.1.2.3:6443.service already exists." >&2
+exit 1
+EOF
+  stub systemctl <<'EOF'
+#!/usr/bin/env bash
+case "$*" in
+  "--user is-active --quiet capi-shell-api-endpoint-proxy-sshuttle-10.1.2.3:6443") exit 0 ;;
+  *) exit 1 ;;
+esac
+EOF
+  export API_ENDPOINT_PROXY_SSHUTTLE_HOST="jump.example.com"
+  export API_ENDPOINT_PROXY_TOOL="sshuttle"
+  run bash -c '
+    source "'"$PROVIDER_CAPO"'"
+    source "'"$TOOL_SSHUTTLE"'"
+    source "'"$DISPATCHER"'"
+    api_endpoint_proxy_pre_exec ns foo
+  '
+  [ "$status" -eq 0 ]
+  [ -z "$output" ]
+}
+
+@test "dispatcher warns when systemd-run fails and no matching unit is active" {
+  stub kubectl <<'EOF'
+#!/usr/bin/env bash
+case "$*" in
+  *"get openstackcluster -l cluster.x-k8s.io/cluster-name=foo -o yaml"*)
+    cat <<'YAML'
+items:
+  - spec:
+      apiServerLoadBalancer:
+        allowedCIDRs: ["10.0.0.0/8"]
+      controlPlaneEndpoint:
+        host: 10.1.2.3
+        port: 6443
+YAML
+    ;;
+  *) exit 1 ;;
+esac
+EOF
+  stub systemd-run <<'EOF'
+#!/usr/bin/env bash
+echo "boom" >&2
+exit 1
+EOF
+  stub systemctl <<'EOF'
+#!/usr/bin/env bash
+exit 1
+EOF
+  export API_ENDPOINT_PROXY_SSHUTTLE_HOST="jump.example.com"
+  export API_ENDPOINT_PROXY_TOOL="sshuttle"
+  run bash -c '
+    source "'"$PROVIDER_CAPO"'"
+    source "'"$TOOL_SSHUTTLE"'"
+    source "'"$DISPATCHER"'"
+    api_endpoint_proxy_pre_exec ns foo
+  '
+  [ "$status" -eq 0 ]
+  [[ "$output" == *"Failed to start proxy via systemd-run"*"boom"* ]]
 }
 
 @test "dispatcher does nothing when no provider reports an endpoint" {

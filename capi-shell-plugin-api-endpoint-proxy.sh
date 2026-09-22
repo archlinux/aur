@@ -33,15 +33,27 @@ api_endpoint_proxy_pre_exec() {
   fi
   local host port
   read -r host port <<<"$endpoint"
-  "api_endpoint_proxy_tool_${tool}" "$host" "$port"
-}
 
-api_endpoint_proxy_cleanup() {
-  local state="$1"
-  [[ -n "$state" ]] && kill "$state" 2>/dev/null
-  true
+  local argv_raw
+  if ! argv_raw="$("api_endpoint_proxy_tool_${tool}" "$host" "$port")" || [[ -z "$argv_raw" ]]; then
+    return 0
+  fi
+  local argv
+  mapfile -t argv <<<"$argv_raw"
+
+  local slice="capi-shell-api-endpoint-proxy.slice"
+  local unit="capi-shell-api-endpoint-proxy-${tool}-${host}:${port}"
+  local systemd_err
+  if systemd_err="$(systemd-run --user --unit="$unit" --slice="$slice" --collect --quiet -- "${argv[@]}" 2>&1 >/dev/null)"; then
+    return 0
+  fi
+  if systemctl --user is-active --quiet "$unit"; then
+    return 0
+  fi
+  echo "Failed to start proxy via systemd-run: $systemd_err" >&2
+  return 0
 }
 
 if declare -F capi_shell_register_pre_exec >/dev/null; then
-  capi_shell_register_pre_exec api_endpoint_proxy_pre_exec api_endpoint_proxy_cleanup
+  capi_shell_register_pre_exec api_endpoint_proxy_pre_exec
 fi
