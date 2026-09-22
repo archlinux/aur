@@ -1,6 +1,6 @@
 pkgbase = tabularis-bin
 	pkgdesc = Open-source desktop SQL workspace for PostgreSQL, MySQL/MariaDB, SQLite and 15+ more databases, with a built-in MCP server
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/TabularisDB/tabularis
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tabularis-bin
 	depends = libsecret
 	provides = tabularis
 	conflicts = tabularis
-	source = tabularis_0.24.0_amd64.deb::https://github.com/TabularisDB/tabularis/releases/download/v0.24.0/tabularis_0.24.0_amd64.deb
-	sha256sums = 68bd9a9d38fa5f58b26e58846f79d8fa7c887f07621ea807cd3921fd8d0101fc
+	source = tabularis_0.25.0_amd64.deb::https://github.com/TabularisDB/tabularis/releases/download/v0.25.0/tabularis_0.25.0_amd64.deb
+	sha256sums = ec1f8d4340de386c89cc98d59c8ff1494e9a20746069817b74f03ea8683675fb
 
 pkgname = tabularis-bin
