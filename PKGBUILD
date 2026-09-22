@@ -9,7 +9,7 @@ _gitname="gammu"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=1.45.0+11.r14761.20260922.a423d8e58
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU All Mobile Management Utilities. Latest git checkout."
 arch=(
   'i686'
@@ -198,8 +198,7 @@ package() {
     description-pak
     ChangeLog
     INSTALL
-    README.en_GB
-    README.de
+    README.rst
   )
   _docdirs=()
   _manfiles=()
