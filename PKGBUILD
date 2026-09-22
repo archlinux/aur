@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=agent-browser
-pkgver=0.37.1
+pkgver=0.38.1
 pkgrel=1
 pkgdesc="Headless browser automation CLI for AI agents"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('d875c51ecee47ed8aa65b570c27021a96eacdf25399a621d689797346c33da2a')
+sha256sums=('89a7df4761ff335e4dd5367e4cf04cecb9ba4e2cc130a0220f798d188414dc6c')
 
 package() {
     /usr/bin/npm install -g --ignore-scripts --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
