@@ -1,13 +1,13 @@
 # Maintainer: Steve Holvoet <linux@steho.be>
 pkgname=ghidra-mcp-git
-pkgver=6.0.0.r0.g8cd2078
+pkgver=6.0.0.r283.gb3f8dfe
 pkgrel=1
 pkgdesc="Production-ready Model Context Protocol server for Ghidra reverse engineering platform (latest git version)"
 arch=('any')
 url="https://github.com/bethington/ghidra-mcp"
 license=('Apache-2.0')
 depends=('ghidra' 'python' 'python-mcp')
-makedepends=('maven' 'jdk-openjdk' 'git' 'python-build' 'python-installer' 'python-hatchling' 'python-wheel')
+makedepends=('maven' 'jdk25-openjdk' 'git' 'python-build' 'python-installer' 'python-hatchling' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname}")
 source=("git+${url}.git")
@@ -98,6 +98,7 @@ build() {
     "Framework-TraceModeling"
     "Debugger-rmi-trace"
     "DB"
+    "Graph"
   )
 
   for _jar_name in "${_ghidra_jars[@]}"; do
