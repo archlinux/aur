@@ -2,7 +2,7 @@
 
 pkgname=penguin-burner
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatic NVIDIA GPU undervolting, overclocking and adaptive per-game tuning'
 arch=('x86_64')
 url='https://github.com/jpietek/PenguinBurner'
@@ -19,6 +19,12 @@ depends=(
 makedepends=(
   'cargo'
   'cmake'
+  # The 32-bit companion Vulkan layer, which is the only thing a 32-bit game's
+  # i386 winevulkan can load. Both live in [multilib] -- already enabled on any
+  # machine that can run a 32-bit game at all, since its lib32 Vulkan driver
+  # comes from there too.
+  'lib32-gcc-libs'
+  'lib32-glibc'
   'mingw-w64-gcc'
   'python-build'
   'python-installer'
@@ -32,6 +38,9 @@ sha256sums=('SKIP')
 build() {
   cd "PenguinBurner-${pkgver}"
   export PENGUIN_BURNER_REQUIRE_NATIVE_LAYER=1
+  # Fail the build rather than quietly shipping an overlay that never appears
+  # in a 32-bit game; the lib32 makedepends above provide the toolchain.
+  export PENGUIN_BURNER_REQUIRE_NATIVE_LAYER32=1
   # MinGW cross-compiles the NVAPI latency shim into the wheel; fail loudly
   # if the toolchain is missing instead of shipping the feature hollow.
   export PENGUIN_BURNER_REQUIRE_NVAPI_SHIM=1

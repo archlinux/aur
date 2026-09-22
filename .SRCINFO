@@ -1,12 +1,14 @@
 pkgbase = penguin-burner
 	pkgdesc = Automatic NVIDIA GPU undervolting, overclocking and adaptive per-game tuning
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jpietek/PenguinBurner
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = cmake
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-glibc
 	makedepends = mingw-w64-gcc
 	makedepends = python-build
 	makedepends = python-installer
