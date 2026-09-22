@@ -27,6 +27,7 @@ depends=(
 makedepends=(
   'git'
   'python-build'
+  'python-hatchling'
   'python-installer'
   'python-setuptools>=61.0.0'
   'python-wheel'
