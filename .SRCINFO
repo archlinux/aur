@@ -1,0 +1,17 @@
+pkgbase = alise-git
+	pkgdesc = Declarative Arch Linux installer in Guile Scheme
+	pkgver = 0.1.0.r0.gb2e0f6d
+	pkgrel = 1
+	url = https://codeberg.org/mipi/alise/
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = make
+	depends = guile
+	depends = guile-ssh
+	provides = alise
+	conflicts = alise
+	source = git+https://codeberg.org/mipi/alise.git
+	md5sums = SKIP
+
+pkgname = alise-git
