@@ -15,6 +15,18 @@ makedepends=('pico-sdk' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_pkgver}/${pkgname}-${_pkgver}.tar.gz")
 sha256sums=('1e343345b6dbabea20cf52f755fac96b32d7fa2074e50e2094a623110f1eb9b9')
 
+prepare() {
+	cd "${pkgname}-${_pkgver}"
+
+	# Arch has no plugdev group. Access is already granted through the
+	# uaccess rules further down in the same file, so drop the plugdev block.
+	sed -i '/^# Rules for plugdev access$/,/^$/d' udev/60-picotool.rules
+	if grep -q plugdev udev/60-picotool.rules; then
+		error "udev rules still reference plugdev, check upstream changes"
+		return 1
+	fi
+}
+
 build() {
 	if [ -z "${PICO_SDK_PATH}" ]; then
 		if [ -d "/usr/share/pico-sdk" ]; then
