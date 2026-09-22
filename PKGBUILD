@@ -4,8 +4,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-vmaf
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 arch=('any')
 pkgdesc="Perceptual video quality assessment algorithm based on multi-method fusion (Android ${_android_arch})"
 url='https://github.com/Netflix/vmaf/'
@@ -17,8 +17,8 @@ makedepends=('android-meson'
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/Netflix/vmaf/archive/v${pkgver}/vmaf-${pkgver}.tar.gz"
         '0001-Fix-fseeko-errors.patch')
-sha256sums=('7178c4833639e6b989ecae73131d02f70735fdb3fc2c7d84bc36c9c3461d93b1'
-            '95eddd88210f3227ee0c7c1212d6b7caeecf2a94ac0d573aa5b4cc059aa03efb')
+md5sums=('ff76dae88cab6fe3b83d9a47c6d78594'
+         '579e3a81ab53b903a6e78ad0606f747a')
 
 prepare() {
     cd "${srcdir}/vmaf-${pkgver}"
@@ -49,4 +49,5 @@ package() {
     ${ANDROID_RANLIB} "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.a || true
 
     cp -dr --no-preserve='ownership' "${srcdir}/vmaf-${pkgver}/model" "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    install -vDm 644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
