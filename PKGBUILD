@@ -5,7 +5,7 @@
 # Contributor: Sauyon Lee <me at sjl dot re>
 
 pkgname=codeql
-pkgver=2.27.0
+pkgver=2.27.1
 pkgrel=1
 pkgdesc="CLI tool for GitHub's CodeQL, including the standard query packs"
 arch=(
@@ -47,22 +47,78 @@ conflicts=('codeql-cli-bin')
 replaces=('codeql-cli-bin')
 options=('!strip')
 source_aarch64=("${pkgname}-bundle-${pkgver}-aarch64.tar.zst::${_bundle_url}/releases/download/codeql-bundle-v${pkgver}/codeql-bundle-linux-arm64.tar.zst")
-sha256sums_aarch64=('33518e42e98aaa5865877e11529757fc660c15b8e3ac84d6ba85ffc9fa222f51')
+sha256sums_aarch64=('5e87cf7254bc948b002ae444066ecc6f913960361ac675d049862dcb62d7786a')
 source_x86_64=("${pkgname}-bundle-${pkgver}-x86_64.tar.zst::${_bundle_url}/releases/download/codeql-bundle-v${pkgver}/codeql-bundle-linux64.tar.zst")
-sha256sums_x86_64=('5e0f04bcb92c0c0973b6f5597e55316269051fa98bda3f725d8af9a85016721a')
+sha256sums_x86_64=('1ec99cfa9420f04c2330784b4ddb8363a0dd67c3e4471cd93963c50e6c433717')
 
 check() {
 	local codeql="${srcdir}/codeql/codeql"
+	local codeql_version
+	local language
+	local query_pack
+	local resolved_languages
+	local resolved_packs
 	local suite
 	local suite_path
 	local resolved_queries
+	local version_output
+	local languages=(
+		'actions'
+		'cpp'
+		'csharp'
+		'csv'
+		'go'
+		'html'
+		'java'
+		'javascript'
+		'properties'
+		'python'
+		'ruby'
+		'rust'
+		'swift'
+		'xml'
+		'yaml'
+	)
+	local query_packs=(
+		'actions'
+		'cpp'
+		'csharp'
+		'go'
+		'java'
+		'javascript'
+		'python'
+		'ruby'
+		'rust'
+		'swift'
+	)
 	local suites=(
 		'cpp-code-scanning.qls'
 		'cpp-security-extended.qls'
 		'cpp-security-and-quality.qls'
 	)
 
-	"${codeql}" version
+	version_output="$("${codeql}" version --format=json)" || return 1
+	codeql_version="$(sed -n 's/^[[:space:]]*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' <<< "${version_output}")"
+	[[ "${codeql_version}" == "${pkgver}" ]] || {
+		printf 'CodeQL CLI version mismatch: expected %s, got %s\n' "${pkgver}" "${codeql_version:-<missing>}" >&2
+		return 1
+	}
+
+	resolved_languages="$("${codeql}" resolve languages)" || return 1
+	for language in "${languages[@]}"; do
+		grep -Fq "${language} (" <<< "${resolved_languages}" || {
+			printf 'Missing CodeQL language extractor: %s\n' "${language}" >&2
+			return 1
+		}
+	done
+
+	resolved_packs="$("${codeql}" resolve packs)" || return 1
+	for query_pack in "${query_packs[@]}"; do
+		grep -Fq "codeql/${query_pack}-queries@" <<< "${resolved_packs}" || {
+			printf 'Missing CodeQL query pack: codeql/%s-queries\n' "${query_pack}" >&2
+			return 1
+		}
+	done
 
 	for suite in "${suites[@]}"; do
 		suite_path="$(find "${srcdir}/codeql" -type f -name "${suite}" -print -quit)"
