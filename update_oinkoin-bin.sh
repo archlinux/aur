@@ -45,8 +45,8 @@ rollback() {
         warn "Rolling back uncommitted local changes..."
         git checkout -- "$PKGBUILD_FILE" "$SRCINFO_FILE" 2>/dev/null || true
     else
-        warn "A local commit already exists (may already be pushed to GitHub)."
-        warn "Working tree preserved. To complete AUR publishing manually: cd '${REPO_ROOT:-$PKG_DIR}' && aurpublish ${AUR_PKGNAME}"
+        warn "A local commit already exists (may already be pushed)."
+        warn "Nothing auto-reverted. To finish manually: cd '${REPO_ROOT:-$PKG_DIR}' && aurpublish ${AUR_PKGNAME}"
     fi
     cleanup_artifacts
     exit 1
@@ -99,7 +99,7 @@ if [[ "$vercmp_result" -eq 0 ]]; then
     exit 0
 elif [[ "$vercmp_result" -lt 0 ]]; then
     trap - ERR INT TERM
-    warn "Latest upstream release (${latest_pkgver}) is older than packaged version (${current_pkgver}) per vercmp. Skipping."
+    warn "Latest release (${latest_pkgver}) is older than packaged version (${current_pkgver}) per vercmp. Skipping."
     exit 0
 fi
 
@@ -120,7 +120,7 @@ if ! $ASSUME_YES; then
     fi
 fi
 
-esc_appimage="$(sed 's/[&|\\]/\\&/g' <<<"$latest_appimage_name")"
+esc_appimage="$(sed 's/[\\&|]/\\&/g' <<<"$latest_appimage_name")"
 
 sed -i \
     -e "s|^pkgver=.*|pkgver=${latest_pkgver}|" \
@@ -187,7 +187,7 @@ cleanup_artifacts
 git add PKGBUILD .SRCINFO
 if git diff --cached --quiet; then
     warn "No index changes detected. Skipping git commit."
-    if git log -1 --pretty=%B | grep -q "${latest_pkgver}"; then
+    if git log -1 --pretty=%B | grep -qF "${latest_pkgver}"; then
         COMMITTED=true
     fi
 else
@@ -196,7 +196,7 @@ else
 fi
 
 if $NO_PUSH; then
-    warn "Skipping GitHub and AUR pushes (--no-push)."
+    warn "Skipping remote pushes (--no-push)."
 else
     info "Pushing to GitHub..."
     (cd "$REPO_ROOT" && git push "$GITHUB_REMOTE" "$CURRENT_BRANCH") || \
