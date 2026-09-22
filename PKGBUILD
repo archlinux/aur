@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=pico-sdk
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 
 pkgdesc="Libraries and tools for C/C++ development on RP2040 microcontrollers."
@@ -18,14 +18,14 @@ conflicts=("raspberry-pico-sdk-git")
 options=('!strip')
 install=reload-environment-variables.install
 source=("git+${url}.git#tag=${pkgver}"
-        "git+https://github.com/bluekitchen/btstack.git#commit=075a078"
+        "git+https://github.com/bluekitchen/btstack.git#commit=eb0bb8b"
         "git+https://github.com/georgerobotics/cyw43-driver.git#commit=055d642"
         "git+https://github.com/lwip-tcpip/lwip.git#commit=77dcd25"
         "git+https://github.com/Mbed-TLS/mbedtls.git#commit=0bebf8b"
         "git+https://github.com/hathach/tinyusb.git#commit=86ad6e5"
         "setup-environment-variables.sh")
-sha256sums=('31b4489cfb827043bffb05ae5b7bd36c8d3078fac0e6def17aa576df7c5d1b37'
-            '16fc13645668c108f41542ccaadc61f829ecbfce37623519c22863c75453ad97'
+sha256sums=('3f474810bd07536b9fc2aac1454a400ec3f63b9fc8be0e3aafb2a4af8693ec66'
+            'b02dd65ad729130d55b2d56d9d7e2915cb08af7121d5a1dfb07b50771e794a89'
             'fafd32d84262c4ecbd57d7480fbfea313b63414b0971f2d28b6975d745c51277'
             'cbb5de9cffec63f4be03281eb820c8b6fdda6b0b7a27d0fd4a841296836bf633'
             '985defe6d7a47e7add307a883870904a2cc005a4401fb97b6614dae782e7d402'

@@ -1,6 +1,6 @@
 pkgbase = pico-sdk
 	pkgdesc = Libraries and tools for C/C++ development on RP2040 microcontrollers.
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/raspberrypi/pico-sdk
 	install = reload-environment-variables.install
@@ -15,15 +15,15 @@ pkgbase = pico-sdk
 	provides = raspberry-pico-sdk-git
 	conflicts = raspberry-pico-sdk-git
 	options = !strip
-	source = git+https://github.com/raspberrypi/pico-sdk.git#tag=2.3.0
-	source = git+https://github.com/bluekitchen/btstack.git#commit=075a078
+	source = git+https://github.com/raspberrypi/pico-sdk.git#tag=2.3.1
+	source = git+https://github.com/bluekitchen/btstack.git#commit=eb0bb8b
 	source = git+https://github.com/georgerobotics/cyw43-driver.git#commit=055d642
 	source = git+https://github.com/lwip-tcpip/lwip.git#commit=77dcd25
 	source = git+https://github.com/Mbed-TLS/mbedtls.git#commit=0bebf8b
 	source = git+https://github.com/hathach/tinyusb.git#commit=86ad6e5
 	source = setup-environment-variables.sh
-	sha256sums = 31b4489cfb827043bffb05ae5b7bd36c8d3078fac0e6def17aa576df7c5d1b37
-	sha256sums = 16fc13645668c108f41542ccaadc61f829ecbfce37623519c22863c75453ad97
+	sha256sums = 3f474810bd07536b9fc2aac1454a400ec3f63b9fc8be0e3aafb2a4af8693ec66
+	sha256sums = b02dd65ad729130d55b2d56d9d7e2915cb08af7121d5a1dfb07b50771e794a89
 	sha256sums = fafd32d84262c4ecbd57d7480fbfea313b63414b0971f2d28b6975d745c51277
 	sha256sums = cbb5de9cffec63f4be03281eb820c8b6fdda6b0b7a27d0fd4a841296836bf633
 	sha256sums = 985defe6d7a47e7add307a883870904a2cc005a4401fb97b6614dae782e7d402
