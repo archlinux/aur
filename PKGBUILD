@@ -6,7 +6,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-svt-av1
-pkgver=2.3.0
+pkgver=4.2.0
 pkgrel=1
 arch=('any')
 pkgdesc="Scalable Video Technology AV1 encoder and decoder (Android ${_android_arch})"
@@ -19,7 +19,7 @@ makedepends=('android-cmake'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v${pkgver}/SVT-AV1-v${pkgver}.tar.bz2")
-md5sums=('a86cac2227942f6d8e17ca1fdcac1627')
+md5sums=('e2f6a997ef7ced90dbe8569b2fca5968')
 
 prepare() {
     cd "${srcdir}/SVT-AV1-v${pkgver}"
@@ -58,4 +58,6 @@ package() {
     make -C build-static DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
