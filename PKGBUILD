@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=spotifast
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ replaces=('fastpotify')
 # undefined ring_core_* symbols.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/spotifast-v${pkgver}-source.tar.gz")
-sha256sums=('f78cc77432af7739ca243b2b2d01accb46bff59937bd00c69578e90eaba8024a')
+sha256sums=('b3743d88758fd467312faa6c0ce1489e05c02182238504d88167afcfd52ad189')
 
 # GitHub archives use the repository name; older releases used Fastpotify.
 _source_dir() {
@@ -58,8 +58,10 @@ check() {
 package() {
   cd "$(_source_dir)"
 
-  install -Dm755 "target/release/fastpotify" "${pkgdir}/usr/bin/fastpotify"
-  ln -s fastpotify "${pkgdir}/usr/bin/spotifast"
+  local binary=spotifast
+  [[ -f "target/release/$binary" ]] || binary=fastpotify
+  install -Dm755 "target/release/$binary" "${pkgdir}/usr/bin/spotifast"
+  ln -s spotifast "${pkgdir}/usr/bin/fastpotify"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   # Historical releases retain their matching launcher/window identity.
