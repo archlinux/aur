@@ -1,6 +1,6 @@
 pkgname=kangentic-bin
 _pkgname=kangentic
-pkgver=0.42.0
+pkgver=0.43.0
 pkgrel=1
 pkgdesc="Desktop Kanban board for orchestrating AI coding agents"
 arch=('x86_64')
@@ -11,8 +11,8 @@ optdepends=('libappindicator-gtk3: tray/status indicator support')
 provides=('kangentic')
 conflicts=('kangentic')
 source=("https://github.com/Kangentic/kangentic/releases/download/v${pkgver}/kangentic_${pkgver}_amd64.deb")
-sha256sums=('74a900e838e9734f344dcccb7e19d58e9e02b84a9be4aa2cf023953390d829e3')
-noextract=("kangentic_0.42.0_amd64.deb")
+sha256sums=('48f5a20f9783170816a2ffa74d86c8b7827017d9120596f4b20cd24716fcf832')
+noextract=("kangentic_0.43.0_amd64.deb")
 
 package() {
   bsdtar -xOf "${srcdir}/kangentic_${pkgver}_amd64.deb" data.tar.xz | bsdtar -xJf - -C "${pkgdir}"
