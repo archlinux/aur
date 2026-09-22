@@ -8,6 +8,7 @@ pkgbase = umadev-bin
 	license = MIT
 	provides = umadev
 	conflicts = umadev
+	options = !strip
 	source_x86_64 = umadev-1.1.1-x86_64-unknown-linux-gnu::https://github.com/umacloud/umadev/releases/download/v1.1.1/umadev-x86_64-unknown-linux-gnu
 	sha256sums_x86_64 = e55ddf403d8b3601a3e51caa7698b0f9588829bc32463cc686ba54e9e043d679
 	source_aarch64 = umadev-1.1.1-aarch64-unknown-linux-gnu::https://github.com/umacloud/umadev/releases/download/v1.1.1/umadev-aarch64-unknown-linux-gnu

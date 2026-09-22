@@ -8,9 +8,8 @@ url='https://github.com/umacloud/umadev'
 license=('MIT')
 provides=('umadev')
 conflicts=('umadev')
+options=('!strip')
 
-# Target triples per arch
-# source_* and sha256sums_* auto-updated by publish.yml
 _triple_x86_64="x86_64-unknown-linux-gnu"
 _triple_aarch64="aarch64-unknown-linux-gnu"
 
@@ -25,6 +24,7 @@ package() {
   case "${CARCH}" in
     x86_64)  _triple="${_triple_x86_64}" ;;
     aarch64) _triple="${_triple_aarch64}" ;;
+    *) echo "ERROR: unsupported arch ${CARCH}" >&2; exit 1 ;;
   esac
 
   install -Dm755 "${srcdir}/umadev-${_realver}-${_triple}" "${pkgdir}/usr/bin/umadev"
