@@ -1,0 +1,21 @@
+pkgbase = python-citeproc-py-styles
+	pkgdesc = Supplementary CSL styles for citeproc-py
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/inveniosoftware/citeproc-py-styles
+	arch = any
+	license = MIT WITH AdditionRef-CERN-waiver
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-lxml
+	depends = python-six
+	source = python-citeproc-py-styles::git+https://github.com/inveniosoftware/citeproc-py-styles.git#commit=b6c4ecf2efad340107e3ce0bfe8b83b942e55579
+	source = csl-styles::git+https://github.com/citation-style-language/styles.git#commit=872b2c8f6fda7129807cd3e4d695cf75adf3c15e
+	sha256sums = f3f75d765021ccc8f00cf80879f0df2eb010bc3031092f895e00e89a5d3a173e
+	sha256sums = 2b46c749a9e176651077e8401396a1edfad45ea76f0ab17a628c55c0a0d6f668
+
+pkgname = python-citeproc-py-styles
