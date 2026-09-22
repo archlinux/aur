@@ -396,6 +396,8 @@ _download()
 	_git -C '.engine-src/flutter' -c 'core.hooksPath=/dev/null' checkout --force --no-track -B makepkg "$engine_version"
 	_clone_src "$ARCH_FLUTTER_DEPOT_TOOL_URL" "$fvm_cache_dir/depot_tools"
 	sed -i 's/import httplib2.socks/import socks/' '.engine-src/depot_tools/gerrit_util.py'
+	rm -f '.engine-src/depot_tools/python-bin/python3'
+	ln -s '/usr/bin/python3.11' '.engine-src/depot_tools/python-bin/python3'
 }
 
 build_engine()
