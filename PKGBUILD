@@ -9,9 +9,8 @@ license=('Apache-2.0' 'LGPL-3.0')
 makedepends=('libarchive')
 provides=('axonhub')
 conflicts=('axonhub')
+options=('!strip')
 
-# GOOS_GOARCH triples per arch
-# source_* and sha256sums_* auto-updated by publish.yml
 _triple_x86_64="linux_amd64"
 _triple_aarch64="linux_arm64"
 
@@ -26,9 +25,15 @@ package() {
   case "${CARCH}" in
     x86_64)  _triple="${_triple_x86_64}" ;;
     aarch64) _triple="${_triple_aarch64}" ;;
+    *) echo "ERROR: unsupported arch ${CARCH}" >&2; exit 1 ;;
   esac
 
   cd "${srcdir}"
   bsdtar -xf "axonhub-${_realver}-${_triple}.zip"
-  install -Dm755 -s axonhub "${pkgdir}/usr/bin/axonhub"
+  install -Dm755 axonhub "${pkgdir}/usr/bin/axonhub"
+
+  local f
+  for f in LICENSE LICENSE.md COPYING README.md; do
+    [[ -f "$f" ]] && install -Dm644 "$f" "${pkgdir}/usr/share/doc/${pkgname}/$f"
+  done
 }
