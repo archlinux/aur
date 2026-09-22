@@ -1,0 +1,18 @@
+pkgbase = mud
+	pkgdesc = Multi repository git utility. Manage multiple git-repositories simultaneously.
+	pkgver = 1.1.10
+	pkgrel = 1
+	url = https://github.com/jasursadikov/mud
+	arch = x86_64
+	license = MIT
+	depends = git
+	depends = glibc
+	depends = zlib
+	depends = ca-certificates
+	provides = mud-git=1.1.10
+	conflicts = mud-git
+	options = !strip
+	source = https://github.com/jasursadikov/mud/releases/download/v1.1.10/mud-1.1.10-linux-x86_64.tar.gz
+	sha256sums = c2dc9a6387daf80fb788c803048abc91f3edd7fa1dcfc58e00090fde1f46327d
+
+pkgname = mud
