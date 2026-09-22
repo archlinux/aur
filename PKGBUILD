@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=1.1.0.r1.g308c9d3
+pkgver=1.5.0.r0.gb5ef6c0
 pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -18,6 +18,7 @@ depends=(
   'cosmic-launcher-git'
   'cosmic-notifications-git'
   'cosmic-osd-git'
+  'cosmic-osk-git'
   'cosmic-panel-git'
   'cosmic-randr-git'
   'cosmic-screenshot-git'
