@@ -1,6 +1,6 @@
 pkgbase = lilbee-compat
 	pkgdesc = The whole local AI stack in one executable: run and manage local AI models, and search your files, code, and crawled web pages, with cited answers (pre-Haswell CPU build)
-	pkgver = 0.6.90b442
+	pkgver = 0.6.90b443
 	pkgrel = 1
 	url = https://github.com/tobocop2/lilbee
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lilbee-compat
 	conflicts = lilbee
 	options = !strip
 	options = !debug
-	source = lilbee.service::https://github.com/tobocop2/lilbee/raw/v0.6.90b442/packaging/systemd/lilbee.service
+	source = lilbee.service::https://github.com/tobocop2/lilbee/raw/v0.6.90b443/packaging/systemd/lilbee.service
 	sha256sums = 8987137080f5b5353ca4a5bc82aa56c92c450c158e8558fa48fa8bff2cb1c69d
-	source_x86_64 = lilbee-0.6.90b442-compat::https://github.com/tobocop2/lilbee/releases/download/v0.6.90b442/lilbee-compat-linux-x86_64
-	sha256sums_x86_64 = 08473f35ae48d420120c719b6e5b84d7268494932e32f77852e3b6ea8be7d9e7
+	source_x86_64 = lilbee-0.6.90b443-compat::https://github.com/tobocop2/lilbee/releases/download/v0.6.90b443/lilbee-compat-linux-x86_64
+	sha256sums_x86_64 = a55186cc8264618cc5f999bf711538123966d5a03cf773965e9ceb0dbf1ed068
 
 pkgname = lilbee-compat
