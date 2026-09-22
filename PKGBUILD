@@ -33,7 +33,7 @@ source=(
 )
 sha256sums=('dbd48a706b431f791d1da417f636831cf7d08cccdc989be0fe67c066949d760b'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 pkgver() {
     cd "${srcdir}/app.asar.unpacked"
     grep '"version":' package.json | awk -F'"version": "' '{print $2}' | awk -F',' '{print $1}' | tr -d '"'
