@@ -1,7 +1,7 @@
 pkgbase = qianji-bin
 	pkgdesc = QianJi personal finance desktop application (钱迹个人记账)
 	pkgver = 4.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://qianjiapp.com
 	arch = x86_64
 	license = custom
@@ -23,7 +23,7 @@ pkgbase = qianji-bin
 	depends = zlib
 	provides = qianji
 	conflicts = qianji
-	source = qianji_v4.5.2-1560-961a8c0c_x86_64.pkg.tar.zst::https://github.com/litangtech/Qianji-Linux-Release/releases/download/v4.5.2/qianji_v4.5.2-1560-961a8c0c_x86_64.pkg.tar.zst
-	sha256sums = a4b5d68a01bd2c9ae3f4eae143f15e2049bab9857fe754364cf7b4c65808a377
+	source = qianji_v4.5.2-2-1560-d36e8f8f_x86_64.pkg.tar.zst::https://github.com/litangtech/Qianji-Linux-Release/releases/download/v4.5.2-2/qianji_v4.5.2-2-1560-d36e8f8f_x86_64.pkg.tar.zst
+	sha256sums = 9bdc1220749896f27b4527b21cf24ae7c3dc43fb14261cbc3d08c0794c840bf3
 
 pkgname = qianji-bin
