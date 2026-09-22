@@ -1,5 +1,5 @@
 pkgbase = qoder-ide-bin
-	pkgdesc = Qoder new form, with programming agents as the core engine, from idea to implementation, easy to handle.
+	pkgdesc = AI native IDE for real-world software development.
 	pkgver = 1.31.2
 	pkgrel = 1
 	url = https://qoder.com/
