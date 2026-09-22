@@ -1,4 +1,4 @@
-# Maintainer: Ваше Имя <your.email@example.com>
+# Maintainer: Vladimir (wlroots)
 pkgname=zapret-gui-nodejs-bin
 pkgver=1.0.8
 pkgrel=1
