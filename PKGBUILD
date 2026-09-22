@@ -1,17 +1,17 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=cangaroo-hpmicro-canfd-analyzer-git
-pkgver=r18.01a523c
+pkgver=r10.196d825
 pkgrel=1
 pkgdesc="Four-channel CANFD analyzer based on hpmicro hpm5361"
 arch=($CARCH)
 license=('GPL-2.0-only')
-provides=(${pkgname} cangaroo)
-conflicts=(${pkgname} cangaroo)
+provides=(${pkgname%-git} cangaroo)
+conflicts=(${pkgname%-git} cangaroo)
 depends=(
 	bash
-	gcc-libs
-	glibc
+    libgcc_s.so
+    libstdc++.so
 	libnl
 	qt5-charts
 	qt5-base
@@ -36,12 +36,11 @@ pkgver() {
 prepare() {
 	git -C "${srcdir}/${pkgname}" clean -dfx
 	cd "${srcdir}/${pkgname}"
-	git config --global user.email "admin@taotieren.com"
-	git config --global user.name "taotieren"
-	git remote add taotieren https://github.com/taotieren/cangaroo_hpmicro_canfd_analyzer.git
-	git fetch --all
-	git merge taotieren/update-linux
-	git merge taotieren/rename-autoheightdelegate.h
+	git cherry-pick -n a87c6a70b4adb88b41a87853471e3af2f69e74c5
+	git cherry-pick -n 9420a2b4204c6b0e6f712408cc4a1846f426eb75
+	git cherry-pick -n bb9963e45ca497cb02cb191fa4f0f53d4eb29b48
+	git cherry-pick -n 4b66c32fb0a15632d9282a04485863cbdba110b6
+	git cherry-pick -n a7a3462922e891d91103c6b3c794c233ece4df31
 }
 
 build() {
