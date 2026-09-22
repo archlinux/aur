@@ -1,0 +1,82 @@
+# 钩子: 复刻官方 deb postinst 的全部必要初始化
+# 官方 postinst 要点:
+#   chmod 777 resources/app (Electron 运行时需写入)
+#   mkdir .aTrust/var/conf + chmod 777 .aTrust/var
+#   dmidecode_processor_tool 加权
+#   InstallLocation + eaio_packman -a SDP 注册
+#   systemctl enable aTrustDaemon
+
+pre_install() {
+    # 清理旧实例 (防止旧进程占用锁文件/端口导致新服务异常)
+    systemctl stop aTrustDaemon 2>/dev/null || true
+    systemctl disable aTrustDaemon 2>/dev/null || true
+    pkill -x aTrustAgent 2>/dev/null || true
+    pkill -9 -x aTrustXtunnel-6 2>/dev/null || true
+    pkill -x aTrustTray2 2>/dev/null || true
+    pkill -f 'aTrust/aTrustTray' 2>/dev/null || true
+    sleep 2
+    pkill -9 -x aTrustAgent 2>/dev/null || true
+    pkill -x aTrustXtunnel-6 2>/dev/null || true
+}
+
+# 会话类型修正: 桌面经 xinit/startx 直启(无显示管理器)时, logind 中该会话
+# Type=tty; 而 aTrust 的登录用户检测要求 Class=user && Active=yes &&
+# (Type=x11|wayland), 判定失败会导致: 核心服务不以登录用户身份运行、
+# CA 证书无法导入、托盘无法自动以该用户启动。
+# pam_systemd 优先采用 PAM 环境中的 XDG_SESSION_TYPE (pam_env 在 auth 阶段读
+# /etc/environment), 故在此声明 x11, 让 logind 直接给出 Type=x11;
+# 不改动任何厂商文件, 卸载即还原。使用 display-manager 的用户不受影响。
+_SESSION_MARK="# installed by sangfor-atrust-bin: 桌面为 xinit 直启, 需向 logind 声明 x11 会话类型"
+_set_session_type() {
+    [ -f /etc/environment ] || touch /etc/environment
+    if ! grep -q '^XDG_SESSION_TYPE=x11$' /etc/environment; then
+        printf '%s\nXDG_SESSION_TYPE=x11\n' "$_SESSION_MARK" >> /etc/environment
+    fi
+}
+_unset_session_type() {
+    if grep -q "^${_SESSION_MARK}$" /etc/environment 2>/dev/null; then
+        sed -i "/^${_SESSION_MARK}$/d" /etc/environment
+        sed -i '/^XDG_SESSION_TYPE=x11$/d' /etc/environment
+    fi
+}
+
+_postinst() {
+    _set_session_type
+    chmod -R 777 /usr/share/sangfor/aTrust/resources/app
+    mkdir -p /usr/share/sangfor/.aTrust/var/conf
+    chmod -R 777 /usr/share/sangfor/.aTrust/var
+    chmod a+s /usr/share/sangfor/aTrust/resources/bin/dmidecode_processor_tool 2>/dev/null || true
+    touch /usr/share/sangfor/.aTrust/var/conf/InstallLocation
+    /usr/share/sangfor/aTrust/resources/shell/EAIOC/eaio_packman -a SDP \
+        /usr/share/sangfor/.aTrust/var/conf/InstallLocation 2>/dev/null || true
+    systemctl daemon-reload
+    systemctl enable aTrustDaemon.service 2>/dev/null || true
+    # 已在运行时 enable --now 不会重启, 必须显式 restart 以应用新的 drop-in
+    systemctl restart aTrustDaemon.service 2>/dev/null || true
+    echo "==> aTrust 核心服务已启用并启动"
+    echo "==> 运行 'atrust' 或从应用菜单启动托盘"
+    echo "==> 已声明 XDG_SESSION_TYPE=x11 (xinit 直启桌面); 若为新增, 注销重登或重启后生效"
+}
+
+post_install() {
+    _postinst
+}
+
+post_upgrade() {
+    _postinst
+}
+
+pre_remove() {
+    systemctl stop aTrustDaemon 2>/dev/null || true
+    systemctl disable aTrustDaemon 2>/dev/null || true
+    pkill -x aTrustAgent 2>/dev/null || true
+    pkill -9 -x aTrustXtunnel-6 2>/dev/null || true
+    pkill -x aTrustTray2 2>/dev/null || true
+    pkill -f 'aTrust/aTrustTray' 2>/dev/null || true
+}
+
+post_remove() {
+    # 还原 /etc/environment, 清理 postinst 创建的、pacman 不知道的运行时残留
+    _unset_session_type
+    rm -rf /usr/share/sangfor
+}

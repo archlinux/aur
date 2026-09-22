@@ -1,0 +1,17 @@
+#!/bin/sh
+# aTrust 兼容层 (由 sangfor-atrust 包安装于 /usr/lib/sangfor-atrust/loginctl)
+#
+# 背景: aTrust 守护进程用 loginctl 判定"当前登录的桌面用户", 判定条件为
+#       会话同时满足  Class=user && Active=yes && (Type=x11 || Type=wayland)。
+#       本机桌面由 xinit 从 tty1 直启(logind 中会话 Type=tty, 非 display-manager),
+#       因此判定永远失败 -> getCurrentUserNameByPopen 返回空 -> 核心服务不启动。
+#
+# 本包装器仅把 show-session 输出中的 Type=tty 改写为 Type=x11, 供 aTrust 读取,
+# 不修改 logind 的任何真实状态; 卸载包即恢复原样。
+REAL=/usr/bin/loginctl
+[ -x "$REAL" ] || REAL=/bin/loginctl
+
+out=$("$REAL" "$@" 2>&1)
+rc=$?
+printf '%s\n' "$out" | sed 's/^Type=tty$/Type=x11/'
+exit $rc
