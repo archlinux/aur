@@ -1,13 +1,13 @@
 pkgname=mpf3
 pkgver=5.10.038
-pkgrel=1
+pkgrel=2
 pkgdesc='Local and network music player/control point with UPnP/DLNA, SMB and gapless playback'
 arch=('any')
 url='https://penguiner.eu/'
 license=('GPL-3.0-or-later')
 depends=('python' 'python-gobject' 'gtk3' 'webkit2gtk-4.1' 'samba' 'avahi' 'nss-mdns' 'zenity' 'ffmpeg' 'python-mutagen' 'python-smbprotocol')
 source=("https://penguiner.eu/planetmpf3/downloads/mpf3-${pkgver}.tar.gz")
-sha256sums=('11f37fe8c005d64fdb7fa0e58d2d3793a7c24d53430dd41b576d32074f676ce8')
+sha256sums=('9235fa4bc75251db7907a7b7c911250c2f5ec12a0d60f62dd6431c970e8fe3ed')
 
 package() {
   cd "$srcdir/mpf3-$pkgver"

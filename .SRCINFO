@@ -1,7 +1,7 @@
 pkgbase = mpf3
 	pkgdesc = Local and network music player/control point with UPnP/DLNA, SMB and gapless playback
 	pkgver = 5.10.038
-	pkgrel = 1
+	pkgrel = 2
 	url = https://penguiner.eu/
 	arch = any
 	license = GPL-3.0-or-later
@@ -16,7 +16,7 @@ pkgbase = mpf3
 	depends = ffmpeg
 	depends = python-mutagen
 	depends = python-smbprotocol
-	source = https://penguiner.eu/mpf3-5.10.038.tar.gz
-	sha256sums = 11f37fe8c005d64fdb7fa0e58d2d3793a7c24d53430dd41b576d32074f676ce8
+	source = https://penguiner.eu/planetmpf3/downloads/mpf3-5.10.038.tar.gz
+	sha256sums = 9235fa4bc75251db7907a7b7c911250c2f5ec12a0d60f62dd6431c970e8fe3ed
 
 pkgname = mpf3
