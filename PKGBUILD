@@ -3,7 +3,7 @@
 _pkgname=celestia
 pkgname=${_pkgname}-bin
 pkgver=1.7.0
-pkgrel=28
+pkgrel=29
 pkgdesc="Real-time space simulation"
 arch=('x86_64')
 url="https://celestiaproject.space/"
@@ -18,9 +18,9 @@ _download_url="https://download.opensuse.org/repositories/home:/munix9:/celestia
 _archive_extension="pkg.tar.zst"
 _celestia_ui="qt6"
 
-_version_cspice="67-6.1"
-_version_celestia_app="git20260913+4f4323e-1.1"
-_version_celestia_data="git20260910+51ceb06-1.1"
+_version_cspice="67-6.2"
+_version_celestia_app="git20260919+7d2c2cd-1.1"
+_version_celestia_data="git20260920+eab9393-1.1"
 
 source=(
 	"$_download_url/celestia-data-${pkgver}~${_version_celestia_data}-any.${_archive_extension}"
@@ -35,14 +35,14 @@ source_x86_64=(
 
 	"$_download_url/cspice-${_version_cspice}-${arch[0]}.${_archive_extension}"
 )
-sha256sums=('69c08d41020e512e41e6d55ade2528e9fffdcc188660ed0be69a9c60a03d4e4b'
-            '9b6a247ba542cd8e2d3cc5d4b554517e0b25dad49991861b80d9e6bb4e06e86e'
-            '73fbfaf8165479c0f08bf318a848b59dac627ed6d87dbc626cf8bd83f49c16c6'
-            '9f16e68a01127cb1474beeda0c633698a74c974688528f1c7de4c561141fe860')
-sha256sums_x86_64=('d7f778083323fcee2823a7cff3c7c3d596e77a01f2aa923a7f0737ca01622c0f'
-                   '045fdf0e09ced6d0666e5e73d2872adf4d44904e4774fe69ce149dae256b7488'
-                   '05a8ad82c7306f13a685e0c03ec45fcc384343000e61fe3f89bbe6160a987b87'
-                   '301906f9ddd5151042658e247eeae49a48a3375e47e353b5be66c86bc9211dc7')
+sha256sums=('ac619c81b1b12b83e75769ed80fe8d1bdc04075d48fb2f6670bee4275a95df81'
+            '898e21d0e18dda26e41a11b4eb351372e75d119a3ef99fad478baceab79ffa74'
+            '64ae91c47209dffe52e7b7abed8db744377f4246b9263314593ec3dc0cedf9a0'
+            '437acbf46ccd82f5011c66f9db625c11d16b345e12a834e0d457152e0e759e38')
+sha256sums_x86_64=('a3ab1d50785189555fa5eab3d6af6f741c84a64c1ab78ee8126dd32d463fd638'
+                   '6f225e313d30938544632fcc571ef62a62085e2a265b951bb05bc15e1383bec2'
+                   'a2d67a4d7bc21da74d72e7522c6fffba92e5191541b82052c3caa61cf4d95021'
+                   '147bc3e7df8a54d837a124290b2f7200b6562a82b03e7eec751a2d448c4c481c')
 
 
 prepare() {
