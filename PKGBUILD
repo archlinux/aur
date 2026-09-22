@@ -2,7 +2,7 @@
 pkgname=flux-filemanager-git
 _pkgname=flux
 pkgver=v0.1.9.r0.940db9b
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern and simple file manager written in Rust with Libadwaita"
 arch=('x86_64')
 url="https://github.com/killown/flux"

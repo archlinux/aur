@@ -1,7 +1,7 @@
 pkgbase = flux-filemanager-git
 	pkgdesc = Modern and simple file manager written in Rust with Libadwaita
 	pkgver = v0.1.9.r0.940db9b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/killown/flux
 	arch = x86_64
 	license = GPL-3.0-only
