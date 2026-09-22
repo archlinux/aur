@@ -1,14 +1,16 @@
 pkgbase = apt-zsh-completion
 	pkgdesc = Zsh completion for apt and dpkg
-	pkgver = 5.9
+	pkgver = 5.9.1
 	pkgrel = 1
 	url = https://zsh.org/
 	arch = any
 	license = custom
 	depends = zsh
+	optdepends = apt: commandline package manager
+	optdepends = dpkg: Debian package management system
 	options = !debug
-	source = apt-zsh-completion@zsh-v5.9.tar.xz::https://zsh.org/pub/zsh-5.9.tar.xz
-	sha256sums = 9b8d1ecedd5b5e81fbf1918e876752a7dd948e05c1a0dba10ab863842d45acd5
-	sha512sums = d9138b7f379ad942a5f46819d2dd52d31f3a1129f2a0d1b53d4c5cd43c318b60396da6d37c57c477b8e958fb750209aca0ae93f8c9dd42ac958de006a0ff067e
+	source = apt-zsh-completion@zsh-v5.9.1.tar.xz::https://zsh.org/pub/old/zsh-5.9.1.tar.xz
+	sha256sums = 5d20bec03f981dc4e9a09ec245e7415388ff641f79c5c5c416b5042e58d8280d
+	sha512sums = e16c13559262577e725b290c35ce6598d58c2acdd204eac619e8ed9b6a918bce39bfbf9d3ef4c5eb877af7d3279c8a4b15439eba6a38c4e4d47d5555d5f79872
 
 pkgname = apt-zsh-completion
