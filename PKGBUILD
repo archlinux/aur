@@ -1,7 +1,7 @@
 # Maintainer: hedgeg0d <werstak192@gmail.com>
 pkgname=soundux-pipewire
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A crossplatform soundboard that plays sounds into your microphone, with native PipeWire support"
 arch=('x86_64')
 url="https://github.com/hedgeg0d/Soundux-pipe"
@@ -35,5 +35,14 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  #  > Only ship the program itself, the vendored libraries also install headers and cmake files
+  rm -rf "$pkgdir/usr/include" "$pkgdir/usr/share/cmake"
+
+  #  > Ship the program under its plain name instead of a versioned file next to a symlink
+  for binary in "$pkgdir"/usr/bin/soundux-*; do
+    [ -e "$binary" ] && mv -f "$binary" "$pkgdir/usr/bin/soundux"
+  done
+
   install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

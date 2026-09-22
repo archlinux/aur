@@ -1,7 +1,7 @@
 pkgbase = soundux-pipewire
 	pkgdesc = A crossplatform soundboard that plays sounds into your microphone, with native PipeWire support
 	pkgver = 0.2.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hedgeg0d/Soundux-pipe
 	arch = x86_64
 	license = GPL-3.0-only
