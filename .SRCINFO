@@ -12,9 +12,9 @@ pkgbase = picguard-pro-bin
 	provides = picguard-pro
 	conflicts = picguard-pro
 	options = !debug
-	source_x86_64 = https://github.com/picguard/picguard/releases/download/v5.7.1.481/picguard-pro-5.7.2.481-linux-amd64.deb
+	source_x86_64 = https://github.com/picguard/picguard/releases/download/v5.7.2.481/picguard-pro-5.7.2.481-linux-amd64.deb
 	sha256sums_x86_64 = 9468f15142bc65d96a4f32864a56402b63ca7624960d2168d8044c704dccef8b
-	source_aarch64 = https://github.com/picguard/picguard/releases/download/v5.7.1.481/picguard-pro-5.7.2.481-linux-aarch64.deb
+	source_aarch64 = https://github.com/picguard/picguard/releases/download/v5.7.2.481/picguard-pro-5.7.2.481-linux-aarch64.deb
 	sha256sums_aarch64 = d0710aeacb8a6e65b364aa5993c2ce9fcffb5e8f23bfd11e735640eb4887d152
 
 pkgname = picguard-pro-bin
