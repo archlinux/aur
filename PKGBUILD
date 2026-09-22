@@ -7,7 +7,7 @@ _pkgname=maperitive
 pkgname="${_pkgname}-bin"
 epoch=0
 pkgver=2.5.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop application which renders maps in real time using OpenStreetMap (OSM) and other sources of data."
 _osmurl="https://wiki.openstreetmap.org/wiki/Maperitive"
 _upstreamurl="http://maperitive.net"
@@ -22,6 +22,7 @@ license=('LicenseRef-Maperitive')
 depends=(
   "bash"
   "mono>=2.6"
+  "libx11"
 )
 makedepends=()
 optdepends=()

@@ -1,7 +1,7 @@
 pkgbase = maperitive-bin
 	pkgdesc = A desktop application which renders maps in real time using OpenStreetMap (OSM) and other sources of data.
 	pkgver = 2.5.10
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://wiki.openstreetmap.org/wiki/Maperitive
 	install = maperitive.install
@@ -10,6 +10,7 @@ pkgbase = maperitive-bin
 	license = LicenseRef-Maperitive
 	depends = bash
 	depends = mono>=2.6
+	depends = libx11
 	provides = maperitive=2.5.10
 	conflicts = maperitive
 	source = maperitive-2.5.10.zip::http://maperitive.net/download/Maperitive-latest.zip
