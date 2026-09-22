@@ -1,0 +1,6 @@
+[reolink-cli-bin]
+source = "github"
+github = "reolink/reolink-cli"
+use_max_tag = true
+prefix = "v"
+include_regex = '^v[\d.]+$'
