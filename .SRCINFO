@@ -1,6 +1,6 @@
 pkgbase = skillshare
 	pkgdesc = Sync skills across all AI CLI tools with one command
-	pkgver = 0.21.5
+	pkgver = 0.21.6
 	pkgrel = 1
 	url = https://github.com/runkids/skillshare
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = skillshare
 	makedepends = go
 	provides = skillshare
 	conflicts = skillshare-bin
-	source = skillshare-0.21.5.tar.gz::https://github.com/runkids/skillshare/archive/v0.21.5.tar.gz
-	sha256sums = cd9c72e9cdb2edd1b8e41bf645acbbfac5e7f8cfcb016530e8a1ffb171bfbcae
+	source = skillshare-0.21.6.tar.gz::https://github.com/runkids/skillshare/archive/v0.21.6.tar.gz
+	sha256sums = 6052d91ca1b5338375301f2a9e1423653415ab2b25f950161b21ff1da692e10b
 
 pkgname = skillshare
