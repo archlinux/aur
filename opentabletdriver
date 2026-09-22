@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+
+description="OpenTabletDriver Daemon"
+supervisor="supervise-daemon"
+command="/usr/bin/otd-daemon"
+command_args=""
+depend() {
+	after dbus
+	use logger
+}
