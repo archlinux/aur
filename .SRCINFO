@@ -1,0 +1,19 @@
+pkgbase = libvirt-iso-manjaro-gnome-bin
+	pkgdesc = Official Manjaro GNOME installation ISO for libvirt
+	pkgver = 26.1.2.260910
+	pkgrel = 1
+	url = https://manjaro.org/products/download/x86/
+	arch = x86_64
+	license = LicenseRef-Various
+	checkdepends = libarchive
+	checkdepends = squashfs-tools
+	noextract = manjaro-gnome-26.1.2-260910-linux71.iso
+	source = manjaro-gnome-26.1.2-260910-linux71.iso::https://download.manjaro.org/gnome/26.1.2/manjaro-gnome-26.1.2-260910-linux71.iso
+	source = manjaro-gnome-26.1.2-260910-linux71.iso.sig::https://download.manjaro.org/gnome/26.1.2/manjaro-gnome-26.1.2-260910-linux71.iso.sig
+	source = DISTRIBUTION-LICENSE
+	validpgpkeys = 3B794DE6D4320FCE594F4171279E7CF5D8D56EC8
+	sha256sums = e13b4bde6b10d46a311d10e4b680df68c43195555b938577912ca9a5a22306bd
+	sha256sums = SKIP
+	sha256sums = 536a7c2deb4b29942a0ef66b1becd9500c9954307096f49ae8a136470b65e33c
+
+pkgname = libvirt-iso-manjaro-gnome-bin
