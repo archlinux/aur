@@ -26,7 +26,7 @@ makedepends=(
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 source=(
-  "${_gitname}::git+git://git.openwrt.org/project/${_gitname}.git"
+  "${_gitname}::git+https://git.openwrt.org/project/${_gitname}.git"
   '001-sbin-fix.patch'
 )
 sha256sums=(

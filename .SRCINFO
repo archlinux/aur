@@ -22,7 +22,7 @@ pkgbase = uqmi-git
 	depends = libubox
 	provides = uqmi=r191.7914da4
 	conflicts = uqmi
-	source = uqmi::git+git://git.openwrt.org/project/uqmi.git
+	source = uqmi::git+https://git.openwrt.org/project/uqmi.git
 	source = 001-sbin-fix.patch
 	sha256sums = SKIP
 	sha256sums = 9ca8dc8eff58f6c01029a1f663bf232f10b48ca078f6c325236042fa13f7dac5
