@@ -1,6 +1,6 @@
 pkgbase = mdns-browser
 	pkgdesc = A cross platform mDNS browsing app written in Rust using tauri and svelte
-	pkgver = 2.5.2
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://github.com/hrzlgnm/mdns-browser
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = mdns-browser
 	conflicts = mdns-browser-bin
 	options = !strip
 	options = !emptydirs
-	source = v2.5.2.tar.gz::https://github.com/hrzlgnm/mdns-browser/archive/refs/tags/v2.5.2.tar.gz
-	sha256sums = cc90f46fbc57cdec9f99c93f5d9d86a694d6ff1a0879432deca957e7c20597be
+	source = v2.5.3.tar.gz::https://github.com/hrzlgnm/mdns-browser/archive/refs/tags/v2.5.3.tar.gz
+	sha256sums = 6b98a3ecddf42dc1e6aa8698f5004ac8b6e2f7ba3fa21cf2f60934b69fbe208a
 
 pkgname = mdns-browser
