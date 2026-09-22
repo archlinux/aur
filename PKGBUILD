@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=tgrep-bin
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Trigram-indexed grep with a client/server architecture for fast local regex search in large codebases"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source=("tgrep-${pkgver}-LICENSE::https://raw.githubusercontent.com/microsoft/tg
 source_x86_64=("${_archive_x86_64}::${url}/releases/download/v${pkgver}/${_archive_x86_64}")
 source_aarch64=("${_archive_aarch64}::${url}/releases/download/v${pkgver}/${_archive_aarch64}")
 sha256sums=('5baa259ffd1a975780869d7d2925212224c92206cefb96fb2bf0b146650e5029')
-sha256sums_x86_64=('37f453a8ceb9460dca1e3030a779a484bb54f4aaf67a1255971aeb30572ace5f')
-sha256sums_aarch64=('fecb83c2ceb697d798ed661689c3045cb7daaf99cd0c79874f55eff32eb8ea22')
+sha256sums_x86_64=('de259323635a1d6e9ed26f2833eaa0961f964c234fa127ea8d69bafe16ebd89e')
+sha256sums_aarch64=('913a028e3dc2a9264298fe7f634a3eb84ee208d97afc6d33143adb5aac1e288f')
 noextract=("${_archive_x86_64}" "${_archive_aarch64}")
 
 package() {
