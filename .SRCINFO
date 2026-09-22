@@ -34,6 +34,8 @@ pkgbase = waycast-bin
 	optdepends = intel-media-driver: VA-API driver for Intel Broadwell and newer
 	optdepends = mesa: VA-API driver for AMD (provides libva-mesa-driver)
 	optdepends = dnsmasq: DHCP for the sink when waycast becomes the Wi-Fi Direct group owner
+	provides = waycast=0.6.1
+	conflicts = waycast
 	conflicts = swaybeam
 	conflicts = swaybeam-bin
 	conflicts = swaybeam-hyprland-bin

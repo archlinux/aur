@@ -7,7 +7,9 @@
 # install the same binary path.
 #
 # Installs the archives built by the project's Release workflow rather than
-# compiling, so no Rust toolchain is needed. Those archives are dynamically
+# compiling, so no Rust toolchain is needed. `waycast` is the source package
+# for anyone who would rather build; both track the same releases and install
+# the same files. Those archives are dynamically
 # linked against GStreamer, PipeWire and glib and are built on Ubuntu 24.04,
 # so they need glibc 2.39 or newer -- fine on Arch, and the reason the
 # depends list below is not merely `glibc`.
@@ -78,7 +80,11 @@ optdepends=(
   'dnsmasq: DHCP for the sink when waycast becomes the Wi-Fi Direct group owner'
 )
 
-conflicts=('swaybeam' 'swaybeam-bin' 'swaybeam-hyprland-bin' 'swaybeam-hyprland-git')
+# `waycast` is the same project built from source and installs the same
+# paths, so the two cannot be co-installed; `provides` lets anything that
+# depends on waycast be satisfied by either.
+provides=("waycast=${pkgver}")
+conflicts=('waycast' 'swaybeam' 'swaybeam-bin' 'swaybeam-hyprland-bin' 'swaybeam-hyprland-git')
 
 # The Release workflow labels archives amd64/arm64, the usual naming for a
 # generic Linux download; Arch calls the same machines x86_64/aarch64. Using
