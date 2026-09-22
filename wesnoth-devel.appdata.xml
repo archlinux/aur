@@ -60,23 +60,6 @@
     <p xml:lang="pl">Ponad 200 jednostek. 16 ras. 6 głównych frakcji. Setki lat historii. Świat Wesnoth jest niezwykle wielki, ograniczony tylko Twoją wyobraźnią - stwórz własne jednostki, zbuduj własne mapy i napisz własne scenariusze, a nawet całe kampanie. Możesz wyzwać nawet do 8 przyjaciół — lub nieznajomych — aby toczyć epickie bitwy w trybie gry wieloosobowej.</p>
     <p xml:lang="ru">В игре есть по крайней мере две сотни типов юнитов, шестнадцать рас, шесть крупных фракций и сотни лет истории. Мир Веснота огромен и ограничен только вашей креативностью — создавайте собственные юниты, карты, пишите собственные сценарии или даже полноценные кампании. Вы также можете соревноваться с друзьями или незнакомцами (до 8 человек), сражаясь с ними в эпических многопользовательских фэнтезийных баталиях.</p>
   </description>
-  <screenshots>
-    <screenshot type="default">
-      <image type="source" width="1280" height="768">https://www.wesnoth.org/images/sshots/wesnoth-1.13.2-1.jpg</image>
-    </screenshot>
-    <screenshot>
-      <image type="source" width="1280" height="768">https://www.wesnoth.org/images/sshots/wesnoth-1.13.2-4.jpg</image>
-    </screenshot>
-    <screenshot>
-      <image type="source" width="1280" height="768">https://www.wesnoth.org/images/sshots/wesnoth-1.13.6-4.jpg</image>
-    </screenshot>
-    <screenshot>
-      <image type="source" width="1280" height="768">https://www.wesnoth.org/images/sshots/wesnoth-1.13.7-2.jpg</image>
-    </screenshot>
-    <screenshot>
-      <image type="source" width="1280" height="768">https://www.wesnoth.org/images/sshots/wesnoth-1.13.6-1.jpg</image>
-    </screenshot>
-  </screenshots>
   <launchable type="desktop-id">wesnoth-devel</launchable>
   <url type="homepage">https://www.wesnoth.org</url>
   <url type="faq">https://wiki.wesnoth.org/Play</url>
