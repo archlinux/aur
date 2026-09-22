@@ -1,6 +1,6 @@
 pkgbase = deepseek-reasonix-tui
 	pkgdesc = Cache-first DeepSeek coding agent for the terminal
-	pkgver = 1.38.8
+	pkgver = 1.38.11
 	pkgrel = 1
 	url = https://github.com/esengine/DeepSeek-Reasonix
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = deepseek-reasonix-tui
 	provides = reasonix
 	conflicts = reasonix
 	options = !debug
-	source = reasonix-1.38.8.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/v1.38.8.tar.gz
-	sha256sums = ae4012a5d7cb66ab1338730db865955ef38f63761209d08701b06ec5dd4166e4
+	source = reasonix-1.38.11.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/v1.38.11.tar.gz
+	sha256sums = 1fd0f9e23cf0c927af9e287ff00816ff78fa142c6c98be59e507c93d52379368
 
 pkgname = deepseek-reasonix-tui
