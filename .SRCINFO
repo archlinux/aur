@@ -12,6 +12,6 @@ pkgbase = lilbee-compat
 	source = lilbee.service::https://github.com/tobocop2/lilbee/raw/v0.6.90b443/packaging/systemd/lilbee.service
 	sha256sums = 8987137080f5b5353ca4a5bc82aa56c92c450c158e8558fa48fa8bff2cb1c69d
 	source_x86_64 = lilbee-0.6.90b443-compat::https://github.com/tobocop2/lilbee/releases/download/v0.6.90b443/lilbee-compat-linux-x86_64
-	sha256sums_x86_64 = a55186cc8264618cc5f999bf711538123966d5a03cf773965e9ceb0dbf1ed068
+	sha256sums_x86_64 = 963a06201a7ad659ada032d2b8311a1af8c729458f5d8f9773e76ec54d06ca93
 
 pkgname = lilbee-compat
