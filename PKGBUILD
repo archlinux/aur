@@ -1,8 +1,8 @@
 # Maintainer: Nathan <nate0001@gmail.com>
 
 pkgname=ghastty-git
-pkgver=1.3.2.r16705.g33613783f
-pkgrel=3
+pkgver=1.3.2.r18156.gaea7dac7c
+pkgrel=1
 pkgdesc="A Qt6 frontend for Ghostty that embeds libghostty (Wayland-only)"
 arch=('x86_64')
 url="https://github.com/fuddlesworth/ghastty"
@@ -37,7 +37,7 @@ conflicts=('ghastty')
 # package is produced.
 options=('!lto' '!debug')
 
-_zigver=0.15.2
+_zigver=0.16.0
 _zig="zig-x86_64-linux-${_zigver}"
 source=(
   "$pkgname::git+https://github.com/fuddlesworth/ghastty.git#branch=main"
@@ -45,7 +45,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '02aa270f183da276e5b5920b1dac44a63f1a49e55050ebde3aecc9eb82f93239'
+  '70e49664a74374b48b51e6f3fdfbf437f6395d42509050588bd49abe52ba3d00'
 )
 
 pkgver() {
@@ -59,17 +59,20 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
 
-  # Pinned toolchain: this tree requires Zig 0.15.2 (build.zig.zon
-  # minimum_zig_version), but Arch's `zig` tracks 0.16+, which does not
-  # compile it. Use the bundled 0.15.2 from the source array and keep
-  # Zig's package cache inside the build dir.
+  # Pinned toolchain: this tree requires the exact Zig release named in
+  # build.zig.zon (minimum_zig_version), and Arch's `zig` package moves
+  # independently of it. Use the bundled release from the source array
+  # (keep _zigver in sync with build.zig.zon) and keep Zig's package
+  # cache inside the build dir.
   export PATH="$srcdir/$_zig:$PATH"
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/.zig-cache"
 
-  # 1. libghostty — ReleaseFast, both renderers (Linux app-runtime=none).
+  # 1. libghostty — ReleaseFast, app-runtime=none. The renderer is fixed
+  #    at build time by -Drenderer= (opengl or vulkan; the Qt frontend
+  #    compiles both host paths and asks the library which one it got).
   #    Produces zig-out/lib/ghostty-internal.so, which the Qt CMake links.
   #    Fetches Zig dependencies from deps.files.ghostty.org (needs network).
-  zig build -Dapp-runtime=none -Doptimize=ReleaseFast
+  zig build -Dapp-runtime=none -Doptimize=ReleaseFast -Drenderer=opengl
 
   # 2. Qt6 frontend. CMAKE_INSTALL_LIBDIR=lib/ghastty keeps the private
   #    libghostty.so out of the top-level /usr/lib; the CMakeLists derives
