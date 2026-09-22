@@ -3,7 +3,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r7522.50e9191b
+pkgver=r7524.911271b7
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -55,8 +55,8 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/bluebird75/luaunit.git'
         'git+https://github.com/taocpp/PEGTL.git' # as of 9/1/2026, pcsx-redux fails to compile with extra/pegtl due to missing `auto_rewind`
         'git+https://codeberg.org/malucart/xmake-psx.git'
-        'git+https://github.com/rixnobis/iec-60908b.git'
-        'git+https://github.com/rixnobis/cueparser.git'
+        'git+https://github.com/pcsx-redux/iec-60908b.git'
+        'git+https://github.com/pcsx-redux/cueparser.git'
         'git+https://github.com/pcsx-redux/nugget.git'
         )
 sha256sums=('SKIP'
