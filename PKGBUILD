@@ -2,7 +2,7 @@
 
 _pkgname=twinkle
 pkgname="${_pkgname}"-git
-pkgver=1.10.3.r480.355813d
+pkgver=1.11.0.r3.g7e0eab6
 pkgrel=1
 pkgdesc="A SIP-based VoIP client"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -17,8 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
-  echo -n "$(grep -E '^set\(PRODUCT_VERSION' CMakeLists.txt | awk -F \" '{print $2}')."
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --always --tags | sed 's|^v||;s|-|.r|;s|-|.|'
 }
 
 build() {
