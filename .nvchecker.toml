@@ -1,0 +1,5 @@
+[talosctl-bin]
+source = "github"
+github = "siderolabs/talos"
+use_latest_release = true
+prefix = "v"
