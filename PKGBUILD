@@ -3,10 +3,11 @@
 _pkgname='bdelta'
 pkgname="${_pkgname}-git"
 epoch=1
-pkgver=0.3.1.post2+g4782c58_20160919.fefefilesize
-pkgrel=4
+pkgver=0.3.1+56.r172.20260624.cbffacc
+pkgrel=1
 pkgdesc="A tool to create diffs of binary files. A sophisticated sequence matching library bundled with a delta creator and patch tool."
-url='https://github.com/jjwhitney/BDelta'
+# url='https://github.com/jjwhitney/BDelta'  # Original
+url="https://github.com/Deamhan/BDelta"    # Fork, as of 2026: Maintained.
 arch=(
   'i686'
   'x86_64'
@@ -14,58 +15,56 @@ arch=(
   'aarch64'
 )
 license=("MPL-2.0")
-
 depends=(
-  'gcc-libs'
   'glibc'
 )
-
 makedepends=(
   "git"
-  "python2"
+  "cmake"
+  "ninja"
 )
-
-optdepends=(
-)
-
+optdepends=()
 provides=(
   "${_pkgname}=${pkgver}"
+  "libbdelta=${pkgver}"
+  "libbdelta-git=${pkgver}"
+  "libbdelta-static=${pkgver}"
+  "libbdelta.so"
+  "libbdelta.a"
 )
-
-replaces=(
-)
-
+replaces=()
 conflicts=(
   "${_pkgname}"
+  "libbdelta"
+  "libbdelta-static"
+  "libbdelta.so"
+  "libbdelta.a"
 )
+options+=('staticlibs')
 
-
-_giturl="https://github.com/jjwhitney/BDelta.git"
+_giturl="${url}.git"
 
 source=(
   "${_pkgname}::git+${_giturl}"
-  # "fefefilesize.patch::https://ptrace.fefe.de/bdelta.diff" # (2025-10-19:) SSL certificate expired.
-  "fefefilesize.patch" # (2025-10-19:) For now, included in this package recipe repository, since the SSL certificate of https://ptrace.fefe.de/ has expored.
 )
 
 sha256sums=(
   'SKIP'
-  "4e44a523b1c960c0ae428b822d700ca9610fe75a45c26e06679204a9cf19ea9c"
 )
 
+prepare() {
+  cd "${_pkgname}"
+
+  git log > git.log
+}
+
 pkgver() {
-  _unpackeddir="${srcdir}/${_pkgname}"
-  cd "${_unpackeddir}"
+  cd "${_pkgname}"
 
-  _ver="$(python2 version.py | sed 's|^v||')"
-  _rev="$(git describe --long | cut -d- -f3)"
-  _date="$(git log -n 1 --pretty=format:%ci | cut -d' ' -f1 | tr -d '-')"
-
-  _extraver=""
-  for _patch in "${srcdir}"/*.patch; do
-    _extraver="${_extraver}.$(basename "${_patch}" .patch | tr -d '.-')"
-  done
-
+  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
 
   if [ -z "${_ver}" ]; then
     echo "$0: Error: Could not determine version." > /dev/stderr
@@ -79,33 +78,29 @@ pkgver() {
     return 1
   fi
 
-  echo "${_ver}+${_rev}_${_date}${_extraver}"
-}
-
-prepare() {
-  _unpackeddir="${srcdir}/${_pkgname}"
-  cd "${_unpackeddir}"
-
-  for _patch in "${srcdir}"/*.patch; do
-    echo "Applying patch '${_patch}' ..."
-    patch -p1 < "${_patch}"
-  done
-
-  git log > git.log
+  printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
 }
 
 build() {
-  _unpackeddir="${srcdir}/${_pkgname}"
-  cd "${_unpackeddir}"
+  cmake -S "${_pkgname}/makefiles" -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_CONFIGURATION_TYPES=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCXX17=ON \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
+    -Wno-dev -Wno-author -Wno-deprecated
 
-  make -C src
+  cmake --build build
 }
 
 package() {
-  _unpackeddir="${srcdir}/${_pkgname}"
-  cd "${_unpackeddir}"
+  cd build
 
-  make -C src DESTDIR="${pkgdir}" install
+  install -Dvm755 -t "${pkgdir}/usr/bin" bdelta bpatch
+  install -Dvm755 -t "${pkgdir}/usr/lib" libbdelta.so
+  install -Dvm644 -t "${pkgdir}/usr/lib" libbdelta.a
 
-  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README RELEASE-VERSION
+  cd "${srcdir}/${_pkgname}"
+
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README
 }
