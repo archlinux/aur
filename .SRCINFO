@@ -1,10 +1,12 @@
 pkgbase = python-numpyro
 	pkgdesc = Probabilistic programming with NumPy powered by JAX for autograd and JIT compilation to GPU/TPU/CPU
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyro-ppl/numpyro
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-scipy
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -15,7 +17,7 @@ pkgbase = python-numpyro
 	depends = python-jax
 	depends = python-jaxlib
 	depends = python-multipledispatch
-	source = https://files.pythonhosted.org/packages/source/n/numpyro/numpyro-0.21.0.tar.gz
-	sha256sums = fc4a90a024a08840868d46b5f9bdc416dfa3ab76c61691036b44ac2b8a77ac77
+	source = python-numpyro-0.21.0.tar.gz::https://github.com/pyro-ppl/numpyro/archive/refs/tags/0.21.0.tar.gz
+	sha256sums = 5114c646dffc44f5597b01c9295b557ef2336e4d22df6498a879a542b2950457
 
 pkgname = python-numpyro
