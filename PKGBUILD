@@ -3,7 +3,7 @@
 # Releases (aarch64): https://persistent.oaistatic.com/codex-app-prod/linux/deb/dists/stable/main/binary-arm64/Packages
 
 pkgname=chatgpt-desktop
-pkgver=26.915.31029
+pkgver=26.917.51856
 pkgrel=1
 pkgdesc="ChatGPT desktop application for Linux (repackaged from the official binary)"
 arch=('x86_64' 'aarch64')
@@ -27,6 +27,7 @@ depends=(
   'glib2'
   'glibc'
   'gtk3'
+  'libcanberra'
   'libcups'
   'libdrm'
   'libgcc'
@@ -78,8 +79,8 @@ noextract=(
   "chatgpt_${pkgver}_amd64.deb"
   "chatgpt_${pkgver}_arm64.deb"
 )
-sha256sums_x86_64=('932825b76a41e80643204a9aa9ccfd1cb2471ffbfcbe1d314994360fcaaffb35')
-sha256sums_aarch64=('5c01ce35eccea9e95d16de052c74f16deed381408931e82b106d7dbeeed8de4a')
+sha256sums_x86_64=('4a23c77b6fb27ccf65f8af97ed8c4a9ddd901cd76ecec494ce83856f0f936d8c')
+sha256sums_aarch64=('4510ea3184c5dd424918e6dbb5b567ebd496cd3faae79d8473b0b2688a359f04')
 sha256sums=('aab6b1105d7273443234e77412fbaa35ff9e04098ac63c2f73ae8e87afb43bd2')
 
 package() {
