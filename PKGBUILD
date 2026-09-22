@@ -2,10 +2,11 @@
 
 pkgname=dbflux
 pkgver=0.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, keyboard-first database client"
 arch=('x86_64' 'aarch64')
-url="https://github.com/0xErwin1/dbflux"
+# Upstream repository: https://github.com/0xErwin1/dbflux
+url="https://dbflux.dev"
 license=('MIT' 'Apache-2.0')
 depends=(
     'glibc'
