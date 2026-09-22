@@ -1,6 +1,6 @@
 # Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
 pkgname=databend
-pkgver=1.2.922
+pkgver=1.2.948
 pkgrel=1
 epoch=
 pkgdesc="Opensource alternative to Snowflake"
@@ -22,10 +22,10 @@ install='databend.install'
 changelog=
 source=("databend.install")
 sha256sums=('b6516eed6b0b3ffc35d914581f2e7bb1ccf1effe92d63df59d48984ebf918332')
+sha256sums_aarch64=('c3b4288f98a906b3d5994fd985ca97aca3f61f882ecc97df09998e11891c2cc4')
+sha256sums_x86_64=('3b608858b8b8a194c047397f90f567f53f6a005eb928829d03983ea0e7fe2dec')
 source_x86_64=("https://github.com/databendlabs/databend/releases/download/v${pkgver}-nightly/databend-v${pkgver}-nightly-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/databendlabs/databend/releases/download/v${pkgver}-nightly/databend-v${pkgver}-nightly-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('d7285028c8dcaece45d2c4b29deb87b8ef94fe854cc45ff677ca1df73a7b6ede')
-sha256sums_x86_64=('d9912a1bbb643da2da93ba53d3192e2406b7ca2a1c851b47e291c71f473fabee')
 noextract=()
 
 package() {
