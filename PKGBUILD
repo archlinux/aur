@@ -4,7 +4,7 @@
 _pkgname=gnsstk
 pkgname="${_pkgname}-git"
 pkgver=15.3.1.r8101.20260819.55ea33448
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for GNSS (Global Navigation Satellite System) stuff: Provides a core library to facilitate the development of GNSS applications."
 arch=(
   "i686"
@@ -13,14 +13,17 @@ arch=(
 url="https://gitlab.com/sgl-ut/gnsstk"
 license=('LGPL-3.0-or-later')
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc_s.so'
+  'libstdc++.so'
 )
 makedepends=(
   'cmake'
   'git'
   'make'
-  # 'swig'  # Currently, fails to build the python binding; see https://gitlab.com/sgl-ut/gnsstk/-/issues/4. 'swig' is only needed to build python binding.
+  'libgcc'
+  'libstdc++'
+  'swig'  # Currently, fails to build the python binding; see https://gitlab.com/sgl-ut/gnsstk/-/issues/4. 'swig' is only needed to build python binding.
 )
 optdepends=(
   "bash: For '/usr/bin/gnsstk-config'."
@@ -90,16 +93,17 @@ build() {
   export CFLAGS
   export CXXFLAGS
 
+  # 2026-09-22: `-DTEST_SWITCH=ON` yields build error `SEMHeader_T.cpp:42:1: error: ‘uint32_t’ does not name a type`, see https://gitlab.com/sgl-ut/gnsstk/-/work_items/7.
   _cmake_config_opts=(
     -DBUILD_EXT=ON
     -DBUILD_FOR_PACKAGE_SWITCH=OFF # `=ON` here also triggers python binding build error https://gitlab.com/sgl-ut/gnsstk/-/issues/4.
     -DBUILD_PYTHON=OFF # Currently, fails to build the python binding; see https://gitlab.com/sgl-ut/gnsstk/-/issues/4.
     -DCOVERAGE_SWITCH=OFF
-    -DDEBUG_SWITCH=ON  # Controls cmake verbose variable printout
+    -DDEBUG_SWITCH=OFF # Controls cmake verbose variable printout
     -DDEBUG_VERBOSE=ON # Controls cmake verbose variable printout
     #-DPIP_WHEEL_SWITCH=OFF # Currently, fails to build the python binding; see https://gitlab.com/sgl-ut/gnsstk/-/issues/4.
     #-DPYTHON_USER_INSTALL=OFF # Currently, fails to build the python binding; see https://gitlab.com/sgl-ut/gnsstk/-/issues/4.
-    -DTEST_SWITCH=ON
+    -DTEST_SWITCH=OFF
     -DUSE_RPATH=OFF
     -DVERSIONED_HEADER_INSTALL=ON
   )

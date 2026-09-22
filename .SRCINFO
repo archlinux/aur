@@ -1,7 +1,7 @@
 pkgbase = gnsstk-git
 	pkgdesc = Library for GNSS (Global Navigation Satellite System) stuff: Provides a core library to facilitate the development of GNSS applications.
 	pkgver = 15.3.1.r8101.20260819.55ea33448
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/sgl-ut/gnsstk
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,12 @@ pkgbase = gnsstk-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = make
-	depends = gcc-libs
+	makedepends = libgcc
+	makedepends = libstdc++
+	makedepends = swig
 	depends = glibc
+	depends = libgcc_s.so
+	depends = libstdc++.so
 	optdepends = bash: For '/usr/bin/gnsstk-config'.
 	provides = gnsstk=15.3.1.r8101.20260819.55ea33448
 	provides = df_diff
