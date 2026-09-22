@@ -2,7 +2,7 @@
 # https://github.com/nihalxkumar/PKGBUILDs/tree/main/onionspray
 pkgname=onionspray
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to setup Onion Services for existing websites."
 arch=('any')
 url="https://gitlab.torproject.org/tpo/onion-services/onionspray"
@@ -22,12 +22,13 @@ prepare() {
   cd "$srcdir/$pkgname"
   # Prevent failure when non-root users run onionspray commands (e.g. onionspray --help)
   sed -i 's/chmod 700 \$secrets_dir || exit 1/chmod 700 \$secrets_dir 2>\/dev\/null || true/' onionspray
+  # Fetch submodules here so build() stays offline and reproducible
+  git submodule update --init --recursive
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  # Initialize git submodules
-  git submodule update --init --recursive
+  :
 }
 
 package() {
