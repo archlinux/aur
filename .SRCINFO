@@ -1,24 +1,29 @@
 pkgbase = wacom-utility-git
 	pkgdesc = Graphical tablet configuration utility. Old software, does not support the new(est) hardware.
-	pkgver = r25.20190330.6bad1ce
-	pkgrel = 4
-	url = http://github.com/lubosz/wacom-utility
+	pkgver = 0.1.4+1.r10.20260307.f2b765d
+	pkgrel = 1
+	url = https://github.com/ggveryhard/wacom-utility
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = zopflipng-parallel
-	depends = gtk2
-	depends = python2
-	depends = sh
-	depends = xf86-input-wacom
-	depends = gksu
-	provides = wacom-utility
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glib2
+	depends = gtk4
+	depends = python>=3.10
+	depends = python-cairo
+	depends = python-evdev
+	depends = python-gobject
+	optdepends = xf86-input-wacom: For 'xsetwacom', for usage in X11.
+	optdepends = ydotool: For usage in Wayland.
+	optdepends = sway: For 'swaymsg', for output mapping in Wayland GUI.
+	provides = wacom-utility=0.1.4+1.r10.20260307.f2b765d
+	provides = python-wacum_utility=0.1.4+1.r10.20260307.f2b765d
 	conflicts = wacom-utility
-	source = wacom-utility::git+http://github.com/lubosz/wacom-utility.git
-	source = wacom-utility.sh
-	source = wacom-utility.desktop
+	conflicts = python-wacum_utility
+	source = wacom-utility::git+https://github.com/ggveryhard/wacom-utility.git
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = c6235b40e55aa7266d7bc47a2f11bcef98c3bb30c4d80223ee910c6b461bebc2
 
 pkgname = wacom-utility-git
