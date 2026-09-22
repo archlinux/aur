@@ -2,7 +2,7 @@
 
 _pkgname=chameleonultragui
 pkgname="${_pkgname}-bin-latest"
-pkgver=r613.20260830.bd9356b
+pkgver=r623.20260920.8152c34f
 pkgrel=1
 pkgdesc='Flutter GUI for the Chameleon Ultra RFID card cloning and emulation device. Automatic upstream binary build from latest upstream git commit.'
 arch=('x86_64')
