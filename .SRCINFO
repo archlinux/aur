@@ -1,5 +1,5 @@
 pkgbase = pico-sdk
-	pkgdesc = Libraries and tools for C/C++ development on RP2040 microcontrollers.
+	pkgdesc = Libraries and tools for C/C++ development on RP2040/RP2350 microcontrollers.
 	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/raspberrypi/pico-sdk

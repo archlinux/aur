@@ -3,7 +3,7 @@ pkgname=pico-sdk
 pkgver=2.3.1
 pkgrel=1
 
-pkgdesc="Libraries and tools for C/C++ development on RP2040 microcontrollers."
+pkgdesc="Libraries and tools for C/C++ development on RP2040/RP2350 microcontrollers."
 arch=('any')
 url="https://github.com/raspberrypi/pico-sdk"
 license=('BSD-3-Clause')
