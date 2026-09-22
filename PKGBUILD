@@ -2,7 +2,7 @@
 
 _pkgname=passless
 pkgname="${_pkgname}"
-pkgver=0.19.3
+pkgver=0.19.4
 pkgrel=1
 pkgdesc="Virtual FIDO2 device and client FIDO 2 utility. Passkeys made easy."
 arch=('x86_64' 'aarch64')
@@ -47,7 +47,23 @@ build() {
 check() {
     cd "$srcdir/passless"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    # Package checks run on the user's build host. Do not execute integration
+    # targets or host-sensitive validation that can spawn external processes,
+    # use DBus/system users, or interact with TPM/emulator state. Keep this in
+    # sync with the safe subset in tools/agent-validation/test-deterministic.sh.
+    cargo test --frozen --workspace --all-features --lib --bins -- \
+        --skip agent::prompt::dbus_tests \
+        --skip ceremony_observer \
+        --skip agent::storage_factory::tests::composition_conformance \
+        --skip tpm_portable_missing_parent_errors \
+        --skip agent::browser::tests::test_cdp_pipes_drop_closes_fds \
+        --skip agent::browser::tests::test_child_in_separate_process_group \
+        --skip agent::browser::tests::test_no_fd_leakage_to_child \
+        --skip agent::browser::tests::test_concurrent_launch_and_revoke \
+        --skip agent::browser::tests::test_manager_cleanup_detects_inode_change \
+        --skip agent::runtime::tests \
+        --skip agent::launcher::tests::test_spawn_principal_non_root_fails_closed \
+        --skip commands::agent_admin::tests::auto_fails_when_no_agent_detected
 }
 
 package() {
