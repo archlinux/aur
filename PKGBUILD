@@ -3,7 +3,7 @@
 
 _pkgname=fcitx5-chinese-addons
 pkgname=${_pkgname}-without-browser
-pkgver=5.1.13
+pkgver=5.1.14
 pkgrel=1
 _py_stroke_ver=20250329
 _py_table_ver=20121124
@@ -12,14 +12,14 @@ arch=('x86_64')
 url='https://github.com/fcitx/fcitx5-chinese-addons'
 license=('LGPL-2.1-or-later' 'Unicode-DFS-2016')
 depends=('fcitx5-qt' 'libime' 'opencc' 'hicolor-icon-theme')
-makedepends=('boost' 'extra-cmake-modules' 'fcitx5-lua' 'fmt' 'ninja')
+makedepends=('boost' 'extra-cmake-modules' 'fcitx5-lua' 'fmt' 'ninja' 'nlohmann-json')
 optdepends=('fcitx5-lua: Lua and imeapi support from pinyin')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${_pkgname}_${pkgver}.tar.gz"::"${url}/archive/refs/tags/${pkgver}.tar.gz"
         "https://download.fcitx-im.org/data/py_stroke-$_py_stroke_ver.tar.gz"
         "https://download.fcitx-im.org/data/py_table-$_py_table_ver.tar.gz")
-sha256sums=('ee056e7ac31f5f9c242cee43f7ad8605e2cc188a7bbcc46f869332a49058244a'
+sha256sums=('12be9ccbc0601f0848f0ec312dfd56ac1dc34318d2fb7927b90201793ec10ecf'
             'c1a7ca7225d3614ab83353fc827503006a980447762018f53760425d7b5303a6'
             '42146ac97de6c13d55f9e99ed873915f4c66739e9c11532a34556badf9792c04')
 noextract=("py_stroke-$_py_stroke_ver.tar.gz"
