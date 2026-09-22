@@ -1,6 +1,6 @@
 pkgname=zournal-git
 pkgver=r59.a3e0713
-pkgrel=3
+pkgrel=4
 pkgdesc="A journal app for detective games"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SimoneFelici/Zournal"
@@ -30,4 +30,5 @@ package() {
 
   install -Dm755 "zig-out/bin/zournal" "$pkgdir/usr/bin/zournal"
   install -Dm644 "resources/zournal.desktop" "$pkgdir/usr/share/applications/zournal.desktop"
+  install -Dm644 "resources/zournal.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/zournal.png"
 }
