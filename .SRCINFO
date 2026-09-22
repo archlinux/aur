@@ -1,11 +1,11 @@
 pkgbase = python-leo-git
 	pkgdesc = Python library for leo dict, including command line executable 'leo'. Latest git checkout.
-	pkgver = 1.1.4.r26.20200714.da398f0
-	pkgrel = 3
-	epoch = 0
-	url = https://github.com/keachi/python-leo
+	pkgver = 1.1.r27.20260802.08267d4
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/andiwand/python-leo
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -15,11 +15,11 @@ pkgbase = python-leo-git
 	depends = python-beautifulsoup4>=4.3.0
 	depends = python-requests>=1.2.3
 	optdepends = python-vlc: To play pronounciations.
-	provides = python-leo=1.1.4.r26.20200714.da398f0
-	provides = leo-dict-cli=1.1.4.r26.20200714.da398f0
+	provides = python-leo=1.1.r27.20260802.08267d4
+	provides = leo-dict-cli=1.1.r27.20260802.08267d4
 	conflicts = python-leo
 	conflicts = leo-dict-cli
-	source = python-leo::git+https://github.com/keachi/python-leo.git
+	source = python-leo::git+https://github.com/andiwand/python-leo.git
 	sha256sums = SKIP
 
 pkgname = python-leo-git
