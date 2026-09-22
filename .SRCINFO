@@ -1,6 +1,6 @@
 pkgbase = deepcode-cli-bin
 	pkgdesc = Terminal AI coding assistant optimized for the deepseek-v4 model (deep thinking, agent skills, MCP)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/lessweb/deepcode-cli
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = deepcode-cli-bin
 	depends = glibc
 	depends = gcc-libs
 	provides = deepcode
-	provides = deepcode-cli=0.4.0
+	provides = deepcode-cli=0.4.1
 	conflicts = deepcode-cli
-	noextract = deepcode-cli-0.4.0.tgz
+	noextract = deepcode-cli-0.4.1.tgz
 	options = !strip
 	options = !debug
-	source = deepcode-cli-0.4.0.tgz::https://registry.npmjs.org/@vegamo/deepcode-cli/-/deepcode-cli-0.4.0.tgz
-	source = LICENSE-0.4.0::https://raw.githubusercontent.com/lessweb/deepcode-cli/v0.4.0/LICENSE
-	sha256sums = efd49f49d4bb099ce17e2840fafa21008b9f9a9bfaf1420030e96f9828ecd23e
+	source = deepcode-cli-0.4.1.tgz::https://registry.npmjs.org/@vegamo/deepcode-cli/-/deepcode-cli-0.4.1.tgz
+	source = LICENSE-0.4.1::https://raw.githubusercontent.com/lessweb/deepcode-cli/v0.4.1/LICENSE
+	sha256sums = e7645b973762f235d756e7f86671a22129ae2d38f3f54c06492a6b8c1bc7f6ae
 	sha256sums = 7b1d5fa29a200220ca44b3355db5f1c7b91714fbbd76f42e7268104fa9efd380
 
 pkgname = deepcode-cli-bin

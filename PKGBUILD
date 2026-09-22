@@ -2,7 +2,7 @@
 
 pkgname=deepcode-cli-bin
 _pkgname=deepcode-cli
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Terminal AI coding assistant optimized for the deepseek-v4 model (deep thinking, agent skills, MCP)"
 # The 0.4.0 npm release keeps sharp external, including native platform addons.
@@ -29,7 +29,7 @@ _scope='@vegamo'
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_scope}/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/lessweb/deepcode-cli/v${pkgver}/LICENSE")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('efd49f49d4bb099ce17e2840fafa21008b9f9a9bfaf1420030e96f9828ecd23e'
+sha256sums=('e7645b973762f235d756e7f86671a22129ae2d38f3f54c06492a6b8c1bc7f6ae'
             '7b1d5fa29a200220ca44b3355db5f1c7b91714fbbd76f42e7268104fa9efd380')
 
 package() {
