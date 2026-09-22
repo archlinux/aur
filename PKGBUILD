@@ -10,7 +10,7 @@
 # only for trying the package out locally - see packaging/aur/README.md.
 
 pkgname=kramer-vs44-remote-control
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Control a Kramer VS-44HN HDMI matrix switcher over TCP/IP or RS-232"
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=('python-pyserial: RS-232 support, for a serial cable instead of the 
 #   - 'python3' and 'sh' as uninstalled dependencies. They come from python and
 #     from bash, which is in base; Arch does not list base members explicitly.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4da4aa2db6e5bf03563956d96f0b2a758f5188032019fa599fed4bab274db7e6')
+sha256sums=('c929de1c6dda3fdfe5bbd10725efc8adf22e1146a733b77d8ba399d09fb273fb')
 
 _appid=io.github.piero_93.KramerVS44
 _libdir=usr/lib/kramer-vs44
