@@ -41,7 +41,7 @@ optdepends=(
   "glib2:           For example script  '/usr/share/doc/meshcore-cli/scripts/getpos.py'."
   "python-gobject:  For example script  '/usr/share/doc/meshcore-cli/scripts/getpos.py'."
 )
-### Do not run 'check()' since it requires a connection to a MeshCore device.
+### Do not run 'check()' since it currently (2026-09-22) does not run any test.
 # checkdepends=(
 #   'python-pytest'
 # )
@@ -91,7 +91,7 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-### Do not run 'check()' since it requires a connection to a MeshCore device.
+### Do not run 'check()' since it currently (2026-09-22) does not run any test.
 # check() {
 #   cd "${srcdir}/${_pkgname}"
 #
