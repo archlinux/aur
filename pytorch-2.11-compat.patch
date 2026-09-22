@@ -1,0 +1,50 @@
+diff --git a/speechbrain/nnet/RNN.py b/speechbrain/nnet/RNN.py
+index f4768657c..ec309eaa1 100644
+--- a/speechbrain/nnet/RNN.py
++++ b/speechbrain/nnet/RNN.py
+@@ -124,7 +124,7 @@ class RNN(nn.Module):
+         if input_size is None:
+             if len(input_shape) > 3:
+                 self.reshape = True
+-            input_size = torch.prod(torch.tensor(input_shape[2:]))
++            input_size = torch.prod(torch.tensor(input_shape[2:])).item()
+ 
+         self.rnn = torch.nn.RNN(
+             input_size=input_size,
+@@ -2105,7 +2105,7 @@ class QuasiRNN(nn.Module):
+         if input_size is None:
+             if len(input_shape) > 3:
+                 self.reshape = True
+-            input_size = torch.prod(torch.tensor(input_shape[2:]))
++            input_size = torch.prod(torch.tensor(input_shape[2:])).item()
+ 
+         layers = []
+         for layer in range(self.num_layers):
+diff --git a/tests/unittests/test_augment.py b/tests/unittests/test_augment.py
+index b29715727..f67133591 100644
+--- a/tests/unittests/test_augment.py
++++ b/tests/unittests/test_augment.py
+@@ -513,7 +513,10 @@ def test_SpectrogramDrop():
+ 
+     from speechbrain.augment.codec import CodecAugment
+ 
+-    if "ffmpeg" in torchaudio.list_audio_backends():
++    # torchaudio 2.9 removed its backend-discovery API together with the
++    # optional AudioEffector implementation. Keep exercising the codec path
++    # wherever that upstream feature is actually present.
++    if hasattr(torchaudio, "io") and hasattr(torchaudio.io, "AudioEffector"):
+         waveform = torch.rand(4, 16000)
+         augmenter = CodecAugment(16000)
+         output_waveform = augmenter(waveform)
+diff --git a/speechbrain/augment/codec.py b/speechbrain/augment/codec.py
+--- a/speechbrain/augment/codec.py
++++ b/speechbrain/augment/codec.py
+@@ -34,7 +34,7 @@ class CodecAugment(nn.Module):
+     Example
+     -------
+     >>> waveform = torch.rand(4, 16000)
+-    >>> if torchaudio.list_audio_backends()[0] == "ffmpeg":
++    >>> if hasattr(torchaudio, "io") and hasattr(torchaudio.io, "AudioEffector"):
+     ...     augmenter = CodecAugment(16000)
+     ...     output_waveform = augmenter(waveform)
+     """

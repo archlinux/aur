@@ -1,0 +1,45 @@
+--- a/speechbrain/utils/hparams.py
++++ b/speechbrain/utils/hparams.py
+@@ -7,2 +7,22 @@
++import yaml
++from hyperpyyaml import load_hyperpyyaml as _load_hyperpyyaml
++
++
++def load_hyperpyyaml(
++    yaml_stream, overrides=None, overrides_must_match=True, loader=yaml.Loader
++):
++    """Load trusted SpeechBrain configuration with HyperPyYAML's public API.
++
++    ruamel.yaml 0.19's legacy Loader does not initialize the max_depth field
++    required by its composer. HyperPyYAML supports PyYAML loaders explicitly;
++    use that backend here while retaining reference resolution and custom tags.
++    Configurations can construct Python objects and must remain trusted input.
++    """
++    return _load_hyperpyyaml(
++        yaml_stream,
++        overrides=overrides,
++        overrides_must_match=overrides_must_match,
++        loader=loader,
++    )
+ 
+ 
+--- a/speechbrain/inference/interfaces.py
++++ b/speechbrain/inference/interfaces.py
+@@ -22 +22 @@
+-from hyperpyyaml import load_hyperpyyaml
++from speechbrain.utils.hparams import load_hyperpyyaml
+--- a/speechbrain/utils/hpopt.py
++++ b/speechbrain/utils/hpopt.py
+@@ -18 +18 @@
+-from hyperpyyaml import load_hyperpyyaml
++from speechbrain.utils.hparams import load_hyperpyyaml
+--- a/speechbrain/utils/data_pipeline.py
++++ b/speechbrain/utils/data_pipeline.py
+@@ -5 +5 @@
+->>> from hyperpyyaml import load_hyperpyyaml
++>>> from speechbrain.utils.hparams import load_hyperpyyaml
+--- a/tests/unittests/test_imports.py
++++ b/tests/unittests/test_imports.py
+@@ -1 +1 @@
+-import hyperpyyaml
++from speechbrain.utils import hparams as hyperpyyaml
