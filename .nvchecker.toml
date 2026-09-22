@@ -1,5 +1,4 @@
 [cronet]
 source = "jq"
-url = "https://versionhistory.googleapis.com/v1/chrome/platforms/chromeos/channels/lts/versions"
-filter = '.versions[].version'
-include_regex = '144\.\d+\.\d+\.\d+'
+url = "https://versionhistory.googleapis.com/v1/chrome/platforms/chromeos/channels/lts/versions?filter=version%3E=144,version%3C145"
+filter = '.versions[0].version'
