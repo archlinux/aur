@@ -6,7 +6,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-xxhash
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 arch=('any')
 pkgdesc="Extremely fast non-cryptographic hash algorithm (Android ${_android_arch})"
@@ -19,24 +19,24 @@ makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/Cyan4973/xxHash/archive/refs/tags/v${pkgver}.tar.gz"
         '0001-Use-unversioned-libs.patch')
-md5sums=('599804eb9555e51c05f1b821f9212a07'
-         '80d3622c1743b06847d3e552b8aa25e0')
+md5sums=('918fa44277d81b1ac1d02ac075df4ec1'
+         '274f2e3ce74a167a5c0408660589eb73')
 
 prepare() {
-    cd "${srcdir}/xxHash-$pkgver"
+    cd "${srcdir}/xxHash-${pkgver}"
 
     patch -Np1 -i ../0001-Use-unversioned-libs.patch
 }
 
 build() {
-    cd "${srcdir}/xxHash-$pkgver"
+    cd "${srcdir}/xxHash-${pkgver}"
     source android-env ${_android_arch}
 
     make PREFIX="${ANDROID_PREFIX}" $MAKEFLAGS lib
 }
 
 package() {
-    cd "${srcdir}/xxHash-$pkgver"
+    cd "${srcdir}/xxHash-${pkgver}"
     source android-env ${_android_arch}
 
     make PREFIX="${ANDROID_PREFIX}" DESTDIR="${pkgdir}" \
@@ -46,4 +46,6 @@ package() {
         install_libxxhash.pc
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
