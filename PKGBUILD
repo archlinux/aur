@@ -4,7 +4,7 @@
 
 pkgname=corosync-nosystemd-git
 _pkgname=corosync
-pkgver=3.1.10.r26.g5148bf07
+pkgver=3.1.10.r29.ga5b166b2
 pkgrel=1
 pkgdesc="Cluster engine for nodal communication systems with additional features for implementing high availability within applications. Without systemd dependency/ support, latest git checkout."
 arch=('i686' 'x86_64')
