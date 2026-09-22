@@ -4,13 +4,13 @@
 # pkgver and source checksum are replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge
-pkgver=5.8.2
+pkgver=5.9.0
 epoch=2
 pkgrel=1
 pkgdesc="A bridge for your systems"
 makedepends=('git' 'mise')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.8.2.tar.gz")
-sha256sums=('bd89be10674c681f9f1d9e53d506ee0e9e8ccfaced1c8760e9df8504cf2678f8')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timmo001/system-bridge/archive/refs/tags/5.9.0.tar.gz")
+sha256sums=('d526ab43ecb562ad944e04a1725379681a70d39f3f2aadebc3afbebc08c53fd1')
 conflicts=('system-bridge-git' 'system-bridge-git-debug')
 
 arch=('x86_64')
@@ -45,10 +45,8 @@ build() {
   mise exec -C web-client -- bun install --frozen-lockfile
   if grep -q '^\[tasks\."build:web-client"\]$' mise.toml; then
     mise run build:web-client
-    mise run build:tui
   else
     mise run build_web_client
-    mise run build_tui
   fi
   mise exec -- go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${pkgver}'" -o "system-bridge" .
   ./system-bridge completions bash >system-bridge.bash
@@ -73,7 +71,6 @@ package() {
   ver="${ver/.rc./-rc.}"
   cd "${srcdir}/${pkgname}-${ver}"
   install -Dm755 system-bridge "$pkgdir/usr/bin/system-bridge"
-  install -Dm755 system-bridge-tui "$pkgdir/usr/bin/system-bridge-tui"
   install -Dm644 system-bridge.bash "$pkgdir/usr/share/bash-completion/completions/system-bridge"
   install -Dm644 _system-bridge "$pkgdir/usr/share/zsh/site-functions/_system-bridge"
   install -Dm644 system-bridge.fish "$pkgdir/usr/share/fish/vendor_completions.d/system-bridge.fish"
