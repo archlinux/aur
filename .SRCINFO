@@ -1,0 +1,17 @@
+pkgbase = libddcci-git
+	pkgdesc = DDC/CI (VESA MCCS) C Library
+	pkgver = 0.2.0.r1.g0a31d17
+	pkgrel = 1
+	url = https://github.com/TheElevatedOne/libddcci
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = linux-api-headers
+	depends = glibc
+	optdepends = i2c-tools
+	provides = libddcci
+	conflicts = libddcci
+	source = git+https://github.com/TheElevatedOne/libddcci.git
+	sha256sums = SKIP
+
+pkgname = libddcci-git
