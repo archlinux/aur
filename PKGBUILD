@@ -19,6 +19,7 @@ makedepends=(
   'intltool'
   # 'pod2man'  # According to https://aur.archlinux.org/packages/libvirt-sandbox#comment-1081670, this is not needed.
   'rpcsvc-proto'
+  'zlib-static' # Needs 'libz.a' static library.
 )
 optdepends=('dhclient: for sandbox network configuration using DHCP')
 source=(

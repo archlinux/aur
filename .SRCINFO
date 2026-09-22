@@ -9,6 +9,7 @@ pkgbase = libvirt-sandbox
 	makedepends = gobject-introspection
 	makedepends = intltool
 	makedepends = rpcsvc-proto
+	makedepends = zlib-static
 	depends = libvirt-glib
 	depends = libselinux
 	depends = libcap-ng
