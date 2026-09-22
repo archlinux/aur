@@ -1,7 +1,7 @@
 pkgbase = vlmcsd-git
 	pkgdesc = Volume License Manager Service: KMS Emulator in C (for activating Microsoft products)
 	pkgver = 2604.r29.gbadb24e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tfslabs/vlmcsd
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = vlmcsd-git
 	conflicts = libkms-static
 	conflicts = libkms.a
 	conflicts = libkms.so
+	options = staticlibs
 	source = git+https://github.com/tfslabs/vlmcsd.git
 	source = vlmcsd.service
 	source = vlmcsd@.service
