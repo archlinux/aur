@@ -3,7 +3,7 @@
 _pyname="meshcore_py"
 _pkgname="python-meshcore"
 pkgname="${_pkgname}-git"
-pkgver=2.3.9+7.r399.20260903.837ac53
+pkgver=2.3.14.r424.20260919.b32d820
 pkgrel=1
 pkgdesc="Python library for interacting with MeshCore companion radio nodes."
 groups=("meshcore")
