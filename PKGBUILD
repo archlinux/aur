@@ -1,13 +1,13 @@
 # Maintainer: Steve Holvoet <linux@steho.be>
 pkgname=ghidra-mcp-git
 pkgver=6.0.0.r283.gb3f8dfe
-pkgrel=1
+pkgrel=2
 pkgdesc="Production-ready Model Context Protocol server for Ghidra reverse engineering platform (latest git version)"
 arch=('any')
 url="https://github.com/bethington/ghidra-mcp"
 license=('Apache-2.0')
 depends=('ghidra' 'python' 'python-mcp')
-makedepends=('maven' 'jdk25-openjdk' 'git' 'python-build' 'python-installer' 'python-hatchling' 'python-wheel')
+makedepends=('maven' 'java-environment>=25' 'java-environment<27' 'git' 'python-build' 'python-installer' 'python-hatchling' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname}")
 source=("git+${url}.git")
@@ -45,6 +45,44 @@ prepare() {
     sed -i "s|<ghidra.version>.*</ghidra.version>|<ghidra.version>${_detected_version}</ghidra.version>|g" pom.xml
   else
     error "Failed to detect Ghidra version from properties file."
+    return 1
+  fi
+
+  # Ghidra is compiled with the JDK selected by its builder.  The MCP project
+  # targets Java 21, but javac must still be new enough to read Ghidra's class
+  # files.  A Java 25 compiler cannot consume Java 26 bytecode, for example.
+  # Check the installed Ghidra bytecode against Maven's actual Java runtime so
+  # the build fails with an actionable error instead of a cryptic javac error.
+  local _ghidra_jar
+  _ghidra_jar=$(find "${_ghidra_home}" -path '*/Framework/Generic/lib/Generic.jar' -print -quit)
+  if [ -z "$_ghidra_jar" ]; then
+    error "Could not find Ghidra Generic.jar for bytecode compatibility check."
+    return 1
+  fi
+
+  local _ghidra_class_major
+  _ghidra_class_major=$(javap -verbose -classpath "$_ghidra_jar" \
+    ghidra.framework.Application 2>/dev/null |
+    awk '/major version:/ { print $3; exit }')
+  if [[ ! $_ghidra_class_major =~ ^[0-9]+$ ]]; then
+    error "Could not determine the Ghidra class-file version from $_ghidra_jar."
+    return 1
+  fi
+
+  local _maven_java_version _maven_java_major _maven_class_major
+  _maven_java_version=$(mvn -version 2>/dev/null |
+    awk -F': ' '/^Java version:/ { print $2; exit }')
+  _maven_java_major=${_maven_java_version%%.*}
+  if [[ ! $_maven_java_major =~ ^[0-9]+$ ]]; then
+    error "Could not determine the Java version used by Maven."
+    return 1
+  fi
+  _maven_class_major=$((_maven_java_major + 44))
+
+  msg2 "Ghidra bytecode: major ${_ghidra_class_major}; Maven JDK: Java ${_maven_java_major}"
+  if (( _maven_class_major < _ghidra_class_major )); then
+    error "Maven is using Java ${_maven_java_major}, but Ghidra requires a JDK that can read class-file major ${_ghidra_class_major}."
+    error "Select a compatible Java environment with archlinux-java before rebuilding."
     return 1
   fi
 
