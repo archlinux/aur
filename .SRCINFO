@@ -1,6 +1,6 @@
 pkgbase = shuvarie-bin
 	pkgdesc = Blazingly fast AI coding TUI for chivalrous people (Binary)
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://shuvarie.org/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = shuvarie-bin
 	depends = glibc
 	provides = shuvarie
 	conflicts = shuvarie
-	source_x86_64 = shuvarie-v0.1.1.tar.gz::https://github.com/shuvarie/shuvarie/releases/download/v0.1.1/shuvarie-0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = dc08ed2dc74ba8781a8069c59a4c17c8e84515d2a05dc704752ace19a27396d6
-	source_aarch64 = shuvarie-v0.1.1.tar.gz::https://github.com/shuvarie/shuvarie/releases/download/v0.1.1/shuvarie-0.1.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 42a743325db620f594a7f60f5f125d441dc928c2838b1a5773bd0bcf4cea5230
+	source_x86_64 = shuvarie-v0.2.0.tar.gz::https://github.com/shuvarie/shuvarie/releases/download/v0.2.0/shuvarie-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 60692a2f2915d053c42ef50443a42b8ac0bc7cf54f0d8e7cac070f9f74422dfc
+	source_aarch64 = shuvarie-v0.2.0.tar.gz::https://github.com/shuvarie/shuvarie/releases/download/v0.2.0/shuvarie-0.2.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4056eb707c9abd6d3aa4574ab68f222a958ee59c785995a46e62d6ad60d71184
 
 pkgname = shuvarie-bin
