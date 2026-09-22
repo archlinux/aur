@@ -1,0 +1,13 @@
+pkgbase = muse-for-linux
+	pkgdesc = Unofficial Electron wrapper for Meta Muse Web
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/itonia149/muse-for-linux
+	arch = any
+	license = MIT
+	depends = electron
+	depends = hicolor-icon-theme
+	source = muse-for-linux-0.1.0.tar.gz::https://github.com/itonia149/muse-for-linux/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = e3a2a428a335c507d344eddc177d85f2be691285af966bb6c519684666322599
+
+pkgname = muse-for-linux
