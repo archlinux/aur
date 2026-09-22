@@ -10,7 +10,7 @@ arch=('any')
 url="https://gitlab.freedesktop.org/xdg/xdg-utils"
 license=('MIT')
 depends=('sh' 'file')
-makedepends=('docbook-xsl' 'lynx' 'xmlto' 'git')
+makedepends=('lynx' 'xmlto' 'docbook-xsl' 'libxslt' 'git')
 optdepends=('kde-cli-tools: for KDE Plasma5 support in xdg-open'
             'exo: for Xfce support in xdg-open'
             'pcmanfm: for LXDE support in xdg-open'
