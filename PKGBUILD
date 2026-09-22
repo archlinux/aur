@@ -47,23 +47,9 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  ## Silence warnings that are due to old codebase.
-  _no_cc_warnings=(
-    #'address'
-    #'attribute-warning'
-    'deprecated-declarations'
-    #'format-security'
-    #'strict-aliasing'
-    'unused-result'
-  )
-  _CFLAGSAPPEND=''
-  for _no_cc_warn in "${_no_cc_warnings[@]}"; do
-    _CFLAGSAPPEND+=" -Wno-error=${_no_cc_warn} -Wno-${_no_cc_warn}"
-  done
-  CFLAGS+=" ${_CFLAGSAPPEND}"
-  CXXFLAGS+=" ${_CFLAGSAPPEND}"
-  export CFLAGS
-  export CXXFLAGS
+  # This disable showing all warning
+  export CFLAGS+=" -w"
+  export CXXFLAGS+=" -w"
 
   # --without-lzma is needed to work around '/usr/bin/ld: cannot find -llzma: No such file or directory'. If anyone has an idea how to fix it, please report to the Maintainer of this `PKGBUILD`. See also .
   ./configure \
