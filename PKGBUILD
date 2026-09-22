@@ -1,8 +1,8 @@
 # Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 
 pkgname=usql-bin
-pkgver=0.21.5
-pkgrel=3
+pkgver=0.21.6
+pkgrel=1
 pkgdesc='A universal command-line interface for SQL databases'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xo/usql"
@@ -17,10 +17,10 @@ source_armv7h=("$url/releases/download/v$pkgver/usql-$pkgver-linux-arm.tar.bz2")
 source_aarch64=("$url/releases/download/v$pkgver/usql-$pkgver-linux-arm64.tar.bz2")
 
 sha256sums=('38d64dd364ce4098818b92b5746e2bab1fd6630bca9981923791860ff9eaa8dd')
-sha256sums_x86_64=('033823cce96e2f5f658cbe7120e375fce19430218d0a128c1f55c2d755b65edb')
-sha256sums_armv6h=('04a6523fd95d91afca41a09f41db0f77ab9ffdaebddbf87bf2155dcabd660c73')
-sha256sums_armv7h=('04a6523fd95d91afca41a09f41db0f77ab9ffdaebddbf87bf2155dcabd660c73')
-sha256sums_aarch64=('b3b0f1a4b3788a573858b279588481e6c38ecd8a7137f38841becc3e4e3b7782')
+sha256sums_x86_64=('b3046140f8f2add0e2afaaa595b824d445e933d400a00d50a1c038760d4ce13c')
+sha256sums_armv6h=('1fb54b57ecf27d0ff1f64b535bee991f32e5df6ebe7efbc55d85abac5a15dae0')
+sha256sums_armv7h=('1fb54b57ecf27d0ff1f64b535bee991f32e5df6ebe7efbc55d85abac5a15dae0')
+sha256sums_aarch64=('52bb8a1b9d1643ccdb79348d63626b75694d9fd3667b3f62f97f43cf51be0bab')
 
 check() {
     ./usql --version
