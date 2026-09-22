@@ -1,7 +1,7 @@
 # Maintainer: Latte macchiato <contact@lattemacchiato.dev>
 pkgname=plezy-git
 _pkgname=plezy
-pkgver=2.20.0.r119.gfb76314
+pkgver=2.20.0.r140.gf63a9fa
 pkgrel=1
 pkgdesc='A modern Plex client for desktop and mobile'
 arch=('x86_64')
@@ -18,12 +18,11 @@ depends=(
     'xdg-user-dirs'
     'curl'
     'hicolor-icon-theme'
-    'jre21-openjdk-headless'
 )
 makedepends=(
     'clang'
     'cmake'
-    'java-environment'
+    'jdk21-openjdk'
     'ninja'
     'pkgconf'
     'git'
@@ -48,6 +47,8 @@ pkgver() {
 }
 
 build() {
+    # Match the packaged JNI runtime and avoid discovery through a JRE-only default.
+    export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     export PATH="$srcdir/flutter/bin:$PATH"
     export PUB_CACHE="$srcdir/.pub-cache"
 
@@ -64,6 +65,9 @@ build() {
 }
 
 package() {
+    # The build JDK conflicts with Arch's separate headless JRE package.
+    # Require the smaller JRE in the artifact, not during dependency installation.
+    depends+=('jre21-openjdk-headless')
     cd "$_pkgname"
 
     # Install the application bundle
