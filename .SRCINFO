@@ -1,0 +1,29 @@
+pkgbase = davmail-trunk-bin
+	pkgdesc = a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service
+	pkgver = 7.0.0.trunk.983
+	pkgrel = 1
+	url = http://davmail.sourceforge.net/
+	install = davmail.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	makedepends = curl
+	depends = java-runtime
+	optdepends = java-openjfx: Office 365 browser based authentication
+	optdepends = swt: Fix issues with the tray icon
+	provides = davmail
+	conflicts = davmail
+	conflicts = davmail-git
+	source = https://ci.appveyor.com/api/projects/mguessan/davmail/artifacts/dist%2Fdavmail-7.0.0-trunk.zip?job=Environment%3A%20JAVA_HOME%3DC%3A%5CProgram%20Files%5CJava%5Cjdk1.8.0
+	source = davmail.desktop
+	source = davmail@.system_service
+	source = davmail@.user_service
+	md5sums = SKIP
+	md5sums = 1df37a6120d88de8df3cb735977336ba
+	md5sums = 8d373851babe1d8bb860228c8b4db702
+	md5sums = 271e9e66dfdb496d242c9a6102937c65
+
+pkgname = davmail-trunk-bin

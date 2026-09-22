@@ -1,0 +1,3 @@
+post_install() {
+	echo "This package includes systemd user and system services which are not enabled by default."
+}

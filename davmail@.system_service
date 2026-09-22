@@ -1,0 +1,14 @@
+[Unit]
+Description=DavMail for %i
+
+[Service]
+User=davmail
+ExecStart=/usr/bin/davmail /etc/davmail/%i.properties
+Restart=on-failure
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
+DefaultInstance=davmail
