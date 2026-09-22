@@ -67,9 +67,10 @@ prepare() {
   # if pandoc updates break the golden tests, cf
   # https://github.com/lierdakil/pandoc-crossref/pull/403#issuecomment-1732434519
   # for how to bump
+
   verPat='\([0-9]\+\.\)\{1,3\}[0-9]\+'
   case "$_pandoc_type" in
-  stock) if git diff --quiet -- stack.yaml; then
+  stock) if ! git diff --quiet -- stack.yaml; then
       echo "stack.yaml has been modified, can't use stock version selection"
       echo '(you probably need to comment out the modifications to stack.yaml'
       echo 'in prepare())'
@@ -86,7 +87,7 @@ prepare() {
            _bumpVer pandoc-lua-engine "$_pandoc_lua_ver"
            ;;
   esac
-  _pandoc_bound=$(awk -F. '/[0-9]+\./{$NF++;print}' OFS=. <<<"${_pandoc_ver}")
+  _pandoc_bound="${_pandoc_ver}.1"
   sed -i "/pandoc.*< \?$_pandoc_ver/s#< \?[0-9.]*#<$_pandoc_bound#" \
       pandoc-crossref.cabal package.yaml
 
