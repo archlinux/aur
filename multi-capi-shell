@@ -92,7 +92,7 @@ if [[ "${#custom_columns[@]}" -eq 0 ]] && [[ -f "$_capi_config" ]]; then
   done < <(yq -r '(.custom_fields // {}) | to_entries[] | select(.key != "friendly_name") | .value' "$_capi_config")
 fi
 if [[ "${#custom_columns[@]}" -gt 0 ]]; then
-  printf -v custom_columns_string "\\(%s)${_field_sep}" "${custom_columns[@]}"
+  printf -v custom_columns_string '\\(%s) | ' "${custom_columns[@]}"
 else
   custom_columns_string=""
 fi
@@ -115,7 +115,7 @@ if [[ "${#_mgmt_kubeconfigs[@]}" -gt 0 ]]; then
     for context in "${_contexts[@]}"; do
       (kubectl --context "$context" get cluster -A -o yaml || true) | yq -r --arg kubeconfig "$KUBECONFIG" --arg context "$context" '.items | map("\($kubeconfig)'"$_field_sep"'\($context)'"$_field_sep"'\(.metadata.namespace)'"$_field_sep"'\(.metadata.name)'"$_field_sep"''"$custom_columns_string"'\(('"${MULTI_CAPI_SHELL_CUSTOM_NAME_EXPRESSION}"') as $custom_name | if $custom_name == "" then .metadata.name else "\($custom_name) (\(.metadata.name))" end)")[]'
     done
-  done | fzf --sync --preview="echo {} | awk -F'${_field_sep}' '{print \$2\"@\"\$1}'" -d "$_field_sep" --with-nth=5..$((5 + ${#custom_columns[@]})) | IFS="$_field_sep" read -r mgmt_kubeconfig mgmt_context namespace name _
+  done | fzf --sync --preview="echo {} | awk -F'${_field_sep}' '{print \$2\"@\"\$1}'" -d "$_field_sep" --with-nth=5 | IFS="$_field_sep" read -r mgmt_kubeconfig mgmt_context namespace name _
   exec env KUBECONFIG="$mgmt_kubeconfig" KUBECONFIG_CONTEXT="$mgmt_context" capi-shell "$namespace" "$name" "${@}"
 fi
 }
