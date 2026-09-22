@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=picotool
-_pkgver=2.3.0
+_pkgver=2.3.1
 pkgver=${_pkgver//-/.}
 pkgrel=1
 
@@ -13,7 +13,7 @@ depends=('gcc-libs' 'libusb')
 makedepends=('pico-sdk' 'cmake')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_pkgver}/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('ee60c3fcdc2ccc8da0ec1b58b7a86132b808ca3424c76b6bdd978deadad4844b')
+sha256sums=('1e343345b6dbabea20cf52f755fac96b32d7fa2074e50e2094a623110f1eb9b9')
 
 build() {
 	if [ -z "${PICO_SDK_PATH}" ]; then
