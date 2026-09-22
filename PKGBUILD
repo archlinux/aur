@@ -63,8 +63,38 @@ package() {
     sed -i 's|"main": "./out/main/index.js"|"main": "./main.mjs"|' package.json
     grep -q '"main": "./main.mjs"' package.json
     install -Dm644 package.json "${_appdir}/package.json"
+    # The app stages its own copy of the bundled CLI under <userData>/cli/<version>
+    # and never prunes it, but skips the copy when that path already exists, so the
+    # shim pre-seeds a symlink and pacman keeps owning the only copy of the binary.
+    [[ -s "${_appdir}/opencode-cli.version" ]] || {
+      echo "upstream dropped opencode-cli.version; the CLI symlink seed has no version source" >&2
+      exit 1
+    }
     install -Dm644 /dev/stdin "${_appdir}/main.mjs" <<'EOF'
+import { app } from "electron"
+import { existsSync, mkdirSync, readFileSync, symlinkSync } from "node:fs"
+import { dirname, join } from "node:path"
+
 Object.defineProperty(process, "resourcesPath", { value: import.meta.dirname, configurable: true })
+
+const linkCli = (userData) => {
+  try {
+    const version = readFileSync(join(import.meta.dirname, "opencode-cli.version"), "utf8").trim()
+    if (!version) return
+    const link = join(userData, "cli", version.replace(/[^a-zA-Z0-9._-]/g, "-"), "opencode-cli")
+    if (existsSync(link)) return
+    mkdirSync(dirname(link), { recursive: true })
+    symlinkSync(join(import.meta.dirname, "opencode-cli"), link)
+  } catch {}
+}
+
+const setPath = app.setPath.bind(app)
+app.setPath = (name, value) => {
+  setPath(name, value)
+  if (name === "userData") linkCli(value)
+}
+app.whenReady().then(() => linkCli(app.getPath("userData")))
+
 await import("./app.asar/out/main/index.js")
 EOF
     _exec="${_electron} /usr/lib/opencode-desktop"
