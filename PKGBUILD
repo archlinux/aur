@@ -1,7 +1,7 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 
 pkgname=miyu-git
-pkgver=0.6.1.r1197.g5784976f
+pkgver=0.6.2.r1247.gf5e26c05
 pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
