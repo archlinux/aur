@@ -6,13 +6,18 @@ arch=('any')
 url="https://github.com/raygard/wak"
 license=('0BSD')
 depends=()
-makedepends=('git' 'clang' 'make')
+makedepends=('git' 'clang' 'make' 'gzip')
 source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
+}
+
+prepare() {
+  cd "${pkgname%-*}"
+  gzip -9 wak.man
 }
 
 build() {
@@ -62,7 +67,7 @@ package() {
   install -Dm755 wak "$pkgdir/usr/bin/wak"
 
   # Install manpage
-  install -Dm644 wak.man "$pkgdir/usr/share/man/man1/wak.1"
+  install -Dm644 wak.man.gz "$pkgdir/usr/share/man/man1/wak.1.gz"
 
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
