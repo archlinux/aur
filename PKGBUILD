@@ -1,7 +1,7 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 _pkgname=twinkle
-pkgname=${_pkgname}-git
+pkgname="${_pkgname}"-git
 pkgver=1.10.3.r480.355813d
 pkgrel=1
 pkgdesc="A SIP-based VoIP client"
@@ -16,18 +16,16 @@ source=("git+https://github.com/lubosd/twinkle.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd ${_pkgname}
   echo -n "$(grep -E '^set\(PRODUCT_VERSION' CMakeLists.txt | awk -F \" '{print $2}')."
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  mkdir -p build && cd build
-  cmake ../$_pkgname -DCMAKE_INSTALL_PREFIX=/usr -DWITH_G729=ON -DWITH_SPEEX=ON -DWITH_ZRTP=ON
-  make
+  cmake -B build -S ${_pkgname} -DCMAKE_INSTALL_PREFIX=/usr -DWITH_G729=ON -DWITH_SPEEX=ON -DWITH_ZRTP=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
