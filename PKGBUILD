@@ -3,7 +3,7 @@
 
 pkgname=mold-ai
 _binname=mold
-pkgver=0.30.1
+pkgver=0.31.0
 pkgrel=1
 pkgdesc="Local AI image generation CLI — FLUX, SD3.5, SD 1.5, SDXL, Z-Image, Flux.2, Qwen-Image, Wuerstchen, LTX Video, & LTX-2 diffusion models on your GPU (built from source, CUDA)"
 arch=('x86_64')
@@ -45,7 +45,7 @@ conflicts=('mold-ai-bin' 'mold-ai-git' 'mold')
 options=(!lto)
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('067e523143d48ca80a59a197f701dcd67dbcaee4f0e6e85bf8ba6689102ace77')
+sha256sums=('830aaa68e3a641327e64f2ca95ebbc3bf1ab99efc89443585d79cb62c174ce8c')
 
 prepare() {
   cd "mold-${pkgver}"
@@ -96,6 +96,24 @@ build() {
   cargo build --release --frozen --offline \
     -p mold-ai \
     --features "${gpu_feature},cudnn,preview,expand,webp,mp4,metrics,mdns,pulid"
+
+  # Generate the shell completions here, from the binary this build just
+  # produced — never in package(), which runs under fakeroot with the
+  # builder's ambient loader state; executing the CUDA-linked binary there is
+  # exactly what failed in #1742. The toolkit is a makedepend, so its
+  # libraries are at a known path: name it rather than trusting ld.so.cache.
+  # Invoke via PATH so argv[0] is `mold` and the scripts call back through the
+  # user's PATH at runtime instead of a baked-in build path.
+  install -d "${srcdir}/completions"
+  PATH="${PWD}/target/release:${PATH}" \
+    LD_LIBRARY_PATH="/opt/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" \
+    ${_binname} completions bash > "${srcdir}/completions/${_binname}.bash"
+  PATH="${PWD}/target/release:${PATH}" \
+    LD_LIBRARY_PATH="/opt/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" \
+    ${_binname} completions zsh > "${srcdir}/completions/_${_binname}"
+  PATH="${PWD}/target/release:${PATH}" \
+    LD_LIBRARY_PATH="/opt/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" \
+    ${_binname} completions fish > "${srcdir}/completions/${_binname}.fish"
 }
 
 check() {
@@ -109,14 +127,11 @@ package() {
   install -Dm755 "target/release/${_binname}" "${pkgdir}/usr/bin/${_binname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -d \
-    "${pkgdir}/usr/share/bash-completion/completions" \
-    "${pkgdir}/usr/share/zsh/site-functions" \
-    "${pkgdir}/usr/share/fish/vendor_completions.d"
-  PATH="${pkgdir}/usr/bin:${PATH}" ${_binname} completions bash \
-    > "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
-  PATH="${pkgdir}/usr/bin:${PATH}" ${_binname} completions zsh \
-    > "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
-  PATH="${pkgdir}/usr/bin:${PATH}" ${_binname} completions fish \
-    > "${pkgdir}/usr/share/fish/vendor_completions.d/${_binname}.fish"
+  # Completion FILES generated in build(); package() never runs the binary.
+  install -Dm644 "${srcdir}/completions/${_binname}.bash" \
+    "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
+  install -Dm644 "${srcdir}/completions/_${_binname}" \
+    "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
+  install -Dm644 "${srcdir}/completions/${_binname}.fish" \
+    "${pkgdir}/usr/share/fish/vendor_completions.d/${_binname}.fish"
 }
