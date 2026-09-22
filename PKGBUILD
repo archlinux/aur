@@ -1,12 +1,13 @@
-## Maintainer: Nihal Kumar <2tv8xupqg at mozmail dot com>
+# Maintainer: Nihal Kumar <2tv8xupqg at mozmail dot com>
 # https://github.com/nihalxkumar/pkgbuilds
 pkgname=omnara-bin
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Claude Code & Codex AI coding agent — control AI agents from desktop or phone"
 arch=('x86_64')
 url="https://www.omnara.com/"
 license=('custom') # closed-source proprietary binary
+depends=('glibc')
 provides=('omnara')
 conflicts=('omnara')
 options=('!strip' '!emptydirs') # prebuilt binary — do not strip
