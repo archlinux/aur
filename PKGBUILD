@@ -2,11 +2,11 @@
 pkgname=podman-desktop-git
 _pkgname='Podman Desktop'
 _flatpakname="io.podman_desktop.${_pkgname// /}"
-pkgver=r10517.1c9ae4a
+pkgver=r11447.c4129c0
 _electronversion=42
 _nodeversion=24
 pkgrel=1
-pkgdesc="A graphical tool for developing on containers and Kubernetes.(Use system-wide electron)"
+pkgdesc="A graphical tool for developing on containers and Kubernetes."
 arch=('any')
 url="https://podman-desktop.io/"
 _ghurl="https://github.com/podman-desktop/podman-desktop"
@@ -18,7 +18,6 @@ depends=(
     'docker-compose'
     'podman'
     'docker'
-    'python'
 )
 makedepends=(
     'npm'
@@ -27,7 +26,6 @@ makedepends=(
     'curl'
     'pnpm'
     'jq'
-    'node-gyp'
 )
 optdepends=(
     "crc: crc plugin"
@@ -61,11 +59,37 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_app_dir() {
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
+}
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
         -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
     [[ -z "${_elec_ver}" ]] && return 1
     echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+}
+_set_build_env() {
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export XDG_STATE_HOME="${HOME}/.local/state"
+	export PNPM_HOME="${HOME}/.pnpm/bin"
+	export pnpm_config_cache_dir="${HOME}/.pnpm_cache"
+	export pnpm_config_store_dir="${HOME}/.pnpm_store"
+	export pnpm_config_global_dir="${HOME}/.pnpm/global"
+	export pnpm_config_state_dir="${HOME}/.pnpm/state"
+	export pnpm_config_node_linker=hoisted
+	export pnpm_config_minimum_release_age=0
+	export pnpm_config_update_notifier=false
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
+	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
+	export PATH="${PNPM_HOME}:${PATH}"
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
@@ -76,29 +100,6 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-git}.sh"
     _get_electron_version
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-	HOME="${srcdir}/.electron-gyp"
-	{
-		export PNPM_LINK_WORKSPACE_PACKAGES=true
-		export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-		export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-		export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-		export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-		export PNPM_SHAMEFULLY_HOIST=true
-		export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-		export PNPM_NODE_LINKER=hoisted
-		export PNPM_NETWORK_CONCURRENCY=32
-	}
-	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-		{
-			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-			export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-			export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-		}
-	fi
-    _ensure_local_nvm
     find packages -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/" {} +
     sed -i -e "
         s/run.sh/${pkgname%-git}/g
@@ -108,29 +109,28 @@ prepare() {
     sed -i "s/${_flatpakname}/${pkgname%-git}/" .flatpak-appdata.xml
     sed -i "s/\'flatpak\', \'tar.gz\'/\'dir\'/" .electron-builder.config.cjs
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
-    NODE_ENV=development    pnpm add -D -w node-addon-api
-    NODE_ENV=development    pnpm install --no-lockfile
+    _ensure_local_nvm
+    _set_build_env
+    export NODE_ENV=development
+    pnpm add -D -w node-addon-api
+    pnpm install --no-lockfile
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     _ensure_local_nvm
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     pnpm run build:main
-    NODE_ENV=production     pnpm run build:preload
-    NODE_ENV=production     pnpm run build:preload-docker-extension
-    NODE_ENV=production     pnpm run build:preload-webview
-    NODE_ENV=production     pnpm run build:preload:types
-    NODE_ENV=production     pnpm run build:ui
-    NODE_ENV=production     pnpm run build:renderer
-    NODE_ENV=production     pnpm run build:extensions
-    NODE_ENV=production     pnpm -c exec "electron-builder build --linux dir -c.electronDist=${electronDist} --config .electron-builder.config.cjs --config.asar=false"
+    _set_build_env
+    export NODE_ENV=production
+    for _target in main preload preload-docker-extension preload-webview preload:types ui renderer extensions; do
+        pnpm run "build:${_target}"
+    done
+    pnpm -c exec "electron-builder build --linux dir -c.electronDist=${ELECTRON_DIST} --config .electron-builder.config.cjs --config.asar=false"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
-    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/.flatpak.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/buildResources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/buildResources/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
