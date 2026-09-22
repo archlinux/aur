@@ -2,7 +2,7 @@
 # Maintainer (AUR): voron00
 
 pkgname=proton-wineland
-_srctag=11.0-20260917
+_srctag=11.0-20260922
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
@@ -98,6 +98,5 @@ package() {
     mv "${_compatdir}/${pkgname}"/{PATENTS.AV1,LICENSE{,.OFL}} \
         "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-sha256sums=('033ecd4ce3e4ab841cb6f3c4a496ea959628533c2da7efe78b0a6dbaa3220c5f'
+sha256sums=('b9c187a395122faf9e44f0cb7ba4b47e2940e2e9a52d962e2102642c1e9cc72b'
             '6983622dc08784891929b843e8c5bf566c160eb2c23b7fc89c0f4dbabcd5db69')
