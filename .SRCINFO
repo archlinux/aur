@@ -1,6 +1,6 @@
 pkgbase = scheme-langserver
 	pkgdesc = A language server for Scheme
-	pkgver = 2.1.9
+	pkgver = 2.1.10
 	pkgrel = 1
 	url = https://github.com/ufo5260987423/scheme-langserver
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = scheme-langserver
 	makedepends = akku
 	depends = chez-scheme
 	conflicts = scheme-langserver-bin
-	source = scheme-langserver-2.1.9.tar.gz::https://github.com/ufo5260987423/scheme-langserver/archive/refs/tags/2.1.9.tar.gz
-	sha256sums = f4e975ef6b46f25b45045decbaa29abc77091b12a9ec52467e791fdc4e4e7963
+	source = scheme-langserver-2.1.10.tar.gz::https://github.com/ufo5260987423/scheme-langserver/archive/refs/tags/2.1.10.tar.gz
+	sha256sums = 530efee9fe0eefdec51f83e1dee1b36babab2989c464018ec9c3e90bb5410004
 
 pkgname = scheme-langserver

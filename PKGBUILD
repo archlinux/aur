@@ -1,7 +1,7 @@
 # Maintainer:  Rubin Simons <me@rubin55.org>
 
 pkgname=scheme-langserver
-pkgver=2.1.9
+pkgver=2.1.10
 pkgrel=1
 pkgdesc="A language server for Scheme"
 # Chez fasl objects are machine specific (ta6le).
@@ -12,7 +12,7 @@ depends=('chez-scheme')
 makedepends=('akku')
 conflicts=("${pkgname}-bin")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f4e975ef6b46f25b45045decbaa29abc77091b12a9ec52467e791fdc4e4e7963')
+sha256sums=('530efee9fe0eefdec51f83e1dee1b36babab2989c464018ec9c3e90bb5410004')
 
 _libdirs() {
     printf '%s::%s' "${srcdir}/${pkgname}-${pkgver}/.akku/lib" \
