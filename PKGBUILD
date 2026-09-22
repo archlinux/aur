@@ -1,6 +1,6 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=paseo-cli-git
-pkgver=0.9.0.beta.2.r4.g135a3b4c9
+pkgver=0.9.0.r1.g91d9cf1db
 pkgrel=2
 pkgdesc='Command-line interface for controlling Paseo AI coding agents (git - built from main)'
 arch=('x86_64' 'aarch64')
