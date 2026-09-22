@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.206
+pkgver=1.4.207
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -75,7 +75,7 @@ source_x86_64=(
 source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
-sha256sums=('a48ad39d37c831505ba7c899a3b55539549de708c5d24f0202d66a079e827a85'
+sha256sums=('2a120bf8e3909567994ca8e3f935cb22acc67fc17287b792817f2173977e0a30'
             '5ef12ab545a211627c23f05eb589a051e6c207a3f2c3382add8f0573400b871d'
             'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
             '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
@@ -200,7 +200,7 @@ JS
   "${pnpm[@]}" rebuild esbuild @parcel/watcher
   "${pnpm[@]}" run postinstall
   local target
-  for target in build:relay build:cli build:electron-vite build:web; do
+  for target in build:relay build:cli build:electron-vite build:web build:mobile-web; do
     "${pnpm[@]}" run "$target"
   done
   "${pnpm[@]}" run ensure:electron-runtime
