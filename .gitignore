@@ -1,12 +1,20 @@
-falcon-sensor-*.pkg.tar*
-falcon-sensor*.deb
-falcon-sensor*.rpm
-ubuntu*.deb
-rhel6-*.rpm
-falcon-sensor-*.log
-PKGBUILD-namcap.log
+# Sensor payloads and built packages. Never commit these.
+*.deb
+*.rpm
+*.pkg.tar*
+*.pkg.tar.*.sig
+
+# makepkg output
 pkg/
 src/
-.idea
-.claude/
+
+# local install helpers, not part of the AUR publish set
+falcon-sensor.hook
+falcon-sensor.install
+falcon-sensor-install
+
+# local logs, editor state, and notes
+*.log
 *.md
+.idea/
+.claude/

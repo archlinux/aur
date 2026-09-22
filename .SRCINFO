@@ -1,18 +1,18 @@
 pkgbase = falcon-sensor
-	pkgdesc = CrowdStrike Falcon Sensor for Linux
-	pkgver = 7.32.0
-	pkgrel = 18504
+	pkgdesc = CrowdStrike Falcon sensor installer for Linux
+	pkgver = 8.10.0
+	pkgrel = 19403
 	url = https://falcon.crowdstrike.com/
 	install = falcon-sensor.install
 	arch = x86_64
 	license = custom
 	depends = glibc
+	depends = zlib
 	depends = openssl
-	provides = falcon-sensor
-	conflicts = falcon-sensor
-	source = falcon-sensor_7.32.0-18504_amd64.deb::https://socfoundry.com/downloads/falcon-sensor_7.32.0-18504_amd64.deb
-	source = falcon-sensor.hook
-	sha256sums = 0c3ac12e749647cd05a8e8bd6281541e5ba8496ca1ba042eda6637f547db5dc0
-	sha256sums = SKIP
+	depends = libnl
+	source = falcon-sensor-install
+	source = LICENSE
+	sha256sums = d169976dbed23634f8a2131132e377b9860d93c5a71587dc4ff2e21815443750
+	sha256sums = 323c9971c5f7e3b360783601922c063801e0bbd425351faaafaf476b5b29fecb
 
 pkgname = falcon-sensor

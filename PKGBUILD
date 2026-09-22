@@ -4,58 +4,43 @@
 # This PKGBUILD is an unofficial community contribution. It is not affiliated with,
 # endorsed, or supported by CrowdStrike, Inc.
 #
-# The CrowdStrike Falcon sensor is proprietary software. By building and installing
-# this package, you acknowledge that you are downloading software directly from
-# CrowdStrike and agree to be bound by their End User License Agreement and
-# Privacy Notice. You are solely responsible for ensuring you have a valid
-# license to use the software.
+# This package does not distribute the Falcon sensor. Download the pinned
+# Debian/Ubuntu amd64 package from the Falcon console into ~/Downloads.
+# falcon-sensor-install copies that file into place only when its filename and
+# sha256 match the pin below. Any other file is skipped.
+# Sensor update policies in the Falcon console deliver later versions.
+# You are responsible for having a license to use the software.
 #
-# This installation script is provided "AS IS" without warranty of any kind,
-# express or implied. The user assumes all risk and responsibility for its use.
+# This installer is provided "AS IS" without warranty of any kind, express or
+# implied. The user assumes all risk and responsibility for its use.
 #
 # Terms of Use: https://www.crowdstrike.com/software-terms-of-use/
 # Privacy Notice: https://www.crowdstrike.com/privacy-notice/
 
-
-# --- Package Information ---
-pkgname='falcon-sensor'
-pkgdesc="CrowdStrike Falcon Sensor for Linux"
+pkgname=falcon-sensor
+pkgdesc='CrowdStrike Falcon sensor installer for Linux'
 arch=('x86_64')
-url="https://falcon.crowdstrike.com/"
+url='https://falcon.crowdstrike.com/'
 license=('custom')
-
-# --- Versioning ---
-_pkgver='7.32.0'
-_pkgrel='18504'
+# Libraries the sensor loads after the local Debian package is unpacked.
+depends=('glibc' 'zlib' 'openssl' 'libnl')
+# Pinned sensor build. Bump these together when you publish a tested release.
+_pkgver=8.10.0
+_pkgrel=19403
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
+_deb_sha256=f35e31f05a475c766b19e762dc78846ac2900633cd931030e041eb931194b160
+install=falcon-sensor.install
+source=('falcon-sensor-install'
+        'LICENSE')
+sha256sums=('d169976dbed23634f8a2131132e377b9860d93c5a71587dc4ff2e21815443750'
+            '323c9971c5f7e3b360783601922c063801e0bbd425351faaafaf476b5b29fecb')
 
-# --- Dependencies and Conflicts ---
-depends=('glibc' 'openssl')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-install="${pkgname}.install"
-
-# --- Source Files ---
-source=("falcon-sensor_${_pkgver}-${_pkgrel}_amd64.deb::https://socfoundry.com/downloads/falcon-sensor_${_pkgver}-${_pkgrel}_amd64.deb"
-        "falcon-sensor.hook")
-sha256sums=('0c3ac12e749647cd05a8e8bd6281541e5ba8496ca1ba042eda6637f547db5dc0'
-            'SKIP')
-
-# --- Packaging Function ---
 package() {
-  # Extract the data archive from the .deb file
-  tar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
-
-  # Create the destination directory structure first (-p creates parent dirs if needed)
-  mkdir -p "${pkgdir}/usr/lib/"
-
-  # Move the contents of the extracted 'lib' directory to '/usr/lib' inside the package
-  mv "${pkgdir}/lib"/* "${pkgdir}/usr/lib/"
-
-  # Remove the now-empty 'lib' directory from the package
-  rmdir "${pkgdir}/lib"
-
-  # Install pacman hook to clean up runtime-generated files before upgrades
-  install -Dm644 "${srcdir}/falcon-sensor.hook" "${pkgdir}/usr/share/libalpm/hooks/falcon-sensor.hook"
+  install -Dm755 falcon-sensor-install "${pkgdir}/usr/bin/falcon-sensor-install"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm755 "${pkgdir}/usr/share/falcon-sensor"
+  printf 'version=%s-%s\nfilename=falcon-sensor_%s-%s_amd64.deb\nsha256=%s\n' \
+    "${_pkgver}" "${_pkgrel}" "${_pkgver}" "${_pkgrel}" "${_deb_sha256}" \
+    > "${pkgdir}/usr/share/falcon-sensor/pin"
 }
