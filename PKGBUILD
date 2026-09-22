@@ -19,7 +19,7 @@ makedepends=(
   'intltool'
   # 'pod2man'  # According to https://aur.archlinux.org/packages/libvirt-sandbox#comment-1081670, this is not needed.
   'rpcsvc-proto'
-  'zlib-static' # Needs 'libz.a' static library.
+  'zlib-static' # Needs 'libz.a' static library for '--with-zlib'.
 )
 optdepends=('dhclient: for sandbox network configuration using DHCP')
 source=(
@@ -51,7 +51,7 @@ build() {
   export CFLAGS+=" -w"
   export CXXFLAGS+=" -w"
 
-  # --without-lzma is needed to work around '/usr/bin/ld: cannot find -llzma: No such file or directory'. If anyone has an idea how to fix it, please report to the Maintainer of this `PKGBUILD`. See also .
+  # --without-lzma: LZMA would need 'xz-static' ('liblzma.a') as make dependency, but having this leads to linking error 'libvirt-sandbox-init-qemu.c:(.text.startup+0x250): undefined reference to `lzma_stream_decoder'', so leaving it disabled.
   ./configure \
       --prefix=/usr \
       --libexecdir=/usr/lib/$pkgname \
