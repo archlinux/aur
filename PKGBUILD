@@ -6,8 +6,8 @@
 #
 # This package does not distribute the Falcon sensor. Download the pinned
 # Debian/Ubuntu amd64 package from the Falcon console into ~/Downloads.
-# falcon-sensor-install copies that file into place only when its filename and
-# sha256 match the pin below. Any other file is skipped.
+# The pinned filename and sha256 are recorded below. A Downloads file that
+# does not match is skipped.
 # Sensor update policies in the Falcon console deliver later versions.
 # You are responsible for having a license to use the software.
 #
@@ -30,14 +30,10 @@ _pkgrel=19403
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 _deb_sha256=f35e31f05a475c766b19e762dc78846ac2900633cd931030e041eb931194b160
-install=falcon-sensor.install
-source=('falcon-sensor-install'
-        'LICENSE')
-sha256sums=('d169976dbed23634f8a2131132e377b9860d93c5a71587dc4ff2e21815443750'
-            '323c9971c5f7e3b360783601922c063801e0bbd425351faaafaf476b5b29fecb')
+source=('LICENSE')
+sha256sums=('323c9971c5f7e3b360783601922c063801e0bbd425351faaafaf476b5b29fecb')
 
 package() {
-  install -Dm755 falcon-sensor-install "${pkgdir}/usr/bin/falcon-sensor-install"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755 "${pkgdir}/usr/share/falcon-sensor"
   printf 'version=%s-%s\nfilename=falcon-sensor_%s-%s_amd64.deb\nsha256=%s\n' \
