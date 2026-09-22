@@ -1,0 +1,26 @@
+pkgbase = frida-v8
+	pkgdesc = Frida's fork of the V8 JavaScript engine
+	pkgver = 10.9.42.r20260120.192353.a07af892
+	pkgrel = 1
+	url = https://github.com/frida/v8
+	arch = x86_64
+	license = BSD-3-Clause
+	license = Apache-2.0
+	license = CC0-1.0
+	license = MIT
+	license = PSF-2.0
+	license = LicenseRef-fdlibm
+	license = LicenseRef-Valgrind
+	makedepends = meson
+	makedepends = ninja
+	makedepends = python
+	depends = zlib
+	options = !lto
+	source = frida-v8-a07af892420dfd873b33bd4ce4ba9d963072e1b9.tar.gz::https://github.com/frida/v8/archive/a07af892420dfd873b33bd4ce4ba9d963072e1b9.tar.gz
+	source = gcc16-algorithm.patch
+	source = LICENSE.chromium::https://raw.githubusercontent.com/chromium/chromium/12884f6987a0d766f8bea1018980f434a89c12e1/LICENSE
+	b2sums = c8917bd0643b4b22c95e57c0eb411f048ab7630a92ed54c3bd97244b31e42bc56b68766ac34ce1b77152b15c4da7195cc9e093252c3a1a0ef679a88a437ff3c8
+	b2sums = b12192f399a09598a6c49cf82dae81bdce62f9e621233eda650ce585fc84998dca05444926e6749c65d12386ac06240bed1e886c107ade4ba0f2032087b4d729
+	b2sums = 7c1bc3ed9883252f17021cf2b4a5dbdf92f3e33590f65f0b2d910d4218d40b6813a29db72d593d1d6fb95c82735cc7a1b9840247698a3a3d36568aea9e6b8891
+
+pkgname = frida-v8
