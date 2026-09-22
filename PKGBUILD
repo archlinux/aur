@@ -4,7 +4,7 @@ _pyname="meshcore_py"
 _pkgname="python-meshcore"
 pkgname="${_pkgname}-git"
 pkgver=2.3.14.r424.20260919.b32d820
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for interacting with MeshCore companion radio nodes."
 groups=("meshcore")
 arch=(
@@ -20,6 +20,7 @@ depends=(
   'python-bleak'
   'python-pyserial-asyncio-fast'
   'python-pycayennelpp'
+  'python-pycryptodome'
 )
 makedepends=(
   'git'
@@ -29,8 +30,19 @@ makedepends=(
   'python-setuptools>=61.0.0'
   'python-wheel'
 )
-optdepends=()
-checkdepends=()
+optdepends=(
+  "python-cryptography:    For example script '/usr/share/doc/python-meshcore/examples/ble_sign_example.py'."
+  "python-ollama:          For example script '/usr/share/doc/python-meshcore/examples/serial_meshcore_ollama.py'."
+  "python-pytest:          To run tests ('/usr/share/doc/python-meshcore/tests/')."
+  "python-pytest-asyncio:  To run tests ('/usr/share/doc/python-meshcore/tests/')."
+)
+### Do not run 'check()' since it requires a connection to a MeshCore device.
+# checkdepends=(
+#   'python-pytest'
+#   'python-pytest-asyncio'
+#   # 'python-black'
+#   # 'python-ruff'
+# )
 provides=(
   "${_pkgname}=${pkgver}"
   "python-meshcore_py=${pkgver}"
@@ -76,6 +88,13 @@ build() {
   python -m build --wheel --no-isolation
 }
 
+### Do not run 'check()' since it requires a connection to a MeshCore device.
+# check() {
+#   cd "${srcdir}/${_pkgname}"
+#
+#   pytest
+# }
+
 package() {
   cd "${srcdir}/${_pkgname}"
   printf '%s\n' " --> installing ..."
@@ -85,7 +104,10 @@ package() {
     "${srcdir}/git.log"
     README.md
   )
-  _docdirs=()
+  _docdirs=(
+    examples
+    tests
+  )
   _manfiles=()
   _infofiles=()
   _licensefiles=(

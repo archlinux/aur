@@ -1,7 +1,7 @@
 pkgbase = python-meshcore-git
 	pkgdesc = Python library for interacting with MeshCore companion radio nodes.
 	pkgver = 2.3.14.r424.20260919.b32d820
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meshcore-dev/meshcore_py
 	arch = any
 	groups = meshcore
@@ -16,6 +16,11 @@ pkgbase = python-meshcore-git
 	depends = python-bleak
 	depends = python-pyserial-asyncio-fast
 	depends = python-pycayennelpp
+	depends = python-pycryptodome
+	optdepends = python-cryptography: For example script '/usr/share/doc/python-meshcore/examples/ble_sign_example.py'.
+	optdepends = python-ollama: For example script '/usr/share/doc/python-meshcore/examples/serial_meshcore_ollama.py'.
+	optdepends = python-pytest: To run tests ('/usr/share/doc/python-meshcore/tests/').
+	optdepends = python-pytest-asyncio: To run tests ('/usr/share/doc/python-meshcore/tests/').
 	provides = python-meshcore=2.3.14.r424.20260919.b32d820
 	provides = python-meshcore_py=2.3.14.r424.20260919.b32d820
 	provides = python-meshcore_py-git=2.3.14.r424.20260919.b32d820
