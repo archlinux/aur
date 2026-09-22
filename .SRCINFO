@@ -1,14 +1,17 @@
 pkgbase = dssp
 	pkgdesc = Secondary structure assignment for proteins
-	pkgver = 3.1.4
+	pkgver = 4.6.1
 	pkgrel = 1
-	url = http://swift.cmbi.ru.nl/gv/dssp/HTML/distrib.html
+	url = https://github.com/PDB-REDO/dssp
 	arch = x86_64
-	license = custom
-	makedepends = boost
-	depends = boost-libs
-	source = https://github.com/cmbi/dssp/archive/3.1.4.tar.gz
-	sha256sums = 496282b4b5defc55d111190ab9f1b615a9574a2f090e7cf5444521c747b272d4
+	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = pcre2
+	depends = zlib
+	source = dssp-4.6.1.tar.gz::https://github.com/PDB-REDO/dssp/archive/refs/tags/v4.6.1.tar.gz
+	sha256sums = 5ddb8274f03ac0338adffcd661989f515fffb95d40afca404cf2677024256ae3
 
 pkgname = dssp
-
