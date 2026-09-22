@@ -1,6 +1,6 @@
 pkgbase = md-notes-bin
 	pkgdesc = Turns folders of markdown files into a notes application in the browser
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/davison/md-notes
 	install = md-notes-bin.install
@@ -9,17 +9,19 @@ pkgbase = md-notes-bin
 	license = MIT
 	depends = ripgrep
 	optdepends = xdg-utils: mdn open launches a browser
-	provides = md-notes=0.1.0
+	provides = md-notes=0.2.0
 	conflicts = md-notes
 	options = !strip
 	options = !debug
-	source = md-notes-0.1.0-LICENSE::https://raw.githubusercontent.com/davison/md-notes/v0.1.0/LICENSE
-	source = md-notes-0.1.0-mdn.service::https://raw.githubusercontent.com/davison/md-notes/v0.1.0/contrib/mdn.service
+	source = md-notes-0.2.0-LICENSE::https://raw.githubusercontent.com/davison/md-notes/v0.2.0/LICENSE
+	source = md-notes-0.2.0-mdn.service::https://raw.githubusercontent.com/davison/md-notes/v0.2.0/contrib/mdn.service
+	source = md-notes-0.2.0-mdn.1::https://raw.githubusercontent.com/davison/md-notes/v0.2.0/contrib/mdn.1
 	sha256sums = 77c8ed0935bc59cf1ec2619e1884eccea49ebef7dcf3d53ae94f685fdcdf9747
-	sha256sums = c8033346d331ac96661df0ba74bb8dba3ee8b42af75dbf58414e8798632f31e1
-	source_x86_64 = md-notes-0.1.0-mdn::https://github.com/davison/md-notes/releases/download/v0.1.0/mdn-v0.1.0-linux-amd64
-	sha256sums_x86_64 = b66eebd9155192e034f391442e6b4bcecfff33164ba937463e2169b5bbd062a8
-	source_aarch64 = md-notes-0.1.0-mdn::https://github.com/davison/md-notes/releases/download/v0.1.0/mdn-v0.1.0-linux-arm64
-	sha256sums_aarch64 = ed0a1f53ebbea0406d1b55dfecc9a61c76a0f6437b4bb3d5bd25c0a5ab927d32
+	sha256sums = 113a4bd6576843bbf834de8a7abadbd46ad8260b9d95767919b92851defb225c
+	sha256sums = a163ac6bbb76a5e75fce2524c613bd55a30ff5c12efc01a178ddb524753b864d
+	source_x86_64 = md-notes-0.2.0-mdn::https://github.com/davison/md-notes/releases/download/v0.2.0/mdn-v0.2.0-linux-amd64
+	sha256sums_x86_64 = 36883f70b78ef63e9ccde2826767c1cbb50095829f5eb038586c015d6b5d8c9c
+	source_aarch64 = md-notes-0.2.0-mdn::https://github.com/davison/md-notes/releases/download/v0.2.0/mdn-v0.2.0-linux-arm64
+	sha256sums_aarch64 = cace7aaf08e73bf96648caf5c6b758fa9258b1a247f96b33e21a5eb2a7401da5
 
 pkgname = md-notes-bin
