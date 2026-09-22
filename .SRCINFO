@@ -1,0 +1,25 @@
+pkgbase = castig
+	pkgdesc = Cast local or remote video to a Chromecast, with audio transcoding and subtitle support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/arrufat/castig
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = anyzig
+	makedepends = ffmpeg
+	makedepends = sdl3
+	source = git+https://github.com/arrufat/castig.git#tag=0.1.0
+	sha256sums = SKIP
+
+pkgname = castig
+	depends = glibc
+	depends = ffmpeg
+	optdepends = castigui: the window that `castig ui` opens
+
+pkgname = castigui
+	pkgdesc = Cast local or remote video to a Chromecast, in a window
+	depends = glibc
+	depends = ffmpeg
+	depends = sdl3
