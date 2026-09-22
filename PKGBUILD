@@ -10,10 +10,10 @@ arch=('x86_64' 'aarch64')
 url="https://git.code.sf.net/p/$pkgname/code"
 license=('GPL-3.0-or-later')
 depends=('qt6pas' 'glibc' 'libx11' 'hicolor-icon-theme')
-makedepends=('git' 'fpc' 'lazarus-qt6')
+makedepends=('fpc' 'lazarus-qt6')
 source=(https://sourceforge.net/projects/$pkgname/files/Source/$pkgname-$pkgver.tar.xz)
 # source=("$pkgname-$pkgver".tar.xz)
-sha256sums=('f28a8b5a15f33dd403cce80f372bf944a5d5475aecac215ff6ed30a8fd3c19f0')
+sha256sums=('14144e8da7791efaddbb7f675a7c5db3dab1a07106a1aac0c9f812f3522a8f88')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
