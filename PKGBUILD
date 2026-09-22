@@ -5,11 +5,11 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.25.r0.g1199b70.pandoc.3.10.2
-_pandoc_type=version
-_pandoc_ver=3.10.2
-_pandoc_lua_ver=0.5.3.1
-_pandoc_commit=f2ee5dfee866aab007a33552acc6bc01810c6918
+pkgver=0.3.25.r2.g5affbc9.pandoc.3.11
+_pandoc_type=stock
+_pandoc_ver=3.11
+_pandoc_lua_ver=0.5.4
+_pandoc_commit=b913622e1ff87c69ab8b1a606577122e220925cd
 pkgrel=1
 pkgdesc='Pandoc filter for cross-references (static build)'
 arch=('i686' 'x86_64')
@@ -90,32 +90,6 @@ prepare() {
   sed -i "/pandoc.*< \?$_pandoc_ver/s#< \?[0-9.]*#<$_pandoc_bound#" \
       pandoc-crossref.cabal package.yaml
 
-  _bumpVer asciidoc 0.1.0.4
-  _bumpVer citeproc 0.13.0.1
-  _bumpVer commonmark 0.3
-  _bumpVer commonmark-extensions 0.2.7.1
-  _bumpVer commonmark-pandoc 0.3
-  _bumpVer djot 0.1.4.1
-  _bumpVer doclayout 0.5.0.3
-  _bumpVer emojis 0.1.5
-  _bumpVer hslua 2.5.0
-  _bumpVer hslua-module-doclayout 1.2.1.1
-  _bumpVer hslua-module-path 1.2.0
-  _bumpVer hslua-module-system 1.3.0
-  _bumpVer hslua-module-text 1.2.0
-  _bumpVer hslua-module-version 1.2.0.1
-  _bumpVer hslua-module-zip 1.2.1
-  _bumpVer hslua-objectorientation 2.5.0
-  _bumpVer hslua-packaging 2.4.1
-  _bumpVer hslua-typing 0.2.0
-  _bumpVer pandoc-lua-marshal 0.3.2.1
-  _bumpVer pandoc-types 1.23.1.2
-  _bumpVer skylighting 0.14.7
-  _bumpVer skylighting-core 0.14.7
-  _bumpVer skylighting-format-typst 0.1
-  _bumpVer texmath 0.13.2.1
-  _bumpVer typst 0.11
-  _bumpVer typst-symbols 0.3
 }
 
 build() {
