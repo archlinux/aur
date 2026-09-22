@@ -6,7 +6,7 @@ pkgver=14.0.3_20251201
 _launcherver=${pkgver%_*}
 _timestamp=${pkgver#*_}
 
-pkgrel=4
+pkgrel=5
 pkgdesc="An archive for games and animations from the web."
 arch=('x86_64')
 url="https://flashpointarchive.org/"
@@ -75,4 +75,9 @@ package() {
 
     echo "Removing unneeded Libraries folder..."
     rm -rf "${pkgdir}/opt/Flashpoint/Libraries"
+
+    echo "Setting 'chmod 777' for all files.
+    May print permission warnings, safely ignore"
+    chmod 777 -R "${pkgdir}"
+
 }
