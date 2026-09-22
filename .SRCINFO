@@ -1,6 +1,6 @@
 pkgbase = git-rediff
 	pkgdesc = Reduce partially resolved merge conflicts
-	pkgver = 1.0.5
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://codeberg.org/maandree/git-rediff
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = git-rediff
 	makedepends = libsimple
 	depends = diffutils
 	depends = libsimple
-	source = git-rediff-1.0.5.tar.gz::https://codeberg.org/maandree/git-rediff/archive/1.0.5.tar.gz
-	sha256sums = 73c73757388344fa03d7e0d7315b24ce4e7bd9e85a3b7d48353823305cad9243
+	source = git-rediff-1.1.tar.gz::https://codeberg.org/maandree/git-rediff/archive/1.1.tar.gz
+	sha256sums = 364999ef8f438f5e43e9fbce3f3594e8543ca78967276369bea850a493daad42
 
 pkgname = git-rediff
