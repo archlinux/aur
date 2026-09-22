@@ -4,7 +4,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-srt
-pkgver=1.5.4
+pkgver=1.5.7
 pkgrel=1
 arch=('any')
 pkgdesc="Secure Reliable Transport library (Android ${_android_arch})"
@@ -15,7 +15,7 @@ depends=("android-${_android_arch}-openssl")
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/Haivision/srt/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('08e946bbcdb6f9dc3863de5dd8a48aa3')
+md5sums=('3ccc21ed2ed26fcfe6496b8c281137ac')
 
 prepare() {
     cd "${srcdir}/srt-${pkgver}"
@@ -44,4 +44,6 @@ package() {
     make -C build DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
