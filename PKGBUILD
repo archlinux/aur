@@ -5,12 +5,12 @@ pkgname=processing-bin
 _pkgname=Processing
 pkgver=4.5.6
 _subver=1434
-pkgrel=1
+pkgrel=2
 arch=(
     'aarch64'
     'x86_64'
 )
-pkgdesc="Programming environment for creating images, animations and interactions.(Prebuilt version)"
+pkgdesc="Programming environment for creating images, animations and interactions."
 url="https://processing.org/"
 _ghurl="https://github.com/processing/processing4"
 license=("GPL-2.0-only")
@@ -39,7 +39,8 @@ prepare() {
     " "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
     find "${srcdir}/opt/${pkgname%-bin}/lib/app/resources/modes/java/application/launch4j/w32api" -type f -exec chmod 644 {} +
     find "${srcdir}/opt/${pkgname%-bin}/lib/app/resources/modes/java/application/launch4j/bin" \
-        \( -name "*-macos" -o -name "*armv6*" -o -name "*windows*" \) -exec rm -rf {} +
+        \( -name "*macos*" -o -name "*armv6*" -o -name "*windows*" \) -exec rm -rf {} +
+    chmod +x "${srcdir}/opt/${pkgname%-bin}/lib/app/resources/jdk/bin/"*
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{usr/lib/"${pkgname%-bin}",usr/bin}
