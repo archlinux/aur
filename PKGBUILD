@@ -5,7 +5,7 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=156.0
+pkgver=156.0.1
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches for Nvidia hardware acceleration)"
 url="https://www.firefox.com/"
@@ -97,14 +97,14 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2026/08/10/updated-gpg-key-for-signing-firefox-and-thunderbird-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('1f2768c043510009abaa3f078123664e106d3ab9dfce75d1819ad96b2145aab9'
+sha256sums=('f8b0bf733efebebf9af98ead537598c2cf56c2c1b9c06bf89220ea6731b64724'
             'SKIP'
             'cb00ea359d6daf37900102307be4f515f1b7ef9c98825c64cc55bb562449d0d8'
             '5985c41a64dde6df3d31769ac57ddb59b94b1626aadb309fb488cdf6f3aa7015'
             '4e01a62e20026b67466943bad9dfba47874c5e1492375f8293aeb85ecedf2288'
             'ef3f4da019d3562bdc7b850405fa4eac2fdeee5e6b0a81b6082f5672256e8cf4'
             '8886b9f6109c1ec1d1f041d786e6a431766e2a06359f930ce07aaa6b84c6bef1')
-b2sums=('19be7acf988ee6b7bf27ea292ce36a3a491d7cf4aad2f0c6bdff2f333cf1da540c0fcd5904d5618b7f64624508d0457bd7418b570a8b72d3ae242d5e40fea4d7'
+b2sums=('95448cb8fb4628f0fbb63a3dd71daac64b72ecbf181f8796f24ff8f0ddbcc477650362d5f8f21929446bddb9931b4efca100c23bcc88bf08c04b2b64cea9be3d'
         'SKIP'
         'f2a9cfb758692584dd8057ab30d0ed9d22f5356d0021e1c8111a061866ee66d6b2d891351e11064f904fe8c90032e78f9def61ed54ae4208c8be4de6b4226277'
         'c993d2c86c3ae7d63721f2df3cad64485e53cfc6b3f45cbd53e96765e4dab4bfaa9581cf4e8e458d61e749ba3adce6e11487cfb18227bfe7d193c4dd911e63c3'
