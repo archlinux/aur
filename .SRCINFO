@@ -1,14 +1,17 @@
 pkgbase = python-gpytorch
 	pkgdesc = A highly efficient implementation of Gaussian Processes in PyTorch
 	pkgver = 1.15.2
-	pkgrel = 1
-	url = https://gpytorch.ai
+	pkgrel = 2
+	url = https://github.com/cornellius-gp/gpytorch
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = git
 	depends = python-scikit-learn
 	depends = python-linear-operator
 	depends = python-pytorch
@@ -21,7 +24,7 @@ pkgbase = python-gpytorch
 	optdepends = python-tqdm: for [examples] module
 	optdepends = python-pyro-ppl: for [pyro] module
 	optdepends = python-pykeops: for [keops] module
-	source = https://files.pythonhosted.org/packages/source/g/gpytorch/gpytorch-1.15.2.tar.gz
-	sha256sums = 380625e93f851b85f772b25c5fb0a6c6d2e3eb2ef667f1e566ab4f95b8775361
+	source = git+https://github.com/cornellius-gp/gpytorch.git#tag=v1.15.2
+	sha256sums = SKIP
 
 pkgname = python-gpytorch
