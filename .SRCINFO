@@ -9,6 +9,7 @@ pkgbase = mpatch-bin
 	license = MIT
 	provides = mpatch
 	conflicts = mpatch
+	options = !strip
 	source_x86_64 = mpatch-1.6.4-x86_64-unknown-linux-gnu.tar.gz::https://github.com/Romelium/mpatch/releases/download/v1.6.4/mpatch-x86_64-unknown-linux-gnu-v1.6.4.tar.gz
 	sha256sums_x86_64 = 014e71cf1bde4018612880b974c87d9a521c614ba81d4048a8a49a9aaf1f256d
 	source_aarch64 = mpatch-1.6.4-aarch64-unknown-linux-gnu.tar.gz::https://github.com/Romelium/mpatch/releases/download/v1.6.4/mpatch-aarch64-unknown-linux-gnu-v1.6.4.tar.gz
