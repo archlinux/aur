@@ -2,11 +2,11 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=hru
 pkgver=1.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Filter that translates latin or cyrillic text into grunt"
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64' 'riscv64gc')
 url="https://git.sr.ht/~begs/hru"
-license=('custom:WTFPL')
+license=('WTFPL')
 depends=('libutf8proc' 'glibc')
 makedepends=('scdoc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
