@@ -1,7 +1,7 @@
 pkgbase = nu_plugin_desktop_notifications
 	pkgdesc = A nushell plugin to send desktop notifications using notify-rust
 	pkgver = 0.113.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fmotalleb/nu_plugin_desktop_notifications
 	arch = x86_64
 	arch = aarch64

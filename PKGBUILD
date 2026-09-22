@@ -2,7 +2,7 @@
 # https://github.com/nihalxkumar/pkgbuilds
 pkgname=nu_plugin_desktop_notifications
 pkgver=0.113.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A nushell plugin to send desktop notifications using notify-rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/fmotalleb/nu_plugin_desktop_notifications"
@@ -14,7 +14,7 @@ sha256sums=('ac7ec09fe2950f76d2d7763894c034cde4919f2a282d7db267b8ba3b907e594c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release --manifest-path Cargo.toml
+  cargo build --release --locked --manifest-path Cargo.toml
 }
 
 package() {
