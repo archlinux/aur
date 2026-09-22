@@ -1,7 +1,7 @@
 pkgbase = python-dynaconf
 	pkgdesc = The dynamic configurator for your Python project (12-factor settings, layered envs, multiple formats)
 	pkgver = 3.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dynaconf/dynaconf
 	arch = any
 	license = MIT
