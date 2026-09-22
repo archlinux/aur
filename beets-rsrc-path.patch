@@ -1,0 +1,12 @@
+diff -Naur mopidy_beets-5.0.0.orig/tests/helper_beets.py mopidy_beets-5.0.0/tests/helper_beets.py
+--- mopidy_beets-5.0.0.orig/tests/helper_beets.py	2026-04-25 14:45:48.000000000 +0000
++++ mopidy_beets-5.0.0/tests/helper_beets.py	2026-09-22 22:43:49.257186476 +0000
+@@ -29,7 +29,7 @@
+ 
+ 
+ # Manipulate beets's ressource path before any action wants to access these files.
+-beets.test._common.RSRC = bytestring_path(TEST_DATA_DIRECTORY / "beets-rsrc")  # noqa: SLF001
++beets.test._common.RSRC = TEST_DATA_DIRECTORY / "beets-rsrc"  # noqa: SLF001
+ 
+ 
+ class BeetsLibrary(BeetsPluginMixin, BeetsTestHelper):
