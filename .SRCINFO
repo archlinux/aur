@@ -1,0 +1,14 @@
+pkgbase = pyroclear
+	pkgdesc = Clear your terminal with a crackling wall of ASCII flames.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/shreyanth-sureshkrishnaa/pyroclear
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = pyroclear-1.2.2.tar.gz::https://github.com/shreyanth-sureshkrishnaa/pyroclear/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = 06d2080ffe0bcd7d1a53e2bc2e01cd8ea295dc939c9442896fb7b2a1ae89ce8b
+
+pkgname = pyroclear
