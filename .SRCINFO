@@ -1,36 +1,49 @@
 pkgbase = python-transformer-engine
 	pkgdesc = NVIDIA Transformer Engine: accelerated transformer training/inference with FP8 on Hopper+ GPUs (PyTorch backend)
-	pkgver = 2.15
+	pkgver = 2.18
 	pkgrel = 1
 	url = https://github.com/NVIDIA/TransformerEngine
 	arch = x86_64
 	license = Apache-2.0
+	checkdepends = python-pytest>=8.2.1
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
-	makedepends = cmake
+	makedepends = python-setuptools>=61.0
+	makedepends = cmake>=3.21
 	makedepends = ninja
 	makedepends = pybind11
 	makedepends = gcc15
 	makedepends = git
-	depends = python
-	depends = python-pytorch
+	makedepends = cudnn-frontend>=1.25.0
+	depends = python>=3.10
+	depends = python-pytorch-cuda>=2.1
 	depends = python-pydantic
-	depends = python-importlib-metadata
+	depends = python-importlib-metadata>=1.0
 	depends = python-packaging
+	depends = python-numpy
+	depends = python-onnx
 	depends = python-onnxscript
+	depends = python-nvdlfw-inspect
 	depends = python-triton
 	depends = python-einops
-	depends = cuda
-	depends = cudnn
-	source = git+https://github.com/NVIDIA/TransformerEngine.git#tag=v2.15
-	source = te-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git#commit=97f6cb3b88cacff507cca1280db5650a457d92b3
+	depends = python-cudnn-frontend>=1.25.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = cuda>=12.1
+	depends = cudnn>=9.3
+	depends = nccl>=2.30.4
+	depends = nvidia-utils
+	source = git+https://github.com/NVIDIA/TransformerEngine.git#tag=v2.18
 	source = te-cutlass::git+https://github.com/NVIDIA/cutlass.git#commit=57e3cfb47a2d9e0d46eb6335c3dc411498efa198
 	source = te-googletest::git+https://github.com/google/googletest.git#commit=f8d7d77c06936315286eb55f8de22cd23c188571
+	source = te-nccl::git+https://github.com/NVIDIA/nccl.git#commit=b87848fbc52da65b5a898b4ac6633fcf51cec4ed
+	source = nccl-ep-nvcc-ldflags.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = ac5da038fc3a317080130b573b56700f911898559777d4b8867d57332251ce4d
 
 pkgname = python-transformer-engine

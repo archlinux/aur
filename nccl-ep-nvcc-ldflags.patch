@@ -1,0 +1,44 @@
+--- a/setup.py
++++ b/setup.py
+@@ -7,5 +7,6 @@
+ from importlib import metadata
+ import os
++import shlex
+ import shutil
+ import subprocess
+ import time
+@@ -253,6 +254,34 @@ def build_nccl_ep_submodule() -> str:
+     nccl_home = _discover_nccl_home()
+     env["NCCL_HOME"] = nccl_home
+     env["NCCL_EP_BUILDDIR"] = str(build_dir)
++    # NCCL-EP invokes its own host compiler and nvcc commands with the
++    # distribution flags verbatim. Arch's LTO bytecode is compiler-version
++    # specific, while the CUDA host compiler is GCC 15; additionally the
++    # NCCL-EP shared-library rule relinks pre-generated CUDA registration glue,
++    # which makes host LTO emit duplicate registration symbols. Disable LTO
++    # only for this subprocess.
++    for variable in ("CFLAGS", "CXXFLAGS"):
++        env[variable] = shlex.join(
++            flag
++            for flag in shlex.split(env.get(variable, ""))
++            if not flag.startswith("-flto")
++        )
++
++    # nvcc does not understand compiler-driver -Wl,... spelling. Translate
++    # linker options and forward other host flags while preserving -L/-l.
++    nvcc_ldflags: list[str] = []
++    for flag in shlex.split(env.get("LDFLAGS", "")):
++        if flag.startswith("-flto"):
++            continue
++        if flag.startswith("-Wl,"):
++            nvcc_ldflags.extend(
++                f"-Xlinker={option}" for option in flag.removeprefix("-Wl,").split(",")
++            )
++        elif flag.startswith(("-L", "-l")):
++            nvcc_ldflags.append(flag)
++        else:
++            nvcc_ldflags.append(f"-Xcompiler={flag}")
++    env["LDFLAGS"] = shlex.join(nvcc_ldflags)
+ 
+     prev_gencode = gencode_stamp.read_text().strip() if gencode_stamp.exists() else None
+     if not nccl_ep_lib.exists() or prev_gencode != gencode:
