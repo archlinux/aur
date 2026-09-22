@@ -2,9 +2,9 @@
   "version": 2,
   "data": {
     "pi-ext-cursor-sdk": {
-      "version": "0.3.8",
-      "gitref": "refs/tags/v0.3.8",
-      "url": "https://github.com/fitchmultz/pi-cursor-sdk/releases/tag/v0.3.8"
+      "version": "0.3.9",
+      "gitref": "refs/tags/v0.3.9",
+      "url": "https://github.com/fitchmultz/pi-cursor-sdk/releases/tag/v0.3.9"
     }
   }
 }
