@@ -5,7 +5,7 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-declare -r _tag="737dbcbaa78ab817cc1c435cb2b6c5d24d1c4391"
+declare -r _tag="6b0b566db7619a208c7230b86b511cf6bf23fcdd"
 
 pkgname="serai"
 pkgver="0.0.0"
@@ -19,7 +19,7 @@ makedepends=("git" "rust")
 source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "${pkgname}.desktop"
     "${pkgname}.png")
-sha512sums=("7a1e858a89839cc7dec491c8c5f86101e2d024fdd44df286780357b954b78d9ccac58edb436f0feb6d27d8f5ef9d48767173b18896be8a187dc7511ad98d10eb"
+sha512sums=("db55aeecb31859d8b022840c1eee4eabe09e94abef7e1b024162c60b5e62ace9e784132580e0b59678f4057a28262c84865ac13cb7501cd4c009b557176177bd"
     "3f9e2b9a0da05d8ba3c207f00a65530bf4a3e0808104a8fca967a11a83286c7720e4260530706559491468a375b0b73093c9be90811ffe36ca5cd7c1f014ebcb"
     "86698f2de5a3633e3f4dacb80c17e14f856633f66a4a4106a3edfda42be33d03eb93520c6de693e732a64857c9a8716252672db5dd721308c5f73f7e2f6f4bf2")
 
