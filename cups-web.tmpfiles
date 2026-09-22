@@ -1,3 +1,4 @@
 d /var/lib/cups-web         0755 cups-web cups-web -
+d /var/lib/cups-web/scans   0755 cups-web cups-web -
 d /var/lib/cups-web/data    0755 cups-web cups-web -
 d /var/lib/cups-web/uploads 0755 cups-web cups-web -

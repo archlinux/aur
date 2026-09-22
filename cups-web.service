@@ -12,6 +12,7 @@ Restart=on-failure
 EnvironmentFile=/etc/conf.d/cups-web
 Environment=DB_PATH=/var/lib/cups-web/data/cups-web.db
 Environment=UPLOAD_DIR=/var/lib/cups-web/uploads
+Environment=SCAN_DIR=/var/lib/cups-web/scans
 Environment=OFD_CONVERTER_JAR=/usr/share/java/ofdrw/ofdrw-converter.jar
 ExecStart=/usr/bin/cups-web
 PrivateTmp=yes

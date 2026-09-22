@@ -2,7 +2,7 @@
 
 pkgname="cups-web"
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Web printing management interface for CUPS"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64' 'loong64')
 url="https://github.com/hanxi/${pkgname}"
@@ -21,10 +21,10 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 sha256sums=('78e31351c0826c0143cdd51782cb06c9a9880135dba67ac01d691d6cb1f1ee82'
-            '23f92510f45cabe57fbac3349b8a426085299e045d71e5e79348a2f3a59bd098'
-            'd0c92ec21b32c0d226f96696d078f369fecee493d2a351d11176014194da05c2'
+            '0c81a30afeb1f19a0616f783e77684fb24372c3e2221b82fb97348db68895e60'
+            'c2a4dca8de0bf1ec14a4aeae1c1430e764ebec47faeb20a661cbce58678a9cd2'
             '1b448e0b4d6a8d13edbe2f9a051b1392beba42d6773b5da7cf7b260470695548'
-            'b17fd1e47cfa27481eb31b526065b424dd30ddc2b57a9e9617d92fdf8c9316c7')
+            'efe697300c7cdcd977341cf48d6c5c8a934055b406de001a98234c133495dda6')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
