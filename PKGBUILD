@@ -19,6 +19,7 @@ sha256sums=('3b68d0285d5bff96b09cbb4e902931e759720313df8fd5223d675b06453103d7'
 prepare() {
   cd "FluAutoClicker-v.$_upstream"
   export RUSTUP_TOOLCHAIN=stable
+  printf 'allowBuilds:\n  esbuild: true\n' > pnpm-workspace.yaml
   pnpm install --frozen-lockfile
   cargo fetch --locked --manifest-path src-tauri/Cargo.toml
 }
