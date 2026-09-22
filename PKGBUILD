@@ -1,8 +1,8 @@
 # Maintainer: Kaiya <kaiyafurry@proton.me>
 pkgname=shock-alarm
-pkgver='0.4.8'
-pkgrel='2'
-tag='0.4.8-2'
+pkgver='0.4.9'
+pkgrel='1'
+tag='0.4.9-1'
 pkgdesc="A flutter app for controlling OpenShock devices"
 arch=('x86_64')
 url="https://codeberg.org/Kaiya/ShockAlarmApp"
@@ -14,7 +14,7 @@ depends=(
     'xdg-utils'
 )
 source=("https://codeberg.org/Kaiya/ShockAlarmApp/releases/download/${tag}/shock_alarm_linux_x64.tar.gz")
-sha256sums=('b951a7c9232eb6557c2e06b5f2914e746d2d66cbd24167fdea0dcbe0f8134903')
+sha256sums=('e28312a6fcefa889fd0d8fdaa9a90f91783ff3d4c422301690052d4512eb9450')
 
 package() {
     # Create installation directories
