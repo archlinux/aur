@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=cc-switch-bin
-pkgver=3.20.3
+pkgver=3.20.4
 pkgrel=1
 pkgdesc="A cross-platform desktop All-in-One assistant tool for Claude Code, Codex & Gemini CLI."
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ license=('mit')
 depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3')
 source_x86_64=("CC-Switch-v${pkgver}-Linux-x86_64.deb::https://github.com/farion1231/cc-switch/releases/download/v${pkgver}/CC-Switch-v${pkgver}-Linux-x86_64.deb")
 source_aarch64=("CC-Switch-v${pkgver}-Linux-arm64.deb::https://github.com/farion1231/cc-switch/releases/download/v${pkgver}/CC-Switch-v${pkgver}-Linux-arm64.deb")
-md5sums_x86_64=('ec05cd4417f91d55f0f6de76a4e65d5c')
-md5sums_aarch64=('3ecee66de1f9984149d7e880997af5c7')
+md5sums_x86_64=('25e5d90b37b2893848274499da86c5f2')
+md5sums_aarch64=('8d44fd27cf2b0279133ed638183f7639')
 
 package() {
     local _debfile
