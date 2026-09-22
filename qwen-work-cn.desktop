@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=千问办公
+Name[zh_CN]=千问办公
+Name[en]=QwenWork
+Exec=/opt/apps/QwenWorkCN/qwen-work-cn %U
+Terminal=false
+Type=Application
+Icon=qwen-work-cn
+StartupWMClass=qwenworkcn
+Comment=千问办公
+Comment[en]=QwenWork
+MimeType=x-scheme-handler/qwenwork-cn;
+Categories=Office;
+Keywords=QwenWork;Qwen;AI;Office;
+Keywords[zh_CN]=千问办公;千问;AI;办公;
