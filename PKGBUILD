@@ -2,8 +2,8 @@
 
 _pkgname="zilch"
 pkgname="${_pkgname}-git"
-pkgver=1.1.0.r48.20260805.48af27a
-pkgrel=2
+pkgver=1.1.0+2.r50.20260919.cceba9d
+pkgrel=1
 pkgdesc="Small, fast, self-contained android de-bloat tool. Follow-up of 'droidrunco'."
 arch=(
   "aarch64"
