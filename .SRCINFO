@@ -1,11 +1,11 @@
 pkgbase = cad-viewer
 	pkgdesc = Browser-based DWG/DXF CAD viewer, packaged as a desktop app on system Electron
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mlightcad/cad-viewer
 	arch = any
 	license = MIT
-	makedepends = nodejs
+	makedepends = nodejs>=22.13
 	makedepends = pnpm
 	depends = electron
 	depends = bash
