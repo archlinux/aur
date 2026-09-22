@@ -6,4 +6,3 @@ Exec=PixelFlasher
 Icon=pixelflasher
 Categories=Utility;Development;
 Terminal=false
-StartupWMClass=PixelFlasher.py
