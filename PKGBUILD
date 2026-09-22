@@ -1,7 +1,7 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=howdy-next-git
-pkgver=3.4.1.r0.g31fea0c
+pkgver=3.4.1.r11.g3caa37d
 pkgrel=1
 pkgdesc="Modern C++ reimplementation of Howdy facial authentication on Linux"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=(
 	'acl'
 	'curl>=7.85.0'
-	'glibc>=2.34'
+	'glibc>=2.36'
 	'libevdev'
 	'libinih>=59'
 	'openssl'
