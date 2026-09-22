@@ -1,0 +1,25 @@
+pkgbase = asst-git
+	pkgdesc = Tasks and reminders on a CalDAV server (Nextcloud): daemon, CLI, GTK window, quick add, waybar module
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jaehho/asst
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rustup
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk4
+	depends = libadwaita
+	depends = gtk4-layer-shell
+	optdepends = gnome-keyring: or another Secret Service provider, to hold the app password
+	optdepends = waybar: for `asst bar`
+	provides = asst
+	conflicts = asst
+	options = !lto
+	options = !debug
+	source = git+https://github.com/jaehho/asst.git
+	sha256sums = SKIP
+
+pkgname = asst-git
