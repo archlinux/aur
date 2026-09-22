@@ -1,0 +1,5 @@
+[grut-bin]
+source = "github"
+github = "jongio/grut"
+use_latest_release = true
+prefix = "v"
