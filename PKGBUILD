@@ -1,6 +1,6 @@
 # Maintainer: coffee <catheadcoffee@gmail.com>
 pkgname=markitdown-bin
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Utility tool for converting various files to Markdown (uv-based venv, all extras included)"
 arch=('any')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('python>=3.10')
 makedepends=('python-uv' 'curl')
 conflicts=('python-markitdown')
-source=("markitdown-${pkgver}-py3-none-any.whl::https://files.pythonhosted.org/packages/fc/16/51d269a754d690ec31d3faa0686c8c14ac955dbc0580c358f256ba3391ec/markitdown-${pkgver}-py3-none-any.whl")
-sha256sums=('4eca912c87c6aa6897284a7f4bf6769a23bccf8544530f5d8b175fbe3797c916')
+source=("markitdown-0.1.8-py3-none-any.whl::https://files.pythonhosted.org/packages/33/de/0b23cd8d8955221a39438ba8e4cf583e4f510fc79c6891fff88fb3e61198/markitdown-0.1.8-py3-none-any.whl")
+sha256sums=('de7375a50578a39bcbbf13b48c67d99033d988e0ae8ad25af46ed432dbe4cbab')
 
 package() {
     _optdir="${pkgdir}/opt/${pkgname}"
