@@ -2,3 +2,8 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!otf2ttf.py
+!set_gasp.py
+!cff_hint.py
+!dedup_blues.py
+!font_meta.py
