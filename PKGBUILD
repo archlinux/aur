@@ -1,7 +1,7 @@
 # Maintainer: hedgeg0d <werstak192@gmail.com>
 pkgname=soundux-pipewire
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A crossplatform soundboard that plays sounds into your microphone, with native PipeWire support"
 arch=('x86_64')
 url="https://github.com/hedgeg0d/Soundux-pipe"
@@ -17,7 +17,7 @@ optdepends=(
 )
 provides=('soundux')
 conflicts=('soundux' 'soundux-git')
-source=("$pkgname::git+$url.git#tag=v$pkgver-pipewire")
+source=("$pkgname::git+$url.git#tag=v$pkgver-pipewire-2")
 sha256sums=('SKIP')
 
 prepare() {
