@@ -1,7 +1,7 @@
 pkgbase = meshcore-cli-git
 	pkgdesc = Command line interface to MeshCore node.
 	pkgver = 1.6.4.r624.20260919.2ae6100
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meshcore-dev/meshcore-cli
 	arch = any
 	groups = meshcore
@@ -17,8 +17,15 @@ pkgbase = meshcore-cli-git
 	depends = python-meshcore>=2.2.1
 	depends = python-prompt_toolkit>=3.0.50
 	depends = python-requests>=2.28.0
-	depends = python-pycryptodome>=3.23.0
 	depends = python-pyserial
+	optdepends = bash: For example scripts '/usr/share/doc/meshcore-cli/scripts/{contact_markers.sh,neighbour_map.sh}'.
+	optdepends = coords2img: For example scripts '/usr/share/doc/meshcore-cli/scripts/{contact_markers.sh,neighbour_map.sh}'.
+	optdepends = jq: For example scripts '/usr/share/doc/meshcore-cli/scripts/{contact_markers.sh,neighbour_map.sh}'.
+	optdepends = sh: For example script '/usr/share/doc/meshcore-cli/scripts/ask_mepo_coords'.
+	optdepends = mepo: For example script '/usr/share/doc/meshcore-cli/scripts/ask_mepo_coords'.
+	optdepends = geoclue: For example script '/usr/share/doc/meshcore-cli/scripts/getpos.py'.
+	optdepends = glib2: For example script '/usr/share/doc/meshcore-cli/scripts/getpos.py'.
+	optdepends = python-gobject: For example script '/usr/share/doc/meshcore-cli/scripts/getpos.py'.
 	provides = meshcore-cli=1.6.4.r624.20260919.2ae6100
 	conflicts = meshcore-cli
 	source = meshcore-cli::git+https://github.com/meshcore-dev/meshcore-cli.git

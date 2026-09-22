@@ -4,7 +4,7 @@ _pyname="meshcore-cli"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
 pkgver=1.6.4.r624.20260919.2ae6100
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface to MeshCore node."
 groups=("meshcore")
 arch=(
@@ -21,7 +21,6 @@ depends=(
   'python-meshcore>=2.2.1'
   'python-prompt_toolkit>=3.0.50'
   'python-requests>=2.28.0'
-  'python-pycryptodome>=3.23.0'
   'python-pyserial'
 )
 makedepends=(
@@ -32,8 +31,20 @@ makedepends=(
   'python-setuptools>=61.0.0'
   'python-wheel'
 )
-optdepends=()
-checkdepends=()
+optdepends=(
+  "bash:            For example scripts '/usr/share/doc/meshcore-cli/scripts/{contact_markers.sh,neighbour_map.sh}'."
+  "coords2img:      For example scripts '/usr/share/doc/meshcore-cli/scripts/{contact_markers.sh,neighbour_map.sh}'."
+  "jq:              For example scripts '/usr/share/doc/meshcore-cli/scripts/{contact_markers.sh,neighbour_map.sh}'."
+  "sh:              For example script  '/usr/share/doc/meshcore-cli/scripts/ask_mepo_coords'."
+  "mepo:            For example script  '/usr/share/doc/meshcore-cli/scripts/ask_mepo_coords'."
+  "geoclue:         For example script  '/usr/share/doc/meshcore-cli/scripts/getpos.py'."
+  "glib2:           For example script  '/usr/share/doc/meshcore-cli/scripts/getpos.py'."
+  "python-gobject:  For example script  '/usr/share/doc/meshcore-cli/scripts/getpos.py'."
+)
+### Do not run 'check()' since it requires a connection to a MeshCore device.
+# checkdepends=(
+#   'python-pytest'
+# )
 provides=(
   "${_pkgname}=${pkgver}"
   # "python-${_pkgname}=${pkgver}"
@@ -80,6 +91,13 @@ build() {
   python -m build --wheel --no-isolation
 }
 
+### Do not run 'check()' since it requires a connection to a MeshCore device.
+# check() {
+#   cd "${srcdir}/${_pkgname}"
+#
+#   pytest
+# }
+
 package() {
   cd "${srcdir}/${_pkgname}"
   printf '%s\n' " --> installing ..."
@@ -89,7 +107,9 @@ package() {
     "${srcdir}/git.log"
     README.md
   )
-  _docdirs=()
+  _docdirs=(
+    scripts
+  )
   _manfiles=()
   _infofiles=()
   _licensefiles=(
