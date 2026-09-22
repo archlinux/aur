@@ -1,6 +1,6 @@
 pkgbase = pdf-tui-bin
 	pkgdesc = Terminal PDF reader built with ratatui and terminal graphics protocols.
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/WindustH/pdf-tui
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = pdf-tui-bin
 	conflicts = pdf-tui
 	conflicts = pdf-tui-git
 	options = !strip
-	source = pdf-tui-0.2.8-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/pdf-tui/releases/download/v0.2.8/pdf-tui-0.2.8-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 6dde645bc2a4b1091eb7a83de9d6a593ee14c8c375ef269e4f0af6412603e3a7
+	source = pdf-tui-0.2.9-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/pdf-tui/releases/download/v0.2.9/pdf-tui-0.2.9-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 3b1b89796576524a0ac680a3df17b84d77dcd20c0dba341acb24d8665d8bd0bd
 
 pkgname = pdf-tui-bin
