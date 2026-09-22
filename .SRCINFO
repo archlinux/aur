@@ -1,0 +1,24 @@
+pkgbase = unroot
+	pkgdesc = The Linux root filesystem super-tool
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/danielrobbins/unroot
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = make
+	makedepends = gcc
+	makedepends = python3
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libarchive
+	depends = shadow
+	provides = unroot
+	conflicts = unroot
+	options = !lto
+	options = !strip
+	source = unroot-x86_64-1.0.5.txz::https://github.com/danielrobbins/unroot/releases/download/1.0.5/unroot-1.0.5.tar.xz
+	sha256sums = 24730bf857807d20ea9ea4ad3fcbedc7df3e0809c9b5c0f4d2ffd4aa21fa91f0
+
+pkgname = unroot
