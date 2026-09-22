@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Irony Mod Mananger
+Name=Irony Mod Manager
 Comment=A mod manager and launcher for paradox interactive games
 Exec=/usr/bin/irony-mod-manager-bin %U
 Icon=irony-mod-manager-bin
