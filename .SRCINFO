@@ -1,6 +1,6 @@
 pkgbase = nitrolaunch-gui
 	pkgdesc = A fast, extensible, and powerful Minecraft launcher (GUI Version)
-	pkgver = 0.31.0
+	pkgver = 0.32.1
 	pkgrel = 1
 	url = https://github.com/Nitrolaunch/nitrolaunch
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = nitrolaunch-gui
 	depends = libstdc++
 	depends = glibc
 	options = !lto
-	source = nitrolaunch-gui-0.31.0.tar.gz::https://github.com/Nitrolaunch/nitrolaunch/archive/refs/tags/0.31.0.tar.gz
-	sha256sums = 8d951f86e65b4ef72dc44199151b0ee5ac2a539d70944601c25a465ddc98f80b
+	source = nitrolaunch-gui-0.32.1.tar.gz::https://github.com/Nitrolaunch/nitrolaunch/archive/refs/tags/0.32.1.tar.gz
+	sha256sums = a49d178c3b88577bb09ebe6d7e770ae23c06f2c6aeb8d06cf36b849652878de4
 
 pkgname = nitrolaunch-gui

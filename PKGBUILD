@@ -3,7 +3,7 @@
 
 _pkgname=nitrolaunch
 pkgname=$_pkgname-gui
-pkgver=0.31.0
+pkgver=0.32.1
 pkgrel=1
 pkgdesc="A fast, extensible, and powerful Minecraft launcher (GUI Version)"
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=(freetype2 fontconfig libglvnd libgcc libstdc++ glibc)
 makedepends=(cargo imagemagick)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8d951f86e65b4ef72dc44199151b0ee5ac2a539d70944601c25a465ddc98f80b')
+sha256sums=('a49d178c3b88577bb09ebe6d7e770ae23c06f2c6aeb8d06cf36b849652878de4')
 options=(!lto)
 
 prepare() {
@@ -37,7 +37,7 @@ check() {
 
 package() {
 	cd "$_pkgname-$pkgver"
-	install -Dm0755 "target/fast_release/nitro_gui" "$pkgdir/usr/bin/Nitrolaunch"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/fast_release/nitro_gui"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "crates/gui/assets/Nitrolaunch.desktop"
 	install -Dm0644 "crates/gui/assets/icon_1024x1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/nitro_gui.png"
 	install -Dm0644 "crates/gui/assets/icon_512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/nitro_gui.png"
