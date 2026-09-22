@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=quarkdown
-pkgver=2.6.0
-pkgrel=2
+pkgver=2.6.2
+pkgrel=1
 _jdkver=21
 pkgdesc='a Markdown based typesetting system'
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=(nodejs-lts-krypton
 optdepends=('chromium: generate PDF output')
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('67f12e2ef33d62daf80b74e20e634ded1c02c7d4d2a62ed7bdf5e89192f883e0')
+sha256sums=('79a023a8e67142807418dd561cd9627a954269768353d066a7430c81989b760d')
 
 build() {
 	export JAVA_HOME="/usr/lib/jvm/java-$_jdkver-openjdk"
