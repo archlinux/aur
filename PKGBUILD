@@ -3,18 +3,19 @@
 
 pkgname='storcli'
 _name='STORCLI_SAS3.5_P'
-pkgver='007.3703.0000.0000'
+pkgver='007.3811.0000'
 pkgrel='1'
-_phase='38'
+_phase='39'
 _prefix='univ_viva_cli_rel/Unified_storcli_all_os'
 pkgdesc="CLI program for LSI MegaRAID cards"
 url='https://www.broadcom.com/'
 license=('custom')
+options=('!debug')
 arch=('x86_64' 'aarch64')
 makedepends=('libarchive')
 source=("https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_nvme_12g_p${_phase}/${_name}${_phase}.zip"
 	"https://docs.broadcom.com/docs-and-downloads/host-bus-adapters/host-bus-adapters-common-files/sas_sata_nvme_12g_p28/${_name}28.zip")
-sha256sums=('d0f6065d3ed2993d64eaa1df274f08c624d4dc61bcdd802a1afdb552f0b6b511'
+sha256sums=('8487c1d099b451b2045e0d615cb081cba354891ee663cb30b621f2f51c94a40d'
             'c15ef2d5b66f1d5988aa2bc318c49025f248d69058533e02a8f0acc86681cc85')
 
 _archstr=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "Linux" || echo -n "ARM/Linux")
