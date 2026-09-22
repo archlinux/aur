@@ -15,7 +15,7 @@ pkgbase = bubblewrap-ignoresigs
 	depends = libgcc
 	provides = bubblewrap
 	conflicts = bubblewrap
-	source = git+https://github.com/containers/bubblewrap#commit=719a4fd474d44b26906bcf2b1b0fb6eddd8d56d0
+	source = git+https://github.com/containers/bubblewrap?signed#tag=v0.13.0
 	source = ignore-SIGINT-and-SIGQUIT-while-child-running.patch
 	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
 	validpgpkeys = 252C6FEA78A69D3BC0AD458A616C5BDC0C29AB04

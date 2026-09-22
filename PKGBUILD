@@ -25,10 +25,8 @@ makedepends=(
   libxslt
   meson
 )
-# v0.13.0 is unsigned, use commit hash instead
-_commit=719a4fd474d44b26906bcf2b1b0fb6eddd8d56d0
 source=(
-  "git+$url#commit=$_commit"
+  "git+$url?signed#tag=v$pkgver"
   "ignore-SIGINT-and-SIGQUIT-while-child-running.patch"
 )
 b2sums=('5ca3d4a066d48e04441e71ec3809fc5cb039914cd80247d49f79521c4606dbd2d5243c28abc6da7aea5b74770ce979d0f6f3b3b11761733faf20b87f7bf8c117'
