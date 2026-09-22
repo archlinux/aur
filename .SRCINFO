@@ -1,0 +1,33 @@
+pkgbase = exiled-exchange-2-appimage
+	pkgdesc = Path of Exile 2 trading app for price checking
+	pkgver = 0.16.3
+	pkgrel = 1
+	url = https://kvan7.github.io/Exiled-Exchange-2/download
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = cups
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libxt
+	depends = mesa
+	depends = nss
+	depends = systemd-libs
+	depends = xdg-utils
+	optdepends = libayatana-appindicator: system tray icon
+	provides = exiled-exchange-2=0.16.3
+	conflicts = exiled-exchange-2
+	conflicts = exiled-exchange-2-bin
+	noextract = Exiled-Exchange-2-0.16.3.AppImage
+	options = !strip
+	options = !debug
+	source = Exiled-Exchange-2-0.16.3.AppImage::https://github.com/Kvan7/Exiled-Exchange-2/releases/download/v0.16.3/Exiled-Exchange-2-0.16.3.AppImage
+	source = exiled-exchange-2.desktop
+	source = LICENSE::https://raw.githubusercontent.com/Kvan7/Exiled-Exchange-2/v0.16.3/LICENSE
+	sha256sums = 6801c510b7652fb71c729cc05bd44e1c5d616430274064cb2ed0e89d2d024f64
+	sha256sums = d6fe547e7257e37748c04ab13c81bbfa9ac373b6a0f624de6fc1c0309513da97
+	sha256sums = 5c8de7f881b34dc31f872531a1eee1eabc79e10acd8fc91c026e10c5a8258c3f
+
+pkgname = exiled-exchange-2-appimage

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Exiled Exchange 2
+Comment=Path of Exile 2 trading app for price checking
+Exec=exiled-exchange-2 %U
+Icon=exiled-exchange-2
+Terminal=false
+StartupWMClass=Exiled-exchange-2
+Categories=Utility;Game;
+Keywords=poe;path of exile;exile;trade;trading;price check;overlay;
