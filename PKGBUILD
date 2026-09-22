@@ -1,14 +1,14 @@
 # Maintainer: karboncore
 
 pkgname=mealie
-pkgver=3.25.1
+pkgver=3.27.0
 pkgrel=1
 pkgdesc='A self hosted recipe manager'
 arch=(any)
 url=https://github.com/mealie-recipes/mealie
 license=(AGPL)
 depends=(python312 sqlite)
-makedepends=(yarn nodejs postgresql-libs uv)
+makedepends=(pnpm nodejs postgresql-libs uv)
 optdepends=('postgresql: for postgresql support')
 source=(https://github.com/mealie-recipes/mealie/archive/refs/tags/v${pkgver}.tar.gz
         mealie.sh
@@ -16,7 +16,7 @@ source=(https://github.com/mealie-recipes/mealie/archive/refs/tags/v${pkgver}.ta
         mealie.sysusers
         mealie.tmpfiles
         mealie.conf)
-sha256sums=('66cea11dc4bc3ca97996798f72d5704638fb53aac0aac1a9ebffa3d8791ef203'
+sha256sums=('d378c308e144e7ca471b8d37c26813627f99428240ee24de5b3e1c05e45a5811'
             '7d8f6ff8e146e20c545aa390662cdc167ec0311a83ab88a27283df2330e29b5b'
             '582e023c8a68117fb9c28a5bbb182173ba857819bd4118e7a07d25012bc02b6a'
             '1a6b434a125f6940e53f8ba6613426f50c8ca8d5e7a447a80efd57016b917208'
@@ -31,13 +31,11 @@ build() {
   sed -i "1s|^\#\!${srcdir}/${pkgname}-${pkgver}/\.venv|\#\!/opt/mealie/venv|" .venv/bin/*
 
   cd frontend
-  yarn install \
+  pnpm install \
     --prefer-offline \
     --frozen-lockfile \
-    --non-interactive \
-    --production=false \
-    --network-timeout 1000000
-  yarn generate
+    --production=false
+  pnpm generate
 }
 
 package() {
