@@ -1,6 +1,6 @@
 pkgbase = ftb-app
 	pkgdesc = A new Modpack launcher for FTB and Curse modpacks.
-	pkgver = 1.30.0
+	pkgver = 1.30.1
 	pkgrel = 1
 	url = https://feed-the-beast.com/ftb-app
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = ftb-app
 	makedepends = jdk25-temurin
 	depends = electron39
 	optdepends = java-runtime: Playing Minecraft with system Java.
-	source = git+https://github.com/FTBTeam/FTB-App.git#tag=v1.30.0
+	source = git+https://github.com/FTBTeam/FTB-App.git#tag=v1.30.1
 	source = ftb-app.sh
 	source = ftb-app.desktop
-	sha256sums = 91f1c12ffbfe6551acaecb23205a8ec9854c53e50467fa77146075980a87fe04
+	sha256sums = 47774d800245ce707f2cb7fb9c9ba62a3dc93156ebf20fadec7d526d35a5654e
 	sha256sums = dca73a9ed949a5623de73ac80450ae8a532cd50195fde7c849852837541c0e8e
 	sha256sums = 26bcc8821bf053371e4da468ebd8d0a3d6ef1126baf8f17f0d894d77d0b8959f
 
