@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=5.5.15
+pkgver=5.5.25
 _electronversion=42
 _nodeversion=24
 pkgrel=1
-pkgdesc="📻Free and open-sourced terminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice client."
+pkgdesc="Free and open-sourced terminal/ssh/sftp/ftp/telnet/serialport/RDP/VNC/Spice client."
 arch=(
     'aarch64'
     'armv7h'
@@ -33,7 +33,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('ecf021f141b65d7fbc69724345d5feed664b152431072323a7725cab07953da4'
+sha256sums=('1be1584f50553ca7d6d6eb9449b361969c4220ecd8a9f05107fb8f3852952746'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -48,19 +48,17 @@ _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	_ev="$(electron${_electronversion} -v)"
-	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
-	export HOME="${srcdir}/.electron-gyp"
-	export XDG_CACHE_HOME="${srcdir}/.cache"
-	export XDG_CONFIG_HOME="${srcdir}/.config"
-	export XDG_DATA_HOME="${srcdir}/.local/share"
-	export npm_config_cache="${srcdir}/.npm_cache"
-	export npm_config_maxsockets=32
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export npm_config_cache="${HOME}/.npm_cache"
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
 	export npm_config_audit=false
-	export npm_config_fund=false
-	export npm_config_progress=false
-	export NODE_OPTIONS="--max-old-space-size=4096"
-	export npm_config_node_options="--max-old-space-size=4096"
+	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -84,33 +82,41 @@ prepare() {
         --categories="System" \
         --name="${pkgname}" \
         --exec="${pkgname} %U"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install --legacy-peer-deps
-    NODE_ENV=development    npm add -D node-gyp --legacy-peer-deps
+    export NODE_ENV=development
+    npm install --legacy-peer-deps
+    npm add -D node-gyp --legacy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
+    export NODE_ENV=production
+    npm run clean
+    npm run compile
+    npm run prepare-file
+    WORKFLOW_NAME=linux-pkgbuild npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config build/electron-builder.json"
     local _app_dir=$(_get_app_dir)
-    NODE_ENV=production     npm run clean
-    NODE_ENV=production     npm run compile
-    NODE_ENV=production     npm run prepare-file
-    WORKFLOW_NAME=linux-pkgbuild \
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir --publish never -c.electronDist=${ELECTRON_DIST} --config build/electron-builder.json"
-    rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,win32-*}
-    rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/font-list/libs/"{darwin,win32}
+    rm -rf \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{android-*,darwin-*,win32-*} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/font-list/libs/"{darwin,win32} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/note-pty/prebuilds/"{darwin-*,win32-*}
     case "${CARCH}" in
         aarch64)
-            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{linux-arm,linux-x64}
+            rm -rf \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{linux-arm,linux-x64} \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/note-pty/prebuilds/linux-x64"
             ;;
         armv7h)
-            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{linux-arm64,linux-x64}
+            rm -rf \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"{linux-arm64,linux-x64}
             ;;
         x86_64)
-            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"linux-arm*
+            rm -rf \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/"linux-arm* \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/note-pty/prebuilds/linux-arm64"
             ;;
     esac
 }
@@ -118,7 +124,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/node_modules/@${pkgname}/${pkgname}-resource/build-res/appx/StoreLogo.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
