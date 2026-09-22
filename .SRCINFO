@@ -3,13 +3,16 @@ pkgbase = falcon-sensor
 	pkgver = 8.10.0
 	pkgrel = 19403
 	url = https://falcon.crowdstrike.com/
+	install = falcon-sensor.install
 	arch = x86_64
 	license = custom
 	depends = glibc
 	depends = zlib
 	depends = openssl
 	depends = libnl
+	source = falcon-sensor-install
 	source = LICENSE
+	sha256sums = d169976dbed23634f8a2131132e377b9860d93c5a71587dc4ff2e21815443750
 	sha256sums = 323c9971c5f7e3b360783601922c063801e0bbd425351faaafaf476b5b29fecb
 
 pkgname = falcon-sensor

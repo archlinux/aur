@@ -8,10 +8,8 @@
 pkg/
 src/
 
-# local install helpers, not part of the AUR publish set
+# old alpm hook, not part of this package
 falcon-sensor.hook
-falcon-sensor.install
-falcon-sensor-install
 
 # local logs, editor state, and notes
 *.log

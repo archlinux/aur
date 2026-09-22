@@ -1,0 +1,97 @@
+# Keep sensor files across the upgrade from the old package, which owned
+# /opt/CrowdStrike. This package does not. Reading the local file list does
+# not take the pacman lock. FALCON_SYSROOT / FALCON_PACMAN_LOCAL /
+# FALCON_PRESERVE_ROOT are overrides for tests.
+
+_falcon_root() {
+  printf '%s' "${FALCON_SYSROOT:-}"
+}
+
+_falcon_preserve_root() {
+  printf '%s' "${FALCON_PRESERVE_ROOT:-/var/lib/falcon-sensor-pacman-preserve}"
+}
+
+_falcon_owned_files() {
+  local base db
+  base="${FALCON_PACMAN_LOCAL:-/var/lib/pacman/local}"
+  for db in "$base"/falcon-sensor-*/files; do
+    [[ -f "$db" ]] || continue
+    if grep -qx 'opt/CrowdStrike/falcond' "$db"; then
+      printf '%s\n' "$db"
+      return 0
+    fi
+  done
+  for db in "$base"/falcon-sensor-*/files; do
+    [[ -f "$db" ]] || continue
+    printf '%s\n' "$db"
+    return 0
+  done
+  return 0
+}
+
+pre_upgrade() {
+  local root preserve db rel src
+  root="$(_falcon_root)"
+  preserve="$(_falcon_preserve_root)"
+  rm -rf "$preserve"
+  mkdir -p -m 700 "$preserve"
+  db="$(_falcon_owned_files)"
+  [[ -n "$db" ]] || return 0
+  while IFS= read -r rel; do
+    [[ -n "$rel" ]] || continue
+    [[ "$rel" == usr/share/libalpm/hooks/falcon-sensor.hook ]] && continue
+    src="${root}/${rel}"
+    if [[ -d "$src" && ! -L "$src" ]]; then
+      mkdir -p "${preserve}/${rel}"
+    elif [[ -e "$src" || -L "$src" ]]; then
+      mkdir -p "${preserve}/$(dirname "$rel")"
+      cp -a "$src" "${preserve}/${rel}"
+    fi
+  done < <(awk '
+    BEGIN {p = 0}
+    /^%FILES%$/ {p = 1; next}
+    /^%/ {p = 0; next}
+    p {print}
+  ' "$db")
+}
+
+_falcon_restore_preserved() {
+  local root preserve rel restored_unit
+  root="$(_falcon_root)"
+  preserve="$(_falcon_preserve_root)"
+  [[ -d "$preserve" ]] || return 0
+  restored_unit=0
+  while IFS= read -r -d '' rel; do
+    rel="${rel#./}"
+    [[ -n "$rel" && "$rel" != "." ]] || continue
+    mkdir -p "${root}/${rel}"
+  done < <(cd "$preserve" && find . -type d -print0)
+  while IFS= read -r -d '' rel; do
+    rel="${rel#./}"
+    [[ -e "${root}/${rel}" || -L "${root}/${rel}" ]] && continue
+    mkdir -p "${root}/$(dirname "$rel")"
+    cp -a "${preserve}/${rel}" "${root}/${rel}"
+    [[ "$rel" == usr/lib/systemd/system/falcon-sensor.service ]] && restored_unit=1
+  done < <(cd "$preserve" && find . \( -type f -o -type l \) -print0)
+  rm -rf "$preserve"
+  if ((restored_unit)) && [[ -z "${FALCON_SYSROOT:-}" ]]; then
+    systemctl daemon-reload || true
+  fi
+}
+
+post_upgrade() {
+  _falcon_restore_preserved
+  if [[ -z "${FALCON_SYSROOT:-}" && -x /usr/bin/falcon-sensor-install ]]; then
+    /usr/bin/falcon-sensor-install
+  fi
+}
+
+post_install() {
+  if [[ -z "${FALCON_SYSROOT:-}" && -x /usr/bin/falcon-sensor-install ]]; then
+    /usr/bin/falcon-sensor-install
+  fi
+}
+
+post_remove() {
+  printf 'Removed falcon-sensor-install. /opt/CrowdStrike was left in place.\n'
+}

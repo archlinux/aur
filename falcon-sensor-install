@@ -1,0 +1,242 @@
+#!/bin/bash
+# Install the Debian package pinned by this PKGBUILD, once.
+# A Downloads file whose name or sha256 differs from the pin is skipped.
+# Later sensor builds come from the Falcon console update policy.
+
+set -euo pipefail
+
+sysroot() {
+  printf '%s' "${FALCON_SYSROOT:-}"
+}
+
+sensor_running() {
+  if systemctl is-active --quiet falcon-sensor; then
+    return 0
+  fi
+  if pgrep -x falcond >/dev/null 2>&1; then
+    return 0
+  fi
+  return 1
+}
+
+sensor_present() {
+  local root
+  root="$(sysroot)"
+  [[ -e "${root}/opt/CrowdStrike/falcond" || -L "${root}/opt/CrowdStrike/falcond" ]]
+}
+
+candidate_homes() {
+  local user home found=0
+  for user in "${SUDO_USER:-}" "${DOAS_USER:-}"; do
+    [[ -n "$user" && "$user" != root ]] || continue
+    home="$(getent passwd "$user" | cut -d: -f6 || true)"
+    if [[ -n "$home" && -d "$home" ]]; then
+      printf '%s\n' "$home"
+      found=1
+    fi
+  done
+  if [[ -n "${PKEXEC_UID:-}" ]]; then
+    home="$(getent passwd "$PKEXEC_UID" | cut -d: -f6 || true)"
+    if [[ -n "$home" && -d "$home" ]]; then
+      printf '%s\n' "$home"
+      found=1
+    fi
+  fi
+  # sudo tells us who ran yay. Only scan every home when that user is unknown.
+  if ((found)); then
+    return 0
+  fi
+  local dir
+  for dir in /home/*; do
+    [[ -d "$dir" ]] && printf '%s\n' "$dir"
+  done
+}
+
+download_dirs() {
+  local home dirs_file line
+  while IFS= read -r home; do
+    [[ -n "$home" && -d "$home" ]] || continue
+    dirs_file="$home/.config/user-dirs.dirs"
+    if [[ -f "$dirs_file" ]]; then
+      line="$(sed -n 's/^XDG_DOWNLOAD_DIR=//p' "$dirs_file" | head -n1)"
+      line="${line%\"}"
+      line="${line#\"}"
+      line="${line//\$HOME/$home}"
+      if [[ -n "$line" && -d "$line" ]]; then
+        printf '%s\n' "$line"
+      fi
+    fi
+    [[ -d "$home/Downloads" ]] && printf '%s\n' "$home/Downloads"
+    [[ -d "$home/downloads" ]] && printf '%s\n' "$home/downloads"
+  done < <(candidate_homes)
+}
+
+pin_file() {
+  printf '%s' "${FALCON_PIN_FILE:-/usr/share/falcon-sensor/pin}"
+}
+
+load_pin() {
+  local file key value
+  file="$(pin_file)"
+  [[ -f "$file" ]] || return 1
+  PIN_VERSION=""
+  PIN_FILENAME=""
+  PIN_SHA256=""
+  while IFS='=' read -r key value; do
+    [[ -n "$key" ]] || continue
+    case "$key" in
+      version) PIN_VERSION=$value ;;
+      filename) PIN_FILENAME=$value ;;
+      sha256) PIN_SHA256=$value ;;
+    esac
+  done < "$file"
+  [[ -n "$PIN_FILENAME" && -n "$PIN_SHA256" ]]
+}
+
+sha256_of() {
+  sha256sum -- "$1" | awk '{print $1}'
+}
+
+# Exact pinned filename in Downloads. Other sensor debs are ignored.
+find_pinned_deb() {
+  local -A seen=()
+  local dir path
+  while IFS= read -r dir; do
+    [[ -d "$dir" ]] || continue
+    path="${dir}/${PIN_FILENAME}"
+    [[ -f "$path" ]] || continue
+    [[ -n "${seen[$path]:-}" ]] && continue
+    seen[$path]=1
+    printf '%s\n' "$path"
+  done < <(download_dirs)
+}
+
+note_other_debs() {
+  local -A seen=()
+  local dir deb base
+  while IFS= read -r dir; do
+    [[ -d "$dir" ]] || continue
+    for deb in "$dir"/falcon-sensor_*_amd64.deb; do
+      [[ -f "$deb" ]] || continue
+      base="$(basename "$deb")"
+      [[ "$base" == "$PIN_FILENAME" ]] && continue
+      [[ -n "${seen[$deb]:-}" ]] && continue
+      seen[$deb]=1
+      printf 'Ignoring %s. This package is pinned to %s.\n' "$base" "$PIN_FILENAME"
+    done
+  done < <(download_dirs)
+}
+
+install_deb() {
+  local deb=$1
+  local dest=${2:-$(sysroot)}
+  (
+    set -euo pipefail
+    local work stage archive tree crowd
+    local -a archives=()
+    work="$(mktemp -d)"
+    stage="$(mktemp -d)"
+    trap 'rm -rf "$work" "$stage"' EXIT
+    bsdtar -xf "$deb" -C "$work"
+    archives=("$work"/data.tar.*)
+    if ((${#archives[@]} != 1)) || [[ ! -f "${archives[0]}" ]]; then
+      printf 'Expected one data.tar archive inside %s\n' "$deb" >&2
+      exit 1
+    fi
+    archive="${archives[0]}"
+    bsdtar -xf "$archive" -C "$stage"
+    if [[ -d "$stage/lib" ]]; then
+      mkdir -p "$stage/usr"
+      mv "$stage/lib" "$stage/usr/"
+    fi
+    crowd="${dest}/opt/CrowdStrike"
+    if [[ -L "$crowd" ]]; then
+      printf 'Refusing to install: %s is a symlink.\n' "$crowd" >&2
+      exit 1
+    fi
+    for tree in opt etc usr; do
+      [[ -d "$stage/$tree" ]] || continue
+      mkdir -p "${dest}/${tree}"
+      cp -a "${stage}/${tree}/." "${dest}/${tree}/"
+    done
+  )
+}
+
+# Return 0 when filename and sha256 match the pin. Mismatch messages go to stderr
+# so a command substitution can capture the path alone.
+accepted_deb() {
+  local deb=$1 sum
+  if [[ "$(basename "$deb")" != "$PIN_FILENAME" ]]; then
+    printf 'Skipping %s. This package is pinned to %s.\n' "$(basename "$deb")" "$PIN_FILENAME" >&2
+    return 1
+  fi
+  sum="$(sha256_of "$deb")"
+  if [[ "$sum" != "$PIN_SHA256" ]]; then
+    printf 'Skipping %s. sha256 does not match %s.\n' "$(basename "$deb")" "$PIN_SHA256" >&2
+    return 1
+  fi
+  printf '%s\n' "$deb"
+  return 0
+}
+
+main() {
+  local deb accepted found
+  if ((EUID != 0)); then
+    printf 'Run as root: sudo falcon-sensor-install\n' >&2
+    exit 1
+  fi
+  if ! load_pin; then
+    printf 'Missing pin file: %s\n' "$(pin_file)" >&2
+    exit 1
+  fi
+
+  if sensor_running; then
+    printf 'falcon-sensor is running. Installed files were left unchanged.\n'
+    printf 'Sensor updates are delivered by the Falcon console policy.\n'
+    exit 0
+  fi
+
+  if sensor_present; then
+    printf 'falcon-sensor is already installed. Installed files were left unchanged.\n'
+    printf 'Sensor updates are delivered by the Falcon console policy.\n'
+    printf 'The service is not running. Start it with: systemctl enable --now falcon-sensor\n'
+    exit 0
+  fi
+
+  note_other_debs
+  deb="${1:-}"
+  accepted=""
+  if [[ -n "$deb" ]]; then
+    if [[ ! -f "$deb" ]]; then
+      printf 'Not a file: %s\n' "$deb" >&2
+      exit 1
+    fi
+    accepted="$(accepted_deb "$deb" || true)"
+  else
+    found=""
+    while IFS= read -r found; do
+      break
+    done < <(find_pinned_deb)
+    if [[ -z "$found" ]]; then
+      printf 'Skipping sensor install. %s is not in Downloads.\n' "$PIN_FILENAME"
+      exit 0
+    fi
+    accepted="$(accepted_deb "$found" || true)"
+  fi
+  if [[ -z "$accepted" ]]; then
+    exit 0
+  fi
+
+  printf 'Installing %s\n' "$accepted"
+  install_deb "$accepted"
+  if [[ -f "$(sysroot)/usr/lib/systemd/system/falcon-sensor.service" ]]; then
+    systemctl daemon-reload || true
+  fi
+  printf 'Add the customer id, then start the sensor:\n'
+  printf '  /opt/CrowdStrike/falconctl -s -f --cid=<CID> --provisioning-token=<PROVISIONING_TOKEN>\n'
+  printf '  systemctl enable --now falcon-sensor\n'
+}
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  main "$@"
+fi
