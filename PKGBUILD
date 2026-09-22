@@ -1,6 +1,6 @@
 # Maintainer: toxdes <hi@toxdes.com>
 pkgname=vylk-git
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Lightweight, low-resource single-binary markdown notes editor"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/vylk"
-  go build -trimpath -ldflags "-s -w -X main.version=${pkgver}" -o vylk .
+  go build -trimpath -ldflags "-s -w -X vylk/internal/server.version=${pkgver}" -o vylk ./cmd/vylk
 }
 
 package() {
