@@ -1,6 +1,6 @@
 pkgbase = nostr-vpn-cli-bin
 	pkgdesc = nvpn CLI/daemon for Nostr VPN, a Tailscale-style private mesh VPN (prebuilt musl binary)
-	pkgver = 4.1.14
+	pkgver = 4.1.15
 	pkgrel = 1
 	url = https://github.com/mmalmi/nostr-vpn
 	arch = x86_64
@@ -10,18 +10,18 @@ pkgbase = nostr-vpn-cli-bin
 	optdepends = iproute2: route and tunnel device management for nvpn
 	optdepends = systemd: persistent service via `nvpn service install`
 	optdepends = nftables: firewall integration on hosts using nftables
-	provides = nvpn=4.1.14
-	provides = nostr-vpn-cli=4.1.14
+	provides = nvpn=4.1.15
+	provides = nostr-vpn-cli=4.1.15
 	conflicts = nvpn
 	conflicts = nostr-vpn-cli
 	conflicts = nostr-vpn-cli-git
 	source = LICENSE
 	sha256sums = 0db560024163fbcc5ee5cff1971684ca448da90088f341db083a38548846c3d5
-	source_x86_64 = https://github.com/mmalmi/nostr-vpn/releases/download/v4.1.14/nvpn-v4.1.14-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 251538e82731672a0aff36577edfa4c5145feec14aa56e6509f2abf7399f49fc
-	source_aarch64 = https://github.com/mmalmi/nostr-vpn/releases/download/v4.1.14/nvpn-v4.1.14-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = d444a8c7194ed3d8f2329e171d2af18095f0e79454aa535cac046ad426df4735
-	source_armv7h = https://github.com/mmalmi/nostr-vpn/releases/download/v4.1.14/nvpn-v4.1.14-arm-unknown-linux-musleabihf.tar.gz
+	source_x86_64 = https://github.com/mmalmi/nostr-vpn/releases/download/v4.1.15/nvpn-v4.1.15-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = f30194b0fcb6dc73216248e14e2e597c097aed76f441c4020dff801605410da9
+	source_aarch64 = https://github.com/mmalmi/nostr-vpn/releases/download/v4.1.15/nvpn-v4.1.15-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 359dbc3d07dbd4c5ab71d79176081597ec7c9f2309fd3f826606a6c7b7b6778a
+	source_armv7h = https://github.com/mmalmi/nostr-vpn/releases/download/v4.1.15/nvpn-v4.1.15-arm-unknown-linux-musleabihf.tar.gz
 	sha256sums_armv7h = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = nostr-vpn-cli-bin
