@@ -1,22 +1,25 @@
 pkgbase = confclerk-git
 	pkgdesc = Qt5 application to make conference schedules offline. Able to import schedules in XML format created by the ​PentaBarf (or ​frab) used by ​FOSDEM, ​DebConf, ​Grazer Linuxtage, ​CCC congresses, ​FrOSCon, and ​many others.
 	pkgver = 0.7.2+r651.20240424.0.7.2
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://www.toastfreeware.priv.at/confclerk
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = coreutils
 	makedepends = git
-	depends = gcc-libs
+	makedepends = libgcc
+	makedepends = libstdc++
 	depends = glibc
 	depends = qt5-base
+	depends = libgcc_s.so
+	depends = libstdc++.so
 	provides = confclerk=0.7.2+r651.20240424.0.7.2
 	conflicts = confclerk
 	source = confclerk::git+https://git.toastfreeware.priv.at/toast/confclerk.git
-	source = confclerk-debian::git+https://git.toastfreeware.priv.at/debian/confclerk.git
+	source = confclerk.1::https://manpages.debian.org/confclerk/confclerk.1.gz
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = dd298f7179b6e4a01b99c6ed950cd91c37830421099fa8ef77d173e567132d33
 
 pkgname = confclerk-git
