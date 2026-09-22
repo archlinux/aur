@@ -1,13 +1,13 @@
 pkgbase = neossh
 	pkgdesc = An actively maintained fork and continuation of lazyssh
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/WhiteRoseLK/neossh
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = neossh-1.0.0.tar.gz::https://github.com/WhiteRoseLK/neossh/archive/v1.0.0.tar.gz
-	sha256sums = 6d96bef14e3269c33c59cc28b942a94bb0471e45a8752d5c853dae734f3a969d
+	source = neossh-2.0.0.tar.gz::https://github.com/WhiteRoseLK/neossh/archive/v2.0.0.tar.gz
+	sha256sums = 4a0ca7e430cff9c9ab1f82c5b21370472b98b06b41c9ec88778c6ea798b270ff
 
 pkgname = neossh

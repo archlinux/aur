@@ -2,7 +2,7 @@
 # Maintainer: Leonardo Amaral <archlinux@leonardoamaral.com.br>
 
 pkgname=neossh
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='An actively maintained fork and continuation of lazyssh'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url='https://github.com/WhiteRoseLK/neossh'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6d96bef14e3269c33c59cc28b942a94bb0471e45a8752d5c853dae734f3a969d')
+sha256sums=('4a0ca7e430cff9c9ab1f82c5b21370472b98b06b41c9ec88778c6ea798b270ff')
 
 prepare() {
     cd "$pkgname-$pkgver"
