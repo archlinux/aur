@@ -1,8 +1,8 @@
 # Maintainer: Vee Satayamas <veerpub@pm.me>
 
 pkgname=nevi
-pkgver=0.2.0
-pkgrel=4
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Fast terminal editor inspired by Neovim and Zed, written in Rust'
 arch=(x86_64)
 url=https://github.com/anthonyamaro15/nevi
@@ -23,7 +23,7 @@ makedepends=(
   rust
 )
 source=(${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz)
-sha256sums=(9c51c1ce666f7bad7e522894d5f485faadf9f91087fe5179fcb8dd14272805b8)
+sha256sums=(ce57794e1ccf7e24757186d92c1e0a60cc9acde6c415b32744dd6589f830f4fc)
 options=('!lto')
 
 prepare() {

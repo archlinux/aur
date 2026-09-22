@@ -1,7 +1,7 @@
 pkgbase = nevi
 	pkgdesc = Fast terminal editor inspired by Neovim and Zed, written in Rust
-	pkgver = 0.2.0
-	pkgrel = 4
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/anthonyamaro15/nevi
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = nevi
 	depends = libx11
 	depends = libxcb
 	options = !lto
-	source = nevi-0.2.0.tar.gz::https://github.com/anthonyamaro15/nevi/archive/v0.2.0.tar.gz
-	sha256sums = 9c51c1ce666f7bad7e522894d5f485faadf9f91087fe5179fcb8dd14272805b8
+	source = nevi-0.3.0.tar.gz::https://github.com/anthonyamaro15/nevi/archive/v0.3.0.tar.gz
+	sha256sums = ce57794e1ccf7e24757186d92c1e0a60cc9acde6c415b32744dd6589f830f4fc
 
 pkgname = nevi
