@@ -1,0 +1,23 @@
+pkgbase = python-laya
+	pkgdesc = Fast, non-autoregressive System 1 decision engine with calibrated probabilities
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/NandhaKishorM/laya
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-tokenizers
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-huggingface-hub
+	depends = python-numpy
+	depends = python-pytorch
+	depends = python-safetensors
+	depends = python-transformers
+	source = laya-0.3.5.tar.gz::https://github.com/NandhaKishorM/laya/archive/refs/tags/v0.3.5.tar.gz
+	sha256sums = b877bb93a5fc950a09f3b6e15360e83aead7c8d08c0b50c3a2fbf67d4c1bacad
+	b2sums = e58b19be74d5a9cb50dde1c537f55231a11999a4ecf3f658ab2b7c933e2293694ca40599937d852aa2e66db5ca5b06de3b806b9dce771b4822f8fd7a3d31bfe6
+
+pkgname = python-laya
