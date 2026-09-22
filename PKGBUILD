@@ -1,6 +1,6 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 pkgname=dbx
-pkgver=0.6.14
+pkgver=0.6.19
 pkgrel=1
 pkgdesc="Open-source database management tool (Tauri-based)"
 arch=('x86_64')
@@ -32,7 +32,7 @@ conflicts=("$pkgname-bin")
 # empty and gdb-add-index errors out. Skip the debug subpackage entirely.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d91bfdcc5c847945bd5d47ad16d0d54434f60590200d2a449a6286870a499a6d')
+sha256sums=('06db1e68d7fe9ff783f636da767a3c2889fe6e1aad11121eada542463d0c4422')
 
 # rustup provides an unversioned "rust" package, so check the actual toolchain.
 _check_rust_version() {
@@ -63,11 +63,11 @@ prepare() {
     # dependency instead: vendoring embeds its temporary $srcdir install path
     # in the final binary.
     sed -i 's/openssl = { version = "0.10", features = \["vendored"\] }/openssl = "0.10"/' \
-        crates/dbx-core/Cargo.toml
+        crates/dbx-drivers/Cargo.toml
     # The release binary must not retain a build-workspace fallback path.
     # It is only useful to upstream developers and contains $srcdir via
     # env!("CARGO_MANIFEST_DIR").
-    sed -i '/CARGO_MANIFEST_DIR/,+2d' crates/dbx-core/src/agent_service.rs
+    sed -i '/CARGO_MANIFEST_DIR/,+2d' crates/dbx-drivers/src/agent_service.rs
     # Pre-fetch JS and Rust deps so build() can run without network.
     pnpm install --frozen-lockfile
     (
