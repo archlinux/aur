@@ -6,7 +6,7 @@ _appname='oflh'
 pkgname=${_gitname}-bin
 pkgdesc="A cross-platform terminal UI to find processes using files, directories, and open handles"
 
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('1b7c795cff5421573cce9a9e7038c7fec5193a2867c5092e94b6c32b176c91e7'
+sha256sums=('303b167ff24ad3a811487e589274c8e9985a812cc35ebe1a4cb37143e2d594bc'
             '79d2fcdb0c79c0bf33e1afd2151b0187115b190c78c806a6aaf99b507a73ab31')
-sha256sums_x86_64=('b2f1eae2956df4bd9b4de2af7bcbf95dd556b68ac7b3691a627ff88ea13f2402')
-sha256sums_aarch64=('e89063d4f927e41cdcb7943e11b09d7edf85735fb824a1e89970f4afccc9dd31')
+sha256sums_x86_64=('4b3b7faee00a292b5099efa0a232beb3515c65544ca7c569fe5d053adc40df67')
+sha256sums_aarch64=('dba6b7077c6e33afd3d2d4266c11fd2faaeacd6263ff86d6ee8d898912c662b1')
 
 
 package() {
