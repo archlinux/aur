@@ -45,7 +45,7 @@ sha256sums=(
     'f393a98c5c35e229a744c102b0cb53270b1b4f1b3ebd40d604f98323444a4b1f'
     'b8865f06dda550effba982517de304a448209fcf4a5e2180929fcf21ccc28508'
     '7a3e4da22a962bb436ef3f2535a7d9ce5e51af4f2c7e7973044c9b26dc373a6d'
-    'dea20d1a1ac8765adf6f81e8c1110dfe164770a38cd84b500c6dff258f690446')
+    'e911f5d2d15f8fb685e17c289b19e658b6f093e5bfe8735cdaeecf3ee346264d')
 
 prepare() {
  	patch -p1 -i setup-desktop-entry.patch -d "${srcdir}"
