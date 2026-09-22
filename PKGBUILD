@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-nettle
-pkgver=3.10.2
+pkgver=4.0
 pkgrel=1
 pkgdesc="A low-level cryptographic library (Android ${_android_arch})"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.gnu.org/gnu/nettle/nettle-${pkgver}.tar.gz"
         '0001-Unversioned-libs.patch')
-md5sums=('b28bcbf6f045ff007940a9401673600d'
+md5sums=('144401453f9f35e53938bcacfc59800e'
          '604ae2c58164024fbe4debc2aa6eb6cc')
 
 prepare() {
@@ -44,4 +44,6 @@ package() {
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 COPYING* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
