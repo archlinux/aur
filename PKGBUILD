@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rayburst-git
 _pkgname=Rayburst
-pkgver=4.0.0.beta.2.r0.ga6ae651
+pkgver=4.0.0.beta.4.r0.g5e46a5b
 _nodeversion=24
 pkgrel=1
 pkgdesc="Redefining the open-source download manager."
@@ -40,59 +40,29 @@ _ensure_local_nvm() {
 }
 _set_build_env() {
 	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export XDG_STATE_HOME="${HOME}/.local/state"
+	export PNPM_HOME="${HOME}/.pnpm/bin"
+	export pnpm_config_cache_dir="${HOME}/.pnpm_cache"
+	export pnpm_config_store_dir="${HOME}/.pnpm_store"
+	export pnpm_config_global_dir="${HOME}/.pnpm/global"
+	export pnpm_config_state_dir="${HOME}/.pnpm/state"
+	export pnpm_config_node_linker=hoisted
+	export pnpm_config_minimum_release_age=0
+	export pnpm_config_update_notifier=false
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
+	export PATH="${PNPM_HOME}:${PATH}"
 	export CARGO_HOME="${srcdir}/.cargo"
-	export CARGO_NET_OFFLINE=false
 	export CARGO_NET_GIT_FETCH_WITH_CLI=true
 	export CARGO_NET_RETRY=5
 	export CARGO_HTTP_MULTIPLEXING=false
-	export CARGO_BUILD_JOBS="$(nproc)"
 	export CARGO_INCREMENTAL=0
 	export CARGO_TERM_COLOR=never
 	export CARGO_PROFILE_RELEASE_STRIP=symbols
-	export CARGO_PROFILE_RELEASE_DEBUG=0
-	mkdir -p "${HOME}" "${CARGO_HOME}"
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
-	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	_ev="$(electron${_electronversion} -v)"
-	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
-	export HOME="${srcdir}/.electron-gyp"
-	mkdir -p "${HOME}"
-	export XDG_CACHE_HOME="${srcdir}/.cache"
-	export XDG_CONFIG_HOME="${srcdir}/.config"
-	export XDG_DATA_HOME="${srcdir}/.local/share"
-	export XDG_STATE_HOME="${srcdir}/.local/state"
-	export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-	export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-	export PNPM_GLOBAL_DIR="${srcdir}/.pnpm/global"
-	export PNPM_GLOBAL_BIN_DIR="${srcdir}/.pnpm/bin"
-	export PNPM_STATE_DIR="${srcdir}/.pnpm/state"
-	export PNPM_MINIMUM_RELEASE_AGE=0
-	export PNPM_NODE_LINKER=hoisted
-	export PNPM_FETCH_RETRIES=3
-	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-	export PNPM_UPDATE_NOTIFIER=false
-	export PNPM_NO_COLOR=true
-	export PNPM_NO_PROGRESS=true
-	export pnpm_config_platform=linux
-	export pnpm_config_arch="${CARCH}"
-	export COREPACK_HOME="${srcdir}/.corepack"
-	export NODE_OPTIONS="--max-old-space-size=4096"
-	export npm_config_node_options="--max-old-space-size=4096"
-	mkdir -p "${PNPM_CACHE_DIR}" "${PNPM_STORE_DIR}" "${PNPM_GLOBAL_DIR}" "${PNPM_GLOBAL_BIN_DIR}" "${PNPM_STATE_DIR}"
-	local _pnpmver="${_pnpmversion}"
-	if [[ -z "${_pnpmver}" ]]; then
-		local _pm
-		_pm="$(node -p "require('./package.json').packageManager || ''" 2>/dev/null)"
-		[[ "${_pm}" == pnpm@* ]] && _pnpmver="${_pm#pnpm@}"
-	fi
-	if [[ -n "${_pnpmver}" ]]; then
-		export COREPACK_HOME="${srcdir}/.corepack"
-		install -dm755 "${srcdir}/.bin"
-		corepack enable --install-directory "${srcdir}/.bin"
-		export PATH="${srcdir}/.bin:${PATH}"
-		corepack prepare "pnpm@${_pnpmver}" --activate
-	fi
+	mkdir -p "${HOME}" "${CARGO_HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
