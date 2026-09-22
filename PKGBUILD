@@ -3,7 +3,7 @@
 # `markview` builds the same program from source. Both install the same files,
 # so they conflict with each other.
 pkgname=markview-bin
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='A fast, native Markdown reader with publication-quality typography.'
 arch=('x86_64')
@@ -40,8 +40,8 @@ source=(
 	'markview.mime.xml'
 )
 sha256sums=(
-	'517f5d19ef6744d35eca4045926a200b3b69464f54195c127d3b003f4b90e332'
-	'a5cce31d36515dbf13a84da0c627b5bad18446749a4596988aaf9b1cb1a88b34'
+	'7c31f546b3c67ae74d598212d4211e388c7a1789dc639687068b8cce4da71d35'
+	'8292040c7292d188181701c5b71e619a17038ad3677b9e4e0693c1dfcf80d6ee'
 	'c2b54efc155e407495127927cabafb92b369a4ead7e1a04d8246f9939bf280b0'
 )
 
@@ -86,5 +86,7 @@ package() {
 		"$pkgdir/usr/share/doc/$pkgname/KaTeX-OFL.txt"
 	install -Dm644 "$doc/licenses/Noto-OFL.txt" \
 		"$pkgdir/usr/share/doc/$pkgname/Noto-OFL.txt"
+	install -Dm644 "$doc/licenses/Lucide-ISC.txt" \
+		"$pkgdir/usr/share/doc/$pkgname/Lucide-ISC.txt"
 	install -Dm644 "$doc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
