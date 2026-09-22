@@ -3,7 +3,7 @@
 
 pkgname='libstoragemgmt'
 pkgver='1.11.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A library for storage management'
 arch=('x86_64' 'aarch64')
 _uri="github.com/libstorage/${pkgname}"
@@ -22,7 +22,7 @@ build() {
   autoreconf -fvi
   ./configure CFLAGS="${CFLAGS} ${DEBUG_CFLAGS}" \
     CXXLAGS="${CXXFLAGS} ${DEBUG_CXXFLAGS}" \
-    LDLAGS="${LDFLAGS}" \
+    LDFLAGS="${LDFLAGS}" \
     --prefix="/usr" \
     --bindir="/usr/bin" \
     --sbindir="/usr/bin" \

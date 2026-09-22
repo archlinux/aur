@@ -1,7 +1,7 @@
 pkgbase = libstoragemgmt
 	pkgdesc = A library for storage management
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libstorage/libstoragemgmt
 	arch = x86_64
 	arch = aarch64
