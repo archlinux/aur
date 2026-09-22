@@ -1,10 +1,12 @@
 pkgbase = python-tianshou
 	pkgdesc = An elegant PyTorch deep reinforcement learning library.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thu-ml/tianshou
 	arch = any
 	license = MIT
+	checkdepends = python-networkx
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
@@ -37,7 +39,7 @@ pkgbase = python-tianshou
 	optdepends = python-mujoco: MuJoCo environments
 	optdepends = python-pybullet: PyBullet environments
 	optdepends = python-pygame: Box2D and classic-control environments
-	source = tianshou-2.0.1.tar.gz::https://files.pythonhosted.org/packages/source/t/tianshou/tianshou-2.0.1.tar.gz
-	sha256sums = ec81006848489c23a4952825abb034a525a625dea214a257b1854d03068d11b8
+	source = python-tianshou-2.0.1.tar.gz::https://github.com/thu-ml/tianshou/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 1c4e26d5d7a388f94bb27fcb4f6e416f64c71375f18d1da7dda73e8ae202b14b
 
 pkgname = python-tianshou
