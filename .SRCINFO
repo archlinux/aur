@@ -1,6 +1,6 @@
 pkgbase = pcl-git
 	pkgdesc = a standalone, large scale, open project for 2D/3D image and point cloud processing
-	pkgver = r14685.a35cfbc53
+	pkgver = r14720.c43359814
 	pkgrel = 1
 	url = http://pointclouds.org/
 	arch = i686
@@ -45,6 +45,6 @@ pkgbase = pcl-git
 	source = git+https://github.com/PointCloudLibrary/pcl
 	source = cuda13-gcc15-compat.patch
 	sha256sums = SKIP
-	sha256sums = 0ec7e9ebaf6c6abf5a7e7ec9fb4203d85a69d6a76ff65a179956c17c55e8d374
+	sha256sums = 893f5971b301c5b88d61207765d98358f1069ea9e28ab0a8bea5c9526a75d396
 
 pkgname = pcl-git

@@ -4,9 +4,10 @@
 # Contributor: hauptmech
 # Contributor: figo.zhang
 # Contributor: lubosz
+# Contributor: Zhirui Dai
 
 pkgname=pcl-git
-pkgver=r14685.a35cfbc53
+pkgver=r14720.c43359814
 pkgrel=1
 pkgdesc="a standalone, large scale, open project for 2D/3D image and point cloud processing"
 arch=(i686 x86_64)
@@ -53,7 +54,7 @@ source=(
 )
 sha256sums=(
     SKIP
-    '0ec7e9ebaf6c6abf5a7e7ec9fb4203d85a69d6a76ff65a179956c17c55e8d374'
+    '893f5971b301c5b88d61207765d98358f1069ea9e28ab0a8bea5c9526a75d396'
 )
 conflicts=(pcl)
 provides=(pcl)
@@ -65,8 +66,8 @@ pkgver() {
 }
 
 prepare() {
-	# CUDA 13 / gcc 15 compatibility: thrust::distance removal + missing <iostream>
-	# includes that newer toolchains no longer pull in transitively.
+	# CUDA 13 / gcc 15 compatibility: add the <iostream> includes that newer
+	# toolchains no longer pull in transitively.
 	cd "$srcdir/pcl"
 	patch -Np1 -i "$srcdir/cuda13-gcc15-compat.patch"
 
