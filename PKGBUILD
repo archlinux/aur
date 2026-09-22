@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=deepcode-cli
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Terminal AI coding assistant optimized for the deepseek-v4 model (deep thinking, agent skills, MCP)"
 # 0.4.0 keeps sharp external to the JS bundle; its native addon is platform-specific.
@@ -15,7 +15,7 @@ conflicts=('deepcode-cli-bin')
 # sharp ships prebuilt native dependencies, not useful split debug sources.
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f942df328dc49971bdfb54f77fdfea9f1d5bbc7fc0ae86012282222cabe30af6')
+sha256sums=('dd0c0c323c0db4785f76c20af37186545146d2a1aa99406593b0b923af7446fe')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
