@@ -10,7 +10,7 @@ conflicts=('lilbee')
 provides=('lilbee')
 options=('!strip' '!debug')
 source_x86_64=("lilbee-${pkgver}-rocm::${url}/releases/download/v${pkgver}/lilbee-linux-${CARCH}-rocm")
-sha256sums_x86_64=('7e444e3cb47d3611c6207e2aa9c746d42df9c73f88de9de83070046f33762b62')
+sha256sums_x86_64=('cf5aea120959b9533258a5dacf21bc5a4668b8ccd5c036412a7d0af29d659748')
 source=("lilbee.service::${url}/raw/v${pkgver}/packaging/systemd/lilbee.service")
 sha256sums=('8987137080f5b5353ca4a5bc82aa56c92c450c158e8558fa48fa8bff2cb1c69d')
 

@@ -12,6 +12,6 @@ pkgbase = lilbee-rocm
 	source = lilbee.service::https://github.com/tobocop2/lilbee/raw/v0.6.90b443/packaging/systemd/lilbee.service
 	sha256sums = 8987137080f5b5353ca4a5bc82aa56c92c450c158e8558fa48fa8bff2cb1c69d
 	source_x86_64 = lilbee-0.6.90b443-rocm::https://github.com/tobocop2/lilbee/releases/download/v0.6.90b443/lilbee-linux-x86_64-rocm
-	sha256sums_x86_64 = 7e444e3cb47d3611c6207e2aa9c746d42df9c73f88de9de83070046f33762b62
+	sha256sums_x86_64 = cf5aea120959b9533258a5dacf21bc5a4668b8ccd5c036412a7d0af29d659748
 
 pkgname = lilbee-rocm
