@@ -10,6 +10,9 @@ Group=gaia
 Environment=HOME=/var/lib/gaia
 Environment=PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 Environment=GAIA_SKIP_DEVICE_CHECK=1
+Environment=MPLCONFIGDIR=/var/lib/gaia/.config/matplotlib
+StateDirectory=gaia gaia/.gaia gaia/.config gaia/.config/matplotlib gaia/.cache
+StateDirectoryMode=0750
 ExecStart=/usr/bin/gaia --ui
 Restart=on-failure
 RestartSec=5s
