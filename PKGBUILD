@@ -6,33 +6,62 @@ export GIT_LFS_SKIP_SMUDGE=1
 export GIT_CLONE_PROTECTION_ACTIVE=false
 
 pkgname=tahoma2d
-pkgver=1.6.1
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Software for producing a 2D animation"
 arch=(x86_64)
-url="https://tahoma2d.org/"
+url="https://github.com/tahoma2d/tahoma2d"
 license=(BSD-3-Clause)
-depends=(cblas cblas ffmpeg freeglut glew hicolor-icon-theme libmypaint qt5-multimedia qt5-script qt5-svg qt5-serialport superlu opencv)
-makedepends=(git git-lfs boost cmake qt5-tools)
-source=("git+https://github.com/tahoma2d/tahoma2d.git#tag=v${pkgver}"
-         0001-cmake-fix.patch)
-sha256sums=('94df494c17111f70bba79ac8b3e0077395931f85d6226f6ac6adac89d176df99'
-            '238d8e73554cc6751bbcb50ba054f3a335b767277cfbf36adae4c8bb73c6a10b')
+depends=(
+    cblas
+    ffmpeg
+    freeglut
+    glew
+    glibc
+    glu
+    hicolor-icon-theme
+    libdeflate
+    libgcc
+    libglvnd
+    libjpeg-turbo
+    libmypaint
+    libpng
+    libstdc++
+    lz4
+    lzo
+    opencv
+    qt5-base
+    qt5-multimedia
+    qt5-script
+    qt5-serialport
+    qt5-svg
+    sh
+    superlu
+    xz
+    zlib
+    )
+makedepends=(
+    boost
+    cmake
+    git
+    git-lfs
+    qt5-tools
+    )
+source=("git+https://github.com/tahoma2d/tahoma2d.git#commit=dce140a86050e6d7795eb97cdc38385c8ded19c4")
+sha256sums=('b7ed81a5833d00cfb2a0a300fb6cf58a4b4daca491f00ca53230a55928fd615d')
 
 prepare() {
-  [[ -d build ]] || mkdir build
-
   cd tahoma2d
   # Specify path for ffmpeg
   #sed -i 's|"ffmpegPath", QMetaType::QString, ""|"ffmpegPath", QMetaType::QString, "/usr/bin"|' toonz/sources/toonzlib/preferences.cpp
+}
 
-  # https://github.com/tahoma2d/tahoma2d/issues/1600#issuecomment-2408657568
-  #patch -Np1 -i ../0001-cmake-fix.patch
+pkgver() {
+  cd tahoma2d
+  git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 build() {
-  export CFLAGS+=" -Wno-incompatible-pointer-types"
-
   # This disable showing all warning which are quite a lot for this project
   export CFLAGS+=" -w"
   export CXXFLAGS+=" -w"
@@ -55,18 +84,22 @@ build() {
 
   sed -i 's/TARGET_FILE:tcleanup/TARGET_FILE:tdcleanup/g; s/TARGET_FILE:tcomposer/TARGET_FILE:tdcomposer/g; s/TARGET_FILE:tconverter/TARGET_FILE:tdconverter/g; s/TARGET_FILE:tfarmcontroller/TARGET_FILE:tdfarmcontroller/g; s/TARGET_FILE:tfarmserver/TARGET_FILE:tdfarmserver/g; s/TARGET_FILE:lzocompress/TARGET_FILE:tdlzocompress/g; s/TARGET_FILE:lzodecompress/TARGET_FILE:tdlzodecompress/g' tahoma2d/toonz/sources/toonz/CMakeLists.txt
 
-  cd build
-  cmake -G "Unix Makefiles" ../tahoma2d/toonz/sources -Wno-dev \
-	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_SKIP_RPATH=YES \
+  local _flags=(
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_SKIP_RPATH=YES
     -DWITH_TRANSLATION=OFF
+    -G "Unix Makefiles"
+  )
 
-  make
+  cmake -B build -S "tahoma2d/toonz/sources" -Wno-author \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 ../tahoma2d/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 tahoma2d/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
