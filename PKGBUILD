@@ -7,7 +7,7 @@ pkgbase=${_appname}-bin
 pkgname=(${_appname}-bin ${_appname}-gui-bin)
 pkgdesc="Fast file copier with SSH streaming, deduplication & block-order I/O"
 
-pkgver=4.2.10
+pkgver=4.2.13
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("ICON-${pkgver}.png::${_ghurlraw}/assets/${_appname}-logo.png"
 source_x86_64=("${_appname}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-linux"
 			   "${_appname}-gui-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}_gui-linux")
 sha256sums=('a24c52f69fb0055d6c9c07ee4dac6221b9627e1a0283bb7d7b2c60043a945a1d'
-            '11948a5211600e1fe3b3f4895cd8978e5b453fec44e4857bc8b0d5edbe010130'
+            '224761b5e71660db8362c291b19a7b7b42880e4d148680e07298069121483e70'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('5819a047b99932604be2924f9858ad11f9809c577a11e9ecb9e6fa442784ea04'
-                   '76122c9fef7e1c743987553fb5a85b10935206c10c3faa5a956dfda71ca826ee')
+sha256sums_x86_64=('2148e651f77a0d9a1c35b98bb7769fe7615747fff6022bed55776562392e0f20'
+                   '17668f0518cbdd6f860ab4cfc6000d24f8751966a2d1072974601f9f41b8935c')
 
 
 package_blitcp-bin() {
