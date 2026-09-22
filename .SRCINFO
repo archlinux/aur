@@ -1,6 +1,6 @@
 pkgbase = wirelog
 	pkgdesc = Embedded-to-Enterprise Datalog Engine
-	pkgver = 0.62.0
+	pkgver = 0.70.0
 	pkgrel = 1
 	url = https://github.com/semantic-reasoning/wirelog
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = wirelog
 	depends = xxhash
 	depends = mbedtls
 	conflicts = wirelog-git
-	source = wirelog-0.62.0.tar.gz::https://github.com/semantic-reasoning/wirelog/archive/refs/tags/v0.62.0.tar.gz
-	source = arrow-nanoarrow-3f824063f59848e05692ab520de8ab4d9ebb1880.tar.gz::https://github.com/apache/arrow-nanoarrow/archive/3f824063f59848e05692ab520de8ab4d9ebb1880.tar.gz
-	sha256sums = 5198abc52814e7ea1b0e2edadc257ce99c4cf95a7221911cd0720bf5c7e25a43
-	sha256sums = ec0354e1bf231269b7ce58f958a7869088f4d502985042c1fa4dc4401b5f6c45
+	source = wirelog-0.70.0.tar.gz::https://github.com/semantic-reasoning/wirelog/archive/refs/tags/v0.70.0.tar.gz
+	source = arrow-nanoarrow-ec8a58cae18beaa241c7fea7cb26816ac27c280f.tar.gz::https://github.com/apache/arrow-nanoarrow/archive/ec8a58cae18beaa241c7fea7cb26816ac27c280f.tar.gz
+	sha256sums = 0ec8f31e020a442317d769ec9aecedd91d5fee5ef1c3e3e158120a11051c311d
+	sha256sums = 5401734d8476140defdf3e0946e802cc9038af060067afe665806b3f7c555fc5
 
 pkgname = wirelog
