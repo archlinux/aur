@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=2.1.0
+pkgver=2.1.2
 _electronversion=44
 pkgrel=1
 pkgdesc="AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs."
@@ -78,7 +78,7 @@ prepare() {
     local _arch_rem
     case "${CARCH}" in
         aarch64)
-            _arch_rem="x64-*"
+            _arch_rem="x64"
             ln -sf "/usr/bin/bun" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/bun"
             ln -sf "/usr/bin/rg" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/rg"
             ln -sf "/usr/bin/uv" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/uv"
@@ -89,7 +89,7 @@ prepare() {
                 "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-x64"
             ;;
         x86_64)
-            _arch_rem="arm64-*"
+            _arch_rem="arm64"
             ln -sf "/usr/bin/bun" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/bun"
             ln -sf "/usr/bin/rg" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/rg"
             ln -sf "/usr/bin/uv" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/uv"
@@ -111,7 +111,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
