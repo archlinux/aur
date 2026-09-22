@@ -3,9 +3,20 @@
 # Contributor: Rene Hickersberger <r@renehsz.com>
 # Contributor: Robert Hamblin <hamblingreen@hotmail.com>
 
+_zigrel=0.14
+_zigpkg=zig$_zigrel-bin
+_zigbin=zig$_zigrel
+
+# _zigrel=0.15
+# _zigpkg=zig$_zigrel-bin
+# _zigbin=zig-$_zigrel
+
+# _zigpkg=zig
+# _zigbin=zig
+
 pkgname=mepo-git
-pkgver=1.3.1.r2.ga1f5337
-pkgrel=2
+pkgver=1.3.4.r0.ga8cb228
+pkgrel=1
 pkgdesc='Fast, simple, hackable OSM (OpenStreetMap) map viewer'
 #arch=(x86_64)
 arch=(i686 x86_64 arm aarch64)
@@ -14,8 +25,8 @@ license=(GPL-3.0-or-later)
 depends=(
   curl jq xorg-xwininfo ncurses zenity
   findutils geoclue sdl2_gfx sdl2_image sdl2_ttf)
-makedepends=(git sdl2 zig)
-checkdepends=(zig)
+makedepends=(git sdl2 $_zigpkg)
+checkdepends=($_zigpkg)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+https://git.sr.ht/~mil/mepo")
@@ -31,12 +42,12 @@ prepare() {
 
 build() {
   cd $pkgname
-  zig build -Doptimize=ReleaseSafe
+  $_zigbin build -Doptimize=ReleaseSafe
 }
 
 check() {
   cd $pkgname
-  zig test src/test.zig
+  $_zigbin test src/test.zig
 }
 
 package() {
