@@ -4,7 +4,7 @@ _pkgver=2.3.1
 pkgver=${_pkgver//-/.}
 pkgrel=1
 
-pkgdesc="Tool for inspecting RP2040 binaries and interacting with RP2040 devices."
+pkgdesc="Tool for working with RP2040/RP2350 binaries, and interacting with RP2040/RP2350 devices."
 arch=('any')
 url="https://github.com/raspberrypi/picotool"
 license=('BSD-3-Clause')
