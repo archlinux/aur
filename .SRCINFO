@@ -1,0 +1,21 @@
+pkgbase = seekerix
+	pkgdesc = Unofficial chat client for DeepSeek API, written in Python using GTK4 and Libadwaita
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/itsegork/seekerix
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = python-openai
+	depends = python-markdown
+	depends = gtk4
+	depends = libadwaita
+	source = seekerix-0.1.0.tar.gz::https://github.com/itsegork/seekerix/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = d589aa9520220d947d6bc8da1f588622204ac4b493f2142bcc2488fc03b3d59b
+
+pkgname = seekerix
