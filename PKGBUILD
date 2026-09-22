@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'npm'
+    'bun'
     'nvm'
     'git'
     'curl'
@@ -48,7 +48,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -60,22 +60,20 @@ _set_build_env() {
 	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	_ev="$(electron${_electronversion} -v)"
-	export SYSTEM_ELECTRON_VERSION="${_ev#v}"
-	export HOME="${srcdir}/.electron-gyp"
-	export XDG_CACHE_HOME="${srcdir}/.cache"
-	export XDG_CONFIG_HOME="${srcdir}/.config"
-	export XDG_DATA_HOME="${srcdir}/.local/share"
-	export npm_config_cache="${srcdir}/.npm_cache"
-	export npm_config_devdir="${srcdir}/.node-gyp"
-	export npm_config_maxsockets=32
-	export npm_config_platform=linux
-	export npm_config_arch="${CARCH}"
-	export npm_config_audit=false
-	export npm_config_fund=false
-	export npm_config_progress=false
-	export NODE_OPTIONS="--max-old-space-size=4096"
-	export npm_config_node_options="--max-old-space-size=4096"
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export BUN_INSTALL_CACHE_DIR="${HOME}/.bun/cache"
+	export BUN_INSTALL_GLOBAL_DIR="${HOME}/.bun/global"
+	export BUN_INSTALL_BIN="${HOME}/.bun/bin"
+	export BUN_CONFIG_SKIP_SAVE_LOCKFILE=1
+	export BUN_DISABLE_DOTENV=1
+	export DO_NOT_TRACK=1
+	export BUN_JOBS="$(nproc)"
+	mkdir -p "${HOME}" "${BUN_INSTALL_CACHE_DIR}" "${BUN_INSTALL_GLOBAL_DIR}" "${BUN_INSTALL_BIN}"
 }
 _use_local_electron_for_forge() {
 	local _v="${SYSTEM_ELECTRON_VERSION}"
@@ -87,7 +85,9 @@ _use_local_electron_for_forge() {
 	local _zf="${_zd}/electron-v${_v}-linux-${_arch}.zip"
 	install -Dm755 -d "${_zd}"
 	( cd "${ELECTRON_DIST}" && zip -r -q -0 "${_zf}" . )
-	sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," forge.config.*
+	find . -name "forge.config.*" ! -path "*/node_modules/*" -print0 | while IFS= read -r -d '' _cfg; do
+		sed -i "/packagerConfig:[[:space:]]*{/a\\    electronZipDir: '${_zd}'," "${_cfg}"
+	done
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
@@ -97,7 +97,6 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname%Desktop}/g
-        s/@options@//g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -f -q -n \
         --pkgname="${pkgname%-git}" \
@@ -105,34 +104,32 @@ prepare() {
         --categories="AudioVideo" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install --legacy-peer-deps
+    NODE_ENV=development    bun install
     _use_local_electron_for_forge
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    _set_build_env
     _ensure_local_nvm
-    NODE_ENV=production     npm run package
+    _set_build_env
+    NODE_ENV=production     bun run package
     local _app_dir=$(_get_app_dir)
-    find "${_app_dir}/resources/app/node_modules" -type d \( -name "darwin-*" -o -name "win32-*" \) -exec rm -rf {} +
     case "${CARCH}" in
-        aarch64)
-            find "${_app_dir}/resources/app/node_modules" -type d -name "linux-x64" -exec rm -rf {} +
-            ;;
-        x86_64)
-            find "${_app_dir}/resources/app/node_modules" -type d -name "linux-arm64" -exec rm -rf {} +
-            ;;
+        aarch64)    _archrem="x64"  ;;
+        x86_64)     _archrem="arm64" ;;
     esac
+    find "${_app_dir}/resources/app/node_modules" \
+        \( -name "*darwin*" -o -name "*win32*" -o -name "*${_archrem}*" \) -type d \
+        -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/res/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
