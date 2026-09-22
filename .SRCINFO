@@ -1,40 +1,73 @@
 pkgbase = python-lerobot
-	pkgdesc = State-of-the-art Machine Learning for Real-World Robotics
-	pkgver = 0.5.1
+	pkgdesc = State-of-the-art machine learning for real-world robotics
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/huggingface/lerobot
 	arch = any
 	license = Apache-2.0
+	checkdepends = python-pandas
+	checkdepends = python-pyarrow
+	checkdepends = python-pytest
+	checkdepends = python-pytest-timeout
+	makedepends = git
+	makedepends = git-lfs
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python
-	depends = python-datasets
-	depends = python-diffusers
-	depends = python-huggingface-hub
-	depends = python-accelerate
-	depends = python-numpy
-	depends = python-setuptools
-	depends = cmake
-	depends = python-einops
-	depends = python-opencv
-	depends = python-av
-	depends = python-jsonlines
-	depends = python-packaging
-	depends = python-pynput
-	depends = python-pyserial
-	depends = python-wandb
-	depends = python-pytorch
-	depends = python-torchcodec
-	depends = python-torchvision
-	depends = python-draccus
-	depends = python-gymnasium
-	depends = python-deepdiff
-	depends = python-imageio
-	depends = python-termcolor
-	optdepends = python-rerun-sdk: for real-time visualization during teleoperation and recording
-	optdepends = python-pynput: for gamepad support
-	source = python-lerobot-0.5.1.tar.gz::https://github.com/huggingface/lerobot/archive/refs/tags/v0.5.1.tar.gz
-	sha256sums = 45f8276b0990472f4a4f62428a74a0fb1040aefda2a8798ab5aa9e1ee3ddba96
+	depends = cmake>=3.29.0.1
+	depends = python>=3.12
+	depends = python-draccus>=0.11.6
+	depends = python-einops>=0.8.0
+	depends = python-gymnasium>=1.1.1
+	depends = python-huggingface-hub>=1:1.6.0
+	depends = python-numpy>=2.0.0
+	depends = python-opencv>=4.9.0
+	depends = python-packaging>=24.2
+	depends = python-pillow>=10.0.0
+	depends = python-pytorch>=2.7
+	depends = python-requests>=2.32.0
+	depends = python-safetensors>=0.4.3
+	depends = python-setuptools>=71.0.0
+	depends = python-termcolor>=2.4.0
+	depends = python-torchvision>=0.22.0
+	depends = python-tqdm>=4.66.0
+	depends = python-yaml
+	optdepends = ffmpeg: video encoding and dataset conversion
+	optdepends = python-accelerate: distributed policy training
+	optdepends = python-av: dataset video decoding
+	optdepends = python-can: Damiao and RobStride motor buses
+	optdepends = python-datasets: Hugging Face dataset integration
+	optdepends = python-deepdiff: dataset metadata comparisons
+	optdepends = python-diffusers: diffusion, Groot, and multi-task policies
+	optdepends = python-fsspec: dataset video filesystems
+	optdepends = python-grpcio: asynchronous inference
+	optdepends = python-hidapi: gamepad teleoperation
+	optdepends = python-httpx: remote Hugging Face training jobs
+	optdepends = python-imageio: simulation video output
+	optdepends = python-jsonlines: dataset JSON Lines support
+	optdepends = python-matplotlib: plots and asynchronous inference visualization
+	optdepends = python-num2words: SmolVLA policy
+	optdepends = python-onnx: Unitree G1 model interchange
+	optdepends = python-onnxruntime: Unitree G1 inference
+	optdepends = python-openai: annotation pipeline
+	optdepends = python-pandas: dataset and annotation processing
+	optdepends = python-peft: parameter-efficient policy fine-tuning
+	optdepends = python-protobuf: asynchronous inference protocol
+	optdepends = python-pyarrow: dataset storage
+	optdepends = python-pygame: gamepad and HopeJR teleoperation
+	optdepends = python-pynput: keyboard teleoperation
+	optdepends = python-pydantic: SARM reward model configuration
+	optdepends = python-pyserial: serial hardware controllers
+	optdepends = python-pyzmq: LeKiwi, Unitree, and asynchronous transport
+	optdepends = python-scipy: scientific policy and simulation routines
+	optdepends = python-timm: Groot vision models
+	optdepends = python-torchcodec: TorchCodec dataset video decoding
+	optdepends = python-torchdiffeq: WallX policy
+	optdepends = python-transformers: transformer-based policies and tokenizers
+	optdepends = python-wandb: experiment tracking during training
+	source = python-lerobot::git+https://github.com/huggingface/lerobot.git#tag=v0.6.1
+	source = arch-rolling-dependencies.patch
+	sha256sums = SKIP
+	sha256sums = 4141b0ffb9d597d931c41c226285c44e31eb6e5df8bf4253b33beb2a1f6e10ea
 
 pkgname = python-lerobot
