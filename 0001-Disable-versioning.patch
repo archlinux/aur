@@ -21,47 +21,47 @@
  echo >> configure.log
 
 
---- a/Makefile.in	2022-10-13 02:06:55.000000000 -0300
-+++ b/Makefile.in	2022-12-08 11:28:29.904045283 -0300
-@@ -30,7 +30,7 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -33,7 +33,7 @@
  SHAREDLIB=libz.so
- SHAREDLIBV=libz.so.1.2.13
+ SHAREDLIBV=libz.so.1.3.2
  SHAREDLIBM=libz.so.1
 -LIBS=$(STATICLIB) $(SHAREDLIBV)
 +LIBS=$(STATICLIB) $(SHAREDLIB)
-
+ 
  AR=ar
  ARFLAGS=rc
-@@ -274,11 +274,8 @@
+@@ -285,11 +285,8 @@
  	-@mv objs/gzwrite.o $@
-
-
--placebo $(SHAREDLIBV): $(PIC_OBJS) libz.a
-+placebo $(SHAREDLIB): $(PIC_OBJS) libz.a
+ 
+ 
+-placebo $(SHAREDLIBV): $(PIC_OBJS) libz.a $(SRCDIR)zlib.map
++placebo $(SHAREDLIB): $(PIC_OBJS) libz.a $(SRCDIR)zlib.map
  	$(LDSHARED) $(SFLAGS) -o $@ $(PIC_OBJS) $(LDSHAREDLIBC) $(LDFLAGS)
 -	rm -f $(SHAREDLIB) $(SHAREDLIBM)
 -	ln -s $@ $(SHAREDLIB)
 -	ln -s $@ $(SHAREDLIBM)
  	-@rmdir objs
-
+ 
  example$(EXE): example.o $(STATICLIB)
-@@ -287,11 +284,11 @@
+@@ -298,11 +295,11 @@
  minigzip$(EXE): minigzip.o $(STATICLIB)
- 	$(CC) $(CFLAGS) -o $@ minigzip.o $(TEST_LDFLAGS)
-
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ minigzip.o $(TEST_LIBS)
+ 
 -examplesh$(EXE): example.o $(SHAREDLIBV)
 -	$(CC) $(CFLAGS) -o $@ example.o $(LDFLAGS) -L. $(SHAREDLIBV)
 +examplesh$(EXE): example.o $(SHAREDLIB)
 +	$(CC) $(CFLAGS) -o $@ example.o $(LDFLAGS) -L. $(SHAREDLIB)
-
+ 
 -minigzipsh$(EXE): minigzip.o $(SHAREDLIBV)
 -	$(CC) $(CFLAGS) -o $@ minigzip.o $(LDFLAGS) -L. $(SHAREDLIBV)
 +minigzipsh$(EXE): minigzip.o $(SHAREDLIB)
 +	$(CC) $(CFLAGS) -o $@ minigzip.o $(LDFLAGS) -L. $(SHAREDLIB)
-
+ 
  example64$(EXE): example64.o $(STATICLIB)
- 	$(CC) $(CFLAGS) -o $@ example64.o $(TEST_LDFLAGS)
-@@ -309,15 +306,12 @@
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ example64.o $(TEST_LIBS)
+@@ -320,15 +317,12 @@
  	cp $(STATICLIB) $(DESTDIR)$(libdir)
  	chmod 644 $(DESTDIR)$(libdir)/$(STATICLIB)
  	-@($(RANLIB) $(DESTDIR)$(libdir)/libz.a || true) >/dev/null 2>&1
