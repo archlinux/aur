@@ -1,3 +1,9 @@
+pre_upgrade() {
+    printf "%s\n" \
+        "==> Tip: stop the gateway before updating (avoids mid-swap file reads):" \
+        "    openclaw gateway stop"
+}
+
 post_install() {
     printf "%s\n" \
         "==> Install gateway service: openclaw gateway install --force" \
@@ -5,12 +11,6 @@ post_install() {
 }
 
 post_upgrade() {
-    if systemctl is-active --quiet openclaw.service
-    then
-        printf "%s\n" "==> Restarting the gateway service..."
-        systemctl restart openclaw.service
-    fi
-
     printf "%s\n" \
         "==> Run doctor to migrate configs, check gateway health, etc.:" \
         "    openclaw doctor" \
