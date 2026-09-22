@@ -1,7 +1,7 @@
 # Maintainer: wyf9661 <wyf9661@hotmail.com>
 # Contributor: Keithsel <keithsel@disroot.org>
 pkgname=9router-bin
-pkgver=0.5.81
+pkgver=0.5.85
 pkgrel=1
 pkgdesc="AI router and proxy providing an OpenAI-compatible endpoint for multiple AI providers"
 arch=('x86_64')
@@ -14,7 +14,7 @@ install="${pkgname}.install"
 options=('!strip')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/9router/-/9router-${pkgver}.tgz"
         '9router.sh' '9router.service' '.env.example')
-sha256sums=('6fbfbaff84ad84ddadd35385b2d5268a139639f3181d55dabed590210e929d00'
+sha256sums=('1ea712d3924d5705682c22208deb9c79c896756c8c012fc818301fa34393f561'
             '912c4a6f0c3589a23dd4e015c28500643727086b89463ec79f62e6dc569a4804'
             'd3cf28a661868f9cab0ba942e5be2a57f3a9cff4a66c6b9e4a26f4f0881e6f36'
             'be29534e45b564eca0a854fd06a06166a5ca0992a48bcedbc36b31e364521786')
