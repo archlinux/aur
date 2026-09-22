@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=pipeasio-bin
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 # Upstream tags use semver prerelease hyphens (v1.0.0-rc1); pkgver maps '-' to '_'.
 _pkgtag="v${pkgver//_/-}"
@@ -20,7 +20,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_pkgtag}/pipeasio-${_pkgtag}-archlinux-x86_64.tar.gz"
         "${pkgname}-${pkgver}-COPYING::${url}/raw/${_pkgtag}/COPYING")
 noextract=()
-b2sums=('9b4c6c0747ed0b21ddcd76d332f35b901fdeab525245b76c3903f6466d5f23bed0e9b44fbe887a8d96e6fa5e27132306f2c9b7b0017120fe6ca61b036e3b28ec'
+b2sums=('18addf999674e5f731b704a42d9177bc8e42bfbfec3bb18ebf0f385cbacb2bdf62c5dd7ebd20b387d6530d270161fb4c2b3f23f927fd9b186f7cc2e4c469f141'
         '74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd')
 
 package() {
