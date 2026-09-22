@@ -3,8 +3,8 @@
 
 _pkgname=gnsstk-apps
 pkgname="${_pkgname}-git"
-pkgver=14.1.1.r7158.20231219.79a70c4f0
-pkgrel=2
+pkgver=15.1.1.r7209.20260624.1aeb7d218
+pkgrel=1
 pkgdesc="Utilities using the GNSSTk core library, a library for GNSS (Global Navigation Satellite System) stuff."
 arch=(
   "i686"
