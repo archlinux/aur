@@ -3,8 +3,8 @@
 _pyname="meshcore_py"
 _pkgname="python-meshcore"
 pkgname="${_pkgname}-git"
-pkgver=2.3.14.r424.20260919.b32d820
-pkgrel=2
+pkgver=2.3.14+2.r426.20260922.f4427bc
+pkgrel=1
 pkgdesc="Python library for interacting with MeshCore companion radio nodes."
 groups=("meshcore")
 arch=(
