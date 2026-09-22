@@ -1,18 +1,18 @@
 pkgbase = burrow-bin
-	pkgdesc = Integrated HTML, markdown, and SVG viewer, code editor, and debugger built with Electron.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.10.0
+	pkgdesc = Integrated HTML, markdown, and SVG viewer, code editor, and debugger built with Electron.
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://www.brandonfowler.me/burrow/
 	arch = x86_64
 	license = LGPL-3.0-or-later
-	depends = electron43
-	provides = burrow=1.10.0
+	depends = electron44
+	provides = burrow=1.11.0
 	conflicts = burrow
 	options = !emptydirs
 	options = !strip
-	source = burrow-1.10.0.rpm::https://github.com/BrandonXLF/burrow/releases/download/v1.10.0/burrow-1.10.0.x86_64.rpm
+	source = burrow-1.11.0.rpm::https://github.com/BrandonXLF/burrow/releases/download/v1.11.0/burrow-1.11.0.x86_64.rpm
 	source = burrow.sh
-	sha256sums = 3b74e34045753b75d944a1b0477e5c14a91ef34fb1ad8aaee1657af83f304cb8
+	sha256sums = 063ec590150012a10945e10b0553c37acb29a4ca1a64d09857b44606daa37a5a
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = burrow-bin

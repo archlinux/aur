@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=burrow-bin
 _pkgname='Burrow HTML and Markdown'
-pkgver=1.10.0
-_electronversion=43
+pkgver=1.11.0
+_electronversion=44
 pkgrel=1
-pkgdesc="Integrated HTML, markdown, and SVG viewer, code editor, and debugger built with Electron.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Integrated HTML, markdown, and SVG viewer, code editor, and debugger built with Electron."
 arch=('x86_64')
 url="https://www.brandonfowler.me/burrow/"
 _ghurl="https://github.com/BrandonXLF/burrow"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3b74e34045753b75d944a1b0477e5c14a91ef34fb1ad8aaee1657af83f304cb8'
+sha256sums=('063ec590150012a10945e10b0553c37acb29a4ca1a64d09857b44606daa37a5a'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -51,7 +51,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
