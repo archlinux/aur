@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xdg-utils-git
-pkgver=1.2.1.r922.4493c72
+pkgver=1.3.0.r940.03707c1
 pkgrel=1
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks (git version)"
 arch=('any')
@@ -26,10 +26,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  # FIX: hardcoded 1.2.1 because the corresponding tag is on branch origin/v1.2.X
-  # which only contains a release-note commit. git describe would give 1.2.0 (which is wrong)
-  # see https://gitlab.freedesktop.org/xdg/xdg-utils/-/work_items/306
-  printf "1.2.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  # FIX: hardcoded 1.3.0 because the corresponding tag doesn't exist
+  printf "1.3.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
