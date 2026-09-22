@@ -1,0 +1,21 @@
+pkgbase = druck
+	pkgdesc = Print a file from the command line using the GTK print dialog
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/bullbytes/druck
+	arch = any
+	license = AGPL-3.0-or-later
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = gtk4
+	depends = poppler-glib
+	optdepends = cups: print to local print queues
+	optdepends = avahi: find network printers via mDNS/DNS-SD
+	optdepends = evince: print preview
+	source = druck-0.1.0.tar.gz::https://gitlab.com/bullbytes/druck/-/archive/v0.1.0/druck-v0.1.0.tar.gz
+	b2sums = 5b5199b69889dc91124ac78ce4bdb76ece43d67b1852d23368ea50bf6c5da443402b156bc38ae9e200a0de1114edd4d69850cb13768360d937088ab6a1957d04
+
+pkgname = druck
