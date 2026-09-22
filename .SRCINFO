@@ -8,6 +8,7 @@ pkgbase = falabaac-git
 	makedepends = git
 	makedepends = make
 	makedepends = glibc
+	makedepends = gzip
 	provides = falabaac
 	source = git+https://github.com/Sound-Linux-More/falabaac
 	source = C23.patch

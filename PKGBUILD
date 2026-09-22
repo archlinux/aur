@@ -7,7 +7,7 @@ pkgdesc='Another AAC encoder (git version)'
 arch=('any')
 url='https://github.com/Sound-Linux-More/falabaac'
 license=('MIT')
-makedepends=('git' 'make' 'glibc')
+makedepends=('git' 'make' 'glibc' 'gzip')
 provides=('falabaac')
 source=('git+https://github.com/Sound-Linux-More/falabaac' 'C23.patch')
 sha256sums=('SKIP' '4f7fddd72b9cd793e394f8879b05e50949e0aaa7b2d5fcce0fcc345d4855fc91')
@@ -19,6 +19,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/${pkgname%-git}"
+
+    gzip -9 man/man1/falabaac.1
 
     #replace mojibake with chinese utf-8
     iconv -f iso-8859-1 -t utf-8 src/frontend/main.c -o src/frontend/main.c
@@ -81,7 +83,7 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Install man page
-    install -Dm644 man/man1/falabaac.1 "$pkgdir/usr/share/man/man1/falabaac.1"
+    install -Dm644 man/man1/falabaac.1.gz "$pkgdir/usr/share/man/man1/falabaac.1.gz"
 
     # Install headers
     install -Dm644 src/include/*.h -t "$pkgdir/usr/include/falabaac"
