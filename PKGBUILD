@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A modern, open-source database client for desktop and web"
 
-pkgver=2026.9.1
+pkgver=2026.9.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.deb")
 sha256sums=('500086e6ec297b21a999f6c8bf22bfa714cd3a8d6449b7a300aff7193bb643f0'
             'ee532cbc55110ff7bea4384756e145b0f0a185447e0ed7e523029a4744b5e98f')
-sha256sums_x86_64=('f18c9ba607fbfb1d3b80455574215182e8330c0b99f30f8672ccf3b2c5a2fab9')
-sha256sums_aarch64=('e62be4b602450075bd1c066db7409e39374decbbad33bd0be3983dc967501efa')
+sha256sums_x86_64=('e2aa560274cdeca25fd443f2cd5e6bf3d1c814413ce93a95a2ea1e2dc5fd133e')
+sha256sums_aarch64=('55b0665f35e528ad9e5103f9eb7a70f73ecec0d23dedf7c974b001bd5efe6f80')
 
 
 package() {

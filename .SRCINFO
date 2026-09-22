@@ -1,6 +1,6 @@
 pkgbase = seaquel-bin
 	pkgdesc = A modern, open-source database client for desktop and web
-	pkgver = 2026.9.1
+	pkgver = 2026.9.2
 	pkgrel = 1
 	url = https://github.com/webstonehq/seaquel
 	arch = x86_64
@@ -21,13 +21,13 @@ pkgbase = seaquel-bin
 	provides = seaquel
 	conflicts = seaquel
 	options = !strip
-	source = README-2026.9.1.md::https://raw.githubusercontent.com/webstonehq/seaquel/v2026.9.1/README.md
-	source = LICENSE-2026.9.1::https://raw.githubusercontent.com/webstonehq/seaquel/v2026.9.1/LICENSE
+	source = README-2026.9.2.md::https://raw.githubusercontent.com/webstonehq/seaquel/v2026.9.2/README.md
+	source = LICENSE-2026.9.2::https://raw.githubusercontent.com/webstonehq/seaquel/v2026.9.2/LICENSE
 	sha256sums = 500086e6ec297b21a999f6c8bf22bfa714cd3a8d6449b7a300aff7193bb643f0
 	sha256sums = ee532cbc55110ff7bea4384756e145b0f0a185447e0ed7e523029a4744b5e98f
-	source_x86_64 = seaquel-x86_64-2026.9.1.deb::https://github.com/webstonehq/seaquel/releases/download/v2026.9.1/seaquel_2026.9.1_amd64.deb
-	sha256sums_x86_64 = f18c9ba607fbfb1d3b80455574215182e8330c0b99f30f8672ccf3b2c5a2fab9
-	source_aarch64 = seaquel-aarch64-2026.9.1.deb::https://github.com/webstonehq/seaquel/releases/download/v2026.9.1/seaquel_2026.9.1_arm64.deb
-	sha256sums_aarch64 = e62be4b602450075bd1c066db7409e39374decbbad33bd0be3983dc967501efa
+	source_x86_64 = seaquel-x86_64-2026.9.2.deb::https://github.com/webstonehq/seaquel/releases/download/v2026.9.2/seaquel_2026.9.2_amd64.deb
+	sha256sums_x86_64 = e2aa560274cdeca25fd443f2cd5e6bf3d1c814413ce93a95a2ea1e2dc5fd133e
+	source_aarch64 = seaquel-aarch64-2026.9.2.deb::https://github.com/webstonehq/seaquel/releases/download/v2026.9.2/seaquel_2026.9.2_arm64.deb
+	sha256sums_aarch64 = 55b0665f35e528ad9e5103f9eb7a70f73ecec0d23dedf7c974b001bd5efe6f80
 
 pkgname = seaquel-bin
