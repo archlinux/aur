@@ -4,7 +4,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-openssl
-pkgver=3.6.1
+pkgver=3.6.4
 pkgrel=1
 arch=('any')
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (Android ${_android_arch})"
@@ -15,7 +15,7 @@ depends=('android-ndk')
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.openssl.org/source/openssl-${pkgver}.tar.gz")
-md5sums=('589777dc85ebbfeca70161c0c384d572')
+md5sums=('f771f53e0ce36d806d64e15f4d3a36d3')
 
 build() {
     cd "${srcdir}/openssl-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-openssl
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (Android riscv64)
-	pkgver = 3.6.1
+	pkgver = 3.6.4
 	pkgrel = 1
 	url = https://www.openssl.org
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-riscv64-openssl
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.openssl.org/source/openssl-3.6.1.tar.gz
-	md5sums = 589777dc85ebbfeca70161c0c384d572
+	source = https://www.openssl.org/source/openssl-3.6.4.tar.gz
+	md5sums = f771f53e0ce36d806d64e15f4d3a36d3
 
 pkgname = android-riscv64-openssl
