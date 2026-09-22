@@ -4,8 +4,7 @@
 
 ## The download URL/ filename does not change with version update. Need to check filenames inside downloaded ZIP file, or front webpage, for version.
 _upstreamlistingurl='https://www.kyoceradocumentsolutions.eu/en/support/downloads.name-L2V1L2VuL21mcC9FQ09TWVNNNDEzMklETg==.html'
-#_upstreamsourcedownloadpath='https://www.kyoceradocumentsolutions.de/content/download-center/de/drivers/all'
-_upstreamsourcedownloadpath='https://www.kyoceradocumentsolutions.eu/content/download-center/eu/drivers/all/'
+_upstreamsourcedownloadpath='https://www.kyoceradocumentsolutions.co.uk/content/dam/download-center-cf/gb/drivers/all/'
 _upstreamsourcefilename='SANE_Driver_zip.download.zip'
 _get_pkgver() {
   local _debarch
@@ -45,7 +44,9 @@ depends=(
   'openssl-1.1'
   'sane'
 )
-makedepends=('libjpeg-turbo')
+makedepends=(
+  'libjpeg-turbo'
+)
 source=(
   "${pkgname}-${pkgver}_SANE-Driver.zip::${_upstreamsourcedownloadpath}/${_upstreamsourcefilename}"
   'README.txt'
