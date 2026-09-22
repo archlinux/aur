@@ -4,7 +4,7 @@
 _pkgname=gnsstk-apps
 pkgname="${_pkgname}-git"
 pkgver=15.1.1.r7209.20260624.1aeb7d218
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities using the GNSSTk core library, a library for GNSS (Global Navigation Satellite System) stuff."
 arch=(
   "i686"
@@ -13,8 +13,9 @@ arch=(
 url="https://gitlab.com/sgl-ut/gnsstk-apps"
 license=('GPL-3.0-or-later')
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc_s.so'
+  'libstdc++.so'
   'libgnsstk.so'
 )
 makedepends=(
@@ -22,6 +23,8 @@ makedepends=(
   'git'
   'gnsstk'
   'make'
+  'libgcc'
+  'libstdc++'
   # 'swig'  # Currently, fails to build the python binding; see https://gitlab.com/sgl-ut/gnsstk/-/issues/4. 'swig' is only needed to build python binding.
 )
 optdepends=(
@@ -125,7 +128,7 @@ package() {
 
   install -Dvm644 gpstk-logo-small.jpg "${pkgdir}/usr/share/pixmaps/gnsstk.jpg"
 
-  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"  git.log AUTHORS.md changes.txt ChangeLog.md CODEOWNERS DOCUMENTATION.md gpstk-logo-small.jpg HOWTO.txt INSTALL.md INTRO.txt MAINPAGE.txt README.md RELNOTES.md TESTING.md
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"  git.log AUTHORS.md ChangeLog.md CODEOWNERS DOCUMENTATION.md gpstk-logo-small.jpg HOWTO.txt INSTALL.md INTRO.txt MAINPAGE.txt README.md RELNOTES.md TESTING.md
 
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  COPYING.LESSER.md LICENSE.md
 }
