@@ -1,0 +1,16 @@
+pkgbase = unreal-agent-bin
+	pkgdesc = Async-first AI agent runner from Unreal Labs (prebuilt binary)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/unreallabsai/unreal-agent
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = ca-certificates
+	provides = unreal-agent=0.1.1
+	conflicts = unreal-agent
+	options = !strip
+	source = https://github.com/unreallabsai/unreal-agent/releases/download/v0.1.1/unreal-agent-runner_0.1.1_linux_amd64.tar.gz
+	sha256sums = fad9cb9e6e6272a8d16fb4b90f985abb3132572413588f96622c6b1a82e34fcd
+
+pkgname = unreal-agent-bin
