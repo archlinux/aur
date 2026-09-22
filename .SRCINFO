@@ -1,0 +1,24 @@
+pkgbase = coords2img-git
+	pkgdesc = Generate static map images - as a PNG file or directly as sixel graphics in your terminal - from a set of coordinates.
+	pkgver = 0.1.0.r3.20260801.16a2f14
+	pkgrel = 1
+	url = https://github.com/fdlamotte/coords2img
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-pillow>=9.0
+	depends = python-requests>=2.25
+	optdepends = sh: For example scripts '/usr/share/doc/coords2img/examples/{provider_showcase,quickstart,mesh_network/run}.sh'.
+	provides = coords2img=0.1.0.r3.20260801.16a2f14
+	provides = python-coords2img=0.1.0.r3.20260801.16a2f14
+	provides = python-coords2img-git=0.1.0.r3.20260801.16a2f14
+	conflicts = coords2img
+	conflicts = python-coords2img
+	source = coords2img::git+https://github.com/fdlamotte/coords2img.git
+	sha256sums = SKIP
+
+pkgname = coords2img-git
