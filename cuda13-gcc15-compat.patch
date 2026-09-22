@@ -22,21 +22,6 @@ index 51d1a6d40..416cbb2e8 100644
  #include <pcl_cuda/filters/filter.h>
  #include <thrust/count.h>
  #include <thrust/remove.h>
-<<<<<<< Updated upstream
-diff --git a/cuda/filters/include/pcl/cuda/filters/voxel_grid.h b/cuda/filters/include/pcl/cuda/filters/voxel_grid.h
-index f54b3a195..6146870b0 100644
---- a/cuda/filters/include/pcl/cuda/filters/voxel_grid.h
-+++ b/cuda/filters/include/pcl/cuda/filters/voxel_grid.h
-@@ -37,6 +37,7 @@
- 
- PCL_DEPRECATED_HEADER(1, 16, "The CUDA VoxelGrid filter does not work. Use the CPU VoxelGrid filter instead.")
- 
-+#include <iostream>
- #include <pcl_cuda/filters/filter.h>
- #include <pcl_cuda/filters/passthrough.h>
- #include <thrust/count.h>
-=======
->>>>>>> Stashed changes
 diff --git a/cuda/sample_consensus/src/msac.cpp b/cuda/sample_consensus/src/msac.cpp
 index 397403c5d..4462f2616 100644
 --- a/cuda/sample_consensus/src/msac.cpp
@@ -108,19 +93,3 @@ index d49257f32..0cbcc864a 100644
  #include <pcl/ModelCoefficients.h>
  #include <pcl/point_types.h>
  #include <pcl/io/pcd_io.h>
-<<<<<<< Updated upstream
-diff --git a/gpu/surface/src/cuda/convex_hull.cu b/gpu/surface/src/cuda/convex_hull.cu
-index 00b49dc08..d8f91044a 100644
---- a/gpu/surface/src/cuda/convex_hull.cu
-+++ b/gpu/surface/src/cuda/convex_hull.cu
-@@ -136,7 +136,7 @@ namespace pcl
-       int transform_reduce_index(It beg, It end, Unary unop, Init init, Binary binary)
- 	  {
- 	    thrust::counting_iterator<int> cbeg(0);
--		thrust::counting_iterator<int> cend = cbeg + thrust::distance(beg, end);
-+		thrust::counting_iterator<int> cend = cbeg + (end - beg);
- 
- 	    thrust::tuple<float, int> t = thrust::transform_reduce(
- 		  thrust::make_zip_iterator(thrust::make_tuple(beg, cbeg)),
-=======
->>>>>>> Stashed changes
