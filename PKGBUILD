@@ -23,7 +23,7 @@
 
 pkgname=netscli-bin
 _binname=netscli
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Network diagnostics CLI, terminal UI, and MCP server"
 arch=('x86_64' 'aarch64')
@@ -36,8 +36,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/fstubner/netscli/v
 source_x86_64=("${_binname}-${pkgver}-x86_64::https://github.com/fstubner/netscli/releases/download/v${pkgver}/netscli-linux-x86_64")
 source_aarch64=("${_binname}-${pkgver}-aarch64::https://github.com/fstubner/netscli/releases/download/v${pkgver}/netscli-linux-aarch64")
 sha256sums=(6f035a96b0da6e99589b2a1656f59bee8c6519686d8a94627301e074746041d3)
-sha256sums_x86_64=('7f2e6d8bc18d723284981891a4e5ff4c51a192b67485b79721c213c17ff2f6eb')
-sha256sums_aarch64=('7f00b8688efa3ee8c82c59203101566c790572c721e5ac8b2815f229da938a47')
+sha256sums_x86_64=('e8a480a6d549d8e5056eaa1541344a9701c277add9fbe2ba542d63b5276ba86d')
+sha256sums_aarch64=('c79fbf3f8dbfb44e2c7203d67914628ec2ddedf096a4f2382303ce858d38e7c8')
 
 package() {
   local src
