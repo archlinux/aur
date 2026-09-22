@@ -47,6 +47,8 @@ sha256sums=(
     '7a3e4da22a962bb436ef3f2535a7d9ce5e51af4f2c7e7973044c9b26dc373a6d'
     'e911f5d2d15f8fb685e17c289b19e658b6f093e5bfe8735cdaeecf3ee346264d')
 
+install=sqlfix.install
+
 prepare() {
  	patch -p1 -i setup-desktop-entry.patch -d "${srcdir}"
  	patch -p1 -i start-flashpoint.patch -d "${srcdir}"
