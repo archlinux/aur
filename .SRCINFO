@@ -1,0 +1,27 @@
+pkgbase = qoder-cn-ide-bin
+	pkgdesc = 面向真实软件开发的 AI 原生 Qoder CN IDE。
+	pkgver = 1.31.2
+	pkgrel = 1
+	url = https://qoder.cn
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron42
+	depends = libxkbfile
+	depends = nodejs
+	depends = python
+	optdepends = bash
+	optdepends = zsh
+	provides = qoder-cn-ide=1.31.2
+	conflicts = qoder-cn-ide
+	options = !emptydirs
+	options = !strip
+	source = qoder-cn-ide-1.31.2.rpm::https://qoder-ide-cn.oss-cn-hangzhou.aliyuncs.com/qoder/release/lastest/qoder-cn-ide_x86_64.rpm
+	source = LICENSE.html
+	source = qoder-cn-ide.js
+	source = qoder-cn-ide.sh
+	sha256sums = 7f529095ff9d74504202a945365dc1c98a770fe47e064f007b096c0f7c3b93f7
+	sha256sums = d93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61
+	sha256sums = 144551f99c19e89223da901011e9d237904bd895900676b9b69d317bcb4181b8
+	sha256sums = 700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599
+
+pkgname = qoder-cn-ide-bin
