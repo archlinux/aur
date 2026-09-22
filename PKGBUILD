@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=opencode-desktop-bin
-pkgver=2.0.12
+pkgver=2.0.13
 pkgrel=1
 pkgdesc="OpenCode desktop client"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ provides=('opencode-desktop')
 conflicts=('opencode-desktop')
 # Arch Linux ARM ships no electron package at all (which is also why official
 # code is absent there), so only x86_64 can run on a system runtime.
-_electron=electron42
+_electron=electron44
 depends=('ripgrep')
 depends_x86_64=("${_electron}")
 depends_aarch64=('gtk3' 'nss' 'libxss' 'libxtst' 'alsa-lib' 'libsecret' 'libnotify' 'xdg-utils')
@@ -29,8 +29,8 @@ source=("LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver
 source_x86_64=("opencode-desktop-${pkgver}-linux-amd64.deb::https://opencode.ai/files/bin/${pkgver}/opencode-desktop-linux-amd64.deb")
 source_aarch64=("opencode-desktop-${pkgver}-linux-arm64.deb::https://opencode.ai/files/bin/${pkgver}/opencode-desktop-linux-arm64.deb")
 sha256sums=('625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b')
-sha256sums_x86_64=('f090e3846d1009bb25afb36b64d8aa98593880b13c332b625ce74e74ecc403c3')
-sha256sums_aarch64=('6c969739c05f1ea0985d709b78dcca2932146805b88b3c85fad7e185bb9a04a2')
+sha256sums_x86_64=('47a678c3d4926460825af182cefaabd0636d4d052cd9bfda7ab73400ffe7568e')
+sha256sums_aarch64=('fb0972e88d1b43abd38dce3451eab0a84f4d7eee5bf132cbad1dda1b2266e6ae')
 
 package() {
   local _debarch=amd64
