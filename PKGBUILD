@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-lite
-pkgver=1.2.29
+pkgver=1.2.30
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer features, Gstreamer and alsa only"
 arch=(x86_64 i686 armv7h aarch64)
@@ -48,7 +48,7 @@ optdepends=(
 provides=(strawberry)
 conflicts=(strawberry)
 source=("git+https://github.com/jonaski/strawberry.git#tag=${pkgver}")
-sha256sums=('909523daf62e4f7ab533a1f5ffb44debae2f531a51ffabfd1d02793c45fb9f86')
+sha256sums=('42e03ed581cc762d08e8b004e8f915ac23170cfe2c4d62dd34f5aec689f64361')
 
 build() {
   # Disable warning Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
