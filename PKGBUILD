@@ -1,7 +1,7 @@
 # Maintainer:  Josh Ellithorpe <quest@mac.com>
 
 pkgname=dream-prompter
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="AI-powered GIMP plugin for image generation and editing using multiple Replicate models"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'gettext' 'python')
 provides=('dream-prompter')
 conflicts=('dream-prompter')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zquestz/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0a3bcf2b750e5a461177199b887caf15502e720e364e7026b606f862fe739b6a')
+sha256sums=('ac7e5a760a75fa639d47ea37e43b90f1eeccbafaef3b8dcb957617abfe746ffc')
 
 build() {
   cd ${pkgname}-${pkgver}
