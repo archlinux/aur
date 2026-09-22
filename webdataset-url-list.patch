@@ -1,0 +1,28 @@
+--- a/src/open_clip_train/data.py
++++ b/src/open_clip_train/data.py
+@@ -73,7 +73,11 @@
+ 
+ def expand_urls(urls, weights=None):
+     if weights is None:
+-        expanded_urls = wds.shardlists.expand_urls(urls)
++        # WebDataset 0.2 accepts a string here, whereas callers also pass
++        # already-expanded URL sequences. Preserve those sequences directly.
++        expanded_urls = (
++            wds.shardlists.expand_urls(urls) if isinstance(urls, str) else list(urls)
++        )
+         return expanded_urls, None
+     if isinstance(urls, str):
+         urllist = urls.split("::")
+@@ -192,6 +196,12 @@
+     current_sample = None
+     for filesample in data:
+         assert isinstance(filesample, dict)
++        # WebDataset emits an empty mapping at the end of each tar shard.
++        if filesample == {}:
++            if valid_sample(current_sample):
++                yield current_sample
++            current_sample = None
++            continue
+         fname, value = filesample["fname"], filesample["data"]
+         prefix, suffix = keys(fname)
+         if prefix is None:
