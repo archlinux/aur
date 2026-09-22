@@ -8,7 +8,6 @@ pkgbase = libvirt-sandbox
 	license = LGPL
 	makedepends = gobject-introspection
 	makedepends = intltool
-	makedepends = pod2man
 	makedepends = rpcsvc-proto
 	depends = libvirt-glib
 	depends = libselinux

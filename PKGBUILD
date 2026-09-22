@@ -17,7 +17,7 @@ depends=(
 makedepends=(
   'gobject-introspection'
   'intltool'
-  'pod2man'
+  #'pod2man'
   'rpcsvc-proto'
 )
 optdepends=('dhclient: for sandbox network configuration using DHCP')
