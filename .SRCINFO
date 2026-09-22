@@ -1,6 +1,6 @@
 pkgbase = deepseek-reasonix-desktop-bin
 	pkgdesc = Reasonix Desktop - Electron desktop client for the DeepSeek-native AI coding agent
-	pkgver = 1.38.7
+	pkgver = 1.38.11
 	pkgrel = 1
 	url = https://github.com/esengine/DeepSeek-Reasonix
 	arch = x86_64
@@ -36,12 +36,12 @@ pkgbase = deepseek-reasonix-desktop-bin
 	provides = reasonix-desktop
 	conflicts = deepseek-reasonix-desktop
 	conflicts = reasonix-desktop
-	noextract = deepseek-reasonix-desktop-bin-1.38.7.deb
+	noextract = deepseek-reasonix-desktop-bin-1.38.11.deb
 	options = !strip
 	options = !debug
-	source = deepseek-reasonix-desktop-bin-1.38.7.deb::https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop-v1.38.7/Reasonix-linux-amd64.deb
-	source = LICENSE-1.38.7::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/desktop-v1.38.7/LICENSE
-	sha256sums = 54bade3511d08a50a3d88d9ccaf3bcb26c81dc3a5bef2c1b68075793d491a753
+	source = deepseek-reasonix-desktop-bin-1.38.11.deb::https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop-v1.38.11/Reasonix-linux-amd64.deb
+	source = LICENSE-1.38.11::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/desktop-v1.38.11/LICENSE
+	sha256sums = b8b02e3dcfbff35bdbd19c2178e3d9e0b53bcf929c9f56065c65417bda8074c2
 	sha256sums = dc024237821ac82056c37f8d82e3be919bd51e39a4529ec12a8ab3e2a346dc4c
 
 pkgname = deepseek-reasonix-desktop-bin

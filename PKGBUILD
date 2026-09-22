@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=deepseek-reasonix-desktop-bin
-pkgver=1.38.7
+pkgver=1.38.11
 pkgrel=1
 pkgdesc="Reasonix Desktop - Electron desktop client for the DeepSeek-native AI coding agent"
 arch=('x86_64')
@@ -22,12 +22,18 @@ _relurl="${url}/releases/download/desktop-v${pkgver}"
 source=("${pkgname}-${pkgver}.deb::${_relurl}/Reasonix-linux-amd64.deb"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/desktop-v${pkgver}/LICENSE")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('54bade3511d08a50a3d88d9ccaf3bcb26c81dc3a5bef2c1b68075793d491a753'
+sha256sums=('b8b02e3dcfbff35bdbd19c2178e3d9e0b53bcf929c9f56065c65417bda8074c2'
             'dc024237821ac82056c37f8d82e3be919bd51e39a4529ec12a8ab3e2a346dc4c')
 
 prepare() {
     mkdir -p "${srcdir}/debroot"
-    bsdtar -xOf "${srcdir}/${pkgname}-${pkgver}.deb" data.tar.gz \
+    local _data
+    _data="$(bsdtar -tf "${srcdir}/${pkgname}-${pkgver}.deb" | sed -n '/^data\.tar\./p')"
+    if [[ -z "${_data}" ]]; then
+        error "Could not find data tarball in ${pkgname}-${pkgver}.deb"
+        return 1
+    fi
+    bsdtar -xOf "${srcdir}/${pkgname}-${pkgver}.deb" "${_data}" \
         | bsdtar -xf - -C "${srcdir}/debroot"
 }
 
