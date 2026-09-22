@@ -2,7 +2,7 @@
 
 _pkgauthor=DankDown10256
 pkgname=procsnap
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A lightweight Linux process profiler written in C"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('make' 'gcc')
 depends=('glibc')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('be5e6d411a24d41343d388c038f16f7dd9cbe1f88c5284fe6d68a65e4abf9f06')
+sha256sums=('ee146321756d9d4b6d0caa468f32e73fae35827b1ab3255905ea503ab97aab3d')
 
 
 prepare() {
