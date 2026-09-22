@@ -1,0 +1,8 @@
+[zalo-for-linux-bin]
+source = "cmd"
+cmd = '''
+zalo=$(git ls-remote --tags --refs --sort="v:refname" https://github.com/doandat943/zalo-for-linux.git | tail -n1 | sed 's|.*/||')
+zadark=$(git ls-remote --tags --refs --sort="v:refname" https://github.com/ncdai/zadark.git | tail -n1 | sed 's|.*/||')
+commit=$(git ls-remote https://github.com/doandat943/zalo-for-linux.git HEAD | cut -c1-7)
+printf '%s+%s-%s\n' "$zalo" "$zadark" "$commit"
+'''
