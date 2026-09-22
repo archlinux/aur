@@ -4,7 +4,7 @@
 _pkgname='tizonia'
 _githubname="${_pkgname}-openmax-il"
 pkgname="${_pkgname}-all-git"
-pkgver=0.22.0+29.r3904.20241005.abee4dbe
+pkgver=0.22.0+66.r3941.20260905.627d10c0
 pkgrel=1
 pkgdesc="Command-line cloud music player and downloader for Linux with support for YouTube, SoundCloud, Plex servers, Chromecast devices and generic streams and websites."
 arch=(
@@ -39,7 +39,6 @@ depends=(
   # AUR:
   'log4c' # Actually, it is mandatory. See https://aur.archlinux.org/packages/tizonia-all-git#comment-927774.
   'python-fuzzywuzzy'
-  'python-gmusicapi' # [2023-07-31] Google Music service is dead, but `python-gmusicapi` is still needed by `/usr/lib/python3.11/site-packages/tizgmusicproxy.py`, see https://aur.archlinux.org/packages/tizonia-all-git#comment-927188 and follow up.
   'python-pafy'
   'python-plexapi'
   'python-pychromecast'
@@ -156,7 +155,7 @@ build() {
   )
   _CFLAGSAPPEND=''
   for _no_cc_warn in "${_no_cc_warnings[@]}"; do
-    _CFLAGSAPPEND+=" -Wno-error=${_no_cc_warn} -Wno-${_no_cc_warn}"
+    _CFLAGSAPPEND+=" -Wno-error=${_no_cc_warn} -Wno-${_no_cc_warn} -w"
   done
   _CFLAGSAPPEND+=' -DBOOST_BIND_GLOBAL_PLACEHOLDERS=1' # Work around warning message '/usr/include/boost/bind.hpp:36:1: note: ‘#pragma message: The practice of declaring the Bind placeholders (_1, _2, ...) in the global namespace is deprecated. Please use <boost/bind/bind.hpp> + using namespace boost::placeholders, or define BOOST_BIND_GLOBAL_PLACEHOLDERS to retain the current behavior.’'.
   CFLAGS+=" ${_CFLAGSAPPEND}"
@@ -176,14 +175,11 @@ build() {
   # CC and CXX environment variables seem to be ignored.
 
   # Meson build options: See `meson_options.txt`.
-  # * [2023-06-24] libspotify does no longer exist & also does no longer work, so disable it (`libspotify` would be the needed dependency), see https://aur.archlinux.org/packages/tizonia-all-git#comment-921052.
-  # * [2023-07-31] Google Music service is dead, but `python-gmusicapi` is still needed by `/usr/lib/python3.11/site-packages/tizgmusicproxy.py`, see https://aur.archlinux.org/packages/tizonia-all-git#comment-927188 and follow up.
   # * [2023-08-01] Building tests fails with `clients/youtube/libtizyoutube/tests/check_tizyoutube.c:121:12: error: too few arguments to function ‘tiz_youtube_init’`, see https://github.com/tizonia/tizonia-openmax-il/issues/799.
   export SAMUFLAGS="-j1"                                 # Eats a lot of ram, so restrict to one build job at a time.
   export PKG_CONFIG_PATH=/usr/lib/taglib1/pkgconfig      # Also search for taglib1 pkgconfig file.
   meson setup --prefix=/usr --buildtype=plain \
     -Dplayer=true \
-    -Dlibspotify=false \
     -Dalsa=true \
     -Daac=true \
     -Dgcc-warnings=false \
@@ -191,10 +187,10 @@ build() {
     -Dbashcompletiondir=/etc/bash_completion.d \
     -Dzshcompletiondir=/usr/share/zsh/site-functions \
     -Ddocs=true \
-    -Ddocs_options='["man"]' \
+    -Ddocs_options='["man","text"]' \
     -Ddocs_paper=a4 \
     -Dclients=true \
-    -Dplugins='["aac_decoder","chromecast_renderer","file_reader","file_writer","flac_decoder","http_renderer","http_source","inproc_reader","inproc_writer","mp3_decoder","mp3_encoder","mp3_metadata","mp4_demuxer","mpeg_audio_decoder","ogg_demuxer","ogg_muxer","opus_decoder","opusfile_decoder","pcm_decoder","pcm_renderer_alsa","pcm_renderer_pa","spotify","vorbis_decoder","vp8_decoder","webm_demuxer","yuv_renderer"]' \
+    -Dplugins='["aac_decoder","chromecast_renderer","file_reader","file_writer","flac_decoder","http_renderer","http_source","inproc_reader","inproc_writer","mp3_decoder","mp3_encoder","mp3_metadata","mp4_demuxer","mpeg_audio_decoder","ogg_demuxer","ogg_muxer","opus_decoder","opusfile_decoder","pcm_decoder","pcm_renderer_alsa","pcm_renderer_pa","vorbis_decoder","vp8_decoder","webm_demuxer","yuv_renderer"]' \
     "${_pkgname}" build
   samu -v -C build
 }
