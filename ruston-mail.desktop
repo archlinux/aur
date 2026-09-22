@@ -1,0 +1,60 @@
+[Desktop Entry]
+Type=Application
+Name=Ruston Mail
+Name[hu_HU]=Ruston Mail
+Name[de_DE]=Ruston Mail
+Name[es_ES]=Ruston Mail
+Name[fr_FR]=Ruston Mail
+Name[it_IT]=Ruston Mail
+Name[pl_PL]=Ruston Mail
+Name[pt_BR]=Ruston Mail
+Name[ru_RU]=Ruston Mail
+Name[tr_TR]=Ruston Mail
+Name[zh_CN]=Ruston Mail
+Name[ja_JP]=Ruston Mail
+
+GenericName=Proton Mail Client
+GenericName[hu_HU]=Proton Mail kliens
+GenericName[de_DE]=Proton Mail Klient
+GenericName[es_ES]=Cliente de Proton Mail
+GenericName[fr_FR]=Client Proton Mail
+GenericName[it_IT]=Client Proton Mail
+GenericName[pl_PL]=Klient Proton Mail
+GenericName[pt_BR]=Cliente Proton Mail
+GenericName[ru_RU]=Клиент Proton Mail
+GenericName[tr_TR]=Proton Mail İstemcisi
+GenericName[zh_CN]=Proton Mail 客户端
+GenericName[ja_JP]=Proton Mail クライアント
+
+Comment=An unofficial, native, cross-platform Proton Mail desktop client written in Rust
+Comment[hu_HU]=Nem hivatalos, natív, Rustban írt többplatformos Proton Mail asztali kliensalkalmazás
+Comment[de_DE]=Ein inoffizieller, nativer, plattformübergreifender Proton Mail Desktop-Client, geschrieben in Rust
+Comment[es_ES]=Un cliente de escritorio de Proton Mail no oficial, nativo y multiplataforma escrito en Rust
+Comment[fr_FR]=Un client de bureau Proton Mail non officiel, natif et multiplateforme écrit en Rust
+Comment[it_IT]=Un client desktop Proton Mail non ufficiale, nativo e cross-platform scritto in Rust
+Comment[pl_PL]=Nieoficjalny, natywny, wieloplatformowy klient Proton Mail napisany w Rust
+Comment[pt_BR]=Um cliente desktop Proton Mail não oficial, nativo e multiplataforma escrito em Rust
+Comment[ru_RU]=Неофициальный нативный кроссплатформенный клиент Proton Mail, написанный на Rust
+Comment[tr_TR]=Rust ile yazılmış resmi olmayan, yerel, çok platformlu Proton Mail masaüstü istemcisi
+Comment[zh_CN]=一个非官方的、原生的、跨平台的 Proton Mail 桌面客户端，使用 Rust 编写
+Comment[ja_JP]=Rust で書かれた非公式のネイティブなクロスプラットフォーム Proton Mail デスクトップクライアント
+
+Exec=/usr/bin/ruston %u
+Icon=ruston-mail
+Terminal=false
+StartupNotify=true
+Categories=Network;Email;
+X-GNOME-UsesNotifications=true
+
+Keywords=email;mail;proton;protonmail;ruston;encryption;privacy;secure;inbox;message;
+Keywords[hu_HU]=email;levél;proton;protonmail;ruston;titkosítás;adatvédelem;biztonság;bejövő;üzenet;
+Keywords[de_DE]=email;post;proton;protonmail;ruston;verschlüsselung;privatsphäre;sicher;posteingang;nachricht;
+Keywords[es_ES]=correo;email;proton;protonmail;ruston;cifrado;privacidad;seguro;bandeja;mensaje;
+Keywords[fr_FR]=courriel;email;proton;protonmail;ruston;chiffrement;vie privée;sécurisé;boîte;message;
+Keywords[it_IT]=email;posta;proton;protonmail;ruston;crittografia;privacy;sicuro;posta in arrivo;messaggio;
+Keywords[pl_PL]=email;poczta;proton;protonmail;ruston;szyfrowanie;prywatność;bezpieczeństwo;skrzynka;wiadomość;
+Keywords[pt_BR]=email;correio;proton;protonmail;ruston;criptografia;privacidade;seguro;caixa de entrada;mensagem;
+Keywords[ru_RU]=почта;email;proton;protonmail;ruston;шифрование;конфиденциальность;безопасность;входящие;сообщение;
+Keywords[tr_TR]=eposta;posta;proton;protonmail;ruston;şifreleme;gizlilik;güvenli;gelen kutusu;mesaj;
+Keywords[zh_CN]=邮件;电子邮件;proton;protonmail;ruston;加密;隐私;安全;收件箱;消息;
+Keywords[ja_JP]=メール;電子メール;proton;protonmail;ruston;暗号化;プライバシー;セキュリティ;受信トレイ;メッセージ;
