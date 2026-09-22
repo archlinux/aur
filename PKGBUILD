@@ -2,9 +2,9 @@
 
 pkgname=sparxie-bin
 _pkgname=sparxie
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
-pkgdesc="Cross-platform proxy controller for Mihomo, Clash, Surge, and sing-box"
+pkgdesc="A cross-platform proxy controller for Clash / Surge / sing-box"
 arch=('x86_64' 'aarch64')
 url='https://github.com/UruhaLushia/sparxie'
 license=('GPL-3.0-only')
@@ -16,8 +16,8 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 options=('!strip' '!debug')
 source_x86_64=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.deb::${url}/releases/download/v${pkgver}/sparxie-linux-x86_64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-${pkgrel}-aarch64.deb::${url}/releases/download/v${pkgver}/sparxie-linux-arm64.deb")
-sha256sums_x86_64=('f12f5c94fc6029ecf4aa0564aa0730036eedafcd54777bc0467fc7d637404480')
-sha256sums_aarch64=('44d99422c569929d028bc9066e1e9c247f2a6c4b9923ff86b17578e2426b8bd8')
+sha256sums_x86_64=('33c6e278bc7ad3863838796089ef9deac306f52ece49dff75d8e6a8f4e2ed60a')
+sha256sums_aarch64=('aa95d22fa7a210804387305be99d2a2315e20a4d9877a5896d329d46e72e443f')
 
 package() {
   bsdtar -xf data.tar.* -C "${pkgdir}"

@@ -1,6 +1,6 @@
 pkgbase = sparxie-bin
-	pkgdesc = Cross-platform proxy controller for Mihomo, Clash, Surge, and sing-box
-	pkgver = 0.4.0
+	pkgdesc = A cross-platform proxy controller for Clash / Surge / sing-box
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/UruhaLushia/sparxie
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = sparxie-bin
 	depends = gtk3
 	optdepends = noto-fonts-cjk: CJK support
 	optdepends = noto-fonts-emoji: Emoji support
-	provides = sparxie=0.4.0
+	provides = sparxie=0.4.1
 	conflicts = sparxie
 	conflicts = sparxie-git
 	options = !strip
 	options = !debug
-	source_x86_64 = sparxie-0.4.0-1-x86_64.deb::https://github.com/UruhaLushia/sparxie/releases/download/v0.4.0/sparxie-linux-x86_64.deb
-	sha256sums_x86_64 = f12f5c94fc6029ecf4aa0564aa0730036eedafcd54777bc0467fc7d637404480
-	source_aarch64 = sparxie-0.4.0-1-aarch64.deb::https://github.com/UruhaLushia/sparxie/releases/download/v0.4.0/sparxie-linux-arm64.deb
-	sha256sums_aarch64 = 44d99422c569929d028bc9066e1e9c247f2a6c4b9923ff86b17578e2426b8bd8
+	source_x86_64 = sparxie-0.4.1-1-x86_64.deb::https://github.com/UruhaLushia/sparxie/releases/download/v0.4.1/sparxie-linux-x86_64.deb
+	sha256sums_x86_64 = 33c6e278bc7ad3863838796089ef9deac306f52ece49dff75d8e6a8f4e2ed60a
+	source_aarch64 = sparxie-0.4.1-1-aarch64.deb::https://github.com/UruhaLushia/sparxie/releases/download/v0.4.1/sparxie-linux-arm64.deb
+	sha256sums_aarch64 = aa95d22fa7a210804387305be99d2a2315e20a4d9877a5896d329d46e72e443f
 
 pkgname = sparxie-bin
