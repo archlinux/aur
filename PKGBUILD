@@ -1,6 +1,7 @@
 # Maintainer: blazebsc <blakeisfruity@proton.me>
+# Maintainer: ofatrii <pub@oftr.me>
 pkgname=froststrap-bin
-_tag='v2.0.1'
+_tag='v2.0.2'
 pkgver=${_tag#v}
 pkgver=${pkgver//-/.}
 pkgrel=1
@@ -14,7 +15,7 @@ source=("https://github.com/Froststrap/Froststrap/releases/download/${_tag}/Fros
     "LICENSE-AGPL::https://raw.githubusercontent.com/Froststrap/Froststrap/refs/tags/${_tag}/LICENSES/AGPL-3.0-only"
     "LICENSE-MIT::https://raw.githubusercontent.com/Froststrap/Froststrap/refs/tags/${_tag}/LICENSES/MIT"
     "LICENSE-MPL::https://raw.githubusercontent.com/Froststrap/Froststrap/refs/tags/${_tag}/LICENSES/MPL-2.0")
-sha256sums=('87378aee0d8d00e3ace92433276fb70c416af8ce9369d12b563a10c7ed606fac'
+sha256sums=('8cfdf6d2aa17706570040d0083525518447f9a82c7fb75f569aa15066ae28958'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             '34559d013a5a46dcce5bcb5efb3b9489dcf5e77381da540b6baf0cde78583db2'
             '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5')
