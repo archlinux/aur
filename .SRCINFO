@@ -1,6 +1,6 @@
 pkgbase = babel-lsp
 	pkgdesc = Language server for Python Babel i18n (.po/.pot catalog diagnostics, completion, hover)
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/alex-oleshkevich/babel-lsp
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = babel-lsp
 	license = MIT
 	provides = babel-lsp
 	conflicts = babel-lsp
-	source_x86_64 = babel-lsp-linux-x86_64::https://github.com/alex-oleshkevich/babel-lsp/releases/download/v0.2.1/babel-lsp-linux-x86_64
-	sha256sums_x86_64 = cdb14cfa01e781c833dfda33edfbdee97853e4a60482b2d8d6fb798216b22f23
-	source_aarch64 = babel-lsp-linux-aarch64::https://github.com/alex-oleshkevich/babel-lsp/releases/download/v0.2.1/babel-lsp-linux-aarch64
-	sha256sums_aarch64 = dffb1cb1ecaace7638790a5018155bb067bb5f92c874ab35ecf601e765a76988
+	source_x86_64 = babel-lsp-linux-x86_64::https://github.com/alex-oleshkevich/babel-lsp/releases/download/v0.3.0/babel-lsp-linux-x86_64
+	sha256sums_x86_64 = 8c2d8c31a4e31f96ae23a4128880d20301c6e17317406d9be8919d2e89dbd974
+	source_aarch64 = babel-lsp-linux-aarch64::https://github.com/alex-oleshkevich/babel-lsp/releases/download/v0.3.0/babel-lsp-linux-aarch64
+	sha256sums_aarch64 = fb8483ea87cc8091f782c453c1330108178feaec867f24702d5138c8c6433d00
 
 pkgname = babel-lsp
