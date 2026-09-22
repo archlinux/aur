@@ -1,6 +1,6 @@
 # Maintainer: Denis Bolba <https://github.com/Codder13>
 pkgname=ai-flow-cli
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Ultra-fast streaming AI CLI & agent for Unix terminals"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-rich' 'python-pylatexenc')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Codder13/ai-flow-cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b54dab3fa555d2d73f456a330423f1409219ac68481040f0c5acb08f52fec28d')
+sha256sums=('4292cd8f5e36141a7347e33431491c633725ad5b2549dd8ce65aadb3d57bc62c')
 
 build() {
     cd "$pkgname-$pkgver"
