@@ -1,6 +1,7 @@
-# Maintainer: blazebsc <blakeisfruity@proton.me>
+# Maintainer: blazebsc <blakeisfruity at proton dot me>
+# Maintainer: ofatrii <pub@oftr.me>
 pkgname=froststrap
-_tag='v2.0.1'
+_tag='v2.0.2'
 pkgver=${_tag#v}
 pkgver=${pkgver//-/.}
 pkgrel=1
@@ -58,7 +59,6 @@ TryExec=froststrap
 Icon=froststrap
 Terminal=false
 Categories=Game;
-MimeType=x-scheme-handler/roblox;x-scheme-handler/roblox-player;
 EOF
 
     # Install licenses
