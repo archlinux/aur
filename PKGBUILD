@@ -5,17 +5,18 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=abcde-poddmo-git
-pkgver=2.12.2.r2.gd793fa5
+pkgver=2.12.2.r20.gd3c3f4a
 pkgrel=2
 pkgdesc='Frontend command-line utility that grabs tracks off a CD, encodes them to ogg or mp3 format, and tags them, all in one go'
 arch=(any)
 url="https://github.com/poddmo/abcde"
-license=('GPL')
+license=(GPL-2.0-or-later)
 depends=(
-    sh 
     cd-discid
-    wget
+    perl
+    sh
     vorbis-tools
+    wget
     which
     )
 makedepends=(git)
@@ -30,8 +31,8 @@ optdepends=(
     'vorbisgain: Ogg Vorbis normalization support'
     )
 backup=("etc/abcde.conf")
-provides=(abcde)
-conflicts=(abcde)
+provides=(abcde abcde-poddmo)
+conflicts=(abcde abcde-podmmo)
 source=("abcde-poddmo::git+https://github.com/poddmo/abcde"
         hostname.patch)
 sha256sums=('SKIP'
@@ -39,7 +40,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd abcde-poddmo
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
