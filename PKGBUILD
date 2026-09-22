@@ -7,7 +7,7 @@
 
 _pkgname=neovim
 pkgname=neovim-nightly-bin
-pkgver=0.13.0+dev+1684+g0ea627cfb7
+pkgver=0.13.0+dev+1693+g0f7538c4ab
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs (nightly build)'
 arch=('x86_64' 'aarch64')
