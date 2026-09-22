@@ -1,6 +1,6 @@
 pkgbase = tuiba
 	pkgdesc = Game Boy Advance emulator that runs in your terminal
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Huseynteymurzade28/tuiba
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tuiba
 	depends = gcc-libs
 	depends = glibc
 	depends = alsa-lib
-	source = tuiba-0.3.0.tar.gz::https://github.com/Huseynteymurzade28/tuiba/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 6178b9a37ee185ceed697ce39ebd16dc5c042c25aa581fd8faf03d3f718da1d1
+	source = tuiba-0.4.0.tar.gz::https://github.com/Huseynteymurzade28/tuiba/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = ec526b0b4ee427803b481b204d852adff958e30d605a2292f5d191a561bde0cc
 
 pkgname = tuiba
