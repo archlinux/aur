@@ -31,7 +31,7 @@ options=()
 
 source=(
   "${_pkgname}::git+https://git.toastfreeware.priv.at/toast/confclerk.git"
-  "${_pkgname}.1::https://manpages.debian.org/confclerk/confclerk.1.gz"
+  "${_pkgname}.1::https://manpages.debian.org/confclerk/confclerk.1.gz"  # In fact, it comes uncompressed.
 )
 
 sha256sums=(
