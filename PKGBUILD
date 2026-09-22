@@ -1,5 +1,5 @@
 pkgname=ioruba-desktop-bin
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="Tactile audio mixer for Arduino-based Linux control (prebuilt AppImage)"
 arch=('x86_64')
@@ -10,15 +10,15 @@ provides=('ioruba-desktop' 'ioruba')
 conflicts=('ioruba-desktop' 'ioruba')
 replaces=('ioruba')
 source=(
-  "Ioruba_1.9.3_amd64.AppImage::https://github.com/bernardopg/ioruba/releases/download/v${pkgver}/Ioruba_1.9.3_amd64.AppImage"
+  "Ioruba_1.9.4_amd64.AppImage::https://github.com/bernardopg/ioruba/releases/download/v${pkgver}/Ioruba_1.9.4_amd64.AppImage"
   "ioruba.png::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/apps/desktop/src-tauri/icons/128x128.png"
   "ioruba.svg::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/apps/desktop/src-tauri/icons/app-icon.svg"
-  "run-appimage-compat.sh::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/scripts/run-appimage-compat.sh"
+  "run-appimage-compat-${pkgver}.sh::https://raw.githubusercontent.com/bernardopg/ioruba/v${pkgver}/scripts/run-appimage-compat.sh"
 )
 # makepkg reconhece o payload squashfs e tenta extrair AppImages por
 # padrao. Isso deixa no srcdir apenas o runtime ELF (~924 KiB), que o
 # package() copiava como se fosse o app completo.
-noextract=("Ioruba_1.9.3_amd64.AppImage")
+noextract=("Ioruba_1.9.4_amd64.AppImage")
 # O AppImage e um ELF static-pie com o squashfs anexado apos o offset
 # do runtime. O /extracao de debuginfo padrao do makepkg
 # reescreve o ELF e trunca o payload (81 MB -> 923 KiB de runtime
@@ -27,11 +27,11 @@ noextract=("Ioruba_1.9.3_amd64.AppImage")
 # do ~/.local/bin via PATH — com WebKit antigo, gerando os SIGABRT
 # recorrentes do Doctor de coredump.
 options=('!strip' '!debug')
-sha256sums=('37ae5a7e4f1e22cc094973a741920435fc0c9933fbca1dae9cc78ccb44ae7bf1' '7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63' 'cf1b733eb5dbf61daab65b83e825387efdb1bec1bea5daf52864514ee8e4511a' '955b333ea1b0c1b5e6c02b2a3ba3c40d0b721cfe65efb85349e333abeab22836')
+sha256sums=('514d777b157fbaab95bf8cc89be532f73313b31ca7bbf87a518c9ec1cebc8164' '7aff3ecc3a0cbc1fed8559ae0464d2af330372514c39edfaefd31c2119a2db63' 'cf1b733eb5dbf61daab65b83e825387efdb1bec1bea5daf52864514ee8e4511a' '955b333ea1b0c1b5e6c02b2a3ba3c40d0b721cfe65efb85349e333abeab22836')
 
 package() {
-  install -Dm755 "${srcdir}/Ioruba_1.9.3_amd64.AppImage" "${pkgdir}/opt/ioruba/ioruba.AppImage"
-  install -Dm755 "${srcdir}/run-appimage-compat.sh" "${pkgdir}/opt/ioruba/run-appimage-compat.sh"
+  install -Dm755 "${srcdir}/Ioruba_1.9.4_amd64.AppImage" "${pkgdir}/opt/ioruba/ioruba.AppImage"
+  install -Dm755 "${srcdir}/run-appimage-compat-${pkgver}.sh" "${pkgdir}/opt/ioruba/run-appimage-compat.sh"
   install -Dm644 "${srcdir}/ioruba.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/ioruba.png"
   install -Dm644 "${srcdir}/ioruba.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ioruba.svg"
 
