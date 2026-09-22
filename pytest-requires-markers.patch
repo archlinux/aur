@@ -1,0 +1,20 @@
+--- a/libs/community/tests/unit_tests/conftest.py
++++ b/libs/community/tests/unit_tests/conftest.py
+@@ -66,8 +66,8 @@
+         raise ValueError("Cannot specify both `--only-extended` and `--only-core`.")
+ 
+     for item in items:
+-        requires_marker = item.get_closest_marker("requires")
+-        if requires_marker is not None:
++        requires_markers = list(item.iter_markers("requires"))
++        if requires_markers:
+             if only_core:
+                 item.add_marker(pytest.mark.skip(reason="Skipping not a core test."))
+                 continue
+@@ -75,5 +75,5 @@
+             # Iterate through the list of required packages
+-            required_pkgs = requires_marker.args
++            required_pkgs = [pkg for marker in requires_markers for pkg in marker.args]
+             for pkg in required_pkgs:
+                 # If we haven't yet checked whether the pkg is installed
+                 # let's check it and store the result.

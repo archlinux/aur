@@ -1,7 +1,7 @@
 pkgbase = python-langchain-community
 	pkgdesc = Community contributed LangChain integrations.
 	pkgver = 0.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/langchain-ai/langchain/blob/master/libs/community
 	arch = any
 	license = MIT
@@ -62,8 +62,10 @@ pkgbase = python-langchain-community
 	source = python-langchain-community-0.4.2.tar.gz::https://github.com/langchain-ai/langchain-community/archive/refs/tags/libs/community/v0.4.2.tar.gz
 	source = python-3.14-ast-constant-test.patch
 	source = pytest-fixture-decorators.patch
+	source = pytest-requires-markers.patch
 	sha256sums = e611bbf6985f8ff613cfb8d2d5cd47879116054bccc69b458c2fbe8f15ebfd6e
 	sha256sums = 0788b182b216f2b457f4f73a1ac9b6582dac314d06b645f1ddd578ee75705e8e
 	sha256sums = 8595464bd24786e3ed0e7d3a6efd0e67929a1fea8911931a9f513d706c7d8e4f
+	sha256sums = ef001f85d44470be4d46b55036d0f69bf47696dbf50f30caba4fdb8ebc4e9dc7
 
 pkgname = python-langchain-community

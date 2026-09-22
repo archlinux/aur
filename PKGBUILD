@@ -6,7 +6,7 @@
 _pkgname=langchain-community
 pkgname="python-${_pkgname}"
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Community contributed LangChain integrations."
 arch=('any')
 url="https://github.com/langchain-ai/langchain/blob/master/libs/community"
@@ -73,11 +73,13 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/langchain-ai/langchain-community/archive/refs/tags/libs/community/v${pkgver}.tar.gz"
     'python-3.14-ast-constant-test.patch'
     'pytest-fixture-decorators.patch'
+    'pytest-requires-markers.patch'
 )
 sha256sums=(
     'e611bbf6985f8ff613cfb8d2d5cd47879116054bccc69b458c2fbe8f15ebfd6e'
     '0788b182b216f2b457f4f73a1ac9b6582dac314d06b645f1ddd578ee75705e8e'
     '8595464bd24786e3ed0e7d3a6efd0e67929a1fea8911931a9f513d706c7d8e4f'
+    'ef001f85d44470be4d46b55036d0f69bf47696dbf50f30caba4fdb8ebc4e9dc7'
 )
 
 prepare() {
@@ -86,6 +88,8 @@ prepare() {
     # pytest 9 rejects marks on fixtures. Loader test functions are tests, not
     # fixtures; SQL tests already carry their own optional-dependency marks.
     patch -Np1 -i "$srcdir/pytest-fixture-decorators.patch"
+    # Honor every optional-dependency marker when a test has stacked marks.
+    patch -Np1 -i "$srcdir/pytest-requires-markers.patch"
 }
 
 build() {
