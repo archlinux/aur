@@ -1,0 +1,19 @@
+pkgbase = libvirt-iso-cachyos-bin
+	pkgdesc = Official CachyOS desktop installation ISO for libvirt
+	pkgver = 260809
+	pkgrel = 1
+	url = https://cachyos.org/
+	arch = x86_64
+	license = LicenseRef-Various
+	checkdepends = libarchive
+	checkdepends = squashfs-tools
+	noextract = cachyos-desktop-linux-260809.iso
+	source = cachyos-desktop-linux-260809.iso::https://cdn77.cachyos.org/ISO/desktop/260809/cachyos-desktop-linux-260809.iso
+	source = cachyos-desktop-linux-260809.iso.sig::https://cdn77.cachyos.org/ISO/desktop/260809/cachyos-desktop-linux-260809.iso.sig
+	source = DISTRIBUTION-LICENSE
+	validpgpkeys = 882DCFE48E2051D48E2562ABF3B607488DB35A47
+	sha256sums = 959f6577f45e25ee9fd8c220fd221b08e4ea79412c7315c0f922dd6d86d5e33c
+	sha256sums = SKIP
+	sha256sums = 360daceb5db049402207e21a780c03c0695947a06a02ee9da195afe4ccc258cd
+
+pkgname = libvirt-iso-cachyos-bin

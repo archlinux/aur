@@ -1,0 +1,10 @@
+The CachyOS desktop installation ISO is an aggregate distribution containing
+software and other works under multiple licenses.
+
+No single license applies to all contents of the ISO. Each component remains
+subject to its own copyright and license terms. Those terms are provided by
+the corresponding CachyOS and Arch Linux packages and upstream projects and
+remain available within the installed system and package metadata.
+
+This package redistributes the official CachyOS ISO unchanged and grants no
+additional rights beyond the licenses of its individual contents.
