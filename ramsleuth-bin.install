@@ -7,6 +7,9 @@
 # (N/A (DriverMissing), exit 0, no panic) and is not removed from
 # unit files on upgrade.
 # post_install is informative (the hook cannot be interactive — the AUR-parity offer).
+# and zero-touch (plan E, C21-11): a sudo-invoked install additionally
+# grants the invoking user group membership + current-session socket
+# access — every step guarded, idempotent, never fatal.
 
 pre_install() {
     # The daemon unit uses Group=ramsleuth; the group must exist on the
@@ -25,6 +28,38 @@ post_install() {
              "run: systemctl enable --now ramsleuth" >&2
     fi
 
+    # Zero-touch (plan E, C21-11): when the install ran under sudo, grant
+    # the invoking user unprivileged access NOW — group membership
+    # (persistent; effective at the next login) + the C21-01 state-file
+    # seed (current-session socket access, no re-login). The username is
+    # validated like the ramsleuth-setup helper does (existing user,
+    # line-safe charset) so no value can corrupt the state file.
+    if [ -n "${SUDO_USER:-}" ]; then
+        case "$SUDO_USER" in
+            [A-Za-z_][A-Za-z0-9_-]*) : ;;
+            *) SUDO_USER="" ;;
+        esac
+    fi
+    if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ] \
+        && id -u "$SUDO_USER" >/dev/null 2>&1; then
+        if ! id -nG "$SUDO_USER" 2>/dev/null | tr ' ' '\n' | grep -qx -- ramsleuth; then
+            usermod -aG ramsleuth "$SUDO_USER" 2>/dev/null || true
+            echo "ramsleuth-bin: ${SUDO_USER} added to group 'ramsleuth' (persistent; effective at next login)"
+        fi
+        # C21-01 state-file contract: dir 0755, file 0644, one username
+        # per line (LF, no comments, no duplicates). The daemon re-applies
+        # a per-user socket ACL from it on every (re)start (C21-03).
+        install -d -m 0755 /etc/ramsleuth 2>/dev/null || true
+        if ! grep -qx -F -- "$SUDO_USER" /etc/ramsleuth/authorized-users 2>/dev/null; then
+            printf '%s\n' "$SUDO_USER" >> /etc/ramsleuth/authorized-users 2>/dev/null || true
+            echo "ramsleuth-bin: ${SUDO_USER} seeded in /etc/ramsleuth/authorized-users (current-session access, no re-login)"
+        fi
+        chmod 0644 /etc/ramsleuth/authorized-users 2>/dev/null || true
+        # Restart so the daemon applies the ACL for the CURRENT session
+        # immediately (non-fatal — the state file survives any failure).
+        systemctl restart ramsleuth.service 2>/dev/null || true
+    fi
+
     # Informative block (non-interactive, non-fatal):
     # the binary names + the optional pinned ryzen_smu DKMS offer.
     echo "ramsleuth-bin: installed — start the GUI with \`ramsleuth\` (the TUI with \`ramsleuth-tui\`)"
@@ -35,6 +70,12 @@ post_install() {
     else
         echo "ramsleuth-bin: Intel host — built-in MCHBAR decode, no extra driver needed"
     fi
+
+    # One-click setup (C21-01 helper + polkit policy — this package
+    # installs both, C21-14): the GUI first-run strip offers it; the CLI
+    # equivalent is the same single privileged entrypoint.
+    echo "ramsleuth-bin: one-click setup — 'Set up RamSleuth' in the GUI, or: sudo ramsleuth-setup"
+    echo "ramsleuth-bin:   AMD driver included: sudo ramsleuth-setup --with-dkms"
 }
 
 post_upgrade() {
