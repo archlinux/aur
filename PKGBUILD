@@ -1,6 +1,6 @@
 # Maintainer: Yaroslav Krytsun <slavko7 at gmail dot com>
 pkgname=monokular
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Export PDF pages as images with preview - one thing, done well"
 arch=('any')
