@@ -2,7 +2,7 @@
 _projectname='kiota-python'
 _packagename='microsoft-kiota-authentication-azure'
 pkgname="python-$_packagename"
-pkgver='1.11.8'
+pkgver='1.14.0'
 pkgrel='1'
 pkgdesc='Microsoft Kiota Authentication Azure Library for Python'
 arch=('any')
@@ -13,20 +13,15 @@ makedepends=('python-build' 'python-flit-core>=3.2.0' 'python-installer' 'python
 checkdepends=('python-pytest>=9.1.1' 'python-pytest-asyncio>=1.4.0' 'python-pytest-mock')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_packagename-v$pkgver.tar.gz"
-	'change-flit-upper-bound.diff'
 	'hardcode-version.diff'
 )
-b2sums=('96875730f523d4ba4d5b6425cb9984ef2f648ac0a5c2a8294f132a9ffcd44e9d96a605c480484d074c073074f0ca4c8d5fc329f09b4ef377854ec6937b745be2'
-        '16ee61f51327765110e0406c944ad89fcb74879cfdccfff1776c2c89167ac4287e349ea7a66b4c5e1290871d2bf03a765819f0b7600312cdba9f2b6311af6a0e'
+b2sums=('745146630d6b91b667aa75804a5cc706e17c1078b048bdbc7cad2975a0320a73da379b05646adfaad166929c03a84f4a3d06dff2b2a548d24cd223d221467d76'
         '6afb5c7062c12d3faa0e7f1819c456041910ee73a75a5e747f57732a24b713246bfce2577d60ddbc617540077d6bbdb856e5a907c90e43fc3519510902bc02eb')
 
 _sourcedirectory="$_projectname-$_packagename-v$pkgver/packages/authentication/azure"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/../../../"
-
-	# Bump flit upper bound, as there were no BCs
-	patch --forward -p1 < "$srcdir/change-flit-upper-bound.diff"
 
 	# Hardcode package version in _version.py to enable us to run tests without installing the package
 	patch --forward -p1 < "$srcdir/hardcode-version.diff"
