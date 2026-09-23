@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=freebuff-bin
-pkgver=0.0.183
+pkgver=0.0.184
 pkgrel=1
 pkgdesc='Free AI coding agent for the terminal, by Codebuff'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('freebuff')
 options=('!strip' '!debug')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://codebuff.com/api/releases/download/${pkgver}/freebuff-linux-x64.tar.gz")
-sha256sums_x86_64=('5dcbf275204b4b8778d1f321f41a23cff6b738b315935190ddedb32f74405c57')
-sha256sums_aarch64=('ebd8afad2c3ca67d59bbd2d96bbd8a45c780b9428e79a729ffb7faf2fd918411')
+sha256sums_x86_64=('10edc47adf14cb9aa5ff63a49c92279d1780733c18d1b0756057484fc45224fe')
+sha256sums_aarch64=('4025d5b560afe7fde0954374a0b4a435d791ec45d8b8caafae2e4337a2c6002a')
 
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://codebuff.com/api/releases/download/${pkgver}/freebuff-linux-arm64.tar.gz")
 

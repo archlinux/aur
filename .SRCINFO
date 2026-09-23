@@ -1,6 +1,6 @@
 pkgbase = freebuff-bin
 	pkgdesc = Free AI coding agent for the terminal, by Codebuff
-	pkgver = 0.0.183
+	pkgver = 0.0.184
 	pkgrel = 1
 	url = https://freebuff.com
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = freebuff-bin
 	conflicts = freebuff
 	options = !strip
 	options = !debug
-	source_x86_64 = freebuff-bin-0.0.183-x86_64.tar.gz::https://codebuff.com/api/releases/download/0.0.183/freebuff-linux-x64.tar.gz
-	sha256sums_x86_64 = 5dcbf275204b4b8778d1f321f41a23cff6b738b315935190ddedb32f74405c57
-	source_aarch64 = freebuff-bin-0.0.183-aarch64.tar.gz::https://codebuff.com/api/releases/download/0.0.183/freebuff-linux-arm64.tar.gz
-	sha256sums_aarch64 = ebd8afad2c3ca67d59bbd2d96bbd8a45c780b9428e79a729ffb7faf2fd918411
+	source_x86_64 = freebuff-bin-0.0.184-x86_64.tar.gz::https://codebuff.com/api/releases/download/0.0.184/freebuff-linux-x64.tar.gz
+	sha256sums_x86_64 = 10edc47adf14cb9aa5ff63a49c92279d1780733c18d1b0756057484fc45224fe
+	source_aarch64 = freebuff-bin-0.0.184-aarch64.tar.gz::https://codebuff.com/api/releases/download/0.0.184/freebuff-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4025d5b560afe7fde0954374a0b4a435d791ec45d8b8caafae2e4337a2c6002a
 
 pkgname = freebuff-bin
