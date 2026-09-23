@@ -1,0 +1,20 @@
+pkgbase = kigi-bin
+	pkgdesc = Terminal coding agent with graph-based workflows (prebuilt binary)
+	pkgver = 0.1.18
+	pkgrel = 1
+	url = https://github.com/ZacharyZhang-NY/Kigi-CLI
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	provides = kigi
+	conflicts = kigi
+	options = !debug
+	source_x86_64 = https://github.com/ZacharyZhang-NY/Kigi-CLI/releases/download/v0.1.18/kigi-0.1.18-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 45310d60588f9df0aa7fcf4fe448fb24f7075e8a25eedbbf5cf0cbd4a673f5e4
+	source_aarch64 = https://github.com/ZacharyZhang-NY/Kigi-CLI/releases/download/v0.1.18/kigi-0.1.18-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2f41a304489a9bcb1393301fb932ffe92ef7edf617c61a558b9f4d6ff93dec09
+
+pkgname = kigi-bin
