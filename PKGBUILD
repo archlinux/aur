@@ -7,7 +7,7 @@
 # Contributor: Felix Schindler <aur dot felixschindler dot net>
 # Contributor: Lucas H. Gabrielli <heitzmann@gmail.com>
 pkgname=slepc
-pkgver=3.25.1
+pkgver=3.25.2
 pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=(gcc-fortran cython python-setuptools)
 provides=('slepc4py')
 install=${pkgname}.install
 source=(${url}/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
-md5sums=('35dd9da264c56eade2837e5b61af260c')
+md5sums=('a500b304c4ec1ea0a4caaaab5eaa5320')
 
 build() {
   # get SLEPC_DIR
