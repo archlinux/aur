@@ -1,6 +1,6 @@
 pkgbase = bearbar-git
 	pkgdesc = Compact GTK4 desktop bar for Hyprland, Niri, Sway, and KDE Plasma
-	pkgver = 0.1.0.r2.ge9cf04b
+	pkgver = 0.1.0.r4.gee6879a
 	pkgrel = 1
 	url = https://github.com/tanay1337/bearbar
 	arch = x86_64
