@@ -3,7 +3,7 @@
 pkgname=silex-desktop-v3-bin
 pkgver=3.10.0canary3 # I'll switch to stable once ready 
 _pkgver=3.10.0-canary.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Silex website builder desktop application"
 arch=('x86_64')
 url="https://github.com/silexlabs/Silex"
@@ -12,14 +12,9 @@ license=('AGPL-3.0-or-later')
 options=('!strip' '!debug')
 
 depends=(
-    cairo
-    gdk-pixbuf2
-    glib2
     gtk3
-    hicolor-icon-theme
-    libsoup3
-    openssl
     webkit2gtk-4.1
+    hicolor-icon-theme
 )
 
 _raw="https://raw.githubusercontent.com/silexlabs/Silex/v${_pkgver}"
