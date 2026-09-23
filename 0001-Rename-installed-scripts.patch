@@ -1,0 +1,27 @@
+From 96aa64c9dfb347a0004ac85cce7ba0a6046b7b30 Mon Sep 17 00:00:00 2001
+From: quietvoid <tcChlisop0@gmail.com>
+Date: Wed, 23 Sep 2026 08:35:20 -0400
+Subject: [PATCH] Rename installed scripts
+
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index c8abfdd..0ed1edd 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -62,8 +62,8 @@ docs = [
+     ]
+ 
+ [project.scripts]
+-pyosmium-get-changes = "npyosmium.tools.pyosmium_get_changes:main"
+-pyosmium-up-to-date = "npyosmium.tools.pyosmium_up_to_date:main"
++npyosmium-get-changes = "npyosmium.tools.pyosmium_get_changes:main"
++npyosmium-up-to-date = "npyosmium.tools.pyosmium_up_to_date:main"
+ 
+ [tool.scikit-build]
+ minimum-version = "build-system.requires"
+-- 
+2.55.0
+
