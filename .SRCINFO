@@ -1,0 +1,21 @@
+pkgbase = faircamp-cli
+	pkgdesc = A static site generator for audio producers
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://faircamp.org
+	arch = aarch64
+	arch = x86_64
+	license = AGPL3
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	depends = ffmpeg
+	depends = opus
+	conflicts = faircamp
+	conflicts = faircamp-bin
+	conflicts = faircamp-git
+	options = !lto
+	source = faircamp-2.0.0.tar.gz::https://codeberg.org/simonrepp/faircamp/archive/2.0.0.tar.gz
+	sha256sums = b0601a411fe041baae4da86bab4242fc964df6229ff2335955f1d5df46f2deff
+
+pkgname = faircamp-cli
