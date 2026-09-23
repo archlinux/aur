@@ -1,0 +1,18 @@
+pkgbase = tio-fork-jetm
+	pkgdesc = Serial device I/O tool - fork with socket client mode and RFC 2217
+	pkgver = 3.9.r100.ga068040
+	pkgrel = 1
+	url = https://github.com/jetm/tio
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = pkgconf
+	depends = glib2
+	depends = lua
+	provides = tio=3.9
+	conflicts = tio
+	source = tio::git+https://github.com/jetm/tio.git#commit=a068040d39d057ec368d5d2bd71e868fc6b88c0e
+	sha256sums = SKIP
+
+pkgname = tio-fork-jetm
