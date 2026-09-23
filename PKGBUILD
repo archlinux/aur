@@ -2,7 +2,7 @@
 
 pkgname=autogit
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Auto build, update, install PKGBUILDS from Github, Gitlab and AUR"
 arch=('any')
 url="https://github.com/puxplaying/autogit"
