@@ -1,9 +1,9 @@
 # Maintainer: Guillaume Quintard <guillaume.quintard@varnish-software.com>
 
 pkgname=vmod-geoip2
-pkgver=9.0.3
-pkgrel=3
-_srcver=976c551b5584034dde80ac30f8baa07f1bc92834
+pkgver=9.1.0
+pkgrel=2
+_srcver=d958af1dec630794af0695cf4181062a430e99e4
 pkgdesc="Varnish vmod to query MaxMind GeoIP2 DB files"
 arch=('x86_64')
 url="https://github.com/varnishcache-friends/libvmod-geoip2"
@@ -11,7 +11,7 @@ license=('BSD-2-Clause')
 depends=("varnish=$pkgver-$pkgrel" 'libmaxminddb')
 makedepends=('autoconf' 'automake' 'libtool' 'autoconf-archive' 'pkg-config' 'python-docutils')
 source=("libvmod-geoip2-$_srcver.tar.gz::https://github.com/varnishcache-friends/libvmod-geoip2/archive/${_srcver}.tar.gz")
-sha512sums=('510d71112207e5656b7b96f4d9604b16ded8fad55df40b8ab35536e4214dd39838a9e0f39286033424d585b78f8c1aa1adfa8250d6c0f0f13d0ab7342d920437')
+sha512sums=('9a24cd05018f8d5aeb1bd06100d688d937d082e1b6644c158ace02a1f8bdf9d28d0021d918a1c75b15f3ae159ddc5055db91ca7969a9c5e3bde911ef992994c6')
 
 build() {
     cd "libvmod-geoip2-$_srcver"
