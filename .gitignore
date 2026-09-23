@@ -1,0 +1,6 @@
+*.pkg.*
+src
+pkg
+*.tar.*
+*.log
+libva-v4l2_request/
