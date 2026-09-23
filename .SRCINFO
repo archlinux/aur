@@ -1,6 +1,6 @@
 pkgbase = dalinira-bin
 	pkgdesc = DaliNira Browser native binary package
-	pkgver = 7.2.0
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = https://github.com/Muhammed-Dali/DaliNira-Browser
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = dalinira-bin
 	conflicts = dalinira
 	conflicts = dalinira-webmedia
 	replaces = dalinira-webmedia
-	source = dalinira-browser-7.2.0-linux-x86_64.tar.zst::https://github.com/Muhammed-Dali/DaliNira-Browser/releases/download/v7.2.0/dalinira-browser-7.2.0-linux-x86_64.tar.zst
-	sha256sums = e9f6b58550757b8d82540e49fc77637d7c0767832390579e36659fae1dba3a78
+	source = dalinira-browser-7.2.1-linux-x86_64.tar.zst::https://github.com/Muhammed-Dali/DaliNira-Browser/releases/download/v7.2.1/dalinira-browser-7.2.1-linux-x86_64.tar.zst
+	sha256sums = 71075a30142d725d56b66f7bba1364a2b71a540f927a7b139b534877b2c835c2
 
 pkgname = dalinira-bin
