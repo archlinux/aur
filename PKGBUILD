@@ -24,7 +24,7 @@ provides=('dicto')
 conflicts=('dicto')
 source_x86_64=("https://github.com/logi-camp/dicto/releases/download/v${pkgver}/dicto-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 # Checksum is injected by CI from the built release tarball (real b2sum, not SKIP).
-b2sums_x86_64=('14a7f751ad21b24912c617d37642391ecfdaa9c087ef4e158e71c1c50fcbaf262a438c6883a4a22d3e3aab7422198a06c7939f16b979c675cb64a81db4e31433')
+b2sums_x86_64=('82f51ce2f3cf58ed68c658e25808c4578515b1aa9202734134170e2f738b9550cbaf22ee161f52d8c2ebd8f7d3899f1abf3296acd13dc235b9c2ebcbcbda992c')
 
 package() {
   install -Dm755 "$srcdir/dicto" \
