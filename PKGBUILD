@@ -5,7 +5,7 @@
 pkgname=postsrsd-git
 epoch=1
 pkgver=2.4.0+4.r433.20260923.gae0454d
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
 provides=("postsrsd=${pkgver}")
 conflicts=("postsrsd")
@@ -47,7 +47,7 @@ sha256sums=(
   '8613b3c1a6eec65d0137d97781c8919a84879c49be137b48f8bd29ee3b96cd08'
   'd6bfcfafdbb89adb8e340f652782924cf602de8a84f1026a4c337dd71953d444'
 )
-options=('emptydirs') # To keep `/var/lib` around, which `postsrsd` uses to `chroot()` into.
+options=('emptydirs') # To keep `/var/lib/postsrsd` around, which `postsrsd` uses to `chroot()` into.
 
 prepare() {
   cd "${srcdir}/postsrsd"
@@ -76,6 +76,11 @@ prepare() {
     -DGENERATE_SRS_SECRET=OFF \
     -DINSTALL_SYSTEMD_SERVICE=ON \
     -DINSTALL_SYSTEMD_SYSUSERS=OFF \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DPOSTSRSD_CHROOTDIR=/var/lib/postsrsd \
+    -DPOSTSRSD_DATADIR=/var/lib/postsrsd \
+    -DPOSTSRSD_CONFIGDIR=/etc/postsrsd \
+    -DPOSTSRSD_USER=postsrsd \
     -DSYSTEMD_SYSUSERSDIR=/usr/lib/sysusers.d \
     -DSYSTEMD_UNITDIR=/usr/lib/systemd/system \
     -DWITH_REDIS=ON \
