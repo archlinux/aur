@@ -1,6 +1,6 @@
 pkgbase = screencfg-git
 	pkgdesc = Automatically configure your screen setup
-	pkgver = 0.4.r0.g4223120
+	pkgver = 0.5.1.r1.g573b7c1
 	pkgrel = 1
 	url = https://github.com/hakoerber/screencfg
 	arch = x86_64
