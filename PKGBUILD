@@ -1,12 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.116.18
+pkgver=0.117.2
 _electronversion=44
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker."
 arch=(
     'aarch64'
-#    'armv7h'
     'x86_64'
 )
 url="https://lvce-editor.github.io/lvce-editor"
@@ -24,16 +23,15 @@ options=(
     '!emptydirs'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_arm64.deb")
-#source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_armhf.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb")
 source=(
     "lintian-${pkgname%-bin}"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('62cc9550955a9c7bf14338fa29cfeaf825cb62d555e0ff9cf0a69000f960b78d')
-sha256sums_x86_64=('0f1a9119f5b520aee633c70f1a5b2b3c6dcca6f3b5e34136e29f9885f35c688f')
+            '5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
+sha256sums_aarch64=('f3d544220fa5231fa350b791ed857bff2ecaca5b69bf7f54aeb9b209e40a98e0')
+sha256sums_x86_64=('957eb990fb108b62f5be213e2b69cc421ebc7c08394cf82ac0035d1bf196daf7')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -62,26 +60,13 @@ prepare() {
     _check_electron_version
     sed -i "s/\/usr\/lib\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     local _app_dir=$(_get_app_dir)
-    PATTERNS=(
-        "**/android-*"
-        "**/darwin-*"
-        "**/ios-*"
-        "**/win32-*"
-    )
-    for pattern in "${PATTERNS[@]}"; do
-        find "${_app_dir}/resources/app/packages" -type d -path "${pattern}" -exec rm -rf {} +
-    done
     case "${CARCH}" in
-        aarch64)
-            find "${_app_dir}/resources/app/packages" -type d -name "linux-x64" -exec rm -rf {} +
-            ;;
-        armv7h)
-            find "${_app_dir}/resources/app/packages" -type d -name "linux-arm64" -o -name "linux-x64" -exec rm -rf {} +
-            ;;
-        x86_64)
-            find "${_app_dir}/resources/app/packages" -type d -name "linux-arm*" -exec rm -rf {} +
-            ;;
+        aarch64)    _arch_rem="x64"     ;;
+        x86_64)     _arch_rem="arm64"   ;;
     esac
+    find "${_app_dir}/resources/app/packages" \
+        \( -name "*android*" -o -name "ios-*" -o -name "*win32*" -o -name "*darwin*" -o -name "*${_arch_rem}*" \) \
+        -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
