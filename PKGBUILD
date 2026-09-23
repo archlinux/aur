@@ -3,7 +3,7 @@
 # pkgver is rewritten from the release tag, and checksums by updpkgsums, by
 # packaging/aur/publish.sh on every release.
 pkgname=mlp
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='Encrypt and decrypt files with AES-256-GCM using an auto-managed keyfile'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('go')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7a30abe56e479dc1b34ee082e6934c219dda07acf6b9852d14ac6e2bf966e5df')
+sha256sums=('26ee5287c6c81543b2163ef57134eb6c80476c9242015e02bae7b6744b8a9dd2')
 
 prepare() {
   cd "mask-decryption-$pkgver"
