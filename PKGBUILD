@@ -1,6 +1,6 @@
 # Maintainer: Yangtse Su <yangtsesu@gmail.com>
 # Arch naming: the package installs the importable module `laya`, so it is `python-laya`.
-# 0.3.8 ships three console scripts -- `laya` (local CLI), `laya-serve` (HTTP) and
+# 0.3.10 ships three console scripts -- `laya` (local CLI), `laya-serve` (HTTP) and
 # `laya-mcp-server` (MCP over stdio). They stay in this package rather than moving to
 # non-prefixed splits: each only serves this module, which is the "program strongly coupled
 # to the Python ecosystem" case the guidelines keep under the python- prefix
@@ -8,7 +8,7 @@
 # they are optdepends, not depends.
 pkgname=python-laya
 _name=${pkgname#python-}
-pkgver=0.3.8
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="Fast, non-autoregressive System 1 decision engine with calibrated probabilities"
 arch=('any')
@@ -46,8 +46,8 @@ checkdepends=(
   'python-tokenizers'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5293b9878eb67c536bd90816a7d48fb90fc61da1723fc198d72168818e29cc1c')
-b2sums=('6910733be652bb835c35ea1d48ad08a9ab3849862c0cb10c8be32300469b03c27d0b0d3fa36f8a7d9cf317655563ce91542f745ef3a1f113cf2d7161dbd588c1')
+sha256sums=('4997adf8a107e8476817160e695d1005ec4c0a569fc44e1f29dfbcb208d69494')
+b2sums=('9628a0826c8342521bef3a223a43a3481b7dcd9dcd569ba85989c33774e7246366c57c5322141938fd6196dab51694e391f91104f54a264f08741ba9f0bef117')
 
 build() {
   cd "$_name-$pkgver"
