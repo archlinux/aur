@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=carvel-tools
-pkgver=20260916
+pkgver=20260923
 pkgrel=1
 pkgdesc='Deprecated: install carvel tools separately'
 url='https://carvel.dev'
@@ -13,10 +13,10 @@ license=(Apache)
 install='1.install'
 conflicts=(imgpkg kapp kbld kctrl kwt vendir ytt)
 provides=(imgpkg kapp kbld kctrl kwt vendir ytt)
-source_x86_64=(imgpkg-v0.48.1::https://github.com/carvel-dev/imgpkg/releases/download/v0.48.1/imgpkg-linux-amd64 kapp-v0.65.4::https://github.com/carvel-dev/kapp/releases/download/v0.65.4/kapp-linux-amd64 kbld-v0.49.1::https://github.com/carvel-dev/kbld/releases/download/v0.49.1/kbld-linux-amd64 kctrl-v0.60.8::https://github.com/carvel-dev/kapp-controller/releases/download/v0.60.8/kctrl-linux-amd64 kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-amd64 vendir-v0.46.2::https://github.com/carvel-dev/vendir/releases/download/v0.46.2/vendir-linux-amd64 ytt-v0.55.2::https://github.com/carvel-dev/ytt/releases/download/v0.55.2/ytt-linux-amd64)
-source_aarch64=(imgpkg-v0.48.1::https://github.com/carvel-dev/imgpkg/releases/download/v0.48.1/imgpkg-linux-arm64 kapp-v0.65.4::https://github.com/carvel-dev/kapp/releases/download/v0.65.4/kapp-linux-arm64 kbld-v0.49.1::https://github.com/carvel-dev/kbld/releases/download/v0.49.1/kbld-linux-arm64 kctrl-v0.60.8::https://github.com/carvel-dev/kapp-controller/releases/download/v0.60.8/kctrl-linux-arm64 kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-arm64 vendir-v0.46.2::https://github.com/carvel-dev/vendir/releases/download/v0.46.2/vendir-linux-arm64 ytt-v0.55.2::https://github.com/carvel-dev/ytt/releases/download/v0.55.2/ytt-linux-arm64)
-sha256sums_x86_64=(6c7a1a2e6555e7827c3c97580be87c84d06778d0650d308f7dc67613aec7c7c8 bf7df0647d7645572d45185bb8bf6a40dd1e631ff4ee1522bc8ce56db53bd243 437d38d3e59d01dd0d1ad75b4eb67fbd04fe51ed3de1ed55c3f7b3b7d5ec7546 0d909461445bc43775a821e95a80e129cc914a4bc9e118afe5ccd6cc565dccb2 1022483a8b59fe238e782a9138f1fee6ca61ecf7ccd1e5f0d98e95c56df94d87 0b4bad28b765c4cbf0cc2234d0d420bcf2d352b58eb202e9c55263374f95bd71 512cc21193d3b0ce307b6e8db6ba8d40831f16e02526e1c753416456ea4319af)
-sha256sums_aarch64=(ce7243af30411581474ab86051774626b34c5b95ff1d030b3ee979ebddaf795d e41693ac3d69e1143c7e5fe870712ca05ed810e1e0bc5b00f77ca22ba0f18ae1 b3f5277ff4819de189d1ebd6e455b3390308ca43b122b5bb3c40a7bb9e6f30c4 1964484d2d432fbac03acaad9c6bd0fcd759c6084ea2978631bf8a6070b52406 7b94a134cbde5ff2e245d102f54b9ac9f81b3fcc5e54a5cefecc1e5845b8a65f bb0574c3aff6a5ae99801ceb3d63893917f763908700883bc1fbbcfed2ab6c9b 6b09566cd9cbe90050c8685889aa1eef050c3f1168809df2486062e8a3ed1ec0)
+source_x86_64=(imgpkg-v0.48.1::https://github.com/carvel-dev/imgpkg/releases/download/v0.48.1/imgpkg-linux-amd64 kapp-v0.65.4::https://github.com/carvel-dev/kapp/releases/download/v0.65.4/kapp-linux-amd64 kbld-v0.49.1::https://github.com/carvel-dev/kbld/releases/download/v0.49.1/kbld-linux-amd64 kctrl-v0.60.8::https://github.com/carvel-dev/kapp-controller/releases/download/v0.60.8/kctrl-linux-amd64 kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-amd64 vendir-v0.46.2::https://github.com/carvel-dev/vendir/releases/download/v0.46.2/vendir-linux-amd64 ytt-v0.55.3::https://github.com/carvel-dev/ytt/releases/download/v0.55.3/ytt-linux-amd64)
+source_aarch64=(imgpkg-v0.48.1::https://github.com/carvel-dev/imgpkg/releases/download/v0.48.1/imgpkg-linux-arm64 kapp-v0.65.4::https://github.com/carvel-dev/kapp/releases/download/v0.65.4/kapp-linux-arm64 kbld-v0.49.1::https://github.com/carvel-dev/kbld/releases/download/v0.49.1/kbld-linux-arm64 kctrl-v0.60.8::https://github.com/carvel-dev/kapp-controller/releases/download/v0.60.8/kctrl-linux-arm64 kwt-v0.0.8::https://github.com/carvel-dev/kwt/releases/download/v0.0.8/kwt-linux-arm64 vendir-v0.46.2::https://github.com/carvel-dev/vendir/releases/download/v0.46.2/vendir-linux-arm64 ytt-v0.55.3::https://github.com/carvel-dev/ytt/releases/download/v0.55.3/ytt-linux-arm64)
+sha256sums_x86_64=(6c7a1a2e6555e7827c3c97580be87c84d06778d0650d308f7dc67613aec7c7c8 bf7df0647d7645572d45185bb8bf6a40dd1e631ff4ee1522bc8ce56db53bd243 437d38d3e59d01dd0d1ad75b4eb67fbd04fe51ed3de1ed55c3f7b3b7d5ec7546 0d909461445bc43775a821e95a80e129cc914a4bc9e118afe5ccd6cc565dccb2 1022483a8b59fe238e782a9138f1fee6ca61ecf7ccd1e5f0d98e95c56df94d87 0b4bad28b765c4cbf0cc2234d0d420bcf2d352b58eb202e9c55263374f95bd71 15751b45a819edbf22b3d3eadb5fa9a5a2599128d921660a874bd39c47bb41e1)
+sha256sums_aarch64=(ce7243af30411581474ab86051774626b34c5b95ff1d030b3ee979ebddaf795d e41693ac3d69e1143c7e5fe870712ca05ed810e1e0bc5b00f77ca22ba0f18ae1 b3f5277ff4819de189d1ebd6e455b3390308ca43b122b5bb3c40a7bb9e6f30c4 1964484d2d432fbac03acaad9c6bd0fcd759c6084ea2978631bf8a6070b52406 7b94a134cbde5ff2e245d102f54b9ac9f81b3fcc5e54a5cefecc1e5845b8a65f bb0574c3aff6a5ae99801ceb3d63893917f763908700883bc1fbbcfed2ab6c9b fed073d52b780a88ce506e68c44f33cedede2dad3d5f4fbe07a2833e45d996ed)
 package () 
 { 
     set -eo pipefail;
@@ -41,7 +41,7 @@ package ()
     "${pkgdir}/usr/bin/vendir" completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname}-vendir";
     "${pkgdir}/usr/bin/vendir" completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}-vendir.fish";
     "${pkgdir}/usr/bin/vendir" completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}-vendir";
-    install -Dm 755 "${srcdir}/ytt-v0.55.2" "${pkgdir}/usr/bin/ytt";
+    install -Dm 755 "${srcdir}/ytt-v0.55.3" "${pkgdir}/usr/bin/ytt";
     "${pkgdir}/usr/bin/ytt" completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/${pkgname}-ytt";
     "${pkgdir}/usr/bin/ytt" completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}-ytt.fish";
     "${pkgdir}/usr/bin/ytt" completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}-ytt"
