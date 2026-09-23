@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=volt-gui
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Control panel for Vulkan games on Linux."
 arch=('x86_64')
 url="https://github.com/pythonlover02/volt-gui"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'bash'
   'pyside6'
@@ -17,7 +17,7 @@ optdepends=("lib32-libvolt=$pkgver: 32-bit support")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('c8fec0a63eec8e75c3e42518c16d3b4379ae80a6c5067ce3ca4da20cbfb0e000'
+sha256sums=('14cbef1dba50ccc8f8d7e8bead710c57db85aff7f8e7d6f9c95e7c2f8fd0c203'
             '0fecb7aa42634bf2bcfa26d04ebc1b8cdf809d88bdf7f8cb47538455b25225a1'
             '793d25522428248cebaa83e802aef4f31ceed55ddd5e0f2beb2c2031835ddb2b')
 

@@ -1,20 +1,20 @@
 pkgbase = volt-gui
 	pkgdesc = Control panel for Vulkan games on Linux.
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/pythonlover02/volt-gui
 	arch = x86_64
-	license = GPL-3.0-or-later
+	license = GPL-3.0-only
 	makedepends = cargo
 	depends = bash
 	depends = pyside6
 	depends = python
 	depends = vulkan-icd-loader
-	optdepends = lib32-libvolt=2.4.0: 32-bit support
-	source = volt-gui-2.4.0.tar.gz::https://github.com/pythonlover02/volt-gui/archive/refs/tags/v2.4.0.tar.gz
+	optdepends = lib32-libvolt=2.4.1: 32-bit support
+	source = volt-gui-2.4.1.tar.gz::https://github.com/pythonlover02/volt-gui/archive/refs/tags/v2.4.1.tar.gz
 	source = volt-gui.desktop
 	source = volt-gui.sh
-	sha256sums = c8fec0a63eec8e75c3e42518c16d3b4379ae80a6c5067ce3ca4da20cbfb0e000
+	sha256sums = 14cbef1dba50ccc8f8d7e8bead710c57db85aff7f8e7d6f9c95e7c2f8fd0c203
 	sha256sums = 0fecb7aa42634bf2bcfa26d04ebc1b8cdf809d88bdf7f8cb47538455b25225a1
 	sha256sums = 793d25522428248cebaa83e802aef4f31ceed55ddd5e0f2beb2c2031835ddb2b
 
