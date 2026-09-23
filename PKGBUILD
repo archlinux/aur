@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Empower the Shell to think. Evolve Operations."
 
-pkgver=0.3.13
+pkgver=0.3.14
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -36,8 +36,8 @@ source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/downlo
 sha256sums=('0081ab5c70ec0225227f1ab5d5a90d59add381adb6b9a35d03fb0fb719bdaaa0'
             '7612ad30cc7b8f11ee6e41aa8e0a11ca14cbd827577a6dafcdfe631f197988fc'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('aed50ab85bc288a3963bfeba8ea30b0ab0933dfd107dbd4c688a53804fd5990d')
-sha256sums_aarch64=('bb7d1611cff4b89b0d19106c50564e35e0ee023342153a9719ba8717db864d37')
+sha256sums_x86_64=('f9d9a206c059fd6c727e8a6cc39e1b2b628303dd34066a75142b2509299a872e')
+sha256sums_aarch64=('ef79dc2a6f8825b353f838e5cf4fa683e26e39b2c61b5b040c153f8cc83a509e')
 
 
 case ${CARCH} in
