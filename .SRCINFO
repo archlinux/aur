@@ -24,6 +24,7 @@ pkgbase = rox-player-git
 	optdepends = vulkan-intel: Vulkan support for Intel graphics
 	optdepends = vulkan-radeon: Vulkan support for AMD graphics
 	optdepends = nvidia-utils: Vulkan support for Nvidia graphics
+	optdepends = noto-fonts-cjk: fast drawing of Japanese, Chinese and Korean text
 	provides = rox
 	provides = rox-player
 	conflicts = rox-player
