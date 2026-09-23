@@ -1,12 +1,11 @@
-# Maintainer: dreieck
-# Contributors:
-#   Radek Podgorny <radek@podgorny.cz>
-#   Thomas Haider <t.haider@deprecate.de>
+# Maintainer:  dreieck
+# Contributor: Radek Podgorny <radek@podgorny.cz>
+# Contributor: Thomas Haider <t.haider@deprecate.de>
 
 pkgname=postsrsd-git
 epoch=1
 pkgver=2.4.0+4.r433.20260923.gae0454d
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
 provides=("postsrsd=${pkgver}")
 conflicts=("postsrsd")
@@ -48,7 +47,7 @@ sha256sums=(
   '8613b3c1a6eec65d0137d97781c8919a84879c49be137b48f8bd29ee3b96cd08'
   'd6bfcfafdbb89adb8e340f652782924cf602de8a84f1026a4c337dd71953d444'
 )
-#options=('emptydirs')
+options=('emptydirs') # To keep `/var/lib` around, which `postsrsd` uses to `chroot()` into.
 
 prepare() {
   cd "${srcdir}/postsrsd"

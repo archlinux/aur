@@ -1,7 +1,7 @@
 pkgbase = postsrsd-git
 	pkgdesc = Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix
 	pkgver = 2.4.0+4.r433.20260923.gae0454d
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/roehling/postsrsd
 	install = postsrsd.install
@@ -21,6 +21,7 @@ pkgbase = postsrsd-git
 	depends = libsqlite3.so
 	provides = postsrsd=2.4.0+4.r433.20260923.gae0454d
 	conflicts = postsrsd
+	options = emptydirs
 	backup = etc/postsrsd/postsrsd.conf
 	backup = etc/postsrsd/postsrsd.secret
 	source = git+https://github.com/roehling/postsrsd.git
