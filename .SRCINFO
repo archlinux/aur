@@ -1,0 +1,18 @@
+pkgbase = spacequilt-git
+	pkgdesc = Disk usage as a SpaceMonger-style nested map or xdiskusage-style icicle columns (PySide6, du-based)
+	pkgver = fcf931d
+	pkgrel = 1
+	url = https://github.com/emoryy/spacequilt
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = svgo
+	depends = python
+	depends = zlib
+	depends = pyside6
+	source = git+https://github.com/emoryy/spacequilt.git
+	source = spacequilt.desktop
+	b2sums = SKIP
+	b2sums = 1f4b4a3976bdf8a65bca333d05987a952d6a14d3ae7b610c7ea4a62b5362eb96cb13da28a12a55fa8955497fe279a319465cd9c00f64c3912165d681c4d61ac7
+
+pkgname = spacequilt-git
