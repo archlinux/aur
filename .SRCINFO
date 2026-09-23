@@ -1,7 +1,7 @@
 pkgbase = opl-pc-tools-git
 	pkgdesc = Desktop tools for working with Open PS2 Loader storages
 	pkgver = 3.0.r1.g2da4c5c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brainstream/OPL-PC-Tools
 	arch = x86_64
 	license = GPL-3.0-or-later
