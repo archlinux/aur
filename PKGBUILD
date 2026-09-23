@@ -13,10 +13,10 @@
 # on Arch. It does hard-require a download transport, hence curl in depends.
 
 pkgname=unsloth-desktop-bin
-pkgver=0.1.811.beta
+pkgver=0.1.815.beta
 pkgrel=1
 pkgdesc='Unsloth Desktop - train and run open models locally (prebuilt)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://unsloth.ai/'
 license=('AGPL-3.0-only')
 # Mostly the binary's DT_NEEDED entries. libayatana-appindicator is the exception:
@@ -51,8 +51,10 @@ conflicts=("unsloth")
 options=('!strip')
 
 _tag="v${pkgver/.beta/-beta}"
-source=("${pkgname}-${pkgver}.deb"::"https://github.com/unslothai/unsloth/releases/download/${_tag}/Unsloth-Desktop-Ubuntu.deb")
-sha256sums=('01edd32df3b2e71cf75248c8b98702fa449f8faed8d6ed44806548021ff73ebe')
+source_x86_64=("${pkgname}-${pkgver}.deb"::"https://github.com/unslothai/unsloth/releases/download/${_tag}/Unsloth-Desktop-Ubuntu.deb")
+sha256sums_x86_64=('71838cdf4b15e50502a5ee066e9004478a9520733cffe9c2e7993f4728eb8b56')
+source_aarch64=("${pkgname}-${pkgver}.deb"::"https://github.com/unslothai/unsloth/releases/download/${_tag}/Unsloth-Desktop-Ubuntu-ARM64.deb")
+sha256sums_aarch64=('34197d9c5bc12a26585e9f892323e16b3e8bf831ab98559191d426a381b18d08')
 
 package() {
 	bsdtar -xf data.tar.gz -C "$pkgdir"
