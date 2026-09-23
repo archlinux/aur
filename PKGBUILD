@@ -1,7 +1,7 @@
 # Maintainer: notfire <luke@notfire.cc>
 _maintainer_email="luke@notfire.cc"
 pkgname=fadein
-pkgver=5.0.13
+pkgver=5.0.14
 pkgrel=1
 pkgdesc="Professional screenwriting software (DEMO)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="http://www.fadeinpro.com/"
 license=('custom')
 depends=('gtk3' 'webkit2gtk-4.1' 'libtiff5')
 source=("$pkgname-$pkgver.tar.gz::https://www.fadeinpro.com/download/demo/fadein-linux-x64-demo.tar.gz")
-sha512sums=('005e2bd0664a43ab07fa399181e42bf0fd0d6ddaf5db69546ad6cd0a6b88e11e4e786295eebf19d10477174c2bb552f06937d1af15ee64e7a64467f7db6f189b')
+sha512sums=('b25e2e47443dbb69e9d6ad5e870db59034a00963d38372bf92e1f68b8d9e4609baab9655f8d4ffc87a528b5d0bdb8abdce6508fe9a3b2dc5336702febbb0ca6b')
 
 _vendor_name="fadein-linux-x86_64"
 
