@@ -3,8 +3,8 @@
 pkgname=whylian-git
 _pkgname=whylian
 pkgver=1.0.4.r1.g8c467e9
-pkgrel=6
-pkgdesc="Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux (git)"
+pkgrel=7
+pkgdesc="Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux (git) — builds the same code as 'whylian'; install that instead"
 arch=('x86_64')
 url="https://github.com/byrdltd/whyLIAN"
 license=('MIT')
