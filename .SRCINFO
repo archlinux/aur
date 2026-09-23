@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-nightly
 	pkgdesc = Jitsi Meet Web nightly build
-	pkgver = 1.0.9392
+	pkgver = 1.0.9473
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = jitsi-meet-nightly
 	options = !strip
 	backup = etc/webapps/jitsi-meet-nightly/config.js
 	backup = etc/webapps/jitsi-meet-nightly/interface_config.js
-	source = jitsi-meet-nightly::git+https://github.com/jitsi/jitsi-meet#tag=9392
-	sha256sums = eddd39df576a5927950f96e729bbc57baf000b6356ed123c4236cc0337ac96e4
+	source = jitsi-meet-nightly::git+https://github.com/jitsi/jitsi-meet#tag=9473
+	sha256sums = 4956ecac03d8ab6de56e50b9dd108575055d59cb96fec387216399cd37eb7727
 
 pkgname = jitsi-meet-nightly
