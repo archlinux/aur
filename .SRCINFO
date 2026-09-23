@@ -1,0 +1,23 @@
+pkgbase = yiyang-suite-bin
+	pkgdesc = An office tool suite that integrates mind maps, outline notes, flowcharts, Markdown, Office, and PDF annotations, dedicated to creating a concise and convenient document production environment for professionals.
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://www.eo2suite.cn
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	makedepends = asar
+	depends = electron29-bin
+	depends = 7zip
+	provides = yiyang-suite=2.5.1
+	conflicts = yiyang-suite
+	options = !strip
+	options = !emptydirs
+	source = yiyang-suite.sh
+	sha256sums = 5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e
+	source_aarch64 = yiyang-suite-2.5.1-aarch64.deb::https://pkg-cdn.jianguoyun.com/static/exe/installer/YiYang-Suite-Setup-linux-arm64.deb
+	sha256sums_aarch64 = e1df492c702d5d256dd8c52ae5e9115ca5e01aa13ae5afeb595d7f1216c17fe1
+	source_x86_64 = yiyang-suite-2.5.1-x86_64.deb::https://pkg-cdn.jianguoyun.com/static/exe/installer/YiYang-Suite-Setup-linux-amd64.deb
+	sha256sums_x86_64 = 116955dce936b0a0a8407bf062c600d7c429e8da9c09ba7052cd573f640bccb4
+
+pkgname = yiyang-suite-bin
