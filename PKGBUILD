@@ -28,6 +28,11 @@ check() {
     ctest --test-dir builddir --output-on-failure
 }
 
+prepare() {
+    cd "$srcdir/OPL-PC-Tools"
+    git submodule update --init --recursive
+}
+
 package() {
     DESTDIR="$pkgdir" cmake --install builddir -v --config Release
     install -v -D -t $pkgdir/usr/bin "$srcdir/builddir/oplpctools"
