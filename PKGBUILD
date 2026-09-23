@@ -3,7 +3,7 @@
 # Contributor: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 _projectname='psl'
 pkgname='python-publicsuffixlist'
-pkgver='1.0.2.20260328'
+pkgver='1.0.2.20260922'
 pkgrel='1'
 pkgdesc='publicsuffixlist for python'
 arch=('any')
@@ -12,7 +12,7 @@ license=('MPL-2.0')
 depends=('python>=3.5.0' 'python-requests')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver-gha.tar.gz")
-b2sums=('454981d8acbd1fecfaae1e8beaba6c8cc514845d6368015e771dcc834497a93d0a2fcce85f877e8d2d6462471d1ebebd934945f4f89d7cf7be6f05d92abf169e')
+b2sums=('8df49aea84224c54319159e60ca66f5d3dd8f6b04c13d1e84b03515041c83292f1ed5f3283b78514a612b05e0a8a9e31e4f225973900359bfb87e2cddb699976')
 
 _sourcedirectory="$_projectname-$pkgver-gha"
 
