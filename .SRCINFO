@@ -1,6 +1,6 @@
 pkgbase = r-bayesrel
 	pkgdesc = Bayesian Reliability Estimation
-	pkgver = 0.7.9
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Bayesrel
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-bayesrel
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/Bayesrel_0.7.9.tar.gz
-	sha256sums = 91e21b0e64d17ddea86fae46647631f5af417265648c66b761b4d0a65bd0b24c
+	source = https://cran.r-project.org/src/contrib/Bayesrel_0.8.0.tar.gz
+	sha256sums = e87e12bea90c636d0308715d5097c364564f30cb938812d5700d6c193a2bd03d
 
 pkgname = r-bayesrel
