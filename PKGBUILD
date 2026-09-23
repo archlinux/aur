@@ -7,7 +7,7 @@ pkgname=(
   lib32-openal
 )
 pkgver=1.25.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform 3D audio library, software implementation (32-bit)"
 url="https://github.com/kcat/openal-soft"
 arch=(x86_64)
@@ -21,7 +21,6 @@ makedepends=(
   cmake
   git
   lib32-alsa-lib
-  lib32-fluidsynth
   lib32-jack
   lib32-libpulse
   lib32-pipewire
@@ -40,6 +39,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_LIBDIR=lib32
+    -DALSOFT_EXAMPLES=OFF
+    -DALSOFT_UTILS=OFF
   )
 
   export CC="gcc -m32 -mstackrealign"
@@ -57,7 +58,7 @@ package_lib32-openal() {
   provides+=(libopenal.so)
 
   DESTDIR="$pkgdir" cmake --install build
-  rm -rv "$pkgdir"/usr/{include,share,bin}
+  rm -rvf "$pkgdir"/usr/{include,share,bin}
 }
 
 # vim:set sw=2 sts=-1 et:
