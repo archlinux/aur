@@ -5,7 +5,6 @@ pkgbase = proton-ge-custom-bin
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	install = pleasenote.install
-	changelog = changelog.md
 	arch = x86_64
 	arch = aarch64
 	license = BSD

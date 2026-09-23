@@ -13,7 +13,6 @@ pkgrel=1
 epoch=1
 arch=('x86_64' 'aarch64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
-changelog=changelog.md
 provides=('proton' "proton-ge-custom=${pkgver/_/.}")
 conflicts=('proton-ge-custom' 'proton-ge-bin')
 
