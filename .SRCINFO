@@ -1,0 +1,16 @@
+pkgbase = flatline-bin
+	pkgdesc = Flatline (AppImage)
+	pkgver = 1.10.9
+	pkgrel = 1
+	url = https://builds.elektroline.cz
+	arch = x86_64
+	license = MIT
+	options = !strip
+	source = flatline-1.10.9-stable-x86_64.AppImage::https://builds.elektroline.cz/Builds?app=Flatline&branch=Stable&version=Linux&filename=flatline-1.10.9-stable-x86_64.AppImage&handler=Download
+	source = flatline.png
+	source = flatline.desktop
+	sha256sums = 2b23510e98ad5e26ae71776aa7c0a8639c482b4cda48223964213d53118ebf2b
+	sha256sums = 90d9262ee60d4b379358561e2d4c122006b4b9f2dc2c5f5f6e5db83ac762ad9f
+	sha256sums = b69da04d334e859a0918a839012cb72449794470ad249462471f9720c0e5a6b0
+
+pkgname = flatline-bin
