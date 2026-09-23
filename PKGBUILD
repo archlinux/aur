@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Quintard <guillaume.quintard@varnish-software.com>
 
 pkgname=vmod-rers
-pkgver=9.0.3
-pkgrel=3
+pkgver=9.1.0
+pkgrel=2
 _srcver=0.0.13
 pkgdesc="Regular expression VMOD for Varnish"
 arch=('x86_64')
