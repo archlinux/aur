@@ -3,7 +3,7 @@
 _npmname=agentdash
 pkgname=agent-dash
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for connecting agents to an Agent Dash notification hub"
 arch=('any')
 url="https://github.com/Prajeevan/agent-dash"
@@ -14,7 +14,7 @@ provides=('agentdash')
 conflicts=('agentdash')
 options=('!strip' '!debug')
 source=("$_npmname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz"
-        "LICENSE::https://raw.githubusercontent.com/Prajeevan/agent-dash/96dc7be88cacc24c1080a1d108984b01a61bbf4f/LICENSE")
+        "LICENSE-$pkgname-$pkgver::https://raw.githubusercontent.com/Prajeevan/agent-dash/96dc7be88cacc24c1080a1d108984b01a61bbf4f/LICENSE")
 noextract=("$_npmname-$pkgver.tgz")
 sha256sums=('62529e7e734beaca8779b8d6a21494ab285864ea0557ff2c84a9c7356d3de717'
             '2e80ae0a4112e218e6c3caec1f63b316f7b02385952040b576bcabe1fbc01c6e')
@@ -26,5 +26,5 @@ package() {
   find "$pkgdir/usr" -type d -exec chmod 755 {} +
   chown -R root:root "$pkgdir"
 
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/LICENSE-$pkgname-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
