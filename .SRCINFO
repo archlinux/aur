@@ -1,6 +1,6 @@
 pkgbase = python-scipy-stubs
 	pkgdesc = Type annotations for SciPy
-	pkgver = 1.18.1.0
+	pkgver = 1.18.1.1
 	pkgrel = 1
 	url = https://github.com/scipy/scipy-stubs
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-scipy-stubs
 	depends = python-optype
 	depends = python-numpy
 	optdepends = python-scipy: for SciPy support
-	source = scipy-stubs-1.18.1.0.tar.gz::https://github.com/scipy/scipy-stubs/archive/v1.18.1.0.tar.gz
-	sha512sums = e6dd5c5a071a678abe2ea2dcfd1c4d7ad057c5964571492ca4bf7286934f5c6a5bbdf7b5091c8a89efe19eb0b01f187c164b383bfc6f108ca18d341b0318aecb
+	source = scipy-stubs-1.18.1.1.tar.gz::https://github.com/scipy/scipy-stubs/archive/v1.18.1.1.tar.gz
+	sha512sums = c7f35ba1ba488bd853f1a8b94cf9eac68d0e8fe1ab1620ac615c17ba97f6a7d6b8b41f2f001f1a11b9eb1de470e456d27c77621e6288ead3432b3b61fe074baa
 
 pkgname = python-scipy-stubs
