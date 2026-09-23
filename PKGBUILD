@@ -5,7 +5,7 @@ pkgname=(
     'python-slint'
     'slint-cpp'
     'slint-tools')
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
@@ -31,7 +31,7 @@ makedepends=(
 source=("https://github.com/slint-ui/slint/archive/v${pkgver}/slint-${pkgver}.tar.gz"
         '010-slint-remove-jemalloc.patch'
         '020-slint-allow-python-maturin-0.14.1.patch')
-sha256sums=('399ef10a0bcd8db236f755e68548e2e55e7cac00ee3da7f50e8d9d6881d34c25'
+sha256sums=('fe485305ed303215e76c04918ee9aefbffbe229f18f979098ec36c7fa1dab28b'
             '01a64bd3376222e07bf1454d4faa433b9d38949f37a1461d0bfc58fbe4b5759e'
             '784edbc91e7f5c6e9fcc650a652d30f7f1027a115e657a96b719b0e46f78f988')
 
