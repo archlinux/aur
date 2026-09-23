@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226@outlook.com>
 
 pkgname=r2modman
-pkgver=3.2.19
+pkgver=3.2.20
 pkgrel=1
 epoch=
 pkgdesc="A simple and easy to use mod manager for several games using Thunderstore."
@@ -21,15 +21,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("r2modmanPlus-$pkgver.tar.gz::https://github.com/ebkr/r2modmanPlus/archive/refs/tags/v$pkgver.tar.gz"
+# https://github.com/ebkr/r2modmanPlus/archive/refs/tags/v3.2.20.tar.gz shows version 3.2.19, weird.
+_commit=4be4fec0b0cff2fe5d302c879a04e4d5c7c1415a
+source=("r2modmanPlus-$_commit.tar.gz::https://github.com/ebkr/r2modmanPlus/archive/$_commit.tar.gz"
         "r2modman.desktop")
 noextract=()
-sha256sums=('c3886012ead494442cd666652ace7bca4afeaac97d59d39bfdda951028826276'
+sha256sums=('e46282ec7bb8e74b1e054115fb566235a68586b52cf860892869cbf8d4f340f8'
             '6cd96385f1ad7bf6fec0f9a70b429305e6f20153528e415d3c943ff19a45fd0f')
 validpgpkeys=()
 
 prepare() {
-	cd "r2modmanPlus-$pkgver"
+	cd "r2modmanPlus-$_commit"
 	# Modify electron-builder config
 	local _electronDist="/usr/lib/$_electron"
 	local _electronVersion="$(<$_electronDist/version)"
@@ -38,18 +40,18 @@ prepare() {
 }
 
 build() {
-	cd "r2modmanPlus-$pkgver"
+	cd "r2modmanPlus-$_commit"
 	pnpm build-linux
 }
 
 check() {
-	cd "r2modmanPlus-$pkgver"
+	cd "r2modmanPlus-$_commit"
 	node test/folder-structure-testing/populator.mjs
 	pnpm test
 }
 
 package() {
-	cd "r2modmanPlus-$pkgver"
+	cd "r2modmanPlus-$_commit"
 	install -Dm644 dist/electron/Packaged/linux-unpacked/resources/app.asar "$pkgdir/usr/share/r2modman/app.asar"
 
 	install -d "$pkgdir/usr/bin"
