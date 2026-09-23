@@ -7,8 +7,9 @@ pkgbase = firefly-luciferin-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = maven
-	depends = jdk-openjdk>=27
-	depends = jdk-openjdk<28
+	makedepends = java-environment>=25
+	depends = archlinux-java-run
+	depends = java-runtime>=25
 	depends = hicolor-icon-theme
 	optdepends = xdg-desktop-portal-wlr: For PipeWire XDG screen capture support (Wayland)
 	optdepends = gst-plugin-pipewire: For PipeWire XDG screen capture support (Wayland)
@@ -20,6 +21,6 @@ pkgbase = firefly-luciferin-git
 	source = git+https://github.com/sblantipodi/firefly_luciferin.git
 	source = firefly-luciferin
 	sha256sums = SKIP
-	sha256sums = a6318e503ee3a4b3e1596b74866d5762d334021976e5898fd5c317449be55874
+	sha256sums = 46e4a7d9828fafb2374c52fc0a44928762e003747c62d448cd850d91d5add8e4
 
 pkgname = firefly-luciferin-git

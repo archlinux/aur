@@ -1,6 +1,5 @@
 #!/bin/sh
-JAVA_HOME=/usr/lib/jvm/java-27-openjdk exec \
-  /usr/lib/jvm/java-27-openjdk/bin/java \
+exec archlinux-java-run --min 25 --exec -- java \
   -XX:+UseZGC -XX:+UseStringDeduplication -Xms64m -Xmx1024m \
   --add-modules jdk.incubator.vector \
   --enable-native-access=ALL-UNNAMED \
