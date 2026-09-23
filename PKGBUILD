@@ -3,7 +3,7 @@
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=fastmail
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Email made better'
 license=('custom:fastmail')
@@ -15,7 +15,7 @@ makedepends=('desktop-file-utils')
 _appimg="com.fastmail.Fastmail-${pkgver}.AppImage"
 source=("${_appimg}::https://dl.fastmailcdn.com/desktop/production/linux/x64/${_appimg}"
         "LICENSE.md") # https://www.fastmail.com/policies/terms-of-service/
-sha512sums=('77644da6ad2274d715457890b386d239d2ebcbdbcf54e2809ce57179910163cba5b03ce24f50c4393433d05980f091a5ecc130b39adbdb4141317606270fa1b3'
+sha512sums=('b796206a7dfb3dc529b76cf86c012951bb443b84e504ce102e43f6c9c7e1681c500fd2ffa491f889623e48be1e9a0e285994899341a77a1956842a2c6b288895'
             'e336da034d45735cf62687e8b917e9d995a446685b1341d823ea032f9256751a92ecf5501c48ed4daf18a76df30a3a89b4a6f07aa4f6b2c2d34224c352435d89')
 
 prepare() {
