@@ -1,7 +1,7 @@
 pkgbase = slideflare-git
 	pkgdesc = ⚡ Blazing fast, interactive presentation tool for developers, educators, and creators
 	pkgver = 0.1.3.r1.g44932c1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MeatyAri/slideflare
 	install = slideflare-git.install
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = slideflare-git
 	options = !strip
 	options = !emptydirs
 	options = !debug
+	options = !lto
 	source = git+https://github.com/MeatyAri/slideflare.git
 	sha256sums = SKIP
 

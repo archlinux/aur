@@ -1,7 +1,7 @@
 # Maintainer: meatyari <https://github.com/MeatyAri>
 pkgname=slideflare-git
 pkgver=0.1.3.r1.g44932c1
-pkgrel=1
+pkgrel=2
 pkgdesc="⚡ Blazing fast, interactive presentation tool for developers, educators, and creators"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MeatyAri/slideflare"
@@ -16,7 +16,10 @@ makedepends=(
 )
 provides=('slideflare')
 conflicts=('slideflare')
-options=('!strip' '!emptydirs' '!debug')
+# !lto: ring's C objects inherit makepkg LTOFLAGS (-flto=auto) as GCC LTO
+# bytecode, which rust-lld cannot link -> undefined ring_core_* symbols.
+# Must stay: the aur-update workflow only rewrites pkgver/pkgrel.
+options=('!strip' '!emptydirs' '!debug' '!lto')
 install="${pkgname}.install"
 source=("git+https://github.com/MeatyAri/slideflare.git")
 sha256sums=('SKIP')
