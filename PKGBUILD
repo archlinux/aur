@@ -2,12 +2,12 @@
 pkgname=tackora-bin
 pkgver=0.3.1
 pkgrel=1
-pkgdesc="A Kanban board for your coding agents: every ticket is a Claude Code or OpenCode session"
+pkgdesc="A Kanban board for your coding agents: every ticket is a Claude Code session"
 arch=('x86_64')
 url="https://anas1412.github.io/tackora/"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'glib2' 'cairo' 'gdk-pixbuf2' 'dbus' 'git')
-optdepends=('claude-code: Claude Code agent'
+optdepends=('claude-code: the agent Tackora runs (or install it from claude.ai)'
             'github-cli: pull requests for worktree tickets')
 provides=('tackora')
 conflicts=('tackora')
