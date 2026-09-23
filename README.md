@@ -2,7 +2,7 @@
 
 Package metadata for [`llavon-ime-fcitx5-preview-git`][aur] in the Arch User Repository.
 
-This package tracks the `preview` branch of `llavon-ime/ime-fcitx5`. It may
+This package tracks the `preview` branch of `llavon-ime/ime-unix`. It may
 contain features that have not reached `main` and conflicts with the regular
 `llavon-ime-fcitx5-git` package.
 
