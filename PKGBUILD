@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=ampcode
-pkgver=0.0.1790121694_g18bb0a
+pkgver=0.0.1790152370_gb14497
 pkgrel=1
 pkgdesc="Amp CLI — Sourcegraph's agentic coding tool"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ replaces=('sourcegraph-amp')
 _amp_ver=${pkgver//_/-}
 source_x86_64=("${pkgname}-${pkgver}-x64::https://static.ampcode.com/cli/${_amp_ver}/amp-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-arm64::https://static.ampcode.com/cli/${_amp_ver}/amp-linux-arm64")
-sha256sums_x86_64=('7686eaf1cad727f63fb19a129e054e286bc1db3d505cc1d269da4fc01b13bdf4')
-sha256sums_aarch64=('a02d9f71aa6ef950541206d93fa68925fb5e2c77a70c5ced434e779429876cf3')
+sha256sums_x86_64=('ef4caa4cc8e3cdcc5c07f20243b22bf6914ee715761426f4088982a5a87455d9')
+sha256sums_aarch64=('3086c29fd3f56f791c6631d6937c54c9e7efbd6ea5c141027151f79af9f19d7c')
 
 latestver() {
     curl -fsS https://static.ampcode.com/cli/cli-version.txt | tr '-' '_'
