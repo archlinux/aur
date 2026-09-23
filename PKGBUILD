@@ -2,14 +2,14 @@
 # Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 _pkgname=tuner
-pkgname=$_pkgname-git
-pkgver=2.1.1.beta.1.r79.g8a05367
-pkgrel=2
+pkgname="${_pkgname}"-git
+pkgver=2.2.0.beta.2.r15.g23b6895
+pkgrel=1
 pkgdesc="Minimalist radio station player geared towards RadioBrowser"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/tuner-labs/${_pkgname}"
 license=('GPL-3.0-only')
-depends=('gtk3' 'libgee' 'gst-plugins-bad-libs' 'gst-plugins-good')
+depends=('gtk3' 'libgee' 'gst-plugins-good')
 optdepends=('gst-libav: play AAC[+] streams')
 makedepends=('git' 'meson' 'vala')
 provides=("${_pkgname}")
@@ -17,7 +17,7 @@ conflicts=("${_pkgname}")
 source=("git+${url}.git#branch=development"
         'dont-update-gsettings-schemas-at-build-time.patch')
 sha256sums=('SKIP'
-            'cdf42ae339ae4c837811b302f127846f2a9aee3af19fc824b5743aa7c91d8008')
+            '47d34ddd90fe5e7e03d4102317d1bfcb627521e4cd2b658b4e92f7577cf38b4a')
 
 pkgver() {
     cd "${_pkgname}"
