@@ -1,0 +1,8 @@
+post_install() {
+  echo "Start the service for your user:  systemctl --user enable --now whysync"
+  echo "Then open whySYNC from the app menu, or run: whysync gui"
+}
+
+post_upgrade() {
+  echo "Restart the service to use the new version:  systemctl --user restart whysync"
+}

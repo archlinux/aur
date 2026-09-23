@@ -1,0 +1,22 @@
+pkgbase = whysync
+	pkgdesc = Live one-way folder mirror: waits for unplugged disks, holds mass deletions, keeps a trash
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/byrdltd/whySYNC
+	install = whysync.install
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = rsync
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	optdepends = libnotify: desktop notifications
+	source = whysync-0.2.0.tar.gz::https://github.com/byrdltd/whySYNC/archive/v0.2.0.tar.gz
+	sha256sums = 73dc0cd02a83b9795d98eeb7bea7f4397cb61d68e21de4b0b68a5e203e9b1931
+
+pkgname = whysync
