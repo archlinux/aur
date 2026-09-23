@@ -13,7 +13,7 @@
 # is an absolute symlink — safe by design.
 
 pkgname=c0wrk-zabbius-cuda-git
-pkgver=0.9.0.r18.g03f846d
+pkgver=0.9.1.r5.g22647f9
 pkgrel=1
 pkgdesc='Desktop AI coding-agent built with Wails (Go + React) — CUDA flavor, git build'
 arch=(x86_64)
@@ -34,7 +34,7 @@ options=(!strip)
 # here and in the CPU package, and regenerates both .SRCINFO files.
 # `wails` (AUR) must match the version required by go.mod: v2.15.0.
 source=(
-  'c0wrk::git+https://github.com/zabbius/c0wrk.git#commit=03f846de92857ff0be6434a5e4dca6eab8cbf30a'
+  'c0wrk::git+https://github.com/zabbius/c0wrk.git#commit=22647f90e12ade0d337a1b8444005a6f5480190c'
   'c0wrk.desktop'
 )
 sha256sums=(
