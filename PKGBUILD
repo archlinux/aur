@@ -1,7 +1,7 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 
 pkgname=proton-drive-for-linux
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: files-on-demand FUSE mount, CLI, GTK4 app and tray"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/narrrl/proton-drive-linux"
 license=('MIT')
 depends=('fuse3' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'dbus' 'gcc-libs' 'glibc'
          'hicolor-icon-theme')
-makedepends=('cargo')
+makedepends=('cargo' 'gettext')
 optdepends=('perl-image-exiftool: thumbnails for camera RAW files'
             'gnome-keyring: credential storage over the Secret Service API'
             'kwallet: credential storage over the Secret Service API'
@@ -21,7 +21,7 @@ conflicts=('proton-drive-linux' 'proton-drive-for-linux-bin' 'proton-drive-for-l
 # LTO has broken GTK/Rust links for this workspace; the release profile keeps it off.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4476aafe405cb91d81cec8cffcef345696f3169ac3fbde0121233913c8777eea')
+sha256sums=('9ca0409636552dc6d158595396402fd0fe6d77fab2ac5f5239fc51d702b791cb')
 
 _srcname="proton-drive-linux-$pkgver"
 
@@ -67,6 +67,9 @@ package() {
   # systemd user unit for the auto-mount daemon; enabled per user, not by pacman.
   install -Dm644 packaging/proton-drive.service \
     "$pkgdir/usr/lib/systemd/user/proton-drive.service"
+
+  # Translations: compiled from po/ into /usr/share/locale.
+  po/build.sh "$pkgdir/usr/share/locale"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
