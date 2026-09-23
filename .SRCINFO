@@ -1,5 +1,5 @@
 pkgbase = coze-bin
-	pkgdesc = Unofficial Linux version of Coze client.Work is handed over to coze, creation doesn't have to wait.扣子客户端非官方Linux版工作交给扣子，创造不必等待.
+	pkgdesc = Unofficial Linux version of Coze client.Work is handed over to coze, creation doesn't have to wait.扣子客户端非官方Linux版.工作交给扣子，创造不必等待.
 	pkgver = 1.1.39
 	pkgrel = 1
 	url = https://www.coze.cn

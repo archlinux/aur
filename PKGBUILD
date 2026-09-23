@@ -1,10 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=coze-bin
+_pkgname=Coze
 _debname="com.${pkgname%-bin}.uos"
 pkgver=1.1.39
 _electronversion=39
 pkgrel=1
-pkgdesc="Unofficial Linux version of Coze client.Work is handed over to coze, creation doesn't have to wait.扣子客户端非官方Linux版工作交给扣子，创造不必等待."
+pkgdesc="Unofficial Linux version of Coze client.Work is handed over to coze, creation doesn't have to wait.扣子客户端非官方Linux版.工作交给扣子，创造不必等待."
 arch=(
     'aarch64'
     'x86_64'
@@ -62,7 +63,7 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     local _app_dir=$(_get_app_dir)
     cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm644 "${_app_dir}/resources/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/opt/apps/${_debname}/entries/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${_app_dir}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
