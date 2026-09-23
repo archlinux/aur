@@ -12,7 +12,7 @@
 #
 
 pkgname=aseprite-bin
-pkgver=1.3.18.5
+pkgver=1.3.18.6
 _pkgver=${pkgver}-1
 pkgrel=1
 pkgdesc="Create animated sprites and pixel art"
@@ -23,7 +23,7 @@ depends=(libglvnd fontconfig libxcursor)
 provides=(aseprite)
 conflicts=(aseprite)
 source=("local://Aseprite_${_pkgver}_amd64.deb")
-sha256sums=('46d50b12d809dbd2017d571f9a342aa78b00b42f3c4e0d275438fc7cdb821c16')
+sha256sums=('196630391843a9f98acd9161c16032c5bc93189e6e72301a9394ec182c1e328c')
 
 package() {
     tar xf data.tar.xz -C $pkgdir
