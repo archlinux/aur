@@ -2,7 +2,7 @@
 # Maintainer: wheaney <wayne at xronlinux dot com>
 _pkgbase=XRLinuxDriver
 pkgname="xr-driver-git"
-pkgver=2.11.8
+pkgver=2.11.9
 pkgrel=1
 pkgdesc="XR Linux Driver"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 install=hooks.install
 makedepends=('cmake')
 depends=('git' 'openssl' 'libevdev' 'libusb' 'json-c' 'curl' 'hidapi' 'wayland' 'systemd-libs' 'python-yaml' 'rust')
-source=("git+${url}#commit=de999a31a0f20efde9686ef7920ab017e3180887")
+source=("git+${url}#commit=36e2139dd482f5984112d0c3ebafcc07a78f99c0")
 md5sums=(SKIP)
 
 prepare() {
