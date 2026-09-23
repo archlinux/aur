@@ -1,0 +1,16 @@
+pkgbase = python-miniaudio
+	pkgdesc = Python bindings for the miniaudio audio playback, recording, decoding and conversion library
+	pkgver = 1.71
+	pkgrel = 1
+	url = https://github.com/irmen/pyminiaudio
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cffi
+	source = https://files.pythonhosted.org/packages/source/m/miniaudio/miniaudio-1.71.tar.gz
+	sha256sums = ff51e2887bb673e2e757752b586b3dc924d59aa5fbcae9bbc45f4a111bd3262b
+
+pkgname = python-miniaudio
