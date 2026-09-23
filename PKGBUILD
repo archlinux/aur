@@ -3,8 +3,8 @@
 pkgbase=115-life-bin
 pkgname=115-life-bin
 _pkgname=115Life
-pkgver=37.3.0
-pkgrel=3
+pkgver=37.3.1
+pkgrel=1
 arch=('x86_64')
 options=(!strip !debug)
 depends=(
@@ -45,7 +45,7 @@ source_x86_64=(
 )
 sha256sums=('7a1c438a53cd10ad78b9ea150521f12e6d97e10cf07f07d38d4f0a65f22cafcf'
             'cfe25e4d5d8236b3b68089fbc4b56aaa7db1d0a560905f1faf004bc5e4534245')
-sha256sums_x86_64=('bbdfe367a62c63a6ffa9c01b5af26dd9682ff0613affc5f73170269479ce1bd2')
+sha256sums_x86_64=('e3813e2af83cffeed7e3160581aeffeb07d2cb33ea8f303fb568bb57082c9315')
 noextract=("${pkgname}-${pkgver}.deb")
 
 prepare() {
