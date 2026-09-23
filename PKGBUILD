@@ -2,7 +2,7 @@
 _base=meshpy
 pkgname=python-${_base}
 pkgdesc="Triangular and Tetrahedral Mesh Generator"
-pkgver=2026.1
+pkgver=2026.1.1
 pkgrel=1
 arch=(x86_64)
 url="https://documen.tician.de/${_base}"
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer meson-python pybind11 git) # ctags
 checkdepends=(python-pytest)                                          # python-matplotlib
 source=("git+https://github.com/inducer/${_base}.git?signed#tag=v${pkgver}")
 validpgpkeys=('900A958D9A0ACA58B1468F2471AA298BCA171145') # Andreas Kloeckner
-sha512sums=('0407ac89417ed9468facf75f27bc333538aaefd66e380c9790cd5867de47aa51832469ff33c42f76232d80f4cebfc7aa3e810f5e22e6eb165657feb5da9c4f04')
+sha512sums=('b01669336f2663457e32c21d18e4cc58eae4dfc887d85321e12b6412a6cb31b65b1b522335703ce4aba4db1c71cd06799bf98f2c6f7ef93a2e689bd198f772f8')
 
 build() {
   cd ${_base}
