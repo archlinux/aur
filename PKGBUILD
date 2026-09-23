@@ -2,7 +2,7 @@
 
 pkgname=regexxer
 pkgver=0.10
-pkgrel=13
+pkgrel=14
 pkgdesc='Interactive search and replace tool for GNOME'
 arch=(x86_64)
 url='https://regexxer.sourceforge.net/'
@@ -10,7 +10,6 @@ license=(GPL-2.0-or-later)
 depends=(
   atkmm
   dconf
-  gcc-libs
   glib2
   glibc
   glibmm
@@ -19,7 +18,9 @@ depends=(
   gtksourceview4
   gtksourceviewmm
   hicolor-icon-theme
+  libgcc
   libsigc++
+  libstdc++
   pangomm
 )
 makedepends=(
@@ -29,11 +30,13 @@ makedepends=(
 source=(
   "git+https://gitlab.gnome.org/Archive/$pkgname.git#tag=$pkgname-$pkgver"
   regexxer-gtksourceviewmm4.patch
+  regexxer-font-setting.patch
   regexxer.appdata.xml
 )
 b2sums=(
   9192c07e2152d87a2b36fa077981d62dc48138775578fb2c23593a9aa8529b5552138e503be82252904551747dbf4425b50ebcc3b285574977a73c6fe2365318
   8465c61df06c830264eea9b1624bc957ff00c61f818d6b5d36cc70b659415cd66d5651c2249f9be3caf5204e66d372beb57a2a719101df09bedfd970fc02000d
+  886f528ed3f8d70540fb08cf5167aa999a4e6d2adbf983e46ce695b8beb92d466aa446766c52301b9e286768f135dfd83649c5fc16b503fcd777d24a1e658157
   1b8878c5fbfaccefd3f1157e9905b8e7cc022c9e5def6aa22b7f9dc06b8cad8b632962bf1aac1da763bedee702e14d373119ac66e2f9c07bde22beb9097086a3
 )
 
@@ -51,6 +54,9 @@ prepare() {
 
   # Port to gtksourceviewmm4
   git apply -3 ../regexxer-gtksourceviewmm4.patch
+
+  # Fix applying font setting
+  git apply -3 ../regexxer-font-setting.patch
 
   autoreconf -fi -I /usr/share/gettext/m4/
 }

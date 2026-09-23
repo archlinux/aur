@@ -24,6 +24,7 @@ SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
+    "regexxer-font-setting.patch",
     "regexxer-gtksourceviewmm4.patch",
 ]
 SPDX-FileCopyrightText = "regexxer contributors"

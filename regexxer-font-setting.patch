@@ -1,0 +1,41 @@
+From d5fbd1c3436a1dc17c9f6881f6f51100113d8c78 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 23 Sep 2026 19:08:10 +0200
+Subject: [PATCH] Fix applying font setting
+
+---
+ src/mainwindow.cc | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/mainwindow.cc b/src/mainwindow.cc
+index 2596f5a..151925a 100644
+--- a/src/mainwindow.cc
++++ b/src/mainwindow.cc
+@@ -382,6 +382,7 @@ void MainWindow::connect_signals()
+   controller_.replace_file.connect(mem_fun(*this, &MainWindow::on_replace_file));
+   controller_.replace_all .connect(mem_fun(*this, &MainWindow::on_replace_all));
+ 
++  on_conf_value_changed(conf_key_textview_font);
+   Settings::instance()->signal_changed().connect(mem_fun(*this, &MainWindow::on_conf_value_changed));
+ 
+   statusline_->signal_cancel_clicked.connect(
+@@ -1077,9 +1078,14 @@ void MainWindow::on_conf_value_changed(const Glib::ustring& key)
+ {
+   if (key == conf_key_textview_font)
+   {
+-    std::string style = "GtkTextView { font: ";
+-    style += Settings::instance()->get_string(key);
++    Pango::FontDescription font(Settings::instance()->get_string(key));
++    const int size = font.get_size() / PANGO_SCALE;
++
++    std::string style = "textview, entry { ";
++    style += "font-family: \"" + font.get_family() + "\"; ";
++    style += "font-size: " + std::to_string(size) + "pt; ";
+     style += "}";
++
+     Glib::RefPtr<Gtk::CssProvider> css = Gtk::CssProvider::create();
+     css->load_from_data(style);
+ 
+-- 
+2.55.0
+
