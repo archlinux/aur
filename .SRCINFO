@@ -1,6 +1,6 @@
 pkgbase = r-usethis
 	pkgdesc = Automate Package and Project Setup
-	pkgver = 3.2.1
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=usethis
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = r-usethis
 	depends = r-glue
 	depends = r-jsonlite
 	depends = r-lifecycle
+	depends = r-pak
 	depends = r-purrr
 	depends = r-rappdirs
 	depends = r-rlang
@@ -34,7 +35,7 @@ pkgbase = r-usethis
 	optdepends = r-spelling
 	optdepends = r-styler
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/usethis_3.2.1.tar.gz
-	sha256sums = 45bc39d35b0cc2ef7dfe03c488a05c0bac62b498a3d16f745b757e4fba772b77
+	source = https://cran.r-project.org/src/contrib/usethis_3.2.2.tar.gz
+	sha256sums = 423d9880847e5873c2978559e0bbe9ea4570aa100cbef3de5911cac35296a67e
 
 pkgname = r-usethis
