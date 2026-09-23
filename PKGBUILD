@@ -22,6 +22,7 @@ optdepends=(
   'vulkan-intel: Vulkan support for Intel graphics'
   'vulkan-radeon: Vulkan support for AMD graphics'
   'nvidia-utils: Vulkan support for Nvidia graphics'
+  'noto-fonts-cjk: fast drawing of Japanese, Chinese and Korean text'
 )
 provides=('rox')
 conflicts=('rox-player-git')
