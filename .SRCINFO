@@ -1,17 +1,17 @@
 pkgbase = remotrix-bin
 	pkgdesc = A Rust-native desktop download manager inspired by Motrix-next, built with the iced GUI framework and an aria2-next sidecar engine driven over WebSocket JSON-RPC (aria2-ws).
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/lazy1104/Remotrix
 	arch = x86_64
 	license = MIT
 	depends = libgcc
 	depends = glibc
-	provides = remotrix=0.5.1
+	provides = remotrix=0.5.2
 	conflicts = remotrix
-	source = remotrix-0.5.1.deb::https://github.com/lazy1104/Remotrix/releases/download/v0.5.1/remotrix_0.5.1_amd64.deb
-	source = LICENSE-0.5.1::https://github.com/lazy1104/Remotrix/raw/v0.5.1/LICENSE
-	sha256sums = 78dce30990c7f6626de5ea3bddf94db80ea7babf39ec4e903cb77d8857447274
+	source = remotrix-0.5.2.deb::https://github.com/lazy1104/Remotrix/releases/download/v0.5.2/remotrix_0.5.2_amd64.deb
+	source = LICENSE-0.5.2::https://github.com/lazy1104/Remotrix/raw/v0.5.2/LICENSE
+	sha256sums = 52a147a12a26a3d69435da8b00a9df1b57afc51e1edf41fdc22b2a54ee73a4f2
 	sha256sums = bd41313039d578d73789177f2a71081afedfae4450a9203d845704a32ac7ec6b
 
 pkgname = remotrix-bin

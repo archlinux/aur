@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=remotrix-bin
 _pkgname=Remotrix
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A Rust-native desktop download manager inspired by Motrix-next, built with the iced GUI framework and an aria2-next sidecar engine driven over WebSocket JSON-RPC (aria2-ws)."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE"
 )
-sha256sums=('78dce30990c7f6626de5ea3bddf94db80ea7babf39ec4e903cb77d8857447274'
+sha256sums=('52a147a12a26a3d69435da8b00a9df1b57afc51e1edf41fdc22b2a54ee73a4f2'
             'bd41313039d578d73789177f2a71081afedfae4450a9203d845704a32ac7ec6b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
