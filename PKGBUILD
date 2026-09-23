@@ -4,7 +4,7 @@
 
 pkgname=moon
 pkgver=2.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
 url="https://github.com/moonrepo/moon"
@@ -17,15 +17,18 @@ sha256sums=('7d9fa3040bfa76a54d8d23e73427bd055cc54751a0dfb789179c1e68c0a1612b')
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
   mkdir -p completions
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  CFLAGS+=' -ffat-lto-objects'
-  CXXFLAGS+=' -ffat-lto-objects'
+  if [[ ${CARCH} == x86_64 ]]; then
+    CFLAGS+=' -ffat-lto-objects'
+    CXXFLAGS+=' -ffat-lto-objects'
+  fi
+
   cargo build --release --frozen
 
   "./target/release/${pkgname}" completions --shell bash >"completions/bash"
