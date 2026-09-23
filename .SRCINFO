@@ -1,0 +1,26 @@
+pkgbase = opencodex-bin
+	pkgdesc = Universal provider proxy for OpenAI Codex and Claude Code (prebuilt Bun binary)
+	pkgver = 2.63.0
+	pkgrel = 2
+	url = https://opencodex.me/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = bash
+	depends = glibc
+	provides = opencodex
+	conflicts = opencodex
+	noextract = ocx-2.63.0-bun-linux-x64.tar.gz
+	noextract = ocx-2.63.0-bun-linux-arm64.tar.gz
+	options = !strip
+	options = !debug
+	source = ocx-launcher
+	source = LICENSE
+	sha256sums = e0a6be04768d456556e6dc180daeebd82a6416ae576b1948f1a4cb85607e87f5
+	sha256sums = 34012a5529ad1e574e84457a609f9ea3df03c63d7c42c7e5f74ec14f438ed346
+	source_x86_64 = ocx-2.63.0-bun-linux-x64.tar.gz::https://github.com/lidge-jun/opencodex/releases/download/v2.63.0/ocx-2.63.0-bun-linux-x64.tar.gz
+	sha256sums_x86_64 = 41021a5bc334584f688cee70a821b54a72590057f3ce626504c04607ae902b1c
+	source_aarch64 = ocx-2.63.0-bun-linux-arm64.tar.gz::https://github.com/lidge-jun/opencodex/releases/download/v2.63.0/ocx-2.63.0-bun-linux-arm64.tar.gz
+	sha256sums_aarch64 = 37913df1da5331f4c4fd847ec4e82679df89937fdd715e754e27ff5bc69e4688
+
+pkgname = opencodex-bin
