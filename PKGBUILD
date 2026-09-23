@@ -11,7 +11,7 @@ _pkgname=kappastream
 _repo="https://github.com/kappy7777/kappastream"
 
 pkgname=${_pkgname}-git
-pkgver=1.0.4.r0.gdb548e3
+pkgver=1.0.5.r0.g4b104bc
 pkgrel=1
 pkgdesc="A lightweight, anonymous Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
@@ -29,6 +29,9 @@ depends=(
   'gst-libav'           # avdec_h264 / avdec_aac — Twitch is H.264 + AAC
   'gst-plugins-base'    # autoaudiosink/alsasink + audioconvert/resample + videoconvert
   'gst-plugins-good'    # pulsesink — audio out to PulseAudio/PipeWire (KDE Wayland)
+  # The embedded-libmpv video engine is a default Cargo feature upstream;
+  # the binary links libmpv.so.2, which Arch ships in the `mpv` package.
+  'mpv'
   'hicolor-icon-theme'
 )
 makedepends=(
@@ -88,13 +91,16 @@ build() {
   # set this for us; since we build with cargo directly, enable it here.
   # (Additive feature; does not touch Cargo.lock, so --locked still holds.)
   #
-  # `--no-default-features` disables kappastream's default `updater` Cargo
-  # feature, so the tauri-plugin-updater / -process plugins are NOT registered
-  # here (see src-tauri/src/lib.rs). pacman owns updates on Arch — an AUR
-  # install must never surface an in-app update prompt or hit the update
-  # endpoint. The feature is empty (no deps), so --locked still holds and only
-  # the registration cfg changes.
-  cargo build --release --locked --no-default-features --features tauri/custom-protocol
+  # `--no-default-features` disables kappastream's default features — the
+  # `updater` (tauri-plugin-updater / -process are NOT registered; see
+  # src-tauri/src/lib.rs. pacman owns updates on Arch — an AUR install must
+  # never surface an in-app update prompt or hit the update endpoint) AND
+  # `mpv-embed`. The engine is explicitly re-added via `--features
+  # mpv-embed` so AUR ships the embedded mpv engine like every other Linux
+  # package (it is a Linux-only feature; the `mpv` package above provides
+  # libmpv at build + runtime). Both features are empty (no dep changes),
+  # so --locked still holds.
+  cargo build --release --locked --no-default-features --features "mpv-embed,tauri/custom-protocol"
 }
 
 package() {
