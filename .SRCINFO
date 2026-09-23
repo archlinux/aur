@@ -1,6 +1,6 @@
 pkgbase = signal-cli-rest-api-git
 	pkgdesc = A small REST API around signal-cli (GIT version with patches for unix socket, token auth and polling support)
-	pkgver = 0.100.r20.ga08db23
+	pkgver = 0.101.pre.r1.gebb7c1d
 	pkgrel = 1
 	url = https://github.com/bbernhard/signal-cli-rest-api
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = signal-cli-rest-api-git
 	sha256sums = SKIP
 	sha256sums = f56566ef6c1138fc2cf1a789b7c1b49c63c9a5831368a3ca5468de6844d78c80
 	sha256sums = 5afee6b15cc9c2396cf723210ca821526e8fc23a8b239f0d4f24716542db58a1
-	sha256sums = bf9645023b0f23df716ddd5ae3dab241de8a8d9ddea0951f84a917e3cafdbdaa
-	sha256sums = ce89678dbc86c9f19ce94c88e0a254550bc37626e3398b2dfa9da46552f83c8c
+	sha256sums = 7e988f68b95ea0b6f555c040b41ea53ed456e2077804f5e6b96dd6990f8182e9
+	sha256sums = da2e290d9867fbe8b5cc9756378f4a99f260b4443bb9509ca1a80c7d01b3dfce
 
 pkgname = signal-cli-rest-api-git

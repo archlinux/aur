@@ -1,8 +1,8 @@
 diff --git a/src/api/api.go b/src/api/api.go
-index 3ec81a2..9818fc8 100644
+index 210660b..c30d9b3 100644
 --- a/src/api/api.go
 +++ b/src/api/api.go
-@@ -706,7 +706,7 @@ func (a *Api) Receive(c *gin.Context) {
+@@ -701,7 +701,7 @@ func (a *Api) Receive(c *gin.Context) {
  		return
  	}
  
@@ -12,10 +12,10 @@ index 3ec81a2..9818fc8 100644
  		if err != nil {
  			c.JSON(400, Error{Msg: err.Error()})
 diff --git a/src/client/client.go b/src/client/client.go
-index 5dc5985..9d6bf7e 100644
+index 18d9049..4f82acb 100644
 --- a/src/client/client.go
 +++ b/src/client/client.go
-@@ -1017,7 +1017,23 @@ func (s *SignalClient) SendV2(number string, message string, recps []string, bas
+@@ -1034,7 +1034,23 @@ func (s *SignalClient) SendV2(number string, message string, recps []string, bas
  
  func (s *SignalClient) Receive(number string, timeout int64, ignoreAttachments bool, ignoreStories bool, ignoreAvatars bool, ignoreStickers bool, maxMessages int64, sendReadReceipts bool) (string, error) {
  	if s.signalCliMode == JsonRpc {
@@ -41,7 +41,7 @@ index 5dc5985..9d6bf7e 100644
  		command := []string{"--config", s.signalCliConfig, "--output", "json", "-a", number, "receive", "-t", strconv.FormatInt(timeout, 10)}
  
 diff --git a/src/client/jsonrpc2.go b/src/client/jsonrpc2.go
-index ef00633..7c3839e 100644
+index 94307cd..a20c64d 100644
 --- a/src/client/jsonrpc2.go
 +++ b/src/client/jsonrpc2.go
 @@ -65,6 +65,8 @@ type JsonRpc2Client struct {
@@ -62,7 +62,7 @@ index ef00633..7c3839e 100644
  	}
  }
  
-@@ -254,6 +258,14 @@ func (r *JsonRpc2Client) ReceiveData(number string, receiveWebhookUrl string) {
+@@ -256,6 +260,14 @@ func (r *JsonRpc2Client) ReceiveData(number string, receiveWebhookUrl string) {
  					log.Error("Couldn't post data to webhook: ", err)
  				}
  			}
@@ -77,7 +77,7 @@ index ef00633..7c3839e 100644
  		}
  
  		var resp2 JsonRpc2MessageResponse
-@@ -290,3 +302,11 @@ func (r *JsonRpc2Client) RemoveReceiveChannel(channelUuid string) {
+@@ -292,3 +304,11 @@ func (r *JsonRpc2Client) RemoveReceiveChannel(channelUuid string) {
  	delete(r.receivedMessagesChannels, channelUuid)
  	r.receivedMessagesMutex.Unlock()
  }

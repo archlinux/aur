@@ -1,8 +1,8 @@
 diff --git a/src/client/client.go b/src/client/client.go
-index 5dc5985..493ec10 100644
+index 4f82acb..167d54f 100644
 --- a/src/client/client.go
 +++ b/src/client/client.go
-@@ -441,7 +441,14 @@ func (s *SignalClient) Init(maxRetries int) error {
+@@ -443,7 +443,14 @@ func (s *SignalClient) Init(maxRetries int) error {
  		tcpPortsNumberMapping := s.jsonRpc2ClientConfig.GetTcpPortsForNumbers()
  		for number, tcpPort := range tcpPortsNumberMapping {
  			s.jsonRpc2Clients[number] = NewJsonRpc2Client(s.signalCliApiConfig, number)
@@ -19,7 +19,7 @@ index 5dc5985..493ec10 100644
  				return err
  			}
 diff --git a/src/client/jsonrpc2.go b/src/client/jsonrpc2.go
-index ef00633..b2cbb69 100644
+index a20c64d..4468ff1 100644
 --- a/src/client/jsonrpc2.go
 +++ b/src/client/jsonrpc2.go
 @@ -7,7 +7,9 @@ import (
@@ -32,7 +32,7 @@ index ef00633..b2cbb69 100644
  	"sync"
  	"time"
  
-@@ -78,12 +80,23 @@ func NewJsonRpc2Client(signalCliApiConfig *utils.SignalCliApiConfig, number stri
+@@ -82,12 +84,23 @@ func NewJsonRpc2Client(signalCliApiConfig *utils.SignalCliApiConfig, number stri
  
  func (r *JsonRpc2Client) Dial(address string, maxRetries int) error {
  	var err error
@@ -59,7 +59,7 @@ index ef00633..b2cbb69 100644
  			continue
  		}
 diff --git a/src/main.go b/src/main.go
-index 2450496..40918f5 100644
+index ede0cc1..1840208 100644
 --- a/src/main.go
 +++ b/src/main.go
 @@ -93,6 +93,29 @@ func main() {
@@ -89,7 +89,7 @@ index 2450496..40918f5 100644
 +		})
 +	}
 +
- 	port := utils.GetEnv("PORT", "28080")
+ 	port := utils.GetEnv("PORT", "8080")
  	if _, err := strconv.Atoi(port); err != nil {
  		log.Fatal("Invalid PORT ", port, " set. PORT needs to be a number")
 diff --git a/src/utils/config.go b/src/utils/config.go

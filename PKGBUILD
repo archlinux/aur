@@ -1,7 +1,7 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 
 pkgname=signal-cli-rest-api-git
-pkgver=0.100.r20.ga08db23
+pkgver=0.101.pre.r1.gebb7c1d
 pkgrel=1
 pkgdesc="A small REST API around signal-cli (GIT version with patches for unix socket, token auth and polling support)"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source=(
 sha256sums=('SKIP'
             'f56566ef6c1138fc2cf1a789b7c1b49c63c9a5831368a3ca5468de6844d78c80'
             '5afee6b15cc9c2396cf723210ca821526e8fc23a8b239f0d4f24716542db58a1'
-            'bf9645023b0f23df716ddd5ae3dab241de8a8d9ddea0951f84a917e3cafdbdaa'
-            'ce89678dbc86c9f19ce94c88e0a254550bc37626e3398b2dfa9da46552f83c8c')
+            '7e988f68b95ea0b6f555c040b41ea53ed456e2077804f5e6b96dd6990f8182e9'
+            'da2e290d9867fbe8b5cc9756378f4a99f260b4443bb9509ca1a80c7d01b3dfce')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -43,7 +43,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}/src"
     export CGO_ENABLED=0
-    go build -trimpath -ldflags "-s -w" -o ../signal-cli-rest-api .
+    go build -trimpath -buildmode=pie -ldflags "-s -w" -o ../signal-cli-rest-api .
 }
 
 package() {
