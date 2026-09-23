@@ -3,7 +3,7 @@
 _npmscope=agentmemory
 pkgname=agentmemory
 pkgver=0.9.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Persistent memory for AI coding agents based on real-world benchmarks"
 arch=('x86_64')
 url="https://github.com/rohitg00/agentmemory"
@@ -12,7 +12,7 @@ depends=('nodejs>=20')
 makedepends=('npm')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@$_npmscope/$pkgname/-/$pkgname-$pkgver.tgz"
-        "LICENSE::https://raw.githubusercontent.com/rohitg00/agentmemory/v$pkgver/LICENSE")
+        "LICENSE-$pkgname-$pkgver::https://raw.githubusercontent.com/rohitg00/agentmemory/v$pkgver/LICENSE")
 noextract=("$pkgname-$pkgver.tgz")
 sha1sums=('800309cb9e83ee5efc10739f8b481d79fa5544df'
           '828dcdad822eadebbf9b29e4412b2e7e4b1f68b4')
@@ -50,5 +50,5 @@ package() {
   # https://bugs.archlinux.org/task/63396
   chown -R root:root "$pkgdir"
 
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/LICENSE-$pkgname-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
