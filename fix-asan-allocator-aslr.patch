@@ -36,10 +36,11 @@ Differential Revision: https://reviews.llvm.org/D148280
  compiler-rt/lib/asan/asan_allocator.h | 8 ++++++--
  1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/compiler-rt/lib/asan/asan_allocator.h b/compiler-rt/lib/asan/asan_allocator.h
+#diff --git a/compiler-rt/lib/asan/asan_allocator.h b/compiler-rt/lib/asan/asan_allocator.h
+diff --git a/libsanitizer/asan/asan_allocator.h b/libsanitizer/asan/asan_allocator.h
 index 0b4dbf03bb9d5..6a12a6c602528 100644
---- a/compiler-rt/lib/asan/asan_allocator.h
-+++ b/compiler-rt/lib/asan/asan_allocator.h
+--- a/libsanitizer/asan/asan_allocator.h
++++ b/libsanitizer/asan/asan_allocator.h
 @@ -143,11 +143,15 @@ typedef DefaultSizeClassMap SizeClassMap;
  const uptr kAllocatorSpace = ~(uptr)0;
  const uptr kAllocatorSize  =  0x8000000000ULL;  // 500G
