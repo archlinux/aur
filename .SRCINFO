@@ -29,6 +29,7 @@ pkgbase = artemis-qt-git
 	optdepends = libva-nvidia-driver: NVDEC hardware acceleration via VA-API for NVIDIA
 	provides = artemis-qt
 	conflicts = artemis-qt
+	options = !debug
 	source = artemis::git+https://github.com/wjbeckett/artemis.git#branch=develop
 	sha256sums = SKIP
 

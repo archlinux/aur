@@ -38,6 +38,15 @@ optdepends=(
 )
 provides=('artemis-qt')
 conflicts=('artemis-qt')
+# 2026-09-24: without this, the Arch container's stock makepkg.conf splits
+# out an artemis-qt-git-debug subpackage (auto dbgsym), and namcap flags its
+# .build-id symlink (points at ../../../../bin/artemis, which correctly
+# doesn't exist *inside the debug package itself*) as a hard E: -- a known
+# namcap/dbgsym-splitting false-positive, not a real packaging bug. Nobody
+# consumes a separate debug package for a -git dev build anyway; disabling
+# the split removes the false-positive at the source instead of papering
+# over it in CI.
+options=('!debug')
 source=("$_pkgname::git+https://github.com/wjbeckett/artemis.git#branch=develop")
 sha256sums=('SKIP')
 
