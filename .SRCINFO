@@ -6,6 +6,7 @@ pkgbase = python-citeproc-py
 	arch = any
 	license = BSD-2-Clause-Views
 	checkdepends = python-pytest
+	checkdepends = python-citeproc-py-styles
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-versioneer
@@ -14,6 +15,7 @@ pkgbase = python-citeproc-py
 	makedepends = rnc2rng
 	depends = python
 	depends = python-lxml
+	optdepends = python-citeproc-styles: for more citation styles
 	source = python-citeproc-py::git+https://github.com/citeproc-py/citeproc-py.git#tag=adc70c3df99037fe8f49e8b40c7afd852b319bbb
 	source = csl-schema::git+https://github.com/citation-style-language/schema.git
 	source = csl-locales::git+https://github.com/citation-style-language/locales.git

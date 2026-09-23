@@ -7,7 +7,10 @@ pkgrel=1
 pkgdesc="Citations and bibliography formatter"
 url="https://github.com/citeproc-py/citeproc-py"
 depends=('python' 'python-lxml')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-citeproc-py-styles')
+optdepends=(
+    'python-citeproc-styles: for more citation styles'
+)
 makedepends=(
     'git'
     'python-setuptools'
