@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicat-git
 _pkgname=Musicat
-pkgver=0.12.0.r22.g4a693b0
-_nodeversion=20
+pkgver=0.17.2.r33.ge7f29f2
+_nodeversion=24
 pkgrel=1
 pkgdesc="A sleek desktop music player and tagger for offline music 🪕 With experimental features like map view, GPT analysis, artist toolkit."
 arch=(
@@ -19,12 +19,11 @@ depends=(
     'webkit2gtk-4.1'
 )
 makedepends=(
-    'npm'
+    'bun'
     'git'
     'gendesk'
-    'cmake'
-    'rust'
-    'curl'
+    'rustup'
+    'clang'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -42,41 +41,69 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_set_build_env() {
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export BUN_INSTALL_CACHE_DIR="${HOME}/.bun/cache"
+	export BUN_INSTALL_GLOBAL_DIR="${HOME}/.bun/global"
+	export BUN_INSTALL_BIN="${HOME}/.bun/bin"
+	export BUN_CONFIG_SKIP_SAVE_LOCKFILE=1
+	export BUN_CONFIG_SKIP_LOAD_LOCKFILE=1
+	export BUN_DISABLE_DOTENV=1
+	export DO_NOT_TRACK=1
+	export BUN_JOBS="$(nproc)"
+    export CARGO_HOME="${HOME}/.cargo"
+	export CARGO_NET_GIT_FETCH_WITH_CLI=true
+	export CARGO_NET_RETRY=5
+	export CARGO_HTTP_MULTIPLEXING=false
+	export CARGO_INCREMENTAL=0
+	export CARGO_TERM_COLOR=never
+	export CARGO_PROFILE_RELEASE_STRIP=symbols
+	mkdir -p "${HOME}" "${BUN_INSTALL_CACHE_DIR}" "${BUN_INSTALL_GLOBAL_DIR}" "${BUN_INSTALL_BIN}" "${CARGO_HOME}"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="AudioVideo" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
     _ensure_local_nvm
-    export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/.npm_cache"
-    export CARGO_HOME="${srcdir}/.cargo"
-    HOME="${srcdir}/.electron-gyp"
-    export CARGO_HOME="${srcdir}/.cargo"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-        } >> .npmrc
-        export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
-        export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-        sed "s/github.com/github.moeyy.xyz\/https:\/\/github.com/" -i src-tauri/Cargo.toml
-    fi
-    sed -i "/cli-win32-x64-msvc/d" package.json
-    NODE_ENV=development    npm install --legacy-peer-deps
+    _set_build_env
+    cp src-tauri/icons/128x128@2x.png src-tauri/icons/256x256.png
+    export NODE_ENV=development
+    git submodule update --init --recursive --depth 1
+    bun install
+    rustup toolchain install stable
+    rustup default stable
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    sed -i "s/targets\"\: \"all/targets\"\: \"deb/g" src-tauri/{tauri.conf.json,tauri.linux.conf.json}
-    NODE_ENV=production     npm run tauri build
+    export NODE_ENV=production
+    case "${CARCH}" in
+        x86_64)  export TAURI_ENV_TARGET_TRIPLE="x86_64-unknown-linux-gnu" ;;
+        aarch64) export TAURI_ENV_TARGET_TRIPLE="aarch64-unknown-linux-gnu" ;;
+    esac
+    bun run build:pvr:linux
+    bun run tauri build --no-bundle
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/bin/"${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
-    for _icons in 32x32 128x128 256x256@2;do
-        install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/share/icons/hicolor/"${_icons}"/apps/"${pkgname%-git}".png \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    install -Dm755 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm755 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/pvr" -t "${pkgdir}/usr/bin"
+    for _icons in 32x32 128x128 256x256;do
+        install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/icons/${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/share/applications/"${_pkgname}".desktop \
-        "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_${pkgver%.r*}_"*/data/usr/lib/"${_pkgname}"/resources/*.yml \
-        -t "${pkgdir}/usr/lib/${_pkgname}/resources"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 -d "${pkgdir}/usr/lib/${_pkgname}"
+    cp -a "${srcdir}/${pkgname//-/.}/src-tauri/target/release/resources" "${pkgdir}/usr/lib/${_pkgname}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
