@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=duckling-bin
 _pkgname=Duckling
-pkgver=0.59.1
+pkgver=0.59.2
 pkgrel=1
-pkgdesc="A fast viewer for CSV/Parquet files and databases such as DuckDB, SQLite, PostgreSQL, MySQL, Clickhouse, etc.(Prebuilt version)"
+pkgdesc="A fast viewer for CSV/Parquet files and databases such as DuckDB, SQLite, PostgreSQL, MySQL, Clickhouse, etc."
 arch=('x86_64')
 url="https://github.com/l1xnan/duckling"
 license=('MIT')
@@ -18,10 +18,11 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/l1xnan/duckling/v${pkgver}/LICENSE"
 )
-sha256sums=('dcab2d2492929569bba8ff38e98479a7d0a37d30b9b3ce869d9fbb4facc03fac'
+sha256sums=('511daa2c557d675d43e7f935828c4e267928145a909abf39389c9c2578a8a220'
             'a57ebfdf4a7893bc2ba09a6f572c55a9f4052bebe8e6f33940df766ef61a1bcd')
 prepare() {
     sed -i "s/Categories=/Categories=Development;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
