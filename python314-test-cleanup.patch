@@ -1,0 +1,48 @@
+--- a/lib/bindings/python/tests/conftest.py
++++ b/lib/bindings/python/tests/conftest.py
+@@ -407,3 +407,25 @@ def temp_file_store():
+-    with tempfile.TemporaryDirectory() as tmpdir:
+-        os.environ["DYN_FILE_KV"] = tmpdir
++    tmpdir = tempfile.mkdtemp()
++    os.environ["DYN_FILE_KV"] = tmpdir
++    try:
+         yield tmpdir
++    finally:
++        # DistributedRuntime.shutdown() stops its Rust file-store watchers,
++        # but their last filesystem notification can race Python 3.14's
++        # stricter TemporaryDirectory cleanup and recreate the version
++        # directory between rmtree operations. Wait for teardown to quiesce,
++        # while keeping a persistent writer or leak a hard test failure.
++        last_error = None
++        for _ in range(50):
++            try:
++                shutil.rmtree(tmpdir)
++            except FileNotFoundError:
++                pass
++            except OSError as error:
++                last_error = error
++            time.sleep(0.02)
++            if not os.path.exists(tmpdir):
++                break
++        else:
++            if last_error is not None:
++                raise last_error
++            raise OSError(f"failed to clean temporary file store: {tmpdir}")
+
+--- a/lib/bindings/python/tests/test_example_hello_world.py
++++ b/lib/bindings/python/tests/test_example_hello_world.py
+@@ -47,7 +47,13 @@
+ 
+     # Cleanup
+     server_proc.terminate()
+-    server_proc.wait(timeout=1)
++    try:
++        # wait() alone leaves stdout=PIPE open.  Drain and close it so Python
++        # 3.14 does not report the file descriptor as an unraisable warning.
++        server_proc.communicate(timeout=1)
++    except subprocess.TimeoutExpired:
++        server_proc.kill()
++        server_proc.communicate()
+ 
+ 
+ async def run_client(example_dir):
