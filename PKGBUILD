@@ -54,7 +54,7 @@ build() {
 
 check() {
     cd "$pkgname"
-    python -m pytest
+    python -m pytest --disable-plugin-autoload
 }
 
 package() {
