@@ -1,6 +1,6 @@
 pkgbase = nixd
 	pkgdesc = Nix language server
-	pkgver = 2.9.2
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://github.com/nix-community/nixd
 	arch = x86_64
@@ -13,9 +13,11 @@ pkgbase = nixd
 	depends = llvm
 	depends = boost
 	depends = nlohmann-json
-	source = nixd-2.9.2.tar.gz::https://github.com/nix-community/nixd/archive/refs/tags/2.9.2.tar.gz
+	source = nixd-2.9.3.tar.gz::https://github.com/nix-community/nixd/archive/refs/tags/2.9.3.tar.gz
 	source = nixd-llvm19-compat.patch
-	sha256sums = 2b46cc1e91fcf76e7b939905fa696217ea96639af9e9444cfe8afa18088cccbd
+	source = nixd-llvm-shared.patch
+	sha256sums = 25cdadefa4dc1649121d6eb1c315c4f75ee79e0dd165bf25a38878a7f46b0426
 	sha256sums = a2fc1f82264e43873a34e4742b456383f4a32fb474c5618da598f80e6895f8f1
+	sha256sums = f551327c1e5e87b9d33642a0644073f1987fb37ebd25387689b28c537f28395d
 
 pkgname = nixd
