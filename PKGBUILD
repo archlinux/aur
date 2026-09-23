@@ -1,15 +1,15 @@
 # Maintainer: Huseyn Teymurzade <huseynteymurrr74@gmail.com>
 pkgname=kizamu
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A modern terminal typing trainer, built with Zig"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Huseynteymurzade28/Kizamu"
 license=('MIT')
 depends=('glibc')
-makedepends=('zig>=0.15.0' 'git')
+makedepends=('zig>=0.16.0' 'zig<0.17.0' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6367853ee29555b6008d8d68f16b632ad4c1d12c88e3f26e545ee2bb1e7d8a47')
+sha256sums=('8689de7f1a272099b40918b1668a9cf96d547224ee37e28489e338202a5dce7d')
 
 prepare() {
   cd "$srcdir/Kizamu-$pkgver"
