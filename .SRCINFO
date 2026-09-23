@@ -1,0 +1,17 @@
+pkgbase = ttcli
+	pkgdesc = TickTick CLI - tasks, lists, and pomodoro/focus records from the terminal
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/j4y-w4lk3r/ttcli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = 1password-cli: ttcli login and automatic session refresh
+	optdepends = libnotify: desktop notifications
+	conflicts = ttcli-bin
+	source = ttcli-0.3.0.tar.gz::https://github.com/j4y-w4lk3r/ttcli/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 2f1bd53972d91416f5fdcde841f8b8370a3ec314f754a6c8511117434e1af9f1
+
+pkgname = ttcli
