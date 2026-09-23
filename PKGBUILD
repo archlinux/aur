@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Quintard <guillaume.quintard@varnish-software.com>
 
 pkgname=varnish
-pkgver=9.0.3
-pkgrel=3
+pkgver=9.1.0
+pkgrel=2
 pkgdesc="High-performance HTTP accelerator"
 arch=('x86_64')
 url="https://www.varnish-cache.org/"
@@ -19,7 +19,7 @@ source=("https://github.com/varnish/varnish/releases/download/varnish-$pkgver/va
 	"varnishreload"
 	"varnish.logrotate"
 	"varnish.sysusers")
-sha512sums=('2789cff88632c2279062a109513cc00cab7690785f8f77e90b9968098c71ddcdc6403d6a9edc755b8f4055f0d32d9e330b0bc20fbab92ba80232955942dc912a'
+sha512sums=('d833ed13e89ac502d629346fbc989a85e0adf51241030139275e1a2f7896b53fc915a98d246b8ceb20cdb57a965698018a5ef6c23b5f30aa044b15151b9b250b'
             '815a8c20f68c0cb107243b7bff6b149eca23acbdf9271d74b067158beaa18e6417e4645ad4c6a1d48dbd2e18fcaa7b31467e72e3c3c71da319c627785e27cac6'
             'd364ff29b4d1594356a5bf231f7789924a502e7db9eaa83d7e25bd04d1f44e2471f8dbb72a00b4677780f508f5f5aab21c1dbe6659ab631b9b22ab7ad057b995'
             '9fbb26400ec2e7efee73f59ece9554e6883ea0097d6be21343b678f602d9d228b8b9efe2544e4ac9087038e76f88ac959f2bb27a6b2d97be78c0e7cd7628bb45'
