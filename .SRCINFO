@@ -1,6 +1,6 @@
 pkgbase = ytt
 	pkgdesc = YAML templating tool that works on YAML structure instead of text
-	pkgver = 0.55.2
+	pkgver = 0.55.3
 	pkgrel = 1
 	url = https://carvel.dev/ytt
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ytt
 	makedepends = go
 	makedepends = zip
 	provides = ytt
-	source = ytt-0.55.2::https://github.com/carvel-dev/ytt/archive/v0.55.2.tar.gz
-	sha256sums = e36439c836b24a572f465c8404c53d65eecdca737a6d98e0d79d5e82babe1e4e
+	source = ytt-0.55.3::https://github.com/carvel-dev/ytt/archive/v0.55.3.tar.gz
+	sha256sums = ff45d6b34342714223b75a98bf089c108c928b3d8247651c4aa70c152ee42719
 
 pkgname = ytt
