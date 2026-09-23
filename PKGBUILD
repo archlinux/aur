@@ -1,9 +1,12 @@
 # Maintainer: Alexeyev Vitaly <vitamindbnfkz@gmail.com>
 pkgname=synthos-bin
 _pkgname=synthos
-pkgver=274
+# epoch=1: с 20.09 по 23.09.2026 версией был голый номер сборки (268…278), и
+# для pacman 278 > 0.2.278 — без epoch переход на 0.2.x считался бы откатом.
+epoch=1
+pkgver=0.2.278
 pkgrel=1
-pkgdesc="Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — on the native synaptix engine (binary release)"
+pkgdesc="Local AI desktop studio: agentic chat, notes workspace, node editor for image/video/music/speech, code editor — native synaptix engine on any NVIDIA sm_80+ GPU, .syn and GGUF models (binary release)"
 arch=("x86_64")
 url="https://github.com/VitaminDB/synthos"
 license=("MIT" "Apache-2.0")
@@ -25,13 +28,13 @@ depends=(
 )
 optdepends=(
     "nvidia-utils: GPU-инференс (CUDA-драйвер грузится в рантайме)"
-    "cuda: ядра NVRTC компилируются на лету, нужен CUDA-рантайм"
+    "cuda: ядра NVRTC компилируются на лету под карту (sm_80+), нужен CUDA-рантайм"
 )
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
 
 source=("$_pkgname-$pkgver.tar.zst::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-linux.tar.zst")
-sha256sums=('e04a734c6a0d154b31f164d9731dad14157c7dd8ee38e3a6f11592b5a587897d')
+sha256sums=('e70c72b1a9ab8faa1a5608d6385f4602afe8a575594a2ab848c87813d9ac0bdf')
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
