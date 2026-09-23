@@ -11,6 +11,7 @@ depends=('fuse3' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'dbus' 'gcc-libs' 'glibc'
          'hicolor-icon-theme')
 makedepends=('cargo' 'git' 'gettext')
 optdepends=('perl-image-exiftool: thumbnails for camera RAW files'
+            'ffmpeg: video thumbnails'
             'gnome-keyring: credential storage over the Secret Service API'
             'kwallet: credential storage over the Secret Service API'
             'xdg-utils: "Open folder" action in the tray menu'

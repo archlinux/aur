@@ -17,6 +17,7 @@ pkgbase = proton-drive-for-linux-git
 	depends = glibc
 	depends = hicolor-icon-theme
 	optdepends = perl-image-exiftool: thumbnails for camera RAW files
+	optdepends = ffmpeg: video thumbnails
 	optdepends = gnome-keyring: credential storage over the Secret Service API
 	optdepends = kwallet: credential storage over the Secret Service API
 	optdepends = xdg-utils: "Open folder" action in the tray menu
