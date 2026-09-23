@@ -1,13 +1,13 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=cloudflare-wrangler
 _npmname=wrangler
-pkgver=4.136.3
+pkgver=4.137.0
 pkgrel=1
 # Source-of-truth commit on cloudflare/workers-sdk for this npm publish,
 # extracted from the npm provenance (sigstore) attestation. Used to fetch
 # LICENSE files reproducibly because upstream `wrangler@<ver>` tags often
 # lag the npm publish by hours/days.
-_license_commit=914a21c51abf75ec9ae4b5cf052fa143f09ae924
+_license_commit=a1f05a34643c2d8774ab7791fdf5b35f6f7770fa
 pkgdesc="Command-line interface for building and deploying Cloudflare Workers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler"
@@ -26,7 +26,7 @@ source=("$_npmname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$_npmname
         "LICENSE-APACHE-$pkgver::https://raw.githubusercontent.com/cloudflare/workers-sdk/$_license_commit/LICENSE-APACHE"
         "LICENSE-MIT-$pkgver::https://raw.githubusercontent.com/cloudflare/workers-sdk/$_license_commit/LICENSE-MIT")
 noextract=("$_npmname-$pkgver.tgz")
-sha256sums=('306f2483ff7133cd3ef12e045e56fe22fe7fad30772274e1556b7de2b56eae0a'
+sha256sums=('f39ad65a122b15acf74c38f9575dce6147810e308995909050e9e29668685ca1'
             '62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a'
             '9bb3b077cc8628334bab25961223dd8207252c8a56aa054195be38f1c042aaf4')
 # wrangler bundles platform-specific native binaries (workerd, esbuild).
