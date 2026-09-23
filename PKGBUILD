@@ -2,7 +2,7 @@
 
 pkgname=recall
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-text search and resume for AI coding-agent conversations"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zippoxer/recall"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
 conflicts=('recall-bin' 'recall-zippoxer-bin')
-options=('!debug')
+options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zippoxer/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('9defdf83adfe7ee4b3fec8c84d7b1c9037ae57abce8be14f5771142cfa61acbf')
 
