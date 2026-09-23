@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='5.9.2'
+pkgver='6.1.2'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
@@ -9,7 +9,7 @@ url="https://github.com/$pkgname/$pkgname"
 license=('GPL-3.0-only AND LicenseRef-BeekeeperStudioApplicationEULA')
 _electronpkg='electron39'
 depends=("$_electronpkg")
-makedepends=('git' 'libxcrypt-compat' 'nodejs' 'python' 'yarn')
+makedepends=('git' 'libxcrypt-compat' 'nodejs' 'npm' 'python' 'yarn')
 optdepends=(
 	'aws-cli-v2: AWS CLI Authentication support for Amazon Redshift'
 	'azure-cli: Azure CLI Authentication support for MySQL, PostgreSQL and SQL Server'
@@ -30,13 +30,13 @@ source=(
 	'update-dependencies.diff'
 	'LICENSE.md'
 )
-b2sums=('25c9de019fde2cc63e92bd30377bca6556b65d170fa4bd5760da9206128332be9d1b358411d245ef3f3863604656f54a767be0acf90f90083b57421f2d672dd2'
+b2sums=('b84d274b2b8b735c674fb14ebfc1e228d53cd050b3b2a0ebe2905eebe6363a6e2725991a66f7d8d8c42ac67f566d4c2cadf3eeaea2838ae4dbe811f8a8f616cc'
         '54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0'
-        '70d93e8fc4c61e43737fd7177480f1aa2eb5fa1aa1b2ed2882384e51d1060eb511454dc06cd7b8b3e60326270a3739b31107dea8abc5668051b4a8a0ac3f1031'
-        'ec02f85fc2b7f47e45a0ebd3c39c111606c90e8e4296247b9c1c0d5c354c2640696d9c1a230dfb707b959e2e2b6aa544c8e29eef953a7889d1a23796ff6bd196'
-        '21fdbaab298acb62e2676137e6bdea3dadb3a400ffa388451434e39c18e1f422b7d03fc182aebd1dbcda68f57535c8e6f941c95e8dd9865502b6088552c98c51'
-        '796b95769c3e1d60b5ae561ad4e2a3874a4940dd058fae325505c15fe290e42165fff7c9aee9ff42853474552dbe7a290c1e2881648cb7c852bc39221d79c1a9'
-        '360dd26e3fd4ed4801ca863325b1eeac0a026b9915f64a0260a146d5a8d125ba9a4342aa4b1afbc502509c74c4926f65d0ac0d6d1e2b5d399546e7cdc13c60fa')
+        'f1bf1c74529bb101e95eec346ffef46f842e208bb7272e487bf4d5ba340b8f9af9b8af1e2f79423db034f296cc01d28cd86c91e908a374de4f48c3766a68db2f'
+        '178e3b0574aba79cc35f1cf972f6e20a21d260c242c3230040f20dd6b804b41966620494930f7646478298a729767e30eb632fd60075509144f2270a7ed3233f'
+        '7a2b1b855e7666afbd1f23e5a041a1534e59790aca5408861009480364ec00c4040e3da737b5648e10977ead35918a9b9950b8e3c96bdc0f00310932fc8136a3'
+        '6a1e94f61e571fc80389562950c392f320a594ac980311af0f17fe288a9cc4387caae851332ca4eb2eae1499f297404613b8a2dbfc6ef3861eebc09be5fde173'
+        '70ee7097b8f31000503b2141c6adfc45a033472c5fcb68eaa68a761aedf295eb45da3f71c86a1eb57f3c57267f736c031e58088bfd7a494693a3434eded2b4c0')
 
 _sourcedirectory="$pkgname-$pkgver"
 
@@ -55,8 +55,7 @@ prepare() {
 	# Replace package name, flag file name and Electron version in launcher script
 	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" -e 's/%%FLAGFILENAME%%/bks/g' "$srcdir/electron-launcher.sh"
 
-	# Set npm overrides for various dependencies to be compatible with current node and Linux versions
-	# (see https://github.com/beekeeper-studio/node-sqlanywhere/pull/3 for node-sqlanywhere fix)
+	# Set yarn overrides for various dependencies to be compatible with current node and Linux versions
 	patch --forward -p1 < "$srcdir/update-dependencies.diff"
 
 	# Set system Electron version for ABI compatibility
@@ -68,18 +67,18 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	yarn run bks:build
+	yarn run electron:build
 }
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Run unit tests (yarn run test:unit currently calls a non-existent command)
-	ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electronpkg" yarn workspace beekeeper-studio test:unit --ci
-	ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electronpkg" yarn workspace @beekeeperstudio/ui-kit test
+	ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electronpkg" yarn workspace beekeeper-studio run test:unit --ci
+	ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electronpkg" yarn workspace @beekeeperstudio/ui-kit run test
 
 	# Run non-DB integration tests
-	ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electronpkg" yarn run test:ci --ci
+	ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electronpkg" yarn workspace beekeeper-studio run test:ci --ci
 }
 
 package() {

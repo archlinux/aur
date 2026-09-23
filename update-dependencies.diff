@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index f6156d4e5..447c264db 100644
+index f6156d4e5..857423702 100644
 --- a/package.json
 +++ b/package.json
 @@ -38,6 +38,9 @@
@@ -9,7 +9,7 @@ index f6156d4e5..447c264db 100644
 -    "**/axios": "^1.15.0"
 +    "**/axios": "^1.15.0",
 +    "electron": "%%ELECTRON_VERSION%%",
-+    "sqlanywhere": "dpeukert/node-sqlanywhere#3fc75ab398f67986610ead1947a7d378c1d6e171",
++    "sqlanywhere": "beekeeper-studio/node-sqlanywhere#0e1280155455a308c04b07e9f6888372bd513b08",
 +    "better-sqlite3": "12.10.0"
    }
  }
