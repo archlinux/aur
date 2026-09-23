@@ -1,6 +1,6 @@
 pkgbase = spotatui-bin
 	pkgdesc = A Spotify client for the terminal written in Rust, powered by Ratatui
-	pkgver = 0.42.0
+	pkgver = 0.43.0
 	pkgrel = 1
 	url = https://github.com/LargeModGames/spotatui
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = spotatui-bin
 	depends = openssl
 	provides = spotatui
 	conflicts = spotatui
-	source = LICENSE-0.42.0::https://raw.githubusercontent.com/LargeModGames/spotatui/v0.42.0/LICENSE
-	source = README-0.42.0.md::https://raw.githubusercontent.com/LargeModGames/spotatui/v0.42.0/README.md
+	source = LICENSE-0.43.0::https://raw.githubusercontent.com/LargeModGames/spotatui/v0.43.0/LICENSE
+	source = README-0.43.0.md::https://raw.githubusercontent.com/LargeModGames/spotatui/v0.43.0/README.md
 	sha256sums = b47ad91f512f5ae715df2888abf19ff0172c75de71b6423f836174bae8f8161e
-	sha256sums = 2aad8976bc324a7cc6ff542e2ac5e1ca402d21df0a1f2f9ae0b3fae2545433cc
-	source_x86_64 = spotatui-x86_64-0.42.0.tgz::https://github.com/LargeModGames/spotatui/releases/download/v0.42.0/spotatui-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 12323f7ebdcdcd0b6f562464c2fa4242573db0da76c20396e1053d1cb63c17be
+	sha256sums = ed492417b04083ca5a6557fa58c5a4fad67dbeacfdc544204b710e07c0bb0645
+	source_x86_64 = spotatui-x86_64-0.43.0.tgz::https://github.com/LargeModGames/spotatui/releases/download/v0.43.0/spotatui-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 907d9dd3969f89eecc3313452ee8b18408920b1babed412d7df82a4a5a3287a1
 
 pkgname = spotatui-bin
