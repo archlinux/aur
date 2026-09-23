@@ -1,0 +1,17 @@
+pkgbase = slat
+	pkgdesc = Terminal multiplexer with tiling panes, tabs and workspaces that keep running after you close the window
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/noturbob/slat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = slat
+	options = !strip
+	options = !lto
+	source = slat-0.2.1.tgz::https://github.com/noturbob/slat/archive/v0.2.1.tar.gz
+	sha256sums = 1072f4087382e815431dff0d3af612dce134f19dd68b53fcdb79c873569524d3
+
+pkgname = slat
