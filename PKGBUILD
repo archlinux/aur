@@ -1,7 +1,7 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 
 pkgname=proton-drive-for-linux-git
-pkgver=1.11.1.r0.g860d29c
+pkgver=2.0.0.r1.g56161f6
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (git)"
 arch=('x86_64')
