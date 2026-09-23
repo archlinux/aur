@@ -12,7 +12,7 @@
 pkgname=android-studio
 pkgver=2026.1.4.8
 _vername="quail4-patch1"
-pkgrel=1
+pkgrel=2
 pkgdesc="The official Android IDE (Stable branch)"
 arch=('x86_64')
 url="https://developer.android.com/"
