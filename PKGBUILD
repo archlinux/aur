@@ -10,7 +10,7 @@
 # "unused"/"unassigned" heuristics don't apply to a PKGBUILD.
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=agent-glovebox
-pkgver=0.68.0
+pkgver=0.69.0
 pkgrel=1
 pkgdesc="Hardware-isolated, allowlist-firewalled sandbox for running Claude Code"
 arch=('any')
@@ -32,19 +32,16 @@ depends=('bash>=5' 'git' 'jq' 'coreutils' 'python')
 # The container runtime is NOT a hard dep: `glovebox setup` provisions it
 # when missing (the same path the git-clone install uses), so the package stays
 # installable on a host that supplies it another way. nodejs/npm back pnpm and
-# the in-image install. sbx backs the Docker microVM backend and is not
-# provisioned by setup — it is a pure hint so a user knows what to install
-# (docs.docker.com/ai/sandboxes).
+# the in-image install.
 optdepends=(
   'docker: container runtime (else provisioned by glovebox setup)'
   'nodejs: runtime backing pnpm and the in-image install'
   'npm: package manager backing the in-image install'
-  'sbx: Docker microVM backend; install per docs.docker.com/ai/sandboxes and run "sbx login" once'
 )
 
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d702737db1fe0f305adccbab89663e59ba53fd64f9a49598417c3d036e5f0714')
+sha256sums=('006fec19039f9400485192af1fba304266f020eb5a868a7b41d4a7859b40f004')
 
 # Owner this release was cut from. Synced from config/packaging.json by
 # scripts/gen-packaging.mjs (shared with the Homebrew formula and nFPM manifest)
@@ -80,11 +77,12 @@ package() {
   install -d "$libdir"
   cp -a . "$libdir/"
 
-  # Only the two entry points go on PATH; `glovebox` dispatches to its
-  # bin/subcommands/ scripts from within libdir/bin.
+  # Only setup.bash's wrappers go on PATH; `glovebox` dispatches to its
+  # bin/subcommands/ scripts and bin/glovebox-gh-app from within libdir/bin.
   install -d "$pkgdir/usr/bin"
   local wrapper
-  for wrapper in glovebox claude-github-app; do
+  # shellcheck disable=SC2043 # gen-packaging writes setup.bash's wrapper list here, one name today
+  for wrapper in glovebox; do
     ln -s "/usr/lib/$pkgname/bin/$wrapper" "$pkgdir/usr/bin/$wrapper"
   done
   # The package is named agent-glovebox; expose that name as a command alias too.
