@@ -1,17 +1,17 @@
 pkgbase = buildifier-bin
 	pkgdesc = A command line tool to format Bazel BUILD files
-	pkgver = 10.0.1
+	pkgver = 10.1.0
 	pkgrel = 1
 	url = https://github.com/bazelbuild/buildtools
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	conflicts = buildifier
-	source = LICENSE-10.0.1::https://raw.githubusercontent.com/bazelbuild/buildtools/v10.0.1/LICENSE
+	source = LICENSE-10.1.0::https://raw.githubusercontent.com/bazelbuild/buildtools/v10.1.0/LICENSE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_x86_64 = buildifier-bin-x86_64-10.0.1::https://github.com/bazelbuild/buildtools/releases/download/v10.0.1/buildifier-linux-amd64
-	sha256sums_x86_64 = e0ea28e2d639347724435ebafe0531fd764fbf20eec6a23000c81edd0d58e51d
-	source_aarch64 = buildifier-bin-aarch64-10.0.1::https://github.com/bazelbuild/buildtools/releases/download/v10.0.1/buildifier-linux-arm64
-	sha256sums_aarch64 = 6d7aebd23aa85847a66d517bb6220d95f24a2752e62cce0f089145b680b539c7
+	source_x86_64 = buildifier-bin-x86_64-10.1.0::https://github.com/bazelbuild/buildtools/releases/download/v10.1.0/buildifier-linux-amd64
+	sha256sums_x86_64 = 31b6a8aa1e5c746696788f428729701770ad91925873d8256cb885c60e12c77e
+	source_aarch64 = buildifier-bin-aarch64-10.1.0::https://github.com/bazelbuild/buildtools/releases/download/v10.1.0/buildifier-linux-arm64
+	sha256sums_aarch64 = 38d2ed845f560b4a16ddee41de906508a95f8dc85b04e0851b0a71e3a70d3890
 
 pkgname = buildifier-bin
