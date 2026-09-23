@@ -4,17 +4,18 @@
 # do not edit the generated PKGBUILD by hand.
 
 pkgname=gitilante
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A focused Git GUI for diffs, hunks and history"
 arch=('x86_64')
 url="https://gitlab.com/rutilante/gitilante"
 license=('GPL-3.0-or-later')
-depends=('git' 'gtk4' 'libadwaita')
+depends=('git' 'gtk4' 'gtksourceview5' 'libadwaita')
 makedepends=('cargo')
+checkdepends=('xorg-server-xvfb')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/rutilante/gitilante/-/archive/v$pkgver/gitilante-v$pkgver.tar.gz")
-sha256sums=('040d2685327bc0f0010f2ed5f14ee2b4b2b55c0fc62915c3d3957de3e406c7a9')
+sha256sums=('ca27063a8c29024eeaff9f5ee3bc047f5c916ae1a42438499c60d58015eb4e5f')
 
 prepare() {
     cd "$srcdir/$pkgname-v$pkgver"
@@ -35,7 +36,8 @@ check() {
     cd "$srcdir/$pkgname-v$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --release
+    # The syntax tests initialize GTK: a virtual display is enough.
+    xvfb-run -a cargo test --frozen --release
 }
 
 package() {
