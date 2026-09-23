@@ -1,7 +1,7 @@
 pkgbase = firefly-luciferin-git
 	pkgdesc = Screen capture software for ambient and bias lighting
 	pkgver = 2.28.4r32.g35b32cef
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sblantipodi/firefly_luciferin
 	arch = any
 	license = GPL-3.0-or-later
