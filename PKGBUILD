@@ -1,9 +1,9 @@
 # Maintainer: Guillaume Quintard <guillaume.quintard@varnish-software.com>
 
 pkgname=vmod-jq
-pkgver=9.0.3
-pkgrel=3
-_srcver=4051a7d08dc3a4ca90d9e8319d5a3a132793e1da
+pkgver=9.1.0
+pkgrel=2
+_srcver=d117ed322d75c06d40324180746f6973b99424b3
 pkgdesc="Use jq programs from Varnish VCL"
 arch=('x86_64')
 url="https://github.com/varnishcache-friends/libvmod-jq"
@@ -11,7 +11,7 @@ license=('BSD-2-Clause')
 depends=("varnish=$pkgver-$pkgrel" 'jq')
 makedepends=('autoconf' 'automake' 'libtool' 'autoconf-archive' 'pkg-config' 'python-docutils')
 source=("libvmod-jq-$_srcver.tar.gz::https://github.com/varnishcache-friends/libvmod-jq/archive/${_srcver}.tar.gz")
-sha512sums=('2d9e3827a33b19411d0ba0dd3366a94f8ece1ef5174e1648f3dab7c6ebbc186b840e92b929532dc7f5db9ad3d7dc7e3891f2f61c540c4c109a37a8eda095927c')
+sha512sums=('54d2320279074c0e6698d6e293228718254bdccfdcff76357054ececf5a298666397bc8c28f48581cd6d1ba4ee99db7c8d873ce0126149b4ec5408a02f873aae')
 
 build() {
     cd "libvmod-jq-$_srcver"
