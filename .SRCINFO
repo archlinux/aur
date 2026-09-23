@@ -13,8 +13,8 @@ pkgbase = norupo-bin
 	conflicts = norupo-git
 	backup = etc/norupo/server.env
 	source_x86_64 = norupo-bin-0.1.1-x86_64.tar.gz::https://github.com/Mahmoud-walid/Norupo-tunnel/releases/download/v0.1.1/norupo-0.1.1-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 7fcf33af98d77ecf0f8ee720c5ce9dc50b40fae56ca0e19748b21fcd47902630
+	sha256sums_x86_64 = 9f6cc0172d80d16291f57145988be328a5c2278bc6dec1766b828d86e4049f79
 	source_aarch64 = norupo-bin-0.1.1-aarch64.tar.gz::https://github.com/Mahmoud-walid/Norupo-tunnel/releases/download/v0.1.1/norupo-0.1.1-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 3b684fb0dddabae45cbb95b072b268c88c945ac7bcc107a85ece9f44b28fcd17
+	sha256sums_aarch64 = 6a92cf96a32ebd3e2711255de2397257edfaabcbbe065630e5cff171fa0446fd
 
 pkgname = norupo-bin
