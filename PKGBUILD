@@ -1,7 +1,7 @@
 # Maintainer: Nils Pukropp <contact@narl.io>
 
 pkgname=proton-drive-for-linux
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Unofficial Proton Drive client: files-on-demand FUSE mount, CLI, GTK4 app and tray"
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=('fuse3' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'dbus' 'gcc-libs' 'glibc'
          'hicolor-icon-theme')
 makedepends=('cargo' 'gettext')
 optdepends=('perl-image-exiftool: thumbnails for camera RAW files'
+            'ffmpeg: video thumbnails'
             'gnome-keyring: credential storage over the Secret Service API'
             'kwallet: credential storage over the Secret Service API'
             'xdg-utils: "Open folder" action in the tray menu'
@@ -21,7 +22,7 @@ conflicts=('proton-drive-linux' 'proton-drive-for-linux-bin' 'proton-drive-for-l
 # LTO has broken GTK/Rust links for this workspace; the release profile keeps it off.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('205b19e0cc34ed26bccc5218df7c530a2b2b2755f6a36e2b39b1c29ae9fcb655')
+sha256sums=('73f68211d008894c3254b5adca0acca7f9e1af90e89209c22ae0213aa75add4b')
 
 _srcname="proton-drive-linux-$pkgver"
 
