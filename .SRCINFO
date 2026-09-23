@@ -1,6 +1,6 @@
 pkgbase = payload-dumper-go-bin
-	pkgdesc = an android OTA payload dumper written in Go.(Prebuilt version)
-	pkgver = 2.0.2
+	pkgdesc = An android OTA payload dumper written in Go.
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/ssut/payload-dumper-go
 	arch = aarch64
@@ -8,12 +8,12 @@ pkgbase = payload-dumper-go-bin
 	arch = x86_64
 	license = Apache-2.0
 	provides = payload-dumper-go
-	conflicts = payload-dumper-go=2.0.2
-	source_aarch64 = payload-dumper-go-2.0.2-aarch64.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/2.0.2/payload-dumper-go_2.0.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 161da9bcd7993a483f58574fcb466fa24b91504876bf50747aabfcb9a4171645
-	source_armv7h = payload-dumper-go-2.0.2-armv7h.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/2.0.2/payload-dumper-go_2.0.2_linux_armv7.tar.gz
-	sha256sums_armv7h = 2cdbf77a477692215e5b0ebb4b1f9923c4ce28a9855fcb781a7dc245ea7d01e7
-	source_x86_64 = payload-dumper-go-2.0.2-x86_64.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/2.0.2/payload-dumper-go_2.0.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 8d81854caeacd9223a6882340959869b0a210d44a1e597329830713abd2b4dcc
+	conflicts = payload-dumper-go=2.1.0
+	source_aarch64 = payload-dumper-go-2.1.0-aarch64.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/2.1.0/payload-dumper-go_2.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5743a39b48d0c4dab948ad6e5d9ff275e649528e5dfd2b7db4b6893093b70f6c
+	source_armv7h = payload-dumper-go-2.1.0-armv7h.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/2.1.0/payload-dumper-go_2.1.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 81109f54ad4d63c8d81e58bca6b430019b3bc4d692eb5c375996af5581a56f12
+	source_x86_64 = payload-dumper-go-2.1.0-x86_64.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/2.1.0/payload-dumper-go_2.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = bbbb53a71955c69272afdef7bc7e83a1bb1770f453d0c21dcaf61a3ba0463c11
 
 pkgname = payload-dumper-go-bin
