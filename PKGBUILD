@@ -1,8 +1,8 @@
-# Maintainer:
+# Maintainer: Gilles (gillesgillespie) - https://github.com/corp-0
 pkgname=pudu-launcher-git
 pkgver=r132.8d853ca
 pkgrel=1
-pkgdesc="Alternative game launcher for Unitystation"
+pkgdesc="Official launcher for Unitystation (development version)"
 arch=('x86_64')
 url="https://github.com/unitystation/PuduLauncher"
 license=('MIT')
