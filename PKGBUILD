@@ -1,9 +1,9 @@
 # Maintainer: Guillaume Quintard <guillaume.quintard@varnish-software.com>
 
 pkgname=vmod-fileserver
-pkgver=9.0.3
-pkgrel=3
-_srcver=0.0.12
+pkgver=9.1.0
+pkgrel=2
+_srcver=0.1.1
 pkgdesc="Varnish vmod for serving static files"
 arch=('x86_64')
 url="https://github.com/varnish-rs/vmod-fileserver"
@@ -11,7 +11,7 @@ license=('BSD-3-Clause')
 depends=("varnish=$pkgver-$pkgrel")
 makedepends=('cargo' 'clang' 'openssl' 'pkg-config' 'python-docutils' 'jq')
 source=("$pkgname-$_srcver.tar.gz::https://github.com/varnish-rs/vmod-fileserver/archive/refs/tags/v${_srcver}.tar.gz")
-sha512sums=('b9a8d289beefcd4db7caeceb3ed6d7e93187ed85455ec8764c0eca4cc2dcabe325980e4ac37c63fd0b864e9861a8e6074c108fe9a3e647d2bd1eb778051c58a2')
+sha512sums=('d07a37d8334c2caac2cebe52358fc039ae1f55a2a1ad8d26ed3649c522a12981a3fa3646e8bccd5711da76db95e533a524f4b252f80449f0a0d39eb75f1c3ac7')
 options=(!lto)
 
 prepare() {
