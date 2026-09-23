@@ -1,17 +1,17 @@
 pkgbase = degourou
 	pkgdesc = Automate the process of getting decrypted ebook from InternetArchive without the need for Adobe Digital Editions and Calibre
-	pkgver = 1.3.8
-	pkgrel = 2
-	url = https://gitea.com/bipinkrish/DeGourou
+	pkgver = 1.3.9
+	pkgrel = 3
+	url = https://pypi.org/project/DeGourou/
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
+	makedepends = python-setuptools
 	depends = python-pycryptodomex
 	depends = python-lxml
 	depends = python-cryptography
 	depends = python-charset-normalizer
-	source = degourou-1.3.8.tar.gz::https://gitea.com/bipinkrish/DeGourou/archive/v1.3.8.tar.gz
-	source = starter.py
-	sha256sums = e22d58904707212449c94fcc8611e3fee2af3e1849dae1b92cc928e48cd47c98
-	sha256sums = 63605649733abe631608c8a6a2a4150bcb17f96e5f9eab6cc5e1401660702867
+	depends = python-requests
+	source = degourou-1.3.9.tar.gz::https://files.pythonhosted.org/packages/d1/b4/0280d7aa60c0fe4279ee3334bcc6c3e3464418b9b0e2702daabcea2d7d5f/DeGourou-1.3.9.tar.gz
+	sha256sums = d0b6eb7a9ead023bde8f5266e803aa33ace7cbb11c1952fe1558ca667bbae9c8
 
 pkgname = degourou
