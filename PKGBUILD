@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=stremio-server-go-bin
-pkgver=0.13.1 # renovate: datasource=github-releases depName=M0Rf30/stremio-server-go
+pkgver=0.14.0 # renovate: datasource=github-releases depName=M0Rf30/stremio-server-go
 pkgrel=1
 pkgdesc="IPv6-capable, pure-Go drop-in for Stremio's streaming server with HLS transcoding and DLNA casting"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -27,13 +27,14 @@ sha256sums=(
   '04d37f62270f1ac9925d1717e84fab424048216871b81fd072d447211b46f683'
   '00f324787c8ab340d33255ffdb9d143c026467655a01d54a965293739e2396d0'
 )
-sha256sums_x86_64=('52657bf7dd149b705422a36c94c3c58a75f1685f515434b3e472660e40820b92')
-sha256sums_aarch64=('c4f974c2291c0c658bdcc6471f582e6242b34cc9cb8bfe43520eea7831ff2e5f')
-sha256sums_armv7h=('dcfc665610930998d398629f0d4eec99473f43cb2e2f0b2a224934c5dd14b763')
+sha256sums_x86_64=('35fd03aa0d1d3bb0b6f1d3ff4c8a40cf9efbd595e4d87ec440399f48226c6a16')
+sha256sums_aarch64=('f4bf4776bf78786feb00c9ff987405eee23c9e8f1937a993dcb7aa17673bc9a1')
+sha256sums_armv7h=('d22da28805bb870d1f85d9e90daad9dbd978e87868ec3e4d6ce0328b4cb68557')
 
 package() {
   # Install binary
-  install -Dm755 "${srcdir}/stremio-server" "${pkgdir}/usr/bin/stremio-server"
+  install -Dm755 "${srcdir}/stremio-server" \
+    "${pkgdir}/usr/bin/stremio-server"
 
   # Install user systemd service (shipped in the upstream repo under deploy/systemd)
   install -Dm644 "${srcdir}/stremio-server-${pkgver}.service" \
@@ -44,6 +45,8 @@ package() {
     "${pkgdir}/etc/stremio-server/stremio-server.env"
 
   # License and documentation
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "${srcdir}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/README.md" \
+    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
