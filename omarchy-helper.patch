@@ -1,0 +1,3794 @@
+diff --git a/applications/authenticator/package.json b/applications/authenticator/package.json
+index 635fe69956..a9daa03412 100644
+--- a/applications/authenticator/package.json
++++ b/applications/authenticator/package.json
+@@ -1,7 +1,8 @@
+ {
+     "name": "proton-authenticator",
+     "scripts": {
+-        "build:desktop": "cross-env NODE_ENV=production API_ENV=proton.me tools/build.sh",
++        "build:desktop": "cross-env QA_BUILD=false NODE_ENV=production API_ENV=proton.me tools/build.sh",
++        "build:omarchy-helper": "cross-env QA_BUILD=false NODE_ENV=production API_ENV=proton.me tools/build-omarchy-helper.sh",
+         "build:web": "cross-env NODE_ENV=production API_ENV=proton.me webpack --config webpack.config.ts",
+         "check-types": "tsc",
+         "fmt:native": "cd src-tauri && make fmt",
+@@ -17,6 +18,7 @@
+         "start:desktop": "tauri dev --features devtools",
+         "start:web": "cross-env API_ENV=proton.black webpack serve --config webpack.config.ts",
+         "test": "jest",
++        "test:omarchy-helper-build": "node --test tools/verify-omarchy-helper-build.spec.mjs",
+         "test:ci": "jest --coverage --runInBand --ci --passWithNoTests"
+     },
+     "dependencies": {
+diff --git a/applications/authenticator/src-tauri/Cargo.lock b/applications/authenticator/src-tauri/Cargo.lock
+index ce12af0dd9..856273ec83 100644
+--- a/applications/authenticator/src-tauri/Cargo.lock
++++ b/applications/authenticator/src-tauri/Cargo.lock
+@@ -23,17 +23,6 @@ version = "2.0.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "320119579fcad9c21884f5c4861d16174d0e06250625266f50fe6898340abefa"
+ 
+-[[package]]
+-name = "ahash"
+-version = "0.7.8"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "891477e0c6a8957309ee5c45a6368af3ae14bb510732d2684ffa19af310920f9"
+-dependencies = [
+- "getrandom 0.2.16",
+- "once_cell",
+- "version_check",
+-]
+-
+ [[package]]
+ name = "aho-corasick"
+ version = "1.1.3"
+@@ -105,12 +94,6 @@ dependencies = [
+  "derive_arbitrary",
+ ]
+ 
+-[[package]]
+-name = "arrayvec"
+-version = "0.7.6"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7c02d123df017efcdfbd739ef81735b36c5ba83ec3c59c80a9d7ecc718f92e50"
+-
+ [[package]]
+ name = "async-broadcast"
+ version = "0.7.2"
+@@ -336,18 +319,6 @@ dependencies = [
+  "serde_core",
+ ]
+ 
+-[[package]]
+-name = "bitvec"
+-version = "1.0.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1bc2832c24239b0141d5674bb9174f9d68a8b5b3f2753311927c172ca46f7e9c"
+-dependencies = [
+- "funty",
+- "radium",
+- "tap",
+- "wyz",
+-]
+-
+ [[package]]
+ name = "block-buffer"
+ version = "0.10.4"
+@@ -388,29 +359,6 @@ dependencies = [
+  "piper",
+ ]
+ 
+-[[package]]
+-name = "borsh"
+-version = "1.5.7"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ad8646f98db542e39fc66e68a20b2144f6a732636df7c2354e74645faaa433ce"
+-dependencies = [
+- "borsh-derive",
+- "cfg_aliases",
+-]
+-
+-[[package]]
+-name = "borsh-derive"
+-version = "1.5.7"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fdd1d3c0c2f5833f22386f252fe8ed005c7f59fdcddeef025c01b4c3b9fd9ac3"
+-dependencies = [
+- "once_cell",
+- "proc-macro-crate 3.3.0",
+- "proc-macro2",
+- "quote",
+- "syn 2.0.117",
+-]
+-
+ [[package]]
+ name = "brotli"
+ version = "8.0.1"
+@@ -433,49 +381,25 @@ dependencies = [
+ ]
+ 
+ [[package]]
+-name = "bumpalo"
+-version = "3.19.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "46c5e41b57b8bba42a04676d81cb89e9ee8e859a1a66f80a5a72e1cb76b34d43"
+-
+-[[package]]
+-name = "byte-unit"
+-version = "5.1.6"
++name = "bs58"
++version = "0.5.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e1cd29c3c585209b0cbc7309bfe3ed7efd8c84c21b7af29c8bfae908f8777174"
++checksum = "bf88ba1141d185c399bee5288d850d63b8369520c1eafc32a0430b5b6c287bf4"
+ dependencies = [
+- "rust_decimal",
+- "serde",
+- "utf8-width",
++ "tinyvec",
+ ]
+ 
+ [[package]]
+-name = "bytecheck"
+-version = "0.6.12"
++name = "bumpalo"
++version = "3.20.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "23cdc57ce23ac53c931e88a43d06d070a6fd142f2617be5855eb75efc9beb1c2"
+-dependencies = [
+- "bytecheck_derive",
+- "ptr_meta",
+- "simdutf8",
+-]
+-
+-[[package]]
+-name = "bytecheck_derive"
+-version = "0.6.12"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3db406d29fbcd95542e92559bed4d8ad92636d1ca8b3b72ede10b4bcc010e659"
+-dependencies = [
+- "proc-macro2",
+- "quote",
+- "syn 1.0.109",
+-]
++checksum = "72f5acc6cb2ba439de613abc23857ec3d78374d8ed5ac84e9d11336e87da8649"
+ 
+ [[package]]
+ name = "bytemuck"
+-version = "1.23.1"
++version = "1.25.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "5c76a5792e44e4abe34d3abf15636779261d45a7450612059293d1d2cfc63422"
++checksum = "d6aedf8ae72766347502cf3cb4f41cf5e9cc37d28bee90f1fdaaae15f9cf9424"
+ 
+ [[package]]
+ name = "byteorder"
+@@ -485,9 +409,9 @@ checksum = "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
+ 
+ [[package]]
+ name = "bytes"
+-version = "1.10.1"
++version = "1.12.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d71b6127be86fdcfddb610f7182ac57211d4b18a3e9c82eb2d17662f2227ad6a"
++checksum = "fc652a48c352aef3ea3aed32080501cf3ef6ed5da78602a020c991775b0aff04"
+ dependencies = [
+  "serde",
+ ]
+@@ -874,38 +798,14 @@ version = "0.0.7"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "52560adf09603e58c9a7ee1fe1dcb95a16927b17c127f0ac02d6e768a0e25bc1"
+ 
+-[[package]]
+-name = "darling"
+-version = "0.20.11"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fc7f46116c46ff9ab3eb1597a45688b6715c6e628b5c133e288e709a29bcb4ee"
+-dependencies = [
+- "darling_core 0.20.11",
+- "darling_macro 0.20.11",
+-]
+-
+ [[package]]
+ name = "darling"
+ version = "0.23.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "25ae13da2f202d56bd7f91c25fba009e7717a1e4a1cc98a76d844b65ae912e9d"
+ dependencies = [
+- "darling_core 0.23.0",
+- "darling_macro 0.23.0",
+-]
+-
+-[[package]]
+-name = "darling_core"
+-version = "0.20.11"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "0d00b9596d185e565c2207a0b01f8bd1a135483d02d9b7b0a54b11da8d53412e"
+-dependencies = [
+- "fnv",
+- "ident_case",
+- "proc-macro2",
+- "quote",
+- "strsim",
+- "syn 2.0.117",
++ "darling_core",
++ "darling_macro",
+ ]
+ 
+ [[package]]
+@@ -921,24 +821,13 @@ dependencies = [
+  "syn 2.0.117",
+ ]
+ 
+-[[package]]
+-name = "darling_macro"
+-version = "0.20.11"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fc34b93ccb385b40dc71c6fceac4b2ad23662c7eeb248cf10d529b7e055b6ead"
+-dependencies = [
+- "darling_core 0.20.11",
+- "quote",
+- "syn 2.0.117",
+-]
+-
+ [[package]]
+ name = "darling_macro"
+ version = "0.23.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "ac3984ec7bd6cfa798e62b4a642426a5be0e68f9401cfc2a01e3fa9ea2fcdb8d"
+ dependencies = [
+- "darling_core 0.23.0",
++ "darling_core",
+  "quote",
+  "syn 2.0.117",
+ ]
+@@ -1056,7 +945,7 @@ dependencies = [
+  "libc",
+  "option-ext",
+  "redox_users",
+- "windows-sys 0.61.2",
++ "windows-sys 0.60.2",
+ ]
+ 
+ [[package]]
+@@ -1403,12 +1292,6 @@ dependencies = [
+  "percent-encoding",
+ ]
+ 
+-[[package]]
+-name = "funty"
+-version = "2.0.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e6d5a32815ae3f33302d95fdcb2ce17862f8c65363dcfd29360480ba1001fc9c"
+-
+ [[package]]
+ name = "futf"
+ version = "0.1.5"
+@@ -1852,15 +1735,12 @@ name = "hashbrown"
+ version = "0.12.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888"
+-dependencies = [
+- "ahash",
+-]
+ 
+ [[package]]
+ name = "hashbrown"
+-version = "0.15.4"
++version = "0.15.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "5971ac85611da7067dbfcabef3c70ebb5606018acd9e2a3903a0da507521e0d5"
++checksum = "9229cfe53dfd69f0609a49f65461bd93001ea1ef889cd5529dd176593f5338a1"
+ dependencies = [
+  "foldhash 0.1.5",
+ ]
+@@ -2304,11 +2184,12 @@ checksum = "8eaf4bc02d17cbdd7ff4c7438cafcdf7fb9a4613313ad11b4f8fefe7d3fa0130"
+ 
+ [[package]]
+ name = "js-sys"
+-version = "0.3.91"
++version = "0.3.103"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b49715b7073f385ba4bc528e5747d02e66cb39c6146efb66b781f131f0fb399c"
++checksum = "53b44bfcdb3f8d5837a46dae1ca9660a837176eee74a28b229bc626816589102"
+ dependencies = [
+- "once_cell",
++ "cfg-if",
++ "futures-util",
+  "wasm-bindgen",
+ ]
+ 
+@@ -2404,9 +2285,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "libc"
+-version = "0.2.174"
++version = "0.2.189"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1171693293099992e19cddea4e8b849964e9846f4acee11b3948bcc337be8776"
++checksum = "3eaf3ede3fee6db1a4c2ee091bf8a8b4dccdc6d17f656fb07896ee72867612f2"
+ 
+ [[package]]
+ name = "libdbus-sys"
+@@ -2471,9 +2352,6 @@ name = "log"
+ version = "0.4.29"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
+-dependencies = [
+- "value-bag",
+-]
+ 
+ [[package]]
+ name = "lru-slab"
+@@ -2595,7 +2473,7 @@ dependencies = [
+  "png 0.18.1",
+  "serde",
+  "thiserror 2.0.12",
+- "windows-sys 0.61.2",
++ "windows-sys 0.60.2",
+ ]
+ 
+ [[package]]
+@@ -2728,9 +2606,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "num_enum"
+-version = "0.7.4"
++version = "0.7.6"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "a973b4e44ce6cad84ce69d797acf9a044532e4184c4f267913d1b546a0727b7a"
++checksum = "5d0bca838442ec211fa11de3a8b0e0e8f3a4522575b5c4c06ed722e005036f26"
+ dependencies = [
+  "num_enum_derive",
+  "rustversion",
+@@ -2738,9 +2616,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "num_enum_derive"
+-version = "0.7.4"
++version = "0.7.6"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "77e878c846a8abae00dd069496dbe8751b16ac1c3d6bd2a7283a938e8228f90d"
++checksum = "680998035259dcfcafe653688bf2aa6d3e2dc05e98be6ab46afb089dc84f1df8"
+ dependencies = [
+  "proc-macro-crate 3.3.0",
+  "proc-macro2",
+@@ -3533,6 +3411,7 @@ dependencies = [
+  "base64 0.22.1",
+  "block2 0.6.2",
+  "keyring",
++ "libc",
+  "log",
+  "objc2 0.6.4",
+  "objc2-foundation 0.3.2",
+@@ -3566,26 +3445,6 @@ version = "2.0.11"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "33cb294fe86a74cbcf50d4445b37da762029549ebeea341421c7c70370f86cac"
+ 
+-[[package]]
+-name = "ptr_meta"
+-version = "0.1.4"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "0738ccf7ea06b608c10564b31debd4f5bc5e197fc8bfe088f68ae5ce81e7a4f1"
+-dependencies = [
+- "ptr_meta_derive",
+-]
+-
+-[[package]]
+-name = "ptr_meta_derive"
+-version = "0.1.4"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "16b845dbfca988fa33db069c0e230574d15a3088f147a87b64c7589eb662c9ac"
+-dependencies = [
+- "proc-macro2",
+- "quote",
+- "syn 1.0.109",
+-]
+-
+ [[package]]
+ name = "publicsuffix"
+ version = "2.3.0"
+@@ -3627,9 +3486,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "quinn-proto"
+-version = "0.11.12"
++version = "0.11.15"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "49df843a9161c85bb8aae55f101bc0bac8bcafd637a620d9122fd7e0b2f7422e"
++checksum = "4fcb935c5bec503c2f0e306bdd3e58bb9029dcb14fa8d9ac76e3a5256ac0763e"
+ dependencies = [
+  "bytes",
+  "getrandom 0.3.3",
+@@ -3681,12 +3540,6 @@ version = "6.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
+ 
+-[[package]]
+-name = "radium"
+-version = "0.7.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "dc33ff2d4973d518d823d61aa239014831e521c75da58e3df4840d3f47749d09"
+-
+ [[package]]
+ name = "rand"
+ version = "0.7.3"
+@@ -3889,15 +3742,6 @@ version = "0.8.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "2b15c43186be67a4fd63bee50d0303afffcef381492ebe2c5d87f324e1b8815c"
+ 
+-[[package]]
+-name = "rend"
+-version = "0.4.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "71fe3824f5629716b1589be05dacd749f6aa084c87e00e016714a8cdfccc997c"
+-dependencies = [
+- "bytecheck",
+-]
+-
+ [[package]]
+ name = "reqwest"
+ version = "0.12.22"
+@@ -4018,51 +3862,6 @@ dependencies = [
+  "windows-sys 0.52.0",
+ ]
+ 
+-[[package]]
+-name = "rkyv"
+-version = "0.7.45"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "9008cd6385b9e161d8229e1f6549dd23c3d022f132a2ea37ac3a10ac4935779b"
+-dependencies = [
+- "bitvec",
+- "bytecheck",
+- "bytes",
+- "hashbrown 0.12.3",
+- "ptr_meta",
+- "rend",
+- "rkyv_derive",
+- "seahash",
+- "tinyvec",
+- "uuid",
+-]
+-
+-[[package]]
+-name = "rkyv_derive"
+-version = "0.7.45"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "503d1d27590a2b0a3a4ca4c94755aa2875657196ecbf401a42eff41d7de532c0"
+-dependencies = [
+- "proc-macro2",
+- "quote",
+- "syn 1.0.109",
+-]
+-
+-[[package]]
+-name = "rust_decimal"
+-version = "1.37.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b203a6425500a03e0919c42d3c47caca51e79f1132046626d2c8871c5092035d"
+-dependencies = [
+- "arrayvec",
+- "borsh",
+- "bytes",
+- "num-traits",
+- "rand 0.8.5",
+- "rkyv",
+- "serde",
+- "serde_json",
+-]
+-
+ [[package]]
+ name = "rustc-demangle"
+ version = "0.1.25"
+@@ -4151,7 +3950,7 @@ dependencies = [
+  "security-framework 3.7.0",
+  "security-framework-sys",
+  "webpki-root-certs",
+- "windows-sys 0.61.2",
++ "windows-sys 0.60.2",
+ ]
+ 
+ [[package]]
+@@ -4162,9 +3961,9 @@ checksum = "f87165f0995f63a9fbeea62b64d10b4d9d8e78ec6d7d51fb2125fda7bb36788f"
+ 
+ [[package]]
+ name = "rustls-webpki"
+-version = "0.103.3"
++version = "0.103.13"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e4a72fe2bcf7a6ac6fd7d0b9e5cb68aeb7d4c0a0271730218b3e92d43b4eb435"
++checksum = "61c429a8649f110dddef65e2a5ad240f747e85f7758a6bccc7e5777bd33f756e"
+ dependencies = [
+  "ring",
+  "rustls-pki-types",
+@@ -4173,9 +3972,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "rustversion"
+-version = "1.0.21"
++version = "1.0.23"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "8a0d197bd2c9dc6e53b84da9556a69ba4cdfab8619eb41a8bd1cc2027a0f6b1d"
++checksum = "cf54715a573b99ac80df0bc206da022bcd442c974952c7b9720069370852e21f"
+ 
+ [[package]]
+ name = "ryu"
+@@ -4258,12 +4057,6 @@ version = "1.2.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
+ 
+-[[package]]
+-name = "seahash"
+-version = "4.1.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1c107b6f4780854c8b126e228ea8869f4d7b71260f962fefb57b996b8959ba6b"
+-
+ [[package]]
+ name = "security-framework"
+ version = "2.11.1"
+@@ -4454,19 +4247,19 @@ dependencies = [
+ 
+ [[package]]
+ name = "serde_with"
+-version = "3.14.0"
++version = "3.21.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f2c45cd61fefa9db6f254525d46e392b852e0e61d9a1fd36e5bd183450a556d5"
++checksum = "76a5c54c7310e7b8b9577c286d7e399ddd876c3e12b3ed917a8aabc4b96e9e8c"
+ dependencies = [
+  "base64 0.22.1",
++ "bs58",
+  "chrono",
+  "hex",
+  "indexmap 1.9.3",
+  "indexmap 2.14.0",
+  "schemars 0.9.0",
+  "schemars 1.0.3",
+- "serde",
+- "serde_derive",
++ "serde_core",
+  "serde_json",
+  "serde_with_macros",
+  "time",
+@@ -4474,11 +4267,11 @@ dependencies = [
+ 
+ [[package]]
+ name = "serde_with_macros"
+-version = "3.14.0"
++version = "3.21.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "de90945e6565ce0d9a25098082ed4ee4002e047cb59892c318d66821e14bb30f"
++checksum = "84d57bc0c8b9a17920c178daa6bb924850d54a9c97ab45194bb8c17ad66bb660"
+ dependencies = [
+- "darling 0.20.11",
++ "darling",
+  "proc-macro2",
+  "quote",
+  "syn 2.0.117",
+@@ -4557,12 +4350,6 @@ version = "0.3.7"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "d66dc143e6b11c1eddc06d5c423cfc97062865baf299914ab64caa38182078fe"
+ 
+-[[package]]
+-name = "simdutf8"
+-version = "0.1.5"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e3a9fe34e3e7a50316060351f37187a3f546bce95496156754b601a5fa71b76e"
+-
+ [[package]]
+ name = "siphasher"
+ version = "0.3.11"
+@@ -4577,9 +4364,9 @@ checksum = "56199f7ddabf13fe5074ce809e7d3f42b42ae711800501b5b16ea82ad029c39d"
+ 
+ [[package]]
+ name = "slab"
+-version = "0.4.10"
++version = "0.4.12"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "04dc19736151f35336d325007ac991178d504a119863a2fcb3758cdb5e52c50d"
++checksum = "0c790de23124f9ab44544d7ac05d60440adc586479ce501c1d6d7da3cd8c9cf5"
+ 
+ [[package]]
+ name = "smallvec"
+@@ -4909,17 +4696,11 @@ dependencies = [
+  "syn 2.0.117",
+ ]
+ 
+-[[package]]
+-name = "tap"
+-version = "1.0.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "55937e1799185b12863d447f42597ed69d9928686b8d88a1df17376a097d8369"
+-
+ [[package]]
+ name = "tar"
+-version = "0.4.44"
++version = "0.4.46"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1d863878d212c87a19c1a610eb53bb01fe12951c0501cf5a0d65f724914a667a"
++checksum = "3f6221d9a6003c78398e3b239969f352578258df48c8eb051caadae0015bc840"
+ dependencies = [
+  "filetime",
+  "libc",
+@@ -5131,12 +4912,11 @@ dependencies = [
+ 
+ [[package]]
+ name = "tauri-plugin-log"
+-version = "2.8.0"
++version = "2.9.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7545bd67f070a4500432c826e2e0682146a1d6712aee22a2786490156b574d93"
++checksum = "b4e8861142c21636b03ff6eb9682a073814112e35220435670738a8be7b49896"
+ dependencies = [
+  "android_logger",
+- "byte-unit",
+  "fern",
+  "log",
+  "objc2 0.6.4",
+@@ -5337,7 +5117,7 @@ version = "2.0.0-rc.24"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "e23657d20f2b5508d5eca5ee6bb98d77e4c13127b9049e102b5db6a63bc73665"
+ dependencies = [
+- "darling 0.23.0",
++ "darling",
+  "heck 0.5.0",
+  "proc-macro2",
+  "quote",
+@@ -5377,7 +5157,7 @@ dependencies = [
+  "serde_with",
+  "swift-rs",
+  "thiserror 2.0.12",
+- "toml 0.9.6",
++ "toml 1.1.2+spec-1.1.0",
+  "url",
+  "urlpattern",
+  "uuid",
+@@ -5800,7 +5580,7 @@ dependencies = [
+  "png 0.18.1",
+  "serde",
+  "thiserror 2.0.12",
+- "windows-sys 0.61.2",
++ "windows-sys 0.60.2",
+ ]
+ 
+ [[package]]
+@@ -5927,12 +5707,6 @@ version = "0.7.6"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "09cc8ee72d2a9becf2f2febe0205bbed8fc6615b7cb429ad062dc7b7ddd036a9"
+ 
+-[[package]]
+-name = "utf8-width"
+-version = "0.1.7"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "86bd8d4e895da8537e5315b8254664e6b769c4ff3db18321b297a1e7004392e3"
+-
+ [[package]]
+ name = "utf8_iter"
+ version = "1.0.4"
+@@ -5951,12 +5725,6 @@ dependencies = [
+  "wasm-bindgen",
+ ]
+ 
+-[[package]]
+-name = "value-bag"
+-version = "1.12.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7ba6f5989077681266825251a52748b8c1d8a4ad098cc37e440103d0ea717fc0"
+-
+ [[package]]
+ name = "version-compare"
+ version = "0.2.0"
+@@ -6049,9 +5817,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "wasm-bindgen"
+-version = "0.2.114"
++version = "0.2.126"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "6532f9a5c1ece3798cb1c2cfdba640b9b3ba884f5db45973a6f442510a87d38e"
++checksum = "4b067c0c11094aef6b7a801c1e34a26affafdf3d051dba08456b868789aaf9a4"
+ dependencies = [
+  "cfg-if",
+  "once_cell",
+@@ -6062,23 +5830,19 @@ dependencies = [
+ 
+ [[package]]
+ name = "wasm-bindgen-futures"
+-version = "0.4.64"
++version = "0.4.76"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e9c5522b3a28661442748e09d40924dfb9ca614b21c00d3fd135720e48b67db8"
++checksum = "c62df1340f32221cb9c54d6a27b030e3dba64361d4a95bed55f9aacb44da291d"
+ dependencies = [
+- "cfg-if",
+- "futures-util",
+  "js-sys",
+- "once_cell",
+  "wasm-bindgen",
+- "web-sys",
+ ]
+ 
+ [[package]]
+ name = "wasm-bindgen-macro"
+-version = "0.2.114"
++version = "0.2.126"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "18a2d50fcf105fb33bb15f00e7a77b772945a2ee45dcf454961fd843e74c18e6"
++checksum = "167ce5e579f6bcf889c4f7175a8a5a585de84e8ff93976ce393efa5f2837aab1"
+ dependencies = [
+  "quote",
+  "wasm-bindgen-macro-support",
+@@ -6086,9 +5850,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "wasm-bindgen-macro-support"
+-version = "0.2.114"
++version = "0.2.126"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "03ce4caeaac547cdf713d280eda22a730824dd11e6b8c3ca9e42247b25c631e3"
++checksum = "f3997c7839262f4ef12cf90b818d6340c18e80f263f1a94bf157d0ec4420380e"
+ dependencies = [
+  "bumpalo",
+  "proc-macro2",
+@@ -6099,9 +5863,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "wasm-bindgen-shared"
+-version = "0.2.114"
++version = "0.2.126"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "75a326b8c223ee17883a4251907455a2431acc2791c98c26279376490c378c16"
++checksum = "dc1b4cb0cc549fcf58d7dfc081778139b3d283a081644e833e84682ad71cea24"
+ dependencies = [
+  "unicode-ident",
+ ]
+@@ -6148,16 +5912,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "47b807c72e1bac69382b3a6fb3dbe8ea4c0ed87ff5629b8685ae6b9a611028fe"
+ dependencies = [
+  "bitflags 2.11.0",
+- "hashbrown 0.15.4",
++ "hashbrown 0.15.5",
+  "indexmap 2.14.0",
+  "semver",
+ ]
+ 
+ [[package]]
+ name = "web-sys"
+-version = "0.3.91"
++version = "0.3.103"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "854ba17bb104abfb26ba36da9729addc7ce7f06f5c0f90f3c391f8461cca21f9"
++checksum = "8622dcb61c0bcc9fffa6938bed81210af2da9a7e4a1a834b2e37a59b6dfb6141"
+ dependencies = [
+  "js-sys",
+  "wasm-bindgen",
+@@ -6231,9 +5995,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "webpki-root-certs"
+-version = "1.0.6"
++version = "1.0.8"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "804f18a4ac2676ffb4e8b5b5fa9ae38af06df08162314f96a68d2a363e21a8ca"
++checksum = "0d46a5a140e6f7afeccd8eae97eff335163939eac8b929834875168b29b3d267"
+ dependencies = [
+  "rustls-pki-types",
+ ]
+@@ -6883,15 +6647,6 @@ dependencies = [
+  "x11-dl",
+ ]
+ 
+-[[package]]
+-name = "wyz"
+-version = "0.5.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "05f360fc0b24296329c78fda852a1e9ae82de9cf7b27dae4b7f62f118f77b9ed"
+-dependencies = [
+- "tap",
+-]
+-
+ [[package]]
+ name = "x11"
+ version = "2.21.0"
+@@ -7089,9 +6844,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "zip"
+-version = "4.2.0"
++version = "4.6.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "95ab361742de920c5535880f89bbd611ee62002bf11341d16a5f057bb8ba6899"
++checksum = "caa8cd6af31c3b31c6631b8f483848b91589021b28fffe50adada48d4f4d2ed1"
+ dependencies = [
+  "arbitrary",
+  "crc32fast",
+diff --git a/applications/authenticator/src-tauri/Cargo.toml b/applications/authenticator/src-tauri/Cargo.toml
+index 64d98bbccf..a8048c7aff 100644
+--- a/applications/authenticator/src-tauri/Cargo.toml
++++ b/applications/authenticator/src-tauri/Cargo.toml
+@@ -27,7 +27,7 @@ tauri-plugin-fs = "2.5.1"
+ tauri-plugin-store = "2.4.3"
+ keyring = { version = "3.6.3", features = ["apple-native", "windows-native", "sync-secret-service"] }
+ tauri-plugin-process = "2.3.1"
+-tauri-plugin-log = "2.8.0"
++tauri-plugin-log = "2.9.0"
+ log = "0.4.29"
+ tauri-plugin-http = { version = "2.5.9", features = ["unsafe-headers", "dangerous-settings"] }
+ rand = { version = "0.10.0" }
+@@ -39,6 +39,9 @@ specta = { version = "=2.0.0-rc.24" }
+ specta-typescript = { version = "=0.0.11" }
+ tauri-specta = { version = "=2.0.0-rc.24", features = ["derive", "typescript"] }
+ 
++[target.'cfg(target_os = "linux")'.dependencies]
++libc = "0.2.177"
++
+ [target.'cfg(target_os = "macos")'.dependencies]
+ objc2-local-authentication = "0.3.2"
+ objc2-foundation = "0.3.2"
+diff --git a/applications/authenticator/src-tauri/build.rs b/applications/authenticator/src-tauri/build.rs
+index 6b655cfba4..2abd7db103 100644
+--- a/applications/authenticator/src-tauri/build.rs
++++ b/applications/authenticator/src-tauri/build.rs
+@@ -1,6 +1,50 @@
++use std::process::Command;
++
++/// Provenance marker for the Omarchy helper build. `status` reports it so a
++/// review can tell which source commit the *running* binary was built from
++/// instead of inferring it from file mtimes. Falls back to `unknown` outside a
++/// git checkout rather than failing the build.
++fn helper_source_commit() -> String {
++    // Package builds run from a release tarball with no `.git`, so the
++    // packager passes the exact source commit of the patched tree instead. It
++    // must be a bare 40-hex commit; anything else falls back to git.
++    if let Ok(value) = std::env::var("OMARCHY_HELPER_SOURCE_COMMIT") {
++        let value = value.trim().to_string();
++        if value.len() == 40 && value.bytes().all(|c| c.is_ascii_hexdigit()) {
++            return value.to_ascii_lowercase();
++        }
++    }
++    let output = Command::new("git")
++        .args(["rev-parse", "HEAD"])
++        .output()
++        .ok()
++        .filter(|output| output.status.success())
++        .map(|output| String::from_utf8_lossy(&output.stdout).trim().to_string())
++        .filter(|commit| commit.len() == 40 && commit.bytes().all(|c| c.is_ascii_hexdigit()));
++    let dirty = Command::new("git")
++        .args(["status", "--porcelain", "--untracked-files=no", "--", "."])
++        .output()
++        .ok()
++        .filter(|output| output.status.success())
++        .is_some_and(|output| !output.stdout.is_empty());
++    match output {
++        Some(commit) if dirty => format!("{commit}-dirty"),
++        Some(commit) => commit,
++        None => "unknown".into(),
++    }
++}
++
+ fn main() {
+     #[cfg(feature = "devtools")]
+     println!("cargo:warning=⚠️ tauri/devtools enabled");
+ 
++    println!("cargo:rerun-if-changed=../../../.git/HEAD");
++    println!("cargo:rerun-if-changed=../../../.git/index");
++    println!("cargo:rerun-if-env-changed=OMARCHY_HELPER_SOURCE_COMMIT");
++    println!(
++        "cargo:rustc-env=OMARCHY_HELPER_SOURCE_COMMIT={}",
++        helper_source_commit()
++    );
++
+     tauri_build::build()
+ }
+diff --git a/applications/authenticator/src-tauri/capabilities/desktop.json b/applications/authenticator/src-tauri/capabilities/desktop.json
+index ab959746f1..dce8a3e831 100644
+--- a/applications/authenticator/src-tauri/capabilities/desktop.json
++++ b/applications/authenticator/src-tauri/capabilities/desktop.json
+@@ -2,5 +2,5 @@
+     "identifier": "desktop-capability",
+     "platforms": ["macOS", "windows", "linux"],
+     "windows": ["main"],
+-    "permissions": ["updater:default", "process:default", "log:default", "window-state:default", "process:default"]
++    "permissions": ["process:default", "log:default", "window-state:default", "process:default"]
+ }
+diff --git a/applications/authenticator/src-tauri/capabilities/updater.json b/applications/authenticator/src-tauri/capabilities/updater.json
+new file mode 100644
+index 0000000000..2827a9cafb
+--- /dev/null
++++ b/applications/authenticator/src-tauri/capabilities/updater.json
+@@ -0,0 +1,7 @@
++{
++    "identifier": "updater-capability",
++    "description": "Fork-local divergence: the updater is scoped away from Linux, where the plugin is not registered and update checks are disabled",
++    "platforms": ["macOS", "windows"],
++    "windows": ["main"],
++    "permissions": ["updater:default"]
++}
+diff --git a/applications/authenticator/src-tauri/src/auth.rs b/applications/authenticator/src-tauri/src/auth.rs
+index c08010da68..a028e1c978 100644
+--- a/applications/authenticator/src-tauri/src/auth.rs
++++ b/applications/authenticator/src-tauri/src/auth.rs
+@@ -39,6 +39,13 @@ pub fn log_in(
+     let should_send_destroyed = Arc::new(Mutex::new(true));
+     let should_send_destroyed_clone = should_send_destroyed.clone();
+ 
++    // Under Hyprland (Omarchy) the compositor draws the frame, so drop the GTK
++    // title bar; every other desktop keeps it.
++    #[cfg(target_os = "linux")]
++    let decorations = !crate::helper::use_compositor_decorations();
++    #[cfg(not(target_os = "linux"))]
++    let decorations = true;
++
+     let webview_handle = app.clone();
+     let window = WebviewWindowBuilder::new(&app, "login", WebviewUrl::External(parsed_url.clone()))
+         .theme(tauri_theme)
+@@ -47,6 +54,7 @@ pub fn log_in(
+         .inner_size(400.0, 600.0)
+         .resizable(true)
+         .always_on_top(true)
++        .decorations(decorations)
+         .on_navigation(move |url| {
+             let path = url.path();
+ 
+diff --git a/applications/authenticator/src-tauri/src/helper.rs b/applications/authenticator/src-tauri/src/helper.rs
+new file mode 100644
+index 0000000000..1d6b92680c
+--- /dev/null
++++ b/applications/authenticator/src-tauri/src/helper.rs
+@@ -0,0 +1,1526 @@
++#![cfg(target_os = "linux")]
++
++use serde::{Deserialize, Serialize};
++use serde_json::{json, Value};
++use std::fs;
++use std::io::{self, BufRead, BufReader, Read, Write};
++use std::os::fd::AsRawFd;
++use std::os::unix::fs::{DirBuilderExt, FileTypeExt, MetadataExt, PermissionsExt};
++use std::os::unix::net::{UnixListener, UnixStream};
++use std::path::{Path, PathBuf};
++use std::process::{Child, Command, Stdio};
++use std::sync::atomic::{AtomicBool, AtomicU64, AtomicUsize, Ordering};
++use std::sync::{Arc, Mutex, RwLock};
++use std::thread;
++use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
++
++const PROTOCOL_VERSION: u8 = 1;
++// Feature level of this helper, reported on every status/snapshot response so
++// the panel can tell a helper that is too old for it (and say "update") apart
++// from one that is broken. 2 adds the `open` op and the `latched` flag.
++const HELPER_API: u8 = 2;
++// Revision of the Omarchy patch on top of Proton's release. Bumped whenever the
++// patch changes, independently of Proton's own version.
++const HELPER_PATCH_REVISION: u32 = 5;
++const MAX_REQUEST_BYTES: u64 = 16 * 1024;
++const MAX_ENTRIES: usize = 200;
++const MAX_RESPONSE_BYTES: usize = 1024 * 1024;
++const CLIPBOARD_TTL: Duration = Duration::from_secs(20);
++// Codes expire with their TOTP period, and the publisher lives in a webview
++// that `--background` keeps hidden, where timers are throttled. A stalled
++// publisher would otherwise leave its last snapshot on the socket long after
++// those codes stopped being valid, so anything older than this is served as if
++// nothing had been published at all.
++const SNAPSHOT_TTL: Duration = Duration::from_secs(5);
++const CLIENT_TIMEOUT: Duration = Duration::from_secs(2);
++// One request/response exchange is a few kilobytes; anything that takes longer
++// than this end to end is a client dripping bytes to hold a connection slot.
++const CLIENT_DEADLINE: Duration = Duration::from_secs(5);
++const MAX_CONNECTIONS: usize = 16;
++const WL_COPY: &str = "/usr/bin/wl-copy";
++// How long the clipboard child gets to prove it took ownership. wl-copy in
++// foreground mode exits immediately if it cannot connect to the compositor or
++// another client refuses the offer; a child still alive after this window
++// has bound the selection.
++const CLIPBOARD_OWNERSHIP_GRACE: Duration = Duration::from_millis(150);
++// Source commit the binary was built from, embedded by build.rs so `status`
++// can identify the running artifact.
++const SOURCE_COMMIT: &str = env!("OMARCHY_HELPER_SOURCE_COMMIT");
++
++fn helper_version() -> String {
++    format!("{}+omarchy.{}", env!("CARGO_PKG_VERSION"), HELPER_PATCH_REVISION)
++}
++
++/// True once the package manager has replaced the binary this process runs
++/// from (the kernel then reports the old inode as ` (deleted)`). The panel
++/// uses it to offer a restart instead of silently serving from old code.
++/// Whether Proton's windows should drop their own title bar. Hyprland (and so
++/// Omarchy) manages windows itself, so the GTK title bar with its minimize,
++/// maximize and close buttons only duplicates what the compositor provides.
++/// Every other desktop keeps Proton's normal title bar.
++pub fn use_compositor_decorations() -> bool {
++    compositor_manages_windows(std::env::var_os("HYPRLAND_INSTANCE_SIGNATURE").as_deref())
++}
++
++fn compositor_manages_windows(hyprland_signature: Option<&std::ffi::OsStr>) -> bool {
++    hyprland_signature.is_some_and(|value| !value.is_empty())
++}
++
++pub fn binary_replaced() -> bool {
++    fs::read_link("/proc/self/exe")
++        .map(|path| path.to_string_lossy().ends_with(" (deleted)"))
++        .unwrap_or(false)
++}
++
++/// Keeps rows current across a TOTP rollover. The webview republishes about
++/// once a second, so right after a window closes the stored row still carries
++/// the old code for up to a second. Its `next_code` was generated for exactly
++/// the window that just opened, so the row is served with that code instead
++/// (and no next code, which the panel shows as pending) until the webview's
++/// fresh row replaces it. A row more than one window old is dropped: a code is
++/// never served outside the window it was generated for.
++fn roll_entries_forward(entries: Vec<HelperEntry>, now: u64) -> Vec<HelperEntry> {
++    entries
++        .into_iter()
++        .filter_map(|mut entry| {
++            if entry.valid_until > now {
++                return Some(entry);
++            }
++            let next_until = entry.valid_until.checked_add(u64::from(entry.period))?;
++            if entry.next_code.is_empty() || next_until <= now {
++                return None;
++            }
++            entry.code = std::mem::take(&mut entry.next_code);
++            entry.valid_until = next_until;
++            Some(entry)
++        })
++        .collect()
++}
++
++fn unix_now() -> u64 {
++    SystemTime::now()
++        .duration_since(UNIX_EPOCH)
++        .map(|elapsed| elapsed.as_secs())
++        .unwrap_or(0)
++}
++
++/// Which of Proton's own windows the panel may ask the helper to surface.
++/// Surfacing a window is all this does: it never clears the lock latch and
++/// never carries credentials, which are typed only into Proton's own UI.
++#[derive(Clone, Copy, Debug, PartialEq, Eq)]
++pub enum OpenView {
++    /// The full Proton Authenticator window: add, edit, delete, reorder,
++    /// import, export, settings, sign out.
++    Manage,
++    /// Proton's own Device sync sign-in modal on top of that window.
++    Login,
++    /// Proton's own "add code" dialog on top of that window.
++    Add,
++}
++
++pub trait WindowControl: Send + Sync {
++    fn open(&self, view: OpenView);
++}
++
++#[derive(Clone, Debug, Deserialize, Serialize, specta::Type)]
++#[serde(rename_all = "camelCase")]
++pub struct HelperEntry {
++    pub id: String,
++    pub name: String,
++    pub issuer: String,
++    #[serde(rename = "type")]
++    pub entry_type: String,
++    pub code: String,
++    pub next_code: String,
++    pub period: u32,
++    pub valid_until: u64,
++}
++
++#[derive(Clone, Debug, Deserialize, Serialize, specta::Type)]
++#[serde(rename_all = "camelCase")]
++pub struct HelperSnapshot {
++    pub state: String,
++    pub locked: bool,
++    pub synced: bool,
++    pub account: String,
++    pub generation: u64,
++    pub now: u64,
++    pub entries: Vec<HelperEntry>,
++}
++
++impl Default for HelperSnapshot {
++    fn default() -> Self {
++        Self {
++            state: "unavailable".into(),
++            locked: false,
++            synced: false,
++            account: String::new(),
++            generation: 0,
++            now: 0,
++            entries: Vec::new(),
++        }
++    }
++}
++
++trait ClipboardProcess: Send {
++    fn terminate(&mut self);
++}
++
++impl ClipboardProcess for Child {
++    fn terminate(&mut self) {
++        let _ = self.kill();
++        let deadline = Instant::now() + Duration::from_millis(500);
++        loop {
++            match self.try_wait() {
++                Ok(Some(_)) | Err(_) => return,
++                Ok(None) if Instant::now() >= deadline => return,
++                Ok(None) => thread::sleep(Duration::from_millis(10)),
++            }
++        }
++    }
++}
++
++struct ClipboardOwner {
++    generation: u64,
++    process: Box<dyn ClipboardProcess>,
++}
++
++impl Drop for ClipboardOwner {
++    fn drop(&mut self) {
++        self.process.terminate();
++    }
++}
++
++#[derive(Clone, Default)]
++pub struct HelperState {
++    snapshot: Arc<RwLock<HelperSnapshot>>,
++    published_at: Arc<Mutex<Option<Instant>>>,
++    manual_locked: Arc<AtomicBool>,
++    login_requested: Arc<AtomicBool>,
++    // Serialises `copy` against `lock`. Without it a copy that had already
++    // passed its snapshot check could hand a code to wl-copy after `lock`
++    // returned, leaving that code on the clipboard for the full TTL.
++    op_gate: Arc<Mutex<()>>,
++    clipboard_generation: Arc<AtomicU64>,
++    clipboard_owner: Arc<Mutex<Option<ClipboardOwner>>>,
++    started: Arc<Mutex<Option<Instant>>>,
++    // Random per-process identifier. Generations restart at 1 with every
++    // helper process, so a client keeping a monotonic floor across a helper
++    // restart would reject every fresh snapshot until it caught up. Sending the
++    // instance lets the client reset its floor only when the process changed.
++    instance: Arc<str>,
++}
++
++fn new_instance_id() -> Arc<str> {
++    let mut bytes = [0u8; 16];
++    let mut file = fs::File::open("/dev/urandom").expect("urandom unavailable");
++    file.read_exact(&mut bytes).expect("urandom read failed");
++    let hex: String = bytes.iter().map(|byte| format!("{byte:02x}")).collect();
++    hex.into()
++}
++
++impl HelperState {
++    pub fn new() -> Self {
++        Self {
++            instance: new_instance_id(),
++            started: Arc::new(Mutex::new(Some(Instant::now()))),
++            ..Self::default()
++        }
++    }
++
++    pub fn with_login_requested(login_requested: bool) -> Self {
++        Self {
++            login_requested: Arc::new(AtomicBool::new(login_requested)),
++            ..Self::new()
++        }
++    }
++
++    fn instance(&self) -> &str {
++        if self.instance.is_empty() {
++            "0"
++        } else {
++            &self.instance
++        }
++    }
++
++    pub fn request_login(&self) {
++        self.login_requested.store(true, Ordering::Release);
++    }
++
++    pub fn take_login_request(&self) -> bool {
++        self.login_requested.swap(false, Ordering::AcqRel)
++    }
++
++    fn next_clipboard_generation(&self) -> u64 {
++        self.clipboard_generation
++            .fetch_add(1, Ordering::AcqRel)
++            .saturating_add(1)
++    }
++
++    // Every path that retires an owner takes it out from under the mutex and
++    // lets it drop afterwards: `terminate()` can block for up to 500 ms, and
++    // holding the clipboard lock across that stalls every concurrent copy and
++    // lock request behind one slow child.
++    fn replace_clipboard_owner(&self, process: Box<dyn ClipboardProcess>) -> u64 {
++        let generation = self.next_clipboard_generation();
++        let previous = {
++            let mut owner = self
++                .clipboard_owner
++                .lock()
++                .unwrap_or_else(|poisoned| poisoned.into_inner());
++            owner.replace(ClipboardOwner {
++                generation,
++                process,
++            })
++        };
++        drop(previous);
++        generation
++    }
++
++    fn expire_clipboard_owner(&self, generation: u64) {
++        let expired = {
++            let mut owner = self
++                .clipboard_owner
++                .lock()
++                .unwrap_or_else(|poisoned| poisoned.into_inner());
++            if owner
++                .as_ref()
++                .is_some_and(|current| current.generation == generation)
++            {
++                owner.take()
++            } else {
++                None
++            }
++        };
++        drop(expired);
++    }
++
++    fn clear_clipboard_owner(&self) {
++        self.clipboard_generation.fetch_add(1, Ordering::AcqRel);
++        let cleared = self
++            .clipboard_owner
++            .lock()
++            .unwrap_or_else(|poisoned| poisoned.into_inner())
++            .take();
++        drop(cleared);
++    }
++
++    fn publish(&self, mut snapshot: HelperSnapshot) -> Result<(), String> {
++        validate_snapshot(&snapshot)?;
++        let mut current = self
++            .snapshot
++            .write()
++            .unwrap_or_else(|poisoned| poisoned.into_inner());
++        if self.manual_locked.load(Ordering::Acquire) {
++            return Ok(());
++        }
++        snapshot.generation = snapshot
++            .generation
++            .max(current.generation.saturating_add(1));
++        let encoded = serde_json::to_vec(&snapshot).map_err(|_| "snapshot_encode".to_string())?;
++        if encoded.len() > MAX_RESPONSE_BYTES {
++            return Err("snapshot_too_large".into());
++        }
++        *current = snapshot;
++        *self
++            .published_at
++            .lock()
++            .unwrap_or_else(|poisoned| poisoned.into_inner()) = Some(Instant::now());
++        Ok(())
++    }
++
++    /// How long since the webview last published (or since the helper started
++    /// if it never has). The watchdog reloads a webview that stops publishing:
++    /// a crashed WebKit web process otherwise leaves the helper running but
++    /// serving nothing, indefinitely.
++    pub fn publication_age(&self) -> Duration {
++        let published = *self
++            .published_at
++            .lock()
++            .unwrap_or_else(|poisoned| poisoned.into_inner());
++        let started = *self
++            .started
++            .lock()
++            .unwrap_or_else(|poisoned| poisoned.into_inner());
++        published
++            .or(started)
++            .map(|instant| instant.elapsed())
++            .unwrap_or_default()
++    }
++
++    pub fn latched(&self) -> bool {
++        self.manual_locked.load(Ordering::Acquire)
++    }
++
++    fn gate(&self) -> std::sync::MutexGuard<'_, ()> {
++        self.op_gate
++            .lock()
++            .unwrap_or_else(|poisoned| poisoned.into_inner())
++    }
++
++    // A snapshot whose publisher has stalled is served as if nothing had been
++    // published. Only `ready` carries codes, so staleness degrades that state to
++    // `unavailable` and drops the rows; states such as `locked` or `needs_login`
++    // carry none and stay true until the app republishes. Independently of
++    // publication age, a row whose own TOTP window has closed is never served:
++    // the code it carries has already rolled over.
++    fn current_snapshot(&self) -> (HelperSnapshot, bool) {
++        self.current_snapshot_at(unix_now())
++    }
++
++    fn current_snapshot_at(&self, now: u64) -> (HelperSnapshot, bool) {
++        let mut snapshot = self
++            .snapshot
++            .read()
++            .unwrap_or_else(|poisoned| poisoned.into_inner())
++            .clone();
++        snapshot.entries = roll_entries_forward(std::mem::take(&mut snapshot.entries), now);
++        let fresh = self
++            .published_at
++            .lock()
++            .unwrap_or_else(|poisoned| poisoned.into_inner())
++            .is_some_and(|published| published.elapsed() < SNAPSHOT_TTL);
++        if fresh || snapshot.state != "ready" {
++            return (snapshot, false);
++        }
++        (
++            HelperSnapshot {
++                state: "unavailable".into(),
++                entries: Vec::new(),
++                ..snapshot
++            },
++            true,
++        )
++    }
++
++    /// Latches the helper locked and clears everything it was serving. Returns
++    /// the new generation. The write guard is released before the clipboard
++    /// owner is terminated so a slow `wl-copy` cannot stall `publish`.
++    fn lock(&self) -> u64 {
++        let _gate = self.gate();
++        let generation = {
++            let mut snapshot = self
++                .snapshot
++                .write()
++                .unwrap_or_else(|poisoned| poisoned.into_inner());
++            self.manual_locked.store(true, Ordering::Release);
++            snapshot.locked = true;
++            snapshot.state = "locked".into();
++            snapshot.entries.clear();
++            snapshot.generation = snapshot.generation.saturating_add(1);
++            snapshot.generation
++        };
++        self.clear_clipboard_owner();
++        generation
++    }
++
++    /// Clears the manual lock latch and drops the published snapshot.
++    ///
++    /// Neither the socket nor the `--login` argv path may clear the latch, so
++    /// there is no production caller: a manual lock now persists for the life of
++    /// the process and is released by restarting the app. Retained for the tests
++    /// that cover the suppress-then-resume publication semantics.
++    #[cfg(test)]
++    pub fn unlock(&self) {
++        if let Ok(mut snapshot) = self.snapshot.write() {
++            self.manual_locked.store(false, Ordering::Release);
++            snapshot.state = "unavailable".into();
++            snapshot.locked = false;
++            snapshot.entries.clear();
++            snapshot.generation = snapshot.generation.saturating_add(1);
++        }
++    }
++}
++
++/// Path of the socket this process bound, kept in Tauri managed state so the
++/// exit hook can unlink exactly that node.
++pub struct SocketPath(pub PathBuf);
++
++#[derive(Debug, Deserialize)]
++#[serde(rename_all = "camelCase")]
++struct HelperRequest {
++    v: u8,
++    id: String,
++    op: String,
++    item_id: Option<String>,
++    #[serde(default)]
++    view: Option<String>,
++}
++
++fn parse_view(value: Option<&str>) -> Option<OpenView> {
++    match value {
++        Some("manage") => Some(OpenView::Manage),
++        Some("login") => Some(OpenView::Login),
++        Some("add") => Some(OpenView::Add),
++        _ => None,
++    }
++}
++
++fn bounded_text(value: &str, max: usize) -> bool {
++    value.len() <= max
++        && !value.chars().any(|character| {
++            character.is_control()
++                || matches!(
++                    character,
++                    '\u{061c}'
++                        | '\u{200b}'..='\u{200f}'
++                        | '\u{202a}'..='\u{202e}'
++                        | '\u{2060}'
++                        | '\u{2066}'..='\u{2069}'
++                        | '\u{feff}'
++                )
++        })
++}
++
++fn valid_id(value: &str) -> bool {
++    !value.is_empty()
++        && value.len() <= 128
++        && value
++            .bytes()
++            .all(|c| c.is_ascii_alphanumeric() || matches!(c, b'.' | b'_' | b':' | b'-'))
++}
++
++fn valid_code(code: &str, entry_type: &str) -> bool {
++    if entry_type == "Steam" {
++        code.len() == 5
++            && code
++                .bytes()
++                .all(|c| b"23456789BCDFGHJKMNPQRTVWXY".contains(&c))
++    } else {
++        (6..=10).contains(&code.len()) && code.bytes().all(|c| c.is_ascii_digit())
++    }
++}
++
++fn validate_snapshot(snapshot: &HelperSnapshot) -> Result<(), String> {
++    if !matches!(
++        snapshot.state.as_str(),
++        "ready" | "locked" | "needs_login" | "unavailable" | "error"
++    ) {
++        return Err("invalid_state".into());
++    }
++    if !bounded_text(&snapshot.account, 120) || snapshot.entries.len() > MAX_ENTRIES {
++        return Err("snapshot_bounds".into());
++    }
++    if snapshot.locked && !snapshot.entries.is_empty() {
++        return Err("locked_snapshot_has_entries".into());
++    }
++    for entry in &snapshot.entries {
++        if !valid_id(&entry.id)
++            || !bounded_text(&entry.name, 80)
++            || !bounded_text(&entry.issuer, 80)
++            || !matches!(entry.entry_type.as_str(), "Totp" | "Steam")
++            || !valid_code(&entry.code, &entry.entry_type)
++            || !valid_code(&entry.next_code, &entry.entry_type)
++            || !(15..=120).contains(&entry.period)
++        {
++            return Err("invalid_entry".into());
++        }
++    }
++    Ok(())
++}
++
++#[tauri::command]
++#[specta::specta]
++pub fn publish_helper_snapshot(
++    state: tauri::State<'_, HelperState>,
++    snapshot: HelperSnapshot,
++) -> Result<(), String> {
++    state.inner().publish(snapshot)
++}
++
++#[tauri::command]
++#[specta::specta]
++pub fn take_helper_login_request(state: tauri::State<'_, HelperState>) -> bool {
++    state.inner().take_login_request()
++}
++
++/// Shows Proton's main window. The web bridge calls this when the panel asks
++/// for sign-in but the account is already signed in, so the user lands on the
++/// app (and its sync settings) instead of nothing happening.
++#[tauri::command]
++#[specta::specta]
++pub fn show_helper_main_window(app: tauri::AppHandle) {
++    use tauri::Manager;
++    if let Some(window) = app.get_webview_window("main") {
++        let _ = window.show();
++        let _ = window.unminimize();
++        let _ = window.set_focus();
++    }
++}
++
++fn socket_path() -> io::Result<PathBuf> {
++    let runtime = std::env::var_os("XDG_RUNTIME_DIR")
++        .filter(|value| !value.is_empty())
++        .ok_or_else(|| io::Error::new(io::ErrorKind::NotFound, "XDG_RUNTIME_DIR is not set"))?;
++    Ok(PathBuf::from(runtime)
++        .join("proton-authenticator-omarchy")
++        .join("helper.sock"))
++}
++
++fn prepare_socket(path: &Path) -> io::Result<UnixListener> {
++    let uid = unsafe { libc::geteuid() };
++    let parent = path
++        .parent()
++        .ok_or_else(|| io::Error::new(io::ErrorKind::InvalidInput, "socket has no parent"))?;
++    match fs::symlink_metadata(parent) {
++        Ok(metadata) => {
++            if metadata.uid() != uid || !metadata.file_type().is_dir() {
++                return Err(io::Error::new(
++                    io::ErrorKind::PermissionDenied,
++                    "unsafe runtime directory",
++                ));
++            }
++            if metadata.permissions().mode() & 0o077 != 0 {
++                fs::set_permissions(parent, fs::Permissions::from_mode(0o700))?;
++            }
++        }
++        Err(error) if error.kind() == io::ErrorKind::NotFound => {
++            fs::DirBuilder::new().mode(0o700).create(parent)?;
++        }
++        Err(error) => return Err(error),
++    }
++    let parent_meta = fs::symlink_metadata(parent)?;
++    if parent_meta.uid() != uid
++        || !parent_meta.file_type().is_dir()
++        || parent_meta.permissions().mode() & 0o077 != 0
++    {
++        return Err(io::Error::new(
++            io::ErrorKind::PermissionDenied,
++            "unsafe runtime directory",
++        ));
++    }
++
++    if let Ok(metadata) = fs::symlink_metadata(path) {
++        if metadata.uid() != uid || !metadata.file_type().is_socket() {
++            return Err(io::Error::new(
++                io::ErrorKind::PermissionDenied,
++                "unsafe existing socket path",
++            ));
++        }
++        fs::remove_file(path)?;
++    }
++
++    // `bind` creates the socket node with `0777 & ~umask`, and the systemd unit's
++    // UMask is not something an ad-hoc launch inherits. Force the umask for the
++    // bind itself so there is no window where the node is group/other-reachable
++    // before the explicit chmod below.
++    let previous_umask = unsafe { libc::umask(0o077) };
++    let bound = UnixListener::bind(path);
++    unsafe { libc::umask(previous_umask) };
++    let listener = bound?;
++    fs::set_permissions(path, fs::Permissions::from_mode(0o600))?;
++    Ok(listener)
++}
++
++/// Removes the socket node this process created, if it is still ours. Called
++/// from the app exit hook; a stale node left behind would otherwise trip the
++/// next start's safety check when combined with a planted symlink.
++pub fn remove_socket(path: &Path) {
++    let uid = unsafe { libc::geteuid() };
++    if let Ok(metadata) = fs::symlink_metadata(path) {
++        if metadata.uid() == uid && metadata.file_type().is_socket() {
++            let _ = fs::remove_file(path);
++        }
++    }
++}
++
++fn peer_uid(stream: &UnixStream) -> io::Result<u32> {
++    let fd = stream.as_raw_fd();
++    let mut credentials = libc::ucred {
++        pid: 0,
++        uid: 0,
++        gid: 0,
++    };
++    let mut length = std::mem::size_of::<libc::ucred>() as libc::socklen_t;
++    let result = unsafe {
++        libc::getsockopt(
++            fd,
++            libc::SOL_SOCKET,
++            libc::SO_PEERCRED,
++            (&mut credentials as *mut libc::ucred).cast(),
++            &mut length,
++        )
++    };
++    if result != 0 {
++        return Err(io::Error::last_os_error());
++    }
++    Ok(credentials.uid)
++}
++
++fn envelope(id: &str, body: Value) -> Value {
++    let mut map = match body {
++        Value::Object(map) => map,
++        _ => serde_json::Map::new(),
++    };
++    map.insert("v".into(), json!(PROTOCOL_VERSION));
++    map.insert("id".into(), json!(id));
++    Value::Object(map)
++}
++
++fn snapshot_response(id: &str, snapshot: &HelperSnapshot, stale: bool, instance: &str) -> Value {
++    let mut body = serde_json::to_value(snapshot).unwrap_or_else(|_| json!({ "state": "error" }));
++    if let Value::Object(map) = &mut body {
++        map.insert("ok".into(), json!(true));
++        map.insert("stale".into(), json!(stale));
++        map.insert("instance".into(), json!(instance));
++        map.insert("sourceCommit".into(), json!(SOURCE_COMMIT));
++        map.insert("api".into(), json!(HELPER_API));
++        map.insert("helperVersion".into(), json!(helper_version()));
++    }
++    envelope(id, body)
++}
++
++fn copy_to_clipboard(state: &HelperState, code: &str) -> io::Result<()> {
++    let mut child = Command::new(WL_COPY)
++        .args(["--foreground", "--sensitive"])
++        .stdin(Stdio::piped())
++        .stdout(Stdio::null())
++        .stderr(Stdio::null())
++        .spawn()?;
++    let mut stdin = child
++        .stdin
++        .take()
++        .ok_or_else(|| io::Error::new(io::ErrorKind::BrokenPipe, "clipboard stdin unavailable"))?;
++    if let Err(error) = stdin.write_all(code.as_bytes()) {
++        child.terminate();
++        return Err(error);
++    }
++    drop(stdin);
++    // A foreground wl-copy that fails to bind the selection exits at once. One
++    // immediate `try_wait` races that exit, so poll through a short grace period
++    // before reporting `copied: true` to the caller.
++    let deadline = Instant::now() + CLIPBOARD_OWNERSHIP_GRACE;
++    loop {
++        match child.try_wait() {
++            Ok(None) if Instant::now() >= deadline => break,
++            Ok(None) => thread::sleep(Duration::from_millis(10)),
++            Ok(Some(_)) => return Err(io::Error::other("wl-copy exited before owning clipboard")),
++            Err(error) => {
++                child.terminate();
++                return Err(error);
++            }
++        }
++    }
++
++    let expiration = state.replace_clipboard_owner(Box::new(child));
++    let state = state.clone();
++    // One sleeper per successful copy. It only touches the owner if its own
++    // generation is still current, so a replaced copy's sleeper is a no-op.
++    let _ = thread::Builder::new()
++        .name("omarchy-authenticator-clipboard-ttl".into())
++        .spawn(move || {
++            thread::sleep(CLIPBOARD_TTL);
++            state.expire_clipboard_owner(expiration);
++        });
++    Ok(())
++}
++
++fn handle_request(state: &HelperState, windows: &dyn WindowControl, request: HelperRequest) -> Value {
++    if request.v != PROTOCOL_VERSION || !valid_id(&request.id) {
++        return envelope(
++            &request.id,
++            json!({ "ok": false, "error": "invalid_request" }),
++        );
++    }
++
++    match request.op.as_str() {
++        // `status` deliberately omits the account: it is the only op a client
++        // is expected to call before deciding whether to trust the socket, so
++        // it must not disclose which Proton identity is signed in.
++        "status" => {
++            let (snapshot, stale) = state.current_snapshot();
++            envelope(
++                &request.id,
++                json!({
++                    "ok": true,
++                    "api": HELPER_API,
++                    "helperVersion": helper_version(),
++                    "latched": state.latched(),
++                    "binaryReplaced": binary_replaced(),
++                    "state": snapshot.state,
++                    "locked": snapshot.locked,
++                    "synced": snapshot.synced,
++                    "signedIn": !snapshot.account.is_empty(),
++                    "generation": snapshot.generation,
++                    "instance": state.instance(),
++                    "sourceCommit": SOURCE_COMMIT,
++                    "count": snapshot.entries.len(),
++                    "stale": stale,
++                }),
++            )
++        }
++        "snapshot" => {
++            let (snapshot, stale) = state.current_snapshot();
++            let mut response = snapshot_response(&request.id, &snapshot, stale, state.instance());
++            if let Value::Object(map) = &mut response {
++                map.insert("latched".into(), json!(state.latched()));
++                map.insert("binaryReplaced".into(), json!(binary_replaced()));
++            }
++            response
++        }
++        // Surfaces one of Proton's own windows. It carries no credentials, does
++        // not touch the snapshot or the lock latch, and is exactly what the
++        // single-instance D-Bus path already allows any same-uid process to do;
++        // routing it through this socket lets the panel reach the *running*
++        // hardened service instead of launching a second, unconfined process.
++        "open" => {
++            let Some(view) = parse_view(request.view.as_deref()) else {
++                return envelope(&request.id, json!({ "ok": false, "error": "invalid_view" }));
++            };
++            if request.item_id.is_some() {
++                return envelope(&request.id, json!({ "ok": false, "error": "invalid_request" }));
++            }
++            windows.open(view);
++            envelope(&request.id, json!({ "ok": true, "opened": true }))
++        }
++        "copy" => {
++            let Some(item_id) = request.item_id.filter(|id| valid_id(id)) else {
++                return envelope(
++                    &request.id,
++                    json!({ "ok": false, "error": "invalid_item_id" }),
++                );
++            };
++            // Held until wl-copy owns (or failed to own) the selection, so a
++            // concurrent `lock` either runs first and this copy sees the latch,
++            // or runs after and terminates this very clipboard owner.
++            let _gate = state.gate();
++            let (snapshot, stale) = state.current_snapshot();
++            if stale {
++                return envelope(&request.id, json!({ "ok": false, "error": "stale" }));
++            }
++            if snapshot.locked || snapshot.state != "ready" {
++                return envelope(&request.id, json!({ "ok": false, "error": "locked" }));
++            }
++            let Some(entry) = snapshot.entries.iter().find(|entry| entry.id == item_id) else {
++                return envelope(&request.id, json!({ "ok": false, "error": "not_found" }));
++            };
++            match copy_to_clipboard(state, &entry.code) {
++                Ok(()) => envelope(
++                    &request.id,
++                    json!({ "ok": true, "copied": true, "generation": snapshot.generation }),
++                ),
++                Err(_) => envelope(
++                    &request.id,
++                    json!({ "ok": false, "error": "clipboard_failed" }),
++                ),
++            }
++        }
++        "lock" => {
++            let generation = state.lock();
++            envelope(
++                &request.id,
++                json!({ "ok": true, "state": "locked", "locked": true, "generation": generation, "instance": state.instance() }),
++            )
++        }
++        // `unlock` is deliberately not exposed over the socket: the lock
++        // direction is fail-safe, but a remotely triggerable unlock would let any
++        // same-uid process clear the manual lock latch without confirmation.
++        _ => envelope(
++            &request.id,
++            json!({ "ok": false, "error": "unsupported_operation" }),
++        ),
++    }
++}
++
++/// Reads one newline-terminated request line with both a per-read timeout and
++/// a wall-clock deadline. `set_read_timeout` alone restarts on every byte, so a
++/// client dripping one byte per second could hold a connection slot forever.
++fn read_request_line(stream: &UnixStream, deadline: Instant) -> io::Result<String> {
++    let mut reader = BufReader::new(stream.try_clone()?);
++    let mut line = Vec::new();
++    loop {
++        let remaining = deadline
++            .checked_duration_since(Instant::now())
++            .filter(|remaining| !remaining.is_zero())
++            .ok_or_else(|| io::Error::new(io::ErrorKind::TimedOut, "request deadline exceeded"))?;
++        stream.set_read_timeout(Some(remaining.min(CLIENT_TIMEOUT)))?;
++        let buffer = reader.fill_buf()?;
++        if buffer.is_empty() {
++            return Err(io::Error::new(
++                io::ErrorKind::UnexpectedEof,
++                "connection closed before newline",
++            ));
++        }
++        let (chunk, done) = match buffer.iter().position(|byte| *byte == b'\n') {
++            Some(index) => (&buffer[..index], true),
++            None => (buffer, false),
++        };
++        if line.len() + chunk.len() > MAX_REQUEST_BYTES as usize {
++            return Err(io::Error::new(
++                io::ErrorKind::InvalidData,
++                "request too large",
++            ));
++        }
++        line.extend_from_slice(chunk);
++        let consumed = if done { chunk.len() + 1 } else { chunk.len() };
++        reader.consume(consumed);
++        if done {
++            break;
++        }
++    }
++    String::from_utf8(line)
++        .map_err(|_| io::Error::new(io::ErrorKind::InvalidData, "request is not utf-8"))
++}
++
++fn handle_client(
++    state: HelperState,
++    windows: &dyn WindowControl,
++    mut stream: UnixStream,
++) -> io::Result<()> {
++    let deadline = Instant::now() + CLIENT_DEADLINE;
++    stream.set_write_timeout(Some(CLIENT_TIMEOUT))?;
++    if peer_uid(&stream)? != unsafe { libc::geteuid() } {
++        return Err(io::Error::new(
++            io::ErrorKind::PermissionDenied,
++            "peer uid mismatch",
++        ));
++    }
++
++    let line = read_request_line(&stream, deadline)?;
++    if line.trim().is_empty() {
++        return Err(io::Error::new(io::ErrorKind::InvalidData, "empty request"));
++    }
++    let request: HelperRequest = serde_json::from_str(line.trim_end())
++        .map_err(|_| io::Error::new(io::ErrorKind::InvalidData, "invalid json"))?;
++    let mut encoded = serde_json::to_vec(&handle_request(&state, windows, request))?;
++    encoded.push(b'\n');
++    if encoded.len() > MAX_RESPONSE_BYTES {
++        encoded = b"{\"v\":1,\"id\":\"\",\"ok\":false,\"error\":\"response_too_large\"}\n".to_vec();
++    }
++    let remaining = deadline
++        .checked_duration_since(Instant::now())
++        .filter(|remaining| !remaining.is_zero())
++        .ok_or_else(|| io::Error::new(io::ErrorKind::TimedOut, "request deadline exceeded"))?;
++    stream.set_write_timeout(Some(remaining.min(CLIENT_TIMEOUT)))?;
++    stream.write_all(&encoded)
++}
++
++struct ConnectionGuard(Arc<AtomicUsize>);
++
++impl Drop for ConnectionGuard {
++    fn drop(&mut self) {
++        self.0.fetch_sub(1, Ordering::AcqRel);
++    }
++}
++
++pub fn start_socket_server(
++    state: HelperState,
++    windows: Arc<dyn WindowControl>,
++) -> io::Result<PathBuf> {
++    let path = socket_path()?;
++    let listener = prepare_socket(&path)?;
++    let active_connections = Arc::new(AtomicUsize::new(0));
++    thread::Builder::new()
++        .name("omarchy-authenticator-helper".into())
++        .spawn(move || {
++            for stream in listener.incoming().flatten() {
++                if active_connections
++                    .fetch_update(Ordering::AcqRel, Ordering::Acquire, |count| {
++                        (count < MAX_CONNECTIONS).then_some(count + 1)
++                    })
++                    .is_err()
++                {
++                    continue;
++                }
++                let state = state.clone();
++                let windows = windows.clone();
++                let guard = ConnectionGuard(active_connections.clone());
++                let _ = thread::Builder::new()
++                    .name("omarchy-authenticator-client".into())
++                    .spawn(move || {
++                        let _guard = guard;
++                        let _ = handle_client(state, windows.as_ref(), stream);
++                    });
++            }
++        })?;
++    Ok(path)
++}
++
++#[cfg(test)]
++mod tests {
++    #[test]
++    fn title_bar_is_dropped_only_under_hyprland() {
++        use std::ffi::OsStr;
++        assert!(super::compositor_manages_windows(Some(OsStr::new("abc_123"))));
++        assert!(!super::compositor_manages_windows(Some(OsStr::new(""))));
++        assert!(!super::compositor_manages_windows(None));
++    }
++
++    use super::*;
++
++    #[derive(Default)]
++    struct FakeWindows(Mutex<Vec<OpenView>>);
++
++    impl WindowControl for FakeWindows {
++        fn open(&self, view: OpenView) {
++            self.0.lock().unwrap().push(view);
++        }
++    }
++
++    fn handle(state: &HelperState, request: HelperRequest) -> Value {
++        handle_request(state, &FakeWindows::default(), request)
++    }
++
++    struct FakeClipboardProcess(Arc<AtomicBool>);
++
++    impl ClipboardProcess for FakeClipboardProcess {
++        fn terminate(&mut self) {
++            self.0.store(true, Ordering::Release);
++        }
++    }
++
++    fn valid_snapshot() -> HelperSnapshot {
++        let now = unix_now();
++        HelperSnapshot {
++            state: "ready".into(),
++            locked: false,
++            synced: true,
++            account: "test@example.test".into(),
++            generation: 1,
++            now,
++            entries: vec![HelperEntry {
++                id: "fixture-rfc6238".into(),
++                name: "test".into(),
++                issuer: "RFC6238".into(),
++                entry_type: "Totp".into(),
++                code: "94287082".into(),
++                next_code: "37359152".into(),
++                period: 30,
++                valid_until: now - (now % 30) + 30,
++            }],
++        }
++    }
++
++    fn backdate_publication(state: &HelperState, age: Duration) {
++        let mut published = state.published_at.lock().unwrap();
++        *published = published.map(|instant| instant - age);
++    }
++
++    #[test]
++    fn login_request_latch_is_consumed_once() {
++        let state = HelperState::with_login_requested(true);
++        assert!(state.take_login_request());
++        assert!(!state.take_login_request());
++        state.request_login();
++        assert!(state.take_login_request());
++    }
++
++    #[test]
++    fn clipboard_ownership_replacement_and_expiry_are_generation_safe() {
++        let state = HelperState::default();
++        let first_stopped = Arc::new(AtomicBool::new(false));
++        let second_stopped = Arc::new(AtomicBool::new(false));
++        let first =
++            state.replace_clipboard_owner(Box::new(FakeClipboardProcess(first_stopped.clone())));
++        let second =
++            state.replace_clipboard_owner(Box::new(FakeClipboardProcess(second_stopped.clone())));
++        assert!(first_stopped.load(Ordering::Acquire));
++        assert!(!second_stopped.load(Ordering::Acquire));
++        state.expire_clipboard_owner(first);
++        assert!(!second_stopped.load(Ordering::Acquire));
++        state.expire_clipboard_owner(second);
++        assert!(second_stopped.load(Ordering::Acquire));
++
++        let lock_stopped = Arc::new(AtomicBool::new(false));
++        state.replace_clipboard_owner(Box::new(FakeClipboardProcess(lock_stopped.clone())));
++        let _ = handle(
++            &state,
++            HelperRequest {
++                v: 1,
++                id: "lock-owner".into(),
++                op: "lock".into(),
++                item_id: None,
++                view: None,
++            },
++        );
++        assert!(lock_stopped.load(Ordering::Acquire));
++    }
++
++    #[test]
++    fn validates_bounded_snapshot() {
++        assert!(validate_snapshot(&valid_snapshot()).is_ok());
++    }
++
++    #[test]
++    fn rejects_locked_snapshot_with_codes() {
++        let mut snapshot = valid_snapshot();
++        snapshot.locked = true;
++        snapshot.state = "locked".into();
++        assert_eq!(
++            validate_snapshot(&snapshot),
++            Err("locked_snapshot_has_entries".into())
++        );
++    }
++
++    #[test]
++    fn rejects_invalid_code_and_id() {
++        let mut snapshot = valid_snapshot();
++        snapshot.entries[0].id = "../bad".into();
++        snapshot.entries[0].code = "12 3456".into();
++        assert_eq!(validate_snapshot(&snapshot), Err("invalid_entry".into()));
++    }
++
++    #[test]
++    fn rejects_bidi_and_zero_width_labels() {
++        for character in [
++            '\u{061c}', '\u{200b}', '\u{200e}', '\u{200f}', '\u{202e}', '\u{2060}',
++        ] {
++            let mut snapshot = valid_snapshot();
++            snapshot.entries[0].name = format!("safe{character}spoof");
++            assert_eq!(validate_snapshot(&snapshot), Err("invalid_entry".into()));
++        }
++    }
++
++    #[test]
++    fn rejects_labels_over_utf8_byte_limit() {
++        let mut snapshot = valid_snapshot();
++        snapshot.entries[0].name = "ü".repeat(80);
++        assert_eq!(validate_snapshot(&snapshot), Err("invalid_entry".into()));
++    }
++
++    #[test]
++    fn rejects_symlinked_runtime_directory() {
++        use std::os::unix::fs::symlink;
++
++        let base = std::env::temp_dir().join(format!(
++            "proton-authenticator-helper-test-{}-{}",
++            std::process::id(),
++            std::thread::current().name().unwrap_or("unnamed")
++        ));
++        let target = base.join("target");
++        let link = base.join("runtime-link");
++        fs::create_dir_all(&target).unwrap();
++        symlink(&target, &link).unwrap();
++        let error = prepare_socket(&link.join("helper.sock")).unwrap_err();
++        assert_eq!(error.kind(), io::ErrorKind::PermissionDenied);
++        fs::remove_dir_all(&base).unwrap();
++    }
++
++    #[test]
++    fn lock_clears_rows_and_advances_generation() {
++        let state = HelperState::default();
++        *state.snapshot.write().unwrap() = valid_snapshot();
++        let response = handle(
++            &state,
++            HelperRequest {
++                v: 1,
++                id: "abcd".into(),
++                op: "lock".into(),
++                item_id: None,
++                view: None,
++            },
++        );
++        assert_eq!(response["ok"], true);
++        {
++            let snapshot = state.snapshot.read().unwrap();
++            assert!(snapshot.locked);
++            assert!(snapshot.entries.is_empty());
++            assert_eq!(snapshot.generation, 2);
++        }
++
++        let mut republished = valid_snapshot();
++        republished.generation = 3;
++        state.publish(republished.clone()).unwrap();
++        assert!(state.snapshot.read().unwrap().locked);
++        assert!(state.snapshot.read().unwrap().entries.is_empty());
++
++        let unlock_response = handle(
++            &state,
++            HelperRequest {
++                v: 1,
++                id: "efgh".into(),
++                op: "unlock".into(),
++                item_id: None,
++                view: None,
++            },
++        );
++        assert_eq!(unlock_response["ok"], false);
++        assert_eq!(unlock_response["error"], "unsupported_operation");
++        assert!(state.snapshot.read().unwrap().locked);
++
++        state.unlock();
++        state.publish(republished).unwrap();
++        {
++            let snapshot = state.snapshot.read().unwrap();
++            assert!(!snapshot.locked);
++            assert_eq!(snapshot.state, "ready");
++            assert_eq!(snapshot.entries.len(), 1);
++            assert_eq!(snapshot.generation, 4);
++        }
++    }
++
++    #[test]
++    fn stale_ready_snapshot_is_served_as_unavailable() {
++        let state = HelperState::default();
++        state.publish(valid_snapshot()).unwrap();
++
++        let (fresh, stale) = state.current_snapshot();
++        assert!(!stale);
++        assert_eq!(fresh.state, "ready");
++        assert_eq!(fresh.entries.len(), 1);
++
++        backdate_publication(&state, SNAPSHOT_TTL + Duration::from_secs(1));
++        let (expired, stale) = state.current_snapshot();
++        assert!(stale);
++        assert_eq!(expired.state, "unavailable");
++        assert!(expired.entries.is_empty());
++        // the underlying snapshot is untouched, so a republish recovers instantly
++        assert_eq!(state.snapshot.read().unwrap().entries.len(), 1);
++        state.publish(valid_snapshot()).unwrap();
++        assert!(!state.current_snapshot().1);
++    }
++
++    #[test]
++    fn snapshot_op_reports_staleness_and_withholds_codes() {
++        let state = HelperState::default();
++        state.publish(valid_snapshot()).unwrap();
++        backdate_publication(&state, SNAPSHOT_TTL + Duration::from_secs(1));
++
++        let response = handle(
++            &state,
++            HelperRequest {
++                v: 1,
++                id: "stale-snapshot".into(),
++                op: "snapshot".into(),
++                item_id: None,
++                view: None,
++            },
++        );
++        assert_eq!(response["ok"], true);
++        assert_eq!(response["stale"], true);
++        assert_eq!(response["state"], "unavailable");
++        assert_eq!(response["entries"].as_array().unwrap().len(), 0);
++
++        let status = handle(
++            &state,
++            HelperRequest {
++                v: 1,
++                id: "stale-status".into(),
++                op: "status".into(),
++                item_id: None,
++                view: None,
++            },
++        );
++        assert_eq!(status["stale"], true);
++        assert_eq!(status["state"], "unavailable");
++        assert_eq!(status["count"], 0);
++    }
++
++    #[test]
++    fn copy_refuses_a_stale_snapshot() {
++        let state = HelperState::default();
++        state.publish(valid_snapshot()).unwrap();
++        backdate_publication(&state, SNAPSHOT_TTL + Duration::from_secs(1));
++
++        let response = handle(
++            &state,
++            HelperRequest {
++                v: 1,
++                id: "stale-copy".into(),
++                op: "copy".into(),
++                item_id: Some("fixture-rfc6238".into()),
++                view: None,
++            },
++        );
++        assert_eq!(response["ok"], false);
++        assert_eq!(response["error"], "stale");
++    }
++
++    #[test]
++    fn never_published_state_is_not_reported_as_ready() {
++        let state = HelperState::default();
++        let (snapshot, stale) = state.current_snapshot();
++        assert!(!stale);
++        assert_eq!(snapshot.state, "unavailable");
++
++        // a snapshot forced into the lock without going through `publish` has no
++        // publication instant, so it must not be served as live
++        *state.snapshot.write().unwrap() = valid_snapshot();
++        let (snapshot, stale) = state.current_snapshot();
++        assert!(stale);
++        assert_eq!(snapshot.state, "unavailable");
++        assert!(snapshot.entries.is_empty());
++    }
++
++    #[test]
++    fn stale_non_ready_states_are_preserved() {
++        let state = HelperState::default();
++        let mut locked = valid_snapshot();
++        locked.state = "locked".into();
++        locked.locked = true;
++        locked.entries.clear();
++        state.publish(locked).unwrap();
++        backdate_publication(&state, SNAPSHOT_TTL + Duration::from_secs(1));
++
++        let (snapshot, stale) = state.current_snapshot();
++        assert!(!stale);
++        assert_eq!(snapshot.state, "locked");
++        assert!(snapshot.locked);
++    }
++
++    fn request(op: &str, item_id: Option<&str>) -> HelperRequest {
++        HelperRequest {
++            v: 1,
++            id: "req".into(),
++            op: op.into(),
++            item_id: item_id.map(Into::into),
++            view: None,
++        }
++    }
++
++    #[test]
++    fn every_process_gets_a_distinct_instance_that_all_ops_report() {
++        let first = HelperState::new();
++        let second = HelperState::new();
++        assert_eq!(first.instance().len(), 32);
++        assert_ne!(first.instance(), second.instance());
++        assert!(first.instance().bytes().all(|c| c.is_ascii_hexdigit()));
++
++        first.publish(valid_snapshot()).unwrap();
++        for op in ["status", "snapshot", "lock"] {
++            let response = handle(&first, request(op, None));
++            assert_eq!(response["ok"], true, "{op}");
++            assert_eq!(response["instance"], first.instance(), "{op}");
++        }
++        // A default-constructed state (tests) still reports a non-empty value.
++        assert_eq!(HelperState::default().instance(), "0");
++    }
++
++    #[test]
++    fn status_reports_provenance_and_sign_in_but_never_the_account() {
++        let state = HelperState::new();
++        state.publish(valid_snapshot()).unwrap();
++        let status = handle(&state, request("status", None));
++        assert_eq!(status["ok"], true);
++        assert_eq!(status["signedIn"], true);
++        assert!(status.get("account").is_none());
++        assert_eq!(status["sourceCommit"], SOURCE_COMMIT);
++        assert!(!SOURCE_COMMIT.is_empty());
++        let text = status.to_string();
++        assert!(!text.contains("test@example.test"));
++        assert!(!text.contains("94287082"));
++    }
++
++    struct SlowClipboardProcess {
++        stopped: Arc<AtomicBool>,
++        delay: Duration,
++    }
++
++    impl ClipboardProcess for SlowClipboardProcess {
++        fn terminate(&mut self) {
++            thread::sleep(self.delay);
++            self.stopped.store(true, Ordering::Release);
++        }
++    }
++
++    #[test]
++    fn lock_does_not_hold_the_snapshot_lock_while_terminating_the_clipboard_owner() {
++        let state = HelperState::new();
++        state.publish(valid_snapshot()).unwrap();
++        let stopped = Arc::new(AtomicBool::new(false));
++        state.replace_clipboard_owner(Box::new(SlowClipboardProcess {
++            stopped: stopped.clone(),
++            delay: Duration::from_millis(300),
++        }));
++
++        let locker = state.clone();
++        let handle = thread::spawn(move || locker.lock());
++        // Give `lock` time to enter the slow terminate.
++        thread::sleep(Duration::from_millis(50));
++        let started = Instant::now();
++        let (snapshot, _) = state.current_snapshot();
++        assert!(
++            started.elapsed() < Duration::from_millis(150),
++            "snapshot read blocked behind clipboard termination"
++        );
++        assert!(snapshot.locked);
++        handle.join().unwrap();
++        assert!(stopped.load(Ordering::Acquire));
++    }
++
++    #[test]
++    fn replacing_an_owner_terminates_it_outside_the_clipboard_lock() {
++        let state = HelperState::new();
++        let stopped = Arc::new(AtomicBool::new(false));
++        state.replace_clipboard_owner(Box::new(SlowClipboardProcess {
++            stopped: stopped.clone(),
++            delay: Duration::from_millis(300),
++        }));
++        let replacer = state.clone();
++        let handle = thread::spawn(move || {
++            replacer.replace_clipboard_owner(Box::new(FakeClipboardProcess(Arc::new(
++                AtomicBool::new(false),
++            ))));
++        });
++        thread::sleep(Duration::from_millis(50));
++        let started = Instant::now();
++        // A concurrent expiry must not queue behind the slow terminate.
++        state.expire_clipboard_owner(u64::MAX);
++        assert!(started.elapsed() < Duration::from_millis(150));
++        handle.join().unwrap();
++        assert!(stopped.load(Ordering::Acquire));
++    }
++
++    #[test]
++    fn a_dripping_client_is_cut_off_at_the_wall_clock_deadline() {
++        let (mut client, server) = UnixStream::pair().unwrap();
++        let started = Instant::now();
++        let reader = thread::spawn(move || {
++            read_request_line(&server, Instant::now() + Duration::from_millis(600))
++        });
++        // Drip one byte every 100 ms: each read succeeds inside CLIENT_TIMEOUT,
++        // so only the wall-clock deadline can end this.
++        for _ in 0..20 {
++            if client.write_all(b"{").is_err() {
++                break;
++            }
++            thread::sleep(Duration::from_millis(100));
++        }
++        let error = reader.join().unwrap().unwrap_err();
++        assert_eq!(error.kind(), io::ErrorKind::TimedOut);
++        assert!(started.elapsed() < Duration::from_millis(1500));
++    }
++
++    #[test]
++    fn oversized_and_well_formed_request_lines_are_handled() {
++        let (mut client, server) = UnixStream::pair().unwrap();
++        let reader = thread::spawn(move || {
++            read_request_line(&server, Instant::now() + Duration::from_secs(2))
++        });
++        client.write_all(b"{\"v\":1}\nignored").unwrap();
++        assert_eq!(reader.join().unwrap().unwrap(), "{\"v\":1}");
++
++        let (mut client, server) = UnixStream::pair().unwrap();
++        let reader = thread::spawn(move || {
++            read_request_line(&server, Instant::now() + Duration::from_secs(2))
++        });
++        let oversized = vec![b'a'; MAX_REQUEST_BYTES as usize + 1];
++        let _ = client.write_all(&oversized);
++        let error = reader.join().unwrap().unwrap_err();
++        assert_eq!(error.kind(), io::ErrorKind::InvalidData);
++    }
++
++    #[test]
++    fn remove_socket_only_unlinks_an_owned_socket_node() {
++        let base = std::env::temp_dir().join(format!(
++            "proton-authenticator-helper-remove-{}",
++            std::process::id()
++        ));
++        fs::create_dir_all(&base).unwrap();
++        let regular = base.join("regular");
++        fs::write(&regular, b"x").unwrap();
++        remove_socket(&regular);
++        assert!(regular.exists(), "a regular file must not be unlinked");
++
++        let socket = base.join("helper.sock");
++        let listener = prepare_socket(&socket).unwrap();
++        assert_eq!(
++            fs::symlink_metadata(&socket).unwrap().permissions().mode() & 0o777,
++            0o600
++        );
++        drop(listener);
++        remove_socket(&socket);
++        assert!(!socket.exists());
++        fs::remove_dir_all(&base).unwrap();
++    }
++
++    #[test]
++    fn rollover_serves_the_next_code_and_never_an_expired_one() {
++        let state = HelperState::new();
++        let snapshot = valid_snapshot();
++        let until = snapshot.entries[0].valid_until;
++        let period = u64::from(snapshot.entries[0].period);
++        state.publish(snapshot).unwrap();
++
++        let (before, _) = state.current_snapshot_at(until - 1);
++        assert_eq!(before.entries[0].code, "94287082");
++        assert_eq!(before.entries[0].next_code, "37359152");
++
++        // The window just closed: the row carries the code generated for the
++        // new window, with no next code, instead of disappearing.
++        let (rolled, stale) = state.current_snapshot_at(until);
++        assert!(!stale);
++        assert_eq!(rolled.entries.len(), 1);
++        assert_eq!(rolled.entries[0].code, "37359152");
++        assert_eq!(rolled.entries[0].next_code, "");
++        assert_eq!(rolled.entries[0].valid_until, until + period);
++
++        // More than one window old: nothing left that is current.
++        let (gone, _) = state.current_snapshot_at(until + period);
++        assert!(gone.entries.is_empty());
++    }
++
++    #[test]
++    fn a_row_without_a_next_code_is_dropped_at_rollover() {
++        let mut entry = valid_snapshot().entries.remove(0);
++        entry.next_code = String::new();
++        let until = entry.valid_until;
++        assert!(super::roll_entries_forward(vec![entry], until).is_empty());
++    }
++
++    #[test]
++    fn open_surfaces_only_known_views_and_leaves_the_latch_alone() {
++        let state = HelperState::new();
++        state.lock();
++        let windows = FakeWindows::default();
++        let mut open = request("open", None);
++        open.view = Some("manage".into());
++        assert_eq!(handle_request(&state, &windows, open)["ok"], true);
++        let mut login = request("open", None);
++        login.view = Some("login".into());
++        assert_eq!(handle_request(&state, &windows, login)["ok"], true);
++        for bad in [None, Some("settings"), Some("")] {
++            let mut rejected = request("open", None);
++            rejected.view = bad.map(Into::into);
++            let response = handle_request(&state, &windows, rejected);
++            assert_eq!(response["ok"], false);
++            assert_eq!(response["error"], "invalid_view");
++        }
++        let mut add = request("open", None);
++        add.view = Some("add".into());
++        assert_eq!(handle_request(&state, &windows, add)["ok"], true);
++        assert_eq!(
++            *windows.0.lock().unwrap(),
++            vec![OpenView::Manage, OpenView::Login, OpenView::Add]
++        );
++        assert!(state.latched());
++        let status = handle(&state, request("status", None));
++        assert_eq!(status["latched"], true);
++        assert_eq!(status["locked"], true);
++        assert_eq!(status["api"], HELPER_API);
++    }
++
++    #[test]
++    fn lock_waits_for_an_in_flight_copy_gate() {
++        let state = HelperState::new();
++        state.publish(valid_snapshot()).unwrap();
++        let gate = state.gate();
++        let locker = state.clone();
++        let handle = thread::spawn(move || locker.lock());
++        thread::sleep(Duration::from_millis(100));
++        assert!(!state.latched(), "lock must not proceed while a copy holds the gate");
++        drop(gate);
++        handle.join().unwrap();
++        assert!(state.latched());
++        let copy = handle_request(
++            &state,
++            &FakeWindows::default(),
++            request("copy", Some("fixture-rfc6238")),
++        );
++        assert_eq!(copy["ok"], false);
++        assert_eq!(copy["error"], "locked");
++    }
++
++    #[test]
++    fn responses_report_api_and_helper_version() {
++        let state = HelperState::new();
++        state.publish(valid_snapshot()).unwrap();
++        for op in ["status", "snapshot"] {
++            let response = handle(&state, request(op, None));
++            assert_eq!(response["api"], HELPER_API, "{op}");
++            assert_eq!(response["helperVersion"], helper_version(), "{op}");
++            assert_eq!(response["latched"], false, "{op}");
++        }
++        assert!(helper_version().contains("+omarchy."));
++    }
++}
+diff --git a/applications/authenticator/src-tauri/src/lib.rs b/applications/authenticator/src-tauri/src/lib.rs
+index 1525a1ba2c..84d650b641 100644
+--- a/applications/authenticator/src-tauri/src/lib.rs
++++ b/applications/authenticator/src-tauri/src/lib.rs
+@@ -1,14 +1,16 @@
+-use log::LevelFilter;
+-
+ #[cfg(debug_assertions)]
+ use specta_typescript::Typescript;
+ 
++#[cfg(target_os = "linux")]
++use tauri::Emitter;
+ use tauri::{Manager, WebviewUrl, WebviewWindowBuilder};
+ 
+ mod auth;
+ mod biometrics;
+ mod crypto;
+ mod error;
++#[cfg(target_os = "linux")]
++mod helper;
+ mod storage_key;
+ mod store;
+ 
+@@ -28,11 +30,267 @@ fn apply_webkitgtk_workaround() {
+     }
+ }
+ 
++/// Proton's window-state plugin saves and restores each window's size,
++/// position and title bar. Under Hyprland (Omarchy) the compositor owns all of
++/// that: a restored `decorated: true` would put back the GTK title bar the
++/// helper removes, and restored geometry fights the float/center rule. So the
++/// plugin skips Proton's windows there; every other desktop keeps it as is.
++fn window_state_plugin<R: tauri::Runtime>() -> tauri::plugin::TauriPlugin<R> {
++    let builder = tauri_plugin_window_state::Builder::new();
++    #[cfg(target_os = "linux")]
++    let builder = if helper::use_compositor_decorations() {
++        builder.with_denylist(&["main", "login"])
++    } else {
++        builder
++    };
++    builder.build()
++}
++
++/// Surfaces Proton's own window for the Omarchy panel (socket `open` op) and
++/// for forwarded single-instance launches. Login does not show the main window:
++/// it sets the one-shot request and emits the event the web bridge answers by
++/// opening Proton's own sign-in window (the same `log_in` path as the app's
++/// "Sign in" button), or the main window when already signed in. It never
++/// clears the manual lock latch.
++#[cfg(target_os = "linux")]
++struct TauriWindowControl(tauri::AppHandle);
++
++#[cfg(target_os = "linux")]
++fn surface_main_window(app: &tauri::AppHandle, view: helper::OpenView) {
++    match view {
++        helper::OpenView::Login => {
++            // A second press while Proton's sign-in window is open focuses it.
++            if let Some(login) = app.get_webview_window("login") {
++                let _ = login.show();
++                let _ = login.set_focus();
++                return;
++            }
++            app.state::<helper::HelperState>().request_login();
++            let _ = app.emit_to("main", "omarchy-helper:login", ());
++            return;
++        }
++        helper::OpenView::Add => {
++            let _ = app.emit_to("main", "omarchy-helper:add", ());
++        }
++        helper::OpenView::Manage => {}
++    }
++    let _ = app.get_webview_window("main").and_then(|window| {
++        let _ = window.show();
++        let _ = window.unminimize();
++        window.set_focus().ok()
++    });
++}
++
++#[cfg(target_os = "linux")]
++impl helper::WindowControl for TauriWindowControl {
++    fn open(&self, view: helper::OpenView) {
++        let app = self.0.clone();
++        // Window calls must run on the event loop thread; the socket server
++        // calls this from its own client thread.
++        let _ = self
++            .0
++            .run_on_main_thread(move || surface_main_window(&app, view));
++    }
++}
++
++// A healthy webview publishes once a second, including while Proton's own app
++// lock is engaged, so this long a silence means its web process died or hung.
++#[cfg(target_os = "linux")]
++const PUBLISHER_STALL: std::time::Duration = std::time::Duration::from_secs(45);
++#[cfg(target_os = "linux")]
++const RELOAD_BACKOFF: std::time::Duration = std::time::Duration::from_secs(120);
++// Exit status that asks systemd (`Restart=on-failure`) to start the helper
++// again from the binary the package manager just installed.
++#[cfg(target_os = "linux")]
++const EXIT_FOR_UPDATE: i32 = 75;
++
++/// Background supervision for the hidden helper:
++/// - reloads the webview when it stops publishing (a WebKit web process that
++///   crashed otherwise leaves the service "active" while serving nothing);
++/// - after a package upgrade replaced the binary, exits so systemd restarts it
++///   on the new version — but only while the window is hidden, so a sign-in or
++///   edit in progress is never cut off, and never while the manual lock latch
++///   is set, because a restart is what releases it.
++#[cfg(target_os = "linux")]
++fn start_watchdog(app: tauri::AppHandle) {
++    let _ = std::thread::Builder::new()
++        .name("omarchy-authenticator-watchdog".into())
++        .spawn(move || {
++            let mut last_reload: Option<std::time::Instant> = None;
++            loop {
++                std::thread::sleep(std::time::Duration::from_secs(10));
++                let state = app.state::<helper::HelperState>();
++                if state.latched() {
++                    continue;
++                }
++                let Some(window) = app.get_webview_window("main") else {
++                    continue;
++                };
++                let visible = window.is_visible().unwrap_or(true);
++                if helper::binary_replaced() && !visible {
++                    log::warn!("[omarchy-helper] binary replaced by an update; restarting");
++                    // `AppHandle::exit(code)` ends the event loop with
++                    // `ControlFlow::Exit` and the process then exits 0, which
++                    // `Restart=on-failure` treats as a clean stop. Unlink the
++                    // socket and exit with the status systemd restarts on.
++                    if let Some(path) = app.try_state::<helper::SocketPath>() {
++                        helper::remove_socket(&path.0);
++                    }
++                    app.cleanup_before_exit();
++                    std::process::exit(EXIT_FOR_UPDATE);
++                }
++                let backoff_over =
++                    last_reload.is_none_or(|instant| instant.elapsed() >= RELOAD_BACKOFF);
++                if state.publication_age() >= PUBLISHER_STALL && backoff_over {
++                    log::warn!("[omarchy-helper] webview stopped publishing; reloading");
++                    last_reload = Some(std::time::Instant::now());
++                    let _ = window.reload();
++                }
++            }
++        });
++}
++
++#[cfg(target_os = "linux")]
++fn helper_window_mode<I, S>(args: I) -> (bool, bool)
++where
++    I: IntoIterator<Item = S>,
++    S: AsRef<str>,
++{
++    let mut background = false;
++    let mut login = false;
++    for argument in args {
++        match argument.as_ref() {
++            "--background" => background = true,
++            "--login" => login = true,
++            _ => {}
++        }
++    }
++    (background, login)
++}
++
++#[cfg(target_os = "linux")]
++fn helper_log_level(background: bool) -> log::LevelFilter {
++    // The upstream Debug level logs entry ids, keyring lookups, and serialized
++    // errors, which the background helper must not persist. Warn keeps socket
++    // setup failures and clipboard errors visible in the journal without any of
++    // that detail.
++    if background {
++        log::LevelFilter::Warn
++    } else {
++        log::LevelFilter::Debug
++    }
++}
++
++/// What a forwarded single-instance invocation is allowed to do. The callback
++/// is reachable over the session bus by any same-uid client with arbitrary
++/// argv, so only one exact flag is honoured and everything else is ignored:
++/// `--login` surfaces Proton's own sign-in modal; a bare relaunch (the user
++/// clicking the desktop entry) surfaces the window; anything else does nothing.
++#[cfg(target_os = "linux")]
++#[derive(Debug, PartialEq, Eq)]
++enum ForwardedAction {
++    ShowWindow,
++    Login,
++    Ignore,
++}
++
++#[cfg(target_os = "linux")]
++fn forwarded_action<I, S>(args: I) -> ForwardedAction
++where
++    I: IntoIterator<Item = S>,
++    S: AsRef<str>,
++{
++    let mut flags: Vec<String> = args
++        .into_iter()
++        .skip(1)
++        .map(|argument| argument.as_ref().to_string())
++        .collect();
++    flags.retain(|flag| flag != "--background");
++    match flags.as_slice() {
++        [] => ForwardedAction::ShowWindow,
++        [flag] if flag == "--login" => ForwardedAction::Login,
++        _ => ForwardedAction::Ignore,
++    }
++}
++
++#[cfg(all(test, target_os = "linux"))]
++mod tests {
++    use super::{forwarded_action, helper_log_level, helper_window_mode, ForwardedAction};
++
++    #[test]
++    fn helper_window_mode_hides_background_except_login() {
++        assert_eq!(helper_window_mode(["app", "--background"]), (true, false));
++        assert_eq!(
++            helper_window_mode(["app", "--background", "--login"]),
++            (true, true)
++        );
++        assert_eq!(helper_window_mode(["app"]), (false, false));
++    }
++
++    #[test]
++    fn background_helper_keeps_only_warnings_and_errors() {
++        assert_eq!(helper_log_level(true), log::LevelFilter::Warn);
++        assert_eq!(helper_log_level(false), log::LevelFilter::Debug);
++    }
++
++    #[test]
++    fn forwarded_invocations_honour_exactly_one_flag() {
++        assert_eq!(forwarded_action(["app"]), ForwardedAction::ShowWindow);
++        assert_eq!(
++            forwarded_action(["app", "--background"]),
++            ForwardedAction::ShowWindow
++        );
++        assert_eq!(forwarded_action(["app", "--login"]), ForwardedAction::Login);
++        assert_eq!(
++            forwarded_action(["app", "--background", "--login"]),
++            ForwardedAction::Login
++        );
++        // Arbitrary argv from a D-Bus caller must not be treated as a relaunch.
++        assert_eq!(
++            forwarded_action(["app", "--login", "--login"]),
++            ForwardedAction::Ignore
++        );
++        assert_eq!(
++            forwarded_action(["app", "--unlock"]),
++            ForwardedAction::Ignore
++        );
++        assert_eq!(
++            forwarded_action(["app", "/some/file.json"]),
++            ForwardedAction::Ignore
++        );
++    }
++}
++
+ #[cfg_attr(mobile, tauri::mobile_entry_point)]
+ pub fn run() {
+     #[cfg(target_os = "linux")]
+     apply_webkitgtk_workaround();
+ 
++    #[cfg(target_os = "linux")]
++    let initial_helper_mode = helper_window_mode(std::env::args());
++    #[cfg(target_os = "linux")]
++    let log_level = helper_log_level(initial_helper_mode.0);
++    #[cfg(not(target_os = "linux"))]
++    let log_level = log::LevelFilter::Debug;
++
++    #[cfg(target_os = "linux")]
++    let builder = Builder::<tauri::Wry>::new()
++        .commands(collect_commands![
++            auth::log_in,
++            biometrics::can_check_presence,
++            biometrics::check_presence,
++            helper::publish_helper_snapshot,
++            helper::show_helper_main_window,
++            helper::take_helper_login_request,
++            storage_key::generate_storage_key,
++            storage_key::get_storage_key,
++            storage_key::remove_storage_key,
++            store::get_theme,
++            store::set_theme,
++        ])
++        .events(collect_events![]);
++
++    #[cfg(not(target_os = "linux"))]
+     let builder = Builder::<tauri::Wry>::new()
+         .commands(collect_commands![
+             auth::log_in,
+@@ -54,10 +312,18 @@ pub fn run() {
+         )
+         .expect("Failed to export typescript bindings");
+ 
+-    tauri::Builder::default()
++    let app_builder = tauri::Builder::default();
++    #[cfg(target_os = "linux")]
++    let app_builder = app_builder.manage(helper::HelperState::with_login_requested(
++        initial_helper_mode.1,
++    ));
++
++    let app_builder = app_builder
+         .invoke_handler(builder.invoke_handler())
+-        .setup(|app| {
++        .setup(move |app| {
+             let version = app.package_info().version.to_string();
++            #[cfg(target_os = "linux")]
++            let (background_mode, login_requested) = initial_helper_mode;
+             let mut win_builder = WebviewWindowBuilder::new(app, "main", WebviewUrl::default())
+                 .title("Proton Authenticator")
+                 .user_agent(&auth::get_user_agent(version))
+@@ -65,18 +331,58 @@ pub fn run() {
+                 .inner_size(800.0, 600.0)
+                 .min_inner_size(420.0, 480.0);
+ 
++            #[cfg(target_os = "linux")]
++            if background_mode && !login_requested {
++                win_builder = win_builder.visible(false);
++            }
++            #[cfg(target_os = "linux")]
++            if helper::use_compositor_decorations() {
++                win_builder = win_builder.decorations(false);
++            }
++
+             if !cfg!(debug_assertions) {
+                 win_builder = win_builder.content_protected(true)
+             }
+ 
+-            win_builder.build()?;
++            let window = win_builder.build()?;
++
++            #[cfg(target_os = "linux")]
++            if background_mode && !login_requested {
++                window.hide()?;
++            }
++
++            #[cfg(not(target_os = "linux"))]
++            let _ = window;
++
++            #[cfg(target_os = "linux")]
++            if background_mode {
++                let helper_window = window.clone();
++                window.on_window_event(move |event| {
++                    if let tauri::WindowEvent::CloseRequested { api, .. } = event {
++                        api.prevent_close();
++                        let _ = helper_window.hide();
++                    }
++                });
++            }
++
++            #[cfg(target_os = "linux")]
++            {
++                let socket_path = helper::start_socket_server(
++                    app.state::<helper::HelperState>().inner().clone(),
++                    std::sync::Arc::new(TauriWindowControl(app.handle().clone())),
++                )?;
++                app.manage(helper::SocketPath(socket_path));
++                if background_mode {
++                    start_watchdog(app.handle().clone());
++                }
++            }
+ 
+             Ok(())
+         })
+         .plugin(
+             tauri_plugin_log::Builder::new()
+                 .clear_targets()
+-                .level(LevelFilter::Debug)
++                .level(log_level)
+                 .target(tauri_plugin_log::Target::new(
+                     tauri_plugin_log::TargetKind::Stdout,
+                 ))
+@@ -87,19 +393,60 @@ pub fn run() {
+                 ))
+                 .build(),
+         )
+-        .plugin(tauri_plugin_window_state::Builder::new().build())
+-        .plugin(tauri_plugin_process::init())
+-        .plugin(tauri_plugin_updater::Builder::new().build())
+-        .plugin(tauri_plugin_single_instance::init(|app, _args, _cwd| {
+-            let _ = app
+-                .get_webview_window("main")
+-                .and_then(|window| window.set_focus().ok());
++        .plugin(window_state_plugin())
++        .plugin(tauri_plugin_process::init());
++
++    // Fork-local divergence: the Linux build is maintained locally and must
++    // never be replaced by an upstream binary, so the updater plugin is not
++    // registered there. The `updater` pubkey stays in `tauri.conf.json` as a
++    // trust anchor for verifying official builds.
++    #[cfg(not(target_os = "linux"))]
++    let app_builder = app_builder.plugin(tauri_plugin_updater::Builder::new().build());
++
++    app_builder
++        .plugin(tauri_plugin_single_instance::init(|app, args, _cwd| {
++            // Forwarded argv arrives over the session bus from any same-uid
++            // client, so it is treated as a request, not a command line.
++            // Login does not need an unlocked snapshot, and neither path calls
++            // `unlock`: any same-uid process could otherwise clear the manual
++            // lock latch just by running the binary with `--login`.
++            #[cfg(target_os = "linux")]
++            {
++                match forwarded_action(args.iter()) {
++                    ForwardedAction::Ignore => {}
++                    ForwardedAction::Login => surface_main_window(app, helper::OpenView::Login),
++                    ForwardedAction::ShowWindow => {
++                        surface_main_window(app, helper::OpenView::Manage)
++                    }
++                }
++                return;
++            }
++            #[cfg(not(target_os = "linux"))]
++            let _ = args;
++            #[cfg(not(target_os = "linux"))]
++            let _ = app.get_webview_window("main").and_then(|window| {
++                let _ = window.show();
++                let _ = window.unminimize();
++                window.set_focus().ok()
++            });
+         }))
+         .plugin(tauri_plugin_store::Builder::new().build())
+         .plugin(tauri_plugin_fs::init())
+         .plugin(tauri_plugin_dialog::init())
+         .plugin(tauri_plugin_opener::init())
+         .plugin(tauri_plugin_http::init())
+-        .run(tauri::generate_context!())
+-        .expect("error while running tauri application");
++        .build(tauri::generate_context!())
++        .expect("error while building tauri application")
++        .run(|app, event| {
++            // Unlink the private socket on exit so the next start does not find
++            // a stale node in its path check.
++            #[cfg(target_os = "linux")]
++            if let tauri::RunEvent::Exit = event {
++                if let Some(path) = app.try_state::<helper::SocketPath>() {
++                    helper::remove_socket(&path.0);
++                }
++            }
++            #[cfg(not(target_os = "linux"))]
++            let _ = (app, event);
++        });
+ }
+diff --git a/applications/authenticator/src/app/components/HelperLoginBridge.tsx b/applications/authenticator/src/app/components/HelperLoginBridge.tsx
+new file mode 100644
+index 0000000000..593cc469a8
+--- /dev/null
++++ b/applications/authenticator/src/app/components/HelperLoginBridge.tsx
+@@ -0,0 +1,103 @@
++import { type FC, useEffect, useRef } from 'react';
++
++import { invoke } from '@tauri-apps/api/core';
++import { listen } from '@tauri-apps/api/event';
++import { requestFork } from 'proton-authenticator/store/auth';
++import { useAppDispatch, useAppSelector } from 'proton-authenticator/store/utils';
++
++import { ForkType } from '@proton/shared/lib/authentication/fork/constants';
++
++import { shouldEnableHelper } from '../../lib/helper/snapshot';
++import logger from '../../lib/logger';
++import runtime from '../../lib/tauri/runtime';
++
++const LOGIN_EVENT = 'omarchy-helper:login';
++const ADD_EVENT = 'omarchy-helper:add';
++const TAKE_LOGIN_REQUEST = 'take_helper_login_request';
++const SHOW_MAIN_WINDOW = 'show_helper_main_window';
++
++type Props = { onAddRequested?: () => void };
++
++/** Surfaces Proton's own UI when the Omarchy panel asks for it.
++ *
++ * `login` opens Proton's own sign-in window directly, through the same
++ * `requestFork(LOGIN)` call as the app's "Sign in" button, without showing the
++ * main window first. When already signed in it shows the main window instead.
++ * `add` opens the add-code dialog. Nothing here reads or forwards credentials:
++ * the user types them into Proton's hosted sign-in page. */
++export const HelperLoginBridge: FC<Props> = ({ onAddRequested }) => {
++    const dispatch = useAppDispatch();
++    const signedIn = useAppSelector((state) => Boolean(state.auth.session));
++    const signedInRef = useRef(signedIn);
++    signedInRef.current = signedIn;
++
++    const enabled = shouldEnableHelper(
++        runtime.isTauri,
++        runtime.platform === 'linux',
++        typeof navigator === 'undefined' ? '' : navigator.userAgent
++    );
++
++    useEffect(() => {
++        if (!enabled) return;
++        let active = true;
++        let dispose: undefined | (() => void);
++        let disposeAdd: undefined | (() => void);
++
++        const startLogin = () => {
++            if (!active) return;
++            if (signedInRef.current) {
++                void invoke(SHOW_MAIN_WINDOW).catch(() => {
++                    logger.error('[omarchy-helper] could not show the main window');
++                });
++                return;
++            }
++            void dispatch(requestFork(ForkType.LOGIN)).catch(() => {
++                logger.error('[omarchy-helper] could not open the sign-in window');
++            });
++        };
++
++        const consume = () => {
++            void invoke<boolean>(TAKE_LOGIN_REQUEST)
++                .then((requested) => {
++                    if (requested) startLogin();
++                })
++                .catch(() => {
++                    logger.error('[omarchy-helper] could not consume login request');
++                });
++        };
++
++        void listen(ADD_EVENT, () => {
++            if (active) onAddRequested?.();
++        })
++            .then((unlisten) => {
++                if (!active) unlisten();
++                else disposeAdd = unlisten;
++            })
++            .catch(() => {
++                logger.error('[omarchy-helper] could not initialize add bridge');
++            });
++
++        void listen(LOGIN_EVENT, consume)
++            .then((unlisten) => {
++                if (!active) {
++                    unlisten();
++                    return;
++                }
++                dispose = unlisten;
++                // A request made before this page loaded (helper started with
++                // --login) is still waiting in the one-shot flag.
++                consume();
++            })
++            .catch(() => {
++                logger.error('[omarchy-helper] could not initialize login bridge');
++            });
++
++        return () => {
++            active = false;
++            dispose?.();
++            disposeAdd?.();
++        };
++    }, [enabled, onAddRequested, dispatch]);
++
++    return null;
++};
+diff --git a/applications/authenticator/src/app/providers/StoreProvider.tsx b/applications/authenticator/src/app/providers/StoreProvider.tsx
+index 2889f3dd39..61e0e93563 100644
+--- a/applications/authenticator/src/app/providers/StoreProvider.tsx
++++ b/applications/authenticator/src/app/providers/StoreProvider.tsx
+@@ -2,6 +2,7 @@ import type { FC, PropsWithChildren } from 'react';
+ import { Provider } from 'react-redux';
+ 
+ import { getApi } from 'proton-authenticator/lib/api';
++import { HelperPublisher } from 'proton-authenticator/lib/helper/HelperPublisher';
+ import type { AppModal } from 'proton-authenticator/store';
+ import { setupStore } from 'proton-authenticator/store';
+ import { init } from 'proton-authenticator/store/app';
+@@ -49,6 +50,7 @@ export const StoreProvider: FC<PropsWithChildren> = ({ children }) => {
+ 
+     return (
+         <Provider store={store}>
++            <HelperPublisher />
+             {children}
+ 
+             {appModal.state.open && (
+diff --git a/applications/authenticator/src/app/views/App.tsx b/applications/authenticator/src/app/views/App.tsx
+index a6298e5e80..77daa9d899 100644
+--- a/applications/authenticator/src/app/views/App.tsx
++++ b/applications/authenticator/src/app/views/App.tsx
+@@ -1,5 +1,6 @@
+-import { type FC, useState } from 'react';
++import { type FC, useCallback, useState } from 'react';
+ 
++import { HelperLoginBridge } from 'proton-authenticator/app/components/HelperLoginBridge';
+ import { ItemAdd } from 'proton-authenticator/app/components/Items/ItemAdd';
+ import { Navbar } from 'proton-authenticator/app/components/Layout/Navbar';
+ import { Settings } from 'proton-authenticator/app/views/SettingsScreen';
+@@ -10,7 +11,7 @@ export const App: FC = () => {
+     const [search, setSearch] = useState('');
+ 
+     const [dialogOpen, setDialogOpen] = useState(false);
+-    const handleNewClick = () => setDialogOpen(true);
++    const handleNewClick = useCallback(() => setDialogOpen(true), []);
+ 
+     const [settingsOpen, setSettingsOpen] = useState(false);
+ 
+@@ -24,6 +25,7 @@ export const App: FC = () => {
+             />
+ 
+             <Items search={search} handleNewClick={handleNewClick} />
++            <HelperLoginBridge onAddRequested={handleNewClick} />
+ 
+             {dialogOpen && <ItemAdd onClose={() => setDialogOpen(false)} />}
+             {settingsOpen && <Settings onClose={() => setSettingsOpen(false)} />}
+diff --git a/applications/authenticator/src/lib/helper/HelperPublisher.tsx b/applications/authenticator/src/lib/helper/HelperPublisher.tsx
+new file mode 100644
+index 0000000000..2a7e8049d2
+--- /dev/null
++++ b/applications/authenticator/src/lib/helper/HelperPublisher.tsx
+@@ -0,0 +1,55 @@
++import { type FC, useEffect, useRef, useState } from 'react';
++
++import { invoke } from '@tauri-apps/api/core';
++import { useLiveQuery } from 'dexie-react-hooks';
++
++import { useAppSelector } from '../../store/utils';
++import { db } from '../db/db';
++import logger from '../logger';
++import runtime from '../tauri/runtime';
++import { buildHelperSnapshot, shouldEnableHelper, shouldQueryHelperItems } from './snapshot';
++
++/** Publishes bounded in-memory display rows to the Rust Unix-socket helper.
++ * Passwords, sessions, user keys, storage keys, and TOTP secrets are never
++ * included. Codes are included because the Omarchy panel explicitly displays
++ * them; Rust keeps them in memory and copies by opaque item id. */
++export const HelperPublisher: FC = () => {
++    const enabled = shouldEnableHelper(
++        runtime.isTauri,
++        runtime.platform === 'linux',
++        typeof navigator === 'undefined' ? '' : navigator.userAgent
++    );
++    const status = useAppSelector((state) => state.app.status);
++    const syncState = useAppSelector((state) => state.auth.syncState);
++    const account = useAppSelector((state) => state.auth.user?.Email ?? state.auth.user?.Name ?? '');
++    const items = useLiveQuery(
++        async () => (shouldQueryHelperItems(enabled, status, db.isOpen()) ? db.items.toSafeArray() : []),
++        [enabled, status],
++        []
++    );
++    const [now, setNow] = useState(() => Math.floor(Date.now() / 1_000));
++    const generation = useRef(0);
++
++    useEffect(() => {
++        if (!enabled) return;
++        const timer = window.setInterval(() => setNow(Math.floor(Date.now() / 1_000)), 1_000);
++        return () => window.clearInterval(timer);
++    }, [enabled]);
++
++    useEffect(() => {
++        if (!enabled) return;
++        const snapshot = buildHelperSnapshot({
++            items: items ?? [],
++            status,
++            syncState,
++            account,
++            generation: ++generation.current,
++            now,
++        });
++        void invoke('publish_helper_snapshot', { snapshot }).catch(() => {
++            logger.error('[omarchy-helper] snapshot publish failed');
++        });
++    }, [enabled, items, status, syncState, account, now]);
++
++    return null;
++};
+diff --git a/applications/authenticator/src/lib/helper/snapshot.spec.ts b/applications/authenticator/src/lib/helper/snapshot.spec.ts
+new file mode 100644
+index 0000000000..d7852ce895
+--- /dev/null
++++ b/applications/authenticator/src/lib/helper/snapshot.spec.ts
+@@ -0,0 +1,126 @@
++import type { Item } from '../db/entities/items';
++import {
++    buildHelperSnapshot,
++    shouldEnableHelper,
++    shouldQueryHelperItems,
++} from './snapshot';
++
++const item: Item = {
++    id: 'fixture-rfc6238',
++    name: 'test',
++    issuer: 'RFC6238',
++    note: '',
++    order: 1,
++    period: 30,
++    secret: 'public-rfc-secret',
++    uri: 'otpauth://totp/RFC6238:test',
++    entryType: 'Totp',
++};
++
++const generateCode = () => ({ current_code: '94287082', next_code: '37359152' });
++
++describe('buildHelperSnapshot', () => {
++    it('publishes bounded current and next code rows without secrets', () => {
++        const snapshot = buildHelperSnapshot({
++            items: [item],
++            status: 'ready',
++            syncState: 'on',
++            account: 'test@example.test',
++            generation: 7,
++            now: 59,
++            generateCode,
++        });
++
++        expect(snapshot).toEqual({
++            state: 'ready',
++            locked: false,
++            synced: true,
++            account: 'test@example.test',
++            generation: 7,
++            now: 59,
++            entries: [
++                {
++                    id: 'fixture-rfc6238',
++                    name: 'test',
++                    issuer: 'RFC6238',
++                    type: 'Totp',
++                    code: '94287082',
++                    nextCode: '37359152',
++                    period: 30,
++                    validUntil: 60,
++                },
++            ],
++        });
++        expect(JSON.stringify(snapshot)).not.toContain(item.secret);
++        expect(JSON.stringify(snapshot)).not.toContain(item.uri);
++    });
++
++    it('does not access the WASM generator before the app is ready', () => {
++        const snapshot = buildHelperSnapshot({
++            items: [item],
++            status: 'locked',
++            syncState: 'off',
++            account: '',
++            generation: 8,
++            now: 60,
++        });
++        expect(snapshot.state).toBe('locked');
++        expect(snapshot.locked).toBe(true);
++        expect(snapshot.entries).toEqual([]);
++    });
++
++    it.each(['loading', 'error'] as const)('keeps configured sync hidden from the sign-in action while %s', (syncState) => {
++        const snapshot = buildHelperSnapshot({
++            items: [],
++            status: 'ready',
++            syncState,
++            account: '',
++            generation: 1,
++            now: 60,
++            generateCode,
++        });
++        expect(snapshot.synced).toBe(true);
++    });
++
++    it('sanitizes and UTF-8 byte-bounds account and row labels', () => {
++        const snapshot = buildHelperSnapshot({
++            items: [
++                {
++                    ...item,
++                    name: `\u061C\u200B\u200E\u200F${'A'.repeat(90)}\u202Eignored`,
++                    issuer: 'ü'.repeat(90),
++                },
++            ],
++            status: 'ready',
++            syncState: 'on',
++            account: `acct\u0000${'ü'.repeat(100)}`,
++            generation: 1,
++            now: 59,
++            generateCode,
++        });
++
++        expect(Buffer.byteLength(snapshot.account, 'utf8')).toBeLessThanOrEqual(120);
++        expect(Buffer.byteLength(snapshot.entries[0].name, 'utf8')).toBeLessThanOrEqual(80);
++        expect(Buffer.byteLength(snapshot.entries[0].issuer, 'utf8')).toBeLessThanOrEqual(80);
++        expect(snapshot.account).not.toMatch(/[\u0000-\u001F\u007F-\u009F\u202A-\u202E\u2066-\u2069]/);
++        expect(snapshot.entries[0].name).not.toMatch(/[\u061C\u200B-\u200F\u202A-\u202E\u2060\u2066-\u2069\uFEFF]/);
++    });
++});
++
++describe('shouldEnableHelper', () => {
++    it('recognizes WebKitGTK Linux through its user agent fallback', () => {
++        expect(shouldEnableHelper(true, false, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit')).toBe(true);
++        expect(shouldEnableHelper(true, true, '')).toBe(true);
++        expect(shouldEnableHelper(false, true, 'Linux')).toBe(false);
++        expect(shouldEnableHelper(true, false, 'Macintosh')).toBe(false);
++    });
++});
++
++describe('shouldQueryHelperItems', () => {
++    it('waits for the ready app state and an open database', () => {
++        expect(shouldQueryHelperItems(true, 'launch', false)).toBe(false);
++        expect(shouldQueryHelperItems(true, 'ready', false)).toBe(false);
++        expect(shouldQueryHelperItems(true, 'ready', true)).toBe(true);
++        expect(shouldQueryHelperItems(false, 'ready', true)).toBe(false);
++    });
++});
+diff --git a/applications/authenticator/src/lib/helper/snapshot.ts b/applications/authenticator/src/lib/helper/snapshot.ts
+new file mode 100644
+index 0000000000..3610b30eae
+--- /dev/null
++++ b/applications/authenticator/src/lib/helper/snapshot.ts
+@@ -0,0 +1,128 @@
++import type { AppStatus } from '../../store/app';
++import type { SyncState } from '../../store/auth';
++import type { Item } from '../db/entities/items';
++import { toWasmEntry } from '../entries/items';
++import { service } from '../wasm/service';
++
++const INVALID_TEXT = /[\u0000-\u001F\u007F-\u009F\u061C\u200B-\u200F\u202A-\u202E\u2060\u2066-\u2069\uFEFF]/gu;
++const VALID_ID = /^[A-Za-z0-9._:-]{1,128}$/;
++const encoder = new TextEncoder();
++
++export type HelperState = 'ready' | 'locked' | 'needs_login' | 'unavailable' | 'error';
++
++export const shouldEnableHelper = (isTauri: boolean, platformIsLinux: boolean, userAgent: string): boolean =>
++    isTauri && (platformIsLinux || /\blinux\b/i.test(userAgent));
++
++export const shouldQueryHelperItems = (enabled: boolean, status: AppStatus, databaseOpen: boolean): boolean =>
++    enabled && status === 'ready' && databaseOpen;
++
++export const sanitizeHelperText = (value: string, maxBytes: number): string => {
++    const cleaned = String(value ?? '').replace(INVALID_TEXT, '').trim();
++    let result = '';
++    let bytes = 0;
++    for (const character of cleaned) {
++        const size = encoder.encode(character).byteLength;
++        if (bytes + size > maxBytes) break;
++        result += character;
++        bytes += size;
++    }
++    return result;
++};
++
++export type HelperEntry = {
++    id: string;
++    name: string;
++    issuer: string;
++    type: 'Totp' | 'Steam';
++    code: string;
++    nextCode: string;
++    period: number;
++    validUntil: number;
++};
++
++export type HelperSnapshot = {
++    state: HelperState;
++    locked: boolean;
++    synced: boolean;
++    account: string;
++    generation: number;
++    now: number;
++    entries: HelperEntry[];
++};
++
++type GenerateCode = (
++    item: ReturnType<typeof toWasmEntry>,
++    now: bigint
++) => { current_code: string; next_code: string };
++
++type SnapshotInput = {
++    items: Item[];
++    status: AppStatus;
++    syncState: SyncState;
++    account: string;
++    generation: number;
++    now: number;
++    generateCode?: GenerateCode;
++};
++
++export const buildHelperSnapshot = ({
++    items,
++    status,
++    syncState,
++    account,
++    generation,
++    now,
++    generateCode,
++}: SnapshotInput): HelperSnapshot => {
++    const locked = status === 'locked';
++    const synced = syncState !== 'off';
++    const safeAccount = sanitizeHelperText(account, 120);
++    if (status !== 'ready') {
++        return {
++            state: locked ? 'locked' : 'unavailable',
++            locked,
++            synced,
++            account: safeAccount,
++            generation,
++            now,
++            entries: [],
++        };
++    }
++
++    const codeGenerator = generateCode ?? service.generate_code;
++    const entries = items
++        .filter((item) => item.syncMetadata?.state !== 'PendingToDelete')
++        .sort((a, b) => a.order - b.order)
++        .slice(0, 200)
++        .flatMap((item): HelperEntry[] => {
++            try {
++                if (!VALID_ID.test(item.id) || !['Totp', 'Steam'].includes(item.entryType)) return [];
++                const codes = codeGenerator(toWasmEntry(item), BigInt(now));
++                const period = Math.max(15, Math.min(120, Math.floor(item.period || 30)));
++                return [
++                    {
++                        id: item.id,
++                        name: sanitizeHelperText(item.name, 80),
++                        issuer: sanitizeHelperText(item.issuer, 80),
++                        type: item.entryType,
++                        code: codes.current_code,
++                        nextCode: codes.next_code,
++                        period,
++                        validUntil: now - (now % period) + period,
++                    },
++                ];
++            } catch {
++                return [];
++            }
++        });
++
++    return {
++        state: 'ready',
++        locked: false,
++        synced,
++        account: safeAccount,
++        generation,
++        now,
++        entries,
++    };
++};
+diff --git a/applications/authenticator/src/lib/tauri/update.ts b/applications/authenticator/src/lib/tauri/update.ts
+index dd9820176e..e3a5b1e795 100644
+--- a/applications/authenticator/src/lib/tauri/update.ts
++++ b/applications/authenticator/src/lib/tauri/update.ts
+@@ -34,6 +34,15 @@ export const getLocalUpdateDistribution = () => {
+ };
+ 
+ export async function checkForUpdates(): Promise<Maybe<Update>> {
++    /** Fork-local divergence: this build is maintained locally and must never be
++     * replaced by an upstream binary. Skipping the check on Linux also stops the
++     * launch-time beacon to proton.me, which otherwise reports the running
++     * version alongside the persistent random `updateDistribution` identifier. */
++    if (runtime.platform === 'linux') {
++        logger.info('[Tauri::update] Updates disabled for this build');
++        return;
++    }
++
+     logger.info('[Tauri::update] Checking for updates...');
+ 
+     if (!runtime.platform) {
+@@ -77,6 +86,13 @@ export async function checkForUpdates(): Promise<Maybe<Update>> {
+ }
+ 
+ export async function updateTo(updatePackage: Update) {
++    /** Fork-local divergence: see `checkForUpdates`. Guarded independently so
++     * the install path stays closed even if an update package reaches it. */
++    if (runtime.platform === 'linux') {
++        logger.info('[Tauri::update] Updates disabled for this build');
++        return;
++    }
++
+     logger.info(`[Tauri::update] Updating to ${updatePackage.version}...`);
+ 
+     try {
+diff --git a/applications/authenticator/tools/build-omarchy-helper.sh b/applications/authenticator/tools/build-omarchy-helper.sh
+new file mode 100755
+index 0000000000..6455bea11b
+--- /dev/null
++++ b/applications/authenticator/tools/build-omarchy-helper.sh
+@@ -0,0 +1,77 @@
++#!/usr/bin/env bash
++set -euo pipefail
++
++# Builds the Omarchy helper and verifies the artifact before anything installs
++# it. Runs from a git checkout or from Proton's release tarball with the
++# Omarchy patch applied (the AUR package path). Installing is the package
++# manager's job; this script never touches the system.
++#
++# Source commit: from a git checkout it is `git rev-parse HEAD` and the tree
++# must be clean. From a tarball the packager exports OMARCHY_HELPER_SOURCE_COMMIT
++# (the fork commit the patch was generated from), which build.rs embeds and the
++# verifier then requires in the binary.
++
++SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
++APP_DIR="$(cd -- "$SCRIPT_DIR/.." && pwd)"
++ROOT_DIR="$(cd -- "$APP_DIR/../.." && pwd)"
++TARGET_DIR="${CARGO_TARGET_DIR:-$APP_DIR/src-tauri/target}"
++BINARY="$TARGET_DIR/release/proton-authenticator"
++FINGERPRINT_ROOT="$TARGET_DIR/release/.fingerprint"
++DIST_DIR="$APP_DIR/dist"
++VERIFY_SCRIPT="$SCRIPT_DIR/verify-omarchy-helper-build.mjs"
++
++for argument in "$@"; do
++  printf 'unknown argument: %s\n' "$argument" >&2
++  exit 2
++done
++
++# Proton's 1.1.6 workspace declares node ">= 22.14.0 <23.6.0".
++NODE_VERSION="$(node -p 'process.versions.node')"
++case "$NODE_VERSION" in
++  22.*) ;;
++  *) printf 'Node 22.x is required by the Proton workspace (found %s)\n' "$NODE_VERSION" >&2; exit 1 ;;
++esac
++
++YARN_PATH="$(sed -n 's/^yarnPath: *//p' "$ROOT_DIR/.yarnrc.yml")"
++YARN_JS="$ROOT_DIR/$YARN_PATH"
++if [[ -z "$YARN_PATH" || ! -f "$YARN_JS" ]]; then
++  printf 'pinned Yarn missing: %s\n' "$YARN_JS" >&2
++  exit 1
++fi
++
++if git -C "$ROOT_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1 \
++  && [[ "$(git -C "$ROOT_DIR" rev-parse --show-toplevel)" == "$ROOT_DIR" ]]; then
++  SOURCE_COMMIT="$(git -C "$ROOT_DIR" rev-parse HEAD)"
++  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=no -- applications/authenticator)" ]]; then
++    printf 'refusing to build the helper from a dirty applications/authenticator tree\n' >&2
++    git -C "$ROOT_DIR" status --short --untracked-files=no -- applications/authenticator >&2
++    exit 1
++  fi
++else
++  SOURCE_COMMIT="${OMARCHY_HELPER_SOURCE_COMMIT:-}"
++fi
++if [[ ! "$SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]]; then
++  printf 'OMARCHY_HELPER_SOURCE_COMMIT must name the 40-hex patched source commit\n' >&2
++  exit 1
++fi
++export OMARCHY_HELPER_SOURCE_COMMIT="$SOURCE_COMMIT"
++
++# The whole of `dist` is embedded verbatim in the release binary, so stale
++# bundles and webpack's production source maps would ship with it. QA_BUILD=false
++# is load-bearing: Proton's own tools/build.sh enables devtools and QA hooks
++# whenever it is unset.
++export QA_BUILD=false NODE_ENV=production API_ENV=proton.me
++rm -rf "$DIST_DIR"
++node "$YARN_JS" workspace proton-authenticator build:web
++find "$DIST_DIR" -type f -name '*.map' -delete
++(
++  cd "$APP_DIR/src-tauri"
++  cargo build --frozen --bins --features tauri/custom-protocol --release
++)
++
++if [[ ! -x "$BINARY" ]]; then
++  printf 'helper build missing: %s\n' "$BINARY" >&2
++  exit 1
++fi
++node "$VERIFY_SCRIPT" "$FINGERPRINT_ROOT" "$DIST_DIR" "$BINARY" "$SOURCE_COMMIT"
++printf 'built  %s  %s  %s\n' "$(sha256sum "$BINARY" | cut -d' ' -f1)" "$SOURCE_COMMIT" "$BINARY"
+diff --git a/applications/authenticator/tools/verify-omarchy-helper-build.mjs b/applications/authenticator/tools/verify-omarchy-helper-build.mjs
+new file mode 100644
+index 0000000000..ebd717a85c
+--- /dev/null
++++ b/applications/authenticator/tools/verify-omarchy-helper-build.mjs
+@@ -0,0 +1,117 @@
++import fs from 'node:fs';
++import path from 'node:path';
++import { pathToFileURL } from 'node:url';
++
++const QA_MARKER = 'qa::';
++
++export function verifyLatestFingerprint(root) {
++    const candidates = [];
++    for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
++        if (!entry.isDirectory() || !entry.name.startsWith('proton-authenticator-')) continue;
++        const file = path.join(root, entry.name, 'bin-proton-authenticator.json');
++        if (!fs.existsSync(file)) continue;
++        candidates.push({ file, mtimeMs: fs.statSync(file).mtimeMs });
++    }
++    if (candidates.length === 0) throw new Error('helper Cargo fingerprint missing');
++    candidates.sort((a, b) => b.mtimeMs - a.mtimeMs || a.file.localeCompare(b.file));
++    const latest = candidates[0].file;
++    const fingerprint = JSON.parse(fs.readFileSync(latest, 'utf8'));
++    const features = Array.isArray(fingerprint.features)
++        ? fingerprint.features
++        : JSON.parse(String(fingerprint.features || '[]'));
++    if (features.includes('devtools')) {
++        throw new Error(`refusing helper fingerprint with devtools: ${latest}`);
++    }
++    return latest;
++}
++
++function walkFiles(root) {
++    const files = [];
++    const pending = [root];
++    while (pending.length > 0) {
++        const current = pending.pop();
++        for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
++            const file = path.join(current, entry.name);
++            if (entry.isDirectory()) pending.push(file);
++            else if (entry.isFile()) files.push(file);
++        }
++    }
++    return files;
++}
++
++/** The bundle is embedded verbatim in the release binary, so anything left in
++ * `dist` ships to the user: source maps expose the unminified sources and any
++ * `qa::` hook means the build was made with QA features enabled. */
++export function verifyDistBundle(dist) {
++    if (!fs.existsSync(dist)) throw new Error(`helper web bundle missing: ${dist}`);
++    const files = walkFiles(dist);
++    const maps = files.filter((file) => file.endsWith('.map'));
++    if (maps.length > 0) {
++        throw new Error(`refusing helper bundle with source maps: ${maps.join(', ')}`);
++    }
++    const scripts = files.filter((file) => file.endsWith('.js'));
++    if (scripts.length === 0) throw new Error(`helper bundle has no scripts: ${dist}`);
++    const tainted = scripts.filter((file) => fs.readFileSync(file, 'utf8').includes(QA_MARKER));
++    if (tainted.length > 0) {
++        throw new Error(`refusing helper bundle with QA hooks: ${tainted.join(', ')}`);
++    }
++    return scripts.length;
++}
++
++/** `dist` being clean is not sufficient: Tauri's codegen keeps a compressed
++ * asset cache under the Cargo `OUT_DIR` that Cargo never prunes, so blobs from
++ * earlier QA-enabled builds survive `rm -rf dist`. They only stay out of the
++ * binary while `dist` does not reference them, which is a property of the last
++ * build rather than a guarantee. Assert the shipped binary embeds exactly the
++ * bundles the current `dist` declares. */
++export function verifyEmbeddedBundles(binary, dist) {
++    if (!fs.existsSync(binary)) throw new Error(`helper binary missing: ${binary}`);
++    const expected = new Set(
++        walkFiles(dist)
++            .filter((file) => file.endsWith('.js'))
++            .map((file) => path.basename(file))
++    );
++    const contents = fs.readFileSync(binary, 'latin1');
++    const embedded = new Set(contents.match(/main\.[0-9a-f]{6,}\.js/g) ?? []);
++    const strays = [...embedded].filter((name) => !expected.has(name));
++    if (strays.length > 0) {
++        throw new Error(`refusing helper binary embedding stale bundles: ${strays.join(', ')}`);
++    }
++    const sourceMaps = new Set(contents.match(/[\w.-]+\.js\.map/g) ?? []);
++    if (sourceMaps.size > 0) {
++        throw new Error(`refusing helper binary embedding source maps: ${[...sourceMaps].join(', ')}`);
++    }
++    return embedded.size;
++}
++
++/** build.rs embeds the source commit as a string constant that the `status`
++ * socket op reports. Requiring it here ties the artifact to the checkout that
++ * produced it: a binary built from another commit, or from a dirty tree, is
++ * rejected before it can be installed. */
++export function verifyEmbeddedCommit(binary, commit) {
++    if (!/^[0-9a-f]{40}$/.test(commit)) throw new Error(`invalid source commit: ${commit}`);
++    const contents = fs.readFileSync(binary, 'latin1');
++    if (contents.includes(`${commit}-dirty`)) {
++        throw new Error(`refusing helper binary built from a dirty tree at ${commit}`);
++    }
++    if (!contents.includes(commit)) {
++        throw new Error(`helper binary does not embed source commit ${commit}`);
++    }
++    return commit;
++}
++
++if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
++    const [root, dist, binary, commit] = process.argv.slice(2);
++    if (!root || !dist) {
++        throw new Error('usage: verify-omarchy-helper-build.mjs <fingerprint-root> <dist> [binary [commit]]');
++    }
++    process.stdout.write(`${verifyLatestFingerprint(path.resolve(root))}\n`);
++    process.stdout.write(`${verifyDistBundle(path.resolve(dist))} bundle scripts verified\n`);
++    if (binary) {
++        const embedded = verifyEmbeddedBundles(path.resolve(binary), path.resolve(dist));
++        process.stdout.write(`${embedded} embedded bundle(s) verified\n`);
++    }
++    if (binary && commit) {
++        process.stdout.write(`embedded source commit ${verifyEmbeddedCommit(path.resolve(binary), commit)}\n`);
++    }
++}
+diff --git a/applications/authenticator/tools/verify-omarchy-helper-build.spec.mjs b/applications/authenticator/tools/verify-omarchy-helper-build.spec.mjs
+new file mode 100644
+index 0000000000..0babcc4974
+--- /dev/null
++++ b/applications/authenticator/tools/verify-omarchy-helper-build.spec.mjs
+@@ -0,0 +1,143 @@
++import assert from 'node:assert/strict';
++import fs from 'node:fs';
++import os from 'node:os';
++import path from 'node:path';
++import test from 'node:test';
++
++import { verifyDistBundle, verifyEmbeddedBundles, verifyEmbeddedCommit, verifyLatestFingerprint } from './verify-omarchy-helper-build.mjs';
++
++function writeFingerprint(root, name, features, mtimeMs) {
++    const dir = path.join(root, name);
++    fs.mkdirSync(dir, { recursive: true });
++    const file = path.join(dir, 'bin-proton-authenticator.json');
++    fs.writeFileSync(file, JSON.stringify({ features: JSON.stringify(features) }));
++    const time = new Date(mtimeMs);
++    fs.utimesSync(file, time, time);
++    return file;
++}
++
++test('accepts the newest fingerprint when devtools is absent', () => {
++    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'helper-fingerprint-'));
++    writeFingerprint(root, 'proton-authenticator-old', ['devtools'], 1_000);
++    const expected = writeFingerprint(root, 'proton-authenticator-new', [], 2_000);
++    assert.equal(verifyLatestFingerprint(root), expected);
++    fs.rmSync(root, { recursive: true });
++});
++
++test('rejects the newest fingerprint when devtools is present', () => {
++    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'helper-fingerprint-'));
++    writeFingerprint(root, 'proton-authenticator-old', [], 1_000);
++    writeFingerprint(root, 'proton-authenticator-new', ['devtools'], 2_000);
++    assert.throws(() => verifyLatestFingerprint(root), /devtools/);
++    fs.rmSync(root, { recursive: true });
++});
++
++function writeDist(files) {
++    const dist = fs.mkdtempSync(path.join(os.tmpdir(), 'helper-dist-'));
++    for (const [name, contents] of Object.entries(files)) {
++        const file = path.join(dist, name);
++        fs.mkdirSync(path.dirname(file), { recursive: true });
++        fs.writeFileSync(file, contents);
++    }
++    return dist;
++}
++
++test('accepts a bundle without source maps or QA hooks', () => {
++    const dist = writeDist({
++        'index.html': '<html></html>',
++        'assets/static/main.js': 'console.log("ok")',
++    });
++    assert.equal(verifyDistBundle(dist), 1);
++    fs.rmSync(dist, { recursive: true });
++});
++
++test('rejects a bundle shipping source maps', () => {
++    const dist = writeDist({
++        'assets/static/main.js': 'console.log("ok")',
++        'assets/static/main.js.map': '{"version":3}',
++    });
++    assert.throws(() => verifyDistBundle(dist), /source maps/);
++    fs.rmSync(dist, { recursive: true });
++});
++
++test('rejects a bundle shipping QA hooks', () => {
++    const dist = writeDist({
++        'assets/static/main.js': 'window["qa::keyring::suppress"]=1',
++    });
++    assert.throws(() => verifyDistBundle(dist), /QA hooks/);
++    fs.rmSync(dist, { recursive: true });
++});
++
++test('rejects a bundle with no scripts at all', () => {
++    const dist = writeDist({ 'index.html': '<html></html>' });
++    assert.throws(() => verifyDistBundle(dist), /no scripts/);
++    fs.rmSync(dist, { recursive: true });
++});
++
++test('rejects a missing bundle directory', () => {
++    const dist = path.join(os.tmpdir(), `helper-dist-missing-${process.pid}`);
++    assert.throws(() => verifyDistBundle(dist), /bundle missing/);
++});
++
++function writeBinary(contents) {
++    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'helper-binary-'));
++    const file = path.join(dir, 'proton-authenticator');
++    fs.writeFileSync(file, contents, 'latin1');
++    return file;
++}
++
++test('accepts a binary embedding only the current bundle', () => {
++    const dist = writeDist({
++        'index.html': '<script src="main.0783a71b.js"></script>',
++        'assets/static/main.0783a71b.js': 'console.log("ok")',
++    });
++    const binary = writeBinary('\u0000ELF junk assets/static/main.0783a71b.js more junk');
++    assert.equal(verifyEmbeddedBundles(binary, dist), 1);
++    fs.rmSync(dist, { recursive: true });
++    fs.rmSync(path.dirname(binary), { recursive: true });
++});
++
++test('rejects a binary embedding bundles that are no longer in dist', () => {
++    const dist = writeDist({ 'assets/static/main.0783a71b.js': 'console.log("ok")' });
++    const binary = writeBinary('main.0783a71b.js and the stale main.802de1c3.js');
++    assert.throws(() => verifyEmbeddedBundles(binary, dist), /stale bundles: main\.802de1c3\.js/);
++    fs.rmSync(dist, { recursive: true });
++    fs.rmSync(path.dirname(binary), { recursive: true });
++});
++
++test('rejects a binary embedding source maps', () => {
++    const dist = writeDist({ 'assets/static/main.0783a71b.js': 'console.log("ok")' });
++    const binary = writeBinary('main.0783a71b.js plus main.0783a71b.js.map');
++    assert.throws(() => verifyEmbeddedBundles(binary, dist), /source maps/);
++    fs.rmSync(dist, { recursive: true });
++    fs.rmSync(path.dirname(binary), { recursive: true });
++});
++
++test('rejects a missing binary', () => {
++    const dist = writeDist({ 'assets/static/main.0783a71b.js': 'console.log("ok")' });
++    const binary = path.join(os.tmpdir(), `helper-binary-missing-${process.pid}`);
++    assert.throws(() => verifyEmbeddedBundles(binary, dist), /binary missing/);
++    fs.rmSync(dist, { recursive: true });
++});
++
++const COMMIT = 'a'.repeat(40);
++
++test('accepts a binary embedding the exact source commit', () => {
++    const binary = writeBinary(`ELF ${COMMIT} tail`);
++    assert.equal(verifyEmbeddedCommit(binary, COMMIT), COMMIT);
++    fs.rmSync(path.dirname(binary), { recursive: true });
++});
++
++test('rejects a binary built from another commit or a dirty tree', () => {
++    const other = writeBinary(`ELF ${'b'.repeat(40)} tail`);
++    assert.throws(() => verifyEmbeddedCommit(other, COMMIT), /does not embed source commit/);
++    fs.rmSync(path.dirname(other), { recursive: true });
++
++    const dirty = writeBinary(`ELF ${COMMIT}-dirty tail`);
++    assert.throws(() => verifyEmbeddedCommit(dirty, COMMIT), /dirty tree/);
++    fs.rmSync(path.dirname(dirty), { recursive: true });
++
++    const binary = writeBinary(`ELF ${COMMIT}`);
++    assert.throws(() => verifyEmbeddedCommit(binary, 'HEAD'), /invalid source commit/);
++    fs.rmSync(path.dirname(binary), { recursive: true });
++});
+diff --git a/applications/authenticator/tsconfig.json b/applications/authenticator/tsconfig.json
+index 5256b16e07..489530e6c6 100644
+--- a/applications/authenticator/tsconfig.json
++++ b/applications/authenticator/tsconfig.json
+@@ -8,5 +8,6 @@
+             "esModuleInterop": true
+         },
+         "ignore": ["node_modules/(?!@proton)"]
+-    }
++    },
++    "exclude": ["./src-tauri/target/**"]
+ }

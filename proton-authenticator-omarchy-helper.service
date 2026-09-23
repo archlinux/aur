@@ -1,0 +1,74 @@
+[Unit]
+Description=Proton Authenticator helper for Omarchy
+Documentation=https://github.com/Zeus-Deus/proton-authenticator-omarchy-plugin
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+# ReadWritePaths= refuses to start the unit (status 226/NAMESPACE) when a listed
+# directory is missing, as it is on a first install. "+" runs this one mkdir
+# outside the sandbox, as the same user, before the namespace is built.
+ExecStartPre=+/usr/bin/mkdir -p -m 0700 %h/.config/me.proton.authenticator %h/.local/share/me.proton.authenticator %h/.cache/me.proton.authenticator
+ExecStart=/usr/bin/proton-authenticator-omarchy-helper --background
+# The helper exits with 75 after a package upgrade replaced its binary (only
+# while its window is hidden), so systemd starts the new version. Crashes are
+# restarted the same way.
+Restart=on-failure
+RestartSec=3
+Environment=WEBKIT_DISABLE_DMABUF_RENDERER=1
+
+# The helper holds decrypted vault entries, session material, and keyring-derived
+# keys in memory. A core dump writes all of it to persistent storage, and the
+# default UMask creates its files group- and world-readable.
+LimitCORE=0
+UMask=0077
+
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+# Everything the app writes: its XDG config/data/cache directories, the runtime
+# directory holding the private helper socket, and ~/Downloads, which is where
+# Proton's own "Export" and encrypted automatic backups are written from the
+# Manage window. ProtectSystem=strict makes /run read-only, so %t is listed.
+# The leading "-" skips a directory that does not exist.
+ReadWritePaths=%h/.config/me.proton.authenticator %h/.local/share/me.proton.authenticator %h/.cache/me.proton.authenticator %t -%h/Downloads
+PrivateTmp=yes
+ProtectProc=invisible
+ProcSubset=pid
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectClock=yes
+LockPersonality=yes
+RestrictRealtime=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+CapabilityBoundingSet=
+SystemCallArchitectures=native
+# @sandbox and @mount are required: WebKitGTK and GTK's glycin image loaders
+# both spawn bubblewrap children that need seccomp/namespace and mount calls.
+# mincore is required by JavaScriptCore's garbage collector and is NOT part of
+# @system-service on systemd 261: without it the kernel kills WebKitWebProcess
+# with SIGSYS (audit: syscall=27) while the helper itself keeps running and
+# silently stops publishing codes.
+SystemCallFilter=@system-service @sandbox @mount mincore
+SystemCallFilter=~@debug @swap @reboot @module @obsolete @cpu-emulation @raw-io
+
+# Deliberately NOT set. Each one below was measured against this binary; do not
+# add them to improve the systemd-analyze score.
+#
+#   RestrictSUIDSGID    Breaks bubblewrap, so it breaks both WebKitGTK's own
+#                       sandbox and GTK's glycin image loader.
+#   RestrictNamespaces  Disables WebKitGTK's bubblewrap sandbox for
+#                       WebKitWebProcess — a net security loss.
+#   MemoryDenyWriteExecute
+#                       Breaks WebKit outright; JavaScriptCore's JIT needs
+#                       W^X-toggleable mappings.
+#   PrivateUsers        Same namespace problem, and breaks keyring/DBus access.
+#   PrivateNetwork      The helper is a network client by design.
+#   PrivateDevices      Removes /dev/dri, breaking GPU rendering.
+
+[Install]
+WantedBy=graphical-session.target

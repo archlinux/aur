@@ -1,0 +1,8 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!omarchy-helper.patch
+!proton-authenticator-omarchy-helper.service
+!proton-authenticator-omarchy-helper.install
+!proton-authenticator-omarchy-helper.lua
