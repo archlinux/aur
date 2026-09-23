@@ -1,6 +1,6 @@
 pkgbase = aish
 	pkgdesc = Empower the Shell to think. Evolve Operations.
-	pkgver = 0.3.13
+	pkgver = 0.3.14
 	pkgrel = 1
 	url = https://github.com/AI-Shell-Team/aish
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = aish
 	options = !lto
 	options = !debug
 	options = !strip
-	source = aish::git+https://github.com/AI-Shell-Team/aish.git#tag=v0.3.13
-	sha256sums = 1950bd82b4aa36fc0f3f01782de46bd51ed6fb46e32343a0363c1359ddd5dd3b
+	source = aish::git+https://github.com/AI-Shell-Team/aish.git#tag=v0.3.14
+	sha256sums = 6c9fbf6e2bea102e8ccb272e359e35d753aecea3e1b258e210e02c5fef25ce6d
 
 pkgname = aish

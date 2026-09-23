@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=aish
-pkgver=0.3.13
+pkgver=0.3.14
 pkgrel=1
 pkgdesc='Empower the Shell to think. Evolve Operations. '
 arch=($CARCH)
@@ -28,7 +28,7 @@ options=('!lto' '!debug' '!strip')
 source=(
   "${pkgname}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('1950bd82b4aa36fc0f3f01782de46bd51ed6fb46e32343a0363c1359ddd5dd3b')
+sha256sums=('6c9fbf6e2bea102e8ccb272e359e35d753aecea3e1b258e210e02c5fef25ce6d')
 
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
