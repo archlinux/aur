@@ -64,7 +64,7 @@ prepare() {
   cmake -B build -S postsrsd -G Ninja \
     -DFETCHCONTENT_QUIET=OFF \
     -DFETCHCONTENT_UPDATES_DISCONNECTED=ON \
-    -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+    -DFETCHCONTENT_FULLY_DISCONNECTED=OFF \
     -DCPACK_BINARY_STGZ=OFF \
     -DCPACK_BINARY_TGZ=OFF \
     -DCPACK_BINARY_TZ=OFF \
@@ -77,6 +77,7 @@ prepare() {
     -DINSTALL_SYSTEMD_SERVICE=ON \
     -DINSTALL_SYSTEMD_SYSUSERS=OFF \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DCMAKE_INSTALL_SBINDIR=bin \
     -DPOSTSRSD_CHROOTDIR=/var/lib/postsrsd \
     -DPOSTSRSD_DATADIR=/var/lib/postsrsd \
     -DPOSTSRSD_CONFIGDIR=/etc/postsrsd \
@@ -89,7 +90,7 @@ prepare() {
     -DUSE_DOMAINS_FILE=OFF \
     -DUSE_DOMAINS_FILE_WATCH=OFF \
     -DCMAKE_VERBOSE_MAKEFILE=ON \
-    -Wno-dev
+    -Wno-author -Wno-deprecated
 }
 
 pkgver() {
@@ -119,8 +120,6 @@ package() {
   cd "${srcdir}"
   # make DESTDIR="${pkgdir}/" -C build install
   DESTDIR="${pkgdir}/" cmake --install build
-
-  mv -v "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
 
   cd "${srcdir}/build"
   install -Dvm644 "postsrsd.conf" "${pkgdir}/etc/postsrsd/postsrsd.conf"
