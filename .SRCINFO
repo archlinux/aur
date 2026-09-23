@@ -1,16 +1,16 @@
 pkgbase = leetgo-bin
 	pkgdesc = leetgo is a command line tool for leetcode.com. It can help you to login, submit, test, and view your submissions.
-	pkgver = 1.4.19
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/j178/leetgo
 	license = MIT
 	conflicts = leetgo
 	provides = leetgo
 	arch = aarch64
-	source_aarch64 = leetgo-bin_1.4.19_aarch64.tar.gz::https://github.com/j178/leetgo/releases/download/v1.4.19/leetgo_linux_arm64.tar.gz
-	sha256sums_aarch64 = da5a65b3da6dacb3c52bbdcd1a44fc5b1397a2b397213353bcb3abcbe1ea5478
+	source_aarch64 = leetgo-bin_1.5.0_aarch64.tar.gz::https://github.com/j178/leetgo/releases/download/v1.5.0/leetgo_linux_arm64.tar.gz
+	sha256sums_aarch64 = c5fdd41f20a22bd5c10103520ca3e8f3b2e250d46dace5d0357457ab31225395
 	arch = x86_64
-	source_x86_64 = leetgo-bin_1.4.19_x86_64.tar.gz::https://github.com/j178/leetgo/releases/download/v1.4.19/leetgo_linux_x86_64.tar.gz
-	sha256sums_x86_64 = ce9e4581949eb2c2208f81dd6acc3aa76bb999c770faa113e5d7f35ab844c2d4
+	source_x86_64 = leetgo-bin_1.5.0_x86_64.tar.gz::https://github.com/j178/leetgo/releases/download/v1.5.0/leetgo_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 03faf2e85006ca6698bfd6e36e972f6c464493f3218da18f046c8545bb444edd
 	
 pkgname = leetgo-bin
