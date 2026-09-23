@@ -31,19 +31,22 @@ source=(
   'libsanitizer.patch' # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=92154
   '78_all-libsanitizer-Fix-build-with-glibc-2.42.patch'
   '79_all-sanitizer_common-Remove-reference-to-obsolete-termio.patch'
+  '0000-kernel-7.1-remove-linux-scc.patch'
 )
 md5sums=('79cb8a65d44dfc8a2402b46395535c9a'
          '11436d6b205e516635b666090b94ab32'
          '24a71c582be43ab474368ceddd9b7fe1'
          'd9382b276c6a21a8435d0e7e42fab5d4'
          'b85621bb4a415e603eb9911a570143fb'
-         '8bcb00f42f2802e0db441812c0b6fa2b')
+         '8bcb00f42f2802e0db441812c0b6fa2b'
+         '63cea3f3613b837d327a1ddfcda38e1c')
 sha256sums=('b81946e7f01f90528a1f7352ab08cc602b9ccc05d4e44da4bd501c5a189ee661'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
             '2329b4f8b015898d0b78c274d878028d529e00acf59743a33dcd299d2e11bee8'
             '301912f0c272771eb0cc49436e5c9957e5012e50fbb006794b9d535294d39852'
             '94f3a21d25796d102d8e17cb49bdb9fb7b3a67cd2faf4579cd2a572cf12e2346'
-            '1c13b65e7219e0a41319d1bb4af8d612f21ad384ce4f527364931f481faf5229')
+            '1c13b65e7219e0a41319d1bb4af8d612f21ad384ce4f527364931f481faf5229'
+            '7c3bdc5f194ce01a1fd8766e8be2e2ab550a3d2e1ed4ab067525f73971b3c66a')
 
 if ! :; then
 _svnrev=266882
@@ -52,10 +55,10 @@ _svnurl=svn://gcc.gnu.org/svn/gcc/branches/gcc-${_majorver}-branch
 snapshot() {
   svn export -r"${_svnrev}" "${_svnurl}" "gcc-r${_svnrev}"
 
-  local datestamp basever _pkgver
-  basever="$(< gcc-r${_svnrev}/gcc/BASE-VER)"
-  datestamp="$(< gcc-r${_svnrev}/gcc/DATESTAMP)"
-  _pkgver="${basever}-${datestamp}"
+  local _datestamp _basever _pkgver
+  _basever="$(< gcc-r${_svnrev}/gcc/BASE-VER)"
+  _datestamp="$(< gcc-r${_svnrev}/gcc/DATESTAMP)"
+  _pkgver="${_basever}-${_datestamp}"
 
   mv "gcc-r${_svnrev}" "gcc-${_pkgver}"
   tar -cf - "gcc-${_pkgver}" | xz > "gcc-${_pkgver}.tar.xz"
@@ -79,6 +82,7 @@ _fn_setlibdir() {
 }
 
 prepare() {
+  local -
   set -u
   cd "${_basedir}"
 
@@ -107,14 +111,15 @@ prepare() {
       ;;
     esac
   done
+  #cd ..; cp -pr "${_basedir}" 'a'; ln -sr "${_basedir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
-
-  set +u
 }
 
 build() {
+  local -
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -178,10 +183,10 @@ build() {
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
-  set +u
 }
 
 package_gcc7-libs() {
+  local -
   set -u
   pkgdesc="Runtime libraries shipped by GCC (${_majorver}.x.x)"
   depends=('glibc>=2.27')
@@ -215,10 +220,10 @@ package_gcc7-libs() {
   # Install Runtime Library Exception
   install -Dpm644 '../COPYING.RUNTIME' \
     "${pkgdir}/usr/share/licenses/${pkgbase}-libs/RUNTIME.LIBRARY.EXCEPTION"
-  set +u
 }
 
 package_gcc7() {
+  local -
   set -u
   pkgdesc="The GNU Compiler Collection - C and C++ frontends (${_majorver}.x.x)"
   depends=("${pkgbase}-libs=${pkgver}-${pkgrel}" 'binutils>=2.28' 'libmpc')
@@ -275,10 +280,10 @@ package_gcc7() {
 
   # Remove conflicting files
   rm -rf "${pkgdir}/usr/share/locale"
-  set +u
 }
 
 package_gcc7-fortran() {
+  local -
   set -u
   pkgdesc="Fortran front-end for GCC (${_majorver}.x.x)"
   depends=("${pkgbase}=${pkgver}-${pkgrel}")
@@ -299,6 +304,5 @@ package_gcc7-fortran() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
   ln -s "/usr/share/licenses/${pkgbase}-libs/RUNTIME.LIBRARY.EXCEPTION" \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
-  set +u
 }
 set +u
