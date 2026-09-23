@@ -1,7 +1,7 @@
 # Maintainer: BarbUk <julien.virey@gmail.com>
 
 pkgname=rackpeek
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='CLI tool to discover, manage, and document your IT infrastructure and home lab.'
 arch=(x86_64 aarch64)
@@ -15,7 +15,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/${url##*/}-$pkgver.tar.gz"
 )
 sha256sums=('14cd89ed266911aff4d52d76bb976a4cb3ad602cbbc939785a72fd3e45cd4c01'
-            '28324c4768aec7ee7083b30fccb76ba80dfb2854d53576f0bad27e9af9deb885')
+            '95bb500f7e1e5c763ba30f6370fe2163937ea90737ef806d1673c9b05654f3e5')
 install=$pkgname.install
 
 case ${CARCH} in
