@@ -29,6 +29,7 @@ pkgbase = gcc9
 	source = fs64270.patch
 	source = 78_all-libsanitizer-Fix-build-with-glibc-2.42.patch
 	source = 79_all-sanitizer_common-Remove-reference-to-obsolete-termio.patch
+	source = 0000-kernel-7.1-remove-linux-scc.patch
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
 	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
@@ -41,6 +42,7 @@ pkgbase = gcc9
 	sha512sums = 38a0fedeac3eebe4a6a957792ba520225cf42663c96a171cd168fdb6c91ffa9a56b80351f8238c5d03b78d3ae2a6539a54481fe4848b4a395e2c87f2ff7adc08
 	sha512sums = 6f730351be047b81dfbb9aef5132c39c4726939afc8ce3459d3d2bf36879282f7fd969c9332b6969f8efad0bc197ac6ecfcd67d37e212399aa61d2a6a1c0556f
 	sha512sums = 166fdc8bdf02da112e4d5a9410c5fd7f5d17d96229365a7e65de48a2c0b801a6e9e870ff7738bf560e3dcc88824a1b0ac830823b979ff33591e0e55dcbd1dcc2
+	sha512sums = 7e81fbf6cc9ce4320dea0e2b57e1e103e7203b66cfa65152835ff9077a8d8b535b3cf5eb79dadd44c8e44d3ac8428ff259fca3c737d44c7b53e2b4cb7ec3ea4a
 
 pkgname = gcc9
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (9.x.x)

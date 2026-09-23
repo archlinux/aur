@@ -32,6 +32,7 @@ source=(
   'fs64270.patch'
   '78_all-libsanitizer-Fix-build-with-glibc-2.42.patch'
   '79_all-sanitizer_common-Remove-reference-to-obsolete-termio.patch'
+  '0000-kernel-7.1-remove-linux-scc.patch'
 )
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
@@ -44,7 +45,8 @@ sha512sums=('cdd144ce4f747e051480410afc8506c90a57cb45da89071ddae377b1453bca30144
             'a0589368eb84611e2fd7397c619b7f13700bfac8018a45c35bd1c0c3d59a2782609cb9d8d090696586ea721c6d93dca6f7f6c689ac729341ee62e035b1d5af14'
             '38a0fedeac3eebe4a6a957792ba520225cf42663c96a171cd168fdb6c91ffa9a56b80351f8238c5d03b78d3ae2a6539a54481fe4848b4a395e2c87f2ff7adc08'
             '6f730351be047b81dfbb9aef5132c39c4726939afc8ce3459d3d2bf36879282f7fd969c9332b6969f8efad0bc197ac6ecfcd67d37e212399aa61d2a6a1c0556f'
-            '166fdc8bdf02da112e4d5a9410c5fd7f5d17d96229365a7e65de48a2c0b801a6e9e870ff7738bf560e3dcc88824a1b0ac830823b979ff33591e0e55dcbd1dcc2')
+            '166fdc8bdf02da112e4d5a9410c5fd7f5d17d96229365a7e65de48a2c0b801a6e9e870ff7738bf560e3dcc88824a1b0ac830823b979ff33591e0e55dcbd1dcc2'
+            '7e81fbf6cc9ce4320dea0e2b57e1e103e7203b66cfa65152835ff9077a8d8b535b3cf5eb79dadd44c8e44d3ac8428ff259fca3c737d44c7b53e2b4cb7ec3ea4a')
 
 if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
@@ -57,6 +59,7 @@ _fn_setlibdir() {
 }
 
 prepare() {
+  local -
   set -u
   cd "${_basedir}"
 
@@ -88,11 +91,10 @@ prepare() {
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
-
-  set +u
 }
 
 build() {
+  local -
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -154,10 +156,10 @@ build() {
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
-  set +u
 }
 
 check_disabled() {
+  local -
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -167,10 +169,10 @@ check_disabled() {
   # do not abort on error as some are "expected"
   make -k check || true
   ../contrib/test_summary
-  set +u
 }
 
 package_gcc9-libs() {
+  local -
   set -u
   pkgdesc="Runtime libraries shipped by GCC (${_majorver}.x.x)"
   depends=('glibc>=2.27')
@@ -206,10 +208,10 @@ package_gcc9-libs() {
 
   # remove conflicting files
   rm -rf "${pkgdir}/usr/share/locale"
-  set +u
 }
 
 package_gcc9() {
+  local -
   set -u
   pkgdesc="The GNU Compiler Collection - C and C++ frontends (${_majorver}.x.x)"
   depends=("${pkgbase}-libs=${pkgver}-${pkgrel}" 'binutils>=2.28' 'libmpc')
@@ -265,10 +267,10 @@ package_gcc9() {
 
   # Remove conflicting files
   rm -rf "${pkgdir}/usr/share/locale"
-  set +u
 }
 
 package_gcc9-fortran() {
+  local -
   set -u
   pkgdesc="Fortran front-end for GCC (${_majorver}.x.x)"
   depends=("${pkgbase}=${pkgver}-${pkgrel}")
@@ -287,6 +289,5 @@ package_gcc9-fortran() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
   ln -s "/usr/share/licenses/${pkgbase}-libs/RUNTIME.LIBRARY.EXCEPTION" \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
-  set +u
 }
 set +u
