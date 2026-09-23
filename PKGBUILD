@@ -1,5 +1,5 @@
 pkgname=bobby
-pkgver=51.0.0
+pkgver=51.0.1
 pkgrel=1
 pkgdesc="Browse SQLite database files"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'gtk4' 'libadwaita' 'sqlite')
 makedepends=('cargo' 'meson' 'ninja')
 source=("https://github.com/hbons/Bobby/releases/download/v${pkgver}/Bobby-${pkgver}.tar.xz")
-sha256sums=('dd90e6d3d08693bfeff4835a6fb6a8125f3f044914bed7da9f91550385c23774')
+sha256sums=('11bab7ef85f6b2f1a197050bfbac8511e60417d59d03b990a008185b64feae8c')
 
 prepare() {
   cd "Bobby-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = bobby
 	pkgdesc = Browse SQLite database files
-	pkgver = 51.0.0
+	pkgver = 51.0.1
 	pkgrel = 1
 	url = https://github.com/hbons/Bobby
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = bobby
 	depends = gtk4
 	depends = libadwaita
 	depends = sqlite
-	source = https://github.com/hbons/Bobby/releases/download/v51.0.0/Bobby-51.0.0.tar.xz
-	sha256sums = dd90e6d3d08693bfeff4835a6fb6a8125f3f044914bed7da9f91550385c23774
+	source = https://github.com/hbons/Bobby/releases/download/v51.0.1/Bobby-51.0.1.tar.xz
+	sha256sums = 11bab7ef85f6b2f1a197050bfbac8511e60417d59d03b990a008185b64feae8c
 
 pkgname = bobby
