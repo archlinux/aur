@@ -52,9 +52,9 @@ package() {
 		chmod 644 "${pkgjson}"
 	done
 
-	install -Dm644 "/usr/lib/node_modules/${_npmname}/docs/${_npmname}.desktop" "${pkgdir}/usr/share/applications/${_npmname}.desktop"
+	install -Dm644 "${pkgdir}/usr/lib/node_modules/${_npmname}/docs/${_npmname}.desktop" "${pkgdir}/usr/share/applications/${_npmname}.desktop"
 
-	install -Dm644 "/usr/lib/node_modules/${_npmname}/docs/${_npmname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_npmname}.svg"
+	install -Dm644 "${pkgdir}/usr/lib/node_modules/${_npmname}/docs/${_npmname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_npmname}.svg"
 
 	msg2 "Install README file"
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
