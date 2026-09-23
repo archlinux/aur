@@ -1,6 +1,6 @@
 pkgbase = gitty-desktop
 	pkgdesc = A lightweight, modern Git client built with Tauri
-	pkgver = 2026.9.8
+	pkgver = 2026.9.9
 	pkgrel = 1
 	url = https://git.cbsk-tech.de/Christoph/GitLite
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = gitty-desktop
 	depends = xdotool
 	options = !lto
 	options = !debug
-	source = gitty-desktop-2026.9.8.tar.gz::https://git.cbsk-tech.de/Christoph/GitLite/archive/2026.9.8.tar.gz
-	sha256sums = 11a976561b284a0bc7ad58da66799e94ac83337c3f73d8588253e06bbc0c0d04
+	source = gitty-desktop-2026.9.9.tar.gz::https://git.cbsk-tech.de/Christoph/GitLite/archive/2026.9.9.tar.gz
+	sha256sums = 0c56ba451ed1ad2423ffe75dee9be7678d41bb3120c42a38d115fc8ea05a5185
 
 pkgname = gitty-desktop
