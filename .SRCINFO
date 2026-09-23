@@ -1,6 +1,6 @@
 pkgbase = agent-console-bin
 	pkgdesc = Minimalist AI-native console for directing coding agents inside a repository
-	pkgver = 0.80.0
+	pkgver = 0.80.1
 	pkgrel = 1
 	url = https://github.com/cyl-castillo/agent-console
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = agent-console-bin
 	provides = agent-console
 	conflicts = agent-console
 	options = !strip
-	source = https://github.com/cyl-castillo/agent-console/releases/download/v0.80.0/Agent.Console_0.80.0_amd64.deb
-	source = LICENSE-0.80.0::https://raw.githubusercontent.com/cyl-castillo/agent-console/v0.80.0/LICENSE
-	sha256sums = 634c98b1de6466a8d544f10369f86141851f5de57dc296fac06f17660bcc84d6
+	source = https://github.com/cyl-castillo/agent-console/releases/download/v0.80.1/Agent.Console_0.80.1_amd64.deb
+	source = LICENSE-0.80.1::https://raw.githubusercontent.com/cyl-castillo/agent-console/v0.80.1/LICENSE
+	sha256sums = c6a8036b041b6c15e6d43199be21ac3b504932f969e372034f001cc81d014b99
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 
 pkgname = agent-console-bin
