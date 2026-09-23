@@ -1,0 +1,16 @@
+# Chromium's sandbox helper needs setuid root on kernels where unprivileged
+# user namespaces are disabled. Arch enables them by default, so the app runs
+# either way, but leaving the helper unprivileged there means Electron falls
+# back to the namespace sandbox rather than running without one.
+_sandbox=/opt/Jorvik/chrome-sandbox
+
+post_install() {
+    if [ "$(sysctl -n kernel.unprivileged_userns_clone 2>/dev/null || echo 1)" = "0" ]; then
+        chmod 4755 "$_sandbox"
+        echo ":: Unprivileged user namespaces are disabled; chrome-sandbox was given setuid root."
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
