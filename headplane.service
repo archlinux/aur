@@ -1,0 +1,31 @@
+[Unit]
+Description=Headplane - web UI for Headscale
+After=network-online.target headscale.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=headplane
+Group=headplane
+Environment=NODE_ENV=production
+Environment=HEADPLANE_CONFIG_PATH=/etc/headplane/config.yaml
+StateDirectory=headplane
+StateDirectoryMode=0750
+WorkingDirectory=/usr/share/headplane
+ExecStartPre=+/bin/sh -c 'umask 077; [ -s /etc/headplane/cookie_secret ] || { head -c 24 /dev/urandom | base64 > /etc/headplane/cookie_secret && chown headplane:headplane /etc/headplane/cookie_secret; }'
+ExecStart=/usr/bin/node /usr/share/headplane/build/server/index.js
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target

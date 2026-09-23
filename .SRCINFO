@@ -1,0 +1,27 @@
+pkgbase = headplane
+	pkgdesc = A feature-complete web UI for Headscale
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://headplane.net
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=2:1.26.6
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = patch
+	depends = nodejs-lts-krypton>=24.2
+	optdepends = headscale: the coordination server Headplane manages
+	backup = etc/headplane/config.yaml
+	source = headplane-0.7.1.tar.gz::https://github.com/tale/headplane/archive/refs/tags/v0.7.1.tar.gz
+	source = headplane.service
+	source = headplane.sh
+	source = headplane.sysusers
+	source = headplane.tmpfiles
+	sha256sums = d9c963f195e91929bd194d8c9672932fe07b55192c05c4415f3d6900c4d18374
+	sha256sums = 3e22a9a99e12bb2ba873d6ade226933aedcc00b40b2188505667a29a508fdc88
+	sha256sums = 9562f2eb22889deb5694bcba3ecfb0027e498400cbe322b65492b4433b20aaba
+	sha256sums = dec16ccceb64cda48b4effb35baad87db4960b634fe1bb985011db971289af1e
+	sha256sums = b1ffab047a92ffd1f68c7ffd8ff3b480fd1cc32e46a33770d0082c11b31f51aa
+
+pkgname = headplane
