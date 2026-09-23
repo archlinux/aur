@@ -1,17 +1,51 @@
-# Maintainer: K4YT3X <aur@k4yt3x.com>
+# Maintainer: Eduard Tolosa <tolosaeduard@gmail.com>
+# Contributor: K4YT3X <aur@k4yt3x.com>
+
 pkgname=nspawn
-pkgver=0.6
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A wrapper around machinectl for easy-deployment of nspawn.org containers"
-arch=('any')
-url="https://github.com/nspawn/nspawn"
-license=('GPL3')
-depends=('systemd')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nspawn/nspawn/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('9a066f660ad05f36b2b176d8bffac8c8ff20911a05d2fbeab7210f6dd4e5ccbc1a774a036e5992ae44b1966631ddd65acad7d4993ec6b7a253661aad9c57c206')
+pkgdesc='Docker-like management of systemd-nspawn machines: OCI images from a hub, shared layers, a bridge network, driven over D-Bus'
+arch=('x86_64' 'aarch64')
+url='https://github.com/nspawn/nspawn'
+license=('GPL-3.0-or-later')
+depends=('systemd>=255' 'glibc' 'gcc-libs' 'iproute2' 'nftables')
+makedepends=('cargo')
+options=('!lto')
+optdepends=('polkit: let users other than root drive nspawn'
+            'mkosi: build images with nspawn build'
+            'iptables-nft: keep the bridge reachable next to the forwarding rules of docker or ufw')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('cdd5a762dbf0c3748a627ce8d93487b3791e78afae2ae36d8d17ecccd6a55de9')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  cargo build --release --frozen
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  cargo test --release --frozen
+}
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -D -m 755 nspawn "${pkgdir}/usr/bin/nspawn"
-    install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/nspawn/LICENSE"
+  cd "${pkgname}-${pkgver}"
+
+  install -Dm755 target/release/nspawn "${pkgdir}/usr/bin/nspawn"
+  ./target/release/nspawn completions bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/nspawn"
+  ./target/release/nspawn completions zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_nspawn"
+  ./target/release/nspawn completions fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/nspawn.fish"
+  ./target/release/nspawn manpage | install -Dm644 /dev/stdin "${pkgdir}/usr/share/man/man1/nspawn.1"
+  install -Dm644 packaging/systemd/nspawn.service "${pkgdir}/usr/lib/systemd/system/nspawn.service"
+  install -Dm644 packaging/dbus/org.nspawn.service "${pkgdir}/usr/share/dbus-1/system-services/org.nspawn.service"
+  install -Dm644 packaging/dbus/org.nspawn.conf "${pkgdir}/usr/share/dbus-1/system.d/org.nspawn.conf"
+  install -Dm644 packaging/polkit/org.nspawn.policy "${pkgdir}/usr/share/polkit-1/actions/org.nspawn.policy"
+  install -Dm644 README.md docs/ARCHITECTURE.md docs/DBUS.md packaging/polkit/nspawn-wheel.rules -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm755 "${pkgdir}/etc/nspawn" "${pkgdir}/var/lib/nspawn"
 }
+
