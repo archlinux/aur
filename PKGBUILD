@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Citations and bibliography formatter"
 url="https://github.com/citeproc-py/citeproc-py"
 depends=('python' 'python-lxml')
-checkdepends=('python-nose')
+checkdepends=('python-pytest')
 makedepends=(
     'git'
     'python-setuptools'
@@ -54,7 +54,7 @@ build() {
 
 check() {
     cd "$pkgname"
-    nosetests
+    python -m pytest
 }
 
 package() {
