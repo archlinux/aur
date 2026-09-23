@@ -1,8 +1,8 @@
 pkgbase = bili-tools-bin
-	pkgdesc = B站直播开播工具 — 命令行一键开播/下播 (预编译二进制版)
+	pkgdesc = A multi-functional CLI tool for Bilibili (precompiled binary)
 	pkgver = 0.1.6
 	pkgrel = 1
-	url = https://github.com/QwerProg/bili-tools
+	url = https://github.com/qwerprog/bili-tools
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -11,9 +11,9 @@ pkgbase = bili-tools-bin
 	conflicts = bili-tools
 	conflicts = bili-tools-git
 	options = !debug
-	source_x86_64 = bt-0.1.6-x86_64-linux.tar.gz::https://github.com/QwerProg/bili-tools/releases/download/v0.1.6/bt-x86_64-linux.tar.gz
+	source_x86_64 = bt-0.1.6-x86_64-linux.tar.gz::https://github.com/qwerprog/bili-tools/releases/download/v0.1.6/bt-x86_64-linux.tar.gz
 	sha256sums_x86_64 = 70fa6fe02577b583b2397268ed3c0a95db54ecc660d6c41403f1b2571d981682
-	source_aarch64 = bt-0.1.6-arm64-linux.tar.gz::https://github.com/QwerProg/bili-tools/releases/download/v0.1.6/bt-arm64-linux.tar.gz
+	source_aarch64 = bt-0.1.6-arm64-linux.tar.gz::https://github.com/qwerprog/bili-tools/releases/download/v0.1.6/bt-arm64-linux.tar.gz
 	sha256sums_aarch64 = 7db1fb276168256fc3e5dacac7666207be505a530c9011267224bddc14abdf50
 
 pkgname = bili-tools-bin
