@@ -5,7 +5,7 @@
 
 pkgname=gitilante
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A focused Git GUI for diffs, hunks and history"
 arch=('x86_64')
 url="https://gitlab.com/rutilante/gitilante"
@@ -43,6 +43,8 @@ package() {
 
     install -Dm755 target/release/gitilante \
         "$pkgdir/usr/bin/gitilante"
+    # Short command name.
+    ln -s gitilante "$pkgdir/usr/bin/gila"
     install -Dm644 data/dev.gitilante.Gitilante.desktop \
         "$pkgdir/usr/share/applications/dev.gitilante.Gitilante.desktop"
     install -Dm644 data/dev.gitilante.Gitilante.svg \

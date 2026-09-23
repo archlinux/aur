@@ -1,7 +1,7 @@
 pkgbase = gitilante
 	pkgdesc = A focused Git GUI for diffs, hunks and history
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/rutilante/gitilante
 	arch = x86_64
 	license = GPL-3.0-or-later
