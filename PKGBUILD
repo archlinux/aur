@@ -1,18 +1,18 @@
 # Maintainer: Simon Repp <simon@fdpl.io>
 
-pkgname=faircamp-git
-pkgver=r529.369d9c6
-pkgrel=1
-pkgdesc='A static site generator for audio producers'
-license=('AGPL3')
 arch=('aarch64' 'x86_64')
+conflicts=('faircamp' 'faircamp-bin' 'faircamp-cli')
 depends=('ffmpeg' 'opus')
+license=('AGPL3')
 makedepends=('cargo' 'cmake' 'git')
-conflicts=('faircamp')
-provides=('faircamp')
-options=('!lto')
-source=('faircamp-git::git+https://codeberg.org/simonrepp/faircamp.git')
 md5sums=('SKIP')
+options=('!lto')
+pkgdesc='A static site generator for audio producers'
+pkgname=faircamp-git
+pkgrel=1
+pkgver=r529.369d9c6
+provides=('faircamp')
+source=('faircamp-git::git+https://codeberg.org/simonrepp/faircamp.git')
 url='https://faircamp.org'
 
 build() {
