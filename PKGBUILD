@@ -1,6 +1,6 @@
 pkgname=mingw-w64-netcdf
 pkgver=4.10.1
-pkgrel=4
+pkgrel=1
 pkgdesc="network Common Data Form interface for array-oriented data access and corresponding library (mingw-w64)"
 arch=('any')
 url="https://www.unidata.ucar.edu/software/netcdf/"
