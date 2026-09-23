@@ -2,7 +2,7 @@
 
 pkgname=archbeg
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Software to use AUR (Arch User Repository) outside AUR."
 arch=('x86_64')
 url="https://codeberg.org/caskstrength/archbeg"
@@ -16,12 +16,12 @@ sha512sums=('06eac12905d0e7d6de533d0714420fc59c339ab0cbe574dfb33798deca777228e49
 
 build() {
   cd "$pkgname"
-  gcc -Wall -Wextra -std=c23 -pedantic src/*.c -o archbeg -lcurl -lundr -larchive
+  gcc -Wall -Wextra -std=c23 -pedantic -DGIT_TIMEOUT=180 src/*.c -o archbeg -lcurl -lundr -larchive
 }
 
 package() {
   cd "$pkgname"
 
-  install -Dm755 archbeg       "${pkgdir}/usr/bin/archbeg"
-  install -Dm644 LICENSE       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 archbeg "${pkgdir}/usr/bin/archbeg"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

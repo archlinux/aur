@@ -1,7 +1,7 @@
 pkgbase = archbeg
 	pkgdesc = Software to use AUR (Arch User Repository) outside AUR.
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/caskstrength/archbeg
 	arch = x86_64
 	license = MIT
