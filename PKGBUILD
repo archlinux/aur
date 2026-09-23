@@ -21,15 +21,22 @@ makedepends=(
 license=('BSD-2-Clause-Views')
 arch=('any')
 source=("$pkgname::git+${url}.git#tag=$_pkgver")
+
 declare -A _submods
 _submods['citeproc/data/schema']='csl-schema'
 source+=(csl-schema::git+https://github.com/citation-style-language/schema.git)
 _submods['citeproc/data/locales']='csl-locales'
 source+=(csl-locales::git+https://github.com/citation-style-language/locales.git)
 
+_testVer=5e2c0ed89b3d728376592ecac8eb21e39ced3f77 # from citeproc-test.py
+_testUrl=https://github.com/citation-style-language/test-suite
+_submods['tests/test-suite']='csl-tests'
+source+=("csl-tests::git+${_testUrl}.git#commit=${_testVer}")
+
 sha256sums=('5a5bc0b652c8a3f51e7078b022778be11bd5b78993629133d33d5dc28c69a1b6'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '5189c9de1064f12163117d6f63eb87b62a0f578890590db5d5d200f5f2da0a55')
 
 prepare() {
     cd "$pkgname"
@@ -41,6 +48,11 @@ prepare() {
         echo 'Check it against the submodule list in PKGBUILD'
         exit 1
     fi
+
+    sed -i '/tests\/test-suite/s/^/# /' .gitignore
+    git -c protocol.file.allow=always submodule add \
+        ../csl-tests tests/test-suite
+    git -C tests/test-suite checkout "$_testVer"
 
     git submodule init
     for _mod in "${_submods[@]}"; do
@@ -60,6 +72,7 @@ check() {
     python -m venv --system-site-packages test-env
     test-env/bin/python -m installer dist/*.whl
     test-env/bin/python -m pytest --disable-plugin-autoload
+    test-env/bin/python tests/citeproc-test.py
 }
 
 package() {

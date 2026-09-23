@@ -19,8 +19,10 @@ pkgbase = python-citeproc-py
 	source = python-citeproc-py::git+https://github.com/citeproc-py/citeproc-py.git#tag=adc70c3df99037fe8f49e8b40c7afd852b319bbb
 	source = csl-schema::git+https://github.com/citation-style-language/schema.git
 	source = csl-locales::git+https://github.com/citation-style-language/locales.git
+	source = csl-tests::git+https://github.com/citation-style-language/test-suite.git#commit=5e2c0ed89b3d728376592ecac8eb21e39ced3f77
 	sha256sums = 5a5bc0b652c8a3f51e7078b022778be11bd5b78993629133d33d5dc28c69a1b6
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 5189c9de1064f12163117d6f63eb87b62a0f578890590db5d5d200f5f2da0a55
 
 pkgname = python-citeproc-py
