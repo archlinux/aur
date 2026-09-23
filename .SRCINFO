@@ -1,0 +1,20 @@
+pkgbase = norupo
+	pkgdesc = Self-hosted local tunneling service (edge server + CLI agent), like ngrok
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Mahmoud-walid/Norupo-tunnel
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	optdepends = redis: shared routing table for multi-node edge deployments
+	provides = norupo
+	provides = norupo-server
+	conflicts = norupo-bin
+	conflicts = norupo-git
+	backup = etc/norupo/server.env
+	source = norupo-0.1.1.tar.gz::https://github.com/Mahmoud-walid/Norupo-tunnel/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 96c8773a3f14e087b1b1615c88c7727e5a42434d6dc615dd3ecf34aadf01ff8c
+
+pkgname = norupo
