@@ -48,3 +48,42 @@ EOF
   [ "$status" -eq 1 ]
   [[ "$output" == *"Unknown management cluster: staging"* ]]
 }
+
+@test "fzf selection execs capi-shell with the picked cluster" {
+  cat >"$XDG_CONFIG_HOME/capi-shell/config.yaml" <<'EOF'
+management_clusters:
+  prod:
+    kubeconfig: /tmp/prod-kubeconfig.yaml
+    context: prod-ctx
+EOF
+  stub kubectl <<'EOF'
+#!/usr/bin/env bash
+case "$*" in
+  *"get cluster -A -o yaml"*)
+    cat <<'YAML'
+apiVersion: v1
+items:
+  - metadata:
+      namespace: ns1
+      name: foo
+YAML
+    ;;
+  *) exit 1 ;;
+esac
+EOF
+  stub fzf <<'EOF'
+#!/usr/bin/env bash
+cat
+EOF
+  stub capi-shell <<'EOF'
+#!/usr/bin/env bash
+echo "capi-shell called with: $*"
+echo "KUBECONFIG=$KUBECONFIG"
+echo "KUBECONFIG_CONTEXT=$KUBECONFIG_CONTEXT"
+EOF
+  run "$MULTI_CAPI_SHELL"
+  [ "$status" -eq 0 ]
+  [[ "$output" == *"capi-shell called with: ns1 foo"* ]]
+  [[ "$output" == *"KUBECONFIG=/tmp/prod-kubeconfig.yaml"* ]]
+  [[ "$output" == *"KUBECONFIG_CONTEXT=prod-ctx"* ]]
+}

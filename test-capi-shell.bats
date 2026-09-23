@@ -333,3 +333,31 @@ EOF
   [ "$status" -eq 1 ]
   [ ! -f "$marker" ]
 }
+
+@test "renames the kubeconfig user via auth whoami only after pre-exec has run" {
+  plugin_dir="$BATS_TEST_TMPDIR/plugins"
+  mkdir -p "$plugin_dir"
+  marker="$BATS_TEST_TMPDIR/proxy-marker"
+  cat >"$plugin_dir/fake.sh" <<EOF
+fake_pre_exec() {
+  touch "$marker"
+}
+capi_shell_register_pre_exec fake_pre_exec
+EOF
+  stub kubectl <<EOF
+#!/usr/bin/env bash
+case "\$*" in
+  *"get secrets foo-kubeconfig -o jsonpath={.data.value}"*)
+    printf '%s' "\$(printf 'apiVersion: v1\nclusters: []\ncontexts:\n  - name: old\n    context:\n      cluster: old\n      user: old\nusers:\n  - name: old\ncurrent-context: old\nkind: Config\n' | base64 -w0)"
+    ;;
+  *"auth whoami"*)
+    [[ -f "$marker" ]] || exit 1
+    echo "renamed-user"
+    ;;
+  *) exit 1 ;;
+esac
+EOF
+  _CAPI_SHELL_PLUGIN_DIR="$plugin_dir" run "$CAPI_SHELL" ns foo bash -c 'cat "$KUBECONFIG"'
+  [ "$status" -eq 0 ]
+  [[ "$output" == *"renamed-user"* ]]
+}

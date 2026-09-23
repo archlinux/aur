@@ -124,13 +124,13 @@ fi
 _friendly_name_expr=""
 [[ -f "$CAPI_SHELL_CONFIG_PATH" ]] && _friendly_name_expr="$(yq -r '.custom_fields.friendly_name // empty' "$CAPI_SHELL_CONFIG_PATH")"
 
+_renamed=false
 if kubectl -n "$namespace" get secrets "${name}-kubeconfig" -o jsonpath='{.data.value}' 2>/dev/null | base64 -d >"$NEW_KUBECONFIG"; then
   hasKubeconfig=true
   envs+=(KUBECONFIG="$NEW_KUBECONFIG")
   if [[ -v CAPI_SHELL_KUBECONFIG_FILTER ]]; then
     yq -i -Y "$CAPI_SHELL_KUBECONFIG_FILTER" "$NEW_KUBECONFIG"
   fi
-  _renamed=false
   if [[ -n "$_friendly_name_expr" ]]; then
     if _friendly="$(kubectl -n "$namespace" get cluster "$name" -o yaml 2>/dev/null | yq -er "(${_friendly_name_expr}) // empty" 2>/dev/null)" && [[ -n "$_friendly" ]]; then
       yq -i -Y --arg name "$_friendly" '
@@ -140,22 +140,6 @@ if kubectl -n "$namespace" get secrets "${name}-kubeconfig" -o jsonpath='{.data.
       ' "$NEW_KUBECONFIG"
       _renamed=true
     fi
-  fi
-  if _whoami="$(command kubectl --kubeconfig "$NEW_KUBECONFIG" auth whoami -o jsonpath='{.status.userInfo.username}' 2>/dev/null)" && [[ -n "$_whoami" ]]; then
-    yq -i -Y --arg user "$_whoami" '
-      (.contexts[0].context.user) as $oldUser |
-      (.users[] | select(.name == $oldUser) | .name) = $user |
-      (.contexts[0].context.user) = $user
-    ' "$NEW_KUBECONFIG"
-    _renamed=true
-  fi
-  if [[ "$_renamed" == true ]]; then
-    yq -i -Y '
-      (.contexts[0].context.user) as $user |
-      (.contexts[0].context.cluster) as $cluster |
-      (.contexts[0].name) = "\($user)|\($cluster)" |
-      (."current-context") = "\($user)|\($cluster)"
-    ' "$NEW_KUBECONFIG"
   fi
 else
   hasKubeconfig=false
@@ -196,9 +180,28 @@ for _pre_exec_fn in "${_CAPI_SHELL_PRE_EXEC_FNS[@]}"; do
   _CAPI_SHELL_PRE_EXEC_STATE["$_pre_exec_fn"]="$("$_pre_exec_fn" "$namespace" "$name" || true)"
 done
 
+if [[ "$hasKubeconfig" == true ]]; then
+  if _whoami="$(command kubectl --kubeconfig "$NEW_KUBECONFIG" auth whoami -o jsonpath='{.status.userInfo.username}' 2>/dev/null)" && [[ -n "$_whoami" ]]; then
+    yq -i -Y --arg user "$_whoami" '
+      (.contexts[0].context.user) as $oldUser |
+      (.users[] | select(.name == $oldUser) | .name) = $user |
+      (.contexts[0].context.user) = $user
+    ' "$NEW_KUBECONFIG"
+    _renamed=true
+  fi
+  if [[ "$_renamed" == true ]]; then
+    yq -i -Y '
+      (.contexts[0].context.user) as $user |
+      (.contexts[0].context.cluster) as $cluster |
+      (.contexts[0].name) = "\($user)|\($cluster)" |
+      (."current-context") = "\($user)|\($cluster)"
+    ' "$NEW_KUBECONFIG"
+  fi
+fi
+
 env -u KUBECONFIG -u KUBECONFIG_CONTEXT "${envs[@]}" "${@:-${SHELL:-/usr/bin/env bash}}"
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+if ! (return 0 2>/dev/null); then
   main "$@"
 fi

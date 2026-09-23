@@ -1,4 +1,19 @@
 # shellcheck shell=bash
+api_endpoint_proxy_tcp_ready() {
+  local host="$1" port="$2"
+  timeout 1 bash -c "exec 3<>/dev/tcp/${host}/${port}" 2>/dev/null
+}
+
+api_endpoint_proxy_wait_ready() {
+  local host="$1" port="$2"
+  local deadline=$((SECONDS + ${API_ENDPOINT_PROXY_READY_TIMEOUT:-10}))
+  while ((SECONDS < deadline)); do
+    api_endpoint_proxy_tcp_ready "$host" "$port" && return 0
+    sleep "${API_ENDPOINT_PROXY_READY_POLL_INTERVAL:-0.2}"
+  done
+  return 1
+}
+
 api_endpoint_proxy_pre_exec() {
   local namespace="$1" name="$2"
   local base
@@ -45,9 +60,11 @@ api_endpoint_proxy_pre_exec() {
   local unit="capi-shell-api-endpoint-proxy-${tool}-${host}:${port}"
   local systemd_err
   if systemd_err="$(systemd-run --user --unit="$unit" --slice="$slice" --collect --quiet -- "${argv[@]}" 2>&1 >/dev/null)"; then
+    api_endpoint_proxy_wait_ready "$host" "$port" || true
     return 0
   fi
   if systemctl --user is-active --quiet "$unit"; then
+    api_endpoint_proxy_wait_ready "$host" "$port" || true
     return 0
   fi
   echo "Failed to start proxy via systemd-run: $systemd_err" >&2

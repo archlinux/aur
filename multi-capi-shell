@@ -120,6 +120,6 @@ if [[ "${#_mgmt_kubeconfigs[@]}" -gt 0 ]]; then
 fi
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+if ! (return 0 2>/dev/null); then
   main "$@"
 fi

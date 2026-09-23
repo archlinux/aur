@@ -6,6 +6,8 @@ setup() {
   DISPATCHER="$BATS_TEST_DIRNAME/capi-shell-plugin-api-endpoint-proxy.sh"
   PROVIDER_CAPO="$BATS_TEST_DIRNAME/capi-shell-plugin-api-endpoint-proxy-provider-capo.sh"
   TOOL_SSHUTTLE="$BATS_TEST_DIRNAME/capi-shell-plugin-api-endpoint-proxy-tool-sshuttle.sh"
+  # Skip the real readiness wait in dispatcher-level tests; it's covered in isolation below.
+  export API_ENDPOINT_PROXY_READY_TIMEOUT=0
 }
 
 teardown() {
@@ -233,4 +235,40 @@ EOF
   [ "$status" -eq 0 ]
   [[ "$output" == *"Multiple proxy tools installed"* ]]
   [[ "$output" == *"state=[]"* ]]
+}
+
+@test "wait_ready returns immediately once the endpoint is reachable" {
+  run bash -c '
+    source "'"$DISPATCHER"'"
+    api_endpoint_proxy_tcp_ready() { return 0; }
+    API_ENDPOINT_PROXY_READY_TIMEOUT=5 api_endpoint_proxy_wait_ready 10.1.2.3 6443
+  '
+  [ "$status" -eq 0 ]
+}
+
+@test "wait_ready retries until the endpoint becomes reachable" {
+  attempts_file="$BATS_TEST_TMPDIR/attempts"
+  echo 0 >"$attempts_file"
+  run bash -c '
+    source "'"$DISPATCHER"'"
+    api_endpoint_proxy_tcp_ready() {
+      local n
+      n="$(<"'"$attempts_file"'")"
+      n=$((n + 1))
+      echo "$n" >"'"$attempts_file"'"
+      [[ "$n" -ge 3 ]]
+    }
+    API_ENDPOINT_PROXY_READY_TIMEOUT=5 API_ENDPOINT_PROXY_READY_POLL_INTERVAL=0.01 api_endpoint_proxy_wait_ready 10.1.2.3 6443
+  '
+  [ "$status" -eq 0 ]
+  [ "$(<"$attempts_file")" -eq 3 ]
+}
+
+@test "wait_ready gives up once the timeout elapses" {
+  run bash -c '
+    source "'"$DISPATCHER"'"
+    api_endpoint_proxy_tcp_ready() { return 1; }
+    API_ENDPOINT_PROXY_READY_TIMEOUT=0 api_endpoint_proxy_wait_ready 10.1.2.3 6443
+  '
+  [ "$status" -eq 1 ]
 }
