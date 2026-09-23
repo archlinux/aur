@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=p2p.kiwi
 pkgname="${_appname//./-}-bin"
-pkgver=3.3.0
+pkgver=3.4.0
 _electronversion=44
 pkgrel=1
 pkgdesc="A simple and easy-to-use screen sharing tool."
@@ -27,9 +27,9 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_amd64.deb")
 sha256sums=('24423e39863b72a85358f85dae872b061b540716a06ee120aab322cb657eec2f'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('1f2229f2ed3f5e2a290e403976448dd872010ab6ad98e912bf81fe9108eb15a4')
-sha256sums_x86_64=('29b7e721c3f7f629e6d1d60acb515034a560ed8a8a61d35df770d46f77cf9ce9')
+            '5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
+sha256sums_aarch64=('b4b1e2469248376d5a8ab41d28a4048bcf801228cb52b4b148f5e66b846925a6')
+sha256sums_x86_64=('7705821b259d74c3d6ef54fcaf45f7e41c3b53409575c565b729b8e1cb414162')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
