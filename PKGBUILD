@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="python-pipelex-tools"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Pipelex Tools as a Python library — MTHDS lint & format, importable as 'pipelex_tools'"
 
@@ -17,7 +17,7 @@ depends=('glibc' 'libgcc')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6977e8c860a23e4e11e53a7c6f3b2b7f98b819b7551c1b5cbf089280568f59bc')
+sha256sums=('31459784662cf49c4d29330bfdb3a738fdf1d7d56cad5820a52ed559999baada')
 
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
