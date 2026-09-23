@@ -1,7 +1,7 @@
 # Maintainer: npil
 
 pkgname=ddccontrol-db
-pkgver=20260915
+pkgver=20260922
 pkgrel=1
 pkgdesc="Monitor database for DDCControl"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-2.0-only')
 depends=()
 source=("https://github.com/ddccontrol/ddccontrol-db/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
         "check-db-report.sh")
-sha256sums=('7d8bbe4ebbb55a3e1defa7b6b9d161e59f79d1ac51659d09eece75640222fbe7'
+sha256sums=('d6b20f83772178608e6a775fecf8ee90c7246e42a18d5ce381fc29491e85af94'
             '14d855f1a28121ebe39991e19f1275249ab6ebe174b9384b3c3f5609aec504a5')
 
 build() {
