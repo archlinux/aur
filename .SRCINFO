@@ -12,7 +12,6 @@ pkgbase = ai-browser-git
 	makedepends = curl
 	makedepends = jq
 	depends = electron42
-	depends = python
 	provides = ai-browser=1.7.0
 	conflicts = ai-browser
 	source = ai-browser.git::git+https://github.com/Jun-Murakami/AI-Browser.git

@@ -14,7 +14,6 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
-    'python'
 )
 makedepends=(
     'bun'
