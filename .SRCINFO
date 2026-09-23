@@ -1,0 +1,21 @@
+pkgbase = yuanbao-bin
+	pkgdesc = Unofficial Linux version of yuanbao client.Tencent's all-round AI assistant.元宝客户端非官方Linux版,腾讯旗下全能AI助手。
+	pkgver = 2.83.10
+	pkgrel = 1
+	url = https://yuanbao.tencent.com
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron42
+	provides = yuanbao=2.83.10
+	conflicts = yuanbao
+	source = LICENSE.html::https://rule.tencent.com/rule/202403110001
+	source = yuanbao.sh
+	sha256sums = 906d172585f954560e014adbca98524b28e475c4ab69e5b8ead65e8560e8fbd8
+	sha256sums = 5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e
+	source_aarch64 = yuanbao-2.83.10-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/yuanbao2.83.10/com.tencent.yuanbao.otohime_2.83.10_arm64.deb
+	sha256sums_aarch64 = c6a5adeb2a4bbffa3e8ba0f4c5f6f311240fbd7610b42576f36ababf9df247d0
+	source_x86_64 = yuanbao-2.83.10-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/yuanbao2.83.10/com.tencent.yuanbao.otohime_2.83.10_amd64.deb
+	sha256sums_x86_64 = d3aa0f26cf54027a77116487c6dd8bea34656c449d9ab1b802cb20eec52ae477
+
+pkgname = yuanbao-bin
