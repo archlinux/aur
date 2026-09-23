@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-bin
 _pkgname=Qoder
-pkgver=0.3.4
+pkgver=0.4.1
 _electronversion=43
 pkgrel=1
 pkgdesc="Qoder new form, with programming agents as the core engine, from idea to implementation, easy to handle."
@@ -31,9 +31,9 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dbd48a706b431f791d1da417f636831cf7d08cccdc989be0fe67c066949d760b'
+sha256sums=('76ddb1b2c393c485c969c34c6e63dc407d0fd1dc599ed30bd594edd7f420545f'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            '5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
 pkgver() {
     cd "${srcdir}/app.asar.unpacked"
     grep '"version":' package.json | awk -F'"version": "' '{print $2}' | awk -F',' '{print $1}' | tr -d '"'
@@ -64,16 +64,16 @@ prepare() {
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked" || true
     rm -rf "${_app_dir}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
-    find "${_app_dir}/resources/" \
+    find "${srcdir}/" \
         \( -name "*win32*" -o -name "*darwin*" -o -name "*arm*" \) \
         -exec rm -rf {} +
+    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     ln -sf "/usr/lib/${pkgname%-bin}/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.17.3" \
         "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libvips-cpp.so.8.17.3"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
