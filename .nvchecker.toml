@@ -1,0 +1,5 @@
+[ctty-bin]
+source = "github"
+github = "zsuroy/ctty"
+use_latest_release = true
+prefix = "v"
