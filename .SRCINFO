@@ -1,0 +1,26 @@
+pkgbase = mimo-desktop
+	pkgdesc = Xiaomi MiMo desktop client with the built-in AI coding assistant (official Linux release)
+	pkgver = 26.909.91205
+	pkgrel = 1
+	url = https://mimo.xiaomimimo.com/desktop/
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	makedepends = libarchive
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = util-linux-libs
+	depends = xdg-utils
+	noextract = XiaomiMiMo-26.909.91205-x64.deb
+	options = !strip
+	options = !lto
+	source_x86_64 = XiaomiMiMo-26.909.91205-x64.deb::https://mimocode-cdn.xiaomimimo.com/mimocode/mimodesktop/XiaomiMiMo-26.909.91205-x64.deb
+	sha256sums_x86_64 = 00ad0c37f83dbe4118bf2b8f4c3fa9208b1b3af9519bf7b21bab053088058ff7
+
+pkgname = mimo-desktop
