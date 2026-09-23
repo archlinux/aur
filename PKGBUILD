@@ -1,5 +1,5 @@
 pkgname=fuoevolve
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='Open-source cross-platform music player based on FeelUOwn'
 arch=('x86_64')
@@ -29,7 +29,7 @@ makedepends=(
   'xorg-server-xvfb'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/feeluown/FuoEvolve/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3d46d41ad3a675461eeba17dcfd1dfcae7dde5ba3a295bcff0a41f02e5103f4d')
+sha256sums=('ccaafc6f1c1fc6eb7e1a81e57bd87cd37ed24303179ef66ca1e52f3d564c7c4e')
 
 build() {
   cd "FuoEvolve-${pkgver}"
@@ -39,7 +39,7 @@ build() {
   export FUOEVOLVE_PACKAGE_VERSION="${pkgver}"
   export FUOEVOLVE_DESKTOP_CHANNEL='stable'
   export FUOEVOLVE_DESKTOP_VERSION_LABEL="${pkgver}"
-  export FUOEVOLVE_COMMIT_SHA='f9b3cd158596ded76d0dfa230501b063157cf39f'
+  export FUOEVOLVE_COMMIT_SHA='23623f20871af9f7d556f80e69b0ef954ccb266c'
 
   chmod +x gradlew
 
