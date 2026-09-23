@@ -33,6 +33,7 @@ source=(
   'c99'
   '78_all-libsanitizer-Fix-build-with-glibc-2.42.patch'
   '79_all-sanitizer_common-Remove-reference-to-obsolete-termio.patch'
+  '0000-kernel-7.1-remove-linux-scc.patch'
 )
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
@@ -44,14 +45,16 @@ md5sums=('03473f26c87e05e789a32208f1fe4491'
          '3d333df77302ed89e06a4a8539943b7d'
          'da96f545b863e57c6ab2598c1ea9a740'
          '9be978cc7cb6388c6694f79703b73d29'
-         '17a0188095828d0ebc49bb4c5d6afd8a')
+         '17a0188095828d0ebc49bb4c5d6afd8a'
+         '8bc105c741a8c0b191bcb933e9325f5f')
 b2sums=('f4a61faad32aac9e9cb553c1a1a011df0a057f6e2cac92a13cc7e285d08191dd4a117f41a8faac2359c0e2a16f954c7fef354dda9df8c63bff1c5cefda82602c'
         'SKIP'
         '88a178dad5fe9c33be5ec5fe4ac9abc0e075a86cff9184f75cedb7c47de67ce3be273bd0db72286ba0382f4016e9d74855ead798ad7bccb015b853931731828e'
         '2c64090b879d6faea7f20095eff1b9bd6a09fe3b15b3890783d3715171678ab62d32c91af683b878746fb14441dbe09768474417840f96a561443415f76afb63'
         '3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1'
         'de7d446f88afe0a07e77717459c02a03fd66728788ba0473d687efb51904dfc63e525caeeff2cc79ce1e5187a3eda226936a2e50a2e1bf96bcb936534b2f9cc9'
-        '9baecc980110ca4fb6fd8c087f6c3865dbfe334b0ae647bb002569653eb7f16ce90d3bfe45706165306c4e860518a21e2645d7e71be006a3931ab39e98efd91e')
+        '9baecc980110ca4fb6fd8c087f6c3865dbfe334b0ae647bb002569653eb7f16ce90d3bfe45706165306c4e860518a21e2645d7e71be006a3931ab39e98efd91e'
+        'e9dc5a52eb0fc80570738d1f06ee9798300c8a26a186cb682e9359ce40a97cf49c0e4c309244ddbbace5dab1d488b1cba33a1c9656f11de57bfa3081fb292153')
 
 if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
@@ -64,6 +67,7 @@ _fn_setlibdir() {
 }
 
 prepare() {
+  local -
   set -u
   cd "${_basedir}"
 
@@ -95,11 +99,10 @@ prepare() {
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
-
-  set +u
 }
 
 build() {
+  local -
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -207,10 +210,10 @@ fi
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
-  set +u
 }
 
 check_disabled() {
+  local -
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -220,10 +223,10 @@ check_disabled() {
   # do not abort on error as some are "expected"
   make -O -k check || :
   ../contrib/test_summary
-  set +u
 }
 
 package_gcc11-libs() {
+  local -
   set -u
   pkgdesc="Runtime libraries shipped by GCC (${_majorver}.x.x)"
   depends=('glibc>=2.27')
@@ -261,10 +264,10 @@ package_gcc11-libs() {
 
   # remove conflicting files
   rm -rf "${pkgdir}/usr/share/locale"
-  set +u
 }
 
 package_gcc11() {
+  local -
   set -u
   pkgdesc="The GNU Compiler Collection - C and C++ frontends (${_majorver}.x.x)"
   depends=("${pkgbase}-libs=${pkgver}-${pkgrel}" 'binutils>=2.28' 'libmpc' 'zstd')
@@ -325,10 +328,10 @@ package_gcc11() {
 
   # Remove conflicting files
   rm -rf "${pkgdir}/usr/share/locale"
-  set +u
 }
 
 package_gcc11-fortran() {
+  local -
   set -u
   pkgdesc="Fortran front-end for GCC (${_majorver}.x.x)"
   depends=("${pkgbase}=${pkgver}-${pkgrel}")
@@ -348,6 +351,5 @@ package_gcc11-fortran() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
   ln -s "/usr/share/licenses/${pkgbase}-libs/RUNTIME.LIBRARY.EXCEPTION" \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
-  set +u
 }
 set +u
