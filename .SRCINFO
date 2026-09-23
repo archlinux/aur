@@ -1,16 +1,16 @@
 pkgbase = libva-v4l2_request-asahi
 	pkgdesc = VA-API implementation for V4L2 stateless video decoders (Asahi fork with Apple AVD fixes)
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sofus13/libva-v4l2_request
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = linux-api-headers
 	makedepends = meson
 	depends = glibc
 	depends = libva
 	depends = libdrm
-	depends = linux-api-headers
 	provides = libva-v4l2_request=1.3
 	conflicts = libva-v4l2_request
 	source = libva-v4l2_request::git+https://github.com/sofus13/libva-v4l2_request.git#tag=1.3
