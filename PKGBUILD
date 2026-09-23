@@ -1,8 +1,8 @@
-# Maintainer: Frestein <frestein@tuta.io>
+# Maintainer: Frestein <fresteinart@gmail.com>
 
 pkgname=tgs2png-git
 _pkgname=tgs2png
-pkgver=0.3.0.r14.20220124.25c15b7
+pkgver=0.3.0.r16.20260923.181f60d
 pkgrel=1
 pkgdesc="Convert Telegram's animated stickers in TGS format into series of PNG images."
 url="https://github.com/zevlg/tgs2png"
@@ -12,14 +12,8 @@ arch=(x86_64)
 license=(GPL3)
 provides=("tgs2png=${pkgver}")
 conflicts=(tgs2png)
-source=(
-    "git+https://github.com/zevlg/tgs2png"
-    "0001-cmake-version.patch"
-)
-sha256sums=(
-    SKIP
-    SKIP
-)
+source=("git+https://github.com/zevlg/tgs2png")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname" || exit
@@ -35,11 +29,6 @@ pkgver() {
     else
         printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
     fi
-}
-
-prepare() {
-    cd "$srcdir/$_pkgname" || exit
-    patch -N -p0 -i "$srcdir/0001-cmake-version.patch"
 }
 
 build() {
