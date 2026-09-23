@@ -46,7 +46,6 @@ checkdepends=(
   'python-tokenizers'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4997adf8a107e8476817160e695d1005ec4c0a569fc44e1f29dfbcb208d69494')
 b2sums=('9628a0826c8342521bef3a223a43a3481b7dcd9dcd569ba85989c33774e7246366c57c5322141938fd6196dab51694e391f91104f54a264f08741ba9f0bef117')
 
 build() {

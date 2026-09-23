@@ -27,7 +27,6 @@ pkgbase = python-laya
 	optdepends = python-onnxruntime-cpu: ONNX Runtime engine in `laya.onnx_agent` (the -cuda/-rocm variants work too)
 	optdepends = python-tilelang: TileLang GPU fast path in `laya.fast`
 	source = laya-0.3.10.tar.gz::https://github.com/NandhaKishorM/laya/archive/refs/tags/v0.3.10.tar.gz
-	sha256sums = 4997adf8a107e8476817160e695d1005ec4c0a569fc44e1f29dfbcb208d69494
 	b2sums = 9628a0826c8342521bef3a223a43a3481b7dcd9dcd569ba85989c33774e7246366c57c5322141938fd6196dab51694e391f91104f54a264f08741ba9f0bef117
 
 pkgname = python-laya
