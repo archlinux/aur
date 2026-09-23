@@ -3,7 +3,7 @@
 
 pkgname=nspawn
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-like management of systemd-nspawn machines: OCI images from a hub, shared layers, a bridge network, driven over D-Bus'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nspawn/nspawn'
