@@ -1,6 +1,6 @@
 pkgbase = polaris-gamestream-bin
 	pkgdesc = Linux-first game streaming host
-	pkgver = 1.4.11
+	pkgver = 1.4.12
 	pkgrel = 1
 	url = https://github.com/papi-ux/polaris
 	install = polaris-gamestream-bin.install
@@ -20,6 +20,7 @@ pkgbase = polaris-gamestream-bin
 	depends = libboost_thread.so=1.92.0-64
 	depends = libcap
 	depends = libdrm
+	depends = libei
 	depends = libevdev
 	depends = libmfx
 	depends = libnotify
@@ -45,8 +46,8 @@ pkgbase = polaris-gamestream-bin
 	depends = wlr-randr
 	depends = xorg-xdpyinfo
 	depends = xorg-xwayland
-	noextract = Polaris-arch-x86_64-1.4.11.pkg.tar.zst
-	source = Polaris-arch-x86_64-1.4.11.pkg.tar.zst::https://github.com/papi-ux/polaris/releases/download/v1.4.11/Polaris-arch-x86_64.pkg.tar.zst
-	sha256sums = 8873900d9fc0a945a87ab4fb66059f8854d2a45c6778876dca65cfb71bffc226
+	noextract = Polaris-arch-x86_64-1.4.12.pkg.tar.zst
+	source = Polaris-arch-x86_64-1.4.12.pkg.tar.zst::https://github.com/papi-ux/polaris/releases/download/v1.4.12/Polaris-arch-x86_64.pkg.tar.zst
+	sha256sums = f90f31513312a3756f0cba016db3291e6c1700a8f736b00630e19efed8335370
 
 pkgname = polaris-gamestream-bin
