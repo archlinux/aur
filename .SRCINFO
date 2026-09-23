@@ -1,7 +1,7 @@
 pkgbase = ccx2paraview
 	pkgdesc = CalculiX to Paraview converter (frd to vtk/vtu)
-	pkgver = 3.2.0
-	pkgrel = 2
+	pkgver = 3.2.1
+	pkgrel = 1
 	url = https://github.com/calculix/ccx2paraview
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -27,7 +27,7 @@ pkgbase = ccx2paraview
 	depends = postgresql-libs
 	depends = netcdf
 	depends = mariadb-libs
-	source = https://pypi.org/packages/source/c/ccx2paraview/ccx2paraview-3.2.0.tar.gz
-	sha512sums = 0b5d476c514dccf5f61603eb3a6d474470646b539201d33635c04d5a10c66294285edb456649a959461229e7b537ea4521f2189119141e5c321dae584f4ce982
+	source = ccx2paraview-3.2.1.tar.gz::https://github.com/calculix/ccx2paraview/archive/3.2.1.tar.gz
+	sha512sums = 46e16497ccb0bb22a22134d8422634f88d41ff5763ce8679a0008de5d50157d2a58f0b34e9a9fcc854b8f08280ad982f35117042fc127aed55639c9415eeb2df
 
 pkgname = ccx2paraview

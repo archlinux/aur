@@ -1,0 +1,5 @@
+[ccx2paraview]
+source = "github"
+github = "calculix/ccx2paraview"
+use_max_tag = "true"
+#prefix = "v"
