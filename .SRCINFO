@@ -1,0 +1,21 @@
+pkgbase = opencluely-bin
+	pkgdesc = Invisible AI interview copilot - stealth overlay that screen sharing cannot see
+	pkgver = 1.8.7
+	pkgrel = 1
+	url = https://opencluely.techycsr.dev
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = libpulse
+	depends = alsa-lib
+	optdepends = python-whisper: local speech recognition
+	optdepends = ffmpeg: audio conversion for transcription
+	options = !debug
+	source = opencluely_1.8.7_amd64.deb::https://github.com/TechyCSR/OpenCluely/releases/download/v1.8.7/opencluely_1.8.7_amd64.deb
+	sha256sums = 9b013c95a7f8a58aeb7fb1ba72a05ba89d0c520ec56c202ffb2a28d141e003ca
+
+pkgname = opencluely-bin
