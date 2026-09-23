@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=druk-bin
-pkgver=1.35.1
+pkgver=1.35.2
 pkgrel=1
 pkgdesc="A terminal code editor with a file tree, tabs, search, git integration, and syntax highlighting"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('druk')
 conflicts=('druk')
 source_x86_64=("druk-${pkgver}-linux-x86_64.tar.gz::https://github.com/letstri/druk/releases/download/v${pkgver}/druk-linux-x64.tar.gz")
 source_aarch64=("druk-${pkgver}-linux-aarch64.tar.gz::https://github.com/letstri/druk/releases/download/v${pkgver}/druk-linux-arm64.tar.gz")
-sha256sums_x86_64=('d96cb09cf55417edec1c31e0dd87f30673757dc7331482240e8d6bf99b414bd6')
-sha256sums_aarch64=('d9651bf5372b6dbb2a033b7290278c2695d6be1503f8891af06e7f06a52d0afc')
+sha256sums_x86_64=('d669c09bcdab43f4f15638c18cb6fbdb0b75cc4e4757ab0a13cb36cf79d0f250')
+sha256sums_aarch64=('a099d9f28a94e38623470bb14341fd2d5ee42f9b1f152d58c321030864db3a42')
 
 package() {
     install -Dm755 "${srcdir}/druk" "${pkgdir}/usr/bin/druk"
