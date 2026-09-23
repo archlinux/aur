@@ -31,7 +31,7 @@ options=(!lto)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/logi-camp/dicto/archive/refs/tags/v${pkgver}.tar.gz")
 # Checksum is injected by CI from the real tag tarball (not SKIP).
-b2sums=('b8deca373e8213288cf9503479f01da63ff087b4f4092ba68a423b21b61f583dcdea83757f4b3672295c3b7f55d3c8389d5ac78b2d224e277d91af235a8673da')
+b2sums=('790fe7ec813516833d10a59744ba6e48cb1ceb7ee80618bce9d9e923a1edd566d6be7052fa8a8f0385a2a3c6fb5be386c6596ee922967f3848443e68cc696579')
 
 build() {
   cd "$srcdir/dicto-${pkgver}"
