@@ -1,6 +1,6 @@
 pkgbase = gplay-apk-downloader-cli
 	pkgdesc = CLI tool to download APKs from Google Play Store with split APK merging and ADB install
-	pkgver = r288.6f189c10
+	pkgver = r291.587f34e5
 	pkgrel = 1
 	url = https://github.com/alltechdev/gplay-apk-downloader
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = gplay-apk-downloader-cli
 	optdepends = android-sdk-build-tools: sign merged APKs (apksigner) + parse APK split metadata (aapt)
 	optdepends = android-tools: install APKs to device via ADB
 	conflicts = gplay-apk-downloader-cli-git
-	source = gplay-apk-downloader-cli-r288.6f189c10.tar.gz::https://github.com/alltechdev/gplay-apk-downloader/archive/6f189c10.tar.gz
-	sha256sums = 4d21d18c511ddd63555f4189aa2b62d035bd21ee429640f398e5358c24ef4814
+	source = gplay-apk-downloader-cli-r291.587f34e5.tar.gz::https://github.com/alltechdev/gplay-apk-downloader/archive/587f34e5.tar.gz
+	sha256sums = acb367a252541813be2495976d5ce8162219b15459afc020db15c3691f304b07
 
 pkgname = gplay-apk-downloader-cli

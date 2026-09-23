@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=gplay-apk-downloader-cli
-pkgver=r288.6f189c10
+pkgver=r291.587f34e5
 pkgrel=1
 pkgdesc='CLI tool to download APKs from Google Play Store with split APK merging and ADB install'
 arch=('any')
@@ -24,7 +24,7 @@ conflicts=('gplay-apk-downloader-cli-git')
 # history a git+ source would force. latestver() reproduces the same r<count>.<short-sha>
 # scheme via the GitHub API, so autoupdate works exactly as the -git variant did.
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver#*.}.tar.gz")
-sha256sums=('4d21d18c511ddd63555f4189aa2b62d035bd21ee429640f398e5358c24ef4814')
+sha256sums=('acb367a252541813be2495976d5ce8162219b15459afc020db15c3691f304b07')
 
 latestver() {
   local repo=alltechdev/gplay-apk-downloader sha count
