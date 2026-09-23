@@ -1,15 +1,25 @@
 pkgbase = nspawn-git
-	pkgdesc = A wrapper around machinectl for easy-deployment of nspawn.org containers
-	pkgver = r2.8907cb8
+	pkgdesc = Docker-like management of systemd-nspawn machines: OCI images from a hub, shared layers, a bridge network, driven over D-Bus
+	pkgver = 1.0.0.r0.gbdbbf36
 	pkgrel = 1
 	url = https://github.com/nspawn/nspawn
-	arch = any
-	license = GPL3
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
 	makedepends = git
-	depends = systemd
+	makedepends = cargo
+	depends = systemd>=255
+	depends = glibc
+	depends = gcc-libs
+	depends = iproute2
+	depends = nftables
+	optdepends = polkit: let users other than root drive nspawn
+	optdepends = mkosi: build images with nspawn build
+	optdepends = iptables-nft: keep the bridge reachable next to the forwarding rules of docker or ufw
 	provides = nspawn
 	conflicts = nspawn
-	source = git+https://github.com/nspawn/nspawn.git#branch=master
-	md5sums = SKIP
+	options = !lto
+	source = nspawn::git+https://github.com/nspawn/nspawn.git
+	sha256sums = SKIP
 
 pkgname = nspawn-git
