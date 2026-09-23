@@ -11,7 +11,7 @@ _pkgname=kappastream
 _repo="https://github.com/kappy7777/kappastream"
 
 pkgname=${_pkgname}-bin
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A lightweight, anonymous Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
@@ -30,6 +30,9 @@ depends=(
   'gst-libav'           # avdec_h264 / avdec_aac (Twitch H.264 + AAC)
   'gst-plugins-base'    # autoaudiosink + audioconvert/resample + videoconvert
   'gst-plugins-good'    # pulsesink → PulseAudio/PipeWire
+  # Embedded-libmpv engine (default upstream feature): the prebuilt binary
+  # links libmpv.so.2, shipped in Arch's `mpv` package.
+  'mpv'
   'hicolor-icon-theme'
 )
 provides=("${_pkgname}=${pkgver}")
@@ -39,7 +42,7 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 # packaging/aur/build-release-tarball.sh). No makedepends, no build() — this
 # is a pure -bin repackage.
 source=("${_repo}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.tar.gz")
-sha256sums=('d7a301defcd4a9c1a201d46afb32767ddf6e301a2e1fdd21d823e021ce17dffa')   # sha256 of the release tarball; bump alongside pkgver on each release
+sha256sums=('888e0f12535d2ab36510f1dc8017ba6925591fe460179f5772d41d3d639f2734')   # sha256 of the release tarball; bump alongside pkgver on each release
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}-x86_64"
