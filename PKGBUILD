@@ -2,7 +2,7 @@
 
 pkgname=jorvik-bin
 _pkgname=jorvik
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Self-hosted Matrix client built to feel like Discord"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=("$_pkgname")
 options=('!strip' '!debug')
 install="$pkgname.install"
 source=("$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/Jorvik-$pkgver.deb")
-sha256sums=('163a43e1171f492ee78f2ec2fe6a54f400fbcec79a75f676ea939baa9fe716d1')
+sha256sums=('56b48c0d876baac42621171bba2611fc8ec34140fb0811093a4e73e554ddf1c5')
 # makepkg does not understand .deb, so unpack it by hand in package().
 noextract=("$_pkgname-$pkgver.deb")
 

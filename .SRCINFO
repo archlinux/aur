@@ -1,6 +1,6 @@
 pkgbase = jorvik-bin
 	pkgdesc = Self-hosted Matrix client built to feel like Discord
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/jorvikapp/jorvik
 	install = jorvik-bin.install
@@ -16,12 +16,12 @@ pkgbase = jorvik-bin
 	depends = util-linux-libs
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: tray icon on desktops using AppIndicator
-	provides = jorvik=1.0.9
+	provides = jorvik=1.0.10
 	conflicts = jorvik
-	noextract = jorvik-1.0.9.deb
+	noextract = jorvik-1.0.10.deb
 	options = !strip
 	options = !debug
-	source = jorvik-1.0.9.deb::https://github.com/jorvikapp/jorvik/releases/download/v1.0.9/Jorvik-1.0.9.deb
-	sha256sums = 163a43e1171f492ee78f2ec2fe6a54f400fbcec79a75f676ea939baa9fe716d1
+	source = jorvik-1.0.10.deb::https://github.com/jorvikapp/jorvik/releases/download/v1.0.10/Jorvik-1.0.10.deb
+	sha256sums = 56b48c0d876baac42621171bba2611fc8ec34140fb0811093a4e73e554ddf1c5
 
 pkgname = jorvik-bin
