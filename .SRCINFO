@@ -1,6 +1,6 @@
 pkgbase = python-autoreject
 	pkgdesc = Python package for automatically rejecting bad trials and sensors in EEG/MEG data
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://autoreject.github.io/stable/index.html
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-autoreject
 	depends = python-mne
 	depends = python-h5io
 	depends = python-pymatreader
-	source = https://files.pythonhosted.org/packages/source/a/autoreject/autoreject-0.5.0.tar.gz
-	sha256sums = 948adfc4e65c156bb6731cbaf820ce6ff899e9fd4d4c3182ccd27ac9faa7a1cd
+	source = https://files.pythonhosted.org/packages/source/a/autoreject/autoreject-0.5.1.tar.gz
+	sha256sums = 202d4904e31ddce022c47bca4f7a78f83d92644039750cdb6a56b9b76539e41d
 
 pkgname = python-autoreject
