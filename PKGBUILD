@@ -1,15 +1,14 @@
 # Maintainer: Kyle Yasuda <suda@sudacode.com>
 
 pkgname=subminer-bin
-pkgver=0.19.6
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='All-in-one sentence mining overlay with AnkiConnect and dictionary integration'
 arch=('x86_64')
 url='https://github.com/ksyasuda/SubMiner'
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-or-later' 'MIT' 'LGPL-2.0-only' 'LGPL-2.1-only' 'Apache-2.0' 'BSD-3-Clause')
 options=('!strip' '!debug')
 depends=(
-	'bun'
 	'fuse2'
 	'glibc'
 	'mpv'
@@ -36,9 +35,9 @@ source=(
 	"subminer-assets-${pkgver}.tar.gz::https://github.com/ksyasuda/SubMiner/releases/download/v${pkgver}/subminer-assets.tar.gz"
 )
 sha256sums=(
-'1dafb9ee55e4eff2e5b0a0c8de772eab63b5d92ad677aeadfd742986e975b2dc'
-'4786f3f81e5a43ae06350d0beedf06d62cb3ffd83843b0e7ffab187f4c797e3a'
-'3e19d1b86d125a50a08a151e763b01652b342d073838120d8ced8dd5044abdaf'
+'d8c22bbea7410336838274b57634a306f2ae95977ef55a92ca6e4cc52f4b4e71'
+'4d1c8c4ffbecf514cbf009b0f26ef10f0f42b41417ed3c46a9fdeebea67015e8'
+'87e762eed16ed94a02f7e8c83129d7a073f268b8c2e21c682c98c8db88f9ac5a'
 )
 noextract=("SubMiner-${pkgver}.AppImage")
 
@@ -63,4 +62,9 @@ package() {
 
 	install -dm755 "${pkgdir}/usr/share/SubMiner/plugin/subminer"
 	cp -a "${srcdir}/plugin/subminer/." "${pkgdir}/usr/share/SubMiner/plugin/subminer/"
+
+	# Bundled Bun runtime notices: MIT and BSD texts are not in the licenses package.
+	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -m644 "${srcdir}"/resources/bun/licenses/* \
+		"${pkgdir}/usr/share/licenses/${pkgname}/"
 }
