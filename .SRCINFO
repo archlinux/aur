@@ -1,6 +1,6 @@
 pkgbase = python-pyevtx
 	pkgdesc = Python bindings for evtx
-	pkgver = 0.12.1
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/omerbenamram/pyevtx-rs
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = python-pyevtx
 	makedepends = python-installer
 	makedepends = maturin
 	depends = python
-	source = pyevtx-rs-0.12.1.tar.gz::https://github.com/omerbenamram/pyevtx-rs/archive/0.12.1.tar.gz
-	sha512sums = 8cf67f0a61aae69564fd84655a071534a5e96d8a31980b70f3ceca8b16cb3daf9f838c75c7d9830141cec62d12da340e577537f37793efb219ce5524f3d0e7f8
+	source = pyevtx-rs-0.13.1.tar.gz::https://github.com/omerbenamram/pyevtx-rs/archive/0.13.1.tar.gz
+	sha512sums = f2d33b6ca8c195a381c9d81cd686136b2f495103d780a19c1e9a7bfb7e611640bf19156f8cb0af96daa13bcd05cb04a0d057cf2b8ee9d7eeb3515bcda8467d9f
 
 pkgname = python-pyevtx
