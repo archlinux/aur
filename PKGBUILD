@@ -1,10 +1,10 @@
 # Maintainer:
 pkgname=pudu-launcher-git
-pkgver=r12.d57587d
-pkgrel=2
+pkgver=r132.8d853ca
+pkgrel=1
 pkgdesc="Alternative game launcher for Unitystation"
 arch=('x86_64')
-url="https://github.com/corp-0/PuduLauncher"
+url="https://github.com/unitystation/PuduLauncher"
 license=('MIT')
 depends=(
   'cairo'
