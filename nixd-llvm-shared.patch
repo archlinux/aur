@@ -1,0 +1,22 @@
+--- a/meson.build
++++ b/meson.build
+@@ -60,7 +60,7 @@
+   'llvm',
+   method: 'config-tool',
+   modules: ['support'],
+-  static: true,
++  static: false,
+ )
+ boost = dependency('boost')
+ nlohmann_json = dependency('nlohmann_json')
+--- a/nixd/meson.build
++++ b/nixd/meson.build
+@@ -35,7 +35,7 @@
+   'llvm',
+   method: 'config-tool',
+   modules: ['support'],
+-  static: true,
++  static: false,
+ )
+ 
+ pkgconfig = import('pkgconfig')
