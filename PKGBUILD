@@ -4,7 +4,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=9.0.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -13,11 +13,6 @@ groups=('android-ffmpeg')
 depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-bzip2"
          "android-${_android_arch}-dav1d"
-         "android-${_android_arch}-fontconfig"
-         "android-${_android_arch}-fribidi"
-         "android-${_android_arch}-glib2"
-         "android-${_android_arch}-gmp"
-         "android-${_android_arch}-gnutls"
          "android-${_android_arch}-gsm"
          "android-${_android_arch}-lame"
          "android-${_android_arch}-libavc1394"
@@ -26,7 +21,6 @@ depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-libmodplug"
          "android-${_android_arch}-libraw1394"
          "android-${_android_arch}-libsoxr"
-         "android-${_android_arch}-libssh"
          "android-${_android_arch}-libtheora"
          "android-${_android_arch}-libvorbis"
          "android-${_android_arch}-libvpx"
@@ -34,6 +28,7 @@ depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-libxml2"
          "android-${_android_arch}-opencore-amr"
          "android-${_android_arch}-openjpeg2"
+         "android-${_android_arch}-openssl"
          "android-${_android_arch}-opus"
          "android-${_android_arch}-snappy"
          "android-${_android_arch}-speex"
@@ -82,7 +77,6 @@ build() {
         aarch64)
             target_arch=aarch64
             export LDFLAGS="${LDFLAGS} -lm -logg -lvorbis -lcrypto -lssl"
-            # export LDFLAGS="${LDFLAGS} -lssh"
             ;;
         armv7a-eabi)
             target_arch=arm
@@ -149,12 +143,9 @@ build() {
         --disable-indev=v4l2 \
         --disable-outdev=v4l2 \
         --disable-alsa \
-        --enable-fontconfig \
-        --enable-gmp \
-        --enable-gnutls \
+        --enable-jni \
         --enable-libaom \
         --enable-libdav1d \
-        --enable-libfribidi \
         --enable-libgsm \
         --enable-libiec61883 \
         --enable-libmodplug \
@@ -167,7 +158,6 @@ build() {
         --enable-libsoxr \
         --enable-libspeex \
         --enable-libsrt \
-        --enable-libssh \
         --enable-libsvtav1 \
         --enable-libtheora \
         --enable-libvidstab \
@@ -179,8 +169,8 @@ build() {
         --enable-libx265 \
         --enable-libxml2 \
         --enable-libxvid \
-        --enable-jni \
         --enable-mediacodec \
+        --enable-openssl \
         --disable-xlib \
         --disable-large-tests \
         --disable-cuda-llvm \
