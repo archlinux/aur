@@ -1,21 +1,22 @@
 pkgbase = palletone-git
-	pkgdesc = Desktop color pallete builder and manager for developers and designers.(Use system-wide electron)
-	pkgver = r101.a852af5
+	pkgdesc = Desktop color pallete builder and manager for developers and designers.
+	pkgver = r287.fcb4a90
 	pkgrel = 1
 	url = https://palletone-demo.vercel.app/
 	arch = any
 	license = Apache-2.0
-	makedepends = npm
+	makedepends = bun
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
-	depends = electron28
-	provides = palletone=r101.a852af5
+	makedepends = jq
+	depends = electron39
+	provides = palletone=r287.fcb4a90
 	conflicts = palletone
 	source = palletone.git::git+https://github.com/KainNhantumbo/palletone-app.git
 	source = palletone.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e
 
 pkgname = palletone-git
