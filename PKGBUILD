@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=mwcsr
-_pkgver=0.1.12
+_pkgver=0.1.13
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e4c575fcc849c713a99ec08a02ed3d16')
-b2sums=('f5e5dce76eb0128e681ed93b7c19feaceada2b24a3ecf3da8eec979223cb507059087b83b1673b3a4cb82deea5f8fff59ae3dec7ec7d731447ec6f25d04f5b32')
+md5sums=('58329cfa678e81d06dc7d33079a8e4cc')
+b2sums=('a417f0531a925546e79b1a098cdf16a020b77f4138fbbadbfb170dbf99f84dfa2afa18b09e1723b595bebdc8b4ca1cb8e6f4eceaf0dfa23cc82f81494ad52d4e')
 
 build() {
   mkdir build
