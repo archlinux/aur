@@ -10,3 +10,6 @@
 /*.qjm
 /qingjian/
 /qingjian-*/
+
+# Local maintainer scripts
+/update.sh

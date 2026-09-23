@@ -1,6 +1,6 @@
 pkgbase = fcitx5-qingjian-git
 	pkgdesc = 青简输入法 Linux/Fcitx5 官方支持版（Rust Server + Fcitx5 插件 + 离线数据模型）
-	pkgver = 0.1.1.r194.g7ff5d27
+	pkgver = 0.1.1.r211.gc72d772
 	pkgrel = 1
 	url = https://github.com/qingjian-team/qingjian
 	install = fcitx5-qingjian.install
@@ -18,13 +18,13 @@ pkgbase = fcitx5-qingjian-git
 	depends = glibc
 	provides = fcitx5-qingjian
 	conflicts = fcitx5-qingjian
-	noextract = qingjian-data-v1.tar.gz
+	noextract = qingjian-data-v2.tar.gz
 	source = qingjian::git+https://github.com/qingjian-team/qingjian.git
-	source = qingjian-data-v1.tar.gz::https://github.com/qingjian-team/qingjian/releases/download/data-v1/qingjian-data.tar.gz
-	source = model-v1.qjm::https://github.com/qingjian-team/qingjian/releases/download/data-v1/model.qjm
+	source = qingjian-data-v2.tar.gz::https://github.com/qingjian-team/qingjian/releases/download/data-v2/qingjian-data.tar.gz
+	source = model-v2.qjm::https://github.com/qingjian-team/qingjian/releases/download/data-v2/model.qjm
 	source = qingjian-server.service
 	sha256sums = SKIP
-	sha256sums = 4b9eaa7c37f188eab5a52ad400267564eaae2e6bd049165e1389e0317d51d432
+	sha256sums = 4d59fdb3f82809736beebe23b42cec283ffd87f6a8f0243b95291c460f1f0caa
 	sha256sums = eed5bd0bda0c7bd8b43d1acb2dc4678d4bbe295bd47b2b0d4eeace0af9daff4d
 	sha256sums = 819c81dfaa4308ea9c3a84b16bcee5672ebc4d1c737a676cc42367ea929e4bd6
 
