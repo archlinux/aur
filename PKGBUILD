@@ -1,6 +1,6 @@
 pkgname=uzdoom-bin
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.0.2
+pkgrel=1
 pkgdesc='A fork of GZDoom, a feature-centric fork of ZDoom'
 arch=('x86_64')
 url="https://github.com/UZDoom/UZDoom"
@@ -10,7 +10,7 @@ conflicts=("uzdoom")
 provides=("uzdoom")
 makedepends=('unzip')
 sha256sums=('ad06218ce106dad785fac3c955fce5176addf183b7520d0f2673392c297d05ad')
-sha256sums_x86_64=('a0fb4fd09264ec55827911316454eedb667fc22ac23b6d505a1a2a076b549e4f')
+sha256sums_x86_64=('969cb63a588df93359b6f4da0bdc0a3a35e828a09bb23cbe9876cd48f0be0ab1')
 source=("uzdoom")
 source_x86_64=("$url/releases/download/$pkgver/Linux-UZDoom-Release-x86_64.AppImage")
 
