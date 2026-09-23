@@ -1,3 +1,5 @@
 */
 *.pkg.tar.zst
 *.deb
+visage-has-session-*
+pam-README-*.md
