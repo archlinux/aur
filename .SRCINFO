@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-json-c
 	pkgdesc = A JSON implementation in C (Android riscv64)
-	pkgver = 0.18
+	pkgver = 0.19
 	pkgrel = 1
 	url = https://github.com/json-c/json-c/wiki
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = android-riscv64-json-c
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/json-c/json-c/archive/refs/tags/json-c-0.18-20240915.tar.gz
-	md5sums = 97f1a79151cae859983afbc46b40b92c
+	source = https://github.com/json-c/json-c/archive/refs/tags/json-c-0.19-20260627.tar.gz
+	md5sums = 1508b9853841fef7127ba908d950bac7
 
 pkgname = android-riscv64-json-c

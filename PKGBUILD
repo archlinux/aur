@@ -6,8 +6,8 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-json-c
-pkgver=0.18
-_pkgverdate=20240915
+pkgver=0.19
+_pkgverdate=20260627
 pkgrel=1
 arch=('any')
 pkgdesc="A JSON implementation in C (Android ${_android_arch})"
@@ -17,7 +17,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/json-c/json-c/archive/refs/tags/json-c-${pkgver}-${_pkgverdate}.tar.gz")
-md5sums=('97f1a79151cae859983afbc46b40b92c')
+md5sums=('1508b9853841fef7127ba908d950bac7')
 
 build() {
     cd "${srcdir}/json-c-json-c-${pkgver}-${_pkgverdate}"
