@@ -1,0 +1,22 @@
+pkgbase = plombir
+	pkgdesc = A ridiculously fast static site generator for Crystal.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/the-cry-labs/plombir
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	makedepends = crystal>=1.21.0
+	makedepends = shards
+	depends = gc
+	depends = glibc
+	depends = libgcc
+	depends = libxml2
+	depends = libyaml
+	depends = openssl
+	depends = pcre2
+	depends = zlib
+	source = plombir-1.0.0.tar.gz::https://github.com/the-cry-labs/plombir/archive/v1.0.0.tar.gz
+	sha256sums = 87311d903cd34a6be12698ab4f8ef2d98bbf65608e3266d49aa6cd7c42230265
+
+pkgname = plombir

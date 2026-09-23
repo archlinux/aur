@@ -1,0 +1,5 @@
+[plombir]
+source = "github"
+github = "the-cry-labs/plombir"
+use_max_tag = true
+prefix = "v"
