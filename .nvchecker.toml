@@ -1,0 +1,5 @@
+[lito-bin]
+source = "github"
+github = "litocpp/lito"
+use_latest_release = true
+prefix = "v"
