@@ -1,6 +1,6 @@
 pkgbase = yquake2remaster
 	pkgdesc = Experimental fork of Yamagi Quake II to add support for Quake II Enhanced/Remaster(ed)
-	pkgver = 8.71RR15
+	pkgver = 8.71RR16
 	pkgrel = 1
 	url = https://github.com/yquake2/yquake2remaster
 	arch = i686
@@ -18,9 +18,9 @@ pkgbase = yquake2remaster
 	optdepends = quake2-data
 	optdepends = quake2-demo
 	optdepends = vulkan-driver
-	source = yquake2remaster-8.71RR15.tar.gz::https://github.com/yquake2/yquake2remaster/archive/refs/tags/8.71RR15.tar.gz
+	source = yquake2remaster-8.71RR16.tar.gz::https://github.com/yquake2/yquake2remaster/archive/refs/tags/8.71RR16.tar.gz
 	source = yquake2remaster.desktop
-	b2sums = 1b35be970546168045820b6347395236e2abeab0529845ed261ff761615f0034591e38af3259facca1637efc8eff49180d6f55ccf8a8bcacf2c89078bfc6cf5c
+	b2sums = 36072ba4d0b760e195b5c11077b72b6e56e8bd3d7ac6d9774aaa0874af544fb049fff7ed1821f6470b685bfd5794e3650cb33bdd04e152a25eb7ca3d7562bdb6
 	b2sums = 3c3927d7687c65d0155ac1c327e4ef3cf0bea0b5eea771965a6acf126e59d1deb46517750737ca12eef5d4d3034a32b3ccd03d0535b5468a6fc5bef302fdec6a
 
 pkgname = yquake2remaster

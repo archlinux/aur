@@ -1,7 +1,7 @@
 # Maintainer: CosmicHeron <dev cosmicheron com>
 
 pkgname='yquake2remaster'
-pkgver='8.71RR15'
+pkgver='8.71RR16'
 pkgrel='1'
 pkgdesc='Experimental fork of Yamagi Quake II to add support for Quake II Enhanced/Remaster(ed)'
 url="https://github.com/yquake2/${pkgname}"
@@ -14,8 +14,10 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 	"${pkgname}.desktop"
 )
-b2sums=('1b35be970546168045820b6347395236e2abeab0529845ed261ff761615f0034591e38af3259facca1637efc8eff49180d6f55ccf8a8bcacf2c89078bfc6cf5c'
-	'3c3927d7687c65d0155ac1c327e4ef3cf0bea0b5eea771965a6acf126e59d1deb46517750737ca12eef5d4d3034a32b3ccd03d0535b5468a6fc5bef302fdec6a')
+b2sums=(
+	'36072ba4d0b760e195b5c11077b72b6e56e8bd3d7ac6d9774aaa0874af544fb049fff7ed1821f6470b685bfd5794e3650cb33bdd04e152a25eb7ca3d7562bdb6'
+	'3c3927d7687c65d0155ac1c327e4ef3cf0bea0b5eea771965a6acf126e59d1deb46517750737ca12eef5d4d3034a32b3ccd03d0535b5468a6fc5bef302fdec6a'
+)
 
 prepare() {
 	cmake -S "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/${pkgname}-${pkgver}/build"
