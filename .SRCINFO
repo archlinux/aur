@@ -1,0 +1,17 @@
+pkgbase = vmod-oidc
+	pkgdesc = OpenID Connect authentication VMOD for Varnish
+	pkgver = 9.1.0
+	pkgrel = 2
+	url = https://github.com/perbu/vmod_oidc
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cargo
+	makedepends = clang
+	makedepends = openssl
+	makedepends = pkg-config
+	depends = varnish=9.1.0-2
+	options = !lto
+	source = vmod-oidc-0.2.0.tar.gz::https://github.com/perbu/vmod_oidc/archive/refs/tags/v0.2.0.tar.gz
+	sha512sums = 5655a747c4d79ddc282ee9a771d9c4936b5f0c6a026469efe6a1bfd259eb0eb7cfc4dde914d9d59004d025a862513145f49f4b71482045c353654b000e0164b9
+
+pkgname = vmod-oidc
