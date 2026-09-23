@@ -1,4 +1,4 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: meanlint <meanlint@outlook.com>
 pkgname=gproxy-bin
 pkgver=3.0.20
 pkgrel=1
