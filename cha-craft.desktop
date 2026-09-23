@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Cha Craft
+GenericName=Tea Lounge Simulation
+Comment=A cozy barista simulation built with C++17 and raylib
+Exec=cha-craft
+Terminal=false
+Categories=Game;Simulation;
