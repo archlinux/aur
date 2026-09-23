@@ -1,7 +1,7 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-gui
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature rich Discord 'TUI' client. Windowed 'GUI' version using GTK3."
 arch=('x86_64')
 url="https://github.com/sparklost/endcord"

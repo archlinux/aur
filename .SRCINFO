@@ -1,7 +1,7 @@
 pkgbase = endcord-gui
 	pkgdesc = Feature rich Discord 'TUI' client. Windowed 'GUI' version using GTK3.
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sparklost/endcord
 	arch = x86_64
 	license = LicenseRef-SparkLost
