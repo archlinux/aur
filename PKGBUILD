@@ -1,6 +1,6 @@
 # Maintainer: anas1412 <anasbassoumi@gmail.com>
 pkgname=tackora-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A Kanban board for your coding agents: every ticket is a Claude Code session"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('tackora')
 options=('!strip' '!debug')
 source=("https://github.com/anas1412/tackora/releases/download/v${pkgver}/Tackora_${pkgver}_amd64.deb"
         'LICENSE')
-sha256sums=('46d18f4a476faba5389fc541c513d01d05f8e189aa06241da709d2151882ba96'
+sha256sums=('8c3a25b33164042255e32cb9afb957d9c03d1194d10e3f0b8a85228f7fb33487'
             '51f19ea24ca521fd6f8beb5b825112e06d5b7ae0a68d23dde6a52063cb1a3b53')
 
 package() {
