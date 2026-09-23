@@ -1,7 +1,7 @@
 # Maintainer: 
 
 pkgname='refind-btrfs-snapshots-bin'
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Generate rEFInd boot entries for btrfs snapshots (prebuilt binaries)'
 url='https://github.com/jmylchreest/refind-btrfs-snapshots'
@@ -31,8 +31,8 @@ source_aarch64=(
 )
 
 sha256sums=('ab19320086923485a2c4622c8530105e759ca63a2915d42a38882e4398d4f5f9' 'fc411f49cb7c01cc187cab2af7bbd3325fced6e69a823779285ddfd2d8f997e0' '32bee81ce37ed6fe8aecb5fa11d4fe7c7a2004d1dd22ad6d5a8908c627ff13c1' '43e0c515d28e72a55a4afe9413174a3c8d14c600df93bff1df8102bed2ae0c5a')
-sha256sums_x86_64=('c7d65f6d4783cdb295ef08e27b6b35acb5e6e9445509f88bdd62e1aca0c98c68')
-sha256sums_aarch64=('3c3136e0258ad67896c883bc9e7276f77e680ffdc200fc995668a0f311c1c88f')
+sha256sums_x86_64=('bdb85e61279f9f63d1b60edfd8917655e9ec40758f1f97cd3fee5f61353a0034')
+sha256sums_aarch64=('1d73b403dc9ed772d622b865c59e249398163a42c494886a68cad1a0906c21ad')
 
 package() {
     install -Dm755 "refind-btrfs-snapshots-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/refind-btrfs-snapshots"
