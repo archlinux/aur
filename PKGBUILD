@@ -4,7 +4,7 @@
 
 pkgname=meta-package-manager
 _pkgname=${pkgname//-/_}
-pkgver=8.0.0
+pkgver=8.0.1
 pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url='https://kdeldycke.github.io/meta-package-manager/'
