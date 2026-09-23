@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=vtm-bin
-pkgver=2026.07.30
+pkgver=2026.09.23
 pkgrel=1
-pkgdesc="A text-based desktop environment that runs console applications in floating windows and allows remote access over tunnelling protocols such as SSH.(Prebuilt version)"
+pkgdesc="A text-based desktop environment that runs console applications in floating windows and allows remote access over tunnelling protocols such as SSH."
 arch=(
 	'aarch64'
 	'armv7h'
@@ -24,10 +24,10 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.7z::${url}/releases/downloa
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.7z::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_x86.tar.7z")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.7z::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_x86_64.tar.7z")
 sha256sums=('b7d69c3a45e98eb80ff9cd48d00334d72002d9d0f96b523f8feb33263af22e12')
-sha256sums_aarch64=('febb8d256dbfe5bd4b05c8bfe0e1f91f2ebdabee37fbdf02066d795cdd2f3089')
-sha256sums_armv7h=('6af8fc1b05df48190a29e8b37e565c1dc5dee04347bd003e2ed703bb67045dc0')
-sha256sums_i686=('7518ccdd641c6fde7d28d6d1c4fb8340bef40271709ed69561ecfba5f87c50b2')
-sha256sums_x86_64=('cb5bd2e0734ab36520511719c0c9f2f68d73a399b286ca3ce8f2a6c567962eae')
+sha256sums_aarch64=('0bb10235b477a60b75d2d69771480ff094ff96e293112df0e5feb0b9b20c553d')
+sha256sums_armv7h=('7cb51f8ccabda7de679d52ce111095e3c4e32cdcf806a29284784616c2b904db')
+sha256sums_i686=('59f185c43647e9644578c79489463fd357f49ec46cff56d56f817d164ff75896')
+sha256sums_x86_64=('097673fc8d0117a7c29565c54ed1d14d134cec93b367cf55d8f51b204aa05560')
 prepare() {
 	bsdtar -xf "${srcdir}/${pkgname%-bin}"*.tar
 }
