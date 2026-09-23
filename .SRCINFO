@@ -1,6 +1,6 @@
 pkgbase = kazv-git
 	pkgdesc = A Qt matrix client.
-	pkgver = 0.6.0.r747.20260308.e8424b1
+	pkgver = 0.7.0.r786.20260907.9cc311c
 	pkgrel = 1
 	url = https://r.lily-is.land/the-kazv-project/kazv
 	arch = aarch64
@@ -25,11 +25,13 @@ pkgbase = kazv-git
 	depends = freetype2
 	depends = gcc-libs
 	depends = glibc
+	depends = immer
 	depends = kconfig>=6.7.0
 	depends = kio>=6
 	depends = kirigami>=6
 	depends = kirigami-addons
 	depends = knotifications>=6
+	depends = lexbor
 	depends = libkazv
 	depends = qcoro
 	depends = qt6-httpserver
@@ -37,7 +39,7 @@ pkgbase = kazv-git
 	depends = qt6-declarative>=6.5.0
 	depends = qt6-multimedia>=6.5.0
 	depends = qt6-svg>=6.5.0
-	provides = kazv=0.6.0.r747.20260308.e8424b1
+	provides = kazv=0.7.0.r786.20260907.9cc311c
 	conflicts = kazv
 	options = !lto
 	options = debug

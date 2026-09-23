@@ -3,7 +3,7 @@
 
 _pkgname=kazv
 pkgname="${_pkgname}-git"
-pkgver=0.6.0.r747.20260308.e8424b1
+pkgver=0.7.0.r786.20260907.9cc311c
 pkgrel=1
 pkgdesc="A Qt matrix client."
 arch=(
@@ -24,11 +24,13 @@ depends=(
   'freetype2'
   'gcc-libs'
   'glibc'
+  'immer'
   'kconfig>=6.7.0'
   'kio>=6'
   'kirigami>=6'
   'kirigami-addons'
   'knotifications>=6'
+  'lexbor'
   'libkazv'
   'qcoro'
   'qt6-httpserver'
