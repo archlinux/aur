@@ -1,0 +1,5 @@
+# makepkg artifacts: the source tarball is rebuilt from source= on every build.
+/src/
+/pkg/
+/laya-*.tar.gz
+/*.pkg.tar.zst
