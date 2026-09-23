@@ -14,7 +14,7 @@ pkgbase = python-citeproc-py
 	makedepends = rnc2rng
 	depends = python
 	depends = python-lxml
-	source = python-citeproc-py::git+https://github.com/citeproc-py/citeproc-py.git#tag=v0.9.0
+	source = python-citeproc-py::git+https://github.com/citeproc-py/citeproc-py.git#tag=adc70c3df99037fe8f49e8b40c7afd852b319bbb
 	source = csl-schema::git+https://github.com/citation-style-language/schema.git
 	source = csl-locales::git+https://github.com/citation-style-language/locales.git
 	sha256sums = 5a5bc0b652c8a3f51e7078b022778be11bd5b78993629133d33d5dc28c69a1b6
