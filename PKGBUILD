@@ -2,13 +2,13 @@
 # Co-Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=vrcx
 pkgver=2026.09.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Friendship management tool for VRChat (built with Electron)"
 arch=('x86_64')
 url="https://github.com/vrcx-team/VRCX"
 license=('MIT')
-depends=('dotnet-runtime-9.0' 'electron' 'gtk3' 'nss' 'libxss' 'libxrandr' 'alsa-lib')
-makedepends=('dotnet-sdk-9.0' 'git' 'nodejs' 'npm' 'imagemagick')
+depends=('dotnet-runtime-10.0' 'electron' 'gtk3' 'nss' 'libxss' 'libxrandr' 'alsa-lib')
+makedepends=('dotnet-sdk-10.0' 'git' 'nodejs' 'npm' 'imagemagick')
 conflicts=('vrcx-bin')
 options=(!debug !lto)
 source=(
@@ -39,7 +39,7 @@ build() {
         -t:"Restore;Clean;Build" \
         -m -r linux-x64
     
-    npm run prod-linux --no-fund --loglevel=error
+    npm run prod --no-fund --loglevel=error
     npm run build-electron --no-fund --loglevel=error
 }
 
@@ -48,10 +48,10 @@ package() {
 
     install -dm755 "$pkgdir/opt/vrcx"
     cp -r build/linux-unpacked/* "$pkgdir/opt/vrcx/"
-    chmod +x "$pkgdir/opt/vrcx/vrcx"
+    chmod +x "$pkgdir/opt/vrcx/VRCX"
     
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/vrcx/vrcx" "$pkgdir/usr/bin/vrcx"
+    ln -s "/opt/vrcx/VRCX" "$pkgdir/usr/bin/vrcx"
     
     install -Dm644 "$srcdir/vrcx.desktop" "$pkgdir/usr/share/applications/vrcx.desktop"
     
