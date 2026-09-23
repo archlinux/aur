@@ -1,0 +1,23 @@
+post_install() {
+  systemctl daemon-reload
+  if [[ -f /opt/resolve/.omarchy-resolve.json ]] && { [[ ! -f /etc/resolve-aacfix/auto.conf ]] || grep -qx 'mode=auto' /etc/resolve-aacfix/auto.conf; }; then
+    /usr/lib/resolve-aacfix/aac-fix auto enable
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  if [[ -x /usr/lib/resolve-aacfix/aac-fix ]]; then
+    /usr/lib/resolve-aacfix/aac-fix auto disable || true
+    if [[ -d /opt/resolve ]]; then
+      /usr/lib/resolve-aacfix/aac-fix uninstall
+    fi
+  fi
+}
+
+post_remove() {
+  systemctl daemon-reload
+}

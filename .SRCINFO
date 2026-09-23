@@ -1,0 +1,17 @@
+pkgbase = resolve-aacfix-bin
+	pkgdesc = Transactional AAC decode support and automatic reapply for DaVinci Resolve Studio on Linux
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Irfrit/resolve-aacfix
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = polkit
+	depends = util-linux
+	optdepends = davinci-resolve-studio: DaVinci Resolve Studio installation to patch
+	conflicts = davinci-resolve-studio-aacfix
+	options = !strip
+	source = https://github.com/Irfrit/resolve-aacfix/releases/download/v0.2.0/resolve-aacfix-v0.2.0-linux-x86_64.tar.gz
+	sha256sums = 450b197e9da3e89ca92efbc463cc5d14f23013c7d4b239aad9b88425bd963c7d
+
+pkgname = resolve-aacfix-bin
