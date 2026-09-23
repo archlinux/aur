@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Mezin <mezin.alexander@gmail.com>
 # Contributor: Amiel Kyamko <junkfactory@gmail.com>
 pkgname=gnome-shell-extension-ddterm
-pkgver=63.2.3
+pkgver=64.0.0
 pkgrel=1
 pkgdesc='Another Drop Down Terminal Extension for GNOME Shell'
 arch=('any')
@@ -10,10 +10,10 @@ license=('GPL-3.0-or-later')
 depends=('gjs' 'gtk3')
 makedepends=('meson' 'git' 'libxslt')
 checkdepends=('jq')
-_max_gnome_shell_version=50
+_max_gnome_shell_version=51
 install="${pkgname}.install"
 source=("https://github.com/ddterm/${pkgname}/releases/download/v${pkgver}/ddterm-${pkgver}.tar.gz")
-sha256sums=('1a2aa3250f114c7cf61cb69ebfb3191d3bf12f7e7b584a21623eed480b15f377')
+sha256sums=('9bd151decb982300d06fd28e269e4bda4d3c820e6062ad1a36ca3e9639022542')
 
 build() {
     local meson_options=(
