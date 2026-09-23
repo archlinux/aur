@@ -1,7 +1,7 @@
 # Maintainer: meatyari <https://github.com/MeatyAri>
 pkgname=slideflare
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="⚡ Blazing fast, interactive presentation tool for developers, educators, and creators"
 arch=('x86_64')
 url="https://github.com/MeatyAri/slideflare"
@@ -11,7 +11,9 @@ depends=(
   'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1'
 )
 
-options=('!strip' '!emptydirs')
+# !lto kept for parity with slideflare-git (this binary package runs no
+# compile step, so LTOFLAGS never apply here).
+options=('!strip' '!emptydirs' '!lto')
 install="${pkgname}.install"
 
 source=("slideflare_${pkgver}_amd64.deb::https://github.com/MeatyAri/slideflare/releases/download/app-v${pkgver}/slideflare_${pkgver}_amd64.deb")
