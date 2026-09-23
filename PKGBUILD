@@ -1,7 +1,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=shuvarie-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 epoch=
 pkgdesc="Blazingly fast AI coding TUI for chivalrous people (Binary)"
@@ -28,8 +28,8 @@ source_aarch64=(
     "shuvarie-v${pkgver}.tar.gz::${_repourl}/releases/download/v${pkgver}/shuvarie-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 noextract=()
-sha256sums_x86_64=("1749c70031efffee9da61414b5429c5393d81e8056e2553a18db9c78b4f18d42")
-sha256sums_aarch64=("24b91021a7f8dfad4dbaaf535b4312301d0605cce63524c86ceb993b4e17d66a")
+sha256sums_x86_64=("73776608eaa6459632cf4c5e43a7f32fa0baf4bed6f2911e0cc2dd849b975bf1")
+sha256sums_aarch64=("298e0da2da70877840fa402b9c83eba03ce046a00e92a332279382ef4ed39cc6")
 validpgpkeys=()
 
 _dirname="shuvarie-$pkgver"
