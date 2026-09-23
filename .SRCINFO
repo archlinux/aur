@@ -1,0 +1,17 @@
+pkgbase = sparql-language-server
+	pkgdesc = Language server providing autocomplete, diagnostics and hover tooltips for SPARQL, including W3C standard SPARQL and Stardog extensions
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://github.com/stardog-union/stardog-language-servers
+	arch = any
+	license = Apache-2.0
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	noextract = sparql-language-server-4.3.0.tgz
+	source = https://registry.npmjs.org/sparql-language-server/-/sparql-language-server-4.3.0.tgz
+	source = LICENSE-4.3.0::https://github.com/stardog-union/stardog-language-servers/raw/d3e39c4c876ff276da9e36e73f9f6376b36da849/LICENSE
+	sha256sums = 60fde1bb23ead303c8efe1d3ee8d8a15c6e90fd42cdd0c3ae2982ce5502693ec
+	sha256sums = fcd336454f2450ed91604bcaa9fbb5f9e73cdd6081ac991d468f5e6e07c3fd4a
+
+pkgname = sparql-language-server
