@@ -1,11 +1,11 @@
 pkgname=fdroidserver
 pkgver=2.4.5
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="F-Droid repository management tools"
 url="https://gitlab.com/fdroid/$pkgname"
 license=('AGPL-3.0-only')
-depends=('python' 'python-pyasn1' 'python-pyasn1-modules' 'python-magic' 'python-requests' 'python-yaml' 'python-ruamel-yaml' 'java-environment' 'python-pillow' 'python-vagrant' 'python-gitpython' 'python-asn1crypto' 'python-paramiko' 'python-qrcode')
+depends=('python' 'python-pyasn1' 'python-pyasn1-modules' 'python-magic' 'python-requests' 'python-yaml' 'python-ruamel-yaml' 'java-environment' 'python-pillow' 'python-vagrant' 'python-gitpython' 'python-asn1crypto' 'python-paramiko' 'python-qrcode' 'python-defusedxml')
 makedepends=('python-setuptools' 'python-babel')
 optdepends=(
      'android-sdk: Build apps from source'

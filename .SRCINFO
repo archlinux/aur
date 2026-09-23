@@ -1,7 +1,7 @@
 pkgbase = fdroidserver
 	pkgdesc = F-Droid repository management tools
 	pkgver = 2.4.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gitlab.com/fdroid/fdroidserver
 	arch = any
@@ -22,6 +22,7 @@ pkgbase = fdroidserver
 	depends = python-asn1crypto
 	depends = python-paramiko
 	depends = python-qrcode
+	depends = python-defusedxml
 	optdepends = android-sdk: Build apps from source
 	optdepends = android-sdk-build-tools: Work with apks in the repository
 	optdepends = android-sdk-platform-tools: Ability to install apps to connected devices
