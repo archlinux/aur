@@ -1,6 +1,6 @@
 # Maintainer: dougefresh <dchimento@gmail.com>
 pkgname='pi-coding-agent-git'
-pkgver=0.80.7.r11.gc6d837152
+pkgver=0.87.1.r9.gfde38ed7c
 pkgrel=1
 pkgdesc="Coding agent CLI with read, bash, edit, write tools and session management"
 url="https://github.com/earendil-works/pi"
@@ -18,7 +18,7 @@ source=(
     'pi-wrapper'
     'APPEND_SYSTEM.md.example'
 )
-sha256sums=('SKIP' '7883f9bdeeec04f9e06584ac4b4d55c813377f924623b8dd3b58b1465ab82fa6' 'SKIP')
+sha256sums=('SKIP' '3667009db46761988244e62c6d9f8d4e75ff7c846d2f5f979e503eecb85bf97d' 'SKIP')
 options=('!strip' '!debug')
 
 pkgver() {
@@ -28,21 +28,29 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    npm ci --no-audit --no-fund --dangerously-allow-all-scripts
+    npm ci --ignore-scripts --no-audit --no-fund
     npm run build
-    npm prune --omit=dev --no-audit --no-fund
+
+    local _stage="$srcdir/$_pkgname-package"
+    mkdir -p "$_stage"
+    local _tarball
+    _tarball=$(cd packages/coding-agent && npm pack --ignore-scripts --pack-destination "$srcdir")
+    bsdtar -xf "$srcdir/$_tarball" -C "$_stage" --strip-components=1
+    (
+        cd "$_stage"
+        npm install --omit=dev --ignore-scripts --no-audit --no-fund --package-lock=false
+    )
 }
 
 package() {
     # wrapper script
     install -Dm755 "$srcdir/pi-wrapper" "$pkgdir/usr/bin/pi"
-    # install monorepo to /usr/lib/node_modules/pi-coding-agent
-    cd "$srcdir/$_pkgname"
+    # Install the upstream npm package layout, including its production dependencies.
     local _destdir="$pkgdir/usr/lib/node_modules/$_pkgname"
     mkdir -p "$_destdir"
-    cp -a package.json node_modules packages "$_destdir/"
+    cp -a "$srcdir/$_pkgname-package/." "$_destdir/"
 
     # docs
-    install -Dm644 packages/coding-agent/README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+    install -Dm644 "$_destdir/README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
     install -Dm644 "$srcdir/APPEND_SYSTEM.md.example" "$pkgdir/usr/share/doc/$_pkgname/APPEND_SYSTEM.md.example"
 }
