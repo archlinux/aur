@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://codeberg.org/dwl/dwl"
 license=('GPL')
 depends=('wlroots0.20')
+provides=('wayland-compositor')
 makedepends=('wayland-protocols')
 optdepends=('xorg-xwayland: for XWayland support')
 source=("https://codeberg.org/dwl/dwl/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz"

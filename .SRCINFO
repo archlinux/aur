@@ -7,6 +7,7 @@ pkgbase = dwl
 	license = GPL
 	makedepends = wayland-protocols
 	depends = wlroots0.20
+	provides = wayland-compositor
 	optdepends = xorg-xwayland: for XWayland support
 	source = https://codeberg.org/dwl/dwl/releases/download/v0.9/dwl-v0.9.tar.gz
 	source = config.h
