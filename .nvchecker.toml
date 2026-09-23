@@ -1,0 +1,3 @@
+[python-jwt-gehirn]
+source = "pypi"
+pypi = "jwt"

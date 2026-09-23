@@ -17,27 +17,32 @@ makedepends=(
   'python-wheel'
   'python-installer'
   'python-setuptools>=69.0.0'
+  'git'
 )
 checkdepends=(
   'python-pytest>=6.0'
   'python-pytest-cov'
   'python-freezegun'
 )
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('49de9c87bce7ee35b2bd04ecdc54c25ece9f63ef98527d6ed126fa98de667e8e29f9cd8ca90e26a415b47569f3c1edcc7c05ae89a26e7f5fdf96282e6c080334')
+source=("git+$url#tag=v$pkgver")
+b2sums=('21e2b84698604c0d04b8e58497541f97491d6d44c6e4dfde99798699a3986edf3b2bb9217a6a1e19d8566e212b3fcf314b0d7a5c23b0dd81d4c58c76ac9c0459')
+
+prepare() {
+  git -C "$_name" clean -dfx
+}
 
 build() {
-  cd "$_name-$pkgver"
+  cd "$_name"
   python -m build -wnx
 }
 
 check() {
-  cd "$_name-$pkgver"
+  cd "$_name"
   pytest
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "$_name"
   python -m installer -d "$pkgdir" dist/*.whl
   install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
