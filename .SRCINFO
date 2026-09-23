@@ -1,7 +1,7 @@
 pkgbase = gproxy-bin
 	pkgdesc = Self-hosted LLM API gateway (OpenAI/Claude/Gemini-compatible), prebuilt binary
 	pkgver = 3.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LeenHawk/gproxy
 	install = gproxy-bin.install
 	arch = x86_64

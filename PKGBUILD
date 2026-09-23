@@ -1,7 +1,7 @@
 # Maintainer: meanlint <meanlint@outlook.com>
 pkgname=gproxy-bin
 pkgver=3.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-hosted LLM API gateway (OpenAI/Claude/Gemini-compatible), prebuilt binary"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LeenHawk/gproxy"
