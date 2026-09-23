@@ -1,0 +1,17 @@
+pkgbase = upmd-bin
+	pkgdesc = Markdown-based task and workflow runner
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/rezigned/upmd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = upmd
+	conflicts = upmd
+	source_x86_64 = https://github.com/rezigned/upmd/releases/download/v0.2.7/upmd-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 101336d7a8f4648a3bf894d5636875f1df3d219719d470096c562e0cf4d6b9aa
+	source_aarch64 = https://github.com/rezigned/upmd/releases/download/v0.2.7/upmd-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 213c77a602d33628508fdea9cc4bb2e6238030e57528b748ca5137f70542e7a0
+
+pkgname = upmd-bin
