@@ -1,6 +1,6 @@
 # Maintainer: Chris Speck  <chris.speck(at)annalise(dot)ai>
 
-pkgname=slack-desktop-wayland
+pkgname=slack-desktop-wayland-updated
 _original_pkgname=slack-desktop
 pkgver=4.52.155
 pkgrel=1
@@ -25,8 +25,8 @@ source=(
 noextract=("${_original_pkgname}-${pkgver}-amd64.deb")
 b2sums=('91a9f799642cd910810a5778c03721d02d2bc98fb76988ae1adb5870ccca03761b37c14d7ba0a83942fb689e2f101d744eccb6292e941db77e8564b782a47e6b'
         '0e5318977aeb8033ec90495008f4d03b003f02fdd4bf764e8963e5b886169b87b65fac6b1b504100c27a30be1d4b923ef2b0212f6e73760737fb9d554f3df6ed')
-provides=('slack-desktop')
-conflicts=('slack-desktop' 'slack-electron')
+provides=('slack-desktop' 'slack-desktop-wayland')
+conflicts=('slack-desktop-wayland' 'slack-desktop' 'slack-electron')
 
 package() {
     bsdtar -O -xf "slack-desktop-${pkgver}"*.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
