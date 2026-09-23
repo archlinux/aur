@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+export PATH=/usr/bin:/bin
+module="${1:-/usr/lib/open-design/apps/daemon/node_modules/better-sqlite3}"
+
+if /usr/bin/node -e "require(process.argv[1])(':memory:').close()" "$module" >/dev/null 2>&1; then
+  exit 0
+fi
+
+cd "$module"
+/usr/bin/node-gyp rebuild --release --nodedir=/usr
+/usr/bin/node -e "require(process.argv[1])(':memory:').close()" "$module"

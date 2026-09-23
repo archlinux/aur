@@ -1,0 +1,17 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/bin/node
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = open-design
+
+[Action]
+Description = Checking open-design native module against system Node
+Depends = open-design
+When = PostTransaction
+Exec = /usr/lib/open-design/rebuild-native
