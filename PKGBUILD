@@ -3,7 +3,7 @@
 _base=mahotas
 pkgname=python-${_base}
 pkgdesc="Computer Vision in Python"
-pkgver=1.4.18
+pkgver=1.4.19
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/luispedro/${_base}"
@@ -16,7 +16,7 @@ optdepends=('python-imread: for function imread support'
   'freeimage: for functions imread/imsave support')
 provides=('mahotas')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('57ff46be660ddb8827a5e73ff1dc9bbc05b146d06e48a24a6607ffe7d5bb9ee81dda8a1f51edd3e7714cc2a6cb86716420e5c740b3ca670c4d834d4f57b8a15a')
+sha512sums=('557e61f9ca570bd078d63169222ca5e90df6c726ef9478fbb2d434eda6a25f61480f0800cb275bf959d925edd14ca1b16942aae526d033f122d6793794fa6134')
 # validpgpkeys=('6FB8B07A620CC7A7FB5B2AB4110D6C98E760BEF2') # Lu\xed\x73 Pedro Coelho <lpc@cmu.edu>
 
 build() {
