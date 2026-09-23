@@ -1,7 +1,7 @@
 pkgbase = coords2img-git
 	pkgdesc = Generate static map images - as a PNG file or directly as sixel graphics in your terminal - from a set of coordinates.
 	pkgver = 0.1.0.r3.20260801.16a2f14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fdlamotte/coords2img
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = coords2img-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python>=3.9
 	depends = python-pillow>=9.0
 	depends = python-requests>=2.25

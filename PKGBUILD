@@ -4,7 +4,7 @@ _pyname="coords2img"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
 pkgver=0.1.0.r3.20260801.16a2f14
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate static map images - as a PNG file or directly as sixel graphics in your terminal - from a set of coordinates."
 groups=()
 arch=(
@@ -27,6 +27,7 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-wheel'
+  'python-hatchling'
 )
 ### Do not run 'check()' since it currently (2026-09-22) does not run any test.
 # checkdepends=(
