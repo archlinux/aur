@@ -1,9 +1,9 @@
 [Unit]
-Description=Fluent status aggregator
+Description=Fluent daemon
 Before=udevmon.service
 
 [Service]
-ExecStart=/usr/bin/fluent-aggregator /tmp/fluent.sock
+ExecStart=/usr/bin/fluentd
 Restart=on-failure
 
 [Install]

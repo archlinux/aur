@@ -1,7 +1,7 @@
 # Maintainer: Felix Wolff <lixissimus at gmail dot com>
 
 pkgname=interception-fluent
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Interception plugin that allows to create arbitrary shortcuts'
 url='https://github.com/Lixissimus/fluent'
@@ -15,7 +15,7 @@ arch=('x86_64')
 install=interception-fluent.install
 source=(
     "fluent-v$pkgver.tar.gz::https://github.com/Lixissimus/fluent/releases/download/v$pkgver/fluent-v$pkgver.tar.gz"
-    'fluent-aggregator.service'
+    'fluentd.service'
     'udevmon.service.d'
 )
 
@@ -38,12 +38,13 @@ check() {
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/" \
         "target/release/fluent" \
-        "target/release/fluent-aggregator"
+        "target/release/fluentd" \
+        "target/release/fluentctl"
     install -Dm0644 -t "$pkgdir/etc/interception/udevmon.d/" "data/etc/interception/udevmon.d/fluent.yaml"
-    install -Dm0644 "fluent-aggregator.service" "$pkgdir/usr/lib/systemd/system/fluent-aggregator.service"
+    install -Dm0644 "fluentd.service" "$pkgdir/usr/lib/systemd/system/fluentd.service"
     install -Dm0644 "udevmon.service.d" "$pkgdir/usr/lib/systemd/system/udevmon.service.d/interception-fluent.conf"
 }
 
-sha256sums=('c48c7b4f584b0b67ce9a76ad6c56847aa92b9e2230ebb0c632678b3bb4a7d2d4'
-            '63bb17c16be4667349896b994179f0e3e8792343adb779b21b9c5d301d995e68'
-            '237b106441e06d0277485913b357ddb2a016be6e3aa195a8d93ca24ce7605929')
+sha256sums=('3d90ced414f5f44e54ac5acbce36059dd20791d9ac5bfdadae01f7b65b75a99b'
+            '8a8c3a88815e37fd1b1055a8c50d39513b9100d5965918455f8cfd6fd070c4e7'
+            '2fad60b6d07a81191e0bce293fd068cb88d55b5f9f8d1dc02b8c95509526feda')

@@ -1,3 +1,3 @@
 [Unit]
-Wants=fluent-aggregator.service
-After=fluent-aggregator.service
+Wants=fluentd.service
+After=fluentd.service
