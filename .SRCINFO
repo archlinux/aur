@@ -7,6 +7,7 @@ pkgbase = proton-drive-for-linux-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = gettext
 	depends = fuse3
 	depends = gtk4
 	depends = libadwaita

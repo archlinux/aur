@@ -9,7 +9,7 @@ url="https://github.com/narrrl/proton-drive-linux"
 license=('MIT')
 depends=('fuse3' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'dbus' 'gcc-libs' 'glibc'
          'hicolor-icon-theme')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'gettext')
 optdepends=('perl-image-exiftool: thumbnails for camera RAW files'
             'gnome-keyring: credential storage over the Secret Service API'
             'kwallet: credential storage over the Secret Service API'
@@ -72,6 +72,9 @@ package() {
   # systemd user unit for the auto-mount daemon; enabled per user, not by pacman.
   install -Dm644 packaging/proton-drive.service \
     "$pkgdir/usr/lib/systemd/user/proton-drive.service"
+
+  # Translations: compiled from po/ into /usr/share/locale.
+  po/build.sh "$pkgdir/usr/share/locale"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
