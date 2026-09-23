@@ -54,7 +54,9 @@ build() {
 
 check() {
     cd "$pkgname"
-    python -m pytest --disable-plugin-autoload
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -m pytest --disable-plugin-autoload
 }
 
 package() {
