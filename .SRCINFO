@@ -1,6 +1,6 @@
 pkgbase = nspawn-git
 	pkgdesc = Docker-like management of systemd-nspawn machines: OCI images from a hub, shared layers, a bridge network, driven over D-Bus
-	pkgver = 1.0.0.r0.gbdbbf36
+	pkgver = 1.0.0.r1.gbd2c86c
 	pkgrel = 1
 	url = https://github.com/nspawn/nspawn
 	arch = x86_64
