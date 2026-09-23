@@ -1,12 +1,12 @@
 pkgbase = kando-bin
-	pkgdesc = A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.3.1
-	pkgrel = 2
-	url = https://ko-fi.com/post/Introducing-Ken-Do-L3L7L0FQ2
+	pkgdesc = A pie menu for the desktop. It will be highly customizable and will allow you to create your own menus and actions.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://kando.menu/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = electron41
+	depends = electron43
 	depends = xdg-utils
 	optdepends = kde-cli-tools
 	optdepends = gnome-browser-connector
@@ -14,17 +14,17 @@ pkgbase = kando-bin
 	optdepends = gvfs
 	optdepends = alsa-lib
 	optdepends = pulseaudio
-	provides = kando=2.3.1
+	provides = kando=3.0.0
 	conflicts = kando
 	options = !strip
 	options = !emptydirs
-	source = LICENSE-2.3.1::https://raw.githubusercontent.com/kando-menu/kando/v2.3.1/LICENSE.md
+	source = LICENSE-3.0.0::https://raw.githubusercontent.com/kando-menu/kando/v3.0.0/LICENSE.md
 	source = kando.sh
 	sha256sums = fd6cb731b549de5452efacb0833cda7a328eb5263537d29ca18de9d7938f7bab
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = kando-2.3.1-aarch64.rpm::https://github.com/kando-menu/kando/releases/download/v2.3.1/kando-2.3.1-1.arm64.rpm
-	sha256sums_aarch64 = e0b193e40584fa6853b0027d92f50e5d08bba58f44abb2d05b2b30216b77e21d
-	source_x86_64 = kando-2.3.1-x86_64.rpm::https://github.com/kando-menu/kando/releases/download/v2.3.1/kando-2.3.1-1.x86_64.rpm
-	sha256sums_x86_64 = 81ee9f6e2a63f195a83d9f0f577d3cf8df150a31b5586b2371104546aba71087
+	sha256sums = 5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e
+	source_aarch64 = kando-3.0.0-aarch64.rpm::https://github.com/kando-menu/kando/releases/download/v3.0.0/kando-3.0.0-1.arm64.rpm
+	sha256sums_aarch64 = 69b956ec69e72f05aec0d18b6699fb3da4a943051ac589eb127fd67d1fb76111
+	source_x86_64 = kando-3.0.0-x86_64.rpm::https://github.com/kando-menu/kando/releases/download/v3.0.0/kando-3.0.0-1.x86_64.rpm
+	sha256sums_x86_64 = 1d3d2862929c1156c67265996b4f94978defdc4f9d7a110e1ae0582b6192b84b
 
 pkgname = kando-bin
