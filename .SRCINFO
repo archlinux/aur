@@ -1,0 +1,15 @@
+pkgbase = thunk_gen
+	pkgdesc = Thunk generator for C and assembler code.
+	pkgver = 1.11
+	pkgrel = 1
+	url = https://github.com/stsp/thunk_gen
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	source = thunk_gen-1.11.tar.gz::https://github.com/stsp/thunk_gen/archive/refs/tags/1.11.tar.gz
+	sha256sums = 579f8bc5a6d090495a30ac6ac090bf62ce5633c1fbfefb1f087367d02970456a
+
+pkgname = thunk_gen
+	depends = python-ply
