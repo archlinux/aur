@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=billboarder
-_pkgver=0.5.1
+_pkgver=0.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b92a5e07b83b55ba26c130288fd4769e')
-b2sums=('f94d72c28bad4f1092aea1b6a9a30091f5a432fc6dbbf68a37626eaf7586c59fa92a3494393df275b0710f90a81cf8f7836144cf74839884ad646bd8dad50fe4')
+md5sums=('363d5db9d8cafcea349ce2df704bfce5')
+b2sums=('6beb761c6c66faa2b0f87d19211c294a56425d270aeceb1f3c79bc24e75520d2a3ba960b0b7b3428dbf701e10ab91cc5128576a48190cccfd08726d28d8e7c81')
 
 build() {
   mkdir build
