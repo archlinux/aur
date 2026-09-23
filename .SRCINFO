@@ -1,6 +1,6 @@
 pkgbase = ntfsplus-dkms-git
 	pkgdesc = A new NTFS driver for Linux promised to be better than NTFS3. Maintained out-of-tree. Backported to 5.15 LTS.
-	pkgver = 2026.06.22+640b7dd
+	pkgver = 2026.09.21+fdfea0c
 	pkgrel = 1
 	url = https://github.com/namjaejeon/linux-ntfs
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = ntfsplus-dkms-git
 	source = 00-ntfsplus.conf
 	source = 90-udev-prefer-ntfsplus.rules
 	sha256sums = SKIP
-	sha256sums = e56996db016fbf39411624590f0033fb5b1aad03f3c72feb17705552f2d482c2
-	sha256sums = df453137fe0182ab488154dfaccbbb1fc64846c7f2d5d3a3358f12decdbab602
+	sha256sums = 2ebbf1760a7a3b6d160eebb0c4166a9c10addb7cd5eaf9c811fae8de0fea30e8
+	sha256sums = b724b4dccde208e043330bdcf885a7da960772af1af5f34825112575e118619a
 	sha256sums = 75133e4f350ee1cdc8bc96b3fea51ab720d7a5dd9c1f5392b386489de3babf70
 	sha256sums = 25f98d3070e1486d75351c38f5c2e30b4459e9e27cd5fdd45bba09eee94a684a
 

@@ -12,9 +12,14 @@ ntfs-y := aops.o attrib.o collate.o dir.o file.o index.o inode.o \
 	  upcase.o bitmap.o lcnalloc.o logfile.o reparse.o compress.o \
 	  iomap.o debug.o sysctl.o object_id.o bdev-io.o
 
+ntfs-$(CONFIG_NTFS_FS_WOF_COMPRESSION) += wof.o \
+       lib/decompress_common.o lib/lzx_decompress.o lib/xpress_decompress.o
+
 ccflags-$(CONFIG_NTFS_DEBUG) += -DDEBUG
 
 ccflags-$(CONFIG_NTFS_FS_POSIX_ACL) += -DCONFIG_NTFS_FS_POSIX_ACL
+
+ccflags-$(CONFIG_NTFS_FS_WOF_COMPRESSION) += -DCONFIG_NTFS_FS_WOF_COMPRESSION
 
 KDIR ?= /lib/modules/$(KVERSION)/build
 
