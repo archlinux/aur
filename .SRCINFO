@@ -1,0 +1,22 @@
+pkgbase = coze-bin
+	pkgdesc = Unofficial Linux version of Coze client.Work is handed over to coze, creation doesn't have to wait.扣子客户端非官方Linux版工作交给扣子，创造不必等待.
+	pkgver = 1.1.39
+	pkgrel = 1
+	url = https://www.coze.cn
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron39
+	depends = python
+	provides = coze=1.1.39
+	conflicts = coze
+	source = LICENSE.html::https://docs.coze.cn/guides_terms-of-service
+	source = coze.sh
+	sha256sums = 08ae9b4bb725b1611f3c4150d49d54b9b60f72b2b2c18d63d8c8bc4336de9696
+	sha256sums = 5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e
+	source_aarch64 = coze-1.1.39-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/coze-1.1.39/com.coze.uos_1.1.39_arm64.deb
+	sha256sums_aarch64 = a6c454448f839f15440314d58a42116a52bfc32adcdb1e358c24550b2aedaeb4
+	source_x86_64 = coze-1.1.39-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/coze-1.1.39/com.coze.uos_1.1.39_amd64.deb
+	sha256sums_x86_64 = 9f3257506841fe71ed8eda2e6a4963f1fdab60b5faaa0117b05112d1b87555b6
+
+pkgname = coze-bin
