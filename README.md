@@ -74,7 +74,7 @@ namcap crisperweaver-bin-*.pkg.tar.zst
 crisperweaver        # 与 crisper_weaver 都是 /usr/bin 下的软链
 ```
 
-已验证（0.11.1-1）：
+已验证（0.11.1-2）：
 
 - `makepkg -f` 构建通过；`namcap` **0 条 error 级**告警（剩 `libjvm.so` "未安装依赖"——
   Android-only 代码路径，Linux 上不会加载；`gcc-libs`/`libkeybinder3` "may not be needed"——
@@ -86,6 +86,12 @@ crisperweaver        # 与 crisper_weaver 都是 /usr/bin 下的软链
   `libapp.so`/`libglint.so`（本来没有 RUNPATH）和已经等于 `$ORIGIN` 的
   `libwhisper.so`/`libflutter_linux_gtk.so` 都没被动过。
 - 依赖映射用 `readelf -d` + `namcap` 双向核对过，见下面“依赖是怎么定的”。
+- 数据目录重定向：用沙箱 HOME 跑了 4 组对照实验（`$HOME/Documents` 真的不再被创建）：
+  1. 原始行为 ＝ `~/Documents/{batch,diagnostics,history,logs,models}`；
+  2. `XDG_DOCUMENTS_DIR` 环境变量 → **无效**（证明只能从外部命令入手）；
+  3. `PATH` 里没有 `xdg-user-dir` → 启动成功但报 `MissingPlatformDirectoryException`（所以 `xdg-user-dirs` 进了 depends）；
+  4. 上新 wrapper → 散落目录消失，数据全进 `~/Documents/crisperweaver/`；
+     `CRISPERWEAVER_DOCS_DIR` 覆盖和“恢复旧行为”两个分支也分别验过。
 
 ## 首次上传
 
@@ -125,10 +131,49 @@ pkgfile libkeybinder-3.0.so.0        # -> extra/libkeybinder3
 | `libstdc++.so.6`、`libgcc_s.so.1`、`libgomp.so.1`（OpenMP） | `gcc-libs` |
 | `libmpv.so*`（`dlopen`，不是 NEEDED）、`libespeak-ng.so`（`dlopen`） | `optdepends`：`mpv`、`espeak-ng` |
 | `libjvm.so`（`libdartjni.so` 需要） | **故意不声明**：JNI 只在 Android 路径用到，Linux 桌面不可达 |
+| `xdg-user-dir`（是外部**命令**，不是库） | **`depends=('xdg-user-dirs')`**：path_provider 靠它解析“文档目录”。实测缺了它，应用能启动但会报 `MissingPlatformDirectoryException`，日志/模型/历史全部失效 |
 
 注意 `lib/` 里那些“包自带”的库能被找到，靠的是主程序 ELF 里烧的
 `RUNPATH=$ORIGIN/lib`（`$ORIGIN` = 可执行文件真实所在目录）；`/usr/bin` 下的软链也没问题，
 因为 glibc 通过 `/proc/self/exe` 解析 `$ORIGIN`，拿到的是 `/usr/lib/crisperweaver/`。
+
+## ~/Documents 污染问题（wrapper 是干什么的）
+
+**现象**：一启动就发现 `~/Documents/` 里冒出 `models/`、`logs/`、`history/`、`batch/`、`diagnostics/`（用到导出时还有 `exports/`、`speakers/`、`vad/`、`crispasr-cache/`）。
+
+**根因**（已逐层核实）：
+
+```
+上游 Dart 代码 → path_provider 的 getApplicationDocumentsDirectory()
+              → path_provider_linux: xdg.getUserDirectory('DOCUMENTS')
+              → xdg_directories 1.1.0 会 Process.runSync('xdg-user-dir', ['DOCUMENTS'])
+              → CLI 读取 ~/.config/user-dirs.dirs 的 XDG_DOCUMENTS_DIR
+              → ~/Documents        ← 上游把“用户文档目录”当成了应用沙箱根目录
+```
+
+关键点：这个包是**预编译**的（逻辑 AOT 编进 `libapp.so`），-bin 包改不了代码；
+而且实测 `XDG_DOCUMENTS_DIR=/tmp/x` 这种环境变量**没用**（`xdg-user-dir` 只看配置文件），
+所以唯一的办法是在那一次外部命令调用上做文章。
+
+**做法**：`/usr/bin/crisperweaver` 不再直接软链到二进制，而是个 shell wrapper：
+把 `/usr/lib/crisperweaver/bin` 前置进 `PATH`，里面有个只回答 DOCUMENTS 的 `xdg-user-dir`
+shim（其它查询原样转发给 `/usr/bin/xdg-user-dir`）。结果：
+
+| | 位置 |
+|---|---|
+| 默认数据目录 | `<文档目录>/crisperweaver/`（即 `~/Documents/crisperweaver/`，文档目录位置是问真 `xdg-user-dir` 得来的，不是写死 `$HOME/Documents`） |
+| 自定义 | `CRISPERWEAVER_DOCS_DIR=/path/to/dir crisperweaver` |
+| 恢复上游行为（又散在 `~/Documents` 根下） | `CRISPERWEAVER_DOCS_DIR="$HOME/Documents" crisperweaver` |
+| 上游将来改用 `getApplicationSupportDirectory()` | shim 不再被查询，自动失效，不会坏事 |
+
+迁移旧数据（模型才是大的）：
+
+```bash
+mkdir -p ~/Documents/crisperweaver
+mv ~/Documents/{models,history,logs,batch,diagnostics} ~/Documents/crisperweaver/
+```
+
+> 迁移后如果历史记录里的旧绝对路径显示失效是正常的；模型目录是扫描式的，重开一次就能认到。
 
 ## 打包决策记录</parameter>
 
@@ -140,6 +185,7 @@ pkgfile libkeybinder-3.0.so.0        # -> extra/libkeybinder3
 | `depends` 不写 `hicolor-icon-theme` / `glib2` / `pango` / `cairo` … | 全部由 `gtk3` 隐式带入（namcap: implicitly satisfied） |
 | 不声明 `java-runtime` | `libdartjni.so` 的 `libjvm.so` 依赖只在 Android 路径用到，Linux 桌面端不可达 |
 | 不做 `crisperweaver`（源码包） | 源码构建要 4 个仓库（CrisperWeaver + CrispASR(+ggml 子模块) + CrispEmbed + glint）、60+ 个 C++ backend、1~2 小时；且上游 CI 钉 Flutter 3.44.1，AUR 只有 `flutter` 3.41.2（out-of-date）和 `flutter-bin` 3.47.5，版本对不上，不适合维护 |
+| wrapper + `xdg-user-dir` shim 把数据收进 `<文档目录>/crisperweaver` | 见上面专门一节。上游把 `getApplicationDocumentsDirectory()` 当沙箱根目录用，在 Linux 上就是往用户文档目录里扔一堆文件夹；预编译包改不了代码，只能拦这个外部命令。收进一个子目录而不是改去 `$XDG_DATA_HOME`，是因为用户更习惯在文档目录里找模型/导出 |
 
 ## 其他注意
 

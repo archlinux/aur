@@ -2,7 +2,7 @@
 
 pkgname=crisperweaver-bin
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="On-device audio transcription and speech synthesis GUI (Flutter frontend for the CrispASR engine)"
 arch=('x86_64')
 url="https://github.com/CrispStrobe/CrisperWeaver"
@@ -15,6 +15,10 @@ depends=(
   # libkeybinder-3.0.so.0 — required by libhotkey_manager_linux_plugin.so, which
   # the Flutter plugin registrant loads at startup (desktop global hotkeys).
   'libkeybinder3'
+  # path_provider 在 Linux 上要跑 `xdg-user-dir` 才能解析“应用文档目录”，
+  # 没有这个二进制时应用能启动但会报 MissingPlatformDirectoryException：
+  # 日志/模型/历史全部失效（实测）。
+  'xdg-user-dirs'
 )
 optdepends=(
   'espeak-ng: phonemizer used by the Kokoro/Piper TTS backends (loaded at runtime via dlopen)'
@@ -90,8 +94,48 @@ package() {
   fi
 
   install -d "$pkgdir/usr/bin"
-  ln -s /usr/lib/crisperweaver/crisper_weaver "$pkgdir/usr/bin/crisper_weaver"
-  ln -s /usr/lib/crisperweaver/crisper_weaver "$pkgdir/usr/bin/crisperweaver"
+
+  # ── 启动包装器：把 Flutter 的“文档目录”收进 ~/Documents/crisperweaver ──
+  # Flutter 的 path_provider 在 Linux 上靠执行 `xdg-user-dir DOCUMENTS` 得到
+  # “应用文档目录”，上游把它当沙箱根目录用，于是 logs/ models/ history/
+  # batch/ diagnostics/ 等好几个目录直接铺在用户的 ~/Documents 里。
+  # 这行为是 AOT 编译进 libapp.so 的，-bin 包改不了代码，所以只能拦那一次
+  # 外部命令调用：给应用一个 PATH 前置的 xdg-user-dir，只改 DOCUMENTS 的
+  # 回答（真文档目录 + /crisperweaver 一层，全部收进一个文件夹），其它查询
+  # （DOWNLOAD 等）原样转发给真正的 /usr/bin/xdg-user-dir。
+  # 注意：上游若哪天改用 getApplicationSupportDirectory，这个 shim 自动失效
+  # （不再被查询），不会坏事。
+  # 想换成别的位置：CRISPERWEAVER_DOCS_DIR=/path/to/dir crisperweaver
+  # 想恢复上游行为：CRISPERWEAVER_DOCS_DIR="$HOME/Documents" crisperweaver
+  install -d "$pkgdir/usr/lib/crisperweaver/bin"
+  cat >"$pkgdir/usr/lib/crisperweaver/bin/xdg-user-dir" <<'SHIM'
+#!/bin/sh
+if [ "$1" = DOCUMENTS ]; then
+  if [ -n "${CRISPERWEAVER_DOCS_DIR:-}" ]; then
+    printf '%s\n' "$CRISPERWEAVER_DOCS_DIR"
+  else
+    _base=$(/usr/bin/xdg-user-dir DOCUMENTS 2>/dev/null)
+    printf '%s\n' "${_base:-$HOME/Documents}/crisperweaver"
+  fi
+  exit 0
+fi
+exec /usr/bin/xdg-user-dir "$@"
+SHIM
+  chmod 0755 "$pkgdir/usr/lib/crisperweaver/bin/xdg-user-dir"
+
+  cat >"$pkgdir/usr/bin/crisperweaver" <<'WRAPPER'
+#!/bin/sh
+# CrisperWeaver 启动器（见 PKGBUILD 里的说明）。
+# CRISPERWEAVER_DOCS_DIR 可以指定数据存放目录，默认 <文档目录>/crisperweaver。
+shim=/usr/lib/crisperweaver/bin
+case ":$PATH:" in
+  *":$shim:"*) ;;
+  *) PATH="$shim:$PATH"; export PATH ;;
+esac
+exec /usr/lib/crisperweaver/crisper_weaver "$@"
+WRAPPER
+  chmod 0755 "$pkgdir/usr/bin/crisperweaver"
+  ln -s crisperweaver "$pkgdir/usr/bin/crisper_weaver"
 
   install -Dm644 com.crispstrobe.crisperweaver.desktop \
     "$pkgdir/usr/share/applications/com.crispstrobe.crisperweaver.desktop"

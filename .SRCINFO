@@ -1,7 +1,7 @@
 pkgbase = crisperweaver-bin
 	pkgdesc = On-device audio transcription and speech synthesis GUI (Flutter frontend for the CrispASR engine)
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CrispStrobe/CrisperWeaver
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -12,6 +12,7 @@ pkgbase = crisperweaver-bin
 	depends = gcc-libs
 	depends = gtk3
 	depends = libkeybinder3
+	depends = xdg-user-dirs
 	optdepends = espeak-ng: phonemizer used by the Kokoro/Piper TTS backends (loaded at runtime via dlopen)
 	optdepends = mpv: audio playback through libmpv (media_kit backend of just_audio)
 	provides = crisperweaver
