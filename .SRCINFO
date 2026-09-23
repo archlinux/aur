@@ -1,6 +1,6 @@
 pkgbase = jdk-temurin
-	pkgdesc = Temurin (OpenJDK 26 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 26.0.2.1.u1
+	pkgdesc = Temurin (OpenJDK 27 Java binaries by Adoptium, formerly AdoptOpenJDK)
+	pkgver = 27.u35
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk-temurin.sh
@@ -15,16 +15,16 @@ pkgbase = jdk-temurin
 	depends = alsa-lib
 	optdepends = gtk2: for the Gtk+ 2 look and feel
 	optdepends = gtk3: for the Gtk+ 3 look and feel
-	provides = java-runtime-headless=26
-	provides = java-runtime-headless-openjdk=26
-	provides = java-runtime=26
-	provides = java-runtime-openjdk=26
-	provides = java-environment=26
-	provides = java-environment-openjdk=26
-	provides = jdk26-openjdk=26.0.2.1.u1
-	provides = jdk-openjdk=26.0.2.1.u1
-	provides = openjdk26-src=26.0.2.1.u1
-	provides = openjdk-src=26.0.2.1.u1
+	provides = java-runtime-headless=27
+	provides = java-runtime-headless-openjdk=27
+	provides = java-runtime=27
+	provides = java-runtime-openjdk=27
+	provides = java-environment=27
+	provides = java-environment-openjdk=27
+	provides = jdk27-openjdk=27.u35
+	provides = jdk-openjdk=27.u35
+	provides = openjdk27-src=27.u35
+	provides = openjdk-src=27.u35
 	replaces = jdk-adoptopenjdk
 	options = !strip
 	backup = etc/java-temurin/logging.properties
@@ -40,11 +40,11 @@ pkgbase = jdk-temurin
 	backup = etc/java-temurin/security/policy/unlimited/default_local.policy
 	backup = etc/java-temurin/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-temurin/sound.properties
-	source = https://github.com/adoptium/temurin26-binaries/releases/download/jdk-26.0.2.1%2B1/OpenJDK26U-jdk_x64_linux_hotspot_26.0.2.1_1.tar.gz
+	source = https://github.com/adoptium/temurin27-binaries/releases/download/jdk-27%2B35/OpenJDK27U-jdk_x64_linux_hotspot_27_35.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 451c12e68747bcfa2fb5a2c16b00483fedb9fa6d77bc962d30957f76ac17044d
+	sha256sums = 1cf69a4848ffb728b3b260dfd45206a51566ab571a02a30092271d4c580bccbc
 	sha256sums = 18f0afce940156a66435d822faaf4cce7ca9cb702b09203598358b040ee48707
 	sha256sums = 95d1ca7e2313cdf6a7ef8ea3a7a963297523e10a3f73a64ff48b043a79b7e7cd
 	sha256sums = fb1d5497a09c7233331ca289c25f3d675dcd9269fe9b4b7c5a41ba711904c585
