@@ -3,7 +3,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-ffmpeg
-pkgver=8.1.2
+pkgver=9.0.1
 pkgrel=1
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
@@ -12,26 +12,18 @@ license=('GPL3')
 groups=('android-ffmpeg')
 depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-bzip2"
-         "android-${_android_arch}-cairo"
          "android-${_android_arch}-dav1d"
          "android-${_android_arch}-fontconfig"
-         "android-${_android_arch}-freetype2"
          "android-${_android_arch}-fribidi"
          "android-${_android_arch}-glib2"
          "android-${_android_arch}-gmp"
          "android-${_android_arch}-gnutls"
          "android-${_android_arch}-gsm"
-         "android-${_android_arch}-harfbuzz"
          "android-${_android_arch}-lame"
-         "android-${_android_arch}-libass"
          "android-${_android_arch}-libavc1394"
-         "android-${_android_arch}-libbluray"
-         "android-${_android_arch}-libbs2b"
          "android-${_android_arch}-libidn2"
          "android-${_android_arch}-libiec61883"
-         "android-${_android_arch}-libjxl"
          "android-${_android_arch}-libmodplug"
-         "android-${_android_arch}-libopenmpt"
          "android-${_android_arch}-libraw1394"
          "android-${_android_arch}-libsoxr"
          "android-${_android_arch}-libssh"
@@ -40,12 +32,9 @@ depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-libvpx"
          "android-${_android_arch}-libwebp"
          "android-${_android_arch}-libxml2"
-         "android-${_android_arch}-ocl-icd"
          "android-${_android_arch}-opencore-amr"
          "android-${_android_arch}-openjpeg2"
          "android-${_android_arch}-opus"
-         "android-${_android_arch}-rubberband"
-         "android-${_android_arch}-sdl2"
          "android-${_android_arch}-snappy"
          "android-${_android_arch}-speex"
          "android-${_android_arch}-srt"
@@ -59,23 +48,15 @@ depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-zlib")
 
 if [ "${_android_arch}" != riscv64 ]; then
-#    depends+=("android-${_android_arch}-librsvg")
     depends+=("android-${_android_arch}-rav1e")
 fi
 
 makedepends=('android-configure'
-             "android-${_android_arch}-avisynthplus"
-             "android-${_android_arch}-ladspa"
-             "android-${_android_arch}-opencl-headers"
              'nasm')
-#makedepends+=("android-${_android_arch}-frei0r-plugins")
-optdepends=("android-${_android_arch}-avisynthplus: AviSynthPlus support"
-            "android-${_android_arch}-ladspa: LADSPA filters")
-#optdepends+=("android-${_android_arch}-frei0r-plugins: Frei0r video effects support")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'configure.patch')
-md5sums=('797de9b3657247cdb1ea3635cd3e6e1b'
+md5sums=('3ed2aab5ce5d18a3c5e0d22d8ca3fadb'
          'c1851376794c16bcb37cfa8918e10cba')
 
 prepare() {
@@ -135,12 +116,8 @@ build() {
     esac
 
     if [ "${_android_arch}" != riscv64 ]; then
-#         extra_options="${extra_options} --enable-librsvg"
-        extra_options="${extra_options} --enable-librav1e"
+        extra_options="${extra_options} --enable-lto --enable-librav1e"
     fi
-
-    # Not yet available.
-    # extra_options="${extra_options} --enable-frei0r"
 
     ./configure \
         --prefix=${ANDROID_PREFIX} \
@@ -172,31 +149,20 @@ build() {
         --disable-indev=v4l2 \
         --disable-outdev=v4l2 \
         --disable-alsa \
-        --enable-lto \
-        --enable-avisynth \
         --enable-fontconfig \
         --enable-gmp \
         --enable-gnutls \
-        --enable-ladspa \
         --enable-libaom \
-        --enable-libass \
-        --enable-libbluray \
-        --enable-libbs2b \
         --enable-libdav1d \
-        --enable-libfreetype \
         --enable-libfribidi \
         --enable-libgsm \
-        --enable-libharfbuzz \
         --enable-libiec61883 \
-        --enable-libjxl \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
         --enable-libopencore_amrwb \
         --enable-libopenjpeg \
-        --enable-libopenmpt \
         --enable-libopus \
-        --enable-librubberband \
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
@@ -213,7 +179,6 @@ build() {
         --enable-libx265 \
         --enable-libxml2 \
         --enable-libxvid \
-        --enable-opencl \
         --enable-jni \
         --enable-mediacodec \
         --disable-xlib \
