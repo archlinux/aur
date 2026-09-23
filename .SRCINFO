@@ -1,12 +1,12 @@
 pkgbase = rust-llm-bin
 	pkgdesc = Terminal-first AI hub in Rust for prompting, chat, templates, embeddings and dev workflows
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/imjiaoyuan/llm
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = llm=0.3.0
+	provides = llm=0.3.1
 	conflicts = llm
 	conflicts = llm-bin
 	conflicts = llm-git
@@ -15,9 +15,9 @@ pkgbase = rust-llm-bin
 	options = !debug
 	source = LICENSE::https://raw.githubusercontent.com/imjiaoyuan/llm/main/LICENSE
 	sha256sums = b0adbc31ae0c3ab64ae21504359ba5e70f29886a559c99a79fb5cba762de670c
-	source_x86_64 = llm-x86_64.tar.gz::https://github.com/imjiaoyuan/llm/releases/download/v0.3.0/llm-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 8c644879031db3e265d875c75601f9046c771f14c010adf09e300694b01ee217
-	source_aarch64 = llm-aarch64.tar.gz::https://github.com/imjiaoyuan/llm/releases/download/v0.3.0/llm-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 81a97340640ba97b450a15a63a549c04b5eb8d2d1a6d8bda4fbd28207e777ab6
+	source_x86_64 = llm-x86_64.tar.gz::https://github.com/imjiaoyuan/llm/releases/download/v0.3.1/llm-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 5ced41f4b4a0448aaa7f7f303713c5d25c6e007cd853fb568389aa950c0e7d41
+	source_aarch64 = llm-aarch64.tar.gz::https://github.com/imjiaoyuan/llm/releases/download/v0.3.1/llm-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 3f35dbc858933cd8ee2f0efb36fe94a496cd002c95a003f380e9042f7454ed47
 
 pkgname = rust-llm-bin
