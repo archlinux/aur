@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=vacask
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
     'x86_64'
@@ -17,6 +17,8 @@ depends=(
     'libstdc++'
     'libgcc'
     'libgomp'
+    'openblas'
+    'python'
 )
 makedepends=(
     'git'
@@ -26,14 +28,15 @@ makedepends=(
     'boost'
     'bison'
     'flex'
+    'tomlplusplus'
 )
 checkdepends=(
-    'python'
     'python-numpy'
     'python-scipy'
+    'python-matplotlib'
 )
 optdepends=(
-    'python-matplotlib: For plotting the individual tests'
+    'python-scikit-rf: For converting from touchstone to VACASK'
 )
 options=()
 source=(
