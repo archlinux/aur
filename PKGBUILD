@@ -1,7 +1,7 @@
 # Maintainer: pupu <li+puoopuo0o at nand dot sh>
 
 pkgname=cskk
-pkgver=3.3.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="SKK (Simple Kana Kanji henkan) library"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=(cargo-c)
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('b3264fda813f672eaf486b51d820f57cfdd5d8a401ac06e88ebbf47c74ff0f65d7cf3a9a64e7abb0ed51f47d9dbc287f9b65da920c292aecb2f6b2e840b9cf36')
+b2sums=('2257a1455982fc80f4344db82cb8a1ffc3fafa5091cb2555a4ebed585bbd035530121cc292ff2c55a98f169545d0e72d592e64d905d14c7ad99e20f1ece8dc42')
 
 prepare() {
   cd $pkgname-$pkgver
