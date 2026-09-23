@@ -2,7 +2,7 @@
 _base=islpy
 pkgname=python-${_base}
 pkgdesc="Wrapper around isl, an integer set library"
-pkgver=2026.2.1
+pkgver=2026.2.2
 pkgrel=1
 arch=(x86_64)
 url="https://documen.tician.de/${_base}"
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel
 source=(git+https://github.com/inducer/${_base}.git?signed#tag=v${pkgver}
   git+https://github.com/inducer/isl.git)
 validpgpkeys=('900A958D9A0ACA58B1468F2471AA298BCA171145') # Andreas Kloeckner <mathem@tician.de>
-sha512sums=('e3d420aa42dcda3f1f8afb85bf2d4acdc813a272644dea7ea73d4ff7f0a057171427ed1759530e992bca810f123873e0bffa9c96676a9572b5bc0649fc255b8b'
+sha512sums=('f5747d407c0b1ae65800ed1ffa8afc36ae952d46fde9dae7e49149117f2c139c1bcff6879ad8a37c2006f6a3f3c7d7da5866f6f3e4595fe677b71f818fc700e8'
             'SKIP')
 
 prepare() {
