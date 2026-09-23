@@ -1,8 +1,8 @@
 # Maintainer: Gesh <gesh@gesh.uni.cx>
 
 pkgname='python-citeproc-py'
-pkgver=0.9.0
-_pkgver=adc70c3df99037fe8f49e8b40c7afd852b319bbb
+pkgver=0.11.1
+_pkgver=ba46164947903d7bddf895924f910bca66497a82
 pkgrel=1
 pkgdesc="Citations and bibliography formatter"
 url="https://github.com/citeproc-py/citeproc-py"
@@ -33,7 +33,7 @@ _testUrl=https://github.com/citation-style-language/test-suite
 _submods['tests/test-suite']='csl-tests'
 source+=("csl-tests::git+${_testUrl}.git#commit=${_testVer}")
 
-sha256sums=('5a5bc0b652c8a3f51e7078b022778be11bd5b78993629133d33d5dc28c69a1b6'
+sha256sums=('13b4512d5420b902db11b20f41a58cc82392d7db2eb9f39831c25deb1554965b'
             'SKIP'
             'SKIP'
             '5189c9de1064f12163117d6f63eb87b62a0f578890590db5d5d200f5f2da0a55')
