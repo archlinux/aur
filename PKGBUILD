@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=voicestudio-bin
 _pkgname=VoiceStudio
-pkgver=0.5.5
+pkgver=0.5.6
 _electronversion=44
 pkgrel=1
 pkgdesc="Open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages."
@@ -33,7 +33,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-Electron-${pkgver}-linux-x64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('476e524c0996bde5afc25b184cc04f4bb8634427f1696e9e92a821cbe70901b7'
+sha256sums=('1e25b412cb78f46e86baffb12eb73018592b6c2085609628d6e82e918fd05f9b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
