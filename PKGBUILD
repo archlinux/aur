@@ -1,13 +1,13 @@
 # Maintainer: ELECTRO <electro@electris.net>
 
 pkgname=rustypaint-git
-pkgver=0.2.3.r0.g2c68909
+pkgver=0.2.3.r22.ga9f31dd
 pkgrel=1
 pkgdesc="Paint 3D's 2D editor, without the 3D (Git version)"
 arch=('x86_64' 'aarch64')
 url='https://github.com/ItzELECTR0/RustyPaint'
 license=('GPL-3.0-only')
-depends=('fontconfig' 'libxkbcommon' 'vulkan-icd-loader')
+depends=('fontconfig' 'libxkbcommon' 'vulkan-icd-loader' 'gcc-libs')
 makedepends=('cargo' 'git')
 optdepends=('xdg-desktop-portal: native file dialogs, and following the system colour scheme'
             'vulkan-radeon: AMD GPU driver'
@@ -19,6 +19,11 @@ options=('!debug')
 _native=1
 source=('rustypaint::git+https://github.com/ItzELECTR0/RustyPaint.git')
 b2sums=('SKIP')
+source_x86_64=('onnxruntime-x86_64.tar.lzma2::https://cdn.pyke.io/0/pyke:ort-rs/ms@1.28.0/x86_64-unknown-linux-gnu.tar.lzma2')
+source_aarch64=('onnxruntime-aarch64.tar.lzma2::https://cdn.pyke.io/0/pyke:ort-rs/ms@1.28.0/aarch64-unknown-linux-gnu.tar.lzma2')
+sha256sums_x86_64=('e454f710f8a49f53aa5b4ff51e3454ae1835777e431c6c35c5255ce6f205fd68')
+sha256sums_aarch64=('06a050ab9137ccb32421d0cb49e9ccf72d9e18ab0aeb8f8d038d1b5cc844b35a')
+noextract=('onnxruntime-x86_64.tar.lzma2' 'onnxruntime-aarch64.tar.lzma2')
 
 pkgver() {
     cd rustypaint
@@ -26,6 +31,8 @@ pkgver() {
 }
 
 prepare() {
+    mkdir -p "$srcdir/onnxruntime"
+    xz --decompress --stdout --format=raw --lzma2=dict=64MiB "$srcdir/onnxruntime-$CARCH.tar.lzma2" | tar -xf - -C "$srcdir/onnxruntime"
     cd rustypaint
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -33,6 +40,14 @@ prepare() {
 build() {
     cd rustypaint
     export CARGO_TARGET_DIR=target
+    export ORT_LIB_PATH="$srcdir/onnxruntime"
+
+    for variable in CFLAGS CXXFLAGS; do
+        read -ra flags <<< "${!variable}"
+        flags=("${flags[@]/#-flto*/}")
+        printf -v "$variable" '%s ' "${flags[@]}"
+        export "$variable"
+    done
 
     if [[ -n "${_native:-}" ]]; then
         export RUSTFLAGS="${RUSTFLAGS:-} -C target-cpu=native"
