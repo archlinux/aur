@@ -1,5 +1,5 @@
 pkgname=hyprism-shell
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc='Hyprland and Quickshell desktop environment with dynamic theming'
 arch=('any')
@@ -66,7 +66,7 @@ optdepends=(
   'zathura-pdf-mupdf: PDF support for Zathura'
 )
 source=("hyprism-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6eced0423d7752d0f71936e05bbc0f895c7d7842509c302aa7009db271b59354')
+sha256sums=('7a1df0a2b25c8770118c9066a001ce1be4a57b5e43a1eb06fbeb262c80729666')
 
 package() {
   cd "hyprism-${pkgver}"
