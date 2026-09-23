@@ -2,8 +2,8 @@
 
 pkgname=vmod-uuid
 _srcver=ae0ca345b9974092bf139409d2852fc46886c250
-pkgver=9.0.3
-pkgrel=3
+pkgver=9.1.0
+pkgrel=2
 pkgdesc="Generate UUIDs in Varnish VCL"
 arch=('x86_64')
 url="https://github.com/otto-de/libvmod-uuid"
