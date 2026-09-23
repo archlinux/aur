@@ -1,22 +1,19 @@
 pkgbase = tpm2-kira
 	pkgdesc = TPM2-based TOTP authenticator with PCR policies
-	pkgver = 0.1.2
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/mrwiora/tpm2-kira
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = go>=1.19
-	makedepends = git
-	depends = bash
-	depends = tpm2-tools>=5.0
-	depends = tpm2-tss>=3.0.0
+	makedepends = go>=1.24
+	depends = glibc
 	optdepends = mkinitcpio: for early boot integration
 	optdepends = cryptsetup: for disk encryption integration
-	optdepends = systemd: for systemd-based initramfs
-	provides = tpm2-kira
+	optdepends = qrencode: renders the enrolment QR code during setup
+	optdepends = tpm2-tools: for debugging and integration testing
 	conflicts = tpm2-kira-git
 	options = !debug
-	source = tpm2-kira::git+https://github.com/mrwiora/tpm2-kira.git
-	sha256sums = SKIP
+	source = tpm2-kira-0.3.1.tar.gz::https://github.com/mrwiora/tpm2-kira/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = dbf65b5deace90f3d8481d30e345ab69290cdec4f242ea0cee23a4a900bc390a
 
 pkgname = tpm2-kira
