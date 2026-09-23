@@ -1,6 +1,6 @@
 pkgbase = silex-desktop-v3-bin
 	pkgdesc = Silex website builder desktop application
-	pkgver = 3.9.0
+	pkgver = 3.10.0canary3
 	pkgrel = 1
 	url = https://github.com/silexlabs/Silex
 	arch = x86_64
@@ -13,8 +13,15 @@ pkgbase = silex-desktop-v3-bin
 	depends = libsoup3
 	depends = openssl
 	depends = webkit2gtk-4.1
+	options = !strip
 	options = !debug
-	source = Silex_3.9.0_amd64.deb::https://github.com/silexlabs/Silex/releases/download/v3.9.0/Silex_3.9.0_amd64.deb
-	sha256sums = 1bf233109cd014e7d8c8134a4c843b7addc75ba2ff12f560b99a83860f1a1ac5
+	source = silex-desktop-3.10.0-canary.3::https://github.com/silexlabs/Silex/releases/download/v3.10.0-canary.3/silex-desktop
+	source = silex-desktop-3.10.0-canary.3-32.png::https://raw.githubusercontent.com/silexlabs/Silex/v3.10.0-canary.3/desktop/src-tauri/icons/32x32.png
+	source = silex-desktop-3.10.0-canary.3-128.png::https://raw.githubusercontent.com/silexlabs/Silex/v3.10.0-canary.3/desktop/src-tauri/icons/128x128.png
+	source = silex-desktop-3.10.0-canary.3-256.png::https://raw.githubusercontent.com/silexlabs/Silex/v3.10.0-canary.3/desktop/src-tauri/icons/128x128@2x.png
+	sha256sums = 0431cd1dcf7f831ee832d70f0c51b94630f0cee01109782c9b148b0df16fed58
+	sha256sums = 989a7245ae9e7c4e88c6c3213e14b8b75f292e1075f105991c7076cdfda3487d
+	sha256sums = a657b1fb4c4bcd261346772be2c1b779f7c85f62adbdd5cc1387b34280273739
+	sha256sums = e4c825dcf606944b693354d819d7e3ee861d97c80cb0cf40612b8e40f1a996e6
 
 pkgname = silex-desktop-v3-bin
