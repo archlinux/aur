@@ -1,6 +1,6 @@
 # Maintainer: HAHWUL <hahwul@gmail.com>
 pkgname=smugglex
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="HTTP request smuggling detection scanner"
 arch=('x86_64' 'aarch64')
