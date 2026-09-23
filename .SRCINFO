@@ -1,0 +1,15 @@
+pkgbase = intel-igpu-hwmon-dkms-git
+	pkgdesc = hwmon power, temperature and memory clock for Intel integrated GPUs on xe, DKMS
+	pkgver = r2.de3c9e0
+	pkgrel = 1
+	url = https://github.com/Magniquick/intel-client-dkms
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	provides = intel-igpu-hwmon-dkms
+	conflicts = intel-igpu-hwmon-dkms
+	source = intel-client-dkms::git+https://github.com/Magniquick/intel-client-dkms.git
+	sha256sums = SKIP
+
+pkgname = intel-igpu-hwmon-dkms-git
