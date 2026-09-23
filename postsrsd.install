@@ -6,10 +6,10 @@ post_install() {
   chown postsrsd:root /etc/postsrsd/postsrsd.secret
   chmod 400 /etc/postsrsd/postsrsd.secret
   cat << _EOF
-Don't forget to set your domainname in /etc/postsrsd/postsrsd.conf
+Don't forget to edit /etc/postsrsd/postsrsd.conf
 _EOF
 }
 
 post_remove() {
-	userdel postsrsd
+  userdel postsrsd
 }

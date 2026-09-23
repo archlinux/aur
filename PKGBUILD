@@ -5,8 +5,8 @@
 
 pkgname=postsrsd-git
 epoch=1
-pkgver=2.4.0+3.r432.20260922.gfa789f8
-pkgrel=2
+pkgver=2.4.0+4.r433.20260923.gae0454d
+pkgrel=1
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
 provides=("postsrsd=${pkgver}")
 conflicts=("postsrsd")
@@ -15,23 +15,27 @@ arch=(
   'x86_64'
 )
 depends=(
-  'bash'
   'glibc'
-  'openssl'
+  'confuse'
+  'hiredis'
+  'libseccomp.so'
+  'libsqlite3.so'
 )
 makedepends=(
-  'cmake'
-  'coreutils' # for `base64` and `dd`
   'git'
-  'help2man'
+  'cmake'
+  'ninja'
+  'coreutils' # for `base64` and `dd`
+  'libseccomp'
+  'sqlite3'
 )
 backup=(
   'etc/postsrsd/postsrsd.conf'
-  'etc/default/postsrsd'
+  'etc/postsrsd/postsrsd.secret'
 )
 url="https://github.com/roehling/postsrsd"
 install=postsrsd.install
-license=(GPL2)
+license=("GPL-3.0-only")
 source=(
   'git+https://github.com/roehling/postsrsd.git'
   "sysusers.d-postsrsd.conf"
@@ -42,9 +46,47 @@ sha256sums=(
   'SKIP'
   'f3d61362ed64e9ad33427b23b471c028b613b7eedd51dc01a203c8ba1c0e3427'
   '8613b3c1a6eec65d0137d97781c8919a84879c49be137b48f8bd29ee3b96cd08'
-  '996ab88e39abbe2ef870c69624be1f404945545b42c7826b36a25aff8abcb62c'
+  'd6bfcfafdbb89adb8e340f652782924cf602de8a84f1026a4c337dd71953d444'
 )
 #options=('emptydirs')
+
+prepare() {
+  cd "${srcdir}/postsrsd"
+
+  git log > git.log
+
+  if [ -d build ]; then
+    rm -rf build
+  fi
+
+  cd "${srcdir}"
+
+  # -DINSTALL_SYSTEMD_SYSUSERS=OFF: Install package bundled '/usr/lib/sysusers.d/postsrsd.conf' instead of upstream generated.
+  cmake -B build -S postsrsd -G Ninja \
+    -DFETCHCONTENT_QUIET=OFF \
+    -DFETCHCONTENT_UPDATES_DISCONNECTED=ON \
+    -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+    -DCPACK_BINARY_STGZ=OFF \
+    -DCPACK_BINARY_TGZ=OFF \
+    -DCPACK_BINARY_TZ=OFF \
+    -DBUILD_TESTING=ON \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=ON \
+    -DEXECUTABLE_WITH_ASAN=OFF \
+    -DGENERATE_SRS_SECRET=OFF \
+    -DINSTALL_SYSTEMD_SERVICE=ON \
+    -DINSTALL_SYSTEMD_SYSUSERS=OFF \
+    -DSYSTEMD_SYSUSERSDIR=/usr/lib/sysusers.d \
+    -DSYSTEMD_UNITDIR=/usr/lib/systemd/system \
+    -DWITH_REDIS=ON \
+    -DWITH_SECCOMP=ON \
+    -DWITH_SQLITE=ON \
+    -DUSE_DOMAINS_FILE=OFF \
+    -DUSE_DOMAINS_FILE_WATCH=OFF \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
+    -Wno-dev
+}
 
 pkgver() {
   cd "${srcdir}/postsrsd"
@@ -57,52 +99,31 @@ pkgver() {
 
 build() {
   cd "${srcdir}"
-  ###sed -e 's|${SYSCONF_DIR}/systemd/system|/usr/lib/systemd/system|g' -i postsrsd/postinstall.cmake.in
-  rm -rf build
-  mkdir build
 
-  cmake -B build -S postsrsd \
-    -DBUILD_TESTING=ON \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DEXECUTABLE_WITH_ASAN=OFF \
-    -DGENERATE_SRS_SECRET=OFF \
-    -DINSTALL_SYSTEMD_SERVICE=ON \
-    -DINSTALL_SYSTEMD_SYSUSERS=OFF \
-    -DWITH_REDIS=ON \
-    -DWITH_SECCOMP=ON \
-    -DWITH_SQLITE=ON \
-    -DUSE_DOMAINS_FILE=OFF \
-    -DUSE_DOMAINS_FILE_WATCH=OFF \
-    -DUSE_APPARMOR=OFF \
-    -DUSE_SELINUX=OFF \
-    -Wno-dev
-
-  make -C build all
+  # make -C build all
+  cmake --build build
 }
 
 check() {
-  cd "${srcdir}/build"
-  make test
+  cd "${srcdir}"
+
+  # make -C build test
+  ctest --test-dir build --output-on-failure --parallel $(nproc)
 }
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}/" install
+  cd "${srcdir}"
+  # make DESTDIR="${pkgdir}/" -C build install
+  DESTDIR="${pkgdir}/" cmake --install build
 
-  #rm -rf ${pkgdir}/usr/lib
   mv -v "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
-  sed -e 's/^\(RUN_AS=\)nobody/#\1postsrsd/;s/\(\/etc\/postsrsd\)\(\.secret\)/\1\/postsrsd\2/' \
-      -e 's/^\(# is \).*$/\1localhost\.localdomain/' < postsrsd.default > postsrsd.conf
-  install -D -v -m644 "postsrsd.conf" "${pkgdir}/etc/postsrsd/postsrsd.conf"
-  install -D -v -m644 "postsrsd.systemd" "${pkgdir}/usr/lib/systemd/system/postsrsd.service"
-  install -D -v -m644 "${srcdir}/sysusers.d-postsrsd.conf" "${pkgdir}/usr/lib/sysusers.d/postsrsd.conf"
-  install -D -v -m644 "${srcdir}/tmpfiles.d-postsrsd.conf" "${pkgdir}/usr/lib/tmpfiles.d/postsrsd.conf"
 
-  for _docfile in README.md README.exim.md README_UPGRADE.md CODE_OF_CONDUCT.md; do
-    install -D -v -m644 "${srcdir}/postsrsd/${_docfile}" "${pkgdir}/usr/share/doc/${_docfile}"
-  done
-  for _exampleexecutable in run_postsrsd_tests.bats ; do
-    install -D -v -m755 "${srcdir}/postsrsd/${_exampleexecutable}" "${pkgdir}/usr/share/doc/${_exampleexecutable}"
-  done
+  cd "${srcdir}/build"
+  install -Dvm644 "postsrsd.conf" "${pkgdir}/etc/postsrsd/postsrsd.conf"
+  ### install -Dvm644 "sysusers.d/postsrsd.conf" "${pkgdir}/usr/lib/sysusers.d/postsrsd.conf" # DO NOT install this!, but use below line.
+  install -Dvm644 "${srcdir}/sysusers.d-postsrsd.conf" "${pkgdir}/usr/lib/sysusers.d/postsrsd.conf" # Install package bundled '/usr/lib/sysusers.d/postsrsd.conf' instead of upstream generated.
+  install -Dvm644 "${srcdir}/tmpfiles.d-postsrsd.conf" "${pkgdir}/usr/lib/tmpfiles.d/postsrsd.conf"
+
+  cd "${srcdir}/postsrsd"
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/postsrsd" git.log CHANGELOG.rst README.rst doc/packaging.rst
 }

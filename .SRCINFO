@@ -1,24 +1,28 @@
 pkgbase = postsrsd-git
 	pkgdesc = Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix
-	pkgver = 2.4.0+3.r432.20260922.gfa789f8
-	pkgrel = 2
+	pkgver = 2.4.0+4.r433.20260923.gae0454d
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/roehling/postsrsd
 	install = postsrsd.install
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	makedepends = cmake
-	makedepends = coreutils
+	license = GPL-3.0-only
 	makedepends = git
-	makedepends = help2man
-	depends = bash
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = coreutils
+	makedepends = libseccomp
+	makedepends = sqlite3
 	depends = glibc
-	depends = openssl
-	provides = postsrsd=2.4.0+3.r432.20260922.gfa789f8
+	depends = confuse
+	depends = hiredis
+	depends = libseccomp.so
+	depends = libsqlite3.so
+	provides = postsrsd=2.4.0+4.r433.20260923.gae0454d
 	conflicts = postsrsd
 	backup = etc/postsrsd/postsrsd.conf
-	backup = etc/default/postsrsd
+	backup = etc/postsrsd/postsrsd.secret
 	source = git+https://github.com/roehling/postsrsd.git
 	source = sysusers.d-postsrsd.conf
 	source = tmpfiles.d-postsrsd.conf
@@ -26,6 +30,6 @@ pkgbase = postsrsd-git
 	sha256sums = SKIP
 	sha256sums = f3d61362ed64e9ad33427b23b471c028b613b7eedd51dc01a203c8ba1c0e3427
 	sha256sums = 8613b3c1a6eec65d0137d97781c8919a84879c49be137b48f8bd29ee3b96cd08
-	sha256sums = 996ab88e39abbe2ef870c69624be1f404945545b42c7826b36a25aff8abcb62c
+	sha256sums = d6bfcfafdbb89adb8e340f652782924cf602de8a84f1026a4c337dd71953d444
 
 pkgname = postsrsd-git
