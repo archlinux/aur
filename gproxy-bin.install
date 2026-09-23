@@ -1,0 +1,27 @@
+post_install() {
+    echo ":: gproxy is installed but not started."
+    echo "   Start it now:      systemctl start gproxy.service"
+    echo "   Start on boot:     systemctl enable gproxy.service"
+    echo ""
+    echo "   On the first start with an empty database, gproxy generates an"
+    echo "   admin username/password and prints them once. Since the service"
+    echo "   runs under systemd, read them from the journal:"
+    echo "       journalctl -u gproxy.service -n 50"
+    echo ""
+    echo "   The web console is served at http://127.0.0.1:8787/admin"
+    echo "   Data is stored in /var/lib/gproxy (managed by systemd's"
+    echo "   DynamicUser, StateDirectory=gproxy)."
+    echo ""
+    echo "   Edit /etc/gproxy/gproxy.env to set a GPROXY_MASTER_KEY, change"
+    echo "   the listen address, or recover admin access, then restart:"
+    echo "       systemctl restart gproxy.service"
+}
+
+post_upgrade() {
+    echo ":: If gproxy.service is running, restart it to use the new binary:"
+    echo "     systemctl restart gproxy.service"
+}
+
+pre_remove() {
+    systemctl stop gproxy.service >/dev/null 2>&1 || true
+}
