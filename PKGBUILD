@@ -6,7 +6,7 @@
 # regenerates .SRCINFO with `makepkg --printsrcinfo` on every release tag.
 # Keep the two PKGBUILDs in step by hand; the AUR one is what users see.
 pkgname=clockwork-orange-git
-pkgver=4.3.2
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Wallpaper manager and downloader with plugin support (Wallhaven, DuckDuckGo Images) for KDE Plasma 6"
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,10 @@ build() {
 	cd "${srcdir}/${pkgname}"
 	export GOFLAGS="-buildvcs=false -mod=readonly"
 	export CGO_ENABLED=1
-	make build build-gui
+	# VERSION explicitly: a package is the plain version, and the Makefile
+	# would otherwise stamp a -dev suffix on a checkout that is not sitting
+	# on the release tag -- which a VCS package never is.
+	make build build-gui VERSION="$(tr -d '[:space:]v' < .tag)"
 }
 
 check() {
