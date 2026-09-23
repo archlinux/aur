@@ -1,5 +1,5 @@
 pkgname=buzz-appimage
-pkgver=0.5.23
+pkgver=0.5.24
 pkgrel=1
 pkgdesc="Self-hostable workspace where humans and AI agents build together, on a relay you own"
 arch=(x86_64)
@@ -11,8 +11,8 @@ options=(!strip !debug)
 conflicts=("buzz-bin" "buzz-git" "buzz-desktop-git")
 
 _appimage="Buzz_${pkgver}_amd64.AppImage"
-source=("${_appimage}::https://github.com/block/buzz/releases/download/desktop-v0.5.23/Buzz_0.5.23_amd64.AppImage")
-sha256sums=('f5bad1edeba2d6343e4102e9ce2baed4cda4a6dfd16abaa33081bfadbc5f9d4e')
+source=("${_appimage}::https://github.com/block/buzz/releases/download/desktop-v0.5.24/Buzz_0.5.24_amd64.AppImage")
+sha256sums=('703e6cff212f7eabbc65b3cb816c56d65aa858c435a3de3154ffbb323ac9370b')
 noextract=("${_appimage}")
 
 prepare() {
