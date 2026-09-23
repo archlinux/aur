@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folia-major
 _pkgname=Folia
-pkgver=0.7.7
+pkgver=0.7.8
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('cf602d61aee138d088fc8927decba2f359b16ee1ef9fc1d83775332dfdac4f93'
+sha256sums=('0f90530b31af85ef00de84d08b6b5f5762820d161ca9f75faf1318119a1901cb'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -37,24 +37,23 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-    export NPM_CONFIG_MAXSOCKETS=32
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-        }
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export npm_config_cache="${HOME}/.npm_cache"
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
+	export npm_config_audit=false
+	mkdir -p "${HOME}" "${npm_config_cache}" "${COREPACK_HOME}"
 }
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -71,28 +70,32 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname}.sh"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     find electron -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     cp .env.example .env
-    NODE_ENV=development    npm install
+    export NODE_ENV=development
+    export npm_config_allow_remote=all
+    npm install
 }
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	_set_build_env
-    _ensure_local_nvm
-    ELECTRON=true NODE_ENV=production     npm run build
-    ELECTRON=true NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
+	_ensure_local_nvm
+    _set_build_env
+    export ELECTRON=true
+    export NODE_ENV=production
+    npm run build
+    npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
     local _app_dir=$(_get_app_dir)
     ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/ffmpeg-audio/ffmpeg"
+    rm -rf "${_app_dir}/resources/default_app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
-	rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packaging/aur/${pkgname}-bin/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
