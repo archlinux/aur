@@ -1,7 +1,7 @@
 pkgbase = plasma6-applets-kde-control-station
 	pkgdesc = A beautiful and modern configuration center for KDE Plasma inspired by macOS
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/EliverLara/kde-control-station
 	arch = any
 	license = GPL-3.0-only
@@ -16,7 +16,9 @@ pkgbase = plasma6-applets-kde-control-station
 	depends = powerdevil
 	source = https://github.com/EliverLara/kde-control-station/archive/bb473188a19d6cbe89a9c1bb5b08c7ddc609375d.tar.gz
 	source = kde-control-station-fixes.patch
+	source = kde-control-station-qml-error-fixes.patch
 	sha256sums = b2d3c32aab490d8e0efedba4b0c4c906d7dbd0ce56d483861550879a8f0db898
 	sha256sums = 429bd5187c77a71757c7d2c786d5e605bc5001d693af84733d0f8a5602a96e00
+	sha256sums = ac26b59d59f3d09251fe6da976413f76392d9531b33a6791472907b50516c78b
 
 pkgname = plasma6-applets-kde-control-station

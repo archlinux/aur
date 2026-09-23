@@ -1,0 +1,79 @@
+diff --git a/package/contents/ui/pages/components/mediaPlayer/ExpandedRepresentation.qml b/package/contents/ui/pages/components/mediaPlayer/ExpandedRepresentation.qml
+index c12cda8..9c4e78e 100644
+--- a/package/contents/ui/pages/components/mediaPlayer/ExpandedRepresentation.qml
++++ b/package/contents/ui/pages/components/mediaPlayer/ExpandedRepresentation.qml
+@@ -50,19 +50,30 @@ PlasmaExtras.Representation {
+   //  KeyNavigation.tab: playerSelector.count ? playerSelector.currentItem : (seekSlider.visible ? seekSlider : seekSlider.KeyNavigation.down)
+     KeyNavigation.down: KeyNavigation.tab
+ 
+-    onPositionChanged: {
++    /* Both handlers below write properties that the time labels also depend on
++     * (seekSlider.value / seekSlider.to, and length through durationFormattingOptions).
++     * Writing them straight from a change handler means the write can land while one of
++     * those label bindings is being evaluated, which makes Qt re-enter the binding that
++     * is currently evaluating (QQmlBinding::update()) and log
++     * "Binding loop detected for property \"text\"".
++     * Deferring the writes to the next event loop turn keeps them outside of any running
++     * binding evaluation. */
++    function syncSliderPosition() {
+         // we don't want to interrupt the user dragging the slider
+-        if (!seekSlider.pressed && !keyPressed) {
+-            // we also don't want passive position updates
+-            disablePositionUpdate = true
+-            // Slider refuses to set value beyond its end, make sure "to" is up-to-date first
+-            seekSlider.to = length;
+-            seekSlider.value = position
+-            disablePositionUpdate = false
++        if (seekSlider.pressed || keyPressed) {
++            return;
+         }
++        // we also don't want passive position updates
++        disablePositionUpdate = true
++        // Slider refuses to set value beyond its end, make sure "to" is up-to-date first
++        seekSlider.to = length;
++        seekSlider.value = position
++        disablePositionUpdate = false
+     }
+ 
+-    onLengthChanged: {
++    onPositionChanged: Qt.callLater(syncSliderPosition)
++
++    function syncSliderLength() {
+         disablePositionUpdate = true
+         // When reducing maximumValue, value is clamped to it, however
+         // when increasing it again it gets its old value back.
+@@ -74,6 +85,8 @@ PlasmaExtras.Representation {
+         disablePositionUpdate = false
+     }
+ 
++    onLengthChanged: Qt.callLater(syncSliderLength)
++
+     Keys.onPressed: keyPressed = true
+ 
+     Keys.onReleased: event => {
+diff --git a/package/contents/ui/pages/components/network/ConnectionItem.qml b/package/contents/ui/pages/components/network/ConnectionItem.qml
+index 7497b00..caabf3b 100644
+--- a/package/contents/ui/pages/components/network/ConnectionItem.qml
++++ b/package/contents/ui/pages/components/network/ConnectionItem.qml
+@@ -240,10 +240,17 @@ PlasmaExtras.ExpandableListItem {
+         property double prevRxBytes: 0
+         property double prevTxBytes: 0
+         onTriggered: {
+-            rxSpeed = prevRxBytes === 0 ? 0 : (RxBytes - prevRxBytes) * 1000 / interval
+-            txSpeed = prevTxBytes === 0 ? 0 : (TxBytes - prevTxBytes) * 1000 / interval
+-            prevRxBytes = RxBytes
+-            prevTxBytes = TxBytes
++            // The model only provides device statistics for rows whose refresh rate has
++            // been requested (see NetworkModel::addActiveConnection()), so RxBytes and
++            // TxBytes are undefined for every other row. Assigning that to the double
++            // properties below raises "Cannot assign [undefined] to double" on every
++            // tick, i.e. once every 2 seconds for as long as the row stays alive.
++            const rxBytes = Number(RxBytes ?? 0)
++            const txBytes = Number(TxBytes ?? 0)
++            rxSpeed = prevRxBytes === 0 ? 0 : (rxBytes - prevRxBytes) * 1000 / interval
++            txSpeed = prevTxBytes === 0 ? 0 : (txBytes - prevTxBytes) * 1000 / interval
++            prevRxBytes = rxBytes
++            prevTxBytes = txBytes
+         }
+     }
+ 
