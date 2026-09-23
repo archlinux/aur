@@ -2,7 +2,7 @@
 # Contributor: Sabit Maulana <sbtmul@gmail.com>
 # Maintainer: aliu <double-a, r-o-n to the 0-1-3-0 at ur gmail.com>
 pkgname=larksuite-bin
-pkgver=7.66.11
+pkgver=7.72.23
 _pkgtyp=stable
 pkgrel=1
 pkgdesc="Collaboration suite service for office messaging, calendars, meetings, docs..."
@@ -12,28 +12,30 @@ _licensever=20260122
 license=("LicenseRef-Lark-User-${_licensever}")
 depends=('gtk3' 'nspr' 'nss' 'libpulse' 'libmfx' 'alsa-lib')
 optdepends=('appmenu-gtk-module: Appmenu support')
-makedepends=('curl')
+makedepends=('curl' 'jq')
 replaces=('bytedance-lark-dev-bin')
 provides=("bytedance-lark=$pkgver" "lark=$pkgver")
 options=('!emptydirs')
-source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info?platform=10
-	LICENSE-${_licensever}.html::http://www.larksuite.com/en_us/user-terms-of-service
-	LICENSE-US-${_licensever}.html::http://www.larksuite.com/en_us/user-terms-of-service-us
-	dlagent-lark.sh
-	dlagent-license.sh
-	dlagent-license-global.sh
-	dlagent-license-US.sh
+_deb_b2sum='90845fbc95511d3661d4970be9f38202f18b96a537bc81f9db8a6e306e136bebdcf42396fc75a8ce587df2e4227cbee6ad183576e17ce0c6070b656be9b30b25'
+source=("LICENSE-${_licensever}.html::https://www.larksuite.com/en_us/user-terms-of-service"
+	"LICENSE-US-${_licensever}.html::https://www.larksuite.com/en_us/user-terms-of-service-us"
 )
-DLAGENTS=("https::/usr/bin/sh ${startdir}/dlagent-lark.sh %o %u"
-	"http::/usr/bin/sh ${startdir}/dlagent-license.sh %o %u"
-)
-b2sums=('32adf8bb01cae75db2b16f103b929330fdd84783d8e0cba56466edb4fa9399c89c35f13c96c8d78fad291fa62ee9fc7d60f8029fac5be1e690e9fadb280f73e9'
-        'c3501dceef7f7ce21515d59560a245c8c2812af15ee076bc0610a1424e2e87c3a2be6568e85e4bf2aa5184e704ff37ad5bf67b4fdb79a1550179b45444132ef3'
-        'a447d907e149618e3ac34361b0f0a10b56a28a0be6ec0a143dfc1697404c7049a3afae7ffd62466b4acfd28753f96a2869f3ab06e31620c570b9ff4fd8b74b5b'
-        '0fe599804f2812e4ba13967d449fa5b41f4dd1949e91ac3c59c3bf95da93c1bf4099ea5088a9877e1b97f8a222e4e6189d965b65a4d2ed1d70736052942257f3'
-        'a9a0df1536abd656d64691c1ff82c531e246f327ed06e32607cb3f06dde0bf418aceeec9b1080ac25b012b8efdc14732ae0a1e1ef7d3f78fa3c81e86a4105b3c'
-        '8a6ddf4bccf0cc469af51c5ca68c3b27329b5506606f05a955b86c5c69e2e7f132b0e4f7748656038c13af4e7c074bf142e72715f713591e32bc05980bbb4358'
-        'e5cb99f2a2440b5c2c8a64e45a8bba379db675270bdef72788ea0e0aa9122c867b2438710ba5c6b117a122305f4a6e22c4e70e136df764c6d0a71ebf17496d78')
+b2sums=('SKIP'
+        'SKIP')
+
+prepare() {
+	cd "${srcdir}"
+	local package_info download_link
+	# The signed link expires, so fetch it anew for every build.
+	package_info=$(curl -fsSL 'https://www.larksuite.com/api/package_info?platform=10') || return 1
+	download_link=$(jq -er --arg version "Linux-x64-deb@V${pkgver}" \
+		'.data | select(.version_number == $version) | .download_link' \
+		<<< "${package_info}") || return 1
+	[[ ${download_link%%\?*} == https://*.larksuitecdn.com/*/Lark-linux_x64-${pkgver}.deb ]] || return 1
+	curl -fL --retry 2 -o "Lark-linux_x64-${pkgver}.deb" "${download_link}" || return 1
+	printf '%s  %s\n' "${_deb_b2sum}" "Lark-linux_x64-${pkgver}.deb" | b2sum --check || return 1
+	bsdtar -xf "Lark-linux_x64-${pkgver}.deb" data.tar.xz
+}
 
 package() {
 	# License

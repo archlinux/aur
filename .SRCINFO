@@ -1,11 +1,12 @@
 pkgbase = larksuite-bin
 	pkgdesc = Collaboration suite service for office messaging, calendars, meetings, docs...
-	pkgver = 7.66.11
+	pkgver = 7.72.23
 	pkgrel = 1
 	url = https://www.larksuite.com
 	arch = x86_64
 	license = LicenseRef-Lark-User-20260122
 	makedepends = curl
+	makedepends = jq
 	depends = gtk3
 	depends = nspr
 	depends = nss
@@ -13,23 +14,13 @@ pkgbase = larksuite-bin
 	depends = libmfx
 	depends = alsa-lib
 	optdepends = appmenu-gtk-module: Appmenu support
-	provides = bytedance-lark=7.66.11
-	provides = lark=7.66.11
+	provides = bytedance-lark=7.72.23
+	provides = lark=7.72.23
 	replaces = bytedance-lark-dev-bin
 	options = !emptydirs
-	source = Lark-linux_x64-7.66.11.deb::https://www.larksuite.com/api/package_info?platform=10
-	source = LICENSE-20260122.html::http://www.larksuite.com/en_us/user-terms-of-service
-	source = LICENSE-US-20260122.html::http://www.larksuite.com/en_us/user-terms-of-service-us
-	source = dlagent-lark.sh
-	source = dlagent-license.sh
-	source = dlagent-license-global.sh
-	source = dlagent-license-US.sh
-	b2sums = 32adf8bb01cae75db2b16f103b929330fdd84783d8e0cba56466edb4fa9399c89c35f13c96c8d78fad291fa62ee9fc7d60f8029fac5be1e690e9fadb280f73e9
-	b2sums = c3501dceef7f7ce21515d59560a245c8c2812af15ee076bc0610a1424e2e87c3a2be6568e85e4bf2aa5184e704ff37ad5bf67b4fdb79a1550179b45444132ef3
-	b2sums = a447d907e149618e3ac34361b0f0a10b56a28a0be6ec0a143dfc1697404c7049a3afae7ffd62466b4acfd28753f96a2869f3ab06e31620c570b9ff4fd8b74b5b
-	b2sums = 0fe599804f2812e4ba13967d449fa5b41f4dd1949e91ac3c59c3bf95da93c1bf4099ea5088a9877e1b97f8a222e4e6189d965b65a4d2ed1d70736052942257f3
-	b2sums = a9a0df1536abd656d64691c1ff82c531e246f327ed06e32607cb3f06dde0bf418aceeec9b1080ac25b012b8efdc14732ae0a1e1ef7d3f78fa3c81e86a4105b3c
-	b2sums = 8a6ddf4bccf0cc469af51c5ca68c3b27329b5506606f05a955b86c5c69e2e7f132b0e4f7748656038c13af4e7c074bf142e72715f713591e32bc05980bbb4358
-	b2sums = e5cb99f2a2440b5c2c8a64e45a8bba379db675270bdef72788ea0e0aa9122c867b2438710ba5c6b117a122305f4a6e22c4e70e136df764c6d0a71ebf17496d78
+	source = LICENSE-20260122.html::https://www.larksuite.com/en_us/user-terms-of-service
+	source = LICENSE-US-20260122.html::https://www.larksuite.com/en_us/user-terms-of-service-us
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = larksuite-bin
