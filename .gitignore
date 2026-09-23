@@ -1,0 +1,8 @@
+# makepkg working files — never commit these to the AUR repo
+*.pkg.tar.zst
+*.tar.gz
+src/
+pkg/
+com.crispstrobe.crisperweaver.desktop
+com.crispstrobe.crisperweaver.png
+LICENSE-*
