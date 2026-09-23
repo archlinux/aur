@@ -1,6 +1,6 @@
 pkgbase = svt-av1-hdr10plus-git
 	pkgdesc = SVT-AV1 with enhancements for SDR and HDR encoding with HDR10+ and DoVi support. PGO.
-	pkgver = 4.2.0.r0.g9dabe3ca0
+	pkgver = 4.2.0.r1.g18327c0ae
 	pkgrel = 1
 	url = https://github.com/juliobbv-p/svt-av1-hdr
 	arch = x86_64
