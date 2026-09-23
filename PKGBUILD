@@ -1,6 +1,6 @@
 # Maintainer: Sentria <admin@sentrialabs.com>
 pkgname=maryanne-bin
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='Read ebook (EPUB) or PDF aloud to you with natural-sounding voices.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "maryanne.png::https://github.com/${release_repo}/releases/download/v${pkgver}/maryanne.png"
 )
 sha256sums=(
-  '0f2fa24b9b6b93eba87b3685f38f7215d5c7d5fc276688e4844712f307330d10'
+  '779d44aa5d94c83ad9622f9844defc4558a11b8e43b39171aaf712c6fb0d9fc2'
   '8fcdd0bdfda339ee543d62c39d91580074212c681a1e477d7f717578fbf71c00'
   '93e729a1fb386fbdeb95f1d5ebc0bc03d2384abe3bf1f81152869ce6b07d30dd'
 )
