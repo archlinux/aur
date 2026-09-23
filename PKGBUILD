@@ -2,7 +2,7 @@
 
 _pkgname=libddcci
 pkgname=libddcci-git
-pkgver=0.2.0.r1.g0a31d17
+pkgver=0.3.0.r1.gdd06e32
 pkgrel=1
 pkgdesc='DDC/CI (VESA MCCS) C Library'
 arch=('x86_64')
