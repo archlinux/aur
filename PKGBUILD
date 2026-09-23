@@ -1,8 +1,8 @@
 # Maintainer: Georg Wagner <puxplaying_at_gmail_dot_com>
 
 pkgname=autogit
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Auto build, update, install PKGBUILDS from Github, Gitlab and AUR"
 arch=('any')
 url="https://github.com/puxplaying/autogit"
@@ -20,7 +20,7 @@ optdepends=(
 )
 backup=("etc/$pkgname/$pkgname.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ef404014ed3a3c0c7fe487de9739bcba59bd8c783021f60f9dfbd8188ed61a7c')
+sha256sums=('908a7aec78e71ff4e0380303427462096b5ae91797f9e3ab85883467c59de753')
 
 package () {
   cd "$pkgname-$pkgver"
