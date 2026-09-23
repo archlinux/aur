@@ -4,7 +4,20 @@ post_install() {
 	echo '  2. Run `sudo visage setup` to download models'
 	echo '  3. Run `sudo visage enroll --label default --user <your_username>` to add face model'
 	echo '  4. Run `visage verify` to check if auth is working'
-	echo '  5. If it works, add the line `auth [success=done default=ignore] pam_visage.so` to either'
-	echo '    - `/etc/pam.d/system-auth` file just before `pam_unix.so` for global auth'
-	echo '    - `/etc/pam.d/sudo` at the beginning for `sudo` only'
+	echo '  5. If it works, choose a PAM configuration:'
+	echo '    - GNOME/GDM: password at first login, face for subsequent unlocks.'
+	echo '      Remove any global pam_visage.so rule from /etc/pam.d/system-auth.'
+	echo '      In /etc/pam.d/gdm-password, replace any existing pam_visage.so rule with'
+	echo '      these adjacent lines before the existing auth rules:'
+	echo '        auth [success=ignore default=1] pam_exec.so quiet /usr/lib/visage/visage-has-session'
+	echo '        auth [success=done default=ignore] pam_visage.so'
+	echo '      See /usr/share/doc/visage/pam/README.md for details and checks.'
+	echo '    - sudo only: add `auth [success=done default=ignore] pam_visage.so`'
+	echo '      at the beginning of /etc/pam.d/sudo.'
+	echo '    - Global face auth: add `auth [success=done default=ignore] pam_visage.so`'
+	echo '      in /etc/pam.d/system-auth just before pam_unix.so.'
+}
+
+post_upgrade() {
+	post_install
 }
