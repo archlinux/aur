@@ -4,7 +4,7 @@
 
 pkgname=proto
 pkgver=0.62.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Pluggable multi-language version manager'
 arch=('x86_64' 'aarch64')
 url='https://github.com/moonrepo/proto'
@@ -18,15 +18,18 @@ sha256sums=('d9edee09cf9ed53d139012c857e649306e9dd9b7928f466630b806d465080c9a')
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
   mkdir -p completions
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  CFLAGS+=' -ffat-lto-objects'
-  CXXFLAGS+=' -ffat-lto-objects'
+  if [[ ${CARCH} == x86_64 ]]; then
+    CFLAGS+=' -ffat-lto-objects'
+    CXXFLAGS+=' -ffat-lto-objects'
+  fi
+
   cargo build --release --frozen
 
   "./target/release/${pkgname}" completions --shell bash >"completions/bash"
