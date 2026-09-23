@@ -1,0 +1,26 @@
+# netmeterd does the measuring and the recording; the GUI only displays what
+# it stored. A NetMeter that is installed but not counting would be broken,
+# so the service is enabled here rather than left for the user to find.
+
+post_install() {
+    systemctl daemon-reload
+    systemctl enable netmeterd.service
+    # Fails without a running systemd (a chroot); enabled, it starts at boot.
+    systemctl start netmeterd.service ||
+        echo "netmeterd will start at the next boot."
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    # A running daemon keeps the old binary until restarted.
+    systemctl try-restart netmeterd.service || true
+}
+
+pre_remove() {
+    systemctl disable --now netmeterd.service || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+    echo "History is left in /var/lib/netmeter; delete it to discard it."
+}
