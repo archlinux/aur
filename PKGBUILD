@@ -1,7 +1,7 @@
 # Maintainer: Tianhao Wang <i AT shrik3 DOT com>
 #
 pkgname=vodozemac-bindings-cpp-kazv
-pkgver=0.2.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="kazv's C++ bindings for the vodozemac cryptographic library."
 arch=('x86_64')
