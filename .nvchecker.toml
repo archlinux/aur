@@ -1,0 +1,5 @@
+[slat-bin]
+source = "github"
+github = "noturbob/slat"
+use_latest_release = true
+prefix = "v"
