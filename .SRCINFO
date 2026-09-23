@@ -1,7 +1,7 @@
 pkgbase = sparql-language-server
 	pkgdesc = Language server providing autocomplete, diagnostics and hover tooltips for SPARQL, including W3C standard SPARQL and Stardog extensions
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stardog-union/stardog-language-servers
 	arch = any
 	license = Apache-2.0

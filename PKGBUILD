@@ -2,7 +2,7 @@
 
 pkgname=sparql-language-server
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 _commit=d3e39c4c876ff276da9e36e73f9f6376b36da849
 pkgdesc="Language server providing autocomplete, diagnostics and hover tooltips for SPARQL, including W3C standard SPARQL and Stardog extensions"
 arch=('any')
@@ -39,6 +39,19 @@ package() {
     mv "$tmp" "$pkgjson"
     chmod 644 "$pkgjson"
   done < <(find "$pkgdir/usr/lib/node_modules" -name package.json -print0)
+
+  # Upstream's webpack banner wraps the shebang in a comment
+  # (`/*! #!/usr/bin/env node */`), so the kernel never sees `#!` at byte 0 and
+  # execve() falls back to /bin/sh, which chokes on the minified JS. Replace the
+  # banner with a real shebang.
+  local cli="$pkgdir/usr/lib/node_modules/$pkgname/dist/cli.js"
+  if [[ $(head -n1 "$cli") != '#!'* ]]; then
+    sed -i '1s|^/\*! *\(#!.*\) \*/$|\1|' "$cli"
+    head -n1 "$cli" | grep -q '^#!/usr/bin/env node$' || {
+      echo "error: failed to restore shebang in dist/cli.js" >&2
+      return 1
+    }
+  fi
 
   install -Dm644 "$srcdir/LICENSE-$pkgver" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
