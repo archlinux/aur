@@ -1,9 +1,9 @@
 --- a/cmake/whisper.pc.in
 +++ b/cmake/whisper.pc.in
-@@ -6,5 +6,5 @@ includedir=${prefix}/include
+@@ -6,5 +6,5 @@ includedir=@CMAKE_INSTALL_FULL_INCLUDEDI
  Name: whisper
  Description: Port of OpenAI's Whisper model in C/C++
- Version: @PROJECT_VERSION@
+ Version: @WHISPER_VERSION@
 -Libs: -L${libdir} -lggml  -lggml-base -lwhisper
 -Cflags: -I${includedir}
 +Libs: -L${libdir} -lwhisper -lggml -lggml-cpu -lggml-base -lstdc++ -lm -fopenmp -fPIC
