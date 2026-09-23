@@ -2,7 +2,7 @@
 _projectname='kiota-python'
 _packagename='microsoft-kiota-serialization-json'
 pkgname="python-$_packagename"
-pkgver='1.11.8'
+pkgver='1.14.0'
 pkgrel='1'
 pkgdesc='Microsoft Kiota Serialization library for JSON'
 arch=('any')
@@ -13,20 +13,15 @@ makedepends=('python-build' 'python-flit-core>=3.2.0' 'python-installer' 'python
 checkdepends=('python-pytest>=9.1.1' 'python-pytest-asyncio>=1.4.0')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_packagename-v$pkgver.tar.gz"
-	'change-flit-upper-bound.diff'
 	'hardcode-version.diff'
 )
-b2sums=('52ac7d366c39ba5680c05e20102ea5437c658f382c6b2e4451dec2324f6a0d3b722520dd0e4d9757f687f62141df5384345c7c7a59dc0ed9289fe1621c57e11e'
-        '96b1fa7b750e331a124328ab854606363709e2bca6b40177be6ec7ce6b071dbf1052023ef4340eed44162c85af227b9477d065afe721ded878b513731042d01f'
+b2sums=('86c897b20044899ed078c122e9745b0aa53969ebd1bf1029860b1caf9c6ec788a8ba430912b71885bf6fcdae92ee83aa07a8cc39df05656dd7cf8e13945f84ba'
         '30ac7b60a22dba9c322790124cfc90354351a827fc49140fbf4589ba2b4767819b0fc1a45f14dc40858ec1271ead3807d1c443ce64b9fca9690debaf15c39269')
 
 _sourcedirectory="$_projectname-$_packagename-v$pkgver/packages/serialization/json"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/../../../"
-
-	# Bump flit upper bound, as there were no BCs
-	patch --forward -p1 < "$srcdir/change-flit-upper-bound.diff"
 
 	# Hardcode package version in _version.py to enable us to run tests without installing the package
 	patch --forward -p1 < "$srcdir/hardcode-version.diff"
