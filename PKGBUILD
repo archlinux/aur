@@ -1,7 +1,7 @@
 # Maintainer: Aira Hinano <hinanoaira at hinasense dot jp>
 # Co-Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=vrcx
-pkgver=2026.07.18
+pkgver=2026.09.16
 pkgrel=1
 pkgdesc="Friendship management tool for VRChat (built with Electron)"
 arch=('x86_64')
@@ -14,16 +14,14 @@ options=(!debug !lto)
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/vrcx-team/VRCX/archive/refs/tags/v$pkgver.tar.gz"
     "vrcx.desktop"
-    "build.patch"
 )
 
-sha256sums=('03e98d3d4b1ad3a550550b6f7223193275533035930b6eb78b79b66f49285791'
-            '3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5'
-            'db8f2ca37e76cc81ab15f91005882248cd68b97f59f3c8a5bf54674d190ca5df')
-            
+sha256sums=('07dfa48a26e652fb3dacc3414c1b9b9e0c73970719348d9abb0206f5dd7dcb84'
+            '3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5')
+
 prepare() {
     cd "$srcdir/VRCX-$pkgver"
-    patch -p1 < "$srcdir/build.patch"
+    
     echo "$pkgver" > Version
     echo "" > .no-updater
     
