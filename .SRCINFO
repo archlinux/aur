@@ -1,25 +1,24 @@
 pkgbase = baiduwenku-bin
-	pkgdesc = Baidu wenku Client.(Prebuilt version.Use system-wide electron)一款由百度发布的供网友在线分享文档的平台
-	pkgver = 3.4.1
+	pkgdesc = Unoffical Baidu wenku Client.一款由百度发布的供网友在线分享文档的平台
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://wenku.baidu.com
+	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
-	makedepends = 7zip
-	makedepends = asar
-	makedepends = gendesk
-	makedepends = curl
 	depends = electron22
-	provides = baiduwenku=3.4.1
+	provides = baiduwenku=3.4.2
 	conflicts = baiduwenku
 	conflicts = deepin-wine-baiduwenku
 	options = !strip
 	options = !emptydirs
-	source = baiduwenku-3.4.1.exe::https://edu-wenku.bdimg.com/v1/na/0807/PC%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%89%88%E6%9C%AC%E5%8C%85/wenku-Setup-3.4.1.exe
 	source = LICENSE.html::https://edu-wenku.bdimg.com/v1/pc/protocols/help24-new.htm
 	source = baiduwenku.sh
-	sha256sums = 1f7cf613e18cbde4447d18eb9539e4f589d9fdfc5741877acb02814f6a7c4a07
 	sha256sums = eb85aa9b3586dcd16b0f18b4b467b46b076688f9d1f723dea7f2eb92cd797ce7
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = baiduwenku-3.4.2-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/BaiduWenku-3.4.2/com.wenku.baidu.uos_3.4.2_arm64.deb
+	sha256sums_aarch64 = 2f75e7ce9f30bd37cbd6dfa005cc17f8e872e789b17e3850f0e394bfa765b45c
+	source_x86_64 = baiduwenku-3.4.2-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/BaiduWenku-3.4.2/com.wenku.baidu.uos_3.4.2_amd64.deb
+	sha256sums_x86_64 = bb516b41eb7c6c9e6f2b5fb9985f7c165c02e4b77e6f887163620cca0a7903cc
 
 pkgname = baiduwenku-bin
