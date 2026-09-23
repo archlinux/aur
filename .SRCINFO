@@ -1,6 +1,6 @@
 pkgbase = ratex-bin
 	pkgdesc = Ultra-fast, pure-Rust TeX engine and complete self-contained typesetting suite
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/leoliu0/ratex
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = ratex-bin
 	conflicts = ratex
 	options = !strip
 	options = !debug
-	source_x86_64 = ratex-bin-0.4.3.tar.gz::https://github.com/leoliu0/ratex/releases/download/v0.4.3/tex-suite-v0.4.3-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 7d89594dfc6d903707af65956b7228e5de55b0dfa87c2ac9193626cdcf63bfb3
+	source_x86_64 = ratex-bin-0.4.4.tar.gz::https://github.com/leoliu0/ratex/releases/download/v0.4.4/tex-suite-v0.4.4-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9e6e949057215f949458f23e876743d24f45b5547fc2cea4850471e911d8bd6a
 
 pkgname = ratex-bin
