@@ -15,7 +15,7 @@ optdepends=('polkit: let users other than root drive nspawn'
             'mkosi: build images with nspawn build'
             'iptables-nft: keep the bridge reachable next to the forwarding rules of docker or ufw')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cdd5a762dbf0c3748a627ce8d93487b3791e78afae2ae36d8d17ecccd6a55de9')
+sha256sums=('247f6ef8b9b1e707c308197251d339ac03af68783b5f9b98261df3dcdf36014d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
