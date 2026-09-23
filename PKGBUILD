@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=intelis-interfacing-bin
 _pkgname='InteLIS Interfacing'
-pkgver=4.6.0
+pkgver=4.7.0
 _electronversion=44
 pkgrel=1
 pkgdesc="A standalone Electron application that receives test results from laboratory analyzers and stores them where a laboratory information system can pick them up."
@@ -24,9 +24,9 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/deforay/vlsm-interfacing/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cec01a89e87338f1cac2364c49d3871f2ea24993604fb62de88f76bea5f5336d'
+sha256sums=('86452beb2aaaf1ac96704d7d90db9b1b8e1ced1ede87a01a2cc27b27056dd86a'
             '90e8f1d7651f22d814f741854e325de31508a7d77cdc512f7244b87961612e41'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            '5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
