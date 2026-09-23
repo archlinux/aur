@@ -1,0 +1,21 @@
+pkgbase = qianwen-bin
+	pkgdesc = Unofficial Linux version of Qianwan client, supports login, and supports uploading/downloading files.Linux版千问客户端，支持登录，支持上传/下载文件
+	pkgver = 4.9.0.229
+	pkgrel = 1
+	url = https://www.qianwen.com
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron39
+	provides = qianwen=4.9.0.229
+	conflicts = qianwen
+	source = LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/privacy_policy_full/20231011201849846/20231011201849846.html
+	source = qianwen.sh
+	sha256sums = 81caf3b6ec2a8ee62a4297cbe46ccec245bf692d6d3c0748497cd7410ad8cd45
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = qianwen-4.9.0.229-aarch64.deb::https://github.com/kota-rina3/hokeshi/releases/download/qwen-linux-4.9.0.229/com.qianwen.otohime_4.9.0.229_arm64.deb
+	sha256sums_aarch64 = 7e4511291546df47c7fe0a81231eb4ee3fb2ab9a0e1ea98f7732eca41373aeb6
+	source_x86_64 = qianwen-4.9.0.229-x86_64.deb::https://github.com/kota-rina3/hokeshi/releases/download/qwen-linux-4.9.0.229/com.qianwen.otohime_4.9.0.229_amd64.deb
+	sha256sums_x86_64 = 19dba466256dec62e331f66ca90a13228504a0a01b53166718c7b2bcffc540e0
+
+pkgname = qianwen-bin
