@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=poi-git
-pkgver=12.0.0.r1.g8778012
+pkgver=12.0.1.r50.g556387c
 _electronversion=44
 _nodeversion=24
 pkgrel=1
-pkgdesc="A scalable browser and tool set for Kantai Collection(KanColle).(Use system-wide electron)"
+pkgdesc="A scalable browser and tool set for Kantai Collection(KanColle)."
 arch=('any')
 url="https://poi.moe/"
 _ghurl="https://github.com/poooi/poi"
@@ -15,7 +15,7 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'npm'
+    'bun'
     'git'
     'nvm'
     'gendesk'
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            '5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -41,7 +41,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -50,21 +50,24 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 _set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-    export NPM_CONFIG_MAXSOCKETS=32
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-        }
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-    fi
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export BUN_INSTALL_CACHE_DIR="${HOME}/.bun/cache"
+	export BUN_INSTALL_GLOBAL_DIR="${HOME}/.bun/global"
+	export BUN_INSTALL_BIN="${HOME}/.bun/bin"
+	export BUN_CONFIG_SKIP_SAVE_LOCKFILE=1
+	export BUN_CONFIG_SKIP_LOAD_LOCKFILE=1
+	export BUN_DISABLE_DOTENV=1
+	export DO_NOT_TRACK=1
+	export BUN_JOBS="$(nproc)"
+	mkdir -p "${HOME}" "${BUN_INSTALL_CACHE_DIR}" "${BUN_INSTALL_GLOBAL_DIR}" "${BUN_INSTALL_BIN}"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -81,27 +84,29 @@ prepare() {
         --categories="Utility" \
         --name="${pkgname%-git}" \
         --exec="${pkgname%-git} %U"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
+    export NODE_ENV=development
+    bun install
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    _set_build_env
     _ensure_local_nvm
-    NODE_ENV=production     npx gulp build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.config.js"
+    _set_build_env
+    export NODE_ENV=production
+    bunx gulp build
+    bunx electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder.config.js
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
-    _icon_sizes=(32x32 128x128 256x256 512x512 1024x1024)
+    _icon_sizes=(16x16 32x32 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname//-/.}/assets/icons/${pkgname%-git}_${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname//-/.}/assets/icons/linux/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
