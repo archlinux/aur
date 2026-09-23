@@ -1,9 +1,9 @@
 # Maintainer: Guillaume Quintard <guillaume.quintard@varnish-software.com>
 
 pkgname=vmod-redis
-pkgver=9.0.3
-pkgrel=3
-_srcver=9.0-23.0
+pkgver=9.1.0
+pkgrel=2
+_srcver=9.1-24.0
 pkgdesc="VMOD using hiredis to access Redis servers from VCL"
 arch=('x86_64')
 url="https://github.com/carlosabalde/libvmod-redis"
@@ -11,7 +11,7 @@ license=('BSD-2-Clause')
 depends=("varnish=$pkgver-$pkgrel" 'hiredis' 'libev')
 makedepends=('autoconf' 'automake' 'libtool' 'autoconf-archive' 'pkg-config' 'python-docutils')
 source=("$pkgname-${_srcver}.tar.gz::https://github.com/carlosabalde/libvmod-redis/archive/refs/tags/${_srcver}.tar.gz")
-sha512sums=('94d8f2d4e631d8282c56aa657403378fc0789c28b409d4da58cc2143460c973ebb6bfa1ac4cab69e42cf0010faf6b42e51f7f9ca06ab241419436aa9d0f94465')
+sha512sums=('a3bdba2d5e835a64b3cca680ceaab01dc1aa3cf07c2dffb5ba898c2c034917b23af9252ee9d8028eed16626567647b3a8496ac0565d69ea790d083f4f536bf4a')
 
 build() {
     cd "libvmod-redis-${_srcver}"

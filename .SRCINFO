@@ -1,7 +1,7 @@
 pkgbase = vmod-redis
 	pkgdesc = VMOD using hiredis to access Redis servers from VCL
-	pkgver = 9.0.3
-	pkgrel = 3
+	pkgver = 9.1.0
+	pkgrel = 2
 	url = https://github.com/carlosabalde/libvmod-redis
 	arch = x86_64
 	license = BSD-2-Clause
@@ -11,10 +11,10 @@ pkgbase = vmod-redis
 	makedepends = autoconf-archive
 	makedepends = pkg-config
 	makedepends = python-docutils
-	depends = varnish=9.0.3-3
+	depends = varnish=9.1.0-2
 	depends = hiredis
 	depends = libev
-	source = vmod-redis-9.0-23.0.tar.gz::https://github.com/carlosabalde/libvmod-redis/archive/refs/tags/9.0-23.0.tar.gz
-	sha512sums = 94d8f2d4e631d8282c56aa657403378fc0789c28b409d4da58cc2143460c973ebb6bfa1ac4cab69e42cf0010faf6b42e51f7f9ca06ab241419436aa9d0f94465
+	source = vmod-redis-9.1-24.0.tar.gz::https://github.com/carlosabalde/libvmod-redis/archive/refs/tags/9.1-24.0.tar.gz
+	sha512sums = a3bdba2d5e835a64b3cca680ceaab01dc1aa3cf07c2dffb5ba898c2c034917b23af9252ee9d8028eed16626567647b3a8496ac0565d69ea790d083f4f536bf4a
 
 pkgname = vmod-redis
