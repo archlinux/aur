@@ -1,0 +1,76 @@
+--- a/src/src-tauri/src/manager.rs
++++ b/src/src-tauri/src/manager.rs
+@@ -2514,6 +2514,16 @@
+         if state.schedule_auto { "auto" } else { "manual" }))
+ }
+ 
++/// Arch packaging: returned by the layer install/uninstall entry points when
++/// the Suite is installed system-wide.  The layers, their implicit-layer
++/// manifest and the udev/tmpfiles/polkit rules all belong to the
++/// greenboost-gaming-suite package, so only the package manager may touch
++/// them.
++const ARCH_PACKAGED_LAYERS_MSG: &str =
++    "The GreenBoost Vulkan/OpenGL layers are shipped by the \
++     greenboost-gaming-suite package. Update or remove them with your package \
++     manager (e.g. pacman -S greenboost-gaming-suite) instead.";
++
+ /// PR-SSS: Vulkan layer install , re-runs the Gaming Suite's own
+ /// install.sh in privilege-escalated mode (pkexec → sudo fallback).
+ ///
+@@ -2521,7 +2531,18 @@
+ /// tree path from when the Suite shared a tree with the main GreenBoost
+ /// repo.  Now we use the project root resolved via
+ /// CARGO_MANIFEST_DIR at compile time, walking up from `src-tauri/`.
++///
++/// Arch packaging: when the Suite is installed system-wide, the packaged
++/// runtime root takes precedence , see the function body below.
+ fn gaming_project_root() -> Result<std::path::PathBuf, String> {
++    // Arch packaging: the GUI is installed to /usr/lib/greenboost-gaming, so
++    // the CARGO_MANIFEST_DIR tree below is a build directory that does not
++    // exist at runtime.  Prefer the packaged runtime root, which carries the
++    // greenboost_proton/ payload the GUI deploys into the user's Steam roots.
++    let packaged = std::path::Path::new("/usr/share/greenboost-gaming");
++    if packaged.join("greenboost_proton").join("install.sh").exists() {
++        return Ok(packaged.to_path_buf());
++    }
+     // src-tauri lives under <project>/src/src-tauri at build time.
+     // Two `parent()` calls land on the project root.
+     let manifest_dir = env!("CARGO_MANIFEST_DIR");
+@@ -2615,6 +2636,13 @@
+ pub fn install_layers_streaming(channel: Channel<String>)
+     -> Result<i32, String>
+ {
++    // Arch packaging: the layers are shipped by the greenboost-gaming-suite
++    // package.  Running the in-tree install.sh here would rebuild them into
++    // /usr/local and shadow the package-managed copies under /usr/lib, so
++    // refuse and point at the package manager instead.
++    if std::path::Path::new("/usr/share/greenboost-gaming").is_dir() {
++        return Err(ARCH_PACKAGED_LAYERS_MSG.to_string());
++    }
+     let project = gaming_project_root()?;
+     let script  = project.join("install.sh");
+     let script_str = script.to_str().ok_or("non-UTF8 install.sh path")?;
+@@ -2679,6 +2707,12 @@
+ pub fn uninstall_layers_streaming(channel: Channel<String>)
+     -> Result<i32, String>
+ {
++    // Arch packaging: install.sh --uninstall would delete
++    // /usr/share/vulkan/implicit_layer.d/VkLayer_greenboost.json, which
++    // belongs to the package here.  Removal is pacman's job.
++    if std::path::Path::new("/usr/share/greenboost-gaming").is_dir() {
++        return Err(ARCH_PACKAGED_LAYERS_MSG.to_string());
++    }
+     let project = gaming_project_root()?;
+     let script  = project.join("install.sh");
+     let script_str = script.to_str().ok_or("non-UTF8 install.sh path")?;
+@@ -2712,6 +2746,10 @@
+ }
+ 
+ pub fn install_greenboost_layers() -> Result<String, String> {
++    // Arch packaging: see install_layers_streaming() above.
++    if std::path::Path::new("/usr/share/greenboost-gaming").is_dir() {
++        return Err(ARCH_PACKAGED_LAYERS_MSG.to_string());
++    }
+     let project = gaming_project_root()?;
+     let script = project.join("install.sh");
+     // Limit the install to its layer-only mode by passing an env var

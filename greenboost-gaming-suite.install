@@ -1,0 +1,61 @@
+# Cache refreshes (sysusers, tmpfiles, udev, desktop, icon, user units) are all
+# handled by the standard pacman hooks, so these functions only print.
+post_install() {
+  cat <<'EOF'
+GreenBoost Gaming Suite installed.
+
+  1. Memory-tiering group.  The 'greenboost' group was created so that a game
+     launch can flag gaming_mode in the GreenBoost kernel module.  Add yourself
+     and log back in for it to take effect:
+         sudo usermod -aG greenboost "$USER"
+
+     The kernel module itself comes from the optional 'greenboost' package.
+
+  2. Fan-curve daemon (optional, per user):
+         systemctl --user enable --now gb-gaming-fan-daemon
+     It idles until you load a profile in the GUI.
+
+  3. Steam compatibility tool.  "GreenBoost Proton" and
+     "GreenBoost Proton Experimental" are installed in
+     /usr/share/steam/compatibilitytools.d.  If Steam does not list them in
+     Properties -> Compatibility, restart Steam, or point it at the directory:
+         export STEAM_EXTRA_COMPAT_TOOLS_PATHS=/usr/share/steam/compatibilitytools.d
+
+  4. The Vulkan layer is implicit and only activates when GREENBOOST_VULKAN=1.
+     The launcher sets it where a game is involved; the GUI itself deliberately
+     does not (otherwise Steam and everything it spawns would inherit it too).
+
+  5. NVIDIA + Wayland: the GUI would otherwise die at startup with
+         Gdk-Message: Error 71 (Protocol error) dispatching to Wayland display.
+     so the launcher sets WEBKIT_DISABLE_DMABUF_RENDERER=1 for the webview
+     only.  If the window still comes up blank or half-drawn, try one of:
+         WEBKIT_DISABLE_COMPOSITING_MODE=1 greenboost-gaming
+         __NV_DISABLE_EXPLICIT_SYNC=1 greenboost-gaming
+     The second keeps GPU acceleration, but the NVIDIA libraries read it, so
+     Steam and the games you launch from this Suite inherit it too and may
+     show buffer artefacts.  Once a driver/GTK fix lands, opt out of the
+     built-in one with GREENBOOST_WEBKIT_GPU=1.
+
+  Start the suite with "greenboost-gaming", or from the application grid.
+  Docs: /usr/share/doc/greenboost-gaming-suite/README.md
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  cat <<'EOF'
+GreenBoost Gaming Suite removed.
+
+User data was left alone on purpose:
+  ~/.config/greenboost-gaming/            per-game overrides, GPU profiles, global settings
+  ~/.local/share/greenboost/              session history and the dataflux event log
+  ~/.local/share/greenboost-gaming/       downloaded DLSS/Streamline libraries
+  ~/.steam/*/compatibilitytools.d/        any GreenBoost Proton you deployed by hand
+
+If you added yourself to the 'greenboost' group, remove it with:
+  sudo gpasswd -d "$USER" greenboost
+EOF
+}
