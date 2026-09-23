@@ -1,0 +1,15 @@
+pkgbase = intel-gna-dkms-git
+	pkgdesc = Intel GNA (Gaussian & Neural Accelerator) accel driver, DKMS (out-of-tree port of the v5 dri-devel series)
+	pkgver = r2.de3c9e0
+	pkgrel = 1
+	url = https://github.com/Magniquick/intel-client-dkms
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	provides = intel-gna-dkms
+	conflicts = intel-gna-dkms
+	source = intel-client-dkms::git+https://github.com/Magniquick/intel-client-dkms.git
+	sha256sums = SKIP
+
+pkgname = intel-gna-dkms-git
