@@ -1,53 +1,225 @@
+# Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
 # Maintainer: ArcticLampyrid <ArcticLampyrid@outlook.com>
 # Contributor: Alex Henrie <alexhenrie24@gmail.com>
 # Contributor: RubenKelevra <cyrond@gmail.com>
 
-_archive_extension="tar.gz"
-pkgname=ipfs-desktop-electron
-_pkgname=ipfs-desktop
-pkgver=0.49.1
-pkgrel=1
-pkgdesc="Desktop client for the InterPlanetary File System"
-arch=(x86_64)
-url="https://github.com/ipfs/$_pkgname"
-license=(MIT)
-depends=(electron go-ipfs)
-makedepends=("nodejs>=16" npm node-gyp)
-provides=("$_pkgname")
-source=(
-	"$_pkgname-$pkgver.$_archive_extension::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.$_archive_extension"
-	"ipfs-desktop.svg::https://raw.githubusercontent.com/ipfs/ipfs-webui/refs/tags/v4.4.2/src/navigation/ipfs-logo.svg"
-	"ipfs-desktop.desktop"
-)
-b2sums=('643e89643b68508373938df8eb1d086311d9f1a3964ecbc1b422a87438fc9e8e45f0a0ffede4b97b16652b06130a731a8cc51a13ef9e06704a1e210ea1f29f0f'
-        'd2bcf08f57f09298c5105867e5531f648c7f69bb7c081011477be507057d69bff147442029f86f5e6135f8ddca68f5176f792c99af8dace07d3063fcdbd2c0f5'
-        'adf5806b22b9e7667155d67a58ba54d9f141b893013d04aed14a8814a7f7e3393ea836eb0632275dbe3893092c69844da8fdea53ff3b13064ae8c54b3f1cad97')
+_electron_pkg='electron44'
+_webui_cid='bafybeiciqeyipumpmhxzlxnbqdbbv6u5uij4hy4wax64dmj7kvrhusiq6y'
 
-prepare() {
-	cd "$_pkgname-$pkgver"
-	npm ci --no-audit --progress=false --cache "$srcdir/npm-cache"
+pkgname='ipfs-desktop-electron'
+_pkgname='ipfs-desktop'
+pkgver='0.50.1'
+pkgrel=1
+epoch=1
+pkgdesc='Desktop client for the InterPlanetary File System using system Electron'
+arch=('x86_64')
+url="https://github.com/ipfs/${_pkgname}"
+license=(
+	'0BSD'
+	'Apache-2.0'
+	'BSD-2-Clause'
+	'BSD-3-Clause'
+	'BlueOak-1.0.0'
+	'ISC'
+	'MIT'
+	'OFL-1.1'
+	'Python-2.0'
+)
+depends=(
+	"${_electron_pkg}>=44.3.0"
+	'kubo>=0.43.1'
+)
+makedepends=(
+	'asar'
+	'nodejs'
+	'npm'
+)
+provides=("${_pkgname}=${epoch}:${pkgver}")
+conflicts=("${_pkgname}")
+source=(
+	"${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+	"webui-${_webui_cid}.car::https://trustless-gateway.link/ipfs/${_webui_cid}?format=car"
+	"${_pkgname}.desktop"
+	"${_pkgname}-startup.sh"
+	'Inter-LICENSE.txt::https://raw.githubusercontent.com/rsms/inter/3ac1bd32a473ea60d40d8f444820247e96dd7e70/LICENSE.txt'
+	'Montserrat-OFL.txt::https://raw.githubusercontent.com/JulietaUla/Montserrat/fc12e6819947c76db917f9d589a1d327e37a7b6b/OFL.txt'
+)
+b2sums=(
+	'a58496e1bde4c28f64a6b97eed27a35c156e8c328485f6c950f9cd1772c3647d960d8972c63a824c88dfe31da4e3360352e93712589cd172a07da51595e37733'
+	'49e1e7d4d55325d4ea05561a4ff4c64537988e5e841231a95d59328fc9f9b60f3098185bf757b70c42d2175f8a2b6394a0f2a9377df7d1603d69edbd4c3655ec'
+	'849d57fd59653ed0c6eca01769ad12a01f37f6a5316f1a83c0bf7cae576074b978e3ca555d50a56114d177e5fe4817338106698716f054a3e18ae1c81d7a8785'
+	'bb51f22c1cf58020bbb9d7f9dde2bfd6f838443130d89539c9ce2474f5a1987b332f63dd21b8a903880a77f96d58e8a868d0468e15d266357bdfe3409380eab2'
+	'5417464983de312c9c2a250c64281d82c17fd531f78ceccaa44d97c6999a3faf61324eaaf588240a9d0f9319bb302b7d7ed88bdbc55c188efd0357645190690a'
+	'93047b82ab53aa80f1db73e4f9d0d2b2ac30fcee1be00b2b43c63a63da1ec41b32935acca720ed4b31d3cfd0e57d61faaf79be4951a90fa973312ab22e4f1488'
+)
+
+_pkgsrc="${_pkgname}-${pkgver}"
+
+_electron_env() {
+	local _version_file="/usr/lib/${_electron_pkg}/version"
+
+	[[ -r "${_version_file}" ]] || {
+		printf 'Missing Electron version file: %s\n' "${_version_file}" >&2
+		return 1
+	}
+
+	SYSTEM_ELECTRON_VERSION=$(<"${_version_file}")
+	[[ -n "${SYSTEM_ELECTRON_VERSION}" ]] || {
+		printf 'Electron version file is empty: %s\n' "${_version_file}" >&2
+		return 1
+	}
+
+	export SYSTEM_ELECTRON_VERSION
 }
 
+_warn_if_electron_outdated() {
+	local _installed _latest_local _vf _v
+
+	[[ -r "/usr/lib/${_electron_pkg}/version" ]] || return 0
+	_installed=$(< "/usr/lib/${_electron_pkg}/version")
+	_latest_local=${_installed}
+
+	shopt -s nullglob
+	for _vf in /usr/lib/electron*/version; do
+		_v=$(< "${_vf}")
+		if [[ "$(printf '%s\n%s\n' "${_latest_local}" "${_v}" | sort -V | tail -n1)" != "${_latest_local}" ]]; then
+			_latest_local=${_v}
+		fi
+	done
+	shopt -u nullglob
+
+	if [[ ${_installed} != "${_latest_local}" ]]; then
+		printf '==> WARNING: Packaging uses %s %s, but newer local Electron %s is installed.\n' \
+			"${_electron_pkg}" "${_installed}" "${_latest_local}" >&2
+	fi
+}
+
+prepare() (
+	local _car_path
+	local _expected_webui_cid
+	local _ipfs_path
+	local _kubo_version
+	local _webui_path="${srcdir}/webui-${_webui_cid}"
+
+	cd -- "${_pkgsrc}" || return 1
+
+	_expected_webui_cid=$(
+		sed -nE \
+			'/"build:webui:download"/s/.*[[:space:]]-c[[:space:]]+([^[:space:]\"]+).*/\1/p' \
+			package.json
+	)
+	[[ -n "${_expected_webui_cid}" ]] || {
+		printf '%s\n' 'Unable to determine the WebUI CID expected by upstream' >&2
+		return 1
+	}
+	[[ "${_webui_cid}" == "${_expected_webui_cid}" ]] || {
+		printf 'WebUI CID mismatch: PKGBUILD has %s, upstream expects %s\n' \
+			"${_webui_cid}" "${_expected_webui_cid}" >&2
+		printf 'Update _webui_cid and its source checksum before building.\n' >&2
+		return 1
+	}
+
+	_ipfs_path=$(mktemp -d --tmpdir "${pkgname}-kubo.XXXXXXXX") || return 1
+	trap 'rm -rf -- "${_ipfs_path}"' EXIT
+
+	_car_path=$(readlink -f -- "${srcdir}/webui-${_webui_cid}.car")
+	[[ -f "${_car_path}" ]] || {
+		printf 'WebUI CAR is missing: %s\n' "${_car_path}" >&2
+		return 1
+	}
+
+	IPFS_PATH="${_ipfs_path}" ipfs init --profile=server >/dev/null
+	IPFS_PATH="${_ipfs_path}" ipfs dag import "${_car_path}" >/dev/null
+
+	rm -rf -- "${_webui_path}"
+	IPFS_PATH="${_ipfs_path}" ipfs get "/ipfs/${_webui_cid}" -o "${_webui_path}"
+	[[ -f "${_webui_path}/index.html" ]] || {
+		printf 'Materialized WebUI is missing index.html: %s\n' "${_webui_path}" >&2
+		return 1
+	}
+
+	_kubo_version=$(sed -nE 's/^[[:space:]]*"kubo":[[:space:]]*"([^"]+)".*/\1/p' package.json)
+	[[ -n "${_kubo_version}" ]] || {
+		printf '%s\n' 'Unable to determine the bundled Kubo version' >&2
+		return 1
+	}
+
+	npm pkg set 'scripts.build:webui:download=true'
+	npm pkg set "allowScripts[kubo@${_kubo_version}]=false" --json
+	npm ci --no-audit --no-fund \
+		2> >(sed '/glob@11\.1\.0: Old versions of glob are not supported/d' >&2)
+
+	[[ ! -e node_modules/kubo/kubo/ipfs ]] || {
+		printf '%s\n' 'Unexpected bundled Kubo binary found after npm install' >&2
+		return 1
+	}
+)
+
 build() {
-	cd "$_pkgname-$pkgver"
-	npm run-script build
-	npx electron-builder build --linux dir
+	local -a _builder_options
+
+	_warn_if_electron_outdated
+	_electron_env
+	cd -- "${_pkgsrc}" || return 1
+
+	IPFS_WEBUI_PATH="${srcdir}/webui-${_webui_cid}" \
+		npm_config_offline=true npm run build
+
+	_builder_options=(
+		"-c.electronDist=/usr/lib/${_electron_pkg}"
+		"-c.electronVersion=${SYSTEM_ELECTRON_VERSION}"
+	)
+	npm_config_offline=true npm exec -- electron-builder --linux --dir --publish never \
+		"${_builder_options[@]}"
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
+	local _license
+	local _packaged_app="${srcdir}/${pkgname}-packaged-app"
 
-	mkdir -p $pkgdir/usr/lib/ipfs-desktop
-	mkdir -p $pkgdir/usr/bin
+	mkdir -p -- "${pkgdir}/usr/lib/${_pkgname}"
+	install -Dm644 -- "${_pkgsrc}/dist/linux-unpacked/resources/app.asar" \
+		"${pkgdir}/usr/lib/${_pkgname}/app.asar"
+	if [[ -d "${_pkgsrc}/dist/linux-unpacked/resources/app.asar.unpacked" ]]; then
+		cp -a -- "${_pkgsrc}/dist/linux-unpacked/resources/app.asar.unpacked" \
+			"${pkgdir}/usr/lib/${_pkgname}/"
+	fi
+	rm -rf -- "${_packaged_app}"
+	asar extract "${_pkgsrc}/dist/linux-unpacked/resources/app.asar" "${_packaged_app}"
+	[[ -d "${_packaged_app}/node_modules" ]] || {
+		printf '%s\n' 'Packaged application is missing node_modules' >&2
+		return 1
+	}
+	[[ -d "${_packaged_app}/assets/webui/static/js" ]] || {
+		printf '%s\n' 'Packaged application is missing WebUI JavaScript assets' >&2
+		return 1
+	}
 
-	cp -r dist/linux-unpacked/resources/* $pkgdir/usr/lib/ipfs-desktop/
-	ln -sf /usr/bin/ipfs $pkgdir/usr/lib/ipfs-desktop/app.asar.unpacked/node_modules/kubo/kubo/ipfs
+	install -Dm644 -- "${_pkgsrc}/assets/webui/ipfs-logo-512-ice.png" \
+		"${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+	install -Dm644 -- "${_pkgsrc}/LICENSE" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	for _license in 'Inter-LICENSE.txt' 'Montserrat-OFL.txt'; do
+		install -Dm644 -- "${srcdir}/${_license}" \
+			"${pkgdir}/usr/share/licenses/${pkgname}/webui/${_license}"
+	done
 
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	while IFS= read -r -d '' _license; do
+		install -Dm644 -- "${_license}" \
+			"${pkgdir}/usr/share/licenses/${pkgname}/${_license#"${_packaged_app}/"}"
+	done < <(find "${_packaged_app}/node_modules" -type f \
+		\( -iname 'license*' -o -iname 'copying*' -o -iname 'notice*' \) -print0)
+	while IFS= read -r -d '' _license; do
+		install -Dm644 -- "${_license}" \
+			"${pkgdir}/usr/share/licenses/${pkgname}/webui/${_license##*/}"
+	done < <(find "${_packaged_app}/assets/webui/static/js" -maxdepth 1 -type f \
+		-name '*.LICENSE.txt' -print0)
 
-	echo "#!/bin/sh
-exec electron /usr/lib/ipfs-desktop/app.asar \"\$@\"" > ipfs-desktop
-	install -Dm755 ipfs-desktop "$pkgdir/usr/bin/ipfs-desktop"
-	install -Dm644 ${srcdir}/ipfs-desktop.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/ipfs-desktop.svg
-	install -Dm644 ${srcdir}/ipfs-desktop.desktop -t ${pkgdir}/usr/share/applications
+	sed "s|@ELECTRON_PKG@|${_electron_pkg}|" \
+		"${srcdir}/${_pkgname}-startup.sh" \
+		| install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm644 -- "${srcdir}/${_pkgname}.desktop" \
+		"${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+	chmod -R u+rwX,go+rX,go-w -- "${pkgdir}"
 }

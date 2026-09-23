@@ -1,11 +1,11 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
-Name=IPFS Desktop
-Exec=ipfs-desktop %U
-Terminal=false
 Type=Application
+Name=IPFS Desktop
+Comment=Desktop client for the InterPlanetary File System
+Exec=ipfs-desktop %u
 Icon=ipfs-desktop
-StartupWMClass=IPFS Desktop
-Comment=IPFS Native Application
-MimeType=x-scheme-handler/ipfs;x-scheme-handler/ipns;
+Terminal=false
+StartupNotify=true
 Categories=Network;FileTransfer;P2P;
+MimeType=x-scheme-handler/ipfs;x-scheme-handler/ipns;
+StartupWMClass=IPFS Desktop
