@@ -3,7 +3,7 @@
 pkgname=regexxer
 pkgver=0.10
 pkgrel=14
-pkgdesc='Interactive search and replace tool for GNOME'
+pkgdesc='Interactive search and replace tool'
 arch=(x86_64)
 url='https://regexxer.sourceforge.net/'
 license=(GPL-2.0-or-later)

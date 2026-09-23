@@ -1,5 +1,5 @@
 pkgbase = regexxer
-	pkgdesc = Interactive search and replace tool for GNOME
+	pkgdesc = Interactive search and replace tool
 	pkgver = 0.10
 	pkgrel = 14
 	url = https://regexxer.sourceforge.net/
