@@ -1,5 +1,5 @@
 pkgname=dsd-neo
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Digital Speech Decoder - A modern, modular, and performance enhanced C/C++ decoder for digital voice. DMR, P25, NXDN, YSF, and more."
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ makedepends=(
 )
 conflicts=('dsd-neo-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('21f9977632fcca7035753d31d39f134bf9ab7fe0755faf0cd1dd176ed59b234a')
+sha256sums=('bed2c28790fae49dacae54dd7fbe0b04984475c3f6e41c086eaa6196000a5634')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \

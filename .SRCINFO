@@ -1,6 +1,6 @@
 pkgbase = dsd-neo
 	pkgdesc = Digital Speech Decoder - A modern, modular, and performance enhanced C/C++ decoder for digital voice. DMR, P25, NXDN, YSF, and more.
-	pkgver = 2.9.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://github.com/arancormonk/dsd-neo
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = dsd-neo
 	depends = codec2
 	depends = curl
 	conflicts = dsd-neo-git
-	source = dsd-neo-2.9.0.tar.gz::https://github.com/arancormonk/dsd-neo/archive/refs/tags/v2.9.0.tar.gz
-	sha256sums = 21f9977632fcca7035753d31d39f134bf9ab7fe0755faf0cd1dd176ed59b234a
+	source = dsd-neo-2.10.0.tar.gz::https://github.com/arancormonk/dsd-neo/archive/refs/tags/v2.10.0.tar.gz
+	sha256sums = bed2c28790fae49dacae54dd7fbe0b04984475c3f6e41c086eaa6196000a5634
 
 pkgname = dsd-neo
