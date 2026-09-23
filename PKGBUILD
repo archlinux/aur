@@ -1,6 +1,6 @@
 # Maintainer: Bryan Everly <bryan@theeverlys.com>
 #
-# AUR package — Phase 11.8 stub.
+# AUR package -- Phase 11.8 stub.
 #
 # pkgver is bumped to the release tag value by the ``aur`` job in
 # build-and-release.yml at publish time; do not hand-edit when releasing.
@@ -19,7 +19,7 @@
 #   alembic      -> python-alembic
 #   defusedxml   -> python-defusedxml
 pkgname=sysmanage-agent
-pkgver=3.8.0.1
+pkgver=3.9.0.1
 pkgrel=1
 pkgdesc="Cross-platform system management agent for SysManage"
 arch=('any')
@@ -41,7 +41,7 @@ depends=(
 makedepends=('python-setuptools')
 backup=('etc/sysmanage-agent.yaml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bceverly/sysmanage-agent/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('446921c0f4646bc3254fadfbb48211a027b08381e2988c09c099f55a07a50379')
+sha256sums=('ef125daddca563bf876675895dc2a61b34027ae8edec65c75545c45b46660ed5')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -68,7 +68,7 @@ LAUNCH_EOF
     install -m 0644 installer/opensuse/sysmanage-agent.service \
         "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
-    # Example config — package owns this path via the ``backup=()`` entry
+    # Example config -- package owns this path via the ``backup=()`` entry
     # so pacman keeps user edits on upgrade.
     install -d "${pkgdir}/etc"
     install -m 0640 sysmanage-agent-system.yaml \
