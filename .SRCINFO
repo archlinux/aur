@@ -1,0 +1,16 @@
+pkgbase = sonarqube-cli
+	pkgdesc = Command line interface for SonarQube Server and SonarQube Cloud
+	pkgver = 1.8.0.5274
+	pkgrel = 1
+	url = https://github.com/SonarSource/sonarqube-cli
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-or-later
+	makedepends = bun
+	depends = gcc-libs
+	depends = glibc
+	depends = icu
+	source = sonarqube-cli-1.8.0.5274.tar.gz::https://github.com/SonarSource/sonarqube-cli/archive/refs/tags/1.8.0.5274.tar.gz
+	sha256sums = 56cd1c4939fd7a5927c3a01500a8e2159dfc28b9855ef1f1471713bf32aab9a8
+
+pkgname = sonarqube-cli
