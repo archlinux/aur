@@ -1,6 +1,6 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=tartrazine
-pkgver=0.25.1
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="A syntax highlighting tool"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('crystal' 'shards')
 options=()
 install=install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5cd034d604ffd117771ac49215a5322e94e66f7f7ebf4a77d0e2df06b5de00bc')
+sha256sums=('dff8371fb8097c56c68b980cdf117e67b5a871938a97194cef96cd4e1067c9d3')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -19,7 +19,7 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 	shards install
-	shards build --release
+	shards build --release -Dhansa
         strip bin/tartrazine
 }
 
