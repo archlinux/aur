@@ -23,8 +23,8 @@ backup=('etc/norupo/server.env')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/norupo-$pkgver-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/norupo-$pkgver-aarch64-unknown-linux-musl.tar.gz")
 # Replaced by `updpkgsums` at publish time.
-sha256sums_x86_64=('9f6cc0172d80d16291f57145988be328a5c2278bc6dec1766b828d86e4049f79')
-sha256sums_aarch64=('6a92cf96a32ebd3e2711255de2397257edfaabcbbe065630e5cff171fa0446fd')
+sha256sums_x86_64=('1d64d0cc0194df06d98c8a14989308e46086d0407ac173963a2a3119785626cc')
+sha256sums_aarch64=('c4a09936ee1f5e40fb0ca8fee1090edc6104b10e025c7c59b210e45629d77bd6')
 
 package() {
   local _target
