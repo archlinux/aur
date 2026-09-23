@@ -1,5 +1,5 @@
 pkgbase = qianwen-bin
-	pkgdesc = Unofficial Linux version of Qianwan client, supports login, and supports uploading/downloading files.Linux版千问客户端，支持登录，支持上传/下载文件
+	pkgdesc = Unofficial Linux version of Qianwan client, supports login, and supports uploading/downloading files.Linux版非官方千问客户端，支持登录，支持上传/下载文件
 	pkgver = 4.9.0.229
 	pkgrel = 1
 	url = https://www.qianwen.com

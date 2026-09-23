@@ -5,7 +5,7 @@ _debname="com.${pkgname%-bin}.otohime"
 pkgver=4.9.0.229
 _electronversion=39
 pkgrel=1
-pkgdesc="Unofficial Linux version of Qianwan client, supports login, and supports uploading/downloading files.Linux版千问客户端，支持登录，支持上传/下载文件"
+pkgdesc="Unofficial Linux version of Qianwan client, supports login, and supports uploading/downloading files.Linux版非官方千问客户端，支持登录，支持上传/下载文件"
 arch=(
     'aarch64'
     'x86_64'
@@ -46,13 +46,13 @@ prepare() {
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
-        s/@cfgdirname@/${_pkgname}/g
+        s/@cfgdirname@/tongyi/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i -e "
-        s/\/opt\/apps\/${_debname}\/files\///g
-        s/\/opt\/apps\/${_debname}\/files\/resources\/app\/${_shortname}.png/${pkgname%-bin}/g
+        s/Exec=\/opt\/apps\/${_debname}\/files\/${pkgname%-bin}/Exec=${pkgname%-bin} %U/g
+        s/Icon=\/opt\/apps\/${_debname}\/files\/resources\/app\/${_shortname}.png/Icon=${pkgname%-bin}/g
     " "${srcdir}/opt/apps/${_debname}/entries/applications/${pkgname%-bin}.desktop"
 }
 package() {
@@ -61,11 +61,9 @@ package() {
     local _app_dir=$(_get_app_dir)
     cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/opt/apps/${_debname}/entries/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*icons/hicolor/*" | while read -r _i; do
-        _extension="${_i##*.}"
-        _icon_path="${_i#*share/icons/}"
-        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
-        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*entries/icons/*" | while read -r _i; do
+        _icon_path="${_i#*entries/icons/}"
+        install -Dm644 "${_i}" "${pkgdir}/usr/share/icons/${_icon_path}"
     done
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
