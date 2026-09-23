@@ -1,0 +1,22 @@
+pkgbase = system-backup
+	pkgdesc = bare metal bootable LUKS/rsync system backup script for archlinux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/iamanuclearwarhead/system-backup
+	arch = any
+	license = GPL-3.0-or-later
+	depends = bash
+	depends = rsync
+	depends = cryptsetup
+	depends = util-linux
+	depends = e2fsprogs
+	depends = dosfstools
+	depends = arch-install-scripts
+	optdepends = btrfs-progs: support for Btrfs target root filesystems
+	optdepends = xfsprogs: support for XFS target root filesystems
+	optdepends = f2fs-tools: support for F2FS target root filesystems
+	optdepends = grub: support for GRUB target bootloader
+	source = system-backup-1.0.0.tar.gz::https://github.com/iamanuclearwarhead/system-backup/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 1c0a45d15a207619e99fe62a72e72fd9b43c58944055f99d18b99fb89f701a00
+
+pkgname = system-backup
