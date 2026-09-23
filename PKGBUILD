@@ -1,5 +1,5 @@
 pkgname=fuoevolve-bin
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='Open-source cross-platform music player based on FeelUOwn (prebuilt binary)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ options=('!strip')
 _archive="FuoEvolve-${pkgver}-linux-x64.pkg.tar.zst"
 source=("${_archive}::https://github.com/feeluown/FuoEvolve/releases/download/${pkgver}/${_archive}")
 noextract=("${_archive}")
-sha256sums=('ea3bdc16ebcc02fe876a12296ebaacd1e7d36493c3a4f57874a18c2ce9957777')
+sha256sums=('5f5edcd092df3265a2b43e044713f9f07066cb0edc6c8d11f29984cffb4c3c0b')
 
 package() {
   # The upstream release archive is a completed pacman package. Repackage only

@@ -1,6 +1,6 @@
 pkgbase = fuoevolve-bin
 	pkgdesc = Open-source cross-platform music player based on FeelUOwn (prebuilt binary)
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://feeluown.github.io/FuoEvolve/
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = fuoevolve-bin
 	depends = alsa-lib
 	depends = pipewire
 	depends = libpulse
-	provides = fuoevolve=1.6.2
+	provides = fuoevolve=1.6.3
 	conflicts = fuoevolve
 	options = !strip
-	source = FuoEvolve-1.6.2-linux-x64.pkg.tar.zst::https://github.com/feeluown/FuoEvolve/releases/download/1.6.2/FuoEvolve-1.6.2-linux-x64.pkg.tar.zst
-	noextract = FuoEvolve-1.6.2-linux-x64.pkg.tar.zst
-	sha256sums = ea3bdc16ebcc02fe876a12296ebaacd1e7d36493c3a4f57874a18c2ce9957777
+	source = FuoEvolve-1.6.3-linux-x64.pkg.tar.zst::https://github.com/feeluown/FuoEvolve/releases/download/1.6.3/FuoEvolve-1.6.3-linux-x64.pkg.tar.zst
+	noextract = FuoEvolve-1.6.3-linux-x64.pkg.tar.zst
+	sha256sums = 5f5edcd092df3265a2b43e044713f9f07066cb0edc6c8d11f29984cffb4c3c0b
 
 pkgname = fuoevolve-bin
