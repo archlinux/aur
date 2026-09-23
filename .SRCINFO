@@ -1,6 +1,6 @@
 pkgbase = proton-drive-for-linux-bin
 	pkgdesc = Unofficial Proton Drive client: FUSE files-on-demand mount, CLI, GTK4 app, tray (binaries)
-	pkgver = 2.1.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/narrrl/proton-drive-linux
 	arch = x86_64
@@ -19,21 +19,21 @@ pkgbase = proton-drive-for-linux-bin
 	optdepends = xdg-utils: "Open folder" action in the tray menu
 	optdepends = fzf: search-as-you-type launcher (pdfs-prompt --fzf)
 	optdepends = foot: terminal that hosts pdfs-prompt --fzf when started from a keybinding
-	provides = proton-drive-for-linux=2.1.1
-	provides = proton-drive-linux=2.1.1
+	provides = proton-drive-for-linux=2.1.0
+	provides = proton-drive-linux=2.1.0
 	provides = pdfs
 	conflicts = proton-drive-linux
 	conflicts = proton-drive-for-linux
 	conflicts = proton-drive-for-linux-git
 	options = !strip
 	options = !debug
-	source = proton-drive-linux-2.1.1-x86_64.tar.gz::https://github.com/narrrl/proton-drive-linux/releases/download/v2.1.1/proton-drive-linux-2.1.1-x86_64.tar.gz
-	source = io.narl.proton-drive-linux.desktop::https://raw.githubusercontent.com/narrrl/proton-drive-linux/v2.1.1/packaging/io.narl.proton-drive-linux.desktop
-	source = io.narl.proton-drive-linux-tray.desktop::https://raw.githubusercontent.com/narrrl/proton-drive-linux/v2.1.1/packaging/io.narl.proton-drive-linux-tray.desktop
-	source = io.narl.proton-drive-linux.svg::https://raw.githubusercontent.com/narrrl/proton-drive-linux/v2.1.1/packaging/io.narl.proton-drive-linux.svg
-	source = proton-drive.service::https://raw.githubusercontent.com/narrrl/proton-drive-linux/v2.1.1/packaging/proton-drive.service
-	source = LICENSE-2.1.1::https://raw.githubusercontent.com/narrrl/proton-drive-linux/v2.1.1/LICENSE
-	sha256sums = 3eb9d6787a0dfa66e2f942e9b2dd4a362cc93b50d1f37d176fe931ea1d22d53c
+	source = proton-drive-linux-2.1.0-x86_64.tar.gz::https://github.com/narrrl/proton-drive-linux/releases/download/v2.1.0/proton-drive-linux-2.1.0-x86_64.tar.gz
+	source = io.narl.proton-drive-linux.desktop::https://raw.githubusercontent.com/narrrl/proton-drive-linux/v2.1.0/packaging/io.narl.proton-drive-linux.desktop
+	source = io.narl.proton-drive-linux-tray.desktop::https://raw.githubusercontent.com/narrrl/proton-drive-linux/v2.1.0/packaging/io.narl.proton-drive-linux-tray.desktop
+	source = io.narl.proton-drive-linux.svg::https://raw.githubusercontent.com/narrrl/proton-drive-linux/v2.1.0/packaging/io.narl.proton-drive-linux.svg
+	source = proton-drive.service::https://raw.githubusercontent.com/narrrl/proton-drive-linux/v2.1.0/packaging/proton-drive.service
+	source = LICENSE-2.1.0::https://raw.githubusercontent.com/narrrl/proton-drive-linux/v2.1.0/LICENSE
+	sha256sums = dd8aba8e38f42386e44994476e9a949516580bd077be1d274c396eef411664ac
 	sha256sums = d190d6771fff0b975271fb62fd3fb0fa8bbf17d7278c10853c18557855b0c123
 	sha256sums = 1d95e250370220e3bb6aead6ce34d1d6cc759f42c4803b75f1667e78ff47c6c0
 	sha256sums = e598a93c2715c3a9fdc7fb937902083d4a1135e8fbdfe6fe7e37f0383ebbd828
