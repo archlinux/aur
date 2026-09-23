@@ -2,7 +2,7 @@
 _projectname='kiota-python'
 _packagename='microsoft-kiota-abstractions'
 pkgname="python-$_packagename"
-pkgver='1.11.8'
+pkgver='1.14.0'
 pkgrel='1'
 pkgdesc='Microsoft Kiota Abstractions Library for Python'
 arch=('any')
@@ -13,20 +13,15 @@ makedepends=('python-build' 'python-flit-core>=3.2.0' 'python-installer' 'python
 checkdepends=('python-pytest>=9.1.1' 'python-pytest-asyncio>=1.4.0')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_packagename-v$pkgver.tar.gz"
-	'change-flit-upper-bound.diff'
 	'hardcode-version.diff'
 )
-b2sums=('a6cfc58004aa08b6c11e7785b5246804cf6c7e6bd17d953020935156932405a6539f63803b954e70c9f71f4457c4a643b49c9b7b30cace6844d7294b662fa448'
-        '5a4b40bfb5ed4359ac9c22a2c87346dccfb66b7c8233e1d27785d1770ad03e54bbb14b034ba00bd38126679aa4fe20d440cae576215e5e41834cad2d206a5461'
+b2sums=('c0e1195dd7957301230353be9fa82451a5205c690fc3ab7250698f395f7a46cbe65f33da7b3274781fdaf651e9ed7bdb54b0ea8949fd2c9cc895d99897d63c40'
         'ac5084e3f4fc4359850ae2ab2384d87c2110cde1acceb8fdc5b45e9f231bab534601e020c0d5615a3133330d7a10bdd64ef3b8294a7dc2504afab003494beb6f')
 
 _sourcedirectory="$_projectname-$_packagename-v$pkgver/packages/abstractions"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/../../"
-
-	# Bump flit upper bound, as there were no BCs
-	patch --forward -p1 < "$srcdir/change-flit-upper-bound.diff"
 
 	# Hardcode package version in _version.py to enable us to run tests without installing the package
 	patch --forward -p1 < "$srcdir/hardcode-version.diff"
