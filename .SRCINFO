@@ -1,0 +1,27 @@
+pkgbase = tackora-bin
+	pkgdesc = A Kanban board for your coding agents: every ticket is a Claude Code or OpenCode session
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://anas1412.github.io/tackora/
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = glib2
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = dbus
+	depends = git
+	optdepends = claude-code: Claude Code agent
+	optdepends = github-cli: pull requests for worktree tickets
+	provides = tackora
+	conflicts = tackora
+	options = !strip
+	options = !debug
+	source = https://github.com/anas1412/tackora/releases/download/v0.3.1/Tackora_0.3.1_amd64.deb
+	source = LICENSE
+	sha256sums = 46d18f4a476faba5389fc541c513d01d05f8e189aa06241da709d2151882ba96
+	sha256sums = 51f19ea24ca521fd6f8beb5b825112e06d5b7ae0a68d23dde6a52063cb1a3b53
+
+pkgname = tackora-bin
