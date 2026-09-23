@@ -24,7 +24,7 @@ replaces=('netmeter-git')
 options=('!lto')
 install=netmeter.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('42ab98774c424f7a4b228896859ed13a277ca08f1d9f2836258c2fbda5c0a9a1')
+sha256sums=('f50a310dbccbb0b00aef2234a6f603001f47346df65e2b4db9eb631ee8804f99')
 
 prepare() {
     cd "NetMeter-$pkgver"
