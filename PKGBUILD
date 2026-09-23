@@ -30,6 +30,7 @@ source=(
   'c99'
   '78_all-libsanitizer-Fix-build-with-glibc-2.42.patch'
   '79_all-sanitizer_common-Remove-reference-to-obsolete-termio.patch'
+  '0000-kernel-7.1-remove-linux-scc.patch'
 )
 _gentoo=(
   '01_all_default-fortify-source.patch'
@@ -84,6 +85,7 @@ md5sums=('0c1f625768840187ef3b10adebe8e3b0'
          'a62bdf6ed6b985e899275f4bdabbb2a0'
          '5c20615dc4e591bf717132f27431a6ae'
          'b17da62ec2d4808305088f73f4d20f35'
+         '63cea3f3613b837d327a1ddfcda38e1c'
          '391cd72d845798db8da4886dff4f7b2a'
          '985662123a68a9b441d3e96e08da91aa'
          'd761d480744208495367f3a4cef98374'
@@ -126,6 +128,7 @@ sha256sums=('d308841a511bb830a6100397b0042db24ce11f642dab6ea6ee44842e5325ed50'
             '30e17222514da5a225272aca3da79bdf3e088656a6a00a7cc6ceab91bea1e032'
             'a20c392af8b730bde85f1e058d1fc97ebf40a1a08ea8ca44fcfbfea3c374861e'
             '02b4965b25af0e1dcb8670bbcc779edc6fd6f36c238b45a8c6a77ac801dc2d89'
+            '7c3bdc5f194ce01a1fd8766e8be2e2ab550a3d2e1ed4ab067525f73971b3c66a'
             '84873199a960f17b0dd2aba8a4c699067640d04b23fb5b320e59ca97aab2ec68'
             '964563c4266c7674054debe4f75a045bfa7a793477acdc2deeb04ee832892e85'
             '60e8e26d4ee8a6c732b027c09f7a0e9f3a8e5f88b3201947b6fbbbedb62d560c'
@@ -161,48 +164,6 @@ sha256sums=('d308841a511bb830a6100397b0042db24ce11f642dab6ea6ee44842e5325ed50'
             '3b01e5f63747fa3682431dac998ab23cd697dbab03956cc982763de4074e3a9d'
             '5f717302056b8610a6812844b7a1475bfba8ddf9d4b695745605f81c5525d52a'
             '35ae955b7a6b0a542947085a2049eebf760062b3f8d30a7f956011ce3c42daf5')
-sha512sums=('92f599680e6b7fbce88bcdda810f468777d541e5fddfbb287f7977d51093de2a5178bd0e6a08dfe37090ea10a0508a43ccd00220041abbbec33f1179bfc174d8'
-            'SKIP'
-            'aab3bddbda96b801d0f56d2869f943157aad52a6f6e6a61745edd740234c635c38231af20bc3f1a08d416a5e973a90e18249078ed8e4ae2f1d5de57658738e95'
-            'aa3fe5cd3259bc74ed464b4dcccbabe0933628e6f2997d7e9abbfb4fd558dd1f6db79dec55970b9173e49c479e0b87e9d743d8087f3912b256fa78e38e17430d'
-            'b3962925604937d49527bf790d15aad2966cca86e419b7f79bff15f971931924af6a57883d8529a72630caac59be1598374793cf152056cda8278f6f6e674834'
-            '665b325b0e5588641f18ebd3571ff0ac5cb9430ff6f89357f0610d18058bb014fa4c4f8e1c55fb0dfd74806d9f745a2315d932b96046aa3c6ebc5f28baeaf675'
-            '4667e948a7f2d2b808381da6522fbee967b41450caa3230bd9c69667c19aa0bb49281082a450935a2605f0fc4ace5faa7a5cbcfdea682f5302cb77a61e340bbf'
-            '91181cd5cc9892bcfafb2ee63efe58dcfcd5e35128141ca6aa3dd2add39de3bf060cf98cdfbfc94f802f4de89c55b5e39f897e1b5c445249150acc39c97f1f2c'
-            'e026bf9f73ee254528423c6cabdfd7794960c567161581b7d4b7c61c45027e12a6efef79662d4288b9cbaecb4798f01af6a5b4a13b766c2d501444ac1846fd43'
-            '37de4cc9061bfe1963e6e6570e1a6bbfd58204bf90e0eef819882599a9a80ea28f3eb815c20c1f173dc25d4bd9971b7c7f7f9512d6f8f91f04de1e1175114d4d'
-            '38a0fedeac3eebe4a6a957792ba520225cf42663c96a171cd168fdb6c91ffa9a56b80351f8238c5d03b78d3ae2a6539a54481fe4848b4a395e2c87f2ff7adc08'
-            'bfb67da0dbe8a014793ae6d3b00df7e9d48c1b9d26cf35cdbbcf6432fffec16afe89f96cfc81e4985c0c13689e2f0eec1facb880bdbe51859ae28fa4ffc07871'
-            '97ae5ba86fcfd1bbeffd286b62b2f5cae5ad6519964c9ec928090868b38f459963b07581af8a9c67478c44b6989f2b30438ebaf8962cbcb45f3683ee37f04011'
-            'a8806536fc5ef0d760b089a67ddc1c5a3d9ff5f8aa20be7b73e6a8393add719bce49ca68de6c1477e812e723b46a6ec3b3b24fd2cc1b8052dfef8b6a66160ae4'
-            '840070a3c423e6206aaa6e63e1d9a0fcd6efd53626cd1240a193f0b60aa5d84216acc4a2a4fa8bce74549b07e6a316b01d638f20cea13dc62473491a302fb3d6'
-            '0a0bc72b9366158f5d23fff1928e756fdd212433bac6ab1f00d632f241382820db8db5d475ddf11ea020eaf7e2e71b12fb9b1c3c870cf84adf6c2b16f15aabca'
-            'f8f38fb2290bb7eb678f67cbcb7bdc83cf7dc2d578020b6f6b58d1f503c2985d256edb7d484b9bbdfd92f4bde48ae2a145b74f723dba911a5df089f462263a67'
-            '1e982e2863c25b9789cf517f3b87768ad3cd805d83ed5d8df50b802d99fc1e12bed9be47472f42b4fff99e3668dcf2db6d1d4f225aa00bbc5ac189686326450a'
-            '4a328d1e1a56c20166307edcfa322068915784d9c08025b7f81cf69714da48fc266b6d34f77b9135c2f10da830d9df408276a1b78d1fd218637c2823506593c2'
-            '801c0032287a85a8310cda1442d3de829620b01f52bba98bd6df726bd36215f5816dc0700345393f126eb0e63348e9cf3cd18099c029f9c44d38d62d703b6628'
-            'f07282793735d8f04f3f870d381deb1d5bc8d38d42c495c8324cc82c3327c00fc96bf3b69deeffa122ad81d7d0d44d35147ddf8c4a5056a43d58bca0a8b5b68b'
-            '0e09efa733518961398c0d87ad8a4a7cc18e979080bc97c5f13c62e5adc0adc172e7f7391071d80226d4d9097f62e972ac9405677b6e568147a2fd244244e8e6'
-            '119042259a4965b13463f6e379c9a5c6f0b4ce5bd1412d11f53541205c30bbb77e65f6670ac14271a02b90c6e9737efc3b52b92ca1d0f485414ae836184119a7'
-            '4bfa6f18afc23f3c4e6b0690f38576780ff68c4857870660d93d4ba2787ee00e8befc68e72a16a29adf25d52f1835c7be7286f1300d5d97b7d43848ed25ce577'
-            'e4dfbf16e27b91a1673fb27ecd86d26e164f19656e75ad62f24a36ef8be64105da9075cc71d96b0dff8ab8f5dc097d7d97197071cb3a535dd4d50bdc9e4a374d'
-            '4d42047c159df3fd9397c3a81b9a182c55aad9345d3328a50af7b3d4b8b67b6538fbab1edc709e3a5e754fdaa9802a12a1b8b3de002819c25f1f1babd88ab80e'
-            '9b626ce710476d5b361ab4b2bb06ad195ab043c76bcdf52197c74379ee2698d24d5a158ed6b42a84727c2e4937e7e6d3db52d7e45885d19103fcd68ef3d9b4a2'
-            '4246b1bb570a5976d2a4ef843035fe706f13f8f5838515513265a2d12bd6c80fe09d2f93327e333bcd816dc225c9638ba919e0e0cd81c02ef96813b261d968a2'
-            '78ba5c194896c6086a54af725ca4e6dd1e0f5694577bd3543db611481e0c760e7b1bf0b0e786128ec70a823f29efffcc0d61da34e7d58903260ada851cb4d9f4'
-            '6db619410cbc46f77150b40dd839a2417fb62d7f8afd66c44c453ff4b3e25248e18df26c08f4ebfeef39526b9d0dc297b9084bd312600e252bfd63afa9b32a0b'
-            'f357615d133b264a19e13949dd05a9c06f6a8443c003471d9c0bd4b8b28f23f3eaff3534331e44a487e98e59e10e2437623fdad3d07810dccf99f257d39fb202'
-            'fc4bade1271acec771b7ce1e7e4ad02a06e2a41525e867200b7ad9757184bf7e52831b1adfe7c3adaebc4748363f5b997b62b49ecb90104ae2d30a15368ed829'
-            '757980fb37eaddd33e46d346019d053e151ac894095b5d20974810873cfbb8d42a557d69b425891066279a3374209e8eb9d227095b76e056c50e6cfa0ae22b42'
-            'a6bba7c6f1bc83030cb29fa783ffd51ad2d361319c23690870617695cb3cd5ae7dda435afe92ed5116ea4a9cba9b96de09acfecea7acb30d0ac68c8aaf2b1a1e'
-            '0b15772e4b0aaa2ca5062fe9b5ca46a09bd9851663b1bbc75509c046785aeba36c799c7f8beef702532e1a7b906f09a4f8adc63baa090556c31e153f004c1d77'
-            '9ef27df960a82695d7fbc0c732c91620fe0897aefb5ef89eac578a2cde9779b6f4ee6504b7f3e6e1fc26bc41edf938cd680e7c5efde5c314831f7da50ac25e74'
-            '0ef43b2a2bb545679854aa1dafdc48e23330722a0ab3e918d2eace376a2f67cd7751b9892ad30ca5d3155c81bad6cb4526acc167ab91b458893ceb80ad85b27e'
-            '2b670c704e2aeb8470cc75a56830cc9e4a7a4f13936315b18a06541d938d0c992821b960639c3e44208357f2cbd3bc0915ea156abef9e8c3700f6da804f89ea1'
-            '67b16d9f75f12063ce4aa3dab1ebb99b9e260401e9515011eab0d11f0074ac9e57556ed5cfb0743a8bbe14684847e18a381d5dab2a2e1abed67d9d9b36ed2763'
-            '54afcad162f2e0752c6640884849e259c1b04954850f4eb8bf7da6e9951dd3ae1f2dde8cfe0661e0fe67ec69b7bb716983d7133d84dc0efd847505f03a47bbfa'
-            '50a4f8c9f3245d51ed4e8bd9629fcfb841e9640450988afdaed2ce77e72e7a2e9b541e50bf8e6848bbdd2f0e74419b9129c91d10b61129900b595d0e62bc1282'
-            'acdc29fdd980949c21af13f4997bf55fea0df1e2fe8b8d24479a6331fc46106d68b1ca2c25cfc49ba3d093094a41082064a13bb94aab43dd8a7cda9fecae1c7a')
 
 if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
@@ -215,6 +176,7 @@ _fn_setlibdir() {
 }
 
 prepare() {
+  local -
   set -u
   cd "${_basedir}"
 
@@ -243,14 +205,15 @@ prepare() {
       ;;
     esac
   done
+  #cd ..; cp -pr "${_basedir}" 'a'; ln -s "${_basedir}" 'b'; false
+  #diff -pNaru5 'a' 'b' > 0000-$RANDOM.patch
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
-
-  set +u
 }
 
 build() {
+  local -
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -313,10 +276,10 @@ build() {
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
-  set +u
 }
 
 check_disabled() {
+  local -
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -324,10 +287,10 @@ check_disabled() {
   LD_PRELOAD='/usr/lib/libstdc++.so' \
   make -k check || true
   ../contrib/test_summary
-  set +u
 }
 
 package_gcc8-libs() {
+  local -
   set -u
   pkgdesc="Runtime libraries shipped by GCC (${_majorver}.x.x)"
   depends=('glibc>=2.27')
@@ -360,10 +323,10 @@ package_gcc8-libs() {
   # Install Runtime Library Exception
   install -Dpm644 '../COPYING.RUNTIME' \
     "${pkgdir}/usr/share/licenses/${pkgbase}-libs/RUNTIME.LIBRARY.EXCEPTION"
-  set +u
 }
 
 package_gcc8() {
+  local -
   set -u
   pkgdesc="The GNU Compiler Collection - C and C++ frontends (${_majorver}.x.x)"
   depends=("${pkgbase}-libs=${pkgver}-${pkgrel}" 'binutils>=2.28' 'libmpc')
@@ -419,10 +382,10 @@ package_gcc8() {
 
   # Remove conflicting files
   rm -rf "${pkgdir}/usr/share/locale"
-  set +u
 }
 
 package_gcc8-fortran() {
+  local -
   set -u
   pkgdesc="Fortran front-end for GCC (${_majorver}.x.x)"
   depends=("${pkgbase}=${pkgver}-${pkgrel}")
@@ -441,6 +404,5 @@ package_gcc8-fortran() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
   ln -s "/usr/share/licenses/${pkgbase}-libs/RUNTIME.LIBRARY.EXCEPTION" \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
-  set +u
 }
 set +u
