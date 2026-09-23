@@ -1,6 +1,6 @@
 # Maintainer: Hannes Körber <hannes@hkoerber.de>
 pkgname='screencfg-git'
-pkgver=0.4.r0.g4223120
+pkgver=0.5.1.r1.g573b7c1
 pkgrel=1
 pkgdesc='Automatically configure your screen setup'
 arch=('x86_64')
@@ -34,7 +34,7 @@ build() {
 check() {
   cd "${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen
+  cargo test --frozen --features=testing
 }
 
 package() {
