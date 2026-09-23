@@ -2,10 +2,10 @@
 _appname=icalingua
 pkgname="${_appname}++-bin"
 _pkgname='Icalingua++'
-pkgver=2.26.6
+pkgver=2.26.8
 _electronversion=39
 pkgrel=1
-pkgdesc="A branch of deleted Icalingua, with limited support.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A branch of deleted Icalingua, with limited support."
 arch=(
     'aarch64'
     'armv7h'
@@ -25,12 +25,12 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.armv7l.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.x86_64.rpm")
 source=("${pkgname%-bin}.sh")
-sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('7c99dd71c14d0b2e3a4080c7ab094b38dbc7d67c8c8e4af95786146b9958c2ba')
-sha256sums_armv7h=('62b97471f5968510aa3ef68fb0e410448d23afc29a7cd0d5e492f6c82cdfca30')
-sha256sums_x86_64=('233f52f10a7ce7402b379b8e59bca9ca568fbc2a45a4f1fe95c25fe10b421392')
+sha256sums=('5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
+sha256sums_aarch64=('6d3e9b16706943ac477682e89501b071d81586ca16594103a8b1b75c46513e76')
+sha256sums_armv7h=('05aea1b52f2b8d975740e220adf628652938c5a3d753005c25964475a75131f1')
+sha256sums_x86_64=('fe1b80c3463d29a5dd54f3f2f10d06189f38afc635cea009133fdebd0befa412')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -55,25 +55,23 @@ prepare() {
         s/\"\/opt\/${_pkgname}\/${_appname}\"/${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_appname}.desktop"
     local _app_dir=$(_get_app_dir)
-    rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/better-sqlite3/prebuilds/"{darwin-*,win32-*}
     case "${CARCH}" in
-        aarch64)
-            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/better-sqlite3/prebuilds/"*-x64*
-            ;;
-        x86_64)
-            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/better-sqlite3/prebuilds/"*-arm64*
-            ;;
+        aarch64)    _arch_rem="x64"     ;;
+        x86_64)     _arch_rem="arm64"   ;;
     esac
+    find "${_app_dir}/resources/app.asar.unpacked/node_modules" \
+        \( -name "*darwin*" -o -name "*win32*" -o -name "*${_arch_rem}*" \) \
+        -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    find "${srcdir}/usr/share/icons" -type f \( -name "*.png" -o -name "*.svg" \) \
-		| while read -r _i; do
+	cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
-		_target_dir=$(dirname "${_i#$srcdir}")
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
 		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
 	done
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
