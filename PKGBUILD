@@ -1,6 +1,6 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r98.6d1f368
+pkgver=r100.8cef91b
 pkgrel=1
 pkgdesc="A Wayland session of KWin plus the illogical-impulse shell — no desktop environment"
 arch=('any')
@@ -17,7 +17,7 @@ license=('GPL-3.0-or-later')
 # only lets callers with a declared desktop entry use its screenshot service.
 depends=('kwin' 'kglobalacceld' 'quickshell' 'xdg-desktop-portal-kde'
          'python' 'python-dbus' 'python-gobject' 'rsync' 'git' 'jq' 'systemd'
-         'imagemagick' 'wl-clipboard' 'libnotify' 'spectacle')
+         'imagemagick' 'wl-clipboard' 'wl-clip-persist' 'libnotify' 'spectacle')
 optdepends=(
   'powerdevil: idle timeouts, DPMS, suspend and brightness'
   'upower: battery status'

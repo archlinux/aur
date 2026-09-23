@@ -1,6 +1,6 @@
 pkgbase = mmsimpulse-git
 	pkgdesc = A Wayland session of KWin plus the illogical-impulse shell — no desktop environment
-	pkgver = r98.6d1f368
+	pkgver = r100.8cef91b
 	pkgrel = 1
 	url = https://github.com/mahirsn/mmsimpulse
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = mmsimpulse-git
 	depends = systemd
 	depends = imagemagick
 	depends = wl-clipboard
+	depends = wl-clip-persist
 	depends = libnotify
 	depends = spectacle
 	optdepends = powerdevil: idle timeouts, DPMS, suspend and brightness
