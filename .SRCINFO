@@ -1,6 +1,6 @@
 pkgbase = simple-irc-client-bin
 	pkgdesc = An open source project that provides a minimalist IRC client for users who don't need all the bells and whistles of a full-featured IRC client.
-	pkgver = 2.0.9
+	pkgver = 2.0.10
 	pkgrel = 1
 	url = https://simpleircclient.com/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = simple-irc-client-bin
 	depends = webkit2gtk-4.1
 	depends = libappindicator
 	depends = libayatana-appindicator
-	provides = simple-irc-client=2.0.9
+	provides = simple-irc-client=2.0.10
 	conflicts = simple-irc-client
-	source = simple-irc-client-2.0.9.rpm::https://github.com/Simple-Irc-Client/desktop/releases/download/v2.0.9/Simple-Irc-Client-2.0.9-1.x86_64.rpm
-	sha256sums = 882789e08df706157f231f90434ec33af898bac71cf5caf937ab6845dedcffb8
+	source = simple-irc-client-2.0.10.rpm::https://github.com/Simple-Irc-Client/desktop/releases/download/v2.0.10/Simple-Irc-Client-2.0.10-1.x86_64.rpm
+	sha256sums = 6713efde899993ea1ad6a20f989abd11c61abe6ee660e1f40d113ec831fd2f8b
 
 pkgname = simple-irc-client-bin
