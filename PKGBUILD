@@ -1,7 +1,7 @@
 # Maintainer: Muhammed Dali <support@dalinira.app>
 
 pkgname=dalinira
-pkgver=7.2.0
+pkgver=7.2.1
 pkgrel=1
 pkgdesc="DaliNira Browser native binary package"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=('dalinira-browser' 'dalinira-bin' 'dalinira-webmedia')
 conflicts=('dalinira-browser' 'dalinira-bin' 'dalinira-webmedia')
 replaces=('dalinira-bin' 'dalinira-webmedia')
 source=("dalinira-browser-${pkgver}-linux-x86_64.tar.zst::https://github.com/Muhammed-Dali/DaliNira-Browser/releases/download/v${pkgver}/dalinira-browser-${pkgver}-linux-x86_64.tar.zst")
-sha256sums=('e9f6b58550757b8d82540e49fc77637d7c0767832390579e36659fae1dba3a78')
+sha256sums=('71075a30142d725d56b66f7bba1364a2b71a540f927a7b139b534877b2c835c2')
 
 package() {
   install -dm755 "${pkgdir}/usr"
