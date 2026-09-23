@@ -3,22 +3,19 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-ffmpeg-minimal
-pkgver=8.1.2
-pkgrel=4
+pkgver=9.0.1
+pkgrel=1
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
 license=('GPL3')
 groups=('android-ffmpeg-minimal')
 depends=("android-${_android_arch}-aom"
-         "android-${_android_arch}-bzip2"
-         "android-${_android_arch}-glib2"
-         "android-${_android_arch}-gnutls"
          "android-${_android_arch}-lame"
-         "android-${_android_arch}-libssh"
          "android-${_android_arch}-libvorbis"
          "android-${_android_arch}-libvpx"
          "android-${_android_arch}-opus"
+         "android-${_android_arch}-openssl"
          "android-${_android_arch}-x264")
 makedepends=('android-configure'
              'nasm')
@@ -27,7 +24,7 @@ conflicts=(${pkgname%-minimal})
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'configure.patch')
-md5sums=('797de9b3657247cdb1ea3635cd3e6e1b'
+md5sums=('3ed2aab5ce5d18a3c5e0d22d8ca3fadb'
          'c1851376794c16bcb37cfa8918e10cba')
 
 prepare() {
@@ -81,6 +78,10 @@ build() {
             ;;
     esac
 
+    if [ "${_android_arch}" != riscv64 ]; then
+        extra_options="${extra_options} --enable-lto"
+    fi
+
     ./configure \
         --prefix=${ANDROID_PREFIX} \
         --enable-shared \
@@ -114,6 +115,7 @@ build() {
         --disable-alsa \
         --disable-avfilter \
         --disable-encoders \
+        --enable-libx264 \
         --enable-encoder=aac \
         --enable-encoder=libaom_av1 \
         --enable-encoder=libmp3lame \
@@ -122,7 +124,6 @@ build() {
         --enable-encoder=libvpx_vp8 \
         --enable-encoder=libvpx_vp9 \
         --enable-encoder=libx264 \
-        --enable-libx264 \
         --enable-encoder=opus \
         --enable-encoder=vorbis \
         --enable-encoder=av1_mediacodec \
@@ -131,14 +132,19 @@ build() {
         --enable-encoder=mpeg4_mediacodec \
         --enable-encoder=vp8_mediacodec \
         --enable-encoder=vp9_mediacodec \
+        --enable-encoder=mjpeg \
         --disable-muxers \
         --enable-muxer=flv \
         --enable-muxer=mp4 \
         --enable-muxer=webm \
+        --enable-muxer=mjpeg \
+        --enable-muxer=mpjpeg \
         --disable-demuxers \
         --enable-demuxer=matroska \
         --enable-demuxer=mov \
         --enable-demuxer=webm_dash_manifest \
+        --enable-demuxer=mjpeg \
+        --enable-demuxer=mpjpeg \
         --disable-decoders \
         --enable-decoder=aac \
         --enable-decoder=aac_fixed \
@@ -166,6 +172,7 @@ build() {
         --enable-decoder=mpeg4_mediacodec \
         --enable-decoder=vp8_mediacodec \
         --enable-decoder=vp9_mediacodec \
+        --enable-decoder=mjpeg \
         --disable-parsers \
         --enable-parser=aac \
         --enable-parser=aac_latm \
@@ -176,6 +183,7 @@ build() {
         --enable-parser=vorbis \
         --enable-parser=vp8 \
         --enable-parser=vp9 \
+        --enable-parser=mjpeg \
         --disable-hwaccels \
         --disable-devices \
         --disable-iconv \
@@ -193,15 +201,14 @@ build() {
         --disable-bzlib \
         --disable-lzma \
         --disable-zlib \
-        --enable-gnutls \
-        --enable-lto \
+        --enable-jni \
         --enable-libaom \
         --enable-libmp3lame \
         --enable-libopus \
         --enable-libvorbis \
         --enable-libvpx \
-        --enable-jni \
         --enable-mediacodec \
+        --enable-openssl \
         ${extra_options}
     make $MAKEFLAGS
 }
