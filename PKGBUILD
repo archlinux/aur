@@ -1,6 +1,6 @@
 # Maintainer: Kharec <sandro@cazzaniga.fr>
 pkgname=shai
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Terminal coding agent and pair-programming buddy"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/ovh/shai/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '05e181a683fa5591ea971ab8f56cbffbd3ffefccdc7a4767059d7783e5395348'
+  'eb516e13cb5928049cd4c573c89ffe13b90367293bc7459fbd1cfab613b458e7'
 )
 
 prepare() {
