@@ -1,0 +1,23 @@
+pkgbase = rayburst-bin
+	pkgdesc = Redefining the open-source download manager.
+	pkgver = 4.0.0_beta.5
+	pkgrel = 1
+	url = https://rayburst.pages.dev/
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = libayatana-indicator
+	depends = libappindicator
+	provides = rayburst=4.0.0_beta.5
+	conflicts = rayburst
+	source = LICENSE-4.0.0_beta.5::https://raw.githubusercontent.com/AnInsomniacy/rayburst/v4.0.0-beta.5/LICENSE
+	sha256sums = 82e71190970399412c9e40fc3f4e2dc1cb070d56433ee7f25af7a4e67f401f0e
+	source_aarch64 = rayburst-4.0.0_beta.5-aarch64.rpm::https://github.com/AnInsomniacy/rayburst/releases/download/v4.0.0-beta.5/Rayburst-4.0.0-beta.5-1.aarch64.rpm
+	sha256sums_aarch64 = 1a83715f677a12c9aec6237a64702537e2b17a9af27f46653ee9ba067e853432
+	source_x86_64 = rayburst-4.0.0_beta.5-x86_64.rpm::https://github.com/AnInsomniacy/rayburst/releases/download/v4.0.0-beta.5/Rayburst-4.0.0-beta.5-1.x86_64.rpm
+	sha256sums_x86_64 = 760295c569e53c7dabe56d6dd6d4044f20680135b971ccf51d8cbb5d8d28cda4
+
+pkgname = rayburst-bin
