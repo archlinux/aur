@@ -8,7 +8,7 @@ _pkgname="hidapi-testgui"
 pkgname="${_pkgname}-git"
 pkgver=0.15.0+28.r705.20260814.852cc68
 _pkgmajorver="$(awk -F. '{print $1}' <<<"${pkgver}")"
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="'hidapi-hidraw-testgui' and 'hidapi-libusb-testgui' for hidapi."
 arch=(
@@ -26,7 +26,9 @@ license=(
 )
 depends=(
   'fox'
-  # 'hidapi'
+  'glibc'
+  'libgcc_s.so'
+  'libstdc++.so'
 )
 makedepends=(
   'autoconf' # for 'autoreconf'
@@ -34,6 +36,9 @@ makedepends=(
   'bash'
   'git'
   'make'
+  'hidapi'
+  'libgcc'
+  'libstdc++'
   #'systemd'
   #'systemd-libs'
   'libusb'
@@ -103,9 +108,10 @@ package() {
 
   rm -fv "${pkgdir}/usr"/share/doc/"${_gitname}"/LICENSE*
 
+  ## We only want to install the test GUI, not any library stuff itself.
   rm -fv "${pkgdir}/usr"/include/hidapi/{hidapi.h,hidapi_libusb.h}
   rm -fv "${pkgdir}/usr"/lib/{libhidapi-hidraw.so,libhidapi-hidraw.so.*,libhidapi-libusb.so,libhidapi-libusb.so.*,libhidapi-hidraw.la,libhidapi-libusb.la}
-  rm -fv "${pkgdir}/usr"/lib/pkgconfig/{hidapi-hidraw.pc,hidapi-libusb.pc}
+  rm -fv "${pkgdir}/usr"/lib/pkgconfig/{hidapi-hidraw.pc,hidapi-libusb.pc,hidapi.pc}
   rm -fv "${pkgdir}/usr"/share/doc/"${_gitname}"/{AUTHORS.txt,README.md}
 
   rmdir "${pkgdir}/usr"/{share/doc/${_gitname},include/hidapi,include,lib/pkgconfig,lib}

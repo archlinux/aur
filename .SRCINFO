@@ -1,7 +1,7 @@
 pkgbase = hidapi-testgui-git
 	pkgdesc = 'hidapi-hidraw-testgui' and 'hidapi-libusb-testgui' for hidapi.
 	pkgver = 0.15.0+28.r705.20260814.852cc68
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/libusb/hidapi
 	arch = x86_64
@@ -17,10 +17,16 @@ pkgbase = hidapi-testgui-git
 	makedepends = bash
 	makedepends = git
 	makedepends = make
+	makedepends = hidapi
+	makedepends = libgcc
+	makedepends = libstdc++
 	makedepends = libusb
 	makedepends = libtool
 	makedepends = libudev.so
 	depends = fox
+	depends = glibc
+	depends = libgcc_s.so
+	depends = libstdc++.so
 	optdepends = libusb: for the libusb backend -- hidapi-libusb.so
 	optdepends = libudev.so: for the hidraw backend -- hidapi-hidraw.so
 	optdepends = libhidapi-hidraw.so=0: To use 'hidapi-hidraw-testgui'.
