@@ -1,0 +1,25 @@
+pkgbase = dalinira
+	pkgdesc = DaliNira Browser native binary package
+	pkgver = 7.2.0
+	pkgrel = 1
+	url = https://github.com/Muhammed-Dali/DaliNira-Browser
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = ffmpeg
+	depends = openssl
+	depends = qt6-base
+	depends = qt6-imageformats
+	depends = qt6-svg
+	depends = qt6-webengine
+	provides = dalinira-browser
+	provides = dalinira-bin
+	provides = dalinira-webmedia
+	conflicts = dalinira-browser
+	conflicts = dalinira-bin
+	conflicts = dalinira-webmedia
+	replaces = dalinira-bin
+	replaces = dalinira-webmedia
+	source = dalinira-browser-7.2.0-linux-x86_64.tar.zst::https://github.com/Muhammed-Dali/DaliNira-Browser/releases/download/v7.2.0/dalinira-browser-7.2.0-linux-x86_64.tar.zst
+	sha256sums = e9f6b58550757b8d82540e49fc77637d7c0767832390579e36659fae1dba3a78
+
+pkgname = dalinira
