@@ -4,7 +4,7 @@ pkgbase=python-starlink-pyast
 _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Python interface to the Starlink AST library"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ checkdepends=('python-scipy')
 #             'python-matplotlib'
 #              )
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('fdf8fa85b91191f3abfe263bc40ccce0')
+md5sums=('0c029f10ad8cc8d8cbb6483b667e544c')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
