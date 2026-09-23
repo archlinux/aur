@@ -1,16 +1,20 @@
 # Maintainer: Vaspyyy <lolbautz2 at gmail dot com>
 pkgname=fthr-clips-git
-pkgver=1.1.0alpha0.r3.g64a7b0b
-pkgrel=1
+pkgver=1.1.1alpha0.r10.g2208931
+pkgrel=2
 pkgdesc='Instant replay capture and clip management (upstream Linux development branch)'
 arch=('x86_64')
 url='https://github.com/FTHR-Community/FTHR-Clips'
 license=('GPL-3.0-only' 'MIT' 'LGPL-3.0-or-later' 'OFL-1.1' 'PSF-2.0' 'Apache-2.0' 'BSD-3-Clause' 'Zlib' '0BSD')
 depends=('python' 'pyside6' 'qt6-multimedia' 'python-numpy' 'python-opencv'
          'python-keyboard' 'glibc' 'gcc-libs' 'libpulse' 'wayland' 'ca-certificates')
-makedepends=('git' 'cmake' 'pkgconf' 'patchelf' 'licenses' 'python-installer' 'python-packaging' 'python-setuptools')
+makedepends=('libpipewire' 'dbus' 'git' 'cmake' 'pkgconf' 'patchelf' 'licenses' 'python-installer' 'python-packaging' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-qt' 'python-typing_extensions')
 optdepends=(
+  'pipewire: ScreenCast portal capture server and runtime library'
+  'dbus: ScreenCast portal communication'
+  'xdg-desktop-portal: ScreenCast capture broker'
+  'xdg-desktop-portal-kde: ScreenCast picker/backend for KDE Plasma'
   'python-sounddevice: microphone recording and level meter (uses PortAudio)'
   'pipewire-pulse: desktop audio through PipeWire'
   'pulseaudio: alternative desktop audio server'
@@ -81,7 +85,7 @@ build() {
   cd FTHR-Clips
   cmake -S FTHRcapture_linux -B FTHRcapture_linux/build \
     -DCMAKE_BUILD_TYPE=Release -DFTHR_FFMPEG_ROOT="$PWD/FTHRcapture_linux/third_party/ffmpeg" \
-    -DBUILD_TESTING=ON
+    -DFTHR_PORTAL_BACKEND=ON -DBUILD_TESTING=ON
   cmake --build FTHRcapture_linux/build --parallel "$(nproc)"
   # Only the optional, consent-gated uploader is frozen, exactly as upstream.
   # All build tools are declared wheels; no pip or remote fetch runs here.
