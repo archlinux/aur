@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale-bin
-pkgver=0.9.13
+pkgver=0.10.0
 pkgrel=1
 # Upstream renamed DeepSeek-TUI → CodeWhale on 2026-05-24 and removed the
 # legacy `deepseek`/`deepseek-tui` stub binaries in v0.8.54.
@@ -22,8 +22,8 @@ _relurl="https://github.com/Hmbown/CodeWhale/releases/download/v${pkgver}"
 
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Hmbown/CodeWhale/v${pkgver}/LICENSE")
 sha256sums=('25b5d5a7553af7604772f65aac936540d7e9f5562a9e6a8ca9d02e4f628e9d51')
-sha256sums_x86_64=('593ae256756f969ea9f550e8733303abc85cd3ee0dd2c0899f4a76df7103fe7e')
-sha256sums_aarch64=('0605271d2a343b241232966ec7ca11cf93170289d05a85ad1c513116be77307d')
+sha256sums_x86_64=('c443c2c32c743dd80ff56397b1e7bbfe55b1ca6306ff55065b977bc655d50ed1')
+sha256sums_aarch64=('f3e2d82257cac33ef033f033a9638cb00189a3334deb58fbff7b89aed218273a')
 
 # v0.9.5 folded the TUI into the CLI: upstream now uploads one 60 MB binary and
 # publishes it under all three release names (codewhale / codewhale-tui /
