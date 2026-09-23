@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale
-pkgver=0.9.13
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="CodeWhale (formerly DeepSeek-TUI) - DeepSeek-first agentic terminal for open-source coding models"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,8 @@ conflicts=('codewhale-bin' 'codewhale-tui' 'deepseek' 'deepseek-tui' 'deepseek-t
 # Upstream's release binaries have no debug symbols.
 options=('!lto' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('53df4f8ffe8d21272fde4e7378b2a5b1c2ffb8496c38bc6341138e3c3a717d71')
+sha256sums=('768bbe90810917d4a989844ff26133412a5c67c6a6b76b334d378de44a936965')
+_commit=1be1a703b975fc0a6c125886c761141341615a32
 
 prepare() {
     cd "Codewhale-${pkgver}"
@@ -30,6 +31,7 @@ build() {
 
     export CARGO_HOME="${srcdir}/.cargo"
     export RUSTUP_TOOLCHAIN=stable
+    export CODEWHALE_BUILD_SHA="${_commit}"
     # Do not retain the build workspace or Cargo cache in Rust panic paths or
     # rquickjs-sys's compiled C source-location strings.
     export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/Codewhale-${pkgver}=/build/codewhale --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry"
