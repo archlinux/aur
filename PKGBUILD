@@ -1,7 +1,7 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 # Contributor: Bin Jin <bjin@protonmail.com>
 pkgname=omp-bun
-pkgver=18.2.8
+pkgver=18.2.10
 pkgrel=1
 pkgdesc="oh-my-pi (omp): AI Coding agent for the terminal (built with system bun)"
 arch=('x86_64')
