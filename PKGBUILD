@@ -1,6 +1,6 @@
 # Maintainer: Bryan Everly <bryan@theeverlys.com>
 #
-# AUR package — sysmanage (server) — Phase 11.8 stub.
+# AUR package -- sysmanage (server) -- Phase 11.8 stub.
 #
 # pkgver is bumped to the release tag value by the ``aur`` job in
 # .github/workflows/build-and-release.yml at publish time; do not
@@ -19,7 +19,7 @@
 # PostgreSQL 15+ and nginx are runtime deps (matches the RPM spec which
 # pins postgresql-server >= 12 and Requires: nginx).
 pkgname=sysmanage
-pkgver=3.9.0.0
+pkgver=3.9.0.2
 pkgrel=1
 pkgdesc="Centralized system management server with web-based interface"
 arch=('any')
@@ -55,7 +55,7 @@ depends=(
 makedepends=('python-setuptools' 'python-pip')
 backup=('etc/sysmanage.yaml' 'etc/nginx/conf.d/sysmanage-nginx.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bceverly/sysmanage/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('95f331dc0dc3296134c4dfc4e44e4de049034797878ef2532c4f0dad4e6eaf2b')
+sha256sums=('d9ee85d60fa04c121c91211552e9ad99e06f659a550e2343b155d4dccb6a86e0')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -72,7 +72,7 @@ package() {
     cp -r config "${pkgdir}/opt/sysmanage/"
     cp -r scripts "${pkgdir}/opt/sysmanage/"
 
-    # Air-gap bundle dispatcher template — buildAirGapBundle.sh (in
+    # Air-gap bundle dispatcher template -- buildAirGapBundle.sh (in
     # scripts/) resolves this relative to itself
     # (../installer/airgap-bundle/install.sh), so it must be packaged
     # alongside scripts/ or every bundle build dies at the "dispatcher
@@ -85,7 +85,7 @@ package() {
     [ -d frontend/dist ] && cp -r frontend/dist "${pkgdir}/opt/sysmanage/frontend/" || true
     [ -d frontend/public ] && cp -r frontend/public "${pkgdir}/opt/sysmanage/frontend/" || true
 
-    # Example config — package owns this path via the ``backup=()`` entry
+    # Example config -- package owns this path via the ``backup=()`` entry
     # so pacman keeps user edits on upgrade.
     install -d "${pkgdir}/etc"
     install -m 0640 installer/opensuse/sysmanage.yaml.example \
@@ -97,12 +97,12 @@ package() {
         "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
     # nginx site config (Arch nginx ships /etc/nginx/conf.d/ as a drop-in
-    # directory — mirror the RPM placement).
+    # directory -- mirror the RPM placement).
     install -d "${pkgdir}/etc/nginx/conf.d"
     install -m 0644 installer/opensuse/sysmanage-nginx.conf \
         "${pkgdir}/etc/nginx/conf.d/sysmanage-nginx.conf"
 
-    # Var dirs (state + logs) — pacman won't create empty dirs without
+    # Var dirs (state + logs) -- pacman won't create empty dirs without
     # us installing them.
     install -d "${pkgdir}/var/lib/${pkgname}"
     install -d "${pkgdir}/var/log/${pkgname}"
