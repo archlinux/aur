@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A modern network speed testing and monitoring tool"
 
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,8 +28,8 @@ source=("${_appname}.service")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('5656181fd7951c3a7b20fa32777c7564101e5824fd2471521748ed52cb261cb5')
-sha256sums_x86_64=('34f71af87e9105c4a1a881a15c65c65377db04448afdee114d8276e4990f9cce')
-sha256sums_aarch64=('31a27b6114af4df95b2657197bd4cd6ec4459a7d23d006707cb748c6c7e518e1')
+sha256sums_x86_64=('68e65470c7e68fe42394069b2d771fae6d5c2dc000fe5d70ca16ce39edc1c318')
+sha256sums_aarch64=('66fd50f4d1c23c5457ff9d6eeea4c4a1e2da96835f8ef129687221b376877c4d')
 
 
 package() {
