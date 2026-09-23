@@ -3,7 +3,7 @@
 
 _pkgname=libkazv
 pkgname="${_pkgname}-git"
-pkgver=0.8.0+9.r501.20251002.1155e3e
+pkgver=1.0.0.r538.20260830.cbfdce3
 pkgrel=1
 pkgdesc="A matrix client sdk built upon lager and the value-oriented design it enables."
 arch=(
@@ -21,7 +21,7 @@ depends=(
   'crypto++'
   'gcc-libs'
   'glibc'
-  'vodozemac-bindings-cpp-kazv>=0.2.0'
+  'vodozemac-bindings-cpp-kazv>=1.0.0'
 )
 makedepends=(
   #'boost'
