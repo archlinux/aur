@@ -1,6 +1,6 @@
 pkgbase = tcut-bin
 	pkgdesc = Script terminal sessions in TypeScript, render reproducible MP4/GIF/SVG/HTML with Bun
-	pkgver = 1.4.2
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/AmanVarshney01/tcut
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tcut-bin
 	license = MIT
 	provides = tcut
 	conflicts = tcut
-	source_x86_64 = tcut-bin-1.4.2-x86_64::https://github.com/AmanVarshney01/tcut/releases/download/v1.4.2/tcut-1.4.2-linux-x64
-	sha256sums_x86_64 = 932c908d6ec7d118ebf93371078ec6f7c18a074e1092388a7a49df1c000fef62
-	source_aarch64 = tcut-bin-1.4.2-aarch64::https://github.com/AmanVarshney01/tcut/releases/download/v1.4.2/tcut-1.4.2-linux-arm64
-	sha256sums_aarch64 = 8e6a30c5d2a45744b1ae4078ef87301fed38a1de375e34c0684d230b01f7f398
+	source_x86_64 = tcut-bin-1.4.4-x86_64::https://github.com/AmanVarshney01/tcut/releases/download/v1.4.4/tcut-1.4.4-linux-x64
+	sha256sums_x86_64 = a09c7a845e3a5cd10058f82e125810923def765f47e481d0d457566fac9f4aaf
+	source_aarch64 = tcut-bin-1.4.4-aarch64::https://github.com/AmanVarshney01/tcut/releases/download/v1.4.4/tcut-1.4.4-linux-arm64
+	sha256sums_aarch64 = b1d5dd25db5f467896a819c0e159d327f8ec1c5067b57142542f91b17b29468c
 
 pkgname = tcut-bin
