@@ -1,8 +1,8 @@
 # Maintainer: Ignacio Perez <ignacio@feuer.me>
 
 pkgname=dbflux
-pkgver=0.7.8
-pkgrel=2
+pkgver=0.7.9
+pkgrel=1
 pkgdesc="A fast, keyboard-first database client"
 arch=('x86_64' 'aarch64')
 # Upstream repository: https://github.com/0xErwin1/dbflux
@@ -34,12 +34,12 @@ depends=(
     'hicolor-icon-theme'
 )
 
-source_x86_64=("${url}/releases/download/v${pkgver}/dbflux-linux-amd64.tar.gz"{,.asc})
-source_aarch64=("${url}/releases/download/v${pkgver}/dbflux-linux-arm64.tar.gz"{,.asc})
+source_x86_64=("https://github.com/0xErwin1/dbflux/releases/download/v${pkgver}/dbflux-linux-amd64.tar.gz"{,.asc})
+source_aarch64=("https://github.com/0xErwin1/dbflux/releases/download/v${pkgver}/dbflux-linux-arm64.tar.gz"{,.asc})
 
-sha256sums_x86_64=('b270f33be14f9b9ff259fd5543c2e8954da99ec44455a104b5de7e48d594a53f'
+sha256sums_x86_64=('6dfb9a5d0fefccab34f9db662376da310b9fc45a40e1652a51c4b45882c098bd'
                    'SKIP')
-sha256sums_aarch64=('23b27c0bfdc131b35632e29eafa87f6a60de2149579aa60d74c9ec3fa924cb85'
+sha256sums_aarch64=('ed323f869c069d2f2699cc9b209bc1e4c2354293ef722ca9a64d4ab2db58b28f'
                     'SKIP')
 
 validpgpkeys=('B39EB98E8860DAFB05670073A614B7D25134987A')
