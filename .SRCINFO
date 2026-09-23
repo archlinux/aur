@@ -4,6 +4,7 @@ pkgbase = python-pyclipr
 	pkgrel = 1
 	url = https://github.com/drlukeparry/pyclipr
 	arch = x86_64
+	arch = aarch64
 	license = BSL-1.0
 	makedepends = python-build
 	makedepends = python-installer

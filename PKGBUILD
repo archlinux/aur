@@ -4,7 +4,7 @@ _name=pyclipr
 pkgver=0.1.8
 pkgrel=1
 pkgdesc="Python library for polygon clipping and offsetting based on Clipper2"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/drlukeparry/pyclipr"
 license=('BSL-1.0')
 depends=('python' 'python-numpy' 'glibc' 'libgcc' 'libstdc++')
@@ -25,6 +25,9 @@ prepare() {
 
 build() {
   cd "$_name-$pkgver"
+  # scikit-build-core falls back to Python's sysconfig CXX when unset; on Arch Linux ARM
+  # that is /usr/lib/distcc/bin/g++, which does not exist without distcc installed
+  export CC="${CC:-gcc}" CXX="${CXX:-g++}"
   python -m build --wheel --no-isolation
 }
 
