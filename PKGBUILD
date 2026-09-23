@@ -3,7 +3,7 @@
 _npmname=agent-skill-manager
 pkgname=asm
 pkgver=2.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal CLI/TUI for managing AI coding agent skills across 17+ platforms"
 arch=('x86_64')
 url="https://github.com/luongnv89/asm"
@@ -14,13 +14,13 @@ provides=('agent-skill-manager')
 conflicts=('agent-skill-manager')
 options=('!strip' '!debug')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
-        "LICENSE::https://raw.githubusercontent.com/luongnv89/asm/v$pkgver/LICENSE")
+        "LICENSE-$pkgname-$pkgver::https://raw.githubusercontent.com/luongnv89/asm/v$pkgver/LICENSE")
 noextract=($_npmname-$pkgver.tgz)
 sha1sums=('6b2c89c4420cf85566d41cc64e5639365ab3049c'
           '90e650c62d02d417e91302bfc5ab0ca50f165043')
 
 package() {
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+  npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/npm/issues/9359 for details.
@@ -30,5 +30,5 @@ package() {
   # https://bugs.archlinux.org/task/63396
   chown -R root:root "${pkgdir}"
 
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/LICENSE-$pkgname-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
