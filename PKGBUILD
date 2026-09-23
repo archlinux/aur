@@ -2,12 +2,12 @@
 # Contributor: Celogeek <private-4zokpdq6@mrhyde.xyz>
 
 _basename=jicofo
-_version=1.0+1189
+_version=1.0+1205
 
 _pkgbase=${_basename}
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=2
+pkgrel=1
 pkgdesc="JItsi meet COnference FOcus binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -69,11 +69,11 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('73a6104ffa24ac1fcf6660fb8c73ed7bea96a5ebdf2aa9d79b8a00b535639bbb'
+sha256sums=('0c37e9ea3e2e3ecd12b57b0363a41421a558616a9b5b0732d4abd612611644e4'
             '77f2e2d62e9fe38188f41b063496cc10970cc989ed620a64a2251d986d6ac253'
-            'ca9dad37d95752c42be9c125734ba43eb9314fd0233e0e6f5e3621768f18fc0d'
+            '37ba948c4f54dcb3f9b71cbb4596c4612dfd76caf65fef0ef8d7059926255dac'
             'b22a8df91cde1956969bd3a6fd293bea01be54713649ed0fd39e847b1eb61886'
-            'cdd1f6453746c208bc7bc4c0d9000ef801034385191fb44db1c49ff152962fdc'
+            '6b19c84002aa096fe17e6707bc366c03872bbc349e699b4aafdc3220fec5267b'
             'b69f9485ba55b53fe6d1a8b5e4a37c542641cb205c6f5c0b2cf89d236cc6b562'
             '902229d135e9b949da318f539cbe8f266bdd4e32e514f37d8782ad4562dc791b'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
