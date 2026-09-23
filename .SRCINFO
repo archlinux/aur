@@ -1,5 +1,5 @@
 pkgbase = maryanne-bin
-	pkgdesc = Read ebook (EPUB) or PDF aloud to you with natural-sounding voices.
+	pkgdesc = Maryanne: EPUB & PDF reader with natural voice read-aloud
 	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://maryanne.app

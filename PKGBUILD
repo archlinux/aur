@@ -2,7 +2,7 @@
 pkgname=maryanne-bin
 pkgver=3.5.0
 pkgrel=1
-pkgdesc='Read ebook (EPUB) or PDF aloud to you with natural-sounding voices.'
+pkgdesc='Maryanne: EPUB & PDF reader with natural voice read-aloud'
 arch=('x86_64')
 url='https://maryanne.app'
 license=('custom')
