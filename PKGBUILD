@@ -2,7 +2,7 @@
 _projectname='kiota-python'
 _packagename='microsoft-kiota-serialization-text'
 pkgname="python-$_packagename"
-pkgver='1.11.8'
+pkgver='1.14.0'
 pkgrel='1'
 pkgdesc='Microsoft Kiota Text Serialization library'
 arch=('any')
@@ -13,20 +13,15 @@ makedepends=('python-build' 'python-flit-core>=3.2.0' 'python-installer' 'python
 checkdepends=('python-pytest>=9.1.1' 'python-pytest-asyncio>=1.4.0')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_packagename-v$pkgver.tar.gz"
-	'change-flit-upper-bound.diff'
 	'hardcode-version.diff'
 )
-b2sums=('b842bdd21897e4246b1fbe4ff38d67afdb8d2a678d9b5d099764996a19a5ed160c4251d34dfaa2d652abcaa891dc09e9806210c1c290417c0f318865acb87118'
-        'e20e9f40b37ea3793af4ee61572499b9f17a5a3e14b353817633ac4f82afa9b4aa68ab302352e9830fd868d88c8600e185c23ab749cd2672ef11f1b0160e05f9'
+b2sums=('2c66cbd4c4ade95683392044cbdd3e529db3698aa27e7d43b3058f3502522ffc89735bcaa9dbc4236a1b7c609d6d7b882eba80685922d98d7816febedec62d04'
         '713f73357aca8fc2696a658796db14a6c4dd548de0a81136ad9d2758d04133b5a9f65e2afb0ca029962dae7baa88057fb1446d55693d496e2f9b4fd3710ef2c8')
 
 _sourcedirectory="$_projectname-$_packagename-v$pkgver/packages/serialization/text"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/../../../"
-
-	# Bump flit upper bound, as there were no BCs
-	patch --forward -p1 < "$srcdir/change-flit-upper-bound.diff"
 
 	# Hardcode package version in _version.py to enable us to run tests without installing the package
 	patch --forward -p1 < "$srcdir/hardcode-version.diff"
