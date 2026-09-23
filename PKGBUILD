@@ -1,15 +1,15 @@
 # Maintainer: Sateallia <mail@sateallia.org>
 pkgname=plasma6-applet-caldavtasks
-pkgver=1.3.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Plasma 6 widget to view and manage VTODO tasks from any CalDAV-compatible server"
 arch=('any')
 url="https://github.com/Sinkmanu/Plasma-Widgets"
 license=('GPL-3.0-only')
 depends=('plasma-workspace' 'qt6-declarative')
-_commit=339629fc8a16ac0806aa84ff0ea473ac728f6f89
+_commit=7bf35e65e2a6bbc337379aa105f7daf13c3f26fa
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Sinkmanu/Plasma-Widgets/archive/${_commit}.tar.gz")
-sha256sums=('2f12d22ac3dc4e6a24f0dc9b36424dc498c920a31d74ce2d3066c7b794102b4d')
+sha256sums=('daa18b08cb732413380c15be3bcf814a924b5479661fd3b31cc82d48dc9b2b64')
 
 package() {
     cd "${srcdir}/Plasma-Widgets-${_commit}"
