@@ -2,7 +2,7 @@
 _appname=qoder-cn
 pkgname="${_appname}-ide-bin"
 _pkgname='Qoder IDE'
-pkgver=1.31.2
+pkgver=1.32.0
 _electronversion=42
 pkgrel=1
 pkgdesc="面向真实软件开发的 AI 原生 Qoder CN IDE。"
@@ -31,7 +31,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7f529095ff9d74504202a945365dc1c98a770fe47e064f007b096c0f7c3b93f7'
+sha256sums=('339c409afbbe768680eb4176e0f751f624f85887917f076841768c9ad25e2283'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
             '144551f99c19e89223da901011e9d237904bd895900676b9b69d317bcb4181b8'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
