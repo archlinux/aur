@@ -1,0 +1,25 @@
+pkgbase = tropy-git
+	pkgdesc = Explore your research photos.
+	pkgver = 1.18.0.beta.6.r8.gfd9c828
+	pkgrel = 1
+	url = https://tropy.org/
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = npm
+	makedepends = git
+	makedepends = nvm
+	makedepends = gendesk
+	makedepends = jq
+	makedepends = zip
+	depends = electron44
+	depends = libvips
+	optdepends = libheif: for heif support
+	optdepends = poppler-glib: for pdf support
+	provides = tropy=1.18.0.beta.6
+	conflicts = tropy
+	source = tropy.git::git+https://github.com/tropy/tropy.git
+	source = tropy.sh
+	sha256sums = SKIP
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
+
+pkgname = tropy-git
