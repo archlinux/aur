@@ -1,13 +1,13 @@
 pkgbase = jellyrpc
 	pkgdesc = Dependency free, simple Discord RPC daemon for Jellyfin
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/snowmoe/jellyrpc
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = go
 	depends = glibc
-	source = jellyrpc-0.2.0.tar.gz::https://github.com/snowmoe/jellyrpc/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = e14104d3aec290509612ab970e9fd3a895fdd2d1065dae4ddce35ab05c0126c6
+	source = jellyrpc-0.2.1.tar.gz::https://github.com/snowmoe/jellyrpc/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 5045d4e318bd133eb058e5e45b53728f7dcd948e29a989bbf22972cd0ce0bd86
 
 pkgname = jellyrpc
