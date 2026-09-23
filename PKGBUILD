@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=douyin-bin
 _debname="com.${pkgname%-bin}.otohime"
-pkgver=8.1.201
-_electronversion=42
+pkgver=8.7.0
+_electronversion=39
 pkgrel=1
-pkgdesc="Third-party Linux client for Douyin.(Prebuilt version.Use system-wide electron)第三方抖音 Linux 客户端"
+pkgdesc="Third-party Linux client for Douyin.第三方抖音 Linux 客户端"
 arch=(
     'aarch64'
     'x86_64'
@@ -19,17 +19,17 @@ depends=(
     'nodejs'
 )
 source=(
-    "LICENSE-${pkgver}.html::${url}/draft/douyin_agreement/douyin_agreement_user.html?id=6773906068725565448"
+    "LICENSE.html::${url}/draft/douyin_agreement/douyin_agreement_privacy.html"
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_dlurl}/releases/download/${pkgname%-bin}${pkgver}/${_debname}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_dlurl}/releases/download/${pkgname%-bin}${pkgver}/${_debname}_${pkgver}_amd64.deb")
-sha256sums=('12e8d0a130a2dae1d6f52c9bc18c4ea572ae1366c21b083936310b780b9cf2c7'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('bf686de21bca3cba3a9ea2a12caf644dc05527e8062c67baff3d3e954494c057')
-sha256sums_x86_64=('9acf2c48052695f71c5341beb410db613b002bf56dccff2168daf3228227c953')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            '5ec6b59a287204cbcbac040071f19d88897a0cb3156e794e6f05847cf5449a9e')
+sha256sums_aarch64=('b258044d6d70396feb3c4c3a2f15e6535e63a8bf7de2e7e1c025509f73113e05')
+sha256sums_x86_64=('d76a7ade09213fac9d7d5b2d1ce9109ba5b66a7f96b12ad9cd4c4d45ae4906dd')
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
@@ -52,7 +52,7 @@ prepare() {
     _check_electron_version
     sed -i -e "
         s/Categories=Video;/Categories=AudioVideo;/g
-        s/Exec=\/opt\/apps\/${_debname}\/files\/${pkgname%-bin}/Exec=${pkgname%-bin}/g
+        s/Exec=\/opt\/apps\/${_debname}\/files\/${pkgname%-bin}/Exec=${pkgname%-bin} %U/g
         s/Icon=\/opt\/apps\/${_debname}\/files\/resources\/app\/${pkgname%-bin}.png/Icon=${pkgname%-bin}/g
     " "${srcdir}/opt/apps/${_debname}/entries/applications/${pkgname%-bin}.desktop"
 }
@@ -60,14 +60,11 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm644 "${srcdir}/opt/apps/${_debname}/entries/applications/${pkgname%-bin}.desktop" \
-        -t "${pkgdir}/usr/share/applications"
-    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
-        _extension="${_i##*.}"
-        _icon_path="${_i#*share/icons/}"
-        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
-        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
-    done
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm644 "${srcdir}/opt/apps/${_debname}/entries/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*entries/icons/*" | while read -r _i; do
+		_icon_path="${_i#*entries/icons/}"
+		install -Dm644 "${_i}" "${pkgdir}/usr/share/icons/${_icon_path}"
+	done
+    install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
