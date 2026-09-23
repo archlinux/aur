@@ -1,34 +1,30 @@
 # Maintainer: Simon Repp <simon@fdpl.io>
 
-arch=('x86_64')
-# TODO: Dependency on openslide and poppler-glib is unclear,
-#       technically these are optional dependencies of libvips
-#       and faircamp does not require them either (no TIFF or SVG/PDF
-#       related operations with libvips), but at least two people have
-#       reported runtime errors related to libvips without them (for faircamp-git).
-depends=('ffmpeg' 'libvips>=8.13.3' 'openslide' 'opus' 'poppler-glib')
+arch=('aarch64' 'x86_64')
+conflicts=('faircamp-bin' 'faircamp-cli' 'faircamp-git')
+depends=('ffmpeg' 'opus')
 license=('AGPL3')
 makedepends=('cargo' 'cmake' 'git')
 options=('!lto')
 pkgdesc='A static site generator for audio producers'
 pkgname=faircamp
 pkgrel=1
-pkgver=1.7.0
-sha256sums=('599429eeef873fbe68e3f7b0cf15901d08e2819e9034ea5db2e06bc235fa3559')
+pkgver=2.0.0
+sha256sums=('b0601a411fe041baae4da86bab4242fc964df6229ff2335955f1d5df46f2deff')
 url='https://faircamp.org'
 
-source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/simonrepp/faircamp/archive/${pkgver}.tar.gz")
+source=("faircamp-${pkgver}.tar.gz::https://codeberg.org/simonrepp/faircamp/archive/${pkgver}.tar.gz")
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cd "$srcdir/$pkgname"
-    cargo build --features libvips --locked --offline --release
+    cd "$srcdir/faircamp"
+    cargo build --locked --offline --package faircamp --release
 }
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
-    install -Dm755 "$srcdir/$pkgname/target/release/faircamp" "$pkgdir/usr/bin/faircamp"
+    install -Dm755 "$srcdir/faircamp/target/release/faircamp" "$pkgdir/usr/bin/faircamp"
 }
 
 prepare() {
@@ -37,6 +33,6 @@ prepare() {
     # therefore we specify nightly as toolchain here.
     # See also: https://github.com/rust-lang/cargo/issues/5704
     export RUSTUP_TOOLCHAIN=nightly
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/faircamp"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
