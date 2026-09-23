@@ -1,5 +1,5 @@
 pkgbase = gcc12
-	pkgdesc = The GNU Compiler Collection
+	pkgdesc = The GNU Compiler Collection (12.x.x)
 	pkgver = 12.5.0
 	pkgrel = 2
 	url = https://gcc.gnu.org
@@ -17,31 +17,34 @@ pkgbase = gcc12
 	makedepends = doxygen
 	makedepends = gcc-ada
 	makedepends = gcc-d
-	makedepends = git
 	makedepends = libisl
 	makedepends = libmpc
 	makedepends = python
 	makedepends = zstd
 	options = !emptydirs
+	options = !strip
+	options = !buildflags
 	options = !lto
-	source = git+https://sourceware.org/git/gcc.git#commit=c17d40bb3778bca5e81595f033df9222b66658eb
+	source = https://sourceware.org/pub/gcc/releases/gcc-12.5.0/gcc-12.5.0.tar.xz
 	source = c89
 	source = c99
 	source = 78_all-libsanitizer-Fix-build-with-glibc-2.42.patch
 	source = 79_all-sanitizer_common-Remove-reference-to-obsolete-termio.patch
+	source = 0000-kernel-7.1-remove-linux-scc.patch
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
 	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
 	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
-	sha256sums = SKIP
+	sha256sums = 71cd373d0f04615e66c5b5b14d49c1a4c1a08efa7b30625cd240b11bab4062b3
 	sha256sums = de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931
 	sha256sums = 2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a
 	sha256sums = 17d0dbcdd1772e88853d41575c79e448ddeb8a46ec07b7b15e82c23d75541f8b
 	sha256sums = b4459b314d33e4b6af1c77c6121dffee262c3ecf5436fc20c67fcab0446e059e
+	sha256sums = 0d89650effbd0572ece8c23761e7f736a172d57609633b60e861e8b79679e429
 
 pkgname = gcc12
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (12.x.x)
-	depends = gcc12-libs
+	depends = gcc12-libs=12.5.0-2
 	depends = binutils>=2.28
 	depends = libmpc
 	depends = zstd
@@ -57,5 +60,5 @@ pkgname = gcc12-libs
 
 pkgname = gcc12-fortran
 	pkgdesc = Fortran front-end for GCC (12.x.x)
-	depends = gcc12
+	depends = gcc12=12.5.0-2
 	depends = libisl.so
