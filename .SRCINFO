@@ -1,0 +1,32 @@
+pkgbase = bearbar-git
+	pkgdesc = Compact GTK4 desktop bar for Hyprland, Niri, Sway, and KDE Plasma
+	pkgver = 0.1.0.r2.ge9cf04b
+	pkgrel = 1
+	url = https://github.com/tanay1337/bearbar
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust>=1.92
+	depends = glib2
+	depends = glibc
+	depends = gtk4>=4.12
+	depends = gtk4-layer-shell>=1
+	depends = libgcc
+	depends = libpulse
+	depends = upower
+	optdepends = bluez-utils: Bluetooth controls
+	optdepends = brightnessctl: brightness controls
+	optdepends = cliphist: clipboard history
+	optdepends = networkmanager: Wi-Fi controls
+	optdepends = pipewire: privacy indicators
+	optdepends = playerctl: media controls
+	optdepends = power-profiles-daemon: power profile controls
+	optdepends = swaync: notification count and panel integration
+	optdepends = wl-clipboard: clipboard history restoration
+	provides = bearbar
+	conflicts = bearbar
+	options = !debug
+	source = bearbar-git::git+https://github.com/tanay1337/bearbar.git
+	sha256sums = SKIP
+
+pkgname = bearbar-git
