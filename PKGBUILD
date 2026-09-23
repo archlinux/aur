@@ -24,6 +24,7 @@ makedepends=(
     'curl'
     'git'
     'jq'
+    'zip'
 )
 options=(
     '!emptydirs'

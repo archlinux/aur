@@ -11,6 +11,7 @@ pkgbase = musicfree-desktop
 	makedepends = curl
 	makedepends = git
 	makedepends = jq
+	makedepends = zip
 	depends = electron25
 	depends = libvips
 	depends = nodejs
