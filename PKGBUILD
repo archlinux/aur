@@ -71,7 +71,7 @@ check() {
     cd "$pkgname"
     python -m venv --system-site-packages test-env
     test-env/bin/python -m installer dist/*.whl
-    test-env/bin/python -m pytest --disable-plugin-autoload
+    test-env/bin/python -m pytest --disable-plugin-autoload tests
     test-env/bin/python tests/citeproc-test.py
 }
 
