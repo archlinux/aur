@@ -1,13 +1,13 @@
 pkgbase = latuicon
 	pkgdesc = A terminal UI icon picker for emoji, kaomoji, Unicode characters, and Nerd Font glyphs
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/coko7/latuicon
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = latuicon-0.1.6.tar.gz::https://github.com/coko7/latuicon/archive/v0.1.6.tar.gz
-	sha256sums = 36ea8d61947c0ef8c46b636d060eef0de1987f772acc2860bbf25d37eab19397
+	source = latuicon-0.1.7.tar.gz::https://github.com/coko7/latuicon/archive/v0.1.7.tar.gz
+	sha256sums = f8f8dfbb032299e7f5c21c9a2fd18eed8abe05070f84e96849b0dc5b3626d096
 
 pkgname = latuicon
