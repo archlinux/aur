@@ -1,14 +1,14 @@
 # Maintainer: llavon-ime contributors
 
 _pkgname=llavon-ime-fcitx5
-_srcname=ime-fcitx5
+_srcname=ime-unix
 _model_file=llavon-ime-llama-250m-Q4_K_M.gguf
 pkgname=${_pkgname}-git
-pkgver=0.8.7.r2.g39235a8
+pkgver=0.8.8.r2.g55e3b6f
 pkgrel=1
 pkgdesc='Fcitx5 frontend and local inference service for Llavon IME'
 arch=('x86_64' 'aarch64')
-url='https://github.com/llavon-ime/ime-fcitx5'
+url='https://github.com/llavon-ime/ime-unix'
 license=('BSD-2-Clause' 'MIT' 'Apache-2.0' 'BSL-1.0' 'CC-BY-NC-4.0')
 depends=('fcitx5' 'glibc' 'libgcc' 'libstdc++' 'vulkan-icd-loader')
 makedepends=('at-spi2-core' 'cmake' 'curl' 'git' 'ninja' 'python' 'tar' 'unzip' 'zip')
@@ -20,7 +20,7 @@ optdepends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-preview-git" "${_pkgname}-preview-git-debug")
 source=(
-    "${_srcname}::git+https://github.com/llavon-ime/ime-fcitx5.git#branch=main"
+    "${_srcname}::git+https://github.com/llavon-ime/ime-unix.git#branch=main"
     "${_model_file}::https://huggingface.co/tony65535/llavon-ime-llama-250m-GGUF/resolve/main/${_model_file}"
 )
 sha256sums=('SKIP' 'SKIP')

@@ -1,8 +1,8 @@
 pkgbase = llavon-ime-fcitx5-git
 	pkgdesc = Fcitx5 frontend and local inference service for Llavon IME
-	pkgver = 0.8.7.r2.g39235a8
+	pkgver = 0.8.8.r2.g55e3b6f
 	pkgrel = 1
-	url = https://github.com/llavon-ime/ime-fcitx5
+	url = https://github.com/llavon-ime/ime-unix
 	arch = x86_64
 	arch = aarch64
 	license = BSD-2-Clause
@@ -10,6 +10,7 @@ pkgbase = llavon-ime-fcitx5-git
 	license = Apache-2.0
 	license = BSL-1.0
 	license = CC-BY-NC-4.0
+	makedepends = at-spi2-core
 	makedepends = cmake
 	makedepends = curl
 	makedepends = git
@@ -23,13 +24,14 @@ pkgbase = llavon-ime-fcitx5-git
 	depends = libgcc
 	depends = libstdc++
 	depends = vulkan-icd-loader
+	optdepends = at-spi2-core: read prediction context from the focused widget (AT-SPI)
 	optdepends = fcitx5-configtool: graphical configuration for fcitx5
 	optdepends = vulkan-driver: Vulkan GPU acceleration
 	provides = llavon-ime-fcitx5
 	conflicts = llavon-ime-fcitx5
 	conflicts = llavon-ime-fcitx5-preview-git
 	conflicts = llavon-ime-fcitx5-preview-git-debug
-	source = ime-fcitx5::git+https://github.com/llavon-ime/ime-fcitx5.git#branch=main
+	source = ime-unix::git+https://github.com/llavon-ime/ime-unix.git#branch=main
 	source = llavon-ime-llama-250m-Q4_K_M.gguf::https://huggingface.co/tony65535/llavon-ime-llama-250m-GGUF/resolve/main/llavon-ime-llama-250m-Q4_K_M.gguf
 	sha256sums = SKIP
 	sha256sums = SKIP
