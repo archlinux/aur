@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=canboat
-pkgver=8.2.0
+pkgver=8.2.1
 pkgrel=1
 epoch=
 pkgdesc="CAN Boat provides NMEA 2000 and NMEA 0183 utilities. It contains a NMEA 2000 PGN decoder and can read and write N2K messages. It is not meant as an end-user tool but as a discovery mechanism for delving into NMEA 2000 networks."
@@ -37,7 +37,7 @@ install=
 changelog=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('37a79b9fa9ab802d268ba5dcd38e316274e07ea655499c532432772a69826d1c')
+sha256sums=('718b71172d4e46f94a136933bd1ececca5667baf98f0e962e19cecf56d441de4')
 #validpgpkeys=()
 
 prepare() {
