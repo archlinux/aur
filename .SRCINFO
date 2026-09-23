@@ -1,7 +1,7 @@
 pkgbase = libquicktime-git
 	pkgdesc = Library for reading and writing quicktime files
 	pkgver = r987.g2213b76
-	pkgrel = 2
+	pkgrel = 3
 	url = https://libquicktime.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = libquicktime-git
 	makedepends = mesa-libgl
 	depends = glibc
 	depends = alsa-lib
-	depends = faac<=1.50
 	depends = faad2
 	depends = gtk4
 	depends = lame
+	depends = libdv
 	depends = libjpeg-turbo
 	depends = libxaw
 	depends = libxv

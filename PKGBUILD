@@ -2,12 +2,12 @@
 
 pkgname=libquicktime-git
 pkgver=r987.g2213b76
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for reading and writing quicktime files"
 arch=('i686' 'x86_64')
 url="https://libquicktime.sourceforge.net/"
 license=('LGPL-2.1-or-later')
-depends=('glibc' 'alsa-lib' 'faac<=1.50' 'faad2' 'gtk4' 'lame' 'libjpeg-turbo' 'libxaw'
+depends=('glibc' 'alsa-lib' 'faad2' 'gtk4' 'lame' 'libdv' 'libjpeg-turbo' 'libxaw'  # faac
          'libxv' 'schroedinger'
          'libavcodec.so' 'libswscale.so' 'libvorbisenc.so' 'libvorbisfile.so'
          'libvorbis.so' 'libx264.so')
@@ -37,7 +37,8 @@ build() {
     --with-ffmpeg \
     --with-libdv \
     --with-x \
-    --with-x264
+    --with-x264 \
+    --without-faac
   make
 }
 
