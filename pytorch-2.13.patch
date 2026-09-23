@@ -1,0 +1,191 @@
+From 5ac5b19f43ef1ce0b36aa42dd9c49e30d44309a4 Mon Sep 17 00:00:00 2001
+From: Smoolak <smoolak@gmail.com>
+Date: Fri, 17 Jul 2026 00:42:00 +0000
+Subject: [PATCH] Support PyTorch 2.13 numerical and extension behavior
+
+PyTorch 2.13's single-precision Cholesky implementation can return a
+numerically valid factor for an exactly singular matrix. Detect that case
+where BoTorch requires strict positive definiteness, preserve the
+eigendecomposition fallback for degenerate QMC distributions, and make tests
+which only exercise PyTorch's factorization tolerant of either valid result.
+
+Arch's PyTorch build uses system glog 0.7, whose public headers require
+GLOG_USE_GLOG_EXPORT when compiling the optional fused LogEI extension.
+
+diff --git a/botorch/acquisition/multi_objective/logei.py b/botorch/acquisition/multi_objective/logei.py
+index 3c71b1f98b4e3799aadfadd6f3b7cadfb4a3b89a..c4648f3bb67542439699f0ee77a0bda982908f1f 100644
+--- a/botorch/acquisition/multi_objective/logei.py
++++ b/botorch/acquisition/multi_objective/logei.py
+@@ -89,7 +89,7 @@ def _try_load_fused_kernel() -> None:
+         _C = _load_ext(
+             name="logei_fused_ext",
+             sources=[os.path.abspath(_cpp_src)],
+-            extra_cflags=["-O3", "-march=native"],
++            extra_cflags=["-O3", "-march=native", "-DGLOG_USE_GLOG_EXPORT"],
+             verbose=False,
+         )
+     except Exception as exc:  # pragma: no cover
+diff --git a/botorch/acquisition/multi_objective/predictive_entropy_search.py b/botorch/acquisition/multi_objective/predictive_entropy_search.py
+index 083598588f8c38b98f26c273918be57be9a3d48c..7cf6367d75cb8290f0507697ebb2b42e431573bc 100644
+--- a/botorch/acquisition/multi_objective/predictive_entropy_search.py
++++ b/botorch/acquisition/multi_objective/predictive_entropy_search.py
+@@ -1027,9 +1027,19 @@ def _update_damping(
+     tkwargs = {"dtype": nat_cov.dtype, "device": nat_cov.device}
+     df = damping_factor
+     jitter = jitter * torch.diag_embed(torch.ones(nat_cov.shape[:-1], **tkwargs))
+-    _, info = torch.linalg.cholesky_ex(nat_cov + jitter)
+ 
+-    if torch.sum(info) > 1:
++    def _not_positive_definite(
++        matrix: Tensor, cholesky_factor: Tensor, info: Tensor
++    ) -> Tensor:
++        return (
++            (info != 0)
++            | torch.isnan(cholesky_factor).any(dim=(-2, -1))
++            | (torch.linalg.eigvalsh(matrix).amin(dim=-1) <= 0)
++        )
++
++    old_cov = nat_cov + jitter
++    old_cholesky, info = torch.linalg.cholesky_ex(old_cov)
++    if torch.any(_not_positive_definite(old_cov, old_cholesky, info)):
+         raise ValueError(
+             "The previous covariance is not positive semi-definite. "
+             "This usually happens if the predictive covariance is "
+@@ -1040,10 +1050,9 @@ def _update_damping(
+         old_factor=nat_cov, new_factor=nat_cov_new, damping_factor=df
+     )
+     cholesky_factor, info = torch.linalg.cholesky_ex(damped_nat_cov)
+-    contains_nans = torch.any(torch.isnan(cholesky_factor)).item()
++    failed = _not_positive_definite(damped_nat_cov, cholesky_factor, info)
+ 
+-    run = 0
+-    while torch.sum(info) > 1 or contains_nans:
++    while torch.any(failed):
+         # propose an alternate damping factor which is half the original
+         df_alt = 0.5 * df
+         # hard threshold at 1e-3
+@@ -1051,16 +1060,17 @@ def _update_damping(
+             df_alt > 1e-3, df_alt, torch.zeros(df_alt.shape, **tkwargs)
+         )
+         # only change the damping factor where psd failure occurs
+-        df_new = torch.where(info == 0, df, df_alt)
++        df_new = torch.where(failed, df_alt, df)
+ 
+         # new damped covariance
+         damped_nat_cov = _damped_update(nat_cov, nat_cov_new, df_new)
+ 
+         # try cholesky decomposition
+         cholesky_factor, info = torch.linalg.cholesky_ex(damped_nat_cov + jitter)
+-        contains_nans = torch.any(torch.isnan(cholesky_factor)).item()
++        failed = _not_positive_definite(
++            damped_nat_cov + jitter, cholesky_factor, info
++        )
+         df = df_new
+-        run = run + 1
+ 
+     return df, cholesky_factor
+ 
+diff --git a/botorch/sampling/qmc.py b/botorch/sampling/qmc.py
+index 80365914a49ecba51b89896d36a41214cd644100..a780ff82f3249c7f6891554b7f72948261499367 100644
+--- a/botorch/sampling/qmc.py
++++ b/botorch/sampling/qmc.py
+@@ -139,17 +139,22 @@ class MultivariateNormalQMCEngine:
+             d=mean.shape[0], seed=seed, inv_transform=inv_transform
+         )
+         # compute Cholesky decomp; if it fails, do the eigendecomposition
+-        try:
+-            self._corr_matrix = torch.linalg.cholesky(cov).transpose(-1, -2)
+-        except RuntimeError:
++        cholesky, info = torch.linalg.cholesky_ex(cov)
++        tol = 1e-8 if cov.dtype == torch.double else 1e-6
++        # Some BLAS backends return an approximate Cholesky factor for an exactly
++        # singular float32 matrix. Treat a tiny diagonal as degenerate so samples
++        # retain the covariance's exact linear relationships.
++        near_degenerate = cholesky.diagonal().abs().amin() <= tol**0.5
++        if torch.any(info) or near_degenerate:
+             eigval, eigvec = torch.linalg.eigh(cov)
+-            tol = 1e-8 if eigval.dtype == torch.double else 1e-6
+             if torch.any(eigval < -tol):
+                 raise ValueError("Covariance matrix not PSD.")
+             eigval_root = torch.where(
+                 eigval > tol, eigval, torch.zeros_like(eigval)
+             ).sqrt()
+             self._corr_matrix = (eigvec * eigval_root).transpose(-1, -2)
++        else:
++            self._corr_matrix = cholesky.transpose(-1, -2)
+ 
+     def draw(self, n: int = 1, out: Tensor | None = None) -> Tensor | None:
+         r"""Draw ``n`` qMC samples from the multivariate Normal.
+diff --git a/test/acquisition/multi_objective/test_predictive_entropy_search.py b/test/acquisition/multi_objective/test_predictive_entropy_search.py
+index c09a2a710039ee143bdba4c6f8e7a0c654e1cb10..a1773378f2b66e8131a122693d690a021ff9902f 100644
+--- a/test/acquisition/multi_objective/test_predictive_entropy_search.py
++++ b/test/acquisition/multi_objective/test_predictive_entropy_search.py
+@@ -159,7 +159,7 @@ class TestQMultiObjectivePredictiveEntropySearch(BotorchTestCase):
+         self.test_moo_predictive_entropy_search(use_model_list=True, maximize=True)
+ 
+     def test_update_damping(self):
+-        # test error when old and new covariance are not positive semi-definite
++        # test error when old and new covariance are not positive definite
+         tkwargs = {"device": self.device}
+ 
+         for dtype in (torch.float, torch.double):
+diff --git a/test/models/test_pairwise_gp.py b/test/models/test_pairwise_gp.py
+index bf484942b843c222edc6dbda585046001918010e..e1dd57b7bfac3a6332e782a2dfc602eca0d91232 100644
+--- a/test/models/test_pairwise_gp.py
++++ b/test/models/test_pairwise_gp.py
+@@ -478,10 +478,9 @@ class TestPairwiseGP(BotorchTestCase):
+         for batch_shape in (torch.Size(), torch.Size([2])):
+             tkwargs = {"device": self.device, "dtype": self.dtype}
+             # M is borderline PSD
++            # Whether Cholesky rejects this exact singularity is backend-dependent.
+             M = torch.ones((*batch_shape, 2, 2), **tkwargs)
+-            with self.assertRaises(torch._C._LinAlgError):
+-                torch.linalg.cholesky(M)
+-            # This should work fine
++            # The helper under test must accept it in either case.
+             _ensure_psd_with_jitter(M)
+ 
+             bad_M = torch.tensor([[1.0, 2.0], [2.0, 1.0]], **tkwargs).expand(
+diff --git a/test/posteriors/test_gpytorch.py b/test/posteriors/test_gpytorch.py
+index 8d576383e91e3241f1b0b7b0fd0e4cbe1e203dc7..2522ff23a156dee51a8413d5bda94db708ae71df 100644
+--- a/test/posteriors/test_gpytorch.py
++++ b/test/posteriors/test_gpytorch.py
+@@ -141,6 +141,7 @@ class TestGPyTorchPosterior(BotorchTestCase):
+             degenerate_covar = torch.tensor(
+                 [[1, 1, 0], [1, 1, 0], [0, 0, 2]], dtype=dtype, device=self.device
+             )
++            _, cholesky_info = torch.linalg.cholesky_ex(degenerate_covar)
+             mean = torch.rand(3, dtype=dtype, device=self.device)
+             mvn = MultivariateNormal(mean, to_linear_operator(degenerate_covar))
+             mean_exp = mean.unsqueeze(-1)
+@@ -169,8 +170,13 @@ class TestGPyTorchPosterior(BotorchTestCase):
+                 # we check that the p.d. warning is emitted - this only
+                 # happens once per posterior, so we need to check only once
+                 samples = posterior.rsample(sample_shape=torch.Size([4]))
+-                self.assertTrue(any(issubclass(w.category, RuntimeWarning) for w in ws))
+-                self.assertTrue(any("not p.d" in str(w.message) for w in ws))
++                # A numerically valid float32 factor may be returned for an exactly
++                # singular matrix, in which case no jitter warning is required.
++                if torch.any(cholesky_info):
++                    self.assertTrue(
++                        any(issubclass(w.category, RuntimeWarning) for w in ws)
++                    )
++                    self.assertTrue(any("not p.d" in str(w.message) for w in ws))
+             self.assertEqual(samples.shape, torch.Size([4, 3, expected_dim]))
+             samples2 = posterior.rsample(sample_shape=torch.Size([4, 2]))
+             self.assertEqual(samples2.shape, torch.Size([4, 2, 3, expected_dim]))
+diff --git a/test/utils/probability/test_lin_ess.py b/test/utils/probability/test_lin_ess.py
+index 8d80e012e7a87ce97ae4b9fc493a752eb1350eaa..df792169f4a935039723ad4fe6cf9978a1c99864 100644
+--- a/test/utils/probability/test_lin_ess.py
++++ b/test/utils/probability/test_lin_ess.py
+@@ -158,7 +158,7 @@ class TestLinearEllipticalSliceSampler(BotorchTestCase):
+             )
+             self.assertTrue(torch.equal(sampler._mean, mean))
+             covar_root_xpct = torch.tensor([[2.0, 0.0], [1.0, 1.0]], **tkwargs)
+-            self.assertTrue(torch.equal(sampler._covariance_root, covar_root_xpct))
++            self.assertAllClose(sampler._covariance_root, covar_root_xpct)
+             samples = sampler.draw(n=3)
+             self.assertEqual(samples.shape, torch.Size([3, 2]))
+             self.assertTrue(sampler._is_feasible(samples.t()).all())
+-- 
+2.50.1

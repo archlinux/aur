@@ -1,0 +1,39 @@
+From 611f14acc8c1b2f30ce2ae058568d90f96bbb2ec Mon Sep 17 00:00:00 2001
+From: Sait Cakmak <saitcakmak@meta.com>
+Date: Mon, 22 Jun 2026 09:23:55 -0700
+Subject: [PATCH] Allow scipy 1.18 in batched L-BFGS-B fast path
+
+Backport of upstream commit 611f14acc8c1b2f30ce2ae058568d90f96bbb2ec.
+---
+ botorch/generation/gen.py        | 2 +-
+ botorch/optim/batched_lbfgs_b.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/botorch/generation/gen.py b/botorch/generation/gen.py
+index 702d6440..dd9f0a5f 100644
+--- a/botorch/generation/gen.py
++++ b/botorch/generation/gen.py
+@@ -44,7 +44,7 @@ from torch import Tensor
+ from torch.optim import Optimizer
+ 
+ SCIPY_MIN_VERSION: int = 13
+-SCIPY_UNTESTED_VERSION: int = 18
++SCIPY_UNTESTED_VERSION: int = 19
+ 
+ if check_scipy_version_at_least(
+     minor=SCIPY_MIN_VERSION
+diff --git a/botorch/optim/batched_lbfgs_b.py b/botorch/optim/batched_lbfgs_b.py
+index dc42ea74..3e1ed22d 100644
+--- a/botorch/optim/batched_lbfgs_b.py
++++ b/botorch/optim/batched_lbfgs_b.py
+@@ -9,7 +9,7 @@ This yields optimization speedups for acquisition function optimization,
+ where multiple independent problems with the same structure are optimized in parallel.
+ 
+ This file is written such that it explicitly supports all scipy versions
+-from 1.13 to 1.15 (likely 1.16, too, based on its pre-release version).
++from 1.13 to 1.18.
+ This file might break for higher versions, as it uses internal APIs.
+ There is a major revision of the core optimization code in 1.15, as it is
+ ported from FORTRAN to C, we handle the API changes, though, and are
+-- 
+2.50.1

@@ -1,0 +1,108 @@
+From 4d3b4f6613e691d422eca502758c24539703cf8c Mon Sep 17 00:00:00 2001
+From: Sait Cakmak <saitcakmak@meta.com>
+Date: Tue, 23 Jun 2026 09:57:13 -0700
+Subject: [PATCH] Fix fused C++ kernel crash for q > 16 in qLogEHVI/qLogNEHVI
+ (#3329)
+
+The fused C++ kernel in `logei_fused.cpp` uses stack-allocated arrays sized
+by `MAX_I = 16`. When `q` exceeds 16, gracefully fall back to the pure-Python
+implementation and increase the supported fused range to 32.
+
+Backport of upstream commit 4d3b4f6613e691d422eca502758c24539703cf8c.
+
+diff --git a/botorch/acquisition/multi_objective/logei.py b/botorch/acquisition/multi_objective/logei.py
+index 3c71b1f9..1701d2c9 100644
+--- a/botorch/acquisition/multi_objective/logei.py
++++ b/botorch/acquisition/multi_objective/logei.py
+@@ -59,6 +59,7 @@ from torch import Tensor
+ 
+ _C = None  # Fused C++ kernel module, loaded lazily by _try_load_fused_kernel().
+ _load_attempted = False  # Sentinel to avoid retrying after a failed load.
++_FUSED_MAX_I = 32  # Must match MAX_I in logei_fused.cpp.
+ 
+ 
+ def _try_load_fused_kernel() -> None:
+@@ -316,7 +317,12 @@ class qLogExpectedHypervolumeImprovement(
+         # When obj has extra t-batch dims that broadcast against the cell
+         # bounds, we expand cell bounds to match before flattening.
+         cell_batch_ndim = self.cell_lower_bounds.ndim - 2
+-        use_fused = _C is not None and self.fat and obj.device.type == "cpu"
++        use_fused = (
++            _C is not None
++            and self.fat
++            and obj.device.type == "cpu"
++            and q <= _FUSED_MAX_I
++        )
+ 
+         if use_fused and cell_batch_ndim > 0:
+             # Expand cell bounds to match obj batch shape for 1:1 mapping.
+diff --git a/botorch/csrc/logei_fused.cpp b/botorch/csrc/logei_fused.cpp
+index 0b91ffd5..5b016581 100644
+--- a/botorch/csrc/logei_fused.cpp
++++ b/botorch/csrc/logei_fused.cpp
+@@ -28,9 +28,9 @@ namespace {
+ constexpr double ALPHA_RELU = 0.1;
+ 
+ // Static upper bounds for stack-allocated scratch arrays.
+-// MAX_I: maximum subset size (q choose i).
++// MAX_I: maximum subset size (the `i` in the inclusion-exclusion loop).
+ // MAX_M: maximum number of objectives.
+-constexpr int MAX_I = 16;
++constexpr int MAX_I = 32;
+ constexpr int MAX_M = 8;
+ 
+ // Numerically stable softplus: log(1 + exp(y)).
+diff --git a/test/acquisition/multi_objective/test_logei.py b/test/acquisition/multi_objective/test_logei.py
+index 24866f0e..055d4e55 100644
+--- a/test/acquisition/multi_objective/test_logei.py
++++ b/test/acquisition/multi_objective/test_logei.py
+@@ -380,3 +380,47 @@ class TestFusedKernelCorrectness(BotorchTestCase):
+         finally:
+             logei_module._C = saved
+         self.assertAllClose(val_fused, val_python, atol=1e-6, rtol=0)
++
++    def test_fused_kernel_fallback_large_q(self) -> None:
++        """Verify that q > _FUSED_MAX_I gracefully falls back to Python path."""
++        tkwargs = {"device": self.device, "dtype": torch.double}
++        d = 2
++        m = 2
++        q = 4
++
++        torch.manual_seed(0)
++        train_X = torch.rand(10, d, **tkwargs)
++        train_Y = torch.randn(10, m, **tkwargs)
++        model = SingleTaskGP(train_X, train_Y)
++        ref_point = train_Y.min(dim=0).values - 0.1
++        partitioning = NondominatedPartitioning(ref_point=ref_point, Y=train_Y[:3])
++        sampler = SobolQMCNormalSampler(sample_shape=torch.Size([4]))
++        acqf = qLogExpectedHypervolumeImprovement(
++            model=model,
++            ref_point=ref_point.tolist(),
++            partitioning=partitioning,
++            sampler=sampler,
++        )
++        test_X = torch.rand(q, d, **tkwargs).requires_grad_(True)
++
++        # With _FUSED_MAX_I artificially set below q, should use Python path.
++        saved_max_i = logei_module._FUSED_MAX_I
++        logei_module._FUSED_MAX_I = q - 1
++        try:
++            torch.manual_seed(42)
++            val_fallback = acqf(test_X)
++            val_fallback.sum().backward()
++            grad_fallback = test_X.grad.clone()
++            test_X.grad = None
++        finally:
++            logei_module._FUSED_MAX_I = saved_max_i
++
++        # With fused kernel available (q is within the real limit), should match.
++        torch.manual_seed(42)
++        val_fused = acqf(test_X)
++        val_fused.sum().backward()
++        grad_fused = test_X.grad.clone()
++        test_X.grad = None
++
++        self.assertAllClose(val_fallback, val_fused, atol=1e-6, rtol=1e-6)
++        self.assertAllClose(grad_fallback, grad_fused, atol=1e-6, rtol=1e-6)
+-- 
+2.50.1

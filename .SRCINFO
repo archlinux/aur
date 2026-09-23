@@ -1,31 +1,46 @@
 pkgbase = python-botorch
 	pkgdesc = Bayesian Optimization in PyTorch
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/meta-pytorch/botorch
 	arch = any
 	license = MIT
+	checkdepends = python-jax>=0.4.35
+	checkdepends = python-jax<0.10
+	checkdepends = python-jaxlib>=0.4.35
+	checkdepends = python-jaxlib<0.10
+	checkdepends = python-numpyro>=0.18.0
 	checkdepends = python-pytest
+	checkdepends = python-pytest-xdist
+	checkdepends = python-requests
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
+	depends = google-glog
 	depends = python
-	depends = python-gpytorch
-	depends = python-linear-operator
+	depends = python-gpytorch>=1.15.2
+	depends = python-linear-operator>=0.6
 	depends = python-multipledispatch
 	depends = python-ninja
+	depends = python-numpy
 	depends = python-pyre-extensions
-	depends = python-pytorch
+	depends = python-pytorch>=2.4
 	depends = python-scipy
 	depends = python-threadpoolctl
 	depends = python-typing_extensions
-	optdepends = python-jax: fully Bayesian (SAAS) models via JAX/NUTS sampling
-	optdepends = python-jaxlib: fully Bayesian (SAAS) models via JAX/NUTS sampling
-	optdepends = python-numpyro: fully Bayesian (SAAS) models via NUTS sampling
+	optdepends = python-jax>=0.4.35: fully Bayesian (SAAS) models via JAX/NUTS sampling (requires <0.10)
+	optdepends = python-jaxlib>=0.4.35: fully Bayesian (SAAS) models via JAX/NUTS sampling (requires <0.10)
+	optdepends = python-numpyro>=0.18.0: fully Bayesian (SAAS) models via NUTS sampling
 	optdepends = python-pymoo: multi-objective optimization utilities [pymoo]
-	source = https://files.pythonhosted.org/packages/source/b/botorch/botorch-0.18.0.tar.gz
-	sha256sums = f2928e67b6cff8450891874c0ab97dd59f811ae9169a47543e1dad6c77019f7f
+	source = python-botorch-0.18.1.tar.gz::https://github.com/meta-pytorch/botorch/archive/refs/tags/v0.18.1.tar.gz
+	source = scipy-1.18.patch
+	source = fused-kernel-large-q.patch
+	source = pytorch-2.13.patch
+	sha256sums = 4c6c322365f09ca98a3a3cb38c3b88b3c920fcd4cb223f30bdd8ec13d526fdd1
+	sha256sums = 66017f5a630dcc248f29cb90d779bdbc799d7af6df668296f82483ae4745df8f
+	sha256sums = 283912c0aa6d14ecb66fd7bee505cbd63f5b41b54496d3ec04f873665b398c84
+	sha256sums = 0ff37ea4c0a782f6ceecf75e370a8b86b98a0ba1d022583a58a4b8716ab556cd
 
 pkgname = python-botorch
