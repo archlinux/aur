@@ -1,6 +1,6 @@
 pkgbase = python-laya
 	pkgdesc = Fast, non-autoregressive System 1 decision engine with calibrated probabilities
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/NandhaKishorM/laya
 	arch = any
@@ -21,8 +21,13 @@ pkgbase = python-laya
 	depends = python-transformers
 	optdepends = python-fastapi: HTTP layer for the `laya-serve` server
 	optdepends = uvicorn: ASGI server that `laya-serve` starts
-	source = laya-0.3.7.tar.gz::https://github.com/NandhaKishorM/laya/archive/refs/tags/v0.3.7.tar.gz
-	sha256sums = 96053adc9cee4ba02b72861ea38a319e8bfde4f3788416034918e334d2687e20
-	b2sums = fadfc2192034cc8808e5f7be34cbed1e696a3f752cc99f0b5748e129cd22e2cfdcf618819af31ede1fb0a804e9040dab745d097e37c466923da7f36cb21e29d0
+	optdepends = python-mcp>=2.2.0: MCP stdio server behind `laya-mcp-server`
+	optdepends = python-langchain-core: LangChain / LangGraph runnables in `laya.integrations`
+	optdepends = python-onnx: ONNX export for the ONNX Runtime engine
+	optdepends = python-onnxruntime-cpu: ONNX Runtime engine in `laya.onnx_agent` (the -cuda/-rocm variants work too)
+	optdepends = python-tilelang: TileLang GPU fast path in `laya.fast`
+	source = laya-0.3.8.tar.gz::https://github.com/NandhaKishorM/laya/archive/refs/tags/v0.3.8.tar.gz
+	sha256sums = 5293b9878eb67c536bd90816a7d48fb90fc61da1723fc198d72168818e29cc1c
+	b2sums = 6910733be652bb835c35ea1d48ad08a9ab3849862c0cb10c8be32300469b03c27d0b0d3fa36f8a7d9cf317655563ce91542f745ef3a1f113cf2d7161dbd588c1
 
 pkgname = python-laya

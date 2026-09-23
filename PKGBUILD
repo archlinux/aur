@@ -1,13 +1,14 @@
 # Maintainer: Yangtse Su <yangtsesu@gmail.com>
 # Arch naming: the package installs the importable module `laya`, so it is `python-laya`.
-# 0.3.7 adds the `laya-serve` console script. It stays in this package rather than moving to a
-# non-prefixed `laya-serve` split: it only serves this module, which is the "program strongly
-# coupled to the Python ecosystem" case the guidelines keep under the python- prefix
-# (cf. python-pytest). Its fastapi/uvicorn dependencies are upstream's optional `[serve]`
-# extra, so they are optdepends, not depends.
+# 0.3.8 ships three console scripts -- `laya` (local CLI), `laya-serve` (HTTP) and
+# `laya-mcp-server` (MCP over stdio). They stay in this package rather than moving to
+# non-prefixed splits: each only serves this module, which is the "program strongly coupled
+# to the Python ecosystem" case the guidelines keep under the python- prefix
+# (cf. python-pytest). Their dependencies are upstream's optional extras (serve/mcp), so
+# they are optdepends, not depends.
 pkgname=python-laya
 _name=${pkgname#python-}
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Fast, non-autoregressive System 1 decision engine with calibrated probabilities"
 arch=('any')
@@ -21,9 +22,16 @@ depends=(
   'python-safetensors'
   'python-transformers'
 )
+# Upstream extras: serve, mcp, onnx, langchain, fast. Every one of them is optional; the
+# core import and inference paths work with `depends` alone.
 optdepends=(
   'python-fastapi: HTTP layer for the `laya-serve` server'
   'uvicorn: ASGI server that `laya-serve` starts'
+  'python-mcp>=2.2.0: MCP stdio server behind `laya-mcp-server`'
+  'python-langchain-core: LangChain / LangGraph runnables in `laya.integrations`'
+  'python-onnx: ONNX export for the ONNX Runtime engine'
+  'python-onnxruntime-cpu: ONNX Runtime engine in `laya.onnx_agent` (the -cuda/-rocm variants work too)'
+  'python-tilelang: TileLang GPU fast path in `laya.fast`'
 )
 makedepends=(
   'python-build'
@@ -38,8 +46,8 @@ checkdepends=(
   'python-tokenizers'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('96053adc9cee4ba02b72861ea38a319e8bfde4f3788416034918e334d2687e20')
-b2sums=('fadfc2192034cc8808e5f7be34cbed1e696a3f752cc99f0b5748e129cd22e2cfdcf618819af31ede1fb0a804e9040dab745d097e37c466923da7f36cb21e29d0')
+sha256sums=('5293b9878eb67c536bd90816a7d48fb90fc61da1723fc198d72168818e29cc1c')
+b2sums=('6910733be652bb835c35ea1d48ad08a9ab3849862c0cb10c8be32300469b03c27d0b0d3fa36f8a7d9cf317655563ce91542f745ef3a1f113cf2d7161dbd588c1')
 
 build() {
   cd "$_name-$pkgver"
@@ -56,14 +64,18 @@ check() {
   # The unittest-style suites import `laya` from the source tree; upstream CI gets that
   # for free from its `pip install -e .`, so the path has to be set explicitly here.
   export PYTHONPATH="$PWD"
-  # test_local_e2e.py is skipped: it needs real checkpoints under ~/laya_models.
-  # Every other suite builds its own tiny checkpoints and needs no network.
+  # Everything upstream CI runs, plus test_load_errors.py and test_truncation_direction.py,
+  # which no CI job covers. Each suite builds its own tiny checkpoints and needs no network.
   python tests/test_router.py
   python tests/test_criteria.py
+  python tests/test_batch.py
   python tests/test_download.py
   python tests/test_shortlist.py
   python tests/test_decision_model.py
+  python tests/test_head_checkpointing.py
   python tests/test_packaging.py
+  python tests/test_tokenizer_cache.py
+  python tests/test_lazy_import.py
   python tests/test_lang_guess.py
   python tests/test_calibration_persistence.py
   python tests/test_context_manager.py
@@ -73,15 +85,27 @@ check() {
   python tests/test_router_memory.py
   python tests/test_shortlist_cosine.py
   python tests/test_temperature_loading.py
+  python tests/test_cli.py
+  python tests/test_langchain.py
+  python tests/test_load_errors.py
   python tests/test_email.py
-  # Upstream CI does not run this one; it is the only cover for laya/serve.py, which
-  # this package installs as `laya-serve`. It injects a fake Router, so no checkpoint.
+  # These two are pytest suites. No CI job runs test_serve.py, and
+  # test_truncation_direction.py has no unittest runner at all; between them they are the
+  # only cover for laya/serve.py, which this package installs as `laya-serve`.
   python -m pytest -o addopts="" tests/test_serve.py
+  python -m pytest -o addopts="" tests/test_truncation_direction.py
+  # Suites deliberately not run here:
+  #   test_mcp.py            needs mcp>=2.2.0, which Arch's python-mcp (1.29.0) is not yet
+  #   test_fast.py           needs the tilelang extra
+  #   test_onnx.py           needs the onnx extra and downloads a real checkpoint
+  #   test_local_e2e.py      needs real checkpoints under ~/laya_models
+  #   test_mcp_local_e2e.py  needs real checkpoints and a live MCP handshake
 }
 
 package() {
   cd "$_name-$pkgver"
-  # Also generates /usr/bin/laya-serve from the wheel's console_scripts entry point.
+  # Also generates /usr/bin/laya, /usr/bin/laya-serve and /usr/bin/laya-mcp-server from the
+  # wheel's console_scripts entry points.
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
