@@ -1,0 +1,25 @@
+pkgbase = openscp-git
+	pkgdesc = A lightweight, cross-platform file transfer client with a dual-panel workflow, secure defaults, and support for SFTP, SCP, FTP, FTPS, and WebDAV
+	pkgver = 1.0.0.r0.g9b39e51
+	pkgrel = 1
+	url = https://github.com/luiscuellar31/openscp
+	arch = any
+	license = LGPL-3.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = svgo
+	makedepends = oxipng
+	depends = openssl
+	depends = curl
+	depends = tinyxml2
+	depends = libssh2
+	depends = libsecret
+	depends = glib2
+	depends = libglvnd
+	depends = qt6-base
+	depends = qt6-svg
+	source = git+https://github.com/luiscuellar31/openscp.git
+	sha256sums = SKIP
+
+pkgname = openscp-git
