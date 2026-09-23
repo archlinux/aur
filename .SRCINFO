@@ -7,9 +7,9 @@ pkgbase = pandoc-crossref-static-git
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = stack
+	makedepends = cabal-install
+	makedepends = ghc
 	makedepends = pandoc-cli
-	makedepends = yq
 	depends = gmp
 	depends = pandoc-cli=3.11
 	depends = zlib
