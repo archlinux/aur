@@ -1,7 +1,7 @@
 pkgbase = flea
 	pkgdesc = Fast, keyboard-first file manager for Omarchy
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://github.com/thisisgm/flea
 	arch = x86_64
 	arch = aarch64
@@ -39,10 +39,11 @@ pkgbase = flea
 	optdepends = imagemagick: image conversion
 	optdepends = tailscale: Taildrop sharing
 	optdepends = ffmpeg: media metadata in the preview column
+	optdepends = ffmpegthumbnailer: video thumbnails, made by one pre-linked worker through libffmpegthumbnailer.so.4, or by the ffmpegthumbnailer program per video when that library will not load
 	optdepends = dropbox-cli: Dropbox share links
 	conflicts = flea-git
 	options = !debug
-	source = flea-0.3.1.tar.gz::https://github.com/thisisgm/flea/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = a9aa626352b3741a8651942ad3785fafb7468c5d5cc392b00f4bf070df36ced2
+	source = https://github.com/thisisgm/flea/releases/download/v0.3.3/flea-v0.3.3.tar.gz
+	sha256sums = 98c5e71b8432f049c16bd05294048093fee0c83ab0f121c4816fd053a7148764
 
 pkgname = flea
