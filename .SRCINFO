@@ -1,6 +1,6 @@
 pkgbase = rackpeek-bin
 	pkgdesc = CLI tool to discover, manage, and document your IT infrastructure and home lab.
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/Timmoth/RackPeek
 	install = rackpeek-bin.install
@@ -15,9 +15,9 @@ pkgbase = rackpeek-bin
 	options = !strip
 	source = rackpeek-bin.install
 	sha256sums = 14cd89ed266911aff4d52d76bb976a4cb3ad602cbbc939785a72fd3e45cd4c01
-	source_x86_64 = rackpeek-bin-2.0.0-x86_64::https://github.com/Timmoth/RackPeek/releases/download/RackPeek-2.0.0/rackpeek_2_0_0_linux-x64
-	sha256sums_x86_64 = 62466e7a73518c55469a9c8064836a2aacbacb4be8f749a50c4a6f21a929ec7e
-	source_aarch64 = rackpeek-bin-2.0.0-aarch64::https://github.com/Timmoth/RackPeek/releases/download/RackPeek-2.0.0/rackpeek_2_0_0_linux-arm64
-	sha256sums_aarch64 = f62f3d7eb1a5903de90e8c178cebd096312aec3a14a8d9fae0ae050c34c11899
+	source_x86_64 = rackpeek-bin-2.1.0-x86_64::https://github.com/Timmoth/RackPeek/releases/download/RackPeek-2.1.0/rackpeek_2_1_0_linux-x64
+	sha256sums_x86_64 = c7bb62baca4bfef3482a2188ce55508e71d0cfcb3123d145111255aaab09d3cc
+	source_aarch64 = rackpeek-bin-2.1.0-aarch64::https://github.com/Timmoth/RackPeek/releases/download/RackPeek-2.1.0/rackpeek_2_1_0_linux-arm64
+	sha256sums_aarch64 = 5760dd9a1c7f2a47bee662c7983f505c48a8960f2ff418c516545c57e4a4cfa6
 
 pkgname = rackpeek-bin
