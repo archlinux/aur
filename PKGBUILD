@@ -2,7 +2,7 @@
 # Co-Maintainer: tee < teeaur at duck dot com >
 
 pkgname="wstunnel-bin"
-pkgver=10.7.1
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="Tunnel all your traffic over websocket protocol - Bypass firewalls/DPI"
 url="https://github.com/erebe/wstunnel"
@@ -13,9 +13,9 @@ conflicts=("wstunnel" "nodejs-wstunnel")
 source_x86_64=("$url/releases/download/v$pkgver/wstunnel_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/wstunnel_${pkgver}_linux_arm64.tar.gz")
 source_armv7h=("$url/releases/download/v$pkgver/wstunnel_${pkgver}_linux_armv7.tar.gz")
-b2sums_x86_64=('dd665235377a679275e6fcd5146dc49cf69418b234e004375f0dd3d564214aad9fd8d816bbc9e2a30cefd21e89c668bca77b68755fb59d790383e6fbc737ddea')
-b2sums_aarch64=('d7f8c548a3a7469e2acb65f20faf06e083ccb643617d5736596530170356158ade272430233cf3cb42799b4ba64833f915e689f61cd4de89fec8b86286c25681')
-b2sums_armv7h=('275f0d6d714e65f2618221c21cb67fecfb6e5b4e368a92a4a4df9434ee3817cfd6223123dff46287a9c20fe678b800e081a97ac8e741ef6fc8e7c211b272e3e9')
+b2sums_x86_64=('0dc67fe097beea9ecf56cb43d3b0a51422279a1f0faa412acc786ecd38b1cdb757c511986c6c319f6477df57983427d96ec22fd9c02f66550f18d3d57d936e05')
+b2sums_aarch64=('9eb5bc155f98407da0cadce7d878cb11874dec6983f64ab87fa8aa12ca63f6e7e1ae731108dd916a4eb32f7ab2056c697f5ec981dbbb6bae373600f3f66fb229')
+b2sums_armv7h=('69d18198be012e01c9ef00647ee2ffcaab0573b477d73ad42f515ec5c63aaefe30afa482462dd2ac81c269908737c97f153a389d3c01ab2c75ab3e0732e7e98b')
 options=("!strip")
 
 package(){
