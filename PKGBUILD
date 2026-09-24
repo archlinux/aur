@@ -1,8 +1,9 @@
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=regexxer
 pkgver=0.10
-pkgrel=14
+pkgrel=15
 pkgdesc='Interactive search and replace tool'
 arch=(x86_64)
 url='https://regexxer.sourceforge.net/'
