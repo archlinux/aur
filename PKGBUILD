@@ -2,8 +2,8 @@
 
 pkgname=python-apex
 _pkgname=apex
-pkgver=25.09
-pkgrel=2
+pkgver=26.09
+pkgrel=1
 pkgdesc='NVIDIA Apex: PyTorch extensions for mixed precision and distributed training (fused ops)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/apex'
@@ -42,7 +42,7 @@ source=(
   'cpu-only-test-skip.patch'
 )
 sha256sums=(
-  'd30ce19d8519363fd3ee52d028d60c6f66062c53f72d1265ed79e743449b12db'
+  'fe1a01a672e18784dc3b832bbe38a99ccf23af3b5ead047081e4e7070e4f2f50'
   'e4c890b25bf35c185d722762cc92c9a98a185617712016e212d7591366dc5096'
 )
 
@@ -150,23 +150,8 @@ check() {
       tests/L0/run_fused_layer_norm \
       tests/L0/run_mlp
 
-  # This upstream transformer sampler module is CPU-capable and exercises real
-  # batching behavior, so run its two tests instead of excluding all transformer
-  # coverage with the GPU/distributed modules. Python 3.14 changed POSIX's
-  # multiprocessing default to forkserver; upstream defines its fixture dataset
-  # locally, so retain the fork behavior under which this test is authored.
-  CUDA_VISIBLE_DEVICES='' \
-  PYTHONPATH="$_check_root$_site_packages" \
-    python - <<'PY'
-import multiprocessing
-
-import pytest
-
-multiprocessing.set_start_method("fork", force=True)
-raise SystemExit(
-    pytest.main(["-ra", "tests/L0/run_transformer/test_batch_sampler.py"])
-)
-PY
+  # Apex 26.09 removed apex.transformer and its sampler tests upstream.
+  # The remaining default L0 suite and native CPU workflow are retained.
 
   # Exercise the installed native CPU extension: flatten heterogeneous dense
   # tensors, unflatten them exactly, and propagate gradients through the result.

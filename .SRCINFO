@@ -1,7 +1,7 @@
 pkgbase = python-apex
 	pkgdesc = NVIDIA Apex: PyTorch extensions for mixed precision and distributed training (fused ops)
-	pkgver = 25.09
-	pkgrel = 2
+	pkgver = 26.09
+	pkgrel = 1
 	url = https://github.com/NVIDIA/apex
 	arch = x86_64
 	license = BSD-3-Clause
@@ -27,9 +27,9 @@ pkgbase = python-apex
 	optdepends = python-triton: OpenFold Triton kernels
 	options = !debug
 	options = !lto
-	source = apex-25.09.tar.gz::https://github.com/NVIDIA/apex/archive/refs/tags/25.09.tar.gz
+	source = apex-26.09.tar.gz::https://github.com/NVIDIA/apex/archive/refs/tags/26.09.tar.gz
 	source = cpu-only-test-skip.patch
-	sha256sums = d30ce19d8519363fd3ee52d028d60c6f66062c53f72d1265ed79e743449b12db
+	sha256sums = fe1a01a672e18784dc3b832bbe38a99ccf23af3b5ead047081e4e7070e4f2f50
 	sha256sums = e4c890b25bf35c185d722762cc92c9a98a185617712016e212d7591366dc5096
 
 pkgname = python-apex
