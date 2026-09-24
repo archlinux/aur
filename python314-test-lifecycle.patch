@@ -1,0 +1,220 @@
+--- a/lib/bindings/python/tests/conftest.py
++++ b/lib/bindings/python/tests/conftest.py
+@@ -404,9 +404,31 @@
+     A temporary directory to use as the key-value store. Cleaned up on test exit.
+     Local to the unit test using it.
+     """
+-    with tempfile.TemporaryDirectory() as tmpdir:
+-        os.environ["DYN_FILE_KV"] = tmpdir
++    tmpdir = tempfile.mkdtemp()
++    os.environ["DYN_FILE_KV"] = tmpdir
++    try:
+         yield tmpdir
++    finally:
++        # DistributedRuntime.shutdown() stops its Rust file-store watchers,
++        # but their last filesystem notification can race Python 3.14's
++        # stricter TemporaryDirectory cleanup and recreate the version
++        # directory between rmtree operations. Wait for teardown to quiesce,
++        # while keeping a persistent writer or leak a hard test failure.
++        last_error = None
++        for _ in range(50):
++            try:
++                shutil.rmtree(tmpdir)
++            except FileNotFoundError:
++                pass
++            except OSError as error:
++                last_error = error
++            time.sleep(0.02)
++            if not os.path.exists(tmpdir):
++                break
++        else:
++            if last_error is not None:
++                raise last_error
++            raise OSError(f"failed to clean temporary file store: {tmpdir}")
+ 
+ 
+ @pytest.fixture
+--- a/lib/bindings/python/tests/test_example_hello_world.py
++++ b/lib/bindings/python/tests/test_example_hello_world.py
+@@ -47,7 +47,13 @@
+ 
+     # Cleanup
+     server_proc.terminate()
+-    server_proc.wait(timeout=1)
++    try:
++        # wait() alone leaves stdout=PIPE open.  Drain and close it so Python
++        # 3.14 does not report the file descriptor as an unraisable warning.
++        server_proc.communicate(timeout=1)
++    except subprocess.TimeoutExpired:
++        server_proc.kill()
++        server_proc.communicate()
+ 
+ 
+ async def run_client(example_dir):
+--- a/tests/router/counter_worker.py
++++ b/tests/router/counter_worker.py
+@@ -118,6 +118,7 @@
+         # Any non-empty, non-"-1", non-"none" value → Cuda in endpoint_device_type().
+         # "0" works even without a physical GPU since detection is purely env-var based.
+         os.environ["CUDA_VISIBLE_DEVICES"] = "0"
++        os.environ["NVIDIA_VISIBLE_DEVICES"] = "0"
+ 
+     from dynamo.common.model_taints import register_model_taint_route
+     from dynamo.llm import (
+--- a/tests/router/common.py
++++ b/tests/router/common.py
+@@ -402,7 +402,8 @@
+ 
+     def _read_count(path: str) -> int:
+         try:
+-            text = open(path).read().strip()
++            with open(path, encoding="utf-8") as stream:
++                text = stream.read().strip()
+             return int(text) if text else 0
+         except (OSError, ValueError):
+             return 0
+--- a/tests/router/test_standalone_slot_tracker.py
++++ b/tests/router/test_standalone_slot_tracker.py
+@@ -43,8 +43,9 @@
+             response_body = response.read()
+             return response.status, json.loads(response_body) if response_body else None
+     except HTTPError as error:
+-        response_body = error.read()
+-        return error.code, json.loads(response_body) if response_body else None
++        with error:
++            response_body = error.read()
++            return error.code, json.loads(response_body) if response_body else None
+ 
+ 
+ def _post_json(
+--- a/components/src/dynamo/profiler/tests/unit/test_profiler_protocol.py
++++ b/components/src/dynamo/profiler/tests/unit/test_profiler_protocol.py
+@@ -946,6 +946,12 @@
+             ),
+         ),
+         patch("dynamo.profiler.profile_sla.needs_profile_data", return_value=True),
++        # This override-merging unit test uses a fictitious model. Do not
++        # make a real HuggingFace request for its context-length fixture.
++        patch(
++            "dynamo.profiler.profile_sla.get_model_config_from_model_path",
++            return_value={"max_position_embeddings": 8192},
++        ),
+         patch(
+             "dynamo.profiler.profile_sla.run_interpolation",
+             new=_fake_interpolation,
+--- a/components/src/dynamo/common/backend/tests/test_backend_bindings.py
++++ b/components/src/dynamo/common/backend/tests/test_backend_bindings.py
+@@ -221,6 +221,10 @@
+     # strict coercer; pin them to None.
+     runtime_cfg.disaggregation_mode = None
+     runtime_cfg.serving_mode = None
++    # An unconfigured MagicMock is truthy and implements __index__ == 1.
++    # The @file payload parser would therefore open and close stdout (fd 1).
++    # Match the real optional CLI default instead of supplying a mock path.
++    runtime_cfg.health_check_payload = None
+ 
+     config = WorkerConfig.from_runtime_config(runtime_cfg, "nvidia/Kimi-K2.5-NVFP4")
+ 
+--- a/components/src/dynamo/planner/tests/unit/test_kubernetes_connector.py
++++ b/components/src/dynamo/planner/tests/unit/test_kubernetes_connector.py
+@@ -50,7 +50,9 @@
+ def mock_kube_api():
+     mock_api = Mock()
+     mock_api.get_graph_deployment = Mock()
+-    mock_api.update_graph_replicas = AsyncMock()
++    # KubernetesAPI.update_graph_replicas is synchronous; an AsyncMock
++    # creates an unawaited coroutine instead of modeling the actual client.
++    mock_api.update_graph_replicas = Mock()
+     mock_api.wait_for_graph_deployment_ready = AsyncMock()
+     mock_api.is_deployment_ready = Mock()
+     # Default: no terminating pods; tests that want to simulate terminating pods
+--- a/components/src/dynamo/global_planner/tests/unit/test_scale_request_handler.py
++++ b/components/src/dynamo/global_planner/tests/unit/test_scale_request_handler.py
+@@ -188,6 +188,11 @@
+         mock_connector = AsyncMock()
+         mock_connector_cls.return_value = mock_connector
+         mock_connector._async_init = AsyncMock()
++        # The capacity observer reads this synchronous API before scaling.
++        mock_connector.kube_api = MagicMock()
++        mock_connector.kube_api.get_graph_deployment = MagicMock(
++            return_value={"spec": {"components": []}}
++        )
+         # Simulate error during scaling
+         mock_connector.set_component_replicas = AsyncMock(
+             side_effect=Exception("Scaling failed")
+--- a/components/src/dynamo/profiler/tests/integration/test_profile_sla_dgdr.py
++++ b/components/src/dynamo/profiler/tests/integration/test_profile_sla_dgdr.py
+@@ -44,6 +44,33 @@
+ def logger(request):
+     """Override the logger fixture to prevent test directory creation."""
+     yield
++
++
++@pytest.fixture(autouse=True)
++def close_metadata_error_responses(monkeypatch):
++    # Optional model metadata can return HTTP404. Retain and explicitly close
++    # those response objects after the test, just like successful responses.
++    # Preserve the original error, status and readable body for every caller;
++    # do not suppress exceptions, warnings or fallback/output assertions.
++    import urllib.error
++    import urllib.request
++
++    original = urllib.request.urlopen
++    responses = []
++
++    def tracked_urlopen(*args, **kwargs):
++        try:
++            return original(*args, **kwargs)
++        except urllib.error.HTTPError as error:
++            responses.append(error)
++            raise
++
++    monkeypatch.setattr(urllib.request, "urlopen", tracked_urlopen)
++    try:
++        yield
++    finally:
++        for response in responses:
++            response.close()
+ 
+ 
+ @pytest.fixture(autouse=True)
+--- a/container/compliance/tests/test_license_text.py
++++ b/container/compliance/tests/test_license_text.py
+@@ -255,7 +255,8 @@
+     }
+     out = tmp_path / "osrb-deps.csv"
+     write_merged_csv(comps, exc, out)
+-    rows = {(r["ecosystem"], r["name"]): r for r in _csv.DictReader(out.open())}
++    with out.open() as stream:
++        rows = {(r["ecosystem"], r["name"]): r for r in _csv.DictReader(stream)}
+     # 6-column schema incl. notes
+     assert list(next(iter(rows.values())).keys()) == [
+         "ecosystem",
+--- a/components/src/dynamo/profiler/tests/unit/test_profiler_protocol.py
++++ b/components/src/dynamo/profiler/tests/unit/test_profiler_protocol.py
+@@ -5,6 +5,7 @@
+ 
+ import copy
+ import errno
++import os
+ from pathlib import Path
+ from unittest.mock import AsyncMock, patch
+ 
+@@ -1784,14 +1785,14 @@
+     model_path.mkdir()
+     (model_path / "config.json").write_text("{}")
+     error = PermissionError(errno.EACCES, "Cannot inspect model", str(model_path))
+-    original_stat = Path.stat
++    original_stat = os.stat
+ 
+     def stat(self, *args, **kwargs):
+-        if self == model_path:
++        if self == model_path or self == str(model_path):
+             raise error
+         return original_stat(self, *args, **kwargs)
+ 
+-    monkeypatch.setattr(Path, "stat", stat)
++    monkeypatch.setattr(os, "stat", stat)
+     config = _make_dgd_with_workers("decode")
+     if explicit_trust:
+         _main_container(_components_by_name(config)["decode"])["args"].append(

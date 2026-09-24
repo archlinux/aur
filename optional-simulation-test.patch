@@ -1,0 +1,11 @@
+--- a/lib/bindings/python/tests/replay/test_replay_aic_integration.py
++++ b/lib/bindings/python/tests/replay/test_replay_aic_integration.py
+@@ -6,6 +6,8 @@
+ from __future__ import annotations
+ 
+ import pytest
++
++pytest.importorskip("aisimulate", reason="AISimulate is an optional Dynamo simulation dependency")
+ 
+ from dynamo.replay.config import load_engine_args
+ 
