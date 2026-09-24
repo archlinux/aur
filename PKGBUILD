@@ -2,7 +2,7 @@
 pkgname=imfile-git
 _pkgname=imFile
 _flathubname="io.github.${pkgname%-git}_io.${pkgname%-git}_desktop"
-pkgver=2.3.2.r0.gc8ac3d2
+pkgver=2.3.4.r61.g8e64da1
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -32,7 +32,6 @@ makedepends=(
     'git'
     'pnpm'
     'nvm'
-    'curl'
     'jq'
 )
 source=(
@@ -40,7 +39,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+            'bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -54,39 +53,37 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
-}
-_set_build_env() {
-    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export HOME="${srcdir}/.electron-gyp"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export pnpm_config_registry="https://registry.npmmirror.com"
-            export npm_config_registry="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-        }
-    fi
+	find "${srcdir}" -type d -name "node_modules" -prune -o -type f -name "resources.pak" -print0 | xargs -0 dirname | head -n 1
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
         -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
     [[ -z "${_elec_ver}" ]] && return 1
     echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
+}
+_set_build_env() {
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export XDG_STATE_HOME="${HOME}/.local/state"
+	export PNPM_HOME="${HOME}/.pnpm/bin"
+	export pnpm_config_cache_dir="${HOME}/.pnpm_cache"
+	export pnpm_config_store_dir="${HOME}/.pnpm_store"
+	export pnpm_config_global_dir="${HOME}/.pnpm/global"
+	export pnpm_config_state_dir="${HOME}/.pnpm/state"
+	export pnpm_config_node_linker=hoisted
+	export pnpm_config_minimum_release_age=0
+	export pnpm_config_update_notifier=false
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
+	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
+	export PATH="${PNPM_HOME}:${PATH}"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -97,44 +94,37 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-git}.sh"
-    _set_build_env
     _ensure_local_nvm
+    _set_build_env
     case "${CARCH}" in
-        aarch64)
-            _replace_dir_name=arm64
-            ;;
-        armv7h)
-            _replace_dir_name=armv7l
-            ;;
-        x86_64)
-            _replace_dir_name=x64
-            ;;
+        aarch64)    _replace_dir_name=arm64     ;;
+        armv7h)    _replace_dir_name=armv7l     ;;
+        x86_64)    _replace_dir_name=x64     ;;
     esac
     ln -sf "/usr/bin/aria2c" "${srcdir}/${pkgname//-/.}/extra/linux/${_replace_dir_name}/engine/aria2c"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/'darwin', 'win32', 'linux'/'linux'/g" scripts/sync-go-aria2.mjs
     sed -i "s/Icon=${_flathubname}/Icon=${pkgname}/g" "build/flathub/${_flathubname}.desktop"
     sed -i "s/${_flathubname}/${pkgname}/g" "build/flathub/${_flathubname}.metainfo.xml"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        sed -i 's|asset\.browser_download_url|"https://gh-proxy.com/" + asset.browser_download_url|g' scripts/sync-go-aria2.mjs
-    fi
-    NODE_ENV=development    pnpm install --frozen-lockfile
+    export NODE_ENV=development
+    pnpm install --no-lockfile
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    _set_build_env
     _ensure_local_nvm
-    NODE_ENV=production     pnpm run sync-go-aria2
-    NODE_ENV=production     pnpm -c exec "node .electron-vue/build.js"
-    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config=electron-builder.json"
+    _set_build_env
+    export NODE_ENV=production
+    pnpm run sync-go-aria2
+    pnpm run build:github
+    pnpm exec electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config=electron-builder.json
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+    cp -a "${_app_dir}/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/build/256x256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/build/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/build/flathub/${_flathubname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/${pkgname//-/.}/build/flathub/${_flathubname}.metainfo.xml" \
