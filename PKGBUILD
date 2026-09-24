@@ -30,6 +30,11 @@
 #   icons/                        — the hicolor icon tree (8 sizes, installed
 #                                   bare + NxN; top-level; C21-27, lands
 #                                   with the v2.2.0 re-cut; C21-42)
+#   kernel/ramsleuth-intel/       — the in-repo ramsleuth_intel DKMS module
+#                                   source tree (GPL-2.0-only; in the v2.4.0
+#                                   tarball — no re-cut needed; package()
+#                                   step (12) ships it to
+#                                   /usr/share/ramsleuth-intel-dkms/src/)
 #
 # sha256sums pins that exact asset. AUR requires a real sha256 (no SKIP):
 # the pin below is the real sha256 of the published v2.2.1 release tarball,
@@ -60,7 +65,7 @@ pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients (precompiled binary)"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
-license=(MIT)
+license=(MIT GPL-2.0-only)
 source=("https://github.com/MadGoatHaz/RamSleuth/releases/download/v$pkgver/ramsleuth-$pkgver-x86_64.tar.zst")
 # Finalized in C21-24b: the real sha256 of the published v2.2.1 release
 # asset, independently verified by download + sha256sum (the all-zeros
@@ -68,7 +73,10 @@ source=("https://github.com/MadGoatHaz/RamSleuth/releases/download/v$pkgver/rams
 #
 sha256sums=('6e0c5d3b127d87aba47fb63d154e12b3da529acacfa319fe270132e9f8eacd3d')
 install=ramsleuth-bin.install
-conflicts=('ramsleuth')
+# The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
+# and would file-conflict with the standalone ramsleuth-intel-dkms extra, so the
+# two cannot coinstall (pacman refuses; the user picks one).
+conflicts=('ramsleuth' 'ramsleuth-intel-dkms')
 depends=(libx11 libxkbcommon wayland libxrandr libxi libxcursor libxinerama mesa)
 
 # No build(): the 6 binaries are prebuilt and pinned by sha256sums.
@@ -176,6 +184,24 @@ package() {
             "$pkgdir/usr/bin/ramsleuth-install-intel-dkms"
     else
         echo "NOTE: release tarball lacks scripts/install-intel-dkms.sh (pre-2.3.0 re-cut); skipping the Intel DKMS helper install"
+    fi
+
+    # (12) The in-repo ramsleuth_intel DKMS module source tree ->
+    # /usr/share/ramsleuth-intel-dkms/src/ — the exact path the Intel helper
+    # (step 11) resolves as its installed copy (no network, no upstream pin:
+    # the module lives in this repo, unlike the AMD vendored ryzen_smu).
+    # The v2.4.0 release tarball carries kernel/ramsleuth-intel/ (the 4 files
+    # dkms.conf/Makefile/ramsleuth_intel.c/README.md). GUARDED with an existence
+    # test: a build against an older tarball without the tree skips it cleanly —
+    # the no-panic contract; the per-file guard covers 'Makefile if present'.
+    if [ -d "kernel/ramsleuth-intel" ]; then
+        local f
+        for f in dkms.conf Makefile ramsleuth_intel.c README.md; do
+            if [ -f "kernel/ramsleuth-intel/$f" ]; then
+                install -Dm644 "kernel/ramsleuth-intel/$f" \
+                    "$pkgdir/usr/share/ramsleuth-intel-dkms/src/$f"
+            fi
+        done
     fi
 
     # NOTE: the ramsleuth group is created on the TARGET system by the .install

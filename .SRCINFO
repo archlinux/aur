@@ -6,6 +6,7 @@ pkgbase = ramsleuth-bin
 	install = ramsleuth-bin.install
 	arch = x86_64
 	license = MIT
+	license = GPL-2.0-only
 	depends = libx11
 	depends = libxkbcommon
 	depends = wayland
@@ -15,6 +16,7 @@ pkgbase = ramsleuth-bin
 	depends = libxinerama
 	depends = mesa
 	conflicts = ramsleuth
+	conflicts = ramsleuth-intel-dkms
 	source = https://github.com/MadGoatHaz/RamSleuth/releases/download/v2.4.0/ramsleuth-2.4.0-x86_64.tar.zst
 	sha256sums = 6e0c5d3b127d87aba47fb63d154e12b3da529acacfa319fe270132e9f8eacd3d
 
