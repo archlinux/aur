@@ -1,0 +1,21 @@
+diff --git a/demo/main.go b/demo/main.go
+--- a/demo/main.go
++++ b/demo/main.go
+@@ -93,7 +93,16 @@ type generatorSession struct {
+ }
+ func startGeneratorSession(generator string, model motionModel, text textBundle) (*generatorSession, error) {
+ 	cmd := exec.Command(generator, "--server", model.Motion, text.Path)
+-	cmd.Env = append(os.Environ(), "KIMODO_BACKEND=vulkan", "KIMODO_TEXT_LAYER_CHUNK=32", "KIMODO_TEXT_RESIDENT_LIMIT_MIB=10000")
++	workerEnv := os.Environ()
++	appendDefault := func(name, value string) {
++		if _, ok := os.LookupEnv(name); !ok {
++			workerEnv = append(workerEnv, name+"="+value)
++		}
++	}
++	appendDefault("KIMODO_BACKEND", "vulkan")
++	appendDefault("KIMODO_TEXT_LAYER_CHUNK", "32")
++	appendDefault("KIMODO_TEXT_RESIDENT_LIMIT_MIB", "10000")
++	cmd.Env = workerEnv
+ 	stdin, err := cmd.StdinPipe()
+ 	if err != nil {
+ 		return nil, err

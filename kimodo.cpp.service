@@ -1,0 +1,39 @@
+[Unit]
+Description=kimodo.cpp text-to-motion web service
+Documentation=https://github.com/localai-org/kimodo.cpp
+After=network.target
+
+[Service]
+Type=simple
+User=kimodo
+Group=kimodo
+WorkingDirectory=/var/lib/kimodo
+ExecStart=/usr/lib/kimodo.cpp/kimodo-service
+Restart=on-failure
+RestartSec=3s
+
+# Persistent models and generated output.
+StateDirectory=kimodo
+StateDirectoryMode=0750
+UMask=0027
+
+# Sandboxing that still permits Vulkan/DRM devices through the normal render
+# and video supplementary groups created by the sysusers rule.
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+ReadWritePaths=/var/lib/kimodo
+
+[Install]
+WantedBy=multi-user.target

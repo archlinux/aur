@@ -1,0 +1,44 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+config=/etc/conf.d/kimodo.cpp
+if [[ -r "$config" ]]; then
+  # shellcheck disable=SC1091
+  source "$config"
+fi
+
+: "${KIMODO_ADDR:=127.0.0.1:8090}"
+: "${KIMODO_DATA_DIR:=/var/lib/kimodo}"
+: "${KIMODO_BACKEND:=vulkan}"
+: "${KIMODO_TEXT_LAYER_CHUNK:=32}"
+: "${KIMODO_TEXT_RESIDENT_LIMIT_MIB:=10000}"
+
+declare -p KIMODO_EXTRA_ARGS &>/dev/null || KIMODO_EXTRA_ARGS=()
+
+export HOME="$KIMODO_DATA_DIR"
+export KIMODO_BACKEND
+export KIMODO_TEXT_LAYER_CHUNK
+export KIMODO_TEXT_RESIDENT_LIMIT_MIB
+
+mkdir -p \
+  "$KIMODO_DATA_DIR/models" \
+  "$KIMODO_DATA_DIR/output" \
+  "$KIMODO_DATA_DIR/comparisons"
+
+exec /usr/bin/kimodo-demo \
+  --addr "$KIMODO_ADDR" \
+  --generator /usr/bin/kmd-generate \
+  --output "$KIMODO_DATA_DIR/output" \
+  --comparisons "$KIMODO_DATA_DIR/comparisons" \
+  --motion-model "$KIMODO_DATA_DIR/models/kimodo-smplx-rp-v1-f32.gguf" \
+  --soma-rp-model "$KIMODO_DATA_DIR/models/kimodo-soma-rp-v1.1-f32.gguf" \
+  --soma-seed-model "$KIMODO_DATA_DIR/models/kimodo-soma-seed-v1.1-f32.gguf" \
+  --g1-rp-model "$KIMODO_DATA_DIR/models/kimodo-g1-rp-v1-f32.gguf" \
+  --g1-seed-model "$KIMODO_DATA_DIR/models/kimodo-g1-seed-v1-f32.gguf" \
+  --text-bundle "$KIMODO_DATA_DIR/Llama-3-Kimodo-BF16.gguf" \
+  --text-q8-bundle "$KIMODO_DATA_DIR/Llama-3-Kimodo-Q8_0.gguf" \
+  --text-q6-bundle "$KIMODO_DATA_DIR/Llama-3-Kimodo-Q6_K.gguf" \
+  --text-q5-bundle "$KIMODO_DATA_DIR/Llama-3-Kimodo-Q5_K.gguf" \
+  --text-q4-bundle "$KIMODO_DATA_DIR/Llama-3-Kimodo-Q4_K.gguf" \
+  --text-q4-mixed-bundle "$KIMODO_DATA_DIR/Llama-3-Kimodo-Q4_K_M.gguf" \
+  "${KIMODO_EXTRA_ARGS[@]}"

@@ -1,0 +1,3 @@
+u kimodo - "kimodo.cpp service user" /var/lib/kimodo /usr/bin/nologin
+m kimodo render
+m kimodo video

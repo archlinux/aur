@@ -1,0 +1,44 @@
+pkgbase = kimodo.cpp
+	pkgdesc = GGML/C++ implementation of NVIDIA Kimodo text-to-motion with Vulkan and web demo
+	pkgver = 5679ff1
+	pkgrel = 1
+	url = https://github.com/localai-org/kimodo.cpp
+	install = kimodo.cpp.install
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = go>=1.26
+	makedepends = ninja
+	makedepends = patchelf
+	makedepends = shaderc
+	makedepends = vulkan-headers
+	makedepends = spirv-headers
+	depends = bash
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = vulkan-icd-loader
+	optdepends = python-huggingface-hub: download verified GGUF model bundles with kimodo-download-weights
+	optdepends = vulkan-radeon: Vulkan driver for AMD GPUs
+	optdepends = vulkan-intel: Vulkan driver for Intel GPUs
+	optdepends = nvidia-utils: Vulkan driver for NVIDIA GPUs
+	backup = etc/conf.d/kimodo.cpp
+	source = kimodo.cpp::git+https://github.com/localai-org/kimodo.cpp.git#commit=5679ff19ba0a522c0b0516e9a9d402fe1af2c027
+	source = ggml::git+https://github.com/ggml-org/ggml.git#commit=8c63e70982c95ceb862e3a1073a2c1beef75d60a
+	source = kimodo.cpp.service
+	source = kimodo.cpp.conf
+	source = kimodo.cpp.sysusers
+	source = kimodo.cpp.tmpfiles
+	source = kimodo-service
+	source = 0001-demo-respect-runtime-env.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 8fa14bfd90c684803aaa6be9afc32d763306b94878b87e328faef60f5ea6f3fe
+	sha256sums = 28c6034931aeea8706b2f4e28ca60daf96a78f7508d2fa2a95e9a03488a57327
+	sha256sums = 3264a21bb83e0a15480f5a0fda6895c25543e0d61446ea82cc919c508f642563
+	sha256sums = 4ef40ef2849ce8ec9a1263c1d4f1b3e71160c3a8aecf2c753d266e85c125a0d6
+	sha256sums = 10f3ba496301dcfed6b1f218069028c5a8425f0b870537d671cf250cb0a2463f
+	sha256sums = 324c32702687d888c6c8ab594b73f52aa7eacbcae0fd5e8a74fc2fc863d5089e
+
+pkgname = kimodo.cpp

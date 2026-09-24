@@ -1,0 +1,4 @@
+d /var/lib/kimodo 0750 kimodo kimodo -
+d /var/lib/kimodo/models 0750 kimodo kimodo -
+d /var/lib/kimodo/output 0750 kimodo kimodo -
+d /var/lib/kimodo/comparisons 0750 kimodo kimodo -
