@@ -1,6 +1,6 @@
 pkgbase = piclone-git
 	pkgdesc = Raspberry Pi system clone utility
-	pkgver = r146.71b0bcb
+	pkgver = r160.8b9c6c6
 	pkgrel = 1
 	url = https://github.com/raspberrypi-ui/piclone
 	arch = x86_64
@@ -10,6 +10,9 @@ pkgbase = piclone-git
 	license = GPL2
 	makedepends = git
 	makedepends = intltool
+	makedepends = meson
+	makedepends = cmake
+	makedepends = wayland-protocols
 	depends = gtk3
 	depends = glib2
 	depends = parted
@@ -21,6 +24,8 @@ pkgbase = piclone-git
 	depends = dbus
 	depends = gvfs
 	source = git+https://github.com/raspberrypi-ui/piclone.git
+	source = https://archive.raspberrypi.com/debian/pool/main/s/sudopwd/sudopwd_0.3.tar.xz
 	sha256sums = SKIP
+	sha256sums = d4989ff0ea15ce4b0bc53f9b5b04fba96e003865eb7a9d6b75228f98c56c3d31
 
 pkgname = piclone-git
