@@ -1,0 +1,50 @@
+--- a/mirasim-desktop
++++ b/mirasim-desktop
+@@ -48,6 +48,23 @@
+   exec "$bin" "$@"
+ fi
+ 
++# Chromium switches from the user config. A missing file adds nothing.
++# Not used for ELECTRON_RUN_AS_NODE above: those argv are a Node command line.
++flags_file=${XDG_CONFIG_HOME:-$HOME/.config}/mirasim-flags.conf
++user_flags=
++if [ -r "$flags_file" ]; then
++  user_flags=$(sed -e 's/\r$//' -e 's/[[:space:]]*#.*//' -e '/^[[:space:]]*$/d' "$flags_file" | tr '\n' ' ')
++fi
++run_app() {
++  if [ -n "${MIRASIM_LAUNCHER_DEBUG:-}" ] && [ -n "$user_flags" ]; then
++    echo "mirasim: flags from $flags_file:$user_flags" >&2
++  fi
++  set -f
++  # word-splitting is the flag separator: one switch per whitespace-separated word
++  exec "$bin" $user_flags "$@"
++}
++
++
+ proc=${MIRASIM_LAUNCHER_PROC:-/proc}
+ 
+ # First line of a file, without the NUL /proc/self/attr/current ends with; empty
+@@ -86,18 +103,18 @@
+ # An explicit --no-sandbox from the caller (the AppImage's own .desktop entry writes
+ # one) already says everything this script could add.
+ for arg in "$@"; do
+-  if [ "$arg" = "--no-sandbox" ]; then exec "$bin" "$@"; fi
++  if [ "$arg" = "--no-sandbox" ]; then run_app "$@"; fi
+ done
+ 
+ case "${MIRASIM_SANDBOX:-}" in
+-  1) exec "$bin" "$@" ;;
+-  0) exec "$bin" --no-sandbox "$@" ;;
++  1) run_app "$@" ;;
++  0) run_app --no-sandbox "$@" ;;
+ esac
+ 
+ if sandbox_works; then
+   [ -n "${MIRASIM_LAUNCHER_DEBUG:-}" ] && echo "mirasim: chromium sandbox available — starting sandboxed" >&2
+-  exec "$bin" "$@"
++  run_app "$@"
+ fi
+ 
+ [ -n "${MIRASIM_LAUNCHER_DEBUG:-}" ] && echo "mirasim: no usable chromium sandbox (restricted user namespaces, no setuid helper) — starting with --no-sandbox" >&2
+-exec "$bin" --no-sandbox "$@"
++run_app --no-sandbox "$@"

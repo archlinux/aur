@@ -1,7 +1,7 @@
 pkgbase = mirasim-bin
 	pkgdesc = Terminal, agent, model and tool orchestrator
 	pkgver = 0.0.354
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mirasim.ai
 	arch = x86_64
 	arch = aarch64
@@ -41,6 +41,8 @@ pkgbase = mirasim-bin
 	conflicts = mirasim
 	options = !strip
 	options = !debug
+	source = launcher-flags.patch
+	sha256sums = 6ea545e822b05486a227c96ca68ed0b215be4b86739580a5fe7f01d1df7d744d
 	source_x86_64 = https://cdn-assets.mirasim.ai/mirasim/releases/v0.0.354/Mirasim-0.0.354-linux-amd64.deb
 	sha256sums_x86_64 = 225335cce738b292ef6ff06aa82410937cd77b068c927dfb14d80c04bcc20dd1
 	source_aarch64 = https://cdn-assets.mirasim.ai/mirasim/releases/v0.0.354/Mirasim-0.0.354-linux-arm64.deb
