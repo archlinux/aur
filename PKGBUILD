@@ -2,12 +2,12 @@
 
 pkgname=prompt-exporter-git
 _pkgname=prompt-exporter
-pkgver=2.0.0.r0.g0000000
+pkgver=2.0.0.r9.g22c24d4
 pkgrel=1
 pkgdesc="CLI to sync AI conversation prompts from multiple sources (ChatGPT first)"
 arch=('any')
 url="https://github.com/azbarcea/prompt-exporter"
-license=('Apache')
+license=('Apache-2.0')
 depends=('nodejs' 'chromium')
 makedepends=('git' 'npm')
 provides=("${_pkgname}")
