@@ -1,6 +1,6 @@
 pkgbase = sober-bin
 	pkgdesc = Prevent AI-Slop: a local-first repository governance client and code reviewer with deterministic review readiness (local app; the forge-side Raccoon daemon and dashboard ship in Sober Enterprise)
-	pkgver = 2026.09.4
+	pkgver = 2026.09.5
 	pkgrel = 1
 	url = https://sober-dev.app
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = sober-bin
 	depends = tree-sitter
 	provides = sober
 	conflicts = sober
-	source = https://pkg.sober-dev.app/ce/sober_v2026.09.4_linux_amd64
+	source = https://pkg.sober-dev.app/ce/sober_v2026.09.5_linux_amd64
 	source = https://pkg.sober-dev.app/ce/SHA256SUMS
-	sha256sums = 95b22dce795d3bb3e995f8b3b7f46abeee328986f2accd5eb3c60f335561d237
+	sha256sums = 1c0d1d69d2aa10018c04f580085eb35d411ecde10f2c664863863f221bf9abed
 	sha256sums = SKIP
 
 pkgname = sober-bin
