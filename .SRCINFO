@@ -1,0 +1,28 @@
+pkgbase = python-quacc
+	pkgdesc = A platform for high-throughput, database-driven quantum chemistry and computational materials science
+	pkgver = 1.5.13
+	pkgrel = 1
+	url = https://github.com/Quantum-Accelerators/quacc
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python-numpy
+	depends = python-psutil
+	depends = python-pydantic
+	depends = python-pydantic-settings
+	depends = python-ruamel-yaml
+	depends = python-typer
+	depends = python-frozendict
+	depends = python-ase
+	depends = python-custodian
+	depends = python-pymatgen-core
+	depends = python-emmet-core
+	depends = python-monty
+	source = quacc-1.5.13.tar.gz::https://github.com/Quantum-Accelerators/quacc/archive/refs/tags/v1.5.13.tar.gz
+	sha256sums = 66d8d70698eba3110373eaf36fbd85522f84df4ecc9790c16b93bb93af23c346
+
+pkgname = python-quacc
