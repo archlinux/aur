@@ -29,6 +29,7 @@ sha512sums=('3306bf0a2aa139e10162cbfc3011e3819e6d654d1e71187f061b8df7eccf0636089
             '6a2004c3afa3d10991fbb748c9aaef648cab1c0e06c6af444f65f3b17f959701743ac8f95cbc2a71f0a35ef69fd65e7da566a7d20c151582abfd31a125a73f53')
 options=('!strip')
 noextract=("${_apptitle}_${_pkgsuffx}.tar.gz")
+install="${_appname}.install"
 
 # Make a string suitable for `sed`, by escaping `[]/&$.*^\` - syntax: `_sed_escape STRING`
 _sed_escape() {

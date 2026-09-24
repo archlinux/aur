@@ -3,6 +3,7 @@ pkgbase = firmaok-bin
 	pkgver = 1.6.31
 	pkgrel = 1
 	url = https://postecert.poste.it/firma/newfirmaok.shtml
+	install = firmaok.install
 	arch = any
 	license = custom:firmaok
 	depends = hicolor-icon-theme
