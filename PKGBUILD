@@ -2,7 +2,7 @@
 # Contributor: Based on mmtrt's snap package
 
 pkgname=acroread-dc-wine
-pkgver=26.002.21900
+pkgver=26.002.21931
 pkgrel=1
 pkgdesc="Adobe Acrobat Reader DC - PDF viewer (via Wine)"
 arch=('x86_64')
@@ -53,7 +53,7 @@ source=(
     "acroread-dc.desktop"
     "acroread-dc.reg"
 )
-sha256sums=('7164487442ca3b198ec8b395499939ca658c750030be227c2112ba78ed6da7c2'
+sha256sums=('eb26aabf9b3d64949594157780f240e23e81ffb73300d41239046e7d4af7707a'
             '349941ca58b0bc175161716234a4eda3fe3ec5c5b1f3d256e327da2b66aa7107'
             'a0eec4268a0b990aa31eac35f007d9fd58d2a2f58e70a448ef27ceca6ec99e8b'
             'a69382a6c60b16e84ec10c65e0f0bcb771e739976d0ee503fd284bea621d48fc'
