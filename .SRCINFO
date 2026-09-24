@@ -1,0 +1,21 @@
+pkgbase = salam-bin
+	pkgdesc = General-purpose systems programming language with a built-in DSL (prebuilt binary)
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/SalamLang/Salam
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	provides = salam=0.4.3
+	conflicts = salam
+	options = !strip
+	options = !debug
+	source_x86_64 = salam-bin-0.4.3-x86_64.tar.gz::https://github.com/SalamLang/Salam/releases/download/v0.4.3/salam-0.4.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 72e312aa4e8ad71ad51d0fe002e743756b34c506b3646de5bc928cae962c0e0b
+	source_aarch64 = salam-bin-0.4.3-aarch64.tar.gz::https://github.com/SalamLang/Salam/releases/download/v0.4.3/salam-0.4.3-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 0c7ff6edd2d848b66ac72aa43a0d5f45455411a9f90d1c87312e0fb1613ef111
+	source_armv7h = salam-bin-0.4.3-armv7h.tar.gz::https://github.com/SalamLang/Salam/releases/download/v0.4.3/salam-0.4.3-linux-armhf.tar.gz
+	sha256sums_armv7h = 884ff3ba5a3bdc62d0fc33d68b9229afa685ab41d9dff1eb3969e53324afea53
+
+pkgname = salam-bin
