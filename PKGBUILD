@@ -3,7 +3,7 @@
 # pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=rill-torrent
 _name=rill
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='A small BitTorrent client'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ conflicts=('rill' 'rill-git' 'rill-bin')
 # SQLite is compiled in; the Rust linker cannot read the objects makepkg's LTO makes of it.
 options=('!lto')
 source=("$_name-$pkgver.tar.gz::$url/archive/v$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('81c589720fe00b3139aca3d442d5666c82948c825e56c63b3c9c52ed1e9156b7')
+sha256sums=('27d4dbdd7a7f7a0dd5b61b86d88efbb167d02d1e20c90184120b5081c4edbc09')
 
 prepare() {
   cd "$_name-$pkgver"
