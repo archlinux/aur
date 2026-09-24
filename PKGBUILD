@@ -3,7 +3,7 @@
 pkgname=python-pythondata-software-compiler_rt
 _name=${pkgname#python-}
 _pyname=${_name//-/_}
-pkgver=2026.04
+pkgver=2026.08
 pkgrel=1
 pkgdesc='Python module containing data files for compiler_rt software (for use with LiteX)'
 arch=('any')
