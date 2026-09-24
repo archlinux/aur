@@ -6,6 +6,7 @@ pkgbase = ramsleuth
 	install = ramsleuth.install
 	arch = x86_64
 	license = MIT
+	license = GPL-2.0-only
 	makedepends = rust
 	makedepends = cargo
 	makedepends = pkgconf
@@ -27,6 +28,7 @@ pkgbase = ramsleuth
 	depends = libxinerama
 	depends = mesa
 	conflicts = ramsleuth-bin
+	conflicts = ramsleuth-intel-dkms
 	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v2.4.0
 
 pkgname = ramsleuth

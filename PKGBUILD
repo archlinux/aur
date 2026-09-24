@@ -49,6 +49,10 @@
 #     index.theme files that declare only the NxN dirs make KIconLoader skip
 #     the bare dirs; C21-42) + the 48px legacy /usr/share/pixmaps/ramsleuth.png
 #     fallback (the Icon=ramsleuth resolution; plan C21-25, C21-42)
+#   - the in-repo ramsleuth_intel DKMS module source tree kernel/ramsleuth-intel/
+#     (GPL-2.0-only — a separate work from the MIT RamSleuth code) ->
+#     /usr/share/ramsleuth-intel-dkms/src/ (the path the Intel helper resolves as its
+#     installed copy; GUARDED: absent in pre-Intel tags)
 #
 # No-panic contract: installation never fails on the absence of
 # the ryzen_smu module, AVX-512, or a display; after a bare install the
@@ -66,12 +70,15 @@ pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
-license=(MIT)
+license=(MIT GPL-2.0-only)
 # git-tag source: makepkg clones the repo and checks out the tag v$pkgver.
 # The "$pkgname::" rename extracts to $srcdir/ramsleuth (see header note above).
 source=("$pkgname::git+https://github.com/MadGoatHaz/RamSleuth.git#tag=v$pkgver")
 install=ramsleuth.install
-conflicts=('ramsleuth-bin')
+# The in-repo ramsleuth_intel DKMS source ships bundled (package() step (12))
+# and would file-conflict with the standalone ramsleuth-intel-dkms extra, so the
+# two cannot coinstall (pacman refuses; the user picks one).
+conflicts=('ramsleuth-bin' 'ramsleuth-intel-dkms')
 makedepends=(rust cargo pkgconf libx11 libxkbcommon wayland wayland-protocols libxrandr libxi libxcursor libxinerama mesa)
 depends=(libx11 libxkbcommon wayland libxrandr libxi libxcursor libxinerama mesa)
 
@@ -161,6 +168,24 @@ package() {
         "$pkgdir/usr/share/pixmaps/ramsleuth.png"
     install -Dm644 "assets/icons/hicolor/48/apps/ramsleuth.png" \
         "$pkgdir/usr/share/pixmaps/RamSleuth.png"
+
+    # (12) The in-repo ramsleuth_intel DKMS module source tree ->
+    # /usr/share/ramsleuth-intel-dkms/src/ — the exact path the Intel helper
+    # (step 5) resolves as its installed copy (no network, no upstream pin:
+    # the module lives in this repo, unlike the AMD vendored ryzen_smu).
+    # The 4 files: dkms.conf, Makefile, ramsleuth_intel.c, README.md.
+    # GUARDED with an existence test: a build against a pre-Intel git tag
+    # (no kernel/ramsleuth-intel/) skips it cleanly — the no-panic contract;
+    # the per-file guard covers 'Makefile if present'.
+    if [ -d "kernel/ramsleuth-intel" ]; then
+        local f
+        for f in dkms.conf Makefile ramsleuth_intel.c README.md; do
+            if [ -f "kernel/ramsleuth-intel/$f" ]; then
+                install -Dm644 "kernel/ramsleuth-intel/$f" \
+                    "$pkgdir/usr/share/ramsleuth-intel-dkms/src/$f"
+            fi
+        done
+    fi
 
     # NOTE: the ramsleuth group is created on the TARGET system by the .install
     # pre_install/pre_upgrade hooks (package() runs in the build env, not the target).
