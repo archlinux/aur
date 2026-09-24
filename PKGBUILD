@@ -1,7 +1,7 @@
 # Maintainer: Trevor Facer <trevordf@protonmail.com>
 
 pkgname=docker-mcp
-pkgver=0.43.3
+pkgver=0.44.1
 pkgrel=1
 pkgdesc='Docker CLI plugin for MCP Gateway - manage and run MCP servers in containers'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go>=2:1.24')
 optdepends=('docker: for Docker Engine container operations')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/docker/mcp-gateway/archive/v${pkgver}.tar.gz")
-sha256sums=('7e3459da0c0511c3113f4c7c454c22bb0c1095a8e80ce5778b8d2c74578600ac')
+sha256sums=('a9b25cd975a3438759436d60fd854ae40c5ffaa30b812feeb0e0d62e826cc4ac')
 
 prepare() {
   cd "mcp-gateway-${pkgver}"
@@ -31,7 +31,9 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  # http2legacy: x/net >= v0.54 on go1.27 wraps std http2 and drops
+  # http2.TrailerPrefix, which grpc v1.78 still references
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -tags=http2legacy"
   export GOPATH="${srcdir}/gopath"
 
   # Build the binary with version information
@@ -50,7 +52,7 @@ check() {
 
   # Run unit tests (upstream: make test)
   # Skip integration tests as they require Docker runtime
-  go test -short -v ./... || warning "Some tests failed - may require Docker runtime"
+  GOPATH="${srcdir}/gopath" go test -tags=http2legacy -short -v ./... || warning "Some tests failed - may require Docker runtime"
 }
 
 package() {
