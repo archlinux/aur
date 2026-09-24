@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Firma OK!
+Comment=Digital signature app by the Italian Poste
+Comment[it]=App per la firma digitale delle Poste Italiane
+Exec=firmaok
+Terminal=false
+Icon=firmaok
+Categories=Security;Qt;
+StartupNotify=false
