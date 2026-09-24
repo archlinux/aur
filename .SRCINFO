@@ -23,6 +23,6 @@ pkgbase = bottles-opener
 	optdepends = desktop-file-utils: refresh the desktop database after a change
 	optdepends = flatpak: open files with the Bottles Flatpak
 	source = bottles-opener-0.1.1.tar.gz::https://github.com/LoonixTools/bottles-opener/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = ff9d50cf8737a0c1d4f43ed145e138de1f55c9ec3bed3d7a98234f104df15a64
+	sha256sums = c8289f0941d9355993f4912bb69aea2fd916c1ba706ee15e497459de296bd639
 
 pkgname = bottles-opener

@@ -19,7 +19,7 @@ optdepends=('bottles: Bottles itself (the Flatpak works too)'
             'flatpak: open files with the Bottles Flatpak')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ff9d50cf8737a0c1d4f43ed145e138de1f55c9ec3bed3d7a98234f104df15a64')
+sha256sums=('c8289f0941d9355993f4912bb69aea2fd916c1ba706ee15e497459de296bd639')
 
 build() {
   # pass the version being packaged so `bottles-opener --version` cannot drift
