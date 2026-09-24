@@ -5,7 +5,7 @@
 
 pkgname=claude-desktop-extra
 pkgver=2.7032.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Claude Desktop (official Linux build) with extra features: Computer Use, custom themes, multi-profile, Quick Entry - for distros upstream does not ship"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-extra"
@@ -41,7 +41,9 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'socat: Faster Quick Entry toggle via socket (~2ms vs ~25ms python3 — not required)'
             'bluez: Hardware Buddy (Nibblet BLE pet) — the daemon Web Bluetooth talks to; without it the in-app device scan finds nothing'
             'gnome-keyring: credential storage backend for libsecret (KDE users: kwallet works too — upstream Recommends gnome-keyring | kwalletd)'
-            'xdg-desktop-portal-gtk: portal backend for DEs without their own (GNOME/KDE ship xdg-desktop-portal-gnome/-kde) — file dialogs, screen sharing')
+            'xdg-desktop-portal-gtk: portal backend for DEs without their own (GNOME/KDE ship xdg-desktop-portal-gnome/-kde) - file dialogs, screen sharing'
+            'gjs: GNOME Shell search provider (Claude sessions in the Activities search; GNOME Shell already pulls it in)'
+            'desktop-file-utils: refreshes the desktop entry cache (update-desktop-database) on install')
 optdepends_x86_64=('qemu-system-x86: Cowork agent workspace VM (needs /dev/kvm + user in kvm group)'
                    'edk2-ovmf: Cowork agent workspace VM UEFI firmware (OVMF)')
 optdepends_aarch64=('qemu-system-aarch64: Cowork agent workspace VM (needs /dev/kvm + user in kvm group)'
@@ -55,10 +57,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.7032.0/claude-desktop-2.7032.0-linux.tar.gz")
-sha256sums_x86_64=('dd0fdd63ecc6bbde4987fa2ee763b6d29df28cb34956d2d5ea2016c1cd5721b1')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.7032.0/claude-desktop-2.7032.0-linux-aarch64.tar.gz")
-sha256sums_aarch64=('1dad5afec8e886c9765e14a6aabdb841a361ae96f7965d38e0458b8339f03b7e')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.7032.0-2/claude-desktop-2.7032.0-linux.tar.gz")
+sha256sums_x86_64=('4ba70cb401faad982f32c866f8cd42eba349f3b5a39482c085e3da9aec1a536e')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-extra/releases/download/v2.7032.0-2/claude-desktop-2.7032.0-linux-aarch64.tar.gz")
+sha256sums_aarch64=('b64a01524f654fe15c67767b2281fa65200ec63ef09e8673f6687c84dbbe1049')
 options=('!strip' '!emptydirs')
 
 package() {
@@ -133,6 +135,28 @@ EOF
                 "$pkgdir/usr/share/icons/hicolor/${icon#"$srcdir"/icons/hicolor/}"
         done < <(find "$srcdir/icons/hicolor" -type f -name 'claude-desktop.png' | sort)
     fi
+
+    # GNOME Shell search provider. Upstream's postinst copies these two files out
+    # of resources/gnome-search-provider/ at configure time; we ship the same
+    # bytes as package files. The .service Exec runs /usr/bin/gjs on
+    # searchProvider.js under /usr/lib/claude-desktop, which is our prefix too.
+    local _sp="$pkgdir/usr/lib/claude-desktop/resources/gnome-search-provider"
+    local _f
+    for _f in com.anthropic.Claude.search-provider.ini com.anthropic.Claude.SearchProvider.service searchProvider.js; do
+        if [ ! -f "$_sp/$_f" ]; then
+            echo "ERROR: resources/gnome-search-provider/$_f missing - upstream layout changed; re-audit" >&2
+            return 1
+        fi
+    done
+    if ! grep -qx 'Exec=/usr/bin/gjs -m /usr/lib/claude-desktop/resources/gnome-search-provider/searchProvider.js' \
+            "$_sp/com.anthropic.Claude.SearchProvider.service"; then
+        echo "ERROR: search provider .service Exec line changed upstream - re-audit" >&2
+        return 1
+    fi
+    install -pDm644 "$_sp/com.anthropic.Claude.search-provider.ini" \
+        "$pkgdir/usr/share/gnome-shell/search-providers/com.anthropic.Claude.search-provider.ini"
+    install -pDm644 "$_sp/com.anthropic.Claude.SearchProvider.service" \
+        "$pkgdir/usr/share/dbus-1/services/com.anthropic.Claude.SearchProvider.service"
 
     # Upstream license notice (the official .deb's usr/share/doc copyright file,
     # placed at the tarball root by scripts/build-patched-tarball.sh).
