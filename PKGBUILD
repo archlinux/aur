@@ -4,7 +4,7 @@ pkgname=signageos-cli
 _npmname=@signageos/cli
 _cmd=sos
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='signageOS command-line interface for developing applets and managing devices'
 arch=('any')
 url='https://github.com/signageos/cli'
@@ -51,13 +51,25 @@ package() {
   # The completion script is generated from the command tree at runtime and
   # written to $HOME/.sos-completion.sh (plus a source line appended to the
   # shell rc), so run the installed CLI against a throwaway HOME and keep only
-  # the script. It uses bash `complete`, so there is no native zsh variant.
+  # the script.
   local _home="$srcdir/home"
   rm -rf "$_home"
   mkdir -p "$_home"
   HOME="$_home" SHELL=/bin/bash "$pkgdir/usr/bin/$_cmd" autocomplete install >/dev/null
   install -Dm644 "$_home/.sos-completion.sh" \
     "$pkgdir/usr/share/bash-completion/completions/$_cmd"
+
+  # There is no zsh generator: upstream's zsh support is sourcing the bash
+  # script from ~/.zshrc, which works only if bashcompinit ran first. Ship an
+  # autoloaded wrapper instead. Sourcing re-registers `sos` through
+  # bashcompinit's `complete`, so the last line runs that handler for the TAB
+  # that loaded the wrapper; without it the first completion offers nothing.
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_cmd" <<EOF
+#compdef $_cmd
+autoload -Uz bashcompinit && bashcompinit
+source /usr/share/bash-completion/completions/$_cmd
+\${=_comps[$_cmd]}
+EOF
 }
 
 # vim:set ts=2 sw=2 et:

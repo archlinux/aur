@@ -1,7 +1,7 @@
 pkgbase = signageos-cli
 	pkgdesc = signageOS command-line interface for developing applets and managing devices
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/signageos/cli
 	arch = any
 	license = MIT
