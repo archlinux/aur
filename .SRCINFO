@@ -1,6 +1,6 @@
 pkgbase = varn
 	pkgdesc = Local state checkpointing and rollback system for AI agents and automated tools
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/flawme/varn
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = varn
 	provides = varn
 	options = !lto
 	options = !strip
-	source = varn-0.3.2.tgz::https://github.com/flawme/varn/archive/v0.3.2.tar.gz
-	sha256sums = 39538cdd302c1946b90a0926955c33ea13c95289022c69f64333f4f56135c025
+	source = varn-0.4.0.tgz::https://github.com/flawme/varn/archive/v0.4.0.tar.gz
+	sha256sums = a2a05fca6dc2cc977c5a78f782822b1914c48174e6bbfbb42c286165813550df
 
 pkgname = varn
