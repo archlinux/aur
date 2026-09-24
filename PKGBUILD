@@ -55,7 +55,7 @@ DESKTOP
 
   # 符号链接
   mkdir -p "$pkgdir/usr/bin"
-  ln -s /opt/vantage/vantage.AppImage "$pkgdir/usr/bin/vantage"
+  ln -sf /opt/vantage/vantage.AppImage "$pkgdir/usr/bin/vantage"
 
   # 图标
   if [ -f "$pkgdir/opt/vantage/vantage.png" ]; then
