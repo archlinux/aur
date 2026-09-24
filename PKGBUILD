@@ -3,7 +3,7 @@
 
 pkgname=plecs-blockset
 _pkgname="plecs-blockset"
-pkgver=v5.0.1
+pkgver=v5.0.6
 _pkgver=$(echo "${pkgver#v}" | sed 's/\./-/g')
 pkgrel=1
 pkgdesc="PLECS integration into MATLAB/Simulink (license needed / 30-days free trial)"
@@ -20,7 +20,7 @@ source=("plecs-blockset.desktop"
 md5sums=('381be723bc77af74c5aca5f070d5925c'
          '8ed62f1ce2de47c761c9244531dc154e'
          'b9bb6bb0bfc5832e1ab721337b996d4e'
-         'f2beb7f0378d8b70fe910f22c86529b9')
+         'd8280fec48b36b05c1e3b42cdc735775')
 
 package() {
     # Install icon an desktop file
