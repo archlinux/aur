@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/GB4ME"
-	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -S . -B build -DGB4ME_RELEASE=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build -j"$(nproc)"
 }
 
