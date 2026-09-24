@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Polychrome
-_pkgver=1.6.1
+_pkgver=1.6.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('13e1466091caa778cc53d1bce5dbcc62')
-b2sums=('224a9c6b87a1d67ee3a6594555499c0617465249a82fda9f7e11604484830d1a268133ae8f20e7e622c3a862f4a6f96bfcd1fc08d6c85955866a327aee3e0dd5')
+md5sums=('8f2440e05acdfa4aa3ed19c5d0d9bcd9')
+b2sums=('44cead3f3101eb2a93f519c6e874a035c99d015197296ec9d658c0afbbaa081656f9d3aa7c851732f24e53bb84e19058c5175b8b758398dafa864a3d909ef015')
 
 build() {
   mkdir build
