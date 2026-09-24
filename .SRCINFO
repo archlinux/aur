@@ -1,0 +1,32 @@
+pkgbase = qtuxtimings-git
+	pkgdesc = AMD Ryzen DRAM timings and CPU telemetry viewer (Qt6)
+	pkgver = 1.0.5.r26.gb29b244
+	pkgrel = 1
+	url = https://github.com/drizzt/QTuxTimings
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = qt6-base
+	source = qtuxtimings-git::git+https://github.com/drizzt/QTuxTimings.git
+	sha256sums = SKIP
+
+pkgname = qtuxtimings-git
+	pkgdesc = AMD Ryzen DRAM timings and CPU telemetry viewer (Qt6)
+	depends = qt6-base
+	depends = qt6-wayland
+	optdepends = qtuxtimings-dkms-git: kernel modules for accurate benchmarking and memory voltages
+	optdepends = ryzen_smu-dkms-git: kernel module for reading AMD SMN/PM tables
+	optdepends = nct6775-dkms-git: fan readings on boards with Nuvoton Super I/O (NCT6775F through NCT6799D)
+	provides = qtuxtimings
+	conflicts = qtuxtimings
+
+pkgname = qtuxtimings-dkms-git
+	pkgdesc = DKMS kernel modules for QTuxTimings (aod-voltages, tuxbench)
+	install = qtuxtimings-dkms.install
+	depends = dkms
+	depends = linux-headers
+	optdepends = clang: required if your kernel was built with Clang (CachyOS, etc)
+	provides = qtuxtimings-dkms
+	conflicts = qtuxtimings-dkms

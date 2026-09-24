@@ -1,0 +1,59 @@
+_dkms_ver() {
+    # Compatible with both dkms 2.x ("name, ver,") and dkms 3.x ("name/ver:")
+    dkms status "$1" 2>/dev/null \
+        | grep -oP "(?<=$1[/, ])[0-9][0-9.]*" | head -1
+}
+
+pre_install() {
+    # Remove any leftover DKMS source dirs from previous installs
+    rm -rf /usr/src/aod-voltages-*/
+    rm -rf /usr/src/tuxbench-*/
+}
+
+pre_upgrade() {
+    pre_install
+}
+
+post_install() {
+    if command -v dkms &>/dev/null; then
+        local aod_ver
+        aod_ver=$(grep '^PACKAGE_VERSION=' /usr/src/aod-voltages-*/dkms.conf 2>/dev/null | head -1 | cut -d= -f2 | tr -d '"')
+        if [ -n "$aod_ver" ]; then
+            echo "==> Building aod-voltages $aod_ver DKMS module..."
+            dkms add aod-voltages/"$aod_ver" 2>/dev/null || true
+            dkms build aod-voltages/"$aod_ver" && dkms install aod-voltages/"$aod_ver" || \
+                echo "  WARNING: aod-voltages DKMS build failed — memory voltages will be unavailable"
+        fi
+
+        local tb_ver
+        tb_ver=$(grep '^PACKAGE_VERSION=' /usr/src/tuxbench-*/dkms.conf 2>/dev/null | head -1 | cut -d= -f2 | tr -d '"')
+        if [ -n "$tb_ver" ]; then
+            echo "==> Building tuxbench $tb_ver DKMS module..."
+            dkms add tuxbench/"$tb_ver" 2>/dev/null || true
+            dkms build tuxbench/"$tb_ver" && dkms install tuxbench/"$tb_ver" || \
+                echo "  WARNING: tuxbench DKMS build failed — benchmark will use userspace fallback"
+        fi
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    if command -v dkms &>/dev/null; then
+        local aod_ver
+        aod_ver=$(_dkms_ver aod-voltages)
+        if [ -n "$aod_ver" ]; then
+            rmmod aod_voltages 2>/dev/null || true
+            dkms remove aod-voltages/"$aod_ver" --all 2>/dev/null || true
+        fi
+
+        local tb_ver
+        tb_ver=$(_dkms_ver tuxbench)
+        if [ -n "$tb_ver" ]; then
+            rmmod tuxbench 2>/dev/null || true
+            dkms remove tuxbench/"$tb_ver" --all 2>/dev/null || true
+        fi
+    fi
+}
