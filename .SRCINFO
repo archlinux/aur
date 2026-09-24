@@ -1,6 +1,6 @@
 pkgbase = reflutter
 	pkgdesc = Flutter Reverse Engineering Framework — repacks apps with a patched Flutter library for traffic interception and dynamic analysis
-	pkgver = 0.9.0
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/Impact-I/reFlutter
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = reflutter
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = reflutter-0.9.0.tar.gz::https://files.pythonhosted.org/packages/source/r/reflutter/reflutter-0.9.0.tar.gz
-	sha256sums = c22f14e3d3b4a6321430a553b5dfd555a46e33ce851735baabc5c0c0a32c398c
+	source = reflutter-0.9.8.tar.gz::https://files.pythonhosted.org/packages/source/r/reflutter/reflutter-0.9.8.tar.gz
+	sha256sums = fec99019ce91a95ed9f4c860436e82240c39acd4f8d21a5b67a01f26bf326598
 
 pkgname = reflutter
