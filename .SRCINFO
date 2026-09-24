@@ -1,6 +1,6 @@
 pkgbase = omikuji-bin
 	pkgdesc = Qt/QML based wine apps launcher for Linux
-	pkgver = 0.18.2
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/omikuji-launcher/omikuji
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = omikuji-bin
 	depends = hicolor-icon-theme
 	optdepends = plasma-integration: KDE Plasma theme integration
 	optdepends = vulkan-icd-loader: GPU selection and dxvk/vkd3d layers
-	provides = omikuji=0.18.2
+	provides = omikuji=0.19.0
 	conflicts = omikuji
 	options = !strip
-	source = https://github.com/omikuji-launcher/omikuji/releases/download/v0.18.2/omikuji-0.18.2-x86_64.tar.zst
-	sha256sums = 3d70ade37be6bfbdb336f34da55b5579a78fdce877b1c9a921b0ce94631c6616
+	source = https://github.com/omikuji-launcher/omikuji/releases/download/v0.19.0/omikuji-0.19.0-x86_64.tar.zst
+	sha256sums = 8adfd0e50f28004536359977245c235d045dab85d75cbba4a73e70a8a66a7790
 
 pkgname = omikuji-bin
