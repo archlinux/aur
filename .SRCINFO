@@ -6,6 +6,7 @@ pkgbase = msodbcsql13
 	install = install.sh
 	arch = x86_64
 	license = custom
+	depends = openssl-1.0
 	depends = unixodbc
 	depends = krb5
 	depends = curl
