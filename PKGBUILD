@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=1.5.0.r0.gb5ef6c0
+pkgver=1.9.0.r0.g1e4f10b
 pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -48,6 +48,7 @@ optdepends=(
   'cosmic-player-git: COSMIC media player'
   'cosmic-store-git: COSMIC store'
   'cosmic-term-git: COSMIC terminal'
+  'cosmic-viewer-git: COSMIC image viewer'
   'cosmic-wallpapers-git: COSMIC wallpapers'
   'dconf: Apply COSMIC settings to GTK applications'
   'gnome-keyring: Start gnome keyring components if the daemon is active'
