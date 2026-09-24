@@ -1,21 +1,21 @@
 pkgbase = justwrite-git
-	pkgdesc = A cross platform Markdown editor that supports synchronized sliding preview.Use system-wide electron.一款支持同步滑动预览的跨平台Markdown编辑器.
-	pkgver = r3.1cbd108
+	pkgdesc = A cross platform Markdown editor that supports synchronized sliding preview.一款支持同步滑动预览的跨平台Markdown编辑器.
+	pkgver = r1.5cc0437
 	pkgrel = 1
 	url = https://github.com/onblog/JustWrite
 	arch = any
 	license = GPL-3.0-only
-	makedepends = npm
+	makedepends = bun
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = curl
-	depends = electron6
-	provides = justwrite=r3.1cbd108
+	makedepends = jq
+	depends = electron44
+	provides = justwrite=r1.5cc0437
 	conflicts = justwrite
 	source = justwrite.git::git+https://github.com/onblog/JustWrite.git
 	source = justwrite.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = justwrite-git
