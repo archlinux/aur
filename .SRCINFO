@@ -1,0 +1,17 @@
+pkgbase = prompt-exporter-git
+	pkgdesc = CLI to sync AI conversation prompts from multiple sources (ChatGPT first)
+	pkgver = 2.0.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/azbarcea/prompt-exporter
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	depends = chromium
+	provides = prompt-exporter
+	conflicts = prompt-exporter
+	source = git+https://github.com/azbarcea/prompt-exporter.git
+	sha256sums = SKIP
+
+pkgname = prompt-exporter-git
