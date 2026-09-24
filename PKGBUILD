@@ -1,6 +1,6 @@
 # Maintainer: Robin <NurRobin@users.noreply.github.com>
 pkgname=nursearch
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Small local GTK4 app launcher with a plugin platform'
 arch=('x86_64')
@@ -12,9 +12,12 @@ optdepends=(
   'fd: faster file search plugin backend'
   'kdotool: KDE Plasma Wayland window switcher plugin'
   'wl-clipboard: clipboard history plugin'
+  'kdeconnect: KDE Connect device control plugin'
+  'networkmanager: network toggle / Wi-Fi connect plugin'
+  'util-linux: rfkill for Bluetooth toggle (network plugin)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0b7429d6f1d5c758b83bd866c7c524e9e36b6ce2a79cbf65b47f499f5fbc1040')
+sha256sums=('f78df7a3fa05f806ad8e4f35ed3e50b18ea14117029ae8fd2afab9537257d0a6')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -43,13 +46,13 @@ package() {
   install -Dm755 target/release/nursearch-plugins "$pkgdir/usr/bin/nursearch-plugins"
 
   local plugin_bin
-  for plugin_bin in clipboard demo emoji files web windows; do
+  for plugin_bin in clipboard demo emoji files web windows kdeconnect network desktop systemd; do
     install -Dm755 "target/release/nursearch-$plugin_bin" \
       "$pkgdir/usr/lib/nursearch/nursearch-$plugin_bin"
   done
 
   local plugin
-  for plugin in clipboard demo emoji files web windows; do
+  for plugin in clipboard demo emoji files web windows kdeconnect network desktop systemd; do
     install -Dm644 "plugins/$plugin/nursearch-plugin.toml" \
       "$pkgdir/usr/share/nursearch/plugins/$plugin/nursearch-plugin.toml"
     sed -i "s#entry = \\[\"../../target/debug/nursearch-$plugin\"\\]#entry = [\"/usr/lib/nursearch/nursearch-$plugin\"]#" \
@@ -57,5 +60,6 @@ package() {
   done
 
   install -Dm644 nursearch.desktop "$pkgdir/usr/share/applications/nursearch.desktop"
+  install -Dm644 nursearch-autostart.desktop "$pkgdir/etc/xdg/autostart/nursearch.desktop"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
