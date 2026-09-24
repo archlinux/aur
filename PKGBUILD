@@ -6,7 +6,7 @@
 
 pkgname=libxmlrpc
 # latest release from https://sourceforge.net/projects/xmlrpc-c/files/Xmlrpc-c%20Super%20Stable/
-pkgver=1.64.03
+pkgver=1.64.04
 pkgrel=1
 epoch=1
 pkgdesc='XML-RPC for C and C++'
@@ -19,10 +19,10 @@ conflicts=(xmlrpc-c)
 provides=(xmlrpc-c)
 replaces=(xmlrpc-c)
 options=(!emptydirs)
-source=("https://downloads.sourceforge.net/project/xmlrpc-c/Xmlrpc-c%20Super%20Stable/$pkgver/xmlrpc-$pkgver.tgz")
-b2sums=('6da8a4872b8e6a6a9131e20be0c0953f0fad852152866e3e13ce713f1079b9d8d81105d0942b3892902414f972719a4b29dfaba958d1476cfc0eade7abdf7935')
+source=("xmlrpc-c-$pkgver.tgz::https://sourceforge.net/projects/xmlrpc-c/files/Xmlrpc-c%20Super%20Stable/$pkgver/xmlrpc-c-$pkgver.tgz/download")
+b2sums=('50d75deba12984bca300f189e85a18b96802c280f5551ae0b6408cc145abf46d5732e1ce0a2ef0d8bcd61f8ed61179e794022ae972441c2ed7229b987d0ea685')
 
-_srcdir="xmlrpc-$pkgver"
+_srcdir="xmlrpc-c-$pkgver"
 
 build() {
   cd "$_srcdir"
