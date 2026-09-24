@@ -1,6 +1,6 @@
 pkgbase = serein
 	pkgdesc = Unofficial native Discord client
-	pkgver = 1.0.0pre.nightly.20260921.44
+	pkgver = 1.0.0pre.nightly.20260923.45
 	pkgrel = 1
 	url = https://github.com/ViceVerse-cz/Serein
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = serein
 	optdepends = xdg-desktop-portal-kde: screen sharing and global shortcuts on KDE Plasma
 	options = !debug
 	options = !lto
-	source = serein::git+https://github.com/ViceVerse-cz/Serein.git#tag=v1.0.0-nightly.20260921.44
+	source = serein::git+https://github.com/ViceVerse-cz/Serein.git#tag=v1.0.0-nightly.20260923.45
 	sha256sums = SKIP
 
 pkgname = serein
