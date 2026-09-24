@@ -1,4 +1,4 @@
-print_hyprmoncfg_git_post_install() {
+print_hyprmoncfg_post_install() {
   cat <<'EOF'
 Optional hyprmoncfg setup:
 
@@ -15,9 +15,9 @@ EOF
 }
 
 post_install() {
-  print_hyprmoncfg_git_post_install
+  print_hyprmoncfg_post_install
 }
 
 post_upgrade() {
-  print_hyprmoncfg_git_post_install
+  print_hyprmoncfg_post_install
 }

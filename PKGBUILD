@@ -1,5 +1,6 @@
+# Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=hyprmoncfg-git
-pkgver=r180.6884f3a
+pkgver=r300.7ba3e62
 pkgrel=1
 pkgdesc="Terminal-first monitor configurator and auto-switching daemon for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -35,8 +36,13 @@ build() {
     "-X github.com/crmne/hyprmoncfg/internal/buildinfo.Date=${build_date}"
   )
 
-  CGO_ENABLED=0 go build -trimpath -ldflags "${ldflags[*]}" -o hyprmoncfg ./cmd/hyprmoncfg
-  CGO_ENABLED=0 go build -trimpath -ldflags "${ldflags[*]}" -o hyprmoncfgd ./cmd/hyprmoncfgd
+  CGO_ENABLED=0 go build -buildvcs=false -trimpath -mod=readonly -ldflags "${ldflags[*]}" -o hyprmoncfg ./cmd/hyprmoncfg
+  CGO_ENABLED=0 go build -buildvcs=false -trimpath -mod=readonly -ldflags "${ldflags[*]}" -o hyprmoncfgd ./cmd/hyprmoncfgd
+}
+
+check() {
+  cd "${srcdir}/${pkgname}"
+  go test -buildvcs=false ./...
 }
 
 package() {
