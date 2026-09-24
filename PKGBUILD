@@ -1,12 +1,12 @@
 # Maintainer: Robin <NurRobin@users.noreply.github.com>
 pkgname=nursearch
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Small local GTK4 app launcher with a plugin platform'
 arch=('x86_64')
 url='https://github.com/NurRobin/nursearch'
 license=('MIT')
-depends=('gtk4' 'sqlite' 'xdg-utils')
+depends=('gtk4' 'gtk4-layer-shell' 'sqlite' 'xdg-utils')
 makedepends=('cargo')
 optdepends=(
   'fd: faster file search plugin backend'
@@ -17,7 +17,7 @@ optdepends=(
   'util-linux: rfkill for Bluetooth toggle (network plugin)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f78df7a3fa05f806ad8e4f35ed3e50b18ea14117029ae8fd2afab9537257d0a6')
+sha256sums=('cee33e7991526104588a9bc24584367767ea24c5bdc5a4f0a70a3704d4acf33b')
 
 prepare() {
   cd "$pkgname-$pkgver"

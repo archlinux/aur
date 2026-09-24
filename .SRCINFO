@@ -1,12 +1,13 @@
 pkgbase = nursearch
 	pkgdesc = Small local GTK4 app launcher with a plugin platform
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/NurRobin/nursearch
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gtk4
+	depends = gtk4-layer-shell
 	depends = sqlite
 	depends = xdg-utils
 	optdepends = fd: faster file search plugin backend
@@ -15,7 +16,7 @@ pkgbase = nursearch
 	optdepends = kdeconnect: KDE Connect device control plugin
 	optdepends = networkmanager: network toggle / Wi-Fi connect plugin
 	optdepends = util-linux: rfkill for Bluetooth toggle (network plugin)
-	source = nursearch-0.4.0.tar.gz::https://github.com/NurRobin/nursearch/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = f78df7a3fa05f806ad8e4f35ed3e50b18ea14117029ae8fd2afab9537257d0a6
+	source = nursearch-0.4.1.tar.gz::https://github.com/NurRobin/nursearch/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = cee33e7991526104588a9bc24584367767ea24c5bdc5a4f0a70a3704d4acf33b
 
 pkgname = nursearch
