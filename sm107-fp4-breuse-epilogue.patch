@@ -1,0 +1,18 @@
+--- a/python/cutlass_library/gemm_operation.py
++++ b/python/cutlass_library/gemm_operation.py
+@@ -1021,6 +1021,15 @@
+         epi_tile_mn = "cute::Shape<cute::_128,cute::_64>"
+         if is_tma_epilogue(operation.epilogue_schedule):
+           epilogue_schedule_type = EpilogueScheduleTag[to_grouped_schedule(EpilogueScheduleType.TmaWarpSpecialized2Sm, grouped)]
++      # SM107 NVF4 VS16 B-reuse doubles CTA-M. With CTA-N=256 the
++      # automatic FP32 C/D epilogue leaves less than one A/B/SF pipeline
++      # stage in the 327 KiB SMEM budget. Use the existing SM100/SM103
++      # FP4 128x64 epilogue for this case, preserving every kernel.
++      if (cta_n == 256 and operation.C.element == DataType.f32
++          and operation.D.element == DataType.f32
++          and operation.kernel_schedule ==
++              KernelScheduleType.TmaWarpSpecialized1SmSm107BlockScaledMxNvf4Vs16WithBreuse):
++        epi_tile_mn = "cute::Shape<cute::_128,cute::_64>"
+       # SM103 FP4 Ultra
+       is_sm103_fp4_ultra_1sm_kernel_schedule = operation.kernel_schedule in [to_grouped_schedule(KernelScheduleType.MxNvf4UltraTmaWarpSpecialized1SmVs32Sm103, grouped),
+                                                                              to_grouped_schedule(KernelScheduleType.MxNvf4UltraTmaWarpSpecialized1SmVs16Sm103, grouped),

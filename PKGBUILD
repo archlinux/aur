@@ -3,7 +3,7 @@
 
 pkgbase=cutlass
 pkgname=('cutlass' 'python-cutlass')
-pkgver=4.7.1
+pkgver=4.8.0
 pkgrel=1
 pkgdesc='CUDA Templates for Linear Algebra Subroutines'
 arch=('x86_64')
@@ -25,21 +25,23 @@ source=(
     'sm100-cross-fp8-link-split.patch'
     'sm120-epilogue-tile-filter.patch'
     'sm120-fp6-small-n-copy-atom.patch'
+    'sm107-fp4-breuse-epilogue.patch'
     'system-cuda-rpath.patch'
     'complete-cutlass-cppgen-packages.patch'
     'system-cutlass-path.patch'
     'use-ml-dtypes-for-bfloat16.patch'
 )
 sha256sums=(
-    '8290eb914cd5aaf4c665ee4108ba5bd65383cfee1296286a42a7ef711554d365'
+    'b7bb2ba0473a5a5d699c62e5feb42caa11cb109ec58ba82ca458af9cd139f39b'
     '0da3200384a74d9474fcf44dbf80f269af4df4216c00c736cb48b48d32ccfcd0'
-    'd63a509e9d7947142c583ca4ea918a12da22e4e05040e78cb01db3beb49f5cf9'
+    'dac69672d439862d715b7a81c08d76741ce65652117ee9d06f914527412cc6a9'
     '5fe8a416b8ac2151d1ff46fbf7478a8990500636cb99ced4c7d16b8e71d4e5e6'
     'e853ba878f201106275f83fe2bef877996080d0461276c60912c1af7448610cc'
     '7942d994481d48d297c7bf8cd8f6e276c3ed83f8a0e0ddc8aa02d1e31decfd5a'
     '743873d31acf54f9049d55109af6f4fa615163ca79e49481f204a09682df877d'
     'fe0188fd07fb1529d199c26013ec33bafd64e8d6a08dea39593efb5d18fcc221'
     '922524812df1b5fd83c24215894e4dacf79c54d9085e2f28a8c598c8ea605cc2'
+    '30f84cf7c4ded0432e22161305cf06a8ca1eed5143858e5c5848285cb182a56c'
     '3f954656b205a02f9858b6fff841bfc6d984efcec708d8b53d0acf1520c5473a'
     '69e908e126e1a2b5950e4d9fa4785e9708758ac2d3ad9ff569d1e40ae92b5e0c'
     '2541e1254c30630657c63d61c520f257a491f02409c526940887c9e9d5c042af'
@@ -69,6 +71,8 @@ prepare() {
     # SM120 CTA-N shapes of 8 and 16. Match its FP4 selector and use the
     # existing one-/two-register FP6 atoms for those valid small-N kernels.
     patch -Np1 -i "$srcdir/sm120-fp6-small-n-copy-atom.patch"
+    # Keep SM107 FP4 B-reuse epilogues within the shared-memory budget.
+    patch -Np1 -i "$srcdir/sm107-fp4-breuse-epilogue.patch"
     # Arch's CUDA loader configuration already exposes the toolkit libraries.
     # Keep CUTLASS's relocatable $ORIGIN paths without embedding /opt paths.
     patch -Np1 -i "$srcdir/system-cuda-rpath.patch"

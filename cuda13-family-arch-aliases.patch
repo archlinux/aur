@@ -1,30 +1,38 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -186,11 +186,15 @@ if (CUDA_VERSION VERSION_GREATER_EQUAL 12.0)
+@@ -186,16 +186,21 @@
  endif()
  
  if (CUDA_VERSION VERSION_GREATER_EQUAL 12.8)
--  list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 100 100a 120 120a 121 121a)
+-  list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 100 100a 120 120a)
    if (CUDA_VERSION VERSION_LESS 13.0)
-+    list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 100 100a 120 120a 121 121a)
++    list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 100 100a 120 120a)
      list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 101 101a)
    else()
 -    list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 110 110a)
-+    # CUDA 13 maps the unsuffixed Blackwell targets to their family-specific
-+    # counterparts (for example sm_100 to sm_100f).  Requesting both makes
-+    # nvcc abort with "same GPU code generated"; retain the architecture-
-+    # specific and family-specific forms, which cover both capabilities.
-+    list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 100a 120a 121a 110a)
++    # CUDA 13 aliases unsuffixed targets to family variants. Avoid duplicate
++    # GPU code while retaining both architecture and family capabilities.
++    list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 100a 120a 110a)
    endif()
  endif()
  
-@@ -204,10 +208,6 @@ if (CUDA_VERSION VERSION_GREATER_EQUAL 12.9)
-   endif()
- endif()
+ if (CUDA_VERSION VERSION_GREATER_EQUAL 12.9)
+-  list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 121 121a 100f 120f 121f 103a 103f)
++  list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 121a 100f 120f 121f 103a 103f)
++  if (CUDA_VERSION VERSION_LESS 13.0)
++    list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 121)
++  endif()
+   if (CUDA_VERSION VERSION_LESS 13.0)
+     list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 101f)
+   else()
+@@ -205,10 +210,6 @@
  
--if (CUDA_VERSION VERSION_GREATER_EQUAL 13.0)
--  list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 110 110a)
+ if (CUDA_VERSION VERSION_GREATER_EQUAL 13.4)
+   list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 107a 107f)
 -endif()
 -
+-if (CUDA_VERSION VERSION_GREATER_EQUAL 13.0)
+-  list(APPEND CUTLASS_NVCC_ARCHS_SUPPORTED 110 110a)
+ endif()
+ 
  set(CUTLASS_NVCC_ARCHS ${CUTLASS_NVCC_ARCHS_SUPPORTED} CACHE STRING "The SM architectures requested.")
- set(CUTLASS_NVCC_ARCHS_ENABLED ${CUTLASS_NVCC_ARCHS} CACHE STRING "The SM architectures to build code for.")
