@@ -68,9 +68,9 @@ package() {
   # deb 默认安装到 /opt/vantage，创建 /usr/bin 链接
   mkdir -p "$pkgdir/usr/bin"
   if [ -x "$pkgdir/opt/vantage/vantage" ]; then
-    ln -s /opt/vantage/vantage "$pkgdir/usr/bin/vantage"
+    ln -sf /opt/vantage/vantage "$pkgdir/usr/bin/vantage"
   elif [ -x "$pkgdir/usr/lib/vantage/vantage" ]; then
-    ln -s /usr/lib/vantage/vantage "$pkgdir/usr/bin/vantage"
+    ln -sf /usr/lib/vantage/vantage "$pkgdir/usr/bin/vantage"
   fi
 
   # 修正桌面文件 Exec 路径（若存在）
