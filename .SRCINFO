@@ -4,6 +4,7 @@ pkgbase = zalo-for-linux-git
 	pkgrel = 2
 	url = https://github.com/doandat943/zalo-for-linux
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = nodejs

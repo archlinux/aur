@@ -1,7 +1,7 @@
 # Maintainer: Nguyen Hoang Ky <nhktmdzhg at gmail dot com>
 pkgname=zalo-for-linux-git
 pkgdesc="Zalo for Linux — unofficial port with ZaDark, running on system Electron 22"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/doandat943/zalo-for-linux"
 license=('MIT')
 pkgver=26.8.20+26.2.1.r99.87b0696
@@ -89,6 +89,7 @@ build() {
     
     # Zalo version = repo's latest tag, same number as the DMG on zadn.vn
     export ZALO_VERSION="$(git describe --tags --abbrev=0)"
+    export ZALO_WIN_VERSION="$ZALO_VERSION"
     export ZADARK_VERSION="$(node -p "require('./plugins/zadark/package.json').version")"
     
     # npm >= 12 blocks git deps (crx in zadark's lockfile) — allow-git=all
@@ -99,7 +100,7 @@ build() {
     
     node scripts/download-dmg.js
     node scripts/prepare-zadark.js
-    node scripts/prepare-app.js
+    node scripts/prepare-app.js    
     node scripts/setup-zcall-bridge.js
     test -f app/native/qt-call-and-cap/pipebridge.exe || {
         echo 'ERROR: call engine missing (qt-call-and-cap/pipebridge.exe) — Windows installer download failed' >&2
@@ -119,7 +120,7 @@ package() {
     -o -name '*.exe' -o -name '*.dll' \) ! -path '*linux*' -delete
     find app/native/nativelibs -type d -empty -delete
     cp -a main.js package.json app zcall-bridge "$_lib/"
-    for _plugin in zalux screenshot launcher-badge userscripts zcall-bridge; do
+    for _plugin in screenshot launcher-badge userscripts zcall-bridge; do
         cp -a "plugins/$_plugin" "$_lib/plugins/"
     done
     # Ship the zadark submodule without its dev node_modules.
