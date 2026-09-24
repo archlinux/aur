@@ -1,7 +1,7 @@
 pkgbase = linuwu-sense-an515-55-dkms
 	pkgdesc = Patched Acer Nitro AN515-55/58 WMI driver (DKMS) with fan-speed fix and kernel 7.2 compatibility
 	pkgver = 25.701
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BillyAddlers/Linuwu-Sense-AN515-55-Patch
 	install = linuwu-sense.install
 	arch = any

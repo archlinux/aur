@@ -1,16 +1,14 @@
 # Maintainer: BillyAddlers <me@riichi.my.id>
 #
-# Patched fork of Linuwu-Sense for Acer Nitro AN515-55/58 (kernel 7.2+).
+# Patched fork of Linuwu-Sense for Acer Nitro AN515-55/58.
 # Contains the fan-speed fix (correct strscpy usage in the sysfs store
-# handlers) and kernel-7.2 API compatibility.
-#
-# NOTE: BEFORE publishing, push the current fixed tree to the GitHub repo
-# referenced in `source`. The committed HEAD / origin does not yet contain
-# the fixes (no dkms.conf, no strscpy fix) as of this writing.
+# handlers) and kernel-7.2 API compatibility, plus DKMS packaging.
+# Builds against every installed kernel (gcc- or clang-built) thanks to
+# per-kernel toolchain auto-detection in the upstream Makefile.
 
 pkgname=linuwu-sense-an515-55-dkms
 pkgver=25.701
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched Acer Nitro AN515-55/58 WMI driver (DKMS) with fan-speed fix and kernel 7.2 compatibility"
 arch=('any')
 url="https://github.com/BillyAddlers/Linuwu-Sense-AN515-55-Patch"
