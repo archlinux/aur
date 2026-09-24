@@ -1,6 +1,6 @@
 pkgbase = python-laya
 	pkgdesc = Fast, non-autoregressive System 1 decision engine with calibrated probabilities
-	pkgver = 0.3.10
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/NandhaKishorM/laya
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-laya
 	optdepends = python-onnx: ONNX export for the ONNX Runtime engine
 	optdepends = python-onnxruntime-cpu: ONNX Runtime engine in `laya.onnx_agent` (the -cuda/-rocm variants work too)
 	optdepends = python-tilelang: TileLang GPU fast path in `laya.fast`
-	source = laya-0.3.10.tar.gz::https://github.com/NandhaKishorM/laya/archive/refs/tags/v0.3.10.tar.gz
-	b2sums = 9628a0826c8342521bef3a223a43a3481b7dcd9dcd569ba85989c33774e7246366c57c5322141938fd6196dab51694e391f91104f54a264f08741ba9f0bef117
+	source = laya-0.3.11.tar.gz::https://github.com/NandhaKishorM/laya/archive/refs/tags/v0.3.11.tar.gz
+	b2sums = cc51a0f06be7cf599aad707c1b6a6df33944e57346e3349e9ad6d083eb1b1dc76f43db9b07931ea1bd3198522ef6e6dfcd51aa313ba8b4edf53afb8bb2689701
 
 pkgname = python-laya
