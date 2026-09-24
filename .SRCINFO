@@ -1,6 +1,6 @@
 pkgbase = tronbrowser-bin
 	pkgdesc = Open-source, privacy-first, AI-native browser (Ungoogled Chromium fork)
-	pkgver = 3.15.1
+	pkgver = 3.16.0
 	pkgrel = 1
 	url = https://tronbrowser.dev
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tronbrowser-bin
 	depends = chromium
 	provides = tronbrowser
 	conflicts = tronbrowser
-	source = tronbrowser-3.15.1.tar.gz::https://github.com/profullstack/tronbrowser.dev/releases/download/v3.15.1/tronbrowser-linux-x64.tar.gz
-	sha256sums = fd102dbb35aa3e313cb3c06a77b0fc15415dc33740a692c182050bb7f5447130
+	source = tronbrowser-3.16.0.tar.gz::https://github.com/profullstack/tronbrowser.dev/releases/download/v3.16.0/tronbrowser-linux-x64.tar.gz
+	sha256sums = 890dc050ad080174f94a8e54275fc64072dff515a6237bb4bd0d66fce8d31fe5
 
 pkgname = tronbrowser-bin
