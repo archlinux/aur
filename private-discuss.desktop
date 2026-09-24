@@ -1,0 +1,8 @@
+[Desktop Entry]
+StartupNotify=True
+Exec=/usr/bin/private-discuss
+GenericName=Private Discuss
+Name=Private Discuss
+Type=Application
+Icon=private-discuss
+

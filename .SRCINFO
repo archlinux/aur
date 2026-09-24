@@ -1,0 +1,20 @@
+pkgbase = private-discuss-bin
+	pkgdesc = The Sovereign Communication Platform
+	pkgver = 7.8.9
+	pkgrel = 1
+	url = https://private-discuss.com
+	arch = x86_64
+	license = Proprietary
+	depends = hicolor-icon-theme
+	provides = private-discuss
+	replaces = private-discuss
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://api-v2.private-discuss.com/discuss_releases/linux/7.8.9/private-discuss.bin
+	source_x86_64 = private-discuss.desktop
+	source_x86_64 = private-discuss.png
+	sha256sums_x86_64 = dbf80036694a55123497ba80cbc7f10d616d50bb282dbae5336467e5d75776ba
+	sha256sums_x86_64 = e68ed7dd8900a2c203a7eb17ff7c0bd4b72b9a3f1f25221039d1b679240384ca
+	sha256sums_x86_64 = 630353797cf2d8088e02233ec1614202764f0b027c625a9f6390d9741634fa91
+
+pkgname = private-discuss-bin
