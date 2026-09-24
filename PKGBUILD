@@ -12,7 +12,8 @@ depends=(dbus
          fontconfig
          glibc # libc.so libm.so
          hicolor-icon-theme
-         libgcc_s
+         libgcc
+         sqlite3
          wayland
 #          libx11
 #          libxcursor
@@ -38,6 +39,7 @@ _srcenv() {
 	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -fno-lto'
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
 }
