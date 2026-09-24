@@ -2,8 +2,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=upmd-git
 pkgver=r83.g8f7c8de
-pkgrel=3
-pkgdesc="Run tasks and workflows from Markdown"
+pkgrel=4
+pkgdesc="Markdown-based task and workflow runner"
 arch=("x86_64")
 url="https://github.com/rezigned/upmd"
 license=("MIT")
