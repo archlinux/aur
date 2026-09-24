@@ -17,6 +17,7 @@ pkgbase = smolkit-git
 	depends = systemd-libs
 	depends = libstdc++
 	provides = smolkit
+	provides = polkit
 	conflicts = smolkit
 	conflicts = polkit
 	source = git+https://github.com/bmwcarit/smolkit#commit=46bbfd5c922a8d03a534398ee129ded822dfcafe
