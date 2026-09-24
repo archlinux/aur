@@ -1,5 +1,4 @@
 [tabby]
-source = "github"
-github = "Eugeny/tabby"
-use_max_tag = true
+source = "git"
+git = "https://github.com/Eugeny/tabby.git"
 prefix = "v"
