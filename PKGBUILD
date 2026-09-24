@@ -6,7 +6,7 @@ _appname=myna
 pkgname=${_gitname}-bin
 pkgdesc="A terminal social media manager. Log in, write, schedule and post to 25 networks from one TUI."
 
-pkgver=0.30.0
+pkgver=0.31.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("PLUGINS-${pkgver}.md::${_ghurlraw}/docs/plugins.md"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('17ea8b25b03f9e564509e21dc1bd24fe664e3971a7982a3274b83c2e60eddb10'
-            '9e1759e23562f29d3c8e0a5c334a5432d5ec8abfb4e04472804ead208d37ae7b'
+            '3b8eedc940eadb66b04214ac2324d81b9d5b4cf2de1af5aa4d9571dd1be86a71'
             'de1b680e8cf8ebf3641646e14f5c0730f726da2d9d6d211d498032c20d0d9e2c')
-sha256sums_x86_64=('1e40f6a2f2d18decbd00c86dfa4bce40742d0191e8f34d41a8b657b327b3f488')
-sha256sums_aarch64=('09771ecc4451522c779a3278277839f9aef267e3176fcd8a95d941f790a1fd7a')
+sha256sums_x86_64=('83532e1c29a54f16f5354ed019914f3456801036bb1cb337d76e68aee707c0e3')
+sha256sums_aarch64=('991d0914c548a7531d2669c2c426737ff1ead3e653cd20521d373f3b8bc38624')
 
 
 package() {
