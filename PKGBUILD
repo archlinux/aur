@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Local state checkpointing and rollback system for AI agents and automated tools"
 
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -33,13 +33,13 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-MIT-${pkgver}::${_ghurlraw}/LICENSE-MIT"
 		"LICENSE-APACHE-${pkgver}::${_ghurlraw}/LICENSE-APACHE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
-sha256sums=('23a780b6ec2356abb9034140aa0007f741d1eec129a85b7768fe52a2f09b1241'
-            'bf3768234db8dd2b1011c2dfa32db1f641f25e252328ba70f9dce89d071bee27'
-            '39d7ae0b8fe8e89091e0cbdf42fb07b714053337936bf49ae29ed2a029b4b2b5'
-            '4d2fff565aa74c8681d2c1c9a1242044a0de618ddab7feba6829832abab3108d'
+sha256sums=('4355d822444416e12c1f16b106f8c0f5636a404424c5ccf37eba2dd6180a34fe'
+            'f83bf7229951c62779214ce8524594505c86807accde359cb0fcf209a8270c40'
+            'bb5a8267a3f845a21e8ba4199ca3070423a95234a805849b30071e09dd482126'
+            'abd1036686f00026fee10c28a3fb74870f32c111fd94e3a4c625bfdfd5aea68b'
             'e8fcecf9edb279be59241dee97fc88faa4a9c922a428dad3300b2b2901e97cdc'
             '5a61d78a5c8936ecf77be956d24980463397756f0cc29fb5d0776fa914f66396')
-sha256sums_x86_64=('e4df3c6a9c9e145c288644998553de88d400bafc768491295fddf7ca5850ab73')
+sha256sums_x86_64=('67e0cfb1930daedef1c62445cf4c708855bd1b740f3d1431b1cfbd7720fa058a')
 
 
 package() {
