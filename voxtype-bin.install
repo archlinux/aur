@@ -273,7 +273,10 @@ pre_upgrade() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 1.0.0"
+    # pacman passes the new full version (pkgver-pkgrel) as $1; strip the
+    # pkgrel. Hardcoding the number here is how an upgrade to 1.1.0 once
+    # announced itself as 1.0.0.
+    echo "==> Voxtype upgraded to ${1%%-*}"
     echo ""
 
     BACKEND=$(_preserve_or_set_backend)
