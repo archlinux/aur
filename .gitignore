@@ -1,0 +1,14 @@
+/src/
+/pkg/
+/*.pkg.tar.*
+/*.src.tar.*
+/firefox-*.source.tar.xz*
+/*.log
+/.build/
+/.cache/
+/.release-check/
+/.candidate/
+/.ci-makepkg.conf
+/release-check.json
+__pycache__/
+*.pyc

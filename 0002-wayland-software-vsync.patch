@@ -1,0 +1,291 @@
+From: Nico Marinò <niconotnicko@gmail.com>
+Subject: [PATCH] Add opt-in monitor-aware software vsync for Wayland
+
+Reuse SoftwareVsyncSource scheduling and its observer-driven lifecycle.
+Track monitor hotplug and refresh-rate notifications without polling. Stop
+continuous frame callback renewal on both root and native child surfaces.
+Keep one-shot map/unmap callbacks and buffer commits intact.
+
+The shared clock follows the fastest connected output, matching the model
+of the existing Xrandr software backend. It is not phase-locked to scanout.
+The startup preference keeps the original backend available for comparison.
+
+Experimental downstream implementation; not an upstream-approved fix.
+Related: https://bugzilla.mozilla.org/show_bug.cgi?id=2009606
+Related: https://bugzilla.mozilla.org/show_bug.cgi?id=1879271
+License: MPL-2.0
+
+diff --git a/gfx/thebes/gfxPlatformGtk.cpp b/gfx/thebes/gfxPlatformGtk.cpp
+index de866d0..25832d0 100644
+--- a/gfx/thebes/gfxPlatformGtk.cpp
++++ b/gfx/thebes/gfxPlatformGtk.cpp
+@@ -65,6 +65,7 @@
+ #ifdef MOZ_WAYLAND
+ #  include <gdk/gdkwayland.h>
+ 
++#  include "WaylandSoftwareVsyncSource.h"
+ #  include "mozilla/widget/nsWaylandDisplay.h"
+ #endif
+ #ifdef MOZ_WIDGET_GTK
+@@ -941,6 +942,11 @@ class XrandrSoftwareVsyncSource final
+ 
+ already_AddRefed<gfx::VsyncSource>
+ gfxPlatformGtk::CreateGlobalHardwareVsyncSource() {
++#ifdef MOZ_WAYLAND
++  if (!IsHeadless() && IsWaylandDisplay() && UseWaylandSoftwareVsync()) {
++    return CreateWaylandSoftwareVsyncSource();
++  }
++#endif
+ #ifdef MOZ_X11
+   if (IsHeadless() || IsWaylandDisplay()) {
+     // On Wayland we can not create a global hardware based vsync source, thus
+diff --git a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
+index 72a14fa..3578494 100644
+--- a/modules/libpref/init/StaticPrefList.yaml
++++ b/modules/libpref/init/StaticPrefList.yaml
+@@ -20800,6 +20800,13 @@
+   value: true
+   mirror: once
+ 
++# Use the shared monitor-aware software clock instead of continuous Wayland
++# frame callbacks. Experimental; package defaults may opt in. Requires restart.
++- name: widget.wayland.vsync.software.enabled
++  type: bool
++  value: false
++  mirror: once
++
+ # Whether experimental PiP support for Wayland is enabled via the xx_pip_v1
+ # protocol.
+ - name: widget.wayland.experimental.pip.enabled
+diff --git a/widget/gtk/WaylandSoftwareVsyncSource.cpp b/widget/gtk/WaylandSoftwareVsyncSource.cpp
+new file mode 100644
+index 0000000..81aefad
+--- /dev/null
++++ b/widget/gtk/WaylandSoftwareVsyncSource.cpp
+@@ -0,0 +1,144 @@
++/* This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0. If a copy of the MPL was not distributed with this
++ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
++
++#include "WaylandSoftwareVsyncSource.h"
++
++#include <dlfcn.h>
++#include <gtk/gtk.h>
++
++#include <algorithm>
++
++#include "SoftwareVsyncSource.h"
++#include "gfxPlatform.h"
++#include "mozilla/StaticPrefs_widget.h"
++#include "nsThreadUtils.h"
++
++using GdkMonitor = struct _GdkMonitor;
++
++namespace mozilla::widget {
++
++bool UseWaylandSoftwareVsync() {
++  return StaticPrefs::widget_wayland_vsync_software_enabled_AtStartup() &&
++         !gtk_check_version(3, 22, 0);
++}
++
++namespace {
++
++// Use Mozilla's existing demand-driven timer and dispatcher lifecycle. This
++// clock schedules browser work; it does not request Wayland frame callbacks
++// or commit surfaces. The compositor can therefore pace scanout from actual
++// buffer submissions. Like the Xrandr software source, this shared source
++// uses the fastest connected output so high-refresh animations remain possible.
++class WaylandSoftwareVsyncSource final : public gfx::SoftwareVsyncSource {
++ public:
++  WaylandSoftwareVsyncSource()
++      : SoftwareVsyncSource(TimeDuration::FromMilliseconds(
++            1000.0 / gfxPlatform::GetSoftwareVsyncRate())) {
++    MOZ_ASSERT(NS_IsMainThread());
++    MOZ_ASSERT(UseWaylandSoftwareVsync());
++    mDisplay = gdk_display_get_default();
++    g_object_ref(mDisplay);
++
++    // Resolve GTK 3.22 symbols at runtime, as ScreenHelperGTK does, preserving
++    // the stock backend on GTK versions older than 3.22.
++    static auto getCount = reinterpret_cast<int (*)(GdkDisplay*)>(
++        dlsym(RTLD_DEFAULT, "gdk_display_get_n_monitors"));
++    static auto getMonitor =
++        reinterpret_cast<GdkMonitor* (*)(GdkDisplay*, int)>(
++            dlsym(RTLD_DEFAULT, "gdk_display_get_monitor"));
++    MOZ_RELEASE_ASSERT(getCount && getMonitor);
++
++    g_signal_connect(mDisplay, "monitor-added", G_CALLBACK(MonitorAdded), this);
++    g_signal_connect(mDisplay, "monitor-removed", G_CALLBACK(MonitorRemoved),
++                     this);
++    for (int i = 0; i < getCount(mDisplay); ++i) {
++      WatchMonitor(getMonitor(mDisplay, i));
++    }
++    UpdateRate();
++  }
++
++  ~WaylandSoftwareVsyncSource() override { DisconnectMonitors(); }
++
++  void Shutdown() override {
++    MOZ_ASSERT(NS_IsMainThread());
++    DisconnectMonitors();
++    SoftwareVsyncSource::Shutdown();
++  }
++
++ private:
++  void WatchMonitor(GdkMonitor* aMonitor) {
++    if (!aMonitor || mMonitors.Contains(aMonitor)) {
++      return;
++    }
++    g_object_ref(aMonitor);
++    mMonitors.AppendElement(aMonitor);
++    g_signal_connect(aMonitor, "notify::refresh-rate", G_CALLBACK(RateChanged),
++                     this);
++  }
++
++  void UnwatchMonitor(GdkMonitor* aMonitor) {
++    if (mMonitors.RemoveElement(aMonitor)) {
++      g_signal_handlers_disconnect_by_data(aMonitor, this);
++      g_object_unref(aMonitor);
++    }
++  }
++
++  void DisconnectMonitors() {
++    MOZ_ASSERT(NS_IsMainThread());
++    while (!mMonitors.IsEmpty()) {
++      UnwatchMonitor(mMonitors.LastElement());
++    }
++    if (mDisplay) {
++      g_signal_handlers_disconnect_by_data(mDisplay, this);
++      g_object_unref(mDisplay);
++      mDisplay = nullptr;
++    }
++  }
++
++  void UpdateRate() {
++    MOZ_ASSERT(NS_IsMainThread());
++    static auto getRate = reinterpret_cast<int (*)(GdkMonitor*)>(
++        dlsym(RTLD_DEFAULT, "gdk_monitor_get_refresh_rate"));
++    MOZ_RELEASE_ASSERT(getRate);
++    int fastestMilliHz = 0;
++    for (auto* monitor : mMonitors) {
++      fastestMilliHz = std::max(fastestMilliHz, getRate(monitor));
++    }
++    // Preserve fractional rates (e.g. 59.94 Hz). Use the upstream fallback
++    // only until GTK has announced a valid output mode.
++    double rateMs = fastestMilliHz > 0
++                        ? 1000000.0 / fastestMilliHz
++                        : 1000.0 / gfxPlatform::GetSoftwareVsyncRate();
++    SetVsyncRate(TimeDuration::FromMilliseconds(rateMs));
++  }
++
++  static void MonitorAdded(GdkDisplay*, GdkMonitor* aMonitor, gpointer aData) {
++    auto* self = static_cast<WaylandSoftwareVsyncSource*>(aData);
++    self->WatchMonitor(aMonitor);
++    self->UpdateRate();
++  }
++
++  static void MonitorRemoved(GdkDisplay*, GdkMonitor* aMonitor,
++                             gpointer aData) {
++    auto* self = static_cast<WaylandSoftwareVsyncSource*>(aData);
++    self->UnwatchMonitor(aMonitor);
++    self->UpdateRate();
++  }
++
++  static void RateChanged(GObject*, GParamSpec*, gpointer aData) {
++    static_cast<WaylandSoftwareVsyncSource*>(aData)->UpdateRate();
++  }
++
++  GdkDisplay* mDisplay = nullptr;
++  AutoTArray<GdkMonitor*, 4> mMonitors;
++};
++
++}  // namespace
++
++already_AddRefed<gfx::VsyncSource> CreateWaylandSoftwareVsyncSource() {
++  RefPtr<gfx::VsyncSource> source = new WaylandSoftwareVsyncSource();
++  return source.forget();
++}
++
++}  // namespace mozilla::widget
+diff --git a/widget/gtk/WaylandSoftwareVsyncSource.h b/widget/gtk/WaylandSoftwareVsyncSource.h
+new file mode 100644
+index 0000000..19a4f3c
+--- /dev/null
++++ b/widget/gtk/WaylandSoftwareVsyncSource.h
+@@ -0,0 +1,18 @@
++/* This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0. If a copy of the MPL was not distributed with this
++ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
++
++#ifndef mozilla_widget_WaylandSoftwareVsyncSource_h
++#define mozilla_widget_WaylandSoftwareVsyncSource_h
++
++#include "VsyncSource.h"
++
++namespace mozilla::widget {
++
++// The preference is read at startup. GTK 3.22 provides monitor refresh rates.
++bool UseWaylandSoftwareVsync();
++already_AddRefed<gfx::VsyncSource> CreateWaylandSoftwareVsyncSource();
++
++}  // namespace mozilla::widget
++
++#endif
+diff --git a/widget/gtk/WaylandSurface.cpp b/widget/gtk/WaylandSurface.cpp
+index 08a99eb..4b911d8 100644
+--- a/widget/gtk/WaylandSurface.cpp
++++ b/widget/gtk/WaylandSurface.cpp
+@@ -3,6 +3,7 @@
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
+ #include "WaylandSurface.h"
++#include "WaylandSoftwareVsyncSource.h"
+ 
+ #include <dlfcn.h>
+ #include <fcntl.h>
+@@ -249,6 +250,13 @@ void WaylandSurface::RequestEmulatedVSyncLocked(
+ void WaylandSurface::SetVSyncCallbackLocked(
+     const WaylandSurfaceLock& aProofOfLock) {
+   MOZ_DIAGNOSTIC_ASSERT(&aProofOfLock == mSurfaceLock);
++  // Software vsync supplies the painting clock. This also covers native
++  // child layers, whose callbacks otherwise re-arm the same empty-commit
++  // loop even without a WaylandVsyncSource on the top-level window.
++  // One-shot map/unmap callbacks and real buffer commits are unaffected.
++  if (UseWaylandSoftwareVsync()) {
++    return;
++  }
+   if (!mVSyncCallbackEnabled || !mVSyncCallbackHandler.IsSet()) {
+     LOGVERBOSE(
+         "WaylandSurface::SetVSyncCallbackLocked(): quit, frame callback is "
+diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
+index 517d747..25ac93f 100644
+--- a/widget/gtk/moz.build
++++ b/widget/gtk/moz.build
+@@ -123,6 +123,7 @@ if CONFIG["MOZ_WAYLAND"]:
+     ]
+     SOURCES += [
+         "nsWindowWayland.cpp",  # conflicts with X11 headers
++        "WaylandSoftwareVsyncSource.cpp",  # conflicts with X11 headers
+         "WaylandVsyncSource.cpp",  # conflicts with X11 headers
+     ]
+     EXPORTS.mozilla.widget += [
+diff --git a/widget/gtk/nsWindowWayland.cpp b/widget/gtk/nsWindowWayland.cpp
+index 0dfa555..9d4a820 100644
+--- a/widget/gtk/nsWindowWayland.cpp
++++ b/widget/gtk/nsWindowWayland.cpp
+@@ -7,6 +7,7 @@
+ #include <dlfcn.h>
+ 
+ #include "WaylandVsyncSource.h"
++#include "WaylandSoftwareVsyncSource.h"
+ #include "WidgetUtilsGtk.h"
+ #include "mozilla/PresShell.h"
+ #include "mozilla/StaticPrefs_widget.h"
+@@ -2113,6 +2114,7 @@ void nsWindowWayland::CreateNative() {
+   // Only use for toplevel windows for now, see bug 1619246.
+ 
+   if (StaticPrefs::widget_wayland_vsync_enabled_AtStartup() &&
++      !UseWaylandSoftwareVsync() &&
+       IsTopLevelWidget()) {
+     LOG_VSYNC("  create WaylandVsyncSource");
+     mWaylandVsyncSource = new WaylandVsyncSource(this);
