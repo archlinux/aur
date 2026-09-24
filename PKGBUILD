@@ -2,7 +2,7 @@
 pkgname=agentty-bin
 _pkgname=agentty
 # pkgver is rewritten from CMakeLists.txt (project VERSION) by scripts/release.sh.
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="Blazing-fast Claude in your terminal — 8.8 MB static binary, sandboxed by default, one-command SSH airgap. C++26 alternative to claude-code."
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source_aarch64=("${_pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgv
 
 # Placeholders — release.sh runs `updpkgsums` and rewrites these from the
 # published SHA256SUMS before tagging the AUR commit.
-sha256sums_x86_64=('e6a46afb3e834cad23b36fb1386c12bf925a998b40ba93096e668ba3096e577d')
-sha256sums_aarch64=('9925ce3203f1fc6894318f43996fc1217ed5d6ffb02d93d50fae11ae8b2e2a38')
+sha256sums_x86_64=('0c79d3cce0ff7337757f99f6e0cc5c1a47feaca71c77ef2337d57ee2f253e49e')
+sha256sums_aarch64=('137a8ebad5b86a68ddb85f08689d257131f49a33db65ff43e092fd8c12dfc1e3')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}-${CARCH}" \
