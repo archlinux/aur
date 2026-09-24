@@ -2,7 +2,7 @@
 
 pkgname=python-roboflow
 _pkgname=roboflow
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Official Python package for working with the Roboflow API"
 arch=('any')
@@ -54,7 +54,7 @@ source=(
   'offline-version-validation.patch'
 )
 sha256sums=(
-  'ca39facd646f5d9615d9d343c8717df840e068e686543de1c801ffb0d69fff72'
+  '41da80f51f37df9ea271077a8a8e2f4863da0dcbc61888303ed2a4c0f715eec4'
   '198258ebfef1a31d04dac0bc65d49c2906f7c76a2662e9e1fbd52882b53db1d1'
   'edc9df623eca3a1d7aebcddb84f040c89a5f675cc163ade50179e509fe321a20'
   'bfe799a95ae3530f0b561cf9b6a3a4ec23b124210d3e74b0004fb0e4d3af6605'
