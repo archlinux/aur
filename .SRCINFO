@@ -1,0 +1,11 @@
+pkgbase = ramsleuth-intel-dkms
+	pkgdesc = Provisioning tools for the optional ramsleuth_intel DKMS module (RamSleuth live Intel IMC subtimings)
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/MadGoatHaz/RamSleuth
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = dkms
+	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#branch=v2-development
+
+pkgname = ramsleuth-intel-dkms
