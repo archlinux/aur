@@ -2,7 +2,7 @@
 # Contributor: Anthony Wang <a_at-exozy_dot-me>
 
 pkgname='python-jupyter-server-proxy'
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Jupyter notebook server extension to proxy web services"
 url='https://jupyter-server-proxy.readthedocs.io/'
@@ -31,12 +31,12 @@ checkdepends=(
   python-pytest-html
 )
 
-_commit=068b927
+_commit=4d49cb9
 source=(
-  "git+https://github.com/jupyterhub/jupyter-server-proxy.git?signed#commit=$_commit"
+  "git+https://github.com/jupyterhub/jupyter-server-proxy.git#commit=$_commit"
 )
 sha256sums=(
-  '3872047f8fc45d1d2db5e4aa791c8153708597f7793da9c3bbed145d6f08ba19'
+  '3404df3929e395c666da74f64ee5c69d56c314fe21318c8a81f66adddc0e6647'
 )
 validpgpkeys=(
   '968479A1AFF927E37D1A566BB5690EEEBB952194'  # GitHub signing key
