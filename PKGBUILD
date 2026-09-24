@@ -3,13 +3,17 @@
 # Contributor: Rich Li <rich@dranek.com>
 
 pkgname=python-cartopy
-pkgver=0.25.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="A cartographic Python library with Matplotlib support for visualisation"
 url="https://scitools.org.uk/cartopy/"
 depends=(
+    'glibc'
+    'libgcc'
+    'libstdc++'
     'python-matplotlib'
     'python-numpy'
+    'python-packaging'
     'python-pillow'
     'python-pyproj'
     'python-pyshp'
@@ -41,7 +45,7 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-    '55f1a390e5f3f075b221c7d91fb10258ad978db786c7930eba06eb45d28753fe'
+    'b87a35835f30333760cc46194bd90b6a4958d12f488f50131d4c4c0962ad9c3c'
 )
 
 prepare() {
@@ -58,6 +62,7 @@ build() {
 
 check() {
     cd "$_pypi-$pkgver"
+    rm -rf test-env
     python -m venv --system-site-packages test-env
     test-env/bin/python -m installer "dist/cartopy-$pkgver-"*.whl
 
