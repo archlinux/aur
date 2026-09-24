@@ -1,0 +1,22 @@
+pkgbase = ry-bin
+	pkgdesc = A fast static checker for the R language, written in Rust
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/sims1253/ry
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	conflicts = ry
+	options = !debug
+	source = LICENSE-0.11.0::https://raw.githubusercontent.com/sims1253/ry/v0.11.0/LICENSE
+	sha256sums = 353fb9a55ca9189ff5f2b6a5a1484c38fa2e7dde5494a21de8361f6fe2cf9cbe
+	source_x86_64 = ry-bin-0.11.0-x86_64.tar.gz::https://github.com/sims1253/ry/releases/download/v0.11.0/ry-cli-x86_64-unknown-linux-gnu.tar.gz
+	provides_x86_64 = ry=0.11.0
+	sha256sums_x86_64 = e5dd6ac4789110c2fa8bd9944be2d4876addd7e5f35b39b0b756500bc3126b98
+	source_aarch64 = ry-bin-0.11.0-aarch64.tar.gz::https://github.com/sims1253/ry/releases/download/v0.11.0/ry-cli-aarch64-unknown-linux-gnu.tar.gz
+	provides_aarch64 = ry=0.11.0
+	sha256sums_aarch64 = b6597ec29a543f145f3166f22547122fd60633a78b3ef18d70d35848bffbdf38
+
+pkgname = ry-bin
