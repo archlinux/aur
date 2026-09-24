@@ -1,4 +1,6 @@
-*.rpm
-*.zst
-pkg/
-src/
+*
+
+!.gitignore
+!.SRCINFO
+!install.sh
+!PKGBUILD
