@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-compressed-tensors
 _pkgname=compressed-tensors
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="versatile and efficient way to store and manage compressed tensor data"
 arch=('any')
@@ -43,7 +43,7 @@ source=(
   initialize-qparams-deterministically.patch
 )
 sha256sums=(
-  'c12f758ecabfb5f5311882534e8741fbbfd5c1aceb17d988f66daf131ce6cfe1'
+  'c1dfb1c10da6a7d4a516fc69a3c4754e6e62d7a395c5dc2ae10a4568255396e2'
   'd1da8acf16a9eb8ef6dbaf04ff9ad5d9c9538ae5f2bad0a9bbadd58a248185a7'
   'ea707e9f5fec80bc51d9ef6706c29103993d0089f88995c86d6f25acd6b04bb3'
 )
