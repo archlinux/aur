@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/MikalaiBarysevich/CleverSwitch"
 license=('GPL-3.0-or-later')
 depends=('python' 'python-yaml' 'hidapi')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "cleverswitch.service")
@@ -16,6 +16,7 @@ sha256sums=('3af0a491b8fa6600dafc3e6cd47966418977af6b44046ccf19cd718a882095d5'
 
 build() {
     cd "CleverSwitch-$pkgver"
+    export SETUPTOOLS_SCM_PRETEND_VERSION_FOR_CLEVERSWITCH="$pkgver"
     python -m build --wheel --no-isolation
 }
 
