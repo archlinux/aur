@@ -5,7 +5,7 @@
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 
 pkgname=ffdec-git
-pkgver=26.2.1.r9116.d065f9f
+pkgver=26.3.0.r9142.48325f4
 pkgrel=1
 pkgdesc="Open Source Flash SWF decompiler and editor, git version"
 arch=('any')
@@ -25,11 +25,18 @@ makedepends=(
 source=(
   "ffdec::git+$url#branch=dev"
   'ffdec.desktop'
+  'noverify.diff'
 )
 b2sums=(
   'SKIP'
   '8219c7198174dfd0ee66904a40cd448d43389dde9310e018d07a919590b603579bc8a0baf19361111a29706289f5f51939897a3ef60295ba5c4a7dc656133723'
+  '06db9e37e70785d99e18ea8543c79b3a46b73c8a76ead6f72490320fd403fc8caf3dc79ff906f5294d76d2c031f8bb8b555c9fd13fb4b77a53654722d0a8bbc8'
 )
+
+prepare() {
+  cd ffdec
+  git apply ../noverify.diff
+}
 
 pkgver() {
   cd ffdec
