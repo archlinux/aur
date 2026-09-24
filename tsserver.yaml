@@ -1,0 +1,70 @@
+server:
+  license-path: /var/lib/teamspeak-server
+  default-voice-port: 9987
+  voice-ip:
+    - 0.0.0.0
+    - "::"
+  log-path: /var/log/teamspeak-server
+  log-append: 0
+  no-default-virtual-server: 0
+  filetransfer-port: 30033
+  filetransfer-ip:
+    - 0.0.0.0
+    - "::"
+  clear-database: 0
+  no-permission-update: 0
+  accept-license: ""
+  crashdump-path: /var/lib/teamspeak-server/crashdumps
+
+  database:
+    plugin: sqlite3
+    sql-path: /usr/share/teamspeak-server/sql
+    sql-create-path: /usr/share/teamspeak-server/sql/create_sqlite
+    client-keep-days: 30
+    config:
+      skip-integrity-check: 0
+      host: 127.0.0.1
+      port: 5432
+      socket: ""
+      timeout: 10
+      name: teamspeak
+      username: ""
+      password: ""
+      connections: 10
+      log-queries: 0
+
+  query:
+    pool-size: 2
+    log-timing: 3600
+    ip-allow-list: /etc/teamspeak-server/query_ip_allowlist.txt
+    ip-block-list: /etc/teamspeak-server/query_ip_denylist.txt
+    admin-password: ""
+    log-commands: 0
+    skip-brute-force-check: 0
+    buffer-mb: 20
+    documentation-path: /usr/share/teamspeak-server/serverquerydocs
+    timeout: 300
+
+    ssh:
+      enable: 0
+      port: 10022
+      ip:
+        - 0.0.0.0
+        - "::"
+      rsa-key: /var/lib/teamspeak-server/ssh_host_rsa_key
+
+    http:
+      enable: 0
+      port: 10080
+      ip:
+        - 0.0.0.0
+        - "::"
+
+    https:
+      enable: 0
+      port: 10443
+      ip:
+        - 0.0.0.0
+        - "::"
+      certificate: ""
+      private-key: ""

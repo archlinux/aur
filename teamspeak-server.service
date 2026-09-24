@@ -1,0 +1,27 @@
+[Unit]
+Description=TeamSpeak 6 Server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=teamspeak-server
+Group=teamspeak-server
+WorkingDirectory=/var/lib/teamspeak-server
+EnvironmentFile=-/etc/teamspeak-server/server.env
+ExecStartPre=/usr/bin/mkdir -p /var/lib/teamspeak-server/crashdumps
+ExecStart=/usr/lib/teamspeak-server/tsserver --config-file /etc/teamspeak-server/tsserver.yaml
+Restart=on-failure
+RestartSec=5s
+StateDirectory=teamspeak-server
+LogsDirectory=teamspeak-server
+UMask=0027
+LimitNOFILE=65536
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/teamspeak-server /var/log/teamspeak-server
+
+[Install]
+WantedBy=multi-user.target

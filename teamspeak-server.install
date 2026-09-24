@@ -1,0 +1,12 @@
+post_install() {
+  cat <<'EOF'
+TeamSpeak 6 Server is installed but does not accept its license automatically.
+Review /usr/share/licenses/teamspeak-server/LICENSE, then edit
+/etc/teamspeak-server/server.env and uncomment TSSERVER_LICENSE_ACCEPTED=accept.
+Start the server with: systemctl enable --now teamspeak-server.service
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
