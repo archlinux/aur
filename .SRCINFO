@@ -1,0 +1,21 @@
+pkgbase = melody-cli-git
+	pkgdesc = Melody engines from the shell: playback, the queue, the library by words
+	pkgver = r443.g588cc53
+	pkgrel = 1
+	url = https://github.com/carnager/melody-next
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = nlohmann-json
+	depends = gcc-libs
+	depends = glibc
+	depends = libutf8proc
+	provides = melody-cli
+	conflicts = melody-cli
+	source = melody-next::git+https://github.com/carnager/melody-next.git
+	sha256sums = SKIP
+
+pkgname = melody-cli-git
