@@ -1,0 +1,19 @@
+#!/bin/bash
+
+post_install() {
+    systemd-sysusers >/dev/null 2>&1 || true
+    systemd-tmpfiles --create /usr/lib/tmpfiles.d/linuwu_sense.conf >/dev/null 2>&1 || true
+
+    systemctl enable linuwu_sense.service >/dev/null 2>&1 || true
+    systemctl enable linuwu-sense-setup.service >/dev/null 2>&1 || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    systemctl disable linuwu_sense.service >/dev/null 2>&1 || true
+    systemctl disable linuwu-sense-setup.service >/dev/null 2>&1 || true
+    rmmod linuwu_sense 2>/dev/null || true
+}

@@ -1,0 +1,23 @@
+pkgbase = linuwu-sense-an515-55-dkms
+	pkgdesc = Patched Acer Nitro AN515-55/58 WMI driver (DKMS) with fan-speed fix and kernel 7.2 compatibility
+	pkgver = 25.701
+	pkgrel = 1
+	url = https://github.com/BillyAddlers/Linuwu-Sense-AN515-55-Patch
+	install = linuwu-sense.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = dkms
+	optdepends = linux-headers: build for the standard kernel
+	optdepends = linux-lts-headers: build for the LTS kernel
+	optdepends = linux-cachyos-headers: build for the CachyOS kernel
+	optdepends = linux-zen-headers: build for the zen kernel
+	optdepends = clang: build with clang/LLVM (needed if kernel was built with clang)
+	optdepends = gcc: build with gcc
+	conflicts = linuwu-sense-dkms
+	source = git+https://github.com/BillyAddlers/Linuwu-Sense-AN515-55-Patch.git#branch=main
+	source = linuwu-sense-setup.service
+	sha256sums = SKIP
+	sha256sums = 2846ae5165408f3681092740c6d00f014343f0d757b2bdc605f1e066eed7ee62
+
+pkgname = linuwu-sense-an515-55-dkms

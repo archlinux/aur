@@ -1,0 +1,12 @@
+[Unit]
+Description=Apply linuwu_sense sysfs attribute permissions
+After=systemd-modules-load.service systemd-sysusers.service
+Wants=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/systemd-tmpfiles --create /usr/lib/tmpfiles.d/linuwu_sense.conf
+
+[Install]
+WantedBy=multi-user.target
