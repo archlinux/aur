@@ -2,11 +2,11 @@
 # Contributor: Yuuki Rika <yvvki@duck.com>
 
 pkgname=vale-ls
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='An implementation of the Language Server Protocol (LSP) for the Vale command-line tool.'
 arch=(any)
-url='https://github.com/errata-ai/vale-ls'
+url='https://github.com/vale-cli/vale-ls'
 license=(MIT)
 depends=(bzip2
 	glibc
@@ -16,7 +16,7 @@ makedepends=(cargo)
 
 _pkgsrc=$pkgname-$pkgver
 source=("$_pkgsrc.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('be64788f9cbc343b374ecca447f53e9c3b0f76ed7818b420644bbd31b5cd53f4df349ab25f5aff292ae27a35ada6fced16391adfeafa69d96be572188a8fba8a')
+b2sums=('d3bf32a5f81b2b6406c63324f825a2830d7ed0d3f1b740669df826b26d691230185a8581f294181061b78a70f90e4927a42e9ee4b0d284eb45d0aef4debdcc19')
 
 prepare() {
   cd $_pkgsrc
