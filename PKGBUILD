@@ -4,8 +4,8 @@
 
 _pkgname=wlrobs
 pkgname=${_pkgname}-hg
-pkgver=r75.b8668b4d6d6d
-pkgrel=2
+pkgver=r76.dfb08ebd2365
+pkgrel=1
 pkgdesc="An obs-studio plugin that allows you to screen capture on wlroots based wayland compositors"
 arch=('i686' 'x86_64')
 provides=('wlrobs')
