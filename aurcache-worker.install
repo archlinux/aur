@@ -13,7 +13,7 @@ AURCache worker installed. Before starting it:
   1. Put the server URL and an enrollment token in /etc/aurcache/worker.env
   2. systemctl enable --now aurcache-worker
 
-See https://github.com/Lukas-Heiligenbrunner/AURCache -> Setup -> Native.
+See https://github.com/gyscos/AURCache -> Setup -> Native.
 MSG
 }
 

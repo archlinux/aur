@@ -1,4 +1,4 @@
-# Maintainer: Lukas Heiligenbrunner <lukas.heiligenbrunner@gmail.com>
+# Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 #
 # Separate from aurcache-server rather than a split package: the two share
 # almost no dependencies -- a build machine wants devtools and none of the
@@ -13,7 +13,7 @@ pkgdesc="Remote build worker for AURCache"
 # repositories, only aarch64's is. Adding it means the AUR toolchain or an
 # emulated build.
 arch=(x86_64 aarch64 armv7h)
-url="https://github.com/Lukas-Heiligenbrunner/AURCache"
+url="https://github.com/gyscos/AURCache"
 license=(GPL-3.0-or-later)
 
 # devtools is what the worker shells out to, and it already brings fakeroot,
