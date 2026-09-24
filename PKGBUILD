@@ -1,7 +1,7 @@
 # Maintainer: Keith Vassallo <keith@vassallo.cloud>
 #
 # Template. `just aur` / `just aur-publish` render this into a real PKGBUILD,
-# substituting 0.4.3 and 9806534349ea78b69e51a0d7649616c7711eacd4aa395b39ce0916c6d4eb3a23 from the published GitHub release.
+# substituting 0.4.4 and 48ebfbc6b2338a73e7be4317006df764494f1256b91ca819031c01d2dae3247b from the published GitHub release.
 # Edit this file, never the generated one.
 #
 # This repackages the official amd64 .deb rather than building from source, so
@@ -10,7 +10,7 @@
 # sync by hand. The `clustercut://` scheme is registered by the app at runtime,
 # so no MimeType wiring is needed here.
 pkgname=clustercut-bin
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Cross-platform clipboard sync between your devices"
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=("clustercut=${pkgver}")
 conflicts=('clustercut')
 options=('!strip' '!debug')
 source=("ClusterCut_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/ClusterCut_${pkgver}_amd64.deb")
-sha256sums=('9806534349ea78b69e51a0d7649616c7711eacd4aa395b39ce0916c6d4eb3a23')
+sha256sums=('48ebfbc6b2338a73e7be4317006df764494f1256b91ca819031c01d2dae3247b')
 
 package() {
     # Match data.tar.* by glob so a future bundler switching gzip for xz/zst
