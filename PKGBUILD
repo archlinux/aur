@@ -1,6 +1,6 @@
 # Maintainer: mryll <https://github.com/mryll>
 pkgname=tickerbar-bin
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='Multi-market price ticker for Waybar (crypto, stocks, indices, commodities, forex, rates) — no API key (prebuilt binary)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=(!debug)
 source=("tickerbar-${pkgver}::https://github.com/mryll/tickerbar/releases/download/v${pkgver}/tickerbar-${pkgver}-x86_64-linux"
         "config.example.toml-${pkgver}::https://raw.githubusercontent.com/mryll/tickerbar/v${pkgver}/config.example.toml"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/mryll/tickerbar/v${pkgver}/LICENSE")
-sha256sums=('f4ef6f9b0b1f8c908e16264761677871e332bd38883fc0f71dd4d3e9b0f2d4e8'
+sha256sums=('f8b68bf808ca85a0d2ce5e3ec394254940e438da80dca8ecb6c31e54608b5b92'
             'fbe87470a44c8d20a3111ba011ea718215a26297dc77e0090f5f23774bbcb75f'
             'aa9f3a694508cadff239e4694992eac66611723af6ce8643e80ca5c7db8c9e4e')
 
