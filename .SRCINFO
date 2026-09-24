@@ -1,15 +1,16 @@
 pkgbase = flectar-mail-bin
-	pkgdesc = Native email client built with Rust and Slint (unofficial build of the upstream release)
-	pkgver = 0.1.0alpha.5
+	pkgdesc = Native email client built with Rust and Slint
+	pkgver = 0.1.0alpha.6
 	pkgrel = 1
 	url = https://github.com/flectar/mail
 	arch = x86_64
 	license = AGPL-3.0-only
-	depends = dbus
 	depends = fontconfig
+	depends = fuse3
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
+	depends = libgpg-error
 	depends = libx11
 	depends = libxcursor
 	depends = libxi
@@ -17,18 +18,18 @@ pkgbase = flectar-mail-bin
 	depends = libxkbcommon-x11
 	depends = wayland
 	depends = xdg-utils
-	optdepends = xdg-desktop-portal: OAuth sign-in through the system browser and native file dialogs
-	optdepends = gnome-keyring: Secret Service provider for storing account credentials
-	optdepends = kwallet: alternative Secret Service provider
+	optdepends = org.freedesktop.secrets: storing account credentials
 	optdepends = gnupg: OpenPGP signing and encryption
-	optdepends = pinentry: passphrase prompts for GnuPG
-	provides = flectar-mail=0.1.0alpha.5
+	optdepends = xdg-desktop-portal: native file dialogs
+	provides = flectar-mail=0.1.0alpha.6
 	conflicts = flectar-mail
-	conflicts = flectar-mail-git
-	noextract = flectar-mail-bin-0.1.0alpha.5.deb
 	options = !strip
 	options = !debug
-	source = flectar-mail-bin-0.1.0alpha.5.deb::https://github.com/flectar/mail/releases/download/v0.1.0-alpha.5/flectar-mail_0.1.0.alpha.5_amd64.deb
-	sha256sums = 8d1f113c6134498bff4beb67727a61665684fdb338dfcc9edea51e636905b1a9
+	source = flectar-mail-0.1.0alpha.6.AppImage::https://github.com/flectar/mail/releases/download/v0.1.0-alpha.6/flectar-mail-0.1.0-alpha.6-linux-x64.AppImage
+	source = com.flectar.mail-0.1.0alpha.6.desktop::https://raw.githubusercontent.com/flectar/mail/v0.1.0-alpha.6/resources/com.flectar.mail.desktop
+	source = com.flectar.mail-0.1.0alpha.6.svg::https://raw.githubusercontent.com/flectar/mail/v0.1.0-alpha.6/resources/app-icon/flectar-mail-masked.svg
+	sha256sums = b7f0f02873c0e85af3822e4de9703727a1af00210e50271ae4dcfd567e5de663
+	sha256sums = bd4f2020a71f42eacbd6fdd33f1e35d04547bf8e3cbef1574c2f7dde7de2044b
+	sha256sums = f0e0083d21e8648d367a47e61d762c7ffd84e27d857749a38b499b2cd47341cf
 
 pkgname = flectar-mail-bin
