@@ -1,6 +1,6 @@
 # Maintainer: Furkan Sahin <furkan-dev@proton.me>
 pkgname=bakah-git
-pkgver=r25.5193fd1
+pkgver=r26.6058e95
 pkgrel=1
 pkgdesc="Build Bake files using Buildah"
 arch=('x86_64')
