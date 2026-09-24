@@ -1,7 +1,7 @@
 # Maintainer: sfs sfslinux@gmail.com
 
 pkgname=photon-studio-bin
-pkgver=0.1.14
+pkgver=0.1.20
 pkgrel=1
 pkgdesc="A desktop local-first image editor with layers and native PSD support (Extracted from Flatpak)"
 arch=('x86_64')
@@ -32,13 +32,12 @@ options=('!strip')
 
 source=(
   #В России качайте через браузер с ...
+  #Альтернатива https://www.techspot.com/downloads/7907-photon-studio.html
   "Photon-Studio-${pkgver}-linux-x64.flatpak::https://tenzen.studio/api/v1/photon/download?platform=linux&arch=x64"
-  "photon-studio.png"
+   "photon-studio.png::https://tenzen.studio/assets/brand/photon-logo.png"
 )
-sha256sums=(
-    '5cc660fdf8c0814376dc197f2e0145fdc170a2cd519945e78ddb3b7c415cde13'
-    'd09bc04240d4fccecc0667fcd263324a104cf3515388a71789e0cfa72bfc50f7'
-)
+sha256sums=('SKIP'
+            'd49bb3c106257c1f75995fa793737113dc87418be5bec19388e6a523ffaafc18')
 
 prepare() {
     cd "$srcdir"
