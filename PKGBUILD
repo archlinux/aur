@@ -5,12 +5,11 @@ pkgname=(
     'tensorrt'
     'tensorrt-cross-builder-libs'
     'python-tensorrt')
-pkgver=11.2.1.2
-_cudaver=13.3
-_protobuf_ver=3.20.3 # https://github.com/NVIDIA/TensorRT/blob/v11.2/CMakeLists.txt#L321
+pkgver=11.3.0.99
+_cudaver=13.4
 _onnx_graphsurgeon_ver=0.6.2
-_polygraphy_ver=0.49.27
-_tensorflow_quantization_ver=0.2.0
+_polygraphy_ver=0.53.6
+_tensorflow_quantization_ver=2.2.1
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
@@ -37,22 +36,17 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         'cub-nvlabs'::'git+https://github.com/NVlabs/cub.git'
         'git+https://github.com/onnx/onnx-tensorrt.git'
         'git+https://github.com/onnx/onnx.git'
-        "https://github.com/google/protobuf/releases/download/v${_protobuf_ver}/protobuf-cpp-${_protobuf_ver}.tar.gz"
         'git+https://github.com/pybind/pybind11.git'
-        '010-tensorrt-use-local-protobuf-sources.patch'
-        '020-tensorrt-use-local-pybind11-sources.patch'
+        '010-tensorrt-use-local-pybind11-sources.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
-noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('1db0fc9f3d04dae4b9262f4dfb10a19616d88577eec7f2535ac7be01a470e807'
-            '3cda5fcb6b1f7384506bc519d24e0c0ca6c4ad93bd0623e674a096cdfb366443'
+sha256sums=('c383126a0e51e5962afac9caf97149a3c1908bf6b4e0ccc781a6eb6d984bf0c6'
+            '9998b5f3b7ed8507709110c98b2d6c9cf279454e6c238165ffb27806d0492438'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'e51cc8fc496f893e2a48beb417730ab6cbcb251142ad8b2cd1951faa5c76fe3d'
             'SKIP'
-            'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            '34e9eeb150e9682bd42bebd31aef8b66b1150b6a8774c488687ea38273a9b409'
+            '0fe65836ca64e5b360ba5abb5db64e74266b98aa6287d2d4f1c686861acc2d2c'
             '64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a')
 
 prepare() {
@@ -68,12 +62,10 @@ prepare() {
     git -C TensorRT/parsers/onnx config --local submodule.third_party/onnx.url "${srcdir}/onnx"
     git -C TensorRT/parsers/onnx -c protocol.file.allow='always' submodule update
     
-    # protobuf
-    mkdir -p build/third_party.protobuf/src
-    cp -af "protobuf-cpp-${_protobuf_ver}.tar.gz" build/third_party.protobuf/src
-
-    patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-use-local-protobuf-sources.patch"
-    patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-use-local-pybind11-sources.patch"
+    git -C TensorRT restore --source='v11.2' python/packaging/bindings_wheel/pyproject.toml
+    git -C TensorRT restore --source='v11.2' tools/Polygraphy/setup.py
+    
+    patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-use-local-pybind11-sources.patch"
 }
 
 build() {
@@ -88,11 +80,9 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_CUDA_ARCHITECTURES:STRING='75;80;86;87;89;90;100;103;110;120;121' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_PREFIX_PATH:PATH="${srcdir}/TensorRT-${pkgver}" \
         -DCUDA_INCLUDE_DIR:STRING='/opt/cuda/include' \
-        -DCUDNN_VERSION:STRING="$_cudnnver" \
         -DONNX_BUILD_PYTHON:BOOL='ON' \
-        -DPROTOBUF_VERSION:STRING="$_protobuf_ver" \
-        -DTRT_LIB_DIR:STRING="${srcdir}/TensorRT-${pkgver}/lib" \
         -Wno-author
     cmake --build build
     

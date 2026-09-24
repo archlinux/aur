@@ -1,6 +1,6 @@
 --- a/cmake/modules/FetchPyBind11.cmake
 +++ b/cmake/modules/FetchPyBind11.cmake
-@@ -16,7 +16,7 @@
+@@ -15,7 +15,7 @@
  include_guard()
  
  # This is set and immediately overwritten intentionally. It's here to document the public repo, and to provide the boilerplate we'd use if we ever ship it publicly:
