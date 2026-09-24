@@ -1,0 +1,22 @@
+diff --git a/lib/config/themes.dart b/lib/config/themes.dart
+index 17594b6..fad0a14 100644
+--- a/lib/config/themes.dart
++++ b/lib/config/themes.dart
+@@ -57,6 +57,17 @@ abstract class FluffyThemes {
+     return ThemeData(
+       visualDensity: VisualDensity.standard,
+       useMaterial3: true,
++      // flutter's default linux fallbacks, but with color emoji before the
++      // monochrome emoji glyphs of DejaVu Sans
++      fontFamilyFallback: const [
++        'Ubuntu',
++        'Adwaita Sans',
++        'Noto Color Emoji',
++        'Cantarell',
++        'DejaVu Sans',
++        'Liberation Sans',
++        'Arial',
++      ],
+       brightness: brightness,
+       colorScheme: colorScheme,
+       dividerColor: dividerColor,
