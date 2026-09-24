@@ -21,11 +21,13 @@ license=(GPL-3.0-or-later)
 # confines the two places a PKGBUILD executes outside the chroot. iptables
 # lets the worker firewall the build user off the worker-protocol port, which
 # a crafted PKGBUILD could otherwise use to submit a rogue registration.
+# btrfs-progs manages the storage pool every chroot and build lives in, whose
+# quotas are what bound a build's disk use while it runs.
 #
 # Deliberately not base-devel: the compiler toolchain is installed inside each
 # build's chroot by `mkarchroot ... base-devel`, never on the host. The host
 # only downloads and verifies sources, which devtools covers.
-depends=(gcc-libs devtools python aurcache-sandbox iptables)
+depends=(gcc-libs devtools python aurcache-sandbox iptables btrfs-progs)
 makedepends=(cargo git)
 # Cross-compiling to aarch64 additionally needs aarch64-linux-gnu-gcc; build()
 # says so if it is missing. It is not in makedepends because it is only needed
