@@ -1,6 +1,6 @@
 pkgbase = circup
 	pkgdesc = A tool to manage/update libraries on CircuitPython devices.
-	pkgver = 3.0.4
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/adafruit/circup
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = circup
 	depends = python-update-checker
 	depends = python-click
 	depends = python-semver
-	source = https://files.pythonhosted.org/packages/source/c/circup/circup-3.0.4.tar.gz
-	sha256sums = bd1ae484e8e42c73aa47bca938912e475bd535f436de44295adee5d592185f7d
+	source = https://files.pythonhosted.org/packages/source/c/circup/circup-3.1.0.tar.gz
+	sha256sums = 1ee28df058842f39c142c42d202361cc177b22afb35e92b9583dee00a2ccbd47
 
 pkgname = circup
