@@ -2,19 +2,14 @@
 
 pkgname=docker-native-manager-bin
 pkgver=1.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Docker Desktop alternative for Linux"
 arch=('x86_64')
 url="https://github.com/pedrofariasx/dockernativemanager"
 license=('MIT')
 
 depends=(
-    cairo
-    gdk-pixbuf2
-    glib2
     gtk3
-    hicolor-icon-theme
-    libsoup3
     webkit2gtk-4.1
 )
 
