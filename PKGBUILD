@@ -97,8 +97,11 @@ EOF
 _build_native() {
     local _variant="$1" _target_cpu="$2"
 
+    # The patched opus copy lives outside the workspace, so rustc records its
+    # absolute `$srcdir` path in panic locations; strip that prefix. Cargo
+    # splits RUSTFLAGS on whitespace, so pass the flags 0x1f-separated.
     RUSTC_BOOTSTRAP=1 \
-    RUSTFLAGS="-Ctarget-cpu=${_target_cpu}" \
+    CARGO_ENCODED_RUSTFLAGS="-Ctarget-cpu=${_target_cpu}"$'\x1f'"--remap-path-prefix=${srcdir}/=" \
     CC="${srcdir}/cc-tree-sitter" \
     PCRE2_SYS_STATIC=0 \
     ZSTD_SYS_USE_PKG_CONFIG=1 \
