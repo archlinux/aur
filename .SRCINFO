@@ -1,6 +1,6 @@
 pkgbase = onionspray
 	pkgdesc = A tool to setup Onion Services for existing websites.
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 2
 	url = https://gitlab.torproject.org/tpo/onion-services/onionspray
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = onionspray
 	optdepends = python: for validate-onion-key helper script
 	optdepends = ruby: for onion-csr helper script
 	optdepends = mkcert: for generating local CA certificates for TLS
-	source = git+https://gitlab.torproject.org/tpo/onion-services/onionspray.git#tag=v1.8.2
+	source = git+https://gitlab.torproject.org/tpo/onion-services/onionspray.git#tag=v1.8.3
 	sha256sums = SKIP
 
 pkgname = onionspray
