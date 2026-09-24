@@ -1,10 +1,12 @@
 #!/bin/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# to.do:
+# *use aur/faiss _CMAKE_FLAGS+=(-DFETCH_FAISS=OFF)
 
 check_option "debug" "y" && BUILD_TYPE=Debug || BUILD_TYPE=Release
 
 ## Configuration env vars:
-_ver=4.1.0
+_ver=4.2.0
 _BUILD_CUDA="${BUILD_CUDA:-ON}"
 _CUDA_ARCH="${CUDA_ARCH:-native}"
 _fragment=${FRAGMENT:-#tag=$_ver}
@@ -21,7 +23,7 @@ arch=('i686' 'x86_64')
 url="https://colmap.github.io/"
 license=('GPL')
 groups=()
-depends=('cgal' 'ceres-solver' 'gflags' 'fmt' 'openimageio' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'libjpeg-turbo' 'boost-libs' qt5-{base,svg} 'metis' 'flann')
+depends=('cgal' 'ceres-solver' 'gflags' 'metis' 'openimageio' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'libjpeg-turbo' 'boost-libs' qt5-{base,svg} 'flann')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx')
 if [ "$_BUILD_CUDA" == "ON" ] ; then 
   depends+=('onnxruntime-cuda' 'protobuf')
@@ -35,7 +37,7 @@ source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
         "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin"
         "vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin"
         )
-sha256sums=('2d63490b0d44917ea7083cc41b541e911d81b304d78f077a614de04c8f7a4c64'
+sha256sums=('939d6d410feabaf7f36b4750ec1d36165a2653186bfc6b6fe48cad28e9beeddf'
             'd37d8f19ee0a49705c4c0b06967a08cedfed5cf86519eada3271497256732bc2'
             'd2055600452a531b5b0a62aa5943e1a07195273dc4eeebcf23d3a924d881d53a'
             'fb60f7ba8081ee5c278f03c62329a374d1b24136b374a49393b453db1529a8c6')
