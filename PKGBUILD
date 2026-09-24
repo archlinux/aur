@@ -10,7 +10,7 @@
 # "unused"/"unassigned" heuristics don't apply to a PKGBUILD.
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=agent-glovebox
-pkgver=0.69.0
+pkgver=0.70.0
 pkgrel=1
 pkgdesc="Hardware-isolated, allowlist-firewalled sandbox for running Claude Code"
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
 
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('006fec19039f9400485192af1fba304266f020eb5a868a7b41d4a7859b40f004')
+sha256sums=('4d4136ac9b322558d585574cc5baa0875b9b3d84068c86fe7ca87503f85c5a29')
 
 # Owner this release was cut from. Synced from config/packaging.json by
 # scripts/gen-packaging.mjs (shared with the Homebrew formula and nFPM manifest)
@@ -53,8 +53,8 @@ package() {
 
   local libdir="$pkgdir/usr/lib/$pkgname"
 
-  # The launcher builds the sandbox image locally and resolves its sandbox-policy
-  # stack relative to bin/, so the whole tree ships together under libdir. Drop
+  # The launcher pulls the signed sandbox image that guest-image-inputs.json
+  # names and resolves its sandbox-policy stack relative to bin/, so the whole tree ships together under libdir. Drop
   # only dev/CI artifacts the runtime never reads; the launcher reads bin/,
   # sandbox-policy/, and .claude/ at runtime. The prune list below is synced from
   # config/packaging.json, like RELEASE_OWNER above — edit it there.
