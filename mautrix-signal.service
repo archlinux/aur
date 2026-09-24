@@ -5,12 +5,14 @@ Description=mautrix-signal bridge
 Type=exec
 User=mautrix-signal
 WorkingDirectory=/var/lib/mautrix-signal
-ExecStart=/usr/bin/mautrix-signal -c /etc/mautrix-signal/config.yaml
+ExecStart=/usr/bin/mautrix-signal --config=/etc/mautrix-signal/config.yaml
 Restart=on-failure
 RestartSec=30s
 
 # Optional hardening to improve security
 ReadWritePaths=/var/lib/mautrix-signal
+ReadWritePaths=/var/log/mautrix-signal
+ReadWritePaths=/etc/mautrix-signal
 NoNewPrivileges=yes
 MemoryDenyWriteExecute=true
 PrivateDevices=yes
