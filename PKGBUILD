@@ -1,8 +1,8 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgbase=aranet4
 pkgname=(aranet4-ls aranet4-srv aranet4-daq)
-pkgver=0.15.1
-pkgrel=2
+pkgver=0.15.2
+pkgrel=1
 pkgdesc="Driver and utilities for the Aranet4 air quality monitor"
 arch=('x86_64')
 url="https://git.sr.ht/~sbinet/aranet4"
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go>=1.23')
 depends=('bluez')
 source=("${pkgbase}-${pkgver}.tar.gz::https://git.sr.ht/~sbinet/${pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('bf8159646cbb0a89133d2225436c65a74f6846c4cf1a9dad22ca42163f0d40a0')
+sha256sums=('c59e4cb51be8f161c0eb70e904fa934e082bec8f2af6c340da721ada235e584a')
 
 build() {
   export GOPATH="$srcdir"/gopath
