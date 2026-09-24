@@ -5,6 +5,7 @@ pkgbase = hov-qt
 	url = https://github.com/HougeLangley/HyperOnlineVideo
 	arch = x86_64
 	arch = aarch64
+	arch = riscv64
 	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = ninja
