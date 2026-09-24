@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Borea
+Comment=Content manager for Kitten Space Agency
+Exec=borea %u
+Icon=borea
+Terminal=false
+Categories=Game;
+MimeType=x-scheme-handler/borea;
+StartupWMClass=borea

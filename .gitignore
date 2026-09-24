@@ -1,0 +1,5 @@
+src/
+pkg/
+Borea/
+*.pkg.tar*
+*.pkg.tar.*.sig

@@ -1,0 +1,27 @@
+pkgbase = borea-git
+	pkgdesc = Content manager for Kitten Space Agency
+	pkgver = 0.2.1.r98.gf2e7e12
+	pkgrel = 1
+	url = https://github.com/KSAModding/Borea
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = git
+	makedepends = python
+	depends = fontconfig
+	depends = icu
+	depends = libice
+	depends = libsm
+	depends = libx11
+	depends = openssl
+	depends = zlib
+	provides = borea
+	conflicts = borea
+	options = !strip
+	options = !debug
+	source = git+https://github.com/KSAModding/Borea.git
+	source = borea.desktop
+	sha256sums = SKIP
+	sha256sums = c099ce257878862a6bc1ee2b2130da9dacdf1cb9b18b91321fa9a4ee27505fb5
+
+pkgname = borea-git
