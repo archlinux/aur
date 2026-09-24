@@ -1,0 +1,12 @@
+pkgbase = ansi
+	pkgdesc = ANSI escape codes in pure bash - change text color, position cursor, and more
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/fidian/ansi
+	arch = any
+	license = LicenseRef-MIT-advertising
+	depends = bash
+	source = ansi-3.0.1.tar.gz::https://github.com/fidian/ansi/archive/refs/tags/3.0.1.tar.gz
+	sha256sums = 8dae1314d98a015d4d64fd2a99895700138756f2b456baea7cf1d6dd3ccf1261
+
+pkgname = ansi
