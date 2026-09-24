@@ -5,11 +5,11 @@
 
 _pkgname=baidunetdisk
 pkgname=${_pkgname}-electron
-pkgver=8.6.0
+pkgver=8.7.0
 pkgrel=1
 pkgdesc="Baidu Net Disk - a cloud storage client (Linux Version). Run with system electron."
 arch=('x86_64')
-depends=('electron22' 'gtkmm')
+depends=('gtkmm' 'nodejs-lts-jod')
 provides=("baidunetdisk")
 conflicts=("baidunetdisk")
 url="https://pan.baidu.com"
@@ -22,7 +22,7 @@ source=("0001-baidunetdisk-bin-desktop-file.patch"
 sha256sums=('17bda6036e07916971257f25731130fb1b760b80798fa13273db39268ab9f28c'
             '1985035bf0bde478f3d638819f638eab8244d5f2abd85adb9602729b4d7fddf2'
             '12141ff8d85741a0ecba7ad923d982ce75bb3632698f4b04ccbbcce85c02502d'
-            '28f62882fe35469b4008c1324e43d2a9109395bcbdfc05207e048a8487759d56')
+            'ec71c2ad1151609fd0d8b86d95184c0b457d6db5aa18861e0b15fc23ccfe01f7')
 
 prepare() {
     bsdtar -xpf "data.tar.bz2"
