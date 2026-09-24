@@ -1,6 +1,8 @@
 # Maintainer: 2-4601 <AUR@othermemory.org>
+
 pkgname=atostekid
-pkgver=4.5.1.0
+pkgver=4.6.0.0
+_pkgver_major="${pkgver%.*.*}"
 pkgrel=1
 pkgdesc="New desktop application for Finnish electronic ID cards"
 arch=("x86_64")
@@ -23,12 +25,12 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=(
-    "${pkgname}-${pkgver}.deb::https://files.fineid.fi/download/atostek/${pkgver}/linux/AtostekID_DEB_${pkgver}.deb"
+    "${pkgname}-${pkgver}.deb::https://files.fineid.fi/download/atostek/${_pkgver_major}/linux/AtostekID_DEB_${pkgver}.deb"
     "atostek-id.module"
     "com.atostek.atostekid.desktop"
     "com.atostek.atostekid.png"
 )
-sha256sums=('c311445a569516705625c1242653a5cc7ecfa1f616946d675bef71000274a0bf'
+sha256sums=('0125ed23c5fa91f82791e30d8a99430b85dd97c2b77bfe6ea2bee4e82c9cf892'
             '42cf9a65e4913b42ea9b63ebe171050589bdf00d7a48df26d793b394c39efefa'
             '14bb723654f042e1c1973c0463156ee0299f320061e001726adb8391f8e18aeb'
             'fdfad6cf56013d55d5e7516a093494091fcb9c8a27409d488e780dd2ebebe895')
