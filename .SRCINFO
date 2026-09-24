@@ -1,7 +1,7 @@
 pkgbase = python-rapids-dependency-file-generator
 	pkgdesc = RAPIDSAI Dependency file generator
-	pkgver = 1.20.2
-	pkgrel = 2
+	pkgver = 1.22.0
+	pkgrel = 1
 	url = https://github.com/rapidsai/dependency-file-generator
 	arch = any
 	license = Apache-2.0
@@ -11,7 +11,7 @@ pkgbase = python-rapids-dependency-file-generator
 	depends = python-tomlkit
 	depends = python-jsonschema
 	depends = python-pyaml
-	source = https://github.com/rapidsai/dependency-file-generator/archive/refs/tags/v1.20.2.tar.gz
-	sha256sums = 4dcb77b9267b30d8e6648e3367c255e37cc575c107d35cf380ba741c06aaf64d
+	source = https://github.com/rapidsai/dependency-file-generator/archive/refs/tags/v1.22.0.tar.gz
+	sha256sums = c8a9606e6d3d462b77e1710c27b8efbdff3714ff71142ec0d89af38cd544f91c
 
 pkgname = python-rapids-dependency-file-generator
