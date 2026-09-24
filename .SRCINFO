@@ -1,0 +1,15 @@
+pkgbase = htmldnext-dmd
+	pkgdesc = A lightweight HTML parser with zero dependencies
+	pkgver = 0.4.1
+	pkgrel = 0
+	url = https://gitlab.com/os-18/htmldnext
+	arch = x86_64
+	license = MIT
+	makedepends = bash
+	makedepends = pkg-config
+	makedepends = dmd
+	depends = dmd
+	source = htmldnext-dmd-0.4.1.tar.gz::https://gitlab.com/os-18/htmldnext/-/archive/v0.4.1/htmldnext-v0.4.1.tar.gz
+	sha256sums = d4a764b9b029c2968ed5318606f25e3a43d71c005efdd75df4ec37185742e382
+
+pkgname = htmldnext-dmd
