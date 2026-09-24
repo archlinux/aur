@@ -1,7 +1,7 @@
 pkgbase = tenzen-studio-bin
 	pkgdesc = Record and edit product demos: cut pauses, add zooms and captions (upstream Flatpak bundle)
-	pkgver = 0.1.26
-	pkgrel = 2
+	pkgver = 0.1.27
+	pkgrel = 1
 	url = https://tenzen.studio
 	arch = x86_64
 	license = LicenseRef-proprietary
@@ -15,10 +15,10 @@ pkgbase = tenzen-studio-bin
 	optdepends = libpulse: record system audio
 	provides = tenzen-studio
 	conflicts = tenzen-studio
-	noextract = Tenzen-0.1.26-linux-x64.flatpak
+	noextract = Tenzen-0.1.27-linux-x64.flatpak
 	options = !strip
 	options = !debug
-	source = Tenzen-0.1.26-linux-x64.flatpak::https://downloads.tenzen.studio/desktop/stable/linux/0.1.26/Tenzen-0.1.26-linux-x64.flatpak
-	sha256sums = 172496d25807dc54bf0313594f198834ba4fa3df0c29ee5265b13f2fca07c093
+	source = Tenzen-0.1.27-linux-x64.flatpak::https://downloads.tenzen.studio/desktop/stable/linux/0.1.27/Tenzen-0.1.27-linux-x64.flatpak
+	sha256sums = 18aefb168074b8d47fc1b85ff53be59f4680fe7f013f0dd5cc946750172ed5d9
 
 pkgname = tenzen-studio-bin
