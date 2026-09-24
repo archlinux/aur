@@ -1,6 +1,6 @@
 pkgbase = brave-origin-beta-bin
 	pkgdesc = The minimalist browser from the makers of Brave (beta binary release).
-	pkgver = 1.97.45
+	pkgver = 1.97.47
 	pkgrel = 1
 	url = https://brave.com/origin/download-beta
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = brave-origin-beta-bin
 	options = !strip
 	source = brave-origin-beta-bin.sh
 	sha512sums = d29202fe9c1433cc70f2f8032c1d3c8d61d4eac88324c4ddd475f59ce9198e1ff6b6ec2c6005e932960dda83439aae5092251c7dd90321c91b9775b31c4f5d51
-	source_x86_64 = https://github.com/brave/brave-browser/releases/download/v1.97.45/brave-origin-beta_1.97.45_amd64.deb
-	sha512sums_x86_64 = 34455c3c0456630b24a049b48d8f43fe20c09fe9c191d8b9846337f4739136cc49e62f4cab85fdb4d15f081d4d1842dec6dd894af55191dd7bd5d89917e86129
-	source_aarch64 = https://github.com/brave/brave-browser/releases/download/v1.97.45/brave-origin-beta-beta_1.97.45_arm64.deb
-	sha512sums_aarch64 = f3c96e94ac5cafb4e7316b9bea143ab0a0e93beffbfa3a1a69a1407466e38795e27b94032bb802d2f3577964d76995a4067f974adb489030ff6c714cd1a5591b
+	source_x86_64 = https://github.com/brave/brave-browser/releases/download/v1.97.47/brave-origin-beta_1.97.47_amd64.deb
+	sha512sums_x86_64 = b1a227c66287eedb05b6b3b03091fdfd6d8b37b7d8ac2d643f75d53861238528572bab9f90096ff2378c895d4de932e6de85350e04eba24ed27695e6915f53fb
+	source_aarch64 = https://github.com/brave/brave-browser/releases/download/v1.97.47/brave-origin-beta-beta_1.97.47_arm64.deb
+	sha512sums_aarch64 = 483eb8e0c687181e06c5720ae7369afdd332932da9106414f81aeb46b7c62a78205a5e964ea5f8925aa3d3006106b488c836eec30e1bd7872d5d6f75ee82e02a
 
 pkgname = brave-origin-beta-bin
