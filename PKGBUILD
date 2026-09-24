@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-liboqs
 _name=liboqs-python
-pkgver=0.16.0
+pkgver=0.16.0.1
 pkgrel=1
 pkgdesc="Python 3 bindings for liboqs"
 arch=(any)

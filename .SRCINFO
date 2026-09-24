@@ -1,6 +1,6 @@
 pkgbase = python-liboqs
 	pkgdesc = Python 3 bindings for liboqs
-	pkgver = 0.16.0
+	pkgver = 0.16.0.1
 	pkgrel = 1
 	url = https://github.com/open-quantum-safe/liboqs-python
 	arch = any
