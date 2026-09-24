@@ -3,7 +3,7 @@
 # Contributor: <philipp.classen@posteo.de>
 
 pkgname=verifpal
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Cryptographic protocol analysis for real-world protocols."
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('rust' 'cargo')
 source=("https://github.com/symbolicsoft/verifpal/archive/refs/tags/v${pkgver}.tar.gz"
         "$pkgname-$pkgver-manual.pdf::https://static.verifpal.com/manual.pdf"
         "$pkgname-$pkgver-manual-license.txt::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt")
-sha256sums=('c4ff24fe493c696007c4ead67cd198279feed7aa5681dbb2ddfec4e8b0221f51'
+sha256sums=('ccc9c0dfe145a1a809bb40f73f0b8ea53888da6004a44c00e608e9b1a9a88ccc'
             'ff85682b1b6cf60450ec97c3525074cabdabaa3a87de5c38caba286bb51f790a'
             '38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea')
 
