@@ -1,0 +1,220 @@
+diff --git a/src-tauri/src/app_settings.rs b/src-tauri/src/app_settings.rs
+index 81e0820..b0179ce 100644
+--- a/src-tauri/src/app_settings.rs
++++ b/src-tauri/src/app_settings.rs
+@@ -24,7 +24,7 @@ pub(crate) async fn get_core_status(app: tauri::AppHandle) -> Result<CoreStatus,
+ }
+ 
+ pub(crate) fn emit_core_status(app: &tauri::AppHandle, status: &CoreStatus) {
+-    #[cfg(target_os = "windows")]
++    #[cfg(any(target_os = "windows", target_os = "linux"))]
+     update_windows_tray_status(app, status);
+     let _ = app.emit(CORE_STATUS_EVENT, status);
+ }
+@@ -551,11 +551,11 @@ pub(crate) fn set_app_locale(
+     locale: String,
+ ) -> Result<String, String> {
+     let config = gui_config_state.set_locale(locale)?;
+-    #[cfg(target_os = "windows")]
++    #[cfg(any(target_os = "windows", target_os = "linux"))]
+     if let Ok(status) = current_core_status(Some(process_state.inner()), Some(config.port)) {
+         update_windows_tray_locale(&app, &config.locale, &status);
+     }
+-    #[cfg(not(target_os = "windows"))]
++    #[cfg(not(any(target_os = "windows", target_os = "linux")))]
+     let _ = (app, process_state);
+     Ok(config.locale)
+ }
+diff --git a/src-tauri/src/main.rs b/src-tauri/src/main.rs
+index 91d5bfb..5bb5f96 100644
+--- a/src-tauri/src/main.rs
++++ b/src-tauri/src/main.rs
+@@ -16,7 +16,7 @@ mod network_proxy;
+ mod oauth_browser;
+ mod progress;
+ mod provider_health;
+-#[cfg(any(target_os = "macos", target_os = "windows"))]
++#[cfg(any(target_os = "macos", target_os = "windows", target_os = "linux"))]
+ mod tray;
+ mod usage;
+ 
+@@ -63,11 +63,11 @@ use std::{
+     time::{Duration, Instant, SystemTime, UNIX_EPOCH},
+ };
+ use tar::Archive;
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ use tauri::menu::PredefinedMenuItem;
+ #[cfg(target_os = "macos")]
+ use tauri::tray::{MouseButtonState, TrayIcon};
+-#[cfg(any(target_os = "macos", target_os = "windows"))]
++#[cfg(any(target_os = "macos", target_os = "windows", target_os = "linux"))]
+ use tauri::{
+     menu::{Menu, MenuItem},
+     tray::{MouseButton, TrayIconBuilder, TrayIconEvent},
+@@ -76,7 +76,7 @@ use tauri::{Emitter, LogicalSize, Manager};
+ use tauri_plugin_autostart::ManagerExt as AutostartManagerExt;
+ use tauri_plugin_opener::OpenerExt;
+ use tokio_util::sync::CancellationToken;
+-#[cfg(any(target_os = "macos", target_os = "windows"))]
++#[cfg(any(target_os = "macos", target_os = "windows", target_os = "linux"))]
+ use tray::*;
+ use zip::ZipArchive;
+ 
+@@ -113,7 +113,7 @@ const CORE_STATUS_EVENT: &str = "core-status-changed";
+ const CONFIG_FILES_CHANGED_EVENT: &str = "config-files-changed";
+ const VERSION_DOWNLOAD_SOURCE_CHANGED_EVENT: &str = "version-download-source-changed";
+ static VERSION_SOURCE_DETECTION_LOCK: tokio::sync::Mutex<()> = tokio::sync::Mutex::const_new(());
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ const WINDOWS_CLOSE_REQUEST_EVENT: &str = "windows-close-requested";
+ const CORE_METADATA_FILE: &str = "cpa-gui-meta.json";
+ const CORE_CONFIG_FILE: &str = "config.yaml";
+@@ -242,7 +242,7 @@ fn normalize_app_locale(locale: &str) -> &'static str {
+     }
+ }
+ 
+-#[cfg(any(target_os = "macos", target_os = "windows"))]
++#[cfg(any(target_os = "macos", target_os = "windows", target_os = "linux"))]
+ fn locale_text<'a>(locale: &str, zh_cn: &'a str, en: &'a str) -> &'a str {
+     match normalize_app_locale(locale) {
+         "en" => en,
+@@ -2464,7 +2464,7 @@ fn main() {
+         }
+     });
+ 
+-    #[cfg(target_os = "windows")]
++    #[cfg(any(target_os = "windows", target_os = "linux"))]
+     let app = app.on_window_event(|window, event| {
+         if window.label() == "main" {
+             if let tauri::WindowEvent::CloseRequested { api, .. } = event {
+@@ -2502,7 +2502,7 @@ fn main() {
+ 
+             #[cfg(target_os = "macos")]
+             setup_macos_tray(app)?;
+-            #[cfg(target_os = "windows")]
++            #[cfg(any(target_os = "windows", target_os = "linux"))]
+             setup_windows_tray(app)?;
+ 
+             if let Err(error) = configure_initial_main_window(app.handle(), start_hidden) {
+diff --git a/src-tauri/src/tray.rs b/src-tauri/src/tray.rs
+index 4990057..7a429ec 100644
+--- a/src-tauri/src/tray.rs
++++ b/src-tauri/src/tray.rs
+@@ -184,27 +184,27 @@ pub(crate) fn setup_macos_tray(app: &mut tauri::App<tauri::Wry>) -> tauri::Resul
+     Ok(())
+ }
+ 
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ const WINDOWS_TRAY_ID: &str = "windows-tray";
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ const WINDOWS_TRAY_OPEN_MENU_ID: &str = "windows-tray-open-main-window";
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ const WINDOWS_TRAY_STATUS_MENU_ID: &str = "windows-tray-core-status";
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ const WINDOWS_TRAY_TOGGLE_CORE_MENU_ID: &str = "windows-tray-toggle-core";
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ const WINDOWS_TRAY_RESTART_CORE_MENU_ID: &str = "windows-tray-restart-core";
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ const WINDOWS_TRAY_QUIT_MENU_ID: &str = "windows-tray-quit";
+ 
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ #[derive(Clone, Copy)]
+ pub(crate) enum WindowsTrayCoreAction {
+     Toggle,
+     Restart,
+ }
+ 
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ pub(crate) struct WindowsTrayPresentation {
+     pub(crate) status_text: String,
+     pub(crate) toggle_text: String,
+@@ -213,7 +213,7 @@ pub(crate) struct WindowsTrayPresentation {
+     pub(crate) tooltip: String,
+ }
+ 
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ pub(crate) fn windows_tray_presentation(
+     status: &CoreStatus,
+     busy: bool,
+@@ -270,7 +270,7 @@ pub(crate) fn windows_tray_presentation(
+     }
+ }
+ 
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ pub(crate) struct WindowsTrayState {
+     open_main_window: MenuItem<tauri::Wry>,
+     status_item: MenuItem<tauri::Wry>,
+@@ -281,7 +281,7 @@ pub(crate) struct WindowsTrayState {
+     busy: AtomicBool,
+ }
+ 
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ impl WindowsTrayState {
+     fn locale(&self) -> String {
+         self.locale
+@@ -393,7 +393,7 @@ impl WindowsTrayState {
+     }
+ }
+ 
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ pub(crate) fn show_windows_main_window(app_handle: &tauri::AppHandle) {
+     let Some(window) = app_handle.get_webview_window("main") else {
+         return;
+@@ -412,7 +412,7 @@ pub(crate) fn show_windows_main_window(app_handle: &tauri::AppHandle) {
+     }
+ }
+ 
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ pub(crate) fn update_windows_tray_status(app_handle: &tauri::AppHandle, status: &CoreStatus) {
+     let tooltip = app_handle
+         .try_state::<WindowsTrayState>()
+@@ -426,7 +426,7 @@ pub(crate) fn update_windows_tray_status(app_handle: &tauri::AppHandle, status:
+     }
+ }
+ 
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ pub(crate) fn update_windows_tray_locale(
+     app_handle: &tauri::AppHandle,
+     locale: &str,
+@@ -438,7 +438,7 @@ pub(crate) fn update_windows_tray_locale(
+     update_windows_tray_status(app_handle, status);
+ }
+ 
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ pub(crate) fn show_windows_tray_action_error(app_handle: &tauri::AppHandle, error: &str) {
+     eprintln!("Windows 托盘内核操作失败: {error}");
+     let locale = app_handle
+@@ -459,7 +459,7 @@ pub(crate) fn show_windows_tray_action_error(app_handle: &tauri::AppHandle, erro
+     }
+ }
+ 
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ pub(crate) fn run_windows_tray_core_action(
+     app_handle: &tauri::AppHandle,
+     action: WindowsTrayCoreAction,
+@@ -529,7 +529,7 @@ pub(crate) fn run_windows_tray_core_action(
+     });
+ }
+ 
+-#[cfg(target_os = "windows")]
++#[cfg(any(target_os = "windows", target_os = "linux"))]
+ pub(crate) fn setup_windows_tray(app: &mut tauri::App<tauri::Wry>) -> tauri::Result<()> {
+     let locale = app
+         .state::<GuiConfigState>()

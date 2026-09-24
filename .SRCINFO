@@ -1,0 +1,33 @@
+pkgbase = easycliproxyapi-git
+	pkgdesc = Cross-platform GUI desktop management client for CLIProxyAPI with Linux system tray patch
+	pkgver = 0.3.2.r531.6c64fc0
+	pkgrel = 1
+	url = https://github.com/router-for-me/EasyCLIProxyAPI
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = bun
+	makedepends = cargo
+	makedepends = git
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = easycliproxyapi
+	conflicts = easycliproxyapi
+	conflicts = easycliproxyapi-bin
+	source = EasyCLIProxyAPI::git+https://github.com/router-for-me/EasyCLIProxyAPI.git#branch=main
+	source = 0001-enable-linux-tray.patch
+	source = easycliproxyapi.sh
+	source = easycliproxyapi.desktop
+	b2sums = SKIP
+	b2sums = 9bbfbf35ca84ec60d78696de9ab7e1fa4ff7de1a4f4e292da0a14c78cceb3ae93f8e9dab02f256b8e8420418e636a6658502181005ce6dc99319ca7a81516dbc
+	b2sums = 95d5332bdfa5b2662e1bfef7b3febd8a1c8df9f1c830883e3c0d3076019ebd07e1b36beaae0f6f617db654de7eab675511559a5b7ba18e386a866566b56efb71
+	b2sums = fe6d941b1de9807605cf15086b7f38355a4c2b8fc4662668f958989b536b2957baccab71aad45a5b9713a91bf94f421066191f7ad1d0d177b9a962c8b38893e6
+
+pkgname = easycliproxyapi-git

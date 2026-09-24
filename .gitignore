@@ -1,0 +1,11 @@
+# makepkg build artifacts
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+src/
+pkg/
+
+# Downloaded sources
+*.tar.gz
+icon-*.png
+LICENSE-*
