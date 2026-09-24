@@ -2,13 +2,14 @@
 
 pkgname=piclone-git
 pkgver=r160.8b9c6c6
-pkgrel=1
+pkgrel=2
 pkgdesc="Raspberry Pi system clone utility"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/raspberrypi-ui/piclone"
 license=(GPL2)
 depends=(gtk3 glib2 parted dosfstools e2fsprogs coreutils util-linux zenity dbus gvfs)
 makedepends=(git intltool meson cmake wayland-protocols)
+install=piclone.install
 source=(
     "git+https://github.com/raspberrypi-ui/piclone.git"
     "https://archive.raspberrypi.com/debian/pool/main/s/sudopwd/sudopwd_0.3.tar.xz"

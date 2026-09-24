@@ -3,6 +3,7 @@ pkgbase = piclone-git
 	pkgver = r160.8b9c6c6
 	pkgrel = 1
 	url = https://github.com/raspberrypi-ui/piclone
+	install = piclone.install
 	arch = x86_64
 	arch = i686
 	arch = armv7h

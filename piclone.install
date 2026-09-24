@@ -1,0 +1,7 @@
+post_install() {
+	ln -s /usr/bin/uuidgen /usr/bin/uuid
+}
+
+post_remove() {
+	rm /usr/bin/uuid
+}
