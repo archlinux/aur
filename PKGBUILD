@@ -2,7 +2,7 @@
 
 pkgname=python-nncf
 _pkgname=nncf
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Neural Network Compression Framework for OpenVINO (quantization, pruning, sparsity)"
 arch=('any')
@@ -54,7 +54,7 @@ source=(
     'nncf-pytorch-workflow.py'
 )
 sha256sums=(
-    '3a9ca1acf32beb8aa246923aa41d410376a58d25dc5759ddb9f39ffdf5f3f122'
+    'f768389e989c0d96391fb4245401d8fbc1272571c6ccff33362bffeebde5cba6'
     'a4dc19737d646a1f6291ffa25d051b8f9201a4ff211f618daaef158cccbbd8d4'
     'cfd639b7a26812d4451a491165aeebed8666316638be9a462113fb1b3701b803'
     '185741858254a1138d778614301e93054a3cafb2471c1fb53fd91f87916f4bec'
