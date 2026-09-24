@@ -2,7 +2,7 @@
 
 pkgname=python-lance-namespace-urllib3-client
 _pkgname=lance_namespace_urllib3_client
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Auto-generated OpenAPI Python client for the Lance Namespace REST API"
 arch=('any')
@@ -25,7 +25,7 @@ checkdepends=(
 )
 _archive="lance-namespace-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e6fce787eb7ae088029b50cca1bfc0abfd00541eed9386f2cc3981f8ed6ac6b7')
+sha256sums=('8250cd149a3d860ac26772f37fe806c7660b8d60f35d2bab1cbdc2e8327d41f5')
 
 build() {
     cd "$_archive/python/$_pkgname"
