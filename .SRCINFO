@@ -1,0 +1,25 @@
+pkgbase = evil-winrm-py-git
+	pkgdesc = evil-winrm rewrite in Python
+	pkgver = 1.7.0.r1.geb60dd4
+	pkgrel = 1
+	url = https://github.com/adityatelange/evil-winrm-py
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-build
+	depends = python>=3.10
+	depends = python-prompt_toolkit>=3.0.53
+	depends = python-tqdm>=4.70.1
+	depends = python-pypsrp>=0.8.1
+	optdepends = python-krb5: Kerberos support
+	optdepends = python-gssapi: Kerberos support
+	optdepends = python-mcp>=2.2.0: MCP server
+	provides = evil-winrm-py=1.7.0.r1.geb60dd4
+	conflicts = evil-winrm-py
+	source = git+https://github.com/adityatelange/evil-winrm-py
+	b2sums = SKIP
+
+pkgname = evil-winrm-py-git
