@@ -2,7 +2,7 @@ pkgbase = aurcache-server
 	pkgdesc = Build server and pacman repository for Arch Linux packages from the AUR
 	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://github.com/Lukas-Heiligenbrunner/AURCache
+	url = https://github.com/gyscos/AURCache
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
@@ -21,7 +21,7 @@ pkgbase = aurcache-server
 	options = !lto
 	options = !debug
 	backup = etc/aurcache/server.env
-	source = aurcache-server-0.5.0.tar.gz::https://github.com/Lukas-Heiligenbrunner/AURCache/archive/refs/tags/v0.5.0.tar.gz
+	source = aurcache-server-0.5.0.tar.gz::https://github.com/gyscos/AURCache/archive/refs/tags/v0.5.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = aurcache-server

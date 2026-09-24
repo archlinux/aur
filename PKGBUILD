@@ -1,4 +1,4 @@
-# Maintainer: Lukas Heiligenbrunner <lukas.heiligenbrunner@gmail.com>
+# Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 #
 # Separate from aurcache-worker: the server needs no devtools, base-devel or
 # sudo, and most build machines do not want a server. Both are installable
@@ -9,7 +9,7 @@ pkgver=0.5.0
 pkgrel=1
 pkgdesc="Build server and pacman repository for Arch Linux packages from the AUR"
 arch=(x86_64 aarch64 armv7h)
-url="https://github.com/Lukas-Heiligenbrunner/AURCache"
+url="https://github.com/gyscos/AURCache"
 license=(GPL-3.0-or-later)
 # alpm-pkgbuild-bridge is what `alpm-srcinfo` shells out to in order to parse a
 # PKGBUILD; without it every package add fails. It is reached through a
