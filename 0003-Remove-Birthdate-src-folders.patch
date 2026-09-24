@@ -38,8 +38,8 @@ diff -ura systemd-git-stable/src/basic/time-util.h systemd-git-stable.new/src/ba
 -        return parse_calendar_date_full(s, /* allow_pre_epoch= */ true, NULL, ret);
 -}
 -
- uint32_t usec_to_jiffies(usec_t usec);
- usec_t jiffies_to_usec(uint32_t jiffies);
+ uint64_t sysconf_clock_ticks_cached(void);
+ 
  
 diff -ura systemd-git-stable/src/home/homectl.c systemd-git-stable.new/src/home/homectl.c
 --- systemd-git-stable/src/home/homectl.c	2026-05-17 04:32:46.748649255 +0100
