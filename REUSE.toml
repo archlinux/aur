@@ -21,7 +21,8 @@ path = [
     "*.conf",
     "plymouthd.conf.patch",
     "*initcpio*",
-    
+    "plymouth-font-file.c",
+    "tests.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
