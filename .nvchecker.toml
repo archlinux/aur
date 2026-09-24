@@ -1,5 +1,0 @@
-[sindricad-beta]
-source = "jq"
-url = "https://github.com/MakerViking/sindricad/releases/download/beta/latest.json"
-filter = ".version"
-release_url = "https://github.com/MakerViking/sindricad/releases/tag/beta"
