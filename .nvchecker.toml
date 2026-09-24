@@ -1,0 +1,5 @@
+[rayburst]
+source = "github"
+github = "AnInsomniacy/rayburst"
+use_latest_release = true
+prefix = "v"
