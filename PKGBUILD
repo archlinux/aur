@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=thorium
-pkgver=1.7.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A highly scalable, distributed malware analysis and data generation framework"
 arch=(x86_64)
@@ -18,7 +18,7 @@ makedepends=(
     git
 )
 source=($pkgname::git+https://github.com/cisagov/thorium.git#tag=$pkgver)
-b2sums=('89a4b7ddefedccec7a1705e612500646a37d1616a04829cbde3a8688aea955c353e28924562b54e59800b4f776497d762f8f28c2ceb3870dc1e94322794a1611')
+b2sums=('71842e8efa776304512f4e9fe6cc2264eaff45e9b34c0017022e4f0fab4b7ab284a14589ab046a56595b671dcdd718cd81869e875ae08cbc3541ab21f03f5567')
 options=(!lto)
 
 prepare() {
@@ -39,7 +39,6 @@ build() {
 
 # TODO: run tests when they are fixed
 # See: https://github.com/cisagov/thorium/issues/26
-
 # check() {
 #    cd $pkgname
 #    export RUSTUP_TOOLCHAIN=nightly
