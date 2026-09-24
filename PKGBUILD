@@ -2,7 +2,7 @@
 
 pkgname=python-liger-kernel
 _pkgname=Liger-Kernel
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Efficient Triton kernels for LLM training"
 arch=('any')
@@ -12,6 +12,8 @@ depends=(
     'python'
     'python-pytorch>=2.1.2'
     'python-triton>=2.3.1'
+    'python-packaging'
+    'python-numpy'
 )
 makedepends=(
     'python-build'
@@ -26,12 +28,13 @@ checkdepends=(
 )
 optdepends=(
     'python-transformers>=4.52.0: for Hugging Face Transformers integration'
+    'python-pytest: cross-backend correctness helpers in liger_kernel.testing'
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/linkedin/Liger-Kernel/archive/refs/tags/v$pkgver.tar.gz"
     'experimental-ops-package.patch'
 )
-sha256sums=('85c4b7cdee9849fb7ec98770514048680df45d66556f0279ccc85bc4d5a26058'
+sha256sums=('b8b0320cecff002a993cb25e418461c8d3d29c536fc0e8742f55f9b5a946b108'
             '38554a4ae52740d8470829b10bd07b7edd227eb125bae3288fef138b6aadcfc8')
 
 prepare() {
