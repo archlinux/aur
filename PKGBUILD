@@ -1,7 +1,7 @@
 # Maintainer: Alexandru Zbarcea <alexz@apache.org>
 
 pkgname=prompt-exporter
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="CLI to sync AI conversation prompts from multiple sources (ChatGPT first)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs' 'chromium')
 makedepends=('npm')
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c675442b2d7436792d23100b0611451cc512259bc4951df61d59518158b42bae')
+sha256sums=('ed396c0dbd095c911603a98f1d793896e7c20a1a0ed2466a5205f1377cddda85')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
