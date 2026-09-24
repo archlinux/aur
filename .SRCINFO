@@ -1,6 +1,6 @@
 pkgbase = sone-bin
 	pkgdesc = Native Linux TIDAL client — lossless streaming with bit-perfect ALSA output up to 24-bit/192kHz
-	pkgver = 0.21.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/lullabyX/sone
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = sone-bin
 	optdepends = alsa-plugins: exclusive ALSA output (bit-perfect mode)
 	provides = sone
 	conflicts = sone
-	source = sone-bin-0.21.0.pkg.tar.zst::https://github.com/lullabyX/sone/releases/download/v0.21.0/sone-x86_64.pkg.tar.zst
-	sha256sums = 79934fc65ff3968f32759184c4ba1130e44d8269d30c8063b705f78471b65437
+	source = sone-bin-0.22.1.pkg.tar.zst::https://github.com/lullabyX/sone/releases/download/v0.22.1/sone-x86_64.pkg.tar.zst
+	sha256sums = c0b05cdab7ff657d9abf908a5db85ecfc7262b1729eac04899ec187571c941e1
 
 pkgname = sone-bin

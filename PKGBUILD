@@ -1,6 +1,6 @@
 # Maintainer: mc_klatz
 pkgname=sone-bin
-pkgver=0.21.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="Native Linux TIDAL client — lossless streaming with bit-perfect ALSA output up to 24-bit/192kHz"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
     'alsa-plugins: exclusive ALSA output (bit-perfect mode)'
 )
 source=("$pkgname-$pkgver.pkg.tar.zst::https://github.com/lullabyX/sone/releases/download/v${pkgver}/sone-x86_64.pkg.tar.zst")
-sha256sums=('79934fc65ff3968f32759184c4ba1130e44d8269d30c8063b705f78471b65437')
+sha256sums=('c0b05cdab7ff657d9abf908a5db85ecfc7262b1729eac04899ec187571c941e1')
 
 package() {
     cd "$srcdir"
