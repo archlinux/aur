@@ -1,6 +1,6 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=positron-ide-bin
-pkgver=2026.08.1.2
+pkgver=2026.09.1.2
 _upstream_pkgver=${pkgver%.*}-${pkgver##*.}
 pkgrel=1
 pkgdesc='A next-generation data science IDE from Posit'
@@ -68,8 +68,8 @@ noextract=(
     "$pkgname-$pkgver-x86_64.deb"
     "$pkgname-$pkgver-aarch64.deb"
 )
-sha256sums_x86_64=('e307d3710b054de4236b62591702419887d73bdb65e8253f279fc7663d3ced89')
-sha256sums_aarch64=('78ccb9b8f25f6a0c99fd233367f6675c24001bf54347d5ad694423020976d7ca')
+sha256sums_x86_64=('21fa959af68847dbb0c13f3d3ad84665ff156e0af20a80469c4a1d5db018209b')
+sha256sums_aarch64=('93b03f2ab5cf240917b0696b8a3aa63328f286b42ba122f36df98ec88573f292')
 
 package() {
     local _deb
