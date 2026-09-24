@@ -28,16 +28,15 @@
      p = managed_uv_path()
      return str(p) if p.is_file() and os.access(p, os.X_OK) else None
  
-@@ -165,10 +171,14 @@
+@@ -185,10 +185,13 @@
  
  def _ensure_uv_path(
      *, repair_observer: Callable[[RuntimeRepairResult], None] | None = None) -> Optional[str]:
 -    """Resolve the managed uv path, installing it if necessary (plain ``str``/``None``)."""
 +    """Resolve uv, bootstrapping a private copy only when neither source exists."""
      existing = resolve_uv()
-     if existing:
+     if existing and _uv_runs(existing):
          return existing
-+
 +    if is_desktop_package_managed(_PROJECT_ROOT):
 +        logger.error("System uv is missing; reinstall the uv package.")
 +        return None

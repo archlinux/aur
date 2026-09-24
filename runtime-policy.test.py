@@ -64,6 +64,9 @@ class UpdatePolicyTests(unittest.TestCase):
             tree = ast.parse(file.read_text(), filename=str(file))
             function = next(node for node in tree.body if isinstance(node, ast.AsyncFunctionDef) and node.name == "check_hermes_update")
             function.decorator_list = []
+            function.returns = None
+            for arg in (*function.args.posonlyargs, *function.args.args, *function.args.kwonlyargs):
+                arg.annotation = None
             namespace = {"asyncio": asyncio, "contextlib": contextlib, "_log": logging.getLogger(__name__)}
             exec(compile(ast.Module(body=[function], type_ignores=[]), str(file), "exec"), namespace)
             self.route = namespace["check_hermes_update"]

@@ -87,15 +87,19 @@ diff --git a/apps/desktop/electron/bootstrap-runner.ts b/apps/desktop/electron/b
 index dee008f..e674c1e 100644
 --- a/apps/desktop/electron/bootstrap-runner.ts
 +++ b/apps/desktop/electron/bootstrap-runner.ts
-@@ -865,6 +865,7 @@ async function runBootstrap(opts) {
+@@ -923,6 +923,7 @@ async function runBootstrap(opts) {
      logRoot,
      onEvent,
      abortSignal,
 +    pinExistingCheckout = false,
-     writeMarker // callback to write the bootstrap-complete marker; main.ts provides
+     writeMarker, // callback to write the bootstrap-complete marker; main.ts provides
+     gitBinary // probed git path from main.ts; bare 'git' when absent
    } = opts
  
-@@ -915,14 +916,14 @@ async function runBootstrap(opts) {
+diff --git a/apps/desktop/electron/bootstrap-runner.ts b/apps/desktop/electron/bootstrap-runner.ts
+--- a/apps/desktop/electron/bootstrap-runner.ts
++++ b/apps/desktop/electron/bootstrap-runner.ts
+@@ -974,14 +975,14 @@ async function runBootstrap(opts) {
  
    try {
      const existingCheckout = hasExistingGitCheckout(activeRoot)
@@ -152,29 +156,30 @@ index 888377d..26d23a1 100644
    if (updateInFlight) {
      throw new Error('An update is already in progress.')
    }
-@@ -4347,12 +4358,15 @@ function isActiveRuntimeUsable() {
+@@ -4971,12 +4976,16 @@ async function isActiveRuntimeUsable() {
  }
  
- function activeRuntimeState() {
+ async function activeRuntimeState() {
 -  // We DELIBERATELY do NOT verify that the checkout is currently at the
 -  // pinned commit -- users update via the in-app update path or `hermes
 -  // update`, which moves HEAD legitimately. The marker only attests "a
 -  // desktop-managed bootstrap ran here at least once"; runtime usability is
 -  // what decides whether we can actually launch.
--  return classifyActiveRuntime(readBootstrapMarker(), BOOTSTRAP_MARKER_SCHEMA_VERSION, isActiveRuntimeUsable())
+-  return classifyActiveRuntime(readBootstrapMarker(), BOOTSTRAP_MARKER_SCHEMA_VERSION, await isActiveRuntimeUsable())
 +  // Self-managed installs may move HEAD via `hermes update`, so usability is
 +  // authoritative there. A system package owns its runtime version instead;
 +  // passing the package pin makes a mismatched checkout re-run bootstrap.
 +  const expectedCommit = PACKAGE_MANAGED_RUNTIME ? INSTALL_STAMP?.commit : null
++  const usable = await isActiveRuntimeUsable()
 +
-+  return classifyActiveRuntime(readBootstrapMarker(), BOOTSTRAP_MARKER_SCHEMA_VERSION, isActiveRuntimeUsable(), {
++  return classifyActiveRuntime(readBootstrapMarker(), BOOTSTRAP_MARKER_SCHEMA_VERSION, usable, {
 +    activeCommit: expectedCommit ? resolveCheckoutHead(ACTIVE_HERMES_ROOT) : null,
 +    expectedCommit
 +  })
  }
  
  function writeBootstrapMarker(payload) {
-@@ -4634,6 +4648,22 @@ function createActiveBackend(backendArgs) {
+@@ -5264,6 +5281,22 @@ async function createActiveBackend(backendArgs) {
    }
  }
  
@@ -194,12 +199,12 @@ index 888377d..26d23a1 100644
 +  }
 +}
 +
- function resolveHermesBackend(backendArgs) {
+ async function resolveHermesBackend(backendArgs) {
    // 1. Explicit override -- HERMES_DESKTOP_HERMES_ROOT points at a developer
    //    checkout. Honour it as-is (no bootstrap; the user is driving).
-@@ -4669,6 +4699,14 @@ function resolveHermesBackend(backendArgs) {
+@@ -5316,6 +5349,14 @@ async function resolveHermesBackend(backendArgs) {
    //    bootstrap when the runtime itself is unusable.
-   const activeRuntime = activeRuntimeState()
+   const activeRuntime = await activeRuntimeState()
  
 +  if (activeRuntime.usabilityReason === 'commit-mismatch') {
 +    rememberLog(
@@ -212,7 +217,7 @@ index 888377d..26d23a1 100644
    if (activeRuntime.shouldUseActiveRuntime && !bootstrapRepairRequested) {
      if (!activeRuntime.hasValidMarker) {
        rememberLog(
-@@ -4795,20 +4833,7 @@ function resolveHermesBackend(backendArgs) {
+@@ -5447,20 +5488,7 @@ async function resolveHermesBackend(backendArgs) {
    //    resolveHermesBackend was the old "no payload" path and forced the
    //    user into a dead end. With the bootstrap protocol, "no install yet"
    //    is a recoverable state the GUI can drive through.
@@ -233,7 +238,7 @@ index 888377d..26d23a1 100644
 +  return createBootstrapNeededBackend(backendArgs)
  }
  
- function ensureRuntime(backend: any): Promise<any> {
+ function ensureRuntime(backend: any, assertStillOwned: () => void): Promise<any> {
 @@ -4871,6 +4896,7 @@ async function runEnsureRuntime(backend: any): Promise<any> {
        hermesHome: HERMES_HOME,
        logRoot: path.join(HERMES_HOME, 'logs'),
@@ -242,7 +247,7 @@ index 888377d..26d23a1 100644
        onEvent: ev => {
          // Tee every bootstrap event to (a) the desktop log for forensics
          // and (b) the renderer for live progress UI. Either may be absent;
-@@ -16848,15 +16874,24 @@ const terminalIpc = registerTerminalIpc({
+@@ -18055,15 +18083,24 @@ const terminalIpc = registerTerminalIpc({
  
  const disposeTerminalSession = terminalIpc.disposeTerminalSession
  
@@ -261,7 +266,7 @@ index 888377d..26d23a1 100644
 +  return checkUpdates({ force: Boolean(opts?.force) }).catch(error => ({
      supported: true,
      branch: readDesktopUpdateConfig().branch,
-     error: 'check-failed',
+     error: error?.kind === GIT_UNUSABLE ? GIT_UNUSABLE : 'check-failed',
      message: error?.message || String(error),
      fetchedAt: Date.now()
    }))

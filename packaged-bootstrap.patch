@@ -229,15 +229,19 @@
  // passed as -Commit/--commit — only the branch is used (#50823 / #50864 review).
  function buildPinArgs(installStamp, { pinCommit = true } = {}) {
    const args = []
-@@ -871,6 +880,7 @@
+@@ -923,6 +923,7 @@ async function runBootstrap(opts) {
      onEvent,
      abortSignal,
      pinExistingCheckout = false,
 +    policyOnly = false,
-     writeMarker // callback to write the bootstrap-complete marker; main.ts provides
+     writeMarker, // callback to write the bootstrap-complete marker; main.ts provides
+     gitBinary // probed git path from main.ts; bare 'git' when absent
    } = opts
  
-@@ -947,8 +957,17 @@
+diff --git a/apps/desktop/electron/bootstrap-runner.ts b/apps/desktop/electron/bootstrap-runner.ts
+--- a/apps/desktop/electron/bootstrap-runner.ts
++++ b/apps/desktop/electron/bootstrap-runner.ts
+@@ -1006,8 +1016,17 @@
      abortSignal?.throwIfAborted()
  
 +    // main.ts only requests this for a healthy, completed install. Recheck HEAD
@@ -256,7 +260,7 @@
        protocolVersion: manifest.protocol_version || manifest.protocolVersion || null
      })
  
-@@ -957,7 +976,7 @@
+@@ -1014,7 +1033,7 @@
      //    invoked -- install.ps1's own -NonInteractive handler in those stages
      //    emits skipped=true. We trust the protocol rather than filtering
      //    client-side.
@@ -265,7 +269,7 @@
        if (abortSignal && abortSignal.aborted) {
          emit({ type: 'failed', error: 'bootstrap cancelled by user' })
  
-@@ -1025,6 +1044,21 @@
+@@ -1092,6 +1111,21 @@
    }
  }
  
@@ -287,7 +291,7 @@
  export {
    buildPinArgs,
    buildPosixPinArgs,
-@@ -1033,6 +1067,7 @@
+@@ -1100,6 +1134,7 @@
    installedAgentInstallScript,
    installRefForStamp,
    isPinnedCommit,
@@ -506,9 +510,9 @@
  import {
    BROWSER_WINDOW_HEIGHT,
    BROWSER_WINDOW_MIN_HEIGHT,
-@@ -4707,7 +4707,8 @@
+@@ -4976,7 +4976,8 @@ async function activeRuntimeState() {
  
-   return classifyActiveRuntime(readBootstrapMarker(), BOOTSTRAP_MARKER_SCHEMA_VERSION, isActiveRuntimeUsable(), {
+   return classifyActiveRuntime(readBootstrapMarker(), BOOTSTRAP_MARKER_SCHEMA_VERSION, usable, {
      activeCommit: expectedCommit ? resolveCheckoutHead(ACTIVE_HERMES_ROOT) : null,
 -    expectedCommit
 +    expectedCommit,
@@ -516,7 +520,7 @@
    })
  }
  
-@@ -4990,16 +4991,17 @@
+@@ -5281,16 +5282,17 @@ async function createActiveBackend(backendArgs) {
    }
  }
  
@@ -536,9 +540,9 @@
      installStamp: INSTALL_STAMP,
      isPackaged: IS_PACKAGED,
      platform: process.platform
-@@ -5041,12 +5043,12 @@
+@@ -5349,12 +5351,12 @@ async function resolveHermesBackend(backendArgs) {
    //    bootstrap when the runtime itself is unusable.
-   const activeRuntime = activeRuntimeState()
+   const activeRuntime = await activeRuntimeState()
  
 -  if (activeRuntime.usabilityReason === 'commit-mismatch') {
 +  if (activeRuntime.usabilityReason === 'commit-mismatch' || activeRuntime.usabilityReason === 'package-patch-missing') {
