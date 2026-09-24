@@ -1,6 +1,6 @@
 pkgbase = bottles-opener
 	pkgdesc = Double-click a file and it opens in its Windows program, inside its Bottles bottle
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/LoonixTools/bottles-opener
 	install = bottles-opener.install
@@ -22,7 +22,7 @@ pkgbase = bottles-opener
 	optdepends = libnotify: report files that could not be opened
 	optdepends = desktop-file-utils: refresh the desktop database after a change
 	optdepends = flatpak: open files with the Bottles Flatpak
-	source = bottles-opener-0.1.0.tar.gz::https://github.com/LoonixTools/bottles-opener/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 4120340cacb141feb4cbbd16475a894873bfff3f4b9ba969614918b68ae5ab6c
+	source = bottles-opener-0.1.1.tar.gz::https://github.com/LoonixTools/bottles-opener/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = ff9d50cf8737a0c1d4f43ed145e138de1f55c9ec3bed3d7a98234f104df15a64
 
 pkgname = bottles-opener
