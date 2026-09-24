@@ -1,0 +1,21 @@
+pkgbase = dockerview-bin
+	pkgdesc = A simple terminal-based Docker performance monitor that displays real-time container statistics in a beautiful table format
+	pkgver = 0.1.24
+	pkgrel = 1
+	url = https://github.com/zsuroy/dockerview-go
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = dockerview
+	conflicts = dockerview
+	options = !strip
+	source = README-0.1.24.md::https://raw.githubusercontent.com/zsuroy/dockerview-go/v0.1.24/README.md
+	source = LICENSE-0.1.24::https://raw.githubusercontent.com/zsuroy/dockerview-go/v0.1.24/LICENSE
+	sha256sums = 70db10b6643d9be32e9d46d2fcb2383db00c5de8810f8354af38d638cd7e09c5
+	sha256sums = cf24e4cc5e482fe153f66c4b6582cbca7142668b001009973d6d77eac23e68ad
+	source_x86_64 = dockerview-x86_64-0.1.24::https://github.com/zsuroy/dockerview-go/releases/download/v0.1.24/dockerview-linux-amd64
+	sha256sums_x86_64 = 85fb86e023fc6f13f7fa03ebc06eae5e681b0f73e0ad0362462472d7fb1920be
+	source_aarch64 = dockerview-aarch64-0.1.24::https://github.com/zsuroy/dockerview-go/releases/download/v0.1.24/dockerview-linux-arm64
+	sha256sums_aarch64 = f1db74ae6ca873f4f59d9a8c380064997de3f1ef422bbe85c052612e827d5edb
+
+pkgname = dockerview-bin

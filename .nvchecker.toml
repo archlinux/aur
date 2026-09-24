@@ -1,0 +1,5 @@
+[dockerview-bin]
+source = "github"
+github = "zsuroy/dockerview-go"
+use_latest_release = true
+prefix = "v"
