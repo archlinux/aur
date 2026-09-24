@@ -5,11 +5,11 @@ provides=(zalo)
 conflicts=(zalo)
 pkgver=26.9.10
 _zadarkver=26.2.1
-_commithash=ecfb96a
-pkgrel=1
+_commithash=a29823a
+pkgrel=2
 pkgdesc="Zalo for Linux"
-arch=('x86_64')
-url="https://github.com/doandat943/zalo-for-linux"
+arch=('x86_64' 'aarch64')
+url="https://github.com/VN-Linux-Family/zalo-for-linux"
 license=('MIT')
 depends=(
     'sqlite'
@@ -40,16 +40,19 @@ optdepends=(
     'gst-plugins-bad: 64-bit GStreamer plugins (pipewiresrc) for screen bridge'
 )
 source=(
-    "zalo.AppImage::https://github.com/doandat943/zalo-for-linux/releases/download/${pkgver}/Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}-ZaDark.AppImage"
     "zalo.desktop"
     "Zalo.png"
 )
+source_x86_64=("zalo.AppImage::https://github.com/VN-Linux-Family/zalo-for-linux/releases/download/${pkgver}/Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}-x86_64.AppImage")
+source_aarch64=("zalo.AppImage::https://github.com/VN-Linux-Family/zalo-for-linux/releases/download/${pkgver}/Zalo-${pkgver}+ZaDark-${_zadarkver}-${_commithash}-aarch64.AppImage")
 options=(!strip !debug)
 sha256sums=(
-    'dab4963ac18e8af84e4f7bcd694c3e1b7e0ab8bae74c7bd6c522db1c2f778ea1'
     'b9478f6156fc65858971ca8fb0cc0b94d327ed34f704ce4c614b10e7510dbfe9'
     '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
 )
+sha256sums_x86_64=('a88d418169504dcd60957faaf78b620701a4a3e12121115f21e104d7049ce4b6')
+sha256sums_aarch64=('ae0e3d3cb287da0e031c0a9d4e39418b42bd41eeb8f8411dd44840bb2d0efce4')
+
 package() {
     install -Dm755 "${srcdir}/zalo.AppImage" "${pkgdir}/usr/bin/zalo"
     install -Dm644 "${srcdir}/zalo.desktop" "${pkgdir}/usr/share/applications/zalo.desktop"
