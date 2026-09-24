@@ -1,0 +1,17 @@
+post_install() {
+  cat <<EOF
+Lenovo Vantage (unofficial) installed.
+
+The privileged daemon is NOT started automatically. Enable it with:
+
+    sudo systemctl daemon-reload
+    sudo systemctl enable --now vantaged.service
+
+If the daemon fails to own its D-Bus name, reload the system D-Bus once
+(sudo systemctl reload dbus) or reboot.
+
+Optional extras:
+  - supergfxctl: GPU mode switching in the GUI
+  - ryzenadj: custom TDP tuning on AMD CPUs
+EOF
+}
