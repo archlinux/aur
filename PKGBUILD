@@ -68,9 +68,9 @@ _prs=()
 # https://github.com/xbmc/libdvdnav/tags
 # https://github.com/xbmc/libdvdread/tags
 #
-_libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
-_libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
-_libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
+_libdvdcss_version="1.5.0"
+_libdvdnav_version="7.0.0"
+_libdvdread_version="7.0.1"
 _ffmpeg_version="9.0.2"
 _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
@@ -78,9 +78,9 @@ _flatbuffers_version="23.3.3"
 _libudfread_version="1.2.0"
 source=(
   "git+https://github.com/xbmc/xbmc.git#branch=$_codename"
-  "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
-  "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
-  "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
+  "https://mirrors.kodi.tv/build-deps/sources/libdvdcss-$_libdvdcss_version.tar.bz2"
+  "https://mirrors.kodi.tv/build-deps/sources/libdvdnav-$_libdvdnav_version.tar.bz2"
+  "https://mirrors.kodi.tv/build-deps/sources/libdvdread-$_libdvdread_version.tar.bz2"
   "https://ffmpeg.org/releases/ffmpeg-$_ffmpeg_version.tar.xz"
   "https://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
@@ -88,9 +88,9 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.bz2"
 )
 noextract=(
-  "libdvdcss-$_libdvdcss_version.tar.gz"
-  "libdvdnav-$_libdvdnav_version.tar.gz"
-  "libdvdread-$_libdvdread_version.tar.gz"
+  "libdvdcss-$_libdvdcss_version.tar.bz2"
+  "libdvdnav-$_libdvdnav_version.tar.bz2"
+  "libdvdread-$_libdvdread_version.tar.bz2"
   "ffmpeg-$_ffmpeg_version.tar.xz"
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
@@ -178,15 +178,16 @@ build() {
     -DENABLE_INTERNAL_FSTRCMP=ON
     -DENABLE_INTERNAL_FLATBUFFERS=ON
     -DENABLE_INTERNAL_UDFREAD=ON
+    -DLIBDVDCSS_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.bz2"
+    -DLIBDVDNAV_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.bz2"
+    -DLIBDVDREAD_URL="$srcdir/libdvdread-$_libdvdread_version.tar.bz2"
     -DENABLE_SSE=ON -DENABLE_SSE2=ON -DENABLE_SSE3=ON -DENABLE_SSSE3=ON
     -DENABLE_SSE4_1=ON -DENABLE_SSE4_2=ON -DENABLE_AVX=ON -DENABLE_AVX2=ON
-    -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz"
-    -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz"
-    -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz"
     -DFFMPEG_URL="$srcdir/ffmpeg-$_ffmpeg_version.tar.xz"
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
+    -DFLATC_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.bz2"
     -DAPP_RENDER_SYSTEM=$_renderer
   )
