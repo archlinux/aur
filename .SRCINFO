@@ -1,7 +1,7 @@
 pkgbase = nordvpn-gui
 	pkgdesc = GUI for NordVPN
 	pkgver = 5.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://nordvpn.com
 	arch = x86_64
 	license = GPL-3.0-only
