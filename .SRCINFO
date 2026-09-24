@@ -1,0 +1,19 @@
+pkgbase = libvirt-iso-endeavouros-bin
+	pkgdesc = Official EndeavourOS installation ISO for libvirt
+	pkgver = 2026.08.15
+	pkgrel = 1
+	url = https://endeavouros.com/
+	arch = x86_64
+	license = LicenseRef-Various
+	checkdepends = libarchive
+	checkdepends = squashfs-tools
+	noextract = EndeavourOS_Titan-Nova-2026.08.15.iso
+	source = EndeavourOS_Titan-Nova-2026.08.15.iso::https://mirror.moson.org/endeavouros/iso/EndeavourOS_Titan-Nova-2026.08.15.iso
+	source = EndeavourOS_Titan-Nova-2026.08.15.iso.sig::https://mirror.moson.org/endeavouros/iso/EndeavourOS_Titan-Nova-2026.08.15.iso.sig
+	source = DISTRIBUTION-LICENSE
+	validpgpkeys = 8F43FC374CD4CEEA19CEE323E3D8752ACDF595A1
+	sha512sums = 3f83bd745e9d5d518bdf6fc9a24092fb5347da449a6e109c6572bf999097b8b548c4cf1848fdfb3c7c2823f558c3f5b51a127060d9c5b81b9ad89b4041bee7fa
+	sha512sums = SKIP
+	sha512sums = e9646093ab4151048815230efa2de326f2fc932e7e5704bb1c08aa1ca29aa70107221c5e803ff7bbcf84fca2e0b7be47dc6c144b021cdbf0f898fb3ce64bc152
+
+pkgname = libvirt-iso-endeavouros-bin
