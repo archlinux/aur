@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "face_detection_yunet_2023mar.onnx::https://github.com/opencv/opencv_zoo/raw/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx"
         "face_recognition_sface_2021dec.onnx::https://github.com/opencv/opencv_zoo/raw/main/models/face_recognition_sface/face_recognition_sface_2021dec.onnx")
 noextract=('face_detection_yunet_2023mar.onnx' 'face_recognition_sface_2021dec.onnx')
-sha256sums=('e139a4f0b72af653deeca668d1e3fc2b3a11553c92ac8a81bcfca2db61f34ac1' '8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4' '0ba9fbfa01b5270c96627c4ef784da859931e02f04419c829e83484087c34e79')
+sha256sums=('30bd9e5d76f93f4e196e2eae76d1185370cb51fc9d9954355a42779cd8f60d15' '8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4' '0ba9fbfa01b5270c96627c4ef784da859931e02f04419c829e83484087c34e79')
 
 build() {
   make -C "${pkgname}-${pkgver}" VERSION="$pkgver"
