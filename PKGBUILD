@@ -1,11 +1,11 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=zapfast-bin
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
 url="https://zapfast.rocks"
-license=('MIT')
+license=('MIT' 'GPL-2.0-only')
 install="${pkgname}.install"
 # Nothing beyond libc is linked directly; winit and glutin dlopen these at
 # startup, and this is a GUI-only application, so all of them have to be
@@ -21,8 +21,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/zapfast"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/zapfast-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/zapfast-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('8a91080168c2186f9995950bf4c17ffb031e5edfb5739ca568812351b032ef9c')
-sha256sums_aarch64=('26773964919bb61293ead96faeb11af6c38071f6a08b53f90905a93b46ec7e59')
+sha256sums_x86_64=('9958de0db2bdb718dc06f050df0f7150efe21841e74d0b8d1957e87bf970e64a')
+sha256sums_aarch64=('5532c12cfc3e0cd239dcf9d5e0228b19187fd2a5934712ca8860fc65b60b95fa')
 
 package() {
   local target
@@ -34,6 +34,7 @@ package() {
 
   install -Dm755 "${dir}/zapfast" "${pkgdir}/usr/bin/zapfast"
   install -Dm644 "${dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${dir}/THIRD-PARTY-NOTICES.md" "${pkgdir}/usr/share/licenses/${pkgname}/THIRD-PARTY-NOTICES.md"
   install -Dm644 "${dir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "${dir}/packaging/applications/zapfast.desktop" \
     "${pkgdir}/usr/share/applications/zapfast.desktop"
