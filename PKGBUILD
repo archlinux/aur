@@ -27,23 +27,27 @@ source=(
   'glibc2.30-ipc_perm.patch'
   '78_all-libsanitizer-Fix-build-with-glibc-2.42.patch'
   '79_all-sanitizer_common-Remove-reference-to-obsolete-termio.patch'
+  '0000-kernel-7.1-remove-linux-scc.patch'
 )
 md5sums=('0f70424213b4a1113c04ba66ddda0c1f'
          '11436d6b205e516635b666090b94ab32'
          'c0426ff7146e4fb5bf7f25d7b753afb9'
          '24d6c1b1cc6e0cc59e9de9ebe7b843dc'
          '448ca18637c7f91aaceb7ac8fef67943'
-         '529b03e5fb9fb4e4da85a9ee672d869a')
+         '529b03e5fb9fb4e4da85a9ee672d869a'
+         '63cea3f3613b837d327a1ddfcda38e1c')
 sha256sums=('530cea139d82fe542b358961130c69cfde8b3d14556370b65823d2f91f0ced87'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
             'c2abe9f166502120eabc8701160e52f06c24ef73673239a0532bc55a158cc550'
             '66a0885262fe49dc318b58f629c3fe8324bd234f97f99316284aefb95fca555f'
             '3dea145005227f24b3d357c7627e5848b9e575b2cc255175339970c601698709'
-            '4253e09721286bfb038b377f4dc98947657feb628b3c7c872a1991c1d78f46cf')
+            '4253e09721286bfb038b377f4dc98947657feb628b3c7c872a1991c1d78f46cf'
+            '7c3bdc5f194ce01a1fd8766e8be2e2ab550a3d2e1ed4ab067525f73971b3c66a')
 
   _basedir="gcc-${pkgver}"
 
 prepare() {
+  local -
   set -u
   cd "${_basedir}"
 
@@ -69,16 +73,17 @@ prepare() {
       ;;
     esac
   done
+  #cd ..; cp -pr "${_basedir}" 'a'; ln -sr "${_basedir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   echo "${pkgver}" > 'gcc/BASE-VER'
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
-
-  set +u
 }
 
 build() {
+  local -
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -126,10 +131,10 @@ build() {
   #    [Makefile:605: libstdc++.la] Error 139
   LD_PRELOAD='/usr/lib/libstdc++.so' \
   nice -n1 make -s
-  set +u
 }
 
 package() {
+  local -
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -146,6 +151,5 @@ package() {
   # Install Runtime Library Exception
   install -Dpm644 '../COPYING.RUNTIME' \
     "${pkgdir}/usr/share/licenses/${pkgname}/RUNTIME.LIBRARY.EXCEPTION" || :
-  set +u
 }
 set +u

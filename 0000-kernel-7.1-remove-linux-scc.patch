@@ -1,0 +1,41 @@
+The <linux/scc.h> header was removed from the Linux kernel in Apr 2026,
+so references to it need to be removed for GCC to build. Thankfully,
+this header appears to be unused. This solution was adapted from the one
+found by the LLVM project:
+https://github.com/llvm/llvm-project/issues/194110
+
+Nathan Williams
+
+NetBSD: patch-libsanitizer_sanitizer__common_sanitizer__platform__limits__posix.cpp
+OpenSUSE: compiler-rt-Remove-linux-scc-h.patch
+
+gcc5
+
+diff -pNaru5 a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc
+--- a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2026-09-21 21:20:34.016299256 -0400
++++ b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2026-09-21 21:21:19.983376271 -0400
+@@ -142,11 +142,10 @@
+ #include <linux/if_eql.h>
+ #include <linux/if_plip.h>
+ #include <linux/lp.h>
+ #include <linux/mroute.h>
+ #include <linux/mroute6.h>
+-#include <linux/scc.h>
+ #include <linux/serial.h>
+ #include <sys/msg.h>
+ #include <sys/ipc.h>
+ #endif // SANITIZER_LINUX && !SANITIZER_ANDROID
+ 
+@@ -397,12 +396,10 @@ namespace __sanitizer {
+   unsigned struct_kbentry_sz = sizeof(struct kbentry);
+   unsigned struct_kbkeycode_sz = sizeof(struct kbkeycode);
+   unsigned struct_kbsentry_sz = sizeof(struct kbsentry);
+   unsigned struct_mtconfiginfo_sz = sizeof(struct mtconfiginfo);
+   unsigned struct_nr_parms_struct_sz = sizeof(struct nr_parms_struct);
+-  unsigned struct_scc_modem_sz = sizeof(struct scc_modem);
+-  unsigned struct_scc_stat_sz = sizeof(struct scc_stat);
+   unsigned struct_serial_multiport_struct_sz
+       = sizeof(struct serial_multiport_struct);
+   unsigned struct_serial_struct_sz = sizeof(struct serial_struct);
+   unsigned struct_sockaddr_ax25_sz = sizeof(struct sockaddr_ax25);
+   unsigned struct_unimapdesc_sz = sizeof(struct unimapdesc);
