@@ -1,7 +1,7 @@
 # Maintainer: Rockykln <contact@rockykln.com>
 pkgname=podctl-git
 _pkgname=podctl
-pkgver=0.2.0.r37.gc02f3f9
+pkgver=0.3.0.r48.g568ce06
 pkgrel=1
 pkgdesc="Linux control suite for AirPods — daemon, CLI, tray icon and case-open popup (git HEAD)"
 arch=('x86_64' 'aarch64')
