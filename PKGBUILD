@@ -6,7 +6,7 @@ _webui_cid='bafybeiciqeyipumpmhxzlxnbqdbbv6u5uij4hy4wax64dmj7kvrhusiq6y'
 
 pkgname='ipfs-desktop'
 pkgver='0.50.1'
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Desktop client for the InterPlanetary File System'
 arch=('x86_64')
@@ -22,6 +22,7 @@ license=(
 	'OFL-1.1'
 	'Python-2.0'
 )
+replaces=('ipfs-desktop-electron')
 depends=(
 	"${_electron_pkg}"
 	'kubo>=0.43.1'
