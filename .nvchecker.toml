@@ -1,0 +1,5 @@
+[parts-of-speech-bin]
+source = "github"
+github = "vmargb/parts-of-speech"
+use_latest_release = true
+prefix = "v"

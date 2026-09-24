@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Parts Of Speech
+GenericName=Parts Of Speech
+Comment=Record voice-overs with a studio-like review workflow
+Icon=parts-of-speech
+StartupWMClass=parts-of-speech
+Type=Application
+Categories=AudioVideo;Audio;AudioVideoEditing;
+Keywords=sound;audio recording;
+Exec=parts-of-speech
+StartupNotify=false
+Terminal=false
