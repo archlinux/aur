@@ -1,0 +1,24 @@
+pkgbase = bilibili-live-obs-bin
+	pkgdesc = B站直播工具 OBS 插件 - 扫码登录/开播/停播/分区管理（官方 .deb 预编译版）
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/devcxl/bilibili-live-obs-plugin
+	arch = x86_64
+	license = MIT
+	depends = obs-studio>=30.0
+	depends = qt6-base
+	depends = qt6-websockets
+	depends = qt6-multimedia
+	depends = curl
+	depends = qrencode
+	depends = openssl
+	depends = brotli
+	depends = zlib
+	provides = bilibili-live-obs
+	conflicts = bilibili-live-obs
+	options = !strip
+	options = !debug
+	source = bilibili-live-obs-0.7.0.deb::https://github.com/devcxl/bilibili-live-obs-plugin/releases/download/v0.7.0/bilibili-live-obs_0.7.0_amd64.deb
+	sha256sums = 7a9ea0ed6018a85d744e513d7023ec8c947c612be63aa973aa19f518e634ae9d
+
+pkgname = bilibili-live-obs-bin
