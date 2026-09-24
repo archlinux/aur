@@ -1,6 +1,6 @@
 # Maintainer: exceptionptr <https://github.com/exceptionptr>
 pkgname=tsm-app
-pkgver=1.1.15
+pkgver=1.1.16
 pkgrel=1
 pkgdesc="TradeSkillMaster Desktop App for Linux - auction data downloader for WoW under Wine/Lutris/Steam"
 arch=('x86_64')
@@ -30,7 +30,7 @@ makedepends=(
     'git'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2e9e74ad7c66e2eddc448a10dfebabdea3717d17ab7669e4b1add39f7f3d0284')
+sha256sums=('28d5d5175fd270a3bac2798b7065301a37d9a4e67026724bfb65eeedadc9258b')
 
 build() {
     cd "$srcdir/tsm-app-linux-$pkgver"
