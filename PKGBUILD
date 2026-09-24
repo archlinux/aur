@@ -3,7 +3,7 @@
 
 pkgname=git-orchard
 _pkgname=git-orchard
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A command-line utility for managing git-subtrees.'
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url='https://github.com/jmelahman/git-orchard'
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='05a021adff171d3ac1c7aa6cc863be17e7611d51'
+_commit='50de16612d3ebcd745b8feb5bb4d3637b732140d'
 source=("${_pkgname}::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
