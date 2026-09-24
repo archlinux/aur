@@ -1,0 +1,19 @@
+pkgbase = carabiner-bin
+	pkgdesc = A unified CLI for managing AI rules and configuration across AI coding agent harnesses
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/findyourexit/carabiner
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = carabiner
+	conflicts = carabiner
+	options = !strip
+	source_x86_64 = carabiner-x86_64-0.1.6.tgz::https://github.com/findyourexit/carabiner/releases/download/v0.1.6/carabiner-0.1.6-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 04f49084ebf0e853125a43d39fbd634828e1e0f148d94505cc25bc17a473ba6c
+	source_aarch64 = carabiner-aarch64-0.1.6.tgz::https://github.com/findyourexit/carabiner/releases/download/v0.1.6/carabiner-0.1.6-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ae9e2e444494f3c87598b3d83392448e7d0c11f4053528bd94a1c9573d366f08
+
+pkgname = carabiner-bin

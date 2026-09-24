@@ -1,0 +1,5 @@
+[carabiner-bin]
+source = "github"
+github = "findyourexit/carabiner"
+use_latest_release = true
+prefix = "v"
