@@ -140,7 +140,7 @@ DESKTOP
 
   # 符号链接
   mkdir -p "$pkgdir/usr/bin"
-  ln -s /usr/lib/vantage/vantage "$pkgdir/usr/bin/vantage"
+  ln -sf /usr/lib/vantage/vantage "$pkgdir/usr/bin/vantage"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
