@@ -1,0 +1,14 @@
+# Reload the SpaceMouse udev rule so an already plugged in device works
+# without a replug
+_reload_udev() {
+  udevadm control --reload >/dev/null 2>&1 || true
+  udevadm trigger --subsystem-match=hidraw >/dev/null 2>&1 || true
+}
+
+post_install() {
+  _reload_udev
+}
+
+post_upgrade() {
+  _reload_udev
+}
