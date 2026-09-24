@@ -1,6 +1,6 @@
 # Maintainer: Lemuel De Los Santos <aur@lemueldls.dev>
 pkgname=typbase
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Local-first knowledge base made for Typst and the Atmosphere."
 arch=('x86_64')
@@ -10,15 +10,11 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 makedepends=('cargo' 'nodejs' 'pnpm' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'wasm-pack')
 options=('!strip' '!emptydirs')
 source=("typbase-v$pkgver.tar.gz::https://github.com/lemueldls/typbase/archive/refs/tags/typbase-v$pkgver.tar.gz")
-sha256sums=('14bfedc69913b1235d6ea13d318909ebd2f148f75afeed4a836fdcafb57a113a')
+sha256sums=('96d54dfa34c6d6bb6b943cb91e33cb0e89b307ebfadb4fcd20148f440fad17da')
 _builddir="$pkgname-typbase-v$pkgver"
 
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
-    # moon reads the VCS revision during the Tauri build; the release tarball
-    # carries no git metadata, so give it a repository with a HEAD.
-    git init -q
-    git -c user.email=build@localhost -c user.name=build commit -q --allow-empty -m release
     export RUSTUP_TOOLCHAIN=stable
     rustup toolchain install $RUSTUP_TOOLCHAIN --profile minimal --no-self-update
     rustup target add wasm32-unknown-unknown
@@ -33,6 +29,9 @@ build() {
     export CFLAGS="${CFLAGS//-flto=auto//}"
     export NUXT_PUBLIC_APP_URL="https://typbase.at"
     cd apps/native || exit 1
+    # tauri.package.conf.json points beforeBuildCommand at
+    # `pnpm -w run generate:direct`, so the frontend builds without moon and
+    # the tarball's missing git metadata is fine.
     pnpm tauri build -b deb -c tauri.package.conf.json
 }
 
