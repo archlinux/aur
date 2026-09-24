@@ -1,12 +1,13 @@
 pkgbase = zapfast-git
 	pkgdesc = Fast native WhatsApp client built with Rust and egui
-	pkgver = 0.15.0.r1.a341f5c
+	pkgver = 0.16.0.r0.7993659
 	pkgrel = 1
 	url = https://zapfast.rocks
 	install = zapfast-git.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = cargo
 	makedepends = cmake

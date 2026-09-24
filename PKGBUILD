@@ -1,11 +1,11 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=zapfast-git
-pkgver=0.15.0.r1.a341f5c
+pkgver=0.16.0.r0.7993659
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
 url="https://zapfast.rocks"
-license=('MIT')
+license=('MIT' 'GPL-2.0-only')
 install="${pkgname}.install"
 depends=('alsa-lib' 'alsa-plugins' 'libglvnd' 'libxkbcommon' 'libxkbcommon-x11' 'wayland' 'libx11' 'libxcb' 'libxcursor' 'libxi' 'libxrandr')
 makedepends=('git' 'cargo' 'cmake' 'perl')
@@ -60,6 +60,7 @@ package() {
 
   install -Dm755 "target/release/zapfast" "${pkgdir}/usr/bin/zapfast"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "THIRD-PARTY-NOTICES.md" "${pkgdir}/usr/share/licenses/${pkgname}/THIRD-PARTY-NOTICES.md"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "packaging/applications/zapfast.desktop" \
     "${pkgdir}/usr/share/applications/zapfast.desktop"
