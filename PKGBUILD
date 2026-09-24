@@ -1,10 +1,11 @@
 # Maintainer: Rasmus Steinke <rasi@xssn.at>
 #
-# Melody, rewritten: one C++ engine that owns the library and playback,
-# speakers that find it on the network, and a scripting CLI. Not the Go
-# daemon this package used to build -- see melody.install.
+# Melody, rewritten: one C++ engine that owns the library and playback, and
+# speakers that find it on the network. Not the Go daemon this package used
+# to build -- see melody.install. The command line is melody-cli-git, a
+# package of its own so it builds without the engine.
 pkgbase=melody-git
-pkgname=(melody-git melodyd-git melody-agent-git melody-cli-git)
+pkgname=(melody-git melodyd-git melody-agent-git)
 pkgver=r421.gadb8d61
 pkgrel=1
 pkgdesc='Music engine, speakers and command line (built from HEAD)'
@@ -28,7 +29,7 @@ build() {
   cmake --preset release -DCMAKE_INSTALL_PREFIX=/usr \
     -DTRACKKNIFE_BUILD_UI=OFF -DBUILD_TESTING=OFF -DTRACKKNIFE_BUILD_BENCHMARKS=OFF \
     -DTRACKKNIFE_WARNINGS_AS_ERRORS=OFF
-  cmake --build build/release --target trackknife_engine_daemon melody_agent melody_cli
+  cmake --build build/release --target trackknife_engine_daemon melody_agent
 }
 
 _install() {
@@ -58,12 +59,4 @@ package_melody-agent-git() {
   conflicts=(melody-agent)
   install=melody-agent.install
   _install agent
-}
-
-package_melody-cli-git() {
-  pkgdesc='Melody engines from the shell: playback, the queue, the library by words'
-  depends=(libutf8proc)
-  provides=(melody-cli)
-  conflicts=(melody-cli)
-  _install cli
 }

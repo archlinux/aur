@@ -55,9 +55,3 @@ pkgname = melody-agent-git
 	depends = taglib
 	provides = melody-agent
 	conflicts = melody-agent
-
-pkgname = melody-cli-git
-	pkgdesc = Melody engines from the shell: playback, the queue, the library by words
-	depends = libutf8proc
-	provides = melody-cli
-	conflicts = melody-cli
