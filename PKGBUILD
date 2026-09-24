@@ -3,8 +3,8 @@
 pkgbase=cataclysm-tlg-bin
 pkgname=(cataclysm-tlg-bin cataclysm-tlg-tiles-bin)
 pkgname=cataclysm-tlg-bin
-_tagver=1.0-2026-09-22-0609
-pkgver=1.0.r20260922.0609
+_tagver=1.0-2026-09-24-0932
+pkgver=1.0.r20260924.0932
 pkgrel=1
 pkgdesc="Cataclysm: The Last Generation, a post-apocalyptic roguelike (fork of DDA) (curses)"
 url="https://cataclysmtlg.com/"
@@ -23,8 +23,8 @@ source=(
 	"$pkgbase-tiles.tar.gz::$_downloadurl/ctlg-linux-tiles-sounds-x64-${_tagver#*-}.tar.gz"
 )
 sha256sums=(
-	'001e11b3d4ec42a8ff84bc8938c976f38ee0370ce8ac5fe8dacb5e01f890a05f'
-	'ac300b56128979ac7b613509a891a9734217237738fc0c9d1cfc46ee54f0fefc'
+	'1a350b11fd5d88ad2e509364754733b6a073445b750e4c7356bd4307dd1871c4'
+	'f416172648149e74ee17f76d4e111cdc9ec4d63663437026b896ab50c0bdf78c'
 )
 # Both tarballs extract into the same dir ($_tlgdir); extract manually
 noextract=("$pkgbase-curses.tar.gz" "$pkgbase-tiles.tar.gz")
