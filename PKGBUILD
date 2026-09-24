@@ -9,7 +9,7 @@ pkgdesc="CppCMS is the web development framework written in C++, that is aimed o
 arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="http://cppcms.sourceforge.net/"
 license=('LGPL')
-depends=('pcre' 'zlib')
+depends=('pcre' 'zlib' 'icu' 'python2')
 makedepends=('cmake' 'python2')
 optdepends=(
   'sqlite: Sqlite3 session storage.'
