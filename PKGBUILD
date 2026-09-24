@@ -4,13 +4,14 @@
 _pkgname=hplip-printer-app
 pkgname="${_pkgname}-git"
 pkgver=1.0+r142.20260109.b3fc7f3
-pkgrel=1
+pkgrel=2
 pkgdesc="HPLIP Printer Application"
 url='https://github.com/OpenPrinting/hplip-printer-app'
 license=("Apache-2.0")
 arch=('x86_64')
 depends=(
   #'cups-filters>=2' 'cups-filters<3'
+  'cups'  # For '/usr/lib/cups/', to which this package symlinks '/usr/lib/hplip-printer-app/'.
   'glibc'
   'hplip' # For 'hp-probe'.
   'libcups'
@@ -80,6 +81,8 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   make DESTDIR="${pkgdir}/" install
+
+  install -Dvm644 -t "${pkgdir}"/usr/lib/systemd/system/ hplip-printer-app.service
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      git.log CODE_OF_CONDUCT.md README.md NOTICE
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  LICENSE
