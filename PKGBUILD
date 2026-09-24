@@ -1,4 +1,4 @@
-# Maintainer: Lukas Heiligenbrunner <lukas.heiligenbrunner@gmail.com>
+# Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 #
 # The legacy Docker build executor, packaged separately from aurcache-worker
 # because it needs none of what that package needs: it delegates each build to
@@ -16,7 +16,7 @@ pkgver=0.5.0
 pkgrel=1
 pkgdesc="Legacy Docker build executor for AURCache (deprecated)"
 arch=(x86_64 aarch64 armv7h)
-url="https://github.com/Lukas-Heiligenbrunner/AURCache"
+url="https://github.com/gyscos/AURCache"
 license=(GPL-3.0-or-later)
 # It speaks to the Docker socket directly through bollard, so it needs neither
 # the docker CLI nor a local daemon -- the socket may well be the host's.

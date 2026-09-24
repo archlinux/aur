@@ -2,7 +2,7 @@ pkgbase = aurcache-worker-docker
 	pkgdesc = Legacy Docker build executor for AURCache (deprecated)
 	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://github.com/Lukas-Heiligenbrunner/AURCache
+	url = https://github.com/gyscos/AURCache
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
@@ -15,7 +15,7 @@ pkgbase = aurcache-worker-docker
 	options = !strip
 	options = !lto
 	options = !debug
-	source = aurcache-worker-docker-0.5.0.tar.gz::https://github.com/Lukas-Heiligenbrunner/AURCache/archive/refs/tags/v0.5.0.tar.gz
+	source = aurcache-worker-docker-0.5.0.tar.gz::https://github.com/gyscos/AURCache/archive/refs/tags/v0.5.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = aurcache-worker-docker
