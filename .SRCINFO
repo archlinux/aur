@@ -1,0 +1,18 @@
+pkgbase = rust-dos
+	pkgdesc = An x86 DOS emulator written in Rust, with Sound Blaster, AdLib, Gravis Ultrasound and General MIDI sound and CRT shaders
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/dividebysandwich/rust-dos
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = sdl2
+	optdepends = soundfont-fluid: General MIDI SoundFont for the MPU-401 (soundfont= in [sound])
+	source = rust-dos-0.4.1.tar.gz::https://github.com/dividebysandwich/rust-dos/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 4be473e90787260bade31457fb879af7e73fe31c90f7da0a4747b16d7d693560
+
+pkgname = rust-dos
