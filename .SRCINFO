@@ -1,6 +1,6 @@
 pkgbase = elephant-windows
 	pkgdesc = windows provider for elephant
-	pkgver = 2.22.0
+	pkgver = 2.22.1
 	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = elephant-windows
 	depends = fd
 	provides = elephant-windows
 	conflicts = elephant-windows
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.22.0.tar.gz
-	sha256sums = c6caa61727e4b5c3981099943b4b616c338a6e1b4e33b5e1d32078b8e4dbe120
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.22.1.tar.gz
+	sha256sums = 3d1d0d4c55ae531fa3f06406b96504b5165a0d7b53523d1f8351d9d93e457f44
 
 pkgname = elephant-windows
