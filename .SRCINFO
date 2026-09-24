@@ -1,0 +1,21 @@
+pkgbase = openxr-vr-control
+	pkgdesc = Controller bindings for OpenVR and OpenXR games on Linux (obah + xrBinder) with a GUI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yakuda-stack/OpenXR-VR-Control
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = pyside6
+	depends = python-setproctitle
+	optdepends = obah-git: OpenVR-Bindings (wird sonst per Cargo gebaut)
+	optdepends = rust: obah per Cargo bauen
+	optdepends = cmake: xrBinder bauen (OpenXR-Tastenbelegung)
+	optdepends = git: xrBinder-Quellcode holen
+	optdepends = yay: obah ueber den AUR installieren
+	provides = openxr-vr-control
+	conflicts = openxr-vr-control-git
+	source = openxr-vr-control-1.0.0.tar.gz::https://github.com/yakuda-stack/OpenXR-VR-Control/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 417109af27d81dadc08e57746802dca7c0c48172c15b036007b423f2e26b1884
+
+pkgname = openxr-vr-control
