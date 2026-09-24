@@ -2,7 +2,7 @@
 
 pkgname=python-lance-namespace
 _pkgname=lance_namespace
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Lance Namespace interface and plugin registry"
 arch=('any')
@@ -22,7 +22,14 @@ checkdepends=(
 )
 _archive="lance-namespace-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e6fce787eb7ae088029b50cca1bfc0abfd00541eed9386f2cc3981f8ed6ac6b7')
+sha256sums=('8250cd149a3d860ac26772f37fe806c7660b8d60f35d2bab1cbdc2e8327d41f5')
+
+prepare() {
+    cd "$srcdir/$_archive/python/$_pkgname"
+    # Exclude tests when creating the wheel so its RECORD describes exactly
+    # the installed payload. The source tests remain available to check().
+    sed -i '/^packages = \["lance_namespace"\]$/a exclude = ["lance_namespace/tests"]' pyproject.toml
+}
 
 build() {
     cd "$srcdir/$_archive/python/$_pkgname"
@@ -82,8 +89,5 @@ PY
 package() {
     cd "$srcdir/$_archive/python/$_pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    local _site
-    _site=$(python -c 'import site; print(site.getsitepackages()[0])')
-    rm -rf "$pkgdir$_site/lance_namespace/tests"
     install -Dm644 "$srcdir/$_archive/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

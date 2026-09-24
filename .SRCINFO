@@ -1,6 +1,6 @@
 pkgbase = python-lance-namespace
 	pkgdesc = Lance Namespace interface and plugin registry
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/lance-format/lance-namespace
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-lance-namespace
 	makedepends = python-installer
 	makedepends = python-hatchling
 	depends = python
-	depends = python-lance-namespace-urllib3-client=0.12.0
-	source = python-lance-namespace-0.12.0.tar.gz::https://github.com/lance-format/lance-namespace/archive/refs/tags/v0.12.0.tar.gz
-	sha256sums = e6fce787eb7ae088029b50cca1bfc0abfd00541eed9386f2cc3981f8ed6ac6b7
+	depends = python-lance-namespace-urllib3-client=0.13.0
+	source = python-lance-namespace-0.13.0.tar.gz::https://github.com/lance-format/lance-namespace/archive/refs/tags/v0.13.0.tar.gz
+	sha256sums = 8250cd149a3d860ac26772f37fe806c7660b8d60f35d2bab1cbdc2e8327d41f5
 
 pkgname = python-lance-namespace
