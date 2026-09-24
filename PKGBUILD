@@ -2,15 +2,14 @@
 
 pkgname=python-typeshed-client
 _name=typeshed_client
-pkgver=2.12.0
-pkgrel=2
+pkgver=2.13.0
+pkgrel=1
 pkgdesc='Library for accessing and resolving type stubs from typeshed'
 arch=('any')
 url='https://github.com/JelleZijlstra/typeshed_client'
 license=('MIT')
 depends=(
   'python>=3.9'
-  'python-importlib_resources>=1.4.0'
   'python-typing_extensions>=4.5.0'
 )
 makedepends=(
@@ -24,7 +23,7 @@ source=(
   'LICENSE'
 )
 sha256sums=(
-  'e8ad507a8cb776e45c9a757b2ab3101ef53dfdf8528319e49669ee454d05f671'
+  'f26f199ca162b55f6dcbfc23eb964df1ce68654e517a211c6f2c2da0915dcef7'
   'febc00dc5a0557ca8afbcdc6d3896731dc42f4cecabd87e6c98326212f8dbf36'
 )
 
