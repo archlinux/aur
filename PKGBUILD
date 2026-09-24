@@ -18,12 +18,14 @@ license=(GPL-3.0-or-later)
 
 # devtools is what the worker shells out to, and it already brings fakeroot,
 # sudo, git, openssh, binutils and the VCS tools. python runs the patch that
-# confines the two places a PKGBUILD executes outside the chroot.
+# confines the two places a PKGBUILD executes outside the chroot. iptables
+# lets the worker firewall the build user off the worker-protocol port, which
+# a crafted PKGBUILD could otherwise use to submit a rogue registration.
 #
 # Deliberately not base-devel: the compiler toolchain is installed inside each
 # build's chroot by `mkarchroot ... base-devel`, never on the host. The host
 # only downloads and verifies sources, which devtools covers.
-depends=(gcc-libs devtools python aurcache-sandbox)
+depends=(gcc-libs devtools python aurcache-sandbox iptables)
 makedepends=(cargo git)
 # Cross-compiling to aarch64 additionally needs aarch64-linux-gnu-gcc; build()
 # says so if it is missing. It is not in makedepends because it is only needed
