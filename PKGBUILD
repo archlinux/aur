@@ -2,7 +2,7 @@
 
 pkgname=funkwhale-venv
 _pkgname=funkwhale
-pkgver=1.4.1
+pkgver=2.0.10
 pkgrel=1
 pkgdesc="A community-driven project that lets you listen and share music and audio within a decentralized, open network."
 arch=(any)
@@ -17,12 +17,12 @@ optdepends=('apache: to use the Apache web server'
 depends=('curl'
         'file'
         'ffmpeg'
-        'libjpeg'
+        'libjpeg-turbo'
         'libpqxx'
         'libsasl'
         'postgresql'
         'redis'
-        'python311'
+        'python313'
 )
 makedepends=(git)
 # do not strip for pip wheel libraries
@@ -41,10 +41,10 @@ source=("${_pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "env-template"
         "funkwhale_manage"
 )
-sha256sums=('795faf2f233fbc9e77a3a6eed224c1413b5ed4edda390f363afc0c022479ec73'
-            'f6d654a6f8d4cfbb1c59d86959d942529d49a1cdff0c77014645327c769105e0'
+sha256sums=('27c46f327912d1a1ade09d0199ac3f7c1dcac702b974ba27d7be8eb9166194d4'
+            '9cd17dcf1b3c09cfe49b70bf4407d45552ca416ca816480bebd2ceccfd64921c'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
-            '9e72558dee732c6783c597f5cb61e89ad346d4d3810d94f83afba2db580fb089'
+            '1e887126b1380dc614e014f6e80957019b711a9be61a2ba3a52aa9493c99f9b4'
             '5c821649d81d2d3a9aa52d872953696d5ae336906329a1c1b68871ce9c82fa59'
             '8f98e97b835225fdc2b89cfe2fa6f343d1fa36fdd5616c8585393ebd9c8169b8'
             'aecdf1a9283b6dc905820a5dd399bb00bbcab9819227ac438cb014d4ad1b5200'
@@ -82,7 +82,7 @@ package() {
   # create virtualenv and install python dependencies
   export PIP_DISABLE_PIP_VERSION_CHECK=1
   export PYTHONDONTWRITEBYTECODE=1
-  python3.11 -m venv "$pkgdir"/usr/share/webapps/funkwhale/virtualenv
+  python3.13 -m venv "$pkgdir"/usr/share/webapps/funkwhale/virtualenv
   source "$pkgdir"/usr/share/webapps/funkwhale/virtualenv/bin/activate
 
   pip install --upgrade pip wheel
