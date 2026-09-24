@@ -9,20 +9,24 @@
 
 _pkgname=ModusToolbox
 pkgname=modustoolbox-machine-learning-pack
-_pkgver=3.1.0
-pkgver=${_pkgver}.2661
+_pkgver=3.3.0
+pkgver=${_pkgver}.2864
 pkgrel=1
 pkgdesc="Enables you to use ModusToolbox Machine Learning tools and assets for all model deployment and validation within the ModusToolbox environment."
 arch=('x86_64')
 license=("LicenseRef-${pkgname}")
-depends=('dbus' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'krb5' 'libcups' 'libdrm' 'libglvnd' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' \
-    'openssl-1.1' 'pango' 'qt6-base' 'wayland' 'xcb-util-cursor' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'xdg-utils' 'zlib' 'zstd')
+depends=('dbus' 'glib2' 'glibc' 'gtk3' 'krb5' 'libcups' 'libdrm' 'libglvnd' 'libx11' 'libxcb'
+        'libxkbcommon' 'libxkbcommon-x11' 'openssl-1.1' 'pango' 'qt6-base' 'wayland' 'xcb-util-cursor'
+        'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'zlib' 'zstd'
+        'python-setuptools' 'python-tqdm' 'python-colorama' 'python-urllib3' 'python-hypothesis'
+        'python-filelock' 'python' 'python-packaging' 'python-pytest' 'python-scipy' 'python-typing_extensions'
+        'python-yaml' 'python-numpy' 'python-pillow' 'python-psutil' 'python-importlib-metadata'
+        )
 _url_package_name="modustoolboxpackmachinelearning"
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.${_url_package_name}"
 _source="${_url_package_name}_${pkgver}_Linux_x64.deb"
 source=("file://${_source}")
-sha256sums=('b9f4d462ee5bbc67c9b168b12068cd20b606f66561b73109c6214a6c60ddcc22')
-options=('!strip')
+sha256sums=('c263b792f1d75a1db174b7371e587152ce817938deb11ba7751eae5a90dd5353')
 
 
 prepare() {
@@ -51,5 +55,5 @@ package() {
 
     # Install license
     install -d ${pkgdir}/usr/share/licenses/${pkgname}
-    install -Dm644 ${srcdir}/usr/share/doc/ModusToolbox-Machine-Learning-Pack-${pkgver}/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
+    install -Dm644 ${srcdir}/usr/share/doc/${_pkgname}-Machine-Learning-Pack-${pkgver}/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
 }
