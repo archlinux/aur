@@ -1,6 +1,6 @@
 pkgbase = tpm2-kira
 	pkgdesc = TPM2-based TOTP authenticator with PCR policies
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/mrwiora/tpm2-kira
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = tpm2-kira
 	optdepends = tpm2-tools: for debugging and integration testing
 	conflicts = tpm2-kira-git
 	options = !debug
-	source = tpm2-kira-0.3.1.tar.gz::https://github.com/mrwiora/tpm2-kira/archive/refs/tags/0.3.1.tar.gz
-	sha256sums = dbf65b5deace90f3d8481d30e345ab69290cdec4f242ea0cee23a4a900bc390a
+	source = tpm2-kira-0.3.2.tar.gz::https://github.com/mrwiora/tpm2-kira/archive/refs/tags/0.3.2.tar.gz
+	sha256sums = 4d17b9161bed5fb26a44cc38cc06a0930f24a5829e8514a2d0c2268519bed3fb
 
 pkgname = tpm2-kira

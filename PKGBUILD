@@ -1,8 +1,8 @@
 # Maintainer: Matthias R. Wiora <matthias@wiora.io>
 pkgname=tpm2-kira
-pkgver=0.3.1
+pkgver=0.3.2
 # pkgver may not contain '-', but a prerelease tag can. Keep them separate.
-_tag=0.3.1
+_tag=0.3.2
 pkgrel=1
 pkgdesc="TPM2-based TOTP authenticator with PCR policies"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('mkinitcpio: for early boot integration'
             'tpm2-tools: for debugging and integration testing')
 conflicts=('tpm2-kira-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('dbf65b5deace90f3d8481d30e345ab69290cdec4f242ea0cee23a4a900bc390a')
+sha256sums=('4d17b9161bed5fb26a44cc38cc06a0930f24a5829e8514a2d0c2268519bed3fb')
 options=('!debug')
 
 # GitHub names the extracted directory after the tag, minus a leading 'v'.
