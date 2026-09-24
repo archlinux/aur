@@ -5,7 +5,7 @@
 _pkgname=qdrant-client
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=1.19.0
+pkgver=1.19.1
 pkgrel=1
 pkgdesc="Client library for the Qdrant vector search engine"
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
 )
 _archive="${_pkgname}-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d388bce332f2a28b253a229c4f6b58f2da0ff919267826ba51334f3809f0d2ca')
+sha256sums=('3000dedabf54ec0eb0356ab4d7bf8b45b4634e495647bd1d4e37bc1e25272531')
 
 build() {
     cd "${_archive}"
@@ -112,7 +112,7 @@ import tempfile
 
 from qdrant_client import QdrantClient, models
 
-assert importlib.metadata.version("qdrant-client") == "1.19.0"
+assert importlib.metadata.version("qdrant-client") == "1.19.1"
 with tempfile.TemporaryDirectory() as path:
     client = QdrantClient(path=path)
     client.create_collection(
