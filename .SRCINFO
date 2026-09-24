@@ -1,0 +1,20 @@
+pkgbase = quvyta-focus-git
+	pkgdesc = Productivity counter
+	pkgver = r15.543782b
+	pkgrel = 1
+	url = https://github.com/quvyta/focus
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	provides = qfocus
+	provides = quvyta-focus
+	conflicts = quvyta-focus
+	options = !lto
+	source = quvyta-focus::git+https://github.com/quvyta/focus
+	sha256sums = SKIP
+
+pkgname = quvyta-focus-git
