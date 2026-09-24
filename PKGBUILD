@@ -17,7 +17,7 @@ optdepends=('flatpak: cover Flatpak applications too'
             'desktop-file-utils: refresh the desktop database after a change')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1b27b257335c269ef0bf50ed3de66d5852686ce79cca55bc19f9d0c5239eaaf5')
+sha256sums=('532194f89bd09d2145544a7b671942ec644b79189ca522f516451359d572591a')
 
 build() {
   # pass the version being packaged so `middleclick-autoscroll --version`
