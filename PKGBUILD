@@ -2,7 +2,7 @@
 # Created with assistance from GLM 5.3 Flash.
 
 pkgname=coros-link-appimage
-pkgver=0.1.38
+pkgver=0.1.44
 pkgrel=1
 pkgdesc="Unofficial COROS watch companion — media sync, offline maps, route builder, and training analytics (AppImage)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('squashfs-tools')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/JunAkerBuilds/CorosLink/releases/download/v${pkgver}/CorosLink-${pkgver}.AppImage"
         "LICENSE::https://raw.githubusercontent.com/JunAkerBuilds/CorosLink/main/LICENSE")
-sha256sums=('75bb6c7b9dc9da96b47892151918bed105208d0568a80643ff4d19497f05b0fe'
+sha256sums=('8a1b1b96c39a3e64b541984bc4fa89354eb1f65448e9d9dd4e015ec38f79e519'
             '852251d268287b43ae09daa3cb5ece6ccb6cb03245da1ec7ad23d7054dc1a8da')
 
 prepare() {
