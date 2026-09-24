@@ -1,13 +1,13 @@
 pkgbase = hledger-lsp
 	pkgdesc = Language Server Protocol (LSP) implementation for hledger journal files
-	pkgver = 0.2.62
+	pkgver = 0.2.63
 	pkgrel = 1
 	url = https://github.com/juev/hledger-lsp
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = https://github.com/juev/hledger-lsp/archive/v0.2.62/hledger-lsp-0.2.62.tar.gz
-	sha256sums = a48ff1677940c5c40bb43278abb8fb58e611795e43ed4b135e7ffc2a15571459
+	source = https://github.com/juev/hledger-lsp/archive/v0.2.63/hledger-lsp-0.2.63.tar.gz
+	sha256sums = cf5ac3a7294d319c7c7145e4e6e01476020e3de77f09da4eeada382cdfaa56ea
 
 pkgname = hledger-lsp
