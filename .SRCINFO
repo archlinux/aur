@@ -1,0 +1,19 @@
+pkgbase = ry
+	pkgdesc = A fast static checker for the R language, written in Rust
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/sims1253/ry
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = libgcc
+	depends = glibc
+	conflicts = ry-bin
+	options = !lto
+	options = !debug
+	source = ry-0.11.0.tar.gz::https://github.com/sims1253/ry/archive/v0.11.0.tar.gz
+	sha512sums = dc08a23f4c4cc61c92535e4e9a60f862654fec54ec3c12b902589a0b463d7124d6167b3465a92916e98f99fd0c74ab23595af1c5f3c42fd41253b3fb0bf6eff5
+
+pkgname = ry
