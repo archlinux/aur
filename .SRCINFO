@@ -1,21 +1,21 @@
 pkgbase = droppoint-git
-	pkgdesc = Make drag-and-drop easier using DropPoint. Drag content without having to open side-by-side windows.(Use system-wide electron)
-	pkgver = 1.3.1.draft.1.r0.g8f1efa0
+	pkgdesc = Make drag-and-drop easier using DropPoint. Drag content without having to open side-by-side windows.
+	pkgver = 1.3.1.draft.1.r1.g137789d
 	pkgrel = 1
 	url = https://droppoint.netlify.app/
-	arch = x86_64
+	arch = any
 	license = GPL-3.0-or-later
-	makedepends = npm
+	makedepends = bun
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = curl
-	depends = electron21
+	makedepends = jq
+	depends = electron43
 	provides = droppoint=1.3.1.draft.1
 	conflicts = droppoint
 	source = droppoint.git::git+https://github.com/GameGodS3/DropPoint.git
 	source = droppoint.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = droppoint-git
