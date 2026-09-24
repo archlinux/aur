@@ -4,6 +4,7 @@ pkgbase = deepseek-harness-bin
 	pkgrel = 1
 	url = https://github.com/deepseek-ai/deepseek-harness
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = npm
 	depends = nodejs

@@ -1,0 +1,12 @@
+# makepkg-managed build directories.
+/src/
+/pkg/
+
+# Downloaded upstream npm source tarball.
+/dsh-*.tgz
+
+# Locally built Arch package archives.
+/*.pkg.tar.*
+
+# Source-package archives created by `makepkg --source`.
+/*.src.tar.*
