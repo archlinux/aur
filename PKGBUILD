@@ -19,7 +19,7 @@
 # rename (verified against the 0164 worktree). If the dist name ever changes,
 # update `_bitty_asset` here and in `release.yml` together.
 pkgname=bitty-bin
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal (prebuilt binary)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source_x86_64=(
   "bitty-${pkgver}.tar.gz::https://github.com/bitty-terminal/bitty/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums_x86_64=(
-  'b6ae62983fbe55a89ddb8365cb5bd650001858a3091d957a5e8f30da45ecd270'
+  '8281caa399c1748368886eb87f28e78c3180b2835df5cb24c9dacf3154427881'
   'SKIP'
 )
 
@@ -45,12 +45,10 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-  install -Dm644 packaging/bitty.desktop "${pkgdir}/usr/share/applications/bitty.desktop"
+  install -Dm644 packaging/run.bitty.Bitty.desktop "${pkgdir}/usr/share/applications/run.bitty.Bitty.desktop"
+  install -Dm644 packaging/run.bitty.Bitty.metainfo.xml "${pkgdir}/usr/share/metainfo/run.bitty.Bitty.metainfo.xml"
   for size in 16 32 64 128 256 512; do
     install -Dm644 "packaging/icons/hicolor/${size}x${size}/apps/bitty.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/bitty.png"
   done
   install -Dm644 packaging/icons/hicolor/scalable/apps/bitty.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/bitty.svg"
-  if [ -f terminfo/bitty.terminfo ]; then
-    install -Dm644 terminfo/bitty.terminfo "${pkgdir}/usr/share/terminfo/b/bitty"
-  fi
 }
