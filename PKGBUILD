@@ -1,13 +1,10 @@
 # Maintainer: Yubo Cao <cao2006721@gmail.com>
 
-# Unofficial packaging of an unmodified Flectar Mail source build. Flectar does
-# not produce or support this package; see TRADEMARKS.md upstream.
-
 pkgname=flectar-mail-git
 _srcname=mail
 pkgver=0.1.0alpha.5.r7.g9f062a8
-pkgrel=1
-pkgdesc='Native email client built with Rust and Slint (unofficial build from git main)'
+pkgrel=2
+pkgdesc='Native email client built with Rust and Slint'
 arch=('x86_64')
 url='https://github.com/flectar/mail'
 license=('AGPL-3.0-only')
@@ -17,13 +14,11 @@ depends=('dbus' 'fontconfig' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libx11'
 # rust >= 1.92 and python >= 3.11 (tomllib) are required by the upstream
 # manifest and by scripts/stage-linux-metadata.py respectively.
 makedepends=('git' 'rust' 'python' 'pkgconf')
-optdepends=('xdg-desktop-portal: OAuth sign-in through the system browser and native file dialogs'
-            'gnome-keyring: Secret Service provider for storing account credentials'
-            'kwallet: alternative Secret Service provider'
+optdepends=('org.freedesktop.secrets: storing account credentials'
             'gnupg: OpenPGP signing and encryption'
-            'pinentry: passphrase prompts for GnuPG')
+            'xdg-desktop-portal: native file dialogs')
 provides=("flectar-mail=$pkgver")
-conflicts=('flectar-mail' 'flectar-mail-bin')
+conflicts=('flectar-mail')
 # makepkg's `lto` option hands the C dependencies (aws-lc-sys, libsqlite3-sys)
 # -flto=auto while giving rustc -C linker-plugin-lto; rust-lld then cannot read
 # GCC's LTO bytecode and every symbol in those archives comes out undefined.
@@ -48,7 +43,7 @@ pkgver() {
     commits=$(git rev-list --count "$tag..HEAD")
     # Upstream tags carry a SemVer prerelease hyphen (v0.1.0-alpha.5). Dropping
     # it keeps the version legal for pacman and sorts prereleases before the
-    # eventual final 0.1.0, matching the scheme flectar-mail-bin uses.
+    # eventual final 0.1.0.
     printf '%s.r%s.g%s' "${tag#v}" "$commits" "$(git rev-parse --short=7 HEAD)" | sed 's/-//'
 }
 

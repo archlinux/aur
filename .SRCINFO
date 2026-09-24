@@ -1,7 +1,7 @@
 pkgbase = flectar-mail-git
-	pkgdesc = Native email client built with Rust and Slint (unofficial build from git main)
+	pkgdesc = Native email client built with Rust and Slint
 	pkgver = 0.1.0alpha.5.r7.g9f062a8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flectar/mail
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -21,14 +21,11 @@ pkgbase = flectar-mail-git
 	depends = libxkbcommon-x11
 	depends = wayland
 	depends = xdg-utils
-	optdepends = xdg-desktop-portal: OAuth sign-in through the system browser and native file dialogs
-	optdepends = gnome-keyring: Secret Service provider for storing account credentials
-	optdepends = kwallet: alternative Secret Service provider
+	optdepends = org.freedesktop.secrets: storing account credentials
 	optdepends = gnupg: OpenPGP signing and encryption
-	optdepends = pinentry: passphrase prompts for GnuPG
+	optdepends = xdg-desktop-portal: native file dialogs
 	provides = flectar-mail=0.1.0alpha.5.r7.g9f062a8
 	conflicts = flectar-mail
-	conflicts = flectar-mail-bin
 	noextract = pdfium-linux-x64-8044.tgz
 	options = !lto
 	source = git+https://github.com/flectar/mail.git
