@@ -1,6 +1,6 @@
 pkgbase = gnome-radio
 	pkgdesc = Easily find live radio programs based on geographical location of radio broadcasters on the Internet
-	pkgver = 83.0.3
+	pkgver = 83.0.4
 	pkgrel = 1
 	url = https://www.gnomeradio.org
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = gnome-radio
 	depends = goocanvas2
 	conflicts = gnome-internet-radio-locator
 	replaces = gnome-internet-radio-locator
-	source = http://www.gnomeradio.org/src/gnome-radio-83.0.3.tar.xz
-	sha256sums = e7f7e9bb65f311a3cfc835cb6640562a792398d7fb71df37774605c30abc0bcb
+	source = http://www.gnomeradio.org/src/gnome-radio-83.0.4.tar.xz
+	sha256sums = a9deac83b6b3465d4c48ca4b0d8d2c6f7193d4937c466e2c7ce4a64e8395194e
 
 pkgname = gnome-radio
