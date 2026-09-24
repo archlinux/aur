@@ -1,12 +1,11 @@
 pkgbase = yubico-authenticator-bin
 	pkgdesc = Cross-platform application for managing your YubiKey's second factor credentials (version 7)
 	pkgver = 7.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Yubico/yubioath-flutter
 	arch = x86_64
 	license = Apache-2.0
 	depends = ccid
-	depends = zenity
 	optdepends = gnome-screenshot: QR scanning feature on GNOME
 	optdepends = spectacle: QR scanning feature on KDE
 	provides = yubico-authenticator=7.4.1
