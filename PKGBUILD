@@ -1,6 +1,6 @@
 # Maintainer: mAmineChniti <emin.chniti@esprit.tn>
 pkgname=gb4me-git
-pkgver=r2.0a3b686
+pkgver=r5.730d09e
 pkgrel=1
 pkgdesc='Nintendo Game Boy / Game Boy Color emulator in C++23 (SDL3 + Vulkan)'
 arch=('x86_64')
@@ -28,12 +28,12 @@ package() {
 	cd "$srcdir/GB4ME"
 	DESTDIR="$pkgdir" cmake --install build
 
-	# Compiled SPIR-V shaders (glslc emits these POST_BUILD into build/bin/shaders).
+	# Compiled SPIR-V shaders (glslc emits these POST_BUILD into bin/shaders).
 	# The renderer searches /usr/share/GB4ME/shaders (see vulkan_renderer.cpp).
-	install -Dm644 build/bin/shaders/quad.vert.spv "$pkgdir/usr/share/GB4ME/shaders/quad.vert.spv"
-	install -Dm644 build/bin/shaders/quad.frag.spv "$pkgdir/usr/share/GB4ME/shaders/quad.frag.spv"
-	install -Dm644 build/bin/shaders/gui.vert.spv "$pkgdir/usr/share/GB4ME/shaders/gui.vert.spv"
-	install -Dm644 build/bin/shaders/gui.frag.spv "$pkgdir/usr/share/GB4ME/shaders/gui.frag.spv"
+	install -Dm644 bin/shaders/quad.vert.spv "$pkgdir/usr/share/GB4ME/shaders/quad.vert.spv"
+	install -Dm644 bin/shaders/quad.frag.spv "$pkgdir/usr/share/GB4ME/shaders/quad.frag.spv"
+	install -Dm644 bin/shaders/gui.vert.spv "$pkgdir/usr/share/GB4ME/shaders/gui.vert.spv"
+	install -Dm644 bin/shaders/gui.frag.spv "$pkgdir/usr/share/GB4ME/shaders/gui.frag.spv"
 
 	# Console photo texture for the menu shell (see create_body_texture).
 	install -Dm644 assets/gbc_body.png "$pkgdir/usr/share/GB4ME/assets/gbc_body.png"
