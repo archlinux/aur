@@ -2,7 +2,7 @@
 
 pkgname=photon-studio-bin
 pkgver=0.1.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop local-first image editor with layers and native PSD support (Extracted from Flatpak)"
 arch=('x86_64')
 url="https://tenzen.studio/photon/"
@@ -35,9 +35,12 @@ source=(
   #Альтернатива https://www.techspot.com/downloads/7907-photon-studio.html
   "Photon-Studio-${pkgver}-linux-x64.flatpak::https://tenzen.studio/api/v1/photon/download?platform=linux&arch=x64"
    "photon-studio.png::https://tenzen.studio/assets/brand/photon-logo.png"
+   "update.sh"
 )
 sha256sums=('SKIP'
-            'd49bb3c106257c1f75995fa793737113dc87418be5bec19388e6a523ffaafc18')
+            'd49bb3c106257c1f75995fa793737113dc87418be5bec19388e6a523ffaafc18'
+            'c1ef24a0003e94bdcd17176e2e689aac6d224c31656733b64db2512baefabb1a'
+            )
 
 prepare() {
     cd "$srcdir"
