@@ -1,6 +1,6 @@
 # Maintainer: Bitty Maintainers <maintainers@bitty-terminal.dev>
 pkgname=bitty
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 pkgdesc="Bitty pre-alpha terminal workspace minimal correct terminal"
 arch=('x86_64' 'aarch64')
@@ -40,12 +40,10 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
-  install -Dm644 packaging/bitty.desktop "$pkgdir/usr/share/applications/bitty.desktop"
+  install -Dm644 packaging/run.bitty.Bitty.desktop "$pkgdir/usr/share/applications/run.bitty.Bitty.desktop"
+  install -Dm644 packaging/run.bitty.Bitty.metainfo.xml "$pkgdir/usr/share/metainfo/run.bitty.Bitty.metainfo.xml"
   for size in 16 32 64 128 256 512; do
     install -Dm644 "packaging/icons/hicolor/${size}x${size}/apps/bitty.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/bitty.png"
   done
   install -Dm644 packaging/icons/hicolor/scalable/apps/bitty.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/bitty.svg"
-  if [ -f terminfo/bitty.terminfo ]; then
-    install -Dm644 terminfo/bitty.terminfo "$pkgdir/usr/share/terminfo/b/bitty"
-  fi
 }
