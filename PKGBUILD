@@ -10,7 +10,7 @@
 # Contributor: Jomar Milan <jomarm@jomarm.com>
 
 pkgname=aseprite
-pkgver=1.3.18.3
+pkgver=1.3.18.6
 _skiaver=m124
 _skiahash=08a5439a6b
 pkgrel=1
@@ -63,7 +63,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         fmt-12.2.0-include-format.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('268693d1750c4f9f61c9c866f10b993ddfc88424c9dead2a2f66ebb7576b192e'
+sha256sums=('fa9dd07a0c2a5ec91a4166333296bbb9e5c237933b59875d0cfee849d2358306'
             'c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba'
             'b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1'
             '80471354d55d785291bb719596d37ec785e01e94a322f127c0f91d2d8b01be0f'
