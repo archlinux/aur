@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=upmd-git
 pkgver=r83.g8f7c8de
-pkgrel=1
+pkgrel=2
 pkgdesc="Run tasks and workflows from Markdown"
 arch=("x86_64")
 url="https://github.com/rezigned/upmd"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname" || exit 1
-    env -u CFLAGS -u CXXFLAGS -u CPPFLAGS -u LDFLAGS -u RUSTFLAGS cargo build --release
+    env -u CFLAGS -u CXXFLAGS -u CPPFLAGS -u LDFLAGS -u RUSTFLAGS cargo build --release --config 'profile.release.opt-level="z"' --config 'profile.release.lto=true' --config 'profile.release.codegen-units=1' #--config 'profile.release.panic="abort"'
 }
 
 package() {
