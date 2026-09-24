@@ -1,8 +1,12 @@
 # Maintainer: Anatolii Vorona <vorona.tolik@gmail.com>
+#
+# Release template for the official AUR package. `make aur-release` copies
+# this file into the aur-openlawsvpn repository.
+
 pkgbase=openlawsvpn
 pkgname=(openlawsvpn-daemon openlawsvpn-cli openlawsvpn-gui)
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="AWS Client VPN client with SAML/SSO support — pure Go stack"
 arch=(x86_64 aarch64 powerpc64le)
 url="https://github.com/openlawsvpn/go-openlawsvpn"
@@ -11,7 +15,7 @@ makedepends=(go rust gtk4 libadwaita openssl)
 install=openlawsvpn.install
 _srcdir="go-openlawsvpn-pkg-$pkgver-$pkgrel"
 source=("$pkgbase-$pkgver-$pkgrel.tar.gz::https://github.com/openlawsvpn/go-openlawsvpn/archive/refs/tags/pkg/$pkgver-$pkgrel.tar.gz")
-sha256sums=('f0be8229b289831b061d6b58158c62d74c0c559b9b944ae2a06e489e1edfa3e4')
+sha256sums=('17bac2498a7076c631f95f4b4bdfcf796b86049902f753f101bd4cafe9c44937')
 
 prepare() {
     cd "$_srcdir"
@@ -48,6 +52,18 @@ package_openlawsvpn-daemon() {
 
     install -Dm644 packaging/com.openlawsvpn.Daemon.service \
         "$pkgdir/usr/share/dbus-1/system-services/com.openlawsvpn.Daemon.service"
+
+    # Arch stores package-private executables under /usr/lib/$pkgbase, while
+    # these shared upstream service files use the RPM libexec path.
+    local daemon_path=/usr/lib/openlawsvpn/openlawsvpn-daemon
+    local systemd_service="$pkgdir/usr/lib/systemd/system/openlawsvpn-daemon.service"
+    local dbus_service="$pkgdir/usr/share/dbus-1/system-services/com.openlawsvpn.Daemon.service"
+    sed -i -e "s|^ExecStart=.*|ExecStart=$daemon_path|" "$systemd_service"
+    sed -i -e "s|^Exec=.*|Exec=$daemon_path|" "$dbus_service"
+
+    # Fail the package build if either upstream file changes unexpectedly.
+    grep -Fqx "ExecStart=$daemon_path" "$systemd_service"
+    grep -Fqx "Exec=$daemon_path" "$dbus_service"
 
     install -Dm644 packaging/10-openlawsvpn-dns.rules \
         "$pkgdir/usr/share/polkit-1/rules.d/10-openlawsvpn-dns.rules"
