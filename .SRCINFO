@@ -1,6 +1,6 @@
 pkgbase = wlr-utils-bin
 	pkgdesc = Native screen tools for wlroots compositors: pick, switch, capture, inspect and annotate (prebuilt binaries)
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/sjourdois/wlr-utils
 	arch = x86_64
@@ -23,7 +23,11 @@ pkgbase = wlr-utils-bin
 	optdepends = xdg-desktop-portal-wlr: screencast portal that drives wlr-chooser
 	provides = wlr-utils
 	conflicts = wlr-utils
-	source = wlr-utils-x86_64-unknown-linux-gnu-1.9.0.tar.xz::https://github.com/sjourdois/wlr-utils/releases/download/v1.9.0/wlr-utils-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = 8c533e5e5a6a94cddcbb02fda6b6d7f1eafdee035734bc9580ca77520924ade3
+	source = wlr-utils-x86_64-unknown-linux-gnu-1.10.0.tar.xz::https://github.com/sjourdois/wlr-utils/releases/download/v1.10.0/wlr-utils-x86_64-unknown-linux-gnu.tar.xz
+	source = wlr-overlayd-1.10.0.service::https://raw.githubusercontent.com/sjourdois/wlr-utils/v1.10.0/crates/wlr-chooser/contrib/wlr-overlayd.service
+	source = wlr-draw-1.10.0.service::https://raw.githubusercontent.com/sjourdois/wlr-utils/v1.10.0/crates/wlr-draw/contrib/wlr-draw.service
+	sha256sums = 121bc4041460bf7d265182ec682625b160032807599d010a4dfcfd0d92493b39
+	sha256sums = 2fe8881ad1b3a1b0a9091773016f48f09b3a35f2497a00541293187f3eb7752c
+	sha256sums = 9c84cdf9a4dd76468dcc3df2086c2d0549072e515e6e22539a05b6ff1672400c
 
 pkgname = wlr-utils-bin
