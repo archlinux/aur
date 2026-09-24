@@ -2,24 +2,23 @@ pkgbase = lib32-gconf
 	pkgdesc = An obsolete configuration database system
 	pkgver = 3.2.6+11+g07808097
 	pkgrel = 7
-	url = https://projects-old.gnome.org/gconf/
-	install = gconf.install
+	url = https://gitlab.gnome.org/Archive/gconf
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.0-only
+	makedepends = git
 	makedepends = intltool
+	makedepends = lib32-gtk3
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
-	makedepends = git
 	makedepends = gnome-common
-	makedepends = gcc-multilib
-	depends = gconf
-	depends = lib32-dbus-glib
-	depends = lib32-gtk3
+	makedepends = glib2-devel
 	depends = lib32-polkit
-	source = lib32-gconf::git+https://gitlab.gnome.org/Archive/gconf.git#commit=0780809731c8ab1c364202b1900d3df106b28626
+	depends = lib32-dbus-glib
+	optdepends = gconf: configuration files and utilities
+	source = git+https://gitlab.gnome.org/Archive/gconf.git#commit=0780809731c8ab1c364202b1900d3df106b28626
 	source = 01_xml-gettext-domain.patch
 	source = gconf-reload.patch
-	sha256sums = SKIP
+	sha256sums = 9d4fdc49825c6938be59ae9f7e88eccc4fc8a1dc2c7ce130919916c32ccad179
 	sha256sums = c883dec2b96978874a53700cfe7f26f24f8296767203e970bc6402b4b9945eb8
 	sha256sums = 567b78d8b4b4bbcb77c5f134d57bc503c34867fcc6341c0b01716bcaa4a21694
 
