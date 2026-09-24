@@ -1,6 +1,6 @@
 # Maintainer: Hultwl <Hultwl@users.noreply.github.com>
 pkgname=rufux-git
-pkgver=1.9.1.r8.g531673a
+pkgver=2.0.r0.gc1c2114
 pkgrel=1
 pkgdesc="Rufux — bootable USB creator for Linux (Rufus port, latest git)"
 arch=('x86_64')
