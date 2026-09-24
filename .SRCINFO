@@ -1,0 +1,19 @@
+pkgbase = python-custodian
+	pkgdesc = A simple, robust, and flexible JIT job management framework for error correction
+	pkgver = 2025.12.14
+	pkgrel = 1
+	url = https://github.com/materialsproject/custodian
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-monty
+	depends = python-psutil
+	depends = python-ruamel-yaml
+	source = custodian-2025.12.14.tar.gz::https://pypi.org/packages/source/c/custodian/custodian-2025.12.14.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-custodian
