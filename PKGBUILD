@@ -1,6 +1,6 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=lody-bin
-pkgver=0.78.0
+pkgver=0.100.0
 pkgrel=1
 pkgdesc='A development platform built for parallel AI Agent workflows'
 url='https://lody.ai'
@@ -42,7 +42,7 @@ source=(
 noextract=(
     "$pkgname-$pkgver-amd64.deb"
 )
-sha256sums=('92c9cbc8323b1fb5bf173210c8db9db799f1c7176b49990c00b0ec640d0228d8')
+sha256sums=('3424aee700a6a3534edfb6c454876c41d9e97bf5e63a8d2425e8082ecc09b30e')
 
 package() {
     local _deb="$srcdir/$pkgname-$pkgver-amd64.deb"
@@ -55,7 +55,7 @@ package() {
     sed -i \
         -e 's|/opt/Lody/lodyDesktop|lody|' \
         -e 's|Icon=lodyDesktop|Icon=lody|' \
-        "$pkgdir/usr/share/applications/lodyDesktop.desktop"
+        "$pkgdir/usr/share/applications/ai.lody.desktop.desktop"
 
     mv "$pkgdir/usr/share/icons/hicolor/512x512/apps/lodyDesktop.png" \
        "$pkgdir/usr/share/icons/hicolor/512x512/apps/lody.png"
