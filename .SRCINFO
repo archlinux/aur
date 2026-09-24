@@ -1,6 +1,6 @@
 pkgbase = lucidlink-bin
 	pkgdesc = Your private filespace in the cloud
-	pkgver = 3.9.8826
+	pkgver = 3.9.8858
 	pkgrel = 1
 	url = https://www.lucidlink.com/
 	install = lucidlink-bin.install
@@ -18,7 +18,7 @@ pkgbase = lucidlink-bin
 	depends = xdg-utils
 	provides = lucidlink
 	conflicts = lucidlink
-	source = https://releases.lucidlink.com/prod/linux-deb/lucidlink_3.9.8826_amd64.deb
-	sha256sums = ce61b8db317d047204f0f539d6b9e64835c32df140eabb01d42befcfe01bf3f7
+	source = https://releases.lucidlink.com/prod/linux-deb/lucidlink_3.9.8858_amd64.deb
+	sha256sums = 8acc6b58f135d5db7146b4c38ba7679ac57db8d55602e03d2694da1924bb329b
 
 pkgname = lucidlink-bin
