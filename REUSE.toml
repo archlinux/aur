@@ -2,8 +2,8 @@ version = 1
 
 [[annotations]]
 path = [
-    "ffdec.sh",
     ".gitignore",
+    "*.diff",
     "PKGBUILD",
     "README.md",
     "keys/**",
