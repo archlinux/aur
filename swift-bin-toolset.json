@@ -1,0 +1,6 @@
+{
+  "schemaVersion": "1.0",
+  "swiftCompiler": {
+    "path": "/usr/lib/swift/bin/swiftc"
+  }
+}
