@@ -1,0 +1,11 @@
+pkgbase = compat-openssl10
+	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security
+	pkgver = 1.0.3
+	pkgrel = 7
+	url = https://www.openssl.org
+	arch = x86_64
+	license = OpenSSL
+	source = https://kojipkgs.fedoraproject.org/vol/fedora_koji_archive06/packages/compat-openssl10/1.0.2o/11.fc33/x86_64/compat-openssl10-1.0.2o-11.fc33.x86_64.rpm
+	sha256sums = 2e60fb3e1b716e059a99a6b439f634e3372489e1d2608e2e9f776a2b0687f931
+
+pkgname = compat-openssl10
