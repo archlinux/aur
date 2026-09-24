@@ -1,13 +1,15 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=lupin
-pkgver=0.1.36
+pkgver=0.1.38
 pkgrel=1
 pkgdesc='The reference interpreter for the wolf language, and the compiler differential oracle'
 arch=('x86_64' 'aarch64')
 url='https://github.com/wolffe-lang/wolf-interp'
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'glibc')
+# 2.39 is the floor the 0.1.38 release binary imports (objdump -T;
+# wolf-interp#447); no older glibc is a configuration anyone tests.
+depends=('gcc-libs' 'glibc>=2.39')
 makedepends=('rust' 'cargo' 'git')
 optdepends=('wolf-lang: the compiler lupin is differentially tested against')
 provides=('lupin')
