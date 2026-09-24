@@ -1,6 +1,6 @@
 pkgbase = trello-tui
 	pkgdesc = Keyboard-driven Trello client for the terminal with vim-style bindings
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ural89/trello-tui
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = trello-tui
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = trello-tui-0.1.0.tar.gz::https://github.com/ural89/trello-tui/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 24a61fc7f1abcee1ca4e03317b2bb4995f2a73e9c064466da9b399ee76cdfa84
+	source = trello-tui-0.2.0.tar.gz::https://github.com/ural89/trello-tui/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 0a9fe88927624480824483398b726f368077e299aa8b17087a4c65b4ad479cb3
 
 pkgname = trello-tui
