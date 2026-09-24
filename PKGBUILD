@@ -3,8 +3,7 @@
 # Contributor: Shadichy <shadichy@blisslabs.org>
 
 _pkg=ntfsprogs-plus
-pkgbase=${_pkg}-main-git
-pkgname=$pkgbase
+pkgname=${_pkg}-main-git
 
 _repo=ntfsprogs-plus/$_pkg
 url="https://github.com/${_repo}"
@@ -12,7 +11,7 @@ url="https://github.com/${_repo}"
 pkgver=1.0.0+63+g69b4ca1
 pkgrel=1
 
-pkgdesc='NTFS filesystem driver and utilities'
+pkgdesc='NTFS filesystem driver and utilities. Mainline stable branch.'
 arch=('x86_64')
 license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
 depends=('util-linux-libs' 'hwinfo')
