@@ -3,7 +3,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r7524.911271b7
+pkgver=r7569.2a80c492
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -48,8 +48,6 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/grumpycoders/vixl.git'
         'git+https://github.com/grumpycoders/imgui_md.git'
         'git+https://github.com/iafonov/multipart-parser-c.git'
-        'git+https://github.com/grumpycoders/nanovg.git'
-        'git+https://github.com/grumpycoders/nanosvg.git'
         'git+https://github.com/nicolasnoble/luafilesystem.git'
         'git+https://github.com/grumpycoders/luacov.git'
         'git+https://github.com/bluebird75/luaunit.git'
@@ -58,9 +56,9 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/pcsx-redux/iec-60908b.git'
         'git+https://github.com/pcsx-redux/cueparser.git'
         'git+https://github.com/pcsx-redux/nugget.git'
+        'git+https://github.com/pcsx-redux/thorvg.git'
         )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -108,8 +106,6 @@ prepare() {
   git config submodule.third_party/vixl.url "$srcdir/vixl"
   git config submodule.third_party/imgui_md.url "$srcdir/imgui_md"
   git config submodule.third_party/multipart-parser-c.url "$srcdir/multipart-parser-c"
-  git config submodule.third_party/nanovg.url "$srcdir/nanovg"
-  git config submodule.third_party/nanosvg.url "$srcdir/nanosvg"
   git config submodule.third_party/luafilesystem.url "$srcdir/luafilesystem"
   git config submodule.third_party/luacov.url "$srcdir/luacov"
   git config submodule.third_party/luaunit.url "$srcdir/luaunit"
@@ -117,6 +113,8 @@ prepare() {
   git config submodule.third_party/iec-60908b.url "$srcdir/iec-60908b"
   git config submodule.third_party/cueparser.url "$srcdir/cueparser"
   git config submodule.src/mips.url "$srcdir/nugget"
+  git config submodule.third_party/thorvg.url "$srcdir/thorvg"
+  
 
   git -c protocol.file.allow=always submodule update third_party/imgui \
                        third_party/ELFIO \
@@ -132,15 +130,16 @@ prepare() {
                        third_party/vixl \
                        third_party/imgui_md \
                        third_party/multipart-parser-c \
-                       third_party/nanovg \
-                       third_party/nanosvg \
                        third_party/luafilesystem \
                        third_party/luacov \
                        third_party/luaunit \
                        third_party/PEGTL \
                        third_party/iec-60908b \
                        third_party/cueparser \
-                       src/mips
+                       src/mips \
+                       third_party/thorvg
+                       
+
 
   cd third_party/luv
   git submodule init
