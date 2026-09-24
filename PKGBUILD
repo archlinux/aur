@@ -1,4 +1,4 @@
-# Maintainer: Lukas Heiligenbrunner <lukas.heiligenbrunner@gmail.com>
+# Maintainer: Alexandre Bury <alexandre.bury@gmail.com>
 #
 # The Landlock confiner, packaged on its own because both the server and the
 # worker need it and pacman refuses to install two packages that ship the same
@@ -13,7 +13,7 @@ pkgver=0.5.0
 pkgrel=1
 pkgdesc="Landlock sandbox used by AURCache to confine PKGBUILD execution"
 arch=(x86_64 aarch64 armv7h)
-url="https://github.com/Lukas-Heiligenbrunner/AURCache"
+url="https://github.com/gyscos/AURCache"
 license=(GPL-3.0-or-later)
 depends=(gcc-libs)
 makedepends=(cargo git)
