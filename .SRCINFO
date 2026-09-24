@@ -1,6 +1,6 @@
 pkgbase = mlp-gui
 	pkgdesc = Desktop app to encrypt and decrypt files with AES-256-GCM (GUI for mlp)
-	pkgver = 0.7.3
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/EldinBegano/mask-decryption
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = mlp-gui
 	optdepends = mlp: command-line interface using the same keyfile
 	options = !lto
 	options = !debug
-	source = mlp-gui-0.7.3.tar.gz::https://github.com/EldinBegano/mask-decryption/archive/refs/tags/v0.7.3.tar.gz
-	sha256sums = 26ee5287c6c81543b2163ef57134eb6c80476c9242015e02bae7b6744b8a9dd2
+	source = mlp-gui-0.8.0.tar.gz::https://github.com/EldinBegano/mask-decryption/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = c3d71a4590cbfcd9744270c307a4e0717ccda2eacc4e54cd9c3ea6c88c58072b
 
 pkgname = mlp-gui
