@@ -1,0 +1,33 @@
+pkgbase = kuna-bin
+	pkgdesc = Agent-first decompiler, ported from Ghidra to Rust, designed to be refined by other agents
+	pkgver = 1.585
+	pkgrel = 1
+	url = https://github.com/Noelo-Lab/kuna
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	options = !strip
+	source = https://github.com/Noelo-Lab/kuna/releases/download/v1.585/kuna-v1.585-specs.tar.gz
+	source = https://github.com/Noelo-Lab/kuna/releases/download/v1.585/kuna-v1.585-KunaDecompiler-ghidra_12.1.2.zip
+	sha256sums = 05d792f41a4fb83edbc359afc6ef93e71ceaafdc3e7d232a7b3a9960c225211b
+	sha256sums = 79e31cee3397a69696bd02ee08a4c52565ee1fbfa121508e79571898af6a2d20
+	source_x86_64 = https://github.com/Noelo-Lab/kuna/releases/download/v1.585/kuna-v1.585-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5cdf45d3c177e5ff86013095577ab9ee8866718288b76449cc02649cb20382ed
+	source_aarch64 = https://github.com/Noelo-Lab/kuna/releases/download/v1.585/kuna-v1.585-linux-arm64.tar.gz
+	sha256sums_aarch64 = b84bb0abcca98e721f8198520b0e931e998e4f4db0a9b00a9432e21c5f64a85b
+
+pkgname = kuna-bin
+	depends = glibc
+	depends = libgcc
+	optdepends = ghidra-extension-kuna-bin: kuna as the decompiler core of the Ghidra GUI
+	provides = kuna
+	conflicts = kuna
+	conflicts = kuna-git
+
+pkgname = ghidra-extension-kuna-bin
+	pkgdesc = Ghidra extension running kuna as the native decompiler core behind the stock Ghidra GUI
+	depends = ghidra
+	depends = glibc
+	depends = libgcc
+	provides = ghidra-extension-kuna
+	conflicts = ghidra-extension-kuna
