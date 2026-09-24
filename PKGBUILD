@@ -2,7 +2,7 @@
 
 pkgname=flectar-mail
 pkgver=0.1.0alpha.6
-pkgrel=1
+pkgrel=2
 url="https://${pkgname%-*}.com"
 _url="https://github.com/${pkgname/-//}"
 pkgdesc='a lightweight, native client for email, calendars, and contacts'
@@ -55,6 +55,9 @@ build() {
 }
 
 package() {
+	depends+=(libdbus-1.so
+	          libgcc_s.so
+	          libsqlite3.so)
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }

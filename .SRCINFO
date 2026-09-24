@@ -1,7 +1,7 @@
 pkgbase = flectar-mail
 	pkgdesc = a lightweight, native client for email, calendars, and contacts
 	pkgver = 0.1.0alpha.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flectar.com
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -21,3 +21,14 @@ pkgbase = flectar-mail
 	sha256sums = e7c36bdbbe249feb143ec64caca4b27ebcd0a5741cb90db105856d801d0d2d57
 
 pkgname = flectar-mail
+	depends = dbus
+	depends = fontconfig
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = sqlite3
+	depends = wayland
+	depends = xdg-utils
+	depends = libdbus-1.so
+	depends = libgcc_s.so
+	depends = libsqlite3.so
