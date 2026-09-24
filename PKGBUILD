@@ -4,12 +4,12 @@
 _pkgname=linuxqq
 _Pkgname=Linuxqq
 _disname=qq
-_version=3.2.33
-_update_date=2026-09-02
-_image_url_x86_64=https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.35/release/1763096b/QQ_3.2.33_260902_x86_64_01.AppImage
-_image_sha256sums_x86_64=52b7bcb1e7b146f5666279ac0da4e549d995135ded67bd1b9129add45fe90b14
-_image_url_aarch64=https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.35/release/1763096b/QQ_3.2.33_260902_arm64_01.AppImage
-_image_sha256sums_aarch64=46de95f0261fd5d1344d7c920b88f86d68ab43df0ca292955b3d68e272789051
+_version=3.2.34
+_update_date=2026-09-24
+_image_url_x86_64=https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.36/release/9ee04bef/QQ_3.2.34_260924_x86_64_01.AppImage
+_image_sha256sums_x86_64=a33675d355e8b559453c40b9c59823393c6e585c97a3ae9f5c151203afa125a4
+_image_url_aarch64=https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.36/release/9ee04bef/QQ_3.2.34_260924_arm64_01.AppImage
+_image_sha256sums_aarch64=dcd40e5bd44023ea43e343445ee6277637dc2ac285f96a1c3c4ebab9de5a6b5b
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}_${_update_date//-/}"
