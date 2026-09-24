@@ -5,7 +5,7 @@ _pkgname=csvi
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal CSV Editor"
 
-pkgver=1.23.3
+pkgver=1.24.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,9 +25,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.zip")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.zip")
 sha256sums=('3aae49b6287bf4a3177320ca7a67b00ffa13562db7e8d6ba9f2ac4984819eab0'
-            'c3b2f9f651dd43eaee809ea744d1167ec75eb2eb928080eb697697f02052fb44')
-sha256sums_x86_64=('9d84da12e05588ea18cf4ee64f944c1d2809164e92f2d6f58e01beddbfdb36f0')
-sha256sums_i686=('14b203f1f55b9ea1b21d85895a7c48b5ff58e5cb6d59c1ce8e722e4e01d3f59c')
+            '31d6bd5872345d42ad73bf72585fec198624b0311eaf0d12ffdb2c2c5fcd01b5')
+sha256sums_x86_64=('653a3fb656ae468d803130716f13298ca8e6c2258ea0f465fd7416df2da34c49')
+sha256sums_i686=('c18066fbc7ea8aadcd9cb4241d3ef41be4f2516e8f79e3ffc1e2e140fb201233')
 
 
 package() {
