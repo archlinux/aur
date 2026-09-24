@@ -11,7 +11,7 @@ _cuda_arch="${CUDA_ARCH:-75;86;89;120a-real}"
 
 pkgname=voxtype-cuda
 _pkgname=voxtype
-_pkgver=1.1.0-rc5
+_pkgver=1.1.0
 pkgver=${_pkgver//-/}
 pkgrel=1
 pkgdesc="Pure CUDA version of the push-to-talk voice-to-text tool"
@@ -59,7 +59,7 @@ source=(
   "$_pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$_pkgver.tar.gz"
   "$_pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$_pkgver/$_pkgname-$_pkgver.tar.gz.asc"
 )
-sha256sums=('b4d0ffe3f4a8e22780b8f25b5df96df8358b2b313f9021cfe657f133e0bb6bbe'
+sha256sums=('7d223f1ebee3c3ded8619fb17d20ab43f5a4d7c5f7264890750c176078542a32'
             'SKIP')
 
 prepare() {
