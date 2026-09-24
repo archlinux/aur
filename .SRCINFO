@@ -1,6 +1,6 @@
 pkgbase = fb2-clean
-	pkgdesc = A CLI utility for clean fb2 files.
-	pkgver = 0.2.2
+	pkgdesc = Simple CLI utility to remove images from fb2 books.
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/nujievik/fb2-clean
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = fb2-clean
 	makedepends = zstd
 	depends = zstd
 	options = !debug
-	source = fb2-clean-0.2.2.tar.gz::https://github.com/nujievik/fb2-clean/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 56b8c9267441044933fc339a06f9f79bcb9669f2c5f80bfcc29ebdd5ea7a2382
+	source = fb2-clean-0.5.1.tar.gz::https://github.com/nujievik/fb2-clean/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = ba0a619649ba999ae3759531e4ef80d56334b925a112cb7702531454332e1380
 
 pkgname = fb2-clean
