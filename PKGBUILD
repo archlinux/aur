@@ -9,7 +9,7 @@
 #   modifiche non ancora rilasciate)
 
 pkgname=klamav-py
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Frontend Python minimale per ClamAV via clamd, erede spirituale di KlamAV 0.22"
 arch=('any')
@@ -20,8 +20,9 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 optdepends=(
   'pyside6: GUI (klamav-py-gui)'
   'clamav: demone clamd, richiesto per la scansione'
-  'polkit: aggiornamento database virus da GUI (pkexec)'
+  'polkit: aggiornamento database virus da GUI (pkexec systemctl restart del servizio freshclam)'
   'kio: integrazione menu contestuale Dolphin (kbuildsycoca)'
+  'libnotify: notifica desktop se la scansione programmata trova infezioni o fallisce'
 )
 install=klamav-py.install
 # L'archivio del tag GitHub si estrae in KlamAV-Py-<versione>: GitHub
@@ -32,7 +33,7 @@ install=klamav-py.install
 # Aggiornare pkgver a ogni rilascio, insieme a klamav_py/__init__.py,
 # debian/changelog e CHANGELOG.md (tests/test_changelog.py lo verifica).
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('468b91b17f3b7f3b0ee3c5e488547e56914b487bdc53aeb95ab5f943c2279082')
+sha256sums=('d7415e3376e2006538e66771fa612608fa8ec92a2c2b9e69a1a38afc7b139ced')
 
 build() {
   cd "$srcdir/KlamAV-Py-$pkgver"
@@ -49,11 +50,15 @@ package() {
   install -Dm644 klamav_py/gui/resources/klamav-py.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/klamav-py.svg"
 
-  # Timer systemd utente per la scansione programmata (equivalente
-  # delle unit del .deb; su Arch non si abilitano in fase di install,
-  # l'hint viene stampato da klamav-py.install)
+  # Unit systemd utente per la scansione programmata: sorgente unica in
+  # debian/, condivisa con il .deb. Su Arch non si abilitano in fase di
+  # install, l'hint viene stampato da klamav-py.install.
+  # klamav-scan-notify.service è static (niente [Install]): la attiva solo
+  # OnFailure= di klamav-scan.service.
   install -Dm644 debian/klamav-py.klamav-scan.user.service \
     "$pkgdir/usr/lib/systemd/user/klamav-scan.service"
   install -Dm644 debian/klamav-py.klamav-scan.user.timer \
     "$pkgdir/usr/lib/systemd/user/klamav-scan.timer"
+  install -Dm644 debian/klamav-py.klamav-scan-notify.user.service \
+    "$pkgdir/usr/lib/systemd/user/klamav-scan-notify.service"
 }
