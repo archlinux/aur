@@ -1,8 +1,8 @@
 # Maintainer: parasail <ikunji@duck.com>
 
 pkgname=crisperweaver-bin
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="On-device audio transcription and speech synthesis GUI (Flutter frontend for the CrispASR engine)"
 arch=('x86_64')
 url="https://github.com/CrispStrobe/CrisperWeaver"
@@ -29,11 +29,11 @@ conflicts=('crisperweaver')
 makedepends=('imagemagick' 'patchelf' 'curl')
 source=(
   "crisper_weaver-linux-x64-$pkgver.tar.gz::https://github.com/CrispStrobe/CrisperWeaver/releases/download/v$pkgver/crisper_weaver-linux-x64.tar.gz"
-  "LICENSE-$pkgver::https://raw.githubusercontent.com/CrispStrobe/CrisperWeaver/v$pkgver/LICENSE"
-  "com.crispstrobe.crisperweaver.desktop::https://raw.githubusercontent.com/CrispStrobe/CrisperWeaver/v$pkgver/linux/com.crispstrobe.crisperweaver.desktop"
+  "LICENSE::https://raw.githubusercontent.com/CrispStrobe/CrisperWeaver/refs/heads/main/LICENSE"
+  "com.crispstrobe.crisperweaver.desktop::https://raw.githubusercontent.com/CrispStrobe/CrisperWeaver/refs/heads/main/linux/com.crispstrobe.crisperweaver.desktop"
   "com.crispstrobe.crisperweaver.png::https://raw.githubusercontent.com/CrispStrobe/CrisperWeaver/v$pkgver/assets/images/app_logo.png"
 )
-sha256sums=('c3118186e44c65ec575cbd49a9d581b4e7cb8a92c6c5e14ca130191064326e23'
+sha256sums=('ab9fe41a4bd167f5be46b5b0ed20e94b0397bb66b7d3efa6f2b19dcaf9974e18'
             '372e65ffd4756f00b2092d7ce5716e3bae2c691009a76eeebb3557375a9702d1'
             'b2db71f1de5582bcb49d62fe00e86d8e48babf078b6be511478a317e5c997568'
             '75af78bfe0a7fabd37681984ca1706637e3db09260dea7ec1cc0f6361d4a0007')
