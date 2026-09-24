@@ -2,7 +2,7 @@
 
 pkgname=oh-my-pi
 pkgver=18.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
@@ -26,12 +26,12 @@ options=('!lto' '!strip')
 # the crate is needed.
 _opus_ver=0.4.0
 source=(
-    "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/v${pkgver}.tar.gz"
     "https://static.crates.io/crates/opus/opus-${_opus_ver}.crate"
     "skip-native-embed-for-aur.patch"
     "fix-bytecode-esm-format.patch"
 )
-sha256sums=('SKIP'
+sha256sums=('a17689ba611355ddc7225541673268b2d1ff1527523cc028b3fbd6ea5b069533'
             '33718946cc77d4032911d4efe03a66dbcbfbd2bb16c3da06aaeadcc637c32216'
             'b2fe93ad7ef36869d660cc0ec9a0a0e7196370035efd86b32901101aff2920d1'
             '2f38e62c84e76e3c6d8d93e72d967a018de131cd1af242f543546015961bce76'
@@ -48,7 +48,7 @@ if (( _enable_wayland_screencast )); then
 fi
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
     # `bytecode: true` makes Bun emit the chunk as cjs, where it inlines
@@ -132,7 +132,7 @@ _build_native() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
@@ -190,7 +190,7 @@ _install_completions() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
     install -Dm755 "packages/coding-agent/binaries/omp-linux-x64" \
         "${pkgdir}/usr/lib/${pkgname}/omp"
