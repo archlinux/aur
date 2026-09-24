@@ -5,7 +5,7 @@
 # hand.
 
 pkgname=gitilante-bin
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A focused Git GUI for diffs, hunks and history (prebuilt binary)"
 arch=('x86_64')
@@ -20,9 +20,9 @@ depends=(
 provides=("gitilante=$pkgver")
 conflicts=('gitilante')
 source=(
-    "gitilante-$pkgver-linux-x86_64.tar.gz::https://gitlab.com/api/v4/projects/rutilante%2Fgitilante/packages/generic/gitilante/0.6.1/gitilante-0.6.1-linux-x86_64.tar.gz"
+    "gitilante-$pkgver-linux-x86_64.tar.gz::https://gitlab.com/api/v4/projects/rutilante%2Fgitilante/packages/generic/gitilante/0.6.2/gitilante-0.6.2-linux-x86_64.tar.gz"
 )
-sha256sums=('83fdfc6fc31258f9961efc5151d455cb52050ce5a5f4aa3ae2f4dd921d100bba')
+sha256sums=('dd9e30c33e36c24850953890c80c29029911287ff6f9efba443c7315cf143ce7')
 
 package() {
     cd "$srcdir/gitilante-$pkgver-linux-x86_64"
