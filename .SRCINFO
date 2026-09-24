@@ -1,16 +1,27 @@
 pkgbase = kendex-git
-	pkgdesc = Package manager for agents, skills, and hooks across AI coding tools (latest commit)
+	pkgdesc = Package manager for AI coding agents, skills, and hooks (desktop app and CLI, latest commit)
 	pkgver = r0.0000000
 	pkgrel = 1
+	epoch = 1
 	url = https://kendex.ai
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	makedepends = npm
+	depends = git>=2.41
+	depends = dbus
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = xdg-utils
 	provides = kendex
 	conflicts = kendex
+	conflicts = kendex-bin
+	conflicts = kendex-cli-git
+	options = !lto
 	source = git+https://github.com/vanillagreencom/kendex.git
 	sha256sums = SKIP
 
