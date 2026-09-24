@@ -1,0 +1,10 @@
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/ninjabrain-bot.sh
+!/ninjabrain-bot.desktop
+!/icon.png
+!/LICENSE
+!/LICENSES/
+!/REUSE.toml

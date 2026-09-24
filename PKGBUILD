@@ -6,7 +6,7 @@ pkgdesc="Stronghold calculator for Minecraft Speedrunning"
 arch=(any)
 url="https://github.com/Ninjabrain1/Ninjabrain-Bot"
 depends=("java-runtime>=8")
-license=("unknown")
+license=("GPL-3.0")
 source=("${url}/releases/download/${pkgver}/Ninjabrain-Bot-${pkgver}.jar"
         "ninjabrain-bot.sh"
         "ninjabrain-bot.desktop"
