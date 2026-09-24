@@ -8,18 +8,17 @@
 # 4. Build
 
 pkgname=modustoolbox-eclipse
-pkgver=2026.1.0.919
+pkgver=2026.3.0.1014
 pkgrel=1
 pkgdesc="Custom Eclipse IDE for ModusToolbox development."
 arch=('x86_64')
 license=("LicenseRef-${pkgname}")
-depends=('alsa-lib' 'glibc' 'gtk3' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst')
+depends=('alsa-lib' 'glibc' 'lib32-glibc' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'python')
 optdepends=('webkit2gtk-4.1')
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.mtbeclipse"
 _source="mtbeclipse_${pkgver}_Linux_x64.deb"
 source=("file://${_source}")
-sha256sums=('78753c426ce9494fc9e1070fa6f2620944b39b146e69de7e2b2f9b8cc4652431')
-options=('!strip')
+sha256sums=('a1caecdf0448fa5b573a84280c9ff1f5e85936d6d3fdc8b68a98f7612fced051')
 
 
 prepare() {
