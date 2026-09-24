@@ -1,7 +1,10 @@
 # Maintainer: loss
 pkgname=aghub-bin
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.9.1
+pkgrel=1
+# 上游 release tag。与 pkgver 分开保存：像 v1.9.0-beta.1 / v1.3.0-1 这类 tag 无法
+# 直接当 pkgver（不能含连字符），映射后也还原不回去，所以 source URL 用这个变量。
+_upstream_tag=v1.9.1
 pkgdesc="One hub for every AI coding agent - unified configuration management for 22+ assistants"
 arch=('x86_64')
 url="https://github.com/AkaraChen/aghub"
@@ -10,11 +13,11 @@ depends=('webkit2gtk-4.1' 'gtk3')
 provides=('aghub' 'aghub-cli')
 conflicts=('aghub')
 options=('!strip' '!debug')
-source=("https://github.com/AkaraChen/aghub/releases/download/v${pkgver}/aghub_${pkgver}_amd64.deb"
-        "https://github.com/AkaraChen/aghub/releases/download/v${pkgver}/aghub-cli-x86_64-unknown-linux-gnu.tar.gz"
+source=("https://github.com/AkaraChen/aghub/releases/download/${_upstream_tag}/aghub_${_upstream_tag#v}_amd64.deb"
+        "https://github.com/AkaraChen/aghub/releases/download/${_upstream_tag}/aghub-cli-x86_64-unknown-linux-gnu.tar.gz"
         "aghub.desktop")
-sha256sums=('533a1b4f826d96cd53e37c4aaf5aaf6e34cb01bb24047335ce7045842a4e6768'
-            '2931cc70d04df89dc26f28421cb388465f43cac1578d3f2761bdae38a4c6d1b3'
+sha256sums=('387bd65d459561779de6351231d3a68ace377cd17f0e1b078e6a256f77562171'
+            '8892371c82023da5082c1039a7353494911cafddfe589b8e0ed2e30fda23bb68'
             'f5d925768036493dd03820589b63e29c686d0d087ea73f4db38d7fc06b30019f')
 
 package() {
