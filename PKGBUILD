@@ -13,7 +13,7 @@
 pkgbase='nginx-without-server-header'
 _pkgbase='nginx'
 pkgname=($pkgbase $pkgbase'-src')
-pkgver='1.30.3'
+pkgver='1.30.5'
 pkgrel=1
 _prefix_relative='etc/nginx'
 _prefix_full='/'$_prefix_relative
@@ -40,7 +40,7 @@ validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8'  # Maxim Dounin <mdouni
               '43387825DDB1BB97EC36BA5D007C8D7C15D87369'  # Roman Arutyunyan <r.arutyunyan@f5.com>
               'D6786CE303D9A9022998DC6CC8464D549AF75C0A'  # Sergey Kandaurov <s.kandaurov@f5.com>
               '13C82A63B603576156E30A4EA0EA981B66B0D967') # Konstantin Pavlov <thresh@nginx.com>
-sha512sums=('13b479cb2e80bbe7e0b977bd762e70b0cb95c7ce5dc80da61ab59fbcf2da19eca266dc82a8ef1a8b8c8c19c22948abd1aa6a3817bf490880ae175f7e2f692495'
+sha512sums=('0e36c27b1a2c3c7f38b73990cef615c59f300ef1bd473a5ed23d5f89ff4e8cd51ca63754430a5dfe4fdaf48ed9eb64a3d74b0bf9a80226f700f99d1d2fa9000d'
             'SKIP'
             '490e973fac48c0b27d35c722d190c1103fc0e6f71362580739f47eea4373f2a7206a8722866c740c916a4be7e789db80d4ce56a67e751f1183e420cb314a32d8'
             '25b1054176b694dda940528df45432bdc80191ad9dd6f11b7bb02da43b3c38c592448664774ccde779bb6953f9d32a4fd55349dbad9b43a7db38a1410a47dc24'
