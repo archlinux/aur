@@ -24,6 +24,14 @@ post_upgrade() {
         echo ":: The service file changed. To pick it up:"
         echo "::   systemctl --user daemon-reload"
     fi
+    # 2.14.0 names shared clips by a random token instead of the filename,
+    # which let anyone with one link reach the rest (#222). Links shared
+    # before this stop working, and people should hear it here first.
+    if [ "$(vercmp "$2" 2.14.0)" -lt 0 ]; then
+        echo ":: Share links now use a private token instead of the clip's name."
+        echo ":: Links you shared before this update no longer work; copy a"
+        echo ":: fresh link from Vice for any clip you want to share again."
+    fi
     # The daemon holds the old Python in memory until it restarts, and nothing
     # here can reach the user's session bus to do it for them.
     echo ":: A running daemon keeps the previous version until it restarts:"
