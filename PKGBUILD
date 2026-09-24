@@ -1,21 +1,33 @@
 # Maintainer: swim <swim853279614@163.com>
 pkgname=plasma-lyrics
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Native synchronized desktop lyrics widget for Plasma 6'
 arch=('x86_64')
 url='https://github.com/swim233/plasma-lyrics'
 license=('GPL-2.0-only')
+# Arch ships the KF6 libraries without a kf6- prefix. libplasma and ksvg are
+# named explicitly rather than leaned on through plasma-workspace, because the
+# QML this widget imports comes from them directly. kdeclarative owns
+# org.kde.kquickcontrols, whose ColorButton the config dialog needs -- missing
+# it breaks only the config dialog, so the widget itself still looks fine.
+# glibc, libgcc and libstdc++ are what the binaries actually link against; every
+# other entry only satisfies them by accident, which is what namcap reports.
+# zlib is linked directly by the QQ provider (QRC payloads are a zlib stream
+# under the cipher), so it is a real linkage rather than one satisfied by
+# accident through Qt. fontconfig likewise: the QML module lists every font
+# family's names in other languages through FcFontList itself.
 depends=('plasma-workspace' 'libplasma' 'kirigami' 'ksvg' 'ki18n' 'kdeclarative'
-         'qt6-base' 'qt6-declarative' 'glibc' 'libgcc' 'libstdc++')
+         'qt6-base' 'qt6-declarative' 'zlib' 'fontconfig' 'glibc' 'libgcc' 'libstdc++')
+# gettext supplies msgfmt, which builds the translation catalogues.
 makedepends=('cmake' 'ninja' 'extra-cmake-modules' 'gettext')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/swim233/plasma-lyrics/releases/download/v0.4.1/plasma-lyrics-0.4.1.tar.gz")
-sha256sums=('cf0b988db9c8f0f7b311b84a2e228cc55ba3d3553d9f09e14a293060ab20f3e7')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/swim233/plasma-lyrics/releases/download/v0.4.2/plasma-lyrics-0.4.2.tar.gz")
+sha256sums=('4391c3a46b4a0240449a3372e7dc7830387f661b1f108869d8262ee7d9d6faff')
 
 build() {
-  # None rather than Release: it leaves the compiler flags to
-  # makepkg.conf, so the package picks up Arch's hardening and
-  # debug-package settings instead of CMake's own -O3 -DNDEBUG.
+  # None rather than Release: it leaves the compiler flags to makepkg.conf, so
+  # the package picks up Arch's hardening and debug-package settings instead of
+  # CMake's own -O3 -DNDEBUG. No production code path relies on assert().
   cmake -S "$pkgname-$pkgver" -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
