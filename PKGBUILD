@@ -5,9 +5,9 @@
 _pkgname=pilot-link
 pkgname="${_pkgname}-git"
 pkgver=r2021.62b50b94
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of tools for connecting to PalmOS handheld devices"
-url="http://www.pilot-link.org/"
+url="https://github.com/desrod/pilot-link"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
 depends=('readline' 'libpng' 'libusb-compat' 'popt' 'bluez-libs')
@@ -15,7 +15,7 @@ makedepends=('git')
 options=('!libtool')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/desrod/pilot-link.git")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {

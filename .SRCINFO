@@ -1,8 +1,8 @@
 pkgbase = pilot-link-git
 	pkgdesc = A suite of tools for connecting to PalmOS handheld devices
 	pkgver = r2021.62b50b94
-	pkgrel = 1
-	url = http://www.pilot-link.org/
+	pkgrel = 2
+	url = https://github.com/desrod/pilot-link
 	arch = i686
 	arch = x86_64
 	arch = armv6h
