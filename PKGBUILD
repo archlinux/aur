@@ -8,7 +8,7 @@
 # recipes with packaging/aur/sync.sh rather than editing pkgver by hand.
 
 pkgname=unisic
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc='Capture, annotate, record and share your screen on Linux Wayland'
 arch=('x86_64')
@@ -87,7 +87,7 @@ conflicts=('unisic-bin')
 # a complete one (superproject + kit concatenated) and attaches it under this
 # name; unisic-bin already sources a release asset the same way.
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('2855af35a58d6927b4b3babf9b5faa599caa47af8c494ee34db1917c9c2190f7')
+sha256sums=('d05bdec99e3726aec355bc1e86722b5c53888df8d3aa319a65bd254b376eae4a')
 
 build() {
     # Without an explicit build number CMake defaults UNISIC_BUILD to "dev",
