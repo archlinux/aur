@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 # Contributor: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
-heidisqlrelease=7320
-shortpkgver=12.20
+heidisqlrelease=7344
+shortpkgver=12.21
 pkgname=heidisql-wine
 pkgver=${shortpkgver}.0.${heidisqlrelease}
 pkgrel=2
@@ -16,8 +16,8 @@ source=("https://github.com/HeidiSQL/HeidiSQL/releases/download/v${shortpkgver}/
         "${pkgname}.png"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('d84742736e4508c206c28c58018bbd934319c941dc9d68ff4673737a3f4df731'
-            '2c1e8231f681a3a75f3fda65e679d86c0fa9a35294fa2c33f3e57f0dc3cacc82'
+sha256sums=('fecb76a69e29a53ea05b1d57fc2f7b7aaed5b8f889556c6eca545e2a800df1ab'
+            'd4bc6b81906832aeed79e054ed094f5e15449c8fa91285538173d4a7f90db113'
             'd0f6c19b7aa4b7a6daa00b658a852f97d35dd98d2c31a2f4ea267527bf5cda15'
             '07abdaeab2b5c30ed7b053cce5e42942cc32c56503439eff69fb21b57c522122'
             '840acb31ca1de8d029e725fded1ac09df0314dea41da53f15f4cd3848e34bb00')
