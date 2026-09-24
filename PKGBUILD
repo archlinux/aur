@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 
 pkgname=floatlyrics
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Floating synchronized lyrics for MPRIS players on Linux Wayland'
 arch=('x86_64')
@@ -16,9 +16,7 @@ depends=(
     'gtk4'
     'gtk4-layer-shell'
     'libgcc'
-    'openssl'
     'pango'
-    'sqlite'
     'webkitgtk-6.0'
 )
 makedepends=('bun' 'cargo')
@@ -33,7 +31,7 @@ source=(
 # The source archive comes first, then the dictionaries in the order above;
 # scripts/update-aur-checksum.sh replaces the first one on every release.
 sha256sums=(
-    'a7818983a078cfaa6f502e6bb7e2a8b38b24835659d297463f62fa87f3278ae8'
+    'd799892565b49dcb24edddf1950ede89296f8af81a5c5e685c5d03f473be3edb'
     'a7ba9f645ffe7094e56ae1c4a81d100df8fbb1e28bbe1792622e9728e162db3d'
     'ed3cf9e3ec8a80647f0ec783dc09dad43b8ccad2e994f5eab6ff13a41d0916c8'
 )
