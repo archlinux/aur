@@ -2,7 +2,7 @@
 
 pkgname=python-transformer-engine
 _pkgname=TransformerEngine
-pkgver=2.18
+pkgver=2.19
 pkgrel=1
 pkgdesc='NVIDIA Transformer Engine: accelerated transformer training/inference with FP8 on Hopper+ GPUs (PyTorch backend)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
   'python-nvdlfw-inspect'
   'python-triton'
   'python-einops'
-  'python-cudnn-frontend>=1.25.0'
+  'python-cudnn-frontend>=1.28.0'
   'glibc'
   'libgcc'
   'libstdc++'
@@ -39,7 +39,7 @@ makedepends=(
   'pybind11'
   'gcc15'
   'git'
-  'cudnn-frontend>=1.25.0'
+  'cudnn-frontend>=1.28.0'
 )
 checkdepends=('python-pytest>=8.2.1')
 # Git sources: main repo at the release tag plus every pinned submodule. The
@@ -48,14 +48,14 @@ source=(
   "git+https://github.com/NVIDIA/TransformerEngine.git#tag=v${pkgver}"
   "te-cutlass::git+https://github.com/NVIDIA/cutlass.git#commit=57e3cfb47a2d9e0d46eb6335c3dc411498efa198"
   "te-googletest::git+https://github.com/google/googletest.git#commit=f8d7d77c06936315286eb55f8de22cd23c188571"
-  "te-nccl::git+https://github.com/NVIDIA/nccl.git#commit=b87848fbc52da65b5a898b4ac6633fcf51cec4ed"
+  "te-nccl::git+https://github.com/NVIDIA/nccl-extensions.git#commit=9f47d6eb3b60962d8157a579b4caaaa4ae6b19f4"
   'nccl-ep-nvcc-ldflags.patch'
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'ac5da038fc3a317080130b573b56700f911898559777d4b8867d57332251ce4d')
+            'dbd40f5bd195d0537c4723faecac7d939ca95654a9bf84c38f3b01cb598c465a')
 
 prepare() {
   cd "${_pkgname}"
@@ -63,7 +63,7 @@ prepare() {
   git submodule init
   git config submodule.3rdparty/cutlass.url "${srcdir}/te-cutlass"
   git config submodule.3rdparty/googletest.url "${srcdir}/te-googletest"
-  git config submodule.3rdparty/nccl.url "${srcdir}/te-nccl"
+  git config submodule.3rdparty/nccl-extensions.url "${srcdir}/te-nccl"
   git -c protocol.file.allow=always submodule update
 
   # cuDNN frontend is now a distribution dependency, not a git submodule.
@@ -81,12 +81,8 @@ prepare() {
   # ones pip actually resolves here.
   sed -i 's|^requires = \[.*\]|requires = ["setuptools>=61.0", "wheel", "torch>=2.1"]|' pyproject.toml
 
-  # NCCL-EP bypasses PyTorch's build helper and otherwise uses every host CPU,
-  # ignoring both process affinity and the standard MAX_JOBS build limit.
-  sed -i \
-    's/nproc = os.cpu_count() or 8/nproc = int(os.getenv("MAX_JOBS", len(os.sched_getaffinity(0))))/' \
-    setup.py
-  grep -Fq 'nproc = int(os.getenv("MAX_JOBS"' setup.py
+  # Upstream now uses get_max_jobs_for_parallel_build(), which honors MAX_JOBS.
+  grep -Fq "nproc = get_max_jobs_for_parallel_build()" setup.py
 }
 
 build() {
@@ -168,7 +164,7 @@ from importlib.metadata import version
 
 from transformer_engine.common.recipe import DelayedScaling, Format
 
-assert version("transformer_engine") == "2.18.0"
+assert version("transformer_engine") == "2.19.0"
 
 recipe = DelayedScaling(
     margin=2,
@@ -194,8 +190,28 @@ package() {
   # The upstream wheel carries backend build helpers as importable modules.
   # They are not part of the installed API and would incorrectly turn
   # setuptools and wheel into runtime dependencies.
-  rm \
-    "${pkgdir}"/usr/lib/python*/site-packages/transformer_engine/{jax,pytorch}/setup.py
+  python - "$pkgdir" <<'PYRECORD'
+import csv
+from pathlib import Path
+import sys
+import sysconfig
+
+site = Path(sys.argv[1]) / sysconfig.get_path("purelib").lstrip("/")
+removed = set()
+for backend in ("jax", "pytorch"):
+    helper = site / "transformer_engine" / backend / "setup.py"
+    helper.unlink()
+    removed.add(helper.relative_to(site).as_posix())
+    for bytecode in (helper.parent / "__pycache__").glob("setup.*.pyc"):
+        bytecode.unlink()
+        removed.add(bytecode.relative_to(site).as_posix())
+record, = site.glob("transformer_engine-*.dist-info/RECORD")
+with record.open(newline="") as stream:
+    rows = list(csv.reader(stream))
+assert {name for name in removed if name.endswith(".py")} <= {row[0] for row in rows}
+with record.open("w", newline="") as stream:
+    csv.writer(stream).writerows(row for row in rows if row[0] not in removed)
+PYRECORD
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

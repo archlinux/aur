@@ -1,6 +1,6 @@
 pkgbase = python-transformer-engine
 	pkgdesc = NVIDIA Transformer Engine: accelerated transformer training/inference with FP8 on Hopper+ GPUs (PyTorch backend)
-	pkgver = 2.18
+	pkgver = 2.19
 	pkgrel = 1
 	url = https://github.com/NVIDIA/TransformerEngine
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-transformer-engine
 	makedepends = pybind11
 	makedepends = gcc15
 	makedepends = git
-	makedepends = cudnn-frontend>=1.25.0
+	makedepends = cudnn-frontend>=1.28.0
 	depends = python>=3.10
 	depends = python-pytorch-cuda>=2.1
 	depends = python-pydantic
@@ -27,7 +27,7 @@ pkgbase = python-transformer-engine
 	depends = python-nvdlfw-inspect
 	depends = python-triton
 	depends = python-einops
-	depends = python-cudnn-frontend>=1.25.0
+	depends = python-cudnn-frontend>=1.28.0
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
@@ -35,15 +35,15 @@ pkgbase = python-transformer-engine
 	depends = cudnn>=9.3
 	depends = nccl>=2.30.4
 	depends = nvidia-utils
-	source = git+https://github.com/NVIDIA/TransformerEngine.git#tag=v2.18
+	source = git+https://github.com/NVIDIA/TransformerEngine.git#tag=v2.19
 	source = te-cutlass::git+https://github.com/NVIDIA/cutlass.git#commit=57e3cfb47a2d9e0d46eb6335c3dc411498efa198
 	source = te-googletest::git+https://github.com/google/googletest.git#commit=f8d7d77c06936315286eb55f8de22cd23c188571
-	source = te-nccl::git+https://github.com/NVIDIA/nccl.git#commit=b87848fbc52da65b5a898b4ac6633fcf51cec4ed
+	source = te-nccl::git+https://github.com/NVIDIA/nccl-extensions.git#commit=9f47d6eb3b60962d8157a579b4caaaa4ae6b19f4
 	source = nccl-ep-nvcc-ldflags.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ac5da038fc3a317080130b573b56700f911898559777d4b8867d57332251ce4d
+	sha256sums = dbd40f5bd195d0537c4723faecac7d939ca95654a9bf84c38f3b01cb598c465a
 
 pkgname = python-transformer-engine

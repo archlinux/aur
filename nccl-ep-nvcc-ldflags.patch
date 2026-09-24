@@ -41,4 +41,4 @@
 +    env["LDFLAGS"] = shlex.join(nvcc_ldflags)
  
      prev_gencode = gencode_stamp.read_text().strip() if gencode_stamp.exists() else None
-     if not nccl_ep_lib.exists() or prev_gencode != gencode:
+     if not nccl_ep_shared_lib.exists() or prev_gencode != gencode:
