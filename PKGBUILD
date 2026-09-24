@@ -63,9 +63,9 @@ package() {
   cd ffdec
   local _f
 
-  install -Dm0644 "dist/ffdec.jar" -t "$pkgdir/usr/share/java/$pkgname"
+  install -Dm0644 "dist/ffdec.jar" -t "$pkgdir/usr/share/java/ffdec"
   for _f in lib/*.jar; do
-    install -Dm0644 "$_f" -t "$pkgdir/usr/share/java/$pkgname/lib"
+    install -Dm0644 "$_f" -t "$pkgdir/usr/share/java/ffdec/lib"
   done
 
   install -Dm0755 "dist/ffdec.sh" "$pkgdir/usr/bin/ffdec"
