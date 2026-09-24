@@ -1,0 +1,17 @@
+pkgbase = anich
+	pkgdesc = 一个支持超分辨率的在线动漫弹幕APP。多平台，多番剧源，多弹幕，高清无广告。追番看番必备软件。
+	pkgver = 1.5.25
+	pkgrel = 1
+	url = https://github.com/Sle2p/AniCh
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = mpv
+	optdepends = libappindicator-gtk3: tray icon support
+	conflicts = anich-bin
+	conflicts = anich-app-bin
+	options = !strip
+	source = anich-1.5.25.zip::https://github.com/Sle2p/AniCh/releases/download/1.5.25/anich-linux-1.5.25.zip
+	sha256sums = d3d9c7f054f450d9a6cfca5c6018aecb88ad101b21729adf6c5efdfb629674df
+
+pkgname = anich
