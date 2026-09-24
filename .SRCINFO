@@ -1,7 +1,7 @@
 pkgbase = musicrename
 	pkgdesc = command line music library manager
-	pkgver = 4.2.1
-	pkgrel = 2
+	pkgver = 4.3.0
+	pkgrel = 1
 	url = https://github.com/mfinelli/musicrename
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,7 +15,7 @@ pkgbase = musicrename
 	optdepends = ffmpeg: transcoding for device sync
 	optdepends = rsgain: apply replaygain to extracted audio
 	optdepends = yt-dlp: automatic video downloads
-	source = git+https://github.com/mfinelli/musicrename.git#tag=v4.2.1
-	sha256sums = 5bbf1cd0ad28840331b7a68e14778f0a18c763c78182ffbda70c53cc809a91ba
+	source = git+https://github.com/mfinelli/musicrename.git#tag=v4.3.0
+	sha256sums = d453f5be26e69dd89d7922067231b1661eda06753a5f0b720a299a05a851b3b7
 
 pkgname = musicrename
