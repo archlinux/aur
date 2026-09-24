@@ -1,6 +1,6 @@
 # Maintainer: NickeyGod <niklass.schaeffer@gmail.com>
 pkgname=onyx-desktop
-pkgver=4.7.8
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="Onyx AI desktop client - native wrapper for the Onyx knowledge assistant"
 arch=('x86_64')
