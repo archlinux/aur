@@ -5,7 +5,7 @@ set -o pipefail
 echo "Fetching latest LycheeSlicer version from mango3d.io..."
 
 # Fetch the download page and extract the version number from JSON data
-LATEST_VERSION=$(curl -s "https://mango3d.io/download-lychee-slicer" | \
+LATEST_VERSION=$(curl -Ls "https://mango3d.io/download-lychee-slicer" | \
     grep -oP '\\\"version\\\":\\\"[0-9]+\.[0-9]+\.[0-9]+\\\"' | \
     head -1 | \
     sed 's/[^0-9.]//g')

@@ -1,11 +1,8 @@
 post_install() {
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 
-	# Link to the binary
+	# Link to the launcher
 	ln -sf '/opt/LycheeSlicer/lycheeslicer' '/usr/bin/lycheeslicer'
-
-	# SUID chrome-sandbox for Electron 5+
-	chmod 4755 '/opt/LycheeSlicer/chrome-sandbox' || true
 
 	update-mime-database /usr/share/mime || true
 	update-desktop-database /usr/share/applications || true
@@ -19,7 +16,7 @@ post_upgrade() {
 post_remove() {
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 
-	# Delete the link to the binary
+	# Delete the link to the launcher
 	rm -f '/usr/bin/lycheeslicer'
 	update-desktop-database -q
 }
