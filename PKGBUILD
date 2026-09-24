@@ -7,7 +7,7 @@ pkgdesc="Microsoft® ODBC Driver 13 for SQL Server®"
 arch=('x86_64')
 url="https://techcommunity.microsoft.com/t5/sql-server-blog/bg-p/SQLServer/label-name/SQLServerDrivers"
 license=('custom')
-depends=('openssl-1.0' 'unixodbc' 'krb5' 'curl')
+depends=('compat-openssl10' 'unixodbc' 'krb5' 'curl')
 provides=("msodbcsql=${pkgver}")
 options=('!strip')
 source=(https://packages.microsoft.com/rhel/7/prod/Packages/m/msodbcsql-$pkgver-1.x86_64.rpm)
