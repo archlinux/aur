@@ -4,6 +4,7 @@ pkgbase = goat-cli-git
 	pkgrel = 1
 	url = https://github.com/bluesky-social/goat
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = git
