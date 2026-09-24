@@ -1,12 +1,11 @@
 pkgbase = mendimaru
 	pkgdesc = Manage Mendix Studio Pro on Linux through WinBoat
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/GG-O-BP/mendimaru
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	makedepends = nodejs
 	makedepends = npm
 	makedepends = pango
 	depends = cairo
@@ -19,6 +18,8 @@ pkgbase = mendimaru
 	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libsoup3
+	depends = nodejs>=22.22.2
+	depends = nss
 	depends = webkit2gtk-4.1
 	depends = winboat
 	depends = xdg-utils
@@ -29,7 +30,7 @@ pkgbase = mendimaru
 	optdepends = podman-compose: use WinBoat with Podman Compose
 	options = !debug
 	options = !lto
-	source = mendimaru-0.5.0.tar.gz::https://github.com/GG-O-BP/mendimaru/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 6fe678c08c63b20aaa499f35042b875a1a31dd6a145fac45ada263b55f4f66dc
+	source = mendimaru-0.6.0.tar.gz::https://github.com/GG-O-BP/mendimaru/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 96ef9b2fbf829c11ad2d0f206efc25e0789b5b27c980e81ea9d0eaa4111007b6
 
 pkgname = mendimaru

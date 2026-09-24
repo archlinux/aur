@@ -1,7 +1,7 @@
 # Maintainer: GGOBP <GGOBP at protonmail dot ch>
 
 pkgname=mendimaru
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Manage Mendix Studio Pro on Linux through WinBoat"
 arch=('x86_64')
@@ -18,13 +18,14 @@ depends=(
   'hicolor-icon-theme'
   'libgcc'
   'libsoup3'
+  'nodejs>=22.22.2'
+  'nss'
   'webkit2gtk-4.1'
   'winboat'
   'xdg-utils'
 )
 makedepends=(
   'cargo'
-  'nodejs'
   'npm'
   'pango'
 )
@@ -37,7 +38,7 @@ optdepends=(
 )
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6fe678c08c63b20aaa499f35042b875a1a31dd6a145fac45ada263b55f4f66dc')
+sha256sums=('96ef9b2fbf829c11ad2d0f206efc25e0789b5b27c980e81ea9d0eaa4111007b6')
 
 _set_rustflags() {
   local remap="--remap-path-prefix=$srcdir=/usr/src/debug/$pkgname-$pkgver"
@@ -54,6 +55,7 @@ prepare() {
   export npm_config_cache="$srcdir/npm-cache"
   export npm_config_fund=false
   export npm_config_update_notifier=false
+  export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
   npm ci
 
   export CARGO_HOME="$srcdir/cargo-home"
@@ -112,6 +114,22 @@ package() {
 
   install -Dm755 src-tauri/target/release/mendimaru \
     "$pkgdir/usr/bin/mendimaru"
+
+  # Cargo does not process Tauri bundle.resources. Keep these destinations in
+  # sync with tauri.conf.json; Linux resource_dir resolves /usr/lib/mendimaru.
+  local browser_dir="$pkgdir/usr/lib/$pkgname/browser"
+  install -Dm644 scripts/browser-frontend-health.mjs "$browser_dir/browser-frontend-health.mjs"
+  install -Dm644 scripts/browser-environment.mjs "$browser_dir/browser-environment.mjs"
+  install -Dm644 scripts/browser-runner.mjs "$browser_dir/browser-runner.mjs"
+  install -Dm644 scripts/browser-parallel.mjs "$browser_dir/browser-parallel.mjs"
+  install -Dm644 scripts/browser-artifact-safety.mjs \
+    "$browser_dir/browser-artifact-safety.mjs"
+  install -dm755 "$browser_dir/node_modules/@playwright"
+  cp -a node_modules/@playwright/test "$browser_dir/node_modules/@playwright/"
+  local module
+  for module in fflate playwright playwright-core; do
+    cp -a "node_modules/$module" "$browser_dir/node_modules/"
+  done
 
   install -Dm644 /dev/stdin \
     "$pkgdir/usr/share/applications/mendimaru.desktop" <<'EOF'
