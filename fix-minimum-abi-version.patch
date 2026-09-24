@@ -1,0 +1,11 @@
+--- a/sip/QtDataVisualization/QtDataVisualizationmod.sip	2026-09-24 12:01:35.158956561 +0200
++++ b/sip/QtDataVisualization/QtDataVisualizationmod.sip	2026-09-24 12:01:35.162990216 +0200
+@@ -22,6 +22,8 @@
+ 
+ %Module(name=PyQt5.QtDataVisualization, keyword_arguments="Optional", use_limited_api=True)
+ 
++%MinimumABIVersion "12.0"
++
+ %Import QtGui/QtGuimod.sip
+ 
+ %Timeline {QtDataVisualization_1_0_0 QtDataVisualization_1_1_0 QtDataVisualization_1_2_0 QtDataVisualization_1_2_1 QtDataVisualization_1_2_2 QtDataVisualization_5_7_0 QtDataVisualization_5_7_1 QtDataVisualization_5_8_0 QtDataVisualization_5_9_0 QtDataVisualization_5_9_1 QtDataVisualization_5_9_2 QtDataVisualization_5_9_3 QtDataVisualization_5_9_4 QtDataVisualization_5_9_5 QtDataVisualization_5_9_6 QtDataVisualization_5_9_7 QtDataVisualization_5_9_8 QtDataVisualization_5_9_9 QtDataVisualization_5_10_0 QtDataVisualization_5_10_1 QtDataVisualization_5_11_0 QtDataVisualization_5_11_1 QtDataVisualization_5_11_2 QtDataVisualization_5_11_3 QtDataVisualization_5_12_0 QtDataVisualization_5_12_1 QtDataVisualization_5_12_2 QtDataVisualization_5_12_3 QtDataVisualization_5_12_4 QtDataVisualization_5_13_0 QtDataVisualization_5_14_0 QtDataVisualization_5_15_0}

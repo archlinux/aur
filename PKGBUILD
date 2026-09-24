@@ -3,7 +3,7 @@
 
 pkgname=python-pyqt5-datavisualization
 pkgver=5.15.6
-pkgrel=6
+pkgrel=7
 pkgdesc='Python bindings for QtDataVisualization'
 arch=(x86_64)
 url='https://www.riverbankcomputing.com/software/pyqtdatavisualization/intro'
@@ -13,8 +13,15 @@ makedepends=(sip pyqt-builder)
 conflicts=(python-pyqtdatavisualization)
 provides=(python-pyqtdatavisualization)
 replaces=(python-pyqtdatavisualization)
-source=(https://pypi.python.org/packages/source/P/PyQtDataVisualization/PyQtDataVisualization-$pkgver.tar.gz)
-sha256sums=('9ed33b20e747bc69e1d619f147bb1625cc00d6ef404dbf076ba13a9ff6f6061d')
+source=(https://pypi.python.org/packages/source/P/PyQtDataVisualization/PyQtDataVisualization-$pkgver.tar.gz
+        fix-minimum-abi-version.patch)
+sha256sums=('9ed33b20e747bc69e1d619f147bb1625cc00d6ef404dbf076ba13a9ff6f6061d'
+            'e7bec3fd96b813ee7e6000800917df2a51b329eca006db3877f29d0d8c966038')
+
+prepare() {
+  cd PyQtDataVisualization-$pkgver
+  patch -Np1 -i "$srcdir/fix-minimum-abi-version.patch"
+}
 
 build() {
   cd PyQtDataVisualization-$pkgver

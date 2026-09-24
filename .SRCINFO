@@ -1,7 +1,7 @@
 pkgbase = python-pyqt5-datavisualization
 	pkgdesc = Python bindings for QtDataVisualization
 	pkgver = 5.15.6
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.riverbankcomputing.com/software/pyqtdatavisualization/intro
 	arch = x86_64
 	license = GPL-3.0-only
@@ -13,6 +13,8 @@ pkgbase = python-pyqt5-datavisualization
 	conflicts = python-pyqtdatavisualization
 	replaces = python-pyqtdatavisualization
 	source = https://pypi.python.org/packages/source/P/PyQtDataVisualization/PyQtDataVisualization-5.15.6.tar.gz
+	source = fix-minimum-abi-version.patch
 	sha256sums = 9ed33b20e747bc69e1d619f147bb1625cc00d6ef404dbf076ba13a9ff6f6061d
+	sha256sums = e7bec3fd96b813ee7e6000800917df2a51b329eca006db3877f29d0d8c966038
 
 pkgname = python-pyqt5-datavisualization
