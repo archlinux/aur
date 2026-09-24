@@ -15,13 +15,13 @@ _name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 pkgname=${_name}
 pkgver=$_ver
-pkgrel=3
+pkgrel=4
 pkgdesc="General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
 url="https://colmap.github.io/"
 license=('GPL')
 groups=()
-depends=('cgal' 'ceres-solver' 'gflags' 'fmt' 'openimageio' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'libjpeg' 'boost-libs' qt5-{base,svg} 'metis' 'flann')
+depends=('cgal' 'ceres-solver' 'gflags' 'fmt' 'openimageio' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'libjpeg-turbo' 'boost-libs' qt5-{base,svg} 'metis' 'flann')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx')
 if [ "$_BUILD_CUDA" == "ON" ] ; then 
   depends+=('onnxruntime-cuda' 'protobuf')

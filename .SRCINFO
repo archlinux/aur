@@ -1,7 +1,7 @@
 pkgbase = colmap
 	pkgdesc = General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
 	pkgver = 4.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://colmap.github.io/
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = colmap
 	depends = freeglut
 	depends = glew
 	depends = google-glog
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = boost-libs
 	depends = qt5-base
 	depends = qt5-svg
