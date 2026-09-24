@@ -3,19 +3,15 @@
 pkgname=linux-recall-git
 _pkgname=linux_recall
 pkgver=r27.4cfddc2
-pkgrel=1
+pkgrel=2
 pkgdesc='Windows Recall-style screen memory for KDE Plasma 6 on Wayland'
 arch=('any')
 url='https://github.com/junyixu/linux_recall'
 license=('MIT')
 depends=(
-  'bash'
   'python'
   'python-jeepney'
-  'python-numpy'
-  'python-onnxruntime'
   'python-pillow'
-  'python-rapidocr'
   'python-requests'
   'spectacle'
 )
@@ -26,11 +22,18 @@ makedepends=(
   'python-installer'
 )
 optdepends=(
+  'python-rapidocr: local OCR when the PaddleOCR cloud is unreachable'
+  'python-onnxruntime: local OCR when the PaddleOCR cloud is unreachable'
   'plasma-browser-integration: record the URL of the active browser tab'
   'fzf: lrf search picker'
   'jq: lrf and lr-search'
   'imagemagick: highlight matches on screenshots'
   'kitty: image previews in lrf'
+  'python-numpy: Click to Do (linux-recall-click)'
+  'firefox: Click to Do opens its page in Firefox'
+  'kdotool: lrf ctrl-o raises Neovide and Anki Browse windows'
+  'libnotify: notify-send messages from lrf'
+  'xdg-utils: lrf opens screenshots and links with xdg-open'
 )
 provides=('linux-recall')
 conflicts=('linux-recall')
