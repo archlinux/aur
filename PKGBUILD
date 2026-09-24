@@ -6,7 +6,7 @@ _pkgname=walker
 
 pkgname=${_pkgname}-bin
 
-pkgver=2.17.0
+pkgver=2.17.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -54,8 +54,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'bd91b255a3c5d36753f16b3b7bd201560a27292187fd87dc1d95b46e01aa6917'
-            '5b4e47b7d2314bf8b2fda1e85d9e55126ef4a1f62a984f8e03f78ee6c74d63e6'
+            '9755f955d5c4e460ac8538e1b648ba2a3c86da37ceaa4d0655dca4d1ea3d2456'
+            'be6099be55c4575f39ad6e0fadc5af61f4a8ecb1d39ce4ca4a0e32b7117f3e2a'
             'd6dac24c66c6e851e4a0f702154ccd92a1b0f64990beeff393b530ccd1089721'
             'ee18aeaa319a34b4f35e0445dadbe223f9f95532e0763aa6a44da03e3c4f6331'
             'e9613245a50e92f6da1e6f09bc84473fae716ee4c30b2536a4f0b285a1536c94'
@@ -75,7 +75,7 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '55106a1ce3b6a477fbaa04e50e7df367b0e242287f207f8fc7b6460f401dafd3'
             '073a912e3eee95249236af90ce50496a3b94bd840919b2d94e058054dbf3ca25'
             '5829f472a3a6fc664627cd16f7f867717bfd3d56c1612b75bf61eaf3d8a8961a')
-sha256sums_x86_64=('eab433ca0f81b4fd2ab611bb00833c5b33df4c883475c763bb1d7337eb0908fb')
+sha256sums_x86_64=('e30cc46e18212903348b37491bc5399b6d64ddc4ecfec5fb1363a168d78734e8')
 
 prepare() {
     cd "${srcdir}" || exit 1
