@@ -1,5 +1,6 @@
+# Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=hyprmoncfg
-pkgver=1.18.4
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Terminal-first monitor configurator and auto-switching daemon for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -7,17 +8,22 @@ url="https://github.com/crmne/hyprmoncfg"
 license=('MIT')
 install="${pkgname}.install"
 depends=('hyprland' 'xdg-terminal-exec')
-optdepends=('systemd: user service for automatic profile switching')
 makedepends=('go')
+optdepends=('systemd: user service for automatic profile switching')
 conflicts=('hyprmoncfg-bin' 'hyprmoncfg-git')
 options=('!debug')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/hyprmoncfg/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1b03c3a166073f1cc03420de6d6232a0a47ff5a761764f06556625557a96c24e')
+# The deps archive holds the release's Go module cache, so the build is offline.
+source=("hyprmoncfg-1.19.0.tar.gz::https://github.com/crmne/hyprmoncfg/archive/refs/tags/v1.19.0.tar.gz"
+        "hyprmoncfg-1.19.0-deps.tar.xz::https://github.com/crmne/hyprmoncfg/releases/download/v1.19.0/hyprmoncfg-1.19.0-deps.tar.xz")
+sha256sums=('8d35b72432e5895fff135ae1d8961944dbe8bb2391d68e55c6670ebeb2a6dfcd'
+            '889055b729b856abbd5d46cf20caf015c9a9c5888be9953db7b76dc18474a601')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  local commit="release"
+  # r<commit count>.<short commit> of the release tag; keep the commit.
+  local commit="r300.7ba3e62"
+  commit="${commit##*.}"
   local build_date
   build_date="$(date -u +%FT%TZ)"
   local ldflags=(
@@ -28,8 +34,13 @@ build() {
     "-X github.com/crmne/hyprmoncfg/internal/buildinfo.Date=${build_date}"
   )
 
-  CGO_ENABLED=0 go build -trimpath -ldflags "${ldflags[*]}" -o hyprmoncfg ./cmd/hyprmoncfg
-  CGO_ENABLED=0 go build -trimpath -ldflags "${ldflags[*]}" -o hyprmoncfgd ./cmd/hyprmoncfgd
+  GOMODCACHE="${srcdir}/go-mod" GOPROXY=off CGO_ENABLED=0 go build -buildvcs=false -trimpath -mod=readonly -ldflags "${ldflags[*]}" -o hyprmoncfg ./cmd/hyprmoncfg
+  GOMODCACHE="${srcdir}/go-mod" GOPROXY=off CGO_ENABLED=0 go build -buildvcs=false -trimpath -mod=readonly -ldflags "${ldflags[*]}" -o hyprmoncfgd ./cmd/hyprmoncfgd
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  GOMODCACHE="${srcdir}/go-mod" GOPROXY=off go test -buildvcs=false ./...
 }
 
 package() {
