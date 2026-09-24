@@ -2,11 +2,17 @@
 
 pkgname=bsdiff-gui
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for bsdiff/bspatch binary diff tools'
-arch=(x86_64)
+arch=(
+  x86_64
+  aarch64
+)
 url=https://github.com/Raflos10/PatchGUI
-license=('BSD-2-Clause' 'LicenseRef-bzip2')
+license=(
+  BSD-2-Clause
+  bzip2-1.0.6
+)
 depends=(qt5-base)
 provides=($_pkgname)
 conflicts=($_pkgname)
