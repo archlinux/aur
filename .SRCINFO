@@ -1,6 +1,6 @@
 pkgbase = nodeterm-bin
 	pkgdesc = Node-based terminal manager — multiple draggable, zoomable terminals on a single canvas
-	pkgver = 0.3.9
+	pkgver = 0.3.13
 	pkgrel = 1
 	url = https://github.com/eneskirca/nodeterm
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = nodeterm-bin
 	conflicts = nodeterm
 	options = !strip
 	options = !emptydirs
-	source = node-terminal_0.3.9_amd64.deb::https://github.com/eneskirca/nodeterm/releases/download/v0.3.9/node-terminal_0.3.9_amd64.deb
-	sha256sums = 17afa1b912c670a6e47efedab2a515cb898742250cf8b829a594afeb24a693bd
+	source = node-terminal_0.3.13_amd64.deb::https://github.com/eneskirca/nodeterm/releases/download/v0.3.13/node-terminal_0.3.13_amd64.deb
+	sha256sums = 2ab6cc81fc86d8376a8d8608978eb0024085670eec130ec8f1ce67f573797e07
 
 pkgname = nodeterm-bin
