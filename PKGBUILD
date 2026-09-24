@@ -5,7 +5,7 @@
 
 _basename=faad2
 pkgname=lib32-faad2
-pkgver=2.11.2
+pkgver=2.11.3
 pkgrel=1
 pkgdesc="Freeware Advanced Audio (AAC) Decoder"
 arch=(x86_64)
@@ -17,8 +17,8 @@ depends=(
 )
 makedepends=(cmake)
 source=($_basename-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=('fd140c0f4e7946e95a49a8652e26f33b138fc3375da34d5e3a55cdde8a74be429eb6fe0180bd434841022cee3c2ec65fe40dda7440fe0dd2761622174f992490')
-b2sums=('cf7852e1891af0eb254b6ec068bbe472dd8c2e465fc4104bd1a69d7cbbe2d36439e50ee252b0879e7a77fab9dcd8299056eff7d7855352a50ebe29978421e7f0')
+sha512sums=('1a468a65b8e738a37b7af5415645e8c45b0c3505fe0794948a6b1f5b17e4f9301c015214584fb534cbfc78f016bfe907a1c88131ab76b728ef1554e4dc7e4551')
+b2sums=('da9f96c30653e5bfa41eb0c01b04128cb1a070d8fd46ac0a297cbfddef9d0f895f8f26e525521d7093949dc4f96b66b401d39b318192cfc3127c48e1f307e202')
 
 build() {
     local cmake_options=(
