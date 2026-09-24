@@ -1,0 +1,13 @@
+pkgbase = munder-difflin-bin
+	pkgdesc = Agent harness to run an office of your clones
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://munderdiffl.in
+	arch = x86_64
+	license = proprietary
+	noextract = Munder-Difflin-0.5.2-linux-x86_64.AppImage
+	options = !strip
+	source = https://github.com/chaitanyagiri/munder-difflin/releases/download/v0.5.2/Munder-Difflin-0.5.2-linux-x86_64.AppImage
+	sha256sums = e8637b7a98d7e8b417a25ed78f4e61beec6a42813f0890848caaac8953c7130a
+
+pkgname = munder-difflin-bin
