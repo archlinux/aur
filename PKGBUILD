@@ -5,7 +5,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=xscreensaver-arch-logo
-pkgver=6.15
+pkgver=6.16
 pkgrel=1
 pkgdesc="Screen saver and locker for the X Window System with Arch Linux branding"
 url="https://www.jwz.org/${pkgname%%-*}/"
@@ -44,8 +44,9 @@ source=("${pkgname}-${pkgver}.tar.gz::https://www.jwz.org/${pkgname%%-*}/${pkgna
         logo-512.png
         logo-50.xpm
         logo-180.xpm
-        logo-360.xpm)
-sha512sums=('2a01c6c450c85e427cf2194b96d85017d3817d7e76821f36db9f643dd0c0a30b5197d431044c6a451dc3c3d74252b77e25bd8b51203a5f5c23ddef6e1bd02fb6'
+        logo-360.xpm
+        "${pkgname%%-*}-${pkgver}-configure-gettext.patch")
+sha512sums=('537f0c77b2ae88ecd73619e5bb6d883680090070ebb2b1c3efa113cec8a85ad487f03367ab135c590d3ef31076262882fc40efba1a337fd96121291c895e66f3'
             '529ed9b7904631989803a4e1f306a0f3e496e50a123ebbd6ff77058e52aeb1b2328148d8224e54b547faff14e9d591146b9849c5fb9d1063e6db41f295f3074e'
             'a63d93f148500eb8ae4a011286c1e762a38575773381d33fa1c79cb1b94df8bdba54b40c52c5861ab865934f1d3a3a225c1ef5758a698a9e587b0779d76a0a34'
             '4814fa3178d5f37b5422dcfa73b53f94492863e958987590796ea1a5a5df85977033aa2064e2cd6b2b813908751d8f9982e5103b6615d5b60d521d720340483b'
@@ -59,7 +60,8 @@ sha512sums=('2a01c6c450c85e427cf2194b96d85017d3817d7e76821f36db9f643dd0c0a30b519
             'e650ad1351107aef023420bcb7422279efb1f2594362e66b737c960e2a1a5444f4925449ecae5b4ffa3a0127d6645f9d466f3b5d17767c865dcaf438b3b0e44f'
             'abc52d3821deb9b34779c7bea2a3512a2bb015982fa1c196a2da75a74d8bf4d6766402dfb620d34b2eb9e117c1c9e9acc2f579c8acb15a1389d40fe0c5d1c93a'
             '5b1762bb1b3f01d23d7df14a0773f34fb0b751c013220e5e105916375ff8f094fb5821f2dbdc3c90ec5d10552dc6e8e15c4491ab239f0e5123eec51a2527ec70'
-            'dcbf893a99ad1ad8c4868481eea1921c465737cb09b36fc7cafcdee6b0ec9c8b701051e2a17e215ed9b368d79c72b4a752c532e1ddd565602c0d58782b7cb4a7')
+            'dcbf893a99ad1ad8c4868481eea1921c465737cb09b36fc7cafcdee6b0ec9c8b701051e2a17e215ed9b368d79c72b4a752c532e1ddd565602c0d58782b7cb4a7'
+            '6cf3c80682b996a4e9120371175db0e5442996c99967e0fae2d38fdcdda6360043267558719bdbea09b18244502e7f1cd50fd6df6dda69d3c07bda65e4ece794')
 
 prepare() {
   local logos_png
@@ -86,6 +88,10 @@ prepare() {
   for _file in "${logos[@]}"; do
 	install -Dm0644 "${_file}" "${srcdir}/${pkgname%%-*}-${pkgver}/utils/images/${_file}"
   done
+
+  # Fix xscreensaver-6.16 configure file issue
+  cd "${pkgname%%-*}-${pkgver}"
+  patch -p1 -i "../${pkgname%%-*}-${pkgver}-configure-gettext.patch"
 }
 
 build() {

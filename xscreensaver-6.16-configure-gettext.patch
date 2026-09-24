@@ -1,0 +1,11 @@
+diff -ura xscreensaver-6.16.orig/configure xscreensaver-6.16.new/configure
+--- xscreensaver-6.16.orig/configure	2026-09-04 10:49:16.939316840 +1200
++++ xscreensaver-6.16.new/configure	2026-09-24 21:21:35.705013425 +1200
+@@ -7962,7 +7962,6 @@
+ 
+ 
+ ALL_LINGUAS="da de es et fi fr hu it ja ko nb nl pl pt pt_BR ru sk sv vi wa zh_CN zh_TW"
+-AM_GNU_GETTEXT(external)
+ MKINSTALLDIRS="$INSTALL_DIRS"
+ 
+ # The library is there, but neither $INTLLIBS nor $LIBINTL are getting set.
