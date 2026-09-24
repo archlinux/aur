@@ -1,0 +1,10 @@
+--- a/src/app/gui/render/FrameSink.h
++++ b/src/app/gui/render/FrameSink.h
+@@ -7,6 +7,7 @@
+ // push() is called from the GUI thread and blocks only while the bounded
+ // queue is full, which is what keeps a slow disk or encoder from growing it.
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <vector>

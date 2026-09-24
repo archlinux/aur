@@ -1,7 +1,7 @@
 # Maintainer: Coraline Shuryn <coraline.shuryn@gmail.com>
 
 pkgname=spirula-studio
-pkgver=2026.9.20
+pkgver=2026.9.24
 pkgrel=1
 pkgdesc="End-to-end 3D Gaussian Splatting pipeline (Vulkan backend)"
 arch=('x86_64' 'aarch64')
@@ -35,6 +35,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/harry7557558/spirula-studio/archive/refs/tags/v${pkgver}.tar.gz"
   "imgui-${_imguiver}.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v${_imguiver}.tar.gz"
   "use-system-glfw.patch"
+  "gcc16-cstdint.patch"
   "spirula-studio.desktop"
 )
 source_x86_64=(
@@ -46,9 +47,10 @@ source_aarch64=(
 noextract=(
   "slang-${_slangver}-linux-${CARCH}.tar.gz"
 )
-sha256sums=('0729bfcaafe7d0f03d992254c44d1dea125a49f3998d9bbbad4db1d5da67ac67'
+sha256sums=('b93b6ad6a8d41c9d941a5fd75cca6ee41eecb960300d5b3deacc75e002d1b957'
             'fecb33d33930e12ff53a34064e9d3a06c8f7c3e04408f14cd36c80e3faac863b'
             'cf015b623bca66d6a55711bbf428b155d1cdd6c0656ef7c7d587ddf29f474de7'
+            '35f9d27d404bc5896eac4ceada87c7e2e0d6e3948cf8ebe41ff0a23a2111ac59'
             '9637abbeb17aa1fff2ba542ad17be4bd5d91b814008b620b2bedb950c2a7e0ca')
 sha256sums_x86_64=('bbd36968b5aefdf91c2ede0d2e131f8b552cba6ed2444da59f1a0bc0bfc6792d')
 sha256sums_aarch64=('bbd36968b5aefdf91c2ede0d2e131f8b552cba6ed2444da59f1a0bc0bfc6792d')
@@ -57,6 +59,11 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   patch -Np1 -i "${srcdir}/use-system-glfw.patch"
+
+  # GCC 16 / libstdc++: FrameSink.h uses uint8_t without including <cstdint>
+  if [ -f src/app/gui/render/FrameSink.h ] && ! grep -qE '<cstdint>|<stdint\.h>' src/app/gui/render/FrameSink.h; then
+    patch -Np1 -i "${srcdir}/gcc16-cstdint.patch"
+  fi
 
   mkdir -p "${srcdir}/slang"
   bsdtar -xf "${srcdir}/slang-${_slangver}-linux-${CARCH}.tar.gz" -C "${srcdir}/slang"
