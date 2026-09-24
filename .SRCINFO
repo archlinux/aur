@@ -1,6 +1,6 @@
 pkgbase = kobe-git
 	pkgdesc = CLI for pools of pre-warmed Kubernetes virtual clusters (latest git main)
-	pkgver = 0.55.3.r562.g5ee455a
+	pkgver = 0.56.0.r565.g0a06449
 	pkgrel = 1
 	url = https://github.com/kunobi-ninja/kobe
 	arch = x86_64
