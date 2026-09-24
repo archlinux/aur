@@ -1,6 +1,6 @@
 pkgbase = rkd-dev-bin
 	pkgdesc = RKD desktop client (beta/development channel)
-	pkgver = 0.2.0_beta.35
+	pkgver = 0.2.0_beta.36
 	pkgrel = 1
 	url = https://git.rkd.nanoya.biz/rkd/releases
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = rkd-dev-bin
 	depends = xdg-utils
 	optdepends = libayatana-appindicator: tray icon support
 	provides = rkd
-	noextract = rkd-dev-bin-0.2.0_beta.35.deb
+	noextract = rkd-dev-bin-0.2.0_beta.36.deb
 	options = !strip
 	options = !debug
-	source = rkd-dev-bin-0.2.0_beta.35.deb::https://git.rkd.nanoya.biz/rkd/releases/releases/download/v0.2.0-beta.35/RKD-electron-rkd_0.2.0-beta.35_amd64.deb
-	sha256sums = 565893841ddb08b223128edd9322fbee8373e277defcdae5d866d8120e4f9fad
+	source = rkd-dev-bin-0.2.0_beta.36.deb::https://git.rkd.nanoya.biz/rkd/releases/releases/download/v0.2.0-beta.36/RKD-electron-rkd_0.2.0-beta.36_amd64.deb
+	sha256sums = 7071b5b67eb28846dffca6601087053e61c46875310c1dbd44d05183a956be56
 
 pkgname = rkd-dev-bin
