@@ -7,7 +7,7 @@ _wavsen_commit=e9c4983bb8851eed0823e25ad277a7bb7f6250ac
 _qextra_commit=68f752fd38e3d7a923bf36d621f4a94be7b26fd8
 
 pkgname=waywallen
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
@@ -26,7 +26,7 @@ source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
         "git+https://github.com/hypengw/ncrequest.git#commit=$_ncrequest_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
         "git+https://github.com/hypengw/QExtra.git#commit=$_qextra_commit")
-sha256sums=('803d5f1fe69d58b5662ec85646f4dc66dfcb1d7aa237d71bf27e17c0aafa3644'
+sha256sums=('ee69f089d95c3d0e1dce1b22c03a522669cc5eed65f4eb816aa4c57610e712f5'
             'edd45f5b4e745f8317ab8e0242fa63e6fc548b587ac01a6e94b904b9f8a8464b'
             '7b09b22347e9db3206fc797f61ce69996ff7d9e909e9c1fe8564550c2b540704'
             '4f6311b61894a24cb223cb8006de80986a5f51bd160c919217f0d698bd83bd33'
