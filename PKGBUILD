@@ -1,5 +1,5 @@
 pkgname=pipixiv-bin
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="一个使用Compose Multiplatform开发的第三方Pixiv客户端，支持国内直连"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 options=(!debug)
 depends=('glibc' 'gcc-libs' 'glib2' 'gtk3' 'libx11' 'libxcb' 'freetype2' 'fontconfig' 'mesa-utils')
 source=("https://github.com/darriousliu/PiPixiv/releases/download/v$pkgver/PiPixiv-v$pkgver-linux-x86_64.tar.gz")
-sha256sums=('f9cffdffc0ba0f0671c61f03cc296fefff16923632a22ac62a153fe1b0650088')
+sha256sums=('b056a436eca7146039a6dee43fa4a09e586d2ef257390f9b97df4f05e876b419')
 
 package() {
   cd "$srcdir"
