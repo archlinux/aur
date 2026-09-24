@@ -1,8 +1,8 @@
 # Maintainer: Matthias R. Wiora <matthias@wiora.io>
 pkgname=tpm2-kira
-pkgver=0.3.2
+pkgver=0.3.3
 # pkgver may not contain '-', but a prerelease tag can. Keep them separate.
-_tag=0.3.2
+_tag=0.3.3
 pkgrel=1
 pkgdesc="TPM2-based TOTP authenticator with PCR policies"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('mkinitcpio: for early boot integration'
             'tpm2-tools: for debugging and integration testing')
 conflicts=('tpm2-kira-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('4d17b9161bed5fb26a44cc38cc06a0930f24a5829e8514a2d0c2268519bed3fb')
+sha256sums=('9c1c101a9ee0a2cf376dbe236343065861f6cbb87024c97e4675d295b8793186')
 options=('!debug')
 
 # GitHub names the extracted directory after the tag, minus a leading 'v'.
@@ -56,15 +56,15 @@ package() {
 
     # Not enabled on the host: the mkinitcpio install hook enables it inside the
     # image, which is the only place it is meant to run.
-    install -Dm644 systemd/system/tpm2-kira.service \
+    install -Dm644 initramfs/systemd/tpm2-kira.service \
         "$pkgdir/usr/lib/systemd/system/tpm2-kira.service"
 
-    install -Dm644 mkinitcpio/install/sd-tpm2-kira \
+    install -Dm644 initramfs/mkinitcpio/install/sd-tpm2-kira \
         "$pkgdir/usr/lib/initcpio/install/sd-tpm2-kira"
-    install -Dm755 mkinitcpio/post/sd-tpm2-kira \
+    install -Dm755 initramfs/mkinitcpio/post/sd-tpm2-kira \
         "$pkgdir/usr/lib/initcpio/post/sd-tpm2-kira"
 
-    install -Dm644 mkinitcpio/mkinitcpio.conf.example \
+    install -Dm644 initramfs/mkinitcpio/mkinitcpio.conf.example \
         "$pkgdir/usr/share/doc/$pkgname/mkinitcpio.conf.example"
 }
 
