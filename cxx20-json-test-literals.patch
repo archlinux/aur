@@ -1,0 +1,36 @@
+--- a/tests/cpp/extra/test_json_parser.cc
++++ b/tests/cpp/extra/test_json_parser.cc
+@@ -144,7 +144,7 @@
+   // test unicode code point
+   EXPECT_EQ(json::Parse("\"\\u0041\"").cast<String>(), "A");
+   // test unicode surrogate pair
+-  EXPECT_EQ(json::Parse("\"\\uD83D\\uDE04hello\"").cast<String>(), u8"\U0001F604hello");
++  EXPECT_EQ(json::Parse("\"\\uD83D\\uDE04hello\"").cast<String>(), "\U0001F604hello");
+ }
+ 
+ TEST(JSONParser, WrongString) {
+@@ -282,12 +282,12 @@
+   // Test various unicode characters
+   EXPECT_EQ(json::Parse("\"\\u0000\"").cast<String>(), std::string("\0", 1));
+   // replace using \U to avoid encoding issues
+-  EXPECT_EQ(json::Parse("\"\\u00FF\"").cast<String>(), u8"\U000000FF");
+-  EXPECT_EQ(json::Parse("\"\\u4E2D\\u6587\"").cast<String>(), u8"\U00004E2D\U00006587");
++  EXPECT_EQ(json::Parse("\"\\u00FF\"").cast<String>(), "\U000000FF");
++  EXPECT_EQ(json::Parse("\"\\u4E2D\\u6587\"").cast<String>(), "\U00004E2D\U00006587");
+ 
+   // Test multiple surrogate pairs
+   EXPECT_EQ(json::Parse("\"\\uD83D\\uDE00\\uD83D\\uDE01\"").cast<String>(),
+-            u8"\U0001F600\U0001F601");
++            "\U0001F600\U0001F601");
+ }
+ 
+ TEST(JSONParser, RawUTF8Bytes) {
+@@ -360,7 +360,7 @@
+       {"float", 3.14159},
+       {"scientific", 1.23e-4},
+       {"string", "hello world"},
+-      {"unicode_string", u8"Hello \U00004E16\U0000754C \U0001F30D"},
++      {"unicode_string", "Hello \U00004E16\U0000754C \U0001F30D"},
+       {"empty_string", ""},
+       {"empty_array", json::Array{}},
+       {"empty_object", json::Object{}},
