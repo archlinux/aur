@@ -8,7 +8,7 @@ _name1=tasks
 _name0=fastmcp
 pkgbase=python-$_name0
 pkgname=(python-$_name0-$_name3 python-$_name0-$_name2 python-$_name0-$_name1 python-$_name0)
-pkgver=4.0.7
+pkgver=4.0.8
 pkgrel=1
 arch=('any')
 _repo='https://github.com/PrefectHQ/fastmcp'
@@ -57,7 +57,7 @@ makedepends=('python-hatchling'
 #               'python-cryptography'
 #               'python-pydocket')
 source=("$_name0::git+$_repo.git#tag=v$pkgver")
-sha256sums=('64691b708ebc66a108939b555776ac319a52519e8c59c25119a1ae30273eaa1f')
+sha256sums=('940515fe72efcacdf0249176c3c670df9cb589551ead9ed3858e69ab8fc3d03d')
 
 build() {
   cd "$srcdir"/$_name0
