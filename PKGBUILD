@@ -3,7 +3,7 @@
 # push-to-aur.sh replaces pkgver from the release tag before publication and
 # updpkgsums fills the checksum once that tag is public.
 pkgname=opal-media-player
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Play everything — media player, universal search, torrent streaming, local AI, one native binary"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
     'python: voice helper scripts (STT/TTS servers)'
 )
 source=("Opal-$pkgver.tar.gz::https://github.com/debpalash/Opal/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c917a53f7e493c7a4d411a93b31ff5aa3e76402565060f070bd916c9d8f847eb')
+sha256sums=('6a015f28d93a1370c34e548b878eff72efc2333436215674e14362808df885ec')
 
 build() {
     cd "Opal-$pkgver"
