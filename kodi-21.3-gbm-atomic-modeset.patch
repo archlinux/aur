@@ -1,0 +1,12 @@
+--- a/xbmc/windowing/gbm/WinSystemGbm.cpp
++++ b/xbmc/windowing/gbm/WinSystemGbm.cpp
+@@ -247,6 +247,9 @@
+ 
+   auto result = m_DRM->SetVideoMode(res, bo);
+ 
++  if (result && std::dynamic_pointer_cast<CDRMAtomic>(m_DRM))
++    FlipPage(true, false, false);
++
+   auto delay =
+       std::chrono::milliseconds(CServiceBroker::GetSettingsComponent()->GetSettings()->GetInt(
+                                     "videoscreen.delayrefreshchange") *

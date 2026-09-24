@@ -25,7 +25,7 @@ _renderer=gles
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r65983.8d8341a79c7
+pkgver=r65987.f8815ee40f4
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -39,7 +39,7 @@ makedepends=(
   'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'smbclient' 'sndio' 'spdlog' 'taglib'
   'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
-  'graphviz' 'pcre' 'tinyxml2' 'libdisplay-info'
+  'graphviz' 'pcre2' 'tinyxml2' 'libdisplay-info'
   # cmake/scripts/linux/Install.cmake calls distutils
   # python 3.12 does no longer come with distutils on board
   'python-setuptools'
@@ -55,15 +55,6 @@ options=(!lto)
 _gitname=xbmc
 _codename=Omega
 
-# Found on their respective github release pages. One can check them against
-# what is pulled down when not specifying them in the cmake step.
-# $CHROOT/build/kodi-git/src/kodi-build/build/download
-#
-# https://github.com/xbmc/FFmpeg/tags
-# https://github.com/xbmc/libdvdcss/tags
-# https://github.com/xbmc/libdvdnav/tags
-# https://github.com/xbmc/libdvdread/tags
-#
 _libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
 _libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
 _libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
@@ -82,8 +73,9 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
-  0001-Merge-pull-request-28016-from-heitbaum-giflib.patch
-  0002-backport-NFS-replace-nfs_create-with-nfs_open2.patch
+  "https://github.com/xbmc/xbmc/pull/28016.patch"
+  "kodi-21.3-pcre2.patch"
+  "kodi-21.3-gbm-atomic-modeset.patch"
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -104,8 +96,9 @@ b2sums=('SKIP'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        'c0c955f886e0ef7f4c98f6119a264318ce9220ada5e0279600b6e9058a7141e5a98176dd3f982058039e2c1e502f2589cb9bfe5b340a99d31d2b1dc481a2ca6f'
-        '0ef981f4d062be66c021efd7c264abb48c8efe31a09d64cee052e7ad55af6772e4db8915d12d642f0bca5296f29bdebd2e0f4907ec1ca77726717d3862091454')
+        '6ff64fa3028dca88b1ae6e898218149811a995e13053dd6e25abcf3cacbfeac8e31a02d04592f3b5fee432d007cebda8fee5c87f673f7cdc3410855b43f5a2ee'
+        'd5b5b6b9e9863f277ebe6c427f240b1ed8d1c7ba83b52cbda38fa1d0b0e5e14f39fb3cd9a5fdf125614a54156a0c454dae0c4c240dfb58362dacf3d1bc94ad7a'
+        'dd2f3d494bd3d283df676c08be2fdab2cda49da4037c6b2e711d1b1a11ccfa9d96785f935f400ce7efef45afef4ca16e9f0b088ee336637450d4b656d82cd810')
 
 pkgver() {
   cd "$_gitname"
@@ -118,8 +111,14 @@ prepare() {
 
   cd "$_gitname"
   
-  patch -p1 -i ../0001-Merge-pull-request-28016-from-heitbaum-giflib.patch
-  patch -p1 -i ../0002-backport-NFS-replace-nfs_create-with-nfs_open2.patch
+  # TexturePacker will not build with giflib-6.1.2
+  # https://github.com/xbmc/xbmc/pull/28016
+  patch -p1 -i "$srcdir/28016.patch"
+  # PCRE2 support from Debian https://sources.debian.org/patches/kodi/2:21.3+dfsg-1.1/workarounds/0003-pcre2.patch/
+  patch -p1 -i "$srcdir/kodi-21.3-pcre2.patch"
+  # gbm screen refresh rate crash: https://gitlab.archlinux.org/archlinux/packaging/packages/kodi/-/work_items/20
+  # patch extracted from https://github.com/xbmc/xbmc/pull/28246/changes/2530a9be035f4b369dcccaff7ba4bb22ce5b3289
+  patch -p1 -i "$srcdir/kodi-21.3-gbm-atomic-modeset.patch"
 
   rm -rf system/certs # remove not needed cacert
 
