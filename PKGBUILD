@@ -1,6 +1,6 @@
 # Maintainer: Szymon Porwolik <szporwolik@users.noreply.github.com>
 pkgname=cqops-bin
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Fast, offline-first amateur radio logger for the terminal"
 arch=('x86_64')
@@ -8,10 +8,10 @@ url="https://github.com/szporwolik/cqops"
 license=('Apache-2.0')
 provides=('cqops')
 conflicts=('cqops')
-source=("cqops-${pkgver}-amd64.tar.gz::https://github.com/szporwolik/cqops/releases/download/v0.10.1/cqops-linux-amd64.tar.gz"
-        "cqops.svg::https://raw.githubusercontent.com/szporwolik/cqops/v0.10.1/assets/cqops-icon.svg"
-        "cqops.desktop::https://raw.githubusercontent.com/szporwolik/cqops/v0.10.1/installer/cqops.desktop")
-sha256sums=('0856888d869a517718a0dba5100a9595c73bf8ab3de1db8e9cddbbf8161f4edb'
+source=("cqops-${pkgver}-amd64.tar.gz::https://github.com/szporwolik/cqops/releases/download/v0.11.0/cqops-linux-amd64.tar.gz"
+        "cqops.svg::https://raw.githubusercontent.com/szporwolik/cqops/v0.11.0/assets/cqops-icon.svg"
+        "cqops.desktop::https://raw.githubusercontent.com/szporwolik/cqops/v0.11.0/installer/cqops.desktop")
+sha256sums=('e80089ab9fdc38af58f1dc7b4a63ea89ad39a772ad105253702a5f3c25f4543a'
             'b7f11342cb2edd20f1b656c7eba182cd477ea136c7c96bde66bb58d1d173d1c6'
             '68b29d2df1abd1e3fb673e9f3a32e0441bd3a8eb79e008ff17a7e09f0f3c6339')
 package() {
