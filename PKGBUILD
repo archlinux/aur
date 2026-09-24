@@ -1,34 +1,38 @@
-# Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
+# Maintainer: Sokoloft <sokoloft nospamat protonmail nospamdot com>
+# Contributor: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
 # Contributor: Oliver Rümpelein <arch@pheerai.de>; Siegfried Krug <siegfried nospamat fg4f nospamdot de>
 # Contributor: Evan Anderson <evananderson@thelinuxman.us>
-pkgname=x32edit
+
+pkgname=x32edit-bin
+_pkgname="${pkgname%-bin}" # Removes trailing "-bin"
 pkgver=4.4.1
 pkgrel=1
-_cdn_id1="6-vOpP2lRkyNSDXgZEUbQA"
-_cdn_id2="FyIw4jc3bk60nseai05MBQ"
-pkgdesc="Remote control and programm Behringer X32 consoles"
+pkgdesc="Remote control program for Behringer X32 mixers"
 arch=('x86_64')
-url="http://www.behringer.com/EN/products/X32.aspx"
-license=('custom:musictribe End User License Agreement')
-depends=('alsa-lib' 'freetype2' 'mesa-libgl' 'hicolor-icon-theme' 'libcurl-gnutls')
-source=("https://cdn.mediavalet.com/aunsw/musictribe/$_cdn_id1/$_cdn_id2/Original/X32-Edit_LINUX_$pkgver.tar.gz"
-        "LICENSE"
-        "x32edit.desktop"
-        "x32edit.png")
-sha512sums=('7d5ed5ea0400a63179adb59e701472b78efecd50a5d8c9ffb4ad5df4e9116cf9af35fcd2b856c1d7e899ce923b9fa1822272363969500a180477e5addac8b96f'
-            '5f7c2661abb76ec3d6000b0f3865faf36afd8a0b721f64fafd8da58c8d8b0691012d56a712860c9d6c76ed80efaa762373ca85950933bf0ba5873c1e3c451099'
-            'dd9abb69c1345ef98ac2cdefd0afe6ce1a46a2482b674421c68af0b6a4dd87ea5ae6e1c490d7a236a17f18a8bbcb30dfae64f41c502b7f15a02189b8029baa17'
-            '49507db6cd4a45b4fba977a4c7f2f475cfd8f5a6b7c2336d861ae88c30f16282f3380ef820541460809e8ea318c515c063134307a9a14db84946d2595314d625')
+url="https://www.behringer.com"
+license=('custom')
+makedepends=("gendesk")
+depends=("alsa-lib" "freetype2" "curl" "gcc-libs" "glibc")
 
-package()
-{
-    cd "$srcdir"
+source=("EULA_2012-09-12.pdf"
+        "X32-Edit_LINUX_$pkgver.tar.gz::https://cdn-media.empowertribe.com/23b991ede2e6473d916c7ac56f53d71d/X32-Edit_LINUX_$pkgver.tar.gz"
+        "${_pkgname}.png")
 
-    strip X32-Edit
-    install -Dm755 X32-Edit ${pkgdir}/usr/bin/x32edit
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+sha512sums=('fe39285768937d82f31844b789d1075de8196495727653595e59f4f1b282f6dbe18a8a8bc51b837f284601dc37c52211d3d494a8636512f5398da31ff3d30284'
+            '7d5ed5ea0400a63179adb59e701472b78efecd50a5d8c9ffb4ad5df4e9116cf9af35fcd2b856c1d7e899ce923b9fa1822272363969500a180477e5addac8b96f'
+            'b08b60036dc8794d14f5f7e2792c09e89796aa3c4118ebd3e007cbdf5e2e8e09196a0ed434d21a2b5cddbfe7525d37898eb5bf73d179dedf39aace821cbdefdb')
+b2sums=('f3af5fcb0044782d51ef976375b6184d781bab5110fb2184ac40443df7b21fdfc12ffa534448bb0aa41df8210c5e63a7d2995ee54279c2ec0824de5eb83aae64'
+        '16a012f7071d72992c5425a393bf43f855907eb8201a57db348002a88988b8886273b9b5768fd92327ace64da3cccc44397cdce482e6eebc62d9ee4be917c20a'
+        '75f59c457f27432cea3fffe255b9c1222eaf55b8f276306b9272096c01b12a347deb0d1a4ec7acecd9f3405915fffce5f45c64e695a088d48d24d211e2aeede9')
 
-    # freedesktop.org compatibility
-    install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 x32edit.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/x32edit.png
+
+prepare() {
+	gendesk -n --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec="${_pkgname}" --name "X32 Edit" --icon "${_pkgname}.png" --categories "AudioVideo;Audio" --terminal=false --custom="Keywords=Mixer;Behringer;"
+}
+
+package() {
+    install -Dm755 "X32-Edit" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "EULA_2012-09-12.pdf" "${pkgdir}/usr/share/licenses/${_pkgname}/license.pdf"
+    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
