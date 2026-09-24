@@ -1,27 +1,53 @@
 post_install() {
-  systemd-sysusers >/dev/null 2>&1 || true
-  systemctl daemon-reload >/dev/null 2>&1 || true
+  # /run/systemd/system only exists when systemd is actually PID 1. Artix and other
+  # Arch-derived, non-systemd distros can still install this package via the AUR.
+  if [ -d /run/systemd/system ]; then
+    systemd-sysusers >/dev/null 2>&1 || true
+    systemctl daemon-reload >/dev/null 2>&1 || true
 
-  cat << 'EOF'
+    cat << 'EOF'
 
 === WG Tunnel Installed ===
 
     sudo systemctl enable --now wgtunnel-daemon.service
 
 EOF
+  else
+    cat << 'EOF'
+
+=== WG Tunnel Installed ===
+
+    systemd was not detected, so the daemon's service unit was installed but not enabled.
+    WG Tunnel's tray app needs the daemon running to manage tunnels.
+
+    To test immediately (runs in the foreground, won't survive reboot or persist):
+        sudo /opt/wgtunnel/bin/wgtunnel-daemon
+
+    For a persistent setup, configure your init system to run it at boot. The installed
+    systemd unit (/usr/lib/systemd/system/wgtunnel-daemon.service) can be used as
+    a reference for what it needs.
+
+EOF
+  fi
 }
 
 post_upgrade() {
-  systemctl daemon-reload >/dev/null 2>&1 || true
-  # Already running, so keep it in sync with a restart. This isn't auto-enabling a service
-  # that wasn't active before, so it doesn't violate the Arch conventions
-  systemctl restart wgtunnel-daemon.service >/dev/null 2>&1 || true
+  if [ -d /run/systemd/system ]; then
+    systemctl daemon-reload >/dev/null 2>&1 || true
+    # Already running, so keep it in sync with a restart. This isn't auto-enabling a service
+    # that wasn't active before, so it doesn't violate the Arch conventions
+    systemctl restart wgtunnel-daemon.service >/dev/null 2>&1 || true
+  fi
 }
 
 pre_remove() {
-  systemctl disable --now wgtunnel-daemon.service 2>/dev/null || true
+  if [ -d /run/systemd/system ]; then
+    systemctl disable --now wgtunnel-daemon.service 2>/dev/null || true
+  fi
 }
 
 post_remove() {
-  systemctl daemon-reload >/dev/null 2>&1 || true
+  if [ -d /run/systemd/system ]; then
+    systemctl daemon-reload >/dev/null 2>&1 || true
+  fi
 }
