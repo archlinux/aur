@@ -1,35 +1,51 @@
 # Maintainer: Daniel Hufschläger <daniel at hufschlaeger dot net>
-#
+
 pkgname=tasky-git
-pkgver=1.0.0
+pkgver=V0.6.r16.5a3e86e
 pkgrel=1
 pkgdesc='A sleek, powerful CLI task management tool'
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
+arch=('x86_64')
 license=('GPL-3.0-or-later')
 url='https://github.com/shahriaarrr/Tasky'
-depends=('go')
-makedepends=(
-  'git'
-)
+makedepends=('git' 'go')
 options=(!lto)
 source=("${pkgname}::git+${url}.git")
-md5sums=('SKIP')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+
+  git describe --long --tags --always |
+    sed 's/^v//; s/-/.r/; s/-g/./'
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  go mod verify
+}
 
 build() {
-  export GOPATH="$srcdir"/gopath
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_ENABLED=1
-
   cd "$srcdir/$pkgname"
-  go build -trimpath -mod=readonly -modcacherw -ldflags "-s -w" ./cli/tasky 
+
+  export CGO_ENABLED=0
+
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags='-s -w' \
+    -o tasky \
+    ./cli/tasky
+}
+
+check() {
+  cd "$srcdir/$pkgname"
+
+  go test -mod=readonly ./...
 }
 
 package() {
-  install -dm755 "${pkgdir}/usr/bin"
-  cp -r "${srcdir}/${pkgname}"/tasky "${pkgdir}/usr/bin/" 
+  install -Dm755 "$srcdir/$pkgname/tasky" \
+    "$pkgdir/usr/bin/tasky"
 }
