@@ -1,13 +1,12 @@
 pkgbase = silex-desktop-v3-bin
 	pkgdesc = Silex website builder desktop application
 	pkgver = 3.10.0canary3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/silexlabs/Silex
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
 	source = silex-desktop-3.10.0-canary.3::https://github.com/silexlabs/Silex/releases/download/v3.10.0-canary.3/silex-desktop
