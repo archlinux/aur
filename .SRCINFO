@@ -1,8 +1,8 @@
 pkgbase = xairedit-bin
 	pkgdesc = Remote control program for Behringer X-AIR mixers
 	pkgver = 1.8.1
-	pkgrel = 2
-	url = https://www.behringer.com/series.html?category=R-BEHRINGER-XAIRSERIES
+	pkgrel = 3
+	url = https://www.behringer.com
 	arch = x86_64
 	arch = armv7h
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = xairedit-bin
 	depends = gcc-libs
 	depends = glibc
 	source = EULA_2012-09-12.pdf
-	source = xairedit.png::https://raw.githubusercontent.com/flathub/com.behringer.XAirEdit/refs/heads/master/com.behringer.XAirEdit.png
+	source = xairedit.png
 	sha512sums = fe39285768937d82f31844b789d1075de8196495727653595e59f4f1b282f6dbe18a8a8bc51b837f284601dc37c52211d3d494a8636512f5398da31ff3d30284
 	sha512sums = 6b4f55ec1867bc16280483e3672ce15c2bcc3a27bfb79d346945618ecbf9e6d757a3fc2dd6752e7f37a6c5cf6d039cd81d63c178ba077575c1850d92e8039438
 	b2sums = f3af5fcb0044782d51ef976375b6184d781bab5110fb2184ac40443df7b21fdfc12ffa534448bb0aa41df8210c5e63a7d2995ee54279c2ec0824de5eb83aae64

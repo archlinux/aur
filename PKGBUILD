@@ -6,18 +6,19 @@
 pkgname=xairedit-bin
 _pkgname="${pkgname%-bin}" # Removes trailing "-bin"
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Remote control program for Behringer X-AIR mixers"
 arch=("x86_64" "armv7h")
-url="https://www.behringer.com/series.html?category=R-BEHRINGER-XAIRSERIES"
+url="https://www.behringer.com"
 license=('custom')
 makedepends=("gendesk")
 depends=("alsa-lib" "freetype2" "curl" "libglvnd" "gcc-libs" "glibc")
 
-source=('EULA_2012-09-12.pdf'
-        "${_pkgname}.png::https://raw.githubusercontent.com/flathub/com.behringer.XAirEdit/refs/heads/master/com.behringer.XAirEdit.png")
+source=("EULA_2012-09-12.pdf"
+        "${_pkgname}.png")
 source_x86_64=("X-AIR-Edit_LINUX_${pkgver}.tar.gz::https://cdn-media.empowertribe.com/4240ddc8835149e486922840e9379af0/X-AIR-Edit_LINUX_${pkgver}.tar.gz")
 source_armv7h=("X-AIR-Edit_RASPI_${pkgver}.tar.gz::https://cdn-media.empowertribe.com/a354c773fc524f449572031c75f245fe/X-AIR-Edit_RASPI_${pkgver}.tar.gz")
+
 sha512sums=('fe39285768937d82f31844b789d1075de8196495727653595e59f4f1b282f6dbe18a8a8bc51b837f284601dc37c52211d3d494a8636512f5398da31ff3d30284'
             '6b4f55ec1867bc16280483e3672ce15c2bcc3a27bfb79d346945618ecbf9e6d757a3fc2dd6752e7f37a6c5cf6d039cd81d63c178ba077575c1850d92e8039438')
 sha512sums_x86_64=('cd5f2b3a6bb25416724a4a2418d0407ce7914115ebcf10c218e66bc7560f584d3e467d1bf1214a4fb5ac2fb301f8cf3ce7db638fde4a675255266d73798f508e')
