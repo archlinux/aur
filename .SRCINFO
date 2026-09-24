@@ -1,7 +1,7 @@
 pkgbase = upmd-git
 	pkgdesc = Run tasks and workflows from Markdown
 	pkgver = r83.g8f7c8de
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rezigned/upmd
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = upmd-git
 	depends = gcc-libs
 	provides = upmd
 	conflicts = upmd
+	options = !lto
 	source = upmd-git::git+https://github.com/rezigned/upmd.git
 	sha256sums = SKIP
 
