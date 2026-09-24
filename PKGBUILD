@@ -7,8 +7,8 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=3.0.r26.g5ff88a0
-pkgrel=2
+pkgver=3.2.r14.g1820953
+pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
 license=('GPL-2.0-or-later')
@@ -20,12 +20,15 @@ depends=(
   exiv2
   ffmpegthumbnailer
   gtk4
+  imath
   libarchive
   libheif
   libraw
+  libshumate
   libspelling
   lua
   openexr
+  openjpeg2
   poppler-glib
 )
 makedepends=(
@@ -40,7 +43,6 @@ checkdepends=(
   xorg-server-xvfb
 )
 optdepends=(
-  'evince: for print preview'
   'fbida: for jpeg rotation' # exiftran
   'gawk: to use the geo-decode function'
   'gphoto2: command-line tools for various (plugin) operations'
@@ -65,41 +67,39 @@ pkgver() {
 }
 
 build() {
-  local _meson_opts=(
-    -Dgps-map=disabled
-  )
-
-  arch-meson "${_meson_opts[@]}" "$_pkgsrc" build
+  arch-meson "$_pkgsrc" build
   meson compile -C build
 }
 
 check() {
-  xvfb-run -a dbus-run-session meson test --print-errorlogs -C build
+  dbus-run-session xvfb-run -s '-nolisten local' \
+    meson test -C build --print-errorlogs
 }
 
 package() {
   if [[ "${_use_sodeps::1}" == "t" ]]; then
     eval "depends+=(
-      'libarchive.so'
-      'libcairo.so'
-      'libexiv2.so'
-      'libgdk_pixbuf-2.0.so'
-      'libgio-2.0.so'
-      'libglib-2.0.so'
-      'libgobject-2.0.so'
-      'libgraphene-1.0.so'
-      'libgtk-4.so'
-      'libgtksourceview-5.so'
-      'libheif.so'
-      'libjpeg.so'
-      'libjxl.so'
-      'liblcms2.so'
-      'libpango-1.0.so'
-      'libpangocairo-1.0.so'
-      'libpoppler-glib.so'
-      'libspelling-1.so'
-      'libtiff.so'
-      'libwebp.so'
+      libarchive.so
+      libcairo.so
+      libexiv2.so
+      libgdk_pixbuf-2.0.so
+      libgio-2.0.so
+      libglib-2.0.so
+      libgobject-2.0.so
+      libgraphene-1.0.so
+      libgtk-4.so
+      libgtksourceview-5.so
+      libheif.so
+      libjpeg.so
+      libjxl.so
+      liblcms2.so
+      libpango-1.0.so
+      libpangocairo-1.0.so
+      libpoppler-glib.so
+      libshumate-1.0.so
+      libspelling-1.so
+      libtiff.so
+      libwebp.so
     )"
   fi
 
