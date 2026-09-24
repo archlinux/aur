@@ -3,7 +3,7 @@
 pkgname=atostekid
 pkgver=4.6.0.0
 _pkgver_major="${pkgver%.*.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc="New desktop application for Finnish electronic ID cards"
 arch=("x86_64")
 url="https://dvv.fi/en/linux-versions"
@@ -22,6 +22,10 @@ depends=(
 optdepends=(
     "gnome-shell-extension-appindicator: System tray indicator extension for GNOME desktop"
     "libappindicator: System tray support for desktop environments"
+)
+backup=(
+    "etc/AtostekIDConfig"
+    "usr/share/p11-kit/modules/atostek-id.module"
 )
 install="${pkgname}.install"
 source=(
