@@ -2,10 +2,10 @@
 # Contributor: Aleksey Filippov <sarum9in@gmail.com>
 # Contributor: Eduardo Sánchez Muñoz <eduardosanchezmunoz@gmail.com>
 
-pkgname=cppcms
+pkgname=cppcms1
 pkgver=1.2.1
-pkgrel=4
-pkgdesc="CppCMS is the web development framework written in C++, that is aimed on development of high performance web application."
+pkgrel=1
+pkgdesc="CppCMS is the web development framework written in C++, that is aimed on development of high performance web application (legacy 1.x series)."
 arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="http://cppcms.sourceforge.net/"
 license=('LGPL')
