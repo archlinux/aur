@@ -1,64 +1,86 @@
-# Maintainer: Bruno Ancona <bruno at powerball253 dot com>
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: Bruno Ancona <bruno at powerball253 dot com>
 
 _pkgname=hplip-printer-app
-pkgname=$_pkgname-git
-pkgver=r57.bcce338
+pkgname="${_pkgname}-git"
+pkgver=1.0+r142.20260109.b3fc7f3
 pkgrel=1
-pkgdesc=" HPLIP Printer Application"
+pkgdesc="HPLIP Printer Application"
+url='https://github.com/OpenPrinting/hplip-printer-app'
+license=("Apache-2.0")
 arch=('x86_64')
-depends=('libcups' 'mupdf-tools')
-makedepends=('git')
-source=('git+https://github.com/OpenPrinting/hplip-printer-app.git'
-        'git+https://github.com/michaelrsweet/pappl.git'
-        'git+https://github.com/OpenPrinting/pappl-retrofit.git'
-        'git+https://github.com/OpenPrinting/cups-filters.git'
-        'hplip-printer-app-makefile.patch'
-        'pappl-retrofit-makefile.patch')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP'
-            'ef51e64a325c66ee9a05c236bb9ba863d234c2ebbd17285c2dba8d0de8832d89'
-            '6a2532e722d1566274ae0d7f124ff1f51096fb81341ffd7bfe0235dc2eee0bf2')
+depends=(
+  #'cups-filters>=2' 'cups-filters<3'
+  'glibc'
+  'hplip' # For 'hp-probe'.
+  'libcups'
+  'libcupsfilters'
+  'libcurl.so'
+  'libppd'
+  'libcrypto.so'  # openssl
+  'pappl'
+  'pappl-retrofit'
+  'perl'
+  'sh'
+  #'mupdf-tools'
+)
+optdepends=(
+  "avahi:  To be able to use ZeroConf names instead of IP addresses."
+  "bind:   To be able to use hostnames instead of IP addresses. ('host' executable.)"
+)
+makedepends=(
+  'git'
+  'curl'
+  'openssl'
+)
+provides=(
+  "${_pkgname}=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
+)
+source=(
+  'git+https://github.com/OpenPrinting/hplip-printer-app.git'
+)
+sha256sums=(
+  'SKIP'
+)
+options=('emptydirs')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  git log > git.log
+}
 
 pkgver() {
-	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_pkgname}"
+
+  # _ver="$(git describe --tags | sed 's|^v||' | sed 's|\-[^-]*$||' | tr '-' '_')"
+  _ver="$(grep -E '^[[:space:]]*#[[:space:]]*define[[:space:]]+SYSTEM_VERSION_STR[[:space:]]+.' hplip-printer-app.c | sed -E 's|^[[:space:]]*#[[:space:]]*define[[:space:]]+SYSTEM_VERSION_STR[[:space:]]+(.)|\1|' | tr -d \"\'[[:space:]])"
+  _rev="$(git rev-list --count HEAD)"
+  _hash="$(git rev-parse --short HEAD)"
+  _date="$(git log -n 1 --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
+
+  if [ -n "${_ver}" ]; then
+    printf %s "${_ver}+r${_rev}.${_date}.${_hash}"
+  else
+    error "Could not determine version."
+    return 1
+  fi
 }
 
 build() {
-    # Build pappl
-	cd pappl
-    ./configure --prefix=/ --exec-prefix=/usr --libdir="$srcdir/pappl/pappl" --includedir="$srcdir/pappl"
-    make
-    cd ..
+  cd "${srcdir}/${_pkgname}"
 
-    # Build cups-filters
-    cd cups-filters
-    ./autogen.sh
-    ./configure --prefix=/ --exec-prefix=/usr --libdir="$srcdir/cups-filters/.libs" --includedir="$srcdir/cups-filters"
-    make
-    sed -i 's/-I.*/-I$\{includedir\}/' *.pc
-    cd ..
-
-    # Build pappl-retrofit
-    cd pappl-retrofit
-    ./autogen.sh
-    PKG_CONFIG_PATH="$srcdir/pappl/pappl:$srcdir/cups-filters" ./configure --prefix=/ --exec-prefix=/usr --libdir="$srcdir/pappl-retrofit/.libs" --includedir="$srcdir/pappl-retrofit"
-    patch Makefile < "$srcdir/pappl-retrofit-makefile.patch"
-    make
-    sed -i 's/-I.*/-I$\{includedir\}/' libpappl-retrofit.pc
-    cd ..
-
-    # Build hplip-printer-app
-    cd $_pkgname
-    patch Makefile < "$srcdir/hplip-printer-app-makefile.patch"
-    PKG_CONFIG_PATH="$srcdir/pappl/pappl:$srcdir/cups-filters:$srcdir/pappl-retrofit" make \
-        PAPPL-RETROFIT="$srcdir/pappl-retrofit/.libs/libpappl-retrofit.a" \
-        PPD="$srcdir/cups-filters/.libs/libppd.a" \
-        CUPS-FILTERS="$srcdir/cups-filters/.libs/libcupsfilters.a" \
-        FONTEMBED="$srcdir/cups-filters/.libs/libfontembed.a" \
-        PAPPL="$srcdir/pappl/pappl/libpappl.a"
+  make all
 }
 
 package() {
-	cd $_pkgname
-	make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${_pkgname}"
+
+  make DESTDIR="${pkgdir}/" install
+
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      git.log CODE_OF_CONDUCT.md README.md NOTICE
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  LICENSE
 }
