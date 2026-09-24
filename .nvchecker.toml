@@ -1,0 +1,5 @@
+[flectar-mail]
+source = "git"
+git = "https://github.com/flectar/mail.git"
+from_pattern = 'v(.*)-(.*)'
+to_pattern = '\1\2'
