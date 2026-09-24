@@ -71,7 +71,6 @@ depends_x86_64=(
   lib32-libx11
   lib32-libxcrypt
   lib32-libxcrypt-compat
-  lib32-gst-plugins-base-libs
   lib32-lcms2
   lib32-libxinerama
   lib32-libxss

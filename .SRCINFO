@@ -81,7 +81,6 @@ pkgbase = dwproton-bin
 	depends_x86_64 = lib32-libx11
 	depends_x86_64 = lib32-libxcrypt
 	depends_x86_64 = lib32-libxcrypt-compat
-	depends_x86_64 = lib32-gst-plugins-base-libs
 	depends_x86_64 = lib32-lcms2
 	depends_x86_64 = lib32-libxinerama
 	depends_x86_64 = lib32-libxss
