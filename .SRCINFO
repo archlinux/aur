@@ -1,0 +1,32 @@
+pkgbase = machines
+	pkgdesc = Manager for libvirt virtual machines
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sachesi/machines
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = blueprint-compiler
+	makedepends = just
+	makedepends = gettext
+	depends = gtk4>=1:4.22
+	depends = libadwaita>=1:1.9
+	depends = glib2
+	depends = libvirt
+	depends = gtk-vnc
+	depends = spice-gtk
+	depends = vte4
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = glibc
+	optdepends = qemu-desktop: run machines on this computer
+	optdepends = dnsmasq: virtual networks
+	optdepends = osinfo-db: recognize the system on an installation ISO
+	optdepends = edk2-ovmf: UEFI firmware
+	optdepends = swtpm: emulated TPM
+	optdepends = virtiofsd: folders shared with a machine
+	source = machines-0.1.0.tar.gz::https://github.com/sachesi/machines/archive/v0.1.0/machines-0.1.0.tar.gz
+	sha256sums = 7d37535cb2f48aa343b2242b1fd8cceee311254a32334907421c821c478c15d8
+
+pkgname = machines
