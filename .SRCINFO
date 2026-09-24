@@ -1,6 +1,6 @@
 pkgbase = fluxer-bin
 	pkgdesc = Fluxer Desktop Application
-	pkgver = 2026.922.193957
+	pkgver = 2026.924.13630
 	pkgrel = 1
 	url = https://fluxer.app
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = fluxer-bin
 	options = !strip
 	source = fluxer.desktop
 	sha256sums = 981daa8015b823fef254bb8e79fe6b28f77dda02cdc374796443bd64f5041de1
-	source_x86_64 = fluxer-2026.922.193957-x64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/x64/2026.922.193957/tar_gz
-	sha256sums_x86_64 = a01e5b3e171b19c4160ec97a50848617fce4a47018eb2122829b8fc3c76497ba
-	source_aarch64 = fluxer-2026.922.193957-arm64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/arm64/2026.922.193957/tar_gz
-	sha256sums_aarch64 = 8febd82f84c9af4179a77d1e2af29a55498e85a2c7945335578fcfdf7aaaf4bb
+	source_x86_64 = fluxer-2026.924.13630-x64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/x64/2026.924.13630/tar_gz
+	sha256sums_x86_64 = 0dc5413453c1a6c08b801310c67ab6cd3c179619bf142d8629332bfc6f8a4d2d
+	source_aarch64 = fluxer-2026.924.13630-arm64.tar.gz::https://api.fluxer.app/dl/desktop/stable/linux/arm64/2026.924.13630/tar_gz
+	sha256sums_aarch64 = 21a987855d0b9fb8704af33d7a48ba2e16f9ef177ee32aa9eb621f8635e1a272
 
 pkgname = fluxer-bin
