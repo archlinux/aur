@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=middleclick-autoscroll
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Middle-click autoscroll in every application that supports it"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('flatpak: cover Flatpak applications too'
             'desktop-file-utils: refresh the desktop database after a change')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a5ed5abb780400b1b2114bf16c70889763f4fb8e83234304333fb2c16dbd078b')
+sha256sums=('1b27b257335c269ef0bf50ed3de66d5852686ce79cca55bc19f9d0c5239eaaf5')
 
 build() {
   # pass the version being packaged so `middleclick-autoscroll --version`
