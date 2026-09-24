@@ -4,7 +4,7 @@ pkgname=goat-cli
 pkgver=0.2.5 # renovate: datasource=github-tags depName=bluesky-social/goat
 pkgrel=2
 pkgdesc="Go AT protocol CLI tool"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/bluesky-social/goat"
 license=('MIT')
 depends=('glibc')
@@ -23,6 +23,11 @@ build() {
 	export GOEXPERIMENT="loopvar,nodwarf5"
 
 	go build -ldflags "-compressdwarf=false -linkmode external" .
+}
+
+check() {
+	cd "goat-$pkgver" || exit 1
+	./goat --help >/dev/null
 }
 
 package() {
