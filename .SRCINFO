@@ -1,6 +1,6 @@
 pkgbase = excel-parser-processor-git
-	pkgdesc = Simply generates an array of items from the rows of an Excel file and does the repetitive tedious operations step by step recursively till every item of the array is processed.(Use system-wide electron)
-	pkgver = 1.3.1.r500.gec6b347
+	pkgdesc = Simply generates an array of items from the rows of an Excel file and does the repetitive tedious operations step by step recursively till every item of the array is processed.
+	pkgver = 1.3.1.r503.g2fb910a
 	pkgrel = 1
 	url = https://github.com/btargac/excel-parser-processor
 	arch = any
@@ -9,14 +9,13 @@ pkgbase = excel-parser-processor-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = curl
 	makedepends = jq
-	depends = electron36
+	depends = electron39
 	provides = excel-parser-processor=1.3.1
 	conflicts = excel-parser-processor
 	source = excel-parser-processor.git::git+https://github.com/btargac/excel-parser-processor.git
 	source = excel-parser-processor.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = excel-parser-processor-git
