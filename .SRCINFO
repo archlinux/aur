@@ -1,6 +1,6 @@
 pkgbase = lightpanda-bin
 	pkgdesc = The headless browser designed for AI and data scripting
-	pkgver = 0.3.6
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/lightpanda-io/browser
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = lightpanda-bin
 	license = AGPL-3.0
 	provides = lightpanda
 	conflicts = lightpanda
-	source_x86_64 = lightpanda-bin-0.3.6-x86_64::https://github.com/lightpanda-io/browser/releases/download/0.3.6/lightpanda-x86_64-linux
-	sha256sums_x86_64 = e438c0ad44e0f6916c14cf13beb003512c60438d8fd200738d2e596e73f652d6
-	source_aarch64 = lightpanda-bin-0.3.6-aarch64::https://github.com/lightpanda-io/browser/releases/download/0.3.6/lightpanda-aarch64-linux
-	sha256sums_aarch64 = 29c059cd0755a195350cc79dbcf7ee9580fd575ec3eaa31db755dbada417e616
+	source_x86_64 = lightpanda-bin-0.4.1-x86_64::https://github.com/lightpanda-io/browser/releases/download/0.4.1/lightpanda-x86_64-linux
+	sha256sums_x86_64 = 1d40801e72c0bc61b2cbd3f3562bcfc46de7b79e0568f33f686b64f2e587610a
+	source_aarch64 = lightpanda-bin-0.4.1-aarch64::https://github.com/lightpanda-io/browser/releases/download/0.4.1/lightpanda-aarch64-linux
+	sha256sums_aarch64 = 664775c7f5ab69cc3189954c7f9345e25c167cb4dace016173e629f9a5e82c42
 
 pkgname = lightpanda-bin
