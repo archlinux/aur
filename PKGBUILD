@@ -1,7 +1,7 @@
 # Maintainer: pacmanics <pacman@altbox.de>
 
 pkgname=pentest-ghostwriter
-pkgver=7.2.6
+pkgver=7.2.7
 pkgrel=1
 pkgdesc='Local-first Arch Linux port of Ghostwriter for single-user offensive security workflows'
 arch=('x86_64')
@@ -50,7 +50,7 @@ source=(
   '0072_merge_pacmanics_local_document_and_upstream_0071.py'
   'README.native-port.md'
 )
-sha256sums=('3a76e351dc2c4c57542ff666d85e620d6d38ed79e34a8fe6a05c27295e75b603'
+sha256sums=('79f04675171bc6c614d75ce749a8a3fd253bd0d3c250164cb30277adf446cee1'
             '0dc916398fc88639481ec7156435b00864d2eb0d66154fe9a7a6fa63b8c452b0'
             '41e334ee463f79bab5bcff7a8aeb3239165b218f83077d6c1c962a8264f6abb6'
             'fae92ab2a78fabd39afe125f2ce348fa477a2b9900e66bd245bdf6850b38251e'
