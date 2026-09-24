@@ -1,7 +1,7 @@
 # Maintainer: NickeyGod <niklass.schaeffer@gmail.com>
 
 pkgname=open-design-desktop
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 _tag="open-design-v${pkgver}"
 pkgdesc='Local-first design product: native desktop app & canvas for coding agents (the open-source Claude Design alternative)'
@@ -34,7 +34,7 @@ source=(
   "open-design-desktop.sh"
   "open-design-desktop.desktop"
 )
-sha256sums=('0e14e950116b9c6edd35e6c6217bb6847f8f521f3349ca98d306d09d1af9e3e7'
+sha256sums=('7b9491a9b4e291209853c90a1224d02ea0d13802d208d40bd1f70f3b8d939fae'
             '5ae2dfc1943cd7ec376a5c42086cb76b618f14e10c7e92ecbf901f376b6eea6e'
             '7f86112fce365ab0bc6cc5f7cd415b4bace62c1c2d6252584100b7580290ddd6')
 
