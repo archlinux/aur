@@ -1,7 +1,7 @@
 # Maintainer: VZstless <i [at] vzstless [dot] moe>
 
 pkgname=stoolap
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Modern Embedded SQL Database written in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust')
 options=('!lto')
 provides=('stoolap')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('2cbbf8c478810b6368aaecbaa4cbd594340fc9ca8b9aed5f73c897675c832a8b666d9363f09bedb8017a1af0445fab7bbc8f88427aefa0100b9f09904da11552')
+b2sums=('cd256e8ed00025c62d94298122bb2e36d54b956f483d17b81c98f4557c7c7501828d6a0a90a01733e8fa7dd82203e0d289c631b82de05555db4ac41bf03f6576')
 
 prepare() {
     cd $pkgname-$pkgver
