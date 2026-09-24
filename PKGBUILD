@@ -1,6 +1,6 @@
 # Maintainer: Mateusz Kaczanowski <mkaczanowski-aur@proton.me>
 pkgname=packer-plugin-builder-arm-git
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="Packer plugin to build ARM images"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'i686')

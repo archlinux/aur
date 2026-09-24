@@ -1,6 +1,6 @@
 pkgbase = packer-plugin-builder-arm-git
 	pkgdesc = Packer plugin to build ARM images
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/mkaczanowski/packer-plugin-builder-arm
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = packer-plugin-builder-arm-git
 	depends = qemu-user-static
 	provides = packer-builder-arm
 	options = !lto
-	source = git+https://github.com/mkaczanowski/packer-plugin-builder-arm.git#tag=v1.1.6
+	source = git+https://github.com/mkaczanowski/packer-plugin-builder-arm.git#tag=v1.1.7
 	sha256sums = SKIP
 
 pkgname = packer-plugin-builder-arm-git
