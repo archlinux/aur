@@ -1,7 +1,7 @@
 pkgbase = crisperweaver-bin
 	pkgdesc = On-device audio transcription and speech synthesis GUI (Flutter frontend for the CrispASR engine)
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CrispStrobe/CrisperWeaver
 	arch = x86_64
 	license = AGPL-3.0-only
