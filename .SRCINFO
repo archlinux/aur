@@ -1,6 +1,6 @@
 pkgbase = python-pylance
 	pkgdesc = Python wrapper for the Lance columnar data format
-	pkgver = 11.0.0
+	pkgver = 12.0.0
 	pkgrel = 1
 	url = https://github.com/lance-format/lance
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = python-pylance
 	depends = python-pyarrow>=14
 	depends = python-numpy>=1.22
 	depends = python-lance-namespace>=0.12
-	depends = python-lance-namespace<0.13
+	depends = python-lance-namespace<0.14
 	depends = zstd
 	optdepends = python-datasets: Hugging Face datasets integration
 	optdepends = python-duckdb: DuckDB interoperability
@@ -49,13 +49,13 @@ pkgbase = python-pylance
 	optdepends = python-tqdm: vector training progress bars
 	options = !debug
 	options = !lto
-	source = python-pylance-11.0.0.tar.gz::https://github.com/lance-format/lance/archive/refs/tags/v11.0.0.tar.gz
+	source = python-pylance-12.0.0.tar.gz::https://github.com/lance-format/lance/archive/refs/tags/v12.0.0.tar.gz
 	source = lance-namespace-0.9.patch
 	source = progress-callback-test.patch
 	source = invalid-log-path-test.patch
-	sha256sums = e2704758360cb3e38b038dd7cbcdea74970c208e5fbe57c1cc3ecbedb72f823c
-	sha256sums = 80cd3852ed8211bad598dc66a096dcd5f010b8c5a8a753aefc3c621b53ea5c07
-	sha256sums = 519728e2c691bdcfa82726c2da860c4f49464f9206059c27c58283a9b9423c9f
+	sha256sums = 152d0207b2f2fcfb7f1a59f5370b71c443ac33e716780a2c1ee5f0cb372ed8bf
+	sha256sums = 02225c3b95794c4143c44ab6af7cbc39f5fc150c34f5a3db1d9cd2261f768651
+	sha256sums = 2a75a2b269753cd5c72944f26dffb8485a4a7243573b3afec9a8ba83c1525930
 	sha256sums = 2bd7d8c401dd65c557d621466cd71196a7058ffde0e81a72ee1bd1f29667814a
 
 pkgname = python-pylance

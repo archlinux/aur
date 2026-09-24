@@ -6,11 +6,11 @@ index 8e85e837..942ed3ef 100644
  
  
  def test_create_index_progress_callback_error_before_completion_propagates(tmp_path):
-+    # Optimized Arch builds can finish 1,500 rows inside the 100 ms callback
++    # Optimized Arch builds can finish even 15,000 rows inside the 100 ms callback
 +    # pump interval, so keep enough work here to exercise the pre-completion path.
      ds = _make_sample_dataset_base(
 -        tmp_path, "vector_progress_post_commit_error", 1500, 128
-+        tmp_path, "vector_progress_post_commit_error", 15_000, 128
++        tmp_path, "vector_progress_post_commit_error", 150_000, 128
      )
      recorder = ProgressRecorder(fail_on_tag="start:train_ivf")
  

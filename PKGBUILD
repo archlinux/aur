@@ -2,7 +2,7 @@
 
 pkgname=python-pylance
 _pkgname=pylance
-pkgver=11.0.0
+pkgver=12.0.0
 pkgrel=1
 pkgdesc="Python wrapper for the Lance columnar data format"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
     'python-pyarrow>=14'
     'python-numpy>=1.22'
     'python-lance-namespace>=0.12'
-    'python-lance-namespace<0.13'
+    'python-lance-namespace<0.14'
     'zstd'
 )
 makedepends=(
@@ -66,9 +66,9 @@ source=(
     'invalid-log-path-test.patch'
 )
 sha256sums=(
-    'e2704758360cb3e38b038dd7cbcdea74970c208e5fbe57c1cc3ecbedb72f823c'
-    '80cd3852ed8211bad598dc66a096dcd5f010b8c5a8a753aefc3c621b53ea5c07'
-    '519728e2c691bdcfa82726c2da860c4f49464f9206059c27c58283a9b9423c9f'
+    '152d0207b2f2fcfb7f1a59f5370b71c443ac33e716780a2c1ee5f0cb372ed8bf'
+    '02225c3b95794c4143c44ab6af7cbc39f5fc150c34f5a3db1d9cd2261f768651'
+    '2a75a2b269753cd5c72944f26dffb8485a4a7243573b3afec9a8ba83c1525930'
     '2bd7d8c401dd65c557d621466cd71196a7058ffde0e81a72ee1bd1f29667814a'
 )
 
@@ -213,6 +213,37 @@ package() {
             "s#$srcdir/lance-$pkgver#https://github.com/lance-format/lance/tree/v$pkgver#g" \
             "$_sbom"
     done
+
+    # Keep wheel metadata consistent with the intentionally removed test
+    # configuration and rewritten SBOM paths, including content hashes.
+    python - "$pkgdir" <<'PYRECORD'
+import base64
+import csv
+import hashlib
+from pathlib import Path
+import sys
+import sysconfig
+
+site = Path(sys.argv[1]) / sysconfig.get_path("purelib").lstrip("/")
+record, = site.glob("pylance-*.dist-info/RECORD")
+with record.open(newline="") as stream:
+    rows = list(csv.reader(stream))
+kept = []
+for row in rows:
+    name = row[0]
+    if name == "lance/conftest.py" or (
+        name.startswith("lance/__pycache__/conftest") and name.endswith(".pyc")
+    ):
+        assert not (site / name).exists(), name
+        continue
+    if name.startswith(record.parent.name + "/sboms/"):
+        data = (site / name).read_bytes()
+        checksum = base64.urlsafe_b64encode(hashlib.sha256(data).digest()).rstrip(b"=").decode()
+        row[1:] = ["sha256=" + checksum, str(len(data))]
+    kept.append(row)
+with record.open("w", newline="") as stream:
+    csv.writer(stream, lineterminator="\n").writerows(kept)
+PYRECORD
 
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
