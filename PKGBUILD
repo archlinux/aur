@@ -1,7 +1,7 @@
 # Maintainer: Joao Costa <arch@joaocosta.dev>
 pkgname=stream32-appimage
 _pkgname=stream32
-pkgver=1.14.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Desktop app for nn ESP32 powered stream deck"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 options=('!strip' '!debug')
 provides=('stream32')
 conflicts=()
-source=("${_pkgname}-${pkgver}.AppImage::https://github.com/FadyFaheem/Stream32/releases/download/v${pkgver}/Stream32-${pkgver}-x86_64.AppImage")
-sha256sums=('9269c487c3af8a9131fb684670dc692500e90f4d0736d0c746a45bebdf941d7f')
+source=("${_pkgname}-${pkgver}.AppImage::https://github.com/FadyFaheem/Stream32/releases/download/v1.15.1-nightly.20260923.56/Stream32-1.15.1-nightly.20260923.56-x86_64.AppImage")
+sha256sums=('b8a0ec54d406b965ee366722f2c682385c4b6242af878641b5db3788ec88df6c')
 
 package() {
   cd "$srcdir"
