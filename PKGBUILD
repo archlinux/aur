@@ -25,7 +25,7 @@
 # degraded-but-working state this package shipped with before #822).
 
 pkgname=rkd-dev-bin
-pkgver=0.2.0_beta.36
+pkgver=0.3.0_beta.1
 pkgrel=1
 pkgdesc="RKD desktop client (beta/development channel)"
 arch=(x86_64)
@@ -60,11 +60,11 @@ optdepends=('libayatana-appindicator: tray icon support')
 # uses the hyphenated form there even though the .deb's own control file
 # reports a tilde per Debian pre-release convention).
 # _tag: the Forgejo release tag the asset was uploaded under.
-_pkgver=0.2.0-beta.36
-_tag=v0.2.0-beta.36
+_pkgver=0.3.0-beta.1
+_tag=v0.3.0-beta.1
 
 source=("$pkgname-$pkgver.deb::https://git.rkd.nanoya.biz/rkd/releases/releases/download/${_tag}/RKD-electron-rkd_${_pkgver}_amd64.deb")
-sha256sums=('7071b5b67eb28846dffca6601087053e61c46875310c1dbd44d05183a956be56')
+sha256sums=('05a016b217311acc5b20d92fec0f3b89f435e4e53779ebcc08fd231b0d6e32b3')
 noextract=("$pkgname-$pkgver.deb")
 
 package() {
