@@ -6,7 +6,7 @@ pkgname=kendex-bin
 # carries the same epoch so the four stay comparable with each other.
 epoch=1
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Package manager for AI coding agents, skills, and hooks (prebuilt desktop app and CLI)'
 arch=('x86_64' 'aarch64')
 url='https://kendex.ai'
@@ -36,13 +36,14 @@ depends=(
 provides=('kendex')
 conflicts=('kendex' 'kendex-git' 'kendex-cli-git')
 options=('!strip')
-# The icons are the same files whatever the machine, so they are fetched
-# once here rather than per architecture.
+# The icons and the license are the same files whatever the machine, so
+# they are fetched once here rather than per architecture.
 source=(
   "kendex-32.png::https://raw.githubusercontent.com/vanillagreencom/kendex/v$pkgver/crates/app/icons/32x32.png"
   "kendex.png::https://raw.githubusercontent.com/vanillagreencom/kendex/v$pkgver/crates/app/icons/128x128.png"
   "kendex-256.png::https://raw.githubusercontent.com/vanillagreencom/kendex/v$pkgver/crates/app/icons/128x128@2x.png"
   "kendex-512.png::https://raw.githubusercontent.com/vanillagreencom/kendex/v$pkgver/crates/app/icons/icon.png"
+  "kendex-LICENSE-$pkgver::https://raw.githubusercontent.com/vanillagreencom/kendex/v$pkgver/LICENSE"
 )
 source_x86_64=(
   "kendex-app-$pkgver.AppImage::https://github.com/vanillagreencom/kendex/releases/download/v$pkgver/kendex_${pkgver}_amd64.AppImage"
@@ -57,6 +58,7 @@ sha256sums=(
   '52932bde27a1ca3307d170e581742d3100f4d3bf32445b949b5da62ca42a55b6'
   'c305a76e0637c8d087ec347a2c66940b1174a8c37f25ae5508398eaa3bcb87b4'
   '2515f6d5e2d311b18baffee276dd21ab58c45082b87573528763c39f969868b4'
+  '1097d93034e32eaa55c2a08e73960a886a62394691f8c3456617336c458dfc36'
 )
 sha256sums_x86_64=(
   'e5d60339bf4f02c0f43bc09b9060c30d6bc0c2341c13b64feb5fbd77f04e322e'
@@ -77,6 +79,7 @@ package() {
   install -Dm644 "$srcdir/kendex.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/kendex.png"
   install -Dm644 "$srcdir/kendex-256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/kendex.png"
   install -Dm644 "$srcdir/kendex-512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/kendex.png"
+  install -Dm644 "$srcdir/kendex-LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/kendex.desktop" <<'DESKTOP'
 [Desktop Entry]
 Type=Application
