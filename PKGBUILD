@@ -4,7 +4,7 @@
 
 _pkgname=squashfuse
 pkgname=${_pkgname}-git
-pkgver=0.6.1.r4.ge1e237a
+pkgver=0.6.3.r0.g1a211e2
 pkgrel=1
 pkgdesc="FUSE filesystem to mount squashfs archives"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/vasi/squashfuse"
 license=('LicenseRef-squashfuse')
 provides=('squashfuse')
 conflicts=('squashfuse')
-depends=('fuse3' 'zstd' 'glibc' 'zlib' 'xz' 'lz4' 'lzo')
+depends=('fuse3' 'zstd' 'glibc' 'zlib' 'xz' 'lz4' 'lzo' 'fuse2')
 makedepends=('git' 'make' 'libtool')
 source=("git+${url}")
 sha256sums=('SKIP')
