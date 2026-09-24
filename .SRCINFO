@@ -12,6 +12,7 @@ pkgbase = firmaok-bin
 	depends = python
 	depends = gnome-keyring
 	depends = curl
+	provides = firmaok
 	conflicts = firmaok-bin-git
 	conflicts = firmaok-bin-bin
 	noextract = firmaOK_Linux.tar.gz

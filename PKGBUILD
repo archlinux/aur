@@ -10,6 +10,7 @@ pkgdesc='Digital signature app by the Italian Poste company'
 arch=('any')
 url='https://postecert.poste.it/firma/newfirmaok.shtml'
 license=('custom:firmaok')
+provides=("${_appname}")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=('hicolor-icon-theme' 'bash' 'qt5-base' 'openssl' 'python' 'gnome-keyring' 'curl')
 source=("https://postecert.poste.it/firma/download/${_appname}setup/${_apptitle}_${_pkgsuffx}.tar.gz"
