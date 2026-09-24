@@ -1,6 +1,6 @@
 # Maintainer: Inche Hwang <me at libhwang dot cc>
 pkgname=vrc-avi-scaler
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A tool to resize your avatar on VRChat."
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=()
 conflicts=("${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KutayX7/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	"launch-wrapper")
-sha256sums=('ab3d14ff4b929cc1107cfc406b4f0998faa41de9d82cb47833727a24b4bd9cad'
+sha256sums=('2acafb14c0f1059fd2770aabdfd5effce9aa536931c8a182e1eff55e8446d17d'
             '5a7d249f42080fecf16e38321a008201ce8008a9139fa88cfa33982332453818')
 
 package() {
