@@ -1,5 +1,5 @@
 pkgbase = nora-git
-	pkgdesc = An elegant music player built using Electron and React. Inspired by Oto Music for Android by Piyush Mamidwar.(Use system-wide electron)
+	pkgdesc = An elegant music player built using Electron and React. Inspired by Oto Music for Android by Piyush Mamidwar.
 	pkgver = 4.0.0.alpha.1.r1.g786004a
 	pkgrel = 1
 	url = https://noramusic.netlify.app/
@@ -9,13 +9,13 @@ pkgbase = nora-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = curl
-	depends = electron39
+	makedepends = jq
+	depends = electron43
 	provides = nora=4.0.0.alpha.1
 	conflicts = nora
 	source = nora.git::git+https://github.com/Sandakan/Nora.git
 	source = nora.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = bd5358d8f323d3c2c2f0733364ee4ea55f551dd86ba0be2a76846210b60897fc
 
 pkgname = nora-git
