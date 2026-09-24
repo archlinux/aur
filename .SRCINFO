@@ -1,0 +1,16 @@
+pkgbase = pdfmaker
+	pkgdesc = Join images and PDFs into a single PDF
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/kanehekili/PDFMaker
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	depends = python-gobject
+	depends = gtk3
+	depends = imagemagick
+	depends = ghostscript
+	source = https://github.com/kanehekili/PDFMaker/releases/download/1.0.1/PDFMaker1.0.1.tar
+	md5sums = ad7302fe2f3bb5a5b88f40a22d433a40
+
+pkgname = pdfmaker
