@@ -1,6 +1,6 @@
 # Maintainer: Bolt J Woofson <bolt@boop.no>
 pkgname=brum-bin
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Multi-Pane Web Environment (File Commander/Manager) - By Woofson (Pre-compiled standalone binary)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('brum')
 conflicts=('brum' 'commanderdog' 'commanderdog-bin')
 depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates')
 source=("brum-v${pkgver}-linux-${arch}.tar.gz::https://github.com/Woofson/brum/releases/download/v${pkgver}/brum-v${pkgver}-linux-${arch}.tar.gz")
-sha256sums=('d79ed33ed4745c0cf69974a944b1ff8bdb2842ed419cf4db19594f71a7969399')
+sha256sums=('d316a69315db56dec5938fc8697efb2ac9f20b1c56390b8562c11572fe1549ed')
 
 package() {
     cd "$srcdir/brum-v${pkgver}-linux-${arch}"
