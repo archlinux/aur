@@ -1,6 +1,6 @@
 pkgbase = repo-notes-bin
 	pkgdesc = Standalone CLI and MCP server for repository notes (prebuilt binary)
-	pkgver = 20260922.1
+	pkgver = 20260924.0
 	pkgrel = 1
 	url = https://github.com/timmo001/notes
 	install = repo-notes.install
@@ -21,9 +21,9 @@ pkgbase = repo-notes-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = repo-notes-20260922.1-linux-x86_64.tar.gz::https://github.com/timmo001/notes/releases/download/20260922.1/repo-notes-20260922.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 2599cec82c86b157629f0f3da203f760bf3ee3c5056e4bca6f6ba60436aea9e0
-	source_aarch64 = repo-notes-20260922.1-linux-aarch64.tar.gz::https://github.com/timmo001/notes/releases/download/20260922.1/repo-notes-20260922.1-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 394bbc39577f4d2ac3678c66b2f12b6ebc020dc48444b688e069432a146fd2da
+	source_x86_64 = repo-notes-20260924.0-linux-x86_64.tar.gz::https://github.com/timmo001/notes/releases/download/20260924.0/repo-notes-20260924.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 54984ea8ecf51e7b6e7533f0216d4533dead110a4d746c7f2efd3b7372e6cf07
+	source_aarch64 = repo-notes-20260924.0-linux-aarch64.tar.gz::https://github.com/timmo001/notes/releases/download/20260924.0/repo-notes-20260924.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = f456d40c45a69de6cdade012a9164b1e4eaf39b4cf0c154c20c7777cfc20aa0c
 
 pkgname = repo-notes-bin
