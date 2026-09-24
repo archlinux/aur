@@ -2,7 +2,7 @@
 
 pkgbase=capi-shell
 pkgname=(capi-shell capi-shell-plugin-capo capi-shell-plugin-api-endpoint-proxy)
-pkgver=3.1.4
+pkgver=4.0.0
 pkgrel=1
 arch=('any')
 license=('APACHE')
@@ -14,8 +14,8 @@ source=(
   capi-shell-plugin-api-endpoint-proxy-provider-capo.sh
   capi-shell-plugin-api-endpoint-proxy-tool-sshuttle.sh
 )
-sha512sums=('4fa2b15a729f676c00105b39184f2fdafb3bb10fb9a90c1e155f0def63e3ecceb36c29c86a28d8d525652cbb37c6fc2706f361fd64e0b8fc4c6547e291005d6f'
-            'b484fe3e11be9c453b892a5a0199ea23d726a22ef9def5b568eff29cf722396d8c0ca6d7fb861112f7f13799cd6b1392969b1f2340b5e0d207c26bc9916dbc95'
+sha512sums=('8ca49958388395ba5583f3dd002e9dfe62f694f88e75694f25df95d5a0a874ca296bf2af005ff0c65690f4fb567bd58323a1443303fb993fd1fc428687338128'
+            'f3c22d21f489b4a387b84b18057550754a56918b3a369d6c831f01a2a41e038b3f8e2c91c5fd3fe185eff7df36fead2746dcbe8669b74782f4ce729e7eefb6b2'
             '7f87251ad2e6128404faf6d1cc0c851bd01fa084ccde4b011e7b6d4f598dd3c4718671646442c38babcd364d3673946199c5f8b468fcf5f295ce33587928bd2d'
             'b0f2cd47015970a8b37f8570aa9454c66db59821fedc0ead60091af87752d00bc0fa71032da5443ade266bbf969de9170034f44d039465356a4938f85a5e4362'
             '6b5e8000540aeca5a2f015285c94a2c9b6917a857563a6b11254928b689550141ec9c44bf353f0d664a088e7e5068ee5f412ad28c2769f752ba004db974a9a55'

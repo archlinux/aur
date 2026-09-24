@@ -30,10 +30,10 @@ Config file: \${XDG_CONFIG_HOME:-\$HOME/.config}/capi-shell/config.yaml
                                            user is renamed to the identity reported by
                                            "kubectl auth whoami", if available; if either rename
                                            happened, the context is renamed to "<user>|<cluster>"
-  management_clusters.<name>.{kubeconfig,context}   cluster sources; <name> is also used to
-                                                      resolve per-cluster plugin settings
-  plugins.<plugin-name>.*                            settings owned by installed plugins (global)
-  management_clusters.<name>.plugins.<plugin-name>.* per-cluster override of the above
+  kubeconfigs.<name>.{path,contexts}         management kubeconfig sources; <name> is also used
+                                              to resolve per-cluster plugin settings
+  plugins.<plugin-name>.*                    settings owned by installed plugins (global)
+  kubeconfigs.<name>.plugins.<plugin-name>.* per-cluster override of the above
 EOF
   exit 0
 fi
@@ -41,7 +41,7 @@ fi
 CAPI_SHELL_CONFIG_PATH="${XDG_CONFIG_HOME:-$HOME/.config}/capi-shell/config.yaml"
 export CAPI_SHELL_CONFIG_PATH
 
-_CAPI_SHELL_MGMT_CLUSTER_NAME=""
+_CAPI_SHELL_KUBECONFIG_NAME=""
 _CAPI_SHELL_PLUGIN_DIR="${_CAPI_SHELL_PLUGIN_DIR:-/usr/share/capi-shell/plugins}"
 
 capi_shell_plugin_config() {
@@ -51,8 +51,8 @@ capi_shell_plugin_config() {
     echo "$default"
     return
   fi
-  if [[ -n "$_CAPI_SHELL_MGMT_CLUSTER_NAME" ]]; then
-    value="$(yq -r ".management_clusters.\"$_CAPI_SHELL_MGMT_CLUSTER_NAME\".plugins.\"$plugin\".$path // empty" "$CAPI_SHELL_CONFIG_PATH" 2>/dev/null || true)"
+  if [[ -n "$_CAPI_SHELL_KUBECONFIG_NAME" ]]; then
+    value="$(yq -r ".kubeconfigs.\"$_CAPI_SHELL_KUBECONFIG_NAME\".plugins.\"$plugin\".$path // empty" "$CAPI_SHELL_CONFIG_PATH" 2>/dev/null || true)"
   fi
   if [[ -z "$value" ]]; then
     value="$(yq -r ".plugins.\"$plugin\".$path // empty" "$CAPI_SHELL_CONFIG_PATH" 2>/dev/null || true)"
@@ -95,13 +95,13 @@ trap 'EC=$?; cleanup || true; exit $EC' EXIT INT TERM
 NEW_KUBECONFIG="$(mktemp -p "$XDG_RUNTIME_DIR")"
 
 if [[ -f "$CAPI_SHELL_CONFIG_PATH" ]] && [[ -v KUBECONFIG ]]; then
-  while IFS= read -r _mc_name && IFS= read -r _mc_kc; do
-    [[ -z "$_mc_name" ]] && continue
-    if [[ "$(envsubst <<<"$_mc_kc")" == "$KUBECONFIG" ]]; then
-      _CAPI_SHELL_MGMT_CLUSTER_NAME="$_mc_name"
+  while IFS= read -r _kc_name && IFS= read -r _kc_path; do
+    [[ -z "$_kc_name" ]] && continue
+    if [[ "$(envsubst <<<"$_kc_path")" == "$KUBECONFIG" ]]; then
+      _CAPI_SHELL_KUBECONFIG_NAME="$_kc_name"
       break
     fi
-  done < <(yq -r '(.management_clusters // {}) | to_entries[] | (.key, .value.kubeconfig)' "$CAPI_SHELL_CONFIG_PATH")
+  done < <(yq -r '(.kubeconfigs // {}) | to_entries[] | (.key, .value.path)' "$CAPI_SHELL_CONFIG_PATH")
 fi
 
 if [[ -v KUBECONFIG_CONTEXT ]]; then

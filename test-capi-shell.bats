@@ -50,9 +50,9 @@ EOF
 @test "capi_shell_plugin_config resolves per-cluster override over global default" {
   mkdir -p "$XDG_CONFIG_HOME/capi-shell"
   cat >"$XDG_CONFIG_HOME/capi-shell/config.yaml" <<'EOF'
-management_clusters:
+kubeconfigs:
   prod:
-    kubeconfig: /tmp/prod.yaml
+    path: /tmp/prod.yaml
     plugins:
       api-endpoint-proxy:
         sshuttle:
@@ -64,7 +64,7 @@ plugins:
 EOF
   source "$CAPI_SHELL"
   CAPI_SHELL_CONFIG_PATH="$XDG_CONFIG_HOME/capi-shell/config.yaml"
-  _CAPI_SHELL_MGMT_CLUSTER_NAME="prod"
+  _CAPI_SHELL_KUBECONFIG_NAME="prod"
   result="$(capi_shell_plugin_config api-endpoint-proxy sshuttle.host)"
   [ "$result" = "prod-jump.example.com" ]
 }
@@ -79,7 +79,7 @@ plugins:
 EOF
   source "$CAPI_SHELL"
   CAPI_SHELL_CONFIG_PATH="$XDG_CONFIG_HOME/capi-shell/config.yaml"
-  _CAPI_SHELL_MGMT_CLUSTER_NAME=""
+  _CAPI_SHELL_KUBECONFIG_NAME=""
   result="$(capi_shell_plugin_config api-endpoint-proxy sshuttle.host)"
   [ "$result" = "global-jump.example.com" ]
 }
@@ -89,7 +89,7 @@ EOF
   echo "{}" >"$XDG_CONFIG_HOME/capi-shell/config.yaml"
   source "$CAPI_SHELL"
   CAPI_SHELL_CONFIG_PATH="$XDG_CONFIG_HOME/capi-shell/config.yaml"
-  _CAPI_SHELL_MGMT_CLUSTER_NAME=""
+  _CAPI_SHELL_KUBECONFIG_NAME=""
   result="$(capi_shell_plugin_config api-endpoint-proxy tool "fallback-tool")"
   [ "$result" = "fallback-tool" ]
 }
@@ -104,18 +104,18 @@ plugins:
 EOF
   source "$CAPI_SHELL"
   CAPI_SHELL_CONFIG_PATH="$XDG_CONFIG_HOME/capi-shell/config.yaml"
-  _CAPI_SHELL_MGMT_CLUSTER_NAME=""
+  _CAPI_SHELL_KUBECONFIG_NAME=""
   export THAT_VAR="expanded-jump.example.com"
   result="$(capi_shell_plugin_config api-endpoint-proxy sshuttle.host)"
   [ "$result" = "expanded-jump.example.com" ]
 }
 
-@test "sets management cluster name by matching KUBECONFIG against config" {
+@test "sets kubeconfig name by matching KUBECONFIG against config" {
   mkdir -p "$XDG_CONFIG_HOME/capi-shell"
   cat >"$XDG_CONFIG_HOME/capi-shell/config.yaml" <<'EOF'
-management_clusters:
+kubeconfigs:
   prod:
-    kubeconfig: /tmp/prod-kubeconfig.yaml
+    path: /tmp/prod-kubeconfig.yaml
 EOF
   stub kubectl <<'EOF'
 #!/usr/bin/env bash
@@ -128,9 +128,9 @@ EOF
 @test "end to end: KUBECONFIG matching resolves the per-cluster plugin config value through to a pre-exec hook" {
   mkdir -p "$XDG_CONFIG_HOME/capi-shell"
   cat >"$XDG_CONFIG_HOME/capi-shell/config.yaml" <<'EOF'
-management_clusters:
+kubeconfigs:
   prod:
-    kubeconfig: /tmp/prod-kubeconfig.yaml
+    path: /tmp/prod-kubeconfig.yaml
     plugins:
       mgmt-e2e-test:
         some:

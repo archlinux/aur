@@ -6,13 +6,13 @@ set -o pipefail
 if [[ "${1:-}" == "--help" ]] || [[ "${1:-}" == "-h" ]]; then
   cat <<EOF
 Usage: multi-capi-shell [command...]
-       multi-capi-shell --direct <management-name> <namespace> <name> [command...]
+       multi-capi-shell --direct <kubeconfig-name> <namespace> <name> [command...]
 
-Interactively selects a CAPI cluster from all management clusters using
-fzf, then opens a capi-shell for the selected cluster.
+Interactively selects a CAPI cluster from all configured management
+kubeconfigs using fzf, then opens a capi-shell for the selected cluster.
 
 With --direct, skips fzf and opens a capi-shell directly for <namespace>/<name>
-on the named management cluster from the config file's management_clusters map,
+using the named management kubeconfig from the config file's kubeconfigs map,
 without needing fzf installed.
 
 Arguments:
@@ -25,21 +25,24 @@ Environment variables (override/extend config file):
   MULTI_CAPI_SHELL_CUSTOM_NAME_EXPRESSION   yq expression for a custom cluster display name
 
 Config file: \${XDG_CONFIG_HOME:-\$HOME/.config}/capi-shell/config.yaml
-  management_clusters.<name>.{kubeconfig,context}   cluster sources (merged with env vars above);
-                                                     <name> is required to address a cluster via --direct
-  custom_fields.<name>                              jq expressions for fzf preview columns (used if no env columns set)
+  kubeconfigs.<name>.{path,contexts}   kubeconfig sources (merged with env vars above);
+                                       <name> is required to address a kubeconfig via --direct;
+                                       contexts is an optional list restricting which contexts of
+                                       the kubeconfig are scanned (default: all); --direct uses the
+                                       first configured context, if any
+  custom_fields.<name>                 jq expressions for fzf preview columns (used if no env columns set)
 EOF
   exit 0
 fi
 
 _capi_config="${XDG_CONFIG_HOME:-$HOME/.config}/capi-shell/config.yaml"
-declare -a _mgmt_kubeconfigs=()
-declare -a _mgmt_contexts=()
-declare -a _mgmt_names=()
+declare -a _kubeconfig_paths=()
+declare -a _kubeconfig_contexts=()
+declare -a _kubeconfig_names=()
 
 main() {
 while IFS= read -r _kc; do
-  [[ -n "$_kc" ]] && _mgmt_kubeconfigs+=("$_kc") && _mgmt_contexts+=("") && _mgmt_names+=("")
+  [[ -n "$_kc" ]] && _kubeconfig_paths+=("$_kc") && _kubeconfig_contexts+=("") && _kubeconfig_names+=("")
 done < <(
   [[ -v MANAGEMENT_KUBECONFIGS ]] && echo -e "${MANAGEMENT_KUBECONFIGS//;/\\n}"
   [[ -v KUBECONFIG ]] && echo -e "${KUBECONFIG//;/\\n}"
@@ -49,29 +52,29 @@ if [[ -f "$_capi_config" ]]; then
   while IFS= read -r _name && IFS= read -r _kc && IFS= read -r _ctx; do
     _expanded="$(envsubst <<< "$_kc")"
     if [[ -n "$_expanded" ]]; then
-      _mgmt_kubeconfigs+=("$_expanded")
-      _mgmt_contexts+=("$_ctx")
-      _mgmt_names+=("$_name")
+      _kubeconfig_paths+=("$_expanded")
+      _kubeconfig_contexts+=("$_ctx")
+      _kubeconfig_names+=("$_name")
     fi
-  done < <(yq -r '(.management_clusters // {}) | to_entries[] | (.key, .value.kubeconfig, (.value.context // ""))' "$_capi_config")
+  done < <(yq -r '(.kubeconfigs // {}) | to_entries[] | . as $e | (($e.value.contexts // [""]) | .[] as $ctx | ($e.key, $e.value.path, $ctx))' "$_capi_config")
 fi
 
 if [[ "${1:-}" == "--direct" ]]; then
   shift
-  mgmt_name="${1?management cluster name required}"
+  kubeconfig_name="${1?kubeconfig name required}"
   namespace="${2?namespace required}"
   name="${3?name required}"
   shift 3
-  for _i in "${!_mgmt_names[@]}"; do
-    if [[ -n "${_mgmt_names[$_i]}" ]] && [[ "${_mgmt_names[$_i]}" == "$mgmt_name" ]]; then
-      if [[ -n "${_mgmt_contexts[$_i]}" ]]; then
-        exec env KUBECONFIG="${_mgmt_kubeconfigs[$_i]}" KUBECONFIG_CONTEXT="${_mgmt_contexts[$_i]}" capi-shell "$namespace" "$name" "${@}"
+  for _i in "${!_kubeconfig_names[@]}"; do
+    if [[ -n "${_kubeconfig_names[$_i]}" ]] && [[ "${_kubeconfig_names[$_i]}" == "$kubeconfig_name" ]]; then
+      if [[ -n "${_kubeconfig_contexts[$_i]}" ]]; then
+        exec env KUBECONFIG="${_kubeconfig_paths[$_i]}" KUBECONFIG_CONTEXT="${_kubeconfig_contexts[$_i]}" capi-shell "$namespace" "$name" "${@}"
       else
-        exec env KUBECONFIG="${_mgmt_kubeconfigs[$_i]}" capi-shell "$namespace" "$name" "${@}"
+        exec env KUBECONFIG="${_kubeconfig_paths[$_i]}" capi-shell "$namespace" "$name" "${@}"
       fi
     fi
   done
-  echo "Unknown management cluster: $mgmt_name" >&2
+  echo "Unknown kubeconfig: $kubeconfig_name" >&2
   exit 1
 fi
 
@@ -103,20 +106,20 @@ if [[ ! -v MULTI_CAPI_SHELL_CUSTOM_NAME_EXPRESSION ]] && [[ -f "$_capi_config" ]
 fi
 MULTI_CAPI_SHELL_CUSTOM_NAME_EXPRESSION="${MULTI_CAPI_SHELL_CUSTOM_NAME_EXPRESSION:-\"\"}"
 
-if [[ "${#_mgmt_kubeconfigs[@]}" -gt 0 ]]; then
+if [[ "${#_kubeconfig_paths[@]}" -gt 0 ]]; then
   shopt -s lastpipe
-  for _i in "${!_mgmt_kubeconfigs[@]}"; do
-    export KUBECONFIG="${_mgmt_kubeconfigs[$_i]}"
-    if [[ -n "${_mgmt_contexts[$_i]}" ]]; then
-      _contexts=("${_mgmt_contexts[$_i]}")
+  for _i in "${!_kubeconfig_paths[@]}"; do
+    export KUBECONFIG="${_kubeconfig_paths[$_i]}"
+    if [[ -n "${_kubeconfig_contexts[$_i]}" ]]; then
+      _contexts=("${_kubeconfig_contexts[$_i]}")
     else
       mapfile -t _contexts < <(kubectl config get-contexts -o name)
     fi
     for context in "${_contexts[@]}"; do
       (kubectl --context "$context" get cluster -A -o yaml || true) | yq -r --arg kubeconfig "$KUBECONFIG" --arg context "$context" '.items | map("\($kubeconfig)'"$_field_sep"'\($context)'"$_field_sep"'\(.metadata.namespace)'"$_field_sep"'\(.metadata.name)'"$_field_sep"''"$custom_columns_string"'\(('"${MULTI_CAPI_SHELL_CUSTOM_NAME_EXPRESSION}"') as $custom_name | if $custom_name == "" then .metadata.name else "\($custom_name) (\(.metadata.name))" end)")[]'
     done
-  done | fzf --sync --preview="echo {} | awk -F'${_field_sep}' '{print \$2\"@\"\$1}'" -d "$_field_sep" --with-nth=5 | IFS="$_field_sep" read -r mgmt_kubeconfig mgmt_context namespace name _
-  exec env KUBECONFIG="$mgmt_kubeconfig" KUBECONFIG_CONTEXT="$mgmt_context" capi-shell "$namespace" "$name" "${@}"
+  done | fzf --sync --preview="echo {} | awk -F'${_field_sep}' '{print \$2\"@\"\$1}'" -d "$_field_sep" --with-nth=5 | IFS="$_field_sep" read -r kubeconfig_path kubeconfig_context namespace name _
+  exec env KUBECONFIG="$kubeconfig_path" KUBECONFIG_CONTEXT="$kubeconfig_context" capi-shell "$namespace" "$name" "${@}"
 fi
 }
 
