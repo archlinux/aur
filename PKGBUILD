@@ -2,7 +2,7 @@
 pkgbase=aranet4-git
 _pkgbase=aranet4
 pkgname=(aranet4-ls-git aranet4-srv-git)
-pkgver=0.15.1.r0.g09852c1
+pkgver=0.15.2.r0.g258bf24
 pkgrel=1
 pkgdesc="Driver and utilities for the Aranet4 air quality monitor (latest git version)"
 arch=('x86_64')

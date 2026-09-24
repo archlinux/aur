@@ -1,6 +1,6 @@
 pkgbase = aranet4-git
 	pkgdesc = Driver and utilities for the Aranet4 air quality monitor (latest git version)
-	pkgver = 0.15.1.r0.g09852c1
+	pkgver = 0.15.2.r0.g258bf24
 	pkgrel = 1
 	url = https://git.sr.ht/~sbinet/aranet4
 	arch = x86_64
