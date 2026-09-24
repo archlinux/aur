@@ -1,6 +1,6 @@
 pkgbase = python-slskd-api
 	pkgdesc = Python API for slskd
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 2
 	url = https://github.com/bigoulours/slskd-python-api
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-slskd-api
 	makedepends = python-setuptools-git-versioning
 	makedepends = python-wheel
 	depends = python
-	source = slskd-python-api-0.2.3.tar.gz::https://github.com/bigoulours/slskd-python-api/archive/v0.2.3.tar.gz
-	sha256sums = 29f2aa785962f0c58183ce26271db9791f5e42abbd0beac2862d2b372a43ab8d
+	source = slskd-python-api-0.2.4.tar.gz::https://github.com/bigoulours/slskd-python-api/archive/v0.2.4.tar.gz
+	sha256sums = b41a82155ffecdaf9fa5c22c927990a4b057c0351a32d4fe298ef38576242538
 
 pkgname = python-slskd-api
