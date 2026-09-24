@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=libretro-azahar
-pkgver=2126.1.1
+pkgver=2126.1.2
 pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
@@ -11,7 +11,7 @@ depends=('crypto++' 'soundtouch' 'fmt' 'libstdc++' 'libgcc' 'glibc' 'glslang' 'o
 makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' 'nlohmann-json' 'spirv-headers'
 	     'catch2' 'libinih' 'ffmpeg4.4' 'boost')
 source=("$url/releases/download/${pkgver}/azahar-unified-source-$pkgver.tar.xz")
-sha256sums=('023b4b37fe8cbc6b59a7be5270a8c93d9c58f90cd8c6d8e00705b43f4c9ebee1')
+sha256sums=('ca0626312af68370e04c70b60eab4dd95e6f3f248d1d1c6a22ee784dfce6b361')
 
 prepare() {
 	cd "$srcdir/azahar-unified-source-$pkgver"
@@ -56,7 +56,7 @@ build() {
 	-DENABLE_SSE42=$_SSE \
 	-DENABLE_LTO=OFF \
 	-DENABLE_TESTS=OFF \
-	-Wno-dev \
+	-Wno-author \
 	-DENABLE_LIBRETRO=ON
 
 	cmake --build build
