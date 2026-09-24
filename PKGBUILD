@@ -2,7 +2,7 @@
 
 pkgname=stably-orca
 pkgver=1.4.210
-pkgrel=1
+pkgrel=2
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/stablyai/orca'
@@ -199,6 +199,13 @@ JS
 
   "${pnpm[@]}" rebuild esbuild @parcel/watcher
   "${pnpm[@]}" run postinstall
+
+  # Mobile is a separate workspace; its postinstall generates webview modules.
+  (
+    cd mobile
+    "${pnpm[@]}" install --frozen-lockfile
+  )
+
   local target
   for target in build:relay build:cli build:electron-vite build:web build:mobile-web; do
     "${pnpm[@]}" run "$target"
