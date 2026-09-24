@@ -19,7 +19,6 @@ makedepends=(
   'libgcrypt' 'git'
 )
 conflicts=('ntfsprogs' 'ntfs-3g' "$_pkg")
-replaces=('ntfsprogs' 'ntfs-3g' "$_pkg")
 provides=('ntfsprogs' 'ntfs-3g' "$_pkg")
 
 source=("${_pkg}::git+${url}.git" "mount.ntfs-3g-compat")
