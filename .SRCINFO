@@ -1,7 +1,7 @@
 pkgbase = onionspray
 	pkgdesc = A tool to setup Onion Services for existing websites.
 	pkgver = 1.8.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gitlab.torproject.org/tpo/onion-services/onionspray
 	arch = any
 	license = GPL-3.0-or-later

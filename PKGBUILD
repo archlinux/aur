@@ -2,7 +2,7 @@
 # https://github.com/nihalxkumar/PKGBUILDs/tree/main/onionspray
 pkgname=onionspray
 pkgver=1.8.3
-pkgrel=2
+pkgrel=1
 pkgdesc="A tool to setup Onion Services for existing websites."
 arch=('any')
 url="https://gitlab.torproject.org/tpo/onion-services/onionspray"
