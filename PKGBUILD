@@ -2,7 +2,7 @@
 
 pkgname=crisperweaver-bin
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="On-device audio transcription and speech synthesis GUI (Flutter frontend for the CrispASR engine)"
 arch=('x86_64')
 url="https://github.com/CrispStrobe/CrisperWeaver"
@@ -150,5 +150,5 @@ WRAPPER
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/com.crispstrobe.crisperweaver.png"
   done
 
-  install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
