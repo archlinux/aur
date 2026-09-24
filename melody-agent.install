@@ -1,0 +1,22 @@
+post_install() {
+  cat <<'MESSAGE'
+==> This is the new melody-agent: it plays for the new C++ melodyd only.
+
+It no longer uses mpv, melody-agent.toml or the old MPD port. Without
+--server it finds the engines on the network by itself and plays for them;
+options go in ~/.config/melody/agent.conf for the user service:
+
+  echo 'MELODY_AGENT_OPTIONS=' > ~/.config/melody/agent.conf
+  systemctl --user enable --now melody-agent.service
+
+A machine that runs melodyd does not need it: start that engine with
+--agent instead.
+MESSAGE
+}
+
+post_upgrade() {
+  # Coming from the Go agent (r116 and before), say what changed.
+  if [ "$(vercmp "$2" r300)" -lt 0 ]; then
+    post_install
+  fi
+}

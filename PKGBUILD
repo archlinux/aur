@@ -1,112 +1,69 @@
 # Maintainer: Rasmus Steinke <rasi@xssn.at>
+#
+# Melody, rewritten: one C++ engine that owns the library and playback,
+# speakers that find it on the network, and a scripting CLI. Not the Go
+# daemon this package used to build -- see melody.install.
 pkgbase=melody-git
-pkgname=(melody-git melodyd-git melody-agent-git melody-tui-git melody-cli-git
-         melody-musiclist-git melody-lrcmatch-git melody-watcher-git melody-rofi-git)
-pkgver=r116.gacab9f7
+pkgname=(melody-git melodyd-git melody-agent-git melody-cli-git)
+pkgver=r421.gadb8d61
 pkgrel=1
-pkgdesc='Music server and clients with MPD support (built from HEAD)'
+pkgdesc='Music engine, speakers and command line (built from HEAD)'
 arch=(x86_64 aarch64)
-url='https://github.com/carnager/melody-music'
+url='https://github.com/carnager/melody-next'
 license=(GPL-3.0-only)
-makedepends=(git go)
-checkdepends=(ffmpeg mpv)
-source=("melody::git+https://github.com/carnager/melody-music.git")
+makedepends=(cmake git ninja nlohmann-json
+             curl ffmpeg libebur128 libopenmpt libpipewire libutf8proc openssl sqlite taglib)
+source=("melody-next::git+https://github.com/carnager/melody-next.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd melody
+  cd melody-next
   printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd melody
-  export CGO_ENABLED=1
-  export GOFLAGS='-trimpath -mod=readonly -buildvcs=false'
-  ./build
+  cd melody-next
+  # No window here: that is trackknife-git. Warnings-as-errors stays off
+  # so packaging never fails on warnings a future compiler invents.
+  cmake --preset release -DCMAKE_INSTALL_PREFIX=/usr \
+    -DTRACKKNIFE_BUILD_UI=OFF -DBUILD_TESTING=OFF -DTRACKKNIFE_BUILD_BENCHMARKS=OFF \
+    -DTRACKKNIFE_WARNINGS_AS_ERRORS=OFF
+  cmake --build build/release --target trackknife_engine_daemon melody_agent melody_cli
 }
 
-check() {
-  cd melody
-  go test ./...
-}
-
-_install_binary() {
-  install -Dm755 "$srcdir/melody/bin/$1" "$pkgdir/usr/bin/$1"
-  install -Dm644 "$srcdir/melody/docs/clients.md" "$pkgdir/usr/share/doc/$pkgname/clients.md"
-  install -Dm644 "$srcdir/melody/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+_install() {
+  DESTDIR="$pkgdir" cmake --install "$srcdir/melody-next/build/release" --component "$1"
+  install -Dm644 "$srcdir/melody-next/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_melody-git() {
-  pkgdesc='All Melody components (metapackage)'
-  depends=(melodyd-git melody-agent-git melody-tui-git melody-cli-git
-           melody-musiclist-git melody-lrcmatch-git melody-watcher-git melody-rofi-git)
+  pkgdesc='Melody: the engine, the agent and the command line (metapackage)'
+  depends=(melodyd-git melody-agent-git melody-cli-git)
 }
 
 package_melodyd-git() {
-  pkgdesc='Melody music server with MPD support'
-  depends=(glibc ffmpeg mpv)
-  optdepends=('flac: embed downloaded lyrics into FLAC files')
+  pkgdesc='Melody music engine: library, playback and outputs, shared on the network'
+  depends=(curl ffmpeg libopenmpt libpipewire libutf8proc openssl sqlite taglib)
   provides=(melodyd)
   conflicts=(melodyd)
   install=melody.install
-  _install_binary melodyd
-  install -Dm644 "$srcdir/melody/melodyd/melodyd.service" "$pkgdir/usr/lib/systemd/user/melodyd.service"
-  install -Dm644 "$srcdir/melody/docs/melodyd.md" "$pkgdir/usr/share/doc/$pkgname/melodyd.md"
+  _install engine
+  install -Dm644 "$srcdir/melody-next/docs/melody.md" "$pkgdir/usr/share/doc/$pkgname/melody.md"
 }
 
 package_melody-agent-git() {
-  pkgdesc='Remote playback agent for Melody'
-  depends=(glibc mpv)
+  pkgdesc='Speakers for Melody engines: finds the engines on the network and plays for them'
+  depends=(curl ffmpeg libopenmpt libpipewire libutf8proc openssl sqlite taglib)
   provides=(melody-agent)
   conflicts=(melody-agent)
-  _install_binary melody-agent
-}
-
-package_melody-tui-git() {
-  pkgdesc='Terminal UI for Melody'
-  depends=(glibc)
-  provides=(melody-tui)
-  conflicts=(melody-tui)
-  _install_binary melody-tui
+  install=melody-agent.install
+  _install agent
 }
 
 package_melody-cli-git() {
-  pkgdesc='Command-line client for Melody'
-  depends=(glibc)
+  pkgdesc='Melody engines from the shell: playback, the queue, the library by words'
+  depends=(libutf8proc)
   provides=(melody-cli)
   conflicts=(melody-cli)
-  _install_binary melody-cli
-}
-
-package_melody-musiclist-git() {
-  pkgdesc='Static music list exporter for Melody'
-  depends=(glibc openssh)
-  provides=(melody-musiclist)
-  conflicts=(melody-musiclist)
-  _install_binary melody-musiclist
-}
-
-package_melody-lrcmatch-git() {
-  pkgdesc='Offline lyrics matcher for Melody'
-  depends=(glibc)
-  provides=(melody-lrcmatch)
-  conflicts=(melody-lrcmatch)
-  _install_binary melody-lrcmatch
-}
-
-package_melody-watcher-git() {
-  pkgdesc='Filesystem watcher for a remote Melody library'
-  depends=(glibc)
-  provides=(melody-watcher)
-  conflicts=(melody-watcher)
-  _install_binary melody-watcher
-}
-
-package_melody-rofi-git() {
-  pkgdesc='Menu client for Melody'
-  depends=(glibc)
-  optdepends=('rofi: default menu launcher (custom launchers can be configured)')
-  provides=(melody-rofi)
-  conflicts=(melody-rofi)
-  _install_binary melody-rofi
+  _install cli
 }

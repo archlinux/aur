@@ -1,5 +1,6 @@
 /src/
 /pkg/
 /melody/
+/melody-next/
 /*.pkg.tar.*
 /*.src.tar.*

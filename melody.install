@@ -1,29 +1,45 @@
-post_install() {
+_new_melody() {
   cat <<'MESSAGE'
-Melody includes a systemd USER service. Run these commands as your normal user:
+==> This is a new Melody, not an update of the old one.
 
-  melodyd setup
-  systemctl --user daemon-reload
+The Go daemon this package used to build is gone. melodyd is now a C++
+engine that owns the library and playback, and it does not read anything
+the old one left behind:
+
+  - no MPD protocol (port 6600) and no web UI or HTTP API (port 6701);
+    clients speak Melody's own protocol on port 6603, streams go out on 6604
+  - no melodyd.toml and no setup wizard: options are flags, in
+    ~/.config/melody/melodyd.conf for the user service
+  - a new library database: add your music again and let it scan
+  - melody-tui, melody-rofi, melody-musiclist, melody-lrcmatch and
+    melody-watcher do not work with it; remove them if you have them
+
+What talks to it: trackknife-git (the desktop app), melody-cli-git, the
+Android app, and melody-agent-git for speakers elsewhere.
+
+Setup: /usr/share/doc/melodyd-git/melody.md
+MESSAGE
+}
+
+post_install() {
+  _new_melody
+  cat <<'MESSAGE'
+
+On a desktop, Trackknife starts the engine itself. On a server:
+
+  echo 'MELODYD_OPTIONS=--name myserver' > ~/.config/melody/melodyd.conf
   systemctl --user enable --now melodyd.service
-
-Run setup in a terminal first; the service cannot answer its questions.
-Configuration: ~/.config/melody/melodyd.toml (or $XDG_CONFIG_HOME/melody/).
-Open http://localhost:6701/web/. For the terminal UI, install melody-tui-git.
-MPD clients connect to localhost:6600 by default.
-
-For troubleshooting: journalctl --user -u melodyd.service
-For a headless server that should run after logout, an administrator can enable
-lingering for your account with: loginctl enable-linger USERNAME
+  loginctl enable-linger $USER    # to run without being logged in
 MESSAGE
 }
 
 post_upgrade() {
+  # Coming from the Go daemon, whose history ended at r116; the rewrite's
+  # starts far above it. Quiet on ordinary updates after that.
+  if [ "$(vercmp "$2" r300)" -lt 0 ]; then
+    _new_melody
+  fi
   cat <<'MESSAGE'
-Melody updated. To use the new daemon, run as your normal user:
-
-  systemctl --user daemon-reload
-  systemctl --user restart melodyd.service
-
-For initial configuration run melodyd setup before starting the user service.
+Restart the engine to use the new one: systemctl --user restart melodyd.service
 MESSAGE
 }
