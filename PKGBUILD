@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 # Note: Uses tags from the 'master' branch
 pkgname=mx-packageinstaller
-pkgver=26.07.4
+pkgver=26.09
 pkgrel=1
 pkgdesc="MX Package Installer - a tool for managing packages and Flatpaks"
 arch=("x86_64")
@@ -10,8 +10,8 @@ license=("GPL3")
 depends=("qt6-base" "polkit" "flatpak")
 makedepends=("cmake" "ninja" "qt6-tools")
 optdepends=("paru: AUR helper for AUR tab operations and Snap setup (snapd is built from the AUR)")
-source=("https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.07.4.tar.gz")
-sha256sums=('e625d9a510735e419a024dfec522118f55a9026e56b0fd881b66ed99e2c180ea')
+source=("https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.09.tar.gz")
+sha256sums=('6aaaf4c36a43935c6a1126af3664c7e6ef540c07ba21fb0e5252d852e12ef802')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
