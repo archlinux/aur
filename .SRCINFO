@@ -1,12 +1,12 @@
 pkgbase = diskard
-	pkgdesc = A fast TUI disk usage analyzer with trash/delete functionality
-	pkgver = 0.1.1
+	pkgdesc = A fast TUI disk usage analyzer with trash/delete functionality and breakdowns by file extension
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/shoenot/diskard
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = diskard-0.1.1.tar.gz::https://github.com/shoenot/diskard/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = c5c5df3c78cf5128ac52b0540d9c389950c976a50b7e35d6ad60812b898158dc
+	source = diskard-0.1.2.tar.gz::https://github.com/shoenot/diskard/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 04c10ed748f1ebb9db02e6140b1737d1a0df2ffe371e4b8e5c9857226d8091c1
 
 pkgname = diskard
