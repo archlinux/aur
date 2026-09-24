@@ -7,7 +7,7 @@
 
 pkgname=indicator-sound-switcher
 pkgver=2.3.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sound input/output selector indicator for Linux."
 arch=('any')
 url="https://github.com/yktoo/indicator-sound-switcher"
@@ -15,12 +15,20 @@ license=('GPL-3.0-or-later')
 makedepends=('python-setuptools')
 depends=('python' 'python-gobject' 'libkeybinder3' 'libappindicator-gtk3' 'pulse-native-provider')
 options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/yktoo/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('54c50b04b8a337ace3dcc5345c033e88eeaa298d54a082428e01e7467ca74930')
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/yktoo/${pkgname}/archive/v${pkgver}.tar.gz"
+    "fix-pkg-resources.patch::https://github.com/yktoo/${pkgname}/commit/6756be87ba9a139ec3fe3d84b0300c6db04f54ba.patch"
+)
+sha256sums=('54c50b04b8a337ace3dcc5345c033e88eeaa298d54a082428e01e7467ca74930'
+            '0e797f4ef947b7c7bab73b2defb22257ae083b0fee0098b56eb826cbcfc49e4b')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -Np1 -i "$srcdir/fix-pkg-resources.patch"
+}
 # vim:set ts=2 sw=2 et:
