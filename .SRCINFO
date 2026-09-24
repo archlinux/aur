@@ -1,5 +1,5 @@
 pkgbase = ntfsprogs-plus-main-git
-	pkgdesc = NTFS filesystem driver and utilities. Mainline stable branch.
+	pkgdesc = NTFS filesystem utilities. Target mainline stable branch instead of dev branch.
 	pkgver = 1.0.0+63+g69b4ca1
 	pkgrel = 1
 	url = https://github.com/ntfsprogs-plus/ntfsprogs-plus

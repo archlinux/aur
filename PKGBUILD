@@ -11,7 +11,7 @@ url="https://github.com/${_repo}"
 pkgver=1.0.0+63+g69b4ca1
 pkgrel=1
 
-pkgdesc='NTFS filesystem driver and utilities. Mainline stable branch.'
+pkgdesc='NTFS filesystem utilities. Target mainline stable branch instead of dev branch. '
 arch=('x86_64')
 license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
 depends=('util-linux-libs' 'hwinfo')
