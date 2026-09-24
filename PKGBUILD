@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=concat
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Free and open-source CapCut replacement, a video editor with a Rust engine"
 arch=('x86_64')
@@ -34,7 +34,7 @@ options=('!debug' '!lto')
 # Only tags that start with a version are packaged, and pkgver drops their
 # hyphens (v0.2.2-alpha.1 -> 0.2.2alpha.1), which pacman sorts older than a
 # later plain 0.2.2, so no epoch is needed. See pkg.sh.
-_tag="v0.2.3"
+_tag="v0.2.4"
 # sherpa-onnx-sys (the text-to-speech backend) does not build its C++ side:
 # it downloads a prebuilt static-lib archive from its own release page unless
 # it is handed one. Handing it one keeps that binary under makepkg's
@@ -44,7 +44,7 @@ _sherpa="1.13.7"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jub0t/Concat/archive/refs/tags/${_tag}.tar.gz"
         "https://github.com/k2-fsa/sherpa-onnx/releases/download/v${_sherpa}/sherpa-onnx-v${_sherpa}-linux-x64-static-lib.tar.bz2")
 noextract=("sherpa-onnx-v${_sherpa}-linux-x64-static-lib.tar.bz2")
-sha256sums=('bfb8a2fdcb1c1b7900efdf0bfc67c5e310a23a1c7a1535f85470e070c0486f52' 'd1be7a69ac2b30120058d8302e624239a3064085383cfa47994a14fdc44c32d6')
+sha256sums=('31d29842832a8f9304cff47722f64ec3f45df7279a484a62037921eca3a7c575' 'd1be7a69ac2b30120058d8302e624239a3064085383cfa47994a14fdc44c32d6')
 
 _srcname="Concat-${_tag#v}"
 
