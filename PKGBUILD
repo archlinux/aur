@@ -4,8 +4,8 @@
 
 _pkgname=winboat
 pkgname=winboat-electron
-pkgver=0.9.0
-pkgrel=6
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -30,7 +30,7 @@ makedepends=(
 )
 options=('!strip')
 source=("git+https://github.com/winboat-org/winboat.git#tag=v$pkgver")
-sha256sums=('11051ae91c399ccc75ef69910d4e8a526f6cc50210f9c70525829d5017715cce')
+sha256sums=('4537e93c28cd2311700279e135ddb13ac49ab6a85d124198ad2078927b2863fd')
 provides=('winboat')
 conflicts=('winboat')
 
