@@ -1,0 +1,27 @@
+pkgbase = python-emmet-core
+	pkgdesc = Core data models for the Materials Project emmet data pipeline
+	pkgver = 0.87.2
+	pkgrel = 1
+	url = https://github.com/materialsproject/emmet
+	arch = any
+	license = custom
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-monty
+	depends = python-pydantic
+	depends = python-pydantic-settings
+	depends = python-typing_extensions
+	depends = python-inflect
+	depends = python-pymatgen-core
+	optdepends = python-pybtex: BibTeX support (install via pip)
+	optdepends = python-blake3: hashing (install via pip)
+	optdepends = python-pubchempy: PubChem lookups (install via pip)
+	optdepends = python-pymatgen-io-validation: I/O validation (install via pip)
+	source = emmet_core-0.87.2.tar.gz::https://pypi.org/packages/source/e/emmet-core/emmet_core-0.87.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-emmet-core
