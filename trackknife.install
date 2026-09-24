@@ -1,0 +1,28 @@
+_new_trackknife() {
+  cat <<'MESSAGE'
+==> This Trackknife is a rewrite, not an update of the old one.
+
+It no longer connects to MPD. Playback and the library belong to Melody's
+engine (melodyd-git), which Trackknife starts on its own the first time --
+or it connects to one on your network, found by name under
+Settings > Engine. The old MPD connection settings are not used.
+
+Your music files and their tags are untouched. Add your music folders
+under Folders... in the library panel and press Refresh.
+
+trackknife-mpd-probe is gone with MPD support.
+
+Setup and servers: /usr/share/doc/melodyd-git/melody.md
+MESSAGE
+}
+
+post_install() {
+  _new_trackknife
+}
+
+post_upgrade() {
+  # Coming from the MPD client (its history ended below r300).
+  if [ "$(vercmp "$2" r300)" -lt 0 ]; then
+    _new_trackknife
+  fi
+}
