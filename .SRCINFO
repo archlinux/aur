@@ -1,11 +1,12 @@
 pkgbase = mirasim-bin
 	pkgdesc = Terminal, agent, model and tool orchestrator
 	pkgver = 0.0.354
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mirasim.ai
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-proprietary
+	makedepends = imagemagick
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = cairo

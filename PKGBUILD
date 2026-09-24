@@ -2,7 +2,7 @@
 
 pkgname=mirasim-bin
 pkgver=0.0.354
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal, agent, model and tool orchestrator'
 arch=('x86_64' 'aarch64')
 url='https://mirasim.ai'
@@ -41,6 +41,7 @@ depends=(
 optdepends=('libappindicator: system tray icon')
 provides=("mirasim=${pkgver}")
 conflicts=('mirasim')
+makedepends=('imagemagick')
 options=('!strip' '!debug')
 source_x86_64=("https://cdn-assets.mirasim.ai/mirasim/releases/v${pkgver}/Mirasim-${pkgver}-linux-amd64.deb")
 source_aarch64=("https://cdn-assets.mirasim.ai/mirasim/releases/v${pkgver}/Mirasim-${pkgver}-linux-arm64.deb")
@@ -59,4 +60,14 @@ package() {
 	bsdtar -xOf "$deb" data.tar.xz | bsdtar -x -C "$pkgdir" -f -
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s /opt/Mirasim/mirasim-desktop "${pkgdir}/usr/bin/mirasim-desktop"
+
+	# The deb ships only 1024x1024. hicolor/index.theme does not list that
+	# directory, so icon lookups at every menu and taskbar size miss it.
+	local src_icon size
+	src_icon="${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/mirasim-desktop.png"
+	for size in 16 22 24 32 48 64 96 128 192 256 512; do
+		install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
+		magick "$src_icon" -resize "${size}x${size}" \
+			"${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/mirasim-desktop.png"
+	done
 }
