@@ -2,7 +2,7 @@
 
 pkgname=zenith-gamestream
 pkgver=2026.730.002631
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux game streaming host for Moonlight, forked from Sunshine'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jacksonpate/zenith'
@@ -57,7 +57,10 @@ makedepends=(
   'uv'
   'vulkan-headers'
 )
-makedepends_x86_64=('cuda' 'gcc15')
+# Set ZENITH_USE_CUDA=1 before makepkg -s to install CUDA build dependencies.
+if [[ ${ZENITH_USE_CUDA:-auto} == 1 ]]; then
+  makedepends_x86_64=('cuda' 'gcc15')
+fi
 optdepends=(
   'evdi-dkms: virtual display fallback when all GPU ports are occupied'
   'libva-mesa-driver: hardware encoding on AMD GPUs'
@@ -110,11 +113,23 @@ build() {
     -DBUILD_TESTS=OFF
     -DSUNSHINE_ASSETS_DIR=share/zenith
     -DSUNSHINE_EXECUTABLE_PATH=/usr/bin/zenith
+    -DSUNSHINE_PUBLISHER_NAME=jacksonpate
+    -DSUNSHINE_PUBLISHER_WEBSITE=https://github.com/jacksonpate/zenith
+    -DSUNSHINE_PUBLISHER_ISSUE_URL=https://github.com/jacksonpate/zenith/issues
     -DSUNSHINE_SYSTEM_VULKAN_HEADERS=ON
     -DFFMPEG_PREPARED_BINARIES="$srcdir/ffmpeg"
   )
 
-  if [[ $CARCH == 'x86_64' ]]; then
+  local use_cuda=${ZENITH_USE_CUDA:-auto}
+  if [[ $use_cuda == auto ]]; then
+    if [[ $CARCH == 'x86_64' && -x /opt/cuda/bin/nvcc ]] && command -v g++-15 >/dev/null; then
+      use_cuda=1
+    else
+      use_cuda=0
+    fi
+  fi
+
+  if [[ $CARCH == 'x86_64' && $use_cuda == 1 ]]; then
     export CC=gcc-15 CXX=g++-15 CUDA_PATH=/opt/cuda
     cmake_options+=(
       -DSUNSHINE_ENABLE_CUDA=ON
@@ -127,6 +142,12 @@ build() {
 
   cmake "${cmake_options[@]}"
   cmake --build "$srcdir/build" --parallel 4
+}
+
+check() {
+  appstreamcli validate --no-net "$srcdir/build/io.github.jacksonpate.Zenith.metainfo.xml"
+  desktop-file-validate "$srcdir/build"/*.desktop
+  "$srcdir/build/zenith" --version
 }
 
 package() {
