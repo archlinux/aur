@@ -2,8 +2,8 @@
 
 pkgname=python-numpyro
 _pkgname=numpyro
-pkgver=0.21.0
-pkgrel=2
+pkgver=0.22.0
+pkgrel=1
 pkgdesc="Probabilistic programming with NumPy powered by JAX for autograd and JIT compilation to GPU/TPU/CPU"
 arch=('any')
 url="https://github.com/pyro-ppl/numpyro"
@@ -26,8 +26,15 @@ checkdepends=(
     'python-pytest'
     'python-scipy'
 )
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5114c646dffc44f5597b01c9295b557ef2336e4d22df6498a879a542b2950457')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+        "jax-batched-triangular-solve.patch")
+sha256sums=('13441d320aad3b3a4219a2bb333d491855a1da8bafb4ac50cd9290cb21b66285'
+            '2f87d5703bc99b2832ed16763a7f6ead9fc1e62f5feb2dc238e356acd1a31440')
+
+prepare() {
+    cd "$srcdir/$_pkgname-$pkgver"
+    patch -Np1 -i "$srcdir/jax-batched-triangular-solve.patch"
+}
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"

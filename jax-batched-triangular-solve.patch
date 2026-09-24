@@ -1,0 +1,18 @@
+--- a/numpyro/distributions/transforms.py
++++ b/numpyro/distributions/transforms.py
+@@ -994,8 +994,14 @@
+ 
+     def _inverse(self, y: NonScalarArray) -> NonScalarArray:
+         y = y - self.loc
++        # triangular_solve requires matching batch dimensions in current JAX.
++        batch_shape = jnp.broadcast_shapes(self.scale_tril.shape[:-2], y.shape[:-1])
++        scale_tril = jnp.broadcast_to(
++            self.scale_tril, batch_shape + self.scale_tril.shape[-2:]
++        )
++        y = jnp.broadcast_to(y, batch_shape + y.shape[-1:])
+         return jnp.squeeze(
+-            solve_triangular(self.scale_tril, y[..., jnp.newaxis], lower=True),
++            solve_triangular(scale_tril, y[..., jnp.newaxis], lower=True),
+             axis=-1,
+         )
+ 
