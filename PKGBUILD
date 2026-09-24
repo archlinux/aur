@@ -2,7 +2,7 @@
 
 pkgname=oh-my-pi
 pkgver=18.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
@@ -29,12 +29,10 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/can1357/oh-my-pi/archive/v${pkgver}.tar.gz"
     "https://static.crates.io/crates/opus/opus-${_opus_ver}.crate"
     "skip-native-embed-for-aur.patch"
-    "fix-bytecode-esm-format.patch"
 )
 sha256sums=('a17689ba611355ddc7225541673268b2d1ff1527523cc028b3fbd6ea5b069533'
             '33718946cc77d4032911d4efe03a66dbcbfbd2bb16c3da06aaeadcc637c32216'
             'b2fe93ad7ef36869d660cc0ec9a0a0e7196370035efd86b32901101aff2920d1'
-            '2f38e62c84e76e3c6d8d93e72d967a018de131cd1af242f543546015961bce76'
 )
 
 _variants=('baseline:x86-64-v2' 'modern:x86-64-v3')
@@ -51,21 +49,6 @@ prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
-    # `bytecode: true` makes Bun emit the chunk as cjs, where it inlines
-    # `import.meta.{url,dir,path,file}` as the build tree's paths
-    # (oven-sh/bun#39715) and prints every other `import.meta` reference
-    # verbatim into a plain script wrapper (oven-sh/bun#38200). We skip
-    # embedding the native addon, so the loader resolves the sidecar `.node`
-    # off `import.meta` and then searches the build tree: `omp --smoke-test`
-    # dies in the addon loader. On bun 1.4.0 it was worse - that release
-    # predates oven-sh/bun#41186, so puppeteer-core's
-    # `await import("@puppeteer/browsers")` kept the whole namespace live and
-    # pulled in yargs, whose apply-extends.js calls `import.meta.resolve`;
-    # the script then failed to parse at all and the binary aborted with
-    # "SyntaxError: import.meta is only valid inside modules." Pin esm output,
-    # where `import.meta` stays real, and fail the build on an error-level
-    # build log instead of shipping a binary that throws before main().
-    patch -p1 -i "${srcdir}/fix-bytecode-esm-format.patch"
 
     RUSTUP_TOOLCHAIN=stable cargo fetch --locked --target x86_64-unknown-linux-gnu
 
@@ -137,34 +120,34 @@ build() {
     export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
 
-    # A JSC bytecode cache is only loadable by the Bun build that emitted it.
-    # ci:release:build-binaries otherwise bakes a downloaded
-    # bun-linux-x64-baseline runtime into the executable, which silently
-    # rejects the bytecode Arch's bun just produced and reparses the 38 MB
-    # bundle on every start -- `omp --version` 332 ms instead of 77 ms, while
-    # still carrying the 55 MB cache. Using the system bun as the runtime
-    # template also drops 18 MB off the binary.
-    export BUN_COMPILE_EXECUTABLE_PATH=/usr/bin/bun
+    # Embed the system bun as the runtime: JSC bytecode only loads in the Bun
+    # build that emitted it, and the release script's `bun-linux-x64-baseline`
+    # target would bake in a downloaded runtime that silently reparses the
+    # bundle on every start. Bun reuses `<target>-v<version>` from its install
+    # cache instead of downloading, so seed a private cache with a symlink.
+    local _bun=/usr/bin/bun
+    local _bun_cache="${srcdir}/bun-runtime-cache"
+    mkdir -p "${_bun_cache}"
+    ln -sfn "${_bun}" "${_bun_cache}/bun-linux-x64-baseline-v$("${_bun}" --version)"
 
     bun install --frozen-lockfile
     local _variant
     for _variant in "${_variants[@]}"; do
         _build_native "${_variant%%:*}" "${_variant##*:}"
     done
-    RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
+    BUN_INSTALL_CACHE_DIR="${_bun_cache}" RELEASE_TARGETS='linux-x64' \
+        bun run ci:release:build-binaries
 
-    # Fail loudly if the override above ever stops landing: the release profile
-    # downloads bun-linux-x64-baseline into ~/.bun/install/cache and bakes that
-    # runtime into the executable, and a foreign runtime silently rejects the
-    # bytecode Arch's bun just produced -- reparsing the 38 MB bundle on every
-    # start with the 55 MB cache still in the payload. Both buns report the
-    # same `--revision`, but the template's ELF Build ID is carried into the
-    # output verbatim, so it identifies the embedded runtime.
+    # Fail loudly if the seeded runtime ever stops landing (e.g. upstream
+    # changes the release target): Bun would download a foreign runtime that
+    # silently rejects the bytecode. Both buns report the same `--revision`,
+    # but the template's ELF Build ID is carried into the output verbatim, so
+    # it identifies the embedded runtime.
     local _want _got
-    _want=$(readelf -n "${BUN_COMPILE_EXECUTABLE_PATH}" | sed -n 's/.*Build ID: //p')
+    _want=$(readelf -n "${_bun}" | sed -n 's/.*Build ID: //p')
     _got=$(readelf -n packages/coding-agent/binaries/omp-linux-x64 | sed -n 's/.*Build ID: //p')
     if [[ -z $_want || $_got != "$_want" ]]; then
-        error "compiled omp does not embed ${BUN_COMPILE_EXECUTABLE_PATH} (Build ID: ${_got:-none})"
+        error "compiled omp does not embed ${_bun} (Build ID: ${_got:-none})"
         return 1
     fi
 }
