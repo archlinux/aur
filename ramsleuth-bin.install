@@ -68,7 +68,9 @@ post_install() {
         echo "ramsleuth-bin:   (pinned upstream, shown + confirmed before any build; or: yay -S ryzen-smu-dkms)"
         echo "ramsleuth-bin:   RamSleuth runs without it — the AMD section reads N/A (DriverMissing)"
     else
-        echo "ramsleuth-bin: Intel host — built-in MCHBAR decode, no extra driver needed"
+        echo "ramsleuth-bin: Intel host — live Intel subtimings: sudo ramsleuth-install-intel-dkms"
+        echo "ramsleuth-bin:   (optional in-repo DKMS module; or one-click: sudo ramsleuth-setup --with-dkms)"
+        echo "ramsleuth-bin:   RamSleuth runs without it — /dev/mem fallback where available, else the Intel section reads N/A (DriverMissing)"
     fi
 
     # One-click setup (C21-01 helper + polkit policy — this package

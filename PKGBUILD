@@ -6,7 +6,7 @@
 # the official GitHub Release (cut by the release workflow when the v$pkgver
 # tag is cut) and installs it as-is — NO build, NO makedepends. This is the
 # counterpart to ramsleuth (the stable SOURCE package that builds from the
-# git tag) and ramsleuth-git (the bleeding-edge, branch-tracking dev package).
+# git tag).
 #
 # The release asset (contract, fixed by the release workflow):
 #   https://github.com/MadGoatHaz/RamSleuth/releases/download/v$pkgver/ramsleuth-$pkgver-x86_64.tar.zst
@@ -15,6 +15,10 @@
 #   systemd/ramsleuth.service     — the frozen daemon unit
 #   systemd/ramsleuth.preset      — the system-preset (enables the service)
 #   scripts/install-ryzen-smu-dkms.sh — the shared pinned DKMS helper
+#   scripts/install-intel-dkms.sh — the Intel DKMS helper (staged like the
+#                                   AMD one; NOT in the v2.2.1 tarball — the
+#                                   2.3.0 re-cut adds it per the INTEL-14
+#                                   contract; GUARDED in package(), step (11))
 #   install.sh                    — the self-contained transparency entrypoint
 #   LICENSE                       — MIT (AUR license-compliance install path)
 #   RamSleuth.desktop             — the application-menu entry (the filename
@@ -28,13 +32,18 @@
 #                                   with the v2.2.0 re-cut; C21-42)
 #
 # sha256sums pins that exact asset. AUR requires a real sha256 (no SKIP):
-# the pin below is the real sha256 of the published v2.2.0 release tarball,
+# the pin below is the real sha256 of the published v2.2.1 release tarball,
 # finalized in C21-24b (it replaced the all-zeros fail-loud placeholder; the
 # v2.1.1 pin, finalized in C20-06, is replaced by this bump). The three new
 # top-level entries (ramsleuth-setup.sh, 90-ramsleuth-setup.policy,
-# icons/) are in the v2.2.0 tarball by the C21-17/C21-27 contract;
+# icons/) are in the v2.2.1 tarball by the C21-17/C21-27 contract;
 # package() installs them
 # only when present (the guard — an old-tarball build skips them cleanly).
+# The Intel helper is the reverse case: NOT present in the v2.2.1 tarball
+# (the 2.3.0 re-cut adds it per the INTEL-14 contract), so package() guards
+# it likewise — a build against the current tarball skips it cleanly with a
+# note (the interim AUR state; the -bin one-click Intel path self-heals at
+# the re-cut).
 #
 # Mutual conflict: ramsleuth (source) and ramsleuth-bin (precompiled)
 # install the identical file surface, so the user picks exactly one.
@@ -46,18 +55,18 @@
 # daemon starts and serves N/A (DriverMissing) sections with exit 0.
 
 pkgname=ramsleuth-bin
-pkgver=2.2.1   # FIXED — the tarball is downloaded from the GitHub Release for this exact version
+pkgver=2.4.0   # FIXED — the tarball is downloaded from the GitHub Release for this exact version
 pkgrel=1
 pkgdesc="Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients (precompiled binary)"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/RamSleuth"
 license=(MIT)
 source=("https://github.com/MadGoatHaz/RamSleuth/releases/download/v$pkgver/ramsleuth-$pkgver-x86_64.tar.zst")
-# Finalized in C21-24b: the real sha256 of the published v2.2.0 release
+# Finalized in C21-24b: the real sha256 of the published v2.2.1 release
 # asset, independently verified by download + sha256sum (the all-zeros
 # fail-loud placeholder is gone — the pin is the asset hash itself).
 #
-sha256sums=('3b7449639d46ffd78b2fa0b149fec225326889c80bdf4044d19321201eb0746c')
+sha256sums=('6e0c5d3b127d87aba47fb63d154e12b3da529acacfa319fe270132e9f8eacd3d')
 install=ramsleuth-bin.install
 conflicts=('ramsleuth')
 depends=(libx11 libxkbcommon wayland libxrandr libxi libxcursor libxinerama mesa)
@@ -153,6 +162,20 @@ package() {
             "$pkgdir/usr/share/pixmaps/ramsleuth.png"
         install -Dm644 "icons/hicolor/48/apps/ramsleuth.png" \
             "$pkgdir/usr/share/pixmaps/RamSleuth.png"
+    fi
+
+    # (11) the Intel DKMS helper -> /usr/bin/ramsleuth-install-intel-dkms (0755),
+    # staged in the tarball like the AMD helper in (4) (scripts/). GUARDED for
+    # the interim: the current v2.2.1 tarball (the sha256-pinned asset) carries
+    # only scripts/install-ryzen-smu-dkms.sh — install-intel-dkms.sh arrives
+    # with the 2.3.0 re-cut (the INTEL-14 contract), so a build against
+    # today's tarball skips it with a note rather than failing — the no-panic
+    # contract (the reverse of the (8)/(9)/(10) old-tarball case).
+    if [ -f "scripts/install-intel-dkms.sh" ]; then
+        install -Dm755 "scripts/install-intel-dkms.sh" \
+            "$pkgdir/usr/bin/ramsleuth-install-intel-dkms"
+    else
+        echo "NOTE: release tarball lacks scripts/install-intel-dkms.sh (pre-2.3.0 re-cut); skipping the Intel DKMS helper install"
     fi
 
     # NOTE: the ramsleuth group is created on the TARGET system by the .install

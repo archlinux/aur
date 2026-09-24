@@ -1,6 +1,6 @@
 pkgbase = ramsleuth-bin
 	pkgdesc = Pure-Rust RAM latency/bandwidth telemetry: privileged daemon + unprivileged CLI/TUI/GUI clients (precompiled binary)
-	pkgver = 2.2.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/MadGoatHaz/RamSleuth
 	install = ramsleuth-bin.install
@@ -15,7 +15,7 @@ pkgbase = ramsleuth-bin
 	depends = libxinerama
 	depends = mesa
 	conflicts = ramsleuth
-	source = https://github.com/MadGoatHaz/RamSleuth/releases/download/v2.2.1/ramsleuth-2.2.1-x86_64.tar.zst
-	sha256sums = 3b7449639d46ffd78b2fa0b149fec225326889c80bdf4044d19321201eb0746c
+	source = https://github.com/MadGoatHaz/RamSleuth/releases/download/v2.4.0/ramsleuth-2.4.0-x86_64.tar.zst
+	sha256sums = 6e0c5d3b127d87aba47fb63d154e12b3da529acacfa319fe270132e9f8eacd3d
 
 pkgname = ramsleuth-bin
