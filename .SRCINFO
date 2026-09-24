@@ -6,10 +6,6 @@ pkgbase = mautrix-signal-bin
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-or-later
-	depends = glibc
-	depends = gcc-libs
-	depends = libolm
-	depends = libsignal-ffi=0.102.2
 	provides = mautrix-signal
 	backup = etc/mautrix-signal/config.yaml
 	source = sysusers-mautrix-signal.conf

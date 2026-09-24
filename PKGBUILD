@@ -1,4 +1,5 @@
 # Maintainer: Mathew Kamkar <me at matkam dot net>
+# Maintainer: a2sc <a_dev at a2sc dot eu>
 
 # Builds found here: https://mau.dev/mautrix/signal/-/pipelines?ref=main
 # More info: https://docs.mau.fi/bridges/go/setup.html?bridge=signal
@@ -12,12 +13,7 @@ pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge (Golang version)"
 arch=('x86_64' 'aarch64')
 license=('AGPL-3.0-or-later')
-depends=(
-  'glibc'
-  'gcc-libs'
-  'libolm'
-  "libsignal-ffi=$_libsigver" # AUR
-)
+depends=()
 url="https://github.com/mautrix/signal"
 _ci_job_url="https://mau.dev/mautrix/signal/-/jobs"
 source_x86_64=("$pkgname"::"${url}/releases/download/v${pkgver}/mautrix-signal-amd64")
