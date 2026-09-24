@@ -45,13 +45,13 @@ _FOK_REFRESH_=0
 # syntax: _notify_ "${TITLE}" "${MESSAGE}"
 _notify_() {
 
-	if which zenity 2>/dev/null; then
-		zenity --info --ellipsize --title "${1}" --text "${2}"
-	elif which kdialog 2>/dev/null; then
-		kdialog --title "${1}" --passivepopup "${2}"
-	elif which notify-send 2>/dev/null; then
+	if which notify-send 2>/dev/null; then
 		notify-send --app-name="${_FOK_APPNAME_}" \
 			--icon="${_FOK_APPNAME_}" "${1}" "${2}"
+	elif which kdialog 2>/dev/null; then
+		kdialog --title "${1}" --passivepopup "${2}"
+	elif which zenity 2>/dev/null; then
+		zenity --info --ellipsize --title "${1}" --text "${2}"
 	else
 		echo -e "${0}: [${1}] ${2}" >&2
 	fi
@@ -186,7 +186,7 @@ while read _FOK_VER_LINE_; do
 done < "${_FOK_VER_FILE_}"
 
 # start update if old or no firmaOK is installed
-if [[ "${_FOK_INSTALLED_VERSION_}" == "${_FOK_VERSION_}" ]] && [[ ${_FOK_REFRESH_} -eq 0 ]]; then
+if [[ "${_FOK_INSTALLED_VERSION_}" == "${_FOK_VERSION_}-${_FOK_RELEASE_}" ]] && [[ ${_FOK_REFRESH_} -eq 0 ]]; then
 	# clear log
 	> "${_FOK_LOG_FILE_}"
 else
