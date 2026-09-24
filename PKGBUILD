@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_gitname}-bin
 pkgdesc="Lazygit for SVN - a fast, keyboard-driven TUI for SVN"
 
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
 sha256sums=('5d22c5cd7de1ea232bf6fe7277b88a265c80213df7f7135147d5389288979617'
             'fa0744b49963fef94ca4dcce4d4dc94b9ea7d86849675f2b411c373fe5cc1aa7')
-sha256sums_x86_64=('c26fd66c7d8edc48ebcb44913196c45eb33b5513b0b8ec4b224fccf227a91559')
-sha256sums_aarch64=('be8d4049cac7c22ad0b9d3fff911d02422758ace3c1ab38dd1e55850ec5dd540')
+sha256sums_x86_64=('7c1f663d69545dcbea423b9b774b486d795afa93699d18672df0f7fea32042c8')
+sha256sums_aarch64=('2cc75befe3f3b19b8b8f5b01f81cd1038ebfdbcb4b29135d9a59d5e168cb8d29')
 
 
 package() {
