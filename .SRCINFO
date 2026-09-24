@@ -1,6 +1,6 @@
 pkgbase = middleclick-autoscroll
 	pkgdesc = Middle-click autoscroll in every application that supports it
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/LoonixTools/middleclick-autoscroll
 	install = middleclick-autoscroll.install
@@ -19,7 +19,7 @@ pkgbase = middleclick-autoscroll
 	optdepends = spotify-launcher: cover the official Spotify client
 	optdepends = steam: cover the Steam interface
 	optdepends = desktop-file-utils: refresh the desktop database after a change
-	source = middleclick-autoscroll-1.5.1.tar.gz::https://github.com/LoonixTools/middleclick-autoscroll/archive/refs/tags/v1.5.1.tar.gz
-	sha256sums = 4b4b4720cb0c0c1dceb30424374a741df7b549aeca1389684624dea1ebba2463
+	source = middleclick-autoscroll-1.5.2.tar.gz::https://github.com/LoonixTools/middleclick-autoscroll/archive/refs/tags/v1.5.2.tar.gz
+	sha256sums = a5ed5abb780400b1b2114bf16c70889763f4fb8e83234304333fb2c16dbd078b
 
 pkgname = middleclick-autoscroll
