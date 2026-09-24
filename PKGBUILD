@@ -41,6 +41,7 @@ check() {
 
 package() {
   cd "${pkgname%-git}"
+
   install -Dm755 target/release/nspawn "${pkgdir}/usr/bin/nspawn"
   ./target/release/nspawn completions bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/nspawn"
   ./target/release/nspawn completions zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_nspawn"
@@ -53,5 +54,6 @@ package() {
   install -Dm644 README.md docs/ARCHITECTURE.md docs/DBUS.md packaging/polkit/nspawn-wheel.rules -t "${pkgdir}/usr/share/doc/${pkgname%-git}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
   install -dm755 "${pkgdir}/etc/nspawn" "${pkgdir}/var/lib/nspawn"
+  install -dm711 "${pkgdir}/var/lib/nspawn"
 }
 
