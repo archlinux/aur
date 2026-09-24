@@ -25,6 +25,6 @@ pkgbase = cachy-auto-update
 	backup = etc/cachy-auto-update/cachy-auto-update.conf
 	backup = etc/logrotate.d/cachy-auto-update
 	source = cachy-auto-update-1.3.1.tar.gz::https://github.com/LoonixTools/cachy-auto-update/archive/refs/tags/v1.3.1.tar.gz
-	sha256sums = 8daea73166c073549901a0c0f43a687b686e6b05af1789b2f6d4b68ed4cae57c
+	sha256sums = 9343da71b99ea21a5e960e227088e9f9b81696a97565cb9c175ad2d818b8ac67
 
 pkgname = cachy-auto-update

@@ -23,7 +23,7 @@ backup=('etc/cachy-auto-update/cachy-auto-update.conf'
         'etc/logrotate.d/cachy-auto-update')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8daea73166c073549901a0c0f43a687b686e6b05af1789b2f6d4b68ed4cae57c')
+sha256sums=('9343da71b99ea21a5e960e227088e9f9b81696a97565cb9c175ad2d818b8ac67')
 
 build() {
   # pass the version being packaged so `cachy-auto-update --version` cannot
