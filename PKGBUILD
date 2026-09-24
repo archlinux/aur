@@ -1,7 +1,7 @@
 # Maintainer: RadicalMuffinMan <support@moonfin.app>
 # Written by the Moonfin release workflow. Edits here are overwritten.
 pkgname=moonfin-bin
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Jellyfin & Emby media client for Linux (binary release)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('moonfin')
 # makepkg's pass over a prebuilt Flutter bundle can break it.
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Moonfin-Client/Moonfin-Core/releases/download/${pkgver}/Moonfin_Linux_v${pkgver}.tar.gz")
-sha256sums=('dadf98348f5170ee5baf75b635a29f28190e67e73967470e6736df9f0a94555e')
+sha256sums=('33344d6f285fcd97a3e1e2e295f03bae8396c7a488a1a241aa78750ef2c59c1b')
 
 package() {
   cd "${srcdir}/moonfin-${pkgver}"
