@@ -1,5 +1,5 @@
 pkgname=ktls-utils
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="TLS handshake utilities for NFSv4, NVMe-oF, and other in-kernel TLS consumers"
 url="https://github.com/oracle/ktls-utils"
@@ -11,10 +11,13 @@ depends=(
   keyutils          # libkeyutils.so
   libnl             # libnl-3.so libnl-genl-3.so
   libyaml           # for --enable-session-tags, requires new kernel
+  # Not enabled because it seems that we lack libdane.pc (gnutls-dane)
+  # (and also because I don't want all of Unbound installed)
+  #unbound           # for libunbound in --enable-dane
 )
 makedepends=(gcc git make pkg-config)
 source=("git+https://github.com/oracle/ktls-utils#tag=ktls-utils-$pkgver?signed")
-sha256sums=('c0661faa0ec5081a6d0ab3cad45c171d013bc9db0b981a9fb870c7c44b7098cb')
+sha256sums=('af913304fc17a7e3d438f903703f22c8f8058e463225db4806857974dcb41e25')
 validpgpkeys=('28B2E5B01286DF243CF23EFE336AB3336F667F97')
 install=$pkgname.install
 backup=(etc/tlshd/config)
