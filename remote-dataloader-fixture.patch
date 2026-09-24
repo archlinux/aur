@@ -1,0 +1,36 @@
+--- a/python/python/tests/test_torch.py
++++ b/python/python/tests/test_torch.py
+@@ -48,7 +48,7 @@
+ def _offsets_from_filter(filter_sql: str | None) -> list[int]:
+     if filter_sql is None:
+         return REMOTE_ROWS
+-    match = re.search(r"_rowoffset in \((.*?)\)", filter_sql)
++    match = re.search(r"_rowoffset in \((.*?)\)", filter_sql, flags=re.IGNORECASE)
+     if match is None:
+         return REMOTE_ROWS
+     raw_offsets = match.group(1).strip()
+@@ -75,16 +75,18 @@
+         offsets = _offsets_from_filter(body.get("filter"))
+         requested_columns = body.get("columns") or ["a"]
+         if isinstance(requested_columns, dict):
+-            requested_columns = list(requested_columns)
++            projections = requested_columns.items()
++        else:
++            projections = ((column, column) for column in requested_columns)
+ 
+         data = {}
+-        for column in requested_columns:
+-            if column == "a":
++        for column, expression in projections:
++            if expression == "a":
+                 data[column] = [REMOTE_ROWS[offset] for offset in offsets]
+-            elif column == "_rowoffset":
++            elif expression in ("_rowoffset", "_rowid"):
+                 data[column] = offsets
+-            elif column == "_rowid":
+-                data[column] = offsets
++            else:
++                raise AssertionError(f"Unsupported mock projection: {expression!r}")
+ 
+         table = pa.table(data)
+         request.send_response(200)

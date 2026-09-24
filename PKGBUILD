@@ -2,7 +2,7 @@
 
 pkgname=python-lancedb
 _pkgname=lancedb
-pkgver=0.38.0
+pkgver=0.39.0
 pkgrel=1
 pkgdesc="Serverless, low-latency vector database for AI applications"
 arch=('x86_64')
@@ -21,9 +21,9 @@ depends=(
     'python-tqdm>=4.27.0'
     'python-typing_extensions>=4.0.0'
     'python-lance-namespace>=0.12'
-    'python-lance-namespace<0.13'
+    'python-lance-namespace<0.14'
     'python-lance-namespace-urllib3-client>=0.12'
-    'python-lance-namespace-urllib3-client<0.13'
+    'python-lance-namespace-urllib3-client<0.14'
     'zstd'
 )
 makedepends=(
@@ -78,14 +78,16 @@ source=(
     'offline-image-test.patch'
     'polars-1.x-tests.patch'
     'optional-transformers-test.patch'
+    'remote-dataloader-fixture.patch'
 )
 sha256sums=(
-    '1d3671e9391a897c8955ac44f0781d27bd2b67168cb03c3a64be787dfc8d1723'
-    '2e8dbb4391f60927e81a3e3bbb94b0a8bdb84c1ebf9afb31965bcac338d46d03'
+    'acd6877fdfa5e6f4397304a04744f995821e94bb7cd8e0353f6028ce0ee56a02'
+    'f86fde58f6a3c8e73c7442cd0f186cc89a1a46ecad8d34a9329a4824f16acc63'
     '7a99c9c4d594c6626145a94f01db0fb2e8132a9b1b6b362a4e98afb11e1656f3'
     'ccf35839209d9560ac49075b9a901e8c5eb5ae0c44c6307638699bfd4a38ad50'
     'e1bc2daf56514eaf19604d51cd7fce0b664a4f1834906f637430e3413ed20219'
     '6c7e206e537187776529d69a4b5ac2aeabc80e9750e9eec6a4cbbc1ddc0b5807'
+    'db313d405a83355ab9d5a3b760ccc08350f1df0a7499ef41401158cfa974c895'
 )
 
 prepare() {
@@ -96,10 +98,8 @@ prepare() {
     patch -Np1 -i "$srcdir/offline-image-test.patch"
     patch -Np1 -i "$srcdir/polars-1.x-tests.patch"
     patch -Np1 -i "$srcdir/optional-transformers-test.patch"
-    # DataFusion emits uppercase SQL IN; the mock server must apply the
-    # requested row filter instead of silently returning its entire dataset.
-    sed -i '/match = re.search/s/, filter_sql)/, filter_sql, flags=re.IGNORECASE)/' \
-        python/python/tests/test_torch.py
+    # Honor SQL case and aliased projections in the local remote-server fixture.
+    patch -Np1 -i "$srcdir/remote-dataloader-fixture.patch"
 
     # Use the system Rust toolchain and generic Arch compiler flags.
     rm -f rust-toolchain.toml python/rust-toolchain.toml
@@ -216,6 +216,37 @@ package() {
             "s#$srcdir/lancedb-$pkgver#https://github.com/lancedb/lancedb/tree/python-v$pkgver#g" \
             "$_sbom"
     done
+
+    # Keep wheel metadata consistent with the intentionally removed test
+    # configuration and rewritten SBOM paths, including content hashes.
+    python - "$pkgdir" <<'PYRECORD'
+import base64
+import csv
+import hashlib
+from pathlib import Path
+import sys
+import sysconfig
+
+site = Path(sys.argv[1]) / sysconfig.get_path("purelib").lstrip("/")
+record, = site.glob("lancedb-*.dist-info/RECORD")
+with record.open(newline="") as stream:
+    rows = list(csv.reader(stream))
+kept = []
+for row in rows:
+    name = row[0]
+    if name == "lancedb/conftest.py" or (
+        name.startswith("lancedb/__pycache__/conftest") and name.endswith(".pyc")
+    ):
+        assert not (site / name).exists(), name
+        continue
+    if name.startswith(record.parent.name + "/sboms/"):
+        data = (site / name).read_bytes()
+        checksum = base64.urlsafe_b64encode(hashlib.sha256(data).digest()).rstrip(b"=").decode()
+        row[1:] = ["sha256=" + checksum, str(len(data))]
+    kept.append(row)
+with record.open("w", newline="") as stream:
+    csv.writer(stream, lineterminator="\n").writerows(kept)
+PYRECORD
 
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

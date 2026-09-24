@@ -7,7 +7,7 @@ diff --git a/python/pyproject.toml b/python/pyproject.toml
      "tqdm>=4.27.0",
 +    "typing-extensions>=4.0.0",
 -    "lance-namespace>=0.3.2"
-+    "lance-namespace>=0.12,<0.13"
++    "lance-namespace>=0.12,<0.14"
  ]
  description = "lancedb"
  authors = [{ name = "LanceDB Devs", email = "dev@lancedb.com" }]
