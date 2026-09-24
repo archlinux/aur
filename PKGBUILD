@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A delicious REST client for your terminal"
 
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('758ad09b2ff03e40c1101a52ca68f59ba2a853e92dfeaff84aa4d4855178a53e'
+sha256sums=('938574961520f24c8243c827c8ce1641addc3a2caad36a90d7bb58d05731f549'
             'fcf353912854f70ba3768b3755a934d16b8cbc98ed183cc1e8124639b179ef01')
-sha256sums_x86_64=('f449b66a7f0dfe0f5b0b2257eae1916ba28241436809ac18273ed8348221f06e')
-sha256sums_aarch64=('dd21ec36a20072def435b2ba98be2b0e68114b4221fb76f3d5952654e0af27e0')
+sha256sums_x86_64=('1590871386423d9e9b97d1e5e266292414037b9d13cc9f304b12cf4f72267939')
+sha256sums_aarch64=('3c8a44ca7c1e25fd08b50de6968c35bb7c58d27577686147963ef8010a8717c3')
 
 
 package() {
