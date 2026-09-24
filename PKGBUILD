@@ -6,7 +6,7 @@ pkgname=kendex-git
 # carries the same epoch so the four stay comparable with each other.
 epoch=1
 pkgver=r0.0000000
-pkgrel=1
+pkgrel=2
 pkgdesc='Package manager for AI coding agents, skills, and hooks (desktop app and CLI, latest commit)'
 arch=('x86_64' 'aarch64')
 url='https://kendex.ai'
@@ -64,9 +64,11 @@ build() {
   # The desktop binary embeds ui/dist through tauri's context macro. Only
   # `cargo tauri build` runs the frontend build on its own, and this package
   # builds plain binaries rather than a bundle, so the frontend is built
-  # here or the app ships an empty window.
+  # here or the app ships an empty window. `cargo tauri build` also turns on
+  # tauri's `custom-protocol` feature; without it the binary is a dev build
+  # whose window loads the dev server URL instead of the embedded frontend.
   npm run --prefix ui build
-  cargo build --release --locked -p kendex-cli -p kendex-app
+  cargo build --release --locked -p kendex-cli -p kendex-app --features tauri/custom-protocol
 }
 
 package() {
