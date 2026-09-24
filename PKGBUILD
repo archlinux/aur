@@ -54,6 +54,11 @@ license=(GPL-2.0-only)
 # stops with candidate packages when it is missing (never guessed here).
 depends=(dkms)
 makedepends=()
+# The main packages (ramsleuth / ramsleuth-bin) bundle the same in-repo
+# kernel/ramsleuth-intel/ source tree -> /usr/share/ramsleuth-intel-dkms/src/,
+# so this standalone extra cannot coexist with either (pacman file conflict;
+# the user picks one).
+conflicts=('ramsleuth' 'ramsleuth-bin')
 
 # The installed files come from the RamSleuth repo tree (INTEL-05 module,
 # INTEL-06 helper). The "$pkgname"-style rename extracts to $srcdir/ramsleuth

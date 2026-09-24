@@ -6,6 +6,8 @@ pkgbase = ramsleuth-intel-dkms
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = dkms
+	conflicts = ramsleuth
+	conflicts = ramsleuth-bin
 	source = ramsleuth::git+https://github.com/MadGoatHaz/RamSleuth.git#branch=v2-development
 
 pkgname = ramsleuth-intel-dkms
