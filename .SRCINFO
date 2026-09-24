@@ -7,7 +7,6 @@ pkgbase = oh-my-pi
 	license = MIT
 	makedepends = bun
 	makedepends = cargo
-	makedepends = git
 	makedepends = clang
 	depends = gcc-libs
 	depends = glibc

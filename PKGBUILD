@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://omp.sh/"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'oniguruma' 'opus' 'pcre2' 'zstd')
-makedepends=('bun' 'cargo' 'git')
+makedepends=('bun' 'cargo')
 optdepends=(
     'alsa-lib: ALSA fallback for live voice, STT, and TTS'
     'at-spi2-core: Linux accessibility backend for the computer tool'
