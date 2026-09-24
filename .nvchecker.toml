@@ -1,0 +1,5 @@
+[git-orchard-bin]
+source = "github"
+github = "jmelahman/git-orchard"
+use_latest_release = true
+prefix = "v"
