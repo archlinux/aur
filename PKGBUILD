@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype-bin
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux (pre-built binaries)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
@@ -95,11 +95,11 @@ sha256sums=(
     'e5e63b3c7f48238cf719e4f2ef90c1f9c5c7e8cd25eaebc9f78bdd34b24b6605'  # voxtype.zsh
     'f720ddd24ee97c105b448323899c36bca7c63d00c2d42c4a3da70c3d157dccbb'  # voxtype.fish
     '31123c45b4ff9cb5fd9e01083350fea6ccaf14969013fd48e4c95fdf89e6eb4b'  # LICENSE
-    'e5b2ec5da5eafe2ce8f7b84b81a889f2ff496ad6488d56b6b9b32b73d025ed53'  # README.md
+    'b06ee68e1305174a4f66876750f62d4048d0ebee48e15ee525961a54115ff80d'  # README.md
     '32144a4a5210092b0aa909f6de7a43ebe8bbf82fa3dfb1f3519787512fdf8e4b'  # voxtype-configure.desktop
     '044b1f7b52cc610ce57ba624111d882029b0ce4bc3e2c2c360f96d07f69e0e85'  # voxtype-configure-launcher
-    'a4d0a256167f58ce90153077da82620794422f5172c918625d480ff9ffca625e'  # voxtype-$pkgver.tar.gz (source archive)
-    'SKIP'                                                             # voxtype-$pkgver.tar.gz.asc
+    '7d223f1ebee3c3ded8619fb17d20ab43f5a4d7c5f7264890750c176078542a32'  # voxtype-$pkgver.tar.gz (source archive)
+    'SKIP'  # voxtype-$pkgver.tar.gz.asc
 )
 
 # x86_64: full binary set (baseline / AVX2 / AVX-512 / Vulkan Whisper,
@@ -161,45 +161,45 @@ source_x86_64=(
 )
 sha256sums_x86_64=(
     # Whisper binaries
-    'SKIP'  # voxtype-baseline - PLACEHOLDER: real sum required at the version bump; never publish a binary with SKIP
+    '1c9d78b4f6805e4f12ba3670949d3c22788269bdbc54215afffa42cafd0b4a7a'  # voxtype-baseline - PLACEHOLDER: real sum required at the version bump; never publish a binary with SKIP
     'SKIP'  # voxtype-baseline.asc
-    'cb3843a894ef47aca230b30bb1c45c2ef8e0d015adf2fa754d60e55123165fd0'  # voxtype-avx2
-    'SKIP'                                                             # voxtype-avx2.asc
-    '77d49275ae4c3a6d93671014278b0dabd69ba52e65d2ee6ab3ec1bff0af34d55'  # voxtype-avx512
-    'SKIP'                                                             # voxtype-avx512.asc
-    'c569d038057464aa60290296794bcbd79b928ee0efd038e33062a4c015558ed8'  # voxtype-vulkan
-    'SKIP'                                                             # voxtype-vulkan.asc
+    'e7d5de68cc8fc610c3c961c47f879451db9bee4a2df152e9a66f1078072e7f28'  # voxtype-avx2
+    'SKIP'  # voxtype-avx2.asc
+    'bb2da45c7676bc128da998da928cb239ab6eef9fe53c31c9b4a77e819e521715'  # voxtype-avx512
+    'SKIP'  # voxtype-avx512.asc
+    'db2c7938392ff08ec8b50b8afb90f8bd3d0111eccf5943df2f51c40a0368fec2'  # voxtype-vulkan
+    'SKIP'  # voxtype-vulkan.asc
     # ONNX CPU binaries
-    '19b8716ff7bd388ffb18843fc0ee5e614faa84544d22918ecf72a7c3d6c02929'  # voxtype-onnx-avx2
-    'SKIP'                                                             # voxtype-onnx-avx2.asc
-    '69a6e6fc1c04a55eeb62cf1eaa5fe81873c70eabffff120ce1a4ff7ef62fd559'  # voxtype-onnx-avx512
-    'SKIP'                                                             # voxtype-onnx-avx512.asc
+    '07ee9863f1d611ee3fc638f9ba766f3bd38783b9a97b276d7eceb9b995a7167b'  # voxtype-onnx-avx2
+    'SKIP'  # voxtype-onnx-avx2.asc
+    'b3fabe0fa67452aaa76ccf3f84cd71a3c23d27354c840128c396690cb3a1c9a6'  # voxtype-onnx-avx512
+    'SKIP'  # voxtype-onnx-avx512.asc
     # ONNX CUDA 12 binary + companion .so
-    'e7180f17add10bb441368d8495fc99bde0ba1a1978ea5f7a52d7e626779eca16'  # voxtype-onnx-cuda-12
-    'SKIP'                                                             # voxtype-onnx-cuda-12.asc
+    '171869a953b0d85cb36b54c5cb0c64013051317bff2a1afe09297caf67967d01'  # voxtype-onnx-cuda-12
+    'SKIP'  # voxtype-onnx-cuda-12.asc
     'a8584727d51ba646ac63fc991c2f36ad6cd5b8cc8b1141896e46938700b888d0'  # cuda-12.libonnxruntime_providers_cuda.so
     '1b028afc079628d76a28d7eb09700a4baead4a27f9634ba82c35398486134114'  # cuda-12.libonnxruntime_providers_shared.so
     # ONNX CUDA 13 binary + companion .so + dlopen-target libonnxruntime
-    '4de2aac42b67a05c34ac0b23f771fc83968670fd77d14781cbf4483524304cd1'  # voxtype-onnx-cuda-13
-    'SKIP'                                                             # voxtype-onnx-cuda-13.asc
+    '06e74651565ed63ab20e8eedd7380ceb658558125d97dfde2bb5eafeeac82c7d'  # voxtype-onnx-cuda-13
+    'SKIP'  # voxtype-onnx-cuda-13.asc
     'b6cb7744d0efd2faced5c83ead374c13e7f2630b5a249ffaf393cdb1e092c92b'  # cuda-13.libonnxruntime_providers_cuda.so
     'c6a12593396095f5670160e284c35d1700b7708cf3037b7042e2a5200ccae772'  # cuda-13.libonnxruntime_providers_shared.so
     '1aacefdf0b4afa145d410b2381bbc3db3d978c485fb182c42a2b0b09f91f5310'  # cuda-13.libonnxruntime.so.1.24.4
     # ONNX MIGraphX binary + companion .so
-    'f7a4cc0deaf35110b5106f1fc1f83dded41c0b1780f9fb5aa9cccc3c62e5eb6a'  # voxtype-onnx-migraphx
-    'SKIP'                                                             # voxtype-onnx-migraphx.asc
+    '4085f24c336ffb0862f9d1022f9d5acafcc4278a5bcd3fd45e6d89692f71d301'  # voxtype-onnx-migraphx
+    'SKIP'  # voxtype-onnx-migraphx.asc
     'ddd67e6193ade819ee21f1706d1b03b9151f1d2d2843701e2d19d8b183631707'  # migraphx.libonnxruntime_providers_migraphx.so
     '17f7cf47ad0d7b5ac895ae588fd62c7f85a13842588161b6a24c7d480f062be4'  # migraphx.libonnxruntime_providers_shared.so
     # OSD launcher + GTK4 frontend
-    '7250027b1672507a6d584f795731c87e1d3b5c1de891438bd55e34b136a2d5cc'  # voxtype-osd
-    'SKIP'                                                             # voxtype-osd.asc
-    '74fb0f6ad87feb0c1c9e06a8b28a7f7ecee101caef4248f77dcf613b5271238e'  # voxtype-osd-gtk4
-    'SKIP'                                                             # voxtype-osd-gtk4.asc
+    '0c9ac447bc236728f355d25b7c500afd464186a4591ccc18f482fcc98b16a928'  # voxtype-osd
+    'SKIP'  # voxtype-osd.asc
+    '19535f63c69748408199f3fbfe2bb2f786f5bf4faa54d5390895eecae4603dc7'  # voxtype-osd-gtk4
+    'SKIP'  # voxtype-osd-gtk4.asc
     # Quickshell OSD launcher + audio-bridge sidecar
-    'b809c5140e844a6add801d7e592775cd89af8cce73fa399b6a3aec15dfd09533'  # voxtype-osd-quickshell
-    'SKIP'                                                             # voxtype-osd-quickshell.asc
-    '45776290e364194d83a8b89445166406c278e890507bf07ec52a5f0e8fa57720'  # voxtype-audio-bridge
-    'SKIP'                                                             # voxtype-audio-bridge.asc
+    'b9dc8eca049f21e2507511700108d57ce5704350e5828418753ef9989f86eb08'  # voxtype-osd-quickshell
+    'SKIP'  # voxtype-osd-quickshell.asc
+    '36333a15e27d13d9988045179582f0daecadc630e3ec01bb0996ab798cb77487'  # voxtype-audio-bridge
+    'SKIP'  # voxtype-audio-bridge.asc
 )
 
 # aarch64: one generic CPU Whisper binary and one generic ONNX binary — no
@@ -226,18 +226,18 @@ source_aarch64=(
     "voxtype-$pkgver-audio-bridge.asc::$_github/voxtype-$pkgver-linux-aarch64-audio-bridge.asc"
 )
 sha256sums_aarch64=(
-    'b5e31a85aaa952d1a78c12b8a16ba5cbdcd92eb31adc7d1a908f3c9d06edd4f1'  # voxtype-cpu
-    'SKIP'                                                             # voxtype-cpu.asc
-    'c3771f3e568629178201990976520f88da6d7599ec2d9e404a137570d6c1e108'  # voxtype-onnx
-    'SKIP'                                                             # voxtype-onnx.asc
-    'ea910d4fd1fe331d38dbed1c3a639cb7e0c04542919192ff6f74be2139afe3c6'  # voxtype-osd
-    'SKIP'                                                             # voxtype-osd.asc
-    '0d2148e0cd32bac538692470edc06aa9a2f5c6a891aaa373f59fbe78c247fae3'  # voxtype-osd-gtk4
-    'SKIP'                                                             # voxtype-osd-gtk4.asc
-    '097bd518d5e2eac2c3cbad714b65dd8058c818dcb4d900b9a16e442af7d65b8a'  # voxtype-osd-quickshell
-    'SKIP'                                                             # voxtype-osd-quickshell.asc
-    '35170ad89fea2874fce0f08758ccc2164892ed643aacae632bcfbc6f10433976'  # voxtype-audio-bridge
-    'SKIP'                                                             # voxtype-audio-bridge.asc
+    '2fcf0945d424a116c1947ea738da1afa9f83abbae66cebb53f06189111a6f392'  # voxtype-cpu
+    'SKIP'  # voxtype-cpu.asc
+    '49ecde9a394492c9a34e764911d98258c495ed2f0ced386e6974bccf3f9f164f'  # voxtype-onnx
+    'SKIP'  # voxtype-onnx.asc
+    '34d83a7edb73ae2e15dabc0638d39f2c30ddb3af8f2565400ff043ef6558dc2b'  # voxtype-osd
+    'SKIP'  # voxtype-osd.asc
+    '4d730a6677342158c1861bfb73f1cb86da05afeb74fdf737134df5c8ad9a1eb1'  # voxtype-osd-gtk4
+    'SKIP'  # voxtype-osd-gtk4.asc
+    '365c1b5223329604001fe591398d3c308120048567c7f3171d2602005661d594'  # voxtype-osd-quickshell
+    'SKIP'  # voxtype-osd-quickshell.asc
+    '39c4a186ac8a95f7236cfdd46255207f143f76363a5f758eb127509b163d5172'  # voxtype-audio-bridge
+    'SKIP'  # voxtype-audio-bridge.asc
 )
 
 package() {
