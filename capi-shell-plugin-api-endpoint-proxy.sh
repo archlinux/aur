@@ -59,7 +59,9 @@ api_endpoint_proxy_pre_exec() {
   local slice="capi-shell-api-endpoint-proxy.slice"
   local unit="capi-shell-api-endpoint-proxy-${tool}-${host}:${port}"
   local systemd_err
-  if systemd_err="$(systemd-run --user --unit="$unit" --slice="$slice" --collect --quiet -- "${argv[@]}" 2>&1 >/dev/null)"; then
+  if systemd_err="$(systemd-run --user --unit="$unit" --slice="$slice" --collect --quiet \
+    --property=Restart=on-failure --property=StartLimitIntervalSec=60 --property=StartLimitBurst=3 \
+    -- "${argv[@]}" 2>&1 >/dev/null)"; then
     api_endpoint_proxy_wait_ready "$host" "$port" || true
     return 0
   fi

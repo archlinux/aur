@@ -111,6 +111,9 @@ EOF
   [[ "$log" == *"--user"* ]]
   [[ "$log" == *"--unit=capi-shell-api-endpoint-proxy-sshuttle-10.1.2.3:6443"* ]]
   [[ "$log" == *"--slice=capi-shell-api-endpoint-proxy.slice"* ]]
+  [[ "$log" == *"--property=Restart=on-failure"* ]]
+  [[ "$log" == *"--property=StartLimitIntervalSec=60"* ]]
+  [[ "$log" == *"--property=StartLimitBurst=3"* ]]
   [[ "$log" == *"sshuttle -r jump.example.com 10.1.2.3:6443"* ]]
 }
 
