@@ -3,7 +3,7 @@
 # Contributor: Sotirios M. Roussis (xToNouSou) <xtonousou@gmail.com>
 
 pkgname=airgeddon
-pkgver=12.01
+pkgver=12.02
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -24,7 +24,6 @@ optdepends=(
   'ccze: Robust and modular log colorizer with many plugins'
   'crunch: A wordlist generator where you can specify a standard character set or a character set you specify and generate all possible combinations and permutations'
   'curl: An URL retrieval utility and library'
-  'dhcp: A DHCP server, client, and relay agent'
   'dnsmasq: Lightweight, easy to configure DNS forwarder and DHCP server'
   'ethtool: Utility for controlling network drivers and hardware'
   'ettercap: A network sniffer/interceptor/logger for ethernet LANs'
@@ -36,6 +35,7 @@ optdepends=(
   'hostapd-wpe: Modified hostapd to facilitate AP impersonation attacks'
   'john: John the Ripper password cracker'
   'iptables: Linux kernel packet control tool'
+  'kea: High-performance DHCP server'
   'lighttpd: A secure, fast, compliant and very flexible web-server'
   'mdk3: WLAN penetration tool'
   'mdk4: WLAN penetration tool'
@@ -51,11 +51,12 @@ optdepends=(
   'wget: A network utility to retrieve files from the Web'
   'wireshark-cli: Network traffic and protocol analyzer/sniffer CLI tools'
   'xorg-xdpyinfo: Display information utility for X'
+  'xorg-xprop: Property displayer for X'
   'xorg-xset: User preference utility for X'
 )
 makedepends=('binutils')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('06b599b30e52fd43de73aa42a32fa28fecddfa1fd3993dd68abbe6e93aa91852')
+sha256sums=('72b89c45d30e508003e1892e356c2c2804be0731e0133d7440f3d0fed04669e4')
 
 
 prepare() {
