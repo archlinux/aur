@@ -24,24 +24,41 @@ exec_timeout_max_ms = 30000
 [recording_guard]
 # Tier 1 (recommended): require unlock for capture and recording commands.
 unlock_required = true
+# Stop a recording normally after this many minutes. Set to 0 for no time limit.
+macro_recording_time_limit = 10
 # Tier 2 (optional): require unlock for macro inspection/edit commands.
 macro_edit_requires_unlock = false
 EOF
     chown root:root /etc/keymasq/security.toml 2>/dev/null || true
 }
 
-post_install() {
-    systemd-sysusers
-    systemd-tmpfiles --create
-    udevadm control --reload-rules
-    udevadm trigger --subsystem-match=input --action=add
-    udevadm trigger --subsystem-match=misc --action=add
-
-    if [ -f /etc/systemd/system/keymasqd.service ]; then
+_warn_unit_overrides() {
+    # The AppImage's /etc units override this package's units.
+    if [ -e /opt/keymasq/version ]; then
+        echo ""
+        echo "Keymasq AppImage integration in /opt/keymasq overrides this package."
+        echo "To switch to this package, run as your desktop user:"
+        echo "  /opt/keymasq/bin/keymasq --uninstall"
+        echo "  sudo systemctl enable --now keymasqd"
+        echo "  systemctl --user enable --now keymasq-session"
+    elif [ -f /etc/systemd/system/keymasqd.service ]; then
         echo ""
         echo "Warning: /etc/systemd/system/keymasqd.service exists and overrides packaged unit."
         echo "If keymasqd cannot access devices, run: sudo systemctl revert keymasqd"
     fi
+}
+
+post_install() {
+    systemd-sysusers /usr/lib/sysusers.d/keymasq.conf
+    systemd-tmpfiles --create /usr/lib/tmpfiles.d/keymasq.conf
+    udevadm control --reload-rules
+    udevadm trigger --subsystem-match=input --sysname-match='event*' --action=change
+    udevadm trigger --subsystem-match=input --sysname-match='js*' --action=change
+    udevadm trigger --subsystem-match=misc --sysname-match=uinput --action=change
+    udevadm trigger --subsystem-match=hidraw --action=change
+    udevadm settle --timeout=30
+
+    _warn_unit_overrides
 
     _ensure_security_policy
 
@@ -68,17 +85,16 @@ post_install() {
 }
 
 post_upgrade() {
-    systemd-sysusers
-    systemd-tmpfiles --create
+    systemd-sysusers /usr/lib/sysusers.d/keymasq.conf
+    systemd-tmpfiles --create /usr/lib/tmpfiles.d/keymasq.conf
     udevadm control --reload-rules
-    udevadm trigger --subsystem-match=input --action=add
-    udevadm trigger --subsystem-match=misc --action=add
+    udevadm trigger --subsystem-match=input --sysname-match='event*' --action=change
+    udevadm trigger --subsystem-match=input --sysname-match='js*' --action=change
+    udevadm trigger --subsystem-match=misc --sysname-match=uinput --action=change
+    udevadm trigger --subsystem-match=hidraw --action=change
+    udevadm settle --timeout=30
 
-    if [ -f /etc/systemd/system/keymasqd.service ]; then
-        echo ""
-        echo "Warning: /etc/systemd/system/keymasqd.service exists and overrides packaged unit."
-        echo "If keymasqd cannot access devices, run: sudo systemctl revert keymasqd"
-    fi
+    _warn_unit_overrides
 
     _ensure_security_policy
 
@@ -95,7 +111,18 @@ post_upgrade() {
     echo "  systemctl --user restart keymasq-session"
 }
 
+# pacman ignores install script failures, so the keymasq-prepare-removal alpm
+# hook stops keymasqd and finishes hardware recovery before this runs.
+pre_remove() {
+    systemctl stop keymasqd.service 2>/dev/null || true
+}
+
 post_remove() {
+    udevadm control --reload-rules 2>/dev/null || true
+    # Let the remaining udev policy recompute owner, group, and mode.
+    udevadm trigger --action=change --subsystem-match=input 2>/dev/null || true
+    udevadm trigger --action=change --sysname-match=uinput 2>/dev/null || true
+
     echo ""
     echo "Keymasq has been removed."
     echo ""

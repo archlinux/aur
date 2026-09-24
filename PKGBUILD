@@ -3,7 +3,7 @@
 
 # Maintainer: nyrda <nyrda@keymasq.tools>
 pkgname=keymasq
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Input remapper for keyboards, mice, and game controllers, with layered profiles and macros"
 arch=(
@@ -26,6 +26,7 @@ depends=(
     'python-cairo'
     'gtk4'
     'libadwaita'
+    'libxkbcommon'
     'polkit'
     'systemd'
 )
@@ -36,8 +37,8 @@ makedepends=(
     'python-installer'
 )
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.19.0.tar.gz")
-sha256sums=('9376f36605bc73735e1df4d7ab1d4427e74da298ecc395b0deb3798da6284401')
+source=("$pkgname-$pkgver.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.20.0.tar.gz")
+sha256sums=('19c01cf9e845f4435c26473845d422dd31562779eb699dc985b0e2d91d217ed2')
 
 
 build() {
@@ -74,6 +75,8 @@ package() {
 
     install -Dm644 "systemd/keymasqd.service" \
         "$pkgdir/usr/lib/systemd/system/keymasqd.service"
+    install -Dm644 "systemd/keymasq-hardware@.service" \
+        "$pkgdir/usr/lib/systemd/system/keymasq-hardware@.service"
     install -Dm644 "systemd/keymasq-session.service" \
         "$pkgdir/usr/lib/systemd/user/keymasq-session.service"
 
@@ -88,6 +91,11 @@ package() {
         install -Dm644 "udev/$rule" "$pkgdir/usr/lib/udev/rules.d/$rule"
     done
 
+    install -Dm644 "packaging/pacman/keymasq-prepare-removal.hook" \
+        "$pkgdir/usr/share/libalpm/hooks/keymasq-prepare-removal.hook"
+
+    install -Dm644 "polkit/49-keymasq-hardware.rules" \
+        "$pkgdir/usr/share/polkit-1/rules.d/49-keymasq-hardware.rules"
     install -Dm644 "polkit/com.keymasq.record-macro.policy" \
         "$pkgdir/usr/share/polkit-1/actions/com.keymasq.record-macro.policy"
 
