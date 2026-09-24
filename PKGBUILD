@@ -96,11 +96,19 @@ EOF
 
 _build_native() {
     local _variant="$1" _target_cpu="$2"
+    local _target_dir="target/${_variant}"
 
     # The patched opus copy lives outside the workspace, so rustc records its
     # absolute `$srcdir` path in panic locations; strip that prefix. Cargo
     # splits RUSTFLAGS on whitespace, so pass the flags 0x1f-separated.
+    #
+    # With --remap-path-prefix present, Cargo leaves RUSTFLAGS out of the unit
+    # hash that names artifacts and fingerprint dirs, so in a shared target dir
+    # both variants map onto the same units and each build recompiles the
+    # whole graph over the other's. A target dir per variant keeps both caches
+    # warm across makepkg runs.
     RUSTC_BOOTSTRAP=1 \
+    CARGO_TARGET_DIR="${_target_dir}" \
     CARGO_ENCODED_RUSTFLAGS="-Ctarget-cpu=${_target_cpu}"$'\x1f'"--remap-path-prefix=${srcdir}/=" \
     CC="${srcdir}/cc-tree-sitter" \
     PCRE2_SYS_STATIC=0 \
@@ -111,16 +119,15 @@ _build_native() {
 
     # Fail loudly rather than silently shipping a statically linked libopus if
     # the [patch.crates-io] redirect above ever stops applying.
-    readelf -d target/ci/libpi_natives.so | grep -Fq libopus.so
+    readelf -d "${_target_dir}/ci/libpi_natives.so" | grep -Fq libopus.so
 
-    install -Dm755 target/ci/libpi_natives.so \
+    install -Dm755 "${_target_dir}/ci/libpi_natives.so" \
         "packages/natives/native/pi_natives.linux-x64-${_variant}.node"
 }
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    export CARGO_TARGET_DIR=target
     export RUSTUP_TOOLCHAIN=stable
 
     # Embed the system bun as the runtime: JSC bytecode only loads in the Bun
