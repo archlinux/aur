@@ -1,7 +1,7 @@
 # Maintainer: missercatos <missercatos@gmail.com>
 
 pkgname=ecapp
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Terminal Translation Tool"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/missercatos/ecapp"
 license=('MIT')
 depends=('glibc')
 source=("https://github.com/missercatos/ecapp/releases/download/v$pkgver/ecapp-v$pkgver-x86_64-linux.tar.gz")
-sha256sums=('75dfebe6ed814d3b6cca5ed4067c383a1df0d90908602e3d7a8c660abdbc589a')
+sha256sums=('6eb5ff78fc5b21e879213efdf64188845c57b2d77393e598059365d7ac5e808f')
 
 package() {
   install -Dm755 ecapp "$pkgdir/usr/bin/ecapp"
