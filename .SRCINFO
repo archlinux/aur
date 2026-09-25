@@ -1,0 +1,14 @@
+pkgbase = loago-bin
+	pkgdesc = Track how long ago you last did a task
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Axlefublr/loago
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	provides = loago
+	conflicts = loago
+	source = loago-bin-1.0.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/Axlefublr/loago/releases/download/1.0.0/loago-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 2348194e5f0346979b1ff25aa9d60510ea82bf722f8fea5efbc561a557ba5084
+
+pkgname = loago-bin
