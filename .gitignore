@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!pi-ext.install
+!LICENSE
+!.nvchecker.toml
