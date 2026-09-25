@@ -50,7 +50,7 @@ package_ibus-taigikeyboard() {
 	pkgdesc='Taigi input method for IBus'
 	depends=(taigikeyboard-common ibus)
 	cd "$pkgbase/linux"
-	install -Dm755 target/release/ibus-engine-taigikeyboard "$pkgdir"/usr/libexec/ibus-engine-taigikeyboard
+	install -Dm755 target/release/ibus-engine-taigikeyboard "$pkgdir"/usr/lib/ibus/ibus-engine-taigikeyboard
 	install -Dm644 target/taigikeyboard.xml "$pkgdir"/usr/share/ibus/component/taigikeyboard.xml
 }
 
