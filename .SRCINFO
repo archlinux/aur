@@ -1,0 +1,15 @@
+pkgbase = localsend-cli-bin
+	pkgdesc = An open-source cross-platform alternative to AirDrop (CLI version)
+	pkgver = 1.18.2
+	pkgrel = 1
+	url = https://github.com/localsend/localsend
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	source_x86_64 = https://github.com/localsend/localsend/releases/download/v1.18.2/LocalSend-CLI-1.18.2-linux-x86-64.tar.gz
+	sha256sums_x86_64 = f5a986e0b4701b9aafeb9747225a2f3e314e97aba61b3dd7c9d076226f512b08
+	source_aarch64 = https://github.com/localsend/localsend/releases/download/v1.18.2/LocalSend-CLI-1.18.2-linux-arm-64.tar.gz
+	sha256sums_aarch64 = b003e9837743470f7a423ca1205e664031ce3d2e865acc692f3e47577ea93f6d
+
+pkgname = localsend-cli-bin
