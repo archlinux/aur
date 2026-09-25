@@ -10,7 +10,7 @@ pkgbase="${_pkgbase}-bin"
 pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="OOB interaction gathering server and client library"
 arch=(
@@ -39,14 +39,14 @@ source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgbase}-client_${pkgver}_linux_amd64.zip"
   "${url}/releases/download/v${pkgver}/${_pkgbase}-server_${pkgver}_linux_amd64.zip"  
 )
-sha256sums_aarch64=('475aa78c59afad115149a5b0d6d9c99d2410a4f12d0c6f5a24c32e7338fc6adb'
-                    'ddd73fc2bc4a526705b442001f88832da328c18e8b6e6480f8784552b5b934bd')
-sha256sums_armv7h=('5d1ec9c4c2b1cf4f2c9ec9f19d3ed5933a3934dfbbc6622582ca6ae69990d736'
-                   '48c42b417f762b6e9602a28efaa60077ee5c22e205d1d2bbb1606ecfe542cefe')
-sha256sums_i686=('bc6d0e1dc9201886cb0393e9c30bc414babe73a3b18606f996d4dd69fbb34d1c'
-                 '057ddbad8a8e2960877059759366844e99b90c8ef36afc9bbb65e8a2ac898443')
-sha256sums_x86_64=('d553fb3dd4c2684c953aedeb555f13f0d1ca94bd75112c949a5fd975d385a903'
-                   'cb59d094df7e8d9ecb0b8d368551e0e9af6ab555dbfc0655e8f9e4b56ec5cb19')
+sha256sums_aarch64=('89a72e2dedaa47a6d790f575169d115e8dc31f243eeaf1ce066d7dfe1ee283ef'
+                    '143bc534901a8265ca31f5c350a2af59e81a506a2b7d878807aefde67893dac2')
+sha256sums_armv7h=('0129d25e4104a7c331bb9dedf2e89f6f7b4200ba5f14bee4af7535fa275f806d'
+                   '554c416546ca4a0bad2b695e9798b26312fb323f7cfb2ed5805b4790f275b5bd')
+sha256sums_i686=('001ee1cd9f1c5a751c5e1ce733104af6a4b2ff13a5f83e734d932b5793e75837'
+                 '04255ae959f7f97ab47b62d1167e46803bddff8343920c08ee5ba100dc4201ef')
+sha256sums_x86_64=('86b8145da8196a22e966d36ede3bdad14f8af89ac06b1fcfbf82605296e2a289'
+                   'daca1002378d3c53c7c9e6ea3a195f6c8d58e7d6e25d800faa1b439955b8f519')
 
 package_interactsh-common-bin() {
   pkgdesc+=" (common files)"
@@ -61,14 +61,14 @@ package_interactsh-common-bin() {
   )
 
   cd "${srcdir}"
-  install -vDm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgbase}/README.md"
-  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE.md"
+  install -vDm644 "README.md"  -t "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -vDm644 "LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgbase}"
 }
 
 package_interactsh-client-bin() {
   pkgdesc+=" (client)"
   depends+=(
-    "${_pkgbase}-common>=${pkgver}"
+    "${_pkgbase}-common-bin>=${pkgver}"
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
@@ -84,7 +84,7 @@ package_interactsh-client-bin() {
 package_interactsh-server-bin() {
   pkgdesc+=" (server)"
   depends+=(
-    "${_pkgbase}-common>=${pkgver}"
+    "${_pkgbase}-common-bin>=${pkgver}"
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
