@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 # Maintainer:  Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=openai-codex-bin
-pkgver=0.156.1
+pkgver=0.157.0
 pkgrel=1
 pkgdesc="Arch Linux package for OpenAI's Codex CLI - Auto Updated"
 arch=('x86_64' 'aarch64')
@@ -11,38 +11,35 @@ license=('Apache')
 provides=('openai-codex')
 conflicts=('openai-codex' 'openai-codex-autoup-bin')
 replaces=('openai-codex-autoup-bin')
+depends=('glibc' 'alsa-lib')
 optdepends=(
   'git: for working with git repositories'
   'ripgrep: accelerated large-repo search'
+  'pipewire-alsa: voice audio through PipeWire'
 )
 keywords=('codex' 'openai' 'cli' 'ai' 'machine-learning' 'chatgpt')
+# Voice manifests verify bundled file hashes; preserve upstream binaries.
+options=('!strip' '!debug')
 
 source_x86_64=(
-  "codex-${pkgver}-x86_64.tar.gz::https://github.com/openai/codex/releases/download/rust-v${pkgver}/codex-x86_64-unknown-linux-musl.tar.gz"
-  "codex-code-mode-host-${pkgver}-x86_64.tar.gz::https://github.com/openai/codex/releases/download/rust-v${pkgver}/codex-code-mode-host-x86_64-unknown-linux-musl.tar.gz"
+  "codex-package-${pkgver}-x86_64.tar.gz::https://github.com/openai/codex/releases/download/rust-v${pkgver}/codex-package-x86_64-unknown-linux-musl.tar.gz"
 )
-sha256sums_x86_64=('aff46539a83aff86e3c62c592bce2c50d95391f9df289afaf03a50c01d14533d'
-                   'a929daa9f6a0bddc00c0c9e6402df117b125acd96f9d554f6c99c32c7e66c608')
-sha256sums_aarch64=('558e12aaa6dacb335ec47240bf9721db8a54746806d64f01185a403f44f79b72'
-                    '40198138b03798ffa8c0da4c827a8ca5896774ea104b7110c2a2c0c7560cbe94')
+sha256sums_x86_64=('042f851ea3fc1083c45157520520944fc790632b53ebc580fc98eaca55862a25')
+sha256sums_aarch64=('c1c36beab0b4f72779adf53ba9e9e494bf7cbfbe4f3506a08ff67a24f5f00d08')
 
 source_aarch64=(
-  "codex-${pkgver}-aarch64.tar.gz::https://github.com/openai/codex/releases/download/rust-v${pkgver}/codex-aarch64-unknown-linux-musl.tar.gz"
-  "codex-code-mode-host-${pkgver}-aarch64.tar.gz::https://github.com/openai/codex/releases/download/rust-v${pkgver}/codex-code-mode-host-aarch64-unknown-linux-musl.tar.gz"
+  "codex-package-${pkgver}-aarch64.tar.gz::https://github.com/openai/codex/releases/download/rust-v${pkgver}/codex-package-aarch64-unknown-linux-musl.tar.gz"
 )
 
 package() {
   cd "$srcdir" || exit
 
-  if [[ "$CARCH" == "x86_64" ]]; then
-    install -Dm755 "codex-x86_64-unknown-linux-musl" "$pkgdir/usr/bin/codex"
-    install -Dm755 "codex-code-mode-host-x86_64-unknown-linux-musl" "$pkgdir/usr/bin/codex-code-mode-host"
-  fi
-
-  if [[ "$CARCH" == "aarch64" ]]; then
-    install -Dm755 "codex-aarch64-unknown-linux-musl" "$pkgdir/usr/bin/codex"
-    install -Dm755 "codex-code-mode-host-aarch64-unknown-linux-musl" "$pkgdir/usr/bin/codex-code-mode-host"
-  fi
+  # Codex discovers voice through codex-package.json and package-relative paths.
+  # Keep the complete bundle together, including its helper, runtime and notices.
+  install -d "$pkgdir/opt/openai-codex" "$pkgdir/usr/bin"
+  cp -a bin codex-package.json codex-path codex-resources "$pkgdir/opt/openai-codex/"
+  ln -s /opt/openai-codex/bin/codex "$pkgdir/usr/bin/codex"
+  ln -s /opt/openai-codex/bin/codex-code-mode-host "$pkgdir/usr/bin/codex-code-mode-host"
 
   # Install completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
@@ -52,11 +49,11 @@ package() {
   mkdir -p "${pkgdir}/usr/share/powershell/Completions/"
 
   # Generate completion scripts
-  "${pkgdir}/usr/bin/codex" completion bash >codex.bash
-  "${pkgdir}/usr/bin/codex" completion zsh >codex.zsh
-  "${pkgdir}/usr/bin/codex" completion fish >codex.fish
-  "${pkgdir}/usr/bin/codex" completion elvish >codex.elvish
-  "${pkgdir}/usr/bin/codex" completion powershell >codex.ps1
+  "${srcdir}/bin/codex" completion bash >codex.bash
+  "${srcdir}/bin/codex" completion zsh >codex.zsh
+  "${srcdir}/bin/codex" completion fish >codex.fish
+  "${srcdir}/bin/codex" completion elvish >codex.elvish
+  "${srcdir}/bin/codex" completion powershell >codex.ps1
 
   # Install completion files
   install -Dm644 "codex.bash" "${pkgdir}/usr/share/bash-completion/completions/codex"
