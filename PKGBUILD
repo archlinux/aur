@@ -1,6 +1,6 @@
-# Maintainer: Your Name <your_email at domain dot tld>
+# Maintainer: Your Name <saylesss87@proton.me at domain dot tld>
 pkgname=mdbook-rss-feed
-pkgver=1.3.1  # Update to current version
+pkgver=2.0.0  # Update to current version
 pkgrel=1
 pkgdesc='mdbook preprocessor that generates a full-content RSS 2.0, Atom, and JSON feeds'
 url='https://github.com/saylesss88/mdbook-rss-feed'
