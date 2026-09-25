@@ -1,6 +1,6 @@
 # Maintainer: Jimmy Bonney <jimmy at furtivebot dot com>
 pkgname=scrollshot-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Wayland scrolling screenshot tool for wlroots-based compositors"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('scrollshot')
 conflicts=('scrollshot' 'scrollshot-git')
 options=(!debug)
 source=("${url}/releases/download/v${pkgver}/scrollshot-v${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('5508ab86c5d6f4fac8b80fd98839bc4d0f3df76802d89437abbcb70385f17b73')
+sha256sums=('6fe39b48119f20e36bd6fd81f8a416d47208e755f28e4c739e24c95353a3c6a9')
 
 package() {
     install -Dm755 "scrollshot" "${pkgdir}/usr/bin/scrollshot"

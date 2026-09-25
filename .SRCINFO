@@ -1,6 +1,6 @@
 pkgbase = scrollshot-bin
 	pkgdesc = Wayland scrolling screenshot tool for wlroots-based compositors
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/jbonney/scrollshot
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = scrollshot-bin
 	conflicts = scrollshot
 	conflicts = scrollshot-git
 	options = !debug
-	source = https://github.com/jbonney/scrollshot/releases/download/v0.1.1/scrollshot-v0.1.1-x86_64-linux.tar.gz
-	sha256sums = 5508ab86c5d6f4fac8b80fd98839bc4d0f3df76802d89437abbcb70385f17b73
+	source = https://github.com/jbonney/scrollshot/releases/download/v0.1.2/scrollshot-v0.1.2-x86_64-linux.tar.gz
+	sha256sums = 6fe39b48119f20e36bd6fd81f8a416d47208e755f28e4c739e24c95353a3c6a9
 
 pkgname = scrollshot-bin
