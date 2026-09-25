@@ -1,0 +1,5 @@
+[btmux-bin]
+source = "github"
+github = "buntec/btmux"
+use_latest_release = true
+prefix = "v"
