@@ -2,7 +2,7 @@
 # Contributor: giacomogiorgianni@gmail.com
 
 pkgname=boomaga
-pkgver=3.5.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Virtual printer for viewing a document before printing it out using the physical printer"
 arch=(x86_64 aarch64)
@@ -24,7 +24,7 @@ makedepends=(
     vulkan-headers
     )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Boomaga/boomaga/archive/v${pkgver}.tar.gz")
-sha256sums=('ff3be89c04c15bd435db22ed056e068c5c9b33138a5c9a2bd6895195a1ee08c9')
+sha256sums=('58e3916fec94c714e3a42e66bb6294fb32b6ffbba811f98502b1595336d80e96')
 
 build() {
   # Disable warning Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
