@@ -1,6 +1,6 @@
 pkgbase = wayshadow-git
 	pkgdesc = A lightweight, elegant keystroke visualizer for Wayland compositors
-	pkgver = r33.31e440b
+	pkgver = r49.3c68e8d
 	pkgrel = 1
 	url = https://github.com/justanoobcoder/wayshadow
 	arch = x86_64

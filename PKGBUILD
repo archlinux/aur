@@ -1,7 +1,7 @@
 # Maintainer: justanoobcoder <syaorancode@gmail.com>
 pkgname=wayshadow-git
 _pkgname=wayshadow
-pkgver=r33.31e440b
+pkgver=r49.3c68e8d
 pkgrel=1
 pkgdesc="A lightweight, elegant keystroke visualizer for Wayland compositors"
 arch=('x86_64' 'aarch64')
