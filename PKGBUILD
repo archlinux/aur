@@ -5,7 +5,7 @@
 _pkgname=rpl-2
 pkgname="${_pkgname}"
 pkgver=4.1.37
-pkgrel=1
+pkgrel=2
 arch=(
   'x86_64'
   'i686'
@@ -181,7 +181,8 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      AUTHORS ChangeLog INSTALL LIMITATIONS NEWS README
-  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/doc"  doc/README
-  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  COPYING Licence_CeCILL_V2-en.txt Licence_CeCILL_V2-fr.txt
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"           AUTHORS ChangeLog INSTALL LIMITATIONS NEWS README
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/doc"       doc/README
+  install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/examples"  examples/*
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"       COPYING Licence_CeCILL_V2-en.txt Licence_CeCILL_V2-fr.txt
 }

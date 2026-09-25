@@ -1,7 +1,7 @@
 pkgbase = rpl-2
 	pkgdesc = RPL/2 ('Reverse Polish Lisp 2'), a programming language designed for scientific computations, inspired by RPL from HP calculators like HP28S, HP48, and others.
 	pkgver = 4.1.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rpl2.systella.fr/anglais.php
 	arch = x86_64
 	arch = i686
