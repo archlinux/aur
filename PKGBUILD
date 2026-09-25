@@ -1,19 +1,23 @@
-# Maintainer: dividebysandwich <josef.jahn@gmail.com>
-
 pkgname=rust-dos
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="An x86 DOS emulator written in Rust, with Sound Blaster, AdLib, Gravis Ultrasound and General MIDI sound and CRT shaders"
+pkgdesc="An x86 DOS emulator written in Rust, with Sound Blaster, AdLib, Gravis Ultrasound, General MIDI, Roland MT-32 and Tandy sound, CGA composite colours and CRT shaders"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dividebysandwich/rust-dos"
 license=('GPL-2.0-or-later')
 # SDL2 opens the window, the sound device and the OpenGL context of the CRT
-# shaders. Everything else (fonts, disk noises, Ultrasound patches) is built in.
-depends=('glibc' 'hicolor-icon-theme' 'libgcc' 'sdl2')
+# shaders. ALSA (alsa-lib) sends MIDI out of the system's MIDI ports
+# (midisynth=host in [sound]). munt's libmt32emu plays the Roland MT-32
+# (midisynth=mt32); rust-dos loads it when the MT-32 is chosen, and it needs
+# the MT-32's ROMs, which aren't packaged (mt32roms= in [sound]). Everything
+# else (fonts, disk noises, Ultrasound patches) is built in.
+depends=('alsa-lib' 'glibc' 'hicolor-icon-theme' 'libgcc' 'munt' 'sdl2')
 makedepends=('cargo')
-optdepends=('soundfont-fluid: General MIDI SoundFont for the MPU-401 (soundfont= in [sound])')
+optdepends=('soundfont-fluid: General MIDI SoundFont for the MPU-401 (soundfont= in [sound])'
+            'fluidsynth: software synthesizer to play the MIDI sent out of a MIDI port (midisynth=host)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4be473e90787260bade31457fb879af7e73fe31c90f7da0a4747b16d7d693560')
+# Update with updpkgsums once v0.5.0 is tagged.
+sha256sums=('bbedd2c9f770809a030d4284f1e45df1cc43e3cb2913ce302406a384d7d88ca6')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -31,6 +35,7 @@ build() {
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo test --frozen --release
 }
 
