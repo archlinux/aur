@@ -1,0 +1,18 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["flit_core >=3.11,<4"]
++requires = ["flit_core >=3.11"]
+ build-backend = "flit_core.buildapi"
+ 
+ [project]
+@@ -155,5 +155,7 @@
+     "ignore:distutils Version classes are deprecated. Use packaging.version instead.:DeprecationWarning",
+     'ignore:datetime\.datetime\.utcfromtimestamp\(\) is deprecated:DeprecationWarning', # https://github.com/dateutil/dateutil/pull/1285
+     'ignore:mpnumeric is deprecated:DeprecationWarning', # sympy 1.12 VS mpmath 1.4, solution: https://github.com/sympy/sympy/pull/25290
+-    'ignore:`np.compat`, which was used during the Python 2 to 3 transition, is deprecated since 1.26.0, and will be removed:DeprecationWarning' # from dask 2021.x
++    'ignore:`np.compat`, which was used during the Python 2 to 3 transition, is deprecated since 1.26.0, and will be removed:DeprecationWarning', # from dask 2021.x
++    'ignore:numpy\.fix is deprecated.*:DeprecationWarning',
++    'ignore:Setting the dtype on a NumPy array has been deprecated.*:DeprecationWarning'
+ ]
