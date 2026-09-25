@@ -4,13 +4,13 @@ _pkgname=llavon-ime-fcitx5
 _srcname=ime-unix
 _model_file=llavon-ime-llama-250m-Q4_K_M.gguf
 pkgname=${_pkgname}-preview-git
-pkgver=0.8.8.r2.g55e3b6f
+pkgver=0.8.10.r16.g79f808b
 pkgrel=1
 pkgdesc='Preview branch of the Fcitx5 frontend and local inference service for Llavon IME'
 arch=('x86_64' 'aarch64')
 url='https://github.com/llavon-ime/ime-unix/tree/preview'
 license=('BSD-2-Clause' 'MIT' 'Apache-2.0' 'BSL-1.0' 'CC-BY-NC-4.0')
-depends=('fcitx5' 'glibc' 'libgcc' 'libstdc++' 'vulkan-icd-loader')
+depends=('fcitx5' 'glibc' 'libgcc' 'libstdc++' 'sqlite' 'vulkan-icd-loader' 'xdg-utils' 'curl' 'tar' 'coreutils')
 makedepends=('at-spi2-core' 'cmake' 'curl' 'git' 'ninja' 'python' 'tar' 'unzip' 'zip')
 optdepends=(
     'at-spi2-core: read prediction context from the focused widget (AT-SPI)'
@@ -72,6 +72,18 @@ package() {
     DESTDIR="${pkgdir}" cmake --install build
     install -Dm644 "${srcdir}/${_model_file}" \
         "${pkgdir}/usr/share/llavon-ime/models/${_model_file}"
+    if [[ "${CARCH}" == "x86_64" ]]; then
+        local trainer_staging
+        trainer_staging="$(mktemp -d)"
+        "${srcdir}/unix-service-build/llavon-ime-lora" install-trainer --output-dir "${trainer_staging}"
+        mkdir -p "${pkgdir}/usr/lib/llavon-ime/tools/lora"
+        cp -a "${trainer_staging}/." "${pkgdir}/usr/lib/llavon-ime/tools/lora/"
+        chmod -R a+rX "${pkgdir}/usr/lib/llavon-ime/tools/lora"
+        chmod 0644 "${pkgdir}/usr/lib/llavon-ime/tools/lora/trainer-release.json"
+        rm -rf "${trainer_staging}"
+    else
+        echo "No pinned LoRA Trainer release exists for ${CARCH}; install it from the input method settings instead." >&2
+    fi
     cmake \
         -DVCPKG_INSTALLED_DIR="${srcdir}/unix-service-build/vcpkg_installed" \
         -DDESTINATION="${pkgdir}/usr/share/licenses/${pkgname}" \
