@@ -1,8 +1,8 @@
 # Maintainer: latte_macchiato <contact@lattemacchiato.dev>
 
 pkgname=late-sh-cli
-pkgver=0.47.12
-_tag=v0.47.12
+pkgver=0.47.13
+_tag=v0.47.13
 pkgrel=1
 pkgdesc='Companion CLI for late.sh terminal clubhouse'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'webkit2gtk-4.1')
 makedepends=('cargo' 'cmake' 'git' 'mold' 'nasm')
 options=('!debug' '!lto')
 source=("git+https://github.com/mpiorowski/late-sh.git#tag=${_tag}")
-sha256sums=('28092a42cb8f6b6e970d17def50d26b3b14087a8d9b92e6a04f8537cdbfe84ad')
+sha256sums=('7c046226ada1855689374da494f85f2e1bcf5b3d8d5ee1810ceb3309fd13ae2d')
 
 prepare() {
   cd late-sh
@@ -26,6 +26,7 @@ build() {
   export CARGO_HOME="${srcdir}/cargo-home"
   export CARGO_TARGET_DIR=target
   export RUSTUP_TOOLCHAIN=stable
+  export LATE_CLI_VERSION="${pkgver}"
   export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=mold --remap-path-prefix=${srcdir}=/"
   cargo build --frozen --release --bin late
 }
@@ -35,6 +36,7 @@ check() {
   export CARGO_HOME="${srcdir}/cargo-home"
   export CARGO_TARGET_DIR=target
   export RUSTUP_TOOLCHAIN=stable
+  export LATE_CLI_VERSION="${pkgver}"
   export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=mold --remap-path-prefix=${srcdir}=/"
   cargo test --frozen -p late-cli
 }
