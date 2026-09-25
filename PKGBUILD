@@ -4,13 +4,13 @@ _pkgname=llavon-ime-fcitx5
 _srcname=ime-unix
 _model_file=llavon-ime-llama-250m-Q4_K_M.gguf
 pkgname=${_pkgname}-git
-pkgver=0.8.10.r0.gff76152
+pkgver=0.9.0.r0.ge235153
 pkgrel=1
 pkgdesc='Fcitx5 frontend and local inference service for Llavon IME'
 arch=('x86_64' 'aarch64')
 url='https://github.com/llavon-ime/ime-unix'
 license=('BSD-2-Clause' 'MIT' 'Apache-2.0' 'BSL-1.0' 'CC-BY-NC-4.0')
-depends=('fcitx5' 'glibc' 'libgcc' 'libstdc++' 'vulkan-icd-loader')
+depends=('fcitx5' 'glibc' 'libgcc' 'libstdc++' 'sqlite' 'vulkan-icd-loader' 'xdg-utils' 'curl' 'tar' 'coreutils')
 makedepends=('at-spi2-core' 'cmake' 'curl' 'git' 'ninja' 'python' 'tar' 'unzip' 'zip')
 optdepends=(
     'at-spi2-core: read prediction context from the focused widget (AT-SPI)'
