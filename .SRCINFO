@@ -1,6 +1,6 @@
 pkgbase = github-mcp-server
 	pkgdesc = GitHub's official MCP server which connects AI tools directly to GitHub's platform
-	pkgver = 1.12.1
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://github.com/github/github-mcp-server
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = github-mcp-server
 	makedepends = go
 	makedepends = jq
 	depends = glibc
-	source = https://github.com/github/github-mcp-server/archive/refs/tags/v1.12.1/github-mcp-server-1.12.1.tar.gz
-	source = github-mcp-server-1.12.1.github.json::https://api.github.com/repos/github/github-mcp-server/commits/v1.12.1
-	sha256sums = a826cff7ea6d895ace93836c5f3d453fed86ecfb607abf3957e235bcf391ae28
-	sha256sums = 0b4497dd91218d64556926933145c12bdbeba7001dd4d627119b774676b272dd
+	source = https://github.com/github/github-mcp-server/archive/refs/tags/v1.12.2/github-mcp-server-1.12.2.tar.gz
+	source = github-mcp-server-1.12.2.github.json::https://api.github.com/repos/github/github-mcp-server/commits/v1.12.2
+	sha256sums = b76d212a88b72048f45d79c2ac4010de46918a4200714f9b9d42ff536bd6308d
+	sha256sums = 34404722a58a3e2f3a10fdf1dded73d99d1568c60f9f07e753d0bad46cae1a8f
 
 pkgname = github-mcp-server
