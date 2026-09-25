@@ -1,0 +1,15 @@
+# AUR 仓库只应包含构建配方，makepkg 下载的源码与打出的包都不入库。
+#
+# 注意：这里刻意**不用** `*` 全忽略。全忽略会导致每次 git add 都要加 -f，
+# 而且会连 LICENSE、PKGBUILD 一起挡掉；放进上层仓库（如 GitHub 的开发副本）时
+# 还会波及同级文件，让 aur/ 目录整个无法被跟踪。
+# 用精确模式，正常的 git add 就能工作。
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.tar.zst
+*.tar.gz
+*.tar.xz
+*.deb
+*.rpm
