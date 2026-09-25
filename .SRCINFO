@@ -1,6 +1,6 @@
 pkgbase = nebu
 	pkgdesc = Model storage, inference runtime management, and API gateway
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/nickheyer/nebu
 	arch = aarch64
@@ -25,7 +25,7 @@ pkgbase = nebu
 	conflicts = nebu-bin
 	provides = nebu
 	
-	source = https://github.com/nickheyer/nebu/releases/download/v0.1.7/nebu_0.1.7_source.tar.gz
-	sha256sums = 34450204dfb82d6a2be63b4b72259803f878885ba9725724b9f57b147fa6360b
+	source = https://github.com/nickheyer/nebu/releases/download/v0.1.8/nebu_0.1.8_source.tar.gz
+	sha256sums = 07c545249a908763ef99b493cefe5808b813a60444658de1377e3a5912c74c74
 	
 pkgname = nebu
