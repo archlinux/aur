@@ -8,7 +8,7 @@ pkgrel=1
 arch=('x86_64')
 url="https://taigikeyboard.tw"
 license=('Apache-2.0')
-depends=()
+depends=('libgcc' 'glibc')
 makedepends=(
 	'git'
 	'cargo'
@@ -45,7 +45,10 @@ build() {
 # fonts are not installed, this pulls from the aur instead
 package_taigikeyboard-common() {
 	pkgdesc='Common files for Taigi Keyboard'
-	depends=(gtk4 libadwaita)
+	depends+=(
+		'hicolor-icon-theme' # to allow putting our icons in there
+		'glib2' 'gtk4' 'pango' 'libadwaita'
+	)
 	optdepends=(
 		'ttf-jf-openhuninn: font with more support for Taigi'
 		'ttf-iansui: font with more support for Taigi'
@@ -66,7 +69,7 @@ package_taigikeyboard-common() {
 
 package_ibus-taigikeyboard() {
 	pkgdesc='Taigi input method for IBus'
-	depends=('taigikeyboard-common' 'ibus')
+	depends+=('taigikeyboard-common' 'ibus')
 	cd "${pkgbase}-${_tag}/linux"
 	install -Dm755 target/release/ibus-engine-taigikeyboard "$pkgdir"/usr/lib/ibus/ibus-engine-taigikeyboard
 	install -Dm644 target/taigikeyboard.xml "$pkgdir"/usr/share/ibus/component/taigikeyboard.xml
@@ -74,7 +77,7 @@ package_ibus-taigikeyboard() {
 
 package_fcitx5-taigikeyboard() {
 	pkgdesc='Taigi input method for Fcitx5'
-	depends=('taigikeyboard-common' 'fcitx5')
+	depends+=('taigikeyboard-common' 'fcitx5')
 	# I don't think it is necessary to list libtaigikeyboard.so in provided=
 	# since fcitx5-rime doesn't do it either
 	cd "${pkgbase}-${_tag}/linux"
