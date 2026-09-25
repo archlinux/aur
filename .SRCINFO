@@ -1,0 +1,36 @@
+pkgbase = braille-printer-app-git
+	pkgdesc = Braille Printer Application
+	pkgver = 2.0b1+r7111.20241209.272d5471
+	pkgrel = 1
+	url = https://github.com/OpenPrinting/braille-printer-app
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = file
+	makedepends = liblouis
+	makedepends = liblouisutdml
+	depends = bash
+	depends = glibc
+	depends = libmagic.so
+	depends = libcups
+	depends = libcupsfilters
+	depends = pappl
+	optdepends = liblouis: for musicxml files and backup Braille translations ('lou_translate')
+	optdepends = liblouisutdml: for text files and best Braille translations ('file2brl')
+	optdepends = imagemagick: for raster images ('convert')
+	optdepends = poppler: for PDF files ('pdftotext')
+	optdepends = inkscape: for vector images
+	optdepends = lynx: for html files
+	optdepends = antiword: for MS Word doc files
+	optdepends = cups-filters>=2: for possible input file's conversion into formats which Braille filters accept
+	optdepends = docx2txt: for MS Word docx files
+	optdepends = unzip: for OpenOffice/Libreoffice file conversions
+	optdepends = rtf2txt: for translating RTF files
+	optdepends = freedots: for better translation of musicxml files ('FreeDots')
+	provides = braille-printer-app=2.0b1+r7111.20241209.272d5471
+	conflicts = braille-printer-app
+	options = emptydirs
+	source = git+https://github.com/OpenPrinting/braille-printer-app.git
+	sha256sums = SKIP
+
+pkgname = braille-printer-app-git
