@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="protoc-gen-go-ttrpc"
-pkgver=1.2.9
+pkgver=1.2.10
 pkgrel=1
 pkgdesc="GRPC for low-memory environments"
 arch=(
@@ -30,7 +30,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('16dba7a04c7eb11bc0f725d5ffaa8863d60113b711a1caacf7c99a543ac3960f')
+sha256sums=('797a5d3ba83ec8c3c0ef4ca4185eb2965fdef97f1870dbe1ecad454cdfd7729c')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"

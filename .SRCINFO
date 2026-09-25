@@ -1,6 +1,6 @@
 pkgbase = protoc-gen-go-ttrpc
 	pkgdesc = GRPC for low-memory environments
-	pkgver = 1.2.9
+	pkgver = 1.2.10
 	pkgrel = 1
 	url = https://github.com/containerd/ttrpc
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = protoc-gen-go-ttrpc
 	conflicts = ttrpc-common<=1.2.8-1
 	replaces = ttrpc-common<=1.2.8-1
 	replaces = protoc-gen-gogottrpc<=1.2.8-1
-	source = https://github.com/containerd/ttrpc/archive/refs/tags/v1.2.9/ttrpc-1.2.9.tar.gz
-	sha256sums = 16dba7a04c7eb11bc0f725d5ffaa8863d60113b711a1caacf7c99a543ac3960f
+	source = https://github.com/containerd/ttrpc/archive/refs/tags/v1.2.10/ttrpc-1.2.10.tar.gz
+	sha256sums = 797a5d3ba83ec8c3c0ef4ca4185eb2965fdef97f1870dbe1ecad454cdfd7729c
 
 pkgname = protoc-gen-go-ttrpc
