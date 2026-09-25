@@ -1,0 +1,14 @@
+pkgbase = simplelaunch
+	pkgdesc = A lightweight CLI tool to detach GUI apps from the terminal, with easy job listing and log viewing for tiling WM users (i3, Hyprland, Sway)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/itsflameee/simplelaunch
+	arch = any
+	license = MIT
+	depends = bash
+	depends = util-linux
+	depends = procps-ng
+	source = simplelaunch-1.0.tar.gz::https://github.com/itsflameee/simplelaunch/archive/refs/tags/1.0.tar.gz
+	sha256sums = fdbc61fe75bdf6a2646bba8ecab7cebee6b9b476b27666910a169e536cd38b3b
+
+pkgname = simplelaunch
