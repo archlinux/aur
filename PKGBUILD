@@ -61,6 +61,8 @@ package_ibus-taigikeyboard() {
 package_fcitx5-taigikeyboard() {
 	pkgdesc='Taigi input method for Fcitx5'
 	depends=(taigikeyboard-common fcitx5)
+	# I don't think it is necessary to list libtaigikeyboard.so in provided=
+	# since fcitx5-rime doesn't do it either
 	cd "$pkgbase/linux"
 	DESTDIR="$pkgdir" cmake --install target/fcitx5-build
 }
