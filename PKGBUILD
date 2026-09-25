@@ -1,7 +1,7 @@
 # Maintainer: ParticleG <particle_g@outlook.com>
 
 pkgname=relink-logs-appimage
-pkgver=1.12.17
+pkgver=1.12.18
 pkgrel=1
 pkgdesc='Overlay DPS parser and meter for Granblue Fantasy: Relink (AppImage)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 )
 noextract=("$pkgname-$pkgver.AppImage")
 sha256sums=(
-  '9a3718ef255e9fe356dd617ecbb9327b90efbcad74ba83112018df1d9ffa1e86'
+  'd6941c1fcef8d20d6b1a174fd3923e7ddcb2141c3ebbf70d9e6b9f152a483264'
   '810d9b66e3e6018cabcf3502aed71981222a33e0a4233499ebc537df316e09ad'
 )
 
