@@ -4,7 +4,7 @@
 _pkgauthor=alanvardy
 _pkgname=tod
 pkgname=${_pkgname}-bin
-pkgver=0.18.0
+pkgver=0.19.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A tiny unofficial Todoist client"
@@ -24,9 +24,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-${_barch[1]}.tar.gz")
 sha256sums=('997fcdc2b5ac6d4724a6d083b93cfe868db504521af5f93d61350cce8e3a5d12'
-            '924e66ccfee43b7e4bdde6d9c76d71c4c7642a8e1a9abb6cb6c69fd62a5069de')
-sha256sums_x86_64=('b9c0e0fa4c53954792c20dda747601878346793e0509d88921a4ebdaed6ba941')
-sha256sums_aarch64=('7a540ae19dc47d32b4f67025e4d22775475cab51dd6631314b721d90f3ef0c33')
+            '8ad05545bc6baa0c1f6fbc056b39b527c9e63ce2479af82398a9b7d8dfd1cc46')
+sha256sums_x86_64=('0fcfeee1cc0efb97c50ee812e06c7d432b65d8b00f5b00e3457f790e4e63446d')
+sha256sums_aarch64=('5822e1d7428896e5172b604bada68522153a864ea99d5ab961ad6d16f399e7bd')
 
 
 package() {
