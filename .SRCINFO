@@ -1,12 +1,11 @@
 pkgbase = processing
 	pkgdesc = Programming environment for creating images, animations and interactions
-	pkgver = 4.5.6
-	pkgrel = 1
+	pkgver = 4.5.7
+	pkgrel = 2
 	url = https://www.processing.org/
 	arch = x86_64
 	license = GPL
 	license = LGPL
-	makedepends = gradle
 	depends = jdk17-temurin
 	depends = ffmpeg
 	depends = bash
@@ -21,10 +20,10 @@ pkgbase = processing
 	depends = libxxf86vm
 	depends = zlib
 	options = !strip
-	source = https://github.com/processing/processing4/archive/processing-1434-4.5.6.tar.gz
+	source = https://github.com/processing/processing4/archive/processing-1435-4.5.7.tar.gz
 	source = disable_update_check.patch
 	source = no_jdk_download.patch
-	sha256sums = 4d7fc0d95fd5c2b51bf7560beaf0cad144a4ee70b18de8a16932767f1e7afeb9
+	sha256sums = d50418f3db667e991d1191359f97ee40f1c2f2492c649e2613b5154c0f797747
 	sha256sums = 35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30
 	sha256sums = 7849f17eb7979952309f443abc95f2efe8018324b6a87f1dfb6ab35a0138b835
 

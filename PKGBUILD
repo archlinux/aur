@@ -7,20 +7,19 @@ pkgname=(
   processing
   processing-examples
 )
-pkgver=4.5.6
-_build=1434
-pkgrel=1
+pkgver=4.5.7
+_build=1435
+pkgrel=2
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
 license=(GPL LGPL)
 depends=(jdk17-temurin ffmpeg bash glibc mesa libdrm libx11 libxi libxrandr libxrender libxcursor libxxf86vm zlib)
-makedepends=(gradle)
 options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$_build-$pkgver.tar.gz"
         'disable_update_check.patch'
         'no_jdk_download.patch')
-sha256sums=('4d7fc0d95fd5c2b51bf7560beaf0cad144a4ee70b18de8a16932767f1e7afeb9'
+sha256sums=('d50418f3db667e991d1191359f97ee40f1c2f2492c649e2613b5154c0f797747'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             '7849f17eb7979952309f443abc95f2efe8018324b6a87f1dfb6ab35a0138b835')
 
@@ -52,7 +51,7 @@ build() {
       -e "s,<ICON_NAME>,processing-pde,g" build/linux/desktop.template > processing-pde.desktop
 
   # Build the application
-  JAVA_HOME="/usr/lib/jvm/java-17-temurin" gradle createDistributable
+  JAVA_HOME="/usr/lib/jvm/java-17-temurin" ./gradlew createDistributable
 }
 
 package_processing() {
@@ -117,8 +116,8 @@ package_processing() {
 
   # Link processing's internal JDK to the system's one
   rm -rf "$pkgdir/usr/share/processing/lib/runtime" # TODO prevent that the runtime is added at all
-  ln -s /usr/lib/jvm/java-17-openjdk "$pkgdir/usr/share/processing/lib/runtime"
-  ln -s /usr/lib/jvm/java-17-openjdk "$pkgdir/usr/share/processing/lib/app/resources/jdk-17.0.14+7"
+  ln -s /usr/lib/jvm/java-17-temurin "$pkgdir/usr/share/processing/lib/runtime"
+  ln -s /usr/lib/jvm/java-17-temurin "$pkgdir/usr/share/processing/lib/app/resources/jdk-17.0.14+7"
 }
 
 package_processing-examples() {
