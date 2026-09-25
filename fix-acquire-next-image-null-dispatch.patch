@@ -1,0 +1,81 @@
+--- a/greenboost_vulkan_layer.c
++++ b/greenboost_vulkan_layer.c
+@@ -3530,6 +3530,12 @@
+         next_gdpa(*pDevice, "vkCreateComputePipelines");
+     PFN_vkQueuePresentKHR fn_qpkhr = (PFN_vkQueuePresentKHR)
+         next_gdpa(*pDevice, "vkQueuePresentKHR");
++    /* A7: vkAcquireNextImageKHR is hooked unconditionally (it also feeds the
++     * frame counter), so its dispatch has to be resolved for every device,
++     * not only the Reflex ones.  Resolving it next to vkQueuePresentKHR is
++     * safe: any device that can present can acquire. */
++    PFN_vkAcquireNextImageKHR fn_ani = (PFN_vkAcquireNextImageKHR)
++        next_gdpa(*pDevice, "vkAcquireNextImageKHR");
+     PFN_vkBindImageMemory fn_bim = (PFN_vkBindImageMemory)
+         next_gdpa(*pDevice, "vkBindImageMemory");
+     PFN_vkBindImageMemory2 fn_bim2 = (PFN_vkBindImageMemory2)
+@@ -3624,7 +3630,6 @@
+     PFN_vkLatencySleepNV        fn_ls    = NULL;
+     PFN_vkSetLatencyMarkerNV    fn_slm   = NULL;
+     PFN_vkGetLatencyTimingsNV   fn_glt   = NULL;
+-    PFN_vkAcquireNextImageKHR   fn_ani   = NULL;
+     int want_reflex = 0;
+     if (has_lowlat2) {
+         const char *re = getenv("GREENBOOST_REFLEX");
+@@ -3633,7 +3638,6 @@
+             fn_ls   = (PFN_vkLatencySleepNV)          next_gdpa(*pDevice, "vkLatencySleepNV");
+             fn_slm  = (PFN_vkSetLatencyMarkerNV)      next_gdpa(*pDevice, "vkSetLatencyMarkerNV");
+             fn_glt  = (PFN_vkGetLatencyTimingsNV)     next_gdpa(*pDevice, "vkGetLatencyTimingsNV");
+-            fn_ani  = (PFN_vkAcquireNextImageKHR)     next_gdpa(*pDevice, "vkAcquireNextImageKHR");
+             want_reflex = (fn_slsm && fn_ls && fn_slm) ? 1 : 0;
+         }
+     }
+@@ -3766,13 +3770,15 @@
+         d->next_destroy_semaphore          = fn_dsem;
+         d->next_queue_submit               = fn_qs;
+         d->nis_queue_family                = nis_qfi;
++        /* A7: the acquire dispatch is stored for every device (see its
++         * resolution above); the hook runs regardless of Reflex. */
++        d->next_acquire_image              = fn_ani;
+         /* A7: Reflex latency markers (VK_NV_low_latency2). */
+         if (want_reflex) {
+             d->next_set_latency_sleep_mode = fn_slsm;
+             d->next_latency_sleep          = fn_ls;
+             d->next_set_latency_marker     = fn_slm;
+             d->next_get_latency_timings    = fn_glt;
+-            d->next_acquire_image          = fn_ani;
+         }
+     }
+     pthread_mutex_unlock(&g_mutex);
+@@ -4377,13 +4383,30 @@
+ 
+     pthread_mutex_lock(&g_mutex);
+     GbDevData *d = dev_find(device);
++    PFN_vkGetDeviceProcAddr fn_gdpa = NULL;
+     if (d) {
+-        fn_ani = d->next_acquire_image;
+-        fn_slm = d->next_set_latency_marker;
++        fn_ani   = d->next_acquire_image;
++        fn_slm   = d->next_set_latency_marker;
++        fn_gdpa  = d->next_gdpa;
+         if (fn_slm) frame_id = ++d->reflex_frame_id;
+     }
+     pthread_mutex_unlock(&g_mutex);
+ 
++    /* A7: belt-and-braces.  The hook intercepts every acquire, so a NULL
++     * dispatch must never be fatal: re-resolve through the driver's own
++     * vkGetDeviceProcAddr (external call, outside g_mutex) and cache it.
++     * With the unconditional resolution in CreateDevice this never runs. */
++    if (!fn_ani && fn_gdpa) {
++        fn_ani = (PFN_vkAcquireNextImageKHR)fn_gdpa(device, "vkAcquireNextImageKHR");
++        if (fn_ani) {
++            pthread_mutex_lock(&g_mutex);
++            GbDevData *d2 = dev_find(device);
++            if (d2 && !d2->next_acquire_image)
++                d2->next_acquire_image = fn_ani;
++            pthread_mutex_unlock(&g_mutex);
++        }
++    }
++
+     if (!fn_ani) return VK_ERROR_INITIALIZATION_FAILED;
+ 
+     VkResult r = fn_ani(device, swapchain, timeout, semaphore, fence, pImageIndex);

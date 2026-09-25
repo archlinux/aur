@@ -22,9 +22,17 @@
 #    packaged: mkinitcpio only copies systemd.conf and 20-systemd-stub.conf
 #    into the image, so /usr/lib/tmpfiles.d/greenboost-gaming.conf never
 #    reaches early userspace on Arch and there is nothing to exclude it from.
+#
+#  * fix-acquire-next-image-null-dispatch.patch is a downstream bugfix:
+#    the layer hooks vkAcquireNextImageKHR unconditionally but only filled
+#    the per-device dispatch pointer when Reflex was active (app enables
+#    VK_NV_low_latency2 AND GREENBOOST_REFLEX=1), so every other app got
+#    VK_ERROR_INITIALIZATION_FAILED from its first acquire and span at 100%
+#    CPU (vkcube never rendered a frame).  Drop the patch once upstream
+#    ships the fix.
 pkgname=greenboost-gaming-suite
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Gaming optimisation suite for GreenBoost: Vulkan and OpenGL memory-tiering layers, a GUI for DLSS/power/display profiles, and Steam Proton integration"
 arch=('x86_64')
 url="https://gitlab.com/IsolatedOctopi/greenboost_gaming_suite"
@@ -72,12 +80,14 @@ source=(
   "NVIDIAImageScaling-1.0.3.tar.gz::https://github.com/NVIDIAGameWorks/NVIDIAImageScaling/archive/refs/tags/v1.0.3.tar.gz"
   "arch-packaged-paths.patch"
   "arch-proton-gb-gaming-paths.patch"
+  "fix-acquire-next-image-null-dispatch.patch"
 )
 sha256sums=(
   'f5387243bc769563eb1ebe79123c1034acb14f8023a83584cefd0d47b70f6faa'
   'e34a67c5cc3459476d12c440845dcaf1210e92b89f8876069107973d88d944e1'
   '7703cd99867a249d10fdabf9738930a5db0a9def78578a156205ba09d3252873'
   '3abb6a932a8e9e6cc1379363d42834a2d4acae993be8f48a61ddf83bcdf625e8'
+  '6895ad24ad02e0c3c247467b74bd1d8e9a14cfd7e73567f7d2f21edca58d7006'
 )
 
 prepare() {
@@ -89,6 +99,7 @@ prepare() {
   cd "$srcdir/greenboost_gaming_suite-v${pkgver}"
   patch -p1 -i "$srcdir/arch-packaged-paths.patch"
   patch -p1 -i "$srcdir/arch-proton-gb-gaming-paths.patch"
+  patch -p1 -i "$srcdir/fix-acquire-next-image-null-dispatch.patch"
 }
 
 build() {
