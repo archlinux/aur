@@ -8,10 +8,15 @@ url="https://backlog.md"
 license=('MIT')
 depends=('bun')
 makedepends=('git')
+optdepends=(
+	'bash-completion: bash completion support'
+	'zsh: zsh completion support'
+	'fish: fish completion support'
+)
 provides=('backlog')
 conflicts=('backlog')
-source=("$pkgname::git+https://github.com/MrLesk/Backlog.md.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/MrLesk/Backlog.md.git" 'backlog.sh')
+sha256sums=('SKIP' 'bf4a644f0fb9580d5883a3507bb96e864cf05c1f06abb5a9a84b0e14c129f023')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -29,13 +34,11 @@ package() {
 	install -d "$pkgdir/usr/lib/backlog"
 	cp -R dist/. "$pkgdir/usr/lib/backlog/"
 
-	install -d "$pkgdir/usr/bin"
-	cat > "$pkgdir/usr/bin/backlog" <<-EOF
-	#!/bin/sh
-	export BACKLOG_BUNDLE_ASSET_DIR=/usr/lib/backlog
-	exec bun /usr/lib/backlog/cli.js "\$@"
-	EOF
-	chmod 755 "$pkgdir/usr/bin/backlog"
+	install -Dm755 "$srcdir/backlog.sh" "$pkgdir/usr/bin/backlog"
+
+	install -Dm644 completions/backlog.bash "$pkgdir/usr/share/bash-completion/completions/backlog"
+	install -Dm644 completions/_backlog "$pkgdir/usr/share/zsh/site-functions/_backlog"
+	install -Dm644 completions/backlog.fish "$pkgdir/usr/share/fish/vendor_completions.d/backlog.fish"
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
