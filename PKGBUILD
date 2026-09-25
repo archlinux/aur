@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="libe57format"
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Library for reading & writing the E57 file format"
 arch=(
@@ -27,7 +27,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('18373ebaa934723df05044ca41d477f9be1ff3e6eee46544c38793b43a40156dd4b7d9f46dd6d16917eabe2a29502f13542fdbc5f929398343e8a14f80bcc17b')
+b2sums=('9e057d2db3298455933f65d22fb6dc6dbca35c99c1d8511374cee7195937ce6e15150e20dc1812f8549b24ceac4f97ca3cdd4012a2b12e6cdca8dfc85f07c6f6')
 
 build() {
   local cmake_options=(
