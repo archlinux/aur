@@ -1,5 +1,5 @@
 pkgname=dumpr-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Turn a project directory into a readable text dump (prebuilt binary)'
 arch=('x86_64')
@@ -8,8 +8,8 @@ license=('MIT')
 depends=('gcc-libs')
 provides=('dumpr')
 conflicts=('dumpr')
-source=("dumpr-${pkgver}-x86_64.tar.gz::https://github.com/iktrnch/dumpr/releases/download/v1.0.2/dumpr-1.0.2-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('c2b2d4ec67c4d730a1bf4ec9e170e695c870c6a0da67816858beeed5e78a613e')
+source=("dumpr-${pkgver}-x86_64.tar.gz::https://github.com/iktrnch/dumpr/releases/download/v1.0.3/dumpr-1.0.3-x86_64-unknown-linux-musl.tar.gz")
+sha256sums=('5d764365d7bf06e3e3246d507495fb48e26dedec998f2d6f6862541b3f5403d1')
 
 package() {
   install -Dm755 "${srcdir}/dumpr-${pkgver}-x86_64-unknown-linux-musl/dumpr" "${pkgdir}/usr/bin/dumpr"
