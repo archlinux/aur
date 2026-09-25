@@ -1,6 +1,6 @@
 pkgbase = seekey-git
 	pkgdesc = Wayland keyboard visualizer with floating key bubbles (git version)
-	pkgver = 0.2.3.r34.ge37dcff
+	pkgver = 0.3.0.r38.g625c459
 	pkgrel = 1
 	url = https://github.com/Nakanomk/Seekey
 	install = seekey.install
@@ -18,9 +18,12 @@ pkgbase = seekey-git
 	depends = libevdev
 	depends = ncurses
 	depends = pango
+	optdepends = fuzzel: native settings menu for --config-gui (a built-in GTK menu is used without it)
 	provides = seekey
 	conflicts = seekey
 	source = seekey::git+https://github.com/Nakanomk/Seekey.git
+	source = 70-seekey-input.rules
 	sha256sums = SKIP
+	sha256sums = b570a8b92fc07b934e8aff5bf723a7e07e4494ab01c11ce87fa7b67c3f5ec4d1
 
 pkgname = seekey-git
