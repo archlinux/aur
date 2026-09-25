@@ -1,24 +1,24 @@
 pkgbase = zig-mach
 	pkgdesc = General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
-	pkgver = 0.16.0dev.3142+5ccfeb926
+	pkgver = 0.17.0dev.2228+955228b68
 	pkgrel = 1
 	url = https://machengine.org/docs/nominated-zig/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake>=3.15
 	makedepends = minisign
-	makedepends = llvm21
+	makedepends = llvm>=22
 	depends = glibc
 	depends = libstdc++
-	depends = clang21
-	depends = lld21
-	depends = llvm21-libs
+	depends = clang>=22
+	depends = lld>=22
+	depends = llvm-libs>=22
 	options = emptydirs
 	options = !lto
 	options = !strip
-	source = https://pkg.hexops.org/zig/zig-0.16.0-dev.3142+5ccfeb926.tar.xz
-	source = https://pkg.hexops.org/zig/zig-0.16.0-dev.3142+5ccfeb926.tar.xz.minisig
-	sha256sums = 7f0fcafcad7b32c0959b374bad725e9b9d120223ee517988ea9a067efce26a20
+	source = https://pkg.hexops.org/zig/zig-0.17.0-dev.2228+955228b68.tar.xz
+	source = https://pkg.hexops.org/zig/zig-0.17.0-dev.2228+955228b68.tar.xz.minisig
+	sha256sums = fa2bf6c72194fd311b72f7cc77ef9df409a7cf2e886f8a0edd04b46cd2e232d5
 	sha256sums = SKIP
 
 pkgname = zig-mach

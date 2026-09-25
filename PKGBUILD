@@ -1,10 +1,10 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_llvm=21
+_llvm=22
 _basename="zig"
 _suffix="-mach"
 pkgname="${_basename}${_suffix}"
-pkgver=0.16.0dev.3142+5ccfeb926
+pkgver=0.17.0dev.2228+955228b68
 _pkgver="${pkgver//dev/-dev}"
 pkgrel=1
 pkgdesc="General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
@@ -26,19 +26,19 @@ depends=(
   'glibc'
   'libstdc++'
 
-  # "clang>=${_llvm}"
-  # "lld>=${_llvm}"
-  # "llvm-libs>=${_llvm}"
-  "clang${_llvm}"
-  "lld${_llvm}"
-  "llvm${_llvm}-libs"
+  "clang>=${_llvm}"
+  "lld>=${_llvm}"
+  "llvm-libs>=${_llvm}"
+  # "clang${_llvm}"
+  # "lld${_llvm}"
+  # "llvm${_llvm}-libs"
 )
 makedepends=(
   'cmake>=3.15'
   'minisign'
   
-  # "llvm>=${_llvm}"
-  "llvm${_llvm}"
+  "llvm>=${_llvm}"
+  # "llvm${_llvm}"
 )
 # checkdepends=( # checkdepends_x86_64
 #   'lib32-glibc'
@@ -53,7 +53,7 @@ source=(
   "https://pkg.hexops.org/zig/${_pkgsrc}.tar.xz"
   "https://pkg.hexops.org/zig/${_pkgsrc}.tar.xz.minisig"
 )
-sha256sums=('7f0fcafcad7b32c0959b374bad725e9b9d120223ee517988ea9a067efce26a20'
+sha256sums=('fa2bf6c72194fd311b72f7cc77ef9df409a7cf2e886f8a0edd04b46cd2e232d5'
             'SKIP')
 
 verify() {
@@ -70,7 +70,7 @@ build() {
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
     -G 'Unix Makefiles'
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
 
