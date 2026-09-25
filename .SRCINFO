@@ -1,6 +1,6 @@
 pkgbase = pipeasio-git
 	pkgdesc = ASIO driver for Wine that talks directly to PipeWire (no libjack dependency) (git master)
-	pkgver = 1.2.3.r2.gb4c004b
+	pkgver = 1.8.1.r1.ga2bce56
 	pkgrel = 1
 	url = https://github.com/M0n7y5/pipeasio
 	arch = x86_64
@@ -10,10 +10,14 @@ pkgbase = pipeasio-git
 	makedepends = ninja
 	makedepends = mingw-w64-gcc
 	depends = wine
+	depends = libpipewire
 	depends = pipewire
 	depends = qt6-base
 	depends = hicolor-icon-theme
-	provides = pipeasio=1.2.3
+	depends = yaml-cpp
+	depends = libarchive
+	depends = zlib
+	provides = pipeasio=1.8.1
 	conflicts = pipeasio
 	options = !strip
 	options = !debug

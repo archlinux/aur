@@ -1,0 +1,17 @@
+# VCS package: pkgver() derives the version from git describe at build time, so
+# there is no release tag to sync. Left disabled so the batch job never rewrites
+# pkgver here; it stays discoverable for the manual install-verification run.
+source: github_release
+repo: M0n7y5/pipeasio
+prefix: v
+isEnabled: false
+verify_commands:
+  - command -v pipeasio-register
+  - command -v pipeasio-settings
+  - pipeasio-manage --version
+  - test -f /usr/share/pipeasio/manager/pipeasio-check.exe
+  - test -f /usr/lib/wine/x86_64-windows/pipeasio64.dll
+  - test -f /usr/lib/wine/x86_64-unix/pipeasio64.so
+  - test -f /usr/lib/wine/i386-windows/pipeasio32.dll
+  - test -f /usr/share/applications/pipeasio-settings.desktop
+  - test -f /usr/share/icons/hicolor/scalable/apps/pipeasio.svg

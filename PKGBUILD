@@ -2,13 +2,15 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=pipeasio-git
-pkgver=1.2.3.r2.gb4c004b
+pkgver=1.8.1.r1.ga2bce56
 pkgrel=1
 pkgdesc="ASIO driver for Wine that talks directly to PipeWire (no libjack dependency) (git master)"
 arch=('x86_64')
 url="https://github.com/M0n7y5/pipeasio"
 license=('GPL-3.0-or-later')
-depends=(wine pipewire qt6-base hicolor-icon-theme)
+# yaml-cpp, libarchive and zlib are linked by pipeasio-manage, the manager
+# backend the panel runs.
+depends=(wine libpipewire pipewire qt6-base hicolor-icon-theme yaml-cpp libarchive zlib)
 # mingw-w64-gcc builds the opt-in 32-bit WoW64 PE front end, matching the
 # official release tarballs.
 makedepends=(git cmake ninja mingw-w64-gcc)
@@ -40,8 +42,8 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
 
-  # master installs the Wine arch layout, both unified-name symlinks, the
-  # register helper, the panel, its desktop entry and icon.
+  # master installs the Wine arch layout, the register helper, the manager
+  # backend and its installation probes, the panel, its desktop entry and icon.
   DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
