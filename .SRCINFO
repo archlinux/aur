@@ -1,0 +1,36 @@
+pkgbase = ttf-inter-hinted
+	pkgdesc = Inter, a typeface designed for UI legibility, re-hinted with ttfautohint for FreeType (optionally Nerd Fonts patched)
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://rsms.me/inter/
+	arch = any
+	license = OFL-1.1
+	makedepends = python
+	makedepends = python-fonttools
+	makedepends = python-skia-pathops
+	makedepends = fontforge
+	makedepends = parallel
+	makedepends = ttfautohint
+	optdepends = afdko: CFF/OTF hinting via otfautohint (HINT_ENGINE=cff)
+	provides = inter-font
+	conflicts = inter-font
+	conflicts = interui-ttf-hinted
+	replaces = interui-ttf-hinted
+	noextract = font-patcher-3.5.1.zip
+	options = !strip
+	source = Inter-4.1.zip::https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip
+	source = font-patcher-3.5.1.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/FontPatcher.zip
+	source = LICENSE-4.1.txt::https://raw.githubusercontent.com/rsms/inter/v4.1/LICENSE.txt
+	source = otf2ttf.py
+	source = set_gasp.py
+	source = cff_hint.py
+	source = dedup_blues.py
+	sha256sums = 9883fdd4a49d4fb66bd8177ba6625ef9a64aa45899767dde3d36aa425756b11e
+	sha256sums = 42bcb32145499a35732274c7fc48deb434ad0d2e0e118f98527c1479c6fa251a
+	sha256sums = 262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a
+	sha256sums = 151f00af692183a62146453b709f04240dfe72fdc7a1b98a833f664177eacd21
+	sha256sums = 0b0464b268525569b5fa28b4735791efb22f22829ad178629776ae3ea82d7f99
+	sha256sums = 77dd6b9d0b43f261ef68f46bf8d5b4bb8d142969e2c305e7cd2feb1ccecf61fc
+	sha256sums = 980f8ce4e3e9b3738ee47d30068d9f9d6f69dfae035363e36b769919122bf194
+
+pkgname = ttf-inter-hinted
