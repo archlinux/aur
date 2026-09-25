@@ -1,8 +1,8 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=vacask
 pkgname="${_pkgname}-git"
-pkgver=0.3.3.r348.g0212881
-pkgrel=2
+pkgver=0.3.4.r69.gb6d63ff
+pkgrel=1
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
     'x86_64'
@@ -12,12 +12,13 @@ url="https://codeberg.org/arpadbuermen/VACASK"
 license=('AGPL-3.0-or-later')
 depends=(
     'suitesparse'
-    'boost-libs'
     'glibc'
     'libstdc++'
     'libgcc'
     'libgomp'
     'openblas'
+    'fftw'
+    'python'
 )
 makedepends=(
     'git'
@@ -28,10 +29,10 @@ makedepends=(
     'bison'
     'flex'
     'tomlplusplus'
+    'boost-libs'
     'openvaf-r'
 )
 checkdepends=(
-    'python'
     'python-numpy'
     'python-scipy'
     'python-matplotlib'
@@ -41,23 +42,12 @@ optdepends=(
 )
 conflicts=("${_pkgname}")
 options=()
-source=(
-    "${_pkgname}::git+${url}"
-    "0001-fix-cblas-include-arch.patch"
-)
-
-b2sums=('SKIP'
-        'b8a7490a5aa6ebd09b9883d24e4498df09599a77eed5c0a4016ad6deefc30d023d3f79838019b381fa0c14152f70378b904f7d8869851582c89aff132da640a4')
+source=("${_pkgname}::git+${url}")
+b2sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
     git describe --long --tags --abbrev=7 | sed 's/^_//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "${_pkgname}"
-
-    patch -Np1 < "../0001-fix-cblas-include-arch.patch"
 }
 
 build() {
@@ -65,7 +55,7 @@ build() {
         -W no-author
         -D CMAKE_BUILD_TYPE=None
         -D CMAKE_INSTALL_PREFIX=/usr
-        # -D BLA_VENDOR="OpenBLAS"
+        -D BLA_VENDOR="OpenBLAS"
     )
 
     local vacask_options=(
