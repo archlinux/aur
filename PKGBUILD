@@ -3,7 +3,7 @@
 # Contributor: Swift Geek
 _basename=Seamly2D
 pkgname=${_basename,,}
-pkgver=2026.9.14.145
+pkgver=2026.9.21.146
 pkgrel=1
 pkgdesc="Open source patternmaking software to democratize fashion."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base' 'qt6-multimedia' 'qt6-svg' 'xerces-c')
 makedepends=('qt6-tools')
 source=("${_basename}-${pkgver}.tar.gz::https://github.com/FashionFreedom/Seamly2D/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b43c0c5b63def3599590694b4657767374e3219580e526295a4dca6a28d85e54')
+sha256sums=('0030caa41cce39f2dbf82ae17f5545d6d7cd7fc89364607f25ea688c69881ebf')
 
 build() {
     cd "${srcdir}/${_basename}-${pkgver}"
