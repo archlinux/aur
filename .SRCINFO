@@ -1,0 +1,14 @@
+pkgbase = lua-pandocp
+	pkgdesc = Respect the standards of Unix XDG, Android, macOS, Windows
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wakatime/prompt-style.lua/tree/main/packages/pandocp
+	arch = any
+	license = GPL3
+	makedepends = luarocks
+	depends = pandoc
+	source = https://luarocks.org/manifests/freed-wu/pandocp-0.1.0-1.src.rock
+	sha256sums = 1bd923a1488defdc44dfdea55b525652f868805dad74d43318e2b15392dfbf1f
+
+pkgname = lua54-pandocp
+	depends = lua54-prompt-style
