@@ -602,9 +602,26 @@ fi
   >"${SETUPDIR}/setup.log" 2>&1 &
 PID="$!"
 
+# 'tailscale up' warns about netfilter=off on every run, which reads like
+# something to fix when it is the default above working as intended. The
+# warning is the only thing it writes to stdout -- the login URL and QR code
+# go to stderr -- so dropping that one line leaves the prompt untouched. Only
+# when this script chose the mode: a user who passed it explicitly keeps it.
+up_stdout() {
+  if [[ $FOUND_NETFILTER_IN_ARGS == no ]]; then
+    grep --line-buffered -vxF 'Warning: netfilter=off; configure iptables yourself.' || true
+  else
+    cat
+  fi
+}
+
 # --accept-risk=lose-ssh is fine because we are setting up an isolated tailscaled daemon,
 # it has nothing to do with system tailscale service.
-if ! tailscale --socket="$socket" up --qr --accept-risk=lose-ssh "$@"; then
+# A pipeline rather than >(...): it waits for the filter on its own, and
+# PIPESTATUS keeps tailscale's verdict. The filter always succeeds, so set -e
+# never trips on the pipeline itself.
+tailscale --socket="$socket" up --qr --accept-risk=lose-ssh "$@" | up_stdout
+if ((PIPESTATUS[0] != 0)); then
   cp -f "${SETUPDIR}/setup.log" /tmp/setup-initcpio-tailscale-daemon.log
   die "Failed to configure tailscale. Check daemon logs at /tmp/setup-initcpio-tailscale-daemon.log"
 fi
