@@ -1,7 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 pkgname=ttf-misans-latin-hinted
 pkgver=4.007
-pkgrel=2
+pkgrel=3
 pkgdesc="MiSans Latin (Latin, Greek, Cyrillic) by Xiaomi, autohinted with ttfautohint and with fontconfig-friendly weight classes"
 arch=(any)
 url="https://hyperos.mi.com/font/en/download/"
@@ -64,16 +64,17 @@ sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
 #     (Windows clipping only), and --increase-x-height 0 vs 14 (nearly
 #     identical). gasp and -W still matter if the fonts are used under Wine.
 #   * v40 ignores horizontal hints, so the outlines' advances never change.
-#     But at hintfull/hintmedium Chrome turns off subpixel positioning and
-#     rounds every advance to a whole pixel (text widths up to ±2% off, uneven
-#     gaps in bold). hintslight keeps exact spacing, but then these hints are
-#     not used.
+#     But at hintfull Chrome turns off subpixel positioning and rounds every
+#     advance to a whole pixel (text widths up to ±2% off, uneven gaps in
+#     bold). At hintmedium it keeps subpixel positioning while still running
+#     the bytecode, and cairo/pango render hintmedium and hintfull
+#     pixel-identically, so hintmedium is the setting to use.
 #
 # FreeType only runs TrueType bytecode at hintstyle hintmedium/hintfull. With
 # the common hintslight setting it uses its own light autohinter instead and
 # ignores these hints. The package therefore ships (but does not enable)
 # /usr/share/fontconfig/conf.avail/80-misans-latin-hinted.conf, which turns on
-# full bytecode hinting for this family only. Enable it with:
+# bytecode hinting (hintmedium) for this family only. Enable it with:
 #
 #   sudo ln -s /usr/share/fontconfig/conf.avail/80-misans-latin-hinted.conf \
 #              /etc/fonts/conf.d/
@@ -239,7 +240,7 @@ _resolve_options() {
 
   FIX_WEIGHTS="${FIX_WEIGHTS:-true}"
   HINT_REFERENCE="${HINT_REFERENCE:-false}"
-  HINT_PRESET="${HINT_PRESET:-hack}"
+  HINT_PRESET="${HINT_PRESET:-balanced}"
 
   local _m _lo _hi _xh _fb
   case "$HINT_PRESET" in
@@ -392,7 +393,7 @@ package() {
     </test>
     <edit name="hinting" mode="assign"><bool>true</bool></edit>
     <edit name="autohint" mode="assign"><bool>false</bool></edit>
-    <edit name="hintstyle" mode="assign"><const>hintfull</const></edit>
+    <edit name="hintstyle" mode="assign"><const>hintmedium</const></edit>
   </match>
 </fontconfig>
 EOF
