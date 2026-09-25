@@ -4,7 +4,7 @@
 # The release workflow's binaries with flea's own closure, whose reasons live beside it in the root PKGBUILD.
 pkgname=flea-bin
 _pkgname=flea
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -26,8 +26,8 @@ options=('!strip' '!debug')
 # SKIP here keeps a version bump to one line; the release workflow pins both before the AUR ever sees them.
 source_x86_64=("$_pkgname-v$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-v$pkgver-linux-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('bcba5bfb8661f8e350a2834eb057f4d0ffd2f78f52f46349c6a2451d9040730d')
-sha256sums_aarch64=('7cb6172179a531d12b57ad18be018e3a7296609e1e9852b1c39cb53678e51611')
+sha256sums_x86_64=('f787d06b5ea4d56dea449440d46edec7a8fd4750cebaaafc8ec821db0b5cfeae')
+sha256sums_aarch64=('0ebdc78a8362d7117334591cf1bf1135c62982c754a67256533b8da61c7812e7')
 
 # The source PKGBUILD's package() with the binary read from the tarball's root; the release workflow diffs the two.
 package() {
@@ -44,6 +44,8 @@ package() {
   install -Dm644 packaging/com.thisisgm.flea.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 packaging/com.thisisgm.flea.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  # The removal note, a tracked alpm hook rather than a scriptlet, so the package stays its file list.
+  install -Dm644 packaging/flea.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
   # paths.rs looks for /usr/share/flea/ui/boot/shell.qml, so the UI ships as data beside the binary.
   install -Dm644 ui/qmldir ui/*.qml -t "$pkgdir/usr/share/flea/ui"
