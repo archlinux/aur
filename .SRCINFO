@@ -1,0 +1,21 @@
+pkgbase = ceasta-bin
+	pkgdesc = Disassembler, decompiler and ptrace debugger with a built-in MCP server (CLI)
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/ngwg/ceasta
+	arch = x86_64
+	license = GPL-3.0-only
+	license = MIT
+	license = BSD-3-Clause
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = ceasta
+	provides = ceasta-cli
+	conflicts = ceasta
+	conflicts = ceasta-cli
+	conflicts = ceasta-git
+	source = https://github.com/ngwg/ceasta/releases/download/v0.10.0/ceasta-cli-0.10.0-linux-x64.tar.gz
+	sha256sums = aa69ae728b505bac3f20028b4dd469c9c01f66a38ae4a657888aec462d7adc59
+
+pkgname = ceasta-bin
