@@ -2,9 +2,9 @@
 
 _prefix="/opt/comfyui"
 pkgname=comfyui-system
-pkgver=0.27.0
-pkgrel=2
-pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface (use system dependencies)"
+pkgver=0.37.0
+pkgrel=1
+pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface. (use system dependencies)"
 arch=('any')
 url="https://github.com/Comfy-Org/ComfyUI"
 license=('GPL-3.0')
@@ -65,7 +65,7 @@ source=(
     'extra_model_paths.yaml'
 )
 
-sha256sums=('6d1ff35963ce0259f8b645b3eef5e71d56c36d28c27df0b4057c65792c80efed'
+sha256sums=('40348d8f0b0fa25b532fdf216dccbeda6d98022c6b60cd623dbafc21be1dcdd4'
             'edda27b534912b97049c38233488c7154c652485b41a9c49fe5b996fb72740d6'
             'd37f7739f9a927ec5aa73cf78ce8dd01cc4febb3a5b27ed458d9966710d1addf')
 
