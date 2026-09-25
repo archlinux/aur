@@ -1,7 +1,7 @@
 # Maintainer: Aaron Friesen <aaron@frie.dev>
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 pkgname=gdscript-formatter
-pkgver=0.26.2
+pkgver=0.27.0
 pkgrel=1
 pkgdesc='A fast code formatter for GDScript and Godot 4'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc libgcc)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GDQuest/GDScript-formatter/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('25c2653f2fc87d77ae67b7560a53c8458e55ef9333a58c4dac87efb5c9d736de')
+sha256sums=('6057ef04dedd13327d36193ce8e0ead82e3ed8944364adf2568c7d3706d56ca9')
 
 prepare() {
 	cd "GDScript-formatter-$pkgver"
