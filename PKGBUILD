@@ -3,7 +3,7 @@
 
 pkgname=qownnotes
 pkgver=26.9.11
-tag="13ee3f7162c765fe0a1c5149033c09fcb7e6cb74"
+tag="caa888f98c199b13f3eaf194ff85e3187564fdf6"
 pkgrel=1
 pkgdesc="Plain-text file markdown note taking with Nextcloud/ownCloud integration"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ groups=('qownnotes')
 depends=('qt6-base' 'qt6-svg' 'qt6-declarative' 'qt6-websockets' 'aspell' 'botan' 'libgit2' 'libsecret')
 makedepends=('qt6-tools' 'cmake')
 source=("https://github.com/pbek/QOwnNotes/releases/download/v${pkgver}/qownnotes-${pkgver}.tar.xz")
-sha256sums=('03de0c38235ad25cb14510f4fbebb226427acb9753db7536fa3942aac08da47e')
+sha256sums=('8e2cc60e49636bf9d2700a2f400348d665d09ab7ca888a18bb031c1064c5ea74')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
