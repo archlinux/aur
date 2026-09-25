@@ -10,7 +10,7 @@
 # The folder is remembered after the first run.
 
 pkgname=openkingdoms-git
-pkgver=0.1.4.r2.gddcfbdb
+pkgver=0.3.4.r0.g063166c
 pkgrel=1
 pkgdesc='Open-source engine for Total Annihilation: Kingdoms (1999). Requires you own the original game.'
 arch=('x86_64')
@@ -71,6 +71,8 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 docs/ASSETS.md "${pkgdir}/usr/share/doc/${pkgname}/ASSETS.md"
+    install -Dm644 docs/MODDING.md "${pkgdir}/usr/share/doc/${pkgname}/MODDING.md"
+    install -Dm644 docs/MULTIPLAYER.md "${pkgdir}/usr/share/doc/${pkgname}/MULTIPLAYER.md"
 
     # No icon is shipped: the game's own icon lives in the original data, which
     # is copyrighted and must not be redistributed. A stock category icon is used.

@@ -16,9 +16,9 @@ binary. The folder is remembered afterwards, so this is asked once.
 
 Settings and saved games go to ~/.local/share/OpenKingdoms/OpenKingdoms/.
 
-Skirmish against the AI and multiplayer are playable. The campaign is not
-finished yet: some missions cannot be completed and campaign progress is not
-written to disk.
+Skirmish against the AI, both campaigns and multiplayer are playable, and the
+game can be saved and loaded anywhere. This is a preservation project under
+active development, so expect rough edges.
 
 EOF
 }
