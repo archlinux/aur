@@ -1,6 +1,6 @@
 pkgbase = reform-tools
 	pkgdesc = MNT Reform system tools & helpers
-	pkgver = 1.88
+	pkgver = 1.89
 	pkgrel = 1
 	url = https://source.mnt.re/reform/reform-tools
 	install = reform-tools.install
@@ -26,7 +26,7 @@ pkgbase = reform-tools
 	optdepends = lm_sensors: for sensor monitoring
 	optdepends = ircii: for Reform chat/IRC tools
 	optdepends = pavucontrol: GUI mixer control (if using PulseAudio)
-	source = git+https://source.mnt.re/reform/reform-tools.git#tag=7048b8b2be903764a3777f47c68fc5fff5c3ccc3
+	source = git+https://source.mnt.re/reform/reform-tools.git#tag=1.89
 	source = motd-full
 	source = motd-rescue
 	sha256sums = SKIP
