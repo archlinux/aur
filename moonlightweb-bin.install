@@ -3,14 +3,78 @@
 # backend/packaging/linux/moonlightweb-launch.c for why it cannot sit on the
 # MoonlightWeb binary itself. pacman does not restore file capabilities from
 # the .deb payload, so it is set here, on every install and upgrade.
+#
+# pacman does not run the .deb's postinst either, so the firewall ports it
+# opens are opened here too: the same list, the same best-effort rules — see
+# backend/packaging/linux/make-packages.sh. Arch ships no firewall enabled, but
+# a user who turned on ufw or firewalld got a page that loads and streams that
+# all die at ICE, because nothing had opened the media block. 48010:48033/udp
+# was that block up to 0.3.0, on Sunshine's RTSP port: an upgrade closes it.
+_mw_ports="443/tcp 80/tcp 48550:48573/udp"
+_mw_media=48550-48573
+_mw_sysctl=/etc/sysctl.d/60-moonlightweb.conf
+
+_mw_firewall() { # add | remove
+    if command -v firewall-cmd >/dev/null 2>&1 && firewall-cmd --state >/dev/null 2>&1; then
+        for p in $_mw_ports; do
+            firewall-cmd --permanent --"$1"-port="$(echo "$p" | tr : -)" >/dev/null 2>&1 || true
+        done
+        firewall-cmd --permanent --remove-port=48010-48033/udp >/dev/null 2>&1 || true
+        firewall-cmd --reload >/dev/null 2>&1 || true
+    elif command -v ufw >/dev/null 2>&1 && ufw status 2>/dev/null | grep -qi '^Status: active'; then
+        for p in $_mw_ports; do
+            if [ "$1" = add ]; then
+                ufw allow "$p" >/dev/null 2>&1 || true
+            else
+                ufw delete allow "$p" >/dev/null 2>&1 || true
+            fi
+        done
+        ufw delete allow 48010:48033/udp >/dev/null 2>&1 || true
+    fi
+}
+
+# Keep the kernel from handing the media block out as ephemeral ports, as the
+# .deb/.rpm postinst does: the reserved list is one setting for the whole
+# machine, so what is already in it is kept, and the merged list goes to
+# sysctl.d to survive a reboot.
+_mw_reserve() { # add | remove
+    key=net.ipv4.ip_local_reserved_ports
+    cur=$(sysctl -n "$key" 2>/dev/null) || return 0
+    if [ "$1" = add ]; then
+        case ",$cur," in
+            *",$_mw_media,"*) new=$cur ;;
+            *) new=${cur:+$cur,}$_mw_media ;;
+        esac
+        sysctl -w "$key=$new" >/dev/null 2>&1 || return 0
+        {
+            echo "# Written by the MoonlightWeb package: keeps the kernel from handing its"
+            echo "# stream media ports ($_mw_media) out as ephemeral ports. Removed with it."
+            echo "$key = $(sysctl -n "$key")"
+        } > "$_mw_sysctl" 2>/dev/null || true
+    elif [ -f "$_mw_sysctl" ]; then
+        rm -f "$_mw_sysctl"
+        new=$(printf ',%s,' "$cur" | sed -e "s/,$_mw_media,/,/" -e 's/^,//' -e 's/,$//')
+        sysctl -w "$key=$new" >/dev/null 2>&1 || true
+    fi
+}
+
 post_install() {
     if ! setcap cap_sys_admin+p /opt/moonlightweb/bin/moonlightweb-launch 2>/dev/null; then
         echo "warning: could not set cap_sys_admin on moonlightweb-launch — the host"
         echo "         cannot capture its screen until you run:"
         echo "         sudo setcap cap_sys_admin+p /opt/moonlightweb/bin/moonlightweb-launch"
     fi
+    _mw_firewall add
+    _mw_reserve add
 }
 
+# Every upgrade, not just the first install: the rules are idempotent, and it is
+# how an install that predates them gets its media block.
 post_upgrade() {
     post_install
+}
+
+pre_remove() {
+    _mw_firewall remove
+    _mw_reserve remove
 }

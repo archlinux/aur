@@ -2,7 +2,7 @@
 # ============================================================================
 #  MoonlightWeb — AUR package (TEMPLATE, not a valid PKGBUILD as it stands).
 #
-#  0.3.0 / c896b19a8dd69867998a3814bb5b902f23da2ebd18eae5bbcdedd11b85afdff0 are substituted by the `aur` job in
+#  0.3.1 / 2be743c6515cfe10f1e68e207e4855282db0557920f794b95d73ed059d92d44c are substituted by the `aur` job in
 #  .github/workflows/release.yml, which pushes the result — together with the
 #  matching .SRCINFO, rendered from the same values — to
 #  ssh://aur@aur.archlinux.org/moonlightweb-bin.git. Edit this file, not the
@@ -20,7 +20,7 @@
 #  single extraction and the app appears in KDE Discover like any other.
 # ============================================================================
 pkgname=moonlightweb-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Stream your Sunshine games to any device with a browser"
 arch=('x86_64')
@@ -46,7 +46,7 @@ install=moonlightweb-bin.install
 options=('!strip' '!debug')
 
 source=("moonlightweb-${pkgver}.deb::https://github.com/linckosz/moonlight-web/releases/download/v${pkgver}/moonlightweb-${pkgver}-linux-x64.deb")
-sha256sums=('c896b19a8dd69867998a3814bb5b902f23da2ebd18eae5bbcdedd11b85afdff0')
+sha256sums=('2be743c6515cfe10f1e68e207e4855282db0557920f794b95d73ed059d92d44c')
 
 package() {
     # makepkg hands .deb to libarchive, which unpacks it into its ar members;
