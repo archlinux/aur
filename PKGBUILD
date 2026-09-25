@@ -3,7 +3,7 @@
 
 # The root PKGBUILD of github.com/thisisgm/flea, built from the release's source tarball; its closure's reasons live there.
 pkgname=flea
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Fast, keyboard-first file manager for Omarchy'
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ optdepends=('libarchive: archive listing and extraction'
 options=('!debug')
 # SKIP here keeps a version bump to one line; the release workflow pins it from SHASUMS256.txt before the AUR sees it.
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('e5ad258126ae796d262b51254bfbd4a768416ae4d02da772663e6e24c90cdfe4')
+sha256sums=('947bd1ad17238e6402af044f848662a4c20e9a82e5a61062ef2e10bb6c2d4cfe')
 
 build() {
   export CARGO_TARGET_DIR="$srcdir/target"
@@ -52,6 +52,7 @@ package() {
   install -Dm644 packaging/com.thisisgm.flea.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 packaging/com.thisisgm.flea.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 packaging/flea.hook -t "$pkgdir/usr/share/libalpm/hooks"
 
   install -Dm644 ui/qmldir ui/*.qml -t "$pkgdir/usr/share/flea/ui"
   install -Dm644 ui/js/*.js -t "$pkgdir/usr/share/flea/ui/js"
