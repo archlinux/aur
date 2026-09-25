@@ -2,7 +2,7 @@
 
 pkgname=python-borgstore
 _name=${pkgname#python-}
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='A key/value store implementation supporting multiple backends'
 arch=(any)
@@ -23,7 +23,7 @@ optdepends=('python-requests: REST and rclone backends'
             'python-blake3: blake3 hash algorithm support')
 source=(git+$url.git#tag=$pkgver?signed)
 validpgpkeys=('6D5BEF9ADD2075805747B70F9F88FB52FAF7B393') # Thomas Waldmann <tw@waldmann-edv.de>
-b2sums=('86fed036921c26adaedcc4e2b69c29db7879984a9a76a247138d44e006d2a48942aabd7f1a0f637012fb95289be53d6a53b9a64f436b882bf00c2d6d9c686796')
+b2sums=('fccbe15ddd8a0451eded0a7534047cdc4526c9be90d91ae3c52144bf00c28522255fcc896f71d055210ffb787e12dbbeca17299bf1080e1c9116ace098411c55')
 
 build() {
     cd $_name
