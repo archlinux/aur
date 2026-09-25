@@ -1,19 +1,20 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: darkprof <darkprof83@gmail.com>
 # Contributor: asuka minato
 
 pkgname=lib32-gtest
-pkgver=1.15.2
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Google Test - C++ testing utility based on the xUnit framework (like JUnit)"
 arch=(x86_64)
 url="https://github.com/google/googletest"
 license=(BSD)
-depends=(gtest lib32-glibc lib32-gcc-libs)
+depends=("gtest>=${pkgver}" lib32-glibc lib32-gcc-libs)
 makedepends=(cmake)
 options=(!buildflags staticlibs !strip)
 source=("gtest-${pkgver}.tar.gz::https://github.com/google/googletest/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('9046841044a2bf7edfd96854ad9c44ffae4fcb9fb59a075b367507c0762a98eb32cb6968d46663228272e26321e96f4dd287c95baa22c6af9bad902b8b6ede4e')
+sha512sums=('ba0f5769ccf34acf1bc72d1f7e9ffb8202176d02b64f6f3d9047accfc0cf9026ff5a653d24935e2705fff8709566676452616c93ca0ca6277f1e21d79b58a10a')
 
 build() {
   cd "googletest-${pkgver}"

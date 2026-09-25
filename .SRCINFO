@@ -1,18 +1,18 @@
 pkgbase = lib32-gtest
 	pkgdesc = Google Test - C++ testing utility based on the xUnit framework (like JUnit)
-	pkgver = 1.15.2
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/google/googletest
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	depends = gtest
+	depends = gtest>=1.18.0
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = gtest-1.15.2.tar.gz::https://github.com/google/googletest/archive/refs/tags/v1.15.2.tar.gz
-	sha512sums = 9046841044a2bf7edfd96854ad9c44ffae4fcb9fb59a075b367507c0762a98eb32cb6968d46663228272e26321e96f4dd287c95baa22c6af9bad902b8b6ede4e
+	source = gtest-1.18.0.tar.gz::https://github.com/google/googletest/archive/refs/tags/v1.18.0.tar.gz
+	sha512sums = ba0f5769ccf34acf1bc72d1f7e9ffb8202176d02b64f6f3d9047accfc0cf9026ff5a653d24935e2705fff8709566676452616c93ca0ca6277f1e21d79b58a10a
 
 pkgname = lib32-gtest
