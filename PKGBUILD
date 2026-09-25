@@ -1,7 +1,7 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=ai-usagebar
-pkgver=1.23.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="Omarchy/Waybar widgets + TUI for tracking multi-provider AI plan usage"
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ options=('!lto' '!debug')
 # Pacman should auto-remove the binary variant when switching to source.
 conflicts=('ai-usagebar-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3e6150e7dce4b08d197de65233f434e462c194dac03cceec7b2288b0652a186b')
+sha256sums=('be20a41c46f2f82d6145fc284312ae07ac87394f90bd8ded735bc7da9e493811')
 
 prepare() {
     cd "$pkgname-$pkgver"
