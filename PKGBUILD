@@ -1,7 +1,7 @@
 # Maintainer: Antti <antti@antti.codes>
 
 pkgname=bluemap-bin
-pkgver=5.27
+pkgver=5.28
 pkgrel=1
 pkgdesc="A Minecraft mapping tool that creates 3D models of your Minecraft worlds and displays them in a web viewer."
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 )
 
 sha512sums=('5297b4d09ea053958f19c89bf7f298386ee810d8fb242e4a7379b0e29a9c960eaeea76b474198b537f81dc2a6c9bd0ad462adcef0468ee40aabf5b084ec124ff'
-            '8a20bba89b0d75f34441b7dfc05ed27dc6685d9464733d01bda7a42617b898e6b712599d0a008ddad6735d2db183b4b1682c1e0e5cedc24105c2ce774743b81b')
+            '11cc14aa489a4b6900a96e51e79c2115beb7411081cfdc8ad968d5d848c0d2841b6be84478a45d3b4a34482c4d1e4e42f0a89ff7a57ca30a83f6d41e699628ce')
 
 package() {
   install -Dm644 "${srcdir}/BlueMap-${pkgver}-cli.jar" "${pkgdir}/opt/bluemap/bluemap-cli.jar"
