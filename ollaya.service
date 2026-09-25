@@ -1,0 +1,25 @@
+# Ollaya daemon. Adapted from packaging/ollaya.service in the upstream source
+# for the Arch package layout (binary in /usr/bin, state in /var/lib/ollaya).
+# Change settings with a drop-in (systemctl edit ollaya), for example:
+#   [Service]
+#   Environment="OLLAYA_HOST=0.0.0.0:11435"
+#   Environment="OLLAYA_KEEP_ALIVE=30m"
+#   Environment="OLLAYA_DEBUG=1"
+[Unit]
+Description=Ollaya Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/ollaya serve
+User=ollaya
+Group=ollaya
+Restart=always
+RestartSec=3
+StateDirectory=ollaya
+Environment="HOME=/var/lib/ollaya"
+Environment="OLLAYA_HOST=127.0.0.1:11435"
+Environment="OLLAYA_MODELS=/var/lib/ollaya/.ollaya/models"
+
+[Install]
+WantedBy=multi-user.target

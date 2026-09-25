@@ -1,0 +1,13 @@
+post_install() {
+  cat <<EOF
+
+Run the daemon with:   systemctl enable --now ollaya
+Or use the CLI directly: ollaya pull laya && ollaya run laya --preset triage "..."
+
+On NVIDIA GPUs (driver R580+ with CUDA 13), GPU acceleration needs the CUDA
+provider libraries, which upstream ships separately (ollaya-linux-amd64-cuda.tar.zst,
+about 1 GB) and installs into /usr/lib/ollaya/cuda_v13. This package ships the
+CPU binary only.
+
+EOF
+}
