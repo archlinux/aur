@@ -1,6 +1,6 @@
 # Maintainer: Undercat037 <deltacatdeveloper@gmail.com>
 pkgname=aura-emerge
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="A standalone Gentoo-style emerge for Arch Linux - installs from official repos, the AUR, and ABS, scans PKGBUILDs for supply-chain red flags before building, and runs untrusted build steps inside a bwrap sandbox."
 arch=('x86_64')
@@ -14,11 +14,11 @@ makedepends=('rust' 'cargo')
 conflicts=('portage' 'portage-git' 'aura-emerge-git')
 provides=('portageq')
 install=aura-emerge.install
-backup=('etc/emerge/world.set')
+backup=('etc/portage/world')
 #git tag -a v1.27.0 -m "..." && git push origin v1.27.0
 source=("$pkgname::git+https://github.com/Undercat037/aura-emerge.git#tag=v$pkgver")
 #updpkgsums
-sha256sums=('f9c577b7b986421ecbd9e6ece20ba412fe616907d46c552b8e0ff42fc88b84a8')
+sha256sums=('0d11a93bf1c0b05365afb8241e24d5b42cf36806660e617e44b402e448a94ad8')
 
 build() {
   cd "aura-emerge"
@@ -46,9 +46,9 @@ package() {
   _gen_or_die man.1 --gen-manpage
   install -Dm644 man.1 "$pkgdir/usr/share/man/man1/emerge.1"
 
-  install -dm755 "$pkgdir/etc/emerge"
-  install -dm755 "$pkgdir/etc/emerge/sets.d"
-  install -Dm644 /dev/null "$pkgdir/etc/emerge/world.set"
+  install -dm755 "$pkgdir/etc/portage"
+  install -dm755 "$pkgdir/etc/portage/sets"
+  install -Dm644 /dev/null "$pkgdir/etc/portage/world"
 
   _gen_or_die comp.bash --gen-completions bash
   install -Dm644 comp.bash "$pkgdir/usr/share/bash-completion/completions/emerge"
