@@ -1,7 +1,7 @@
 # Maintainer: justanoobcoder <syaorancode@gmail.com>
 pkgname=wayshadow-bin
 _pkgname=wayshadow
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A lightweight, elegant keystroke visualizer for Wayland compositors"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
 )
 options=(!debug !strip)
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
-sha256sums=('4f95c94dd4bae2c52143ac3ac153ae7129187c996e5ba707116177729b9f2b90')
+sha256sums=('04acfd9c592038f380d4700c0fe65f867e9c2758bba2abde66f6305970b88ff1')
 
 package() {
     cd "$srcdir"
