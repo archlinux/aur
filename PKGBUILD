@@ -1,8 +1,8 @@
 # Maintainer: Shadowbee <shadowbee.contact@proton.me>
 # Maintainer: Eldred Habert <arch@(my first name).fr>
 pkgname=hister-bin
-pkgver=0.19.0
-pkgrel=4
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 provides=(hister)
@@ -19,15 +19,26 @@ source=(hister.override.service
         "LICENSE-$pkgver::https://raw.githubusercontent.com/asciimoo/hister/refs/tags/v$pkgver/LICENSE"
         "hister-$pkgver.service::https://raw.githubusercontent.com/asciimoo/hister/refs/tags/v$pkgver/contrib/systemd/hister.service")
 sha256sums=('f5713114859925e53bd9f99d26072bcf07946011545d1e69fbaf09a7623e7e23'
-            'd31841f6d6bc2213dbc64199dcbfd5047deed759306f0631c1dc7d5bdcacd11f'
+            '19eb9f3eadb18f3fcdec6a7734aa13ed70293c24a4ec28b3de0f31da32cadfd1'
             '5f4f3e82c42ba517d0caaa1deb4d3532c4f26cc60e42861bff1c5c6dacf34e9f'
             '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
-            '1515b5a31e1a3c21a1ebe9727782ef9ba7ec8e1c3da4a5de04a5c81fd1413778')
-sha256sums_x86_64=('7571f7b94039917d519372fa6aff18fe12c2ef50f981ac847ec1aff4d7e41701')
-sha256sums_aarch64=('7571f7b94039917d519372fa6aff18fe12c2ef50f981ac847ec1aff4d7e41701')
+            '4752aafdb88d88697e39e19791aba5c71670bd17dc52c8ba2d9a430673430ff4')
+sha256sums_x86_64=('28c453cd3fe383dac936f91450c0bd6d3be4944079670aa607f38e01215844fe')
+sha256sums_aarch64=('28c453cd3fe383dac936f91450c0bd6d3be4944079670aa607f38e01215844fe')
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/hister_${pkgver}_linux_amd64")
 source_aarch64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/hister_${pkgver}_linux_arm64")
 backup=(etc/hister/{hister.env,config.yml})
+
+prepare() {
+
+    # We install in a location suitable for vendor installs.
+    sed -i 's,/usr/local/,/usr/,g' hister-$pkgver.service
+    pwd
+    # Create a separate user service file (taking in the above modification).
+    cp hister{-$pkgver,-user}.service
+    echo "$srcdir/systemd-user.patch"
+    patch --force --forward -p3 < "$srcdir/systemd-user.patch"
+}
 
 build() {
   chmod +x hister-bin-$pkgver
@@ -35,12 +46,6 @@ build() {
   for _shell in bash zsh fish; do
     ./hister-bin-$pkgver completion $_shell > hister.$_shell
   done
-
-  # We install in a location suitable for vendor installs.
-  sed -i 's,/usr/local/,/usr/,g' hister-$pkgver.service
-  # Create a separate user service file (taking in the above modification).
-  cp hister{-$pkgver,-user}.service
-  patch --force --forward -p3 <"$srcdir/systemd-user.patch"
 
   ./hister-bin-$pkgver create-config >config.yml
 }
