@@ -2,7 +2,7 @@
 # slskdn - Unofficial slskd fork with batteries-included Soulseek features (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=2026092420.slskdn.323
+pkgver=2026092516.slskdn.324
 pkgrel=7
 _archive_root="slskdN-${pkgver//.slskdn/-slskdn}"
 pkgdesc="slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening."
@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/snapetech/slskdn"
 license=('AGPL-3.0-or-later')
 depends=('dotnet-runtime-10.0' 'aspnet-runtime-10.0' 'yt-dlp')
-makedepends=('dotnet-sdk-10.0' 'dotnet-runtime-10.0' 'aspnet-runtime-10.0' 'nodejs' 'npm')
+makedepends=('dotnet-sdk-10.0' 'dotnet-runtime-10.0' 'aspnet-runtime-10.0' 'nodejs' 'pnpm')
 optdepends=(
     'docker: for containerized deployment'
     'ffmpeg: for audio decoding and SongID media handling'
@@ -48,10 +48,8 @@ build() {
             ;;
     esac
 
-    cd src/web
-    npm ci --legacy-peer-deps
-    DISABLE_ESLINT_PLUGIN=true npm run build
-    cd ../..
+    pnpm install --frozen-lockfile
+    DISABLE_ESLINT_PLUGIN=true pnpm --filter @slskdn/web build
 
     rm -rf src/slskd/obj src/slskd/bin publish
     _version="${pkgver//.slskdn/-slskdn}"
