@@ -21,6 +21,7 @@ depends=(
 )
 provides=('lucidlink')
 conflicts=('lucidlink')
+options=('!strip' '!debug')
 install="${pkgname}.install"
 source=("https://releases.lucidlink.com/prod/linux-deb/lucidlink_${pkgver}_amd64.deb")
 sha256sums=('8acc6b58f135d5db7146b4c38ba7679ac57db8d55602e03d2694da1924bb329b')
