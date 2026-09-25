@@ -1,0 +1,22 @@
+pkgbase = froststrap-git
+	pkgdesc = A fork of Fishstrap/Bloxstrap, focused on performance and customization
+	pkgver = 2.0.3.r5.g3319c2c5
+	pkgrel = 1
+	url = https://github.com/Froststrap/Froststrap
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	license = MIT
+	license = MPL-2.0
+	makedepends = dotnet-sdk-10.0
+	makedepends = git
+	makedepends = rust
+	depends = dotnet-runtime-10.0
+	depends = icu
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	provides = froststrap
+	conflicts = froststrap
+	source = git+https://github.com/Froststrap/Froststrap.git
+	sha256sums = SKIP
+
+pkgname = froststrap-git
