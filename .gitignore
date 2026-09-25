@@ -1,0 +1,4 @@
+*.log
+*.zst
+*.gz
+jwt/
