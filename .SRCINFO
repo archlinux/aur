@@ -1,0 +1,33 @@
+pkgbase = liblouisutdml-git
+	pkgdesc = Library providing complete braille transcription services for xml, html and text documents.
+	pkgver = 2.12.0+48.r845.20260903.071cf89
+	pkgrel = 1
+	url = https://github.com/liblouis/liblouisutdml
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv8h
+	arch = aarch64
+	license = LGPL-3.0-or-later
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = libxml2
+	depends = glibc
+	depends = liblouis
+	depends = libxml2.so
+	provides = liblouisutdml=2.12.0+48.r845.20260903.071cf89
+	provides = liblouisutdml-static=2.12.0+48.r845.20260903.071cf89
+	provides = file2brl=2.12.0+48.r845.20260903.071cf89
+	provides = liblouisutdml.a
+	provides = liblouisutdml.so
+	conflicts = liblouisutdml
+	conflicts = liblouisutdml-static
+	conflicts = file2brl
+	conflicts = liblouisutdml.a
+	conflicts = liblouisutdml.so
+	options = emptydirs
+	options = staticlibs
+	source = liblouisutdml::git+https://github.com/liblouis/liblouisutdml.git
+	sha256sums = SKIP
+
+pkgname = liblouisutdml-git
