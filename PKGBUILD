@@ -34,9 +34,13 @@ package_taigikeyboard-common() {
 	depends=(gtk4 libadwaita ttf-jf-openhuninn ttf-iansui)
 	cd "$pkgbase/linux"
 	install -d "$pkgdir"/usr/share/taigikeyboard/dictionaries
-	install -m644 ../dictionaries/dictionary.fst ../dictionaries/dictionary.bin ../dictionaries/association.bin ../dictionaries/syllables.fst "$pkgdir"/usr/share/taigikeyboard/dictionaries/
+	install -m644 \
+		../dictionaries/dictionary.fst ../dictionaries/dictionary.bin ../dictionaries/association.bin ../dictionaries/syllables.fst \
+		"$pkgdir"/usr/share/taigikeyboard/dictionaries/
 	for size in 16 22 24 32 48 64 128 256; do
-		install -Dm644 data/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png "$pkgdir"/usr/share/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png || exit 1
+		install -Dm644 \
+			data/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png \
+			"$pkgdir"/usr/share/icons/hicolor/"$size"x"$size"/apps/taigikeyboard.png
 	done
 	install -Dm755 target/release/taigikeyboard-settings "$pkgdir"/usr/bin/taigikeyboard-settings
 	install -Dm644 data/tw.taigikeyboard.Settings.desktop "$pkgdir"/usr/share/applications/tw.taigikeyboard.Settings.desktop
