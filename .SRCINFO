@@ -1,6 +1,6 @@
 pkgbase = tonepush-git
 	pkgdesc = Editor and tone library for Line 6 HX pedals and the StompStation PRO
-	pkgver = 0.6.0.r0.3abcf23
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://tonepush.rocks
 	install = tonepush-git.install
