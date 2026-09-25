@@ -1,6 +1,6 @@
 pkgbase = linux-firmware-uncompressed
 	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19)
-	pkgver = 20260110
+	pkgver = 20260916
 	pkgrel = 1
 	url = https://gitlab.com/kernel-firmware/linux-firmware
 	arch = any
@@ -11,13 +11,14 @@ pkgbase = linux-firmware-uncompressed
 	makedepends = rdfind
 	options = !debug
 	options = !strip
-	source = git+https://gitlab.com/kernel-firmware/linux-firmware.git?signed#tag=20260110
+	source = git+https://gitlab.com/kernel-firmware/linux-firmware.git?signed#tag=20260916
 	validpgpkeys = 4CDE8575E547BF835FE15807A31B6BD72486CFD6
-	b2sums = d4239691cc875a80df29bb8ffa90d76be80d4848febd6c673be8812fefe02db57b3f6941d9a557fa5c7ba1a27bd0b54ed6a524a3c140f0133fffe12fa6d27800
+	b2sums = 6cab8bee911441b26075d459b5d98152cf7cb3aa0eecd872f5856d7228077ab6a52d0c5f24c011c6fedfd19978b5b73e19239c21db071cf58da7c53564ad8aae
 
 pkgname = linux-firmware-uncompressed
 	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Default set
 	license = CC0-1.0
+	depends = linux-firmware-amd-uncompressed
 	depends = linux-firmware-amdgpu-uncompressed
 	depends = linux-firmware-atheros-uncompressed
 	depends = linux-firmware-broadcom-uncompressed
@@ -28,6 +29,7 @@ pkgname = linux-firmware-uncompressed
 	depends = linux-firmware-other-uncompressed
 	depends = linux-firmware-radeon-uncompressed
 	depends = linux-firmware-realtek-uncompressed
+	depends = linux-firmware-ti-uncompressed
 	optdepends = linux-firmware-liquidio-uncompressed: Firmware for Cavium LiquidIO server adapters
 	optdepends = linux-firmware-marvell-uncompressed: Firmware for Marvell devices
 	optdepends = linux-firmware-mellanox-uncompressed: Firmware for Mellanox Spectrum switches
@@ -52,6 +54,14 @@ pkgname = amd-ucode-uncompressed
 	license = LicenseRef-amd-ucode
 	provides = amd-ucode
 	conflicts = amd-ucode
+
+pkgname = linux-firmware-amd-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for non-GPU AMD devices
+	license = LicenseRef-WHENCE
+	license = LicenseRef-amd
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-amd
+	conflicts = linux-firmware-amd
 
 pkgname = linux-firmware-amdgpu-uncompressed
 	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for AMD Radeon GPUs
@@ -178,3 +188,12 @@ pkgname = linux-firmware-realtek-uncompressed
 	depends = linux-firmware-whence-uncompressed
 	provides = linux-firmware-realtek
 	conflicts = linux-firmware-realtek
+
+pkgname = linux-firmware-ti-uncompressed
+	pkgdesc = Firmware files for Linux (without firmware compression for linux<5.19) - Firmware for Texas Instruments devices
+	license = LicenseRef-WHENCE
+	license = GPL-2.0-or-later
+	license = LicenseRef-ti
+	depends = linux-firmware-whence-uncompressed
+	provides = linux-firmware-ti
+	conflicts = linux-firmware-ti

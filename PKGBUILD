@@ -21,6 +21,7 @@ pkgname=(
 
   # Splits
   amd-ucode
+  linux-firmware-amd
   linux-firmware-amdgpu
   linux-firmware-atheros
   linux-firmware-broadcom
@@ -36,8 +37,9 @@ pkgname=(
   linux-firmware-qlogic
   linux-firmware-radeon
   linux-firmware-realtek
+  linux-firmware-ti
 )
-pkgver=20260110
+pkgver=20260916
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 url="https://gitlab.com/kernel-firmware/linux-firmware"
@@ -54,7 +56,7 @@ options=(
   !strip
 )
 source=("git+$url.git?signed#tag=${pkgver}")
-b2sums=('d4239691cc875a80df29bb8ffa90d76be80d4848febd6c673be8812fefe02db57b3f6941d9a557fa5c7ba1a27bd0b54ed6a524a3c140f0133fffe12fa6d27800')
+b2sums=('6cab8bee911441b26075d459b5d98152cf7cb3aa0eecd872f5856d7228077ab6a52d0c5f24c011c6fedfd19978b5b73e19239c21db071cf58da7c53564ad8aae')
 validpgpkeys=(
   4CDE8575E547BF835FE15807A31B6BD72486CFD6 # Josh Boyer <jwboyer@fedoraproject.org>
 )
@@ -163,10 +165,13 @@ _pick() {
   done
 }
 
+_licdir=linux-firmware/LICENSES
+
 package_linux-firmware() {
   pkgdesc+=" - Default set"
   license=(CC0-1.0)
   depends=(
+    linux-firmware-amd
     linux-firmware-amdgpu
     linux-firmware-atheros
     linux-firmware-broadcom
@@ -177,6 +182,7 @@ package_linux-firmware() {
     linux-firmware-other
     linux-firmware-radeon
     linux-firmware-realtek
+    linux-firmware-ti
   )
   optdepends=(
     'linux-firmware-liquidio: Firmware for Cavium LiquidIO server adapters'
@@ -203,21 +209,24 @@ package_linux-firmware-other() {
   # split
   _pick amd-ucode "${fwdir}"/amd-ucode
 
+  _pick amd "${fwdir}"/amd{,npu,tee}
+
   _pick amdgpu "${fwdir}"/amdgpu
 
   _pick atheros "${fwdir}"/{ar[0-9]*,ath*,carl9170*,htc_*,qca,wil6210*}
 
   _pick broadcom "${fwdir}"/{bnx2*,brcm,cypress,tigon}
 
-  _pick cirrus "${fwdir}"/{cirrus,cs42l43*}
+  _pick cirrus "${fwdir}"/{cirrus,cs42l43*,sdca}
 
   _pick intel "${fwdir}"/{e100,hfi1_*,i915,intel,isci,iwlwifi*,ixp4xx,qat_*,xe}
+  _pick intel "${fwdir}"/*/ish
 
   _pick liquidio "${fwdir}"/liquidio
 
   _pick marvell "${fwdir}"/{libertas,mwl8k,mwlwifi,mrvl}
 
-  _pick mediatek "${fwdir}"/{mediatek,mt7*,vpu_*,rt[237]*}
+  _pick mediatek "${fwdir}"/{mediatek,mt7*,rt[237]*}
 
   _pick mellanox "${fwdir}"/mellanox
 
@@ -233,10 +242,12 @@ package_linux-firmware-other() {
 
   _pick realtek "${fwdir}"/{realtek,rtlwifi,rtw8*,rtl_*}
 
+  _pick ti "${fwdir}"/{ti_*,ti,ti-connectivity,tas*,INT8*,TAS2*,TI*,TX*,????-*-0x?.*}
+
   # dedup after splitting
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/LICEN[CS]E* \
+  install -Dm644 ${_licdir}/LICEN[CS]E* \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -248,7 +259,19 @@ package_amd-ucode() {
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
   install -Dm644 amd-ucode.img -t "${pkgdir}/boot"
-  install -Dm644 ${pkgbase}/LICENSE.amd-ucode \
+  install -Dm644 ${_licdir}/LICENSE.amd-ucode \
+    -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+package_linux-firmware-amd() {
+  pkgdesc+=" - Firmware for non-GPU AMD devices"
+  license+=(LicenseRef-amd)
+  depends=(linux-firmware-whence)
+
+  mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
+  make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
+
+  install -Dm644 ${_licdir}/LICENSE.amd{npu,_pmf,-sev} \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -263,7 +286,7 @@ package_linux-firmware-amdgpu() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/LICENSE.amd{gpu,isp} \
+  install -Dm644 ${_licdir}/LICENSE.amd{gpu,isp} \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -278,13 +301,9 @@ package_linux-firmware-atheros() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/qca/NOTICE.txt \
-    "${pkgdir}/usr/share/licenses/${pkgname}/qca-NOTICE.txt"
-  install -Dm644 ${pkgbase}/qcom/NOTICE.txt \
-    "${pkgdir}/usr/share/licenses/${pkgname}/qcom-NOTICE.txt"
-  install -Dm644 \
-    ${pkgbase}/LICENCE.{atheros_,open-ath9k-htc-}firmware \
-    ${pkgbase}/LICENSE.{QualcommAtheros*,qcom} \
+  install -Dm644 ${_licdir}/NOTICE.{qca,qcom} \
+    ${_licdir}/LICENCE.{atheros_,open-ath9k-htc-}firmware \
+    ${_licdir}/LICENSE.{QualcommAtheros*,qcom} \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -299,7 +318,7 @@ package_linux-firmware-broadcom() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/LICENCE.{bnx2*,broadcom_*,cypress,tigon} \
+  install -Dm644 ${_licdir}/LICENCE.{bnx2*,broadcom_*,cypress,tigon} \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -311,7 +330,7 @@ package_linux-firmware-cirrus() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/LICENSE.cirrus \
+  install -Dm644 ${_licdir}/LICENSE.cirrus \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -328,10 +347,10 @@ package_linux-firmware-intel() {
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
   install -Dm644 \
-    ${pkgbase}/LICENCE.{IntcSST2,adsp_sst,e100,fw_sst_0f28} \
-    ${pkgbase}/LICENCE.{ibt,iwlwifi,qat}_firmware \
-    ${pkgbase}/LICENSE.{hfi1,ipu3}_firmware \
-    ${pkgbase}/LICENSE.{i915,ice*,intel*,ivsc,ixp4xx,xe} \
+    ${_licdir}/LICENCE.{HP,IntcSST2,adsp_sst,e100,fw_sst_0f28,lenovo} \
+    ${_licdir}/LICENCE.{ibt,iwlwifi,qat}_firmware \
+    ${_licdir}/LICENSE.{hfi1,ipu3}_firmware \
+    ${_licdir}/LICENSE.{dell,i915,ice*,intel*,ivsc,ixp4xx,xe} \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -343,7 +362,7 @@ package_linux-firmware-liquidio() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/LICENCE.cavium_liquidio \
+  install -Dm644 ${_licdir}/LICENCE.cavium_liquidio \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -355,7 +374,7 @@ package_linux-firmware-marvell() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/LICENCE.{Marvell,NXP} \
+  install -Dm644 ${_licdir}/LICENCE.{Marvell,NXP} \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -367,9 +386,7 @@ package_linux-firmware-mediatek() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/LICENCE.mediatek \
-    ${pkgbase}/LICENCE.ralink-firmware.txt \
-    ${pkgbase}/LICENCE.ralink_a_mediatek_company_firmware \
+  install -Dm644 ${_licdir}/LICENCE.{mediatek,ralink*} \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -379,6 +396,9 @@ package_linux-firmware-mellanox() {
 
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
+
+  install -Dm644 ${_licdir}/LICENSE.mellanox \
+    -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_linux-firmware-nfp() {
@@ -389,7 +409,7 @@ package_linux-firmware-nfp() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/LICENCE.Netronome \
+  install -Dm644 ${_licdir}/LICENCE.Netronome \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -401,7 +421,7 @@ package_linux-firmware-nvidia() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/LICENCE.nvidia \
+  install -Dm644 ${_licdir}/LICENCE.nvidia \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -419,7 +439,7 @@ package_linux-firmware-qcom() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/{qcom/NOTICE.txt,LICENSE.qcom*} \
+  install -Dm644 ${_licdir}/{NOTICE.qcom,LICENSE.qcom*,LICENSE.dell} \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -431,7 +451,7 @@ package_linux-firmware-qlogic() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/LICENCE.qla* \
+  install -Dm644 ${_licdir}/LICENCE.qla* \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -443,7 +463,7 @@ package_linux-firmware-radeon() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/LICENSE.radeon \
+  install -Dm644 ${_licdir}/LICENSE.radeon \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -455,7 +475,22 @@ package_linux-firmware-realtek() {
   mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
   make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
 
-  install -Dm644 ${pkgbase}/LICENCE.rtlwifi_firmware.txt \
+  install -Dm644 ${_licdir}/LICENCE.rtlwifi_firmware.txt \
+    -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+package_linux-firmware-ti() {
+  pkgdesc+=" - Firmware for Texas Instruments devices"
+  license+=(
+    GPL-2.0-or-later
+    LicenseRef-ti
+  )
+  depends=(linux-firmware-whence)
+
+  mv -v ${pkgname#linux-firmware-}/* "${pkgdir}"
+  make -C ${pkgbase} FIRMWAREDIR="${pkgdir}/usr/lib/firmware" dedup
+
+  install -Dm644 ${_licdir}/LICENCE.{ti-connectivity,ti-tspa,wl1251} \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
