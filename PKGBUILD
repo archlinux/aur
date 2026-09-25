@@ -1,6 +1,6 @@
 # Maintainer: Lucasion <ion@ionnet.dev>
 pkgname=podium
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Open-source, local-first game clipping: an instant replay buffer, global hotkeys and a clip library'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('nodejs' 'pnpm' 'libarchive')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # publish.sh fills in the checksum of each release.
-sha256sums=('68150f97de7ac69a02c3a8eeba59f10fa7582a500c2587afffce2a70734a06a9')
+sha256sums=('445da77f70b6cec51f843e843b083fa08641ed4f16d0114d96782a8179517a44')
 
 prepare() {
   cd "$pkgname-$pkgver"
