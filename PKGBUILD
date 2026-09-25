@@ -4,7 +4,7 @@
 _pyname=okta
 _upstream_name=okta-sdk-python
 pkgname="python-${_pyname}"
-pkgver=3.4.5
+pkgver=3.4.6
 pkgrel=1
 pkgdesc='A Python SDK library for the Okta Management APIs'
 arch=('any')
@@ -45,7 +45,7 @@ checkdepends=(
 )
 
 source=("${_pyname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('80c3917fe53cad8f004547db9bc0b5d48a13da6612b5f925cc5889d354cf90d04ecd35c45474b3d796534d5c4cc576446c962625e88b902d10f71eb1ae697b40')
+b2sums=('238c42beef417781f2b2402b4dddd7e8de29c092c6d72e401bd07d94349b23a2f67a809b51bbd2b55d166b661c6329d98febc6ddd08a2dfa05b6181e1c502b4d')
 
 
 build() {
