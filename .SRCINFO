@@ -1,6 +1,6 @@
 pkgbase = shvspy-bin
 	pkgdesc = SHV Spy (AppImage)
-	pkgver = 1.16.6
+	pkgver = 1.16.7
 	pkgrel = 1
 	url = https://github.com/silicon-heaven/shvspy
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = shvspy-bin
 	provides = shvspy
 	conflicts = shvspy
 	options = !strip
-	source = shvspy-qt6-1.16.6.AppImage::https://github.com/silicon-heaven/shvspy/releases/download/1.16.6/shvspy-qt6-1.16.6.AppImage
+	source = shvspy-qt6-1.16.7.AppImage::https://github.com/silicon-heaven/shvspy/releases/download/1.16.7/shvspy-qt6-1.16.7.AppImage
 	source = shvspy.png
 	source = shvspy.desktop
-	sha256sums = 850f0a378d9d20e36c58fdad0a058a97ea93f0b9bd4467ea6b538d3f992c83c7
+	sha256sums = 2eb9f7edecc4f98e17748e6af4c286a6b9574b0c8303b44a9dd40c6c223e2043
 	sha256sums = 785183a3abf7d60bc1e37a4661cddcd2dbcf8451e465c83f705c6df007116fc4
 	sha256sums = 78fb4ff4cef729f40d6729bb8f7788868e26d41dd6d26feddbfebb7a958dcb1c
 
