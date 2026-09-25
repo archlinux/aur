@@ -1,0 +1,8 @@
+[advancecomp]
+source = "github"
+github = "amadvance/advancecomp"
+use_max_tag = true
+
+
+prefix = "v"
+
