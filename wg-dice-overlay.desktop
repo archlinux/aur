@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Tiradas W&G 3D
+GenericName=Dice Roller Overlay
+Comment=Overlay transparente de dados 3D con física para Warhammer 40.000: Wrath & Glory
+Exec=/usr/bin/wg-dice-overlay %U
+Icon=wg-dice-overlay
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Game;Utility;RolePlaying;
+Keywords=warhammer;dice;dados;wrath;glory;overlay;arkenforge;
