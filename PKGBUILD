@@ -1,6 +1,6 @@
 # Maintainer: flear <teymurzadehuseyn14@gmail.com>
 pkgname=tuiba
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Game Boy Advance emulator that runs in your terminal"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'alsa-lib' 'systemd-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('57d11d9babc3ae1b0e89ebf4f64384aaa79b087b99b87ab015d45411dedc9cb0')
+sha256sums=('14ab58210cc6a68072c82d2eba814d0a1c824dc545de6a68fc1575cef83da365')
 
 prepare() {
     cd "$pkgname-$pkgver"
