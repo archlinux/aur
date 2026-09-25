@@ -1,6 +1,6 @@
 pkgbase = r-mirai
 	pkgdesc = Minimalist Async Evaluation Framework for R
-	pkgver = 2.7.2
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mirai
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-mirai
 	optdepends = r-otel
 	optdepends = r-otelsdk
 	optdepends = r-secretbase
-	source = https://cran.r-project.org/src/contrib/mirai_2.7.2.tar.gz
-	sha256sums = 78a32dac63fbc4da00aaa8c4c15d6c2d8b41bb1addf88a0bdaf96add58fb5939
+	source = https://cran.r-project.org/src/contrib/mirai_2.7.3.tar.gz
+	sha256sums = 20bd6fb95c6262ae24649963c399f20ef3203cda46919f5669f823a2a56bb18a
 
 pkgname = r-mirai
