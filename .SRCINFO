@@ -1,7 +1,7 @@
 pkgbase = ttf-misans-latin-hinted
 	pkgdesc = MiSans Latin (Latin, Greek, Cyrillic) by Xiaomi, autohinted with ttfautohint and with fontconfig-friendly weight classes
 	pkgver = 4.007
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hyperos.mi.com/font/en/download/
 	arch = any
 	license = LicenseRef-MiSans

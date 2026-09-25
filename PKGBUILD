@@ -1,7 +1,7 @@
 # Maintainer: gaou-piou <i.am.piou@gmail.com>
 pkgname=ttf-misans-latin-hinted
 pkgver=4.007
-pkgrel=1
+pkgrel=2
 pkgdesc="MiSans Latin (Latin, Greek, Cyrillic) by Xiaomi, autohinted with ttfautohint and with fontconfig-friendly weight classes"
 arch=(any)
 url="https://hyperos.mi.com/font/en/download/"
@@ -41,9 +41,8 @@ sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
 #      weights make fontconfig pick Medium for "regular" and Heavy for "bold";
 #      see fix_weights.py
 #   3. hints every weight with ttfautohint, which detects the Latin, Greek and
-#      Cyrillic scripts and builds separate blue zones for each. By default
-#      every weight takes its blue zones from Regular (--reference), so bold
-#      words sit at the same x-height and cap height as the surrounding text
+#      Cyrillic scripts and builds separate blue zones for each. Each weight
+#      takes its blue zones from its own outlines (HINT_REFERENCE=false)
 #   4. optionally rewrites the gasp table (GASP_MODE)
 #
 # Measured on FreeType 2.14.3 (v40 interpreter, grayscale), rendered through
@@ -53,16 +52,22 @@ sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
 #     itself to the bytecode as DirectWrite ClearType, so nnn, snn and nsn
 #     render pixel-identically; nns does not. The presets below therefore
 #     differ where it counts: n (natural), q (quantized) or s (strong).
-#   * --reference=Regular: Regular/Bold cap height matched at 8 of 8 sizes
-#     (3 of 8 without it) and x-height at 7 of 8 (4 of 8).
+#   * Do not use --reference=Regular. Bold's x-height really is taller than
+#     Regular's (559/572 flat/round vs 530/544 units), so Regular's blue zones
+#     capture none of Bold's tops: at 12-16px the round letters (o e c s)
+#     rise 1px above the flat ones (x n r v). Each weight's own zones keep
+#     all letters on one x-height at every size.
 #   * The stock, unhinted fonts break visibly at hintfull (gaps inside words,
 #     uneven baseline); the hinted ones do not.
 #   * No visible effect for MiSans on Linux: gasp (FreeType ignores it),
 #     --composites (identical pixels, larger file), --windows-compatibility
 #     (Windows clipping only), and --increase-x-height 0 vs 14 (nearly
 #     identical). gasp and -W still matter if the fonts are used under Wine.
-#   * Advance widths never change: v40 ignores horizontal hints, so spacing is
-#     exactly the designer's at every setting.
+#   * v40 ignores horizontal hints, so the outlines' advances never change.
+#     But at hintfull/hintmedium Chrome turns off subpixel positioning and
+#     rounds every advance to a whole pixel (text widths up to ±2% off, uneven
+#     gaps in bold). hintslight keeps exact spacing, but then these hints are
+#     not used.
 #
 # FreeType only runs TrueType bytecode at hintstyle hintmedium/hintfull. With
 # the common hintslight setting it uses its own light autohinter instead and
@@ -73,13 +78,20 @@ sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
 #   sudo ln -s /usr/share/fontconfig/conf.avail/80-misans-latin-hinted.conf \
 #              /etc/fonts/conf.d/
 #
-# ── Build-time options (environment variables) ──────────────────────────────
+# ── Build-time options ───────────────────────────────────────────────────────
+#
+# Run from a terminal, prepare() asks for FIX_WEIGHTS, HINT_PRESET,
+# HINT_REFERENCE and GASP_MODE (Enter keeps the default). Any of them already
+# set in the environment is not asked. Without a TTY (chroot, CI, piped stdin)
+# nothing is asked and the environment variables / defaults below apply.
+# The answers are saved to $srcdir/.build_opts for build() and package().
 #
 #  FIX_WEIGHTS     true/false  Normalise usWeightClass (default: true)
 #  HINT_REFERENCE  true/false  Hint every weight against Regular's blue zones
-#                              (--reference; default: true)
+#                              (--reference; default: false; true breaks the
+#                              x-height of the heavier weights, see above)
 #
-#  HINT_PRESET  name         Named bundle of ttfautohint flags (default: balanced)
+#  HINT_PRESET  name         Named bundle of ttfautohint flags (default: hack)
 #                            ("Linux" = the stem letter FreeType v40 actually uses)
 #               balanced     stem=qsq (Linux: q)  range 8-50   x-height 14  (upstream defaults)
 #               sharp        stem=sss (Linux: s)  range 6-50   x-height 14  (max contrast, low-DPI)
@@ -115,8 +127,9 @@ sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
 #               gridfit  all sizes gridfit+grayscale ({0xFFFF: 3})
 #
 #  Examples:
-#    makepkg -si
-#    HINT_PRESET=sharp makepkg -si
+#    makepkg -si                         (asks, when run from a terminal)
+#    makepkg -si </dev/null              (never asks: defaults only)
+#    HINT_PRESET=sharp makepkg -si       (asks everything except the preset)
 #    HINT_PRESET=custom HINT_MODE=qqs HINT_RANGE_MIN=6 makepkg -si
 #    FIX_WEIGHTS=false HINT_FAMILY_SUFFIX=" Hinted" makepkg -si
 # ────────────────────────────────────────────────────────────────────────────
@@ -124,13 +137,109 @@ sha256sums=('d24091ccd409a4152ffcc12cd659c16df9cdcdb4c702d8ae355b321e711f0004'
 _fontdir="MiSans Latin/ttf"
 _family="MiSans Latin"
 
-# Resolve and validate every option from the environment. makepkg runs build()
-# and package() in separate shells, so both call this; it is deterministic and
-# never prompts.
+# Every option _resolve_options() understands, and so the only keys
+# .build_opts may set.
+_opt_keys=(FIX_WEIGHTS HINT_REFERENCE HINT_PRESET HINT_MODE HINT_RANGE_MIN
+           HINT_RANGE_MAX HINT_LIMIT HINT_XHEIGHT HINT_XSNAP_EXC
+           HINT_FALLBACK_SCRIPT HINT_WINCOMPAT HINT_TTFA_TABLE
+           HINT_FAMILY_SUFFIX GASP_MODE)
+
+# _ask_yn QUESTION DEFAULT(y|n) -> sets _yn to true/false
+_ask_yn() {
+  local _ans
+  read -r -p "  $1? [$2] " _ans || _ans=""
+  [[ "${_ans:-$2}" =~ ^[yY] ]] && _yn=true || _yn=false
+}
+
+# _ask_choice TITLE DEFAULT KEY:description ... -> sets _choice to a KEY.
+# Enter (or EOF) keeps DEFAULT; anything else must be a listed number.
+_ask_choice() {
+  local _title="$1" _default="$2"; shift 2
+  local -a _items=("$@")
+  local _i _ans
+  echo "  $_title:"
+  for _i in "${!_items[@]}"; do
+    printf "    %d) %-9s %s%s\n" "$((_i + 1))" "${_items[$_i]%%:*}" "${_items[$_i]#*:}" \
+      "$([[ "${_items[$_i]%%:*}" == "$_default" ]] && echo "  (default)")"
+  done
+  while :; do
+    read -r -p "  > " _ans || _ans=""
+    if [[ -z "$_ans" ]]; then _choice="$_default"; return; fi
+    if [[ "$_ans" =~ ^[0-9]+$ ]] && (( _ans >= 1 && _ans <= ${#_items[@]} )); then
+      _choice="${_items[$((_ans - 1))]%%:*}"; return
+    fi
+    echo "  Enter 1-${#_items[@]}, or press Enter for $_default."
+  done
+}
+
+# Called once, from prepare(): ask for whatever the environment has not set,
+# but only on a terminal, then save every set option to .build_opts.
+_prompt_options() {
+  if [[ -t 0 ]]; then
+    echo ""
+    echo "  ttf-misans-latin-hinted: build options (Enter = default)"
+    echo ""
+    if [[ -z "${FIX_WEIGHTS:-}" ]]; then
+      _ask_yn "Normalise weight classes (fontconfig picks the right Regular/Bold)" y
+      FIX_WEIGHTS=$_yn
+    fi
+    if [[ -z "${HINT_PRESET:-}" ]]; then
+      _ask_choice "Hinting preset" hack \
+        "balanced:stem q, 8-50px, x-height 14 (ttfautohint defaults)" \
+        "sharp:stem s, 6-50px, x-height 14 (max contrast, low-DPI)" \
+        "natural:stem n, 8-50px, no x-height boost (least distortion)" \
+        "light:stem n, 12-50px, no x-height boost (HiDPI)" \
+        "hack:stem q, 6-50px, x-height 10, fallback latn (Hack's settings)" \
+        "custom:use the HINT_* environment variables"
+      HINT_PRESET=$_choice
+    fi
+    if [[ -z "${HINT_REFERENCE:-}" ]]; then
+      echo "  Hinting every weight against Regular's blue zones breaks the x-height"
+      echo "  of Bold and Heavy (round letters sit 1px above flat ones)."
+      _ask_yn "Use Regular as the blue-zone reference" n
+      HINT_REFERENCE=$_yn
+    fi
+    if [[ -z "${GASP_MODE:-}" ]]; then
+      _ask_choice "gasp table (FreeType ignores it; Windows/Wine only)" keep \
+        "keep:as ttfautohint writes it" \
+        "sized:grayscale <=8px, gridfit 9-16px, both 17px+" \
+        "smooth:all sizes anti-aliased" \
+        "gridfit:all sizes gridfit + grayscale"
+      GASP_MODE=$_choice
+    fi
+    echo ""
+  else
+    echo "==> Non-interactive build (no TTY): using environment variables / defaults."
+  fi
+
+  local _k
+  : > "$srcdir/.build_opts"
+  for _k in "${_opt_keys[@]}"; do
+    # "set" rather than non-empty: HINT_XSNAP_EXC="" (no exceptions) differs
+    # from HINT_XSNAP_EXC unset (ttfautohint's default).
+    if [[ "${!_k+set}" == set ]]; then
+      printf '%s=%s\n' "$_k" "${!_k}" >> "$srcdir/.build_opts"
+    fi
+  done
+}
+
+# Load .build_opts (whitelisted keys only), then apply defaults and validate.
+# makepkg runs build() and package() in separate shells, so both call this.
 _resolve_options() {
+  local _k _v
+  if [[ ! -f "$srcdir/.build_opts" ]]; then
+    echo "Error: $srcdir/.build_opts missing; run a full makepkg (prepare() writes it)." >&2
+    exit 1
+  fi
+  while IFS='=' read -r _k _v; do
+    if [[ " ${_opt_keys[*]} " == *" $_k "* ]]; then
+      printf -v "$_k" '%s' "$_v"
+    fi
+  done < "$srcdir/.build_opts"
+
   FIX_WEIGHTS="${FIX_WEIGHTS:-true}"
-  HINT_REFERENCE="${HINT_REFERENCE:-true}"
-  HINT_PRESET="${HINT_PRESET:-balanced}"
+  HINT_REFERENCE="${HINT_REFERENCE:-false}"
+  HINT_PRESET="${HINT_PRESET:-hack}"
 
   local _m _lo _hi _xh _fb
   case "$HINT_PRESET" in
@@ -187,6 +296,8 @@ _resolve_options() {
 }
 
 prepare() {
+  _prompt_options
+
   # The checksum already pins the zip; this catches a PKGBUILD whose pkgver was
   # bumped without looking at what Xiaomi actually shipped.
   local _ver
@@ -233,8 +344,8 @@ build() {
     --fallback-script="$HINT_FALLBACK_SCRIPT"
     --no-info
   )
-  # Blue zones from the (unhinted, weight-fixed) Regular for every weight, so
-  # all ten share x-height and cap-height pixel rounding. The path is relative
+  # Opt-in: blue zones from the (unhinted, weight-fixed) Regular for every
+  # weight. Off by default, see the header. The path is relative
   # (ttfautohint runs inside work/) because a TTFA table records it verbatim.
   if [[ "$HINT_REFERENCE" == true ]]; then
     _ta_opts+=(--reference=MiSansLatin-Regular.ttf)
