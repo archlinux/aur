@@ -1,0 +1,25 @@
+pkgbase = crosspoint-sync-git
+	pkgdesc = Lightweight KoSync Server for Syncing Crosspoint/CrossInk stats & progress
+	pkgver = r66.d35a853
+	pkgrel = 1
+	url = https://github.com/crosspoint-reader/crosspoint-sync
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs>=22.13
+	provides = crosspoint-sync
+	conflicts = crosspoint-sync
+	backup = etc/conf.d/crosspoint-sync
+	source = git+https://github.com/crosspoint-reader/crosspoint-sync.git
+	source = crosspoint-sync.conf
+	source = crosspoint-sync.service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	sha256sums = SKIP
+	sha256sums = 63186c14185c8325ff873f13dde8f2c8220e104a8bb03057402a6ac4ab657b40
+	sha256sums = bbdd8040565e60573327c6adcbdbab2e1ea1294353f511a89b9ade66399229fe
+	sha256sums = 497f0708a4465f8426a45d33c63f9a73930d31985411c03d57abb7266e3b2c98
+	sha256sums = 76ba495d8f493c75ad18aeff4775a55aac3a8499fec3606e8e6361fc04288011
+
+pkgname = crosspoint-sync-git
