@@ -1,0 +1,20 @@
+pkgbase = python-qiskit-mitigation
+	pkgdesc = A toolbox for handling noise in quantum computations
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Qiskit/qiskit-mitigation
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python-numpy
+	depends = python-qiskit
+	depends = python-samplomatic
+	depends = python-scipy
+	source = qiskit-mitigation::git+https://github.com/Qiskit/qiskit-mitigation.git#tag=0.1.1
+	b2sums = 248c9dec6735faa9e40d894fc8ccf2757ac3a45390520aa74ecb3d97bc3287b51b99d03e0dc10c5d46a81a4b2cc09e5c7da893ce08e3fb3d308d44e7f666b763
+
+pkgname = python-qiskit-mitigation
