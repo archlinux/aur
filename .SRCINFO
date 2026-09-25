@@ -1,0 +1,17 @@
+pkgbase = weixinpay-ai-installer-bin
+	pkgdesc = WeChat Pay AI installer - one command to add WeChat AI payment capability to OpenClaw / DeepSeek Harness agents
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://www.npmjs.com/package/@tenpay/weixinpay-ai-installer
+	install = weixinpay-ai-installer-bin.install
+	arch = any
+	license = custom
+	makedepends = npm
+	depends = nodejs>=18
+	provides = weixinpay-ai-installer
+	conflicts = weixinpay-ai-installer
+	options = !strip
+	source = weixinpay-ai-installer-1.1.0.tgz::https://registry.npmjs.org/@tenpay/weixinpay-ai-installer/-/weixinpay-ai-installer-1.1.0.tgz
+	sha256sums = 9a4e865fd7ffaba25d64c1b0dbd33132f9fb81c06a173455ccd9ddda4c748a43
+
+pkgname = weixinpay-ai-installer-bin

@@ -1,0 +1,24 @@
+post_install() {
+    show_hint
+}
+
+post_upgrade() {
+    show_hint
+}
+
+show_hint() {
+    cat <<'EOF'
+==> WeChat Pay AI installer is now available as /usr/bin/weixinpay-ai-installer.
+
+    This package only ships the installer CLI; it does not touch any agent by
+    itself. Run it as your normal user to add the WeChat AI payment plugin to
+    the agent you want (do NOT use sudo - the installer writes into your own
+    agent profile):
+
+        weixinpay-ai-installer install                 # auto-detect the host
+        weixinpay-ai-installer install --host=dsh      # openclaw / dsh / hermes
+        weixinpay-ai-installer uninstall
+
+    Restart the agent afterwards for the change to take effect.
+EOF
+}
