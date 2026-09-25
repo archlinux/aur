@@ -1,5 +1,5 @@
 pkgname=pnpm-rust
-pkgver=12.5.1
+pkgver=12.6.0
 pkgrel=1
 pkgdesc="Fast, disk space efficient package manager (Rust version, built from source)"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ makedepends=('cargo')
 options=()
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pnpm/pnpm/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('51bddb1a98de3a4e0f2d731c723f2365da6672ebe5046b6d470201579bf87908')
+sha256sums=('6c347d76658e36de554848799e0725547781a5b5b040477d6e2d62a09c5efbaa')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
