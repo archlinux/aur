@@ -1,6 +1,6 @@
 pkgbase = python-lxst
 	pkgdesc = Lightweight Extensible Signal Transport for Reticulum
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://pypi.org/project/lxst
 	arch = aarch64
@@ -19,8 +19,8 @@ pkgbase = python-lxst
 	optdepends = python-ffpyplayer: for playing AudioSegments (third preference)
 	optdepends = python-scipy: SciPy versions of high_pass_filter, low_pass_filter, and band_pass_filter
 	optdepends = python-cffi>=2.0.0: filter acceleration
-	noextract = lxst-0.5.2-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/l/lxst/lxst-0.5.2-py3-none-any.whl
-	sha256sums = 2e59adfbebaf1ebbb240b5704c95646d6500a88dadaf9dadf8cd722392d7fc67
+	noextract = lxst-0.5.3-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/l/lxst/lxst-0.5.3-py3-none-any.whl
+	sha256sums = d26281e247510b2c76cf2a67c55ffac178839597f25e29ef14343b6c8da69c87
 
 pkgname = python-lxst
