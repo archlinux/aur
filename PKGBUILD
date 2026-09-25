@@ -1,7 +1,7 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
 pkgname=baresip-qt-gui-git
 pkgver=4.10.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Baresip bundled with custom native Qt applet and simple call interface for KDE Plasma6 (Wayland)"
 arch=('x86_64')
 url="https://github.com/CxOrg/baresip-qt"
