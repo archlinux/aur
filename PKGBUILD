@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatstat.linnet
-_pkgver=3.5-0
+_pkgver=3.5-4
 pkgname=r-${_pkgname,,}
-pkgver=3.5.0
+pkgver=3.5.4
 pkgrel=1
 pkgdesc="Linear Networks Functionality of the 'spatstat' Family"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-spatstat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1f9ffe5ab69f0a2e81338b73a570c320fdce040406a6e388f44fd6e4fe192799')
+sha256sums=('caafdda3f954e2e8de80bc69f94c3ffeb45b05f3598b372344c57fa22cd6a4db')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
