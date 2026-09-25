@@ -1,6 +1,6 @@
 pkgbase = renamite-bin
 	pkgdesc = Vector animation editor built on the Repose GUI framework
-	pkgver = 0.3.1
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/mlm-games/renamite
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = renamite-bin
 	options = !strip
 	source = icon.svg::https://raw.githubusercontent.com/mlm-games/renamite/main/others/packaging/icon.svg
 	sha256sums = SKIP
-	source_x86_64 = renamite-0.3.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/renamite/releases/download/v0.3.1/renamite-0.3.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = e235961bb0606f822961bfae7d6d7f5a7dd3a4e8cf020605683cce2838581015
-	source_aarch64 = renamite-0.3.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/renamite/releases/download/v0.3.1/renamite-0.3.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 7410c02cf6199f452e75c611f43c58cdda204dcf7ef371ede97460fa8fc9555f
+	source_x86_64 = renamite-0.3.3-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/renamite/releases/download/v0.3.3/renamite-0.3.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 94e4db61a58cbdbb0e3cf8d8a925ff632c893ddc42f3b67de3857189b62b01cf
+	source_aarch64 = renamite-0.3.3-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/renamite/releases/download/v0.3.3/renamite-0.3.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5a5d69d049149f7d641c49352ae6566312cbce2535c2255618afd3fc5b0a8a73
 
 pkgname = renamite-bin
