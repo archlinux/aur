@@ -1,0 +1,15 @@
+pkgbase = synapse-shell
+	pkgdesc = A custom status bar indicator in GTK4 written in Rust
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://gitlab.com/Maskrpone/synapse-gtk4
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gtk4
+	depends = cairo
+	depends = gtk4-layer-shell
+	source = synapse-shell-1.0.2.tar.gz::https://gitlab.com/Maskrpone/synapse-gtk4/-/archive/v1.0.2/synapse-gtk4-v1.0.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = synapse-shell
