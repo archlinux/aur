@@ -1,6 +1,6 @@
 # Maintainer: Fergal Moran <fergal.moran@gmail.com>
 pkgname=xtreamium-proxy
-pkgver=1.4.55
+pkgver=1.4.57
 pkgrel=1
 pkgdesc="Xtreamium Proxy Service - runs as a per-user systemd service"
 arch=('x86_64')
