@@ -1,0 +1,27 @@
+pkgbase = linux-legion
+	pkgdesc = Control center for Lenovo Legion laptops: power modes, fans, Spectrum RGB lighting, battery (Vantage for Linux)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/VitaminDB/linux-legion
+	install = linux-legion.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = fontconfig
+	depends = freetype2
+	depends = libxkbcommon
+	depends = wayland
+	depends = vulkan-icd-loader
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = glibc
+	optdepends = libx11: X11 session
+	optdepends = libxcursor: cursors in X11
+	optdepends = nvidia-utils: NVIDIA GPU monitoring
+	options = !lto
+	options = !debug
+	source = linux-legion-0.1.0.tar.gz::https://github.com/VitaminDB/linux-legion/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = a08a4683d4c93bf4874f2e2770058462dfaed80fbb755e8d5924a6dcc855afd6
+
+pkgname = linux-legion
