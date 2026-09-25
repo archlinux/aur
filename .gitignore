@@ -8,3 +8,4 @@
 !no_node_pin.patch
 
 !.gitignore
+!.nvchecker.toml

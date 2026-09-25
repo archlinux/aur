@@ -1,0 +1,4 @@
+[magnolia-qda]
+source = "git"
+git = "https://github.com/caledavis/Magnolia.git"
+prefix = "v"
