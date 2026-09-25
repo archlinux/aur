@@ -1,6 +1,6 @@
 pkgbase = structurizr
 	pkgdesc = Software architecture models as code
-	pkgver = 2026.06.28
+	pkgver = 2026.09.19
 	pkgrel = 1
 	url = https://structurizr.com/
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = structurizr
 	depends = java-runtime
 	conflicts = structurizr-git
 	options = !strip
-	source = git+https://github.com/structurizr/structurizr.git#tag=v2026.06.28
+	source = git+https://github.com/structurizr/structurizr.git#tag=v2026.09.19
 	source = structurizr.sh
-	sha256sums = 0a76316af7d44f2622989867c1ddb139fb4f7e7bfacb0420b42eb61fcdac397c
+	sha256sums = 86e600543624d0c1303faa28efe108bba15a6a49e7274d69d1e591357c7e1655
 	sha256sums = 72122d16c7cfe32cef4e63267e461fefb60c893b87349d539e016645b0403698
 
 pkgname = structurizr
