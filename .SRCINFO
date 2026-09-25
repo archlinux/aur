@@ -1,6 +1,6 @@
 pkgbase = openlogi-bin
 	pkgdesc = A native, local-first alternative to Logitech Options+
-	pkgver = v0.8.7
+	pkgver = v0.8.8
 	pkgrel = 1
 	url = https://github.com/AprilNEA/OpenLogi
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = openlogi-bin
 	provides = openlogi
 	options = !emptydirs
 	options = !strip
-	source = https://github.com/AprilNEA/OpenLogi/releases/download/v0.8.7/openlogi-v0.8.7-linux-amd64.deb
-	sha256sums = 40d6457e6d9246b22c3f151b9317ed3cf02dde3506c56efe62e34d7e9386fdfb
+	source = https://github.com/AprilNEA/OpenLogi/releases/download/v0.8.8/openlogi-v0.8.8-linux-amd64.deb
+	sha256sums = 91fbdb5c2366b4cf49154ec79c2b10bb2af460d2fe491a448b66e1787b320186
 
 pkgname = openlogi-bin
