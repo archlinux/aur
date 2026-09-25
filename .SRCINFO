@@ -1,0 +1,24 @@
+pkgbase = qthash-git
+	pkgdesc = A Qt6 utility for computing message digests or checksums (fork of GtkHash)
+	pkgver = 1.0.0.r0.3f82beb
+	pkgrel = 1
+	url = https://github.com/vstyler96/qthash
+	arch = x86_64
+	license = GPL-2.0-or-later
+	checkdepends = desktop-file-utils
+	makedepends = git
+	makedepends = meson
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libb2
+	depends = libblake3
+	depends = libgcrypt
+	depends = qt6-base
+	depends = xxhash
+	depends = zlib
+	provides = qthash
+	conflicts = qthash
+	source = git+https://github.com/vstyler96/qthash.git
+	sha256sums = SKIP
+
+pkgname = qthash-git
