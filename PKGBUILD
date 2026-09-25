@@ -8,7 +8,7 @@ pkgname=(
 	'python-frida'
 )
 pkgver=17.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers'
 arch=('x86_64')
 url='https://github.com/frida/frida'
@@ -258,7 +258,7 @@ b2sums=(
 	'44cf42d2e45b12567b94318f329a11559b4ee6341ae4ce512889871169571591504faf6d24f356edc91b52dcec3659e7121cc474786b52ef12892b019a4ed42c'
 	'4690cc029b269ed47127ed63a418e90109de977998d6a3109a3933e40ddd094443e430c42468f231fef1f9decdad79c8c5c60ca5435f877bcb40944f40c8add2'
 	'b1c3d3c922e35b8205913cae4de6a6862aa166504b8cd4751ae4a387978bed508aaba542c2a7c1f6a6258c8f8a2c7aaf97105b872e09f83dd99b2566369e4c0e'
-	'7ba008b86fd730eacd9868b66ce4e132719ef3976b92f5c035a7e5308368724eb3fadac7b051c76ff67daca37a59a16cb22cb1752ba4048e2ecc5ee2870f180f'
+	'ba8d5e9f284c0e74aff61343f2ca4a49be805382ba57ec14d2216d50b56d56669a80ea5c7b7fec259977cde2c6926c23ff97af6bc18b9a084e16d6635128064e'
 	'5a2fa0418c540d8082c622b9db8534d5878ed30fbe817f01979e5773abaa475740b3f8d2b5f1af3caf7c43701af9c41113e5e5da7080260a43608e8260def01f'
 	'd6f6dee0b4abce002222d6e406934d4d43b4c261a61ce1092d8435eba4509d693bd2e278e06f0a5d89cacd5d6a1f78cea7cab225b700c431a14676a00d3f0cec'
 	'4e74d7e9b495542bc88a0c5f50e1cd9cf24df020513bb50708975dbf9673a9a9481aeef23f2ed20a0db3cd0ccea75043335ecb11477d008206222149cf0faccd'
@@ -741,6 +741,7 @@ build() {
 	sed \
 		-e "s|@TOOLCHAIN_PREFIX@|${_toolchain_prefix}|g" \
 		-e "s|@VALA_BUILDDIR@|${_vala_builddir}|g" \
+		-e "s|@FRIDA_GUM_VAPIDIR@|${srcdir}/frida-${pkgver}/subprojects/frida-gum/vapi|g" \
 		"${srcdir}/frida-valac.in" > "${srcdir}/frida-valac"
 	chmod +x -- "${srcdir}/frida-valac"
 
