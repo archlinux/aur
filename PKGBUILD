@@ -5,7 +5,7 @@
 _pkgname=rpl-2
 pkgname="${_pkgname}"
 pkgver=4.1.37
-pkgrel=3
+pkgrel=4
 arch=(
   'x86_64'
   'i686'
@@ -121,14 +121,14 @@ sha256sums=(
   'def1a0405b863fda0a07215a8eda63be56e21ba7b46d1f8c2b57df9b55465b48'  # reference_rpl_french.ps.bz2
 )
 validpgpkeys=()
-options=('staticlibs')
+options=('staticlibs' '!strip') # Do not strip, otherwise `rpl` fails because of file checksum mismatch.
 
 prepare() {
   cd "${srcdir}/rpl-${pkgver}"
 
   local _config_opts=(
     --prefix=/usr
-    #--disable-full-static
+    # --disable-full-static
     --enable-recursive
     --enable-native
     # --enable-rplcas
