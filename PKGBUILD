@@ -41,6 +41,5 @@ package_lua54-platformdirs() {
 
 package_lua-platformdirs() {
 	depends=(lua-vim)
-	local version=$_lua_version
-	_package $version
+	_package $_lua_version
 }
