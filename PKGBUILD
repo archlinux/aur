@@ -13,7 +13,7 @@ depends=('git' 'github-cli' 'openssh' 'sqlite'
 # rust/cargo build the sidecars; nodejs/pnpm build + bundle the Electron GUI.
 makedepends=('rust' 'cargo' 'pkgconf' 'nodejs' 'pnpm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('56540ca887feb7908f7b6faac45977483d704eb80b3c650b314870a865e11abe')
+sha256sums=('c1a35698437f31e5f0c2abd2eae2dd9ea27a87c8e3ba6239edad7e1d9963f9c9')
 
 build() {
     cd "conductor-arch-$pkgver"
