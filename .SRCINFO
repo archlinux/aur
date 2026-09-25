@@ -1,6 +1,6 @@
 pkgbase = goose-desktop-bin
 	pkgdesc = Goose Desktop and CLI (prebuilt) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM
-	pkgver = 1.51.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://github.com/aaif-goose/goose
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = goose-desktop-bin
 	provides = goose-desktop
 	conflicts = goose-desktop
 	options = !strip
-	source = goose_1.51.0_amd64-vulkan.deb::https://github.com/aaif-goose/goose/releases/download/v1.51.0/goose_1.51.0_amd64-vulkan.deb
-	source = goose-cli-1.51.0.tar.bz2::https://github.com/aaif-goose/goose/releases/download/v1.51.0/goose-x86_64-unknown-linux-gnu.tar.bz2
-	b2sums = bb660fa3a1df9993bfe66d513be67104a43e669fdce3b0cdae313c9373a47ed9bd03febfd6203da34df7c9abefa730356793150d4db046b17188a7e4593e42c3
-	b2sums = cb3967e84140f726ab395ed378eda8c2d24384f6539640abce216d62bd73dc3da0cbcbf5f254f542d170db7d9109c6fe01e9454d04e985b2433d31a02d5b04ab
+	source = goose_1.52.0_amd64-vulkan.deb::https://github.com/aaif-goose/goose/releases/download/v1.52.0/goose_1.52.0_amd64-vulkan.deb
+	source = goose-cli-1.52.0.tar.bz2::https://github.com/aaif-goose/goose/releases/download/v1.52.0/goose-x86_64-unknown-linux-gnu.tar.bz2
+	b2sums = f7fbd8e661cf836111635d7a9a7cebe4c2ecca4a1758bec4360f7fcfac22099221caaf528020b417239ee2eb8597a24b8f1cb60018cdf0505383a6511d2ffb6f
+	b2sums = 32c42942031176ad4baa9e35e97a137f8e6b5f84dc9c2855e1172b831fe02e423d98d3137c17b048c69081a6292120a11644892fcea977482e70bc55fa4853c3
 
 pkgname = goose-desktop-bin
