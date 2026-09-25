@@ -1,7 +1,7 @@
 pkgbase = r-vcdextra
 	pkgdesc = 'vcd' Extensions and Additions
-	pkgver = 0.9.6
-	pkgrel = 1
+	pkgver = 0.9.8
+	pkgrel = 2
 	url = https://cran.r-project.org/package=vcdExtra
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = r-vcdextra
 	depends = r-ca
 	depends = r-dplyr
 	depends = r-forcats
+	depends = r-ggplot2
 	depends = r-glue
 	depends = r-gnm
 	depends = r-gt
@@ -27,7 +28,6 @@ pkgbase = r-vcdextra
 	optdepends = r-coin
 	optdepends = r-effects
 	optdepends = r-fahrmeir
-	optdepends = r-ggplot2
 	optdepends = r-gmodels
 	optdepends = r-hmisc
 	optdepends = r-knitr
@@ -41,7 +41,7 @@ pkgbase = r-vcdextra
 	optdepends = r-sleuth2
 	optdepends = r-stats4
 	optdepends = r-vgam
-	source = https://cran.r-project.org/src/contrib/vcdExtra_0.9.6.tar.gz
-	sha256sums = 1518311e1202f3e96a3f4de6d77313e4e10b84c6c83664e3fbb310e66d4623d0
+	source = https://cran.r-project.org/src/contrib/vcdExtra_0.9.8.tar.gz
+	sha256sums = dcd4ef319163b9759110f0765e9b6e1b69d09a2c699a65cba97d3c400da3b6e9
 
 pkgname = r-vcdextra
