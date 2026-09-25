@@ -30,8 +30,9 @@ build() {
 # corresponding fcitx5 input method, and vice versa
 # fonts are not installed, this pulls from the aur instead
 package_taigikeyboard-common() {
-	depends=(gtk4 libadwaita ttf-jf-openhuninn ttf-iansui)
 	pkgdesc='Common files for Taigi Keyboard'
+	depends=(gtk4 libadwaita ttf-jf-openhuninn ttf-iansui)
+	cd "$pkgbase/linux"
 	install -d "$pkgdir"/usr/share/taigikeyboard/dictionaries
 	install -m644 ../dictionaries/dictionary.fst ../dictionaries/dictionary.bin ../dictionaries/association.bin ../dictionaries/syllables.fst "$pkgdir"/usr/share/taigikeyboard/dictionaries/
 	for size in 16 22 24 32 48 64 128 256; do
@@ -44,6 +45,7 @@ package_taigikeyboard-common() {
 package_ibus-taigikeyboard() {
 	pkgdesc='Taigi input method for IBus'
 	depends=(taigikeyboard-common ibus)
+	cd "$pkgbase/linux"
 	install -Dm755 target/release/ibus-engine-taigikeyboard "$pkgdir"/usr/libexec/ibus-engine-taigikeyboard
 	install -Dm644 target/taigikeyboard.xml "$pkgdir"/usr/share/ibus/component/taigikeyboard.xml
 }
@@ -51,5 +53,6 @@ package_ibus-taigikeyboard() {
 package_fcitx5-taigikeyboard() {
 	pkgdesc='Taigi input method for Fcitx5'
 	depends=(taigikeyboard-common fcitx5)
+	cd "$pkgbase/linux"
 	DESTDIR="$pkgdir" cmake --install target/fcitx5-build
 }
