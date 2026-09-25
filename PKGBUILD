@@ -3,7 +3,7 @@
 _pkgname=ps-printer-app
 pkgname="${_pkgname}-git"
 pkgver=1.0+r273.20260109.e54d07c
-pkgrel=1
+pkgrel=2
 pkgdesc="PostScript Printer Application"
 url='https://github.com/OpenPrinting/ps-printer-app'
 license=("Apache-2.0")
@@ -19,8 +19,8 @@ depends=(
   'pappl-retrofit'
 )
 optdepends=(
-  "avahi:  To be able to use ZeroConf names instead of IP addresses."
-  "bind:   To be able to use hostnames instead of IP addresses. ('host' executable.)"
+  #"avahi:  To be able to use ZeroConf names instead of IP addresses."
+  #"bind:   To be able to use hostnames instead of IP addresses. ('host' executable.)"
 )
 makedepends=(
   'git'
@@ -71,13 +71,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  make DESTDIR="${pkgdir}/" install
-
-  # Fixup wrong installation directory of systemd service file
-  if [ -e "${pkgdir}/ps-printer-app.service" ]; then
-    install -dvm755 "${pkgdir}"/usr/lib/systemd/system/
-    mv -v "${pkgdir}/ps-printer-app.service" "${pkgdir}"/usr/lib/systemd/system/
-  fi
+  make DESTDIR="${pkgdir}/" unitdir="${pkgdir}/usr/lib/systemd/system/" install
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      git.log CODE_OF_CONDUCT.md README.md NOTICE
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  LICENSE

@@ -1,7 +1,7 @@
 pkgbase = ps-printer-app-git
 	pkgdesc = PostScript Printer Application
 	pkgver = 1.0+r273.20260109.e54d07c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenPrinting/ps-printer-app
 	arch = x86_64
 	license = Apache-2.0
@@ -13,8 +13,6 @@ pkgbase = ps-printer-app-git
 	depends = libppd
 	depends = pappl
 	depends = pappl-retrofit
-	optdepends = avahi: To be able to use ZeroConf names instead of IP addresses.
-	optdepends = bind: To be able to use hostnames instead of IP addresses. ('host' executable.)
 	provides = ps-printer-app=1.0+r273.20260109.e54d07c
 	conflicts = ps-printer-app
 	options = emptydirs
