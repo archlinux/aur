@@ -1,167 +1,145 @@
-# Maintainer: 
-# Contributor: 
+# Maintainer: Robin
 pkgname=webots-git
-pkgver=R2026a.g20260925
+pkgver=nightly.24.9.2026
 pkgrel=1
-pkgdesc="Mobile robot simulation software (git version)"
-arch=('x86_64')
+pkgdesc="Open-source robot simulator (git version)"
+arch=(x86_64)
 url="https://cyberbotics.com/"
-license=('Apache-2.0')
+license=(Apache)
 groups=()
-
-# Build-time dependencies
+options=('!strip' '!debug')
+install=webots.install
+depends=(
+  'glibc'
+  'gcc-libs'
+  'libx11'
+  'libxext'
+  'libxi'
+  'libxcb'
+  'libxrandr'
+  'libxrender'
+  'libgl'
+  'glu'
+  'mesa'
+  'openal'
+  'libjpeg-turbo'
+  'libpng'
+  'zlib'
+  'freetype2'
+  'fontconfig'
+  'xcb-util'
+  'xcb-util-cursor'
+  'xcb-util-keysyms'
+  'xcb-util-image'
+  'xcb-util-renderutil'
+  'xcb-util-wm'
+  'libxkbcommon'
+  'libxkbcommon-x11'
+  'qt6-base'
+  'qt6-declarative'
+  'qt6-svg'
+  'qt6-xcb-private-headers'
+  'qt6-wayland'
+)
 makedepends=(
   'git'
   'make'
   'gcc'
-  'wget'
+  'jdk17-openjdk'
   'python'
-  'freetype2'
-  'openal'
-  'mesa'
-  'glu'
-  'libx11'
-  'libxrandr'
-  'libxrender'
-  'libxi'
-  'libxkbcommon'
-  'libxkbcommon-x11'
+  'swig'
+  'wget'
 )
-
-# Runtime dependencies
-depends=(
-  'freetype2'
-  'openal'
-  'mesa'
-  'glu'
-  'libx11'
-  'libxrandr'
-  'libxrender'
-  'libxi'
-  'libxkbcommon'
-  'libxkbcommon-x11'
-  'gcc-libs'
-  'glibc'
-)
-
-# Optional dependencies
 optdepends=(
-  'alsa-lib: ALSA sound support'
-  'pulseaudio: PulseAudio sound support'
-  'ffmpeg: Video recording support'
-  'libzip: ZIP file support'
-  'libssh: SFTP support'
-  'openssl: HTTPS support'
-  'zziplib: ZZIP file support'
+  'python: Python controller support'
+  'matlab: MATLAB controller support'
+  'espeak: Text-to-speech for some robots'
+  'ffmpeg: Video recording'
 )
-
-provides=('webots')
+provides=("webots=${pkgver}")
 conflicts=('webots')
-
-options=('!strip' '!emptydirs')
-
-source=('git+https://github.com/cyberbotics/webots.git')
-sha256sums=('SKIP')
+source=("git+https://github.com/cyberbotics/webots.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "webots"
-  # Get the latest release tag starting with R
-  local latest_tag
-  latest_tag=$(git describe --long --tags --match 'R*' 2>/dev/null | head -1)
-  if [[ -z "$latest_tag" ]]; then
-    # Fallback to commit hash
-    latest_tag=$(git rev-parse --short HEAD)
-    printf 'r%s.g%s' "${latest_tag}" "$(date +%Y%m%d)"
+  cd "$srcdir/webots"
+  # Try to get version from git tags
+  local ver
+  if ver=$(git describe --tags --abbrev=0 2>/dev/null); then
+    # Sanitize version: remove v prefix, replace _ and - with ., remove other invalid chars
+    echo "$(echo "$ver" | sed 's/^v//;s/[_-]/./g;s/[^a-zA-Z0-9.]//g')"
   else
-    # Replace - with . for versioning
-    printf '%s.g%s' "${latest_tag//-/.}" "$(date +%Y%m%d)"
+    # Fallback to date
+    echo "$(date +%Y%m%d)"
   fi
 }
 
 prepare() {
-  cd "webots"
-  # Initialize submodules if any
-  git submodule update --init --recursive 2>/dev/null || true
+  cd "$srcdir/webots"
+  # Initialize submodules
+  git submodule update --init --recursive
 }
 
 build() {
-  cd "webots"
-  
-  # Webots uses its own dependency management
-  # It will download and build Qt, OIS, assimp, pico, openssl to WEBOTS_HOME
-  export WEBOTS_HOME="${srcdir}/webots"
-  
-  # Build in release mode (optimized)
-  msg "Building Webots..."
-  make -j$(nproc) release
+  cd "$srcdir/webots"
+
+  # Set Java environment
+  export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+  export PATH="$JAVA_HOME/bin:$PATH"
+  export WEBOTS_HOME=$(pwd)
+
+  # Build Webots
+  make -j"$(nproc)" release
 }
 
 package() {
-  cd "webots"
-  
-  # Webots builds everything in-place under WEBOTS_HOME
-  # The main entry point is the 'webots' shell script
-  
-  # Install directory structure
-  install -d "${pkgdir}/usr/share/webots"
-  install -d "${pkgdir}/usr/bin"
-  
-  # Copy the webots launcher script (created during build)
-  if [ -f "webots" ]; then
-    install -Dm755 webots "${pkgdir}/usr/bin/webots"
-  fi
-  
-  # Copy the actual binary
-  if [ -f "bin/webots-bin" ]; then
-    install -Dm755 bin/webots-bin "${pkgdir}/usr/share/webots/bin/webots-bin"
-  fi
-  
-  # Copy all libraries
-  if [ -d "lib" ]; then
-    cp -r lib "${pkgdir}/usr/share/webots/"
-  fi
-  
-  # Copy resources
-  if [ -d "resources" ]; then
-    cp -r resources "${pkgdir}/usr/share/webots/"
-  fi
-  
-  # Copy include headers
-  if [ -d "include" ]; then
-    cp -r include "${pkgdir}/usr/share/webots/"
-  fi
-  
-  # Copy projects (sample simulations)
-  if [ -d "projects" ]; then
-    cp -r projects "${pkgdir}/usr/share/webots/"
-  fi
-  
-  # Copy tests
-  if [ -d "tests" ]; then
-    cp -r tests "${pkgdir}/usr/share/webots/"
-  fi
-  
-  # Copy documentation
-  if [ -d "docs" ]; then
-    cp -r docs "${pkgdir}/usr/share/doc/${pkgname}"
-  fi
-  
-  # Set WEBOTS_HOME in the launcher script to point to the correct location
-  if [ -f "${pkgdir}/usr/bin/webots" ]; then
-    sed -i "s|^export WEBOTS_HOME=.*|export WEBOTS_HOME=/usr/share/webots|" \
-      "${pkgdir}/usr/bin/webots"
-  else
-    # Create a wrapper script if the launcher wasn't built
-    cat > "${pkgdir}/usr/bin/webots" << EOF
+  cd "$srcdir/webots"
+
+  # Create destination directories
+  install -d "$pkgdir/usr/share/webots"
+  install -d "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/share/applications"
+  install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  install -d "$pkgdir/usr/share/icons/hicolor/128x128/apps"
+
+  # Copy Webots files
+  cp -r lib "$pkgdir/usr/share/webots/"
+  cp -r include "$pkgdir/usr/share/webots/"
+  cp -r resources "$pkgdir/usr/share/webots/"
+  cp -r projects "$pkgdir/usr/share/webots/"
+  cp -r docs "$pkgdir/usr/share/webots/"
+  cp -r scripts "$pkgdir/usr/share/webots/"
+
+  # Install the actual binary
+  install -Dm755 bin/webots-bin "$pkgdir/usr/share/webots/bin/webots-bin"
+
+  # Create a simple wrapper script that sets up the environment correctly
+  cat > "$pkgdir/usr/bin/webots" << 'EOF'
 #!/bin/bash
 export WEBOTS_HOME=/usr/share/webots
-exec /usr/share/webots/bin/webots-bin "\$@"
+export LD_LIBRARY_PATH="/usr/share/webots/lib/webots:${LD_LIBRARY_PATH}"
+export QT_PLUGIN_PATH="/usr/share/webots/lib/webots/qt/plugins"
+export QT_QPA_PLATFORM="xcb"
+exec /usr/share/webots/bin/webots-bin "$@"
 EOF
-    chmod 755 "${pkgdir}/usr/bin/webots"
+  chmod 755 "$pkgdir/usr/bin/webots"
+
+  # Install desktop file
+  install -Dm644 scripts/packaging/webots.desktop "$pkgdir/usr/share/applications/webots.desktop"
+  # Fix desktop file paths
+  sed -i "s|Exec=webots|Exec=/usr/bin/webots|" "$pkgdir/usr/share/applications/webots.desktop"
+  sed -i "s|Icon=/usr/local/webots/resources/icons/core/webots.png|Icon=/usr/share/webots/resources/icons/core/webots.png|" "$pkgdir/usr/share/applications/webots.desktop"
+
+  # Install icons
+  install -Dm644 resources/icons/core/webots.png \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/webots.png"
+  install -Dm644 resources/images/webots.png \
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/webots.png"
+
+  # Install Qt configuration
+  if [ -f bin/qt.conf ]; then
+    install -Dm644 bin/qt.conf "$pkgdir/usr/share/webots/qt.conf"
+    # Fix paths in qt.conf
+    sed -i "s|^Prefix = .*|Prefix = /usr/share/webots|" "$pkgdir/usr/share/webots/qt.conf"
   fi
-  
-  # Create environment file for profile.d
-  install -d "${pkgdir}/etc/profile.d"
-  echo "export WEBOTS_HOME=/usr/share/webots" > "${pkgdir}/etc/profile.d/webots.sh"
-  chmod 644 "${pkgdir}/etc/profile.d/webots.sh"
 }
