@@ -1,0 +1,19 @@
+pkgbase = lomi-bin
+	pkgdesc = A workspace for terminal-driven development
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/lomi-dev/lomi
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = hicolor-icon-theme
+	optdepends = git: source control and repository history
+	provides = lomi
+	conflicts = lomi
+	options = !strip
+	options = !debug
+	source_x86_64 = Lomi_0.5.0_amd64.deb::https://github.com/lomi-dev/lomi/releases/download/v0.5.0/Lomi_0.5.0_amd64.deb
+	sha256sums_x86_64 = 27df15d80643570ec4e439d320dfa7711dffe9ba35e2a96bdd434a32de802599
+
+pkgname = lomi-bin
