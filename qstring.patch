@@ -1,0 +1,28 @@
+---
+ src/TrizbortWriter.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/TrizbortWriter.cpp b/src/TrizbortWriter.cpp
+index 58e5461..5f9a73a 100644
+--- a/src/TrizbortWriter.cpp
++++ b/src/TrizbortWriter.cpp
+@@ -95,7 +95,7 @@ QString saveColorHex(const QColor &c)
+         return QString();
+     const unsigned int rgb =
+         ((c.red() & 0xFF) << 16) | ((c.green() & 0xFF) << 8) | (c.blue() & 0xFF);
+-    return QStringLiteral("#%1").arg(rgb, 6, 16, QLatin1Char('0')).toUpper();
++    return QStringLiteral("#%1").toUpper();
+ }
+ 
+ QString escAttr(const QString &s)
+@@ -167,7 +167,7 @@ QString encodeXmlName(const QString &in)
+         if (isNameChar(c, i == 0)) {
+             r += c;
+         } else {
+-            r += QStringLiteral("_x%1_").arg(c.unicode(), 4, 16, QLatin1Char('0')).toUpper();
++            r += QStringLiteral("_x%1_").toUpper();
+         }
+     }
+     if (r.isEmpty())
+-- 
+2.54.0

@@ -1,0 +1,17 @@
+pkgbase = trizbort-qt
+	pkgdesc = C++/Qt port of Trizbort, an interactive fiction Mapper
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://jxself.org/trizbort-qt.shtml
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	provides = trizbort-qt
+	source = https://jxself.org/trizbort-qt-1.0.tar.gz
+	source = qstring.patch
+	sha256sums = 69950425e4ff9410e2fe5d6b54252b68f8f700053bd90cd2b7d86325a5a401cc
+	sha256sums = d730f690ccb795c99c07718011739701fb01b72ca9555557c4fd32070a2b7f65
+
+pkgname = trizbort-qt
