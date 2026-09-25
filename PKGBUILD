@@ -1,6 +1,6 @@
 # Maintainer: Kristofer Lund <kristoferlund@users.noreply.github.com>
 pkgname=ostt-vulkan-bin
-pkgver=0.0.26
+pkgver=0.0.27
 pkgrel=1
 pkgdesc="Open Speech-to-Text: terminal app for recording and transcribing audio (prebuilt binary, AMD/Intel Vulkan build)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("ostt-${pkgver}-vulkan.tar.gz::${url}/releases/download/v${pkgver}/ostt-
         'ostt.bash'
         '_ostt'
         'ostt.fish')
-sha256sums=('c708d43dc538d6196a1ae42e514f864b0638cab782b68f9a3e5476636aa76481'
+sha256sums=('c9e649512bbf833c46fdca2a4328af9f0c6c7a980e9b5e5e1b8f1789c9d2c0ef'
             '8bcb6bd9c06c2cce21a54db8e1455c1aa154275667828f772dd74d03272e65bd'
             'ca1e19b9f5580b1a9eec2813f5af9c41ea6aac4aa3ee2bedf85effe0399fd4c5'
             'eee8a731da1c24283ae7de21f6f748cf1c02c3e17eb38ccbd4b0aebcd93cf9a0'
