@@ -3,6 +3,7 @@
 pkgbase=taigikeyboard
 pkgname=(fcitx5-taigikeyboard ibus-taigikeyboard taigikeyboard-common)
 pkgver=3.6.10
+_tag="desktop-${pkgver}"
 pkgrel=1
 arch=('x86_64')
 url="https://taigikeyboard.tw"
@@ -12,14 +13,14 @@ makedepends=(git cargo
 	cmake ninja extra-cmake-modules
 	fcitx5
 	pkgconf unzip rust protobuf-c)
-source=("git+https://github.com/taigikeyboard/taigikeyboard.git#tag=desktop-$pkgver")
-sha512sums=('b7f8ef357318670fe7040f5686d96ba9ae0a1226ede90c75381b104920fac657b22b63859a1d4b308b32a8aae30c15ad9390a86ab2e32e2054752583dcc87d1a')
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/taigikeyboard/taigikeyboard/archive/refs/tags/${_tag}.tar.gz")
+sha512sums=('c98ba4034218ffccc24698a613f309c3677a604747fa7f187de6e09bda83d064514fc945a939bd63825b13ab981815a5c706def286ad528982276271bc320519')
 # Unbundling libsqlite3-sys while using LTO for C still leads to errors. Disable
 # it instead.
 options=(!lto)
 
 build() {
-	cd "$pkgbase/linux"
+	cd "${pkgbase}-${_tag}/linux"
 	make build
 	make component
 	make build-fcitx5
@@ -36,7 +37,7 @@ package_taigikeyboard-common() {
 		'ttf-jf-openhuninn: font with more support for Taigi'
 		'ttf-iansui: font with more support for Taigi'
 	)
-	cd "$pkgbase/linux"
+	cd "${pkgbase}-${_tag}/linux"
 	install -d "$pkgdir"/usr/share/taigikeyboard/dictionaries
 	install -m644 \
 		../dictionaries/dictionary.fst ../dictionaries/dictionary.bin ../dictionaries/association.bin ../dictionaries/syllables.fst \
@@ -53,7 +54,7 @@ package_taigikeyboard-common() {
 package_ibus-taigikeyboard() {
 	pkgdesc='Taigi input method for IBus'
 	depends=(taigikeyboard-common ibus)
-	cd "$pkgbase/linux"
+	cd "${pkgbase}-${_tag}/linux"
 	install -Dm755 target/release/ibus-engine-taigikeyboard "$pkgdir"/usr/lib/ibus/ibus-engine-taigikeyboard
 	install -Dm644 target/taigikeyboard.xml "$pkgdir"/usr/share/ibus/component/taigikeyboard.xml
 }
@@ -63,6 +64,6 @@ package_fcitx5-taigikeyboard() {
 	depends=(taigikeyboard-common fcitx5)
 	# I don't think it is necessary to list libtaigikeyboard.so in provided=
 	# since fcitx5-rime doesn't do it either
-	cd "$pkgbase/linux"
+	cd "${pkgbase}-${_tag}/linux"
 	DESTDIR="$pkgdir" cmake --install target/fcitx5-build
 }
