@@ -1,56 +1,56 @@
 pkgbase = aescrypt
 	pkgdesc = A file encryption software that uses the Advanced Encryption Standard (AES)
-	pkgver = 4.6.0
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://www.aescrypt.com
 	arch = x86_64
 	license = custom:Commercial
 	makedepends = cmake>=3.21
-	source = https://github.com/terrapane/aescrypt_gui/archive/refs/tags/v4.6.0/aescrypt_gui-4.6.0.tar.gz
-	source = aescrypt-conio-1.0.7.tar.gz::https://github.com/terrapane/conio/archive/refs/tags/v1.0.7.tar.gz
-	source = aescrypt-libaes-1.1.6.tar.gz::https://github.com/terrapane/libaes/archive/refs/tags/v1.1.6.tar.gz
-	source = aescrypt-secutil-1.1.0.tar.gz::https://github.com/terrapane/secutil/archive/refs/tags/v1.1.0.tar.gz
-	source = aescrypt-logger-1.0.9.tar.gz::https://github.com/terrapane/logger/archive/refs/tags/v1.0.9.tar.gz
-	source = aescrypt-program_options-1.0.5.tar.gz::https://github.com/terrapane/program_options/archive/refs/tags/v1.0.5.tar.gz
-	source = aescrypt-aescrypt_engine-4.1.5.tar.gz::https://github.com/terrapane/aescrypt_engine/archive/refs/tags/v4.1.5.tar.gz
-	source = aescrypt-random-1.0.6.tar.gz::https://github.com/terrapane/random/archive/refs/tags/v1.0.6.tar.gz
-	source = aescrypt-libkdf-1.1.1.tar.gz::https://github.com/terrapane/libkdf/archive/refs/tags/v1.1.1.tar.gz
-	source = aescrypt-libhash-1.1.1.tar.gz::https://github.com/terrapane/libhash/archive/refs/tags/v1.1.1.tar.gz
-	source = aescrypt-aescrypt_cli-4.6.0.tar.gz::https://github.com/terrapane/aescrypt_cli/archive/refs/tags/v4.6.0.tar.gz
-	source = aescrypt-bitutil-1.0.7.tar.gz::https://github.com/terrapane/bitutil/archive/refs/tags/v1.0.7.tar.gz
-	source = aescrypt-charutil-1.0.6.tar.gz::https://github.com/terrapane/charutil/archive/refs/tags/v1.0.6.tar.gz
-	b2sums = 97721e6b921543933ce950b2e0d1bf28516bf946c696c1fa7a67fd49848b343ba6aede940e4beccdca8b0148388fa4cc6a7d9c2f875d6d55d4c60407926d662d
-	b2sums = 6cf1275ca5b37e98f407f30ce23eb50add4c16b77e186737f650f504914179ec47ba3a2b5b9974666e8731034cb7a7471168053f622e93f232c84ec6cdcb9fe9
-	b2sums = 4dffaff89cf57a971a36cd43cfb6bd4829f5a9803a472b768e89efbc0f10041523bfbe7b5ddb4d17492a9cde5737ae10b9379e75aae0c83e9aec1d45c7b08b65
-	b2sums = 40e2389e7cede6dbce6c852c029f24b140bbca66497bbd52813b068994529b1f394ef9da46296ff2b3a4311234a7815523a1e8560087f7facf0123066276620a
-	b2sums = a9bcd709c6c9b08e3e851eeab735fab633150777caade94f019744402e225b16b59bbf84fd8240168eb989f2842f92bc3a9f90e190a3aa05ffa5e2cdc44ee751
-	b2sums = 2b9c910bf1664dacbf918bcd300b849b3ad58ac915dafbcf179e9cb58e184fec57af35b1c7bf665945980ef92b35f40890312fad26e4c5940547555f4b92693f
-	b2sums = 0ec8b38242cf3be7909d080b996238df2b4d61ea9887d92d1f597da0a22b11a55abf0700e67330179f26e96adba070bb8249188ee51c72320f79063abea9d9b9
-	b2sums = b03991ae31dbabdd718592bf35cc8fe0b5c1ea9d78049383e158bc59f88549bcfcb38f1d085c3187343c4de093f64518a7aa23b0785251f749c43c2f8296f5e0
-	b2sums = 8cf285e2352d437deda49daef4a5778cfc209e9f0953bfd5cabb03beeea3616949eac95be84370f56f0387427d7be9ecd5cdfca581ff743c649d865454712262
-	b2sums = 7cf1fb6db917488c0bd69eafc8ae85899ac8d71a02e3e352c19b4aabc95b76b43a7467376ef750481739fbda89ba23e998e5ca12336f9c08b0b512ae648b6950
-	b2sums = 24d48b14b83b3aaf15bce18bd6d505850daa5bbc828d92440de11b1188afd249a750e2bfac97d4182ffc47d76096f6fb5ca273e3a50e4621fe8c2fc65ca7896e
-	b2sums = 8c856784f6c2a0621c01474b441c87dd2b4217d242d9f28e3ba5920dd009608b2d6ce87bca4b44bb14d0d98fbb9dec241c46eab6324cf07b3d14b72b172a0536
-	b2sums = ae35e80ffd0ed184907808eb323495ed705524fbce0b45fbbe93da5942681313b801eac9e057ebac07b426e5bb60ad79fd519bc039517fbe7f1491a618237d44
+	source = https://github.com/terrapane/aescrypt_gui/archive/refs/tags/v4.7.0/aescrypt_gui-4.7.0.tar.gz
+	source = aescrypt-conio-1.0.9.tar.gz::https://github.com/terrapane/conio/archive/refs/tags/v1.0.9.tar.gz
+	source = aescrypt-libaes-1.1.7.tar.gz::https://github.com/terrapane/libaes/archive/refs/tags/v1.1.7.tar.gz
+	source = aescrypt-secutil-1.1.2.tar.gz::https://github.com/terrapane/secutil/archive/refs/tags/v1.1.2.tar.gz
+	source = aescrypt-logger-1.1.1.tar.gz::https://github.com/terrapane/logger/archive/refs/tags/v1.1.1.tar.gz
+	source = aescrypt-program_options-1.0.7.tar.gz::https://github.com/terrapane/program_options/archive/refs/tags/v1.0.7.tar.gz
+	source = aescrypt-aescrypt_engine-4.1.7.tar.gz::https://github.com/terrapane/aescrypt_engine/archive/refs/tags/v4.1.7.tar.gz
+	source = aescrypt-random-1.0.8.tar.gz::https://github.com/terrapane/random/archive/refs/tags/v1.0.8.tar.gz
+	source = aescrypt-libkdf-1.1.2.tar.gz::https://github.com/terrapane/libkdf/archive/refs/tags/v1.1.2.tar.gz
+	source = aescrypt-libhash-1.1.2.tar.gz::https://github.com/terrapane/libhash/archive/refs/tags/v1.1.2.tar.gz
+	source = aescrypt-aescrypt_cli-4.7.0.tar.gz::https://github.com/terrapane/aescrypt_cli/archive/refs/tags/v4.7.0.tar.gz
+	source = aescrypt-bitutil-1.0.8.tar.gz::https://github.com/terrapane/bitutil/archive/refs/tags/v1.0.8.tar.gz
+	source = aescrypt-charutil-1.0.8.tar.gz::https://github.com/terrapane/charutil/archive/refs/tags/v1.0.8.tar.gz
+	b2sums = f9ffa8a5b53e57a7c349479c1d19cd921381ee718b0e59889b17072204b498a9a867b6ebcd9749316c7a629484a530e56f68959cc1cdf34e547285daf80e3f42
+	b2sums = 1bb2a043ef198658936b5e047007d7a1edc3d79ae788397bc5a42ca7b357df1334e2014c9e8c7b16e699becc69878ea0881c708b08e8f7dbab2aadb5eecc885b
+	b2sums = 9fc212b078ffe36a367bdde1456aa02a62341c10700c0034628a1ff4a0a57a31cc733956ba0ee8d0a7d9331f9eef2441492fc2c562eee17ab6ee5c128ad02052
+	b2sums = 5b9bc9051ba52df7d7df18332632d723e53d2aa25268e72d3d1e8fc77e16cedc0c9df47ff3a57c23f996e0e9ba0d2a895931817bdb825f14ec347061387c8971
+	b2sums = ed93b4321cdd92a639faefadc0647eb8be87714aaa2b44c728c76348fbc0fe1e8829f948fbc8828d4fd95042f688d0aa13924b2318e2e1db6e98d2344511a7b8
+	b2sums = 09357cc45cca4a1bb77115249a83ff4a0a5a5e0559f064474b66e6ea81024dc4349f48d992e19dda4f1020f4a783645442852dab28a87300ffb599c8e5c196be
+	b2sums = ca673ca8c2b2972695e4f9128ac376f59495527c9f637005da203bfd1e61887309e3a1828ccfb4d9057aa64a836ab3668e281b887c504979efc0beb65c12513c
+	b2sums = 303abed9d938c0dc0df4c31d935fae34d370dc478de1ea633372c1cf797a7babd32c534c9b625b845f413b3ee942bb2faf7752568ec80d08e4fe6bb5a91a11c0
+	b2sums = 6642a180815a1857fd30d2fe0f94f5605501143c67ce5076075dc1d5518e6933ccf32b88ba73cac14f4d8c7b8e0d67e337a24af4eed54bb982a978649700c0c1
+	b2sums = 9642a49c24e055a9d73ceaf6639bcb8e8478ca8b1ccf9a319570ab3d4462853ec029902226fd24f31fbe30f5ab88d7e2ab1543106b619a68b13962b2cd0e6566
+	b2sums = 03718b21183960042bcfaad343047598cf05cdd3eec9d498ad9f9f62815ace3854e51b6f5ec3ad982b400c496355fbf6d3f3e7ea82a61a1069ea6b94c4e53ee4
+	b2sums = cfcd06052dc0b4941b830176ac77f8f436d6335554ba35d9d85482b36d0b9cc408311d93f53b152c9f691f15c4d315b056a6a14e14f8b0dfb61b66f3ddc1fc27
+	b2sums = 81d2e940b9820a8780ac27b4d476a1a78a9a220f7714fe064ca91f0292fbc81bedf5c13fe99066eaa46d3bb0c0d87777150c8689e34495a04354185407c6c965
 
 pkgname = aescrypt_cli
 	pkgdesc = A file encryption software that uses the Advanced Encryption Standard (AES) (CLI)
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	provides = aescrypt=4.6.0
+	provides = aescrypt=4.7.0
 	conflicts = aescrypt
 	replaces = aescrypt<=4.4.0-1
 
 pkgname = aescrypt_gui
 	pkgdesc = A file encryption software that uses the Advanced Encryption Standard (AES) (GUI)
 	arch = any
-	depends = aescrypt_cli>=4.6.0-1
+	depends = aescrypt_cli>=4.7.0-1
 	depends = hicolor-icon-theme
 	depends = perl
 	depends = which
 	optdepends = kdialog: Qt-based password prompt
 	optdepends = zenity: GTK-based password prompt
-	provides = aescrypt-gui=4.6.0
+	provides = aescrypt-gui=4.7.0
 	conflicts = aescrypt-gui
 	replaces = aescrypt-gui<=4.4.0-1
