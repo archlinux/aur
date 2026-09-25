@@ -1,6 +1,6 @@
 pkgbase = icestorm-nightly
 	pkgdesc = Lattice iCE40 FPGAs Bitstream Documentation
-	pkgver = 20260924_v1.1_2_g1fb7443
+	pkgver = 20260925_v1.1_2_g1fb7443
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/icestorm
