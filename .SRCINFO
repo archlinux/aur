@@ -1,0 +1,15 @@
+pkgbase = backlog.md-git
+	pkgdesc = Markdown-based task management CLI with a Kanban board, git-integrated
+	pkgver = 1.53.0.r1.c310b708
+	pkgrel = 1
+	url = https://backlog.md
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bun
+	provides = backlog
+	conflicts = backlog
+	source = backlog.md-git::git+https://github.com/MrLesk/Backlog.md.git
+	sha256sums = SKIP
+
+pkgname = backlog.md-git
