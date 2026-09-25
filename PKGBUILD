@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><contacto@mrhacker.com.co>
 pkgname=wazuh-agent
-pkgver=4.14.7
+pkgver=4.14.8
 pkgrel=1
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
@@ -50,8 +50,8 @@ backup=(
 sha512sums=('3951de83f3f61191eb5ddc5c5474a2a049e86d6a9607cdcbbe9caa77cc58d3a33f9a3e6b2070381ff6285b8b41da544a9785d1fbe3fb1dd72d956c58c516b2c6'
             '94ef03e4ec28bf5adb6abc761adfa785e9088667e3a6df39af87b33d25cd9cdd3df3a388bb4bccae22643dc7c030927754240ab1724afaef047e08393536bf44'
             '41548675747387bc11ea755f41272d42456d82845fa9e469c3ad6f16254062ac220e6e5652721201884e2256941968b24b92d17e15b869eaf2a7ba2ba22a8d72')
-sha512sums_x86_64=('35070e9329ead6d5571f5a5889063d1b67d0d9e3c94767b14ef3a4ef9742cab39dca244c2969e0c5c8fddad31ed8bcb8c78315355da8ad9eb6e26b8208ccd147')
-sha512sums_aarch64=('5e3fadeec4b613f3661ecbbffc6b6afd6738417e62d2e53904cafeb10f81ca19ad8f1cdbf3e0127d3eb540fa1d71529d7b12c5ee0100a628ebb53cda844dc343')
+sha512sums_x86_64=('6198fbd9a3bdbe1d5511d6f83a07a94cefaa272855307df78d82c6994762a2f64aac61923429111022248ce2557f41b893dcbed330a9823fac46791d0c95c2f6')
+sha512sums_aarch64=('9ee87f986ea9c3256be15fe5c99fe82b30cd0c0a1ec3e3419aff7c2c502399e634888146d8075528ab3f2894f5e5ad97a7dc1997201e46ead482080836922694')
 
 install=$pkgname.install
 
