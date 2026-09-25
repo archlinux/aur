@@ -1,6 +1,6 @@
 # Maintainer: Kristofer Lund <kristoferlund@users.noreply.github.com>
 pkgname=ostt-bin
-pkgver=0.0.26
+pkgver=0.0.27
 pkgrel=1
 pkgdesc="Open Speech-to-Text: terminal app for recording and transcribing audio (prebuilt CPU binary)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_aarch64=("ostt-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgv
 sha256sums=('ca1e19b9f5580b1a9eec2813f5af9c41ea6aac4aa3ee2bedf85effe0399fd4c5'
             'eee8a731da1c24283ae7de21f6f748cf1c02c3e17eb38ccbd4b0aebcd93cf9a0'
             'ac85f0c45978d869da155fc6735a56030b865d16ed5f03d999197c7c6a96e83a')
-sha256sums_x86_64=('794ebc0694a86691c044aa4ce3e5a63a2a0dceb6c91d421fa2200576bbefe574')
-sha256sums_aarch64=('2147f086b003de94349c573621433e7dc0f108c2d684371ceb62e5eac349599f')
+sha256sums_x86_64=('443e3f37b984d81e1c37b371eb220b234b66fd518f59085cd9242c52dbdc05eb')
+sha256sums_aarch64=('937847353dee49fbad53b60117510b638b4a2dfaf1729d5eab0abd50beb5ba52')
 
 package() {
     local triple
