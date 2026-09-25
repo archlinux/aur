@@ -1,0 +1,21 @@
+pkgbase = munus-bin
+	pkgdesc = A terminal task manager for people who live in the shell
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/jabbott-iii/Munus
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = munus
+	conflicts = munus
+	options = !strip
+	source = README-2.1.1.md::https://raw.githubusercontent.com/jabbott-iii/Munus/v2.1.1/README.md
+	source = LICENSE-2.1.1::https://raw.githubusercontent.com/jabbott-iii/Munus/v2.1.1/LICENSE
+	sha256sums = b2311c18ed7057f340388bb5b441efac00bc820b51fc24aeca16d4bcc61e2fb7
+	sha256sums = 569fbda2ba6c629a5afac7f2ae5af3b5e8579c395e226c4ab144838d61f13557
+	source_x86_64 = munus-x86_64-2.1.1.tgz::https://github.com/jabbott-iii/Munus/releases/download/v2.1.1/munus_linux_amd64.tar.gz
+	sha256sums_x86_64 = 07970bcc4986beaa99e9e5f904c7525cecdec6e5254e6fd1d05936909314de26
+	source_aarch64 = munus-aarch64-2.1.1.tgz::https://github.com/jabbott-iii/Munus/releases/download/v2.1.1/munus_linux_arm64.tar.gz
+	sha256sums_aarch64 = bd9535a4f0ec8733ff88d1ef5235f1f56e769d51610ac449d432257df8ff9547
+
+pkgname = munus-bin

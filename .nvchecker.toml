@@ -1,0 +1,5 @@
+[munus-bin]
+source = "github"
+github = "jabbott-iii/Munus"
+use_latest_release = true
+prefix = "v"
