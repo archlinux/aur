@@ -175,7 +175,7 @@ build() {
   LDFLAGS+=" -pthread"                # From default 'LDFLAGS' in 'Makefile'.
   export LDFLAGS
 
-  make CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" FCFLAGS="${FCFLAGS}" FFLAGS="${FFLAGS}" LDFLAGS="${LDFLAGS}" -j1
+  make CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" FCFLAGS="${FCFLAGS}" FFLAGS="${FFLAGS}" LDFLAGS="${LDFLAGS}" -j1  # '-j1' to disable parallel builds which lead to build errors.
 }
 
 check() {
@@ -187,7 +187,7 @@ check() {
 package() {
   cd "${srcdir}/rpl-${pkgver}"
 
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" -j1 install
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"           AUTHORS ChangeLog INSTALL LIMITATIONS NEWS README "${srcdir}/reference_rpl_french.ps.bz2"
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}/doc"       doc/README
