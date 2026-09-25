@@ -1,0 +1,8 @@
+[volta]
+source = "github"
+github = "volta-cli/volta"
+use_max_tag = true
+
+
+prefix = "v"
+
