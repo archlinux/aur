@@ -1,6 +1,6 @@
 pkgbase = machines
 	pkgdesc = Manager for libvirt virtual machines
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/sachesi/machines
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = machines
 	optdepends = edk2-ovmf: UEFI firmware
 	optdepends = swtpm: emulated TPM
 	optdepends = virtiofsd: folders shared with a machine
-	source = machines-0.1.1.tar.gz::https://github.com/sachesi/machines/archive/v0.1.1/machines-0.1.1.tar.gz
-	sha256sums = 038778edc610db443c35746883a117c1a4a22f132650bdd60b910221a98777a4
+	source = machines-0.1.2.tar.gz::https://github.com/sachesi/machines/archive/v0.1.2/machines-0.1.2.tar.gz
+	sha256sums = 8402bdf3928389c1c770cbf2c681a123804ffc821ed8c70bfc3d52fe0a4a5b3c
 
 pkgname = machines

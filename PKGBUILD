@@ -2,7 +2,7 @@
 
 # pkgver and sha256sums are filled in by .github/workflows/aur.yml for each release.
 pkgname=machines
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Manager for libvirt virtual machines'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=('qemu-desktop: run machines on this computer'
             'swtpm: emulated TPM'
             'virtiofsd: folders shared with a machine')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('038778edc610db443c35746883a117c1a4a22f132650bdd60b910221a98777a4')
+sha256sums=('8402bdf3928389c1c770cbf2c681a123804ffc821ed8c70bfc3d52fe0a4a5b3c')
 
 prepare() {
   cd "$pkgname-$pkgver"
