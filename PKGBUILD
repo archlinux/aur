@@ -3,7 +3,7 @@
 pkgname=oh-my-pi-bin
 pkgver=18.3.1
 pkgrel=1
-pkgdesc="A coding agent with the IDE wired in (release binary)"
+pkgdesc="Coding agent with the IDE wired in (release binary)"
 arch=('x86_64' 'aarch64')
 url="https://omp.sh/"
 license=('MIT')
