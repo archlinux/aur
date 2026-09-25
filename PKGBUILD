@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Seurat
-_pkgver=5.3.0
+_pkgver=5.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,7 +25,6 @@ depends=(
   r-igraph
   r-irlba
   r-jsonlite
-  r-leidenbase
   r-lifecycle
   r-lmtest
   r-matrixstats
@@ -75,6 +74,7 @@ checkdepends=(
 optdepends=(
   r-ape
   r-arrow
+  r-base64enc
   r-biobase
   r-biocgenerics
   r-bpcells
@@ -85,10 +85,13 @@ optdepends=(
   r-genomeinfodb
   r-genomicranges
   r-ggrastr
+  r-glmgampoi
   r-harmony
   r-hdf5r
   r-iranges
+  r-leidenbase
   r-limma
+  r-magrittr
   r-mast
   r-metap
   r-mixtools
@@ -99,16 +102,16 @@ optdepends=(
   r-rsvd
   r-rtracklayer
   r-s4vectors
+  r-sf
   r-singlecellexperiment
+  r-sp
   r-summarizedexperiment
   r-testthat
   r-vgam
-  r-glmgampoi
-  r-sf
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9e27c5ef76f636147eb7d6b856ae98c3')
-b2sums=('2b08a1cca7de6cf23309adcd023a59d83714f808fa3470e4fcb23500a0f0034fcb430990ffebb61e24eca8678282754eb4c8c86b09970d35e46a0e20c384d8dd')
+md5sums=('b07be078da2106bfa6cd0572744fdbb6')
+b2sums=('518fe46b4dfb11f2ee8d5741d10ae981aa076e15be48305c80ed2c4388e887fffa62c3b1741d14007d52af92be26807741740e5cae0d1a5055d9c55e89f7bdac')
 
 prepare() {
   # skip test that requires BPCells
