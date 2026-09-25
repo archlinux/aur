@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing-git
-pkgver=4.5.5.r3.g4454a1e20
+pkgver=4.5.7.r0.gca3999abe
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -10,7 +10,6 @@ license=(GPL LGPL)
 conflicts=(processing)
 depends=(jdk17-temurin ffmpeg bash glibc mesa libdrm libx11 libxi libxrandr libxrender libxcursor libxxf86vm zlib)
 optdepends=('processing-examples: Examples for Processing')
-makedepends=(gradle)
 options=(!strip)
 source=(disable_update_check.patch
         no_jdk_download.patch)
@@ -51,7 +50,7 @@ build() {
       -e "s,<ICON_NAME>,processing-pde,g" build/linux/desktop.template > processing-pde.desktop
 
   # Build the application
-  JAVA_HOME="/usr/lib/jvm/java-17-temurin" gradle createDistributable
+  JAVA_HOME="/usr/lib/jvm/java-17-temurin" ./gradlew createDistributable
 }
 
 package() {
