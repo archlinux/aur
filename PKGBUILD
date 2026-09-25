@@ -2,7 +2,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=tabby
-pkgver=1.0.236
+pkgver=1.0.237
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -16,7 +16,7 @@ replaces=('terminus-terminal')
 source=("git+https://github.com/Eugeny/tabby.git#tag=v${pkgver}"
         "${pkgname}.sh"
         'build.patch')
-sha256sums=('4e50dbeaa3a5da179a79f500ba3677e9e85851dcc1651bd6241406cd34e4d815'
+sha256sums=('88e7a0977127d5796b6954fe5c11977a1bda37ce6d470478ae4c036bd585a088'
             'e10c3846ec9ffd5d711397cece65d53fb2b81af1d08706442f04328c7bcbbb5a'
             'f5581859b734a2f9199a331540fc9beac0a102705a519f6070858ddd7db8b401')
 
