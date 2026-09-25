@@ -1,7 +1,7 @@
 # Maintainer: lalala <lalala_233@qq.com>
 pkgname=python-comfyui-workflow-templates-media-assets-01
 _name=${pkgname#python-}
-pkgver=0.1.0
+pkgver=0.1.47
 pkgrel=1
 pkgdesc="Media assets bundle 01 for ComfyUI workflow templates"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha512sums=('af09a992dfa214717a7be3dd18f52bdc08e4db113e6a16f34361737f22372415e2cc5101eb3d185471b69c80f348f1e0c8a6062a892434a2a567e690f05504df')
+sha512sums=('25b4d79c56f6b4c01ce7537db173a1729d6811542bb5a62b6bd10665b5d26baab688fb80ed349ea0b5735418d3ce0998f6df71cfa39f9e82cdae0dab38b1d17b')
 
 build() {
   cd ${_name//-/_}-${pkgver}
