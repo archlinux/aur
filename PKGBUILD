@@ -2,7 +2,7 @@
 
 pkgname=python-vsmuxtools
 _origpkgname=vsmuxtools
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="The extension to muxtools with vapoursynth and encoding stuff"
 arch=("x86_64")
@@ -27,7 +27,7 @@ provides=(
 )
 conflicts=("vapoursynth-plugin-${_origpkgname}")
 source=("https://files.pythonhosted.org/packages/source/v/${_origpkgname}/${_origpkgname}-${pkgver}.tar.gz")
-sha256sums=('505042f5501c3b1424bceb7d92298700ce13cb0cf6d94b4b0752b2a444402780')
+sha256sums=('4f16c11854f0029d18ba1fb2bead2ee0b6815ec039e5d73082f70c34fcb066dc')
 
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
