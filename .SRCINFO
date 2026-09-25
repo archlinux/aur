@@ -1,0 +1,20 @@
+pkgbase = differential
+	pkgdesc = Semantic regrouping of large diffs for review
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/thepartly/differential
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = clang
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = dfr
+	options = !strip
+	options = !lto
+	source = differential-0.12.1.crate::https://crates.io/api/v1/crates/differential/0.12.1/download
+	sha256sums = 39f82a4be5934094d53670bebeca1eeae22d7b624c2ff2108e552af7bb0fe913
+
+pkgname = differential
