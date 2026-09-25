@@ -1,0 +1,15 @@
+pkgbase = golang-jwt
+	pkgdesc = Go JWT simple CLI to sign, verify and show tokens.
+	pkgver = 5.3.1
+	pkgrel = 1
+	url = https://golang-jwt.github.io/jwt/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = golang-jwt
+	conflicts = golang-jwt-git
+	source = https://github.com/golang-jwt/jwt/archive/refs/tags/v5.3.1.tar.gz
+	sha512sums = e730a0aae7af5243016ac71290687b41b185a01956c2690ca4c8a7ec9fd9a3d8f57d4a0ce4a8b8e633ee313662b0d9a622a72d86ae8c1c541946a7fe85f3284b
+
+pkgname = golang-jwt
