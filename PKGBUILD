@@ -4,7 +4,7 @@
 _repo_name=transcribe.cpp
 pkgname=transcribe-cpp-vulkan
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='C/C++ speech-to-text inference library and CLI based on ggml (Vulkan)'
 arch=('x86_64')
 url="https://github.com/handy-computer/${_repo_name}"
@@ -50,6 +50,8 @@ package() {
 
   # These headers are provided by the system ggml-vulkan package.
   rm "${pkgdir}/usr/include"/{ggml-alloc.h,ggml-backend.h,ggml-blas.h,ggml-cann.h,ggml-cpp.h,ggml-cpu.h,ggml-cuda.h,ggml-metal.h,ggml-openvino.h,ggml-opt.h,ggml-rpc.h,ggml-sycl.h,ggml-virtgpu.h,ggml-vulkan.h,ggml-webgpu.h,ggml-zendnn.h,ggml.h,gguf.h}
+  rm "${pkgdir}/usr/lib/cmake/ggml"/ggml-config{,-version}.cmake
+  rmdir "${pkgdir}/usr/lib/cmake/ggml"
 
   install -Dm755 build/bin/transcribe-cli "${pkgdir}/usr/bin/transcribe-cli"
 

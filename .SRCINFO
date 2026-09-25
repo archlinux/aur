@@ -1,7 +1,7 @@
 pkgbase = transcribe-cpp-vulkan
 	pkgdesc = C/C++ speech-to-text inference library and CLI based on ggml (Vulkan)
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/handy-computer/transcribe.cpp
 	arch = x86_64
 	license = MIT
