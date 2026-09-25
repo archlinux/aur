@@ -67,7 +67,7 @@ source=(
 
 sha256sums=('40348d8f0b0fa25b532fdf216dccbeda6d98022c6b60cd623dbafc21be1dcdd4'
             'edda27b534912b97049c38233488c7154c652485b41a9c49fe5b996fb72740d6'
-            'd37f7739f9a927ec5aa73cf78ce8dd01cc4febb3a5b27ed458d9966710d1addf')
+            '6c259a120202e252fcaceac13739d1c847b353120d56b6b1c240ebe5fd2a1a85')
 
 package() {
     install -dm755 "$pkgdir/$_prefix"
