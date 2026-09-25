@@ -17,7 +17,7 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
-    "proton-mail.sh",
+    "proton-meet.sh",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
