@@ -1,12 +1,20 @@
 pkgbase = datafetch
 	pkgdesc = Live system information dashboard for Linux terminals
-	pkgver = 2.3.2
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/KlodCripta/Datafetch
 	arch = any
 	license = MIT
-	depends = bash
-	source = datafetch-2.3.2.tar.gz::https://github.com/KlodCripta/Datafetch/archive/refs/tags/v2.3.2.tar.gz
-	sha256sums = SKIP
+	depends = bash>=4.3
+	depends = coreutils
+	depends = gawk
+	depends = glibc
+	depends = procps-ng
+	optdepends = util-linux: detailed CPU model and topology
+	optdepends = pciutils: additional GPU information from lspci
+	optdepends = hwdata: PCI device names
+	optdepends = libdrm: AMD GPU model names
+	source = datafetch-3.0.1.tar.gz::https://github.com/KlodCripta/Datafetch/archive/cc2c08ba3ff14434f93e0077a5750d1f30b93d6d.tar.gz
+	sha256sums = c6bc542243a52fbe84ffe1d90f84d8babfa4cbee610ef4d2794c9184dc655b24
 
 pkgname = datafetch
