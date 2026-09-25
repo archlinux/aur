@@ -1,0 +1,8 @@
+[open-fprintd]
+source = "github"
+github = "uunicorn/open-fprintd"
+use_max_tag = true
+
+
+prefix = "v"
+
