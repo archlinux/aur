@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Discipulus
+Exec=/usr/bin/discipulus %U
+Terminal=false
+Type=Application
+Icon=discipulus
+StartupWMClass=discipulus
+GenericName=School Schedule Viewer
+Keywords=discipulus;magister;schedule;rooster;
+Comment=Alternative Openbare Magister App voor Android, iOS, iPadOS, WatchOS, WearOS, macOS, Linux en Windows
+MimeType=x-scheme-handler/m6loapp;
