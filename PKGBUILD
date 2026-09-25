@@ -1,8 +1,8 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.210
-pkgrel=2
+pkgver=1.4.211
+pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/stablyai/orca'
@@ -75,7 +75,7 @@ source_x86_64=(
 source_aarch64=(
   "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
 )
-sha256sums=('98599daab09b6347562c3b231f617993b473aae4f6612833fc8a6af151940a73'
+sha256sums=('0beb68a401dfa90970953437e5bd02107daa3de42a73952c4190e569fb00c61c'
             '5ef12ab545a211627c23f05eb589a051e6c207a3f2c3382add8f0573400b871d'
             'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
             '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
