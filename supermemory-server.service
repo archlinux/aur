@@ -1,0 +1,33 @@
+[Unit]
+Description=supermemory-server - Self-hosted AI memory server
+Documentation=https://github.com/supermemoryai/supermemory
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/supermemory-server
+Restart=on-failure
+RestartSec=10
+
+# User configuration
+EnvironmentFile=-%h/.supermemory/env
+Environment="SUPERMEMORY_DATA_DIR=%h/.supermemory"
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=%h/.supermemory
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# Process management
+KillMode=mixed
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,23 @@
+pkgbase = supermemory-server
+	pkgdesc = Self-hosted AI memory server for managing and retrieving information
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/supermemoryai/supermemory
+	install = supermemory.install
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	optdepends = openai-python: for OpenAI embeddings
+	optdepends = google-generativeai: for Gemini embeddings
+	optdepends = anthropic: for Anthropic API
+	options = !strip
+	source = supermemory-server.service
+	source = supermemory.install
+	sha256sums = 9c888af5610069b19b84922e1456abaa54332a4b5513f24c2bf8fcfbc966a677
+	sha256sums = ad3736bb35f7e8daed367baa5f87300afc53886e4dc0e6192725e00857719ca8
+	source_x86_64 = https://github.com/supermemoryai/supermemory/releases/download/server-v0.0.8/supermemory-server-linux-x64
+	sha256sums_x86_64 = 87f32433d0179be80bb9d8a1bafbac65af4128324342a27ecb8bd1a77b5506f3
+	source_aarch64 = https://github.com/supermemoryai/supermemory/releases/download/server-v0.0.8/supermemory-server-linux-arm64
+	sha256sums_aarch64 = eeb9e62a8bf59646bd799a05d1a2981b945413a03640c3a39f4f267ad2d2bf37
+
+pkgname = supermemory-server
