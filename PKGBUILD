@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A cross-platform TUI directory comparison tool"
 
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('1ddaf30aa49a9998bef32e3f104bce90553550773b51e0b47a486f916fa7bfeb')
-sha256sums_aarch64=('7b085b780cd24ec9263bc40ebd411b9176d63bc48c338171b793bd3819341777')
+sha256sums_x86_64=('6000d2eaeeb562e7b7b99d6d88b30869b088b36a5327d059c4118138709cbf0a')
+sha256sums_aarch64=('16fb917a2ab73f8dc60fde2dadd5cb6057db0d41d94dd9b30962048d5da80870')
 
 
 case ${CARCH} in
