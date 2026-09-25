@@ -1,13 +1,15 @@
 pkgbase = ipp-usb-openrc
-	pkgdesc = OpenRc init script for 'ipp-usb'.
-	pkgver = 0.5
+	pkgdesc = OpenRC ipp-usb init script
+	pkgver = 20260924
 	pkgrel = 1
-	epoch = 0
-	url = https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/testing/ipp-usb/ipp-usb.initd
+	url = https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/testing/ipp-usb/
 	arch = any
-	license = BSD-2-Clause
+	license = GPL-2.0-only
 	depends = ipp-usb
-	optdepends = openrc: To make use of the OpenRC initscript.
+	optdepends = openrc: To make use of this init script.
+	provides = init-ipp-usb
+	conflicts = init-ipp-usb
+	backup = etc/conf.d/ipp-usb
 	source = ipp-usb.initd
 	sha256sums = 106e551e94686d32c9bfde468d1c3262d3b4715a011b932182c9ed26402bcff3
 
