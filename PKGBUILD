@@ -26,7 +26,7 @@ source=(
   "$_pkgname-arc-$_build.$_pkgext"::"https://github.com/Anuken/Arc/archive/refs/tags/v$_build.$_pkgext"
 )
 sha256sums=('bab4d829613d0ee64283fc51aecd12ec49ac48943c0c32cbc0027487d7aadf48'
-            '9228bda3cfdec72ccd300e852e52d0bda5f37270478d3f7b386d643e868c074e')
+  '9228bda3cfdec72ccd300e852e52d0bda5f37270478d3f7b386d643e868c074e')
 
 prepare() {
   ln -sf "$_pkgsrc_arc" Arc
