@@ -1,0 +1,5 @@
+[pacman-hook-aur-set-notifications]
+source = "gitlab"
+gitlab = "Marcool04/pacman-hook-aur-set-notifications"
+use_max_tag = true
+prefix = "v"
