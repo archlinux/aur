@@ -2,7 +2,7 @@
 
 pkgname=blockwork
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A Tauri app to visually create and run macros on Windows, Linux, and macOS.'
 url='https://github.com/Blockworked/Blockwork'
 arch=('x86_64')
@@ -28,7 +28,7 @@ prepare() {
 build() {
     cd "$srcdir/Blockwork-$pkgver"
     export BLOCKWORK_PNPM_OFFLINE=1
-    cargo build --release --frozen
+    cargo build --release --frozen --workspace --exclude blockwork-linux-bridge
 }
 
 package() {
@@ -40,6 +40,7 @@ package() {
     # GL/Vulkan shims, *.pak, icudtl.dat, locales/, ...) has to live alongside
     # it in a private libdir, not /usr/bin.
     install -Dm755 "target/release/blockwork"                     "$libdir/blockwork"
+    install -Dm755 "target/release/blockwork-daemon"              "$libdir/blockwork-daemon"
     install -Dm755 "target/release/libcef.so"                  "$libdir/libcef.so"
     install -Dm755 "target/release/libEGL.so"                  "$libdir/libEGL.so"
     install -Dm755 "target/release/libGLESv2.so"                "$libdir/libGLESv2.so"
