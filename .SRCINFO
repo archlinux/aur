@@ -1,11 +1,11 @@
 pkgbase = mingw-w64-recode
 	pkgdesc = Converts files between various character sets and usages (mingw-w64)
-	pkgver = 3.7.15
+	pkgver = 3.7.16
 	pkgrel = 1
 	url = https://github.com/rrthomas/recode
 	arch = any
 	license = GPL-3.0-or-later
-	license = LGPL-2.1-or-later
+	license = LGPL-3.0-or-later
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-wine
@@ -16,9 +16,10 @@ pkgbase = mingw-w64-recode
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/rrthomas/recode/releases/download/v3.7.15/recode-3.7.15.tar.gz
+	options = !debug
+	source = https://github.com/rrthomas/recode/releases/download/v3.7.16/recode-3.7.16.tar.gz
 	source = autotools.patch
-	sha256sums = f590407fc51badb351973fc1333ee33111f05ec83a8f954fd8cf0c5e30439806
+	sha256sums = c3d407f54f74bae76360312096e2ed46622f01c86e50b09ef45b2d93c8fcff2d
 	sha256sums = e0eeaf5afec36c77b70a648c2ada06c3570a587e73a7a86e3eea26d2c96b24e0
 
 pkgname = mingw-w64-recode
