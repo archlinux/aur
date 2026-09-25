@@ -2,7 +2,7 @@
 
 pkgname=colm-git
 pkgver=0.15.0.r75.g0164c85d
-pkgrel=1
+pkgrel=2
 pkgdesc="A programming language designed for the analysis and transformation of computer languages"
 arch=('i686' 'x86_64')
 url="https://www.colm.net/open-source/colm/"
@@ -12,12 +12,12 @@ makedepends=('git' 'asciidoc' 'fig2dev')
 provides=("colm=$pkgver")
 conflicts=('colm')
 options=('staticlibs')
-source=("git+https://github.com/adrian-thurston/colm.git")
+source=("git+https://github.com/adrian-thurston/colm-suite.git")
 sha256sums=('SKIP')
 
 
 pkgver() {
-  cd "colm"
+  cd "colm-suite"
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^colm-[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count "$_tag"..HEAD)
@@ -26,24 +26,25 @@ pkgver() {
 }
 
 build() {
-  cd "colm"
+  cd "colm-suite"
 
   ./autogen.sh
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
   ./configure \
-    --prefix="/usr"
+    --prefix="/usr" \
+    --disable-install-ragel
   make
 }
 
 check() {
-  cd "colm"
+  cd "colm-suite"
 
   #make check
 }
 
 package() {
-  cd "colm"
+  cd "colm-suite"
 
   make DESTDIR="$pkgdir" install
   install -Dm644 "colm.vim" -t "$pkgdir/usr/share/vim/vimfiles/syntax"
