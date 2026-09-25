@@ -1,6 +1,6 @@
 pkgbase = solomd-bin
 	pkgdesc = A lightweight Markdown and plain text editor built with Tauri 2
-	pkgver = 4.14.2
+	pkgver = 4.14.3
 	pkgrel = 1
 	url = https://solomd.app
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = solomd-bin
 	conflicts = solomd
 	options = !strip
 	options = !debug
-	source = solomd-bin-4.14.2.AppImage::https://github.com/zhitongblog/solomd/releases/download/v4.14.2/SoloMD_4.14.2_amd64.AppImage
+	source = solomd-bin-4.14.3.AppImage::https://github.com/zhitongblog/solomd/releases/download/v4.14.3/SoloMD_4.14.3_amd64.AppImage
 	source = solomd.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
