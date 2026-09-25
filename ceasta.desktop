@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ceasta
+GenericName=Disassembler and Debugger
+Comment=Disassembler, decompiler and debugger with a built-in MCP server
+Exec=ceasta %f
+Icon=ceasta
+Terminal=false
+Categories=Development;Debugger;
+Keywords=disassembler;decompiler;debugger;reverse engineering;elf;pe;mcp;
