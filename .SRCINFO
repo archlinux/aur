@@ -1,7 +1,7 @@
 pkgbase = mdbook-rss-feed
 	pkgdesc = mdbook preprocessor that generates a full-content RSS 2.0, Atom, and JSON feeds
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/saylesss88/mdbook-rss-feed
 	arch = x86_64
 	license = Apache-2.0
