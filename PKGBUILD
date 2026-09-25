@@ -14,6 +14,9 @@ makedepends=(git cargo
 	pkgconf unzip rust protobuf-c)
 source=("git+https://github.com/taigikeyboard/taigikeyboard.git#tag=desktop-$pkgver")
 sha512sums=('b7f8ef357318670fe7040f5686d96ba9ae0a1226ede90c75381b104920fac657b22b63859a1d4b308b32a8aae30c15ad9390a86ab2e32e2054752583dcc87d1a')
+# This package uses the sqlite bundled in rusqlite, which would fail to be
+# linked if LTO is enabled
+options=(!lto)
 
 build() {
 	cd ${pkgbase}
