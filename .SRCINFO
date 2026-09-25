@@ -1,0 +1,18 @@
+pkgbase = lunduke-edit-git
+	pkgdesc = A light plain-text editor for the Lunduke Computer Operating System (LCOS)
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/BryanLunduke/lunduke-edit
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = gtkmm3
+	depends = gtksourceviewmm3
+	provides = lunduke-edit
+	conflicts = lunduke-edit
+	source = lunduke-edit-git::git+https://github.com/BryanLunduke/lunduke-edit.git
+	sha512sums = SKIP
+
+pkgname = lunduke-edit-git
