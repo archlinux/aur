@@ -1,5 +1,5 @@
 pkgbase = prolewatch
-	pkgdesc = Security gate for safer yay-driven AUR builds
+	pkgdesc = AUR security scanner and build sandbox with network isolation, optional AI review and root action inspection
 	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/holgerjh/prolewatch

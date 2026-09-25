@@ -3,7 +3,7 @@
 pkgname=prolewatch
 pkgver=0.12.2
 pkgrel=1
-pkgdesc='Security gate for safer yay-driven AUR builds'
+pkgdesc='AUR security scanner and build sandbox with network isolation, optional AI review and root action inspection'
 arch=('x86_64')
 url='https://github.com/holgerjh/prolewatch'
 license=('AGPL-3.0-only')
