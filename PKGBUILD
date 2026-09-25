@@ -1,6 +1,6 @@
 # Maintainer: Hultwl <Hultwl@users.noreply.github.com>
 pkgname=rufux-git
-pkgver=2.1.r0.g54759a4
+pkgver=2.1.r1.g0a5caec
 pkgrel=1
 pkgdesc="Rufux — bootable USB creator for Linux (Rufus port, latest git)"
 arch=('x86_64')
@@ -47,5 +47,6 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm755 Rufux/gui-tauri/target/release/rufux-gui "$pkgdir/usr/bin/rufux-gui"
+  install -Dm755 Rufux/gui-tauri/target/release/rufux-gui "$pkgdir/usr/bin/rufux-gui.bin"
+  install -Dm755 Rufux/packaging/rufux-gui.sh "$pkgdir/usr/bin/rufux-gui"
 }
