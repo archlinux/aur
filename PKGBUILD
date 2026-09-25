@@ -7,7 +7,7 @@
 _pkgauthor=Eugeny
 _pkgname=tabby
 pkgname=${_pkgname}-bin
-pkgver=1.0.236
+pkgver=1.0.237
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Tabby (formerly Terminus) is a highly configurable terminal emulator, SSH and serial client for Windows, macOS and Linux"
@@ -28,9 +28,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-${_barch[0]}.deb")
 source_aarch64=("${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-${_barch[1]}.deb")
 sha256sums=('ac295694b9f56e90dce3cf58313ed891d0bd9178adec02d8503a0c07d9d34c68'
-            '4db4f14f676d5b58d36e2083c4320787d0634b265cf3faabef4f57df3fb37bea')
-sha256sums_x86_64=('08dfad7a8151e2fc90bbb09b38085e0246d86664b35a2a83270c27fde636e0b5')
-sha256sums_aarch64=('8c6d2b1c13e65bacd665c09289f288092af401c0e833d35940bf07f38ebe963a')
+            'afda31192ba70317f3a167ef9cb7efcd53226e127c503ddd9f6b6d248133a834')
+sha256sums_x86_64=('9b6a440bf513536b99de959be485a064414203220307d687d77a1f1cb9ba92f2')
+sha256sums_aarch64=('d22f1872b4a4618e0af722a7a141bfbc6a85f05069b69858ef037db970b29363')
 
 package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
