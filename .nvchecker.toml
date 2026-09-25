@@ -1,0 +1,8 @@
+[minuimus]
+source = "regex"
+url = "http://birds-are-nice.me/software/minuimus.html"
+regex = '.*href=\"software/minuimus\.zip\">Minuimus\.pl script \(V (.*?)\).*'
+
+
+prefix = "v"
+

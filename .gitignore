@@ -8,3 +8,4 @@
 !minuimus_leanify_keep_icc.patch
 
 !.gitignore
+!.nvchecker.toml
