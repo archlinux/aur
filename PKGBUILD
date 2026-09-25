@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-git
 pkgname=('shelly-git' 'shelly-flatpak-backend-git')
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
@@ -16,7 +16,7 @@ source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=
         'shelly-flatpak-integrate')
 
 sha256sums=('SKIP'
-            '0aff9177498bd94e90c937076d15ac76116c628ec3504a7c1b8c9ea086336ca6'
+            'd7adb207c0073b93679ff3b8741a734ab62b48283134465b47844884bd211bb9'
             '2cdefd69e5e1a2ecaa9a787ef04137af16d55690361034420f4dfcbb575e8627'
             '05f39f65a0f0797ea8a45b10cb693a197908aec298b2a17422a6d942ad1dee36'
             'da6ed2f71966aef9cc20f7dcd3a5aa87afd3d57d2fccebfe71be62e4d9ae64d5')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
-  printf '3.1.4r%s.g%s' \
+  printf '3.1.5r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
 }
