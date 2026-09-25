@@ -6,7 +6,7 @@ pkgname=(
   "${pkgbase}-client"
   "${pkgbase}-server"
 )
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="OOB interaction gathering server and client library"
 arch=(
@@ -27,13 +27,14 @@ _pkgsrc="${url##*/}"
 source=(
   "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
 )
-b2sums=('6a856b98dd6c7716168b7bed76f8aa98d45e044f5f3e9c4775610d5a363a014590c31d7d317f1bc479b88d61bd603f15f8709b4a7c25f35a5645748c4d5a27a0')
+b2sums=('4f991568cbcfced5bbf4e8cc5e1c01da0c6fd019c58f33101441f97697a98757e4c66809703cb96f3354d51e850122594255530bcf440627e0c73c7333d35904')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -modcacherw -x
+  # go mod verify
 }
 
 build() {
@@ -62,8 +63,8 @@ package_interactsh-common() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  install -vDm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgbase}/README.md"
-  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE.md"
+  install -vDm644 "README.md"  -t "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -vDm644 "LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgbase}"
 }
 
 package_interactsh-client() {
